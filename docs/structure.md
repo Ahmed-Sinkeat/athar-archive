@@ -1,9 +1,9 @@
 # athar-archive — Repository Structure
 
-**As of:** P5 complete (SEO, structured data, feeds, permanence)
-**Companion doc:** [`asbuild.md`](./asbuild.md) — phase-by-phase as-built record.
+**As of:** P6 complete (media pipeline — audio player, attachments, R2 docs)
+**Companion docs:** [`asbuild.md`](./asbuild.md) · [`issue.md`](./issue.md) · [`media-and-backup.md`](./media-and-backup.md)
 
-This document describes the *actual* repository layout. It is updated after every phase. Directories that exist but are not yet populated are marked **(pending P6+)**.
+This document describes the *actual* repository layout. It is updated after every phase. Directories that exist but are not yet populated are marked **(pending P7+)**.
 
 ---
 
@@ -66,6 +66,8 @@ src/
 │  └─ Base.astro             #   RTL shell: 3-row header, drawer, progress bar, footer, pre-paint script
 ├─ components/
 │  ├─ Breadcrumbs.astro · EntityCard.astro · Prose.astro · Verse.astro
+│  ├─ AudioPlayer.astro    # native <audio>, accessible, styled (lesson/poem/book/article)
+│  └─ Attachments.astro    # PDF/EPUB download links
 └─ pages/                    # every route (BUILD-PLAN 0.4) — all render from fixtures
    ├─ index.astro · search.astro · about.astro · contact.astro · 404.astro
    ├─ books.astro · poems.astro · subjects.astro · topics.astro · people.astro
@@ -88,6 +90,8 @@ src/
 scripts/
 ├─ validate-content.ts       # CLI: loads content, runs validate.ts, exits 1 on any breach
 │                            # wired into `pnpm build` before astro build
+├─ gen-redirects.ts          # post-build: aliases → dist/_redirects (301)
+├─ upload-media.sh           # rclone mirror of local media → R2 bucket
 └─ pagefind-spike/           # P0 Arabic search spike (run in P4) + real-index verification
    ├─ site/                  #   controlled corpus: diacritized.html, stripped.html
    ├─ spike-search.mjs       #   headless-chromium search test over the corpus
