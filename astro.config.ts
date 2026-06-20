@@ -2,7 +2,7 @@ import { defineConfig } from "astro/config";
 
 export default defineConfig({
   output: "static",
-  site: "https://ahlalathar.net",
+  site: "https://ahlalathar.com",
   trailingSlash: "never",
   build: {
     format: "directory",

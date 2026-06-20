@@ -6,6 +6,7 @@ import EntityCard from "../../components/EntityCard.astro";
 import Prose from "../../components/Prose.astro";
 import { isPub, loadGraph } from "../../lib/site";
 import { ENTITY, hrefFor, toArabicDigits } from "../../lib/display";
+import { collectionLd } from "../../lib/structured-data";
 
 export async function getStaticPaths() {
   const topics = (await getCollection("topic")).filter(isPub);
@@ -24,8 +25,17 @@ export async function getStaticPaths() {
 }
 
 const { entry, subject, materials } = Astro.props;
+const path = `/topic/${entry.id}`;
+const jsonLd = collectionLd({
+  title: entry.data.title, description: entry.data.description, path,
+  crumbs: [
+    { name: "الرئيسية", path: "/" }, { name: "الموضوعات", path: "/subjects" },
+    ...(subject ? [{ name: subject.title, path: hrefFor("subject", subject.id) }] : []),
+    { name: entry.data.title, path },
+  ],
+});
 ---
-<Base title={entry.data.title} description={entry.data.description} activeNav="subjects" searchMeta={{ title: entry.data.title, type: "topic" }}>
+<Base title={entry.data.title} description={entry.data.description} activeNav="subjects" jsonLd={jsonLd} searchMeta={{ title: entry.data.title, type: "topic" }}>
   <Breadcrumbs
     width="wrap-read"
     items={[

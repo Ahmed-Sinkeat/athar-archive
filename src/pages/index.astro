@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import Base from "../layouts/Base.astro";
 import { toArabicDigits, hrefFor } from "../lib/display";
 import { analyzePoem } from "../lib/chunk";
+import { websiteLd } from "../lib/structured-data";
 
 const pub = (c: any[]) => c.filter((e) => e.data.status === "published");
 
@@ -43,7 +44,7 @@ const latest = [
   .sort((a, b) => +new Date(b.e.data.published_at) - +new Date(a.e.data.published_at))
   .slice(0, 5);
 ---
-<Base title="أهل الأثر" description="الأرشيف العلمي لأهل السنة والجماعة: متونٌ ومنظوماتٌ ودروسٌ محقَّقةً ومُشكَّلةً، في تجربة قراءة هادئة." activeNav="home">
+<Base title="أهل الأثر" description="الأرشيف العلمي لأهل السنة والجماعة: متونٌ ومنظوماتٌ ودروسٌ محقَّقةً ومُشكَّلةً، في تجربة قراءة هادئة." activeNav="home" jsonLd={websiteLd()}>
   <section class="hero">
     <div class="hero-inner">
       <div class="hero-eyebrow">أرشيفٌ علميٌّ طويلُ العُمر</div>

@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import { config } from "../../ahlalathar.config";
 
 interface Props {
   title: string;
@@ -7,8 +8,11 @@ interface Props {
   activeNav?: string;
   searchMeta?: { title: string; type: string };
   noindex?: boolean;
+  ogType?: string;
+  jsonLd?: unknown;
 }
-const { title, description, activeNav, searchMeta, noindex } = Astro.props;
+const { title, description, activeNav, searchMeta, noindex, ogType = "website", jsonLd } = Astro.props;
+const canonical = new URL(Astro.url.pathname.replace(/\/$/, "") || "/", config.siteUrl).href;
 
 const nav = [
   { id: "home", label: "الرئيسية", href: "/" },
@@ -29,7 +33,20 @@ const fullTitle = title === "أهل الأثر" ? title : `${title} · أهل ا
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{fullTitle}</title>
     {description && <meta name="description" content={description} />}
-    {noindex && <meta name="robots" content="noindex" />}
+    {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:site_name" content="أهل الأثر" />
+    <meta property="og:locale" content="ar_AR" />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={title} />
+    {description && <meta property="og:description" content={description} />}
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    {description && <meta name="twitter:description" content={description} />}
+
+    {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

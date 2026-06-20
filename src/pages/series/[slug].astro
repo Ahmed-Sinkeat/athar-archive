@@ -4,6 +4,7 @@ import Base from "../../layouts/Base.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import { isPub, loadGraph, personNameMap } from "../../lib/site";
 import { hrefFor, toArabicDigits, sourceHref } from "../../lib/display";
+import { seriesLd } from "../../lib/structured-data";
 
 export async function getStaticPaths() {
   const seriesList = (await getCollection("series")).filter(isPub);
@@ -25,8 +26,13 @@ export async function getStaticPaths() {
 }
 
 const { entry, lessons, stats, source, author } = Astro.props;
+const path = `/series/${entry.id}`;
+const jsonLd = seriesLd({
+  title: entry.data.title, authorName: author, description: entry.data.description, path,
+  crumbs: [{ name: "الرئيسية", path: "/" }, { name: "الدروس", path: "/series" }, { name: entry.data.title, path }],
+});
 ---
-<Base title={entry.data.title} description={entry.data.description} activeNav="series" searchMeta={{ title: entry.data.title, type: "series" }}>
+<Base title={entry.data.title} description={entry.data.description} activeNav="series" ogType="article" jsonLd={jsonLd} searchMeta={{ title: entry.data.title, type: "series" }}>
   <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "الدروس", href: "/series" }, { label: entry.data.title }]} />
   <div class="wrap-mid" style="padding-block:18px 96px">
     <div class="tag-verdigris" style="font-family:var(--font-ui);font-size:12px;letter-spacing:.18em;margin-bottom:10px">

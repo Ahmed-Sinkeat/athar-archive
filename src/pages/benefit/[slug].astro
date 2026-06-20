@@ -5,6 +5,7 @@ import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import Prose from "../../components/Prose.astro";
 import { isPub, loadGraph } from "../../lib/site";
 import { hrefFor, sourceHref, ENTITY } from "../../lib/display";
+import { benefitLd } from "../../lib/structured-data";
 
 export async function getStaticPaths() {
   const benefits = (await getCollection("benefit")).filter(isPub);
@@ -24,8 +25,13 @@ export async function getStaticPaths() {
 }
 
 const { entry, personName, personId, source } = Astro.props;
+const path = `/benefit/${entry.id}`;
+const jsonLd = benefitLd({
+  text: entry.data.title, authorName: personName, path,
+  crumbs: [{ name: "الرئيسية", path: "/" }, { name: "الفوائد", path: "/benefits" }, { name: "فائدة", path }],
+});
 ---
-<Base title={entry.data.title} activeNav="benefits" searchMeta={{ title: entry.data.title, type: "benefit" }}>
+<Base title={entry.data.title} activeNav="benefits" ogType="article" jsonLd={jsonLd} searchMeta={{ title: entry.data.title, type: "benefit" }}>
   <Breadcrumbs width="wrap-read" items={[{ label: "الرئيسية", href: "/" }, { label: "الفوائد", href: "/benefits" }, { label: "فائدة" }]} />
   <div class="wrap-read reading-pad" style="text-align:center">
     <div class="ornament" style="font-size:22px;margin-bottom:24px">۞</div>
