@@ -1,0 +1,35 @@
+---
+import { getCollection } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import { personNameMap, isPub, loadGraph } from "../../lib/site";
+import { hrefFor, toArabicDigits } from "../../lib/display";
+
+const series = (await getCollection("series")).filter(isPub);
+const names = await personNameMap();
+const graph = await loadGraph();
+---
+<Base title="الدروس" description="سلاسلُ شرحِ المتونِ، مفرَّغةً نصاً مع الصوت والفهرس والفوائد المستخرجة." activeNav="series">
+  <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "الدروس" }]} />
+  <div class="wrap-mid" style="padding-block:18px 96px">
+    <h1 class="page-title">الدروس</h1>
+    <p class="page-intro">سلاسلُ شرحِ المتونِ، مفرَّغةً نصاً مع الصوتِ والفهرسِ والفوائدِ المستخرجة.</p>
+    <div class="card-grid" style="grid-template-columns:repeat(auto-fill,minmax(300px,1fr))">
+      {series.map((e) => {
+        const stats = graph.seriesStats(e.id);
+        return (
+          <a class="card" href={hrefFor("series", e.id)}>
+            <div class="tag-verdigris" style="font-family:var(--font-ui);font-size:12px;margin-bottom:10px">
+              سلسلة · {toArabicDigits(stats.publishedLessonCount)} درسًا
+            </div>
+            <div class="card-title">{e.data.title}</div>
+            <div class="card-sub">{names.get(e.data.person)}</div>
+            {stats.totalSeconds > 0 && (
+              <div class="faint" style="font-size:12px;margin-top:12px">مدة السلسلة · {stats.totalDuration}</div>
+            )}
+          </a>
+        );
+      })}
+    </div>
+  </div>
+</Base>

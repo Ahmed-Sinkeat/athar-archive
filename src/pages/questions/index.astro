@@ -1,0 +1,28 @@
+---
+import Base from "../../layouts/Base.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import EntityCard from "../../components/EntityCard.astro";
+import { personNameMap, publishedSorted } from "../../lib/site";
+import { hrefFor } from "../../lib/display";
+
+const questions = await publishedSorted("question");
+const names = await personNameMap();
+---
+<Base title="المسائل" description="مسائلُ علميةٌ مجموعةٌ على هيئة سؤالٍ وجواب." activeNav="home">
+  <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "المسائل" }]} />
+  <div class="wrap-mid" style="padding-block:18px 96px">
+    <h1 class="page-title">المسائل</h1>
+    <p class="page-intro">مجموعاتٌ من المسائل العلمية على هيئة سؤالٍ وجواب.</p>
+    <div class="card-grid">
+      {questions.map((e) => (
+        <EntityCard
+          href={hrefFor("question", e.id)}
+          title={e.data.title}
+          kind="مسائل"
+          sub={e.data.person ? names.get(e.data.person) : undefined}
+          cta="اطّلع ←"
+        />
+      ))}
+    </div>
+  </div>
+</Base>

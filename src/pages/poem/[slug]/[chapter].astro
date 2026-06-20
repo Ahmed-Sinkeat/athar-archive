@@ -1,0 +1,58 @@
+---
+import { getCollection } from "astro:content";
+import Base from "../../../layouts/Base.astro";
+import Breadcrumbs from "../../../components/Breadcrumbs.astro";
+import Verse from "../../../components/Verse.astro";
+import { isPub, loadGraph, personNameMap } from "../../../lib/site";
+import { analyzePoem } from "../../../lib/chunk";
+import { hrefFor, toArabicDigits } from "../../../lib/display";
+
+export async function getStaticPaths() {
+  const poems = (await getCollection("poem")).filter(isPub);
+  const graph = await loadGraph();
+  const names = await personNameMap();
+  const paths: any[] = [];
+  for (const entry of poems) {
+    const a = analyzePoem(entry.body ?? "");
+    if (!a.chunked) continue; // only chapterized poems expose chapter pages
+    const byAnchor: Record<string, { kind: string; body: string }[]> = {};
+    for (const an of graph.annotationsForTarget("poem", entry.id)) {
+      if (an.data.status !== "published") continue;
+      (byAnchor[an.data.anchor] ??= []).push({ kind: an.data.kind, body: an.body ?? "" });
+    }
+    for (const c of a.chapters) {
+      paths.push({
+        params: { slug: entry.id, chapter: c.slug },
+        props: { entry, chapter: c, byAnchor, author: names.get(entry.data.person) },
+      });
+    }
+  }
+  return paths;
+}
+
+const { entry, chapter, byAnchor, author } = Astro.props;
+---
+<Base title={`${chapter.title} · ${entry.data.title}`} activeNav="books">
+  <Breadcrumbs
+    width="wrap-read"
+    items={[
+      { label: "الرئيسية", href: "/" },
+      { label: "المكتبة", href: "/books" },
+      { label: entry.data.title, href: hrefFor("poem", entry.id) },
+      { label: chapter.title },
+    ]}
+  />
+  <div class="wrap-read reading-pad">
+    <div class="reader-head">
+      <div class="eyebrow" style="margin-bottom:16px">منظومة · {author}</div>
+      <h1 class="reader-title" style="font-size:clamp(30px,5vw,46px)">{chapter.title}</h1>
+      <div class="reader-byline">{entry.data.title} · {toArabicDigits(chapter.verses.length)} بيت</div>
+    </div>
+    <div class="rule-short"></div>
+    <div class="verses">
+      {chapter.verses.map((v: any) => (
+        <Verse n={v.n} sadr={v.sadr} ajz={v.ajz} anchor={v.anchor} notes={byAnchor[v.anchor]} />
+      ))}
+    </div>
+  </div>
+</Base>

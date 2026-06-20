@@ -1,15 +1,143 @@
 ---
-// أهل الأثر — Homepage (placeholder, built out in P3)
+import { getCollection } from "astro:content";
+import Base from "../layouts/Base.astro";
+import { toArabicDigits, hrefFor } from "../lib/display";
+import { analyzePoem } from "../lib/chunk";
+
+const pub = (c: any[]) => c.filter((e) => e.data.status === "published");
+
+const [people, books, poems, series, lessons, articles, benefits, announcements] = await Promise.all([
+  getCollection("person"),
+  getCollection("book"),
+  getCollection("poem"),
+  getCollection("series"),
+  getCollection("lesson"),
+  getCollection("article"),
+  getCollection("benefit"),
+  getCollection("announcement"),
+]);
+
+const personName = new Map(people.map((p) => [p.id, p.data.title]));
+
+const stats = [
+  { num: pub(books).length, label: "متنًا" },
+  { num: pub(poems).length, label: "منظومة" },
+  { num: pub(lessons).length, label: "درسًا مفرَّغًا" },
+  { num: pub(people).length, label: "من الأعلام" },
+];
+
+const anns = pub(announcements).sort((a, b) => (b.data.priority ?? 5) - (a.data.priority ?? 5)).slice(0, 3);
+
+// featured: first published poem, with its opening verses
+const featured = pub(poems)[0];
+const featuredVerses = featured ? analyzePoem(featured.body ?? "").verses.slice(0, 2) : [];
+
+// latest across materials by published_at
+const latest = [
+  ...pub(books).map((e) => ({ e, kind: "متن", color: "tag-accent" })),
+  ...pub(poems).map((e) => ({ e, kind: "منظومة", color: "tag-accent" })),
+  ...pub(series).map((e) => ({ e, kind: "سلسلة", color: "tag-verdigris" })),
+  ...pub(articles).map((e) => ({ e, kind: "مقالة", color: "tag-verdigris" })),
+  ...pub(benefits).map((e) => ({ e, kind: "فائدة", color: "tag-accent" })),
+]
+  .sort((a, b) => +new Date(b.e.data.published_at) - +new Date(a.e.data.published_at))
+  .slice(0, 5);
 ---
-<!doctype html>
-<html lang="ar" dir="rtl">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>أهل الأثر</title>
-  </head>
-  <body>
-    <h1>أهل الأثر</h1>
-    <p>قيد البناء</p>
-  </body>
-</html>
+<Base title="أهل الأثر" description="الأرشيف العلمي لأهل السنة والجماعة: متونٌ ومنظوماتٌ ودروسٌ محقَّقةً ومُشكَّلةً، في تجربة قراءة هادئة." activeNav="home">
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">أرشيفٌ علميٌّ طويلُ العُمر</div>
+      <h1 class="hero-title">أهل الأثر</h1>
+      <p class="hero-lede">المتونُ والمنظوماتُ والدروسُ، مُحقَّقةً ومُشكَّلةً، في تجربةِ قراءةٍ هادئةٍ تجعلُ المعرفةَ هي الأصل.</p>
+
+      <form action="/search" method="get" style="max-width:620px;margin:38px auto 0">
+        <div style="display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--rule-strong);border-radius:34px;padding:5px 22px 5px 6px;box-shadow:0 10px 34px rgba(31,27,22,.10)">
+          <input name="q" type="text" placeholder="ابحث في المتون والمنظومات والدروس والفوائد…" style="flex:1;min-width:0;border:none;outline:none;background:transparent;font-family:var(--font-ui);font-size:16.5px;color:var(--ink);padding:14px 0" />
+          <button class="btn-accent" type="submit" style="border:none;border-radius:26px;padding:12px 24px;font-family:var(--font-ui);font-size:14px;cursor:pointer">بحث</button>
+        </div>
+      </form>
+
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:30px">
+        <a class="btn btn-accent" href="/books">تصفّح المكتبة</a>
+        {featured && <a class="btn" href={hrefFor("poem", featured.id)}>ابدأ بـ{featured.data.title}</a>}
+      </div>
+
+      <div class="divider-orn"><span class="line"></span><span class="dot">۞</span><span class="line"></span></div>
+    </div>
+  </section>
+
+  <div class="wrap-mid" style="padding-top:0">
+    <div class="stats-strip">
+      {stats.map((s) => (
+        <div class="stat"><div class="stat-num">{toArabicDigits(s.num)}</div><div class="stat-label">{s.label}</div></div>
+      ))}
+    </div>
+  </div>
+
+  {anns.length > 0 && (
+    <div class="home-section">
+      <div class="section-label">إعلانات</div>
+      <div class="ann-cards">
+        {anns.map((a) => (
+          <div class="ann-card">
+            <span class="badge tag-verdigris" style="border-color:var(--verdigris)">جديد</span>
+            <h3>{a.data.title}</h3>
+            {a.body && <p>{a.body}</p>}
+          </div>
+        ))}
+      </div>
+    </div>
+  )}
+
+  {featured && (
+    <div class="home-section">
+      <div class="section-label">مختارُ هذا الأسبوع</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:36px;align-items:center;border:1px solid var(--rule-strong);border-radius:16px;background:var(--surface);padding:clamp(26px,4vw,44px)">
+        <div>
+          <div class="eyebrow" style="letter-spacing:normal;margin-bottom:10px">منظومة · {personName.get(featured.data.person)}</div>
+          <h2 class="reader-title" style="font-size:clamp(34px,5vw,50px);text-align:right">{featured.data.title}</h2>
+          {featured.data.description && <p class="prose" style="margin-top:18px"><span style="font-size:18px;line-height:1.85;color:var(--ink-soft)">{featured.data.description}</span></p>}
+          <a class="btn btn-accent" style="margin-top:8px" href={hrefFor("poem", featured.id)}>اقرأ المنظومة ←</a>
+        </div>
+        <div style="border-inline-start:1px solid var(--rule);padding-inline-start:clamp(20px,3vw,36px)" data-ar>
+          {featuredVerses.map((v) => (
+            <div style="padding:8px 0">
+              <div class="sadr" style="font-size:22px">{v.sadr}</div>
+              {v.ajz && <div class="ajz" style="font-size:22px">{v.ajz}</div>}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  )}
+
+  <div class="home-section">
+    <div class="section-label">تصفّح الأرشيف</div>
+    <div class="card-grid" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
+      <a class="card" href="/books"><div style="font-family:var(--font-display);font-size:28px;color:var(--accent);margin-bottom:14px">ا</div><div class="card-title" style="font-size:21px">المكتبة</div><p class="card-sub" style="line-height:1.7">المتونُ والمنظوماتُ محقَّقةً ومُشكَّلةً، مرتَّبةً حسب الفنِّ والعصر.</p><span class="card-cta">تصفّح ←</span></a>
+      <a class="card" href="/series"><div style="font-family:var(--font-display);font-size:28px;color:var(--accent);margin-bottom:14px">ب</div><div class="card-title" style="font-size:21px">الدروس</div><p class="card-sub" style="line-height:1.7">سلاسلُ شرحِ المتونِ، مفرَّغةً نصاً مع الصوت والفوائد المستخرجة.</p><span class="card-cta">تصفّح ←</span></a>
+      <a class="card" href="/people"><div style="font-family:var(--font-display);font-size:28px;color:var(--accent);margin-bottom:14px">ج</div><div class="card-title" style="font-size:21px">الأعلام</div><p class="card-sub" style="line-height:1.7">تراجمُ الناظمين والمصنِّفين والشُّرّاح، وما لكلٍّ منهم في الأرشيف.</p><span class="card-cta">تصفّح ←</span></a>
+    </div>
+  </div>
+
+  <div class="wrap-mid" style="padding-top:64px">
+    <div class="quote-band">
+      <div class="ornament" style="font-size:22px;margin-bottom:20px">۞</div>
+      <p data-ar>المحتوى هو الأصل، والتقنيةُ طبقةٌ قابلةٌ للاستبدال.</p>
+      <div class="faint" style="font-size:13px;margin-top:22px">من مبادئ أهل الأثر</div>
+    </div>
+  </div>
+
+  {latest.length > 0 && (
+    <div class="home-section" style="padding-bottom:96px">
+      <div class="section-label">أحدث الإضافات</div>
+      {latest.map(({ e, kind, color }) => (
+        <a class="latest-row" href={hrefFor(e.collection, e.id, { series: e.data.series })}>
+          <span class:list={["pill", color]} style="flex:0 0 auto">{kind}</span>
+          <span class="latest-name">{e.data.title}</span>
+          {e.data.person && <span class="faint" style="font-size:13px">{personName.get(e.data.person)}</span>}
+        </a>
+      ))}
+    </div>
+  )}
+</Base>

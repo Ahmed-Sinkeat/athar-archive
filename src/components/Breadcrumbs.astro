@@ -1,0 +1,21 @@
+---
+interface Crumb {
+  label: string;
+  href?: string;
+}
+interface Props {
+  items: Crumb[];
+  width?: string;
+}
+const { items, width = "wrap-mid" } = Astro.props;
+---
+<nav class:list={["crumb", width]} aria-label="مسار التنقّل">
+  {
+    items.map((c, i) => (
+      <>
+        {i > 0 && <span class="sep">›</span>}
+        {c.href ? <a href={c.href}>{c.label}</a> : <span class="here">{c.label}</span>}
+      </>
+    ))
+  }
+</nav>

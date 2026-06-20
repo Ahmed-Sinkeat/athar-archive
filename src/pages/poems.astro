@@ -1,0 +1,30 @@
+---
+import { getCollection } from "astro:content";
+import Base from "../layouts/Base.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import EntityCard from "../components/EntityCard.astro";
+import { personNameMap, isPub } from "../lib/site";
+import { hrefFor, toArabicDigits } from "../lib/display";
+import { analyzePoem } from "../lib/chunk";
+
+const poems = (await getCollection("poem")).filter(isPub);
+const names = await personNameMap();
+---
+<Base title="المنظومات" description="منظوماتٌ علميةٌ محقَّقةٌ مُشكَّلةٌ مع الشروح والتخريج." activeNav="books">
+  <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "المنظومات" }]} />
+  <div class="wrap-mid" style="padding-block:18px 96px">
+    <h1 class="page-title">المنظومات</h1>
+    <p class="page-intro">منظوماتٌ علميةٌ مُشكَّلةٌ، أبياتُها مُرقَّمةٌ، والمُعلَّمُ منها له شرحٌ وتخريج.</p>
+    <div class="card-grid">
+      {poems.map((e) => (
+        <EntityCard
+          href={hrefFor("poem", e.id)}
+          title={e.data.title}
+          kind="منظومة"
+          sub={`${names.get(e.data.person) ?? ""} · ${toArabicDigits(analyzePoem(e.body ?? "").verseCount)} بيت`}
+          cta="ادخل القراءة ←"
+        />
+      ))}
+    </div>
+  </div>
+</Base>

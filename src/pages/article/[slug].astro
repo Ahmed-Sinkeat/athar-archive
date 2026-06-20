@@ -1,0 +1,44 @@
+---
+import { getCollection } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import Prose from "../../components/Prose.astro";
+import { isPub, loadGraph } from "../../lib/site";
+
+export async function getStaticPaths() {
+  const articles = (await getCollection("article")).filter(isPub);
+  const graph = await loadGraph();
+  return articles.map((entry) => {
+    const person = graph.getById("person", entry.data.person);
+    const audioEntry = entry.data.audio ? graph.getById("audio", entry.data.audio) : null;
+    return {
+      params: { slug: entry.id },
+      props: { entry, author: person?.data.title, audio: audioEntry ? { url: audioEntry.data.url, duration: audioEntry.data.duration ?? null } : null },
+    };
+  });
+}
+
+const { entry, author, audio } = Astro.props;
+---
+<Base title={entry.data.title} description={entry.data.description} activeNav="articles">
+  <Breadcrumbs width="wrap-read" items={[{ label: "الرئيسية", href: "/" }, { label: "المقالات", href: "/articles" }, { label: entry.data.title }]} />
+  <div class="wrap-read reading-pad">
+    <div class="reader-head">
+      <div class="eyebrow" style="margin-bottom:16px">مقالة</div>
+      <h1 class="reader-title" style="font-size:clamp(30px,5vw,48px)">{entry.data.title}</h1>
+      <div class="reader-byline">{author}</div>
+    </div>
+
+    {audio && (
+      <div class="audio-bar" style="margin-top:28px">
+        <a class="audio-play" href={audio.url} aria-label="تشغيل الصوت"></a>
+        <span style="flex:1;font-family:var(--font-ui);font-size:13px;color:var(--ink-soft)">استماعٌ إلى المقالة</span>
+        {audio.duration && <span class="audio-time">{audio.duration}</span>}
+      </div>
+    )}
+
+    <div class="rule-short"></div>
+    <div style="margin-top:20px"><Prose body={entry.body ?? ""} /></div>
+    <div class="ornament" style="margin-top:40px;font-size:16px">۞</div>
+  </div>
+</Base>

@@ -1,0 +1,48 @@
+---
+import { markdownToSafeHtml } from "../lib/sanitize";
+import { toArabicDigits } from "../lib/display";
+
+interface Note {
+  kind: string;
+  body: string;
+}
+interface Props {
+  n: number;
+  sadr: string;
+  ajz?: string;
+  anchor: string;
+  notes?: Note[];
+}
+const { n, sadr, ajz, anchor, notes = [] } = Astro.props;
+const hasNotes = notes.length > 0;
+
+const KIND_SLUG: Record<string, string> = { شرح: "sharh", حاشية: "hashiya", تخريج: "takhrij", إعراب: "iraab" };
+---
+<div class="verse" id={anchor}>
+  <div class="verse-inner">
+    <div class="vnum">{toArabicDigits(n)}</div>
+    <div class="verse-body" data-ar>
+      {
+        hasNotes ? (
+          <a class="ann-trigger sadr" href={`#note-${anchor}`}>{sadr}</a>
+        ) : (
+          <div class="sadr">{sadr}</div>
+        )
+      }
+      {ajz && <div class="ajz">{ajz}</div>}
+    </div>
+  </div>
+</div>
+{
+  hasNotes && (
+    <div class="note-block" id={`note-${anchor}`}>
+      {notes.map((nt) => (
+        <div class:list={["note", `k-${KIND_SLUG[nt.kind] ?? "sharh"}`]} data-ar>
+          <a class="note-close" href={`#${anchor}`} aria-label="إغلاق">×</a>
+          <span class="note-kind">{nt.kind}</span>
+          <Fragment set:html={markdownToSafeHtml(nt.body)} />
+        </div>
+      ))}
+    </div>
+  )
+}

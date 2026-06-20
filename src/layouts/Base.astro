@@ -1,0 +1,153 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description?: string;
+  activeNav?: string;
+}
+const { title, description, activeNav } = Astro.props;
+
+const nav = [
+  { id: "home", label: "الرئيسية", href: "/" },
+  { id: "books", label: "المكتبة", href: "/books" },
+  { id: "subjects", label: "الموضوعات", href: "/subjects" },
+  { id: "series", label: "الدروس", href: "/series" },
+  { id: "benefits", label: "الفوائد", href: "/benefits" },
+  { id: "articles", label: "المقالات", href: "/articles" },
+  { id: "people", label: "الأعلام", href: "/people" },
+];
+const fullTitle = title === "أهل الأثر" ? title : `${title} · أهل الأثر`;
+---
+
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    {description && <meta name="description" content={description} />}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Reem+Kufi:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <!-- pre-paint: apply saved theme/scale/prefs before first paint to avoid flash -->
+    <script is:inline>
+      (() => {
+        try {
+          const t = localStorage.getItem("aa-theme");
+          if (t && t !== "light") document.documentElement.setAttribute("data-theme", t);
+          const s = localStorage.getItem("aa-scale");
+          if (s) document.documentElement.style.setProperty("--reading-scale", s);
+          if (localStorage.getItem("aa-vnums") === "0") document.documentElement.classList.add("hide-vnums");
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="wrap topbar-brandrow">
+        <div style="display:flex;justify-content:flex-start">
+          <button class="icon-btn hamburger" data-action="menu:toggle" aria-label="القائمة" style="width:40px;height:40px">
+            <span style="display:block;width:17px;height:2px;background:var(--ink);box-shadow:0 5px 0 var(--ink),0 -5px 0 var(--ink)"></span>
+          </button>
+        </div>
+        <a href="/" class="brand">
+          <span class="brand-name">أهل الأثر</span>
+          <span class="brand-sub">الأرشيف العلمي</span>
+        </a>
+        <div style="display:flex;justify-content:flex-end">
+          <button class="icon-btn theme-cycle" data-action="theme:cycle" aria-label="السمة" style="width:40px;height:40px;font-size:17px">◑</button>
+        </div>
+      </div>
+
+      <nav class="wrap topnav" aria-label="التصفّح">
+        {nav.map((n) => (
+          <a href={n.href} aria-current={activeNav === n.id ? "page" : undefined}>{n.label}</a>
+        ))}
+      </nav>
+
+      <div class="wrap settings-row">
+        <div class="ctl-group">
+          <div style="display:flex;align-items:center;gap:4px">
+            <button class="icon-btn" data-action="font:dec" title="تصغير الخط">أ−</button>
+            <button class="icon-btn" data-action="font:inc" title="تكبير الخط" style="font-size:15px">أ+</button>
+          </div>
+          <button class="toggle-btn" data-toggle="tashkeel" data-action="toggle:tashkeel" aria-pressed="true">
+            <span class="toggle-dot"></span>تشكيل
+          </button>
+          <button class="toggle-btn" data-toggle="verseNums" data-action="toggle:verseNums" aria-pressed="true">ترقيم الأبيات</button>
+        </div>
+        <div class="theme-switch">
+          <button data-theme-btn="light" data-action="theme:light" aria-pressed="true">فاتح</button>
+          <button data-theme-btn="sepia" data-action="theme:sepia" aria-pressed="false">ورقي</button>
+          <button data-theme-btn="dark" data-action="theme:dark" aria-pressed="false">داكن</button>
+        </div>
+      </div>
+
+      <div class="progress-track"><div class="progress-bar" data-progress></div></div>
+    </header>
+
+    <!-- mobile drawer -->
+    <div class="drawer-backdrop" data-drawer-backdrop></div>
+    <aside class="drawer" data-drawer aria-label="القائمة">
+      <div class="drawer-head">
+        <span class="brand-name" style="font-size:19px">أهل الأثر</span>
+        <button class="icon-btn" data-action="menu:close" aria-label="إغلاق" style="width:34px;height:34px;font-size:18px">×</button>
+      </div>
+      <div class="drawer-section-label">التصفّح</div>
+      {nav.map((n) => <a href={n.href}>{n.label}</a>)}
+      <div class="drawer-section-label" style="border-top:1px solid var(--rule);padding-top:16px">القراءة</div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+        <span class="muted" style="font-size:14px">حجم الخط</span>
+        <div style="display:flex;gap:6px">
+          <button class="icon-btn" data-action="font:dec" style="width:36px;height:36px">أ−</button>
+          <button class="icon-btn" data-action="font:inc" style="width:36px;height:36px;font-size:16px">أ+</button>
+        </div>
+      </div>
+      <button class="toggle-btn" data-toggle="tashkeel" data-action="toggle:tashkeel" aria-pressed="true" style="width:100%;justify-content:center;margin-bottom:9px"><span class="toggle-dot"></span>التشكيل</button>
+      <button class="toggle-btn" data-toggle="verseNums" data-action="toggle:verseNums" aria-pressed="true" style="width:100%;justify-content:center">ترقيم الأبيات</button>
+      <div class="drawer-section-label" style="border-top:1px solid var(--rule);padding-top:16px">السمة</div>
+      <div style="display:flex;gap:6px">
+        <button class="btn" data-theme-btn="light" data-action="theme:light" style="flex:1;padding:11px;font-size:13.5px">فاتح</button>
+        <button class="btn" data-theme-btn="sepia" data-action="theme:sepia" style="flex:1;padding:11px;font-size:13.5px">ورقي</button>
+        <button class="btn" data-theme-btn="dark" data-action="theme:dark" style="flex:1;padding:11px;font-size:13.5px">داكن</button>
+      </div>
+    </aside>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap-mid">
+        <div class="footer-grid">
+          <div>
+            <div class="brand-name" style="font-size:20px">أهل الأثر</div>
+            <p class="muted" style="font-size:13.5px;max-width:40ch;margin:10px 0 0;line-height:1.7">
+              المتونُ والمنظوماتُ والدروسُ، محقَّقةً ومُشكَّلةً. المحتوى هو الأصل، والتقنيةُ طبقةٌ قابلةٌ للاستبدال.
+            </p>
+          </div>
+          <nav class="footer-links" aria-label="روابط">
+            <a href="/books">المكتبة</a>
+            <a href="/poems">المنظومات</a>
+            <a href="/series">الدروس</a>
+            <a href="/topics">الموضوعات</a>
+            <a href="/people">الأعلام</a>
+            <a href="/benefits">الفوائد</a>
+            <a href="/articles">المقالات</a>
+            <a href="/questions">المسائل</a>
+            <a href="/about">عن الموقع</a>
+            <a href="/contact">تواصل</a>
+          </nav>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      import "../scripts/reader.ts";
+    </script>
+  </body>
+</html>

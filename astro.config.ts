@@ -1,6 +1,4 @@
 import { defineConfig } from "astro/config";
-import rehypeSanitize from "rehype-sanitize";
-import { sanitizeSchema } from "./src/lib/sanitize-schema.js";
 
 export default defineConfig({
   output: "static",
@@ -13,8 +11,6 @@ export default defineConfig({
     defaultLocale: "ar",
     locales: ["ar"],
   },
-  markdown: {
-    // Neutralize raw HTML/scripts in any <Content /> rendered from markdown.
-    rehypePlugins: [[rehypeSanitize, sanitizeSchema]],
-  },
+  // Content bodies are rendered through src/lib/sanitize.ts (Prose.astro),
+  // the canonical sanitized path — see src/lib/sanitize-schema.ts.
 });

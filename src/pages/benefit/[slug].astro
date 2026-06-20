@@ -1,0 +1,46 @@
+---
+import { getCollection } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import Prose from "../../components/Prose.astro";
+import { isPub, loadGraph } from "../../lib/site";
+import { hrefFor, sourceHref, ENTITY } from "../../lib/display";
+
+export async function getStaticPaths() {
+  const benefits = (await getCollection("benefit")).filter(isPub);
+  const graph = await loadGraph();
+  return benefits.map((entry) => {
+    const person = graph.getById("person", entry.data.person);
+    let source = null;
+    if (entry.data.source_type && entry.data.source_id) {
+      const s = graph.getById(entry.data.source_type, entry.data.source_id);
+      if (s) source = { type: entry.data.source_type, id: s.id, title: s.data.title };
+    }
+    return {
+      params: { slug: entry.id },
+      props: { entry, personName: person?.data.title, personId: person?.id, source },
+    };
+  });
+}
+
+const { entry, personName, personId, source } = Astro.props;
+---
+<Base title={entry.data.title} activeNav="benefits">
+  <Breadcrumbs width="wrap-read" items={[{ label: "الرئيسية", href: "/" }, { label: "الفوائد", href: "/benefits" }, { label: "فائدة" }]} />
+  <div class="wrap-read reading-pad" style="text-align:center">
+    <div class="ornament" style="font-size:22px;margin-bottom:24px">۞</div>
+    <div class="prose" data-ar style="font-family:var(--font-serif)">
+      <div style="font-size:calc(26px*var(--reading-scale));line-height:2;color:var(--ink);text-wrap:pretty">{entry.data.title}</div>
+    </div>
+    {entry.body?.trim() && <div style="margin-top:18px;text-align:right"><Prose body={entry.body} /></div>}
+
+    <div style="margin-top:30px;display:flex;flex-direction:column;gap:8px;align-items:center">
+      {personId && <a href={hrefFor("person", personId)} style="font-family:var(--font-ui);font-size:14px;color:var(--accent);text-decoration:none">{personName}</a>}
+      {source && (
+        <div class="faint" style="font-size:13px">
+          من <a href={sourceHref(source.type, source.id)} style="color:var(--ink-soft)">{ENTITY[source.type]?.one} {source.title}</a>
+        </div>
+      )}
+    </div>
+  </div>
+</Base>

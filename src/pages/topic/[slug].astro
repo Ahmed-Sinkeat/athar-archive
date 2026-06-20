@@ -1,0 +1,60 @@
+---
+import { getCollection } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import EntityCard from "../../components/EntityCard.astro";
+import Prose from "../../components/Prose.astro";
+import { isPub, loadGraph } from "../../lib/site";
+import { ENTITY, hrefFor, toArabicDigits } from "../../lib/display";
+
+export async function getStaticPaths() {
+  const topics = (await getCollection("topic")).filter(isPub);
+  const graph = await loadGraph();
+  return topics.map((entry) => {
+    const subject = graph.getById("subject", entry.data.subject);
+    const materials = graph
+      .materialsByTopic(entry.id)
+      .filter(isPub)
+      .map((m) => ({ collection: m.collection, id: m.id, title: m.data.title, series: m.data.series }));
+    return {
+      params: { slug: entry.id },
+      props: { entry, subject: subject ? { id: subject.id, title: subject.data.title } : null, materials },
+    };
+  });
+}
+
+const { entry, subject, materials } = Astro.props;
+---
+<Base title={entry.data.title} description={entry.data.description} activeNav="subjects">
+  <Breadcrumbs
+    width="wrap-read"
+    items={[
+      { label: "الرئيسية", href: "/" },
+      { label: "الموضوعات", href: "/subjects" },
+      ...(subject ? [{ label: subject.title, href: hrefFor("subject", subject.id) }] : []),
+      { label: entry.data.title },
+    ]}
+  />
+  <div class="wrap-read" style="padding-block:18px 96px">
+    {subject && <div class="eyebrow" style="letter-spacing:normal;margin-bottom:10px">{subject.title}</div>}
+    <h1 class="page-title">{entry.data.title}</h1>
+    {entry.data.description && <p class="page-intro">{entry.data.description}</p>}
+    {entry.body?.trim() && <div style="margin-bottom:20px"><Prose body={entry.body} /></div>}
+
+    <div class="section-label" style="margin-top:30px">ما تعلَّق بهذا الموضوع · {toArabicDigits(materials.length)}</div>
+    {materials.length > 0 ? (
+      <div class="card-grid">
+        {materials.map((m) => (
+          <EntityCard
+            href={hrefFor(m.collection, m.id, { series: m.series })}
+            title={m.title}
+            kind={ENTITY[m.collection]?.one}
+            cta="اطّلع ←"
+          />
+        ))}
+      </div>
+    ) : (
+      <p class="faint">لا توجد موادُّ مرتبطةٌ بعد.</p>
+    )}
+  </div>
+</Base>

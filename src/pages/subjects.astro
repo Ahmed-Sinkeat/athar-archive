@@ -1,0 +1,37 @@
+---
+import { getCollection } from "astro:content";
+import Base from "../layouts/Base.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import { isPub, loadGraph } from "../lib/site";
+import { hrefFor, toArabicDigits } from "../lib/display";
+
+const subjects = (await getCollection("subject")).filter(isPub);
+const graph = await loadGraph();
+---
+<Base title="الموضوعات" description="شبكةُ المعرفة في الأرشيف: تصنيفاتٌ كبرى تتفرَّع إلى موضوعاتٍ علمية." activeNav="subjects">
+  <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "الموضوعات" }]} />
+  <div class="wrap-mid" style="padding-block:18px 96px">
+    <h1 class="page-title">الموضوعات</h1>
+    <p class="page-intro">شبكةُ المعرفةِ في الأرشيف: تصنيفاتٌ كبرى تتفرَّع إلى موضوعاتٍ علميةٍ، وكلُّ موضوعٍ صفحةٌ تجمعُ ما تعلَّق به من كتبٍ وسلاسلَ ودروسٍ وفوائدَ ومقالات.</p>
+
+    <div style="display:flex;flex-direction:column;gap:26px">
+      {subjects.map((s, i) => {
+        const topics = graph.topicsBySubject(s.id).filter(isPub);
+        return (
+          <>
+            {i > 0 && <div style="height:1px;background:var(--rule)"></div>}
+            <div>
+              <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:14px">
+                <h2 style="font-family:var(--font-display);font-weight:600;font-size:23px;color:var(--ink);margin:0">{s.data.title}</h2>
+                <span class="faint" style="font-size:12.5px">{toArabicDigits(topics.length)} موضوعات</span>
+              </div>
+              <div class="chip-row">
+                {topics.map((t) => <a class="chip" href={hrefFor("topic", t.id)}>{t.data.title}</a>)}
+              </div>
+            </div>
+          </>
+        );
+      })}
+    </div>
+  </div>
+</Base>

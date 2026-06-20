@@ -1,0 +1,18 @@
+---
+import Base from "../layouts/Base.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+// Stub — wired to Pagefind in P4.
+---
+<Base title="البحث" activeNav="home">
+  <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "البحث" }]} />
+  <div class="wrap-mid" style="padding-block:18px 96px">
+    <h1 class="page-title">البحث</h1>
+    <p class="page-intro">سيُفعَّل البحث في المرحلة القادمة (Pagefind) عبر فهرسٍ ثابتٍ يُبنى مع الموقع.</p>
+    <form action="/search" method="get" style="max-width:560px">
+      <div style="display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--rule-strong);border-radius:34px;padding:5px 22px 5px 6px">
+        <input name="q" type="text" placeholder="ابحث…" style="flex:1;border:none;outline:none;background:transparent;font-family:var(--font-ui);font-size:16px;color:var(--ink);padding:13px 0" />
+        <button class="btn-accent" type="submit" style="border:none;border-radius:26px;padding:11px 22px;font-family:var(--font-ui);font-size:14px;cursor:pointer">بحث</button>
+      </div>
+    </form>
+  </div>
+</Base>
