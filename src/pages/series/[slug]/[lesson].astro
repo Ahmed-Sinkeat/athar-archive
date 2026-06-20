@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import Base from "../../../layouts/Base.astro";
 import Breadcrumbs from "../../../components/Breadcrumbs.astro";
 import Prose from "../../../components/Prose.astro";
+import AudioPlayer from "../../../components/AudioPlayer.astro";
 import { isPub, loadGraph, personNameMap } from "../../../lib/site";
 import { parseLesson } from "../../../lib/chapters";
 import { hrefFor, lessonParam, toArabicDigits } from "../../../lib/display";
@@ -26,7 +27,7 @@ export async function getStaticPaths() {
         params: { slug: s.id, lesson: lessonParam(lesson.id, s.id) },
         props: {
           series: s, lesson, headings, benefits,
-          audio: audioEntry ? { url: audioEntry.data.url, duration: audioEntry.data.duration ?? null } : null,
+          audio: audioEntry ? { url: audioEntry.data.url, format: audioEntry.data.format, duration: audioEntry.data.duration ?? null, sizeBytes: audioEntry.data.size_bytes ?? null } : null,
           prev: lite(prev), next: lite(next),
           idx: i + 1, total: lessons.length, author: names.get(s.data.person),
         },
@@ -64,14 +65,7 @@ const jsonLd = lessonLd({
       {author}{lesson.data.duration ? ` · مدة الدرس ${lesson.data.duration}` : ""}
     </div>
 
-    {audio && (
-      <div class="audio-bar">
-        <a class="audio-play" href={audio.url} aria-label="تشغيل الصوت"></a>
-        <span style="flex:1;font-family:var(--font-ui);font-size:13px;color:var(--ink-soft)">الاستماع إلى الدرس</span>
-        {audio.duration && <span class="audio-time">{audio.duration}</span>}
-        <a class="btn" href={audio.url} style="padding:6px 12px;font-size:12px">تحميل</a>
-      </div>
-    )}
+    {audio && <AudioPlayer url={audio.url} format={audio.format} duration={audio.duration} sizeBytes={audio.sizeBytes} label="الاستماع إلى الدرس" />}
 
     <div class="lesson-grid">
       <div class="transcript">
