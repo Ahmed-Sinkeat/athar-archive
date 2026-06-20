@@ -5,8 +5,10 @@ interface Props {
   title: string;
   description?: string;
   activeNav?: string;
+  searchMeta?: { title: string; type: string };
+  noindex?: boolean;
 }
-const { title, description, activeNav } = Astro.props;
+const { title, description, activeNav, searchMeta, noindex } = Astro.props;
 
 const nav = [
   { id: "home", label: "الرئيسية", href: "/" },
@@ -27,6 +29,7 @@ const fullTitle = title === "أهل الأثر" ? title : `${title} · أهل ا
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{fullTitle}</title>
     {description && <meta name="description" content={description} />}
+    {noindex && <meta name="robots" content="noindex" />}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -47,7 +50,7 @@ const fullTitle = title === "أهل الأثر" ? title : `${title} · أهل ا
     </script>
   </head>
   <body>
-    <header class="topbar">
+    <header class="topbar" data-pagefind-ignore>
       <div class="wrap topbar-brandrow">
         <div style="display:flex;justify-content:flex-start">
           <button class="icon-btn hamburger" data-action="menu:toggle" aria-label="القائمة" style="width:40px;height:40px">
@@ -91,8 +94,8 @@ const fullTitle = title === "أهل الأثر" ? title : `${title} · أهل ا
     </header>
 
     <!-- mobile drawer -->
-    <div class="drawer-backdrop" data-drawer-backdrop></div>
-    <aside class="drawer" data-drawer aria-label="القائمة">
+    <div class="drawer-backdrop" data-drawer-backdrop data-pagefind-ignore></div>
+    <aside class="drawer" data-drawer aria-label="القائمة" data-pagefind-ignore>
       <div class="drawer-head">
         <span class="brand-name" style="font-size:19px">أهل الأثر</span>
         <button class="icon-btn" data-action="menu:close" aria-label="إغلاق" style="width:34px;height:34px;font-size:18px">×</button>
@@ -117,11 +120,16 @@ const fullTitle = title === "أهل الأثر" ? title : `${title} · أهل ا
       </div>
     </aside>
 
-    <main>
+    <main
+      data-pagefind-body={searchMeta ? "" : undefined}
+      data-pagefind-ignore={searchMeta ? undefined : ""}
+      data-pagefind-meta={searchMeta ? `title:${searchMeta.title}` : undefined}
+      data-pagefind-filter={searchMeta ? `type:${searchMeta.type}` : undefined}
+    >
       <slot />
     </main>
 
-    <footer class="site-footer">
+    <footer class="site-footer" data-pagefind-ignore>
       <div class="wrap-mid">
         <div class="footer-grid">
           <div>

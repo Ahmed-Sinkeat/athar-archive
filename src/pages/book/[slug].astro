@@ -24,7 +24,7 @@ export async function getStaticPaths() {
 const { entry, annos, author } = Astro.props;
 const a = analyzeBook(entry.body ?? "");
 ---
-<Base title={entry.data.title} description={entry.data.description} activeNav="books">
+<Base title={entry.data.title} description={entry.data.description} activeNav="books" searchMeta={{ title: entry.data.title, type: "book" }}>
   <Breadcrumbs
     width="wrap-matn"
     items={[

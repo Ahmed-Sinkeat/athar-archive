@@ -1,18 +1,104 @@
 ---
 import Base from "../layouts/Base.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
-// Stub — wired to Pagefind in P4.
+// Static client-side search via Pagefind (index built post-`astro build`).
+// Results are noindex (FR-S-04/06); no server, no keys (SEC-01).
 ---
-<Base title="البحث" activeNav="home">
+<Base title="البحث" activeNav="home" noindex>
   <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "البحث" }]} />
   <div class="wrap-mid" style="padding-block:18px 96px">
     <h1 class="page-title">البحث</h1>
-    <p class="page-intro">سيُفعَّل البحث في المرحلة القادمة (Pagefind) عبر فهرسٍ ثابتٍ يُبنى مع الموقع.</p>
-    <form action="/search" method="get" style="max-width:560px">
-      <div style="display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--rule-strong);border-radius:34px;padding:5px 22px 5px 6px">
-        <input name="q" type="text" placeholder="ابحث…" style="flex:1;border:none;outline:none;background:transparent;font-family:var(--font-ui);font-size:16px;color:var(--ink);padding:13px 0" />
-        <button class="btn-accent" type="submit" style="border:none;border-radius:26px;padding:11px 22px;font-family:var(--font-ui);font-size:14px;cursor:pointer">بحث</button>
+    <p class="page-intro">ابحثْ في المتون والمنظومات والدروس والفوائد والمقالات. يعملُ البحثُ بلا خادمٍ، وبفهرسٍ ثابتٍ يُبنى مع الموقع.</p>
+
+    <div style="max-width:620px">
+      <div style="display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--rule-strong);border-radius:34px;padding:5px 22px 5px 6px;box-shadow:0 10px 34px rgba(31,27,22,.08)">
+        <input id="q" type="search" autocomplete="off" placeholder="ابحث…" style="flex:1;min-width:0;border:none;outline:none;background:transparent;font-family:var(--font-ui);font-size:16.5px;color:var(--ink);padding:14px 0" />
       </div>
-    </form>
+    </div>
+
+    <div id="filters" class="chip-row" style="margin-top:18px"></div>
+    <div id="status" class="faint" style="margin-top:22px;font-size:14px"></div>
+    <div id="results" style="margin-top:18px;display:flex;flex-direction:column;gap:4px"></div>
+
+    <noscript>
+      <p class="faint" style="margin-top:22px">يحتاجُ البحثُ إلى تفعيل JavaScript. يمكنك التصفّحُ عبر <a href="/books" style="color:var(--accent)">المكتبة</a> و<a href="/subjects" style="color:var(--accent)">الموضوعات</a>.</p>
+    </noscript>
   </div>
+
+  <script is:inline>
+    (async () => {
+      const LABEL = { poem: "منظومة", book: "متن", series: "سلسلة", lesson: "درس", person: "عَلَم", subject: "تصنيف", topic: "موضوع", benefit: "فائدة", article: "مقالة", question: "مسائل" };
+      const input = document.getElementById("q");
+      const results = document.getElementById("results");
+      const status = document.getElementById("status");
+      const filtersEl = document.getElementById("filters");
+      const params = new URLSearchParams(location.search);
+      let activeType = null;
+
+      let pagefind;
+      try {
+        pagefind = await import("/pagefind/pagefind.js");
+        if (pagefind.init) await pagefind.init();
+      } catch (e) {
+        status.textContent = "سيُفعَّل البحثُ بعد بناء الموقع (الفهرس يُولَّد مع البناء).";
+        return;
+      }
+
+      function chip(label, type) {
+        const b = document.createElement("button");
+        b.className = "chip";
+        b.textContent = label;
+        b.setAttribute("aria-pressed", String(activeType === type));
+        b.onclick = () => { activeType = type; run(input.value); };
+        return b;
+      }
+
+      function esc(s) { const d = document.createElement("div"); d.textContent = s; return d.innerHTML; }
+
+      async function run(query) {
+        const q = (query || "").trim();
+        const url = new URL(location.href);
+        if (q) url.searchParams.set("q", q); else url.searchParams.delete("q");
+        history.replaceState(null, "", url);
+        results.innerHTML = "";
+        if (!q) { status.textContent = ""; filtersEl.innerHTML = ""; return; }
+
+        const opts = activeType ? { filters: { type: activeType } } : undefined;
+        const search = await pagefind.search(q, opts);
+        const data = await Promise.all(search.results.slice(0, 30).map((r) => r.data()));
+
+        status.textContent = data.length ? `${toAr(data.length)} نتيجة لـ «${q}»` : `لا نتائج لـ «${q}».`;
+
+        // type facet chips from this query's results
+        const types = [...new Set(data.flatMap((d) => (d.filters?.type) || []))];
+        filtersEl.innerHTML = "";
+        if (types.length > 1 || activeType) {
+          filtersEl.appendChild(chip("الكل", null));
+          types.forEach((t) => filtersEl.appendChild(chip(LABEL[t] || t, t)));
+        }
+
+        for (const d of data) {
+          const type = (d.filters?.type || [])[0];
+          const a = document.createElement("a");
+          a.href = d.url;
+          a.className = "latest-row";
+          a.style.alignItems = "flex-start";
+          a.innerHTML =
+            `<span class="pill tag-accent" style="flex:0 0 auto">${LABEL[type] || ""}</span>` +
+            `<span style="flex:1"><span class="latest-name" style="display:block">${esc(d.meta?.title || "")}</span>` +
+            `<span class="faint" data-ar style="font-size:13.5px;line-height:1.8;font-family:var(--font-serif)">${d.excerpt}</span></span>`;
+          results.appendChild(a);
+        }
+      }
+
+      function toAr(n) { return String(n).replace(/[0-9]/g, (d) => "٠١٢٣٤٥٦٧٨٩"[+d]); }
+
+      let t;
+      input.addEventListener("input", () => { clearTimeout(t); t = setTimeout(() => run(input.value), 180); });
+
+      const initial = params.get("q");
+      if (initial) { input.value = initial; run(initial); }
+      input.focus();
+    })();
+  </script>
 </Base>
