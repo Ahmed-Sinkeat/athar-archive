@@ -9,6 +9,7 @@
     "validate": "astro check",
     "validate:content": "tsx scripts/validate-content.ts",
     "search:index": "pagefind --site dist",
+    "a11y": "node scripts/a11y-audit.mjs",
     "test": "vitest run"
   },
   "keywords": [],
@@ -35,6 +36,7 @@
   },
   "devDependencies": {
     "@types/node": "^26.0.0",
+    "axe-core": "^4.12.1",
     "gray-matter": "^4.0.3",
     "pagefind": "^1.5.2",
     "playwright-core": "^1.61.0",

@@ -14,8 +14,7 @@ build, **ranked**. Living doc — updated each phase alongside `asbuild.md`.
 | # | Sev | Issue | Area | Status | Why it matters / recommended action | Phase |
 |---|----|-------|------|--------|-------------------------------------|-------|
 | 1 | 🔴 | **Arabic search recall on hamza/proclitics** — `أسماء`↛`بأسماء`, hamza-form misses (P4 spike). 🔬 | search | studying | Search is core UX. Pagefind does prefix-match + partial normalization, no Arabic morphology. **Study with the real corpus**; if recall is poor, escalate to Meilisearch/Typesense (already the documented trigger). Cheap interim: index a light proclitic/hamza-normalized field. | P8/P9 |
-| 2 | 🔴 | **No CI / no git remote.** Only local `pnpm build` + `pnpm test` enforce green. | infra | open | As soon as others contribute, nothing blocks a broken merge. Add a remote + CI (install → validate:content → astro build → vitest → pagefind → dep audit). Mirrors P0 intent that was never finished. | P8 |
-| 3 | 🟠 | **Accessibility not audited.** Only baseline (RTL, `lang`, focus-visible, aria-*). 🔬 | a11y | open | `NFR-02` requires real a11y. **Run axe + keyboard + contrast** over every template; the annotation `:target` reveal and the audio bar especially need keyboard/SR checks. | P8 |
+| 3 | 🟠 | **Accessibility — automated WCAG pass done; manual SR/keyboard pass pending.** | a11y | mitigated | `pnpm a11y` (axe-core, headless) runs WCAG 2.0/2.1 A+AA over 22 pages × 3 themes — **all clean**. Fixed: darkened `--ink-faint` + split `--accent`/`--accent-solid` so accent text and white-on-accent buttons both meet AA in every theme. Remaining: a **manual** keyboard/screen-reader walkthrough (axe can't cover focus order / NVDA) — do at P8. | P8 |
 | 4 | 🟠 | **CSP keeps `'unsafe-inline'`** for script + style. 🔬 | security | mitigated | The ported design uses inline styles/scripts everywhere, so a strict CSP is impossible without extracting them. **Study** moving inline → classes/external + hashes/nonces. Tracks with #5. | post-launch |
 | 5 | 🟠 | **Heavy inline styles in templates** (carried from the mockup export). | maint | open | Hurts readability, diffs, and blocks #4. Migrate page-level inline `style=` into `global.css` classes incrementally. | tech-debt |
 | 6 | 🟠 | **No render tests for pages/components.** Only `src/lib/*` is unit-tested. | testing | open | Template regressions are caught only by "build succeeds," not by correctness (e.g. a wrong route, missing annotation). Add a small Astro container / DOM snapshot test for key templates. | P8 |
@@ -32,6 +31,7 @@ build, **ranked**. Living doc — updated each phase alongside `asbuild.md`.
 
 | Sev | Issue | Resolution |
 |----|-------|-----------|
+| 🔴 | **No CI / no git remote** (was #2) | Pushed to `github.com/Ahmed-Sinkeat/athar-archive`; GitHub Actions CI (install → test → validate:content → build → tsc) **green** on every push to main. |
 | 🔴 | Pagefind Arabic **diacritics** viability (the #1 P0 risk) | P4 spike: Pagefind normalizes diacritics both directions → **GO**, no stripped field (D10). |
 | 🟠 | Domain extension `.net` vs `.com` undecided | Ratified **`.com`** in P5 (D11). |
 | 🟡 | `verse_count`/`opening_verse` hand-stored vs derived | Made derived-only in P2 (D3, FR-C-06). |
