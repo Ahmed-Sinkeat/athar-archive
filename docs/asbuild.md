@@ -8,7 +8,7 @@ Definition-of-Done (DoD) status, decisions, and any deviations from the plan.
 
 **Project:** أهل الأثر — Arabic Islamic knowledge archive
 **Stack:** Astro (static) · Markdown + Zod Content Collections · Pagefind (search, P4) · Cloudflare Pages/R2 (P6/P8)
-**Last updated:** P2 complete · build green · 66/66 tests passing
+**Last updated:** P3 complete · 29 pages build green · 66/66 tests passing
 
 ---
 
@@ -19,8 +19,8 @@ Definition-of-Done (DoD) status, decisions, and any deviations from the plan.
 | **P0** | Foundations & de-risking | ✅ Done (spike deferred¹) | `0c93dc1` |
 | **P1** | Content model in code | ✅ Done | `cc3d818` |
 | **P2** | Build pipeline & derivations | ✅ Done | `1ef6b93` |
-| P3 | Design system & page templates (RTL) | ⬜ Next | — |
-| P4 | Search (Pagefind, Arabic) | ⬜ Pending | — |
+| **P3** | Design system & page templates (RTL) | ✅ Done | `3fba81b` |
+| P4 | Search (Pagefind, Arabic) | ⬜ Next | — |
 | P5 | SEO, structured data, feeds, permanence | ⬜ Pending | — |
 | P6 | Media pipeline (R2) | ⬜ Pending | — |
 | P7 | Authoring experience & governance | ⬜ Pending | — |
@@ -100,6 +100,38 @@ Definition-of-Done (DoD) status, decisions, and any deviations from the plan.
 
 ---
 
+## P3 — Design system & page templates (RTL) ✅
+
+**Source of truth:** the final mockup at `athur/Book and Poetry Design/` (the user's last iteration) — *not* BUILD-PLAN §0.6. Ported its exact tokens, fonts, header, reading controls, verse/annotation styling, and screen layouts.
+
+**Key translation:** the mockup is a single-page app with JS-toggled `data-screen` sections; the production site is a **static multi-page** Astro build where content renders fully without JS (FR-P-05). Reading prefs / theme / annotations became progressive enhancement.
+
+**Built**
+- `src/styles/global.css` — design system: exact tokens, three themes (فاتح/ورقي/داكن via `[data-theme]`), `--reading-scale`, and component classes (header, drawer, cards, verses, notes, prose, lesson reader, home).
+- `src/layouts/Base.astro` — RTL shell: 3-row header (brand / nav / reading settings), mobile drawer, scroll-progress bar, footer; **pre-paint inline script** applies saved theme/scale/prefs before first paint (no flash).
+- `src/scripts/reader.ts` — enhancement: font size, tashkeel toggle (caches full/bare HTML per `[data-ar]`), verse-numbering toggle, theme switch/cycle, drawer, progress; persisted to `localStorage`. Bundled by Astro (inlined as a module script).
+- Components: `Breadcrumbs`, `EntityCard`, `Prose` (sanitized body), `Verse` (verse + **JS-free `:target` annotation reveal**, stacked شرح/حاشية/تخريج/إعراب notes).
+- All routes: home; indexes (books/poems/series/subjects/topics/people/articles/benefits/questions); readers (poem, book/matn, series, lesson, person, subject, topic, benefit, article, questions); about/contact/404; search stub.
+- `src/lib/display.ts` (Arabic-Indic numerals, `hrefFor` route map, entity labels, `stripTashkeel`) and `src/lib/site.ts` (`loadGraph`, name maps).
+
+**Model / pipeline enhancements**
+- Annotation gains a `kind` enum (شرح/حاشية/تخريج/إعراب) driving the note label/accent.
+- `sanitize.ts` adds an Arabic heading-id rehype step so lesson-TOC anchors match rendered heading ids (verified: `#المقدمة` ↔ `<h2 id="المقدمة">`).
+
+**DoD**
+- ✅ All routes render from fixtures (29 pages built).
+- ✅ JS-disabled pass: verses, prose, breadcrumbs, internal links all server-rendered; annotations reachable via `:target`; defaults (light theme, scale 1, tashkeel + verse-numbers shown) are fully readable.
+- ✅ Breadcrumbs + internal links present everywhere.
+- ⏳ a11y: baseline in place (RTL, `lang=ar`, focus-visible, aria-current/pressed/labels). Full axe/keyboard/contrast audit is P8.
+
+**Deviations from plan**
+- **D6 — Tokens from the final mockup, not BUILD-PLAN §0.6.** The user directed us to `Book and Poetry Design` as the real design; its palette (`--paper:#FAF7F0`, `--accent:#9A2F24`, …) and the ورقي/داكن themes supersede §0.6's values.
+- **D7 — SPA mockup → static MPA.** Screens became routes; the mockup's client router/`data-screen` toggling is replaced by real pages.
+- **D8 — Annotations revealed JS-free via `:target`** (anchor link → note block), enhanced by `reader.ts`, instead of the mockup's right-click/long-press (which would gate šarḥ behind JS).
+- **D9 — `/books` is the combined "المكتبة"** (books + poems, filter chips), matching the mockup's library + the nav; `/poems` remains a poems-only index (footer).
+
+---
+
 ## Decisions log
 
 | # | Decision | Rationale |
@@ -108,8 +140,11 @@ Definition-of-Done (DoD) status, decisions, and any deviations from the plan.
 | D2 | Slug pattern allows `--` child separators | The id scheme (`series--lesson-n`) needs it |
 | D3 | `verse_count`/`opening_verse` derived only | FR-C-06 — never hand-stored |
 | D4 | Failure cases in unit tests, not committed broken fixtures | Keep `main` buildable while proving build-fail rules |
-| D5 | Sanitize via standalone unified pipeline + shared Astro schema | Controllable, testable rendering path |
-| — | Astro config in TS; `tsconfig` no `baseUrl` | Share sanitize schema; TS 6 deprecation |
+| D5 | Sanitize via standalone unified pipeline (Prose.astro) | Controllable, testable rendering path; dropped deprecated Astro markdown.rehypePlugins |
+| D6 | Design tokens from final mockup, not BUILD-PLAN §0.6 | User designated `Book and Poetry Design` as the real design |
+| D7 | SPA mockup ported to static multi-page routes | Content must render without JS (FR-P-05) |
+| D8 | Annotations revealed JS-free via `:target` | Keep šarḥ reachable without JS; enhance with reader.ts |
+| D9 | `/books` = combined library (books+poems); `/poems` also kept | Matches mockup library + nav "المكتبة" |
 
 ## Open items
 
@@ -121,14 +156,13 @@ Definition-of-Done (DoD) status, decisions, and any deviations from the plan.
 
 ```
 pnpm test            → 66/66 passing (5 files: validate, graph, chapters, chunk, sanitize)
-pnpm validate:content → ✓ 19 entries
-pnpm build           → ✓ green (validate:content + astro build)
+pnpm validate:content → ✓ 20 entries
+pnpm build           → ✓ green — 29 pages
 tsc --noEmit         → ✓ clean
 ```
 
-## Next: P3 — Design system & page templates (RTL)
+## Next: P4 — Search (Pagefind, Arabic)
 
-`Base.astro` RTL layout (manuscript tokens: Amiri / Reem Kufi / IBM Plex Sans Arabic;
-paper/ink/rubric palette) · component library (Header, Breadcrumbs, Footer, AudioPlayer,
-CopyShare, ReportError, ReadingPrefs, AnnouncementBanner) · every detail + index template
-rendering from fixtures · homepage · **JS-free content render** verified.
+Run the deferred **P0 Pagefind Arabic spike** first (gates this phase), then integrate Pagefind
+into the build, index a diacritic-stripped match field alongside display text, build out the
+`/search` page (currently a stub), and wire the homepage search box. No search server / keys.
