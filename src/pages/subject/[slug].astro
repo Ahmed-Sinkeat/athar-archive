@@ -21,7 +21,7 @@ export async function getStaticPaths() {
 
 const { entry, topics, materials } = Astro.props;
 ---
-<Base title={entry.data.title} description={entry.data.description} activeNav="subjects">
+<Base title={entry.data.title} description={entry.data.description} activeNav="subjects" searchMeta={{ title: entry.data.title, type: "subject" }}>
   <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "الموضوعات", href: "/subjects" }, { label: entry.data.title }]} />
   <div class="wrap-mid" style="padding-block:18px 96px">
     <h1 class="page-title">{entry.data.title}</h1>
