@@ -1,0 +1,16 @@
+// Shared rehype-sanitize schema. Imported by both the standalone pipeline
+// (sanitize.ts) and Astro's markdown config (astro.config.ts) so authored
+// and snippet-rendered content are neutralized identically.
+
+import { defaultSchema, type Options as SanitizeSchema } from "rehype-sanitize";
+
+const globalAttrs = [...(defaultSchema.attributes?.["*"] ?? []), "id", "className", "dir", "lang"];
+
+export const sanitizeSchema: SanitizeSchema = {
+  ...defaultSchema,
+  attributes: {
+    ...defaultSchema.attributes,
+    "*": globalAttrs,
+  },
+  // script/style are absent from tagNames → stripped. Keep defaults otherwise.
+};
