@@ -6,6 +6,7 @@ import EntityCard from "../../components/EntityCard.astro";
 import Prose from "../../components/Prose.astro";
 import { isPub, loadGraph } from "../../lib/site";
 import { ENTITY, hrefFor } from "../../lib/display";
+import { personLd } from "../../lib/structured-data";
 
 export async function getStaticPaths() {
   const people = (await getCollection("person")).filter(isPub);
@@ -23,8 +24,13 @@ const { entry, works } = Astro.props;
 const meta = [entry.data.born && `و. ${entry.data.born}`, entry.data.died && `ت. ${entry.data.died}`, entry.data.location]
   .filter(Boolean)
   .join(" · ");
+const path = `/person/${entry.id}`;
+const jsonLd = personLd({
+  id: entry.id, name: entry.data.title, bio: entry.data.bio, born: entry.data.born, died: entry.data.died, path,
+  crumbs: [{ name: "الرئيسية", path: "/" }, { name: "الأعلام", path: "/people" }, { name: entry.data.title, path }],
+});
 ---
-<Base title={entry.data.title} description={entry.data.bio} activeNav="people" searchMeta={{ title: entry.data.title, type: "person" }}>
+<Base title={entry.data.title} description={entry.data.bio} activeNav="people" ogType="profile" jsonLd={jsonLd} searchMeta={{ title: entry.data.title, type: "person" }}>
   <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "الأعلام", href: "/people" }, { label: entry.data.title }]} />
   <div class="wrap-mid" style="padding-block:18px 96px">
     <h1 class="page-title">{entry.data.title}</h1>

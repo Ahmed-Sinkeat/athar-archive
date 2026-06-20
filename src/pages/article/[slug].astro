@@ -4,6 +4,7 @@ import Base from "../../layouts/Base.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import Prose from "../../components/Prose.astro";
 import { isPub, loadGraph } from "../../lib/site";
+import { articleLd } from "../../lib/structured-data";
 
 export async function getStaticPaths() {
   const articles = (await getCollection("article")).filter(isPub);
@@ -19,8 +20,15 @@ export async function getStaticPaths() {
 }
 
 const { entry, author, audio } = Astro.props;
+const path = `/article/${entry.id}`;
+const jsonLd = articleLd({
+  title: entry.data.title, authorId: entry.data.person, authorName: author,
+  description: entry.data.description, audioUrl: audio?.url,
+  datePublished: new Date(entry.data.published_at).toISOString(), path,
+  crumbs: [{ name: "الرئيسية", path: "/" }, { name: "المقالات", path: "/articles" }, { name: entry.data.title, path }],
+});
 ---
-<Base title={entry.data.title} description={entry.data.description} activeNav="articles" searchMeta={{ title: entry.data.title, type: "article" }}>
+<Base title={entry.data.title} description={entry.data.description} activeNav="articles" ogType="article" jsonLd={jsonLd} searchMeta={{ title: entry.data.title, type: "article" }}>
   <Breadcrumbs width="wrap-read" items={[{ label: "الرئيسية", href: "/" }, { label: "المقالات", href: "/articles" }, { label: entry.data.title }]} />
   <div class="wrap-read reading-pad">
     <div class="reader-head">

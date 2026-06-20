@@ -308,7 +308,7 @@ describe("valid corpus", () => {
       entry("benefit", "tawhid-benefit", { title: "فائدة التوحيد", person: "ibn-taymiyyah", source_type: "book", source_id: "al-wasitiyyah", topics: ["al-asma-was-sifat"] }),
       entry("benefit", "general-benefit", { title: "فائدة عامة", person: "ibn-taymiyyah" }),
       entry("article", "maqala-tawhid", { title: "مقالة في التوحيد", person: "ibn-taymiyyah", topics: ["al-asma-was-sifat"] }),
-      entry("audio", "audio-sharh-wasitiyyah-lesson-1", { title: "صوت الدرس", source_type: "lesson", source_id: "sharh-al-wasitiyyah--lesson-1", url: "https://r2.ahlalathar.net/audio/lesson1.opus" }),
+      entry("audio", "audio-sharh-wasitiyyah-lesson-1", { title: "صوت الدرس", source_type: "lesson", source_id: "sharh-al-wasitiyyah--lesson-1", url: "https://r2.ahlalathar.com/audio/lesson1.opus" }),
       entry("question", "masail-al-asma-was-sifat", { title: "مسائل الأسماء والصفات", person: "ibn-taymiyyah", topics: ["al-asma-was-sifat"] }),
       entry("annotation", "alfiyyah-ibn-malik--v1--sharh", { title: "شرح البيت الأول", target_type: "poem", target_id: "alfiyyah-ibn-malik", anchor: "v1" }),
       entry("announcement", "launch", { title: "انطلاق الموقع", priority: 9 }),

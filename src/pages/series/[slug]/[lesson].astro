@@ -6,6 +6,7 @@ import Prose from "../../../components/Prose.astro";
 import { isPub, loadGraph, personNameMap } from "../../../lib/site";
 import { parseLesson } from "../../../lib/chapters";
 import { hrefFor, lessonParam, toArabicDigits } from "../../../lib/display";
+import { lessonLd } from "../../../lib/structured-data";
 
 export async function getStaticPaths() {
   const seriesList = (await getCollection("series")).filter(isPub);
@@ -36,8 +37,18 @@ export async function getStaticPaths() {
 }
 
 const { series, lesson, headings, benefits, audio, prev, next, idx, total, author } = Astro.props;
+const seriesPath = hrefFor("series", series.id);
+const path = `/series/${series.id}/${lessonParam(lesson.id, series.id)}`;
+const jsonLd = lessonLd({
+  title: lesson.data.title, seriesTitle: series.data.title, seriesPath, authorName: author,
+  audioUrl: audio?.url, path,
+  crumbs: [
+    { name: "الرئيسية", path: "/" }, { name: "الدروس", path: "/series" },
+    { name: series.data.title, path: seriesPath }, { name: `الدرس ${idx}`, path },
+  ],
+});
 ---
-<Base title={lesson.data.title} description={`${series.data.title} — الدرس ${idx}`} activeNav="series" searchMeta={{ title: lesson.data.title, type: "lesson" }}>
+<Base title={lesson.data.title} description={`${series.data.title} — الدرس ${idx}`} activeNav="series" ogType="article" jsonLd={jsonLd} searchMeta={{ title: lesson.data.title, type: "lesson" }}>
   <Breadcrumbs
     items={[
       { label: "الرئيسية", href: "/" },
