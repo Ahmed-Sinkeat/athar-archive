@@ -1,0 +1,26 @@
+---
+import { getCollection } from "astro:content";
+import Base from "../layouts/Base.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import { isPub } from "../lib/site";
+import { hrefFor } from "../lib/display";
+
+const [topics, subjects] = await Promise.all([getCollection("topic"), getCollection("subject")]);
+const subjName = new Map(subjects.map((s) => [s.id, s.data.title]));
+const pubTopics = topics.filter(isPub).sort((a, b) => a.data.title.localeCompare(b.data.title, "ar"));
+---
+<Base title="الموضوعات" description="فهرسٌ بكل الموضوعات العلمية في الأرشيف." activeNav="subjects">
+  <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "الموضوعات", href: "/subjects" }, { label: "كل الموضوعات" }]} />
+  <div class="wrap-mid" style="padding-block:18px 96px">
+    <h1 class="page-title">كل الموضوعات</h1>
+    <p class="page-intro">فهرسٌ مسطَّحٌ بكلِّ الموضوعاتِ العلميةِ، كلٌّ منها يجمعُ ما تعلَّق به من مواد.</p>
+    <div class="chip-row">
+      {pubTopics.map((t) => (
+        <a class="chip" href={hrefFor("topic", t.id)}>
+          {t.data.title}
+          <span class="faint" style="font-size:11px;margin-inline-start:6px">{subjName.get(t.data.subject)}</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</Base>

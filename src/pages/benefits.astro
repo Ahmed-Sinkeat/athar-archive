@@ -1,0 +1,24 @@
+---
+import Base from "../layouts/Base.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import { personNameMap, publishedSorted } from "../lib/site";
+import { hrefFor } from "../lib/display";
+
+const benefits = await publishedSorted("benefit");
+const names = await personNameMap();
+---
+<Base title="الفوائد" description="فوائدُ علميةٌ مستخرجةٌ من المتون والدروس والمقالات." activeNav="benefits">
+  <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "الفوائد" }]} />
+  <div class="wrap-mid" style="padding-block:18px 96px">
+    <h1 class="page-title">الفوائد</h1>
+    <p class="page-intro">فوائدُ مفردةٌ مستخرجةٌ من المتون والدروس والمقالات، مُسنَدةً إلى مصادرها.</p>
+    <div class="card-grid" style="grid-template-columns:repeat(auto-fill,minmax(280px,1fr))">
+      {benefits.map((e) => (
+        <a class="card" href={hrefFor("benefit", e.id)}>
+          <div class="benefit-quote" style="border:none;background:transparent;padding:0" data-ar>«{e.data.title}»</div>
+          <div class="faint" style="font-size:12.5px;margin-top:14px">{names.get(e.data.person)}</div>
+        </a>
+      ))}
+    </div>
+  </div>
+</Base>

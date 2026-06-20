@@ -1,0 +1,11 @@
+---
+import { markdownToSafeHtml } from "../lib/sanitize";
+
+interface Props {
+  body: string;
+  class?: string;
+}
+const { body, class: cls } = Astro.props;
+const html = markdownToSafeHtml(body);
+---
+<div class:list={["prose", cls]} data-ar set:html={html}></div>

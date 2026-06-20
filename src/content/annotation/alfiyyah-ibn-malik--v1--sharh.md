@@ -3,6 +3,7 @@ title: شرح البيت الأول من الألفية
 target_type: poem
 target_id: alfiyyah-ibn-malik
 anchor: v1
+kind: شرح
 status: published
 published_at: 2024-01-01
 ---

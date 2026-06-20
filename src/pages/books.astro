@@ -1,0 +1,57 @@
+---
+import { getCollection } from "astro:content";
+import Base from "../layouts/Base.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import EntityCard from "../components/EntityCard.astro";
+import { personNameMap, isPub } from "../lib/site";
+import { hrefFor, toArabicDigits } from "../lib/display";
+import { analyzePoem } from "../lib/chunk";
+
+const [books, poems] = await Promise.all([getCollection("book"), getCollection("poem")]);
+const names = await personNameMap();
+
+const items = [
+  ...books.filter(isPub).map((e) => ({
+    kind: "متن", filterKey: "matn", href: hrefFor("book", e.id), title: e.data.title,
+    sub: `${names.get(e.data.person) ?? ""}`,
+  })),
+  ...poems.filter(isPub).map((e) => ({
+    kind: "منظومة", filterKey: "manzuma", href: hrefFor("poem", e.id), title: e.data.title,
+    sub: `${names.get(e.data.person) ?? ""} · ${toArabicDigits(analyzePoem(e.body ?? "").verseCount)} بيت`,
+  })),
+].sort((a, b) => a.title.localeCompare(b.title, "ar"));
+---
+<Base title="المكتبة" description="متونٌ ومنظوماتٌ محقَّقةٌ مُشكَّلةٌ، مرتَّبةٌ حسب الفنِّ والعصر." activeNav="books">
+  <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "المكتبة" }]} />
+  <div class="wrap-mid" style="padding-block:18px 96px">
+    <h1 class="page-title">المكتبة</h1>
+    <p class="page-intro">متونٌ ومنظوماتٌ مُحقَّقةٌ مُشكَّلةٌ. اختر عملاً للدخول في وضع القراءة.</p>
+
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px" data-filterbar>
+      <button class="chip" data-filter="all" aria-pressed="true">الكل</button>
+      <button class="chip" data-filter="matn" aria-pressed="false">المتون</button>
+      <button class="chip" data-filter="manzuma" aria-pressed="false">المنظومات</button>
+    </div>
+
+    <div class="card-grid">
+      {items.map((it) => (
+        <EntityCard href={it.href} title={it.title} kind={it.kind} sub={it.sub} filterKey={it.filterKey} cta="ادخل القراءة ←" />
+      ))}
+    </div>
+  </div>
+
+  <script is:inline>
+    (() => {
+      const bar = document.querySelector("[data-filterbar]");
+      if (!bar) return;
+      const cards = [...document.querySelectorAll(".card[data-kind]")];
+      bar.addEventListener("click", (e) => {
+        const btn = e.target.closest("[data-filter]");
+        if (!btn) return;
+        const f = btn.dataset.filter;
+        bar.querySelectorAll("[data-filter]").forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
+        cards.forEach((c) => { c.style.display = f === "all" || c.dataset.kind === f ? "" : "none"; });
+      });
+    })();
+  </script>
+</Base>

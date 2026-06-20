@@ -1,0 +1,70 @@
+---
+import { getCollection } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import Prose from "../../components/Prose.astro";
+import { markdownToSafeHtml } from "../../lib/sanitize";
+import { isPub, loadGraph, personNameMap } from "../../lib/site";
+import { analyzeBook } from "../../lib/chunk";
+import { hrefFor, toArabicDigits } from "../../lib/display";
+
+export async function getStaticPaths() {
+  const books = (await getCollection("book")).filter(isPub);
+  const graph = await loadGraph();
+  const names = await personNameMap();
+  return books.map((entry) => {
+    const annos = graph
+      .annotationsForTarget("book", entry.id)
+      .filter((an) => an.data.status === "published")
+      .map((an) => ({ kind: an.data.kind, anchor: an.data.anchor, body: an.body ?? "" }));
+    return { params: { slug: entry.id }, props: { entry, annos, author: names.get(entry.data.person) } };
+  });
+}
+
+const { entry, annos, author } = Astro.props;
+const a = analyzeBook(entry.body ?? "");
+---
+<Base title={entry.data.title} description={entry.data.description} activeNav="books">
+  <Breadcrumbs
+    width="wrap-matn"
+    items={[
+      { label: "الرئيسية", href: "/" },
+      { label: "المكتبة", href: "/books" },
+      { label: entry.data.title },
+    ]}
+  />
+  <div class="wrap-matn reading-pad">
+    <div class="reader-head">
+      <div class="eyebrow" style="margin-bottom:16px">متن</div>
+      <h1 class="reader-title" style="font-size:clamp(32px,6vw,52px)">{entry.data.title}</h1>
+      <div class="reader-byline">{author}</div>
+    </div>
+    <div class="rule-short"></div>
+
+    {a.chunked ? (
+      <div class="card-grid" style="grid-template-columns:1fr;gap:12px;margin-top:24px">
+        {a.chapters.map((c) => (
+          <a class="card" href={hrefFor("book", entry.id, { chapter: c.slug })} style="padding:18px 22px">
+            <div class="card-title" style="font-size:20px">{c.title}</div>
+          </a>
+        ))}
+      </div>
+    ) : (
+      <div style="margin-top:24px"><Prose body={entry.body ?? ""} /></div>
+    )}
+
+    {annos.length > 0 && (
+      <div class="benefit-strip">
+        <div class="toc-label" style="font-size:11.5px;letter-spacing:.16em;margin-bottom:14px">حواشٍ وتخريجات</div>
+        {annos.map((an) => (
+          <div class="note" style="display:block" data-ar>
+            <span class="note-kind">{an.kind} · {an.anchor}</span>
+            <Fragment set:html={markdownToSafeHtml(an.body)} />
+          </div>
+        ))}
+      </div>
+    )}
+
+    <div class="ornament" style="margin-top:40px;font-size:16px">۞</div>
+  </div>
+</Base>

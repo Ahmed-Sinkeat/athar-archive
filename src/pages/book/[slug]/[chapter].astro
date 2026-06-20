@@ -1,0 +1,48 @@
+---
+import { getCollection } from "astro:content";
+import Base from "../../../layouts/Base.astro";
+import Breadcrumbs from "../../../components/Breadcrumbs.astro";
+import Prose from "../../../components/Prose.astro";
+import { isPub, personNameMap } from "../../../lib/site";
+import { analyzeBook } from "../../../lib/chunk";
+import { hrefFor } from "../../../lib/display";
+
+export async function getStaticPaths() {
+  const books = (await getCollection("book")).filter(isPub);
+  const names = await personNameMap();
+  const paths: any[] = [];
+  for (const entry of books) {
+    const a = analyzeBook(entry.body ?? "");
+    if (!a.chunked) continue;
+    for (const c of a.chapters) {
+      paths.push({
+        params: { slug: entry.id, chapter: c.slug },
+        props: { entry, chapter: c, author: names.get(entry.data.person) },
+      });
+    }
+  }
+  return paths;
+}
+
+const { entry, chapter, author } = Astro.props;
+---
+<Base title={`${chapter.title} · ${entry.data.title}`} activeNav="books">
+  <Breadcrumbs
+    width="wrap-matn"
+    items={[
+      { label: "الرئيسية", href: "/" },
+      { label: "المكتبة", href: "/books" },
+      { label: entry.data.title, href: hrefFor("book", entry.id) },
+      { label: chapter.title },
+    ]}
+  />
+  <div class="wrap-matn reading-pad">
+    <div class="reader-head">
+      <div class="eyebrow" style="margin-bottom:16px">متن · {author}</div>
+      <h1 class="reader-title" style="font-size:clamp(28px,5vw,44px)">{chapter.title}</h1>
+      <div class="reader-byline">{entry.data.title}</div>
+    </div>
+    <div class="rule-short"></div>
+    <div style="margin-top:24px"><Prose body={chapter.content} /></div>
+  </div>
+</Base>

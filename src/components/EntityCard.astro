@@ -1,0 +1,26 @@
+---
+interface Props {
+  href: string;
+  title: string;
+  kind?: string;
+  kindColor?: string; // "tag-accent" | "tag-verdigris"
+  corner?: string;
+  sub?: string;
+  cta?: string;
+  filterKey?: string;
+}
+const { href, title, kind, kindColor = "tag-accent", corner, sub, cta = "ادخل ←", filterKey } = Astro.props;
+---
+<a class="card" href={href} data-kind={filterKey}>
+  {
+    (kind || corner) && (
+      <div class="card-kindrow">
+        {kind ? <span class:list={["pill", kindColor]}>{kind}</span> : <span />}
+        {corner && <span class="faint" style="font-size:12px">{corner}</span>}
+      </div>
+    )
+  }
+  <div class="card-title">{title}</div>
+  {sub && <div class="card-sub">{sub}</div>}
+  {cta && <div class="card-cta">{cta}</div>}
+</a>

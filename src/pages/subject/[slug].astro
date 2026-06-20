@@ -1,0 +1,50 @@
+---
+import { getCollection } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import EntityCard from "../../components/EntityCard.astro";
+import { isPub, loadGraph } from "../../lib/site";
+import { ENTITY, hrefFor, toArabicDigits } from "../../lib/display";
+
+export async function getStaticPaths() {
+  const subjects = (await getCollection("subject")).filter(isPub);
+  const graph = await loadGraph();
+  return subjects.map((entry) => {
+    const topics = graph.topicsBySubject(entry.id).filter(isPub).map((t) => ({ id: t.id, title: t.data.title }));
+    const materials = graph
+      .materialsBySubject(entry.id)
+      .filter(isPub)
+      .map((m) => ({ collection: m.collection, id: m.id, title: m.data.title, series: m.data.series }));
+    return { params: { slug: entry.id }, props: { entry, topics, materials } };
+  });
+}
+
+const { entry, topics, materials } = Astro.props;
+---
+<Base title={entry.data.title} description={entry.data.description} activeNav="subjects">
+  <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "الموضوعات", href: "/subjects" }, { label: entry.data.title }]} />
+  <div class="wrap-mid" style="padding-block:18px 96px">
+    <h1 class="page-title">{entry.data.title}</h1>
+    {entry.data.description && <p class="page-intro">{entry.data.description}</p>}
+
+    {topics.length > 0 && (
+      <div style="margin-bottom:34px">
+        <div class="section-label">الموضوعات · {toArabicDigits(topics.length)}</div>
+        <div class="chip-row">
+          {topics.map((t) => <a class="chip" href={hrefFor("topic", t.id)}>{t.title}</a>)}
+        </div>
+      </div>
+    )}
+
+    {materials.length > 0 && (
+      <div>
+        <div class="section-label">المواد المرتبطة · {toArabicDigits(materials.length)}</div>
+        <div class="card-grid">
+          {materials.map((m) => (
+            <EntityCard href={hrefFor(m.collection, m.id, { series: m.series })} title={m.title} kind={ENTITY[m.collection]?.one} cta="اطّلع ←" />
+          ))}
+        </div>
+      </div>
+    )}
+  </div>
+</Base>
