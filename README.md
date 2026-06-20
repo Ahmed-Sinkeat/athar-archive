@@ -4,7 +4,7 @@
 
 A static, RTL Arabic knowledge archive. **The content is the origin; the technology is a replaceable layer** — the whole site is rebuildable from Git alone.
 
-[![CI](https://github.com/OWNER/athar-archive/actions/workflows/ci.yml/badge.svg)](../../actions)
+[![CI](https://github.com/Ahmed-Sinkeat/athar-archive/actions/workflows/ci.yml/badge.svg)](../../actions)
 
 ## Stack
 
