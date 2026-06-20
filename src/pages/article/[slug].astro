@@ -3,6 +3,8 @@ import { getCollection } from "astro:content";
 import Base from "../../layouts/Base.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import Prose from "../../components/Prose.astro";
+import AudioPlayer from "../../components/AudioPlayer.astro";
+import Attachments from "../../components/Attachments.astro";
 import { isPub, loadGraph } from "../../lib/site";
 import { articleLd } from "../../lib/structured-data";
 
@@ -14,7 +16,7 @@ export async function getStaticPaths() {
     const audioEntry = entry.data.audio ? graph.getById("audio", entry.data.audio) : null;
     return {
       params: { slug: entry.id },
-      props: { entry, author: person?.data.title, audio: audioEntry ? { url: audioEntry.data.url, duration: audioEntry.data.duration ?? null } : null },
+      props: { entry, author: person?.data.title, audio: audioEntry ? { url: audioEntry.data.url, format: audioEntry.data.format, duration: audioEntry.data.duration ?? null, sizeBytes: audioEntry.data.size_bytes ?? null } : null },
     };
   });
 }
@@ -37,16 +39,11 @@ const jsonLd = articleLd({
       <div class="reader-byline">{author}</div>
     </div>
 
-    {audio && (
-      <div class="audio-bar" style="margin-top:28px">
-        <a class="audio-play" href={audio.url} aria-label="تشغيل الصوت"></a>
-        <span style="flex:1;font-family:var(--font-ui);font-size:13px;color:var(--ink-soft)">استماعٌ إلى المقالة</span>
-        {audio.duration && <span class="audio-time">{audio.duration}</span>}
-      </div>
-    )}
+    {audio && <div style="margin-top:28px"><AudioPlayer url={audio.url} format={audio.format} duration={audio.duration} sizeBytes={audio.sizeBytes} label="استماعٌ إلى المقالة" /></div>}
 
     <div class="rule-short"></div>
     <div style="margin-top:20px"><Prose body={entry.body ?? ""} /></div>
+    <Attachments items={entry.data.attachments} />
     <div class="ornament" style="margin-top:40px;font-size:16px">۞</div>
   </div>
 </Base>

@@ -1,0 +1,28 @@
+---
+import { toArabicDigits } from "../lib/display";
+
+interface Props {
+  url: string;
+  format?: "opus" | "mp3";
+  duration?: string;
+  sizeBytes?: number;
+  label?: string;
+}
+const { url, format = "opus", duration, sizeBytes, label = "الاستماع" } = Astro.props;
+const mime = format === "opus" ? "audio/ogg; codecs=opus" : "audio/mpeg";
+const mb = sizeBytes ? `${toArabicDigits((sizeBytes / 1_048_576).toFixed(1))} م.ب` : null;
+---
+<figure class="audio" data-pagefind-ignore>
+  <figcaption class="audio-caption">
+    <span>{label}</span>
+    <span class="faint" style="font-size:12px">
+      {[duration, mb].filter(Boolean).join(" · ")}
+    </span>
+  </figcaption>
+  <!-- native controls: fully usable without our JS, keyboard + screen-reader friendly -->
+  <audio controls preload="metadata">
+    <source src={url} type={mime} />
+    <a href={url}>تنزيل الملف الصوتي</a>
+  </audio>
+  <a class="btn" href={url} download style="padding:8px 14px;font-size:12.5px">تحميل</a>
+</figure>

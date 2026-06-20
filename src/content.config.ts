@@ -18,6 +18,15 @@ const shared = {
 
 const topicsField = z.array(slug).min(1).max(5).optional();
 
+// Downloadable attachments (print editions, PDFs, etc.) — served from R2 (P6).
+const attachment = z.object({
+  label: z.string().min(1),
+  url: z.string().url(),
+  format: z.enum(["pdf", "epub", "docx", "zip"]).optional(),
+  size_bytes: z.number().int().positive().optional(),
+});
+const attachmentsField = z.array(attachment).optional();
+
 // --- 01. Person (الشخص) ---
 
 const person = defineCollection({
@@ -63,6 +72,8 @@ const book = defineCollection({
     topics: topicsField,
     description: z.string().optional(),
     edition: z.string().optional(),
+    cover: z.string().optional(),        // cover image (R2)
+    attachments: attachmentsField,       // print editions / PDFs (R2)
   }),
 });
 
@@ -77,6 +88,7 @@ const poem = defineCollection({
     // verse_count / opening_verse are DERIVED from the body (FR-C-06), never
     // hand-stored — see analyzePoem() in src/lib/chunk.ts.
     description: z.string().optional(),
+    attachments: attachmentsField,       // print editions / PDFs (R2)
   }),
 });
 
@@ -151,6 +163,7 @@ const article = defineCollection({
     topics: topicsField,
     audio: slug.optional(), // → Audio (optional)
     description: z.string().optional(),
+    attachments: attachmentsField,       // PDFs / handouts (R2)
   }),
 });
 

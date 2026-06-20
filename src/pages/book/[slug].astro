@@ -3,6 +3,8 @@ import { getCollection } from "astro:content";
 import Base from "../../layouts/Base.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import Prose from "../../components/Prose.astro";
+import AudioPlayer from "../../components/AudioPlayer.astro";
+import Attachments from "../../components/Attachments.astro";
 import { markdownToSafeHtml } from "../../lib/sanitize";
 import { isPub, loadGraph, personNameMap } from "../../lib/site";
 import { analyzeBook } from "../../lib/chunk";
@@ -18,11 +20,13 @@ export async function getStaticPaths() {
       .annotationsForTarget("book", entry.id)
       .filter((an) => an.data.status === "published")
       .map((an) => ({ kind: an.data.kind, anchor: an.data.anchor, body: an.body ?? "" }));
-    return { params: { slug: entry.id }, props: { entry, annos, author: names.get(entry.data.person) } };
+    const au = graph.audioForSource("book", entry.id).find((a) => a.data.status === "published");
+    const audio = au ? { url: au.data.url, format: au.data.format, duration: au.data.duration ?? null, sizeBytes: au.data.size_bytes ?? null } : null;
+    return { params: { slug: entry.id }, props: { entry, annos, audio, author: names.get(entry.data.person) } };
   });
 }
 
-const { entry, annos, author } = Astro.props;
+const { entry, annos, audio, author } = Astro.props;
 const a = analyzeBook(entry.body ?? "");
 const path = `/book/${entry.id}`;
 const jsonLd = bookLd({
@@ -46,6 +50,8 @@ const jsonLd = bookLd({
       <h1 class="reader-title" style="font-size:clamp(32px,6vw,52px)">{entry.data.title}</h1>
       <div class="reader-byline">{author}</div>
     </div>
+    {audio && <div style="margin-top:24px"><AudioPlayer url={audio.url} format={audio.format} duration={audio.duration} sizeBytes={audio.sizeBytes} label="استماعٌ إلى المتن" /></div>}
+
     <div class="rule-short"></div>
 
     {a.chunked ? (
@@ -71,6 +77,8 @@ const jsonLd = bookLd({
         ))}
       </div>
     )}
+
+    <Attachments items={entry.data.attachments} heading="طبعاتٌ وتحميلات" />
 
     <div class="ornament" style="margin-top:40px;font-size:16px">۞</div>
   </div>
