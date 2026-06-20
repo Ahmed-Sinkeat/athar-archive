@@ -8,7 +8,7 @@ Definition-of-Done (DoD) status, decisions, and any deviations from the plan.
 
 **Project:** أهل الأثر — Arabic Islamic knowledge archive
 **Stack:** Astro (static) · Markdown + Zod Content Collections · Pagefind (search, P4) · Cloudflare Pages/R2 (P6/P8)
-**Last updated:** P3 complete · 29 pages build green · 66/66 tests passing
+**Last updated:** P4 complete · 29 pages built, 15 indexed · 66/66 tests passing
 
 ---
 
@@ -16,12 +16,12 @@ Definition-of-Done (DoD) status, decisions, and any deviations from the plan.
 
 | Phase | Title | Status | Commit |
 |---|---|---|---|
-| **P0** | Foundations & de-risking | ✅ Done (spike deferred¹) | `0c93dc1` |
+| **P0** | Foundations & de-risking | ✅ Done (spike now run in P4) | `0c93dc1` |
 | **P1** | Content model in code | ✅ Done | `cc3d818` |
 | **P2** | Build pipeline & derivations | ✅ Done | `1ef6b93` |
 | **P3** | Design system & page templates (RTL) | ✅ Done | `3fba81b` |
-| P4 | Search (Pagefind, Arabic) | ⬜ Next | — |
-| P5 | SEO, structured data, feeds, permanence | ⬜ Pending | — |
+| **P4** | Search (Pagefind, Arabic) | ✅ Done | `23e6781` |
+| P5 | SEO, structured data, feeds, permanence | ⬜ Next | — |
 | P6 | Media pipeline (R2) | ⬜ Pending | — |
 | P7 | Authoring experience & governance | ⬜ Pending | — |
 | P8 | QA, performance, accessibility, launch | ⬜ Pending | — |
@@ -132,6 +132,33 @@ Definition-of-Done (DoD) status, decisions, and any deviations from the plan.
 
 ---
 
+## P4 — Search (Pagefind, Arabic) ✅
+
+**Spike first (the deferred P0 gate, the #1 technical risk).** Ran *real* Pagefind searches in headless Chromium (playwright-core + system chromium) over a controlled 2-page corpus (`scripts/pagefind-spike/`), one diacritized, one stripped.
+
+**Findings**
+- **Diacritics fully handled.** `كلام` and the fully-diacritized `كَلَامُنَا` both match diacritized text — normalization happens on index *and* query side. The planned diacritic-stripped match field is **unnecessary**; we index visible diacritized content directly (real excerpts).
+- Most bare-root queries work across the definite article and clitics (`إيمان`→`الإيمان`, `صفات`→`وصفاته`).
+- **Edge case:** some hamzated/proclitic words miss (`أسماء`↛`بأسماء`) — prefix/normalization rough edge. Acceptable for Phase 1.
+- **Verdict: GO with Pagefind.** Escalation to Meilisearch/Typesense stays documented if real-content QA degrades.
+
+**Integration**
+- `Base.astro`: `searchMeta` prop marks `<main>` as `data-pagefind-body` + `data-pagefind-meta(title)` + `data-pagefind-filter(type)`; chrome (header/drawer/footer) and `Breadcrumbs` are `data-pagefind-ignore` → **only content detail pages are indexed** (15 pages). Added `noindex` prop.
+- `searchMeta` on all 12 detail templates (+ chapter pages) with per-type values.
+- `/search`: custom RTL UI on Pagefind's JS API — reads `?q`, live (debounced) search, type facet chips, diacritized titles + `<mark>` excerpts, graceful no-JS (`<noscript>`) and no-index (dev) fallbacks. No server, no keys (SEC-01).
+- `pnpm build` runs `pagefind --site dist`; added `search:index` script.
+
+**DoD**
+- ✅ Queries with/without تشكيل return correct results across متون/منظومات/دروس/مقالات/فوائد/مسائل (verified on real fixtures via `verify-real.mjs`: «التوحيد» → article+benefit+subject+topic+person; «كلامنا» → الألفية; «توقيفية» → المسائل).
+- ✅ No key/secret client-side; index regenerates every build (15 pages, 1 filter).
+- ✅ `/search` results are `noindex`; graceful degradation present.
+
+**Deviations from plan**
+- **D10 — No diacritic-stripped index field.** The spike proved Pagefind normalizes Arabic diacritics, so the BUILD-PLAN's stripped-field mitigation is dropped as redundant; we index the visible diacritized text (nicer excerpts).
+- **Custom search UI** (Pagefind JS API) instead of the default Pagefind UI component, to match the manuscript design.
+
+---
+
 ## Decisions log
 
 | # | Decision | Rationale |
@@ -145,11 +172,13 @@ Definition-of-Done (DoD) status, decisions, and any deviations from the plan.
 | D7 | SPA mockup ported to static multi-page routes | Content must render without JS (FR-P-05) |
 | D8 | Annotations revealed JS-free via `:target` | Keep šarḥ reachable without JS; enhance with reader.ts |
 | D9 | `/books` = combined library (books+poems); `/poems` also kept | Matches mockup library + nav "المكتبة" |
+| D10 | No diacritic-stripped search field | Spike proved Pagefind normalizes Arabic diacritics — mitigation redundant |
 
 ## Open items
 
-- **⏳ Pagefind Arabic spike (gates P4).** Index 20–30 real diacritized texts; test match quality with/without تشكيل + typo behavior. Not yet run.
-- **⏳ Domain extension `.net` vs `.com`.** Still intentionally open (BUILD-PLAN §Decisions). Must be confirmed before absolute URLs / structured data (P5). Currently `ahlalathar.net` placeholder in config + `astro.config.ts` + `robots.txt`.
+- ✅ ~~Pagefind Arabic spike~~ — **done in P4** (GO; diacritics handled, hamza/proclitic edge cases documented).
+- **⏳ Domain extension `.net` vs `.com`.** Still intentionally open (BUILD-PLAN §Decisions). **Must be confirmed before P5** (absolute URLs / canonical / structured data / sitemap). Currently `ahlalathar.net` placeholder in config + `astro.config.ts` + `robots.txt`.
+- **Hamza/proclitic search recall** (e.g. `أسماء`↛`بأسماء`). Known Pagefind limitation; revisit with real corpus — escalate to Meilisearch/Typesense only if QA shows it matters.
 - **Remote + CI.** No git remote or hosted CI yet; local `pnpm build` is the gate.
 
 ## Verification (current)
@@ -157,12 +186,14 @@ Definition-of-Done (DoD) status, decisions, and any deviations from the plan.
 ```
 pnpm test            → 66/66 passing (5 files: validate, graph, chapters, chunk, sanitize)
 pnpm validate:content → ✓ 20 entries
-pnpm build           → ✓ green — 29 pages
+pnpm build           → ✓ green — 29 pages built, 15 indexed by Pagefind (1 lang, 1 filter)
 tsc --noEmit         → ✓ clean
+search (dist/)       → ✓ verified via headless Chromium on real fixtures
 ```
 
-## Next: P4 — Search (Pagefind, Arabic)
+## Next: P5 — SEO, structured data, feeds, permanence
 
-Run the deferred **P0 Pagefind Arabic spike** first (gates this phase), then integrate Pagefind
-into the build, index a diacritic-stripped match field alongside display text, build out the
-`/search` page (currently a stub), and wire the homepage search box. No search server / keys.
+JSON-LD per entity type (Person/Book/Poem/Course/QAPage/Quotation…), Open Graph/Twitter,
+canonical URLs, `sitemap.xml`, `rss.xml` (by `published_at`), `robots.txt`, and the
+`aliases` → Cloudflare `_redirects` (301) permanence map. **Blocked on confirming the domain
+extension (.net/.com)** before emitting absolute URLs.
