@@ -1,9 +1,9 @@
 # athar-archive — Repository Structure
 
-**As of:** P4 complete (Pagefind Arabic search integrated)
+**As of:** P5 complete (SEO, structured data, feeds, permanence)
 **Companion doc:** [`asbuild.md`](./asbuild.md) — phase-by-phase as-built record.
 
-This document describes the *actual* repository layout. It is updated after every phase. Directories that exist but are not yet populated are marked **(pending P5+)**.
+This document describes the *actual* repository layout. It is updated after every phase. Directories that exist but are not yet populated are marked **(pending P6+)**.
 
 ---
 
@@ -54,7 +54,8 @@ src/
 │  ├─ sanitize.ts            #   Markdown→safe HTML + Arabic heading-ids (+ tests)
 │  ├─ sanitize-schema.ts     #   shared rehype-sanitize schema
 │  ├─ display.ts             #   Arabic-Indic numerals, route map (hrefFor), entity labels, stripTashkeel
-│  └─ site.ts                #   page-runtime: loadGraph(), personNameMap(), publishedSorted()
+│  ├─ site.ts                #   page-runtime: loadGraph(), personNameMap(), publishedSorted()
+│  └─ structured-data.ts     #   JSON-LD builders per entity type (+ WebSite/SearchAction)
 │
 ├─ styles/
 │  └─ global.css             #   design system: tokens, 3 themes, reading-scale, verses, annotations
@@ -73,8 +74,13 @@ src/
    ├─ poem/[slug].astro · poem/[slug]/[chapter].astro
    ├─ series/[slug].astro · series/[slug]/[lesson].astro
    ├─ person/[slug].astro · subject/[slug].astro · topic/[slug].astro
-   └─ benefit/[slug].astro · article/[slug].astro · questions/[slug].astro
+   ├─ benefit/[slug].astro · article/[slug].astro · questions/[slug].astro
+   └─ sitemap.xml.ts · rss.xml.ts            # endpoints (XML feeds)
 ```
+
+**Permanence / SEO outputs** (generated into `dist/`): `sitemap.xml`, `rss.xml`,
+`_redirects` (via `scripts/gen-redirects.ts`, aliases→301), `_headers` (from
+`public/_headers`, CSP + security). Canonical/OG/JSON-LD are emitted by `Base.astro`.
 
 ## `scripts/`
 

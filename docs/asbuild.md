@@ -8,7 +8,7 @@ Definition-of-Done (DoD) status, decisions, and any deviations from the plan.
 
 **Project:** أهل الأثر — Arabic Islamic knowledge archive
 **Stack:** Astro (static) · Markdown + Zod Content Collections · Pagefind (search, P4) · Cloudflare Pages/R2 (P6/P8)
-**Last updated:** P4 complete · 29 pages built, 15 indexed · 66/66 tests passing
+**Last updated:** P5 complete · domain ratified (.com) · 66/66 tests passing
 
 ---
 
@@ -21,8 +21,8 @@ Definition-of-Done (DoD) status, decisions, and any deviations from the plan.
 | **P2** | Build pipeline & derivations | ✅ Done | `1ef6b93` |
 | **P3** | Design system & page templates (RTL) | ✅ Done | `3fba81b` |
 | **P4** | Search (Pagefind, Arabic) | ✅ Done | `23e6781` |
-| P5 | SEO, structured data, feeds, permanence | ⬜ Next | — |
-| P6 | Media pipeline (R2) | ⬜ Pending | — |
+| **P5** | SEO, structured data, feeds, permanence | ✅ Done | `51059cd` |
+| P6 | Media pipeline (R2) | ⬜ Next | — |
 | P7 | Authoring experience & governance | ⬜ Pending | — |
 | P8 | QA, performance, accessibility, launch | ⬜ Pending | — |
 | P9 | Post-launch & deferred roadmap | ⬜ Pending | — |
@@ -159,6 +159,30 @@ Definition-of-Done (DoD) status, decisions, and any deviations from the plan.
 
 ---
 
+## P5 — SEO, structured data, feeds, permanence ✅
+
+**Domain ratified: `ahlalathar.com`** (the last open decision). Single source of truth in `ahlalathar.config.ts` (`siteUrl`); all `.net` references updated (config, astro.config, robots, audio fixture).
+
+**Built**
+- `src/lib/structured-data.ts` — per-type JSON-LD builders, each with a `BreadcrumbList`: `ProfilePage`+`Person`, `Book`, `CreativeWork`/`Poem`, `Course` (series), `LearningResource` (lesson), `Quotation` (benefit), `Article`, `QAPage` (questions), `CollectionPage` (subject/topic), and `WebSite`+`SearchAction` on home.
+- `Base.astro` — canonical URLs, Open Graph + Twitter per page, `og:type` per entity, `jsonLd` slot, `noindex`↔canonical switch.
+- `src/pages/sitemap.xml.ts` — 27 indexable URLs with `lastmod` (from `updated_at`/`published_at`); excludes `/search` (noindex) and 404; includes chapter routes when chunked.
+- `src/pages/rss.xml.ts` — latest 30 materials by `published_at`, XML-escaped.
+- `scripts/gen-redirects.ts` → `dist/_redirects` — `aliases` → 301 (`/poem/bayquniyyah` → `/poem/al-bayquniyyah`); `archived` keeps its URL. Wired into `pnpm build`.
+- `public/_headers` — CSP (allowances for Google Fonts, Pagefind wasm, R2 media), `nosniff`, `frame-ancestors none`, referrer policy; `robots.txt` disallows `/search` + sitemap pointer.
+
+**DoD**
+- ✅ Structured data validates per type (15/15 JSON-LD blocks parse; types match URL Map §06).
+- ✅ Sitemap/RSS correct (27 URLs / 30-item cap, `.com`).
+- ✅ Renamed fixture's old URL 301s to the new one (verified in `dist/_redirects`).
+- ✅ CSP present (`dist/_headers`).
+
+**Deviations**
+- **`_redirects` via post-build script, not a page.** Astro treats `src/pages/_redirects.ts` as private (leading underscore), so a `tsx` script writes `dist/_redirects` after `astro build` (same pattern as Pagefind).
+- Hand-rolled sitemap/RSS (no `@astrojs/*` deps) for control over `lastmod`, noindex exclusion, and entity-aware routes.
+
+---
+
 ## Decisions log
 
 | # | Decision | Rationale |
@@ -173,27 +197,31 @@ Definition-of-Done (DoD) status, decisions, and any deviations from the plan.
 | D8 | Annotations revealed JS-free via `:target` | Keep šarḥ reachable without JS; enhance with reader.ts |
 | D9 | `/books` = combined library (books+poems); `/poems` also kept | Matches mockup library + nav "المكتبة" |
 | D10 | No diacritic-stripped search field | Spike proved Pagefind normalizes Arabic diacritics — mitigation redundant |
+| D11 | Domain = `ahlalathar.com` | User ratified .com over .net (2026-06); resolves the last open decision |
+| D12 | `_redirects` written by post-build script | Astro treats `_redirects.ts` as private (underscore); script writes `dist/_redirects` |
 
 ## Open items
 
 - ✅ ~~Pagefind Arabic spike~~ — **done in P4** (GO; diacritics handled, hamza/proclitic edge cases documented).
-- **⏳ Domain extension `.net` vs `.com`.** Still intentionally open (BUILD-PLAN §Decisions). **Must be confirmed before P5** (absolute URLs / canonical / structured data / sitemap). Currently `ahlalathar.net` placeholder in config + `astro.config.ts` + `robots.txt`.
+- ✅ ~~Domain extension~~ — **ratified `.com` in P5**.
 - **Hamza/proclitic search recall** (e.g. `أسماء`↛`بأسماء`). Known Pagefind limitation; revisit with real corpus — escalate to Meilisearch/Typesense only if QA shows it matters.
 - **Remote + CI.** No git remote or hosted CI yet; local `pnpm build` is the gate.
+- **CSP `'unsafe-inline'`.** Design uses inline styles + scripts heavily, so `style-src`/`script-src` allow `'unsafe-inline'`. Tighten with hashes/nonces only if a build step is added (post-launch).
 
 ## Verification (current)
 
 ```
 pnpm test            → 66/66 passing (5 files: validate, graph, chapters, chunk, sanitize)
 pnpm validate:content → ✓ 20 entries
-pnpm build           → ✓ green — 29 pages built, 15 indexed by Pagefind (1 lang, 1 filter)
+pnpm build           → ✓ green — 29 pages + sitemap.xml + rss.xml + _redirects + _headers
 tsc --noEmit         → ✓ clean
+JSON-LD              → ✓ 15/15 valid; types per URL Map §06
 search (dist/)       → ✓ verified via headless Chromium on real fixtures
 ```
 
-## Next: P5 — SEO, structured data, feeds, permanence
+## Next: P6 — Media pipeline (R2)
 
-JSON-LD per entity type (Person/Book/Poem/Course/QAPage/Quotation…), Open Graph/Twitter,
-canonical URLs, `sitemap.xml`, `rss.xml` (by `published_at`), `robots.txt`, and the
-`aliases` → Cloudflare `_redirects` (301) permanence map. **Blocked on confirming the domain
-extension (.net/.com)** before emitting absolute URLs.
+Cloudflare R2 bucket (S3-compatible) for audio (Opus) + attachments; stable audio URLs
+embedded in Book/Poem/Lesson/Article pages (player + download); metadata validation
+(duration/size/format); transcript gate already enforced (P1). Daily repo + periodic R2
+backup; document "rebuild from Git" recovery (NFR-04).
