@@ -1,9 +1,9 @@
 # athar-archive — Repository Structure
 
-**As of:** P2 complete (build pipeline & derivations)
+**As of:** P3 complete (RTL design system & all page templates)
 **Companion doc:** [`asbuild.md`](./asbuild.md) — phase-by-phase as-built record.
 
-This document describes the *actual* repository layout. It is updated after every phase. Directories that exist but are not yet populated are marked **(pending P3+)**.
+This document describes the *actual* repository layout. It is updated after every phase. Directories that exist but are not yet populated are marked **(pending P4+)**.
 
 ---
 
@@ -44,23 +44,36 @@ src/
 │  ├─ annotation/            #   الشرح/الحاشية — 1 fixture (embedded, target+anchor)
 │  └─ announcement/          #   الإعلان      — 1 fixture (homepage chrome)
 │
-├─ lib/                      # build pipeline & derivations (P1–P2)
+├─ lib/                      # build pipeline, derivations & page helpers (P1–P3)
 │  ├─ types.ts               #   ContentEntry, COLLECTIONS, MATERIAL_COLLECTIONS, isPublished
 │  ├─ load.ts                #   loadContentFromDisk() — gray-matter loader (scripts/tests)
 │  ├─ validate.ts            #   cross-entity build-time validator (+ tests)
 │  ├─ graph.ts               #   in-memory knowledge graph + derived series stats (+ tests)
 │  ├─ chapters.ts            #   chapter/verse/paragraph/heading parser + Arabic slugify (+ tests)
 │  ├─ chunk.ts               #   threshold-driven single-page vs chapterized (+ tests)
-│  ├─ sanitize.ts            #   Markdown→safe HTML pipeline (+ tests)
-│  └─ sanitize-schema.ts     #   shared rehype-sanitize schema (lib + astro.config)
+│  ├─ sanitize.ts            #   Markdown→safe HTML + Arabic heading-ids (+ tests)
+│  ├─ sanitize-schema.ts     #   shared rehype-sanitize schema
+│  ├─ display.ts             #   Arabic-Indic numerals, route map (hrefFor), entity labels, stripTashkeel
+│  └─ site.ts                #   page-runtime: loadGraph(), personNameMap(), publishedSorted()
 │
-├─ layouts/                  # (pending P3) Base.astro RTL layout
-├─ components/               # (pending P3) Header, Breadcrumbs, AudioPlayer, ReadingPrefs, …
-└─ pages/                    # route files
-   ├─ index.astro            #   homepage placeholder (built out in P3)
-   ├─ person/ subject/ topic/ book/ poem/ series/ questions/ benefit/ article/
-   │                         #   (pending P3) detail/index route dirs scaffolded, empty
-   └─ …
+├─ styles/
+│  └─ global.css             #   design system: tokens, 3 themes, reading-scale, verses, annotations
+├─ scripts/
+│  └─ reader.ts              #   reading-prefs/theme/drawer/progress enhancement (bundled client script)
+│
+├─ layouts/
+│  └─ Base.astro             #   RTL shell: 3-row header, drawer, progress bar, footer, pre-paint script
+├─ components/
+│  ├─ Breadcrumbs.astro · EntityCard.astro · Prose.astro · Verse.astro
+└─ pages/                    # every route (BUILD-PLAN 0.4) — all render from fixtures
+   ├─ index.astro · search.astro · about.astro · contact.astro · 404.astro
+   ├─ books.astro · poems.astro · subjects.astro · topics.astro · people.astro
+   ├─ articles.astro · benefits.astro · series/index.astro · questions/index.astro
+   ├─ book/[slug].astro · book/[slug]/[chapter].astro
+   ├─ poem/[slug].astro · poem/[slug]/[chapter].astro
+   ├─ series/[slug].astro · series/[slug]/[lesson].astro
+   ├─ person/[slug].astro · subject/[slug].astro · topic/[slug].astro
+   └─ benefit/[slug].astro · article/[slug].astro · questions/[slug].astro
 ```
 
 ## `scripts/`
