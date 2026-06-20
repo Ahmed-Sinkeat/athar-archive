@@ -8,7 +8,7 @@ Definition-of-Done (DoD) status, decisions, and any deviations from the plan.
 
 **Project:** أهل الأثر — Arabic Islamic knowledge archive
 **Stack:** Astro (static) · Markdown + Zod Content Collections · Pagefind (search, P4) · Cloudflare Pages/R2 (P6/P8)
-**Last updated:** P5 complete · domain ratified (.com) · 66/66 tests passing
+**Last updated:** P6 complete · audio player + attachments + R2 docs · 66/66 tests
 
 ---
 
@@ -22,8 +22,8 @@ Definition-of-Done (DoD) status, decisions, and any deviations from the plan.
 | **P3** | Design system & page templates (RTL) | ✅ Done | `3fba81b` |
 | **P4** | Search (Pagefind, Arabic) | ✅ Done | `23e6781` |
 | **P5** | SEO, structured data, feeds, permanence | ✅ Done | `51059cd` |
-| P6 | Media pipeline (R2) | ⬜ Next | — |
-| P7 | Authoring experience & governance | ⬜ Pending | — |
+| **P6** | Media pipeline (R2) | ✅ Done (code+docs; R2 not yet provisioned) | `f9b86f7` |
+| P7 | Authoring experience & governance | ⬜ Next | — |
 | P8 | QA, performance, accessibility, launch | ⬜ Pending | — |
 | P9 | Post-launch & deferred roadmap | ⬜ Pending | — |
 
@@ -183,6 +183,29 @@ Definition-of-Done (DoD) status, decisions, and any deviations from the plan.
 
 ---
 
+## P6 — Media pipeline (R2) ✅ (code + docs; bucket not yet provisioned)
+
+**Built (code)**
+- `AudioPlayer.astro` — native `<audio controls preload="metadata">` in a styled shell (duration + size + download). Embedded on **lesson, article, book, poem** (audio resolved via `graph.audioForSource`). Audio captions are `data-pagefind-ignore`.
+- `Attachments.astro` — download links (PDF/EPUB/…) with format + size.
+- Model: `book` gains `cover` + `attachments[]`; `poem`/`article` gain `attachments[]`; `attachment` schema (`label`/`url`/`format`/`size_bytes`) Zod-validated. `Audio` already validates `url`/`format`/`duration`/`size_bytes`; the **lesson transcript gate** (P1) stands (`FR-W-05`).
+- Fixtures: `al-wasitiyyah` cover + PDF/EPUB; `al-bayquniyyah` recitation Audio.
+
+**Built (ops docs/scripts)** — R2 can't be provisioned from here, so:
+- `docs/media-and-backup.md` — R2 bucket + public host (`r2.ahlalathar.com`, already in CSP), Opus encoding (`ffmpeg`), key convention, upload, weekly media backup + `rclone check`, and the **NFR-04 "rebuild from Git" recovery** (site from `pnpm build`; media links in Git, bytes in the R2 backup).
+- `scripts/upload-media.sh` — `rclone` mirror to R2 with immutable cache headers.
+
+**DoD**
+- ✅ A lesson/poem/book/article plays from its (R2) URL via an accessible native player; attachments download.
+- ✅ No lesson without a transcript can reach `published` (build-time gate).
+- ✅ Recovery procedure documented (rehearsal is a P8 checklist item).
+- ⏳ Real R2 bucket + actual media uploads — **infra, pending launch** (issue #12). Audio/attachment URLs currently point at the future `r2.ahlalathar.com`.
+
+**Deviations**
+- **D13 — Native `<audio controls>` instead of the mockup's custom JS audio bar.** Native is keyboard- and screen-reader-accessible with zero JS (helps issue #3) and still styled to fit; the custom seek/speed bar was JS-only and less accessible.
+
+---
+
 ## Decisions log
 
 | # | Decision | Rationale |
@@ -199,6 +222,7 @@ Definition-of-Done (DoD) status, decisions, and any deviations from the plan.
 | D10 | No diacritic-stripped search field | Spike proved Pagefind normalizes Arabic diacritics — mitigation redundant |
 | D11 | Domain = `ahlalathar.com` | User ratified .com over .net (2026-06); resolves the last open decision |
 | D12 | `_redirects` written by post-build script | Astro treats `_redirects.ts` as private (underscore); script writes `dist/_redirects` |
+| D13 | Native `<audio controls>` over the mockup's custom JS bar | Keyboard/SR-accessible, JS-free; styled to fit |
 
 ## Open items
 
@@ -212,16 +236,18 @@ Definition-of-Done (DoD) status, decisions, and any deviations from the plan.
 
 ```
 pnpm test            → 66/66 passing (5 files: validate, graph, chapters, chunk, sanitize)
-pnpm validate:content → ✓ 20 entries
-pnpm build           → ✓ green — 29 pages + sitemap.xml + rss.xml + _redirects + _headers
+pnpm validate:content → ✓ 21 entries
+pnpm build           → ✓ green — 29 pages + sitemap + rss + _redirects + _headers
 tsc --noEmit         → ✓ clean
 JSON-LD              → ✓ 15/15 valid; types per URL Map §06
-search (dist/)       → ✓ verified via headless Chromium on real fixtures
+search (dist/)       → ✓ verified via headless Chromium; audio captions excluded
+media                → players on lesson/poem/book/article; book PDF/EPUB downloads
 ```
 
-## Next: P6 — Media pipeline (R2)
+## Next: P7 — Authoring experience & governance
 
-Cloudflare R2 bucket (S3-compatible) for audio (Opus) + attachments; stable audio URLs
-embedded in Book/Poem/Lesson/Article pages (player + download); metadata validation
-(duration/size/format); transcript gate already enforced (P1). Daily repo + periodic R2
-backup; document "rebuild from Git" recovery (NFR-04).
+`CONTRIBUTING.md` mirroring the Authoring Guide (per-entity frontmatter templates incl.
+the new `attachments`/`cover`; id/slug rules; chapter markers; annotation anchors; status
++ publish gates; pre-publish checklist). Volunteer intake (untrusted Markdown → sanitize →
+team curates PR → sets status → merges). Optional scaffolding scripts for new content.
+CMS (Decap) stays deferred.
