@@ -74,8 +74,8 @@ const poem = defineCollection({
     ...shared,
     person: slug,           // → Person (author)
     topics: topicsField,
-    verse_count: z.number().int().positive().optional(), // set in frontmatter; also derived in P2
-    opening_verse: z.string().optional(),
+    // verse_count / opening_verse are DERIVED from the body (FR-C-06), never
+    // hand-stored — see analyzePoem() in src/lib/chunk.ts.
     description: z.string().optional(),
   }),
 });

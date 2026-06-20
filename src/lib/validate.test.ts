@@ -95,7 +95,7 @@ describe("ref-resolution", () => {
   it("passes a valid annotation pointing to an existing poem", () => {
     const errors = validate([
       entry("person", "p1", { title: "شخص" }),
-      entry("poem", "alfiyyah", { title: "الألفية", person: "p1" }),
+      entry("poem", "alfiyyah", { title: "الألفية", person: "p1" }, "البيت الأول --- عجزه"),
       entry("annotation", "alfiyyah--v1--sharh", {
         title: "شرح البيت الأول",
         target_type: "poem",
@@ -104,6 +104,20 @@ describe("ref-resolution", () => {
       }),
     ]);
     expect(errors.filter((e) => e.collection === "annotation")).toHaveLength(0);
+  });
+
+  it("fails an annotation whose anchor is out of range", () => {
+    const errors = validate([
+      entry("person", "p1", { title: "شخص" }),
+      entry("poem", "alfiyyah", { title: "الألفية", person: "p1" }, "البيت الأول --- عجزه"),
+      entry("annotation", "alfiyyah--v999--sharh", {
+        title: "شرح بيت غير موجود",
+        target_type: "poem",
+        target_id: "alfiyyah",
+        anchor: "v999",
+      }),
+    ]);
+    expect(errors.some((e) => e.rule === "anchor-resolution")).toBe(true);
   });
 });
 
@@ -286,8 +300,8 @@ describe("valid corpus", () => {
       entry("topic", "al-asma-was-sifat", { title: "الأسماء والصفات", subject: "aqeedah" }),
       entry("topic", "al-nahw-al-muyassar", { title: "النحو الميسر", subject: "nahw" }),
       entry("book", "al-wasitiyyah", { title: "الواسطية", person: "ibn-taymiyyah", topics: ["al-asma-was-sifat"] }),
-      entry("poem", "alfiyyah-ibn-malik", { title: "الألفية", person: "ibn-malik-al-nahwi", verse_count: 1002, topics: ["al-nahw-al-muyassar"] }),
-      entry("poem", "al-bayquniyyah", { title: "البيقونية", person: "ibn-taymiyyah", verse_count: 34 }),
+      entry("poem", "alfiyyah-ibn-malik", { title: "الألفية", person: "ibn-malik-al-nahwi", topics: ["al-nahw-al-muyassar"] }, "## باب الكلام\n\nكلامنا لفظ مفيد كاستقم --- واسم وفعل ثم حرف الكلم"),
+      entry("poem", "al-bayquniyyah", { title: "البيقونية", person: "ibn-taymiyyah" }, "أبدأ بالحمد --- مصليا على"),
       entry("series", "sharh-al-wasitiyyah", { title: "شرح الواسطية", person: "ibn-taymiyyah", source_type: "book", source_id: "al-wasitiyyah", topics: ["al-asma-was-sifat"] }),
       entry("lesson", "sharh-al-wasitiyyah--lesson-1", { title: "الدرس الأول", series: "sharh-al-wasitiyyah", order: 1 }, "## المقدمة\n\nمحتوى الدرس"),
       draft("lesson", "sharh-al-wasitiyyah--lesson-2", { title: "الدرس الثاني", series: "sharh-al-wasitiyyah", order: 2 }, ""),

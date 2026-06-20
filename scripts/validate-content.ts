@@ -1,37 +1,11 @@
 // Build-time cross-entity validation. Run via: pnpm validate:content
 // Called automatically before astro build by the "build" script.
 
-import fs from "node:fs";
-import path from "node:path";
-import matter from "gray-matter";
-import { validate, formatErrors, type ContentEntry } from "../src/lib/validate.js";
-
-const CONTENT_ROOT = path.resolve("src/content");
-
-const COLLECTIONS = [
-  "person", "subject", "topic",
-  "book", "poem", "series", "lesson",
-  "question", "benefit", "article",
-  "audio", "annotation", "announcement",
-];
-
-function readCollection(collection: string): ContentEntry[] {
-  const dir = path.join(CONTENT_ROOT, collection);
-  if (!fs.existsSync(dir)) return [];
-
-  return fs
-    .readdirSync(dir)
-    .filter((f) => f.endsWith(".md"))
-    .map((file) => {
-      const raw = fs.readFileSync(path.join(dir, file), "utf-8");
-      const { data, content } = matter(raw);
-      const id = file.replace(/\.md$/, "");
-      return { id, collection, data: data as Record<string, unknown>, body: content };
-    });
-}
+import { loadContentFromDisk } from "../src/lib/load.js";
+import { validate, formatErrors } from "../src/lib/validate.js";
 
 function main() {
-  const entries: ContentEntry[] = COLLECTIONS.flatMap(readCollection);
+  const entries = loadContentFromDisk();
   const errors = validate(entries);
 
   if (errors.length === 0) {

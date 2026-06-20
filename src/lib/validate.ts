@@ -2,12 +2,10 @@
 // Each rule that can be enforced per-entity lives in config.ts (Zod).
 // This module handles rules that require resolving refs across collections.
 
-export interface ContentEntry {
-  id: string;
-  collection: string;
-  data: Record<string, unknown>;
-  body: string;
-}
+import { extractAnchors } from "./chapters.js";
+import type { ContentEntry } from "./types.js";
+
+export type { ContentEntry } from "./types.js";
 
 export interface BuildError {
   collection: string;
@@ -173,6 +171,13 @@ export function validate(entries: ContentEntry[]): BuildError[] {
           fail(collection, id, "ref-resolution", `${targetType} '${targetId}' not found (dangling annotation '${id}')`);
         } else if (isPublished && target.status === "draft") {
           fail(collection, id, "draft-ref-guard", `published 'annotation/${id}' references draft ${targetType} '${targetId}'`);
+        } else {
+          // anchor must resolve to a real position in the target body
+          const anchor = str(data.anchor);
+          const anchors = extractAnchors(targetType, target.body);
+          if (anchor && !anchors.has(anchor)) {
+            fail(collection, id, "anchor-resolution", `anchor '${anchor}' not found in ${targetType} '${targetId}' (annotation '${id}')`);
+          }
         }
       }
     }

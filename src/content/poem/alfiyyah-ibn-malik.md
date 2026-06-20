@@ -3,8 +3,6 @@ title: ألفية ابن مالك
 person: ibn-malik-al-nahwi
 topics:
   - al-nahw-al-muyassar
-verse_count: 1002
-opening_verse: "كَلَامُنَا لَفْظٌ مُفِيدٌ كَاسْتَقِمْ"
 status: published
 published_at: 2024-01-01
 description: منظومة في النحو والصرف ألف بيت، أشهر متن في علوم العربية
