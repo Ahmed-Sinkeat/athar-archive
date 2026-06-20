@@ -1,0 +1,31 @@
+{
+  "name": "athar-archive",
+  "version": "1.0.0",
+  "description": "أهل الأثر — Islamic knowledge archive",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "validate": "astro check",
+    "test": "node --experimental-vm-modules node_modules/.bin/vitest run"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "^11.8.0",
+      "onFail": "download"
+    }
+  },
+  "type": "module",
+  "dependencies": {
+    "astro": "^6.4.8",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^26.0.0",
+    "typescript": "^6.0.3"
+  }
+}
