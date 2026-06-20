@@ -206,6 +206,19 @@ Definition-of-Done (DoD) status, decisions, and any deviations from the plan.
 
 ---
 
+## Hardening / infra (post-P6, pre-P7) — fixing the issue register
+
+Not a numbered phase — a pass at `docs/issue.md`:
+
+- **#2 CI/remote → resolved.** Repo pushed to `github.com/Ahmed-Sinkeat/athar-archive` (private). GitHub Actions CI (`.github/workflows/ci.yml`): install → vitest → validate:content → build → **smoke** → tsc. **Green** on every push. Fixed a pnpm-11 `allowBuilds` (esbuild/sharp) install failure surfaced only in CI's frozen install.
+- **#3 a11y → mitigated.** `scripts/a11y-audit.mjs` (`pnpm a11y`) runs axe-core WCAG 2.0/2.1 A+AA over 22 pages × 3 themes in headless Chromium — **all clean**. Fixes: darkened `--ink-faint` (light/sepia) for small-text contrast; **split `--accent` (brand/text) vs `--accent-solid` (white-on-accent fills)** because in dark one color can't satisfy both directions. Manual keyboard/SR pass still pending (P8).
+- **#6 render tests → mitigated.** `scripts/smoke-test.mjs` (`pnpm smoke`, in CI): 30 per-template invariant assertions over `dist/` (verses+annotations, lesson TOC↔heading-id, attachments, audio, JSON-LD, canonical/noindex, feeds, redirects, CSP, search scoping).
+- Added `README.md`.
+
+Still open (need data / your input / big refactor): **#1** Arabic search recall (real corpus), **#4+#5** CSP `unsafe-inline` ↔ inline-style refactor, **#7** real content, **#12** R2 provisioning. See `docs/issue.md`.
+
+---
+
 ## Decisions log
 
 | # | Decision | Rationale |

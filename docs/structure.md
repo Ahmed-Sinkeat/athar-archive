@@ -7,10 +7,14 @@ This document describes the *actual* repository layout. It is updated after ever
 
 ---
 
+**Repo:** [github.com/Ahmed-Sinkeat/athar-archive](https://github.com/Ahmed-Sinkeat/athar-archive) (private) · CI green on every push to `main`.
+
 ## Top level
 
 ```
 athar-archive/
+├─ .github/workflows/ci.yml  # CI: install → test → validate:content → build → smoke → tsc
+├─ README.md
 ├─ ahlalathar.config.ts      # tunable values: domain, chunk thresholds, mailto, topicsMax
 ├─ astro.config.ts           # Astro static config + markdown sanitize wiring + RTL i18n
 ├─ tsconfig.json             # extends astro/strict; @/@lib/@components path aliases
@@ -91,6 +95,8 @@ scripts/
 ├─ validate-content.ts       # CLI: loads content, runs validate.ts, exits 1 on any breach
 │                            # wired into `pnpm build` before astro build
 ├─ gen-redirects.ts          # post-build: aliases → dist/_redirects (301)
+├─ smoke-test.mjs            # post-build per-template invariant checks (pnpm smoke, in CI)
+├─ a11y-audit.mjs            # axe-core WCAG A/AA over dist/ in headless Chromium (pnpm a11y)
 ├─ upload-media.sh           # rclone mirror of local media → R2 bucket
 └─ pagefind-spike/           # P0 Arabic search spike (run in P4) + real-index verification
    ├─ site/                  #   controlled corpus: diacritized.html, stripped.html
