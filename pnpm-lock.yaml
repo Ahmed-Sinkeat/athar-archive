@@ -238,6 +238,9 @@ importers:
       '@types/node':
         specifier: ^26.0.0
         version: 26.0.0
+      axe-core:
+        specifier: ^4.12.1
+        version: 4.12.1
       gray-matter:
         specifier: ^4.0.3
         version: 4.0.3
@@ -1082,6 +1085,10 @@ packages:
     resolution: {integrity: sha512-KK5lX90uU9EeVaTjINyj3sy9/NFXVa59aowaqbWBDDKLXZh4rr7GwIaCFYVetE22MJtsCNFerQXn0vlCLmpP/Q==}
     engines: {node: '>=22.12.0', npm: '>=9.6.5', pnpm: '>=7.1.0'}
     hasBin: true
+
+  axe-core@4.12.1:
+    resolution: {integrity: sha512-s7iGf5GaVMxEG0ENN9x+xTr7GFZCb1ZP/1uATUpCEK2X78nDB3RwbtFCo9pGAf9ru+VwoQ464DkaLEeRM08wJA==}
+    engines: {node: '>=4'}
 
   axobject-query@4.1.0:
     resolution: {integrity: sha512-qIj0G9wZbMGNLjLmg1PT6v2mE9AH2zlnADJD/2tC6E00hgmhUOfEB6greHPAfLRSufHqROIUTkw6E+M3lH0PTQ==}
@@ -2725,6 +2732,8 @@ snapshots:
       - tsx
       - uploadthing
       - yaml
+
+  axe-core@4.12.1: {}
 
   axobject-query@4.1.0: {}
 
