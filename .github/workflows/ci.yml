@@ -33,5 +33,8 @@ jobs:
       - name: Build (Astro + Pagefind + redirects)
         run: pnpm build
 
+      - name: Smoke test (per-template invariants over dist/)
+        run: pnpm smoke
+
       - name: Type-check
         run: pnpm exec tsc --noEmit --skipLibCheck
