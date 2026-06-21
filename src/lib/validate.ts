@@ -3,6 +3,7 @@
 // This module handles rules that require resolving refs across collections.
 
 import { extractAnchors } from "./chapters.js";
+import { SLUG_RE } from "./slug.js";
 import type { ContentEntry } from "./types.js";
 
 export type { ContentEntry } from "./types.js";
@@ -15,10 +16,6 @@ export interface BuildError {
 }
 
 type CollectionMap = Map<string, Map<string, { status: string; data: Record<string, unknown>; body: string }>>;
-
-// Single hyphens for word segments; double hyphens separate parent from child
-// e.g., "sharh-al-wasitiyyah--lesson-1", "alfiyyah-ibn-malik--v1--sharh"
-const SLUG_RE = /^[a-z0-9]+(--?[a-z0-9]+)*$/;
 
 // SourceType master sets per entity (mirrors config.ts enums)
 const SOURCE_TYPES: Record<string, readonly string[]> = {

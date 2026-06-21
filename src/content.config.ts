@@ -1,12 +1,10 @@
 import { defineCollection, z } from "astro:content";
 import { glob } from "astro/loaders";
+import { SLUG_RE } from "./lib/slug.js";
 
 // --- shared primitives ---
 
-// Single hyphens for word segments; double hyphens separate parent from child
-// e.g., "sharh-al-wasitiyyah--lesson-1", "alfiyyah-ibn-malik--v1--sharh"
-const slugPattern = /^[a-z0-9]+(--?[a-z0-9]+)*$/;
-const slug = z.string().regex(slugPattern, "invalid slug format — use lowercase letters, digits, hyphens (-- for child separators)");
+const slug = z.string().regex(SLUG_RE, "invalid slug format — use lowercase letters, digits, hyphens (-- for child separators)");
 
 const shared = {
   title: z.string().min(1),

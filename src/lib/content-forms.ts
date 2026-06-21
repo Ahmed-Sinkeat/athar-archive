@@ -199,7 +199,7 @@ export const FORMS: FormDef[] = [
   },
 ];
 
-export const SLUG_RE = /^[a-z0-9]+(--?[a-z0-9]+)*$/;
+export { SLUG_RE } from "./slug";
 
 // YAML-safe scalar: quote when it could be misread (colon, hash, leading marker).
 function yamlValue(v: string): string {
