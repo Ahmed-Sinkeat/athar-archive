@@ -1,4 +1,5 @@
 ---
+import { getCollection } from "astro:content";
 import "../styles/global.css";
 import "../styles/extracted.css"; // generated from former inline styles — must load AFTER global.css
 import { config } from "../../ahlalathar.config";
@@ -7,7 +8,7 @@ interface Props {
   title: string;
   description?: string;
   activeNav?: string;
-  searchMeta?: { title: string; type: string; person?: string; era?: string; id?: string; matn?: boolean; aliases?: string[] };
+  searchMeta?: { title: string; type: string; person?: string; era?: string; id?: string; matn?: boolean; aliases?: string[]; subjects?: string[] };
   searchScope?: { type?: string; in?: string; person?: string; label?: string };
   noindex?: boolean;
   ogType?: string;
@@ -36,20 +37,46 @@ const pagefindFilters = searchMeta
       searchMeta.era ? `era:${searchMeta.era}` : null,
       searchMeta.id ? `id:${searchMeta.id}` : null,
       searchMeta.matn ? `matn:نعم` : null,
+      ...(searchMeta.subjects?.map((s) => `subject:${s}`) ?? []),
     ].filter(Boolean) as string[]
   : [];
 
+// Top nav: the four primary reading collections + المسائل. The title links home
+// (no الرئيسية item); الموضوعات/الفوائد/الأعلام/المقالات live in the footer + browse.
 const nav = [
-  { id: "home", label: "الرئيسية", href: "/" },
   { id: "books", label: "الكتب", href: "/books" },
   { id: "poems", label: "المنظومات", href: "/poems" },
-  { id: "subjects", label: "الموضوعات", href: "/subjects" },
   { id: "series", label: "الدروس", href: "/series" },
   { id: "questions", label: "المسائل", href: "/questions" },
-  { id: "benefits", label: "الفوائد", href: "/benefits" },
   { id: "articles", label: "المقالات", href: "/articles" },
+];
+// Full nav (drawer + footer keep every section reachable).
+const navAll = [
+  ...nav,
+  { id: "subjects", label: "الموضوعات", href: "/subjects" },
+  { id: "benefits", label: "الفوائد", href: "/benefits" },
   { id: "people", label: "الأعلام", href: "/people" },
 ];
+
+// In-bar search filter: type checkboxes + a specific-عَلَم picker (both backed by
+// real Pagefind facets). Person values are the display names the facets store.
+const searchTypes = [
+  { id: "book", label: "كتاب" },
+  { id: "poem", label: "منظومة" },
+  { id: "lesson", label: "درس" },
+  { id: "question", label: "مسائل" },
+  { id: "benefit", label: "فائدة" },
+  { id: "article", label: "مقالة" },
+];
+const filterPersons = (await getCollection("person"))
+  .filter((p) => p.data.status === "published")
+  .map((p) => p.data.title)
+  .sort((a, b) => a.localeCompare(b, "ar"));
+const filterSubjects = (await getCollection("subject"))
+  .filter((s) => s.data.status === "published")
+  .map((s) => s.data.title)
+  .sort((a, b) => a.localeCompare(b, "ar"));
+
 const fullTitle = title === "أهل الأثر" ? title : `${title} · أهل الأثر`;
 ---
 
@@ -97,45 +124,93 @@ const fullTitle = title === "أهل الأثر" ? title : `${title} · أهل ا
   </head>
   <body>
     <header class="topbar" data-pagefind-ignore>
-      <div class="wrap topbar-brandrow">
-        <div class="uf5e88b2">
-          <button class="icon-btn hamburger u660e442" data-action="menu:toggle" aria-label="القائمة" >
-            <span class="u8e79aed"></span>
-          </button>
-        </div>
-        <a href="/" class="brand">
+      <div class="wrap topbar-row">
+        <button class="icon-btn hamburger" data-action="menu:toggle" aria-label="القائمة">
+          <span class="ham-lines"></span>
+        </button>
+
+        <a href="/" class="brand" aria-label="أهل الأثر — الصفحة الرئيسية">
           <span class="brand-name">أهل الأثر</span>
           <span class="brand-sub">الأرشيف العلمي</span>
         </a>
-        <div class="ub5c9733">
-          <a class="icon-btn" href={searchHref} aria-label="البحث">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="20" y1="20" x2="16.65" y2="16.65"></line></svg>
-          </a>
-          <button class="icon-btn theme-cycle ue705c71" data-action="theme:cycle" aria-label="السمة" >◑</button>
+
+        <nav class="topnav" aria-label="التصفّح">
+          {nav.map((n) => (
+            <a href={n.href} aria-current={activeNav === n.id ? "page" : undefined}>{n.label}</a>
+          ))}
+        </nav>
+
+        <div class="topbar-tools">
+          <form class="topsearch" data-topsearch action="/search" method="get" role="search">
+            <input
+              type="text"
+              name="q"
+              class="topsearch-input"
+              data-topsearch-input
+              placeholder="ابحث في الأرشيف…"
+              aria-label="ابحث في الأرشيف"
+              autocomplete="off"
+            />
+            <button type="button" class="topsearch-icon topsearch-filter" data-action="search:filter" aria-label="تصفية البحث" aria-expanded="false" tabindex="-1">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
+            </button>
+            <button type="submit" class="icon-btn topsearch-go" data-action="search:toggle" aria-label="البحث">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="20" y1="20" x2="16.65" y2="16.65"></line></svg>
+            </button>
+          </form>
+
+          <button class="icon-btn" data-action="settings:toggle" aria-label="إعدادات القراءة" aria-expanded="false">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+          </button>
         </div>
       </div>
 
-      <nav class="wrap topnav" aria-label="التصفّح">
-        {nav.map((n) => (
-          <a href={n.href} aria-current={activeNav === n.id ? "page" : undefined}>{n.label}</a>
-        ))}
-      </nav>
+      <!-- search filter popover (type + specific عَلَم) -->
+      <div class="popover filter-pop" data-filter-pop hidden>
+        <div class="pop-title">تصفية البحث</div>
+        <fieldset class="pop-types" data-filter-types>
+          <legend>النوع</legend>
+          {searchTypes.map((t) => (
+            <label class="pop-check"><input type="checkbox" value={t.id} /><span>{t.label}</span></label>
+          ))}
+        </fieldset>
+        <label class="pop-field">
+          <span>عَلَم معيّن</span>
+          <select data-filter-person>
+            <option value="">كل الأعلام</option>
+            {filterPersons.map((p) => <option value={p}>{p}</option>)}
+          </select>
+        </label>
+        {filterSubjects.length > 0 && (
+          <label class="pop-field">
+            <span>موضوع معيّن</span>
+            <select data-filter-subject>
+              <option value="">كل الموضوعات</option>
+              {filterSubjects.map((s) => <option value={s}>{s}</option>)}
+            </select>
+          </label>
+        )}
+        <button type="button" class="btn-accent pop-apply" data-action="search:apply">تطبيق البحث</button>
+      </div>
 
-      <div class="wrap settings-row">
-        <div class="ctl-group">
-          <div class="u8f813ee">
-            <button class="icon-btn" data-action="font:dec" title="تصغير الخط">أ−</button>
-            <button class="icon-btn ude00808" data-action="font:inc" title="تكبير الخط" >أ+</button>
+      <!-- reading-settings popover -->
+      <div class="popover settings-pop" data-settings-pop hidden>
+        <div class="pop-row">
+          <span class="pop-label">حجم الخط</span>
+          <div class="pop-btns">
+            <button class="icon-btn" data-action="font:dec" aria-label="تصغير الخط">أ−</button>
+            <button class="icon-btn" data-action="font:inc" aria-label="تكبير الخط">أ+</button>
           </div>
-          <button class="toggle-btn" data-toggle="tashkeel" data-action="toggle:tashkeel" aria-pressed="true">
-            <span class="toggle-dot"></span>تشكيل
-          </button>
-          <button class="toggle-btn" data-toggle="verseNums" data-action="toggle:verseNums" aria-pressed="true">ترقيم الأبيات</button>
         </div>
-        <div class="theme-switch">
-          <button data-theme-btn="light" data-action="theme:light" aria-pressed="true">فاتح</button>
-          <button data-theme-btn="sepia" data-action="theme:sepia" aria-pressed="false">ورقي</button>
-          <button data-theme-btn="dark" data-action="theme:dark" aria-pressed="false">داكن</button>
+        <button class="toggle-btn pop-toggle" data-toggle="tashkeel" data-action="toggle:tashkeel" aria-pressed="true"><span class="toggle-dot"></span>التشكيل</button>
+        <button class="toggle-btn pop-toggle" data-toggle="verseNums" data-action="toggle:verseNums" aria-pressed="true"><span class="toggle-dot"></span>ترقيم الأبيات</button>
+        <div class="pop-row">
+          <span class="pop-label">السمة</span>
+          <div class="theme-switch">
+            <button data-theme-btn="light" data-action="theme:light" aria-pressed="true">فاتح</button>
+            <button data-theme-btn="sepia" data-action="theme:sepia" aria-pressed="false">ورقي</button>
+            <button data-theme-btn="dark" data-action="theme:dark" aria-pressed="false">داكن</button>
+          </div>
         </div>
       </div>
 
@@ -154,23 +229,7 @@ const fullTitle = title === "أهل الأثر" ? title : `${title} · أهل ا
         <span>البحث</span>
       </a>
       <div class="drawer-section-label">التصفّح</div>
-      {nav.map((n) => <a href={n.href}>{n.label}</a>)}
-      <div class="drawer-section-label u816b4ed" >القراءة</div>
-      <div class="uea49063">
-        <span class="muted u433de30" >حجم الخط</span>
-        <div class="u49cd092">
-          <button class="icon-btn u6745888" data-action="font:dec" >أ−</button>
-          <button class="icon-btn ud575b29" data-action="font:inc" >أ+</button>
-        </div>
-      </div>
-      <button class="toggle-btn u9375847" data-toggle="tashkeel" data-action="toggle:tashkeel" aria-pressed="true" ><span class="toggle-dot"></span>التشكيل</button>
-      <button class="toggle-btn u4a27002" data-toggle="verseNums" data-action="toggle:verseNums" aria-pressed="true" >ترقيم الأبيات</button>
-      <div class="drawer-section-label u816b4ed" >السمة</div>
-      <div class="u49cd092">
-        <button class="btn u2069fa5" data-theme-btn="light" data-action="theme:light" >فاتح</button>
-        <button class="btn u2069fa5" data-theme-btn="sepia" data-action="theme:sepia" >ورقي</button>
-        <button class="btn u2069fa5" data-theme-btn="dark" data-action="theme:dark" >داكن</button>
-      </div>
+      {navAll.map((n) => <a href={n.href} aria-current={activeNav === n.id ? "page" : undefined}>{n.label}</a>)}
     </aside>
 
     <main
@@ -203,6 +262,7 @@ const fullTitle = title === "أهل الأثر" ? title : `${title} · أهل ا
             <a href="/questions">المسائل</a>
             <a href="/about">عن الموقع</a>
             <a href="/contact">تواصل</a>
+            <a href="/compose">إضافة محتوى</a>
           </nav>
         </div>
       </div>

@@ -8,12 +8,11 @@ import Breadcrumbs from "../components/Breadcrumbs.astro";
   <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "إضافة محتوى" }]} />
   <div class="wrap-mid uf5db21c">
     <h1 class="page-title">إضافة محتوى</h1>
-    <p class="page-intro">اختر النوع، واملأ الحقول، ثم انسخ الملف أو نزِّله وضعه في مجلده داخل المستودع، ثم: <code>pnpm validate:content</code>.</p>
+    <p class="page-intro">اختَرْ ما تريد إضافتَه، واملأ الحقول، ثم انسخِ الملف أو نزِّله وضعْه في مجلده داخل المستودع، ثم: <code>pnpm validate:content</code>.</p>
 
-    <div class="field">
-      <label for="ctype">النوع</label>
-      <select id="ctype" class="cinput"></select>
-    </div>
+    <div class="compose-q">ماذا تريد أن تضيف؟</div>
+    <div id="ctypecards" class="compose-types"></div>
+    <select id="ctype" class="sr-only" aria-hidden="true" tabindex="-1"></select>
 
     <div class="compose-grid">
       <form id="cform" autocomplete="off"><div id="cfields"></div></form>

@@ -1,0 +1,64 @@
+---
+import { getCollection } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import EntityCard from "../../components/EntityCard.astro";
+import { isPub, loadGraph } from "../../lib/site";
+import { hrefFor, eraLabel, eraSlug, toArabicDigits, ERA_VALUES } from "../../lib/display";
+import { analyzePoem } from "../../lib/chunk";
+import { collectionLd } from "../../lib/structured-data";
+
+export async function getStaticPaths() {
+  const people = (await getCollection("person")).filter(isPub);
+  const poems = (await getCollection("poem")).filter(isPub);
+  const graph = await loadGraph();
+  const personById = new Map(people.map((p) => [p.id, p]));
+
+  const present = ERA_VALUES.filter((e) => people.some((p) => p.data.era === e));
+  return present.map((era) => {
+    const poets = people
+      .filter((p) => p.data.era === era)
+      .map((p) => ({ id: p.id, title: p.data.title, died: p.data.died, works: graph.materialsByPerson(p.id).filter(isPub).length }))
+      .sort((a, b) => a.title.localeCompare(b.title, "ar"));
+    const eraPoems = poems
+      .filter((p) => personById.get(p.data.person)?.data.era === era)
+      .map((p) => ({ id: p.id, title: p.data.title, author: personById.get(p.data.person)?.data.title ?? "", verses: analyzePoem(p.body ?? "").verseCount }))
+      .sort((a, b) => a.title.localeCompare(b.title, "ar"));
+    return { params: { slug: eraSlug(era)! }, props: { era, poets, eraPoems } };
+  });
+}
+
+const { era, poets, eraPoems } = Astro.props;
+const label = eraLabel(era);
+const path = `/era/${eraSlug(era)}`;
+const jsonLd = collectionLd({
+  title: `العصر ${era}`, description: `أعلامُ ومنظوماتُ العصر ${era} في الأرشيف.`, path,
+  crumbs: [{ name: "الرئيسية", path: "/" }, { name: "الأعلام", path: "/people" }, { name: label, path }],
+});
+---
+<Base title={`العصر ${era}`} description={`أعلامُ ومنظوماتُ العصر ${era} في الأرشيف.`} activeNav="people" jsonLd={jsonLd} searchMeta={{ title: `العصر ${era}`, type: "subject" }}>
+  <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "الأعلام", href: "/people" }, { label }]} />
+  <div class="wrap-mid uf5db21c">
+    <div class="eyebrow u87c136d">العصر</div>
+    <h1 class="page-title">{label}</h1>
+    <p class="page-intro">أعلامُ هذا العصر وما لهم في الأرشيف، ومنظوماتُهم العلمية.</p>
+
+    <div class="section-label">الأعلام · {toArabicDigits(poets.length)}</div>
+    <div class="card-grid">
+      {poets.map((p) => (
+        <EntityCard href={hrefFor("person", p.id)} title={p.title} kind="عَلَم" sub={[p.died && `ت ${p.died}`, `${toArabicDigits(p.works)} من الأعمال`].filter(Boolean).join(" · ")} cta="اطّلع ←" />
+      ))}
+    </div>
+
+    {eraPoems.length > 0 && (
+      <div class="u28e5a30">
+        <div class="section-label">منظوماتُ العصر · {toArabicDigits(eraPoems.length)}</div>
+        <div class="card-grid">
+          {eraPoems.map((p) => (
+            <EntityCard href={hrefFor("poem", p.id)} title={p.title} kind="منظومة" matn={true} sub={`${p.author} · ${toArabicDigits(p.verses)} بيت`} cta="ادخل القراءة ←" />
+          ))}
+        </div>
+      </div>
+    )}
+  </div>
+</Base>

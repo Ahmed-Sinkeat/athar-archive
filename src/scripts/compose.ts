@@ -17,6 +17,28 @@ if (typeSel && fieldsEl && previewEl) {
     typeSel.appendChild(o);
   });
 
+  // friendly "what to add" chooser — buttons that drive the (hidden) select
+  const cardsEl = document.getElementById("ctypecards");
+  function setType(col: string) {
+    typeSel!.value = col;
+    cardsEl?.querySelectorAll<HTMLElement>("[data-type]").forEach((b) =>
+      b.setAttribute("aria-pressed", String(b.dataset.type === col)),
+    );
+    renderFields();
+  }
+  if (cardsEl) {
+    FORMS.forEach((f) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "compose-type";
+      b.dataset.type = f.collection;
+      b.textContent = f.label;
+      b.setAttribute("aria-pressed", "false");
+      b.addEventListener("click", () => setType(f.collection));
+      cardsEl.appendChild(b);
+    });
+  }
+
   const currentDef = (): FormDef | undefined => FORMS.find((f) => f.collection === typeSel.value);
 
   function renderFields() {
@@ -149,5 +171,5 @@ if (typeSel && fieldsEl && previewEl) {
 
   typeSel.addEventListener("change", renderFields);
   fieldsEl.addEventListener("input", update);
-  renderFields();
+  setType(FORMS[0].collection);
 }

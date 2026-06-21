@@ -1,6 +1,6 @@
 # athar-archive — Repository Structure
 
-**As of:** P7 complete (authoring docs, intake governance, content scaffold)
+**As of:** P7 complete (authoring docs, intake governance, content scaffold) + UX-R (reading/browse/search redesign — see `asbuild.md`)
 **Companion docs:** [`asbuild.md`](./asbuild.md) · [`issue.md`](./issue.md) · [`governance.md`](./governance.md) · [`media-and-backup.md`](./media-and-backup.md)
 
 This document describes the *actual* repository layout. It is updated after every phase. Directories that exist but are not yet populated are marked **(pending P7+)**.
@@ -50,7 +50,7 @@ src/
 │  ├─ benefit/               #   الفائدة      — 2 fixtures (with + without source)
 │  ├─ article/               #   المقالة      — 1 fixture
 │  ├─ audio/                 #   الصوتية      — 1 fixture (embedded, polymorphic)
-│  ├─ annotation/            #   الشرح/الحاشية — 1 fixture (embedded, target+anchor)
+│  ├─ annotation/            #   الشرح/الحاشية — 3 fixtures (target+anchor; optional phrase mark + source link)
 │  └─ announcement/          #   الإعلان      — 1 fixture (homepage chrome)
 │
 ├─ lib/                      # build pipeline, derivations & page helpers (P1–P3)
@@ -62,29 +62,33 @@ src/
 │  ├─ chunk.ts               #   threshold-driven single-page vs chapterized (+ tests)
 │  ├─ sanitize.ts            #   Markdown→safe HTML + Arabic heading-ids (+ tests)
 │  ├─ sanitize-schema.ts     #   shared rehype-sanitize schema
-│  ├─ display.ts             #   Arabic-Indic numerals, route map (hrefFor), entity labels, stripTashkeel
-│  ├─ site.ts                #   page-runtime: loadGraph(), personNameMap(), publishedSorted()
+│  ├─ display.ts             #   Arabic-Indic numerals, route map (hrefFor), entity labels, stripTashkeel, era slugs (eraHref)
+│  ├─ site.ts                #   page-runtime: loadGraph(), personNameMap(), publishedSorted(), notesByAnchor(), subjectTitlesFor()
+│  ├─ browse.ts              #   subject→topic grouping for الكتب/المنظومات/المسائل (buildSubjectGroups)
+│  ├─ content-forms.ts       #   /compose field specs per entity (mirrors the Zod schema)
 │  └─ structured-data.ts     #   JSON-LD builders per entity type (+ WebSite/SearchAction)
 │
 ├─ styles/
-│  └─ global.css             #   design system: tokens, 3 themes, reading-scale, verses, annotations
+│  └─ global.css             #   design system: tokens, 3 themes, reading-scale, verses, inline شرح chooser, browse grouping, search/settings popovers
 ├─ scripts/
-│  └─ reader.ts              #   reading-prefs/theme/drawer/progress enhancement (bundled client script)
+│  ├─ reader.ts              #   client enhancement: reading prefs/theme/drawer/progress, expanding search + filter/settings popovers, inline شرح chooser (click/long-press), اختبار reveal
+│  └─ compose.ts             #   /compose client: type chooser → per-entity form → live-built file.md (copy/download)
 │
 ├─ layouts/
-│  └─ Base.astro             #   RTL shell: 3-row header, drawer, progress bar, footer, pre-paint script
+│  └─ Base.astro             #   RTL shell: single-row header (brand · nav · search + settings popovers), drawer, progress bar, footer, pre-paint script
 ├─ components/
-│  ├─ Breadcrumbs.astro · EntityCard.astro · Prose.astro · Verse.astro
+│  ├─ Breadcrumbs.astro · EntityCard.astro · Prose.astro · StudyBar.astro
+│  ├─ Verse.astro          # numbered بيت + inline شرح mark (.ann-mark) + hidden chooser pack
 │  ├─ AudioPlayer.astro    # native <audio>, accessible, styled (lesson/poem/book/article)
 │  └─ Attachments.astro    # PDF/EPUB download links
 └─ pages/                    # every route (BUILD-PLAN 0.4) — all render from fixtures
-   ├─ index.astro · search.astro · about.astro · contact.astro · 404.astro
-   ├─ books.astro · poems.astro · subjects.astro · topics.astro · people.astro
-   ├─ articles.astro · benefits.astro · series/index.astro · questions/index.astro
+   ├─ index.astro · search.astro · compose.astro · about.astro · contact.astro · 404.astro
+   ├─ books.astro · poems.astro · subjects.astro · topics.astro · people.astro    # browse: grouped by subject→topic / era
+   ├─ articles.astro · benefits.astro · series/index.astro · questions/index.astro  # questions: subject→topic drill-down
    ├─ book/[slug].astro · book/[slug]/[chapter].astro
    ├─ poem/[slug].astro · poem/[slug]/[chapter].astro
    ├─ series/[slug].astro · series/[slug]/[lesson].astro
-   ├─ person/[slug].astro · subject/[slug].astro · topic/[slug].astro
+   ├─ person/[slug].astro · subject/[slug].astro · topic/[slug].astro · era/[slug].astro
    ├─ benefit/[slug].astro · article/[slug].astro · questions/[slug].astro
    └─ sitemap.xml.ts · rss.xml.ts            # endpoints (XML feeds)
 ```

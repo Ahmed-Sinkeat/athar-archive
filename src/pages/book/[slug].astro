@@ -7,7 +7,7 @@ import StudyBar from "../../components/StudyBar.astro";
 import AudioPlayer from "../../components/AudioPlayer.astro";
 import Attachments from "../../components/Attachments.astro";
 import { markdownToSafeHtml } from "../../lib/sanitize";
-import { isPub, loadGraph, personNameMap } from "../../lib/site";
+import { isPub, loadGraph, personNameMap, subjectTitlesFor, notesByAnchor } from "../../lib/site";
 import { analyzeBook } from "../../lib/chunk";
 import { hrefFor, toArabicDigits, labelFor, isMatn } from "../../lib/display";
 import { bookLd } from "../../lib/structured-data";
@@ -17,18 +17,18 @@ export async function getStaticPaths() {
   const graph = await loadGraph();
   const names = await personNameMap();
   return books.map((entry) => {
-    const annos = graph
-      .annotationsForTarget("book", entry.id)
-      .filter((an) => an.data.status === "published")
-      .map((an) => ({ kind: an.data.kind, anchor: an.data.anchor, body: an.body ?? "" }));
+    const byAnchor = notesByAnchor("book", entry.id, graph, names);
     const au = graph.audioForSource("book", entry.id).find((a) => a.data.status === "published");
     const audio = au ? { url: au.data.url, format: au.data.format, duration: au.data.duration ?? null, sizeBytes: au.data.size_bytes ?? null } : null;
-    return { params: { slug: entry.id }, props: { entry, annos, audio, author: names.get(entry.data.person) } };
+    return { params: { slug: entry.id }, props: { entry, byAnchor, audio, author: names.get(entry.data.person), subjects: subjectTitlesFor(entry.data.topics, graph) } };
   });
 }
 
-const { entry, annos, audio, author } = Astro.props;
+const { entry, byAnchor, audio, author, subjects } = Astro.props;
 const a = analyzeBook(entry.body ?? "");
+const KIND_SLUG: Record<string, string> = { شرح: "sharh", حاشية: "hashiya", تخريج: "takhrij", إعراب: "iraab" };
+const anchors = Object.entries(byAnchor);
+const phraseAnchors = anchors.filter(([, notes]) => notes.some((n) => n.phrase));
 const path = `/book/${entry.id}`;
 const jsonLd = bookLd({
   title: entry.data.title, authorId: entry.data.person, authorName: author,
@@ -36,7 +36,7 @@ const jsonLd = bookLd({
   crumbs: [{ name: "الرئيسية", path: "/" }, { name: "الكتب", path: "/books" }, { name: entry.data.title, path }],
 });
 ---
-<Base title={entry.data.title} description={entry.data.description} activeNav="books" ogType="book" jsonLd={jsonLd} searchMeta={{ title: entry.data.title, type: "book", id: entry.id, person: author, matn: isMatn("book", entry.data) }} searchScope={{ in: entry.id, label: entry.data.title }}>
+<Base title={entry.data.title} description={entry.data.description} activeNav="books" ogType="book" jsonLd={jsonLd} searchMeta={{ title: entry.data.title, type: "book", id: entry.id, person: author, matn: isMatn("book", entry.data), subjects }} searchScope={{ in: entry.id, label: entry.data.title }}>
   <Breadcrumbs
     width="wrap-matn"
     items={[
@@ -72,15 +72,26 @@ const jsonLd = bookLd({
       <div class="u49fcd85"><Prose body={entry.body ?? ""} /></div>
     )}
 
-    {annos.length > 0 && (
-      <div class="benefit-strip">
-        <div class="toc-label uec818db" >حواشٍ وتخريجات</div>
-        {annos.map((an) => (
-          <div class="note u2a1b75c"  data-ar>
-            <span class="note-kind">{an.kind} · {an.anchor}</span>
-            <Fragment set:html={markdownToSafeHtml(an.body)} />
+    {phraseAnchors.map(([anchor, notes]) => (
+      <div class="ann-pack" id={`ann-${anchor}`} data-ann-pack data-phrase={notes.find((n) => n.phrase)?.phrase} hidden>
+        {notes.map((nt) => (
+          <div class={`ann-entry k-${KIND_SLUG[nt.kind] ?? "sharh"}`} data-kind={nt.kind} data-label={nt.annotator ? `${nt.kind} — ${nt.annotator}` : nt.kind}>
+            <div class="ann-entry-body" data-ar><Fragment set:html={markdownToSafeHtml(nt.body)} /></div>
+            {nt.sourceHref && <a class="ann-source-link" href={nt.sourceHref}>اقرأ في موضعه{nt.sourceLabel ? `: ${nt.sourceLabel}` : ""} ←</a>}
           </div>
         ))}
+      </div>
+    ))}
+
+    {anchors.length > 0 && (
+      <div class="benefit-strip">
+        <div class="toc-label uec818db" >حواشٍ وتخريجات</div>
+        {anchors.flatMap(([anchor, notes]) => notes.map((nt) => (
+          <div class="note u2a1b75c"  data-ar>
+            <span class="note-kind">{nt.kind} · {anchor}</span>
+            <Fragment set:html={markdownToSafeHtml(nt.body)} />
+          </div>
+        )))}
       </div>
     )}
 

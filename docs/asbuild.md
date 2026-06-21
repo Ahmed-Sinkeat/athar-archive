@@ -8,7 +8,7 @@ Definition-of-Done (DoD) status, decisions, and any deviations from the plan.
 
 **Project:** أهل الأثر — Arabic Islamic knowledge archive
 **Stack:** Astro (static) · Markdown + Zod Content Collections · Pagefind (search, P4) · Cloudflare Pages/R2 (P6/P8)
-**Last updated:** P7 complete · contributor docs + intake governance + content scaffold · 66/66 tests
+**Last updated:** UX-R complete · reading/browse/search redesign (top bar, browse IA, inline شرح chooser, /compose) · see the UX-R section below
 
 ---
 
@@ -26,6 +26,7 @@ Definition-of-Done (DoD) status, decisions, and any deviations from the plan.
 | **P7** | Authoring experience & governance | ✅ Done | `4b1f0d1` |
 | P8 | QA, performance, accessibility, launch | ⬜ Pending | — |
 | P9 | Post-launch & deferred roadmap | ⬜ Pending | — |
+| **UX-R** | Reading/browse/search redesign | ✅ Done | _this branch_ |
 
 ¹ The Pagefind Arabic spike (P0's gate for P4) is **not yet run** — see Open Items. It does not block P1–P3, so the build proceeded; it must be done before P4.
 
@@ -302,3 +303,44 @@ checklist, and **apply branch protection** (issue #13). Rollback = rebuild previ
 content present, RTL Arabic. Branch protection is **plan-blocked** (private repo needs GitHub Pro
 or public — #13). Lighthouse deferred — axe + render-budget + link-integrity cover the
 static-page signals; revisit if score tracking is wanted.
+
+---
+
+## UX-R — Reading / browse / search redesign ✅
+
+A post-P7 pass driven by maintainer feedback on the live reading experience. Three
+phases plus follow-ups; the visual identity (Amiri / IBM Plex Arabic / sepia "ورقي" /
+۞ motif) is unchanged — these are interaction, IA, and authoring changes.
+
+**Phase 1 — top bar & search**
+- Three-row header → **single line**: brand (= home, no الرئيسية item) · slim nav · search + settings gear. Dropped الموضوعات/الفوائد/الأعلام from the top nav (kept in drawer + footer).
+- **Inline expanding search** with an in-bar **filter popover** (type checkboxes + specific عَلَم), replacing the navigate-to-`/search` icon and the hidden chip row.
+- **Settings gear popover** consolidates all reading controls (font, تشكيل, ترقيم, theme); on mobile it sits in the top line. Removed the `◑` theme-cycle button. Home hero trimmed (eyebrow → "أرشيف علمي"; lede deleted).
+
+**Phase 2 — browse & IA**
+- `lib/browse.ts buildSubjectGroups()` powers **subject→topic grouping** on `books.astro` + `poems.astro`.
+- `questions/index.astro` rebuilt as a native `<details>` **drill-down** (فن → موضوع → مسائل).
+- New **`/era/[slug]`** pages (poets + their منظومات); `eraSlug/eraHref` in `display.ts`; `people.astro` grouped by era with heading links.
+- StudyBar trimmed to **قراءة + اختبار** (no emoji); memorization layer removed (✓/★ on verses, progress panel, home review badge).
+
+**Phase 3 — annotations & authoring**
+- **Inline-phrase شرح chooser**: annotation schema gained `phrase` (substring to mark, tashkeel-insensitive) + `source_type`/`source_id` (cross-ref). `site.ts notesByAnchor()` enriches notes. Marks (`.ann-mark`) open a floating popover; multiple شروح on one spot show a chooser menu → entry with the phrase highlighted. Click (desktop) / long-press (mobile). Poems mark server-side (Verse.astro); prose books are marked client-side by `reader.ts` walking `.prose` text nodes.
+- **`/compose`** gained a "ماذا تريد أن تضيف؟" type-card chooser and the new annotation fields; linked from the footer as "إضافة محتوى". Still lightest-path (generates a file to commit — no-backend).
+
+**Follow-ups**
+- **Subject Pagefind facet**: `subjectTitlesFor(topics, graph)` → `searchMeta.subjects` on book/poem/chapters/article/question → a `subject` facet + a موضوع select in the in-bar filter. `search.astro` reads `subject` and combines it into the scope chip.
+- Removed dead CSS from the retired study modes/memorization/`:target` reveal.
+
+**Deviations / decisions**
+- **D15 — annotation reveal is now JS-driven (popover chooser), superseding D8.** The JS-free `:target` reveal is **retained as a fallback** (`.ann-pack:target`), so šarḥ stays reachable without JS; with JS the popover chooser replaces the old whole-verse dotted link.
+- Subject filtering required a new Pagefind **`subject` facet** (deferred at Phase 1, added in follow-ups).
+- Prose inline marks are wrapped client-side (first tashkeel-insensitive match per `.prose`); the bottom "حواشٍ وتخريجات" list is kept as the canonical reference + no-JS path.
+
+**Verification**
+```
+pnpm validate:content → ✓ 23 entries
+pnpm build            → ✓ green — 32 pages (+ /era/*) + sitemap + rss + _redirects + _headers
+pagefind index        → ✓ 6 filters (type/person/era/id/matn/subject)
+subject facet         → ✓ «السنة» 2 results → 1 with subject=العقيدة → 0 with النحو والصرف (headless Chromium)
+شرح chooser           → ✓ poem (alfiyyah v1: شرح+إعراب) & prose book (al-wasitiyyah p1: شرح+حاشية) verified
+```

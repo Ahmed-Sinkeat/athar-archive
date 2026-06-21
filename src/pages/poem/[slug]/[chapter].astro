@@ -4,7 +4,7 @@ import Base from "../../../layouts/Base.astro";
 import Breadcrumbs from "../../../components/Breadcrumbs.astro";
 import Verse from "../../../components/Verse.astro";
 import StudyBar from "../../../components/StudyBar.astro";
-import { isPub, loadGraph, personNameMap } from "../../../lib/site";
+import { isPub, loadGraph, personNameMap, notesByAnchor, subjectTitlesFor } from "../../../lib/site";
 import { analyzePoem } from "../../../lib/chunk";
 import { hrefFor, toArabicDigits } from "../../../lib/display";
 
@@ -16,24 +16,21 @@ export async function getStaticPaths() {
   for (const entry of poems) {
     const a = analyzePoem(entry.body ?? "");
     if (!a.chunked) continue; // only chapterized poems expose chapter pages
-    const byAnchor: Record<string, { kind: string; body: string }[]> = {};
-    for (const an of graph.annotationsForTarget("poem", entry.id)) {
-      if (an.data.status !== "published") continue;
-      (byAnchor[an.data.anchor] ??= []).push({ kind: an.data.kind, body: an.body ?? "" });
-    }
+    const byAnchor = notesByAnchor("poem", entry.id, graph, names);
+    const subjects = subjectTitlesFor(entry.data.topics, graph);
     for (const c of a.chapters) {
       paths.push({
         params: { slug: entry.id, chapter: c.slug },
-        props: { entry, chapter: c, byAnchor, author: names.get(entry.data.person) },
+        props: { entry, chapter: c, byAnchor, author: names.get(entry.data.person), subjects },
       });
     }
   }
   return paths;
 }
 
-const { entry, chapter, byAnchor, author } = Astro.props;
+const { entry, chapter, byAnchor, author, subjects } = Astro.props;
 ---
-<Base title={`${chapter.title} · ${entry.data.title}`} activeNav="poems" searchMeta={{ title: `${entry.data.title} — ${chapter.title}`, type: "poem", id: entry.id, person: author, matn: true }} searchScope={{ in: entry.id, label: entry.data.title }}>
+<Base title={`${chapter.title} · ${entry.data.title}`} activeNav="poems" searchMeta={{ title: `${entry.data.title} — ${chapter.title}`, type: "poem", id: entry.id, person: author, matn: true, subjects }} searchScope={{ in: entry.id, label: entry.data.title }}>
   <Breadcrumbs
     width="wrap-read"
     items={[

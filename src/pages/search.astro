@@ -41,7 +41,10 @@ import Breadcrumbs from "../components/Breadcrumbs.astro";
         id: params.get("in"),
         label: params.get("label"),
       };
-      const hasScope = !!(scope.type || scope.person || scope.id);
+      // Multi-type selection from the top-bar in-bar filter (include several types).
+      const typesParam = (params.get("types") || "").split(",").filter(Boolean);
+      const subjectParam = params.get("subject");
+      const hasScope = !!(scope.type || scope.person || scope.id || typesParam.length || subjectParam);
 
       // Facet selections (narrow within current results).
       let activeType = null;
@@ -50,6 +53,8 @@ import Breadcrumbs from "../components/Breadcrumbs.astro";
       if (hasScope) {
         const what = scope.id ? (scope.label || "هذا المتن")
           : scope.person ? `أرشيف ${scope.label || scope.person}`
+          : subjectParam ? subjectParam
+          : typesParam.length ? typesParam.map((t) => LABEL[t] || t).join("، ")
           : (LABEL[scope.type] || scope.type);
         input.placeholder = `ابحث ضمن ${what}…`;
       }
@@ -78,7 +83,9 @@ import Breadcrumbs from "../components/Breadcrumbs.astro";
       function buildFilters() {
         const f = {};
         if (scope.type) f.type = scope.type;
+        else if (typesParam.length) f.type = typesParam.length === 1 ? typesParam[0] : typesParam;
         if (scope.person) f.person = scope.person;
+        if (subjectParam) f.subject = subjectParam;
         if (scope.id) f.id = scope.id;
         if (activeType) f.type = activeType;
         if (activePerson) f.person = activePerson;
@@ -88,14 +95,17 @@ import Breadcrumbs from "../components/Breadcrumbs.astro";
       function renderFilters(data) {
         filtersEl.innerHTML = "";
         if (hasScope) {
-          const what = scope.id ? `ضمن: ${scope.label || "هذا المتن"}`
-            : scope.person ? `أرشيف: ${scope.label || scope.person}`
-            : `النوع: ${LABEL[scope.type] || scope.type}`;
-          filtersEl.appendChild(chip(`${what} ✕`, true, () => {
+          const parts = [];
+          if (scope.id) parts.push(`ضمن: ${scope.label || "هذا المتن"}`);
+          if (scope.person) parts.push(`أرشيف: ${scope.label || scope.person}`);
+          if (typesParam.length) parts.push(`النوع: ${typesParam.map((t) => LABEL[t] || t).join("، ")}`);
+          else if (scope.type) parts.push(`النوع: ${LABEL[scope.type] || scope.type}`);
+          if (subjectParam) parts.push(`الموضوع: ${subjectParam}`);
+          filtersEl.appendChild(chip(`${parts.join(" · ")} ✕`, true, () => {
             location.href = "/search" + (input.value ? "?q=" + encodeURIComponent(input.value) : "");
           }, "chip-scope"));
         }
-        if (!scope.type && !scope.id) {
+        if (!scope.type && !scope.id && !typesParam.length) {
           const types = [...new Set(data.flatMap((d) => d.filters?.type || []))];
           if (types.length > 1 || activeType) {
             filtersEl.appendChild(chip("كل الأنواع", !activeType, () => { activeType = null; run(input.value); }));

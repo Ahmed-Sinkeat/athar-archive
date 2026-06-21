@@ -47,9 +47,8 @@ const latest = [
 <Base title="أهل الأثر" description="الأرشيف العلمي لأهل السنة والجماعة: متونٌ ومنظوماتٌ ودروسٌ محقَّقةً ومُشكَّلةً، في تجربة قراءة هادئة." activeNav="home" jsonLd={websiteLd()}>
   <section class="hero">
     <div class="hero-inner">
-      <div class="hero-eyebrow">أرشيفٌ علميٌّ طويلُ العُمر</div>
+      <div class="hero-eyebrow">أرشيف علمي</div>
       <h1 class="hero-title">أهل الأثر</h1>
-      <p class="hero-lede">المتونُ والمنظوماتُ والدروسُ، مُحقَّقةً ومُشكَّلةً، في تجربةِ قراءةٍ هادئةٍ تجعلُ المعرفةَ هي الأصل.</p>
 
       <form action="/search" method="get" class="u5fbcbc5">
         <div class="u537b78d">
@@ -73,7 +72,6 @@ const latest = [
         <div class="stat"><div class="stat-num">{toArabicDigits(s.num)}</div><div class="stat-label">{s.label}</div></div>
       ))}
     </div>
-    <div class="review-today u-center-text" data-review-home hidden>لديك <span data-review-home-n></span> موضعًا يحتاج مراجعة — تابِعْ حفظك</div>
   </div>
 
   {anns.length > 0 && (
