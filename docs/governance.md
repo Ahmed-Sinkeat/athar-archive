@@ -59,8 +59,13 @@ link topics, format verses/paragraphs) → opens/labels the PR → review → se
 `published` → merge. Full flow in [CONTRIBUTING §01](../CONTRIBUTING.md#01--مسار-المتطوع).
 Issue forms live in [`.github/ISSUE_TEMPLATE/`](../.github/ISSUE_TEMPLATE).
 
-## Status — pending admin action
+## Status — not yet enabled (plan-gated)
 
-Branch protection is a **GitHub setting, not code**; it must be applied in the repo
-UI by an admin. Until then the rules above are convention, not enforcement. Tracked
-in [`issue.md`](./issue.md).
+Branch protection on a **private** repo requires **GitHub Pro/Team** — a `gh api` attempt
+returned HTTP 403: *"Upgrade to GitHub Pro or make this repository public."* Until the repo
+goes public at launch (protection is then free) or the account upgrades, the rules above are
+convention, not enforcement — acceptable while there are no external contributors yet.
+
+**Solo-maintainer note:** when enabling, keep `enforce_admins: false` until a second editor
+exists. GitHub forbids approving your own PR, so enforcing reviews on the lone admin would
+lock merges entirely. Flip it on once the team is ≥2. Tracked in [`issue.md`](./issue.md) (#13).

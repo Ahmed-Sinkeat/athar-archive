@@ -36,5 +36,8 @@ jobs:
       - name: Smoke test (per-template invariants over dist/)
         run: pnpm smoke
 
+      - name: Link integrity (internal links + redirects resolve over dist/)
+        run: pnpm check:links
+
       - name: Type-check
         run: pnpm exec tsc --noEmit --skipLibCheck
