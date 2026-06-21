@@ -31,7 +31,7 @@ const jsonLd = benefitLd({
   crumbs: [{ name: "الرئيسية", path: "/" }, { name: "الفوائد", path: "/benefits" }, { name: "فائدة", path }],
 });
 ---
-<Base title={entry.data.title} activeNav="benefits" ogType="article" jsonLd={jsonLd} searchMeta={{ title: entry.data.title, type: "benefit" }}>
+<Base title={entry.data.title} activeNav="benefits" ogType="article" jsonLd={jsonLd} searchMeta={{ title: entry.data.title, type: "benefit", person: personName }}>
   <Breadcrumbs width="wrap-read" items={[{ label: "الرئيسية", href: "/" }, { label: "الفوائد", href: "/benefits" }, { label: "فائدة" }]} />
   <div class="wrap-read reading-pad u91a8701" >
     <div class="ornament u3ba7d3f" >۞</div>

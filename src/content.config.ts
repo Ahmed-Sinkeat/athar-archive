@@ -38,6 +38,11 @@ const person = defineCollection({
     born: z.string().optional(),   // free-form (e.g., "661 هـ")
     died: z.string().optional(),
     location: z.string().optional(),
+    // العصر الأدبي — keep values in sync with ERA_VALUES in src/lib/display.ts
+    era: z.enum(["الجاهلي", "صدر الإسلام", "الأموي", "العباسي", "الأندلسي", "المتأخّر", "الحديث"]).optional(),
+    // Arabic synonyms / كُنى surfaced to search (e.g. شيخ الإسلام، أحمد بن عبد الحليم).
+    // Note: this is distinct from `aliases` (latin slug → 301 redirects).
+    also_known_as: z.array(z.string()).optional(),
   }),
 });
 
@@ -69,6 +74,8 @@ const book = defineCollection({
   schema: z.object({
     ...shared,
     person: slug,           // → Person (author)
+    // study classification — drives the متن badge + study modes (poems are always متن)
+    kind: z.enum(["متن", "مرجع", "مجموع"]).default("متن"),
     topics: topicsField,
     description: z.string().optional(),
     edition: z.string().optional(),

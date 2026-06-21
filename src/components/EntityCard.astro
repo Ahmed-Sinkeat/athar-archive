@@ -1,4 +1,5 @@
 ---
+import { eraLabel } from "../lib/display";
 interface Props {
   href: string;
   title: string;
@@ -8,14 +9,21 @@ interface Props {
   sub?: string;
   cta?: string;
   filterKey?: string;
+  matn?: boolean;     // render a متن badge (every poem / متن-books)
+  era?: string;       // العصر — canonical value; badge shows eraLabel(), data-era filters
 }
-const { href, title, kind, kindColor = "tag-accent", corner, sub, cta = "ادخل ←", filterKey } = Astro.props;
+const { href, title, kind, kindColor = "tag-accent", corner, sub, cta = "ادخل ←", filterKey, matn, era } = Astro.props;
+const hasRow = kind || corner || matn || era;
 ---
-<a class="card" href={href} data-kind={filterKey}>
+<a class="card" href={href} data-kind={filterKey} data-era={era}>
   {
-    (kind || corner) && (
+    hasRow && (
       <div class="card-kindrow">
-        {kind ? <span class:list={["pill", kindColor]}>{kind}</span> : <span />}
+        <span class="card-kindrow-tags">
+          {kind ? <span class:list={["pill", kindColor]}>{kind}</span> : <span />}
+          {matn && <span class="badge-matn">متن</span>}
+          {era && <span class="pill tag-verdigris">{eraLabel(era)}</span>}
+        </span>
         {corner && <span class="faint u6cb285c" >{corner}</span>}
       </div>
     )

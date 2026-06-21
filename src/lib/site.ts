@@ -18,6 +18,12 @@ export async function personNameMap(): Promise<Map<string, string>> {
   return new Map(people.map((p) => [p.id, p.data.title as string]));
 }
 
+// id → العصر (literary era), only for people who have one set.
+export async function personEraMap(): Promise<Map<string, string>> {
+  const people = await getCollection("person");
+  return new Map(people.flatMap((p) => (p.data.era ? [[p.id, p.data.era as string]] : [])));
+}
+
 export const isPub = (e: { data: { status?: unknown } }) => e.data.status === "published";
 
 // published entries of a collection, newest first

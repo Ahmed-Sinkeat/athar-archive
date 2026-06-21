@@ -4,33 +4,32 @@ import Base from "../layouts/Base.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
 import EntityCard from "../components/EntityCard.astro";
 import { personNameMap, isPub } from "../lib/site";
-import { hrefFor, toArabicDigits } from "../lib/display";
-import { analyzePoem } from "../lib/chunk";
+import { hrefFor, labelFor } from "../lib/display";
 
-const [books, poems] = await Promise.all([getCollection("book"), getCollection("poem")]);
+const books = (await getCollection("book")).filter(isPub);
 const names = await personNameMap();
 
-const items = [
-  ...books.filter(isPub).map((e) => ({
-    kind: "متن", filterKey: "matn", href: hrefFor("book", e.id), title: e.data.title,
+const items = books
+  .map((e) => ({
+    kind: labelFor("book", e.data),
+    filterKey: (e.data as any).kind ?? "متن",
+    href: hrefFor("book", e.id),
+    title: e.data.title,
     sub: `${names.get(e.data.person) ?? ""}`,
-  })),
-  ...poems.filter(isPub).map((e) => ({
-    kind: "منظومة", filterKey: "manzuma", href: hrefFor("poem", e.id), title: e.data.title,
-    sub: `${names.get(e.data.person) ?? ""} · ${toArabicDigits(analyzePoem(e.body ?? "").verseCount)} بيت`,
-  })),
-].sort((a, b) => a.title.localeCompare(b.title, "ar"));
+  }))
+  .sort((a, b) => a.title.localeCompare(b.title, "ar"));
 ---
-<Base title="المكتبة" description="متونٌ ومنظوماتٌ محقَّقةٌ مُشكَّلةٌ، مرتَّبةٌ حسب الفنِّ والعصر." activeNav="books">
-  <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "المكتبة" }]} />
+<Base title="الكتب" description="متونٌ ومراجعُ ومجاميعُ محقَّقةٌ مُشكَّلةٌ، مرتَّبةٌ حسب الفنِّ." activeNav="books" searchScope={{ type: "book" }}>
+  <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "الكتب" }]} />
   <div class="wrap-mid uf5db21c" >
-    <h1 class="page-title">المكتبة</h1>
-    <p class="page-intro">متونٌ ومنظوماتٌ مُحقَّقةٌ مُشكَّلةٌ. اختر عملاً للدخول في وضع القراءة.</p>
+    <h1 class="page-title">الكتب</h1>
+    <p class="page-intro">المتونُ والمراجعُ والمجاميعُ، مُحقَّقةٌ مُشكَّلةٌ. اختر كتاباً للدخول في وضع القراءة.</p>
 
     <div class="u1b7f0c1" data-filterbar>
       <button class="chip" data-filter="all" aria-pressed="true">الكل</button>
-      <button class="chip" data-filter="matn" aria-pressed="false">المتون</button>
-      <button class="chip" data-filter="manzuma" aria-pressed="false">المنظومات</button>
+      <button class="chip" data-filter="متن" aria-pressed="false">المتون</button>
+      <button class="chip" data-filter="مرجع" aria-pressed="false">المراجع</button>
+      <button class="chip" data-filter="مجموع" aria-pressed="false">المجاميع</button>
     </div>
 
     <div class="card-grid">

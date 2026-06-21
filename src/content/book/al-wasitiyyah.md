@@ -1,6 +1,7 @@
 ---
 title: العقيدة الواسطية
 person: ibn-taymiyyah
+kind: متن
 topics:
   - al-asma-was-sifat
 status: published

@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import Base from "../layouts/Base.astro";
-import { toArabicDigits, hrefFor } from "../lib/display";
+import { toArabicDigits, hrefFor, labelFor } from "../lib/display";
 import { analyzePoem } from "../lib/chunk";
 import { websiteLd } from "../lib/structured-data";
 
@@ -21,7 +21,7 @@ const [people, books, poems, series, lessons, articles, benefits, announcements]
 const personName = new Map(people.map((p) => [p.id, p.data.title]));
 
 const stats = [
-  { num: pub(books).length, label: "متنًا" },
+  { num: pub(books).length, label: "كتابًا" },
   { num: pub(poems).length, label: "منظومة" },
   { num: pub(lessons).length, label: "درسًا مفرَّغًا" },
   { num: pub(people).length, label: "من الأعلام" },
@@ -35,7 +35,7 @@ const featuredVerses = featured ? analyzePoem(featured.body ?? "").verses.slice(
 
 // latest across materials by published_at
 const latest = [
-  ...pub(books).map((e) => ({ e, kind: "متن", color: "tag-accent" })),
+  ...pub(books).map((e) => ({ e, kind: labelFor("book", e.data), color: "tag-accent" })),
   ...pub(poems).map((e) => ({ e, kind: "منظومة", color: "tag-accent" })),
   ...pub(series).map((e) => ({ e, kind: "سلسلة", color: "tag-verdigris" })),
   ...pub(articles).map((e) => ({ e, kind: "مقالة", color: "tag-verdigris" })),
@@ -59,7 +59,7 @@ const latest = [
       </form>
 
       <div class="u40e95b5">
-        <a class="btn btn-accent" href="/books">تصفّح المكتبة</a>
+        <a class="btn btn-accent" href="/books">تصفّح الكتب</a>
         {featured && <a class="btn" href={hrefFor("poem", featured.id)}>ابدأ بـ{featured.data.title}</a>}
       </div>
 
@@ -73,6 +73,7 @@ const latest = [
         <div class="stat"><div class="stat-num">{toArabicDigits(s.num)}</div><div class="stat-label">{s.label}</div></div>
       ))}
     </div>
+    <div class="review-today u-center-text" data-review-home hidden>لديك <span data-review-home-n></span> موضعًا يحتاج مراجعة — تابِعْ حفظك</div>
   </div>
 
   {anns.length > 0 && (
@@ -115,9 +116,10 @@ const latest = [
   <div class="home-section">
     <div class="section-label">تصفّح الأرشيف</div>
     <div class="card-grid u8bffae7" >
-      <a class="card" href="/books"><div class="ufa5a688">ا</div><div class="card-title ua3ba3b1" >المكتبة</div><p class="card-sub uf04e97f" >المتونُ والمنظوماتُ محقَّقةً ومُشكَّلةً، مرتَّبةً حسب الفنِّ والعصر.</p><span class="card-cta">تصفّح ←</span></a>
-      <a class="card" href="/series"><div class="ufa5a688">ب</div><div class="card-title ua3ba3b1" >الدروس</div><p class="card-sub uf04e97f" >سلاسلُ شرحِ المتونِ، مفرَّغةً نصاً مع الصوت والفوائد المستخرجة.</p><span class="card-cta">تصفّح ←</span></a>
-      <a class="card" href="/people"><div class="ufa5a688">ج</div><div class="card-title ua3ba3b1" >الأعلام</div><p class="card-sub uf04e97f" >تراجمُ الناظمين والمصنِّفين والشُّرّاح، وما لكلٍّ منهم في الأرشيف.</p><span class="card-cta">تصفّح ←</span></a>
+      <a class="card" href="/books"><div class="ufa5a688">ا</div><div class="card-title ua3ba3b1" >الكتب</div><p class="card-sub uf04e97f" >المتونُ والمراجعُ محقَّقةً ومُشكَّلةً، مرتَّبةً حسب الفنِّ.</p><span class="card-cta">تصفّح ←</span></a>
+      <a class="card" href="/poems"><div class="ufa5a688">ب</div><div class="card-title ua3ba3b1" >المنظومات</div><p class="card-sub uf04e97f" >منظوماتٌ علميةٌ مُشكَّلةٌ مُرقَّمةُ الأبيات، مع الشروح والتخريج.</p><span class="card-cta">تصفّح ←</span></a>
+      <a class="card" href="/series"><div class="ufa5a688">ج</div><div class="card-title ua3ba3b1" >الدروس</div><p class="card-sub uf04e97f" >سلاسلُ شرحِ المتونِ، مفرَّغةً نصاً مع الصوت والفوائد المستخرجة.</p><span class="card-cta">تصفّح ←</span></a>
+      <a class="card" href="/people"><div class="ufa5a688">د</div><div class="card-title ua3ba3b1" >الأعلام</div><p class="card-sub uf04e97f" >تراجمُ الناظمين والمصنِّفين والشُّرّاح، وما لكلٍّ منهم في الأرشيف.</p><span class="card-cta">تصفّح ←</span></a>
     </div>
   </div>
 

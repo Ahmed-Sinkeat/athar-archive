@@ -14,6 +14,9 @@
     "smoke": "node scripts/smoke-test.mjs",
     "check:links": "node scripts/check-links.mjs",
     "perf:budget": "node scripts/perf-budget.mjs",
+    "perf:gen": "node scripts/gen-perf-content.mjs",
+    "perf:clean": "node scripts/gen-perf-content.mjs --clean",
+    "perf:bench": "node scripts/perf-bench.mjs",
     "test": "vitest run",
     "deploy": "wrangler deploy"
   },

@@ -23,12 +23,29 @@ ok(/class="hero-title"/.test(home), "hero title renders");
 ok(/class="stats-strip"/.test(home), "stats strip renders");
 ok(/"@type":"WebSite"/.test(home) && /SearchAction/.test(home), "WebSite + SearchAction JSON-LD");
 ok(/rel="canonical"/.test(home), "home has canonical");
+ok(/href="\/poems"/.test(home) && /href="\/questions"/.test(home), "nav splits الكتب/المنظومات + المسائل");
+ok(!/>المكتبة</.test(home), "no 'المكتبة' label in nav/footer");
+ok(/aria-label="البحث"/.test(home), "search affordance present");
 
-// --- library index ---
+// --- books index (books only, kind filters) ---
 section("/books");
 const books = read("books/index.html");
-ok((books.match(/class="card"/g) || []).length >= 3, "library lists ≥3 cards");
-ok(/data-kind="matn"/.test(books) && /data-kind="manzuma"/.test(books), "filter keys present");
+ok((books.match(/class="card"/g) || []).length >= 1, "books index lists cards");
+ok(/data-filter="متن"/.test(books) && /data-filter="مرجع"/.test(books), "kind filter chips present");
+ok(/data-kind="متن"/.test(books), "book kind tagged on cards");
+
+// --- poems index (poems only, متن badge + inherited era) ---
+section("/poems");
+const poems = read("poems/index.html");
+ok((poems.match(/class="card"/g) || []).length >= 2, "poems index lists cards");
+ok(/badge-matn/.test(poems), "متن badge on poem cards");
+ok(/data-era=/.test(poems), "era tagged on poem cards (inherited from author)");
+
+// --- composer (unlisted maintainer tool) ---
+section("/compose");
+const compose = read("compose/index.html");
+ok(/id="ctype"/.test(compose), "composer renders");
+ok(/name="robots" content="noindex"/.test(compose), "composer is noindex");
 
 // --- poem reader: verses + stacked annotations ---
 section("/poem/alfiyyah-ibn-malik");
@@ -39,11 +56,14 @@ ok(/id="note-v1"/.test(poem), "note block present");
 ok(/note-kind">شرح/.test(poem) && /note-kind">إعراب/.test(poem), "both annotation kinds stacked");
 ok(/rel="canonical" href="https:\/\/ahlalathar\.com\/poem\/alfiyyah-ibn-malik"/.test(poem), "canonical (.com)");
 ok(/"@type":\["CreativeWork","Poem"\]/.test(poem), "Poem JSON-LD");
+ok(/data-studybar/.test(poem) && /data-matn=/.test(poem), "study bar + tracking container on متن poem");
+ok(/badge-matn/.test(poem), "متن badge on poem reader");
 
 // --- book reader: prose + audio? + attachments ---
 section("/book/al-wasitiyyah");
 const book = read("book/al-wasitiyyah/index.html");
 ok(/class="prose"/.test(book), "matn prose renders");
+ok(/data-studybar/.test(book) && /data-matn=/.test(book), "study bar + tracking on متن book");
 ok(/class="download-link"/.test(book) && /al-wasitiyyah\.pdf/.test(book), "attachments (PDF) render");
 ok(/"@type":"Book"/.test(book), "Book JSON-LD");
 

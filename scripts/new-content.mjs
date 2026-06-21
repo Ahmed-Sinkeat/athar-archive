@@ -39,6 +39,7 @@ const TEMPLATES = {
     `# born: 661 هـ          # optional (free-form)`,
     `# died: 728 هـ          # optional`,
     `# location: حرّان        # optional`,
+    `# era: العباسي          # optional: الجاهلي | صدر الإسلام | الأموي | العباسي | الأندلسي | المتأخّر | الحديث`,
     `# image: https://r2.ahlalathar.com/img/...   # optional`,
   ]) + "\nالترجمة بالعربية…\n",
 
@@ -53,6 +54,7 @@ const TEMPLATES = {
 
   book: (t) => fm([...shared(t),
     `person: person-id-here     # REQUIRED → معرّف المؤلف`,
+    `kind: متن                  # متن | مرجع | مجموع`,
     `# topics: [topic-id-here]   # optional, 1–5`,
     `# description: تعريف الكتاب  # optional`,
     `# edition: ط. دار…          # optional`,
