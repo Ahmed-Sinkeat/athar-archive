@@ -1,0 +1,17 @@
+# CODEOWNERS — أهل الأثر
+# A PR touching an owned path needs the owner's review before it can merge
+# (enforced by branch protection — see docs/governance.md).
+# Replace @Ahmed-Sinkeat with a GitHub team (e.g. @org/editors) as the team grows.
+
+# Default owner for everything in the repo
+*                        @Ahmed-Sinkeat
+
+# Content is the heart of the archive — team review is mandatory
+/src/content/            @Ahmed-Sinkeat
+
+# Schemas, validators & governance — the guard rails
+/src/content.config.ts   @Ahmed-Sinkeat
+/src/lib/validate.ts     @Ahmed-Sinkeat
+/CONTRIBUTING.md         @Ahmed-Sinkeat
+/docs/governance.md      @Ahmed-Sinkeat
+/.github/                @Ahmed-Sinkeat

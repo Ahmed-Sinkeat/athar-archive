@@ -1,0 +1,59 @@
+name: اقتراح محتوى
+description: اقتراح مادة جديدة (متن، منظومة، درس، مقالة، فائدة، مسألة…)
+title: "[محتوى] "
+labels: ["content"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        شكراً لإسهامك. سيراجع الفريق الاقتراح ويحوّله إلى ملف Markdown صحيح ضمن الأرشيف.
+        المتطوّع لا يلتزم في Git مباشرة — راجع CONTRIBUTING §01.
+  - type: dropdown
+    id: entity
+    attributes:
+      label: نوع الكيان
+      options:
+        - person
+        - subject
+        - topic
+        - book
+        - poem
+        - series
+        - lesson
+        - question
+        - benefit
+        - article
+        - audio
+        - annotation
+        - announcement
+    validations:
+      required: true
+  - type: input
+    id: title
+    attributes:
+      label: العنوان المقترح
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: المصدر والعزو
+      description: من أين هذا النص؟ ومن صاحبه؟ (لازم للتحقق العلمي)
+    validations:
+      required: true
+  - type: textarea
+    id: content
+    attributes:
+      label: النص (أو رابط ملف)
+      description: ألصق النص العربي أو ضع رابطاً.
+    validations:
+      required: true
+  - type: checkboxes
+    id: ack
+    attributes:
+      label: إقرار
+      options:
+        - label: راجعت دليل المساهمة (CONTRIBUTING.md)
+          required: true
+        - label: النص خالٍ من HTML خام أو روابط مشبوهة
+          required: true

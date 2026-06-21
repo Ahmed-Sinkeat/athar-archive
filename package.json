@@ -4,6 +4,7 @@
   "description": "أهل الأثر — Islamic knowledge archive",
   "scripts": {
     "dev": "astro dev",
+    "new": "node scripts/new-content.mjs",
     "build": "pnpm validate:content && astro build && pagefind --site dist && tsx scripts/gen-redirects.ts && node scripts/gen-headers.mjs",
     "preview": "astro preview",
     "validate": "astro check",
