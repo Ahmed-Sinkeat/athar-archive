@@ -8,7 +8,7 @@ Definition-of-Done (DoD) status, decisions, and any deviations from the plan.
 
 **Project:** أهل الأثر — Arabic Islamic knowledge archive
 **Stack:** Astro (static) · Markdown + Zod Content Collections · Pagefind (search, P4) · Cloudflare Pages/R2 (P6/P8)
-**Last updated:** P6 complete · audio player + attachments + R2 docs · 66/66 tests
+**Last updated:** P7 complete · contributor docs + intake governance + content scaffold · 66/66 tests
 
 ---
 
@@ -23,7 +23,7 @@ Definition-of-Done (DoD) status, decisions, and any deviations from the plan.
 | **P4** | Search (Pagefind, Arabic) | ✅ Done | `23e6781` |
 | **P5** | SEO, structured data, feeds, permanence | ✅ Done | `51059cd` |
 | **P6** | Media pipeline (R2) | ✅ Done (code+docs; R2 not yet provisioned) | `f9b86f7` |
-| P7 | Authoring experience & governance | ⬜ Next | — |
+| **P7** | Authoring experience & governance | ✅ Done | `4b1f0d1` |
 | P8 | QA, performance, accessibility, launch | ⬜ Pending | — |
 | P9 | Post-launch & deferred roadmap | ⬜ Pending | — |
 
@@ -257,10 +257,39 @@ search (dist/)       → ✓ verified via headless Chromium; audio captions excl
 media                → players on lesson/poem/book/article; book PDF/EPUB downloads
 ```
 
-## Next: P7 — Authoring experience & governance
+## P7 — Authoring experience & governance ✅
 
-`CONTRIBUTING.md` mirroring the Authoring Guide (per-entity frontmatter templates incl.
-the new `attachments`/`cover`; id/slug rules; chapter markers; annotation anchors; status
-+ publish gates; pre-publish checklist). Volunteer intake (untrusted Markdown → sanitize →
-team curates PR → sets status → merges). Optional scaffolding scripts for new content.
-CMS (Decap) stays deferred.
+**Built**
+- **`CONTRIBUTING.md`** (Arabic, contributor-facing) mirroring the Authoring Guide §00–07:
+  workflow, volunteer path, per-entity frontmatter templates for all 13 collections,
+  id/slug rules, chapter/anchor markers, status & publish gates, pre-publish checklist,
+  plus an **allowed-HTML/markdown policy** (the `rehype-sanitize` safe subset).
+- **Intake & governance** under `.github/`: `PULL_REQUEST_TEMPLATE.md` (pre-publish
+  checklist), `ISSUE_TEMPLATE/` forms (propose content / report correction) + `config.yml`,
+  and `CODEOWNERS` (team review on `src/content/**`, schemas, validator, governance).
+- **`docs/governance.md`**: roles, the two-part publish gate, and the exact GitHub
+  branch-protection settings that make merge-to-`published` team-only (P7 DoD).
+- **Scaffold**: `scripts/new-content.mjs` + `pnpm new <entity> <slug> [title]` — emits a
+  `status: draft` stub for any of the 13 entities with self-describing `*-id-here`
+  placeholders for required refs (Zod-valid; `validate:content` names the ref to fill).
+
+**DoD**
+- ✅ A contributor can scaffold an entity, fill the placeholders, and pass local build —
+  verified end-to-end: `pnpm new article …` → fill `person`/`topics` → `validate:content`
+  (22 entries) → `build` → `smoke` all green; test entity then removed.
+- ⏳ Merge-to-`published` restricted to team — CODEOWNERS committed; **branch protection must
+  be applied in the GitHub UI by an admin** (`docs/governance.md`). Tracked as issue #13.
+
+**Deviations / decisions**
+- **D14 — CONTRIBUTING follows the Zod schema, not the v1.0 Authoring Guide.** The guide
+  showed `id:`/`slug:`/`author:` frontmatter and latin annotation `kind`. The built schema
+  has none of those: **id = filename**, the author field is **`person`**, and `kind` is the
+  **Arabic** enum (`شرح/حاشية/إعراب/تخريج`). Templates reflect the as-built reality so every
+  example passes validation. `title` is required on every entity (the guide called some optional).
+- CMS (Decap/Keystatic) stays deferred (MAY), per plan.
+
+## Next: P8 — QA, performance, accessibility, launch
+
+Test matrix (link integrity, RTL/diacritics, manual a11y pass, perf budget, Lighthouse),
+seed the real corpus, confirm domain/DNS/Cloudflare Pages production + edge headers, launch
+checklist, and **apply branch protection** (issue #13). Rollback = rebuild previous commit.

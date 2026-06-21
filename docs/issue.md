@@ -20,9 +20,10 @@ build, **ranked**. Living doc — updated each phase alongside `asbuild.md`.
 | 6 | 🟠 | **No render tests** → added a post-build smoke test. | testing | mitigated | `pnpm smoke` (`scripts/smoke-test.mjs`, in CI) asserts per-template invariants over `dist/`: verses + stacked annotations, lesson TOC↔heading-id alignment, attachments, audio players, JSON-LD types, canonical/noindex, sitemap/RSS/_redirects/CSP, search-index scoping. 30 assertions green. Could later add Astro Container unit tests for finer cases. | done |
 | 7 | 🟡 | **Real content corpus not seeded** — only ~21 fixtures. | content | open | Launch blocker (not a code issue). Seed real متون/منظومات/دروس; will also surface #1 and perf reality. | P8 |
 | 12 | 🟠 | **R2 not provisioned; media URLs are placeholders** (`r2.ahlalathar.com/...` don't resolve yet). | infra | open | P6 built the player/links/validation + docs/scripts, but the bucket, real Opus uploads, and a **recovery rehearsal** are pending. Audio/downloads 404 until then. See `docs/media-and-backup.md`. | P8 |
+| 13 | 🟠 | **Branch protection not yet applied** — CODEOWNERS + settings documented, not enforced. | governance | open | P7 shipped `docs/governance.md` + `.github/CODEOWNERS`, but `main` branch protection (require Code Owner review + CI status check) must be enabled in the GitHub UI by an admin. Until then team-only-merge is convention, not enforcement. | P8 |
 | 8 | 🟡 | **QAPage JSON-LD answer is a crude markdown strip** (`[#*_\`>]` removed, 4k cap). | seo | open | Good enough for now; revisit if Q&A pages get structured (per-question/answer) markup. | P9 |
 | 9 | 🟡 | **Tashkeel toggle swaps `innerHTML`** of `[data-ar]` (caches full/bare). | frontend | open | Edge cases if content becomes dynamic or deeply nested; fine for static prose/verses today. | — |
-| 10 | 🟡 | **Sanitizer widens allowed attributes** (`id`,`className`,`dir`,`lang` global). | security | open | Small surface vs `rehype-sanitize` defaults; needed for headings/RTL. Re-review when accepting richer volunteer HTML. | P7 |
+| 10 | 🟡 | **Sanitizer allowed-attr policy** (`id`,`className`,`dir`,`lang` global). | security | resolved | P7 documented the allowed subset in CONTRIBUTING (§ما الذي يُسمح): `rehype-sanitize` safe set + those globals; `script`/`style` stripped. Re-review gate noted before accepting richer volunteer HTML. | P7 |
 | 11 | 🟡 | **Editorial drift after thousands of materials** (watchlist #14). | governance | open | Long-term top risk. Guarded by Zod + Authoring Guide + PR review, not code. Schedule periodic watchlist review. | P9 |
 
 ---
@@ -33,6 +34,7 @@ build, **ranked**. Living doc — updated each phase alongside `asbuild.md`.
 |----|-------|-----------|
 | 🟠 | **CSP `'unsafe-inline'`** (#4) | Strict CSP — inline scripts hashed, all CSS external; no `'unsafe-inline'` for script or style. Post-deploy CSSOM check noted. |
 | 🟠 | **Inline styles in templates** (#5) | 182 extracted to `extracted.css` (zero visual change). |
+| 🟡 | **Sanitizer allowed-attr policy** (#10) | P7 documented the allowed `rehype-sanitize` subset + `id/className/dir/lang` globals (`script`/`style` stripped) in CONTRIBUTING; re-review gate noted for richer HTML. |
 | 🔴 | **No CI / no git remote** (was #2) | Pushed to `github.com/Ahmed-Sinkeat/athar-archive`; GitHub Actions CI (install → test → validate:content → build → smoke → tsc) **green** on every push to main. |
 | 🔴 | Pagefind Arabic **diacritics** viability (the #1 P0 risk) | P4 spike: Pagefind normalizes diacritics both directions → **GO**, no stripped field (D10). |
 | 🟠 | Domain extension `.net` vs `.com` undecided | Ratified **`.com`** in P5 (D11). |
