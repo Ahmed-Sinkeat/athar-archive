@@ -1,0 +1,19 @@
+---
+import Base from "../layouts/Base.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import Prose from "../components/Prose.astro";
+// Maintainer-editable single page. Content lives in src/data/roadmap.md — edit
+// that file (plain Markdown) to build out the full طلب العلم path over time.
+import roadmapMd from "../data/roadmap.md?raw";
+---
+<Base title="طريق طلب العلم" description="خطةٌ مقترحةٌ لطلب العلم على مراحل، مع ما يُبدأ به من المتون والدروس." activeNav="home">
+  <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "طريق طلب العلم" }]} />
+  <div class="wrap-matn reading-pad">
+    <div class="reader-head">
+      <div class="eyebrow u87c136d">خطة</div>
+      <h1 class="reader-title">طريق طلب العلم</h1>
+    </div>
+    <div class="rule-short"></div>
+    <Prose body={roadmapMd} />
+  </div>
+</Base>

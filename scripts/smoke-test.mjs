@@ -31,8 +31,8 @@ ok(/aria-label="البحث"/.test(home), "search affordance present");
 section("/books");
 const books = read("books/index.html");
 ok((books.match(/class="card"/g) || []).length >= 1, "books index lists cards");
-ok(/data-filter="متن"/.test(books) && /data-filter="مرجع"/.test(books), "kind filter chips present");
-ok(/data-kind="متن"/.test(books), "book kind tagged on cards");
+ok(/class="masail-subject"/.test(books), "books grouped in تصنيف accordion");
+ok(/card-kindrow/.test(books), "book kind pill on cards");
 
 // --- poems index (poems only, متن badge + inherited era) ---
 section("/poems");
@@ -51,20 +51,20 @@ ok(/name="robots" content="noindex"/.test(compose), "composer is noindex");
 section("/poem/alfiyyah-ibn-malik");
 const poem = read("poem/alfiyyah-ibn-malik/index.html");
 ok(/class="sadr"/.test(poem), "verses render (sadr)");
-ok(/class="ann-trigger sadr" href="#note-v1"/.test(poem), "annotated verse links to its note");
-ok(/id="note-v1"/.test(poem), "note block present");
-ok(/note-kind">شرح/.test(poem) && /note-kind">إعراب/.test(poem), "both annotation kinds stacked");
+ok(/ann-mark/.test(poem), "annotated phrase marked inline");
+ok(/id="ann-v1"/.test(poem), "annotation pack present");
+ok(/data-kind="شرح"/.test(poem) && /data-kind="إعراب"/.test(poem), "both annotation kinds available");
 ok(/rel="canonical" href="https:\/\/ahlalathar\.com\/poem\/alfiyyah-ibn-malik"/.test(poem), "canonical (.com)");
 ok(/"@type":\["CreativeWork","Poem"\]/.test(poem), "Poem JSON-LD");
 ok(/data-studybar/.test(poem) && /data-matn=/.test(poem), "study bar + tracking container on متن poem");
 ok(/badge-matn/.test(poem), "متن badge on poem reader");
 
-// --- book reader: prose + audio? + attachments ---
+// --- book reader: prose + audio? + collapsible حواشٍ ---
 section("/book/al-wasitiyyah");
 const book = read("book/al-wasitiyyah/index.html");
 ok(/class="prose"/.test(book), "matn prose renders");
-ok(/data-studybar/.test(book) && /data-matn=/.test(book), "study bar + tracking on متن book");
-ok(/class="download-link"/.test(book) && /al-wasitiyyah\.pdf/.test(book), "attachments (PDF) render");
+ok(/data-matn=/.test(book), "متن book tracking container present");
+ok(/class="benefit-strip notes-disclosure"/.test(book), "حواشٍ collapsible disclosure renders");
 ok(/"@type":"Book"/.test(book), "Book JSON-LD");
 
 // --- lesson reader: TOC anchors must match heading ids (rehype-slug alignment) ---

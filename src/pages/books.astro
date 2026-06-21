@@ -1,50 +1,27 @@
 ---
 import Base from "../layouts/Base.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
-import EntityCard from "../components/EntityCard.astro";
+import BrowseGroups from "../components/BrowseGroups.astro";
 import { personNameMap, loadGraph } from "../lib/site";
-import { hrefFor, labelFor, toArabicDigits } from "../lib/display";
+import { hrefFor, labelFor } from "../lib/display";
 import { buildSubjectGroups } from "../lib/browse";
 
 const graph = await loadGraph();
 const names = await personNameMap();
 const { groups, uncategorized } = buildSubjectGroups("book", graph);
-const authorOf = (d: any) => (d.person ? names.get(d.person) ?? "" : "");
+const card = (it: any) => ({
+  href: hrefFor("book", it.id),
+  title: it.data.title,
+  kind: labelFor("book", it.data),
+  sub: it.data.person ? names.get(it.data.person) ?? "" : "",
+  cta: "ادخل القراءة ←",
+});
 ---
 <Base title="الكتب" description="متونٌ ومراجعُ ومجاميعُ محقَّقةٌ مُشكَّلةٌ، مرتَّبةٌ حسب الفنِّ." activeNav="books" searchScope={{ type: "book" }}>
   <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "الكتب" }]} />
   <div class="wrap-mid uf5db21c">
     <h1 class="page-title">الكتب</h1>
-    <p class="page-intro">المتونُ والمراجعُ والمجاميعُ، مُحقَّقةٌ مُشكَّلةٌ، مرتَّبةٌ حسب الفنِّ ثم الموضوع. اختر كتاباً للدخول في وضع القراءة.</p>
-
-    {groups.map((g) => (
-      <section class="browse-group">
-        <div class="browse-subject">
-          <h2><a href={hrefFor("subject", g.id)}>{g.title}</a></h2>
-          <span class="faint">{toArabicDigits(g.count)} كتابًا</span>
-        </div>
-        {g.topics.map((t) => (
-          <div class="browse-topic">
-            <h3 class="browse-topic-h"><a href={hrefFor("topic", t.id)}>{t.title}</a></h3>
-            <div class="card-grid">
-              {t.items.map((it) => (
-                <EntityCard href={hrefFor("book", it.id)} title={it.data.title} kind={labelFor("book", it.data)} sub={authorOf(it.data)} cta="ادخل القراءة ←" />
-              ))}
-            </div>
-          </div>
-        ))}
-      </section>
-    ))}
-
-    {uncategorized.length > 0 && (
-      <section class="browse-group">
-        <div class="browse-subject"><h2>موضوعاتٌ أخرى</h2></div>
-        <div class="card-grid">
-          {uncategorized.map((it) => (
-            <EntityCard href={hrefFor("book", it.id)} title={it.data.title} kind={labelFor("book", it.data)} sub={authorOf(it.data)} cta="ادخل القراءة ←" />
-          ))}
-        </div>
-      </section>
-    )}
+    <p class="page-intro">المتونُ والمراجعُ والمجاميعُ، مُحقَّقةٌ مُشكَّلةٌ، مرتَّبةٌ حسب الفنِّ ثم الموضوع. افتحِ الفنَّ ثم الموضوعَ لعرضِ كتبه.</p>
+    <BrowseGroups groups={groups} uncategorized={uncategorized} card={card} unit="كتابًا" />
   </div>
 </Base>

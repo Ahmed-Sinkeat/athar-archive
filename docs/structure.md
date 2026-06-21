@@ -80,9 +80,9 @@ src/
 │  ├─ Breadcrumbs.astro · EntityCard.astro · Prose.astro · StudyBar.astro
 │  ├─ Verse.astro          # numbered بيت + inline شرح mark (.ann-mark) + hidden chooser pack
 │  ├─ AudioPlayer.astro    # native <audio>, accessible, styled (lesson/poem/book/article)
-│  └─ Attachments.astro    # PDF/EPUB download links
+│  └─ BrowseGroups.astro   # collapsible تصنيف→موضوع accordion (books/poems/articles/series)
 └─ pages/                    # every route (BUILD-PLAN 0.4) — all render from fixtures
-   ├─ index.astro · search.astro · compose.astro · about.astro · contact.astro · 404.astro
+   ├─ index.astro · search.astro · compose.astro · roadmap.astro · about.astro · contact.astro · 404.astro
    ├─ books.astro · poems.astro · subjects.astro · topics.astro · people.astro    # browse: grouped by subject→topic / era
    ├─ articles.astro · benefits.astro · series/index.astro · questions/index.astro  # questions: subject→topic drill-down
    ├─ book/[slug].astro · book/[slug]/[chapter].astro

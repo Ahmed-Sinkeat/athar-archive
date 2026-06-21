@@ -5,7 +5,6 @@ import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import Prose from "../../components/Prose.astro";
 import StudyBar from "../../components/StudyBar.astro";
 import AudioPlayer from "../../components/AudioPlayer.astro";
-import Attachments from "../../components/Attachments.astro";
 import { markdownToSafeHtml } from "../../lib/sanitize";
 import { isPub, loadGraph, personNameMap, subjectTitlesFor, notesByAnchor } from "../../lib/site";
 import { analyzeBook } from "../../lib/chunk";
@@ -84,18 +83,17 @@ const jsonLd = bookLd({
     ))}
 
     {anchors.length > 0 && (
-      <div class="benefit-strip">
-        <div class="toc-label uec818db" >حواشٍ وتخريجات</div>
+      <details class="benefit-strip notes-disclosure">
+        <summary class="toc-label uec818db" >حواشٍ وتخريجات</summary>
         {anchors.flatMap(([anchor, notes]) => notes.map((nt) => (
           <div class="note u2a1b75c"  data-ar>
             <span class="note-kind">{nt.kind} · {anchor}</span>
             <Fragment set:html={markdownToSafeHtml(nt.body)} />
+            {nt.sourceHref && <a class="ann-source-link" href={nt.sourceHref}>اقرأ في موضعه{nt.sourceLabel ? `: ${nt.sourceLabel}` : ""} ←</a>}
           </div>
         )))}
-      </div>
+      </details>
     )}
-
-    <Attachments items={entry.data.attachments} heading="طبعاتٌ وتحميلات" />
 
     <div class="ornament ud38b410" >۞</div>
   </div>

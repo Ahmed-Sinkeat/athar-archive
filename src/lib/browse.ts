@@ -9,6 +9,12 @@ import type { ContentEntry } from "./types";
 const isPub = (e: { data: { status?: unknown } }) => e.data.status === "published";
 const ar = (a: string, b: string) => a.localeCompare(b, "ar");
 
+// Default item order: by سنة التصنيف ascending (undated entries last), then title.
+// ponytail: one global rule for now; per-subject sort + most-viewed are deferred.
+const year = (e: ContentEntry) => Number((e.data as { authored_year?: number }).authored_year ?? Number.POSITIVE_INFINITY);
+const byYearThenTitle = (a: ContentEntry, b: ContentEntry) =>
+  year(a) - year(b) || ar(a.data.title as string, b.data.title as string);
+
 export interface TopicGroup {
   id: string;
   title: string;
@@ -45,7 +51,7 @@ export function buildSubjectGroups(collection: string, graph: Graph): BrowseGrou
       const items = graph
         .materialsByTopic(t.id)
         .filter((e) => e.collection === collection && isPub(e))
-        .sort((a, b) => ar(a.data.title as string, b.data.title as string));
+        .sort(byYearThenTitle);
       if (!items.length) continue;
       items.forEach((i) => placed.add(i.id));
       count += items.length;
@@ -56,7 +62,7 @@ export function buildSubjectGroups(collection: string, graph: Graph): BrowseGrou
 
   const uncategorized = graph.all
     .filter((e) => e.collection === collection && isPub(e) && !placed.has(e.id))
-    .sort((a, b) => ar(a.data.title as string, b.data.title as string));
+    .sort(byYearThenTitle);
 
   return { groups, uncategorized };
 }
