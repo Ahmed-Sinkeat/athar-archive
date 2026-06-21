@@ -39,5 +39,8 @@ jobs:
       - name: Link integrity (internal links + redirects resolve over dist/)
         run: pnpm check:links
 
+      - name: Render budget (page weight, JS-free content, RTL over dist/)
+        run: pnpm perf:budget
+
       - name: Type-check
         run: pnpm exec tsc --noEmit --skipLibCheck

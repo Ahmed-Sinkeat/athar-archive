@@ -103,6 +103,7 @@ scripts/
 ├─ gen-redirects.ts          # post-build: aliases → dist/_redirects (301)
 ├─ smoke-test.mjs            # post-build per-template invariant checks (pnpm smoke, in CI)
 ├─ check-links.mjs           # post-build internal-link + redirect integrity (pnpm check:links, P8)
+├─ perf-budget.mjs           # post-build page-weight + JS-free + RTL budget (pnpm perf:budget, P8)
 ├─ a11y-audit.mjs            # axe-core WCAG A/AA over dist/ in headless Chromium (pnpm a11y)
 ├─ upload-media.sh           # rclone mirror of local media → R2 bucket
 └─ pagefind-spike/           # P0 Arabic search spike (run in P4) + real-index verification
