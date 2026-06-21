@@ -17,7 +17,7 @@ import { fileURLToPath } from "node:url";
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const CONTENT = join(ROOT, "src", "content");
 
-// id = filename — same pattern enforced by Zod (config) and validate.ts
+// id = filename — keep in sync with src/lib/slug.ts (plain .mjs can't import it)
 const SLUG_RE = /^[a-z0-9]+(--?[a-z0-9]+)*$/;
 const TODAY = new Date().toISOString().slice(0, 10);
 
