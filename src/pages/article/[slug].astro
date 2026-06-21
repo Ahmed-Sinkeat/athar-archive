@@ -34,16 +34,16 @@ const jsonLd = articleLd({
   <Breadcrumbs width="wrap-read" items={[{ label: "الرئيسية", href: "/" }, { label: "المقالات", href: "/articles" }, { label: entry.data.title }]} />
   <div class="wrap-read reading-pad">
     <div class="reader-head">
-      <div class="eyebrow" style="margin-bottom:16px">مقالة</div>
-      <h1 class="reader-title" style="font-size:clamp(30px,5vw,48px)">{entry.data.title}</h1>
+      <div class="eyebrow u87c136d" >مقالة</div>
+      <h1 class="reader-title ub9b0323" >{entry.data.title}</h1>
       <div class="reader-byline">{author}</div>
     </div>
 
-    {audio && <div style="margin-top:28px"><AudioPlayer url={audio.url} format={audio.format} duration={audio.duration} sizeBytes={audio.sizeBytes} label="استماعٌ إلى المقالة" /></div>}
+    {audio && <div class="u583f758"><AudioPlayer url={audio.url} format={audio.format} duration={audio.duration} sizeBytes={audio.sizeBytes} label="استماعٌ إلى المقالة" /></div>}
 
     <div class="rule-short"></div>
-    <div style="margin-top:20px"><Prose body={entry.body ?? ""} /></div>
+    <div class="ua26bda7"><Prose body={entry.body ?? ""} /></div>
     <Attachments items={entry.data.attachments} />
-    <div class="ornament" style="margin-top:40px;font-size:16px">۞</div>
+    <div class="ornament ud38b410" >۞</div>
   </div>
 </Base>

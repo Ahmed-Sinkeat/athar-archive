@@ -32,13 +32,13 @@ const jsonLd = personLd({
 ---
 <Base title={entry.data.title} description={entry.data.bio} activeNav="people" ogType="profile" jsonLd={jsonLd} searchMeta={{ title: entry.data.title, type: "person" }}>
   <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "الأعلام", href: "/people" }, { label: entry.data.title }]} />
-  <div class="wrap-mid" style="padding-block:18px 96px">
+  <div class="wrap-mid uf5db21c" >
     <h1 class="page-title">{entry.data.title}</h1>
-    {meta && <div class="reader-byline" style="text-align:right;margin-top:0">{meta}</div>}
-    {entry.body?.trim() && <div style="margin:22px 0 8px;max-width:60ch"><Prose body={entry.body} /></div>}
+    {meta && <div class="reader-byline u3606c53" >{meta}</div>}
+    {entry.body?.trim() && <div class="ud75d1ed"><Prose body={entry.body} /></div>}
 
     {works.length > 0 && (
-      <div style="margin-top:36px">
+      <div class="ud34d921">
         <div class="section-label">من آثارِه في الأرشيف</div>
         <div class="card-grid">
           {works.map((w) => (

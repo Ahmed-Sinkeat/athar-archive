@@ -11,14 +11,14 @@ const pubTopics = topics.filter(isPub).sort((a, b) => a.data.title.localeCompare
 ---
 <Base title="الموضوعات" description="فهرسٌ بكل الموضوعات العلمية في الأرشيف." activeNav="subjects">
   <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "الموضوعات", href: "/subjects" }, { label: "كل الموضوعات" }]} />
-  <div class="wrap-mid" style="padding-block:18px 96px">
+  <div class="wrap-mid uf5db21c" >
     <h1 class="page-title">كل الموضوعات</h1>
     <p class="page-intro">فهرسٌ مسطَّحٌ بكلِّ الموضوعاتِ العلميةِ، كلٌّ منها يجمعُ ما تعلَّق به من مواد.</p>
     <div class="chip-row">
       {pubTopics.map((t) => (
         <a class="chip" href={hrefFor("topic", t.id)}>
           {t.data.title}
-          <span class="faint" style="font-size:11px;margin-inline-start:6px">{subjName.get(t.data.subject)}</span>
+          <span class="faint u3a7e6af" >{subjName.get(t.data.subject)}</span>
         </a>
       ))}
     </div>

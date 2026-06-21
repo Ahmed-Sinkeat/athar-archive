@@ -33,18 +33,18 @@ const jsonLd = benefitLd({
 ---
 <Base title={entry.data.title} activeNav="benefits" ogType="article" jsonLd={jsonLd} searchMeta={{ title: entry.data.title, type: "benefit" }}>
   <Breadcrumbs width="wrap-read" items={[{ label: "الرئيسية", href: "/" }, { label: "الفوائد", href: "/benefits" }, { label: "فائدة" }]} />
-  <div class="wrap-read reading-pad" style="text-align:center">
-    <div class="ornament" style="font-size:22px;margin-bottom:24px">۞</div>
-    <div class="prose" data-ar style="font-family:var(--font-serif)">
-      <div style="font-size:calc(26px*var(--reading-scale));line-height:2;color:var(--ink);text-wrap:pretty">{entry.data.title}</div>
+  <div class="wrap-read reading-pad u91a8701" >
+    <div class="ornament u3ba7d3f" >۞</div>
+    <div class="prose u70b1b12" data-ar >
+      <div class="u9256257">{entry.data.title}</div>
     </div>
-    {entry.body?.trim() && <div style="margin-top:18px;text-align:right"><Prose body={entry.body} /></div>}
+    {entry.body?.trim() && <div class="u3ebb645"><Prose body={entry.body} /></div>}
 
-    <div style="margin-top:30px;display:flex;flex-direction:column;gap:8px;align-items:center">
-      {personId && <a href={hrefFor("person", personId)} style="font-family:var(--font-ui);font-size:14px;color:var(--accent);text-decoration:none">{personName}</a>}
+    <div class="uf82600a">
+      {personId && <a href={hrefFor("person", personId)} class="u17583d4">{personName}</a>}
       {source && (
-        <div class="faint" style="font-size:13px">
-          من <a href={sourceHref(source.type, source.id)} style="color:var(--ink-soft)">{ENTITY[source.type]?.one} {source.title}</a>
+        <div class="faint u5e0faad" >
+          من <a href={sourceHref(source.type, source.id)} class="uf55e15c">{ENTITY[source.type]?.one} {source.title}</a>
         </div>
       )}
     </div>

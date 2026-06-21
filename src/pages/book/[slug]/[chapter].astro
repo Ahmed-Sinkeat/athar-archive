@@ -38,11 +38,11 @@ const { entry, chapter, author } = Astro.props;
   />
   <div class="wrap-matn reading-pad">
     <div class="reader-head">
-      <div class="eyebrow" style="margin-bottom:16px">متن · {author}</div>
-      <h1 class="reader-title" style="font-size:clamp(28px,5vw,44px)">{chapter.title}</h1>
+      <div class="eyebrow u87c136d" >متن · {author}</div>
+      <h1 class="reader-title u97df06b" >{chapter.title}</h1>
       <div class="reader-byline">{entry.data.title}</div>
     </div>
     <div class="rule-short"></div>
-    <div style="margin-top:24px"><Prose body={chapter.content} /></div>
+    <div class="u49fcd85"><Prose body={chapter.content} /></div>
   </div>
 </Base>

@@ -16,13 +16,13 @@ const { items = [], heading = "تحميلات" } = Astro.props;
 {
   items.length > 0 && (
     <div data-pagefind-ignore>
-      <div class="toc-label" style="font-size:11.5px;letter-spacing:.16em;margin:24px 0 10px">{heading}</div>
+      <div class="toc-label u25f67b9" >{heading}</div>
       <div class="downloads">
         {items.map((a) => (
           <a class="download-link" href={a.url} download>
             <span>{a.label}</span>
             {a.format && <span class="fmt">{a.format}</span>}
-            {a.size_bytes && <span class="faint" style="font-size:11px">{toArabicDigits((a.size_bytes / 1_048_576).toFixed(1))}م.ب</span>}
+            {a.size_bytes && <span class="faint u11a5081" >{toArabicDigits((a.size_bytes / 1_048_576).toFixed(1))}م.ب</span>}
           </a>
         ))}
       </div>
