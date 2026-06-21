@@ -58,10 +58,10 @@ const jsonLd = lessonLd({
       { label: `الدرس ${toArabicDigits(idx)}` },
     ]}
   />
-  <div class="wrap-mid" style="padding-block:18px 130px">
-    <div class="eyebrow" style="letter-spacing:.18em;margin-bottom:10px">الدرس {toArabicDigits(idx)} من {toArabicDigits(total)}</div>
-    <h1 class="page-title" style="font-size:clamp(28px,4.5vw,42px)">{lesson.data.title}</h1>
-    <div class="reader-byline" style="text-align:right;margin-top:0;margin-bottom:20px">
+  <div class="wrap-mid u2408e22" >
+    <div class="eyebrow u89ad788" >الدرس {toArabicDigits(idx)} من {toArabicDigits(total)}</div>
+    <h1 class="page-title u266157e" >{lesson.data.title}</h1>
+    <div class="reader-byline u7961f65" >
       {author}{lesson.data.duration ? ` · مدة الدرس ${lesson.data.duration}` : ""}
     </div>
 
@@ -73,7 +73,7 @@ const jsonLd = lessonLd({
 
         {benefits.length > 0 && (
           <div class="benefit-strip">
-            <div class="toc-label" style="font-size:11.5px;letter-spacing:.16em;margin-bottom:14px">فوائدُ مستخرجةٌ من الدرس</div>
+            <div class="toc-label uec818db" >فوائدُ مستخرجةٌ من الدرس</div>
             <div class="benefit-grid">
               {benefits.map((b: string) => <div class="benefit-quote" data-ar>«{b}»</div>)}
             </div>

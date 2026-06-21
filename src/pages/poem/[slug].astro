@@ -48,7 +48,7 @@ const preamble = a.verses.filter((v) => !chapterNums.has(v.n));
   />
   <div class="wrap-read reading-pad">
     <div class="reader-head">
-      <div class="eyebrow" style="margin-bottom:16px">منظومة</div>
+      <div class="eyebrow u87c136d" >منظومة</div>
       <h1 class="reader-title">{entry.data.title}</h1>
       <div class="reader-byline">نظمُ {author}</div>
       <div class="meta-pills">
@@ -60,20 +60,20 @@ const preamble = a.verses.filter((v) => !chapterNums.has(v.n));
     {Object.keys(byAnchor).length > 0 && (
       <div class="hint">
         <span class="ico">۞</span>
-        <span style="flex:1">الأبياتُ المُعلَّمةُ بخطٍّ منقَّطٍ تحتها شرحٌ وتخريج — <b>انقر عليها</b> لإظهاره.</span>
+        <span class="u97445a8">الأبياتُ المُعلَّمةُ بخطٍّ منقَّطٍ تحتها شرحٌ وتخريج — <b>انقر عليها</b> لإظهاره.</span>
       </div>
     )}
 
-    {audio && <div style="margin-top:24px"><AudioPlayer url={audio.url} format={audio.format} duration={audio.duration} sizeBytes={audio.sizeBytes} label="استماعٌ إلى المنظومة" /></div>}
+    {audio && <div class="u49fcd85"><AudioPlayer url={audio.url} format={audio.format} duration={audio.duration} sizeBytes={audio.sizeBytes} label="استماعٌ إلى المنظومة" /></div>}
 
     <div class="rule-short"></div>
 
     {a.chunked ? (
-      <div class="card-grid" style="grid-template-columns:1fr;gap:12px">
+      <div class="card-grid u654c43f" >
         {a.chapters.map((c) => (
-          <a class="card" href={hrefFor("poem", entry.id, { chapter: c.slug })} style="padding:18px 22px">
-            <div class="card-title" style="font-size:20px">{c.title}</div>
-            <div class="faint" style="font-size:12.5px;margin-top:6px">{toArabicDigits(c.verses.length)} بيت</div>
+          <a class="card u6f3d7fe" href={hrefFor("poem", entry.id, { chapter: c.slug })} >
+            <div class="card-title ub9199e2" >{c.title}</div>
+            <div class="faint uade9c31" >{toArabicDigits(c.verses.length)} بيت</div>
           </a>
         ))}
       </div>
@@ -91,6 +91,6 @@ const preamble = a.verses.filter((v) => !chapterNums.has(v.n));
 
     <Attachments items={entry.data.attachments} />
 
-    <div class="ornament" style="margin-top:40px;font-size:16px">۞</div>
+    <div class="ornament ud38b410" >۞</div>
   </div>
 </Base>

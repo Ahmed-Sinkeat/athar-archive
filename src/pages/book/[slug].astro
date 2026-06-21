@@ -46,31 +46,31 @@ const jsonLd = bookLd({
   />
   <div class="wrap-matn reading-pad">
     <div class="reader-head">
-      <div class="eyebrow" style="margin-bottom:16px">متن</div>
-      <h1 class="reader-title" style="font-size:clamp(32px,6vw,52px)">{entry.data.title}</h1>
+      <div class="eyebrow u87c136d" >متن</div>
+      <h1 class="reader-title ue7e55f7" >{entry.data.title}</h1>
       <div class="reader-byline">{author}</div>
     </div>
-    {audio && <div style="margin-top:24px"><AudioPlayer url={audio.url} format={audio.format} duration={audio.duration} sizeBytes={audio.sizeBytes} label="استماعٌ إلى المتن" /></div>}
+    {audio && <div class="u49fcd85"><AudioPlayer url={audio.url} format={audio.format} duration={audio.duration} sizeBytes={audio.sizeBytes} label="استماعٌ إلى المتن" /></div>}
 
     <div class="rule-short"></div>
 
     {a.chunked ? (
-      <div class="card-grid" style="grid-template-columns:1fr;gap:12px;margin-top:24px">
+      <div class="card-grid ue1dce25" >
         {a.chapters.map((c) => (
-          <a class="card" href={hrefFor("book", entry.id, { chapter: c.slug })} style="padding:18px 22px">
-            <div class="card-title" style="font-size:20px">{c.title}</div>
+          <a class="card u6f3d7fe" href={hrefFor("book", entry.id, { chapter: c.slug })} >
+            <div class="card-title ub9199e2" >{c.title}</div>
           </a>
         ))}
       </div>
     ) : (
-      <div style="margin-top:24px"><Prose body={entry.body ?? ""} /></div>
+      <div class="u49fcd85"><Prose body={entry.body ?? ""} /></div>
     )}
 
     {annos.length > 0 && (
       <div class="benefit-strip">
-        <div class="toc-label" style="font-size:11.5px;letter-spacing:.16em;margin-bottom:14px">حواشٍ وتخريجات</div>
+        <div class="toc-label uec818db" >حواشٍ وتخريجات</div>
         {annos.map((an) => (
-          <div class="note" style="display:block" data-ar>
+          <div class="note u2a1b75c"  data-ar>
             <span class="note-kind">{an.kind} · {an.anchor}</span>
             <Fragment set:html={markdownToSafeHtml(an.body)} />
           </div>
@@ -80,6 +80,6 @@ const jsonLd = bookLd({
 
     <Attachments items={entry.data.attachments} heading="طبعاتٌ وتحميلات" />
 
-    <div class="ornament" style="margin-top:40px;font-size:16px">۞</div>
+    <div class="ornament ud38b410" >۞</div>
   </div>
 </Base>

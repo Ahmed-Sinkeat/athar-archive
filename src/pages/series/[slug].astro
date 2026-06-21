@@ -34,34 +34,34 @@ const jsonLd = seriesLd({
 ---
 <Base title={entry.data.title} description={entry.data.description} activeNav="series" ogType="article" jsonLd={jsonLd} searchMeta={{ title: entry.data.title, type: "series" }}>
   <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "الدروس", href: "/series" }, { label: entry.data.title }]} />
-  <div class="wrap-mid" style="padding-block:18px 96px">
-    <div class="tag-verdigris" style="font-family:var(--font-ui);font-size:12px;letter-spacing:.18em;margin-bottom:10px">
+  <div class="wrap-mid uf5db21c" >
+    <div class="tag-verdigris u649209a" >
       سلسلة · {toArabicDigits(stats.publishedLessonCount)} درسًا{stats.totalSeconds > 0 ? ` · ${stats.totalDuration}` : ""}
     </div>
     <h1 class="page-title">{entry.data.title}</h1>
-    <div class="reader-byline" style="text-align:right;margin-top:0;margin-bottom:6px">{author}</div>
+    <div class="reader-byline u56a6980" >{author}</div>
     {source && (
-      <p class="page-intro" style="margin-bottom:24px">
+      <p class="page-intro u8677744" >
         شرحٌ لـ
-        <a href={sourceHref(source.type, source.id)} style="color:var(--accent);text-decoration:none">{source.title}</a>.
+        <a href={sourceHref(source.type, source.id)} class="uae3c165">{source.title}</a>.
       </p>
     )}
 
-    <div style="border:1px solid var(--rule);border-radius:14px;background:var(--surface);overflow:hidden;max-width:760px">
+    <div class="u2afe04c">
       {lessons.map((l, i) => (
         <>
-          {i > 0 && <div style="height:1px;background:var(--rule)"></div>}
+          {i > 0 && <div class="u86c1892"></div>}
           {l.published ? (
-            <a href={hrefFor("lesson", l.id, { series: entry.id })} style="display:flex;align-items:center;gap:14px;padding:15px 20px;text-decoration:none">
-              <span class="vnum" style="margin-top:0">{toArabicDigits(l.order)}</span>
-              <span style="flex:1;font-family:var(--font-display);font-size:17px;color:var(--ink)">{l.title}</span>
-              {l.duration && <span class="faint" style="font-size:12px;direction:ltr">{l.duration}</span>}
+            <a href={hrefFor("lesson", l.id, { series: entry.id })} class="u9b1b542">
+              <span class="vnum ud462248" >{toArabicDigits(l.order)}</span>
+              <span class="uec199bb">{l.title}</span>
+              {l.duration && <span class="faint u58cb331" >{l.duration}</span>}
             </a>
           ) : (
-            <div style="display:flex;align-items:center;gap:14px;padding:15px 20px;opacity:.5">
-              <span class="vnum" style="margin-top:0;color:var(--ink-faint);border-color:var(--rule)">{toArabicDigits(l.order)}</span>
-              <span style="flex:1;font-family:var(--font-display);font-size:17px;color:var(--ink-soft)">{l.title}</span>
-              <span class="faint" style="font-size:11px">قيد الإعداد</span>
+            <div class="u3c8627f">
+              <span class="vnum u65145c1" >{toArabicDigits(l.order)}</span>
+              <span class="u04850af">{l.title}</span>
+              <span class="faint u11a5081" >قيد الإعداد</span>
             </div>
           )}
         </>

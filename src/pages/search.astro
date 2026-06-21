@@ -6,22 +6,22 @@ import Breadcrumbs from "../components/Breadcrumbs.astro";
 ---
 <Base title="البحث" activeNav="home" noindex>
   <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "البحث" }]} />
-  <div class="wrap-mid" style="padding-block:18px 96px">
+  <div class="wrap-mid uf5db21c" >
     <h1 class="page-title">البحث</h1>
     <p class="page-intro">ابحثْ في المتون والمنظومات والدروس والفوائد والمقالات. يعملُ البحثُ بلا خادمٍ، وبفهرسٍ ثابتٍ يُبنى مع الموقع.</p>
 
-    <div style="max-width:620px">
-      <div style="display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--rule-strong);border-radius:34px;padding:5px 22px 5px 6px;box-shadow:0 10px 34px rgba(31,27,22,.08)">
-        <input id="q" type="search" autocomplete="off" placeholder="ابحث…" style="flex:1;min-width:0;border:none;outline:none;background:transparent;font-family:var(--font-ui);font-size:16.5px;color:var(--ink);padding:14px 0" />
+    <div class="u7fc16fa">
+      <div class="u6371093">
+        <input id="q" type="search" autocomplete="off" placeholder="ابحث…" class="u38ae86c" />
       </div>
     </div>
 
-    <div id="filters" class="chip-row" style="margin-top:18px"></div>
-    <div id="status" class="faint" style="margin-top:22px;font-size:14px"></div>
-    <div id="results" style="margin-top:18px;display:flex;flex-direction:column;gap:4px"></div>
+    <div id="filters" class="chip-row u86de7ac" ></div>
+    <div id="status" class="faint u608848d" ></div>
+    <div id="results" class="u3f99027"></div>
 
     <noscript>
-      <p class="faint" style="margin-top:22px">يحتاجُ البحثُ إلى تفعيل JavaScript. يمكنك التصفّحُ عبر <a href="/books" style="color:var(--accent)">المكتبة</a> و<a href="/subjects" style="color:var(--accent)">الموضوعات</a>.</p>
+      <p class="faint u2517a51" >يحتاجُ البحثُ إلى تفعيل JavaScript. يمكنك التصفّحُ عبر <a href="/books" class="ua805525">المكتبة</a> و<a href="/subjects" class="ua805525">الموضوعات</a>.</p>
     </noscript>
   </div>
 
@@ -84,9 +84,9 @@ import Breadcrumbs from "../components/Breadcrumbs.astro";
           a.className = "latest-row";
           a.style.alignItems = "flex-start";
           a.innerHTML =
-            `<span class="pill tag-accent" style="flex:0 0 auto">${LABEL[type] || ""}</span>` +
-            `<span style="flex:1"><span class="latest-name" style="display:block">${esc(d.meta?.title || "")}</span>` +
-            `<span class="faint" data-ar style="font-size:13.5px;line-height:1.8;font-family:var(--font-serif)">${d.excerpt}</span></span>`;
+            `<span class="pill tag-accent uac6ea07" >${LABEL[type] || ""}</span>` +
+            `<span class="u97445a8"><span class="latest-name u2a1b75c" >${esc(d.meta?.title || "")}</span>` +
+            `<span class="faint ue24357e" data-ar >${d.excerpt}</span></span>`;
           results.appendChild(a);
         }
       }

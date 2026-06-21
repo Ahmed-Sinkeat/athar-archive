@@ -45,13 +45,13 @@ const jsonLd = collectionLd({
       { label: entry.data.title },
     ]}
   />
-  <div class="wrap-read" style="padding-block:18px 96px">
-    {subject && <div class="eyebrow" style="letter-spacing:normal;margin-bottom:10px">{subject.title}</div>}
+  <div class="wrap-read uf5db21c" >
+    {subject && <div class="eyebrow u57e29a5" >{subject.title}</div>}
     <h1 class="page-title">{entry.data.title}</h1>
     {entry.data.description && <p class="page-intro">{entry.data.description}</p>}
-    {entry.body?.trim() && <div style="margin-bottom:20px"><Prose body={entry.body} /></div>}
+    {entry.body?.trim() && <div class="u49f14f8"><Prose body={entry.body} /></div>}
 
-    <div class="section-label" style="margin-top:30px">ما تعلَّق بهذا الموضوع · {toArabicDigits(materials.length)}</div>
+    <div class="section-label u2fbbbcd" >ما تعلَّق بهذا الموضوع · {toArabicDigits(materials.length)}</div>
     {materials.length > 0 ? (
       <div class="card-grid">
         {materials.map((m) => (

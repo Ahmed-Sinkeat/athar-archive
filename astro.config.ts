@@ -6,6 +6,8 @@ export default defineConfig({
   trailingSlash: "never",
   build: {
     format: "directory",
+    // keep all CSS external (no inlined <style>) so the CSP can use style-src 'self'
+    inlineStylesheets: "never",
   },
   i18n: {
     defaultLocale: "ar",

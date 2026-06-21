@@ -35,8 +35,9 @@ const csp = [
   "default-src 'self'",
   // scripts: self + pagefind wasm + the hashed inline scripts (no 'unsafe-inline')
   `script-src 'self' 'wasm-unsafe-eval' ${scriptHashes}`,
-  // styles: still inline (style= attributes) until the inline-style sweep lands
-  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+  // styles: external only (no inline <style> / no style= attrs after the sweep).
+  // JS reading-prefs use CSSOM (.style.setProperty) which CSP does not govern.
+  "style-src 'self' https://fonts.googleapis.com",
   "font-src 'self' https://fonts.gstatic.com",
   "img-src 'self' data:",
   "media-src 'self' https://r2.ahlalathar.com",

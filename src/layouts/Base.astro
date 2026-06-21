@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import "../styles/extracted.css"; // generated from former inline styles — must load AFTER global.css
 import { config } from "../../ahlalathar.config";
 
 interface Props {
@@ -69,17 +70,17 @@ const fullTitle = title === "أهل الأثر" ? title : `${title} · أهل ا
   <body>
     <header class="topbar" data-pagefind-ignore>
       <div class="wrap topbar-brandrow">
-        <div style="display:flex;justify-content:flex-start">
-          <button class="icon-btn hamburger" data-action="menu:toggle" aria-label="القائمة" style="width:40px;height:40px">
-            <span style="display:block;width:17px;height:2px;background:var(--ink);box-shadow:0 5px 0 var(--ink),0 -5px 0 var(--ink)"></span>
+        <div class="uf5e88b2">
+          <button class="icon-btn hamburger u660e442" data-action="menu:toggle" aria-label="القائمة" >
+            <span class="u8e79aed"></span>
           </button>
         </div>
         <a href="/" class="brand">
           <span class="brand-name">أهل الأثر</span>
           <span class="brand-sub">الأرشيف العلمي</span>
         </a>
-        <div style="display:flex;justify-content:flex-end">
-          <button class="icon-btn theme-cycle" data-action="theme:cycle" aria-label="السمة" style="width:40px;height:40px;font-size:17px">◑</button>
+        <div class="ub5c9733">
+          <button class="icon-btn theme-cycle ue705c71" data-action="theme:cycle" aria-label="السمة" >◑</button>
         </div>
       </div>
 
@@ -91,9 +92,9 @@ const fullTitle = title === "أهل الأثر" ? title : `${title} · أهل ا
 
       <div class="wrap settings-row">
         <div class="ctl-group">
-          <div style="display:flex;align-items:center;gap:4px">
+          <div class="u8f813ee">
             <button class="icon-btn" data-action="font:dec" title="تصغير الخط">أ−</button>
-            <button class="icon-btn" data-action="font:inc" title="تكبير الخط" style="font-size:15px">أ+</button>
+            <button class="icon-btn ude00808" data-action="font:inc" title="تكبير الخط" >أ+</button>
           </div>
           <button class="toggle-btn" data-toggle="tashkeel" data-action="toggle:tashkeel" aria-pressed="true">
             <span class="toggle-dot"></span>تشكيل
@@ -114,26 +115,26 @@ const fullTitle = title === "أهل الأثر" ? title : `${title} · أهل ا
     <div class="drawer-backdrop" data-drawer-backdrop data-pagefind-ignore></div>
     <aside class="drawer" data-drawer aria-label="القائمة" data-pagefind-ignore>
       <div class="drawer-head">
-        <span class="brand-name" style="font-size:19px">أهل الأثر</span>
-        <button class="icon-btn" data-action="menu:close" aria-label="إغلاق" style="width:34px;height:34px;font-size:18px">×</button>
+        <span class="brand-name u94aa034" >أهل الأثر</span>
+        <button class="icon-btn u5f04d9d" data-action="menu:close" aria-label="إغلاق" >×</button>
       </div>
       <div class="drawer-section-label">التصفّح</div>
       {nav.map((n) => <a href={n.href}>{n.label}</a>)}
-      <div class="drawer-section-label" style="border-top:1px solid var(--rule);padding-top:16px">القراءة</div>
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
-        <span class="muted" style="font-size:14px">حجم الخط</span>
-        <div style="display:flex;gap:6px">
-          <button class="icon-btn" data-action="font:dec" style="width:36px;height:36px">أ−</button>
-          <button class="icon-btn" data-action="font:inc" style="width:36px;height:36px;font-size:16px">أ+</button>
+      <div class="drawer-section-label u816b4ed" >القراءة</div>
+      <div class="uea49063">
+        <span class="muted u433de30" >حجم الخط</span>
+        <div class="u49cd092">
+          <button class="icon-btn u6745888" data-action="font:dec" >أ−</button>
+          <button class="icon-btn ud575b29" data-action="font:inc" >أ+</button>
         </div>
       </div>
-      <button class="toggle-btn" data-toggle="tashkeel" data-action="toggle:tashkeel" aria-pressed="true" style="width:100%;justify-content:center;margin-bottom:9px"><span class="toggle-dot"></span>التشكيل</button>
-      <button class="toggle-btn" data-toggle="verseNums" data-action="toggle:verseNums" aria-pressed="true" style="width:100%;justify-content:center">ترقيم الأبيات</button>
-      <div class="drawer-section-label" style="border-top:1px solid var(--rule);padding-top:16px">السمة</div>
-      <div style="display:flex;gap:6px">
-        <button class="btn" data-theme-btn="light" data-action="theme:light" style="flex:1;padding:11px;font-size:13.5px">فاتح</button>
-        <button class="btn" data-theme-btn="sepia" data-action="theme:sepia" style="flex:1;padding:11px;font-size:13.5px">ورقي</button>
-        <button class="btn" data-theme-btn="dark" data-action="theme:dark" style="flex:1;padding:11px;font-size:13.5px">داكن</button>
+      <button class="toggle-btn u9375847" data-toggle="tashkeel" data-action="toggle:tashkeel" aria-pressed="true" ><span class="toggle-dot"></span>التشكيل</button>
+      <button class="toggle-btn u4a27002" data-toggle="verseNums" data-action="toggle:verseNums" aria-pressed="true" >ترقيم الأبيات</button>
+      <div class="drawer-section-label u816b4ed" >السمة</div>
+      <div class="u49cd092">
+        <button class="btn u2069fa5" data-theme-btn="light" data-action="theme:light" >فاتح</button>
+        <button class="btn u2069fa5" data-theme-btn="sepia" data-action="theme:sepia" >ورقي</button>
+        <button class="btn u2069fa5" data-theme-btn="dark" data-action="theme:dark" >داكن</button>
       </div>
     </aside>
 
@@ -150,8 +151,8 @@ const fullTitle = title === "أهل الأثر" ? title : `${title} · أهل ا
       <div class="wrap-mid">
         <div class="footer-grid">
           <div>
-            <div class="brand-name" style="font-size:20px">أهل الأثر</div>
-            <p class="muted" style="font-size:13.5px;max-width:40ch;margin:10px 0 0;line-height:1.7">
+            <div class="brand-name ub9199e2" >أهل الأثر</div>
+            <p class="muted u5a151a3" >
               المتونُ والمنظوماتُ والدروسُ، محقَّقةً ومُشكَّلةً. المحتوى هو الأصل، والتقنيةُ طبقةٌ قابلةٌ للاستبدال.
             </p>
           </div>
