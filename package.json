@@ -12,6 +12,7 @@
     "search:index": "pagefind --site dist",
     "a11y": "node scripts/a11y-audit.mjs",
     "smoke": "node scripts/smoke-test.mjs",
+    "check:links": "node scripts/check-links.mjs",
     "test": "vitest run"
   },
   "keywords": [],

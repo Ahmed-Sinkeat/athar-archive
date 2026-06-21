@@ -254,6 +254,7 @@ pnpm build           → ✓ green — 29 pages + sitemap + rss + _redirects + _
 tsc --noEmit         → ✓ clean
 JSON-LD              → ✓ 15/15 valid; types per URL Map §06
 search (dist/)       → ✓ verified via headless Chromium; audio captions excluded
+links (dist/)        → ✓ 867 internal links + redirects resolve (pnpm check:links, P8)
 media                → players on lesson/poem/book/article; book PDF/EPUB downloads
 ```
 
@@ -293,3 +294,7 @@ media                → players on lesson/poem/book/article; book PDF/EPUB down
 Test matrix (link integrity, RTL/diacritics, manual a11y pass, perf budget, Lighthouse),
 seed the real corpus, confirm domain/DNS/Cloudflare Pages production + edge headers, launch
 checklist, and **apply branch protection** (issue #13). Rollback = rebuild previous commit.
+
+**Started:** link-integrity checker `scripts/check-links.mjs` (`pnpm check:links`, in CI) —
+867 internal links + redirect targets resolve over `dist/`, fragment anchors checked.
+Branch protection is **plan-blocked** (private repo needs GitHub Pro or public — #13).
