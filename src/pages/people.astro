@@ -3,57 +3,67 @@ import { getCollection } from "astro:content";
 import Base from "../layouts/Base.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
 import { isPub, loadGraph } from "../lib/site";
-import { hrefFor, toArabicDigits, eraLabel, ERA_VALUES } from "../lib/display";
+import { hrefFor, toArabicDigits, eraLabel, eraHref, ERA_VALUES } from "../lib/display";
 
 const people = (await getCollection("person")).filter(isPub);
 const graph = await loadGraph();
-const presentEras = ERA_VALUES.filter((e) => people.some((p) => p.data.era === e));
+
+const worksOf = (id: string) => graph.materialsByPerson(id).filter(isPub).length;
+const byTitle = (a: any, b: any) => a.data.title.localeCompare(b.data.title, "ar");
+
+// group by era (chronological), then an "unset" bucket
+const groups = ERA_VALUES
+  .map((era) => ({ era, label: eraLabel(era), href: eraHref(era), people: people.filter((p) => p.data.era === era).sort(byTitle) }))
+  .filter((g) => g.people.length);
+const noEra = people.filter((p) => !p.data.era).sort(byTitle);
 ---
 <Base title="الأعلام" description="تراجمُ الناظمين والمصنِّفين والشُّرّاح، وما لكلٍّ منهم في الأرشيف." activeNav="people">
   <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "الأعلام" }]} />
-  <div class="wrap-mid uf5db21c" >
+  <div class="wrap-mid uf5db21c">
     <h1 class="page-title">الأعلام</h1>
-    <p class="page-intro">تراجمُ الناظمين والمصنِّفين والشُّرّاح. اختر عَلَماً لتصفّحِ آثارِه في الأرشيف.</p>
+    <p class="page-intro">تراجمُ الناظمين والمصنِّفين والشُّرّاح، مرتَّبةٌ حسب العصر. اختر عَلَماً لتصفّحِ آثارِه، أو عنوانَ العصرِ لتصفّحِ أعلامِه ومنظوماتِه.</p>
 
-    {presentEras.length > 1 && (
-      <div class="u1b7f0c1" data-filterbar>
-        <button class="chip" data-filter="all" aria-pressed="true">الكل</button>
-        {presentEras.map((e) => <button class="chip" data-filter={e} aria-pressed="false">{eraLabel(e)}</button>)}
-      </div>
+    {groups.map((g) => (
+      <section class="browse-group">
+        <div class="browse-subject">
+          <h2>{g.href ? <a href={g.href}>{g.label}</a> : g.label}</h2>
+          <span class="faint">{toArabicDigits(g.people.length)} من الأعلام</span>
+        </div>
+        <div class="card-grid u73cb55d">
+          {g.people.map((p) => (
+            <a class="card ub2eeea3" href={hrefFor("person", p.id)}>
+              <div class="u48e4dba">{p.data.title.replace(/^(ال|شيخ الإسلام |الإمام )/, "").trim().charAt(0)}</div>
+              <div>
+                <div class="card-title u94aa034">{p.data.title}</div>
+                {(p.data.died || p.data.location) && (
+                  <div class="card-sub u9439bf6">{[p.data.died && `ت ${p.data.died}`, p.data.location].filter(Boolean).join(" · ")}</div>
+                )}
+                <div class="faint u2b0979c">{toArabicDigits(worksOf(p.id))} من الأعمال</div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+    ))}
+
+    {noEra.length > 0 && (
+      <section class="browse-group">
+        <div class="browse-subject"><h2>غير محدَّدِ العصر</h2></div>
+        <div class="card-grid u73cb55d">
+          {noEra.map((p) => (
+            <a class="card ub2eeea3" href={hrefFor("person", p.id)}>
+              <div class="u48e4dba">{p.data.title.replace(/^(ال|شيخ الإسلام |الإمام )/, "").trim().charAt(0)}</div>
+              <div>
+                <div class="card-title u94aa034">{p.data.title}</div>
+                {(p.data.died || p.data.location) && (
+                  <div class="card-sub u9439bf6">{[p.data.died && `ت ${p.data.died}`, p.data.location].filter(Boolean).join(" · ")}</div>
+                )}
+                <div class="faint u2b0979c">{toArabicDigits(worksOf(p.id))} من الأعمال</div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
     )}
-
-    <div class="card-grid u73cb55d" >
-      {people.map((p) => {
-        const works = graph.materialsByPerson(p.id).length;
-        return (
-          <a class="card ub2eeea3" href={hrefFor("person", p.id)} data-era={p.data.era} >
-            <div class="u48e4dba">{p.data.title.replace(/^(ال|شيخ الإسلام |الإمام )/, "").trim().charAt(0)}</div>
-            <div>
-              <div class="card-title u94aa034" >{p.data.title}</div>
-              {p.data.era && <div class="u2b0979c"><span class="pill tag-verdigris">{eraLabel(p.data.era)}</span></div>}
-              {(p.data.died || p.data.location) && (
-                <div class="card-sub u9439bf6" >{[p.data.died && `ت ${p.data.died}`, p.data.location].filter(Boolean).join(" · ")}</div>
-              )}
-              <div class="faint u2b0979c" >{toArabicDigits(works)} من الأعمال</div>
-            </div>
-          </a>
-        );
-      })}
-    </div>
   </div>
-
-  <script is:inline>
-    (() => {
-      const bar = document.querySelector("[data-filterbar]");
-      if (!bar) return;
-      const cards = [...document.querySelectorAll(".card-grid .card")];
-      bar.addEventListener("click", (e) => {
-        const btn = e.target.closest("[data-filter]");
-        if (!btn) return;
-        const f = btn.dataset.filter;
-        bar.querySelectorAll("[data-filter]").forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
-        cards.forEach((c) => { c.style.display = f === "all" || c.dataset.era === f ? "" : "none"; });
-      });
-    })();
-  </script>
 </Base>

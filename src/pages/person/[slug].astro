@@ -5,7 +5,7 @@ import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import EntityCard from "../../components/EntityCard.astro";
 import Prose from "../../components/Prose.astro";
 import { isPub, loadGraph } from "../../lib/site";
-import { hrefFor, labelFor, isMatn, eraLabel } from "../../lib/display";
+import { hrefFor, labelFor, isMatn, eraLabel, eraHref } from "../../lib/display";
 import { personLd } from "../../lib/structured-data";
 
 export async function getStaticPaths() {
@@ -35,7 +35,7 @@ const jsonLd = personLd({
   <div class="wrap-mid uf5db21c" >
     <h1 class="page-title">{entry.data.title}</h1>
     {meta && <div class="reader-byline u3606c53" >{meta}</div>}
-    {entry.data.era && <div class="meta-pills"><span class="pill tag-verdigris">{eraLabel(entry.data.era)}</span></div>}
+    {entry.data.era && <div class="meta-pills"><a class="pill tag-verdigris pill-link" href={eraHref(entry.data.era)}>{eraLabel(entry.data.era)}</a></div>}
     {entry.body?.trim() && <div class="ud75d1ed"><Prose body={entry.body} /></div>}
 
     {works.length > 0 && (

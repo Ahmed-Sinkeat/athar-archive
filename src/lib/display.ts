@@ -42,6 +42,28 @@ export function eraLabel(value?: string): string {
   return value ? (ERA_LABELS[value] ?? value) : "";
 }
 
+// Stable latin slugs for era pages (/era/<slug>). Arabic era values aren't
+// URL-safe, so we map them explicitly (and back).
+const ERA_SLUGS: Record<string, string> = {
+  "الجاهلي": "jahili",
+  "صدر الإسلام": "sadr-al-islam",
+  "الأموي": "umawi",
+  "العباسي": "abbasi",
+  "الأندلسي": "andalusi",
+  "المتأخّر": "mutaakhkhir",
+  "الحديث": "hadith",
+};
+export function eraSlug(value?: string): string | undefined {
+  return value ? ERA_SLUGS[value] : undefined;
+}
+export function eraFromSlug(slug: string): string | undefined {
+  return (Object.keys(ERA_SLUGS) as string[]).find((k) => ERA_SLUGS[k] === slug);
+}
+export function eraHref(value?: string): string | undefined {
+  const s = eraSlug(value);
+  return s ? `/era/${s}` : undefined;
+}
+
 // Kind-aware display label: books show their kind (متن/مرجع/مجموع); poems are always منظومة.
 export function labelFor(collection: string, data: Record<string, any> = {}): string {
   if (collection === "book") return (data.kind as string) || "كتاب";

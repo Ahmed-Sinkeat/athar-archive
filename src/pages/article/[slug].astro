@@ -5,7 +5,7 @@ import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import Prose from "../../components/Prose.astro";
 import AudioPlayer from "../../components/AudioPlayer.astro";
 import Attachments from "../../components/Attachments.astro";
-import { isPub, loadGraph } from "../../lib/site";
+import { isPub, loadGraph, subjectTitlesFor } from "../../lib/site";
 import { articleLd } from "../../lib/structured-data";
 
 export async function getStaticPaths() {
@@ -16,12 +16,12 @@ export async function getStaticPaths() {
     const audioEntry = entry.data.audio ? graph.getById("audio", entry.data.audio) : null;
     return {
       params: { slug: entry.id },
-      props: { entry, author: person?.data.title, audio: audioEntry ? { url: audioEntry.data.url, format: audioEntry.data.format, duration: audioEntry.data.duration ?? null, sizeBytes: audioEntry.data.size_bytes ?? null } : null },
+      props: { entry, author: person?.data.title, subjects: subjectTitlesFor(entry.data.topics, graph), audio: audioEntry ? { url: audioEntry.data.url, format: audioEntry.data.format, duration: audioEntry.data.duration ?? null, sizeBytes: audioEntry.data.size_bytes ?? null } : null },
     };
   });
 }
 
-const { entry, author, audio } = Astro.props;
+const { entry, author, audio, subjects } = Astro.props;
 const path = `/article/${entry.id}`;
 const jsonLd = articleLd({
   title: entry.data.title, authorId: entry.data.person, authorName: author,
@@ -30,7 +30,7 @@ const jsonLd = articleLd({
   crumbs: [{ name: "الرئيسية", path: "/" }, { name: "المقالات", path: "/articles" }, { name: entry.data.title, path }],
 });
 ---
-<Base title={entry.data.title} description={entry.data.description} activeNav="articles" ogType="article" jsonLd={jsonLd} searchMeta={{ title: entry.data.title, type: "article", person: author }}>
+<Base title={entry.data.title} description={entry.data.description} activeNav="articles" ogType="article" jsonLd={jsonLd} searchMeta={{ title: entry.data.title, type: "article", person: author, subjects }}>
   <Breadcrumbs width="wrap-read" items={[{ label: "الرئيسية", href: "/" }, { label: "المقالات", href: "/articles" }, { label: entry.data.title }]} />
   <div class="wrap-read reading-pad">
     <div class="reader-head">

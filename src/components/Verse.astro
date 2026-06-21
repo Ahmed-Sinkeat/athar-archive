@@ -1,52 +1,81 @@
 ---
 import { markdownToSafeHtml } from "../lib/sanitize";
-import { toArabicDigits } from "../lib/display";
+import { toArabicDigits, stripTashkeel } from "../lib/display";
+import type { AnnNote } from "../lib/site";
 
-interface Note {
-  kind: string;
-  body: string;
-}
 interface Props {
   n: number;
   sadr: string;
   ajz?: string;
   anchor: string;
-  notes?: Note[];
+  notes?: AnnNote[];
 }
 const { n, sadr, ajz, anchor, notes = [] } = Astro.props;
 const hasNotes = notes.length > 0;
+const phrase = notes.find((nt) => nt.phrase)?.phrase;
 
 const KIND_SLUG: Record<string, string> = { شرح: "sharh", حاشية: "hashiya", تخريج: "takhrij", إعراب: "iraab" };
+
+// Locate `phrase` inside `text` ignoring tashkeel, returning the original
+// (vocalized) slices so the mark wraps the real text. Trailing harakat stay
+// attached to the mark.
+function locate(text: string, ph?: string): { before: string; mark: string; after: string } | null {
+  if (!ph) return null;
+  const needle = stripTashkeel(ph).replace(/\s+/g, " ").trim();
+  if (!needle) return null;
+  let stripped = "";
+  const map: number[] = [];
+  for (let i = 0; i < text.length; i++) {
+    const s = stripTashkeel(text[i]);
+    if (s) { stripped += s; for (let k = 0; k < s.length; k++) map.push(i); }
+  }
+  const idx = stripped.indexOf(needle);
+  if (idx < 0) return null;
+  const start = map[idx];
+  let end = map[idx + needle.length - 1] + 1;
+  while (end < text.length && !stripTashkeel(text[end])) end++;
+  return { before: text.slice(0, start), mark: text.slice(start, end), after: text.slice(end) };
+}
+
+// Where does the mark go? prefer the صدر, fall back to the عجز; if there's no
+// phrase but there are notes, the whole صدر carries the mark.
+const inSadr = locate(sadr, phrase);
+const inAjz = inSadr ? null : locate(ajz ?? "", phrase);
+const wholeSadr = hasNotes && !phrase;
+const popId = `ann-${anchor}`;
 ---
 <div class="verse" id={anchor}>
   <div class="verse-inner">
     <div class="vnum">{toArabicDigits(n)}</div>
     <div class="verse-body" data-ar>
-      {
-        hasNotes ? (
-          <a class="ann-trigger sadr" href={`#note-${anchor}`}>{sadr}</a>
+      <div class="sadr">
+        {inSadr ? (
+          <>{inSadr.before}<a class="ann-mark" href={`#${popId}`} data-ann={popId} aria-haspopup="dialog">{inSadr.mark}</a>{inSadr.after}</>
+        ) : wholeSadr ? (
+          <a class="ann-mark" href={`#${popId}`} data-ann={popId} aria-haspopup="dialog">{sadr}</a>
         ) : (
-          <div class="sadr">{sadr}</div>
-        )
-      }
-      {ajz && <div class="ajz">{ajz}</div>}
+          sadr
+        )}
+      </div>
+      {ajz && (
+        <div class="ajz">
+          {inAjz ? (
+            <>{inAjz.before}<a class="ann-mark" href={`#${popId}`} data-ann={popId} aria-haspopup="dialog">{inAjz.mark}</a>{inAjz.after}</>
+          ) : (
+            ajz
+          )}
+        </div>
+      )}
     </div>
   </div>
-  <div class="mem-ctl">
-    <button class="mem-btn" data-mem aria-label="حفظت هذا البيت" title="حفظت">✓</button>
-    <button class="mem-btn" data-review aria-label="يحتاج مراجعة" title="يحتاج مراجعة">★</button>
-  </div>
-</div>
-{
-  hasNotes && (
-    <div class="note-block" id={`note-${anchor}`}>
+  {hasNotes && (
+    <div class="ann-pack" id={popId} data-ann-pack hidden>
       {notes.map((nt) => (
-        <div class:list={["note", `k-${KIND_SLUG[nt.kind] ?? "sharh"}`]} data-ar>
-          <a class="note-close" href={`#${anchor}`} aria-label="إغلاق">×</a>
-          <span class="note-kind">{nt.kind}</span>
-          <Fragment set:html={markdownToSafeHtml(nt.body)} />
+        <div class={`ann-entry k-${KIND_SLUG[nt.kind] ?? "sharh"}`} data-kind={nt.kind} data-label={nt.annotator ? `${nt.kind} — ${nt.annotator}` : nt.kind}>
+          <div class="ann-entry-body" data-ar><Fragment set:html={markdownToSafeHtml(nt.body)} /></div>
+          {nt.sourceHref && <a class="ann-source-link" href={nt.sourceHref}>اقرأ في موضعه{nt.sourceLabel ? `: ${nt.sourceLabel}` : ""} ←</a>}
         </div>
       ))}
     </div>
-  )
-}
+  )}
+</div>

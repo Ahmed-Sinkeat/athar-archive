@@ -1,28 +1,63 @@
 ---
 import Base from "../../layouts/Base.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
-import EntityCard from "../../components/EntityCard.astro";
-import { personNameMap, publishedSorted } from "../../lib/site";
-import { hrefFor } from "../../lib/display";
+import { personNameMap, loadGraph } from "../../lib/site";
+import { hrefFor, toArabicDigits } from "../../lib/display";
+import { buildSubjectGroups } from "../../lib/browse";
 
-const questions = await publishedSorted("question");
+const graph = await loadGraph();
 const names = await personNameMap();
+const { groups, uncategorized } = buildSubjectGroups("question", graph);
 ---
-<Base title="المسائل" description="مسائلُ علميةٌ مجموعةٌ على هيئة سؤالٍ وجواب." activeNav="questions">
+<Base title="المسائل" description="مسائلُ علميةٌ مجموعةٌ على هيئة سؤالٍ وجواب، مرتَّبةٌ حسب الفنِّ والموضوع." activeNav="questions" searchScope={{ type: "question" }}>
   <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "المسائل" }]} />
-  <div class="wrap-mid uf5db21c" >
+  <div class="wrap-mid uf5db21c">
     <h1 class="page-title">المسائل</h1>
-    <p class="page-intro">مجموعاتٌ من المسائل العلمية على هيئة سؤالٍ وجواب.</p>
-    <div class="card-grid">
-      {questions.map((e) => (
-        <EntityCard
-          href={hrefFor("question", e.id)}
-          title={e.data.title}
-          kind="مسائل"
-          sub={e.data.person ? names.get(e.data.person) : undefined}
-          cta="اطّلع ←"
-        />
+    <p class="page-intro">مسائلُ علميةٌ على هيئة سؤالٍ وجواب، مرتَّبةٌ حسب الفنِّ ثم الموضوع. افتحِ الفنَّ ثم الموضوعَ للوصول إلى مسائله.</p>
+
+    <div class="masail-tree">
+      {groups.map((g, gi) => (
+        <details class="masail-subject" open={gi === 0}>
+          <summary>
+            <span class="masail-subject-name">{g.title}</span>
+            <span class="faint masail-count">{toArabicDigits(g.count)} مسألة</span>
+          </summary>
+          <div class="masail-topics">
+            {g.topics.map((t) => (
+              <details class="masail-topic">
+                <summary>
+                  <span>{t.title}</span>
+                  <span class="faint masail-count">{toArabicDigits(t.items.length)}</span>
+                </summary>
+                <ul class="masail-list">
+                  {t.items.map((it) => (
+                    <li>
+                      <a href={hrefFor("question", it.id)}>
+                        <span>{it.data.title}</span>
+                        {it.data.person && <span class="faint"> · {names.get(it.data.person)}</span>}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </details>
+            ))}
+          </div>
+        </details>
       ))}
+
+      {uncategorized.length > 0 && (
+        <details class="masail-subject">
+          <summary>
+            <span class="masail-subject-name">مسائلُ أخرى</span>
+            <span class="faint masail-count">{toArabicDigits(uncategorized.length)}</span>
+          </summary>
+          <ul class="masail-list masail-list-flush">
+            {uncategorized.map((it) => (
+              <li><a href={hrefFor("question", it.id)}>{it.data.title}</a></li>
+            ))}
+          </ul>
+        </details>
+      )}
     </div>
   </div>
 </Base>

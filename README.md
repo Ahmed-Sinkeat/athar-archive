@@ -30,6 +30,13 @@ Person · Subject · Topic · Book · Poem · Series · Lesson · Questions · B
 
 Polymorphic links (`source_type`/`target_type`) have no DB foreign keys — **Zod + a build-time cross-entity validator** are their only guard. A dangling reference fails the build; it never ships silently.
 
+## Reading & browse
+
+- **One-line top bar** — brand (= home) · slim nav · inline expanding search with an in-bar filter (type / عَلَم / موضوع) · settings gear (font, تشكيل, theme).
+- **Browse by فن** — الكتب/المنظومات grouped subject→topic; المسائل as a subject→topic drill-down; `/era/<slug>` pages list an era's poets and منظومات.
+- **Inline شرح chooser** — marked phrases open a popover; multiple شروح on one spot show a chooser, then reveal with the phrase highlighted (click / long-press). Build-time data, JS-free `:target` fallback.
+- **`/compose`** — maintainer tool (linked as "إضافة محتوى"): pick a type, fill the menus, copy/download a valid `file.md` to commit.
+
 ## Docs
 
 | Doc | What |

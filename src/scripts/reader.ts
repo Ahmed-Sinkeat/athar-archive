@@ -2,7 +2,7 @@
 // readable without it). Persists to localStorage; the pre-paint inline script
 // in Base.astro applies theme/scale/vnums before first paint to avoid flash.
 
-import { stripTashkeel, toArabicDigits } from "../lib/display";
+import { stripTashkeel } from "../lib/display";
 
 const LS = {
   theme: "aa-theme",
@@ -88,13 +88,10 @@ function setDrawer(open: boolean) {
   document.body.style.overflow = open ? "hidden" : "";
 }
 
-// --- study modes (وضع الحفظ) ---
-const MODES = ["qiraa", "sharh", "hifz", "tasmee", "ikhtibar", "muraja"];
+// --- study modes — قراءة (plain) + اختبار (tap a verse to reveal its عجز) ---
+const MODES = ["qiraa", "ikhtibar"];
 const MODE_HINT: Record<string, string> = {
-  hifz: "وضع الحفظ: النصُّ وحدَه. علِّمْ ما حفظتَه بِـ ✓.",
-  tasmee: "وضع التسميع: النصُّ وحدَه بلا شرحٍ ولا حاشية.",
   ikhtibar: "وضع الاختبار: يظهرُ الصدرُ، انقرِ البيتَ لإظهار العجز.",
-  muraja: "وضع المراجعة: انقرِ البيتَ لإظهار شرحِه، وعلِّمْ ما يحتاجُ مراجعةً بِـ ★.",
 };
 function setMode(m: string) {
   if (!MODES.includes(m)) m = "qiraa";
@@ -103,106 +100,87 @@ function setMode(m: string) {
   document.querySelectorAll<HTMLElement>("[data-mode-btn]").forEach((b) =>
     b.setAttribute("aria-pressed", String(b.dataset.modeBtn === m)),
   );
-  if (m !== "ikhtibar" && m !== "muraja")
+  if (m !== "ikhtibar")
     document.querySelectorAll(".revealed").forEach((el) => el.classList.remove("revealed"));
   const hint = document.querySelector<HTMLElement>("[data-mode-hint]");
   if (hint) { hint.textContent = MODE_HINT[m] ?? ""; hint.hidden = !MODE_HINT[m]; }
-  const panel = document.querySelector<HTMLElement>("[data-progress-panel]");
-  if (panel) panel.hidden = !(m === "hifz" || m === "muraja");
 }
 
-// --- memorization tracking (localStorage, no server, no spaced-rep math) ---
-type MemState = { m: string[]; r: string[] };
-const memKey = (id: string) => `aa-mem:${id}`;
-function readMem(id: string): MemState {
-  try {
-    const s = JSON.parse(localStorage.getItem(memKey(id)) || "null");
-    return s && Array.isArray(s.m) && Array.isArray(s.r) ? s : { m: [], r: [] };
-  } catch { return { m: [], r: [] }; }
+// --- topbar search + popovers ---
+const topsearch = document.querySelector<HTMLFormElement>("[data-topsearch]");
+const tsInput = document.querySelector<HTMLInputElement>("[data-topsearch-input]");
+const filterPop = document.querySelector<HTMLElement>("[data-filter-pop]");
+const settingsPop = document.querySelector<HTMLElement>("[data-settings-pop]");
+
+function isSearchOpen(): boolean {
+  return !!topsearch?.classList.contains("is-open");
 }
-function writeMem(id: string, s: MemState) {
-  if (!s.m.length && !s.r.length) localStorage.removeItem(memKey(id));
-  else localStorage.setItem(memKey(id), JSON.stringify(s));
+function openSearch() {
+  topsearch?.classList.add("is-open");
+  tsInput?.focus();
 }
-function matnContainer(): HTMLElement | null {
-  return document.querySelector<HTMLElement>("[data-matn]");
+function closeSearch() {
+  if (tsInput && tsInput.value.trim()) return; // keep open while a query is typed
+  topsearch?.classList.remove("is-open");
 }
-// Build the ✓/★ control row with DOM APIs (no HTML strings → no XSS sink).
-function buildMemCtl(): HTMLElement {
-  const wrap = document.createElement("span");
-  wrap.className = "mem-ctl";
-  const mk = (attr: string, label: string, glyph: string) => {
-    const b = document.createElement("button");
-    b.className = "mem-btn";
-    b.setAttribute(attr, "");
-    b.setAttribute("aria-label", label);
-    b.title = label;
-    b.textContent = glyph;
-    return b;
-  };
-  wrap.append(mk("data-mem", "حفظت", "✓"), mk("data-review", "يحتاج مراجعة", "★"));
-  return wrap;
+function popBtns(action: string) {
+  return document.querySelectorAll<HTMLElement>(`[data-action="${action}"]`);
 }
-// study items: verses, or (prose) top-level paragraphs — tag + inject controls lazily.
-function studyItems(c: HTMLElement): HTMLElement[] {
-  const verses = [...c.querySelectorAll<HTMLElement>(".verse")];
-  if (verses.length) return verses;
-  const ps = [...c.querySelectorAll<HTMLElement>(".prose > p")];
-  ps.forEach((p, i) => {
-    if (!p.id) p.id = `p${i + 1}`;
-    if (!p.classList.contains("matn-item")) {
-      p.classList.add("matn-item");
-      p.append(document.createTextNode(" "), buildMemCtl());
-    }
-  });
-  return ps;
+function closeAllPops() {
+  [filterPop, settingsPop].forEach((p) => { if (p) p.hidden = true; });
+  ["search:filter", "settings:toggle"].forEach((a) => popBtns(a).forEach((b) => b.setAttribute("aria-expanded", "false")));
 }
-function refreshMem() {
-  const c = matnContainer();
-  if (!c) return;
-  const id = c.dataset.matn!;
-  const unit = c.dataset.unit || "بيت";
-  const s = readMem(id);
-  const list = studyItems(c);
-  for (const el of list) {
-    el.classList.toggle("is-memorized", s.m.includes(el.id));
-    el.classList.toggle("needs-review", s.r.includes(el.id));
+function togglePop(pop: HTMLElement | null, action: string) {
+  if (!pop) return;
+  const willOpen = pop.hidden;
+  closeAllPops();
+  pop.hidden = !willOpen;
+  popBtns(action).forEach((b) => b.setAttribute("aria-expanded", String(willOpen)));
+}
+function buildSearchUrl(): string {
+  const p = new URLSearchParams();
+  const q = (tsInput?.value || "").trim();
+  if (q) p.set("q", q);
+  const types = [...(filterPop?.querySelectorAll<HTMLInputElement>("[data-filter-types] input:checked") || [])].map((i) => i.value);
+  if (types.length) p.set("types", types.join(","));
+  const person = filterPop?.querySelector<HTMLSelectElement>("[data-filter-person]")?.value;
+  if (person) p.set("person", person);
+  const subject = filterPop?.querySelector<HTMLSelectElement>("[data-filter-subject]")?.value;
+  if (subject) p.set("subject", subject);
+  const qs = p.toString();
+  return "/search" + (qs ? `?${qs}` : "");
+}
+function refreshFilterIndicator() {
+  const active =
+    !!filterPop?.querySelector("[data-filter-types] input:checked") ||
+    !!filterPop?.querySelector<HTMLSelectElement>("[data-filter-person]")?.value ||
+    !!filterPop?.querySelector<HTMLSelectElement>("[data-filter-subject]")?.value;
+  document.querySelector(".topsearch-filter")?.classList.toggle("has-active", active);
+}
+
+// Enter in the field (no go-button click) submits; collapsed → just open.
+topsearch?.addEventListener("submit", (e) => {
+  e.preventDefault();
+  if (!isSearchOpen()) { openSearch(); return; }
+  location.href = buildSearchUrl();
+});
+filterPop?.addEventListener("change", refreshFilterIndicator);
+
+// dismiss popovers / collapse search on outside click + Escape
+document.addEventListener("click", (e) => {
+  const t = e.target as HTMLElement;
+  if (!t.closest("[data-filter-pop]") && !t.closest('[data-action="search:filter"]')) {
+    if (filterPop && !filterPop.hidden) { filterPop.hidden = true; popBtns("search:filter").forEach((b) => b.setAttribute("aria-expanded", "false")); }
   }
-  const text = document.querySelector<HTMLElement>("[data-progress-text]");
-  const fill = document.querySelector<HTMLElement>("[data-progress-fill]");
-  if (text) text.textContent = `حفظتَ ${toArabicDigits(s.m.length)} من ${toArabicDigits(list.length)} ${unit}`;
-  if (fill) fill.style.width = list.length ? `${(s.m.length / list.length) * 100}%` : "0%";
-  const rt = document.querySelector<HTMLElement>("[data-review-today]");
-  if (rt) { rt.hidden = s.r.length === 0; rt.textContent = `للمراجعة: ${toArabicDigits(s.r.length)} ${unit}`; }
-}
-function toggleMem(item: HTMLElement, which: "m" | "r") {
-  const c = matnContainer();
-  if (!c) return;
-  const s = readMem(c.dataset.matn!);
-  const arr = s[which];
-  const i = arr.indexOf(item.id);
-  if (i >= 0) arr.splice(i, 1); else arr.push(item.id);
-  writeMem(c.dataset.matn!, s);
-  refreshMem();
-}
-function resetMem() {
-  const c = matnContainer();
-  if (!c) return;
-  if (!confirm("إعادة ضبط الحفظ والمراجعة لهذا المتن؟")) return;
-  localStorage.removeItem(memKey(c.dataset.matn!));
-  refreshMem();
-}
-// homepage "مراجعة اليوم" badge — sum review flags across all matns.
-function reviewTotal(): number {
-  let n = 0;
-  for (let i = 0; i < localStorage.length; i++) {
-    const k = localStorage.key(i);
-    if (k && k.startsWith("aa-mem:")) {
-      try { n += (JSON.parse(localStorage.getItem(k) || "{}").r || []).length; } catch {}
-    }
+  if (!t.closest("[data-settings-pop]") && !t.closest('[data-action="settings:toggle"]')) {
+    if (settingsPop && !settingsPop.hidden) { settingsPop.hidden = true; popBtns("settings:toggle").forEach((b) => b.setAttribute("aria-expanded", "false")); }
   }
-  return n;
-}
+  if (!t.closest("[data-topsearch]")) closeSearch();
+});
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") { closeAllPops(); topsearch?.classList.remove("is-open"); }
+});
+refreshFilterIndicator();
 
 // --- action dispatch ---
 const actions: Record<string, () => void> = {
@@ -216,13 +194,12 @@ const actions: Record<string, () => void> = {
   "theme:cycle": () => setTheme(THEMES[(THEMES.indexOf(currentTheme()) + 1) % THEMES.length]),
   "menu:toggle": () => setDrawer(true),
   "menu:close": () => setDrawer(false),
+  "search:toggle": () => { if (!isSearchOpen()) openSearch(); else location.href = buildSearchUrl(); },
+  "search:filter": () => togglePop(filterPop, "search:filter"),
+  "search:apply": () => { location.href = buildSearchUrl(); },
+  "settings:toggle": () => togglePop(settingsPop, "settings:toggle"),
   "mode:qiraa": () => setMode("qiraa"),
-  "mode:sharh": () => setMode("sharh"),
-  "mode:hifz": () => setMode("hifz"),
-  "mode:tasmee": () => setMode("tasmee"),
   "mode:ikhtibar": () => setMode("ikhtibar"),
-  "mode:muraja": () => setMode("muraja"),
-  "mem:reset": () => resetMem(),
 };
 
 document.addEventListener("click", (e) => {
@@ -233,22 +210,189 @@ document.addEventListener("click", (e) => {
 });
 document.querySelector("[data-drawer-backdrop]")?.addEventListener("click", () => setDrawer(false));
 
-// memorization controls (✓/★) + tap-to-reveal in اختبار/مراجعة
+// tap-to-reveal the عجز in اختبار mode
 document.addEventListener("click", (e) => {
+  if (root.getAttribute("data-mode") !== "ikhtibar") return;
   const target = e.target as HTMLElement;
-  const memBtn = target.closest<HTMLElement>("[data-mem]");
-  const revBtn = target.closest<HTMLElement>("[data-review]");
-  if (memBtn || revBtn) {
-    const item = (memBtn ?? revBtn)!.closest<HTMLElement>(".verse, .matn-item");
-    if (item) { e.preventDefault(); toggleMem(item, memBtn ? "m" : "r"); }
-    return;
-  }
-  const mode = root.getAttribute("data-mode");
-  if (mode === "ikhtibar" || mode === "muraja") {
-    if (target.closest("button, a")) return; // leave controls/links alone
-    target.closest<HTMLElement>(".verse, .matn-item")?.classList.toggle("revealed");
-  }
+  if (target.closest("button, a")) return; // leave controls/links alone
+  target.closest<HTMLElement>(".verse")?.classList.toggle("revealed");
 });
+
+// --- prose books: wrap each شرح phrase inline (poems mark server-side; prose
+// gets marked here from hidden .ann-pack[data-phrase] blocks). First matching
+// text node in a .prose wins; matching ignores tashkeel. ---
+(() => {
+  const packs = document.querySelectorAll<HTMLElement>(".ann-pack[data-phrase]");
+  if (!packs.length) return;
+  const proseEls = [...document.querySelectorAll<HTMLElement>(".prose")];
+  if (!proseEls.length) return;
+
+  function wrapIn(root: HTMLElement, needle: string, packId: string): boolean {
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    let node: Node | null;
+    while ((node = walker.nextNode())) {
+      if ((node.parentElement as HTMLElement | null)?.closest(".ann-mark, a")) continue;
+      const text = node.nodeValue || "";
+      let stripped = "";
+      const map: number[] = [];
+      for (let i = 0; i < text.length; i++) {
+        const s = stripTashkeel(text[i]);
+        if (s) { stripped += s; for (let k = 0; k < s.length; k++) map.push(i); }
+      }
+      const idx = stripped.indexOf(needle);
+      if (idx < 0) continue;
+      const start = map[idx];
+      let end = map[idx + needle.length - 1] + 1;
+      while (end < text.length && !stripTashkeel(text[end])) end++;
+      const frag = document.createDocumentFragment();
+      if (start > 0) frag.appendChild(document.createTextNode(text.slice(0, start)));
+      const a = document.createElement("a");
+      a.className = "ann-mark"; a.href = `#${packId}`; a.setAttribute("data-ann", packId); a.setAttribute("aria-haspopup", "dialog");
+      a.textContent = text.slice(start, end);
+      frag.appendChild(a);
+      if (end < text.length) frag.appendChild(document.createTextNode(text.slice(end)));
+      node.parentNode?.replaceChild(frag, node);
+      return true;
+    }
+    return false;
+  }
+
+  packs.forEach((pack) => {
+    const needle = stripTashkeel(pack.getAttribute("data-phrase") || "").replace(/\s+/g, " ").trim();
+    if (!needle) return;
+    for (const prose of proseEls) if (wrapIn(prose, needle, pack.id)) break;
+  });
+})();
+
+// --- inline شرح chooser (annotation popover) ---
+// Marks are <a class="ann-mark" data-ann="ann-<anchor>">; the hidden
+// [data-ann-pack] sibling holds one .ann-entry per شرح. One entry → show it;
+// several → show a chooser menu first. All data is build-time (no network).
+(() => {
+  let pop: HTMLElement | null = null;
+  let activeMark: HTMLElement | null = null;
+  let currentPack: HTMLElement | null = null;
+  let justLongPressed = false;
+
+  function ensurePop(): HTMLElement {
+    if (pop) return pop;
+    pop = document.createElement("div");
+    pop.className = "ann-pop";
+    pop.setAttribute("role", "dialog");
+    pop.hidden = true;
+    document.body.appendChild(pop);
+    return pop;
+  }
+  function close() {
+    if (pop) pop.hidden = true;
+    if (activeMark) { activeMark.classList.remove("ann-active"); activeMark = null; }
+    currentPack = null;
+  }
+  function position() {
+    if (!pop || !activeMark) return;
+    const r = activeMark.getBoundingClientRect();
+    const pw = pop.offsetWidth, ph = pop.offsetHeight;
+    const vw = document.documentElement.clientWidth, vh = window.innerHeight;
+    let left = r.left + r.width / 2 - pw / 2;
+    left = Math.max(8, Math.min(left, vw - pw - 8));
+    let top = r.bottom + 8;
+    if (top + ph > vh - 8) top = Math.max(8, r.top - ph - 8);
+    pop.style.left = `${left}px`;
+    pop.style.top = `${top}px`;
+  }
+  function head(title: string, withBack: boolean): HTMLElement {
+    const h = document.createElement("div");
+    h.className = "ann-pop-head";
+    if (withBack) {
+      const back = document.createElement("button");
+      back.type = "button"; back.className = "ann-pop-back"; back.textContent = "‹ الشروح";
+      back.addEventListener("click", (ev) => { ev.stopPropagation(); if (currentPack) renderMenu(currentPack); });
+      h.appendChild(back);
+    }
+    const t = document.createElement("span");
+    t.className = "ann-pop-kind"; t.textContent = title;
+    const x = document.createElement("button");
+    x.type = "button"; x.className = "ann-pop-close"; x.setAttribute("aria-label", "إغلاق"); x.textContent = "×";
+    x.addEventListener("click", close);
+    h.append(t, x);
+    return h;
+  }
+  function renderEntry(entry: HTMLElement, withBack: boolean) {
+    const p = ensurePop();
+    p.innerHTML = "";
+    p.append(head(entry.getAttribute("data-label") || "شرح", withBack));
+    const body = document.createElement("div");
+    body.className = "ann-pop-body"; body.setAttribute("data-ar", "");
+    // clone the already-sanitized (build-time rehype-sanitize) note DOM — no
+    // innerHTML, no runtime parsing.
+    const src0 = entry.querySelector(".ann-entry-body");
+    if (src0) body.append(...[...src0.cloneNode(true).childNodes]);
+    p.appendChild(body);
+    const src = entry.querySelector<HTMLAnchorElement>(".ann-source-link");
+    if (src) {
+      const a = document.createElement("a");
+      a.className = "ann-source-link"; a.href = src.href; a.textContent = src.textContent || "";
+      p.appendChild(a);
+    }
+    position();
+  }
+  function renderMenu(pack: HTMLElement) {
+    const entries = [...pack.querySelectorAll<HTMLElement>(".ann-entry")];
+    const p = ensurePop();
+    p.innerHTML = "";
+    p.append(head("اختر الشرح", false));
+    const menu = document.createElement("div");
+    menu.className = "ann-menu";
+    entries.forEach((en) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "ann-menu-item " + (en.className.match(/k-\w+/)?.[0] ?? "");
+      b.textContent = en.getAttribute("data-label") || "شرح";
+      b.addEventListener("click", (ev) => { ev.stopPropagation(); renderEntry(en, true); });
+      menu.appendChild(b);
+    });
+    p.appendChild(menu);
+    position();
+  }
+  function open(mark: HTMLElement) {
+    const id = mark.getAttribute("data-ann");
+    const pack = id ? document.getElementById(id) : null;
+    if (!pack) return;
+    if (activeMark && activeMark !== mark) activeMark.classList.remove("ann-active");
+    activeMark = mark; mark.classList.add("ann-active");
+    currentPack = pack;
+    ensurePop().hidden = false;
+    const entries = [...pack.querySelectorAll<HTMLElement>(".ann-entry")];
+    if (entries.length > 1) renderMenu(pack);
+    else renderEntry(entries[0], false);
+  }
+
+  document.addEventListener("click", (e) => {
+    const mark = (e.target as HTMLElement).closest<HTMLElement>(".ann-mark");
+    if (mark) {
+      e.preventDefault();
+      if (justLongPressed) { justLongPressed = false; return; }
+      if (activeMark === mark && pop && !pop.hidden) close();
+      else open(mark);
+      return;
+    }
+    if (pop && !pop.hidden && !(e.target as HTMLElement).closest(".ann-pop")) close();
+  });
+
+  let pressTimer: number | undefined;
+  document.addEventListener("touchstart", (e) => {
+    const mark = (e.target as HTMLElement).closest<HTMLElement>(".ann-mark");
+    if (!mark) return;
+    pressTimer = window.setTimeout(() => { justLongPressed = true; open(mark); }, 420);
+  }, { passive: true });
+  const cancelPress = () => { if (pressTimer) { clearTimeout(pressTimer); pressTimer = undefined; } };
+  document.addEventListener("touchmove", cancelPress, { passive: true });
+  document.addEventListener("touchend", cancelPress);
+
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") close(); });
+  window.addEventListener("scroll", () => { if (pop && !pop.hidden) close(); }, { passive: true });
+  window.addEventListener("resize", position);
+})();
 
 // --- reading progress bar ---
 const bar = document.querySelector<HTMLElement>("[data-progress]");
@@ -268,15 +412,5 @@ applyVnums(localStorage.getItem(LS.vnums) !== "0");
 if (localStorage.getItem(LS.tashkeel) === "0") applyTashkeel(false);
 else document.querySelectorAll<HTMLElement>('[data-toggle="tashkeel"]').forEach((b) => b.setAttribute("aria-pressed", "true"));
 
-// study mode + memorization init
+// study mode init
 setMode(localStorage.getItem(LS.mode) || "qiraa");
-refreshMem();
-const reviewHome = document.querySelector<HTMLElement>("[data-review-home]");
-if (reviewHome) {
-  const n = reviewTotal();
-  if (n > 0) {
-    reviewHome.hidden = false;
-    const slot = reviewHome.querySelector("[data-review-home-n]");
-    if (slot) slot.textContent = toArabicDigits(n);
-  }
-}

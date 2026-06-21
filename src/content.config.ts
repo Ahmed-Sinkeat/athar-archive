@@ -193,15 +193,27 @@ const audio = defineCollection({
 
 const annotation = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/annotation" }),
-  schema: z.object({
-    ...shared,
-    target_type: z.enum(["book", "poem"]),  // required
-    target_id: slug,                         // required
-    anchor: z.string().min(1),               // e.g., "v5", "p3", heading slug
-    // kind drives the note label/accent in the reader (شرح/حاشية/تخريج/إعراب)
-    kind: z.enum(["شرح", "حاشية", "تخريج", "إعراب"]).default("شرح"),
-    annotator: slug.optional(),              // → Person
-  }),
+  schema: z
+    .object({
+      ...shared,
+      target_type: z.enum(["book", "poem"]),  // required
+      target_id: slug,                         // required
+      anchor: z.string().min(1),               // e.g., "v5", "p3", heading slug
+      // kind drives the note label/accent in the reader (شرح/حاشية/تخريج/إعراب)
+      kind: z.enum(["شرح", "حاشية", "تخريج", "إعراب"]).default("شرح"),
+      annotator: slug.optional(),              // → Person
+      // Exact phrase within the anchor's text to mark inline (the clickable
+      // word(s) that open the شرح chooser + get highlighted). If omitted, the
+      // whole line carries the mark.
+      phrase: z.string().min(1).optional(),
+      // Optional cross-reference: this شرح lives more fully on another page.
+      source_type: z.enum(["lesson", "book", "poem", "article"]).optional(),
+      source_id: slug.optional(),
+    })
+    .refine(
+      (a) => (a.source_type == null) === (a.source_id == null),
+      "source_type and source_id must both be set or both omitted",
+    ),
 });
 
 // --- 13. Announcement (الإعلان) — homepage chrome only ---

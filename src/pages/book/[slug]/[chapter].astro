@@ -4,30 +4,36 @@ import Base from "../../../layouts/Base.astro";
 import Breadcrumbs from "../../../components/Breadcrumbs.astro";
 import Prose from "../../../components/Prose.astro";
 import StudyBar from "../../../components/StudyBar.astro";
-import { isPub, personNameMap } from "../../../lib/site";
+import { isPub, loadGraph, personNameMap, notesByAnchor, subjectTitlesFor } from "../../../lib/site";
+import { markdownToSafeHtml } from "../../../lib/sanitize";
 import { analyzeBook } from "../../../lib/chunk";
 import { hrefFor, labelFor, isMatn } from "../../../lib/display";
 
 export async function getStaticPaths() {
   const books = (await getCollection("book")).filter(isPub);
+  const graph = await loadGraph();
   const names = await personNameMap();
   const paths: any[] = [];
   for (const entry of books) {
     const a = analyzeBook(entry.body ?? "");
     if (!a.chunked) continue;
+    const byAnchor = notesByAnchor("book", entry.id, graph, names);
+    const subjects = subjectTitlesFor(entry.data.topics, graph);
     for (const c of a.chapters) {
       paths.push({
         params: { slug: entry.id, chapter: c.slug },
-        props: { entry, chapter: c, author: names.get(entry.data.person) },
+        props: { entry, chapter: c, byAnchor, subjects, author: names.get(entry.data.person) },
       });
     }
   }
   return paths;
 }
 
-const { entry, chapter, author } = Astro.props;
+const { entry, chapter, byAnchor, subjects, author } = Astro.props;
+const KIND_SLUG: Record<string, string> = { شرح: "sharh", حاشية: "hashiya", تخريج: "takhrij", إعراب: "iraab" };
+const phraseAnchors = Object.entries(byAnchor).filter(([, notes]: any) => notes.some((n: any) => n.phrase));
 ---
-<Base title={`${chapter.title} · ${entry.data.title}`} activeNav="books" searchMeta={{ title: `${entry.data.title} — ${chapter.title}`, type: "book", id: entry.id, person: author, matn: isMatn("book", entry.data) }} searchScope={{ in: entry.id, label: entry.data.title }}>
+<Base title={`${chapter.title} · ${entry.data.title}`} activeNav="books" searchMeta={{ title: `${entry.data.title} — ${chapter.title}`, type: "book", id: entry.id, person: author, matn: isMatn("book", entry.data), subjects }} searchScope={{ in: entry.id, label: entry.data.title }}>
   <Breadcrumbs
     width="wrap-matn"
     items={[
@@ -52,5 +58,16 @@ const { entry, chapter, author } = Astro.props;
     ) : (
       <div class="u49fcd85"><Prose body={chapter.content} /></div>
     )}
+
+    {phraseAnchors.map(([anchor, notes]: any) => (
+      <div class="ann-pack" id={`ann-${anchor}`} data-ann-pack data-phrase={notes.find((n: any) => n.phrase)?.phrase} hidden>
+        {notes.map((nt: any) => (
+          <div class={`ann-entry k-${KIND_SLUG[nt.kind] ?? "sharh"}`} data-kind={nt.kind} data-label={nt.annotator ? `${nt.kind} — ${nt.annotator}` : nt.kind}>
+            <div class="ann-entry-body" data-ar><Fragment set:html={markdownToSafeHtml(nt.body)} /></div>
+            {nt.sourceHref && <a class="ann-source-link" href={nt.sourceHref}>اقرأ في موضعه{nt.sourceLabel ? `: ${nt.sourceLabel}` : ""} ←</a>}
+          </div>
+        ))}
+      </div>
+    ))}
   </div>
 </Base>
