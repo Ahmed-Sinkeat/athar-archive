@@ -32,6 +32,10 @@ const KIND_SLUG: Record<string, string> = { شرح: "sharh", حاشية: "hashiy
       {ajz && <div class="ajz">{ajz}</div>}
     </div>
   </div>
+  <div class="mem-ctl">
+    <button class="mem-btn" data-mem aria-label="حفظت هذا البيت" title="حفظت">✓</button>
+    <button class="mem-btn" data-review aria-label="يحتاج مراجعة" title="يحتاج مراجعة">★</button>
+  </div>
 </div>
 {
   hasNotes && (

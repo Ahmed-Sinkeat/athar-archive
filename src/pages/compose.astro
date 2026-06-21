@@ -1,0 +1,27 @@
+---
+import Base from "../layouts/Base.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+// Unlisted maintainer tool — generates a valid file.md to copy/commit.
+// noindex; not linked from the nav. Committing the file still needs repo access.
+---
+<Base title="إضافة محتوى" noindex>
+  <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "إضافة محتوى" }]} />
+  <div class="wrap-mid uf5db21c">
+    <h1 class="page-title">إضافة محتوى</h1>
+    <p class="page-intro">اختر النوع، واملأ الحقول، ثم انسخ الملف أو نزِّله وضعه في مجلده داخل المستودع، ثم: <code>pnpm validate:content</code>.</p>
+
+    <div class="field">
+      <label for="ctype">النوع</label>
+      <select id="ctype" class="cinput"></select>
+    </div>
+
+    <div class="compose-grid">
+      <form id="cform" autocomplete="off"><div id="cfields"></div></form>
+      <div id="cpreview" class="compose-preview"></div>
+    </div>
+  </div>
+
+  <script>
+    import "../scripts/compose.ts";
+  </script>
+</Base>

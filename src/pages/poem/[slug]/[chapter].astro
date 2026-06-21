@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import Base from "../../../layouts/Base.astro";
 import Breadcrumbs from "../../../components/Breadcrumbs.astro";
 import Verse from "../../../components/Verse.astro";
+import StudyBar from "../../../components/StudyBar.astro";
 import { isPub, loadGraph, personNameMap } from "../../../lib/site";
 import { analyzePoem } from "../../../lib/chunk";
 import { hrefFor, toArabicDigits } from "../../../lib/display";
@@ -32,12 +33,12 @@ export async function getStaticPaths() {
 
 const { entry, chapter, byAnchor, author } = Astro.props;
 ---
-<Base title={`${chapter.title} · ${entry.data.title}`} activeNav="books" searchMeta={{ title: `${entry.data.title} — ${chapter.title}`, type: "poem" }}>
+<Base title={`${chapter.title} · ${entry.data.title}`} activeNav="poems" searchMeta={{ title: `${entry.data.title} — ${chapter.title}`, type: "poem", id: entry.id, person: author, matn: true }} searchScope={{ in: entry.id, label: entry.data.title }}>
   <Breadcrumbs
     width="wrap-read"
     items={[
       { label: "الرئيسية", href: "/" },
-      { label: "المكتبة", href: "/books" },
+      { label: "المنظومات", href: "/poems" },
       { label: entry.data.title, href: hrefFor("poem", entry.id) },
       { label: chapter.title },
     ]}
@@ -49,7 +50,8 @@ const { entry, chapter, byAnchor, author } = Astro.props;
       <div class="reader-byline">{entry.data.title} · {toArabicDigits(chapter.verses.length)} بيت</div>
     </div>
     <div class="rule-short"></div>
-    <div class="verses">
+    <StudyBar />
+    <div class="verses" data-matn={entry.id} data-unit="بيت">
       {chapter.verses.map((v: any) => (
         <Verse n={v.n} sadr={v.sadr} ajz={v.ajz} anchor={v.anchor} notes={byAnchor[v.anchor]} />
       ))}

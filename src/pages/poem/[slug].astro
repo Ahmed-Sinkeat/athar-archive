@@ -3,17 +3,19 @@ import { getCollection } from "astro:content";
 import Base from "../../layouts/Base.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import Verse from "../../components/Verse.astro";
+import StudyBar from "../../components/StudyBar.astro";
 import AudioPlayer from "../../components/AudioPlayer.astro";
 import Attachments from "../../components/Attachments.astro";
-import { isPub, loadGraph, personNameMap } from "../../lib/site";
+import { isPub, loadGraph, personNameMap, personEraMap } from "../../lib/site";
 import { analyzePoem } from "../../lib/chunk";
-import { hrefFor, toArabicDigits } from "../../lib/display";
+import { hrefFor, toArabicDigits, eraLabel } from "../../lib/display";
 import { poemLd } from "../../lib/structured-data";
 
 export async function getStaticPaths() {
   const poems = (await getCollection("poem")).filter(isPub);
   const graph = await loadGraph();
   const names = await personNameMap();
+  const eras = await personEraMap();
   return poems.map((entry) => {
     const byAnchor: Record<string, { kind: string; body: string }[]> = {};
     for (const a of graph.annotationsForTarget("poem", entry.id)) {
@@ -22,27 +24,27 @@ export async function getStaticPaths() {
     }
     const au = graph.audioForSource("poem", entry.id).find((x) => x.data.status === "published");
     const audio = au ? { url: au.data.url, format: au.data.format, duration: au.data.duration ?? null, sizeBytes: au.data.size_bytes ?? null } : null;
-    return { params: { slug: entry.id }, props: { entry, byAnchor, audio, author: names.get(entry.data.person) } };
+    return { params: { slug: entry.id }, props: { entry, byAnchor, audio, author: names.get(entry.data.person), era: eras.get(entry.data.person) } };
   });
 }
 
-const { entry, byAnchor, audio, author } = Astro.props;
+const { entry, byAnchor, audio, author, era } = Astro.props;
 const a = analyzePoem(entry.body ?? "");
 const path = `/poem/${entry.id}`;
 const jsonLd = poemLd({
   title: entry.data.title, authorId: entry.data.person, authorName: author,
   description: entry.data.description, path,
-  crumbs: [{ name: "الرئيسية", path: "/" }, { name: "المكتبة", path: "/books" }, { name: entry.data.title, path }],
+  crumbs: [{ name: "الرئيسية", path: "/" }, { name: "المنظومات", path: "/poems" }, { name: entry.data.title, path }],
 });
 const chapterNums = new Set(a.chapters.flatMap((c) => c.verses.map((v) => v.n)));
 const preamble = a.verses.filter((v) => !chapterNums.has(v.n));
 ---
-<Base title={entry.data.title} description={entry.data.description} activeNav="books" ogType="article" jsonLd={jsonLd} searchMeta={{ title: entry.data.title, type: "poem" }}>
+<Base title={entry.data.title} description={entry.data.description} activeNav="poems" ogType="article" jsonLd={jsonLd} searchMeta={{ title: entry.data.title, type: "poem", id: entry.id, person: author, era, matn: true }} searchScope={{ in: entry.id, label: entry.data.title }}>
   <Breadcrumbs
     width="wrap-read"
     items={[
       { label: "الرئيسية", href: "/" },
-      { label: "المكتبة", href: "/books" },
+      { label: "المنظومات", href: "/poems" },
       { label: entry.data.title },
     ]}
   />
@@ -52,6 +54,8 @@ const preamble = a.verses.filter((v) => !chapterNums.has(v.n));
       <h1 class="reader-title">{entry.data.title}</h1>
       <div class="reader-byline">نظمُ {author}</div>
       <div class="meta-pills">
+        <span class="badge-matn">متن</span>
+        {era && <span class="pill tag-verdigris">{eraLabel(era)}</span>}
         <span class="pill">{toArabicDigits(a.verseCount)} بيت</span>
         {a.chunked && <span class="pill">{toArabicDigits(a.chapters.length)} باب</span>}
       </div>
@@ -78,15 +82,18 @@ const preamble = a.verses.filter((v) => !chapterNums.has(v.n));
         ))}
       </div>
     ) : (
-      <div class="verses">
-        {preamble.map((v) => <Verse n={v.n} sadr={v.sadr} ajz={v.ajz} anchor={v.anchor} notes={byAnchor[v.anchor]} />)}
-        {a.chapters.map((c) => (
-          <>
-            <div class="chapter-band"><span>{c.title}</span></div>
-            {c.verses.map((v) => <Verse n={v.n} sadr={v.sadr} ajz={v.ajz} anchor={v.anchor} notes={byAnchor[v.anchor]} />)}
-          </>
-        ))}
-      </div>
+      <>
+        <StudyBar />
+        <div class="verses" data-matn={entry.id} data-unit="بيت">
+          {preamble.map((v) => <Verse n={v.n} sadr={v.sadr} ajz={v.ajz} anchor={v.anchor} notes={byAnchor[v.anchor]} />)}
+          {a.chapters.map((c) => (
+            <>
+              <div class="chapter-band"><span>{c.title}</span></div>
+              {c.verses.map((v) => <Verse n={v.n} sadr={v.sadr} ajz={v.ajz} anchor={v.anchor} notes={byAnchor[v.anchor]} />)}
+            </>
+          ))}
+        </div>
+      </>
     )}
 
     <Attachments items={entry.data.attachments} />

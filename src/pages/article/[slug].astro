@@ -30,7 +30,7 @@ const jsonLd = articleLd({
   crumbs: [{ name: "الرئيسية", path: "/" }, { name: "المقالات", path: "/articles" }, { name: entry.data.title, path }],
 });
 ---
-<Base title={entry.data.title} description={entry.data.description} activeNav="articles" ogType="article" jsonLd={jsonLd} searchMeta={{ title: entry.data.title, type: "article" }}>
+<Base title={entry.data.title} description={entry.data.description} activeNav="articles" ogType="article" jsonLd={jsonLd} searchMeta={{ title: entry.data.title, type: "article", person: author }}>
   <Breadcrumbs width="wrap-read" items={[{ label: "الرئيسية", href: "/" }, { label: "المقالات", href: "/articles" }, { label: entry.data.title }]} />
   <div class="wrap-read reading-pad">
     <div class="reader-head">

@@ -49,7 +49,7 @@ const jsonLd = lessonLd({
   ],
 });
 ---
-<Base title={lesson.data.title} description={`${series.data.title} — الدرس ${idx}`} activeNav="series" ogType="article" jsonLd={jsonLd} searchMeta={{ title: lesson.data.title, type: "lesson" }}>
+<Base title={lesson.data.title} description={`${series.data.title} — الدرس ${idx}`} activeNav="series" ogType="article" jsonLd={jsonLd} searchMeta={{ title: lesson.data.title, type: "lesson", person: author }}>
   <Breadcrumbs
     items={[
       { label: "الرئيسية", href: "/" },

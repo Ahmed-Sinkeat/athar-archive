@@ -1,0 +1,27 @@
+---
+// وضع الحفظ — study toolbar for متن items. Modes are applied as a [data-mode]
+// class on <html> (see reader.ts); progress + review counts are read from the
+// adjacent [data-matn] container. Fully optional: with JS off the متن stays
+// readable in the default قراءة form.
+interface Props {
+  prose?: boolean; // prose matns omit verse-only modes (تسميع/اختبار)
+}
+const { prose = false } = Astro.props;
+---
+<div class="studybar" data-studybar>
+  <div class="studybar-modes" role="group" aria-label="أوضاع الدراسة">
+    <button class="mode-btn" data-action="mode:qiraa" data-mode-btn="qiraa" aria-pressed="true">📖 قراءة</button>
+    <button class="mode-btn" data-action="mode:sharh" data-mode-btn="sharh" aria-pressed="false">📚 شرح</button>
+    <button class="mode-btn" data-action="mode:hifz" data-mode-btn="hifz" aria-pressed="false">🧠 حفظ</button>
+    {!prose && <button class="mode-btn" data-action="mode:tasmee" data-mode-btn="tasmee" aria-pressed="false">🎯 تسميع</button>}
+    {!prose && <button class="mode-btn" data-action="mode:ikhtibar" data-mode-btn="ikhtibar" aria-pressed="false">✍️ اختبار</button>}
+    <button class="mode-btn" data-action="mode:muraja" data-mode-btn="muraja" aria-pressed="false">🔁 مراجعة</button>
+  </div>
+  <div class="studybar-progress" data-progress-panel hidden>
+    <span data-progress-text class="faint"></span>
+    <div class="mem-bar"><div class="mem-bar-fill" data-progress-fill></div></div>
+    <button class="icon-btn" data-action="mem:reset" title="إعادة ضبط الحفظ" aria-label="إعادة ضبط الحفظ">↺</button>
+  </div>
+</div>
+<div class="hint study-hint" data-mode-hint hidden></div>
+<div class="review-today" data-review-today hidden></div>

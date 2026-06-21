@@ -21,19 +21,38 @@ import Breadcrumbs from "../components/Breadcrumbs.astro";
     <div id="results" class="u3f99027"></div>
 
     <noscript>
-      <p class="faint u2517a51" >يحتاجُ البحثُ إلى تفعيل JavaScript. يمكنك التصفّحُ عبر <a href="/books" class="ua805525">المكتبة</a> و<a href="/subjects" class="ua805525">الموضوعات</a>.</p>
+      <p class="faint u2517a51" >يحتاجُ البحثُ إلى تفعيل JavaScript. يمكنك التصفّحُ عبر <a href="/books" class="ua805525">الكتب</a> و<a href="/poems" class="ua805525">المنظومات</a> و<a href="/subjects" class="ua805525">الموضوعات</a>.</p>
     </noscript>
   </div>
 
   <script is:inline>
     (async () => {
-      const LABEL = { poem: "منظومة", book: "متن", series: "سلسلة", lesson: "درس", person: "عَلَم", subject: "تصنيف", topic: "موضوع", benefit: "فائدة", article: "مقالة", question: "مسائل" };
+      const LABEL = { poem: "منظومة", book: "كتاب", series: "سلسلة", lesson: "درس", person: "عَلَم", subject: "تصنيف", topic: "موضوع", benefit: "فائدة", article: "مقالة", question: "مسائل" };
       const input = document.getElementById("q");
       const results = document.getElementById("results");
       const status = document.getElementById("status");
       const filtersEl = document.getElementById("filters");
       const params = new URLSearchParams(location.search);
+
+      // Fixed scope carried in from a section / reader / person page.
+      const scope = {
+        type: params.get("scope"),
+        person: params.get("person"),
+        id: params.get("in"),
+        label: params.get("label"),
+      };
+      const hasScope = !!(scope.type || scope.person || scope.id);
+
+      // Facet selections (narrow within current results).
       let activeType = null;
+      let activePerson = null;
+
+      if (hasScope) {
+        const what = scope.id ? (scope.label || "هذا المتن")
+          : scope.person ? `أرشيف ${scope.label || scope.person}`
+          : (LABEL[scope.type] || scope.type);
+        input.placeholder = `ابحث ضمن ${what}…`;
+      }
 
       let pagefind;
       try {
@@ -44,16 +63,53 @@ import Breadcrumbs from "../components/Breadcrumbs.astro";
         return;
       }
 
-      function chip(label, type) {
+      function esc(s) { const d = document.createElement("div"); d.textContent = s; return d.innerHTML; }
+      function toAr(n) { return String(n).replace(/[0-9]/g, (d) => "٠١٢٣٤٥٦٧٨٩"[+d]); }
+
+      function chip(label, pressed, onClick, cls) {
         const b = document.createElement("button");
-        b.className = "chip";
+        b.className = "chip" + (cls ? " " + cls : "");
         b.textContent = label;
-        b.setAttribute("aria-pressed", String(activeType === type));
-        b.onclick = () => { activeType = type; run(input.value); };
+        b.setAttribute("aria-pressed", String(pressed));
+        b.onclick = onClick;
         return b;
       }
 
-      function esc(s) { const d = document.createElement("div"); d.textContent = s; return d.innerHTML; }
+      function buildFilters() {
+        const f = {};
+        if (scope.type) f.type = scope.type;
+        if (scope.person) f.person = scope.person;
+        if (scope.id) f.id = scope.id;
+        if (activeType) f.type = activeType;
+        if (activePerson) f.person = activePerson;
+        return Object.keys(f).length ? f : undefined;
+      }
+
+      function renderFilters(data) {
+        filtersEl.innerHTML = "";
+        if (hasScope) {
+          const what = scope.id ? `ضمن: ${scope.label || "هذا المتن"}`
+            : scope.person ? `أرشيف: ${scope.label || scope.person}`
+            : `النوع: ${LABEL[scope.type] || scope.type}`;
+          filtersEl.appendChild(chip(`${what} ✕`, true, () => {
+            location.href = "/search" + (input.value ? "?q=" + encodeURIComponent(input.value) : "");
+          }, "chip-scope"));
+        }
+        if (!scope.type && !scope.id) {
+          const types = [...new Set(data.flatMap((d) => d.filters?.type || []))];
+          if (types.length > 1 || activeType) {
+            filtersEl.appendChild(chip("كل الأنواع", !activeType, () => { activeType = null; run(input.value); }));
+            types.forEach((tp) => filtersEl.appendChild(chip(LABEL[tp] || tp, activeType === tp, () => { activeType = tp; run(input.value); })));
+          }
+        }
+        if (!scope.person && !scope.id) {
+          const persons = [...new Set(data.flatMap((d) => d.filters?.person || []))];
+          if (persons.length > 1 || activePerson) {
+            filtersEl.appendChild(chip("كل الأعلام", !activePerson, () => { activePerson = null; run(input.value); }));
+            persons.forEach((p) => filtersEl.appendChild(chip(p, activePerson === p, () => { activePerson = p; run(input.value); })));
+          }
+        }
+      }
 
       async function run(query) {
         const q = (query || "").trim();
@@ -61,21 +117,14 @@ import Breadcrumbs from "../components/Breadcrumbs.astro";
         if (q) url.searchParams.set("q", q); else url.searchParams.delete("q");
         history.replaceState(null, "", url);
         results.innerHTML = "";
-        if (!q) { status.textContent = ""; filtersEl.innerHTML = ""; return; }
+        if (!q) { status.textContent = ""; renderFilters([]); return; }
 
-        const opts = activeType ? { filters: { type: activeType } } : undefined;
-        const search = await pagefind.search(q, opts);
+        const filters = buildFilters();
+        const search = await pagefind.search(q, filters ? { filters } : undefined);
         const data = await Promise.all(search.results.slice(0, 30).map((r) => r.data()));
 
         status.textContent = data.length ? `${toAr(data.length)} نتيجة لـ «${q}»` : `لا نتائج لـ «${q}».`;
-
-        // type facet chips from this query's results
-        const types = [...new Set(data.flatMap((d) => (d.filters?.type) || []))];
-        filtersEl.innerHTML = "";
-        if (types.length > 1 || activeType) {
-          filtersEl.appendChild(chip("الكل", null));
-          types.forEach((t) => filtersEl.appendChild(chip(LABEL[t] || t, t)));
-        }
+        renderFilters(data);
 
         for (const d of data) {
           const type = (d.filters?.type || [])[0];
@@ -91,13 +140,12 @@ import Breadcrumbs from "../components/Breadcrumbs.astro";
         }
       }
 
-      function toAr(n) { return String(n).replace(/[0-9]/g, (d) => "٠١٢٣٤٥٦٧٨٩"[+d]); }
-
       let t;
       input.addEventListener("input", () => { clearTimeout(t); t = setTimeout(() => run(input.value), 180); });
 
       const initial = params.get("q");
       if (initial) { input.value = initial; run(initial); }
+      else if (hasScope) { renderFilters([]); }
       input.focus();
     })();
   </script>

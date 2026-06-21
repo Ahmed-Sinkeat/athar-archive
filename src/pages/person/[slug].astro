@@ -5,7 +5,7 @@ import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import EntityCard from "../../components/EntityCard.astro";
 import Prose from "../../components/Prose.astro";
 import { isPub, loadGraph } from "../../lib/site";
-import { ENTITY, hrefFor } from "../../lib/display";
+import { hrefFor, labelFor, isMatn, eraLabel } from "../../lib/display";
 import { personLd } from "../../lib/structured-data";
 
 export async function getStaticPaths() {
@@ -15,7 +15,7 @@ export async function getStaticPaths() {
     const works = graph
       .materialsByPerson(entry.id)
       .filter(isPub)
-      .map((w) => ({ collection: w.collection, id: w.id, title: w.data.title, series: w.data.series }));
+      .map((w) => ({ collection: w.collection, id: w.id, title: w.data.title, series: w.data.series, kind: labelFor(w.collection, w.data), matn: isMatn(w.collection, w.data) }));
     return { params: { slug: entry.id }, props: { entry, works } };
   });
 }
@@ -30,22 +30,25 @@ const jsonLd = personLd({
   crumbs: [{ name: "الرئيسية", path: "/" }, { name: "الأعلام", path: "/people" }, { name: entry.data.title, path }],
 });
 ---
-<Base title={entry.data.title} description={entry.data.bio} activeNav="people" ogType="profile" jsonLd={jsonLd} searchMeta={{ title: entry.data.title, type: "person" }}>
+<Base title={entry.data.title} description={entry.data.bio} activeNav="people" ogType="profile" jsonLd={jsonLd} searchMeta={{ title: entry.data.title, type: "person", aliases: entry.data.also_known_as }} searchScope={{ person: entry.data.title, label: entry.data.title }}>
   <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "الأعلام", href: "/people" }, { label: entry.data.title }]} />
   <div class="wrap-mid uf5db21c" >
     <h1 class="page-title">{entry.data.title}</h1>
     {meta && <div class="reader-byline u3606c53" >{meta}</div>}
+    {entry.data.era && <div class="meta-pills"><span class="pill tag-verdigris">{eraLabel(entry.data.era)}</span></div>}
     {entry.body?.trim() && <div class="ud75d1ed"><Prose body={entry.body} /></div>}
 
     {works.length > 0 && (
       <div class="ud34d921">
         <div class="section-label">من آثارِه في الأرشيف</div>
+        <a class="faint u6cb285c" href={`/search?person=${encodeURIComponent(entry.data.title)}&label=${encodeURIComponent(entry.data.title)}`}>ابحث في أرشيفه ←</a>
         <div class="card-grid">
           {works.map((w) => (
             <EntityCard
               href={hrefFor(w.collection, w.id, { series: w.series })}
               title={w.title}
-              kind={ENTITY[w.collection]?.one}
+              kind={w.kind}
+              matn={w.matn}
               cta="اطّلع ←"
             />
           ))}

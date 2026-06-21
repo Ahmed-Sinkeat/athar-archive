@@ -2,13 +2,14 @@
 // readable without it). Persists to localStorage; the pre-paint inline script
 // in Base.astro applies theme/scale/vnums before first paint to avoid flash.
 
-import { stripTashkeel } from "../lib/display";
+import { stripTashkeel, toArabicDigits } from "../lib/display";
 
 const LS = {
   theme: "aa-theme",
   scale: "aa-scale",
   tashkeel: "aa-tashkeel",
   vnums: "aa-vnums",
+  mode: "aa-mode",
 };
 
 const SCALE_MIN = 0.8;
@@ -87,6 +88,122 @@ function setDrawer(open: boolean) {
   document.body.style.overflow = open ? "hidden" : "";
 }
 
+// --- study modes (وضع الحفظ) ---
+const MODES = ["qiraa", "sharh", "hifz", "tasmee", "ikhtibar", "muraja"];
+const MODE_HINT: Record<string, string> = {
+  hifz: "وضع الحفظ: النصُّ وحدَه. علِّمْ ما حفظتَه بِـ ✓.",
+  tasmee: "وضع التسميع: النصُّ وحدَه بلا شرحٍ ولا حاشية.",
+  ikhtibar: "وضع الاختبار: يظهرُ الصدرُ، انقرِ البيتَ لإظهار العجز.",
+  muraja: "وضع المراجعة: انقرِ البيتَ لإظهار شرحِه، وعلِّمْ ما يحتاجُ مراجعةً بِـ ★.",
+};
+function setMode(m: string) {
+  if (!MODES.includes(m)) m = "qiraa";
+  root.setAttribute("data-mode", m);
+  localStorage.setItem(LS.mode, m);
+  document.querySelectorAll<HTMLElement>("[data-mode-btn]").forEach((b) =>
+    b.setAttribute("aria-pressed", String(b.dataset.modeBtn === m)),
+  );
+  if (m !== "ikhtibar" && m !== "muraja")
+    document.querySelectorAll(".revealed").forEach((el) => el.classList.remove("revealed"));
+  const hint = document.querySelector<HTMLElement>("[data-mode-hint]");
+  if (hint) { hint.textContent = MODE_HINT[m] ?? ""; hint.hidden = !MODE_HINT[m]; }
+  const panel = document.querySelector<HTMLElement>("[data-progress-panel]");
+  if (panel) panel.hidden = !(m === "hifz" || m === "muraja");
+}
+
+// --- memorization tracking (localStorage, no server, no spaced-rep math) ---
+type MemState = { m: string[]; r: string[] };
+const memKey = (id: string) => `aa-mem:${id}`;
+function readMem(id: string): MemState {
+  try {
+    const s = JSON.parse(localStorage.getItem(memKey(id)) || "null");
+    return s && Array.isArray(s.m) && Array.isArray(s.r) ? s : { m: [], r: [] };
+  } catch { return { m: [], r: [] }; }
+}
+function writeMem(id: string, s: MemState) {
+  if (!s.m.length && !s.r.length) localStorage.removeItem(memKey(id));
+  else localStorage.setItem(memKey(id), JSON.stringify(s));
+}
+function matnContainer(): HTMLElement | null {
+  return document.querySelector<HTMLElement>("[data-matn]");
+}
+// Build the ✓/★ control row with DOM APIs (no HTML strings → no XSS sink).
+function buildMemCtl(): HTMLElement {
+  const wrap = document.createElement("span");
+  wrap.className = "mem-ctl";
+  const mk = (attr: string, label: string, glyph: string) => {
+    const b = document.createElement("button");
+    b.className = "mem-btn";
+    b.setAttribute(attr, "");
+    b.setAttribute("aria-label", label);
+    b.title = label;
+    b.textContent = glyph;
+    return b;
+  };
+  wrap.append(mk("data-mem", "حفظت", "✓"), mk("data-review", "يحتاج مراجعة", "★"));
+  return wrap;
+}
+// study items: verses, or (prose) top-level paragraphs — tag + inject controls lazily.
+function studyItems(c: HTMLElement): HTMLElement[] {
+  const verses = [...c.querySelectorAll<HTMLElement>(".verse")];
+  if (verses.length) return verses;
+  const ps = [...c.querySelectorAll<HTMLElement>(".prose > p")];
+  ps.forEach((p, i) => {
+    if (!p.id) p.id = `p${i + 1}`;
+    if (!p.classList.contains("matn-item")) {
+      p.classList.add("matn-item");
+      p.append(document.createTextNode(" "), buildMemCtl());
+    }
+  });
+  return ps;
+}
+function refreshMem() {
+  const c = matnContainer();
+  if (!c) return;
+  const id = c.dataset.matn!;
+  const unit = c.dataset.unit || "بيت";
+  const s = readMem(id);
+  const list = studyItems(c);
+  for (const el of list) {
+    el.classList.toggle("is-memorized", s.m.includes(el.id));
+    el.classList.toggle("needs-review", s.r.includes(el.id));
+  }
+  const text = document.querySelector<HTMLElement>("[data-progress-text]");
+  const fill = document.querySelector<HTMLElement>("[data-progress-fill]");
+  if (text) text.textContent = `حفظتَ ${toArabicDigits(s.m.length)} من ${toArabicDigits(list.length)} ${unit}`;
+  if (fill) fill.style.width = list.length ? `${(s.m.length / list.length) * 100}%` : "0%";
+  const rt = document.querySelector<HTMLElement>("[data-review-today]");
+  if (rt) { rt.hidden = s.r.length === 0; rt.textContent = `للمراجعة: ${toArabicDigits(s.r.length)} ${unit}`; }
+}
+function toggleMem(item: HTMLElement, which: "m" | "r") {
+  const c = matnContainer();
+  if (!c) return;
+  const s = readMem(c.dataset.matn!);
+  const arr = s[which];
+  const i = arr.indexOf(item.id);
+  if (i >= 0) arr.splice(i, 1); else arr.push(item.id);
+  writeMem(c.dataset.matn!, s);
+  refreshMem();
+}
+function resetMem() {
+  const c = matnContainer();
+  if (!c) return;
+  if (!confirm("إعادة ضبط الحفظ والمراجعة لهذا المتن؟")) return;
+  localStorage.removeItem(memKey(c.dataset.matn!));
+  refreshMem();
+}
+// homepage "مراجعة اليوم" badge — sum review flags across all matns.
+function reviewTotal(): number {
+  let n = 0;
+  for (let i = 0; i < localStorage.length; i++) {
+    const k = localStorage.key(i);
+    if (k && k.startsWith("aa-mem:")) {
+      try { n += (JSON.parse(localStorage.getItem(k) || "{}").r || []).length; } catch {}
+    }
+  }
+  return n;
+}
+
 // --- action dispatch ---
 const actions: Record<string, () => void> = {
   "font:inc": () => setScale(getScale() + SCALE_STEP),
@@ -99,6 +216,13 @@ const actions: Record<string, () => void> = {
   "theme:cycle": () => setTheme(THEMES[(THEMES.indexOf(currentTheme()) + 1) % THEMES.length]),
   "menu:toggle": () => setDrawer(true),
   "menu:close": () => setDrawer(false),
+  "mode:qiraa": () => setMode("qiraa"),
+  "mode:sharh": () => setMode("sharh"),
+  "mode:hifz": () => setMode("hifz"),
+  "mode:tasmee": () => setMode("tasmee"),
+  "mode:ikhtibar": () => setMode("ikhtibar"),
+  "mode:muraja": () => setMode("muraja"),
+  "mem:reset": () => resetMem(),
 };
 
 document.addEventListener("click", (e) => {
@@ -108,6 +232,23 @@ document.addEventListener("click", (e) => {
   if (fn) { e.preventDefault(); fn(); }
 });
 document.querySelector("[data-drawer-backdrop]")?.addEventListener("click", () => setDrawer(false));
+
+// memorization controls (✓/★) + tap-to-reveal in اختبار/مراجعة
+document.addEventListener("click", (e) => {
+  const target = e.target as HTMLElement;
+  const memBtn = target.closest<HTMLElement>("[data-mem]");
+  const revBtn = target.closest<HTMLElement>("[data-review]");
+  if (memBtn || revBtn) {
+    const item = (memBtn ?? revBtn)!.closest<HTMLElement>(".verse, .matn-item");
+    if (item) { e.preventDefault(); toggleMem(item, memBtn ? "m" : "r"); }
+    return;
+  }
+  const mode = root.getAttribute("data-mode");
+  if (mode === "ikhtibar" || mode === "muraja") {
+    if (target.closest("button, a")) return; // leave controls/links alone
+    target.closest<HTMLElement>(".verse, .matn-item")?.classList.toggle("revealed");
+  }
+});
 
 // --- reading progress bar ---
 const bar = document.querySelector<HTMLElement>("[data-progress]");
@@ -126,3 +267,16 @@ syncThemeButtons(currentTheme());
 applyVnums(localStorage.getItem(LS.vnums) !== "0");
 if (localStorage.getItem(LS.tashkeel) === "0") applyTashkeel(false);
 else document.querySelectorAll<HTMLElement>('[data-toggle="tashkeel"]').forEach((b) => b.setAttribute("aria-pressed", "true"));
+
+// study mode + memorization init
+setMode(localStorage.getItem(LS.mode) || "qiraa");
+refreshMem();
+const reviewHome = document.querySelector<HTMLElement>("[data-review-home]");
+if (reviewHome) {
+  const n = reviewTotal();
+  if (n > 0) {
+    reviewHome.hidden = false;
+    const slot = reviewHome.querySelector("[data-review-home-n]");
+    if (slot) slot.textContent = toArabicDigits(n);
+  }
+}

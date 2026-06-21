@@ -3,12 +3,13 @@ import { getCollection } from "astro:content";
 import Base from "../../layouts/Base.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import Prose from "../../components/Prose.astro";
+import StudyBar from "../../components/StudyBar.astro";
 import AudioPlayer from "../../components/AudioPlayer.astro";
 import Attachments from "../../components/Attachments.astro";
 import { markdownToSafeHtml } from "../../lib/sanitize";
 import { isPub, loadGraph, personNameMap } from "../../lib/site";
 import { analyzeBook } from "../../lib/chunk";
-import { hrefFor, toArabicDigits } from "../../lib/display";
+import { hrefFor, toArabicDigits, labelFor, isMatn } from "../../lib/display";
 import { bookLd } from "../../lib/structured-data";
 
 export async function getStaticPaths() {
@@ -32,21 +33,21 @@ const path = `/book/${entry.id}`;
 const jsonLd = bookLd({
   title: entry.data.title, authorId: entry.data.person, authorName: author,
   description: entry.data.description, path,
-  crumbs: [{ name: "الرئيسية", path: "/" }, { name: "المكتبة", path: "/books" }, { name: entry.data.title, path }],
+  crumbs: [{ name: "الرئيسية", path: "/" }, { name: "الكتب", path: "/books" }, { name: entry.data.title, path }],
 });
 ---
-<Base title={entry.data.title} description={entry.data.description} activeNav="books" ogType="book" jsonLd={jsonLd} searchMeta={{ title: entry.data.title, type: "book" }}>
+<Base title={entry.data.title} description={entry.data.description} activeNav="books" ogType="book" jsonLd={jsonLd} searchMeta={{ title: entry.data.title, type: "book", id: entry.id, person: author, matn: isMatn("book", entry.data) }} searchScope={{ in: entry.id, label: entry.data.title }}>
   <Breadcrumbs
     width="wrap-matn"
     items={[
       { label: "الرئيسية", href: "/" },
-      { label: "المكتبة", href: "/books" },
+      { label: "الكتب", href: "/books" },
       { label: entry.data.title },
     ]}
   />
   <div class="wrap-matn reading-pad">
     <div class="reader-head">
-      <div class="eyebrow u87c136d" >متن</div>
+      <div class="eyebrow u87c136d" >{labelFor("book", entry.data)}</div>
       <h1 class="reader-title ue7e55f7" >{entry.data.title}</h1>
       <div class="reader-byline">{author}</div>
     </div>
@@ -62,6 +63,11 @@ const jsonLd = bookLd({
           </a>
         ))}
       </div>
+    ) : isMatn("book", entry.data) ? (
+      <>
+        <StudyBar prose />
+        <div class="u49fcd85" data-matn={entry.id} data-unit="فقرة"><Prose body={entry.body ?? ""} /></div>
+      </>
     ) : (
       <div class="u49fcd85"><Prose body={entry.body ?? ""} /></div>
     )}

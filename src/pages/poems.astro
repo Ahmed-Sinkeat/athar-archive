@@ -3,28 +3,55 @@ import { getCollection } from "astro:content";
 import Base from "../layouts/Base.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
 import EntityCard from "../components/EntityCard.astro";
-import { personNameMap, isPub } from "../lib/site";
-import { hrefFor, toArabicDigits } from "../lib/display";
+import { personNameMap, personEraMap, isPub } from "../lib/site";
+import { hrefFor, toArabicDigits, eraLabel, ERA_VALUES } from "../lib/display";
 import { analyzePoem } from "../lib/chunk";
 
 const poems = (await getCollection("poem")).filter(isPub);
 const names = await personNameMap();
+const eras = await personEraMap();
+const presentEras = ERA_VALUES.filter((e) => poems.some((p) => eras.get(p.data.person) === e));
 ---
-<Base title="المنظومات" description="منظوماتٌ علميةٌ محقَّقةٌ مُشكَّلةٌ مع الشروح والتخريج." activeNav="books">
+<Base title="المنظومات" description="منظوماتٌ علميةٌ محقَّقةٌ مُشكَّلةٌ مع الشروح والتخريج." activeNav="poems" searchScope={{ type: "poem" }}>
   <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "المنظومات" }]} />
   <div class="wrap-mid uf5db21c" >
     <h1 class="page-title">المنظومات</h1>
     <p class="page-intro">منظوماتٌ علميةٌ مُشكَّلةٌ، أبياتُها مُرقَّمةٌ، والمُعلَّمُ منها له شرحٌ وتخريج.</p>
+
+    {presentEras.length > 1 && (
+      <div class="u1b7f0c1" data-filterbar>
+        <button class="chip" data-filter="all" aria-pressed="true">الكل</button>
+        {presentEras.map((e) => <button class="chip" data-filter={e} aria-pressed="false">{eraLabel(e)}</button>)}
+      </div>
+    )}
+
     <div class="card-grid">
       {poems.map((e) => (
         <EntityCard
           href={hrefFor("poem", e.id)}
           title={e.data.title}
           kind="منظومة"
+          matn={true}
+          era={eras.get(e.data.person)}
           sub={`${names.get(e.data.person) ?? ""} · ${toArabicDigits(analyzePoem(e.body ?? "").verseCount)} بيت`}
           cta="ادخل القراءة ←"
         />
       ))}
     </div>
   </div>
+
+  <script is:inline>
+    (() => {
+      const bar = document.querySelector("[data-filterbar]");
+      if (!bar) return;
+      const cards = [...document.querySelectorAll(".card-grid .card")];
+      bar.addEventListener("click", (e) => {
+        const btn = e.target.closest("[data-filter]");
+        if (!btn) return;
+        const f = btn.dataset.filter;
+        bar.querySelectorAll("[data-filter]").forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
+        cards.forEach((c) => { c.style.display = f === "all" || c.dataset.era === f ? "" : "none"; });
+      });
+    })();
+  </script>
 </Base>

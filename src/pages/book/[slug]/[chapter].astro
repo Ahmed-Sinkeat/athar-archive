@@ -3,9 +3,10 @@ import { getCollection } from "astro:content";
 import Base from "../../../layouts/Base.astro";
 import Breadcrumbs from "../../../components/Breadcrumbs.astro";
 import Prose from "../../../components/Prose.astro";
+import StudyBar from "../../../components/StudyBar.astro";
 import { isPub, personNameMap } from "../../../lib/site";
 import { analyzeBook } from "../../../lib/chunk";
-import { hrefFor } from "../../../lib/display";
+import { hrefFor, labelFor, isMatn } from "../../../lib/display";
 
 export async function getStaticPaths() {
   const books = (await getCollection("book")).filter(isPub);
@@ -26,23 +27,30 @@ export async function getStaticPaths() {
 
 const { entry, chapter, author } = Astro.props;
 ---
-<Base title={`${chapter.title} · ${entry.data.title}`} activeNav="books" searchMeta={{ title: `${entry.data.title} — ${chapter.title}`, type: "book" }}>
+<Base title={`${chapter.title} · ${entry.data.title}`} activeNav="books" searchMeta={{ title: `${entry.data.title} — ${chapter.title}`, type: "book", id: entry.id, person: author, matn: isMatn("book", entry.data) }} searchScope={{ in: entry.id, label: entry.data.title }}>
   <Breadcrumbs
     width="wrap-matn"
     items={[
       { label: "الرئيسية", href: "/" },
-      { label: "المكتبة", href: "/books" },
+      { label: "الكتب", href: "/books" },
       { label: entry.data.title, href: hrefFor("book", entry.id) },
       { label: chapter.title },
     ]}
   />
   <div class="wrap-matn reading-pad">
     <div class="reader-head">
-      <div class="eyebrow u87c136d" >متن · {author}</div>
+      <div class="eyebrow u87c136d" >{labelFor("book", entry.data)} · {author}</div>
       <h1 class="reader-title u97df06b" >{chapter.title}</h1>
       <div class="reader-byline">{entry.data.title}</div>
     </div>
     <div class="rule-short"></div>
-    <div class="u49fcd85"><Prose body={chapter.content} /></div>
+    {isMatn("book", entry.data) ? (
+      <>
+        <StudyBar prose />
+        <div class="u49fcd85" data-matn={`${entry.id}--${chapter.slug}`} data-unit="فقرة"><Prose body={chapter.content} /></div>
+      </>
+    ) : (
+      <div class="u49fcd85"><Prose body={chapter.content} /></div>
+    )}
   </div>
 </Base>

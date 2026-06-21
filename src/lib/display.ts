@@ -22,7 +22,7 @@ export const ENTITY: Record<
   person: { one: "عَلَم", many: "الأعلام", index: "/people" },
   subject: { one: "تصنيف", many: "الموضوعات", index: "/subjects" },
   topic: { one: "موضوع", many: "الموضوعات", index: "/topics" },
-  book: { one: "متن", many: "المكتبة", index: "/books" },
+  book: { one: "كتاب", many: "الكتب", index: "/books" },
   poem: { one: "منظومة", many: "المنظومات", index: "/poems" },
   series: { one: "سلسلة", many: "الدروس", index: "/series" },
   lesson: { one: "درس", many: "الدروس", index: "/series" },
@@ -30,6 +30,29 @@ export const ENTITY: Record<
   benefit: { one: "فائدة", many: "الفوائد", index: "/benefits" },
   article: { one: "مقالة", many: "المقالات", index: "/articles" },
 };
+
+// Literary eras (العصر) — keep values in sync with the person.era enum in content.config.ts.
+// Ordered chronologically for stable chip ordering.
+export const ERA_VALUES = ["الجاهلي", "صدر الإسلام", "الأموي", "العباسي", "الأندلسي", "المتأخّر", "الحديث"] as const;
+const ERA_LABELS: Record<string, string> = {
+  "صدر الإسلام": "صدر الإسلام/المخضرمون",
+  "المتأخّر": "المتأخّر (المملوكي/العثماني)",
+};
+export function eraLabel(value?: string): string {
+  return value ? (ERA_LABELS[value] ?? value) : "";
+}
+
+// Kind-aware display label: books show their kind (متن/مرجع/مجموع); poems are always منظومة.
+export function labelFor(collection: string, data: Record<string, any> = {}): string {
+  if (collection === "book") return (data.kind as string) || "كتاب";
+  if (collection === "poem") return "منظومة";
+  return ENTITY[collection]?.one ?? collection;
+}
+
+// Is this entry a متن (memorizable)? Every poem, and books explicitly marked متن.
+export function isMatn(collection: string, data: Record<string, any> = {}): boolean {
+  return collection === "poem" || (collection === "book" && data.kind === "متن");
+}
 
 // Lesson route param = lesson id minus its "<series>--" prefix.
 export function lessonParam(lessonId: string, seriesId: string): string {
