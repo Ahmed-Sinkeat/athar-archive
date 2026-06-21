@@ -1,0 +1,24 @@
+name: بلاغ تصحيح
+description: الإبلاغ عن خطأ علمي أو إملائي أو رابط مكسور في مادة منشورة
+title: "[تصحيح] "
+labels: ["correction"]
+body:
+  - type: input
+    id: ref
+    attributes:
+      label: رابط الصفحة أو معرّف المادة
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: وصف الخطأ
+    validations:
+      required: true
+  - type: textarea
+    id: fix
+    attributes:
+      label: التصحيح المقترح (إن وُجد)
+  - type: markdown
+    attributes:
+      value: "للتصحيح العاجل يمكنك أيضاً المراسلة على tashih@ahlalathar.com"
