@@ -14,7 +14,8 @@
     "smoke": "node scripts/smoke-test.mjs",
     "check:links": "node scripts/check-links.mjs",
     "perf:budget": "node scripts/perf-budget.mjs",
-    "test": "vitest run"
+    "test": "vitest run",
+    "deploy": "wrangler deploy"
   },
   "keywords": [],
   "author": "",
@@ -46,6 +47,7 @@
     "playwright-core": "^1.61.0",
     "tsx": "^4.22.4",
     "typescript": "^6.0.3",
-    "vitest": "^4.1.9"
+    "vitest": "^4.1.9",
+    "wrangler": "^4.103.0"
   }
 }
