@@ -129,6 +129,7 @@ docs/
 ├─ asbuild.md                # phase-by-phase as-built record vs BUILD-PLAN
 ├─ issue.md                  # ranked issue / watch register
 ├─ governance.md             # roles + branch-protection settings (P7)
+├─ deploy.md                 # Cloudflare Pages deploy runbook (P8)
 └─ media-and-backup.md       # R2 media + rebuild-from-Git recovery
 ```
 
