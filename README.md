@@ -32,10 +32,11 @@ Polymorphic links (`source_type`/`target_type`) have no DB foreign keys — **Zo
 
 ## Reading & browse
 
-- **One-line top bar** — brand (= home) · slim nav · inline expanding search with an in-bar filter (type / عَلَم / موضوع) · settings gear (font, تشكيل, theme).
-- **Browse by فن** — الكتب/المنظومات grouped subject→topic; المسائل as a subject→topic drill-down; `/era/<slug>` pages list an era's poets and منظومات.
-- **Inline شرح chooser** — marked phrases open a popover; multiple شروح on one spot show a chooser, then reveal with the phrase highlighted (click / long-press). Build-time data, JS-free `:target` fallback.
-- **`/compose`** — maintainer tool (linked as "إضافة محتوى"): pick a type, fill the menus, copy/download a valid `file.md` to commit.
+- **One-line top bar** — brand (= home) · slim nav · inline expanding search with an in-bar filter (type · searchable multi-select عَلَم/موضوع, OR) · settings gear (font, تشكيل, theme). The home hero search carries the same filter icon.
+- **Browse by فن** — الكتب/المنظومات/المقالات/الدروس as collapsible تصنيف→موضوع accordions (native `<details>`, sorted by سنة التصنيف); المسائل as a subject→topic drill-down; `/era/<slug>` pages list an era's poets and منظومات.
+- **Inline شرح chooser** — marked phrases open a popover; multiple شروح on one spot show a chooser, then reveal with the phrase highlighted (click / long-press). Build-time data, JS-free `:target` fallback. Book bottom حواشٍ collapse under a `<details>`.
+- **`/roadmap`** — طريق طلب العلم page, content from `src/data/roadmap.md` (edit to fill it out); linked from the home hero.
+- **`/compose`** — maintainer authoring tool: pick a type, fill the menus, copy/download a valid `file.md` to commit. Unlinked + `noindex`; gate it with Cloudflare Access (see `docs/deploy.md`).
 
 ## Docs
 

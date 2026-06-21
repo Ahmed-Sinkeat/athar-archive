@@ -141,22 +141,41 @@ function buildSearchUrl(): string {
   const p = new URLSearchParams();
   const q = (tsInput?.value || "").trim();
   if (q) p.set("q", q);
-  const types = [...(filterPop?.querySelectorAll<HTMLInputElement>("[data-filter-types] input:checked") || [])].map((i) => i.value);
+  const checked = (sel: string) =>
+    [...(filterPop?.querySelectorAll<HTMLInputElement>(`${sel} input:checked`) || [])].map((i) => i.value);
+  const types = checked("[data-filter-types]");
   if (types.length) p.set("types", types.join(","));
-  const person = filterPop?.querySelector<HTMLSelectElement>("[data-filter-person]")?.value;
-  if (person) p.set("person", person);
-  const subject = filterPop?.querySelector<HTMLSelectElement>("[data-filter-subject]")?.value;
-  if (subject) p.set("subject", subject);
+  const persons = checked("[data-filter-person]");
+  if (persons.length) p.set("person", persons.join(","));
+  const subjects = checked("[data-filter-subject]");
+  if (subjects.length) p.set("subject", subjects.join(","));
   const qs = p.toString();
   return "/search" + (qs ? `?${qs}` : "");
 }
 function refreshFilterIndicator() {
   const active =
     !!filterPop?.querySelector("[data-filter-types] input:checked") ||
-    !!filterPop?.querySelector<HTMLSelectElement>("[data-filter-person]")?.value ||
-    !!filterPop?.querySelector<HTMLSelectElement>("[data-filter-subject]")?.value;
+    !!filterPop?.querySelector("[data-filter-person] input:checked") ||
+    !!filterPop?.querySelector("[data-filter-subject] input:checked");
   document.querySelector(".topsearch-filter")?.classList.toggle("has-active", active);
 }
+
+// Type-to-filter the (potentially long) عَلَم / موضوع checklists. Matches on the
+// visible label text; checked boxes stay checked even while hidden.
+function wireChecklistSearch(searchSel: string, listSel: string) {
+  const inp = document.querySelector<HTMLInputElement>(searchSel);
+  const list = filterPop?.querySelector<HTMLElement>(listSel);
+  if (!inp || !list) return;
+  inp.addEventListener("input", () => {
+    const q = inp.value.trim();
+    list.querySelectorAll<HTMLElement>(".pop-check").forEach((lab) => {
+      const name = lab.getAttribute("data-name") || lab.textContent || "";
+      lab.classList.toggle("is-hidden", q !== "" && !name.includes(q));
+    });
+  });
+}
+wireChecklistSearch("[data-filter-person-search]", "[data-filter-person]");
+wireChecklistSearch("[data-filter-subject-search]", "[data-filter-subject]");
 
 // Enter in the field (no go-button click) submits; collapsed → just open.
 topsearch?.addEventListener("submit", (e) => {

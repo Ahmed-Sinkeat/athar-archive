@@ -1,29 +1,28 @@
 ---
 import Base from "../layouts/Base.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
-import EntityCard from "../components/EntityCard.astro";
-import { personNameMap, publishedSorted } from "../lib/site";
+import BrowseGroups from "../components/BrowseGroups.astro";
+import { personNameMap, loadGraph } from "../lib/site";
 import { hrefFor } from "../lib/display";
+import { buildSubjectGroups } from "../lib/browse";
 
-const articles = await publishedSorted("article");
+const graph = await loadGraph();
 const names = await personNameMap();
+const { groups, uncategorized } = buildSubjectGroups("article", graph);
+const card = (it: any) => ({
+  href: hrefFor("article", it.id),
+  title: it.data.title,
+  kind: "مقالة",
+  kindColor: "tag-verdigris",
+  sub: it.data.person ? names.get(it.data.person) ?? "" : "",
+  cta: "اقرأ ←",
+});
 ---
 <Base title="المقالات" description="مقالاتٌ علميةٌ محرَّرةٌ في مسائل العلم وأصوله." activeNav="articles">
   <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "المقالات" }]} />
-  <div class="wrap-mid uf5db21c" >
+  <div class="wrap-mid uf5db21c">
     <h1 class="page-title">المقالات</h1>
-    <p class="page-intro">مقالاتٌ علميةٌ محرَّرةٌ، بعضُها مصحوبٌ بتسجيلٍ صوتيٍّ.</p>
-    <div class="card-grid">
-      {articles.map((e) => (
-        <EntityCard
-          href={hrefFor("article", e.id)}
-          title={e.data.title}
-          kind="مقالة"
-          kindColor="tag-verdigris"
-          sub={names.get(e.data.person)}
-          cta="اقرأ ←"
-        />
-      ))}
-    </div>
+    <p class="page-intro">مقالاتٌ علميةٌ محرَّرةٌ، مرتَّبةٌ حسب الفنِّ ثم الموضوع، وبعضُها مصحوبٌ بتسجيلٍ صوتيٍّ.</p>
+    <BrowseGroups groups={groups} uncategorized={uncategorized} card={card} unit="مقالة" />
   </div>
 </Base>

@@ -174,21 +174,25 @@ const fullTitle = title === "أهل الأثر" ? title : `${title} · أهل ا
             <label class="pop-check"><input type="checkbox" value={t.id} /><span>{t.label}</span></label>
           ))}
         </fieldset>
-        <label class="pop-field">
-          <span>عَلَم معيّن</span>
-          <select data-filter-person>
-            <option value="">كل الأعلام</option>
-            {filterPersons.map((p) => <option value={p}>{p}</option>)}
-          </select>
-        </label>
+        <div class="pop-field">
+          <span>الأعلام</span>
+          <input type="search" class="pop-search" data-filter-person-search placeholder="ابحثْ عن عَلَم…" aria-label="ابحث عن عَلَم" autocomplete="off" />
+          <div class="pop-checklist" data-filter-person>
+            {filterPersons.map((p) => (
+              <label class="pop-check" data-name={p}><input type="checkbox" value={p} /><span>{p}</span></label>
+            ))}
+          </div>
+        </div>
         {filterSubjects.length > 0 && (
-          <label class="pop-field">
-            <span>موضوع معيّن</span>
-            <select data-filter-subject>
-              <option value="">كل الموضوعات</option>
-              {filterSubjects.map((s) => <option value={s}>{s}</option>)}
-            </select>
-          </label>
+          <div class="pop-field">
+            <span>الموضوعات</span>
+            <input type="search" class="pop-search" data-filter-subject-search placeholder="ابحثْ عن موضوع…" aria-label="ابحث عن موضوع" autocomplete="off" />
+            <div class="pop-checklist" data-filter-subject>
+              {filterSubjects.map((s) => (
+                <label class="pop-check" data-name={s}><input type="checkbox" value={s} /><span>{s}</span></label>
+              ))}
+            </div>
+          </div>
         )}
         <button type="button" class="btn-accent pop-apply" data-action="search:apply">تطبيق البحث</button>
       </div>
@@ -262,7 +266,6 @@ const fullTitle = title === "أهل الأثر" ? title : `${title} · أهل ا
             <a href="/questions">المسائل</a>
             <a href="/about">عن الموقع</a>
             <a href="/contact">تواصل</a>
-            <a href="/compose">إضافة محتوى</a>
           </nav>
         </div>
       </div>

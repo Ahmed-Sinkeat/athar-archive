@@ -75,6 +75,7 @@ const book = defineCollection({
     // study classification — drives the متن badge + study modes (poems are always متن)
     kind: z.enum(["متن", "مرجع", "مجموع"]).default("متن"),
     topics: topicsField,
+    authored_year: z.number().int().optional(), // hijri سنة التصنيف — default browse sort
     description: z.string().optional(),
     edition: z.string().optional(),
     cover: z.string().optional(),        // cover image (R2)
@@ -90,6 +91,7 @@ const poem = defineCollection({
     ...shared,
     person: slug,           // → Person (author)
     topics: topicsField,
+    authored_year: z.number().int().optional(), // hijri سنة النظم — default browse sort
     // verse_count / opening_verse are DERIVED from the body (FR-C-06), never
     // hand-stored — see analyzePoem() in src/lib/chunk.ts.
     description: z.string().optional(),

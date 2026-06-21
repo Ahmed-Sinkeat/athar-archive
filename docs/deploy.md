@@ -43,7 +43,7 @@ Save & Deploy. The build runs `pnpm install` then `pnpm build`
 - Headers: `curl -sI https://<project>.pages.dev/ | grep -i content-security-policy` returns the CSP.
 - **CSP / CSSOM check (issue #4):** confirm reading-prefs (font scale, theme) and the progress bar work under the
   *enforced* CSP. Expected fine — CSP does not govern CSSOM `.style` — but this is the first enforced-CSP run.
-- **Audio / downloads 404 (expected, issue #12):** R2 is not provisioned yet, so media URLs won't resolve.
+- **Audio 404 (expected, issue #12):** R2 is not provisioned yet, so audio URLs won't resolve.
 
 ## 3. Custom domain + DNS
 
@@ -63,6 +63,30 @@ Cloudflare Redirect Rule.
 - HTTPS active (auto certificate); HTTP → HTTPS redirect on.
 - `https://ahlalathar.com/sitemap.xml` and `/robots.txt` resolve; canonical tags read `https://ahlalathar.com/...`.
 - Re-run the §2 checks on the apex domain.
+
+## 5. Lock down `/compose` (Cloudflare Access)
+
+`/compose` is the maintainer authoring tool. It never writes to the site — it only
+generates a `.md` file you copy/commit, so production is only ever changed through Git.
+It's `noindex`, excluded from the sitemap, `Disallow`ed in `robots.txt`, and unlinked from
+the site. To stop anyone who knows the URL from opening it, gate the path at the edge —
+no app code, no password in the bundle:
+
+Cloudflare dashboard → **Zero Trust → Access → Applications → Add an application → Self-hosted**.
+
+| Field | Value |
+|---|---|
+| Application name | `Athar compose` |
+| Session duration | `24 hours` (your choice) |
+| Application domain | `ahlalathar.com` · path `/compose` |
+
+Add a second domain row for `*.pages.dev` path `/compose` if you also want preview deploys gated.
+
+Then **Add a policy**: Action **Allow**, Include → **Emails** → `ahmedsinkeat2002@gmail.com`.
+For the login method, **One-time PIN** (email code) needs no identity-provider setup; or wire Google.
+
+Save. Now `/compose` prompts for your email + a one-time code; everyone else is blocked at
+Cloudflare's edge before the page loads. Zero Trust is free up to 50 users.
 
 ## Auto-deploy & rollback
 

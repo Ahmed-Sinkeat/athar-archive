@@ -33,18 +33,19 @@ import Breadcrumbs from "../components/Breadcrumbs.astro";
       const status = document.getElementById("status");
       const filtersEl = document.getElementById("filters");
       const params = new URLSearchParams(location.search);
+      const list = (key) => (params.get(key) || "").split(",").map((s) => s.trim()).filter(Boolean);
 
       // Fixed scope carried in from a section / reader / person page.
       const scope = {
         type: params.get("scope"),
-        person: params.get("person"),
         id: params.get("in"),
         label: params.get("label"),
       };
-      // Multi-type selection from the top-bar in-bar filter (include several types).
-      const typesParam = (params.get("types") || "").split(",").filter(Boolean);
-      const subjectParam = params.get("subject");
-      const hasScope = !!(scope.type || scope.person || scope.id || typesParam.length || subjectParam);
+      // Multi-value selections from the top-bar filter (OR within each key).
+      const typesParam = list("types");
+      const personParam = list("person");   // عَلَم names (also a person-archive link, then label is set)
+      const subjectParam = list("subject");
+      const hasScope = !!(scope.type || scope.id || typesParam.length || personParam.length || subjectParam.length);
 
       // Facet selections (narrow within current results).
       let activeType = null;
@@ -52,8 +53,8 @@ import Breadcrumbs from "../components/Breadcrumbs.astro";
 
       if (hasScope) {
         const what = scope.id ? (scope.label || "هذا المتن")
-          : scope.person ? `أرشيف ${scope.label || scope.person}`
-          : subjectParam ? subjectParam
+          : personParam.length ? (scope.label && personParam.length === 1 ? `أرشيف ${scope.label}` : personParam.join("، "))
+          : subjectParam.length ? subjectParam.join("، ")
           : typesParam.length ? typesParam.map((t) => LABEL[t] || t).join("، ")
           : (LABEL[scope.type] || scope.type);
         input.placeholder = `ابحث ضمن ${what}…`;
@@ -70,6 +71,8 @@ import Breadcrumbs from "../components/Breadcrumbs.astro";
 
       function esc(s) { const d = document.createElement("div"); d.textContent = s; return d.innerHTML; }
       function toAr(n) { return String(n).replace(/[0-9]/g, (d) => "٠١٢٣٤٥٦٧٨٩"[+d]); }
+      // Pagefind: a single value or an array (array = match any of the values).
+      const oneOrMany = (arr) => (arr.length === 1 ? arr[0] : arr);
 
       function chip(label, pressed, onClick, cls) {
         const b = document.createElement("button");
@@ -83,9 +86,9 @@ import Breadcrumbs from "../components/Breadcrumbs.astro";
       function buildFilters() {
         const f = {};
         if (scope.type) f.type = scope.type;
-        else if (typesParam.length) f.type = typesParam.length === 1 ? typesParam[0] : typesParam;
-        if (scope.person) f.person = scope.person;
-        if (subjectParam) f.subject = subjectParam;
+        else if (typesParam.length) f.type = oneOrMany(typesParam);
+        if (personParam.length) f.person = oneOrMany(personParam);
+        if (subjectParam.length) f.subject = oneOrMany(subjectParam);
         if (scope.id) f.id = scope.id;
         if (activeType) f.type = activeType;
         if (activePerson) f.person = activePerson;
@@ -97,10 +100,10 @@ import Breadcrumbs from "../components/Breadcrumbs.astro";
         if (hasScope) {
           const parts = [];
           if (scope.id) parts.push(`ضمن: ${scope.label || "هذا المتن"}`);
-          if (scope.person) parts.push(`أرشيف: ${scope.label || scope.person}`);
+          if (personParam.length) parts.push(`الأعلام: ${scope.label && personParam.length === 1 ? scope.label : personParam.join("، ")}`);
           if (typesParam.length) parts.push(`النوع: ${typesParam.map((t) => LABEL[t] || t).join("، ")}`);
           else if (scope.type) parts.push(`النوع: ${LABEL[scope.type] || scope.type}`);
-          if (subjectParam) parts.push(`الموضوع: ${subjectParam}`);
+          if (subjectParam.length) parts.push(`الموضوع: ${subjectParam.join("، ")}`);
           filtersEl.appendChild(chip(`${parts.join(" · ")} ✕`, true, () => {
             location.href = "/search" + (input.value ? "?q=" + encodeURIComponent(input.value) : "");
           }, "chip-scope"));
@@ -112,7 +115,7 @@ import Breadcrumbs from "../components/Breadcrumbs.astro";
             types.forEach((tp) => filtersEl.appendChild(chip(LABEL[tp] || tp, activeType === tp, () => { activeType = tp; run(input.value); })));
           }
         }
-        if (!scope.person && !scope.id) {
+        if (!personParam.length && !scope.id) {
           const persons = [...new Set(data.flatMap((d) => d.filters?.person || []))];
           if (persons.length > 1 || activePerson) {
             filtersEl.appendChild(chip("كل الأعلام", !activePerson, () => { activePerson = null; run(input.value); }));

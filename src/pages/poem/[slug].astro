@@ -5,7 +5,6 @@ import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import Verse from "../../components/Verse.astro";
 import StudyBar from "../../components/StudyBar.astro";
 import AudioPlayer from "../../components/AudioPlayer.astro";
-import Attachments from "../../components/Attachments.astro";
 import { isPub, loadGraph, personNameMap, personEraMap, notesByAnchor, subjectTitlesFor } from "../../lib/site";
 import { analyzePoem } from "../../lib/chunk";
 import { hrefFor, toArabicDigits, eraLabel, eraHref } from "../../lib/display";
@@ -91,8 +90,6 @@ const preamble = a.verses.filter((v) => !chapterNums.has(v.n));
         </div>
       </>
     )}
-
-    <Attachments items={entry.data.attachments} />
 
     <div class="ornament ud38b410" >۞</div>
   </div>
