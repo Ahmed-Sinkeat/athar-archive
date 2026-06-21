@@ -255,6 +255,7 @@ tsc --noEmit         → ✓ clean
 JSON-LD              → ✓ 15/15 valid; types per URL Map §06
 search (dist/)       → ✓ verified via headless Chromium; audio captions excluded
 links (dist/)        → ✓ 867 internal links + redirects resolve (pnpm check:links, P8)
+render (dist/)       → ✓ heaviest 39 KB (budget 150) · JS-free content · RTL Arabic (pnpm perf:budget, P8)
 media                → players on lesson/poem/book/article; book PDF/EPUB downloads
 ```
 
@@ -295,6 +296,9 @@ Test matrix (link integrity, RTL/diacritics, manual a11y pass, perf budget, Ligh
 seed the real corpus, confirm domain/DNS/Cloudflare Pages production + edge headers, launch
 checklist, and **apply branch protection** (issue #13). Rollback = rebuild previous commit.
 
-**Started:** link-integrity checker `scripts/check-links.mjs` (`pnpm check:links`, in CI) —
-867 internal links + redirect targets resolve over `dist/`, fragment anchors checked.
-Branch protection is **plan-blocked** (private repo needs GitHub Pro or public — #13).
+**Started:** QA test-matrix tooling, wired into CI —
+`check-links.mjs` (`pnpm check:links`): 867 internal links + redirect targets resolve over `dist/`;
+`perf-budget.mjs` (`pnpm perf:budget`): per-page render weight ≤150 KB (heaviest 39), JS-free
+content present, RTL Arabic. Branch protection is **plan-blocked** (private repo needs GitHub Pro
+or public — #13). Lighthouse deferred — axe + render-budget + link-integrity cover the
+static-page signals; revisit if score tracking is wanted.

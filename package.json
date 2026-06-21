@@ -13,6 +13,7 @@
     "a11y": "node scripts/a11y-audit.mjs",
     "smoke": "node scripts/smoke-test.mjs",
     "check:links": "node scripts/check-links.mjs",
+    "perf:budget": "node scripts/perf-budget.mjs",
     "test": "vitest run"
   },
   "keywords": [],
