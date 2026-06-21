@@ -18,6 +18,7 @@ A static, RTL Arabic knowledge archive. **The content is the origin; the technol
 ```bash
 pnpm install
 pnpm dev            # local dev server
+pnpm new <entity> <slug>   # scaffold a new content file (see CONTRIBUTING.md)
 pnpm build          # validate content → astro build → pagefind index → _redirects
 pnpm preview        # serve the production build (search works here)
 pnpm test           # vitest (validators, graph, chapters, chunking, sanitize)
@@ -33,6 +34,8 @@ Polymorphic links (`source_type`/`target_type`) have no DB foreign keys — **Zo
 
 | Doc | What |
 |---|---|
+| [`CONTRIBUTING.md`](CONTRIBUTING.md) | How to add content — per-entity templates, id/slug rules, publish gates (Arabic) |
+| [`docs/governance.md`](docs/governance.md) | Roles + branch-protection settings (team-only publish) |
 | [`docs/structure.md`](docs/structure.md) | Current repository layout |
 | [`docs/asbuild.md`](docs/asbuild.md) | Phase-by-phase as-built record vs the build plan |
 | [`docs/issue.md`](docs/issue.md) | Ranked issue / watch register |

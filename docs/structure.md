@@ -1,7 +1,7 @@
 # athar-archive — Repository Structure
 
-**As of:** P6 complete (media pipeline — audio player, attachments, R2 docs)
-**Companion docs:** [`asbuild.md`](./asbuild.md) · [`issue.md`](./issue.md) · [`media-and-backup.md`](./media-and-backup.md)
+**As of:** P7 complete (authoring docs, intake governance, content scaffold)
+**Companion docs:** [`asbuild.md`](./asbuild.md) · [`issue.md`](./issue.md) · [`governance.md`](./governance.md) · [`media-and-backup.md`](./media-and-backup.md)
 
 This document describes the *actual* repository layout. It is updated after every phase. Directories that exist but are not yet populated are marked **(pending P7+)**.
 
@@ -13,13 +13,18 @@ This document describes the *actual* repository layout. It is updated after ever
 
 ```
 athar-archive/
-├─ .github/workflows/ci.yml  # CI: install → test → validate:content → build → smoke → tsc
+├─ .github/
+│  ├─ workflows/ci.yml       # CI: install → test → validate:content → build → smoke → tsc
+│  ├─ CODEOWNERS             # team review on src/content/**, schemas, governance (P7)
+│  ├─ PULL_REQUEST_TEMPLATE.md   # pre-publish checklist (P7)
+│  └─ ISSUE_TEMPLATE/        # propose-content / report-correction forms + config (P7)
+├─ CONTRIBUTING.md           # Arabic authoring guide: per-entity templates, rules, gates (P7)
 ├─ README.md
 ├─ ahlalathar.config.ts      # tunable values: domain, chunk thresholds, mailto, topicsMax
 ├─ astro.config.ts           # Astro static config + markdown sanitize wiring + RTL i18n
 ├─ tsconfig.json             # extends astro/strict; @/@lib/@components path aliases
 ├─ vitest.config.ts          # test runner config (src/**/*.test.ts)
-├─ package.json              # scripts: dev, build, preview, validate, validate:content, test
+├─ package.json              # scripts: dev, new, build, preview, validate, validate:content, test
 ├─ .npmrc                    # pnpm onlyBuiltDependencies allowlist (esbuild, sharp)
 ├─ .editorconfig · .gitignore · pnpm-workspace.yaml
 ├─ docs/                     # ← this folder
@@ -94,6 +99,7 @@ src/
 scripts/
 ├─ validate-content.ts       # CLI: loads content, runs validate.ts, exits 1 on any breach
 │                            # wired into `pnpm build` before astro build
+├─ new-content.mjs           # scaffold a new entity stub: pnpm new <entity> <slug> (P7)
 ├─ gen-redirects.ts          # post-build: aliases → dist/_redirects (301)
 ├─ smoke-test.mjs            # post-build per-template invariant checks (pnpm smoke, in CI)
 ├─ a11y-audit.mjs            # axe-core WCAG A/AA over dist/ in headless Chromium (pnpm a11y)
@@ -118,7 +124,10 @@ public/
 ```
 docs/
 ├─ structure.md              # this file — current repo layout
-└─ asbuild.md                # phase-by-phase as-built record vs BUILD-PLAN
+├─ asbuild.md                # phase-by-phase as-built record vs BUILD-PLAN
+├─ issue.md                  # ranked issue / watch register
+├─ governance.md             # roles + branch-protection settings (P7)
+└─ media-and-backup.md       # R2 media + rebuild-from-Git recovery
 ```
 
 ---
