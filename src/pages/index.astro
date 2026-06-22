@@ -7,7 +7,7 @@ import { websiteLd } from "../lib/structured-data";
 
 const pub = (c: any[]) => c.filter((e) => e.data.status === "published");
 
-const [people, books, poems, series, lessons, articles, benefits, announcements] = await Promise.all([
+const [people, books, poems, series, lessons, articles, benefits, announcements, highlights] = await Promise.all([
   getCollection("person"),
   getCollection("book"),
   getCollection("poem"),
@@ -16,7 +16,17 @@ const [people, books, poems, series, lessons, articles, benefits, announcements]
   getCollection("article"),
   getCollection("benefit"),
   getCollection("announcement"),
+  getCollection("highlight"),
 ]);
+
+// مختارات الأسبوع: one published آية / حديث / بيت per kind, rotating by week index.
+// ponytail: build-time pick (stable within a week); refreshes on each rebuild/deploy.
+const wk = Math.floor(Date.now() / 6.048e8);
+const pickWeekly = (kind: string) => {
+  const arr = pub(highlights).filter((h) => h.data.kind === kind);
+  return arr.length ? arr[wk % arr.length] : null;
+};
+const weekly = ["آية", "حديث", "بيت"].map((kind) => ({ kind, entry: pickWeekly(kind) })).filter((w) => w.entry);
 
 const personName = new Map(people.map((p) => [p.id, p.data.title]));
 
@@ -95,7 +105,7 @@ const latest = [
 
   {featured && (
     <div class="home-section">
-      <div class="section-label">مختارُ هذا الأسبوع</div>
+      <div class="section-label">منظومة مختارة</div>
       <div class="u0ef5d25">
         <div>
           <div class="eyebrow u57e29a5" >منظومة · {personName.get(featured.data.person)}</div>
@@ -125,13 +135,20 @@ const latest = [
     </div>
   </div>
 
-  <div class="wrap-mid u508c612" >
-    <div class="quote-band">
-      <div class="ornament u4ee229d" >۞</div>
-      <p data-ar>المحتوى هو الأصل، والتقنيةُ طبقةٌ قابلةٌ للاستبدال.</p>
-      <div class="faint u7ad698b" >من مبادئ أهل الأثر</div>
+  {weekly.length > 0 && (
+    <div class="home-section">
+      <div class="section-label">مختارات الأسبوع</div>
+      <div class="weekly-grid">
+        {weekly.map(({ kind, entry }) => (
+          <div class="weekly-card">
+            <div class="weekly-kind">{kind}</div>
+            <p class="weekly-text" data-ar>{entry!.body.trim()}</p>
+            {entry!.data.reference && <div class="faint weekly-ref">{entry!.data.reference}</div>}
+          </div>
+        ))}
+      </div>
     </div>
-  </div>
+  )}
 
   {latest.length > 0 && (
     <div class="home-section u3a4c3ff" >

@@ -344,3 +344,31 @@ pagefind index        → ✓ 6 filters (type/person/era/id/matn/subject)
 subject facet         → ✓ «السنة» 2 results → 1 with subject=العقيدة → 0 with النحو والصرف (headless Chromium)
 شرح chooser           → ✓ poem (alfiyyah v1: شرح+إعراب) & prose book (al-wasitiyyah p1: شرح+حاشية) verified
 ```
+
+---
+
+## UX-R · admin v2, audio menu & مختارات الأسبوع
+
+Follow-on to the UX-R redesign (browse accordion + search multi-filter + composed-year sort + `/roadmap` landed earlier).
+
+**Admin (`/compose` → «إدارة المحتوى»)**
+- **Add *and* edit.** The page embeds a build-time JSON index of all content (`{c,id,title,data,body}`, dates→`YYYY-MM-DD`) in a `<script type="application/json">` data block (not executed → CSP-safe). Edit mode: search any item by name → form prefills with its current values → copy/download over the old file. `/compose` is added to `JS_DRIVEN` in `perf-budget.mjs` so the embed is weight-exempt (like `/search`).
+- **Searchable name pickers, not slugs.** New `ref`/`refs` field kinds: single ref → native `<datalist>` of titles; many → searchable checklist. Every reference field (الناظم/المؤلف/الموضوعات/المتن/الشارح/المصدر/التصنيف/السلسلة…) is now a picker; `syncType` auto-sets a sibling type `<select>` from the picked entity's collection. Arabic labels for english enums; friendlier help on every field; annotation fields reordered to the paste-flow (المتن → الجملة التي يشرحها → الموضع → الشارح → مصدر الشرح → نصّ الشرح).
+- **Guided sections + file upload.** Common types featured up front (the rest under «أنواع أخرى»); fields grouped into أساسيات/تفاصيل/النص native exclusive-accordion `<details>`; body/verses accept a `.txt`/`.md` upload (`Blob.text()`) instead of pasting a whole book.
+- `authored_year` (hijri) added to the book+poem composer forms (schema already had it — the year-sort just lacked an authoring path).
+
+**Audio** — `AudioPlayer.astro` now takes `sources: Source[]`. A متن/منظومة with 2+ published recitations renders a small native `<select>` (the arrow) to switch; `reader.ts` swaps the `<source>`/download href + `audio.load()`. Single recitation is unchanged.
+
+**New `highlight` collection (مختارات الأسبوع)** — `kind` آية/حديث/بيت + optional `reference` (المصدر/التخريج); text is the markdown body; **no detail page** (homepage chrome, like `announcement`). Registered in `content.config.ts`, `types.ts COLLECTIONS`, and the composer (featured). Home (`index.astro`) shows a weekly-rotating pick of each kind (`Math.floor(Date.now()/6.048e8) % n` — build-time, stable within a week), replacing the «من مبادئ أهل الأثر» quote-band. Hadith *collections* (e.g. الأربعون النووية) remain authored as a كتاب `kind: متن` + `تخريج` annotations.
+
+**Reading polish** — global keyboard focus ring softened to a muted rounded `:where()` accent ring (no more hard red box on search/buttons); the شرح popover fades in.
+
+**Verification**
+```
+pnpm validate:content → ✓ 26 entries
+pnpm build            → ✓ green
+pnpm smoke            → ✓ all assertions
+pnpm perf:budget      → ✓ heaviest 65.7/150 KB
+pnpm test             → ✓ 67 passed
+pnpm a11y             → ✓ 0 WCAG A/AA violations
+```

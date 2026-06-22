@@ -23,6 +23,7 @@ export const COLLECTIONS = [
   "audio",
   "annotation",
   "announcement",
+  "highlight",
 ] as const;
 
 export type CollectionName = (typeof COLLECTIONS)[number];

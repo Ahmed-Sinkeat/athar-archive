@@ -1,6 +1,6 @@
 # athar-archive — Repository Structure
 
-**As of:** P7 complete (authoring docs, intake governance, content scaffold) + UX-R (reading/browse/search redesign — see `asbuild.md`)
+**As of:** P7 complete (authoring docs, intake governance, content scaffold) + UX-R (reading/browse/search redesign, admin v2, مختارات الأسبوع — see `asbuild.md`)
 **Companion docs:** [`asbuild.md`](./asbuild.md) · [`issue.md`](./issue.md) · [`governance.md`](./governance.md) · [`media-and-backup.md`](./media-and-backup.md)
 
 This document describes the *actual* repository layout. It is updated after every phase. Directories that exist but are not yet populated are marked **(pending P7+)**.
@@ -37,7 +37,7 @@ athar-archive/
 
 ```
 src/
-├─ content.config.ts         # all 13 Astro Content Collections + Zod schemas (P1)
+├─ content.config.ts         # all 14 Astro Content Collections + Zod schemas (P1)
 ├─ content/                  # Markdown source of truth — one folder per entity
 │  ├─ person/                #   الشخص        — 2 fixtures
 │  ├─ subject/               #   التصنيف      — 2 fixtures
@@ -50,8 +50,9 @@ src/
 │  ├─ benefit/               #   الفائدة      — 2 fixtures (with + without source)
 │  ├─ article/               #   المقالة      — 1 fixture
 │  ├─ audio/                 #   الصوتية      — 1 fixture (embedded, polymorphic)
-│  ├─ annotation/            #   الشرح/الحاشية — 3 fixtures (target+anchor; optional phrase mark + source link)
-│  └─ announcement/          #   الإعلان      — 1 fixture (homepage chrome)
+│  ├─ annotation/            #   الشرح/الحاشية — 4 fixtures (target+anchor; optional phrase mark + source link)
+│  ├─ announcement/          #   الإعلان      — 1 fixture (homepage chrome)
+│  └─ highlight/             #   مختار الأسبوع — آية/حديث/بيت + reference; homepage chrome, no page — 3 fixtures
 │
 ├─ lib/                      # build pipeline, derivations & page helpers (P1–P3)
 │  ├─ types.ts               #   ContentEntry, COLLECTIONS, MATERIAL_COLLECTIONS, isPublished
@@ -65,21 +66,21 @@ src/
 │  ├─ display.ts             #   Arabic-Indic numerals, route map (hrefFor), entity labels, stripTashkeel, era slugs (eraHref)
 │  ├─ site.ts                #   page-runtime: loadGraph(), personNameMap(), publishedSorted(), notesByAnchor(), subjectTitlesFor()
 │  ├─ browse.ts              #   subject→topic grouping for الكتب/المنظومات/المسائل (buildSubjectGroups)
-│  ├─ content-forms.ts       #   /compose field specs per entity (mirrors the Zod schema)
+│  ├─ content-forms.ts       #   /compose field specs per entity (mirrors the Zod schema; ref/refs name-picker fields)
 │  └─ structured-data.ts     #   JSON-LD builders per entity type (+ WebSite/SearchAction)
 │
 ├─ styles/
 │  └─ global.css             #   design system: tokens, 3 themes, reading-scale, verses, inline شرح chooser, browse grouping, search/settings popovers
 ├─ scripts/
 │  ├─ reader.ts              #   client enhancement: reading prefs/theme/drawer/progress, expanding search + filter/settings popovers, inline شرح chooser (click/long-press), اختبار reveal
-│  └─ compose.ts             #   /compose client: type chooser → per-entity form → live-built file.md (copy/download)
+│  └─ compose.ts             #   /compose client: add|edit modes; featured types + «أنواع أخرى»; guided collapsible sections; searchable name pickers (datalist/checklist) + edit prefill; .txt/.md upload → live-built file.md
 │
 ├─ layouts/
 │  └─ Base.astro             #   RTL shell: single-row header (brand · nav · search + settings popovers), drawer, progress bar, footer, pre-paint script
 ├─ components/
 │  ├─ Breadcrumbs.astro · EntityCard.astro · Prose.astro · StudyBar.astro
 │  ├─ Verse.astro          # numbered بيت + inline شرح mark (.ann-mark) + hidden chooser pack
-│  ├─ AudioPlayer.astro    # native <audio>, accessible, styled (lesson/poem/book/article)
+│  ├─ AudioPlayer.astro    # native <audio> (sources[]); multi-recitation <select> switcher on متون/منظومات
 │  └─ BrowseGroups.astro   # collapsible تصنيف→موضوع accordion (books/poems/articles/series)
 └─ pages/                    # every route (BUILD-PLAN 0.4) — all render from fixtures
    ├─ index.astro · search.astro · compose.astro · roadmap.astro · about.astro · contact.astro · 404.astro

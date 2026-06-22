@@ -26,7 +26,7 @@ pnpm test           # vitest (validators, graph, chapters, chunking, sanitize)
 
 ## The 12 entities
 
-Person · Subject · Topic · Book · Poem · Series · Lesson · Questions · Benefit · Article · Audio · Annotation (+ Announcement as homepage chrome).
+Person · Subject · Topic · Book · Poem · Series · Lesson · Questions · Benefit · Article · Audio · Annotation (+ Announcement and Highlight — مختار الأسبوع: آية/حديث/بيت — as homepage chrome).
 
 Polymorphic links (`source_type`/`target_type`) have no DB foreign keys — **Zod + a build-time cross-entity validator** are their only guard. A dangling reference fails the build; it never ships silently.
 
@@ -35,8 +35,9 @@ Polymorphic links (`source_type`/`target_type`) have no DB foreign keys — **Zo
 - **One-line top bar** — brand (= home) · slim nav · inline expanding search with an in-bar filter (type · searchable multi-select عَلَم/موضوع, OR) · settings gear (font, تشكيل, theme). The home hero search carries the same filter icon.
 - **Browse by فن** — الكتب/المنظومات/المقالات/الدروس as collapsible تصنيف→موضوع accordions (native `<details>`, sorted by سنة التصنيف); المسائل as a subject→topic drill-down; `/era/<slug>` pages list an era's poets and منظومات.
 - **Inline شرح chooser** — marked phrases open a popover; multiple شروح on one spot show a chooser, then reveal with the phrase highlighted (click / long-press). Build-time data, JS-free `:target` fallback. Book bottom حواشٍ collapse under a `<details>`.
+- **مختارات الأسبوع** — the home shows a weekly-rotating آية/حديث/بيت (the `highlight` collection). متون/منظومات with more than one recitation get a small native dropdown to switch recordings.
 - **`/roadmap`** — طريق طلب العلم page, content from `src/data/roadmap.md` (edit to fill it out); linked from the home hero.
-- **`/compose`** — maintainer authoring tool: pick a type, fill the menus, copy/download a valid `file.md` to commit. Unlinked + `noindex`; gate it with Cloudflare Access (see `docs/deploy.md`).
+- **`/compose`** (إدارة المحتوى) — maintainer tool to **add or edit** content. Common types are featured (the rest under «أنواع أخرى»); fields are grouped into guided sections (أساسيات/تفاصيل/النص); references (الناظم/الموضوعات/المتن…) are **searchable name pickers**, not raw slugs; long bodies can be **uploaded** as `.txt`/`.md`. Live-builds a valid `file.md` to copy/download/commit. Unlinked + `noindex`; gate it with Cloudflare Access (see `docs/deploy.md`).
 
 ## Docs
 

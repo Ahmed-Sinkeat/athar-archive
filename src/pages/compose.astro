@@ -1,17 +1,48 @@
 ---
 import Base from "../layouts/Base.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
-// Unlisted maintainer tool — generates a valid file.md to copy/commit.
-// noindex; not linked from the nav. Committing the file still needs repo access.
----
-<Base title="إضافة محتوى" noindex>
-  <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "إضافة محتوى" }]} />
-  <div class="wrap-mid uf5db21c">
-    <h1 class="page-title">إضافة محتوى</h1>
-    <p class="page-intro">اختَرْ ما تريد إضافتَه، واملأ الحقول، ثم انسخِ الملف أو نزِّله وضعْه في مجلده داخل المستودع، ثم: <code>pnpm validate:content</code>.</p>
+import { getCollection } from "astro:content";
+import { FORMS } from "../lib/content-forms";
+// Unlisted maintainer tool — add or edit content, generates a valid file.md to
+// copy/commit. noindex; not linked from the nav. Committing still needs repo access.
 
-    <div class="compose-q">ماذا تريد أن تضيف؟</div>
-    <div id="ctypecards" class="compose-types"></div>
+// Lightweight index of existing content: powers the searchable pickers AND
+// edit-mode prefill. ponytail: embed it inline — this page is the unlisted,
+// noindex, perf-exempt maintainer tool, so no API route / fetch is warranted.
+const items: { c: string; id: string; title: string; data: Record<string, unknown>; body: string }[] = [];
+for (const f of FORMS) {
+  const entries = await getCollection(f.collection as never);
+  for (const e of entries as { id: string; data: Record<string, unknown>; body?: string }[]) {
+    const data: Record<string, unknown> = {};
+    for (const [k, v] of Object.entries(e.data)) data[k] = v instanceof Date ? v.toISOString().slice(0, 10) : v;
+    items.push({ c: f.collection, id: e.id, title: String(e.data.title ?? e.id), data, body: e.body ?? "" });
+  }
+}
+const cdata = JSON.stringify(items).replace(/</g, "\\u003c"); // safe in a data block
+---
+<Base title="إدارة المحتوى" noindex>
+  <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "إدارة المحتوى" }]} />
+  <div class="wrap-mid uf5db21c">
+    <h1 class="page-title">إدارة المحتوى</h1>
+    <p class="page-intro">أضِفْ محتوًى جديدًا أو عدِّلْ موجودًا، ثم انسخِ الملف (أو نزِّله) وضعْه في مجلده داخل المستودع، ثم: <code>pnpm validate:content</code>.</p>
+
+    <div class="compose-modes" role="tablist" aria-label="الوضع">
+      <button type="button" class="compose-mode" data-cmode="add" aria-pressed="true">إضافة جديد</button>
+      <button type="button" class="compose-mode" data-cmode="edit" aria-pressed="false">تعديل موجود</button>
+    </div>
+
+    <div id="addpane">
+      <div class="compose-q">ماذا تريد أن تضيف؟</div>
+      <div id="ctypecards" class="compose-types"></div>
+    </div>
+
+    <div id="editpane" hidden>
+      <div class="compose-q">ابحثْ عن المحتوى الذي تريد تعديله، ثم اختَره</div>
+      <input id="cedit-search" class="cinput" list="dl-all" placeholder="اكتبْ عنوانًا…" autocomplete="off" />
+      <datalist id="dl-all"></datalist>
+      <div id="cedit-hint" class="faint field-help"></div>
+    </div>
+
     <select id="ctype" class="sr-only" aria-hidden="true" tabindex="-1"></select>
 
     <div class="compose-grid">
@@ -20,6 +51,7 @@ import Breadcrumbs from "../components/Breadcrumbs.astro";
     </div>
   </div>
 
+  <script type="application/json" id="cdata" set:html={cdata}></script>
   <script>
     import "../scripts/compose.ts";
   </script>

@@ -17,13 +17,14 @@ export async function getStaticPaths() {
   const eras = await personEraMap();
   return poems.map((entry) => {
     const byAnchor = notesByAnchor("poem", entry.id, graph, names);
-    const au = graph.audioForSource("poem", entry.id).find((x) => x.data.status === "published");
-    const audio = au ? { url: au.data.url, format: au.data.format, duration: au.data.duration ?? null, sizeBytes: au.data.size_bytes ?? null } : null;
-    return { params: { slug: entry.id }, props: { entry, byAnchor, audio, author: names.get(entry.data.person), era: eras.get(entry.data.person), subjects: subjectTitlesFor(entry.data.topics, graph) } };
+    const audios = graph.audioForSource("poem", entry.id)
+      .filter((x) => x.data.status === "published")
+      .map((au) => ({ url: au.data.url, format: au.data.format, duration: au.data.duration ?? null, sizeBytes: au.data.size_bytes ?? null, label: au.data.title }));
+    return { params: { slug: entry.id }, props: { entry, byAnchor, audios, author: names.get(entry.data.person), era: eras.get(entry.data.person), subjects: subjectTitlesFor(entry.data.topics, graph) } };
   });
 }
 
-const { entry, byAnchor, audio, author, era, subjects } = Astro.props;
+const { entry, byAnchor, audios, author, era, subjects } = Astro.props;
 const a = analyzePoem(entry.body ?? "");
 const path = `/poem/${entry.id}`;
 const jsonLd = poemLd({
@@ -63,7 +64,7 @@ const preamble = a.verses.filter((v) => !chapterNums.has(v.n));
       </div>
     )}
 
-    {audio && <div class="u49fcd85"><AudioPlayer url={audio.url} format={audio.format} duration={audio.duration} sizeBytes={audio.sizeBytes} label="استماعٌ إلى المنظومة" /></div>}
+    {audios.length > 0 && <div class="u49fcd85"><AudioPlayer sources={audios} label="استماعٌ إلى المنظومة" /></div>}
 
     <div class="rule-short"></div>
 

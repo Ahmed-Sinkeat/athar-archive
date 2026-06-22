@@ -303,7 +303,7 @@ document.addEventListener("click", (e) => {
     return pop;
   }
   function close() {
-    if (pop) pop.hidden = true;
+    if (pop) { pop.hidden = true; pop.classList.remove("is-shown"); }
     if (activeMark) { activeMark.classList.remove("ann-active"); activeMark = null; }
     currentPack = null;
   }
@@ -380,10 +380,13 @@ document.addEventListener("click", (e) => {
     if (activeMark && activeMark !== mark) activeMark.classList.remove("ann-active");
     activeMark = mark; mark.classList.add("ann-active");
     currentPack = pack;
-    ensurePop().hidden = false;
+    const p = ensurePop();
+    p.hidden = false;
     const entries = [...pack.querySelectorAll<HTMLElement>(".ann-entry")];
     if (entries.length > 1) renderMenu(pack);
     else renderEntry(entries[0], false);
+    requestAnimationFrame(() => p.classList.add("is-shown")); // fade-in
+
   }
 
   document.addEventListener("click", (e) => {
@@ -412,6 +415,21 @@ document.addEventListener("click", (e) => {
   window.addEventListener("scroll", () => { if (pop && !pop.hidden) close(); }, { passive: true });
   window.addEventListener("resize", position);
 })();
+
+// --- audio recitation switcher (متون/منظومات with multiple recordings) ---
+document.querySelectorAll<HTMLSelectElement>("[data-audio-pick]").forEach((sel) => {
+  sel.addEventListener("change", () => {
+    const fig = sel.closest<HTMLElement>("[data-audio]");
+    const opt = sel.selectedOptions[0];
+    if (!fig || !opt) return;
+    const audio = fig.querySelector<HTMLAudioElement>("[data-audio-el]");
+    const src = fig.querySelector<HTMLSourceElement>("[data-audio-source]");
+    const dl = fig.querySelector<HTMLAnchorElement>("[data-audio-dl]");
+    if (src) { src.src = opt.dataset.url || ""; src.type = opt.dataset.type || ""; }
+    if (audio) audio.load();
+    if (dl) dl.href = opt.dataset.url || "";
+  });
+});
 
 // --- reading progress bar ---
 const bar = document.querySelector<HTMLElement>("[data-progress]");

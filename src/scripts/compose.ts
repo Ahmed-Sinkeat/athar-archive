@@ -1,8 +1,13 @@
-// Client logic for /compose — renders a form per content type and live-builds
-// a valid file.md (plus a companion audio entity when an audio url is given).
+// Client logic for /compose — renders a form per content type and live-builds a
+// valid file.md (plus a companion audio entity when an audio url is given).
+// Two modes: "add" (blank) and "edit" (pick an existing item → prefill).
+// Reference fields (الناظم/الموضوعات/المتن…) are searchable pickers over the
+// content index embedded in #cdata, so maintainers pick names, never raw slugs.
 // Static + client-only: it generates files to copy/commit; nothing is uploaded.
 
-import { FORMS, SLUG_RE, buildFiles, type FormDef } from "../lib/content-forms";
+import { FORMS, SLUG_RE, buildFiles, type FormDef, type Field } from "../lib/content-forms";
+
+interface Item { c: string; id: string; title: string; data: Record<string, unknown>; body: string }
 
 const typeSel = document.getElementById("ctype") as HTMLSelectElement | null;
 const fieldsEl = document.getElementById("cfields");
@@ -10,14 +15,41 @@ const previewEl = document.getElementById("cpreview");
 if (typeSel && fieldsEl && previewEl) {
   const today = new Date().toISOString().slice(0, 10);
 
+  // --- content index (for pickers + edit prefill) ---
+  const items: Item[] = JSON.parse(document.getElementById("cdata")?.textContent || "[]");
+  const collLabel: Record<string, string> = Object.fromEntries(FORMS.map((f) => [f.collection, f.label]));
+  const itemsOf = (colls: string[]) => items.filter((i) => colls.includes(i.c));
+  function titleToId(colls: string[], title: string): Item | null {
+    const t = title.trim();
+    // ponytail: first title match wins across the union (cross-type dupes are rare).
+    return itemsOf(colls).find((i) => i.title === t) || items.find((i) => colls.includes(i.c) && i.id === t) || null;
+  }
+  const idToTitle = (colls: string[], id: string) => itemsOf(colls).find((i) => i.id === id)?.title ?? id;
+
+  // build a <datalist> per ref signature on demand; option value = searchable title
+  function ensureDatalist(colls: string[]): string {
+    const dlId = "dl-" + colls.join("_");
+    if (!document.getElementById(dlId)) {
+      const dl = document.createElement("datalist");
+      dl.id = dlId;
+      itemsOf(colls).forEach((i) => {
+        const o = document.createElement("option");
+        o.value = i.title;
+        if (colls.length > 1) o.label = collLabel[i.c] || i.c;
+        dl.appendChild(o);
+      });
+      document.body.appendChild(dl);
+    }
+    return dlId;
+  }
+
+  // --- type chooser (add mode) ---
   FORMS.forEach((f) => {
     const o = document.createElement("option");
     o.value = f.collection;
     o.textContent = f.label;
     typeSel.appendChild(o);
   });
-
-  // friendly "what to add" chooser — buttons that drive the (hidden) select
   const cardsEl = document.getElementById("ctypecards");
   function setType(col: string) {
     typeSel!.value = col;
@@ -26,26 +58,73 @@ if (typeSel && fieldsEl && previewEl) {
     );
     renderFields();
   }
+  // the everyday types up front; the rest tucked under «أنواع أخرى»
+  const FEATURED = ["annotation", "poem", "book", "person", "benefit", "highlight"];
+  function makeCard(f: FormDef): HTMLButtonElement {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.className = "compose-type";
+    b.dataset.type = f.collection;
+    b.textContent = f.label;
+    b.setAttribute("aria-pressed", "false");
+    b.addEventListener("click", () => setType(f.collection));
+    return b;
+  }
   if (cardsEl) {
-    FORMS.forEach((f) => {
-      const b = document.createElement("button");
-      b.type = "button";
-      b.className = "compose-type";
-      b.dataset.type = f.collection;
-      b.textContent = f.label;
-      b.setAttribute("aria-pressed", "false");
-      b.addEventListener("click", () => setType(f.collection));
-      cardsEl.appendChild(b);
-    });
+    FEATURED.map((c) => FORMS.find((f) => f.collection === c))
+      .filter((f): f is FormDef => !!f)
+      .forEach((f) => cardsEl.appendChild(makeCard(f)));
+    const rest = FORMS.filter((f) => !FEATURED.includes(f.collection));
+    if (rest.length) {
+      const more = document.createElement("details");
+      more.className = "compose-more";
+      const sum = document.createElement("summary");
+      sum.textContent = "أنواع أخرى";
+      const box = document.createElement("div");
+      box.className = "compose-types";
+      rest.forEach((f) => box.appendChild(makeCard(f)));
+      more.append(sum, box);
+      cardsEl.appendChild(more);
+    }
   }
 
   const currentDef = (): FormDef | undefined => FORMS.find((f) => f.collection === typeSel.value);
+
+  // group fields into guided, one-at-a-time sections beside the live preview
+  const SHARED_KEYS = new Set(["slug", "title", "status", "published_at"]);
+  function makeGroup(label: string, open: boolean): { d: HTMLDetailsElement; box: HTMLElement } {
+    const d = document.createElement("details");
+    d.className = "cf-group";
+    d.setAttribute("name", "cf-sections"); // native exclusive accordion — only one open at a time
+    d.open = open;
+    const s = document.createElement("summary");
+    s.textContent = label;
+    const box = document.createElement("div");
+    box.className = "cf-group-body";
+    d.append(s, box);
+    return { d, box };
+  }
 
   function renderFields() {
     fieldsEl!.textContent = "";
     const def = currentDef();
     if (!def) return;
+    const basics = makeGroup("أساسيات", true);
+    const details = makeGroup("تفاصيل", false);
+    const text = makeGroup("النص", false);
     for (const f of def.fields) {
+      const wrap = renderField(f);
+      const box = SHARED_KEYS.has(f.key) ? basics.box
+        : f.kind === "body" || f.kind === "verses" ? text.box
+        : details.box;
+      box.appendChild(wrap);
+    }
+    [basics, details, text].forEach((g) => { if (g.box.children.length) fieldsEl!.appendChild(g.d); });
+    update();
+  }
+
+  function renderField(f: Field): HTMLElement {
+    {
       const wrap = document.createElement("div");
       wrap.className = "field";
 
@@ -54,31 +133,56 @@ if (typeSel && fieldsEl && previewEl) {
       label.htmlFor = "f-" + f.key;
       wrap.appendChild(label);
 
-      let input: HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement;
-      if (f.kind === "select") {
+      let input: HTMLElement;
+      if (f.kind === "refs") {
+        input = buildRefs(f);
+      } else if (f.kind === "ref") {
+        input = buildRef(f);
+      } else if (f.kind === "select") {
         const sel = document.createElement("select");
         (f.options || []).forEach((opt) => {
           const o = document.createElement("option");
           o.value = opt;
-          o.textContent = opt === "" ? "—" : opt;
+          o.textContent = f.optionLabels?.[opt] ?? (opt === "" ? "—" : opt);
           sel.appendChild(o);
         });
+        sel.dataset.key = f.key;
+        sel.className = "cinput";
         input = sel;
       } else if (f.kind === "body" || f.kind === "verses" || f.kind === "array" || f.kind === "textarea") {
         const ta = document.createElement("textarea");
         ta.rows = f.kind === "body" || f.kind === "verses" ? 8 : 3;
+        ta.dataset.key = f.key;
+        ta.className = "cinput";
         input = ta;
       } else {
         const inp = document.createElement("input");
         inp.type = f.kind === "date" ? "date" : f.kind === "number" ? "number" : f.kind === "url" ? "url" : "text";
+        inp.dataset.key = f.key;
+        inp.className = "cinput";
         input = inp;
       }
-      input.id = "f-" + f.key;
-      input.dataset.key = f.key;
-      input.className = "cinput";
-      if (f.default) input.value = f.default;
-      if (f.kind === "date" && f.required) input.value = today;
+      if (input.tagName !== "DIV") input.id = "f-" + f.key; // ref/refs are wrappers
+      if (f.default && "value" in input) (input as HTMLInputElement).value = f.default;
+      if (f.kind === "date" && f.required) (input as HTMLInputElement).value = today;
       wrap.appendChild(input);
+
+      // long text (a whole book/متن) → upload a .txt/.md file instead of pasting
+      if (f.kind === "body" || f.kind === "verses") {
+        const up = document.createElement("label");
+        up.className = "file-up";
+        up.textContent = "رفع ملفّ نصّي (.txt / .md)";
+        const fi = document.createElement("input");
+        fi.type = "file";
+        fi.accept = ".txt,.md,text/plain,text/markdown";
+        fi.className = "sr-only";
+        fi.addEventListener("change", () => {
+          const file = fi.files?.[0];
+          if (file) file.text().then((txt) => { (input as HTMLTextAreaElement).value = txt; update(); });
+        });
+        up.appendChild(fi);
+        wrap.appendChild(up);
+      }
 
       if (f.help) {
         const h = document.createElement("div");
@@ -86,9 +190,75 @@ if (typeSel && fieldsEl && previewEl) {
         h.textContent = f.help;
         wrap.appendChild(h);
       }
-      fieldsEl!.appendChild(wrap);
+      return wrap;
     }
-    update();
+  }
+
+  // single searchable reference → text input bound to a <datalist> of titles.
+  function buildRef(f: Field): HTMLInputElement {
+    const colls = (f.ref || "").split("|");
+    const inp = document.createElement("input");
+    inp.type = "text";
+    inp.className = "cinput";
+    inp.dataset.key = f.key;
+    inp.dataset.ref = f.ref || "";
+    inp.setAttribute("list", ensureDatalist(colls));
+    inp.autocomplete = "off";
+    if (f.syncType) {
+      inp.addEventListener("input", () => {
+        const hit = titleToId(colls, inp.value);
+        if (hit) {
+          const sel = fieldsEl!.querySelector<HTMLSelectElement>(`[data-key="${f.syncType}"]`);
+          if (sel && sel.value !== hit.c) sel.value = hit.c;
+        }
+      });
+    }
+    return inp;
+  }
+
+  // many references → searchable checklist; a hidden input mirrors the chosen ids.
+  function buildRefs(f: Field): HTMLElement {
+    const colls = (f.ref || "").split("|");
+    const wrap = document.createElement("div");
+    wrap.className = "ref-checklist";
+    wrap.dataset.refsKey = f.key;
+
+    const hidden = document.createElement("input");
+    hidden.type = "hidden";
+    hidden.dataset.key = f.key;
+
+    const search = document.createElement("input");
+    search.type = "text";
+    search.className = "cinput ref-search";
+    search.placeholder = "بحث…";
+    search.autocomplete = "off";
+
+    const list = document.createElement("div");
+    list.className = "ref-list";
+    itemsOf(colls).forEach((i) => {
+      const lab = document.createElement("label");
+      lab.className = "ref-check";
+      lab.dataset.name = i.title;
+      const cb = document.createElement("input");
+      cb.type = "checkbox";
+      cb.value = i.id;
+      cb.addEventListener("change", () => {
+        const ids = [...list.querySelectorAll<HTMLInputElement>("input:checked")].map((c) => c.value);
+        hidden.value = ids.join("\n");
+        update();
+      });
+      lab.append(cb, document.createTextNode(" " + i.title));
+      list.appendChild(lab);
+    });
+    search.addEventListener("input", () => {
+      const q = search.value.trim();
+      list.querySelectorAll<HTMLElement>(".ref-check").forEach((lab) =>
+        lab.classList.toggle("is-hidden", q !== "" && !(lab.dataset.name || "").includes(q)),
+      );
+    });
+
+    wrap.append(hidden, search, list);
+    return wrap;
   }
 
   function collectValues(): Record<string, string> {
@@ -97,6 +267,18 @@ if (typeSel && fieldsEl && previewEl) {
       v[el.dataset.key!] = (el as HTMLInputElement).value;
     });
     return v;
+  }
+
+  // ref inputs hold the visible title — resolve to the entity id before building.
+  function resolveRefs(def: FormDef, values: Record<string, string>): Record<string, string> {
+    const out = { ...values };
+    for (const f of def.fields) {
+      if (f.kind === "ref") {
+        const hit = titleToId((f.ref || "").split("|"), out[f.key] || "");
+        if (hit) out[f.key] = hit.id;
+      }
+    }
+    return out;
   }
 
   function validate(def: FormDef, values: Record<string, string>): string[] {
@@ -112,7 +294,7 @@ if (typeSel && fieldsEl && previewEl) {
   function update() {
     const def = currentDef();
     if (!def) return;
-    const values = collectValues();
+    const values = resolveRefs(def, collectValues());
     const errs = validate(def, values);
     const files = buildFiles(def, values);
     previewEl!.textContent = "";
@@ -168,6 +350,72 @@ if (typeSel && fieldsEl && previewEl) {
       previewEl!.appendChild(box);
     });
   }
+
+  // --- add / edit modes ---
+  const addPane = document.getElementById("addpane");
+  const editPane = document.getElementById("editpane");
+  const editSearch = document.getElementById("cedit-search") as HTMLInputElement | null;
+  const editHint = document.getElementById("cedit-hint");
+  const dlAll = document.getElementById("dl-all");
+
+  // edit search lists every item, disambiguated by type
+  const editKey = (i: Item) => `${i.title} — ${collLabel[i.c] || i.c}`;
+  if (dlAll) {
+    items.forEach((i) => {
+      const o = document.createElement("option");
+      o.value = editKey(i);
+      dlAll.appendChild(o);
+    });
+  }
+
+  function setMode(mode: "add" | "edit") {
+    document.querySelectorAll<HTMLElement>("[data-cmode]").forEach((b) =>
+      b.setAttribute("aria-pressed", String(b.dataset.cmode === mode)),
+    );
+    if (addPane) addPane.hidden = mode !== "add";
+    if (editPane) editPane.hidden = mode !== "edit";
+    if (mode === "add") { if (editHint) editHint.textContent = ""; setType(typeSel!.value || FORMS[0].collection); }
+  }
+  document.querySelectorAll<HTMLElement>("[data-cmode]").forEach((b) =>
+    b.addEventListener("click", () => setMode(b.dataset.cmode as "add" | "edit")),
+  );
+
+  function setInput(key: string, value: string) {
+    const el = fieldsEl!.querySelector<HTMLInputElement>(`[data-key="${key}"]`);
+    if (el) el.value = value;
+  }
+  function setRefs(key: string, ids: string[]) {
+    const wrap = fieldsEl!.querySelector<HTMLElement>(`[data-refs-key="${key}"]`);
+    if (!wrap) return;
+    wrap.querySelectorAll<HTMLInputElement>('input[type="checkbox"]').forEach((cb) => (cb.checked = ids.includes(cb.value)));
+    const hidden = wrap.querySelector<HTMLInputElement>('input[type="hidden"]');
+    if (hidden) hidden.value = ids.join("\n");
+  }
+  function loadItem(it: Item) {
+    setType(it.c);
+    const def = currentDef();
+    if (!def) return;
+    for (const f of def.fields) {
+      if (f.key === "slug") { setInput("slug", it.id); continue; }
+      if (f.kind === "body" || f.kind === "verses") { setInput(f.key, it.body); continue; }
+      const v = it.data[f.key];
+      if (v == null) continue;
+      const arr = Array.isArray(v) ? (v as unknown[]).map(String) : [String(v)];
+      if (f.kind === "refs") setRefs(f.key, arr);
+      else if (f.kind === "array") setInput(f.key, arr.join("\n"));
+      else if (f.kind === "ref") setInput(f.key, idToTitle((f.ref || "").split("|"), String(v)));
+      else setInput(f.key, String(v));
+    }
+    // ponytail: a companion audio_url isn't reconstructed on edit — edit the صوتية entity directly.
+    update();
+    if (editHint) editHint.textContent = `تُعدِّل: ${it.title} — انسخِ الملف فوقَ القديم في المستودع.`;
+  }
+  function tryLoadFromSearch() {
+    const it = items.find((i) => editKey(i) === editSearch!.value.trim());
+    if (it) loadItem(it);
+  }
+  editSearch?.addEventListener("change", tryLoadFromSearch);
+  editSearch?.addEventListener("input", tryLoadFromSearch);
 
   typeSel.addEventListener("change", renderFields);
   fieldsEl.addEventListener("input", update);

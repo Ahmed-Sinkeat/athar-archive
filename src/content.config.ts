@@ -228,6 +228,19 @@ const announcement = defineCollection({
   }),
 });
 
+// --- 14. Highlight (مختارات الأسبوع) — homepage chrome only, no page ---
+// One curated آية / حديث / بيت; the home rotates a weekly pick of each kind.
+// The text itself is the markdown body; `reference` is المصدر/التخريج.
+
+const highlight = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/highlight" }),
+  schema: z.object({
+    ...shared,
+    kind: z.enum(["آية", "حديث", "بيت"]),
+    reference: z.string().optional(), // المصدر/التخريج: «البقرة ٢٥٥»، «رواه البخاري»، «الناظم»
+  }),
+});
+
 // --- export ---
 
 export const collections = {
@@ -244,4 +257,5 @@ export const collections = {
   audio,
   annotation,
   announcement,
+  highlight,
 };
