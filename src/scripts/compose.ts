@@ -316,8 +316,17 @@ if (typeSel && fieldsEl && previewEl) {
   function update() {
     const def = currentDef();
     if (!def) return;
-    const values = resolveRefs(def, collectValues());
+    const raw = collectValues();
+    const values = resolveRefs(def, raw);
     const errs = validate(def, values);
+    // A single ref that didn't resolve to an existing entity → block & tell the
+    // maintainer to add it first (raw name left in → would break the build).
+    for (const f of def.fields) {
+      if (f.kind !== "ref") continue;
+      const v = (values[f.key] || "").trim();
+      if (v && !itemsOf((f.ref || "").split("|")).some((i) => i.id === v))
+        errs.push(`${f.label}: «${(raw[f.key] || "").trim()}» غير موجود — أضِفْه أولًا ثم اختَرْه من القائمة`);
+    }
     const files = buildFiles(def, values);
     previewEl!.textContent = "";
 

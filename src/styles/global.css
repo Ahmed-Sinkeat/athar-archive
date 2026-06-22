@@ -622,7 +622,13 @@ html.hide-vnums .vnum { display: none; }
 .section-search-go { white-space: nowrap; }
 
 /* knowledge graph page (/graph) */
-.graph-hint { margin: -10px 0 16px; line-height: 1.7; }
+.graph-hint { margin: -10px 0 14px; line-height: 1.7; }
+.graph-legend { display: flex; flex-wrap: wrap; gap: 8px 14px; margin-bottom: 18px; }
+.graph-leg { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-ui); font-size: 13px; cursor: pointer; user-select: none; }
+.graph-leg input { accent-color: var(--accent); }
+.graph-leg input:not(:checked) ~ .graph-leg-name { opacity: 0.45; text-decoration: line-through; }
+.graph-dot { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
+.graph-leg-count { font-size: 12px; }
 .graph-wrap { position: relative; width: 100%; height: calc(100vh - 240px); min-height: 420px; border-block: 1px solid var(--rule-strong); background: var(--surface); }
 #graph { position: absolute; inset: 0; }
 #graph canvas { display: block; }
