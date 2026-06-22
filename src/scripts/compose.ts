@@ -429,6 +429,14 @@ if (typeSel && fieldsEl && previewEl) {
       previewEl!.appendChild(e);
     }
 
+    // The #1 "I published it but it's not on the site" cause: status stayed مسودة.
+    if ((values.status || "").trim() === "draft") {
+      const d = document.createElement("div");
+      d.className = "compose-draft-note";
+      d.textContent = "ملاحظة: الحالة «مسودة» — لن يظهرَ على الموقع. اجعلِ الحالةَ «منشور» ليظهر.";
+      previewEl!.appendChild(d);
+    }
+
     files.forEach((file) => {
       const box = document.createElement("div");
       box.className = "compose-file";
@@ -469,17 +477,20 @@ if (typeSel && fieldsEl && previewEl) {
       ghBtn.disabled = errs.length > 0;
       if (errs.length) ghBtn.title = "أكمِلِ الحقولَ المطلوبةَ أولًا";
       ghBtn.onclick = () => {
-        // Path goes in the URL (tiny — opens GitHub at the EXACT folder/file, so the
-        // maintainer never picks a location); content goes on the clipboard (no size
-        // limit). Then: paste (Ctrl+V) and Commit. No token, no backend.
-        // file.path is all URL-safe chars (lowercase slug + slashes), so no encoding.
+        // New file: prefill BOTH path + content via the URL → GitHub opens the editor
+        // already filled, just press Commit (no paste). file.path is URL-safe; only the
+        // content needs encoding. Also copy to clipboard as a backup if a very long
+        // body got truncated. Edit: GitHub can't prefill the edit page → copy + paste.
         const base = `https://github.com/${config.repo}`;
         navigator.clipboard?.writeText(file.content);
-        const url = curMode === "edit"
-          ? `${base}/edit/${config.repoBranch}/${file.path}` // opens the existing file
-          : `${base}/new/${config.repoBranch}?filename=${file.path}`; // opens a new file at this path
-        window.open(url, "_blank", "noopener");
-        ghBtn.textContent = "نُسخ ✓ — الصقْه (Ctrl+V) ثمّ احفظ";
+        if (curMode === "edit") {
+          window.open(`${base}/edit/${config.repoBranch}/${file.path}`, "_blank", "noopener");
+          ghBtn.textContent = "نُسخ ✓ — الصقْه فوقَ القديم واحفظ";
+        } else {
+          const u = `${base}/new/${config.repoBranch}?filename=${file.path}&value=${encodeURIComponent(file.content)}`;
+          window.open(u, "_blank", "noopener");
+          ghBtn.textContent = "فُتح GitHub — اضغطْ Commit";
+        }
         setTimeout(() => (ghBtn.textContent = "نشر إلى GitHub"), 3500);
       };
 

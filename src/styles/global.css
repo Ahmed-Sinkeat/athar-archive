@@ -599,6 +599,7 @@ html.hide-vnums .vnum { display: none; }
 
 /* admin: one-line explainer under the chosen type */
 .compose-typedesc { margin: -16px 0 24px; font-size: 14px; line-height: 1.7; min-height: 1.2em; }
+.compose-draft-note { font-family: var(--font-ui); font-size: 13.5px; color: #8a5a00; background: rgba(176, 123, 0, 0.1); border: 1px solid rgba(176, 123, 0, 0.3); border-radius: 9px; padding: 9px 12px; margin-bottom: 12px; }
 /* eyebrow as a link (متن/منظومة chips) — keep the quiet look, no pill hover */
 .eyebrow.pill-link:hover { background: none; color: var(--verdigris); text-decoration: underline; }
 
