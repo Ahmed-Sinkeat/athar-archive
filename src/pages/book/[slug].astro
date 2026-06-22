@@ -5,8 +5,9 @@ import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import Prose from "../../components/Prose.astro";
 import StudyBar from "../../components/StudyBar.astro";
 import AudioPlayer from "../../components/AudioPlayer.astro";
+import RelatedStrip from "../../components/RelatedStrip.astro";
 import { markdownToSafeHtml } from "../../lib/sanitize";
-import { isPub, loadGraph, personNameMap, subjectTitlesFor, notesByAnchor } from "../../lib/site";
+import { isPub, loadGraph, personNameMap, subjectTitlesFor, notesByAnchor, relatedTo } from "../../lib/site";
 import { analyzeBook } from "../../lib/chunk";
 import { hrefFor, toArabicDigits, labelFor, isMatn } from "../../lib/display";
 import { bookLd } from "../../lib/structured-data";
@@ -20,15 +21,14 @@ export async function getStaticPaths() {
     const audios = graph.audioForSource("book", entry.id)
       .filter((a) => a.data.status === "published")
       .map((au) => ({ url: au.data.url, format: au.data.format, duration: au.data.duration ?? null, sizeBytes: au.data.size_bytes ?? null, label: au.data.title }));
-    return { params: { slug: entry.id }, props: { entry, byAnchor, audios, author: names.get(entry.data.person), subjects: subjectTitlesFor(entry.data.topics, graph) } };
+    return { params: { slug: entry.id }, props: { entry, byAnchor, audios, author: names.get(entry.data.person), subjects: subjectTitlesFor(entry.data.topics, graph), related: relatedTo(entry, graph, names) } };
   });
 }
 
-const { entry, byAnchor, audios, author, subjects } = Astro.props;
+const { entry, byAnchor, audios, author, subjects, related } = Astro.props;
 const a = analyzeBook(entry.body ?? "");
 const KIND_SLUG: Record<string, string> = { شرح: "sharh", حاشية: "hashiya", تخريج: "takhrij", إعراب: "iraab" };
 const anchors = Object.entries(byAnchor);
-const phraseAnchors = anchors.filter(([, notes]) => notes.some((n) => n.phrase));
 const path = `/book/${entry.id}`;
 const jsonLd = bookLd({
   title: entry.data.title, authorId: entry.data.person, authorName: author,
@@ -72,7 +72,10 @@ const jsonLd = bookLd({
       <div class="u49fcd85"><Prose body={entry.body ?? ""} /></div>
     )}
 
-    {phraseAnchors.map(([anchor, notes]) => (
+    {/* All annotations now open in the bottom sheet: phrase notes are wrapped
+        inline; whole-paragraph notes attach to their فقرة. The packs stay in the
+        DOM (hidden) so Pagefind/no-JS still see the text. */}
+    {anchors.map(([anchor, notes]) => (
       <div class="ann-pack" id={`ann-${anchor}`} data-ann-pack data-phrase={notes.find((n) => n.phrase)?.phrase} hidden>
         {notes.map((nt) => (
           <div class={`ann-entry k-${KIND_SLUG[nt.kind] ?? "sharh"}`} data-kind={nt.kind} data-label={nt.annotator ? `${nt.kind} — ${nt.annotator}` : nt.kind}>
@@ -83,19 +86,7 @@ const jsonLd = bookLd({
       </div>
     ))}
 
-    {anchors.length > 0 && (
-      <details class="benefit-strip notes-disclosure">
-        <summary class="toc-label uec818db" >حواشٍ وتخريجات</summary>
-        {anchors.flatMap(([anchor, notes]) => notes.map((nt) => (
-          <div class="note u2a1b75c"  data-ar>
-            <span class="note-kind">{nt.kind} · {anchor}</span>
-            <Fragment set:html={markdownToSafeHtml(nt.body)} />
-            {nt.sourceHref && <a class="ann-source-link" href={nt.sourceHref}>اقرأ في موضعه{nt.sourceLabel ? `: ${nt.sourceLabel}` : ""} ←</a>}
-          </div>
-        )))}
-      </details>
-    )}
-
     <div class="ornament ud38b410" >۞</div>
   </div>
+  <div class="wrap-mid"><RelatedStrip items={related} /></div>
 </Base>

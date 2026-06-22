@@ -2,6 +2,8 @@
 title: مطلع البيقونية
 kind: بيت
 reference: من المنظومة البيقونية
+source_type: poem
+source_id: al-bayquniyyah
 status: published
 published_at: 2026-06-22
 ---

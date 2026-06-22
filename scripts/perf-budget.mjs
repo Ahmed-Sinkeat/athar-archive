@@ -19,7 +19,7 @@ if (!existsSync(DIST)) {
 
 const BUDGET = 150 * 1024; // bytes: HTML + local CSS/JS per page (no media/fonts)
 const TEXT_FLOOR = 100;    // min visible chars rendered without JS
-const JS_DRIVEN = new Set(["/search", "/compose"]); // JS-driven tool pages exempt from weight/text
+const JS_DRIVEN = new Set(["/search", "/compose", "/graph"]); // JS-driven tool pages exempt from weight/text
 
 const walk = (d) =>
   readdirSync(d, { withFileTypes: true }).flatMap((e) => {

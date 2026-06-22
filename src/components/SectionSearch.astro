@@ -1,0 +1,11 @@
+---
+// Per-section search bar for listing pages. Submits to /search with a `scope`
+// so results are pre-filtered to this type (the search page reads `scope`).
+interface Props { scope?: string; placeholder?: string }
+const { scope = "", placeholder = "ابحث في هذا القسم…" } = Astro.props;
+---
+<form class="section-search" action="/search" method="get" role="search">
+  <input type="search" name="q" class="section-search-input" placeholder={placeholder} aria-label={placeholder} autocomplete="off" />
+  {scope && <input type="hidden" name="scope" value={scope} />}
+  <button type="submit" class="btn-accent section-search-go">بحث</button>
+</form>

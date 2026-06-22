@@ -238,7 +238,14 @@ const highlight = defineCollection({
     ...shared,
     kind: z.enum(["آية", "حديث", "بيت"]),
     reference: z.string().optional(), // المصدر/التخريج: «البقرة ٢٥٥»، «رواه البخاري»، «الناظم»
-  }),
+    // Optional link to where this came from (e.g. a بيت → its منظومة) — makes the
+    // reference clickable and lets a بيت show its era + subject instead of a «بيت» pill.
+    source_type: z.enum(["poem", "book", "article"]).optional(),
+    source_id: slug.optional(),
+  }).refine(
+    (h) => (h.source_type == null) === (h.source_id == null),
+    "source_type and source_id must both be set or both omitted",
+  ),
 });
 
 // --- export ---

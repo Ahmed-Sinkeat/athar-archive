@@ -210,6 +210,8 @@ export const FORMS: FormDef[] = [
       ...shared(),
       { key: "kind", label: "النوع", kind: "select", options: ["آية", "حديث", "بيت"], default: "حديث", help: "آية قرآنية، أو حديث، أو بيت من منظومة" },
       { key: "reference", label: "المصدر / التخريج", kind: "text", help: "مثال: «البقرة ٢٥٥» للآية، «رواه البخاري» للحديث، اسم الناظم للبيت" },
+      { key: "source_type", label: "نوع المصدر", kind: "select", options: ["", "poem", "book", "article"], optionLabels: COLL_LABELS, help: "اختياري — لربط «بيت» بمنظومته فيُفتح المصدرُ ويظهر العصرُ والفنّ" },
+      REF("source_id", "المصدر", "poem|book|article", { syncType: "source_type" }),
       { key: "body", label: "النص", kind: "body", required: true, help: "الصقِ نصّ الآية أو الحديث أو البيت" },
     ],
   },
