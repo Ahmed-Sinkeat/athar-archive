@@ -14,6 +14,8 @@ export type FieldKind =
   | "array"
   | "verses"
   | "url"
+  | "ref"  // single reference to an existing entity — searchable picker, stores its id
+  | "refs" // many references — searchable checklist, stores ids
   | "body";
 
 export interface Field {
@@ -22,8 +24,11 @@ export interface Field {
   kind: FieldKind;
   required?: boolean;
   options?: readonly string[];
+  optionLabels?: Record<string, string>; // Arabic display for english enum values
   default?: string;
   help?: string;
+  ref?: string;       // for ref/refs: pipe-joined collection(s) to pick from, e.g. "book|poem"
+  syncType?: string;  // for ref: sibling select key to auto-set to the picked entity's collection
 }
 
 export interface FormDef {
@@ -32,17 +37,26 @@ export interface FormDef {
   fields: Field[];
 }
 
+// Arabic labels for the english enum values, so non-technical maintainers read معاني not codes.
+const STATUS_LABELS = { draft: "مسودة", review: "قيد المراجعة", published: "منشور", archived: "مؤرشف" };
+const COLL_LABELS: Record<string, string> = { book: "كتاب", poem: "منظومة", lesson: "درس", article: "مقالة" };
+
 const STATUS = ["draft", "review", "published", "archived"] as const;
 
 // shared frontmatter at the top of every type
 const shared = (): Field[] => [
-  { key: "slug", label: "المعرّف (اسم الملف)", kind: "slug", required: true, help: "حروف لاتينية صغيرة وأرقام وشرطات: al-bayquniyyah" },
-  { key: "title", label: "العنوان", kind: "text", required: true },
-  { key: "status", label: "الحالة", kind: "select", options: STATUS, default: "draft" },
+  { key: "slug", label: "اسم الملف", kind: "slug", required: true, help: "بالإنجليزية: حروف صغيرة وأرقام وشَرَطات. مثال: al-bayquniyyah" },
+  { key: "title", label: "العنوان", kind: "text", required: true, help: "كما يظهر للقارئ" },
+  { key: "status", label: "الحالة", kind: "select", options: STATUS, optionLabels: STATUS_LABELS, default: "draft", help: "ابدأ بمسودة، واجعلها «منشور» عند الجاهزية" },
   { key: "published_at", label: "تاريخ النشر", kind: "date", required: true },
 ];
 
-const PERSON_REF = (key: string, label: string, required = true): Field => ({ key, label, kind: "slug", required, help: "معرّف عَلَمٍ موجود" });
+// single searchable reference to an existing entity (stores its id)
+const REF = (key: string, label: string, ref: string, o: { required?: boolean; help?: string; syncType?: string } = {}): Field =>
+  ({ key, label, kind: "ref", ref, required: o.required ?? true, help: o.help ?? "ابحث بالاسم واختَر من القائمة", syncType: o.syncType });
+// many searchable references (stores ids)
+const REFS = (key: string, label: string, ref: string, o: { required?: boolean; help?: string } = {}): Field =>
+  ({ key, label, kind: "refs", ref, required: o.required, help: o.help ?? "اكتب للبحث، وأشِّر على ما يناسب" });
 
 export const FORMS: FormDef[] = [
   {
@@ -50,10 +64,11 @@ export const FORMS: FormDef[] = [
     label: "منظومة",
     fields: [
       ...shared(),
-      PERSON_REF("person", "الناظم"),
-      { key: "topics", label: "الموضوعات", kind: "array", help: "معرّفات، ١–٥، سطرٌ لكلٍّ" },
+      REF("person", "الناظم", "person"),
+      REFS("topics", "الموضوعات", "topic", { help: "موضوع إلى خمسة" }),
+      { key: "authored_year", label: "سنة النظم (هجري)", kind: "number", help: "رقمٌ بالهجري — تُرتَّب به القوائم. مثال: 672" },
       { key: "description", label: "تعريف المنظومة", kind: "text" },
-      { key: "audio_url", label: "رابط التلاوة (اختياري)", kind: "url", help: "يولِّد صوتيةً مرتبطةً" },
+      { key: "audio_url", label: "رابط التلاوة (اختياري)", kind: "url", help: "يولِّد صوتيةً مرتبطةً تلقائيًّا" },
       { key: "verses", label: "الأبيات", kind: "verses", required: true, help: "بيتٌ لكلِّ سطر: الصدر --- العجز" },
     ],
   },
@@ -62,9 +77,10 @@ export const FORMS: FormDef[] = [
     label: "كتاب",
     fields: [
       ...shared(),
-      PERSON_REF("person", "المؤلف"),
-      { key: "kind", label: "النوع", kind: "select", options: ["متن", "مرجع", "مجموع"], default: "متن" },
-      { key: "topics", label: "الموضوعات", kind: "array" },
+      REF("person", "المؤلف", "person"),
+      { key: "kind", label: "النوع", kind: "select", options: ["متن", "مرجع", "مجموع"], default: "متن", help: "متن = أصلٌ يُحفظ ويُدرَّس" },
+      REFS("topics", "الموضوعات", "topic"),
+      { key: "authored_year", label: "سنة التصنيف (هجري)", kind: "number", help: "رقمٌ بالهجري — تُرتَّب به القوائم. مثال: 728" },
       { key: "description", label: "تعريف الكتاب", kind: "text" },
       { key: "edition", label: "الطبعة", kind: "text" },
       { key: "audio_url", label: "رابط الصوتية (اختياري)", kind: "url" },
@@ -76,12 +92,12 @@ export const FORMS: FormDef[] = [
     label: "عَلَم",
     fields: [
       ...shared(),
-      { key: "bio", label: "نبذة", kind: "text" },
+      { key: "bio", label: "نبذة", kind: "text", help: "سطرٌ تعريفيٌّ موجز" },
       { key: "born", label: "المولد", kind: "text", help: "نصٌّ حر: ٦٦١ هـ" },
       { key: "died", label: "الوفاة", kind: "text" },
       { key: "location", label: "البلد", kind: "text" },
       { key: "era", label: "العصر", kind: "select", options: ["", ...ERA_VALUES] },
-      { key: "also_known_as", label: "أسماء أخرى للبحث", kind: "array", help: "كُنى ومرادفات، سطرٌ لكلٍّ" },
+      { key: "also_known_as", label: "أسماء أخرى للبحث", kind: "array", help: "كُنى ومرادفات يبحث بها الناس — سطرٌ لكلٍّ" },
       { key: "body", label: "الترجمة", kind: "body" },
     ],
   },
@@ -90,15 +106,15 @@ export const FORMS: FormDef[] = [
     label: "شرح / حاشية",
     fields: [
       ...shared(),
-      { key: "target_type", label: "نوع الهدف", kind: "select", options: ["book", "poem"], required: true },
-      { key: "target_id", label: "معرّف المتن/المنظومة", kind: "slug", required: true },
-      { key: "anchor", label: "الموضع", kind: "text", required: true, help: "v1 لبيت، أو p3 / {#id} لفقرة" },
-      { key: "kind", label: "النوع", kind: "select", options: ["شرح", "حاشية", "تخريج", "إعراب"], default: "شرح" },
-      { key: "phrase", label: "الكلمة المُعلَّمة", kind: "text", help: "العبارة التي تُعلَّم في النص ويُفتح عليها الشرح (اتركها فارغة لتعليم البيت كلّه)" },
-      PERSON_REF("annotator", "الشارح", false),
-      { key: "source_type", label: "نوع المصدر", kind: "select", options: ["", "lesson", "book", "poem", "article"], help: "إن كان الشرح موجوداً في صفحة أخرى" },
-      { key: "source_id", label: "معرّف المصدر", kind: "slug", required: false, help: "معرّف الدرس/الكتاب الذي فيه الشرح" },
-      { key: "body", label: "نص الشرح", kind: "body", required: true },
+      REF("target_id", "على أيِّ متنٍ أو منظومة؟", "book|poem", { syncType: "target_type", help: "ابحث عن المتن/المنظومة التي تشرحها واختَرها" }),
+      { key: "target_type", label: "نوع الهدف", kind: "select", options: ["book", "poem"], optionLabels: COLL_LABELS, required: true, help: "يُملأ تلقائيًّا عند اختيار المتن" },
+      { key: "phrase", label: "الجملة التي يشرحها", kind: "text", help: "انسخِ الكلمات من المتن كما هي — تُعلَّم ويُفتح عليها الشرح (اتركها فارغة لتعليم البيت كلّه)" },
+      { key: "anchor", label: "الموضع", kind: "text", required: true, help: "أيُّ بيتٍ أو فقرة؟ v1 لأوّل بيت، p1 لأوّل فقرة" },
+      { key: "kind", label: "نوع الشرح", kind: "select", options: ["شرح", "حاشية", "تخريج", "إعراب"], default: "شرح" },
+      REF("annotator", "الشارح", "person", { required: false, help: "اختياري — من قائلُ هذا الشرح؟" }),
+      { key: "source_type", label: "نوع مصدر الشرح", kind: "select", options: ["", "lesson", "book", "poem", "article"], optionLabels: COLL_LABELS, help: "اختياري — إن كان الشرح مأخوذًا من درسٍ أو كتاب" },
+      REF("source_id", "مصدر الشرح", "lesson|book|poem|article", { required: false, syncType: "source_type", help: "اختياري — الصفحة التي فيها الشرح كاملًا" }),
+      { key: "body", label: "نصّ الشرح", kind: "body", required: true, help: "الصقِ الشرح هنا" },
     ],
   },
   {
@@ -106,8 +122,8 @@ export const FORMS: FormDef[] = [
     label: "درس",
     fields: [
       ...shared(),
-      { key: "series", label: "السلسلة", kind: "slug", required: true, help: "معرّف سلسلةٍ موجودة" },
-      { key: "order", label: "الترتيب", kind: "number", required: true, default: "1" },
+      REF("series", "السلسلة", "series"),
+      { key: "order", label: "الترتيب", kind: "number", required: true, default: "1", help: "رقم الدرس في السلسلة" },
       { key: "duration", label: "المدة", kind: "text", help: "1:02:30" },
       { key: "audio_url", label: "رابط الصوتية (اختياري)", kind: "url" },
       { key: "body", label: "نص التفريغ", kind: "body", required: true },
@@ -118,10 +134,10 @@ export const FORMS: FormDef[] = [
     label: "سلسلة",
     fields: [
       ...shared(),
-      PERSON_REF("person", "الشارح/المدرّس"),
-      { key: "topics", label: "الموضوعات", kind: "array" },
-      { key: "source_type", label: "نوع المصدر", kind: "select", options: ["", "book", "poem"] },
-      { key: "source_id", label: "معرّف المصدر", kind: "slug", required: false },
+      REF("person", "الشارح/المدرّس", "person"),
+      REFS("topics", "الموضوعات", "topic"),
+      { key: "source_type", label: "نوع المصدر", kind: "select", options: ["", "book", "poem"], optionLabels: COLL_LABELS, help: "اختياري — الكتاب/المنظومة التي تشرحها السلسلة" },
+      REF("source_id", "المصدر", "book|poem", { required: false, syncType: "source_type" }),
       { key: "description", label: "تعريف السلسلة", kind: "text" },
       { key: "body", label: "المحتوى", kind: "body" },
     ],
@@ -131,10 +147,10 @@ export const FORMS: FormDef[] = [
     label: "فائدة",
     fields: [
       ...shared(),
-      PERSON_REF("person", "صاحب الفائدة"),
-      { key: "topics", label: "الموضوعات", kind: "array" },
-      { key: "source_type", label: "نوع المصدر", kind: "select", options: ["", "lesson", "book", "article", "poem"] },
-      { key: "source_id", label: "معرّف المصدر", kind: "slug", required: false },
+      REF("person", "صاحب الفائدة", "person"),
+      REFS("topics", "الموضوعات", "topic"),
+      { key: "source_type", label: "نوع المصدر", kind: "select", options: ["", "lesson", "book", "article", "poem"], optionLabels: COLL_LABELS, help: "اختياري — من أين هذه الفائدة؟" },
+      REF("source_id", "المصدر", "lesson|book|article|poem", { required: false, syncType: "source_type" }),
       { key: "body", label: "نص الفائدة", kind: "body", required: true },
     ],
   },
@@ -143,8 +159,8 @@ export const FORMS: FormDef[] = [
     label: "مقالة",
     fields: [
       ...shared(),
-      PERSON_REF("person", "الكاتب"),
-      { key: "topics", label: "الموضوعات", kind: "array" },
+      REF("person", "الكاتب", "person"),
+      REFS("topics", "الموضوعات", "topic"),
       { key: "description", label: "نبذة", kind: "text" },
       { key: "audio_url", label: "رابط الصوتية (اختياري)", kind: "url" },
       { key: "body", label: "النص", kind: "body", required: true },
@@ -155,8 +171,8 @@ export const FORMS: FormDef[] = [
     label: "مسألة",
     fields: [
       ...shared(),
-      { key: "topics", label: "الموضوعات", kind: "array", required: true, help: "إلزامي، ١–٥" },
-      PERSON_REF("person", "المُجيب", false),
+      REFS("topics", "الموضوعات", "topic", { required: true, help: "إلزامي — موضوع إلى خمسة" }),
+      REF("person", "المُجيب", "person", { required: false }),
       { key: "body", label: "نص الجواب", kind: "body", required: true },
     ],
   },
@@ -170,7 +186,7 @@ export const FORMS: FormDef[] = [
     label: "موضوع",
     fields: [
       ...shared(),
-      { key: "subject", label: "التصنيف الأب", kind: "slug", required: true },
+      REF("subject", "التصنيف الأب", "subject", { help: "التصنيف العام الذي يندرج تحته هذا الموضوع" }),
       { key: "description", label: "وصف الموضوع", kind: "text" },
       { key: "body", label: "المحتوى", kind: "body" },
     ],
@@ -180,11 +196,21 @@ export const FORMS: FormDef[] = [
     label: "صوتية",
     fields: [
       ...shared(),
-      { key: "source_type", label: "نوع المصدر", kind: "select", options: ["lesson", "book", "poem", "article"], required: true },
-      { key: "source_id", label: "معرّف المصدر", kind: "slug", required: true },
+      { key: "source_type", label: "نوع المصدر", kind: "select", options: ["lesson", "book", "poem", "article"], optionLabels: COLL_LABELS, required: true },
+      REF("source_id", "المصدر", "lesson|book|poem|article", { syncType: "source_type" }),
       { key: "url", label: "الرابط", kind: "url", required: true },
       { key: "format", label: "الصيغة", kind: "select", options: ["opus", "mp3"], default: "opus" },
       { key: "duration", label: "المدة", kind: "text" },
+    ],
+  },
+  {
+    collection: "highlight",
+    label: "مختار الأسبوع",
+    fields: [
+      ...shared(),
+      { key: "kind", label: "النوع", kind: "select", options: ["آية", "حديث", "بيت"], default: "حديث", help: "آية قرآنية، أو حديث، أو بيت من منظومة" },
+      { key: "reference", label: "المصدر / التخريج", kind: "text", help: "مثال: «البقرة ٢٥٥» للآية، «رواه البخاري» للحديث، اسم الناظم للبيت" },
+      { key: "body", label: "النص", kind: "body", required: true, help: "الصقِ نصّ الآية أو الحديث أو البيت" },
     ],
   },
   {
@@ -225,7 +251,7 @@ export function buildFiles(def: FormDef, values: Record<string, string>): BuiltF
     const raw = (values[f.key] ?? "").trim();
     if (!raw && !f.required) continue;
 
-    if (f.kind === "array") {
+    if (f.kind === "array" || f.kind === "refs") {
       const items = raw.split("\n").flatMap((s) => s.split(",")).map((s) => s.trim()).filter(Boolean);
       if (!items.length) continue;
       lines.push(`${f.key}:`);

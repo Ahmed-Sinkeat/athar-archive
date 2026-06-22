@@ -1,28 +1,46 @@
 ---
 import { toArabicDigits } from "../lib/display";
 
-interface Props {
+interface Source {
   url: string;
   format?: "opus" | "mp3";
-  duration?: string;
-  sizeBytes?: number;
+  duration?: string | null;
+  sizeBytes?: number | null;
+  label?: string | null;
+}
+interface Props {
+  sources: Source[];
   label?: string;
 }
-const { url, format = "opus", duration, sizeBytes, label = "الاستماع" } = Astro.props;
-const mime = format === "opus" ? "audio/ogg; codecs=opus" : "audio/mpeg";
-const mb = sizeBytes ? `${toArabicDigits((sizeBytes / 1_048_576).toFixed(1))} م.ب` : null;
+const { sources, label = "الاستماع" } = Astro.props;
+const list = sources.filter((s) => s?.url);
+const cur = list[0];
+const mime = (f?: "opus" | "mp3") => (f === "mp3" ? "audio/mpeg" : "audio/ogg; codecs=opus");
+const meta = (s: Source) =>
+  [s.duration, s.sizeBytes ? `${toArabicDigits((s.sizeBytes / 1_048_576).toFixed(1))} م.ب` : null].filter(Boolean).join(" · ");
 ---
-<figure class="audio" data-pagefind-ignore>
-  <figcaption class="audio-caption">
-    <span>{label}</span>
-    <span class="faint u6cb285c" >
-      {[duration, mb].filter(Boolean).join(" · ")}
-    </span>
-  </figcaption>
-  <!-- native controls: fully usable without our JS, keyboard + screen-reader friendly -->
-  <audio controls preload="metadata">
-    <source src={url} type={mime} />
-    <a href={url}>تنزيل الملف الصوتي</a>
-  </audio>
-  <a class="btn u8e0fa20" href={url} download >تحميل</a>
-</figure>
+{cur && (
+  <figure class="audio" data-pagefind-ignore data-audio>
+    <figcaption class="audio-caption">
+      <span>{label}</span>
+      {/* multiple recitations → a small native dropdown (the arrow) to switch; single → just metadata */}
+      {list.length > 1 ? (
+        <select class="audio-pick" data-audio-pick aria-label="اختر التسجيل">
+          {list.map((s, i) => (
+            <option value={i} data-url={s.url} data-type={mime(s.format)} data-meta={meta(s)}>
+              {s.label || `تسجيل ${i + 1}`}
+            </option>
+          ))}
+        </select>
+      ) : (
+        <span class="faint u6cb285c" data-audio-meta>{meta(cur)}</span>
+      )}
+    </figcaption>
+    <!-- native controls: fully usable without our JS, keyboard + screen-reader friendly -->
+    <audio controls preload="metadata" data-audio-el>
+      <source src={cur.url} type={mime(cur.format)} data-audio-source />
+      <a href={cur.url}>تنزيل الملف الصوتي</a>
+    </audio>
+    <a class="btn u8e0fa20" href={cur.url} download data-audio-dl>تحميل</a>
+  </figure>
+)}

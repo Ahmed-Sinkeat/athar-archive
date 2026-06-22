@@ -65,7 +65,7 @@ const jsonLd = lessonLd({
       {author}{lesson.data.duration ? ` · مدة الدرس ${lesson.data.duration}` : ""}
     </div>
 
-    {audio && <AudioPlayer url={audio.url} format={audio.format} duration={audio.duration} sizeBytes={audio.sizeBytes} label="الاستماع إلى الدرس" />}
+    {audio && <AudioPlayer sources={[audio]} label="الاستماع إلى الدرس" />}
 
     <div class="lesson-grid">
       <div class="transcript">

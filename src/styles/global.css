@@ -83,12 +83,18 @@ body {
 a { color: inherit; }
 img { max-width: 100%; }
 
-/* keyboard focus visibility */
-a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visible {
-  outline: 2px solid var(--accent);
+/* keyboard focus visibility — soft, rounded accent ring (not a hard red box).
+   ponytail: one muted ring for everything; search keeps its own ring below. */
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--accent) 42%, transparent);
   outline-offset: 2px;
-  border-radius: 4px;
+  border-radius: 6px;
 }
+/* Search boxes get a soft accent ring instead of the hard outline — smoother,
+   still clearly focused (a11y). Scoped to the hero + top-bar search only. */
+.u537b78d:focus-within { border-color: var(--accent); box-shadow: 0 10px 34px rgba(31, 27, 22, 0.10), 0 0 0 3px rgba(154, 47, 36, 0.12); }
+.u537b78d .u38ae86c:focus-visible { outline: none; }
+.topsearch-input:focus-visible { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(154, 47, 36, 0.12); }
 
 /* ---------- layout helpers ---------- */
 .wrap { max-width: 1180px; margin: 0 auto; padding-inline: 22px; }
@@ -373,7 +379,8 @@ summary::-webkit-details-marker { display: none; }
 .ann-pack { display: none; }
 .ann-pack:target { display: block; margin-top: 8px; }  /* no-JS fallback */
 
-.ann-pop { position: fixed; z-index: 70; width: min(360px, calc(100vw - 16px)); background: var(--surface); border: 1px solid var(--rule-strong); border-radius: 12px; box-shadow: 0 18px 50px rgba(20, 16, 12, 0.22); overflow: hidden; }
+.ann-pop { position: fixed; z-index: 70; width: min(360px, calc(100vw - 16px)); background: var(--surface); border: 1px solid var(--rule-strong); border-radius: 12px; box-shadow: 0 18px 50px rgba(20, 16, 12, 0.22); overflow: hidden; opacity: 0; transform: translateY(5px); transition: opacity 0.13s ease, transform 0.13s ease; }
+.ann-pop.is-shown { opacity: 1; transform: none; }
 .ann-pop[hidden] { display: none; }
 .ann-pop-head { display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-bottom: 1px solid var(--rule); background: var(--paper-2); }
 .ann-pop-kind { font-family: var(--font-ui); font-size: 12px; letter-spacing: 0.06em; color: var(--accent); flex: 1; }
@@ -408,12 +415,32 @@ summary::-webkit-details-marker { display: none; }
 .compose-type { font-family: var(--font-ui); font-size: 14px; color: var(--ink-soft); background: var(--surface); border: 1px solid var(--rule-strong); border-radius: 9px; padding: 9px 14px; cursor: pointer; transition: color 0.15s, border-color 0.15s, background 0.15s; }
 .compose-type:hover { border-color: var(--accent); color: var(--accent); }
 .compose-type[aria-pressed="true"] { background: var(--accent-solid); border-color: var(--accent-solid); color: #fff; }
+.compose-more { flex-basis: 100%; margin-top: 4px; }
+.compose-more > summary { font-family: var(--font-ui); font-size: 13.5px; color: var(--ink-soft); cursor: pointer; list-style: none; padding: 6px 2px; }
+.compose-more > summary::-webkit-details-marker { display: none; }
+.compose-more > summary::before { content: "+ "; color: var(--accent); }
+.compose-more[open] > summary::before { content: "− "; }
+.compose-more > .compose-types { margin-top: 10px; }
+.file-up { display: inline-block; font-family: var(--font-ui); font-size: 12.5px; color: var(--accent); border: 1px dashed var(--rule-strong); border-radius: 7px; padding: 6px 10px; margin-top: 7px; cursor: pointer; }
+.file-up:hover { background: var(--paper-2); }
 .compose-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; margin-top: 8px; }
 .field { margin-bottom: 14px; }
 .field label { display: block; font-family: var(--font-ui); font-size: 13px; color: var(--ink-soft); margin-bottom: 6px; }
 .cinput { width: 100%; font-family: var(--font-ui); font-size: 14px; color: var(--ink); background: var(--surface); border: 1px solid var(--rule-strong); border-radius: 8px; padding: 9px 11px; }
 textarea.cinput { resize: vertical; line-height: 1.7; }
 .field-help { font-size: 12px; margin-top: 4px; }
+/* add / edit mode tabs */
+.compose-modes { display: inline-flex; gap: 4px; padding: 4px; background: var(--paper-2); border: 1px solid var(--rule); border-radius: 11px; margin-bottom: 22px; }
+.compose-mode { font-family: var(--font-ui); font-size: 14px; color: var(--ink-soft); background: transparent; border: none; border-radius: 8px; padding: 8px 16px; cursor: pointer; }
+.compose-mode[aria-pressed="true"] { background: var(--surface); color: var(--ink); box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08); }
+#editpane { margin-bottom: 22px; }
+/* searchable multi-reference picker (الموضوعات…) */
+.ref-checklist { border: 1px solid var(--rule-strong); border-radius: 8px; padding: 8px; background: var(--surface); }
+.ref-search { margin-bottom: 6px; }
+.ref-list { display: grid; gap: 4px; max-height: 160px; overflow-y: auto; }
+.ref-check { display: flex; align-items: center; gap: 7px; font-family: var(--font-ui); font-size: 14px; color: var(--ink); cursor: pointer; padding: 2px 1px; }
+.ref-check input { accent-color: var(--accent-solid); width: 15px; height: 15px; flex: none; }
+.ref-check.is-hidden { display: none; }
 .compose-preview { position: sticky; top: 90px; }
 .compose-errors { background: var(--paper-2); border-inline-start: 3px solid var(--accent); border-radius: 6px; padding: 9px 12px; font-family: var(--font-ui); font-size: 13px; color: var(--ink-soft); margin-bottom: 12px; }
 .compose-file { border: 1px solid var(--rule); border-radius: 10px; margin-bottom: 16px; overflow: hidden; }
@@ -422,6 +449,20 @@ textarea.cinput { resize: vertical; line-height: 1.7; }
 .compose-pre { margin: 0; padding: 14px; font-family: var(--font-mono); font-size: 12.5px; line-height: 1.7; color: var(--ink); white-space: pre-wrap; word-break: break-word; direction: ltr; text-align: left; max-height: 60vh; overflow: auto; }
 @media (max-width: 860px) { .compose-grid { grid-template-columns: 1fr; } .compose-preview { position: static; } }
 .note + .note { margin-top: -2px; }
+/* guided form sections (one open at a time) */
+.cf-group { border: 1px solid var(--rule); border-radius: 10px; margin-bottom: 10px; overflow: hidden; }
+.cf-group > summary { font-family: var(--font-ui); font-size: 14px; color: var(--ink); cursor: pointer; padding: 12px 14px; background: var(--paper-2); list-style: none; }
+.cf-group > summary::-webkit-details-marker { display: none; }
+.cf-group > summary::before { content: "› "; color: var(--accent); display: inline-block; transition: transform 0.15s; }
+.cf-group[open] > summary::before { transform: rotate(90deg); }
+.cf-group-body { padding: 14px 14px 2px; }
+
+/* ---------- مختارات الأسبوع (home) ---------- */
+.weekly-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+.weekly-card { border: 1px solid var(--rule); border-radius: 16px; background: var(--surface); padding: 22px 22px 18px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04); display: flex; flex-direction: column; gap: 12px; }
+.weekly-kind { align-self: flex-start; font-family: var(--font-ui); font-size: 12px; letter-spacing: 0.06em; color: var(--accent); border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent); border-radius: 999px; padding: 3px 11px; }
+.weekly-text { font-family: var(--font-serif); font-size: calc(19px * var(--reading-scale)); line-height: 2.1; color: var(--ink); margin: 0; text-wrap: pretty; }
+.weekly-ref { font-family: var(--font-ui); font-size: 12.5px; margin-top: auto; }
 
 /* ---------- prose (matn / article / lesson body) ---------- */
 .prose { font-family: var(--font-serif); }
@@ -449,6 +490,7 @@ textarea.cinput { resize: vertical; line-height: 1.7; }
   display: flex; flex-direction: column; gap: 10px;
 }
 .audio-caption { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; font-family: var(--font-ui); font-size: 13.5px; color: var(--ink-soft); }
+.audio-pick { font-family: var(--font-ui); font-size: 13px; color: var(--ink); background: var(--surface); border: 1px solid var(--rule-strong); border-radius: 7px; padding: 4px 8px; cursor: pointer; max-width: 60%; }
 .audio audio { width: 100%; height: 40px; }
 .audio .btn { align-self: flex-start; }
 

@@ -17,13 +17,14 @@ export async function getStaticPaths() {
   const names = await personNameMap();
   return books.map((entry) => {
     const byAnchor = notesByAnchor("book", entry.id, graph, names);
-    const au = graph.audioForSource("book", entry.id).find((a) => a.data.status === "published");
-    const audio = au ? { url: au.data.url, format: au.data.format, duration: au.data.duration ?? null, sizeBytes: au.data.size_bytes ?? null } : null;
-    return { params: { slug: entry.id }, props: { entry, byAnchor, audio, author: names.get(entry.data.person), subjects: subjectTitlesFor(entry.data.topics, graph) } };
+    const audios = graph.audioForSource("book", entry.id)
+      .filter((a) => a.data.status === "published")
+      .map((au) => ({ url: au.data.url, format: au.data.format, duration: au.data.duration ?? null, sizeBytes: au.data.size_bytes ?? null, label: au.data.title }));
+    return { params: { slug: entry.id }, props: { entry, byAnchor, audios, author: names.get(entry.data.person), subjects: subjectTitlesFor(entry.data.topics, graph) } };
   });
 }
 
-const { entry, byAnchor, audio, author, subjects } = Astro.props;
+const { entry, byAnchor, audios, author, subjects } = Astro.props;
 const a = analyzeBook(entry.body ?? "");
 const KIND_SLUG: Record<string, string> = { شرح: "sharh", حاشية: "hashiya", تخريج: "takhrij", إعراب: "iraab" };
 const anchors = Object.entries(byAnchor);
@@ -50,7 +51,7 @@ const jsonLd = bookLd({
       <h1 class="reader-title ue7e55f7" >{entry.data.title}</h1>
       <div class="reader-byline">{author}</div>
     </div>
-    {audio && <div class="u49fcd85"><AudioPlayer url={audio.url} format={audio.format} duration={audio.duration} sizeBytes={audio.sizeBytes} label="استماعٌ إلى المتن" /></div>}
+    {audios.length > 0 && <div class="u49fcd85"><AudioPlayer sources={audios} label="استماعٌ إلى المتن" /></div>}
 
     <div class="rule-short"></div>
 
