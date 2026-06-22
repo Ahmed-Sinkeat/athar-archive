@@ -2,15 +2,16 @@
 import Base from "../layouts/Base.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
 import { loadGraph } from "../lib/site";
-import { hrefFor } from "../lib/display";
+import { hrefFor, toArabicDigits } from "../lib/display";
 import type { ContentEntry } from "../lib/types";
 
-// Obsidian-style knowledge graph of the whole archive. Nodes = published entities;
-// edges = author / topic / subject / series links. Data is embedded as a JSON
-// data block (not executed → CSP-safe) and drawn client-side by force-graph.
+// Obsidian-style knowledge graph of the whole archive. Nodes = published entities
+// (NO individual lessons — only their series); edges = author / topic / subject /
+// series links. Data is an embedded JSON block (not executed → CSP-safe), drawn
+// client-side by force-graph.
 const graph = await loadGraph();
 const isPub = (e: ContentEntry) => e.data.status === "published";
-const TYPES = ["book", "poem", "person", "series", "lesson", "subject", "topic", "article", "question", "benefit"];
+const TYPES = ["book", "poem", "person", "series", "subject", "topic", "article", "question", "benefit"];
 const nid = (c: string, id: string) => `${c}:${id}`;
 
 const nodeSet = new Set<string>();
@@ -28,12 +29,25 @@ const addLink = (a: string, b: string) => { if (a !== b && nodeSet.has(a) && nod
 for (const e of graph.all) {
   if (!isPub(e)) continue;
   const id = nid(e.collection, e.id);
+  if (e.collection === "lesson") continue; // lessons aren't nodes; their series is
   if (e.data.person) addLink(id, nid("person", e.data.person as string));
   for (const t of ((e.data.topics as string[]) ?? [])) addLink(id, nid("topic", t));
   if (e.collection === "topic" && e.data.subject) addLink(id, nid("subject", e.data.subject as string));
-  if (e.collection === "lesson" && e.data.series) addLink(id, nid("series", e.data.series as string));
   if (e.collection === "series" && e.data.source_type && e.data.source_id) addLink(id, nid(e.data.source_type as string, e.data.source_id as string));
 }
+
+// counts + legend/filter chips (color must mirror scripts/graph.ts COLORS)
+const COLORS: Record<string, string> = {
+  book: "#9c3b32", poem: "#9c3b32", benefit: "#c06a2c", person: "#2f6f6a",
+  series: "#b07b00", subject: "#5a4632", topic: "#7a8a52", article: "#3f7d6e", question: "#8a8275",
+};
+const LABELS: Record<string, string> = {
+  book: "الكتب", poem: "الشعر", person: "الأعلام", series: "السلاسل",
+  subject: "التصنيفات", topic: "الموضوعات", article: "المقالات", question: "المسائل", benefit: "الفوائد",
+};
+const counts: Record<string, number> = {};
+for (const n of nodes) counts[n.type] = (counts[n.type] ?? 0) + 1;
+const present = TYPES.filter((t) => counts[t]);
 
 const gdata = JSON.stringify({ nodes, links }).replace(/</g, "\\u003c");
 ---
@@ -41,7 +55,17 @@ const gdata = JSON.stringify({ nodes, links }).replace(/</g, "\\u003c");
   <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "شبكة المعرفة" }]} />
   <div class="wrap-mid uf5db21c">
     <h1 class="page-title">شبكة المعرفة</h1>
-    <p class="faint graph-hint">كلُّ نقطةٍ مادةٌ أو عَلَمٌ أو فنّ؛ الخطوطُ روابطُها. اسحبْ للتحريك، مرِّرْ للتكبير، وانقرِ النقطةَ لفتحِها.</p>
+    <p class="faint graph-hint">كلُّ نقطةٍ مادةٌ أو عَلَمٌ أو فنّ؛ الخطوطُ روابطُها. اسحبِ النقطةَ لتحريكها، مرِّرْ للتكبير، وانقرْها لفتحِها. أزِلِ العلامةَ عن نوعٍ لإخفائه.</p>
+    <div class="graph-legend" data-graph-legend>
+      {present.map((t) => (
+        <label class="graph-leg" data-type={t}>
+          <input type="checkbox" checked />
+          <span class="graph-dot" style={`background:${COLORS[t]}`}></span>
+          <span class="graph-leg-name">{LABELS[t] ?? t}</span>
+          <span class="faint graph-leg-count">{toArabicDigits(counts[t])}</span>
+        </label>
+      ))}
+    </div>
   </div>
   <div class="graph-wrap"><div id="graph"></div></div>
   <script type="application/json" id="gdata" set:html={gdata}></script>
