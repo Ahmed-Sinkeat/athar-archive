@@ -2,8 +2,7 @@
 title: قصيدة أبي الأسود في السنة
 status: draft
 published_at: 2026-06-22
-person: أبو الأسود
-authored_year: 1
+person: abu-al-aswad-al-duali
 ---
 
 الحَـمْـدُ للهِ الـذي هَـدَانـا ... لِلْـمَـنْـهَـجِ الـقَـصْـدِ الـذي أَرَانـا
