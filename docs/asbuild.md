@@ -14,19 +14,6 @@ Definition-of-Done (DoD) status, decisions, and any deviations from the plan.
 
 ## Phase status
 
-| Phase | Title | Status | Commit |
-|---|---|---|---|
-| **P0** | Foundations & de-risking | ✅ Done (spike now run in P4) | `0c93dc1` |
-| **P1** | Content model in code | ✅ Done | `cc3d818` |
-| **P2** | Build pipeline & derivations | ✅ Done | `1ef6b93` |
-| **P3** | Design system & page templates (RTL) | ✅ Done | `3fba81b` |
-| **P4** | Search (Pagefind, Arabic) | ✅ Done | `23e6781` |
-| **P5** | SEO, structured data, feeds, permanence | ✅ Done | `51059cd` |
-| **P6** | Media pipeline (R2) | ✅ Done (code+docs; R2 not yet provisioned) | `f9b86f7` |
-| **P7** | Authoring experience & governance | ✅ Done | `4b1f0d1` |
-| P8 | QA, performance, accessibility, launch | ⬜ Pending | — |
-| P9 | Post-launch & deferred roadmap | ⬜ Pending | — |
-| **UX-R** | Reading/browse/search redesign | ✅ Done | _this branch_ |
 
 ¹ The Pagefind Arabic spike (P0's gate for P4) is **not yet run** — see Open Items. It does not block P1–P3, so the build proceeded; it must be done before P4.
 

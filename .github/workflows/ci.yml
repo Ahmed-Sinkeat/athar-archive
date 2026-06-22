@@ -9,8 +9,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      CF_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }} # job-level so the deploy step's `if` can read it
     steps:
       - uses: actions/checkout@v4
 
@@ -47,10 +45,31 @@ jobs:
       - name: Type-check
         run: pnpm exec tsc --noEmit --skipLibCheck
 
-      # Auto-deploy to Cloudflare on green main builds. Skipped silently until the
-      # CLOUDFLARE_API_TOKEN repo secret is set (so PRs/forks never deploy).
+      # Hand the built site to the deploy job. Only the deploy job sees the token,
+      # so the secret never enters this job's `pnpm install`/build (untrusted deps).
+      - name: Upload dist
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist
+
+  # Separate job: no dependency code runs here, so holding the token is safe.
+  # Skips itself (no red ✗) until the CLOUDFLARE_API_TOKEN secret is set.
+  deploy:
+    needs: build
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    env:
+      CF_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4 # for wrangler.toml
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist
       - name: Deploy to Cloudflare
-        if: ${{ github.ref == 'refs/heads/main' && github.event_name == 'push' && env.CF_API_TOKEN != '' }}
+        if: ${{ env.CF_API_TOKEN != '' }}
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
