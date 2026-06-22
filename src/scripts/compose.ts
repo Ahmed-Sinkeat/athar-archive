@@ -34,6 +34,8 @@ const previewEl = document.getElementById("cpreview");
 if (typeSel && fieldsEl && previewEl) {
   const today = new Date().toISOString().slice(0, 10);
   let curMode: "add" | "edit" = "add"; // drives the «نشر إلى GitHub» link (new-file vs edit-file)
+  // topics the maintainer creates inline (الموضوعات field) → emitted as extra topic files
+  let pendingTopics: { slug: string; title: string; subject: string }[] = [];
 
   // --- content index (for pickers + edit prefill) ---
   const items: Item[] = JSON.parse(document.getElementById("cdata")?.textContent || "[]");
@@ -129,6 +131,7 @@ if (typeSel && fieldsEl && previewEl) {
 
   function renderFields() {
     fieldsEl!.textContent = "";
+    pendingTopics = []; // new-topic drafts are per-form
     const def = currentDef();
     if (!def) return;
     const basics = makeGroup("أساسيات", true);
@@ -239,8 +242,11 @@ if (typeSel && fieldsEl && previewEl) {
   }
 
   // many references → searchable checklist; a hidden input mirrors the chosen ids.
+  // The الموضوعات field (ref="topic") is grouped by تصنيف, filterable by تصنيف,
+  // and lets the maintainer create a new موضوع inline (≤5 total).
   function buildRefs(f: Field): HTMLElement {
     const colls = (f.ref || "").split("|");
+    const isTopic = f.ref === "topic";
     const wrap = document.createElement("div");
     wrap.className = "ref-checklist";
     wrap.dataset.refsKey = f.key;
@@ -249,37 +255,114 @@ if (typeSel && fieldsEl && previewEl) {
     hidden.type = "hidden";
     hidden.dataset.key = f.key;
 
+    const list = document.createElement("div");
+    list.className = "ref-list";
+
+    const syncHidden = () => {
+      hidden.value = [...list.querySelectorAll<HTMLInputElement>("input:checked")].map((c) => c.value).join("\n");
+      update();
+    };
+    const addCheck = (id: string, title: string, subject = "", isNew = false): HTMLInputElement => {
+      const lab = document.createElement("label");
+      lab.className = "ref-check";
+      lab.dataset.name = title;
+      lab.dataset.subject = subject;
+      const cb = document.createElement("input");
+      cb.type = "checkbox";
+      cb.value = id;
+      cb.addEventListener("change", () => {
+        if (cb.checked && list.querySelectorAll<HTMLInputElement>("input:checked").length > 5) { cb.checked = false; return; } // ≤5
+        syncHidden();
+      });
+      lab.append(cb, document.createTextNode(" " + title + (isNew ? " (جديد)" : "")));
+      list.appendChild(lab);
+      return cb;
+    };
+
     const search = document.createElement("input");
     search.type = "text";
     search.className = "cinput ref-search";
     search.placeholder = "بحث…";
     search.autocomplete = "off";
 
-    const list = document.createElement("div");
-    list.className = "ref-list";
-    itemsOf(colls).forEach((i) => {
-      const lab = document.createElement("label");
-      lab.className = "ref-check";
-      lab.dataset.name = i.title;
-      const cb = document.createElement("input");
-      cb.type = "checkbox";
-      cb.value = i.id;
-      cb.addEventListener("change", () => {
-        const ids = [...list.querySelectorAll<HTMLInputElement>("input:checked")].map((c) => c.value);
-        hidden.value = ids.join("\n");
-        update();
+    if (!isTopic) {
+      itemsOf(colls).forEach((i) => addCheck(i.id, i.title));
+      search.addEventListener("input", () => {
+        const q = search.value.trim();
+        list.querySelectorAll<HTMLElement>(".ref-check").forEach((lab) =>
+          lab.classList.toggle("is-hidden", q !== "" && !(lab.dataset.name || "").includes(q)),
+        );
       });
-      lab.append(cb, document.createTextNode(" " + i.title));
-      list.appendChild(lab);
-    });
-    search.addEventListener("input", () => {
-      const q = search.value.trim();
-      list.querySelectorAll<HTMLElement>(".ref-check").forEach((lab) =>
-        lab.classList.toggle("is-hidden", q !== "" && !(lab.dataset.name || "").includes(q)),
-      );
-    });
+      wrap.append(hidden, search, list);
+      return wrap;
+    }
 
-    wrap.append(hidden, search, list);
+    // --- topics: group by تصنيف + filter + inline add ---
+    const subjects = items.filter((i) => i.c === "subject");
+    const subjTitle = (sid: unknown) => subjects.find((s) => s.id === sid)?.title || "بلا تصنيف";
+
+    const filter = document.createElement("select");
+    filter.className = "cinput ref-subject-filter";
+    const optAll = document.createElement("option");
+    optAll.value = ""; optAll.textContent = "اختَرِ التصنيف…";
+    filter.appendChild(optAll);
+    subjects.forEach((s) => { const o = document.createElement("option"); o.value = s.title; o.textContent = s.title; filter.appendChild(o); });
+
+    // grouped checkboxes (heading per تصنيف)
+    const byGroup = new Map<string, Item[]>();
+    itemsOf(colls).forEach((t) => {
+      const st = subjTitle((t.data as Record<string, unknown>).subject);
+      if (!byGroup.has(st)) byGroup.set(st, []);
+      byGroup.get(st)!.push(t);
+    });
+    for (const [st, topics] of byGroup) {
+      const head = document.createElement("div");
+      head.className = "ref-group-head"; head.dataset.subject = st; head.textContent = st;
+      list.appendChild(head);
+      topics.forEach((t) => addCheck(t.id, t.title, st));
+    }
+
+    const applyFilter = () => {
+      const q = search.value.trim(), sf = filter.value;
+      list.querySelectorAll<HTMLElement>(".ref-check").forEach((lab) => {
+        const ok = (q === "" || (lab.dataset.name || "").includes(q)) && (sf === "" || lab.dataset.subject === sf);
+        lab.classList.toggle("is-hidden", !ok);
+      });
+      list.querySelectorAll<HTMLElement>(".ref-group-head").forEach((h) =>
+        h.classList.toggle("is-hidden", sf !== "" && h.dataset.subject !== sf),
+      );
+    };
+    search.addEventListener("input", applyFilter);
+    filter.addEventListener("change", applyFilter);
+
+    // inline "add a new موضوع" under the chosen تصنيف
+    const addBox = document.createElement("div");
+    addBox.className = "ref-add";
+    const nameI = document.createElement("input"); nameI.className = "cinput"; nameI.placeholder = "اسم موضوعٍ جديد";
+    const slugI = document.createElement("input"); slugI.className = "cinput"; slugI.placeholder = "اسم الملف (إنجليزي)";
+    const addBtn = document.createElement("button"); addBtn.type = "button"; addBtn.className = "btn"; addBtn.textContent = "+ موضوع";
+    const note = document.createElement("div"); note.className = "faint field-help";
+    note.textContent = "اختَرِ التصنيفَ من الأعلى، ثم أضِفْ موضوعًا تحته (يُنشأ ملفُّه مع الحفظ).";
+    addBtn.addEventListener("click", () => {
+      const title = nameI.value.trim(), slug = slugI.value.trim(), st = filter.value;
+      if (!st) { note.textContent = "اختَرِ التصنيفَ أولًا."; return; }
+      if (!title || !slug) { note.textContent = "اكتبِ الاسمَ واسمَ الملف."; return; }
+      if (!SLUG_RE.test(slug)) { note.textContent = "اسمُ الملف: إنجليزيٌّ صغيرٌ وأرقامٌ وشَرَطات."; return; }
+      if (items.some((i) => i.c === "topic" && i.id === slug) || pendingTopics.some((p) => p.slug === slug)) { note.textContent = "اسمُ الملفِّ مستخدَم."; return; }
+      const subjectId = subjects.find((s) => s.title === st)?.id || "";
+      pendingTopics.push({ slug, title, subject: subjectId });
+      // ensure the group exists, then add a checked box under it
+      if (!list.querySelector(`.ref-group-head[data-subject="${st}"]`)) {
+        const head = document.createElement("div"); head.className = "ref-group-head"; head.dataset.subject = st; head.textContent = st; list.appendChild(head);
+      }
+      addCheck(slug, title, st, true).checked = true;
+      syncHidden();
+      nameI.value = ""; slugI.value = "";
+      note.textContent = "أُضيفَ ✓ سيظهر ملفُّه أسفلَ المعاينة.";
+    });
+    addBox.append(nameI, slugI, addBtn, note);
+
+    wrap.append(hidden, filter, search, list, addBox);
     return wrap;
   }
 
@@ -328,6 +411,15 @@ if (typeSel && fieldsEl && previewEl) {
         errs.push(`${f.label}: «${(raw[f.key] || "").trim()}» غير موجود — أضِفْه أولًا ثم اختَرْه من القائمة`);
     }
     const files = buildFiles(def, values);
+    // emit a topic file for each inline-created موضوع that's actually selected
+    if (pendingTopics.length) {
+      const topicDef = FORMS.find((d) => d.collection === "topic");
+      const selected = new Set((values.topics || "").split("\n").map((s) => s.trim()).filter(Boolean));
+      for (const pt of pendingTopics) {
+        if (selected.has(pt.slug) && topicDef)
+          files.push(...buildFiles(topicDef, { slug: pt.slug, title: pt.title, status: "published", published_at: today, subject: pt.subject }));
+      }
+    }
     previewEl!.textContent = "";
 
     if (errs.length) {

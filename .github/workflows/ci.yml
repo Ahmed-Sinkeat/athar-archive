@@ -9,6 +9,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      CF_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }} # job-level so the deploy step's `if` can read it
     steps:
       - uses: actions/checkout@v4
 
@@ -44,3 +46,12 @@ jobs:
 
       - name: Type-check
         run: pnpm exec tsc --noEmit --skipLibCheck
+
+      # Auto-deploy to Cloudflare on green main builds. Skipped silently until the
+      # CLOUDFLARE_API_TOKEN repo secret is set (so PRs/forks never deploy).
+      - name: Deploy to Cloudflare
+        if: ${{ github.ref == 'refs/heads/main' && github.event_name == 'push' && env.CF_API_TOKEN != '' }}
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
