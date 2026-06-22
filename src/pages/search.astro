@@ -16,6 +16,7 @@ import Breadcrumbs from "../components/Breadcrumbs.astro";
       </div>
     </div>
 
+    <div id="scopebar" class="chip-row u86de7ac"></div>
     <div id="filters" class="chip-row u86de7ac" ></div>
     <div id="status" class="faint u608848d" ></div>
     <div id="results" class="u3f99027"></div>
@@ -32,6 +33,8 @@ import Breadcrumbs from "../components/Breadcrumbs.astro";
       const results = document.getElementById("results");
       const status = document.getElementById("status");
       const filtersEl = document.getElementById("filters");
+      const scopeEl = document.getElementById("scopebar");
+      const SCOPE_TYPES = ["book", "poem", "lesson", "question", "benefit", "article"];
       const params = new URLSearchParams(location.search);
       const list = (key) => (params.get(key) || "").split(",").map((s) => s.trim()).filter(Boolean);
 
@@ -108,13 +111,6 @@ import Breadcrumbs from "../components/Breadcrumbs.astro";
             location.href = "/search" + (input.value ? "?q=" + encodeURIComponent(input.value) : "");
           }, "chip-scope"));
         }
-        if (!scope.type && !scope.id && !typesParam.length) {
-          const types = [...new Set(data.flatMap((d) => d.filters?.type || []))];
-          if (types.length > 1 || activeType) {
-            filtersEl.appendChild(chip("كل الأنواع", !activeType, () => { activeType = null; run(input.value); }));
-            types.forEach((tp) => filtersEl.appendChild(chip(LABEL[tp] || tp, activeType === tp, () => { activeType = tp; run(input.value); })));
-          }
-        }
         if (!personParam.length && !scope.id) {
           const persons = [...new Set(data.flatMap((d) => d.filters?.person || []))];
           if (persons.length > 1 || activePerson) {
@@ -122,6 +118,21 @@ import Breadcrumbs from "../components/Breadcrumbs.astro";
             persons.forEach((p) => filtersEl.appendChild(chip(p, activePerson === p, () => { activePerson = p; run(input.value); })));
           }
         }
+      }
+
+      // Persistent type filter — always visible (even before searching) so the
+      // user can pick a نوع then search within it. Hidden when a fixed scope
+      // (from a section page) already pins the type.
+      function renderScope() {
+        if (!scopeEl) return;
+        scopeEl.innerHTML = "";
+        if (scope.type || scope.id || typesParam.length) return; // type already fixed
+        scopeEl.appendChild(chip("الكل", !activeType, () => { activeType = null; renderScope(); run(input.value); }));
+        SCOPE_TYPES.forEach((tp) =>
+          scopeEl.appendChild(chip(LABEL[tp] || tp, activeType === tp, () => {
+            activeType = activeType === tp ? null : tp; renderScope(); run(input.value);
+          })),
+        );
       }
 
       async function run(query) {
@@ -156,6 +167,7 @@ import Breadcrumbs from "../components/Breadcrumbs.astro";
       let t;
       input.addEventListener("input", () => { clearTimeout(t); t = setTimeout(() => run(input.value), 180); });
 
+      renderScope();
       const initial = params.get("q");
       if (initial) { input.value = initial; run(initial); }
       else if (hasScope) { renderFilters([]); }

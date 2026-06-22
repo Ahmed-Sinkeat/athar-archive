@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import Base from "../../layouts/Base.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import EntityCard from "../../components/EntityCard.astro";
+import TypeFilter from "../../components/TypeFilter.astro";
 import { isPub, loadGraph } from "../../lib/site";
 import { ENTITY, hrefFor, toArabicDigits } from "../../lib/display";
 import { collectionLd } from "../../lib/structured-data";
@@ -43,11 +44,12 @@ const jsonLd = collectionLd({
     )}
 
     {materials.length > 0 && (
-      <div>
+      <div data-typefilter-scope>
         <div class="section-label">المواد المرتبطة · {toArabicDigits(materials.length)}</div>
+        <TypeFilter types={[...new Set(materials.map((m) => m.collection))]} />
         <div class="card-grid">
           {materials.map((m) => (
-            <EntityCard href={hrefFor(m.collection, m.id, { series: m.series })} title={m.title} kind={ENTITY[m.collection]?.one} cta="اطّلع ←" />
+            <EntityCard href={hrefFor(m.collection, m.id, { series: m.series })} title={m.title} kind={ENTITY[m.collection]?.one} filterKey={m.collection} cta="اطّلع ←" />
           ))}
         </div>
       </div>

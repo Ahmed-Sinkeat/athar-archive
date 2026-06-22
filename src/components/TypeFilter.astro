@@ -1,0 +1,17 @@
+---
+// Client-side type filter for a grid of mixed-type EntityCards (topic / subject /
+// era pages). Renders chips; reader.ts (delegated) hides cards whose data-kind
+// doesn't match. Wrap the chips + the grid in a [data-typefilter-scope] element,
+// and give each card filterKey={collection}.
+import { ENTITY } from "../lib/display";
+interface Props { types: string[] }
+const { types } = Astro.props;
+---
+{types.length > 1 && (
+  <div class="type-filter chip-row" data-typefilter>
+    <button type="button" class="chip" data-type="" aria-pressed="true">الكل</button>
+    {types.map((t) => (
+      <button type="button" class="chip" data-type={t} aria-pressed="false">{ENTITY[t]?.one ?? t}</button>
+    ))}
+  </div>
+)}

@@ -186,14 +186,6 @@ const latest = [
     </div>
   )}
 
-  <div class="wrap-mid u4260ebe" >
-    <div class="stats-strip">
-      {stats.map((s) => (
-        <div class="stat"><div class="stat-num">{toArabicDigits(s.num)}</div><div class="stat-label">{s.label}</div></div>
-      ))}
-    </div>
-  </div>
-
   {latest.length > 0 && (
     <div class="home-section u3a4c3ff" >
       <div class="section-label">أحدث الإضافات</div>
@@ -206,4 +198,12 @@ const latest = [
       ))}
     </div>
   )}
+
+  <div class="home-section stats-section">
+    <div class="stats-strip">
+      {stats.map((s) => (
+        <div class="stat"><div class="stat-num">{toArabicDigits(s.num)}</div><div class="stat-label">{s.label}</div></div>
+      ))}
+    </div>
+  </div>
 </Base>

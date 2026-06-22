@@ -90,9 +90,7 @@ function setDrawer(open: boolean) {
 
 // --- study modes — قراءة (plain) + اختبار (tap a verse to reveal its عجز) ---
 const MODES = ["qiraa", "ikhtibar"];
-const MODE_HINT: Record<string, string> = {
-  ikhtibar: "وضع الاختبار: يظهرُ الصدرُ، انقرِ البيتَ لإظهار العجز.",
-};
+const MODE_HINT: Record<string, string> = {}; // اختبار is self-evident — no hint text
 function setMode(m: string) {
   if (!MODES.includes(m)) m = "qiraa";
   root.setAttribute("data-mode", m);
@@ -280,6 +278,17 @@ document.addEventListener("click", (e) => {
     const wrap = flatBtn.closest<HTMLElement>("[data-browse]");
     if (wrap) flatBtn.textContent = wrap.classList.toggle("show-flat") ? "عرض مُجمَّع" : "عرض الكل";
   }
+});
+
+// type filter on topic/subject/era card grids — hide cards whose kind ≠ chosen type
+document.addEventListener("click", (e) => {
+  const btn = (e.target as HTMLElement).closest<HTMLElement>("[data-typefilter] button");
+  if (!btn) return;
+  const scope = btn.closest<HTMLElement>("[data-typefilter-scope]");
+  if (!scope) return;
+  const val = btn.dataset.type || "";
+  scope.querySelectorAll<HTMLElement>("[data-typefilter] button").forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
+  scope.querySelectorAll<HTMLElement>(".card[data-kind]").forEach((c) => c.classList.toggle("is-hidden", !!val && c.dataset.kind !== val));
 });
 
 // tap-to-reveal the عجز in اختبار mode

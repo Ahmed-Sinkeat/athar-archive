@@ -112,6 +112,7 @@ const fullTitle = title === "أهل الأثر" ? title : `${title} · أهل ا
     <!-- pre-paint: apply saved theme/scale/prefs before first paint to avoid flash -->
     <script is:inline>
       (() => {
+        document.documentElement.classList.add("has-js"); // JS path: annotations show in the sheet, not inline
         try {
           const t = localStorage.getItem("aa-theme");
           if (t && t !== "light") document.documentElement.setAttribute("data-theme", t);
