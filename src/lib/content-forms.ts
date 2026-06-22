@@ -2,7 +2,7 @@
 // content.config.ts and the scaffold in scripts/new-content.mjs — keep in sync.
 // Used client-side to render forms and generate valid frontmatter + body.
 
-import { ERA_VALUES } from "./display";
+import { ERA_VALUES, TABAQA_VALUES } from "./display";
 
 export type FieldKind =
   | "slug" // becomes the filename, not a frontmatter key
@@ -96,7 +96,8 @@ export const FORMS: FormDef[] = [
       { key: "born", label: "المولد", kind: "text", help: "نصٌّ حر: ٦٦١ هـ" },
       { key: "died", label: "الوفاة", kind: "text" },
       { key: "location", label: "البلد", kind: "text" },
-      { key: "era", label: "العصر", kind: "select", options: ["", ...ERA_VALUES] },
+      { key: "tabaqa", label: "الطبقة", kind: "select", options: ["", ...TABAQA_VALUES], help: "طبقةُ العالِم (للعلماء)" },
+      { key: "era", label: "العصر", kind: "select", options: ["", ...ERA_VALUES], help: "العصرُ الأدبي (للشعراء)" },
       { key: "also_known_as", label: "أسماء أخرى للبحث", kind: "array", help: "كُنى ومرادفات يبحث بها الناس — سطرٌ لكلٍّ" },
       { key: "body", label: "الترجمة", kind: "body" },
     ],

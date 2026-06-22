@@ -36,8 +36,10 @@ const person = defineCollection({
     born: z.string().optional(),   // free-form (e.g., "661 هـ")
     died: z.string().optional(),
     location: z.string().optional(),
-    // العصر الأدبي — keep values in sync with ERA_VALUES in src/lib/display.ts
+    // العصر الأدبي (للشعراء) — keep in sync with ERA_VALUES in src/lib/display.ts
     era: z.enum(["الجاهلي", "صدر الإسلام", "الأموي", "العباسي", "الأندلسي", "المتأخّر", "الحديث"]).optional(),
+    // الطبقة العلمية (للعلماء) — keep in sync with TABAQA_VALUES in src/lib/display.ts
+    tabaqa: z.enum(["الصحابة", "التابعون", "أتباع التابعين", "المتقدمون", "المتوسطون", "المتأخرون", "المعاصرون"]).optional(),
     // Arabic synonyms / كُنى surfaced to search (e.g. شيخ الإسلام، أحمد بن عبد الحليم).
     // Note: this is distinct from `aliases` (latin slug → 301 redirects).
     also_known_as: z.array(z.string()).optional(),

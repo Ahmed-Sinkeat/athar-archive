@@ -4,7 +4,7 @@ import Base from "../layouts/Base.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
 import SectionSearch from "../components/SectionSearch.astro";
 import { isPub, loadGraph } from "../lib/site";
-import { hrefFor, toArabicDigits, eraLabel, eraHref, ERA_VALUES } from "../lib/display";
+import { hrefFor, toArabicDigits, eraLabel, eraHref, ERA_VALUES, TABAQA_VALUES } from "../lib/display";
 import { collectionLd } from "../lib/structured-data";
 
 const people = (await getCollection("person")).filter(isPub);
@@ -13,11 +13,16 @@ const graph = await loadGraph();
 const worksOf = (id: string) => graph.materialsByPerson(id).filter(isPub).length;
 const byTitle = (a: any, b: any) => a.data.title.localeCompare(b.data.title, "ar");
 
-// group by era (chronological), then an "unset" bucket
-const groups = ERA_VALUES
-  .map((era) => ({ era, label: eraLabel(era), href: eraHref(era), people: people.filter((p) => p.data.era === era).sort(byTitle) }))
+// scholars grouped by الطبقة, then poets by العصر (literary), then an unclassified
+// bucket. A person with a طبقة is shown under it (not double-listed under an era).
+const tabaqaGroups = TABAQA_VALUES
+  .map((t) => ({ label: t, href: undefined as string | undefined, people: people.filter((p) => p.data.tabaqa === t).sort(byTitle) }))
   .filter((g) => g.people.length);
-const noEra = people.filter((p) => !p.data.era).sort(byTitle);
+const eraGroups = ERA_VALUES
+  .map((era) => ({ label: eraLabel(era), href: eraHref(era), people: people.filter((p) => !p.data.tabaqa && p.data.era === era).sort(byTitle) }))
+  .filter((g) => g.people.length);
+const groups = [...tabaqaGroups, ...eraGroups];
+const unclassified = people.filter((p) => !p.data.tabaqa && !p.data.era).sort(byTitle);
 ---
 <Base title="الأعلام" description="تراجمُ الناظمين والمصنِّفين والشُّرّاح، وما لكلٍّ منهم في الأرشيف." activeNav="people" jsonLd={collectionLd({ title: "الأعلام", path: "/people", crumbs: [{ name: "الرئيسية", path: "/" }, { name: "الأعلام", path: "/people" }] })}>
   <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "الأعلام" }]} />
@@ -48,11 +53,11 @@ const noEra = people.filter((p) => !p.data.era).sort(byTitle);
       </section>
     ))}
 
-    {noEra.length > 0 && (
+    {unclassified.length > 0 && (
       <section class="browse-group">
-        <div class="browse-subject"><h2>غير محدَّدِ العصر</h2></div>
+        <div class="browse-subject"><h2>غير مصنَّف</h2></div>
         <div class="card-grid u73cb55d">
-          {noEra.map((p) => (
+          {unclassified.map((p) => (
             <a class="card ub2eeea3" href={hrefFor("person", p.id)}>
               <div class="u48e4dba">{p.data.title.replace(/^(ال|شيخ الإسلام |الإمام )/, "").trim().charAt(0)}</div>
               <div>

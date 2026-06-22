@@ -34,6 +34,8 @@ export const ENTITY: Record<
 // Literary eras (العصر) — keep values in sync with the person.era enum in content.config.ts.
 // Ordered chronologically for stable chip ordering.
 export const ERA_VALUES = ["الجاهلي", "صدر الإسلام", "الأموي", "العباسي", "الأندلسي", "المتأخّر", "الحديث"] as const;
+// الطبقة العلمية (للعلماء) — distinct from the literary العصر (which is for poets).
+export const TABAQA_VALUES = ["الصحابة", "التابعون", "أتباع التابعين", "المتقدمون", "المتوسطون", "المتأخرون", "المعاصرون"] as const;
 const ERA_LABELS: Record<string, string> = {
   "صدر الإسلام": "صدر الإسلام/المخضرمون",
   "المتأخّر": "المتأخّر (المملوكي/العثماني)",
