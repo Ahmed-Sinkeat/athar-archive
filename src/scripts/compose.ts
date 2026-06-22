@@ -6,14 +6,34 @@
 // Static + client-only: it generates files to copy/commit; nothing is uploaded.
 
 import { FORMS, SLUG_RE, buildFiles, type FormDef, type Field } from "../lib/content-forms";
+import { config } from "../../ahlalathar.config";
 
 interface Item { c: string; id: string; title: string; data: Record<string, unknown>; body: string }
+
+// One-line Arabic explainer per type, shown under the chosen type card.
+const TYPE_DESC: Record<string, string> = {
+  book: "متنٌ أو مرجعٌ أو مجموعٌ نثريّ — يُحقَّق ويُشكَّل ويُقرأ في صفحته.",
+  poem: "منظومةٌ علميةٌ: أبياتٌ مُرقَّمةٌ مُشكَّلةٌ، مع شروحها وتخريجها.",
+  lesson: "درسٌ مُفرَّغٌ من سلسلة شرح: نصُّ الدرس مع صوته وفوائده.",
+  series: "سلسلةُ دروسٍ تشرح كتابًا أو منظومة، تجمع دروسها بالترتيب.",
+  person: "ترجمةُ عَلَمٍ: ناظمٍ أو مصنِّفٍ أو شارح، وما له في الأرشيف.",
+  annotation: "شرحٌ أو حاشيةٌ أو تخريجٌ يُعلَّق على بيتٍ أو فقرةٍ في متنٍ بعينه.",
+  benefit: "فائدةٌ مستخرَجةٌ من درسٍ أو كتابٍ أو مقال.",
+  highlight: "مختارُ الأسبوع: آيةٌ أو حديثٌ أو بيتٌ يُعرض في الصفحة الرئيسية.",
+  article: "مقالةٌ علميةٌ مستقلّة.",
+  question: "مسألةٌ وجوابُها، مُصنَّفةٌ تحت موضوعاتها.",
+  subject: "تصنيفٌ عام (فنٌّ) تندرج تحته موضوعات.",
+  topic: "موضوعٌ يندرج تحت تصنيف، تُربط به الكتبُ والمنظوماتُ والمسائل.",
+  audio: "صوتيةٌ مرتبطةٌ بكتابٍ أو منظومةٍ أو درسٍ أو مقال.",
+  announcement: "إعلانٌ يظهر في الصفحة الرئيسية.",
+};
 
 const typeSel = document.getElementById("ctype") as HTMLSelectElement | null;
 const fieldsEl = document.getElementById("cfields");
 const previewEl = document.getElementById("cpreview");
 if (typeSel && fieldsEl && previewEl) {
   const today = new Date().toISOString().slice(0, 10);
+  let curMode: "add" | "edit" = "add"; // drives the «نشر إلى GitHub» link (new-file vs edit-file)
 
   // --- content index (for pickers + edit prefill) ---
   const items: Item[] = JSON.parse(document.getElementById("cdata")?.textContent || "[]");
@@ -51,23 +71,25 @@ if (typeSel && fieldsEl && previewEl) {
     typeSel.appendChild(o);
   });
   const cardsEl = document.getElementById("ctypecards");
+  const descEl = document.getElementById("ctypedesc");
   function setType(col: string) {
     typeSel!.value = col;
     cardsEl?.querySelectorAll<HTMLElement>("[data-type]").forEach((b) =>
       b.setAttribute("aria-pressed", String(b.dataset.type === col)),
     );
+    if (descEl) descEl.textContent = TYPE_DESC[col] ?? "";
     renderFields();
   }
   // the everyday types up front; the rest tucked under «أنواع أخرى»
-  const FEATURED = ["annotation", "poem", "book", "person", "benefit", "highlight"];
-  function makeCard(f: FormDef): HTMLButtonElement {
+  const FEATURED = ["book", "poem", "lesson", "series", "person"];
+  function makeCard(f: FormDef, onClick: () => void = () => setType(f.collection)): HTMLButtonElement {
     const b = document.createElement("button");
     b.type = "button";
     b.className = "compose-type";
     b.dataset.type = f.collection;
     b.textContent = f.label;
     b.setAttribute("aria-pressed", "false");
-    b.addEventListener("click", () => setType(f.collection));
+    b.addEventListener("click", onClick);
     return b;
   }
   if (cardsEl) {
@@ -95,7 +117,7 @@ if (typeSel && fieldsEl && previewEl) {
   function makeGroup(label: string, open: boolean): { d: HTMLDetailsElement; box: HTMLElement } {
     const d = document.createElement("details");
     d.className = "cf-group";
-    d.setAttribute("name", "cf-sections"); // native exclusive accordion — only one open at a time
+    // ponytail: independent sections (no exclusive `name`) — opening one no longer slams the others shut.
     d.open = open;
     const s = document.createElement("summary");
     s.textContent = label;
@@ -339,7 +361,28 @@ if (typeSel && fieldsEl && previewEl) {
         URL.revokeObjectURL(a.href);
       };
 
-      head.append(copyBtn, dlBtn);
+      const ghBtn = document.createElement("button");
+      ghBtn.className = "btn-accent";
+      ghBtn.type = "button";
+      ghBtn.textContent = "نشر إلى GitHub";
+      ghBtn.disabled = errs.length > 0;
+      if (errs.length) ghBtn.title = "أكمِلِ الحقولَ المطلوبةَ أولًا";
+      ghBtn.onclick = () => {
+        // Path goes in the URL (tiny — opens GitHub at the EXACT folder/file, so the
+        // maintainer never picks a location); content goes on the clipboard (no size
+        // limit). Then: paste (Ctrl+V) and Commit. No token, no backend.
+        // file.path is all URL-safe chars (lowercase slug + slashes), so no encoding.
+        const base = `https://github.com/${config.repo}`;
+        navigator.clipboard?.writeText(file.content);
+        const url = curMode === "edit"
+          ? `${base}/edit/${config.repoBranch}/${file.path}` // opens the existing file
+          : `${base}/new/${config.repoBranch}?filename=${file.path}`; // opens a new file at this path
+        window.open(url, "_blank", "noopener");
+        ghBtn.textContent = "نُسخ ✓ — الصقْه (Ctrl+V) ثمّ احفظ";
+        setTimeout(() => (ghBtn.textContent = "نشر إلى GitHub"), 3500);
+      };
+
+      head.append(ghBtn, copyBtn, dlBtn);
       box.appendChild(head);
 
       const pre = document.createElement("pre");
@@ -356,25 +399,48 @@ if (typeSel && fieldsEl && previewEl) {
   const editPane = document.getElementById("editpane");
   const editSearch = document.getElementById("cedit-search") as HTMLInputElement | null;
   const editHint = document.getElementById("cedit-hint");
+  const editTypesEl = document.getElementById("cedittypes");
   const dlAll = document.getElementById("dl-all");
 
-  // edit search lists every item, disambiguated by type
-  const editKey = (i: Item) => `${i.title} — ${collLabel[i.c] || i.c}`;
-  if (dlAll) {
-    items.forEach((i) => {
+  // Edit flow: pick the type first, then search only within that type.
+  let editType = "";
+  function fillEditDatalist() {
+    if (!dlAll) return;
+    dlAll.textContent = "";
+    items.filter((i) => i.c === editType).forEach((i) => {
       const o = document.createElement("option");
-      o.value = editKey(i);
+      o.value = i.title;
       dlAll.appendChild(o);
     });
   }
+  function setEditType(col: string) {
+    editType = col;
+    editTypesEl?.querySelectorAll<HTMLElement>("[data-type]").forEach((b) =>
+      b.setAttribute("aria-pressed", String(b.dataset.type === col)),
+    );
+    fillEditDatalist();
+    if (editSearch) {
+      editSearch.value = "";
+      editSearch.placeholder = `ابحثْ في ${collLabel[col] || col}…`;
+      editSearch.disabled = false;
+      editSearch.focus();
+    }
+    if (editHint) editHint.textContent = "";
+  }
+  if (editTypesEl) FORMS.forEach((f) => editTypesEl.appendChild(makeCard(f, () => setEditType(f.collection))));
 
   function setMode(mode: "add" | "edit") {
+    curMode = mode;
     document.querySelectorAll<HTMLElement>("[data-cmode]").forEach((b) =>
       b.setAttribute("aria-pressed", String(b.dataset.cmode === mode)),
     );
     if (addPane) addPane.hidden = mode !== "add";
     if (editPane) editPane.hidden = mode !== "edit";
     if (mode === "add") { if (editHint) editHint.textContent = ""; setType(typeSel!.value || FORMS[0].collection); }
+    if (mode === "edit" && editSearch && !editType) {
+      editSearch.placeholder = "اختَرِ النوع أولًا…";
+      editSearch.disabled = true;
+    }
   }
   document.querySelectorAll<HTMLElement>("[data-cmode]").forEach((b) =>
     b.addEventListener("click", () => setMode(b.dataset.cmode as "add" | "edit")),
@@ -408,10 +474,11 @@ if (typeSel && fieldsEl && previewEl) {
     }
     // ponytail: a companion audio_url isn't reconstructed on edit — edit the صوتية entity directly.
     update();
-    if (editHint) editHint.textContent = `تُعدِّل: ${it.title} — انسخِ الملف فوقَ القديم في المستودع.`;
+    if (editHint) editHint.textContent = `تُعدِّل: ${it.title} — اضغطْ «نشر إلى GitHub» ليُنسخ النصُّ وتُفتح صفحةُ التعديل، ثم الصقْه واحفظ.`;
   }
   function tryLoadFromSearch() {
-    const it = items.find((i) => editKey(i) === editSearch!.value.trim());
+    const q = editSearch!.value.trim();
+    const it = items.find((i) => i.c === editType && i.title === q);
     if (it) loadItem(it);
   }
   editSearch?.addEventListener("change", tryLoadFromSearch);

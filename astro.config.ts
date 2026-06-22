@@ -4,6 +4,9 @@ export default defineConfig({
   output: "static",
   site: "https://ahlalathar.com",
   trailingSlash: "never",
+  // Prefetch internal links on hover → instant navigation; pairs with the
+  // <ClientRouter /> view transitions in Base.astro for an SPA-like feel.
+  prefetch: { prefetchAll: true, defaultStrategy: "hover" },
   build: {
     format: "directory",
     // keep all CSS external (no inlined <style>) so the CSP can use style-src 'self'

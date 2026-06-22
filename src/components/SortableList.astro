@@ -1,0 +1,30 @@
+---
+// Flat, client-sortable list of entries (أبجديًّا / بالتاريخ, each reversible).
+// No-JS fallback: items render in the order passed in. Sorting is wired in
+// reader.ts via [data-sortable] (delegated → survives view transitions).
+import EntityCard from "./EntityCard.astro";
+import type { ContentEntry } from "../lib/types";
+
+interface Props {
+  items: ContentEntry[];
+  card: (e: ContentEntry) => Record<string, any>;
+}
+const { items, card } = Astro.props;
+const yearOf = (e: ContentEntry) => {
+  const y = (e.data as { authored_year?: number }).authored_year;
+  return y == null ? "" : String(y);
+};
+---
+<div class="sortable" data-sortable data-sort="title" data-dir="asc">
+  <div class="sort-controls">
+    <span class="faint sort-label">ترتيب:</span>
+    <button type="button" class="sort-btn" data-sort-key="title" aria-pressed="true">أبجديًّا</button>
+    <button type="button" class="sort-btn" data-sort-key="year" aria-pressed="false">بالتاريخ</button>
+    <button type="button" class="icon-btn sort-dir" data-sort-dir aria-label="عكس الترتيب" title="عكس الترتيب">↑</button>
+  </div>
+  <ol class="flat-list card-grid">
+    {items.map((it) => (
+      <li data-title={it.data.title} data-year={yearOf(it)}><EntityCard {...card(it)} /></li>
+    ))}
+  </ol>
+</div>

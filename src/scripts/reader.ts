@@ -213,7 +213,8 @@ const actions: Record<string, () => void> = {
   "theme:cycle": () => setTheme(THEMES[(THEMES.indexOf(currentTheme()) + 1) % THEMES.length]),
   "menu:toggle": () => setDrawer(true),
   "menu:close": () => setDrawer(false),
-  "search:toggle": () => { if (!isSearchOpen()) openSearch(); else location.href = buildSearchUrl(); },
+  // closed → open the bar; open → just close it (Enter in the field runs the search).
+  "search:toggle": () => { if (!isSearchOpen()) openSearch(); else topsearch?.classList.remove("is-open"); },
   "search:filter": () => togglePop(filterPop, "search:filter"),
   "search:apply": () => { location.href = buildSearchUrl(); },
   "settings:toggle": () => togglePop(settingsPop, "settings:toggle"),
@@ -227,7 +228,59 @@ document.addEventListener("click", (e) => {
   const fn = actions[el.dataset.action || ""];
   if (fn) { e.preventDefault(); fn(); }
 });
-document.querySelector("[data-drawer-backdrop]")?.addEventListener("click", () => setDrawer(false));
+document.addEventListener("click", (e) => {
+  if ((e.target as HTMLElement).closest("[data-drawer-backdrop]")) setDrawer(false);
+});
+
+// --- browse «عرض الكل» toggle + flat-list sort (delegated → survives transitions) ---
+function applySort(container: HTMLElement) {
+  const list = container.querySelector<HTMLElement>(".flat-list");
+  if (!list) return;
+  const key = container.dataset.sort || "title";
+  const dir = container.dataset.dir === "desc" ? -1 : 1;
+  [...list.children]
+    .sort((a, b) => {
+      const A = a as HTMLElement, B = b as HTMLElement;
+      if (key === "year") {
+        const na = A.dataset.year ? +A.dataset.year : NaN;
+        const nb = B.dataset.year ? +B.dataset.year : NaN;
+        if (isNaN(na) && isNaN(nb)) return 0;
+        if (isNaN(na)) return 1; // undated always last
+        if (isNaN(nb)) return -1;
+        return (na - nb) * dir;
+      }
+      return (A.dataset.title || "").localeCompare(B.dataset.title || "", "ar") * dir;
+    })
+    .forEach((li) => list.appendChild(li));
+}
+document.addEventListener("click", (e) => {
+  const t = e.target as HTMLElement;
+  const keyBtn = t.closest<HTMLElement>("[data-sort-key]");
+  if (keyBtn) {
+    const c = keyBtn.closest<HTMLElement>("[data-sortable]");
+    if (c) {
+      c.dataset.sort = keyBtn.dataset.sortKey;
+      c.querySelectorAll<HTMLElement>("[data-sort-key]").forEach((b) => b.setAttribute("aria-pressed", String(b === keyBtn)));
+      applySort(c);
+    }
+    return;
+  }
+  const dirBtn = t.closest<HTMLElement>("[data-sort-dir]");
+  if (dirBtn) {
+    const c = dirBtn.closest<HTMLElement>("[data-sortable]");
+    if (c) {
+      c.dataset.dir = c.dataset.dir === "desc" ? "asc" : "desc";
+      dirBtn.textContent = c.dataset.dir === "desc" ? "↓" : "↑";
+      applySort(c);
+    }
+    return;
+  }
+  const flatBtn = t.closest<HTMLElement>("[data-flat-toggle]");
+  if (flatBtn) {
+    const wrap = flatBtn.closest<HTMLElement>("[data-browse]");
+    if (wrap) flatBtn.textContent = wrap.classList.toggle("show-flat") ? "عرض مُجمَّع" : "عرض الكل";
+  }
+});
 
 // tap-to-reveal the عجز in اختبار mode
 document.addEventListener("click", (e) => {
@@ -239,8 +292,8 @@ document.addEventListener("click", (e) => {
 
 // --- prose books: wrap each شرح phrase inline (poems mark server-side; prose
 // gets marked here from hidden .ann-pack[data-phrase] blocks). First matching
-// text node in a .prose wins; matching ignores tashkeel. ---
-(() => {
+// text node in a .prose wins; matching ignores tashkeel. Re-run per navigation. ---
+function enhanceProse() {
   const packs = document.querySelectorAll<HTMLElement>(".ann-pack[data-phrase]");
   if (!packs.length) return;
   const proseEls = [...document.querySelectorAll<HTMLElement>(".prose")];
@@ -281,7 +334,7 @@ document.addEventListener("click", (e) => {
     if (!needle) return;
     for (const prose of proseEls) if (wrapIn(prose, needle, pack.id)) break;
   });
-})();
+}
 
 // --- inline شرح chooser (annotation popover) ---
 // Marks are <a class="ann-mark" data-ann="ann-<anchor>">; the hidden
@@ -417,31 +470,30 @@ document.addEventListener("click", (e) => {
 })();
 
 // --- audio recitation switcher (متون/منظومات with multiple recordings) ---
-document.querySelectorAll<HTMLSelectElement>("[data-audio-pick]").forEach((sel) => {
-  sel.addEventListener("change", () => {
-    const fig = sel.closest<HTMLElement>("[data-audio]");
-    const opt = sel.selectedOptions[0];
-    if (!fig || !opt) return;
-    const audio = fig.querySelector<HTMLAudioElement>("[data-audio-el]");
-    const src = fig.querySelector<HTMLSourceElement>("[data-audio-source]");
-    const dl = fig.querySelector<HTMLAnchorElement>("[data-audio-dl]");
-    if (src) { src.src = opt.dataset.url || ""; src.type = opt.dataset.type || ""; }
-    if (audio) audio.load();
-    if (dl) dl.href = opt.dataset.url || "";
-  });
+// Delegated so it keeps working on content swapped in by view transitions.
+document.addEventListener("change", (e) => {
+  const sel = (e.target as HTMLElement).closest<HTMLSelectElement>("[data-audio-pick]");
+  if (!sel) return;
+  const fig = sel.closest<HTMLElement>("[data-audio]");
+  const opt = sel.selectedOptions[0];
+  if (!fig || !opt) return;
+  const audio = fig.querySelector<HTMLAudioElement>("[data-audio-el]");
+  const src = fig.querySelector<HTMLSourceElement>("[data-audio-source]");
+  const dl = fig.querySelector<HTMLAnchorElement>("[data-audio-dl]");
+  if (src) { src.src = opt.dataset.url || ""; src.type = opt.dataset.type || ""; }
+  if (audio) audio.load();
+  if (dl) dl.href = opt.dataset.url || "";
 });
 
-// --- reading progress bar ---
+// --- reading progress bar (header persists across transitions; recompute per page) ---
 const bar = document.querySelector<HTMLElement>("[data-progress]");
-if (bar) {
-  const update = () => {
-    const h = document.documentElement.scrollHeight - window.innerHeight;
-    bar.style.width = `${h > 0 ? (window.scrollY / h) * 100 : 0}%`;
-  };
-  window.addEventListener("scroll", update, { passive: true });
-  window.addEventListener("resize", update);
-  update();
+function updateProgress() {
+  if (!bar) return;
+  const h = document.documentElement.scrollHeight - window.innerHeight;
+  bar.style.width = `${h > 0 ? (window.scrollY / h) * 100 : 0}%`;
 }
+window.addEventListener("scroll", updateProgress, { passive: true });
+window.addEventListener("resize", updateProgress);
 
 // --- sync control states from storage on load (values already applied pre-paint) ---
 syncThemeButtons(currentTheme());
@@ -451,3 +503,24 @@ else document.querySelectorAll<HTMLElement>('[data-toggle="tashkeel"]').forEach(
 
 // study mode init
 setMode(localStorage.getItem(LS.mode) || "qiraa");
+
+// Highlight the nav item for the current page (header is persisted, so its
+// aria-current would otherwise stay on whatever page first rendered it).
+function updateActiveNav() {
+  const cur = document.querySelector("main")?.getAttribute("data-active-nav") || "";
+  document.querySelectorAll<HTMLElement>("a[data-nav]").forEach((a) =>
+    a.dataset.nav === cur && cur ? a.setAttribute("aria-current", "page") : a.removeAttribute("aria-current"),
+  );
+}
+
+// Per-page setup: re-run content enhancers after each view-transition navigation
+// (and once on first load). Chrome wiring above runs once; delegated listeners
+// and the persisted header keep working without re-binding.
+function onPage() {
+  enhanceProse();
+  if (localStorage.getItem(LS.tashkeel) === "0") applyTashkeel(false); // re-bare new content
+  updateActiveNav();
+  updateProgress();
+}
+onPage();
+document.addEventListener("astro:page-load", onPage);

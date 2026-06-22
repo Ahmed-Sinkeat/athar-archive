@@ -588,3 +588,22 @@ html.hide-vnums .vnum { display: none; }
   .lesson-grid { grid-template-columns: 1fr; }
   .toc-side { display: none; }
 }
+
+/* admin: one-line explainer under the chosen type */
+.compose-typedesc { margin: -16px 0 24px; font-size: 14px; line-height: 1.7; min-height: 1.2em; }
+/* eyebrow as a link (متن/منظومة chips) — keep the quiet look, no pill hover */
+.eyebrow.pill-link:hover { background: none; color: var(--verdigris); text-decoration: underline; }
+
+/* browse: «عرض الكل» flat sortable list ⇆ grouped accordion */
+.browse-toolbar { display: flex; justify-content: flex-start; margin-bottom: 16px; }
+.browse-flat { display: none; }
+.show-flat .browse-flat { display: block; }
+.show-flat .browse-grouped { display: none; }
+.sort-controls { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+.sort-label { font-family: var(--font-ui); font-size: 13px; }
+.sort-btn { font-family: var(--font-ui); font-size: 13.5px; color: var(--ink-soft); background: var(--surface); border: 1px solid var(--rule-strong); border-radius: 9px; padding: 6px 12px; cursor: pointer; transition: color 0.15s, border-color 0.15s; }
+.sort-btn:hover { border-color: var(--accent); color: var(--accent); }
+.sort-btn[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
+.sort-dir { font-size: 16px; line-height: 1; }
+.flat-list { list-style: none; padding: 0; margin: 0; }
+.flat-list > li { list-style: none; }
