@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import Base from "../../layouts/Base.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import EntityCard from "../../components/EntityCard.astro";
+import TypeFilter from "../../components/TypeFilter.astro";
 import Prose from "../../components/Prose.astro";
 import { isPub, loadGraph } from "../../lib/site";
 import { ENTITY, hrefFor, toArabicDigits } from "../../lib/display";
@@ -53,15 +54,19 @@ const jsonLd = collectionLd({
 
     <div class="section-label u2fbbbcd" >ما تعلَّق بهذا الموضوع · {toArabicDigits(materials.length)}</div>
     {materials.length > 0 ? (
-      <div class="card-grid">
-        {materials.map((m) => (
-          <EntityCard
-            href={hrefFor(m.collection, m.id, { series: m.series })}
-            title={m.title}
-            kind={ENTITY[m.collection]?.one}
-            cta="اطّلع ←"
-          />
-        ))}
+      <div data-typefilter-scope>
+        <TypeFilter types={[...new Set(materials.map((m) => m.collection))]} />
+        <div class="card-grid">
+          {materials.map((m) => (
+            <EntityCard
+              href={hrefFor(m.collection, m.id, { series: m.series })}
+              title={m.title}
+              kind={ENTITY[m.collection]?.one}
+              filterKey={m.collection}
+              cta="اطّلع ←"
+            />
+          ))}
+        </div>
       </div>
     ) : (
       <p class="faint">لا توجد موادُّ مرتبطةٌ بعد.</p>
