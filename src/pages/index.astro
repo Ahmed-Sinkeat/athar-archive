@@ -71,9 +71,10 @@ const latest = [
       </form>
 
       <div class="u40e95b5">
-        <a class="btn btn-accent" href="/books">تصفّح الكتب</a>
+        <a class="btn" href="/books">تصفّح الكتب</a>
         <a class="btn" href="/roadmap">طريق طلب العلم</a>
-        {featured && <a class="btn" href={hrefFor("poem", featured.id)}>ابدأ بـ{featured.data.title}</a>}
+        <a class="btn" href="/poems">الشعر</a>
+        <a class="btn" href="/questions">المسائل</a>
       </div>
 
       <div class="divider-orn"><span class="line"></span><span class="dot">۞</span><span class="line"></span></div>
@@ -129,7 +130,7 @@ const latest = [
     <div class="section-label">تصفّح الأرشيف</div>
     <div class="card-grid u8bffae7" >
       <a class="card" href="/books"><div class="ufa5a688">ا</div><div class="card-title ua3ba3b1" >الكتب</div><p class="card-sub uf04e97f" >المتونُ والمراجعُ محقَّقةً ومُشكَّلةً، مرتَّبةً حسب الفنِّ.</p><span class="card-cta">تصفّح ←</span></a>
-      <a class="card" href="/poems"><div class="ufa5a688">ب</div><div class="card-title ua3ba3b1" >المنظومات</div><p class="card-sub uf04e97f" >منظوماتٌ علميةٌ مُشكَّلةٌ مُرقَّمةُ الأبيات، مع الشروح والتخريج.</p><span class="card-cta">تصفّح ←</span></a>
+      <a class="card" href="/poems"><div class="ufa5a688">ب</div><div class="card-title ua3ba3b1" >الشعر</div><p class="card-sub uf04e97f" >منظوماتٌ علميةٌ مُشكَّلةٌ مُرقَّمةُ الأبيات، مع الشروح والتخريج.</p><span class="card-cta">تصفّح ←</span></a>
       <a class="card" href="/series"><div class="ufa5a688">ج</div><div class="card-title ua3ba3b1" >الدروس</div><p class="card-sub uf04e97f" >سلاسلُ شرحِ المتونِ، مفرَّغةً نصاً مع الصوت والفوائد المستخرجة.</p><span class="card-cta">تصفّح ←</span></a>
       <a class="card" href="/people"><div class="ufa5a688">د</div><div class="card-title ua3ba3b1" >الأعلام</div><p class="card-sub uf04e97f" >تراجمُ الناظمين والمصنِّفين والشُّرّاح، وما لكلٍّ منهم في الأرشيف.</p><span class="card-cta">تصفّح ←</span></a>
     </div>

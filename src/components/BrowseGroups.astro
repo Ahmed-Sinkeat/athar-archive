@@ -5,6 +5,7 @@
 // an entry to EntityCard props, so per-type card richness stays on the page.
 // المسائل keeps its own list-style accordion (links, not cards).
 import EntityCard from "./EntityCard.astro";
+import SortableList from "./SortableList.astro";
 import { toArabicDigits } from "../lib/display";
 import type { SubjectGroup } from "../lib/browse";
 import type { ContentEntry } from "../lib/types";
@@ -18,8 +19,23 @@ interface Props {
 }
 const { groups, uncategorized, card, unit = "", otherLabel = "موضوعاتٌ أخرى" } = Astro.props;
 const count = (n: number) => `${toArabicDigits(n)}${unit ? ` ${unit}` : ""}`;
+
+// Flat de-duped list of every item, for the «عرض الكل» sortable view.
+const allItems: ContentEntry[] = (() => {
+  const seen = new Set<string>();
+  const out: ContentEntry[] = [];
+  const add = (it: ContentEntry) => { if (!seen.has(it.id)) { seen.add(it.id); out.push(it); } };
+  for (const g of groups) for (const t of g.topics) for (const it of t.items) add(it);
+  for (const it of uncategorized) add(it);
+  return out;
+})();
 ---
-<div class="masail-tree">
+<div class="browse" data-browse>
+  <div class="browse-toolbar">
+    <button type="button" class="btn browse-flat-toggle" data-flat-toggle>عرض الكل</button>
+  </div>
+  <div class="browse-flat"><SortableList items={allItems} card={card} /></div>
+  <div class="masail-tree browse-grouped">
   {groups.map((g) => (
     <details class="masail-subject">
       <summary>
@@ -53,4 +69,5 @@ const count = (n: number) => `${toArabicDigits(n)}${unit ? ` ${unit}` : ""}`;
       </div>
     </details>
   )}
+  </div>
 </div>

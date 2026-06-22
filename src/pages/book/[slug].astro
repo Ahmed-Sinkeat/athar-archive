@@ -47,7 +47,7 @@ const jsonLd = bookLd({
   />
   <div class="wrap-matn reading-pad">
     <div class="reader-head">
-      <div class="eyebrow u87c136d" >{labelFor("book", entry.data)}</div>
+      <a class="eyebrow u87c136d pill-link" href={isMatn("book", entry.data) ? "/matn" : "/books"}>{labelFor("book", entry.data)}</a>
       <h1 class="reader-title ue7e55f7" >{entry.data.title}</h1>
       <div class="reader-byline">{author}</div>
     </div>

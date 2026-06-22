@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import { ClientRouter } from "astro:transitions";
 import "../styles/global.css";
 import "../styles/extracted.css"; // generated from former inline styles — must load AFTER global.css
 import { config } from "../../ahlalathar.config";
@@ -45,7 +46,7 @@ const pagefindFilters = searchMeta
 // (no الرئيسية item); الموضوعات/الفوائد/الأعلام/المقالات live in the footer + browse.
 const nav = [
   { id: "books", label: "الكتب", href: "/books" },
-  { id: "poems", label: "المنظومات", href: "/poems" },
+  { id: "poems", label: "الشعر", href: "/poems" },
   { id: "series", label: "الدروس", href: "/series" },
   { id: "questions", label: "المسائل", href: "/questions" },
   { id: "articles", label: "المقالات", href: "/articles" },
@@ -101,6 +102,7 @@ const fullTitle = title === "أهل الأثر" ? title : `${title} · أهل ا
     {description && <meta name="twitter:description" content={description} />}
 
     {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+    <ClientRouter />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -123,7 +125,7 @@ const fullTitle = title === "أهل الأثر" ? title : `${title} · أهل ا
     </script>
   </head>
   <body>
-    <header class="topbar" data-pagefind-ignore>
+    <header class="topbar" data-pagefind-ignore transition:persist>
       <div class="wrap topbar-row">
         <button class="icon-btn hamburger" data-action="menu:toggle" aria-label="القائمة">
           <span class="ham-lines"></span>
@@ -136,7 +138,7 @@ const fullTitle = title === "أهل الأثر" ? title : `${title} · أهل ا
 
         <nav class="topnav" aria-label="التصفّح">
           {nav.map((n) => (
-            <a href={n.href} aria-current={activeNav === n.id ? "page" : undefined}>{n.label}</a>
+            <a href={n.href} data-nav={n.id} aria-current={activeNav === n.id ? "page" : undefined}>{n.label}</a>
           ))}
         </nav>
 
@@ -222,8 +224,8 @@ const fullTitle = title === "أهل الأثر" ? title : `${title} · أهل ا
     </header>
 
     <!-- mobile drawer -->
-    <div class="drawer-backdrop" data-drawer-backdrop data-pagefind-ignore></div>
-    <aside class="drawer" data-drawer aria-label="القائمة" data-pagefind-ignore>
+    <div class="drawer-backdrop" data-drawer-backdrop data-pagefind-ignore transition:persist></div>
+    <aside class="drawer" data-drawer aria-label="القائمة" data-pagefind-ignore transition:persist>
       <div class="drawer-head">
         <span class="brand-name u94aa034" >أهل الأثر</span>
         <button class="icon-btn u5f04d9d" data-action="menu:close" aria-label="إغلاق" >×</button>
@@ -233,10 +235,11 @@ const fullTitle = title === "أهل الأثر" ? title : `${title} · أهل ا
         <span>البحث</span>
       </a>
       <div class="drawer-section-label">التصفّح</div>
-      {navAll.map((n) => <a href={n.href} aria-current={activeNav === n.id ? "page" : undefined}>{n.label}</a>)}
+      {navAll.map((n) => <a href={n.href} data-nav={n.id} aria-current={activeNav === n.id ? "page" : undefined}>{n.label}</a>)}
     </aside>
 
     <main
+      data-active-nav={activeNav}
       data-pagefind-body={searchMeta ? "" : undefined}
       data-pagefind-ignore={searchMeta ? undefined : ""}
       data-pagefind-meta={searchMeta ? `title:${searchMeta.title}` : undefined}
@@ -254,7 +257,7 @@ const fullTitle = title === "أهل الأثر" ? title : `${title} · أهل ا
           </div>
           <nav class="footer-links" aria-label="روابط">
             <a href="/books">الكتب</a>
-            <a href="/poems">المنظومات</a>
+            <a href="/poems">الشعر</a>
             <a href="/series">الدروس</a>
             <a href="/topics">الموضوعات</a>
             <a href="/people">الأعلام</a>
