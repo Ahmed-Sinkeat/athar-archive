@@ -1,9 +1,10 @@
 ---
 import { getCollection } from "astro:content";
 import Base from "../layouts/Base.astro";
-import { toArabicDigits, hrefFor, labelFor } from "../lib/display";
+import { toArabicDigits, hrefFor, labelFor, eraLabel, eraHref } from "../lib/display";
 import { analyzePoem } from "../lib/chunk";
 import { websiteLd } from "../lib/structured-data";
+import { loadGraph, personEraMap } from "../lib/site";
 
 const pub = (c: any[]) => c.filter((e) => e.data.status === "published");
 
@@ -28,12 +29,42 @@ const pickWeekly = (kind: string) => {
 };
 const weekly = ["آية", "حديث", "بيت"].map((kind) => ({ kind, entry: pickWeekly(kind) })).filter((w) => w.entry);
 
+// Resolve a highlight's source link, and (for a بيت) its era + subject pills.
+const graph = await loadGraph();
+const eras = await personEraMap();
+const subjectsOf = (topicIds: string[] | undefined) => {
+  const out: { title: string; href: string }[] = [];
+  const seen = new Set<string>();
+  for (const tid of topicIds ?? []) {
+    const sid = graph.getById("topic", tid)?.data.subject as string | undefined;
+    if (!sid || seen.has(sid)) continue;
+    const s = graph.getById("subject", sid);
+    if (s && s.data.status === "published") { seen.add(sid); out.push({ title: s.data.title as string, href: hrefFor("subject", sid) }); }
+  }
+  return out;
+};
+const weeklyMeta = (entry: any) => {
+  const st = entry.data.source_type as string | undefined;
+  const si = entry.data.source_id as string | undefined;
+  const src = st && si ? graph.getById(st, si) : null;
+  const srcHref = src ? hrefFor(st!, si!) : null;
+  let era: string | null = null, eraLink: string | undefined;
+  let subjects: { title: string; href: string }[] = [];
+  if (entry.data.kind === "بيت" && src) {
+    const pid = src.data.person as string | undefined;
+    const ev = pid ? eras.get(pid) : undefined;
+    if (ev) { era = eraLabel(ev); eraLink = eraHref(ev); }
+    subjects = subjectsOf(src.data.topics as string[] | undefined);
+  }
+  return { srcHref, era, eraLink, subjects };
+};
+
 const personName = new Map(people.map((p) => [p.id, p.data.title]));
 
 const stats = [
   { num: pub(books).length, label: "كتابًا" },
   { num: pub(poems).length, label: "منظومة" },
-  { num: pub(lessons).length, label: "درسًا مفرَّغًا" },
+  { num: pub(lessons).length, label: "دروس" },
   { num: pub(people).length, label: "من الأعلام" },
 ];
 
@@ -81,11 +112,13 @@ const latest = [
     </div>
   </section>
 
-  <div class="wrap-mid u4260ebe" >
-    <div class="stats-strip">
-      {stats.map((s) => (
-        <div class="stat"><div class="stat-num">{toArabicDigits(s.num)}</div><div class="stat-label">{s.label}</div></div>
-      ))}
+  <div class="home-section">
+    <div class="section-label">تصفّح الأرشيف</div>
+    <div class="card-grid u8bffae7" >
+      <a class="card" href="/books"><div class="ufa5a688">ا</div><div class="card-title ua3ba3b1" >الكتب</div><p class="card-sub uf04e97f" >المتونُ والمراجعُ محقَّقةً ومُشكَّلةً، مرتَّبةً حسب الفنِّ.</p><span class="card-cta">تصفّح ←</span></a>
+      <a class="card" href="/poems"><div class="ufa5a688">ب</div><div class="card-title ua3ba3b1" >الشعر</div><p class="card-sub uf04e97f" >منظوماتٌ علميةٌ مُشكَّلةٌ مُرقَّمةُ الأبيات، مع الشروح والتخريج.</p><span class="card-cta">تصفّح ←</span></a>
+      <a class="card" href="/series"><div class="ufa5a688">ج</div><div class="card-title ua3ba3b1" >الدروس</div><p class="card-sub uf04e97f" >سلاسلُ شرحِ المتونِ، مفرَّغةً نصاً مع الصوت والفوائد المستخرجة.</p><span class="card-cta">تصفّح ←</span></a>
+      <a class="card" href="/people"><div class="ufa5a688">د</div><div class="card-title ua3ba3b1" >الأعلام</div><p class="card-sub uf04e97f" >تراجمُ الناظمين والمصنِّفين والشُّرّاح، وما لكلٍّ منهم في الأرشيف.</p><span class="card-cta">تصفّح ←</span></a>
     </div>
   </div>
 
@@ -126,30 +159,40 @@ const latest = [
     </div>
   )}
 
-  <div class="home-section">
-    <div class="section-label">تصفّح الأرشيف</div>
-    <div class="card-grid u8bffae7" >
-      <a class="card" href="/books"><div class="ufa5a688">ا</div><div class="card-title ua3ba3b1" >الكتب</div><p class="card-sub uf04e97f" >المتونُ والمراجعُ محقَّقةً ومُشكَّلةً، مرتَّبةً حسب الفنِّ.</p><span class="card-cta">تصفّح ←</span></a>
-      <a class="card" href="/poems"><div class="ufa5a688">ب</div><div class="card-title ua3ba3b1" >الشعر</div><p class="card-sub uf04e97f" >منظوماتٌ علميةٌ مُشكَّلةٌ مُرقَّمةُ الأبيات، مع الشروح والتخريج.</p><span class="card-cta">تصفّح ←</span></a>
-      <a class="card" href="/series"><div class="ufa5a688">ج</div><div class="card-title ua3ba3b1" >الدروس</div><p class="card-sub uf04e97f" >سلاسلُ شرحِ المتونِ، مفرَّغةً نصاً مع الصوت والفوائد المستخرجة.</p><span class="card-cta">تصفّح ←</span></a>
-      <a class="card" href="/people"><div class="ufa5a688">د</div><div class="card-title ua3ba3b1" >الأعلام</div><p class="card-sub uf04e97f" >تراجمُ الناظمين والمصنِّفين والشُّرّاح، وما لكلٍّ منهم في الأرشيف.</p><span class="card-cta">تصفّح ←</span></a>
-    </div>
-  </div>
-
   {weekly.length > 0 && (
     <div class="home-section">
       <div class="section-label">مختارات الأسبوع</div>
       <div class="weekly-grid">
-        {weekly.map(({ kind, entry }) => (
+        {weekly.map(({ kind, entry }) => {
+          const m = weeklyMeta(entry);
+          return (
           <div class="weekly-card">
-            <div class="weekly-kind">{kind}</div>
+            {kind === "بيت" && (m.era || m.subjects.length) ? (
+              <div class="weekly-pills">
+                {m.eraLink && <a class="pill tag-verdigris pill-link" href={m.eraLink}>{m.era}</a>}
+                {m.subjects.map((s) => <a class="pill tag-accent pill-link" href={s.href}>{s.title}</a>)}
+              </div>
+            ) : (
+              <div class="weekly-kind">{kind}</div>
+            )}
             <p class="weekly-text" data-ar>{entry!.body.trim()}</p>
-            {entry!.data.reference && <div class="faint weekly-ref">{entry!.data.reference}</div>}
+            {entry!.data.reference && (m.srcHref
+              ? <a class="faint weekly-ref pill-link" href={m.srcHref}>{entry!.data.reference} ←</a>
+              : <div class="faint weekly-ref">{entry!.data.reference}</div>)}
           </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   )}
+
+  <div class="wrap-mid u4260ebe" >
+    <div class="stats-strip">
+      {stats.map((s) => (
+        <div class="stat"><div class="stat-num">{toArabicDigits(s.num)}</div><div class="stat-label">{s.label}</div></div>
+      ))}
+    </div>
+  </div>
 
   {latest.length > 0 && (
     <div class="home-section u3a4c3ff" >

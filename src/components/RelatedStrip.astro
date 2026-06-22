@@ -1,0 +1,19 @@
+---
+// «ذات صلة» — related-works strip for the bottom of reader pages. Built from the
+// knowledge graph (same author / shared topic / the series that explains it).
+import type { RelatedItem } from "../lib/site";
+interface Props { items: RelatedItem[] }
+const { items } = Astro.props;
+---
+{items.length > 0 && (
+  <div class="home-section related-strip">
+    <div class="section-label">ذات صلة</div>
+    {items.map((r) => (
+      <a class="latest-row" href={r.href}>
+        <span class="pill tag-accent">{r.kind}</span>
+        <span class="latest-name">{r.title}</span>
+        {r.sub && <span class="faint">{r.sub}</span>}
+      </a>
+    ))}
+  </div>
+)}

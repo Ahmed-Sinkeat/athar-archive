@@ -5,7 +5,8 @@ import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import Verse from "../../components/Verse.astro";
 import StudyBar from "../../components/StudyBar.astro";
 import AudioPlayer from "../../components/AudioPlayer.astro";
-import { isPub, loadGraph, personNameMap, personEraMap, notesByAnchor, subjectTitlesFor } from "../../lib/site";
+import RelatedStrip from "../../components/RelatedStrip.astro";
+import { isPub, loadGraph, personNameMap, personEraMap, notesByAnchor, subjectTitlesFor, relatedTo } from "../../lib/site";
 import { analyzePoem } from "../../lib/chunk";
 import { hrefFor, toArabicDigits, eraLabel, eraHref } from "../../lib/display";
 import { poemLd } from "../../lib/structured-data";
@@ -20,17 +21,17 @@ export async function getStaticPaths() {
     const audios = graph.audioForSource("poem", entry.id)
       .filter((x) => x.data.status === "published")
       .map((au) => ({ url: au.data.url, format: au.data.format, duration: au.data.duration ?? null, sizeBytes: au.data.size_bytes ?? null, label: au.data.title }));
-    return { params: { slug: entry.id }, props: { entry, byAnchor, audios, author: names.get(entry.data.person), era: eras.get(entry.data.person), subjects: subjectTitlesFor(entry.data.topics, graph) } };
+    return { params: { slug: entry.id }, props: { entry, byAnchor, audios, author: names.get(entry.data.person), era: eras.get(entry.data.person), subjects: subjectTitlesFor(entry.data.topics, graph), related: relatedTo(entry, graph, names) } };
   });
 }
 
-const { entry, byAnchor, audios, author, era, subjects } = Astro.props;
+const { entry, byAnchor, audios, author, era, subjects, related } = Astro.props;
 const a = analyzePoem(entry.body ?? "");
 const path = `/poem/${entry.id}`;
 const jsonLd = poemLd({
   title: entry.data.title, authorId: entry.data.person, authorName: author,
   description: entry.data.description, path,
-  crumbs: [{ name: "الرئيسية", path: "/" }, { name: "المنظومات", path: "/poems" }, { name: entry.data.title, path }],
+  crumbs: [{ name: "الرئيسية", path: "/" }, { name: "الشعر", path: "/poems" }, { name: entry.data.title, path }],
 });
 const chapterNums = new Set(a.chapters.flatMap((c) => c.verses.map((v) => v.n)));
 const preamble = a.verses.filter((v) => !chapterNums.has(v.n));
@@ -94,4 +95,5 @@ const preamble = a.verses.filter((v) => !chapterNums.has(v.n));
 
     <div class="ornament ud38b410" >۞</div>
   </div>
+  <div class="wrap-mid"><RelatedStrip items={related} /></div>
 </Base>

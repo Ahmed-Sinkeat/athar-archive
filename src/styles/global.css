@@ -607,3 +607,52 @@ html.hide-vnums .vnum { display: none; }
 .sort-dir { font-size: 16px; line-height: 1; }
 .flat-list { list-style: none; padding: 0; margin: 0; }
 .flat-list > li { list-style: none; }
+
+/* per-section search bar on listing pages */
+.section-search { display: flex; gap: 8px; margin: 0 0 24px; max-width: 540px; }
+.section-search-input { flex: 1; font-family: var(--font-ui); font-size: 15px; padding: 10px 14px; border: 1px solid var(--rule-strong); border-radius: 9px; background: var(--surface); color: var(--ink); }
+.section-search-input:focus { border-color: var(--accent); outline: none; }
+.section-search-go { white-space: nowrap; }
+
+/* knowledge graph page (/graph) */
+.graph-hint { margin: -10px 0 16px; line-height: 1.7; }
+.graph-wrap { position: relative; width: 100%; height: calc(100vh - 240px); min-height: 420px; border-block: 1px solid var(--rule-strong); background: var(--surface); }
+#graph { position: absolute; inset: 0; }
+#graph canvas { display: block; }
+
+/* annotation bottom-sheet (شرح/إعراب/حاشية/تخريج) — Quran-app style */
+.ann-sheet {
+  position: fixed; inset: auto 0 0 0; z-index: 60;
+  max-width: 760px; margin: 0 auto;
+  max-height: 72vh; overflow-y: auto;
+  background: var(--surface); border: 1px solid var(--rule-strong); border-bottom: none;
+  border-radius: 16px 16px 0 0; box-shadow: 0 -10px 44px rgba(31, 27, 22, 0.18);
+  padding: 14px 18px 24px;
+  transform: translateY(100%); transition: transform 0.24s ease;
+}
+.ann-sheet.is-shown { transform: translateY(0); }
+.ann-sheet[hidden] { display: none; }
+.ann-sheet-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.ann-sheet-title { font-family: var(--font-ui); font-weight: 600; font-size: 14px; color: var(--accent); }
+.ann-sheet-close { font-size: 22px; line-height: 1; background: none; border: none; cursor: pointer; color: var(--ink-soft); padding: 0 4px; }
+.ann-sheet-tabs { display: flex; flex-wrap: wrap; gap: 4px; border-bottom: 1px solid var(--rule-strong); padding-bottom: 8px; margin-bottom: 10px; }
+.ann-sheet-tabs[hidden] { display: none; }
+.ann-tab { font-family: var(--font-ui); font-size: 14px; background: none; border: none; border-bottom: 2px solid transparent; padding: 5px 10px; cursor: pointer; color: var(--ink-soft); }
+.ann-tab[aria-pressed="true"] { color: var(--accent); border-bottom-color: var(--accent); }
+.ann-sheet-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.ann-sheet-chips[hidden] { display: none; }
+.ann-chip { font-family: var(--font-ui); font-size: 13px; border: 1px solid var(--rule-strong); border-radius: 20px; padding: 4px 13px; background: var(--surface); cursor: pointer; color: var(--ink-soft); }
+.ann-chip[aria-pressed="true"] { border-color: var(--accent-solid); background: var(--accent-solid); color: #fff; }
+.ann-sheet-body { line-height: 2; }
+.ann-sheet-body .ann-source-link { display: inline-block; margin-top: 10px; }
+.ann-sheet-foot { display: flex; justify-content: space-between; margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--rule-strong); }
+.ann-nav { font-family: var(--font-ui); font-size: 14px; background: none; border: none; cursor: pointer; color: var(--accent); padding: 4px 8px; }
+.ann-nav:disabled { color: var(--ink-soft); opacity: 0.5; cursor: default; }
+.ann-active-verse { background: color-mix(in srgb, var(--accent) 8%, transparent); border-radius: 8px; }
+.verse:has(> [data-ann-pack]) .verse-body { cursor: pointer; }
+.prose p.has-ann { cursor: pointer; border-inline-start: 2px solid color-mix(in srgb, var(--accent) 35%, transparent); padding-inline-start: 10px; }
+
+/* مختارات الأسبوع: era + subject pills on a بيت card */
+.weekly-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+.weekly-ref.pill-link { display: inline-block; text-decoration: none; }
+.weekly-ref.pill-link:hover { color: var(--accent); background: none; }

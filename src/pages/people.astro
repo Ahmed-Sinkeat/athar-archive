@@ -2,8 +2,10 @@
 import { getCollection } from "astro:content";
 import Base from "../layouts/Base.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
+import SectionSearch from "../components/SectionSearch.astro";
 import { isPub, loadGraph } from "../lib/site";
 import { hrefFor, toArabicDigits, eraLabel, eraHref, ERA_VALUES } from "../lib/display";
+import { collectionLd } from "../lib/structured-data";
 
 const people = (await getCollection("person")).filter(isPub);
 const graph = await loadGraph();
@@ -17,11 +19,11 @@ const groups = ERA_VALUES
   .filter((g) => g.people.length);
 const noEra = people.filter((p) => !p.data.era).sort(byTitle);
 ---
-<Base title="الأعلام" description="تراجمُ الناظمين والمصنِّفين والشُّرّاح، وما لكلٍّ منهم في الأرشيف." activeNav="people">
+<Base title="الأعلام" description="تراجمُ الناظمين والمصنِّفين والشُّرّاح، وما لكلٍّ منهم في الأرشيف." activeNav="people" jsonLd={collectionLd({ title: "الأعلام", path: "/people", crumbs: [{ name: "الرئيسية", path: "/" }, { name: "الأعلام", path: "/people" }] })}>
   <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "الأعلام" }]} />
   <div class="wrap-mid uf5db21c">
     <h1 class="page-title">الأعلام</h1>
-    <p class="page-intro">تراجمُ الناظمين والمصنِّفين والشُّرّاح، مرتَّبةٌ حسب العصر. اختر عَلَماً لتصفّحِ آثارِه، أو عنوانَ العصرِ لتصفّحِ أعلامِه ومنظوماتِه.</p>
+    <SectionSearch scope="person" placeholder="ابحث في الأعلام…" />
 
     {groups.map((g) => (
       <section class="browse-group">

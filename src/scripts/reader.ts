@@ -294,10 +294,22 @@ document.addEventListener("click", (e) => {
 // gets marked here from hidden .ann-pack[data-phrase] blocks). First matching
 // text node in a .prose wins; matching ignores tashkeel. Re-run per navigation. ---
 function enhanceProse() {
-  const packs = document.querySelectorAll<HTMLElement>(".ann-pack[data-phrase]");
-  if (!packs.length) return;
+  const allPacks = [...document.querySelectorAll<HTMLElement>(".ann-pack")];
+  if (!allPacks.length) return;
   const proseEls = [...document.querySelectorAll<HTMLElement>(".prose")];
   if (!proseEls.length) return;
+  const packs = allPacks.filter((p) => p.getAttribute("data-phrase"));
+
+  // whole-paragraph notes (no phrase): anchor ann-p{n} → the n-th <p> in the prose,
+  // made tappable (opens the sheet). ponytail: n-th <p> heuristic — fine for plain
+  // prose; if a matn mixes lists/quotes the index could drift, then add an explicit phrase.
+  const paras = proseEls.flatMap((pr) => [...pr.querySelectorAll<HTMLElement>("p")]);
+  allPacks.forEach((pack) => {
+    if (pack.getAttribute("data-phrase")) return;
+    const m = pack.id.match(/ann-p(\d+)$/);
+    const para = m ? paras[+m[1] - 1] : null;
+    if (para && !para.dataset.annPara) { para.dataset.annPara = pack.id; para.classList.add("has-ann"); }
+  });
 
   function wrapIn(root: HTMLElement, needle: string, packId: string): boolean {
     const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
@@ -336,137 +348,168 @@ function enhanceProse() {
   });
 }
 
-// --- inline شرح chooser (annotation popover) ---
-// Marks are <a class="ann-mark" data-ann="ann-<anchor>">; the hidden
-// [data-ann-pack] sibling holds one .ann-entry per شرح. One entry → show it;
-// several → show a chooser menu first. All data is build-time (no network).
+// --- annotation bottom-sheet (Quran-app style) ---
+// Tap a verse (or a highlighted phrase) → a sheet rises from the bottom with one
+// TAB per kind (شرح / إعراب / حاشية / تخريج), source CHIPS within a kind, and
+// prev/next between annotated anchors. All data comes from the hidden
+// [data-ann-pack] blocks (build-time, no network, sanitized at build).
 (() => {
-  let pop: HTMLElement | null = null;
-  let activeMark: HTMLElement | null = null;
-  let currentPack: HTMLElement | null = null;
-  let justLongPressed = false;
+  const KIND_ORDER = ["شرح", "تفسير", "إعراب", "حاشية", "تخريج"];
+  const toAr = (n: number) => String(n).replace(/[0-9]/g, (d) => "٠١٢٣٤٥٦٧٨٩"[+d]);
 
-  function ensurePop(): HTMLElement {
-    if (pop) return pop;
-    pop = document.createElement("div");
-    pop.className = "ann-pop";
-    pop.setAttribute("role", "dialog");
-    pop.hidden = true;
-    document.body.appendChild(pop);
-    return pop;
-  }
-  function close() {
-    if (pop) { pop.hidden = true; pop.classList.remove("is-shown"); }
-    if (activeMark) { activeMark.classList.remove("ann-active"); activeMark = null; }
-    currentPack = null;
-  }
-  function position() {
-    if (!pop || !activeMark) return;
-    const r = activeMark.getBoundingClientRect();
-    const pw = pop.offsetWidth, ph = pop.offsetHeight;
-    const vw = document.documentElement.clientWidth, vh = window.innerHeight;
-    let left = r.left + r.width / 2 - pw / 2;
-    left = Math.max(8, Math.min(left, vw - pw - 8));
-    let top = r.bottom + 8;
-    if (top + ph > vh - 8) top = Math.max(8, r.top - ph - 8);
-    pop.style.left = `${left}px`;
-    pop.style.top = `${top}px`;
-  }
-  function head(title: string, withBack: boolean): HTMLElement {
-    const h = document.createElement("div");
-    h.className = "ann-pop-head";
-    if (withBack) {
-      const back = document.createElement("button");
-      back.type = "button"; back.className = "ann-pop-back"; back.textContent = "‹ الشروح";
-      back.addEventListener("click", (ev) => { ev.stopPropagation(); if (currentPack) renderMenu(currentPack); });
-      h.appendChild(back);
-    }
-    const t = document.createElement("span");
-    t.className = "ann-pop-kind"; t.textContent = title;
+  let sheet: HTMLElement | null = null;
+  let titleEl!: HTMLElement, tabsEl!: HTMLElement, chipsEl!: HTMLElement, bodyEl!: HTMLElement, footEl!: HTMLElement;
+  let activeVerse: HTMLElement | null = null;
+
+  function build(): HTMLElement {
+    if (sheet && sheet.isConnected) return sheet;
+    sheet = document.createElement("div");
+    sheet.className = "ann-sheet";
+    sheet.setAttribute("role", "dialog");
+    sheet.hidden = true;
+    const head = document.createElement("div");
+    head.className = "ann-sheet-head";
+    titleEl = document.createElement("span");
+    titleEl.className = "ann-sheet-title";
     const x = document.createElement("button");
-    x.type = "button"; x.className = "ann-pop-close"; x.setAttribute("aria-label", "إغلاق"); x.textContent = "×";
+    x.type = "button"; x.className = "ann-sheet-close"; x.setAttribute("aria-label", "إغلاق"); x.textContent = "×";
     x.addEventListener("click", close);
-    h.append(t, x);
-    return h;
+    head.append(titleEl, x);
+    tabsEl = document.createElement("div"); tabsEl.className = "ann-sheet-tabs";
+    chipsEl = document.createElement("div"); chipsEl.className = "ann-sheet-chips";
+    bodyEl = document.createElement("div"); bodyEl.className = "ann-sheet-body"; bodyEl.setAttribute("data-ar", "");
+    footEl = document.createElement("div"); footEl.className = "ann-sheet-foot";
+    sheet.append(head, tabsEl, chipsEl, bodyEl, footEl);
+    document.body.appendChild(sheet);
+    return sheet;
   }
-  function renderEntry(entry: HTMLElement, withBack: boolean) {
-    const p = ensurePop();
-    p.innerHTML = "";
-    p.append(head(entry.getAttribute("data-label") || "شرح", withBack));
-    const body = document.createElement("div");
-    body.className = "ann-pop-body"; body.setAttribute("data-ar", "");
-    // clone the already-sanitized (build-time rehype-sanitize) note DOM — no
-    // innerHTML, no runtime parsing.
-    const src0 = entry.querySelector(".ann-entry-body");
-    if (src0) body.append(...[...src0.cloneNode(true).childNodes]);
-    p.appendChild(body);
-    const src = entry.querySelector<HTMLAnchorElement>(".ann-source-link");
+
+  const packIds = () => [...document.querySelectorAll<HTMLElement>("[data-ann-pack]")].map((p) => p.id);
+
+  function anchorLabel(pack: HTMLElement): string {
+    const verse = pack.closest<HTMLElement>(".verse");
+    const n = verse?.querySelector(".vnum")?.textContent?.trim();
+    if (n) return `البيت ${n}`;
+    const ph = pack.getAttribute("data-phrase");
+    return ph ? `«${ph}»` : "هذا الموضع";
+  }
+
+  function entriesByKind(pack: HTMLElement): Map<string, HTMLElement[]> {
+    const m = new Map<string, HTMLElement[]>();
+    pack.querySelectorAll<HTMLElement>(".ann-entry").forEach((en) => {
+      const k = en.getAttribute("data-kind") || "شرح";
+      if (!m.has(k)) m.set(k, []);
+      m.get(k)!.push(en);
+    });
+    return m;
+  }
+
+  const sourceLabel = (en: HTMLElement, i: number) =>
+    (en.getAttribute("data-label") || "").split(" — ")[1] || `المصدر ${toAr(i + 1)}`;
+
+  function showEntry(en: HTMLElement) {
+    bodyEl.textContent = "";
+    const src0 = en.querySelector(".ann-entry-body");
+    if (src0) bodyEl.append(...[...src0.cloneNode(true).childNodes]); // already sanitized at build
+    const src = en.querySelector<HTMLAnchorElement>(".ann-source-link");
     if (src) {
       const a = document.createElement("a");
       a.className = "ann-source-link"; a.href = src.href; a.textContent = src.textContent || "";
-      p.appendChild(a);
+      bodyEl.appendChild(a);
     }
-    position();
   }
-  function renderMenu(pack: HTMLElement) {
-    const entries = [...pack.querySelectorAll<HTMLElement>(".ann-entry")];
-    const p = ensurePop();
-    p.innerHTML = "";
-    p.append(head("اختر الشرح", false));
-    const menu = document.createElement("div");
-    menu.className = "ann-menu";
-    entries.forEach((en) => {
-      const b = document.createElement("button");
-      b.type = "button";
-      b.className = "ann-menu-item " + (en.className.match(/k-\w+/)?.[0] ?? "");
-      b.textContent = en.getAttribute("data-label") || "شرح";
-      b.addEventListener("click", (ev) => { ev.stopPropagation(); renderEntry(en, true); });
-      menu.appendChild(b);
-    });
-    p.appendChild(menu);
-    position();
-  }
-  function open(mark: HTMLElement) {
-    const id = mark.getAttribute("data-ann");
-    const pack = id ? document.getElementById(id) : null;
-    if (!pack) return;
-    if (activeMark && activeMark !== mark) activeMark.classList.remove("ann-active");
-    activeMark = mark; mark.classList.add("ann-active");
-    currentPack = pack;
-    const p = ensurePop();
-    p.hidden = false;
-    const entries = [...pack.querySelectorAll<HTMLElement>(".ann-entry")];
-    if (entries.length > 1) renderMenu(pack);
-    else renderEntry(entries[0], false);
-    requestAnimationFrame(() => p.classList.add("is-shown")); // fade-in
 
+  function renderChips(entries: HTMLElement[]) {
+    chipsEl.textContent = "";
+    chipsEl.hidden = entries.length < 2;
+    entries.forEach((en, i) => {
+      if (entries.length < 2) return;
+      const b = document.createElement("button");
+      b.type = "button"; b.className = "ann-chip"; b.textContent = sourceLabel(en, i);
+      b.setAttribute("aria-pressed", String(i === 0));
+      b.addEventListener("click", () => {
+        chipsEl.querySelectorAll(".ann-chip").forEach((c) => c.setAttribute("aria-pressed", "false"));
+        b.setAttribute("aria-pressed", "true");
+        showEntry(en);
+      });
+      chipsEl.appendChild(b);
+    });
+    showEntry(entries[0]);
+  }
+
+  function selectKind(byKind: Map<string, HTMLElement[]>, kind: string) {
+    tabsEl.querySelectorAll(".ann-tab").forEach((t) => t.setAttribute("aria-pressed", String(t.getAttribute("data-kind") === kind)));
+    renderChips(byKind.get(kind)!);
+  }
+
+  function renderFoot(packId: string) {
+    footEl.textContent = "";
+    const ids = packIds();
+    const i = ids.indexOf(packId);
+    const nav = (label: string, targetId: string | undefined, cls: string) => {
+      const b = document.createElement("button");
+      b.type = "button"; b.className = "ann-nav " + cls; b.textContent = label;
+      if (!targetId) b.disabled = true;
+      else b.addEventListener("click", () => {
+        (document.getElementById(targetId)?.closest(".verse") || document.getElementById(targetId))
+          ?.scrollIntoView({ behavior: "smooth", block: "center" });
+        openSheet(targetId);
+      });
+      return b;
+    };
+    footEl.append(nav("‹ السابق", ids[i - 1], "ann-prev"), nav("التالي ›", ids[i + 1], "ann-next"));
+  }
+
+  function openSheet(packId: string) {
+    const pack = document.getElementById(packId);
+    if (!pack) return;
+    build();
+    if (activeVerse) activeVerse.classList.remove("ann-active-verse");
+    activeVerse = pack.closest<HTMLElement>(".verse");
+    activeVerse?.classList.add("ann-active-verse");
+
+    titleEl.textContent = anchorLabel(pack);
+    const byKind = entriesByKind(pack);
+    const kinds = [...byKind.keys()].sort((a, b) => {
+      const ia = KIND_ORDER.indexOf(a), ib = KIND_ORDER.indexOf(b);
+      return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib);
+    });
+    tabsEl.textContent = "";
+    tabsEl.hidden = kinds.length < 2;
+    kinds.forEach((k) => {
+      const t = document.createElement("button");
+      t.type = "button"; t.className = "ann-tab"; t.setAttribute("data-kind", k); t.textContent = k;
+      t.addEventListener("click", () => selectKind(byKind, k));
+      tabsEl.appendChild(t);
+    });
+    selectKind(byKind, kinds[0]);
+    renderFoot(packId);
+    sheet!.hidden = false;
+    requestAnimationFrame(() => sheet!.classList.add("is-shown"));
+  }
+
+  function close() {
+    if (sheet) { sheet.hidden = true; sheet.classList.remove("is-shown"); }
+    if (activeVerse) { activeVerse.classList.remove("ann-active-verse"); activeVerse = null; }
   }
 
   document.addEventListener("click", (e) => {
-    const mark = (e.target as HTMLElement).closest<HTMLElement>(".ann-mark");
-    if (mark) {
-      e.preventDefault();
-      if (justLongPressed) { justLongPressed = false; return; }
-      if (activeMark === mark && pop && !pop.hidden) close();
-      else open(mark);
-      return;
+    const t = e.target as HTMLElement;
+    if (t.closest(".ann-sheet")) return; // clicks inside the sheet are handled by its own buttons
+    const mark = t.closest<HTMLElement>(".ann-mark");
+    if (mark) { e.preventDefault(); openSheet(mark.getAttribute("data-ann") || ""); return; }
+    // whole-paragraph note: tap the فقرة
+    const para = t.closest<HTMLElement>("[data-ann-para]");
+    if (para && !t.closest("a, button")) { openSheet(para.dataset.annPara || ""); return; }
+    // tapping a verse that carries notes (reading mode only) opens its sheet
+    if (root.getAttribute("data-mode") !== "ikhtibar") {
+      const pack = t.closest<HTMLElement>(".verse")?.querySelector<HTMLElement>("[data-ann-pack]");
+      if (pack && !t.closest("a, button")) { openSheet(pack.id); return; }
     }
-    if (pop && !pop.hidden && !(e.target as HTMLElement).closest(".ann-pop")) close();
+    if (sheet && !sheet.hidden) close(); // outside click
   });
-
-  let pressTimer: number | undefined;
-  document.addEventListener("touchstart", (e) => {
-    const mark = (e.target as HTMLElement).closest<HTMLElement>(".ann-mark");
-    if (!mark) return;
-    pressTimer = window.setTimeout(() => { justLongPressed = true; open(mark); }, 420);
-  }, { passive: true });
-  const cancelPress = () => { if (pressTimer) { clearTimeout(pressTimer); pressTimer = undefined; } };
-  document.addEventListener("touchmove", cancelPress, { passive: true });
-  document.addEventListener("touchend", cancelPress);
-
   document.addEventListener("keydown", (e) => { if (e.key === "Escape") close(); });
-  window.addEventListener("scroll", () => { if (pop && !pop.hidden) close(); }, { passive: true });
-  window.addEventListener("resize", position);
+  document.addEventListener("astro:after-swap", () => { close(); sheet = null; }); // sheet is reattached on next open
 })();
 
 // --- audio recitation switcher (متون/منظومات with multiple recordings) ---
@@ -521,6 +564,32 @@ function onPage() {
   if (localStorage.getItem(LS.tashkeel) === "0") applyTashkeel(false); // re-bare new content
   updateActiveNav();
   updateProgress();
+  setDrawer(false); // a navigation always closes the (persisted) drawer
 }
 onPage();
 document.addEventListener("astro:page-load", onPage);
+
+// View transitions swap <html>, wiping the attributes the pre-paint inline script
+// set → re-apply saved theme/scale/numbers/mode after each swap (before paint, so
+// no flash). Mirrors the inline script in Base.astro.
+function applyStoredPrefs() {
+  try {
+    const t = localStorage.getItem(LS.theme);
+    if (t && t !== "light") root.setAttribute("data-theme", t);
+    else root.removeAttribute("data-theme");
+    const s = localStorage.getItem(LS.scale);
+    if (s) root.style.setProperty("--reading-scale", s);
+    root.classList.toggle("hide-vnums", localStorage.getItem(LS.vnums) === "0");
+    root.classList.toggle("no-tashkeel", localStorage.getItem(LS.tashkeel) === "0");
+    const md = localStorage.getItem(LS.mode);
+    if (md && md !== "qiraa") root.setAttribute("data-mode", md);
+    else root.removeAttribute("data-mode");
+  } catch (e) {}
+}
+document.addEventListener("astro:after-swap", applyStoredPrefs);
+
+// Close the drawer the moment a link inside it is clicked (the SPA router would
+// otherwise leave the persisted drawer open over the new page).
+document.addEventListener("click", (e) => {
+  if ((e.target as HTMLElement).closest("[data-drawer] a")) setDrawer(false);
+});

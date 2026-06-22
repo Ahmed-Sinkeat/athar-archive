@@ -2,8 +2,10 @@
 import Base from "../layouts/Base.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
 import SortableList from "../components/SortableList.astro";
+import SectionSearch from "../components/SectionSearch.astro";
 import { personNameMap, loadGraph } from "../lib/site";
 import { hrefFor, labelFor, isMatn } from "../lib/display";
+import { collectionLd } from "../lib/structured-data";
 import type { ContentEntry } from "../lib/types";
 
 const graph = await loadGraph();
@@ -24,11 +26,11 @@ const card = (it: ContentEntry) => ({
   cta: "ادخل القراءة ←",
 });
 ---
-<Base title="المتون" description="كلُّ ما يُحفظ ويُدرَّس: المنظوماتُ ومتونُ الكتب، مُشكَّلةً مرتَّبةً." activeNav="books">
+<Base title="المتون" description="كلُّ ما يُحفظ ويُدرَّس: المنظوماتُ ومتونُ الكتب، مُشكَّلةً مرتَّبةً." activeNav="books" jsonLd={collectionLd({ title: "المتون", path: "/matn", crumbs: [{ name: "الرئيسية", path: "/" }, { name: "المتون", path: "/matn" }] })}>
   <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "المتون" }]} />
   <div class="wrap-mid uf5db21c">
     <h1 class="page-title">المتون</h1>
-    <p class="page-intro">كلُّ ما يُحفظ ويُدرَّس من المنظوماتِ ومتونِ الكتب، في قائمةٍ واحدة. رتِّبْها أبجديًّا أو بسنة التصنيف.</p>
+    <SectionSearch placeholder="ابحث في المتون…" />
     <SortableList items={items} card={card} />
   </div>
 </Base>

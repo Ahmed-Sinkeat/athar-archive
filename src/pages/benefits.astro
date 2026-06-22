@@ -1,6 +1,7 @@
 ---
 import Base from "../layouts/Base.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
+import SectionSearch from "../components/SectionSearch.astro";
 import { personNameMap, publishedSorted } from "../lib/site";
 import { hrefFor } from "../lib/display";
 
@@ -11,7 +12,7 @@ const names = await personNameMap();
   <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "الفوائد" }]} />
   <div class="wrap-mid uf5db21c" >
     <h1 class="page-title">الفوائد</h1>
-    <p class="page-intro">فوائدُ مفردةٌ مستخرجةٌ من المتون والدروس والمقالات، مُسنَدةً إلى مصادرها.</p>
+    <SectionSearch scope="benefit" placeholder="ابحث في الفوائد…" />
     <div class="card-grid u44f04b0" >
       {benefits.map((e) => (
         <a class="card" href={hrefFor("benefit", e.id)}>

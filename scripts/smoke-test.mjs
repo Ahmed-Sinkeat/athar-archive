@@ -25,7 +25,7 @@ ok(/"@type":"WebSite"/.test(home) && /SearchAction/.test(home), "WebSite + Searc
 ok(/rel="canonical"/.test(home), "home has canonical");
 ok(/href="\/poems"/.test(home) && /href="\/questions"/.test(home), "nav splits الكتب/المنظومات + المسائل");
 ok(!/>المكتبة</.test(home), "no 'المكتبة' label in nav/footer");
-ok(/aria-label="البحث"/.test(home), "search affordance present");
+ok(/(action|href)="\/search/.test(home), "search affordance present (hero form + drawer link)");
 
 // --- books index (books only, kind filters) ---
 section("/books");
@@ -54,17 +54,17 @@ ok(/class="sadr"/.test(poem), "verses render (sadr)");
 ok(/ann-mark/.test(poem), "annotated phrase marked inline");
 ok(/id="ann-v1"/.test(poem), "annotation pack present");
 ok(/data-kind="شرح"/.test(poem) && /data-kind="إعراب"/.test(poem), "both annotation kinds available");
-ok(/rel="canonical" href="https:\/\/ahlalathar\.com\/poem\/alfiyyah-ibn-malik"/.test(poem), "canonical (.com)");
+ok(/rel="canonical" href="https:\/\/[^"]+\/poem\/alfiyyah-ibn-malik"/.test(poem), "canonical points to the poem (host-agnostic)");
 ok(/"@type":\["CreativeWork","Poem"\]/.test(poem), "Poem JSON-LD");
 ok(/data-studybar/.test(poem) && /data-matn=/.test(poem), "study bar + tracking container on متن poem");
 ok(/badge-matn/.test(poem), "متن badge on poem reader");
 
-// --- book reader: prose + audio? + collapsible حواشٍ ---
+// --- book reader: prose + audio? + annotation packs (open in the bottom sheet) ---
 section("/book/al-wasitiyyah");
 const book = read("book/al-wasitiyyah/index.html");
 ok(/class="prose"/.test(book), "matn prose renders");
 ok(/data-matn=/.test(book), "متن book tracking container present");
-ok(/class="benefit-strip notes-disclosure"/.test(book), "حواشٍ collapsible disclosure renders");
+ok(/data-ann-pack/.test(book), "annotation packs present (open in the bottom sheet)");
 ok(/"@type":"Book"/.test(book), "Book JSON-LD");
 
 // --- lesson reader: TOC anchors must match heading ids (rehype-slug alignment) ---

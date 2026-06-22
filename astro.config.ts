@@ -2,7 +2,9 @@ import { defineConfig } from "astro/config";
 
 export default defineConfig({
   output: "static",
-  site: "https://ahlalathar.com",
+  // TEMPORARY: live workers.dev host (sitemap/RSS absolute URLs). Flip to
+  // https://ahlalathar.com when the custom domain goes live. Mirror in ahlalathar.config.ts.
+  site: "https://athar-archive.ahmedsinkeat2002.workers.dev",
   trailingSlash: "never",
   // Prefetch internal links on hover → instant navigation; pairs with the
   // <ClientRouter /> view transitions in Base.astro for an SPA-like feel.

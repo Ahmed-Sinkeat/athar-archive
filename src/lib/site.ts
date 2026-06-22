@@ -4,7 +4,7 @@
 import { getCollection } from "astro:content";
 import { buildGraph, toContentEntries, type Graph } from "./graph";
 import { COLLECTIONS } from "./types";
-import { hrefFor } from "./display";
+import { hrefFor, labelFor } from "./display";
 
 export async function loadGraph(): Promise<Graph> {
   const cols = await Promise.all(COLLECTIONS.map((c) => getCollection(c as any)));
@@ -83,6 +83,29 @@ export function subjectTitlesFor(topicIds: string[] | undefined, graph: Graph): 
     if (s && s.data.status === "published") titles.add(s.data.title as string);
   }
   return [...titles];
+}
+
+// Bottom-of-reader «ذات صلة»: the series that explains this متن, then the same
+// author's other works, then items sharing a topic. Deduped, self excluded.
+export interface RelatedItem { href: string; title: string; kind: string; sub?: string }
+export function relatedTo(
+  entry: { collection: string; id: string; data: Record<string, any> },
+  graph: Graph,
+  names: Map<string, string>,
+  limit = 6,
+): RelatedItem[] {
+  const seen = new Set<string>([`${entry.collection}:${entry.id}`]);
+  const out: RelatedItem[] = [];
+  const add = (e: { collection: string; id: string; data: Record<string, any> }, kind: string) => {
+    const k = `${e.collection}:${e.id}`;
+    if (seen.has(k) || !isPub(e) || out.length >= limit) return;
+    seen.add(k);
+    out.push({ href: hrefFor(e.collection, e.id, { series: e.data.series }), title: e.data.title, kind, sub: e.data.person ? names.get(e.data.person) : undefined });
+  };
+  graph.seriesForSource(entry.collection, entry.id).forEach((s) => add(s, "سلسلة"));
+  if (entry.data.person) graph.materialsByPerson(entry.data.person as string).forEach((e) => add(e, labelFor(e.collection, e.data)));
+  for (const t of (entry.data.topics as string[] | undefined) ?? []) graph.materialsByTopic(t).forEach((e) => add(e, labelFor(e.collection, e.data)));
+  return out;
 }
 
 // published entries of a collection, newest first
