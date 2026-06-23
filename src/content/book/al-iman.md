@@ -1,6 +1,6 @@
 ---
 title: "الإيمان للقاسم بن سلام - محققا"
-status: draft
+status: published
 published_at: 2026-06-23
 person: abu-ubayd-al-qasim
 kind: مرجع
