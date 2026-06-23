@@ -1,25 +1,22 @@
 ---
 import Base from "../layouts/Base.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
-import SectionSearch from "../components/SectionSearch.astro";
-import { personNameMap, publishedSorted } from "../lib/site";
-import { hrefFor } from "../lib/display";
-
-const benefits = await publishedSorted("benefit");
-const names = await personNameMap();
+// مكتبتي — فوائدُ وإشاراتٌ مرجعيةٌ خاصةٌ بهذا الجهاز فقط. تُصنع بتظليل النصِّ أثناء
+// القراءة وتُحفَظ في المتصفّح (localStorage)؛ لا تُرسَل لأيِّ خادم. القائمة تُبنى في
+// المتصفّح من scripts/library.ts. ponytail: empty shell, the device fills it.
 ---
-<Base title="الفوائد" description="فوائدُ علميةٌ مستخرجةٌ من المتون والدروس والمقالات." activeNav="benefits">
+<Base title="الفوائد" description="فوائدُك وإشاراتُك المرجعيةُ المحفوظةُ على هذا الجهاز." activeNav="benefits" noindex>
   <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "الفوائد" }]} />
-  <div class="wrap-mid uf5db21c" >
-    <h1 class="page-title">الفوائد</h1>
-    <SectionSearch scope="benefit" placeholder="ابحث في الفوائد…" />
-    <div class="card-grid u44f04b0" >
-      {benefits.map((e) => (
-        <a class="card" href={hrefFor("benefit", e.id)}>
-          <div class="benefit-quote u4f07dcd"  data-ar>«{e.data.title}»</div>
-          <div class="faint u7c95cb6" >{names.get(e.data.person)}</div>
-        </a>
-      ))}
+  <div class="wrap-mid u91a8701">
+    <h1 class="page-title">مكتبتي</h1>
+    <p class="page-intro">فوائدُك وإشاراتُك المرجعيةُ — تُصنَع بتظليلِ النصِّ أثناء القراءة، وتُحفَظ على هذا الجهازِ وحده.</p>
+    <div class="lib-tabs" data-lib-tabs>
+      <button data-lib-tab="benefit" aria-pressed="true">الفوائد</button>
+      <button data-lib-tab="bookmark" aria-pressed="false">الإشارات المرجعية</button>
     </div>
+    <div data-lib-list></div>
   </div>
+  <script>
+    import "../scripts/library.ts";
+  </script>
 </Base>
