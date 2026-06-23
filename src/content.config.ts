@@ -108,6 +108,7 @@ const series = defineCollection({
   schema: z
     .object({
       ...shared,
+      kind: z.enum(["شرح", "عام"]).default("عام"),
       person: slug,         // → Person (teacher)
       topics: topicsField,
       source_type: z.enum(["book", "poem"]).optional(),
