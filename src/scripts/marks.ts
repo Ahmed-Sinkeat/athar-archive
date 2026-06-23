@@ -292,7 +292,7 @@ function closeFind() {
   findMatches = [];
 }
 // floating opener — reading pages only (mobile has no Ctrl+F)
-let findFab: HTMLElement | null = null;
+let findFab: HTMLButtonElement | null = null;
 function syncFindFab() {
   const reading = !!root()?.querySelector(".prose, .verse");
   if (reading && !findFab) {
@@ -308,7 +308,7 @@ function syncFindFab() {
 }
 
 // --- resume (آخر موضع قراءة) ---
-let resumeEl: HTMLElement | null = null;
+let resumeEl: HTMLButtonElement | null = null;
 function saveScroll() {
   const h = document.documentElement.scrollHeight - window.innerHeight;
   if (h <= 0) return;
