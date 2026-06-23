@@ -678,3 +678,82 @@ html.hide-vnums .vnum { display: none; }
 .weekly-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
 .weekly-ref.pill-link { display: inline-block; text-decoration: none; }
 .weekly-ref.pill-link:hover { color: var(--accent); background: none; }
+
+/* ============================================================
+   Reading: full-markdown prose, token colors (آية/حديث/اقتباس),
+   personal highlights/benefits/bookmarks, in-page find, resume.
+   Highlights paint via the CSS Custom Highlight API (marks.ts) —
+   no DOM mutation, theme-aware. See src/scripts/marks.ts.
+   ============================================================ */
+
+/* --- full markdown: style the elements remark already emits --- */
+.prose strong { font-weight: 700; color: var(--ink); }
+.prose em { font-style: italic; }
+.prose del { color: var(--ink-faint); }
+.prose ul, .prose ol { margin: 0 0 22px; padding-inline-start: 26px; color: var(--ink-soft); font-size: calc(18px * var(--reading-scale)); line-height: 2; }
+.prose li { margin-bottom: 8px; }
+.prose li::marker { color: var(--accent); }
+.prose hr { border: 0; height: 0; border-top: 1px solid var(--rule-strong); margin: 34px auto; width: 42%; }
+.prose code { font-family: var(--font-mono); font-size: 0.88em; background: var(--paper-2); border: 1px solid var(--rule); border-radius: 5px; padding: 1px 5px; direction: ltr; unicode-bidi: isolate; }
+.prose pre { background: var(--paper-2); border: 1px solid var(--rule-strong); border-radius: 10px; padding: 14px 16px; overflow-x: auto; margin: 0 0 22px; direction: ltr; }
+.prose pre code { background: none; border: 0; padding: 0; font-size: 0.92em; }
+.prose table { border-collapse: collapse; margin: 0 0 22px; font-size: calc(16px * var(--reading-scale)); }
+.prose th, .prose td { border: 1px solid var(--rule-strong); padding: 7px 12px; text-align: start; }
+.prose th { background: var(--paper-2); }
+
+/* --- token colors: آية ﴿﴾ · حديث «» · اقتباس "" (wrapped at build) --- */
+:root { --tok-ayah: #2f6f54; --tok-hadith: #8a5a20; --tok-quote: #6a51a6; }
+html[data-theme="sepia"] { --tok-ayah: #2c6a4f; --tok-hadith: #87571d; --tok-quote: #62499c; }
+html[data-theme="dark"]  { --tok-ayah: #79cda0; --tok-hadith: #d6ac63; --tok-quote: #b6a0e6; }
+.tok-ayah   { color: var(--tok-ayah); }
+.tok-hadith { color: var(--tok-hadith); }
+.tok-quote  { color: var(--tok-quote); font-style: italic; }
+
+/* --- personal highlights (CSS Custom Highlight API) --- */
+::highlight(aa-review)   { background-color: rgba(240, 195, 60, 0.40); }
+::highlight(aa-benefit)  { background-color: rgba(60, 175, 110, 0.34); }
+::highlight(aa-bookmark) { background-color: rgba(90, 140, 230, 0.26); text-decoration: underline; text-decoration-color: rgba(90, 140, 230, 0.7); }
+::highlight(aa-find)     { background-color: rgba(255, 138, 0, 0.55); color: #1a1206; }
+html[data-theme="dark"] ::highlight(aa-review)  { background-color: rgba(225, 185, 45, 0.32); }
+html[data-theme="dark"] ::highlight(aa-benefit) { background-color: rgba(70, 200, 130, 0.28); }
+html[data-theme="dark"] ::highlight(aa-find)    { background-color: rgba(255, 150, 30, 0.55); color: #fff; }
+
+/* --- selection toolbar (built by marks.ts, appended to <body>) --- */
+.aa-tools { position: absolute; z-index: 80; display: flex; gap: 4px; padding: 5px; background: var(--surface); border: 1px solid var(--rule-strong); border-radius: 12px; box-shadow: 0 12px 36px rgba(20,16,12,0.22); transform: translate(-50%, -100%); opacity: 0; transition: opacity 0.12s; pointer-events: none; }
+.aa-tools[data-open] { opacity: 1; pointer-events: auto; }
+.aa-tools button { font-family: var(--font-ui); font-size: 13px; color: var(--ink); background: var(--paper); border: 1px solid var(--rule); border-radius: 8px; padding: 6px 11px; cursor: pointer; display: flex; align-items: center; gap: 6px; }
+.aa-tools button:hover { border-color: var(--accent); }
+.aa-tools .aa-dot { width: 11px; height: 11px; border-radius: 50%; flex: none; }
+.aa-tools .aa-dot.review { background: rgba(240,195,60,0.95); }
+.aa-tools .aa-dot.benefit { background: rgba(60,175,110,0.95); }
+.aa-tools .aa-dot.bookmark { background: rgba(90,140,230,0.95); }
+.aa-tools .aa-del { color: var(--accent); }
+.aa-note { display: flex; gap: 5px; align-items: stretch; }
+.aa-note textarea { font-family: var(--font-ui); font-size: 13px; color: var(--ink); background: var(--paper); border: 1px solid var(--rule); border-radius: 8px; padding: 6px 9px; width: 200px; height: 54px; resize: none; }
+
+/* --- in-page find bar --- */
+.aa-find { position: fixed; z-index: 75; top: 64px; inset-inline-end: 16px; display: flex; align-items: center; gap: 7px; background: var(--surface); border: 1px solid var(--rule-strong); border-radius: 30px; box-shadow: 0 10px 30px rgba(20,16,12,0.18); padding: 5px 7px 5px 14px; }
+.aa-find[hidden] { display: none; }
+.aa-find input { font-family: var(--font-ui); font-size: 14px; color: var(--ink); background: transparent; border: 0; outline: none; width: clamp(120px, 30vw, 200px); }
+.aa-find .aa-find-count { font-family: var(--font-mono); font-size: 12px; color: var(--ink-faint); min-width: 44px; text-align: center; }
+.aa-find button { background: transparent; border: 0; color: var(--ink-soft); cursor: pointer; font-size: 15px; width: 28px; height: 28px; border-radius: 50%; }
+.aa-find button:hover { color: var(--accent); background: var(--paper-2); }
+
+/* --- resume pill (آخر موضع قراءة) --- */
+.aa-resume { position: fixed; z-index: 75; inset-block-end: 22px; inset-inline-start: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 9px; font-family: var(--font-ui); font-size: 14px; color: #fff; background: var(--accent-solid); border: 0; border-radius: 30px; padding: 11px 20px; cursor: pointer; box-shadow: 0 12px 34px rgba(20,16,12,0.28); }
+.aa-resume[hidden] { display: none; }
+
+/* --- مكتبتي: personal benefits + bookmarks list (/benefits) --- */
+.lib-empty { font-family: var(--font-ui); color: var(--ink-soft); font-size: 15.5px; line-height: 1.9; background: var(--surface); border: 1px dashed var(--rule-strong); border-radius: 14px; padding: 28px 22px; text-align: center; }
+.lib-card { display: block; position: relative; text-decoration: none; border: 1px solid var(--rule-strong); border-radius: 14px; background: var(--surface); padding: 16px 18px; }
+.lib-card:hover { border-color: var(--accent); }
+.lib-note { font-family: var(--font-ui); font-size: 14px; color: var(--ink-soft); margin-top: 9px; line-height: 1.8; }
+.lib-src { font-family: var(--font-ui); font-size: 12.5px; color: var(--ink-faint); margin-top: 9px; }
+.lib-del { position: absolute; inset-block-start: 10px; inset-inline-end: 12px; background: transparent; border: 0; color: var(--ink-faint); cursor: pointer; font-size: 18px; line-height: 1; }
+.lib-del:hover { color: var(--accent); }
+.lib-tabs { display: flex; gap: 8px; margin-bottom: 20px; }
+.lib-tabs button { font-family: var(--font-ui); font-size: 14px; color: var(--ink-soft); background: var(--surface); border: 1px solid var(--rule-strong); border-radius: 30px; padding: 7px 18px; cursor: pointer; }
+.lib-tabs button[aria-pressed="true"] { color: var(--accent); border-color: var(--accent); }
+.aa-findbtn { position: fixed; z-index: 74; inset-block-end: 22px; inset-inline-end: 18px; width: 48px; height: 48px; border-radius: 50%; border: 1px solid var(--rule-strong); background: var(--surface); color: var(--ink); font-size: 18px; cursor: pointer; box-shadow: 0 10px 28px rgba(20,16,12,0.20); }
+.aa-findbtn[hidden] { display: none; }
+.aa-findbtn:hover { border-color: var(--accent); }

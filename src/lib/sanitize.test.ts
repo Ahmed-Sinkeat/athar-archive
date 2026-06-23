@@ -31,4 +31,17 @@ describe("markdownToSafeHtml", () => {
     const html = markdownToSafeHtml("بسم الله الرحمن الرحيم");
     expect(html).toContain("بسم الله الرحمن الرحيم");
   });
+
+  it("wraps آية in its own token and quotes in the quote token", () => {
+    const html = markdownToSafeHtml('قال تعالى ﴿إنا أعطيناك الكوثر﴾ وقال «من حسن إسلام المرء» وقال "كلمة"');
+    expect(html).toContain('<span class="tok-ayah">﴿إنا أعطيناك الكوثر﴾</span>');
+    expect(html).toContain('<span class="tok-quote">«من حسن إسلام المرء»</span>');
+    expect(html).toContain('<span class="tok-quote">"كلمة"</span>');
+  });
+
+  it("does not tokenise inside code spans", () => {
+    const html = markdownToSafeHtml('`«not a hadith»`');
+    expect(html).not.toContain("tok-hadith");
+    expect(html).toContain("<code>");
+  });
 });

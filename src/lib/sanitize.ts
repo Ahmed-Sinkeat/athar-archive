@@ -21,6 +21,49 @@ function collectText(node: any): string {
   return "";
 }
 
+// Wrap recognised Arabic spans in colour tokens from punctuation already in the
+// text → no database. آية ﴿…﴾ is unambiguous (Quranic ornate brackets). Quotes
+// «…» / "…" / "…" all get ONE colour: punctuation can't tell a حديث from any
+// other citation (in this corpus «…» also wraps example-words), so we don't
+// guess. The distinct `tok-hadith` colour stays in the CSS for an explicit
+// opt-in later. Runs AFTER sanitize (spans survive; text already sanitized).
+// Skips code/pre. First matching opener wins via ordered alternation.
+const TOK_RE = /(﴿[^﴾]*﴾)|(«[^»]*»)|([“”][^“”]*[“”])|("[^"]*")/g;
+const TOK_CLASS = ["tok-ayah", "tok-quote", "tok-quote", "tok-quote"];
+
+function splitTokens(value: string): any[] {
+  const out: any[] = [];
+  let last = 0;
+  for (const m of value.matchAll(TOK_RE)) {
+    const i = m.index!;
+    if (i > last) out.push({ type: "text", value: value.slice(last, i) });
+    const cls = TOK_CLASS[m.slice(1).findIndex(Boolean)];
+    out.push({ type: "element", tagName: "span", properties: { className: [cls] }, children: [{ type: "text", value: m[0] }] });
+    last = i + m[0].length;
+  }
+  if (last < value.length) out.push({ type: "text", value: value.slice(last) });
+  return out.length ? out : [{ type: "text", value }];
+}
+
+function rehypeArabicTokens() {
+  return (tree: any) => {
+    const walk = (node: any, parentTag: string | null) => {
+      if (!node.children) return;
+      const next: any[] = [];
+      for (const child of node.children) {
+        if (child.type === "text" && parentTag !== "code" && parentTag !== "pre") {
+          next.push(...splitTokens(child.value ?? ""));
+        } else {
+          if (child.type === "element") walk(child, child.tagName);
+          next.push(child);
+        }
+      }
+      node.children = next;
+    };
+    walk(tree, null);
+  };
+}
+
 // Give headings stable Arabic-slug ids (matches parseLesson() anchors so the
 // lesson TOC and rendered headings align). Runs after sanitize.
 function rehypeHeadingIds() {
@@ -47,6 +90,7 @@ const processor = unified()
   .use(remarkRehype, { allowDangerousHtml: true })
   .use(rehypeRaw)
   .use(rehypeSanitize, sanitizeSchema)
+  .use(rehypeArabicTokens)
   .use(rehypeHeadingIds)
   .use(rehypeStringify);
 
