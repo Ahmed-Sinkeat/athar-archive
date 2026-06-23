@@ -1,10 +1,11 @@
 ---
-title: شيخ الإسلام ابن تيمية
+title: ابن تيمية
 status: published
 published_at: 2024-01-01
-born: "661 هـ"
-died: "728 هـ"
+born: 661 هـ
+died: 728 هـ
 location: حران / دمشق
+tabaqa: المتوسطون
 era: المتأخّر
 also_known_as:
   - أحمد بن عبد الحليم
