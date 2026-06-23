@@ -1,5 +1,6 @@
 ---
 title: شرح العقيدة الواسطية
+kind: شرح
 person: ibn-taymiyyah
 topics:
   - al-asma-was-sifat
