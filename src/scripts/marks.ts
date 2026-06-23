@@ -381,8 +381,7 @@ document.addEventListener("click", (e) => {
 function onPage() {
   hideTools();
   closeFind();
-  if (supportsHL) CSS.highlights.clear();
-  findHL = null; // re-registered on next find (clear() dropped its registration)
+  findHL = null;
   paint();
   syncFindFab();
   maybeResume();
