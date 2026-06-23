@@ -502,9 +502,33 @@ function enhanceProse() {
     if (activeVerse) { activeVerse.classList.remove("ann-active-verse"); activeVerse = null; }
   }
 
+  // build synthetic ann-packs for page-sep حاشية notes so openSheet() works unchanged
+  function injectPageNotes() {
+    document.querySelectorAll<HTMLElement>(".page-sep[data-notes]").forEach((sep) => {
+      const packId = "ann-page-" + sep.dataset.page;
+      if (document.getElementById(packId)) return;
+      let notes: string[];
+      try { notes = JSON.parse(sep.dataset.notes!); } catch { return; }
+      const pack = document.createElement("div");
+      pack.className = "ann-pack"; pack.id = packId; pack.setAttribute("data-ann-pack", ""); pack.hidden = true;
+      const entry = document.createElement("div");
+      entry.className = "ann-entry k-hashiya"; entry.setAttribute("data-kind", "حاشية"); entry.setAttribute("data-label", "حاشية");
+      const body = document.createElement("div");
+      body.className = "ann-entry-body"; body.setAttribute("data-ar", "");
+      notes.forEach((n) => { const p = document.createElement("p"); p.textContent = n; body.appendChild(p); });
+      entry.appendChild(body);
+      pack.appendChild(entry);
+      sep.after(pack);
+      sep.dataset.ann = packId;
+    });
+  }
+
   document.addEventListener("click", (e) => {
     const t = e.target as HTMLElement;
     if (t.closest(".ann-sheet")) return; // clicks inside the sheet are handled by its own buttons
+    // page separator click → open its حاشية in the sheet
+    const sep = t.closest<HTMLElement>(".page-sep[data-ann]");
+    if (sep) { e.preventDefault(); openSheet(sep.dataset.ann!); return; }
     const mark = t.closest<HTMLElement>(".ann-mark");
     if (mark) { e.preventDefault(); openSheet(mark.getAttribute("data-ann") || ""); return; }
     // whole-paragraph note: tap the فقرة
@@ -518,7 +542,9 @@ function enhanceProse() {
     if (sheet && !sheet.hidden) close(); // outside click
   });
   document.addEventListener("keydown", (e) => { if (e.key === "Escape") close(); });
-  document.addEventListener("astro:after-swap", () => { close(); sheet = null; }); // sheet is reattached on next open
+  document.addEventListener("astro:after-swap", () => { close(); sheet = null; });
+  injectPageNotes();
+  document.addEventListener("astro:page-load", injectPageNotes);
 })();
 
 // --- audio recitation switcher (متون/منظومات with multiple recordings) ---

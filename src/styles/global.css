@@ -674,6 +674,12 @@ html.hide-vnums .vnum { display: none; }
 .verse:has(> [data-ann-pack]) .verse-body { cursor: pointer; }
 .prose p.has-ann { cursor: pointer; border-inline-start: 2px solid color-mix(in srgb, var(--accent) 35%, transparent); padding-inline-start: 10px; }
 
+/* page separators emitted by epub-import: thin rule + page number pill (right=start in RTL) */
+.page-sep { position: relative; border: none; border-top: 1px solid var(--rule); margin: 2rem 0 1.5rem; }
+.page-sep[data-page]::after { content: attr(data-page); position: absolute; inset-inline-start: 0; top: -0.65em; font-size: 0.72em; font-family: var(--font-ui); color: var(--ink-soft); background: var(--bg); padding: 0 0.35em; line-height: 1; }
+.page-sep[data-notes] { cursor: pointer; }
+.page-sep[data-notes]:hover::after { color: var(--accent); }
+
 /* مختارات الأسبوع: era + subject pills on a بيت card */
 .weekly-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
 .weekly-ref.pill-link { display: inline-block; text-decoration: none; }
