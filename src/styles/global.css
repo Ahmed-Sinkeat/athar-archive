@@ -870,3 +870,10 @@ html[data-theme="dark"] ::highlight(aa-find)    { background-color: rgba(255, 15
 .page-sep[data-ann] { cursor: pointer; }
 .page-sep[data-ann]:hover { color: var(--accent); }
 .page-sep[data-ann]::after { content: " · حواشٍ"; }
+/* عرض مستمر — hide page separators, flow paragraphs as inline text */
+html.pages-flow .page-sep { display: none; }
+html.pages-flow .prose > p { display: inline; }
+html.pages-flow .prose > p::after { content: " "; }
+/* inline footnote ref sups (future EPUB imports) */
+sup[data-fn] { cursor: pointer; color: var(--accent); font-size: 0.72em; margin-inline-start: 1px; }
+sup[data-fn]:hover { text-decoration: underline; }

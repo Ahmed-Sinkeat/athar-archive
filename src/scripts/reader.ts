@@ -10,6 +10,7 @@ const LS = {
   tashkeel: "aa-tashkeel",
   vnums: "aa-vnums",
   mode: "aa-mode",
+  pages: "aa-pages",
 };
 
 const SCALE_MIN = 0.8;
@@ -74,6 +75,15 @@ function applyVnums(show: boolean) {
   root.classList.toggle("hide-vnums", !show);
   localStorage.setItem(LS.vnums, show ? "1" : "0");
   document.querySelectorAll<HTMLElement>('[data-toggle="verseNums"]').forEach((b) =>
+    b.setAttribute("aria-pressed", String(show)),
+  );
+}
+
+// --- page separators (عرض الصفحات / عرض مستمر) ---
+function applyPages(show: boolean) {
+  root.classList.toggle("pages-flow", !show);
+  localStorage.setItem(LS.pages, show ? "paged" : "flow");
+  document.querySelectorAll<HTMLElement>('[data-toggle="pages"]').forEach((b) =>
     b.setAttribute("aria-pressed", String(show)),
   );
 }
@@ -205,6 +215,7 @@ const actions: Record<string, () => void> = {
   "font:dec": () => setScale(getScale() - SCALE_STEP),
   "toggle:tashkeel": () => applyTashkeel(root.classList.contains("no-tashkeel")),
   "toggle:verseNums": () => applyVnums(root.classList.contains("hide-vnums")),
+  "toggle:pages": () => applyPages(root.classList.contains("pages-flow")),
   "theme:light": () => setTheme("light"),
   "theme:sepia": () => setTheme("sepia"),
   "theme:dark": () => setTheme("dark"),
@@ -554,6 +565,9 @@ function enhanceProse() {
     // page separator click → open its حاشية in the sheet
     const sep = t.closest<HTMLElement>(".page-sep[data-ann]");
     if (sep) { e.preventDefault(); openSheet(sep.dataset.ann!); return; }
+    // inline footnote sup (future EPUB imports): <sup data-fn="n" data-sep-page="p">
+    const fnSup = t.closest<HTMLElement>("sup[data-fn][data-sep-page]");
+    if (fnSup) { e.preventDefault(); openSheet("ann-page-" + fnSup.dataset.sepPage); return; }
     const mark = t.closest<HTMLElement>(".ann-mark");
     if (mark) { e.preventDefault(); openSheet(mark.getAttribute("data-ann") || ""); return; }
     // whole-paragraph note: tap the فقرة
@@ -601,6 +615,7 @@ window.addEventListener("resize", updateProgress);
 // --- sync control states from storage on load (values already applied pre-paint) ---
 syncThemeButtons(currentTheme());
 applyVnums(localStorage.getItem(LS.vnums) !== "0");
+applyPages(localStorage.getItem(LS.pages) !== "flow");
 if (localStorage.getItem(LS.tashkeel) === "0") applyTashkeel(false);
 else document.querySelectorAll<HTMLElement>('[data-toggle="tashkeel"]').forEach((b) => b.setAttribute("aria-pressed", "true"));
 
@@ -641,6 +656,7 @@ function applyStoredPrefs() {
     if (s) root.style.setProperty("--reading-scale", s);
     root.classList.toggle("hide-vnums", localStorage.getItem(LS.vnums) === "0");
     root.classList.toggle("no-tashkeel", localStorage.getItem(LS.tashkeel) === "0");
+    root.classList.toggle("pages-flow", localStorage.getItem(LS.pages) === "flow");
     const md = localStorage.getItem(LS.mode);
     if (md && md !== "qiraa") root.setAttribute("data-mode", md);
     else root.removeAttribute("data-mode");

@@ -88,16 +88,30 @@ export function pageToMd(xhtml: string, pageId: string): { md: string; notes: st
   inner = inner.replace(/\{/g, "﴿").replace(/\}/g, "﴾"); // Quran braces -> ﴿ ﴾
   let text = decode(stripTags(inner));
 
-  // strip in-text footnote number markers — notes are stored in the page
-  // separator's data-notes and shown in the حاشية panel, not inline.
-  // ponytail: strips only the digit glued to an Arabic letter (same heuristic
-  // as the old GFM-ref insertion). Digit + Arabic letter is unambiguous here.
+  // Replace inline footnote markers (digit glued to Arabic) with clickable <sup>.
+  // Content numbers (hadith sequences, years) are not preceded by Arabic → untouched.
   for (const fn of fnotes) {
-    text = text.replace(new RegExp(`(?<=[\\u0600-\\u06FF])${fn.n}(?![0-9])`, "g"), "");
+    text = text.replace(
+      new RegExp(`(?<=[\\u0600-\\u06FF])${fn.n}(?![0-9])`, "g"),
+      `<sup data-fn="${fn.n}" data-sep-page="${pageId}">${fn.n}</sup>`,
+    );
   }
 
+  // Join lines with space (not \n\n) to avoid turning every typeset line into
+  // its own paragraph. Only headings (## …) get a real paragraph break.
   const lines = text.split("\n").map((l) => l.replace(/[ \t]+/g, " ").trim()).filter(Boolean);
-  return { md: lines.join("\n\n"), notes: fnotes.map((fn) => fn.t) };
+  const parts: string[] = [];
+  let para = "";
+  for (const line of lines) {
+    if (line.startsWith("#")) {
+      if (para) { parts.push(para.trim()); para = ""; }
+      parts.push(line);
+    } else {
+      para += (para ? " " : "") + line;
+    }
+  }
+  if (para) parts.push(para.trim());
+  return { md: parts.join("\n\n"), notes: fnotes.map((fn) => fn.t) };
 }
 
 // ---------- yaml ----------
@@ -167,9 +181,9 @@ function build(file: string, opt: Opt): { book: { path: string; text: string }; 
   const bodyParts: string[] = [];
   let pageNum = 0;
   for (const p of pages) {
-    const { md, notes } = pageToMd(p.xhtml, p.id);
-    if (!md.trim()) continue;
     pageNum++;
+    const { md, notes } = pageToMd(p.xhtml, String(pageNum));
+    if (!md.trim()) { pageNum--; continue; }
     const na = notes.length ? ` data-notes='${JSON.stringify(notes).replace(/'/g, "&#39;")}'` : "";
     // page separator after the content: horizontal rule + page number pill + optional حاشية
     bodyParts.push(`${md}\n\n<div class="page-sep" data-page="${pageNum}"${na}></div>`);
