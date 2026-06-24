@@ -22,14 +22,21 @@ function collectText(node: any): string {
 }
 
 // Wrap recognised Arabic spans in colour tokens from punctuation already in the
-// text → no database. آية ﴿…﴾ is unambiguous (Quranic ornate brackets). Quotes
-// «…» / "…" / "…" all get ONE colour: punctuation can't tell a حديث from any
-// other citation (in this corpus «…» also wraps example-words), so we don't
-// guess. The distinct `tok-hadith` colour stays in the CSS for an explicit
-// opt-in later. Runs AFTER sanitize (spans survive; text already sanitized).
-// Skips code/pre. First matching opener wins via ordered alternation.
-const TOK_RE = /(﴿[^﴾]*﴾)|(«[^»]*»)|([“”][^“”]*[“”])|("[^"]*")/g;
-const TOK_CLASS = ["tok-ayah", "tok-quote", "tok-quote", "tok-quote"];
+// text → no database. ﴿…﴾ is unambiguous (Quranic ornate brackets).
+// Quotes «…» / “…” all get ONE colour: punctuation can't
+// tell a hadith from any other citation, so we don't guess. The distinct
+// `tok-hadith` colour stays in CSS for an explicit opt-in later.
+// Runs AFTER sanitize. Skips code/pre. First matching opener wins.
+// ponytail: \u escapes — esbuild rejects raw Arabic chars in regex literals
+const TOK_RE = new RegExp(
+  "(﴿[^﴾]*﴾)" +
+  "|(\[[\\u0600-\\u06FF\\s]+:[\\d\\u0660-\\u0669]+(?:[-\\u2013][\\d\\u0660-\\u0669]+)?\\])" +
+  "|(«[^»]*»)" +
+  "|([“”][^“”]*[“”])" +
+  '|("[^"]*")',
+  "g"
+);
+const TOK_CLASS = ["tok-ayah", "tok-quran-ref", "tok-quote", "tok-quote", "tok-quote"];
 
 function splitTokens(value: string): any[] {
   const out: any[] = [];

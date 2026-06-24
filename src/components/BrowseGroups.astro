@@ -43,11 +43,22 @@ const personOptions: { id: string; name: string }[] = personNames
 const topicMap = new Map<string, string>();
 for (const g of groups) for (const t of g.topics) topicMap.set(t.id, t.title);
 const topicOptions = [...topicMap.entries()].map(([id, title]) => ({ id, title })).sort((a, b) => a.title.localeCompare(b.title, "ar"));
+
+// Build kind filter options from allItems
+const kindOptions = [...new Set(
+  allItems.map((it) => (it.data.kind as string | undefined)).filter(Boolean) as string[]
+)].sort((a, b) => a.localeCompare(b, "ar"));
 ---
 <div class="browse show-flat" data-browse>
   <div class="browse-toolbar">
-    {(personOptions.length > 1 || topicOptions.length > 1) && (
+    {(kindOptions.length > 1 || personOptions.length > 1 || topicOptions.length > 1) && (
       <div class="browse-filters">
+        {kindOptions.length > 1 && (
+          <select class="browse-filter" data-filter-key="kind" aria-label="فلترة بالنوع">
+            <option value="">كل الأنواع</option>
+            {kindOptions.map((k) => <option value={k}>{k}</option>)}
+          </select>
+        )}
         {personOptions.length > 1 && (
           <select class="browse-filter" data-filter-key="person" aria-label="فلترة بالعَلَم">
             <option value="">كل الأعلام</option>

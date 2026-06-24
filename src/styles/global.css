@@ -472,9 +472,11 @@ textarea.cinput { resize: vertical; line-height: 1.7; }
 /* ---------- prose (matn / article / lesson body) ---------- */
 .prose { font-family: var(--font-serif); }
 .prose p {
-  font-size: calc(20px * var(--reading-scale)); line-height: 2.05; color: var(--ink-soft);
-  margin: 0 0 22px; text-wrap: pretty;
+  font-size: calc(20px * var(--reading-scale)); line-height: 2.1; color: var(--ink-soft);
+  margin: 0 0 1.8em; text-wrap: pretty;
+  text-align: justify; text-align-last: right;
 }
+.tok-quran-ref { color: var(--ink-faint); font-size: 0.9em; }
 .prose h2, .prose h3 {
   font-family: var(--font-display); font-weight: 500; color: var(--ink);
   margin: 40px 0 16px; scroll-margin-top: 90px;
