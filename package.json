@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "new": "node scripts/new-content.mjs",
+    "import:epub": "tsx scripts/epub-import.ts",
     "build": "pnpm validate:content && astro build && pagefind --site dist && tsx scripts/gen-redirects.ts && node scripts/gen-headers.mjs",
     "preview": "astro preview",
     "validate": "astro check",
