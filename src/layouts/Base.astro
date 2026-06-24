@@ -42,21 +42,22 @@ const pagefindFilters = searchMeta
     ].filter(Boolean) as string[]
   : [];
 
-// Top nav: the four primary reading collections + المسائل. The title links home
-// (no الرئيسية item); الموضوعات/الفوائد/الأعلام/المقالات live in the footer + browse.
+// Top nav: core collections + الأعلام + شبكة المعرفة.
 const nav = [
   { id: "books", label: "الكتب", href: "/books" },
   { id: "poems", label: "الشعر", href: "/poems" },
-  { id: "series", label: "الدروس", href: "/series" },
   { id: "questions", label: "المسائل", href: "/questions" },
-  { id: "articles", label: "المقالات", href: "/articles" },
+  { id: "people", label: "الأعلام", href: "/people" },
+  { id: "graph", label: "شبكة المعرفة", href: "/graph" },
 ];
-// Full nav (drawer + footer keep every section reachable).
+// Full nav (drawer keeps every section reachable, including الدروس/المقالات).
 const navAll = [
   ...nav,
+  { id: "series", label: "الدروس", href: "/series" },
+  { id: "articles", label: "المقالات", href: "/articles" },
   { id: "subjects", label: "الموضوعات", href: "/subjects" },
-  { id: "benefits", label: "الفوائد", href: "/benefits" },
-  { id: "people", label: "الأعلام", href: "/people" },
+  { id: "benefits", label: "كُناشة", href: "/benefits" },
+  { id: "mujam", label: "المعجم", href: "/mujam" },
 ];
 
 // In-bar search filter: type checkboxes + a specific-عَلَم picker (both backed by
@@ -66,7 +67,7 @@ const searchTypes = [
   { id: "poem", label: "منظومة" },
   { id: "lesson", label: "درس" },
   { id: "question", label: "مسائل" },
-  { id: "benefit", label: "فائدة" },
+  { id: "benefit", label: "كُناشة" },
   { id: "article", label: "مقالة" },
 ];
 const filterPersons = (await getCollection("person"))
@@ -246,7 +247,8 @@ const fullTitle = title === "أهل الأثر" ? title : `${title} · أهل ا
             <a href="/series">الدروس</a>
             <a href="/topics">الموضوعات</a>
             <a href="/people">الأعلام</a>
-            <a href="/benefits">الفوائد</a>
+            <a href="/benefits">كُناشة</a>
+            <a href="/mujam">المعجم</a>
             <a href="/articles">المقالات</a>
             <a href="/questions">المسائل</a>
             <a href="/graph">شبكة المعرفة</a>

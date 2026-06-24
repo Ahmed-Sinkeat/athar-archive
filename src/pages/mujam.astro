@@ -1,0 +1,29 @@
+---
+import Base from "../layouts/Base.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import SectionSearch from "../components/SectionSearch.astro";
+import { getCollection } from "astro:content";
+import { isPub } from "../lib/site";
+import { hrefFor } from "../lib/display";
+
+const terms = (await getCollection("term")).filter(isPub)
+  .sort((a, b) => a.data.title.localeCompare(b.data.title, "ar"));
+---
+<Base title="المعجم" description="معجمٌ لمصطلحات العلوم الإسلامية وتعريفاتها." activeNav="mujam">
+  <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "المعجم" }]} />
+  <SectionSearch type="term" label="المعجم" />
+  <div class="wrap-mid" style="padding-bottom: 80px;">
+    {terms.length === 0 ? (
+      <p class="faint" style="padding: 48px 0">لا توجد مصطلحات بعد — أضِفْ أوّلَ مصطلح من <a href="/compose">إدارة المحتوى</a>.</p>
+    ) : (
+      <ol class="mujam-list">
+        {terms.map((t) => (
+          <li class="mujam-item">
+            <a class="mujam-term" href={hrefFor("term", t.id)}>{t.data.title}</a>
+            {t.data.definition && <span class="mujam-def">{t.data.definition}</span>}
+          </li>
+        ))}
+      </ol>
+    )}
+  </div>
+</Base>

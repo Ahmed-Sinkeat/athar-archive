@@ -56,13 +56,27 @@ const jsonLd = bookLd({
     <div class="rule-short"></div>
 
     {a.chunked ? (
-      <div class="card-grid ue1dce25" >
-        {a.chapters.map((c) => (
-          <a class="card u6f3d7fe" href={hrefFor("book", entry.id, { chapter: c.slug })} >
-            <div class="card-title ub9199e2" >{c.title}</div>
-          </a>
-        ))}
-      </div>
+      <>
+        <!-- compact chapter chip bar -->
+        <div class="chap-bar">
+          {a.chapters.map((c) => (
+            <a class="chap-chip" href={`#chap-${c.slug}`}>{c.title}</a>
+          ))}
+          <a class="chap-chip chap-chip-ks" href="/benefits">كُناشة</a>
+        </div>
+        <!-- accordion: one <details> per chapter, all content in DOM -->
+        <div class="book-accordion">
+          {a.chapters.map((c) => (
+            <details class="book-chap-item" id={`chap-${c.slug}`}>
+              <summary class="book-chap-sum">
+                {c.title}
+                <a class="book-chap-open" href={hrefFor("book", entry.id, { chapter: c.slug })} onclick="event.stopPropagation()">فتح ←</a>
+              </summary>
+              <div class="book-chap-body"><Prose body={c.content} /></div>
+            </details>
+          ))}
+        </div>
+      </>
     ) : isMatn("book", entry.data) ? (
       <>
         <StudyBar prose />
