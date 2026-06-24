@@ -3,7 +3,7 @@
 // Pages call readBody(entry) to load body from disk on demand.
 import type { Loader } from "astro/loaders";
 import { readdir, readFile } from "node:fs/promises";
-import { join, resolve } from "node:path";
+import { join, resolve, relative } from "node:path";
 import matter from "gray-matter";
 
 export function fmLoader(base: string): Loader {
@@ -27,7 +27,7 @@ export function fmLoader(base: string): Loader {
       }
 
       for (const file of files) {
-        const filePath = join(absBase, file);
+        const filePath = relative(process.cwd(), join(absBase, file));
         const raw = await readFile(filePath, "utf-8");
         const { data } = matter(raw);
         const id = file.replace(/\.md$/, "");
