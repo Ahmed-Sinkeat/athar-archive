@@ -6,6 +6,7 @@ import Verse from "../../../components/Verse.astro";
 import StudyBar from "../../../components/StudyBar.astro";
 import { isPub, loadGraph, personNameMap, notesByAnchor, subjectTitlesFor } from "../../../lib/site";
 import { analyzePoem } from "../../../lib/chunk";
+import { readBody } from "../../../lib/read-body";
 import { hrefFor, toArabicDigits } from "../../../lib/display";
 
 export async function getStaticPaths() {
@@ -14,14 +15,16 @@ export async function getStaticPaths() {
   const names = await personNameMap();
   const paths: any[] = [];
   for (const entry of poems) {
-    const a = analyzePoem(entry.body ?? "");
+    const body = await readBody(entry);
+    const a = analyzePoem(body);
     if (!a.chunked) continue;
     const byAnchor = notesByAnchor("poem", entry.id, graph, names);
     const subjects = subjectTitlesFor(entry.data.topics, graph);
+    const tocChapters = a.chapters.map((c) => ({ title: c.title, slug: c.slug, verses: c.verses.length }));
     for (const c of a.chapters) {
       paths.push({
         params: { slug: entry.id, chapter: c.slug },
-        props: { entry, chapter: c, byAnchor, author: names.get(entry.data.person), subjects, allChapters: a.chapters },
+        props: { entry, chapter: c, byAnchor, author: names.get(entry.data.person), subjects, allChapters: tocChapters },
       });
     }
   }

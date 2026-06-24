@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import { config } from "../../ahlalathar.config";
 import { lessonParam } from "../lib/display";
 import { analyzePoem, analyzeBook } from "../lib/chunk";
+import { readBody } from "../lib/read-body";
 
 export const GET: APIRoute = async () => {
   const origin = config.siteUrl;
@@ -21,12 +22,12 @@ export const GET: APIRoute = async () => {
   for (const e of pub(await getCollection("topic"))) add(`/topic/${e.id}`, when(e));
   for (const e of pub(await getCollection("book"))) {
     add(`/book/${e.id}`, when(e));
-    const a = analyzeBook(e.body ?? "");
+    const a = analyzeBook(await readBody(e));
     if (a.chunked) a.chapters.forEach((c) => add(`/book/${e.id}/${c.slug}`, when(e)));
   }
   for (const e of pub(await getCollection("poem"))) {
     add(`/poem/${e.id}`, when(e));
-    const a = analyzePoem(e.body ?? "");
+    const a = analyzePoem(await readBody(e));
     if (a.chunked) a.chapters.forEach((c) => add(`/poem/${e.id}/${c.slug}`, when(e)));
   }
   for (const e of pub(await getCollection("series"))) add(`/series/${e.id}`, when(e));

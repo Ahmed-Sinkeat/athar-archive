@@ -6,6 +6,7 @@ import SectionSearch from "../components/SectionSearch.astro";
 import { personNameMap, personEraMap, loadGraph } from "../lib/site";
 import { hrefFor, toArabicDigits } from "../lib/display";
 import { analyzePoem } from "../lib/chunk";
+import { readBody } from "../lib/read-body";
 import { buildSubjectGroups } from "../lib/browse";
 import { collectionLd } from "../lib/structured-data";
 
@@ -13,13 +14,17 @@ const graph = await loadGraph();
 const names = await personNameMap();
 const eras = await personEraMap();
 const { groups, uncategorized } = buildSubjectGroups("poem", graph);
+const allPoems = graph.all.filter((e) => e.collection === "poem");
+const verseCounts = new Map(
+  await Promise.all(allPoems.map(async (p) => [p.id, analyzePoem(await readBody(p as any)).verseCount] as const))
+);
 const card = (it: any) => ({
   href: hrefFor("poem", it.id),
   title: it.data.title,
   kind: "منظومة",
   matn: true,
   era: it.data.person ? eras.get(it.data.person) : undefined,
-  sub: `${it.data.person ? names.get(it.data.person) ?? "" : ""} · ${toArabicDigits(analyzePoem(it.body ?? "").verseCount)} بيت`,
+  sub: `${it.data.person ? names.get(it.data.person) ?? "" : ""} · ${toArabicDigits(verseCounts.get(it.id) ?? 0)} بيت`,
   cta: "ادخل القراءة ←",
 });
 ---

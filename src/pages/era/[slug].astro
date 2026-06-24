@@ -6,6 +6,7 @@ import EntityCard from "../../components/EntityCard.astro";
 import { isPub, loadGraph } from "../../lib/site";
 import { hrefFor, eraLabel, eraSlug, toArabicDigits, ERA_VALUES } from "../../lib/display";
 import { analyzePoem } from "../../lib/chunk";
+import { readBody } from "../../lib/read-body";
 import { collectionLd } from "../../lib/structured-data";
 
 export async function getStaticPaths() {
@@ -14,6 +15,9 @@ export async function getStaticPaths() {
   const graph = await loadGraph();
   const personById = new Map(people.map((p) => [p.id, p]));
 
+  const verseCounts = new Map(
+    await Promise.all(poems.map(async (p) => [p.id, analyzePoem(await readBody(p)).verseCount] as const))
+  );
   const present = ERA_VALUES.filter((e) => people.some((p) => p.data.era === e));
   return present.map((era) => {
     const poets = people
@@ -22,7 +26,7 @@ export async function getStaticPaths() {
       .sort((a, b) => a.title.localeCompare(b.title, "ar"));
     const eraPoems = poems
       .filter((p) => personById.get(p.data.person)?.data.era === era)
-      .map((p) => ({ id: p.id, title: p.data.title, author: personById.get(p.data.person)?.data.title ?? "", verses: analyzePoem(p.body ?? "").verseCount }))
+      .map((p) => ({ id: p.id, title: p.data.title, author: personById.get(p.data.person)?.data.title ?? "", verses: verseCounts.get(p.id) ?? 0 }))
       .sort((a, b) => a.title.localeCompare(b.title, "ar"));
     return { params: { slug: eraSlug(era)! }, props: { era, poets, eraPoems } };
   });
