@@ -25,6 +25,17 @@ export function slugifyArabic(input: string): string {
   return slug.slice(0, 80).replace(/-+$/g, "");
 }
 
+// Append -2, -3, … until `slug` is unique within `seen`, then record it. Keys on
+// the FINAL slug so a natural heading like "الغلط 2" (→ الغلط-2) can't collide
+// with a generated "الغلط-2" — the old counter-by-base map let that route clash.
+export function uniqueSlug(slug: string, seen: Set<string>): string {
+  let s = slug;
+  let n = 1;
+  while (seen.has(s)) s = `${slug}-${++n}`;
+  seen.add(s);
+  return s;
+}
+
 // --- chapter splitting (h2 = `## …`, exactly two hashes) ---
 
 const H2_RE = /^##\s+(.+?)\s*$/;
@@ -61,13 +72,8 @@ export function splitChapters(body: string): ChapterSplit {
   if (current) chapters.push(finalizeChapter(current, chapters.length));
 
   // dedupe slugs deterministically (-2, -3, …)
-  const seen = new Map<string, number>();
-  for (const ch of chapters) {
-    const base = ch.slug;
-    const n = seen.get(base) ?? 0;
-    seen.set(base, n + 1);
-    if (n > 0) ch.slug = `${base}-${n + 1}`;
-  }
+  const seen = new Set<string>();
+  for (const ch of chapters) ch.slug = uniqueSlug(ch.slug, seen);
 
   return { preamble: preambleLines.join("\n").trim(), chapters };
 }
@@ -205,16 +211,13 @@ export interface LessonHeading {
 
 export function parseLesson(body: string): { headings: LessonHeading[] } {
   const headings: LessonHeading[] = [];
-  const seen = new Map<string, number>();
+  const seen = new Set<string>();
   for (const line of body.split("\n")) {
     const m = line.match(HEADING_RE);
     if (!m) continue;
     const depth = m[1].length as 2 | 3;
     const title = m[2].trim();
-    let slug = slugifyArabic(title) || `section-${headings.length + 1}`;
-    const n = seen.get(slug) ?? 0;
-    seen.set(slug, n + 1);
-    if (n > 0) slug = `${slug}-${n + 1}`;
+    const slug = uniqueSlug(slugifyArabic(title) || `section-${headings.length + 1}`, seen);
     headings.push({ title, slug, depth });
   }
   return { headings };
