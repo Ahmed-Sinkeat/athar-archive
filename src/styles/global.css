@@ -24,7 +24,6 @@
   --accent: #9a2f24;        /* brand red — used as text/border (AA on paper) */
   --accent-solid: #9a2f24;  /* fill behind WHITE text (buttons) */
   --verdigris: #3f6b5e;
-  --gold: #9c7a2e;
 
   /* reading-scale multiplier (font:dec/inc) */
   --reading-scale: 1;
@@ -42,7 +41,6 @@ html[data-theme="sepia"] {
   --accent: #92301f;
   --accent-solid: #92301f;
   --verdigris: #3c6557;
-  --gold: #8f6f26;
 }
 
 html[data-theme="dark"] {
@@ -57,7 +55,6 @@ html[data-theme="dark"] {
   --accent: #e0796b;        /* lightened so accent TEXT meets AA on dark bg */
   --accent-solid: #b6493b;  /* darker fill so WHITE button text meets AA */
   --verdigris: #5e9684;
-  --gold: #c29a4e;
 }
 
 * { box-sizing: border-box; }
@@ -261,7 +258,7 @@ a.icon-btn { text-decoration: none; }
 /* ---------- page heads / sections ---------- */
 .page-title { font-family: var(--font-display); font-weight: 700; font-size: clamp(34px, 5vw, 52px); color: var(--ink); margin: 0 0 8px; }
 .page-intro { font-family: var(--font-ui); font-size: 15.5px; color: var(--ink-soft); margin: 0 0 28px; max-width: 62ch; line-height: 1.7; }
-.section-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.24em; color: var(--accent); margin-bottom: 18px; }
+.section-label { font-family: var(--font-ui); font-size: 11px; letter-spacing: 0.24em; color: var(--accent); margin-bottom: 18px; }
 
 /* ---------- browse grouping (subject → topic) ---------- */
 .browse-group { margin-bottom: 40px; }
@@ -573,7 +570,7 @@ textarea.cinput { resize: vertical; line-height: 1.7; }
 .ann-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(258px, 1fr)); gap: 16px; }
 .ann-card { border: 1px solid var(--rule-strong); border-radius: 14px; background: var(--surface); padding: 22px; }
 .ann-card .badge { display: inline-block; font-family: var(--font-ui); font-size: 10.5px; letter-spacing: 0.06em; border: 1px solid var(--rule-strong); border-radius: 20px; padding: 3px 11px; margin-bottom: 13px; color: var(--ink-faint); }
-.ann-card h3 { font-family: var(--font-display); font-weight: 500; font-size: 18.5px; color: var(--ink); line-height: 1.35; margin: 0; }
+.ann-card h2 { font-family: var(--font-display); font-weight: 500; font-size: 18.5px; color: var(--ink); line-height: 1.35; margin: 0; }
 .ann-card p { font-family: var(--font-ui); font-size: 13.5px; line-height: 1.7; color: var(--ink-soft); margin: 9px 0 0; }
 
 .quote-band { border-radius: 18px; background: linear-gradient(180deg, rgba(154, 47, 36, 0.05), rgba(154, 47, 36, 0.02)); border: 1px solid var(--rule-strong); padding: clamp(34px, 6vw, 62px) clamp(26px, 5vw, 56px); text-align: center; }
@@ -713,11 +710,6 @@ html.hide-vnums .vnum { display: none; }
 .verse:has(> [data-ann-pack]) .verse-body { cursor: pointer; }
 .prose p.has-ann { cursor: pointer; border-inline-start: 2px solid color-mix(in srgb, var(--accent) 35%, transparent); padding-inline-start: 10px; }
 
-/* page separators emitted by epub-import: thin rule + page number pill (right=start in RTL) */
-.page-sep { position: relative; border: none; border-top: 1px solid var(--rule); margin: 2rem 0 1.5rem; }
-.page-sep[data-page]::after { content: attr(data-page); position: absolute; inset-inline-start: 0; top: -0.65em; font-size: 0.72em; font-family: var(--font-ui); color: var(--ink-soft); background: var(--bg); padding: 0 0.35em; line-height: 1; }
-.page-sep[data-notes] { cursor: pointer; }
-.page-sep[data-notes]:hover::after { color: var(--accent); }
 
 /* مختارات الأسبوع: era + subject pills on a بيت card */
 .weekly-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }

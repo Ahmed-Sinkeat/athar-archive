@@ -104,12 +104,15 @@ const fullTitle = title === "أهل الأثر" ? title : `${title} · أهل ا
 
     {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
     <ClientRouter />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      rel="preload" as="style"
       href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Reem+Kufi:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
-      rel="stylesheet"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Reem+Kufi:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" /></noscript>
     <!-- pre-paint: apply saved theme/scale/prefs before first paint to avoid flash -->
     <script is:inline>
       (() => {
@@ -246,7 +249,7 @@ const fullTitle = title === "أهل الأثر" ? title : `${title} · أهل ا
             <a href="/books">الكتب</a>
             <a href="/poems">الشعر</a>
             <a href="/series">الدروس</a>
-            <a href="/topics">الموضوعات</a>
+            <a href="/subjects">الموضوعات</a>
             <a href="/people">الأعلام</a>
             <a href="/benefits">كُناشة</a>
             <a href="/mujam">المعجم</a>
