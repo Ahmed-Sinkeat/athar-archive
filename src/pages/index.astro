@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import Base from "../layouts/Base.astro";
 import { toArabicDigits, hrefFor, labelFor, eraLabel, eraHref } from "../lib/display";
 import { analyzePoem } from "../lib/chunk";
+import { readBody } from "../lib/read-body";
 import { websiteLd } from "../lib/structured-data";
 import { loadGraph, personEraMap } from "../lib/site";
 
@@ -75,7 +76,7 @@ const anns = pub(announcements).sort((a, b) => (b.data.priority ?? 5) - (a.data.
 
 // featured: first published poem, with its opening verses
 const featured = pub(poems)[0];
-const featuredVerses = featured ? analyzePoem(featured.body ?? "").verses.slice(0, 2) : [];
+const featuredVerses = featured ? analyzePoem(await readBody(featured)).verses.slice(0, 2) : [];
 
 // latest across materials by published_at
 const latest = [

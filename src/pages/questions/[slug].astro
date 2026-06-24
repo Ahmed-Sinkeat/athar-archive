@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import Base from "../../layouts/Base.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import { isPub, loadGraph, subjectTitlesFor } from "../../lib/site";
+import { readBody } from "../../lib/read-body";
 import { markdownMasailToHtml } from "../../lib/sanitize";
 import { hrefFor } from "../../lib/display";
 import { questionLd } from "../../lib/structured-data";
@@ -10,18 +11,21 @@ import { questionLd } from "../../lib/structured-data";
 export async function getStaticPaths() {
   const questions = (await getCollection("question")).filter(isPub);
   const graph = await loadGraph();
-  return questions.map((entry) => {
+  const paths = [];
+  for (const entry of questions) {
+    const body = await readBody(entry);
     const person = entry.data.person ? graph.getById("person", entry.data.person) : null;
-    return {
+    paths.push({
       params: { slug: entry.id },
-      props: { entry, personName: person?.data.title, personId: person?.id, subjects: subjectTitlesFor(entry.data.topics, graph) },
-    };
-  });
+      props: { entry, body, personName: person?.data.title, personId: person?.id, subjects: subjectTitlesFor(entry.data.topics, graph) },
+    });
+  }
+  return paths;
 }
 
-const { entry, personName, personId, subjects } = Astro.props;
+const { entry, body, personName, personId, subjects } = Astro.props;
 const path = `/questions/${entry.id}`;
-const answerText = (entry.body ?? "").replace(/[#*_`>]/g, "").replace(/\s+/g, " ").trim().slice(0, 4000);
+const answerText = body.replace(/[#*_`>]/g, "").replace(/\s+/g, " ").trim().slice(0, 4000);
 const jsonLd = questionLd({
   title: entry.data.title, answerText, path,
   crumbs: [{ name: "الرئيسية", path: "/" }, { name: "المسائل", path: "/questions" }, { name: entry.data.title, path }],
@@ -36,6 +40,6 @@ const jsonLd = questionLd({
       {personId && <div class="reader-byline"><a href={hrefFor("person", personId)} class="uae3c165">{personName}</a></div>}
     </div>
     <div class="rule-short"></div>
-    <div class="ua26bda7 prose" data-ar set:html={markdownMasailToHtml(entry.body ?? "")} />
+    <div class="ua26bda7 prose" data-ar set:html={markdownMasailToHtml(body)} />
   </div>
 </Base>

@@ -6,6 +6,7 @@ import Prose from "../../../components/Prose.astro";
 import AudioPlayer from "../../../components/AudioPlayer.astro";
 import { isPub, loadGraph, personNameMap } from "../../../lib/site";
 import { parseLesson } from "../../../lib/chapters";
+import { readBody } from "../../../lib/read-body";
 import { hrefFor, lessonParam, toArabicDigits } from "../../../lib/display";
 import { lessonLd } from "../../../lib/structured-data";
 
@@ -16,8 +17,10 @@ export async function getStaticPaths() {
   const paths: any[] = [];
   for (const s of seriesList) {
     const lessons = graph.lessonsBySeries(s.id).filter(isPub);
-    lessons.forEach((lesson, i) => {
-      const headings = parseLesson(lesson.body ?? "").headings.filter((h) => h.depth === 2);
+    for (let i = 0; i < lessons.length; i++) {
+      const lesson = lessons[i];
+      const lessonBody = await readBody(lesson);
+      const headings = parseLesson(lessonBody).headings.filter((h) => h.depth === 2);
       const audioEntry = graph.audioForSource("lesson", lesson.id)[0];
       const benefits = graph.benefitsForSource("lesson", lesson.id).filter(isPub).map((b) => b.data.title);
       const prev = lessons[i - 1];
@@ -26,18 +29,18 @@ export async function getStaticPaths() {
       paths.push({
         params: { slug: s.id, lesson: lessonParam(lesson.id, s.id) },
         props: {
-          series: s, lesson, headings, benefits,
+          series: s, lesson, lessonBody, headings, benefits,
           audio: audioEntry ? { url: audioEntry.data.url, format: audioEntry.data.format, duration: audioEntry.data.duration ?? null, sizeBytes: audioEntry.data.size_bytes ?? null } : null,
           prev: lite(prev), next: lite(next),
           idx: i + 1, total: lessons.length, author: names.get(s.data.person),
         },
       });
-    });
+    }
   }
   return paths;
 }
 
-const { series, lesson, headings, benefits, audio, prev, next, idx, total, author } = Astro.props;
+const { series, lesson, lessonBody, headings, benefits, audio, prev, next, idx, total, author } = Astro.props;
 const seriesPath = hrefFor("series", series.id);
 const path = `/series/${series.id}/${lessonParam(lesson.id, series.id)}`;
 const jsonLd = lessonLd({
@@ -69,7 +72,7 @@ const jsonLd = lessonLd({
 
     <div class="lesson-grid">
       <div class="transcript">
-        <Prose body={lesson.body ?? ""} />
+        <Prose body={lessonBody} />
 
         {benefits.length > 0 && (
           <div class="benefit-strip">

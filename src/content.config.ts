@@ -1,5 +1,6 @@
 import { defineCollection, z } from "astro:content";
 import { glob } from "astro/loaders";
+import { fmLoader } from "./lib/fm-loader.js";
 import { SLUG_RE } from "./lib/slug.js";
 
 // --- shared primitives ---
@@ -72,7 +73,7 @@ const topic = defineCollection({
 // --- 04. Book (الكتاب) ---
 
 const book = defineCollection({
-  loader: glob({ pattern: "**/*.md", base: "./src/content/book" }),
+  loader: fmLoader("./src/content/book"),
   schema: z.object({
     ...shared,
     person: slug,           // → Person (author)
@@ -90,7 +91,7 @@ const book = defineCollection({
 // --- 05. Poem (المنظومة) ---
 
 const poem = defineCollection({
-  loader: glob({ pattern: "**/*.md", base: "./src/content/poem" }),
+  loader: fmLoader("./src/content/poem"),
   schema: z.object({
     ...shared,
     person: slug,           // → Person (author)
@@ -126,7 +127,7 @@ const series = defineCollection({
 // --- 07. Lesson (الدرس) — body IS the transcript ---
 
 const lesson = defineCollection({
-  loader: glob({ pattern: "**/*.md", base: "./src/content/lesson" }),
+  loader: fmLoader("./src/content/lesson"),
   schema: z.object({
     ...shared,
     series: slug,           // → Series (required)
@@ -139,7 +140,7 @@ const lesson = defineCollection({
 // --- 08. Questions (المسائل) — topics only, no tags/subjects ---
 
 const question = defineCollection({
-  loader: glob({ pattern: "**/*.md", base: "./src/content/question" }),
+  loader: fmLoader("./src/content/question"),
   schema: z.object({
     ...shared,
     person: slug.optional(),            // → Person (optional)
@@ -168,7 +169,7 @@ const benefit = defineCollection({
 // --- 10. Article (المقالة) ---
 
 const article = defineCollection({
-  loader: glob({ pattern: "**/*.md", base: "./src/content/article" }),
+  loader: fmLoader("./src/content/article"),
   schema: z.object({
     ...shared,
     person: slug,           // → Person (author)

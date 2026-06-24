@@ -31,14 +31,6 @@ jobs:
           key: astro-${{ hashFiles('src/content/**') }}
           restore-keys: astro-
 
-      # Run content sync in its own process so V8 releases the ~5GB of parsing
-      # memory before Vite's static-page rendering phase starts. Without this
-      # split, content sync exhausts the 7GB runner RAM and Vite gets OOM-killed.
-      - name: Sync Astro content
-        run: pnpm exec astro sync
-        env:
-          NODE_OPTIONS: --max-old-space-size=5120
-
       - name: Unit tests
         run: pnpm test
 
@@ -47,8 +39,6 @@ jobs:
 
       - name: Build (Astro + Pagefind + redirects)
         run: pnpm build
-        env:
-          NODE_OPTIONS: --max-old-space-size=5120
 
       - name: Smoke test (per-template invariants over dist/)
         run: pnpm smoke

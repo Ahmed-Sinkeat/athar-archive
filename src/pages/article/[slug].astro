@@ -5,22 +5,26 @@ import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import Prose from "../../components/Prose.astro";
 import AudioPlayer from "../../components/AudioPlayer.astro";
 import { isPub, loadGraph, subjectTitlesFor } from "../../lib/site";
+import { readBody } from "../../lib/read-body";
 import { articleLd } from "../../lib/structured-data";
 
 export async function getStaticPaths() {
   const articles = (await getCollection("article")).filter(isPub);
   const graph = await loadGraph();
-  return articles.map((entry) => {
+  const paths = [];
+  for (const entry of articles) {
+    const body = await readBody(entry);
     const person = graph.getById("person", entry.data.person);
     const audioEntry = entry.data.audio ? graph.getById("audio", entry.data.audio) : null;
-    return {
+    paths.push({
       params: { slug: entry.id },
-      props: { entry, author: person?.data.title, subjects: subjectTitlesFor(entry.data.topics, graph), audio: audioEntry ? { url: audioEntry.data.url, format: audioEntry.data.format, duration: audioEntry.data.duration ?? null, sizeBytes: audioEntry.data.size_bytes ?? null } : null },
-    };
-  });
+      props: { entry, body, author: person?.data.title, subjects: subjectTitlesFor(entry.data.topics, graph), audio: audioEntry ? { url: audioEntry.data.url, format: audioEntry.data.format, duration: audioEntry.data.duration ?? null, sizeBytes: audioEntry.data.size_bytes ?? null } : null },
+    });
+  }
+  return paths;
 }
 
-const { entry, author, audio, subjects } = Astro.props;
+const { entry, body, author, audio, subjects } = Astro.props;
 const path = `/article/${entry.id}`;
 const jsonLd = articleLd({
   title: entry.data.title, authorId: entry.data.person, authorName: author,
@@ -41,7 +45,7 @@ const jsonLd = articleLd({
     {audio && <div class="u583f758"><AudioPlayer sources={[audio]} label="استماعٌ إلى المقالة" /></div>}
 
     <div class="rule-short"></div>
-    <div class="ua26bda7"><Prose body={entry.body ?? ""} /></div>
+    <div class="ua26bda7"><Prose body={body} /></div>
     <div class="ornament ud38b410" >۞</div>
   </div>
 </Base>

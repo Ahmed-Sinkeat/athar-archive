@@ -9,6 +9,7 @@ import RelatedStrip from "../../components/RelatedStrip.astro";
 import { markdownToSafeHtml } from "../../lib/sanitize";
 import { isPub, loadGraph, personNameMap, subjectTitlesFor, notesByAnchor, relatedTo } from "../../lib/site";
 import { analyzeBook } from "../../lib/chunk";
+import { readBody } from "../../lib/read-body";
 import { hrefFor, toArabicDigits, labelFor, isMatn } from "../../lib/display";
 import { bookLd } from "../../lib/structured-data";
 
@@ -16,17 +17,20 @@ export async function getStaticPaths() {
   const books = (await getCollection("book")).filter(isPub);
   const graph = await loadGraph();
   const names = await personNameMap();
-  return books.map((entry) => {
+  const paths = [];
+  for (const entry of books) {
+    const body = await readBody(entry);
+    const a = analyzeBook(body);
     const byAnchor = notesByAnchor("book", entry.id, graph, names);
     const audios = graph.audioForSource("book", entry.id)
-      .filter((a) => a.data.status === "published")
+      .filter((x) => x.data.status === "published")
       .map((au) => ({ url: au.data.url, format: au.data.format, duration: au.data.duration ?? null, sizeBytes: au.data.size_bytes ?? null, label: au.data.title }));
-    return { params: { slug: entry.id }, props: { entry, byAnchor, audios, author: names.get(entry.data.person), subjects: subjectTitlesFor(entry.data.topics, graph), related: relatedTo(entry, graph, names) } };
-  });
+    paths.push({ params: { slug: entry.id }, props: { entry, a, body: a.chunked ? undefined : body, byAnchor, audios, author: names.get(entry.data.person), subjects: subjectTitlesFor(entry.data.topics, graph), related: relatedTo(entry, graph, names) } });
+  }
+  return paths;
 }
 
-const { entry, byAnchor, audios, author, subjects, related } = Astro.props;
-const a = analyzeBook(entry.body ?? "");
+const { entry, a, body, byAnchor, audios, author, subjects, related } = Astro.props;
 const KIND_SLUG: Record<string, string> = { شرح: "sharh", حاشية: "hashiya", تخريج: "takhrij", إعراب: "iraab" };
 const anchors = Object.entries(byAnchor);
 const path = `/book/${entry.id}`;
@@ -80,10 +84,10 @@ const jsonLd = bookLd({
     ) : isMatn("book", entry.data) ? (
       <>
         <StudyBar prose />
-        <div class="u49fcd85" data-matn={entry.id} data-unit="فقرة"><Prose body={entry.body ?? ""} /></div>
+        <div class="u49fcd85" data-matn={entry.id} data-unit="فقرة"><Prose body={body ?? ""} /></div>
       </>
     ) : (
-      <div class="u49fcd85"><Prose body={entry.body ?? ""} /></div>
+      <div class="u49fcd85"><Prose body={body ?? ""} /></div>
     )}
 
     {/* All annotations now open in the bottom sheet: phrase notes are wrapped
