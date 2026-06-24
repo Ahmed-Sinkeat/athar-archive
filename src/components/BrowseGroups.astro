@@ -1,9 +1,6 @@
 ---
-// Collapsible تصنيف → موضوع → cards browse, shared by the card index pages
-// (books, poems, articles, series). Reuses the masail-tree accordion (native
-// <details>, no JS). Owns only the shell; each page passes a `card()` that maps
-// an entry to EntityCard props, so per-type card richness stays on the page.
-// المسائل keeps its own list-style accordion (links, not cards).
+// Collapsible تصنيف → موضوع → cards browse, shared by the card index pages.
+// Default view is the flat list; grouped accordion is the secondary option.
 import EntityCard from "./EntityCard.astro";
 import SortableList from "./SortableList.astro";
 import { toArabicDigits } from "../lib/display";
@@ -14,13 +11,14 @@ interface Props {
   groups: SubjectGroup[];
   uncategorized: ContentEntry[];
   card: (e: ContentEntry) => Record<string, any>;
-  unit?: string; // counter word after a subject's item count
+  unit?: string;
   otherLabel?: string;
+  personNames?: Map<string, string>; // optional: enables person filter dropdown
 }
-const { groups, uncategorized, card, unit = "", otherLabel = "موضوعاتٌ أخرى" } = Astro.props;
+const { groups, uncategorized, card, unit = "", otherLabel = "موضوعاتٌ أخرى", personNames } = Astro.props;
 const count = (n: number) => `${toArabicDigits(n)}${unit ? ` ${unit}` : ""}`;
 
-// Flat de-duped list of every item, for the «عرض الكل» sortable view.
+// Flat de-duped list of every item (for the flat/sortable view — default).
 const allItems: ContentEntry[] = (() => {
   const seen = new Set<string>();
   const out: ContentEntry[] = [];
@@ -29,10 +27,42 @@ const allItems: ContentEntry[] = (() => {
   for (const it of uncategorized) add(it);
   return out;
 })();
+
+// Build person filter options from allItems (only when personNames provided)
+const personOptions: { id: string; name: string }[] = personNames
+  ? [...new Map(
+      allItems
+        .filter((it) => it.data.person)
+        .map((it) => [it.data.person as string, personNames.get(it.data.person as string) ?? (it.data.person as string)])
+    ).entries()]
+    .map(([id, name]) => ({ id, name }))
+    .sort((a, b) => a.name.localeCompare(b.name, "ar"))
+  : [];
+
+// Build topic filter options from groups
+const topicMap = new Map<string, string>();
+for (const g of groups) for (const t of g.topics) topicMap.set(t.id, t.title);
+const topicOptions = [...topicMap.entries()].map(([id, title]) => ({ id, title })).sort((a, b) => a.title.localeCompare(b.title, "ar"));
 ---
-<div class="browse" data-browse>
+<div class="browse show-flat" data-browse>
   <div class="browse-toolbar">
-    <button type="button" class="btn browse-flat-toggle" data-flat-toggle>عرض الكل</button>
+    {(personOptions.length > 1 || topicOptions.length > 1) && (
+      <div class="browse-filters">
+        {personOptions.length > 1 && (
+          <select class="browse-filter" data-filter-key="person" aria-label="فلترة بالعَلَم">
+            <option value="">كل الأعلام</option>
+            {personOptions.map((p) => <option value={p.id}>{p.name}</option>)}
+          </select>
+        )}
+        {topicOptions.length > 1 && (
+          <select class="browse-filter" data-filter-key="topic" aria-label="فلترة بالموضوع">
+            <option value="">كل الموضوعات</option>
+            {topicOptions.map((t) => <option value={t.id}>{t.title}</option>)}
+          </select>
+        )}
+      </div>
+    )}
+    <button type="button" class="btn browse-flat-toggle" data-flat-toggle>عرض مُجمَّع</button>
   </div>
   <div class="browse-flat"><SortableList items={allItems} card={card} /></div>
   <div class="masail-tree browse-grouped">

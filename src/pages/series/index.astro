@@ -1,34 +1,82 @@
 ---
 import Base from "../../layouts/Base.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
-import BrowseGroups from "../../components/BrowseGroups.astro";
 import SectionSearch from "../../components/SectionSearch.astro";
-import { personNameMap, loadGraph } from "../../lib/site";
-import { hrefFor, toArabicDigits } from "../../lib/display";
-import { buildSubjectGroups } from "../../lib/browse";
+import { getCollection } from "astro:content";
+import { isPub, personNameMap, loadGraph } from "../../lib/site";
+import { hrefFor, toArabicDigits, lessonParam } from "../../lib/display";
 import { collectionLd } from "../../lib/structured-data";
 
 const graph = await loadGraph();
 const names = await personNameMap();
-const { groups, uncategorized } = buildSubjectGroups("series", graph);
-const card = (it: any) => {
-  const s = graph.seriesStats(it.id);
-  return {
-    href: hrefFor("series", it.id),
-    title: it.data.title,
-    kind: `سلسلة · ${toArabicDigits(s.publishedLessonCount)} درسًا`,
-    kindColor: "tag-verdigris",
-    sub: it.data.person ? names.get(it.data.person) ?? "" : "",
-    corner: s.totalSeconds > 0 ? `مدة · ${s.totalDuration}` : undefined,
-    cta: "ادخل السلسلة ←",
-  };
-};
+
+const lessons = (await getCollection("lesson")).filter(isPub);
+const seriesAll = (await getCollection("series")).filter(isPub);
+const seriesMap = new Map(seriesAll.map((s) => [s.id, s]));
+
+// Each lesson row: join with its series for teacher + topics
+const rows = lessons
+  .map((l) => ({ lesson: l, series: seriesMap.get(l.data.series as string) }))
+  .filter((r) => r.series)
+  .sort((a, b) => (a.lesson.data.order as number ?? 0) - (b.lesson.data.order as number ?? 0));
+
+// Distinct persons for filter
+const personIds = [...new Set(rows.map((r) => r.series!.data.person as string | undefined).filter(Boolean))] as string[];
+const personsForFilter = personIds
+  .map((id) => ({ id, name: names.get(id) ?? id }))
+  .sort((a, b) => a.name.localeCompare(b.name, "ar"));
+
+// Distinct topics for filter
+const topicIds = [...new Set(rows.flatMap((r) => (r.series!.data.topics as string[] | undefined) ?? []))];
+const topicMap = new Map(
+  graph.all.filter((e) => e.collection === "topic" && isPub(e)).map((t) => [t.id, t.data.title as string])
+);
+const topicsForFilter = topicIds
+  .map((id) => ({ id, title: topicMap.get(id) ?? id }))
+  .sort((a, b) => a.title.localeCompare(b.title, "ar"));
 ---
-<Base title="الدروس" description="سلاسلُ شرحِ المتونِ، مفرَّغةً نصاً مع الصوت والفهرس والفوائد المستخرجة." activeNav="series" jsonLd={collectionLd({ title: "الدروس", path: "/series", crumbs: [{ name: "الرئيسية", path: "/" }, { name: "الدروس", path: "/series" }] })}>
+<Base title="الدروس" description="سلاسلُ شرحِ المتونِ، مفرَّغةً نصاً مع الصوت والفهرس." activeNav="series" jsonLd={collectionLd({ title: "الدروس", path: "/series", crumbs: [{ name: "الرئيسية", path: "/" }, { name: "الدروس", path: "/series" }] })}>
   <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "الدروس" }]} />
-  <div class="wrap-mid uf5db21c">
+  <div class="wrap-mid uf5db21c" style="padding-bottom: 80px;">
     <h1 class="page-title">الدروس</h1>
     <SectionSearch scope="lesson" placeholder="ابحث في الدروس…" />
-    <BrowseGroups groups={groups} uncategorized={uncategorized} card={card} unit="سلسلة" otherLabel="سلاسلُ أخرى" />
+
+    {(personsForFilter.length > 1 || topicsForFilter.length > 1) && (
+      <div class="browse-filters browse-filters-standalone">
+        {personsForFilter.length > 1 && (
+          <select class="browse-filter" data-filter-key="person" aria-label="فلترة بالشيخ">
+            <option value="">كل الشيوخ</option>
+            {personsForFilter.map((p) => <option value={p.id}>{p.name}</option>)}
+          </select>
+        )}
+        {topicsForFilter.length > 1 && (
+          <select class="browse-filter" data-filter-key="topic" aria-label="فلترة بالموضوع">
+            <option value="">كل الموضوعات</option>
+            {topicsForFilter.map((t) => <option value={t.id}>{t.title}</option>)}
+          </select>
+        )}
+      </div>
+    )}
+
+    <ol class="flat-list lesson-flat-list" data-lesson-list>
+      {rows.map(({ lesson, series }) => {
+        const personId = series!.data.person as string | undefined;
+        const personName = personId ? (names.get(personId) ?? "") : "";
+        const topicSlugs = ((series!.data.topics as string[] | undefined) ?? []).join(",");
+        const href = hrefFor("lesson", lesson.id, { series: series!.id });
+        return (
+          <li data-title={lesson.data.title} data-person={personId ?? ""} data-topics={topicSlugs}>
+            <a class="flat-row" href={href}>
+              <span class="flat-row-main">
+                <span class="flat-row-title">{lesson.data.title}</span>
+                <span class="flat-row-sub">{series!.data.title}{personName ? ` · ${personName}` : ""}</span>
+              </span>
+              {lesson.data.duration && <span class="flat-row-meta faint">{lesson.data.duration}</span>}
+            </a>
+          </li>
+        );
+      })}
+      {rows.length === 0 && <li class="faint" style="padding: 40px 0">لا توجد دروسٌ منشورة بعد.</li>}
+    </ol>
   </div>
 </Base>

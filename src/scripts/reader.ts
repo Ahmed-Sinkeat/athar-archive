@@ -243,9 +243,14 @@ function applySort(container: HTMLElement) {
         const na = A.dataset.year ? +A.dataset.year : NaN;
         const nb = B.dataset.year ? +B.dataset.year : NaN;
         if (isNaN(na) && isNaN(nb)) return 0;
-        if (isNaN(na)) return 1; // undated always last
+        if (isNaN(na)) return 1;
         if (isNaN(nb)) return -1;
         return (na - nb) * dir;
+      }
+      if (key === "works") {
+        const na = A.dataset.works ? +A.dataset.works : 0;
+        const nb = B.dataset.works ? +B.dataset.works : 0;
+        return (nb - na) * dir; // default: most works first
       }
       return (A.dataset.title || "").localeCompare(B.dataset.title || "", "ar") * dir;
     })
@@ -278,6 +283,26 @@ document.addEventListener("click", (e) => {
     const wrap = flatBtn.closest<HTMLElement>("[data-browse]");
     if (wrap) flatBtn.textContent = wrap.classList.toggle("show-flat") ? "عرض مُجمَّع" : "عرض الكل";
   }
+});
+
+// Browse page in-page filter: person + topic <select> dropdowns on listing pages.
+// Works on BrowseGroups flat list (data-person / data-topics on each <li>)
+// and on the lesson list in series/index.astro (same attributes).
+document.addEventListener("change", (e) => {
+  const sel = (e.target as HTMLElement).closest<HTMLSelectElement>("[data-filter-key]");
+  if (!sel) return;
+  const key = sel.dataset.filterKey!;
+  const val = sel.value;
+  // Scope: find the nearest flat-list ancestor context (BrowseGroups or standalone list)
+  const scope = sel.closest("[data-browse]") ?? sel.closest(".wrap-mid");
+  if (!scope) return;
+  scope.querySelectorAll<HTMLElement>(".flat-list li").forEach((li) => {
+    if (!val) { li.classList.remove("is-hidden"); return; }
+    const match = key === "person"
+      ? li.dataset.person === val
+      : (li.dataset.topics ?? "").split(",").includes(val);
+    li.classList.toggle("is-hidden", !match);
+  });
 });
 
 // type filter on topic/subject/era card grids — hide cards whose kind ≠ chosen type

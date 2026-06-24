@@ -4,73 +4,65 @@ import Base from "../layouts/Base.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
 import SectionSearch from "../components/SectionSearch.astro";
 import { isPub, loadGraph } from "../lib/site";
-import { hrefFor, toArabicDigits, eraLabel, eraHref, ERA_VALUES, TABAQA_VALUES } from "../lib/display";
+import { hrefFor, toArabicDigits, ERA_VALUES } from "../lib/display";
 import { collectionLd } from "../lib/structured-data";
 
 const people = (await getCollection("person")).filter(isPub);
 const graph = await loadGraph();
-
 const worksOf = (id: string) => graph.materialsByPerson(id).filter(isPub).length;
-const byTitle = (a: any, b: any) => a.data.title.localeCompare(b.data.title, "ar");
 
-// scholars grouped by الطبقة, then poets by العصر (literary), then an unclassified
-// bucket. A person with a طبقة is shown under it (not double-listed under an era).
-const tabaqaGroups = TABAQA_VALUES
-  .map((t) => ({ label: t, href: undefined as string | undefined, people: people.filter((p) => p.data.tabaqa === t).sort(byTitle) }))
-  .filter((g) => g.people.length);
-const eraGroups = ERA_VALUES
-  .map((era) => ({ label: eraLabel(era), href: eraHref(era), people: people.filter((p) => !p.data.tabaqa && p.data.era === era).sort(byTitle) }))
-  .filter((g) => g.people.length);
-const groups = [...tabaqaGroups, ...eraGroups];
-const unclassified = people.filter((p) => !p.data.tabaqa && !p.data.era).sort(byTitle);
+// Compute the best sortable year for each person:
+// death year → birth year → era order index × 200 → "" (undated last).
+const parseYear = (s: string | undefined): number | null => {
+  if (!s) return null;
+  const n = parseInt(String(s).replace(/[^\d]/g, ""), 10);
+  return isNaN(n) ? null : n;
+};
+const bestYear = (p: any): string => {
+  const died = parseYear(p.data.died as string | undefined);
+  if (died != null) return String(died);
+  const born = parseYear(p.data.born as string | undefined);
+  if (born != null) return String(born);
+  const eraIdx = ERA_VALUES.indexOf(p.data.era ?? "");
+  if (eraIdx >= 0) return String(eraIdx * 200);
+  return "";
+};
 ---
 <Base title="الأعلام" description="تراجمُ الناظمين والمصنِّفين والشُّرّاح، وما لكلٍّ منهم في الأرشيف." activeNav="people" jsonLd={collectionLd({ title: "الأعلام", path: "/people", crumbs: [{ name: "الرئيسية", path: "/" }, { name: "الأعلام", path: "/people" }] })}>
   <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "الأعلام" }]} />
-  <div class="wrap-mid uf5db21c">
+  <div class="wrap-mid uf5db21c" style="padding-bottom: 80px;">
     <h1 class="page-title">الأعلام</h1>
     <SectionSearch scope="person" placeholder="ابحث في الأعلام…" />
 
-    {groups.map((g) => (
-      <section class="browse-group">
-        <div class="browse-subject">
-          <h2>{g.href ? <a href={g.href}>{g.label}</a> : g.label}</h2>
-          <span class="faint">{toArabicDigits(g.people.length)} من الأعلام</span>
-        </div>
-        <div class="card-grid u73cb55d">
-          {g.people.map((p) => (
-            <a class="card ub2eeea3" href={hrefFor("person", p.id)}>
-              <div class="u48e4dba">{p.data.title.replace(/^(ال|شيخ الإسلام |الإمام )/, "").trim().charAt(0)}</div>
-              <div>
-                <div class="card-title u94aa034">{p.data.title}</div>
-                {(p.data.died || p.data.location) && (
-                  <div class="card-sub u9439bf6">{[p.data.died && `ت ${p.data.died}`, p.data.location].filter(Boolean).join(" · ")}</div>
-                )}
-                <div class="faint u2b0979c">{toArabicDigits(worksOf(p.id))} من الأعمال</div>
-              </div>
-            </a>
-          ))}
-        </div>
-      </section>
-    ))}
-
-    {unclassified.length > 0 && (
-      <section class="browse-group">
-        <div class="browse-subject"><h2>غير مصنَّف</h2></div>
-        <div class="card-grid u73cb55d">
-          {unclassified.map((p) => (
-            <a class="card ub2eeea3" href={hrefFor("person", p.id)}>
-              <div class="u48e4dba">{p.data.title.replace(/^(ال|شيخ الإسلام |الإمام )/, "").trim().charAt(0)}</div>
-              <div>
-                <div class="card-title u94aa034">{p.data.title}</div>
-                {(p.data.died || p.data.location) && (
-                  <div class="card-sub u9439bf6">{[p.data.died && `ت ${p.data.died}`, p.data.location].filter(Boolean).join(" · ")}</div>
-                )}
-                <div class="faint u2b0979c">{toArabicDigits(worksOf(p.id))} من الأعمال</div>
-              </div>
-            </a>
-          ))}
-        </div>
-      </section>
-    )}
+    <div class="sortable" data-sortable data-sort="title" data-dir="asc">
+      <div class="sort-controls">
+        <span class="faint sort-label">ترتيب:</span>
+        <button type="button" class="sort-btn" data-sort-key="title" aria-pressed="true">أبجديًّا</button>
+        <button type="button" class="sort-btn" data-sort-key="year" aria-pressed="false">بالتاريخ</button>
+        <button type="button" class="sort-btn" data-sort-key="works" aria-pressed="false">بالمصادر</button>
+        <button type="button" class="icon-btn sort-dir" data-sort-dir aria-label="عكس الترتيب" title="عكس الترتيب">↑</button>
+      </div>
+      <ol class="flat-list">
+        {people.map((p) => {
+          const works = worksOf(p.id);
+          return (
+            <li data-title={p.data.title} data-year={bestYear(p)} data-works={works}>
+              <a class="flat-row" href={hrefFor("person", p.id)}>
+                <span class="flat-row-main">
+                  <span class="flat-row-title">{p.data.title}</span>
+                  {(p.data.tabaqa || p.data.era) && (
+                    <span class="flat-row-sub">{p.data.tabaqa ?? p.data.era}</span>
+                  )}
+                </span>
+                <span class="flat-row-meta faint">
+                  {p.data.died ? `ت ${p.data.died}` : p.data.born ? `و ${p.data.born}` : ""}
+                </span>
+                <span class="flat-row-count">{toArabicDigits(works)} مصدر</span>
+              </a>
+            </li>
+          );
+        })}
+      </ol>
+    </div>
   </div>
 </Base>

@@ -1,7 +1,8 @@
 ---
 // Flat, client-sortable list of entries (أبجديًّا / بالتاريخ, each reversible).
-// No-JS fallback: items render in the order passed in. Sorting is wired in
-// reader.ts via [data-sortable] (delegated → survives view transitions).
+// Renders as flat rows (not card grid) — card box styling is suppressed via CSS.
+// No-JS fallback: items render in the order passed in.
+// Wired in reader.ts via [data-sortable] (delegated → survives view transitions).
 import EntityCard from "./EntityCard.astro";
 import type { ContentEntry } from "../lib/types";
 
@@ -22,9 +23,14 @@ const yearOf = (e: ContentEntry) => {
     <button type="button" class="sort-btn" data-sort-key="year" aria-pressed="false">بالتاريخ</button>
     <button type="button" class="icon-btn sort-dir" data-sort-dir aria-label="عكس الترتيب" title="عكس الترتيب">↑</button>
   </div>
-  <ol class="flat-list card-grid">
+  <ol class="flat-list">
     {items.map((it) => (
-      <li data-title={it.data.title} data-year={yearOf(it)}><EntityCard {...card(it)} /></li>
+      <li
+        data-title={it.data.title}
+        data-year={yearOf(it)}
+        data-person={(it.data.person as string | undefined) ?? ""}
+        data-topics={((it.data.topics as string[] | undefined) ?? []).join(",")}
+      ><EntityCard {...card(it)} /></li>
     ))}
   </ol>
 </div>

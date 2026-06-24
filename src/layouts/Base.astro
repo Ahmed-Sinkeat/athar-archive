@@ -42,20 +42,20 @@ const pagefindFilters = searchMeta
     ].filter(Boolean) as string[]
   : [];
 
-// Top nav: core collections + الأعلام + شبكة المعرفة.
+// Top nav: الكتب / الشعر / الدروس / الموضوعات / الأعلام / المقالات / المسائل
 const nav = [
   { id: "books", label: "الكتب", href: "/books" },
   { id: "poems", label: "الشعر", href: "/poems" },
-  { id: "questions", label: "المسائل", href: "/questions" },
+  { id: "series", label: "الدروس", href: "/series" },
+  { id: "subjects", label: "الموضوعات", href: "/subjects" },
   { id: "people", label: "الأعلام", href: "/people" },
-  { id: "graph", label: "شبكة المعرفة", href: "/graph" },
+  { id: "articles", label: "المقالات", href: "/articles" },
+  { id: "questions", label: "المسائل", href: "/questions" },
 ];
-// Full nav (drawer keeps every section reachable, including الدروس/المقالات).
+// Drawer keeps extra pages reachable (شبكة المعرفة, كُناشة, معجم, etc.).
 const navAll = [
   ...nav,
-  { id: "series", label: "الدروس", href: "/series" },
-  { id: "articles", label: "المقالات", href: "/articles" },
-  { id: "subjects", label: "الموضوعات", href: "/subjects" },
+  { id: "graph", label: "شبكة المعرفة", href: "/graph" },
   { id: "benefits", label: "كُناشة", href: "/benefits" },
   { id: "mujam", label: "المعجم", href: "/mujam" },
 ];
