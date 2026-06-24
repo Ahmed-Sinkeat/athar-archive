@@ -511,6 +511,7 @@ if (typeSel && fieldsEl && previewEl) {
   const editPane = document.getElementById("editpane");
   const editSearch = document.getElementById("cedit-search") as HTMLInputElement | null;
   const editHint = document.getElementById("cedit-hint");
+  const editDelBtn = document.getElementById("cedit-del") as HTMLButtonElement | null;
   const editTypesEl = document.getElementById("cedittypes");
   const dlAll = document.getElementById("dl-all");
 
@@ -548,7 +549,7 @@ if (typeSel && fieldsEl && previewEl) {
     );
     if (addPane) addPane.hidden = mode !== "add";
     if (editPane) editPane.hidden = mode !== "edit";
-    if (mode === "add") { if (editHint) editHint.textContent = ""; setType(typeSel!.value || FORMS[0].collection); }
+    if (mode === "add") { if (editHint) editHint.textContent = ""; if (editDelBtn) editDelBtn.hidden = true; setType(typeSel!.value || FORMS[0].collection); }
     if (mode === "edit" && editSearch && !editType) {
       editSearch.placeholder = "اختَرِ النوع أولًا…";
       editSearch.disabled = true;
@@ -587,6 +588,14 @@ if (typeSel && fieldsEl && previewEl) {
     // ponytail: a companion audio_url isn't reconstructed on edit — edit the صوتية entity directly.
     update();
     if (editHint) editHint.textContent = `تُعدِّل: ${it.title} — اضغطْ «نشر إلى GitHub» ليُنسخ النصُّ وتُفتح صفحةُ التعديل، ثم الصقْه واحفظ.`;
+    if (editDelBtn) {
+      const filePath = `src/content/${it.c}/${it.id}.md`;
+      editDelBtn.hidden = false;
+      editDelBtn.onclick = () => {
+        if (!confirm(`حذف «${it.title}»؟\n${filePath}\n\nسيُفتح GitHub لتأكيد الحذف.`)) return;
+        window.open(`https://github.com/${config.repo}/delete/${config.repoBranch}/${filePath}`, "_blank", "noopener");
+      };
+    }
   }
   function tryLoadFromSearch() {
     const q = editSearch!.value.trim();

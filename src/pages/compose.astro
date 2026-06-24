@@ -45,6 +45,7 @@ const cdata = JSON.stringify(items).replace(/</g, "\\u003c"); // safe in a data 
       <input id="cedit-search" class="cinput" list="dl-all" placeholder="اكتبْ عنوانًا…" autocomplete="off" />
       <datalist id="dl-all"></datalist>
       <div id="cedit-hint" class="faint field-help"></div>
+      <button id="cedit-del" type="button" class="btn-danger" hidden>حذف من GitHub ←</button>
     </div>
 
     <select id="ctype" class="sr-only" aria-hidden="true" tabindex="-1"></select>
