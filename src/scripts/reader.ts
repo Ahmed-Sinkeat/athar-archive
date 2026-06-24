@@ -296,24 +296,49 @@ document.addEventListener("click", (e) => {
   }
 });
 
-// Browse page in-page filter: person + topic <select> dropdowns on listing pages.
-// Works on BrowseGroups flat list (data-person / data-topics on each <li>)
-// and on the lesson list in series/index.astro (same attributes).
+// Browse page in-page filter: person + topic + kind <select> dropdowns on listing pages.
+// Works on BrowseGroups flat list (data-person / data-topics / data-kind on each <li>),
+// the lesson list in series/index.astro, and the masail accordion ([data-masail-browse]).
 document.addEventListener("change", (e) => {
   const sel = (e.target as HTMLElement).closest<HTMLSelectElement>("[data-filter-key]");
   if (!sel) return;
   const key = sel.dataset.filterKey!;
   const val = sel.value;
-  // Scope: find the nearest flat-list ancestor context (BrowseGroups or standalone list)
+
+  // flat-list (BrowseGroups + lessons)
   const scope = sel.closest("[data-browse]") ?? sel.closest(".wrap-mid");
-  if (!scope) return;
-  scope.querySelectorAll<HTMLElement>(".flat-list li").forEach((li) => {
-    if (!val) { li.classList.remove("is-hidden"); return; }
-    const match = key === "person"
-      ? li.dataset.person === val
-      : (li.dataset.topics ?? "").split(",").includes(val);
-    li.classList.toggle("is-hidden", !match);
-  });
+  if (scope) {
+    scope.querySelectorAll<HTMLElement>(".flat-list li").forEach((li) => {
+      if (!val) { li.classList.remove("is-hidden"); return; }
+      const match = key === "kind"
+        ? li.dataset.kind === val
+        : key === "person"
+          ? li.dataset.person === val
+          : (li.dataset.topics ?? "").split(",").includes(val);
+      li.classList.toggle("is-hidden", !match);
+    });
+  }
+
+  // masail accordion ([data-masail-browse])
+  const masailScope = sel.closest<HTMLElement>("[data-masail-browse]");
+  if (masailScope) {
+    masailScope.querySelectorAll<HTMLElement>(".masail-list li[data-person]").forEach((li) => {
+      if (!val) { li.style.display = ""; return; }
+      const match = key === "person"
+        ? li.dataset.person === val
+        : (li.dataset.topics ?? "").split(",").includes(val);
+      li.style.display = match ? "" : "none";
+    });
+    // collapse empty topics then empty subjects
+    masailScope.querySelectorAll<HTMLElement>(".masail-topic").forEach((dt) => {
+      const visible = [...dt.querySelectorAll<HTMLElement>(".masail-list li")].some((li) => li.style.display !== "none");
+      (dt as HTMLElement).style.display = visible || !val ? "" : "none";
+    });
+    masailScope.querySelectorAll<HTMLElement>(".masail-subject").forEach((dt) => {
+      const visible = [...dt.querySelectorAll<HTMLElement>(".masail-topic")].some((t) => t.style.display !== "none");
+      (dt as HTMLElement).style.display = visible || !val ? "" : "none";
+    });
+  }
 });
 
 // type filter on topic/subject/era card grids — hide cards whose kind ≠ chosen type

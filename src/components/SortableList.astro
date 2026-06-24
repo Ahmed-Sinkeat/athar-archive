@@ -30,6 +30,7 @@ const yearOf = (e: ContentEntry) => {
         data-year={yearOf(it)}
         data-person={(it.data.person as string | undefined) ?? ""}
         data-topics={((it.data.topics as string[] | undefined) ?? []).join(",")}
+        data-kind={(it.data.kind as string | undefined) ?? ""}
       ><EntityCard {...card(it)} /></li>
     ))}
   </ol>

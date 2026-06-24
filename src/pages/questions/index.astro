@@ -10,6 +10,19 @@ import { collectionLd } from "../../lib/structured-data";
 const graph = await loadGraph();
 const names = await personNameMap();
 const { groups, uncategorized } = buildSubjectGroups("question", graph);
+
+const allQuestions = [...groups.flatMap((g) => g.topics.flatMap((t) => t.items)), ...uncategorized];
+
+const personIds = [...new Set(allQuestions.map((it) => it.data.person as string | undefined).filter(Boolean))] as string[];
+const personsForFilter = personIds
+  .map((id) => ({ id, name: names.get(id) ?? id }))
+  .sort((a, b) => a.name.localeCompare(b.name, "ar"));
+
+const topicMap = new Map<string, string>();
+for (const g of groups) for (const t of g.topics) topicMap.set(t.id, t.title);
+const topicsForFilter = [...topicMap.entries()]
+  .map(([id, title]) => ({ id, title }))
+  .sort((a, b) => a.title.localeCompare(b.title, "ar"));
 ---
 <Base title="المسائل" description="مسائلُ علميةٌ مجموعةٌ على هيئة سؤالٍ وجواب، مرتَّبةٌ حسب الفنِّ والموضوع." activeNav="questions" searchScope={{ type: "question" }} jsonLd={collectionLd({ title: "المسائل", path: "/questions", crumbs: [{ name: "الرئيسية", path: "/" }, { name: "المسائل", path: "/questions" }] })}>
   <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "المسائل" }]} />
@@ -17,7 +30,24 @@ const { groups, uncategorized } = buildSubjectGroups("question", graph);
     <h1 class="page-title">المسائل</h1>
     <SectionSearch scope="question" placeholder="ابحث في المسائل…" />
 
-    <div class="masail-tree">
+    {(personsForFilter.length > 1 || topicsForFilter.length > 1) && (
+      <div class="browse-filters browse-filters-standalone">
+        {personsForFilter.length > 1 && (
+          <select class="browse-filter" data-filter-key="person" aria-label="فلترة بالعَلَم">
+            <option value="">كل الأعلام</option>
+            {personsForFilter.map((p) => <option value={p.id}>{p.name}</option>)}
+          </select>
+        )}
+        {topicsForFilter.length > 1 && (
+          <select class="browse-filter" data-filter-key="topic" aria-label="فلترة بالموضوع">
+            <option value="">كل الموضوعات</option>
+            {topicsForFilter.map((t) => <option value={t.id}>{t.title}</option>)}
+          </select>
+        )}
+      </div>
+    )}
+
+    <div class="masail-tree" data-masail-browse>
       {groups.map((g, gi) => (
         <details class="masail-subject" open={gi === 0}>
           <summary>
@@ -33,7 +63,10 @@ const { groups, uncategorized } = buildSubjectGroups("question", graph);
                 </summary>
                 <ul class="masail-list">
                   {t.items.map((it) => (
-                    <li>
+                    <li
+                      data-person={(it.data.person as string | undefined) ?? ""}
+                      data-topics={((it.data.topics as string[] | undefined) ?? []).join(",")}
+                    >
                       <a href={hrefFor("question", it.id)}>
                         <span>{it.data.title}</span>
                         {it.data.person && <span class="faint"> · {names.get(it.data.person)}</span>}
@@ -55,7 +88,10 @@ const { groups, uncategorized } = buildSubjectGroups("question", graph);
           </summary>
           <ul class="masail-list masail-list-flush">
             {uncategorized.map((it) => (
-              <li><a href={hrefFor("question", it.id)}>{it.data.title}</a></li>
+              <li
+                data-person={(it.data.person as string | undefined) ?? ""}
+                data-topics={((it.data.topics as string[] | undefined) ?? []).join(",")}
+              ><a href={hrefFor("question", it.id)}>{it.data.title}</a></li>
             ))}
           </ul>
         </details>

@@ -152,7 +152,9 @@ function readEpub(file: string): { meta: Meta; pages: { id: string; xhtml: strin
       if (id === "info" || /cover/i.test(id)) continue;
       const href = manifest.get(id);
       if (!href) continue;
-      pages.push({ id, xhtml: readFileSync(join(opfDir, href), "utf8") });
+      const fullPath = join(opfDir, href);
+      if (!existsSync(fullPath)) continue;
+      pages.push({ id, xhtml: readFileSync(fullPath, "utf8") });
     }
     return { meta, pages };
   } finally {
