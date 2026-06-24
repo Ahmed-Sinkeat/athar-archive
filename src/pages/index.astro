@@ -8,7 +8,7 @@ import { loadGraph, personEraMap } from "../lib/site";
 
 const pub = (c: any[]) => c.filter((e) => e.data.status === "published");
 
-const [people, books, poems, series, lessons, articles, benefits, announcements, highlights] = await Promise.all([
+const [people, books, poems, series, lessons, articles, benefits, announcements, highlights, questions] = await Promise.all([
   getCollection("person"),
   getCollection("book"),
   getCollection("poem"),
@@ -18,6 +18,7 @@ const [people, books, poems, series, lessons, articles, benefits, announcements,
   getCollection("benefit"),
   getCollection("announcement"),
   getCollection("highlight"),
+  getCollection("question"),
 ]);
 
 // مختارات الأسبوع: one published آية / حديث / بيت per kind, rotating by week index.
@@ -65,6 +66,8 @@ const stats = [
   { num: pub(books).length, label: "كتابًا" },
   { num: pub(poems).length, label: "منظومة" },
   { num: pub(lessons).length, label: "دروس" },
+  { num: pub(articles).length, label: "مقالة" },
+  { num: pub(questions).length, label: "مسألة" },
   { num: pub(people).length, label: "من الأعلام" },
 ];
 
@@ -102,7 +105,6 @@ const latest = [
       </form>
 
       <div class="u40e95b5">
-        <a class="btn" href="/people">الأعلام</a>
         <a class="btn" href="/graph">شبكة المعرفة</a>
         <a class="btn" href="/benefits">كُناشة</a>
         <a class="btn" href="/roadmap">طريق طلب العلم</a>

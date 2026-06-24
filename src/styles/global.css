@@ -805,6 +805,41 @@ html[data-theme="dark"] ::highlight(aa-find)    { background-color: rgba(255, 15
 .aa-findbtn[hidden] { display: none; }
 .aa-findbtn:hover { border-color: var(--accent); }
 
+/* --- flat list rows (listing pages: الكتب / الشعر / الدروس / الأعلام / …) --- */
+/* Override card-box styles when inside .flat-list so items render as rows */
+.flat-list { list-style: none; padding: 0; margin: 0; border-block-start: 1px solid var(--rule); }
+.flat-list li { border-block-end: 1px solid var(--rule); }
+.flat-list li.is-hidden { display: none; }
+/* Suppress card-box visual when in flat mode */
+.flat-list .card {
+  background: none; border: none; border-radius: 0; box-shadow: none;
+  padding: 12px 0; display: flex; align-items: center; gap: 12px;
+  text-decoration: none; color: inherit;
+}
+.flat-list .card:hover .card-title { color: var(--accent); }
+.flat-list .card-kindrow { order: -1; flex-shrink: 0; margin: 0; }
+.flat-list .card-title { font-size: 1rem; font-weight: 600; flex: 1; }
+.flat-list .card-sub { font-family: var(--font-ui); font-size: 0.85rem; color: var(--ink-soft); margin: 0; }
+.flat-list .card-cta { display: none; }
+/* Custom flat-row (lessons list + people list) */
+.flat-row { display: flex; align-items: center; gap: 12px; padding: 12px 0; text-decoration: none; color: inherit; }
+.flat-row:hover .flat-row-title { color: var(--accent); }
+.flat-row-main { display: flex; flex-direction: column; gap: 2px; flex: 1; min-width: 0; }
+.flat-row-title { font-size: 1rem; font-weight: 600; }
+.flat-row-sub { font-family: var(--font-ui); font-size: 0.85rem; color: var(--ink-soft); }
+.flat-row-meta { font-family: var(--font-ui); font-size: 0.82rem; white-space: nowrap; }
+.flat-row-count { font-family: var(--font-mono); font-size: 0.82rem; color: var(--ink-faint); white-space: nowrap; }
+/* Browse filter bar */
+.browse-filters { display: flex; gap: 8px; flex-wrap: wrap; margin-block-end: 12px; }
+.browse-filters-standalone { margin-block-end: 16px; }
+.browse-filter {
+  font-family: var(--font-ui); font-size: 14px; color: var(--ink);
+  background: var(--surface); border: 1px solid var(--rule-strong);
+  border-radius: 8px; padding: 6px 10px; cursor: pointer; max-width: 220px;
+}
+.browse-filter:focus { outline: none; border-color: var(--accent); }
+.browse-toolbar { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-block-end: 8px; }
+
 /* --- chapter chip bar (book index + chapter pages) --- */
 .chap-bar { display: flex; flex-wrap: wrap; gap: 6px; margin-block: 20px 4px; }
 .chap-chip { font-family: var(--font-ui); font-size: 13.5px; color: var(--ink-soft); background: var(--surface); border: 1px solid var(--rule-strong); border-radius: 30px; padding: 5px 14px; text-decoration: none; white-space: nowrap; }
