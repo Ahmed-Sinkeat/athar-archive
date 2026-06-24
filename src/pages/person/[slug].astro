@@ -35,9 +35,10 @@ const jsonLd = personLd({
   <div class="wrap-mid uf5db21c" >
     <h1 class="page-title">{entry.data.title}</h1>
     {meta && <div class="reader-byline u3606c53" >{meta}</div>}
-    {(entry.data.tabaqa || entry.data.era) && (
+    {(entry.data.tabaqa || entry.data.era || (entry.data as any).aqeedah) && (
       <div class="meta-pills">
         {entry.data.tabaqa && <span class="pill">{entry.data.tabaqa}</span>}
+        {(entry.data as any).aqeedah && <span class="pill tag-accent">{(entry.data as any).aqeedah}</span>}
         {entry.data.era && <a class="pill tag-verdigris pill-link" href={eraHref(entry.data.era)}>{eraLabel(entry.data.era)}</a>}
       </div>
     )}

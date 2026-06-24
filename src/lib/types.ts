@@ -24,6 +24,7 @@ export const COLLECTIONS = [
   "annotation",
   "announcement",
   "highlight",
+  "term",
 ] as const;
 
 export type CollectionName = (typeof COLLECTIONS)[number];

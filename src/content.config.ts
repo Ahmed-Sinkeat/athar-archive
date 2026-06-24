@@ -43,6 +43,8 @@ const person = defineCollection({
     // Arabic synonyms / كُنى surfaced to search (e.g. شيخ الإسلام، أحمد بن عبد الحليم).
     // Note: this is distinct from `aliases` (latin slug → 301 redirects).
     also_known_as: z.array(z.string()).optional(),
+    // العقيدة — used in شبكة المعرفة scholar comparison dashboard.
+    aqeedah: z.string().optional(),
   }),
 });
 
@@ -251,6 +253,18 @@ const highlight = defineCollection({
   ),
 });
 
+// --- 15. Term (المعجم) ---
+
+const term = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/term" }),
+  schema: z.object({
+    ...shared,
+    definition: z.string().optional(), // سطرٌ تعريفيٌّ موجز
+    topics: topicsField,
+    also_known_as: z.array(z.string()).optional(),
+  }),
+});
+
 // --- export ---
 
 export const collections = {
@@ -268,4 +282,5 @@ export const collections = {
   annotation,
   announcement,
   highlight,
+  term,
 };

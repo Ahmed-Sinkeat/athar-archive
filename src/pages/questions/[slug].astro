@@ -2,8 +2,8 @@
 import { getCollection } from "astro:content";
 import Base from "../../layouts/Base.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
-import Prose from "../../components/Prose.astro";
 import { isPub, loadGraph, subjectTitlesFor } from "../../lib/site";
+import { markdownMasailToHtml } from "../../lib/sanitize";
 import { hrefFor } from "../../lib/display";
 import { questionLd } from "../../lib/structured-data";
 
@@ -36,6 +36,6 @@ const jsonLd = questionLd({
       {personId && <div class="reader-byline"><a href={hrefFor("person", personId)} class="uae3c165">{personName}</a></div>}
     </div>
     <div class="rule-short"></div>
-    <div class="ua26bda7"><Prose body={entry.body ?? ""} /></div>
+    <div class="ua26bda7 prose" data-ar set:html={markdownMasailToHtml(entry.body ?? "")} />
   </div>
 </Base>

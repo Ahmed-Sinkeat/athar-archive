@@ -22,20 +22,23 @@ export async function getStaticPaths() {
     for (const c of a.chapters) {
       paths.push({
         params: { slug: entry.id, chapter: c.slug },
-        props: { entry, chapter: c, byAnchor, subjects, author: names.get(entry.data.person) },
+        props: { entry, chapter: c, byAnchor, subjects, author: names.get(entry.data.person), allChapters: a.chapters },
       });
     }
   }
   return paths;
 }
 
-const { entry, chapter, byAnchor, subjects, author } = Astro.props;
+const { entry, chapter, byAnchor, subjects, author, allChapters } = Astro.props;
 const KIND_SLUG: Record<string, string> = { شرح: "sharh", حاشية: "hashiya", تخريج: "takhrij", إعراب: "iraab" };
 const phraseAnchors = Object.entries(byAnchor).filter(([, notes]: any) => notes.some((n: any) => n.phrase));
+
+const chIdx = (allChapters as any[]).findIndex((c: any) => c.slug === chapter.slug);
+const prev = (allChapters as any[])[chIdx - 1] ?? null;
+const next = (allChapters as any[])[chIdx + 1] ?? null;
 ---
 <Base title={`${chapter.title} · ${entry.data.title}`} activeNav="books" searchMeta={{ title: `${entry.data.title} — ${chapter.title}`, type: "book", id: entry.id, person: author, matn: isMatn("book", entry.data), subjects }} searchScope={{ in: entry.id, label: entry.data.title }}>
   <Breadcrumbs
-    width="wrap-matn"
     items={[
       { label: "الرئيسية", href: "/" },
       { label: "الكتب", href: "/books" },
@@ -43,31 +46,66 @@ const phraseAnchors = Object.entries(byAnchor).filter(([, notes]: any) => notes.
       { label: chapter.title },
     ]}
   />
-  <div class="wrap-matn reading-pad">
-    <div class="reader-head">
-      <div class="eyebrow u87c136d" >{labelFor("book", entry.data)} · {author}</div>
-      <h1 class="reader-title u97df06b" >{chapter.title}</h1>
-      <div class="reader-byline">{entry.data.title}</div>
-    </div>
-    <div class="rule-short"></div>
-    {isMatn("book", entry.data) ? (
-      <>
-        <StudyBar prose />
-        <div class="u49fcd85" data-matn={`${entry.id}--${chapter.slug}`} data-unit="فقرة"><Prose body={chapter.content} /></div>
-      </>
-    ) : (
-      <div class="u49fcd85"><Prose body={chapter.content} /></div>
-    )}
 
-    {phraseAnchors.map(([anchor, notes]: any) => (
-      <div class="ann-pack" id={`ann-${anchor}`} data-ann-pack data-phrase={notes.find((n: any) => n.phrase)?.phrase} hidden>
-        {notes.map((nt: any) => (
-          <div class={`ann-entry k-${KIND_SLUG[nt.kind] ?? "sharh"}`} data-kind={nt.kind} data-label={nt.annotator ? `${nt.kind} — ${nt.annotator}` : nt.kind}>
-            <div class="ann-entry-body" data-ar><Fragment set:html={markdownToSafeHtml(nt.body)} /></div>
-            {nt.sourceHref && <a class="ann-source-link" href={nt.sourceHref}>اقرأ في موضعه{nt.sourceLabel ? `: ${nt.sourceLabel}` : ""} ←</a>}
+  <div class="chap-outer">
+    <div class="chap-grid">
+      <!-- main reading column -->
+      <div class="reading-pad">
+        <!-- mobile TOC (hidden on desktop via CSS) -->
+        <details class="chap-mobile-toc">
+          <summary>فصول الكتاب · {(allChapters as any[]).length} فصل</summary>
+          <ul class="chap-mobile-list">
+            {(allChapters as any[]).map((c: any) => (
+              <li><a href={hrefFor("book", entry.id, { chapter: c.slug })} class:list={[{ 'is-current': c.slug === chapter.slug }]}>{c.title}</a></li>
+            ))}
+          </ul>
+        </details>
+
+        <div class="reader-head">
+          <div class="eyebrow u87c136d">{labelFor("book", entry.data)} · {author}</div>
+          <h1 class="reader-title u97df06b">{chapter.title}</h1>
+          <div class="reader-byline">{entry.data.title}</div>
+        </div>
+        <div class="rule-short"></div>
+
+        {isMatn("book", entry.data) ? (
+          <>
+            <StudyBar prose />
+            <div class="u49fcd85" data-matn={`${entry.id}--${chapter.slug}`} data-unit="فقرة"><Prose body={chapter.content} /></div>
+          </>
+        ) : (
+          <div class="u49fcd85"><Prose body={chapter.content} /></div>
+        )}
+
+        {phraseAnchors.map(([anchor, notes]: any) => (
+          <div class="ann-pack" id={`ann-${anchor}`} data-ann-pack data-phrase={notes.find((n: any) => n.phrase)?.phrase} hidden>
+            {notes.map((nt: any) => (
+              <div class={`ann-entry k-${KIND_SLUG[nt.kind] ?? "sharh"}`} data-kind={nt.kind} data-label={nt.annotator ? `${nt.kind} — ${nt.annotator}` : nt.kind}>
+                <div class="ann-entry-body" data-ar><Fragment set:html={markdownToSafeHtml(nt.body)} /></div>
+                {nt.sourceHref && <a class="ann-source-link" href={nt.sourceHref}>اقرأ في موضعه{nt.sourceLabel ? `: ${nt.sourceLabel}` : ""} ←</a>}
+              </div>
+            ))}
           </div>
         ))}
+
+        <!-- prev / next navigation -->
+        <div class="prevnext">
+          {prev
+            ? <a href={hrefFor("book", entry.id, { chapter: prev.slug })}>→ {prev.title}</a>
+            : <span></span>}
+          {next && <a class="next" href={hrefFor("book", entry.id, { chapter: next.slug })}>{next.title} ←</a>}
+        </div>
       </div>
-    ))}
+
+      <!-- sidebar TOC (hidden on mobile via CSS) -->
+      <aside class="toc-side chap-toc-aside">
+        <div class="toc-box has-current">
+          <div class="toc-label">فصول {entry.data.title}</div>
+          {(allChapters as any[]).map((c: any) => (
+            <a href={hrefFor("book", entry.id, { chapter: c.slug })} class:list={[{ 'toc-current': c.slug === chapter.slug }]}>{c.title}</a>
+          ))}
+        </div>
+      </aside>
+    </div>
   </div>
 </Base>

@@ -29,6 +29,7 @@ export const ENTITY: Record<
   question: { one: "مسائل", many: "المسائل", index: "/questions" },
   benefit: { one: "فائدة", many: "الفوائد", index: "/benefits" },
   article: { one: "مقالة", many: "المقالات", index: "/articles" },
+  term: { one: "مصطلح", many: "المعجم", index: "/mujam" },
 };
 
 // Literary eras (العصر) — keep values in sync with the person.era enum in content.config.ts.
@@ -99,6 +100,7 @@ export function hrefFor(
     case "benefit": return `/benefit/${id}`;
     case "article": return `/article/${id}`;
     case "question": return `/questions/${id}`;
+    case "term": return `/term/${id}`;
     default: return "/";
   }
 }

@@ -15,24 +15,26 @@ export async function getStaticPaths() {
   const paths: any[] = [];
   for (const entry of poems) {
     const a = analyzePoem(entry.body ?? "");
-    if (!a.chunked) continue; // only chapterized poems expose chapter pages
+    if (!a.chunked) continue;
     const byAnchor = notesByAnchor("poem", entry.id, graph, names);
     const subjects = subjectTitlesFor(entry.data.topics, graph);
     for (const c of a.chapters) {
       paths.push({
         params: { slug: entry.id, chapter: c.slug },
-        props: { entry, chapter: c, byAnchor, author: names.get(entry.data.person), subjects },
+        props: { entry, chapter: c, byAnchor, author: names.get(entry.data.person), subjects, allChapters: a.chapters },
       });
     }
   }
   return paths;
 }
 
-const { entry, chapter, byAnchor, author, subjects } = Astro.props;
+const { entry, chapter, byAnchor, author, subjects, allChapters } = Astro.props;
+const chIdx = (allChapters as any[]).findIndex((c: any) => c.slug === chapter.slug);
+const prev = (allChapters as any[])[chIdx - 1] ?? null;
+const next = (allChapters as any[])[chIdx + 1] ?? null;
 ---
 <Base title={`${chapter.title} · ${entry.data.title}`} activeNav="poems" searchMeta={{ title: `${entry.data.title} — ${chapter.title}`, type: "poem", id: entry.id, person: author, matn: true, subjects }} searchScope={{ in: entry.id, label: entry.data.title }}>
   <Breadcrumbs
-    width="wrap-read"
     items={[
       { label: "الرئيسية", href: "/" },
       { label: "المنظومات", href: "/poems" },
@@ -40,18 +42,52 @@ const { entry, chapter, byAnchor, author, subjects } = Astro.props;
       { label: chapter.title },
     ]}
   />
-  <div class="wrap-read reading-pad">
-    <div class="reader-head">
-      <div class="eyebrow u87c136d" >منظومة · {author}</div>
-      <h1 class="reader-title ubd7542b" >{chapter.title}</h1>
-      <div class="reader-byline">{entry.data.title} · {toArabicDigits(chapter.verses.length)} بيت</div>
-    </div>
-    <div class="rule-short"></div>
-    <StudyBar />
-    <div class="verses" data-matn={entry.id} data-unit="بيت">
-      {chapter.verses.map((v: any) => (
-        <Verse n={v.n} sadr={v.sadr} ajz={v.ajz} anchor={v.anchor} notes={byAnchor[v.anchor]} />
-      ))}
+
+  <div class="chap-outer">
+    <div class="chap-grid">
+      <!-- main reading column -->
+      <div class="reading-pad">
+        <!-- mobile TOC (hidden on desktop) -->
+        <details class="chap-mobile-toc">
+          <summary>أبواب المنظومة · {(allChapters as any[]).length} باب</summary>
+          <ul class="chap-mobile-list">
+            {(allChapters as any[]).map((c: any) => (
+              <li><a href={hrefFor("poem", entry.id, { chapter: c.slug })} class:list={[{ 'is-current': c.slug === chapter.slug }]}>{c.title}</a></li>
+            ))}
+          </ul>
+        </details>
+
+        <div class="reader-head">
+          <div class="eyebrow u87c136d">منظومة · {author}</div>
+          <h1 class="reader-title ubd7542b">{chapter.title}</h1>
+          <div class="reader-byline">{entry.data.title} · {toArabicDigits(chapter.verses.length)} بيت</div>
+        </div>
+        <div class="rule-short"></div>
+        <StudyBar />
+        <div class="verses" data-matn={entry.id} data-unit="بيت">
+          {(chapter.verses as any[]).map((v: any) => (
+            <Verse n={v.n} sadr={v.sadr} ajz={v.ajz} anchor={v.anchor} notes={byAnchor[v.anchor]} />
+          ))}
+        </div>
+
+        <!-- prev / next navigation -->
+        <div class="prevnext">
+          {prev
+            ? <a href={hrefFor("poem", entry.id, { chapter: prev.slug })}>→ {prev.title}</a>
+            : <span></span>}
+          {next && <a class="next" href={hrefFor("poem", entry.id, { chapter: next.slug })}>{next.title} ←</a>}
+        </div>
+      </div>
+
+      <!-- sidebar TOC (hidden on mobile) -->
+      <aside class="toc-side chap-toc-aside">
+        <div class="toc-box has-current">
+          <div class="toc-label">أبواب {entry.data.title}</div>
+          {(allChapters as any[]).map((c: any) => (
+            <a href={hrefFor("poem", entry.id, { chapter: c.slug })} class:list={[{ 'toc-current': c.slug === chapter.slug }]}>{c.title}</a>
+          ))}
+        </div>
+      </aside>
     </div>
   </div>
 </Base>

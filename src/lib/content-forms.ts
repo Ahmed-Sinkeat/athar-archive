@@ -174,7 +174,19 @@ export const FORMS: FormDef[] = [
       ...shared(),
       REFS("topics", "الموضوعات", "topic", { required: true, help: "إلزامي — موضوع إلى خمسة" }),
       REF("person", "المُجيب", "person", { required: false }),
-      { key: "body", label: "نص الجواب", kind: "body", required: true },
+      { key: "sual", label: "السؤال", kind: "textarea", required: true, help: "نصّ السؤال" },
+      { key: "body", label: "الجواب", kind: "body", required: true, help: "نصّ الجواب" },
+    ],
+  },
+  {
+    collection: "term",
+    label: "مصطلح (معجم)",
+    fields: [
+      ...shared(),
+      { key: "definition", label: "التعريف الموجز", kind: "text", help: "سطرٌ واحدٌ — يظهر في قائمة المعجم" },
+      REFS("topics", "الموضوعات", "topic", { help: "موضوع إلى خمسة" }),
+      { key: "also_known_as", label: "مرادفات أو صياغات أخرى", kind: "array", help: "سطرٌ لكلٍّ" },
+      { key: "body", label: "الشرح المفصَّل", kind: "body", help: "توضيح أوسع، أمثلة، مصادر" },
     ],
   },
   {
@@ -251,6 +263,7 @@ export function buildFiles(def: FormDef, values: Record<string, string>): BuiltF
     if (f.key === "slug") continue; // the filename field, not a frontmatter key
     if (f.kind === "body" || f.kind === "verses") { bodyField = f; continue; }
     if (f.key === "audio_url") continue; // pseudo-field → companion file
+    if (f.key === "sual") continue; // assembled into body below, not frontmatter
     const raw = (values[f.key] ?? "").trim();
     if (!raw && !f.required) continue;
 
@@ -274,7 +287,9 @@ export function buildFiles(def: FormDef, values: Record<string, string>): BuiltF
   }
 
   lines.push("---", "");
-  const body = (values[bodyField?.key ?? ""] ?? "").trim();
+  let body = (values[bodyField?.key ?? ""] ?? "").trim();
+  const sual = (values["sual"] ?? "").trim();
+  if (sual) body = `**السؤال:** ${sual}\n\n**الجواب:**\n${body}`;
   const content = lines.join("\n") + "\n" + (body ? body + "\n" : "");
   const files: BuiltFile[] = [{ path: `src/content/${def.collection}/${slug || "SLUG"}.md`, content }];
 

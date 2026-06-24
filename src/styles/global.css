@@ -529,7 +529,8 @@ textarea.cinput { resize: vertical; line-height: 1.7; }
 .toc-box { border: 1px solid var(--rule); border-radius: 11px; background: var(--surface); padding: 16px; }
 .toc-label { font-family: var(--font-ui); font-size: 10.5px; letter-spacing: 0.12em; color: var(--accent); margin-bottom: 10px; }
 .toc-box a { display: block; font-family: var(--font-ui); font-size: 13.5px; color: var(--ink-soft); text-decoration: none; padding: 7px 0; border-inline-start: 2px solid transparent; padding-inline-start: 11px; }
-.toc-box a:first-of-type { color: var(--ink); border-inline-start-color: var(--accent); }
+/* :first-of-type for lesson heading TOC (no .toc-current needed); .toc-current for chapter TOC */
+.toc-box:not(.has-current) a:first-of-type, .toc-box a.toc-current { color: var(--ink); border-inline-start-color: var(--accent); }
 .toc-box a:hover { color: var(--ink); }
 
 /* extracted benefits / prev-next */
@@ -596,6 +597,45 @@ html.hide-vnums .vnum { display: none; }
   .lesson-grid { grid-template-columns: 1fr; }
   .toc-side { display: none; }
 }
+
+/* -------- chapter navigation (book / poem chapter pages) -------- */
+.chap-outer { max-width: 960px; margin: 0 auto; padding-inline: 28px; }
+.chap-grid { display: grid; grid-template-columns: 1fr 210px; gap: 34px; align-items: start; }
+.chap-toc-aside { position: sticky; top: 80px; margin-top: 52px; }
+.chap-toc-aside .toc-box { max-height: 70vh; overflow-y: auto; }
+.chap-toc-aside .toc-label { font-family: var(--font-ui); font-size: 11.5px; letter-spacing: .1em; color: var(--ink-faint); margin-bottom: 8px; }
+/* mobile TOC disclosure — hidden on desktop, shown on mobile */
+.chap-mobile-toc { display: none; border: 1px solid var(--rule); border-radius: 9px; background: var(--surface); margin-bottom: 14px; }
+.chap-mobile-toc summary { padding: 9px 14px; cursor: pointer; font-family: var(--font-ui); font-size: 13px; color: var(--ink-soft); list-style: none; display: flex; justify-content: space-between; align-items: center; }
+.chap-mobile-toc summary::-webkit-details-marker { display: none; }
+.chap-mobile-toc summary::after { content: "+"; font-family: var(--font-mono); color: var(--ink-faint); font-size: 15px; }
+.chap-mobile-toc[open] summary::after { content: "−"; }
+.chap-mobile-list { margin: 0; padding: 4px 10px 10px; list-style: none; }
+.chap-mobile-list a { display: block; font-family: var(--font-ui); font-size: 13px; color: var(--ink-soft); text-decoration: none; padding: 6px 8px; border-radius: 6px; }
+.chap-mobile-list a:hover { color: var(--accent); }
+.chap-mobile-list a.is-current { color: var(--accent); font-weight: 600; }
+@media (max-width: 780px) {
+  .chap-outer { padding-inline: 18px; }
+  .chap-grid { grid-template-columns: 1fr; }
+  .chap-toc-aside { display: none; }
+  .chap-mobile-toc { display: block; }
+}
+
+/* -------- مسائل Q/A two-color bold markers -------- */
+.masail-q { color: var(--accent); }
+.masail-a { color: var(--verdigris); }
+
+/* -------- scholar dashboard (شبكة المعرفة) -------- */
+.dash-stats { display: flex; flex-wrap: wrap; gap: 10px; margin: 18px 0 28px; }
+.dash-stat { border: 1px solid var(--rule-strong); border-radius: 11px; background: var(--surface); padding: 14px 20px; min-width: 100px; text-align: center; }
+.dash-stat-num { font-family: var(--font-display); font-size: 26px; color: var(--ink); line-height: 1; }
+.dash-stat-label { font-family: var(--font-ui); font-size: 12px; color: var(--ink-faint); margin-top: 4px; }
+.people-table { border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; margin-top: 12px; }
+.people-row { display: flex; align-items: center; gap: 12px; padding: 11px 16px; text-decoration: none; color: inherit; border-top: 1px solid var(--rule); }
+.people-row:first-child { border-top: none; }
+.people-row:hover { background: var(--paper-2); }
+.people-name { font-family: var(--font-serif); font-size: 15px; color: var(--ink); flex: 1; }
+.people-works { font-family: var(--font-ui); font-size: 12px; color: var(--ink-faint); white-space: nowrap; }
 
 /* admin: one-line explainer under the chosen type */
 .compose-typedesc { margin: -16px 0 24px; font-size: 14px; line-height: 1.7; min-height: 1.2em; }
@@ -708,12 +748,13 @@ html.hide-vnums .vnum { display: none; }
 .prose th { background: var(--paper-2); }
 
 /* --- token colors: آية ﴿﴾ · حديث «» · اقتباس "" (wrapped at build) --- */
-:root { --tok-ayah: #2f6f54; --tok-hadith: #8a5a20; --tok-quote: #6a51a6; }
-html[data-theme="sepia"] { --tok-ayah: #2c6a4f; --tok-hadith: #87571d; --tok-quote: #62499c; }
-html[data-theme="dark"]  { --tok-ayah: #79cda0; --tok-hadith: #d6ac63; --tok-quote: #b6a0e6; }
+/* آيات ﴿﴾ → accent red; اقتباس "" → blue; حديث «» → warm amber */
+:root { --tok-ayah: #9a2f24; --tok-hadith: #8a5a20; --tok-quote: #2a5da6; }
+html[data-theme="sepia"] { --tok-ayah: #872820; --tok-hadith: #87571d; --tok-quote: #275299; }
+html[data-theme="dark"]  { --tok-ayah: #e08888; --tok-hadith: #d6ac63; --tok-quote: #80aad8; }
 .tok-ayah   { color: var(--tok-ayah); }
 .tok-hadith { color: var(--tok-hadith); }
-.tok-quote  { color: var(--tok-quote); font-style: italic; }
+.tok-quote  { color: var(--tok-quote); }
 
 /* --- personal highlights (CSS Custom Highlight API) --- */
 ::highlight(aa-review)   { background-color: rgba(240, 195, 60, 0.40); }
@@ -763,3 +804,29 @@ html[data-theme="dark"] ::highlight(aa-find)    { background-color: rgba(255, 15
 .aa-findbtn { position: fixed; z-index: 74; inset-block-end: 22px; inset-inline-end: 18px; width: 48px; height: 48px; border-radius: 50%; border: 1px solid var(--rule-strong); background: var(--surface); color: var(--ink); font-size: 18px; cursor: pointer; box-shadow: 0 10px 28px rgba(20,16,12,0.20); }
 .aa-findbtn[hidden] { display: none; }
 .aa-findbtn:hover { border-color: var(--accent); }
+
+/* --- chapter chip bar (book index + chapter pages) --- */
+.chap-bar { display: flex; flex-wrap: wrap; gap: 6px; margin-block: 20px 4px; }
+.chap-chip { font-family: var(--font-ui); font-size: 13.5px; color: var(--ink-soft); background: var(--surface); border: 1px solid var(--rule-strong); border-radius: 30px; padding: 5px 14px; text-decoration: none; white-space: nowrap; }
+.chap-chip:hover { border-color: var(--accent); color: var(--accent); }
+.chap-chip-ks { border-style: dashed; color: var(--verdigris); }
+.chap-chip-ks:hover { border-color: var(--verdigris); border-style: solid; }
+
+/* --- book chapter accordion --- */
+.book-accordion { border-block-start: 1px solid var(--rule); margin-block-start: 8px; }
+.book-chap-item { border-block-end: 1px solid var(--rule); }
+.book-chap-sum { display: flex; align-items: center; gap: 10px; padding: 13px 0; cursor: pointer; font-size: 1.05rem; font-weight: 600; list-style: none; }
+.book-chap-sum::-webkit-details-marker { display: none; }
+.book-chap-sum::before { content: "+"; font-weight: 700; color: var(--accent); font-size: 1.1em; flex-shrink: 0; }
+.book-chap-item[open] .book-chap-sum::before { content: "−"; }
+.book-chap-open { font-family: var(--font-ui); font-size: 0.82rem; color: var(--accent); margin-inline-start: auto; text-decoration: none; flex-shrink: 0; opacity: 0.75; }
+.book-chap-open:hover { opacity: 1; }
+.book-chap-body { padding-block: 8px 24px; }
+
+/* --- معجم list --- */
+.mujam-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0; border-block-start: 1px solid var(--rule); }
+.mujam-item { display: flex; align-items: baseline; gap: 14px; padding: 11px 0; border-block-end: 1px solid var(--rule); }
+.mujam-term { font-size: 1.05rem; font-weight: 600; text-decoration: none; color: var(--ink); }
+.mujam-term:hover { color: var(--accent); }
+.mujam-def { font-family: var(--font-ui); font-size: 0.92rem; color: var(--ink-soft); }
+.mujam-def-head { font-family: var(--font-ui); font-size: 1rem; color: var(--ink-soft); margin-top: 6px; }

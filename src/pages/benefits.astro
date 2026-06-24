@@ -1,14 +1,14 @@
 ---
 import Base from "../layouts/Base.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
-// مكتبتي — فوائدُ وإشاراتٌ مرجعيةٌ خاصةٌ بهذا الجهاز فقط. تُصنع بتظليل النصِّ أثناء
+// كُناشتي — فوائدُ وإشاراتٌ مرجعيةٌ خاصةٌ بهذا الجهاز فقط. تُصنع بتظليل النصِّ أثناء
 // القراءة وتُحفَظ في المتصفّح (localStorage)؛ لا تُرسَل لأيِّ خادم. القائمة تُبنى في
 // المتصفّح من scripts/library.ts. ponytail: empty shell, the device fills it.
 ---
-<Base title="الفوائد" description="فوائدُك وإشاراتُك المرجعيةُ المحفوظةُ على هذا الجهاز." activeNav="benefits" noindex>
-  <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "الفوائد" }]} />
+<Base title="كُناشة" description="فوائدُك وإشاراتُك المرجعيةُ المحفوظةُ على هذا الجهاز." activeNav="benefits" noindex>
+  <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "كُناشة" }]} />
   <div class="wrap-mid u91a8701">
-    <h1 class="page-title">مكتبتي</h1>
+    <h1 class="page-title">كُناشتي</h1>
     <p class="page-intro">فوائدُك وإشاراتُك المرجعيةُ — تُصنَع بتظليلِ النصِّ أثناء القراءة، وتُحفَظ على هذا الجهازِ وحده.</p>
     <div class="lib-tabs" data-lib-tabs>
       <button data-lib-tab="benefit" aria-pressed="true">الفوائد</button>

@@ -84,6 +84,21 @@ function rehypeHeadingIds() {
   };
 }
 
+// Color السؤال/الجواب bold markers in مسائل content (runs after sanitize; trusted).
+function rehypeMasailQA() {
+  return (tree: any) => {
+    const visit = (node: any) => {
+      if (node.type === "element" && node.tagName === "strong") {
+        const text = collectText(node).trim();
+        if (text.startsWith("السؤال")) node.properties.className = [...(node.properties.className ?? []), "masail-q"];
+        else if (text.startsWith("الجواب")) node.properties.className = [...(node.properties.className ?? []), "masail-a"];
+      }
+      if (node.children) node.children.forEach(visit);
+    };
+    visit(tree);
+  };
+}
+
 const processor = unified()
   .use(remarkParse)
   .use(remarkGfm)
@@ -94,6 +109,21 @@ const processor = unified()
   .use(rehypeHeadingIds)
   .use(rehypeStringify);
 
+const masailProcessor = unified()
+  .use(remarkParse)
+  .use(remarkGfm)
+  .use(remarkRehype, { allowDangerousHtml: true })
+  .use(rehypeRaw)
+  .use(rehypeSanitize, sanitizeSchema)
+  .use(rehypeMasailQA)
+  .use(rehypeArabicTokens)
+  .use(rehypeHeadingIds)
+  .use(rehypeStringify);
+
 export function markdownToSafeHtml(markdown: string): string {
   return String(processor.processSync(markdown));
+}
+
+export function markdownMasailToHtml(markdown: string): string {
+  return String(masailProcessor.processSync(markdown));
 }
