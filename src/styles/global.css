@@ -654,8 +654,6 @@ html.hide-vnums .vnum { display: none; }
 .sort-btn:hover { border-color: var(--accent); color: var(--accent); }
 .sort-btn[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
 .sort-dir { font-size: 16px; line-height: 1; }
-.flat-list { list-style: none; padding: 0; margin: 0; }
-.flat-list > li { list-style: none; }
 
 /* type filter on topic/subject/era grids */
 .type-filter { margin-bottom: 18px; }
@@ -865,3 +863,10 @@ html[data-theme="dark"] ::highlight(aa-find)    { background-color: rgba(255, 15
 .mujam-term:hover { color: var(--accent); }
 .mujam-def { font-family: var(--font-ui); font-size: 0.92rem; color: var(--ink-soft); }
 .mujam-def-head { font-family: var(--font-ui); font-size: 1rem; color: var(--ink-soft); margin-top: 6px; }
+
+/* --- page separator (EPUB-imported books) — click to open حاشية in ann-sheet --- */
+.page-sep { display: flex; align-items: center; margin: 24px 0; padding-block-start: 4px; border-block-start: 1px solid var(--rule); color: var(--ink-faint); font-family: var(--font-ui); font-size: 0.78rem; }
+.page-sep::before { content: "ص " attr(data-page); }
+.page-sep[data-ann] { cursor: pointer; }
+.page-sep[data-ann]:hover { color: var(--accent); }
+.page-sep[data-ann]::after { content: " · حواشٍ"; }
