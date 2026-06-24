@@ -9,17 +9,17 @@
 // ponytail: regex over a single, regular producer's output — if another EPUB
 // shape shows up, branch on it (or add a parser) then, not now.
 //
-// Usage:  pnpm import:epub <file.epub> [more.epub …] [flags]
+// Usage:  pnpm import:epub <file.epub|dir/> [more…] [flags]
 //   --out <dir>        content root (default: src/content)
-//   --kind <متن|مرجع|مجموع>   book.kind (default: مرجع)
-//   --status <draft|review|published>  (default: draft)
+//   --kind <متن|مرجع|مجموع>   book.kind (omitted by default — no badge)
+//   --status <draft|review|published>  (default: published)
 //   --slug <slug>      override book slug (single book only)
 //   --person-slug <s>  override author slug (single book only)
 //   --dry-run          print what would be written, write nothing
 //   --selftest         run built-in assertions and exit
 
 import { execFileSync } from "node:child_process";
-import { mkdtempSync, rmSync, readFileSync, writeFileSync, existsSync, mkdirSync } from "node:fs";
+import { mkdtempSync, rmSync, readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync, statSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 
@@ -157,7 +157,7 @@ function infoField(info: string, label: string): string | undefined {
   return v ? cleanInline(v) : undefined;
 }
 
-interface Opt { out: string; kind: string; status: string; slug?: string; personSlug?: string; dryRun: boolean; today: string }
+interface Opt { out: string; kind?: string; status: string; slug?: string; personSlug?: string; dryRun: boolean; today: string }
 
 function build(file: string, opt: Opt): { book: { path: string; text: string }; person: { path: string; text: string } | null } {
   const { meta, pages } = readEpub(file);
@@ -182,7 +182,7 @@ function build(file: string, opt: Opt): { book: { path: string; text: string }; 
     `status: ${opt.status}`,
     `published_at: ${opt.today}`,
     `person: ${personSlug}`,
-    `kind: ${opt.kind}`,
+    opt.kind ? `kind: ${opt.kind}` : null,
     meta.edition ? `edition: ${y(meta.edition)}` : null,
     meta.muhaqqiq ? `description: ${y("بتحقيق " + meta.muhaqqiq)}` : null, // بتحقيق
     "---",
@@ -240,13 +240,13 @@ function main() {
   const valued = new Set(["--out", "--kind", "--status", "--slug", "--person-slug"]);
   const positional = argv.filter((a, i) => !a.startsWith("--") && !valued.has(argv[i - 1]));
   if (!positional.length) {
-    console.error("usage: pnpm import:epub <file.epub> [more.epub …] [--out src/content] [--kind مرجع] [--status draft] [--slug s] [--person-slug s] [--dry-run]");
+    console.error("usage: pnpm import:epub <file.epub|dir/> [more…] [--out src/content] [--kind متن] [--status published] [--slug s] [--person-slug s] [--dry-run]");
     process.exit(1);
   }
   const opt: Opt = {
     out: flag("--out") ?? "src/content",
-    kind: flag("--kind") ?? "مرجع", // مرجع
-    status: flag("--status") ?? "draft",
+    kind: flag("--kind"),
+    status: flag("--status") ?? "published",
     slug: flag("--slug"),
     personSlug: flag("--person-slug"),
     dryRun: argv.includes("--dry-run"),
@@ -255,7 +255,17 @@ function main() {
   if ((opt.slug || opt.personSlug) && positional.length > 1) {
     console.error("--slug/--person-slug only make sense with a single epub"); process.exit(1);
   }
-  for (const file of positional) {
+  // expand directories to their .epub files
+  const files: string[] = [];
+  for (const p of positional) {
+    if (!existsSync(p)) { console.error("✗ not found: " + p); continue; }
+    if (statSync(p).isDirectory()) {
+      files.push(...readdirSync(p).filter((f) => f.endsWith(".epub")).map((f) => join(p, f)));
+    } else {
+      files.push(p);
+    }
+  }
+  for (const file of files) {
     if (!existsSync(file)) { console.error("✗ not found: " + file); continue; }
     const { book, person } = build(file, opt);
     const lines = [`\u{1F4D6} ${file}`, `   -> ${book.path} (${book.text.length} bytes)`];
@@ -265,7 +275,7 @@ function main() {
     if (person) writeFileMk(person.path, person.text);
     writeFileMk(book.path, book.text);
   }
-  if (!opt.dryRun) console.log("\nNext: pnpm validate:content   (status is draft until you review + publish)");
+  if (!opt.dryRun) console.log("\nNext: pnpm validate:content");
 }
 
 main();

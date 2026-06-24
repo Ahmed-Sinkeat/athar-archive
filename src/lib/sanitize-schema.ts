@@ -4,7 +4,7 @@
 
 import { defaultSchema, type Options as SanitizeSchema } from "rehype-sanitize";
 
-const globalAttrs = [...(defaultSchema.attributes?.["*"] ?? []), "id", "className", "dir", "lang"];
+const globalAttrs = [...(defaultSchema.attributes?.["*"] ?? []), "id", "className", "dir", "lang", /^data-.+/];
 
 export const sanitizeSchema: SanitizeSchema = {
   ...defaultSchema,

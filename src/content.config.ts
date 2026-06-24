@@ -77,7 +77,7 @@ const book = defineCollection({
     ...shared,
     person: slug,           // → Person (author)
     // study classification — drives the متن badge + study modes (poems are always متن)
-    kind: z.enum(["متن", "مرجع", "مجموع"]).default("متن"),
+    kind: z.enum(["متن", "مرجع", "مجموع"]).optional(),
     topics: topicsField,
     authored_year: z.number().int().optional(), // hijri سنة التصنيف — default browse sort
     description: z.string().optional(),
