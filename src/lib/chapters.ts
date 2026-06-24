@@ -19,7 +19,10 @@ export function slugifyArabic(input: string): string {
     // keep Arabic letters, Arabic-Indic digits, latin alphanumerics; everything else → hyphen
     .replace(/[^ء-ي٠-٩a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "");
-  return slug;
+  // Cap length: a dir name must stay under the 255-byte filesystem limit, and
+  // Arabic is 2 bytes/char. 80 chars ≈ 160 bytes leaves room for the -N dedup
+  // suffix the callers append. Paragraph-long headings (a whole hadith) hit this.
+  return slug.slice(0, 80).replace(/-+$/g, "");
 }
 
 // --- chapter splitting (h2 = `## …`, exactly two hashes) ---

@@ -24,6 +24,13 @@ describe("slugifyArabic", () => {
   it("returns empty string when nothing slug-able remains", () => {
     expect(slugifyArabic("!!! ---")).toBe("");
   });
+
+  it("caps paragraph-long headings under the filesystem name limit", () => {
+    const s = slugifyArabic("كلمة ".repeat(100));
+    expect(s.length).toBeLessThanOrEqual(80);
+    expect(Buffer.byteLength(s)).toBeLessThan(255);
+    expect(s.endsWith("-")).toBe(false);
+  });
 });
 
 describe("splitChapters", () => {
