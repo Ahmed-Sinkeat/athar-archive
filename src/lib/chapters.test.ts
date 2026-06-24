@@ -51,6 +51,14 @@ describe("splitChapters", () => {
     expect(chapters[0].content).toContain("### فرع");
   });
 
+  it("dedupes when a natural slug collides with a generated -N slug", () => {
+    // "الغلط","الغلط" → الغلط, الغلط-2; then "الغلط 2" also → الغلط-2 naturally.
+    // All three must end unique (the old base-counter map produced a clash).
+    const chapters = splitChapters("## الغلط\nأ\n## الغلط\nب\n## الغلط 2\nج").chapters;
+    const slugs = chapters.map((c) => c.slug);
+    expect(new Set(slugs).size).toBe(slugs.length);
+  });
+
   it("dedupes identical chapter slugs deterministically", () => {
     const { chapters } = splitChapters("## مقدمة\n\nأ\n\n## مقدمة\n\nب");
     expect(chapters[0].slug).toBe("مقدمة");
