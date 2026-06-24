@@ -48,7 +48,7 @@ jobs:
       - name: Build (Astro + Pagefind + redirects)
         run: pnpm build
         env:
-          NODE_OPTIONS: --max-old-space-size=3072
+          NODE_OPTIONS: --max-old-space-size=5120
 
       - name: Smoke test (per-template invariants over dist/)
         run: pnpm smoke
