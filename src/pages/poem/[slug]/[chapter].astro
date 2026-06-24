@@ -4,7 +4,7 @@ import Base from "../../../layouts/Base.astro";
 import Breadcrumbs from "../../../components/Breadcrumbs.astro";
 import Verse from "../../../components/Verse.astro";
 import StudyBar from "../../../components/StudyBar.astro";
-import { isPub, loadGraph, personNameMap, notesByAnchor, subjectTitlesFor } from "../../../lib/site";
+import { isPub, loadGraph, personNameMap, notesByAnchor } from "../../../lib/site";
 import { analyzePoem } from "../../../lib/chunk";
 import { readBody } from "../../../lib/read-body";
 import { hrefFor, toArabicDigits } from "../../../lib/display";
@@ -19,24 +19,24 @@ export async function getStaticPaths() {
     const a = analyzePoem(body);
     if (!a.chunked) continue;
     const byAnchor = notesByAnchor("poem", entry.id, graph, names);
-    const subjects = subjectTitlesFor(entry.data.topics, graph);
     const tocChapters = a.chapters.map((c) => ({ title: c.title, slug: c.slug, verses: c.verses.length }));
     for (const c of a.chapters) {
       paths.push({
         params: { slug: entry.id, chapter: c.slug },
-        props: { entry, chapter: c, byAnchor, author: names.get(entry.data.person), subjects, allChapters: tocChapters },
+        props: { entry, chapter: c, byAnchor, author: names.get(entry.data.person), allChapters: tocChapters },
       });
     }
   }
   return paths;
 }
 
-const { entry, chapter, byAnchor, author, subjects, allChapters } = Astro.props;
+const { entry, chapter, byAnchor, author, allChapters } = Astro.props;
 const chIdx = (allChapters as any[]).findIndex((c: any) => c.slug === chapter.slug);
 const prev = (allChapters as any[])[chIdx - 1] ?? null;
 const next = (allChapters as any[])[chIdx + 1] ?? null;
 ---
-<Base title={`${chapter.title} · ${entry.data.title}`} activeNav="poems" searchMeta={{ title: `${entry.data.title} — ${chapter.title}`, type: "poem", id: entry.id, person: author, matn: true, subjects }} searchScope={{ in: entry.id, label: entry.data.title }}>
+{/* ponytail: no searchMeta → data-pagefind-ignore (see book chapter page). */}
+<Base title={`${chapter.title} · ${entry.data.title}`} activeNav="poems" searchScope={{ in: entry.id, label: entry.data.title }}>
   <Breadcrumbs
     items={[
       { label: "الرئيسية", href: "/" },
