@@ -1,7 +1,7 @@
 // In-memory knowledge graph built from the content collections.
 // Replaces a relational DB at Phase-1 scale (FR-B-05): it answers the
 // relational queries the site needs — materials by topic/subject/person,
-// lessons by series (ordered), and reverse polymorphic lookups.
+// and reverse polymorphic lookups (annotations, audio, benefits, شروح, backlinks).
 
 import {
   MATERIAL_COLLECTIONS,
@@ -17,7 +17,7 @@ function key(type: string, id: string): string {
   return `${type}:${id}`;
 }
 
-// --- duration helpers (for derived series stats) ---
+// --- duration helpers (used for audio duration display) ---
 
 export function parseDuration(d: string | undefined): number {
   if (!d) return 0;
@@ -35,13 +35,6 @@ export function formatDuration(totalSeconds: number): string {
   return h > 0 ? `${h}:${pad(m)}:${pad(sec)}` : `${m}:${pad(sec)}`;
 }
 
-export interface SeriesStats {
-  lessonCount: number;
-  publishedLessonCount: number;
-  totalDuration: string;
-  totalSeconds: number;
-}
-
 export interface Graph {
   all: ContentEntry[];
   getById(collection: string, id: string): ContentEntry | undefined;
@@ -52,17 +45,14 @@ export interface Graph {
   materialsByPerson(personId: string): ContentEntry[];
   shuyukhFor(personId: string): ContentEntry[];     // شيوخ: persons this narrator narrates from
   talamidhaFor(personId: string): ContentEntry[];   // تلاميذ: persons who narrate from this one
-  lessonsBySeries(seriesId: string): ContentEntry[];
+  commentariesOf(bookId: string): ContentEntry[];   // شروح/تعليقات: books whose sharh_of == this
 
   annotationsForTarget(type: string, id: string): ContentEntry[];
   audioForSource(type: string, id: string): ContentEntry[];
   benefitsForSource(type: string, id: string): ContentEntry[];
-  seriesForSource(type: string, id: string): ContentEntry[];
-  // «ما يشير إلى هذا»: reverse references (annotations, benefits, series, authored
+  // «ما يشير إلى هذا»: reverse references (annotations, benefits, شروح, authored
   // works, topic/subject members, and [[wiki-link]] mentions) pointing at this entity.
   backlinksFor(collection: string, id: string): { entry: ContentEntry; relation: string }[];
-
-  seriesStats(seriesId: string): SeriesStats;
 }
 
 export function buildGraph(entries: ContentEntry[]): Graph {
@@ -70,14 +60,13 @@ export function buildGraph(entries: ContentEntry[]): Graph {
   const topicIndex = new Map<string, ContentEntry[]>();
   const personIndex = new Map<string, ContentEntry[]>();
   const subjectTopics = new Map<string, ContentEntry[]>();
-  const seriesLessons = new Map<string, ContentEntry[]>();
 
   const narratorStudents = new Map<string, string[]>(); // teacherSlug → [studentSlugs]
+  const sharhByParent = new Map<string, ContentEntry[]>(); // bookSlug → books whose sharh_of == it
 
   const annotationsByTarget = new Map<string, ContentEntry[]>();
   const audioBySource = new Map<string, ContentEntry[]>();
   const benefitsBySource = new Map<string, ContentEntry[]>();
-  const seriesBySource = new Map<string, ContentEntry[]>();
   const wikilinkIndex = new Map<string, ContentEntry[]>(); // "type:slug" → entries whose body links to it
 
   const push = (map: Map<string, ContentEntry[]>, k: string, e: ContentEntry) => {
@@ -111,11 +100,11 @@ export function buildGraph(entries: ContentEntry[]): Graph {
           narratorStudents.set(teacher, list);
         }
         break;
+      case "book":
+        if (e.data.sharh_of) push(sharhByParent, str(e.data.sharh_of), e);
+        break;
       case "topic":
         if (e.data.subject) push(subjectTopics, str(e.data.subject), e);
-        break;
-      case "lesson":
-        if (e.data.series) push(seriesLessons, str(e.data.series), e);
         break;
       case "annotation":
         if (e.data.target_type && e.data.target_id) {
@@ -132,19 +121,9 @@ export function buildGraph(entries: ContentEntry[]): Graph {
           push(benefitsBySource, key(str(e.data.source_type), str(e.data.source_id)), e);
         }
         break;
-      case "series":
-        if (e.data.source_type && e.data.source_id) {
-          push(seriesBySource, key(str(e.data.source_type), str(e.data.source_id)), e);
-        }
-        break;
     }
 
     for (const w of parseWikilinks(e.body ?? "")) push(wikilinkIndex, key(w.type, w.slug), e);
-  }
-
-  // lessons sorted by `order`
-  for (const list of seriesLessons.values()) {
-    list.sort((a, b) => Number(a.data.order ?? 0) - Number(b.data.order ?? 0));
   }
 
   const getById = (collection: string, id: string) => byCollection.get(collection)?.get(id);
@@ -160,24 +139,6 @@ export function buildGraph(entries: ContentEntry[]): Graph {
     return [...seen.values()];
   };
 
-  const lessonsBySeries = (seriesId: string) => seriesLessons.get(seriesId) ?? [];
-
-  const seriesStats = (seriesId: string): SeriesStats => {
-    const lessons = lessonsBySeries(seriesId);
-    let totalSeconds = 0;
-    let publishedLessonCount = 0;
-    for (const l of lessons) {
-      totalSeconds += parseDuration(str(l.data.duration) || undefined);
-      if (String(l.data.status) === "published") publishedLessonCount += 1;
-    }
-    return {
-      lessonCount: lessons.length,
-      publishedLessonCount,
-      totalDuration: formatDuration(totalSeconds),
-      totalSeconds,
-    };
-  };
-
   const backlinksFor = (collection: string, id: string) => {
     const out: { entry: ContentEntry; relation: string }[] = [];
     const seen = new Set<string>();
@@ -189,11 +150,10 @@ export function buildGraph(entries: ContentEntry[]): Graph {
     };
     for (const a of annotationsByTarget.get(key(collection, id)) ?? []) add(a, "شرح/حاشية");
     for (const b of benefitsBySource.get(key(collection, id)) ?? []) add(b, "فائدة");
-    for (const s of seriesBySource.get(key(collection, id)) ?? []) add(s, "سلسلة شرح");
+    if (collection === "book") for (const s of sharhByParent.get(id) ?? []) add(s, "شرح/تعليق");
     if (collection === "person") for (const e of personIndex.get(id) ?? []) add(e, "من مؤلَّفاته");
     if (collection === "topic") for (const e of topicIndex.get(id) ?? []) add(e, "في الموضوع");
     if (collection === "subject") for (const t of subjectTopics.get(id) ?? []) add(t, "موضوع");
-    if (collection === "series") for (const l of seriesLessons.get(id) ?? []) add(l, "درس");
     for (const e of wikilinkIndex.get(key(collection, id)) ?? []) add(e, "إشارة");
     return out;
   };
@@ -212,13 +172,11 @@ export function buildGraph(entries: ContentEntry[]): Graph {
     },
     talamidhaFor: (personId: string) =>
       (narratorStudents.get(personId) ?? []).map((s) => getById("person", s)).filter(Boolean) as ContentEntry[],
-    lessonsBySeries,
+    commentariesOf: (bookId: string) => sharhByParent.get(bookId) ?? [],
     annotationsForTarget: (type, id) => annotationsByTarget.get(key(type, id)) ?? [],
     audioForSource: (type, id) => audioBySource.get(key(type, id)) ?? [],
     benefitsForSource: (type, id) => benefitsBySource.get(key(type, id)) ?? [],
-    seriesForSource: (type, id) => seriesBySource.get(key(type, id)) ?? [],
     backlinksFor,
-    seriesStats,
   };
 }
 

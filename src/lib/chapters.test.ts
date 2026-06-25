@@ -4,7 +4,7 @@ import {
   splitChapters,
   parsePoem,
   parseBook,
-  parseLesson,
+  parseToc,
   extractAnchors,
 } from "./chapters.js";
 
@@ -102,12 +102,18 @@ describe("parseBook", () => {
   });
 });
 
-describe("parseLesson", () => {
-  it("builds a heading TOC with slugs and depth", () => {
-    const { headings } = parseLesson("## المقدمة\n\nنص\n\n### فرع\n\nنص\n\n## الخاتمة");
+describe("parseToc", () => {
+  it("builds a heading TOC with slugs and depth (h2-h6)", () => {
+    const headings = parseToc("## المقدمة\n\nنص\n\n### فرع\n\nنص\n\n## الخاتمة");
     expect(headings).toHaveLength(3);
     expect(headings[0]).toMatchObject({ title: "المقدمة", slug: "المقدمة", depth: 2 });
     expect(headings[1].depth).toBe(3);
+  });
+
+  it("ignores h1 (= book title)", () => {
+    const headings = parseToc("# العنوان\n\n## فصل\n\nنص");
+    expect(headings).toHaveLength(1);
+    expect(headings[0].depth).toBe(2);
   });
 });
 
@@ -116,11 +122,14 @@ describe("extractAnchors", () => {
     expect([...extractAnchors("poem", "أ --- ب\n\nج --- د")]).toEqual(["v1", "v2"]);
   });
 
-  it("returns paragraph ids for a book", () => {
-    expect([...extractAnchors("book", "فقرة {#x}\n\nفقرة أخرى")]).toEqual(["x", "p2"]);
+  it("returns paragraph ids + heading slugs for a book", () => {
+    const anchors = extractAnchors("book", "## عنوان\n\nفقرة {#x}\n\nفقرة أخرى");
+    expect(anchors.has("x")).toBe(true);
+    expect(anchors.has("عنوان")).toBe(true);
   });
 
   it("returns an empty set for collections without anchors", () => {
     expect(extractAnchors("article", "أي نص").size).toBe(0);
   });
 });
+

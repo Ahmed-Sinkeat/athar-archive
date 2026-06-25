@@ -108,10 +108,13 @@ published_at: 2026-06-21
 ```yaml
 # book — الكتاب
 title: العقيدة الواسطية
-person: ibn-taymiyyah     # ← إلزامي: معرّف المؤلف
+person: ibn-taymiyyah     # ← إلزامي: معرّف المؤلف/الشارح
 topics: [al-asma-was-sifat]   # اختياري، 1–5
 status: draft
 published_at: 2026-06-21
+# sharh_of: al-wasitiyyah       # اختياري: إذا كان الكتاب شرحاً لكتاب آخر
+# transcript_status: قيد المراجعة # اختياري: للشروح المفرغة (دروس مفرغة)
+# hadith_category: امهات الكتب    # اختياري: لكتب الحديث (امهات الكتب | أجزاء حديثية | تخريج | علل | عام)
 # description | edition | cover | attachments — اختيارية
 ```
 
@@ -125,28 +128,7 @@ published_at: 2026-06-21
 # description | attachments — اختيارية
 ```
 
-```yaml
-# series — السلسلة
-title: شرح الواسطية
-person: ibn-taymiyyah     # ← إلزامي: الشارح/المدرّس
-topics: [al-asma-was-sifat]
-status: draft
-published_at: 2026-06-21
-# source_type: book        # اختياري: book | poem  (لازمٌ معه source_id)
-# source_id: al-wasitiyyah
-# description — اختياري
-```
 
-```yaml
-# lesson — الدرس   (متنه body هو التفريغ transcript)
-title: الدرس الأول
-series: sharh-al-wasitiyyah   # ← إلزامي
-order: 1                       # ← إلزامي: ترتيب الدرس
-status: draft
-published_at: 2026-06-21
-# audio: <audio-id>     # اختياري
-# duration: "1:02:30"   # اختياري
-```
 
 ```yaml
 # question — المسائل   (موضوعات فقط، لا تصنيف ولا وسوم)
@@ -164,7 +146,7 @@ person: ibn-taymiyyah     # ← إلزامي: صاحب الفائدة
 topics: [al-asma-was-sifat]
 status: draft
 published_at: 2026-06-21
-# source_type: lesson      # اختياري: lesson | book | article | poem
+# source_type: book        # اختياري: book | article | poem
 # source_id: <source-id>   #         (لازمٌ معه source_type)
 ```
 
@@ -181,9 +163,9 @@ published_at: 2026-06-21
 ### الكيانات المضمَّنة (لا صفحة مستقلة لها)
 
 ```yaml
-# audio — الصوتية   (تُعرض داخل الدرس/المتن/المقالة)
+# audio — الصوتية   (تُعرض داخل الكتاب/المتن/المقالة)
 title: تلاوة البيقونية
-source_type: poem         # ← إلزامي: lesson | book | poem | article
+source_type: poem         # ← إلزامي: book | poem | article
 source_id: al-bayquniyyah # ← إلزامي: معرّف المصدر
 url: https://r2.ahlalathar.com/audio/al-bayquniyyah.opus   # ← إلزامي
 format: opus              # opus | mp3 (الافتراضي opus)
@@ -242,7 +224,7 @@ published_at: 2026-06-22
 - لاتيني، صغير الأحرف، بشرطات (kebab-case)، وصفي ومستقر: `al-wasitiyyah` لا `book1`.
   النمط المفروض: `^[a-z0-9]+(--?[a-z0-9]+)*$`.
 - **ثابت للأبد بعد النشر.** إن اضطُررت لتغيير معرّف منشور، انقل القديم إلى `aliases` لتوليد إعادة توجيه — لا تكسر رابطاً داخلاً أبداً.
-- **التوابع تُبنى من الأب** بفاصل `--`: `<series>--lesson-<n>` للدرس، مثل `sharh-al-wasitiyyah--lesson-1`.
+- **التوابع تُبنى من الأب** بفاصل `--`: `<target_id>--<anchor>--<kind>` للشرح، مثل `alfiyyah-ibn-malik--v1--sharh`.
 - **اسم ملف الشرح:** `<target_id>--<anchor>--<kind>` بـ kind لاتيني (`sharh` \| `hashiya` \| `iraab` \| `takhrij`)،
   مثل `alfiyyah-ibn-malik--v1--sharh.md`. لاحظ أن حقل `kind` **داخل** الملف يبقى عربياً (`شرح`)؛ الاسم لاتيني لأن المعرّف لاتيني.
 
@@ -293,7 +275,7 @@ published_at: 2026-06-22
 | `archived` | مؤرشف؛ يبقى رابطه حيّاً (لا يُكسر) لكن لا يظهر في القوائم النشطة |
 
 **بوابات مرمّزة (قواعد بناء لا أعراف):**
-1. لا يُنشر `lesson` إلا وله تفريغ (متنٌ غير فارغ).
+1. الأقسام الفارغة ممنوعة.
 2. لا يُنشر كيانٌ يشير إلى تابع في حالة `draft`.
 3. نقل أي شيء إلى `published` وصلاحية الدمج في `main` **محصوران بأعضاء الفريق** (عبر CODEOWNERS + حماية الفرع — [`docs/governance.md`](docs/governance.md)).
 

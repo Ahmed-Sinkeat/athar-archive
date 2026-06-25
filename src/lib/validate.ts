@@ -19,13 +19,12 @@ type CollectionMap = Map<string, Map<string, { status: string; data: Record<stri
 
 // SourceType master sets per entity (mirrors config.ts enums)
 const SOURCE_TYPES: Record<string, readonly string[]> = {
-  series: ["book", "poem"],
-  benefit: ["lesson", "book", "article", "poem"],
-  audio: ["lesson", "book", "poem", "article"],
+  benefit: ["book", "article", "poem"],
+  audio: ["book", "poem", "article"],
 };
 
 // Entities that require a person field
-const REQUIRES_PERSON = new Set(["book", "poem", "series", "benefit", "article"]);
+const REQUIRES_PERSON = new Set(["book", "poem", "benefit", "article"]);
 
 function buildMap(entries: ContentEntry[]): CollectionMap {
   const map: CollectionMap = new Map();
@@ -96,27 +95,19 @@ export function validate(entries: ContentEntry[]): BuildError[] {
       }
     }
 
-    // --- Lesson → Series mandatory + transcript gate ---
-    if (collection === "lesson") {
-      const seriesId = str(data.series);
-      if (!seriesId) {
-        fail(collection, id, "mandatory-relation", `'lesson/${id}' is missing required field 'series'`);
-      } else {
-        const seriesEntry = get(map, "series", seriesId);
-        if (!seriesEntry) {
-          fail(collection, id, "ref-resolution", `series '${seriesId}' not found (referenced by 'lesson/${id}')`);
-        } else if (isPublished && seriesEntry.status === "draft") {
-          fail(collection, id, "draft-ref-guard", `published 'lesson/${id}' references draft series '${seriesId}'`);
-        }
-      }
-      // transcript gate: a published lesson must have non-empty body
-      if (isPublished && !body.trim()) {
-        fail(collection, id, "transcript-gate", `published 'lesson/${id}' has no transcript — add content to the Markdown body`);
+    // --- Book → sharh_of (optional; must resolve to a real book) ---
+    if (collection === "book" && data.sharh_of) {
+      const parentId = str(data.sharh_of);
+      const parent = get(map, "book", parentId);
+      if (!parent) {
+        fail(collection, id, "ref-resolution", `sharh_of '${parentId}' not found (referenced by 'book/${id}')`);
+      } else if (isPublished && parent.status === "draft") {
+        fail(collection, id, "draft-ref-guard", `published 'book/${id}' references draft sharh_of '${parentId}'`);
       }
     }
 
-    // --- polymorphic source refs (Series, Benefit) ---
-    if (collection === "series" || collection === "benefit") {
+    // --- polymorphic source refs (Benefit) ---
+    if (collection === "benefit") {
       const sourceType = str(data.source_type);
       const sourceId = str(data.source_id);
       if (sourceType && sourceId) {
@@ -199,14 +190,6 @@ export function validate(entries: ContentEntry[]): BuildError[] {
       }
     }
 
-    // --- optional lesson.audio ref ---
-    if (collection === "lesson" && data.audio) {
-      const audioId = str(data.audio);
-      const audioEntry = get(map, "audio", audioId);
-      if (!audioEntry) {
-        fail(collection, id, "ref-resolution", `audio '${audioId}' not found (referenced by 'lesson/${id}')`);
-      }
-    }
   }
 
   return errors;

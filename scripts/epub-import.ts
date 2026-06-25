@@ -117,10 +117,35 @@ const MATN_TITLE_RE = /(?:^|[\s،(])متن(?:$|[\s،)=])|الأصول الثلا
 // Extend this map as you import more sections.
 // ─────────────────────────────────────────────
 const SECTION_TOPIC_MAP: Array<{ pattern: RegExp; topic: string; subject: string }> = [
-  { pattern: /عقيدة|توحيد|أصول الدين|صفات|أسماء الله/u, topic: "al-asma-was-sifat", subject: "aqeedah" },
+  { pattern: /عقيدة|توحيد|أصول الدين|صفات|أسماء الله|الواسطية|الطحاوية|السنة|الإيمان/u, topic: "al-asma-was-sifat", subject: "aqeedah" },
   { pattern: /إيمان|اعتقاد/u,                              topic: "tahwid-al-ibada",   subject: "aqeedah" },
-  { pattern: /نحو|صرف|لغة|عربية/u,                        topic: "al-nahw-al-muyassar", subject: "nahw" },
+  { pattern: /نحو|صرف|بلاغة|لغة|عربية|الآجرومية|ألفية ابن مالك/u, topic: "al-nahw-al-muyassar", subject: "nahw" },
+  { pattern: /تفسير|علوم القرآن|قراءات|تجويد/u,           topic: "tafsir-al-quran",   subject: "quran" },
+  { pattern: /حديث|مصطلح|رجال|سند|تخريج|علل|مسانيد|موطأ/u, topic: "mustalah-al-hadith", subject: "hadith" },
+  { pattern: /فقه|أصول الفقه|الرحبية|الفرائض|المعاملات/u,   topic: "usul-al-fiqh",      subject: "fiqh" },
+  { pattern: /تراجم|طبقات|سير|وفيات|رجال/u,                topic: "tarajim-al-ulama",  subject: "tarajim" },
 ];
+
+// ─────────────────────────────────────────────
+// Hadith category inference
+// ─────────────────────────────────────────────
+// Known امهات (the six/nine + Muwatta)
+const UMMAHAT_TITLES = /البخاري|مسلم|أبو داود|الترمذي|النسائي|ابن ماجه|أحمد|الدارمي|موطأ/u;
+// أجزاء: typically short standalone narration collections
+const AJZA_FOLDER = /أجزاء|جزء/u;
+// تخريج / علل books
+const TAKHRIJ_FOLDER = /تخريج|زوائد|علل|سؤالات/u;
+// آثار-style: ابن أبي الدنيا, etc.
+const ATHAR_AUTHOR = /ابن أبي الدنيا/u;
+
+function inferHadithCategory(meta: Meta, file: string): string | undefined {
+  const folder = basename(dirname(file));
+  if (UMMAHAT_TITLES.test(meta.title) || UMMAHAT_TITLES.test(meta.creator)) return "امهات الكتب";
+  if (TAKHRIJ_FOLDER.test(folder) || TAKHRIJ_FOLDER.test(meta.qism ?? "")) return "تخريج";
+  if (AJZA_FOLDER.test(folder) || AJZA_FOLDER.test(meta.title)) return "أجزاء حديثية";
+  if (ATHAR_AUTHOR.test(meta.creator)) return "كتب الآثار";
+  return undefined;
+}
 
 // ─────────────────────────────────────────────
 // Poem verse detection
@@ -264,6 +289,7 @@ interface Meta {
   qism?: string;        // قسم / subject classification from info.xhtml
   isPoem: boolean;      // detected from markup
   poemByTitle: boolean; // detected from title keywords
+  hadithCategory?: string; // inferred in readEpub for genre=حديث books
 }
 
 /** Read all info-title → info-desc pairs from info.xhtml */
@@ -356,6 +382,11 @@ function readEpub(file: string): { meta: Meta; pages: { id: string; xhtml: strin
     }
     if (totalLines > 0 && totalVerses / totalLines >= POEM_VERSE_THRESHOLD) {
       meta.isPoem = true;
+    }
+
+    // Infer hadith_category for hadith-genre books
+    if (genreFor(file) === "حديث" || (meta.qism && /حديث|سنن/u.test(meta.qism))) {
+      meta.hadithCategory = inferHadithCategory(meta, file);
     }
 
     return { meta, pages };
@@ -595,6 +626,7 @@ function build(file: string, opt: Opt): BuildResult {
     `person: ${personSlug}`,
     kind ? `kind: ${kind}` : null,
     genre ? `genre: ${genre}` : null,
+    (genre === "حديث" && meta.hadithCategory) ? `hadith_category: ${meta.hadithCategory}` : null,
     topics.length ? `topics: ${yList(topics)}` : null,
     meta.edition  ? `edition: ${y(meta.edition)}`  : null,
     meta.muhaqqiq ? `description: ${y("بتحقيق " + meta.muhaqqiq)}` : null,
@@ -871,6 +903,15 @@ function selftest() {
   const { lines: verseLines2 } = pageToVerseLines(versePage);
   const joined = verseLines2.join("\n");
   a(!joined.includes("الجزء"), "footer stripped from poem: " + joined);
+
+  // ── hadith_category inference ──
+  const fakeMeta = (title: string, creator = "", qism = "") =>
+    ({ title, creator, qism, isPoem: false, poemByTitle: false }) as Meta;
+  a(inferHadithCategory(fakeMeta("صحيح البخاري"), "/x/حديث/k.epub") === "امهات الكتب", "امهات: البخاري");
+  a(inferHadithCategory(fakeMeta("كتاب الزوائد"), "/x/13ـ كتب التخريج والزوائد/k.epub") === "تخريج", "تخريج folder");
+  a(inferHadithCategory(fakeMeta("جزء من حديث"), "/x/أجزاء حديثية/k.epub") === "أجزاء حديثية", "أجزاء folder");
+  a(inferHadithCategory(fakeMeta("كتاب الصمت", "ابن أبي الدنيا"), "/x/حديث/k.epub") === "كتب الآثار", "آثار: ابن أبي الدنيا");
+
 
   console.log("✓ selftest passed (all assertions)");
 }

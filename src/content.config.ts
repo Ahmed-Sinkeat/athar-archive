@@ -85,6 +85,14 @@ const book = defineCollection({
     kind: z.enum(["متن", "مرجع", "مجموع"]).optional(),
     // section beyond kind — routes to /quran /hadith /tarajim (still also under /books)
     genre: z.enum(["قرآن", "حديث", "تراجم"]).optional(),
+    // a شرح/تعليق of another book (فتح المجيد → كتاب التوحيد) — drives the parent's
+    // "شروحه وتعليقاته" list. The lesson/series split was retired: a درس is a book
+    // with audio; a سلسلة شرح is a book with sharh_of.
+    sharh_of: slug.optional(),
+    // دروس مفرّغة (audio transcribed to text) — review state shown as a pill.
+    transcript_status: z.enum(["مراجَع", "قيد المراجعة"]).optional(),
+    // تصنيف كتب الحديث — drives facets on /hadith
+    hadith_category: z.enum(["امهات الكتب", "كتب الآثار", "أجزاء حديثية", "تخريج", "علل", "عام"]).optional(),
     topics: topicsField,
     authored_year: z.number().int().optional(), // hijri سنة التصنيف — default browse sort
     description: z.string().optional(),
@@ -110,38 +118,8 @@ const poem = defineCollection({
   }),
 });
 
-// --- 06. Series (السلسلة) — polymorphic source (book | poem), optional ---
-
-const series = defineCollection({
-  loader: glob({ pattern: "**/*.md", base: "./src/content/series" }),
-  schema: z
-    .object({
-      ...shared,
-      kind: z.enum(["شرح", "عام"]).default("عام"),
-      person: slug,         // → Person (teacher)
-      topics: topicsField,
-      source_type: z.enum(["book", "poem"]).optional(),
-      source_id: slug.optional(),
-      description: z.string().optional(),
-    })
-    .refine(
-      (s) => (s.source_type == null) === (s.source_id == null),
-      "source_type and source_id must both be set or both omitted",
-    ),
-});
-
-// --- 07. Lesson (الدرس) — body IS the transcript ---
-
-const lesson = defineCollection({
-  loader: fmLoader("./src/content/lesson"),
-  schema: z.object({
-    ...shared,
-    series: slug,           // → Series (required)
-    order: z.number().int().positive(),
-    audio: slug.optional(), // → Audio entity
-    duration: z.string().optional(), // "1:23:45"
-  }),
-});
+// 06–07. Series + Lesson retired — a درس is a book with audio; a سلسلة شرح is a book
+// with `sharh_of`; a محاضرة is an article. One reading entity (book).
 
 // --- 08. Questions (المسائل) — topics only, no tags/subjects ---
 
@@ -163,7 +141,7 @@ const benefit = defineCollection({
       ...shared,
       person: slug,         // → Person (required)
       topics: topicsField,
-      source_type: z.enum(["lesson", "book", "article", "poem"]).optional(),
+      source_type: z.enum(["book", "article", "poem"]).optional(),
       source_id: slug.optional(),
     })
     .refine(
@@ -192,7 +170,7 @@ const audio = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/audio" }),
   schema: z.object({
     ...shared,
-    source_type: z.enum(["lesson", "book", "poem", "article"]), // required
+    source_type: z.enum(["book", "poem", "article"]), // required
     source_id: slug,                                             // required
     url: z.string().url(),
     format: z.enum(["opus", "mp3"]).default("opus"),
@@ -220,7 +198,7 @@ const annotation = defineCollection({
       // whole line carries the mark.
       phrase: z.string().min(1).optional(),
       // Optional cross-reference: this شرح lives more fully on another page.
-      source_type: z.enum(["lesson", "book", "poem", "article"]).optional(),
+      source_type: z.enum(["book", "poem", "article"]).optional(),
       source_id: slug.optional(),
     })
     .refine(
@@ -293,8 +271,6 @@ export const collections = {
   topic,
   book,
   poem,
-  series,
-  lesson,
   question,
   benefit,
   article,
