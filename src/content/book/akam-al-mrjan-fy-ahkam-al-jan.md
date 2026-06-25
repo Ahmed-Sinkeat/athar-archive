@@ -3,7 +3,7 @@ title: "آكام المرجان في أحكام الجان"
 status: published
 published_at: 2026-06-25
 person: al-shbly
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 description: "بتحقيق إبراهيم محمد الجمل"
 ---
 ## بِسم الله الرَّحْمَن الرَّحِيم

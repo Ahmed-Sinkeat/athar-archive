@@ -3,7 +3,7 @@ title: "الوحي والإنسان - قراءة معرفية"
 status: published
 published_at: 2026-06-25
 person: mhmd-al-syd-al-jlynd
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 ---
 ## مقدمة
 

@@ -3,7 +3,7 @@ title: "الكشف المبدي"
 status: published
 published_at: 2026-06-25
 person: mhmd-bn-hsyn-al-fqyh
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 edition: "الأولى 1422 هـ - 2002 م"
 ---
 ## [الكَشْف المُبْدِي لتمويه أبي الحسن السُّبكيّ، تكملة «الصّارم المنكي» ]ـ

@@ -3,7 +3,7 @@ title: "تبسيط العقائد الإسلامية"
 status: published
 published_at: 2026-06-25
 person: hsn-aywb
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 edition: "الخامسة، 1403 هـ - 1983 م"
 ---
 تبسيط العقائد الإسلامية حسن أيوب

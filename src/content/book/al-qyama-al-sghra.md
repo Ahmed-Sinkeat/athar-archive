@@ -3,7 +3,7 @@ title: "القيامة الصغرى"
 status: published
 published_at: 2026-06-25
 person: slyman-al-ashqr-amr
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 edition: "الرابعة، 1411 هـ - 1991 م"
 ---
 ## الباب الأول القيامة الصغرى

@@ -3,7 +3,7 @@ title: "العواصم من القواصم ط دار الجيل"
 status: published
 published_at: 2026-06-25
 person: abn-al-arby
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 edition: "الثانية، 1407هـ - 1987م"
 description: "بتحقيق محب الدين الخطيب - ومحمود مهدي الاستانبولي"
 ---

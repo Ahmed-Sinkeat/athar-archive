@@ -3,7 +3,7 @@ title: "العبودية"
 status: published
 published_at: 2026-06-25
 person: abn-tymya
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 edition: "الطبعة السابعة المجددة 1426هـ - 2005م"
 description: "بتحقيق محمد زهير الشاويش"
 ---

@@ -3,7 +3,7 @@ title: "دراسات في الأديان اليهودية والنصرانية"
 status: published
 published_at: 2026-06-25
 person: sawd-bn-abd-al-azyz-al-khlf
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 edition: "الرابعة، 1425هـ/2004م"
 description: "بتحقيق -"
 ---

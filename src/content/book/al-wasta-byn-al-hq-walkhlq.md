@@ -3,7 +3,7 @@ title: "الواسطة بين الحق والخلق"
 status: published
 published_at: 2026-06-25
 person: abn-tymya
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 edition: "الأولى"
 description: "بتحقيق محمد بن جميل زينو"
 ---

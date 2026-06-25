@@ -3,7 +3,7 @@ title: "مع الاثنى عشرية في الأصول والفروع"
 status: published
 published_at: 2026-06-25
 person: aly-al-salws
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 edition: "السابعة، 1424 هـ - 2003 م"
 ---
 ## [مع الاثنى عشرية في الأصول والفروع - موسوعة شاملة]ـ

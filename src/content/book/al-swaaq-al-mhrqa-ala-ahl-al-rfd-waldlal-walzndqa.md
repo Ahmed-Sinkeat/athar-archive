@@ -3,7 +3,7 @@ title: "الصواعق المحرقة على أهل الرفض والضلال و
 status: published
 published_at: 2026-06-25
 person: abn-hjr-al-hytmy
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 edition: "الأولى، 1417هـ - 1997م"
 description: "بتحقيق عبد الرحمن بن عبد الله التركي - كامل محمد الخراط"
 ---

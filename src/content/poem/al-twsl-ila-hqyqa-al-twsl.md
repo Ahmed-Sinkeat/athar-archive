@@ -3,7 +3,7 @@ title: "التوصل إلى حقيقة التوسل"
 status: published
 published_at: 2026-06-25
 person: mhmd-nsyb-al-rfaay
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 edition: "الثالثة، 1399 هـ - 1979 م"
 ---
 ## مقدمة الطبعة الثالثة

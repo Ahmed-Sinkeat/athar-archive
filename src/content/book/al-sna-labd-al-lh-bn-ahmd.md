@@ -3,7 +3,7 @@ title: "السنة لعبد الله بن أحمد"
 status: published
 published_at: 2026-06-25
 person: abd-al-lh-bn-ahmd
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 edition: "الأولى، 1406 هـ - 1986 م"
 description: "بتحقيق د. محمد بن سعيد بن سالم القحطاني"
 ---

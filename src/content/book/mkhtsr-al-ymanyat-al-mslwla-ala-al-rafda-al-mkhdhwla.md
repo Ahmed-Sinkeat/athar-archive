@@ -2,7 +2,7 @@
 title: "مختصر اليمانيات المسلولة على الرافضة المخذولة"
 status: published
 published_at: 2026-06-25
-person: book-qulr88
+person: book-8ipii2
 topics: ["al-firaq-war-rudud"]
 ---
 ## نبذة عن مؤلف الأصل

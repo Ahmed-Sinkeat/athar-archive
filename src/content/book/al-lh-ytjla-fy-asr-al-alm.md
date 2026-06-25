@@ -3,7 +3,7 @@ title: "الله يتجلى في عصر العلم"
 status: published
 published_at: 2026-06-25
 person: mjmwaa-mn-al-mwlfyn
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 ---
 الله يتجلى في عصر العلم
 

@@ -3,7 +3,7 @@ title: "المناظرة التقريرية بين الشيخ رحمت الله 
 status: published
 published_at: 2026-06-25
 person: rhmt-al-lh-al-hndy
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 edition: "الأولى، 1405"
 description: "بتحقيق د. محمد عبد الحليم مصطفى أبو السعد"
 ---

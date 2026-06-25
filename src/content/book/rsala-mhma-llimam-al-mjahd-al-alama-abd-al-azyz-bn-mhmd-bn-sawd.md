@@ -3,7 +3,7 @@ title: "رسالة مهمة للإمام المجاهد العلامة عبد ا
 status: published
 published_at: 2026-06-25
 person: abd-al-azyz-bn-mhmd-bn-sawd
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 edition: "-"
 ---
 ## تقديم سماحة الرئيس العام لادارات البحوث العلمية والافتاء والدعوة والإرشاد عبد العزيز بن عبد الله بن عبد الرحمن آل باز

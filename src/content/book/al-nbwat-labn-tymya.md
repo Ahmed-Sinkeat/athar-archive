@@ -3,7 +3,7 @@ title: "النبوات لابن تيمية"
 status: published
 published_at: 2026-06-25
 person: abn-tymya
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 edition: "الأولى، 1420هـ/2000م"
 description: "بتحقيق عبد العزيز بن صالح الطويان"
 ---

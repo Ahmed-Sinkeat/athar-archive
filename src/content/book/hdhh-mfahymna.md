@@ -3,7 +3,7 @@ title: "هذه مفاهيمنا"
 status: published
 published_at: 2026-06-25
 person: salh-al-al-shykh
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 edition: "الثانية 1422هـ-2001م"
 ---
 ## مقدمة

@@ -3,7 +3,7 @@ title: "وجوب تحكيم شرع الله ونبذ ما خالفه"
 status: published
 published_at: 2026-06-25
 person: abn-baz
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 edition: "الخامسة، 1409هـ"
 ---
 [

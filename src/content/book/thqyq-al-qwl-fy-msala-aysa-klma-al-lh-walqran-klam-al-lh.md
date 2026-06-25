@@ -3,7 +3,7 @@ title: "تحقيق القول في مسألة: عيسى كلمة الله وال
 status: published
 published_at: 2026-06-25
 person: abn-tymya
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 edition: "الأولى 1412هـ / 1992م"
 description: "بتحقيق قسم التحقيق بدار النشر"
 ---

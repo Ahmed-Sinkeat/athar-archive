@@ -3,7 +3,7 @@ title: "مصطلحات في كتب العقائد"
 status: published
 published_at: 2026-06-25
 person: mhmd-bn-ibrahym-al-hmd
-topics: ["mustalah-al-hadith"]
+topics: ["aam-aqeedah"]
 edition: "الاولى"
 ---
 ال

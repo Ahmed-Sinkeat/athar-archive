@@ -3,7 +3,7 @@ title: "الجواهر المضية"
 status: published
 published_at: 2026-06-25
 person: mhmd-bn-abd-al-whab
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 edition: "الأولى بمصر، 1349هـ، النشرة الثالثة، 1412هـ"
 ---
 ## مقدمة

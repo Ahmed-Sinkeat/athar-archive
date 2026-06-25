@@ -3,7 +3,7 @@ title: "التنبيهات المختصرة شرح الواجبات المتحت
 status: published
 published_at: 2026-06-25
 person: ibrahym-al-khrysy
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 edition: "الطعبة الثالثة 1417هـ-1997مـ"
 ---
 ## تقديم

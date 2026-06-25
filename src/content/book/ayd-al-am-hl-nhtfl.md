@@ -3,7 +3,7 @@ title: "عيد الأم هل نحتفل"
 status: published
 published_at: 2026-06-25
 person: shhata-sqr
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 ---
 عيد الأم ... هل نحتفل؟
 

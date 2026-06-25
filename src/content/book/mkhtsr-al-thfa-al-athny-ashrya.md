@@ -3,7 +3,7 @@ title: "مختصر التحفة الاثني عشرية"
 status: published
 published_at: 2026-06-25
 person: al-alwsy-mhmwd-shkry
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 ---
 ## [مختصر التحفة الاثني عشرية]ـ
 

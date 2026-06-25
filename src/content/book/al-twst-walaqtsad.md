@@ -3,7 +3,7 @@ title: "التوسط والاقتصاد"
 status: published
 published_at: 2026-06-25
 person: alwy-al-sqaf
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 edition: "الأولى، 1420 هـ - 1999 م"
 ---
 ## [التوسط والاقتصاد في أن الكفر يكون بالقول أو العمل أو الاعتقاد]ـ

@@ -3,7 +3,7 @@ title: "الصفدية"
 status: published
 published_at: 2026-06-25
 person: abn-tymya
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 edition: "الثانية، 1406هـ"
 description: "بتحقيق محمد رشاد سالم"
 ---

@@ -3,7 +3,7 @@ title: "البيهقي وموقفه من الإلهيات"
 status: published
 published_at: 2026-06-25
 person: ahmd-bn-atya-bn-aly-al-ghamdy
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 edition: "الثانية، 1423هـ/2002م"
 ---
 ## [البيهقي وموقفه من الإلهيات]ـ

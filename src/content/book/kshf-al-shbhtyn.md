@@ -3,7 +3,7 @@ title: "كشف الشبهتين"
 status: published
 published_at: 2026-06-25
 person: slyman-bn-shman
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 edition: "النشرة الأولى1408هـ"
 description: "بتحقيق عبد السلام بن برجس بن ناصر"
 ---

@@ -3,7 +3,7 @@ title: "معجم المناهي اللفظية"
 status: published
 published_at: 2026-06-25
 person: bkr-abw-zyd
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 edition: "الثالثة، 1417 هـ -1996 م"
 ---
 معجم المناهي اللفظية ويليه فوائد في الألفاظ (فيهما نحو 1500 لفظ) بقلم بكر بن عبد الله أبو زيد

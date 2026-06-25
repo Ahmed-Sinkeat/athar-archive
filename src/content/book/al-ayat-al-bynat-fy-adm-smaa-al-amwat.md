@@ -3,7 +3,7 @@ title: "الآيات البينات في عدم سماع الأموات"
 status: published
 published_at: 2026-06-25
 person: abn-al-alwsy
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 edition: "الثانية، 1399هـ"
 description: "بتحقيق محمد ناصر الدين الألباني"
 ---

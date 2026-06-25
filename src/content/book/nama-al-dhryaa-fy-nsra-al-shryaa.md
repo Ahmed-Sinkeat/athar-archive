@@ -3,7 +3,7 @@ title: "نعمة الذريعة في نصرة الشريعة"
 status: published
 published_at: 2026-06-25
 person: ibrahym-al-hlby
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 edition: "الأولى، 1419هـ - 1998م"
 description: "بتحقيق علي رضا بن عبد الله بن علي رضا"
 ---

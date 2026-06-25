@@ -3,7 +3,7 @@ title: "عالم الجن والشياطين"
 status: published
 published_at: 2026-06-25
 person: slyman-al-ashqr-amr
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 edition: "الرابعة، 1404 هـ - 1984 م"
 ---
 ## الفصل الأول تعريف وبيان

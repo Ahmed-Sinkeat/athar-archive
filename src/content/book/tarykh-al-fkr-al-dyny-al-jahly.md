@@ -3,7 +3,7 @@ title: "تاريخ الفكر الديني الجاهلي"
 status: published
 published_at: 2026-06-25
 person: mhmd-ibrahym-al-fywmy
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 edition: "الرابعة 1415هـ-1994"
 ---
 ## مقدمات

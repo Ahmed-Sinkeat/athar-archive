@@ -3,7 +3,7 @@ title: "مدخل في علوم القراءات"
 status: published
 published_at: 2026-06-25
 person: al-syd-rzq-al-twyl
-topics: ["tafsir-al-quran"]
+topics: ["aam-aqeedah"]
 edition: "الأولى 1405هـ - 1985م"
 ---
 ## مقدمات

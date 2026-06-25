@@ -3,7 +3,7 @@ title: "تنزيه الأصحاب عن تنقص أبي تراب"
 status: published
 published_at: 2026-06-25
 person: hmwd-bn-abd-al-lh-al-twyjry
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 ---
 ## تنزيه الأصحاب عن تنقص أبي تراب
 
