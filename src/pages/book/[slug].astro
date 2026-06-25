@@ -26,14 +26,17 @@ export async function getStaticPaths() {
     const audios = graph.audioForSource("book", entry.id)
       .filter((x) => x.data.status === "published")
       .map((au) => ({ url: au.data.url, format: au.data.format, duration: au.data.duration ?? null, sizeBytes: au.data.size_bytes ?? null, label: au.data.title }));
+    const commentaries = graph.commentariesOf(entry.id)
+      .filter(isPub)
+      .map(c => ({ href: hrefFor("book", c.id), title: c.data.title, author: c.data.person ? names.get(c.data.person as string) : "" }));
     // Phase 2: chunked books → store a light TOC (titles+slugs) only; the body and
     // its annotations live on the on-demand chapter pages, never in this landing's HTML.
-    paths.push({ params: { slug: entry.id }, props: { entry, chunked: a.chunked, toc: a.chapters.map((c) => ({ title: c.title, slug: c.slug })), body: a.chunked ? undefined : body, byAnchor: a.chunked ? {} : byAnchor, audios, author: names.get(entry.data.person), subjects: subjectTitlesFor(entry.data.topics, graph), related: relatedTo(entry, graph, names), backlinks: backlinksList(entry, graph, names) } });
+    paths.push({ params: { slug: entry.id }, props: { entry, chunked: a.chunked, toc: a.chapters.map((c) => ({ title: c.title, slug: c.slug })), body: a.chunked ? undefined : body, byAnchor: a.chunked ? {} : byAnchor, audios, commentaries, author: names.get(entry.data.person), subjects: subjectTitlesFor(entry.data.topics, graph), related: relatedTo(entry, graph, names), backlinks: backlinksList(entry, graph, names) } });
   }
   return paths;
 }
 
-const { entry, chunked, toc, body, byAnchor, audios, author, subjects, related, backlinks } = Astro.props;
+const { entry, chunked, toc, body, byAnchor, audios, commentaries, author, subjects, related, backlinks } = Astro.props;
 const KIND_SLUG: Record<string, string> = { شرح: "sharh", حاشية: "hashiya", تخريج: "takhrij", إعراب: "iraab" };
 const anchors = Object.entries(byAnchor);
 const path = `/book/${entry.id}`;
@@ -57,8 +60,19 @@ const jsonLd = bookLd({
       <a class="eyebrow u87c136d pill-link" href={isMatn("book", entry.data) ? "/matn" : "/books"}>{labelFor("book", entry.data)}</a>
       <h1 class="reader-title ue7e55f7" >{entry.data.title}</h1>
       <div class="reader-byline">{author}</div>
+      {entry.data.transcript_status && (
+        <div style="margin-top: 0.5rem;">
+          <span class={`pill ${entry.data.transcript_status === 'قيد المراجعة' ? 'tag-accent' : ''}`}>{entry.data.transcript_status}</span>
+        </div>
+      )}
     </div>
     {audios.length > 0 && <div class="u49fcd85"><AudioPlayer sources={audios} label="استماعٌ إلى المتن" /></div>}
+
+    {entry.data.transcript_status && (
+      <div class="wrap-mid" style="margin-top: 1rem; text-align: center;">
+        <button type="button" class="btn" data-action="transcript:send-review" data-book={entry.data.title}>أرسل ملاحظات المراجعة عبر البريد</button>
+      </div>
+    )}
 
     <div class="rule-short"></div>
 
@@ -98,6 +112,16 @@ const jsonLd = bookLd({
 
     <div class="ornament ud38b410" >۞</div>
   </div>
+  {commentaries.length > 0 && (
+    <div class="wrap-mid" style="margin-top: 2rem; border-top: 1px solid var(--border, #e0e0e0); padding-top: 1rem;">
+      <h2 class="section-title">شروحه وتعليقاته</h2>
+      <ul style="list-style: none; padding: 0;">
+        {commentaries.map(c => (
+          <li style="margin-bottom: 0.5rem;"><a href={c.href}>{c.title}</a> {c.author && <span class="faint">— {c.author}</span>}</li>
+        ))}
+      </ul>
+    </div>
+  )}
   <div class="wrap-mid"><RelatedStrip items={related} /></div>
   <Relations items={backlinks} />
 </Base>

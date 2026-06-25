@@ -188,16 +188,16 @@ function showToolbar(range: Range) {
     t.appendChild(b);
     return b;
   };
-  btn("مراجعة", "review", () => { addMark("review", off, text); done(); });
-  btn("فائدة", "benefit", () => openNote(off, text));
+  btn("مراجعة", "review", () => openNote("review", off, text));
+  btn("فائدة", "benefit", () => openNote("benefit", off, text));
   btn("إشارة", "bookmark", () => { addMark("bookmark", off, text); done(); });
   if (over.length) { const d = btn("حذف", null, () => { removeMarks(new Set(over.map((m) => m.id))); done(); }); d.classList.add("aa-del"); }
   positionTools(range);
   t.setAttribute("data-open", "");
 }
 
-function openNote(off: { start: number; end: number }, text: string) {
-  const mark = addMark("benefit", off, text); // benefit exists immediately; note optional
+function openNote(kind: Kind, off: { start: number; end: number }, text: string) {
+  const mark = addMark(kind, off, text); // mark exists immediately; note optional
   const t = toolbar();
   t.innerHTML = "";
   const wrap = document.createElement("div");
@@ -376,6 +376,21 @@ document.addEventListener("astro:before-swap", saveScroll); // SPA nav won't fir
 // expose the find opener for an optional button (data-action="page:find")
 document.addEventListener("click", (e) => {
   if ((e.target as HTMLElement).closest('[data-action="page:find"]')) { e.preventDefault(); openFind(); }
+  const sendBtn = (e.target as HTMLElement).closest<HTMLElement>('[data-action="transcript:send-review"]');
+  if (sendBtn) {
+    e.preventDefault();
+    const bookTitle = sendBtn.dataset.book || "الكتاب";
+    const marks = load().filter(m => m.kind === "review");
+    if (!marks.length) {
+      alert("لا توجد ملاحظات مراجعة (تظليل المراجعة) مسجلة حالياً في هذه الصفحة.");
+      return;
+    }
+    const body = `ملاحظات مراجعة تفريغ: ${bookTitle}\n\n` + marks.map(m => {
+      return `موضع: "${m.text}"\nملاحظة: ${m.note || "لا توجد ملاحظة إضافية"}\n`;
+    }).join("\n---\n\n");
+    
+    window.location.href = `mailto:admin@ahlalathar.com?subject=مراجعة تفريغ: ${encodeURIComponent(bookTitle)}&body=${encodeURIComponent(body)}`;
+  }
 });
 
 function onPage() {
