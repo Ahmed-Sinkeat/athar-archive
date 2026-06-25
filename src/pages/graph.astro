@@ -130,6 +130,11 @@ const gdata = JSON.stringify({ nodes, links }).replace(/</g, "\\u003c");
       ))}
     </div>
 
+    <!-- global graph search input -->
+    <div style="margin-bottom: 24px; display: flex; justify-content: center; width: 100%;">
+      <input type="search" id="graph-search" class="pop-search" placeholder="البحث في الشبكة والتركيز على العناوين والروابط (مثال: ابن تيمية)..." aria-label="ابحث في الشبكة" style="width: 100%; max-width: 600px; padding: 12px 20px; font-size: 15px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg); color: var(--ink); box-shadow: var(--shadow-sm);" autocomplete="off" />
+    </div>
+
     <p class="faint graph-hint">كلُّ نقطةٍ مادةٌ أو عَلَمٌ أو فنّ؛ الخطوطُ روابطُها. اسحبِ النقطةَ لتحريكها، مرِّرْ للتكبير، وانقرْها لفتحِها. أزِلِ العلامةَ عن نوعٍ لإخفائه.</p>
     <div style="display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap;">
       <button type="button" id="legend-select-all" class="btn btn-secondary btn-sm" style="padding: 4px 12px; font-size: 13px; cursor: pointer; background: var(--bg-hover); border: 1px solid var(--border); border-radius: 4px; color: var(--ink);">تحديد الكل</button>

@@ -34,15 +34,70 @@ function init() {
   let hoverId: string | null = null;
   const near = new Set<string>();
   const hot = new Set<GLink>();
+  
+  // search-highlight state
+  let searchQuery = "";
+  const searchNear = new Set<string>();
+  const searchHot = new Set<GLink>();
+  const searchMatch = new Set<string>();
+
+  const graphSearch = document.getElementById("graph-search") as HTMLInputElement | null;
+
   function setHover(node: GNode | null) {
     hoverId = node ? node.id : null;
     near.clear(); hot.clear();
-    if (!node) return;
+    if (!node) {
+      // Restore search highlights if hover ended
+      g.nodeColor(g.nodeColor());
+      g.linkColor(g.linkColor());
+      g.linkWidth(g.linkWidth());
+      return;
+    }
     near.add(node.id);
     for (const l of g.graphData().links as GLink[]) {
       if (lid(l.source) === node.id || lid(l.target) === node.id) { hot.add(l); near.add(lid(l.source)); near.add(lid(l.target)); }
     }
+    g.nodeColor(g.nodeColor());
+    g.linkColor(g.linkColor());
+    g.linkWidth(g.linkWidth());
   }
+
+  function setSearchQuery(q: string) {
+    searchQuery = q.trim().toLowerCase();
+    searchNear.clear();
+    searchHot.clear();
+    searchMatch.clear();
+
+    if (searchQuery) {
+      const graphData = g.graphData();
+      for (const n of graphData.nodes as GNode[]) {
+        if (n.label.toLowerCase().includes(searchQuery)) {
+          searchMatch.add(n.id);
+          searchNear.add(n.id);
+        }
+      }
+
+      if (searchMatch.size > 0) {
+        for (const l of graphData.links as GLink[]) {
+          const s = lid(l.source);
+          const t = lid(l.target);
+          if (searchMatch.has(s) || searchMatch.has(t)) {
+            searchHot.add(l);
+            searchNear.add(s);
+            searchNear.add(t);
+          }
+        }
+      }
+    }
+
+    g.nodeColor(g.nodeColor());
+    g.linkColor(g.linkColor());
+    g.linkWidth(g.linkWidth());
+  }
+
+  graphSearch?.addEventListener("input", () => {
+    setSearchQuery(graphSearch.value);
+  });
 
   const g = new ForceGraph(el)
     .graphData({ nodes: full.nodes, links: full.links })
@@ -50,19 +105,40 @@ function init() {
     .nodeVal("val")
     .nodeRelSize(5)
     .enableNodeDrag(true)
-    .nodeColor((n: any) => (hoverId && !near.has(n.id) ? FADE : COLORS[n.type] || "#888"))
+    .nodeColor((n: any) => {
+      if (hoverId) return near.has(n.id) ? COLORS[n.type] || "#888" : FADE;
+      if (searchQuery) return searchNear.has(n.id) ? COLORS[n.type] || "#888" : FADE;
+      return COLORS[n.type] || "#888";
+    })
     .nodeCanvasObjectMode(() => "after")
     .nodeCanvasObject((n: any, ctx: CanvasRenderingContext2D, scale: number) => {
-      // declutter: when zoomed out, label only hubs + the hovered neighbourhood
-      if (scale < 0.6 && (deg[n.id] || 0) < 3 && !near.has(n.id)) return;
+      // declutter: when zoomed out, label only hubs + the highlighted/searched neighbourhood
+      const isHighlighted = hoverId ? near.has(n.id) : (searchQuery ? searchNear.has(n.id) : false);
+      if (scale < 0.6 && (deg[n.id] || 0) < 3 && !isHighlighted) return;
+      
       const r = Math.sqrt(n.val) * 5;
       ctx.font = `${Math.min(5, 12 / scale)}px "IBM Plex Sans Arabic", system-ui, sans-serif`;
       ctx.textAlign = "center"; ctx.textBaseline = "top";
-      ctx.fillStyle = hoverId && !near.has(n.id) ? FADE : ink;
+      
+      let fillStyle = ink;
+      if (hoverId) {
+        fillStyle = near.has(n.id) ? ink : FADE;
+      } else if (searchQuery) {
+        fillStyle = searchNear.has(n.id) ? ink : FADE;
+      }
+      ctx.fillStyle = fillStyle;
       ctx.fillText(n.label, n.x, n.y + r + 1.5);
     })
-    .linkColor((l: any) => (hot.has(l) ? "rgba(156,59,50,0.6)" : hoverId ? "rgba(120,110,95,0.06)" : "rgba(120,110,95,0.22)"))
-    .linkWidth((l: any) => (hot.has(l) ? 1.8 : 1))
+    .linkColor((l: any) => {
+      if (hoverId) return hot.has(l) ? "rgba(156,59,50,0.6)" : "rgba(120,110,95,0.06)";
+      if (searchQuery) return searchHot.has(l) ? "rgba(156,59,50,0.6)" : "rgba(120,110,95,0.06)";
+      return "rgba(120,110,95,0.22)";
+    })
+    .linkWidth((l: any) => {
+      if (hoverId) return hot.has(l) ? 1.8 : 1;
+      if (searchQuery) return searchHot.has(l) ? 1.8 : 1;
+      return 1;
+    })
     .linkCurvature(0.08)
     .onNodeHover((n: any) => { setHover(n); el.style.cursor = n ? "pointer" : ""; })
     .onNodeDragEnd((n: any) => { n.fx = n.x; n.fy = n.y; }) // pin where dropped
@@ -99,6 +175,9 @@ function init() {
     const links = full.links.filter((l) => ids.has(lid(l.source)) && ids.has(lid(l.target)));
     setHover(null);
     g.graphData({ nodes, links });
+
+    // Also re-apply search highlight on newly updated graph data
+    setSearchQuery(graphSearch?.value || "");
   }
 
   legend?.addEventListener("change", updateGraph);
@@ -133,6 +212,14 @@ function init() {
       const match = (leg.dataset.name || "").includes(q);
       leg.style.display = match ? "" : "none";
     });
+  });
+
+  // Close details dropdown when clicking outside
+  document.addEventListener("click", (e) => {
+    const dropdown = document.querySelector(".pop-dropdown") as HTMLDetailsElement | null;
+    if (dropdown && dropdown.open && !dropdown.contains(e.target as Node)) {
+      dropdown.open = false;
+    }
   });
 
   // initial filter
