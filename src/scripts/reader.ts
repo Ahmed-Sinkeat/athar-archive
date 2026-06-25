@@ -226,8 +226,8 @@ const actions: Record<string, () => void> = {
   "search:toggle": () => { if (!isSearchOpen()) openSearch(); else topsearch?.classList.remove("is-open"); },
   "search:filter": () => togglePop(filterPop, "search:filter"),
   "search:apply": () => { location.href = buildSearchUrl(); },
-  "search:next": () => { const q = document.querySelector<HTMLInputElement>("[data-inpage-search]")?.value.trim(); if (q) window.find(q, false, false, true, false, true, false); },
-  "search:prev": () => { const q = document.querySelector<HTMLInputElement>("[data-inpage-search]")?.value.trim(); if (q) window.find(q, false, true, true, false, true, false); },
+  "search:next": () => { const q = document.querySelector<HTMLInputElement>("[data-inpage-search]")?.value.trim(); if (q) (window as any).find(q, false, false, true, false, true, false); },
+  "search:prev": () => { const q = document.querySelector<HTMLInputElement>("[data-inpage-search]")?.value.trim(); if (q) (window as any).find(q, false, true, true, false, true, false); },
   "settings:toggle": () => togglePop(settingsPop, "settings:toggle"),
   "mode:qiraa": () => setMode("qiraa"),
   "mode:ikhtibar": () => setMode("ikhtibar"),
@@ -280,7 +280,7 @@ if (inpageSearch) {
     if (e.key === "Enter") {
       e.preventDefault();
       const q = inpageSearch.value.trim();
-      if (q) window.find(q, false, e.shiftKey, true, false, true, false);
+      if (q) (window as any).find(q, false, e.shiftKey, true, false, true, false);
     }
   });
 }
