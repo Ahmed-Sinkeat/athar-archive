@@ -204,11 +204,12 @@ const annotation = defineCollection({
   schema: z
     .object({
       ...shared,
-      target_type: z.enum(["book", "poem"]),  // required
+      target_type: z.enum(["book", "poem", "quran"]),  // required
       target_id: slug,                         // required
       anchor: z.string().min(1),               // e.g., "v5", "p3", heading slug
       // kind drives the note label/accent in the reader (شرح/حاشية/تخريج/إعراب)
-      kind: z.enum(["شرح", "حاشية", "تخريج", "إعراب"]).default("شرح"),
+      kind: z.enum(["شرح", "حاشية", "تخريج", "إعراب", "تفسير"]).default("شرح"),
+      grade: z.enum(["صحيح", "حسن", "ضعيف", "موضوع"]).optional(),
       annotator: slug.optional(),              // → Person
       // Exact phrase within the anchor's text to mark inline (the clickable
       // word(s) that open the شرح chooser + get highlighted). If omitted, the

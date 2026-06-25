@@ -477,6 +477,57 @@ function buildBookBody(pages: { id: string; xhtml: string }[]): string {
   return bodyParts.join("\n\n");
 }
 
+// Matches Shamela hadith-number span: <span class="red">9 - </span> or <span class="red">9/ 2 - </span>
+// ponytail: canonical N is the first number (volume/sequence prefix ignored)
+const HADITH_NUM_RE = /<span\s+class=["']red["']>\s*(\d+)(?:\/\s*\d+)?\s*-\s*<\/span>/gi;
+// Also matches Muwatta footer: الحديث: N (used in selftest to verify footer anchor)
+const HADITH_FOOTER_RE = /الحديث:\s*(\d+)/;
+
+function buildHadithBody(pages: { id: string; xhtml: string }[]): {
+  md: string;
+  takhrij: { anchor: string; text: string }[];
+} {
+  const bodyParts: string[] = [];
+  const takhrij: { anchor: string; text: string }[] = [];
+  let pageNum = 0;
+  let lastHadithNum = 0;
+
+  for (const p of pages) {
+    pageNum++;
+    // Pre-process: replace hadith-number red spans with a placeholder that
+    // survives pageToMd's {→﴿ replacement; fixed to {#hN} after.
+    const preprocessed = p.xhtml.replace(HADITH_NUM_RE, (_, n) => {
+      lastHadithNum = +n;
+      return `__HDT${n}__${n} - `;
+    });
+
+    // Also extract canonical number from Shamela footer (الحديث: N) as fallback
+    const footerMatch = p.xhtml.match(HADITH_FOOTER_RE);
+    if (footerMatch && !HADITH_NUM_RE.test(p.xhtml)) {
+      lastHadithNum = +footerMatch[1];
+    }
+    // Reset lastIndex after exec
+    HADITH_NUM_RE.lastIndex = 0;
+
+    const { md: rawMd, notes } = pageToMd(preprocessed, String(pageNum));
+    if (!rawMd.trim()) { pageNum--; continue; }
+    // Fix placeholder back to {#hN} anchor syntax
+    const md = rawMd.replace(/__HDT(\d+)__/g, (_, n) => `{#h${n}}\n\n`);
+
+    // Collect [التخريج] footnotes — tag them to the last seen hadith number
+    for (const note of notes) {
+      if (/\[التَّخْرِيجُ\]|\[التخريج\]/.test(note) && lastHadithNum > 0) {
+        takhrij.push({ anchor: `h${lastHadithNum}`, text: note });
+      }
+    }
+
+    const na = notes.length ? ` data-notes='${JSON.stringify(notes).replace(/'/g, "&#39;")}'` : "";
+    bodyParts.push(`${md}\n\n<div class="page-sep" data-page="${pageNum}"${na}></div>`);
+  }
+
+  return { md: bodyParts.join("\n\n"), takhrij };
+}
+
 // ─────────────────────────────────────────────
 // Main build function
 // ─────────────────────────────────────────────
@@ -496,7 +547,7 @@ interface Opt {
 interface BuildResult {
   primary: { path: string; text: string; collection: string };
   person: { path: string; text: string } | null;
-  annotation: { path: string; text: string } | null;
+  annotations: { path: string; text: string }[];
   topicsEmitted: string[];
 }
 
@@ -552,13 +603,40 @@ function build(file: string, opt: Opt): BuildResult {
   ].filter((l) => l !== null).join("\n");
 
   // ── Body ──
-  const body = isPoem ? buildPoemBody(pages) : buildBookBody(pages);
+  let body: string;
+  let takhrijStubs: { path: string; text: string }[] = [];
+  if (genre === "حديث" && !isPoem) {
+    const { md, takhrij } = buildHadithBody(pages);
+    body = md;
+    takhrijStubs = takhrij.map(({ anchor, text }) => {
+      const annSlug = `${bookSlug}--takhrij-${anchor}`;
+      const annPath = join(opt.out, "annotation", annSlug + ".md");
+      const annText = [
+        "---",
+        `title: ${y("تخريج " + meta.title + " " + anchor)}`,
+        `status: ${opt.status}`,
+        `published_at: ${opt.today}`,
+        `target_type: book`,
+        `target_id: ${bookSlug}`,
+        `anchor: ${anchor}`,
+        `kind: تخريج`,
+        `annotator: ${personSlug}`,
+        "---",
+        "",
+        text,
+        "",
+      ].join("\n");
+      return { path: annPath, text: annText };
+    });
+  } else {
+    body = isPoem ? buildPoemBody(pages) : buildBookBody(pages);
+  }
 
   const primaryPath = join(opt.out, collection, bookSlug + ".md");
   const primaryText = fm + body;
 
   // ── شرح/حاشية annotation stub ──
-  let annotationResult: BuildResult["annotation"] = null;
+  const annotations: BuildResult["annotations"] = [...takhrijStubs];
   if (opt.shahOf) {
     const annSlug = `${opt.shahOf}--sharh-${bookSlug}`;
     const annPath = join(opt.out, "annotation", annSlug + ".md");
@@ -575,13 +653,13 @@ function build(file: string, opt: Opt): BuildResult {
       "---",
       "",
     ].join("\n");
-    annotationResult = { path: annPath, text: annText };
+    annotations.push({ path: annPath, text: annText });
   }
 
   return {
     primary: { path: primaryPath, text: primaryText, collection },
     person: personResult,
-    annotation: annotationResult,
+    annotations,
     topicsEmitted: topics,
   };
 }
@@ -644,11 +722,38 @@ function buildMerged(files: string[], opt: Opt): BuildResult {
     "",
   ].filter((l) => l !== null).join("\n");
 
-  const body = isPoem ? buildPoemBody(allPages) : buildBookBody(allPages);
+  let body: string;
+  let takhrijStubs: { path: string; text: string }[] = [];
+  if (genre === "حديث" && !isPoem) {
+    const { md, takhrij } = buildHadithBody(allPages);
+    body = md;
+    takhrijStubs = takhrij.map(({ anchor, text }) => {
+      const annSlug = `${bookSlug}--takhrij-${anchor}`;
+      const annPath = join(opt.out, "annotation", annSlug + ".md");
+      const annText = [
+        "---",
+        `title: ${y("تخريج " + mergedMeta!.title + " " + anchor)}`,
+        `status: ${opt.status}`,
+        `published_at: ${opt.today}`,
+        `target_type: book`,
+        `target_id: ${bookSlug}`,
+        `anchor: ${anchor}`,
+        `kind: تخريج`,
+        `annotator: ${personSlug}`,
+        "---",
+        "",
+        text,
+        "",
+      ].join("\n");
+      return { path: annPath, text: annText };
+    });
+  } else {
+    body = isPoem ? buildPoemBody(allPages) : buildBookBody(allPages);
+  }
   return {
     primary: { path: join(opt.out, collection, bookSlug + ".md"), text: fm + body, collection },
     person: personResult,
-    annotation: null,
+    annotations: takhrijStubs,
     topicsEmitted: topics,
   };
 }
@@ -736,6 +841,26 @@ function selftest() {
   a(fields["الناشر"] === "دار الذكرى", "publisher parsed: " + fields["الناشر"]);
   a(fields["الطبعة"] === "الأولى",     "edition parsed: " + fields["الطبعة"]);
   a(fields["عدد الأجزاء"] === "1",     "volumes parsed: " + fields["عدد الأجزاء"]);
+
+  // ── hadith buildHadithBody ──
+  // Muwatta-style page: red number span + [التخريج] footnote + Hadith footer
+  const hadithPage = [
+    `<body><div id="book-container"><hr/>`,
+    `<span class="title">كتاب الصلاة</span><br />`,
+    `<span class="red">9 - </span>حَدَّثَنِي مَالِكٌ عَنِ ابْنِ شِهَابٍ`,
+    `<span class="footnote-hr">&nbsp;</span>`,
+    `<span class="footnote">1 [التخريج] أخرجه البخاري (520) ومسلم (607)</span>`,
+    `<div class="center">الحديث: 9 ¦ الجزء: 1 ¦ الصفحة: 10</div>`,
+    `</div><hr/></body>`,
+  ].join("");
+  const { md: hmd, takhrij } = buildHadithBody([{ id: "p1", xhtml: hadithPage }]);
+  a(hmd.includes("{#h9}"),                    "hadith anchor emitted: " + hmd);
+  a(hmd.includes("9 - "),                     "hadith number kept in text: " + hmd);
+  a(hmd.includes("## كتاب الصلاة"),           "كتاب title → H2: " + hmd);
+  a(!hmd.includes("الحديث:"),                 "hadith footer stripped: " + hmd);
+  a(takhrij.length === 1,                     "one تخريج extracted: " + takhrij.length);
+  a(takhrij[0].anchor === "h9",               "تخريج anchor: " + takhrij[0].anchor);
+  a(takhrij[0].text.includes("البخاري"),      "تخريج text: " + takhrij[0].text);
 
   // ── uniqueSlug ──
   // (can't fully test without filesystem; just smoke the function)
@@ -842,14 +967,14 @@ function printResult(result: BuildResult, label: string) {
   console.log([
     `${icon}  ${label}`,
     `   → ${result.primary.path} (${result.primary.text.length} bytes)`,
-    result.person     ? `   → ${result.person.path} (new author stub)` : `   . author exists — reused`,
-    result.annotation ? `   → ${result.annotation.path} (annotation stub)` : null,
+    result.person ? `   → ${result.person.path} (new author stub)` : `   . author exists — reused`,
+    ...result.annotations.map((a) => `   → ${a.path} (annotation stub)`),
   ].filter(Boolean).join("\n"));
 }
 
 function commitResult(result: BuildResult, _opt: Opt) {
-  if (result.person)     writeFileMk(result.person.path,     result.person.text);
-  if (result.annotation) writeFileMk(result.annotation.path, result.annotation.text);
+  if (result.person) writeFileMk(result.person.path, result.person.text);
+  for (const ann of result.annotations) writeFileMk(ann.path, ann.text);
   writeFileMk(result.primary.path, result.primary.text);
 }
 
