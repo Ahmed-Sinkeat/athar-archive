@@ -72,11 +72,14 @@ const jsonLd = bookLd({
       </nav>
     ) : isMatn("book", entry.data) ? (
       <>
-        <StudyBar prose />
+        <StudyBar prose downloadUrl={entry.data.attachments?.[0]?.url} />
         <div class="u49fcd85" data-matn={entry.id} data-unit="فقرة"><Prose body={body ?? ""} /></div>
       </>
     ) : (
-      <div class="u49fcd85"><Prose body={body ?? ""} /></div>
+      <>
+        <StudyBar prose downloadUrl={entry.data.attachments?.[0]?.url} />
+        <div class="u49fcd85"><Prose body={body ?? ""} /></div>
+      </>
     )}
 
     {/* All annotations now open in the bottom sheet: phrase notes are wrapped
