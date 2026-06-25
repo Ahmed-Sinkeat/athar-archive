@@ -213,9 +213,20 @@ export function pageToVerseLines(
 // ─────────────────────────────────────────────
 // Prose page → markdown  (unchanged logic, now also strips footer div)
 // ─────────────────────────────────────────────
-export function pageToMd(xhtml: string, pageId: string): { md: string; notes: string[] } {
+export function pageToMd(xhtml: string, pageId: string): { md: string; notes: string[]; parsedPage: string; parsedJuz?: string } {
   // The Shamela footer is a sibling div OUTSIDE book-container:
   //   </div><hr/><div class="center">الجزء: N ¦ الصفحة: M</div></body>
+  const footerMatch = xhtml.match(/<div[^>]*class=["']center["'][^>]*>([\s\S]*?)<\/div>/i);
+  let parsedPage = pageId;
+  let parsedJuz: string | undefined;
+  if (footerMatch) {
+    const footer = footerMatch[1];
+    const juzMatch = footer.match(/الجزء:\s*(\d+)/);
+    if (juzMatch) parsedJuz = juzMatch[1];
+    const pgMatch = footer.match(/الصفحة:\s*(\d+)/);
+    if (pgMatch) parsedPage = pgMatch[1];
+  }
+  
   // Strip it from the full xhtml before extraction so it doesn't pollute inner.
   const cleaned = xhtml.replace(/<div[^>]*class=["']center["'][^>]*>[\s\S]*?<\/div>/gi, "");
   // Greedy capture: book-container inner content up to the last </div> before </body>.
@@ -245,7 +256,7 @@ export function pageToMd(xhtml: string, pageId: string): { md: string; notes: st
   for (const fn of fnotes) {
     text = text.replace(
       new RegExp(`(?<=[\\u0600-\\u06FF])${fn.n}(?![0-9])`, "g"),
-      `<sup data-fn="${fn.n}" data-sep-page="${pageId}">${fn.n}</sup>`,
+      `<sup data-fn="${fn.n}" data-sep-page="${parsedPage}">${fn.n}</sup>`,
     );
   }
 
@@ -261,7 +272,7 @@ export function pageToMd(xhtml: string, pageId: string): { md: string; notes: st
     }
   }
   if (para) parts.push(para.trim());
-  return { md: parts.join("\n\n"), notes: fnotes.map((fn) => fn.t) };
+  return { md: parts.join("\n\n"), notes: fnotes.map((fn) => fn.t), parsedPage, parsedJuz };
 }
 
 // ─────────────────────────────────────────────
@@ -405,20 +416,49 @@ function findOpf(dir: string): string {
 // ─────────────────────────────────────────────
 // Auto-taxonomy helpers
 // ─────────────────────────────────────────────
-function resolveTopics(meta: Meta, contentRoot: string): string[] {
-  const candidates: string[] = [];
+const FOLDER_SUBJECT_MAP = [
+  { pattern: /عقيدة|توحيد|أصول الدين|إيمان/u, subjectSlug: "aqeedah" },
+  { pattern: /حديث|سنن|مسانيد|أجزاء|تخريج|مصطلح|رجال|علل|موطأ/u, subjectSlug: "hadith" },
+  { pattern: /فقه|أصول الفقه|فرائض/u, subjectSlug: "fiqh" },
+  { pattern: /لغة|نحو|صرف|بلاغة|أدب/u, subjectSlug: "lughah" },
+  { pattern: /تفسير|قرآن|قراءات|تجويد/u, subjectSlug: "quran" },
+  { pattern: /تراجم|طبقات|سير|وفيات/u, subjectSlug: "tarajim" },
+  { pattern: /تاريخ/u, subjectSlug: "tarikh" },
+  { pattern: /أخلاق|رقائق|زهد/u, subjectSlug: "raqaq" }
+];
 
-  // Try to match قسم field against known section→topic mappings
+import { appendFileSync } from "node:fs";
+
+function resolveTopics(meta: Meta, file: string, contentRoot: string, today: string, dryRun: boolean): string[] {
+  const folder = basename(dirname(file));
   const qism = meta.qism ?? "";
-  for (const { pattern, topic } of SECTION_TOPIC_MAP) {
-    if (pattern.test(qism) || pattern.test(meta.title)) {
-      candidates.push(topic);
+  
+  // 1. Assign subject stub with high confidence
+  let subjectSlug = "other";
+  for (const { pattern, subjectSlug: s } of FOLDER_SUBJECT_MAP) {
+    if (pattern.test(folder) || pattern.test(qism)) {
+      subjectSlug = s;
       break;
     }
   }
+  const stubTopic = `عام-${subjectSlug}`;
+  maybeEmitTopicStub(stubTopic, subjectSlug, contentRoot, today, dryRun);
 
-  // Filter to only topics that actually exist in content/topic/
-  return candidates.filter((t) => existsSync(join(contentRoot, "topic", t + ".md")));
+  // 2. Suggest specific topics to JSON sidecar
+  const suggested: string[] = [];
+  for (const { pattern, topic } of SECTION_TOPIC_MAP) {
+    if (pattern.test(qism) || pattern.test(meta.title)) {
+      suggested.push(topic);
+    }
+  }
+  
+  if (suggested.length > 0 && !dryRun) {
+    const suggestionLine = JSON.stringify({ book: slugify(meta.title), title: meta.title, suggestedTopics: suggested });
+    appendFileSync(join(dirname(contentRoot), "../scripts/topic-suggestions.jsonl"), suggestionLine + "\n");
+  }
+
+  // Return ONLY the high-confidence stub
+  return [stubTopic];
 }
 
 /** Emit a topic stub if the slug doesn't yet exist. */
@@ -500,10 +540,11 @@ function buildBookBody(pages: { id: string; xhtml: string }[]): string {
   let pageNum = 0;
   for (const p of pages) {
     pageNum++;
-    const { md, notes } = pageToMd(p.xhtml, String(pageNum));
+    const { md, notes, parsedPage, parsedJuz } = pageToMd(p.xhtml, String(pageNum));
     if (!md.trim()) { pageNum--; continue; }
     const na = notes.length ? ` data-notes='${JSON.stringify(notes).replace(/'/g, "&#39;")}'` : "";
-    bodyParts.push(`${md}\n\n<div class="page-sep" data-page="${pageNum}"${na}></div>`);
+    const juzAttr = parsedJuz ? ` data-juz="${parsedJuz}"` : "";
+    bodyParts.push(`${md}\n\n<hr class="page-sep" data-page="${parsedPage}"${juzAttr}${na} />`);
   }
   return bodyParts.join("\n\n");
 }
@@ -540,7 +581,7 @@ function buildHadithBody(pages: { id: string; xhtml: string }[]): {
     // Reset lastIndex after exec
     HADITH_NUM_RE.lastIndex = 0;
 
-    const { md: rawMd, notes } = pageToMd(preprocessed, String(pageNum));
+    const { md: rawMd, notes, parsedPage, parsedJuz } = pageToMd(preprocessed, String(pageNum));
     if (!rawMd.trim()) { pageNum--; continue; }
     // Fix placeholder back to {#hN} anchor syntax
     const md = rawMd.replace(/__HDT(\d+)__/g, (_, n) => `{#h${n}}\n\n`);
@@ -553,7 +594,8 @@ function buildHadithBody(pages: { id: string; xhtml: string }[]): {
     }
 
     const na = notes.length ? ` data-notes='${JSON.stringify(notes).replace(/'/g, "&#39;")}'` : "";
-    bodyParts.push(`${md}\n\n<div class="page-sep" data-page="${pageNum}"${na}></div>`);
+    const juzAttr = parsedJuz ? ` data-juz="${parsedJuz}"` : "";
+    bodyParts.push(`${md}\n\n<hr class="page-sep" data-page="${parsedPage}"${juzAttr}${na} />`);
   }
 
   return { md: bodyParts.join("\n\n"), takhrij };
@@ -595,7 +637,7 @@ function build(file: string, opt: Opt): BuildResult {
   const bookSlug   = opt.slug ? baseSlug : uniqueSlug(baseSlug, collection, opt.out);
 
   // ── Resolve topics ──
-  const topics = resolveTopics(meta, opt.out);
+  const topics = resolveTopics(meta, file, opt.out, opt.today, opt.dryRun);
 
   // ── Person frontmatter ──
   const bareName   = stripTashkeel(meta.creator);
@@ -718,7 +760,7 @@ function buildMerged(files: string[], opt: Opt): BuildResult {
   const personSlug = opt.personSlug ?? slugify(mergedMeta.creator || "unknown");
   const baseSlug   = opt.slug ?? slugify(mergedMeta.title);
   const bookSlug   = opt.slug ? baseSlug : uniqueSlug(baseSlug, collection, opt.out);
-  const topics     = resolveTopics(mergedMeta, opt.out);
+  const topics     = resolveTopics(mergedMeta, files[0], opt.out, opt.today, opt.dryRun);
 
   const bareName   = stripTashkeel(mergedMeta.creator);
   const personPath = join(opt.out, "person", personSlug + ".md");
@@ -818,13 +860,15 @@ function selftest() {
     `<span class="footnote">1 إسناده صحيح</span>` +
     `<div class="center">الجزء: 1 ¦ الصفحة: 3</div>` +
     `</div><hr/></body>`;
-  const { md, notes } = pageToMd(sample, "P1");
+  const { md, notes, parsedPage, parsedJuz } = pageToMd(sample, "P1");
   a(md.includes("## باب الإيمان"), "title → H2: " + md);
   a(md.includes("﴿إنا﴾"),          "braces → ornate: " + md);
   a(md.includes("9- "),            "red number kept");
   a(!md.includes("الجزء"),         "footer stripped from prose: " + md);
   a(!md.includes("[^P1_1]"),       "footnote ref stripped from text: " + md);
   a(notes[0] === "إسناده صحيح",   "note text in notes array: " + notes[0]);
+  a(parsedJuz === "1",             "parsed juz: " + parsedJuz);
+  a(parsedPage === "3",            "parsed page: " + parsedPage);
 
   // ── poem verse extraction ──
   const versePage =
