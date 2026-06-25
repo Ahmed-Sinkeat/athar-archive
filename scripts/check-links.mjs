@@ -8,11 +8,15 @@
 import { readdirSync, readFileSync, existsSync } from "node:fs";
 import { join, relative } from "node:path";
 
-const DIST = join(process.cwd(), "dist");
+const DIST = join(process.cwd(), "dist/client"); // hybrid build: prerendered HTML + assets live here
 if (!existsSync(DIST)) {
   console.error("✗ dist/ not found — run `pnpm build` first.");
   process.exit(1);
 }
+
+// On-demand worker routes (book chapters, lessons) have no static file — mirror
+// the middleware matcher (src/middleware.ts) so links to them aren't flagged broken.
+const ON_DEMAND = /^\/(?:book|series)\/[^/]+\/[^/]+\/?$/;
 
 const walk = (dir) =>
   readdirSync(dir, { withFileTypes: true }).flatMap((e) => {
@@ -107,7 +111,10 @@ for (const f of htmlFiles) {
     catch { broken.push({ file: rel(f), link }); continue; }
 
     const path = norm(decode(abs.pathname));
-    if (!served.has(path)) { broken.push({ file: rel(f), link }); continue; }
+    if (!served.has(path)) {
+      if (ON_DEMAND.test(path)) continue; // on-demand worker route — no static file
+      broken.push({ file: rel(f), link }); continue;
+    }
 
     if (abs.hash.length > 1) {
       const ids = idsByPath.get(path);
@@ -120,7 +127,7 @@ for (const f of htmlFiles) {
 for (const [src, dest] of redirects) {
   if (/^https?:/i.test(dest)) continue;
   const path = norm(decode(dest.split("#")[0]));
-  if (!served.has(path)) broken.push({ file: "dist/_redirects", link: `${src} → ${dest}` });
+  if (!served.has(path) && !ON_DEMAND.test(path)) broken.push({ file: "dist/client/_redirects", link: `${src} → ${dest}` });
 }
 
 // --- report ---
