@@ -1,8 +1,9 @@
 ---
 title: "نونية القحطاني"
 status: published
-published_at: 2026-06-24
+published_at: 2026-06-25
 person: abw-abd-al-lh-al-qhtany
+topics: ["aam-other"]
 edition: "الأولى"
 description: "بتحقيق عبد العزيز بن محمد بن منصور الجربوع"
 ---

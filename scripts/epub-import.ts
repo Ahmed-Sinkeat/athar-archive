@@ -446,7 +446,7 @@ function resolveTopics(meta: Meta, file: string, contentRoot: string, today: str
       break;
     }
   }
-  const stubTopic = `عام-${subjectSlug}`;
+  const stubTopic = `aam-${subjectSlug}`;
   maybeEmitTopicStub(stubTopic, subjectSlug, contentRoot, today, dryRun);
 
   // 2. Suggest specific topics to JSON sidecar
