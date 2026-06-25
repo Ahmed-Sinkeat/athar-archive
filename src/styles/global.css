@@ -663,6 +663,7 @@ html.hide-vnums .vnum { display: none; }
 /* type filter on topic/subject/era grids */
 .type-filter { margin-bottom: 18px; }
 .card.is-hidden { display: none; }
+.card.is-search-hidden { display: none; }
 
 /* per-section search bar on listing pages */
 .section-search { display: flex; gap: 8px; margin: 0 0 24px; max-width: 540px; }
@@ -808,6 +809,9 @@ html[data-theme="dark"] ::highlight(aa-find)    { background-color: rgba(255, 15
 .flat-list { list-style: none; padding: 0; margin: 0; border-block-start: 1px solid var(--rule); }
 .flat-list li { border-block-end: 1px solid var(--rule); }
 .flat-list li.is-hidden { display: none; }
+.flat-list li.is-search-hidden { display: none; }
+.masail-list li.is-hidden { display: none !important; }
+.masail-list li.is-search-hidden { display: none !important; }
 /* Suppress card-box visual when in flat mode */
 .flat-list .card {
   background: none; border: none; border-radius: 0; box-shadow: none;

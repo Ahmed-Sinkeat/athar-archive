@@ -7,6 +7,7 @@ import ForceGraph from "force-graph";
 const COLORS: Record<string, string> = {
   book: "#9c3b32", poem: "#9c3b32", benefit: "#c06a2c", person: "#2f6f6a",
   series: "#b07b00", subject: "#5a4632", topic: "#7a8a52", article: "#3f7d6e", question: "#8a8275",
+  chapter: "#7a5885",
 };
 const FADE = "rgba(120,110,95,0.18)";
 
@@ -69,10 +70,10 @@ function init() {
     .width(el.clientWidth)
     .height(el.clientHeight);
 
-  // airier, calmer layout
-  (g.d3Force("charge") as any)?.strength(-170);
-  (g.d3Force("link") as any)?.distance(48);
-  g.d3VelocityDecay(0.32);
+  // floaty, elastic Obsidian-style bubble physics
+  (g.d3Force("charge") as any)?.strength(-220);
+  (g.d3Force("link") as any)?.distance(35);
+  g.d3VelocityDecay(0.16);
 
   // type filter from the legend checkboxes and person checklist
   const legend = document.querySelector("[data-graph-legend]");
