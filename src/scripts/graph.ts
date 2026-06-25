@@ -7,7 +7,6 @@ import ForceGraph from "force-graph";
 const COLORS: Record<string, string> = {
   book: "#9c3b32", poem: "#9c3b32", benefit: "#c06a2c", person: "#2f6f6a",
   series: "#b07b00", subject: "#5a4632", topic: "#7a8a52", article: "#3f7d6e", question: "#8a8275",
-  chapter: "#7a5885",
 };
 const FADE = "rgba(120,110,95,0.18)";
 

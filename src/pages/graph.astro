@@ -13,10 +13,8 @@ import { readBody } from "../lib/read-body";
 // client-side by force-graph.
 const graph = await loadGraph();
 const isPub = (e: ContentEntry) => e.data.status === "published";
-const TYPES = ["book", "poem", "person", "series", "subject", "topic", "article", "question", "benefit", "chapter"];
+const TYPES = ["book", "poem", "person", "series", "subject", "topic", "article", "question", "benefit"];
 const nid = (c: string, id: string) => `${c}:${id}`;
-
-const bookBodies = new Map<string, string>();
 
 const nodeSet = new Set<string>();
 const nodes: { id: string; label: string; type: string; href: string }[] = [];
@@ -26,24 +24,6 @@ for (const e of graph.all) {
   if (nodeSet.has(id)) continue;
   nodeSet.add(id);
   nodes.push({ id, label: e.data.title as string, type: e.collection, href: hrefFor(e.collection, e.id, { series: (e.data as any).series }) });
-
-  // Extract chapters/lessons and add them as nodes
-  if (e.collection === "book" || e.collection === "poem") {
-    const body = await readBody(e);
-    bookBodies.set(`${e.collection}:${e.id}`, body);
-    const { chapters } = splitChapters(body);
-    for (const ch of chapters) {
-      const chId = nid("chapter", `${e.collection}:${e.id}:${ch.slug}`);
-      if (nodeSet.has(chId)) continue;
-      nodeSet.add(chId);
-      nodes.push({
-        id: chId,
-        label: ch.title,
-        type: "chapter",
-        href: hrefFor(e.collection, e.id, { chapter: ch.slug }),
-      });
-    }
-  }
 }
 
 const links: { source: string; target: string }[] = [];
@@ -68,28 +48,16 @@ for (const e of graph.all) {
       addLink(id, nid("person", teacher));
     }
   }
-
-  // Connect chapters/lessons to their parent book/poem
-  if (e.collection === "book" || e.collection === "poem") {
-    const body = bookBodies.get(`${e.collection}:${e.id}`) || "";
-    const { chapters } = splitChapters(body);
-    for (const ch of chapters) {
-      const chId = nid("chapter", `${e.collection}:${e.id}:${ch.slug}`);
-      addLink(chId, id);
-    }
-  }
 }
 
 // counts + legend/filter chips (color must mirror scripts/graph.ts COLORS)
 const COLORS: Record<string, string> = {
   book: "#9c3b32", poem: "#9c3b32", benefit: "#c06a2c", person: "#2f6f6a",
   series: "#b07b00", subject: "#5a4632", topic: "#7a8a52", article: "#3f7d6e", question: "#8a8275",
-  chapter: "#7a5885",
 };
 const LABELS: Record<string, string> = {
   book: "الكتب", poem: "الشعر", person: "الأعلام", series: "السلاسل",
   subject: "التصنيفات", topic: "الموضوعات", article: "المقالات", question: "المسائل", benefit: "كُناشة",
-  chapter: "الفصول/الأبواب",
 };
 const counts: Record<string, number> = {};
 for (const n of nodes) counts[n.type] = (counts[n.type] ?? 0) + 1;
