@@ -3,7 +3,7 @@ title: "الإيمان للقاسم بن سلام - محققا"
 status: published
 published_at: 2026-06-25
 person: abw-abyd-al-qasm-bn-slam
-topics: ["aam-other"]
+topics: ["al-iman"]
 edition: "الأولى، 1421هـ -2000م"
 description: "بتحقيق محمد نصر الدين الألباني"
 ---

@@ -3,7 +3,7 @@ title: "إرشاد العباد إلى معاني لمعة الاعتقاد"
 status: published
 published_at: 2026-06-25
 person: abd-al-rhmn-bn-nasr-al-brak
-topics: ["aam-other"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 إرشاد العباد إلى معاني لمعة الاعتقاد لفضيلة الشيخ عبدالرحمن بن ناصر البراك حفظه الله إعداد عبدالله بن محمد السحيم دار التدمرية
 

@@ -3,7 +3,7 @@ title: "أصول الدين"
 status: published
 published_at: 2026-06-25
 person: al-ghznwy-jmal-al-dyn
-topics: ["aam-other"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "الأولى، 1419 - 1998"
 description: "بتحقيق الدكتور عمر وفيق الداعوق"
 ---

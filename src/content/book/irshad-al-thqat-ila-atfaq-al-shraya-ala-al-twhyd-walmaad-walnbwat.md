@@ -3,7 +3,7 @@ title: "إرشاد الثقات إلى اتفاق الشرائع على التو
 status: published
 published_at: 2026-06-25
 person: al-shwkany
-topics: ["aam-other"]
+topics: ["tahwid-al-ibada"]
 edition: "الأولى، 1404هـ - 1984م"
 description: "بتحقيق جماعة من العلماء بإشراف الناشر"
 ---

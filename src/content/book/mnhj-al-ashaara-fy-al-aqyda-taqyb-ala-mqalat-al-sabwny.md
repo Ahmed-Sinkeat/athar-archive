@@ -3,7 +3,7 @@ title: "منهج الأشاعرة في العقيدة - تعقيب على مقا
 status: published
 published_at: 2026-06-25
 person: sfr-al-hwaly
-topics: ["aam-other"]
+topics: ["al-aqeedah-al-aamah", "al-firaq-war-rudud"]
 edition: "الأولى، 1407 هـ - 1986 م"
 ---
 مَنْهَج الأشاعرة فِي العقيدة تعقيب على مقالات الصَّابُونِي للشَّيْخ سفر بن عبد الرَّحْمَن الْوَالِي محَاضِر بكلية الدعْوَة وأصول الدّين

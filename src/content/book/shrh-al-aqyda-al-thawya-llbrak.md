@@ -4,7 +4,7 @@ status: published
 published_at: 2026-06-25
 person: abd-al-rhmn-bn-nasr-al-brak
 kind: متن
-topics: ["aam-other"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "الثانية، 1429 هـ - 2008 م"
 ---
 شرح العقيدة الطحاوية تأليف فضيلة الشيخ عبد الرحمن بن ناصر البراك إعداد عبد الرحمن بن صالح السديس

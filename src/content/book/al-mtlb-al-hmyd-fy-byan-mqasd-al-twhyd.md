@@ -3,7 +3,7 @@ title: "المطلب الحميد في بيان مقاصد التوحيد"
 status: published
 published_at: 2026-06-25
 person: abd-al-rhmn-bn-hsn-al-al-shykh
-topics: ["aam-other"]
+topics: ["tahwid-al-ibada"]
 edition: "الطبعه الأولى 1411هـ 1991م"
 ---
 بسم الله الرحمن الرحيم

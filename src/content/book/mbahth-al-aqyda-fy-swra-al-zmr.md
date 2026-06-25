@@ -3,7 +3,7 @@ title: "مباحث العقيدة في سورة الزمر"
 status: published
 published_at: 2026-06-25
 person: nasr-bn-aly-aayd-hsn-al-shykh
-topics: ["aam-other"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "الأولى، 1415هـ/1995م"
 ---
 بسم الله الرحمن الرحيم ال

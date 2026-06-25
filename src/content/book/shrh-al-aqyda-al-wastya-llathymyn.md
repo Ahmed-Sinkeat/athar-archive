@@ -4,7 +4,7 @@ status: published
 published_at: 2026-06-25
 person: abn-athymyn
 kind: متن
-topics: ["aam-other"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 شرح العقيدة الواسطية لشيخ الإسلام ابن تيمية شرحه سماحة الشيخ محمد الصالح العثيمين خرج أحاديثه واعتنى به سعد بن فواز الصميل [المجلد الأول] دار ابن الجوزي
 

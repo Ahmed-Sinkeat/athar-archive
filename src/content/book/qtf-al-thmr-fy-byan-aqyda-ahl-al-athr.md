@@ -3,7 +3,7 @@ title: "قطف الثمر في بيان عقيدة أهل الأثر"
 status: published
 published_at: 2026-06-25
 person: sdyq-hsn-khan
-topics: ["aam-other"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "الأولى، 1421هـ"
 ---
 [

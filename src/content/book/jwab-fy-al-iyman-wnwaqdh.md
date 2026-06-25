@@ -3,7 +3,7 @@ title: "جواب في الإيمان ونواقضه"
 status: published
 published_at: 2026-06-25
 person: abd-al-rhmn-bn-nasr-al-brak
-topics: ["aam-other"]
+topics: ["tahwid-al-ibada", "al-iman"]
 ---
 جواب في الإيمان ونواقضه لفضيلة الشيخ عبدالرحمن بن ناصر البراك اعتنى به عبدالرحمن بن صالح السديس
 

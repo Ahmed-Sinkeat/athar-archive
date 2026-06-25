@@ -3,7 +3,7 @@ title: "العقيدة رواية أبي بكر الخلال"
 status: published
 published_at: 2026-06-25
 person: ahmd-bn-hnbl
-topics: ["aam-other"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "الأولى، 1408"
 description: "بتحقيق عبد العزيز عز الدين السيروان"
 ---

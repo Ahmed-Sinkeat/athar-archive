@@ -3,7 +3,7 @@ title: "قمع الدجاجلة الطاعنين في معتقد أئمة الإ
 status: published
 published_at: 2026-06-25
 person: abd-al-azyz-bn-fysl-al-rajhy
-topics: ["aam-other"]
+topics: ["fiqh-hanbali"]
 edition: "الأولى، 1424 هـ"
 ---
 [

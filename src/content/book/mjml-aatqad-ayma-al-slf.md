@@ -3,7 +3,7 @@ title: "مجمل اعتقاد أئمة السلف"
 status: published
 published_at: 2026-06-25
 person: abd-al-lh-bn-abd-al-mhsn-al-trky
-topics: ["aam-other"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "الثانية، 1417هـ"
 ---
 [

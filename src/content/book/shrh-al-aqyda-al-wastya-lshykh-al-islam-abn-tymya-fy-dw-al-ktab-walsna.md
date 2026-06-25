@@ -4,7 +4,7 @@ status: published
 published_at: 2026-06-25
 person: sayd-bn-whf-al-qhtany
 kind: متن
-topics: ["aam-other"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 شرح العقيدة الواسطية لشيخ الإسلام ابن تيمية في ضوء الكتاب والسُّنَّة تأليف الفقير إلى الله تعالى د. سعيد بن علي بن وهف القحطاني
 

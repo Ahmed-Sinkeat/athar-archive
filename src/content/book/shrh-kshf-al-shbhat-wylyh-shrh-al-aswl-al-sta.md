@@ -4,7 +4,7 @@ status: published
 published_at: 2026-06-25
 person: abn-athymyn
 kind: متن
-topics: ["aam-other"]
+topics: ["tahwid-al-ibada"]
 edition: "الأولى، 1416 هـ - 1996 م"
 ---
 ## ترجمة المؤلف - شيخ الإسلام الإمام محمد بن عبد الوهاب

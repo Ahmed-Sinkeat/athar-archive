@@ -3,7 +3,7 @@ title: "الشرك في القديم والحديث"
 status: published
 published_at: 2026-06-25
 person: abw-bkr-mhmd-zkrya
-topics: ["aam-other"]
+topics: ["tahwid-al-ibada", "mustalah-al-hadith"]
 ---
 الشرك في القديم والحديث تأليف أبو بكر محمد زكريا الجزء الأول مكتبة الرشد الرياض
 

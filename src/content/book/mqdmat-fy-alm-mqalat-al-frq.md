@@ -3,7 +3,7 @@ title: "مقدمات في علم مقالات الفرق"
 status: published
 published_at: 2026-06-25
 person: mhmd-bn-khlyfa-al-tmymy
-topics: ["aam-other"]
+topics: ["al-firaq-war-rudud"]
 edition: "الأولى 1423هـ/2002م"
 ---
 مقدمات في علم مقالات الفرق تأليف د/ محمد بن خليفة التميمي يسم الله الرحمن الرحيم ال

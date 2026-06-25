@@ -3,7 +3,7 @@ title: "فضائح الصوفية"
 status: published
 published_at: 2026-06-25
 person: abd-al-rhmn-bn-abd-al-khalq
-topics: ["aam-other"]
+topics: ["al-firaq-war-rudud"]
 edition: "الأولى، 1404 هـ - 1984 م"
 ---
 بسم الله الرحمن الرحيم فضائح الصوفية

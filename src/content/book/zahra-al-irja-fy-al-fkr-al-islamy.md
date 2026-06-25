@@ -3,7 +3,7 @@ title: "ظاهرة الإرجاء في الفكر الإسلامي"
 status: published
 published_at: 2026-06-25
 person: sfr-al-hwaly
-topics: ["aam-other"]
+topics: ["al-iman"]
 edition: "الأولى، 1420 هـ / 1999 م"
 ---
 ## [ظاهرة الإرجاء في الفكر الإسلامي]ـ

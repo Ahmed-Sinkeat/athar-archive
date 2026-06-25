@@ -3,7 +3,7 @@ title: "أشراط الساعة"
 status: published
 published_at: 2026-06-25
 person: abd-al-lh-bn-slyman-al-ghfyly
-topics: ["aam-other"]
+topics: ["al-samiyyat"]
 edition: "الأولى، 1422هـ"
 ---
 [

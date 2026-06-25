@@ -3,7 +3,7 @@ title: "أقاويل الثقات في تأويل الأسماء والصفات 
 status: published
 published_at: 2026-06-25
 person: mray-al-krmy
-topics: ["aam-other"]
+topics: ["al-asma-was-sifat"]
 edition: "الأولى، 1406"
 description: "بتحقيق شعيب الأرناؤوط"
 ---

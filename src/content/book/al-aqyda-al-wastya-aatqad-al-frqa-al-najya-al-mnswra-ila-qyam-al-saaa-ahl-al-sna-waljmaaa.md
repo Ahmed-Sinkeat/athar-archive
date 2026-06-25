@@ -4,7 +4,7 @@ status: published
 published_at: 2026-06-25
 person: abn-tymya
 kind: متن
-topics: ["aam-other"]
+topics: ["al-aqeedah-al-aamah", "al-firaq-war-rudud"]
 edition: "الثانية 1420هـ / 1999م"
 description: "بتحقيق أبو محمد أشرف بن عبد المقصود"
 ---

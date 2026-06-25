@@ -3,7 +3,7 @@ title: "كلمة الإخلاص وتحقيق معناها"
 status: published
 published_at: 2026-06-25
 person: abn-rjb-al-hnbly
-topics: ["aam-other"]
+topics: ["tahwid-al-ibada"]
 edition: "الرابعة، 1397"
 description: "بتحقيق زهير الشاويش"
 ---

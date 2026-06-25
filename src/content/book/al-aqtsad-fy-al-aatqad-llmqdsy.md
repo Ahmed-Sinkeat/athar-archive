@@ -3,7 +3,7 @@ title: "الاقتصاد في الاعتقاد للمقدسي"
 status: published
 published_at: 2026-06-25
 person: al-mqdsy-abd-al-ghny
-topics: ["aam-other"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "الأولى، 1414هـ/1993م"
 description: "بتحقيق أحمد بن عطية بن علي الغامدي"
 ---

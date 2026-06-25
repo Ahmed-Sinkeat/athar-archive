@@ -3,7 +3,7 @@ title: "العرش للذهبي"
 status: published
 published_at: 2026-06-25
 person: al-dhhby-shms-al-dyn
-topics: ["aam-other"]
+topics: ["al-asma-was-sifat"]
 edition: "الثانية، 1424هـ/2003م"
 description: "بتحقيق محمد بن خليفة بن علي التميمي"
 ---

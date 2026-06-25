@@ -3,7 +3,7 @@ title: "مذكرة التوحيد"
 status: published
 published_at: 2026-06-25
 person: abd-al-rzaq-afyfy
-topics: ["aam-other"]
+topics: ["tahwid-al-ibada"]
 edition: "الأولى، 1420هـ"
 ---
 [

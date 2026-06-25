@@ -3,7 +3,7 @@ title: "اعتقاد الأئمة الأربعة"
 status: published
 published_at: 2026-06-25
 person: mhmd-bn-abd-al-rhmn-al-khmys
-topics: ["aam-other"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "الأولى، 1412 هـ - 1992 م"
 ---
 ## [الكتاب: اعتقاد الأئمة الأربعة]ـ

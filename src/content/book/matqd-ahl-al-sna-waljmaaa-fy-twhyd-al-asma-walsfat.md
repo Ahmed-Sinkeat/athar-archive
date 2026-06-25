@@ -3,7 +3,7 @@ title: "معتقد أهل السنة والجماعة في توحيد الأسم
 status: published
 published_at: 2026-06-25
 person: mhmd-bn-khlyfa-al-tmymy
-topics: ["aam-other"]
+topics: ["tahwid-al-ibada", "al-asma-was-sifat"]
 edition: "الأولى 1419هـ/1999م"
 ---
 معتقد أهل السنة والجماعة في توحيد الأسماء والصفات تأليف: د. محمد بن خليفة التميمي ال

@@ -3,7 +3,7 @@ title: "الأساليب البديعة في فضل الصحابة وإقناع 
 status: published
 published_at: 2026-06-25
 person: ywsf-al-nbhany
-topics: ["aam-other"]
+topics: ["al-imamah-was-sahabah", "al-firaq-war-rudud"]
 ---
 ## [الأساليب البديعة في فضل الصحابة وإقناع الشيعة (مطبوع بهامش كتاب شواهد الحق)]ـ
 

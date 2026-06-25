@@ -3,7 +3,7 @@ title: "التبصير في الدين وتمييز الفرقة الناجية 
 status: published
 published_at: 2026-06-25
 person: al-asfrayyny-abw-al-mzfr
-topics: ["aam-other"]
+topics: ["al-firaq-war-rudud"]
 edition: "الأولى، 1403هـ - 1983م"
 description: "بتحقيق كمال يوسف الحوت"
 ---

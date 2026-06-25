@@ -3,7 +3,7 @@ title: "تصحيح المفاهيم في جوانب العقيدة"
 status: published
 published_at: 2026-06-25
 person: mhmd-aman-al-jamy
-topics: ["aam-other"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "السنة الحادية عشرة, العدد الثاني غرة ذي الحجة عام 1398هـ/1978م"
 ---
 ## تصحيح المفاهيم في جوانب العقيدة

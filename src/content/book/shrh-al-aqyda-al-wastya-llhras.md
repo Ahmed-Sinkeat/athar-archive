@@ -4,7 +4,7 @@ status: published
 published_at: 2026-06-25
 person: mhmd-khlyl-hras
 kind: متن
-topics: ["aam-other"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "الثالثة، 1415 هـ"
 ---
 ## [شرح العقيدة الواسطية، ويليه ملحق الواسطية]ـ

@@ -3,7 +3,7 @@ title: "اعتقاد أئمة السلف أهل الحديث"
 status: published
 published_at: 2026-06-25
 person: mhmd-bn-abd-al-rhmn-al-khmys
-topics: ["aam-other"]
+topics: ["al-aqeedah-al-aamah", "mustalah-al-hadith"]
 edition: "الأولى، 1420هـ/1999م"
 ---
 بسم الله الرحمن الرحيم ال

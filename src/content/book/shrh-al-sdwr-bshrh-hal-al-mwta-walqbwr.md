@@ -3,7 +3,7 @@ title: "شرح الصدور بشرح حال الموتى والقبور"
 status: published
 published_at: 2026-06-25
 person: al-sywty
-topics: ["aam-other"]
+topics: ["al-samiyyat"]
 edition: "الأولى، 1417هـ - 1996م"
 description: "بتحقيق عبد المجيد طعمة حلبي"
 ---

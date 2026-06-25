@@ -3,7 +3,7 @@ title: "تحقيق الاحتجاج بالقدر لابن تيمية"
 status: published
 published_at: 2026-06-25
 person: abn-tymya
-topics: ["aam-other"]
+topics: ["al-qadr"]
 edition: "الرابعة - 1404"
 ---
 ## الاحتجاج بالقدر

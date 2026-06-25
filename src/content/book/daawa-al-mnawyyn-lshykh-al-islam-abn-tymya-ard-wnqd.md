@@ -3,7 +3,7 @@ title: "دعاوى المناوئين لشيخ الإسلام ابن تيمية 
 status: published
 published_at: 2026-06-25
 person: abd-al-lh-bn-salh-al-ghsn
-topics: ["aam-other"]
+topics: ["al-firaq-war-rudud"]
 edition: "الأولى، 1424 هـ"
 ---
 دعاوى المناوئين لشيخ الإسلام ابن تيمية عرض ونقد تأليف د. عبد الله بن صالح بن عبد العزيز الغصن

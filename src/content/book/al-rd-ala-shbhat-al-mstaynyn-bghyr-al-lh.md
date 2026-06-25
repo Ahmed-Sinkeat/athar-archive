@@ -3,7 +3,7 @@ title: "الرد على شبهات المستعينين بغير الله"
 status: published
 published_at: 2026-06-25
 person: ahmd-bn-aysa
-topics: ["aam-other"]
+topics: ["al-firaq-war-rudud"]
 edition: "1409_1989م"
 ---
 بسم الله الرحمن الرحيم

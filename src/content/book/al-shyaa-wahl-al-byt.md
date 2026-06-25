@@ -3,7 +3,7 @@ title: "الشيعة وأهل البيت"
 status: published
 published_at: 2026-06-25
 person: ihsan-ilhy-zhyr
-topics: ["aam-other"]
+topics: ["al-firaq-war-rudud"]
 ---
 الشيعة وأهل البيت تأليف الأستاذ / إحسان إلهي ظهير رئيس تحرير مجلة ترجمان الحديث لاهور باكستان
 

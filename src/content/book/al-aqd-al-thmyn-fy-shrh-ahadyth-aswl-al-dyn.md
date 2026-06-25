@@ -3,7 +3,7 @@ title: "العقد الثمين في شرح أحاديث أصول الدين"
 status: published
 published_at: 2026-06-25
 person: abn-ghnam-hsyn
-topics: ["aam-other"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "الأولى 1423هـ/2003م"
 description: "بتحقيق محمد بن عبد الله الهبدان"
 ---

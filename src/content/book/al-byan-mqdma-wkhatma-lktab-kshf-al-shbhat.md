@@ -4,7 +4,7 @@ status: published
 published_at: 2026-06-25
 person: aly-al-hmd-al-salhy
 kind: متن
-topics: ["aam-other"]
+topics: ["tahwid-al-ibada"]
 ---
 الْبَيَان «مُقَدّمَة وخاتمة» تأليف عَليّ الْحَمد الصَّالِحِي، عبد الرَّحْمَن المحمد الدوسري مؤسسة النُّور
 

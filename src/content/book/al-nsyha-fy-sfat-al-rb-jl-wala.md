@@ -3,7 +3,7 @@ title: "النصيحة في صفات الرب جل وعلا"
 status: published
 published_at: 2026-06-25
 person: abn-shykh-al-hzamyn
-topics: ["aam-other"]
+topics: ["al-asma-was-sifat"]
 edition: "الثانية، 1394"
 description: "بتحقيق زهير الشاويش"
 ---

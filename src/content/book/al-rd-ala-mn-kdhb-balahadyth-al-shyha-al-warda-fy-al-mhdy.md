@@ -3,7 +3,7 @@ title: "الرد على من كذب بالأحاديث الصحيحة الوار
 status: published
 published_at: 2026-06-25
 person: abd-al-mhsn-al-abad
-topics: ["aam-other"]
+topics: ["al-firaq-war-rudud"]
 ---
 ## الرد على من كذَّب بالأحاديث الصحيحة الواردة في المهدي.
 

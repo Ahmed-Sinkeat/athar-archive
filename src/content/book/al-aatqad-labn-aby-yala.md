@@ -3,7 +3,7 @@ title: "الاعتقاد لابن أبي يعلى"
 status: published
 published_at: 2026-06-25
 person: abn-aby-yala
-topics: ["aam-other"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "الأولى، 1423 هـ - 2002"
 description: "بتحقيق محمد بن عبد الرحمن الخميس"
 ---

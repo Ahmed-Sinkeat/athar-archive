@@ -3,7 +3,7 @@ title: "ملاحظات حول كتاب عقيدة السلف والخلف"
 status: published
 published_at: 2026-06-25
 person: abd-al-qadr-bn-hbyb-al-lh-al-sndy
-topics: ["aam-other"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "السنة الرابعة عشرة العدد الثالث والخمسون 1402هـ/1981م"
 ---
 ## ملاحظات: حول كتاب عقيدة السّلف وَالْخلف

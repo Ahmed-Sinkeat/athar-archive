@@ -3,7 +3,7 @@ title: "عقيدة محمد بن عبد الوهاب السلفية وأثرها
 status: published
 published_at: 2026-06-25
 person: salh-bn-abd-al-lh-al-abwd
-topics: ["aam-other"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "الثانية، 1424هـ/2004م"
 ---
 ## المجلد الأول

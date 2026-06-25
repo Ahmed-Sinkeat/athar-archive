@@ -3,7 +3,7 @@ title: "صفات رب العالمين لابن المحب الصامت - جـ 2
 status: published
 published_at: 2026-06-25
 person: abn-al-mhb-al-samt
-topics: ["aam-other"]
+topics: ["al-asma-was-sifat"]
 ---
 ## ملخص الرسالة
 

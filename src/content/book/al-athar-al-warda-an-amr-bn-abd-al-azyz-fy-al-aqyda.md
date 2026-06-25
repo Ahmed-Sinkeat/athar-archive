@@ -3,7 +3,7 @@ title: "الآثار الواردة عن عمر بن عبد العزيز في ا
 status: published
 published_at: 2026-06-25
 person: hyaa-bn-mhmd-bn-jbryl
-topics: ["aam-other"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "الأولى 1423هـ/2002م"
 ---
 ## المجلد الأول

@@ -4,7 +4,7 @@ status: published
 published_at: 2026-06-25
 person: abn-baz
 kind: متن
-topics: ["aam-other"]
+topics: ["tahwid-al-ibada"]
 edition: "الطبعة الأولى 1418هـ - 1997م"
 description: "بتحقيق علي بن صالح بن عبد الهادي المري - وأحمد بن عبد العزيز بن عبد الله بن باز"
 ---

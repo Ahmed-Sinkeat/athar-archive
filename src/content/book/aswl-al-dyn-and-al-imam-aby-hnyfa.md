@@ -3,7 +3,7 @@ title: "أصول الدين عند الإمام أبي حنيفة"
 status: published
 published_at: 2026-06-25
 person: mhmd-bn-abd-al-rhmn-al-khmys
-topics: ["aam-other"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 ## [أصول الدين عند الإمام أبي حنيفة]ـ
 

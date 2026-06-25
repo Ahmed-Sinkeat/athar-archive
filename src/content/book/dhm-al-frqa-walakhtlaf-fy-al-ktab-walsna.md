@@ -3,7 +3,7 @@ title: "ذم الفرقة والاختلاف في الكتاب والسنة"
 status: published
 published_at: 2026-06-25
 person: abd-al-lh-bn-mhmd-al-ghnyman
-topics: ["aam-other"]
+topics: ["al-firaq-war-rudud"]
 edition: "السنة السابعه عشرة (العدد الخامس والستون , السادس والستون) محرم - جماد الأخرة 1405هـ/1985م"
 ---
 ## ذَمّ الفرقة وَالاخْتِلاَففي الكتاب والسنة

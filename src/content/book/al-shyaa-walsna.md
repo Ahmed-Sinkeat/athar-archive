@@ -3,7 +3,7 @@ title: "الشيعة والسنة"
 status: published
 published_at: 2026-06-25
 person: ihsan-ilhy-zhyr
-topics: ["aam-other"]
+topics: ["al-firaq-war-rudud"]
 edition: "الثالثة، 1396 هـ - 1979 م"
 ---
 الشيعة والسنة تأليف / إحسان إلهي ظهير

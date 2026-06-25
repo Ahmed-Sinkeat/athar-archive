@@ -3,7 +3,7 @@ title: "التصوف - المنشأ والمصادر"
 status: published
 published_at: 2026-06-25
 person: ihsan-ilhy-zhyr
-topics: ["aam-other"]
+topics: ["al-firaq-war-rudud"]
 edition: "الأولى، 1406 هـ - 1986 م"
 ---
 التَّصَوُّفُ المنْشَأ وَالمَصَادِر تأليف الأستاذ إحسان إلهي ظهير (رحمه الله) 1941م ـــ 1987 م إدارة ترجمان السُّنة لاهور - باكستان

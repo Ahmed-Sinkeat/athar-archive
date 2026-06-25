@@ -3,7 +3,7 @@ title: "أصول الإيمان في ضوء الكتاب والسنة"
 status: published
 published_at: 2026-06-25
 person: mjmwaa-mn-al-mwlfyn
-topics: ["aam-other"]
+topics: ["al-iman"]
 edition: "الأولى، 1421هـ"
 ---
 [

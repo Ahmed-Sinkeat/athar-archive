@@ -3,7 +3,7 @@ title: "الشيخ عبد الرحمن بن سعدي وجهوده في تو ضي
 status: published
 published_at: 2026-06-25
 person: abd-al-rzaq-bn-abd-al-mhsn-al-bdr
-topics: ["aam-other"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "السنة الحادية عشرة- العدد الرابع- 1418هـ/ 1998م"
 ---
 بسم الله الرحمن الرحيم

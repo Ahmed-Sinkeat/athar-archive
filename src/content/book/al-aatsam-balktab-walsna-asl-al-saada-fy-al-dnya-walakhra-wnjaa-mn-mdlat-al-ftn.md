@@ -3,7 +3,7 @@ title: "الاعتصام بالكتاب والسنة أصل السعادة في 
 status: published
 published_at: 2026-06-25
 person: sayd-bn-whf-al-qhtany
-topics: ["aam-other"]
+topics: ["al-samiyyat", "al-sunnah-wal-bidah"]
 ---
 رسائل سعيد بن علي بن وهف القحطاني الاعتصام بالكتاب والسنة أصل السعادة في الدنيا والآخرة ونجاة من مضلات الفتن تأليف الفقير إلى الله تعالى د. سعيد بن علي بن وهف القحطاني
 

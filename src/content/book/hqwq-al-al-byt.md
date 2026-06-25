@@ -3,7 +3,7 @@ title: "حقوق آل البيت"
 status: published
 published_at: 2026-06-25
 person: abn-tymya
-topics: ["aam-other"]
+topics: ["al-imamah-was-sahabah"]
 description: "بتحقيق عبد القادر عطا"
 ---
 ## مقدمة

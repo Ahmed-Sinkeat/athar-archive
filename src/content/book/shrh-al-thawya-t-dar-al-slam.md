@@ -4,7 +4,7 @@ status: published
 published_at: 2026-06-25
 person: abn-aby-al-az
 kind: متن
-topics: ["aam-other"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "الطبعة المصرية الأولى، 1426هـ - 2005م"
 ---
 ## [شرح العقيدة الطحاوية]ـ

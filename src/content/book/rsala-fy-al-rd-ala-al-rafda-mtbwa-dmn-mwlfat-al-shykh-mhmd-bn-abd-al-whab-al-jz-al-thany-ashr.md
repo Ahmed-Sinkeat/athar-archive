@@ -3,7 +3,7 @@ title: "رسالة في الرد على الرافضة (مطبوع ضمن مؤل
 status: published
 published_at: 2026-06-25
 person: mhmd-bn-abd-al-whab
-topics: ["aam-other"]
+topics: ["al-firaq-war-rudud"]
 edition: "-"
 description: "بتحقيق ناصر بن سعد الرشيد"
 ---

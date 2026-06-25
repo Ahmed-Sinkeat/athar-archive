@@ -3,7 +3,7 @@ title: "رفع الأستار لإبطال أدلة القائلين بفناء 
 status: published
 published_at: 2026-06-25
 person: al-snaany
-topics: ["aam-other"]
+topics: ["al-samiyyat"]
 edition: "الأولى - 1405 هـ"
 ---
 ## مقدمة المحقق

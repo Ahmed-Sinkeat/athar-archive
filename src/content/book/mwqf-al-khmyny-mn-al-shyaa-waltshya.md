@@ -3,7 +3,7 @@ title: "موقف الخميني من الشيعة والتشيع"
 status: published
 published_at: 2026-06-25
 person: mhmwd-sad-nash
-topics: ["aam-other"]
+topics: ["al-firaq-war-rudud"]
 ---
 بسم الله الرحمن الرحيم
 

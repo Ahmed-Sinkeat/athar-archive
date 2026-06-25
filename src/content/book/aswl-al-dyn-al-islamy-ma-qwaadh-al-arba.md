@@ -3,7 +3,7 @@ title: "أصول الدين الإسلامي مع قواعده الأربع"
 status: published
 published_at: 2026-06-25
 person: mhmd-bn-abd-al-whab
-topics: ["aam-other"]
+topics: ["al-aqeedah-al-aamah"]
 description: "بتحقيق رتبها محمد الطيب بن إسحاق الأنصاري"
 ---
 [

@@ -3,7 +3,7 @@ title: "المفيد في مهمات التوحيد"
 status: published
 published_at: 2026-06-25
 person: abd-al-qadr-ata-swfy
-topics: ["aam-other"]
+topics: ["tahwid-al-ibada"]
 edition: "الأولى 1422هـ- 1423هـ"
 ---
 ## مقدمة

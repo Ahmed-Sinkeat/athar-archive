@@ -3,7 +3,7 @@ title: "مختصر العلو للعلي العظيم"
 status: published
 published_at: 2026-06-25
 person: al-dhhby-shms-al-dyn
-topics: ["aam-other"]
+topics: ["al-asma-was-sifat"]
 edition: "الطبعة الثانية 1412هـ-1991م."
 ---
 ## المقدمات

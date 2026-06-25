@@ -4,7 +4,7 @@ status: published
 published_at: 2026-06-25
 person: salh-al-fwzan
 kind: متن
-topics: ["aam-other"]
+topics: ["tahwid-al-ibada"]
 edition: "الأولى - 1427 هـ - 2006 م"
 ---
 شرح الأصول الثلاثة بسم الله الرحمن الرحيم

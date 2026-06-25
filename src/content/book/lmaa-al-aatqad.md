@@ -3,7 +3,7 @@ title: "لمعة الاعتقاد"
 status: published
 published_at: 2026-06-25
 person: al-mqdsy-mwfq-al-dyn
-topics: ["aam-other"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "الثانية، 1420هـ - 2000م"
 ---
 [

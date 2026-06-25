@@ -3,7 +3,7 @@ title: "الفواكه العذاب في الرد على من لم يحكم ال
 status: published
 published_at: 2026-06-25
 person: hmd-bn-nasr-al-mamr
-topics: ["aam-other"]
+topics: ["al-firaq-war-rudud"]
 edition: "الأولى"
 description: "بتحقيق عبد السلام بن برجس بن ناصر آل عبد الكريم"
 ---

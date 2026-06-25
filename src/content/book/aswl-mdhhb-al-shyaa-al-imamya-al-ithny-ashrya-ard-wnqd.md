@@ -3,7 +3,7 @@ title: "أصول مذهب الشيعة الإمامية الإثني عشرية 
 status: published
 published_at: 2026-06-25
 person: nasr-al-qfary
-topics: ["aam-other"]
+topics: ["al-firaq-war-rudud"]
 edition: "الأولى، 1414 هـ"
 ---
 ## [أصول مذهب الشيعة الإمامية الإثني عشرية - عرض ونقد -]ـ

@@ -3,7 +3,7 @@ title: "عقيدة أهل السنة في الصحابة لناصر بن علي"
 status: published
 published_at: 2026-06-25
 person: nasr-bn-aly-aayd-hsn-al-shykh
-topics: ["aam-other"]
+topics: ["al-aqeedah-al-aamah", "al-imamah-was-sahabah"]
 edition: "الثالثة، 1421هـ/2000م"
 ---
 ## الجزء الأول

@@ -3,7 +3,7 @@ title: "نهج الرشاد في نظم الاعتقاد"
 status: published
 published_at: 2026-06-25
 person: al-srmry-jmal-al-dyn
-topics: ["aam-other"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "الأولى، 1435 هـ - 2014 م"
 description: "بتحقيق أبو المنذر المنياوي"
 ---

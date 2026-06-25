@@ -4,7 +4,7 @@ status: published
 published_at: 2026-06-25
 person: mhmd-bn-abd-al-whab
 kind: متن
-topics: ["aam-other"]
+topics: ["tahwid-al-ibada"]
 edition: "الأولى، 1418هـ"
 ---
 [
