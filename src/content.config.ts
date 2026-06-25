@@ -79,6 +79,8 @@ const book = defineCollection({
     person: slug,           // → Person (author)
     // study classification — drives the متن badge + study modes (poems are always متن)
     kind: z.enum(["متن", "مرجع", "مجموع"]).optional(),
+    // section beyond kind — routes to /quran /hadith /tarajim (still also under /books)
+    genre: z.enum(["قرآن", "حديث", "تراجم"]).optional(),
     topics: topicsField,
     authored_year: z.number().int().optional(), // hijri سنة التصنيف — default browse sort
     description: z.string().optional(),
