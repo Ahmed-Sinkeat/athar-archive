@@ -33,7 +33,7 @@ function securityHeaders(): Promise<Record<string, string>> {
 export const onRequest = defineMiddleware(async (ctx, next) => {
   if (ctx.request.method !== "GET" || !READING.test(ctx.url.pathname)) return next();
 
-  const cache = typeof caches !== "undefined" ? (caches as { default: Cache }).default : null;
+  const cache = typeof caches !== "undefined" ? (caches as unknown as { default: Cache }).default : null;
   const key = cache ? new Request(ctx.url.toString(), { method: "GET" }) : null;
   if (cache && key) {
     const hit = await cache.match(key);
