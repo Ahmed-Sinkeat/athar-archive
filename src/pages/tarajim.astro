@@ -1,0 +1,31 @@
+---
+import Base from "../layouts/Base.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import BrowseGroups from "../components/BrowseGroups.astro";
+import { personNameMap, loadGraph } from "../lib/site";
+import { hrefFor, labelFor } from "../lib/display";
+import { buildSubjectGroups } from "../lib/browse";
+import { collectionLd } from "../lib/structured-data";
+
+// التراجم: كتب الرجال والطبقات والسير — مصادرُ سِيَر الأعلام والرواة.
+const graph = await loadGraph();
+const names = await personNameMap();
+const { groups, uncategorized } = buildSubjectGroups("book", graph, (e) => (e.data as any).genre === "تراجم");
+const has = groups.length > 0 || uncategorized.length > 0;
+const card = (it: any) => ({
+  href: hrefFor("book", it.id),
+  title: it.data.title,
+  kind: labelFor("book", it.data),
+  sub: it.data.person ? names.get(it.data.person) ?? "" : "",
+  cta: "ادخل القراءة ←",
+});
+---
+<Base title="التراجم" description="كتبُ الرجالِ والطبقاتِ والسِّيَر." activeNav="tarajim" jsonLd={collectionLd({ title: "التراجم", path: "/tarajim", crumbs: [{ name: "الرئيسية", path: "/" }, { name: "التراجم", path: "/tarajim" }] })}>
+  <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "التراجم" }]} />
+  <div class="wrap-mid uf5db21c">
+    <h1 class="page-title">التراجم</h1>
+    {has
+      ? <BrowseGroups groups={groups} uncategorized={uncategorized} card={card} unit="كتابًا" personNames={names} />
+      : <p class="faint">لا توجد موادُّ في هذا القسم بعد.</p>}
+  </div>
+</Base>

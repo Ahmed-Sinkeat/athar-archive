@@ -15,7 +15,9 @@ interface Props {
   ogType?: string;
   jsonLd?: unknown;
 }
-const { title, description, activeNav, searchMeta, searchScope, noindex, ogType = "website", jsonLd } = Astro.props;
+// searchMeta stays on Props (pages still pass it) but is no longer read — Pagefind
+// was removed; search is Google site-search now. ponytail: unthread it from pages later.
+const { title, description, activeNav, searchScope, noindex, ogType = "website", jsonLd } = Astro.props;
 const canonical = new URL(Astro.url.pathname.replace(/\/$/, "") || "/", config.siteUrl).href;
 
 // Search affordance: links to /search, carrying the current page's scope (Part D).
@@ -29,22 +31,11 @@ const searchHref = (() => {
   return qs ? `/search?${qs}` : "/search";
 })();
 
-// Pagefind facets emitted on indexable pages: type + (author) person + era + id + matn.
-// Each filter needs its own element (one comma-joined attribute only registers the first).
-const pagefindFilters = searchMeta
-  ? [
-      `type:${searchMeta.type}`,
-      searchMeta.person ? `person:${searchMeta.person}` : null,
-      searchMeta.era ? `era:${searchMeta.era}` : null,
-      searchMeta.id ? `id:${searchMeta.id}` : null,
-      searchMeta.matn ? `matn:نعم` : null,
-      ...(searchMeta.subjects?.map((s) => `subject:${s}`) ?? []),
-    ].filter(Boolean) as string[]
-  : [];
-
 // Top nav: الكتب / الشعر / الدروس / الموضوعات / الأعلام / المقالات / المسائل
 const nav = [
   { id: "books", label: "الكتب", href: "/books" },
+  { id: "quran", label: "القرآن", href: "/quran" },
+  { id: "hadith", label: "الحديث", href: "/hadith" },
   { id: "poems", label: "الشعر", href: "/poems" },
   { id: "series", label: "الدروس", href: "/series" },
   { id: "subjects", label: "الموضوعات", href: "/subjects" },
@@ -55,6 +46,7 @@ const nav = [
 // Drawer keeps extra pages reachable (شبكة المعرفة, كُناشة, معجم, etc.).
 const navAll = [
   ...nav,
+  { id: "tarajim", label: "التراجم", href: "/tarajim" },
   { id: "graph", label: "شبكة المعرفة", href: "/graph" },
   { id: "benefits", label: "كُناشة", href: "/benefits" },
   { id: "mujam", label: "المعجم", href: "/mujam" },
@@ -130,7 +122,7 @@ const fullTitle = title === "أهل الأثر" ? title : `${title} · أهل ا
     </script>
   </head>
   <body>
-    <header class="topbar" data-pagefind-ignore transition:persist>
+    <header class="topbar" transition:persist>
       <div class="wrap topbar-row">
         <button class="icon-btn hamburger" data-action="menu:toggle" aria-label="القائمة">
           <span class="ham-lines"></span>
@@ -214,8 +206,8 @@ const fullTitle = title === "أهل الأثر" ? title : `${title} · أهل ا
     </header>
 
     <!-- mobile drawer -->
-    <div class="drawer-backdrop" data-drawer-backdrop data-pagefind-ignore transition:persist></div>
-    <aside class="drawer" data-drawer aria-label="القائمة" data-pagefind-ignore transition:persist>
+    <div class="drawer-backdrop" data-drawer-backdrop transition:persist></div>
+    <aside class="drawer" data-drawer aria-label="القائمة" transition:persist>
       <div class="drawer-head">
         <span class="brand-name u94aa034" >أهل الأثر</span>
         <button class="icon-btn u5f04d9d" data-action="menu:close" aria-label="إغلاق" >×</button>
@@ -228,18 +220,11 @@ const fullTitle = title === "أهل الأثر" ? title : `${title} · أهل ا
       {navAll.map((n) => <a href={n.href} data-nav={n.id} aria-current={activeNav === n.id ? "page" : undefined}>{n.label}</a>)}
     </aside>
 
-    <main
-      data-active-nav={activeNav}
-      data-pagefind-body={searchMeta ? "" : undefined}
-      data-pagefind-ignore={searchMeta ? undefined : ""}
-      data-pagefind-meta={searchMeta ? `title:${searchMeta.title}` : undefined}
-    >
-      {pagefindFilters.map((f) => <span class="sr-only" data-pagefind-filter={f}></span>)}
-      {searchMeta?.aliases?.length ? <span class="sr-only">{searchMeta.aliases.join("، ")}</span> : null}
+    <main data-active-nav={activeNav}>
       <slot />
     </main>
 
-    <footer class="site-footer" data-pagefind-ignore>
+    <footer class="site-footer">
       <div class="wrap-mid">
         <div class="footer-grid">
           <div>
@@ -247,6 +232,9 @@ const fullTitle = title === "أهل الأثر" ? title : `${title} · أهل ا
           </div>
           <nav class="footer-links" aria-label="روابط">
             <a href="/books">الكتب</a>
+            <a href="/quran">القرآن</a>
+            <a href="/hadith">الحديث</a>
+            <a href="/tarajim">التراجم</a>
             <a href="/poems">الشعر</a>
             <a href="/series">الدروس</a>
             <a href="/subjects">الموضوعات</a>

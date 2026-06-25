@@ -31,7 +31,7 @@ export interface BrowseGroups {
   uncategorized: ContentEntry[];
 }
 
-export function buildSubjectGroups(collection: string, graph: Graph): BrowseGroups {
+export function buildSubjectGroups(collection: string, graph: Graph, filter?: (e: ContentEntry) => boolean): BrowseGroups {
   const subjects = graph.all
     .filter((e) => e.collection === "subject" && isPub(e))
     .sort((a, b) => ar(a.data.title as string, b.data.title as string));
@@ -50,7 +50,7 @@ export function buildSubjectGroups(collection: string, graph: Graph): BrowseGrou
     for (const t of topics) {
       const items = graph
         .materialsByTopic(t.id)
-        .filter((e) => e.collection === collection && isPub(e))
+        .filter((e) => e.collection === collection && isPub(e) && (!filter || filter(e)))
         .sort(byYearThenTitle);
       if (!items.length) continue;
       items.forEach((i) => placed.add(i.id));
@@ -61,7 +61,7 @@ export function buildSubjectGroups(collection: string, graph: Graph): BrowseGrou
   }
 
   const uncategorized = graph.all
-    .filter((e) => e.collection === collection && isPub(e) && !placed.has(e.id))
+    .filter((e) => e.collection === collection && isPub(e) && !placed.has(e.id) && (!filter || filter(e)))
     .sort(byYearThenTitle);
 
   return { groups, uncategorized };
