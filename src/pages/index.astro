@@ -86,7 +86,7 @@ const latest = [
   .sort((a, b) => +new Date(b.e.data.published_at) - +new Date(a.e.data.published_at))
   .slice(0, 5);
 ---
-<Base title="أهل الأثر" description="الأرشيف العلمي لأهل السنة والجماعة: متونٌ ومنظوماتٌ ودروسٌ محقَّقةً ومُشكَّلةً، في تجربة قراءة هادئة." activeNav="home" jsonLd={websiteLd()}>
+<Base title="أهل الأثر | الأرشيف العلمي للمتون والمنظومات الإسلامية" description="الأرشيف العلمي لأهل السنة والجماعة: متونٌ ومنظوماتٌ ودروسٌ محقَّقةً ومُشكَّلةً، في تجربة قراءة هادئة." activeNav="home" jsonLd={websiteLd()}>
   <section class="hero">
     <div class="hero-inner">
       <div class="hero-eyebrow">أرشيف علمي</div>
@@ -113,7 +113,7 @@ const latest = [
   </section>
 
   <div class="home-section">
-    <div class="section-label">تصفّح الأرشيف</div>
+    <h2 class="section-label">تصفّح الأرشيف</h2>
     <div class="card-grid u8bffae7" >
       <a class="card" href="/books"><div class="ufa5a688">ا</div><div class="card-title ua3ba3b1" >الكتب</div><p class="card-sub uf04e97f" >المتونُ والمراجعُ محقَّقةً ومُشكَّلةً، مرتَّبةً حسب الفنِّ.</p><span class="card-cta">تصفّح ←</span></a>
       <a class="card" href="/poems"><div class="ufa5a688">ب</div><div class="card-title ua3ba3b1" >الشعر</div><p class="card-sub uf04e97f" >منظوماتٌ علميةٌ مُشكَّلةٌ مُرقَّمةُ الأبيات، مع الشروح والتخريج.</p><span class="card-cta">تصفّح ←</span></a>
@@ -123,12 +123,12 @@ const latest = [
 
   {anns.length > 0 && (
     <div class="home-section">
-      <div class="section-label">إعلانات</div>
+      <h2 class="section-label">إعلانات</h2>
       <div class="ann-cards">
         {anns.map((a) => (
           <div class="ann-card">
             <span class="badge tag-verdigris u3a19426" >جديد</span>
-            <h2>{a.data.title}</h2>
+            <h3>{a.data.title}</h3>
             {a.body && <p>{a.body}</p>}
           </div>
         ))}
@@ -138,11 +138,11 @@ const latest = [
 
   {featured && (
     <div class="home-section">
-      <div class="section-label">منظومة مختارة</div>
+      <h2 class="section-label">منظومة مختارة</h2>
       <div class="u0ef5d25">
         <div>
           <div class="eyebrow u57e29a5" >منظومة · {personName.get(featured.data.person)}</div>
-          <h2 class="reader-title u8bd951d" >{featured.data.title}</h2>
+          <h3 class="reader-title u8bd951d" >{featured.data.title}</h3>
           {featured.data.description && <p class="prose u86de7ac" ><span class="u515ff4e">{featured.data.description}</span></p>}
           <a class="btn btn-accent u8a77e5a"  href={hrefFor("poem", featured.id)}>اقرأ المنظومة ←</a>
         </div>
@@ -160,7 +160,7 @@ const latest = [
 
   {weekly.length > 0 && (
     <div class="home-section">
-      <div class="section-label">مختارات الأسبوع</div>
+      <h2 class="section-label">مختارات الأسبوع</h2>
       <div class="weekly-grid">
         {weekly.map(({ kind, entry }) => {
           const m = weeklyMeta(entry);
@@ -187,7 +187,7 @@ const latest = [
 
   {latest.length > 0 && (
     <div class="home-section u3a4c3ff" >
-      <div class="section-label">أحدث الإضافات</div>
+      <h2 class="section-label">أحدث الإضافات</h2>
       {latest.map(({ e, kind, color }) => (
         <a class="latest-row" href={hrefFor(e.collection, e.id, { series: e.data.series })}>
           <span class:list={[...["pill", color], "uac6ea07"]} >{kind}</span>
