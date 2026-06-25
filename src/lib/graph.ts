@@ -7,6 +7,7 @@ import {
   MATERIAL_COLLECTIONS,
   type ContentEntry,
 } from "./types.js";
+import { parseWikilinks } from "./wikilink.js";
 
 function str(v: unknown): string {
   return String(v ?? "");
@@ -55,6 +56,9 @@ export interface Graph {
   audioForSource(type: string, id: string): ContentEntry[];
   benefitsForSource(type: string, id: string): ContentEntry[];
   seriesForSource(type: string, id: string): ContentEntry[];
+  // «ما يشير إلى هذا»: reverse references (annotations, benefits, series, authored
+  // works, topic/subject members, and [[wiki-link]] mentions) pointing at this entity.
+  backlinksFor(collection: string, id: string): { entry: ContentEntry; relation: string }[];
 
   seriesStats(seriesId: string): SeriesStats;
 }
@@ -70,6 +74,7 @@ export function buildGraph(entries: ContentEntry[]): Graph {
   const audioBySource = new Map<string, ContentEntry[]>();
   const benefitsBySource = new Map<string, ContentEntry[]>();
   const seriesBySource = new Map<string, ContentEntry[]>();
+  const wikilinkIndex = new Map<string, ContentEntry[]>(); // "type:slug" → entries whose body links to it
 
   const push = (map: Map<string, ContentEntry[]>, k: string, e: ContentEntry) => {
     const list = map.get(k);
@@ -122,6 +127,8 @@ export function buildGraph(entries: ContentEntry[]): Graph {
         }
         break;
     }
+
+    for (const w of parseWikilinks(e.body ?? "")) push(wikilinkIndex, key(w.type, w.slug), e);
   }
 
   // lessons sorted by `order`
@@ -160,6 +167,26 @@ export function buildGraph(entries: ContentEntry[]): Graph {
     };
   };
 
+  const backlinksFor = (collection: string, id: string) => {
+    const out: { entry: ContentEntry; relation: string }[] = [];
+    const seen = new Set<string>();
+    const add = (e: ContentEntry, relation: string) => {
+      const k = key(e.collection, e.id);
+      if (seen.has(k)) return;
+      seen.add(k);
+      out.push({ entry: e, relation });
+    };
+    for (const a of annotationsByTarget.get(key(collection, id)) ?? []) add(a, "شرح/حاشية");
+    for (const b of benefitsBySource.get(key(collection, id)) ?? []) add(b, "فائدة");
+    for (const s of seriesBySource.get(key(collection, id)) ?? []) add(s, "سلسلة شرح");
+    if (collection === "person") for (const e of personIndex.get(id) ?? []) add(e, "من مؤلَّفاته");
+    if (collection === "topic") for (const e of topicIndex.get(id) ?? []) add(e, "في الموضوع");
+    if (collection === "subject") for (const t of subjectTopics.get(id) ?? []) add(t, "موضوع");
+    if (collection === "series") for (const l of seriesLessons.get(id) ?? []) add(l, "درس");
+    for (const e of wikilinkIndex.get(key(collection, id)) ?? []) add(e, "إشارة");
+    return out;
+  };
+
   return {
     all: entries,
     getById,
@@ -172,6 +199,7 @@ export function buildGraph(entries: ContentEntry[]): Graph {
     audioForSource: (type, id) => audioBySource.get(key(type, id)) ?? [],
     benefitsForSource: (type, id) => benefitsBySource.get(key(type, id)) ?? [],
     seriesForSource: (type, id) => seriesBySource.get(key(type, id)) ?? [],
+    backlinksFor,
     seriesStats,
   };
 }

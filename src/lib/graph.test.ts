@@ -73,6 +73,26 @@ describe("graph indices", () => {
   });
 });
 
+describe("backlinks (ما يشير إلى هذا)", () => {
+  const corpus = smallCorpus();
+  corpus.push(e("article", "ar2", { title: "إشارة", person: "p1" }, "انظر [[book:bk1]] للتفصيل"));
+  const g = buildGraph(corpus);
+
+  it("collects reverse references to a book (annotation, benefit, series, wiki-link)", () => {
+    const byId = Object.fromEntries(g.backlinksFor("book", "bk1").map((r) => [r.entry.id, r.relation]));
+    expect(byId["bk1--p1--h"]).toBe("شرح/حاشية");
+    expect(byId["bn1"]).toBe("فائدة");
+    expect(byId["s1"]).toBe("سلسلة شرح");
+    expect(byId["ar2"]).toBe("إشارة");
+  });
+
+  it("collects a person's authored works as backlinks", () => {
+    const ids = g.backlinksFor("person", "p1").map((r) => r.entry.id);
+    expect(ids).toContain("bk1");
+    expect(ids).toContain("ar1");
+  });
+});
+
 describe("graph over real fixtures", () => {
   const g = buildGraph(loadContentFromDisk());
 

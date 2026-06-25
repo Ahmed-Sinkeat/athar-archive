@@ -1,0 +1,45 @@
+---
+// «ما يشير إلى هذا» — reverse references (backlinks), grouped by relation.
+// Collapsible and at page end: keeps connectivity out of the reading flow
+// (clean-UI gate). Items are precomputed (backlinksList) in getStaticPaths.
+import { toArabicDigits } from "../lib/display";
+import type { BacklinkItem } from "../lib/site";
+
+interface Props { items: BacklinkItem[] }
+const { items } = Astro.props;
+
+const groups = new Map<string, BacklinkItem[]>();
+for (const it of items) {
+  const g = groups.get(it.relation);
+  if (g) g.push(it);
+  else groups.set(it.relation, [it]);
+}
+---
+{items.length > 0 && (
+  <details class="relations wrap-mid">
+    <summary>ما يشير إلى هذا <span class="rel-count">{toArabicDigits(items.length)}</span></summary>
+    <div class="rel-body">
+      {[...groups].map(([relation, list]) => (
+        <div class="rel-group">
+          <div class="rel-label">{relation}</div>
+          <ul class="rel-list">
+            {list.map((it) => (
+              <li><a href={it.href}>{it.title}</a>{it.sub && <span class="faint"> — {it.sub}</span>}</li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </details>
+)}
+<style>
+  .relations { margin: 2.5rem auto 1rem; border-top: 1px solid var(--rule, #e5ddd0); padding-top: 1rem; }
+  .relations > summary { cursor: pointer; font-weight: 600; list-style: none; opacity: .85; }
+  .relations > summary::-webkit-details-marker { display: none; }
+  .relations[open] > summary { margin-bottom: .75rem; }
+  .rel-count { font-size: .8em; opacity: .55; }
+  .rel-body { display: grid; gap: .85rem; }
+  .rel-label { font-size: .8rem; opacity: .6; margin-bottom: .2rem; }
+  .rel-list { margin: 0; padding-inline-start: 1.2rem; }
+  .rel-list li { margin: .15rem 0; }
+</style>

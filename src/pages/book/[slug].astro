@@ -6,8 +6,9 @@ import Prose from "../../components/Prose.astro";
 import StudyBar from "../../components/StudyBar.astro";
 import AudioPlayer from "../../components/AudioPlayer.astro";
 import RelatedStrip from "../../components/RelatedStrip.astro";
+import Relations from "../../components/Relations.astro";
 import { markdownToSafeHtml } from "../../lib/sanitize";
-import { isPub, loadGraph, personNameMap, subjectTitlesFor, notesByAnchor, relatedTo } from "../../lib/site";
+import { isPub, loadGraph, personNameMap, subjectTitlesFor, notesByAnchor, relatedTo, backlinksList } from "../../lib/site";
 import { analyzeBook } from "../../lib/chunk";
 import { readBody } from "../../lib/read-body";
 import { hrefFor, toArabicDigits, labelFor, isMatn } from "../../lib/display";
@@ -27,12 +28,12 @@ export async function getStaticPaths() {
       .map((au) => ({ url: au.data.url, format: au.data.format, duration: au.data.duration ?? null, sizeBytes: au.data.size_bytes ?? null, label: au.data.title }));
     // Phase 2: chunked books → store a light TOC (titles+slugs) only; the body and
     // its annotations live on the on-demand chapter pages, never in this landing's HTML.
-    paths.push({ params: { slug: entry.id }, props: { entry, chunked: a.chunked, toc: a.chapters.map((c) => ({ title: c.title, slug: c.slug })), body: a.chunked ? undefined : body, byAnchor: a.chunked ? {} : byAnchor, audios, author: names.get(entry.data.person), subjects: subjectTitlesFor(entry.data.topics, graph), related: relatedTo(entry, graph, names) } });
+    paths.push({ params: { slug: entry.id }, props: { entry, chunked: a.chunked, toc: a.chapters.map((c) => ({ title: c.title, slug: c.slug })), body: a.chunked ? undefined : body, byAnchor: a.chunked ? {} : byAnchor, audios, author: names.get(entry.data.person), subjects: subjectTitlesFor(entry.data.topics, graph), related: relatedTo(entry, graph, names), backlinks: backlinksList(entry, graph, names) } });
   }
   return paths;
 }
 
-const { entry, chunked, toc, body, byAnchor, audios, author, subjects, related } = Astro.props;
+const { entry, chunked, toc, body, byAnchor, audios, author, subjects, related, backlinks } = Astro.props;
 const KIND_SLUG: Record<string, string> = { شرح: "sharh", حاشية: "hashiya", تخريج: "takhrij", إعراب: "iraab" };
 const anchors = Object.entries(byAnchor);
 const path = `/book/${entry.id}`;
@@ -95,4 +96,5 @@ const jsonLd = bookLd({
     <div class="ornament ud38b410" >۞</div>
   </div>
   <div class="wrap-mid"><RelatedStrip items={related} /></div>
+  <Relations items={backlinks} />
 </Base>

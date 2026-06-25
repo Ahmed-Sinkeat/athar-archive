@@ -13,6 +13,8 @@ import rehypeSanitize from "rehype-sanitize";
 import rehypeStringify from "rehype-stringify";
 import { sanitizeSchema } from "./sanitize-schema.js";
 import { slugifyArabic } from "./chapters.js";
+import { hrefFor } from "./display.js";
+import { WIKILINK_RE, WIKILINK_TYPES } from "./wikilink.js";
 
 // Gather visible text from a hast node subtree.
 function collectText(node: any): string {
@@ -71,6 +73,49 @@ function rehypeArabicTokens() {
   };
 }
 
+// [[type:slug]] / [[type:slug|label]] → internal link (subtle .wikilink). Runs
+// after sanitize; only known entity types resolve, unknown forms left as text.
+function splitWikiLinks(value: string): any[] {
+  const out: any[] = [];
+  let last = 0;
+  for (const m of value.matchAll(WIKILINK_RE)) {
+    const [full, type, slug, label] = m;
+    const i = m.index!;
+    if (i > last) out.push({ type: "text", value: value.slice(last, i) });
+    if (WIKILINK_TYPES.has(type)) {
+      out.push({
+        type: "element", tagName: "a",
+        properties: { href: hrefFor(type, slug), className: ["wikilink"], title: label ?? slug },
+        children: [{ type: "text", value: label ?? slug }],
+      });
+    } else {
+      out.push({ type: "text", value: full });
+    }
+    last = i + full.length;
+  }
+  if (last < value.length) out.push({ type: "text", value: value.slice(last) });
+  return out.length ? out : [{ type: "text", value }];
+}
+
+function rehypeWikiLinks() {
+  return (tree: any) => {
+    const walk = (node: any, parentTag: string | null) => {
+      if (!node.children) return;
+      const next: any[] = [];
+      for (const child of node.children) {
+        if (child.type === "text" && parentTag !== "code" && parentTag !== "pre" && parentTag !== "a") {
+          next.push(...splitWikiLinks(child.value ?? ""));
+        } else {
+          if (child.type === "element") walk(child, child.tagName);
+          next.push(child);
+        }
+      }
+      node.children = next;
+    };
+    walk(tree, null);
+  };
+}
+
 // Give headings stable Arabic-slug ids (matches parseLesson() anchors so the
 // lesson TOC and rendered headings align). Runs after sanitize.
 function rehypeHeadingIds() {
@@ -112,6 +157,7 @@ const processor = unified()
   .use(remarkRehype, { allowDangerousHtml: true })
   .use(rehypeRaw)
   .use(rehypeSanitize, sanitizeSchema)
+  .use(rehypeWikiLinks)
   .use(rehypeArabicTokens)
   .use(rehypeHeadingIds)
   .use(rehypeStringify);
@@ -122,6 +168,7 @@ const masailProcessor = unified()
   .use(remarkRehype, { allowDangerousHtml: true })
   .use(rehypeRaw)
   .use(rehypeSanitize, sanitizeSchema)
+  .use(rehypeWikiLinks)
   .use(rehypeMasailQA)
   .use(rehypeArabicTokens)
   .use(rehypeHeadingIds)
