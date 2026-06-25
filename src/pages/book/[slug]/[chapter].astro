@@ -69,10 +69,22 @@ const next = allChapters[chIdx + 1] ?? null;
         </details>
 
         <div class="reader-head">
-          <div class="eyebrow u87c136d">{labelFor("book", entry.data)} · {author}</div>
-          <h1 class="reader-title u97df06b">{chapter.title}</h1>
-          <div class="reader-byline">{entry.data.title}</div>
+          <div class="eyebrow u87c136d"><a class="faint" href={hrefFor("book", entry.id)}>{entry.data.title}</a></div>
+          <h1 class="reader-title ue7e55f7" >{chapter.title}</h1>
+          <div class="reader-byline">{author}</div>
+          {entry.data.transcript_status && (
+            <div style="margin-top: 0.5rem;">
+              <span class={`pill ${entry.data.transcript_status === 'قيد المراجعة' ? 'tag-accent' : ''}`}>{entry.data.transcript_status}</span>
+            </div>
+          )}
         </div>
+        
+        {entry.data.transcript_status && (
+          <div class="wrap-mid" style="margin-top: 1rem; text-align: center;">
+            <button type="button" class="btn" data-action="transcript:send-review" data-book={entry.data.title}>أرسل ملاحظات المراجعة عبر البريد</button>
+          </div>
+        )}
+
         <div class="rule-short"></div>
 
         {isMatn("book", entry.data) ? (

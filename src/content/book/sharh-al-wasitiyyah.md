@@ -8,6 +8,7 @@ topics:
   - al-asma-was-sifat
 description: شرح العقيدة الواسطية لابن تيمية مفرَّغًا من الدروس الصوتية
 transcript_status: قيد المراجعة
+audio: audio-sharh-wasitiyyah-lesson-1
 ---
 
 ## المقدمة
