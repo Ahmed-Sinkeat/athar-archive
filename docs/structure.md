@@ -1,6 +1,6 @@
 # athar-archive — Repository Structure
 
-**As of:** P7 complete (authoring docs, intake governance, content scaffold) + UX-R (reading/browse/search redesign, admin v2, مختارات الأسبوع — see `asbuild.md`)
+**As of:** P7 complete (authoring docs, intake governance, content scaffold) + UX-R (reading/browse/search redesign, admin v2, مختارات الأسبوع — see `asbuild.md`) + Quran/Hadith/تراجم sections & connectivity layer (book `genre`; `quran` mushaf collection + ayah reader; backlinks panel; `[[wiki-links]]`; narrator graph — see `HANDOFF-quran-hadith.md`)
 **Companion docs:** [`asbuild.md`](./asbuild.md) · [`issue.md`](./issue.md) · [`governance.md`](./governance.md) · [`media-and-backup.md`](./media-and-backup.md)
 
 This document describes the *actual* repository layout. It is updated after every phase. Directories that exist but are not yet populated are marked **(pending P7+)**.
@@ -37,7 +37,7 @@ athar-archive/
 
 ```
 src/
-├─ content.config.ts         # all 14 Astro Content Collections + Zod schemas (P1)
+├─ content.config.ts         # all 16 Astro Content Collections + Zod schemas (P1; +book.genre, term, quran)
 ├─ content/                  # Markdown source of truth — one folder per entity
 │  ├─ person/                #   الشخص        — 2 fixtures
 │  ├─ subject/               #   التصنيف      — 2 fixtures
@@ -52,7 +52,9 @@ src/
 │  ├─ audio/                 #   الصوتية      — 1 fixture (embedded, polymorphic)
 │  ├─ annotation/            #   الشرح/الحاشية — 4 fixtures (target+anchor; optional phrase mark + source link)
 │  ├─ announcement/          #   الإعلان      — 1 fixture (homepage chrome)
-│  └─ highlight/             #   مختار الأسبوع — آية/حديث/بيت + reference; homepage chrome, no page — 3 fixtures
+│  ├─ highlight/             #   مختار الأسبوع — آية/حديث/بيت + reference; homepage chrome, no page — 3 fixtures
+│  ├─ term/                  #   المعجم        — مصطلح + تعريف موجز
+│  └─ quran/                 #   القرآن        — 114 سورة (mushaf spine: number/name/ayah_count) (P4)
 │
 ├─ lib/                      # build pipeline, derivations & page helpers (P1–P3)
 │  ├─ types.ts               #   ContentEntry, COLLECTIONS, MATERIAL_COLLECTIONS, isPublished
@@ -61,7 +63,8 @@ src/
 │  ├─ graph.ts               #   in-memory knowledge graph + derived series stats (+ tests)
 │  ├─ chapters.ts            #   chapter/verse/paragraph/heading parser + Arabic slugify (+ tests)
 │  ├─ chunk.ts               #   threshold-driven single-page vs chapterized (+ tests)
-│  ├─ sanitize.ts            #   Markdown→safe HTML + Arabic heading-ids (+ tests)
+│  ├─ sanitize.ts            #   Markdown→safe HTML + Arabic heading-ids + [[wiki-link]] rendering (+ tests)
+│  ├─ wikilink.ts            #   shared [[type:slug|label]] parser + regex (graph + sanitize) (+ tests)
 │  ├─ sanitize-schema.ts     #   shared rehype-sanitize schema
 │  ├─ display.ts             #   Arabic-Indic numerals, route map (hrefFor), entity labels, stripTashkeel, era slugs (eraHref)
 │  ├─ site.ts                #   page-runtime: loadGraph(), personNameMap(), publishedSorted(), notesByAnchor(), subjectTitlesFor()
@@ -81,11 +84,13 @@ src/
 │  ├─ Breadcrumbs.astro · EntityCard.astro · Prose.astro · StudyBar.astro
 │  ├─ Verse.astro          # numbered بيت + inline شرح mark (.ann-mark) + hidden chooser pack
 │  ├─ AudioPlayer.astro    # native <audio> (sources[]); multi-recitation <select> switcher on متون/منظومات
-│  └─ BrowseGroups.astro   # collapsible تصنيف→موضوع accordion (books/poems/articles/series)
+│  ├─ BrowseGroups.astro   # collapsible تصنيف→موضوع accordion (books/poems/articles/series)
+│  └─ Relations.astro      # «ما يشير إلى هذا» backlinks panel — collapsible, end-of-page (P2)
 └─ pages/                    # every route (BUILD-PLAN 0.4) — all render from fixtures
    ├─ index.astro · search.astro · compose.astro · roadmap.astro · about.astro · contact.astro · 404.astro
    ├─ books.astro · poems.astro · subjects.astro · topics.astro · people.astro    # browse: grouped by subject→topic / era
    ├─ articles.astro · benefits.astro · series/index.astro · questions/index.astro  # questions: subject→topic drill-down
+   ├─ quran.astro · hadith.astro · tarajim.astro · quran/[surah].astro   # genre sections (P1) + mushaf ayah reader (P4)
    ├─ book/[slug].astro · book/[slug]/[chapter].astro
    ├─ poem/[slug].astro · poem/[slug]/[chapter].astro
    ├─ series/[slug].astro · series/[slug]/[lesson].astro
