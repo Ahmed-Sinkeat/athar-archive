@@ -69,7 +69,7 @@ const filterSubjects = (await getCollection("subject"))
   .map((s) => s.data.title)
   .sort((a, b) => a.localeCompare(b, "ar"));
 
-const fullTitle = title === "أهل الأثر" ? title : `${title} · أهل الأثر`;
+const fullTitle = title.includes("أهل الأثر") ? title : `${title} · أهل الأثر`;
 ---
 
 <!doctype html>
@@ -118,6 +118,9 @@ const fullTitle = title === "أهل الأثر" ? title : `${title} · أهل ا
         } catch (e) {}
       })();
     </script>
+    {import.meta.env.PUBLIC_CF_BEACON && (
+      <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon={`{"token": "${import.meta.env.PUBLIC_CF_BEACON}"}`}></script>
+    )}
   </head>
   <body>
     <header class="topbar" transition:persist>

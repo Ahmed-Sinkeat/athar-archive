@@ -157,18 +157,28 @@ export function questionLd(o: { title: string; answerText: string; path: string;
 }
 
 export function websiteLd() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    url: ORIGIN,
-    name: "أهل الأثر",
-    inLanguage: "ar",
-    potentialAction: {
-      "@type": "SearchAction",
-      target: { "@type": "EntryPoint", urlTemplate: absUrl("/search?q={query}") },
-      "query-input": "required name=query",
+  return graph(
+    {
+      "@type": "WebSite",
+      url: ORIGIN,
+      name: "أهل الأثر",
+      inLanguage: "ar",
+      publisher: { "@id": absUrl("/#organization") },
+      potentialAction: {
+        "@type": "SearchAction",
+        target: { "@type": "EntryPoint", urlTemplate: absUrl("/search?q={query}") },
+        "query-input": "required name=query",
+      },
     },
-  };
+    {
+      "@type": "Organization",
+      "@id": absUrl("/#organization"),
+      url: ORIGIN,
+      name: "أهل الأثر",
+      logo: absUrl("/favicon.svg"),
+      description: "الأرشيف العلمي للمتون والمنظومات الإسلامية",
+    }
+  );
 }
 
 export function collectionLd(o: { title: string; description?: string; path: string; crumbs: Crumb[] }) {
