@@ -3,7 +3,7 @@ title: "شرح حديث النزول"
 status: published
 published_at: 2026-06-25
 person: abn-tymya
-topics: ["aam-other"]
+topics: ["mustalah-al-hadith"]
 edition: "الخامسة، 1397هـ/1977م"
 ---
 ## شرح حديث النزول

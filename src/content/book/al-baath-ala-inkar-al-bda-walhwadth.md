@@ -3,7 +3,7 @@ title: "الباعث على إنكار البدع والحوادث"
 status: published
 published_at: 2026-06-25
 person: al-mqdsy-abw-shama
-topics: ["aam-other"]
+topics: ["al-sunnah-wal-bidah"]
 edition: "الأولى، 1398 - 1978"
 description: "بتحقيق عثمان أحمد عنبر"
 ---

@@ -3,7 +3,7 @@ title: "مدخل لدراسة العقيدة الإسلامية"
 status: published
 published_at: 2026-06-25
 person: athman-jmaa-dmyrya
-topics: ["aam-other"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "الثانية 1417هـ-1996م"
 ---
 ## مقدمة

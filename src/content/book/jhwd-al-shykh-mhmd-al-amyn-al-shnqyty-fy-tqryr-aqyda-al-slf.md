@@ -3,7 +3,7 @@ title: "جهود الشيخ محمد الأمين الشنقيطي في تقري
 status: published
 published_at: 2026-06-25
 person: abd-al-azyz-bn-salh-bn-ibrahym-al-twyan
-topics: ["aam-other"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "الأولى، 1419هـ/1999م"
 ---
 ## المجلد الأول

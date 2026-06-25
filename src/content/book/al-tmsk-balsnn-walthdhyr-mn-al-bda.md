@@ -3,7 +3,7 @@ title: "التمسك بالسنن والتحذير من البدع"
 status: published
 published_at: 2026-06-25
 person: al-dhhby-shms-al-dyn
-topics: ["aam-other"]
+topics: ["al-sunnah-wal-bidah"]
 edition: "السنة 27 - - العددان 103 - 104 - - 1416/ 1417هـ - 1996م/1997م"
 description: "بتحقيق محمد باكريم محمد باعبد الله"
 ---

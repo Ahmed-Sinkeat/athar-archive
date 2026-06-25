@@ -3,7 +3,7 @@ title: "أثر الإيمان في تحصين الأمة الإسلامية ضد
 status: published
 published_at: 2026-06-25
 person: abd-al-lh-bn-abd-al-rhmn-al-jrbwa
-topics: ["aam-other"]
+topics: ["al-iman"]
 edition: "الأولى، 1423هـ/2003م"
 ---
 ## المجلد الأول

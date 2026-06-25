@@ -3,7 +3,7 @@ title: "رسالة السجزي إلى أهل زبيد في الرد على من
 status: published
 published_at: 2026-06-25
 person: abyd-al-lh-al-sjzy
-topics: ["aam-other"]
+topics: ["al-firaq-war-rudud"]
 edition: "الثانية، 1423هـ/2002م"
 description: "بتحقيق محمد با كريم با عبد الله"
 ---

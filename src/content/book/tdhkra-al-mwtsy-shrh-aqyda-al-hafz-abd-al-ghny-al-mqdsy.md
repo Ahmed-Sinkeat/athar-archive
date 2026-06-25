@@ -3,7 +3,7 @@ title: "تذكرة المؤتسي شرح عقيدة الحافظ عبد الغن
 status: published
 published_at: 2026-06-25
 person: abd-al-rzaq-bn-abd-al-mhsn-al-bdr
-topics: ["aam-other"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "الأولى، 1424هـ/2003م"
 ---
 ## مقدمة

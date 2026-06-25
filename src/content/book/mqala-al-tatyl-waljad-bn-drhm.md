@@ -3,7 +3,7 @@ title: "مقالة التعطيل والجعد بن درهم"
 status: published
 published_at: 2026-06-25
 person: mhmd-bn-khlyfa-al-tmymy
-topics: ["aam-other"]
+topics: ["al-asma-was-sifat"]
 edition: "الأولى، 1418هـ/1997م"
 ---
 مَقَالَةُ الْتَّعْطِيْلِ تأليف الدكتور: مُحَمَّد بْنُ خَلِيْفَة الْتَّمِيْمِيّ ال

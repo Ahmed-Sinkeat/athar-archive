@@ -3,7 +3,7 @@ title: "التكفير وضوابطه - السقار"
 status: published
 published_at: 2026-06-25
 person: mnqdh-al-sqar
-topics: ["aam-other"]
+topics: ["al-iman"]
 ---
 التكفير وضوابطه د. منقذ بن محمود السقار
 

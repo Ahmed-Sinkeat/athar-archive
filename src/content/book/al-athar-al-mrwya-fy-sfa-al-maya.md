@@ -3,7 +3,7 @@ title: "الآثار المروية في صفة المعية"
 status: published
 published_at: 2026-06-25
 person: mhmd-bn-khlyfa-al-tmymy
-topics: ["aam-other"]
+topics: ["al-asma-was-sifat"]
 edition: "الأولى، 1422هـ / 2002م"
 ---
 الآثار المروية في صفة المعية تأليف: د/محمد بن خليفة التميمي بسم الله الرحمن الرحيم ال

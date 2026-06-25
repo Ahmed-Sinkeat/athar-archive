@@ -3,7 +3,7 @@ title: "عقيدة الحافظ تقي الدين عبد الغني بن عبد 
 status: published
 published_at: 2026-06-25
 person: al-mqdsy-abd-al-ghny
-topics: ["aam-other"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "الأولى، 1411هـ/1990م"
 description: "بتحقيق عبد الله بن محمد البصيري"
 ---

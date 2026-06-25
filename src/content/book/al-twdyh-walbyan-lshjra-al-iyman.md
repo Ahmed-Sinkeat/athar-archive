@@ -3,7 +3,7 @@ title: "التوضيح والبيان لشجرة الإيمان"
 status: published
 published_at: 2026-06-25
 person: abd-al-rhmn-al-sady
-topics: ["aam-other"]
+topics: ["al-iman"]
 ---
 التوضيح والبيان لشجرة الإيمان تأليف العلامة عبد الرحمن بن ناصر السعدي رحمه الله تعالى
 

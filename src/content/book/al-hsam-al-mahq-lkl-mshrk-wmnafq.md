@@ -3,7 +3,7 @@ title: "الحسام الماحق لكل مشرك ومنافق"
 status: published
 published_at: 2026-06-25
 person: mhmd-tqy-al-dyn-al-hlaly
-topics: ["aam-other"]
+topics: ["tahwid-al-ibada"]
 edition: "الأولى، 1415 هـ - 1994 م"
 ---
 بسم الله الرحمن الرحيم

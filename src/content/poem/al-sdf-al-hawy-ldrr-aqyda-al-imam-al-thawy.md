@@ -3,7 +3,7 @@ title: "الصدف الحاوي لدرر عقيدة الإمام الطحاوي"
 status: published
 published_at: 2026-06-25
 person: hmza-bn-athman-al-ansary
-topics: ["aam-other"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 ## مقدمة الناظم
 

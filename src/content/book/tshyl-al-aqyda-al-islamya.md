@@ -3,7 +3,7 @@ title: "تسهيل العقيدة الإسلامية"
 status: published
 published_at: 2026-06-25
 person: abd-al-lh-bn-abd-al-azyz-al-jbryn
-topics: ["aam-other"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "الثانية"
 ---
 بسم الله الرحمن الرحيم ال

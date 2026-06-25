@@ -4,7 +4,7 @@ status: published
 published_at: 2026-06-25
 person: fysl-al-mbark
 kind: متن
-topics: ["aam-other"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "الأولى، 1427 هـ - 2006 م"
 ---
 تَألِيْفُ الشَّيْخِ العَلاَّمَةِ فَيْصَلْ بنِ عَبْدِ العَزِيْزِ آل مُبَارَك ت 1376 هـ

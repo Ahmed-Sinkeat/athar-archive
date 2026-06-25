@@ -3,7 +3,7 @@ title: "القدر للفريابي محققا"
 status: published
 published_at: 2026-06-25
 person: al-fryaby
-topics: ["aam-other"]
+topics: ["al-qadr"]
 edition: "الأولى 1418 هـ - 1997م"
 description: "بتحقيق عبد الله بن حمد المنصور"
 ---

@@ -3,7 +3,7 @@ title: "فتاوى ورسائل سماحة الشيخ عبد الرزاق عفي
 status: published
 published_at: 2026-06-25
 person: abd-al-rzaq-afyfy
-topics: ["aam-other"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 أولا
 

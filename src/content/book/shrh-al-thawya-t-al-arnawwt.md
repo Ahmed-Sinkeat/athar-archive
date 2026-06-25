@@ -4,7 +4,7 @@ status: published
 published_at: 2026-06-25
 person: abn-aby-al-az
 kind: متن
-topics: ["aam-other"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "العاشرة، 1417هـ - 1997م"
 ---
 [

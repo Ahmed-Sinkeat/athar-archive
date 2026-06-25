@@ -3,7 +3,7 @@ title: "القول السديد شرح كتاب التوحيد ط الوزارة
 status: published
 published_at: 2026-06-25
 person: abd-al-rhmn-al-sady
-topics: ["aam-other"]
+topics: ["tahwid-al-ibada"]
 edition: "الثانية، 1421هـ"
 ---
 [

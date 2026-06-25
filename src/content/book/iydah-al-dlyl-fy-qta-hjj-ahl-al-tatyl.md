@@ -3,7 +3,7 @@ title: "إيضاح الدليل في قطع حجج أهل التعطيل"
 status: published
 published_at: 2026-06-25
 person: abn-jmaaa-bdr-al-dyn
-topics: ["aam-other"]
+topics: ["al-asma-was-sifat"]
 edition: "الأولى، 1410هـ - 1990م"
 description: "بتحقيق وهبي سليمان غاوجي الألباني"
 ---

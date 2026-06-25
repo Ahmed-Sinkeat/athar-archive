@@ -3,7 +3,7 @@ title: "الملخص في شرح كتاب التوحيد"
 status: published
 published_at: 2026-06-25
 person: salh-al-fwzan
-topics: ["aam-other"]
+topics: ["tahwid-al-ibada"]
 edition: "الأولى 1422هـ- 2001م"
 ---
 ## [الملخص في شرح كتاب التوحيد]ـ

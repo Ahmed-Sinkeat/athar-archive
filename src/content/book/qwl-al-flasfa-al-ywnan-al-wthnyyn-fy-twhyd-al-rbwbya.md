@@ -3,7 +3,7 @@ title: "قول الفلاسفة اليونان الوثنيين في توحيد 
 status: published
 published_at: 2026-06-25
 person: sawd-bn-abd-al-azyz-al-khlf
-topics: ["aam-other"]
+topics: ["tahwid-al-ibada"]
 edition: "العدد 120 - السنة 35 - 1423هـ/2003م"
 ---
 ال

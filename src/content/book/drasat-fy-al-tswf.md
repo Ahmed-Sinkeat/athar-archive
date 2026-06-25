@@ -3,7 +3,7 @@ title: "دراسات في التصوف"
 status: published
 published_at: 2026-06-25
 person: ihsan-ilhy-zhyr
-topics: ["aam-other"]
+topics: ["al-firaq-war-rudud"]
 edition: "الأولى، 1426 هـ - 2005 م"
 ---
 درَاساتٌ في التَصَوُّفْ تأليف الأستاذ إحسان إلهي ظهير 1941م - 1987م إدارة ترجمان السنة لاهور. باكستان

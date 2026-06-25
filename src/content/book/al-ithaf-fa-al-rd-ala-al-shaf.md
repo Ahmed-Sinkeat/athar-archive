@@ -3,7 +3,7 @@ title: "الإتحاف فى الرد على الصحاف"
 status: published
 published_at: 2026-06-25
 person: abd-al-ltyf-al-al-shykh
-topics: ["aam-other"]
+topics: ["al-firaq-war-rudud"]
 edition: "الأولى، 1416 هـ / 1995 م"
 description: "بتحقيق عبد العزيز بن عبد الله بن إبراهيم الزير آل حمد"
 ---

@@ -3,7 +3,7 @@ title: "تيسير العزيز الحميد في شرح كتاب التوحيد
 status: published
 published_at: 2026-06-25
 person: slyman-bn-abd-al-lh-al-al-shykh
-topics: ["aam-other"]
+topics: ["tahwid-al-ibada", "tarajim-al-ulama"]
 edition: "الأولى، 1423هـ/2002م"
 description: "بتحقيق زهير الشاويش"
 ---

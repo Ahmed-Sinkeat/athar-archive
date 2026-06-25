@@ -3,7 +3,7 @@ title: "حقيقة التوحيد"
 status: published
 published_at: 2026-06-25
 person: bdya-al-zman-al-nwrsy
-topics: ["aam-other"]
+topics: ["tahwid-al-ibada"]
 edition: "الثانية، 1988م"
 ---
 ## الْمقَام الأول

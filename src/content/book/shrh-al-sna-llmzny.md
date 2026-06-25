@@ -3,7 +3,7 @@ title: "شرح السنة للمزني"
 status: published
 published_at: 2026-06-25
 person: al-mzny
-topics: ["aam-other"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "الأولى، 1415هـ - 1995م"
 description: "بتحقيق جمال عزون"
 ---

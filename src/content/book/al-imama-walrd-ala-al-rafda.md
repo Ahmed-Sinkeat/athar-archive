@@ -3,7 +3,7 @@ title: "الإمامة والرد على الرافضة"
 status: published
 published_at: 2026-06-25
 person: abw-naym-al-asbhany
-topics: ["aam-other"]
+topics: ["al-imamah-was-sahabah", "al-firaq-war-rudud"]
 edition: "الثالثة، 1415هـ - 1994م"
 description: "بتحقيق د. علي بن محمد بن ناصر الفقيهي"
 ---

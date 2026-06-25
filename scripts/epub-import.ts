@@ -86,7 +86,8 @@ const cleanInline = (s: string) => decode(stripTags(s)).replace(/[ \t]+/g, " ").
 // ─────────────────────────────────────────────
 // Poem titles that Shamela exports as books but are actually منظومات.
 // Signal: title contains نونية، منظومة، ألفية، قصيدة، أرجوزة، لامية، دالية، بائية، رائية، ميمية
-const POEM_TITLE_RE = /(^|\s)(منظومة|نونية|ألفية|قصيدة|أرجوزة|لامية|دالية|بائية|رائية|ميمية|مقصورة)(\s|$)/u;
+// ponytail: use Unicode-aware word boundaries (?<=^|\P{L}) to handle prefixes like الـ/للـ and avoid substrings like الإسلامية.
+const POEM_TITLE_RE = /(?<=^|\P{L})(?:ال|لل)?(?:منظومة|نونية|[أا]لفية|قصيدة|[أا]رجوزة|لامية|دالية|بائية|رائية|ميمية|مقصورة)(?=$|\P{L})/u;
 // Fraction of body lines that must look like verses to auto-classify as poem
 const POEM_VERSE_THRESHOLD = 0.35;
 
@@ -117,17 +118,54 @@ const MATN_TITLE_RE = /(?:^|[\s،(])متن(?:$|[\s،)=])|الأصول الثلا
 // Extend this map as you import more sections.
 // ─────────────────────────────────────────────
 const SECTION_TOPIC_MAP: Array<{ pattern: RegExp; topic: string; subject: string }> = [
-  { pattern: /عقيدة|توحيد|أصول الدين|صفات|أسماء الله|الواسطية|الطحاوية|السنة|الإيمان/u, topic: "al-asma-was-sifat", subject: "aqeedah" },
-  { pattern: /إيمان|اعتقاد/u,                              topic: "tahwid-al-ibada",   subject: "aqeedah" },
+  // 1. العقيدة العامة
+  { pattern: /عقيدة|اعتقاد|الواسطية|الطحاوية|طحاوية|الحموية|التدمرية|أصول السنة|شرح السنة|لمعة الاعتقاد|أصول الدين|الشريعة للآجري|الإبانة/u, topic: "al-aqeedah-al-aamah", subject: "aqeedah" },
+  
+  // 2. التوحيد
+  { pattern: /توحيد|الربوبية|الألوهية|العبادة|شرك|الشرك|نواقض|ثلاثة الأصول|الأصول الثلاثة|كشف الشبهات|القواعد الأربع|إخلاص|تجريد التوحيد|تطهير الاعتقاد/u, topic: "tahwid-al-ibada", subject: "aqeedah" },
+  
+  // 3. الأسماء والصفات
+  { pattern: /أسماء الله|صفات|صفة|الاستواء|الفوقية|العلو|العرش|تفسير أسماء|اشتقاق أسماء|إثبات الصفات|التعطيل|الجهمية والمعطلة/u, topic: "al-asma-was-sifat", subject: "aqeedah" },
+  
+  // 4. الإيمان
+  { pattern: /إيمان|الإيمان|شعب الإيمان|النفاق|نفاق|إرجاء|المرجئة|تكفير|التكفير/u, topic: "al-iman", subject: "aqeedah" },
+  
+  // 5. القضاء والقدر
+  { pattern: /قدر|القدر|القضاء والقدر|القدرية|الجبرية|الاحتجاج بالقدر/u, topic: "al-qadr", subject: "aqeedah" },
+  
+  // 6. السمعيات
+  { pattern: /اليوم الآخر|الآخرة|القبور|عذاب القبر|البعث|الحشر|الميزان|الحوض|الشفاعة|الجنة|النار|أشراط الساعة|الفتن|الملاحم|الدجال|المسيح/u, topic: "al-samiyyat", subject: "aqeedah" },
+  
+  // 7. الإمامة والصحابة
+  { pattern: /الإمامة|السمع والطاعة|الصحابة|الآل والأصحاب|فضائل الصحابة|آل البيت|أمهات المؤمنين|معاوية|الخلافة/u, topic: "al-imamah-was-sahabah", subject: "aqeedah" },
+  
+  // 8. الولاء والبراء
+  { pattern: /الولاء والبراء|موالاة|الهجرة|التشبه|الكفار/u, topic: "al-wala-wal-bara", subject: "aqeedah" },
+  
+  // 9. السنة والبدعة
+  { pattern: /الاعتصام|البدع|بدعة|البدعة|ذم الكلام|الحوادث والبدع|الاتباع/u, topic: "al-sunnah-wal-bidah", subject: "aqeedah" },
+  
+  // 10. الفرق والردود
+  { pattern: /الفرق|الملل والنحل|الأشاعرة|المعتزلة|الجهمية|الرافضة|الشيعة|التصوف|الصوفية|وحدة الوجود|الرد على|نقد|نقض|مقالات/u, topic: "al-firaq-war-rudud", subject: "aqeedah" },
+
+  // Lughah / Nahw
   { pattern: /نحو|صرف|بلاغة|لغة|عربية|الآجرومية|ألفية ابن مالك/u, topic: "al-nahw-al-muyassar", subject: "nahw" },
+
+  // Quran / Tafsir
   { pattern: /تفسير|علوم القرآن|قراءات|تجويد/u,           topic: "tafsir-al-quran",   subject: "quran" },
+
+  // Hadith / Mustalah
   { pattern: /حديث|مصطلح|رجال|سند|تخريج|علل|مسانيد|موطأ/u, topic: "mustalah-al-hadith", subject: "hadith" },
+
+  // Fiqh
   { pattern: /فقه حنبلي|حنابلة/u,                           topic: "fiqh-hanbali",      subject: "fiqh" },
   { pattern: /فقه مالكي|مالكية/u,                           topic: "fiqh-maliki",       subject: "fiqh" },
   { pattern: /فقه شافعي|شافعية/u,                           topic: "fiqh-shafii",       subject: "fiqh" },
   { pattern: /فقه حنفي|حنفية/u,                             topic: "fiqh-hanafi",       subject: "fiqh" },
   { pattern: /فقه مقارن|خلاف عالي/u,                        topic: "fiqh-muqaran",      subject: "fiqh" },
   { pattern: /فقه|أصول الفقه|الرحبية|الفرائض|المعاملات/u,   topic: "usul-al-fiqh",      subject: "fiqh" },
+
+  // Tarajim
   { pattern: /تراجم|طبقات|سير|وفيات|رجال/u,                topic: "tarajim-al-ulama",  subject: "tarajim" },
 ];
 
@@ -434,6 +472,53 @@ const FOLDER_SUBJECT_MAP = [
 
 import { appendFileSync } from "node:fs";
 
+const TOPIC_TITLE_MAP: Record<string, string> = {
+  "al-aqeedah-al-aamah": "العقيدة العامة",
+  "tahwid-al-ibada": "التوحيد",
+  "al-asma-was-sifat": "الأسماء والصفات",
+  "al-iman": "الإيمان",
+  "al-qadr": "القضاء والقدر",
+  "al-samiyyat": "السمعيات",
+  "al-imamah-was-sahabah": "الإمامة والصحابة",
+  "al-wala-wal-bara": "الولاء والبراء",
+  "al-sunnah-wal-bidah": "السنة والبدعة",
+  "al-firaq-war-rudud": "الفرق والردود",
+
+  "al-nahw-al-muyassar": "النحو الميسر",
+  "tafsir-al-quran": "تفسير القرآن",
+  "mustalah-al-hadith": "مصطلح الحديث",
+  "fiqh-hanbali": "الفقه الحنبلي",
+  "fiqh-maliki": "الفقه المالكي",
+  "fiqh-shafii": "الفقه الشافعي",
+  "fiqh-hanafi": "الفقه الحنفي",
+  "fiqh-muqaran": "الفقه المقارن",
+  "usul-al-fiqh": "أصول الفقه",
+  "tarajim-al-ulama": "تراجم العلماء",
+
+  "aam-aqeedah": "عقيدة عامة",
+  "aam-hadith": "حديث عام",
+  "aam-fiqh": "فقه عام",
+  "aam-lughah": "لغة عامة",
+  "aam-quran": "قرآن عام",
+  "aam-tarajim": "تراجم عامة",
+  "aam-tarikh": "تاريخ عام",
+  "aam-raqaq": "رقائق وأخلاق",
+  "aam-other": "عام",
+};
+
+const SUBJECT_TITLE_MAP: Record<string, string> = {
+  "aqeedah": "العقيدة",
+  "hadith": "الحديث",
+  "fiqh": "الفقه",
+  "lughah": "اللغة العربية",
+  "quran": "القرآن الكريم",
+  "tarajim": "التراجم والسير",
+  "tarikh": "التاريخ",
+  "raqaq": "الرقائق والآداب",
+  "nahw": "النحو والصرف",
+  "other": "أخرى",
+};
+
 function resolveTopics(meta: Meta, file: string, contentRoot: string, today: string, dryRun: boolean): string[] {
   const folder = basename(dirname(file));
   const qism = meta.qism ?? "";
@@ -447,7 +532,6 @@ function resolveTopics(meta: Meta, file: string, contentRoot: string, today: str
     }
   }
   const stubTopic = `aam-${subjectSlug}`;
-  maybeEmitTopicStub(stubTopic, subjectSlug, contentRoot, today, dryRun);
 
   // 2. Suggest specific topics to JSON sidecar
   const suggested: string[] = [];
@@ -462,8 +546,34 @@ function resolveTopics(meta: Meta, file: string, contentRoot: string, today: str
     appendFileSync(join(dirname(contentRoot), "../scripts/topic-suggestions.jsonl"), suggestionLine + "\n");
   }
 
-  // Return ONLY the high-confidence stub
-  return [stubTopic];
+  // Deduplicate and limit to maximum of 5 topics (Astro schema limit)
+  const uniqueSuggested = [...new Set(suggested)];
+  const topicsToReturn = uniqueSuggested.length > 0 ? uniqueSuggested.slice(0, 5) : [stubTopic];
+
+  // Emit stubs for all resolved topics
+  for (const t of topicsToReturn) {
+    const entry = SECTION_TOPIC_MAP.find((e) => e.topic === t);
+    const subject = entry ? entry.subject : subjectSlug;
+    maybeEmitTopicStub(t, subject, contentRoot, today, dryRun);
+  }
+
+  return topicsToReturn;
+}
+
+function maybeEmitSubjectStub(subjectSlug: string, contentRoot: string, today: string, dryRun: boolean): void {
+  const subjectPath = join(contentRoot, "subject", subjectSlug + ".md");
+  if (existsSync(subjectPath)) return;
+  const title = SUBJECT_TITLE_MAP[subjectSlug] ?? subjectSlug;
+  const text = [
+    "---",
+    `title: ${y(title)}`,
+    "status: published",
+    `published_at: ${today}`,
+    "---",
+    "",
+  ].join("\n");
+  if (!dryRun) writeFileMk(subjectPath, text);
+  console.log(`   → subject stub: ${subjectPath}`);
 }
 
 /** Emit a topic stub if the slug doesn't yet exist. */
@@ -476,11 +586,16 @@ function maybeEmitTopicStub(
 ): void {
   const topicPath = join(contentRoot, "topic", topicSlug + ".md");
   if (existsSync(topicPath)) return;
+
+  // Make sure the subject stub exists
+  maybeEmitSubjectStub(subjectSlug, contentRoot, today, dryRun);
+
+  const title = TOPIC_TITLE_MAP[topicSlug] ?? topicSlug;
   const text = [
     "---",
-    `title: ${y(topicSlug)}`,
+    `title: ${y(title)}`,
     `subject: ${subjectSlug}`,
-    "status: draft",
+    "status: published",
     `published_at: ${today}`,
     "---",
     "",
@@ -902,7 +1017,11 @@ function selftest() {
   // ── poem title detection ──
   a(POEM_TITLE_RE.test("نونية القحطاني"), "poem title detection: نونية");
   a(POEM_TITLE_RE.test("ألفية ابن مالك"), "poem title detection: ألفية");
+  a(POEM_TITLE_RE.test("اللامية في النحو"), "poem title detection: اللامية");
+  a(POEM_TITLE_RE.test("المنظومة البيقونية"), "poem title detection: المنظومة");
+  a(POEM_TITLE_RE.test("القصيدة التائية"), "poem title detection: القصيدة");
   a(!POEM_TITLE_RE.test("كتاب العقيدة"), "not a poem title: كتاب العقيدة");
+  a(!POEM_TITLE_RE.test("أثر الإيمان في تحصين الأمة الإسلامية"), "not a poem title: الأمة الإسلامية");
 
   // ── متن detection ──
   a(MATN_TITLE_RE.test("متن الأجرومية"), "matn detection");

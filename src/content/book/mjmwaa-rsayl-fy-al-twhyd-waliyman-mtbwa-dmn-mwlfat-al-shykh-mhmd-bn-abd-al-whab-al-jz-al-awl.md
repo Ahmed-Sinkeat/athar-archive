@@ -3,7 +3,7 @@ title: "مجموعة رسائل في التوحيد والإيمان (مطبوع
 status: published
 published_at: 2026-06-25
 person: mhmd-bn-abd-al-whab
-topics: ["aam-other"]
+topics: ["tahwid-al-ibada", "al-iman"]
 edition: "-"
 description: "بتحقيق إسماعيل بن محمد الأنصاري"
 ---

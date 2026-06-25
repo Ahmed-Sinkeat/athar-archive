@@ -3,7 +3,7 @@ title: "الملل والنحل"
 status: published
 published_at: 2026-06-25
 person: al-shhrstany
-topics: ["aam-other"]
+topics: ["al-firaq-war-rudud"]
 ---
 ## المجلد الأول
 

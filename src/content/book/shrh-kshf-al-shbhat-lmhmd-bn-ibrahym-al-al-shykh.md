@@ -4,7 +4,7 @@ status: published
 published_at: 2026-06-25
 person: mhmd-bn-ibrahym-al-al-shykh
 kind: متن
-topics: ["aam-other"]
+topics: ["tahwid-al-ibada"]
 edition: "الأولى، 1419هـ"
 description: "بتحقيق محمد بن عبد الرحمن بن قاسم"
 ---

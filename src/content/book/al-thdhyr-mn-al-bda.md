@@ -3,7 +3,7 @@ title: "التحذير من البدع"
 status: published
 published_at: 2026-06-25
 person: abn-baz
-topics: ["aam-other"]
+topics: ["al-sunnah-wal-bidah"]
 edition: "الأولى، 1412هـ"
 ---
 [

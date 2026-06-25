@@ -3,7 +3,7 @@ title: "موقف ابن تيمية من الأشاعرة"
 status: published
 published_at: 2026-06-25
 person: abd-al-rhmn-bn-salh-al-mhmwd
-topics: ["aam-other"]
+topics: ["al-firaq-war-rudud"]
 edition: "الأولى، 1415 هـ / 1995 م"
 ---
 ## [موقف ابن تيمية من الأشاعرة]ـ

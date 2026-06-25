@@ -3,7 +3,7 @@ title: "أحاديث في الفتن والحوادث ط القاسم"
 status: published
 published_at: 2026-06-25
 person: mhmd-bn-abd-al-whab
-topics: ["aam-other"]
+topics: ["al-samiyyat"]
 edition: "1416هـ - 1995م الطبعة الاولى"
 ---
 ## باب الفتن

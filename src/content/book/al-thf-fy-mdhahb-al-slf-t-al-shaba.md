@@ -3,7 +3,7 @@ title: "التحف في مذاهب السلف ط الصحابة"
 status: published
 published_at: 2026-06-25
 person: al-shwkany
-topics: ["aam-other"]
+topics: ["al-imamah-was-sahabah"]
 edition: "الأولى، 1409 هـ - 1989 م"
 description: "بتحقيق سيد عاصم علي"
 ---

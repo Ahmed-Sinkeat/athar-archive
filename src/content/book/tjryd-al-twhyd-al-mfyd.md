@@ -3,7 +3,7 @@ title: "تجريد التوحيد المفيد"
 status: published
 published_at: 2026-06-25
 person: al-mqryzy
-topics: ["aam-other"]
+topics: ["tahwid-al-ibada"]
 edition: "1409هـ/1989م"
 description: "بتحقيق طه محمد الزيني"
 ---

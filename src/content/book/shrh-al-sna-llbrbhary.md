@@ -3,7 +3,7 @@ title: "شرح السنة للبربهاري"
 status: published
 published_at: 2026-06-25
 person: al-brbhary
-topics: ["aam-other"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 شرح السنة للإمام أبي محمد الحسن بن علي بن خلف البربهاري المتوفى سنة 329 هـ
 

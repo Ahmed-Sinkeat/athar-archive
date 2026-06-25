@@ -3,7 +3,7 @@ title: "رسالة في أصول الدين"
 status: published
 published_at: 2026-06-25
 person: abn-tymya
-topics: ["aam-other"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "الثالثة، 1400هـ/1980م"
 description: "بتحقيق -"
 ---

@@ -4,7 +4,7 @@ status: published
 published_at: 2026-06-25
 person: abd-al-rhmn-bn-qasm
 kind: متن
-topics: ["aam-other"]
+topics: ["tahwid-al-ibada"]
 edition: "الثانية، 1423هـ-2002م"
 ---
 ## مقدمة المصحح

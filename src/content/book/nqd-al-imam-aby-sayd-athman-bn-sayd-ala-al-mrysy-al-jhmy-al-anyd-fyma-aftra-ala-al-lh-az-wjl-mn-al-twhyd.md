@@ -3,7 +3,7 @@ title: "نقض الإمام أبي سعيد عثمان بن سعيد على ال
 status: published
 published_at: 2026-06-25
 person: al-darmy-abw-sayd
-topics: ["aam-other"]
+topics: ["tahwid-al-ibada", "al-firaq-war-rudud"]
 edition: "الطبعة الأولى 1418هـ - 1998م"
 description: "بتحقيق رشيد بن حسن الألمعي"
 ---

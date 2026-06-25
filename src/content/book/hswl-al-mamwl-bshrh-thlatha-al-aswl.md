@@ -4,7 +4,7 @@ status: published
 published_at: 2026-06-25
 person: abd-al-lh-al-fwzan
 kind: متن
-topics: ["aam-other"]
+topics: ["tahwid-al-ibada"]
 ---
 ## مقدمة
 

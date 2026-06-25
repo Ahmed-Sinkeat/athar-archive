@@ -3,7 +3,7 @@ title: "التمهيد لشرح كتاب التوحيد"
 status: published
 published_at: 2026-06-25
 person: salh-al-al-shykh
-topics: ["aam-other"]
+topics: ["tahwid-al-ibada"]
 edition: "الأولى، 1424هـ - 2003م"
 ---
 ## مقدمة شرح كتاب التوحيد

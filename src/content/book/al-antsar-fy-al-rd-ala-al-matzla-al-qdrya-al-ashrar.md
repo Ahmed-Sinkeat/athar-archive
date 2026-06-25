@@ -3,7 +3,7 @@ title: "الانتصار في الرد على المعتزلة القدرية ا
 status: published
 published_at: 2026-06-25
 person: al-amrany
-topics: ["aam-other"]
+topics: ["al-qadr", "al-firaq-war-rudud"]
 edition: "الأولى، 1419هـ/1999م"
 description: "بتحقيق سعود بن عبد العزيز الخلف"
 ---

@@ -3,7 +3,7 @@ title: "تحقيق كلمة الإخلاص"
 status: published
 published_at: 2026-06-25
 person: abn-rjb-al-hnbly
-topics: ["aam-other"]
+topics: ["tahwid-al-ibada"]
 edition: "الرابعة"
 ---
 ## كلمة الإخلاص

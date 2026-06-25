@@ -4,7 +4,7 @@ status: published
 published_at: 2026-06-25
 person: abd-al-krym-al-hmyd
 kind: متن
-topics: ["aam-other"]
+topics: ["tahwid-al-ibada", "al-firaq-war-rudud"]
 edition: "الأولى، 1428 هـ - 2007 م"
 ---
 ## المقدمة

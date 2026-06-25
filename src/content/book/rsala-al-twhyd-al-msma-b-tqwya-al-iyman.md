@@ -3,7 +3,7 @@ title: "رسالة التوحيد المسمى بـ تقوية الإيمان"
 status: published
 published_at: 2026-06-25
 person: al-dhlwy-ismaayl-bn-abd-al-ghny
-topics: ["aam-other"]
+topics: ["tahwid-al-ibada", "al-iman"]
 edition: "الأولى، 2003 م"
 ---
 ## كلمة المترجم

@@ -3,7 +3,7 @@ title: "بيان المحجة في الرد على اللجة (مطبوع ضمن
 status: published
 published_at: 2026-06-25
 person: abd-al-rhmn-bn-hsn-al-al-shykh
-topics: ["aam-other"]
+topics: ["al-firaq-war-rudud"]
 edition: "الأولى بمصر، 1349هـ"
 ---
 ## بيان المحجة في الرد على اللجة

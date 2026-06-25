@@ -3,7 +3,7 @@ title: "الرسالة العرشية"
 status: published
 published_at: 2026-06-25
 person: abn-tymya
-topics: ["aam-other"]
+topics: ["al-asma-was-sifat"]
 edition: "الأولى، 1399هـ"
 ---
 ## [الرسالة العرشية]ـ

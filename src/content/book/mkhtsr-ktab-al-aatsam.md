@@ -3,7 +3,7 @@ title: "مختصر كتاب الاعتصام"
 status: published
 published_at: 2026-06-25
 person: alwy-al-sqaf
-topics: ["aam-other"]
+topics: ["al-sunnah-wal-bidah"]
 edition: "الأولى، 1418 هـ - 1997 م"
 ---
 ## [مختصر كتاب الاعتصام]ـ

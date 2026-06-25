@@ -4,7 +4,7 @@ status: published
 published_at: 2026-06-25
 person: abn-athymyn
 kind: متن
-topics: ["aam-other"]
+topics: ["tahwid-al-ibada"]
 edition: "الطبعة الرابعة 1424هـ - 2004م"
 ---
 ## ترجمة مؤلف كتاب (ثلاثة الأصول)شيخ الإسلام محمد بن عبد الوهاب رحمه الله تعالى

@@ -366,7 +366,6 @@ document.addEventListener("mousedown", (e) => {
   if (!(e.target as HTMLElement).closest(".aa-tools")) hideTools();
 });
 document.addEventListener("keydown", (e) => {
-  if ((e.ctrlKey || e.metaKey) && e.key === "f" && root()?.querySelector(".prose, .verse")) { e.preventDefault(); openFind(); }
   if (e.key === "Escape") { hideTools(); closeFind(); }
 });
 window.addEventListener("scroll", () => { clearTimeout(scrollTimer); scrollTimer = window.setTimeout(saveScroll, 400); }, { passive: true });

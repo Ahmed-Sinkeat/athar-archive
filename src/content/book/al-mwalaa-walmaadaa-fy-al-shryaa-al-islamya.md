@@ -3,7 +3,7 @@ title: "الموالاة والمعاداة في الشريعة الإسلامي
 status: published
 published_at: 2026-06-25
 person: mhmas-al-jlawd
-topics: ["aam-other"]
+topics: ["al-wala-wal-bara"]
 edition: "الأولى، 1407 هـ - 1987 م"
 ---
 ## [الموالاة والمعاداة في الشريعة الإسلامية]ـ

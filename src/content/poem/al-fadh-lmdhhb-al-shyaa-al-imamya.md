@@ -3,7 +3,7 @@ title: "الفاضح لمذهب الشيعة الإمامية"
 status: published
 published_at: 2026-06-25
 person: hamd-al-idrysy
-topics: ["aam-other"]
+topics: ["al-firaq-war-rudud"]
 edition: "الأولى، 1428 هـ - 2007 م"
 ---
 ## مقدمة

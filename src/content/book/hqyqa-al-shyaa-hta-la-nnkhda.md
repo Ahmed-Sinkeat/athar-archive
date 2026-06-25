@@ -3,7 +3,7 @@ title: "حقيقة الشيعة «حتى لا ننخدع»"
 status: published
 published_at: 2026-06-25
 person: abd-al-lh-al-mwsly
-topics: ["aam-other"]
+topics: ["al-firaq-war-rudud"]
 edition: "الثانية"
 ---
 حتى لا ننخدع بسم الله الرحمن الرحيم ويمكرون ويمكر الله والله خير الماكرين سورة الأنفال: آية 30

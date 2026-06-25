@@ -4,7 +4,7 @@ status: published
 published_at: 2026-06-25
 person: abd-al-rhmn-al-sady
 kind: متن
-topics: ["aam-other"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "الأولى، 1414هـ"
 ---
 ## [مقدمة الناشر]

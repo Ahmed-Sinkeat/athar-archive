@@ -4,7 +4,7 @@ status: published
 published_at: 2026-06-25
 person: khald-al-mslh
 kind: متن
-topics: ["aam-other"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "الأولى، 1421هـ"
 ---
 ## شرح العقيدة الواسطية من كلام شيخ الإسلام ابن تيمية

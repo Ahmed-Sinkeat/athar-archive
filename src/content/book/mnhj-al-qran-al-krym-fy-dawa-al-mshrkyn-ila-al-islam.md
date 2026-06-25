@@ -3,7 +3,7 @@ title: "منهج القرآن الكريم في دعوة المشركين إلى
 status: published
 published_at: 2026-06-25
 person: hmwd-al-rhyly
-topics: ["aam-other"]
+topics: ["tahwid-al-ibada"]
 edition: "الأولى، 1424هـ/2004م"
 ---
 ## المجلد الأول

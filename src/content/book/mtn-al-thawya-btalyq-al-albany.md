@@ -4,7 +4,7 @@ status: published
 published_at: 2026-06-25
 person: al-thawy
 kind: متن
-topics: ["aam-other"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "الثانية، 1414 هـ"
 ---
 ## بسم الله الرحمن الرحيم وبه نستعين

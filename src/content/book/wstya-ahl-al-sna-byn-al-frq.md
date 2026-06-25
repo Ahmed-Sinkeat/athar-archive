@@ -3,7 +3,7 @@ title: "وسطية أهل السنة بين الفرق"
 status: published
 published_at: 2026-06-25
 person: mhmd-ba-krym-mhmd-ba-abd-al-lh
-topics: ["aam-other"]
+topics: ["al-firaq-war-rudud"]
 edition: "الأولى 1415هـ-1994م"
 ---
 ## مقدمة

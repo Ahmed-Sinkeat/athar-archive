@@ -3,7 +3,7 @@ title: "التصريح بما تواتر في نزول المسيح"
 status: published
 published_at: 2026-06-25
 person: al-kshmyry
-topics: ["aam-other"]
+topics: ["al-samiyyat"]
 edition: "الطبعة الثالثة - 1401هـ - 1981 م"
 description: "بتحقيق عبد الفتاح أبو غدة"
 ---

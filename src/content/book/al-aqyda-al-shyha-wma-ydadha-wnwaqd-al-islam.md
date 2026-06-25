@@ -4,7 +4,7 @@ status: published
 published_at: 2026-06-25
 person: abn-baz
 kind: متن
-topics: ["aam-other"]
+topics: ["al-aqeedah-al-aamah", "tahwid-al-ibada"]
 ---
 [
 

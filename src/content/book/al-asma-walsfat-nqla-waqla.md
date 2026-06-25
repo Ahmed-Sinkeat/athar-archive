@@ -3,7 +3,7 @@ title: "الأسماء والصفات نقلا وعقلا"
 status: published
 published_at: 2026-06-25
 person: al-shnqyty-mhmd-al-amyn
-topics: ["aam-other"]
+topics: ["al-asma-was-sifat"]
 edition: "السنة الخامسة، العدد الرابع، ربيع ثاني 1393هـ، مايو 1973م"
 ---
 ## الأسماء والصفات نقلاً وعقلاً
