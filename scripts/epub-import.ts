@@ -122,6 +122,11 @@ const SECTION_TOPIC_MAP: Array<{ pattern: RegExp; topic: string; subject: string
   { pattern: /نحو|صرف|بلاغة|لغة|عربية|الآجرومية|ألفية ابن مالك/u, topic: "al-nahw-al-muyassar", subject: "nahw" },
   { pattern: /تفسير|علوم القرآن|قراءات|تجويد/u,           topic: "tafsir-al-quran",   subject: "quran" },
   { pattern: /حديث|مصطلح|رجال|سند|تخريج|علل|مسانيد|موطأ/u, topic: "mustalah-al-hadith", subject: "hadith" },
+  { pattern: /فقه حنبلي|حنابلة/u,                           topic: "fiqh-hanbali",      subject: "fiqh" },
+  { pattern: /فقه مالكي|مالكية/u,                           topic: "fiqh-maliki",       subject: "fiqh" },
+  { pattern: /فقه شافعي|شافعية/u,                           topic: "fiqh-shafii",       subject: "fiqh" },
+  { pattern: /فقه حنفي|حنفية/u,                             topic: "fiqh-hanafi",       subject: "fiqh" },
+  { pattern: /فقه مقارن|خلاف عالي/u,                        topic: "fiqh-muqaran",      subject: "fiqh" },
   { pattern: /فقه|أصول الفقه|الرحبية|الفرائض|المعاملات/u,   topic: "usul-al-fiqh",      subject: "fiqh" },
   { pattern: /تراجم|طبقات|سير|وفيات|رجال/u,                topic: "tarajim-al-ulama",  subject: "tarajim" },
 ];
