@@ -86,7 +86,7 @@ const cleanInline = (s: string) => decode(stripTags(s)).replace(/[ \t]+/g, " ").
 // ─────────────────────────────────────────────
 // Poem titles that Shamela exports as books but are actually منظومات.
 // Signal: title contains نونية، منظومة، ألفية، قصيدة، أرجوزة، لامية، دالية، بائية، رائية، ميمية
-const POEM_TITLE_RE = /منظومة|نونية|ألفية|قصيدة|أرجوزة|لامية|دالية|بائية|رائية|ميمية|مقصورة/u;
+const POEM_TITLE_RE = /(^|\s)(منظومة|نونية|ألفية|قصيدة|أرجوزة|لامية|دالية|بائية|رائية|ميمية|مقصورة)(\s|$)/u;
 // Fraction of body lines that must look like verses to auto-classify as poem
 const POEM_VERSE_THRESHOLD = 0.35;
 
