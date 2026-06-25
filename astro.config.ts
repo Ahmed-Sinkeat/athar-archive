@@ -1,7 +1,15 @@
 import { defineConfig } from "astro/config";
+import cloudflare from "@astrojs/cloudflare";
 
 export default defineConfig({
+  // static by default; reading routes opt into on-demand via `export const prerender = false`.
+  // The Cloudflare adapter emits the Worker that renders + edge-caches those routes.
   output: "static",
+  // prerenderEnvironment: "node" — prerender static routes in Node at build time so
+  // they can still readBody() book/poem/article text from disk (fmLoader stores only
+  // filePath). The default "workerd" prerender has no fs. On-demand routes still run
+  // in workerd at runtime and read content via the ASSETS binding instead.
+  adapter: cloudflare({ prerenderEnvironment: "node" }),
   // TEMPORARY: live workers.dev host (sitemap/RSS absolute URLs). Flip to
   // https://ahlalathar.com when the custom domain goes live. Mirror in ahlalathar.config.ts.
   site: "https://athar-archive.ahmedsinkeat2002.workers.dev",

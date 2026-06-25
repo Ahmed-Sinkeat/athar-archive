@@ -840,17 +840,6 @@ html[data-theme="dark"] ::highlight(aa-find)    { background-color: rgba(255, 15
 .chap-chip-ks { border-style: dashed; color: var(--verdigris); }
 .chap-chip-ks:hover { border-color: var(--verdigris); border-style: solid; }
 
-/* --- book chapter accordion --- */
-.book-accordion { border-block-start: 1px solid var(--rule); margin-block-start: 8px; }
-.book-chap-item { border-block-end: 1px solid var(--rule); }
-.book-chap-sum { display: flex; align-items: center; gap: 10px; padding: 13px 0; cursor: pointer; font-size: 1.05rem; font-weight: 600; list-style: none; }
-.book-chap-sum::-webkit-details-marker { display: none; }
-.book-chap-sum::before { content: "+"; font-weight: 700; color: var(--accent); font-size: 1.1em; flex-shrink: 0; }
-.book-chap-item[open] .book-chap-sum::before { content: "−"; }
-.book-chap-open { font-family: var(--font-ui); font-size: 0.82rem; color: var(--accent); margin-inline-start: auto; text-decoration: none; flex-shrink: 0; opacity: 0.75; }
-.book-chap-open:hover { opacity: 1; }
-.book-chap-body { padding-block: 8px 24px; }
-
 /* --- معجم list --- */
 .mujam-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0; border-block-start: 1px solid var(--rule); }
 .mujam-item { display: flex; align-items: baseline; gap: 14px; padding: 11px 0; border-block-end: 1px solid var(--rule); }

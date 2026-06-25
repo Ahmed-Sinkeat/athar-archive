@@ -27,9 +27,9 @@ function main() {
     }
   }
 
-  const out = path.resolve("dist/_redirects");
+  const out = path.resolve("dist/client/_redirects"); // adapter asset root
   fs.writeFileSync(out, lines.join("\n") + (lines.length ? "\n" : ""), "utf-8");
-  console.log(`✓ wrote ${lines.length} redirect(s) → dist/_redirects`);
+  console.log(`✓ wrote ${lines.length} redirect(s) → dist/client/_redirects`);
 }
 
 main();

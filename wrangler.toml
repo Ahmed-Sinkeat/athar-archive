@@ -1,5 +1,9 @@
 name = "athar-archive"
-compatibility_date = "2024-09-23"
+# main + the ASSETS binding + assets directory are supplied by @astrojs/cloudflare
+# (see its config customizer). Setting main here to the built worker breaks the build
+# because the Cloudflare vite-plugin validates it before the worker exists.
+compatibility_date = "2025-01-01"
+compatibility_flags = [ "nodejs_compat" ]
 
-[assets]
-directory = "./dist"
+[observability]
+enabled = true

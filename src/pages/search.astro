@@ -1,176 +1,50 @@
 ---
 import Base from "../layouts/Base.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
-// Static client-side search via Pagefind (index built post-`astro build`).
-// Results are noindex (FR-S-04/06); no server, no keys (SEC-01).
+import { config } from "../../ahlalathar.config.js";
+// Search delegates to Google site search. Pagefind was removed: book/lesson bodies
+// are now on-demand and never in the build, so a static index can't see them. Google
+// crawls the on-demand pages (they're in sitemap.xml). Results open on Google. No
+// server, no keys (SEC-01); noindex (FR-S-04/06).
+const host = new URL(config.siteUrl).host;
 ---
 <Base title="البحث" activeNav="home" noindex>
   <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "البحث" }]} />
   <div class="wrap-mid uf5db21c" >
     <h1 class="page-title">البحث</h1>
-    <p class="page-intro">ابحثْ في المتون والمنظومات والدروس والفوائد والمقالات. يعملُ البحثُ بلا خادمٍ، وبفهرسٍ ثابتٍ يُبنى مع الموقع.</p>
+    <p class="page-intro">ابحثْ في المتون والمنظومات والدروس والفوائد والمقالات. تُفتَح النتائجُ في Google.</p>
 
     <div class="u7fc16fa">
       <div class="u6371093">
-        <input id="q" type="search" autocomplete="off" placeholder="ابحث…" class="u38ae86c" />
+        <input id="q" type="search" autocomplete="off" placeholder="ابحث…" class="u38ae86c" data-host={host} />
       </div>
     </div>
-
-    <div id="scopebar" class="chip-row u86de7ac"></div>
-    <div id="filters" class="chip-row u86de7ac" ></div>
-    <div id="status" class="faint u608848d" ></div>
-    <div id="results" class="u3f99027"></div>
+    <div id="scope-note" class="faint u608848d" ></div>
+    <div class="u86de7ac"><button id="go" class="btn btn-accent">بحث في Google ↗</button></div>
 
     <noscript>
-      <p class="faint u2517a51" >يحتاجُ البحثُ إلى تفعيل JavaScript. يمكنك التصفّحُ عبر <a href="/books" class="ua805525">الكتب</a> و<a href="/poems" class="ua805525">المنظومات</a> و<a href="/subjects" class="ua805525">الموضوعات</a>.</p>
+      <p class="faint u2517a51" >للبحث فعِّلْ JavaScript، أو تصفّحْ عبر <a href="/books" class="ua805525">الكتب</a> و<a href="/poems" class="ua805525">المنظومات</a> و<a href="/subjects" class="ua805525">الموضوعات</a>.</p>
     </noscript>
   </div>
 
   <script is:inline data-astro-rerun>
-    (async () => {
-      const LABEL = { poem: "منظومة", book: "كتاب", series: "سلسلة", lesson: "درس", person: "عَلَم", subject: "تصنيف", topic: "موضوع", benefit: "فائدة", article: "مقالة", question: "مسائل" };
+    (() => {
       const input = document.getElementById("q");
-      const results = document.getElementById("results");
-      const status = document.getElementById("status");
-      const filtersEl = document.getElementById("filters");
-      const scopeEl = document.getElementById("scopebar");
-      const SCOPE_TYPES = ["book", "poem", "lesson", "question", "benefit", "article"];
+      if (!input) return;
+      const host = input.dataset.host;
       const params = new URLSearchParams(location.search);
-      const list = (key) => (params.get(key) || "").split(",").map((s) => s.trim()).filter(Boolean);
-
-      // Fixed scope carried in from a section / reader / person page.
-      const scope = {
-        type: params.get("scope"),
-        id: params.get("in"),
-        label: params.get("label"),
+      const label = params.get("label"); // optional scope hint carried from a section/reader page
+      if (label) document.getElementById("scope-note").textContent = `سياق: ${label}`;
+      const go = () => {
+        const terms = input.value.trim();
+        if (!terms) return;
+        const q = "site:" + host + " " + (label ? label + " " : "") + terms;
+        window.open("https://www.google.com/search?q=" + encodeURIComponent(q), "_blank", "noopener");
       };
-      // Multi-value selections from the top-bar filter (OR within each key).
-      const typesParam = list("types");
-      const personParam = list("person");   // عَلَم names (also a person-archive link, then label is set)
-      const subjectParam = list("subject");
-      const hasScope = !!(scope.type || scope.id || typesParam.length || personParam.length || subjectParam.length);
-
-      // Facet selections (narrow within current results).
-      let activeType = null;
-      let activePerson = null;
-
-      if (hasScope) {
-        const what = scope.id ? (scope.label || "هذا المتن")
-          : personParam.length ? (scope.label && personParam.length === 1 ? `أرشيف ${scope.label}` : personParam.join("، "))
-          : subjectParam.length ? subjectParam.join("، ")
-          : typesParam.length ? typesParam.map((t) => LABEL[t] || t).join("، ")
-          : (LABEL[scope.type] || scope.type);
-        input.placeholder = `ابحث ضمن ${what}…`;
-      }
-
-      let pagefind;
-      try {
-        pagefind = await import("/pagefind/pagefind.js");
-        if (pagefind.init) await pagefind.init();
-      } catch (e) {
-        status.textContent = "سيُفعَّل البحثُ بعد بناء الموقع (الفهرس يُولَّد مع البناء).";
-        return;
-      }
-
-      function esc(s) { const d = document.createElement("div"); d.textContent = s; return d.innerHTML; }
-      function toAr(n) { return String(n).replace(/[0-9]/g, (d) => "٠١٢٣٤٥٦٧٨٩"[+d]); }
-      // Pagefind: a single value or an array (array = match any of the values).
-      const oneOrMany = (arr) => (arr.length === 1 ? arr[0] : arr);
-
-      function chip(label, pressed, onClick, cls) {
-        const b = document.createElement("button");
-        b.className = "chip" + (cls ? " " + cls : "");
-        b.textContent = label;
-        b.setAttribute("aria-pressed", String(pressed));
-        b.onclick = onClick;
-        return b;
-      }
-
-      function buildFilters() {
-        const f = {};
-        if (scope.type) f.type = scope.type;
-        else if (typesParam.length) f.type = oneOrMany(typesParam);
-        if (personParam.length) f.person = oneOrMany(personParam);
-        if (subjectParam.length) f.subject = oneOrMany(subjectParam);
-        if (scope.id) f.id = scope.id;
-        if (activeType) f.type = activeType;
-        if (activePerson) f.person = activePerson;
-        return Object.keys(f).length ? f : undefined;
-      }
-
-      function renderFilters(data) {
-        filtersEl.innerHTML = "";
-        if (hasScope) {
-          const parts = [];
-          if (scope.id) parts.push(`ضمن: ${scope.label || "هذا المتن"}`);
-          if (personParam.length) parts.push(`الأعلام: ${scope.label && personParam.length === 1 ? scope.label : personParam.join("، ")}`);
-          if (typesParam.length) parts.push(`النوع: ${typesParam.map((t) => LABEL[t] || t).join("، ")}`);
-          else if (scope.type) parts.push(`النوع: ${LABEL[scope.type] || scope.type}`);
-          if (subjectParam.length) parts.push(`الموضوع: ${subjectParam.join("، ")}`);
-          filtersEl.appendChild(chip(`${parts.join(" · ")} ✕`, true, () => {
-            location.href = "/search" + (input.value ? "?q=" + encodeURIComponent(input.value) : "");
-          }, "chip-scope"));
-        }
-        if (!personParam.length && !scope.id) {
-          const persons = [...new Set(data.flatMap((d) => d.filters?.person || []))];
-          if (persons.length > 1 || activePerson) {
-            filtersEl.appendChild(chip("كل الأعلام", !activePerson, () => { activePerson = null; run(input.value); }));
-            persons.forEach((p) => filtersEl.appendChild(chip(p, activePerson === p, () => { activePerson = p; run(input.value); })));
-          }
-        }
-      }
-
-      // Persistent type filter — always visible (even before searching) so the
-      // user can pick a نوع then search within it. Hidden when a fixed scope
-      // (from a section page) already pins the type.
-      function renderScope() {
-        if (!scopeEl) return;
-        scopeEl.innerHTML = "";
-        if (scope.type || scope.id || typesParam.length) return; // type already fixed
-        scopeEl.appendChild(chip("الكل", !activeType, () => { activeType = null; renderScope(); run(input.value); }));
-        SCOPE_TYPES.forEach((tp) =>
-          scopeEl.appendChild(chip(LABEL[tp] || tp, activeType === tp, () => {
-            activeType = activeType === tp ? null : tp; renderScope(); run(input.value);
-          })),
-        );
-      }
-
-      async function run(query) {
-        const q = (query || "").trim();
-        const url = new URL(location.href);
-        if (q) url.searchParams.set("q", q); else url.searchParams.delete("q");
-        history.replaceState(null, "", url);
-        results.innerHTML = "";
-        if (!q) { status.textContent = ""; renderFilters([]); return; }
-
-        const filters = buildFilters();
-        const search = await pagefind.search(q, filters ? { filters } : undefined);
-        const data = await Promise.all(search.results.slice(0, 30).map((r) => r.data()));
-
-        status.textContent = data.length ? `${toAr(data.length)} نتيجة لـ «${q}»` : `لا نتائج لـ «${q}».`;
-        renderFilters(data);
-
-        for (const d of data) {
-          const type = (d.filters?.type || [])[0];
-          const a = document.createElement("a");
-          a.href = d.url;
-          a.className = "latest-row";
-          a.style.alignItems = "flex-start";
-          a.innerHTML =
-            `<span class="pill tag-accent uac6ea07" >${LABEL[type] || ""}</span>` +
-            `<span class="u97445a8"><span class="latest-name u2a1b75c" >${esc(d.meta?.title || "")}</span>` +
-            `<span class="faint ue24357e" data-ar >${d.excerpt}</span></span>`;
-          results.appendChild(a);
-        }
-      }
-
-      let t;
-      input.addEventListener("input", () => { clearTimeout(t); t = setTimeout(() => run(input.value), 180); });
-
-      renderScope();
+      document.getElementById("go").addEventListener("click", go);
+      input.addEventListener("keydown", (e) => { if (e.key === "Enter") go(); });
       const initial = params.get("q");
-      if (initial) { input.value = initial; run(initial); }
-      else if (hasScope) { renderFilters([]); }
+      if (initial) input.value = initial;
       input.focus();
     })();
   </script>
