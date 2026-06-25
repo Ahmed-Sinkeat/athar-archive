@@ -5,7 +5,7 @@ import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import EntityCard from "../../components/EntityCard.astro";
 import Prose from "../../components/Prose.astro";
 import Relations from "../../components/Relations.astro";
-import { isPub, loadGraph, personNameMap, backlinksList } from "../../lib/site";
+import { isPub, loadGraph, personNameMap, backlinksList, type BacklinkItem } from "../../lib/site";
 import { hrefFor, labelFor, isMatn, eraLabel, eraHref } from "../../lib/display";
 import { personLd } from "../../lib/structured-data";
 
@@ -20,11 +20,42 @@ export async function getStaticPaths() {
       .map((w) => ({ collection: w.collection, id: w.id, title: w.data.title, series: w.data.series, kind: labelFor(w.collection, w.data), matn: isMatn(w.collection, w.data) }));
     // works are shown above; the panel surfaces only the rest (mentions, etc.)
     const backlinks = backlinksList(entry, graph, names).filter((b) => b.relation !== "من مؤلَّفاته");
-    return { params: { slug: entry.id }, props: { entry, works, backlinks } };
+
+    // Semi-link: count plain-text mentions of also_known_as aliases (not already wikilinked)
+    const aliases: string[] = (entry.data.also_known_as as string[] | undefined) ?? [];
+    if (aliases.length > 0) {
+      const wikilinkIds = new Set(
+        graph.backlinksFor("person", entry.id)
+          .filter((b) => b.relation === "إشارة")
+          .map((b) => `${b.entry.collection}:${b.entry.id}`),
+      );
+      let mentionCount = 0;
+      for (const e of graph.all) {
+        if (!isPub(e) || !e.body) continue;
+        if (wikilinkIds.has(`${e.collection}:${e.id}`)) continue;
+        if (aliases.some((a) => e.body!.includes(a))) mentionCount++;
+      }
+      if (mentionCount > 0) {
+        const q = encodeURIComponent(aliases[0]);
+        backlinks.push({
+          href: `/search?q=${q}&label=${q}`,
+          title: `ذُكر في ${mentionCount} موضعًا`,
+          kind: "بحث",
+          relation: "إشارات غير مُرتبطة",
+        });
+      }
+    }
+
+    const shuyukh = graph.shuyukhFor(entry.id).filter(isPub)
+      .map((p) => ({ id: p.id, title: p.data.title as string }));
+    const talamidhah = graph.talamidhaFor(entry.id).filter(isPub)
+      .map((p) => ({ id: p.id, title: p.data.title as string }));
+
+    return { params: { slug: entry.id }, props: { entry, works, backlinks, shuyukh, talamidhah } };
   });
 }
 
-const { entry, works, backlinks } = Astro.props;
+const { entry, works, backlinks, shuyukh, talamidhah } = Astro.props;
 const meta = [entry.data.born && `و. ${entry.data.born}`, entry.data.died && `ت. ${entry.data.died}`, entry.data.location]
   .filter(Boolean)
   .join(" · ");
@@ -39,14 +70,33 @@ const jsonLd = personLd({
   <div class="wrap-mid uf5db21c" >
     <h1 class="page-title">{entry.data.title}</h1>
     {meta && <div class="reader-byline u3606c53" >{meta}</div>}
-    {(entry.data.tabaqa || entry.data.era || (entry.data as any).aqeedah) && (
+    {(entry.data.tabaqa || entry.data.era || (entry.data as any).aqeedah || (entry.data as any).rutba) && (
       <div class="meta-pills">
         {entry.data.tabaqa && <span class="pill">{entry.data.tabaqa}</span>}
+        {(entry.data as any).rutba && <span class="pill tag-accent">{(entry.data as any).rutba}</span>}
         {(entry.data as any).aqeedah && <span class="pill tag-accent">{(entry.data as any).aqeedah}</span>}
         {entry.data.era && <a class="pill tag-verdigris pill-link" href={eraHref(entry.data.era)}>{eraLabel(entry.data.era)}</a>}
       </div>
     )}
     {entry.body?.trim() && <div class="ud75d1ed"><Prose body={entry.body} /></div>}
+
+    {shuyukh.length > 0 && (
+      <div class="ud34d921">
+        <div class="section-label">شيوخه</div>
+        <ul class="narrator-list">
+          {shuyukh.map((p) => <li><a href={`/person/${p.id}`}>{p.title}</a></li>)}
+        </ul>
+      </div>
+    )}
+
+    {talamidhah.length > 0 && (
+      <div class="ud34d921">
+        <div class="section-label">تلاميذه</div>
+        <ul class="narrator-list">
+          {talamidhah.map((p) => <li><a href={`/person/${p.id}`}>{p.title}</a></li>)}
+        </ul>
+      </div>
+    )}
 
     {works.length > 0 && (
       <div class="ud34d921">

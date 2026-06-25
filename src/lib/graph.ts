@@ -50,6 +50,8 @@ export interface Graph {
   topicsBySubject(subjectId: string): ContentEntry[];
   materialsBySubject(subjectId: string): ContentEntry[];
   materialsByPerson(personId: string): ContentEntry[];
+  shuyukhFor(personId: string): ContentEntry[];     // شيوخ: persons this narrator narrates from
+  talamidhaFor(personId: string): ContentEntry[];   // تلاميذ: persons who narrate from this one
   lessonsBySeries(seriesId: string): ContentEntry[];
 
   annotationsForTarget(type: string, id: string): ContentEntry[];
@@ -69,6 +71,8 @@ export function buildGraph(entries: ContentEntry[]): Graph {
   const personIndex = new Map<string, ContentEntry[]>();
   const subjectTopics = new Map<string, ContentEntry[]>();
   const seriesLessons = new Map<string, ContentEntry[]>();
+
+  const narratorStudents = new Map<string, string[]>(); // teacherSlug → [studentSlugs]
 
   const annotationsByTarget = new Map<string, ContentEntry[]>();
   const audioBySource = new Map<string, ContentEntry[]>();
@@ -100,6 +104,13 @@ export function buildGraph(entries: ContentEntry[]): Graph {
     }
 
     switch (e.collection) {
+      case "person":
+        for (const teacher of ((e.data.narrates_from as string[] | undefined) ?? [])) {
+          const list = narratorStudents.get(teacher) ?? [];
+          list.push(e.id);
+          narratorStudents.set(teacher, list);
+        }
+        break;
       case "topic":
         if (e.data.subject) push(subjectTopics, str(e.data.subject), e);
         break;
@@ -194,6 +205,13 @@ export function buildGraph(entries: ContentEntry[]): Graph {
     topicsBySubject,
     materialsBySubject,
     materialsByPerson: (personId: string) => personIndex.get(personId) ?? [],
+    shuyukhFor: (personId: string) => {
+      const entry = getById("person", personId);
+      const slugs = (entry?.data.narrates_from as string[] | undefined) ?? [];
+      return slugs.map((s) => getById("person", s)).filter(Boolean) as ContentEntry[];
+    },
+    talamidhaFor: (personId: string) =>
+      (narratorStudents.get(personId) ?? []).map((s) => getById("person", s)).filter(Boolean) as ContentEntry[],
     lessonsBySeries,
     annotationsForTarget: (type, id) => annotationsByTarget.get(key(type, id)) ?? [],
     audioForSource: (type, id) => audioBySource.get(key(type, id)) ?? [],

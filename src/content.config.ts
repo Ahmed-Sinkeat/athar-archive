@@ -46,6 +46,10 @@ const person = defineCollection({
     also_known_as: z.array(z.string()).optional(),
     // العقيدة — used in شبكة المعرفة scholar comparison dashboard.
     aqeedah: z.string().optional(),
+    // جرح وتعديل verdict (e.g. "ثقة", "صدوق", "ضعيف")
+    rutba: z.string().optional(),
+    // curated شيوخ — slugs of persons this narrator narrates from; تلاميذ derived in-graph
+    narrates_from: z.array(slug).optional(),
   }),
 });
 

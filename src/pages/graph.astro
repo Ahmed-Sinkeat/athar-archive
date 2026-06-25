@@ -34,6 +34,12 @@ for (const e of graph.all) {
   for (const t of ((e.data.topics as string[]) ?? [])) addLink(id, nid("topic", t));
   if (e.collection === "topic" && e.data.subject) addLink(id, nid("subject", e.data.subject as string));
   if (e.collection === "series" && e.data.source_type && e.data.source_id) addLink(id, nid(e.data.source_type as string, e.data.source_id as string));
+  // narrator edges: person → شيوخ
+  if (e.collection === "person") {
+    for (const teacher of ((e.data.narrates_from as string[] | undefined) ?? [])) {
+      addLink(id, nid("person", teacher));
+    }
+  }
 }
 
 // counts + legend/filter chips (color must mirror scripts/graph.ts COLORS)
