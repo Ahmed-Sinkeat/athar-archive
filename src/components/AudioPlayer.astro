@@ -20,7 +20,7 @@ const meta = (s: Source) =>
   [s.duration, s.sizeBytes ? `${toArabicDigits((s.sizeBytes / 1_048_576).toFixed(1))} م.ب` : null].filter(Boolean).join(" · ");
 ---
 {cur && (
-  <figure class="audio" data-pagefind-ignore data-audio>
+  <figure class="audio" data-audio>
     <figcaption class="audio-caption">
       <span>{label}</span>
       {/* multiple recitations → a small native dropdown (the arrow) to switch; single → just metadata */}

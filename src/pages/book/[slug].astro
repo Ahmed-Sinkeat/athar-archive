@@ -25,12 +25,14 @@ export async function getStaticPaths() {
     const audios = graph.audioForSource("book", entry.id)
       .filter((x) => x.data.status === "published")
       .map((au) => ({ url: au.data.url, format: au.data.format, duration: au.data.duration ?? null, sizeBytes: au.data.size_bytes ?? null, label: au.data.title }));
-    paths.push({ params: { slug: entry.id }, props: { entry, a, body: a.chunked ? undefined : body, byAnchor, audios, author: names.get(entry.data.person), subjects: subjectTitlesFor(entry.data.topics, graph), related: relatedTo(entry, graph, names) } });
+    // Phase 2: chunked books → store a light TOC (titles+slugs) only; the body and
+    // its annotations live on the on-demand chapter pages, never in this landing's HTML.
+    paths.push({ params: { slug: entry.id }, props: { entry, chunked: a.chunked, toc: a.chapters.map((c) => ({ title: c.title, slug: c.slug })), body: a.chunked ? undefined : body, byAnchor: a.chunked ? {} : byAnchor, audios, author: names.get(entry.data.person), subjects: subjectTitlesFor(entry.data.topics, graph), related: relatedTo(entry, graph, names) } });
   }
   return paths;
 }
 
-const { entry, a, body, byAnchor, audios, author, subjects, related } = Astro.props;
+const { entry, chunked, toc, body, byAnchor, audios, author, subjects, related } = Astro.props;
 const KIND_SLUG: Record<string, string> = { شرح: "sharh", حاشية: "hashiya", تخريج: "takhrij", إعراب: "iraab" };
 const anchors = Object.entries(byAnchor);
 const path = `/book/${entry.id}`;
@@ -59,28 +61,14 @@ const jsonLd = bookLd({
 
     <div class="rule-short"></div>
 
-    {a.chunked ? (
-      <>
-        <!-- compact chapter chip bar -->
-        <div class="chap-bar">
-          {a.chapters.map((c) => (
-            <a class="chap-chip" href={`#chap-${c.slug}`}>{c.title}</a>
-          ))}
-          <a class="chap-chip chap-chip-ks" href="/benefits">كُناشة</a>
-        </div>
-        <!-- accordion: one <details> per chapter, all content in DOM -->
-        <div class="book-accordion">
-          {a.chapters.map((c) => (
-            <details class="book-chap-item" id={`chap-${c.slug}`}>
-              <summary class="book-chap-sum">
-                {c.title}
-                <a class="book-chap-open" href={hrefFor("book", entry.id, { chapter: c.slug })} onclick="event.stopPropagation()">فتح ←</a>
-              </summary>
-              <div class="book-chap-body"><Prose body={c.content} /></div>
-            </details>
-          ))}
-        </div>
-      </>
+    {chunked ? (
+      <!-- light TOC: links to the on-demand chapter pages; no body in this HTML -->
+      <nav class="toc-box has-current" aria-label="فهرس الفصول">
+        <div class="toc-label">فصول الكتاب · {toArabicDigits(toc.length)} فصل</div>
+        {toc.map((c) => (
+          <a href={hrefFor("book", entry.id, { chapter: c.slug })}>{c.title}</a>
+        ))}
+      </nav>
     ) : isMatn("book", entry.data) ? (
       <>
         <StudyBar prose />

@@ -1,46 +1,45 @@
 ---
-import { getCollection } from "astro:content";
+// On-demand (migration plan, Phase 3): instead of pre-building every lesson, the
+// Worker resolves the series + lesson param, reads the one lesson .md from ASSETS,
+// renders, and the middleware edge-caches it. Prep for the ~2k lessons coming.
+export const prerender = false;
+
+import { getEntry } from "astro:content";
 import Base from "../../../layouts/Base.astro";
 import Breadcrumbs from "../../../components/Breadcrumbs.astro";
 import Prose from "../../../components/Prose.astro";
 import AudioPlayer from "../../../components/AudioPlayer.astro";
 import { isPub, loadGraph, personNameMap } from "../../../lib/site";
 import { parseLesson } from "../../../lib/chapters";
-import { readBody } from "../../../lib/read-body";
+import { loadContentBody, notFound } from "../../../lib/book-asset";
 import { hrefFor, lessonParam, toArabicDigits } from "../../../lib/display";
 import { lessonLd } from "../../../lib/structured-data";
 
-export async function getStaticPaths() {
-  const seriesList = (await getCollection("series")).filter(isPub);
-  const graph = await loadGraph();
-  const names = await personNameMap();
-  const paths: any[] = [];
-  for (const s of seriesList) {
-    const lessons = graph.lessonsBySeries(s.id).filter(isPub);
-    for (let i = 0; i < lessons.length; i++) {
-      const lesson = lessons[i];
-      const lessonBody = await readBody(lesson);
-      const headings = parseLesson(lessonBody).headings.filter((h) => h.depth === 2);
-      const audioEntry = graph.audioForSource("lesson", lesson.id)[0];
-      const benefits = graph.benefitsForSource("lesson", lesson.id).filter(isPub).map((b) => b.data.title);
-      const prev = lessons[i - 1];
-      const next = lessons[i + 1];
-      const lite = (e: any) => (e ? { param: lessonParam(e.id, s.id), title: e.data.title, order: e.data.order } : null);
-      paths.push({
-        params: { slug: s.id, lesson: lessonParam(lesson.id, s.id) },
-        props: {
-          series: s, lesson, lessonBody, headings, benefits,
-          audio: audioEntry ? { url: audioEntry.data.url, format: audioEntry.data.format, duration: audioEntry.data.duration ?? null, sizeBytes: audioEntry.data.size_bytes ?? null } : null,
-          prev: lite(prev), next: lite(next),
-          idx: i + 1, total: lessons.length, author: names.get(s.data.person),
-        },
-      });
-    }
-  }
-  return paths;
-}
+const { slug, lesson: lessonSlug } = Astro.params as { slug: string; lesson: string };
 
-const { series, lesson, lessonBody, headings, benefits, audio, prev, next, idx, total, author } = Astro.props;
+const series = await getEntry("series", slug);
+if (!series || !isPub(series)) return notFound();
+
+// ponytail: full graph build per cold request (lessonsBySeries + benefits/audio
+// lookups); fine at current scale, edge-cached. Scope to getCollection if it drags.
+const graph = await loadGraph();
+const names = await personNameMap();
+const lessons = graph.lessonsBySeries(slug).filter(isPub);
+const i = lessons.findIndex((l) => lessonParam(l.id, slug) === lessonSlug);
+if (i < 0) return notFound();
+const lesson = lessons[i];
+
+const lessonBody = await loadContentBody("lesson", lesson.id);
+if (lessonBody == null) return notFound();
+
+const headings = parseLesson(lessonBody).headings.filter((h) => h.depth === 2);
+const audioEntry = graph.audioForSource("lesson", lesson.id)[0];
+const audio = audioEntry ? { url: audioEntry.data.url, format: audioEntry.data.format, duration: audioEntry.data.duration ?? null, sizeBytes: audioEntry.data.size_bytes ?? null } : null;
+const benefits = graph.benefitsForSource("lesson", lesson.id).filter(isPub).map((b) => b.data.title);
+const lite = (e: any) => (e ? { param: lessonParam(e.id, slug), title: e.data.title, order: e.data.order } : null);
+const prev = lite(lessons[i - 1]);
+const next = lite(lessons[i + 1]);
+const idx = i + 1, total = lessons.length, author = names.get(series.data.person);
 const seriesPath = hrefFor("series", series.id);
 const path = `/series/${series.id}/${lessonParam(lesson.id, series.id)}`;
 const jsonLd = lessonLd({

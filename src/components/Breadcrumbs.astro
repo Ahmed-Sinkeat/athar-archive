@@ -9,7 +9,7 @@ interface Props {
 }
 const { items, width = "wrap-mid" } = Astro.props;
 ---
-<nav class:list={["crumb", width]} aria-label="مسار التنقّل" data-pagefind-ignore>
+<nav class:list={["crumb", width]} aria-label="مسار التنقّل">
   {
     items.map((c, i) => (
       <>

@@ -7,7 +7,9 @@ import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
 
-const DIST = path.resolve("dist");
+// dist/client is the asset root the @astrojs/cloudflare adapter serves (and where
+// it already wrote a _headers with immutable Cache-Control for /_astro/*).
+const DIST = path.resolve("dist/client");
 
 function walk(dir) {
   return fs.readdirSync(dir).flatMap((f) => {
@@ -33,8 +35,8 @@ for (const file of walk(DIST)) {
 const scriptHashes = [...hashes].sort().join(" ");
 const csp = [
   "default-src 'self'",
-  // scripts: self + pagefind wasm + the hashed inline scripts (no 'unsafe-inline')
-  `script-src 'self' 'wasm-unsafe-eval' ${scriptHashes}`,
+  // scripts: self + the hashed inline scripts (no 'unsafe-inline')
+  `script-src 'self' ${scriptHashes}`,
   // styles: external only (no inline <style> / no style= attrs after the sweep).
   // JS reading-prefs use CSSOM (.style.setProperty) which CSP does not govern.
   "style-src 'self' https://fonts.googleapis.com",
@@ -53,10 +55,23 @@ const out = `/*
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: geolocation=(), microphone=(), camera=()
   Content-Security-Policy: ${csp}
-
-/pagefind/*
-  Cache-Control: public, max-age=86400
 `;
 
-fs.writeFileSync(path.join(DIST, "_headers"), out, "utf-8");
-console.log(`✓ wrote dist/_headers — CSP with ${hashes.size} inline-script hash(es)`);
+// Keep the adapter's existing rules (e.g. /_astro/* immutable Cache-Control) and
+// append ours. Different path specificities don't conflict in Cloudflare _headers.
+const headersPath = path.join(DIST, "_headers");
+const existing = fs.existsSync(headersPath) ? fs.readFileSync(headersPath, "utf-8").trimEnd() + "\n\n" : "";
+fs.writeFileSync(headersPath, existing + out, "utf-8");
+
+// _headers only covers static asset responses. On-demand pages (book chapters) are
+// Worker responses, so the middleware applies the same set at runtime — emit it as
+// JSON for the Worker to read via ASSETS. One source of truth for the CSP hashes.
+const runtimeHeaders = {
+  "Content-Security-Policy": csp,
+  "X-Content-Type-Options": "nosniff",
+  "X-Frame-Options": "DENY",
+  "Referrer-Policy": "strict-origin-when-cross-origin",
+  "Permissions-Policy": "geolocation=(), microphone=(), camera=()",
+};
+fs.writeFileSync(path.join(DIST, "_headers.json"), JSON.stringify(runtimeHeaders), "utf-8");
+console.log(`✓ wrote dist/_headers (+_headers.json) — CSP with ${hashes.size} inline-script hash(es)`);

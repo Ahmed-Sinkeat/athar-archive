@@ -1,5 +1,10 @@
 ---
-import { getCollection } from "astro:content";
+// On-demand (migration plan, Phase 1): instead of pre-building ~44k chapter pages,
+// the Worker reads the one book from ASSETS, extracts the one chapter, renders, and
+// the middleware edge-caches the result. Book body never enters the static build.
+export const prerender = false;
+
+import { getEntry } from "astro:content";
 import Base from "../../../layouts/Base.astro";
 import Breadcrumbs from "../../../components/Breadcrumbs.astro";
 import Prose from "../../../components/Prose.astro";
@@ -7,41 +12,38 @@ import StudyBar from "../../../components/StudyBar.astro";
 import { isPub, loadGraph, personNameMap, notesByAnchor } from "../../../lib/site";
 import { markdownToSafeHtml } from "../../../lib/sanitize";
 import { analyzeBook } from "../../../lib/chunk";
-import { readBody } from "../../../lib/read-body";
+import { loadContentBody, notFound } from "../../../lib/book-asset";
 import { hrefFor, labelFor, isMatn } from "../../../lib/display";
 
-export async function getStaticPaths() {
-  const books = (await getCollection("book")).filter(isPub);
-  const graph = await loadGraph();
-  const names = await personNameMap();
-  const paths: any[] = [];
-  for (const entry of books) {
-    const body = await readBody(entry);
-    const a = analyzeBook(body);
-    if (!a.chunked) continue;
-    const byAnchor = notesByAnchor("book", entry.id, graph, names);
-    const tocChapters = a.chapters.map((c) => ({ title: c.title, slug: c.slug }));
-    for (const c of a.chapters) {
-      paths.push({
-        params: { slug: entry.id, chapter: c.slug },
-        props: { entry, chapter: c, byAnchor, author: names.get(entry.data.person), allChapters: tocChapters },
-      });
-    }
-  }
-  return paths;
-}
+const { slug, chapter: chapterSlug } = Astro.params as { slug: string; chapter: string };
 
-const { entry, chapter, byAnchor, author, allChapters } = Astro.props;
+const entry = await getEntry("book", slug);
+if (!entry || !isPub(entry)) return notFound();
+
+const body = await loadContentBody("book", slug);
+if (!body) return notFound();
+
+const a = analyzeBook(body);
+const chapter = a.chunked ? a.chapters.find((c) => c.slug === chapterSlug) : undefined;
+if (!chapter) return notFound();
+
+// ponytail: builds the whole knowledge graph per cold request just to read this
+// book's annotations + author name. Fine at current scale and the result is
+// edge-cached (paid once per chapter). If the per-request build gets slow nearer
+// ~10k entities, scope it to getCollection("annotation") filtered to this target.
+const graph = await loadGraph();
+const names = await personNameMap();
+const byAnchor = notesByAnchor("book", entry.id, graph, names);
+const author = names.get(entry.data.person);
+const allChapters = a.chapters.map((c) => ({ title: c.title, slug: c.slug }));
+
 const KIND_SLUG: Record<string, string> = { شرح: "sharh", حاشية: "hashiya", تخريج: "takhrij", إعراب: "iraab" };
 const phraseAnchors = Object.entries(byAnchor).filter(([, notes]: any) => notes.some((n: any) => n.phrase));
 
-const chIdx = (allChapters as any[]).findIndex((c: any) => c.slug === chapter.slug);
-const prev = (allChapters as any[])[chIdx - 1] ?? null;
-const next = (allChapters as any[])[chIdx + 1] ?? null;
+const chIdx = allChapters.findIndex((c) => c.slug === chapter.slug);
+const prev = allChapters[chIdx - 1] ?? null;
+const next = allChapters[chIdx + 1] ?? null;
 ---
-{/* ponytail: no searchMeta → Base marks this data-pagefind-ignore. Per-chapter
-    pages are excluded from the search index (the book landing page already holds
-    the full text); indexing all ~25k of them OOM-killed Pagefind. */}
 <Base title={`${chapter.title} · ${entry.data.title}`} activeNav="books" searchScope={{ in: entry.id, label: entry.data.title }}>
   <Breadcrumbs
     items={[

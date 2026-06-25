@@ -35,7 +35,6 @@ const chIdx = (allChapters as any[]).findIndex((c: any) => c.slug === chapter.sl
 const prev = (allChapters as any[])[chIdx - 1] ?? null;
 const next = (allChapters as any[])[chIdx + 1] ?? null;
 ---
-{/* ponytail: no searchMeta → data-pagefind-ignore (see book chapter page). */}
 <Base title={`${chapter.title} · ${entry.data.title}`} activeNav="poems" searchScope={{ in: entry.id, label: entry.data.title }}>
   <Breadcrumbs
     items={[
