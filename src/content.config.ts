@@ -269,6 +269,18 @@ const term = defineCollection({
   }),
 });
 
+// --- 16. Quran (المصحف) — 114 surah entries parsed from mushaf epub ---
+
+const quran = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/quran" }),
+  schema: z.object({
+    ...shared,
+    number: z.number().int().min(1).max(114),
+    name: z.string().min(1),       // Arabic name without سورة prefix
+    ayah_count: z.number().int().positive(),
+  }),
+});
+
 // --- export ---
 
 export const collections = {
@@ -287,4 +299,5 @@ export const collections = {
   announcement,
   highlight,
   term,
+  quran,
 };

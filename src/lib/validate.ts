@@ -159,8 +159,8 @@ export function validate(entries: ContentEntry[]): BuildError[] {
       const targetId = str(data.target_id);
       if (!targetType || !targetId) {
         fail(collection, id, "mandatory-relation", `'annotation/${id}' requires both target_type and target_id`);
-      } else if (!["book", "poem"].includes(targetType)) {
-        fail(collection, id, "source-type", `'annotation/${id}' has invalid target_type '${targetType}' — allowed: book, poem`);
+      } else if (!["book", "poem", "quran"].includes(targetType)) {
+        fail(collection, id, "source-type", `'annotation/${id}' has invalid target_type '${targetType}' — allowed: book, poem, quran`);
       } else {
         const target = get(map, targetType, targetId);
         if (!target) {

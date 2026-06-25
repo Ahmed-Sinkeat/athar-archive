@@ -1,0 +1,102 @@
+---
+import { getCollection } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import Relations from "../../components/Relations.astro";
+import { markdownToSafeHtml } from "../../lib/sanitize";
+import { notesByAnchor, loadGraph, personNameMap } from "../../lib/site";
+import { parseBook } from "../../lib/chapters";
+
+export async function getStaticPaths() {
+  const surahs = await getCollection("quran");
+  const graph = await loadGraph();
+  const names = await personNameMap();
+  return surahs.map((entry) => {
+    const body = entry.body ?? "";
+    const byAnchor = notesByAnchor("quran", entry.id, graph, names);
+    const { paragraphs } = parseBook(body);
+    return {
+      params: { surah: entry.id },
+      props: { entry, paragraphs, byAnchor },
+    };
+  });
+}
+
+const { entry, paragraphs, byAnchor } = Astro.props;
+const { data } = entry;
+const surahTitle = `سورة ${data.name}`;
+const path = `/quran/${entry.id}`;
+---
+<Base title={surahTitle} description={`${surahTitle} — ${data.ayah_count} آية`} activeNav="quran">
+  <Breadcrumbs items={[
+    { label: "الرئيسية", href: "/" },
+    { label: "القرآن وعلومه", href: "/quran" },
+    { label: surahTitle },
+  ]} />
+
+  <div class="wrap-matn reading-pad" dir="rtl">
+    <div class="reader-head">
+      <a class="eyebrow pill-link" href="/quran">القرآن وعلومه</a>
+      <h1 class="reader-title">{surahTitle}</h1>
+      <div class="reader-byline faint">{data.ayah_count} آية</div>
+    </div>
+
+    <div class="ayah-list">
+      {paragraphs.map((para) => {
+        const notes = byAnchor[para.id] ?? [];
+        return (
+          <div class="ayah" id={para.id} data-anchor={para.id}>
+            <span class="ayah-num">{para.id}</span>
+            <span class="ayah-text" set:html={markdownToSafeHtml(para.text)} />
+            {notes.length > 0 && (
+              <div class="ayah-notes">
+                {notes.map((n) => (
+                  <div class="ayah-note" data-kind={n.kind}>
+                    <span class="note-kind">{n.kind}</span>
+                    <span set:html={markdownToSafeHtml(n.body)} />
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        );
+      })}
+    </div>
+
+    <Relations backlinks={[]} related={[]} />
+  </div>
+</Base>
+
+<style>
+  .ayah-list { direction: rtl; margin-block: 2rem; }
+  .ayah {
+    display: grid;
+    grid-template-columns: 2rem 1fr;
+    gap: 0.25rem 0.75rem;
+    padding-block: 0.75rem;
+    border-block-end: 1px solid var(--border, #eee);
+    align-items: baseline;
+  }
+  .ayah-num {
+    font-size: 0.75rem;
+    color: var(--fg-muted, #999);
+    text-align: center;
+    padding-block-start: 0.15rem;
+  }
+  .ayah-text { font-size: 1.2rem; line-height: 2; }
+  .ayah-notes { grid-column: 2; margin-block-start: 0.5rem; }
+  .ayah-note {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--fg-muted, #555);
+    padding: 0.4rem 0;
+    border-block-start: 1px dashed var(--border, #ddd);
+  }
+  .note-kind {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--accent, #888);
+    white-space: nowrap;
+  }
+</style>
