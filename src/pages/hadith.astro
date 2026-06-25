@@ -6,12 +6,23 @@ import { personNameMap, loadGraph } from "../lib/site";
 import { hrefFor, labelFor } from "../lib/display";
 import { buildSubjectGroups } from "../lib/browse";
 import { collectionLd } from "../lib/structured-data";
+import { getCollection } from "astro:content";
 
-// الحديث: متونه، تخاريجه، علله وسؤالاته. Numbered-hadith units + grading come
-// in a later phase; for now this is the books carrying genre:حديث.
 const graph = await loadGraph();
 const names = await personNameMap();
 const { groups, uncategorized } = buildSubjectGroups("book", graph, (e) => (e.data as any).genre === "حديث");
+
+// Grading facet: count تخريج annotations that carry a grade
+const allAnnotations = await getCollection("annotation");
+const gradeCounts: Record<string, number> = {};
+for (const ann of allAnnotations) {
+  if ((ann.data as any).kind === "تخريج" && (ann.data as any).grade) {
+    const g = (ann.data as any).grade as string;
+    gradeCounts[g] = (gradeCounts[g] ?? 0) + 1;
+  }
+}
+const gradeOrder = ["صحيح", "حسن", "ضعيف", "موضوع"];
+const grades = gradeOrder.filter((g) => gradeCounts[g]);
 const has = groups.length > 0 || uncategorized.length > 0;
 const card = (it: any) => ({
   href: hrefFor("book", it.id),
@@ -25,6 +36,11 @@ const card = (it: any) => ({
   <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "الحديث" }]} />
   <div class="wrap-mid uf5db21c">
     <h1 class="page-title">الحديث</h1>
+    {grades.length > 0 && (
+      <div class="grade-facet">
+        {grades.map((g) => <span class={`grade grade-${g}`}>{g} ({gradeCounts[g]})</span>)}
+      </div>
+    )}
     {has
       ? <BrowseGroups groups={groups} uncategorized={uncategorized} card={card} unit="كتابًا" personNames={names} />
       : <p class="faint">لا توجد موادُّ في هذا القسم بعد.</p>}
