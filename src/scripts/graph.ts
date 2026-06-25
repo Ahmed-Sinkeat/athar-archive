@@ -104,6 +104,28 @@ function init() {
   legend?.addEventListener("change", updateGraph);
   personList?.addEventListener("change", updateGraph);
 
+  const legendSelectAll = document.getElementById("legend-select-all");
+  const legendClearAll = document.getElementById("legend-clear-all");
+  const personSelectAll = document.getElementById("person-select-all");
+  const personClearAll = document.getElementById("person-clear-all");
+
+  legendSelectAll?.addEventListener("click", () => {
+    document.querySelectorAll<HTMLInputElement>("[data-graph-legend] input").forEach((cb) => cb.checked = true);
+    updateGraph();
+  });
+  legendClearAll?.addEventListener("click", () => {
+    document.querySelectorAll<HTMLInputElement>("[data-graph-legend] input").forEach((cb) => cb.checked = false);
+    updateGraph();
+  });
+  personSelectAll?.addEventListener("click", () => {
+    document.querySelectorAll<HTMLInputElement>(".person-toggle").forEach((cb) => cb.checked = true);
+    updateGraph();
+  });
+  personClearAll?.addEventListener("click", () => {
+    document.querySelectorAll<HTMLInputElement>(".person-toggle").forEach((cb) => cb.checked = false);
+    updateGraph();
+  });
+
   personSearch?.addEventListener("input", () => {
     const q = personSearch.value.trim();
     document.querySelectorAll<HTMLElement>(".graph-person-leg").forEach((leg) => {
