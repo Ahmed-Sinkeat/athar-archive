@@ -15,6 +15,7 @@ const yearOf = (e: ContentEntry) => {
   const y = (e.data as { authored_year?: number }).authored_year;
   return y == null ? "" : String(y);
 };
+const sortedItems = [...items].sort((a, b) => a.data.title.localeCompare(b.data.title, "ar"));
 ---
 <div class="sortable" data-sortable data-sort="title" data-dir="asc">
   <div class="sort-controls">
@@ -24,7 +25,7 @@ const yearOf = (e: ContentEntry) => {
     <button type="button" class="icon-btn sort-dir" data-sort-dir aria-label="عكس الترتيب" title="عكس الترتيب">↑</button>
   </div>
   <ol class="flat-list">
-    {items.map((it) => (
+    {sortedItems.map((it) => (
       <li
         data-title={it.data.title}
         data-year={yearOf(it)}

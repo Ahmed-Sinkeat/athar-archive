@@ -53,7 +53,7 @@ const LABELS: Record<string, string> = {
 };
 const counts: Record<string, number> = {};
 for (const n of nodes) counts[n.type] = (counts[n.type] ?? 0) + 1;
-const present = TYPES.filter((t) => counts[t]);
+const present = TYPES.filter((t) => counts[t] && t !== "person");
 
 // Scholar dashboard data
 const isPubE = (e: ContentEntry) => e.data.status === "published";
@@ -105,19 +105,20 @@ const gdata = JSON.stringify({ nodes, links }).replace(/</g, "\\u003c");
   <div class="graph-wrap"><div id="graph"></div></div>
 
   <!-- scholar dashboard section -->
+  <!-- scholar dashboard section -->
   {scholars.length > 0 && (
     <div class="wrap-mid" style="margin-top: 48px; padding-bottom: 80px;">
-      <div class="section-label">الأعلام في الأرشيف</div>
-      <div class="people-table">
-        {scholars.map((s) => (
-          <a href={`/person/${s.id}`} class="people-row">
-            <span class="people-name">{s.title}</span>
-            {s.aqeedah && <span class="pill tag-accent">{s.aqeedah}</span>}
-            {s.tabaqa && <span class="pill">{s.tabaqa}</span>}
-            {s.died && <span class="faint people-works">ت. {s.died}</span>}
-            <span class="people-works">{toArabicDigits(s.worksCount)} مادة</span>
-          </a>
-        ))}
+      <div class="section-label">إضافة الأعلام ومؤلفاتهم إلى الشبكة</div>
+      <div class="graph-person-search">
+        <input type="search" id="person-search" class="pop-search" placeholder="ابحث عن عَلَم…" aria-label="ابحث عن عَلَم" style="margin-bottom: 16px;" autocomplete="off" />
+        <div class="pop-checklist graph-person-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; max-height: 400px; overflow-y: auto;">
+          {scholars.map((s) => (
+            <label class="pop-check graph-person-leg" data-name={s.title}>
+              <input type="checkbox" value={s.id} class="person-toggle" />
+              <span class="people-name">{s.title} <span class="faint">({toArabicDigits(s.worksCount)})</span></span>
+            </label>
+          ))}
+        </div>
       </div>
     </div>
   )}
