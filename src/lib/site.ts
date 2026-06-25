@@ -9,7 +9,7 @@ import { hrefFor, labelFor } from "./display";
 export async function loadGraph(): Promise<Graph> {
   const cols = await Promise.all(COLLECTIONS.map((c) => getCollection(c as any)));
   const entries = toContentEntries(
-    cols.flat().map((e: any) => ({ collection: e.collection, id: e.id, data: e.data, body: e.body })),
+    cols.flat().map((e: any) => ({ collection: e.collection, id: e.id, data: e.data, body: e.body, filePath: e.filePath })),
   );
   return buildGraph(entries);
 }

@@ -7,6 +7,7 @@ export interface ContentEntry {
   collection: string;
   data: Record<string, unknown>;
   body: string;
+  filePath?: string;
 }
 
 export const COLLECTIONS = [

@@ -11,6 +11,42 @@ const COLORS: Record<string, string> = {
 };
 const FADE = "rgba(120,110,95,0.18)";
 
+function normalizeArabic(str: string): string {
+  return str
+    .replace(/[أإآا]/g, "ا")
+    .replace(/ة/g, "ه")
+    .replace(/ى/g, "ي")
+    .replace(/[ؐ-ًؚ-ٰٟۖ-ۭـ]/g, "") // remove diacritics
+    .toLowerCase()
+    .trim();
+}
+
+function cleanLatin(s: string): string {
+  let cleaned = s.toLowerCase();
+  cleaned = cleaned.replace(/\bal-/g, "").replace(/\bel-/g, "");
+  cleaned = cleaned
+    .replace(/[aeiouy]/g, "")
+    .replace(/th/g, "t")
+    .replace(/dh/g, "d")
+    .replace(/z/g, "s")
+    .replace(/q/g, "k")
+    .replace(/g/g, "j")
+    .replace(/h$/g, "")
+    .replace(/[^a-z0-9]/g, "");
+  return cleaned;
+}
+
+function isMatch(label: string, id: string, query: string): boolean {
+  const isArabic = /[\u0600-\u06FF]/.test(query);
+  if (isArabic) {
+    return normalizeArabic(label).includes(normalizeArabic(query));
+  } else {
+    const cleanedQuery = cleanLatin(query);
+    if (!cleanedQuery) return false;
+    return cleanLatin(id).includes(cleanedQuery) || cleanLatin(label).includes(cleanedQuery);
+  }
+}
+
 interface GNode { id: string; label: string; type: string; href: string; val?: number; x?: number; y?: number; fx?: number; fy?: number }
 interface GLink { source: any; target: any }
 const lid = (e: any) => (typeof e === "object" ? e.id : e);
@@ -37,6 +73,7 @@ function init() {
   
   // search-highlight state
   let searchQuery = "";
+  let wasSearched = false;
   const searchNear = new Set<string>();
   const searchHot = new Set<GLink>();
   const searchMatch = new Set<string>();
@@ -63,15 +100,16 @@ function init() {
   }
 
   function setSearchQuery(q: string) {
-    searchQuery = q.trim().toLowerCase();
+    searchQuery = q.trim();
     searchNear.clear();
     searchHot.clear();
     searchMatch.clear();
 
     if (searchQuery) {
+      wasSearched = true;
       const graphData = g.graphData();
       for (const n of graphData.nodes as GNode[]) {
-        if (n.label.toLowerCase().includes(searchQuery)) {
+        if (isMatch(n.label, n.id, searchQuery)) {
           searchMatch.add(n.id);
           searchNear.add(n.id);
         }
@@ -87,6 +125,29 @@ function init() {
             searchNear.add(t);
           }
         }
+
+        // Center / zoom on match
+        const matches = [...searchMatch].map(id => (g.graphData().nodes as GNode[]).find(n => n.id === id)).filter(Boolean) as GNode[];
+        let sumX = 0, sumY = 0, count = 0;
+        for (const m of matches) {
+          if (m.x !== undefined && m.y !== undefined) {
+            sumX += m.x;
+            sumY += m.y;
+            count++;
+          }
+        }
+        if (count > 0) {
+          const avgX = sumX / count;
+          const avgY = sumY / count;
+          const zoomLevel = matches.length === 1 ? 2.5 : (matches.length <= 5 ? 1.8 : 1.0);
+          g.centerAt(avgX, avgY, 800);
+          g.zoom(zoomLevel, 800);
+        }
+      }
+    } else {
+      if (wasSearched) {
+        wasSearched = false;
+        g.zoomToFit(800, 50);
       }
     }
 
@@ -112,6 +173,9 @@ function init() {
     })
     .nodeCanvasObjectMode(() => "after")
     .nodeCanvasObject((n: any, ctx: CanvasRenderingContext2D, scale: number) => {
+      // If search is active, hide label completely if not matched or connected
+      if (searchQuery && !searchNear.has(n.id)) return;
+
       // declutter: when zoomed out, label only hubs + the highlighted/searched neighbourhood
       const isHighlighted = hoverId ? near.has(n.id) : (searchQuery ? searchNear.has(n.id) : false);
       if (scale < 0.6 && (deg[n.id] || 0) < 3 && !isHighlighted) return;
@@ -157,6 +221,14 @@ function init() {
   const personList = document.querySelector(".graph-person-list");
 
   function updateGraph() {
+    const totalPersons = document.querySelectorAll(".person-toggle").length;
+    const checkedPersons = document.querySelectorAll(".person-toggle:checked").length;
+    const counterEl = document.getElementById("scholar-counter");
+    if (counterEl) {
+      const toArabicDigitsStr = (num: number) => String(num).replace(/[0-9]/g, (d) => "٠١٢٣٤٥٦٧٨٩"[parseInt(d)]);
+      counterEl.textContent = `(${toArabicDigitsStr(checkedPersons)} / ${toArabicDigitsStr(totalPersons)})`;
+    }
+
     const active = new Set(
       [...document.querySelectorAll<HTMLInputElement>("[data-graph-legend] input:checked")]
         .map((c) => c.closest("[data-type]")?.getAttribute("data-type") || ""),
@@ -207,9 +279,10 @@ function init() {
 
   personSearch?.addEventListener("input", () => {
     const q = personSearch.value.trim();
+    const normalizedQ = normalizeArabic(q);
     document.querySelectorAll<HTMLElement>(".graph-person-leg").forEach((leg) => {
-      if (!q) { leg.style.display = ""; return; }
-      const match = (leg.dataset.name || "").includes(q);
+      if (!normalizedQ) { leg.style.display = ""; return; }
+      const match = normalizeArabic(leg.dataset.name || "").includes(normalizedQ);
       leg.style.display = match ? "" : "none";
     });
   });
