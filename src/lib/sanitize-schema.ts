@@ -8,6 +8,7 @@ const globalAttrs = [...(defaultSchema.attributes?.["*"] ?? []), "data*"];
 
 export const sanitizeSchema: SanitizeSchema = {
   ...defaultSchema,
+  clobberPrefix: "",
   attributes: {
     ...defaultSchema.attributes,
     "*": globalAttrs,

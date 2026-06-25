@@ -226,6 +226,8 @@ const actions: Record<string, () => void> = {
   "search:toggle": () => { if (!isSearchOpen()) openSearch(); else topsearch?.classList.remove("is-open"); },
   "search:filter": () => togglePop(filterPop, "search:filter"),
   "search:apply": () => { location.href = buildSearchUrl(); },
+  "search:next": () => { const q = document.querySelector<HTMLInputElement>("[data-inpage-search]")?.value.trim(); if (q) window.find(q, false, false, true, false, true, false); },
+  "search:prev": () => { const q = document.querySelector<HTMLInputElement>("[data-inpage-search]")?.value.trim(); if (q) window.find(q, false, true, true, false, true, false); },
   "settings:toggle": () => togglePop(settingsPop, "settings:toggle"),
   "mode:qiraa": () => setMode("qiraa"),
   "mode:ikhtibar": () => setMode("ikhtibar"),
@@ -240,6 +242,48 @@ document.addEventListener("click", (e) => {
 document.addEventListener("click", (e) => {
   if ((e.target as HTMLElement).closest("[data-drawer-backdrop]")) setDrawer(false);
 });
+
+// --- footnote popover ---
+let fnPop: HTMLElement | null = null;
+document.addEventListener("click", (e) => {
+  const ref = (e.target as HTMLElement).closest<HTMLAnchorElement>("[data-footnote-ref]");
+  if (ref) {
+    e.preventDefault();
+    const id = ref.getAttribute("href")?.slice(1);
+    const target = id ? document.getElementById(id) : null;
+    if (target) {
+      if (!fnPop) {
+        fnPop = document.createElement("div");
+        fnPop.className = "popover fn-popover";
+        document.body.appendChild(fnPop);
+      }
+      const clone = target.cloneNode(true) as HTMLElement;
+      clone.querySelector(".data-footnote-backref")?.remove();
+      fnPop.innerHTML = clone.innerHTML;
+      fnPop.hidden = false;
+      
+      const rect = ref.getBoundingClientRect();
+      fnPop.style.top = `${rect.bottom + window.scrollY + 8}px`;
+      let left = rect.left + rect.width / 2 - fnPop.offsetWidth / 2;
+      left = Math.max(8, Math.min(left, window.innerWidth - fnPop.offsetWidth - 8));
+      fnPop.style.left = `${left}px`;
+    }
+  } else if (fnPop && !fnPop.hidden && !(e.target as HTMLElement).closest(".fn-popover")) {
+    fnPop.hidden = true;
+  }
+});
+
+// --- in-page search ---
+const inpageSearch = document.querySelector<HTMLInputElement>("[data-inpage-search]");
+if (inpageSearch) {
+  inpageSearch.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      const q = inpageSearch.value.trim();
+      if (q) window.find(q, false, e.shiftKey, true, false, true, false);
+    }
+  });
+}
 
 // --- browse «عرض الكل» toggle + flat-list sort (delegated → survives transitions) ---
 function applySort(container: HTMLElement) {

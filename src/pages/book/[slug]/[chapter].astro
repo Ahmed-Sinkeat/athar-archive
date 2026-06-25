@@ -77,11 +77,14 @@ const next = allChapters[chIdx + 1] ?? null;
 
         {isMatn("book", entry.data) ? (
           <>
-            <StudyBar prose />
+            <StudyBar prose downloadUrl={entry.data.attachments?.[0]?.url} />
             <div class="u49fcd85" data-matn={`${entry.id}--${chapter.slug}`} data-unit="فقرة"><Prose body={chapter.content} /></div>
           </>
         ) : (
-          <div class="u49fcd85"><Prose body={chapter.content} /></div>
+          <>
+            <StudyBar prose downloadUrl={entry.data.attachments?.[0]?.url} />
+            <div class="u49fcd85"><Prose body={chapter.content} /></div>
+          </>
         )}
 
         {phraseAnchors.map(([anchor, notes]: any) => (

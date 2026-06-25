@@ -5,17 +5,29 @@
 // Fully optional: with JS off the متن stays readable in the default قراءة form.
 interface Props {
   prose?: boolean;
+  downloadUrl?: string;
 }
-const { prose = false } = Astro.props;
+const { prose = false, downloadUrl } = Astro.props;
 ---
-{!prose && (
-  <>
-    <div class="studybar" data-studybar>
-      <div class="studybar-modes" role="group" aria-label="أوضاع القراءة">
+<div class="studybar" data-studybar>
+  <div class="studybar-modes" role="group" aria-label="أوضاع القراءة">
+    {!prose && (
+      <>
         <button class="mode-btn" data-action="mode:qiraa" data-mode-btn="qiraa" aria-pressed="true">قراءة</button>
         <button class="mode-btn" data-action="mode:ikhtibar" data-mode-btn="ikhtibar" aria-pressed="false">اختبار</button>
-      </div>
+      </>
+    )}
+  </div>
+  
+  <div class="studybar-tools" style="display: flex; gap: 12px; align-items: center;">
+    <div class="inpage-search-box" style="display: flex; gap: 4px; align-items: center;">
+      <input type="search" class="pop-search" data-inpage-search placeholder="بحث في الصفحة..." aria-label="بحث في الصفحة" style="width: 140px; padding: 4px 8px; border-radius: 6px; font-size: 13px;" />
     </div>
-    <div class="hint study-hint" data-mode-hint hidden></div>
-  </>
-)}
+    {downloadUrl && (
+      <a href={downloadUrl} download class="icon-btn" aria-label="تحميل الملف" title="تحميل">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+      </a>
+    )}
+  </div>
+</div>
+{!prose && <div class="hint study-hint" data-mode-hint hidden></div>}
