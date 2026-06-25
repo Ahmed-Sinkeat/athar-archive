@@ -5,7 +5,9 @@
 import fs from "node:fs";
 import path from "node:path";
 
-const DIST = path.resolve("dist");
+// Hybrid Cloudflare build emits prerendered HTML + assets under dist/client/
+// (dist/server/ is the on-demand worker).
+const DIST = path.resolve("dist/client");
 let failures = 0;
 const read = (p) => {
   const f = path.join(DIST, p);
@@ -68,16 +70,24 @@ ok(/data-ann-pack/.test(book), "annotation packs present (open in the bottom she
 ok(/"@type":"Book"/.test(book), "Book JSON-LD");
 
 // --- lesson reader: TOC anchors must match heading ids (rehype-slug alignment) ---
+// ponytail: lessons are on-demand (prerender=false) since the hybrid-rendering
+// migration, so there's no static HTML to assert over. Skip when absent; the
+// on-demand lesson render needs a preview-fetch smoke check (follow-up).
 section("/series/sharh-al-wasitiyyah/lesson-1");
-const lesson = read("series/sharh-al-wasitiyyah/lesson-1/index.html");
-const tocAnchors = [...lesson.matchAll(/class="toc-box"[\s\S]*?<\/div>/g)].length
-  ? [...lesson.matchAll(/href="#([^"]+)"/g)].map((m) => m[1]).filter((a) => !a.startsWith("note"))
-  : [];
-const headingIds = [...lesson.matchAll(/<h2 id="([^"]+)"/g)].map((m) => m[1]);
-const unmatched = tocAnchors.filter((a) => !headingIds.includes(a));
-ok(tocAnchors.length > 0 && unmatched.length === 0, `lesson TOC anchors resolve to heading ids (${tocAnchors.length} links)`);
-ok(/<audio controls/.test(lesson), "lesson audio player renders");
-ok(/class="prevnext"/.test(lesson), "prev/next nav renders");
+const lessonFile = path.join(DIST, "series/sharh-al-wasitiyyah/lesson-1/index.html");
+if (fs.existsSync(lessonFile)) {
+  const lesson = fs.readFileSync(lessonFile, "utf-8");
+  const tocAnchors = [...lesson.matchAll(/class="toc-box"[\s\S]*?<\/div>/g)].length
+    ? [...lesson.matchAll(/href="#([^"]+)"/g)].map((m) => m[1]).filter((a) => !a.startsWith("note"))
+    : [];
+  const headingIds = [...lesson.matchAll(/<h2 id="([^"]+)"/g)].map((m) => m[1]);
+  const unmatched = tocAnchors.filter((a) => !headingIds.includes(a));
+  ok(tocAnchors.length > 0 && unmatched.length === 0, `lesson TOC anchors resolve to heading ids (${tocAnchors.length} links)`);
+  ok(/<audio controls/.test(lesson), "lesson audio player renders");
+  ok(/class="prevnext"/.test(lesson), "prev/next nav renders");
+} else {
+  console.log("  • skipped — on-demand route (no static HTML); cover via preview fetch (follow-up)");
+}
 
 // --- person hub lists works ---
 section("/person/ibn-taymiyyah");
@@ -113,9 +123,8 @@ ok(/\/poem\/bayquniyyah \/poem\/al-bayquniyyah 301/.test(redirects), "alias 301 
 const headers = read("_headers");
 ok(/Content-Security-Policy/.test(headers), "CSP header present");
 
-// --- chrome excluded from search index on every detail page ---
-section("search-index scoping");
-ok(/data-pagefind-body/.test(poem) && /data-pagefind-ignore/.test(poem.split("<main")[0]), "content indexed, chrome ignored");
+// ponytail: search-index scoping assertion dropped — the hybrid migration replaced
+// Pagefind with Google, so there are no data-pagefind-* markers to assert over.
 
 console.log(`\n${failures === 0 ? "✓ all smoke assertions passed" : `✗ ${failures} smoke assertion(s) failed`}`);
 process.exit(failures === 0 ? 0 : 1);
