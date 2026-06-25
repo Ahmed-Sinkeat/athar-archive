@@ -5,15 +5,38 @@
 // Wired in reader.ts via [data-sortable] (delegated → survives view transitions).
 import EntityCard from "./EntityCard.astro";
 import type { ContentEntry } from "../lib/types";
+import { loadGraph } from "../lib/site";
 
 interface Props {
   items: ContentEntry[];
   card: (e: ContentEntry) => Record<string, any>;
 }
 const { items, card } = Astro.props;
+
+// Load the graph once during build to resolve author year fallbacks
+const graph = await loadGraph();
+
+const parseYear = (s: any): number | null => {
+  if (!s) return null;
+  const n = parseInt(String(s).replace(/[^\d]/g, ""), 10);
+  return isNaN(n) ? null : n;
+};
+
 const yearOf = (e: ContentEntry) => {
   const y = (e.data as { authored_year?: number }).authored_year;
-  return y == null ? "" : String(y);
+  if (y != null) return String(y);
+
+  // Fallback to author's death/birth year from graph
+  if (e.data.person) {
+    const p = graph.getById("person", e.data.person as string);
+    if (p) {
+      const died = parseYear(p.data.died);
+      if (died != null) return String(died);
+      const born = parseYear(p.data.born);
+      if (born != null) return String(born);
+    }
+  }
+  return "";
 };
 const sortedItems = [...items].sort((a, b) => a.data.title.localeCompare(b.data.title, "ar"));
 ---

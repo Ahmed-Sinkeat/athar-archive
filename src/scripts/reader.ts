@@ -367,23 +367,89 @@ document.addEventListener("change", (e) => {
   const masailScope = sel.closest<HTMLElement>("[data-masail-browse]");
   if (masailScope) {
     masailScope.querySelectorAll<HTMLElement>(".masail-list li[data-person]").forEach((li) => {
-      if (!val) { li.style.display = ""; return; }
+      if (!val) { li.classList.remove("is-hidden"); return; }
       const match = key === "person"
         ? li.dataset.person === val
         : (li.dataset.topics ?? "").split(",").includes(val);
-      li.style.display = match ? "" : "none";
+      li.classList.toggle("is-hidden", !match);
     });
     // collapse empty topics then empty subjects
     masailScope.querySelectorAll<HTMLElement>(".masail-topic").forEach((dt) => {
-      const visible = [...dt.querySelectorAll<HTMLElement>(".masail-list li")].some((li) => li.style.display !== "none");
-      (dt as HTMLElement).style.display = visible || !val ? "" : "none";
+      const visible = [...dt.querySelectorAll<HTMLElement>(".masail-list li")].some((li) => !li.classList.contains("is-hidden"));
+      dt.style.display = (visible || !val) ? "" : "none";
     });
-    masailScope.querySelectorAll<HTMLElement>(".masail-subject").forEach((dt) => {
-      const visible = [...dt.querySelectorAll<HTMLElement>(".masail-topic")].some((t) => t.style.display !== "none");
-      (dt as HTMLElement).style.display = visible || !val ? "" : "none";
+    masailScope.querySelectorAll<HTMLElement>(".masail-subject").forEach((ds) => {
+      const visible = [...ds.querySelectorAll<HTMLElement>(".masail-topic")].some((t) => t.style.display !== "none");
+      ds.style.display = (visible || !val) ? "" : "none";
     });
   }
 });
+
+// --- local in-page search / filtering for listing pages ---
+document.addEventListener("submit", (e) => {
+  const form = e.target as HTMLFormElement;
+  if (form.classList.contains("section-search")) {
+    e.preventDefault(); // Prevent going to Google site search from listing pages!
+  }
+});
+
+document.addEventListener("input", (e) => {
+  const input = e.target as HTMLInputElement;
+  if (!input.classList.contains("section-search-input")) return;
+  
+  const query = stripTashkeel(input.value.trim().toLowerCase());
+  const scope = input.closest(".wrap-mid") || document.body;
+  
+  // 1. Filter flat list items (SortableList)
+  scope.querySelectorAll<HTMLElement>(".flat-list li").forEach((li) => {
+    const title = stripTashkeel((li.dataset.title || li.textContent || "").toLowerCase());
+    const matches = title.includes(query);
+    li.classList.toggle("is-search-hidden", !matches);
+  });
+
+  // 2. Filter card grids (BrowseGroups)
+  scope.querySelectorAll<HTMLElement>(".card-grid .card, .browse-cards .card").forEach((card) => {
+    const titleText = card.querySelector(".card-title")?.textContent || card.textContent || "";
+    const title = stripTashkeel(titleText.toLowerCase());
+    const matches = title.includes(query);
+    card.classList.toggle("is-search-hidden", !matches);
+  });
+
+  // 3. Filter masail list items
+  scope.querySelectorAll<HTMLElement>(".masail-list li").forEach((li) => {
+    const title = stripTashkeel((li.textContent || "").toLowerCase());
+    const matches = title.includes(query);
+    li.classList.toggle("is-search-hidden", !matches);
+  });
+
+  // Hide empty topics and empty subjects in the accordion view (BrowseGroups + Questions) when searching
+  scope.querySelectorAll<HTMLElement>(".masail-topic").forEach((dt) => {
+    const hasVisibleCards = [...dt.querySelectorAll<HTMLElement>(".card")].some((c) => !c.classList.contains("is-search-hidden"));
+    const hasVisibleLi = [...dt.querySelectorAll<HTMLElement>(".masail-list li")].some((li) => !li.classList.contains("is-search-hidden") && !li.classList.contains("is-hidden"));
+    
+    const hasContent = dt.querySelectorAll<HTMLElement>(".card, .masail-list li").length > 0;
+    const isVisible = hasVisibleCards || hasVisibleLi;
+    dt.style.display = (hasContent && !isVisible) ? "none" : "";
+  });
+
+  scope.querySelectorAll<HTMLElement>(".masail-subject").forEach((ds) => {
+    const totalTopics = ds.querySelectorAll<HTMLElement>(".masail-topic").length;
+    const hiddenTopics = [...ds.querySelectorAll<HTMLElement>(".masail-topic")].filter((dt) => dt.style.display === "none").length;
+    
+    const hasVisibleCards = [...ds.querySelectorAll<HTMLElement>(".card")].some((c) => !c.classList.contains("is-search-hidden"));
+    const hasVisibleLi = [...ds.querySelectorAll<HTMLElement>(".masail-list li")].some((li) => !li.classList.contains("is-search-hidden") && !li.classList.contains("is-hidden"));
+    
+    const allTopicsHidden = totalTopics > 0 && totalTopics === hiddenTopics;
+    const hasContent = ds.querySelectorAll<HTMLElement>(".masail-topic, .card, .masail-list li").length > 0;
+    
+    if (totalTopics > 0) {
+      ds.style.display = allTopicsHidden ? "none" : "";
+    } else {
+      ds.style.display = (hasContent && !(hasVisibleCards || hasVisibleLi)) ? "none" : "";
+    }
+  });
+});
+
 
 // type filter on topic/subject/era card grids — hide cards whose kind ≠ chosen type
 document.addEventListener("click", (e) => {

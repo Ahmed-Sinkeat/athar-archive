@@ -87,9 +87,10 @@ const cleanInline = (s: string) => decode(stripTags(s)).replace(/[ \t]+/g, " ").
 // Poem titles that Shamela exports as books but are actually منظومات.
 // Signal: title contains نونية، منظومة، ألفية، قصيدة، أرجوزة، لامية، دالية، بائية، رائية، ميمية
 // ponytail: use Unicode-aware word boundaries (?<=^|\P{L}) to handle prefixes like الـ/للـ and avoid substrings like الإسلامية.
-const POEM_TITLE_RE = /(?<=^|\P{L})(?:ال|لل)?(?:منظومة|نونية|[أا]لفية|قصيدة|[أا]رجوزة|لامية|دالية|بائية|رائية|ميمية|مقصورة)(?=$|\P{L})/u;
+const POEM_TITLE_RE = /(?<=^|\P{L})(?:ال|لل)?(?:منظومة|نونية|[أا]لفية|قصيدة|[أا]رجوزة|لامية|دالية|بائية|رائية|ميمية|مقصورة|حائية|تائية|عينية|سينية|هائية|همزية|لؤلؤية|نظم|ملحة|الكافية\s+الشافية)(?=$|\P{L})/u;
+const COMMENTARY_RE = /(?<=^|\P{L})(?:شرح|توضيح|حاشية|تفسير|تعليق|تخريج|مختصر)(?=$|\P{L})/iu;
 // Fraction of body lines that must look like verses to auto-classify as poem
-const POEM_VERSE_THRESHOLD = 0.35;
+const POEM_VERSE_THRESHOLD = 0.70;
 
 // ─────────────────────────────────────────────
 // Genre classification: رار فن folder → section (قرآن / حديث / تراجم).
@@ -413,7 +414,8 @@ function readEpub(file: string): { meta: Meta; pages: { id: string; xhtml: strin
     if (!meta.died) meta.died = (file.match(/(\d{2,4})\s*هـ/) ?? [])[1];
 
     // Title-keyword poem detection
-    meta.poemByTitle = POEM_TITLE_RE.test(meta.title);
+    meta.poemByTitle = POEM_TITLE_RE.test(meta.title) || POEM_TITLE_RE.test(file);
+    const isCommentary = COMMENTARY_RE.test(meta.title) || COMMENTARY_RE.test(file);
 
     // Load pages (skip info + cover)
     const pages: { id: string; xhtml: string }[] = [];
@@ -434,8 +436,11 @@ function readEpub(file: string): { meta: Meta; pages: { id: string; xhtml: strin
       // count <br /> as approximate line count
       totalLines += (p.xhtml.match(/<br\s*\/?>/gi) ?? []).length + 1;
     }
-    if (totalLines > 0 && totalVerses / totalLines >= POEM_VERSE_THRESHOLD) {
-      meta.isPoem = true;
+    const ratio = totalLines > 0 ? totalVerses / totalLines : 0;
+    if (!isCommentary) {
+      if (meta.poemByTitle || ratio >= POEM_VERSE_THRESHOLD) {
+        meta.isPoem = true;
+      }
     }
 
     // Infer hadith_category for hadith-genre books
@@ -523,19 +528,14 @@ function resolveTopics(meta: Meta, file: string, contentRoot: string, today: str
   const folder = basename(dirname(file));
   const qism = meta.qism ?? "";
   
-  // 1. Assign subject stub with high confidence
-  let subjectSlug = "other";
-  for (const { pattern, subjectSlug: s } of FOLDER_SUBJECT_MAP) {
-    if (pattern.test(folder) || pattern.test(qism)) {
-      subjectSlug = s;
-      break;
-    }
-  }
+  // 1. Assign subject slug (force to 'aqeedah' to ensure they all end up in Aqeeda)
+  const subjectSlug = "aqeedah";
   const stubTopic = `aam-${subjectSlug}`;
 
   // 2. Suggest specific topics to JSON sidecar
   const suggested: string[] = [];
-  for (const { pattern, topic } of SECTION_TOPIC_MAP) {
+  for (const { pattern, topic, subject } of SECTION_TOPIC_MAP) {
+    if (subject !== "aqeedah") continue; // Only suggest Aqeeda topics
     if (pattern.test(qism) || pattern.test(meta.title)) {
       suggested.push(topic);
     }
@@ -607,12 +607,64 @@ function maybeEmitTopicStub(
 // ─────────────────────────────────────────────
 // Edition grouping: find an unused slug
 // ─────────────────────────────────────────────
-function uniqueSlug(base: string, collection: string, contentRoot: string): string {
+function uniqueSlug(base: string, collection: string, contentRoot: string, meta?: Meta, personSlug?: string): string {
   const dir = join(contentRoot, collection);
-  if (!existsSync(join(dir, base + ".md"))) return base;
+
+  if (!meta || !personSlug) {
+    if (!existsSync(join(dir, base + ".md"))) return base;
+    let v = 2;
+    while (existsSync(join(dir, `${base}--v${v}.md`))) v++;
+    return `${base}--v${v}`;
+  }
+
+  const getFrontmatter = (filePath: string): Record<string, string> => {
+    try {
+      const content = readFileSync(filePath, "utf-8");
+      const match = content.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+      if (!match) return {};
+      const fm: Record<string, string> = {};
+      for (const line of match[1].split("\n")) {
+        const idx = line.indexOf(":");
+        if (idx !== -1) {
+          const key = line.slice(0, idx).trim();
+          let val = line.slice(idx + 1).trim();
+          if (val.startsWith('"') && val.endsWith('"')) val = val.slice(1, -1);
+          else if (val.startsWith("'") && val.endsWith("'")) val = val.slice(1, -1);
+          fm[key] = val;
+        }
+      }
+      return fm;
+    } catch {
+      return {};
+    }
+  };
+
+  const baseFile = join(dir, base + ".md");
+  if (existsSync(baseFile)) {
+    const fm = getFrontmatter(baseFile);
+    const editionMatch = (fm.edition || "") === (meta.edition || "");
+    const descriptionMatch = (fm.description || "") === (meta.muhaqqiq ? `بتحقيق ${meta.muhaqqiq}` : "");
+    const personMatch = (fm.person || "") === personSlug;
+    if (personMatch && editionMatch && descriptionMatch) {
+      return base;
+    }
+  }
+
   let v = 2;
-  while (existsSync(join(dir, `${base}--v${v}.md`))) v++;
-  return `${base}--v${v}`;
+  while (true) {
+    const file = join(dir, `${base}--v${v}.md`);
+    if (!existsSync(file)) {
+      return `${base}--v${v}`;
+    }
+    const fm = getFrontmatter(file);
+    const editionMatch = (fm.edition || "") === (meta.edition || "");
+    const descriptionMatch = (fm.description || "") === (meta.muhaqqiq ? `بتحقيق ${meta.muhaqqiq}` : "");
+    const personMatch = (fm.person || "") === personSlug;
+    if (personMatch && editionMatch && descriptionMatch) {
+      return `${base}--v${v}`;
+    }
+    v++;
+  }
 }
 
 // ─────────────────────────────────────────────
@@ -754,7 +806,7 @@ function build(file: string, opt: Opt): BuildResult {
 
   const personSlug = opt.personSlug ?? slugify(meta.creator || "unknown");
   const baseSlug   = opt.slug ?? slugify(meta.title);
-  const bookSlug   = opt.slug ? baseSlug : uniqueSlug(baseSlug, collection, opt.out);
+  const bookSlug   = opt.slug ? baseSlug : uniqueSlug(baseSlug, collection, opt.out, meta, personSlug);
 
   // ── Resolve topics ──
   const topics = resolveTopics(meta, file, opt.out, opt.today, opt.dryRun);
@@ -879,7 +931,7 @@ function buildMerged(files: string[], opt: Opt): BuildResult {
   const kind = detectKind(mergedMeta, opt.kind);
   const personSlug = opt.personSlug ?? slugify(mergedMeta.creator || "unknown");
   const baseSlug   = opt.slug ?? slugify(mergedMeta.title);
-  const bookSlug   = opt.slug ? baseSlug : uniqueSlug(baseSlug, collection, opt.out);
+  const bookSlug   = opt.slug ? baseSlug : uniqueSlug(baseSlug, collection, opt.out, mergedMeta, personSlug);
   const topics     = resolveTopics(mergedMeta, files[0], opt.out, opt.today, opt.dryRun);
 
   const bareName   = stripTashkeel(mergedMeta.creator);

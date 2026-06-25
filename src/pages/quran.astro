@@ -2,65 +2,27 @@
 import Base from "../layouts/Base.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
 import { collectionLd } from "../lib/structured-data";
-import { getCollection } from "astro:content";
-// Surah list — sorted by number
-const surahs = (await getCollection("quran"))
-  .sort((a, b) => (a.data.number as number) - (b.data.number as number));
 ---
 <Base title="القرآن وعلومه" description="التفاسيرُ وعلومُ القرآنِ والقراءات." activeNav="quran" jsonLd={collectionLd({ title: "القرآن وعلومه", path: "/quran", crumbs: [{ name: "الرئيسية", path: "/" }, { name: "القرآن", path: "/quran" }] })}>
   <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "القرآن وعلومه" }]} />
-  <div class="wrap-mid uf5db21c">
+  <div class="wrap-mid">
     <h1 class="page-title">القرآن وعلومه</h1>
 
-    {surahs.length > 0 && (
-      <section class="surah-list" aria-label="فهرس السور">
-        <h2 class="section-title">السور</h2>
-        <ol class="surah-grid" dir="rtl">
-          {surahs.map((s) => (
-            <li>
-              <a href={`/quran/${s.id}`} class="surah-card">
-                <span class="surah-num">{s.data.number}</span>
-                <span class="surah-name">{s.data.name}</span>
-                <span class="surah-ayat faint">{s.data.ayah_count} آية</span>
-              </a>
-            </li>
-          ))}
-        </ol>
-      </section>
-    )}
+    <div class="card-grid" style="margin-top: 2.5rem;">
+      <a class="card" href="/quran/mushaf">
+        <div style="font-family: var(--font-display); font-size: 28px; color: var(--accent); margin-bottom: 14px;">📖</div>
+        <div class="card-title">المصحف الشريف</div>
+        <p class="card-sub">قراءة وتصفح سور القرآن الكريم بالرسم العثماني، مع ربط الآيات بالمتون والمنظومات والآثار المسندة.</p>
+        <span class="card-cta">افتح المصحف ←</span>
+      </a>
 
-    <div style="margin-top: 2rem; border-top: 1px solid var(--border, #e0e0e0); padding-top: 2rem;">
-      <h2 class="section-title">كتب علوم القرآن</h2>
-      <p class="faint">تتضمن هذه المجموعة التفاسير، وأحكام القرآن، وعلوم القراءات، وغيرها من المصنفات المتعلقة بكتاب الله.</p>
-      <a href="/tafsir" class="btn" style="margin-top: 1rem; display: inline-block;">تصفح التفاسير وعلوم القرآن ←</a>
+      <a class="card" href="/tafsir">
+        <div style="font-family: var(--font-display); font-size: 28px; color: var(--accent); margin-bottom: 14px;">📚</div>
+        <div class="card-title">كتب علوم القرآن</div>
+        <p class="card-sub">تتضمن هذه المجموعة التفاسير، وأحكام القرآن، وعلوم القراءات، وغيرها من المصنفات المتعلقة بكتاب الله.</p>
+        <span class="card-cta">تصفح الكتب ←</span>
+      </a>
     </div>
   </div>
 </Base>
 
-<style>
-  .surah-list { margin-block: 2rem; }
-  .section-title { font-size: 1.1rem; margin-block-end: 1rem; color: var(--fg-muted, #666); }
-  .surah-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
-    gap: 0.5rem;
-    list-style: none;
-    padding: 0;
-  }
-  .surah-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.15rem;
-    padding: 0.6rem 0.4rem;
-    border: 1px solid var(--border, #e0e0e0);
-    border-radius: 0.5rem;
-    text-decoration: none;
-    text-align: center;
-    transition: background 0.1s;
-  }
-  .surah-card:hover { background: var(--bg-hover, #f5f5f5); }
-  .surah-num { font-size: 0.7rem; color: var(--fg-muted, #999); }
-  .surah-name { font-size: 1rem; font-weight: 600; }
-  .surah-ayat { font-size: 0.7rem; }
-</style>

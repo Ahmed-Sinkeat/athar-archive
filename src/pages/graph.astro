@@ -4,6 +4,7 @@ import Breadcrumbs from "../components/Breadcrumbs.astro";
 import { loadGraph } from "../lib/site";
 import { hrefFor, toArabicDigits } from "../lib/display";
 import type { ContentEntry } from "../lib/types";
+import { splitChapters } from "../lib/chapters";
 
 // Obsidian-style knowledge graph of the whole archive. Nodes = published entities
 // (NO individual lessons — only their series); edges = author / topic / subject /
@@ -11,7 +12,7 @@ import type { ContentEntry } from "../lib/types";
 // client-side by force-graph.
 const graph = await loadGraph();
 const isPub = (e: ContentEntry) => e.data.status === "published";
-const TYPES = ["book", "poem", "person", "series", "subject", "topic", "article", "question", "benefit"];
+const TYPES = ["book", "poem", "person", "series", "subject", "topic", "article", "question", "benefit", "chapter"];
 const nid = (c: string, id: string) => `${c}:${id}`;
 
 const nodeSet = new Set<string>();
@@ -22,6 +23,22 @@ for (const e of graph.all) {
   if (nodeSet.has(id)) continue;
   nodeSet.add(id);
   nodes.push({ id, label: e.data.title as string, type: e.collection, href: hrefFor(e.collection, e.id, { series: (e.data as any).series }) });
+
+  // Extract chapters/lessons and add them as nodes
+  if (e.collection === "book" || e.collection === "poem") {
+    const { chapters } = splitChapters(e.body ?? "");
+    for (const ch of chapters) {
+      const chId = nid("chapter", `${e.collection}:${e.id}:${ch.slug}`);
+      if (nodeSet.has(chId)) continue;
+      nodeSet.add(chId);
+      nodes.push({
+        id: chId,
+        label: ch.title,
+        type: "chapter",
+        href: hrefFor(e.collection, e.id, { chapter: ch.slug }),
+      });
+    }
+  }
 }
 
 const links: { source: string; target: string }[] = [];
@@ -31,7 +48,13 @@ for (const e of graph.all) {
   const id = nid(e.collection, e.id);
   if (e.collection === "lesson") continue; // lessons aren't nodes; their series is
   if (e.data.person) addLink(id, nid("person", e.data.person as string));
-  for (const t of ((e.data.topics as string[]) ?? [])) addLink(id, nid("topic", t));
+  for (const t of ((e.data.topics as string[]) ?? [])) {
+    addLink(id, nid("topic", t));
+    const topicNode = graph.getById("topic", t);
+    if (topicNode && topicNode.data.subject) {
+      addLink(id, nid("subject", topicNode.data.subject as string));
+    }
+  }
   if (e.collection === "topic" && e.data.subject) addLink(id, nid("subject", e.data.subject as string));
   if (e.collection === "series" && e.data.source_type && e.data.source_id) addLink(id, nid(e.data.source_type as string, e.data.source_id as string));
   // narrator edges: person → شيوخ
@@ -40,16 +63,27 @@ for (const e of graph.all) {
       addLink(id, nid("person", teacher));
     }
   }
+
+  // Connect chapters/lessons to their parent book/poem
+  if (e.collection === "book" || e.collection === "poem") {
+    const { chapters } = splitChapters(e.body ?? "");
+    for (const ch of chapters) {
+      const chId = nid("chapter", `${e.collection}:${e.id}:${ch.slug}`);
+      addLink(chId, id);
+    }
+  }
 }
 
 // counts + legend/filter chips (color must mirror scripts/graph.ts COLORS)
 const COLORS: Record<string, string> = {
   book: "#9c3b32", poem: "#9c3b32", benefit: "#c06a2c", person: "#2f6f6a",
   series: "#b07b00", subject: "#5a4632", topic: "#7a8a52", article: "#3f7d6e", question: "#8a8275",
+  chapter: "#7a5885",
 };
 const LABELS: Record<string, string> = {
   book: "الكتب", poem: "الشعر", person: "الأعلام", series: "السلاسل",
   subject: "التصنيفات", topic: "الموضوعات", article: "المقالات", question: "المسائل", benefit: "كُناشة",
+  chapter: "الفصول/الأبواب",
 };
 const counts: Record<string, number> = {};
 for (const n of nodes) counts[n.type] = (counts[n.type] ?? 0) + 1;
@@ -94,7 +128,7 @@ const gdata = JSON.stringify({ nodes, links }).replace(/</g, "\\u003c");
     <div class="graph-legend" data-graph-legend>
       {present.map((t) => (
         <label class="graph-leg" data-type={t}>
-          <input type="checkbox" checked />
+          <input type="checkbox" checked={t !== "chapter"} />
           <span class="graph-dot" style={`background:${COLORS[t]}`}></span>
           <span class="graph-leg-name">{LABELS[t] ?? t}</span>
           <span class="faint graph-leg-count">{toArabicDigits(counts[t])}</span>
@@ -114,7 +148,7 @@ const gdata = JSON.stringify({ nodes, links }).replace(/</g, "\\u003c");
         <div class="pop-checklist graph-person-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; max-height: 400px; overflow-y: auto;">
           {scholars.map((s) => (
             <label class="pop-check graph-person-leg" data-name={s.title}>
-              <input type="checkbox" value={s.id} class="person-toggle" />
+              <input type="checkbox" value={s.id} class="person-toggle" checked />
               <span class="people-name">{s.title} <span class="faint">({toArabicDigits(s.worksCount)})</span></span>
             </label>
           ))}

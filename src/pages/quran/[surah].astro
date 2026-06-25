@@ -31,12 +31,13 @@ const path = `/quran/${entry.id}`;
   <Breadcrumbs items={[
     { label: "الرئيسية", href: "/" },
     { label: "القرآن وعلومه", href: "/quran" },
+    { label: "المصحف الشريف", href: "/quran/mushaf" },
     { label: surahTitle },
   ]} />
 
   <div class="wrap-matn reading-pad" dir="rtl">
     <div class="reader-head">
-      <a class="eyebrow pill-link" href="/quran">القرآن وعلومه</a>
+      <a class="eyebrow pill-link" href="/quran/mushaf">المصحف الشريف</a>
       <h1 class="reader-title">{surahTitle}</h1>
       <div class="reader-byline faint">{data.ayah_count} آية</div>
     </div>
