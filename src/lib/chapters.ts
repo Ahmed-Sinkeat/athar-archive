@@ -229,7 +229,7 @@ export function extractAnchors(collection: string, body: string): Set<string> {
   if (collection === "poem") {
     return new Set(parsePoem(body).verses.map((v) => v.anchor));
   }
-  if (collection === "book") {
+  if (collection === "book" || collection === "quran") {
     return new Set(parseBook(body).paragraphs.map((p) => p.id));
   }
   if (collection === "lesson") {
