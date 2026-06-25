@@ -1,7 +1,7 @@
 ---
-title: الأسماء والصفات
-subject: aqeedah
+title: "الأسماء والصفات"
 status: published
-published_at: 2024-01-01
-description: مسائل أسماء الله وصفاته وما يتعلق بها من إثبات ونفي
+published_at: 2026-06-25
+description: "مسائل الأسماء والصفات"
+subject: aqeedah
 ---

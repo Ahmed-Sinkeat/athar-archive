@@ -2,7 +2,7 @@
 title: "مختصر اليمانيات المسلولة على الرافضة المخذولة"
 status: published
 published_at: 2026-06-25
-person: book-nzpina
+person: book-b4vad4
 topics: ["aam-other"]
 ---
 ## نبذة عن مؤلف الأصل
