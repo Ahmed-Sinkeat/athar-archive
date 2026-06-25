@@ -4,23 +4,27 @@ import Base from "../../layouts/Base.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import EntityCard from "../../components/EntityCard.astro";
 import Prose from "../../components/Prose.astro";
-import { isPub, loadGraph } from "../../lib/site";
+import Relations from "../../components/Relations.astro";
+import { isPub, loadGraph, personNameMap, backlinksList } from "../../lib/site";
 import { hrefFor, labelFor, isMatn, eraLabel, eraHref } from "../../lib/display";
 import { personLd } from "../../lib/structured-data";
 
 export async function getStaticPaths() {
   const people = (await getCollection("person")).filter(isPub);
   const graph = await loadGraph();
+  const names = await personNameMap();
   return people.map((entry) => {
     const works = graph
       .materialsByPerson(entry.id)
       .filter(isPub)
       .map((w) => ({ collection: w.collection, id: w.id, title: w.data.title, series: w.data.series, kind: labelFor(w.collection, w.data), matn: isMatn(w.collection, w.data) }));
-    return { params: { slug: entry.id }, props: { entry, works } };
+    // works are shown above; the panel surfaces only the rest (mentions, etc.)
+    const backlinks = backlinksList(entry, graph, names).filter((b) => b.relation !== "من مؤلَّفاته");
+    return { params: { slug: entry.id }, props: { entry, works, backlinks } };
   });
 }
 
-const { entry, works } = Astro.props;
+const { entry, works, backlinks } = Astro.props;
 const meta = [entry.data.born && `و. ${entry.data.born}`, entry.data.died && `ت. ${entry.data.died}`, entry.data.location]
   .filter(Boolean)
   .join(" · ");
@@ -62,4 +66,5 @@ const jsonLd = personLd({
       </div>
     )}
   </div>
+  <Relations items={backlinks} />
 </Base>

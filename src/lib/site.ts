@@ -108,6 +108,28 @@ export function relatedTo(
   return out;
 }
 
+// «ما يشير إلى هذا»: reverse references (backlinks) as serializable items for the
+// Relations panel. Composes graph.backlinksFor; keeps connectivity off the body.
+export interface BacklinkItem { href: string; title: string; kind: string; relation: string; sub?: string }
+export function backlinksList(
+  entry: { collection: string; id: string },
+  graph: Graph,
+  names: Map<string, string>,
+): BacklinkItem[] {
+  const out: BacklinkItem[] = [];
+  for (const { entry: e, relation } of graph.backlinksFor(entry.collection, entry.id)) {
+    if (!isPub(e)) continue;
+    out.push({
+      href: hrefFor(e.collection, e.id, { series: (e.data as any).series }),
+      title: e.data.title as string,
+      kind: labelFor(e.collection, e.data),
+      relation,
+      sub: e.data.person ? names.get(e.data.person as string) : undefined,
+    });
+  }
+  return out;
+}
+
 // published entries of a collection, newest first
 export async function publishedSorted(collection: any) {
   const all = (await getCollection(collection)) as any[];
