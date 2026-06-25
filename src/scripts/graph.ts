@@ -25,7 +25,9 @@ function init() {
   for (const l of full.links) { deg[lid(l.source)] = (deg[lid(l.source)] || 0) + 1; deg[lid(l.target)] = (deg[lid(l.target)] || 0) + 1; }
   for (const n of full.nodes) n.val = 1 + (deg[n.id] || 0);
 
-  const ink = getComputedStyle(document.documentElement).getPropertyValue("--ink").trim() || "#3a322a";
+  let ink = getComputedStyle(document.documentElement).getPropertyValue("--ink").trim() || "#3a322a";
+  const obs = new MutationObserver(() => { ink = getComputedStyle(document.documentElement).getPropertyValue("--ink").trim() || "#3a322a"; });
+  obs.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
 
   // hover-highlight state
   let hoverId: string | null = null;
@@ -51,9 +53,9 @@ function init() {
     .nodeCanvasObjectMode(() => "after")
     .nodeCanvasObject((n: any, ctx: CanvasRenderingContext2D, scale: number) => {
       // declutter: when zoomed out, label only hubs + the hovered neighbourhood
-      if (scale < 0.7 && (deg[n.id] || 0) < 3 && !near.has(n.id)) return;
+      if (scale < 0.6 && (deg[n.id] || 0) < 3 && !near.has(n.id)) return;
       const r = Math.sqrt(n.val) * 5;
-      ctx.font = `${Math.min(5, 11 / scale)}px "IBM Plex Sans Arabic", system-ui, sans-serif`;
+      ctx.font = `${Math.min(5, 12 / scale)}px "IBM Plex Sans Arabic", system-ui, sans-serif`;
       ctx.textAlign = "center"; ctx.textBaseline = "top";
       ctx.fillStyle = hoverId && !near.has(n.id) ? FADE : ink;
       ctx.fillText(n.label, n.x, n.y + r + 1.5);
@@ -72,19 +74,46 @@ function init() {
   (g.d3Force("link") as any)?.distance(48);
   g.d3VelocityDecay(0.32);
 
-  // type filter from the legend checkboxes
+  // type filter from the legend checkboxes and person checklist
   const legend = document.querySelector("[data-graph-legend]");
-  legend?.addEventListener("change", () => {
+  const personSearch = document.getElementById("person-search") as HTMLInputElement;
+  const personList = document.querySelector(".graph-person-list");
+
+  function updateGraph() {
     const active = new Set(
       [...document.querySelectorAll<HTMLInputElement>("[data-graph-legend] input:checked")]
         .map((c) => c.closest("[data-type]")?.getAttribute("data-type") || ""),
     );
-    const nodes = full.nodes.filter((n) => active.has(n.type));
+    const activePersons = new Set(
+      [...document.querySelectorAll<HTMLInputElement>(".person-toggle:checked")]
+        .map((c) => `person:${c.value}`),
+    );
+    
+    const nodes = full.nodes.filter((n) => {
+      if (n.type === "person") return activePersons.has(n.id);
+      return active.has(n.type);
+    });
+    
     const ids = new Set(nodes.map((n) => n.id));
     const links = full.links.filter((l) => ids.has(lid(l.source)) && ids.has(lid(l.target)));
     setHover(null);
     g.graphData({ nodes, links });
+  }
+
+  legend?.addEventListener("change", updateGraph);
+  personList?.addEventListener("change", updateGraph);
+
+  personSearch?.addEventListener("input", () => {
+    const q = personSearch.value.trim();
+    document.querySelectorAll<HTMLElement>(".graph-person-leg").forEach((leg) => {
+      if (!q) { leg.style.display = ""; return; }
+      const match = (leg.dataset.name || "").includes(q);
+      leg.style.display = match ? "" : "none";
+    });
   });
+
+  // initial filter
+  updateGraph();
 
   const resize = () => g.width(el.clientWidth).height(el.clientHeight);
   window.addEventListener("resize", resize);
