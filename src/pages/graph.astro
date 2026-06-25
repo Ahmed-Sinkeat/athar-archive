@@ -5,6 +5,7 @@ import { loadGraph } from "../lib/site";
 import { hrefFor, toArabicDigits } from "../lib/display";
 import type { ContentEntry } from "../lib/types";
 import { splitChapters } from "../lib/chapters";
+import { readBody } from "../lib/read-body";
 
 // Obsidian-style knowledge graph of the whole archive. Nodes = published entities
 // (NO individual lessons — only their series); edges = author / topic / subject /
@@ -14,6 +15,8 @@ const graph = await loadGraph();
 const isPub = (e: ContentEntry) => e.data.status === "published";
 const TYPES = ["book", "poem", "person", "series", "subject", "topic", "article", "question", "benefit", "chapter"];
 const nid = (c: string, id: string) => `${c}:${id}`;
+
+const bookBodies = new Map<string, string>();
 
 const nodeSet = new Set<string>();
 const nodes: { id: string; label: string; type: string; href: string }[] = [];
@@ -26,7 +29,9 @@ for (const e of graph.all) {
 
   // Extract chapters/lessons and add them as nodes
   if (e.collection === "book" || e.collection === "poem") {
-    const { chapters } = splitChapters(e.body ?? "");
+    const body = await readBody(e);
+    bookBodies.set(`${e.collection}:${e.id}`, body);
+    const { chapters } = splitChapters(body);
     for (const ch of chapters) {
       const chId = nid("chapter", `${e.collection}:${e.id}:${ch.slug}`);
       if (nodeSet.has(chId)) continue;
@@ -66,7 +71,8 @@ for (const e of graph.all) {
 
   // Connect chapters/lessons to their parent book/poem
   if (e.collection === "book" || e.collection === "poem") {
-    const { chapters } = splitChapters(e.body ?? "");
+    const body = bookBodies.get(`${e.collection}:${e.id}`) || "";
+    const { chapters } = splitChapters(body);
     for (const ch of chapters) {
       const chId = nid("chapter", `${e.collection}:${e.id}:${ch.slug}`);
       addLink(chId, id);
@@ -125,6 +131,10 @@ const gdata = JSON.stringify({ nodes, links }).replace(/</g, "\\u003c");
     </div>
 
     <p class="faint graph-hint">كلُّ نقطةٍ مادةٌ أو عَلَمٌ أو فنّ؛ الخطوطُ روابطُها. اسحبِ النقطةَ لتحريكها، مرِّرْ للتكبير، وانقرْها لفتحِها. أزِلِ العلامةَ عن نوعٍ لإخفائه.</p>
+    <div style="display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap;">
+      <button type="button" id="legend-select-all" class="btn btn-secondary btn-sm" style="padding: 4px 12px; font-size: 13px; cursor: pointer; background: var(--bg-hover); border: 1px solid var(--border); border-radius: 4px; color: var(--ink);">تحديد الكل</button>
+      <button type="button" id="legend-clear-all" class="btn btn-secondary btn-sm" style="padding: 4px 12px; font-size: 13px; cursor: pointer; background: var(--bg-hover); border: 1px solid var(--border); border-radius: 4px; color: var(--ink);">إلغاء تحديد الكل</button>
+    </div>
     <div class="graph-legend" data-graph-legend>
       {present.map((t) => (
         <label class="graph-leg" data-type={t}>
@@ -144,7 +154,11 @@ const gdata = JSON.stringify({ nodes, links }).replace(/</g, "\\u003c");
     <div class="wrap-mid" style="margin-top: 48px; padding-bottom: 80px;">
       <div class="section-label">إضافة الأعلام ومؤلفاتهم إلى الشبكة</div>
       <div class="graph-person-search">
-        <input type="search" id="person-search" class="pop-search" placeholder="ابحث عن عَلَم…" aria-label="ابحث عن عَلَم" style="margin-bottom: 16px;" autocomplete="off" />
+        <input type="search" id="person-search" class="pop-search" placeholder="ابحث عن عَلَم…" aria-label="ابحث عن عَلَم" style="margin-bottom: 12px;" autocomplete="off" />
+        <div style="display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap;">
+          <button type="button" id="person-select-all" class="btn btn-secondary btn-sm" style="padding: 4px 12px; font-size: 13px; cursor: pointer; background: var(--bg-hover); border: 1px solid var(--border); border-radius: 4px; color: var(--ink);">تحديد الكل</button>
+          <button type="button" id="person-clear-all" class="btn btn-secondary btn-sm" style="padding: 4px 12px; font-size: 13px; cursor: pointer; background: var(--bg-hover); border: 1px solid var(--border); border-radius: 4px; color: var(--ink);">إلغاء تحديد الكل</button>
+        </div>
         <div class="pop-checklist graph-person-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; max-height: 400px; overflow-y: auto;">
           {scholars.map((s) => (
             <label class="pop-check graph-person-leg" data-name={s.title}>
