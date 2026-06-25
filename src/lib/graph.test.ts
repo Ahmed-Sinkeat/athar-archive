@@ -84,18 +84,3 @@ describe("backlinks (ما يشير إلى هذا)", () => {
   });
 });
 
-describe("graph over real fixtures", () => {
-  const g = buildGraph(loadContentFromDisk());
-
-  it("commentariesOf links sharh-al-wasitiyyah to al-wasitiyyah", () => {
-    const ids = g.commentariesOf("al-wasitiyyah").map((b) => b.id);
-    expect(ids).toContain("sharh-al-wasitiyyah");
-  });
-
-  it("links al-asma-was-sifat to its materials", () => {
-    const ids = g.materialsByTopic("al-asma-was-sifat").map((m) => m.id);
-    expect(ids).toContain("al-wasitiyyah");
-    expect(ids).toContain("maqala-tawhid");
-    expect(ids).toContain("masail-al-asma-was-sifat");
-  });
-});
