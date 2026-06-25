@@ -15,8 +15,6 @@ export const COLLECTIONS = [
   "topic",
   "book",
   "poem",
-  "series",
-  "lesson",
   "question",
   "benefit",
   "article",
@@ -35,7 +33,6 @@ export type CollectionName = (typeof COLLECTIONS)[number];
 export const MATERIAL_COLLECTIONS = [
   "book",
   "poem",
-  "series",
   "article",
   "benefit",
   "question",

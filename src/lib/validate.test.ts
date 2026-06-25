@@ -18,7 +18,6 @@ function baseCorpus(): ContentEntry[] {
     entry("subject", "aqeedah", { title: "العقيدة" }),
     entry("topic", "al-asma-was-sifat", { title: "الأسماء والصفات", subject: "aqeedah" }),
     entry("book", "al-wasitiyyah", { title: "الواسطية", person: "ibn-taymiyyah", topics: ["al-asma-was-sifat"] }),
-    entry("series", "sharh-wasitiyyah", { title: "شرح الواسطية", person: "ibn-taymiyyah", source_type: "book", source_id: "al-wasitiyyah" }),
   ];
 }
 
@@ -121,48 +120,37 @@ describe("ref-resolution", () => {
   });
 });
 
-// --- transcript gate ---
+// --- transcript_status on audio-bearing books ---
 
-describe("transcript-gate", () => {
-  it("fails a published lesson with empty body", () => {
+describe("transcript-gate (replaced by transcript_status)", () => {
+  it("passes a published book with transcript_status and non-empty body", () => {
     const corpus = [
       ...baseCorpus(),
-      entry("lesson", "sharh-wasitiyyah--lesson-1", {
-        title: "الدرس الأول",
-        series: "sharh-wasitiyyah",
-        order: 1,
-      }, ""), // empty body = no transcript
+      entry("book", "sharh-wasitiyyah", {
+        title: "شرح الواسطية",
+        person: "ibn-taymiyyah",
+        sharh_of: "al-wasitiyyah",
+        transcript_status: "قيد المراجعة",
+      }, "## المقدمة\n\nنص"),
     ];
     const errors = validate(corpus);
-    expect(errors.some((e) => e.rule === "transcript-gate")).toBe(true);
+    expect(errors.filter((e) => e.rule === "ref-resolution" && e.id === "sharh-wasitiyyah")).toHaveLength(0);
   });
 
-  it("passes a published lesson with non-empty body", () => {
+  it("fails a book with sharh_of pointing to non-existent book", () => {
     const corpus = [
       ...baseCorpus(),
-      entry("lesson", "sharh-wasitiyyah--lesson-1", {
-        title: "الدرس الأول",
-        series: "sharh-wasitiyyah",
-        order: 1,
-      }, "## المقدمة\n\nمحتوى الدرس..."),
+      entry("book", "sharh-ghost", {
+        title: "شرح مجهول",
+        person: "ibn-taymiyyah",
+        sharh_of: "non-existent-book",
+      }, "نص"),
     ];
     const errors = validate(corpus);
-    expect(errors.filter((e) => e.rule === "transcript-gate")).toHaveLength(0);
-  });
-
-  it("allows a draft lesson with empty body", () => {
-    const corpus = [
-      ...baseCorpus(),
-      draft("lesson", "sharh-wasitiyyah--lesson-3", {
-        title: "الدرس الثالث",
-        series: "sharh-wasitiyyah",
-        order: 3,
-      }, ""),
-    ];
-    const errors = validate(corpus);
-    expect(errors.filter((e) => e.rule === "transcript-gate")).toHaveLength(0);
+    expect(errors.some((e) => e.rule === "ref-resolution" && e.id === "sharh-ghost")).toBe(true);
   });
 });
+
 
 // --- draft-ref-guard ---
 
@@ -175,17 +163,17 @@ describe("draft-ref-guard", () => {
     expect(errors.some((e) => e.rule === "draft-ref-guard" && e.id === "b1")).toBe(true);
   });
 
-  it("fails when a published lesson references a draft series", () => {
+  it("fails when a published book with sharh_of references a draft parent", () => {
     const errors = validate([
       entry("person", "p1", { title: "شخص" }),
-      draft("series", "s-draft", { title: "سلسلة", person: "p1" }),
-      entry("lesson", "s-draft--lesson-1", {
-        title: "درس",
-        series: "s-draft",
-        order: 1,
-      }, "محتوى"),
+      draft("book", "parent-draft", { title: "كتاب مسودة", person: "p1" }),
+      entry("book", "sharh-parent", {
+        title: "شرح الكتاب",
+        person: "p1",
+        sharh_of: "parent-draft",
+      }, "نص"),
     ]);
-    expect(errors.some((e) => e.rule === "draft-ref-guard" && e.id === "s-draft--lesson-1")).toBe(true);
+    expect(errors.some((e) => e.rule === "draft-ref-guard" && e.id === "sharh-parent")).toBe(true);
   });
 
   it("allows a draft entity to reference another draft", () => {
@@ -214,15 +202,7 @@ describe("mandatory-relation: topic → subject", () => {
 // --- polymorphic source types ---
 
 describe("source-type validation", () => {
-  it("fails a series with invalid source_type", () => {
-    const errors = validate([
-      entry("person", "p1", { title: "شخص" }),
-      entry("series", "s1", { title: "سلسلة", person: "p1", source_type: "lesson", source_id: "x" }),
-    ]);
-    expect(errors.some((e) => e.rule === "source-type" && e.id === "s1")).toBe(true);
-  });
-
-  it("fails a benefit with invalid source_type", () => {
+  it("fails a benefit with invalid source_type (series)", () => {
     const errors = validate([
       entry("person", "p1", { title: "شخص" }),
       entry("benefit", "b1", { title: "فائدة", person: "p1", source_type: "series", source_id: "x" }),
@@ -230,15 +210,24 @@ describe("source-type validation", () => {
     expect(errors.some((e) => e.rule === "source-type" && e.id === "b1")).toBe(true);
   });
 
-  it("passes series with source_type book", () => {
+  it("fails a benefit with invalid source_type (lesson)", () => {
+    const errors = validate([
+      entry("person", "p1", { title: "شخص" }),
+      entry("benefit", "b1", { title: "فائدة", person: "p1", source_type: "lesson", source_id: "x" }),
+    ]);
+    expect(errors.some((e) => e.rule === "source-type" && e.id === "b1")).toBe(true);
+  });
+
+  it("passes benefit with source_type book", () => {
     const errors = validate([
       entry("person", "p1", { title: "شخص" }),
       entry("book", "bk1", { title: "كتاب", person: "p1" }),
-      entry("series", "s1", { title: "سلسلة", person: "p1", source_type: "book", source_id: "bk1" }),
+      entry("benefit", "b1", { title: "فائدة", person: "p1", source_type: "book", source_id: "bk1" }),
     ]);
-    expect(errors.filter((e) => e.collection === "series")).toHaveLength(0);
+    expect(errors.filter((e) => e.collection === "benefit")).toHaveLength(0);
   });
 });
+
 
 // --- audio mandatory source ---
 
@@ -250,25 +239,21 @@ describe("audio source", () => {
     expect(errors.some((e) => e.rule === "mandatory-relation" && e.id === "aud1")).toBe(true);
   });
 
-  it("passes valid audio pointing to existing lesson", () => {
+  it("passes valid audio pointing to existing book", () => {
     const corpus = [
       ...baseCorpus(),
-      entry("lesson", "sharh-wasitiyyah--lesson-1", {
-        title: "الدرس الأول",
-        series: "sharh-wasitiyyah",
-        order: 1,
-      }, "محتوى"),
-      entry("audio", "aud-lesson-1", {
-        title: "صوت الدرس",
-        source_type: "lesson",
-        source_id: "sharh-wasitiyyah--lesson-1",
-        url: "https://r2.example.com/lesson1.opus",
+      entry("audio", "aud-sharh-1", {
+        title: "صوت الشرح",
+        source_type: "book",
+        source_id: "al-wasitiyyah",
+        url: "https://r2.ahlalathar.com/audio/sharh.opus",
       }),
     ];
     const errors = validate(corpus);
     expect(errors.filter((e) => e.collection === "audio")).toHaveLength(0);
   });
 });
+
 
 // --- annotation ---
 
@@ -300,15 +285,19 @@ describe("valid corpus", () => {
       entry("topic", "al-asma-was-sifat", { title: "الأسماء والصفات", subject: "aqeedah" }),
       entry("topic", "al-nahw-al-muyassar", { title: "النحو الميسر", subject: "nahw" }),
       entry("book", "al-wasitiyyah", { title: "الواسطية", person: "ibn-taymiyyah", topics: ["al-asma-was-sifat"] }),
+      entry("book", "sharh-al-wasitiyyah", {
+        title: "شرح الواسطية",
+        person: "ibn-taymiyyah",
+        sharh_of: "al-wasitiyyah",
+        transcript_status: "قيد المراجعة",
+        topics: ["al-asma-was-sifat"],
+      }, "## المقدمة\n\nنص"),
       entry("poem", "alfiyyah-ibn-malik", { title: "الألفية", person: "ibn-malik-al-nahwi", topics: ["al-nahw-al-muyassar"] }, "## باب الكلام\n\nكلامنا لفظ مفيد كاستقم --- واسم وفعل ثم حرف الكلم"),
       entry("poem", "al-bayquniyyah", { title: "البيقونية", person: "ibn-taymiyyah" }, "أبدأ بالحمد --- مصليا على"),
-      entry("series", "sharh-al-wasitiyyah", { title: "شرح الواسطية", person: "ibn-taymiyyah", source_type: "book", source_id: "al-wasitiyyah", topics: ["al-asma-was-sifat"] }),
-      entry("lesson", "sharh-al-wasitiyyah--lesson-1", { title: "الدرس الأول", series: "sharh-al-wasitiyyah", order: 1 }, "## المقدمة\n\nمحتوى الدرس"),
-      draft("lesson", "sharh-al-wasitiyyah--lesson-2", { title: "الدرس الثاني", series: "sharh-al-wasitiyyah", order: 2 }, ""),
       entry("benefit", "tawhid-benefit", { title: "فائدة التوحيد", person: "ibn-taymiyyah", source_type: "book", source_id: "al-wasitiyyah", topics: ["al-asma-was-sifat"] }),
       entry("benefit", "general-benefit", { title: "فائدة عامة", person: "ibn-taymiyyah" }),
       entry("article", "maqala-tawhid", { title: "مقالة في التوحيد", person: "ibn-taymiyyah", topics: ["al-asma-was-sifat"] }),
-      entry("audio", "audio-sharh-wasitiyyah-lesson-1", { title: "صوت الدرس", source_type: "lesson", source_id: "sharh-al-wasitiyyah--lesson-1", url: "https://r2.ahlalathar.com/audio/lesson1.opus" }),
+      entry("audio", "audio-sharh-wasitiyyah", { title: "صوت الشرح", source_type: "book", source_id: "sharh-al-wasitiyyah", url: "https://r2.ahlalathar.com/audio/sharh.opus" }),
       entry("question", "masail-al-asma-was-sifat", { title: "مسائل الأسماء والصفات", person: "ibn-taymiyyah", topics: ["al-asma-was-sifat"] }),
       entry("annotation", "alfiyyah-ibn-malik--v1--sharh", { title: "شرح البيت الأول", target_type: "poem", target_id: "alfiyyah-ibn-malik", anchor: "v1" }),
       entry("announcement", "launch", { title: "انطلاق الموقع", priority: 9 }),
@@ -319,3 +308,4 @@ describe("valid corpus", () => {
     expect(errors).toHaveLength(0);
   });
 });
+

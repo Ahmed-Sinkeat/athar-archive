@@ -1,7 +1,6 @@
 import type { APIRoute } from "astro";
 import { getCollection } from "astro:content";
 import { config } from "../../ahlalathar.config";
-import { lessonParam } from "../lib/display";
 import { analyzePoem, analyzeBook } from "../lib/chunk";
 import { readBody } from "../lib/read-body";
 
@@ -12,7 +11,7 @@ export const GET: APIRoute = async () => {
     urls.push({ loc: new URL(path, origin).href, lastmod: date ? new Date(date as string).toISOString() : undefined });
 
   // static, indexable pages (search is noindex → excluded)
-  ["/", "/books", "/poems", "/series", "/topics", "/subjects", "/people", "/articles", "/benefits", "/questions", "/about", "/contact"].forEach((p) => add(p));
+  ["/", "/books", "/poems", "/topics", "/subjects", "/people", "/articles", "/benefits", "/questions", "/about", "/contact"].forEach((p) => add(p));
 
   const pub = (c: any[]) => c.filter((e) => e.data.status === "published");
   const when = (e: any) => e.data.updated_at ?? e.data.published_at;
@@ -30,8 +29,6 @@ export const GET: APIRoute = async () => {
     const a = analyzePoem(await readBody(e));
     if (a.chunked) a.chapters.forEach((c) => add(`/poem/${e.id}/${c.slug}`, when(e)));
   }
-  for (const e of pub(await getCollection("series"))) add(`/series/${e.id}`, when(e));
-  for (const e of pub(await getCollection("lesson"))) add(`/series/${e.data.series}/${lessonParam(e.id, e.data.series)}`, when(e));
   for (const e of pub(await getCollection("benefit"))) add(`/benefit/${e.id}`, when(e));
   for (const e of pub(await getCollection("article"))) add(`/article/${e.id}`, when(e));
   for (const e of pub(await getCollection("question"))) add(`/questions/${e.id}`, when(e));

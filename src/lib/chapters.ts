@@ -1,8 +1,8 @@
 // Parse Markdown bodies into derived structure:
-//   - chapters from `## …` (h2) markers
+//   - chapters from `## …` (h2) markers (empty chapters filtered out)
 //   - Poem verses {n, sadr, ajz?, anchor} with global sequential numbering
 //   - Book paragraphs with stable anchors (explicit {#id} or auto p{n})
-//   - Lesson heading TOC with slug anchors
+//   - Nested heading TOC (h1-h6) for in-page outline / jump-links
 // All derivations come from the source body — never hand-stored (FR-C-06).
 
 // --- Arabic-aware slugify ---
@@ -55,13 +55,13 @@ export interface ChapterSplit {
 export function splitChapters(body: string): ChapterSplit {
   const lines = body.split("\n");
   const preambleLines: string[] = [];
-  const chapters: RawChapter[] = [];
+  const rawChapters: { title: string; lines: string[] }[] = [];
   let current: { title: string; lines: string[] } | null = null;
 
   for (const line of lines) {
     const m = line.match(H2_RE);
     if (m) {
-      if (current) chapters.push(finalizeChapter(current, chapters.length));
+      if (current) rawChapters.push(current);
       current = { title: m[1].trim(), lines: [] };
     } else if (current) {
       current.lines.push(line);
@@ -69,7 +69,15 @@ export function splitChapters(body: string): ChapterSplit {
       preambleLines.push(line);
     }
   }
-  if (current) chapters.push(finalizeChapter(current, chapters.length));
+  if (current) rawChapters.push(current);
+
+  // ponytail: drop chapters whose content has 0 real paragraphs/verses
+  // fixes القحطاني "empty ## القصيدة النونية" → 2 junk chapters bug
+  const nonEmpty = rawChapters.filter((c) =>
+    c.lines.some((l) => l.trim() && !l.trim().startsWith("#")),
+  );
+
+  const chapters = nonEmpty.map((c, i) => finalizeChapter(c, i));
 
   // dedupe slugs deterministically (-2, -3, …)
   const seen = new Set<string>();
@@ -199,28 +207,31 @@ export function parseBook(body: string): ParsedBook {
   return { paragraphs, wordCount, chapters: splitChapters(body).chapters };
 }
 
-// --- Lesson (heading TOC) ---
+// --- Nested TOC (h1-h6 in-page outline for books / audio-books) ---
+// h2 = chapter boundary (handled by splitChapters); deeper levels are sub-nodes.
+// h1 is intentionally excluded (= book title).
 
-const HEADING_RE = /^(#{2,3})\s+(.+?)\s*$/;
+const TOC_HEADING_RE = /^(#{2,6})\s+(.+?)\s*$/;
 
-export interface LessonHeading {
+export interface TocHeading {
   title: string;
   slug: string;
-  depth: 2 | 3;
+  depth: 2 | 3 | 4 | 5 | 6;
 }
 
-export function parseLesson(body: string): { headings: LessonHeading[] } {
-  const headings: LessonHeading[] = [];
+/** Extract all h2-h6 headings as flat ordered list; callers nest by depth. */
+export function parseToc(body: string): TocHeading[] {
+  const headings: TocHeading[] = [];
   const seen = new Set<string>();
   for (const line of body.split("\n")) {
-    const m = line.match(HEADING_RE);
+    const m = line.match(TOC_HEADING_RE);
     if (!m) continue;
-    const depth = m[1].length as 2 | 3;
+    const depth = m[1].length as 2 | 3 | 4 | 5 | 6;
     const title = m[2].trim();
     const slug = uniqueSlug(slugifyArabic(title) || `section-${headings.length + 1}`, seen);
     headings.push({ title, slug, depth });
   }
-  return { headings };
+  return headings;
 }
 
 // --- anchor enumeration (used by the validator for annotation resolution) ---
@@ -229,11 +240,11 @@ export function extractAnchors(collection: string, body: string): Set<string> {
   if (collection === "poem") {
     return new Set(parsePoem(body).verses.map((v) => v.anchor));
   }
+  // book + quran: paragraph anchors; also expose heading slugs for TOC links
   if (collection === "book" || collection === "quran") {
-    return new Set(parseBook(body).paragraphs.map((p) => p.id));
-  }
-  if (collection === "lesson") {
-    return new Set(parseLesson(body).headings.map((h) => h.slug));
+    const { paragraphs } = parseBook(body);
+    const toc = parseToc(body);
+    return new Set([...paragraphs.map((p) => p.id), ...toc.map((h) => h.slug)]);
   }
   return new Set();
 }

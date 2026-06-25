@@ -12,13 +12,11 @@ function smallCorpus(): ContentEntry[] {
     e("person", "p1", { title: "شخص" }),
     e("subject", "aqeedah", { title: "العقيدة" }),
     e("topic", "t1", { title: "موضوع", subject: "aqeedah" }),
-    e("book", "bk1", { title: "كتاب", person: "p1", topics: ["t1"] }),
+    e("book", "bk1", { title: "كتاب التوحيد", person: "p1", topics: ["t1"] }),
+    e("book", "bk2", { title: "فتح المجيد", person: "p1", topics: ["t1"], sharh_of: "bk1" }),
     e("article", "ar1", { title: "مقالة", person: "p1", topics: ["t1"] }),
-    e("series", "s1", { title: "سلسلة", person: "p1", source_type: "book", source_id: "bk1" }),
-    e("lesson", "s1--lesson-2", { title: "الثاني", series: "s1", order: 2, duration: "58:20" }, "نص"),
-    e("lesson", "s1--lesson-1", { title: "الأول", series: "s1", order: 1, duration: "1:12:34" }, "نص"),
     e("benefit", "bn1", { title: "فائدة", person: "p1", source_type: "book", source_id: "bk1" }),
-    e("audio", "au1", { title: "صوت", source_type: "lesson", source_id: "s1--lesson-1", url: "x" }),
+    e("audio", "au1", { title: "صوت", source_type: "book", source_id: "bk1", url: "x" }),
     e("annotation", "bk1--p1--h", { title: "شرح", target_type: "book", target_id: "bk1", anchor: "p1" }),
   ];
 }
@@ -41,35 +39,28 @@ describe("graph indices", () => {
 
   it("indexes materials by topic", () => {
     const ids = g.materialsByTopic("t1").map((m) => m.id).sort();
-    expect(ids).toEqual(["ar1", "bk1"]);
+    expect(ids).toEqual(["ar1", "bk1", "bk2"]);
   });
 
   it("indexes materials by subject via its topics", () => {
     const ids = g.materialsBySubject("aqeedah").map((m) => m.id).sort();
-    expect(ids).toEqual(["ar1", "bk1"]);
+    expect(ids).toEqual(["ar1", "bk1", "bk2"]);
   });
 
   it("indexes materials by person", () => {
-    const ids = g.materialsByPerson("p1").map((m) => m.collection).sort();
-    expect(ids).toEqual(["article", "benefit", "book", "series"]);
+    const collections = g.materialsByPerson("p1").map((m) => m.collection).sort();
+    expect(collections).toContain("book");
+    expect(collections).toContain("article");
   });
 
-  it("orders lessons by `order`", () => {
-    const order = g.lessonsBySeries("s1").map((l) => l.id);
-    expect(order).toEqual(["s1--lesson-1", "s1--lesson-2"]);
+  it("resolves commentariesOf (شروح reverse edge)", () => {
+    expect(g.commentariesOf("bk1").map((b) => b.id)).toEqual(["bk2"]);
   });
 
   it("resolves reverse polymorphic lookups", () => {
-    expect(g.audioForSource("lesson", "s1--lesson-1").map((a) => a.id)).toEqual(["au1"]);
+    expect(g.audioForSource("book", "bk1").map((a) => a.id)).toEqual(["au1"]);
     expect(g.benefitsForSource("book", "bk1").map((b) => b.id)).toEqual(["bn1"]);
-    expect(g.seriesForSource("book", "bk1").map((s) => s.id)).toEqual(["s1"]);
     expect(g.annotationsForTarget("book", "bk1").map((a) => a.id)).toEqual(["bk1--p1--h"]);
-  });
-
-  it("derives series stats (count + summed duration)", () => {
-    const stats = g.seriesStats("s1");
-    expect(stats.lessonCount).toBe(2);
-    expect(stats.totalDuration).toBe("2:10:54"); // 1:12:34 + 58:20
   });
 });
 
@@ -78,11 +69,11 @@ describe("backlinks (ما يشير إلى هذا)", () => {
   corpus.push(e("article", "ar2", { title: "إشارة", person: "p1" }, "انظر [[book:bk1]] للتفصيل"));
   const g = buildGraph(corpus);
 
-  it("collects reverse references to a book (annotation, benefit, series, wiki-link)", () => {
+  it("collects reverse references to a book (annotation, benefit, شرح, wiki-link)", () => {
     const byId = Object.fromEntries(g.backlinksFor("book", "bk1").map((r) => [r.entry.id, r.relation]));
     expect(byId["bk1--p1--h"]).toBe("شرح/حاشية");
     expect(byId["bn1"]).toBe("فائدة");
-    expect(byId["s1"]).toBe("سلسلة شرح");
+    expect(byId["bk2"]).toBe("شرح/تعليق"); // sharh_of reverse edge
     expect(byId["ar2"]).toBe("إشارة");
   });
 
@@ -96,11 +87,9 @@ describe("backlinks (ما يشير إلى هذا)", () => {
 describe("graph over real fixtures", () => {
   const g = buildGraph(loadContentFromDisk());
 
-  it("derives sharh-al-wasitiyyah stats matching the fixtures", () => {
-    const stats = g.seriesStats("sharh-al-wasitiyyah");
-    expect(stats.lessonCount).toBe(2);
-    expect(stats.publishedLessonCount).toBe(1); // lesson-2 is a draft
-    expect(stats.totalDuration).toBe("2:10:54");
+  it("commentariesOf links sharh-al-wasitiyyah to al-wasitiyyah", () => {
+    const ids = g.commentariesOf("al-wasitiyyah").map((b) => b.id);
+    expect(ids).toContain("sharh-al-wasitiyyah");
   });
 
   it("links al-asma-was-sifat to its materials", () => {

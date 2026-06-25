@@ -5,7 +5,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { loadContentFromDisk } from "../src/lib/load.js";
-import { hrefFor, lessonParam } from "../src/lib/display.js";
+import { hrefFor } from "../src/lib/display.js";
 
 function main() {
   const entries = loadContentFromDisk();
@@ -17,15 +17,11 @@ function main() {
     if (aliases.length === 0) continue;
 
     for (const old of aliases) {
-      if (e.collection === "lesson") {
-        const series = String(e.data.series);
-        lines.push(`/series/${series}/${lessonParam(old, series)} /series/${series}/${lessonParam(e.id, series)} 301`);
-      } else {
-        const to = hrefFor(e.collection, e.id);
-        if (to !== "/") lines.push(`${hrefFor(e.collection, old)} ${to} 301`);
-      }
+      const to = hrefFor(e.collection, e.id);
+      if (to !== "/") lines.push(`${hrefFor(e.collection, old)} ${to} 301`);
     }
   }
+
 
   const out = path.resolve("dist/client/_redirects"); // adapter asset root
   fs.writeFileSync(out, lines.join("\n") + (lines.length ? "\n" : ""), "utf-8");

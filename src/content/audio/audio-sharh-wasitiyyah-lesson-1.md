@@ -1,7 +1,7 @@
 ---
-title: تسجيل الدرس الأول — شرح الواسطية
-source_type: lesson
-source_id: sharh-al-wasitiyyah--lesson-1
+title: تسجيل شرح العقيدة الواسطية
+source_type: book
+source_id: sharh-al-wasitiyyah
 url: https://r2.ahlalathar.com/audio/sharh-wasitiyyah-01.opus
 format: opus
 duration: "1:12:34"

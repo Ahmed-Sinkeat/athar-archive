@@ -44,8 +44,6 @@ src/
 │  ├─ topic/                 #   الموضوع      — 2 fixtures (→ Subject)
 │  ├─ book/                  #   الكتاب       — 1 fixture (→ Person)
 │  ├─ poem/                  #   المنظومة     — 2 fixtures (long + short)
-│  ├─ series/                #   السلسلة      — 1 fixture (polymorphic → book)
-│  ├─ lesson/                #   الدرس        — 2 fixtures (published + draft/transcript-gate)
 │  ├─ question/              #   المسائل      — 1 fixture (QAPage)
 │  ├─ benefit/               #   الفائدة      — 2 fixtures (with + without source)
 │  ├─ article/               #   المقالة      — 1 fixture
@@ -93,7 +91,6 @@ src/
    ├─ quran.astro · hadith.astro · tarajim.astro · quran/[surah].astro   # genre sections (P1) + mushaf ayah reader (P4)
    ├─ book/[slug].astro · book/[slug]/[chapter].astro
    ├─ poem/[slug].astro · poem/[slug]/[chapter].astro
-   ├─ series/[slug].astro · series/[slug]/[lesson].astro
    ├─ person/[slug].astro · subject/[slug].astro · topic/[slug].astro · era/[slug].astro
    ├─ benefit/[slug].astro · article/[slug].astro · questions/[slug].astro
    └─ sitemap.xml.ts · rss.xml.ts            # endpoints (XML feeds)
@@ -148,7 +145,7 @@ docs/
 ## Conventions
 
 - **Source of truth:** Markdown + YAML frontmatter under `src/content/`. The whole site is rebuildable from Git alone (NFR-04).
-- **IDs = filenames = slugs.** Pattern `^[a-z0-9]+(--?[a-z0-9]+)*$`; `--` separates parent from child (e.g. `sharh-al-wasitiyyah--lesson-1`, `alfiyyah-ibn-malik--v1--sharh`).
+- **IDs = filenames = slugs.** Pattern `^[a-z0-9]+(--?[a-z0-9]+)*$`; `--` separates parent from child (e.g. `alfiyyah-ibn-malik--v1--sharh`).
 - **Derived, never hand-stored:** verse counts, opening verse, chapter splits, series stats — all computed in `src/lib/` from the body (FR-C-06).
 - **Two-tier validation:** per-entity rules in `content.config.ts` (Zod); cross-entity rules in `src/lib/validate.ts` (run by `scripts/validate-content.ts`).
 - **Tests** live beside their module as `*.test.ts` and run under Vitest.

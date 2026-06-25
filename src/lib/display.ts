@@ -24,8 +24,7 @@ export const ENTITY: Record<
   topic: { one: "موضوع", many: "الموضوعات", index: "/topics" },
   book: { one: "كتاب", many: "الكتب", index: "/books" },
   poem: { one: "منظومة", many: "المنظومات", index: "/poems" },
-  series: { one: "سلسلة", many: "الدروس", index: "/series" },
-  lesson: { one: "درس", many: "الدروس", index: "/series" },
+  // ponytail: series + lesson retired; درس is a book; سلسلة شرح is book.sharh_of
   question: { one: "مسائل", many: "المسائل", index: "/questions" },
   benefit: { one: "فائدة", many: "الفوائد", index: "/benefits" },
   article: { one: "مقالة", many: "المقالات", index: "/articles" },
@@ -79,10 +78,6 @@ export function isMatn(collection: string, data: Record<string, any> = {}): bool
   return collection === "poem" || (collection === "book" && data.kind === "متن");
 }
 
-// Lesson route param = lesson id minus its "<series>--" prefix.
-export function lessonParam(lessonId: string, seriesId: string): string {
-  return lessonId.startsWith(`${seriesId}--`) ? lessonId.slice(seriesId.length + 2) : lessonId;
-}
 
 export function hrefFor(
   collection: string,
@@ -95,8 +90,6 @@ export function hrefFor(
     case "topic": return `/topic/${id}`;
     case "book": return opts.chapter ? `/book/${id}/${opts.chapter}` : `/book/${id}`;
     case "poem": return opts.chapter ? `/poem/${id}/${opts.chapter}` : `/poem/${id}`;
-    case "series": return `/series/${id}`;
-    case "lesson": return `/series/${opts.series}/${lessonParam(id, opts.series ?? "")}`;
     case "benefit": return `/benefit/${id}`;
     case "article": return `/article/${id}`;
     case "question": return `/questions/${id}`;

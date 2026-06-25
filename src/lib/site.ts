@@ -102,7 +102,7 @@ export function relatedTo(
     seen.add(k);
     out.push({ href: hrefFor(e.collection, e.id, { series: e.data.series }), title: e.data.title, kind, sub: e.data.person ? names.get(e.data.person) : undefined });
   };
-  graph.seriesForSource(entry.collection, entry.id).forEach((s) => add(s, "سلسلة"));
+  graph.commentariesOf(entry.id).forEach((s) => add(s, "شرح/تعليق"));
   if (entry.data.person) graph.materialsByPerson(entry.data.person as string).forEach((e) => add(e, labelFor(e.collection, e.data)));
   for (const t of (entry.data.topics as string[] | undefined) ?? []) graph.materialsByTopic(t).forEach((e) => add(e, labelFor(e.collection, e.data)));
   return out;
