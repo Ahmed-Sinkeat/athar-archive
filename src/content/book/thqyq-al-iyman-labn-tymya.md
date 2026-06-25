@@ -1,676 +1,677 @@
 ---
 title: "تحقيق الإيمان لابن تيمية"
 status: published
-published_at: 2026-06-24
+published_at: 2026-06-25
 person: abn-tymya
+topics: ["aam-other"]
 edition: "الرابعة - 1413 هـ- 1993 م"
 ---
 ## الإيمان لابن تيمية
 
 لشيخ الإسلام ابن تيمية خرج أحاديثه محمد ناصر الدين الألباني المكتب الإسلامي الطبعة الرابعة
 
-<div class="page-sep" data-page="1"></div>
+<hr class="page-sep" data-page="1" data-juz="1" />
 
 1413 - هـ - 1993 م
 
-<div class="page-sep" data-page="2"></div>
+<hr class="page-sep" data-page="2" data-juz="1" />
 
 صحيح (الإيمان أن تؤمن بالله وملائكته وكتبه ورسله واليوم الآخر وتؤمن بالقدر خيره وشره)
 
-<div class="page-sep" data-page="3"></div>
+<hr class="page-sep" data-page="3" data-juz="1" />
 
 (صحيح) بني الإسلام على خمس: شهادة أن لا إله إلا الله وأن محمدا عبده ورسوله وإقام الصلاة وإيتاء الزكاة وحج البيت وصوم رمضان
 
-<div class="page-sep" data-page="4"></div>
+<hr class="page-sep" data-page="4" data-juz="1" />
 
 (صحيح بشواهده) عن أبي قلابة عن رجل من أهل الشام عن أبيه عن النبي صلى الله عليه وسلم قال له: أسلم تسلم قال: وما الإسلام؟ قال: أن تسلم قلبك الله وأن يسلم المسلمون من لسانك ويدك) قال: فأي الإسلام أفضل؟ قال: (الإيمان) قال: وما الإيمان؟ قال: (أن تؤمن بالله وملائكته وكتبه ورسله وبالبعث بعد الموت) قال: فأي الإيمان أفضل قال: (الهجرة) قال: وما الهجرة؟ قال: (أن تهجر السوء) قال: فأي الهجرة أفضل؟ قال: (الجهاد) قال: وما الجهاد؟ قال: (أن تجاهد أو تقاتل الكفار إذا لقيتهم ولا تغلل ولا تجبن) ثم قال رسول الله صلى الله عليه وسلم: (عملان هما أفضل الأعمال إلا من عمل بمثلهما قالها ثلاثا: حجة مبرورة أو عمرة)
 
-<div class="page-sep" data-page="5"></div>
+<hr class="page-sep" data-page="5" data-juz="1" />
 
 (صحيح) المسلم من سلم المسلمون من لسانه ويده والمؤمن من أمنه الناس على دمائهم وأموالهم والمهاجر من هجر السيئات والمجاهد من جاهد نفسه لله
 
-<div class="page-sep" data-page="6"></div>
+<hr class="page-sep" data-page="6" data-juz="1" />
 
 (صحيح) عن عبد الله بن عبيد بن عمير عن أبيه عن جده أنه قيل لرسول الله صلى الله عليه وسلم: ما الإسلام قال: إطعام الطعام وطيب الكلام قيل: فما الإيمان؟ قال: (السماحة والصبر) قيل: فمن أفضل المسلمين إسلاما؟ قال: (من سلم المسلمون من لسانه ويده) قيل: فمن أفضل المؤمنين إيمانا؟ قال: (أحسنهم خلقا) قيل: فما أفضل الهجرة؟ قال: (من هجر ما حرم الله عليه) قيل: أي الصلاة أفضل؟ قال: (طول القنوت) قيل: أي الصدقة أفضل؟ قال: (جهد مقل) قيل: أي الجهاد أفضل؟ قال: (أن تجاهد بمالك ونفسك فيعقر جوادك ويراق دمك) قيل: أي الساعات أفضل؟ قال: (جوف الليل الغابر)
 
-<div class="page-sep" data-page="7"></div>
+<hr class="page-sep" data-page="7" data-juz="1" />
 
 (صحيح) قال صلى الله عليه وسلم: الإيمان بضع وسبعون شعبة أعلاها قول لا إله إلا الله وأدناها إماطة الأذى عن الطريق
 
-<div class="page-sep" data-page="8"></div>
+<hr class="page-sep" data-page="8" data-juz="1" />
 
 (ضعيف) الإسلام علانية والإيمان في القلب
 
-<div class="page-sep" data-page="9"></div>
+<hr class="page-sep" data-page="9" data-juz="1" />
 
 (صحيح) إن في الجسد مضغة إذا صلحت صلح لها سائر الجسد وإذا فسدت فسد لها سائر الجسد ألا وهي القلب
 
-<div class="page-sep" data-page="10"></div>
+<hr class="page-sep" data-page="10" data-juz="1" />
 
 (صحيح) هذا جبريل جاءكم يعلمكم دينكم
 
-<div class="page-sep" data-page="11"></div>
+<hr class="page-sep" data-page="11" data-juz="1" />
 
 (صحيح) قيل: ما الغيبة؟ قال: (ذكرك أخاك بما يكره
 
-<div class="page-sep" data-page="12"></div>
+<hr class="page-sep" data-page="12" data-juz="1" />
 
 (صحيح) الكبر بطر الحق وغمط الناس
 
-<div class="page-sep" data-page="13"></div>
+<hr class="page-sep" data-page="13" data-juz="1" />
 
 (صحيح) الإيمان بضع وستون أو بضع وسبعون شعبة أفضلها قول لا إله إلا الله وأدناها إماطة الأذى عن الطريق والحياء شعبة من الإيمان
 
-<div class="page-sep" data-page="14"></div>
+<hr class="page-sep" data-page="14" data-juz="1" />
 
 (صحيح) الحياء شعبة من الإيمان
 
-<div class="page-sep" data-page="15"></div>
+<hr class="page-sep" data-page="15" data-juz="1" />
 
 (صحيح) لا يؤمن أحدكم حتى أكون أحب إليه من ولده ووالده والناس أجمعين
 
-<div class="page-sep" data-page="16"></div>
+<hr class="page-sep" data-page="16" data-juz="1" />
 
 (صحيح) لا يؤمن أحدكم حتى يحب لأخيه ما يحب لنفسه
 
-<div class="page-sep" data-page="17"></div>
+<hr class="page-sep" data-page="17" data-juz="1" />
 
 (صحيح) والله لا يؤمن والله لا يؤمن والله لا يؤمن قيل: من يا رسول الله؟ قال: (الذي لا يأمن جاره بوائقه)
 
-<div class="page-sep" data-page="18"></div>
+<hr class="page-sep" data-page="18" data-juz="1" />
 
 (صحيح) من رأى منكم منكرا فليغيره بيده فإن لم يستطع فبلسانه فإن لم يستطع فبقلبه وذلك أضعف الإيمان
 
-<div class="page-sep" data-page="19"></div>
+<hr class="page-sep" data-page="19" data-juz="1" />
 
 (صحيح) لا صلاة إلا بأم القرآن
 
-<div class="page-sep" data-page="20"></div>
+<hr class="page-sep" data-page="20" data-juz="1" />
 
 (صحيح) لا إيمان لمن لا أمانة له ولا دين لمن لا عهد له
 
-<div class="page-sep" data-page="21"></div>
+<hr class="page-sep" data-page="21" data-juz="1" />
 
 (صحيح) قال للمسيئ صلاته: ارجع فصل فإنك لم تصل
 
-<div class="page-sep" data-page="22"></div>
+<hr class="page-sep" data-page="22" data-juz="1" />
 
 (صحيح) وقد أمره بالإعادة: لا صلاة لفذ خلف الصف
 
-<div class="page-sep" data-page="23"></div>
+<hr class="page-sep" data-page="23" data-juz="1" />
 
 (ضعيف) العلم علمان فعلم في القلب وعلم على اللسان فعلم القلب هو العلم النافع وعلم اللسان حجة الله على عباده
 
-<div class="page-sep" data-page="24"></div>
+<hr class="page-sep" data-page="24" data-juz="1" />
 
 (كلام على رضي الله عنهـ أخرجه عبد الرزاق وعبد بن حميد وابن جرير وابن المنذر وابن أبي حاتم والحاكم وصححه) وعن علي: الخشوع في القلب وأن تلين للمرء المسلم كتفك ولا تلتفت يمينا ولا شمالا
 
-<div class="page-sep" data-page="25"></div>
+<hr class="page-sep" data-page="25" data-juz="1" />
 
 (صحيح) عن ابن سيرين وغيره: كان النبي صلى الله عليه وسلم وأصحابه يرفعون أبصارهم في الصلاة إلى السماء وينظرون يمينا وشمالا حتى نزلت هذه: ﴿قد أفلح المؤمنون الذين هم في صلاتهم خاشعون﴾ [المؤمنون: 1 - 2] . فجعلوا بعد ذلك أبصارهم حيث يسجدون وما رؤي أحد منهم بعد ذلك ينظر إلا إلى الأرض
 
-<div class="page-sep" data-page="26"></div>
+<hr class="page-sep" data-page="26" data-juz="1" />
 
 (ضعيف) وأبصر النبي صلى الله عليه وسلم رجلا يعبث بلحيته في الصلاة فقال: (لو خشع قلب هذا لخشعت جوارحه) (وعلى هامش النسخة الهندية: هذا الحديث رواه الحكيم الترمذي والبيهقي في (شعب الإيمان) عن أبي بكر الصديق رضي الله عنهـ (تعوذوا بالله من خشوع النفاق) . قالوا: يا رسول الله وما خشوع النفاق؟ قال: (خشوع البدن ونفاق القلب) . وروى أحمد في (الزهد) وأبو بكر بن أبي شيبة معناه عن أبي الدرداء موقوفا عليه
 
-<div class="page-sep" data-page="27"></div>
+<hr class="page-sep" data-page="27" data-juz="1" />
 
 (ضعيف) عن ابن مسعود وابن عباس: أن في الصلاة منهى ومزجرا عن معاصي الله فمن لم تنهه صلاته عن الفحشاء والمنكر ولم يزدد بصلاته من الله إلا بعدا
 
-<div class="page-sep" data-page="28"></div>
+<hr class="page-sep" data-page="28" data-juz="1" />
 
 (حسن) عن عمار عن النبي صلى الله عليه وسلم أنه قال: إن العبد لينصرف من صلاته ولم يكتب له منها إلا نصفها إلا ثلثها حتى قال: إلا عشرها)
 
-<div class="page-sep" data-page="29"></div>
+<hr class="page-sep" data-page="29" data-juz="1" />
 
 (ضعيف) ينزع منه الإيمان فإن تاب أعيد إليه
 
-<div class="page-sep" data-page="30"></div>
+<hr class="page-sep" data-page="30" data-juz="1" />
 
 (حديث ثابت) عن أبي هريرة مرفوع إلى النبي صلى الله عليه وسلم: إذا زنى الزاني خرج منه الإيمان فكان كالظلة فإذا انقلع رجع إليه الإيمان
 
-<div class="page-sep" data-page="31"></div>
+<hr class="page-sep" data-page="31" data-juz="1" />
 
 (صحيح لطرقه الكثيرة) لا صلاة إلا بوضوء ولا وضوء لمن لم يذكر اسم الله عليه
 
-<div class="page-sep" data-page="32"></div>
+<hr class="page-sep" data-page="32" data-juz="1" />
 
 (ضعيف) لا صلاة لجار المسجد إلا في المسجد
 
-<div class="page-sep" data-page="33"></div>
+<hr class="page-sep" data-page="33" data-juz="1" />
 
 (صحيح) لا صيام لمن لم يبيت الصيام من الليل
 
-<div class="page-sep" data-page="34"></div>
+<hr class="page-sep" data-page="34" data-juz="1" />
 
 (بعض أسانيده صحيحة) من سمع النداء ثم لم يجب من غير عذر فلا صلاة له
 
-<div class="page-sep" data-page="35"></div>
+<hr class="page-sep" data-page="35" data-juz="1" />
 
 (صحيح) ألا إني أوتيت الكتاب ومثله معه
 
-<div class="page-sep" data-page="36"></div>
+<hr class="page-sep" data-page="36" data-juz="1" />
 
 (رواه الدارمي بسند صحيح عن حسان بن عطية فهو مرسل) وقال حسان بن عطية: كان جبريل ينزل على النبي صلى الله عليه وسلم بالسنة فيعلمه إياها كما يعلمه القرآن
 
-<div class="page-sep" data-page="37"></div>
+<hr class="page-sep" data-page="37" data-juz="1" />
 
 صحيح (لا يبغض الأنصار رجل يؤمن بالله واليوم الآخر)
 
-<div class="page-sep" data-page="38"></div>
+<hr class="page-sep" data-page="38" data-juz="1" />
 
 (صحيح) آية الإيمان حب الأنصار وآية النفاق بغض الأنصار
 
-<div class="page-sep" data-page="39"></div>
+<hr class="page-sep" data-page="39" data-juz="1" />
 
 (صحيح) من غشنا فليس منا ومن حمل علينا السلاح فليس منا
 
-<div class="page-sep" data-page="40"></div>
+<hr class="page-sep" data-page="40" data-juz="1" />
 
 (صحيح) من سرته حسنته وساءته سيئته فهو مؤمن
 
-<div class="page-sep" data-page="41"></div>
+<hr class="page-sep" data-page="41" data-juz="1" />
 
 (وروي مرفوعا بلفظ: (نوم الصائم) فهو ضعيف) وفي الأثر: نوم العالم تسبيح
 
-<div class="page-sep" data-page="42"></div>
+<hr class="page-sep" data-page="42" data-juz="1" />
 
 (صحيح) وفي سنن ابن ماجه وغيره: الطاعم الشاكر بمنزلة الصائم الصابر
 
-<div class="page-sep" data-page="43"></div>
+<hr class="page-sep" data-page="43" data-juz="1" />
 
 (حسن بشاهده) وفي حديث أبي ثعلبة عن النبي صلى الله عليه وسلم: إن الله فرض فرائض فلا تضيعوها وحد حدودا فلا تعتدوها وحرم حرمات فلا تنتهكوها وسكت عن أشياء رحمة لكم غير نسيان فلا تبحثوا عنها
 
-<div class="page-sep" data-page="44"></div>
+<hr class="page-sep" data-page="44" data-juz="1" />
 
 (صحيح) وفي بضع أحدكم صدقة قالوا: يا رسول الله يأتي أحدنا شهوته ويكون له فيها أجر؟ قال: أرأيتم لو وضعها في حرام كان عليه فيها وزر؟ فكذلك إن وضعها في الحلال كان له أجر
 
-<div class="page-sep" data-page="45"></div>
+<hr class="page-sep" data-page="45" data-juz="1" />
 
 (صحيح) إن الله يحب أن يؤخذ برخصه كما يكره أن تؤتى معصيته
 
-<div class="page-sep" data-page="46"></div>
+<hr class="page-sep" data-page="46" data-juz="1" />
 
 (صحيح) القصر صدقة تصدق الله بها عليكم فاقبلوا صدقته
 
-<div class="page-sep" data-page="47"></div>
+<hr class="page-sep" data-page="47" data-juz="1" />
 
 (حسن) كل كلام ابن آدم عليه لا له إلا أمرا بمعروف أو نهيا عن منكر أو ذكرا لله
 
-<div class="page-sep" data-page="48"></div>
+<hr class="page-sep" data-page="48" data-juz="1" />
 
 (صحيح) من حسن إسلام المرء تركه ما لا يعنيه
 
-<div class="page-sep" data-page="49"></div>
+<hr class="page-sep" data-page="49" data-juz="1" />
 
 (صحيح) كل الناس يغدو فبائع نفسه فمعتقها أو موبقها
 
-<div class="page-sep" data-page="50"></div>
+<hr class="page-sep" data-page="50" data-juz="1" />
 
 (صحيح) من رأى منكم منكرا فليغيره بيده فإن لم يستطع فبلسانه فإن لم يستطع فبقلبه وذلك أضعف الإيمان
 
-<div class="page-sep" data-page="51"></div>
+<hr class="page-sep" data-page="51" data-juz="1" />
 
 (صحيح) إنما الطاعة في المعروف
 
-<div class="page-sep" data-page="52"></div>
+<hr class="page-sep" data-page="52" data-juz="1" />
 
 (صحيح) وعن النبي صلى الله عليه وسلم أنه لما قيل له: الرجل يحب القوم ولما يلحق بهم؟ قال: المرء مع من أحب
 
-<div class="page-sep" data-page="53"></div>
+<hr class="page-sep" data-page="53" data-juz="1" />
 
 (صحيح) الأرواح جنود مجندة ما تعارف منها ائتلف وما تنافر منها اختلف
 
-<div class="page-sep" data-page="54"></div>
+<hr class="page-sep" data-page="54" data-juz="1" />
 
 (حسن) المرء على دين خليله فلينظر أحدكم من يخالل
 
-<div class="page-sep" data-page="55"></div>
+<hr class="page-sep" data-page="55" data-juz="1" />
 
 (صحيح) وكان النبي صلى الله عليه وسلم إذا أتاه طالب حاجة قال لأصاحبه: اشفعوا تؤجروا ويقضي الله على لسان نبيه ما شاء
 
-<div class="page-sep" data-page="56"></div>
+<hr class="page-sep" data-page="56" data-juz="1" />
 
 (صحيح) تعس عبد الدينار تعس عبد الدرهم تعس عبد القطيفة تعس عبد الخميصة تعس وانتكس وإذا شك فلا انتقش
 
-<div class="page-sep" data-page="57"></div>
+<hr class="page-sep" data-page="57" data-juz="1" />
 
 (صحيح) الشرك في هذه الأمة أخفى من دبيب النمل
 
-<div class="page-sep" data-page="58"></div>
+<hr class="page-sep" data-page="58" data-juz="1" />
 
 (لم أجده) في الحديث: يقول الله تعالى: أليس عدلا مني أن أولي كل رجل منكم ما كان يتولاه في الدنيا
 
-<div class="page-sep" data-page="59"></div>
+<hr class="page-sep" data-page="59" data-juz="1" />
 
 (صحيح) والشفاعة التي أخبر بها النبي صلى الله عليه وسلم أنه يكون فأخبر: أنه يأتي فيسجد لربه ويحمده لا يبدأ بالشفاعة أولا فإذا سجد وحمد ربه بمحامد يفتحها عليه يقال له: أي محمد ارفع رأسك وقل تسمع وسل تعط واشفع تشفع. فيقول: أي رب أمتي فيحد له حدا فيدخلهم الجنة
 
-<div class="page-sep" data-page="60"></div>
+<hr class="page-sep" data-page="60" data-juz="1" />
 
 (صحيح) قال أبو هريرة من أسعد الناس بشفاعتك يوم القيامة؟ قال: من قال: لا إله إلا الله خالصا من قلبه (صحيح) قال تعالى: ﴿من يعمل سوءا يجز به﴾ وقد سأل أبو بكر النبي صلى الله عليه وسلم عن ذلك فقال: يا رسول الله وأينا لم يعمل سوءا؟ فقال: يا أبا بكر ألست تنصب ألست تحزن ألست تصيبك اللأواء فذلك ما تجزون به)
 
-<div class="page-sep" data-page="61"></div>
+<hr class="page-sep" data-page="61" data-juz="1" />
 
 (صحيح) عن سعد بن أبي وقاص قلت: يا رسول الله أي الناس أشد بلاء؟ قال: الأنبياء ثم الصالحون ثم الأمثل فالأمثل يبتلى الرجل على حسب دينه فإن كان في دينه صلابة زيد في بلائه وإن كان في دينه رقة خفف عنه ولا يزال البلاء بالمؤمن حتى يمشي على الأرض وليس عليه خطيئة
 
-<div class="page-sep" data-page="62"></div>
+<hr class="page-sep" data-page="62" data-juz="1" />
 
 (صحيح) المرض حطة يحط الخطايا عن صاحبه كما تحط الشجرة اليابسة ورقها
 
-<div class="page-sep" data-page="63"></div>
+<hr class="page-sep" data-page="63" data-juz="1" />
 
 (ضعيف) أن أولاده ثلاثة
 
-<div class="page-sep" data-page="64"></div>
+<hr class="page-sep" data-page="64" data-juz="1" />
 
 (صحيح) عن النبي صلى الله عليه وسلم: أن آدم سأل ربه أن يريه صور الأنبياء من ذريته فرآهم فرأى فيهم من يبص فقال: يا رب من هذا؟ قال: ابنك داود
 
-<div class="page-sep" data-page="65"></div>
+<hr class="page-sep" data-page="65" data-juz="1" />
 
 (صحيح) أصدق كلمة قالها الشاعر كلمة لبيد: ألا كل شيء ما خلا الله باطل
 
-<div class="page-sep" data-page="66"></div>
+<hr class="page-sep" data-page="66" data-juz="1" />
 
 (صحيح) كلمتان خفيفتان على اللسان ثقيلتان في الميزان حبيبتان إلى الرحمن: سبحان الله وبحمده سبحان الله العظيم
 
-<div class="page-sep" data-page="67"></div>
+<hr class="page-sep" data-page="67" data-juz="1" />
 
 (صحيح رواه البخاري مع اختلاف يسير في بعض ألفاظه) إن الرجل ليتكلم بالكلمة من رضوان الله ما يظن أن تبلغ به ما 1 بلغت يكتب الله بها رضوانه إلى يوم القيامة وإن الرجل ليتكلم بالكلمة من سخط الله ما يظن أن تبلغ به ما بلغت يكتب الله بها سخطه إلى يوم القيامة
 
-<div class="page-sep" data-page="68"></div>
+<hr class="page-sep" data-page="68" data-juz="1" />
 
 (صحيح) لقد قلت بعدك أربع كلمات لو وزنت بما قلته منذ اليوم لوزنتهن: سبحان الله عدد خلقه سبحان الله زنة عرشه سبحانه الله رضى نفسه سبحان الله مداد كلماته
 
-<div class="page-sep" data-page="69"></div>
+<hr class="page-sep" data-page="69" data-juz="1" />
 
 (صحيح) ذاق طعم الإيمان من رضي بالله ربا وبالإسلام دينا وبمحمد رسولا
 
-<div class="page-sep" data-page="70"></div>
+<hr class="page-sep" data-page="70" data-juz="1" />
 
 (صحيح) الجار أحق بسقبه
 
-<div class="page-sep" data-page="71"></div>
+<hr class="page-sep" data-page="71" data-juz="1" />
 
 (صحيح) والفرج يصدق ذلك أو يكذبه
 
-<div class="page-sep" data-page="72"></div>
+<hr class="page-sep" data-page="72" data-juz="1" />
 
 (صحيح) إن صلاتنا هذه لا يصلح فيها شيء من كلام الناس
 
-<div class="page-sep" data-page="73"></div>
+<hr class="page-sep" data-page="73" data-juz="1" />
 
 (صحيح) إن الله يحدث من أمره ما شاء وإن مما أحدث أن لا تكلموا في الصلاة
 
-<div class="page-sep" data-page="74"></div>
+<hr class="page-sep" data-page="74" data-juz="1" />
 
 (صحيح) إن الله تجاوز لأمتي عما حدثت به أنفسها ما لم تكلم به أو تعمل به
 
-<div class="page-sep" data-page="75"></div>
+<hr class="page-sep" data-page="75" data-juz="1" />
 
 (صحيح) وفي السنن أن معاذا قال له: يا رسول الله وإنا لمؤاخذون بما نتكلم به؟ فقال: وهل يكب الناس في النار على وجوههم أو قال: على مناخرهم إلا حصائد ألسنتهم
 
-<div class="page-sep" data-page="76"></div>
+<hr class="page-sep" data-page="76" data-juz="1" />
 
 (صحيح) يقول الله: من ذكرني في نفسه ذكرته في نفسي ومن ذكرني في ملأ ذكرته في ملأ خير منه
 
-<div class="page-sep" data-page="77"></div>
+<hr class="page-sep" data-page="77" data-juz="1" />
 
 (صحيح) إن الله تجاوز لأمتي عما حدثت به أنفسها ما لم تكلم به أو تعمل به
 
-<div class="page-sep" data-page="78"></div>
+<hr class="page-sep" data-page="78" data-juz="1" />
 
 (صحيح) لا يزني الزاني حين يزني وهو مؤمن
 
-<div class="page-sep" data-page="79"></div>
+<hr class="page-sep" data-page="79" data-juz="1" />
 
 (صحيح) لا يؤمن من لا يأمن جاره بوائقه
 
-<div class="page-sep" data-page="80"></div>
+<hr class="page-sep" data-page="80" data-juz="1" />
 
 (صحيح) لا تؤمنوا حتى تحابوا
 
-<div class="page-sep" data-page="81"></div>
+<hr class="page-sep" data-page="81" data-juz="1" />
 
 (صحيح) لا يؤمن أحدكم حتى أكون أحب إليه من ولده ووالده والناس أجمعين
 
-<div class="page-sep" data-page="82"></div>
+<hr class="page-sep" data-page="82" data-juz="1" />
 
 (صحيح) لا يؤمن أحدكم حتى يحب لأخيه من الخير ما يحب لنفسه
 
-<div class="page-sep" data-page="83"></div>
+<hr class="page-sep" data-page="83" data-juz="1" />
 
 (صحيح) من غشنا فليس منا ومن حمل علينا السلاح فليس منا
 
-<div class="page-sep" data-page="84"></div>
+<hr class="page-sep" data-page="84" data-juz="1" />
 
 (صحيح) عن مجاهد أن أبا ذر سأل النبي صلى الله عليه وسلم عن الإيمان فقرأ عليه: ﴿ليس البر أن تولوا وجوهكم [البقرة] 177] إلى آخر الآية)
 
-<div class="page-sep" data-page="85"></div>
+<hr class="page-sep" data-page="85" data-juz="1" />
 
 صحيح (ألا وإن في الجسد مضغة إذا صلحت صلح لها سائر الجسد وإذا فسدت فسد لها سائر الجسد ألا وهي القلب)
 
-<div class="page-sep" data-page="86"></div>
+<hr class="page-sep" data-page="86" data-juz="1" />
 
 (صحيح) لا يرث المسلم الكافر ولا الكافر المسلم
 
-<div class="page-sep" data-page="87"></div>
+<hr class="page-sep" data-page="87" data-juz="1" />
 
 (صحيح) أمرت أن أقاتل الناس حتى يشهدوا أن لا إله إلا الله وأني رسول الله فإذا قالوها عصموا مني دماءهم وأموالهم إلا بحقها وحسابهم على الله
 
-<div class="page-sep" data-page="88"></div>
+<hr class="page-sep" data-page="88" data-juz="1" />
 
 (صحيح) قال لأسامة بن زيد: أقتلته بعدها أن قال: لا إله إلا الله؟ قال: إنما قالها تعوذا قال: (هلا شققت عن قلبه؟) وقال: (إني لم أومر أن أنقب عن قلوب الناس ولا أشق بطونهم)
 
-<div class="page-sep" data-page="89"></div>
+<hr class="page-sep" data-page="89" data-juz="1" />
 
 (صحيح) وكان إذا استؤذن في قتل رجل يقول: أليس يصلي أليس يتشهد؟ فإذا قيل له: إنه منافق قال: (ذاك)
 
-<div class="page-sep" data-page="90"></div>
+<hr class="page-sep" data-page="90" data-juz="1" />
 
 (رجاله ثقات لكنه منقطع) كان عمر بن الخطاب يقول لأصحابه: هلموا نزداد إيمانا فيذكرون الله عز وجل
 
-<div class="page-sep" data-page="91"></div>
+<hr class="page-sep" data-page="91" data-juz="1" />
 
 صحيح كان معاذ بن جبل يقول لرجل: اجلس بنا نؤمن نذكر الله تعالى
 
-<div class="page-sep" data-page="92"></div>
+<hr class="page-sep" data-page="92" data-juz="1" />
 
 (صحيح) عن عمار بن ياسر أنه قال: ثلاث من كن فيه فقد استكمل الإيمان: الإنصاف من نفسه والإنفاق من الإقتار وبذل السلام للعالم
 
-<div class="page-sep" data-page="93"></div>
+<hr class="page-sep" data-page="93" data-juz="1" />
 
 صحيح حديث الصديق عن النبي صلى الله عليه وسلم أنه قال: (سلوا الله العافية واليقين فما أعطي أحد بعد اليقين شيئا خيرا من العافية فسلوهما الله تعالى)
 
-<div class="page-sep" data-page="94"></div>
+<hr class="page-sep" data-page="94" data-juz="1" />
 
 (سنده جيد بلفظ ليس الخبر كالمعاينة) ليس المخبر كالمعاين
 
-<div class="page-sep" data-page="95"></div>
+<hr class="page-sep" data-page="95" data-juz="1" />
 
 (صحيح) قال النبي صلى الله عليه وسلم في أهل القبور: وإنا إن شاء الله بكم لاحقون
 
-<div class="page-sep" data-page="96"></div>
+<hr class="page-sep" data-page="96" data-juz="1" />
 
 (صحيح) المؤمن من أمنه الناس على دمائهم وأموالهم
 
-<div class="page-sep" data-page="97"></div>
+<hr class="page-sep" data-page="97" data-juz="1" />
 
 (صحيح) أن رجلا قال للنبي صلى الله عليه وسلم ما الإسلام قال: إطعام الطعام وطيب الكلام قال: فما الإيمان؟ قال: (السماحة والصبر) قال: فأي الإسلام أفضل؟ قال: (من سلم المسلمون من لسانه ويده) قال: يا رسول الله أي المؤمنين أكمل إيمانا؟ قال: (أحسنهم خلقا) قال: يا رسول الله أي القتل أشرف؟ قال: (من أريق دمه وعقر جواده) قال: يا رسول الله فأي الجهاد أفضل؟ قال: (الذين جاهدوا بأموالهم وأنفسهم في سبيل الله) قال: يا رسول الله فأي الصدقة أفضل؟ قال: (جهد مقل) قال: يا رسول الله فأي الصلاة أفضل؟ قال: (طول القنوت) قال: يا رسول الله فأي الهجرة أفضل؟ قال: (من هجر السوء)
 
-<div class="page-sep" data-page="98"></div>
+<hr class="page-sep" data-page="98" data-juz="1" />
 
 (حسن) عن بهز بن حكيم عن أبيه عن جده أنه قال: والله يا رسول الله ما أتيتك حتى حلفت عدد أصابعي هذه أن لا آتيك فبالذي بعثك بالحق ما الذي بعثك الله به؟ قال: بالإسلام قلت: ما الإسلام؟ قال: (أن تسلم قلبك لله وأن توجه وجهك إلى الله وأن تصلي الصلاة المكتوبة وتؤدي الزكاة المفروضة أخوان نصيران لا يقبل الله توبة من عبد أشرك بعد إسلامه) وفي رواية قال: (أن تقول أسلمت وجهي لله وتخليت وتقيم الصلاة وتؤتي الزكاة وكل مسلم على مسلم محرم) وفي لفظ: (تقول أسلمت نفسي لله وخليت وجهي إليه)
 
-<div class="page-sep" data-page="99"></div>
+<hr class="page-sep" data-page="99" data-juz="1" />
 
 (صحيح) عن أبي هريرة أن رسول الله صلى الله عليه وسلم قال: إن للإسلام صوى ومنارا كمنار الطريق من ذلك أن تعبد الله لا تشرك به شيئا وأن تقيم الصلاة وتؤتي الزكاة وتصوم رمضان والأمر بالمعروف والنهي عن المنكر وتسلم على بني آدم إذا لقيتهم فإن ردوا عليك ردت عليك وعليهم الملائكة وإن لم يردوا عليك ردت عليك الملائكة ولعنتهم إن سكت عنهم وتسليمك على أهل بيتك إذا دخلت عليهم فمن انتقص منهن شيئا فهو سهم في الإسلام تركه ومن تركهن فقد نبذ الإسلام وراء ظهره
 
-<div class="page-sep" data-page="100"></div>
+<hr class="page-sep" data-page="100" data-juz="1" />
 
 (منكر) وفي الحديث الذي يرويه أبو سليمان الداراني حديث الوفد الذين قالوا نحن المؤمنون قال فما علامة إيمانكم؟ قالوا خمس عشرة خصلة وخمس منها أمرتنا رسلك أن نعمل بهن خمس منها أمرتنا رسلك أن نؤمن بهن وخمس منها تخلقنا بها في الجاهلية ونحن عليها إلا أن تكره منها شيئا قال فما الخمس التي أمرتكم رسلي أن تعملوا بها قالوا أمرتنا رسلك أن نشهد أن لا إله إلا الله وأن محمدا رسول الله ونقيم الصلاة ونؤتي الزكاة ونصوم رمضان ونحج البيت قال وما الخمس التي أمرتكم أن تؤمنوا بها قالوا أمرتنا أن نؤمن بالله وملائكته وكتبه ورسله والبعث بعد الموت قال وما الخمس التي تخلقتم بها في الجاهلية وثبتم عليها في الإسلام؟ قالوا: الصبر عند البلاء والشكر عند الرخاء والرضى بمر القضاء والصدق في مواطن اللقاء وترك شماتة الأعداء فقال النبي صلى الله عليه وسلم علماء حكماء كادوا من صدقهم أن يكونوا أنبياء فقال صلى الله عليه وسلم وأنا أزيدكم خمسا فتتم لكم عشرون خصلة إن كنتم كما تقولون فلا تجمعوا مالا تأكلون ولا تبنوا مالا تسكنون ولا تنافسوا في شيء أنتم عنه غدا تزولون وعنه منتقلون واتقوا الله الذي إليه ترجعون وعليه تعرضون وارغبوا فيما عليه تقدمون وفيه تخلدون
 
-<div class="page-sep" data-page="101"></div>
+<hr class="page-sep" data-page="101" data-juz="1" />
 
 (صحيح) يا رسول الله إن أحدنا ليجد في نفسه ما لأن يخر من السماء إلى الأرض أحب إليه من أن يتكلم به؟ فقال: ذاك صريح الإيمان وفي رواية ما تعاظم أن يتلكم به قال: (الحمد لله الذي رد كيده إلى الوسوسة)
 
-<div class="page-sep" data-page="102"></div>
+<hr class="page-sep" data-page="102" data-juz="1" />
 
 (صحيح) لا يزال الشيطان يأتي أحدكم فيقول: من خلق كذا؟ من خلق كذا؟ حتى يقول من خلق الله؟ فمن وجد ذلك فليستعذ بالله ولينته
 
-<div class="page-sep" data-page="103"></div>
+<hr class="page-sep" data-page="103" data-juz="1" />
 
 (ضعيف) من قال في القرآن برأيه فليتبوأ مقعده من النار لا وجود له بهذا اللفظ وإنما هو مركب من حديثين كلاهما ضعيف
 
-<div class="page-sep" data-page="104"></div>
+<hr class="page-sep" data-page="104" data-juz="1" />
 
 (صحيح) ليس المسكين هذا الطواف الذي ترده اللقمة واللقمتان والتمرة والتمرتان ولكن المسكين الذي لا يجد غنى يغنيه ولا يفطن له فيتصدق عليه ولا يسأل الناس إلحافا
 
-<div class="page-sep" data-page="105"></div>
+<hr class="page-sep" data-page="105" data-juz="1" />
 
 (ضعيف مرفوعا والصحيح موقوفا) عن حذيفة قال: القلوب أربعة. قلب أغلف فذلك قلب الكافر وقلب مصفح وذلك قلب المنافق وقلب أجرد فيه مثل سراج يزهر فذلك قلب المؤمن وقلب فيه إيمان ونفاق فمثل الإيمان كمثل شجرة يمدها ماء طيب ومثل النفاق كمثل قرحة يمدها قيح ودم فأيهما غلب عليه غلب
 
-<div class="page-sep" data-page="106"></div>
+<hr class="page-sep" data-page="106" data-juz="1" />
 
 ضعيف وقال ابن مسعود: الغناء ينبت النفاق في القلب كما ينبت الماء البقل
 
-<div class="page-sep" data-page="107"></div>
+<hr class="page-sep" data-page="107" data-juz="1" />
 
 (روي مرفوعا ولكن لا يصح) ويقال: ليس في المال حق سوى الزكاة
 
-<div class="page-sep" data-page="108"></div>
+<hr class="page-sep" data-page="108" data-juz="1" />
 
 (رجاله ثقات إلا أنه منقطع) عن أبي ذر لما سأل عن الإيمان فقرأ ﴿ليس البر أن تولوا وجوهكم بل المشرق والمغرب تلا إلى آخر الآية)
 
-<div class="page-sep" data-page="109"></div>
+<hr class="page-sep" data-page="109" data-juz="1" />
 
 صحيح عن سعد أن رسول الله صلى الله عليه وسلم أعطى رجالا ولم يعط رجلا منهم شيئا فقلت: يا رسول الله أعطيت فلانا وفلانا ولم تعط فلانا وهو مؤمن فقال النبي صلى الله عليه وسلم: (أو مسلم؟) أعادها ثلاثا والنبي صلى الله عليه وسلم يقول: (أو مسلم؟) ثم قال: (إني لأعطي رجالا وأمنع آخرين هم أحب إلي منهم مخافة أن يكبوا على وجوههم في النار)
 
-<div class="page-sep" data-page="110"></div>
+<hr class="page-sep" data-page="110" data-juz="1" />
 
 (حسن) أن رسول الله صلى الله عليه وسلم قال: أسلم الناس وآمن عمرو بن العاص
 
-<div class="page-sep" data-page="111"></div>
+<hr class="page-sep" data-page="111" data-juz="1" />
 
 (صحيح) سباب المسلم فسوق وقتاله كفر
 
-<div class="page-sep" data-page="112"></div>
+<hr class="page-sep" data-page="112" data-juz="1" />
 
 (صحيح) إذا قال المسلم لأخيه: يا كافر ولم يكن كذلك باء بالكفر
 
-<div class="page-sep" data-page="113"></div>
+<hr class="page-sep" data-page="113" data-juz="1" />
 
 (صحيح) عن ابن عباس ومن لم يحكم بما أنزل الله فأولئك هم الكافرون: ليس بالكفر الذي يذهبون إليه
 
-<div class="page-sep" data-page="114"></div>
+<hr class="page-sep" data-page="114" data-juz="1" />
 
 (صحيح) سئل ابن عباس عن قوله ومن لم يحكم بما أنزل الله فأولئك هم الكافرون قال: هي به كفر قال ابن طاووس: وليس كمن كفر بالله وملائكته وكتبه ورسله
 
-<div class="page-sep" data-page="115"></div>
+<hr class="page-sep" data-page="115" data-juz="1" />
 
 (صحيح) عن ابن عباس قال: هو به كفر وليس كمن كفر بالله وملائكته وكتبه ورسله
 
-<div class="page-sep" data-page="116"></div>
+<hr class="page-sep" data-page="116" data-juz="1" />
 
 (صحيح) عن ابن طاووس عن أبيه قال: قلت لابن عباس: ومن لم يحكم بما أنزل الله فهو كافر؟ قال: هو به كفر وليس كمن كفر بالله واليوم الآخر وملائكته وكتبه ورسله
 
-<div class="page-sep" data-page="117"></div>
+<hr class="page-sep" data-page="117" data-juz="1" />
 
 (ضعيف) حدثنا محمد بن يحيى حدثنا الحجاج بن المنهال عن حماد ابن سلمة عن علي بن زيد عن يوسف بن مهران عن ابن عباس أن عمر بن الخطاب كان إذا دخل بيته نشر المصحف فقرأ فدخل ذات يوم فقرأ فأتى على هذه الآية (الذين آمنوا ولم يلبسوا إيمانهم بظلم) إلى آخر الآية فانتعل وأخذ رداءه ثم أتى أبي بن كعب فقال يا أبا المنذر أتيت قبل على هذه الآية (الذين آمنوا ولم يلبسوا إيمانهم بظلم) وقد ترى أنا نظلم ونفعل؟ فقال: يا أمير المؤمنين إن هذا ليس بذلك يقول الله: (إن الشرك لظلم عظيم) [لقمان] 13] إنما ذلك الشرك
 
-<div class="page-sep" data-page="118"></div>
+<hr class="page-sep" data-page="118" data-juz="1" />
 
 (صحيح) أوثق عرى الإيمان الحب في الله والبغض في الله
 
-<div class="page-sep" data-page="119"></div>
+<hr class="page-sep" data-page="119" data-juz="1" />
 
 (صحيح) لا إيمان لمن لا أمانة له
 
-<div class="page-sep" data-page="120"></div>
+<hr class="page-sep" data-page="120" data-juz="1" />
 
 (صحيح) المؤمن القوي خير وأحب إلى الله من المؤمن الضعيف وفي كل خير
 
-<div class="page-sep" data-page="121"></div>
+<hr class="page-sep" data-page="121" data-juz="1" />
 
 (صحيح) لو أنفق أحدكم مثل أحد ذهبا ما بلغ مد أحدهم ولا نصيفه
 
-<div class="page-sep" data-page="122"></div>
+<hr class="page-sep" data-page="122" data-juz="1" />
 
 (ضعيف) من عمل بما علم أورثه الله علم ما لم يعلم
 
-<div class="page-sep" data-page="123"></div>
+<hr class="page-sep" data-page="123" data-juz="1" />
 
 (صحيح) إن بالمدينة لرجالا ما سرتم مسيرا ولا قطعتم واديا إلا كانوا معكم. قالوا: وهم بالمدينة؟ قال: (وهم بالمدينة حبسهم العذر)
 
-<div class="page-sep" data-page="124"></div>
+<hr class="page-sep" data-page="124" data-juz="1" />
 
 (صحيح) ليس الشديد ذا الصرعة إنما الشديد الذي يملك نفسه عند الغضب
 
-<div class="page-sep" data-page="125"></div>
+<hr class="page-sep" data-page="125" data-juz="1" />
 
 (صحيح) رأيت كأني أنزع على قليب فأخذها ابن أبي قحافة فنزع ذنوبا أو ذنوبين وفي نزعه ضعف والله يغفر له فأخذها ابن الخطاب فاستحالت في يده غربا فلم أر عبقريا يفري فريه حتى صدر الناس بعطن
 
-<div class="page-sep" data-page="126"></div>
+<hr class="page-sep" data-page="126" data-juz="1" />
 
 (صحيح) وفي المسند من وجهين عن النبي صلى الله عليه وسلم أن النبي صلى الله عليه وسلم وزن بالأمة فرجح ثم وزن أبو بكر بالأمة فرجح ثم وزن عمر بالأمة فرجح
 
-<div class="page-sep" data-page="127"></div>
+<hr class="page-sep" data-page="127" data-juz="1" />
 
 (صحيح) من جهز غازيا فقد غزا ومن خلفه في أهله بخير فقد غزا
 
-<div class="page-sep" data-page="128"></div>
+<hr class="page-sep" data-page="128" data-juz="1" />
 
 (صحيح) من دل على خير فله مثل أجر فاعله
 
-<div class="page-sep" data-page="129"></div>
+<hr class="page-sep" data-page="129" data-juz="1" />
 
 (صحيح) من فطر صائما فله مثل أجره
 
-<div class="page-sep" data-page="130"></div>
+<hr class="page-sep" data-page="130" data-juz="1" />
 
 (ضعيف) من عزى مصابا فله مثل أجره
 
-<div class="page-sep" data-page="131"></div>
+<hr class="page-sep" data-page="131" data-juz="1" />
 
 (صحيح) أكمل المؤمنين إيمانا أحسنهم خلقا
 
-<div class="page-sep" data-page="132"></div>
+<hr class="page-sep" data-page="132" data-juz="1" />
 
 (صحيح) إذا اجتهد الحاكم فأصاب فله أجران وإن اجتهد فأخطأ فله أجر
 
-<div class="page-sep" data-page="133"></div>
+<hr class="page-sep" data-page="133" data-juz="1" />
 
 (صحيح) وقال لسعد بن معاذ لما حكم في بني قريظة: لقد حكمت فيهم بحكم الملك من فوق سبعة أرقعة)
 
-<div class="page-sep" data-page="134"></div>
+<hr class="page-sep" data-page="134" data-juz="1" />
 
 صحيح وكان يقول لمن يرسله في جيش أو سرية: (إذا حاصرت أهل حصن فسألوك أن تنزلهم على حكم الله فلا تنزلهم على حكم الله فإنك لا تدري ما حكم الله فيهم ولكن أنزلهم على حكمك وحكم أصحابك)
 
-<div class="page-sep" data-page="135"></div>
+<hr class="page-sep" data-page="135" data-juz="1" />
 
 (صحيح) وفي حديث سليمان عليه السلام: وأسألك حكما يوافق حكمك
 
-<div class="page-sep" data-page="136"></div>
+<hr class="page-sep" data-page="136" data-juz="1" />
 
 (صحيح) إذا سمعتم المؤذن فقولوا مثل ما يقول ثم سلوا الله لي الوسيلة فإنها درجة في الجنة لا تنبغي إلا لعبد من عباد الله وأرجو أن أكون أنا ذلك العبد فمن سأل الله لي الوسيلة حلت عليه الشفاعة يوم القيامة
 
-<div class="page-sep" data-page="137"></div>
+<hr class="page-sep" data-page="137" data-juz="1" />
 
 (صحيح) إني لأرجو أن أكون أخشاكم لله وأعلمكم بحدوده
 
-<div class="page-sep" data-page="138"></div>
+<hr class="page-sep" data-page="138" data-juz="1" />
 
 (صحيح) اختبأت دعوتي شفاعة لأمتي يوم القيامة فهي نائلة إن شاء الله من مات لا يشرك بالله شيئا
 
-<div class="page-sep" data-page="139"></div>
+<hr class="page-sep" data-page="139" data-juz="1" />
 
 (صحيح) سباب المسلم فسوق وقتاله كفر
 
-<div class="page-sep" data-page="140"></div>
+<hr class="page-sep" data-page="140" data-juz="1" />
 
 (صحيح) لا ترجعوا بعدي كفارا يضرب بعضكم رقاب بعض
 
-<div class="page-sep" data-page="141"></div>
+<hr class="page-sep" data-page="141" data-juz="1" />
 
 (صحيح) من قال لأخيه يا كافر فقد باء بها أحدهما
 
-<div class="page-sep" data-page="142"></div>
+<hr class="page-sep" data-page="142" data-juz="1" />
 
 (صحيح) ليس من رجل ادعى لغير أبيه وهو يعلمه إلا كفر
 
-<div class="page-sep" data-page="143"></div>
+<hr class="page-sep" data-page="143" data-juz="1" />
 
 (حسن) كفر بالله من تبرأ من نسب وإن دق
 
-<div class="page-sep" data-page="144"></div>
+<hr class="page-sep" data-page="144" data-juz="1" />
 
 (صحيح) أفضل الإسلام أن تطعم الطعام وتقرأ السلام على من عرفت وعلى من لم تعرف
 
-<div class="page-sep" data-page="145"></div>
+<hr class="page-sep" data-page="145" data-juz="1" />
 
 (صحيح) الأرواح جنود مجندة ما تعارف منها ائتلف وما تناكر منها اختلف
 
-<div class="page-sep" data-page="146"></div>
+<hr class="page-sep" data-page="146" data-juz="1" />
 
 (صحيح) السلام عليكم أهل الديار من المؤمنين والمسلمين وإنا إن شاء الله بكم لاحقون
 
-<div class="page-sep" data-page="147"></div>
+<hr class="page-sep" data-page="147" data-juz="1" />
 
 (صحيح) كان رسول الله صلى الله عليه وسلم يكثر أن يقول في ركوعه وسجوده: سبحانك اللهم وبحمدك اللهم اغفر لي يتأول القرآن
 
-<div class="page-sep" data-page="148"></div>
+<hr class="page-sep" data-page="148" data-juz="1" />
 
 (صحيح) سأل وفد عبد القيس رسول الله صلى الله عليه وسلم عن الإيمان فقال: شهادة أن لا إله إلا الله وأن محمدا رسول الله وإقام الصلاة وإيتاء الزكاة وصوم رمضان وأن تعطوا خمسا من المغنم
 
-<div class="page-sep" data-page="149"></div>
+<hr class="page-sep" data-page="149" data-juz="1" />
 
 (سنده جيد) أكمل المؤمنين إيمانا أحسنهم خلقا
 
-<div class="page-sep" data-page="150"></div>
+<hr class="page-sep" data-page="150" data-juz="1" />
 
 (حسن) إن البذاذة من الإيمان
 
-<div class="page-sep" data-page="151"></div>
+<hr class="page-sep" data-page="151" data-juz="1" />
 
 (صحيح) الإيمان بضع وسبعون شعبة فأدناها إماطة الأذى عن الطريق وأرفعها قول لا إله إلا الله
 
-<div class="page-sep" data-page="152"></div>
+<hr class="page-sep" data-page="152" data-juz="1" />
 
 (صحيح) أخرجوا من النار من كان في قلبه مثقال ذرة من إيمان
 
-<div class="page-sep" data-page="153"></div>
+<hr class="page-sep" data-page="153" data-juz="1" />
 
 (صحيح) ثلاث من كن فيه فهو منافق
 
-<div class="page-sep" data-page="154"></div>
+<hr class="page-sep" data-page="154" data-juz="1" />
 
 (صحيح) لا ترجعوا بعدي كفارا يضرب بعضكم رقاب بعض
 
-<div class="page-sep" data-page="155"></div>
+<hr class="page-sep" data-page="155" data-juz="1" />
 
 (صحيح) قتال المؤمن كفر
 
-<div class="page-sep" data-page="156"></div>
+<hr class="page-sep" data-page="156" data-juz="1" />
 
 (صحيح) لا يتحدث الناس أن محمدا يقتل أصحابه
 
-<div class="page-sep" data-page="157"></div>
+<hr class="page-sep" data-page="157" data-juz="1" />
 
 (صحيح) من رأى منكم منكرا فليغيره بيده فإن لم يستطع فبلسانه فإن لم يستطع فبقلبه وذلك أضعف الإيمان وفي الحديث الآخر: (ليس وراء ذلك من الإيمان مثقال حبة من خردل)
 
-<div class="page-sep" data-page="158"></div>
+<hr class="page-sep" data-page="158" data-juz="1" />
 
 (صحيح) عن أبي هريرة عن النبي صلى الله عليه وسلم أنه قال: يقول الله تعالى: من عادى لي وليا فقد بارزني بالمحاربة وما تقرب إلي عبدي بمثل أداء ما افترضت عليه ولا يزال عبدي يتقرب إلي بالنوافل حتى أحبه فإذا أحببته كنت سمعه الذي يسمع به وبصره الذي يبصر به ويده التي يبطش بها ورجله التي يمشي بها ولئن سألني لأعطينه وإن استعاذني لأعيذنه وما ترددت عن شيء أنا فاعله ترددي عن نفس عبدي المؤمن يكره الموت وأنا أكره مساءته ولا بد له منه
 
-<div class="page-sep" data-page="159"></div>
+<hr class="page-sep" data-page="159" data-juz="1" />
 
 (صحيح في الوتر) وفي دعاء القنوت: وتولني فيمن توليت
 
-<div class="page-sep" data-page="160"></div>
+<hr class="page-sep" data-page="160" data-juz="1" />
 
 (صحيح) الراحمون يرحمهم الرحمن ارحموا من في الأرض يرحمكم من في السماء
 
-<div class="page-sep" data-page="161"></div>
+<hr class="page-sep" data-page="161" data-juz="1" />
 
 (صحيح) كما قال تعالى ﴿والذين يؤتون ما آتوا وقلوبهم وجلة﴾ قالت عائشة: يا رسول الله أهو الرجل يزنى ويسرق ويشرب الخمر ويخاف؟ فقال: (لا يا بنت الصديق بل هو الرجل يصلي ويصوم ويتصدق ويخاف أن لا يتقبل منه
 
-<div class="page-sep" data-page="162"></div>
+<hr class="page-sep" data-page="162" data-juz="1" />
 
 (صحيح) وفي قصة صاحب القبر: عليه حييت وعليه مت وعليه تبعث إن شاء الله
 
-<div class="page-sep" data-page="163"></div>
+<hr class="page-sep" data-page="163" data-juz="1" />
 
 (صحيح) اللهم أنجز لي ما وعدتني هو مركب من حديثين الأول عن أنس والآخر عن ابن عمر وهما عند مسلم وغيره)
 
-<div class="page-sep" data-page="164"></div>
+<hr class="page-sep" data-page="164" data-juz="1" />
 
 (صحيح) والذي نفسي بيده لينزلن فيكم ابن مريم حكما عدلا وإماما مقسطا
 
-<div class="page-sep" data-page="165"></div>
+<hr class="page-sep" data-page="165" data-juz="1" />
 
 (صحيح) والذي نفسي بيده لا تذهب الدنيا حتى يأتي على الناس يوم لا يدري القاتل فيما قتل ولا المقتول فيما قتل
 
-<div class="page-sep" data-page="166"></div>
+<hr class="page-sep" data-page="166" data-juz="1" />
 
 (صحيح) إذا هلك كسرى أو ليهلكن كسرى ثم لا يكون كسرى بعده وإذا هلك قيصر فلا قيصر بعده والذي نفسي بيده لتنفقن كنوزهما في سبيل الله
 
-<div class="page-sep" data-page="167"></div>
+<hr class="page-sep" data-page="167" data-juz="1" />
