@@ -132,13 +132,41 @@ const gdata = JSON.stringify({ nodes, links }).replace(/</g, "\\u003c");
 
     <!-- global graph search input -->
     <div style="margin-bottom: 24px; display: flex; justify-content: center; width: 100%;">
-      <input type="search" id="graph-search" class="pop-search" placeholder="البحث في الشبكة والتركيز على العناوين والروابط (مثال: ابن تيمية)..." aria-label="ابحث في الشبكة" style="width: 100%; max-width: 600px; padding: 12px 20px; font-size: 15px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg); color: var(--ink); box-shadow: var(--shadow-sm);" autocomplete="off" />
+      <input type="search" id="graph-search" class="pop-search" placeholder="البحث في الشبكة والتركيز على العناوين والروابط (مثال: ابن تيمية)..." aria-label="ابحث في الشبكة" style="width: 100%; max-width: 600px; padding: 12px 20px; font-size: 15px; border-radius: 8px; border: 1px solid var(--rule-strong); background: var(--surface); color: var(--ink); box-shadow: 0 2px 8px rgba(0,0,0,0.05);" autocomplete="off" />
     </div>
 
     <p class="faint graph-hint">كلُّ نقطةٍ مادةٌ أو عَلَمٌ أو فنّ؛ الخطوطُ روابطُها. اسحبِ النقطةَ لتحريكها، مرِّرْ للتكبير، وانقرْها لفتحِها. أزِلِ العلامةَ عن نوعٍ لإخفائه.</p>
-    <div style="display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap;">
-      <button type="button" id="legend-select-all" class="btn btn-secondary btn-sm" style="padding: 4px 12px; font-size: 13px; cursor: pointer; background: var(--bg-hover); border: 1px solid var(--border); border-radius: 4px; color: var(--ink);">تحديد الكل</button>
-      <button type="button" id="legend-clear-all" class="btn btn-secondary btn-sm" style="padding: 4px 12px; font-size: 13px; cursor: pointer; background: var(--bg-hover); border: 1px solid var(--border); border-radius: 4px; color: var(--ink);">إلغاء تحديد الكل</button>
+    <div style="display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; align-items: center; position: relative; z-index: 50;">
+      <button type="button" id="legend-select-all" class="btn" style="padding: 4px 12px; font-size: 13px; cursor: pointer; border: 1px solid var(--rule-strong); border-radius: 4px; background: var(--surface); color: var(--ink);">تحديد الكل</button>
+      <button type="button" id="legend-clear-all" class="btn" style="padding: 4px 12px; font-size: 13px; cursor: pointer; border: 1px solid var(--rule-strong); border-radius: 4px; background: var(--surface); color: var(--ink);">إلغاء تحديد الكل</button>
+
+      {scholars.length > 0 && (
+        <details class="pop-dropdown" style="position: relative; display: inline-block;">
+          <summary class="btn" style="padding: 4px 12px; font-size: 13px; cursor: pointer; border-radius: 4px; border: 1px solid var(--rule-strong); background: var(--surface); color: var(--ink); display: inline-flex; align-items: center; gap: 6px; list-style: none; user-select: none;">
+            <span>تصفية الأعلام</span>
+            <span class="faint" id="scholar-counter" style="font-size: 11px; margin-inline-start: 4px;">({toArabicDigits(scholars.length)} / {toArabicDigits(scholars.length)})</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="pop-dropdown-menu">
+            <input type="search" id="person-search" class="pop-search" placeholder="ابحث عن عَلَم…" aria-label="ابحث عن عَلَم" style="width: 100%; padding: 8px 12px; font-size: 13px; border-radius: 6px; border: 1px solid var(--rule-strong); background: var(--paper); color: var(--ink);" autocomplete="off" />
+            <div style="display: flex; gap: 6px; margin-bottom: 4px; flex-wrap: wrap;">
+              <button type="button" id="person-select-all" class="btn" style="padding: 3px 8px; font-size: 11px; cursor: pointer; border-radius: 4px; border: 1px solid var(--rule-strong); background: var(--paper); color: var(--ink);">تحديد الكل</button>
+              <button type="button" id="person-clear-all" class="btn" style="padding: 3px 8px; font-size: 11px; cursor: pointer; border-radius: 4px; border: 1px solid var(--rule-strong); background: var(--paper); color: var(--ink);">إلغاء الكل</button>
+            </div>
+            <div class="pop-checklist graph-person-list" style="display: flex; flex-direction: column; gap: 8px; max-height: 250px; overflow-y: auto; padding-inline: 4px 2px;">
+              {scholars.map((s) => (
+                <label class="pop-check graph-person-leg" data-name={s.title} style="display: flex; align-items: center; gap: 8px; font-size: 13px; cursor: pointer; width: 100%;">
+                  <input type="checkbox" value={s.id} class="person-toggle" checked style="accent-color: var(--accent); width: 14px; height: 14px; cursor: pointer;" />
+                  <span class="people-name" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex: 1; text-align: right;">
+                    {s.title}
+                    <span class="faint" style="font-size: 11px; margin-inline-start: 4px;">({toArabicDigits(s.worksCount)})</span>
+                  </span>
+                </label>
+              ))}
+            </div>
+          </div>
+        </details>
+      )}
     </div>
     <div class="graph-legend" data-graph-legend>
       {present.map((t) => (
@@ -153,31 +181,46 @@ const gdata = JSON.stringify({ nodes, links }).replace(/</g, "\\u003c");
   </div>
   <div class="graph-wrap"><div id="graph"></div></div>
 
-  <!-- scholar dashboard section -->
-  <!-- scholar dashboard section -->
-  {scholars.length > 0 && (
-    <div class="wrap-mid" style="margin-top: 48px; padding-bottom: 80px;">
-      <div class="section-label">إضافة الأعلام ومؤلفاتهم إلى الشبكة</div>
-      <div class="graph-person-search">
-        <input type="search" id="person-search" class="pop-search" placeholder="ابحث عن عَلَم…" aria-label="ابحث عن عَلَم" style="margin-bottom: 12px;" autocomplete="off" />
-        <div style="display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap;">
-          <button type="button" id="person-select-all" class="btn btn-secondary btn-sm" style="padding: 4px 12px; font-size: 13px; cursor: pointer; background: var(--bg-hover); border: 1px solid var(--border); border-radius: 4px; color: var(--ink);">تحديد الكل</button>
-          <button type="button" id="person-clear-all" class="btn btn-secondary btn-sm" style="padding: 4px 12px; font-size: 13px; cursor: pointer; background: var(--bg-hover); border: 1px solid var(--border); border-radius: 4px; color: var(--ink);">إلغاء تحديد الكل</button>
-        </div>
-        <div class="pop-checklist graph-person-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; max-height: 400px; overflow-y: auto;">
-          {scholars.map((s) => (
-            <label class="pop-check graph-person-leg" data-name={s.title}>
-              <input type="checkbox" value={s.id} class="person-toggle" checked />
-              <span class="people-name">{s.title} <span class="faint">({toArabicDigits(s.worksCount)})</span></span>
-            </label>
-          ))}
-        </div>
-      </div>
-    </div>
-  )}
-
   <script type="application/json" id="gdata" set:html={gdata}></script>
   <script>
     import "../scripts/graph.ts";
   </script>
 </Base>
+
+<style>
+  details.pop-dropdown summary::-webkit-details-marker {
+    display: none;
+  }
+  details.pop-dropdown summary {
+    list-style: none;
+    outline: none;
+  }
+  .pop-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 4px);
+    right: 0;
+    z-index: 1000;
+    width: 300px;
+    background: var(--surface);
+    border: 1px solid var(--rule-strong);
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  [dir="rtl"] .pop-dropdown-menu {
+    right: 0;
+    left: auto;
+  }
+  .pop-checklist::-webkit-scrollbar {
+    width: 6px;
+  }
+  .pop-checklist::-webkit-scrollbar-thumb {
+    background: var(--rule-strong);
+    border-radius: 3px;
+    border: none;
+  }
+</style>
+

@@ -182,12 +182,13 @@ export function buildGraph(entries: ContentEntry[]): Graph {
 
 // Adapter: map Astro getCollection() entries → ContentEntry for page runtime.
 export function toContentEntries(
-  collected: { collection: string; id: string; data: Record<string, unknown>; body?: string }[],
+  collected: { collection: string; id: string; data: Record<string, unknown>; body?: string; filePath?: string }[],
 ): ContentEntry[] {
   return collected.map((e) => ({
     id: e.id,
     collection: e.collection,
     data: e.data,
     body: e.body ?? "",
+    filePath: e.filePath,
   }));
 }
