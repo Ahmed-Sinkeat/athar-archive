@@ -154,7 +154,7 @@ Definition-of-Done (DoD) status, decisions, and any deviations from the plan.
 **Built**
 - `src/lib/structured-data.ts` — per-type JSON-LD builders, each with a `BreadcrumbList`: `ProfilePage`+`Person`, `Book`, `CreativeWork`/`Poem`, `Course` (series), `LearningResource` (lesson), `Quotation` (benefit), `Article`, `QAPage` (questions), `CollectionPage` (subject/topic), and `WebSite`+`SearchAction` on home.
 - `Base.astro` — canonical URLs, Open Graph + Twitter per page, `og:type` per entity, `jsonLd` slot, `noindex`↔canonical switch.
-- `src/pages/sitemap.xml.ts` — 27 indexable URLs with `lastmod` (from `updated_at`/`published_at`); excludes `/search` (noindex) and 404; includes chapter routes when chunked.
+- `src/pages/sitemap.xml.ts` — 27 indexable URLs with `lastmod` (from `updated_at`/`published_at`); excludes `/search` (noindex) and 404; excludes individual chapter routes to optimize sitemap size for Cloudflare Workers.
 - `src/pages/rss.xml.ts` — latest 30 materials by `published_at`, XML-escaped.
 - `scripts/gen-redirects.ts` → `dist/_redirects` — `aliases` → 301 (`/poem/bayquniyyah` → `/poem/al-bayquniyyah`); `archived` keeps its URL. Wired into `pnpm build`.
 - `public/_headers` — CSP (allowances for Google Fonts, Pagefind wasm, R2 media), `nosniff`, `frame-ancestors none`, referrer policy; `robots.txt` disallows `/search` + sitemap pointer.
