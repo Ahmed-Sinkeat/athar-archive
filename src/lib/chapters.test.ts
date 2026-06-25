@@ -64,6 +64,12 @@ describe("splitChapters", () => {
     expect(chapters[0].slug).toBe("مقدمة");
     expect(chapters[1].slug).toBe("مقدمة-2");
   });
+
+  it("drops chapters that contain no verses or paragraphs (empty-chapter fix)", () => {
+    const { chapters } = splitChapters("## باب فارغ\n\n## باب ممتلئ\n\nنص هنا");
+    expect(chapters).toHaveLength(1);
+    expect(chapters[0].title).toBe("باب ممتلئ");
+  });
 });
 
 describe("parsePoem", () => {

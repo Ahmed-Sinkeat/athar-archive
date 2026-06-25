@@ -12,6 +12,15 @@ const graph = await loadGraph();
 const names = await personNameMap();
 const { groups, uncategorized } = buildSubjectGroups("book", graph, (e) => (e.data as any).genre === "حديث");
 
+const hadithBooks = (await getCollection("book")).filter(b => (b.data as any).genre === "حديث" && (b.data as any).status !== "draft");
+const categoryCounts: Record<string, number> = {};
+for (const b of hadithBooks) {
+  const cat = (b.data as any).hadith_category;
+  if (cat) categoryCounts[cat] = (categoryCounts[cat] ?? 0) + 1;
+}
+const catOrder = ["امهات الكتب", "كتب الآثار", "أجزاء حديثية", "تخريج", "علل", "عام"];
+const cats = catOrder.filter((c) => categoryCounts[c]);
+
 // Grading facet: count تخريج annotations that carry a grade
 const allAnnotations = await getCollection("annotation");
 const gradeCounts: Record<string, number> = {};
@@ -39,6 +48,11 @@ const card = (it: any) => ({
     {grades.length > 0 && (
       <div class="grade-facet">
         {grades.map((g) => <span class={`grade grade-${g}`}>{g} ({gradeCounts[g]})</span>)}
+      </div>
+    )}
+    {cats.length > 0 && (
+      <div class="grade-facet" style="margin-top: 0.5rem; margin-bottom: 1rem;">
+        {cats.map((c) => <span class="pill" style="font-size: 0.8em;">{c} ({categoryCounts[c]})</span>)}
       </div>
     )}
     {has
