@@ -12,6 +12,7 @@ import StudyBar from "../../../components/StudyBar.astro";
 import { isPub, loadGraph, personNameMap, notesByAnchor } from "../../../lib/site";
 import { markdownToSafeHtml } from "../../../lib/sanitize";
 import { analyzeBook } from "../../../lib/chunk";
+import { parseToc } from "../../../lib/chapters";
 import { loadContentBody, notFound } from "../../../lib/book-asset";
 import { hrefFor, labelFor, isMatn } from "../../../lib/display";
 
@@ -43,6 +44,8 @@ const phraseAnchors = Object.entries(byAnchor).filter(([, notes]: any) => notes.
 const chIdx = allChapters.findIndex((c) => c.slug === chapter.slug);
 const prev = allChapters[chIdx - 1] ?? null;
 const next = allChapters[chIdx + 1] ?? null;
+
+const nestedToc = parseToc(chapter.content);
 ---
 <Base title={`${chapter.title} · ${entry.data.title}`} activeNav="books" searchScope={{ in: entry.id, label: entry.data.title }}>
   <Breadcrumbs
@@ -124,7 +127,16 @@ const next = allChapters[chIdx + 1] ?? null;
         <div class="toc-box has-current">
           <div class="toc-label">فصول {entry.data.title}</div>
           {(allChapters as any[]).map((c: any) => (
-            <a href={hrefFor("book", entry.id, { chapter: c.slug })} class:list={[{ 'toc-current': c.slug === chapter.slug }]}>{c.title}</a>
+            <>
+              <a href={hrefFor("book", entry.id, { chapter: c.slug })} class:list={[{ 'toc-current': c.slug === chapter.slug }]}>{c.title}</a>
+              {c.slug === chapter.slug && nestedToc.length > 0 && (
+                <div class="toc-nested" style="margin-bottom: 0.5rem; font-size: 0.85em;">
+                  {nestedToc.map((h) => (
+                    <a href={`#${h.slug}`} style={`padding-inline-start: ${(h.depth - 1) * 0.75}rem; padding-top: 0.25rem; padding-bottom: 0.25rem; display: block;`}>{h.title}</a>
+                  ))}
+                </div>
+              )}
+            </>
           ))}
         </div>
       </aside>

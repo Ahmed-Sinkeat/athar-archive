@@ -13,6 +13,7 @@ import { analyzeBook } from "../../lib/chunk";
 import { readBody } from "../../lib/read-body";
 import { hrefFor, toArabicDigits, labelFor, isMatn } from "../../lib/display";
 import { bookLd } from "../../lib/structured-data";
+import { parseToc } from "../../lib/chapters";
 
 export async function getStaticPaths() {
   const books = (await getCollection("book")).filter(isPub);
@@ -31,12 +32,12 @@ export async function getStaticPaths() {
       .map(c => ({ href: hrefFor("book", c.id), title: c.data.title, author: c.data.person ? names.get(c.data.person as string) : "" }));
     // Phase 2: chunked books → store a light TOC (titles+slugs) only; the body and
     // its annotations live on the on-demand chapter pages, never in this landing's HTML.
-    paths.push({ params: { slug: entry.id }, props: { entry, chunked: a.chunked, toc: a.chapters.map((c) => ({ title: c.title, slug: c.slug })), body: a.chunked ? undefined : body, byAnchor: a.chunked ? {} : byAnchor, audios, commentaries, author: names.get(entry.data.person), subjects: subjectTitlesFor(entry.data.topics, graph), related: relatedTo(entry, graph, names), backlinks: backlinksList(entry, graph, names) } });
+    paths.push({ params: { slug: entry.id }, props: { entry, chunked: a.chunked, toc: a.chapters.map((c) => ({ title: c.title, slug: c.slug })), tocNested: a.chunked ? [] : parseToc(body ?? ""), body: a.chunked ? undefined : body, byAnchor: a.chunked ? {} : byAnchor, audios, commentaries, author: names.get(entry.data.person), subjects: subjectTitlesFor(entry.data.topics, graph), related: relatedTo(entry, graph, names), backlinks: backlinksList(entry, graph, names) } });
   }
   return paths;
 }
 
-const { entry, chunked, toc, body, byAnchor, audios, commentaries, author, subjects, related, backlinks } = Astro.props;
+const { entry, chunked, toc, tocNested, body, byAnchor, audios, commentaries, author, subjects, related, backlinks } = Astro.props;
 const KIND_SLUG: Record<string, string> = { شرح: "sharh", حاشية: "hashiya", تخريج: "takhrij", إعراب: "iraab" };
 const anchors = Object.entries(byAnchor);
 const path = `/book/${entry.id}`;
@@ -86,11 +87,27 @@ const jsonLd = bookLd({
       </nav>
     ) : isMatn("book", entry.data) ? (
       <>
+        {tocNested?.length > 0 && (
+          <nav class="toc-box has-current" aria-label="فهرس العناوين">
+            <div class="toc-label">فهرس العناوين</div>
+            {tocNested.map((h) => (
+              <a href={`#${h.slug}`} style={`padding-inline-start: ${(h.depth - 2) * 1}rem`}>{h.title}</a>
+            ))}
+          </nav>
+        )}
         <StudyBar prose downloadUrl={entry.data.attachments?.[0]?.url} />
         <div class="u49fcd85" data-matn={entry.id} data-unit="فقرة"><Prose body={body ?? ""} /></div>
       </>
     ) : (
       <>
+        {tocNested?.length > 0 && (
+          <nav class="toc-box has-current" aria-label="فهرس العناوين">
+            <div class="toc-label">فهرس العناوين</div>
+            {tocNested.map((h) => (
+              <a href={`#${h.slug}`} style={`padding-inline-start: ${(h.depth - 2) * 1}rem`}>{h.title}</a>
+            ))}
+          </nav>
+        )}
         <StudyBar prose downloadUrl={entry.data.attachments?.[0]?.url} />
         <div class="u49fcd85"><Prose body={body ?? ""} /></div>
       </>
