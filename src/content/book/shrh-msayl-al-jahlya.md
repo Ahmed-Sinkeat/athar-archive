@@ -3,7 +3,7 @@ title: "شرح مسائل الجاهلية"
 status: published
 published_at: 2026-06-25
 person: salh-al-fwzan
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 edition: "الطبعة الأولى 1421هـ - 2005م"
 ---
 بسم الله الرحمن الرحيم ال

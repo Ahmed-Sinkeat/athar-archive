@@ -3,7 +3,7 @@ title: "آيات عتاب المصطفى صلى الله عليه وسلم في 
 status: published
 published_at: 2026-06-25
 person: awyd-al-mtrfy
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 edition: "الثالثة، 1426 هـ - 2005 م"
 ---
 ## [آيات عتاب المصطفى - صلى الله عليه وسلم - في ضوء العصمة والاجتهاد]ـ

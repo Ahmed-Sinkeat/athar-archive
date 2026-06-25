@@ -3,7 +3,7 @@ title: "جهود علماء الحنفية في إبطال عقائد القبو
 status: published
 published_at: 2026-06-25
 person: shms-al-dyn-al-afghany
-topics: ["al-samiyyat", "fiqh-hanafi"]
+topics: ["al-samiyyat"]
 edition: "الأولى - 1416 هـ - 1996 م"
 ---
 بسم الله الرحمن الرحيم

@@ -3,7 +3,7 @@ title: "العين والأثر في عقائد أهل الأثر"
 status: published
 published_at: 2026-06-25
 person: abn-fqyh-fsa
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 edition: "الأولى, 1407هـ"
 description: "بتحقيق عصام رواس قلعجي"
 ---

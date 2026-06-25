@@ -3,7 +3,7 @@ title: "المنتقى من منهاج الاعتدال"
 status: published
 published_at: 2026-06-25
 person: al-dhhby-shms-al-dyn
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 description: "بتحقيق محب الدين الخطيب"
 ---
 ## بِسم الله الرَّحْمَن الرَّحِيم

@@ -3,7 +3,7 @@ title: "مسألة في الكنائس"
 status: published
 published_at: 2026-06-25
 person: abn-tymya
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 edition: "الأولى 1416هـ"
 description: "بتحقيق علي بن عبدالعزيز الشبل"
 ---

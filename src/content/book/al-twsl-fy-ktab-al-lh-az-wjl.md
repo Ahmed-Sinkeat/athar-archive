@@ -3,7 +3,7 @@ title: "التوسل في كتاب الله عز وجل"
 status: published
 published_at: 2026-06-25
 person: tlal-bn-mstfa-arqsws
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 edition: "السنة السادسة والثلاثون، 124 - 1424هـ/2004م."
 ---
 ال

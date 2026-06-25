@@ -3,7 +3,7 @@ title: "اختصاص القرآن بعوده إلى الرحيم الرحمن"
 status: published
 published_at: 2026-06-25
 person: al-mqdsy-dya-al-dyn
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 edition: "الأولى، 1409هـ 1989م"
 description: "بتحقيق عبد الله بن يوسف الجديع"
 ---

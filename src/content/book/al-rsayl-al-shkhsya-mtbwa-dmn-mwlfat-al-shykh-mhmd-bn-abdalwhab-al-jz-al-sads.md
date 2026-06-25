@@ -3,7 +3,7 @@ title: "الرسائل الشخصية (مطبوع ضمن مؤلفات الشيخ
 status: published
 published_at: 2026-06-25
 person: mhmd-bn-abd-al-whab
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 edition: "بدون"
 description: "بتحقيق صالح بن فوزان بن عبدالله الفوزان، محمد بن صالح العيلقي"
 ---

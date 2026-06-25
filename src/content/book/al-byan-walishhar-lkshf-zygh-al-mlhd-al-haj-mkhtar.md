@@ -3,7 +3,7 @@ title: "البيان والإشهار لكشف زيغ الملحد الحاج م
 status: published
 published_at: 2026-06-25
 person: fwzan-al-sabq
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 edition: "1422هـ - 2001م"
 ---
 ## مقدمة

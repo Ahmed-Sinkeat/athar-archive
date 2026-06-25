@@ -3,7 +3,7 @@ title: "بحث عقدي في لفظ السيد"
 status: published
 published_at: 2026-06-25
 person: ywsf-bn-mhmd-al-sayd
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 edition: "السنة السادسة والثلاثون العدد (112) 1424هـ/2004م"
 ---
 ## مقدمة

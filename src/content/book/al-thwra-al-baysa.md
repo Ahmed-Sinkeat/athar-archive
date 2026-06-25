@@ -3,7 +3,7 @@ title: "الثورة البائسة"
 status: published
 published_at: 2026-06-25
 person: mwsa-al-mwswy
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 ---
 الثورة البائسة تأليف: الدكتور الشيعي موسى الموسوي
 

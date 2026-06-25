@@ -3,7 +3,7 @@ title: "جلاء العينين في محاكمة الأحمدين"
 status: published
 published_at: 2026-06-25
 person: abn-al-alwsy
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 ---
 ## [جلاء العينين في محاكمة الأحمدين]ـ
 

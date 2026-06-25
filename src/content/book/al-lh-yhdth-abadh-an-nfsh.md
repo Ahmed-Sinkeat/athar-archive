@@ -3,7 +3,7 @@ title: "الله يحدث عباده عن نفسه"
 status: published
 published_at: 2026-06-25
 person: slyman-al-ashqr-amr
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 edition: "الأولى، 1435 هـ - 2014 م"
 ---
 الله يُحَدِّثُ عِبَادَهُ عَنْ نَفسِه تأليف الْأُسْتَاذ الدكتور عُمر سُلَيْمَان عبد الله الْأَشْقَر دَار النفائس

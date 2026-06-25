@@ -3,7 +3,7 @@ title: "التلمود تاريخه وتعاليمه"
 status: published
 published_at: 2026-06-25
 person: zfr-al-islam-khan
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 edition: "الثامنة 1423هـ-2002م"
 ---
 ## مقدمات

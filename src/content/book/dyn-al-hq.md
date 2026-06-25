@@ -3,7 +3,7 @@ title: "دين الحق"
 status: published
 published_at: 2026-06-25
 person: abd-al-rhmn-bn-hmad-al-amr
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 edition: "السادسة، 1420هـ"
 ---
 [

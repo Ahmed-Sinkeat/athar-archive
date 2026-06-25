@@ -3,7 +3,7 @@ title: "المورد في عمل المولد"
 status: published
 published_at: 2026-06-25
 person: taj-al-dyn-al-fakhany
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 edition: "الأولى، 1419 هـ - 1998 م"
 description: "بتحقيق علي بن حسن بن عبد الحميد"
 ---

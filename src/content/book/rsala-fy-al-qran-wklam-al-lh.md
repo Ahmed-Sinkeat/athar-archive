@@ -3,7 +3,7 @@ title: "رسالة في القرآن وكلام الله"
 status: published
 published_at: 2026-06-25
 person: al-mqdsy-mwfq-al-dyn
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 edition: "الأولى، 1424هـ/2004م"
 description: "بتحقيق يوسف بن محمد السعيد"
 ---

@@ -3,7 +3,7 @@ title: "أبو الحسن الأشعري"
 status: published
 published_at: 2026-06-25
 person: hmad-al-ansary
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 edition: "السنة السادسة - العدد الثالث - رجب 1394هـ - فبراير 1974م"
 ---
 ## مدخل

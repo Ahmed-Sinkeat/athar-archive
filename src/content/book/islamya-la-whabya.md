@@ -3,7 +3,7 @@ title: "إسلامية لا وهابية"
 status: published
 published_at: 2026-06-25
 person: nasr-al-aql
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 ---
 [
 

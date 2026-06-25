@@ -3,7 +3,7 @@ title: "الحكم على الشيء فرع عن تصوره"
 status: published
 published_at: 2026-06-25
 person: mhmd-aman-al-jamy
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 edition: "السنة الرابعة عشرة، العدد الخامس والخمسون والسادس والخمسون، رجب- ذو الحجة 1402هـ/1981"
 ---
 ## الحكم على الشيء فرع عن تصوره

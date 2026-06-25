@@ -3,7 +3,7 @@ title: "الألفاظ والمصطلحات المتعلقة بتوحيد الر
 status: published
 published_at: 2026-06-25
 person: amal-bnt-abd-al-azyz-al-amrw
-topics: ["tahwid-al-ibada", "mustalah-al-hadith"]
+topics: ["tahwid-al-ibada"]
 ---
 ال
 

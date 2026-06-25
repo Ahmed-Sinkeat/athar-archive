@@ -3,7 +3,7 @@ title: "الرسل والرسالات"
 status: published
 published_at: 2026-06-25
 person: slyman-al-ashqr-amr
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 edition: "الرابعة، 1410 هـ - 1989 م"
 ---
 ## الباب الأول الرسل والأنبياء

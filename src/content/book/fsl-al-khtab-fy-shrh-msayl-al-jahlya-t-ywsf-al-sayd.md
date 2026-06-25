@@ -3,7 +3,7 @@ title: "فصل الخطاب في شرح مسائل الجاهلية ت يوسف 
 status: published
 published_at: 2026-06-25
 person: al-alwsy-mhmwd-shkry
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 edition: "الأولى 1425هـ/2004م"
 description: "بتحقيق يوسف بن محمد السعيد"
 ---

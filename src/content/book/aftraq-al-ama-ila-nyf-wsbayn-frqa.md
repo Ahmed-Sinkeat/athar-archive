@@ -3,7 +3,7 @@ title: "افتراق الأمة إلى نيف وسبعين فرقة"
 status: published
 published_at: 2026-06-25
 person: al-snaany
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 edition: "الأولى، 1415هـ"
 description: "بتحقيق سعد بن عبد الله بن سعد السعدان"
 ---

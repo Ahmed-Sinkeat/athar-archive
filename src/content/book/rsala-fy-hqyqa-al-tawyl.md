@@ -3,7 +3,7 @@ title: "رسالة في حقيقة التأويل"
 status: published
 published_at: 2026-06-25
 person: abd-al-rhmn-al-malmy-al-ymany
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 edition: "الأولى، 1426 هـ - 2005 م"
 description: "بتحقيق جرير بن العربي أبي مالك الجزائري"
 ---

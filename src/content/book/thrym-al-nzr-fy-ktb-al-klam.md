@@ -3,7 +3,7 @@ title: "تحريم النظر في كتب الكلام"
 status: published
 published_at: 2026-06-25
 person: al-mqdsy-mwfq-al-dyn
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 edition: "الأولى، 1410هـ - 1990م"
 description: "بتحقيق عبد الرحمن بن محمد سعيد دمشقية"
 ---

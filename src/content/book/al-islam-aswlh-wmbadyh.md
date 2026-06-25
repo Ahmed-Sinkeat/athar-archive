@@ -3,7 +3,7 @@ title: "الإسلام أصوله ومبادئه"
 status: published
 published_at: 2026-06-25
 person: mhmd-bn-abd-al-lh-bn-salh-al-shym
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 edition: "الأولى، 1421هـ"
 ---
 [

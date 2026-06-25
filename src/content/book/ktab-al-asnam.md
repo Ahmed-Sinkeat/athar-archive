@@ -3,7 +3,7 @@ title: "كتاب الأصنام"
 status: published
 published_at: 2026-06-25
 person: abn-al-klby
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 edition: "الرابعة، 2000م"
 description: "بتحقيق أحمد زكي باشا"
 ---

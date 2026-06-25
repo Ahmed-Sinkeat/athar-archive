@@ -3,7 +3,7 @@ title: "شيخ الإسلام ابن تيمية لم يكن ناصبيا"
 status: published
 published_at: 2026-06-25
 person: slyman-al-khrashy
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 edition: "الأولى، 1419 هـ - 1998 م"
 ---
 ابن تيمية لم يكن ناصبياً تأليف الشيخ سليمان بن صالح الخراشي

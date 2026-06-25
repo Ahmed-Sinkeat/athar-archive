@@ -3,7 +3,7 @@ title: "البحث الصريح في أيما هو الدين الصحيح"
 status: published
 published_at: 2026-06-25
 person: zyada-al-rasy
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 edition: "الأولى، 1423هـ / 2003م"
 description: "بتحقيق سعود ين عبد العزيز الخلف"
 ---

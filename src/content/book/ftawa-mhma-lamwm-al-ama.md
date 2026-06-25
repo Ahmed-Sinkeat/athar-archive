@@ -3,7 +3,7 @@ title: "فتاوى مهمة لعموم الأمة"
 status: published
 published_at: 2026-06-25
 person: abn-baz
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 edition: "الأولى، 1413هـ"
 description: "بتحقيق إبراهيم الفارس"
 ---

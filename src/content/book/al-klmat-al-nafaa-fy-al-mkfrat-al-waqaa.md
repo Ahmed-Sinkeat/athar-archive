@@ -3,7 +3,7 @@ title: "الكلمات النافعة في المكفرات الواقعة"
 status: published
 published_at: 2026-06-25
 person: abd-al-lh-bn-mhmd-bn-abd-al-whab
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 edition: "الرابعة 1420هـ/2000م"
 ---
 الكلمات النافعة في المكفرات الواقعة

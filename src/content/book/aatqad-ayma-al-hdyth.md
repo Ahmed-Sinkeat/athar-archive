@@ -3,7 +3,7 @@ title: "اعتقاد أئمة الحديث"
 status: published
 published_at: 2026-06-25
 person: abw-bkr-al-ismaayly
-topics: ["al-aqeedah-al-aamah", "mustalah-al-hadith"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "الأولى، 1412هـ"
 description: "بتحقيق محمد بن عبد الرحمن الخميس"
 ---

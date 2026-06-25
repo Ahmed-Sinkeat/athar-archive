@@ -3,7 +3,7 @@ title: "مختصر معارج القبول"
 status: published
 published_at: 2026-06-25
 person: hsham-al-aqda
-topics: ["aam-other"]
+topics: ["aam-aqeedah"]
 edition: "الخامسة، 1418 هـ"
 ---
 ## [مختصر معارج القبول]ـ
