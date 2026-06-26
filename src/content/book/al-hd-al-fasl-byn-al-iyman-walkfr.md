@@ -3,7 +3,7 @@ title: "الحد الفاصل بين الإيمان والكفر"
 status: published
 published_at: 2026-06-26
 person: abd-al-rhmn-bn-abd-al-khalq
-topics: ["al-iman"]
+topics: ["al-aqeedah-al-aamah", "al-iman"]
 edition: "الخامسة، 1408 هـ - 1988 م"
 ---
 بسم الله الرحمن الرحيم الحد الفاصل بين الإيمان والكفر

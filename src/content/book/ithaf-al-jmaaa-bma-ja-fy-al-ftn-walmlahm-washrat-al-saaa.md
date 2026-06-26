@@ -3,7 +3,7 @@ title: "إتحاف الجماعة بما جاء في الفتن والملاحم
 status: published
 published_at: 2026-06-26
 person: hmwd-bn-abd-al-lh-al-twyjry
-topics: ["al-samiyyat"]
+topics: ["al-aqeedah-al-aamah", "al-samiyyat"]
 edition: "الثانية، 1414 هـ"
 ---
 الكتاب: إتحاف الجماعة بما جاء في الفتن والملاحم وأشراط الساعة المؤلف: حمود بن عبد الله التويجري (المتوفى: 1413هـ) مصدر الكتاب: موقع رسالة الإسلام http://www.resaltalislam.org [ترقيم الكتاب موافق للمطبوع]

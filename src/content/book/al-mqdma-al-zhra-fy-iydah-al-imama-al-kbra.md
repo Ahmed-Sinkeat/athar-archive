@@ -3,7 +3,7 @@ title: "المقدمة الزهرا في إيضاح الإمامة الكبرى"
 status: published
 published_at: 2026-06-26
 person: al-dhhby-shms-al-dyn
-topics: ["al-imamah-was-sahabah"]
+topics: ["al-aqeedah-al-aamah", "al-imamah-was-sahabah"]
 edition: "الأولى، 1429 هـ - 2008 م"
 description: "بتحقيق علي رضا بن عبد الله بن علي رضا"
 ---

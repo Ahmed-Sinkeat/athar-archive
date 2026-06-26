@@ -3,7 +3,7 @@ title: "التوضيح المفيد لمسائل كتاب التوحيد"
 status: published
 published_at: 2026-06-26
 person: abd-al-lh-al-dwysh
-topics: ["tahwid-al-ibada"]
+topics: ["al-aqeedah-al-aamah", "tahwid-al-ibada"]
 edition: "1411هـ ـ 1990م"
 ---
 ## مقدمة...

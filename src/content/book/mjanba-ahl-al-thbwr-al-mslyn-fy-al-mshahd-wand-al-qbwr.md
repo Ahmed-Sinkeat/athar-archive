@@ -3,7 +3,7 @@ title: "مجانبة أهل الثبور المصلين في المشاهد وع
 status: published
 published_at: 2026-06-26
 person: abd-al-azyz-bn-fysl-al-rajhy
-topics: ["al-samiyyat"]
+topics: ["al-aqeedah-al-aamah", "al-samiyyat"]
 edition: "الأولى، 1425 هـ - 2004 م"
 ---
 مُجَانَبَة ُ أَهْل ِ الثُّبُوْر، المُصَلِّيْنَ في المَشَاهِدِ وَعِنْدَ القُبُوْر الشَّيْخِ عَبْدِ العَزِيْزِ بْن ِ فَيْصَل الرّاجِحِيّ

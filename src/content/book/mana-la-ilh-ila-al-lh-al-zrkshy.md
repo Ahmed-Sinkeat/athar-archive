@@ -3,7 +3,7 @@ title: "معنى لا إله إلا الله - الزركشي"
 status: published
 published_at: 2026-06-26
 person: al-zrkshy-bdr-al-dyn
-topics: ["aam-aqeedah"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "الثالثة، 1405هـ/ 1985م"
 description: "بتحقيق علي محيي الدين علي القرة راغي"
 ---

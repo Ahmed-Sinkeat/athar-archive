@@ -3,7 +3,7 @@ title: "التوحيد للناشئة والمبتدئين"
 status: published
 published_at: 2026-06-26
 person: abd-al-azyz-bn-mhmd-al-abd-al-ltyf
-topics: ["tahwid-al-ibada"]
+topics: ["al-aqeedah-al-aamah", "tahwid-al-ibada"]
 edition: "الأولى، 1422هـ"
 ---
 [

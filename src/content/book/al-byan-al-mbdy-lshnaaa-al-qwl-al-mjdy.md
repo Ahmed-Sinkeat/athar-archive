@@ -3,7 +3,7 @@ title: "البيان المبدي لشناعة القول المجدي"
 status: published
 published_at: 2026-06-26
 person: slyman-bn-shman
-topics: ["aam-aqeedah"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 ## البيان المبدي لشناعة القول المجدي
 

@@ -3,7 +3,7 @@ title: "الولاء والبراء في الإسلام - البركاتي"
 status: published
 published_at: 2026-06-26
 person: abw-aasm-al-brkaty
-topics: ["al-wala-wal-bara"]
+topics: ["al-aqeedah-al-aamah", "al-wala-wal-bara"]
 edition: "الأولى، 1433 هـ - 2012 م"
 ---
 الولاء والبراء في الإسلام سؤال وجواب أعده أبو عاصم البركاتي المصري

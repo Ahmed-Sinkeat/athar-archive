@@ -3,7 +3,7 @@ title: "شفاء العليل في مسائل القضاء والقدر والح
 status: published
 published_at: 2026-06-26
 person: abn-al-qym
-topics: ["al-qadr"]
+topics: ["al-aqeedah-al-aamah", "al-qadr"]
 edition: "1398هـ/1978م"
 description: "بتحقيق -"
 ---

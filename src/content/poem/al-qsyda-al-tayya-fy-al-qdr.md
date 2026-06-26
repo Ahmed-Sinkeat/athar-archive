@@ -3,7 +3,7 @@ title: "القصيدة التائية في القدر"
 status: published
 published_at: 2026-06-26
 person: abn-tymya
-topics: ["al-qadr"]
+topics: ["al-aqeedah-al-aamah", "al-qadr"]
 edition: "الأولى 1424هـ = 2003م"
 ---
 أيا علماءَ الدين ذمِّيُّ دينكم --- تحيرَّ دُلُّوه بأوضحِ حجةِ

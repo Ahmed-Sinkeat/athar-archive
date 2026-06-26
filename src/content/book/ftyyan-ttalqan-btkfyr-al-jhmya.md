@@ -3,7 +3,7 @@ title: "فتييان تتعلقان بتكفير الجهمية"
 status: published
 published_at: 2026-06-26
 person: slyman-bn-shman
-topics: ["al-iman", "al-firaq-war-rudud"]
+topics: ["al-aqeedah-al-aamah", "al-iman", "al-firaq-war-rudud"]
 edition: "الأولى، 1415هـ"
 description: "بتحقيق عبد العزيز بن عبد الله الزير آل حمد"
 ---

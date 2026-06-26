@@ -3,7 +3,7 @@ title: "الانتصار للصحابة الأخيار في رد أباطيل ح
 status: published
 published_at: 2026-06-26
 person: abd-al-mhsn-al-abad
-topics: ["aam-aqeedah"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "الثانية، 1423هـ"
 ---
 الانتصار للصحابةِ الأخيار في ردِّ أباطيل حسن المالكي تأليف: عبد المحسن بن حمد العباد البدر

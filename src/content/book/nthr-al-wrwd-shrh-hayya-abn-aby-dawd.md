@@ -3,7 +3,7 @@ title: "نثر الورود شرح حائية ابن أبي داود"
 status: published
 published_at: 2026-06-26
 person: abd-al-rhmn-bn-abd-al-azyz-al-aql
-topics: ["aam-aqeedah"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 ## المقدمة
 

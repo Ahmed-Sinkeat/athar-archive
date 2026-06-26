@@ -3,7 +3,7 @@ title: "أطواق الحمامة في حمل الصحابة على السلام
 status: published
 published_at: 2026-06-26
 person: al-mwyd-al-alwy
-topics: ["al-imamah-was-sahabah"]
+topics: ["al-aqeedah-al-aamah", "al-asma-was-sifat", "al-imamah-was-sahabah"]
 ---
 أَطْوَاقُ الحمَامَة في حَمل الصَّحابةِ عَلى السَّلامة
 

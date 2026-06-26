@@ -3,7 +3,7 @@ title: "حقيقة البدعة وأحكامها"
 status: published
 published_at: 2026-06-26
 person: sayd-bn-nasr-al-ghamdy
-topics: ["al-sunnah-wal-bidah"]
+topics: ["al-aqeedah-al-aamah", "al-sunnah-wal-bidah"]
 ---
 ## مقدمة الكتاب
 

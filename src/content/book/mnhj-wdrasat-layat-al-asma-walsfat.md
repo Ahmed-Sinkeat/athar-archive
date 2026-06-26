@@ -3,7 +3,7 @@ title: "منهج ودراسات لآيات الأسماء والصفات"
 status: published
 published_at: 2026-06-26
 person: al-shnqyty-mhmd-al-amyn
-topics: ["al-asma-was-sifat"]
+topics: ["al-aqeedah-al-aamah", "al-asma-was-sifat"]
 edition: "الرابعة، 1404هـ - 1984م"
 ---
 محاضرة آيَات الصِّفَات الَّتِي أَلْقَاهَا فَضِيلَة الشَّيْخ مُحَمَّد الْأمين بالجامعة الإسلامية 13 رَمَضَان سنة 1382

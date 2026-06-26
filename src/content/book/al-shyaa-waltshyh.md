@@ -3,7 +3,7 @@ title: "الشيعة والتصحيح"
 status: published
 published_at: 2026-06-26
 person: mwsa-al-mwswy
-topics: ["al-firaq-war-rudud"]
+topics: ["al-aqeedah-al-aamah", "al-firaq-war-rudud"]
 ---
 الشيعة والتصحيح الصراع بين الشيعة والتشيع العلامة الدكتور: موسى الموسوي
 

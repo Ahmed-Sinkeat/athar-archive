@@ -3,7 +3,7 @@ title: "ماهية العقل ومعناه واختلاف الناس فيه"
 status: published
 published_at: 2026-06-26
 person: al-harth-al-mhasby
-topics: ["aam-aqeedah"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "الثانية، 1398"
 description: "بتحقيق حسين القوتلي"
 ---

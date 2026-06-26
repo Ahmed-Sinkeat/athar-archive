@@ -3,7 +3,7 @@ title: "الحجج الباهرة في إفحام الطائفة الكافرة 
 status: published
 published_at: 2026-06-26
 person: jlal-al-dyn-al-dwany
-topics: ["aam-aqeedah"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "الأولى، 1420 هـ - 2000 م"
 ---
 ## [الحجج الباهرة في إفحام الطائفة الكافرة الفاجرة]ـ

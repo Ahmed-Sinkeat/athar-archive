@@ -3,7 +3,7 @@ title: "عقد الدرر في أخبار المنتظر"
 status: published
 published_at: 2026-06-26
 person: ywsf-bn-yhya-al-slmy
-topics: ["aam-aqeedah"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "الثانية، 1410 هـ - 1989 م"
 ---
 عقد الدرر في أخبار المنتظر يوسف بن يحيى بن علي المقدسي الشافعي السلمي

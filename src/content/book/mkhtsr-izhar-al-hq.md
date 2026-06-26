@@ -3,7 +3,7 @@ title: "مختصر إظهار الحق"
 status: published
 published_at: 2026-06-26
 person: rhmt-al-lh-al-hndy
-topics: ["aam-aqeedah"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "الأولى، 1415هـ"
 ---
 [

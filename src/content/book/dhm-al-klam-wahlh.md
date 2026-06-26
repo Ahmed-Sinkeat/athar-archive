@@ -3,7 +3,7 @@ title: "ذم الكلام وأهله"
 status: published
 published_at: 2026-06-26
 person: al-hrwy-abw-ismaayl
-topics: ["al-sunnah-wal-bidah"]
+topics: ["al-aqeedah-al-aamah", "al-sunnah-wal-bidah"]
 edition: "الأولى، 1418هـ -1998م"
 description: "بتحقيق عبد الرحمن عبد العزيز الشبل"
 ---

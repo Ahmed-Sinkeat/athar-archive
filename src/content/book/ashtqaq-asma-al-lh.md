@@ -3,7 +3,7 @@ title: "اشتقاق أسماء الله"
 status: published
 published_at: 2026-06-26
 person: al-zjajy
-topics: ["al-asma-was-sifat"]
+topics: ["al-aqeedah-al-aamah", "al-asma-was-sifat"]
 edition: "الثانية، 1406هـ - 1986م"
 description: "بتحقيق د. عبد الحسين المبارك"
 ---

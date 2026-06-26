@@ -3,7 +3,7 @@ title: "التنبيه والرد على أهل الأهواء والبدع"
 status: published
 published_at: 2026-06-26
 person: al-mlty-abw-al-hsyn
-topics: ["al-sunnah-wal-bidah", "al-firaq-war-rudud"]
+topics: ["al-aqeedah-al-aamah", "al-sunnah-wal-bidah", "al-firaq-war-rudud"]
 description: "بتحقيق محمد زاهد بن الحسن الكوثري"
 ---
 ## بِسم الله الرَّحْمَن الرَّحِيم

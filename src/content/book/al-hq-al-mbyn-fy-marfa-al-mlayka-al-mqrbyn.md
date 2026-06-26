@@ -3,7 +3,7 @@ title: "الحق المبين في معرفة الملائكة المقربين"
 status: published
 published_at: 2026-06-26
 person: mhmd-aly-mhmd-imam
-topics: ["aam-aqeedah"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "الأولي، 2007 م"
 ---
 الحق المبين فى معرفة الملائكة المقربين إعداد محمد على محمد إمام
