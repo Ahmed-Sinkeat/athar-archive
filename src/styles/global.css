@@ -210,6 +210,7 @@ img { max-width: 100%; }
   font-family: var(--font-ui); color: var(--ink-soft); background: var(--surface);
   border: 1px solid var(--rule-strong); border-radius: 8px; width: 32px; height: 32px;
   cursor: pointer; display: grid; place-items: center; font-size: 13px;
+  touch-action: manipulation; /* ponytail: kills 300ms tap delay without JS */
 }
 .toggle-btn {
   font-family: var(--font-ui); font-size: 13px; color: var(--ink-soft);
@@ -899,12 +900,13 @@ html.hide-vnums .vnum { display: none; }
 
 /* --- token colors: آية ﴿﴾ · حديث «» · اقتباس "" (wrapped at build) --- */
 /* آيات ﴿﴾ → accent red; اقتباس "" → blue; حديث «» → warm amber */
-:root { --tok-ayah: #9a2f24; --tok-hadith: #8a5a20; --tok-quote: #2a5da6; }
-html[data-theme="sepia"] { --tok-ayah: #872820; --tok-hadith: #87571d; --tok-quote: #275299; }
-html[data-theme="dark"]  { --tok-ayah: #e08888; --tok-hadith: #d6ac63; --tok-quote: #80aad8; }
+:root { --tok-ayah: #9a2f24; --tok-hadith: #8a5a20; --tok-quote: #2a5da6; --tok-paren: #3a6357; }
+html[data-theme="sepia"] { --tok-ayah: #872820; --tok-hadith: #87571d; --tok-quote: #275299; --tok-paren: #38604e; }
+html[data-theme="dark"]  { --tok-ayah: #e08888; --tok-hadith: #d6ac63; --tok-quote: #80aad8; --tok-paren: #6aaa8e; }
 .tok-ayah   { color: var(--tok-ayah); }
 .tok-hadith { color: var(--tok-hadith); }
 .tok-quote  { color: var(--tok-quote); }
+.tok-paren  { color: var(--tok-paren); }
 
 /* --- personal highlights (CSS Custom Highlight API) --- */
 ::highlight(aa-review)   { background-color: rgba(240, 195, 60, 0.40); }
