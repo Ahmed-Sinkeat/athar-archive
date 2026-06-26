@@ -1042,11 +1042,20 @@ html[data-theme="dark"] ::highlight(aa-find)    { background-color: rgba(255, 15
 .mujam-def-head { font-family: var(--font-ui); font-size: 1rem; color: var(--ink-soft); margin-top: 6px; }
 
 /* --- page separator (EPUB-imported books) — click to open حاشية in ann-sheet --- */
-.page-sep { display: flex; align-items: center; margin: 24px 0; padding-block-start: 4px; border-block-start: 1px solid var(--rule); color: var(--ink-faint); font-family: var(--font-ui); font-size: 0.78rem; }
+.page-sep { display: flex; align-items: center; gap: 8px; margin: 24px 0; padding-block-start: 4px; border-block-start: 1px solid var(--rule); color: var(--ink-faint); font-family: var(--font-ui); font-size: 0.78rem; }
 .page-sep::before { content: "ص " attr(data-page); }
 .page-sep[data-ann] { cursor: pointer; }
 .page-sep[data-ann]:hover { color: var(--accent); }
-.page-sep[data-ann]::after { content: " · حواشٍ"; }
+/* ponytail: badge via ::after — no extra DOM element */
+.page-sep[data-ann]::after {
+  content: "حواشٍ";
+  display: inline-flex; align-items: center;
+  background: var(--accent-wash); color: var(--accent);
+  border: 1px solid var(--accent-border);
+  border-radius: 20px; padding: 1px 8px; font-size: 0.72rem; line-height: 1.6;
+  transition: background 0.15s;
+}
+.page-sep[data-ann]:hover::after { background: var(--accent-wash); }
 /* عرض مستمر — hide page separators unless they carry footnotes */
 html.pages-flow .page-sep { display: none; }
 html.pages-flow .page-sep[data-ann] { display: flex; }
