@@ -3,7 +3,7 @@ title: "عودة الصفويين"
 status: published
 published_at: 2026-06-26
 person: abd-al-azyz-bn-salh-al-mhmwd
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-aqeedah-al-aamah", "al-firaq-war-rudud"]
 edition: "الأولى، 1428 هـ - 2007 م"
 ---
 ## [عودَةُ الصَّفويِّينِ]ـ

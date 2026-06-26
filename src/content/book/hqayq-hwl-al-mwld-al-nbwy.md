@@ -3,7 +3,7 @@ title: "حقائق حول المولد النبوي"
 status: published
 published_at: 2026-06-26
 person: ahmd-bn-abd-al-azyz-al-hmdan
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-aqeedah-al-aamah", "al-sunnah-wal-bidah"]
 ---
 [
 

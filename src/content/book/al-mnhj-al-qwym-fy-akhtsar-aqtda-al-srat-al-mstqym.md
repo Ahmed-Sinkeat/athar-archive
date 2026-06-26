@@ -3,7 +3,7 @@ title: "المنهج القويم في اختصار اقتضاء الصراط ا
 status: published
 published_at: 2026-06-26
 person: al-baly-bdr-al-dyn
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-aqeedah-al-aamah", "al-sunnah-wal-bidah"]
 edition: "الأولى، 1422 هـ"
 ---
 المنهج القويم في اختصار الصراط المستقيم

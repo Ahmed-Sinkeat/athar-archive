@@ -3,7 +3,7 @@ title: "الإباضية وهل هم خوارج"
 status: published
 published_at: 2026-06-26
 person: abd-al-azyz-bn-mhmd-al-abd-al-ltyf
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-aqeedah-al-aamah", "al-firaq-war-rudud"]
 edition: "الأولى، 1412 هـ"
 ---
 الإباضِيَّة..وهل هم خوارج؟ فضيلة الشيخ الدكتور عبد العزيز بن محمد آل عبد اللطيف

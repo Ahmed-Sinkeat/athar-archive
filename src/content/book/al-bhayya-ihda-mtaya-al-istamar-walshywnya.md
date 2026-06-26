@@ -3,7 +3,7 @@ title: "البهائية إحدى مطايا الإستعمار والصهيون
 status: published
 published_at: 2026-06-26
 person: abd-al-qadr-shyba-al-hmd
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-aqeedah-al-aamah", "al-firaq-war-rudud"]
 edition: "السنة السابعة - العدد الأول رجب 1394 هـ/ 1974 م"
 ---
 ## مدخل...
