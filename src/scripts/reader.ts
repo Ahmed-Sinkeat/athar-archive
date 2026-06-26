@@ -281,7 +281,7 @@ document.addEventListener("click", (e) => {
   }
   // EPUB inline footnote sups with embedded note text (data-note set at server render)
   const fnSup = t.closest<HTMLElement>("sup[data-fn][data-note]");
-  if (fnSup) {
+  if (fnSup && !fnSup.dataset.sepPage) {
     e.preventDefault();
     const pop = ensureFnPop();
     // ponytail: textContent not innerHTML — note is plain text from the book
@@ -634,14 +634,14 @@ function enhanceProse() {
     }
   }
 
-  function renderChips(entries: HTMLElement[]) {
+  function renderChips(entries: HTMLElement[], selectIndex = 0) {
     chipsEl.textContent = "";
     chipsEl.hidden = entries.length < 2;
     entries.forEach((en, i) => {
       if (entries.length < 2) return;
       const b = document.createElement("button");
       b.type = "button"; b.className = "ann-chip"; b.textContent = sourceLabel(en, i);
-      b.setAttribute("aria-pressed", String(i === 0));
+      b.setAttribute("aria-pressed", String(i === selectIndex));
       b.addEventListener("click", () => {
         chipsEl.querySelectorAll(".ann-chip").forEach((c) => c.setAttribute("aria-pressed", "false"));
         b.setAttribute("aria-pressed", "true");
@@ -649,12 +649,12 @@ function enhanceProse() {
       });
       chipsEl.appendChild(b);
     });
-    showEntry(entries[0]);
+    showEntry(entries[selectIndex] || entries[0]);
   }
 
-  function selectKind(byKind: Map<string, HTMLElement[]>, kind: string) {
+  function selectKind(byKind: Map<string, HTMLElement[]>, kind: string, entryIndex = 0) {
     tabsEl.querySelectorAll(".ann-tab").forEach((t) => t.setAttribute("aria-pressed", String(t.getAttribute("data-kind") === kind)));
-    renderChips(byKind.get(kind)!);
+    renderChips(byKind.get(kind)!, entryIndex);
   }
 
   function renderFoot(packId: string) {
@@ -675,7 +675,7 @@ function enhanceProse() {
     footEl.append(nav("‹ السابق", ids[i - 1], "ann-prev"), nav("التالي ›", ids[i + 1], "ann-next"));
   }
 
-  function openSheet(packId: string) {
+  function openSheet(packId: string, entryIndex = 0) {
     const pack = document.getElementById(packId);
     if (!pack) return;
     build();
@@ -697,7 +697,7 @@ function enhanceProse() {
       t.addEventListener("click", () => selectKind(byKind, k));
       tabsEl.appendChild(t);
     });
-    selectKind(byKind, kinds[0]);
+    selectKind(byKind, kinds[0], entryIndex);
     renderFoot(packId);
     sheet!.hidden = false;
     requestAnimationFrame(() => sheet!.classList.add("is-shown"));
@@ -721,13 +721,19 @@ function enhanceProse() {
       pack.className = "ann-pack"; pack.id = packId; pack.setAttribute("data-ann-pack", ""); pack.hidden = true;
 
       if (typeof notes[0] === "string") {
-        const entry = document.createElement("div");
-        entry.className = "ann-entry k-hashiya"; entry.setAttribute("data-kind", "حاشية"); entry.setAttribute("data-label", "حاشية");
-        const body = document.createElement("div");
-        body.className = "ann-entry-body"; body.setAttribute("data-ar", "");
-        notes.forEach((n) => { const p = document.createElement("p"); p.textContent = n; body.appendChild(p); });
-        entry.appendChild(body);
-        pack.appendChild(entry);
+        notes.forEach((n, idx) => {
+          const entry = document.createElement("div");
+          entry.className = "ann-entry k-hashiya"; 
+          entry.setAttribute("data-kind", "حاشية"); 
+          entry.setAttribute("data-label", `حاشية — حاشية ${toAr(idx + 1)}`);
+          const body = document.createElement("div");
+          body.className = "ann-entry-body"; body.setAttribute("data-ar", "");
+          const p = document.createElement("p"); 
+          p.textContent = n; 
+          body.appendChild(p);
+          entry.appendChild(body);
+          pack.appendChild(entry);
+        });
       } else {
         notes.forEach((nt) => {
           const entry = document.createElement("div");
@@ -762,7 +768,12 @@ function enhanceProse() {
     if (sep) { e.preventDefault(); openSheet(sep.dataset.ann!); return; }
     // inline footnote sup (future EPUB imports): <sup data-fn="n" data-sep-page="p">
     const fnSup = t.closest<HTMLElement>("sup[data-fn][data-sep-page]");
-    if (fnSup) { e.preventDefault(); openSheet("ann-page-" + fnSup.dataset.sepPage); return; }
+    if (fnSup) {
+      e.preventDefault();
+      const fnNum = parseInt(fnSup.dataset.fn || "1", 10);
+      openSheet("ann-page-" + fnSup.dataset.sepPage, fnNum - 1);
+      return;
+    }
     const mark = t.closest<HTMLElement>(".ann-mark");
     if (mark) { e.preventDefault(); openSheet(mark.getAttribute("data-ann") || ""); return; }
     // whole-paragraph note: tap the فقرة
