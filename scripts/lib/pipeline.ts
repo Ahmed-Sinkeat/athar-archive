@@ -105,7 +105,7 @@ export class Normalizer {
 
 /** 3. Stage: Semantic AST Builder */
 export class SemanticASTBuilder {
-  static build(pandocAst: any): SemanticBook {
+  static build(pandocAst: any, source: "doc" | "epub" = "doc", filePath?: string): SemanticBook {
     const metadata: Record<string, any> = {};
     const flatNodes: SemanticNode[] = [];
     const footnotes: { index: number; text: string }[] = [];
@@ -124,6 +124,31 @@ export class SemanticASTBuilder {
       }
     }
 
+    let paragraphCounter = 0;
+    let accumulatedOffset = 0;
+
+    const getOrigin = (textLength: number): any => {
+      paragraphCounter++;
+      const currentStart = accumulatedOffset;
+      accumulatedOffset += textLength + 1; // simulation of separation
+      if (source === "doc") {
+        return {
+          source: "doc",
+          page: 1, // simulated page number
+          paragraph: paragraphCounter,
+          offsetStart: currentStart,
+          offsetEnd: currentStart + textLength
+        };
+      } else {
+        return {
+          source: "epub",
+          file: filePath ? path.basename(filePath) : "document.epub",
+          xpath: `/html/body/div/p[${paragraphCounter}]`,
+          offset: currentStart
+        };
+      }
+    };
+
     // Process blocks list
     const blocks = pandocAst.blocks || [];
     const walkBlocks = (nodeList: any[]) => {
@@ -136,16 +161,15 @@ export class SemanticASTBuilder {
         if (type === "Header") {
           const level = content[0];
           const text = SemanticASTBuilder.inlineToString(content[2], footnotes);
-          flatNodes.push(createNode("Heading", text, { level }));
+          flatNodes.push(createNode("Heading", text, { level }, [], 1.0, getOrigin(text.length)));
         } else if (type === "Para" || type === "Plain") {
           const text = SemanticASTBuilder.inlineToString(content, footnotes);
           if (text) {
-            flatNodes.push(createNode("Paragraph", text));
+            flatNodes.push(createNode("Paragraph", text, {}, [], 1.0, getOrigin(text.length)));
           }
         } else if (type === "BlockQuote") {
-          // BlockQuotes can contain paragraph blocks
           const qParser = new PandocASTParser(content, footnotes);
-          flatNodes.push(createNode("Quote", undefined, {}, qParser.nodes));
+          flatNodes.push(createNode("Quote", undefined, {}, qParser.nodes, 1.0, getOrigin(0)));
         } else if (type === "BulletList" || type === "OrderedList") {
           const listItems = type === "OrderedList" ? content[1] : content;
           const itemsNodes: SemanticNode[] = [];
@@ -153,12 +177,12 @@ export class SemanticASTBuilder {
             const itemParser = new PandocASTParser(item, footnotes);
             itemsNodes.push(...itemParser.nodes);
           }
-          flatNodes.push(createNode("List", undefined, { list_type: type }, itemsNodes));
+          flatNodes.push(createNode("List", undefined, { list_type: type }, itemsNodes, 1.0, getOrigin(0)));
         } else if (type === "Table") {
-          flatNodes.push(createNode("Table", "[Table Content]"));
+          flatNodes.push(createNode("Table", "[Table Content]", {}, [], 1.0, getOrigin(15)));
         } else {
           // Walk nested dictionaries recursively
-          SemanticASTBuilder.walkRecursive(content, flatNodes, footnotes);
+          SemanticASTBuilder.walkRecursive(content, flatNodes, footnotes, getOrigin);
         }
       }
     };
@@ -176,22 +200,22 @@ export class SemanticASTBuilder {
     };
   }
 
-  static walkRecursive(node: any, flatNodes: SemanticNode[], footnotes: any[]) {
+  static walkRecursive(node: any, flatNodes: SemanticNode[], footnotes: any[], getOrigin: (len: number) => any) {
     if (Array.isArray(node)) {
       for (const item of node) {
-        SemanticASTBuilder.walkRecursive(item, flatNodes, footnotes);
+        SemanticASTBuilder.walkRecursive(item, flatNodes, footnotes, getOrigin);
       }
     } else if (node && typeof node === "object") {
       if (node.t === "Para" || node.t === "Plain") {
         const text = SemanticASTBuilder.inlineToString(node.c, footnotes);
         if (text) {
-          flatNodes.push(createNode("Paragraph", text));
+          flatNodes.push(createNode("Paragraph", text, {}, [], 1.0, getOrigin(text.length)));
         }
       } else if (node.c) {
-        SemanticASTBuilder.walkRecursive(node.c, flatNodes, footnotes);
+        SemanticASTBuilder.walkRecursive(node.c, flatNodes, footnotes, getOrigin);
       } else {
         for (const k of Object.keys(node)) {
-          SemanticASTBuilder.walkRecursive(node[k], flatNodes, footnotes);
+          SemanticASTBuilder.walkRecursive(node[k], flatNodes, footnotes, getOrigin);
         }
       }
     }
@@ -405,11 +429,19 @@ export class QuranExtractor {
             // High confidence for exact matches, slightly lower for fuzzy search inclusions
             const isExact = cleanArabicText(matchedSurah) === cleanArabicText(surahCandidate);
             const confidence = isExact ? 1.0 : 0.85;
+            const startIdx = m.index || 0;
+            const endIdx = startIdx + m[0].length;
+            const nodeOrigin = node.origin ? {
+              ...node.origin,
+              offsetStart: (node.origin.offsetStart || 0) + startIdx,
+              offsetEnd: (node.origin.offsetStart || 0) + endIdx
+            } : undefined;
+
             node.children.push(createNode("QuranVerse", m[0], {
               surah: matchedSurah,
               ayah: ayah,
               raw_match: m[0]
-            }, [], confidence));
+            }, [], confidence, nodeOrigin));
           }
         }
       }
@@ -431,9 +463,15 @@ export class HadithExtractor {
       if (node.type === "Paragraph" && node.content) {
         let isHadith = false;
         let confidence = 0.72;
+        let matchIndex = 0;
+        let matchLength = node.content.length;
+
         for (const ind of indicators) {
-          if (ind.test(node.content)) {
+          const match = node.content.match(ind);
+          if (match) {
             isHadith = true;
+            matchIndex = match.index || 0;
+            matchLength = match[0].length;
             if (ind.source.includes("رسول الله")) {
               confidence = 0.95;
             }
@@ -441,7 +479,13 @@ export class HadithExtractor {
           }
         }
         if (isHadith) {
-          node.children.push(createNode("Hadith", node.content, { type: "hadith_quotation" }, [], confidence));
+          const nodeOrigin = node.origin ? {
+            ...node.origin,
+            offsetStart: (node.origin.offsetStart || 0) + matchIndex,
+            offsetEnd: (node.origin.offsetStart || 0) + matchIndex + matchLength
+          } : undefined;
+
+          node.children.push(createNode("Hadith", node.content, { type: "hadith_quotation" }, [], confidence, nodeOrigin));
         }
       }
     });
@@ -454,8 +498,14 @@ export class ScholarExtractor {
     traverseAST(book.ast, (node) => {
       if (node.type === "Paragraph" && node.content) {
         for (const scholar of SCHOLAR_ENTITIES) {
-          if (node.content.includes(scholar)) {
-            node.children.push(createNode("ScholarMention", scholar, {}, [], 0.90));
+          const idx = node.content.indexOf(scholar);
+          if (idx !== -1) {
+            const nodeOrigin = node.origin ? {
+              ...node.origin,
+              offsetStart: (node.origin.offsetStart || 0) + idx,
+              offsetEnd: (node.origin.offsetStart || 0) + idx + scholar.length
+            } : undefined;
+            node.children.push(createNode("ScholarMention", scholar, {}, [], 0.90, nodeOrigin));
           }
         }
       }
@@ -469,8 +519,14 @@ export class BookExtractor {
     traverseAST(book.ast, (node) => {
       if (node.type === "Paragraph" && node.content) {
         for (const bEnt of BOOK_ENTITIES) {
-          if (node.content.includes(bEnt)) {
-            node.children.push(createNode("BookReference", bEnt, {}, [], 0.85));
+          const idx = node.content.indexOf(bEnt);
+          if (idx !== -1) {
+            const nodeOrigin = node.origin ? {
+              ...node.origin,
+              offsetStart: (node.origin.offsetStart || 0) + idx,
+              offsetEnd: (node.origin.offsetStart || 0) + idx + bEnt.length
+            } : undefined;
+            node.children.push(createNode("BookReference", bEnt, {}, [], 0.85, nodeOrigin));
           }
         }
       }
