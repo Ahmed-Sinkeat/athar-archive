@@ -55,9 +55,7 @@ export function cleanArabicText(text: string): string {
   text = text.replace(/ة\b/g, "ه");
   // Normalize Ya and Alef Maksura
   text = text.replace(/ى\b/g, "ي");
-  // Remove punctuation & brackets
-  text = text.replace(/[^\w\s]/g, " ");
-  // Standardize spaces
+  // Standardize spaces (do NOT strip Arabic letters — \w is ASCII-only in JS)
   return text.replace(/\s+/g, " ").trim();
 }
 

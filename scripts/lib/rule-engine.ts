@@ -2,17 +2,6 @@ import * as fs from "fs";
 import * as path from "path";
 import { parseYaml } from "./yaml";
 
-// Simple helper to normalize arabic text for rule engine
-function cleanArabicRuleText(text: string): string {
-  if (!text) return "";
-  text = text.replace(/[\u064B-\u0652\u0653\u0670]/g, "");
-  text = text.replace(/[إأآ]/g, "ا");
-  text = text.replace(/ة\b/g, "ه");
-  text = text.replace(/ى\b/g, "ي");
-  text = text.replace(/[^\w\s]/g, " ");
-  return text.replace(/\s+/g, " ").trim();
-}
-
 export interface RuleDecision {
   ruleId: string;
   category: string;
@@ -293,14 +282,13 @@ export class RuleEngine {
     const data = this.loadRulesFile("topic");
     const rules = data.rules || [];
     const topics: string[] = [];
-    const cleanTitle = cleanArabicRuleText(title);
 
     for (const rule of rules) {
       if (rule.enabled === false) continue;
       const pattern = rule.pattern;
       if (pattern) {
         const regex = new RegExp(pattern, "i");
-        if (regex.test(cleanTitle)) {
+        if (regex.test(title)) {
           topics.push(rule.topic);
 
           book.ruleDecisions = book.ruleDecisions || [];
