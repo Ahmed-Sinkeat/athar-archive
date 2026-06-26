@@ -90,7 +90,22 @@ const latest = [
   <section class="hero">
     <div class="hero-inner">
       <div class="hero-eyebrow">أرشيف علمي</div>
-      <h1 class="hero-title">أهل الأثر</h1>
+      <h1 class="sr-only">أهل الأثر</h1>
+
+      <picture class="hero-calligraphy" aria-hidden="true">
+        <source media="(prefers-color-scheme: dark)" srcset="/calligraphy/logo_dark.webp" />
+        <img
+          src="/calligraphy/logo_light.webp"
+          alt=""
+          class="hero-calligraphy-img"
+          width="560"
+          height="560"
+          loading="eager"
+          decoding="async"
+        />
+      </picture>
+
+      <p class="hero-lede">متونٌ ومنظوماتٌ وتراجمٌ وأسانيد — في تجربة قراءة هادئة.</p>
 
       <form action="/search" method="get" class="u5fbcbc5">
         <div class="u537b78d">
@@ -98,7 +113,7 @@ const latest = [
           <button type="button" class="icon-btn hero-filter" data-action="search:filter" aria-label="تصفية البحث" aria-expanded="false">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
           </button>
-          <button class="btn-accent u4964676" type="submit" >بحث</button>
+          <button class="btn-accent u4964676" type="submit">بحث</button>
         </div>
       </form>
 
