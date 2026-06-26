@@ -1,0 +1,30 @@
+rules:
+  - id: level1
+    priority: 100
+    enabled: true
+    confidence: 0.95
+    language: ar
+    category: heading
+    keywords:
+      - "كتاب"
+      - "باب"
+      - "القسم"
+  - id: level2
+    priority: 90
+    enabled: true
+    confidence: 0.90
+    language: ar
+    category: heading
+    keywords:
+      - "فصل"
+      - "مبحث"
+      - "المطلب"
+  - id: level3
+    priority: 80
+    enabled: true
+    confidence: 0.80
+    language: ar
+    category: heading
+    keywords:
+      - "فرع"
+      - "مسألة"

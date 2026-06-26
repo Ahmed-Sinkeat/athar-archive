@@ -128,6 +128,7 @@ function detectSourcePresence(fullText: string, feature: string): boolean {
 }
 
 function evaluateFile(filePath: string, format: "epub" | "doc"): FileEvaluation {
+  const profile = format === "epub" ? "epub" : "generic";
   const start = Date.now();
   let parseTime = 0;
   let rawAst: any = null;
@@ -232,7 +233,7 @@ function evaluateFile(filePath: string, format: "epub" | "doc"): FileEvaluation 
   let metadataStatus = "❌ Failed";
   let metadataReason = "";
   try {
-    MetadataExtractor.extract(book);
+    MetadataExtractor.extract(book, profile);
     const hasMeta = book.metadata && (book.metadata.title || book.metadata.author);
     if (hasMeta) {
       metadataStatus = "✓ Passed";
@@ -248,7 +249,7 @@ function evaluateFile(filePath: string, format: "epub" | "doc"): FileEvaluation 
   let headingStatus = "❌ Failed";
   let headingReason = "";
   try {
-    HeadingExtractor.extract(book);
+    HeadingExtractor.extract(book, profile);
     let headingsCount = 0;
     traverseAST(book.ast, (node) => {
       if (node.type === "Heading" || node.type === "Chapter" || node.type === "Section") {
@@ -297,7 +298,7 @@ function evaluateFile(filePath: string, format: "epub" | "doc"): FileEvaluation 
   let quranStatus = "❌ Failed";
   let quranReason = "";
   try {
-    QuranExtractor.extract(book);
+    QuranExtractor.extract(book, profile);
     let quranCount = 0;
     traverseAST(book.ast, (node) => {
       if (node.type === "QuranVerse") quranCount++;
@@ -320,7 +321,7 @@ function evaluateFile(filePath: string, format: "epub" | "doc"): FileEvaluation 
   let hadithStatus = "❌ Failed";
   let hadithReason = "";
   try {
-    HadithExtractor.extract(book);
+    HadithExtractor.extract(book, profile);
     let hadithCount = 0;
     traverseAST(book.ast, (node) => {
       if (node.type === "Hadith") hadithCount++;
@@ -343,7 +344,7 @@ function evaluateFile(filePath: string, format: "epub" | "doc"): FileEvaluation 
   let scholarStatus = "❌ Failed";
   let scholarReason = "";
   try {
-    ScholarExtractor.extract(book);
+    ScholarExtractor.extract(book, profile);
     let scholarCount = 0;
     traverseAST(book.ast, (node) => {
       if (node.type === "ScholarMention") scholarCount++;
@@ -365,7 +366,7 @@ function evaluateFile(filePath: string, format: "epub" | "doc"): FileEvaluation 
   let bookStatus = "❌ Failed";
   let bookReason = "";
   try {
-    BookExtractor.extract(book);
+    BookExtractor.extract(book, profile);
     let bookCount = 0;
     traverseAST(book.ast, (node) => {
       if (node.type === "BookReference") bookCount++;
@@ -386,7 +387,7 @@ function evaluateFile(filePath: string, format: "epub" | "doc"): FileEvaluation 
   let topicStatus = "❌ Failed";
   let topicReason = "";
   try {
-    TopicExtractor.extract(book);
+    TopicExtractor.extract(book, profile);
     if (book.metadata && book.metadata.topics && book.metadata.topics.length > 0) {
       topicStatus = "✓ Passed";
     } else {

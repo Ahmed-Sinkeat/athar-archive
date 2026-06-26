@@ -1,0 +1,65 @@
+rules:
+  - id: title
+    priority: 100
+    enabled: true
+    confidence: 0.95
+    language: ar
+    category: metadata
+    patterns:
+      - "الكتاب"
+  - id: author
+    priority: 100
+    enabled: true
+    confidence: 0.95
+    language: ar
+    category: metadata
+    patterns:
+      - "المؤلف"
+      - "تأليف"
+      - "بقلم"
+  - id: editor
+    priority: 90
+    enabled: true
+    confidence: 0.90
+    language: ar
+    category: metadata
+    patterns:
+      - "تحقيق"
+      - "المحقق"
+  - id: publisher
+    priority: 100
+    enabled: true
+    confidence: 0.95
+    language: ar
+    category: metadata
+    patterns:
+      - "الناشر"
+      - "دار النشر"
+      - "نشر"
+  - id: edition
+    priority: 90
+    enabled: true
+    confidence: 0.90
+    language: ar
+    category: metadata
+    patterns:
+      - "الطبعة"
+      - "الإصدار"
+  - id: volumes
+    priority: 95
+    enabled: true
+    confidence: 0.95
+    language: ar
+    category: metadata
+    patterns:
+      - "عدد الأجزاء"
+      - "عدد المجلدات"
+  - id: publicationYear
+    priority: 85
+    enabled: true
+    confidence: 0.85
+    language: ar
+    category: metadata
+    patterns:
+      - "سنة النشر"
+      - "سنة الطبع"

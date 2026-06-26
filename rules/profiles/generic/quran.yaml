@@ -1,0 +1,10 @@
+rules:
+  - id: quran_verse
+    priority: 100
+    enabled: true
+    confidence: 0.95
+    language: ar
+    category: quran
+    surah_patterns:
+      - "\\[[^\\]:]+:\\s*\\d+\\]"
+      - "\\([^\\):]+:\\s*\\d+\\)"

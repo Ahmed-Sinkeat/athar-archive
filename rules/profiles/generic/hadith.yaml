@@ -1,0 +1,12 @@
+rules:
+  - id: hadith_patterns
+    priority: 100
+    enabled: true
+    confidence: 0.90
+    language: ar
+    category: hadith
+    patterns:
+      - "قال رسول الله صلى الله عليه وسلم"
+      - "عن\\s+([أبإ]\\w+\\s+){1,3}قال"
+      - "حدثنا\\s+\\w+"
+      - "أخبرنا\\s+\\w+"
