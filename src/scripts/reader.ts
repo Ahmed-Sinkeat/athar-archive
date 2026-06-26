@@ -754,10 +754,35 @@ function enhanceProse() {
     }
     if (sheet && !sheet.hidden) close(); // outside click
   });
+  function enhanceFootnotes() {
+    document.querySelectorAll<HTMLElement>(".page-sep").forEach((sep) => {
+      let prev = sep.previousElementSibling;
+      while (prev && prev.tagName === "P") {
+        const txt = prev.textContent?.trim() || "";
+        if (
+          /^\s*[\(\[﴿#]?\d+[\)\]﴾]?\s*[-.:\s]/.test(txt) ||
+          /^\s*[\(\[﴿#]?[٠-٩]+[\)\]﴾]?\s*[-.:\s]/.test(txt) ||
+          txt.startsWith("انظر:") ||
+          txt.startsWith("أخرجه")
+        ) {
+          prev.classList.add("prose-footnote");
+          prev = prev.previousElementSibling;
+        } else {
+          break;
+        }
+      }
+    });
+  }
+
+  function setup() {
+    injectPageNotes();
+    enhanceFootnotes();
+  }
+
   document.addEventListener("keydown", (e) => { if (e.key === "Escape") close(); });
   document.addEventListener("astro:after-swap", () => { close(); sheet = null; });
-  injectPageNotes();
-  document.addEventListener("astro:page-load", injectPageNotes);
+  setup();
+  document.addEventListener("astro:page-load", setup);
 })();
 
 // --- audio recitation switcher (متون/منظومات with multiple recordings) ---
