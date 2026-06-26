@@ -7,7 +7,6 @@ export const prerender = false;
 import { getEntry } from "astro:content";
 import Base from "../../../layouts/Base.astro";
 import Breadcrumbs from "../../../components/Breadcrumbs.astro";
-import Prose from "../../../components/Prose.astro";
 import StudyBar from "../../../components/StudyBar.astro";
 import { isPub, loadGraph, personNameMap, notesByAnchor } from "../../../lib/site";
 import { markdownToSafeHtml } from "../../../lib/sanitize";
@@ -93,11 +92,17 @@ for (const [anchor, notes] of Object.entries(byAnchor)) {
   }
 }
 
-// 3. Inject DB hashiyas into page separators in markdown content
-const processedContent = chapter.content.replace(/<hr class="page-sep" data-page="(\d+)"([^>]*)\/>/g, (match, pageStr, attrs) => {
-  const pNum = parseInt(pageStr, 10);
+// 3. Compile markdown to HTML first so that raw HTML tags inside are not broken by remark-parse.
+const html = markdownToSafeHtml(chapter.content);
+
+// 4. Inject DB hashiyas into page separators in the HTML content
+const processedHtml = html.replace(/<hr\s+([^>]*class="page-sep"[^>]*)>/g, (match, attrs) => {
+  const pageMatch = attrs.match(/data-page="(\d+)"/) || attrs.match(/data-page='(\d+)'/);
+  if (!pageMatch) return match;
+  const pNum = parseInt(pageMatch[1], 10);
+  
   let notes: string[] = [];
-  const notesMatch = attrs.match(/data-notes='([^']+)'/);
+  const notesMatch = attrs.match(/data-notes="([^"]+)"/) || attrs.match(/data-notes='([^']+)'/);
   if (notesMatch) {
     try {
       notes = JSON.parse(notesMatch[1].replace(/&#39;/g, "'").replace(/&quot;/g, '"'));
@@ -107,39 +112,51 @@ const processedContent = chapter.content.replace(/<hr class="page-sep" data-page
   }
   const dbNotes = dbHashiyasByPage.get(pNum) ?? [];
   const allNotes = [...notes, ...dbNotes];
+  
+  const cleanAttrs = attrs
+    .replace(/data-notes="[^"]+"/g, "")
+    .replace(/data-notes='[^']+'/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+    
   if (allNotes.length > 0) {
-    const cleanAttrs = attrs.replace(/data-notes='[^']+'/g, "").replace(/\s+/g, " ").trim();
     const na = `data-notes='${JSON.stringify(allNotes).replace(/'/g, "&#39;")}'`;
-    return `<hr class="page-sep" data-page="${pNum}" ${cleanAttrs} ${na} />`;
+    return `<hr ${cleanAttrs} ${na} />`;
   }
-  return match;
+  return `<hr ${cleanAttrs} />`;
 });
 
-// 4. Embed note text directly on inline <sup data-fn> refs so client needs no DOM search.
+// 5. Embed note text directly on inline <sup data-fn> refs so client needs no DOM search.
 //    Parses the notes we just injected into page-seps, then stamps data-note on each sup.
-//    ponytail: two regex passes on the same string; fine — chapters are small.
 const finalContent = (() => {
   const pnMap = new Map<number, string>();
-  processedContent.replace(
-    /<hr[^>]+data-page="(\d+)"[^>]+data-notes='([^']*)'[^>]*\/>/g,
-    (_, pStr: string, notesJson: string) => {
-      try {
-        const ns = JSON.parse(notesJson.replace(/&#39;/g, "'").replace(/&quot;/g, '"')) as string[];
-        if (ns.length) pnMap.set(parseInt(pStr, 10), ns.join("\n\n"));
-      } catch {}
+  processedHtml.replace(
+    /<hr\s+([^>]*class="page-sep"[^>]*)>/g,
+    (_, attrs: string) => {
+      const pageMatch = attrs.match(/data-page="(\d+)"/) || attrs.match(/data-page='(\d+)'/);
+      const notesMatch = attrs.match(/data-notes="([^"]*)"/) || attrs.match(/data-notes='([^']*)'/);
+      if (pageMatch && notesMatch) {
+        const pStr = pageMatch[1];
+        try {
+          const ns = JSON.parse(notesMatch[1].replace(/&#39;/g, "'").replace(/&quot;/g, '"')) as string[];
+          if (ns.length) pnMap.set(parseInt(pStr, 10), ns.join("\n\n"));
+        } catch {}
+      }
       return _;
     }
   );
-  if (!pnMap.size) return processedContent;
-  return processedContent.replace(
-    /<sup data-fn="(\d+)" data-sep-page="(\d+)">(\d+)<\/sup>/g,
-    (match: string, fn: string, sepPage: string) => {
-      const note = pnMap.get(parseInt(sepPage, 10));
-      if (!note) return match;
-      const attr = note.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/'/g, "&#39;").replace(/\r/g, "").replace(/\n/g, "&#10;");
-      return `<sup data-fn="${fn}" data-sep-page="${sepPage}" data-note="${attr}">${fn}</sup>`;
-    }
-  );
+  if (!pnMap.size) return processedHtml;
+  return processedHtml.replace(/<sup\s+([^>]+)>(\d+)<\/sup>/g, (match, attrs, fnContent) => {
+    const fnMatch = attrs.match(/data-fn="(\d+)"/) || attrs.match(/data-fn='(\d+)'/);
+    const sepMatch = attrs.match(/data-sep-page="(\d+)"/) || attrs.match(/data-sep-page='(\d+)'/);
+    if (!fnMatch || !sepMatch) return match;
+    const fn = fnMatch[1];
+    const sepPage = sepMatch[1];
+    const note = pnMap.get(parseInt(sepPage, 10));
+    if (!note) return match;
+    const attr = note.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/'/g, "&#39;").replace(/\r/g, "").replace(/\n/g, "&#10;");
+    return `<sup data-fn="${fn}" data-sep-page="${sepPage}" data-note="${attr}">${fnContent}</sup>`;
+  });
 })();
 ---
 <Base title={`${chapter.title} · ${entry.data.title}`} activeNav="books" searchScope={{ in: entry.id, label: entry.data.title }}>
@@ -188,12 +205,12 @@ const finalContent = (() => {
         {isMatn("book", entry.data) ? (
           <>
             <StudyBar prose downloadUrl={entry.data.attachments?.[0]?.url} />
-            <div class="u49fcd85" data-matn={`${entry.id}--${chapter.slug}`} data-unit="فقرة"><Prose body={finalContent} /></div>
+            <div class="u49fcd85 prose" data-matn={`${entry.id}--${chapter.slug}`} data-unit="فقرة" data-ar set:html={finalContent}></div>
           </>
         ) : (
           <>
             <StudyBar prose downloadUrl={entry.data.attachments?.[0]?.url} />
-            <div class="u49fcd85"><Prose body={finalContent} /></div>
+            <div class="u49fcd85 prose" data-ar set:html={finalContent}></div>
           </>
         )}
 
