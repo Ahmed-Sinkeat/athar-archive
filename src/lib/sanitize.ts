@@ -32,13 +32,14 @@ function collectText(node: any): string {
 // ponytail: \u escapes — esbuild rejects raw Arabic chars in regex literals
 const TOK_RE = new RegExp(
   "(﴿[^﴾]*﴾)" +
-  "|(\[[\\u0600-\\u06FF\\s]+:[\\d\\u0660-\\u0669]+(?:[-\\u2013][\\d\\u0660-\\u0669]+)?\\])" +
+  "|(\\[[\\u0600-\\u06FF\\s]+:[\\d\\u0660-\\u0669]+(?:[-\\u2013][\\d\\u0660-\\u0669]+)?\\])" +
   "|(«[^»]*»)" +
   "|([“”][^“”]*[“”])" +
-  '|("[^"]*")',
+  '|("[^"]*")' +
+  "|(\\([^)]{1,200}\\))",  // ponytail: cap 200 chars to avoid backtracking
   "g"
 );
-const TOK_CLASS = ["tok-ayah", "tok-quran-ref", "tok-quote", "tok-quote", "tok-quote"];
+const TOK_CLASS = ["tok-ayah", "tok-quran-ref", "tok-quote", "tok-quote", "tok-quote", "tok-paren"];
 
 function splitTokens(value: string): any[] {
   const out: any[] = [];
