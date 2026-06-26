@@ -243,32 +243,53 @@ document.addEventListener("click", (e) => {
   if ((e.target as HTMLElement).closest("[data-drawer-backdrop]")) setDrawer(false);
 });
 
-// --- footnote popover ---
+// --- footnote popover (markdown [^refs] + EPUB <sup data-fn> refs) ---
 let fnPop: HTMLElement | null = null;
+function positionFnPop(anchor: HTMLElement) {
+  if (!fnPop) return;
+  fnPop.hidden = false;
+  const rect = anchor.getBoundingClientRect();
+  fnPop.style.top = `${rect.bottom + window.scrollY + 8}px`;
+  let left = rect.left + rect.width / 2 - fnPop.offsetWidth / 2;
+  left = Math.max(8, Math.min(left, window.innerWidth - fnPop.offsetWidth - 8));
+  fnPop.style.left = `${left}px`;
+}
+function ensureFnPop(): HTMLElement {
+  if (!fnPop) {
+    fnPop = document.createElement("div");
+    fnPop.className = "popover fn-popover";
+    document.body.appendChild(fnPop);
+  }
+  return fnPop;
+}
 document.addEventListener("click", (e) => {
-  const ref = (e.target as HTMLElement).closest<HTMLAnchorElement>("[data-footnote-ref]");
+  const t = e.target as HTMLElement;
+  // standard markdown footnote refs
+  const ref = t.closest<HTMLAnchorElement>("[data-footnote-ref]");
   if (ref) {
     e.preventDefault();
     const id = ref.getAttribute("href")?.slice(1);
     const target = id ? document.getElementById(id) : null;
     if (target) {
-      if (!fnPop) {
-        fnPop = document.createElement("div");
-        fnPop.className = "popover fn-popover";
-        document.body.appendChild(fnPop);
-      }
+      const pop = ensureFnPop();
       const clone = target.cloneNode(true) as HTMLElement;
       clone.querySelector(".data-footnote-backref")?.remove();
-      fnPop.innerHTML = clone.innerHTML;
-      fnPop.hidden = false;
-      
-      const rect = ref.getBoundingClientRect();
-      fnPop.style.top = `${rect.bottom + window.scrollY + 8}px`;
-      let left = rect.left + rect.width / 2 - fnPop.offsetWidth / 2;
-      left = Math.max(8, Math.min(left, window.innerWidth - fnPop.offsetWidth - 8));
-      fnPop.style.left = `${left}px`;
+      pop.innerHTML = clone.innerHTML;
+      positionFnPop(ref);
     }
-  } else if (fnPop && !fnPop.hidden && !(e.target as HTMLElement).closest(".fn-popover")) {
+    return;
+  }
+  // EPUB inline footnote sups with embedded note text (data-note set at server render)
+  const fnSup = t.closest<HTMLElement>("sup[data-fn][data-note]");
+  if (fnSup) {
+    e.preventDefault();
+    const pop = ensureFnPop();
+    // ponytail: textContent not innerHTML — note is plain text from the book
+    pop.textContent = fnSup.dataset.note || "";
+    positionFnPop(fnSup);
+    return;
+  }
+  if (fnPop && !fnPop.hidden && !t.closest(".fn-popover")) {
     fnPop.hidden = true;
   }
 });
