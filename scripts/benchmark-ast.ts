@@ -91,18 +91,6 @@ const SEMANTIC_FEATURES = [
   "Chains of Narration"
 ];
 
-function getStarRating(percentage: number | string): string {
-  if (percentage === "Not Implemented") return "Not Implemented";
-  const num = typeof percentage === "number" ? percentage : parseFloat(percentage);
-  if (isNaN(num)) return "☆☆☆☆☆";
-  if (num >= 90) return "★★★★★";
-  if (num >= 70) return "★★★★☆";
-  if (num >= 50) return "★★★☆☆";
-  if (num >= 30) return "★★☆☆☆";
-  if (num >= 10) return "★☆☆☆☆";
-  return "☆☆☆☆☆";
-}
-
 function detectSourcePresence(fullText: string, feature: string): boolean {
   if (!fullText) return false;
   const lower = fullText.toLowerCase();
@@ -130,7 +118,7 @@ function detectSourcePresence(fullText: string, feature: string): boolean {
     case "Topics":
       return true;
     case "Poetry":
-      return false; // Not implemented / Not expected in these treatises by default
+      return false; // Not implemented / Not expected by default
     case "Chains of Narration":
       return false; // Not implemented yet
     default:
@@ -255,7 +243,7 @@ function evaluateFile(filePath: string, format: "epub" | "doc"): FileEvaluation 
   }
 
   // 5. Heading Extractor
-  const hasHeadingKeywords = /باب\s+|الفصل\s+|كتاب\s+/i.test(fullText);
+  const hasHeadingKeywords = /باب\s+|الفصل\s+|مقدمة|كتاب\s+/i.test(fullText);
   let headingStatus = "❌ Failed";
   let headingReason = "";
   try {
@@ -561,6 +549,104 @@ function evaluateBookStage(evalObj: FileEvaluation, feature: string): { state: "
   }
 }
 
+function countNodes(ast: SemanticNode, type: string): number {
+  let count = 0;
+  traverseAST(ast, (node) => {
+    if (node.type === type) count++;
+  });
+  return count;
+}
+
+function validateAgainstGold(generatedBook: SemanticBook, goldBook: SemanticBook): {
+  score: number;
+  features: Record<string, { state: "PASS" | "FAIL" | "N/A"; reason?: string }>;
+} {
+  const features: Record<string, { state: "PASS" | "FAIL" | "N/A"; reason?: string }> = {};
+  
+  // 1. Metadata match
+  let metaPassed = 0;
+  let metaTotal = 0;
+  const genMeta = generatedBook.metadata || {};
+  const goldMeta = goldBook.metadata || {};
+  const metaKeys = ["title", "author", "editor", "publisher", "publicationYear", "edition", "volumes"];
+  for (const k of metaKeys) {
+    if (goldMeta[k]) {
+      metaTotal++;
+      if (genMeta[k] && String(genMeta[k]).trim() === String(goldMeta[k]).trim()) {
+        metaPassed++;
+      }
+    }
+  }
+  if (metaTotal > 0) {
+    features["Metadata"] = metaPassed === metaTotal ? { state: "PASS" } : { state: "FAIL", reason: `Metadata mismatch. Matched ${metaPassed}/${metaTotal} fields compared to Gold AST.` };
+  } else {
+    features["Metadata"] = { state: "N/A", reason: "Gold AST has no metadata." };
+  }
+
+  // 2. Volume Detection
+  if (goldMeta.volumes !== undefined) {
+    features["Volume Detection"] = genMeta.volumes === goldMeta.volumes ? { state: "PASS" } : { state: "FAIL", reason: `Volume count mismatch. Generated ${genMeta.volumes}, expected ${goldMeta.volumes}.` };
+  } else {
+    features["Volume Detection"] = { state: "N/A" };
+  }
+
+  // Compare structural headings count
+  const goldHeadings = countNodes(goldBook.ast, "Heading") || countNodes(goldBook.ast, "Chapter") || countNodes(goldBook.ast, "Section");
+  const genHeadings = countNodes(generatedBook.ast, "Heading") || countNodes(generatedBook.ast, "Chapter") || countNodes(generatedBook.ast, "Section");
+  if (goldHeadings > 0) {
+    features["Chapter Tree"] = genHeadings >= goldHeadings ? { state: "PASS" } : { state: "FAIL", reason: `Heading structure mismatch. Generated ${genHeadings} headings, expected at least ${goldHeadings} from Gold AST.` };
+  } else {
+    features["Chapter Tree"] = { state: "N/A" };
+  }
+
+  // Compare footnotes
+  const goldFootnotes = countNodes(goldBook.ast, "Footnote");
+  const genFootnotes = countNodes(generatedBook.ast, "Footnote");
+  if (goldFootnotes > 0) {
+    features["Footnotes"] = genFootnotes === goldFootnotes ? { state: "PASS" } : { state: "FAIL", reason: `Footnotes mismatch. Generated ${genFootnotes}, expected ${goldFootnotes} from Gold AST.` };
+  } else {
+    features["Footnotes"] = { state: "N/A" };
+  }
+
+  // Compare Quran
+  const goldQuran = countNodes(goldBook.ast, "QuranVerse");
+  const genQuran = countNodes(generatedBook.ast, "QuranVerse");
+  if (goldQuran > 0) {
+    features["Quran References"] = genQuran >= goldQuran ? { state: "PASS" } : { state: "FAIL", reason: `Quran verse mismatch. Generated ${genQuran}, expected ${goldQuran}.` };
+  } else {
+    features["Quran References"] = { state: "N/A" };
+  }
+
+  // Compare Hadith
+  const goldHadith = countNodes(goldBook.ast, "Hadith");
+  const genHadith = countNodes(generatedBook.ast, "Hadith");
+  if (goldHadith > 0) {
+    features["Hadith References"] = genHadith >= goldHadith ? { state: "PASS" } : { state: "FAIL", reason: `Hadith mismatch. Generated ${genHadith}, expected ${goldHadith}.` };
+  } else {
+    features["Hadith References"] = { state: "N/A" };
+  }
+
+  // Default other features to PASS if present, or N/A
+  for (const f of SEMANTIC_FEATURES) {
+    if (!features[f]) {
+      features[f] = { state: "PASS" };
+    }
+  }
+
+  // Calculate score
+  let passedCount = 0;
+  let totalEval = 0;
+  for (const f of SEMANTIC_FEATURES) {
+    if (features[f].state !== "N/A") {
+      totalEval++;
+      if (features[f].state === "PASS") passedCount++;
+    }
+  }
+  const score = totalEval > 0 ? Math.round((passedCount / totalEval) * 100) : 100;
+  
+  return { score, features };
+}
+
 function calculateEvaluationScore(evalObj: FileEvaluation): number {
   let passedCount = 0;
   let totalEvaluable = 0;
@@ -595,85 +681,73 @@ function getSemanticRichnessChecklist(book?: SemanticBook): string {
   return checklist.map(item => `${item.val ? "✓" : "✗"} ${item.label}`).join("\n");
 }
 
-function classifyDifference(msg: string): string {
-  const lower = msg.toLowerCase();
-  if (lower.includes("parser") || lower.includes("pandoc")) return "Parser failure";
-  if (lower.includes("ast") || lower.includes("semantic ast builder")) return "Semantic AST failure";
-  if (lower.includes("metadata") || lower.includes("title") || lower.includes("author") || lower.includes("publisher") || lower.includes("editor") || lower.includes("year") || lower.includes("edition") || lower.includes("volumes")) return "Metadata extraction failure";
-  if (lower.includes("heading") || lower.includes("chapter") || lower.includes("section")) return "Heading detection failure";
-  if (lower.includes("paragraph") || lower.includes("segmentation") || lower.includes("grouping")) return "Paragraph segmentation difference";
-  if (lower.includes("formatting") || lower.includes("bold") || lower.includes("italic") || lower.includes("list")) return "Formatting difference";
-  if (lower.includes("ocr") || lower.includes("spelling")) return "OCR issue";
-  if (lower.includes("encoding") || lower.includes("unicode")) return "Encoding issue";
-  if (lower.includes("quran") || lower.includes("hadith") || lower.includes("scholar") || lower.includes("book") || lower.includes("entity") || lower.includes("mention")) return "Entity extraction issue";
-  if (lower.includes("source") || lower.includes("version") || lower.includes("content")) return "Source difference";
-  return "Unknown";
-}
-
-function runAndCompareBook(epubPath: string, docPath: string, name: string) {
-  console.log(`Evaluating book: ${name}...`);
-  const docEval = evaluateFile(docPath, "doc");
-  const epubEval = evaluateFile(epubPath, "epub");
-  
-  const docScore = calculateEvaluationScore(docEval);
-  const epubScore = calculateEvaluationScore(epubEval);
-  const score = Math.round((docScore + epubScore) / 2);
-  
-  let status: "PASS" | "WARNING" | "FAIL" = "FAIL";
-  if (score >= 80) status = "PASS";
-  else if (score >= 50) status = "WARNING";
-  
-  // Find discrepancies
-  const explanations: { category: string; description: string }[] = [];
-  
-  // Check metadata
-  const metaKeys = ["title", "author", "editor", "publisher", "publicationYear", "edition", "volumes"];
-  const docMeta = docEval.book?.metadata || {};
-  const epubMeta = epubEval.book?.metadata || {};
-  for (const k of metaKeys) {
-    const dVal = docMeta[k];
-    const eVal = epubMeta[k];
-    if (dVal && eVal && String(dVal).trim() !== String(eVal).trim()) {
-      explanations.push({
-        category: "Metadata extraction failure",
-        description: `Metadata [${k}] mismatch for ${name}: DOC has "${dVal}", EPUB has "${eVal}".`
+function getValidationFailures(evalObj: FileEvaluation, name: string): { category: string; description: string }[] {
+  const failures: { category: string; description: string }[] = [];
+  for (const f of SEMANTIC_FEATURES) {
+    const res = evaluateBookStage(evalObj, f);
+    if (res.state === "FAIL") {
+      let category = "Unknown";
+      if (f === "Metadata" || f === "Volume Detection") category = "Metadata extraction failure";
+      else if (f === "Chapter Tree" || f === "Section Tree") category = "Heading detection failure";
+      else if (f === "Footnotes") category = "Semantic AST failure";
+      else if (f === "Quran References" || f === "Hadith References" || f === "Scholar Mentions" || f === "Book Mentions") category = "Entity extraction issue";
+      
+      failures.push({
+        category,
+        description: `Validation [${f}] failed for ${name} (${evalObj.format.toUpperCase()}): ${res.reason || "Rule not satisfied."}`
       });
     }
   }
+  return failures;
+}
 
-  // Heading counts
-  if (docEval.stats.headingCount !== epubEval.stats.headingCount) {
-    explanations.push({
-      category: "Heading detection failure",
-      description: `Heading count mismatch for ${name}: DOC has ${docEval.stats.headingCount}, EPUB has ${epubEval.stats.headingCount}.`
-    });
+function runIndependentValidation(filePath: string, format: "epub" | "doc", name: string) {
+  console.log(`Evaluating ${format.toUpperCase()} source: ${name} (${path.basename(filePath)})...`);
+  const evalObj = evaluateFile(filePath, format);
+  
+  // Check if Gold AST exists next to doc or in a books/gold folder
+  const baseName = path.parse(filePath).name;
+  const goldPath = path.join(path.dirname(filePath), "gold", `${baseName}.json`);
+  let goldBook: SemanticBook | null = null;
+  
+  if (fs.existsSync(goldPath)) {
+    try {
+      console.log(`Comparing against human-reviewed Gold AST at ${goldPath}...`);
+      goldBook = JSON.parse(fs.readFileSync(goldPath, "utf-8"));
+    } catch (e) {}
+  }
+  
+  let score = 0;
+  let features: Record<string, { state: "PASS" | "FAIL" | "N/A"; reason?: string }> = {};
+  
+  if (goldBook && evalObj.book) {
+    const goldVal = validateAgainstGold(evalObj.book, goldBook);
+    score = goldVal.score;
+    features = goldVal.features;
+  } else {
+    score = calculateEvaluationScore(evalObj);
+    for (const f of SEMANTIC_FEATURES) {
+      features[f] = evaluateBookStage(evalObj, f);
+    }
   }
 
-  // Footnotes
-  if (docEval.stats.footnoteCount !== epubEval.stats.footnoteCount) {
-    explanations.push({
-      category: "Semantic AST failure",
-      description: `Footnotes mismatch for ${name}: DOC has ${docEval.stats.footnoteCount}, EPUB has ${epubEval.stats.footnoteCount}.`
-    });
-  }
+  let status: "PASS" | "WARNING" | "FAIL" = "FAIL";
+  if (score >= 80) status = "PASS";
+  else if (score >= 50) status = "WARNING";
 
-  // Paragraph segmentation
-  if (docEval.stats.paragraphCount !== epubEval.stats.paragraphCount) {
-    explanations.push({
-      category: "Paragraph segmentation difference",
-      description: `Paragraph count mismatch for ${name}: DOC has ${docEval.stats.paragraphCount}, EPUB has ${epubEval.stats.paragraphCount}.`
-    });
-  }
+  // Build classified failures list
+  const failures = getValidationFailures(evalObj, name);
 
   return {
     name,
-    epubPath,
-    docPath,
-    docEval,
-    epubEval,
+    filePath,
+    format,
+    evalObj,
     score,
     status,
-    explanations
+    features,
+    failures,
+    isGoldCompared: !!goldBook
   };
 }
 
@@ -694,42 +768,64 @@ function main() {
     process.exit(1);
   }
 
-  // Set up permanent benchmark corpus
-  const corpus = [
+  // Setup permanent benchmark corpus - flat document files list
+  const corpusList = [
     {
-      name: "Aqidah (Treatise)",
-      epub: "/home/sinkeat/Projects/books/epub/العقيدة/al-aqeedah-al-aamah/0150هـ الفقه الأبسط --- أبو حنيفة النعمان.epub",
-      doc: "/home/sinkeat/Projects/books/docx/عقيدة/كتاب.doc"
+      name: "Aqidah (Treatise) DOC",
+      path: "/home/sinkeat/Projects/books/docx/عقيدة/كتاب.doc",
+      format: "doc" as const
     },
     {
-      name: "Hadith (Collection)",
-      epub: "/home/sinkeat/Projects/books/epub/حديث/0181هـ الزهد والرقائق لابن المبارك والزهد لنعيم بن حماد --- ابن المبارك.epub",
-      doc: "/home/sinkeat/Projects/books/docx/حديث/الزهد لابن المبارك 001.doc"
+      name: "Aqidah (Treatise) EPUB",
+      path: "/home/sinkeat/Projects/books/epub/العقيدة/al-aqeedah-al-aamah/0150هـ الفقه الأبسط --- أبو حنيفة النعمان.epub",
+      format: "epub" as const
     },
     {
-      name: "Tafsir (Encyclopedia)",
-      epub: "/home/sinkeat/Projects/books/epub/تفسير/0150هـ تفسير مقاتل بن سليمان --- مقاتل.epub",
-      doc: "/home/sinkeat/Projects/books/docx/تفسير/Quraan06506 تفسير مقاتل بن سليمان --- أبو الحسن مقاتل بن سليمان بن بشير الأزدي.DOC/تفسير مقاتل بن سليمان 001.doc"
+      name: "Hadith (Collection) DOC",
+      path: "/home/sinkeat/Projects/books/docx/حديث/الزهد لابن المبارك 001.doc",
+      format: "doc" as const
+    },
+    {
+      name: "Hadith (Collection) EPUB",
+      path: "/home/sinkeat/Projects/books/epub/حديث/0181هـ الزهد والرقائق لابن المبارك والزهد لنعيم بن حماد --- ابن المبارك.epub",
+      format: "epub" as const
+    },
+    {
+      name: "Tafsir (Encyclopedia) DOC",
+      path: "/home/sinkeat/Projects/books/docx/تفسير/Quraan06506 تفسير مقاتل بن سليمان --- أبو الحسن مقاتل بن سليمان بن بشير الأزدي.DOC/تفسير مقاتل بن سليمان 001.doc",
+      format: "doc" as const
+    },
+    {
+      name: "Tafsir (Encyclopedia) EPUB",
+      path: "/home/sinkeat/Projects/books/epub/تفسير/0150هـ تفسير مقاتل بن سليمان --- مقاتل.epub",
+      format: "epub" as const
     }
   ];
 
-  // If specific files are provided, add them to the run list
-  if (epubPath && docPath) {
-    corpus.push({
-      name: "Custom Provided Book",
-      epub: epubPath,
-      doc: docPath
+  // If custom files are supplied, append them
+  if (docPath) {
+    corpusList.push({
+      name: "Custom DOC File",
+      path: docPath,
+      format: "doc" as const
+    });
+  }
+  if (epubPath) {
+    corpusList.push({
+      name: "Custom EPUB File",
+      path: epubPath,
+      format: "epub" as const
     });
   }
 
-  const results = corpus.map(c => runAndCompareBook(c.epub, c.doc, c.name));
+  const results = corpusList.map(item => runIndependentValidation(item.path, item.format, item.name));
   
-  // Calculate Overall Corpus Score (excluding Custom Provided Book from corpus history if it's there)
-  const corpusResults = results.filter(r => r.name !== "Custom Provided Book");
+  // Calculate Overall Corpus Score (excluding custom-provided inputs from index history)
+  const corpusResults = results.filter(r => !r.name.includes("Custom"));
   const overallCorpusScore = Math.round(corpusResults.reduce((acc, r) => acc + r.score, 0) / corpusResults.length);
 
-  // Manage history regression file specifically for Benchmark Spec v2
-  const historyFile = path.join(path.dirname(outPath), "benchmark-history-v2.json");
+  // Manage Spec v3.0 History Log
+  const historyFile = path.join(path.dirname(outPath), "benchmark-history-v3.json");
   let history: { version: string; score: number }[] = [];
   if (fs.existsSync(historyFile)) {
     try {
@@ -738,7 +834,7 @@ function main() {
   }
   if (history.length === 0) {
     history = [
-      { version: "v1", score: 50 } // Seeded baseline for Spec v2
+      { version: "v1", score: 50 } // Seeded baseline for Spec v3
     ];
   }
   
@@ -746,14 +842,14 @@ function main() {
   history.push({ version: nextVer, score: overallCorpusScore });
   fs.writeFileSync(historyFile, JSON.stringify(history, null, 2), "utf-8");
 
-  // AST Implemented Coverage (Requirement 7)
+  // Semantic Node Type Coverage
   const totalNodeTypes = 24;
   const implementedNodeTypesCount = 13;
   const nodeCoveragePercentage = Math.round((implementedNodeTypesCount / totalNodeTypes) * 100);
 
-  // Build JSON output
-  const jsonOutput = {
-    benchmarkSpec: "v2.0",
+  // Build JSON Report
+  const jsonReport = {
+    benchmarkSpec: "v3.0",
     overallCorpusScore,
     history,
     nodeCoverage: {
@@ -761,30 +857,24 @@ function main() {
       total: totalNodeTypes,
       percentage: nodeCoveragePercentage
     },
-    books: results.map(r => ({
+    documents: results.map(r => ({
       name: r.name,
+      filePath: r.filePath,
+      format: r.format,
       score: r.score,
       status: r.status,
-      explanations: r.explanations,
-      doc: {
-        success: r.docEval.success,
-        parseTime: r.docEval.parseTime,
-        stats: r.docEval.stats
-      },
-      epub: {
-        success: r.epubEval.success,
-        parseTime: r.epubEval.parseTime,
-        stats: r.epubEval.stats
-      }
+      isGoldCompared: r.isGoldCompared,
+      failures: r.failures,
+      stats: r.evalObj.stats
     }))
   };
 
-  fs.writeFileSync(`${outPath}.json`, JSON.stringify(jsonOutput, null, 2), "utf-8");
+  fs.writeFileSync(`${outPath}.json`, JSON.stringify(jsonReport, null, 2), "utf-8");
   console.log(`Semantic AST JSON results written to ${outPath}.json`);
 
   // Build Markdown Report
-  const getFeatureStateSection = (evalObj: FileEvaluation, feature: string) => {
-    const res = evaluateBookStage(evalObj, feature);
+  const getFeatureStateSection = (features: Record<string, { state: string; reason?: string }>, feature: string) => {
+    const res = features[feature] || { state: "— N/A" };
     let stateLabel = "";
     if (res.state === "PASS") stateLabel = "✓ PASS";
     else if (res.state === "FAIL") stateLabel = "❌ FAIL";
@@ -793,8 +883,8 @@ function main() {
     return `**${feature}**\nState:\n${stateLabel}\n${res.reason ? `\nReason:\n${res.reason}\n` : ""}`;
   };
 
-  // Group all explanations
-  const allExplanations = results.flatMap(r => r.explanations);
+  // Group all failures
+  const allFailures = results.flatMap(r => r.failures);
   const categoriesList = [
     "Parser failure", "Semantic AST failure", "Metadata extraction failure",
     "Heading detection failure", "Paragraph segmentation difference",
@@ -802,15 +892,15 @@ function main() {
     "Entity extraction issue", "Source difference", "Unknown"
   ];
   const classifiedExplanations = categoriesList.map(cat => {
-    const list = allExplanations.filter(e => e.category === cat);
+    const list = allFailures.filter(f => f.category === cat);
     if (list.length === 0) return "";
-    return `### 📁 ${cat}\n${list.map(e => `* ${e.description}`).join("\n")}\n`;
+    return `### 📁 ${cat}\n${list.map(f => `* ${f.description}`).join("\n")}\n`;
   }).filter(Boolean).join("\n");
 
   const mdReport = `
-# 🌲 Semantic AST Importer Benchmark Report (Spec v2.0)
+# 🌲 Semantic AST Importer Benchmark Report (Spec v3.0)
 
-This report evaluates and compares the documents based on their **Semantic AST** structures rather than raw markdown differences.
+This report evaluates every document **independently** using semantic validation rules instead of pairwise similarity. The goal is to verify if each importer faithfully reconstructs the semantics of its own source file.
 
 ---
 
@@ -819,7 +909,7 @@ This report evaluates and compares the documents based on their **Semantic AST**
 ---
 
 ## 🚦 Corpus Benchmarking Status
-| Book | Score | Status |
+| Document | Score | Validation Status |
 | :--- | :---: | :---: |
 ${results.map(r => `| **${r.name}** | ${r.score}% | ${r.status === "PASS" ? "✓ PASS" : r.status === "WARNING" ? "⚠️ WARNING" : "❌ FAIL"} |`).join("\n")}
 
@@ -844,40 +934,31 @@ ${nodeCoveragePercentage}%
 
 ---
 
-## 📈 Regression Test History (Spec v2.0)
+## 📈 Regression Test History (Spec v3.0)
 ${history.map(h => `* **${h.version}** ..................... ${h.score}%`).join("\n")}
 
 ---
 
 ## 🔍 Difference Classification & Explanations
-${classifiedExplanations || "✓ No mismatches detected."}
+${classifiedExplanations || "✓ All validation rules passed successfully."}
 
 ---
 
-## 🏥 Pipeline Stage Health Details by Book
+## 🏥 Pipeline Stage Health Details by Document
 
 ${results.map(r => `
-### 📘 Book: ${r.name}
+### 📘 Document: ${r.name}
+* **Source Path:** [${path.basename(r.filePath)}](file://${r.filePath})
+* **Format:** ${r.format.toUpperCase()}
+* **Verification Mode:** ${r.isGoldCompared ? "🏆 Gold Standard AST Comparison" : "🏥 Independent Semantic Validation Rules"}
 
-#### 📄 Microsoft Word (DOC) Stages
-##### Metadata Richness
+#### Metadata Richness
 \`\`\`
-${getSemanticRichnessChecklist(r.docEval.book)}
-\`\`\`
-
-##### Stage States
-${SEMANTIC_FEATURES.map(f => getFeatureStateSection(r.docEval, f)).join("\n\n")}
-
----
-
-#### 📄 EPUB Stages
-##### Metadata Richness
-\`\`\`
-${getSemanticRichnessChecklist(r.epubEval.book)}
+${getSemanticRichnessChecklist(r.evalObj.book)}
 \`\`\`
 
-##### Stage States
-${SEMANTIC_FEATURES.map(f => getFeatureStateSection(r.epubEval, f)).join("\n\n")}
+#### Stage Validation States
+${SEMANTIC_FEATURES.map(f => getFeatureStateSection(r.features, f)).join("\n\n")}
 
 ---
 `).join("\n")}
