@@ -17,7 +17,7 @@ const SCALE_MIN = 0.8;
 const SCALE_MAX = 1.6;
 const SCALE_STEP = 0.1;
 
-const root = document.documentElement;
+let root = document.documentElement;
 
 function getScale(): number {
   return parseFloat(getComputedStyle(root).getPropertyValue("--reading-scale")) || 1;
@@ -808,7 +808,11 @@ function enhanceProse() {
   }
 
   document.addEventListener("keydown", (e) => { if (e.key === "Escape") close(); });
-  document.addEventListener("astro:after-swap", () => { close(); sheet = null; });
+  document.addEventListener("astro:after-swap", () => {
+    root = document.documentElement;
+    close();
+    sheet = null;
+  });
   setup();
   document.addEventListener("astro:page-load", setup);
 })();
@@ -862,6 +866,7 @@ function updateActiveNav() {
 // (and once on first load). Chrome wiring above runs once; delegated listeners
 // and the persisted header keep working without re-binding.
 function onPage() {
+  root = document.documentElement;
   enhanceProse();
   if (localStorage.getItem(LS.tashkeel) === "0") applyTashkeel(false); // re-bare new content
   updateActiveNav();
@@ -889,7 +894,10 @@ function applyStoredPrefs() {
     else root.removeAttribute("data-mode");
   } catch (e) {}
 }
-document.addEventListener("astro:after-swap", applyStoredPrefs);
+document.addEventListener("astro:after-swap", () => {
+  root = document.documentElement;
+  applyStoredPrefs();
+});
 
 // Close the drawer the moment a link inside it is clicked (the SPA router would
 // otherwise leave the persisted drawer open over the new page).

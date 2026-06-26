@@ -95,6 +95,23 @@ for (const [anchor, notes] of Object.entries(byAnchor)) {
 // 3. Compile markdown to HTML first so that raw HTML tags inside are not broken by remark-parse.
 const html = markdownToSafeHtml(chapter.content);
 
+function parseSafeNotes(notesAttr: string): string[] {
+  try {
+    const decoded = notesAttr
+      .replace(/&quot;/g, '"')
+      .replace(/&#x22;/g, '"')
+      .replace(/&#39;/g, "'")
+      .replace(/&#x27;/g, "'")
+      .replace(/&apos;/g, "'")
+      .replace(/&amp;/g, "&")
+      .replace(/&#x26;/g, "&")
+      .replace(/&#38;/g, "&");
+    return JSON.parse(decoded);
+  } catch (e) {
+    return [];
+  }
+}
+
 // 4. Inject DB hashiyas into page separators in the HTML content
 const processedHtml = html.replace(/<hr\s+([^>]*class="page-sep"[^>]*)>/g, (match, attrs) => {
   const pageMatch = attrs.match(/data-page="(\d+)"/) || attrs.match(/data-page='(\d+)'/);
@@ -104,11 +121,7 @@ const processedHtml = html.replace(/<hr\s+([^>]*class="page-sep"[^>]*)>/g, (matc
   let notes: string[] = [];
   const notesMatch = attrs.match(/data-notes="([^"]+)"/) || attrs.match(/data-notes='([^']+)'/);
   if (notesMatch) {
-    try {
-      notes = JSON.parse(notesMatch[1].replace(/&#39;/g, "'").replace(/&quot;/g, '"'));
-    } catch (e) {
-      // ignore
-    }
+    notes = parseSafeNotes(notesMatch[1]);
   }
   const dbNotes = dbHashiyasByPage.get(pNum) ?? [];
   const allNotes = [...notes, ...dbNotes];
@@ -137,10 +150,8 @@ const finalContent = (() => {
       const notesMatch = attrs.match(/data-notes="([^"]*)"/) || attrs.match(/data-notes='([^']*)'/);
       if (pageMatch && notesMatch) {
         const pStr = pageMatch[1];
-        try {
-          const ns = JSON.parse(notesMatch[1].replace(/&#39;/g, "'").replace(/&quot;/g, '"')) as string[];
-          if (ns.length) pnMap.set(parseInt(pStr, 10), ns.join("\n\n"));
-        } catch {}
+        const ns = parseSafeNotes(notesMatch[1]);
+        if (ns.length) pnMap.set(parseInt(pStr, 10), ns.join("\n\n"));
       }
       return _;
     }
