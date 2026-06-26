@@ -257,6 +257,8 @@ export class MetadataExtractor {
   static extract(book: SemanticBook): void {
     // Attempt to extract editor, publisher, publicationYear, edition, and volumes from the text body
     const meta = book.metadata;
+    book.metadata.confidence = book.metadata.confidence || {};
+
     const cleanFind = (pattern: RegExp, paragraphs: string[]): string | undefined => {
       for (const p of paragraphs.slice(0, 15)) {
         const m = p.match(pattern);
@@ -272,15 +274,55 @@ export class MetadataExtractor {
       }
     });
 
-    if (!meta.title) meta.title = cleanFind(/الكتاب\s*:\s*([^\n]+)/i, paragraphs);
-    if (!meta.author) meta.author = cleanFind(/المؤلف\s*:\s*([^\n]+)/i, paragraphs);
-    meta.editor = cleanFind(/تحقيق\s*:\s*([^\n]+)|المحقق\s*:\s*([^\n]+)/i, paragraphs);
-    meta.publisher = cleanFind(/الناشر\s*:\s*([^\n]+)/i, paragraphs);
-    meta.publicationYear = cleanFind(/سنة النشر\s*:\s*([^\n]+)|سنة الطبع\s*:\s*([^\n]+)/i, paragraphs);
-    meta.edition = cleanFind(/الطبعة\s*:\s*([^\n]+)/i, paragraphs);
+    if (meta.title) {
+      book.metadata.confidence.title = 1.0;
+    } else {
+      const foundTitle = cleanFind(/الكتاب\s*:\s*([^\n]+)/i, paragraphs);
+      if (foundTitle) {
+        meta.title = foundTitle;
+        book.metadata.confidence.title = 0.85;
+      }
+    }
+
+    if (meta.author) {
+      book.metadata.confidence.author = 1.0;
+    } else {
+      const foundAuthor = cleanFind(/المؤلف\s*:\s*([^\n]+)/i, paragraphs);
+      if (foundAuthor) {
+        meta.author = foundAuthor;
+        book.metadata.confidence.author = 0.85;
+      }
+    }
+
+    const editor = cleanFind(/تحقيق\s*:\s*([^\n]+)|المحقق\s*:\s*([^\n]+)/i, paragraphs);
+    if (editor) {
+      meta.editor = editor;
+      book.metadata.confidence.editor = 0.90;
+    }
+
+    const publisher = cleanFind(/الناشر\s*:\s*([^\n]+)/i, paragraphs);
+    if (publisher) {
+      meta.publisher = publisher;
+      book.metadata.confidence.publisher = 0.90;
+    }
+
+    const publicationYear = cleanFind(/سنة النشر\s*:\s*([^\n]+)|سنة الطبع\s*:\s*([^\n]+)/i, paragraphs);
+    if (publicationYear) {
+      meta.publicationYear = publicationYear;
+      book.metadata.confidence.publicationYear = 0.85;
+    }
+
+    const edition = cleanFind(/الطبعة\s*:\s*([^\n]+)/i, paragraphs);
+    if (edition) {
+      meta.edition = edition;
+      book.metadata.confidence.edition = 0.90;
+    }
     
     const vols = cleanFind(/عدد الأجزاء\s*:\s*(\d+)/i, paragraphs);
-    if (vols) meta.volumes = parseInt(vols);
+    if (vols) {
+      meta.volumes = parseInt(vols);
+      book.metadata.confidence.volumes = 0.95;
+    }
   }
 }
 
@@ -360,12 +402,14 @@ export class QuranExtractor {
           );
           
           if (matchedSurah) {
-            // Found a Quran reference! Append a QuranVerse tag node to this paragraph's children
+            // High confidence for exact matches, slightly lower for fuzzy search inclusions
+            const isExact = cleanArabicText(matchedSurah) === cleanArabicText(surahCandidate);
+            const confidence = isExact ? 1.0 : 0.85;
             node.children.push(createNode("QuranVerse", m[0], {
               surah: matchedSurah,
               ayah: ayah,
               raw_match: m[0]
-            }));
+            }, [], confidence));
           }
         }
       }
@@ -386,15 +430,18 @@ export class HadithExtractor {
     traverseAST(book.ast, (node) => {
       if (node.type === "Paragraph" && node.content) {
         let isHadith = false;
+        let confidence = 0.72;
         for (const ind of indicators) {
           if (ind.test(node.content)) {
             isHadith = true;
+            if (ind.source.includes("رسول الله")) {
+              confidence = 0.95;
+            }
             break;
           }
         }
         if (isHadith) {
-          // Tag as Hadith or create child Hadith node
-          node.children.push(createNode("Hadith", node.content, { type: "hadith_quotation" }));
+          node.children.push(createNode("Hadith", node.content, { type: "hadith_quotation" }, [], confidence));
         }
       }
     });
@@ -408,7 +455,7 @@ export class ScholarExtractor {
       if (node.type === "Paragraph" && node.content) {
         for (const scholar of SCHOLAR_ENTITIES) {
           if (node.content.includes(scholar)) {
-            node.children.push(createNode("ScholarMention", scholar));
+            node.children.push(createNode("ScholarMention", scholar, {}, [], 0.90));
           }
         }
       }
@@ -423,7 +470,7 @@ export class BookExtractor {
       if (node.type === "Paragraph" && node.content) {
         for (const bEnt of BOOK_ENTITIES) {
           if (node.content.includes(bEnt)) {
-            node.children.push(createNode("BookReference", bEnt));
+            node.children.push(createNode("BookReference", bEnt, {}, [], 0.85));
           }
         }
       }

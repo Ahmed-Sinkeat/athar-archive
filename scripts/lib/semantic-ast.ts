@@ -28,6 +28,7 @@ export interface SemanticNode {
   content?: string;             // Raw text or specific node value (e.g., text, reference ID)
   attributes?: Record<string, any>; // Arbitrary semantic attributes (e.g. { level: 1 } for Heading, or { number: 5 } for Volume)
   children: SemanticNode[];
+  confidence?: number;          // Confidence score (0.0 to 1.0)
 }
 
 export interface BookMetadata {
@@ -50,12 +51,13 @@ export interface SemanticBook {
   statistics?: Record<string, any>;
 }
 
-export function createNode(type: NodeType, content?: string, attributes?: Record<string, any>, children: SemanticNode[] = []): SemanticNode {
+export function createNode(type: NodeType, content?: string, attributes?: Record<string, any>, children: SemanticNode[] = [], confidence: number = 1.0): SemanticNode {
   return {
     type,
     content,
     attributes,
-    children
+    children,
+    confidence
   };
 }
 
