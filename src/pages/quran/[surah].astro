@@ -26,6 +26,83 @@ const { entry, paragraphs, byAnchor } = Astro.props;
 const { data } = entry;
 const surahTitle = `سورة ${data.name}`;
 const path = `/quran/${entry.id}`;
+
+// 1. Map each ayah to its page
+let currentPage = data.start_page;
+const ayahPageMap = new Map<string, number>();
+const pageAyahsMap = new Map<number, { id: string; text: string }[]>();
+
+for (const para of paragraphs) {
+  const pageMatch = para.text.match(/<hr class="page-sep" data-page="(\d+)" \/>/);
+  if (pageMatch) {
+    currentPage = parseInt(pageMatch[1], 10);
+  }
+  ayahPageMap.set(para.id, currentPage);
+  if (!pageAyahsMap.has(currentPage)) {
+    pageAyahsMap.set(currentPage, []);
+  }
+  const cleanText = para.text.replace(/<hr class="page-sep" data-page="\d+" \/>/g, "").trim();
+  pageAyahsMap.get(currentPage)!.push({ id: para.id, text: cleanText });
+}
+
+// 2. Group annotations of this surah by page
+const pageNotesData = new Map<number, any[]>();
+for (const [pageNum, ayahs] of pageAyahsMap.entries()) {
+  const pageNotes: any[] = [];
+  for (const ayah of ayahs) {
+    const notes = byAnchor[ayah.id] ?? [];
+    pageNotes.push(...notes.map(n => ({ ...n, ayahId: ayah.id, ayahText: ayah.text })));
+  }
+  if (pageNotes.length === 0) continue;
+
+  const groups = new Map<string, { kind: string; annotator?: string; items: any[] }>();
+  for (const note of pageNotes) {
+    const key = note.annotator ? `${note.kind} — ${note.annotator}` : note.kind;
+    if (!groups.has(key)) {
+      groups.set(key, { kind: note.kind, annotator: note.annotator, items: [] });
+    }
+    groups.get(key)!.items.push(note);
+  }
+
+  const entries = [...groups.entries()].map(([label, group]) => {
+    const htmlParts = group.items.map((item) => {
+      const title = `الآية (${item.ayahId})`;
+      const ayahHtml = `<div class="sheet-ayah-title" style="color: var(--gold); font-size: 0.85em; margin-top: 1rem; margin-bottom: 0.25rem;">${title}</div><div class="sheet-ayah-text" style="font-family: var(--font-quran); font-size: 1.25em; line-height: 1.8; color: var(--ink); margin-bottom: 0.5rem;">﴿ ${item.ayahText} ﴾</div>`;
+      const bodyHtml = `<div class="sheet-ayah-body">${markdownToSafeHtml(item.body)}</div>`;
+      return `${ayahHtml}${bodyHtml}`;
+    });
+    return {
+      kind: group.kind,
+      label: label,
+      body: htmlParts.join('<hr style="border: 0; border-top: 1px dashed var(--rule); margin-block: 1rem;" />'),
+    };
+  });
+
+  pageNotesData.set(pageNum, entries);
+}
+
+// 3. Process paragraphs to inject start page separator and set notes on all separators
+const processedParagraphs = paragraphs.map((para, idx) => {
+  let text = para.text;
+  if (idx === 0) {
+    text = `<hr class="page-sep" data-page="${data.start_page}" />\n` + text;
+  }
+
+  text = text.replace(/<hr class="page-sep" data-page="(\d+)" \/>/g, (match, pageStr) => {
+    const pNum = parseInt(pageStr, 10);
+    const notes = pageNotesData.get(pNum);
+    if (notes && notes.length > 0) {
+      const escapedNotes = JSON.stringify(notes).replace(/'/g, "&apos;");
+      return `<hr class="page-sep" data-page="${pNum}" data-notes='${escapedNotes}' />`;
+    }
+    return match;
+  });
+
+  return {
+    ...para,
+    text,
+  };
+});
 ---
 <Base title={surahTitle} description={`${surahTitle} — ${data.ayah_count} آية`} activeNav="quran">
   <Breadcrumbs items={[
@@ -43,22 +120,11 @@ const path = `/quran/${entry.id}`;
     </div>
 
     <div class="ayah-list">
-      {paragraphs.map((para) => {
-        const notes = byAnchor[para.id] ?? [];
+      {processedParagraphs.map((para) => {
         return (
           <div class="ayah" id={para.id} data-anchor={para.id}>
             <span class="ayah-num">{para.id}</span>
             <span class="ayah-text" set:html={markdownToSafeHtml(para.text)} />
-            {notes.length > 0 && (
-              <div class="ayah-notes">
-                {notes.map((n) => (
-                  <div class="ayah-note" data-kind={n.kind}>
-                    <span class="note-kind">{n.kind}</span>
-                    <span set:html={markdownToSafeHtml(n.body)} />
-                  </div>
-                ))}
-              </div>
-            )}
           </div>
         );
       })}
@@ -69,6 +135,7 @@ const path = `/quran/${entry.id}`;
 </Base>
 
 <style>
+  :global(.page-sep) { display: flex !important; }
   .ayah-list { direction: rtl; margin-block: 2rem; }
   .ayah {
     display: grid;

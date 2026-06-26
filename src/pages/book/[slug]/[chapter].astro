@@ -46,6 +46,74 @@ const prev = allChapters[chIdx - 1] ?? null;
 const next = allChapters[chIdx + 1] ?? null;
 
 const nestedToc = parseToc(chapter.content);
+
+// 1. Map paragraph anchors to page numbers
+const parts = chapter.content.split(/(<hr class="page-sep" data-page="\d+"[^\>]*\/>)/);
+let currentPageNum = 1;
+for (const part of parts) {
+  const m = part.match(/data-page="(\d+)"/);
+  if (m) {
+    currentPageNum = parseInt(m[1], 10) - 1;
+    break;
+  }
+}
+
+let paraIndex = 0;
+const anchorPageMap = new Map<string, number>();
+let pageNum = currentPageNum;
+for (const part of parts) {
+  const m = part.match(/data-page="(\d+)"/);
+  if (m) {
+    pageNum = parseInt(m[1], 10);
+    continue;
+  }
+  const blocks = part.split(/\n\s*\n/);
+  for (const block of blocks) {
+    const trimmed = block.trim();
+    if (!trimmed) continue;
+    if (/^#{1,6}\s/.test(trimmed)) continue;
+    if (/^-{3,}$/.test(trimmed)) continue;
+    paraIndex++;
+    const match = trimmed.match(/\{#([a-zA-Z0-9_-]+)\}/);
+    const id = match ? match[1] : `p${paraIndex}`;
+    anchorPageMap.set(id, pageNum);
+  }
+}
+
+// 2. Group DB hashiya annotations by page
+const dbHashiyasByPage = new Map<number, string[]>();
+for (const [anchor, notes] of Object.entries(byAnchor)) {
+  const pNum = anchorPageMap.get(anchor);
+  if (pNum !== undefined) {
+    const hashiyas = (notes as any[]).filter(n => n.kind === "حاشية");
+    if (hashiyas.length > 0) {
+      if (!dbHashiyasByPage.has(pNum)) dbHashiyasByPage.set(pNum, []);
+      dbHashiyasByPage.get(pNum)!.push(...hashiyas.map(h => h.body));
+    }
+  }
+}
+
+// 3. Inject DB hashiyas into page separators in markdown content
+const processedContent = chapter.content.replace(/<hr class="page-sep" data-page="(\d+)"([^>]*)\/>/g, (match, pageStr, attrs) => {
+  const pNum = parseInt(pageStr, 10);
+  let notes: string[] = [];
+  const notesMatch = attrs.match(/data-notes='([^']+)'/);
+  if (notesMatch) {
+    try {
+      notes = JSON.parse(notesMatch[1].replace(/&#39;/g, "'").replace(/&quot;/g, '"'));
+    } catch (e) {
+      // ignore
+    }
+  }
+  const dbNotes = dbHashiyasByPage.get(pNum) ?? [];
+  const allNotes = [...notes, ...dbNotes];
+  if (allNotes.length > 0) {
+    const cleanAttrs = attrs.replace(/data-notes='[^']+'/g, "").replace(/\s+/g, " ").trim();
+    const na = `data-notes='${JSON.stringify(allNotes).replace(/'/g, "&#39;")}'`;
+    return `<hr class="page-sep" data-page="${pNum}" ${cleanAttrs} ${na} />`;
+  }
+  return match;
+});
 ---
 <Base title={`${chapter.title} · ${entry.data.title}`} activeNav="books" searchScope={{ in: entry.id, label: entry.data.title }}>
   <Breadcrumbs
@@ -93,12 +161,12 @@ const nestedToc = parseToc(chapter.content);
         {isMatn("book", entry.data) ? (
           <>
             <StudyBar prose downloadUrl={entry.data.attachments?.[0]?.url} />
-            <div class="u49fcd85" data-matn={`${entry.id}--${chapter.slug}`} data-unit="فقرة"><Prose body={chapter.content} /></div>
+            <div class="u49fcd85" data-matn={`${entry.id}--${chapter.slug}`} data-unit="فقرة"><Prose body={processedContent} /></div>
           </>
         ) : (
           <>
             <StudyBar prose downloadUrl={entry.data.attachments?.[0]?.url} />
-            <div class="u49fcd85"><Prose body={chapter.content} /></div>
+            <div class="u49fcd85"><Prose body={processedContent} /></div>
           </>
         )}
 

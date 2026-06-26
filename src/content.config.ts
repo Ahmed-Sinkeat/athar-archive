@@ -259,6 +259,7 @@ const quran = defineCollection({
     ...shared,
     number: z.number().int().min(1).max(114),
     name: z.string().min(1),       // Arabic name without سورة prefix
+    start_page: z.number().int().min(1).max(604),
     ayah_count: z.number().int().positive(),
   }),
 });
