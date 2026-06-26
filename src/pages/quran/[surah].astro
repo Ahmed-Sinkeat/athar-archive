@@ -74,30 +74,39 @@ const path = `/quran/${entry.id}`;
     display: grid;
     grid-template-columns: 2rem 1fr;
     gap: 0.25rem 0.75rem;
-    padding-block: 0.75rem;
-    border-block-end: 1px solid var(--border, #eee);
+    padding-block: 1rem;
+    border-block-end: 1px solid var(--rule);
     align-items: baseline;
   }
   .ayah-num {
-    font-size: 0.75rem;
-    color: var(--fg-muted, #999);
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--gold);
     text-align: center;
-    padding-block-start: 0.15rem;
+    padding-block-start: 0.25rem;
   }
-  .ayah-text { font-size: 1.2rem; line-height: 2; }
+  /* Scheherazade New — designed specifically for Quranic text.
+     Larger x-height than Amiri; 1.4rem renders similar optical size. */
+  .ayah-text {
+    font-family: var(--font-quran);
+    font-size: 1.4rem;
+    line-height: 2.2;
+    color: var(--ink);
+  }
   .ayah-notes { grid-column: 2; margin-block-start: 0.5rem; }
   .ayah-note {
     display: flex;
     gap: 0.5rem;
-    font-size: 0.9rem;
-    color: var(--fg-muted, #555);
+    font-family: var(--font-serif);
+    font-size: 0.95rem;
+    color: var(--ink-soft);
     padding: 0.4rem 0;
-    border-block-start: 1px dashed var(--border, #ddd);
+    border-block-start: 1px dashed var(--rule);
   }
   .note-kind {
     font-size: 0.7rem;
     font-weight: 600;
-    color: var(--accent, #888);
+    color: var(--accent);
     white-space: nowrap;
   }
 </style>
