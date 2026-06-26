@@ -1,7 +1,7 @@
 ---
 title: "فتيا وجوابها في ذكر الاعتقاد"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: abw-al-ala-al-hmdhany
 topics: ["al-aqeedah-al-aamah"]
 edition: "الأولى، 1409هـ"

@@ -1,7 +1,7 @@
 ---
 title: "فتاوى مهمة لعموم الأمة"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: abn-baz
 topics: ["aam-aqeedah"]
 edition: "الأولى، 1413هـ"

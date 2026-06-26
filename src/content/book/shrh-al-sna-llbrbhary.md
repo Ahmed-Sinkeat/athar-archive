@@ -1,7 +1,7 @@
 ---
 title: "شرح السنة للبربهاري"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: al-brbhary
 topics: ["al-aqeedah-al-aamah"]
 ---

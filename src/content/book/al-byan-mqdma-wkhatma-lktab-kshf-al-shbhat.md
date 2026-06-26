@@ -1,7 +1,7 @@
 ---
 title: "البيان «مقدمة وخاتمة» لكتاب كشف الشبهات"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: aly-al-hmd-al-salhy
 kind: متن
 topics: ["tahwid-al-ibada"]

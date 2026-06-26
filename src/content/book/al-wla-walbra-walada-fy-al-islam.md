@@ -1,7 +1,7 @@
 ---
 title: "الولاء والبراء والعداء في الإسلام"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: abw-fysl-al-bdrany
 topics: ["al-wala-wal-bara"]
 ---

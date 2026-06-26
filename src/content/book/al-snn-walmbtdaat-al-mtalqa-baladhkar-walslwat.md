@@ -1,7 +1,7 @@
 ---
 title: "السنن والمبتدعات المتعلقة بالأذكار والصلوات"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: al-shqyry
 topics: ["aam-aqeedah"]
 ---

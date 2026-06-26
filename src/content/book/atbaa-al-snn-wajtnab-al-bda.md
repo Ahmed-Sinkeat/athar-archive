@@ -1,7 +1,7 @@
 ---
 title: "اتباع السنن واجتناب البدع"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: al-mqdsy-dya-al-dyn
 topics: ["al-sunnah-wal-bidah"]
 edition: "الأولى، 1407 هـ - 1987 م"

@@ -1,7 +1,7 @@
 ---
 title: "كلمة الإخلاص وتحقيق معناها"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: abn-rjb-al-hnbly
 topics: ["tahwid-al-ibada"]
 edition: "الرابعة، 1397"

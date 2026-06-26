@@ -208,6 +208,82 @@ function countVerses(xhtml: string): number {
   return [...xhtml.matchAll(VERSE_SEP_RE)].length;
 }
 
+function parseFootnoteBlock(block: string): { n: string; t: string }[] {
+  let cleaned = block.replace(/<span\s+class=["']red["']>\s*(\d+)\s*[-ـ–—\s]*<\/span>/gi, "$1 - ");
+  cleaned = cleaned.replace(/(?:<br\s*\/?>\s*)+(\d+)\s*[-ـ–—\s]+/gi, "__FNOTE_SEP__$1 - ");
+  
+  const startMatch = cleaned.match(/^\s*(\d+)\s*[-ـ–—\s]+/);
+  if (startMatch) {
+    cleaned = "__FNOTE_SEP__" + cleaned.trim();
+  } else {
+    cleaned = "__FNOTE_SEP__1 - " + cleaned;
+  }
+  
+  const parts = cleaned.split("__FNOTE_SEP__").filter(Boolean);
+  const result: { n: string; t: string }[] = [];
+  
+  for (const part of parts) {
+    const match = part.match(/^\s*(\d+)\s*[-ـ–—\s]+([\s\S]*)/);
+    if (match) {
+      const n = match[1];
+      const t = cleanInline(match[2]).replace(/\{/g, "﴿").replace(/\}/g, "﴾");
+      if (t) {
+        result.push({ n, t });
+      }
+    } else {
+      const t = cleanInline(part).replace(/\{/g, "﴿").replace(/\}/g, "﴾");
+      if (t) {
+        result.push({ n: "1", t });
+      }
+    }
+  }
+  
+  return result;
+}
+
+function extractFootnotes(html: string): { cleaned: string; fnotes: { n: string; t: string }[] } {
+  const fnotes: { n: string; t: string }[] = [];
+  let current = html;
+  
+  while (true) {
+    const startRegex = /<span\s+class=["']footnote["'][^>]*>/i;
+    const match = current.match(startRegex);
+    if (!match || match.index === undefined) break;
+    
+    const startIdx = match.index;
+    const openTagLength = match[0].length;
+    const contentStartIdx = startIdx + openTagLength;
+    
+    let depth = 1;
+    let idx = contentStartIdx;
+    while (depth > 0 && idx < current.length) {
+      if (current.slice(idx, idx + 5).toLowerCase() === "<span") {
+        depth++;
+        idx += 5;
+      } else if (current.slice(idx, idx + 7).toLowerCase() === "</span>") {
+        depth--;
+        if (depth === 0) {
+          break;
+        }
+        idx += 7;
+      } else {
+        idx++;
+      }
+    }
+    
+    if (depth === 0) {
+      const footnoteContent = current.slice(contentStartIdx, idx);
+      const parsedNotes = parseFootnoteBlock(footnoteContent);
+      fnotes.push(...parsedNotes);
+      current = current.slice(0, startIdx) + current.slice(idx + 7);
+    } else {
+      break;
+    }
+  }
+  
+  return { cleaned: current, fnotes };
+}
+
 /** Extract صدر/عجز pairs from one page's XHTML. Returns poem lines (صدر --- عجز). */
 export function pageToVerseLines(
   xhtml: string,
@@ -224,10 +300,9 @@ export function pageToVerseLines(
 
 
   inner = inner.replace(/<span class=["']footnote-hr["']>[\s\S]*?<\/span>/gi, "");
-  inner = inner.replace(/<span class=["']footnote["']>\s*(\d+)\s*([\s\S]*?)<\/span>/gi, (_m, n, t) => {
-    fnotes.push({ n, t: cleanInline(t).replace(/\{/g, "﴿").replace(/\}/g, "﴾") });
-    return "";
-  });
+  const extracted = extractFootnotes(inner);
+  inner = extracted.cleaned;
+  fnotes.push(...extracted.fnotes);
 
   // Section headings
   const headings: string[] = [];
@@ -278,12 +353,10 @@ export function pageToMd(xhtml: string, pageId: string): { md: string; notes: st
     cleaned.match(/<div[^>]*id=["']book-container["'][^>]*>([\s\S]*?)<\/div>/i)?.[1] ?? "";
 
   // footnotes
-  const fnotes: { n: string; t: string }[] = [];
   inner = inner.replace(/<span class=["']footnote-hr["']>[\s\S]*?<\/span>/gi, "");
-  inner = inner.replace(/<span class=["']footnote["']>\s*(\d+)\s*([\s\S]*?)<\/span>/gi, (_m, n, t) => {
-    fnotes.push({ n, t: cleanInline(t).replace(/\{/g, "﴿").replace(/\}/g, "﴾") });
-    return "";
-  });
+  const extracted = extractFootnotes(inner);
+  inner = extracted.cleaned;
+  const fnotes = extracted.fnotes;
 
   // chapter titles → H2
   inner = inner.replace(/<span class=["']title["']>([\s\S]*?)<\/span>/gi,

@@ -1,7 +1,7 @@
 ---
 title: "بسط القول والإسهاب في بيان حكم مودة المؤمن للكافر"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: abw-fysl-al-bdrany
 topics: ["aam-aqeedah"]
 ---

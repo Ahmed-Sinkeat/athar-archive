@@ -1,7 +1,7 @@
 ---
 title: "حقيقه السنة والبدعة = الأمر بالاتباع والنهي عن الابتداع"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: al-sywty
 topics: ["al-sunnah-wal-bidah"]
 description: "بتحقيق ذيب بن مصري بن ناصر القحطاني"

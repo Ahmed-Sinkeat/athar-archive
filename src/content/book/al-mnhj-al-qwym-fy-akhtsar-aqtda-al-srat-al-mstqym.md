@@ -1,7 +1,7 @@
 ---
 title: "المنهج القويم في اختصار اقتضاء الصراط المستقيم"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: al-baly-bdr-al-dyn
 topics: ["aam-aqeedah"]
 edition: "الأولى، 1422 هـ"

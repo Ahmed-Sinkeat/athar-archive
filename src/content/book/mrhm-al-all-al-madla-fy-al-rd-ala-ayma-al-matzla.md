@@ -1,7 +1,7 @@
 ---
 title: "مرهم العلل المعضلة في الرد على أئمة المعتزلة"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: al-yafay
 topics: ["al-firaq-war-rudud"]
 edition: "الأولى، 1412هـ - 1992م"

@@ -1,7 +1,7 @@
 ---
 title: "مناصحة الإمام وهب بن منبه لرجل تأثر بالخوارج"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: abd-al-slam-bn-brjs-al-abd-al-krym
 topics: ["aam-aqeedah"]
 edition: "الأولى، 1419هـ"

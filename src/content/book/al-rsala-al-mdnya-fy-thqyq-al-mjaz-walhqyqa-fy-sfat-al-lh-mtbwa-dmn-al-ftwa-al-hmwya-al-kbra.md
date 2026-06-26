@@ -1,7 +1,7 @@
 ---
 title: "الرسالة المدنية في تحقيق المجاز والحقيقة في صفات الله (مطبوع ضمن الفتوى الحموية الكبرى)"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: abn-tymya
 topics: ["al-aqeedah-al-aamah", "al-asma-was-sifat"]
 edition: "السادسة"

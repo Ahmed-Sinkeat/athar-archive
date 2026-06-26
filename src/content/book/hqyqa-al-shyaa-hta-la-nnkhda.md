@@ -1,7 +1,7 @@
 ---
 title: "حقيقة الشيعة «حتى لا ننخدع»"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: abd-al-lh-al-mwsly
 topics: ["al-firaq-war-rudud"]
 edition: "الثانية"

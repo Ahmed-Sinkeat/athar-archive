@@ -1,7 +1,7 @@
 ---
 title: "رسالة في حقيقة التأويل"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: abd-al-rhmn-al-malmy-al-ymany
 topics: ["aam-aqeedah"]
 edition: "الأولى، 1426 هـ - 2005 م"

@@ -1,7 +1,7 @@
 ---
 title: "نونية القحطاني"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: abw-abd-al-lh-al-qhtany
 topics: ["aam-aqeedah"]
 edition: "الأولى"

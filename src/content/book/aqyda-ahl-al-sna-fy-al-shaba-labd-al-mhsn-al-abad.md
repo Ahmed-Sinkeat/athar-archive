@@ -1,7 +1,7 @@
 ---
 title: "عقيدة أهل السنة في الصحابة لعبد المحسن العباد"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: abd-al-mhsn-al-abad
 topics: ["al-aqeedah-al-aamah", "al-imamah-was-sahabah"]
 edition: "الأولى، 1420هـ/2000م"

@@ -1,7 +1,7 @@
 ---
 title: "فتييان تتعلقان بتكفير الجهمية"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: slyman-bn-shman
 topics: ["al-iman", "al-firaq-war-rudud"]
 edition: "الأولى، 1415هـ"

@@ -1,7 +1,7 @@
 ---
 title: "التحفة المهدية شرح العقيدة التدمرية"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: falh-bn-mhdy-al-mhdy
 topics: ["al-aqeedah-al-aamah"]
 edition: "الثالثة، 1413هـ"

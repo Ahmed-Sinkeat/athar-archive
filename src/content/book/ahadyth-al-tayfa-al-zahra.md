@@ -1,7 +1,7 @@
 ---
 title: "أحاديث الطائفة الظاهرة"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: hsam-al-dyn-afana
 topics: ["aam-aqeedah"]
 edition: "(بيت المقدس) - الأولى، 1423هـ - 2002م"

@@ -1,7 +1,7 @@
 ---
 title: "كتاب الأصنام"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: abn-al-klby
 topics: ["aam-aqeedah"]
 edition: "الرابعة، 2000م"

@@ -1,7 +1,7 @@
 ---
 title: "التحف في مذاهب السلف ت حلاق"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: al-shwkany
 topics: ["aam-aqeedah"]
 edition: "الأولى، 1415 هـ"

@@ -1,7 +1,7 @@
 ---
 title: "الرد على من كذب بالأحاديث الصحيحة الواردة في المهدي"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: abd-al-mhsn-al-abad
 topics: ["al-firaq-war-rudud"]
 ---

@@ -1,7 +1,7 @@
 ---
 title: "إتحاف الجماعة بما جاء في الفتن والملاحم وأشراط الساعة"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: hmwd-bn-abd-al-lh-al-twyjry
 topics: ["al-samiyyat"]
 edition: "الثانية، 1414 هـ"

@@ -1,7 +1,7 @@
 ---
 title: "أدلة معتقد أبي حنيفة في أبوي الرسول عليه الصلاة والسلام"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: al-mla-ala-al-qary
 topics: ["aam-aqeedah"]
 edition: "الأولى، 1413هـ - 1993هـ"

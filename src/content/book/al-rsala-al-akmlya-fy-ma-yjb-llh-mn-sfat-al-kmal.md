@@ -1,7 +1,7 @@
 ---
 title: "الرسالة الأكملية في ما يجب لله من صفات الكمال"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: abn-tymya
 topics: ["al-asma-was-sifat"]
 edition: "1403هـ/1983م"

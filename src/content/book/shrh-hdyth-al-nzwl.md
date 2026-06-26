@@ -1,7 +1,7 @@
 ---
 title: "شرح حديث النزول"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: abn-tymya
 topics: ["aam-aqeedah"]
 edition: "الخامسة، 1397هـ/1977م"

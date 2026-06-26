@@ -1,7 +1,7 @@
 ---
 title: "الرد على الرفاعي والبوطي في كذبهما على أهل السنة ودعوتهما إلى البدع والضلال"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: abd-al-mhsn-al-abad
 topics: ["al-sunnah-wal-bidah", "al-firaq-war-rudud"]
 edition: "الأولى، 1421هـ/2000م"

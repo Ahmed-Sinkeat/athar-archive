@@ -1,7 +1,7 @@
 ---
 title: "منحة القريب المجيب في الرد على عباد الصليب"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: abd-al-azyz-bn-hmd-al-mamr
 topics: ["al-firaq-war-rudud"]
 ---

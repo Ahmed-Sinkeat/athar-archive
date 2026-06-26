@@ -1,7 +1,7 @@
 ---
 title: "التوحيد لمحمد عبده"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: mhmd-abdh
 topics: ["tahwid-al-ibada"]
 ---

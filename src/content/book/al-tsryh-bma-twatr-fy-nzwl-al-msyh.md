@@ -1,7 +1,7 @@
 ---
 title: "التصريح بما تواتر في نزول المسيح"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: al-kshmyry
 topics: ["al-samiyyat"]
 edition: "الطبعة الثالثة - 1401هـ - 1981 م"

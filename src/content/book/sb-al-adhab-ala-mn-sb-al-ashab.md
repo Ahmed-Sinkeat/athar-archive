@@ -1,7 +1,7 @@
 ---
 title: "صب العذاب على من سب الأصحاب"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: al-alwsy-mhmwd-shkry
 topics: ["aam-aqeedah"]
 edition: "الأولى، 1417 هـ - 1997 م"

@@ -1,7 +1,7 @@
 ---
 title: "فتاوى ورسائل سماحة الشيخ عبد الرزاق عفيفي - قسم العقيدة"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: abd-al-rzaq-afyfy
 topics: ["al-aqeedah-al-aamah"]
 ---

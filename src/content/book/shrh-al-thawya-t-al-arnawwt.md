@@ -1,7 +1,7 @@
 ---
 title: "شرح الطحاوية ت الأرناؤوط"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: abn-aby-al-az
 kind: متن
 topics: ["al-aqeedah-al-aamah"]

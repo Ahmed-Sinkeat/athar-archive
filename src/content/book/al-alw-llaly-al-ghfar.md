@@ -1,7 +1,7 @@
 ---
 title: "العلو للعلي الغفار"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: al-dhhby-shms-al-dyn
 topics: ["al-asma-was-sifat"]
 edition: "الأولى، 1416هـ - 1995م"

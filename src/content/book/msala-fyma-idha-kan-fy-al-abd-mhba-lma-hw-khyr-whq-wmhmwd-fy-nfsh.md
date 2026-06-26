@@ -1,7 +1,7 @@
 ---
 title: "مسألة فيما إذا كان في العبد محبة لما هو خير وحق ومحمود في نفسه"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: abn-tymya
 topics: ["aam-aqeedah"]
 description: "بتحقيق د. محمد رشاد سالم"

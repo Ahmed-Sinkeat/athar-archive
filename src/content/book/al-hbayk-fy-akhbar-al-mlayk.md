@@ -1,7 +1,7 @@
 ---
 title: "الحبائك في أخبار الملائك"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: al-sywty
 topics: ["aam-aqeedah"]
 edition: "الأولى، 1405 هـ - 1985 م"

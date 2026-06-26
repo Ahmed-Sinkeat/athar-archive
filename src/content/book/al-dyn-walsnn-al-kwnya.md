@@ -1,7 +1,7 @@
 ---
 title: "الدين والسنن الكونية"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: mhmd-tqy-al-dyn-al-hlaly
 topics: ["aam-aqeedah"]
 edition: "السنة الرابعة - العدد الثالث - محرم 1392هـ - فبراير1972م"

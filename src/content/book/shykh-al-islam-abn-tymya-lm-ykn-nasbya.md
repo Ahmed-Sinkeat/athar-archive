@@ -1,7 +1,7 @@
 ---
 title: "شيخ الإسلام ابن تيمية لم يكن ناصبيا"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: slyman-al-khrashy
 topics: ["aam-aqeedah"]
 edition: "الأولى، 1419 هـ - 1998 م"

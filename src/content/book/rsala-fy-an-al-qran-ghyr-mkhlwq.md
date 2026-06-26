@@ -1,7 +1,7 @@
 ---
 title: "رسالة في أن القرآن غير مخلوق"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: ibrahym-al-hrby
 topics: ["aam-aqeedah"]
 edition: "الأولى، 1416هـ - 1995م"

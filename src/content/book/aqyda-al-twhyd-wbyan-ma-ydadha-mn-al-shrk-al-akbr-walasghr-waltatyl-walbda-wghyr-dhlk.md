@@ -1,7 +1,7 @@
 ---
 title: "عقيدة التوحيد وبيان ما يضادها من الشرك الأكبر والأصغر والتعطيل والبدع وغير ذلك"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: salh-al-fwzan
 topics: ["al-aqeedah-al-aamah", "tahwid-al-ibada", "al-asma-was-sifat", "al-sunnah-wal-bidah"]
 ---

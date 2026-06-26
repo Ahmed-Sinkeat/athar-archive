@@ -1,7 +1,7 @@
 ---
 title: "العقيدة رواية أبي بكر الخلال"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: ahmd-bn-hnbl
 topics: ["al-aqeedah-al-aamah"]
 edition: "الأولى، 1408"

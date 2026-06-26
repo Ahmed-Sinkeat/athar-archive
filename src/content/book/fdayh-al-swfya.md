@@ -1,7 +1,7 @@
 ---
 title: "فضائح الصوفية"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: abd-al-rhmn-bn-abd-al-khalq
 topics: ["al-firaq-war-rudud"]
 edition: "الأولى، 1404 هـ - 1984 م"

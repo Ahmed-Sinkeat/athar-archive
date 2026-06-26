@@ -1,7 +1,7 @@
 ---
 title: "مختصر الأسئلة والأجوبة الأصولية على العقيدة الواسطية"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: abd-al-azyz-al-slman
 kind: متن
 topics: ["al-aqeedah-al-aamah"]
