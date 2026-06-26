@@ -54,7 +54,7 @@ const preamble = a.verses.filter((v) => !chapterNums.has(v.n));
     <div class="reader-head">
       <a class="eyebrow u87c136d pill-link" href="/poems">منظومة</a>
       <h1 class="reader-title">{entry.data.title}</h1>
-      <div class="reader-byline">نظمُ {author}</div>
+      <div class="reader-byline">{author}</div>
       <div class="meta-pills">
         <a class="badge-matn pill-link" href="/matn">متن</a>
         {era && <a class="pill tag-verdigris pill-link" href={eraHref(era)}>{eraLabel(era)}</a>}

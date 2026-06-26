@@ -31,7 +31,7 @@ function extractEpub(epubPath: string): string {
 }
 
 // ── Mushaf parser ─────────────────────────────
-interface SurahData { number: number; name: string; ayat: string[] }
+interface SurahData { number: number; name: string; startPage: number; ayat: string[] }
 
 // Strip the Quran page footer: <p class="center">الصفحة: N - الجزء: M</p>
 const FOOTER_RE = /<p[^>]*class=["']center["'][^>]*>[\s\S]*?<\/p>/gi;
@@ -47,10 +47,12 @@ export function parseMushaf(pagesDir: string): SurahData[] {
   // Concatenate all pages as plain text (footer stripped)
   let full = "";
   for (const f of pageFiles) {
+    const pageNum = f.match(/\d+/)![0];
     const xhtml = readFileSync(join(pagesDir, f), "utf-8").replace(FOOTER_RE, "");
     // Convert block-level closing tags to newlines so h1/p content doesn't merge
     const withNl = xhtml.replace(/<\/(?:h[1-6]|p|div|br)\s*>/gi, "\n");
-    full += "\n" + decode(stripTags(withNl)).replace(/[ \t]+/g, " ").trim();
+    const pageText = decode(stripTags(withNl)).replace(/[ \t]+/g, " ").trim();
+    full += `\n<page:${pageNum}>\n` + pageText;
   }
 
   // Find all surah boundaries
@@ -68,12 +70,17 @@ export function parseMushaf(pagesDir: string): SurahData[] {
 
   const surahs: SurahData[] = [];
   for (let i = 0; i < boundaries.length; i++) {
-    const { num, name, textStart } = boundaries[i];
+    const { pos, num, name, textStart } = boundaries[i];
     // Skip duplicate headers (same surah appearing twice due to page boundaries)
     if (surahs.length > 0 && surahs[surahs.length - 1].number === num) continue;
     const end = i + 1 < boundaries.length ? boundaries[i + 1].pos : full.length;
     const surahText = full.slice(textStart, end).replace(/^Z/, ""); // strip leading Z artifact
-    surahs.push({ number: num, name, ayat: splitAyat(surahText) });
+
+    const textBefore = full.slice(0, pos);
+    const pageMatches = [...textBefore.matchAll(/<page:(\d+)>/g)];
+    const startPage = pageMatches.length > 0 ? parseInt(pageMatches[pageMatches.length - 1][1], 10) : 1;
+
+    surahs.push({ number: num, name, startPage, ayat: splitAyat(surahText) });
   }
   return surahs;
 }
@@ -95,6 +102,7 @@ function surahToMd(surah: SurahData, today: string): string {
     `title: ${y("سورة " + surah.name)}`,
     `number: ${surah.number}`,
     `name: ${y(surah.name)}`,
+    `start_page: ${surah.startPage}`,
     `ayah_count: ${surah.ayat.length}`,
     `status: published`,
     `published_at: ${today}`,
@@ -103,7 +111,10 @@ function surahToMd(surah: SurahData, today: string): string {
   ].join("\n");
   // Each ayah: text + {#N} anchor on next line (same paragraph block)
   const body = surah.ayat
-    .map((text, i) => `${text}\n{#${i + 1}}`)
+    .map((text, i) => {
+      const clean = text.replace(/<page:(\d+)>/g, '<hr class="page-sep" data-page="$1" />');
+      return `${clean}\n{#${i + 1}}`;
+    })
     .join("\n\n");
   return fm + body + "\n";
 }

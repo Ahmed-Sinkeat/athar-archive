@@ -413,9 +413,8 @@ function readEpub(file: string): { meta: Meta; pages: { id: string; xhtml: strin
     // Fallback: year from filename (e.g. "0378هـ نونية")
     if (!meta.died) meta.died = (file.match(/(\d{2,4})\s*هـ/) ?? [])[1];
 
-    // Title-keyword poem detection
-    meta.poemByTitle = POEM_TITLE_RE.test(meta.title) || POEM_TITLE_RE.test(file);
     const isCommentary = COMMENTARY_RE.test(meta.title) || COMMENTARY_RE.test(file);
+    meta.poemByTitle = !isCommentary && (POEM_TITLE_RE.test(meta.title) || POEM_TITLE_RE.test(file));
 
     // Load pages (skip info + cover)
     const pages: { id: string; xhtml: string }[] = [];

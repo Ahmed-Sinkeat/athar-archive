@@ -478,7 +478,12 @@ function enhanceProse() {
   if (!allPacks.length) return;
   const proseEls = [...document.querySelectorAll<HTMLElement>(".prose")];
   if (!proseEls.length) return;
-  const packs = allPacks.filter((p) => p.getAttribute("data-phrase"));
+  const packs = allPacks.filter((p) => {
+    if (!p.getAttribute("data-phrase")) return false;
+    const entries = [...p.querySelectorAll<HTMLElement>(".ann-entry")];
+    const hasNonHashiya = entries.some((en) => en.getAttribute("data-kind") !== "حاشية");
+    return hasNonHashiya;
+  });
 
   // whole-paragraph notes (no phrase): anchor ann-p{n} → the n-th <p> in the prose,
   // made tappable (opens the sheet). ponytail: n-th <p> heuristic — fine for plain
@@ -488,7 +493,13 @@ function enhanceProse() {
     if (pack.getAttribute("data-phrase")) return;
     const m = pack.id.match(/ann-p(\d+)$/);
     const para = m ? paras[+m[1] - 1] : null;
-    if (para && !para.dataset.annPara) { para.dataset.annPara = pack.id; para.classList.add("has-ann"); }
+    if (para && !para.dataset.annPara) {
+      const entries = [...pack.querySelectorAll<HTMLElement>(".ann-entry")];
+      const hasNonHashiya = entries.some((en) => en.getAttribute("data-kind") !== "حاشية");
+      if (hasNonHashiya) {
+        para.dataset.annPara = pack.id; para.classList.add("has-ann");
+      }
+    }
   });
 
   function wrapIn(root: HTMLElement, needle: string, packId: string): boolean {
@@ -535,6 +546,7 @@ function enhanceProse() {
 // [data-ann-pack] blocks (build-time, no network, sanitized at build).
 (() => {
   const KIND_ORDER = ["شرح", "تفسير", "إعراب", "حاشية", "تخريج"];
+  const KIND_SLUG: Record<string, string> = { شرح: "sharh", حاشية: "hashiya", تخريج: "takhrij", إعراب: "iraab", تفسير: "tafsir" };
   const toAr = (n: number) => String(n).replace(/[0-9]/g, (d) => "٠١٢٣٤٥٦٧٨٩"[+d]);
 
   let sheet: HTMLElement | null = null;
@@ -567,6 +579,8 @@ function enhanceProse() {
   const packIds = () => [...document.querySelectorAll<HTMLElement>("[data-ann-pack]")].map((p) => p.id);
 
   function anchorLabel(pack: HTMLElement): string {
+    const mPage = pack.id.match(/^ann-page-(\d+)$/);
+    if (mPage) return `الصفحة ${toAr(+mPage[1])}`;
     const verse = pack.closest<HTMLElement>(".verse");
     const n = verse?.querySelector(".vnum")?.textContent?.trim();
     if (n) return `البيت ${n}`;
@@ -673,22 +687,47 @@ function enhanceProse() {
     if (activeVerse) { activeVerse.classList.remove("ann-active-verse"); activeVerse = null; }
   }
 
-  // build synthetic ann-packs for page-sep حاشية notes so openSheet() works unchanged
+  // build synthetic ann-packs for page-sep notes so openSheet() works unchanged
   function injectPageNotes() {
     document.querySelectorAll<HTMLElement>(".page-sep[data-notes]").forEach((sep) => {
       const packId = "ann-page-" + sep.dataset.page;
       if (document.getElementById(packId)) return;
-      let notes: string[];
+      let notes: any[];
       try { notes = JSON.parse(sep.dataset.notes!); } catch { return; }
+      if (!notes || !notes.length) return;
+
       const pack = document.createElement("div");
       pack.className = "ann-pack"; pack.id = packId; pack.setAttribute("data-ann-pack", ""); pack.hidden = true;
-      const entry = document.createElement("div");
-      entry.className = "ann-entry k-hashiya"; entry.setAttribute("data-kind", "حاشية"); entry.setAttribute("data-label", "حاشية");
-      const body = document.createElement("div");
-      body.className = "ann-entry-body"; body.setAttribute("data-ar", "");
-      notes.forEach((n) => { const p = document.createElement("p"); p.textContent = n; body.appendChild(p); });
-      entry.appendChild(body);
-      pack.appendChild(entry);
+
+      if (typeof notes[0] === "string") {
+        const entry = document.createElement("div");
+        entry.className = "ann-entry k-hashiya"; entry.setAttribute("data-kind", "حاشية"); entry.setAttribute("data-label", "حاشية");
+        const body = document.createElement("div");
+        body.className = "ann-entry-body"; body.setAttribute("data-ar", "");
+        notes.forEach((n) => { const p = document.createElement("p"); p.textContent = n; body.appendChild(p); });
+        entry.appendChild(body);
+        pack.appendChild(entry);
+      } else {
+        notes.forEach((nt) => {
+          const entry = document.createElement("div");
+          const kSlug = KIND_SLUG[nt.kind] || "sharh";
+          entry.className = `ann-entry k-${kSlug}`;
+          entry.setAttribute("data-kind", nt.kind);
+          entry.setAttribute("data-label", nt.label || nt.kind);
+          const body = document.createElement("div");
+          body.className = "ann-entry-body"; body.setAttribute("data-ar", "");
+          body.innerHTML = nt.body;
+          entry.appendChild(body);
+          if (nt.sourceHref) {
+            const a = document.createElement("a");
+            a.className = "ann-source-link"; a.href = nt.sourceHref;
+            a.textContent = `اقرأ في موضعه${nt.sourceLabel ? `: ${nt.sourceLabel}` : ""} ←`;
+            entry.appendChild(a);
+          }
+          pack.appendChild(entry);
+        });
+      }
+
       sep.after(pack);
       sep.dataset.ann = packId;
     });
