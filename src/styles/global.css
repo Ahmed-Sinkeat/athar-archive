@@ -1045,13 +1045,23 @@ html[data-theme="dark"] ::highlight(aa-find)    { background-color: rgba(255, 15
 .page-sep[data-ann] { cursor: pointer; }
 .page-sep[data-ann]:hover { color: var(--accent); }
 .page-sep[data-ann]::after { content: " · حواشٍ"; }
-/* عرض مستمر — hide page separators, flow paragraphs as inline text */
+/* عرض مستمر — hide page separators unless they carry footnotes */
 html.pages-flow .page-sep { display: none; }
-html.pages-flow .prose > p { display: inline; }
-html.pages-flow .prose > p::after { content: " "; }
+html.pages-flow .page-sep[data-ann] { display: flex; }
 /* inline footnote ref sups (future EPUB imports) */
 sup[data-fn] { cursor: pointer; color: var(--accent); font-size: 0.72em; margin-inline-start: 1px; }
 sup[data-fn]:hover { text-decoration: underline; }
+
+/* prose footnote styling */
+.prose-footnote {
+  font-size: 0.82rem !important;
+  color: var(--ink-soft) !important;
+  margin-top: 0.25rem !important;
+  margin-bottom: 0.25rem !important;
+  padding-inline-start: 12px;
+  border-inline-start: 2px solid var(--rule);
+  line-height: 1.6;
+}
 
 /* narrator-list (scholar's shuyukh and talamidhah listing) */
 .narrator-list {
