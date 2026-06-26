@@ -3,7 +3,7 @@ title: "الإبانة عن أصول الديانة"
 status: published
 published_at: 2026-06-26
 person: abw-al-hsn-al-ashary
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-aqeedah-al-aamah", "al-firaq-war-rudud"]
 edition: "الأولى، 1397"
 description: "بتحقيق د. فوقية حسين محمود"
 ---

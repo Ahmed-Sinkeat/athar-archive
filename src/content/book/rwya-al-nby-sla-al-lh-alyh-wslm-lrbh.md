@@ -3,7 +3,7 @@ title: "رؤية النبي صلى الله عليه وسلم لربه"
 status: published
 published_at: 2026-06-26
 person: mhmd-bn-khlyfa-al-tmymy
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-aqeedah-al-aamah", "al-asma-was-sifat"]
 edition: "الأولى، 1422هـ/2002م"
 ---
 رؤية النبي صلى الله عليه وسلم لربه إعداد: د. محمد بن خليفة بن علي التميمي الأستاذ المشارك في كلية الدعوة وأصول الدين بالجامعة بسم الله الرحمن الرحيم ال

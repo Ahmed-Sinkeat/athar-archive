@@ -3,7 +3,7 @@ title: "الفكر الصوفي في ضوء الكتاب والسنة"
 status: published
 published_at: 2026-06-26
 person: abd-al-rhmn-bn-abd-al-khalq
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-aqeedah-al-aamah", "al-firaq-war-rudud"]
 edition: "الثالثة، 1406 هـ - 1986 م"
 ---
 بسم الله الرحمن الرحيم

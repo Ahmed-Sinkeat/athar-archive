@@ -3,7 +3,7 @@ title: "تحذير أهل الأيمان عن الحكم بغير ما أنزل 
 status: published
 published_at: 2026-06-26
 person: al-isardy-ismaayl
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-aqeedah-al-aamah", "al-wala-wal-bara"]
 edition: "الثالثة، 1407هـ"
 ---
 تحذير أهل الإيمان عن حكم بغير ما أنزل الرحمن تأليف: أبي هبة الله إسماعيل بن إبراهيم الخطيب الحسني الأسعردي الأزهري السلفي

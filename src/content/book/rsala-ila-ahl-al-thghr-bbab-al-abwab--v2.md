@@ -3,7 +3,7 @@ title: "رسالة إلى أهل الثغر بباب الأبواب"
 status: published
 published_at: 2026-06-26
 person: abw-al-hsn-al-ashary
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-aqeedah-al-aamah", "al-firaq-war-rudud"]
 edition: "1413هـ"
 description: "بتحقيق عبد الله شاكر محمد الجنيدي"
 ---

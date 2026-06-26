@@ -3,7 +3,7 @@ title: "الإبطال لنظرية الخلط بين دين الإسلام وغ
 status: published
 published_at: 2026-06-26
 person: bkr-abw-zyd
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-aqeedah-al-aamah", "al-firaq-war-rudud"]
 edition: "الأولى، 1417 هـ"
 ---
 ## مقدمة الطبعة الثانية

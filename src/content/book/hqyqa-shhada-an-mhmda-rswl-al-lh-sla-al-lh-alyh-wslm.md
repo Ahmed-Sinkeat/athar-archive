@@ -3,7 +3,7 @@ title: "حقيقة شهادة أن محمدا رسول الله صلى الله 
 status: published
 published_at: 2026-06-26
 person: abd-al-azyz-bn-abd-al-lh-al-al-shykh
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-aqeedah-al-aamah", "tahwid-al-ibada"]
 ---
 حقيقة شهادة أن محمدا رسول الله صلى الله عليه وسلم لسماحة الشيخ عبد العزيز بن عبد الله بن محمد آل الشيخ المفتي العام للمملكة العربية السعودية
 

@@ -3,7 +3,7 @@ title: "شروط لا إله إلا الله"
 status: published
 published_at: 2026-06-26
 person: awad-al-matq
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-aqeedah-al-aamah", "tahwid-al-ibada"]
 edition: "السنة السادسة والعشرون - العددان (101، 102) - 1414/ 1415هـ"
 ---
 شُرُوط "لَا إِله إِلا الله " إعداد الدكتور/ عواد الْمُعْتق ال

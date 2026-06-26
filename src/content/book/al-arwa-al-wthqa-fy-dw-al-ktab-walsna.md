@@ -3,7 +3,7 @@ title: "العروة الوثقى في ضوء الكتاب والسنة"
 status: published
 published_at: 2026-06-26
 person: sayd-bn-whf-al-qhtany
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-aqeedah-al-aamah", "al-sunnah-wal-bidah"]
 ---
 رسائل سعيد بن علي بن وهف القحطاني العروة الوثقى في ضوء الكتاب والسُّنَّة المفهوم، والفضائل، والمقتضى، والأركان، والشروط، والنواقص، والنواقض تأليف الفقير إلى الله تعالى د. سعيد بن علي بن وهف القحطاني
 
