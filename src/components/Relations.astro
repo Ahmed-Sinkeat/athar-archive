@@ -33,13 +33,36 @@ for (const it of items) {
   </details>
 )}
 <style>
-  .relations { margin: 2.5rem auto 1rem; border-top: 1px solid var(--rule, #e5ddd0); padding-top: 1rem; }
-  .relations > summary { cursor: pointer; font-weight: 600; list-style: none; opacity: .85; }
+  .relations {
+    margin: 2.5rem auto 1rem;
+    border-top: 1px solid var(--rule);
+    padding-top: 1.25rem;
+  }
+  .relations > summary {
+    cursor: pointer; list-style: none;
+    font-family: var(--font-mono);
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--gold); opacity: 0.9;
+  }
   .relations > summary::-webkit-details-marker { display: none; }
-  .relations[open] > summary { margin-bottom: .75rem; }
-  .rel-count { font-size: .8em; opacity: .55; }
-  .rel-body { display: grid; gap: .85rem; }
-  .rel-label { font-size: .8rem; opacity: .6; margin-bottom: .2rem; }
+  .relations[open] > summary { margin-bottom: 1rem; }
+  .rel-count {
+    font-family: var(--font-mono); font-size: 10px;
+    background: var(--gold-soft); color: var(--gold);
+    border-radius: 999px; padding: 1px 7px; margin-inline-start: 6px;
+  }
+  .rel-body { display: grid; gap: 1rem; }
+  .rel-group {}
+  .rel-label {
+    font-family: var(--font-ui); font-size: 11.5px;
+    color: var(--ink-faint); margin-bottom: 0.35rem;
+  }
   .rel-list { margin: 0; padding-inline-start: 1.2rem; }
-  .rel-list li { margin: .15rem 0; }
+  .rel-list li { margin: 0.2rem 0; }
+  .rel-list a {
+    font-family: var(--font-display); font-size: 15px; font-weight: 700;
+    color: var(--ink); text-decoration: none;
+    transition: color 0.15s;
+  }
+  .rel-list a:hover { color: var(--accent); }
 </style>

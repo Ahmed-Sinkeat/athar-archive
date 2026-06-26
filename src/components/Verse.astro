@@ -58,13 +58,16 @@ const popId = `ann-${anchor}`;
         )}
       </div>
       {ajz && (
-        <div class="ajz">
-          {inAjz ? (
-            <>{inAjz.before}<a class="ann-mark" href={`#${popId}`} data-ann={popId} aria-haspopup="dialog">{inAjz.mark}</a>{inAjz.after}</>
-          ) : (
-            ajz
-          )}
-        </div>
+        <>
+          <span class="verse-hemistich-rule" aria-hidden="true"></span>
+          <div class="ajz">
+            {inAjz ? (
+              <>{inAjz.before}<a class="ann-mark" href={`#${popId}`} data-ann={popId} aria-haspopup="dialog">{inAjz.mark}</a>{inAjz.after}</>
+            ) : (
+              ajz
+            )}
+          </div>
+        </>
       )}
     </div>
   </div>

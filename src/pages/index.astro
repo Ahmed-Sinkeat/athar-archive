@@ -183,6 +183,7 @@ const latest = [
           <div class="weekly-card">
             {kind === "بيت" && (m.era || m.subjects.length) ? (
               <div class="weekly-pills">
+                <span class="weekly-kind">{kind}</span>
                 {m.eraLink && <a class="pill tag-verdigris pill-link" href={m.eraLink}>{m.era}</a>}
                 {m.subjects.map((s) => <a class="pill tag-accent pill-link" href={s.href}>{s.title}</a>)}
               </div>
