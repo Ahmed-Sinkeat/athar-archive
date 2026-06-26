@@ -3,7 +3,7 @@ title: "شرح العقيدة الأصفهانية"
 status: published
 published_at: 2026-06-26
 person: abn-tymya
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-asma-was-sifat"]
 edition: "الأولى - 1425هـ"
 description: "بتحقيق محمد بن رياض الأحمد"
 ---

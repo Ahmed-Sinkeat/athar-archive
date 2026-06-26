@@ -3,7 +3,7 @@ title: "مسألة التقريب بين أهل السنة والشيعة"
 status: published
 published_at: 2026-06-26
 person: nasr-al-qfary
-topics: ["al-aqeedah-al-aamah", "al-firaq-war-rudud"]
+topics: ["al-firaq-war-rudud", "al-firaq-war-rudud"]
 edition: "الثالثة، 1428 هـ"
 ---
 ## [مسألةُ التّقريب بين أهْل السُّنة والشّيعَة]ـ

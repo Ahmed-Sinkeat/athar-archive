@@ -3,7 +3,7 @@ title: "عقيدة التوحيد في القرآن الكريم"
 status: published
 published_at: 2026-06-26
 person: mhmd-khlyl-mlkawy
-topics: ["al-aqeedah-al-aamah", "tahwid-al-ibada"]
+topics: ["tahwid-al-ibada", "tahwid-al-ibada"]
 edition: "الأولى 1405هـ - 1985م"
 ---
 ال

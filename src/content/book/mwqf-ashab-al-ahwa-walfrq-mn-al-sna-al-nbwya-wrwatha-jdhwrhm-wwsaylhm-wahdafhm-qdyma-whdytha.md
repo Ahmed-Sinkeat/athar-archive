@@ -3,7 +3,7 @@ title: "موقف أصحاب الأهواء والفرق من السنة النب
 status: published
 published_at: 2026-06-26
 person: mhmd-bn-mtr-al-zhrany
-topics: ["al-aqeedah-al-aamah", "al-firaq-war-rudud"]
+topics: ["al-firaq-war-rudud", "al-firaq-war-rudud"]
 edition: "الأولى، 1411هـ"
 description: "بتحقيق -"
 ---

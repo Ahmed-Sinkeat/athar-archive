@@ -3,7 +3,7 @@ title: "المنهاج في شعب الإيمان"
 status: published
 published_at: 2026-06-26
 person: al-hlymy
-topics: ["al-aqeedah-al-aamah", "al-iman"]
+topics: ["al-iman", "al-iman"]
 ---
 ## مقدمة المؤلف
 

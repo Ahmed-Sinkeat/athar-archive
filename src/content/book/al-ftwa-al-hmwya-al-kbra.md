@@ -3,7 +3,7 @@ title: "الفتوى الحموية الكبرى"
 status: published
 published_at: 2026-06-26
 person: abn-tymya
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-asma-was-sifat"]
 edition: "الطبعة الثانية 1425هـ / 2004م"
 description: "بتحقيق د. حمد بن عبد المحسن التويجري"
 ---

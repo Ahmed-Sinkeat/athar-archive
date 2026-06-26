@@ -3,7 +3,7 @@ title: "الإرشاد إلى توحيد رب العباد"
 status: published
 published_at: 2026-06-26
 person: abd-al-rhmn-bn-hmad-al-amr
-topics: ["al-aqeedah-al-aamah", "tahwid-al-ibada"]
+topics: ["tahwid-al-ibada", "tahwid-al-ibada"]
 edition: "الثانية، 1412 هـ"
 ---
 بسم الله الرحمن الرحيم

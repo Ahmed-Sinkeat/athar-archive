@@ -3,7 +3,7 @@ title: "إلقاء الضوء القرآني على كتابة الدكتور ع
 status: published
 published_at: 2026-06-26
 person: abd-al-qadr-bn-hbyb-al-lh-al-sndy
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-firaq-war-rudud"]
 edition: "السنة الثامنة، العدد الثالث، ذو الحجة 1395هـ/ ديسمبر 1975م"
 ---
 ## إلقاء الضوء القرآني (على كتابة الدكتور علوي حول النبهاني)

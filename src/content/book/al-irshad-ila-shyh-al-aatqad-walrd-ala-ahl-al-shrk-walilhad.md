@@ -3,7 +3,7 @@ title: "الإرشاد إلى صحيح الاعتقاد والرد على أهل
 status: published
 published_at: 2026-06-26
 person: salh-al-fwzan
-topics: ["al-aqeedah-al-aamah", "tahwid-al-ibada", "al-firaq-war-rudud"]
+topics: ["al-firaq-war-rudud", "tahwid-al-ibada", "al-firaq-war-rudud"]
 edition: "الرابعة 1420هـ - 1999م"
 ---
 الإرشاد إلى صحيح الاعتقاد والرد على أهل الشرك والإلحاد د صالح بن فوزان بن عبد الله الفوزان ال

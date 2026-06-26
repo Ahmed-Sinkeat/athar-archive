@@ -3,7 +3,7 @@ title: "كشف شبهات الصوفية"
 status: published
 published_at: 2026-06-26
 person: shhata-sqr
-topics: ["al-aqeedah-al-aamah", "al-firaq-war-rudud"]
+topics: ["al-firaq-war-rudud", "al-firaq-war-rudud"]
 ---
 ## [كشف شبهات الصوفية]ـ
 

@@ -3,7 +3,7 @@ title: "دعوة الإمام محمد بن عبد الوهاب سلفية لا 
 status: published
 published_at: 2026-06-26
 person: ahmd-bn-abd-al-azyz-al-hsyn
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-firaq-war-rudud"]
 edition: "الأولى 1420هـ/ 1999م"
 ---
 بسم الله الرحمن الرحيم

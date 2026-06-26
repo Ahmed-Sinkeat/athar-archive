@@ -3,7 +3,7 @@ title: "تطهير الاعتقاد عن أدران الإلحاد ويليه ش
 status: published
 published_at: 2026-06-26
 person: al-snaany
-topics: ["al-aqeedah-al-aamah", "tahwid-al-ibada", "al-samiyyat"]
+topics: ["tahwid-al-ibada", "tahwid-al-ibada", "al-samiyyat"]
 edition: "الأولى، 1424هـ"
 description: "بتحقيق عبد المحسن بن حمد العباد البدر"
 ---

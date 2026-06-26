@@ -3,7 +3,7 @@ title: "التوحيد وأثره في حياة المسلم"
 status: published
 published_at: 2026-06-26
 person: hmd-al-hryqy
-topics: ["al-aqeedah-al-aamah", "tahwid-al-ibada"]
+topics: ["tahwid-al-ibada", "tahwid-al-ibada"]
 ---
 التَّوْحِيد وأثره فِي حَيَاة الْمُسلم تأليف حمد بن إِبْرَاهِيم الحريقي دَار الوطن
 

@@ -3,7 +3,7 @@ title: "أشراط الساعة"
 status: published
 published_at: 2026-06-26
 person: abd-al-lh-bn-slyman-al-ghfyly
-topics: ["al-aqeedah-al-aamah", "al-samiyyat"]
+topics: ["al-samiyyat", "al-samiyyat"]
 edition: "الأولى، 1422هـ"
 ---
 [

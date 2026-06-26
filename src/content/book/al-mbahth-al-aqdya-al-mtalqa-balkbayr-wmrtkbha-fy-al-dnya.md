@@ -3,7 +3,7 @@ title: "المباحث العقدية المتعلقة بالكبائر ومرت
 status: published
 published_at: 2026-06-26
 person: sawd-bn-abd-al-azyz-al-khlf
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-iman"]
 edition: "السنة السادسة والثلاثون - العدد (123) 1424هـ/2004م"
 ---
 ال

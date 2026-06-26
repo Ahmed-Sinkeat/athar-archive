@@ -3,7 +3,7 @@ title: "المقصد الأسنى"
 status: published
 published_at: 2026-06-26
 person: abw-hamd-al-ghzaly
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-asma-was-sifat"]
 edition: "الأولى، 1407 - 1987"
 description: "بتحقيق بسام عبد الوهاب الجابي"
 ---

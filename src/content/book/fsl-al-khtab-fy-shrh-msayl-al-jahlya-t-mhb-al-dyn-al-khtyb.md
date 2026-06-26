@@ -3,7 +3,7 @@ title: "فصل الخطاب في شرح مسائل الجاهلية ت محب ا
 status: published
 published_at: 2026-06-26
 person: al-alwsy-mhmwd-shkry
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-firaq-war-rudud"]
 edition: "الأولى، 1421هـ"
 ---
 [مسائل الجاهلية التي خالف فيها رسول الله صلى الله عليه وسلم أهل الجاهلية]

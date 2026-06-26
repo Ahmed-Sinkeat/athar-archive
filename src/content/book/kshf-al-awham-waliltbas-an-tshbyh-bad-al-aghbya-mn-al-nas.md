@@ -3,7 +3,7 @@ title: "كشف الأوهام والإلتباس عن تشبيه بعض الأغ
 status: published
 published_at: 2026-06-26
 person: slyman-bn-shman
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-firaq-war-rudud"]
 edition: "الأولى، 1415هـ"
 description: "بتحقيق عبد العزيز بن عبد الله الزير آل حمد"
 ---

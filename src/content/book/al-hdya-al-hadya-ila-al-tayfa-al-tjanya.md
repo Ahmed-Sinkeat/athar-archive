@@ -3,7 +3,7 @@ title: "الهدية الهادية إلى الطائفة التجانية"
 status: published
 published_at: 2026-06-26
 person: mhmd-tqy-al-dyn-al-hlaly
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-firaq-war-rudud"]
 edition: "الثانية"
 ---
 الهدية الهادية إلى الطائفة التجانية تأليف الدكتور محمد تقي الدين الهلالي رحمه الله وغفر له

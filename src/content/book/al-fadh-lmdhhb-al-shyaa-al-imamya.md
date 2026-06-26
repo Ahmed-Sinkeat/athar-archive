@@ -3,7 +3,7 @@ title: "الفاضح لمذهب الشيعة الإمامية"
 status: published
 published_at: 2026-06-26
 person: hamd-al-idrysy
-topics: ["al-aqeedah-al-aamah", "al-firaq-war-rudud"]
+topics: ["al-firaq-war-rudud", "al-firaq-war-rudud"]
 edition: "الأولى، 1428 هـ - 2007 م"
 ---
 بسم الله الرحمن الرحيم الفاضح لمذهب الشيعة الإمامية السيد حامد الإدريسي

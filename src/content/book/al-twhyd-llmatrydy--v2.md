@@ -3,7 +3,7 @@ title: "التوحيد للماتريدي"
 status: published
 published_at: 2026-06-26
 person: abw-mnswr-al-matrydy
-topics: ["al-aqeedah-al-aamah", "tahwid-al-ibada"]
+topics: ["tahwid-al-ibada", "tahwid-al-ibada"]
 description: "بتحقيق د. فتح الله خليف"
 ---
 ## بِسم الله الرَّحْمَن الرَّحِيم

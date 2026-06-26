@@ -3,7 +3,7 @@ title: "من عقائد السلف (الرد على الجهمية)"
 status: published
 published_at: 2026-06-26
 person: abn-mndh-mhmd-bn-ishaq
-topics: ["al-aqeedah-al-aamah", "al-firaq-war-rudud"]
+topics: ["al-firaq-war-rudud", "al-firaq-war-rudud"]
 edition: "السنة الثالثة عشر - العدد التاسع والأربعين - محرم - صفر - ربيع الأول 1401هـ"
 description: "بتحقيق علي بن محمد بن ناصر الفقيهي"
 ---

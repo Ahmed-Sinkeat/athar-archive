@@ -3,7 +3,7 @@ title: "الإيمان حقيقته، خوارمه، نواقضه عند أهل 
 status: published
 published_at: 2026-06-26
 person: abd-al-lh-bn-abd-al-hmyd-al-athry
-topics: ["al-aqeedah-al-aamah", "tahwid-al-ibada", "al-iman"]
+topics: ["al-iman", "tahwid-al-ibada", "al-iman"]
 edition: "الأولى، 1424 هـ - 2003 م"
 ---
 الإيمان حقيقته، خوارمه، نواقضه عند أهل السنة والجماعة مراجعة وتقديم فضيلة الشيخ الدكتور عبد الرحمن بن صالح المحمود إعداد عبد الله بن عبد الحميد الأثري

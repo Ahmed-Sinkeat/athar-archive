@@ -3,7 +3,7 @@ title: "رسالة في أن القرآن غير مخلوق"
 status: published
 published_at: 2026-06-26
 person: ibrahym-al-hrby
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-asma-was-sifat"]
 edition: "الأولى، 1416هـ - 1995م"
 description: "بتحقيق علي بن عبد العزيز علي الشبل"
 ---

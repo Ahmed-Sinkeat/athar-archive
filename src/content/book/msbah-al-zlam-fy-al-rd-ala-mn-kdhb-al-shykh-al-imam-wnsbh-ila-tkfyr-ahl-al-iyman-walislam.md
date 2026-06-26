@@ -3,7 +3,7 @@ title: "مصباح الظلام في الرد على من كذب الشيخ ال
 status: published
 published_at: 2026-06-26
 person: abd-al-ltyf-al-al-shykh
-topics: ["al-aqeedah-al-aamah", "al-iman", "al-firaq-war-rudud"]
+topics: ["al-firaq-war-rudud", "al-iman", "al-firaq-war-rudud"]
 edition: "الأولى، 1424 - 2003 م"
 description: "بتحقيق عبد العزيز بن عبد الله بن إبراهيم الزير آل حمد"
 ---

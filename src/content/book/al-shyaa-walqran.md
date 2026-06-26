@@ -3,7 +3,7 @@ title: "الشيعة والقرآن"
 status: published
 published_at: 2026-06-26
 person: ihsan-ilhy-zhyr
-topics: ["al-aqeedah-al-aamah", "al-firaq-war-rudud"]
+topics: ["al-firaq-war-rudud", "al-firaq-war-rudud"]
 ---
 الشيعة والقرآن ويشتمل على القسم الكبير من كتاب "فصل الخطاب في إثبات تحريف كتاب رب الأرباب" لمحدّث شيعي حسين تقي النوري الطبرسي تأليف / إحسان إلهي ظهير رئيس تحرير مجلة ترجمان الحديث لاهور باكستان
 

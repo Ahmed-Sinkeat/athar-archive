@@ -3,7 +3,7 @@ title: "الصارم المسلول على شاتم الرسول"
 status: published
 published_at: 2026-06-26
 person: abn-tymya
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-firaq-war-rudud"]
 edition: "-"
 description: "بتحقيق محمد محي الدين عبد الحميد"
 ---

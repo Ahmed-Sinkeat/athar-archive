@@ -3,7 +3,7 @@ title: "تفسير أسماء الله الحسنى للسعدي"
 status: published
 published_at: 2026-06-26
 person: abd-al-rhmn-al-sady
-topics: ["al-aqeedah-al-aamah", "al-asma-was-sifat"]
+topics: ["al-asma-was-sifat", "al-asma-was-sifat"]
 edition: "العدد 112 - السنة 33 - 1421هـ"
 description: "بتحقيق عبيد بن علي العبيد"
 ---

@@ -3,7 +3,7 @@ title: "المفهوم الصحيح للتوسل"
 status: published
 published_at: 2026-06-26
 person: hmad-al-ansary
-topics: ["al-aqeedah-al-aamah"]
+topics: ["tahwid-al-ibada"]
 edition: "السنة الحادية عشرة, العدد الثاني غرة ذي الحجة عام 1398هـ/1978م"
 ---
 ## المفهوم الصحيح للتوسل

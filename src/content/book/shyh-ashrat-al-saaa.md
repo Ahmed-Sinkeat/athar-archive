@@ -3,7 +3,7 @@ title: "صحيح أشراط الساعة"
 status: published
 published_at: 2026-06-26
 person: asam-mwsa-hady
-topics: ["al-aqeedah-al-aamah", "al-samiyyat"]
+topics: ["al-samiyyat", "al-samiyyat"]
 edition: "الأولى، 1424 هـ - 2003 م"
 ---
 صحيح أشراط الساعة بقلم عصام موسى هادي بسم الله الرحمن الرحيم

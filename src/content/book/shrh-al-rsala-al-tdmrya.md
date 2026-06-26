@@ -3,7 +3,7 @@ title: "شرح الرسالة التدمرية"
 status: published
 published_at: 2026-06-26
 person: mhmd-bn-abd-al-rhmn-al-khmys
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-asma-was-sifat"]
 edition: "1425هـ/2004م"
 ---
 شرح الرسالة التدمرية محمد بن عبد الرحمن الخميس ال

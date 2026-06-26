@@ -3,7 +3,7 @@ title: "تحفة الطالب والجليس في كشف شبه داود بن ج
 status: published
 published_at: 2026-06-26
 person: abd-al-ltyf-al-al-shykh
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-firaq-war-rudud"]
 edition: "الثانية، 1410 هـ/1990م"
 description: "بتحقيق عبد السلام بن برجس بن ناصر آل عبد الكريم"
 ---

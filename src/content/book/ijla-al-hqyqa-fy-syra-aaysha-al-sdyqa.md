@@ -3,7 +3,7 @@ title: "إجلاء الحقيقة في سيرة عائشة الصديقة"
 status: published
 published_at: 2026-06-26
 person: yasyn-al-khlyfa-al-tyb-al-mhjwb
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-imamah-was-sahabah"]
 edition: "الأولى، 1432هـ - 2011م"
 ---
 ## الْمُقَدِّمَةُ

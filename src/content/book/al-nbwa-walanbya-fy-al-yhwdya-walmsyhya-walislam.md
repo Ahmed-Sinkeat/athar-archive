@@ -3,7 +3,7 @@ title: "النبوة والأنبياء في اليهودية والمسيحية
 status: published
 published_at: 2026-06-26
 person: ahmd-abd-al-whab
-topics: ["al-aqeedah-al-aamah", "al-samiyyat"]
+topics: ["al-samiyyat", "al-samiyyat"]
 edition: "-"
 ---
 بسم الله الرحمن الرحيم

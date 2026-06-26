@@ -3,7 +3,7 @@ title: "فتح رب البرية بتلخيص الحموية"
 status: published
 published_at: 2026-06-26
 person: abn-athymyn
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-asma-was-sifat"]
 ---
 بسم الله الرحمن الرحيم
 

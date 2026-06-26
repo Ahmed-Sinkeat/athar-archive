@@ -3,7 +3,7 @@ title: "الإيمان لابن تيمية"
 status: published
 published_at: 2026-06-26
 person: abn-tymya
-topics: ["al-aqeedah-al-aamah", "al-iman"]
+topics: ["al-iman", "al-iman"]
 edition: "الخامسة، 1416هـ/1996م"
 description: "بتحقيق محمد ناصر الدين الألباني"
 ---

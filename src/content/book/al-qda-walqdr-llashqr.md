@@ -3,7 +3,7 @@ title: "القضاء والقدر للأشقر"
 status: published
 published_at: 2026-06-26
 person: slyman-al-ashqr-amr
-topics: ["al-aqeedah-al-aamah", "al-qadr"]
+topics: ["al-qadr", "al-qadr"]
 edition: "الثالثة عشر، 1425 هـ - 2005 م"
 ---
 ## الفصل الأول الإيمان بالقدر من أصول الإيمان

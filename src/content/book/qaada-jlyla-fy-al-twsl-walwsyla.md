@@ -3,7 +3,7 @@ title: "قاعدة جليلة في التوسل والوسيلة"
 status: published
 published_at: 2026-06-26
 person: abn-tymya
-topics: ["al-aqeedah-al-aamah"]
+topics: ["tahwid-al-ibada"]
 edition: "الأولى (لمكتبة الفرقان) 1422هـ - 2001هـ"
 description: "بتحقيق ربيع بن هادي عمير المدخلي"
 ---

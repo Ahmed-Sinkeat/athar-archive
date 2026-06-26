@@ -3,7 +3,7 @@ title: "المختصر المفيد في عقائد أئمة التوحيد"
 status: published
 published_at: 2026-06-26
 person: mdht-al-fraj
-topics: ["al-aqeedah-al-aamah", "tahwid-al-ibada"]
+topics: ["tahwid-al-ibada", "tahwid-al-ibada"]
 ---
 المختصر المفيد في عقائد أئمة التوحيد تأليف أبي يوسف مدحت بن الحسن آل فراج مؤسسة الريان
 

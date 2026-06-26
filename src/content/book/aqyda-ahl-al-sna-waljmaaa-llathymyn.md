@@ -3,7 +3,7 @@ title: "عقيدة أهل السنة والجماعة للعثيمين"
 status: published
 published_at: 2026-06-26
 person: abn-athymyn
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-sunnah-wal-bidah"]
 edition: "الرابعة، 1422 هـ"
 ---
 عقيدة أهل السنة والجماعة تأليف: محمد الصالح العثيمين

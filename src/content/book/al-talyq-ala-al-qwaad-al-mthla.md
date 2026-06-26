@@ -3,7 +3,7 @@ title: "التعليق على القواعد المثلى"
 status: published
 published_at: 2026-06-26
 person: abd-al-rhmn-bn-nasr-al-brak
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-asma-was-sifat"]
 ---
 التعليق على القواعد المثلى تأليف فضيلة الشيخ عبدالرحمن بن ناصر البراك إعداد عبدالله بن محمد المزروع دار التدمرية الطبعة الأولى 1431
 

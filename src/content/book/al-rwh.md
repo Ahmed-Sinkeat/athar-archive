@@ -3,7 +3,7 @@ title: "الروح"
 status: published
 published_at: 2026-06-26
 person: abn-al-qym
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-samiyyat"]
 ---
 ## الْمَسْأَلَة الأولى وَهِي هَل تعرف الْأَمْوَات زِيَارَة الْأَحْيَاء وسلامهم أم لَا قَالَ
 

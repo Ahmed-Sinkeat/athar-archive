@@ -3,7 +3,7 @@ title: "أمنا عائشة"
 status: published
 published_at: 2026-06-26
 person: shhata-sqr
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-imamah-was-sahabah"]
 ---
 أمُّنَا عائِشَةُ - رضي الله عنها - حبيبةُ نبيِّنَا - صلى الله عليه وآله وسلم -
 

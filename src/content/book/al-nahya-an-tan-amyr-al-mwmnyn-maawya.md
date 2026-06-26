@@ -3,7 +3,7 @@ title: "الناهية عن طعن أمير المؤمنين معاوية"
 status: published
 published_at: 2026-06-26
 person: abd-al-azyz-al-mltany
-topics: ["al-aqeedah-al-aamah", "al-imamah-was-sahabah"]
+topics: ["al-imamah-was-sahabah", "al-imamah-was-sahabah"]
 edition: "الأولى، 1422 هـ"
 ---
 الناهية عن طعن أمير المؤمنين معاوية لعبد العزيز بن أحمد بن حامد الفرهاروي

@@ -3,7 +3,7 @@ title: "الحسام الممدود في الرد على اليهود"
 status: published
 published_at: 2026-06-26
 person: abd-al-hq-al-islamy
-topics: ["al-aqeedah-al-aamah", "al-firaq-war-rudud"]
+topics: ["al-firaq-war-rudud", "al-firaq-war-rudud"]
 edition: "الأولى، 1422 هـ - 2001 م"
 ---
 بسم الله الرحمن الرحيم وصلى الله على سيدنا محمد وآله

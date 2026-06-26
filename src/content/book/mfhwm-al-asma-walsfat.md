@@ -3,7 +3,7 @@ title: "مفهوم الأسماء والصفات"
 status: published
 published_at: 2026-06-26
 person: sad-bn-abd-al-rhmn-nda
-topics: ["al-aqeedah-al-aamah", "al-asma-was-sifat"]
+topics: ["al-asma-was-sifat", "al-asma-was-sifat"]
 ---
 ## مدخل...
 

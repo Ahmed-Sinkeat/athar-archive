@@ -3,7 +3,7 @@ title: "الرد على الجهمية والزنادقة"
 status: published
 published_at: 2026-06-26
 person: ahmd-bn-hnbl
-topics: ["al-aqeedah-al-aamah", "al-firaq-war-rudud"]
+topics: ["al-firaq-war-rudud", "al-firaq-war-rudud"]
 edition: "الأولى"
 description: "بتحقيق صبري بن سلامة شاهين"
 ---

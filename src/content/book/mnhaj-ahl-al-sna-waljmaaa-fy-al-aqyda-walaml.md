@@ -3,7 +3,7 @@ title: "منهاج أهل السنة والجماعة في العقيدة وال
 status: published
 published_at: 2026-06-26
 person: abn-athymyn
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-sunnah-wal-bidah"]
 edition: "الأولى 1424هـ-2003م"
 ---
 ## مقدمة

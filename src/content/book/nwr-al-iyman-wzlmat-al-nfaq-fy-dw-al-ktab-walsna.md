@@ -3,7 +3,7 @@ title: "نور الإيمان وظلمات النفاق في ضوء الكتاب
 status: published
 published_at: 2026-06-26
 person: sayd-bn-whf-al-qhtany
-topics: ["al-aqeedah-al-aamah", "al-iman"]
+topics: ["al-iman", "al-iman"]
 ---
 11 رسائل سعيد بن علي بن وهف القحطاني نُورُ الإِيمان وظلمات النِّفَاق في ضوء الكتاب والسنة تأليف الفقير إلى الله تعالى د. سعيد بن علي بن وهف القحطاني
 

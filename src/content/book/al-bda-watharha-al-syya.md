@@ -3,7 +3,7 @@ title: "البدع وآثارها السيئة"
 status: published
 published_at: 2026-06-26
 person: abd-al-krym-mrad
-topics: ["al-aqeedah-al-aamah", "al-sunnah-wal-bidah"]
+topics: ["al-sunnah-wal-bidah", "al-sunnah-wal-bidah"]
 edition: "السنة السابعه عشر - العددان (الخامس والستين , السادس والستين) - محرم -جماد الأخرة 1405هـ"
 ---
 ## مدخل...

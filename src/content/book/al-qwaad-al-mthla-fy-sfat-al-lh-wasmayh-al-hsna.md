@@ -3,7 +3,7 @@ title: "القواعد المثلى في صفات الله وأسمائه الح
 status: published
 published_at: 2026-06-26
 person: abn-athymyn
-topics: ["al-aqeedah-al-aamah", "al-asma-was-sifat"]
+topics: ["al-asma-was-sifat", "al-asma-was-sifat"]
 edition: "الثالثة، 1421هـ/2001م"
 ---
 ## القواعد المثلى في أسماء وصفات الله الحسنى

@@ -3,7 +3,7 @@ title: "محبة الرسول بين الاتباع والابتداع"
 status: published
 published_at: 2026-06-26
 person: abd-al-rwf-mhmd-athman
-topics: ["al-aqeedah-al-aamah", "al-sunnah-wal-bidah"]
+topics: ["al-sunnah-wal-bidah", "al-sunnah-wal-bidah"]
 edition: "الأولى، 1414هـ"
 ---
 [

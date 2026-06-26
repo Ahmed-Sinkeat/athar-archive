@@ -3,7 +3,7 @@ title: "قمع الدجاجلة الطاعنين في معتقد أئمة الإ
 status: published
 published_at: 2026-06-26
 person: abd-al-azyz-bn-fysl-al-rajhy
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-firaq-war-rudud"]
 edition: "الأولى، 1424 هـ"
 ---
 [

@@ -3,7 +3,7 @@ title: "إعانة المستفيد بشرح كتاب التوحيد"
 status: published
 published_at: 2026-06-26
 person: salh-al-fwzan
-topics: ["al-aqeedah-al-aamah", "tahwid-al-ibada"]
+topics: ["tahwid-al-ibada", "tahwid-al-ibada"]
 edition: "الطبعة الثالثة، 1423هـ 2002م"
 ---
 ## [إعانة المستفيد بشرح كتاب التوحيد]ـ

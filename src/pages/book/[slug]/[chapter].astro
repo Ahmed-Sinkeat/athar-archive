@@ -141,6 +141,7 @@ const processedHtml = html.replace(/<hr\s+([^>]*class="page-sep"[^>]*)>/g, (matc
 
 // 5. Embed note text directly on inline <sup data-fn> refs so client needs no DOM search.
 //    Parses the notes we just injected into page-seps, then stamps data-note on each sup.
+let processedTitleHtml = "";
 const finalContent = (() => {
   const pnMap = new Map<number, string>();
   processedHtml.replace(
@@ -156,8 +157,8 @@ const finalContent = (() => {
       return _;
     }
   );
-  if (!pnMap.size) return processedHtml;
-  return processedHtml.replace(/<sup\s+([^>]+)>(\d+)<\/sup>/g, (match, attrs, fnContent) => {
+
+  const stampFn = (match: string, attrs: string, fnContent: string) => {
     const fnMatch = attrs.match(/data-fn="(\d+)"/) || attrs.match(/data-fn='(\d+)'/);
     const sepMatch = attrs.match(/data-sep-page="(\d+)"/) || attrs.match(/data-sep-page='(\d+)'/);
     if (!fnMatch || !sepMatch) return match;
@@ -167,7 +168,14 @@ const finalContent = (() => {
     if (!note) return match;
     const attr = note.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/'/g, "&#39;").replace(/\r/g, "").replace(/\n/g, "&#10;");
     return `<sup data-fn="${fn}" data-sep-page="${sepPage}" data-note="${attr}">${fnContent}</sup>`;
-  });
+  };
+
+  if ((chapter as any).rawTitle) {
+    processedTitleHtml = (chapter as any).rawTitle.replace(/<sup\s+([^>]+)>(\d+)<\/sup>/g, stampFn);
+  }
+
+  if (!pnMap.size) return processedHtml;
+  return processedHtml.replace(/<sup\s+([^>]+)>(\d+)<\/sup>/g, stampFn);
 })();
 ---
 <Base title={`${chapter.title} · ${entry.data.title}`} activeNav="books" searchScope={{ in: entry.id, label: entry.data.title }}>
@@ -196,7 +204,7 @@ const finalContent = (() => {
 
         <div class="reader-head">
           <div class="eyebrow u87c136d"><a class="faint" href={hrefFor("book", entry.id)}>{entry.data.title}</a></div>
-          <h1 class="reader-title ue7e55f7" >{chapter.title}</h1>
+          <h1 class="reader-title ue7e55f7" set:html={processedTitleHtml || chapter.title}></h1>
           <div class="reader-byline">{author}</div>
           {entry.data.transcript_status && (
             <div style="margin-top: 0.5rem;">

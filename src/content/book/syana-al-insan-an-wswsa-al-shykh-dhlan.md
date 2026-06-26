@@ -3,7 +3,7 @@ title: "صيانة الإنسان عن وسوسة الشيخ دحلان"
 status: published
 published_at: 2026-06-26
 person: mhmd-bshyr-al-shswany
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-firaq-war-rudud"]
 edition: "الثالثة"
 ---
 ## التعريف بالكتاب...

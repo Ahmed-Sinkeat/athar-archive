@@ -4,7 +4,7 @@ status: published
 published_at: 2026-06-26
 person: mhmd-bn-abd-al-whab
 kind: متن
-topics: ["al-aqeedah-al-aamah", "tahwid-al-ibada"]
+topics: ["al-firaq-war-rudud", "tahwid-al-ibada"]
 edition: "الأولى، 1418هـ"
 ---
 [

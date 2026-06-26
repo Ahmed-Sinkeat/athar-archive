@@ -3,7 +3,7 @@ title: "شم العوارض في ذم الروافض"
 status: published
 published_at: 2026-06-26
 person: al-mla-ala-al-qary
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-firaq-war-rudud"]
 edition: "الأولى، 1425 هـ - 2004 م"
 description: "بتحقيق د. مجيد الخليفة"
 ---

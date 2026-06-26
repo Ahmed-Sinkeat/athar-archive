@@ -3,7 +3,7 @@ title: "أصول السنة لأحمد بن حنبل"
 status: published
 published_at: 2026-06-26
 person: ahmd-bn-hnbl
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-sunnah-wal-bidah"]
 edition: "الأولى، 1411هـ"
 ---
 ## أصُول السّنة لإِمَام أهل السّنة أَحْمد بن حَنْبَل (رَحمَه الله)

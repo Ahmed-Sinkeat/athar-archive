@@ -3,7 +3,7 @@ title: "مسائل الجاهلية"
 status: published
 published_at: 2026-06-26
 person: mhmd-bn-abd-al-whab
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-firaq-war-rudud"]
 ---
 ## مقدمة
 
