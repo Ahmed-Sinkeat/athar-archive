@@ -1,7 +1,7 @@
 ---
 title: "الصواعق المحرقة على أهل الرفض والضلال والزندقة"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: abn-hjr-al-hytmy
 topics: ["aam-aqeedah"]
 edition: "الأولى، 1417هـ - 1997م"

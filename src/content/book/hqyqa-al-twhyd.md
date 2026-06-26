@@ -1,7 +1,7 @@
 ---
 title: "حقيقة التوحيد"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: bdya-al-zman-al-nwrsy
 topics: ["tahwid-al-ibada"]
 edition: "الثانية، 1988م"

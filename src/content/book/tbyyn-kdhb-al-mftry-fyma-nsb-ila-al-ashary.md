@@ -1,7 +1,7 @@
 ---
 title: "تبيين كذب المفتري فيما نسب إلى الأشعري"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: abn-asakr-abw-al-qasm
 topics: ["aam-aqeedah"]
 edition: "الثالثة، 1404"

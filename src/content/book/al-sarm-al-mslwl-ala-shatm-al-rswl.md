@@ -1,7 +1,7 @@
 ---
 title: "الصارم المسلول على شاتم الرسول"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: abn-tymya
 topics: ["aam-aqeedah"]
 edition: "-"

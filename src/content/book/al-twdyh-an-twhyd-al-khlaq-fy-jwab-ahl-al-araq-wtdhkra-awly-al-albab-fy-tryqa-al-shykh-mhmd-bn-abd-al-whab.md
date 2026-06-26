@@ -1,7 +1,7 @@
 ---
 title: "التوضيح عن توحيد الخلاق في جواب أهل العراق وتذكرة أولي الألباب في طريقة الشيخ محمد بن عبد الوهاب"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: slyman-bn-abd-al-lh-al-al-shykh
 topics: ["tahwid-al-ibada"]
 edition: "الأولى، 1404هـ/ 1984م"

@@ -1,7 +1,7 @@
 ---
 title: "الحث على اتباع السنة والتحذير من البدع وبيان خطرها"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: abd-al-mhsn-al-abad
 topics: ["al-sunnah-wal-bidah"]
 edition: "الأولى، 1425هـ"

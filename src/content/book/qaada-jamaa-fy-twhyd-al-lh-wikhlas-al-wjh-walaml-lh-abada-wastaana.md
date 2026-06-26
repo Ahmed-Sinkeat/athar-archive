@@ -1,7 +1,7 @@
 ---
 title: "قاعدة جامعة في توحيد الله وإخلاص الوجه والعمل له عبادة واستعانة"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: abn-tymya
 topics: ["tahwid-al-ibada"]
 edition: "الأولي، 1418هـ/1997م"

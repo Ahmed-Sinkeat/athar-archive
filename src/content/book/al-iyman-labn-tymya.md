@@ -1,7 +1,7 @@
 ---
 title: "الإيمان لابن تيمية"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: abn-tymya
 topics: ["al-iman"]
 edition: "الخامسة، 1416هـ/1996م"

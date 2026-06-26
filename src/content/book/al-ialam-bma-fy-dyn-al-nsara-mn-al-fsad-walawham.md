@@ -1,7 +1,7 @@
 ---
 title: "الإعلام بما في دين النصارى من الفساد والأوهام"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: al-qrtby-shms-al-dyn
 topics: ["aam-aqeedah"]
 description: "بتحقيق د. أحمد حجازي السقا"

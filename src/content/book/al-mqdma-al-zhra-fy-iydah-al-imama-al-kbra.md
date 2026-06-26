@@ -1,7 +1,7 @@
 ---
 title: "المقدمة الزهرا في إيضاح الإمامة الكبرى"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: al-dhhby-shms-al-dyn
 topics: ["al-imamah-was-sahabah"]
 edition: "الأولى، 1429 هـ - 2008 م"

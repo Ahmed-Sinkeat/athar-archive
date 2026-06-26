@@ -1,7 +1,7 @@
 ---
 title: "أغلو في بعض القرابة وجفاء في الأنبياء والصحابة"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: abd-al-mhsn-al-abad
 topics: ["al-imamah-was-sahabah"]
 edition: "الأولى، 1425هـ/2004م"

@@ -1,7 +1,7 @@
 ---
 title: "نعمة الذريعة في نصرة الشريعة"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: ibrahym-al-hlby
 topics: ["aam-aqeedah"]
 edition: "الأولى، 1419هـ - 1998م"

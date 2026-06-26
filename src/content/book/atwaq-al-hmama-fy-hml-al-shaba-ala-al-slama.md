@@ -1,7 +1,7 @@
 ---
 title: "أطواق الحمامة في حمل الصحابة على السلامة"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: al-mwyd-al-alwy
 topics: ["al-imamah-was-sahabah"]
 ---

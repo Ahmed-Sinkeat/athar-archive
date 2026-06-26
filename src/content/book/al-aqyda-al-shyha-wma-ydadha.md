@@ -1,7 +1,7 @@
 ---
 title: "العقيدة الصحيحة وما يضادها"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: abn-baz
 topics: ["al-aqeedah-al-aamah"]
 edition: "السنة السابعة العدد الثالث محرم 1395 هـ/ يناير 1975 م"

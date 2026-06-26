@@ -1,7 +1,7 @@
 ---
 title: "عقيدة أهل السنة والأثر في المهدي المنتظر"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: abd-al-mhsn-al-abad
 topics: ["al-aqeedah-al-aamah"]
 ---

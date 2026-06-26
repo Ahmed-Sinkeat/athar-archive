@@ -1,7 +1,7 @@
 ---
 title: "التوحيد وبيان العقيدة السلفية النقية"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: abd-al-lh-bn-hmyd
 topics: ["al-aqeedah-al-aamah", "tahwid-al-ibada"]
 edition: "الأولى - 1412 هـ - 1992 م"

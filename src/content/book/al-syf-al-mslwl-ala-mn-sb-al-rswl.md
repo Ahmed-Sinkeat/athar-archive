@@ -1,7 +1,7 @@
 ---
 title: "السيف المسلول على من سب الرسول"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: al-sbky-tqy-al-dyn
 topics: ["aam-aqeedah"]
 ---

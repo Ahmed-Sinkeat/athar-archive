@@ -1,7 +1,7 @@
 ---
 title: "تجريد التوحيد المفيد"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: al-mqryzy
 topics: ["tahwid-al-ibada"]
 edition: "1409هـ/1989م"

@@ -1,7 +1,7 @@
 ---
 title: "عرض ونقد دراسة نقدية وتوجيهية لكتاب دراسة عن الفرق في تاريخ المسلمين الخوارج والشيعة"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: aly-bn-mhmd-bn-nasr-al-fqyhy
 topics: ["al-firaq-war-rudud"]
 edition: "السنة السادسة والعشرون - العدد (101، 102) 1414 - 1415هـ/ 1994 - 1995م"

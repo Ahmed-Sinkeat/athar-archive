@@ -1,7 +1,7 @@
 ---
 title: "الحوادث والبدع"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: abw-bkr-al-trtwshy
 topics: ["al-sunnah-wal-bidah"]
 edition: "الثالثة، 1419 هـ - 1998 م"

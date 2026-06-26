@@ -1,7 +1,7 @@
 ---
 title: "كشف الشبهات"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: mhmd-bn-abd-al-whab
 kind: متن
 topics: ["tahwid-al-ibada"]

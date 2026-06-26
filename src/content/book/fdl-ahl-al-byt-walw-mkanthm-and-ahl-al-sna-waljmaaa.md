@@ -1,7 +1,7 @@
 ---
 title: "فضل أهل البيت وعلو مكانتهم عند أهل السنة والجماعة"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: abd-al-mhsn-al-abad
 topics: ["aam-aqeedah"]
 edition: "الأولى، 1422هـ/2001م"

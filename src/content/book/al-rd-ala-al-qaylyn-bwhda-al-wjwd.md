@@ -1,7 +1,7 @@
 ---
 title: "الرد على القائلين بوحدة الوجود"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: al-mla-ala-al-qary
 topics: ["al-firaq-war-rudud"]
 edition: "الأولى، 1415هـ - 1995م"

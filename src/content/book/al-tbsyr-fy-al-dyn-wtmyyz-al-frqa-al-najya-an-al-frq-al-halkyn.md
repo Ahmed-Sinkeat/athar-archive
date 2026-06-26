@@ -1,7 +1,7 @@
 ---
 title: "التبصير في الدين وتمييز الفرقة الناجية عن الفرق الهالكين"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: al-asfrayyny-abw-al-mzfr
 topics: ["al-firaq-war-rudud"]
 edition: "الأولى، 1403هـ - 1983م"

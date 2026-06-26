@@ -1,7 +1,7 @@
 ---
 title: "منهج أهل السنة والجماعة في السمع والطاعة"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: abn-baz
 topics: ["al-imamah-was-sahabah"]
 ---

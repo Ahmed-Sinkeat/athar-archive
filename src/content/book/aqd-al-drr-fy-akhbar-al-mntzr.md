@@ -1,7 +1,7 @@
 ---
 title: "عقد الدرر في أخبار المنتظر"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: ywsf-bn-yhya-al-slmy
 topics: ["aam-aqeedah"]
 edition: "الثانية، 1410 هـ - 1989 م"

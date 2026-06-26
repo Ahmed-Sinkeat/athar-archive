@@ -1,7 +1,7 @@
 ---
 title: "العقيدة السفارينية = الدرة المضية في عقد أهل الفرقة المرضية"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: al-sfaryny
 topics: ["al-aqeedah-al-aamah", "al-firaq-war-rudud"]
 edition: "الأولى، 1998"

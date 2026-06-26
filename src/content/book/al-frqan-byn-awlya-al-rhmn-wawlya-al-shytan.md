@@ -1,7 +1,7 @@
 ---
 title: "الفرقان بين أولياء الرحمن وأولياء الشيطان"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: abn-tymya
 topics: ["al-firaq-war-rudud"]
 ---

@@ -1,7 +1,7 @@
 ---
 title: "آكام المرجان في أحكام الجان"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: al-shbly
 topics: ["aam-aqeedah"]
 description: "بتحقيق إبراهيم محمد الجمل"

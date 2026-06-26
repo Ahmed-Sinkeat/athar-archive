@@ -1,7 +1,7 @@
 ---
 title: "أصول الإيمان لابن باز"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: abn-baz
 topics: ["al-iman"]
 edition: "السنة الحادية عشرة - العدد الثالث - ربيع الأول 1399هـ/1979م"

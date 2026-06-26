@@ -1,7 +1,7 @@
 ---
 title: "رسالة في إثبات الاستواء والفوقية ومسألة الحرف والصوت في القرآن المجيد"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: al-jwyny-abw-mhmd
 topics: ["al-asma-was-sifat"]
 edition: "الأولى، 1419هـ 1998م"

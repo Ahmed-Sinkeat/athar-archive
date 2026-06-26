@@ -1,7 +1,7 @@
 ---
 title: "نقض كلام المفترين على الحنابلة السلفيين"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: ahmd-bn-hjr-al-bwtamy
 topics: ["al-firaq-war-rudud"]
 edition: "1400 هـ - 1980 م"

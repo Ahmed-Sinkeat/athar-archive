@@ -1,7 +1,7 @@
 ---
 title: "الأسئلة والأجوبة في العقيدة"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: salh-bn-abd-al-rhmn-al-atrm
 topics: ["al-aqeedah-al-aamah"]
 edition: "الأولى، 1413 هـ"

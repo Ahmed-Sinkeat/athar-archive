@@ -1,7 +1,7 @@
 ---
 title: "التحفة المدنية في العقيدة السلفية"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: hmd-bn-nasr-al-mamr
 topics: ["al-aqeedah-al-aamah"]
 description: "بتحقيق عبد السلام بن برجس بن ناصر آل عبد الكريم"

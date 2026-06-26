@@ -1,7 +1,7 @@
 ---
 title: "حز الغلاصم في إفحام المخاصم عند جريان النظر في أحكام القدر"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: abn-al-haj-al-qnawy
 topics: ["al-qadr"]
 edition: "الأولى، 1405"

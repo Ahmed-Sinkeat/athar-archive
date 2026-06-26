@@ -1,7 +1,7 @@
 ---
 title: "الشرك في القديم والحديث"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: abw-bkr-mhmd-zkrya
 topics: ["tahwid-al-ibada"]
 ---

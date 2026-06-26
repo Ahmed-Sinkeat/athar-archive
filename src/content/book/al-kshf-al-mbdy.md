@@ -1,7 +1,7 @@
 ---
 title: "الكشف المبدي"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: mhmd-bn-hsyn-al-fqyh
 topics: ["aam-aqeedah"]
 edition: "الأولى 1422 هـ - 2002 م"

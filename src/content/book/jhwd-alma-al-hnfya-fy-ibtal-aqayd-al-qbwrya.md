@@ -1,7 +1,7 @@
 ---
 title: "جهود علماء الحنفية في إبطال عقائد القبورية"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: shms-al-dyn-al-afghany
 topics: ["al-samiyyat"]
 edition: "الأولى - 1416 هـ - 1996 م"

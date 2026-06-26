@@ -1,7 +1,7 @@
 ---
 title: "تنزيه الأنبياء عما نسب إليهم حثالة الأغبياء"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: abn-khmyr-al-sbty
 topics: ["aam-aqeedah"]
 edition: "الأولى، 1411هـ - 1990م"

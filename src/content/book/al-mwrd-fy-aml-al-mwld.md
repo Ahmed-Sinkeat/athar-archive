@@ -1,7 +1,7 @@
 ---
 title: "المورد في عمل المولد"
 status: published
-published_at: 2026-06-25
+published_at: 2026-06-26
 person: taj-al-dyn-al-fakhany
 topics: ["aam-aqeedah"]
 edition: "الأولى، 1419 هـ - 1998 م"
