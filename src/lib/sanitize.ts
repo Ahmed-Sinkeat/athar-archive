@@ -186,12 +186,69 @@ function rehypeSentenceBreaks() {
   return (tree: any) => {
     const walk = (node: any, parentTag: string | null) => {
       if (!node.children) return;
-      const next: any[] = [];
+
+      // Walk children elements first
       for (const child of node.children) {
-        if (child.type === "text" && !skipTags.has(parentTag ?? "")) {
+        if (child.type === "element") {
+          walk(child, child.tagName);
+        }
+      }
+
+      if (skipTags.has(parentTag ?? "")) return;
+
+      const next: any[] = [];
+      const len = node.children.length;
+      for (let i = 0; i < len; i++) {
+        const child = node.children[i];
+
+        // Case 2: Sibling text node ending with '.' (and word of length >=2), followed by <sup>, followed by text node starting with space.
+        if (
+          child.type === "text" &&
+          /([^0-9\u0660-\u0669\s٫ـ\.]{2,})\.$/.test(child.value ?? "") &&
+          node.children[i + 1]?.type === "element" &&
+          node.children[i + 1].tagName === "sup" &&
+          node.children[i + 2]?.type === "text" &&
+          /^\s+/.test(node.children[i + 2].value ?? "")
+        ) {
+          next.push(child);
+          next.push(node.children[i + 1]);
+          next.push({
+            type: "element",
+            tagName: "br",
+            properties: { className: ["sentence-br"] },
+            children: [],
+          });
+          node.children[i + 2].value = node.children[i + 2].value.replace(/^\s+/, "");
+          i++;
+          continue;
+        }
+
+        // Case 3: Sibling text node ending with word of length >= 2, followed by <sup>, followed by text node starting with '.' and space.
+        if (
+          child.type === "text" &&
+          /([^0-9\u0660-\u0669\s٫ـ\.]{2,})$/.test(child.value ?? "") &&
+          node.children[i + 1]?.type === "element" &&
+          node.children[i + 1].tagName === "sup" &&
+          node.children[i + 2]?.type === "text" &&
+          /^\.(\s+)/.test(node.children[i + 2].value ?? "")
+        ) {
+          next.push(child);
+          next.push(node.children[i + 1]);
+          next.push({ type: "text", value: "." });
+          next.push({
+            type: "element",
+            tagName: "br",
+            properties: { className: ["sentence-br"] },
+            children: [],
+          });
+          node.children[i + 2].value = node.children[i + 2].value.replace(/^\.(\s+)/, "");
+          i++;
+          continue;
+        }
+
+        if (child.type === "text") {
           next.push(...splitSentenceBreaks(child.value ?? ""));
         } else {
-          if (child.type === "element") walk(child, child.tagName);
           next.push(child);
         }
       }
