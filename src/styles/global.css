@@ -46,6 +46,7 @@
 
   /* ─── manuscript gold (ornaments, stat numbers, dividers) ── */
   --gold:      #9c7a2a;   /* AA on paper — warm manuscript gold */
+  --gold-text: #7a5f1f;   /* AA contrast on paper for small text */
   --gold-soft: color-mix(in srgb, #9c7a2a 22%, transparent);
 
   /* reading-scale multiplier (font:dec/inc) */
@@ -69,6 +70,7 @@ html[data-theme="sepia"] {
   --verdigris-solid: #38604e;
   --verdigris-wash:  color-mix(in srgb, #38604e 10%, transparent);
   --gold:      #8c6e22;
+  --gold-text: #6d5516;
   --gold-soft: color-mix(in srgb, #8c6e22 22%, transparent);
 }
 
@@ -91,6 +93,7 @@ html[data-theme="dark"] {
   --verdigris-solid: #4a8870;
   --verdigris-wash:  color-mix(in srgb, #6aaa8e 12%, transparent);
   --gold:      #c9a84c;   /* brightened manuscript gold for dark bg */
+  --gold-text: #c9a84c;
   --gold-soft: color-mix(in srgb, #c9a84c 20%, transparent);
 }
 
@@ -138,8 +141,8 @@ img { max-width: 100%; }
 .wrap-matn { max-width: 660px; margin: 0 auto; padding-inline: 28px; }
 .reading-pad { padding-block: 30px 130px; }
 
-.mono-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.24em; color: var(--gold); }
-.eyebrow { font-family: var(--font-ui); font-size: 12px; letter-spacing: 0.22em; color: var(--gold); text-transform: uppercase; }
+.mono-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.24em; color: var(--gold-text); }
+.eyebrow { font-family: var(--font-ui); font-size: 12px; letter-spacing: 0.22em; color: var(--gold-text); text-transform: uppercase; }
 .muted { color: var(--ink-soft); }
 .faint { color: var(--ink-faint); }
 
@@ -173,7 +176,7 @@ img { max-width: 100%; }
 .brand { display: flex; flex-direction: column; align-items: flex-start; text-decoration: none; line-height: 1.05; flex: none; }
 /* Phase 1: Noto Naskh Arabic gives brand name a manuscript authority feel */
 .brand-name { font-family: var(--font-display); font-weight: 700; font-size: 21px; color: var(--ink); letter-spacing: -0.01em; }
-.brand-sub { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.3em; color: var(--gold); margin-top: 3px; }
+.brand-sub { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.3em; color: var(--gold-text); margin-top: 3px; }
 
 .topnav { display: flex; justify-content: center; gap: 2px; flex-wrap: wrap; flex: 1 1 auto; }
 .topnav a {
@@ -310,7 +313,7 @@ a.icon-btn { text-decoration: none; }
 .page-title { font-family: var(--font-display); font-weight: 700; font-size: clamp(30px, 5vw, 46px); color: var(--ink); margin: 0 0 8px; letter-spacing: -0.01em; }
 .page-intro { font-family: var(--font-ui); font-size: 15px; color: var(--ink-soft); margin: 0 0 28px; max-width: 58ch; line-height: 1.75; }
 /* Phase 2: section labels use gold — they're ornamental, not functional */
-.section-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.28em; color: var(--gold); margin-bottom: 18px; text-transform: uppercase; }
+.section-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.28em; color: var(--gold-text); margin-bottom: 18px; text-transform: uppercase; }
 
 /* ---------- browse grouping (subject → topic) ---------- */
 .browse-group { margin-bottom: 40px; }
@@ -393,7 +396,7 @@ summary::-webkit-details-marker { display: none; }
 .verse { padding: 16px 0; border-bottom: 1px solid var(--rule); scroll-margin-top: 90px; }
 .verse-inner { display: flex; align-items: flex-start; gap: 16px; }
 .vnum {
-  font-family: var(--font-mono); font-size: 11px; color: var(--gold); width: 28px; height: 28px;
+  font-family: var(--font-mono); font-size: 11px; color: var(--gold-text); width: 28px; height: 28px;
   border: 1px solid var(--gold-soft); border-radius: 50%; display: grid; place-items: center;
   flex: 0 0 auto; margin-top: 6px;
 }
@@ -432,7 +435,7 @@ summary::-webkit-details-marker { display: none; }
 }
 .chapter-band { text-align: center; margin: 40px 0 26px; }
 .chapter-band span {
-  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.2em; color: var(--gold);
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.2em; color: var(--gold-text);
   border-top: 1px solid var(--gold-soft); border-bottom: 1px solid var(--gold-soft);
   padding: 9px 28px; display: inline-block; text-transform: uppercase;
 }
@@ -556,7 +559,7 @@ textarea.cinput { resize: vertical; line-height: 1.7; }
 /* Gold badge — ornamental, not functional */
 .weekly-kind {
   align-self: flex-start; font-family: var(--font-mono); font-size: 10.5px;
-  letter-spacing: 0.14em; color: var(--gold); text-transform: uppercase;
+  letter-spacing: 0.14em; color: var(--gold-text); text-transform: uppercase;
   border: 1px solid var(--gold-soft); border-radius: 999px; padding: 3px 11px;
 }
 /* Amiri for weekly body text — same as prose/verses */
@@ -711,7 +714,7 @@ html[data-theme="sepia"] .hero-calligraphy-img {
 .stats-section { padding-bottom: 56px; }
 .ann-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(258px, 1fr)); gap: 16px; }
 .ann-card { border: 1px solid var(--rule); border-radius: 12px; background: var(--surface); padding: 22px; }
-.ann-card .badge { display: inline-block; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; border: 1px solid var(--gold-soft); border-radius: 20px; padding: 3px 11px; margin-bottom: 13px; color: var(--gold); }
+.ann-card .badge { display: inline-block; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; border: 1px solid var(--gold-soft); border-radius: 20px; padding: 3px 11px; margin-bottom: 13px; color: var(--gold-text); }
 .ann-card h2 { font-family: var(--font-display); font-weight: 700; font-size: 17px; color: var(--ink); line-height: 1.4; margin: 0; letter-spacing: -0.01em; }
 .ann-card p { font-family: var(--font-ui); font-size: 13.5px; line-height: 1.75; color: var(--ink-soft); margin: 9px 0 0; }
 
@@ -1009,7 +1012,7 @@ html[data-theme="dark"] ::highlight(aa-find)    { background-color: rgba(255, 15
 .flat-row-sub { font-family: var(--font-ui); font-size: 13px; color: var(--ink-soft); }
 .flat-row-meta { font-family: var(--font-ui); font-size: 12.5px; color: var(--ink-faint); white-space: nowrap; }
 /* Gold monospace counter — matches verse numbers and stat strip */
-.flat-row-count { font-family: var(--font-mono); font-size: 12px; color: var(--gold); white-space: nowrap; }
+.flat-row-count { font-family: var(--font-mono); font-size: 12px; color: var(--gold-text); white-space: nowrap; }
 /* Browse filter bar */
 .browse-filters { display: flex; gap: 8px; flex-wrap: wrap; margin-block-end: 12px; }
 .browse-filters-standalone { margin-block-end: 16px; }
