@@ -44,4 +44,59 @@ describe("markdownToSafeHtml", () => {
     expect(html).not.toContain("tok-hadith");
     expect(html).toContain("<code>");
   });
+
+  describe("sentence breaks", () => {
+    it("breaks sentences after standard Arabic words", () => {
+      const html = markdownToSafeHtml("وَبِاللَّهِ التَّوْفِيقُ. اعْلَمْ رَحِمَكَ اللَّهُ");
+      expect(html).toContain('التَّوْفِيقُ.<br class="sentence-br">اعْلَمْ');
+    });
+
+    it("does not break on abbreviations or single Arabic letters", () => {
+      const html1 = markdownToSafeHtml("د. أحمد طبيب");
+      expect(html1).not.toContain("br");
+      expect(html1).toContain("د. أحمد");
+
+      const html2 = markdownToSafeHtml("أ.د. محمد أستاذ");
+      expect(html2).not.toContain("br");
+
+      const html3 = markdownToSafeHtml("ص. ١٢ من الكتاب");
+      expect(html3).not.toContain("br");
+
+      const html4 = markdownToSafeHtml("ط. الأولى");
+      expect(html4).not.toContain("br");
+
+      const html5 = markdownToSafeHtml("هـ. تاريخ");
+      expect(html5).not.toContain("br");
+    });
+
+    it("does not break on numbers or decimals", () => {
+      const html1 = markdownToSafeHtml("3.14 is pi");
+      expect(html1).not.toContain("br");
+
+      const html2 = markdownToSafeHtml("سنة ١٤٢١. طبعة");
+      expect(html2).not.toContain("br");
+
+      const html3 = markdownToSafeHtml("١.٥ للنسبة");
+      expect(html3).not.toContain("br");
+    });
+
+    it("breaks sentences ending with brackets or quotes", () => {
+      const html1 = markdownToSafeHtml("عَلَيْهِ وَسَلَّمَ (سبحانه وتعالى). اعْلَمْ أَنَّ");
+      expect(html1).toContain('<span class="tok-paren">(سبحانه وتعالى)</span>.<br class="sentence-br">اعْلَمْ');
+
+      const html2 = markdownToSafeHtml("قَالَتِ الطَّائِفَةُ «الْإِيمَانُ». فَقَالَتِ الْأُخْرَى");
+      expect(html2).toContain('<span class="tok-quote">«الْإِيمَانُ»</span>.<br class="sentence-br">فَقَالَتِ');
+    });
+
+    it("does not break inside heading tags, code blocks, or custom tags", () => {
+      const html1 = markdownToSafeHtml("## بَابُ نَعْتِ الْإِيمَانِ. اسْتِكْمَالِهِ");
+      expect(html1).not.toContain("br");
+
+      const html2 = markdownToSafeHtml("`التَّوْفِيقُ. اعْلَمْ`");
+      expect(html2).not.toContain("br");
+
+      const html3 = markdownToSafeHtml("[رابط. هنا](https://example.com)");
+      expect(html3).not.toContain("br");
+    });
+  });
 });

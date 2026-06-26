@@ -152,12 +152,62 @@ function rehypeMasailQA() {
   };
 }
 
+const SENTENCE_BREAK_RE = /([^0-9\u0660-\u0669\s٫ـ\.]{2,})\.(\s+)/g;
+
+function splitSentenceBreaks(value: string): any[] {
+  const out: any[] = [];
+  let last = 0;
+  for (const m of value.matchAll(SENTENCE_BREAK_RE)) {
+    const i = m.index!;
+    const wordWithDot = m[1] + ".";
+    const preText = value.slice(last, i) + wordWithDot;
+    if (preText) {
+      out.push({ type: "text", value: preText });
+    }
+    out.push({
+      type: "element",
+      tagName: "br",
+      properties: { className: ["sentence-br"] },
+      children: [],
+    });
+    last = i + m[0].length;
+  }
+  if (last < value.length) {
+    const postText = value.slice(last);
+    if (postText) {
+      out.push({ type: "text", value: postText });
+    }
+  }
+  return out.length ? out : [{ type: "text", value }];
+}
+
+function rehypeSentenceBreaks() {
+  const skipTags = new Set(["code", "pre", "a", "h1", "h2", "h3", "h4", "h5", "h6", "title", "sup"]);
+  return (tree: any) => {
+    const walk = (node: any, parentTag: string | null) => {
+      if (!node.children) return;
+      const next: any[] = [];
+      for (const child of node.children) {
+        if (child.type === "text" && !skipTags.has(parentTag ?? "")) {
+          next.push(...splitSentenceBreaks(child.value ?? ""));
+        } else {
+          if (child.type === "element") walk(child, child.tagName);
+          next.push(child);
+        }
+      }
+      node.children = next;
+    };
+    walk(tree, null);
+  };
+}
+
 const processor = unified()
   .use(remarkParse)
   .use(remarkGfm)
   .use(remarkRehype, { allowDangerousHtml: true })
   .use(rehypeRaw)
   .use(rehypeSanitize, sanitizeSchema)
+  .use(rehypeSentenceBreaks)
   .use(rehypeWikiLinks)
   .use(rehypeArabicTokens)
   .use(rehypeHeadingIds)
@@ -169,6 +219,7 @@ const masailProcessor = unified()
   .use(remarkRehype, { allowDangerousHtml: true })
   .use(rehypeRaw)
   .use(rehypeSanitize, sanitizeSchema)
+  .use(rehypeSentenceBreaks)
   .use(rehypeWikiLinks)
   .use(rehypeMasailQA)
   .use(rehypeArabicTokens)
