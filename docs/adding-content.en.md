@@ -56,3 +56,49 @@ the bottom moves between annotated spots.
 كتاب · درس · سلسلة · عَلَم · فائدة · مقالة · مسألة · صوتية · مختار الأسبوع — all
 added the same way in `/compose`, each field with a short hint. Start with status
 «مسودة» (draft) and switch to «منشور» (published) when ready.
+
+---
+
+## Importing books from EPUB (Bulk Import CLI)
+
+To import multiple books or a large library from EPUB files, you can use the command-line EPUB importer script:
+
+```bash
+pnpm import:epub <path-to-folder-or-epub> [options]
+```
+
+### Folder Organization & Auto-Taxonomy
+To have the importer automatically resolve the correct **Subject** (major category) and **Topic** (sub-category/genre), organize your EPUB files in subdirectories under the `books/` folder (which is ignored by Git).
+
+#### 1. Main Category (Subject) Matching
+The importer walks up the directory tree of the imported file and matches folder names (case-insensitive) against [FOLDER_SUBJECT_MAP](file:///home/sinkeat/Projects/athar-archive/scripts/epub-import.ts#L572-L581) to assign the main subject:
+- **Aqeedah (العقيدة)**: Place in a folder containing `aqeeda`, `عقيدة`, or `توحيد`.
+- **Hadith (الحديث)**: Place in a folder containing `hadith`, `حديث`, `سنن`, or `تخريج`.
+- **Fiqh (الفقه)**: Place in a folder containing `fiqh` or `فقه`.
+- **Lughah (اللغة العربية)**: Place in a folder containing `lughah`, `language`, `لغة`, or `نحو`.
+- **Quran (القرآن الكريم)**: Place in a folder containing `quran`, `قرآن`, or `تفسير`.
+- **Tarajim (التراجم والسير)**: Place in a folder containing `tarajim`, `biography`, or `تراجم`.
+- **Tarikh (التاريخ)**: Place in a folder containing `tarikh`, `history`, or `تاريخ`.
+- **Raqaq (الرقائق والآداب)**: Place in a folder containing `raqaq`, `ethics`, or `رقائق`.
+
+#### 2. Sub-Category (Topic) Matching
+Subfolders under your main category (or terms in the EPUB's internal metadata/title) are matched against [SECTION_TOPIC_MAP](file:///home/sinkeat/Projects/athar-archive/scripts/epub-import.ts#L130-L180) to assign specific topics:
+- **Fiqh Hanbali**: Folder containing `hanbali`, `فقه حنبلي`, or `حنابلة` (e.g. `books/fiqh/hanbali/`)
+- **Fiqh Shafi'i**: Folder containing `shafii`, `shafey`, or `فقه شافعي`
+- **Fiqh Maliki**: Folder containing `maliki` or `فقه مالكي`
+- **Fiqh Hanafi**: Folder containing `hanafi` or `فقه حنفي`
+- **Fiqh Muqaran**: Folder containing `muqaran` or `فقه مقارن`
+- **Usul al-Fiqh / General Fiqh**: Folder containing `usul` or `أصول الفقه`
+- **Hadith Mustalah**: Folder containing `mustalah` or `مصطلح`
+- **Quran Tafsir**: Folder containing `tafsir` or `تفسير`
+- **Lughah / Grammar**: Folder containing `nahw` or `نحو`
+- **Biography**: Folder containing `biography` or `تراجم`
+
+### Command-line Options
+- `--out <dir>`: Output path for markdown files (defaults to `src/content/`).
+- `--genre <genre>`: Explicitly set the genre (`قرآن|حديث|تراجم`).
+- `--kind <kind>`: Explicitly set the kind (`متن|شرح|مستخلص|معجم`).
+- `--merge-volumes`: Merge multiple EPUB files inside the directory into a single multi-volume book.
+- `--dry-run`: Run the parser and display the output metadata without writing files to disk.
+- `--selftest`: Run internal unit tests on footnote/hadith parsing.
+
