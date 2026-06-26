@@ -40,8 +40,11 @@ export function parseYaml(content: string): any {
         parent.type = "array";
       }
       
+      // If the value is fully quoted, treat as a plain string (handles regex patterns with colons)
+      const isFullyQuoted = (afterDash.startsWith('"') && afterDash.endsWith('"')) ||
+                            (afterDash.startsWith("'") && afterDash.endsWith("'"));
       const colonIdx = afterDash.indexOf(":");
-      if (colonIdx !== -1) {
+      if (!isFullyQuoted && colonIdx !== -1) {
         // It's an object inside a list, e.g. "- id: title"
         const key = afterDash.slice(0, colonIdx).trim();
         const valueStr = afterDash.slice(colonIdx + 1).trim().replace(/^['"]|['"]$/g, "");
@@ -51,8 +54,10 @@ export function parseYaml(content: string): any {
         // Push the new object onto stack so subsequent indented lines add to this object
         stack.push({ indent: leadingSpaces, value: newObj, key, type: "object" });
       } else {
-        // Plain value inside list
-        const val = afterDash.replace(/^['"]|['"]$/g, "");
+        // Plain value inside list — decode escape sequences if double-quoted
+        const val = afterDash.startsWith('"') && afterDash.endsWith('"')
+          ? unquoteYaml(afterDash.slice(1, -1))
+          : afterDash.replace(/^'|'$/g, "");
         parent.value.push(parsePrimitive(val));
       }
     } else {
@@ -60,7 +65,10 @@ export function parseYaml(content: string): any {
       const colonIdx = trimmed.indexOf(":");
       if (colonIdx !== -1) {
         const key = trimmed.slice(0, colonIdx).trim();
-        const valueStr = trimmed.slice(colonIdx + 1).trim().replace(/^['"]|['"]$/g, "");
+        const rawVal = trimmed.slice(colonIdx + 1).trim();
+        const valueStr = rawVal.startsWith('"') && rawVal.endsWith('"')
+          ? unquoteYaml(rawVal.slice(1, -1))
+          : rawVal.replace(/^'|'$/g, "");
         
         if (valueStr === "") {
           parent.value[key] = {};
@@ -81,4 +89,15 @@ function parsePrimitive(str: string): any {
   if (str === "false") return false;
   if (!isNaN(Number(str))) return Number(str);
   return str;
+}
+
+// Decode YAML double-quote escape sequences: \\ → \, \n → newline, etc.
+function unquoteYaml(raw: string): string {
+  return raw.replace(/\\([\\"ntrb])/g, (_, c) => {
+    if (c === "n") return "\n";
+    if (c === "t") return "\t";
+    if (c === "r") return "\r";
+    if (c === "b") return "\b";
+    return c; // handles \\ → \ and \" → "
+  });
 }
