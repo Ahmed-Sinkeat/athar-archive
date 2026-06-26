@@ -1,0 +1,73 @@
+rules:
+  - id: topic_asma_was_sifat
+    priority: 100
+    enabled: true
+    confidence: 0.90
+    language: ar
+    category: topic
+    topic: "al-asma-was-sifat"
+    pattern: "أسماء|صفات|أصفهانية|حموية|تدمرية|إلهيات"
+  - id: topic_tahwid_al_ibada
+    priority: 100
+    enabled: true
+    confidence: 0.90
+    language: ar
+    category: topic
+    topic: "tahwid-al-ibada"
+    pattern: "توحيد|عبادة|ألوهية|شرك"
+  - id: topic_al_firaq_war_rudud
+    priority: 100
+    enabled: true
+    confidence: 0.90
+    language: ar
+    category: topic
+    topic: "al-firaq-war-rudud"
+    pattern: "فرق|ملل|رافضة|شيعة|أشاعرة|معتزلة|رد على|نقض"
+  - id: topic_al_iman
+    priority: 100
+    enabled: true
+    confidence: 0.90
+    language: ar
+    category: topic
+    topic: "al-iman"
+    pattern: "إيمان|أصول الإيمان"
+  - id: topic_al_qadr
+    priority: 100
+    enabled: true
+    confidence: 0.90
+    language: ar
+    category: topic
+    topic: "al-qadr"
+    pattern: "قدر|قضاء"
+  - id: topic_al_samiyyat
+    priority: 100
+    enabled: true
+    confidence: 0.90
+    language: ar
+    category: topic
+    topic: "al-samiyyat"
+    pattern: "آخرة|قبور|حشر|جنة|نار|أشراط الساعة"
+  - id: topic_al_wala_wal_bara
+    priority: 100
+    enabled: true
+    confidence: 0.90
+    language: ar
+    category: topic
+    topic: "al-wala-wal-bara"
+    pattern: "ولا|براء"
+  - id: topic_al_imamah_was_sahabah
+    priority: 100
+    enabled: true
+    confidence: 0.90
+    language: ar
+    category: topic
+    topic: "al-imamah-was-sahabah"
+    pattern: "صحابة|آل البيت"
+  - id: topic_al_sunnah_wal_bidah
+    priority: 100
+    enabled: true
+    confidence: 0.90
+    language: ar
+    category: topic
+    topic: "al-sunnah-wal-bidah"
+    pattern: "سنة|بدع|بدعة"

@@ -4,6 +4,7 @@ import * as path from "path";
 import * as os from "os";
 import { createNode, traverseAST } from "./semantic-ast";
 import type { SemanticBook, SemanticNode, NodeType } from "./semantic-ast";
+import { RuleEngine } from "./rule-engine";
 
 // Arabic Surah Names
 const SURAH_NAMES = [
@@ -278,18 +279,10 @@ class PandocASTParser {
 
 /** 4. Stage: Metadata Extractor */
 export class MetadataExtractor {
-  static extract(book: SemanticBook): void {
-    // Attempt to extract editor, publisher, publicationYear, edition, and volumes from the text body
+  static extract(book: SemanticBook, profileName: string = "generic"): void {
+    const engine = new RuleEngine(profileName);
     const meta = book.metadata;
     book.metadata.confidence = book.metadata.confidence || {};
-
-    const cleanFind = (pattern: RegExp, paragraphs: string[]): string | undefined => {
-      for (const p of paragraphs.slice(0, 15)) {
-        const m = p.match(pattern);
-        if (m && m[1]) return m[1].trim();
-      }
-      return undefined;
-    };
 
     const paragraphs: string[] = [];
     traverseAST(book.ast, (node) => {
@@ -298,62 +291,36 @@ export class MetadataExtractor {
       }
     });
 
-    if (meta.title) {
-      book.metadata.confidence.title = 1.0;
-    } else {
-      const foundTitle = cleanFind(/الكتاب\s*:\s*([^\n]+)/i, paragraphs);
-      if (foundTitle) {
-        meta.title = foundTitle;
-        book.metadata.confidence.title = 0.85;
+    const fields = ["title", "author", "editor", "publisher", "publicationYear", "edition"];
+    for (const f of fields) {
+      if (meta[f]) {
+        book.metadata.confidence[f] = 1.0;
+      } else {
+        const found = engine.matchMetadata(paragraphs, f, book);
+        if (found) {
+          meta[f] = found;
+          book.metadata.confidence[f] = 0.90;
+        }
       }
     }
 
-    if (meta.author) {
-      book.metadata.confidence.author = 1.0;
-    } else {
-      const foundAuthor = cleanFind(/المؤلف\s*:\s*([^\n]+)/i, paragraphs);
-      if (foundAuthor) {
-        meta.author = foundAuthor;
-        book.metadata.confidence.author = 0.85;
+    if (meta.volumes === undefined) {
+      const volStr = engine.matchMetadata(paragraphs, "volumes", book);
+      if (volStr) {
+        const num = parseInt(volStr);
+        if (!isNaN(num)) {
+          meta.volumes = num;
+          book.metadata.confidence.volumes = 0.95;
+        }
       }
-    }
-
-    const editor = cleanFind(/تحقيق\s*:\s*([^\n]+)|المحقق\s*:\s*([^\n]+)/i, paragraphs);
-    if (editor) {
-      meta.editor = editor;
-      book.metadata.confidence.editor = 0.90;
-    }
-
-    const publisher = cleanFind(/الناشر\s*:\s*([^\n]+)/i, paragraphs);
-    if (publisher) {
-      meta.publisher = publisher;
-      book.metadata.confidence.publisher = 0.90;
-    }
-
-    const publicationYear = cleanFind(/سنة النشر\s*:\s*([^\n]+)|سنة الطبع\s*:\s*([^\n]+)/i, paragraphs);
-    if (publicationYear) {
-      meta.publicationYear = publicationYear;
-      book.metadata.confidence.publicationYear = 0.85;
-    }
-
-    const edition = cleanFind(/الطبعة\s*:\s*([^\n]+)/i, paragraphs);
-    if (edition) {
-      meta.edition = edition;
-      book.metadata.confidence.edition = 0.90;
-    }
-    
-    const vols = cleanFind(/عدد الأجزاء\s*:\s*(\d+)/i, paragraphs);
-    if (vols) {
-      meta.volumes = parseInt(vols);
-      book.metadata.confidence.volumes = 0.95;
     }
   }
 }
 
 /** 5. Stage: Heading Extractor (Nesting builder) */
 export class HeadingExtractor {
-  static extract(book: SemanticBook): void {
-    // Transform flat book ast.children of Heading and Paragraphs into structural nested Chapters/Sections
+  static extract(book: SemanticBook, profileName: string = "generic"): void {
+    const engine = new RuleEngine(profileName);
     const flatNodes = book.ast.children;
     const root = createNode("Book", undefined, {}, []);
     
@@ -366,14 +333,21 @@ export class HeadingExtractor {
     
     for (const node of flatNodes) {
       if (node.type === "Heading") {
-        const level = node.attributes?.level || 1;
+        let level = node.attributes?.level || 1;
         
+        if (node.content) {
+          const refined = engine.matchHeadingLevel(node.content, book);
+          if (refined) {
+            level = refined.level;
+          }
+        }
+
         while (stack.length > 1 && stack[stack.length - 1].level >= level) {
           stack.pop();
         }
         
         const type = level === 1 ? "Chapter" : "Section";
-        const container = createNode(type, undefined, { level }, [node]);
+        const container = createNode(type, undefined, { level }, [node], 1.0, node.origin);
         
         stack[stack.length - 1].node.children.push(container);
         stack.push({ level, node: container });
@@ -409,39 +383,23 @@ export class FootnoteExtractor {
 
 /** 7. Stage: Quran Extractor */
 export class QuranExtractor {
-  static extract(book: SemanticBook): void {
-    // Detect Quran verses, e.g. [الأعراف: 27] or [البقرة: 12] or (الرحمن: 15)
-    const pattern = /[\[\(]\s*([^\d\]\):]+?)\s*:\s*(\d+)\s*[\]\)]/g;
-    
+  static extract(book: SemanticBook, profileName: string = "generic"): void {
+    const engine = new RuleEngine(profileName);
     traverseAST(book.ast, (node) => {
       if (node.type === "Paragraph" && node.content) {
-        // If paragraph contains a Quran verse reference, enrich it
-        const matches = [...node.content.matchAll(pattern)];
+        const matches = engine.matchQuranVerses(node.content, node.origin, book);
         for (const m of matches) {
-          const surahCandidate = m[1].replace(/^سورة\s+/, "").trim();
-          const ayah = parseInt(m[2]);
           const matchedSurah = SURAH_NAMES.find(sn => 
-            cleanArabicText(sn) === cleanArabicText(surahCandidate) || 
-            cleanArabicText(sn).includes(cleanArabicText(surahCandidate))
+            cleanArabicText(sn) === cleanArabicText(m.surahCandidate) || 
+            cleanArabicText(sn).includes(cleanArabicText(m.surahCandidate))
           );
           
           if (matchedSurah) {
-            // High confidence for exact matches, slightly lower for fuzzy search inclusions
-            const isExact = cleanArabicText(matchedSurah) === cleanArabicText(surahCandidate);
-            const confidence = isExact ? 1.0 : 0.85;
-            const startIdx = m.index || 0;
-            const endIdx = startIdx + m[0].length;
-            const nodeOrigin = node.origin ? {
-              ...node.origin,
-              offsetStart: (node.origin.offsetStart || 0) + startIdx,
-              offsetEnd: (node.origin.offsetStart || 0) + endIdx
-            } : undefined;
-
-            node.children.push(createNode("QuranVerse", m[0], {
+            node.children.push(createNode("QuranVerse", m.matchedText, {
               surah: matchedSurah,
-              ayah: ayah,
-              raw_match: m[0]
-            }, [], confidence, nodeOrigin));
+              ayah: m.ayah,
+              raw_match: m.matchedText
+            }, [], m.confidence, m.origin));
           }
         }
       }
@@ -451,41 +409,13 @@ export class QuranExtractor {
 
 /** 8. Stage: Hadith Extractor */
 export class HadithExtractor {
-  static extract(book: SemanticBook): void {
-    const indicators = [
-      /قال رسول الله صلى الله عليه وسلم/u,
-      /عن\s+([أبإ]\w+\s+){1,3}قال/u,
-      /حدثنا\s+\w+/u,
-      /أخبرنا\s+\w+/u
-    ];
-
+  static extract(book: SemanticBook, profileName: string = "generic"): void {
+    const engine = new RuleEngine(profileName);
     traverseAST(book.ast, (node) => {
       if (node.type === "Paragraph" && node.content) {
-        let isHadith = false;
-        let confidence = 0.72;
-        let matchIndex = 0;
-        let matchLength = node.content.length;
-
-        for (const ind of indicators) {
-          const match = node.content.match(ind);
-          if (match) {
-            isHadith = true;
-            matchIndex = match.index || 0;
-            matchLength = match[0].length;
-            if (ind.source.includes("رسول الله")) {
-              confidence = 0.95;
-            }
-            break;
-          }
-        }
-        if (isHadith) {
-          const nodeOrigin = node.origin ? {
-            ...node.origin,
-            offsetStart: (node.origin.offsetStart || 0) + matchIndex,
-            offsetEnd: (node.origin.offsetStart || 0) + matchIndex + matchLength
-          } : undefined;
-
-          node.children.push(createNode("Hadith", node.content, { type: "hadith_quotation" }, [], confidence, nodeOrigin));
+        const match = engine.matchHadith(node.content, node.origin, book);
+        if (match) {
+          node.children.push(createNode("Hadith", node.content, { type: "hadith_quotation" }, [], match.confidence, match.origin));
         }
       }
     });
@@ -494,19 +424,13 @@ export class HadithExtractor {
 
 /** 9. Stage: Scholar Extractor */
 export class ScholarExtractor {
-  static extract(book: SemanticBook): void {
+  static extract(book: SemanticBook, profileName: string = "generic"): void {
+    const engine = new RuleEngine(profileName);
     traverseAST(book.ast, (node) => {
       if (node.type === "Paragraph" && node.content) {
-        for (const scholar of SCHOLAR_ENTITIES) {
-          const idx = node.content.indexOf(scholar);
-          if (idx !== -1) {
-            const nodeOrigin = node.origin ? {
-              ...node.origin,
-              offsetStart: (node.origin.offsetStart || 0) + idx,
-              offsetEnd: (node.origin.offsetStart || 0) + idx + scholar.length
-            } : undefined;
-            node.children.push(createNode("ScholarMention", scholar, {}, [], 0.90, nodeOrigin));
-          }
+        const matches = engine.matchScholars(node.content, node.origin, book);
+        for (const m of matches) {
+          node.children.push(createNode("ScholarMention", m.scholar, {}, [], m.confidence, m.origin));
         }
       }
     });
@@ -515,19 +439,13 @@ export class ScholarExtractor {
 
 /** 10. Stage: Book Extractor */
 export class BookExtractor {
-  static extract(book: SemanticBook): void {
+  static extract(book: SemanticBook, profileName: string = "generic"): void {
+    const engine = new RuleEngine(profileName);
     traverseAST(book.ast, (node) => {
       if (node.type === "Paragraph" && node.content) {
-        for (const bEnt of BOOK_ENTITIES) {
-          const idx = node.content.indexOf(bEnt);
-          if (idx !== -1) {
-            const nodeOrigin = node.origin ? {
-              ...node.origin,
-              offsetStart: (node.origin.offsetStart || 0) + idx,
-              offsetEnd: (node.origin.offsetStart || 0) + idx + bEnt.length
-            } : undefined;
-            node.children.push(createNode("BookReference", bEnt, {}, [], 0.85, nodeOrigin));
-          }
+        const matches = engine.matchBooks(node.content, node.origin, book);
+        for (const m of matches) {
+          node.children.push(createNode("BookReference", m.bookName, {}, [], m.confidence, m.origin));
         }
       }
     });
@@ -536,32 +454,13 @@ export class BookExtractor {
 
 /** 11. Stage: Topic Extractor */
 export class TopicExtractor {
-  static extract(book: SemanticBook): void {
-    // Deduce Aqeedah topic categories based on metadata title or content text matches
+  static extract(book: SemanticBook, profileName: string = "generic"): void {
+    const engine = new RuleEngine(profileName);
     const title = book.metadata.title || "";
-    const cleanTitle = cleanArabicText(title);
-    const topics: string[] = [];
-
-    const topicRules = [
-      { pattern: /أسماء|صفات|أصفهانية|حموية|تدمرية|إلهيات/i, topic: "al-asma-was-sifat" },
-      { pattern: /توحيد|عبادة|ألوهية|شرك/i, topic: "tahwid-al-ibada" },
-      { pattern: /فرق|ملل|رافضة|شيعة|أشاعرة|معتزلة|رد على|نقض/i, topic: "al-firaq-war-rudud" },
-      { pattern: /إيمان|أصول الإيمان/i, topic: "al-iman" },
-      { pattern: /قدر|قضاء/i, topic: "al-qadr" },
-      { pattern: /آخرة|قبور|حشر|جنة|نار|أشراط الساعة/i, topic: "al-samiyyat" },
-      { pattern: /ولا|براء/i, topic: "al-wala-wal-bara" },
-      { pattern: /صحابة|آل البيت/i, topic: "al-imamah-was-sahabah" },
-      { pattern: /سنة|بدع|بدعة/i, topic: "al-sunnah-wal-bidah" }
-    ];
-
-    for (const rule of topicRules) {
-      if (rule.pattern.test(cleanTitle)) {
-        topics.push(rule.topic);
-      }
-    }
-
+    const topics = engine.matchTopics(title, book);
+    
     if (topics.length === 0) {
-      topics.push("al-aqeedah-al-aamah"); // fallback general category
+      topics.push("al-aqeedah-al-aamah");
     }
 
     book.metadata.topics = topics;
