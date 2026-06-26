@@ -359,3 +359,35 @@ pnpm perf:budget      → ✓ heaviest 65.7/150 KB
 pnpm test             → ✓ 67 passed
 pnpm a11y             → ✓ 0 WCAG A/AA violations
 ```
+
+---
+
+## EPUB Import, Footnote Refactoring & View Transitions Polish
+
+A comprehensive phase addressing the scaling of imported EPUB books, resolving footnote interaction issues, and polishing dynamic client-side SPA behaviors during view transition events.
+
+**EPUB Importer Enhancements (`scripts/epub-import.ts`)**
+- **Nested HTML & Blocks:** Enhanced footnote parser to process nested HTML tags, clean up malformed XML/HTML fragments, and split packed footnote blocks.
+- **Auto-Taxonomy:** Added support for English folder structures (such as matching `aqeeda` for العقيدة or `hanbali` for الفقه الحنبلي) to automatically resolve Subject and Topic classifications during intake.
+- **Double Quote Escaping:** Encoded line breaks (`&#10;`) and resolved JSON stringification/parsing issues for footnotes containing raw double quotes.
+
+**Footnote Visual & Interaction Refactoring**
+- **Unified Page bottom-sheet:** Hid inline book and Quran footnote sups from prose text, rendering them as page-level footnotes in the bottom sheet.
+- **Unmissable Badges:** Replaced generic separators with clear visual page markers carrying a badge/indicator for pages with footnotes (the `حواش` badge).
+- **Synthetic Packs (`reader.ts`):** Generated synthetic annotation packs client-side for page separators to allow the bottom-sheet layout to render them uniformly.
+- **Targeted Entry Focus:** Updated `openSheet()` to pre-focus the specific clicked footnote entry chip instead of defaulting to the first tab chip.
+
+**View Transitions & Client Lifecycle (`src/scripts/reader.ts`)**
+- **Double Popup Fix:** Gated the popover listener with `!fnSup.dataset.sepPage` to prevent both the inline tooltip and the bottom-sheet from triggering concurrently.
+- **State Cleanups:** Re-bound document root reference, synchronized storage preferences, and removed stale DOM elements (like cached sheets) during the `astro:page-load` and `astro:after-swap` events.
+
+**Sentence Line Breaks (`src/lib/sanitize.ts`)**
+- Formatted book text by injecting paragraph line breaks (`<br class="sentence-br">`) at sentence-ending punctuation (excluding numeric decimals) to significantly improve readability.
+
+**Verification**
+```
+pnpm validate:content → ✓ 586 entries (fully imported book corpus)
+pnpm build            → ✓ green — complete static asset compilation
+pnpm smoke            → ✓ all assertions passed
+pnpm test             → ✓ 68 tests passed
+```
