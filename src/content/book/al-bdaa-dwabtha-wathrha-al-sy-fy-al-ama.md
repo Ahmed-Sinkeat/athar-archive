@@ -3,7 +3,7 @@ title: "البدعة ضوابطها وأثرها السيء في الأمة"
 status: published
 published_at: 2026-06-26
 person: aly-bn-mhmd-bn-nasr-al-fqyhy
-topics: ["al-aqeedah-al-aamah", "al-sunnah-wal-bidah"]
+topics: ["al-sunnah-wal-bidah", "al-sunnah-wal-bidah"]
 edition: "الثانية 1414 هـ"
 ---
 ## مقدمة

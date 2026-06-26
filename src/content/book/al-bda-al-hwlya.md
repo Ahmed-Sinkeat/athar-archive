@@ -3,7 +3,7 @@ title: "البدع الحولية"
 status: published
 published_at: 2026-06-26
 person: abd-al-lh-al-twyjry
-topics: ["al-aqeedah-al-aamah", "al-sunnah-wal-bidah"]
+topics: ["al-sunnah-wal-bidah", "al-sunnah-wal-bidah"]
 edition: "الأولى، 1421 هـ - 2000 م"
 ---
 البدع الحولية إعداد عبد الله بن عبد العزيز بن أحمد التويجري هذا الكتاب رسالة علمية تقدم بها المؤلف لنيل درجة الماجستير في جامعة الإمام محمد بن سعود الإسلامية قسم العقيدة، ومنح صاحبها درجة الماجستير بتقدير ممتاز عام 1406 هـ

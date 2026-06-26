@@ -3,7 +3,7 @@ title: "منهج الشيخ محمد رشيد رضا في العقيدة"
 status: published
 published_at: 2026-06-26
 person: tamr-mhmd-mhmwd-mtwly
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-firaq-war-rudud"]
 edition: "الأولى 1425هـ-2004م"
 ---
 ## مقدمة...

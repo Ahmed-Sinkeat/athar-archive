@@ -3,7 +3,7 @@ title: "زوائد مسائل الجاهلية"
 status: published
 published_at: 2026-06-26
 person: abd-al-lh-al-dwysh
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-firaq-war-rudud"]
 edition: "الأولى، 1411 هـ - 1990 م"
 ---
 بسم الله الرحمن الرحيم

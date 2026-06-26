@@ -3,7 +3,7 @@ title: "حاشية كتاب التوحيد"
 status: published
 published_at: 2026-06-26
 person: abd-al-rhmn-bn-qasm
-topics: ["al-aqeedah-al-aamah", "tahwid-al-ibada"]
+topics: ["tahwid-al-ibada", "tahwid-al-ibada"]
 edition: "الثالثة، 1408هـ"
 ---
 ## مقدمة...

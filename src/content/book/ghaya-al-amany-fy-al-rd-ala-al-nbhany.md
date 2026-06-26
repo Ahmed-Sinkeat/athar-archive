@@ -3,7 +3,7 @@ title: "غاية الأماني في الرد على النبهاني"
 status: published
 published_at: 2026-06-26
 person: al-alwsy-mhmwd-shkry
-topics: ["al-aqeedah-al-aamah", "al-firaq-war-rudud"]
+topics: ["al-firaq-war-rudud", "al-firaq-war-rudud"]
 edition: "الأولى، 1422هـ- 2001م"
 description: "بتحقيق أبو عبد الله الداني بن منير آل زهوي"
 ---

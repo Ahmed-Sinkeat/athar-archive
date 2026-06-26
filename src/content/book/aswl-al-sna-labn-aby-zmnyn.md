@@ -3,7 +3,7 @@ title: "أصول السنة لابن أبي زمنين"
 status: published
 published_at: 2026-06-26
 person: abn-aby-zmnyn
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-sunnah-wal-bidah"]
 edition: "الأولى، 1415 هـ"
 ---
 باب

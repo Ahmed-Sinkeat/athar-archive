@@ -3,7 +3,7 @@ title: "الفرق بين الفرق"
 status: published
 published_at: 2026-06-26
 person: abd-al-qahr-al-bghdady
-topics: ["al-aqeedah-al-aamah", "al-firaq-war-rudud"]
+topics: ["al-firaq-war-rudud", "al-firaq-war-rudud"]
 edition: "الثانية، 1977"
 ---
 ## بِسم الله الرَّحْمَن الرَّحِيم رب يسر وَلَا تعسر

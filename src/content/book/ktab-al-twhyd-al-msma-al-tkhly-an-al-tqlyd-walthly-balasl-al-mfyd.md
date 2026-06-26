@@ -3,7 +3,7 @@ title: "كتاب التوحيد المسمى التخلي عن التقليد و
 status: published
 published_at: 2026-06-26
 person: amr-al-arbawy
-topics: ["al-aqeedah-al-aamah", "tahwid-al-ibada"]
+topics: ["tahwid-al-ibada", "tahwid-al-ibada"]
 ---
 كتاب التوحيد المسمى التخلي عن التقليد والتحلي بالأصل المفيد تأليف عمر العرباوي
 

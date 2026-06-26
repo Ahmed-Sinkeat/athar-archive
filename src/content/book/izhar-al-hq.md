@@ -3,7 +3,7 @@ title: "إظهار الحق"
 status: published
 published_at: 2026-06-26
 person: rhmt-al-lh-al-hndy
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-firaq-war-rudud"]
 edition: "الأولى، 1410 هـ - 1989 م (أول طبعة تصدر مقابلة على نسختي المؤلف الذهبيتين المخطوطة والمقروءة)"
 ---
 ## [إظهار الحق]ـ

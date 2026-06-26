@@ -3,7 +3,7 @@ title: "آثار حجج التوحيد في مؤاخذة العبيد"
 status: published
 published_at: 2026-06-26
 person: mdht-al-fraj
-topics: ["al-aqeedah-al-aamah", "tahwid-al-ibada"]
+topics: ["tahwid-al-ibada", "tahwid-al-ibada"]
 edition: "الأولى، 1416 هـ - 1995 م"
 ---
 آثَار حجج التَّوْحِيد فِي مُؤَاخذَة العبيد تأليف مدحت حسن الفراج تَقْدِيم فَضِيلَة الشَّيْخ الْعَلامَة عبد الله بن عبد الرَّحْمَن الجبرين - حفظه الله - دَار الْكتاب وَالسّنة - مكتبة دَار الحميضي

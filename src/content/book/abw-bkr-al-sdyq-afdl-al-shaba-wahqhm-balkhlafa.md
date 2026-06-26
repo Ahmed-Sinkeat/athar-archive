@@ -3,7 +3,7 @@ title: "أبو بكر الصديق أفضل الصحابة، وأحقهم بال
 status: published
 published_at: 2026-06-26
 person: mhmd-bn-abd-al-rhmn-bn-qasm
-topics: ["al-aqeedah-al-aamah", "al-imamah-was-sahabah"]
+topics: ["al-imamah-was-sahabah", "al-imamah-was-sahabah"]
 ---
 أفضَلُ الصَّحَابة، وَأحقّهم بالخِلافة بَحثُ لخَّصَهُ ورَتَّبَهُ محمد بن عَبد الرحمن بن محمد بن قاسِم رَحِمَه الله تَعَالى من منهاج السُّنّة النبويّة لشيخ الإسلام ابن تيمية قدّس اللهُ رُوحَه
 

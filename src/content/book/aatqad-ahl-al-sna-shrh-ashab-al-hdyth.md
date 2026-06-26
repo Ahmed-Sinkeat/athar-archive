@@ -3,7 +3,7 @@ title: "اعتقاد أهل السنة شرح أصحاب الحديث"
 status: published
 published_at: 2026-06-26
 person: mhmd-bn-abd-al-rhmn-al-khmys
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-imamah-was-sahabah"]
 edition: "الأولى، 1419هـ"
 ---
 [

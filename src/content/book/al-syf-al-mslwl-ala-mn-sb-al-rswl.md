@@ -3,7 +3,7 @@ title: "السيف المسلول على من سب الرسول"
 status: published
 published_at: 2026-06-26
 person: al-sbky-tqy-al-dyn
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-firaq-war-rudud"]
 ---
 السيف المسلول على من سب الرسول (صلى الله عليه وسلم) للإمام / تقي الدين علي بن عبد الكافي السبكي الشافعي ت: 756 هـ تحقيق/ إياد أحمد الغوج دار الفتح عمان - الأردن
 

@@ -3,7 +3,7 @@ title: "كتاب التوحيد وقرة عيون الموحدين في تحقي
 status: published
 published_at: 2026-06-26
 person: abd-al-rhmn-bn-hsn-al-al-shykh
-topics: ["al-aqeedah-al-aamah", "tahwid-al-ibada"]
+topics: ["tahwid-al-ibada", "tahwid-al-ibada"]
 edition: "الأولى، 1411هـ/1990م"
 description: "بتحقيق بشير محمد عيون"
 ---

@@ -3,7 +3,7 @@ title: "شفاء الضرر بفهم التوكل والقضاء والقدر"
 status: published
 published_at: 2026-06-26
 person: abw-fysl-al-bdrany
-topics: ["al-aqeedah-al-aamah", "al-qadr"]
+topics: ["al-qadr", "al-qadr"]
 ---
 "بسم الله الرحمن الرحيم" الحمد لله رب العالمين والصلاة والسلام على أشرف الأنبياء والمرسلين , أما بعد: فهذه رسالة تتحدث حول مسائل
 

@@ -3,7 +3,7 @@ title: "القول المفيد على كتاب التوحيد"
 status: published
 published_at: 2026-06-26
 person: abn-athymyn
-topics: ["al-aqeedah-al-aamah", "tahwid-al-ibada"]
+topics: ["tahwid-al-ibada", "tahwid-al-ibada"]
 edition: "الثانية, محرم 1424هـ"
 ---
 ## المجلد الأول

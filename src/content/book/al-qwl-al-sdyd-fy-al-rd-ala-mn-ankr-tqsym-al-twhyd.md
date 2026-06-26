@@ -3,7 +3,7 @@ title: "القول السديد في الرد على من أنكر تقسيم ا
 status: published
 published_at: 2026-06-26
 person: abd-al-rzaq-bn-abd-al-mhsn-al-bdr
-topics: ["al-aqeedah-al-aamah", "tahwid-al-ibada", "al-firaq-war-rudud"]
+topics: ["al-firaq-war-rudud", "tahwid-al-ibada", "al-firaq-war-rudud"]
 edition: "الثالثة، 1422هـ/2001م"
 ---
 ## مقدمة...

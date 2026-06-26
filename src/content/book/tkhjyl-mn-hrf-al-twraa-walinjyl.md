@@ -3,7 +3,7 @@ title: "تخجيل من حرف التوراة والإنجيل"
 status: published
 published_at: 2026-06-26
 person: salh-al-jafry
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-firaq-war-rudud"]
 edition: "الأولى، 1419هـ/1998م"
 description: "بتحقيق محمود عبد الرحمن قدح"
 ---

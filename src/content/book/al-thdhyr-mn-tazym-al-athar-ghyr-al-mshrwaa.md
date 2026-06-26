@@ -3,7 +3,7 @@ title: "التحذير من تعظيم الآثار غير المشروعة"
 status: published
 published_at: 2026-06-26
 person: abd-al-mhsn-al-abad
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-sunnah-wal-bidah"]
 edition: "الأولى 1425هـ -2004م"
 ---
 ## التحذير من تعظيم الآثار غير المشروعة

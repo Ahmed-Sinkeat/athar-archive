@@ -3,7 +3,7 @@ title: "عرض ونقد دراسة نقدية وتوجيهية لكتاب درا
 status: published
 published_at: 2026-06-26
 person: aly-bn-mhmd-bn-nasr-al-fqyhy
-topics: ["al-aqeedah-al-aamah", "al-firaq-war-rudud"]
+topics: ["al-firaq-war-rudud", "al-firaq-war-rudud"]
 edition: "السنة السادسة والعشرون - العدد (101، 102) 1414 - 1415هـ/ 1994 - 1995م"
 ---
 ## مُقَدّمَة...

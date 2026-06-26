@@ -3,7 +3,7 @@ title: "الذكر الجماعي بين الاتباع والابتداع"
 status: published
 published_at: 2026-06-26
 person: mhmd-bn-abd-al-rhmn-al-khmys
-topics: ["al-aqeedah-al-aamah", "al-sunnah-wal-bidah"]
+topics: ["al-sunnah-wal-bidah", "al-sunnah-wal-bidah"]
 edition: "الأولى، 1425هـ/2004م"
 ---
 بسم الله الرحمن الرحيم ال

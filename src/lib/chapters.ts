@@ -42,6 +42,7 @@ const H2_RE = /^##\s+(.+?)\s*$/;
 
 export interface RawChapter {
   title: string;
+  rawTitle?: string;
   slug: string;
   order: number;
   content: string; // body lines belonging to this chapter (heading excluded)
@@ -87,8 +88,15 @@ export function splitChapters(body: string): ChapterSplit {
 }
 
 function finalizeChapter(c: { title: string; lines: string[] }, index: number): RawChapter {
-  const slug = slugifyArabic(c.title) || `chapter-${index + 1}`;
-  return { title: c.title, slug, order: index + 1, content: c.lines.join("\n").trim() };
+  const cleanTitle = c.title.replace(/<[^>]*>/g, "").replace(/\s+/g, " ").trim();
+  const slug = slugifyArabic(cleanTitle) || `chapter-${index + 1}`;
+  return {
+    title: cleanTitle,
+    rawTitle: c.title !== cleanTitle ? c.title : undefined,
+    slug,
+    order: index + 1,
+    content: c.lines.join("\n").trim()
+  };
 }
 
 // --- Poem ---
@@ -227,9 +235,10 @@ export function parseToc(body: string): TocHeading[] {
     const m = line.match(TOC_HEADING_RE);
     if (!m) continue;
     const depth = m[1].length as 2 | 3 | 4 | 5 | 6;
-    const title = m[2].trim();
-    const slug = uniqueSlug(slugifyArabic(title) || `section-${headings.length + 1}`, seen);
-    headings.push({ title, slug, depth });
+    const rawTitle = m[2].trim();
+    const cleanTitle = rawTitle.replace(/<[^>]*>/g, "").replace(/\s+/g, " ").trim();
+    const slug = uniqueSlug(slugifyArabic(cleanTitle) || `section-${headings.length + 1}`, seen);
+    headings.push({ title: cleanTitle, slug, depth });
   }
   return headings;
 }

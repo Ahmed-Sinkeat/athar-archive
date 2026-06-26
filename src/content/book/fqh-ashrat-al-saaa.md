@@ -3,7 +3,7 @@ title: "فقه أشراط الساعة"
 status: published
 published_at: 2026-06-26
 person: mhmd-ismaayl-al-mqdm
-topics: ["al-aqeedah-al-aamah", "al-samiyyat"]
+topics: ["al-samiyyat", "al-samiyyat"]
 edition: "السادسة، 1429 هـ - 2008 م"
 ---
 فقه أشراطِ السَّاعَة تأليف محمد بن أحمد بن إسماعيل المقدَّم عفا الله عنه الدار العالمية للنشر والتوزيع

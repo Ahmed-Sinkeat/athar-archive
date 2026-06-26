@@ -3,7 +3,7 @@ title: "تحقيق الإيمان لابن تيمية"
 status: published
 published_at: 2026-06-26
 person: abn-tymya
-topics: ["al-aqeedah-al-aamah", "al-iman"]
+topics: ["al-iman", "al-iman"]
 edition: "الرابعة - 1413 هـ- 1993 م"
 ---
 ## الإيمان لابن تيمية

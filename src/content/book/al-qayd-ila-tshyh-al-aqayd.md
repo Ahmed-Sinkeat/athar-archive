@@ -3,7 +3,7 @@ title: "القائد إلى تصحيح العقائد"
 status: published
 published_at: 2026-06-26
 person: abd-al-rhmn-al-malmy-al-ymany
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-firaq-war-rudud"]
 edition: "الثالثة، 1404 هـ / 1984 م."
 description: "بتحقيق محمد ناصر الدين الألباني."
 ---

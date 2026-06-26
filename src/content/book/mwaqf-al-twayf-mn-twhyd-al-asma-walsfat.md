@@ -3,7 +3,7 @@ title: "مواقف الطوائف من توحيد الأسماء والصفات"
 status: published
 published_at: 2026-06-26
 person: mhmd-bn-khlyfa-al-tmymy
-topics: ["al-aqeedah-al-aamah", "tahwid-al-ibada", "al-asma-was-sifat"]
+topics: ["al-asma-was-sifat", "tahwid-al-ibada", "al-asma-was-sifat"]
 edition: "الأولى، 1422هـ/2002م"
 ---
 مواقف الطوائف من توحيد الأسماء والصفات تأليف: د/ محمد بن خليفة التميمي بسم الله الرحمن الرحيم

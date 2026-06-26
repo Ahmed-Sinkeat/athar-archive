@@ -3,7 +3,7 @@ title: "اتباع لا ابتداع. . قواعد وأسس في السنة وا
 status: published
 published_at: 2026-06-26
 person: hsam-al-dyn-afana
-topics: ["al-aqeedah-al-aamah", "al-sunnah-wal-bidah"]
+topics: ["al-sunnah-wal-bidah", "al-sunnah-wal-bidah"]
 edition: "الثانية، مصححة 1425 هـ - 2004 م (بيت المقدس / فلسطين)"
 ---
 اتباع لا ابتداع تأليف الأستاذ الدكتور حسام الدين بن موسى عفانه أستاذ الفقه والأصول كلية الدعوة وأصول الدين جامعة القدس

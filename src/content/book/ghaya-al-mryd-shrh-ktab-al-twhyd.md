@@ -3,7 +3,7 @@ title: "غاية المريد شرح كتاب التوحيد"
 status: published
 published_at: 2026-06-26
 person: abd-al-rhmn-bn-abd-al-azyz-al-aql
-topics: ["al-aqeedah-al-aamah", "tahwid-al-ibada"]
+topics: ["tahwid-al-ibada", "tahwid-al-ibada"]
 ---
 ## المقدمة
 

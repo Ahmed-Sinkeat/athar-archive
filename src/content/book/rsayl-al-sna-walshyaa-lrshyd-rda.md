@@ -3,7 +3,7 @@ title: "رسائل السنة والشيعة لرشيد رضا"
 status: published
 published_at: 2026-06-26
 person: mhmd-rshyd-rda
-topics: ["al-aqeedah-al-aamah", "al-firaq-war-rudud"]
+topics: ["al-firaq-war-rudud", "al-firaq-war-rudud"]
 edition: "الثانية، 1366 هـ - 1947 م"
 ---
 ## [رسائل السنة والشيعة لرشيد رضا]ـ

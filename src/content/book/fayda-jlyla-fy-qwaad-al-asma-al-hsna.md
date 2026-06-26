@@ -3,7 +3,7 @@ title: "فائدة جليلة في قواعد الأسماء الحسنى"
 status: published
 published_at: 2026-06-26
 person: abn-al-qym
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-asma-was-sifat"]
 edition: "الأولى، 1424هـ/2003م"
 description: "بتحقيق عبد الرزاق بن عبد المحسن البدر"
 ---

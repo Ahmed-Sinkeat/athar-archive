@@ -3,7 +3,7 @@ title: "تنبيه ذوي الألباب السليمة عن والوقوع في
 status: published
 published_at: 2026-06-26
 person: slyman-bn-shman
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-firaq-war-rudud"]
 edition: "-"
 ---
 ## الغرض من تأليف الكتاب...

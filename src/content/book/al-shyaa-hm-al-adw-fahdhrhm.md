@@ -3,7 +3,7 @@ title: "الشيعة هم العدو فاحذرهم"
 status: published
 published_at: 2026-06-26
 person: shhata-sqr
-topics: ["al-aqeedah-al-aamah", "al-firaq-war-rudud"]
+topics: ["al-firaq-war-rudud", "al-firaq-war-rudud"]
 ---
 الشيعة هم العدو فاحذرهم نسخة منقحة وبها زيادات هامة جمع وترتيب شحاتة صقر الناشر: مكتبة دار العلوم البحيرة ـ أبو حمص ـ حي الزهور ت 0129732131ــ0124208133
 

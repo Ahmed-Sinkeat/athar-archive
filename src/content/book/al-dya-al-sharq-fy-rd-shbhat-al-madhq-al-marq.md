@@ -3,7 +3,7 @@ title: "الضياء الشارق في رد شبهات الماذق المارق
 status: published
 published_at: 2026-06-26
 person: slyman-bn-shman
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-firaq-war-rudud"]
 edition: "الخامسة، 1414هـ/ 1992م"
 description: "بتحقيق عبد السلام بن برجس بن ناصر بن عبد الكريم"
 ---

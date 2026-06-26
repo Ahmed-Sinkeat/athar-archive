@@ -3,7 +3,7 @@ title: "تنزيه الأنبياء عما نسب إليهم حثالة الأغ
 status: published
 published_at: 2026-06-26
 person: abn-khmyr-al-sbty
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-iman"]
 edition: "الأولى، 1411هـ - 1990م"
 description: "بتحقيق محمد رضوان الداية"
 ---

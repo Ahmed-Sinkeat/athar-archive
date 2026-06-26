@@ -3,7 +3,7 @@ title: "التوحيد لابن عبد الوهاب"
 status: published
 published_at: 2026-06-26
 person: mhmd-bn-abd-al-whab
-topics: ["al-aqeedah-al-aamah", "tahwid-al-ibada"]
+topics: ["tahwid-al-ibada", "tahwid-al-ibada"]
 edition: "-"
 description: "بتحقيق عبد العزيز بن عبد الرحمن السعيد وغيره"
 ---

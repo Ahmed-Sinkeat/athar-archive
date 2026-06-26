@@ -3,7 +3,7 @@ title: "الانتصار لأهل السنة والحديث في رد أباطي
 status: published
 published_at: 2026-06-26
 person: abd-al-mhsn-al-abad
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-firaq-war-rudud"]
 edition: "الأولى، 1424هـ/2003م"
 ---
 ## مقدمة...

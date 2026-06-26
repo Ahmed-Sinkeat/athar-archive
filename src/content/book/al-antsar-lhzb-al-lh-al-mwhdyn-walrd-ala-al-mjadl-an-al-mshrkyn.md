@@ -3,7 +3,7 @@ title: "الانتصار لحزب الله الموحدين والرد على ا
 status: published
 published_at: 2026-06-26
 person: abd-al-lh-aba-btyn
-topics: ["al-aqeedah-al-aamah", "tahwid-al-ibada", "al-firaq-war-rudud"]
+topics: ["al-firaq-war-rudud", "tahwid-al-ibada", "al-firaq-war-rudud"]
 edition: "1409هـ - 1989م"
 description: "بتحقيق الوليد بن عبد الرحمن الفريان"
 ---

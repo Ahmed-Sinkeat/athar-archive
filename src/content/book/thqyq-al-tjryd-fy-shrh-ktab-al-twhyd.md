@@ -3,7 +3,7 @@ title: "تحقيق التجريد في شرح كتاب التوحيد"
 status: published
 published_at: 2026-06-26
 person: abd-al-hady-al-bkry
-topics: ["al-aqeedah-al-aamah", "tahwid-al-ibada"]
+topics: ["tahwid-al-ibada", "tahwid-al-ibada"]
 edition: "الأولى، 1419هـ/ 1999م"
 description: "بتحقيق حسن بن علي العواجي"
 ---

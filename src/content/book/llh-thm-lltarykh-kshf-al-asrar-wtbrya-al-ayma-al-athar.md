@@ -3,7 +3,7 @@ title: "لله ثم للتاريخ = كشف الأسرار وتبرئة الأئ
 status: published
 published_at: 2026-06-26
 person: hsyn-al-mwswy
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-firaq-war-rudud"]
 edition: "الرابعة"
 ---
 ## مقدمة

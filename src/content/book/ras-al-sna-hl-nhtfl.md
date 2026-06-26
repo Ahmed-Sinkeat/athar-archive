@@ -3,7 +3,7 @@ title: "رأس السنة هل نحتفل"
 status: published
 published_at: 2026-06-26
 person: shhata-sqr
-topics: ["al-aqeedah-al-aamah", "al-sunnah-wal-bidah"]
+topics: ["al-sunnah-wal-bidah", "al-sunnah-wal-bidah"]
 ---
 رأس السنة هل نحتفل؟
 

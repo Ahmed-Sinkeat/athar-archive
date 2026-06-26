@@ -3,7 +3,7 @@ title: "رسالة الشرك ومظاهره"
 status: published
 published_at: 2026-06-26
 person: mbark-al-myly
-topics: ["al-aqeedah-al-aamah", "tahwid-al-ibada"]
+topics: ["tahwid-al-ibada", "tahwid-al-ibada"]
 edition: "الأولى (1422هـ - 2001م)"
 ---
 ## [رسالة الشرك ومظاهره

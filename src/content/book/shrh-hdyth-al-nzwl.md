@@ -3,7 +3,7 @@ title: "شرح حديث النزول"
 status: published
 published_at: 2026-06-26
 person: abn-tymya
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-asma-was-sifat"]
 edition: "الخامسة، 1397هـ/1977م"
 ---
 ## شرح حديث النزول

@@ -3,7 +3,7 @@ title: "النص الكامل لكتاب العواصم من القواصم"
 status: published
 published_at: 2026-06-26
 person: abn-al-arby
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-imamah-was-sahabah"]
 description: "بتحقيق الدكتور عمار طالبي"
 ---
 النص الكامل لكتاب العواصم من القواصم للقاضي أبي بكر بن العربي تحقيق الدكتور عمار طالبي

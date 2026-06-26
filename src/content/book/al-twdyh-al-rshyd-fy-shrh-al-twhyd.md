@@ -3,7 +3,7 @@ title: "التوضيح الرشيد في شرح التوحيد"
 status: published
 published_at: 2026-06-26
 person: khldwn-nghwy
-topics: ["al-aqeedah-al-aamah", "tahwid-al-ibada"]
+topics: ["tahwid-al-ibada", "tahwid-al-ibada"]
 ---
 التَّوْضِيْحُ الرَّشِيْدُ فِي شَرْحِ التَّوْحِيْدِ المُذَيَّلُ بِالتَّفْنِيْدِ لِشُبُهَاتِ العَنِيْدِ
 

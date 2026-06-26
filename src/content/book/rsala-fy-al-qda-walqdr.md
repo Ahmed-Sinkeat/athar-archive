@@ -3,7 +3,7 @@ title: "رسالة في القضاء والقدر"
 status: published
 published_at: 2026-06-26
 person: abn-athymyn
-topics: ["al-aqeedah-al-aamah", "al-qadr"]
+topics: ["al-qadr", "al-qadr"]
 edition: "1423هـ"
 ---
 ## مقدمة...

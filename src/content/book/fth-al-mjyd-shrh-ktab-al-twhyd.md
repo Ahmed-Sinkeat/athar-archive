@@ -3,7 +3,7 @@ title: "فتح المجيد شرح كتاب التوحيد"
 status: published
 published_at: 2026-06-26
 person: abd-al-rhmn-bn-hsn-al-al-shykh
-topics: ["al-aqeedah-al-aamah", "tahwid-al-ibada"]
+topics: ["tahwid-al-ibada", "tahwid-al-ibada"]
 edition: "السابعة، 1377هـ/1957م"
 description: "بتحقيق محمد حامد الفقي"
 ---

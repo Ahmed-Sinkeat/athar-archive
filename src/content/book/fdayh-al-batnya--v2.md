@@ -3,7 +3,7 @@ title: "فضائح الباطنية"
 status: published
 published_at: 2026-06-26
 person: abw-hamd-al-ghzaly
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-firaq-war-rudud"]
 description: "بتحقيق عبد الرحمن بدوي"
 ---
 ## الْمُقدمَة

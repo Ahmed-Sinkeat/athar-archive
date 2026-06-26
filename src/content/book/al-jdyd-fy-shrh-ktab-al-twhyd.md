@@ -3,7 +3,7 @@ title: "الجديد في شرح كتاب التوحيد"
 status: published
 published_at: 2026-06-26
 person: mhmd-bn-abd-al-azyz-al-qraawy
-topics: ["al-aqeedah-al-aamah", "tahwid-al-ibada"]
+topics: ["tahwid-al-ibada", "tahwid-al-ibada"]
 edition: "الخامسة، 1424هـ/2003م"
 ---
 ## [الجديد في شرح كتاب التوحيد]ـ

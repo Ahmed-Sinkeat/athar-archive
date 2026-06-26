@@ -3,7 +3,7 @@ title: "كيف نفهم التوحيد"
 status: published
 published_at: 2026-06-26
 person: mhmd-bn-ahmd-bashmyl
-topics: ["al-aqeedah-al-aamah", "tahwid-al-ibada"]
+topics: ["tahwid-al-ibada", "tahwid-al-ibada"]
 edition: "الثانية، 1406هـ"
 ---
 ## مقدمة...

@@ -3,7 +3,7 @@ title: "فرق معاصرة تنتسب إلى الإسلام وبيان موقف
 status: published
 published_at: 2026-06-26
 person: d-ghalb-bn-aly-awajy
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-firaq-war-rudud"]
 edition: "الرابعة، 1422 هـ - 2001 م"
 ---
 فرق معاصرة تنتسب إلى الإسلام وبيان موقف الإسلام منها تأليف د. غالب بن علي عواجي عضو هئية التدريس بالجامعة الإسلامية بالمدينة النبوية الجزء الأول

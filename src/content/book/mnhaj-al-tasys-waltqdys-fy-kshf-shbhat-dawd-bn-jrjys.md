@@ -3,7 +3,7 @@ title: "منهاج التأسيس والتقديس في كشف شبهات داو
 status: published
 published_at: 2026-06-26
 person: abd-al-ltyf-al-al-shykh
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-firaq-war-rudud"]
 ---
 ## مقدّمة
 

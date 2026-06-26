@@ -3,7 +3,7 @@ title: "الولاء والبراء في الإسلام"
 status: published
 published_at: 2026-06-26
 person: mhmd-bn-sayd-al-qhtany
-topics: ["al-aqeedah-al-aamah", "al-wala-wal-bara"]
+topics: ["al-wala-wal-bara", "al-wala-wal-bara"]
 edition: "الأولى"
 ---
 الولاء والبراء في الإسلام تأليف محمد بن سعيد القحطاني تقديم فضيلة الشيخ عبد الرزاق عفيفي

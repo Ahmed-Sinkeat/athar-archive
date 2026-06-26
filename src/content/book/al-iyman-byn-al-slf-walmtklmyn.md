@@ -3,7 +3,7 @@ title: "الإيمان بين السلف والمتكلمين"
 status: published
 published_at: 2026-06-26
 person: ahmd-bn-atya-bn-aly-al-ghamdy
-topics: ["al-aqeedah-al-aamah", "al-iman"]
+topics: ["al-iman", "al-iman"]
 edition: "الأولى، 1432هـ/2002م"
 ---
 بسم الله الرحمن الرحيم

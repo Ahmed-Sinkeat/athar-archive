@@ -3,7 +3,7 @@ title: "الانتصار للسلف الأخيار"
 status: published
 published_at: 2026-06-26
 person: mhmd-mhb-al-dyn-abw-zyd
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-firaq-war-rudud"]
 ---
 الانتصار للسلف الأخيار نقد لكتاب «أسماء الله الحسنى» للدكتور: محمود عبدالرازق الرضواني بقلم/ محمد محب الدين أبو زيد الرواد للإعلام والنشر المكتبة الإسلامية للنشر والتوزيع
 

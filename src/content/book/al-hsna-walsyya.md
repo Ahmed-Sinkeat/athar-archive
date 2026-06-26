@@ -3,7 +3,7 @@ title: "الحسنة والسيئة"
 status: published
 published_at: 2026-06-26
 person: abn-tymya
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-sunnah-wal-bidah"]
 edition: "-"
 description: "بتحقيق -"
 ---

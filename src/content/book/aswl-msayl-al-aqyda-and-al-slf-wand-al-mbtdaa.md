@@ -3,7 +3,7 @@ title: "أصول مسائل العقيدة عند السلف وعند المبت
 status: published
 published_at: 2026-06-26
 person: sawd-bn-abd-al-azyz-al-khlf
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-firaq-war-rudud"]
 edition: "1420هـ-1421هـ"
 ---
 ## المجلد الأول

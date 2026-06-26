@@ -3,7 +3,7 @@ title: "تقريب التدمرية"
 status: published
 published_at: 2026-06-26
 person: abn-athymyn
-topics: ["al-aqeedah-al-aamah"]
+topics: ["al-asma-was-sifat"]
 edition: "الطبعة الأولى، 1419هـ"
 ---
 بسم الله الرحمن الرحيم ال

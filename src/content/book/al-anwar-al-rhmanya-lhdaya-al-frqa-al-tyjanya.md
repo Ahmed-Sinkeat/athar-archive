@@ -3,7 +3,7 @@ title: "الأنوار الرحمانية لهداية الفرقة التيجا
 status: published
 published_at: 2026-06-26
 person: abd-al-rhmn-al-afryqy
-topics: ["al-aqeedah-al-aamah", "al-firaq-war-rudud"]
+topics: ["al-firaq-war-rudud", "al-firaq-war-rudud"]
 edition: "الثانية، 1412هـ"
 description: "بتحقيق أحمد فهمي أحمد"
 ---
