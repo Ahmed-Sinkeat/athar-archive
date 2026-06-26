@@ -68,13 +68,20 @@ src/
 │  ├─ site.ts                #   page-runtime: loadGraph(), personNameMap(), publishedSorted(), notesByAnchor(), subjectTitlesFor()
 │  ├─ browse.ts              #   subject→topic grouping for الكتب/المنظومات/المسائل (buildSubjectGroups)
 │  ├─ content-forms.ts       #   /compose field specs per entity (mirrors the Zod schema; ref/refs name-picker fields)
-│  └─ structured-data.ts     #   JSON-LD builders per entity type (+ WebSite/SearchAction)
+│  ├─ structured-data.ts     #   JSON-LD builders per entity type (+ WebSite/SearchAction)
+│  ├─ book-asset.ts          #   helpers for loading large book chunk assets
+│  ├─ fm-loader.ts           #   Astro content collection gray-matter frontmatter loader override
+│  ├─ read-body.ts           #   lightweight Markdown body parsing helper
+│  └─ slug.ts                #   slug validation regex and utilities
 │
 ├─ styles/
 │  └─ global.css             #   design system: tokens, 3 themes, reading-scale, verses, inline شرح chooser, browse grouping, search/settings popovers
 ├─ scripts/
 │  ├─ reader.ts              #   client enhancement: reading prefs/theme/drawer/progress, expanding search + filter/settings popovers, inline شرح chooser (click/long-press), اختبار reveal
-│  └─ compose.ts             #   /compose client: add|edit modes; featured types + «أنواع أخرى»; guided collapsible sections; searchable name pickers (datalist/checklist) + edit prefill; .txt/.md upload → live-built file.md
+│  ├─ compose.ts             #   /compose client: add|edit modes; featured types + «أنواع أخرى»; guided collapsible sections; searchable name pickers (datalist/checklist) + edit prefill; .txt/.md upload → live-built file.md
+│  ├─ graph.ts               #   scholar profiles / narrator visualization client script
+│  ├─ library.ts             #   client-side مكتبتي reader bookmark/benefit management
+│  └─ marks.ts               #   client-side highlights and reader annotations layer
 │
 ├─ layouts/
 │  └─ Base.astro             #   RTL shell: single-row header (brand · nav · search + settings popovers), drawer, progress bar, footer, pre-paint script
@@ -106,10 +113,17 @@ src/
 scripts/
 ├─ validate-content.ts       # CLI: loads content, runs validate.ts, exits 1 on any breach
 │                            # wired into `pnpm build` before astro build
+├─ epub-import.ts            # CLI: EPUB importer with auto subject/topic classification
+├─ parse-mushaf.ts           # CLI: parser for Quran mushaf verses/surahs
 ├─ new-content.mjs           # scaffold a new entity stub: pnpm new <entity> <slug> (P7)
 ├─ gen-redirects.ts          # post-build: aliases → dist/_redirects (301)
+├─ gen-headers.mjs           # post-build CSP headers generation with script hashes
+├─ copy-content-assets.mjs   # post-build static assets copying helper
+├─ clean-duplicates.ts       # CLI utility to find and purge duplicate files
+├─ merge-duplicates.ts       # CLI utility to merge duplicate content entries
 ├─ smoke-test.mjs            # post-build per-template invariant checks (pnpm smoke, in CI)
 ├─ check-links.mjs           # post-build internal-link + redirect integrity (pnpm check:links, P8)
+├─ perf-bench.mjs            # CLI benchmarking script
 ├─ perf-budget.mjs           # post-build page-weight + JS-free + RTL budget (pnpm perf:budget, P8)
 ├─ a11y-audit.mjs            # axe-core WCAG A/AA over dist/ in headless Chromium (pnpm a11y)
 ├─ upload-media.sh           # rclone mirror of local media → R2 bucket
@@ -137,7 +151,15 @@ docs/
 ├─ issue.md                  # ranked issue / watch register
 ├─ governance.md             # roles + branch-protection settings (P7)
 ├─ deploy.md                 # Cloudflare Pages deploy runbook (P8)
-└─ media-and-backup.md       # R2 media + rebuild-from-Git recovery
+├─ media-and-backup.md       # R2 media + rebuild-from-Git recovery
+├─ adding-content.ar.md      # content authoring guide (Arabic)
+├─ adding-content.en.md      # content authoring guide (English)
+├─ editing-text.ar.md        # UI/translation editing guide (Arabic)
+├─ editing-text.en.md        # UI/translation editing guide (English)
+├─ HANDOFF-quran-hadith.md   # narrator graph, wikilinks, mushaf reader specs
+├─ lighthouse-report-analysis.md # core web vitals and audit results
+├─ migration-plan.md         # Phase 1 chaptered scaling roadmap
+└─ performance-test.md       # loading speed and bundle weight budgets
 ```
 
 ---

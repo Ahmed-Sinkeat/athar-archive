@@ -59,6 +59,22 @@ added the same way in `/compose`, each field with a short hint. Start with statu
 
 ---
 
+## Book Page Separators & Footnotes
+
+In `book` content, the text flow can be split into pages using HTML tags that define page boundaries and associate page-level footnotes.
+
+1. **Page Separators:** To mark the start of a page, insert a `page-sep` tag. If the page contains footnotes, pass them as a JSON string array inside the `data-notes` attribute (ensure inner double quotes are escaped and the attribute itself uses single quotes):
+   ```html
+   <hr class="page-sep" data-page="56" data-notes='["في بعض النسخ: \"عنان\".", "إن من قواعد وأصول أهل السنة والجماعة..."]' />
+   ```
+2. **Inline Footnote References:** To link inline text to a footnote on a specific page, use a `sup` tag referencing the page and the 1-indexed footnote number:
+   ```html
+   عقال<sup data-fn="1" data-sep-page="56">1</sup>الفتنة
+   ```
+   *Note: When a reader clicks this inline `<sup>` reference, the system automatically opens the page's bottom sheet and pre-focuses/selects the corresponding footnote entry chip.*
+
+---
+
 ## Importing books from EPUB (Bulk Import CLI)
 
 To import multiple books or a large library from EPUB files, you can use the command-line EPUB importer script:
