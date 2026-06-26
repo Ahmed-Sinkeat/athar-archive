@@ -114,6 +114,33 @@ const processedContent = chapter.content.replace(/<hr class="page-sep" data-page
   }
   return match;
 });
+
+// 4. Embed note text directly on inline <sup data-fn> refs so client needs no DOM search.
+//    Parses the notes we just injected into page-seps, then stamps data-note on each sup.
+//    ponytail: two regex passes on the same string; fine — chapters are small.
+const finalContent = (() => {
+  const pnMap = new Map<number, string>();
+  processedContent.replace(
+    /<hr[^>]+data-page="(\d+)"[^>]+data-notes='([^']*)'[^>]*\/>/g,
+    (_, pStr: string, notesJson: string) => {
+      try {
+        const ns = JSON.parse(notesJson.replace(/&#39;/g, "'").replace(/&quot;/g, '"')) as string[];
+        if (ns.length) pnMap.set(parseInt(pStr, 10), ns.join("\n\n"));
+      } catch {}
+      return _;
+    }
+  );
+  if (!pnMap.size) return processedContent;
+  return processedContent.replace(
+    /<sup data-fn="(\d+)" data-sep-page="(\d+)">(\d+)<\/sup>/g,
+    (match: string, fn: string, sepPage: string) => {
+      const note = pnMap.get(parseInt(sepPage, 10));
+      if (!note) return match;
+      const attr = note.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+      return `<sup data-fn="${fn}" data-sep-page="${sepPage}" data-note="${attr}">${fn}</sup>`;
+    }
+  );
+})();
 ---
 <Base title={`${chapter.title} · ${entry.data.title}`} activeNav="books" searchScope={{ in: entry.id, label: entry.data.title }}>
   <Breadcrumbs
@@ -161,12 +188,12 @@ const processedContent = chapter.content.replace(/<hr class="page-sep" data-page
         {isMatn("book", entry.data) ? (
           <>
             <StudyBar prose downloadUrl={entry.data.attachments?.[0]?.url} />
-            <div class="u49fcd85" data-matn={`${entry.id}--${chapter.slug}`} data-unit="فقرة"><Prose body={processedContent} /></div>
+            <div class="u49fcd85" data-matn={`${entry.id}--${chapter.slug}`} data-unit="فقرة"><Prose body={finalContent} /></div>
           </>
         ) : (
           <>
             <StudyBar prose downloadUrl={entry.data.attachments?.[0]?.url} />
-            <div class="u49fcd85"><Prose body={processedContent} /></div>
+            <div class="u49fcd85"><Prose body={finalContent} /></div>
           </>
         )}
 
