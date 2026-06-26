@@ -98,5 +98,15 @@ describe("markdownToSafeHtml", () => {
       const html3 = markdownToSafeHtml("[رابط. هنا](https://example.com)");
       expect(html3).not.toContain("br");
     });
+
+    it("breaks sentences across footnote sup boundaries (Case 2 and Case 3)", () => {
+      // Case 2: Dot is before <sup>, space after
+      const html1 = markdownToSafeHtml("علماً».<sup>1</sup> وقال سلمان");
+      expect(html1).toContain('علماً».<sup>1</sup><br class="sentence-br">وقال سلمان');
+
+      // Case 3: Dot is after <sup>, followed by space
+      const html2 = markdownToSafeHtml("علماً»<sup>1</sup>. وقال سلمان");
+      expect(html2).toContain('علماً»<sup>1</sup>.<br class="sentence-br">وقال سلمان');
+    });
   });
 });

@@ -99,15 +99,24 @@ const POEM_VERSE_THRESHOLD = 0.70;
 // Absent = ordinary book. Override per-import with --genre.
 // ─────────────────────────────────────────────
 const GENRE_FOLDER_MAP: Array<{ pattern: RegExp; genre: string }> = [
-  { pattern: /تفسير|التفاسير|علوم القرآن|قراءات|تجويد|رسم|مصحف|قرآن/u, genre: "قرآن" },
-  { pattern: /حديث|تخريج|زوائد|علل|سؤالات|سنن|مسانيد|مسند|صحيح|جامع|أربعين|أربعون|موطأ/u, genre: "حديث" },
-  { pattern: /تراجم|رجال|طبقات|سير|وفيات|أنساب/u, genre: "تراجم" },
+  { pattern: /tafsir|quran|تفسير|التفاسير|علوم القرآن|قراءات|تجويد|رسم|مصحف|قرآن/ui, genre: "قرآن" },
+  { pattern: /hadith|حديث|تخريج|زوائد|علل|سؤالات|سنن|مسانيد|مسند|صحيح|جامع|أربعين|أربعون|موطأ/ui, genre: "حديث" },
+  { pattern: /tarajim|biography|تراجم|رجال|طبقات|سير|وفيات|أنساب/ui, genre: "تراجم" },
 ];
 
-/** Infer section genre from the epub's parent folder name (the رار فن). */
+/** Infer section genre from the epub's parent folders (walking up recursively). */
 function genreFor(file: string): string | undefined {
-  const folder = basename(dirname(file));
-  return GENRE_FOLDER_MAP.find((g) => g.pattern.test(folder))?.genre;
+  let current = dirname(file);
+  while (true) {
+    const folder = basename(current);
+    if (!folder) break;
+    const match = GENRE_FOLDER_MAP.find((g) => g.pattern.test(folder));
+    if (match) return match.genre;
+    const parent = dirname(current);
+    if (parent === current) break;
+    current = parent;
+  }
+  return undefined;
 }
 
 // متن keywords → kind: متن
@@ -120,54 +129,54 @@ const MATN_TITLE_RE = /(?:^|[\s،(])متن(?:$|[\s،)=])|الأصول الثلا
 // ─────────────────────────────────────────────
 const SECTION_TOPIC_MAP: Array<{ pattern: RegExp; topic: string; subject: string }> = [
   // 1. العقيدة العامة
-  { pattern: /عقيدة|اعتقاد|الواسطية|الطحاوية|طحاوية|الحموية|التدمرية|أصول السنة|شرح السنة|لمعة الاعتقاد|أصول الدين|الشريعة للآجري|الإبانة/u, topic: "al-aqeedah-al-aamah", subject: "aqeedah" },
+  { pattern: /عقيدة|اعتقاد|الواسطية|الطحاوية|طحاوية|الحموية|التدمرية|أصول السنة|شرح السنة|لمعة الاعتقاد|أصول الدين|الشريعة للآجري|الإبانة/ui, topic: "al-aqeedah-al-aamah", subject: "aqeedah" },
   
   // 2. التوحيد
-  { pattern: /توحيد|الربوبية|الألوهية|العبادة|شرك|الشرك|نواقض|ثلاثة الأصول|الأصول الثلاثة|كشف الشبهات|القواعد الأربع|إخلاص|تجريد التوحيد|تطهير الاعتقاد/u, topic: "tahwid-al-ibada", subject: "aqeedah" },
+  { pattern: /توحيد|الربوبية|الألوهية|العبادة|شرك|الشرك|نواقض|ثلاثة الأصول|الأصول الثلاثة|كشف الشبهات|القواعد الأربع|إخلاص|تجريد التوحيد|تطهير الاعتقاد/ui, topic: "tahwid-al-ibada", subject: "aqeedah" },
   
   // 3. الأسماء والصفات
-  { pattern: /أسماء الله|صفات|صفة|الاستواء|الفوقية|العلو|العرش|تفسير أسماء|اشتقاق أسماء|إثبات الصفات|التعطيل|الجهمية والمعطلة/u, topic: "al-asma-was-sifat", subject: "aqeedah" },
+  { pattern: /أسماء الله|صفات|صفة|الاستواء|الفوقية|العلو|العرش|تفسير أسماء|اشتقاق أسماء|إثبات الصفات|التعطيل|الجهمية والمعطلة/ui, topic: "al-asma-was-sifat", subject: "aqeedah" },
   
   // 4. الإيمان
-  { pattern: /إيمان|الإيمان|شعب الإيمان|النفاق|نفاق|إرجاء|المرجئة|تكفير|التكفير/u, topic: "al-iman", subject: "aqeedah" },
+  { pattern: /إيمان|الإيمان|شعب الإيمان|النفاق|نفاق|إرجاء|المرجئة|تكفير|التكفير/ui, topic: "al-iman", subject: "aqeedah" },
   
   // 5. القضاء والقدر
-  { pattern: /قدر|القدر|القضاء والقدر|القدرية|الجبرية|الاحتجاج بالقدر/u, topic: "al-qadr", subject: "aqeedah" },
+  { pattern: /قدر|القدر|القضاء والقدر|القدرية|الجبرية|الاحتجاج بالقدر/ui, topic: "al-qadr", subject: "aqeedah" },
   
   // 6. السمعيات
-  { pattern: /اليوم الآخر|الآخرة|القبور|عذاب القبر|البعث|الحشر|الميزان|الحوض|الشفاعة|الجنة|النار|أشراط الساعة|الفتن|الملاحم|الدجال|المسيح/u, topic: "al-samiyyat", subject: "aqeedah" },
+  { pattern: /اليوم الآخر|الآخرة|القبور|عذاب القبر|البعث|الحشر|الميزان|الحوض|الشفاعة|الجنة|النار|أشراط الساعة|الفتن|الملاحم|الدجال|المسيح/ui, topic: "al-samiyyat", subject: "aqeedah" },
   
   // 7. الإمامة والصحابة
-  { pattern: /الإمامة|السمع والطاعة|الصحابة|الآل والأصحاب|فضائل الصحابة|آل البيت|أمهات المؤمنين|معاوية|الخلافة/u, topic: "al-imamah-was-sahabah", subject: "aqeedah" },
+  { pattern: /الإمامة|السمع والطاعة|الصحابة|الآل والأصحاب|فضائل الصحابة|آل البيت|أمهات المؤمنين|معاوية|الخلافة/ui, topic: "al-imamah-was-sahabah", subject: "aqeedah" },
   
   // 8. الولاء والبراء
-  { pattern: /الولاء والبراء|موالاة|الهجرة|التشبه|الكفار/u, topic: "al-wala-wal-bara", subject: "aqeedah" },
+  { pattern: /الولاء والبراء|موالاة|الهجرة|التشبه|الكفار/ui, topic: "al-wala-wal-bara", subject: "aqeedah" },
   
   // 9. السنة والبدعة
-  { pattern: /الاعتصام|البدع|بدعة|البدعة|ذم الكلام|الحوادث والبدع|الاتباع/u, topic: "al-sunnah-wal-bidah", subject: "aqeedah" },
+  { pattern: /الاعتصام|البدع|بدعة|البدعة|ذم الكلام|الحوادث والبدع|الاتباع/ui, topic: "al-sunnah-wal-bidah", subject: "aqeedah" },
   
   // 10. الفرق والردود
-  { pattern: /الفرق|الملل والنحل|الأشاعرة|المعتزلة|الجهمية|الرافضة|الشيعة|التصوف|الصوفية|وحدة الوجود|الرد على|نقد|نقض|مقالات/u, topic: "al-firaq-war-rudud", subject: "aqeedah" },
+  { pattern: /الفرق|الملل والنحل|الأشاعرة|المعتزلة|الجهمية|الرافضة|الشيعة|التصوف|الصوفية|وحدة الوجود|الرد على|نقد|نقض|مقالات/ui, topic: "al-firaq-war-rudud", subject: "aqeedah" },
 
   // Lughah / Nahw
-  { pattern: /نحو|صرف|بلاغة|لغة|عربية|الآجرومية|ألفية ابن مالك/u, topic: "al-nahw-al-muyassar", subject: "nahw" },
+  { pattern: /نحو|صرف|بلاغة|لغة|عربية|الآجرومية|ألفية ابن مالك|nahw|sarf|lughah/ui, topic: "al-nahw-al-muyassar", subject: "nahw" },
 
   // Quran / Tafsir
-  { pattern: /تفسير|علوم القرآن|قراءات|تجويد/u,           topic: "tafsir-al-quran",   subject: "quran" },
+  { pattern: /تفسير|علوم القرآن|قراءات|تجويد|tafsir|quran/ui,           topic: "tafsir-al-quran",   subject: "quran" },
 
   // Hadith / Mustalah
-  { pattern: /حديث|مصطلح|رجال|سند|تخريج|علل|مسانيد|موطأ/u, topic: "mustalah-al-hadith", subject: "hadith" },
+  { pattern: /حديث|مصطلح|رجال|سند|تخريج|علل|مسانيد|موطأ|hadith|mustalah/ui, topic: "mustalah-al-hadith", subject: "hadith" },
 
   // Fiqh
-  { pattern: /فقه حنبلي|حنابلة/u,                           topic: "fiqh-hanbali",      subject: "fiqh" },
-  { pattern: /فقه مالكي|مالكية/u,                           topic: "fiqh-maliki",       subject: "fiqh" },
-  { pattern: /فقه شافعي|شافعية/u,                           topic: "fiqh-shafii",       subject: "fiqh" },
-  { pattern: /فقه حنفي|حنفية/u,                             topic: "fiqh-hanafi",       subject: "fiqh" },
-  { pattern: /فقه مقارن|خلاف عالي/u,                        topic: "fiqh-muqaran",      subject: "fiqh" },
-  { pattern: /فقه|أصول الفقه|الرحبية|الفرائض|المعاملات/u,   topic: "usul-al-fiqh",      subject: "fiqh" },
+  { pattern: /فقه حنبلي|حنابلة|hanbali|hanbili/ui,                           topic: "fiqh-hanbali",      subject: "fiqh" },
+  { pattern: /فقه مالكي|مالكية|maliki/ui,                           topic: "fiqh-maliki",       subject: "fiqh" },
+  { pattern: /فقه شافعي|شافعية|shafii|shafey/ui,                           topic: "fiqh-shafii",       subject: "fiqh" },
+  { pattern: /فقه حنفي|حنفية|hanafi/ui,                             topic: "fiqh-hanafi",       subject: "fiqh" },
+  { pattern: /فقه مقارن|خلاف عالي|muqaran/ui,                        topic: "fiqh-muqaran",      subject: "fiqh" },
+  { pattern: /فقه|أصول الفقه|الرحبية|الفرائض|المعاملات|usul/ui,   topic: "usul-al-fiqh",      subject: "fiqh" },
 
   // Tarajim
-  { pattern: /تراجم|طبقات|سير|وفيات|رجال/u,                topic: "tarajim-al-ulama",  subject: "tarajim" },
+  { pattern: /تراجم|طبقات|سير|وفيات|رجال|biography|tarajim/ui,                topic: "tarajim-al-ulama",  subject: "tarajim" },
 ];
 
 // ─────────────────────────────────────────────
@@ -209,8 +218,14 @@ function countVerses(xhtml: string): number {
 }
 
 function parseFootnoteBlock(block: string): { n: string; t: string }[] {
-  let cleaned = block.replace(/<span\s+class=["']red["']>\s*(\d+)\s*[-ـ–—\s]*<\/span>/gi, "$1 - ");
-  cleaned = cleaned.replace(/(?:<br\s*\/?>\s*)+(\d+)\s*[-ـ–—\s]+/gi, "__FNOTE_SEP__$1 - ");
+  // First, normalize red span markers: <span class="red">1 -</span> to " 1 - "
+  let cleaned = block.replace(/<span\s+class=["']red["']>\s*(\d+)\s*[-ـ–—\s]*<\/span>/gi, " $1 - ");
+  
+  // Normalize parenthesized/bracketed numbers like (1) or [1] to " N - "
+  cleaned = cleaned.replace(/\s*[(\[]\s*(\d+)\s*[)\]]\s*[-ـ–—\s]*/gi, " $1 - ");
+  
+  // Convert any "N - " (requiring a dash!) preceded by space/br to "__FNOTE_SEP__N - "
+  cleaned = cleaned.replace(/(?:\s*<br\s*\/?>\s*|\s+)(\d+)\s*[-ـ–—]+/gi, "__FNOTE_SEP__$1 - ");
   
   const startMatch = cleaned.match(/^\s*(\d+)\s*[-ـ–—\s]+/);
   if (startMatch) {
@@ -368,13 +383,27 @@ export function pageToMd(xhtml: string, pageId: string): { md: string; notes: st
   inner = inner.replace(/<br\s*\/?>/gi, "\n");
   inner = inner.replace(/\{/g, "﴿").replace(/\}/g, "﴾");
   let text = decode(stripTags(inner));
+  text = text.replace(/\s+([\.\u060C\u061B\u061F])/g, "$1");
 
   // inline footnote sup markers
   for (const fn of fnotes) {
-    text = text.replace(
-      new RegExp(`(?<=[\\u0600-\\u06FF])${fn.n}(?![0-9])`, "g"),
-      `<sup data-fn="${fn.n}" data-sep-page="${parsedPage}">${fn.n}</sup>`,
-    );
+    const escapedN = fn.n.replace(/[-\/\\^$*+?.()|[\]{}]/g, "\\$&");
+    
+    // Pattern 1: bracketed forms like (1) or [1] (which might be preceded or followed by spaces and a dot)
+    const bracketedPattern = new RegExp(`\\s*(\\(|\\s*\\[)${escapedN}(\\)|\\s*\\])\\s*(\\.)?(\\s*)`, "g");
+    text = text.replace(bracketedPattern, (_match, _open, _close, dot, trailingSpace) => {
+      const dotStr = dot ? "." : "";
+      const spaceStr = trailingSpace ? " " : "";
+      return `${dotStr}<sup data-fn="${fn.n}" data-sep-page="${parsedPage}">${fn.n}</sup>${spaceStr}`;
+    });
+
+    // Pattern 2: raw number immediately after an Arabic character
+    const rawPattern = new RegExp(`(?<=[\\u0600-\\u06FF])${escapedN}(?![0-9])\\s*(\\.)?(\\s*)`, "g");
+    text = text.replace(rawPattern, (_match, dot, trailingSpace) => {
+      const dotStr = dot ? "." : "";
+      const spaceStr = trailingSpace ? " " : "";
+      return `${dotStr}<sup data-fn="${fn.n}" data-sep-page="${parsedPage}">${fn.n}</sup>${spaceStr}`;
+    });
   }
 
   const lines = text.split("\n").map((l) => l.replace(/[ \t]+/g, " ").trim()).filter(Boolean);
@@ -453,8 +482,12 @@ function readEpub(file: string): { meta: Meta; pages: { id: string; xhtml: strin
 
     // manifest id → href, spine order
     const manifest = new Map<string, string>();
-    for (const m of opf.matchAll(/<item\s+[^>]*id=["']([^"']+)["'][^>]*href=["']([^"']+)["']/gi))
-      manifest.set(m[1], m[2]);
+    for (const itemMatch of opf.matchAll(/<item\s+([^>]+)>/gi)) {
+      const attrs = itemMatch[1];
+      const id = attrs.match(/id=["']([^"']+)["']/i)?.[1];
+      const href = attrs.match(/href=["']([^"']+)["']/i)?.[1];
+      if (id && href) manifest.set(id, href);
+    }
     const order = [...opf.matchAll(/<itemref\s+[^>]*idref=["']([^"']+)["']/gi)].map((m) => m[1]);
 
     // ── Richer metadata from info.xhtml ──
@@ -537,14 +570,14 @@ function findOpf(dir: string): string {
 // Auto-taxonomy helpers
 // ─────────────────────────────────────────────
 const FOLDER_SUBJECT_MAP = [
-  { pattern: /عقيدة|توحيد|أصول الدين|إيمان/u, subjectSlug: "aqeedah" },
-  { pattern: /حديث|سنن|مسانيد|أجزاء|تخريج|مصطلح|رجال|علل|موطأ/u, subjectSlug: "hadith" },
-  { pattern: /فقه|أصول الفقه|فرائض/u, subjectSlug: "fiqh" },
-  { pattern: /لغة|نحو|صرف|بلاغة|أدب/u, subjectSlug: "lughah" },
-  { pattern: /تفسير|قرآن|قراءات|تجويد/u, subjectSlug: "quran" },
-  { pattern: /تراجم|طبقات|سير|وفيات/u, subjectSlug: "tarajim" },
-  { pattern: /تاريخ/u, subjectSlug: "tarikh" },
-  { pattern: /أخلاق|رقائق|زهد/u, subjectSlug: "raqaq" }
+  { pattern: /aqeeda|عقيدة|توحيد|أصول الدين|إيمان/ui, subjectSlug: "aqeedah" },
+  { pattern: /hadith|حديث|سنن|مسانيد|أجزاء|تخريج|مصطلح|رجال|علل|موطأ/ui, subjectSlug: "hadith" },
+  { pattern: /fiqh|فقه|أصول الفقه|فرائض/ui, subjectSlug: "fiqh" },
+  { pattern: /lughah|language|لغة|نحو|صرف|بلاغة|أدب/ui, subjectSlug: "lughah" },
+  { pattern: /quran|تفسير|قرآن|قراءات|تجويد/ui, subjectSlug: "quran" },
+  { pattern: /tarajim|biography|تراجم|طبقات|سير|وفيات/ui, subjectSlug: "tarajim" },
+  { pattern: /tarikh|history|تاريخ/ui, subjectSlug: "tarikh" },
+  { pattern: /raqaq|ethics|أخلاق|رقائق|زهد/ui, subjectSlug: "raqaq" }
 ];
 
 import { appendFileSync } from "node:fs";
@@ -597,18 +630,43 @@ const SUBJECT_TITLE_MAP: Record<string, string> = {
 };
 
 function resolveTopics(meta: Meta, file: string, contentRoot: string, today: string, dryRun: boolean): string[] {
-  const folder = basename(dirname(file));
-  const qism = meta.qism ?? "";
+  let subjectSlug = "other";
   
-  // 1. Assign subject slug (force to 'aqeedah' to ensure they all end up in Aqeeda)
-  const subjectSlug = "aqeedah";
+  // Find subject by matching folder name on any ancestor directory
+  let current = dirname(file);
+  let matchedSlug: string | undefined = undefined;
+  while (true) {
+    const folder = basename(current);
+    if (!folder) break;
+    const match = FOLDER_SUBJECT_MAP.find((m) => m.pattern.test(folder));
+    if (match) {
+      matchedSlug = match.subjectSlug;
+      break;
+    }
+    const parent = dirname(current);
+    if (parent === current) break;
+    current = parent;
+  }
+  
+  if (matchedSlug) {
+    subjectSlug = matchedSlug;
+  } else {
+    // Fall back to matching qism or title
+    const qism = meta.qism ?? "";
+    for (const { pattern, subjectSlug: slug } of FOLDER_SUBJECT_MAP) {
+      if (pattern.test(qism) || pattern.test(meta.title)) {
+        subjectSlug = slug;
+        break;
+      }
+    }
+  }
   const stubTopic = `aam-${subjectSlug}`;
 
   // 2. Suggest specific topics to JSON sidecar
   const suggested: string[] = [];
   for (const { pattern, topic, subject } of SECTION_TOPIC_MAP) {
-    if (subject !== "aqeedah") continue; // Only suggest Aqeeda topics
-    if (pattern.test(qism) || pattern.test(meta.title)) {
+    if (subject !== subjectSlug) continue; // Only suggest topics for this subject
+    if (pattern.test(meta.qism ?? "") || pattern.test(meta.title) || pattern.test(dirname(file))) {
       suggested.push(topic);
     }
   }
@@ -1033,6 +1091,7 @@ function buildMerged(files: string[], opt: Opt): BuildResult {
     `person: ${personSlug}`,
     kind ? `kind: ${kind}` : null,
     genre ? `genre: ${genre}` : null,
+    (genre === "حديث" && mergedMeta.hadithCategory) ? `hadith_category: ${mergedMeta.hadithCategory}` : null,
     topics.length ? `topics: ${yList(topics)}` : null,
     mergedMeta.edition  ? `edition: ${y(mergedMeta.edition)}`  : null,
     mergedMeta.muhaqqiq ? `description: ${y("بتحقيق " + mergedMeta.muhaqqiq)}` : null,
@@ -1080,7 +1139,7 @@ function buildMerged(files: string[], opt: Opt): BuildResult {
 // File writing
 // ─────────────────────────────────────────────
 function writeFileMk(path: string, text: string) {
-  mkdirSync(path.slice(0, path.lastIndexOf("/")), { recursive: true });
+  mkdirSync(dirname(path), { recursive: true });
   writeFileSync(path, text);
 }
 
