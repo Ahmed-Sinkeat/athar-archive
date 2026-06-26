@@ -7,7 +7,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { chromium } from "playwright-core";
 
-const DIST = path.resolve("dist");
+const DIST = path.resolve("dist/client");
 const AXE = fs.readFileSync(path.resolve("node_modules/axe-core/axe.min.js"), "utf-8");
 const MIME = { ".html": "text/html", ".js": "text/javascript", ".json": "application/json", ".wasm": "application/wasm", ".css": "text/css" };
 
