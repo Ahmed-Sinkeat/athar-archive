@@ -398,8 +398,12 @@ summary::-webkit-details-marker { display: none; }
   flex: 0 0 auto; margin-top: 6px;
 }
 /* Cap the verse measure; scaled with reading-scale control.
-   Slightly narrower than before (520 vs 560) for better hemistichal pacing. */
-.verse-body { flex: 1; min-width: 0; max-width: calc(520px * var(--reading-scale)); }
+   Slightly wider to accommodate side-by-side columns (640 vs 520) for better hemistichal pacing. */
+.verse-body {
+  flex: 1; min-width: 0; max-width: calc(640px * var(--reading-scale));
+  display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
+  position: relative;
+}
 .sadr, .ajz {
   font-family: var(--font-serif); font-size: calc(24px * var(--reading-scale));
   line-height: 1.85; color: var(--ink);
@@ -407,12 +411,24 @@ summary::-webkit-details-marker { display: none; }
 .sadr { text-align: right; }
 .ajz { text-align: left; }
 /* Phase 4: subtle visual anchor between صدر and عجز hemistiches */
-.verse-body { position: relative; }
 .verse-hemistich-rule {
   display: block; width: 1px; height: 1.2em; background: var(--rule-strong);
   position: absolute; inset-inline-start: 50%; top: 50%;
   transform: translateX(-50%) translateY(-50%);
   opacity: 0.5; pointer-events: none;
+}
+@media (max-width: 640px) {
+  .verse-body {
+    grid-template-columns: 1fr; gap: 6px;
+    max-width: 100%;
+  }
+  .ajz {
+    text-align: right;
+    padding-inline-start: 24px;
+  }
+  .verse-hemistich-rule {
+    display: none;
+  }
 }
 .chapter-band { text-align: center; margin: 40px 0 26px; }
 .chapter-band span {
@@ -528,11 +544,29 @@ textarea.cinput { resize: vertical; line-height: 1.7; }
 .cf-group-body { padding: 14px 14px 2px; }
 
 /* ---------- مختارات الأسبوع (home) ---------- */
-.weekly-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
-.weekly-card { border: 1px solid var(--rule); border-radius: 16px; background: var(--surface); padding: 22px 22px 18px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04); display: flex; flex-direction: column; gap: 12px; }
-.weekly-kind { align-self: flex-start; font-family: var(--font-ui); font-size: 12px; letter-spacing: 0.06em; color: var(--accent); border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent); border-radius: 999px; padding: 3px 11px; }
-.weekly-text { font-family: var(--font-serif); font-size: calc(19px * var(--reading-scale)); line-height: 2.1; color: var(--ink); margin: 0; text-wrap: pretty; }
-.weekly-ref { font-family: var(--font-ui); font-size: 12.5px; margin-top: auto; }
+.weekly-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+.weekly-card {
+  border: 1px solid var(--rule); border-radius: 14px; background: var(--surface);
+  padding: 24px 24px 20px; display: flex; flex-direction: column; gap: 10px;
+  /* Subtle inner glow — like candlelight on vellum */
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.6), 0 6px 20px rgba(26,20,16,0.06);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.weekly-card:hover { border-color: var(--rule-strong); box-shadow: inset 0 1px 0 rgba(255,255,255,0.6), 0 10px 28px rgba(26,20,16,0.10); }
+/* Gold badge — ornamental, not functional */
+.weekly-kind {
+  align-self: flex-start; font-family: var(--font-mono); font-size: 10.5px;
+  letter-spacing: 0.14em; color: var(--gold); text-transform: uppercase;
+  border: 1px solid var(--gold-soft); border-radius: 999px; padding: 3px 11px;
+}
+/* Amiri for weekly body text — same as prose/verses */
+.weekly-text {
+  font-family: var(--font-serif); font-size: calc(19px * var(--reading-scale));
+  line-height: 2.0; color: var(--ink); margin: 0; text-wrap: pretty;
+}
+.weekly-pills { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.weekly-ref { font-family: var(--font-ui); font-size: 12.5px; margin-top: auto; color: var(--ink-faint); text-decoration: none; display: inline-block; transition: color 0.15s; }
+.weekly-ref:hover { color: var(--accent); }
 
 /* ---------- prose (matn / article / lesson body) — Phase 4 ---------- */
 .prose { font-family: var(--font-serif); }
@@ -785,25 +819,37 @@ html.hide-vnums .vnum { display: none; }
 #graph { position: absolute; inset: 0; }
 #graph canvas { display: block; }
 
-/* annotation bottom-sheet (شرح/إعراب/حاشية/تخريج) — Quran-app style */
+/* ---------- annotation sheet — scholarly marginal note feel ---------- */
 .ann-sheet {
-  position: fixed; z-index: 60; left: 50%; top: 50%;
-  width: min(680px, 92vw); max-width: 92vw;
-  min-height: 140px; max-height: 80vh; overflow: auto;
-  resize: both; /* drag the corner to resize (desktop) */
+  position: fixed; z-index: 200; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.97);
+  width: min(680px, 90vw); max-height: 72vh; overflow-y: auto;
   background: var(--surface); border: 1px solid var(--rule-strong);
-  border-radius: 16px; box-shadow: 0 14px 54px rgba(31, 27, 22, 0.24);
-  padding: 14px 18px 22px;
-  transform: translate(-50%, -48%) scale(0.97); opacity: 0;
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  border-radius: 16px; padding: 24px 28px;
+  box-shadow: 0 24px 64px rgba(26,20,16,0.22), 0 2px 8px rgba(26,20,16,0.10);
+  opacity: 0; transition: opacity 0.18s, transform 0.18s;
+  /* Warm left border accent — like a footnote rule */
+  border-inline-start: 3px solid var(--verdigris);
 }
 .ann-sheet.is-shown { transform: translate(-50%, -50%) scale(1); opacity: 1; }
 @media (max-width: 640px) { .ann-sheet { width: 92vw; resize: none; max-height: 78vh; } }
 .ann-sheet[hidden] { display: none; }
-.ann-sheet-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
-.ann-sheet-title { font-family: var(--font-ui); font-weight: 600; font-size: 14px; color: var(--accent); }
-.ann-sheet-close { font-size: 22px; line-height: 1; background: none; border: none; cursor: pointer; color: var(--ink-soft); padding: 0 4px; }
-.ann-sheet-tabs { display: flex; flex-wrap: wrap; gap: 4px; border-bottom: 1px solid var(--rule-strong); padding-bottom: 8px; margin-bottom: 10px; }
+/* Header redesigned: تحقيق footnote feel, not browser popup */
+.ann-sheet-head {
+  display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px;
+  padding-bottom: 12px; border-bottom: 1px solid var(--rule);
+}
+.ann-sheet-title {
+  font-family: var(--font-display); font-weight: 700; font-size: 16px;
+  color: var(--ink); line-height: 1.3; max-width: 80%;
+}
+/* Close button — quiet, doesn't compete with content */
+.ann-sheet-close {
+  font-size: 18px; line-height: 1; background: none; border: 1px solid var(--rule);
+  border-radius: 6px; cursor: pointer; color: var(--ink-soft); padding: 2px 8px;
+  transition: border-color 0.15s, color 0.15s;
+}
+.ann-sheet-close:hover { border-color: var(--accent-border); color: var(--accent); }
+.ann-sheet-tabs { display: flex; flex-wrap: wrap; gap: 4px; border-bottom: 1px solid var(--rule); padding-bottom: 8px; margin-bottom: 12px; }
 .ann-sheet-tabs[hidden] { display: none; }
 .ann-tab { font-family: var(--font-ui); font-size: 14px; background: none; border: none; border-bottom: 2px solid transparent; padding: 5px 10px; cursor: pointer; color: var(--ink-soft); }
 .ann-tab[aria-pressed="true"] { color: var(--accent); border-bottom-color: var(--accent); }
@@ -917,22 +963,53 @@ html[data-theme="dark"] ::highlight(aa-find)    { background-color: rgba(255, 15
 /* Suppress card-box visual when in flat mode */
 .flat-list .card {
   background: none; border: none; border-radius: 0; box-shadow: none;
-  padding: 12px 0; display: flex; align-items: center; gap: 12px;
+  padding: 14px 6px; display: flex; align-items: center; gap: 16px;
   text-decoration: none; color: inherit;
+  border-bottom: 1px solid var(--rule);
+  transition: background 0.15s;
+}
+.flat-list .card:hover {
+  background: var(--accent-wash);
+}
+.flat-list .card-kindrow { order: -1; flex-shrink: 0; margin: 0; }
+.flat-list .card-title {
+  font-family: var(--font-display); font-size: 16.5px; font-weight: 700;
+  color: var(--ink); flex: 1; margin: 0;
+  transition: color 0.15s;
 }
 .flat-list .card:hover .card-title { color: var(--accent); }
-.flat-list .card-kindrow { order: -1; flex-shrink: 0; margin: 0; }
-.flat-list .card-title { font-size: 1rem; font-weight: 600; flex: 1; }
-.flat-list .card-sub { font-family: var(--font-ui); font-size: 0.85rem; color: var(--ink-soft); margin: 0; }
+.flat-list .card-sub {
+  font-family: var(--font-ui); font-size: 13px; color: var(--ink-soft);
+  margin: 0; margin-inline-start: auto;
+}
 .flat-list .card-cta { display: none; }
+
+@media (max-width: 600px) {
+  .flat-list .card {
+    flex-wrap: wrap; gap: 6px 12px; padding: 12px 6px;
+  }
+  .flat-list .card-title {
+    flex: 1 1 100%; order: -1; font-size: 15.5px;
+  }
+  .flat-list .card-kindrow {
+    order: -2;
+  }
+  .flat-list .card-sub {
+    margin-inline-start: 0; font-size: 12.5px;
+  }
+}
 /* Custom flat-row (lessons list + people list) */
-.flat-row { display: flex; align-items: center; gap: 12px; padding: 12px 0; text-decoration: none; color: inherit; }
+/* People / flat-row list */
+.flat-row { display: flex; align-items: center; gap: 14px; padding: 14px 6px; text-decoration: none; color: inherit; border-bottom: 1px solid var(--rule); transition: background 0.15s; }
+.flat-row:hover { background: var(--accent-wash); }
 .flat-row:hover .flat-row-title { color: var(--accent); }
-.flat-row-main { display: flex; flex-direction: column; gap: 2px; flex: 1; min-width: 0; }
-.flat-row-title { font-size: 1rem; font-weight: 600; }
-.flat-row-sub { font-family: var(--font-ui); font-size: 0.85rem; color: var(--ink-soft); }
-.flat-row-meta { font-family: var(--font-ui); font-size: 0.82rem; white-space: nowrap; }
-.flat-row-count { font-family: var(--font-mono); font-size: 0.82rem; color: var(--ink-faint); white-space: nowrap; }
+.flat-row-main { display: flex; flex-direction: column; gap: 3px; flex: 1; min-width: 0; }
+/* Reem Kufi for person names — consistent with card-titles */
+.flat-row-title { font-family: var(--font-display); font-size: 17px; font-weight: 700; color: var(--ink); }
+.flat-row-sub { font-family: var(--font-ui); font-size: 13px; color: var(--ink-soft); }
+.flat-row-meta { font-family: var(--font-ui); font-size: 12.5px; color: var(--ink-faint); white-space: nowrap; }
+/* Gold monospace counter — matches verse numbers and stat strip */
+.flat-row-count { font-family: var(--font-mono); font-size: 12px; color: var(--gold); white-space: nowrap; }
 /* Browse filter bar */
 .browse-filters { display: flex; gap: 8px; flex-wrap: wrap; margin-block-end: 12px; }
 .browse-filters-standalone { margin-block-end: 16px; }
@@ -972,3 +1049,22 @@ html.pages-flow .prose > p::after { content: " "; }
 /* inline footnote ref sups (future EPUB imports) */
 sup[data-fn] { cursor: pointer; color: var(--accent); font-size: 0.72em; margin-inline-start: 1px; }
 sup[data-fn]:hover { text-decoration: underline; }
+
+/* narrator-list (scholar's shuyukh and talamidhah listing) */
+.narrator-list {
+  list-style: none; padding: 0; margin: 12px 0 0;
+  display: flex; flex-wrap: wrap; gap: 8px;
+}
+.narrator-list li { margin: 0; }
+.narrator-list a {
+  display: inline-block;
+  font-family: var(--font-ui); font-size: 13px;
+  color: var(--ink-soft); background: var(--surface);
+  border: 1px solid var(--rule-strong); border-radius: 20px;
+  padding: 6px 14px; text-decoration: none;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+.narrator-list a:hover {
+  border-color: var(--accent); color: var(--accent);
+  background: var(--accent-wash);
+}
