@@ -224,6 +224,9 @@ function parseFootnoteBlock(block: string): { n: string; t: string }[] {
   // Normalize parenthesized/bracketed numbers like (1) or [1] to " N - "
   cleaned = cleaned.replace(/\s*[(\[]\s*(\d+)\s*[)\]]\s*[-ـ–—\s]*/gi, " $1 - ");
   
+  // Normalize raw numbers like .2 or . 2 followed by space and Arabic text
+  cleaned = cleaned.replace(/(?:\s*<br\s*\/?>\s*|[\.\s\n]+)(\d{1,2})(?:\s*[-ـ–—]+|\s+)(?=[\u0600-\u06FF])/gi, " $1 - ");
+  
   // Convert any "N - " (requiring a dash!) preceded by space/br to "__FNOTE_SEP__N - "
   cleaned = cleaned.replace(/(?:\s*<br\s*\/?>\s*|\s+)(\d+)\s*[-ـ–—]+/gi, "__FNOTE_SEP__$1 - ");
   
