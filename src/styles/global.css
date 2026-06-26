@@ -1,60 +1,97 @@
 /* ============================================================
    أهل الأثر — design system
-   Ported from the final "Book and Poetry Design" mockup.
-   Tokens, three themes, reading-scale, verses, annotations.
+   Heritage scholarly archive: aged manuscript meets digital legibility.
+   Noto Naskh Arabic (display) + Noto Sans Arabic (UI) + Amiri (prose/verses).
+   Three themes, reading-scale, verses, annotations.
    Content renders fully without JS; prefs are enhancement.
    ============================================================ */
 
 :root {
-  /* fonts */
-  --font-ui: "IBM Plex Sans Arabic", system-ui, sans-serif;
-  --font-serif: "Amiri", serif;
-  --font-display: "Reem Kufi", sans-serif;
-  --font-mono: "IBM Plex Mono", monospace;
+  /* fonts — Reem Kufi (display) + Cairo (UI) + Amiri (prose) + Scheherazade New (Quran) */
+  --font-ui:      "Cairo",              system-ui, sans-serif;
+  --font-serif:   "Amiri",              serif;
+  --font-display: "Reem Kufi",          sans-serif;
+  --font-quran:   "Scheherazade New",   "Amiri", serif; /* full harakat support, Naskh-Thuluth */
+  --font-mono:    "IBM Plex Mono",      monospace;
 
-  /* palette — light ("فاتح"), the default */
-  --paper: #faf7f0;
-  --paper-2: #f1ebdd;
-  --surface: #fffdf8;
-  --ink: #221c15;
-  --ink-soft: #5a5044;
-  --ink-faint: #756a59; /* darkened from #90836f to meet WCAG AA (4.5:1) for small text */
-  --rule: #e6decd;
-  --rule-strong: #d4c8b0;
-  --accent: #9a2f24;        /* brand red — used as text/border (AA on paper) */
-  --accent-solid: #9a2f24;  /* fill behind WHITE text (buttons) */
-  --verdigris: #3f6b5e;
+  /* ── Color system — Phase 2 ──────────────────────────────────
+     Split the single --accent into three roles so nothing is
+     overloaded. Add --gold for ornamental moments.
+     ──────────────────────────────────────────────────────────── */
+
+  /* paper / surface */
+  --paper:   #faf7f0;   /* warm vellum — the base floor */
+  --paper-2: #f0e9d8;   /* slightly deeper cream for recessed areas */
+  --surface: #fffdf8;   /* elevated cards, popovers */
+
+  /* ink */
+  --ink:       #1a1410;   /* near-black warm ink — main text */
+  --ink-soft:  #544840;   /* secondary / label text */
+  --ink-faint: #7a6d5e;   /* captions, muted — WCAG AA on paper */
+
+  /* rules / borders */
+  --rule:        #e4d9c6;   /* hairline dividers */
+  --rule-strong: #c9b99a;   /* structural borders */
+
+  /* ─── accent family (deep red) ───────────────────────────── */
+  --accent:         #8b2318;  /* text links, borders — darker for AA on paper */
+  --accent-solid:   #9a2f24;  /* fills behind WHITE text (buttons, chips) */
+  --accent-border:  color-mix(in srgb, #9a2f24 38%, transparent); /* decorative rings */
+  --accent-wash:    color-mix(in srgb, #9a2f24 7%,  transparent); /* tinted bg hovers */
+
+  /* ─── verdigris (oxidised copper / teal) ─────────────────── */
+  --verdigris:       #3a6357;  /* era badges, secondary signals */
+  --verdigris-solid: #3a6357;
+  --verdigris-wash:  color-mix(in srgb, #3a6357 9%, transparent);
+
+  /* ─── manuscript gold (ornaments, stat numbers, dividers) ── */
+  --gold:      #9c7a2a;   /* AA on paper — warm manuscript gold */
+  --gold-soft: color-mix(in srgb, #9c7a2a 22%, transparent);
 
   /* reading-scale multiplier (font:dec/inc) */
   --reading-scale: 1;
 }
 
 html[data-theme="sepia"] {
-  --paper: #f3e9d2;
-  --paper-2: #e9dcc0;
-  --surface: #fbf3e0;
-  --ink: #2a2114;
-  --ink-soft: #5c4f38;
-  --ink-faint: #6f6147; /* darkened for WCAG AA on sepia paper */
-  --rule: #ded0b2;
-  --rule-strong: #cab98f;
-  --accent: #92301f;
-  --accent-solid: #92301f;
-  --verdigris: #3c6557;
+  --paper:   #f3e6cc;
+  --paper-2: #e8d8b4;
+  --surface: #faf0dc;
+  --ink:       #261b0e;
+  --ink-soft:  #5a4530;
+  --ink-faint: #7a6048; /* WCAG AA on sepia */
+  --rule:        #d8c49a;
+  --rule-strong: #c0a87a;
+  --accent:         #8a2a17;
+  --accent-solid:   #9a3020;
+  --accent-border:  color-mix(in srgb, #9a3020 38%, transparent);
+  --accent-wash:    color-mix(in srgb, #9a3020 8%,  transparent);
+  --verdigris:       #38604e;
+  --verdigris-solid: #38604e;
+  --verdigris-wash:  color-mix(in srgb, #38604e 10%, transparent);
+  --gold:      #8c6e22;
+  --gold-soft: color-mix(in srgb, #8c6e22 22%, transparent);
 }
 
 html[data-theme="dark"] {
-  --paper: #16130f;
-  --paper-2: #1f1b15;
-  --surface: #1c1813;
-  --ink: #ece3d2;
-  --ink-soft: #b6ab95;
-  --ink-faint: #9d917a; /* lightened for AA margin on dark bg */
-  --rule: #322b22;
-  --rule-strong: #473e31;
-  --accent: #e0796b;        /* lightened so accent TEXT meets AA on dark bg */
-  --accent-solid: #b6493b;  /* darker fill so WHITE button text meets AA */
-  --verdigris: #5e9684;
+  /* warm near-black — not cool gray */
+  --paper:   #141008;
+  --paper-2: #1c1610;
+  --surface: #1a130c;
+  --ink:       #ede4d2;   /* warm cream — reads like parchment on dark */
+  --ink-soft:  #b8a98e;   /* boosted from #b6ab95 — better legibility */
+  --ink-faint: #9a8a73;   /* boosted from #9d917a */
+  --rule:        #2e2418;
+  --rule-strong: #443626;
+  /* accent: lightened so text AA passes on dark surfaces */
+  --accent:         #e07060;   /* boosted from #e0796b — clearer on dark paper */
+  --accent-solid:   #b04838;   /* darker fill so WHITE button text passes AA */
+  --accent-border:  color-mix(in srgb, #e07060 40%, transparent);
+  --accent-wash:    color-mix(in srgb, #e07060 10%, transparent);
+  --verdigris:       #6aaa8e;   /* brightened for dark bg contrast */
+  --verdigris-solid: #4a8870;
+  --verdigris-wash:  color-mix(in srgb, #6aaa8e 12%, transparent);
+  --gold:      #c9a84c;   /* brightened manuscript gold for dark bg */
+  --gold-soft: color-mix(in srgb, #c9a84c 20%, transparent);
 }
 
 * { box-sizing: border-box; }
@@ -96,23 +133,30 @@ img { max-width: 100%; }
 /* ---------- layout helpers ---------- */
 .wrap { max-width: 1180px; margin: 0 auto; padding-inline: 22px; }
 .wrap-mid { max-width: 1080px; margin: 0 auto; padding-inline: 28px; }
-.wrap-read { max-width: 880px; margin: 0 auto; padding-inline: 28px; }
-.wrap-matn { max-width: 720px; margin: 0 auto; padding-inline: 28px; }
+/* Phase 4: narrower reading measure — 880→740px for Arabic prose */
+.wrap-read { max-width: 740px; margin: 0 auto; padding-inline: 28px; }
+.wrap-matn { max-width: 660px; margin: 0 auto; padding-inline: 28px; }
 .reading-pad { padding-block: 30px 130px; }
 
-.mono-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.24em; color: var(--accent); }
-.eyebrow { font-family: var(--font-ui); font-size: 12px; letter-spacing: 0.22em; color: var(--accent); }
+.mono-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.24em; color: var(--gold); }
+.eyebrow { font-family: var(--font-ui); font-size: 12px; letter-spacing: 0.22em; color: var(--gold); text-transform: uppercase; }
 .muted { color: var(--ink-soft); }
 .faint { color: var(--ink-faint); }
 
 /* ---------- buttons & pills ---------- */
 .btn {
-  font-family: var(--font-ui); font-size: 14.5px; cursor: pointer;
-  border-radius: 11px; padding: 13px 26px; text-decoration: none;
+  font-family: var(--font-ui); font-size: 14px; cursor: pointer;
+  border-radius: 9px; padding: 11px 24px; text-decoration: none;
   display: inline-block; border: 1px solid var(--rule-strong);
-  background: var(--surface); color: var(--ink); transition: background 0.2s, color 0.2s;
+  background: var(--surface); color: var(--ink);
+  transition: background 0.18s, color 0.18s, border-color 0.18s;
 }
-.btn-accent { background: var(--accent-solid); border-color: var(--accent-solid); color: #fff; }
+.btn:hover { border-color: var(--accent-solid); color: var(--accent); }
+.btn-accent {
+  background: var(--accent-solid); border-color: var(--accent-solid); color: #fff;
+  transition: background 0.18s;
+}
+.btn-accent:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
 .btn-danger { background: #c0392b; border-color: #c0392b; color: #fff; margin-inline-start: 8px; }
 .pill {
   font-family: var(--font-ui); font-size: 12.5px; color: var(--ink-faint);
@@ -127,16 +171,17 @@ img { max-width: 100%; }
 /* single-line chrome: brand (start) · nav (center) · search + settings (end) */
 .topbar-row { display: flex; align-items: center; gap: 14px; padding: 11px 0; }
 .brand { display: flex; flex-direction: column; align-items: flex-start; text-decoration: none; line-height: 1.05; flex: none; }
-.brand-name { font-family: var(--font-display); font-weight: 700; font-size: 22px; color: var(--ink); }
-.brand-sub { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.3em; color: var(--ink-faint); margin-top: 3px; }
+/* Phase 1: Noto Naskh Arabic gives brand name a manuscript authority feel */
+.brand-name { font-family: var(--font-display); font-weight: 700; font-size: 21px; color: var(--ink); letter-spacing: -0.01em; }
+.brand-sub { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.3em; color: var(--gold); margin-top: 3px; }
 
 .topnav { display: flex; justify-content: center; gap: 2px; flex-wrap: wrap; flex: 1 1 auto; }
 .topnav a {
-  font-size: 14px; color: var(--ink-soft); text-decoration: none;
-  padding: 7px 13px; border-radius: 9px; transition: color 0.15s, background 0.15s;
+  font-family: var(--font-ui); font-size: 13.5px; color: var(--ink-soft); text-decoration: none;
+  padding: 7px 13px; border-radius: 8px; transition: color 0.15s, background 0.15s;
 }
 .topnav a:hover { color: var(--ink); background: var(--paper-2); }
-.topnav a[aria-current="page"] { color: var(--accent); background: var(--paper-2); }
+.topnav a[aria-current="page"] { color: var(--accent-solid); background: var(--accent-wash); font-weight: 500; }
 
 /* ---- search + settings tools ---- */
 .topbar-tools { display: flex; align-items: center; gap: 8px; margin-inline-start: auto; flex: none; position: relative; }
@@ -253,7 +298,7 @@ a.icon-btn { text-decoration: none; }
 .crumb .here { color: var(--ink-soft); }
 
 /* ---------- footer ---------- */
-.site-footer { border-top: 1px solid var(--rule); margin-top: 40px; background: var(--paper); }
+.site-footer { border-top: 1px solid var(--rule); margin-top: 40px; background: var(--paper-2); }
 .site-footer .wrap-mid { padding-block: 40px 56px; }
 .footer-grid { display: flex; justify-content: space-between; gap: 28px; flex-wrap: wrap; }
 .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
@@ -261,9 +306,11 @@ a.icon-btn { text-decoration: none; }
 .footer-links a:hover { color: var(--accent); }
 
 /* ---------- page heads / sections ---------- */
-.page-title { font-family: var(--font-display); font-weight: 700; font-size: clamp(34px, 5vw, 52px); color: var(--ink); margin: 0 0 8px; }
-.page-intro { font-family: var(--font-ui); font-size: 15.5px; color: var(--ink-soft); margin: 0 0 28px; max-width: 62ch; line-height: 1.7; }
-.section-label { font-family: var(--font-ui); font-size: 11px; letter-spacing: 0.24em; color: var(--accent); margin-bottom: 18px; }
+/* Phase 1: font-display now Noto Naskh Arabic — heavier weight for same visual size */
+.page-title { font-family: var(--font-display); font-weight: 700; font-size: clamp(30px, 5vw, 46px); color: var(--ink); margin: 0 0 8px; letter-spacing: -0.01em; }
+.page-intro { font-family: var(--font-ui); font-size: 15px; color: var(--ink-soft); margin: 0 0 28px; max-width: 58ch; line-height: 1.75; }
+/* Phase 2: section labels use gold — they're ornamental, not functional */
+.section-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.28em; color: var(--gold); margin-bottom: 18px; text-transform: uppercase; }
 
 /* ---------- browse grouping (subject → topic) ---------- */
 .browse-group { margin-bottom: 40px; }
@@ -300,16 +347,19 @@ summary::-webkit-details-marker { display: none; }
 /* ---------- cards / grids ---------- */
 .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(248px, 1fr)); gap: 18px; }
 .card {
-  text-decoration: none; border: 1px solid var(--rule-strong); border-radius: 14px;
-  background: var(--surface); padding: 24px 22px; display: block; transition: border-color 0.2s, transform 0.2s;
+  text-decoration: none; border: 1px solid var(--rule); border-radius: 12px;
+  background: var(--surface); padding: 26px 24px; display: block;
+  transition: border-color 0.2s, box-shadow 0.2s; cursor: pointer;
 }
-.card:hover { border-color: var(--accent); transform: translateY(-2px); }
+/* Phase 3: shadow lift instead of translateY — more grounded, less SaaS */
+.card:hover { border-color: var(--accent-border); box-shadow: 0 6px 24px rgba(26,20,16,0.10); }
 .card-kindrow { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
 .card-kindrow-tags { display: inline-flex; align-items: center; gap: 6px; flex-wrap: wrap; }
-.badge-matn { font-family: var(--font-ui); font-size: 11px; letter-spacing: 0.04em; color: var(--accent); border: 1px solid var(--accent); border-radius: 20px; padding: 2px 9px; display: inline-block; background: var(--surface); }
-.card-title { font-family: var(--font-display); font-weight: 500; font-size: 23px; color: var(--ink); }
-.card-sub { font-family: var(--font-ui); font-size: 13.5px; color: var(--ink-soft); margin-top: 8px; }
-.card-cta { font-family: var(--font-ui); font-size: 12.5px; color: var(--accent); margin-top: 16px; }
+.badge-matn { font-family: var(--font-ui); font-size: 11px; letter-spacing: 0.04em; color: var(--accent); border: 1px solid var(--accent-border); border-radius: 20px; padding: 2px 9px; display: inline-block; background: var(--surface); }
+/* Phase 1+3: Noto Naskh at 600 weight — more authoritative than Reem Kufi 500 */
+.card-title { font-family: var(--font-display); font-weight: 700; font-size: 21px; color: var(--ink); letter-spacing: -0.01em; }
+.card-sub { font-family: var(--font-ui); font-size: 13.5px; color: var(--ink-soft); margin-top: 8px; line-height: 1.7; }
+.card-cta { font-family: var(--font-ui); font-size: 12.5px; color: var(--accent); margin-top: 16px; font-weight: 500; }
 
 /* topic chips */
 .chip-row { display: flex; flex-wrap: wrap; gap: 9px; }
@@ -323,11 +373,13 @@ summary::-webkit-details-marker { display: none; }
 
 /* ---------- reading: shared ornaments ---------- */
 .reader-head { text-align: center; }
-.reader-title { font-family: var(--font-display); font-weight: 700; font-size: clamp(36px, 7vw, 60px); color: var(--ink); margin: 0; line-height: 1.06; }
-.reader-byline { font-family: var(--font-ui); font-size: 15px; color: var(--ink-soft); margin-top: 16px; }
+/* Phase 1+4: Noto Naskh at 600; slightly reduced max-size for narrower measure */
+.reader-title { font-family: var(--font-display); font-weight: 700; font-size: clamp(32px, 6vw, 52px); color: var(--ink); margin: 0; line-height: 1.1; letter-spacing: -0.015em; }
+.reader-byline { font-family: var(--font-ui); font-size: 14.5px; color: var(--ink-soft); margin-top: 16px; }
 .meta-pills { display: flex; gap: 9px; justify-content: center; flex-wrap: wrap; margin-top: 20px; }
-.rule-short { height: 1px; background: var(--rule); margin: 24px auto 8px; max-width: 120px; }
-.ornament { text-align: center; color: var(--accent); }
+/* Phase 2: ornamental short rule uses gold */
+.rule-short { height: 1px; background: var(--gold-soft); margin: 24px auto 8px; max-width: 100px; }
+.ornament { text-align: center; color: var(--gold); font-size: 1.2em; }
 
 .hint {
   display: flex; align-items: center; gap: 12px; background: var(--paper-2); border: 1px solid var(--rule);
@@ -336,29 +388,37 @@ summary::-webkit-details-marker { display: none; }
 }
 .hint .ico { color: var(--accent); font-size: 15px; flex: 0 0 auto; }
 
-/* ---------- poem verses ---------- */
+/* ---------- poem verses — Phase 4 reading tuning ---------- */
 .verses { margin-top: 8px; }
-.verse { padding: 14px 0; border-bottom: 1px solid var(--rule); scroll-margin-top: 90px; }
+.verse { padding: 16px 0; border-bottom: 1px solid var(--rule); scroll-margin-top: 90px; }
 .verse-inner { display: flex; align-items: flex-start; gap: 16px; }
 .vnum {
-  font-family: var(--font-ui); font-size: 12px; color: var(--accent); width: 30px; height: 30px;
-  border: 1px solid var(--rule-strong); border-radius: 50%; display: grid; place-items: center;
-  flex: 0 0 auto; margin-top: 5px;
+  font-family: var(--font-mono); font-size: 11px; color: var(--gold); width: 28px; height: 28px;
+  border: 1px solid var(--gold-soft); border-radius: 50%; display: grid; place-items: center;
+  flex: 0 0 auto; margin-top: 6px;
 }
-/* Cap the verse measure so صدر/عجز sit close on wide screens; on phones the
-   available width is already below the cap, so the layout is unchanged. Scales
-   with the reading-size control. */
-.verse-body { flex: 1; min-width: 0; max-width: calc(560px * var(--reading-scale)); }
+/* Cap the verse measure; scaled with reading-scale control.
+   Slightly narrower than before (520 vs 560) for better hemistichal pacing. */
+.verse-body { flex: 1; min-width: 0; max-width: calc(520px * var(--reading-scale)); }
 .sadr, .ajz {
-  font-family: var(--font-serif); font-size: calc(26px * var(--reading-scale));
-  line-height: 1.8; color: var(--ink);
+  font-family: var(--font-serif); font-size: calc(24px * var(--reading-scale));
+  line-height: 1.85; color: var(--ink);
 }
 .sadr { text-align: right; }
 .ajz { text-align: left; }
-.chapter-band { text-align: center; margin: 36px 0 24px; }
+/* Phase 4: subtle visual anchor between صدر and عجز hemistiches */
+.verse-body { position: relative; }
+.verse-hemistich-rule {
+  display: block; width: 1px; height: 1.2em; background: var(--rule-strong);
+  position: absolute; inset-inline-start: 50%; top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  opacity: 0.5; pointer-events: none;
+}
+.chapter-band { text-align: center; margin: 40px 0 26px; }
 .chapter-band span {
-  font-family: var(--font-ui); font-size: 12.5px; letter-spacing: 0.16em; color: var(--ink-faint);
-  border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 9px 26px; display: inline-block;
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.2em; color: var(--gold);
+  border-top: 1px solid var(--gold-soft); border-bottom: 1px solid var(--gold-soft);
+  padding: 9px 28px; display: inline-block; text-transform: uppercase;
 }
 
 /* ---------- annotations (JS-free reveal via :target) ---------- */
@@ -474,26 +534,30 @@ textarea.cinput { resize: vertical; line-height: 1.7; }
 .weekly-text { font-family: var(--font-serif); font-size: calc(19px * var(--reading-scale)); line-height: 2.1; color: var(--ink); margin: 0; text-wrap: pretty; }
 .weekly-ref { font-family: var(--font-ui); font-size: 12.5px; margin-top: auto; }
 
-/* ---------- prose (matn / article / lesson body) ---------- */
+/* ---------- prose (matn / article / lesson body) — Phase 4 ---------- */
 .prose { font-family: var(--font-serif); }
 .prose p {
-  font-size: calc(20px * var(--reading-scale)); line-height: 2.1; color: var(--ink-soft);
-  margin: 0 0 1.8em; text-wrap: pretty;
+  /* Phase 4: reduced from 20px → 18px, tightened line-height, narrower measure */
+  font-size: calc(18.5px * var(--reading-scale)); line-height: 2.0; color: var(--ink);
+  margin: 0 0 1.6em; text-wrap: pretty;
   text-align: justify; text-align-last: right;
 }
-.tok-quran-ref { color: var(--ink-faint); font-size: 0.9em; }
+.tok-quran-ref { color: var(--ink-faint); font-size: 0.88em; }
 .prose h2, .prose h3 {
-  font-family: var(--font-display); font-weight: 500; color: var(--ink);
-  margin: 40px 0 16px; scroll-margin-top: 90px;
+  /* Phase 1: font-display is now Noto Naskh — use 600 weight */
+  font-family: var(--font-display); font-weight: 700; color: var(--ink);
+  margin: 40px 0 14px; scroll-margin-top: 90px; letter-spacing: -0.01em;
 }
-.prose h2 { font-size: calc(23px * var(--reading-scale)); }
-.prose h3 { font-size: calc(20px * var(--reading-scale)); }
+.prose h2 { font-size: calc(22px * var(--reading-scale)); }
+.prose h3 { font-size: calc(19px * var(--reading-scale)); }
 .prose blockquote {
-  border-inline-start: 3px solid var(--accent); margin: 0 0 22px; padding-inline-start: 18px;
-  color: var(--ink); font-size: calc(20px * var(--reading-scale)); line-height: 2;
+  /* Phase 2: verdigris for blockquotes — differentiate from accent red */
+  border-inline-start: 3px solid var(--verdigris); margin: 0 0 22px; padding-inline-start: 18px;
+  color: var(--ink-soft); font-size: calc(18.5px * var(--reading-scale)); line-height: 2;
+  background: var(--verdigris-wash); border-radius: 0 8px 8px 0;
 }
 .prose a { color: var(--accent); }
-.basmala { text-align: center; margin-bottom: 30px; font-family: var(--font-serif); font-size: calc(20px * var(--reading-scale)); color: var(--ink); }
+.basmala { text-align: center; margin-bottom: 30px; font-family: var(--font-serif); font-size: calc(22px * var(--reading-scale)); color: var(--gold); }
 
 /* ---------- audio player (native controls, styled shell) ---------- */
 .audio {
@@ -554,38 +618,76 @@ textarea.cinput { resize: vertical; line-height: 1.7; }
 .bar { height: 6px; background: var(--paper-2); border-radius: 4px; margin-top: 16px; overflow: hidden; }
 .bar > span { display: block; height: 100%; background: var(--accent); border-radius: 4px; }
 
-/* ---------- home ---------- */
-.hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--rule);
-  background: radial-gradient(circle at 15% 8%, rgba(154, 47, 36, 0.06), transparent 42%),
-              radial-gradient(circle at 88% 90%, rgba(63, 107, 94, 0.06), transparent 44%); }
-.hero-inner { max-width: 1000px; margin: 0 auto; padding: clamp(54px, 9vw, 118px) 28px clamp(46px, 7vw, 92px); text-align: center; }
-.hero-eyebrow { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.36em; color: var(--accent); margin-bottom: 26px; }
-.hero-title { font-family: var(--font-display); font-weight: 700; font-size: clamp(62px, 15vw, 158px); line-height: 0.9; letter-spacing: -0.012em; color: var(--ink); margin: 0; }
-.hero-lede { font-family: var(--font-serif); font-size: clamp(19px, 2.7vw, 27px); line-height: 1.7; color: var(--ink-soft); max-width: 36ch; margin: 28px auto 0; text-wrap: pretty; }
-.divider-orn { margin-top: 52px; display: flex; align-items: center; justify-content: center; gap: 16px; color: var(--rule-strong); }
-.divider-orn span.line { height: 1px; width: 54px; background: var(--rule-strong); }
-.divider-orn span.dot { font-size: 15px; color: var(--accent); }
+/* ---------- home — Phase 3 redesign ---------- */
+.hero {
+  position: relative; overflow: hidden; border-bottom: 1px solid var(--rule);
+  background:
+    radial-gradient(ellipse 70% 60% at 10% 10%, rgba(154, 47, 36, 0.18), transparent 55%),
+    radial-gradient(ellipse 60% 50% at 90% 88%, rgba(58, 99, 87, 0.14), transparent 55%);
+}
+.hero-inner { max-width: 880px; margin: 0 auto; padding: clamp(40px, 7vw, 80px) 28px clamp(48px, 7vw, 84px); text-align: center; }
 
-.stats-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); border: 1px solid var(--rule); border-radius: 16px; background: var(--surface); overflow: hidden; position: relative; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); }
+.hero-eyebrow {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.42em;
+  color: var(--gold); margin-bottom: 12px; text-transform: uppercase;
+}
+
+/* Calligraphy image — the site name rendered as calligraphy art */
+.hero-calligraphy { display: block; margin: 0 auto; }
+.hero-calligraphy-img {
+  width: clamp(280px, 52vw, 520px); height: auto;
+  /* tint the black ink to the current ink color via CSS filter */
+  filter: brightness(0) saturate(0) invert(0);
+  opacity: 0.88;
+  display: block; margin: 0 auto;
+}
+/* In dark mode, invert the black ink to cream */
+html[data-theme="dark"] .hero-calligraphy-img {
+  filter: brightness(0) saturate(0) invert(1);
+  opacity: 0.82;
+}
+/* Sepia: tint ink to warm dark brown using hue-rotate */
+html[data-theme="sepia"] .hero-calligraphy-img {
+  filter: brightness(0) saturate(100%) invert(15%) sepia(40%) hue-rotate(330deg);
+  opacity: 0.85;
+}
+
+.hero-lede {
+  font-family: var(--font-serif); font-size: clamp(16px, 2.2vw, 20px);
+  line-height: 1.85; color: var(--ink-soft); max-width: 42ch;
+  margin: 16px auto 0; text-wrap: pretty;
+}
+.divider-orn { margin-top: 44px; display: flex; align-items: center; justify-content: center; gap: 16px; }
+.divider-orn span.line { height: 1px; width: 50px; background: var(--gold-soft); }
+.divider-orn span.dot { font-size: 16px; color: var(--gold); }
+
+/* Phase 3: stat strip — gold numbers, manuscript feel */
+.stats-strip {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  border: 1px solid var(--rule); border-radius: 14px; background: var(--surface);
+  overflow: hidden; position: relative; box-shadow: 0 8px 28px rgba(26,20,16,0.07);
+}
 .stat { padding: 24px 16px; text-align: center; }
 .stat + .stat { border-inline-start: 1px solid var(--rule); }
-.stat-num { font-family: var(--font-display); font-weight: 700; font-size: 34px; color: var(--ink); }
-.stat-label { font-family: var(--font-ui); font-size: 13px; color: var(--ink-faint); margin-top: 4px; }
+/* Phase 2: stat numbers in gold — ornamental, not functional */
+.stat-num { font-family: var(--font-display); font-weight: 700; font-size: 32px; color: var(--gold); }
+.stat-label { font-family: var(--font-ui); font-size: 12.5px; color: var(--ink-soft); margin-top: 4px; }
 
 .home-section { max-width: 1000px; margin: 0 auto; padding: 64px 28px 0; }
 .stats-section { padding-bottom: 56px; }
 .ann-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(258px, 1fr)); gap: 16px; }
-.ann-card { border: 1px solid var(--rule-strong); border-radius: 14px; background: var(--surface); padding: 22px; }
-.ann-card .badge { display: inline-block; font-family: var(--font-ui); font-size: 10.5px; letter-spacing: 0.06em; border: 1px solid var(--rule-strong); border-radius: 20px; padding: 3px 11px; margin-bottom: 13px; color: var(--ink-faint); }
-.ann-card h2 { font-family: var(--font-display); font-weight: 500; font-size: 18.5px; color: var(--ink); line-height: 1.35; margin: 0; }
-.ann-card p { font-family: var(--font-ui); font-size: 13.5px; line-height: 1.7; color: var(--ink-soft); margin: 9px 0 0; }
+.ann-card { border: 1px solid var(--rule); border-radius: 12px; background: var(--surface); padding: 22px; }
+.ann-card .badge { display: inline-block; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; border: 1px solid var(--gold-soft); border-radius: 20px; padding: 3px 11px; margin-bottom: 13px; color: var(--gold); }
+.ann-card h2 { font-family: var(--font-display); font-weight: 700; font-size: 17px; color: var(--ink); line-height: 1.4; margin: 0; letter-spacing: -0.01em; }
+.ann-card p { font-family: var(--font-ui); font-size: 13.5px; line-height: 1.75; color: var(--ink-soft); margin: 9px 0 0; }
 
-.quote-band { border-radius: 18px; background: linear-gradient(180deg, rgba(154, 47, 36, 0.05), rgba(154, 47, 36, 0.02)); border: 1px solid var(--rule-strong); padding: clamp(34px, 6vw, 62px) clamp(26px, 5vw, 56px); text-align: center; }
-.quote-band p { font-family: var(--font-serif); font-size: clamp(22px, 3.4vw, 34px); line-height: 1.7; color: var(--ink); margin: 0 auto; max-width: 30ch; text-wrap: balance; }
+/* Phase 2: quote band uses verdigris wash — differentiated from red accent */
+.quote-band { border-radius: 16px; background: var(--verdigris-wash); border: 1px solid var(--rule); padding: clamp(34px, 6vw, 62px) clamp(26px, 5vw, 56px); text-align: center; }
+.quote-band p { font-family: var(--font-serif); font-size: clamp(20px, 3vw, 30px); line-height: 1.8; color: var(--ink); margin: 0 auto; max-width: 30ch; text-wrap: balance; }
 
-.latest-row { display: flex; align-items: center; gap: 16px; text-decoration: none; padding: 16px 4px; border-bottom: 1px solid var(--rule); }
+.latest-row { display: flex; align-items: center; gap: 16px; text-decoration: none; padding: 15px 4px; border-bottom: 1px solid var(--rule); cursor: pointer; }
 .latest-row:hover .latest-name { color: var(--accent); }
-.latest-name { font-family: var(--font-display); font-size: 18px; color: var(--ink); flex: 1; }
+.latest-name { font-family: var(--font-display); font-weight: 500; font-size: 17px; color: var(--ink); flex: 1; letter-spacing: -0.01em; }
 
 /* ---------- reading-pref state (set on <html>) ---------- */
 html.hide-vnums .vnum { display: none; }
