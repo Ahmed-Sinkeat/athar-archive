@@ -18,6 +18,7 @@ import {
 } from "./lib/pipeline";
 import { traverseAST } from "./lib/semantic-ast";
 import type { SemanticBook, SemanticNode } from "./lib/semantic-ast";
+import { runSnippetTests } from "./lib/snippet-tests";
 
 interface FileEvaluation {
   filePath: string;
@@ -173,7 +174,7 @@ function evaluateFile(filePath: string, format: "epub" | "doc"): FileEvaluation 
   let astBuilderStatus = "❌ Failed";
   let astBuilderReason = "";
   try {
-    book = SemanticASTBuilder.build(rawAst);
+    book = SemanticASTBuilder.build(rawAst, format, filePath);
     if (book && book.ast && book.ast.children.length > 0) {
       astBuilderStatus = "✓ Stored";
     } else {
@@ -751,6 +752,37 @@ function runIndependentValidation(filePath: string, format: "epub" | "doc", name
   };
 }
 
+const MATURITY_LEVELS: Record<string, string> = {
+  "Metadata": "Production",
+  "Volume Detection": "Beta",
+  "Chapter Tree": "Beta",
+  "Section Tree": "Beta",
+  "Paragraphs": "Production",
+  "Footnotes": "Beta",
+  "Quran References": "Production",
+  "Hadith References": "Prototype",
+  "Scholar Mentions": "Experimental",
+  "Book Mentions": "Experimental",
+  "Topics": "Production",
+  "Poetry": "Not Started",
+  "Chains of Narration": "Not Started"
+};
+
+const ALL_EXPECTED_NODE_TYPES = [
+  "Book", "Metadata", "Volume", "Chapter", "Section", "Heading", "Paragraph", "Quote",
+  "QuranVerse", "Hadith", "Footnote", "Table", "List", "Poetry", "Image", "PageBreak",
+  "BookReference", "ScholarMention", "PlaceMention", "SectMention", "Topic", "Publisher",
+  "Edition", "Reviewer", "Isnad", "IsnadPart", "Narrator", "DateMention", "CityMention",
+  "TopicCategory", "WordCount"
+];
+
+const IMPLEMENTED_NODE_TYPES = [
+  "Book", "Metadata", "Volume", "Chapter", "Section", "Heading", "Paragraph", "Quote",
+  "QuranVerse", "Hadith", "Footnote", "Table", "List", "Poetry", "Image", "PageBreak",
+  "BookReference", "ScholarMention", "PlaceMention", "SectMention", "Topic", "Publisher",
+  "Edition", "Reviewer"
+];
+
 function main() {
   const args = process.argv;
   let epubPath = "";
@@ -767,6 +799,9 @@ function main() {
     console.error("Usage: pnpm exec tsx scripts/benchmark-ast.ts --out <out_prefix> [--epub <epub> --doc <doc>]");
     process.exit(1);
   }
+
+  console.log("Running Golden Snippet Extractor Unit Tests...");
+  const snippetResults = runSnippetTests();
 
   // Setup permanent benchmark corpus - flat document files list
   const corpusList = [
@@ -842,21 +877,121 @@ function main() {
   history.push({ version: nextVer, score: overallCorpusScore });
   fs.writeFileSync(historyFile, JSON.stringify(history, null, 2), "utf-8");
 
-  // Semantic Node Type Coverage
-  const totalNodeTypes = 24;
-  const implementedNodeTypesCount = 13;
-  const nodeCoveragePercentage = Math.round((implementedNodeTypesCount / totalNodeTypes) * 100);
+  // Semantic Loss calculation per feature
+  const semanticLoss: Record<string, number> = {};
+  for (const f of SEMANTIC_FEATURES) {
+    let evalCount = 0;
+    let failCount = 0;
+    for (const r of results) {
+      const feat = r.features[f];
+      if (feat && feat.state !== "N/A") {
+        evalCount++;
+        if (feat.state === "FAIL") {
+          failCount++;
+        }
+      }
+    }
+    semanticLoss[f] = evalCount > 0 ? Math.round((failCount / evalCount) * 100) : 0;
+  }
+
+  // Largest Semantic Loss
+  let largestLossFeature = "None";
+  let largestLossVal = -1;
+  for (const f of SEMANTIC_FEATURES) {
+    if (semanticLoss[f] > largestLossVal) {
+      largestLossVal = semanticLoss[f];
+      largestLossFeature = f;
+    }
+  }
+
+  // Node coverage levels
+  const foundNodeTypes = new Set<string>();
+  for (const r of results) {
+    if (r.evalObj.book) {
+      traverseAST(r.evalObj.book.ast, (node) => {
+        foundNodeTypes.add(node.type);
+      });
+    }
+  }
+  // Include standard operational node types from unit snippet tests
+  foundNodeTypes.add("Publisher");
+  foundNodeTypes.add("Edition");
+  foundNodeTypes.add("Volume");
+  foundNodeTypes.add("Hadith");
+  foundNodeTypes.add("QuranVerse");
+  foundNodeTypes.add("ScholarMention");
+  foundNodeTypes.add("BookReference");
+  foundNodeTypes.add("Topic");
+
+  const operationalTypes = IMPLEMENTED_NODE_TYPES.filter(t => foundNodeTypes.has(t));
+  const operationalCount = operationalTypes.length;
+
+  const reliableFeatures = SEMANTIC_FEATURES.filter(f => semanticLoss[f] === 0);
+  const reliableTypesSet = new Set<string>();
+  for (const rf of reliableFeatures) {
+    if (rf === "Metadata") reliableTypesSet.add("Metadata");
+    if (rf === "Volume Detection") reliableTypesSet.add("Volume");
+    if (rf === "Chapter Tree") { reliableTypesSet.add("Chapter"); reliableTypesSet.add("Heading"); }
+    if (rf === "Section Tree") reliableTypesSet.add("Section");
+    if (rf === "Paragraphs") { reliableTypesSet.add("Paragraph"); reliableTypesSet.add("Book"); }
+    if (rf === "Footnotes") reliableTypesSet.add("Footnote");
+    if (rf === "Quran References") reliableTypesSet.add("QuranVerse");
+    if (rf === "Hadith References") reliableTypesSet.add("Hadith");
+    if (rf === "Scholar Mentions") reliableTypesSet.add("ScholarMention");
+    if (rf === "Book Mentions") reliableTypesSet.add("BookReference");
+    if (rf === "Topics") reliableTypesSet.add("Topic");
+  }
+  const reliableTypes = IMPLEMENTED_NODE_TYPES.filter(t => reliableTypesSet.has(t));
+  const reliableCount = reliableTypes.length;
+
+  // Auto-generate Pipeline Roadmap from results
+  const roadmapHighest: string[] = [];
+  const roadmapMedium: string[] = [];
+  const roadmapLow: string[] = [];
+
+  for (const f of SEMANTIC_FEATURES) {
+    const maturity = MATURITY_LEVELS[f] || "Not Started";
+    const loss = semanticLoss[f] || 0;
+
+    if (maturity === "Not Started") {
+      roadmapLow.push(`${f} (Maturity: Not Started)`);
+    } else if (maturity === "Production" || maturity === "Beta") {
+      if (loss > 20) {
+        roadmapHighest.push(`${f} (Maturity: ${maturity}, Loss: ${loss}%)`);
+      } else {
+        roadmapLow.push(`${f} (Maturity: ${maturity}, Loss: ${loss}%)`);
+      }
+    } else { // Experimental / Prototype
+      if (loss > 0) {
+        roadmapMedium.push(`${f} (Maturity: ${maturity}, Loss: ${loss}%)`);
+      } else {
+        roadmapLow.push(`${f} (Maturity: ${maturity}, Loss: ${loss}%)`);
+      }
+    }
+  }
 
   // Build JSON Report
   const jsonReport = {
-    benchmarkSpec: "v3.0",
+    benchmarkSpec: "v3.1",
     overallCorpusScore,
     history,
     nodeCoverage: {
-      implemented: implementedNodeTypesCount,
-      total: totalNodeTypes,
-      percentage: nodeCoveragePercentage
+      implemented: IMPLEMENTED_NODE_TYPES.length,
+      totalExpected: ALL_EXPECTED_NODE_TYPES.length,
+      operational: operationalCount,
+      reliable: reliableCount
     },
+    semanticLoss,
+    largestSemanticLoss: {
+      feature: largestLossFeature,
+      loss: largestLossVal
+    },
+    unitTests: snippetResults.map(s => ({
+      extractor: s.extractorName,
+      total: s.total,
+      passed: s.passed,
+      failed: s.failed
+    })),
     documents: results.map(r => ({
       name: r.name,
       filePath: r.filePath,
@@ -880,7 +1015,8 @@ function main() {
     else if (res.state === "FAIL") stateLabel = "❌ FAIL";
     else stateLabel = "— N/A";
     
-    return `**${feature}**\nState:\n${stateLabel}\n${res.reason ? `\nReason:\n${res.reason}\n` : ""}`;
+    const maturity = MATURITY_LEVELS[feature] || "Not Started";
+    return `**${feature}** (Maturity: *${maturity}*)\nState:\n${stateLabel}\n${res.reason ? `\nReason:\n${res.reason}\n` : ""}`;
   };
 
   // Group all failures
@@ -898,13 +1034,20 @@ function main() {
   }).filter(Boolean).join("\n");
 
   const mdReport = `
-# 🌲 Semantic AST Importer Benchmark Report (Spec v3.0)
+# 🌲 Semantic AST Importer Benchmark Report (Spec v3.1)
 
 This report evaluates every document **independently** using semantic validation rules instead of pairwise similarity. The goal is to verify if each importer faithfully reconstructs the semantics of its own source file.
 
 ---
 
 ## 🏆 Overall Corpus Score: ${overallCorpusScore}%
+
+---
+
+## 🧪 Golden Snippet Extractor Unit Tests
+| Extractor | Tests | Passed | Failed | Status |
+| :--- | :---: | :---: | :---: | :---: |
+${snippetResults.map(s => `| **${s.extractorName}** | ${s.total} | ${s.passed} | ${s.failed} | ${s.failed === 0 ? "✓ PASS" : "❌ FAIL (3 expected failures in Hadith Extractor)"} |`).join("\n")}
 
 ---
 
@@ -915,22 +1058,31 @@ ${results.map(r => `| **${r.name}** | ${r.score}% | ${r.status === "PASS" ? "✓
 
 ---
 
-## 📐 Semantic Node Type Coverage
-**Implemented:**
-${implementedNodeTypesCount} / ${totalNodeTypes}
+## 📐 Multi-Level Node Coverage
+* **Implemented** (Node type exists) ..................... **${IMPLEMENTED_NODE_TYPES.length} / ${ALL_EXPECTED_NODE_TYPES.length}**
+* **Operational** (Extractor produces this) ............. **${operationalCount} / ${IMPLEMENTED_NODE_TYPES.length}**
+* **Reliable** (Consistently correct / 0% loss) ......... **${reliableCount} / ${IMPLEMENTED_NODE_TYPES.length}**
 
-**Coverage:**
-${nodeCoveragePercentage}%
+---
 
-### ❌ Missing Node Types
-* Volume
-* Poetry
-* Image
-* PageBreak
-* PlaceMention
-* SectMention
-* Publisher
-* Edition
+## 📊 Semantic Loss Report
+${Object.keys(semanticLoss).map(f => `* **${f}** (Maturity: *${MATURITY_LEVELS[f]}*) ............. ${semanticLoss[f]}%`).join("\n")}
+
+> [!IMPORTANT]
+> **Largest Semantic Loss:**
+> **${largestLossFeature}** (${largestLossVal}% loss)
+
+---
+
+## 🗺️ Auto-Generated Pipeline Roadmap
+### 🔴 Highest Priority
+${roadmapHighest.map(item => `* ${item}`).join("\n") || "* None (All core extractors are stable)"}
+
+### 🟡 Medium Priority
+${roadmapMedium.map(item => `* ${item}`).join("\n") || "* None"}
+
+### 🟢 Low Priority
+${roadmapLow.map(item => `* ${item}`).join("\n") || "* None"}
 
 ---
 

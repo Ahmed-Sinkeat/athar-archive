@@ -23,12 +23,24 @@ export type NodeType =
   | "Publisher"
   | "Edition";
 
+export interface NodeOrigin {
+  source: "doc" | "epub" | "markdown" | "other";
+  page?: number;
+  paragraph?: number;
+  offsetStart?: number;
+  offsetEnd?: number;
+  file?: string;
+  xpath?: string;
+  offset?: number;
+}
+
 export interface SemanticNode {
   type: NodeType;
   content?: string;             // Raw text or specific node value (e.g., text, reference ID)
   attributes?: Record<string, any>; // Arbitrary semantic attributes (e.g. { level: 1 } for Heading, or { number: 5 } for Volume)
   children: SemanticNode[];
   confidence?: number;          // Confidence score (0.0 to 1.0)
+  origin?: NodeOrigin;
 }
 
 export interface BookMetadata {
@@ -51,13 +63,21 @@ export interface SemanticBook {
   statistics?: Record<string, any>;
 }
 
-export function createNode(type: NodeType, content?: string, attributes?: Record<string, any>, children: SemanticNode[] = [], confidence: number = 1.0): SemanticNode {
+export function createNode(
+  type: NodeType,
+  content?: string,
+  attributes?: Record<string, any>,
+  children: SemanticNode[] = [],
+  confidence: number = 1.0,
+  origin?: NodeOrigin
+): SemanticNode {
   return {
     type,
     content,
     attributes,
     children,
-    confidence
+    confidence,
+    origin
   };
 }
 
