@@ -3,7 +3,7 @@ title: "فتاوى في التوحيد"
 status: published
 published_at: 2026-06-26
 person: abn-jbryn
-topics: ["tahwid-al-ibada"]
+topics: ["al-aqeedah-al-aamah", "tahwid-al-ibada"]
 edition: "الأولى، 1418 هـ"
 ---
 ## مقدمة الشيخ / عبد الله بن جبرين

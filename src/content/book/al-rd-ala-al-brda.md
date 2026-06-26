@@ -3,7 +3,7 @@ title: "الرد على البردة"
 status: published
 published_at: 2026-06-26
 person: abd-al-lh-aba-btyn
-topics: ["al-firaq-war-rudud"]
+topics: ["al-aqeedah-al-aamah", "al-firaq-war-rudud"]
 edition: "الأولى"
 description: "بتحقيق أبو عبد الأعلى خالد محمد"
 ---

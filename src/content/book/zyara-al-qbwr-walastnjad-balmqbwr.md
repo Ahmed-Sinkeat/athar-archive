@@ -3,7 +3,7 @@ title: "زيارة القبور والاستنجاد بالمقبور"
 status: published
 published_at: 2026-06-26
 person: abn-tymya
-topics: ["al-samiyyat"]
+topics: ["al-aqeedah-al-aamah", "al-samiyyat"]
 ---
 [
 

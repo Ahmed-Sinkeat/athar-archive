@@ -3,7 +3,7 @@ title: "الثمر المجتنى مختصر شرح أسماء الله الحس
 status: published
 published_at: 2026-06-26
 person: sayd-bn-whf-al-qhtany
-topics: ["al-asma-was-sifat"]
+topics: ["al-aqeedah-al-aamah", "al-asma-was-sifat"]
 ---
 سلسلة مؤلفات سعيد بن علي بن وهف القحطاني الثمر المجتنى مختصر شرح أسماء الله الحسنى في ضوء الكتاب والسُّنَّة تأليف الفقير إلى الله تعالى د. سعيد بن علي بن وهف القحطاني
 

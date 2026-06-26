@@ -3,7 +3,7 @@ title: "الجنة والنار"
 status: published
 published_at: 2026-06-26
 person: slyman-al-ashqr-amr
-topics: ["al-samiyyat"]
+topics: ["al-aqeedah-al-aamah", "al-samiyyat"]
 edition: "السابعة، 1418 هـ - 1998 م"
 ---
 ## الباب الأول: النار

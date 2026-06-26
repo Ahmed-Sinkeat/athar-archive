@@ -3,7 +3,7 @@ title: "الرسالة المفيدة"
 status: published
 published_at: 2026-06-26
 person: mhmd-bn-abd-al-whab
-topics: ["aam-aqeedah"]
+topics: ["al-aqeedah-al-aamah"]
 description: "بتحقيق محمد بن عبد العزيز المانع"
 ---
 ## مدخل...

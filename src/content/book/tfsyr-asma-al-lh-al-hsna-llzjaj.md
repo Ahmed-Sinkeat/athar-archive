@@ -3,7 +3,7 @@ title: "تفسير أسماء الله الحسنى للزجاج"
 status: published
 published_at: 2026-06-26
 person: al-zjaj
-topics: ["al-asma-was-sifat"]
+topics: ["al-aqeedah-al-aamah", "al-asma-was-sifat"]
 description: "بتحقيق أحمد يوسف الدقاق"
 ---
 ## تَفْسِير أَسمَاء الله تَعَالَى التِّسْعَة وَالتسْعين

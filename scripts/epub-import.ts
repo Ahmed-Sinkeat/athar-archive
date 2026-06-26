@@ -129,34 +129,34 @@ const MATN_TITLE_RE = /(?:^|[\s،(])متن(?:$|[\s،)=])|الأصول الثلا
 // ─────────────────────────────────────────────
 const SECTION_TOPIC_MAP: Array<{ pattern: RegExp; topic: string; subject: string }> = [
   // 1. العقيدة العامة
-  { pattern: /عقيدة|اعتقاد|الواسطية|الطحاوية|طحاوية|الحموية|التدمرية|أصول السنة|شرح السنة|لمعة الاعتقاد|أصول الدين|الشريعة للآجري|الإبانة/ui, topic: "al-aqeedah-al-aamah", subject: "aqeedah" },
+  { pattern: /عقيدة|اعتقاد|الواسطية|الطحاوية|طحاوية|الحموية|التدمرية|أصول السنة|شرح السنة|لمعة الاعتقاد|أصول الدين|الشريعة للآجري|الإبانة|al-aqeedah-al-aamah/ui, topic: "al-aqeedah-al-aamah", subject: "aqeedah" },
   
   // 2. التوحيد
-  { pattern: /توحيد|الربوبية|الألوهية|العبادة|شرك|الشرك|نواقض|ثلاثة الأصول|الأصول الثلاثة|كشف الشبهات|القواعد الأربع|إخلاص|تجريد التوحيد|تطهير الاعتقاد/ui, topic: "tahwid-al-ibada", subject: "aqeedah" },
+  { pattern: /توحيد|الربوبية|الألوهية|العبادة|شرك|الشرك|نواقض|ثلاثة الأصول|الأصول الثلاثة|كشف الشبهات|القواعد الأربع|إخلاص|تجريد التوحيد|تطهير الاعتقاد|tahwid-al-ibada/ui, topic: "tahwid-al-ibada", subject: "aqeedah" },
   
   // 3. الأسماء والصفات
-  { pattern: /أسماء الله|صفات|صفة|الاستواء|الفوقية|العلو|العرش|تفسير أسماء|اشتقاق أسماء|إثبات الصفات|التعطيل|الجهمية والمعطلة/ui, topic: "al-asma-was-sifat", subject: "aqeedah" },
+  { pattern: /أسماء الله|صفات|صفة|الاستواء|الفوقية|العلو|العرش|تفسير أسماء|اشتقاق أسماء|إثبات الصفات|التعطيل|الجهمية والمعطلة|al-asma-was-sifat/ui, topic: "al-asma-was-sifat", subject: "aqeedah" },
   
   // 4. الإيمان
-  { pattern: /إيمان|الإيمان|شعب الإيمان|النفاق|نفاق|إرجاء|المرجئة|تكفير|التكفير/ui, topic: "al-iman", subject: "aqeedah" },
+  { pattern: /إيمان|الإيمان|شعب الإيمان|النفاق|نفاق|إرجاء|المرجئة|تكفير|التكفير|al-iman/ui, topic: "al-iman", subject: "aqeedah" },
   
   // 5. القضاء والقدر
-  { pattern: /قدر|القدر|القضاء والقدر|القدرية|الجبرية|الاحتجاج بالقدر/ui, topic: "al-qadr", subject: "aqeedah" },
+  { pattern: /قدر|القدر|القضاء والقدر|القدرية|الجبرية|الاحتجاج بالقدر|al-qadr/ui, topic: "al-qadr", subject: "aqeedah" },
   
   // 6. السمعيات
-  { pattern: /اليوم الآخر|الآخرة|القبور|عذاب القبر|البعث|الحشر|الميزان|الحوض|الشفاعة|الجنة|النار|أشراط الساعة|الفتن|الملاحم|الدجال|المسيح/ui, topic: "al-samiyyat", subject: "aqeedah" },
+  { pattern: /اليوم الآخر|الآخرة|القبور|عذاب القبر|البعث|الحشر|الميزان|الحوض|الشفاعة|الجنة|النار|أشراط الساعة|الفتن|الملاحم|الدجال|المسيح|al-samiyyat/ui, topic: "al-samiyyat", subject: "aqeedah" },
   
   // 7. الإمامة والصحابة
-  { pattern: /الإمامة|السمع والطاعة|الصحابة|الآل والأصحاب|فضائل الصحابة|آل البيت|أمهات المؤمنين|معاوية|الخلافة/ui, topic: "al-imamah-was-sahabah", subject: "aqeedah" },
+  { pattern: /الإمامة|السمع والطاعة|الصحابة|الآل والأصحاب|فضائل الصحابة|آل البيت|أمهات المؤمنين|معاوية|الخلافة|al-imamah-was-sahabah/ui, topic: "al-imamah-was-sahabah", subject: "aqeedah" },
   
   // 8. الولاء والبراء
-  { pattern: /الولاء والبراء|موالاة|الهجرة|التشبه|الكفار/ui, topic: "al-wala-wal-bara", subject: "aqeedah" },
+  { pattern: /الولاء والبراء|موالاة|الهجرة|التشبه|الكفار|al-wala-wal-bara/ui, topic: "al-wala-wal-bara", subject: "aqeedah" },
   
   // 9. السنة والبدعة
-  { pattern: /الاعتصام|البدع|بدعة|البدعة|ذم الكلام|الحوادث والبدع|الاتباع/ui, topic: "al-sunnah-wal-bidah", subject: "aqeedah" },
+  { pattern: /الاعتصام|البدع|بدعة|البدعة|ذم الكلام|الحوادث والبدع|الاتباع|al-sunnah-wal-bidah/ui, topic: "al-sunnah-wal-bidah", subject: "aqeedah" },
   
   // 10. الفرق والردود
-  { pattern: /الفرق|الملل والنحل|الأشاعرة|المعتزلة|الجهمية|الرافضة|الشيعة|التصوف|الصوفية|وحدة الوجود|الرد على|نقد|نقض|مقالات/ui, topic: "al-firaq-war-rudud", subject: "aqeedah" },
+  { pattern: /الفرق|الملل والنحل|الأشاعرة|المعتزلة|الجهمية|الرافضة|الشيعة|التصوف|الصوفية|وحدة الوجود|الرد على|نقد|نقض|مقالات|al-firaq-war-rudud/ui, topic: "al-firaq-war-rudud", subject: "aqeedah" },
 
   // Lughah / Nahw
   { pattern: /نحو|صرف|بلاغة|لغة|عربية|الآجرومية|ألفية ابن مالك|nahw|sarf|lughah/ui, topic: "al-nahw-al-muyassar", subject: "nahw" },
@@ -1314,12 +1314,32 @@ function main() {
     process.exit(1);
   }
 
+  // Helper function to recursively find EPUB files
+  function getEpubsRecursive(dir: string): string[] {
+    const results: string[] = [];
+    try {
+      const list = readdirSync(dir);
+      for (const file of list) {
+        const filePath = join(dir, file);
+        const stat = statSync(filePath);
+        if (stat && stat.isDirectory()) {
+          results.push(...getEpubsRecursive(filePath));
+        } else if (file.endsWith(".epub")) {
+          results.push(filePath);
+        }
+      }
+    } catch (err) {
+      console.error(`Error reading directory ${dir}:`, err);
+    }
+    return results;
+  }
+
   // Expand positional paths to .epub files
   const files: string[] = [];
   for (const p of positional) {
     if (!existsSync(p)) { console.error("✗ not found: " + p); continue; }
     if (statSync(p).isDirectory()) {
-      files.push(...readdirSync(p).filter((f) => f.endsWith(".epub")).sort().map((f) => join(p, f)));
+      files.push(...getEpubsRecursive(p).sort());
     } else {
       files.push(p);
     }

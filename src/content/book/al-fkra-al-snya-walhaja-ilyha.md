@@ -3,7 +3,7 @@ title: "الفكرة السنية والحاجة إليها"
 status: published
 published_at: 2026-06-26
 person: mhmd-ishaq-al-sdyqy
-topics: ["aam-aqeedah"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "العدد الستون - شوال - ذو القعدة - ذو الحجة 1403 هـ"
 ---
 ## مقدمة...

@@ -3,7 +3,7 @@ title: "منهج القرآن في القضاء والقدر"
 status: published
 published_at: 2026-06-26
 person: mhmwd-mhmd-ghryb
-topics: ["al-qadr"]
+topics: ["al-aqeedah-al-aamah", "al-qadr"]
 edition: "الثانية، 1419 هـ - 1998 م"
 ---
 بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ الكتاب:

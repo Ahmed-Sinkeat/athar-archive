@@ -3,7 +3,7 @@ title: "التوحيد للفوزان"
 status: published
 published_at: 2026-06-26
 person: salh-al-fwzan
-topics: ["tahwid-al-ibada"]
+topics: ["al-aqeedah-al-aamah", "tahwid-al-ibada"]
 edition: "الرابعة، 1423هـ"
 ---
 [

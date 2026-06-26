@@ -3,7 +3,7 @@ title: "الاستقامة"
 status: published
 published_at: 2026-06-26
 person: abn-tymya
-topics: ["aam-aqeedah"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "الأولى، 1403"
 description: "بتحقيق د. محمد رشاد سالم"
 ---

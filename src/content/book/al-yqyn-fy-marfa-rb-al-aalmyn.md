@@ -3,7 +3,7 @@ title: "اليقين في معرفة رب العالمين"
 status: published
 published_at: 2026-06-26
 person: mhmd-aly-mhmd-imam
-topics: ["aam-aqeedah"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "الأولى، 2005 م"
 ---
 اليقين فى معرفة رب العالمين إعداد محمد على محمد إمام

@@ -3,7 +3,7 @@ title: "الحسام المسلول على منتقصي أصحاب الرسول"
 status: published
 published_at: 2026-06-26
 person: bhrq-al-ymny
-topics: ["aam-aqeedah"]
+topics: ["al-aqeedah-al-aamah"]
 description: "بتحقيق حسنين محمد مخلوف"
 ---
 الحسام المسلول على منتقصي أصحاب الرسول لبحرق اليمني<sup data-fn="1" data-sep-page="1">1</sup>

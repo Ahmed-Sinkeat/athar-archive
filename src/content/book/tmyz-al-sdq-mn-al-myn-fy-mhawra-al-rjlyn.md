@@ -3,7 +3,7 @@ title: "تميز الصدق من المين في محاورة الرجلين"
 status: published
 published_at: 2026-06-26
 person: slyman-bn-shman
-topics: ["aam-aqeedah"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "الأولى، 1415هـ"
 description: "بتحقيق عبد العزيز بن عبد الله الزير آل حمد"
 ---

@@ -3,7 +3,7 @@ title: "الاعتصام للشاطبي ت الهلالي"
 status: published
 published_at: 2026-06-26
 person: al-shatby-ibrahym-bn-mwsa
-topics: ["al-sunnah-wal-bidah"]
+topics: ["al-aqeedah-al-aamah", "al-sunnah-wal-bidah"]
 edition: "الأولى، 1412هـ - 1992م"
 ---
 ## [الاعتصام]ـ

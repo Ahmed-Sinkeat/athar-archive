@@ -3,7 +3,7 @@ title: "مناظرة بين الإسلام والنصرانية"
 status: published
 published_at: 2026-06-26
 person: mjmwaa-mn-al-mwlfyn
-topics: ["aam-aqeedah"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "الثانية، 1413 هـ - 1992 م"
 ---
 بسم الله الرحمن الرحيم

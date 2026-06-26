@@ -3,7 +3,7 @@ title: "الشفاعة"
 status: published
 published_at: 2026-06-26
 person: mqbl-bn-hady-al-waday
-topics: ["al-samiyyat"]
+topics: ["al-aqeedah-al-aamah", "al-samiyyat"]
 edition: "الثالثة، 1420 هـ - 1999 م"
 ---
 ## مقدمة الطبعة الثالثة

@@ -3,7 +3,7 @@ title: "أسماء الله وصفاته وموقف أهل السنه منها"
 status: published
 published_at: 2026-06-26
 person: abn-athymyn
-topics: ["al-asma-was-sifat"]
+topics: ["al-aqeedah-al-aamah", "al-asma-was-sifat"]
 edition: "1424هـ- 2003م الطبعة الأولى"
 ---
 ## مقدمة...

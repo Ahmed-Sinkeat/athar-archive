@@ -3,7 +3,7 @@ title: "ما يجب أن يعرفه المسلم عن دينه"
 status: published
 published_at: 2026-06-26
 person: abd-al-lh-al-khyat
-topics: ["aam-aqeedah"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "الثالثة، 1413هـ"
 ---
 [

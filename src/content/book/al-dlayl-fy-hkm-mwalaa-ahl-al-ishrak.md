@@ -3,7 +3,7 @@ title: "الدلائل في حكم موالاة أهل الإشراك"
 status: published
 published_at: 2026-06-26
 person: slyman-bn-abd-al-lh-al-al-shykh
-topics: ["al-wala-wal-bara"]
+topics: ["al-aqeedah-al-aamah", "al-wala-wal-bara"]
 ---
 رسالة الدلائل في حكم موالاة أهل الإشراك للشيخ سليمان بن عبد الله بن محمد بن عبد الوهاب من كتاب مجموع الرسائل تحقيق د. الوليد بن عبد الرحمن بن محمد آل فريان
 

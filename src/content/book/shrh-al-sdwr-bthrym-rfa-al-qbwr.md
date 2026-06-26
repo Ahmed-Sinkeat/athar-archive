@@ -3,7 +3,7 @@ title: "شرح الصدور بتحريم رفع القبور"
 status: published
 published_at: 2026-06-26
 person: al-shwkany
-topics: ["al-samiyyat"]
+topics: ["al-aqeedah-al-aamah", "al-samiyyat"]
 edition: "الرابعة، 1408هـ"
 ---
 ## مقدمة...

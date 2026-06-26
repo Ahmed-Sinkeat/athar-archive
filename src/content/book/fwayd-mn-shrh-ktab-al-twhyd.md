@@ -3,7 +3,7 @@ title: "فوائد من شرح كتاب التوحيد"
 status: published
 published_at: 2026-06-26
 person: abd-al-azyz-al-sdhan
-topics: ["tahwid-al-ibada"]
+topics: ["al-aqeedah-al-aamah", "tahwid-al-ibada"]
 ---
 ## مقدمة
 

@@ -3,7 +3,7 @@ title: "كشف غياهب الظلام عن أوهام جلاء الأوهام"
 status: published
 published_at: 2026-06-26
 person: slyman-bn-shman
-topics: ["aam-aqeedah"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "الأولى"
 ---
 ## [كشف غياهب الظلام عن أوهام جلاء الأفهام]ـ
