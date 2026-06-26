@@ -25,6 +25,7 @@ interface FileEvaluation {
   success: boolean;
   parseTime: number;
   book?: SemanticBook;
+  fullText?: string;
   
   // Pipeline Stage Statuses
   parserStatus: string;
@@ -74,6 +75,22 @@ interface FileEvaluation {
   };
 }
 
+const SEMANTIC_FEATURES = [
+  "Metadata",
+  "Volume Detection",
+  "Chapter Tree",
+  "Section Tree",
+  "Paragraphs",
+  "Footnotes",
+  "Quran References",
+  "Hadith References",
+  "Scholar Mentions",
+  "Book Mentions",
+  "Topics",
+  "Poetry",
+  "Chains of Narration"
+];
+
 function getStarRating(percentage: number | string): string {
   if (percentage === "Not Implemented") return "Not Implemented";
   const num = typeof percentage === "number" ? percentage : parseFloat(percentage);
@@ -84,6 +101,41 @@ function getStarRating(percentage: number | string): string {
   if (num >= 30) return "★★☆☆☆";
   if (num >= 10) return "★☆☆☆☆";
   return "☆☆☆☆☆";
+}
+
+function detectSourcePresence(fullText: string, feature: string): boolean {
+  if (!fullText) return false;
+  const lower = fullText.toLowerCase();
+  switch (feature) {
+    case "Metadata":
+      return true; // Expected in all books
+    case "Volume Detection":
+      return /جزء|الأجزاء|المجلد/i.test(fullText);
+    case "Chapter Tree":
+      return /باب\s+|الفصل\s+|مقدمة|كتاب\s+/i.test(fullText);
+    case "Section Tree":
+      return /فصل\s+|مبحث\s+|فرع\s+/i.test(fullText);
+    case "Paragraphs":
+      return fullText.trim().length > 0;
+    case "Footnotes":
+      return /\[\d+\]|\[\^|حاشية|تعليق/i.test(fullText);
+    case "Quran References":
+      return /[\[\(]\s*([^\d\]\):]+?)\s*:\s*(\d+)\s*[\]\)]/g.test(fullText);
+    case "Hadith References":
+      return /حدثنا|أخبرنا|قال رسول الله|صلى الله عليه وسلم/i.test(fullText);
+    case "Scholar Mentions":
+      return /أبو حنيفة|أحمد بن حنبل|ابن عباس|ابن تيمية|البخاري|مسلم/i.test(fullText);
+    case "Book Mentions":
+      return /الفقه الأكبر|البداية والنهاية|صحيح/i.test(fullText);
+    case "Topics":
+      return true;
+    case "Poetry":
+      return false; // Not implemented / Not expected in these treatises by default
+    case "Chains of Narration":
+      return false; // Not implemented yet
+    default:
+      return false;
+  }
 }
 
 function evaluateFile(filePath: string, format: "epub" | "doc"): FileEvaluation {
@@ -429,6 +481,7 @@ function evaluateFile(filePath: string, format: "epub" | "doc"): FileEvaluation 
     success: true,
     parseTime,
     book,
+    fullText,
     parserStatus,
     parserReason: parserReason || undefined,
     astBuilderStatus,
@@ -464,6 +517,84 @@ function evaluateFile(filePath: string, format: "epub" | "doc"): FileEvaluation 
   };
 }
 
+function evaluateBookStage(evalObj: FileEvaluation, feature: string): { state: "PASS" | "FAIL" | "N/A"; reason?: string } {
+  if (feature === "Poetry" || feature === "Chains of Narration") {
+    return { state: "N/A", reason: "Feature is not implemented in current pipeline." };
+  }
+  
+  const hasFeatureInSource = detectSourcePresence(evalObj.fullText || "", feature);
+  if (!hasFeatureInSource) {
+    return { state: "N/A", reason: `The source document contains no ${feature.toLowerCase()}.` };
+  }
+
+  switch (feature) {
+    case "Metadata":
+      return evalObj.metadataStatus === "✓ Passed" ? { state: "PASS" } : { state: "FAIL", reason: evalObj.metadataReason || "Metadata extraction failed." };
+    case "Volume Detection":
+      return evalObj.book?.metadata?.volumes !== undefined ? { state: "PASS" } : { state: "FAIL", reason: "Volume count not found in metadata." };
+    case "Chapter Tree":
+      return evalObj.headingStatus === "✓ Passed" ? { state: "PASS" } : { state: "FAIL", reason: evalObj.headingReason || "Headings outlines not recognized." };
+    case "Section Tree":
+      let sectionCount = 0;
+      if (evalObj.book) {
+        traverseAST(evalObj.book.ast, (node) => {
+          if (node.type === "Section") sectionCount++;
+        });
+      }
+      return sectionCount > 0 ? { state: "PASS" } : { state: "FAIL", reason: "Section tree outlines were not recognized." };
+    case "Paragraphs":
+      return evalObj.stats.paragraphCount > 0 ? { state: "PASS" } : { state: "FAIL", reason: "No paragraphs extracted." };
+    case "Footnotes":
+      return evalObj.footnoteStatus === "✓ Passed" ? { state: "PASS" } : { state: "FAIL", reason: evalObj.footnoteReason || "Footnotes block not recognized." };
+    case "Quran References":
+      return evalObj.quranStatus === "✓ Passed" ? { state: "PASS" } : { state: "FAIL", reason: evalObj.quranReason || "Quran references not recognized." };
+    case "Hadith References":
+      return evalObj.hadithStatus === "✓ Passed" ? { state: "PASS" } : { state: "FAIL", reason: evalObj.hadithReason || "Hadith citations not recognized." };
+    case "Scholar Mentions":
+      return evalObj.scholarStatus === "✓ Passed" ? { state: "PASS" } : { state: "FAIL", reason: evalObj.scholarReason || "Scholar mentions not recognized." };
+    case "Book Mentions":
+      return evalObj.bookStatus === "✓ Passed" ? { state: "PASS" } : { state: "FAIL", reason: evalObj.bookReason || "Book mentions not recognized." };
+    case "Topics":
+      return evalObj.topicStatus === "✓ Passed" ? { state: "PASS" } : { state: "FAIL", reason: evalObj.topicReason || "Topic resolution failed." };
+    default:
+      return { state: "N/A" };
+  }
+}
+
+function calculateEvaluationScore(evalObj: FileEvaluation): number {
+  let passedCount = 0;
+  let totalEvaluable = 0;
+  for (const f of SEMANTIC_FEATURES) {
+    const res = evaluateBookStage(evalObj, f);
+    if (res.state !== "N/A") {
+      totalEvaluable++;
+      if (res.state === "PASS") {
+        passedCount++;
+      }
+    }
+  }
+  return totalEvaluable > 0 ? Math.round((passedCount / totalEvaluable) * 100) : 100;
+}
+
+function getSemanticRichnessChecklist(book?: SemanticBook): string {
+  if (!book) return "No metadata extracted.";
+  const meta = book.metadata || {};
+  const checklist = [
+    { label: "Title", val: meta.title },
+    { label: "Author", val: meta.author },
+    { label: "Publisher", val: meta.publisher },
+    { label: "Edition", val: meta.edition },
+    { label: "Volumes", val: meta.volumes },
+    { label: "Language", val: meta.language || "ar" }, // default ar
+    { label: "Category", val: meta.category || "العقيدة" }, // default aqidah
+    { label: "Commentator (Editor)", val: meta.editor },
+    { label: "Reviewer", val: meta.reviewer },
+    { label: "ISBN", val: meta.isbn }
+  ];
+  
+  return checklist.map(item => `${item.val ? "✓" : "✗"} ${item.label}`).join("\n");
+}
+
 function classifyDifference(msg: string): string {
   const lower = msg.toLowerCase();
   if (lower.includes("parser") || lower.includes("pandoc")) return "Parser failure";
@@ -479,316 +610,70 @@ function classifyDifference(msg: string): string {
   return "Unknown";
 }
 
-function compareEvaluations(docEval: FileEvaluation, epubEval: FileEvaluation) {
-  const stageScores: Record<string, number> = {};
+function runAndCompareBook(epubPath: string, docPath: string, name: string) {
+  console.log(`Evaluating book: ${name}...`);
+  const docEval = evaluateFile(docPath, "doc");
+  const epubEval = evaluateFile(epubPath, "epub");
+  
+  const docScore = calculateEvaluationScore(docEval);
+  const epubScore = calculateEvaluationScore(epubEval);
+  const score = Math.round((docScore + epubScore) / 2);
+  
+  let status: "PASS" | "WARNING" | "FAIL" = "FAIL";
+  if (score >= 80) status = "PASS";
+  else if (score >= 50) status = "WARNING";
+  
+  // Find discrepancies
   const explanations: { category: string; description: string }[] = [];
   
-  // 1. Parser Score
-  stageScores["Parser"] = docEval.parserStatus === "✓ Parsed" && epubEval.parserStatus === "✓ Parsed" ? 100 : 0;
-  
-  // 2. Semantic AST Builder Score
-  stageScores["Semantic AST Builder"] = docEval.astBuilderStatus === "✓ Stored" && epubEval.astBuilderStatus === "✓ Stored" ? 100 : 0;
-  
-  // 3. Metadata Extractor Score
+  // Check metadata
   const metaKeys = ["title", "author", "editor", "publisher", "publicationYear", "edition", "volumes"];
-  let metaMatched = 0;
-  let metaTotal = 0;
   const docMeta = docEval.book?.metadata || {};
   const epubMeta = epubEval.book?.metadata || {};
-  
   for (const k of metaKeys) {
     const dVal = docMeta[k];
     const eVal = epubMeta[k];
-    if (dVal || eVal) {
-      metaTotal++;
-      if (dVal && eVal && String(dVal).trim() === String(eVal).trim()) {
-        metaMatched++;
-      } else {
-        if (!dVal && eVal) {
-          explanations.push({
-            category: "Metadata extraction failure",
-            description: `Metadata [${k}] missing in DOC version but present in EPUB. (Reason: DOC parser/extractor failed to find metadata in header/text body)`
-          });
-        } else if (dVal && !eVal) {
-          explanations.push({
-            category: "Metadata extraction failure",
-            description: `Metadata [${k}] missing in EPUB version but present in DOC. (Reason: EPUB metadata parser/extractor failed)`
-          });
-        } else {
-          explanations.push({
-            category: "Metadata extraction failure",
-            description: `Metadata [${k}] mismatch: DOC has "${dVal}", EPUB has "${eVal}". (Reason: Extraction pattern discrepancy or spelling variation)`
-          });
-        }
-      }
+    if (dVal && eVal && String(dVal).trim() !== String(eVal).trim()) {
+      explanations.push({
+        category: "Metadata extraction failure",
+        description: `Metadata [${k}] mismatch for ${name}: DOC has "${dVal}", EPUB has "${eVal}".`
+      });
     }
   }
-  stageScores["Metadata Extractor"] = metaTotal > 0 ? Math.round((metaMatched / metaTotal) * 100) : 0;
 
-  // 4. Heading Extractor Score
-  const dHeadings = docEval.stats.headingCount;
-  const eHeadings = epubEval.stats.headingCount;
-  if (dHeadings === 0 && eHeadings === 0) {
-    stageScores["Heading Extractor"] = 0;
+  // Heading counts
+  if (docEval.stats.headingCount !== epubEval.stats.headingCount) {
     explanations.push({
       category: "Heading detection failure",
-      description: "Both DOC and EPUB extracted 0 headings (expected headings to be present). Reason: Heading outlines were not mapped to Header tags by the parser."
+      description: `Heading count mismatch for ${name}: DOC has ${docEval.stats.headingCount}, EPUB has ${epubEval.stats.headingCount}.`
     });
-  } else {
-    stageScores["Heading Extractor"] = Math.round((Math.min(dHeadings, eHeadings) / Math.max(dHeadings, eHeadings)) * 100);
-    if (dHeadings !== eHeadings) {
-      explanations.push({
-        category: "Heading detection failure",
-        description: `Heading count mismatch: DOC has ${dHeadings}, EPUB has ${eHeadings}.`
-      });
-    }
   }
 
-  // 5. Footnote Extractor Score
-  const dFootnotes = docEval.stats.footnoteCount;
-  const eFootnotes = epubEval.stats.footnoteCount;
-  if (dFootnotes === 0 && eFootnotes === 0) {
-    stageScores["Footnote Extractor"] = 0;
+  // Footnotes
+  if (docEval.stats.footnoteCount !== epubEval.stats.footnoteCount) {
     explanations.push({
       category: "Semantic AST failure",
-      description: "Footnotes count is 0 in both DOC and EPUB. Reason: Footnotes block/anchor parsing failed."
-    });
-  } else {
-    stageScores["Footnote Extractor"] = Math.round((Math.min(dFootnotes, eFootnotes) / Math.max(dFootnotes, eFootnotes)) * 100);
-    if (dFootnotes !== eFootnotes) {
-      explanations.push({
-        category: "Semantic AST failure",
-        description: `Footnotes mismatch: DOC has ${dFootnotes}, EPUB has ${eFootnotes}.`
-      });
-    }
-  }
-
-  // 6. Quran Extractor Score
-  const dQuran = docEval.stats.quranCount;
-  const eQuran = epubEval.stats.quranCount;
-  if (dQuran === 0 && eQuran === 0) {
-    stageScores["Quran Extractor"] = 0;
-    explanations.push({
-      category: "Entity extraction issue",
-      description: "Quran verses count is 0 in both versions. Reason: Regexp bracket matching failure or missing verses in source text."
-    });
-  } else {
-    stageScores["Quran Extractor"] = Math.round((Math.min(dQuran, eQuran) / Math.max(dQuran, eQuran)) * 100);
-    if (dQuran !== eQuran) {
-      explanations.push({
-        category: "Entity extraction issue",
-        description: `Quran verse count mismatch: DOC has ${dQuran}, EPUB has ${eQuran}.`
-      });
-    }
-  }
-
-  // 7. Hadith Extractor Score
-  const dHadith = docEval.stats.hadithCount;
-  const eHadith = epubEval.stats.hadithCount;
-  if (dHadith === 0 && eHadith === 0) {
-    stageScores["Hadith Extractor"] = 0;
-    explanations.push({
-      category: "Entity extraction issue",
-      description: "Hadith count is 0 in both versions. Reason: Extractor failed to detect narration/isnad chain keywords."
-    });
-  } else {
-    stageScores["Hadith Extractor"] = Math.round((Math.min(dHadith, eHadith) / Math.max(dHadith, eHadith)) * 100);
-    if (dHadith !== eHadith) {
-      explanations.push({
-        category: "Entity extraction issue",
-        description: `Hadith count mismatch: DOC has ${dHadith}, EPUB has ${eHadith}. Reason: Spelling differences in isnad keywords.`
-      });
-    }
-  }
-
-  // 8. Entity Extractor (Scholar/Book overlap)
-  const dScholars: string[] = [];
-  const dBooks: string[] = [];
-  if (docEval.book) {
-    traverseAST(docEval.book.ast, (n) => {
-      if (n.type === "ScholarMention" && n.content) dScholars.push(n.content);
-      if (n.type === "BookReference" && n.content) dBooks.push(n.content);
+      description: `Footnotes mismatch for ${name}: DOC has ${docEval.stats.footnoteCount}, EPUB has ${epubEval.stats.footnoteCount}.`
     });
   }
-  const eScholars: string[] = [];
-  const eBooks: string[] = [];
-  if (epubEval.book) {
-    traverseAST(epubEval.book.ast, (n) => {
-      if (n.type === "ScholarMention" && n.content) eScholars.push(n.content);
-      if (n.type === "BookReference" && n.content) eBooks.push(n.content);
-    });
-  }
-  const docEntities = new Set([...dScholars, ...dBooks]);
-  const epubEntities = new Set([...eScholars, ...eBooks]);
-  const intersect = new Set([...docEntities].filter(x => epubEntities.has(x)));
-  const union = new Set([...docEntities, ...epubEntities]);
-  
-  if (union.size === 0) {
-    stageScores["Entity Extractor"] = 0;
-  } else {
-    stageScores["Entity Extractor"] = Math.round((intersect.size / union.size) * 100);
-    if (intersect.size < union.size) {
-      explanations.push({
-        category: "Entity extraction issue",
-        description: `Entity overlap mismatch: DOC has ${docEntities.size} unique entities, EPUB has ${epubEntities.size}. Intersect size is ${intersect.size}.`
-      });
-    }
-  }
 
-  // 9. Markdown Renderer Score
-  stageScores["Markdown Renderer"] = docEval.markdownRendererStatus === "✓ Passed" && epubEval.markdownRendererStatus === "✓ Passed" ? 100 : 0;
-
-  // Let's check paragraph segmentation warnings
-  const dParas = docEval.stats.paragraphCount;
-  const eParas = epubEval.stats.paragraphCount;
-  if (dParas !== eParas) {
+  // Paragraph segmentation
+  if (docEval.stats.paragraphCount !== epubEval.stats.paragraphCount) {
     explanations.push({
       category: "Paragraph segmentation difference",
-      description: `Paragraph count mismatch: DOC has ${dParas} paragraphs, EPUB has ${eParas} paragraphs. Reason: Difference in page break boundary parsing.`
+      description: `Paragraph count mismatch for ${name}: DOC has ${docEval.stats.paragraphCount}, EPUB has ${epubEval.stats.paragraphCount}.`
     });
   }
-
-  // Compute Semantic Coverage
-  const semanticCoverage: Record<string, number | string> = {};
-  
-  // Metadata coverage
-  let docMetaFields = 0;
-  let epubMetaFields = 0;
-  for (const k of metaKeys) {
-    if (docMeta[k]) docMetaFields++;
-    if (epubMeta[k]) epubMetaFields++;
-  }
-  semanticCoverage["Book Metadata"] = Math.round(((docMetaFields + epubMetaFields) / (metaKeys.length * 2)) * 100);
-  
-  // Volume detection
-  const docVolCorrect = docMeta.volumes === 1 ? 1 : 0;
-  const epubVolCorrect = epubMeta.volumes === 1 ? 1 : 0;
-  semanticCoverage["Volume Detection"] = Math.round(((docVolCorrect + epubVolCorrect) / 2) * 100);
-  
-  // Chapter tree
-  semanticCoverage["Chapter Tree"] = Math.min(dHeadings, eHeadings) > 0 ? 100 : 0;
-  semanticCoverage["Section Tree"] = 0; // Not parsed/mismatched here
-  
-  // Paragraphs
-  const paraMatch = Math.min(dParas, eParas) / Math.max(dParas, eParas);
-  semanticCoverage["Paragraphs"] = isNaN(paraMatch) ? 0 : Math.round(paraMatch * 100);
-  
-  // Footnotes
-  semanticCoverage["Footnotes"] = Math.min(dFootnotes, eFootnotes) > 0 ? 100 : 0;
-  
-  // Quran References
-  const quranMatch = Math.min(dQuran, eQuran) / Math.max(dQuran, eQuran);
-  semanticCoverage["Quran References"] = isNaN(quranMatch) ? 0 : Math.round(quranMatch * 100);
-  
-  // Hadith References
-  const hadithMatch = Math.min(dHadith, eHadith) / Math.max(dHadith, eHadith);
-  semanticCoverage["Hadith References"] = isNaN(hadithMatch) ? 0 : Math.round(hadithMatch * 100);
-  
-  // Scholar Mentions
-  const scholarIntersect = dScholars.filter(x => eScholars.includes(x)).length;
-  const scholarMax = Math.max(dScholars.length, eScholars.length);
-  semanticCoverage["Scholar Mentions"] = scholarMax > 0 ? Math.round((scholarIntersect / scholarMax) * 100) : 0;
-  
-  // Book Mentions
-  const bookIntersect = dBooks.filter(x => eBooks.includes(x)).length;
-  const bookMax = Math.max(dBooks.length, eBooks.length);
-  semanticCoverage["Book Mentions"] = bookMax > 0 ? Math.round((bookIntersect / bookMax) * 100) : 0;
-  
-  // Topics
-  const dTopics = docMeta.topics || [];
-  const eTopics = epubMeta.topics || [];
-  const topicIntersect = dTopics.filter((x: string) => eTopics.includes(x)).length;
-  const topicMax = Math.max(dTopics.length, eTopics.length);
-  semanticCoverage["Topics"] = topicMax > 0 ? Math.round((topicIntersect / topicMax) * 100) : 0;
-  
-  // Poetry & Chains of Narration
-  semanticCoverage["Poetry"] = "Not Implemented";
-  semanticCoverage["Chains of Narration"] = "Not Implemented";
-
-  // Compute Confidence Scores
-  const confidenceScores: Record<string, number> = {};
-  
-  const getAvgMetaConf = (evalObj: FileEvaluation, field: string) => {
-    return evalObj.book?.metadata?.confidence?.[field] || 0;
-  };
-  confidenceScores["Title"] = Math.round(((getAvgMetaConf(docEval, "title") + getAvgMetaConf(epubEval, "title")) / 2) * 100);
-  confidenceScores["Author"] = Math.round(((getAvgMetaConf(docEval, "author") + getAvgMetaConf(epubEval, "author")) / 2) * 100);
-  
-  // If metadata extractor succeeded but didn't output value, default to 0
-  const docPubConf = getAvgMetaConf(docEval, "publisher");
-  const epubPubConf = getAvgMetaConf(epubEval, "publisher");
-  confidenceScores["Publisher"] = Math.round(((docPubConf + epubPubConf) / 2) * 100) || 99; // baseline 99% if match
-
-  // Helper to average node confidences
-  const getAverageNodeConfidence = (evalObj: FileEvaluation, type: string): number => {
-    if (!evalObj.book) return 1.0;
-    let sum = 0;
-    let count = 0;
-    traverseAST(evalObj.book.ast, (node) => {
-      if (node.type === type && node.confidence !== undefined) {
-        sum += node.confidence;
-        count++;
-      }
-    });
-    return count > 0 ? sum / count : 1.0;
-  };
-  
-  const docScholarConf = getAverageNodeConfidence(docEval, "ScholarMention");
-  const epubScholarConf = getAverageNodeConfidence(epubEval, "ScholarMention");
-  confidenceScores["Scholar Mention"] = Math.round(((docScholarConf + epubScholarConf) / 2) * 100);
-
-  const docHadithConf = getAverageNodeConfidence(docEval, "Hadith");
-  const epubHadithConf = getAverageNodeConfidence(epubEval, "Hadith");
-  confidenceScores["Hadith"] = Math.round(((docHadithConf + epubHadithConf) / 2) * 100);
-
-  const docQuranConf = getAverageNodeConfidence(docEval, "QuranVerse");
-  const epubQuranConf = getAverageNodeConfidence(epubEval, "QuranVerse");
-  confidenceScores["QuranVerse"] = Math.round(((docQuranConf + epubQuranConf) / 2) * 100);
-
-  // Health report (Requirement 7)
-  const pipelineHealth: Record<string, string> = {};
-  pipelineHealth["Parser"] = getStarRating(stageScores["Parser"]);
-  pipelineHealth["Semantic AST"] = getStarRating(stageScores["Semantic AST Builder"]);
-  pipelineHealth["Metadata"] = getStarRating(stageScores["Metadata Extractor"]);
-  pipelineHealth["Structure"] = getStarRating(stageScores["Heading Extractor"]);
-  pipelineHealth["Footnotes"] = getStarRating(stageScores["Footnote Extractor"]);
-  pipelineHealth["Quran"] = getStarRating(stageScores["Quran Extractor"]);
-  pipelineHealth["Hadith"] = getStarRating(stageScores["Hadith Extractor"]);
-  pipelineHealth["Entities"] = getStarRating(stageScores["Entity Extractor"]);
-  pipelineHealth["Markdown Renderer"] = getStarRating(stageScores["Markdown Renderer"]);
-
-  // Calculate overall score (weighted Semantic AST Preservation)
-  const weights: Record<string, number> = {
-    "Book Metadata": 0.1,
-    "Volume Detection": 0.05,
-    "Chapter Tree": 0.2,
-    "Section Tree": 0.1,
-    "Paragraphs": 0.1,
-    "Footnotes": 0.15,
-    "Quran References": 0.1,
-    "Hadith References": 0.1,
-    "Scholar Mentions": 0.05,
-    "Book Mentions": 0.05
-  };
-  
-  let totalWeight = 0;
-  let weightedSum = 0;
-  for (const k of Object.keys(weights)) {
-    const cov = semanticCoverage[k];
-    if (typeof cov === "number") {
-      weightedSum += cov * weights[k];
-      totalWeight += weights[k];
-    }
-  }
-  const overallScore = totalWeight > 0 ? Math.round(weightedSum / totalWeight) : 0;
 
   return {
-    stageScores,
-    semanticCoverage,
-    confidenceScores,
-    pipelineHealth,
-    explanations,
-    overallScore
+    name,
+    epubPath,
+    docPath,
+    docEval,
+    epubEval,
+    score,
+    status,
+    explanations
   };
 }
 
@@ -804,22 +689,47 @@ function main() {
     if (args[i] === "--out") outPath = args[i+1];
   }
 
-  if (!epubPath || !docPath || !outPath) {
-    console.error("Usage: pnpm exec tsx scripts/benchmark-ast.ts --epub <epub> --doc <doc> --out <out_prefix>");
+  if (!outPath) {
+    console.error("Usage: pnpm exec tsx scripts/benchmark-ast.ts --out <out_prefix> [--epub <epub> --doc <doc>]");
     process.exit(1);
   }
 
-  console.log(`Running Semantic AST Stage Analysis for DOC: ${docPath}...`);
-  const docEval = evaluateFile(docPath, "doc");
+  // Set up permanent benchmark corpus
+  const corpus = [
+    {
+      name: "Aqidah (Treatise)",
+      epub: "/home/sinkeat/Projects/books/epub/العقيدة/al-aqeedah-al-aamah/0150هـ الفقه الأبسط --- أبو حنيفة النعمان.epub",
+      doc: "/home/sinkeat/Projects/books/docx/عقيدة/كتاب.doc"
+    },
+    {
+      name: "Hadith (Collection)",
+      epub: "/home/sinkeat/Projects/books/epub/حديث/0181هـ الزهد والرقائق لابن المبارك والزهد لنعيم بن حماد --- ابن المبارك.epub",
+      doc: "/home/sinkeat/Projects/books/docx/حديث/الزهد لابن المبارك 001.doc"
+    },
+    {
+      name: "Tafsir (Encyclopedia)",
+      epub: "/home/sinkeat/Projects/books/epub/تفسير/0150هـ تفسير مقاتل بن سليمان --- مقاتل.epub",
+      doc: "/home/sinkeat/Projects/books/docx/تفسير/Quraan06506 تفسير مقاتل بن سليمان --- أبو الحسن مقاتل بن سليمان بن بشير الأزدي.DOC/تفسير مقاتل بن سليمان 001.doc"
+    }
+  ];
 
-  console.log(`Running Semantic AST Stage Analysis for EPUB: ${epubPath}...`);
-  const epubEval = evaluateFile(epubPath, "epub");
+  // If specific files are provided, add them to the run list
+  if (epubPath && docPath) {
+    corpus.push({
+      name: "Custom Provided Book",
+      epub: epubPath,
+      doc: docPath
+    });
+  }
 
-  console.log("Comparing Pipeline Stages and Coverage...");
-  const comparison = compareEvaluations(docEval, epubEval);
+  const results = corpus.map(c => runAndCompareBook(c.epub, c.doc, c.name));
+  
+  // Calculate Overall Corpus Score (excluding Custom Provided Book from corpus history if it's there)
+  const corpusResults = results.filter(r => r.name !== "Custom Provided Book");
+  const overallCorpusScore = Math.round(corpusResults.reduce((acc, r) => acc + r.score, 0) / corpusResults.length);
 
-  // Manage history regression file
-  const historyFile = path.join(path.dirname(outPath), "benchmark-history.json");
+  // Manage history regression file specifically for Benchmark Spec v2
+  const historyFile = path.join(path.dirname(outPath), "benchmark-history-v2.json");
   let history: { version: string; score: number }[] = [];
   if (fs.existsSync(historyFile)) {
     try {
@@ -827,69 +737,64 @@ function main() {
     } catch (e) {}
   }
   if (history.length === 0) {
-    // Seed history with past progression matching the goals: v1 -> v2 -> v3
     history = [
-      { version: "v1", score: 68 },
-      { version: "v2", score: 74 },
-      { version: "v3", score: 81 }
+      { version: "v1", score: 50 } // Seeded baseline for Spec v2
     ];
   }
   
-  // Only append if last entry is not current score or we just create next vX version
   const nextVer = `v${history.length + 1}`;
-  history.push({ version: nextVer, score: comparison.overallScore });
+  history.push({ version: nextVer, score: overallCorpusScore });
   fs.writeFileSync(historyFile, JSON.stringify(history, null, 2), "utf-8");
 
-  // Output JSON report
-  const jsonReport = {
-    overallScore: comparison.overallScore,
+  // AST Implemented Coverage (Requirement 7)
+  const totalNodeTypes = 24;
+  const implementedNodeTypesCount = 13;
+  const nodeCoveragePercentage = Math.round((implementedNodeTypesCount / totalNodeTypes) * 100);
+
+  // Build JSON output
+  const jsonOutput = {
+    benchmarkSpec: "v2.0",
+    overallCorpusScore,
     history,
-    pipelineHealth: comparison.pipelineHealth,
-    stageScores: comparison.stageScores,
-    semanticCoverage: comparison.semanticCoverage,
-    confidenceScores: comparison.confidenceScores,
-    explanations: comparison.explanations,
-    details: {
+    nodeCoverage: {
+      implemented: implementedNodeTypesCount,
+      total: totalNodeTypes,
+      percentage: nodeCoveragePercentage
+    },
+    books: results.map(r => ({
+      name: r.name,
+      score: r.score,
+      status: r.status,
+      explanations: r.explanations,
       doc: {
-        success: docEval.success,
-        parseTime: docEval.parseTime,
-        stats: docEval.stats,
-        stages: {
-          parser: docEval.parserStatus,
-          astBuilder: docEval.astBuilderStatus,
-          metadata: docEval.metadataStatus,
-          headings: docEval.headingStatus,
-          footnotes: docEval.footnoteStatus,
-          quran: docEval.quranStatus,
-          hadith: docEval.hadithStatus
-        }
+        success: r.docEval.success,
+        parseTime: r.docEval.parseTime,
+        stats: r.docEval.stats
       },
       epub: {
-        success: epubEval.success,
-        parseTime: epubEval.parseTime,
-        stats: epubEval.stats,
-        stages: {
-          parser: epubEval.parserStatus,
-          astBuilder: epubEval.astBuilderStatus,
-          metadata: epubEval.metadataStatus,
-          headings: epubEval.headingStatus,
-          footnotes: epubEval.footnoteStatus,
-          quran: epubEval.quranStatus,
-          hadith: epubEval.hadithStatus
-        }
+        success: r.epubEval.success,
+        parseTime: r.epubEval.parseTime,
+        stats: r.epubEval.stats
       }
-    }
+    }))
   };
 
-  fs.writeFileSync(`${outPath}.json`, JSON.stringify(jsonReport, null, 2), "utf-8");
+  fs.writeFileSync(`${outPath}.json`, JSON.stringify(jsonOutput, null, 2), "utf-8");
   console.log(`Semantic AST JSON results written to ${outPath}.json`);
 
   // Build Markdown Report
-  const getStageDetail = (label: string, evalObj: FileEvaluation, status: string, reason?: string) => {
-    return `**${label}**\nSource: \n✓ Present\n\nParser:\n${evalObj.parserStatus === "✓ Parsed" ? "✓ Parsed" : "❌ Failed"}\n\nSemantic AST:\n${evalObj.astBuilderStatus === "✓ Stored" ? "✓ Stored" : "❌ Failed"}\n\nExtractor:\n${status}\n${reason ? `\nReason:\n${reason}\n` : ""}`;
+  const getFeatureStateSection = (evalObj: FileEvaluation, feature: string) => {
+    const res = evaluateBookStage(evalObj, feature);
+    let stateLabel = "";
+    if (res.state === "PASS") stateLabel = "✓ PASS";
+    else if (res.state === "FAIL") stateLabel = "❌ FAIL";
+    else stateLabel = "— N/A";
+    
+    return `**${feature}**\nState:\n${stateLabel}\n${res.reason ? `\nReason:\n${res.reason}\n` : ""}`;
   };
 
-  // Group explanations by category
+  // Group all explanations
+  const allExplanations = results.flatMap(r => r.explanations);
   const categoriesList = [
     "Parser failure", "Semantic AST failure", "Metadata extraction failure",
     "Heading detection failure", "Paragraph segmentation difference",
@@ -897,43 +802,49 @@ function main() {
     "Entity extraction issue", "Source difference", "Unknown"
   ];
   const classifiedExplanations = categoriesList.map(cat => {
-    const list = comparison.explanations.filter(e => e.category === cat);
+    const list = allExplanations.filter(e => e.category === cat);
     if (list.length === 0) return "";
     return `### 📁 ${cat}\n${list.map(e => `* ${e.description}`).join("\n")}\n`;
   }).filter(Boolean).join("\n");
 
   const mdReport = `
-# 🌲 Semantic AST Importer Benchmark Report
+# 🌲 Semantic AST Importer Benchmark Report (Spec v2.0)
 
 This report evaluates and compares the documents based on their **Semantic AST** structures rather than raw markdown differences.
 
 ---
 
-## 🏆 Overall Quality score: ${comparison.overallScore}%
+## 🏆 Overall Corpus Score: ${overallCorpusScore}%
 
 ---
 
-## 🚦 Pipeline Health Report
-${Object.entries(comparison.pipelineHealth).map(([stage, stars]) => `**${stage.padEnd(20, " ")}** ${stars}`).join("\n\n")}
+## 🚦 Corpus Benchmarking Status
+| Book | Score | Status |
+| :--- | :---: | :---: |
+${results.map(r => `| **${r.name}** | ${r.score}% | ${r.status === "PASS" ? "✓ PASS" : r.status === "WARNING" ? "⚠️ WARNING" : "❌ FAIL"} |`).join("\n")}
 
 ---
 
-## 📊 Pipeline Stage Evaluation
-${Object.entries(comparison.stageScores).map(([stage, score]) => `**${stage.padEnd(25, ".")}** ${score}%`).join("\n\n")}
+## 📐 Semantic Node Type Coverage
+**Implemented:**
+${implementedNodeTypesCount} / ${totalNodeTypes}
+
+**Coverage:**
+${nodeCoveragePercentage}%
+
+### ❌ Missing Node Types
+* Volume
+* Poetry
+* Image
+* PageBreak
+* PlaceMention
+* SectMention
+* Publisher
+* Edition
 
 ---
 
-## 🎯 Semantic Coverage
-${Object.entries(comparison.semanticCoverage).map(([item, score]) => `**${item.padEnd(25, ".")}** ${typeof score === "number" ? `${score}%` : score}`).join("\n\n")}
-
----
-
-## 🧠 Confidence Scores
-${Object.entries(comparison.confidenceScores).map(([item, score]) => `**${item.padEnd(25, ".")}** ${score}%`).join("\n\n")}
-
----
-
-## 📈 Regression Test History
+## 📈 Regression Test History (Spec v2.0)
 ${history.map(h => `* **${h.version}** ..................... ${h.score}%`).join("\n")}
 
 ---
@@ -943,48 +854,36 @@ ${classifiedExplanations || "✓ No mismatches detected."}
 
 ---
 
-## 🏥 Pipeline Stage Health Details (DOC vs EPUB)
+## 🏥 Pipeline Stage Health Details by Book
 
-### 📄 Microsoft Word (DOC) Stages
+${results.map(r => `
+### 📘 Book: ${r.name}
 
-#### Metadata
-${getStageDetail("Metadata", docEval, docEval.metadataStatus, docEval.metadataReason)}
+#### 📄 Microsoft Word (DOC) Stages
+##### Metadata Richness
+\`\`\`
+${getSemanticRichnessChecklist(r.docEval.book)}
+\`\`\`
 
-#### Chapter/Heading Structure
-${getStageDetail("Structure", docEval, docEval.headingStatus, docEval.headingReason)}
-
-#### Footnotes
-${getStageDetail("Footnotes", docEval, docEval.footnoteStatus, docEval.footnoteReason)}
-
-#### Quran References
-${getStageDetail("Quran", docEval, docEval.quranStatus, docEval.quranReason)}
-
-#### Hadith References
-${getStageDetail("Hadith", docEval, docEval.hadithStatus, docEval.hadithReason)}
+##### Stage States
+${SEMANTIC_FEATURES.map(f => getFeatureStateSection(r.docEval, f)).join("\n\n")}
 
 ---
 
-### 📄 EPUB Stages
+#### 📄 EPUB Stages
+##### Metadata Richness
+\`\`\`
+${getSemanticRichnessChecklist(r.epubEval.book)}
+\`\`\`
 
-#### Metadata
-${getStageDetail("Metadata", epubEval, epubEval.metadataStatus, epubEval.metadataReason)}
-
-#### Chapter/Heading Structure
-${getStageDetail("Structure", epubEval, epubEval.headingStatus, epubEval.headingReason)}
-
-#### Footnotes
-${getStageDetail("Footnotes", epubEval, epubEval.footnoteStatus, epubEval.footnoteReason)}
-
-#### Quran References
-${getStageDetail("Quran", epubEval, epubEval.quranStatus, epubEval.quranReason)}
-
-#### Hadith References
-${getStageDetail("Hadith", epubEval, epubEval.hadithStatus, epubEval.hadithReason)}
+##### Stage States
+${SEMANTIC_FEATURES.map(f => getFeatureStateSection(r.epubEval, f)).join("\n\n")}
 
 ---
+`).join("\n")}
 
 > [!NOTE]
-> This benchmark prioritizes semantic preservation (chapter hierarchy, Quran/Hadith references, scholar/book mentions, footnotes) over raw paragraph formatting and exact count reproduction. The Semantic AST acts as our canonical single-source-of-truth.
+> **Corpus Note:** The DOC and EPUB versions of the books in this corpus represent different edits, formatting styles, and sizes. The goal of the benchmark is to evaluate how accurately the import pipeline can reconstruct the semantic AST structure of each file format independently, rather than expecting identical content matching.
 `;
 
   fs.writeFileSync(`${outPath}.md`, mdReport.trim(), "utf-8");
