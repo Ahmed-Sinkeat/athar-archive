@@ -136,7 +136,7 @@ const finalContent = (() => {
     (match: string, fn: string, sepPage: string) => {
       const note = pnMap.get(parseInt(sepPage, 10));
       if (!note) return match;
-      const attr = note.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+      const attr = note.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/'/g, "&#39;").replace(/\r/g, "").replace(/\n/g, "&#10;");
       return `<sup data-fn="${fn}" data-sep-page="${sepPage}" data-note="${attr}">${fn}</sup>`;
     }
   );
