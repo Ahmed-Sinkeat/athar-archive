@@ -121,9 +121,9 @@ const processedHtml = html.replace(/<hr\s+([^>]*class="page-sep"[^>]*)>/g, (matc
     
   if (allNotes.length > 0) {
     const na = `data-notes='${JSON.stringify(allNotes).replace(/'/g, "&#39;")}'`;
-    return `<hr ${cleanAttrs} ${na} />`;
+    return `<div ${cleanAttrs} ${na}></div>`;
   }
-  return `<hr ${cleanAttrs} />`;
+  return `<div ${cleanAttrs}></div>`;
 });
 
 // 5. Embed note text directly on inline <sup data-fn> refs so client needs no DOM search.
@@ -131,7 +131,7 @@ const processedHtml = html.replace(/<hr\s+([^>]*class="page-sep"[^>]*)>/g, (matc
 const finalContent = (() => {
   const pnMap = new Map<number, string>();
   processedHtml.replace(
-    /<hr\s+([^>]*class="page-sep"[^>]*)>/g,
+    /<div\s+([^>]*class="page-sep"[^>]*)><\/div>/g,
     (_, attrs: string) => {
       const pageMatch = attrs.match(/data-page="(\d+)"/) || attrs.match(/data-page='(\d+)'/);
       const notesMatch = attrs.match(/data-notes="([^"]*)"/) || attrs.match(/data-notes='([^']*)'/);

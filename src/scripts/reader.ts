@@ -798,6 +798,13 @@ function enhanceProse() {
   function setup() {
     injectPageNotes();
     enhanceFootnotes();
+    
+    // Clean up any stale sheets in the DOM (e.g. from cached pages)
+    const oldSheet = document.querySelector(".ann-sheet");
+    if (oldSheet) oldSheet.remove();
+    
+    // Re-create the sheet and bind references to the current page DOM
+    build();
   }
 
   document.addEventListener("keydown", (e) => { if (e.key === "Escape") close(); });
