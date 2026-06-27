@@ -1,4 +1,6 @@
-# أهل الأثر · athar-archive
+# Ahl al-Athar (أهل الأثر)
+
+A static digital library powered by Athar Engine.
 
 أرشيفٌ علميٌّ للمتون والمنظومات والدروس، محقَّقةً ومُشكَّلةً — تجربةُ قراءةٍ هادئةٍ تجعلُ المعرفةَ هي الأصل.
 
