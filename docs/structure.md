@@ -15,5 +15,6 @@ docs/
 ├─ HANDOFF-quran-hadith.md   # narrator graph, wikilinks, mushaf reader specs
 ├─ lighthouse-report-analysis.md # core web vitals and audit results
 ├─ migration-plan.md         # Phase 1 chaptered scaling roadmap
-└─ performance-test.md       # loading speed and bundle weight budgets
+├─ performance-test.md       # loading speed and bundle weight budgets
+└─ technology-stack.md       # architectural technology decisions registry
 ```
