@@ -1,6 +1,5 @@
 ---
 title: مسائل في الأسماء والصفات
-person: ibn-taymiyyah
 topics:
   - al-asma-was-sifat
 status: published
