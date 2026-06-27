@@ -159,7 +159,12 @@ docs/
 ├─ HANDOFF-quran-hadith.md   # narrator graph, wikilinks, mushaf reader specs
 ├─ lighthouse-report-analysis.md # core web vitals and audit results
 ├─ migration-plan.md         # Phase 1 chaptered scaling roadmap
-└─ performance-test.md       # loading speed and bundle weight budgets
+├─ performance-test.md       # loading speed and bundle weight budgets
+├─ knowledge-taxonomy.md     # standard categories, domains, and work types
+├─ semantic-relationships.md # dynamic, machine-extracted relationships
+├─ canonical-corpus.md       # priority classification tiers of foundational texts
+├─ ingress-policy.md         # strict rules for ingestion validation and gating
+└─ roadmap.md                # Phase 2 engineering milestones & Golden Corpus specs
 ```
 
 ---
