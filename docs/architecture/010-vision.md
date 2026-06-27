@@ -1,0 +1,67 @@
+# 010 — Project Vision
+
+> الهدف ليس بناء موقع.
+> الهدف هو بناء محرك لفهم الكتب الإسلامية.
+> الموقع مجرد أحد المخرجات.
+
+## The Name
+
+**Athar Engine** — An Islamic Knowledge Processing Engine.
+
+Athar (أثر, plural آثار) means traces, narrations, reports. The traditions passed from scholar to scholar. The name reflects the content — and unlike a descriptive name, it becomes a brand. Like LLVM or Pandoc, it does not describe itself.
+
+The full description, for contexts where it is needed:
+
+> Athar Engine is an Islamic Knowledge Processing Engine that transforms heterogeneous Islamic sources — books, articles, lessons, audio, and other scholarly materials — into a unified semantic knowledge model. This model is then used to generate multiple outputs: websites, APIs, search indexes, mobile applications, and future knowledge services, all from a single processing pipeline.
+
+## What the Engine Processes
+
+The engine is not limited to books. It processes:
+
+- Books (كتب): Classical and contemporary Islamic scholarship
+- Hadith collections (أجزاء حديثية): Individual narrations and chains
+- Articles (مقالات): Scholarly papers and research
+- Lessons (دروس): Lecture transcripts
+- Audio (تسجيلات): Transcribed recordings
+- Commentaries (شروح): Explanations of primary texts
+- Marginal notes (حواشي): Editor and scholar annotations
+- Biographies (تراجم): Scholar biographies
+- Fatwas (فتاوى): Religious rulings
+- Poetry (منظومات): Didactic verse
+
+The common unit is not the book. It is the **knowledge object** — a piece of Islamic content with authorship, transmission, and semantic structure.
+
+## What the Engine Produces
+
+The same semantic model produces multiple outputs:
+
+| Output | Status |
+|--------|--------|
+| Website (ahlalathar.com) | Operational |
+| Search index (Meilisearch) | Operational |
+| Markdown corpus | Operational |
+| REST API | Planned |
+| Android application | Planned |
+| Knowledge Graph | Planned |
+| Translation pipeline | Planned |
+| Desktop application | Future |
+| AI-assisted tagging | Future |
+
+No output is privileged. The website is an adapter over the semantic model, not the model itself.
+
+## The Shift in Thinking
+
+Before:
+> "How do I display this book?"
+
+After:
+> "How do I understand this book?"
+
+Display becomes a consequence, not a goal. When the engine understands a book — its structure, its references, its scholars, its topics, its chains of transmission — any display format follows automatically.
+
+## What This Is Not
+
+- Not a CMS. Content is not entered through forms.
+- Not a reader app. The website is one output, not the product.
+- Not a search engine. Search is one output of a deeper semantic model.
+- Not a Book Engine. The processing unit is Islamic knowledge, not a physical book.
