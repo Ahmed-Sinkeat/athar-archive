@@ -20,31 +20,75 @@ To avoid premature physical splitting, we will decouple the **architecture docum
 
 ## Proposed Repository Layout
 
-### Athar Engine Repository
+### Athar Engine Repository (`athar-engine`)
 ```
 athar-engine/
-├── docs/                      # Ingress, Taxonomy, Semantic and Engine specs
-├── packages/
-│   ├── parser/                # Ephemeral AST parser
-│   ├── ast/                   # Type definitions & AST node operations
-│   ├── extractor/             # Rule Engine & pattern extractors (Regex, NER)
-│   ├── enrichment/            # Entity Registry matcher & disambiguation
-│   ├── importer-epub/         # EPUB ingest parser
-│   ├── importer-docx/         # DOCX ingest parser
-│   ├── importer-html/         # HTML ingest parser
-│   ├── renderer-markdown/     # Standard Markdown renderer output
-│   └── cli/                   # Ingestion & validation CLI tool
-├── corpus/                    # Staged testing corpus
-├── tests/                     # Validation & parser unit tests
-└── examples/                  # Client usage examples
+├── README.md
+├── LICENSE
+├── package.json
+├── tsconfig.json
+│
+├── docs/                      # Vision, specifications, taxonomy, and contracts
+│   ├── adr/                   # Architectural Decision Records
+│   ├── architecture/          # Technical vision & specifications
+│   ├── knowledge-taxonomy.md  # Taxonomy & categories
+│   ├── canonical-corpus.md    # Corpus tiers & priorities
+│   ├── semantic-relationships.md # Dynamic relations
+│   ├── ingress-policy.md      # Ingress check gates
+│   ├── engine-contracts.md    # Public API & Schema contracts
+│   └── structure.md           # Repo file structure map
+│
+├── schemas/                   # Shared type definitions (Document, SemanticNode, etc.)
+│
+├── rules/                     # Match rules and extraction profiles
+│
+├── packages/                  # Modular libraries compiling the pipeline
+│   ├── parser/                # HTML-to-AST parsing engine
+│   ├── semantic-ast/          # Typed AST definitions & tree walker
+│   ├── importer/              # Document ingestion adapters (epub, doc, html, pdf)
+│   │   ├── epub/
+│   │   ├── doc/
+│   │   ├── docx/
+│   │   ├── html/
+│   │   └── pdf/
+│   ├── extractor/             # Regex & NER extraction rule processors
+│   ├── enrichment/            # Entity Registry resolver & disambiguator
+│   ├── entity-registry/       # Canonical entity storage interface
+│   ├── renderer/              # Output formatting (markdown)
+│   ├── pipeline/              # Ingress processing orchestrator
+│   └── cli/                   # CLI runner wrapper
+│
+├── corpus/                    # Test materials
+│   ├── golden/                # Regression testing benchmark
+│   ├── benchmarks/            # Quality benchmark targets
+│   └── fixtures/              # Simple schema fixtures
+│
+├── tests/                     # Unit & integration testing suites
+└── examples/                  # Client applications usage code
 ```
 
-### Ahl al-Athar Repository
+### Ahl al-Athar Repository (`athar-archive`)
 ```
-ahl-al-athar/
-├── website/                   # Astro static website frontend
-├── api/                       # Cloudflare Worker REST API
-└── android/                   # Native Android application
+athar-archive/
+├── README.md
+├── package.json
+├── astro.config.ts
+├── tsconfig.json
+│
+├── docs/                      # Deployment, performance and Ops guides
+│
+├── public/                    # Static assets & robots/headers
+├── scripts/                   # Production build processing scripts
+│
+└── src/                       # Layouts, components, styles, and Astro configs
+    ├── components/
+    ├── layouts/
+    ├── pages/
+    ├── styles/
+    ├── scripts/
+    ├── lib/
+    ├── content/               # Content markdown collection files
+    └── content.config.ts
 ```
 
 ## Consequences
