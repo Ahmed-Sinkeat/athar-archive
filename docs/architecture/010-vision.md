@@ -65,3 +65,34 @@ Display becomes a consequence, not a goal. When the engine understands a book �
 - Not a reader app. The website is one output, not the product.
 - Not a search engine. Search is one output of a deeper semantic model.
 - Not a Book Engine. The processing unit is Islamic knowledge, not a physical book.
+
+## System Boundaries
+
+Athar Engine is responsible for:
+
+```
+✓ Importing knowledge from source documents (DOC, EPUB, PDF, ...)
+✓ Parsing source documents into a Semantic AST
+✓ Extracting semantic content (headings, Quran refs, Hadith, entities, ...)
+✓ Enriching extracted entities with canonical identities
+✓ Validating extraction quality against the benchmark
+✓ Generating outputs (Markdown, search JSON, metadata JSON)
+✓ Providing data to the API layer
+```
+
+Athar Engine is **not** responsible for:
+
+```
+✗ Editing books (no WYSIWYG editor, no web-based content management)
+✗ Managing users or permissions
+✗ Performing OCR on scanned documents (pre-processing step, outside pipeline)
+✗ Translating scholarly content automatically (translation is an output adapter)
+✗ Serving as a general-purpose CMS
+✗ Rendering the website (that is Astro's job, consuming the Engine's outputs)
+✗ Serving the API (that is a Cloudflare Worker consuming the Engine's outputs)
+✗ Storing user annotations or personal data
+```
+
+This boundary matters because every system that grows without a stated boundary eventually becomes everything to everyone and excels at nothing. Applications are built *on top of* the Engine. The Engine does not become those applications.
+
+When a proposed feature sits outside this boundary, the correct response is: build it as an application that consumes the Engine's outputs — not as a feature of the Engine itself.

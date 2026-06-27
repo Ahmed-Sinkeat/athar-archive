@@ -84,7 +84,7 @@ Book
 
 **Poetry** — Structured verse with optional meter and rhyme. *Maturity: Not Started.*
 
-## Islamic Content Nodes
+## Semantic Nodes
 
 **QuranVerse** — Reference to a specific verse. Always child of a Paragraph.  
 `content`: citation text. `attributes: { surah: "البقرة", ayah: 255, raw_match: "[البقرة: 255]" }`.  
