@@ -160,6 +160,7 @@ docs/
 ├─ lighthouse-report-analysis.md # core web vitals and audit results
 ├─ migration-plan.md         # Phase 1 chaptered scaling roadmap
 ├─ performance-test.md       # loading speed and bundle weight budgets
+├─ engine-contracts.md       # Public API and schema contract definitions
 ├─ knowledge-taxonomy.md     # standard categories, domains, and work types
 ├─ semantic-relationships.md # dynamic, machine-extracted relationships
 ├─ canonical-corpus.md       # priority classification tiers of foundational texts
