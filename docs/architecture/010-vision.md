@@ -59,12 +59,14 @@ After:
 
 Display becomes a consequence, not a goal. When the engine understands a book — its structure, its references, its scholars, its topics, its chains of transmission — any display format follows automatically.
 
-## What This Is Not
+## The LLVM-Style Decoupled Architecture
 
-- Not a CMS. Content is not entered through forms.
-- Not a reader app. The website is one output, not the product.
-- Not a search engine. Search is one output of a deeper semantic model.
-- Not a Book Engine. The processing unit is Islamic knowledge, not a physical book.
+Similar to the relationship between **LLVM** (the compiler engine) and **Clang** (the compiler frontend), Athar Engine is fully decoupled from its presentation layers:
+
+* **Athar Engine (The Core Engine):** A library/CLI responsible for ingestion, parsing, AST, entity extraction, and semantic mapping. It is presentation-agnostic and does not know about Astro, CSS, or Cloudflare.
+* **Ahl al-Athar (The Presentation Frontend):** A collection of client adapters (website, API, mobile app) that depend on Athar Engine as a library and consume its structured outputs.
+
+This decoupling guarantees that the underlying knowledge model remains pure, correct, and completely reusable for any third-party application or research tool. For more details, see [ADR-0010](file:///home/sinkeat/Projects/athar-archive/docs/adr/ADR-0010-decouple-engine-from-presentation.md).
 
 ## System Boundaries
 

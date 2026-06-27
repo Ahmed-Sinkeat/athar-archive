@@ -1,6 +1,0 @@
----
-title: "عبد الله بن محمد الغنيمان"
-status: published
-published_at: 2026-06-25
-died: "1442هـ"
----

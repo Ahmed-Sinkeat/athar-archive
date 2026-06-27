@@ -1,6 +1,0 @@
----
-title: "عبد الرحمن السعدي"
-status: published
-published_at: 2026-06-25
-died: "1376هـ"
----
