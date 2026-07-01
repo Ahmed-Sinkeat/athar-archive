@@ -5,8 +5,8 @@ import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import EntityCard from "../../components/EntityCard.astro";
 import Prose from "../../components/Prose.astro";
 import Relations from "../../components/Relations.astro";
-import { isPub, loadGraph, personNameMap, backlinksList, type BacklinkItem } from "../../lib/site";
-import { hrefFor, labelFor, isMatn, eraLabel, eraHref } from "../../lib/display";
+import { isPub, loadGraph, personNameMap, backlinksList, topicLabelFor, type BacklinkItem } from "../../lib/site";
+import { hrefFor, isMatn, eraLabel, eraHref } from "../../lib/display";
 import { personLd } from "../../lib/structured-data";
 
 export async function getStaticPaths() {
@@ -17,7 +17,7 @@ export async function getStaticPaths() {
     const works = graph
       .materialsByPerson(entry.id)
       .filter(isPub)
-      .map((w) => ({ collection: w.collection, id: w.id, title: w.data.title, series: w.data.series, kind: labelFor(w.collection, w.data), matn: isMatn(w.collection, w.data) }));
+      .map((w) => ({ collection: w.collection, id: w.id, title: w.data.title, series: w.data.series, kind: topicLabelFor(w.collection, w.data, graph), audio: graph.audioForSource(w.collection, w.id).length > 0, matn: isMatn(w.collection, w.data) }));
     // works are shown above; the panel surfaces only the rest (mentions, etc.)
     const backlinks = backlinksList(entry, graph, names).filter((b) => b.relation !== "من مؤلَّفاته");
 
@@ -109,6 +109,7 @@ const jsonLd = personLd({
               title={w.title}
               kind={w.kind}
               matn={w.matn}
+              audio={w.audio}
               cta="اطّلع ←"
             />
           ))}

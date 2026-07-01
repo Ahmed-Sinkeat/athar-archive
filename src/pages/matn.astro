@@ -3,8 +3,8 @@ import Base from "../layouts/Base.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
 import SortableList from "../components/SortableList.astro";
 import SectionSearch from "../components/SectionSearch.astro";
-import { personNameMap, loadGraph } from "../lib/site";
-import { hrefFor, labelFor, isMatn } from "../lib/display";
+import { personNameMap, loadGraph, topicLabelFor } from "../lib/site";
+import { hrefFor, isMatn } from "../lib/display";
 import { collectionLd } from "../lib/structured-data";
 import type { ContentEntry } from "../lib/types";
 
@@ -20,7 +20,8 @@ const items = graph.all
 const card = (it: ContentEntry) => ({
   href: hrefFor(it.collection, it.id),
   title: it.data.title,
-  kind: labelFor(it.collection, it.data),
+  kind: topicLabelFor(it.collection, it.data, graph),
+  audio: graph.audioForSource(it.collection, it.id).length > 0,
   matn: true,
   sub: it.data.person ? names.get(it.data.person as string) ?? "" : "",
   cta: "ادخل القراءة ←",
