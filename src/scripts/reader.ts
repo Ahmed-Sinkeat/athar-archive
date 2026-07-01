@@ -605,6 +605,8 @@ function enhanceProse() {
   function anchorLabel(pack: HTMLElement): string {
     const mPage = pack.id.match(/^ann-page-(\d+)$/);
     if (mPage) return `الصفحة ${toAr(+mPage[1])}`;
+    const mQuran = pack.id.match(/^ann-quran-(\d+)-(\d+)$/);
+    if (mQuran) return `الآية ${toAr(+mQuran[2])}`;
     const verse = pack.closest<HTMLElement>(".verse");
     const n = verse?.querySelector(".vnum")?.textContent?.trim();
     if (n) return `البيت ${n}`;
