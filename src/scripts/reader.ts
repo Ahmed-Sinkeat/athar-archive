@@ -272,6 +272,11 @@ document.addEventListener("click", (e) => {
   const ref = t.closest<HTMLAnchorElement>("[data-footnote-ref]");
   if (ref) {
     e.preventDefault();
+    // Paginated book content: this ref was stamped (book/[slug]/[chapter].astro)
+    // with which page's notes sheet it now belongs to — let the ann-sheet click
+    // listener below handle opening that instead of the plain popover, so it's
+    // grouped with the page's other footnotes and clearly labelled which page.
+    if (ref.dataset.sepPage) return;
     const id = ref.getAttribute("href")?.slice(1);
     const target = id ? document.getElementById(id) : null;
     if (target) {
@@ -796,6 +801,15 @@ function enhanceProse() {
       e.preventDefault();
       const fnNum = parseInt(fnSup.dataset.fn || "1", 10);
       openSheet("ann-page-" + fnSup.dataset.sepPage, fnNum - 1);
+      return;
+    }
+    // standard markdown footnote ref, stamped with which page's notes sheet it
+    // belongs to (book/[slug]/[chapter].astro) — grouped there instead of a
+    // lone popover so it's clear which page's citations it's part of.
+    const fnRef = t.closest<HTMLAnchorElement>("[data-footnote-ref][data-sep-page]");
+    if (fnRef) {
+      e.preventDefault();
+      openSheet("ann-page-" + fnRef.dataset.sepPage, parseInt(fnRef.dataset.fnIndex || "0", 10));
       return;
     }
     const mark = t.closest<HTMLElement>(".ann-mark");
