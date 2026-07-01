@@ -6,6 +6,7 @@ import Relations from "../../components/Relations.astro";
 import { markdownToSafeHtml } from "../../lib/sanitize";
 import { notesByAnchor, loadGraph, personNameMap } from "../../lib/site";
 import { parseBook } from "../../lib/chapters";
+import tafsirIndex from "../../data/quran-tafsir-index.json";
 
 export async function getStaticPaths() {
   const surahs = await getCollection("quran");
@@ -24,6 +25,13 @@ export async function getStaticPaths() {
 
 const { entry, paragraphs, byAnchor } = Astro.props;
 const { data } = entry;
+const tafsirByVerse = tafsirIndex as Record<string, Array<{
+  kind: string;
+  label: string;
+  sourceTitle?: string;
+  sourceHref?: string;
+  body: string;
+}>>;
 const surahTitle = `سورة ${data.name}`;
 const path = `/quran/${entry.id}`;
 
@@ -98,9 +106,15 @@ const processedParagraphs = paragraphs.map((para, idx) => {
     return match;
   });
 
+  const verseKey = `${data.number}:${para.id}`;
+  const tafsirNotes = tafsirByVerse[verseKey] ?? [];
+
   return {
     ...para,
     text,
+    verseKey,
+    tafsirNotes,
+    tafsirPackId: tafsirNotes.length > 0 ? `ann-quran-${data.number}-${para.id}` : undefined,
   };
 });
 ---
@@ -123,8 +137,22 @@ const processedParagraphs = paragraphs.map((para, idx) => {
       {processedParagraphs.map((para) => {
         return (
           <div class="ayah" id={para.id} data-anchor={para.id}>
-            <span class="ayah-num">{para.id}</span>
+            {para.tafsirPackId ? (
+              <button type="button" class="ayah-num ayah-num-btn ann-mark" data-ann={para.tafsirPackId} aria-haspopup="dialog" aria-label={`تفسير الآية ${para.id}`}>{para.id}</button>
+            ) : (
+              <span class="ayah-num">{para.id}</span>
+            )}
             <span class="ayah-text" set:html={markdownToSafeHtml(para.text)} />
+            {para.tafsirPackId && (
+              <div class="ann-pack" id={para.tafsirPackId} data-ann-pack hidden>
+                {para.tafsirNotes.map((nt) => (
+                  <div class="ann-entry k-tafsir" data-kind={nt.kind} data-label={nt.label}>
+                    <div class="ann-entry-body" data-ar><Fragment set:html={markdownToSafeHtml(nt.body)} /></div>
+                    {nt.sourceHref && <a class="ann-source-link" href={nt.sourceHref}>اقرأ في موضعه{nt.sourceTitle ? `: ${nt.sourceTitle}` : ""} ←</a>}
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         );
       })}
@@ -151,6 +179,18 @@ const processedParagraphs = paragraphs.map((para, idx) => {
     color: var(--gold);
     text-align: center;
     padding-block-start: 0.25rem;
+  }
+  .ayah-num-btn {
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    border-radius: 999px;
+    padding: 0.25rem;
+  }
+  .ayah-num-btn:hover,
+  .ayah-num-btn:focus-visible {
+    background: color-mix(in srgb, var(--gold) 12%, transparent);
+    outline: 1px solid color-mix(in srgb, var(--gold) 45%, transparent);
   }
   /* Scheherazade New — designed specifically for Quranic text.
      Larger x-height than Amiri; 1.4rem renders similar optical size. */

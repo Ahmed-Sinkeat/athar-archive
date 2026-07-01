@@ -10,6 +10,10 @@ export function stripFrontmatter(raw: string): string {
 }
 
 async function assetText(path: string): Promise<string | null> {
+  if (import.meta.env.DEV) {
+    const res = await fetch(new URL(path, "http://localhost:4321"));
+    return res.ok ? await res.text() : null;
+  }
   const { env } = await import("cloudflare:workers");
   const res = await (env as { ASSETS: { fetch(u: URL): Promise<Response> } }).ASSETS.fetch(
     new URL(path, ASSET_HOST),
@@ -19,11 +23,13 @@ async function assetText(path: string): Promise<string | null> {
 
 export async function loadContentBody(collection: string, id: string): Promise<string | null> {
   if (import.meta.env.DEV) {
-    const { readFile } = await import("node:fs/promises");
     try {
+      const { readFile } = await import("node:fs/promises");
       return stripFrontmatter(await readFile(`src/content/${collection}/${id}.md`, "utf-8"));
     } catch {
-      return null; // missing/draft → 404 at the caller
+      // Fallback if fs.readFile is not implemented or throws (workerd sandbox)
+      const raw = await assetText(`/content/${collection}/${id}.md`);
+      return raw == null ? null : stripFrontmatter(raw);
     }
   }
   const raw = await assetText(`/content/${collection}/${id}.md`);
@@ -35,8 +41,12 @@ export async function loadContentBody(collection: string, id: string): Promise<s
 export async function notFound(): Promise<Response> {
   let html: string | null = null;
   if (import.meta.env.DEV) {
-    const { readFile } = await import("node:fs/promises");
-    html = await readFile("dist/client/404.html", "utf-8").catch(() => null);
+    try {
+      const { readFile } = await import("node:fs/promises");
+      html = await readFile("dist/client/404.html", "utf-8");
+    } catch {
+      html = await assetText("/404.html");
+    }
   } else {
     html = await assetText("/404.html");
   }
