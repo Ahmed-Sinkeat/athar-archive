@@ -265,6 +265,7 @@ function ensureFnPop(): HTMLElement {
   }
   return fnPop;
 }
+let activeFnRef: HTMLElement | null = null;
 document.addEventListener("click", (e) => {
   const t = e.target as HTMLElement;
   // standard markdown footnote refs
@@ -277,7 +278,17 @@ document.addEventListener("click", (e) => {
       const pop = ensureFnPop();
       const clone = target.cloneNode(true) as HTMLElement;
       clone.querySelector(".data-footnote-backref")?.remove();
-      pop.innerHTML = clone.innerHTML;
+      // Adjacent refs (e.g. a hadith citing 3 sources back to back, [^12][^13][^14])
+      // sit only ~2px apart — without a number label the popup can't be told
+      // apart from its neighbours', so label it with the same number the
+      // superscript itself shows, and highlight which ref is currently open.
+      const label = document.createElement("div");
+      label.className = "fn-popover-num";
+      label.textContent = ref.textContent || "";
+      pop.replaceChildren(label, ...Array.from(clone.childNodes));
+      activeFnRef?.classList.remove("fn-ref-active");
+      ref.classList.add("fn-ref-active");
+      activeFnRef = ref;
       positionFnPop(ref);
     }
     return;
@@ -294,6 +305,8 @@ document.addEventListener("click", (e) => {
   }
   if (fnPop && !fnPop.hidden && !t.closest(".fn-popover")) {
     fnPop.hidden = true;
+    activeFnRef?.classList.remove("fn-ref-active");
+    activeFnRef = null;
   }
 });
 
