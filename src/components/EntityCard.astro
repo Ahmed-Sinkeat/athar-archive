@@ -10,10 +10,11 @@ interface Props {
   cta?: string;
   filterKey?: string;
   matn?: boolean;     // render a متن badge (every poem / متن-books)
+  audio?: boolean;    // render a صوت badge (has a linked audio entry)
   era?: string;       // العصر — canonical value; badge shows eraLabel(), data-era filters
 }
-const { href, title, kind, kindColor = "tag-accent", corner, sub, cta = "ادخل ←", filterKey, matn, era } = Astro.props;
-const hasRow = kind || corner || matn || era;
+const { href, title, kind, kindColor = "tag-accent", corner, sub, cta = "ادخل ←", filterKey, matn, audio, era } = Astro.props;
+const hasRow = kind || corner || matn || audio || era;
 ---
 <a class="card" href={href} data-kind={filterKey} data-era={era}>
   {
@@ -22,6 +23,7 @@ const hasRow = kind || corner || matn || era;
         <span class="card-kindrow-tags">
           {kind ? <span class:list={["pill", kindColor]}>{kind}</span> : <span />}
           {matn && kind !== "متن" && <span class="badge-matn">متن</span>}
+          {audio && <span class="badge-matn">🎧 صوت</span>}
           {era && <span class="pill tag-verdigris">{eraLabel(era)}</span>}
         </span>
         {corner && <span class="faint u6cb285c" >{corner}</span>}

@@ -8,10 +8,10 @@ import AudioPlayer from "../../components/AudioPlayer.astro";
 import RelatedStrip from "../../components/RelatedStrip.astro";
 import Relations from "../../components/Relations.astro";
 import { markdownToSafeHtml } from "../../lib/sanitize";
-import { isPub, loadGraph, personNameMap, subjectTitlesFor, notesByAnchor, relatedTo, backlinksList } from "../../lib/site";
+import { isPub, loadGraph, personNameMap, subjectTitlesFor, notesByAnchor, relatedTo, backlinksList, topicLabelFor } from "../../lib/site";
 import { analyzeBook } from "../../lib/chunk";
 import { readBody } from "../../lib/read-body";
-import { hrefFor, toArabicDigits, labelFor, isMatn } from "../../lib/display";
+import { hrefFor, toArabicDigits, isMatn } from "../../lib/display";
 import { bookLd } from "../../lib/structured-data";
 import { parseToc } from "../../lib/chapters";
 
@@ -32,12 +32,12 @@ export async function getStaticPaths() {
       .map(c => ({ href: hrefFor("book", c.id), title: c.data.title, author: c.data.person ? names.get(c.data.person as string) : "" }));
     // Phase 2: chunked books → store a light TOC (titles+slugs) only; the body and
     // its annotations live on the on-demand chapter pages, never in this landing's HTML.
-    paths.push({ params: { slug: entry.id }, props: { entry, chunked: a.chunked, toc: a.chapters.map((c) => ({ title: c.title, slug: c.slug })), tocNested: a.chunked ? [] : parseToc(body ?? ""), body: a.chunked ? undefined : body, byAnchor: a.chunked ? {} : byAnchor, audios, commentaries, author: names.get(entry.data.person), subjects: subjectTitlesFor(entry.data.topics, graph), related: relatedTo(entry, graph, names), backlinks: backlinksList(entry, graph, names) } });
+    paths.push({ params: { slug: entry.id }, props: { entry, chunked: a.chunked, toc: a.chapters.map((c) => ({ title: c.title, slug: c.slug })), tocNested: a.chunked ? [] : parseToc(body ?? ""), body: a.chunked ? undefined : body, byAnchor: a.chunked ? {} : byAnchor, audios, commentaries, author: names.get(entry.data.person), topicLabel: topicLabelFor("book", entry.data, graph), subjects: subjectTitlesFor(entry.data.topics, graph), related: relatedTo(entry, graph, names), backlinks: backlinksList(entry, graph, names) } });
   }
   return paths;
 }
 
-const { entry, chunked, toc, tocNested, body, byAnchor, audios, commentaries, author, subjects, related, backlinks } = Astro.props;
+const { entry, chunked, toc, tocNested, body, byAnchor, audios, commentaries, author, topicLabel, subjects, related, backlinks } = Astro.props;
 const KIND_SLUG: Record<string, string> = { شرح: "sharh", حاشية: "hashiya", تخريج: "takhrij", إعراب: "iraab" };
 const anchors = Object.entries(byAnchor);
 const path = `/book/${entry.id}`;
@@ -58,7 +58,7 @@ const jsonLd = bookLd({
   />
   <div class="wrap-matn reading-pad">
     <div class="reader-head">
-      <a class="eyebrow u87c136d pill-link" href={isMatn("book", entry.data) ? "/matn" : "/books"}>{labelFor("book", entry.data)}</a>
+      <a class="eyebrow u87c136d pill-link" href={isMatn("book", entry.data) ? "/matn" : "/books"}>{topicLabel}</a>
       <h1 class="reader-title ue7e55f7" >{entry.data.title}</h1>
       <div class="reader-byline">{author}</div>
       {entry.data.transcript_status && (

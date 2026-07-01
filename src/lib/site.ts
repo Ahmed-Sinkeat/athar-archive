@@ -71,6 +71,20 @@ export function notesByAnchor(
   return out;
 }
 
+// Badge label for a book/poem: its own topic title (e.g. "تفسير القرآن") beats
+// the generic kind value (متن/مرجع/مجموع) — kind is a technical "does this use
+// tap-to-reveal study mode" flag, not a subject description, so every fiqh
+// manual, tafsir, and hadith commentary alike used to show the same "مرجع"
+// pill. Falls back to labelFor() for poems (always "منظومة") or an untagged book.
+export function topicLabelFor(collection: string, data: Record<string, any>, graph: Graph): string {
+  if (collection === "book") {
+    const topicId = (data.topics as string[] | undefined)?.[0];
+    const title = topicId ? (graph.getById("topic", topicId)?.data.title as string | undefined) : undefined;
+    if (title) return title;
+  }
+  return labelFor(collection, data);
+}
+
 // A material's subject titles, derived from its topics[] (topic → subject).
 // Used to emit the Pagefind `subject` facet so search can filter by فن.
 export function subjectTitlesFor(topicIds: string[] | undefined, graph: Graph): string[] {
