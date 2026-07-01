@@ -861,7 +861,7 @@ html.hide-vnums .vnum { display: none; }
 .ann-sheet-chips[hidden] { display: none; }
 .ann-chip { font-family: var(--font-ui); font-size: 13px; border: 1px solid var(--rule-strong); border-radius: 20px; padding: 4px 13px; background: var(--surface); cursor: pointer; color: var(--ink-soft); }
 .ann-chip[aria-pressed="true"] { border-color: var(--accent-solid); background: var(--accent-solid); color: #fff; }
-.ann-sheet-body { line-height: 2; }
+.ann-sheet-body { font-family: var(--font-serif); font-size: calc(16px * var(--reading-scale)); line-height: 2; color: var(--ink); }
 .ann-sheet-body .ann-source-link { display: inline-block; margin-top: 10px; }
 .ann-sheet-foot { display: flex; justify-content: space-between; margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--rule-strong); }
 .ann-nav { font-family: var(--font-ui); font-size: 14px; background: none; border: none; cursor: pointer; color: var(--accent); padding: 4px 8px; }

@@ -767,7 +767,13 @@ function enhanceProse() {
 
   document.addEventListener("click", (e) => {
     const t = e.target as HTMLElement;
-    if (t.closest(".ann-sheet")) return; // clicks inside the sheet are handled by its own buttons
+    // Use composedPath (captured at dispatch) instead of t.closest: nav buttons'
+    // own click handler runs first (target phase) and calls renderFoot(), which
+    // replaces the footer buttons — including the one just clicked — before this
+    // delegated listener runs in the bubble phase. t.closest(".ann-sheet") on a
+    // now-detached button finds nothing, so this used to misread the click as
+    // "outside the sheet" and immediately close it right after it reopened.
+    if (e.composedPath().some((el) => el instanceof Element && el.classList.contains("ann-sheet"))) return;
     // page separator click → open its حاشية in the sheet
     const sep = t.closest<HTMLElement>(".page-sep[data-ann]");
     if (sep) { e.preventDefault(); openSheet(sep.dataset.ann!); return; }
