@@ -243,6 +243,58 @@ export function parseToc(body: string): TocHeading[] {
   return headings;
 }
 
+// --- footnote page-grouping ---
+// GFM footnote defs ([^fnN]: body) bundle at wherever the source's own page
+// ends, not next to whichever inline citation marker they annotate — Ibn
+// Kathir routinely piles 5 defs onto the last few words before a page break.
+// Rendering them as scattered inline superscripts is misleading (the number
+// has no visible connection to anything nearby), so group them by the
+// printed page they belong to instead, matching how page-level حاشية/تخريج
+// annotations already open in one navigable sheet.
+
+const PAGE_SEP_SPLIT_RE = /(<hr class="page-sep" data-page="\d+"[^>]*\/>)/;
+const PAGE_SEP_NUM_RE = /data-page="(\d+)"/;
+const FN_DEF_RE = /^\[\^([a-zA-Z0-9_-]+)\]:\s*([\s\S]*)$/;
+
+export interface FootnotesByPage {
+  /** Ordered footnote defs for each printed page, in source order. */
+  itemsByPage: Map<number, Array<{ id: string; body: string }>>;
+  /** Where a given footnote id (e.g. "fn1216") landed: its page + index within it. */
+  pageIndexById: Map<string, { page: number; index: number }>;
+}
+
+/** Groups a chapter's [^id]: body footnote definitions by printed page. */
+export function extractFootnotesByPage(content: string): FootnotesByPage {
+  const parts = content.split(PAGE_SEP_SPLIT_RE);
+
+  // Seed the starting page the same way callers already compute it elsewhere:
+  // the first page-sep marks the page AFTER this chapter's start, so back up one.
+  let pageNum = 1;
+  for (const part of parts) {
+    const m = part.match(PAGE_SEP_NUM_RE);
+    if (m) { pageNum = parseInt(m[1], 10) - 1; break; }
+  }
+
+  const itemsByPage = new Map<number, Array<{ id: string; body: string }>>();
+  const pageIndexById = new Map<string, { page: number; index: number }>();
+
+  for (const part of parts) {
+    const m = part.match(PAGE_SEP_NUM_RE);
+    if (m) { pageNum = parseInt(m[1], 10); continue; }
+    for (const block of part.split(/\n\s*\n/)) {
+      const dm = block.trim().match(FN_DEF_RE);
+      if (!dm) continue;
+      const [, id, body] = dm;
+      if (!itemsByPage.has(pageNum)) itemsByPage.set(pageNum, []);
+      const arr = itemsByPage.get(pageNum)!;
+      pageIndexById.set(id, { page: pageNum, index: arr.length });
+      arr.push({ id, body: body.trim() });
+    }
+  }
+
+  return { itemsByPage, pageIndexById };
+}
+
 // --- anchor enumeration (used by the validator for annotation resolution) ---
 
 export function extractAnchors(collection: string, body: string): Set<string> {

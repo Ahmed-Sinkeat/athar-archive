@@ -11,7 +11,7 @@ import StudyBar from "../../../components/StudyBar.astro";
 import { isPub, loadGraph, personNameMap, notesByAnchor } from "../../../lib/site";
 import { markdownToSafeHtml } from "../../../lib/sanitize";
 import { analyzeBook } from "../../../lib/chunk";
-import { parseToc } from "../../../lib/chapters";
+import { parseToc, extractFootnotesByPage } from "../../../lib/chapters";
 import { loadContentBody, notFound } from "../../../lib/book-asset";
 import { hrefFor, labelFor, isMatn } from "../../../lib/display";
 
@@ -92,6 +92,13 @@ for (const [anchor, notes] of Object.entries(byAnchor)) {
   }
 }
 
+// 2b. Group compiled-markdown footnotes ([^id]: body) by page — these bundle
+// at the source's own page/paragraph boundary, not next to whichever inline
+// citation marker they actually annotate (Ibn Kathir routinely piles 5 defs
+// onto the last few words before a page break). Open them as a per-page menu
+// like حاشية/تخريج notes instead of unlabeled scattered popovers.
+const { itemsByPage: footnotesByPage, pageIndexById: footnotePageIndex } = extractFootnotesByPage(chapter.content);
+
 // 3. Compile markdown to HTML first so that raw HTML tags inside are not broken by remark-parse.
 const html = markdownToSafeHtml(chapter.content);
 
@@ -112,20 +119,35 @@ function parseSafeNotes(notesAttr: string): string[] {
   }
 }
 
+// Footnotes get appended after حاشية notes in each page's combined array, so
+// their position there isn't the same as their page-local index computed by
+// extractFootnotesByPage — record the real, final index here as each page's
+// notes get assembled, for stamping onto the inline refs below.
+const adjustedFootnoteIndexById = new Map<string, number>();
+
 // 4. Inject DB hashiyas into page separators in the HTML content
 const processedHtml = html.replace(/<hr\s+([^>]*class="page-sep"[^>]*)>/g, (match, attrs) => {
   const pageMatch = attrs.match(/data-page="(\d+)"/) || attrs.match(/data-page='(\d+)'/);
   if (!pageMatch) return match;
   const pNum = parseInt(pageMatch[1], 10);
-  
-  let notes: string[] = [];
+
+  let notes: any[] = [];
   const notesMatch = attrs.match(/data-notes="([^"]+)"/) || attrs.match(/data-notes='([^']+)'/);
   if (notesMatch) {
     notes = parseSafeNotes(notesMatch[1]);
   }
-  const dbNotes = dbHashiyasByPage.get(pNum) ?? [];
-  const allNotes = [...notes, ...dbNotes];
-  
+  // Normalize everything to {kind,label,body} objects before combining —
+  // injectPageNotes() (reader.ts) only checks the FIRST array element to decide
+  // whether the whole array is bare strings or objects, so a mixed array would
+  // misinterpret one source or the other.
+  const normalizedNotes = notes.map((n) => (typeof n === "string" ? { kind: "حاشية", label: "حاشية", body: n } : n));
+  const dbNotes = (dbHashiyasByPage.get(pNum) ?? []).map((body) => ({ kind: "حاشية", label: "حاشية", body }));
+  const pageFootnotes = footnotesByPage.get(pNum) ?? [];
+  const fnNotes = pageFootnotes.map((fn) => ({ kind: "تخريج", label: "تخريج", body: fn.body }));
+  const footnoteBaseIndex = normalizedNotes.length + dbNotes.length;
+  pageFootnotes.forEach((fn, i) => adjustedFootnoteIndexById.set(fn.id, footnoteBaseIndex + i));
+  const allNotes = [...normalizedNotes, ...dbNotes, ...fnNotes];
+
   const cleanAttrs = attrs
     .replace(/data-notes="[^"]+"/g, "")
     .replace(/data-notes='[^']+'/g, "")
@@ -139,12 +161,26 @@ const processedHtml = html.replace(/<hr\s+([^>]*class="page-sep"[^>]*)>/g, (matc
   return `<div ${cleanAttrs}></div>`;
 });
 
+// 4b. Stamp each GFM footnote ref [^id] with which page's notes sheet it now
+// belongs to (+ its index within that page), so clicking it opens the same
+// per-page menu the page number itself opens, landing on the right entry —
+// instead of an unlabeled popover with no visible link to the citation.
+const footnoteRefsWired = processedHtml.replace(
+  /<a href="#user-content-fn-([a-zA-Z0-9_-]+)"([^>]*data-footnote-ref[^>]*)>/g,
+  (match, id, restAttrs) => {
+    const page = footnotePageIndex.get(id)?.page;
+    const index = adjustedFootnoteIndexById.get(id);
+    if (page === undefined || index === undefined) return match;
+    return `<a href="#user-content-fn-${id}"${restAttrs} data-sep-page="${page}" data-fn-index="${index}">`;
+  }
+);
+
 // 5. Embed note text directly on inline <sup data-fn> refs so client needs no DOM search.
 //    Parses the notes we just injected into page-seps, then stamps data-note on each sup.
 let processedTitleHtml = "";
 const finalContent = (() => {
   const pnMap = new Map<number, string>();
-  processedHtml.replace(
+  footnoteRefsWired.replace(
     /<div\s+([^>]*class="page-sep"[^>]*)><\/div>/g,
     (_, attrs: string) => {
       const pageMatch = attrs.match(/data-page="(\d+)"/) || attrs.match(/data-page='(\d+)'/);
@@ -174,8 +210,8 @@ const finalContent = (() => {
     processedTitleHtml = (chapter as any).rawTitle.replace(/<sup\s+([^>]+)>(\d+)<\/sup>/g, stampFn);
   }
 
-  if (!pnMap.size) return processedHtml;
-  return processedHtml.replace(/<sup\s+([^>]+)>(\d+)<\/sup>/g, stampFn);
+  if (!pnMap.size) return footnoteRefsWired;
+  return footnoteRefsWired.replace(/<sup\s+([^>]+)>(\d+)<\/sup>/g, stampFn);
 })();
 ---
 <Base title={`${chapter.title} · ${entry.data.title}`} activeNav="books" searchScope={{ in: entry.id, label: entry.data.title }}>
