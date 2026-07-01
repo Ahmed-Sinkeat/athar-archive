@@ -1063,16 +1063,17 @@ html.pages-flow .page-sep[data-ann] { display: flex; }
 sup[data-fn] { cursor: pointer; color: var(--accent); font-size: 0.72em; margin-inline-start: 1px; }
 sup[data-fn]:hover { text-decoration: underline; }
 
-/* prose footnote styling */
-.prose-footnote {
-  font-size: 0.82rem !important;
-  color: var(--ink-soft) !important;
-  margin-top: 0.25rem !important;
-  margin-bottom: 0.25rem !important;
-  padding-inline-start: 12px;
-  border-inline-start: 2px solid var(--rule);
-  line-height: 1.6;
-}
+/* GFM footnotes (حاشية + تخريج) are reveal-on-tap via the .fn-popover in reader.ts.
+   Keep only the small superscript marker in the matn; hide the printed bottom list so
+   the reading view stays matn + page separators + page numbers. The hidden <section>
+   stays in the DOM so the popover can clone each note by id.
+   ponytail: JS-only reveal; add a <details> fallback if no-JS/AT access is needed. */
+.prose [data-footnote-ref] { cursor: pointer; color: var(--accent); text-decoration: none; font-size: 0.72em; margin-inline-start: 2px; }
+.prose [data-footnote-ref]:hover { text-decoration: underline; }
+/* separate runs of adjacent refs (e.g. a name carrying [12][13][14]) so they don't jam */
+.prose sup + sup { margin-inline-start: 2px; }
+.prose [data-footnotes],
+.prose section.footnotes { display: none; }
 
 /* narrator-list (scholar's shuyukh and talamidhah listing) */
 .narrator-list {
