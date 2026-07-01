@@ -36,10 +36,11 @@ const TOK_RE = new RegExp(
   "|(«[^»]*»)" +
   "|([“”][^“”]*[“”])" +
   '|("[^"]*")' +
-  "|(\\([^)]{1,200}\\))",  // ponytail: cap 200 chars to avoid backtracking
+  "|(\\([^)]{1,200}\\))" +  // ponytail: cap 200 chars to avoid backtracking
+  "|(\\[\\.{2,}\\])",  // isnad-elision marker, e.g. "[.....]" — see tok-elision
   "g"
 );
-const TOK_CLASS = ["tok-ayah", "tok-quran-ref", "tok-quote", "tok-quote", "tok-quote", "tok-paren"];
+const TOK_CLASS = ["tok-ayah", "tok-quran-ref", "tok-quote", "tok-quote", "tok-quote", "tok-paren", "tok-elision"];
 
 function splitTokens(value: string): any[] {
   const out: any[] = [];

@@ -249,6 +249,12 @@ img { max-width: 100%; }
   font-family: var(--font-serif); font-size: 14.5px; line-height: 1.7; padding: 16px;
 }
 .fn-popover p { margin: 0; }
+/* Which of several adjacent refs (e.g. [^12][^13][^14]) this popup belongs to —
+   they sit only ~2px apart in the matn, easy to lose track of without this. */
+.fn-popover-num {
+  font-family: var(--font-mono); font-size: 11px; color: var(--accent);
+  margin-bottom: 6px; font-weight: 700;
+}
 .pop-title { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.2em; color: var(--ink-faint); }
 .pop-types { border: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 7px 12px; }
 .pop-types legend { font-family: var(--font-ui); font-size: 13px; color: var(--ink-soft); margin-bottom: 6px; padding: 0; }
@@ -907,6 +913,13 @@ html[data-theme="dark"]  { --tok-ayah: #e08888; --tok-hadith: #d6ac63; --tok-quo
 .tok-hadith { color: var(--tok-hadith); }
 /* .tok-quote  { color: var(--tok-quote); } */
 .tok-paren  { color: var(--tok-paren); }
+/* "[.....]" isnad-elision markers are all bidi-neutral characters (brackets,
+   dots) with nothing strong-directional inside, so at the end of an RTL
+   sentence the browser's bidi resolver can float them to the wrong visual
+   edge (reported: showed up first instead of last). Isolate keeps it pinned
+   in its logical (reading-order) position, same fix already used for
+   .prose code above. */
+.tok-elision { unicode-bidi: isolate; }
 
 /* --- personal highlights (CSS Custom Highlight API) --- */
 ::highlight(aa-review)   { background-color: rgba(240, 195, 60, 0.40); }
@@ -1068,10 +1081,12 @@ sup[data-fn]:hover { text-decoration: underline; }
    the reading view stays matn + page separators + page numbers. The hidden <section>
    stays in the DOM so the popover can clone each note by id.
    ponytail: JS-only reveal; add a <details> fallback if no-JS/AT access is needed. */
-.prose [data-footnote-ref] { cursor: pointer; color: var(--accent); text-decoration: none; font-size: 0.72em; margin-inline-start: 2px; }
+.prose [data-footnote-ref] { cursor: pointer; color: var(--accent); text-decoration: none; font-size: 0.72em; margin-inline-start: 2px; padding: 0 1px; }
 .prose [data-footnote-ref]:hover { text-decoration: underline; }
 /* separate runs of adjacent refs (e.g. a name carrying [12][13][14]) so they don't jam */
-.prose sup + sup { margin-inline-start: 2px; }
+.prose sup + sup { margin-inline-start: 4px; }
+/* which ref the currently-open .fn-popover belongs to, among several stacked ones */
+.prose [data-footnote-ref].fn-ref-active { background: color-mix(in srgb, var(--accent) 20%, transparent); border-radius: 3px; }
 .prose [data-footnotes],
 .prose section.footnotes { display: none; }
 
