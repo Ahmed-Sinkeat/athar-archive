@@ -255,7 +255,10 @@ function positionFnPop(anchor: HTMLElement) {
   fnPop.style.left = `${left}px`;
 }
 function ensureFnPop(): HTMLElement {
-  if (!fnPop) {
+  // ClientRouter swaps <body> on navigation, detaching a previously-created popover,
+  // so recreate it when it's gone OR no longer in the document (footnotes were dead
+  // after navigating to another page/chapter).
+  if (!fnPop || !fnPop.isConnected) {
     fnPop = document.createElement("div");
     fnPop.className = "popover fn-popover";
     document.body.appendChild(fnPop);
@@ -786,30 +789,9 @@ function enhanceProse() {
     }
     if (sheet && !sheet.hidden) close(); // outside click
   });
-  function enhanceFootnotes() {
-    document.querySelectorAll<HTMLElement>(".page-sep").forEach((sep) => {
-      let prev = sep.previousElementSibling;
-      while (prev && prev.tagName === "P") {
-        const txt = prev.textContent?.trim() || "";
-        if (
-          /^\s*[\(\[﴿#]?\d+[\)\]﴾]?\s*[-.:\s]/.test(txt) ||
-          /^\s*[\(\[﴿#]?[٠-٩]+[\)\]﴾]?\s*[-.:\s]/.test(txt) ||
-          txt.startsWith("انظر:") ||
-          txt.startsWith("أخرجه")
-        ) {
-          prev.classList.add("prose-footnote");
-          prev = prev.previousElementSibling;
-        } else {
-          break;
-        }
-      }
-    });
-  }
-
   function setup() {
     injectPageNotes();
-    enhanceFootnotes();
-    
+
     // Clean up any stale sheets in the DOM (e.g. from cached pages)
     const oldSheet = document.querySelector(".ann-sheet");
     if (oldSheet) oldSheet.remove();
