@@ -9,7 +9,6 @@ const LS = {
   scale: "aa-scale",
   tashkeel: "aa-tashkeel",
   vnums: "aa-vnums",
-  mode: "aa-mode",
   pages: "aa-pages",
 };
 
@@ -96,22 +95,6 @@ function setDrawer(open: boolean) {
   drawer.toggleAttribute("data-open", open);
   backdrop.toggleAttribute("data-open", open);
   document.body.style.overflow = open ? "hidden" : "";
-}
-
-// --- study modes — قراءة (plain) + اختبار (tap a verse to reveal its عجز) ---
-const MODES = ["qiraa", "ikhtibar"];
-const MODE_HINT: Record<string, string> = {}; // اختبار is self-evident — no hint text
-function setMode(m: string) {
-  if (!MODES.includes(m)) m = "qiraa";
-  root.setAttribute("data-mode", m);
-  localStorage.setItem(LS.mode, m);
-  document.querySelectorAll<HTMLElement>("[data-mode-btn]").forEach((b) =>
-    b.setAttribute("aria-pressed", String(b.dataset.modeBtn === m)),
-  );
-  if (m !== "ikhtibar")
-    document.querySelectorAll(".revealed").forEach((el) => el.classList.remove("revealed"));
-  const hint = document.querySelector<HTMLElement>("[data-mode-hint]");
-  if (hint) { hint.textContent = MODE_HINT[m] ?? ""; hint.hidden = !MODE_HINT[m]; }
 }
 
 // --- topbar search + popovers ---
@@ -229,8 +212,6 @@ const actions: Record<string, () => void> = {
   "search:next": () => { const q = document.querySelector<HTMLInputElement>("[data-inpage-search]")?.value.trim(); if (q) (window as any).find(q, false, false, true, false, true, false); },
   "search:prev": () => { const q = document.querySelector<HTMLInputElement>("[data-inpage-search]")?.value.trim(); if (q) (window as any).find(q, false, true, true, false, true, false); },
   "settings:toggle": () => togglePop(settingsPop, "settings:toggle"),
-  "mode:qiraa": () => setMode("qiraa"),
-  "mode:ikhtibar": () => setMode("ikhtibar"),
 };
 
 document.addEventListener("click", (e) => {
@@ -502,14 +483,6 @@ document.addEventListener("click", (e) => {
   const val = btn.dataset.type || "";
   scope.querySelectorAll<HTMLElement>("[data-typefilter] button").forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
   scope.querySelectorAll<HTMLElement>(".card[data-kind]").forEach((c) => c.classList.toggle("is-hidden", !!val && c.dataset.kind !== val));
-});
-
-// tap-to-reveal the عجز in اختبار mode
-document.addEventListener("click", (e) => {
-  if (root.getAttribute("data-mode") !== "ikhtibar") return;
-  const target = e.target as HTMLElement;
-  if (target.closest("button, a")) return; // leave controls/links alone
-  target.closest<HTMLElement>(".verse")?.classList.toggle("revealed");
 });
 
 // --- prose books: wrap each شرح phrase inline (poems mark server-side; prose
@@ -830,11 +803,9 @@ function enhanceProse() {
     // whole-paragraph note: tap the فقرة
     const para = t.closest<HTMLElement>("[data-ann-para]");
     if (para && !t.closest("a, button")) { openSheet(para.dataset.annPara || ""); return; }
-    // tapping a verse that carries notes (reading mode only) opens its sheet
-    if (root.getAttribute("data-mode") !== "ikhtibar") {
-      const pack = t.closest<HTMLElement>(".verse")?.querySelector<HTMLElement>("[data-ann-pack]");
-      if (pack && !t.closest("a, button")) { openSheet(pack.id); return; }
-    }
+    // tapping a verse that carries notes opens its sheet
+    const pack = t.closest<HTMLElement>(".verse")?.querySelector<HTMLElement>("[data-ann-pack]");
+    if (pack && !t.closest("a, button")) { openSheet(pack.id); return; }
     if (sheet && !sheet.hidden) close(); // outside click
   });
   function setup() {
@@ -891,9 +862,6 @@ applyPages(localStorage.getItem(LS.pages) !== "flow");
 if (localStorage.getItem(LS.tashkeel) === "0") applyTashkeel(false);
 else document.querySelectorAll<HTMLElement>('[data-toggle="tashkeel"]').forEach((b) => b.setAttribute("aria-pressed", "true"));
 
-// study mode init
-setMode(localStorage.getItem(LS.mode) || "qiraa");
-
 // Highlight the nav item for the current page (header is persisted, so its
 // aria-current would otherwise stay on whatever page first rendered it).
 function updateActiveNav() {
@@ -930,9 +898,6 @@ function applyStoredPrefs() {
     root.classList.toggle("hide-vnums", localStorage.getItem(LS.vnums) === "0");
     root.classList.toggle("no-tashkeel", localStorage.getItem(LS.tashkeel) === "0");
     root.classList.toggle("pages-flow", localStorage.getItem(LS.pages) === "flow");
-    const md = localStorage.getItem(LS.mode);
-    if (md && md !== "qiraa") root.setAttribute("data-mode", md);
-    else root.removeAttribute("data-mode");
   } catch (e) {}
 }
 document.addEventListener("astro:after-swap", () => {
