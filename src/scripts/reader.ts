@@ -587,8 +587,8 @@ function enhanceProse() {
 // prev/next between annotated anchors. All data comes from the hidden
 // [data-ann-pack] blocks (build-time, no network, sanitized at build).
 (() => {
-  const KIND_ORDER = ["شرح", "تفسير", "إعراب", "حاشية", "تخريج"];
-  const KIND_SLUG: Record<string, string> = { شرح: "sharh", حاشية: "hashiya", تخريج: "takhrij", إعراب: "iraab", تفسير: "tafsir" };
+  const KIND_ORDER = ["شرح", "تفسير", "غريب", "إعراب", "حاشية", "تخريج", "حكم", "فوائد"];
+  const KIND_SLUG: Record<string, string> = { شرح: "sharh", حاشية: "hashiya", تخريج: "takhrij", إعراب: "iraab", تفسير: "tafsir", غريب: "tafsir", حكم: "takhrij", فوائد: "sharh" };
   const toAr = (n: number) => String(n).replace(/[0-9]/g, (d) => "٠١٢٣٤٥٦٧٨٩"[+d]);
 
   let sheet: HTMLElement | null = null;
