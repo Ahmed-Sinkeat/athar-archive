@@ -14,6 +14,12 @@ import { analyzeBook } from "../../../lib/chunk";
 import { parseToc, extractFootnotesByPage } from "../../../lib/chapters";
 import { loadContentBody, notFound } from "../../../lib/book-asset";
 import { hrefFor, labelFor, isMatn } from "../../../lib/display";
+import { parseHadithOrdinal } from "../../../lib/hadith";
+import hadithIndexData from "../../../data/hadith-index.json";
+
+type HadithNote = { kind: string; label: string; sourceSlug: string; sourceTitle: string; sourceHref: string; body: string; grade?: string };
+const hadithIndex = hadithIndexData as Record<string, HadithNote[]>;
+const HADITH_KIND_CLASS: Record<string, string> = { شرح: "sharh", فوائد: "sharh", تخريج: "takhrij", حكم: "takhrij" };
 
 const { slug, chapter: chapterSlug } = Astro.params as { slug: string; chapter: string };
 
@@ -36,6 +42,14 @@ const names = await personNameMap();
 const byAnchor = notesByAnchor("book", entry.id, graph, names);
 const author = names.get(entry.data.person);
 const allChapters = a.chapters.map((c) => ({ title: c.title, slug: c.slug }));
+
+// Matn hubs (currently just the Arbaeen — see ADR-0013): each chapter here is
+// already scoped to one "## الحديث <ordinal>" heading, so no in-body injection
+// is needed — just surface this hadith's notes as a click-to-open panel on the
+// title, reusing the generic .ann-mark/.ann-pack bottom sheet.
+const hadithOrdinal = parseHadithOrdinal(chapter.title);
+const hadithNotes = hadithOrdinal !== null ? hadithIndex[`${entry.id}:${hadithOrdinal}`] : undefined;
+const hadithPackId = `ann-hadith-${chapter.slug}`;
 
 const KIND_SLUG: Record<string, string> = { شرح: "sharh", حاشية: "hashiya", تخريج: "takhrij", إعراب: "iraab" };
 const phraseAnchors = Object.entries(byAnchor).filter(([, notes]: any) => notes.some((n: any) => n.phrase));
@@ -240,7 +254,12 @@ const finalContent = (() => {
 
         <div class="reader-head">
           <div class="eyebrow u87c136d"><a class="faint" href={hrefFor("book", entry.id)}>{entry.data.title}</a></div>
-          <h1 class="reader-title ue7e55f7" set:html={processedTitleHtml || chapter.title}></h1>
+          <h1
+            class:list={["reader-title", "ue7e55f7", { "ann-mark": hadithNotes?.length }]}
+            data-ann={hadithNotes?.length ? hadithPackId : undefined}
+            aria-haspopup={hadithNotes?.length ? "dialog" : undefined}
+            set:html={processedTitleHtml || chapter.title}
+          ></h1>
           <div class="reader-byline">{author}</div>
           {entry.data.transcript_status && (
             <div style="margin-top: 0.5rem;">
@@ -279,6 +298,17 @@ const finalContent = (() => {
             ))}
           </div>
         ))}
+
+        {hadithNotes && hadithNotes.length > 0 && (
+          <div class="ann-pack" id={hadithPackId} data-ann-pack hidden>
+            {hadithNotes.map((nt) => (
+              <div class={`ann-entry k-${HADITH_KIND_CLASS[nt.kind] ?? "sharh"}`} data-kind={nt.kind} data-label={`${nt.kind} — ${nt.sourceTitle}`}>
+                <div class="ann-entry-body" data-ar><Fragment set:html={markdownToSafeHtml(nt.body)} /></div>
+                {nt.sourceHref && <a class="ann-source-link" href={nt.sourceHref}>اقرأ في موضعه: {nt.sourceTitle} ←</a>}
+              </div>
+            ))}
+          </div>
+        )}
 
         <!-- prev / next navigation -->
         <div class="prevnext">
