@@ -358,7 +358,7 @@ if (typeSel && fieldsEl && previewEl) {
       addCheck(slug, title, st, true).checked = true;
       syncHidden();
       nameI.value = ""; slugI.value = "";
-      note.textContent = "أُضيفَ ✓ سيظهر ملفُّه أسفلَ المعاينة.";
+      note.textContent = "أُضيفَ، سيظهر ملفُّه أسفلَ المعاينة.";
     });
     addBox.append(nameI, slugI, addBtn, note);
 
@@ -453,7 +453,7 @@ if (typeSel && fieldsEl && previewEl) {
       copyBtn.textContent = "نسخ";
       copyBtn.onclick = () =>
         navigator.clipboard?.writeText(file.content).then(() => {
-          copyBtn.textContent = "✓ نُسخ";
+          copyBtn.textContent = "نُسخ";
           setTimeout(() => (copyBtn.textContent = "نسخ"), 1200);
         });
 
@@ -485,7 +485,7 @@ if (typeSel && fieldsEl && previewEl) {
         navigator.clipboard?.writeText(file.content);
         if (curMode === "edit") {
           window.open(`${base}/edit/${config.repoBranch}/${file.path}`, "_blank", "noopener");
-          ghBtn.textContent = "نُسخ ✓ — الصقْه فوقَ القديم واحفظ";
+          ghBtn.textContent = "نُسخ — الصقْه فوقَ القديم واحفظ";
         } else {
           const u = `${base}/new/${config.repoBranch}?filename=${file.path}&value=${encodeURIComponent(file.content)}`;
           window.open(u, "_blank", "noopener");

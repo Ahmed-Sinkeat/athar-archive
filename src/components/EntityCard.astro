@@ -23,7 +23,7 @@ const hasRow = kind || corner || matn || audio || era;
         <span class="card-kindrow-tags">
           {kind ? <span class:list={["pill", kindColor]}>{kind}</span> : <span />}
           {matn && kind !== "متن" && <span class="badge-matn">متن</span>}
-          {audio && <span class="badge-matn">🎧 صوت</span>}
+          {audio && <span class="badge-matn">صوت</span>}
           {era && <span class="pill tag-verdigris">{eraLabel(era)}</span>}
         </span>
         {corner && <span class="faint u6cb285c" >{corner}</span>}
