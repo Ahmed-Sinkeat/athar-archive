@@ -7,7 +7,7 @@ kind: "مرجع"
 work_type: "مصدر أصلي"
 genre: "حديث"
 hadith_category: "تخريج"
-topics: ["aam-hadith"]
+topics: ["ahkam-al-hadith"]
 authored_year: 744
 volumes: 1
 ---
