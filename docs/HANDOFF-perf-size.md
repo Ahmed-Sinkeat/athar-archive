@@ -62,6 +62,35 @@ tafsir range-dedup (no quota cares about total size, only per-file and count).
 - ~~Fix stale docs (HTMX, Cloudflare Pages)~~ — done 2026-07-02 (`technology-stack.md`,
   `deploy.md`, `asbuild.md`, `structure.md`, `README.md`).
 
+## Done (2026-07-02)
+
+All three milestones implemented and verified. `dist/client/quran` 114MB→5.5MB, surah 2
+7.8MB→223KB, `tafsir-ibn-kathir.md` no longer shipped whole, `quran-tafsir-index.json`
+gitignored. File count 10,380/20,000 (52%). `pnpm test` 84/84, `pnpm smoke` pass.
+`book-asset.ts`'s `loadContentBody` is now unused by the book route (kept — still the
+DEV/lesson-asset path).
+
+## Next scaling options (not needed yet — headroom is ~2x)
+
+The 20,000-file Workers Static Assets limit and the 25 MiB per-asset limit are the two
+ceilings this repo can hit again as content grows (more tafsir sources → more fragments;
+bigger books → bigger chapter files). Two options, in order of effort:
+
+1. **Move fragments/chapters to R2 instead of Static Assets.** R2 has no per-object-count
+   limit and no egress fee (the audio pipeline already uses it — see
+   `docs/media-and-backup.md`). Swap `ASSETS.fetch()` for `env.R2_BUCKET.get()` in
+   `src/lib/book-asset.ts` / the tafsir-fragment fetch helper in `reader.ts`. Cost: one
+   R2 binding + one more indirection in two fetch helpers; no change to the on-demand
+   route shape from M1/M2.
+2. **Bundle small files into fewer bigger ones.** E.g. one JSON per surah (114 files)
+   instead of one per verse (6,236), sliced client-side after fetch; or bundle a book's
+   chapters into fewer multi-chapter files. Zero new infra, but gives back some of the
+   "fetch exactly the one small thing" simplicity M1/M2 were built for — prefer option 1
+   if R2 is already in play.
+
+Trigger: revisit when `find dist/client -type f | wc -l` crosses ~16,000 (80% of the
+20k limit), or when any single asset approaches 20 MiB.
+
 ## Verification
 
 - `pnpm build` → `du -sh dist/client/quran` (expect 114MB → <5MB); no asset over 25MiB;

@@ -4,7 +4,6 @@ person: "al-shanqiti"
 status: "published"
 published_at: "2026-06-27"
 kind: "مرجع"
-work_type: "مجموع"
 topics: ["fiqh-hanbali"]
 authored_year: 1393
 volumes: 1
