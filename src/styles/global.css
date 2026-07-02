@@ -487,18 +487,8 @@ html:not(.has-js) .ann-pack:target { display: block; margin-top: 8px; }
 .ann-menu-item.k-hashiya::before, .ann-menu-item.k-iraab::before { background: var(--verdigris); }
 .ann-menu-item:hover { background: var(--paper-2); border-color: var(--rule-strong); color: var(--accent); }
 
-/* ---------- study modes (وضع الحفظ) ---------- */
+/* ---------- in-page toolbar ---------- */
 .studybar { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; margin: 16px 0 4px; padding: 10px 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
-.studybar-modes { display: flex; flex-wrap: wrap; gap: 6px; }
-.mode-btn { font-family: var(--font-ui); font-size: 13px; color: var(--ink-soft); background: transparent; border: 1px solid var(--rule-strong); border-radius: 8px; padding: 6px 11px; cursor: pointer; }
-.mode-btn:hover { border-color: var(--accent); color: var(--accent); }
-.mode-btn[aria-pressed="true"] { background: var(--accent-solid); color: #fff; border-color: var(--accent-solid); }
-.study-hint { margin-top: 10px; }
-
-/* اختبار: hide the عجز until the بيت is tapped (أكمل البيت) */
-[data-mode="ikhtibar"] .verse { cursor: pointer; }
-[data-mode="ikhtibar"] .ajz { visibility: hidden; }
-[data-mode="ikhtibar"] .verse.revealed .ajz { visibility: visible; }
 
 /* ---------- composer (/compose) ---------- */
 .compose-q { font-family: var(--font-ui); font-size: 14px; color: var(--ink-soft); margin: 6px 0 12px; }

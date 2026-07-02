@@ -112,8 +112,6 @@ const fullTitle = title.includes("أهل الأثر") ? title : `${title} · أ�
           const s = localStorage.getItem("aa-scale");
           if (s) document.documentElement.style.setProperty("--reading-scale", s);
           if (localStorage.getItem("aa-vnums") === "0") document.documentElement.classList.add("hide-vnums");
-          const md = localStorage.getItem("aa-mode");
-          if (md && md !== "qiraa") document.documentElement.setAttribute("data-mode", md);
         } catch (e) {}
       })();
     </script>
