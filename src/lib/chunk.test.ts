@@ -74,4 +74,16 @@ describe("analyzeBook", () => {
     expect(book.chapters).toHaveLength(1);
     expect(book.chunked).toBe(false);
   });
+
+  it("re-splits an oversized chapter (headingless, page-marker-only) so no on-demand render exceeds ~40 pages", () => {
+    // one small chapter + one giant, headingless-inside chapter with 80 page
+    // markers (mirrors mowatta-malik's كتاب الاستئذان: 0 sub-headings, 694
+    // page-seps in a single chapter — the real prod incident this guards).
+    const giant = Array.from({ length: 80 }, (_, i) => `<hr class="page-sep" data-page="${i + 1}" />\nنص الصفحة ${i + 1}.`).join("\n\n");
+    const body = `## باب صغير\n\nنص قصير.\n\n## باب كبير\n\n${giant}\n`;
+    const book = analyzeBook(body, { words: 10, chapters: 2 }); // force chunked with a tiny fixture
+    expect(book.chunked).toBe(true);
+    expect(book.chapters.length).toBeGreaterThan(2); // small chapter + 2+ sub-chunks of the giant one
+    for (const c of book.chapters) expect(c.content.length).toBeLessThan(giant.length);
+  });
 });
