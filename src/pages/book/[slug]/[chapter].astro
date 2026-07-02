@@ -10,9 +10,8 @@ import Breadcrumbs from "../../../components/Breadcrumbs.astro";
 import StudyBar from "../../../components/StudyBar.astro";
 import { isPub, loadGraph, personNameMap, notesByAnchor } from "../../../lib/site";
 import { markdownToSafeHtml } from "../../../lib/sanitize";
-import { analyzeBook } from "../../../lib/chunk";
 import { parseToc, extractFootnotesByPage } from "../../../lib/chapters";
-import { loadContentBody, notFound } from "../../../lib/book-asset";
+import { loadChapterManifest, loadChapterBody, notFound } from "../../../lib/book-asset";
 import { hrefFor, labelFor, isMatn } from "../../../lib/display";
 import { parseHadithOrdinal } from "../../../lib/hadith";
 import hadithIndexData from "../../../data/hadith-index.json";
@@ -26,12 +25,13 @@ const { slug, chapter: chapterSlug } = Astro.params as { slug: string; chapter: 
 const entry = await getEntry("book", slug);
 if (!entry || !isPub(entry)) return notFound();
 
-const body = await loadContentBody("book", slug);
-if (!body) return notFound();
-
-const a = analyzeBook(body);
-const chapter = a.chunked ? a.chapters.find((c) => c.slug === chapterSlug) : undefined;
-if (!chapter) return notFound();
+const manifest = await loadChapterManifest(slug);
+if (!manifest) return notFound();
+const chapterMeta = manifest.find((c) => c.slug === chapterSlug);
+if (!chapterMeta) return notFound();
+const chapterContent = await loadChapterBody(slug, chapterSlug);
+if (chapterContent == null) return notFound();
+const chapter = { ...chapterMeta, content: chapterContent };
 
 // ponytail: builds the whole knowledge graph per cold request just to read this
 // book's annotations + author name. Fine at current scale and the result is
@@ -41,7 +41,7 @@ const graph = await loadGraph();
 const names = await personNameMap();
 const byAnchor = notesByAnchor("book", entry.id, graph, names);
 const author = names.get(entry.data.person);
-const allChapters = a.chapters.map((c) => ({ title: c.title, slug: c.slug }));
+const allChapters = manifest.map((c) => ({ title: c.title, slug: c.slug }));
 
 // Matn hubs (currently just the Arbaeen — see ADR-0013): each chapter here is
 // already scoped to one "## الحديث <ordinal>" heading, so no in-body injection

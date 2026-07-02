@@ -6,6 +6,9 @@ import Relations from "../../components/Relations.astro";
 import { markdownToSafeHtml } from "../../lib/sanitize";
 import { notesByAnchor, loadGraph, personNameMap } from "../../lib/site";
 import { parseBook } from "../../lib/chapters";
+// Build-time only: used to know WHICH verses have tafsir (so we render a
+// clickable ayah-num button), never to inline note bodies into page HTML —
+// those are fetched on demand from /tafsir-frag/<surah>/<ayah>.html (M1).
 import tafsirIndex from "../../data/quran-tafsir-index.json";
 
 export async function getStaticPaths() {
@@ -25,13 +28,7 @@ export async function getStaticPaths() {
 
 const { entry, paragraphs, byAnchor } = Astro.props;
 const { data } = entry;
-const tafsirByVerse = tafsirIndex as Record<string, Array<{
-  kind: string;
-  label: string;
-  sourceTitle?: string;
-  sourceHref?: string;
-  body: string;
-}>>;
+const tafsirVerseKeys = new Set(Object.keys(tafsirIndex as Record<string, unknown[]>));
 const surahTitle = `سورة ${data.name}`;
 const path = `/quran/${entry.id}`;
 
@@ -107,14 +104,13 @@ const processedParagraphs = paragraphs.map((para, idx) => {
   });
 
   const verseKey = `${data.number}:${para.id}`;
-  const tafsirNotes = tafsirByVerse[verseKey] ?? [];
+  const hasTafsir = tafsirVerseKeys.has(verseKey);
 
   return {
     ...para,
     text,
     verseKey,
-    tafsirNotes,
-    tafsirPackId: tafsirNotes.length > 0 ? `ann-quran-${data.number}-${para.id}` : undefined,
+    tafsirPackId: hasTafsir ? `ann-quran-${data.number}-${para.id}` : undefined,
   };
 });
 ---
@@ -138,21 +134,11 @@ const processedParagraphs = paragraphs.map((para, idx) => {
         return (
           <div class="ayah" id={para.id} data-anchor={para.id}>
             {para.tafsirPackId ? (
-              <button type="button" class="ayah-num ayah-num-btn ann-mark" data-ann={para.tafsirPackId} aria-haspopup="dialog" aria-label={`تفسير الآية ${para.id}`}>{para.id}</button>
+              <button type="button" class="ayah-num ayah-num-btn ann-mark" data-ann={para.tafsirPackId} data-ann-src={`/tafsir-frag/${data.number}/${para.id}.html`} aria-haspopup="dialog" aria-label={`تفسير الآية ${para.id}`}>{para.id}</button>
             ) : (
               <span class="ayah-num">{para.id}</span>
             )}
             <span class="ayah-text" set:html={markdownToSafeHtml(para.text)} />
-            {para.tafsirPackId && (
-              <div class="ann-pack" id={para.tafsirPackId} data-ann-pack hidden>
-                {para.tafsirNotes.map((nt) => (
-                  <div class="ann-entry k-tafsir" data-kind={nt.kind} data-label={nt.label}>
-                    <div class="ann-entry-body" data-ar><Fragment set:html={markdownToSafeHtml(nt.body)} /></div>
-                    {nt.sourceHref && <a class="ann-source-link" href={nt.sourceHref}>اقرأ في موضعه{nt.sourceTitle ? `: ${nt.sourceTitle}` : ""} ←</a>}
-                  </div>
-                ))}
-              </div>
-            )}
           </div>
         );
       })}

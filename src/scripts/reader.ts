@@ -813,7 +813,20 @@ function enhanceProse() {
       return;
     }
     const mark = t.closest<HTMLElement>(".ann-mark");
-    if (mark) { e.preventDefault(); openSheet(mark.getAttribute("data-ann") || ""); return; }
+    if (mark) {
+      e.preventDefault();
+      const packId = mark.getAttribute("data-ann") || "";
+      const annSrc = mark.dataset.annSrc;
+      if (annSrc && !document.getElementById(packId)) {
+        fetch(annSrc).then((r) => (r.ok ? r.text() : "")).then((html) => {
+          if (html) document.body.insertAdjacentHTML("beforeend", html);
+          openSheet(packId);
+        });
+      } else {
+        openSheet(packId);
+      }
+      return;
+    }
     // whole-paragraph note: tap the فقرة
     const para = t.closest<HTMLElement>("[data-ann-para]");
     if (para && !t.closest("a, button")) { openSheet(para.dataset.annPara || ""); return; }
