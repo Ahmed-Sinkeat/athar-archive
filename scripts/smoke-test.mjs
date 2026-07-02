@@ -36,12 +36,12 @@ ok((books.match(/class="card"/g) || []).length >= 1, "books index lists cards");
 ok(/class="masail-subject"/.test(books), "books grouped in تصنيف accordion");
 ok(/card-kindrow/.test(books), "book kind pill on cards");
 
-// --- poems index (poems only, متن badge + inherited era) ---
+// --- poems index (poems only, work-type chip + inherited era) ---
 section("/poems");
 const poems = read("poems/index.html");
 const poemCardCount = (poems.match(/class="card"/g) || []).length;
 ok(poemCardCount >= 2, "poems index lists cards");
-ok(/badge-matn/.test(poems), "متن badge on poem cards");
+ok(/class="pill tag-accent">منظومة</.test(poems), "منظومة chip on poem cards");
 
 // --- composer (unlisted maintainer tool) ---
 section("/compose");

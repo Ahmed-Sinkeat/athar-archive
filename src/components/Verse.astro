@@ -43,6 +43,12 @@ const inSadr = locate(sadr, phrase);
 const inAjz = inSadr ? null : locate(ajz ?? "", phrase);
 const wholeSadr = hasNotes && !phrase;
 const popId = `ann-${anchor}`;
+// Phrase-level marks keep the tap-to-open sheet (verse-dense pages would
+// drown in inline <details>); whole-verse notes (no phrase) render inline.
+const inlineNotes = wholeSadr ? notes : [];
+const sheetNotes = wholeSadr ? [] : notes;
+const KIND_ORDER = ["شرح", "تخريج", "حكم", "حاشية", "إعراب"];
+const sortedInlineNotes = [...inlineNotes].sort((a, b) => KIND_ORDER.indexOf(a.kind) - KIND_ORDER.indexOf(b.kind));
 ---
 <div class="verse" id={anchor}>
   <div class="verse-inner">
@@ -51,8 +57,6 @@ const popId = `ann-${anchor}`;
       <div class="sadr">
         {inSadr ? (
           <>{inSadr.before}<a class="ann-mark" href={`#${popId}`} data-ann={popId} aria-haspopup="dialog">{inSadr.mark}</a>{inSadr.after}</>
-        ) : wholeSadr ? (
-          <a class="ann-mark" href={`#${popId}`} data-ann={popId} aria-haspopup="dialog">{sadr}</a>
         ) : (
           sadr
         )}
@@ -71,9 +75,9 @@ const popId = `ann-${anchor}`;
       )}
     </div>
   </div>
-  {hasNotes && (
+  {sheetNotes.length > 0 && (
     <div class="ann-pack" id={popId} data-ann-pack hidden>
-      {notes.map((nt) => (
+      {sheetNotes.map((nt) => (
         <div class={`ann-entry k-${KIND_SLUG[nt.kind] ?? "sharh"}`} data-kind={nt.kind} data-label={nt.annotator ? `${nt.kind} — ${nt.annotator}` : nt.kind}>
           <div class="ann-entry-body" data-ar><Fragment set:html={markdownToSafeHtml(nt.body)} /></div>
           {nt.sourceHref && <a class="ann-source-link" href={nt.sourceHref}>اقرأ في موضعه{nt.sourceLabel ? `: ${nt.sourceLabel}` : ""} ←</a>}
@@ -81,4 +85,11 @@ const popId = `ann-${anchor}`;
       ))}
     </div>
   )}
+  {sortedInlineNotes.map((nt) => (
+    <details class={`inline-note k-${KIND_SLUG[nt.kind] ?? "sharh"}`}>
+      <summary>{nt.kind}{nt.sourceLabel ? ` — ${nt.sourceLabel}` : nt.annotator ? ` — ${nt.annotator}` : ""}</summary>
+      <div class="inline-note-body" data-ar><Fragment set:html={markdownToSafeHtml(nt.body)} /></div>
+      {nt.sourceHref && <a class="ann-source-link" href={nt.sourceHref}>اقرأ في موضعه{nt.sourceLabel ? `: ${nt.sourceLabel}` : ""} ←</a>}
+    </details>
+  ))}
 </div>

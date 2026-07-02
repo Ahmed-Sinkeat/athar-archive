@@ -3,6 +3,7 @@ title: "فِي خراب إلبيرة"
 person: "al-ilbiri"
 status: "published"
 published_at: "2026-07-02"
+work_type: "قصيدة"
 description: "من ديوان الإلبيري — صفحة 70"
 ---
 يضيع مَفْرُوض ويغفل وَاجِب ... وَإِنِّي على أهل الزَّمَان لعاتب

@@ -56,7 +56,8 @@ function splitByPages(body: string, pagesPerChunk: number = 40): RawChapter[] {
            title: s === e ? `صفحة ${s}` : `صفحات ${s}-${e}`,
            slug: `pages-${s}-${e}`,
            order: chapters.length + 1,
-           content: currentContent.trim()
+           content: currentContent.trim(),
+           firstPage: Number(s),
          });
          currentContent = "";
          pageCount = 0;
@@ -69,7 +70,8 @@ function splitByPages(body: string, pagesPerChunk: number = 40): RawChapter[] {
          title: s === e ? `صفحة ${s}` : `صفحات ${s}-${e}`,
          slug: `pages-${s}-${e}`,
          order: chapters.length + 1,
-         content: currentContent.trim()
+         content: currentContent.trim(),
+         firstPage: Number(s),
        });
     }
   }
@@ -94,7 +96,7 @@ function splitOversizedChapters(chapters: RawChapter[]): RawChapter[] {
       out.push(c);
       continue;
     }
-    for (const s of sub) out.push({ title: `${c.title} — ${s.title}`, rawTitle: c.rawTitle, slug: `${c.slug}--${s.slug}`, order: 0, content: s.content });
+    for (const s of sub) out.push({ title: s.title, rawTitle: c.rawTitle, slug: `${c.slug}--${s.slug}`, order: 0, content: s.content, parent: c.slug, parentTitle: c.title, firstPage: s.firstPage });
   }
   return out.map((c, i) => ({ ...c, order: i + 1 }));
 }

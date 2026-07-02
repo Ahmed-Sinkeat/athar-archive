@@ -4,6 +4,7 @@ person: "ibn-abdul-wahhab"
 status: "published"
 published_at: "2026-06-27"
 kind: "متن"
+work_type: "متن"
 topics: ["aam-aqeedah"]
 authored_year: 1206
 volumes: 1

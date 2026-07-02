@@ -95,10 +95,10 @@ export function validate(entries: ContentEntry[]): BuildError[] {
       }
     }
 
-    // --- Book → sharh_of (optional; must resolve to a real book) ---
+    // --- Book → sharh_of (optional; must resolve to a real book or poem) ---
     if (collection === "book" && data.sharh_of) {
       const parentId = str(data.sharh_of);
-      const parent = get(map, "book", parentId);
+      const parent = get(map, "book", parentId) ?? get(map, "poem", parentId);
       if (!parent) {
         fail(collection, id, "ref-resolution", `sharh_of '${parentId}' not found (referenced by 'book/${id}')`);
       } else if (isPublished && parent.status === "draft") {

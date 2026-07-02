@@ -20,7 +20,24 @@ const topicsField = z.array(slug).min(1).max(5).optional();
 // نوع العمل (work_type) — structural/authorial nature of a work, independent of its
 // subject/topic. See docs/knowledge-taxonomy.md §3 in Athar-Engine.
 const workTypeField = z
-  .enum(["مصدر أصلي", "متن", "منظومة", "شرح", "مختصر", "حاشية", "رسالة", "مجموع", "موسوعة", "تحقيق", "فهرس"])
+  .enum([
+    "مصدر أصلي",
+    "متن",
+    "منظومة",
+    "شرح",
+    "مختصر",
+    "حاشية",
+    "رسالة",
+    "مجموع",
+    "موسوعة",
+    "تحقيق",
+    "فهرس",
+    "تفسير",
+    "سيرة",
+    "ديوان",
+    "فتاوى",
+    "قصيدة",
+  ])
   .optional();
 
 // Downloadable attachments (print editions, PDFs, etc.) — served from R2 (P6).

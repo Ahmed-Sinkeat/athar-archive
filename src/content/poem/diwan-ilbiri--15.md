@@ -3,6 +3,7 @@ title: "يَا أَيهَا المغتر بِاللَّه ... فر من الله
 person: "al-ilbiri"
 status: "published"
 published_at: "2026-07-02"
+work_type: "قصيدة"
 description: "من ديوان الإلبيري — صفحة 62"
 ---
 يَا أَيهَا المغتر بِاللَّه ... فر من الله الى الله

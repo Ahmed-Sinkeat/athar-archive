@@ -46,6 +46,9 @@ export interface RawChapter {
   slug: string;
   order: number;
   content: string; // body lines belonging to this chapter (heading excluded)
+  parent?: string;      // oversized-chapter slices: the un-split chapter's slug
+  parentTitle?: string; // …and its title, for TOC grouping
+  firstPage?: number;   // page-marker slices: the first data-page in the slice
 }
 
 export interface ChapterSplit {

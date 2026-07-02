@@ -18,7 +18,7 @@ import hadithIndexData from "../../../data/hadith-index.json";
 
 type HadithNote = { kind: string; label: string; sourceSlug: string; sourceTitle: string; sourceHref: string; body: string; grade?: string };
 const hadithIndex = hadithIndexData as Record<string, HadithNote[]>;
-const HADITH_KIND_CLASS: Record<string, string> = { شرح: "sharh", فوائد: "sharh", تخريج: "takhrij", حكم: "takhrij" };
+const HADITH_KIND_CLASS: Record<string, string> = { شرح: "sharh", تخريج: "takhrij", حكم: "takhrij" };
 
 const { slug, chapter: chapterSlug } = Astro.params as { slug: string; chapter: string };
 
@@ -41,15 +41,39 @@ const graph = await loadGraph();
 const names = await personNameMap();
 const byAnchor = notesByAnchor("book", entry.id, graph, names);
 const author = names.get(entry.data.person);
-const allChapters = manifest.map((c) => ({ title: c.title, slug: c.slug }));
+const allChapters = manifest.map((c) => ({ title: c.title, slug: c.slug, parent: c.parent, parentTitle: c.parentTitle }));
+
+// Oversized chapters are re-split into "صفحات S-E" slices (parent set) — group
+// those back under the parent chapter for the TOC instead of listing each slice.
+interface TocGroup { href: string; title: string; slug: string; slices: { href: string; title: string; slug: string }[] }
+function groupToc(items: typeof allChapters): TocGroup[] {
+  const groups: TocGroup[] = [];
+  const byKey = new Map<string, TocGroup>();
+  for (const c of items) {
+    const key = c.parent ?? c.slug;
+    const href = hrefFor("book", entry!.id, { chapter: c.slug });
+    let g = byKey.get(key);
+    if (!g) {
+      g = { href, title: c.parentTitle ?? c.title, slug: key, slices: [] };
+      byKey.set(key, g);
+      groups.push(g);
+    }
+    if (c.parent) g.slices.push({ href, title: c.title, slug: c.slug });
+  }
+  return groups;
+}
+const tocGroups = groupToc(allChapters);
+const currentGroupKey = chapterMeta.parent ?? chapterMeta.slug;
 
 // Matn hubs (currently just the Arbaeen — see ADR-0013): each chapter here is
-// already scoped to one "## الحديث <ordinal>" heading, so no in-body injection
-// is needed — just surface this hadith's notes as a click-to-open panel on the
-// title, reusing the generic .ann-mark/.ann-pack bottom sheet.
+// already scoped to one "## الحديث <ordinal>" heading — surface this hadith's
+// notes as inline <details> after the prose, ordered شرح → تخريج → حكم.
 const hadithOrdinal = parseHadithOrdinal(chapter.title);
 const hadithNotes = hadithOrdinal !== null ? hadithIndex[`${entry.id}:${hadithOrdinal}`] : undefined;
-const hadithPackId = `ann-hadith-${chapter.slug}`;
+const HADITH_KIND_ORDER = ["شرح", "تخريج", "حكم"];
+const sortedHadithNotes = [...(hadithNotes ?? [])].sort(
+  (a, b) => HADITH_KIND_ORDER.indexOf(a.kind) - HADITH_KIND_ORDER.indexOf(b.kind),
+);
 
 const KIND_SLUG: Record<string, string> = { شرح: "sharh", حاشية: "hashiya", تخريج: "takhrij", إعراب: "iraab" };
 const phraseAnchors = Object.entries(byAnchor).filter(([, notes]: any) => notes.some((n: any) => n.phrase));
@@ -109,123 +133,76 @@ for (const [anchor, notes] of Object.entries(byAnchor)) {
 // 2b. Group compiled-markdown footnotes ([^id]: body) by page — these bundle
 // at the source's own page/paragraph boundary, not next to whichever inline
 // citation marker they actually annotate (Ibn Kathir routinely piles 5 defs
-// onto the last few words before a page break). Open them as a per-page menu
-// like حاشية/تخريج notes instead of unlabeled scattered popovers.
-const { itemsByPage: footnotesByPage, pageIndexById: footnotePageIndex } = extractFootnotesByPage(chapter.content);
+// onto the last few words before a page break). Rendered as a page-footer list
+// (like a printed book) instead of an unlabeled popover.
+const { itemsByPage: footnotesByPage } = extractFootnotesByPage(chapter.content);
 
-// 3. Compile markdown to HTML first so that raw HTML tags inside are not broken by remark-parse.
-const html = markdownToSafeHtml(chapter.content);
+// 3. Compile with the [^id]: definitions still in place — remark-gfm only
+// recognizes [^id] as a real footnote reference (vs. literal text) when a
+// matching definition exists in the same document. Its own end-of-document
+// <section data-footnotes> is stripped after, in favor of our per-page footer.
+const html = markdownToSafeHtml(chapter.content).replace(/<section data-footnotes[^>]*>[\s\S]*?<\/section>\n?/, "");
 
-function parseSafeNotes(notesAttr: string): string[] {
-  try {
-    const decoded = notesAttr
-      .replace(/&quot;/g, '"')
-      .replace(/&#x22;/g, '"')
-      .replace(/&#39;/g, "'")
-      .replace(/&#x27;/g, "'")
-      .replace(/&apos;/g, "'")
-      .replace(/&amp;/g, "&")
-      .replace(/&#x26;/g, "&")
-      .replace(/&#38;/g, "&");
-    return JSON.parse(decoded);
-  } catch (e) {
-    return [];
-  }
+// Combine DB حاشية notes + compiled footnotes into one ordered per-page list,
+// each item addressable as #fn-{page}-{index} — this IS the footer.
+interface FooterItem { id: string; kind: string; body: string }
+const footerItemsByPage = new Map<number, FooterItem[]>();
+const footnoteAnchorById = new Map<string, string>(); // [^id] → its footer <li> id
+for (const [pNum, bodies] of dbHashiyasByPage) {
+  const items = bodies.map((body, i) => ({ id: `fn-${pNum}-${i}`, kind: "حاشية", body }));
+  footerItemsByPage.set(pNum, items);
+}
+for (const [pNum, fns] of footnotesByPage) {
+  const existing = footerItemsByPage.get(pNum) ?? [];
+  fns.forEach((fn, i) => {
+    const id = `fn-${pNum}-${existing.length + i}`;
+    footnoteAnchorById.set(fn.id, id);
+  });
+  footerItemsByPage.set(pNum, [...existing, ...fns.map((fn, i) => ({ id: `fn-${pNum}-${existing.length + i}`, kind: "تخريج", body: fn.body }))]);
 }
 
-// Footnotes get appended after حاشية notes in each page's combined array, so
-// their position there isn't the same as their page-local index computed by
-// extractFootnotesByPage — record the real, final index here as each page's
-// notes get assembled, for stamping onto the inline refs below.
-const adjustedFootnoteIndexById = new Map<string, number>();
-
-// 4. Inject DB hashiyas into page separators in the HTML content
-const processedHtml = html.replace(/<hr\s+([^>]*class="page-sep"[^>]*)>/g, (match, attrs) => {
-  const pageMatch = attrs.match(/data-page="(\d+)"/) || attrs.match(/data-page='(\d+)'/);
-  if (!pageMatch) return match;
-  const pNum = parseInt(pageMatch[1], 10);
-
-  let notes: any[] = [];
-  const notesMatch = attrs.match(/data-notes="([^"]+)"/) || attrs.match(/data-notes='([^']+)'/);
-  if (notesMatch) {
-    notes = parseSafeNotes(notesMatch[1]);
-  }
-  // Normalize everything to {kind,label,body} objects before combining —
-  // injectPageNotes() (reader.ts) only checks the FIRST array element to decide
-  // whether the whole array is bare strings or objects, so a mixed array would
-  // misinterpret one source or the other.
-  const normalizedNotes = notes.map((n) => (typeof n === "string" ? { kind: "حاشية", label: "حاشية", body: n } : n));
-  const dbNotes = (dbHashiyasByPage.get(pNum) ?? []).map((body) => ({ kind: "حاشية", label: "حاشية", body }));
-  const pageFootnotes = footnotesByPage.get(pNum) ?? [];
-  const fnNotes = pageFootnotes.map((fn) => ({ kind: "تخريج", label: "تخريج", body: fn.body }));
-  const footnoteBaseIndex = normalizedNotes.length + dbNotes.length;
-  pageFootnotes.forEach((fn, i) => adjustedFootnoteIndexById.set(fn.id, footnoteBaseIndex + i));
-  const allNotes = [...normalizedNotes, ...dbNotes, ...fnNotes];
-
-  const cleanAttrs = attrs
-    .replace(/data-notes="[^"]+"/g, "")
-    .replace(/data-notes='[^']+'/g, "")
-    .replace(/\s+/g, " ")
-    .trim();
-    
-  if (allNotes.length > 0) {
-    const na = `data-notes='${JSON.stringify(allNotes).replace(/'/g, "&#39;")}'`;
-    return `<div ${cleanAttrs} ${na}></div>`;
-  }
-  return `<div ${cleanAttrs}></div>`;
-});
-
-// 4b. Stamp each GFM footnote ref [^id] with which page's notes sheet it now
-// belongs to (+ its index within that page), so clicking it opens the same
-// per-page menu the page number itself opens, landing on the right entry —
-// instead of an unlabeled popover with no visible link to the citation.
-const footnoteRefsWired = processedHtml.replace(
-  /<a href="#user-content-fn-([a-zA-Z0-9_-]+)"([^>]*data-footnote-ref[^>]*)>/g,
-  (match, id, restAttrs) => {
-    const page = footnotePageIndex.get(id)?.page;
-    const index = adjustedFootnoteIndexById.get(id);
-    if (page === undefined || index === undefined) return match;
-    return `<a href="#user-content-fn-${id}"${restAttrs} data-sep-page="${page}" data-fn-index="${index}">`;
-  }
+// 4. Point each GFM footnote ref [^id] at its footer <li> instead of the
+// (now-stripped) end-of-document Footnotes section.
+const footnoteRefsWired = html.replace(
+  /<sup><a href="#user-content-fn-([a-zA-Z0-9_-]+)"[^>]*data-footnote-ref[^>]*>(\d+)<\/a><\/sup>/g,
+  (match, id, num) => {
+    const target = footnoteAnchorById.get(id);
+    if (!target) return match;
+    return `<sup><a href="#${target}">${num}</a></sup>`;
+  },
 );
 
-// 5. Embed note text directly on inline <sup data-fn> refs so client needs no DOM search.
-//    Parses the notes we just injected into page-seps, then stamps data-note on each sup.
-let processedTitleHtml = "";
+function renderFooter(pageNum: number): string {
+  const items = footerItemsByPage.get(pageNum);
+  if (!items?.length) return "";
+  const lis = items
+    .map((it) => `<li id="${it.id}"><span class="page-footnote-kind">${it.kind}</span>${markdownToSafeHtml(it.body)}</li>`)
+    .join("");
+  return `<aside class="page-footnotes"><ol>${lis}</ol></aside>`;
+}
+
+// 5. Splice a printed-footer <aside> after each page's content — right before
+// the marker that starts the NEXT page, and after the last page's content.
+// The marker itself becomes a static "ص N" <div> (was <hr>, so ::before can
+// render its page-number content — <hr> pseudo-elements are unreliable).
 const finalContent = (() => {
-  const pnMap = new Map<number, string>();
-  footnoteRefsWired.replace(
-    /<div\s+([^>]*class="page-sep"[^>]*)><\/div>/g,
-    (_, attrs: string) => {
-      const pageMatch = attrs.match(/data-page="(\d+)"/) || attrs.match(/data-page='(\d+)'/);
-      const notesMatch = attrs.match(/data-notes="([^"]*)"/) || attrs.match(/data-notes='([^']*)'/);
-      if (pageMatch && notesMatch) {
-        const pStr = pageMatch[1];
-        const ns = parseSafeNotes(notesMatch[1]);
-        if (ns.length) pnMap.set(parseInt(pStr, 10), ns.join("\n\n"));
-      }
-      return _;
+  const segments = footnoteRefsWired.split(/(<hr\s+[^>]*class="page-sep"[^>]*>)/);
+  let out = "";
+  let curPage = currentPageNum;
+  for (let i = 0; i < segments.length; i++) {
+    const isMarker = i % 2 === 1;
+    if (isMarker) {
+      out += renderFooter(curPage);
+      const m = segments[i].match(/data-page="(\d+)"/);
+      const page = m ? m[1] : String(curPage);
+      out += `<div class="page-sep" id="p${page}" data-page="${page}"></div>`;
+      if (m) curPage = parseInt(m[1], 10);
+    } else {
+      out += segments[i];
     }
-  );
-
-  const stampFn = (match: string, attrs: string, fnContent: string) => {
-    const fnMatch = attrs.match(/data-fn="(\d+)"/) || attrs.match(/data-fn='(\d+)'/);
-    const sepMatch = attrs.match(/data-sep-page="(\d+)"/) || attrs.match(/data-sep-page='(\d+)'/);
-    if (!fnMatch || !sepMatch) return match;
-    const fn = fnMatch[1];
-    const sepPage = sepMatch[1];
-    const note = pnMap.get(parseInt(sepPage, 10));
-    if (!note) return match;
-    const attr = note.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/'/g, "&#39;").replace(/\r/g, "").replace(/\n/g, "&#10;");
-    return `<sup data-fn="${fn}" data-sep-page="${sepPage}" data-note="${attr}">${fnContent}</sup>`;
-  };
-
-  if ((chapter as any).rawTitle) {
-    processedTitleHtml = (chapter as any).rawTitle.replace(/<sup\s+([^>]+)>(\d+)<\/sup>/g, stampFn);
   }
-
-  if (!pnMap.size) return footnoteRefsWired;
-  return footnoteRefsWired.replace(/<sup\s+([^>]+)>(\d+)<\/sup>/g, stampFn);
+  out += renderFooter(curPage);
+  return out;
 })();
 ---
 <Base title={`${chapter.title} · ${entry.data.title}`} activeNav="books" searchScope={{ in: entry.id, label: entry.data.title }}>
@@ -234,7 +211,7 @@ const finalContent = (() => {
       { label: "الرئيسية", href: "/" },
       { label: "الكتب", href: "/books" },
       { label: entry.data.title, href: hrefFor("book", entry.id) },
-      { label: chapter.title },
+      { label: chapterMeta.parentTitle ?? chapter.title },
     ]}
   />
 
@@ -242,25 +219,33 @@ const finalContent = (() => {
     <div class="chap-grid">
       <!-- main reading column -->
       <div class="reading-pad">
-        <!-- mobile TOC (hidden on desktop via CSS) -->
-        <details class="chap-mobile-toc">
-          <summary>فصول الكتاب · {(allChapters as any[]).length} فصل</summary>
-          <ul class="chap-mobile-list">
-            {(allChapters as any[]).map((c: any) => (
-              <li><a href={hrefFor("book", entry.id, { chapter: c.slug })} class:list={[{ 'is-current': c.slug === chapter.slug }]}>{c.title}</a></li>
-            ))}
-          </ul>
-        </details>
-
         <div class="reader-head">
           <div class="eyebrow u87c136d"><a class="faint" href={hrefFor("book", entry.id)}>{entry.data.title}</a></div>
           <h1
-            class:list={["reader-title", "ue7e55f7", { "ann-mark": hadithNotes?.length }]}
-            data-ann={hadithNotes?.length ? hadithPackId : undefined}
-            aria-haspopup={hadithNotes?.length ? "dialog" : undefined}
-            set:html={processedTitleHtml || chapter.title}
+            class:list={["reader-title", "ue7e55f7"]}
+            set:html={chapterMeta.parentTitle ?? (chapter.rawTitle || chapter.title)}
           ></h1>
+          {chapterMeta.parentTitle && <div class="reader-subtitle">{chapter.title}</div>}
           <div class="reader-byline">{author}</div>
+
+          <!-- mobile TOC toggle (hidden on desktop via CSS — sidebar covers it there) -->
+          <details class="chap-mobile-toc">
+            <summary>فصول الكتاب · {tocGroups.length} فصل</summary>
+            <ul class="chap-mobile-list">
+              {tocGroups.map((g) => (
+                <li>
+                  <a href={g.href} class:list={[{ 'is-current': g.slug === currentGroupKey }]}>{g.title}</a>
+                  {g.slug === currentGroupKey && g.slices.length > 0 && (
+                    <ul class="chap-mobile-list">
+                      {g.slices.map((s) => (
+                        <li><a href={s.href} class:list={[{ 'is-current': s.slug === chapter.slug }]}>{s.title}</a></li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </details>
           {entry.data.transcript_status && (
             <div style="margin-top: 0.5rem;">
               <span class={`pill ${entry.data.transcript_status === 'قيد المراجعة' ? 'tag-accent' : ''}`}>{entry.data.transcript_status}</span>
@@ -299,16 +284,13 @@ const finalContent = (() => {
           </div>
         ))}
 
-        {hadithNotes && hadithNotes.length > 0 && (
-          <div class="ann-pack" id={hadithPackId} data-ann-pack hidden>
-            {hadithNotes.map((nt) => (
-              <div class={`ann-entry k-${HADITH_KIND_CLASS[nt.kind] ?? "sharh"}`} data-kind={nt.kind} data-label={`${nt.kind} — ${nt.sourceTitle}`}>
-                <div class="ann-entry-body" data-ar><Fragment set:html={markdownToSafeHtml(nt.body)} /></div>
-                {nt.sourceHref && <a class="ann-source-link" href={nt.sourceHref}>اقرأ في موضعه: {nt.sourceTitle} ←</a>}
-              </div>
-            ))}
-          </div>
-        )}
+        {sortedHadithNotes.map((nt) => (
+          <details class={`inline-note k-${HADITH_KIND_CLASS[nt.kind] ?? "sharh"}`}>
+            <summary>{nt.kind} — {nt.sourceTitle}</summary>
+            <div class="inline-note-body" data-ar><Fragment set:html={markdownToSafeHtml(nt.body)} /></div>
+            {nt.sourceHref && <a class="ann-source-link" href={nt.sourceHref}>اقرأ في موضعه: {nt.sourceTitle} ←</a>}
+          </details>
+        ))}
 
         <!-- prev / next navigation -->
         <div class="prevnext">
@@ -323,10 +305,17 @@ const finalContent = (() => {
       <aside class="toc-side chap-toc-aside">
         <div class="toc-box has-current">
           <div class="toc-label">فصول {entry.data.title}</div>
-          {(allChapters as any[]).map((c: any) => (
+          {tocGroups.map((g) => (
             <>
-              <a href={hrefFor("book", entry.id, { chapter: c.slug })} class:list={[{ 'toc-current': c.slug === chapter.slug }]}>{c.title}</a>
-              {c.slug === chapter.slug && nestedToc.length > 0 && (
+              <a href={g.href} class:list={[{ 'toc-current': g.slug === currentGroupKey && g.slices.length === 0 }]}>{g.title}</a>
+              {g.slug === currentGroupKey && g.slices.length > 0 && (
+                <div class="toc-sub">
+                  {g.slices.map((s) => (
+                    <a href={s.href} class:list={["toc-sub-link", { 'toc-current': s.slug === chapter.slug }]}>{s.title}</a>
+                  ))}
+                </div>
+              )}
+              {g.slug === currentGroupKey && nestedToc.length > 0 && (
                 <div class="toc-nested" style="margin-bottom: 0.5rem; font-size: 0.85em;">
                   {nestedToc.map((h) => (
                     <a href={`#${h.slug}`} style={`padding-inline-start: ${(h.depth - 1) * 0.75}rem; padding-top: 0.25rem; padding-bottom: 0.25rem; display: block;`}>{h.title}</a>
