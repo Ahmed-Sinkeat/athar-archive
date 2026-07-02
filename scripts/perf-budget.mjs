@@ -6,6 +6,9 @@
 //   2. meaningful content is present WITHOUT JS (server-rendered, FR-P-05);
 //   3. the page is RTL Arabic (<html dir="rtl" lang="ar">).
 // `/search` is a JS-driven tool page (Pagefind) and is exempt from 1–2.
+// tafsir-frag/*.html are ann-pack markup fetched by JS and injected into an
+// already-RTL poem/quran page (gen-tafsir-frags.ts) — not standalone
+// documents, so they're excluded from all three checks entirely.
 //   pnpm perf:budget
 
 import { readdirSync, readFileSync, existsSync, statSync } from "node:fs";
@@ -42,7 +45,7 @@ const visibleText = (html) =>
     .trim();
 const DIACRITICS = /[ً-ٰٟ]/; // Arabic tashkeel
 
-const htmlFiles = walk(DIST).filter((f) => f.endsWith(".html"));
+const htmlFiles = walk(DIST).filter((f) => f.endsWith(".html") && !relative(DIST, f).startsWith("tafsir-frag/"));
 const over = [], thin = [], notRtl = [];
 let maxWeight = 0, minText = Infinity, diacriticPages = 0;
 
