@@ -76,6 +76,29 @@ function splitByPages(body: string, pagesPerChunk: number = 40): RawChapter[] {
   return chapters;
 }
 
+// A single top-level chapter (e.g. mowatta-malik's "كتاب الاستئذان", no
+// internal sub-headings) can itself run to hundreds of KB. The chapter route
+// (src/pages/book/[slug]/[chapter].astro) renders it on-demand — one full
+// markdown→sanitize pass per cold request — which risks exceeding the
+// Worker's CPU/memory limit on the largest chapters (real prod incident:
+// كتاب الاستئذان at 412KB, "Worker exceeded resource limits"). Re-split any
+// oversized chapter by its own page markers, same pagesPerChunk as the
+// whole-book giant-chunking fallback below, so no single on-demand render
+// ever has to process more than ~40 pages of markdown.
+const MAX_CHAPTER_PAGES = 40;
+function splitOversizedChapters(chapters: RawChapter[]): RawChapter[] {
+  const out: RawChapter[] = [];
+  for (const c of chapters) {
+    const sub = splitByPages(c.content, MAX_CHAPTER_PAGES);
+    if (sub.length <= 1) {
+      out.push(c);
+      continue;
+    }
+    for (const s of sub) out.push({ title: `${c.title} — ${s.title}`, rawTitle: c.rawTitle, slug: `${c.slug}--${s.slug}`, order: 0, content: s.content });
+  }
+  return out.map((c, i) => ({ ...c, order: i + 1 }));
+}
+
 // A book chapterizes when it exceeds EITHER the word or chapter-count
 // threshold AND has more than one chapter to split into.
 export function analyzeBook(
@@ -85,9 +108,9 @@ export function analyzeBook(
   const parsed = parseBook(body);
   let aboveThreshold =
     parsed.wordCount > threshold.words || parsed.chapters.length > threshold.chapters;
-  
+
   let chunked = aboveThreshold && parsed.chapters.length > 1;
-  
+
   // Phase 3: Giant chunking. If over threshold but no/one chapter, split by page markers.
   if (aboveThreshold && parsed.chapters.length <= 1) {
     const pageChapters = splitByPages(body, 40);
@@ -96,6 +119,8 @@ export function analyzeBook(
       chunked = true;
     }
   }
-  
+
+  if (chunked) parsed.chapters = splitOversizedChapters(parsed.chapters);
+
   return { ...parsed, chunked };
 }
