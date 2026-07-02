@@ -1,6 +1,7 @@
 ---
 import { markdownToSafeHtml } from "../lib/sanitize";
 import { toArabicDigits, stripTashkeel } from "../lib/display";
+import InlineNoteGroup from "./InlineNoteGroup.astro";
 import type { AnnNote } from "../lib/site";
 
 interface Props {
@@ -48,7 +49,6 @@ const popId = `ann-${anchor}`;
 const inlineNotes = wholeSadr ? notes : [];
 const sheetNotes = wholeSadr ? [] : notes;
 const KIND_ORDER = ["شرح", "تخريج", "حكم", "حاشية", "إعراب"];
-const sortedInlineNotes = [...inlineNotes].sort((a, b) => KIND_ORDER.indexOf(a.kind) - KIND_ORDER.indexOf(b.kind));
 ---
 <div class="verse" id={anchor}>
   <div class="verse-inner">
@@ -85,11 +85,9 @@ const sortedInlineNotes = [...inlineNotes].sort((a, b) => KIND_ORDER.indexOf(a.k
       ))}
     </div>
   )}
-  {sortedInlineNotes.map((nt) => (
-    <details class={`inline-note k-${KIND_SLUG[nt.kind] ?? "sharh"}`}>
-      <summary>{nt.kind}{nt.sourceLabel ? ` — ${nt.sourceLabel}` : nt.annotator ? ` — ${nt.annotator}` : ""}</summary>
-      <div class="inline-note-body" data-ar><Fragment set:html={markdownToSafeHtml(nt.body)} /></div>
-      {nt.sourceHref && <a class="ann-source-link" href={nt.sourceHref}>اقرأ في موضعه{nt.sourceLabel ? `: ${nt.sourceLabel}` : ""} ←</a>}
-    </details>
-  ))}
+  <InlineNoteGroup
+    notes={inlineNotes.map((nt) => ({ kind: nt.kind, body: nt.body, sourceLabel: nt.sourceLabel || nt.annotator, sourceHref: nt.sourceHref }))}
+    kindOrder={KIND_ORDER}
+    kindClass={KIND_SLUG}
+  />
 </div>

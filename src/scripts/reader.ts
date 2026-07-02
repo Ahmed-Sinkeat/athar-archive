@@ -10,6 +10,7 @@ const LS = {
   tashkeel: "aa-tashkeel",
   vnums: "aa-vnums",
   pages: "aa-pages",
+  footnotes: "aa-footnotes",
 };
 
 const SCALE_MIN = 0.8;
@@ -86,6 +87,25 @@ function applyPages(show: boolean) {
     b.setAttribute("aria-pressed", String(show)),
   );
 }
+
+// --- footnotes (الحواشي والتخريج) ---
+function applyFootnotes(show: boolean) {
+  root.classList.toggle("hide-footnotes", !show);
+  localStorage.setItem(LS.footnotes, show ? "1" : "0");
+  document.querySelectorAll<HTMLElement>('[data-toggle="footnotes"]').forEach((b) =>
+    b.setAttribute("aria-pressed", String(show)),
+  );
+}
+
+// --- inline-note شرح tab picker (InlineNoteGroup.astro) ---
+document.addEventListener("change", (e) => {
+  const input = e.target as HTMLElement;
+  if (!(input instanceof HTMLInputElement) || !input.classList.contains("inline-note-tab-input")) return;
+  const details = input.closest(".inline-note");
+  details?.querySelectorAll<HTMLElement>(".inline-note-pane").forEach((p) => {
+    p.hidden = p.dataset.pane !== input.id;
+  });
+});
 
 // --- mobile drawer ---
 function setDrawer(open: boolean) {
@@ -199,6 +219,7 @@ const actions: Record<string, () => void> = {
   "toggle:tashkeel": () => applyTashkeel(root.classList.contains("no-tashkeel")),
   "toggle:verseNums": () => applyVnums(root.classList.contains("hide-vnums")),
   "toggle:pages": () => applyPages(root.classList.contains("pages-flow")),
+  "toggle:footnotes": () => applyFootnotes(root.classList.contains("hide-footnotes")),
   "theme:light": () => setTheme("light"),
   "theme:sepia": () => setTheme("sepia"),
   "theme:dark": () => setTheme("dark"),
@@ -561,6 +582,9 @@ function enhanceProse() {
 (() => {
   const KIND_ORDER = ["شرح", "تفسير", "غريب", "إعراب", "حاشية", "تخريج", "حكم", "فوائد"];
   const KIND_SLUG: Record<string, string> = { شرح: "sharh", حاشية: "hashiya", تخريج: "takhrij", إعراب: "iraab", تفسير: "tafsir", غريب: "tafsir", حكم: "takhrij", فوائد: "sharh" };
+  // Tab label ≠ stored kind: غريب the DB kind stays as-is (matches annotation
+  // data), but the tab reads "الغريب والمعاني" — clearer than the bare word.
+  const KIND_LABEL: Record<string, string> = { غريب: "الغريب والمعاني" };
   const toAr = (n: number) => String(n).replace(/[0-9]/g, (d) => "٠١٢٣٤٥٦٧٨٩"[+d]);
 
   let sheet: HTMLElement | null = null;
@@ -688,7 +712,7 @@ function enhanceProse() {
     tabsEl.hidden = kinds.length < 2;
     kinds.forEach((k) => {
       const t = document.createElement("button");
-      t.type = "button"; t.className = "ann-tab"; t.setAttribute("data-kind", k); t.textContent = k;
+      t.type = "button"; t.className = "ann-tab"; t.setAttribute("data-kind", k); t.textContent = KIND_LABEL[k] || k;
       t.addEventListener("click", () => selectKind(byKind, k));
       tabsEl.appendChild(t);
     });
@@ -784,6 +808,7 @@ window.addEventListener("resize", updateProgress);
 syncThemeButtons(currentTheme());
 applyVnums(localStorage.getItem(LS.vnums) !== "0");
 applyPages(localStorage.getItem(LS.pages) !== "flow");
+applyFootnotes(localStorage.getItem(LS.footnotes) !== "0");
 if (localStorage.getItem(LS.tashkeel) === "0") applyTashkeel(false);
 else document.querySelectorAll<HTMLElement>('[data-toggle="tashkeel"]').forEach((b) => b.setAttribute("aria-pressed", "true"));
 
@@ -823,6 +848,7 @@ function applyStoredPrefs() {
     root.classList.toggle("hide-vnums", localStorage.getItem(LS.vnums) === "0");
     root.classList.toggle("no-tashkeel", localStorage.getItem(LS.tashkeel) === "0");
     root.classList.toggle("pages-flow", localStorage.getItem(LS.pages) === "flow");
+    root.classList.toggle("hide-footnotes", localStorage.getItem(LS.footnotes) === "0");
   } catch (e) {}
 }
 document.addEventListener("astro:after-swap", () => {

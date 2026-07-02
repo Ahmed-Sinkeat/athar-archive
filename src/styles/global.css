@@ -498,6 +498,21 @@ html:not(.has-js) .ann-pack:target { display: block; margin-top: 8px; }
 .inline-note.k-hashiya summary, .inline-note.k-iraab summary { color: var(--verdigris); }
 .inline-note-body { font-family: var(--font-serif); font-size: calc(15px * var(--reading-scale, 1)); line-height: 1.9; color: var(--ink-soft); padding-bottom: 10px; }
 .inline-note .ann-source-link { padding: 0 0 12px; border-top: none; }
+/* multiple شروح on one hadith/bayt: a small tab picker instead of stacking a
+   details block per source (radio-peer, no JS beyond the tab-switch below) */
+.inline-note-tabs { display: flex; flex-wrap: wrap; gap: 6px; padding-bottom: 8px; }
+.inline-note-tab-input { position: absolute; opacity: 0; pointer-events: none; }
+.inline-note-tab { font-family: var(--font-ui); font-size: 12px; color: var(--ink-soft); background: var(--surface); border: 1px solid var(--rule-strong); border-radius: 20px; padding: 3px 12px; cursor: pointer; }
+.inline-note-tab-input:checked + .inline-note-tab { color: var(--accent); border-color: var(--accent-border); background: var(--accent-wash); }
+.inline-note-pane[hidden] { display: none; }
+/* very long شرح: clamp with a fade + "المزيد" expander (checkbox-peer, no JS) */
+.inline-note-more-toggle { position: absolute; opacity: 0; pointer-events: none; }
+.inline-note-body.clamp { max-height: 220px; overflow: hidden; position: relative; }
+.inline-note-body.clamp::after { content: ""; position: absolute; inset-inline: 0; bottom: 0; height: 48px; background: linear-gradient(transparent, var(--paper-2) 85%); pointer-events: none; }
+.inline-note-more-toggle:checked ~ .inline-note-body.clamp { max-height: none; }
+.inline-note-more-toggle:checked ~ .inline-note-body.clamp::after { display: none; }
+.inline-note-more { display: block; font-family: var(--font-ui); font-size: 12px; color: var(--accent); cursor: pointer; padding: 4px 0 10px; }
+.inline-note-more-toggle:checked ~ .inline-note-more { display: none; }
 
 /* ---------- in-page toolbar ---------- */
 .studybar { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; margin: 16px 0 4px; padding: 10px 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
@@ -649,6 +664,15 @@ textarea.cinput { resize: vertical; line-height: 1.7; }
 .toc-box a:hover { color: var(--ink); }
 .toc-sub { padding-inline-start: 20px; border-inline-start: 1px dashed var(--rule); margin-bottom: 4px; }
 .toc-sub .toc-sub-link { font-size: 12px; padding: 4px 0; color: var(--ink-faint); }
+/* TOC groups with page-range slices (e.g. Mowatta's كتاب الأثرية) collapse by
+   default — the chapter title stays a real link, a separate arrow toggles
+   the slice list open. */
+.toc-group summary.toc-group-summary { display: flex; align-items: center; justify-content: space-between; gap: 6px; list-style: none; cursor: pointer; padding-inline-start: 11px; border-inline-start: 2px solid transparent; }
+.toc-group summary.toc-group-summary::-webkit-details-marker { display: none; }
+.toc-group-summary a { flex: 1; padding: 7px 0; }
+.toc-group-arrow { font-family: var(--font-ui); color: var(--ink-faint); transition: transform 0.15s; padding: 7px 4px; }
+.toc-group[open] .toc-group-arrow { transform: rotate(90deg); }
+.toc-group .toc-sub { padding-block: 2px; }
 
 /* extracted benefits / prev-next */
 .benefit-strip { border-top: 1px solid var(--rule); padding-top: 26px; margin-top: 32px; }
@@ -1070,8 +1094,10 @@ html.pages-flow .page-sep { display: none; }
 .page-footnotes li { counter-increment: fn; font-family: var(--font-ui); font-size: 12.5px; line-height: 1.8; color: var(--ink-soft); padding: 4px 0; }
 .page-footnotes li::before { content: counter(fn) ". "; color: var(--ink-faint); }
 .page-footnotes li:target { color: var(--ink); background: color-mix(in srgb, var(--accent) 12%, transparent); border-radius: 4px; }
-.page-footnote-kind { font-size: 10.5px; letter-spacing: 0.06em; color: var(--accent); margin-inline-end: 6px; }
 .page-footnotes p { display: inline; margin: 0; }
+/* «إخفاء الحواشي» reader setting — hides the footer block entirely, page-sep
+   page numbers stay visible. */
+html.hide-footnotes .page-footnotes { display: none; }
 /* inline footnote ref sups (future EPUB imports) */
 sup[data-fn] { cursor: pointer; color: var(--accent); font-size: 0.72em; margin-inline-start: 1px; }
 sup[data-fn]:hover { text-decoration: underline; }
