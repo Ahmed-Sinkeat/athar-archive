@@ -4,7 +4,6 @@ person: "al-hajjawi"
 status: "published"
 published_at: "2026-06-27"
 kind: "متن"
-work_type: "متن"
 topics: ["fiqh-hanbali"]
 authored_year: 968
 volumes: 1
