@@ -112,14 +112,19 @@ const jsonLd = bookLd({
       <nav class="toc-box has-current" aria-label="فهرس الفصول">
         <div class="toc-label">فصول الكتاب · {toArabicDigits(groupToc(toc).length)} فصل</div>
         {groupToc(toc).map((g) => (
-          <>
-            <a href={g.href}>{g.title}</a>
-            {g.slices.length > 0 && (
+          g.slices.length > 0 ? (
+            <details class="toc-group">
+              <summary class="toc-group-summary">
+                <a href={g.href}>{g.title}</a>
+                <span class="toc-group-arrow" aria-hidden="true">›</span>
+              </summary>
               <div class="toc-sub">
                 {g.slices.map((s) => <a href={s.href} class="toc-sub-link">{s.title}</a>)}
               </div>
-            )}
-          </>
+            </details>
+          ) : (
+            <a href={g.href}>{g.title}</a>
+          )
         ))}
       </nav>
     ) : isMatn("book", entry.data) ? (

@@ -8,6 +8,7 @@ import { getEntry } from "astro:content";
 import Base from "../../../layouts/Base.astro";
 import Breadcrumbs from "../../../components/Breadcrumbs.astro";
 import StudyBar from "../../../components/StudyBar.astro";
+import InlineNoteGroup from "../../../components/InlineNoteGroup.astro";
 import { isPub, loadGraph, personNameMap, notesByAnchor } from "../../../lib/site";
 import { markdownToSafeHtml } from "../../../lib/sanitize";
 import { parseToc, extractFootnotesByPage } from "../../../lib/chapters";
@@ -71,9 +72,6 @@ const currentGroupKey = chapterMeta.parent ?? chapterMeta.slug;
 const hadithOrdinal = parseHadithOrdinal(chapter.title);
 const hadithNotes = hadithOrdinal !== null ? hadithIndex[`${entry.id}:${hadithOrdinal}`] : undefined;
 const HADITH_KIND_ORDER = ["شرح", "تخريج", "حكم"];
-const sortedHadithNotes = [...(hadithNotes ?? [])].sort(
-  (a, b) => HADITH_KIND_ORDER.indexOf(a.kind) - HADITH_KIND_ORDER.indexOf(b.kind),
-);
 
 const KIND_SLUG: Record<string, string> = { شرح: "sharh", حاشية: "hashiya", تخريج: "takhrij", إعراب: "iraab" };
 const phraseAnchors = Object.entries(byAnchor).filter(([, notes]: any) => notes.some((n: any) => n.phrase));
@@ -176,7 +174,7 @@ function renderFooter(pageNum: number): string {
   const items = footerItemsByPage.get(pageNum);
   if (!items?.length) return "";
   const lis = items
-    .map((it) => `<li id="${it.id}"><span class="page-footnote-kind">${it.kind}</span>${markdownToSafeHtml(it.body)}</li>`)
+    .map((it) => `<li id="${it.id}">${markdownToSafeHtml(it.body)}</li>`)
     .join("");
   return `<aside class="page-footnotes"><ol>${lis}</ol></aside>`;
 }
@@ -284,13 +282,11 @@ const finalContent = (() => {
           </div>
         ))}
 
-        {sortedHadithNotes.map((nt) => (
-          <details class={`inline-note k-${HADITH_KIND_CLASS[nt.kind] ?? "sharh"}`}>
-            <summary>{nt.kind} — {nt.sourceTitle}</summary>
-            <div class="inline-note-body" data-ar><Fragment set:html={markdownToSafeHtml(nt.body)} /></div>
-            {nt.sourceHref && <a class="ann-source-link" href={nt.sourceHref}>اقرأ في موضعه: {nt.sourceTitle} ←</a>}
-          </details>
-        ))}
+        <InlineNoteGroup
+          notes={hadithNotes?.map((nt) => ({ kind: nt.kind, body: nt.body, sourceLabel: nt.sourceTitle, sourceHref: nt.sourceHref })) ?? []}
+          kindOrder={HADITH_KIND_ORDER}
+          kindClass={HADITH_KIND_CLASS}
+        />
 
         <!-- prev / next navigation -->
         <div class="prevnext">
