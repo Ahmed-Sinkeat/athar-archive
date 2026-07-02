@@ -8,7 +8,7 @@ import { collectionLd } from "../lib/structured-data";
   <div class="wrap-mid">
     <h1 class="page-title">القرآن وعلومه</h1>
 
-    <div class="card-grid" style="margin-top: 2.5rem;">
+    <div class="card-grid quran-cards">
       <a class="card" href="/quran/mushaf">
         <div class="card-title">المصحف الشريف</div>
         <p class="card-sub">قراءة وتصفح سور القرآن الكريم بالرسم العثماني، مع ربط الآيات بالمتون والمنظومات والآثار المسندة.</p>
@@ -23,4 +23,11 @@ import { collectionLd } from "../lib/structured-data";
     </div>
   </div>
 </Base>
+
+<style>
+  /* only 2 cards on this page — cap the shared auto-fill grid to 2 columns
+     instead of letting it stretch to 4 across wrap-mid's width */
+  .quran-cards { grid-template-columns: repeat(2, 1fr); max-width: 760px; margin-top: 2.5rem; }
+  @media (max-width: 640px) { .quran-cards { grid-template-columns: 1fr; } }
+</style>
 
