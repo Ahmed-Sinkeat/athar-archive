@@ -4,6 +4,7 @@ person: "al-ilbiri"
 status: "published"
 published_at: "2026-06-27"
 kind: "متن"
+work_type: "ديوان"
 topics: ["aam-other"]
 authored_year: 460
 volumes: 1

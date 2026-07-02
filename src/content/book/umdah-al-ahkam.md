@@ -4,7 +4,7 @@ person: "abd-al-ghani-al-maqdisi"
 status: "published"
 published_at: "2026-07-02"
 kind: "مرجع"
-work_type: "مصدر أصلي"
+work_type: "متن"
 genre: "حديث"
 hadith_category: "امهات الكتب"
 topics: ["ahkam-al-hadith"]

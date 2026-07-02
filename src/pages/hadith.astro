@@ -2,8 +2,8 @@
 import Base from "../layouts/Base.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
 import BrowseGroups from "../components/BrowseGroups.astro";
-import { personNameMap, loadGraph, topicLabelFor } from "../lib/site";
-import { hrefFor } from "../lib/display";
+import { personNameMap, loadGraph } from "../lib/site";
+import { hrefFor, labelFor } from "../lib/display";
 import { buildSubjectGroups } from "../lib/browse";
 import { collectionLd } from "../lib/structured-data";
 import { getCollection } from "astro:content";
@@ -36,7 +36,7 @@ const has = groups.length > 0 || uncategorized.length > 0;
 const card = (it: any) => ({
   href: hrefFor("book", it.id),
   title: it.data.title,
-  kind: topicLabelFor("book", it.data, graph),
+  kind: labelFor("book", it.data),
   audio: graph.audioForSource("book", it.id).length > 0,
   sub: it.data.person ? names.get(it.data.person) ?? "" : "",
   cta: "ادخل القراءة ←",

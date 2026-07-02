@@ -1,5 +1,17 @@
 # Athar Archive redesign — typed works, honest chips, book-like reading
 
+**Status: implemented 2026-07-02.** Phases A–D all landed (typed-work chips,
+شرح↔أصل links, أربعين merge, TOC collapse, inline `<details>` شرح,
+printed-footer footnotes, `#pN` deep-link redirect, hadith-index accuracy,
+poem-title cleanup). Verification block below is green (site + engine test
+suites, `validate:content`, `astro build`, `smoke-test`, `check-links`).
+Known follow-ups intentionally left open: `export-quran-tafsir-index.ts` has
+the same paragraph-anchor bug B5 fixed for hadith (flagged in B5, not
+touched); the `#pN` client redirect can mis-land in multi-volume books
+whose page numbering resets per volume (tafsir-ibn-kathir) — commented in
+`book/[slug].astro`, same known quirk already in
+`Athar-Engine/docs/TODO-website-issues.md`.
+
 ## Context
 
 Ahmed's screenshot review surfaced structural problems, not just bugs: the hadith popup shows تخريج/حكم from the *wrong* hadith (20-char text-prefix matching collides), فوائد is a redundant tab, الأربعون النووية exists twice with no explanation, card chips are misleading topic labels (حديث عام, عام, منظومة+متن doubled), poem titles are scraped junk (عَلَيْهِ), the Muwatta TOC repeats "مقدمة المؤسسة … صفحات X-Y" twenty times, and footnotes live in a confusing popup. He approved a phased model redesign: typed works (متن/شرح/تفسير/ديوان…), شرح↔أصل links, inline expandable شرح, printed-book-style footnotes. Priority: (A) book model, (B) reading experience, then (C) hadith accuracy, (D) poems.

@@ -5,7 +5,7 @@ status: "published"
 published_at: "2026-07-02"
 kind: "مرجع"
 work_type: "شرح"
-sharh_of: "al-arbaeen-al-nawawiyyah-epub"
+sharh_of: "al-arbaeen-al-nawawiyyah"
 genre: "حديث"
 hadith_category: "عام"
 topics: ["aam-hadith"]

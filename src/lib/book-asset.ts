@@ -25,6 +25,9 @@ export interface ChapterMeta {
   title: string;
   rawTitle?: string;
   slug: string;
+  parent?: string;
+  parentTitle?: string;
+  firstPage?: number;
 }
 
 // Per-chapter book assets (M2): gen-book-chapters.ts writes these at build time

@@ -386,6 +386,9 @@ summary::-webkit-details-marker { display: none; }
 /* Phase 1+4: Noto Naskh at 600; slightly reduced max-size for narrower measure */
 .reader-title { font-family: var(--font-display); font-weight: 700; font-size: clamp(32px, 6vw, 52px); color: var(--ink); margin: 0; line-height: 1.1; letter-spacing: -0.015em; }
 .reader-byline { font-family: var(--font-ui); font-size: 14.5px; color: var(--ink-soft); margin-top: 16px; }
+.reader-origin { font-family: var(--font-ui); font-size: 13.5px; color: var(--ink-soft); margin-top: 4px; }
+.reader-origin a { color: var(--accent); }
+.reader-subtitle { font-family: var(--font-ui); font-size: 14px; color: var(--ink-faint); margin-top: 4px; }
 .meta-pills { display: flex; gap: 9px; justify-content: center; flex-wrap: wrap; margin-top: 20px; }
 /* Phase 2: ornamental short rule uses gold */
 .rule-short { height: 1px; background: var(--gold-soft); margin: 24px auto 8px; max-width: 100px; }
@@ -486,6 +489,15 @@ html:not(.has-js) .ann-pack:target { display: block; margin-top: 8px; }
 .ann-menu-item::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); flex: none; }
 .ann-menu-item.k-hashiya::before, .ann-menu-item.k-iraab::before { background: var(--verdigris); }
 .ann-menu-item:hover { background: var(--paper-2); border-color: var(--rule-strong); color: var(--accent); }
+
+/* Inline expandable شرح/تخريج/حكم — a native <details> under the annotated
+   hadith/verse, replacing the popup for whole-item (non-phrase) notes. */
+.inline-note { border-inline-start: 2.5px solid var(--accent); background: var(--paper-2); border-radius: 0 8px 8px 0; margin-top: 10px; padding: 2px 14px; }
+.inline-note.k-hashiya, .inline-note.k-iraab { border-inline-start-color: var(--verdigris); }
+.inline-note summary { font-family: var(--font-ui); font-size: 12.5px; letter-spacing: 0.04em; color: var(--accent); cursor: pointer; padding: 9px 0; }
+.inline-note.k-hashiya summary, .inline-note.k-iraab summary { color: var(--verdigris); }
+.inline-note-body { font-family: var(--font-serif); font-size: calc(15px * var(--reading-scale, 1)); line-height: 1.9; color: var(--ink-soft); padding-bottom: 10px; }
+.inline-note .ann-source-link { padding: 0 0 12px; border-top: none; }
 
 /* ---------- in-page toolbar ---------- */
 .studybar { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; margin: 16px 0 4px; padding: 10px 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
@@ -635,6 +647,8 @@ textarea.cinput { resize: vertical; line-height: 1.7; }
 /* :first-of-type for lesson heading TOC (no .toc-current needed); .toc-current for chapter TOC */
 .toc-box:not(.has-current) a:first-of-type, .toc-box a.toc-current { color: var(--ink); border-inline-start-color: var(--accent); }
 .toc-box a:hover { color: var(--ink); }
+.toc-sub { padding-inline-start: 20px; border-inline-start: 1px dashed var(--rule); margin-bottom: 4px; }
+.toc-sub .toc-sub-link { font-size: 12px; padding: 4px 0; color: var(--ink-faint); }
 
 /* extracted benefits / prev-next */
 .benefit-strip { border-top: 1px solid var(--rule); padding-top: 26px; margin-top: 32px; }
@@ -746,8 +760,8 @@ html.hide-vnums .vnum { display: none; }
 .chap-toc-aside .toc-box { max-height: 70vh; overflow-y: auto; }
 .chap-toc-aside .toc-label { font-family: var(--font-ui); font-size: 11.5px; letter-spacing: .1em; color: var(--ink-faint); margin-bottom: 8px; }
 /* mobile TOC disclosure — hidden on desktop, shown on mobile */
-.chap-mobile-toc { display: none; border: 1px solid var(--rule); border-radius: 9px; background: var(--surface); margin-bottom: 14px; }
-.chap-mobile-toc summary { padding: 9px 14px; cursor: pointer; font-family: var(--font-ui); font-size: 13px; color: var(--ink-soft); list-style: none; display: flex; justify-content: space-between; align-items: center; }
+.chap-mobile-toc { display: none; border: 1px solid var(--rule); border-radius: 9px; background: var(--surface); margin-top: 14px; }
+.chap-mobile-toc summary { padding: 9px 14px; cursor: pointer; font-family: var(--font-ui); font-size: 13px; font-weight: 600; color: var(--accent); list-style: none; display: flex; justify-content: space-between; align-items: center; }
 .chap-mobile-toc summary::-webkit-details-marker { display: none; }
 .chap-mobile-toc summary::after { content: "+"; font-family: var(--font-mono); color: var(--ink-faint); font-size: 15px; }
 .chap-mobile-toc[open] summary::after { content: "−"; }
@@ -1044,24 +1058,20 @@ html[data-theme="dark"] ::highlight(aa-find)    { background-color: rgba(255, 15
 .mujam-def { font-family: var(--font-ui); font-size: 0.92rem; color: var(--ink-soft); }
 .mujam-def-head { font-family: var(--font-ui); font-size: 1rem; color: var(--ink-soft); margin-top: 6px; }
 
-/* --- page separator (EPUB-imported books) — click to open حاشية in ann-sheet --- */
+/* --- page separator (EPUB-imported books) — static "ص N" marker, no popup --- */
 .page-sep { display: flex; align-items: center; gap: 8px; margin: 24px 0; padding-block-start: 4px; border-block-start: 1px solid var(--rule); color: var(--ink-faint); font-family: var(--font-ui); font-size: 0.78rem; }
 .page-sep::before { content: "ص " attr(data-page); }
-.page-sep[data-ann] { cursor: pointer; }
-.page-sep[data-ann]:hover { color: var(--accent); }
-/* ponytail: badge via ::after — no extra DOM element */
-.page-sep[data-ann]::after {
-  content: "حواشٍ";
-  display: inline-flex; align-items: center;
-  background: var(--accent-wash); color: var(--accent);
-  border: 1px solid var(--accent-border);
-  border-radius: 20px; padding: 1px 8px; font-size: 0.72rem; line-height: 1.6;
-  transition: background 0.15s;
-}
-.page-sep[data-ann]:hover::after { background: var(--accent-wash); }
-/* عرض مستمر — hide page separators unless they carry footnotes */
+/* عرض مستمر — hide page markers; the printed-footer footnotes stay visible regardless */
 html.pages-flow .page-sep { display: none; }
-html.pages-flow .page-sep[data-ann] { display: flex; }
+
+/* --- printed-footer footnotes: one <aside> per page, right after its content --- */
+.page-footnotes { margin: 10px 0 24px; padding-top: 10px; border-top: 1px solid var(--rule); }
+.page-footnotes ol { list-style: none; margin: 0; padding: 0; counter-reset: fn; }
+.page-footnotes li { counter-increment: fn; font-family: var(--font-ui); font-size: 12.5px; line-height: 1.8; color: var(--ink-soft); padding: 4px 0; }
+.page-footnotes li::before { content: counter(fn) ". "; color: var(--ink-faint); }
+.page-footnotes li:target { color: var(--ink); background: color-mix(in srgb, var(--accent) 12%, transparent); border-radius: 4px; }
+.page-footnote-kind { font-size: 10.5px; letter-spacing: 0.06em; color: var(--accent); margin-inline-end: 6px; }
+.page-footnotes p { display: inline; margin: 0; }
 /* inline footnote ref sups (future EPUB imports) */
 sup[data-fn] { cursor: pointer; color: var(--accent); font-size: 0.72em; margin-inline-start: 1px; }
 sup[data-fn]:hover { text-decoration: underline; }

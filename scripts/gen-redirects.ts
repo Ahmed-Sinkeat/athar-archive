@@ -19,6 +19,8 @@ function main() {
     for (const old of aliases) {
       const to = hrefFor(e.collection, e.id);
       if (to !== "/") lines.push(`${hrefFor(e.collection, old)} ${to} 301`);
+      // Books are chunked into chapter subpaths — redirect those too.
+      if (e.collection === "book") lines.push(`${hrefFor(e.collection, old)}/* ${to}/:splat 301`);
     }
   }
 
