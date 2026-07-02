@@ -230,7 +230,7 @@ export class SemanticASTBuilder {
       const content = node.c;
 
       if (type === "Str") {
-        textList.append ? (textList as any).append(content) : textList.push(content);
+        textList.push(content);
       } else if (type === "Space" || type === "SoftBreak") {
         textList.push(" ");
       } else if (type === "LineBreak") {
