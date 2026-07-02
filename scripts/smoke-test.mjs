@@ -37,18 +37,11 @@ ok(/class="masail-subject"/.test(books), "books grouped in تصنيف accordion"
 ok(/card-kindrow/.test(books), "book kind pill on cards");
 
 // --- poems index (poems only, متن badge + inherited era) ---
-// ponytail: poem collection is empty until the M3 diwan-split milestone lands
-// (docs/knowledge-taxonomy roadmap) — skip card assertions rather than fail
-// on content that doesn't exist yet.
 section("/poems");
 const poems = read("poems/index.html");
 const poemCardCount = (poems.match(/class="card"/g) || []).length;
-if (poemCardCount === 0) {
-  console.log("  – skipped (poem collection is empty pre-M3)");
-} else {
-  ok(poemCardCount >= 2, "poems index lists cards");
-  ok(/badge-matn/.test(poems), "متن badge on poem cards");
-}
+ok(poemCardCount >= 2, "poems index lists cards");
+ok(/badge-matn/.test(poems), "متن badge on poem cards");
 
 // --- composer (unlisted maintainer tool) ---
 section("/compose");
@@ -57,17 +50,12 @@ ok(/id="ctype"/.test(compose), "composer renders");
 ok(/name="robots" content="noindex"/.test(compose), "composer is noindex");
 
 // --- poem reader: verses + stacked annotations ---
-// ponytail: same pre-M3 gap as /poems above — no poem entry exists to point at yet.
 section("/poem (reader)");
-if (poemCardCount === 0) {
-  console.log("  – skipped (poem collection is empty pre-M3)");
-} else {
-  const poemSlug = "nwnya-al-qhtany";
-  const poem = read(`poem/${poemSlug}/index.html`);
-  ok(new RegExp(`rel="canonical" href="https://[^"]+/poem/${poemSlug}"`).test(poem), "canonical points to the poem (host-agnostic)");
-  ok(/"@type":\["CreativeWork","Poem"\]/.test(poem), "Poem JSON-LD");
-  ok(/badge-matn/.test(poem), "متن badge on poem reader");
-}
+const poemSlug = "lamiyyat-ibn-taymiyyah";
+const poem = read(`poem/${poemSlug}/index.html`);
+ok(new RegExp(`rel="canonical" href="https://[^"]+/poem/${poemSlug}"`).test(poem), "canonical points to the poem (host-agnostic)");
+ok(/"@type":\["CreativeWork","Poem"\]/.test(poem), "Poem JSON-LD");
+ok(/badge-matn/.test(poem), "متن badge on poem reader");
 
 // --- book reader: prose + audio? + annotation packs (open in the bottom sheet) ---
 section("/book/kitab-al-tawhid-epub");
