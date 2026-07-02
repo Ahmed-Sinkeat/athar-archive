@@ -1,11 +1,11 @@
 ---
 import { getCollection } from "astro:content";
 import Base from "../layouts/Base.astro";
-import { toArabicDigits, hrefFor, eraLabel, eraHref } from "../lib/display";
+import { toArabicDigits, hrefFor, eraLabel, eraHref, labelFor } from "../lib/display";
 import { analyzePoem } from "../lib/chunk";
 import { readBody } from "../lib/read-body";
 import { websiteLd } from "../lib/structured-data";
-import { loadGraph, personEraMap, topicLabelFor } from "../lib/site";
+import { loadGraph, personEraMap } from "../lib/site";
 
 const pub = (c: any[]) => c.filter((e) => e.data.status === "published");
 
@@ -78,7 +78,7 @@ const featuredVerses = featured ? analyzePoem(await readBody(featured)).verses.s
 
 // latest across materials by published_at
 const latest = [
-  ...pub(books).map((e) => ({ e, kind: topicLabelFor("book", e.data, graph), color: "tag-accent" })),
+  ...pub(books).map((e) => ({ e, kind: labelFor("book", e.data), color: "tag-accent" })),
   ...pub(poems).map((e) => ({ e, kind: "منظومة", color: "tag-accent" })),
   ...pub(articles).map((e) => ({ e, kind: "مقالة", color: "tag-verdigris" })),
   ...pub(benefits).map((e) => ({ e, kind: "فائدة", color: "tag-accent" })),

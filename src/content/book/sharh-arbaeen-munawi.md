@@ -4,9 +4,10 @@ person: "al-munawi"
 status: "published"
 published_at: "2026-06-27"
 kind: "مرجع"
+work_type: "شرح"
 genre: "حديث"
 hadith_category: "تخريج"
-sharh_of: "al-arbaeen-al-nawawiyyah-epub"
+sharh_of: "al-arbaeen-al-nawawiyyah"
 topics: ["aam-hadith"]
 authored_year: 1031
 volumes: 1

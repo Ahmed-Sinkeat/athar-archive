@@ -71,18 +71,23 @@ export function notesByAnchor(
   return out;
 }
 
-// Badge label for a book/poem: its own topic title (e.g. "تفسير القرآن") beats
-// the generic kind value (متن/مرجع/مجموع) — kind is a technical "does this use
-// tap-to-reveal study mode" flag, not a subject description, so every fiqh
-// manual, tafsir, and hadith commentary alike used to show the same "مرجع"
-// pill. Falls back to labelFor() for poems (always "منظومة") or an untagged book.
-export function topicLabelFor(collection: string, data: Record<string, any>, graph: Graph): string {
-  if (collection === "book") {
-    const topicId = (data.topics as string[] | undefined)?.[0];
-    const title = topicId ? (graph.getById("topic", topicId)?.data.title as string | undefined) : undefined;
-    if (title) return title;
+// A book's relation to the work it comments on (شرح/مختصر/حاشية), resolved
+// against book or poem targets alike — سharh_of can now point at a poem.
+export interface OriginLink { relation: string; href: string; title: string }
+const ORIGIN_FIELDS: [field: string, relation: string][] = [
+  ["sharh_of", "شرحٌ لـ"],
+  ["mukhtasar_of", "مختصرٌ لـ"],
+  ["hashiyah_on", "حاشيةٌ على"],
+];
+export function originOf(data: Record<string, any>, graph: Graph): OriginLink | undefined {
+  for (const [field, relation] of ORIGIN_FIELDS) {
+    const targetId = data[field] as string | undefined;
+    if (!targetId) continue;
+    const target = graph.getById("book", targetId) ?? graph.getById("poem", targetId);
+    if (!target || !isPub(target)) continue;
+    return { relation, href: hrefFor(target.collection, target.id), title: target.data.title as string };
   }
-  return labelFor(collection, data);
+  return undefined;
 }
 
 // A material's subject titles, derived from its topics[] (topic → subject).
