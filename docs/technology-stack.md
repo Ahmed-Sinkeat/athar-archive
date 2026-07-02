@@ -1,6 +1,6 @@
 # Ahl al-Athar — Technology Stack Decisions
 
-> **Status:** Accepted 2026-06-27. This document records the architectural reasoning behind every major technology choice for the Ahl al-Athar presentation frontend.
+> **Status:** Accepted 2026-06-27 · corrected 2026-07-02 (HTMX was never adopted; hosting is Workers static assets, not Pages). This document records the architectural reasoning behind every major technology choice for the Ahl al-Athar presentation frontend.
 
 ---
 
@@ -25,34 +25,34 @@ Stable. Astro is the core layout framework. It will not be replaced unless the r
 
 ---
 
-## HTMX
+## Progressive interactivity — vanilla TypeScript (HTMX never adopted)
 
 ### Purpose
-HTMX provides progressive interactivity (live-reloading tabs, dynamic overlays, inline search filtering) without client-side framework overhead.
+Client-side enhancement: annotation bottom sheets, reading preferences, search UI, the graph view.
 
-### Why we chose it
-HTMX allows us to keep the frontend completely HTML-driven. Instead of building a complex client-side Single Page Application (SPA) using React or Vue, we send standard HTML snippets directly from the Cloudflare Worker. This satisfies our constraint of keeping the technology layer minimal and easily replaceable.
+### What actually shipped
+An earlier revision of this document selected **HTMX**, but it was never installed — `package.json` has no htmx dependency and no template references it. Everything HTMX was slated for is covered by small vanilla TypeScript modules (`src/scripts/reader.ts`, `library.ts`, `marks.ts`, `graph.ts`) attached to server-rendered HTML. Astro's `<ClientRouter />` + hover prefetch provide the SPA-feel navigation.
 
-### Alternatives considered
-* **React / Vue.js:** Traditional SPA framework ecosystems.
-* **Alpine.js:** A lightweight inline utility script.
-
-### Why they were rejected
-* **React / Vue.js:** Over-engineered for a digital library. They move the rendering logic to the client, creating slower initial loads, complex hydration bugs, and making the site unreadable when JavaScript is disabled.
-* **Alpine.js:** While lightweight, it still shifts state logic to client memory. HTMX's approach of swapping pure HTML fragments is cleaner and aligns better with our static/hybrid rendering pipeline.
+### Why vanilla won
+The interactivity surface turned out to be small and mostly DOM-local (open a sheet from a hidden `.ann-pack`, toggle prefs). No fragment-swapping over the network was needed, so a library — even a small one — would have been dead weight. Content still renders fully without JavaScript.
 
 ### Future replacement policy
-Replaceable. If another progressive enhancement tool becomes simpler, HTMX can be replaced without rewriting layout templates.
+Add a library only when a concrete feature needs network-driven partial updates that the vanilla modules can't express cleanly.
 
 ---
 
-## Cloudflare Pages
+## Cloudflare Workers + Static Assets
 
 ### Purpose
-Hosting provider for static assets and edge execution via Cloudflare Workers.
+Hosting: static pages served from Workers Static Assets (CDN), on-demand reading routes rendered by the Worker that `@astrojs/cloudflare` emits, deployed with `wrangler deploy` (`pnpm deploy`). *(An earlier revision of this doc said Cloudflare Pages; the project actually deploys as a Worker — Pages was never set up.)*
 
 ### Why we chose it
-Cloudflare Pages provides global CDN coverage, free bandwidth, and integrates natively with Cloudflare Workers. It handles the hybrid routing split: serving stable pages (like TOCs, home) instantly from the CDN, and routing heavy reading pages to the edge Worker. It matches our requirement of being highly scalable without requiring a credit card or complex devops setup.
+Global CDN coverage, free static-asset bandwidth, and one deploy artifact for the hybrid split: stable pages (TOCs, home, surahs) as prebuilt assets, heavy reading pages (`/book/<slug>/<chapter>`) rendered on demand at the edge and cached via the Cache API (`src/middleware.ts`). Content markdown is shipped as assets and read by the Worker through the `ASSETS` binding.
+
+### Hard limits that shape the architecture
+* **25 MiB per static asset** — `tafsir-ibn-kathir.md` sits at ~99% of this; per-chapter content assets are the planned fix (see `HANDOFF-perf-size.md`).
+* **20,000 files per deploy** — why chapter pages are on-demand instead of ~44k prerendered pages.
+* **Worker bundle ≤ a few MB gzipped** — large JSON indexes must be assets, not imports.
 
 ### Alternatives considered
 * **Netlify / Vercel:** Premium hosting ecosystems.
@@ -63,7 +63,7 @@ Cloudflare Pages provides global CDN coverage, free bandwidth, and integrates na
 * **VPS Hosting:** Requires ongoing system administration, security hardening, load balancing, and fails to provide global CDN replication out-of-the-box.
 
 ### Future replacement policy
-Stable. Cloudflare Pages matches our global scaling demands with minimal maintenance.
+Stable. Cloudflare Workers matches our global scaling demands with minimal maintenance.
 
 ---
 

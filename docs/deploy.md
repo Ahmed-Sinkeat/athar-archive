@@ -1,7 +1,28 @@
-# athar-archive — Deployment (Cloudflare Pages)
+# athar-archive — Deployment (Cloudflare Workers)
 
-Static `dist/` → Cloudflare Pages, Git-connected. Every push to `main` builds & deploys;
-pull requests get preview deployments. No adapter — the output is fully static.
+**Current (2026-07):** the site deploys as a **Worker with Static Assets**, not Pages.
+`@astrojs/cloudflare` emits the Worker (on-demand reading routes + `ASSETS` binding);
+static pages ship as assets alongside it.
+
+```sh
+pnpm build     # validate:content → astro build → copy-content-assets → redirects → headers
+pnpm deploy    # wrangler deploy -c dist/server/wrangler.json → workers.dev host
+```
+
+- Live host: `athar-archive.ahmedsinkeat2002.workers.dev` (flip `site`/`siteUrl` to
+  `ahlalathar.com` when the custom domain goes live — see `astro.config.ts` / `ahlalathar.config.ts`).
+- Custom domain, when ready: Worker → **Settings → Domains & Routes → Add custom domain**
+  (the DNS/nameserver steps in the historical section below still apply to getting the zone onto Cloudflare).
+- Deploys are manual from a local machine; there is no Git-connected build.
+- Limits to respect: **25 MiB per asset**, **20,000 files per deploy** (see `technology-stack.md`).
+
+---
+
+## Historical: original Cloudflare Pages runbook (superseded — never went live)
+
+The rest of this file documents the earlier fully-static Pages plan, kept for the
+DNS/domain steps. The build has since gained an adapter and on-demand routes, so the
+"no adapter" claims below no longer hold.
 
 ## Repo readiness (done)
 

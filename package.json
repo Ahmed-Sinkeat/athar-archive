@@ -6,7 +6,7 @@
     "dev": "astro dev",
     "new": "node scripts/new-content.mjs",
     "import:epub": "tsx scripts/epub-import.ts",
-    "build": "pnpm validate:content && astro build && node scripts/copy-content-assets.mjs && tsx scripts/gen-redirects.ts && node scripts/gen-headers.mjs",
+    "build": "pnpm validate:content && astro build && node scripts/copy-content-assets.mjs && tsx scripts/gen-tafsir-frags.ts && tsx scripts/gen-book-chapters.ts && tsx scripts/gen-redirects.ts && node scripts/gen-headers.mjs",
     "preview": "astro preview",
     "validate": "astro check",
     "validate:content": "tsx scripts/validate-content.ts",

@@ -21,6 +21,23 @@ async function assetText(path: string): Promise<string | null> {
   return res.ok ? await res.text() : null;
 }
 
+export interface ChapterMeta {
+  title: string;
+  rawTitle?: string;
+  slug: string;
+}
+
+// Per-chapter book assets (M2): gen-book-chapters.ts writes these at build time
+// so the chapter route never re-fetches + re-splits the whole book per request.
+export async function loadChapterManifest(bookId: string): Promise<ChapterMeta[] | null> {
+  const raw = await assetText(`/content/book/${bookId}.chapters.json`);
+  return raw == null ? null : (JSON.parse(raw) as ChapterMeta[]);
+}
+
+export async function loadChapterBody(bookId: string, chapterSlug: string): Promise<string | null> {
+  return assetText(`/content/book/${bookId}/${chapterSlug}.md`);
+}
+
 export async function loadContentBody(collection: string, id: string): Promise<string | null> {
   if (import.meta.env.DEV) {
     try {

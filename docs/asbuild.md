@@ -7,7 +7,7 @@ Definition-of-Done (DoD) status, decisions, and any deviations from the plan.
 > Updated after every phase. Companion: [`structure.md`](./structure.md).
 
 **Project:** أهل الأثر — Arabic Islamic knowledge archive
-**Stack:** Astro (static) · Markdown + Zod Content Collections · Pagefind (search, P4) · Cloudflare Pages/R2 (P6/P8)
+**Stack:** Astro (static + on-demand reading routes) · Markdown + Zod Content Collections · Pagefind (search, P4) · Cloudflare Workers Static Assets/R2 (P6/P8; deployed via `wrangler`, not Pages)
 **Last updated:** UX-R complete · reading/browse/search redesign (top bar, browse IA, inline شرح chooser, /compose) · see the UX-R section below
 
 ---
@@ -281,7 +281,7 @@ media                → players on lesson/poem/book/article; book PDF/EPUB down
 ## Next: P8 — QA, performance, accessibility, launch
 
 Test matrix (link integrity, RTL/diacritics, manual a11y pass, perf budget, Lighthouse),
-seed the real corpus, confirm domain/DNS/Cloudflare Pages production + edge headers, launch
+seed the real corpus, confirm domain/DNS/Cloudflare Workers production + edge headers, launch
 checklist, and **apply branch protection** (issue #13). Rollback = rebuild previous commit.
 
 **Started:** QA test-matrix tooling, wired into CI —

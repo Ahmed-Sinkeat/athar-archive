@@ -12,7 +12,7 @@ A static, RTL Arabic knowledge archive. **The content is the origin; the technol
 
 - **Astro** (static output) · **Markdown + Zod** content collections (source of truth)
 - **Pagefind** — static Arabic search, no server
-- **Cloudflare Pages** (hosting) · **Cloudflare R2** (audio in Opus, attachments)
+- **Cloudflare Workers + Static Assets** (hosting, `pnpm deploy`) · **Cloudflare R2** (audio in Opus, attachments)
 - Content renders **fully without JavaScript**; JS only enhances (search, audio, reading prefs).
 
 ## Quick start
