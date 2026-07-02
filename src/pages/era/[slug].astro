@@ -59,7 +59,7 @@ const jsonLd = collectionLd({
         <div class="section-label">منظوماتُ العصر · {toArabicDigits(eraPoems.length)}</div>
         <div class="card-grid">
           {eraPoems.map((p) => (
-            <EntityCard href={hrefFor("poem", p.id)} title={p.title} kind="منظومة" matn={true} sub={`${p.author} · ${toArabicDigits(p.verses)} بيت`} cta="ادخل القراءة ←" />
+            <EntityCard href={hrefFor("poem", p.id)} title={p.title} kind="منظومة" sub={`${p.author} · ${toArabicDigits(p.verses)} بيت`} cta="ادخل القراءة ←" />
           ))}
         </div>
       </div>

@@ -252,14 +252,13 @@ document.addEventListener("click", (e) => {
   // standard markdown footnote refs
   const ref = t.closest<HTMLAnchorElement>("[data-footnote-ref]");
   if (ref) {
-    e.preventDefault();
-    // Paginated book content: this ref was stamped (book/[slug]/[chapter].astro)
-    // with which page's notes sheet it now belongs to — let the ann-sheet click
-    // listener below handle opening that instead of the plain popover, so it's
-    // grouped with the page's other footnotes and clearly labelled which page.
-    if (ref.dataset.sepPage) return;
     const id = ref.getAttribute("href")?.slice(1);
     const target = id ? document.getElementById(id) : null;
+    // Paginated book content (book/[slug]/[chapter].astro): the ref points at
+    // a visible <li> in that page's printed-footer <aside> — let the browser
+    // jump there natively (no popup, :target highlights it in CSS).
+    if (target?.closest(".page-footnotes")) return;
+    e.preventDefault();
     if (target) {
       const pop = ensureFnPop();
       const clone = target.cloneNode(true) as HTMLElement;
@@ -704,58 +703,6 @@ function enhanceProse() {
     if (activeVerse) { activeVerse.classList.remove("ann-active-verse"); activeVerse = null; }
   }
 
-  // build synthetic ann-packs for page-sep notes so openSheet() works unchanged
-  function injectPageNotes() {
-    document.querySelectorAll<HTMLElement>(".page-sep[data-notes]").forEach((sep) => {
-      const packId = "ann-page-" + sep.dataset.page;
-      if (document.getElementById(packId)) return;
-      let notes: any[];
-      try { notes = JSON.parse(sep.dataset.notes!); } catch { return; }
-      if (!notes || !notes.length) return;
-
-      const pack = document.createElement("div");
-      pack.className = "ann-pack"; pack.id = packId; pack.setAttribute("data-ann-pack", ""); pack.hidden = true;
-
-      if (typeof notes[0] === "string") {
-        notes.forEach((n, idx) => {
-          const entry = document.createElement("div");
-          entry.className = "ann-entry k-hashiya"; 
-          entry.setAttribute("data-kind", "حاشية"); 
-          entry.setAttribute("data-label", `حاشية — حاشية ${toAr(idx + 1)}`);
-          const body = document.createElement("div");
-          body.className = "ann-entry-body"; body.setAttribute("data-ar", "");
-          const p = document.createElement("p"); 
-          p.textContent = n; 
-          body.appendChild(p);
-          entry.appendChild(body);
-          pack.appendChild(entry);
-        });
-      } else {
-        notes.forEach((nt) => {
-          const entry = document.createElement("div");
-          const kSlug = KIND_SLUG[nt.kind] || "sharh";
-          entry.className = `ann-entry k-${kSlug}`;
-          entry.setAttribute("data-kind", nt.kind);
-          entry.setAttribute("data-label", nt.label || nt.kind);
-          const body = document.createElement("div");
-          body.className = "ann-entry-body"; body.setAttribute("data-ar", "");
-          body.innerHTML = nt.body;
-          entry.appendChild(body);
-          if (nt.sourceHref) {
-            const a = document.createElement("a");
-            a.className = "ann-source-link"; a.href = nt.sourceHref;
-            a.textContent = `اقرأ في موضعه${nt.sourceLabel ? `: ${nt.sourceLabel}` : ""} ←`;
-            entry.appendChild(a);
-          }
-          pack.appendChild(entry);
-        });
-      }
-
-      sep.after(pack);
-      sep.dataset.ann = packId;
-    });
-  }
-
   document.addEventListener("click", (e) => {
     const t = e.target as HTMLElement;
     // Use composedPath (captured at dispatch) instead of t.closest: nav buttons'
@@ -765,26 +712,6 @@ function enhanceProse() {
     // now-detached button finds nothing, so this used to misread the click as
     // "outside the sheet" and immediately close it right after it reopened.
     if (e.composedPath().some((el) => el instanceof Element && el.classList.contains("ann-sheet"))) return;
-    // page separator click → open its حاشية in the sheet
-    const sep = t.closest<HTMLElement>(".page-sep[data-ann]");
-    if (sep) { e.preventDefault(); openSheet(sep.dataset.ann!); return; }
-    // inline footnote sup (future EPUB imports): <sup data-fn="n" data-sep-page="p">
-    const fnSup = t.closest<HTMLElement>("sup[data-fn][data-sep-page]");
-    if (fnSup) {
-      e.preventDefault();
-      const fnNum = parseInt(fnSup.dataset.fn || "1", 10);
-      openSheet("ann-page-" + fnSup.dataset.sepPage, fnNum - 1);
-      return;
-    }
-    // standard markdown footnote ref, stamped with which page's notes sheet it
-    // belongs to (book/[slug]/[chapter].astro) — grouped there instead of a
-    // lone popover so it's clear which page's citations it's part of.
-    const fnRef = t.closest<HTMLAnchorElement>("[data-footnote-ref][data-sep-page]");
-    if (fnRef) {
-      e.preventDefault();
-      openSheet("ann-page-" + fnRef.dataset.sepPage, parseInt(fnRef.dataset.fnIndex || "0", 10));
-      return;
-    }
     const mark = t.closest<HTMLElement>(".ann-mark");
     if (mark) {
       e.preventDefault();
@@ -809,8 +736,6 @@ function enhanceProse() {
     if (sheet && !sheet.hidden) close(); // outside click
   });
   function setup() {
-    injectPageNotes();
-
     // Clean up any stale sheets in the DOM (e.g. from cached pages)
     const oldSheet = document.querySelector(".ann-sheet");
     if (oldSheet) oldSheet.remove();

@@ -3,6 +3,7 @@ title: "أَي خطيئاتي ابكي دَمًا ... وَهِي كثير كنج
 person: "al-ilbiri"
 status: "published"
 published_at: "2026-07-02"
+work_type: "قصيدة"
 description: "من ديوان الإلبيري — صفحة 67"
 ---
 أَي خطيئاتي ابكي دَمًا ... وَهِي كثير كنجوم السما

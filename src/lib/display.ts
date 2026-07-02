@@ -68,8 +68,8 @@ export function eraHref(value?: string): string | undefined {
 
 // Kind-aware display label: books show their kind (متن/مرجع/مجموع); poems are always منظومة.
 export function labelFor(collection: string, data: Record<string, any> = {}): string {
-  if (collection === "book") return (data.kind as string) || "كتاب";
-  if (collection === "poem") return "منظومة";
+  if (collection === "book") return (data.work_type as string) || (data.kind as string) || "كتاب";
+  if (collection === "poem") return (data.work_type as string) || "منظومة";
   return ENTITY[collection]?.one ?? collection;
 }
 

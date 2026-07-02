@@ -22,7 +22,12 @@ function main() {
 
     const dir = path.resolve(`dist/client/content/book/${book.id}`);
     fs.mkdirSync(dir, { recursive: true });
-    const manifest = a.chapters.map((c) => ({ title: c.title, rawTitle: c.rawTitle, slug: c.slug }));
+    // "اقرأ في موضعه" deep-links (#pN) need to know which chapter a page lives
+    // in even for heading-split chapters (no firstPage from page-slicing) — fall
+    // back to the first <hr data-page="N"> actually inside the chapter's content.
+    const firstPageOf = (c: (typeof a.chapters)[number]) =>
+      c.firstPage ?? (c.content.match(/data-page="(\d+)"/)?.[1] ? Number(c.content.match(/data-page="(\d+)"/)![1]) : undefined);
+    const manifest = a.chapters.map((c) => ({ title: c.title, rawTitle: c.rawTitle, slug: c.slug, parent: c.parent, parentTitle: c.parentTitle, firstPage: firstPageOf(c) }));
     for (const c of a.chapters) {
       fs.writeFileSync(path.join(dir, `${c.slug}.md`), c.content, "utf-8");
       chapterCount++;

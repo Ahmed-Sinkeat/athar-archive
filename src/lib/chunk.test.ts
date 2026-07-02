@@ -86,4 +86,21 @@ describe("analyzeBook", () => {
     expect(book.chapters.length).toBeGreaterThan(2); // small chapter + 2+ sub-chunks of the giant one
     for (const c of book.chapters) expect(c.content.length).toBeLessThan(giant.length);
   });
+
+  it("tags oversized-chapter slices with parent/parentTitle/firstPage for TOC grouping", () => {
+    const giant = Array.from({ length: 80 }, (_, i) => `<hr class="page-sep" data-page="${i + 1}" />\nنص الصفحة ${i + 1}.`).join("\n\n");
+    const body = `## باب صغير\n\nنص قصير.\n\n## باب كبير\n\n${giant}\n`;
+    const book = analyzeBook(body, { words: 10, chapters: 2 });
+    const small = book.chapters.find((c) => c.title === "باب صغير");
+    expect(small?.parent).toBeUndefined();
+    const slices = book.chapters.filter((c) => c.parent === "باب-كبير");
+    expect(slices.length).toBeGreaterThan(1);
+    for (const s of slices) {
+      expect(s.parentTitle).toBe("باب كبير");
+      expect(s.firstPage).toBeGreaterThan(0);
+      expect(s.title).toMatch(/^صفح/); // "صفحة N" / "صفحات S-E", not "باب كبير — صفحات S-E"
+    }
+    // firstPage strictly increases across slices in source order.
+    for (let i = 1; i < slices.length; i++) expect(slices[i].firstPage!).toBeGreaterThan(slices[i - 1].firstPage!);
+  });
 });

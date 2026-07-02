@@ -5,6 +5,7 @@ status: "published"
 published_at: "2026-07-02"
 kind: "مرجع"
 work_type: "شرح"
+sharh_of: "lamiyyat-ibn-taymiyyah"
 topics: ["al-aqeedah-al-aamah"]
 volumes: 1
 ---

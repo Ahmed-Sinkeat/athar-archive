@@ -8,10 +8,10 @@ import AudioPlayer from "../../components/AudioPlayer.astro";
 import RelatedStrip from "../../components/RelatedStrip.astro";
 import Relations from "../../components/Relations.astro";
 import { markdownToSafeHtml } from "../../lib/sanitize";
-import { isPub, loadGraph, personNameMap, subjectTitlesFor, notesByAnchor, relatedTo, backlinksList, topicLabelFor } from "../../lib/site";
+import { isPub, loadGraph, personNameMap, subjectTitlesFor, notesByAnchor, relatedTo, backlinksList, originOf } from "../../lib/site";
 import { analyzeBook } from "../../lib/chunk";
 import { readBody } from "../../lib/read-body";
-import { hrefFor, toArabicDigits, isMatn } from "../../lib/display";
+import { hrefFor, toArabicDigits, isMatn, labelFor } from "../../lib/display";
 import { bookLd } from "../../lib/structured-data";
 import { parseToc } from "../../lib/chapters";
 
@@ -30,15 +30,40 @@ export async function getStaticPaths() {
     const commentaries = graph.commentariesOf(entry.id)
       .filter(isPub)
       .map(c => ({ href: hrefFor("book", c.id), title: c.data.title, author: c.data.person ? names.get(c.data.person as string) : "" }));
+    // "اقرأ في موضعه" (#pN) deep-links land here first (hash never reaches the
+    // server for a chunked book) — a firstPage per chapter lets client JS pick
+    // the right chapter slice and redirect. Fall back to the first page marker
+    // actually inside heading-split chapters (no firstPage from page-slicing).
+    const firstPageOf = (c: (typeof a.chapters)[number]) =>
+      c.firstPage ?? (c.content.match(/data-page="(\d+)"/)?.[1] ? Number(c.content.match(/data-page="(\d+)"/)![1]) : undefined);
     // Phase 2: chunked books → store a light TOC (titles+slugs) only; the body and
     // its annotations live on the on-demand chapter pages, never in this landing's HTML.
-    paths.push({ params: { slug: entry.id }, props: { entry, chunked: a.chunked, toc: a.chapters.map((c) => ({ title: c.title, slug: c.slug })), tocNested: a.chunked ? [] : parseToc(body ?? ""), body: a.chunked ? undefined : body, byAnchor: a.chunked ? {} : byAnchor, audios, commentaries, author: names.get(entry.data.person), topicLabel: topicLabelFor("book", entry.data, graph), subjects: subjectTitlesFor(entry.data.topics, graph), related: relatedTo(entry, graph, names), backlinks: backlinksList(entry, graph, names) } });
+    paths.push({ params: { slug: entry.id }, props: { entry, chunked: a.chunked, toc: a.chapters.map((c) => ({ title: c.title, slug: c.slug, parent: c.parent, parentTitle: c.parentTitle, firstPage: firstPageOf(c) })), tocNested: a.chunked ? [] : parseToc(body ?? ""), body: a.chunked ? undefined : body, byAnchor: a.chunked ? {} : byAnchor, audios, commentaries, author: names.get(entry.data.person), topicLabel: labelFor("book", entry.data), origin: originOf(entry.data, graph), subjects: subjectTitlesFor(entry.data.topics, graph), related: relatedTo(entry, graph, names), backlinks: backlinksList(entry, graph, names) } });
   }
   return paths;
 }
 
-const { entry, chunked, toc, tocNested, body, byAnchor, audios, commentaries, author, topicLabel, subjects, related, backlinks } = Astro.props;
+const { entry, chunked, toc, tocNested, body, byAnchor, audios, commentaries, author, topicLabel, origin, subjects, related, backlinks } = Astro.props;
 const KIND_SLUG: Record<string, string> = { شرح: "sharh", حاشية: "hashiya", تخريج: "takhrij", إعراب: "iraab" };
+// Oversized chapters get re-split into "صفحات S-E" slices (parent set) — group
+// those back under the parent chapter for the TOC instead of listing each slice.
+interface TocGroup { href: string; title: string; slices: { href: string; title: string }[] }
+function groupToc(items: { title: string; slug: string; parent?: string; parentTitle?: string }[]): TocGroup[] {
+  const groups: TocGroup[] = [];
+  const byKey = new Map<string, TocGroup>();
+  for (const c of items) {
+    const key = c.parent ?? c.slug;
+    const href = hrefFor("book", entry.id, { chapter: c.slug });
+    let g = byKey.get(key);
+    if (!g) {
+      g = { href, title: c.parentTitle ?? c.title, slices: [] };
+      byKey.set(key, g);
+      groups.push(g);
+    }
+    if (c.parent) g.slices.push({ href, title: c.title });
+  }
+  return groups;
+}
 const anchors = Object.entries(byAnchor);
 const path = `/book/${entry.id}`;
 const jsonLd = bookLd({
@@ -61,6 +86,11 @@ const jsonLd = bookLd({
       <a class="eyebrow u87c136d pill-link" href={isMatn("book", entry.data) ? "/matn" : "/books"}>{topicLabel}</a>
       <h1 class="reader-title ue7e55f7" >{entry.data.title}</h1>
       <div class="reader-byline">{author}</div>
+      {origin && (
+        <div class="reader-origin">
+          {origin.relation}: <a href={origin.href}>{origin.title}</a>
+        </div>
+      )}
       {entry.data.transcript_status && (
         <div style="margin-top: 0.5rem;">
           <span class={`pill ${entry.data.transcript_status === 'قيد المراجعة' ? 'tag-accent' : ''}`}>{entry.data.transcript_status}</span>
@@ -80,9 +110,16 @@ const jsonLd = bookLd({
     {chunked ? (
       <!-- light TOC: links to the on-demand chapter pages; no body in this HTML -->
       <nav class="toc-box has-current" aria-label="فهرس الفصول">
-        <div class="toc-label">فصول الكتاب · {toArabicDigits(toc.length)} فصل</div>
-        {toc.map((c) => (
-          <a href={hrefFor("book", entry.id, { chapter: c.slug })}>{c.title}</a>
+        <div class="toc-label">فصول الكتاب · {toArabicDigits(groupToc(toc).length)} فصل</div>
+        {groupToc(toc).map((g) => (
+          <>
+            <a href={g.href}>{g.title}</a>
+            {g.slices.length > 0 && (
+              <div class="toc-sub">
+                {g.slices.map((s) => <a href={s.href} class="toc-sub-link">{s.title}</a>)}
+              </div>
+            )}
+          </>
         ))}
       </nav>
     ) : isMatn("book", entry.data) ? (
@@ -141,4 +178,31 @@ const jsonLd = bookLd({
   )}
   <div class="wrap-mid"><RelatedStrip items={related} /></div>
   <Relations items={backlinks} />
+  {chunked && (
+    <script type="application/json" data-page-map set:html={JSON.stringify(toc.filter((c: any) => c.firstPage != null).map((c: any) => ({ slug: c.slug, firstPage: c.firstPage })))} />
+    <script>
+      // "اقرأ في موضعه" (#pN) lands here first — the hash never reaches the
+      // server for a chunked book. Find the chapter whose page range covers N
+      // and redirect there, same hash intact.
+      //
+      // ponytail: walk chapters in source order (NOT sorted by firstPage) and
+      // keep the last one whose firstPage <= N — some multi-volume books
+      // (e.g. tafsir-ibn-kathir) reset page numbering per volume/juz, so a
+      // global sort would scramble volumes together and land on the wrong
+      // one. Source order at least keeps each volume's own pages contiguous;
+      // it can still mis-land on the SAME page number in a later volume.
+      // Real fix needs volume boundaries, which the manifest doesn't carry.
+      (() => {
+        const m = location.hash.match(/^#p(\d+)$/);
+        if (!m) return;
+        const target = parseInt(m[1], 10);
+        const mapEl = document.querySelector('script[data-page-map]');
+        if (!mapEl) return;
+        const pages: { slug: string; firstPage: number }[] = JSON.parse(mapEl.textContent || "[]");
+        let chapter = pages[0];
+        for (const c of pages) { if (c.firstPage <= target) chapter = c; else break; }
+        if (chapter) location.replace(`${location.pathname}/${encodeURIComponent(chapter.slug)}${location.hash}`);
+      })();
+    </script>
+  )}
 </Base>
