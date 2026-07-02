@@ -4,6 +4,7 @@ person: "al-nawawi"
 status: "published"
 published_at: "2026-06-27"
 kind: "متن"
+work_type: "متن"
 genre: "حديث"
 hadith_category: "عام"
 topics: ["aam-hadith"]

@@ -4,6 +4,7 @@ person: "ibn-taymiyyah"
 status: "published"
 published_at: "2026-06-27"
 kind: "متن"
+work_type: "رسالة"
 topics: ["aam-aqeedah"]
 authored_year: 728
 volumes: 1
