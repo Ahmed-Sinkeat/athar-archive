@@ -17,6 +17,12 @@ const shared = {
 
 const topicsField = z.array(slug).min(1).max(5).optional();
 
+// نوع العمل (work_type) — structural/authorial nature of a work, independent of its
+// subject/topic. See docs/knowledge-taxonomy.md §3 in Athar-Engine.
+const workTypeField = z
+  .enum(["مصدر أصلي", "متن", "منظومة", "شرح", "مختصر", "حاشية", "رسالة", "مجموع", "موسوعة", "تحقيق", "فهرس"])
+  .optional();
+
 // Downloadable attachments (print editions, PDFs, etc.) — served from R2 (P6).
 const attachment = z.object({
   label: z.string().min(1),
@@ -89,6 +95,11 @@ const book = defineCollection({
     // "شروحه وتعليقاته" list. The lesson/series split was retired: a درس is a book
     // with audio; a سلسلة شرح is a book with sharh_of.
     sharh_of: slug.optional(),
+    // مختصر لكتاب آخر (تيسير اللطيف المنان → تيسير الكريم الرحمن)
+    mukhtasar_of: slug.optional(),
+    // حاشية على كتاب آخر (حاشية ابن عابدين → الدر المختار)
+    hashiyah_on: slug.optional(),
+    work_type: workTypeField,
     // دروس مفرّغة (audio transcribed to text) — review state shown as a pill.
     transcript_status: z.enum(["مراجَع", "قيد المراجعة"]).optional(),
     // تصنيف كتب الحديث — drives facets on /hadith
@@ -110,6 +121,7 @@ const poem = defineCollection({
     ...shared,
     person: slug,           // → Person (author)
     topics: topicsField,
+    work_type: workTypeField,
     authored_year: z.number().int().optional(), // hijri سنة النظم — default browse sort
     // verse_count / opening_verse are DERIVED from the body (FR-C-06), never
     // hand-stored — see analyzePoem() in src/lib/chunk.ts.
