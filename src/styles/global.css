@@ -19,25 +19,25 @@
      overloaded. Add --gold for ornamental moments.
      ──────────────────────────────────────────────────────────── */
 
-  /* paper / surface */
-  --paper:   #faf7f0;   /* warm vellum — the base floor */
-  --paper-2: #f0e9d8;   /* slightly deeper cream for recessed areas */
-  --surface: #fffdf8;   /* elevated cards, popovers */
+  /* paper / surface — warm parchment (aligned with the redesign moodboard) */
+  --paper:   #F7F3EE;   /* warm parchment — the base floor */
+  --paper-2: #EDE7DC;   /* slightly deeper cream for recessed areas */
+  --surface: #FDFAF6;   /* elevated cards, popovers */
 
   /* ink */
-  --ink:       #1a1410;   /* near-black warm ink — main text */
-  --ink-soft:  #544840;   /* secondary / label text */
-  --ink-faint: #7a6d5e;   /* captions, muted — WCAG AA on paper */
+  --ink:       #1E140E;   /* near-black warm ink — main text */
+  --ink-soft:  #5c4f43;   /* secondary / label text */
+  --ink-faint: #8A7A6E;   /* captions, muted — WCAG AA on paper */
 
   /* rules / borders */
-  --rule:        #e4d9c6;   /* hairline dividers */
-  --rule-strong: #c9b99a;   /* structural borders */
+  --rule:        rgba(30, 20, 14, 0.1);   /* hairline dividers */
+  --rule-strong: rgba(30, 20, 14, 0.18);  /* structural borders */
 
-  /* ─── accent family (deep red) ───────────────────────────── */
-  --accent:         #8b2318;  /* text links, borders — darker for AA on paper */
-  --accent-solid:   #9a2f24;  /* fills behind WHITE text (buttons, chips) */
-  --accent-border:  color-mix(in srgb, #9a2f24 38%, transparent); /* decorative rings */
-  --accent-wash:    color-mix(in srgb, #9a2f24 7%,  transparent); /* tinted bg hovers */
+  /* ─── accent family (muted deep crimson) ─────────────────── */
+  --accent:         #7A2020;  /* text links, borders — darker for AA on paper */
+  --accent-solid:   #7A2020;  /* fills behind WHITE text (buttons, chips) */
+  --accent-border:  color-mix(in srgb, #7A2020 38%, transparent); /* decorative rings */
+  --accent-wash:    color-mix(in srgb, #7A2020 8%,  transparent); /* tinted bg hovers */
 
   /* ─── verdigris (oxidised copper / teal) ─────────────────── */
   --verdigris:       #3a6357;  /* era badges, secondary signals */
@@ -175,7 +175,7 @@ img { max-width: 100%; }
 .topbar-row { display: flex; align-items: center; gap: 14px; padding: 11px 0; }
 .brand { display: flex; flex-direction: column; align-items: flex-start; text-decoration: none; line-height: 1.05; flex: none; }
 /* Phase 1: Noto Naskh Arabic gives brand name a manuscript authority feel */
-.brand-name { font-family: var(--font-display); font-weight: 700; font-size: 21px; color: var(--ink); letter-spacing: -0.01em; }
+.brand-name { font-family: var(--font-serif); font-weight: 700; font-size: 21px; color: var(--ink); letter-spacing: -0.01em; }
 .brand-sub { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.3em; color: var(--gold-text); margin-top: 3px; }
 
 .topnav { display: flex; justify-content: center; gap: 2px; flex-wrap: wrap; flex: 1 1 auto; }
@@ -384,7 +384,7 @@ summary::-webkit-details-marker { display: none; }
 /* ---------- reading: shared ornaments ---------- */
 .reader-head { text-align: center; }
 /* Phase 1+4: Noto Naskh at 600; slightly reduced max-size for narrower measure */
-.reader-title { font-family: var(--font-display); font-weight: 700; font-size: clamp(32px, 6vw, 52px); color: var(--ink); margin: 0; line-height: 1.1; letter-spacing: -0.015em; }
+.reader-title { font-family: var(--font-serif); font-weight: 700; font-size: clamp(32px, 6vw, 52px); color: var(--ink); margin: 0; line-height: 1.1; letter-spacing: -0.015em; }
 .reader-byline { font-family: var(--font-ui); font-size: 14.5px; color: var(--ink-soft); margin-top: 16px; }
 .reader-origin { font-family: var(--font-ui); font-size: 13.5px; color: var(--ink-soft); margin-top: 4px; }
 .reader-origin a { color: var(--accent); }
