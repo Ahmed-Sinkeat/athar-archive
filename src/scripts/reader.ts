@@ -28,18 +28,17 @@ function setScale(v: number) {
   localStorage.setItem(LS.scale, String(clamped));
 }
 
-// --- theme ---
-const THEMES = ["light", "sepia", "dark"] as const;
-type Theme = (typeof THEMES)[number];
+// --- theme (2 states: paper default / dark) ---
+type Theme = "paper" | "dark";
 
 function setTheme(t: Theme) {
-  if (t === "light") root.removeAttribute("data-theme");
-  else root.setAttribute("data-theme", t);
+  if (t === "dark") root.setAttribute("data-theme", "dark");
+  else root.removeAttribute("data-theme");
   localStorage.setItem(LS.theme, t);
   syncThemeButtons(t);
 }
 function currentTheme(): Theme {
-  return (root.getAttribute("data-theme") as Theme) || "light";
+  return root.getAttribute("data-theme") === "dark" ? "dark" : "paper";
 }
 function syncThemeButtons(t: Theme) {
   document.querySelectorAll<HTMLElement>("[data-theme-btn]").forEach((b) => {
@@ -220,10 +219,7 @@ const actions: Record<string, () => void> = {
   "toggle:verseNums": () => applyVnums(root.classList.contains("hide-vnums")),
   "toggle:pages": () => applyPages(root.classList.contains("pages-flow")),
   "toggle:footnotes": () => applyFootnotes(root.classList.contains("hide-footnotes")),
-  "theme:light": () => setTheme("light"),
-  "theme:sepia": () => setTheme("sepia"),
-  "theme:dark": () => setTheme("dark"),
-  "theme:cycle": () => setTheme(THEMES[(THEMES.indexOf(currentTheme()) + 1) % THEMES.length]),
+  "theme:toggle": () => setTheme(currentTheme() === "dark" ? "paper" : "dark"),
   "menu:toggle": () => setDrawer(true),
   "menu:close": () => setDrawer(false),
   // closed → open the bar; open → just close it (Enter in the field runs the search).
@@ -841,7 +837,7 @@ document.addEventListener("astro:page-load", onPage);
 function applyStoredPrefs() {
   try {
     const t = localStorage.getItem(LS.theme);
-    if (t && t !== "light") root.setAttribute("data-theme", t);
+    if (t === "dark") root.setAttribute("data-theme", "dark");
     else root.removeAttribute("data-theme");
     const s = localStorage.getItem(LS.scale);
     if (s) root.style.setProperty("--reading-scale", s);

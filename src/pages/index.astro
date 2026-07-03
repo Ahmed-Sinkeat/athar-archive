@@ -9,7 +9,7 @@ import { loadGraph, personEraMap } from "../lib/site";
 
 const pub = (c: any[]) => c.filter((e) => e.data.status === "published");
 
-const [people, books, poems, articles, benefits, announcements, highlights, questions] = await Promise.all([
+const [people, books, poems, articles, benefits, announcements, highlights, questions, subjects, quranSurahs] = await Promise.all([
   getCollection("person"),
   getCollection("book"),
   getCollection("poem"),
@@ -18,7 +18,10 @@ const [people, books, poems, articles, benefits, announcements, highlights, ques
   getCollection("announcement"),
   getCollection("highlight"),
   getCollection("question"),
+  getCollection("subject"),
+  getCollection("quran"),
 ]);
+const hadithBooks = books.filter((b) => (b.data as any).genre === "حديث" && b.data.status === "published");
 
 // مختارات الأسبوع: one published آية / حديث / بيت per kind, rotating by week index.
 // ponytail: build-time pick (stable within a week); refreshes on each rebuild/deploy.
@@ -28,6 +31,12 @@ const pickWeekly = (kind: string) => {
   return arr.length ? arr[wk % arr.length] : null;
 };
 const weekly = ["آية", "حديث", "بيت"].map((kind) => ({ kind, entry: pickWeekly(kind) })).filter((w) => w.entry);
+// each text tradition gets its own dress (kicker accent + body font), per HANDOFF §5
+const weeklyDress: Record<string, { cls: string; textCls: string; label: string }> = {
+  "آية": { cls: "k-gold", textCls: "weekly-text-quran", label: "آية الأسبوع" },
+  "حديث": { cls: "k-green", textCls: "weekly-text-hadith", label: "حديث الأسبوع" },
+  "بيت": { cls: "k-copper", textCls: "", label: "من المنظومات" },
+};
 
 // Resolve a highlight's source link, and (for a بيت) its era + subject pills.
 const graph = await loadGraph();
@@ -76,69 +85,93 @@ const anns = pub(announcements).sort((a, b) => (b.data.priority ?? 5) - (a.data.
 const featured = pub(poems)[0];
 const featuredVerses = featured ? analyzePoem(await readBody(featured)).verses.slice(0, 2) : [];
 
-// latest across materials by published_at
+// latest across materials by published_at — متن/مصدر أصلي get the accent type-badge (HANDOFF §4)
+const SOURCE_KINDS = new Set(["متن", "مصدر أصلي"]);
 const latest = [
-  ...pub(books).map((e) => ({ e, kind: labelFor("book", e.data), color: "tag-accent" })),
-  ...pub(poems).map((e) => ({ e, kind: "منظومة", color: "tag-accent" })),
-  ...pub(articles).map((e) => ({ e, kind: "مقالة", color: "tag-verdigris" })),
-  ...pub(benefits).map((e) => ({ e, kind: "فائدة", color: "tag-accent" })),
+  ...pub(books).map((e) => { const kind = labelFor("book", e.data); return { e, kind, isSource: SOURCE_KINDS.has(kind) }; }),
+  ...pub(poems).map((e) => ({ e, kind: "منظومة", isSource: false })),
+  ...pub(articles).map((e) => ({ e, kind: "مقالة", isSource: false })),
+  ...pub(benefits).map((e) => ({ e, kind: "فائدة", isSource: false })),
 ]
   .sort((a, b) => +new Date(b.e.data.published_at) - +new Date(a.e.data.published_at))
   .slice(0, 5);
 ---
 <Base title="أهل الأثر | الأرشيف العلمي للمتون والمنظومات الإسلامية" description="الأرشيف العلمي لأهل السنة والجماعة: متونٌ ومنظوماتٌ ودروسٌ محقَّقةً ومُشكَّلةً، في تجربة قراءة هادئة." activeNav="home" jsonLd={websiteLd()}>
   <section class="hero">
-    <div class="hero-inner">
-      <div class="hero-eyebrow">أرشيف علمي</div>
-      <h1 class="hero-title">أهل الأثر</h1>
+    <div class="plate-outer">
+      <div class="plate-inner">
+        <div class="hero-inner">
+          <div class="hero-eyebrow">الأرشيفُ العلميُّ للمتونِ والمنظوماتِ الإسلامية</div>
+          <h1 class="hero-title">أهل الأثر</h1>
 
-      <picture class="hero-calligraphy" aria-hidden="true">
-        <source media="(prefers-color-scheme: dark)" srcset="/calligraphy/logo_dark.webp" />
-        <img
-          src="/calligraphy/logo_light.webp"
-          alt=""
-          class="hero-calligraphy-img"
-          width="560"
-          height="560"
-          loading="eager"
-          decoding="async"
-        />
-      </picture>
+          <picture class="hero-calligraphy" aria-hidden="true">
+            <source media="(prefers-color-scheme: dark)" srcset="/calligraphy/logo_dark.webp" />
+            <img
+              src="/calligraphy/logo_light.webp"
+              alt=""
+              class="hero-calligraphy-img"
+              width="560"
+              height="560"
+              loading="eager"
+              decoding="async"
+            />
+          </picture>
 
-      <p class="hero-lede">متونٌ ومنظوماتٌ وتراجمٌ وأسانيد — في تجربة قراءة هادئة.</p>
+          <p class="hero-lede">متونٌ ومنظوماتٌ وتراجمٌ وأسانيد — في تجربة قراءة هادئة.</p>
 
-      <form action="/search" method="get" class="u5fbcbc5">
-        <div class="u537b78d">
-          <input name="q" type="text" placeholder="ابحث في المتون والمنظومات والدروس والفوائد…" class="u38ae86c" />
-          <button type="button" class="icon-btn hero-filter" data-action="search:filter" aria-label="تصفية البحث" aria-expanded="false">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
-          </button>
-          <button class="btn-accent u4964676" type="submit">بحث</button>
+          <div class="divider-orn" aria-hidden="true">۞</div>
+
+          <form action="/search" method="get" class="u5fbcbc5">
+            <div class="u537b78d">
+              <input name="q" type="text" placeholder="ابحث في المتون والمنظومات والدروس والفوائد…" class="u38ae86c" />
+              <button type="button" class="icon-btn hero-filter" data-action="search:filter" aria-label="تصفية البحث" aria-expanded="false">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
+              </button>
+              <button class="btn-accent u4964676" type="submit">بحث</button>
+            </div>
+          </form>
+
+          <div class="hero-pills">
+            <a class="ghost-pill" href="/graph">شبكة المعرفة</a>
+            <a class="ghost-pill" href="/benefits">كُناشة الفوائد</a>
+            <a class="ghost-pill" href="/roadmap">طريق طلب العلم</a>
+          </div>
         </div>
-      </form>
-
-      <div class="u40e95b5">
-        <a class="btn" href="/graph">شبكة المعرفة</a>
-        <a class="btn" href="/benefits">كُناشة</a>
-        <a class="btn" href="/roadmap">طريق طلب العلم</a>
       </div>
-
-      <div class="divider-orn"><span class="line"></span><span class="dot">۞</span><span class="line"></span></div>
     </div>
   </section>
 
   <div class="home-section">
-    <h2 class="section-label">تصفّح الأرشيف</h2>
-    <div class="card-grid u8bffae7" >
-      <a class="card" href="/books"><div class="ufa5a688">ا</div><div class="card-title ua3ba3b1" >الكتب</div><p class="card-sub uf04e97f" >المتونُ والمراجعُ محقَّقةً ومُشكَّلةً، مرتَّبةً حسب الفنِّ.</p><span class="card-cta">تصفّح ←</span></a>
-      <a class="card" href="/poems"><div class="ufa5a688">ب</div><div class="card-title ua3ba3b1" >الشعر</div><p class="card-sub uf04e97f" >منظوماتٌ علميةٌ مُشكَّلةٌ مُرقَّمةُ الأبيات، مع الشروح والتخريج.</p><span class="card-cta">تصفّح ←</span></a>
-      <a class="card" href="/people"><div class="ufa5a688">ج</div><div class="card-title ua3ba3b1" >التراجم والأعلام</div><p class="card-sub uf04e97f" >تراجمُ الناظمين والمصنِّفين والشُّرّاح، وما لكلٍّ منهم في الأرشيف.</p><span class="card-cta">تصفّح ←</span></a>
+    <div class="section-head"><h2>تصفّح الأرشيف</h2><div class="rule-fill"></div></div>
+    <div class="browse4-grid">
+      <a class="browse4-card accent-brand" href="/books">
+        <div class="browse4-card-head"><span class="browse4-card-title">الكتب</span><span class="browse4-card-meta">{toArabicDigits(pub(books).length)} كتابًا</span></div>
+        <p class="browse4-card-sub">متونٌ ومراجعُ ومجاميعُ محقَّقةٌ مُشكَّلةٌ، مرتَّبةٌ حسب الفنِّ.</p>
+      </a>
+      <a class="browse4-card accent-gold" href="/quran">
+        <div class="browse4-card-head"><span class="browse4-card-title">القرآن</span><span class="browse4-card-meta">{toArabicDigits(pub(quranSurahs).length)} سورة</span></div>
+        <p class="browse4-card-sub">التفاسيرُ وعلومُ القرآنِ والقراءات.</p>
+      </a>
+      <a class="browse4-card accent-green" href="/hadith">
+        <div class="browse4-card-head"><span class="browse4-card-title">الحديث</span><span class="browse4-card-meta">{toArabicDigits(hadithBooks.length)} كتب</span></div>
+        <p class="browse4-card-sub">متونُ الحديثِ وتخاريجُه وعلَلُه.</p>
+      </a>
+      <a class="browse4-card accent-copper" href="/poems">
+        <div class="browse4-card-head"><span class="browse4-card-title">الشعر</span><span class="browse4-card-meta">{toArabicDigits(pub(poems).length)} منظومة</span></div>
+        <p class="browse4-card-sub">منظوماتٌ علميةٌ محقَّقةٌ مُشكَّلةٌ مع الشروح والتخريج.</p>
+      </a>
+    </div>
+    <div class="browse-pills">
+      <a class="ghost-pill" href="/people">التراجم والأعلام <span class="browse-pills-count">· {toArabicDigits(pub(people).length)}</span></a>
+      <a class="ghost-pill" href="/subjects">الموضوعات <span class="browse-pills-count">· {toArabicDigits(pub(subjects).length)} فنًّا</span></a>
+      <a class="ghost-pill" href="/questions">المسائل <span class="browse-pills-count">· {toArabicDigits(pub(questions).length)}</span></a>
+      <a class="ghost-pill" href="/articles">المقالات</a>
     </div>
   </div>
 
   {anns.length > 0 && (
     <div class="home-section">
-      <h2 class="section-label">إعلانات</h2>
+      <div class="section-head"><h2>إعلانات</h2><div class="rule-fill"></div></div>
       <div class="ann-cards">
         {anns.map((a) => (
           <div class="ann-card">
@@ -153,7 +186,7 @@ const latest = [
 
   {featured && (
     <div class="home-section">
-      <h2 class="section-label">منظومة مختارة</h2>
+      <div class="section-head"><h2>منظومة مختارة</h2><div class="rule-fill"></div></div>
       <div class="u0ef5d25">
         <div>
           <div class="eyebrow u57e29a5" >منظومة · {personName.get(featured.data.person)}</div>
@@ -175,25 +208,29 @@ const latest = [
 
   {weekly.length > 0 && (
     <div class="home-section">
-      <h2 class="section-label">مختارات الأسبوع</h2>
+      <div class="section-head"><h2>مختارات الأسبوع</h2><div class="rule-fill"></div></div>
       <div class="weekly-grid">
         {weekly.map(({ kind, entry }) => {
           const m = weeklyMeta(entry);
+          const dress = weeklyDress[kind] ?? { cls: "", textCls: "", label: kind };
           return (
-          <div class="weekly-card">
+          <div class={`weekly-card ${dress.cls}`}>
             {kind === "بيت" && (m.era || m.subjects.length) ? (
               <div class="weekly-pills">
-                <span class="weekly-kind">{kind}</span>
+                <span class={`weekly-kicker ${dress.cls}`}>{dress.label}</span>
                 {m.eraLink && <a class="pill tag-verdigris pill-link" href={m.eraLink}>{m.era}</a>}
                 {m.subjects.map((s) => <a class="pill tag-accent pill-link" href={s.href}>{s.title}</a>)}
               </div>
             ) : (
-              <div class="weekly-kind">{kind}</div>
+              <div class={`weekly-kicker ${dress.cls}`}>{dress.label}</div>
             )}
-            <p class="weekly-text" data-ar>{entry!.body.trim()}</p>
-            {entry!.data.reference && (m.srcHref
-              ? <a class="faint weekly-ref pill-link" href={m.srcHref}>{entry!.data.reference} ←</a>
-              : <div class="faint weekly-ref">{entry!.data.reference}</div>)}
+            <p class={`weekly-text ${dress.textCls}`} data-ar>{entry!.body.trim()}</p>
+            {entry!.data.reference && (
+              <div class="weekly-foot">
+                <span class="faint">{entry!.data.reference}</span>
+                {m.srcHref && <a class="weekly-ref" href={m.srcHref}>اقرأ في موضعه ←</a>}
+              </div>
+            )}
           </div>
           );
         })}
@@ -203,12 +240,13 @@ const latest = [
 
   {latest.length > 0 && (
     <div class="home-section u3a4c3ff" >
-      <h2 class="section-label">أحدث الإضافات</h2>
-      {latest.map(({ e, kind, color }) => (
+      <div class="section-head"><h2>أحدث الإضافات</h2><div class="rule-fill"></div><a class="section-link" href="/books">كل الكتب ←</a></div>
+      {latest.map(({ e, kind, isSource }) => (
         <a class="latest-row" href={hrefFor(e.collection, e.id, { series: e.data.series })}>
-          <span class:list={[...["pill", color], "uac6ea07"]} >{kind}</span>
+          <span class:list={["type-badge", { accent: isSource }]}>{kind}</span>
           <span class="latest-name">{e.data.title}</span>
           {e.data.person && <span class="faint u5e0faad" >{personName.get(e.data.person)}</span>}
+          <span class="latest-arrow">←</span>
         </a>
       ))}
     </div>
