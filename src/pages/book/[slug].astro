@@ -72,6 +72,7 @@ function groupToc(items: { title: string; slug: string; parent?: string; parentT
 }
 const anchors = Object.entries(byAnchor);
 const path = `/book/${entry.id}`;
+const isHadith = entry.data.genre === "حديث";
 const jsonLd = bookLd({
   title: entry.data.title, authorId: entry.data.person, authorName: author,
   description: entry.data.description, path,
@@ -87,10 +88,10 @@ const jsonLd = bookLd({
       { label: entry.data.title },
     ]}
   />
-  <div class="wrap-matn reading-pad">
+  <div class:list={["wrap-matn", "reading-pad", { "hadith-accent": isHadith }]}>
     <div class="reader-head">
       <a class="eyebrow u87c136d pill-link" href={isMatn("book", entry.data) ? "/matn" : "/books"}>{topicLabel}</a>
-      <div class="ornament" aria-hidden="true">۞</div>
+      <div class:list={["ornament", { "ornament-green": isHadith }]} aria-hidden="true">۞</div>
       <h1 class="reader-title ue7e55f7" >{entry.data.title}</h1>
       <div class="reader-byline">{author}</div>
       {origin && (

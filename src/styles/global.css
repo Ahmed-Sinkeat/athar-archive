@@ -127,6 +127,15 @@ img { max-width: 100%; }
   background: var(--surface); display: inline-block;
 }
 .tag-accent { color: var(--accent); }
+
+/* --- hadith grading chips (/hadith hub) --- */
+.grade-facet { display: flex; flex-wrap: wrap; gap: 8px; }
+.grade {
+  font-family: var(--font-ui); font-size: 12.5px; border-radius: 20px; padding: 4px 13px;
+  display: inline-block; border: 1px solid var(--rule-strong); background: var(--surface); color: var(--ink-soft);
+}
+.grade-صحيح, .grade-حسن { color: var(--green); border-color: color-mix(in srgb, var(--green) 45%, transparent); }
+.grade-ضعيف, .grade-موضوع { color: var(--copper); border-color: color-mix(in srgb, var(--copper) 45%, transparent); }
 .tag-verdigris { color: var(--verdigris); }
 
 /* ---------- header ---------- */
@@ -364,6 +373,21 @@ summary::-webkit-details-marker { display: none; }
 /* Phase 2: ornamental short rule uses gold */
 .rule-short { height: 1px; background: var(--gold-soft); margin: 24px auto 8px; max-width: 100px; }
 .ornament { text-align: center; color: var(--gold); font-size: 1.2em; }
+.ornament-green { color: var(--green); }
+
+/* الحديث → green dress (HANDOFF §1: one accent per tradition), scoped to
+   hadith-genre book readers only — everything else keeps the maroon default */
+.hadith-accent .toc-box:not(.has-current) a:first-of-type,
+.hadith-accent .toc-box a.toc-current { border-inline-start-color: var(--green); }
+.hadith-accent .prevnext a.next { background: var(--green); border-color: var(--green); }
+.hadith-accent .inline-note { border-inline-start-color: var(--green); }
+.hadith-accent .inline-note summary,
+.hadith-accent .inline-note-more,
+.hadith-accent .ann-source-link { color: var(--green); }
+.hadith-accent .inline-note-tab-input:checked + .inline-note-tab {
+  color: var(--green); border-color: var(--green);
+  background: color-mix(in srgb, var(--green) 12%, transparent);
+}
 
 .hint {
   display: flex; align-items: center; gap: 12px; background: var(--paper-2); border: 1px solid var(--rule);
@@ -376,9 +400,10 @@ summary::-webkit-details-marker { display: none; }
 .verses { margin-top: 8px; }
 .verse { padding: 16px 0; border-bottom: 1px solid var(--rule); scroll-margin-top: 90px; }
 .verse-inner { display: flex; align-items: flex-start; gap: 16px; }
+/* الشعر → copper dress (HANDOFF §1: one accent per tradition) */
 .vnum {
-  font-family: var(--font-mono); font-size: 11px; color: var(--gold-text); width: 28px; height: 28px;
-  border: 1px solid var(--gold-soft); border-radius: 50%; display: grid; place-items: center;
+  font-family: var(--font-mono); font-size: 11px; color: var(--copper); width: 28px; height: 28px;
+  border: 1px solid color-mix(in srgb, var(--copper) 45%, transparent); border-radius: 50%; display: grid; place-items: center;
   flex: 0 0 auto; margin-top: 6px;
 }
 /* Cap the verse measure; scaled with reading-scale control.
@@ -394,12 +419,23 @@ summary::-webkit-details-marker { display: none; }
 }
 .sadr { text-align: right; }
 .ajz { text-align: left; }
-/* Phase 4: subtle visual anchor between صدر and عجز hemistiches */
+/* copper ❁ hemistich separator (HANDOFF §4 signature element) */
 .verse-hemistich-rule {
-  display: block; width: 1px; height: 1.2em; background: var(--rule-strong);
+  display: block; width: 1em; height: 1.2em;
   position: absolute; inset-inline-start: 50%; top: 50%;
   transform: translateX(-50%) translateY(-50%);
-  opacity: 0.5; pointer-events: none;
+  pointer-events: none;
+}
+.verse-hemistich-rule::before {
+  content: "❁"; color: var(--copper); font-size: 13px; opacity: 0.75;
+}
+.verses .inline-note { border-inline-start-color: var(--copper); }
+.verses .inline-note summary,
+.verses .inline-note-more,
+.verses .ann-source-link { color: var(--copper); }
+.verses .inline-note-tab-input:checked + .inline-note-tab {
+  color: var(--copper); border-color: var(--copper);
+  background: color-mix(in srgb, var(--copper) 12%, transparent);
 }
 @media (max-width: 640px) {
   .verse-body {
