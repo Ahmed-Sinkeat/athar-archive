@@ -205,6 +205,11 @@ document.addEventListener("click", (e) => {
     if (settingsPop && !settingsPop.hidden) { settingsPop.hidden = true; popBtns("settings:toggle").forEach((b) => b.setAttribute("aria-expanded", "false")); }
   }
   if (!t.closest("[data-topsearch]")) closeSearch();
+  const chapToc = document.querySelector<HTMLDetailsElement>(".chap-mobile-toc");
+  if (chapToc?.open && !t.closest(".chap-mobile-toc") && !t.closest('[data-action="chaptoc:toggle"]')) {
+    chapToc.open = false;
+    document.querySelectorAll<HTMLElement>('[data-action="chaptoc:toggle"]').forEach((b) => b.setAttribute("aria-expanded", "false"));
+  }
 });
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") { closeAllPops(); topsearch?.classList.remove("is-open"); }
@@ -229,6 +234,14 @@ const actions: Record<string, () => void> = {
   "search:next": () => { const q = document.querySelector<HTMLInputElement>("[data-inpage-search]")?.value.trim(); if (q) (window as any).find(q, false, false, true, false, true, false); },
   "search:prev": () => { const q = document.querySelector<HTMLInputElement>("[data-inpage-search]")?.value.trim(); if (q) (window as any).find(q, false, true, true, false, true, false); },
   "settings:toggle": () => togglePop(settingsPop, "settings:toggle"),
+  // floating jump button: same <details> the inline "فصول الكتاب" summary
+  // controls, just reachable without scrolling back to the top of a long page.
+  "chaptoc:toggle": () => {
+    const el = document.querySelector<HTMLDetailsElement>(".chap-mobile-toc");
+    if (!el) return;
+    el.open = !el.open;
+    document.querySelectorAll<HTMLElement>('[data-action="chaptoc:toggle"]').forEach((b) => b.setAttribute("aria-expanded", String(el.open)));
+  },
 };
 
 document.addEventListener("click", (e) => {
