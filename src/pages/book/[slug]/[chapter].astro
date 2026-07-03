@@ -72,6 +72,7 @@ const currentGroupKey = chapterMeta.parent ?? chapterMeta.slug;
 const hadithOrdinal = parseHadithOrdinal(chapter.title);
 const hadithNotes = hadithOrdinal !== null ? hadithIndex[`${entry.id}:${hadithOrdinal}`] : undefined;
 const HADITH_KIND_ORDER = ["شرح", "تخريج", "حكم"];
+const isHadith = entry.data.genre === "حديث";
 
 const KIND_SLUG: Record<string, string> = { شرح: "sharh", حاشية: "hashiya", تخريج: "takhrij", إعراب: "iraab" };
 const phraseAnchors = Object.entries(byAnchor).filter(([, notes]: any) => notes.some((n: any) => n.phrase));
@@ -213,13 +214,13 @@ const finalContent = (() => {
     ]}
   />
 
-  <div class="chap-outer">
+  <div class:list={["chap-outer", { "hadith-accent": isHadith }]}>
     <div class="chap-grid">
       <!-- main reading column -->
       <div class="reading-pad">
         <div class="reader-head">
           <div class="eyebrow u87c136d"><a class="faint" href={hrefFor("book", entry.id)}>{entry.data.title}</a></div>
-          <div class="ornament" aria-hidden="true">۞</div>
+          <div class:list={["ornament", { "ornament-green": isHadith }]} aria-hidden="true">۞</div>
           <h1
             class:list={["reader-title", "ue7e55f7"]}
             set:html={chapterMeta.parentTitle ?? (chapter.rawTitle || chapter.title)}
