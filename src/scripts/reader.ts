@@ -596,7 +596,7 @@ function enhanceProse() {
   const KIND_SLUG: Record<string, string> = { شرح: "sharh", حاشية: "hashiya", تخريج: "takhrij", إعراب: "iraab", تفسير: "tafsir", غريب: "tafsir", حكم: "takhrij", فوائد: "sharh" };
   // Tab label ≠ stored kind: غريب the DB kind stays as-is (matches annotation
   // data), but the tab reads "الغريب والمعاني" — clearer than the bare word.
-  const KIND_LABEL: Record<string, string> = { غريب: "الغريب والمعاني" };
+  const KIND_LABEL: Record<string, string> = { غريب: "الغريب والمعاني", تفسير: "التفسير" };
   const toAr = (n: number) => String(n).replace(/[0-9]/g, (d) => "٠١٢٣٤٥٦٧٨٩"[+d]);
 
   let sheet: HTMLElement | null = null;
@@ -718,7 +718,12 @@ function enhanceProse() {
     if (!pack) return;
     build();
     if (activeVerse) activeVerse.classList.remove("ann-active-verse");
-    activeVerse = pack.closest<HTMLElement>(".verse");
+    // quran packs are fetched fragments appended to <body>, so closest(".verse")
+    // finds nothing — resolve the ayah span from the pack id instead
+    const mQuran = packId.match(/^ann-quran-\d+-(\d+)$/);
+    activeVerse =
+      pack.closest<HTMLElement>(".verse") ??
+      (mQuran ? document.getElementById(mQuran[1])?.closest<HTMLElement>(".verse") ?? null : null);
     activeVerse?.classList.add("ann-active-verse");
 
     titleEl.textContent = anchorLabel(pack);
