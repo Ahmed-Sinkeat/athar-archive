@@ -15,18 +15,21 @@ export async function getStaticPaths() {
   const surahs = await getCollection("quran");
   const graph = await loadGraph();
   const names = await personNameMap();
+  const byNumber = [...surahs].sort((a, b) => (a.data.number as number) - (b.data.number as number));
   return surahs.map((entry) => {
     const body = entry.body ?? "";
     const byAnchor = notesByAnchor("quran", entry.id, graph, names);
     const { paragraphs } = parseBook(body);
+    const i = byNumber.findIndex((s) => s.id === entry.id);
+    const nav = (s: typeof entry | undefined) => (s ? { href: `/quran/${s.id}`, name: s.data.name as string } : null);
     return {
       params: { surah: entry.id },
-      props: { entry, paragraphs, byAnchor },
+      props: { entry, paragraphs, byAnchor, prev: nav(byNumber[i - 1]), next: nav(byNumber[i + 1]) },
     };
   });
 }
 
-const { entry, paragraphs, byAnchor } = Astro.props;
+const { entry, paragraphs, byAnchor, prev, next } = Astro.props;
 const { data } = entry;
 const tafsirVerseKeys = new Set(Object.keys(tafsirIndex as Record<string, unknown[]>));
 const surahTitle = `سورة ${data.name}`;
@@ -125,6 +128,10 @@ const processedParagraphs = paragraphs.map((para, idx) => {
   <div class="wrap-matn reading-pad" dir="rtl">
     <div class="plate-outer surah-plate">
       <div class="plate-inner surah-plate-inner">
+        <span class="plate-corner c-tr" aria-hidden="true">۞</span>
+        <span class="plate-corner c-tl" aria-hidden="true">۞</span>
+        <span class="plate-corner c-br" aria-hidden="true">۞</span>
+        <span class="plate-corner c-bl" aria-hidden="true">۞</span>
         <div class="reader-head">
           <a class="eyebrow pill-link" href="/quran/mushaf">المصحف الشريف</a>
           <div class="ornament" aria-hidden="true">۞</div>
@@ -155,6 +162,25 @@ const processedParagraphs = paragraphs.map((para, idx) => {
          floating over the mushaf — the modal hid the text being explained -->
     <div id="tafsir-panel-slot"></div>
 
+    <nav class="surah-nav" aria-label="تنقل بين السور">
+      {next ? (
+        <a class="surah-nav-card" href={next.href}>
+          <span class="surah-nav-kicker">السورة التالية ←</span>
+          <span class="surah-nav-name">{next.name}</span>
+        </a>
+      ) : (
+        <span class="surah-nav-end">آخرُ سور المصحف</span>
+      )}
+      {prev ? (
+        <a class="surah-nav-card" href={prev.href}>
+          <span class="surah-nav-kicker">→ السورة السابقة</span>
+          <span class="surah-nav-name">{prev.name}</span>
+        </a>
+      ) : (
+        <span class="surah-nav-end">أولُ سور المصحف</span>
+      )}
+    </nav>
+
     <Relations items={[]} />
   </div>
 </Base>
@@ -162,9 +188,19 @@ const processedParagraphs = paragraphs.map((para, idx) => {
 <style>
   :global(.page-sep) { display: flex !important; }
 
-  /* gold double-border plate (HANDOFF §4: manuscript plate, Quran variant) */
-  .surah-plate { border-color: var(--gold-soft); margin-block-end: 8px; }
-  .surah-plate-inner { padding: 20px 24px 26px; }
+  /* gold double-border plate (HANDOFF §4: manuscript plate, Quran variant) —
+     corner ۞ at all 4 corners + soft gold tint, per the mockup */
+  .surah-plate { border-color: color-mix(in srgb, var(--gold) 50%, transparent); margin-block-end: 8px; }
+  .surah-plate-inner {
+    padding: 26px 24px; position: relative;
+    border-color: color-mix(in srgb, var(--gold) 30%, transparent);
+    background: color-mix(in srgb, var(--gold) 4%, var(--card));
+  }
+  .plate-corner { position: absolute; color: var(--gold); font-size: 12px; line-height: 1; }
+  .plate-corner.c-tr { top: 8px; right: 10px; }
+  .plate-corner.c-tl { top: 8px; left: 10px; }
+  .plate-corner.c-br { bottom: 8px; right: 10px; }
+  .plate-corner.c-bl { bottom: 8px; left: 10px; }
   .surah-plate .reader-head { margin: 0; }
   .surah-title { font-size: clamp(28px, 5vw, 34px); }
 
@@ -202,6 +238,20 @@ const processedParagraphs = paragraphs.map((para, idx) => {
   }
 
   .ayah-hint { margin: 26px 0 0; text-align: center; font-size: 11.5px; }
+
+  /* prev/next surah cards (mockup: قارئ السورة footer nav) */
+  .surah-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; max-width: 720px; margin: 40px auto 0; }
+  .surah-nav-card {
+    display: block; background: var(--card); border: 1px solid var(--line); border-radius: 10px;
+    padding: 14px 16px; color: var(--ink); text-decoration: none; transition: border-color .15s;
+  }
+  .surah-nav-card:hover { border-color: var(--gold); }
+  .surah-nav-kicker { display: block; font-size: 10.5px; color: var(--ink3); margin-bottom: 4px; }
+  .surah-nav-name { font-family: var(--f-disp); font-size: 15.5px; font-weight: 700; }
+  .surah-nav-end {
+    border: 1px dashed var(--line); border-radius: 10px; padding: 14px 16px;
+    color: var(--ink3); font-size: 12px; display: flex; align-items: center;
+  }
 
   .ayah-notes { margin-block-start: 0.5rem; }
   .ayah-note {

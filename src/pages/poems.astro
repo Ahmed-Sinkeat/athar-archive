@@ -15,14 +15,19 @@ const allPoems = graph.all.filter((e) => e.collection === "poem" && e.data.statu
 const verseCountLabel = (n: number) =>
   n === 2 ? `${toArabicDigits(n)} بيتان` : n >= 3 && n <= 10 ? `${toArabicDigits(n)} أبيات` : `${toArabicDigits(n)} بيتًا`;
 
+// poem titles fall back to the first hemistich — showing those in the meta row
+// would just repeat the verse below, so keep only real occasion titles
+const strip = (s: string) => s.replace(/[ؐ-ًؚ-ٰٟۖ-ۭـ]/g, "").trim();
 const cards = await Promise.all(
   allPoems.map(async (p) => {
     const { verses, verseCount } = analyzePoem(await readBody(p as any));
+    const title = p.data.title as string;
+    const isVerseTitle = verses[0] && strip(verses[0].sadr).startsWith(strip(title).slice(0, 18));
     return {
       href: hrefFor("poem", p.id),
       kind: labelFor("poem", p.data),
       poet: p.data.person ? names.get(p.data.person as string) ?? "" : "",
-      title: p.data.title as string,
+      title: isVerseTitle ? "" : title,
       count: verseCount,
       first: verses[0],
     };
