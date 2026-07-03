@@ -50,7 +50,7 @@ const sortedKinds = [...groups.keys()].sort((a, b) => kindOrder.indexOf(a) - kin
           <div class="inline-note-pane" data-pane={`inote-${kind}-${gi}-${i}`} hidden={items.length > 1 && i !== 0}>
             {long && <input type="checkbox" id={`inote-more-${kind}-${gi}-${i}`} class="inline-note-more-toggle" hidden />}
             <div class:list={["inline-note-body", { clamp: long }]} data-ar set:html={markdownToSafeHtml(it.body)} />
-            {long && <label for={`inote-more-${kind}-${gi}-${i}`} class="inline-note-more">إظهار المزيد ↓</label>}
+            {long && <label for={`inote-more-${kind}-${gi}-${i}`} class="inline-note-more"></label>}
             {it.sourceHref && <a class="ann-source-link" href={it.sourceHref}>{it.sourceHrefText || `اقرأ في موضعه${it.sourceLabel ? `: ${it.sourceLabel}` : ""}`} ←</a>}
           </div>
         );

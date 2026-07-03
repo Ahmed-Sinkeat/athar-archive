@@ -72,6 +72,10 @@ const runtimeHeaders = {
   "X-Frame-Options": "DENY",
   "Referrer-Policy": "strict-origin-when-cross-origin",
   "Permissions-Policy": "geolocation=(), microphone=(), camera=()",
+  // Unique per build so the middleware's Cache API key changes on every deploy —
+  // otherwise a stale cached on-demand page keeps pointing at now-deleted
+  // /_astro/*.css files (hashed filenames) until it happens to be evicted.
+  "X-Build-Id": crypto.randomUUID(),
 };
 fs.writeFileSync(path.join(DIST, "_headers.json"), JSON.stringify(runtimeHeaders), "utf-8");
 console.log(`✓ wrote dist/_headers (+_headers.json) — CSP with ${hashes.size} inline-script hash(es)`);

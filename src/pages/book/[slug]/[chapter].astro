@@ -263,12 +263,12 @@ const finalContent = (() => {
 
         {isMatn("book", entry.data) ? (
           <>
-            <StudyBar downloadUrl={entry.data.attachments?.[0]?.url} readerToggles />
+            <StudyBar downloadUrl={entry.data.attachments?.[0]?.url} />
             <div class="u49fcd85 prose" data-matn={`${entry.id}--${chapter.slug}`} data-unit="فقرة" data-ar set:html={finalContent}></div>
           </>
         ) : (
           <>
-            <StudyBar downloadUrl={entry.data.attachments?.[0]?.url} readerToggles />
+            <StudyBar downloadUrl={entry.data.attachments?.[0]?.url} />
             <div class="u49fcd85 prose" data-ar set:html={finalContent}></div>
           </>
         )}
