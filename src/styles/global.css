@@ -419,7 +419,7 @@ summary::-webkit-details-marker { display: none; }
    hadith-genre book readers only — everything else keeps the maroon default */
 .hadith-accent .toc-box:not(.has-current) a:first-of-type,
 .hadith-accent .toc-box a.toc-current { border-inline-start-color: var(--green); }
-.hadith-accent .prevnext a.next { background: var(--green); border-color: var(--green); }
+.hadith-accent .prevnext a:hover { border-color: var(--green); }
 .hadith-accent .inline-note { border-inline-start-color: var(--green); }
 .hadith-accent .inline-note summary,
 .hadith-accent .inline-note-more,
@@ -745,9 +745,17 @@ textarea.cinput { resize: vertical; line-height: 1.7; }
 .notes-disclosure[open] > summary::after { content: "−"; }
 .benefit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
 .benefit-quote { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 16px 18px; font-family: var(--font-serif); font-size: calc(16.5px * var(--reading-scale)); line-height: 1.85; color: var(--ink); }
-.prevnext { display: flex; justify-content: space-between; gap: 12px; margin-top: 34px; flex-wrap: wrap; }
-.prevnext a { font-family: var(--font-ui); font-size: 13.5px; text-decoration: none; border: 1px solid var(--rule-strong); border-radius: 9px; padding: 11px 16px; background: var(--surface); color: var(--ink-soft); }
-.prevnext a.next { background: var(--accent-solid); border-color: var(--accent-solid); color: var(--onbrand); }
+/* prev/next — 2-col cards, kicker + Amiri title (mockup readers) */
+.prevnext { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 34px; }
+.prevnext a {
+  display: block; text-decoration: none; background: var(--card);
+  border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px;
+  color: var(--ink); transition: border-color .15s;
+}
+.prevnext a:hover { border-color: var(--brand); }
+.prevnext .pn-kicker { display: block; font-family: var(--f-ui); font-size: 10.5px; color: var(--ink3); margin-bottom: 4px; }
+.prevnext .pn-title { font-family: var(--f-disp); font-size: 15.5px; font-weight: 700; }
+.prevnext .pn-end { border: 1px dashed var(--line); border-radius: 10px; padding: 14px 16px; color: var(--ink3); font-size: 12px; display: flex; align-items: center; }
 
 /* lesson list / series progress */
 .bar { height: 6px; background: var(--paper-2); border-radius: 4px; margin-top: 16px; overflow: hidden; }
@@ -892,10 +900,19 @@ html.hide-vnums .vnum { display: none; }
   .browse4-grid { grid-template-columns: 1fr; }
 }
 
-/* -------- chapter navigation (book / poem chapter pages) -------- */
+/* -------- chapter navigation (book / poem chapter pages) --------
+   Mockup reader grid: TOC 232px on the inline-start (right in RTL), article
+   left — DOM keeps content first, so both children are placed explicitly. */
 .chap-outer { max-width: 960px; margin: 0 auto; padding-inline: 28px; }
-.chap-grid { display: grid; grid-template-columns: 1fr 210px; gap: 34px; align-items: start; }
-.chap-toc-aside { position: sticky; top: 80px; margin-top: 52px; }
+.chap-grid { display: grid; grid-template-columns: 232px 1fr; gap: 44px; align-items: start; }
+.chap-grid > .reading-pad { grid-column: 2; grid-row: 1; min-width: 0; }
+.chap-toc-aside { grid-column: 1; grid-row: 1; position: sticky; top: 80px; margin-top: 52px; }
+/* TOC as a quiet rail, not a boxed card: hairline on the content side,
+   active item = maroon 700 on its 2px rail (green on hadith books) */
+.chap-toc-aside { border-inline-end: 1px solid var(--line); padding-inline-end: 18px; }
+.chap-toc-aside .toc-box { border: none; background: none; border-radius: 0; padding: 0; }
+.chap-toc-aside .toc-box a.toc-current { color: var(--brand); font-weight: 700; }
+.hadith-accent .chap-toc-aside .toc-box a.toc-current { color: var(--green); }
 .chap-toc-aside .toc-box { max-height: 70vh; overflow-y: auto; }
 .chap-toc-aside .toc-label { font-family: var(--font-ui); font-size: 11.5px; letter-spacing: .1em; color: var(--ink-faint); margin-bottom: 8px; }
 /* mobile TOC disclosure — hidden on desktop, shown on mobile */
@@ -911,6 +928,7 @@ html.hide-vnums .vnum { display: none; }
 @media (max-width: 780px) {
   .chap-outer { padding-inline: 18px; }
   .chap-grid { grid-template-columns: 1fr; }
+  .chap-grid > .reading-pad { grid-column: 1; }
   .chap-toc-aside { display: none; }
   .chap-mobile-toc { display: block; }
 }
@@ -1035,9 +1053,10 @@ html.hide-vnums .vnum { display: none; }
 .ann-nav { font-family: var(--font-ui); font-size: 14px; background: none; border: none; cursor: pointer; color: var(--accent); padding: 4px 8px; }
 .ann-nav:disabled { color: var(--ink-soft); opacity: 0.5; cursor: default; }
 
-/* ---------- anchored tafsir panel (surah reader, HANDOFF §5) ----------
-   Same sheet machinery, mounted in #tafsir-panel-slot below the ayat instead of
-   floating over the mushaf. Desktop: in-flow card. Mobile: bottom sheet ≤70vh. */
+/* ---------- floating tafsir panel (surah reader) ----------
+   Same sheet machinery, gold-dressed, docked to the bottom of the viewport as a
+   floating sheet: reachable from any ayah on a long surah, and the ayat scroll
+   above it so it never covers the ayah being read. */
 .ann-sheet.ann-panel .ann-sheet-title { color: var(--gold); display: inline-flex; align-items: center; gap: 8px; font-size: 11.5px; font-weight: 600; letter-spacing: .1em; }
 .ann-sheet.ann-panel .ann-sheet-title::before { content: ""; width: 7px; height: 7px; background: var(--gold); transform: rotate(45deg); flex: none; }
 .ann-sheet-ayah { font-family: var(--f-quran); font-size: 16px; color: var(--ink2); min-width: 0; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin-inline: 10px; }
@@ -1045,22 +1064,15 @@ html.hide-vnums .vnum { display: none; }
 .ann-sheet.ann-panel .ann-tab[aria-pressed="true"] { color: var(--ink); border-bottom-color: var(--gold); }
 .ann-sheet.ann-panel .ann-chip[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--card); }
 .ann-sheet.ann-panel .ann-nav { color: var(--gold); }
-@media (min-width: 641px) {
-  .ann-sheet.ann-panel {
-    position: static; transform: none; opacity: 1; transition: none;
-    width: auto; max-width: 720px; margin: 36px auto 0; max-height: none; overflow: visible;
-    background: var(--card); border: 1px solid var(--line); border-radius: 10px;
-    padding: 20px 22px; box-shadow: none;
-  }
-  .ann-sheet.ann-panel.is-shown { transform: none; }
+.ann-sheet.ann-panel {
+  top: auto; left: 50%; right: auto; bottom: 0;
+  transform: translate(-50%, 10px); width: min(720px, 100vw); max-height: 55vh;
+  background: var(--card); border: 1px solid var(--line2); border-bottom: none;
+  border-radius: 14px 14px 0 0; padding: 18px 22px;
+  box-shadow: 0 -10px 34px rgba(26, 20, 16, 0.16);
 }
-@media (max-width: 640px) {
-  .ann-sheet.ann-panel {
-    top: auto; bottom: 0; left: 0; right: 0; width: 100vw; max-height: 70vh;
-    transform: translateY(8px); border-radius: 14px 14px 0 0; border-inline-start: 1px solid var(--rule-strong);
-  }
-  .ann-sheet.ann-panel.is-shown { transform: none; }
-}
+.ann-sheet.ann-panel.is-shown { transform: translate(-50%, 0); }
+@media (max-width: 640px) { .ann-sheet.ann-panel { max-height: 70vh; } }
 .ann-active-verse { background: color-mix(in srgb, var(--accent) 8%, transparent); border-radius: 8px; }
 .verse:has(> [data-ann-pack]) .verse-body { cursor: pointer; }
 .prose p.has-ann { cursor: pointer; border-inline-start: 2px solid color-mix(in srgb, var(--accent) 35%, transparent); padding-inline-start: 10px; }
@@ -1094,13 +1106,13 @@ html.hide-vnums .vnum { display: none; }
 .prose th { background: var(--paper-2); }
 
 /* --- token colors: آية ﴿﴾ · حديث «» · اقتباس "" (wrapped at build) --- */
-/* آيات ﴿﴾ → accent red; اقتباس "" → blue; حديث «» → warm amber */
-:root { --tok-ayah: #9a2f24; --tok-hadith: #8a5a20; --tok-quote: #2a5da6; --tok-paren: #3a6357; }
-html[data-theme="noir"]  { --tok-ayah: #e08888; --tok-hadith: #d6ac63; --tok-quote: #80aad8; --tok-paren: #6aaa8e; }
-.tok-ayah   { color: var(--tok-ayah); }
-.tok-hadith { color: var(--tok-hadith); }
-/* .tok-quote  { color: var(--tok-quote); } */
-.tok-paren  { color: var(--tok-paren); }
+/* One accent per source (HANDOFF §5): آيات gold in the Quran face, حديث green,
+   parenthetical variants quiet ink — no red quotes anywhere; body stays ink.
+   Tokens ride the theme palette automatically (gold/green re-map per theme). */
+.tok-ayah   { color: var(--gold); font-family: var(--f-quran); }
+.tok-hadith { color: var(--green); }
+/* .tok-quote stays ink */
+.tok-paren  { color: var(--ink2); }
 /* "[.....]" isnad-elision markers are all bidi-neutral characters (brackets,
    dots) with nothing strong-directional inside, so at the end of an RTL
    sentence the browser's bidi resolver can float them to the wrong visual

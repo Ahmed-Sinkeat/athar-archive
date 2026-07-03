@@ -45,16 +45,21 @@ const jsonLd = questionLd({
 // processor) so السؤال gets its own subordinate card and الجواب its section
 // head (HANDOFF §5 المسائل). Falls back to one prose block when absent.
 const html = markdownMasailToHtml(body);
-const aMatch = html.match(/<h2[^>]*>\s*(الجواب[\s\S]*?)<\/h2>/);
 let questionHtml: string | null = null;
 let answerHtml: string | null = null;
 let answerTitle = "الجواب";
-if (aMatch && aMatch.index !== undefined) {
-  answerTitle = aMatch[1].replace(/<[^>]+>/g, "").trim() || "الجواب";
-  answerHtml = html.slice(aMatch.index + aMatch[0].length);
-  const qPart = html.slice(0, aMatch.index);
-  const qMatch = qPart.match(/<h2[^>]*>\s*السؤال[\s\S]*?<\/h2>/);
-  questionHtml = (qMatch && qMatch.index !== undefined ? qPart.slice(qMatch.index + qMatch[0].length) : qPart).trim() || null;
+{
+  // question = the «السؤال» h2's content; answer = from the next h2 on,
+  // whatever it's titled («الجواب…», «مسألة: …», …)
+  const qMatch = html.match(/<h2[^>]*>\s*السؤال[\s\S]*?<\/h2>/);
+  const qEnd = qMatch && qMatch.index !== undefined ? qMatch.index + qMatch[0].length : -1;
+  const rest = qEnd >= 0 ? html.slice(qEnd) : html;
+  const aMatch = rest.match(/<h2[^>]*>([\s\S]*?)<\/h2>/);
+  if (aMatch && aMatch.index !== undefined && (qEnd >= 0 || /^\s*(الجواب|مسألة)/.test(aMatch[1].replace(/<[^>]+>/g, "")))) {
+    answerTitle = aMatch[1].replace(/<[^>]+>/g, "").trim() || "الجواب";
+    answerHtml = rest.slice(aMatch.index + aMatch[0].length);
+    questionHtml = (qEnd >= 0 ? rest.slice(0, aMatch.index) : html.slice(0, aMatch.index)).trim() || null;
+  }
 }
 ---
 <Base title={entry.data.title} activeNav="questions" ogType="article" jsonLd={jsonLd} searchMeta={{ title: entry.data.title, type: "question", person: personName, subjects }}>

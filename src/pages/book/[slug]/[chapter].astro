@@ -184,23 +184,36 @@ function renderFooter(pageNum: number): string {
 // the marker that starts the NEXT page, and after the last page's content.
 // The marker itself becomes a static "ص N" <div> (was <hr>, so ::before can
 // render its page-number content — <hr> pseudo-elements are unreliable).
+// Some imports (Muwatta) emit page markers out of order (90→91→90→91…): guard
+// with "once per page" sets or the same page's full footer — and a duplicate
+// id="pN" separator — would render again at every re-entry.
 const finalContent = (() => {
   const segments = footnoteRefsWired.split(/(<hr\s+[^>]*class="page-sep"[^>]*>)/);
   let out = "";
   let curPage = currentPageNum;
+  const footeredPages = new Set<number>();
+  const emittedSeps = new Set<string>();
+  const footerOnce = (p: number) => {
+    if (footeredPages.has(p)) return "";
+    footeredPages.add(p);
+    return renderFooter(p);
+  };
   for (let i = 0; i < segments.length; i++) {
     const isMarker = i % 2 === 1;
     if (isMarker) {
-      out += renderFooter(curPage);
+      out += footerOnce(curPage);
       const m = segments[i].match(/data-page="(\d+)"/);
       const page = m ? m[1] : String(curPage);
-      out += `<div class="page-sep" id="p${page}" data-page="${page}"></div>`;
+      if (!emittedSeps.has(page)) {
+        emittedSeps.add(page);
+        out += `<div class="page-sep" id="p${page}" data-page="${page}"></div>`;
+      }
       if (m) curPage = parseInt(m[1], 10);
     } else {
       out += segments[i];
     }
   }
-  out += renderFooter(curPage);
+  out += footerOnce(curPage);
   return out;
 })();
 ---
@@ -301,13 +314,21 @@ const finalContent = (() => {
           kindClass={HADITH_KIND_CLASS}
         />
 
-        <!-- prev / next navigation -->
-        <div class="prevnext">
-          {prev
-            ? <a href={hrefFor("book", entry.id, { chapter: prev.slug })}>→ {prev.title}</a>
-            : <span></span>}
-          {next && <a class="next" href={hrefFor("book", entry.id, { chapter: next.slug })}>{next.title} ←</a>}
-        </div>
+        <!-- prev / next navigation — 2-col cards (mockup) -->
+        <nav class="prevnext" aria-label="تنقل بين الفصول">
+          {next ? (
+            <a href={hrefFor("book", entry.id, { chapter: next.slug })}>
+              <span class="pn-kicker">التالي ←</span>
+              <span class="pn-title">{next.title}</span>
+            </a>
+          ) : <span class="pn-end">آخرُ فصول الكتاب</span>}
+          {prev ? (
+            <a href={hrefFor("book", entry.id, { chapter: prev.slug })}>
+              <span class="pn-kicker">→ السابق</span>
+              <span class="pn-title">{prev.title}</span>
+            </a>
+          ) : <span class="pn-end">أولُ فصول الكتاب</span>}
+        </nav>
       </div>
 
       <!-- sidebar TOC (hidden on mobile via CSS) -->

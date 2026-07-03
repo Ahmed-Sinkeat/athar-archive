@@ -53,9 +53,10 @@ const centuries = [...centuryBuckets.entries()]
     <h1 class="page-title">التراجم والأعلام</h1>
     <SectionSearch scope="person" placeholder="ابحث في الأعلام…" />
 
-    <div class="browse show-flat" data-browse>
+    <!-- century timeline is the primary view (mockup التراجم); flat sortable list behind the toggle -->
+    <div class="browse" data-browse>
       <div class="browse-toolbar">
-        <button type="button" class="btn browse-flat-toggle" data-flat-toggle>عرض مُجمَّع</button>
+        <button type="button" class="btn browse-flat-toggle" data-flat-toggle>عرض الكل</button>
       </div>
 
       <div class="browse-flat">

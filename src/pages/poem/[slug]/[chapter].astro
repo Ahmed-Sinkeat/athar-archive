@@ -76,13 +76,21 @@ const next = (allChapters as any[])[chIdx + 1] ?? null;
           ))}
         </div>
 
-        <!-- prev / next navigation -->
-        <div class="prevnext">
-          {prev
-            ? <a href={hrefFor("poem", entry.id, { chapter: prev.slug })}>→ {prev.title}</a>
-            : <span></span>}
-          {next && <a class="next" href={hrefFor("poem", entry.id, { chapter: next.slug })}>{next.title} ←</a>}
-        </div>
+        <!-- prev / next navigation — 2-col cards (mockup) -->
+        <nav class="prevnext" aria-label="تنقل بين الأجزاء">
+          {next ? (
+            <a href={hrefFor("poem", entry.id, { chapter: next.slug })}>
+              <span class="pn-kicker">التالي ←</span>
+              <span class="pn-title">{next.title}</span>
+            </a>
+          ) : <span class="pn-end">آخرُ الأجزاء</span>}
+          {prev ? (
+            <a href={hrefFor("poem", entry.id, { chapter: prev.slug })}>
+              <span class="pn-kicker">→ السابق</span>
+              <span class="pn-title">{prev.title}</span>
+            </a>
+          ) : <span class="pn-end">أولُ الأجزاء</span>}
+        </nav>
       </div>
 
       <!-- sidebar TOC (hidden on mobile) -->

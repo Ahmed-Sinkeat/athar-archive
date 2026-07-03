@@ -749,14 +749,7 @@ function enhanceProse() {
     selectKind(byKind, kinds[0], entryIndex);
     renderFoot(packId);
     sheet!.hidden = false;
-    requestAnimationFrame(() => {
-      sheet!.classList.add("is-shown");
-      // anchored panel sits below the ayat — bring it into view without
-      // scrolling the selected ayah off-screen (block: nearest)
-      if (sheet!.classList.contains("ann-panel") && window.matchMedia("(min-width: 641px)").matches) {
-        sheet!.scrollIntoView({ behavior: "smooth", block: "nearest" });
-      }
-    });
+    requestAnimationFrame(() => sheet!.classList.add("is-shown"));
   }
 
   function close() {
