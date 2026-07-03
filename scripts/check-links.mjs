@@ -89,7 +89,9 @@ const htmlFiles = files.filter((f) => f.endsWith(".html"));
 for (const f of htmlFiles) {
   const pageDir = toUrl(f).replace(/[^/]*$/, "") || "/";
   const selfIds = idsByPath.get(routeOf(f));
-  const html = readFileSync(f, "utf8");
+  // drop inline <script> bodies (JS template strings aren't links) but keep the
+  // opening tag so <script src=…> is still checked
+  const html = readFileSync(f, "utf8").replace(/(<script\b[^>]*>)[\s\S]*?(<\/script>)/gi, "$1$2");
 
   for (const m of html.matchAll(/\b(?:href|src)\s*=\s*["']([^"']+)["']/gi)) {
     const link = m[1].trim();
