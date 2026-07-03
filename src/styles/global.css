@@ -461,13 +461,21 @@ summary::-webkit-details-marker { display: none; }
   background: color-mix(in srgb, var(--copper) 12%, transparent);
 }
 @media (max-width: 640px) {
+  /* diwan.net-style mobile verse: centered stacked hemistichs, no side number
+     column crowding the line — closer to the printed-page feel of a دِيوان. */
+  .verse-inner { flex-direction: column; align-items: center; gap: 4px; }
+  .vnum { margin-top: 0; }
   .verse-body {
-    grid-template-columns: 1fr; gap: 6px;
-    max-width: 100%;
+    grid-template-columns: 1fr; gap: 4px;
+    max-width: 100%; text-align: center;
+  }
+  .sadr, .ajz {
+    text-align: center;
+    font-size: calc(19px * var(--reading-scale));
+    line-height: 2;
   }
   .ajz {
-    text-align: right;
-    padding-inline-start: 24px;
+    padding-inline-start: 0;
   }
   .verse-hemistich-rule {
     display: none;
@@ -541,20 +549,14 @@ html:not(.has-js) .ann-pack:target { display: block; margin-top: 8px; }
 .inline-note-body.clamp::after { content: ""; position: absolute; inset-inline: 0; bottom: 0; height: 48px; background: linear-gradient(transparent, var(--paper-2) 85%); pointer-events: none; }
 .inline-note-more-toggle:checked ~ .inline-note-body.clamp { max-height: none; }
 .inline-note-more-toggle:checked ~ .inline-note-body.clamp::after { display: none; }
+/* label stays clickable after expanding (was: hidden once checked, so there was
+   no way back to the clamped view) — text swaps via ::before instead. */
 .inline-note-more { display: block; font-family: var(--font-ui); font-size: 12px; color: var(--accent); cursor: pointer; padding: 4px 0 10px; }
-.inline-note-more-toggle:checked ~ .inline-note-more { display: none; }
+.inline-note-more::before { content: "إظهار المزيد ↓"; }
+.inline-note-more-toggle:checked ~ .inline-note-more::before { content: "إظهار أقل ↑"; }
 
 /* ---------- in-page toolbar ---------- */
 .studybar { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; margin: 16px 0 4px; padding: 10px 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
-/* book reader sticky sub-toolbar (HANDOFF §5: breadcrumbs sit above it, this
-   row carries the toggles + font stepper) */
-.studybar-sticky {
-  position: sticky; top: 58px; z-index: 30; margin: 0 0 20px; padding: 9px 0;
-  border-top: none; border-bottom: 1px solid var(--line);
-  background: color-mix(in srgb, var(--card) 92%, transparent); backdrop-filter: blur(8px);
-}
-.studybar-toggles { display: flex; gap: 8px; flex-wrap: wrap; }
-.studybar-font { display: flex; gap: 6px; }
 
 /* ---------- composer (/compose) ---------- */
 .compose-q { font-family: var(--font-ui); font-size: 14px; color: var(--ink-soft); margin: 6px 0 12px; }
@@ -1172,7 +1174,7 @@ html[data-theme="dark"] ::highlight(aa-find)    { background-color: rgba(255, 15
 html.pages-flow .page-sep { display: none; }
 
 /* --- printed-footer footnotes: one <aside> per page, right after its content --- */
-.page-footnotes { margin: 10px 0 24px; padding-top: 10px; border-top: 1px solid var(--rule); }
+.page-footnotes { margin: 10px 0 24px; padding: 10px 14px; border-top: 1px solid var(--rule); background: var(--paper-2); border-radius: 8px; }
 .page-footnotes ol { list-style: none; margin: 0; padding: 0; counter-reset: fn; }
 .page-footnotes li { counter-increment: fn; font-family: var(--font-ui); font-size: 12.5px; line-height: 1.8; color: var(--ink-soft); padding: 4px 0; }
 .page-footnotes li::before { content: counter(fn) ". "; color: var(--ink-faint); }

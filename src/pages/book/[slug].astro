@@ -145,7 +145,7 @@ const jsonLd = bookLd({
             ))}
           </nav>
         )}
-        <StudyBar downloadUrl={entry.data.attachments?.[0]?.url} readerToggles />
+        <StudyBar downloadUrl={entry.data.attachments?.[0]?.url} />
         <div class="u49fcd85" data-matn={entry.id} data-unit="فقرة"><Prose body={body ?? ""} /></div>
       </>
     ) : (
@@ -158,7 +158,7 @@ const jsonLd = bookLd({
             ))}
           </nav>
         )}
-        <StudyBar downloadUrl={entry.data.attachments?.[0]?.url} readerToggles />
+        <StudyBar downloadUrl={entry.data.attachments?.[0]?.url} />
         <div class="u49fcd85"><Prose body={body ?? ""} /></div>
       </>
     )}
