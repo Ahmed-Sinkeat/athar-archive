@@ -101,7 +101,7 @@ const jsonLd = personLd({
     {works.length > 0 && (
       <div class="ud34d921">
         <div class="section-label">من آثارِه في الأرشيف</div>
-        <a class="faint u6cb285c" href={`/search?person=${encodeURIComponent(entry.data.title)}&label=${encodeURIComponent(entry.data.title)}`}>ابحث في أرشيفه ←</a>
+        <a class="muted u6cb285c" href={`/search?person=${encodeURIComponent(entry.data.title)}&label=${encodeURIComponent(entry.data.title)}`}>ابحث في أرشيفه ←</a>
         <div class="card-grid">
           {works.map((w) => (
             <EntityCard
