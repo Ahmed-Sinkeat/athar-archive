@@ -17,7 +17,7 @@ export async function getStaticPaths() {
     const person = entry.data.person ? graph.getById("person", entry.data.person) : null;
     paths.push({
       params: { slug: entry.id },
-      props: { entry, body, personName: person?.data.title, personId: person?.id, subjects: subjectTitlesFor(entry.data.topics, graph) },
+      props: { entry, body, personName: person?.data.title as string | undefined, personId: person?.id, subjects: subjectTitlesFor(entry.data.topics, graph) },
     });
   }
   return paths;

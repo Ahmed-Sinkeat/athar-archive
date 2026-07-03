@@ -1,15 +1,33 @@
 ---
 // In-page toolbar for متن/prose readers: search-in-page + optional download.
+// readerToggles: book reader only — becomes the sticky sub-toolbar (HANDOFF §5)
+// with تشكيل/الحواشي/عرض الصفحات pills + font stepper; buttons reuse the same
+// data-toggle/data-action wiring as the header settings popover (reader.ts
+// updates every matching element, so both surfaces stay in sync for free).
 interface Props {
   downloadUrl?: string;
+  readerToggles?: boolean;
 }
-const { downloadUrl } = Astro.props;
+const { downloadUrl, readerToggles = false } = Astro.props;
 ---
-<div class="studybar" data-studybar>
+<div class:list={["studybar", { "studybar-sticky": readerToggles }]} data-studybar>
+  {readerToggles && (
+    <div class="studybar-toggles">
+      <button class="toggle-btn pop-toggle" data-toggle="tashkeel" data-action="toggle:tashkeel" aria-pressed="true"><span class="toggle-dot"></span>التشكيل</button>
+      <button class="toggle-btn pop-toggle" data-toggle="footnotes" data-action="toggle:footnotes" aria-pressed="true"><span class="toggle-dot"></span>الحواشي والتخريج</button>
+      <button class="toggle-btn pop-toggle" data-toggle="pages" data-action="toggle:pages" aria-pressed="true"><span class="toggle-dot"></span>عرض الصفحات</button>
+    </div>
+  )}
   <div class="studybar-tools" style="display: flex; gap: 12px; align-items: center;">
     <div class="inpage-search-box" style="display: flex; gap: 4px; align-items: center;">
       <input type="search" class="pop-search" data-inpage-search placeholder="بحث في الصفحة..." aria-label="بحث في الصفحة" style="width: 140px; padding: 4px 8px; border-radius: 6px; font-size: 13px;" />
     </div>
+    {readerToggles && (
+      <div class="studybar-font">
+        <button class="icon-btn" data-action="font:dec" aria-label="تصغير الخط">أ−</button>
+        <button class="icon-btn" data-action="font:inc" aria-label="تكبير الخط">أ+</button>
+      </div>
+    )}
     {downloadUrl && (
       <a href={downloadUrl} download class="icon-btn" aria-label="تحميل الملف" title="تحميل">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>

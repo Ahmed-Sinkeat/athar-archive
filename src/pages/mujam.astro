@@ -11,7 +11,7 @@ const terms = (await getCollection("term")).filter(isPub)
 ---
 <Base title="المعجم" description="معجمٌ لمصطلحات العلوم الإسلامية وتعريفاتها." activeNav="mujam">
   <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "المعجم" }]} />
-  <SectionSearch type="term" label="المعجم" />
+  <SectionSearch scope="term" placeholder="ابحث في المعجم…" />
   <div class="wrap-mid" style="padding-bottom: 80px;">
     {terms.length === 0 ? (
       <p class="faint" style="padding: 48px 0">لا توجد مصطلحات بعد — أضِفْ أوّلَ مصطلح من <a href="/compose">إدارة المحتوى</a>.</p>

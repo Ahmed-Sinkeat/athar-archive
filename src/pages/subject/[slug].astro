@@ -16,7 +16,7 @@ export async function getStaticPaths() {
     const materials = graph
       .materialsBySubject(entry.id)
       .filter(isPub)
-      .map((m) => ({ collection: m.collection, id: m.id, title: m.data.title, series: m.data.series }));
+      .map((m) => ({ collection: m.collection, id: m.id, title: m.data.title as string, series: m.data.series as string | undefined }));
     return { params: { slug: entry.id }, props: { entry, topics, materials } };
   });
 }
