@@ -29,5 +29,9 @@ import { collectionLd } from "../lib/structured-data";
      instead of letting it stretch to 4 across wrap-mid's width */
   .quran-cards { grid-template-columns: repeat(2, 1fr); max-width: 760px; margin-top: 2.5rem; }
   @media (max-width: 640px) { .quran-cards { grid-template-columns: 1fr; } }
+  /* القرآن → gold dress (HANDOFF §1: one accent per tradition) */
+  .quran-cards .card { border-top: 3px solid var(--gold); }
+  .quran-cards .card:hover { border-color: var(--gold-soft); border-top-color: var(--gold); }
+  .quran-cards .card-cta { color: var(--gold-text); }
 </style>
 
