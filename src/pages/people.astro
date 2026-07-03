@@ -27,6 +27,25 @@ const bestYear = (p: any): string => {
   if (eraIdx >= 0) return String(eraIdx * 200);
   return "";
 };
+
+// Century timeline (التراجم secondary view, HANDOFF §5): bucket by the same
+// death→birth→era-derived year used for "بالتاريخ" sort. People with no
+// derivable year at all fall into "غير مؤرَّخ" at the end.
+const centuryOf = (p: any): number | null => {
+  const y = parseYear(bestYear(p));
+  return y != null ? Math.ceil(y / 100) : null;
+};
+const centuryBuckets = new Map<number, typeof people>();
+const undated: typeof people = [];
+for (const p of people) {
+  const c = centuryOf(p);
+  if (c == null) { undated.push(p); continue; }
+  if (!centuryBuckets.has(c)) centuryBuckets.set(c, []);
+  centuryBuckets.get(c)!.push(p);
+}
+const centuries = [...centuryBuckets.entries()]
+  .sort((a, b) => a[0] - b[0])
+  .map(([n, ppl]) => ({ n, people: ppl.sort((a, b) => a.data.title.localeCompare(b.data.title, "ar")) }));
 ---
 <Base title="التراجم والأعلام" description="تراجمُ الناظمين والمصنِّفين والشُّرّاح، وما لكلٍّ منهم في الأرشيف." activeNav="people" jsonLd={collectionLd({ title: "التراجم والأعلام", path: "/people", crumbs: [{ name: "الرئيسية", path: "/" }, { name: "التراجم والأعلام", path: "/people" }] })}>
   <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "التراجم والأعلام" }]} />
@@ -34,35 +53,85 @@ const bestYear = (p: any): string => {
     <h1 class="page-title">التراجم والأعلام</h1>
     <SectionSearch scope="person" placeholder="ابحث في الأعلام…" />
 
-    <div class="sortable" data-sortable data-sort="title" data-dir="asc">
-      <div class="sort-controls">
-        <span class="faint sort-label">ترتيب:</span>
-        <button type="button" class="sort-btn" data-sort-key="title" aria-pressed="true">أبجديًّا</button>
-        <button type="button" class="sort-btn" data-sort-key="year" aria-pressed="false">بالتاريخ</button>
-        <button type="button" class="sort-btn" data-sort-key="works" aria-pressed="false">بالمصادر</button>
-        <button type="button" class="icon-btn sort-dir" data-sort-dir aria-label="عكس الترتيب" title="عكس الترتيب">↑</button>
+    <div class="browse show-flat" data-browse>
+      <div class="browse-toolbar">
+        <button type="button" class="btn browse-flat-toggle" data-flat-toggle>عرض مُجمَّع</button>
       </div>
-      <ol class="flat-list">
-        {people.map((p) => {
-          const works = worksOf(p.id);
-          return (
-            <li data-title={p.data.title} data-year={bestYear(p)} data-works={works}>
-              <a class="flat-row" href={hrefFor("person", p.id)}>
-                <span class="flat-row-main">
-                  <span class="flat-row-title">{p.data.title}</span>
-                  {(p.data.tabaqa || p.data.era) && (
-                    <span class="flat-row-sub">{p.data.tabaqa ?? p.data.era}</span>
-                  )}
-                </span>
-                <span class="flat-row-meta faint">
-                  {p.data.died ? `ت ${p.data.died}` : p.data.born ? `و ${p.data.born}` : ""}
-                </span>
-                <span class="flat-row-count">{toArabicDigits(works)} مصدر</span>
-              </a>
-            </li>
-          );
-        })}
-      </ol>
+
+      <div class="browse-flat">
+        <div class="sortable" data-sortable data-sort="title" data-dir="asc">
+          <div class="sort-controls">
+            <span class="faint sort-label">ترتيب:</span>
+            <button type="button" class="sort-btn" data-sort-key="title" aria-pressed="true">أبجديًّا</button>
+            <button type="button" class="sort-btn" data-sort-key="year" aria-pressed="false">بالتاريخ</button>
+            <button type="button" class="sort-btn" data-sort-key="works" aria-pressed="false">بالمصادر</button>
+            <button type="button" class="icon-btn sort-dir" data-sort-dir aria-label="عكس الترتيب" title="عكس الترتيب">↑</button>
+          </div>
+          <ol class="flat-list">
+            {people.map((p) => {
+              const works = worksOf(p.id);
+              return (
+                <li data-title={p.data.title} data-year={bestYear(p)} data-works={works}>
+                  <a class="flat-row" href={hrefFor("person", p.id)}>
+                    <span class="flat-row-main">
+                      <span class="flat-row-title">{p.data.title}</span>
+                      {(p.data.tabaqa || p.data.era) && (
+                        <span class="flat-row-sub">{p.data.tabaqa ?? p.data.era}</span>
+                      )}
+                    </span>
+                    <span class="flat-row-meta faint">
+                      {p.data.died ? `ت ${p.data.died}` : p.data.born ? `و ${p.data.born}` : ""}
+                    </span>
+                    <span class="flat-row-count">{toArabicDigits(works)} مصدر</span>
+                  </a>
+                </li>
+              );
+            })}
+          </ol>
+        </div>
+      </div>
+
+      <div class="century-timeline browse-grouped">
+        {centuries.map(({ n, people: ppl }) => (
+          <div class="century-node">
+            <div class="century-head">
+              <span class="century-dot" aria-hidden="true"></span>
+              <h2>القرن {toArabicDigits(n)}</h2>
+            </div>
+            <div class="century-people">
+              {ppl.map((p) => (
+                <a class="person-card" href={hrefFor("person", p.id)}>
+                  <div class="person-card-name">{p.data.title}</div>
+                  <div class="person-card-meta faint">
+                    {p.data.tabaqa ?? p.data.era ?? ""}
+                    {(p.data.died || p.data.born) && (p.data.tabaqa || p.data.era) ? " · " : ""}
+                    {p.data.died ? `ت ${p.data.died}` : p.data.born ? `و ${p.data.born}` : ""}
+                  </div>
+                  <span class="pill person-card-count">{toArabicDigits(worksOf(p.id))} مصدر</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        ))}
+
+        {undated.length > 0 && (
+          <div class="century-node">
+            <div class="century-head">
+              <span class="century-dot" aria-hidden="true"></span>
+              <h2>غير مؤرَّخ</h2>
+            </div>
+            <div class="century-people">
+              {undated.map((p) => (
+                <a class="person-card" href={hrefFor("person", p.id)}>
+                  <div class="person-card-name">{p.data.title}</div>
+                  <div class="person-card-meta faint">{p.data.tabaqa ?? p.data.era ?? ""}</div>
+                  <span class="pill person-card-count">{toArabicDigits(worksOf(p.id))} مصدر</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   </div>
 </Base>

@@ -16,11 +16,32 @@ const host = new URL(config.siteUrl).host;
 
     <div class="u7fc16fa">
       <div class="u6371093">
-        <input id="q" type="search" autocomplete="off" placeholder="ابحث…" class="u38ae86c" data-host={host} />
+        <input id="q" type="search" autocomplete="off" placeholder="ابحث…" class="u38ae86c search-input-matn" data-host={host} />
       </div>
+    </div>
+    <!-- hadith has no route of its own (hadith books live under /book/* like any
+         other book), so there's no honest inurl: filter for it — dropped rather
+         than shipping a scope chip that silently includes non-hadith books too. -->
+    <div class="search-scope-chips" role="group" aria-label="تحديد نطاق البحث">
+      <button type="button" class="search-scope-chip" data-scope="" aria-pressed="true">الكل</button>
+      <button type="button" class="search-scope-chip" data-scope="/quran" aria-pressed="false">القرآن</button>
+      <button type="button" class="search-scope-chip" data-scope="/book" aria-pressed="false">الكتب</button>
+      <button type="button" class="search-scope-chip" data-scope="/poem" aria-pressed="false">الشعر</button>
     </div>
     <div id="scope-note" class="faint u608848d" ></div>
     <div class="u86de7ac"><button id="go" class="btn btn-accent">بحث في Google ↗</button></div>
+
+    <style>
+      .search-input-matn { font-family: var(--f-matn); font-size: 20px; }
+      .search-scope-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+      .search-scope-chip {
+        font-family: var(--f-ui); font-size: 13px; color: var(--ink2); background: var(--card);
+        border: 1px solid var(--line); border-radius: 999px; padding: 6px 16px; cursor: pointer;
+        transition: border-color .15s, color .15s;
+      }
+      .search-scope-chip:hover { border-color: var(--brand); color: var(--brand); }
+      .search-scope-chip[aria-pressed="true"] { border-color: var(--brand); color: var(--brand); background: color-mix(in srgb, var(--brand) 8%, var(--card)); }
+    </style>
 
     <noscript>
       <p class="faint u2517a51" >للبحث فعِّلْ JavaScript، أو تصفّحْ عبر <a href="/books" class="ua805525">الكتب</a> و<a href="/poems" class="ua805525">المنظومات</a> و<a href="/subjects" class="ua805525">الموضوعات</a>.</p>
@@ -35,10 +56,18 @@ const host = new URL(config.siteUrl).host;
       const params = new URLSearchParams(location.search);
       const label = params.get("label"); // optional scope hint carried from a section/reader page
       if (label) document.getElementById("scope-note").textContent = `سياق: ${label}`;
+
+      let scope = "";
+      const chips = document.querySelectorAll(".search-scope-chip");
+      chips.forEach((chip) => chip.addEventListener("click", () => {
+        scope = chip.dataset.scope || "";
+        chips.forEach((c) => c.setAttribute("aria-pressed", String(c === chip)));
+      }));
+
       const go = () => {
         const terms = input.value.trim();
         if (!terms) return;
-        const q = "site:" + host + " " + (label ? label + " " : "") + terms;
+        const q = "site:" + host + " " + (scope ? "inurl:" + scope + " " : "") + (label ? label + " " : "") + terms;
         window.open("https://www.google.com/search?q=" + encodeURIComponent(q), "_blank", "noopener");
       };
       document.getElementById("go").addEventListener("click", go);

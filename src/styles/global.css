@@ -316,6 +316,29 @@ a.icon-btn { text-decoration: none; }
 .pill-link { text-decoration: none; cursor: pointer; }
 .pill-link:hover { background: var(--verdigris); color: var(--surface); }
 
+/* ---------- التراجم century timeline (HANDOFF §5) ---------- */
+.century-timeline {
+  display: grid; gap: 36px; margin-top: 8px;
+  border-inline-start: 1px solid var(--line2); padding-inline-start: 26px;
+}
+.century-node { position: relative; }
+.century-head { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+.century-dot {
+  position: absolute; inset-inline-start: -31px; top: 5px;
+  width: 9px; height: 9px; border-radius: 50%; background: var(--brand);
+}
+.century-head h2 { font-family: var(--f-disp); font-size: 21px; font-weight: 700; color: var(--brand); margin: 0; }
+.century-people { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+@media (max-width: 640px) { .century-people { grid-template-columns: 1fr; } }
+.person-card {
+  display: block; padding: 14px 16px; border: 1px solid var(--line); border-radius: 10px;
+  background: var(--card); text-decoration: none; transition: border-color .15s;
+}
+.person-card:hover { border-color: var(--brand); }
+.person-card-name { font-family: var(--f-disp); font-weight: 700; font-size: 16px; color: var(--ink); }
+.person-card-meta { font-size: 12.5px; margin-top: 4px; min-height: 1em; }
+.person-card-count { margin-top: 10px; }
+
 /* ---------- المسائل drill-down ---------- */
 .masail-tree { display: grid; gap: 10px; }
 .masail-subject { border: 1px solid var(--rule-strong); border-radius: 12px; background: var(--surface); overflow: hidden; }
