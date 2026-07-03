@@ -50,10 +50,14 @@ for (const e of graph.all) {
   }
 }
 
-// counts + legend/filter chips (color must mirror scripts/graph.ts COLORS)
+// counts + legend/filter chips (token mapping must mirror scripts/graph.ts TOKEN_OF;
+// CSS vars keep the legend theme-aware for free)
 const COLORS: Record<string, string> = {
-  book: "#9c3b32", poem: "#9c3b32", benefit: "#c06a2c", person: "#2f6f6a",
-  series: "#b07b00", subject: "#5a4632", topic: "#7a8a52", article: "#3f7d6e", question: "#8a8275",
+  book: "var(--brand)", question: "var(--brand)", series: "var(--brand2)",
+  poem: "var(--copper)", article: "var(--copper)",
+  person: "var(--green)",
+  topic: "var(--gold)", benefit: "var(--gold)",
+  subject: "var(--ink2)",
 };
 const LABELS: Record<string, string> = {
   book: "الكتب", poem: "الشعر", person: "الأعلام", series: "السلاسل",

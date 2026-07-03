@@ -800,6 +800,12 @@ html[data-theme="noir"] .hero-calligraphy-img {
 .section-head h2 { margin: 0; font-family: var(--f-disp); font-size: 22px; font-weight: 700; color: var(--ink); }
 .section-head .rule-fill { flex: 1; height: 1px; background: var(--line); }
 .section-head .section-link { font-family: var(--f-ui); font-size: 12.5px; font-weight: 600; color: var(--brand); text-decoration: none; }
+.section-head .section-count { font-family: var(--f-ui); font-size: 12px; color: var(--ink3); }
+/* hub section-head accent variants (one dress per tradition, HANDOFF §1) */
+.section-head.green h2 { color: var(--green); }
+.section-head.copper h2 { color: var(--copper); }
+.hub-lede { margin: 0 0 4px; font-size: 13.5px; color: var(--ink2); }
+.hub-section { margin-bottom: 38px; }
 
 /* browse: the four traditions, each with its own dress */
 .browse4-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
@@ -859,6 +865,12 @@ html[data-theme="noir"] .hero-calligraphy-img {
   border-radius: 5px; padding: 3px 0;
 }
 .type-badge.accent { color: var(--brand); border-color: color-mix(in srgb, var(--brand) 30%, transparent); }
+.type-badge.green.accent { color: var(--green); border-color: color-mix(in srgb, var(--green) 35%, transparent); }
+/* list-row helpers shared by the hub pages */
+.row-author { font-size: 12.5px; flex: none; }
+.hub-section .latest-name { flex: none; } /* spacer, not the title, absorbs the slack */
+.row-spacer { flex: 1; }
+.row-meta { font-family: var(--f-ui); font-size: 11.5px; color: var(--ink3); flex: none; }
 
 /* ---------- reading-pref state (set on <html>) ---------- */
 html.hide-vnums .vnum { display: none; }
@@ -1022,6 +1034,33 @@ html.hide-vnums .vnum { display: none; }
 .ann-sheet-foot { display: flex; justify-content: space-between; margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--rule-strong); }
 .ann-nav { font-family: var(--font-ui); font-size: 14px; background: none; border: none; cursor: pointer; color: var(--accent); padding: 4px 8px; }
 .ann-nav:disabled { color: var(--ink-soft); opacity: 0.5; cursor: default; }
+
+/* ---------- anchored tafsir panel (surah reader, HANDOFF §5) ----------
+   Same sheet machinery, mounted in #tafsir-panel-slot below the ayat instead of
+   floating over the mushaf. Desktop: in-flow card. Mobile: bottom sheet ≤70vh. */
+.ann-sheet.ann-panel .ann-sheet-title { color: var(--gold); display: inline-flex; align-items: center; gap: 8px; font-size: 11.5px; font-weight: 600; letter-spacing: .1em; }
+.ann-sheet.ann-panel .ann-sheet-title::before { content: ""; width: 7px; height: 7px; background: var(--gold); transform: rotate(45deg); flex: none; }
+.ann-sheet-ayah { font-family: var(--f-quran); font-size: 16px; color: var(--ink2); min-width: 0; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin-inline: 10px; }
+.ann-sheet-ayah[hidden] { display: none; }
+.ann-sheet.ann-panel .ann-tab[aria-pressed="true"] { color: var(--ink); border-bottom-color: var(--gold); }
+.ann-sheet.ann-panel .ann-chip[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--card); }
+.ann-sheet.ann-panel .ann-nav { color: var(--gold); }
+@media (min-width: 641px) {
+  .ann-sheet.ann-panel {
+    position: static; transform: none; opacity: 1; transition: none;
+    width: auto; max-width: 720px; margin: 36px auto 0; max-height: none; overflow: visible;
+    background: var(--card); border: 1px solid var(--line); border-radius: 10px;
+    padding: 20px 22px; box-shadow: none;
+  }
+  .ann-sheet.ann-panel.is-shown { transform: none; }
+}
+@media (max-width: 640px) {
+  .ann-sheet.ann-panel {
+    top: auto; bottom: 0; left: 0; right: 0; width: 100vw; max-height: 70vh;
+    transform: translateY(8px); border-radius: 14px 14px 0 0; border-inline-start: 1px solid var(--rule-strong);
+  }
+  .ann-sheet.ann-panel.is-shown { transform: none; }
+}
 .ann-active-verse { background: color-mix(in srgb, var(--accent) 8%, transparent); border-radius: 8px; }
 .verse:has(> [data-ann-pack]) .verse-body { cursor: pointer; }
 .prose p.has-ann { cursor: pointer; border-inline-start: 2px solid color-mix(in srgb, var(--accent) 35%, transparent); padding-inline-start: 10px; }
