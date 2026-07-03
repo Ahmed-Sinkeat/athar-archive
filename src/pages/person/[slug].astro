@@ -17,7 +17,7 @@ export async function getStaticPaths() {
     const works = graph
       .materialsByPerson(entry.id)
       .filter(isPub)
-      .map((w) => ({ collection: w.collection, id: w.id, title: w.data.title, series: w.data.series, kind: labelFor(w.collection, w.data), audio: graph.audioForSource(w.collection, w.id).length > 0 }));
+      .map((w) => ({ collection: w.collection, id: w.id, title: w.data.title as string, series: w.data.series as string | undefined, kind: labelFor(w.collection, w.data), audio: graph.audioForSource(w.collection, w.id).length > 0 }));
     // works are shown above; the panel surfaces only the rest (mentions, etc.)
     const backlinks = backlinksList(entry, graph, names).filter((b) => b.relation !== "من مؤلَّفاته");
 

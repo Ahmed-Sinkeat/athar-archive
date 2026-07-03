@@ -18,7 +18,18 @@ export async function getStaticPaths() {
     const audioEntry = entry.data.audio ? graph.getById("audio", entry.data.audio) : null;
     paths.push({
       params: { slug: entry.id },
-      props: { entry, body, author: person?.data.title, subjects: subjectTitlesFor(entry.data.topics, graph), audio: audioEntry ? { url: audioEntry.data.url, format: audioEntry.data.format, duration: audioEntry.data.duration ?? null, sizeBytes: audioEntry.data.size_bytes ?? null } : null },
+      props: {
+        entry, body, author: person?.data.title as string | undefined,
+        subjects: subjectTitlesFor(entry.data.topics, graph),
+        audio: audioEntry
+          ? {
+              url: audioEntry.data.url as string,
+              format: audioEntry.data.format as "opus" | "mp3" | undefined,
+              duration: (audioEntry.data.duration as string | null) ?? null,
+              sizeBytes: (audioEntry.data.size_bytes as number | null) ?? null,
+            }
+          : null,
+      },
     });
   }
   return paths;

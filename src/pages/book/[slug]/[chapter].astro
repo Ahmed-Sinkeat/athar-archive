@@ -219,6 +219,7 @@ const finalContent = (() => {
       <div class="reading-pad">
         <div class="reader-head">
           <div class="eyebrow u87c136d"><a class="faint" href={hrefFor("book", entry.id)}>{entry.data.title}</a></div>
+          <div class="ornament" aria-hidden="true">۞</div>
           <h1
             class:list={["reader-title", "ue7e55f7"]}
             set:html={chapterMeta.parentTitle ?? (chapter.rawTitle || chapter.title)}
@@ -261,12 +262,12 @@ const finalContent = (() => {
 
         {isMatn("book", entry.data) ? (
           <>
-            <StudyBar downloadUrl={entry.data.attachments?.[0]?.url} />
+            <StudyBar downloadUrl={entry.data.attachments?.[0]?.url} readerToggles />
             <div class="u49fcd85 prose" data-matn={`${entry.id}--${chapter.slug}`} data-unit="فقرة" data-ar set:html={finalContent}></div>
           </>
         ) : (
           <>
-            <StudyBar downloadUrl={entry.data.attachments?.[0]?.url} />
+            <StudyBar downloadUrl={entry.data.attachments?.[0]?.url} readerToggles />
             <div class="u49fcd85 prose" data-ar set:html={finalContent}></div>
           </>
         )}

@@ -26,7 +26,13 @@ export async function getStaticPaths() {
     const byAnchor = notesByAnchor("book", entry.id, graph, names);
     const audios = graph.audioForSource("book", entry.id)
       .filter((x) => x.data.status === "published")
-      .map((au) => ({ url: au.data.url, format: au.data.format, duration: au.data.duration ?? null, sizeBytes: au.data.size_bytes ?? null, label: au.data.title }));
+      .map((au) => ({
+        url: au.data.url as string,
+        format: au.data.format as "opus" | "mp3" | undefined,
+        duration: (au.data.duration as string | null) ?? null,
+        sizeBytes: (au.data.size_bytes as number | null) ?? null,
+        label: au.data.title as string,
+      }));
     const commentaries = graph.commentariesOf(entry.id)
       .filter(isPub)
       .map(c => ({ href: hrefFor("book", c.id), title: c.data.title, author: c.data.person ? names.get(c.data.person as string) : "" }));
@@ -84,6 +90,7 @@ const jsonLd = bookLd({
   <div class="wrap-matn reading-pad">
     <div class="reader-head">
       <a class="eyebrow u87c136d pill-link" href={isMatn("book", entry.data) ? "/matn" : "/books"}>{topicLabel}</a>
+      <div class="ornament" aria-hidden="true">۞</div>
       <h1 class="reader-title ue7e55f7" >{entry.data.title}</h1>
       <div class="reader-byline">{author}</div>
       {origin && (
@@ -137,7 +144,7 @@ const jsonLd = bookLd({
             ))}
           </nav>
         )}
-        <StudyBar downloadUrl={entry.data.attachments?.[0]?.url} />
+        <StudyBar downloadUrl={entry.data.attachments?.[0]?.url} readerToggles />
         <div class="u49fcd85" data-matn={entry.id} data-unit="فقرة"><Prose body={body ?? ""} /></div>
       </>
     ) : (
@@ -150,7 +157,7 @@ const jsonLd = bookLd({
             ))}
           </nav>
         )}
-        <StudyBar downloadUrl={entry.data.attachments?.[0]?.url} />
+        <StudyBar downloadUrl={entry.data.attachments?.[0]?.url} readerToggles />
         <div class="u49fcd85"><Prose body={body ?? ""} /></div>
       </>
     )}

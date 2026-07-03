@@ -4,7 +4,7 @@
 import EntityCard from "./EntityCard.astro";
 import SortableList from "./SortableList.astro";
 import { toArabicDigits } from "../lib/display";
-import type { SubjectGroup } from "../lib/browse";
+import type { SubjectGroup, TopicGroup } from "../lib/browse";
 import type { ContentEntry } from "../lib/types";
 
 interface Props {
@@ -77,21 +77,21 @@ const kindOptions = [...new Set(
   </div>
   <div class="browse-flat"><SortableList items={allItems} card={card} /></div>
   <div class="masail-tree browse-grouped">
-  {groups.map((g) => (
+  {groups.map((g: SubjectGroup) => (
     <details class="masail-subject">
       <summary>
         <span class="masail-subject-name">{g.title}</span>
         <span class="faint masail-count">{count(g.count)}</span>
       </summary>
       <div class="masail-topics">
-        {g.topics.map((t) => (
+        {g.topics.map((t: TopicGroup) => (
           <details class="masail-topic">
             <summary>
               <span>{t.title}</span>
               <span class="faint masail-count">{toArabicDigits(t.items.length)}</span>
             </summary>
             <div class="card-grid browse-cards">
-              {t.items.map((it) => <EntityCard {...card(it)} />)}
+              {t.items.map((it: ContentEntry) => <EntityCard {...card(it)} />)}
             </div>
           </details>
         ))}
@@ -106,7 +106,7 @@ const kindOptions = [...new Set(
         <span class="faint masail-count">{toArabicDigits(uncategorized.length)}</span>
       </summary>
       <div class="card-grid browse-cards">
-        {uncategorized.map((it) => <EntityCard {...card(it)} />)}
+        {uncategorized.map((it: ContentEntry) => <EntityCard {...card(it)} />)}
       </div>
     </details>
   )}

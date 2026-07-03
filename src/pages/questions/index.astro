@@ -69,7 +69,7 @@ const topicsForFilter = [...topicMap.entries()]
                     >
                       <a href={hrefFor("question", it.id)}>
                         <span>{it.data.title}</span>
-                        {it.data.person && <span class="faint"> · {names.get(it.data.person)}</span>}
+                        {it.data.person && <span class="faint"> · {names.get(it.data.person as string)}</span>}
                       </a>
                     </li>
                   ))}
