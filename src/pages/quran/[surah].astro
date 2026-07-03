@@ -123,23 +123,28 @@ const processedParagraphs = paragraphs.map((para, idx) => {
   ]} />
 
   <div class="wrap-matn reading-pad" dir="rtl">
-    <div class="reader-head">
-      <a class="eyebrow pill-link" href="/quran/mushaf">المصحف الشريف</a>
-      <h1 class="reader-title">{surahTitle}</h1>
-      <div class="reader-byline faint">{data.ayah_count} آية</div>
+    <div class="plate-outer surah-plate">
+      <div class="plate-inner surah-plate-inner">
+        <div class="reader-head">
+          <a class="eyebrow pill-link" href="/quran/mushaf">المصحف الشريف</a>
+          <div class="ornament" aria-hidden="true">۞</div>
+          <h1 class="reader-title surah-title">{surahTitle}</h1>
+          <div class="reader-byline faint">{data.ayah_count} آية</div>
+        </div>
+      </div>
     </div>
 
     <div class="ayah-list">
       {processedParagraphs.map((para) => {
         return (
-          <div class="ayah" id={para.id} data-anchor={para.id}>
+          <span class="ayah verse" id={para.id} data-anchor={para.id}>
+            <span class="ayah-text" set:html={markdownToSafeHtml(para.text)} />
             {para.tafsirPackId ? (
               <button type="button" class="ayah-num ayah-num-btn ann-mark" data-ann={para.tafsirPackId} data-ann-src={`/tafsir-frag/${data.number}/${para.id}.html`} aria-haspopup="dialog" aria-label={`تفسير الآية ${para.id}`}>{para.id}</button>
             ) : (
               <span class="ayah-num">{para.id}</span>
             )}
-            <span class="ayah-text" set:html={markdownToSafeHtml(para.text)} />
-          </div>
+          </span>
         );
       })}
     </div>
@@ -150,43 +155,47 @@ const processedParagraphs = paragraphs.map((para, idx) => {
 
 <style>
   :global(.page-sep) { display: flex !important; }
-  .ayah-list { direction: rtl; margin-block: 2rem; }
-  .ayah {
-    display: grid;
-    grid-template-columns: 2rem 1fr;
-    gap: 0.25rem 0.75rem;
-    padding-block: 1rem;
-    border-block-end: 1px solid var(--rule);
-    align-items: baseline;
+
+  /* gold double-border plate (HANDOFF §4: manuscript plate, Quran variant) */
+  .surah-plate { border-color: var(--gold-soft); margin-block-end: 8px; }
+  .surah-plate-inner { padding: 20px 24px 26px; }
+  .surah-plate .reader-head { margin: 0; }
+  .surah-title { font-size: clamp(28px, 5vw, 34px); }
+
+  /* continuous centered ayah block — NOT one-per-line (HANDOFF §5) */
+  .ayah-list {
+    direction: rtl; margin-block: 2rem; text-align: center; text-wrap: pretty;
+    font-family: var(--font-quran); font-size: 1.4rem; line-height: 2.5; color: var(--ink);
   }
+  .ayah { display: inline; }
+  .ayah-text { display: inline; }
+  /* markdownToSafeHtml wraps prose in <p> — force inline so ayat flow as one
+     continuous block instead of breaking a line per ayah */
+  .ayah-text :global(p) { display: inline; margin: 0; }
+  .ayah.verse.ann-active-verse {
+    background: color-mix(in srgb, var(--gold) 14%, transparent);
+    outline: 1px solid color-mix(in srgb, var(--gold) 45%, transparent);
+    border-radius: 6px;
+  }
+
+  /* gold circled ayah number, trailing the ayah text */
   .ayah-num {
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    color: var(--gold);
-    text-align: center;
-    padding-block-start: 0.25rem;
+    display: inline-block; width: 20px; height: 20px; line-height: 18px; text-align: center;
+    margin-inline: 3px; border: 1px solid var(--gold); border-radius: 50%;
+    font-family: var(--font-ui); font-size: 10px; color: var(--gold-text);
+    vertical-align: middle;
   }
   .ayah-num-btn {
-    border: 0;
+    border: 1px solid var(--gold);
     background: transparent;
     cursor: pointer;
-    border-radius: 999px;
-    padding: 0.25rem;
   }
   .ayah-num-btn:hover,
   .ayah-num-btn:focus-visible {
-    background: color-mix(in srgb, var(--gold) 12%, transparent);
-    outline: 1px solid color-mix(in srgb, var(--gold) 45%, transparent);
+    background: color-mix(in srgb, var(--gold) 18%, transparent);
   }
-  /* Scheherazade New — designed specifically for Quranic text.
-     Larger x-height than Amiri; 1.4rem renders similar optical size. */
-  .ayah-text {
-    font-family: var(--font-quran);
-    font-size: 1.4rem;
-    line-height: 2.2;
-    color: var(--ink);
-  }
-  .ayah-notes { grid-column: 2; margin-block-start: 0.5rem; }
+
+  .ayah-notes { margin-block-start: 0.5rem; }
   .ayah-note {
     display: flex;
     gap: 0.5rem;
