@@ -600,7 +600,7 @@ function enhanceProse() {
   const toAr = (n: number) => String(n).replace(/[0-9]/g, (d) => "٠١٢٣٤٥٦٧٨٩"[+d]);
 
   let sheet: HTMLElement | null = null;
-  let titleEl!: HTMLElement, tabsEl!: HTMLElement, chipsEl!: HTMLElement, bodyEl!: HTMLElement, footEl!: HTMLElement;
+  let titleEl!: HTMLElement, ayahEl!: HTMLElement, tabsEl!: HTMLElement, chipsEl!: HTMLElement, bodyEl!: HTMLElement, footEl!: HTMLElement;
   let activeVerse: HTMLElement | null = null;
 
   function build(): HTMLElement {
@@ -613,16 +613,23 @@ function enhanceProse() {
     head.className = "ann-sheet-head";
     titleEl = document.createElement("span");
     titleEl.className = "ann-sheet-title";
+    ayahEl = document.createElement("span");
+    ayahEl.className = "ann-sheet-ayah"; ayahEl.hidden = true; ayahEl.setAttribute("data-ar", "");
     const x = document.createElement("button");
     x.type = "button"; x.className = "ann-sheet-close"; x.setAttribute("aria-label", "إغلاق"); x.textContent = "×";
     x.addEventListener("click", close);
-    head.append(titleEl, x);
+    head.append(titleEl, ayahEl, x);
     tabsEl = document.createElement("div"); tabsEl.className = "ann-sheet-tabs";
     chipsEl = document.createElement("div"); chipsEl.className = "ann-sheet-chips";
     bodyEl = document.createElement("div"); bodyEl.className = "ann-sheet-body"; bodyEl.setAttribute("data-ar", "");
     footEl = document.createElement("div"); footEl.className = "ann-sheet-foot";
     sheet.append(head, tabsEl, chipsEl, bodyEl, footEl);
-    document.body.appendChild(sheet);
+    // Surah pages provide an anchor slot below the ayat: the sheet mounts there
+    // as an anchored panel instead of a modal over the mushaf (the modal hid the
+    // very text being explained — HANDOFF §5 tafsir panel). Elsewhere: modal.
+    const slot = document.getElementById("tafsir-panel-slot");
+    if (slot) { sheet.classList.add("ann-panel"); slot.appendChild(sheet); }
+    else document.body.appendChild(sheet);
     return sheet;
   }
 
@@ -715,6 +722,12 @@ function enhanceProse() {
     activeVerse?.classList.add("ann-active-verse");
 
     titleEl.textContent = anchorLabel(pack);
+    // anchored panel head shows the selected ayah itself, single line + ellipsis
+    const ayahText = sheet!.classList.contains("ann-panel")
+      ? activeVerse?.querySelector(".ayah-text")?.textContent?.trim()
+      : undefined;
+    ayahEl.hidden = !ayahText;
+    ayahEl.textContent = ayahText ? `﴿ ${ayahText} ﴾` : "";
     const byKind = entriesByKind(pack);
     const kinds = [...byKind.keys()].sort((a, b) => {
       const ia = KIND_ORDER.indexOf(a), ib = KIND_ORDER.indexOf(b);
@@ -731,7 +744,14 @@ function enhanceProse() {
     selectKind(byKind, kinds[0], entryIndex);
     renderFoot(packId);
     sheet!.hidden = false;
-    requestAnimationFrame(() => sheet!.classList.add("is-shown"));
+    requestAnimationFrame(() => {
+      sheet!.classList.add("is-shown");
+      // anchored panel sits below the ayat — bring it into view without
+      // scrolling the selected ayah off-screen (block: nearest)
+      if (sheet!.classList.contains("ann-panel") && window.matchMedia("(min-width: 641px)").matches) {
+        sheet!.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }
+    });
   }
 
   function close() {
@@ -769,7 +789,9 @@ function enhanceProse() {
     // tapping a verse that carries notes opens its sheet
     const pack = t.closest<HTMLElement>(".verse")?.querySelector<HTMLElement>("[data-ann-pack]");
     if (pack && !t.closest("a, button")) { openSheet(pack.id); return; }
-    if (sheet && !sheet.hidden) close(); // outside click
+    // anchored panel is part of the page flow — outside clicks shouldn't dismiss
+    // it (✕ and Escape still do); the floating modal keeps outside-click close
+    if (sheet && !sheet.hidden && !sheet.classList.contains("ann-panel")) close();
   });
   function setup() {
     // Clean up any stale sheets in the DOM (e.g. from cached pages)

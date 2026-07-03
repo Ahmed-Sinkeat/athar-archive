@@ -1,63 +1,120 @@
 ---
 import Base from "../layouts/Base.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
-import BrowseGroups from "../components/BrowseGroups.astro";
 import { personNameMap, loadGraph } from "../lib/site";
-import { hrefFor, labelFor } from "../lib/display";
-import { buildSubjectGroups } from "../lib/browse";
+import { hrefFor, labelFor, toArabicDigits } from "../lib/display";
 import { collectionLd } from "../lib/structured-data";
 import { getCollection } from "astro:content";
+import hadithIndex from "../data/hadith-index.json";
 
 const graph = await loadGraph();
 const names = await personNameMap();
-const { groups, uncategorized } = buildSubjectGroups("book", graph, (e) => (e.data as any).genre === "حديث");
 
-const hadithBooks = (await getCollection("book")).filter(b => (b.data as any).genre === "حديث" && (b.data as any).status !== "draft");
-const categoryCounts: Record<string, number> = {};
-for (const b of hadithBooks) {
-  const cat = (b.data as any).hadith_category;
-  if (cat) categoryCounts[cat] = (categoryCounts[cat] ?? 0) + 1;
-}
-const catOrder = ["امهات الكتب", "كتب الآثار", "أجزاء حديثية", "تخريج", "علل", "عام"];
-const cats = catOrder.filter((c) => categoryCounts[c]);
+const hadithBooks = (await getCollection("book")).filter(
+  (b) => (b.data as any).genre === "حديث" && b.data.status === "published"
+);
 
-// Grading facet: count تخريج annotations that carry a grade
-const allAnnotations = await getCollection("annotation");
-const gradeCounts: Record<string, number> = {};
-for (const ann of allAnnotations) {
-  if ((ann.data as any).kind === "تخريج" && (ann.data as any).grade) {
-    const g = (ann.data as any).grade as string;
-    gradeCounts[g] = (gradeCounts[g] ?? 0) + 1;
-  }
+// hadith count per matn: index keys are `slug:N`
+const hadithCounts: Record<string, number> = {};
+for (const key of Object.keys(hadithIndex as Record<string, unknown>)) {
+  const slug = key.slice(0, key.lastIndexOf(":"));
+  hadithCounts[slug] = (hadithCounts[slug] ?? 0) + 1;
 }
-const gradeOrder = ["صحيح", "حسن", "ضعيف", "موضوع"];
-const grades = gradeOrder.filter((g) => gradeCounts[g]);
-const has = groups.length > 0 || uncategorized.length > 0;
-const card = (it: any) => ({
-  href: hrefFor("book", it.id),
-  title: it.data.title,
-  kind: labelFor("book", it.data),
-  audio: graph.audioForSource("book", it.id).length > 0,
-  sub: it.data.person ? names.get(it.data.person) ?? "" : "",
-  cta: "ادخل القراءة ←",
-});
+const sharhCountLabel = (n: number) =>
+  n === 1 ? "شرحٌ واحد" : n === 2 ? "شرحان" : n >= 3 && n <= 10 ? `${toArabicDigits(n)} شروح` : `${toArabicDigits(n)} شرحًا`;
+
+const row = (b: any) => {
+  const kind = labelFor("book", b.data);
+  const meta: string[] = [];
+  if (hadithCounts[b.id]) meta.push(`${toArabicDigits(hadithCounts[b.id])} حديثًا`);
+  const sharhs = graph.commentariesOf(b.id).length;
+  if (sharhs) meta.push(sharhCountLabel(sharhs));
+  return {
+    href: hrefFor("book", b.id),
+    kind,
+    accent: kind === "متن" || kind === "مصدر أصلي",
+    title: b.data.title as string,
+    author: b.data.person ? names.get(b.data.person) ?? "" : "",
+    meta: meta.join(" · "),
+  };
+};
+
+// sections per mockup: المتون / المصادر الأصلية / الشروح (+ بقية الكتب)
+const byKind = (k: string) => hadithBooks.filter((b) => labelFor("book", b.data) === k).map(row);
+const sections = [
+  { title: "المتون", items: byKind("متن") },
+  { title: "المصادر الأصلية", items: byKind("مصدر أصلي") },
+  { title: "الشروح", items: byKind("شرح") },
+  {
+    title: "كتبٌ أخرى",
+    items: hadithBooks.filter((b) => !["متن", "مصدر أصلي", "شرح"].includes(labelFor("book", b.data))).map(row),
+  },
+].filter((s) => s.items.length > 0);
+
+// حديث الأسبوع — same weekly rotation as the home page
+const highlights = (await getCollection("highlight")).filter(
+  (h) => h.data.status === "published" && h.data.kind === "حديث"
+);
+const wk = Math.floor(Date.now() / 6.048e8);
+const featured = highlights.length ? highlights[wk % highlights.length] : null;
+const featuredSrc =
+  featured?.data.source_type && featured?.data.source_id
+    ? hrefFor(featured.data.source_type as string, featured.data.source_id as string)
+    : null;
 ---
-<Base title="الحديث" description="متونُ الحديثِ وتخاريجُه وعلَلُه." activeNav="hadith" jsonLd={collectionLd({ title: "الحديث", path: "/hadith", crumbs: [{ name: "الرئيسية", path: "/" }, { name: "الحديث", path: "/hadith" }] })}>
+<Base title="الحديث" description="متونُ الحديثِ بأسانيدِها وتخاريجِها وعلَلِها، مع شروحِ الأئمة." activeNav="hadith" jsonLd={collectionLd({ title: "الحديث", path: "/hadith", crumbs: [{ name: "الرئيسية", path: "/" }, { name: "الحديث", path: "/hadith" }] })}>
   <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "الحديث" }]} />
   <div class="wrap-mid uf5db21c">
-    <h1 class="page-title">الحديث</h1>
-    {grades.length > 0 && (
-      <div class="grade-facet">
-        {grades.map((g) => <span class={`grade grade-${g}`}>{g} ({gradeCounts[g]})</span>)}
+    <h1 class="page-title">الحديث وعلومُه</h1>
+    <p class="hub-lede">متونُ الحديثِ بأسانيدِها وتخاريجِها وعلَلِها، مع شروحِ الأئمة.</p>
+
+    {featured && (
+      <div class="hadith-featured">
+        <div class="weekly-kicker k-green">حديثُ الأسبوع</div>
+        <p class="hadith-featured-text" data-ar>{(featured.body ?? "").trim()}</p>
+        <div class="hadith-featured-foot">
+          {featured.data.reference && <span class="faint">{featured.data.reference}</span>}
+          {featuredSrc && <a class="hadith-featured-cta" href={featuredSrc}>اقرأ مع الشرح ←</a>}
+        </div>
       </div>
     )}
-    {cats.length > 0 && (
-      <div class="grade-facet" style="margin-top: 0.5rem; margin-bottom: 1rem;">
-        {cats.map((c) => <span class="pill" style="font-size: 0.8em;">{c} ({categoryCounts[c]})</span>)}
-      </div>
-    )}
-    {has
-      ? <BrowseGroups groups={groups} uncategorized={uncategorized} card={card} unit="كتابًا" personNames={names} />
-      : <p class="faint">لا توجد موادُّ في هذا القسم بعد.</p>}
+
+    {sections.map((s) => (
+      <section class="hub-section">
+        <div class="section-head green">
+          <h2>{s.title}</h2>
+          <span class="section-count">{toArabicDigits(s.items.length)}</span>
+          <div class="rule-fill"></div>
+        </div>
+        {s.items.map((it) => (
+          <a class="latest-row" href={it.href}>
+            <span class:list={["type-badge", "green", { accent: it.accent }]}>{it.kind}</span>
+            <span class="latest-name">{it.title}</span>
+            {it.author && <span class="faint row-author">{it.author}</span>}
+            <span class="row-spacer"></span>
+            {it.meta && <span class="row-meta">{it.meta}</span>}
+            <span class="latest-arrow">←</span>
+          </a>
+        ))}
+      </section>
+    ))}
+    {sections.length === 0 && <p class="faint">لا توجد موادُّ في هذا القسم بعد.</p>}
   </div>
 </Base>
+
+<style>
+  /* featured hadith anatomy card — 3px green right border (HANDOFF §5 الحديث hub) */
+  .hadith-featured {
+    background: var(--card); border: 1px solid var(--line); border-inline-start: 3px solid var(--green);
+    border-radius: 10px; padding: 24px 26px; margin: 26px 0 40px;
+  }
+  .hadith-featured-text {
+    margin: 14px 0 16px; font-family: var(--f-matn); font-weight: 600;
+    font-size: calc(19px * var(--reading-scale)); line-height: 2.1; color: var(--ink);
+  }
+  .hadith-featured-foot { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 12px; }
+  .hadith-featured-cta {
+    margin-inline-start: auto; font-family: var(--f-ui); font-size: 12.5px; font-weight: 600;
+    color: var(--green); text-decoration: none;
+  }
+</style>

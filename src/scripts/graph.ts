@@ -4,10 +4,24 @@
 // each view-transition navigation; guarded so it builds once per fresh page.
 import ForceGraph from "force-graph";
 
-const COLORS: Record<string, string> = {
-  book: "#9c3b32", poem: "#9c3b32", benefit: "#c06a2c", person: "#2f6f6a",
-  series: "#b07b00", subject: "#5a4632", topic: "#7a8a52", article: "#3f7d6e", question: "#8a8275",
+// Node colors come from the design tokens so the graph wears the same palette
+// as the rest of the site (and re-themes with paper/noir/mono). One accent per
+// tradition (HANDOFF §1): كتب/مسائل maroon, شعر copper, أعلام green, موضوعات gold.
+const TOKEN_OF: Record<string, string> = {
+  book: "--brand", question: "--brand", series: "--brand2",
+  poem: "--copper", article: "--copper",
+  person: "--green",
+  topic: "--gold", benefit: "--gold",
+  subject: "--ink2",
 };
+function themeColors(): Record<string, string> {
+  const cs = getComputedStyle(document.documentElement);
+  const out: Record<string, string> = {};
+  for (const [t, v] of Object.entries(TOKEN_OF)) out[t] = cs.getPropertyValue(v).trim() || "#888";
+  return out;
+}
+let COLORS = themeColors();
+new MutationObserver(() => { COLORS = themeColors(); }).observe(document.documentElement, { attributeFilter: ["data-theme"] });
 const FADE = "rgba(120,110,95,0.18)";
 
 function normalizeArabic(str: string): string {

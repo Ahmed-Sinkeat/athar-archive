@@ -149,6 +149,12 @@ const processedParagraphs = paragraphs.map((para, idx) => {
       })}
     </div>
 
+    <p class="ayah-hint faint">اضغط على الآية لعرضِ التفسيرِ والمواضعِ المرتبطة</p>
+
+    <!-- anchored tafsir panel (HANDOFF §5): the ann-sheet mounts here instead of
+         floating over the mushaf — the modal hid the text being explained -->
+    <div id="tafsir-panel-slot"></div>
+
     <Relations items={[]} />
   </div>
 </Base>
@@ -194,6 +200,8 @@ const processedParagraphs = paragraphs.map((para, idx) => {
   .ayah-num-btn:focus-visible {
     background: color-mix(in srgb, var(--gold) 18%, transparent);
   }
+
+  .ayah-hint { margin: 26px 0 0; text-align: center; font-size: 11.5px; }
 
   .ayah-notes { margin-block-start: 0.5rem; }
   .ayah-note {

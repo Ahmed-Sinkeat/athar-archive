@@ -1,37 +1,78 @@
 ---
 import Base from "../layouts/Base.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
-import BrowseGroups from "../components/BrowseGroups.astro";
 import SectionSearch from "../components/SectionSearch.astro";
-import { personNameMap, personEraMap, loadGraph } from "../lib/site";
+import { personNameMap, loadGraph } from "../lib/site";
 import { hrefFor, toArabicDigits, labelFor } from "../lib/display";
 import { analyzePoem } from "../lib/chunk";
 import { readBody } from "../lib/read-body";
-import { buildSubjectGroups } from "../lib/browse";
 import { collectionLd } from "../lib/structured-data";
 
 const graph = await loadGraph();
 const names = await personNameMap();
-const eras = await personEraMap();
-const { groups, uncategorized } = buildSubjectGroups("poem", graph);
-const allPoems = graph.all.filter((e) => e.collection === "poem");
-const verseCounts = new Map(
-  await Promise.all(allPoems.map(async (p) => [p.id, analyzePoem(await readBody(p as any)).verseCount] as const))
+const allPoems = graph.all.filter((e) => e.collection === "poem" && e.data.status === "published");
+
+const verseCountLabel = (n: number) =>
+  n === 2 ? `${toArabicDigits(n)} بيتان` : n >= 3 && n <= 10 ? `${toArabicDigits(n)} أبيات` : `${toArabicDigits(n)} بيتًا`;
+
+const cards = await Promise.all(
+  allPoems.map(async (p) => {
+    const { verses, verseCount } = analyzePoem(await readBody(p as any));
+    return {
+      href: hrefFor("poem", p.id),
+      kind: labelFor("poem", p.data),
+      poet: p.data.person ? names.get(p.data.person as string) ?? "" : "",
+      title: p.data.title as string,
+      count: verseCount,
+      first: verses[0],
+    };
+  })
 );
-const card = (it: any) => ({
-  href: hrefFor("poem", it.id),
-  title: it.data.title,
-  kind: labelFor("poem", it.data),
-  era: it.data.person ? eras.get(it.data.person) : undefined,
-  sub: `${it.data.person ? names.get(it.data.person) ?? "" : ""} · ${toArabicDigits(verseCounts.get(it.id) ?? 0)} بيت`,
-  cta: "ادخل القراءة ←",
-});
 ---
 <Base title="الشعر" description="منظوماتٌ علميةٌ محقَّقةٌ مُشكَّلةٌ مع الشروح والتخريج." activeNav="poems" searchScope={{ type: "poem" }} jsonLd={collectionLd({ title: "الشعر", path: "/poems", crumbs: [{ name: "الرئيسية", path: "/" }, { name: "الشعر", path: "/poems" }] })}>
   <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "الشعر" }]} />
   <div class="wrap-mid uf5db21c">
-    <h1 class="page-title">الشعر</h1>
+    <h1 class="page-title">الشعر والمنظومات</h1>
+    <p class="hub-lede poems-lede">{toArabicDigits(cards.length)} منظومة علمية مُشكَّلة مُرقَّمة الأبيات، مع الشروح والتخريج.</p>
     <SectionSearch scope="poem" placeholder="ابحث في الشعر…" />
-    <BrowseGroups groups={groups} uncategorized={uncategorized} card={card} unit="منظومة" personNames={names} />
+
+    <div class="poem-cards">
+      {cards.map((c) => (
+        <a class="poem-card" href={c.href}>
+          <div class="poem-card-meta">
+            <span class="poem-badge">{c.kind}</span>
+            <span class="poem-byline">{[c.poet, c.title].filter(Boolean).join(" · ")}</span>
+            <span class="row-spacer"></span>
+            <span class="row-meta">{verseCountLabel(c.count)}</span>
+          </div>
+          {c.first && (
+            <p class="poem-card-verse" data-ar>
+              {c.first.sadr}
+              {c.first.ajz && <Fragment><span class="poem-sep" aria-hidden="true">❁</span>{c.first.ajz}</Fragment>}
+            </p>
+          )}
+        </a>
+      ))}
+    </div>
+    {cards.length === 0 && <p class="faint">لا توجد موادُّ في هذا القسم بعد.</p>}
   </div>
 </Base>
+
+<style>
+  /* full-width poem cards — first verse as the title (HANDOFF §5 الشعر) */
+  .poem-cards { display: flex; flex-direction: column; gap: 12px; margin-top: 22px; }
+  .poem-card {
+    display: block; background: var(--card); border: 1px solid var(--line); border-radius: 10px;
+    padding: 20px 22px; color: var(--ink); text-decoration: none; transition: border-color .15s;
+  }
+  .poem-card:hover { border-color: var(--copper); }
+  .poem-card-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
+  .poem-badge {
+    font-family: var(--f-ui); font-size: 10.5px; font-weight: 600; color: var(--copper);
+    border: 1px solid color-mix(in srgb, var(--copper) 35%, transparent); border-radius: 5px; padding: 2px 9px;
+  }
+  .poem-byline { font-family: var(--f-ui); font-size: 12px; color: var(--ink3); }
+  .poem-card-verse { margin: 0; font-family: var(--f-disp); font-size: 19px; line-height: 1.9; }
+  .poem-sep { color: var(--copper); padding: 0 10px; }
+  .poems-lede { margin-bottom: 18px; }
+</style>
