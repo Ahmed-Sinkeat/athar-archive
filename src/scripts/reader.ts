@@ -28,17 +28,18 @@ function setScale(v: number) {
   localStorage.setItem(LS.scale, String(clamped));
 }
 
-// --- theme (2 states: paper default / dark) ---
-type Theme = "paper" | "dark";
+// --- theme (3 states: paper default / noir / mono) ---
+type Theme = "paper" | "noir" | "mono";
 
 function setTheme(t: Theme) {
-  if (t === "dark") root.setAttribute("data-theme", "dark");
-  else root.removeAttribute("data-theme");
+  if (t === "paper") root.removeAttribute("data-theme");
+  else root.setAttribute("data-theme", t);
   localStorage.setItem(LS.theme, t);
   syncThemeButtons(t);
 }
 function currentTheme(): Theme {
-  return root.getAttribute("data-theme") === "dark" ? "dark" : "paper";
+  const t = root.getAttribute("data-theme");
+  return t === "noir" || t === "mono" ? t : "paper";
 }
 function syncThemeButtons(t: Theme) {
   document.querySelectorAll<HTMLElement>("[data-theme-btn]").forEach((b) => {
@@ -224,7 +225,9 @@ const actions: Record<string, () => void> = {
   "toggle:verseNums": () => applyVnums(root.classList.contains("hide-vnums")),
   "toggle:pages": () => applyPages(root.classList.contains("pages-flow")),
   "toggle:footnotes": () => applyFootnotes(root.classList.contains("hide-footnotes")),
-  "theme:toggle": () => setTheme(currentTheme() === "dark" ? "paper" : "dark"),
+  "theme:paper": () => setTheme("paper"),
+  "theme:noir": () => setTheme("noir"),
+  "theme:mono": () => setTheme("mono"),
   "menu:toggle": () => setDrawer(true),
   "menu:close": () => setDrawer(false),
   // closed → open the bar; open → just close it (Enter in the field runs the search).
@@ -813,6 +816,20 @@ function updateProgress() {
 window.addEventListener("scroll", updateProgress, { passive: true });
 window.addEventListener("resize", updateProgress);
 
+// --- auto-hide header: scroll down hides it, scroll up (or reaching the top)
+// brings it back — frees up screen for reading without losing the toolbar.
+const topbar = document.querySelector<HTMLElement>(".topbar");
+let lastY = window.scrollY;
+function updateTopbarVisibility() {
+  if (!topbar) return;
+  const y = window.scrollY;
+  const anyPopoverOpen = document.querySelector(".popover:not([hidden])") || document.querySelector("[data-drawer][data-open]");
+  if (y < 80 || y < lastY - 4 || anyPopoverOpen) topbar.classList.remove("topbar-hidden");
+  else if (y > lastY + 4) topbar.classList.add("topbar-hidden");
+  lastY = y;
+}
+window.addEventListener("scroll", updateTopbarVisibility, { passive: true });
+
 // --- sync control states from storage on load (values already applied pre-paint) ---
 syncThemeButtons(currentTheme());
 applyVnums(localStorage.getItem(LS.vnums) !== "0");
@@ -850,7 +867,7 @@ document.addEventListener("astro:page-load", onPage);
 function applyStoredPrefs() {
   try {
     const t = localStorage.getItem(LS.theme);
-    if (t === "dark") root.setAttribute("data-theme", "dark");
+    if (t === "noir" || t === "mono") root.setAttribute("data-theme", t);
     else root.removeAttribute("data-theme");
     const s = localStorage.getItem(LS.scale);
     if (s) root.style.setProperty("--reading-scale", s);

@@ -49,12 +49,21 @@
   --reading-scale: 1;
 }
 
-html[data-theme="dark"] {
-  --bg: #16110C; --card: #1E1811; --inset: #271F15;
-  --ink: #EFE6D5; --ink2: #BCAB92; --ink3: #857661;
-  --line: rgba(239,230,213,.13); --line2: rgba(239,230,213,.3);
-  --brand: #CB7A5F; --brand2: #DE977C; --onbrand: #1E1811;
-  --gold: #C9A24E; --green: #74B196; --copper: #C98B6B;
+/* noir — black + gold */
+html[data-theme="noir"] {
+  --bg: #0A0A0A; --card: #161613; --inset: #1F1E1A;
+  --ink: #F2ECDD; --ink2: #B8AD95; --ink3: #7C7364;
+  --line: rgba(242,236,221,.12); --line2: rgba(242,236,221,.28);
+  --brand: #D4A72C; --brand2: #E8C158; --onbrand: #14120A;
+  --gold: #D4A72C; --green: #6FBF9B; --copper: #CC9A6E;
+}
+/* mono — white + black, Notion-style clean */
+html[data-theme="mono"] {
+  --bg: #FFFFFF; --card: #FFFFFF; --inset: #F1F1EF;
+  --ink: #191919; --ink2: #6B6B6B; --ink3: #9B9B9B;
+  --line: rgba(25,25,25,.09); --line2: rgba(25,25,25,.18);
+  --brand: #1A1A1A; --brand2: #000000; --onbrand: #FFFFFF;
+  --gold: #8E6A1C; --green: #2A5C49; --copper: #8C4A2E;
 }
 
 * { box-sizing: border-box; }
@@ -139,7 +148,9 @@ img { max-width: 100%; }
 .tag-verdigris { color: var(--verdigris); }
 
 /* ---------- header ---------- */
-.topbar { position: sticky; top: 0; z-index: 40; background: var(--paper); border-bottom: 1px solid var(--rule); }
+.topbar { position: sticky; top: 0; z-index: 40; background: var(--paper); border-bottom: 1px solid var(--rule); transition: transform 0.25s ease; }
+/* auto-hide on scroll-down, reappear on scroll-up (reader.ts) */
+.topbar.topbar-hidden { transform: translateY(-100%); }
 /* single-line chrome: brand (start) · nav (center) · search + settings (end) */
 .topbar-row { display: flex; align-items: center; gap: 14px; padding: 11px 0; }
 .brand { display: flex; flex-direction: column; align-items: flex-start; text-decoration: none; line-height: 1.05; flex: none; }
@@ -181,11 +192,17 @@ img { max-width: 100%; }
   cursor: pointer; display: grid; place-items: center; font-size: 13px;
   touch-action: manipulation; /* ponytail: kills 300ms tap delay without JS */
 }
-/* standalone header theme toggle — icon reflects the current theme */
-.theme-toggle { width: 34px; height: 34px; }
-.theme-toggle-moon { display: none; }
-html[data-theme="dark"] .theme-toggle-sun { display: none; }
-html[data-theme="dark"] .theme-toggle-moon { display: block; }
+/* theme swatches (settings popover) */
+.theme-swatches { display: flex; gap: 10px; padding: 4px 2px 12px; }
+.theme-swatch {
+  width: 30px; height: 30px; border-radius: 50%; border: 2px solid transparent;
+  cursor: pointer; padding: 0; position: relative;
+}
+.theme-swatch[aria-pressed="true"] { border-color: var(--accent); }
+.theme-swatch-paper { background: linear-gradient(135deg, #F4EEE2 50%, #7A2222 50%); }
+.theme-swatch-noir  { background: linear-gradient(135deg, #0A0A0A 50%, #D4A72C 50%); }
+.theme-swatch-mono  { background: linear-gradient(135deg, #FFFFFF 50%, #1A1A1A 50%); border: 1px solid var(--rule-strong); }
+.theme-swatch-mono[aria-pressed="true"] { border-color: var(--accent); border-width: 2px; }
 .toggle-btn {
   font-family: var(--font-ui); font-size: 13px; color: var(--ink-soft);
   background: transparent; border: 1px solid var(--rule-strong); border-radius: 9px;
@@ -534,6 +551,10 @@ html:not(.has-js) .ann-pack:target { display: block; margin-top: 8px; }
 .inline-note.k-hashiya, .inline-note.k-iraab { border-inline-start-color: var(--verdigris); }
 .inline-note summary { font-family: var(--font-ui); font-size: 12.5px; letter-spacing: 0.04em; color: var(--accent); cursor: pointer; padding: 9px 0; }
 .inline-note.k-hashiya summary, .inline-note.k-iraab summary { color: var(--verdigris); }
+/* while open, the summary (tap-to-close) floats with the scroll instead of
+   staying pinned at the top of the note — so a long شرح can be closed from
+   anywhere in it, not just by scrolling back up to where it was opened. */
+.inline-note[open] summary { position: sticky; top: 54px; z-index: 20; background: var(--paper-2); }
 .inline-note-body { font-family: var(--font-serif); font-size: calc(15px * var(--reading-scale, 1)); line-height: 1.9; color: var(--ink-soft); padding-bottom: 10px; }
 .inline-note .ann-source-link { padding: 0 0 12px; border-top: none; }
 /* multiple شروح on one hadith/bayt: a small tab picker instead of stacking a
@@ -754,7 +775,7 @@ textarea.cinput { resize: vertical; line-height: 1.7; }
   display: block; margin: 0 auto;
 }
 /* In dark mode, invert the black ink to cream */
-html[data-theme="dark"] .hero-calligraphy-img {
+html[data-theme="noir"] .hero-calligraphy-img {
   filter: brightness(0) saturate(0) invert(1);
   opacity: 0.82;
 }
@@ -1036,7 +1057,7 @@ html.hide-vnums .vnum { display: none; }
 /* --- token colors: آية ﴿﴾ · حديث «» · اقتباس "" (wrapped at build) --- */
 /* آيات ﴿﴾ → accent red; اقتباس "" → blue; حديث «» → warm amber */
 :root { --tok-ayah: #9a2f24; --tok-hadith: #8a5a20; --tok-quote: #2a5da6; --tok-paren: #3a6357; }
-html[data-theme="dark"]  { --tok-ayah: #e08888; --tok-hadith: #d6ac63; --tok-quote: #80aad8; --tok-paren: #6aaa8e; }
+html[data-theme="noir"]  { --tok-ayah: #e08888; --tok-hadith: #d6ac63; --tok-quote: #80aad8; --tok-paren: #6aaa8e; }
 .tok-ayah   { color: var(--tok-ayah); }
 .tok-hadith { color: var(--tok-hadith); }
 /* .tok-quote  { color: var(--tok-quote); } */
@@ -1054,9 +1075,9 @@ html[data-theme="dark"]  { --tok-ayah: #e08888; --tok-hadith: #d6ac63; --tok-quo
 ::highlight(aa-benefit)  { background-color: rgba(60, 175, 110, 0.34); }
 ::highlight(aa-bookmark) { background-color: rgba(90, 140, 230, 0.26); text-decoration: underline; text-decoration-color: rgba(90, 140, 230, 0.7); }
 ::highlight(aa-find)     { background-color: rgba(255, 138, 0, 0.55); color: #1a1206; }
-html[data-theme="dark"] ::highlight(aa-review)  { background-color: rgba(225, 185, 45, 0.32); }
-html[data-theme="dark"] ::highlight(aa-benefit) { background-color: rgba(70, 200, 130, 0.28); }
-html[data-theme="dark"] ::highlight(aa-find)    { background-color: rgba(255, 150, 30, 0.55); color: #fff; }
+html[data-theme="noir"] ::highlight(aa-review)  { background-color: rgba(225, 185, 45, 0.32); }
+html[data-theme="noir"] ::highlight(aa-benefit) { background-color: rgba(70, 200, 130, 0.28); }
+html[data-theme="noir"] ::highlight(aa-find)    { background-color: rgba(255, 150, 30, 0.55); color: #fff; }
 
 /* --- selection toolbar (built by marks.ts, appended to <body>) --- */
 .aa-tools { position: absolute; z-index: 80; display: flex; gap: 4px; padding: 5px; background: var(--surface); border: 1px solid var(--rule-strong); border-radius: 12px; box-shadow: 0 12px 36px rgba(20,16,12,0.22); transform: translate(-50%, -100%); opacity: 0; transition: opacity 0.12s; pointer-events: none; }

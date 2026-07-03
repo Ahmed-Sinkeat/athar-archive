@@ -238,13 +238,20 @@ const finalContent = (() => {
             <ul class="chap-mobile-list">
               {tocGroups.map((g) => (
                 <li>
-                  <a href={g.href} class:list={[{ 'is-current': g.slug === currentGroupKey }]}>{g.title}</a>
-                  {g.slug === currentGroupKey && g.slices.length > 0 && (
-                    <ul class="chap-mobile-list">
-                      {g.slices.map((s) => (
-                        <li><a href={s.href} class:list={[{ 'is-current': s.slug === chapter.slug }]}>{s.title}</a></li>
-                      ))}
-                    </ul>
+                  {g.slices.length > 0 ? (
+                    <details class="toc-group" open={g.slug === currentGroupKey}>
+                      <summary class="toc-group-summary">
+                        <a href={g.href} class:list={[{ 'is-current': g.slug === currentGroupKey }]}>{g.title}</a>
+                        <span class="toc-group-arrow" aria-hidden="true">›</span>
+                      </summary>
+                      <ul class="chap-mobile-list">
+                        {g.slices.map((s) => (
+                          <li><a href={s.href} class:list={[{ 'is-current': s.slug === chapter.slug }]}>{s.title}</a></li>
+                        ))}
+                      </ul>
+                    </details>
+                  ) : (
+                    <a href={g.href} class:list={[{ 'is-current': g.slug === currentGroupKey }]}>{g.title}</a>
                   )}
                 </li>
               ))}
@@ -309,13 +316,20 @@ const finalContent = (() => {
           <div class="toc-label">فصول {entry.data.title}</div>
           {tocGroups.map((g) => (
             <>
-              <a href={g.href} class:list={[{ 'toc-current': g.slug === currentGroupKey && g.slices.length === 0 }]}>{g.title}</a>
-              {g.slug === currentGroupKey && g.slices.length > 0 && (
-                <div class="toc-sub">
-                  {g.slices.map((s) => (
-                    <a href={s.href} class:list={["toc-sub-link", { 'toc-current': s.slug === chapter.slug }]}>{s.title}</a>
-                  ))}
-                </div>
+              {g.slices.length > 0 ? (
+                <details class="toc-group" open={g.slug === currentGroupKey}>
+                  <summary class="toc-group-summary">
+                    <a href={g.href} class:list={[{ 'toc-current': g.slug === currentGroupKey }]}>{g.title}</a>
+                    <span class="toc-group-arrow" aria-hidden="true">›</span>
+                  </summary>
+                  <div class="toc-sub">
+                    {g.slices.map((s) => (
+                      <a href={s.href} class:list={["toc-sub-link", { 'toc-current': s.slug === chapter.slug }]}>{s.title}</a>
+                    ))}
+                  </div>
+                </details>
+              ) : (
+                <a href={g.href} class:list={[{ 'toc-current': g.slug === currentGroupKey }]}>{g.title}</a>
               )}
               {g.slug === currentGroupKey && nestedToc.length > 0 && (
                 <div class="toc-nested" style="margin-bottom: 0.5rem; font-size: 0.85em;">
