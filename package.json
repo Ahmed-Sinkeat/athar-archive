@@ -18,6 +18,9 @@
     "perf:clean": "node scripts/gen-perf-content.mjs --clean",
     "perf:bench": "node scripts/perf-bench.mjs",
     "test": "vitest run",
+    "search:gen": "tsx scripts/gen-search-index.ts",
+    "search:index": "pnpm search:gen && for f in dist/search-index/*.sql; do wrangler d1 execute athar-search --remote -y --file \"$f\" || exit 1; done",
+    "search:index:local": "pnpm search:gen && for f in dist/search-index/*.sql; do wrangler d1 execute athar-search --local -y --file \"$f\" || exit 1; done",
     "deploy": "wrangler deploy -c dist/server/wrangler.json"
   },
   "keywords": [],

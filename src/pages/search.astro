@@ -1,35 +1,35 @@
 ---
 import Base from "../layouts/Base.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
-import { config } from "../../ahlalathar.config.js";
-// Search delegates to Google site search. Pagefind was removed: book/lesson bodies
-// are now on-demand and never in the build, so a static index can't see them. Google
-// crawls the on-demand pages (they're in sitemap.xml). Results open on Google. No
-// server, no keys (SEC-01); noindex (FR-S-04/06).
-const host = new URL(config.siteUrl).host;
+// Real on-site search: client fetches /api/search (D1 FTS5 index built by
+// scripts/gen-search-index.ts). Replaced the Google site-search delegation —
+// still no keys, no third-party (SEC-01); noindex (FR-S-04/06).
+// Scope params carried from section pages / reader: scope=<type>, in=<book|poem id>,
+// person=<slug>, label=<human hint>.
 ---
 <Base title="البحث" activeNav="home" noindex>
   <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "البحث" }]} />
   <div class="wrap-mid uf5db21c" >
     <h1 class="page-title">البحث</h1>
-    <p class="page-intro">ابحثْ في المتون والمنظومات والدروس والفوائد والمقالات. تُفتَح النتائجُ في Google.</p>
+    <p class="page-intro">ابحثْ في القرآن والكتب والمنظومات والمسائل والمقالات والأعلام.</p>
 
     <div class="u7fc16fa">
       <div class="u6371093">
-        <input id="q" type="search" autocomplete="off" placeholder="ابحث…" class="u38ae86c search-input-matn" data-host={host} />
+        <input id="q" type="search" autocomplete="off" placeholder="ابحث…" class="u38ae86c search-input-matn" />
       </div>
     </div>
-    <!-- hadith has no route of its own (hadith books live under /book/* like any
-         other book), so there's no honest inurl: filter for it — dropped rather
-         than shipping a scope chip that silently includes non-hadith books too. -->
     <div class="search-scope-chips" role="group" aria-label="تحديد نطاق البحث">
       <button type="button" class="search-scope-chip" data-scope="" aria-pressed="true">الكل</button>
-      <button type="button" class="search-scope-chip" data-scope="/quran" aria-pressed="false">القرآن</button>
-      <button type="button" class="search-scope-chip" data-scope="/book" aria-pressed="false">الكتب</button>
-      <button type="button" class="search-scope-chip" data-scope="/poem" aria-pressed="false">الشعر</button>
+      <button type="button" class="search-scope-chip" data-scope="quran" aria-pressed="false">القرآن</button>
+      <button type="button" class="search-scope-chip" data-scope="book" aria-pressed="false">الكتب</button>
+      <button type="button" class="search-scope-chip" data-scope="poem" aria-pressed="false">الشعر</button>
+      <button type="button" class="search-scope-chip" data-scope="question" aria-pressed="false">المسائل</button>
+      <button type="button" class="search-scope-chip" data-scope="article" aria-pressed="false">المقالات</button>
+      <button type="button" class="search-scope-chip" data-scope="person" aria-pressed="false">الأعلام</button>
+      <button type="button" class="search-scope-chip" data-scope="term" aria-pressed="false">المعجم</button>
     </div>
     <div id="scope-note" class="faint u608848d" ></div>
-    <div class="u86de7ac"><button id="go" class="btn btn-accent">بحث في Google ↗</button></div>
+    <div id="results" class="search-results" aria-live="polite"></div>
 
     <style>
       .search-input-matn { font-family: var(--f-matn); font-size: 20px; }
@@ -41,6 +41,14 @@ const host = new URL(config.siteUrl).host;
       }
       .search-scope-chip:hover { border-color: var(--brand); color: var(--brand); }
       .search-scope-chip[aria-pressed="true"] { border-color: var(--brand); color: var(--brand); background: color-mix(in srgb, var(--brand) 8%, var(--card)); }
+      .search-results { margin-top: 24px; display: flex; flex-direction: column; gap: 4px; }
+      .search-hit { display: block; padding: 12px 14px; border-radius: 10px; text-decoration: none; }
+      .search-hit:hover { background: color-mix(in srgb, var(--brand) 6%, transparent); }
+      .search-hit-title { font-family: var(--f-ui); font-size: 15px; color: var(--brand); font-weight: 600; }
+      .search-hit-type { font-family: var(--f-ui); font-size: 11px; color: var(--ink2); border: 1px solid var(--line); border-radius: 999px; padding: 1px 8px; margin-inline-start: 8px; }
+      .search-hit-snippet { font-family: var(--f-matn); font-size: 16px; color: var(--ink2); margin-top: 4px; line-height: 1.9; }
+      .search-hit-snippet mark { background: color-mix(in srgb, var(--brand) 18%, transparent); color: var(--ink); border-radius: 3px; padding: 0 2px; }
+      .search-empty { font-family: var(--f-ui); font-size: 14px; color: var(--ink2); margin-top: 24px; }
     </style>
 
     <noscript>
@@ -52,28 +60,55 @@ const host = new URL(config.siteUrl).host;
     (() => {
       const input = document.getElementById("q");
       if (!input) return;
-      const host = input.dataset.host;
+      const results = document.getElementById("results");
       const params = new URLSearchParams(location.search);
-      const label = params.get("label"); // optional scope hint carried from a section/reader page
+      const label = params.get("label");
+      const inBook = params.get("in") || "";
+      const person = params.get("person") || "";
       if (label) document.getElementById("scope-note").textContent = `سياق: ${label}`;
 
-      let scope = "";
+      const TYPE_LABEL = { quran: "قرآن", book: "كتاب", poem: "منظومة", article: "مقالة", question: "مسألة", term: "معجم", person: "عَلَم" };
+      let scope = params.get("scope") || (params.get("types") || "").split(",")[0] || "";
+      if (!TYPE_LABEL[scope]) scope = "";
       const chips = document.querySelectorAll(".search-scope-chip");
-      chips.forEach((chip) => chip.addEventListener("click", () => {
-        scope = chip.dataset.scope || "";
-        chips.forEach((c) => c.setAttribute("aria-pressed", String(c === chip)));
-      }));
+      chips.forEach((chip) => {
+        chip.setAttribute("aria-pressed", String((chip.dataset.scope || "") === scope));
+        chip.addEventListener("click", () => {
+          scope = chip.dataset.scope || "";
+          chips.forEach((c) => c.setAttribute("aria-pressed", String(c === chip)));
+          go();
+        });
+      });
 
-      const go = () => {
+      const esc = (s) => s.replace(/[&<>]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]));
+      let seq = 0;
+      const go = async () => {
         const terms = input.value.trim();
-        if (!terms) return;
-        const q = "site:" + host + " " + (scope ? "inurl:" + scope + " " : "") + (label ? label + " " : "") + terms;
-        window.open("https://www.google.com/search?q=" + encodeURIComponent(q), "_blank", "noopener");
+        const my = ++seq;
+        if (!terms) { results.innerHTML = ""; return; }
+        const p = new URLSearchParams({ q: terms });
+        if (scope) p.set("type", scope);
+        if (inBook) p.set("book", inBook);
+        if (person && !inBook) p.set("person", person.split(",")[0]);
+        const res = await fetch("/api/search?" + p).catch(() => null);
+        if (my !== seq) return; // a newer query already answered
+        const hits = res && res.ok ? (await res.json()).hits : null;
+        if (my !== seq) return;
+        if (!hits) { results.innerHTML = '<p class="search-empty">تعذَّر البحث الآن — حاولْ لاحقًا.</p>'; return; }
+        if (!hits.length) { results.innerHTML = '<p class="search-empty">لا نتائج.</p>'; return; }
+        results.innerHTML = hits.map((h) =>
+          `<a class="search-hit" href="${esc(h.url)}">` +
+          `<span class="search-hit-title">${esc(h.title)}</span>` +
+          `<span class="search-hit-type">${TYPE_LABEL[h.type] || ""}</span>` +
+          `<div class="search-hit-snippet">${esc(h.snippet).replaceAll("&lt;mark&gt;", "<mark>").replaceAll("&lt;/mark&gt;", "</mark>")}</div>` +
+          `</a>`).join("");
       };
-      document.getElementById("go").addEventListener("click", go);
-      input.addEventListener("keydown", (e) => { if (e.key === "Enter") go(); });
+
+      let t;
+      input.addEventListener("input", () => { clearTimeout(t); t = setTimeout(go, 250); });
+      input.addEventListener("keydown", (e) => { if (e.key === "Enter") { clearTimeout(t); go(); } });
       const initial = params.get("q");
-      if (initial) input.value = initial;
+      if (initial) { input.value = initial; go(); }
       input.focus();
     })();
   </script>
