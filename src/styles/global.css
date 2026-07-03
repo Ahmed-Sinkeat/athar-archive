@@ -882,6 +882,25 @@ html.hide-vnums .vnum { display: none; }
   .chap-mobile-toc { display: block; }
 }
 
+/* floating jump-to-chapter button — reaches the TOC from anywhere on a long
+   page instead of scrolling back to the top; sidebar TOC covers desktop already */
+.fab-toc {
+  display: none; position: fixed; bottom: 20px; inset-inline-end: 18px; z-index: 45;
+  width: 46px; height: 46px; border-radius: 50%; border: none; cursor: pointer;
+  background: var(--accent-solid); color: var(--onbrand); font-size: 19px; line-height: 1;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28);
+}
+@media (max-width: 780px) {
+  .fab-toc { display: grid; place-items: center; }
+  /* opened via the FAB (or the inline summary) becomes a bottom sheet, reachable
+     regardless of scroll position, instead of expanding in place in the flow */
+  .chap-mobile-toc[open] {
+    position: fixed; inset-inline: 12px; bottom: 76px; top: auto;
+    max-height: 65vh; overflow-y: auto; z-index: 46;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); margin-top: 0;
+  }
+}
+
 /* -------- مسائل Q/A two-color bold markers -------- */
 .masail-q { color: var(--accent); }
 .masail-a { color: var(--verdigris); }
