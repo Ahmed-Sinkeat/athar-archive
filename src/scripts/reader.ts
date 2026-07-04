@@ -259,57 +259,42 @@ document.addEventListener("click", (e) => {
   if ((e.target as HTMLElement).closest("[data-drawer-backdrop]")) setDrawer(false);
 });
 
-// --- footnote popover (markdown [^refs] + EPUB <sup data-fn> refs) ---
-let fnPop: HTMLElement | null = null;
-function positionFnPop(anchor: HTMLElement) {
-  if (!fnPop) return;
-  fnPop.hidden = false;
-  const rect = anchor.getBoundingClientRect();
-  fnPop.style.top = `${rect.bottom + window.scrollY + 8}px`;
-  let left = rect.left + rect.width / 2 - fnPop.offsetWidth / 2;
-  left = Math.max(8, Math.min(left, window.innerWidth - fnPop.offsetWidth - 8));
-  fnPop.style.left = `${left}px`;
-}
-function ensureFnPop(): HTMLElement {
-  // ClientRouter swaps <body> on navigation, detaching a previously-created popover,
-  // so recreate it when it's gone OR no longer in the document (footnotes were dead
-  // after navigating to another page/chapter).
-  if (!fnPop || !fnPop.isConnected) {
-    fnPop = document.createElement("div");
-    fnPop.className = "popover fn-popover";
-    document.body.appendChild(fnPop);
+// --- inline footnotes (markdown [^refs] + EPUB <sup data-fn> refs) ---
+// Expands right under the paragraph containing the marker, toggled by a
+// +/- indicator (see [data-footnote-ref]::after / sup[data-fn]::after in
+// global.css). Several can be open at once — no auto-collapsing others.
+const fnInline = new WeakMap<HTMLElement, HTMLElement>();
+function toggleFnInline(marker: HTMLElement, buildBody: () => Node[]) {
+  const open = fnInline.get(marker);
+  if (open) {
+    open.remove();
+    fnInline.delete(marker);
+    marker.setAttribute("aria-expanded", "false");
+    return;
   }
-  return fnPop;
+  const host = marker.closest("p, li") || marker.parentElement;
+  if (!host) return;
+  const box = document.createElement("div");
+  box.className = "fn-inline";
+  box.append(...buildBody());
+  host.insertAdjacentElement("afterend", box);
+  fnInline.set(marker, box);
+  marker.setAttribute("aria-expanded", "true");
 }
-let activeFnRef: HTMLElement | null = null;
 document.addEventListener("click", (e) => {
   const t = e.target as HTMLElement;
   // standard markdown footnote refs
   const ref = t.closest<HTMLAnchorElement>("[data-footnote-ref]");
   if (ref) {
+    e.preventDefault();
     const id = ref.getAttribute("href")?.slice(1);
     const target = id ? document.getElementById(id) : null;
-    // Paginated book content (book/[slug]/[chapter].astro): the ref points at
-    // a visible <li> in that page's printed-footer <aside> — let the browser
-    // jump there natively (no popup, :target highlights it in CSS).
-    if (target?.closest(".page-footnotes")) return;
-    e.preventDefault();
     if (target) {
-      const pop = ensureFnPop();
-      const clone = target.cloneNode(true) as HTMLElement;
-      clone.querySelector(".data-footnote-backref")?.remove();
-      // Adjacent refs (e.g. a hadith citing 3 sources back to back, [^12][^13][^14])
-      // sit only ~2px apart — without a number label the popup can't be told
-      // apart from its neighbours', so label it with the same number the
-      // superscript itself shows, and highlight which ref is currently open.
-      const label = document.createElement("div");
-      label.className = "fn-popover-num";
-      label.textContent = ref.textContent || "";
-      pop.replaceChildren(label, ...Array.from(clone.childNodes));
-      activeFnRef?.classList.remove("fn-ref-active");
-      ref.classList.add("fn-ref-active");
-      activeFnRef = ref;
-      positionFnPop(ref);
+      toggleFnInline(ref, () => {
+        const clone = target.cloneNode(true) as HTMLElement;
+        clone.querySelector(".data-footnote-backref")?.remove();
+        return Array.from(clone.childNodes);
+      });
     }
     return;
   }
@@ -317,18 +302,53 @@ document.addEventListener("click", (e) => {
   const fnSup = t.closest<HTMLElement>("sup[data-fn][data-note]");
   if (fnSup && !fnSup.dataset.sepPage) {
     e.preventDefault();
-    const pop = ensureFnPop();
-    // ponytail: textContent not innerHTML — note is plain text from the book
-    pop.textContent = fnSup.dataset.note || "";
-    positionFnPop(fnSup);
-    return;
-  }
-  if (fnPop && !fnPop.hidden && !t.closest(".fn-popover")) {
-    fnPop.hidden = true;
-    activeFnRef?.classList.remove("fn-ref-active");
-    activeFnRef = null;
+    toggleFnInline(fnSup, () => {
+      const p = document.createElement("p");
+      // ponytail: textContent not innerHTML — note is plain text from the book
+      p.textContent = fnSup.dataset.note || "";
+      return [p];
+    });
   }
 });
+
+// --- page-transition loader (top progress bar + center seal) ---
+// Mirrors the "Page Loader" design: don't show anything for a fast/cached
+// navigation, but once shown, don't let it flash for less than MIN_VISIBLE.
+(() => {
+  const bar = document.querySelector<HTMLElement>("[data-page-progress]");
+  const barFill = document.querySelector<HTMLElement>("[data-page-progress-bar]");
+  const seal = document.querySelector<HTMLElement>("[data-page-loader]");
+  if (!bar || !barFill || !seal) return;
+
+  const SHOW_DELAY = 150;
+  const MIN_VISIBLE = 420;
+  let showT = 0, shown = false, shownAt = 0;
+
+  document.addEventListener("astro:before-preparation", () => {
+    shown = false;
+    showT = window.setTimeout(() => {
+      shown = true;
+      shownAt = Date.now();
+      bar.toggleAttribute("data-visible", true);
+      seal.toggleAttribute("data-visible", true);
+      barFill.style.width = "16%";
+      requestAnimationFrame(() => requestAnimationFrame(() => { barFill.style.width = "74%"; }));
+    }, SHOW_DELAY);
+  });
+
+  const finish = () => {
+    clearTimeout(showT);
+    if (!shown) return;
+    const wait = Math.max(0, MIN_VISIBLE - (Date.now() - shownAt));
+    barFill.style.width = "100%";
+    setTimeout(() => {
+      bar.removeAttribute("data-visible");
+      seal.removeAttribute("data-visible");
+      setTimeout(() => { barFill.style.width = "0%"; }, 250);
+    }, wait + 160);
+  };
+  document.addEventListener("astro:page-load", finish);
+})();
 
 // --- in-page search ---
 const inpageSearch = document.querySelector<HTMLInputElement>("[data-inpage-search]");

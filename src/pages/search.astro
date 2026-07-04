@@ -9,46 +9,79 @@ import Breadcrumbs from "../components/Breadcrumbs.astro";
 ---
 <Base title="البحث" activeNav="home" noindex>
   <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "البحث" }]} />
-  <div class="wrap-mid uf5db21c" >
-    <h1 class="page-title">البحث</h1>
-    <p class="page-intro">ابحثْ في القرآن والكتب والمنظومات والمسائل والمقالات والأعلام.</p>
-
-    <div class="u7fc16fa">
-      <div class="u6371093">
-        <input id="q" type="search" autocomplete="off" placeholder="ابحث…" class="u38ae86c search-input-matn" />
+  <div class="wrap-mid search-page">
+    <div class="search-bar-row">
+      <div class="search-bar">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path></svg>
+        <input id="q" type="search" autocomplete="off" placeholder="ابحث في المتون والمنظومات والأعلام…" class="search-input" />
       </div>
+      <button type="button" id="go" class="search-submit">بحث</button>
     </div>
-    <div class="search-scope-chips" role="group" aria-label="تحديد نطاق البحث">
-      <button type="button" class="search-scope-chip" data-scope="" aria-pressed="true">الكل</button>
-      <button type="button" class="search-scope-chip" data-scope="quran" aria-pressed="false">القرآن</button>
-      <button type="button" class="search-scope-chip" data-scope="book" aria-pressed="false">الكتب</button>
-      <button type="button" class="search-scope-chip" data-scope="poem" aria-pressed="false">الشعر</button>
-      <button type="button" class="search-scope-chip" data-scope="question" aria-pressed="false">المسائل</button>
-      <button type="button" class="search-scope-chip" data-scope="article" aria-pressed="false">المقالات</button>
-      <button type="button" class="search-scope-chip" data-scope="person" aria-pressed="false">الأعلام</button>
-      <button type="button" class="search-scope-chip" data-scope="term" aria-pressed="false">المعجم</button>
+
+    <div class="search-scope-row">
+      <div class="search-scope-chips" role="group" aria-label="تحديد نطاق البحث">
+        <button type="button" class="search-scope-chip" data-scope="" aria-pressed="true">الكل</button>
+        <button type="button" class="search-scope-chip" data-scope="quran" aria-pressed="false">القرآن</button>
+        <button type="button" class="search-scope-chip" data-scope="book" aria-pressed="false">الكتب</button>
+        <button type="button" class="search-scope-chip" data-scope="poem" aria-pressed="false">الشعر</button>
+        <button type="button" class="search-scope-chip" data-scope="question" aria-pressed="false">المسائل</button>
+        <button type="button" class="search-scope-chip" data-scope="article" aria-pressed="false">المقالات</button>
+        <button type="button" class="search-scope-chip" data-scope="person" aria-pressed="false">الأعلام</button>
+        <button type="button" class="search-scope-chip" data-scope="term" aria-pressed="false">المعجم</button>
+      </div>
+      <span id="results-count" class="search-count"></span>
     </div>
-    <div id="scope-note" class="faint u608848d" ></div>
+    <div id="scope-note" class="faint u608848d"></div>
     <div id="results" class="search-results" aria-live="polite"></div>
 
     <style>
-      .search-input-matn { font-family: var(--f-matn); font-size: 20px; }
-      .search-scope-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
-      .search-scope-chip {
-        font-family: var(--f-ui); font-size: 13px; color: var(--ink2); background: var(--card);
-        border: 1px solid var(--line); border-radius: 999px; padding: 6px 16px; cursor: pointer;
-        transition: border-color .15s, color .15s;
+      .search-page { padding-top: 8px; }
+      .search-bar-row { display: flex; gap: 8px; }
+      .search-bar {
+        flex: 1; display: flex; align-items: center; gap: 10px; background: var(--surface);
+        border: 1px solid var(--rule-strong); border-radius: 10px; padding: 0 16px; height: 50px;
+        color: var(--ink-faint);
       }
-      .search-scope-chip:hover { border-color: var(--brand); color: var(--brand); }
-      .search-scope-chip[aria-pressed="true"] { border-color: var(--brand); color: var(--brand); background: color-mix(in srgb, var(--brand) 8%, var(--card)); }
-      .search-results { margin-top: 24px; display: flex; flex-direction: column; gap: 4px; }
-      .search-hit { display: block; padding: 12px 14px; border-radius: 10px; text-decoration: none; }
-      .search-hit:hover { background: color-mix(in srgb, var(--brand) 6%, transparent); }
-      .search-hit-title { font-family: var(--f-ui); font-size: 15px; color: var(--brand); font-weight: 600; }
-      .search-hit-type { font-family: var(--f-ui); font-size: 11px; color: var(--ink2); border: 1px solid var(--line); border-radius: 999px; padding: 1px 8px; margin-inline-start: 8px; }
-      .search-hit-snippet { font-family: var(--f-matn); font-size: 16px; color: var(--ink2); margin-top: 4px; line-height: 1.9; }
-      .search-hit-snippet mark { background: color-mix(in srgb, var(--brand) 18%, transparent); color: var(--ink); border-radius: 3px; padding: 0 2px; }
-      .search-empty { font-family: var(--f-ui); font-size: 14px; color: var(--ink2); margin-top: 24px; }
+      .search-input {
+        flex: 1; border: none; outline: none; background: transparent;
+        font-family: var(--font-serif); font-size: 17px; color: var(--ink);
+      }
+      .search-submit {
+        background: var(--accent); color: var(--onbrand, #fff); border: none; border-radius: 10px;
+        padding: 0 26px; font-family: var(--font-ui); font-size: 14px; font-weight: 600; cursor: pointer;
+      }
+      .search-submit:hover { background: var(--brand2, var(--accent)); }
+      .search-scope-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 16px 0 28px; }
+      .search-scope-chips { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+      .search-scope-chip {
+        font-family: var(--font-ui); font-size: 11.5px; color: var(--ink-soft); background: none;
+        border: 1px solid var(--rule); border-radius: 999px; padding: 5px 14px; cursor: pointer;
+        transition: border-color .15s, color .15s, background .15s;
+      }
+      .search-scope-chip:hover { border-color: var(--rule-strong); }
+      .search-scope-chip[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); font-weight: 600; }
+      .search-count { margin-inline-start: auto; font-size: 12px; color: var(--ink-faint); }
+      .search-results { display: flex; flex-direction: column; gap: 12px; }
+      .search-hit {
+        display: block; text-align: start; background: var(--surface); border: 1px solid var(--rule);
+        border-inline-end: 3px solid var(--accent); border-radius: 10px; padding: 18px 20px;
+        text-decoration: none; color: var(--ink); transition: border-color .15s;
+      }
+      .search-hit:hover { border-color: var(--accent); }
+      .search-hit[data-type="quran"] { border-inline-end-color: var(--gold-text); }
+      .search-hit[data-type="poem"] { border-inline-end-color: var(--copper); }
+      .search-hit[data-type="book"], .search-hit[data-type="question"] { border-inline-end-color: var(--accent); }
+      .search-hit[data-type="article"], .search-hit[data-type="term"] { border-inline-end-color: var(--verdigris); }
+      .search-hit-kicker {
+        margin: 0 0 8px; font-family: var(--font-ui); font-size: 10.5px; font-weight: 600;
+        letter-spacing: .1em; color: var(--accent);
+      }
+      .search-hit[data-type="quran"] .search-hit-kicker { color: var(--gold-text); }
+      .search-hit[data-type="poem"] .search-hit-kicker { color: var(--copper); }
+      .search-hit[data-type="article"] .search-hit-kicker, .search-hit[data-type="term"] .search-hit-kicker { color: var(--verdigris); }
+      .search-hit-snippet { margin: 0; font-family: var(--font-serif); font-size: 16px; line-height: 2; color: var(--ink); }
+      .search-hit-snippet mark { background: var(--gold-soft); color: inherit; border-radius: 3px; padding: 0 3px; }
+      .search-empty { font-family: var(--font-ui); font-size: 14px; color: var(--ink-soft); margin-top: 24px; }
     </style>
 
     <noscript>
@@ -61,6 +94,7 @@ import Breadcrumbs from "../components/Breadcrumbs.astro";
       const input = document.getElementById("q");
       if (!input) return;
       const results = document.getElementById("results");
+      const countEl = document.getElementById("results-count");
       const params = new URLSearchParams(location.search);
       const label = params.get("label");
       const inBook = params.get("in") || "";
@@ -85,7 +119,7 @@ import Breadcrumbs from "../components/Breadcrumbs.astro";
       const go = async () => {
         const terms = input.value.trim();
         const my = ++seq;
-        if (!terms) { results.innerHTML = ""; return; }
+        if (!terms) { results.innerHTML = ""; countEl.textContent = ""; return; }
         const p = new URLSearchParams({ q: terms });
         if (scope) p.set("type", scope);
         if (inBook) p.set("book", inBook);
@@ -94,19 +128,20 @@ import Breadcrumbs from "../components/Breadcrumbs.astro";
         if (my !== seq) return; // a newer query already answered
         const hits = res && res.ok ? (await res.json()).hits : null;
         if (my !== seq) return;
-        if (!hits) { results.innerHTML = '<p class="search-empty">تعذَّر البحث الآن — حاولْ لاحقًا.</p>'; return; }
-        if (!hits.length) { results.innerHTML = '<p class="search-empty">لا نتائج.</p>'; return; }
+        if (!hits) { results.innerHTML = '<p class="search-empty">تعذَّر البحث الآن — حاولْ لاحقًا.</p>'; countEl.textContent = ""; return; }
+        if (!hits.length) { results.innerHTML = '<p class="search-empty">لا نتائج.</p>'; countEl.textContent = ""; return; }
+        countEl.textContent = `${hits.length} نتائج عن «${terms}»`;
         results.innerHTML = hits.map((h) =>
-          `<a class="search-hit" href="${esc(h.url)}">` +
-          `<span class="search-hit-title">${esc(h.title)}</span>` +
-          `<span class="search-hit-type">${TYPE_LABEL[h.type] || ""}</span>` +
-          `<div class="search-hit-snippet">${esc(h.snippet).replaceAll("&lt;mark&gt;", "<mark>").replaceAll("&lt;/mark&gt;", "</mark>")}</div>` +
+          `<a class="search-hit" data-type="${esc(h.type)}" href="${esc(h.url)}">` +
+          `<p class="search-hit-kicker">${TYPE_LABEL[h.type] || ""} · ${esc(h.title)}</p>` +
+          `<p class="search-hit-snippet">${esc(h.snippet).replaceAll("&lt;mark&gt;", "<mark>").replaceAll("&lt;/mark&gt;", "</mark>")}</p>` +
           `</a>`).join("");
       };
 
       let t;
       input.addEventListener("input", () => { clearTimeout(t); t = setTimeout(go, 250); });
       input.addEventListener("keydown", (e) => { if (e.key === "Enter") { clearTimeout(t); go(); } });
+      document.getElementById("go")?.addEventListener("click", () => { clearTimeout(t); go(); });
       const initial = params.get("q");
       if (initial) { input.value = initial; go(); }
       input.focus();

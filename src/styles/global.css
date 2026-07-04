@@ -234,16 +234,18 @@ img { max-width: 100%; }
   box-shadow: 0 14px 40px rgba(20, 16, 12, 0.18); padding: 14px; display: grid; gap: 12px;
 }
 .popover[hidden] { display: none; }
-.fn-popover {
-  inset-inline-end: auto; top: auto; z-index: 60; max-width: min(90vw, 360px);
-  font-family: var(--font-serif); font-size: 14.5px; line-height: 1.7; padding: 16px;
+.fn-inline {
+  font-family: var(--font-serif); font-size: 14.5px; line-height: 1.7;
+  margin: 10px 0; padding: 10px 14px; border-inline-start: 3px solid var(--accent);
+  background: var(--paper-2);
 }
-.fn-popover p { margin: 0; }
-/* Which of several adjacent refs (e.g. [^12][^13][^14]) this popup belongs to —
-   they sit only ~2px apart in the matn, easy to lose track of without this. */
-.fn-popover-num {
-  font-family: var(--font-mono); font-size: 11px; color: var(--accent);
-  margin-bottom: 6px; font-weight: 700;
+.fn-inline p { margin: 0; }
+[data-footnote-ref], sup[data-fn][data-note] { cursor: pointer; }
+[data-footnote-ref]::after, sup[data-fn][data-note]::after {
+  content: " +"; font-family: var(--font-mono); color: var(--accent); font-size: 0.85em;
+}
+[data-footnote-ref][aria-expanded="true"]::after, sup[data-fn][data-note][aria-expanded="true"]::after {
+  content: " –";
 }
 .pop-title { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.2em; color: var(--ink-faint); }
 .pop-types { border: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 7px 12px; }
@@ -274,7 +276,7 @@ img { max-width: 100%; }
 .drawer-backdrop { display: none; position: fixed; inset: 0; z-index: 60; }
 .drawer-backdrop[data-open] { display: block; }
 .drawer {
-  position: fixed; top: 64px; inset-inline-end: 14px; z-index: 61; width: min(78vw, 280px);
+  position: fixed; top: 64px; inset-inline-start: 14px; z-index: 61; width: min(60vw, 220px);
   max-height: 75vh; overflow-y: auto;
   background: var(--surface); border: 1px solid var(--rule-strong); border-radius: 12px;
   box-shadow: 0 14px 40px rgba(20, 16, 12, 0.18);
@@ -1330,17 +1332,15 @@ html.hide-footnotes .page-footnotes { display: none; }
 sup[data-fn] { cursor: pointer; color: var(--accent); font-size: 0.72em; margin-inline-start: 1px; }
 sup[data-fn]:hover { text-decoration: underline; }
 
-/* GFM footnotes (حاشية + تخريج) are reveal-on-tap via the .fn-popover in reader.ts.
+/* GFM footnotes (حاشية + تخريج) expand inline via .fn-inline in reader.ts.
    Keep only the small superscript marker in the matn; hide the printed bottom list so
    the reading view stays matn + page separators + page numbers. The hidden <section>
-   stays in the DOM so the popover can clone each note by id.
+   stays in the DOM so the inline box can clone each note by id.
    ponytail: JS-only reveal; add a <details> fallback if no-JS/AT access is needed. */
 .prose [data-footnote-ref] { cursor: pointer; color: var(--accent); text-decoration: none; font-size: 0.72em; margin-inline-start: 2px; padding: 0 1px; }
 .prose [data-footnote-ref]:hover { text-decoration: underline; }
 /* separate runs of adjacent refs (e.g. a name carrying [12][13][14]) so they don't jam */
 .prose sup + sup { margin-inline-start: 4px; }
-/* which ref the currently-open .fn-popover belongs to, among several stacked ones */
-.prose [data-footnote-ref].fn-ref-active { background: color-mix(in srgb, var(--accent) 20%, transparent); border-radius: 3px; }
 .prose [data-footnotes],
 .prose section.footnotes { display: none; }
 
@@ -1361,4 +1361,54 @@ sup[data-fn]:hover { text-decoration: underline; }
 .narrator-list a:hover {
   border-color: var(--accent); color: var(--accent);
   background: var(--accent-wash);
+}
+
+/* ---------- page-transition loader (top bar + center seal) ----------
+   Two-piece loader shown only if a navigation actually takes a moment —
+   see wirePageLoader in reader.ts for the show-delay/min-visible timing. */
+@keyframes page-loader-spin { to { transform: rotate(360deg); } }
+@keyframes page-loader-pulse { 0%, 100% { opacity: .8; transform: scale(.94); } 50% { opacity: 1; transform: scale(1); } }
+@keyframes page-loader-dot { 0%, 100% { opacity: .2; } 50% { opacity: 1; } }
+
+.page-progress {
+  position: fixed; top: 0; inset-inline: 0; height: 2.5px; background: var(--rule);
+  z-index: 300; opacity: 0; transition: opacity 0.25s ease; pointer-events: none;
+}
+.page-progress[data-visible] { opacity: 1; }
+.page-progress-bar {
+  height: 100%; width: 0%; background: var(--accent);
+  transition: width 0.4s cubic-bezier(.2,.65,.3,1);
+}
+
+.page-loader {
+  position: fixed; inset: 0; z-index: 200; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  background: color-mix(in srgb, var(--paper) 93%, transparent);
+  opacity: 0; pointer-events: none; transition: opacity 0.28s ease;
+}
+.page-loader[data-visible] { opacity: 1; pointer-events: auto; }
+.page-loader-seal { position: relative; width: 88px; height: 88px; transform: scale(.92); transition: transform 0.32s cubic-bezier(.34,1.35,.62,1); }
+.page-loader[data-visible] .page-loader-seal { transform: scale(1); }
+.page-loader-ring-outer { position: absolute; inset: 0; border-radius: 50%; border: 1px solid var(--rule-strong); }
+.page-loader-ring-spin {
+  position: absolute; inset: 7px; border-radius: 50%;
+  border: 1.5px solid var(--rule); border-top-color: var(--accent); border-right-color: var(--accent);
+  animation: page-loader-spin 1.15s cubic-bezier(.5,.15,.4,.9) infinite;
+}
+.page-loader-orn {
+  position: absolute; inset: 0; display: grid; place-items: center;
+  font-size: 30px; line-height: 1; color: var(--gold-text);
+  animation: page-loader-pulse 1.7s ease-in-out infinite;
+}
+.page-loader-label {
+  margin-top: 16px; display: flex; align-items: baseline; gap: 4px;
+  font-family: var(--font-ui); font-size: 12.5px; letter-spacing: .1em; color: var(--ink-faint);
+}
+.page-loader-dots { display: inline-flex; gap: 2px; }
+.page-loader-dots span { animation: page-loader-dot 1.2s ease-in-out infinite; }
+.page-loader-dots span:nth-child(2) { animation-delay: .2s; }
+.page-loader-dots span:nth-child(3) { animation-delay: .4s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .page-loader-ring-spin, .page-loader-orn, .page-loader-dots span { animation-duration: .001ms; animation-iteration-count: 1; }
 }

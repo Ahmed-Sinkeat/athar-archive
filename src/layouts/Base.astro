@@ -257,6 +257,23 @@ const fullTitle = title.includes("أهل الأثر") ? title : `${title} · أ�
       </div>
     </footer>
 
+    <!-- page-transition loader: top progress bar + center seal, only shown if
+         navigation actually takes a moment (see wirePageLoader in reader.ts) -->
+    <div class="page-progress" data-page-progress transition:persist>
+      <div class="page-progress-bar" data-page-progress-bar></div>
+    </div>
+    <div class="page-loader" data-page-loader transition:persist>
+      <div class="page-loader-seal">
+        <div class="page-loader-ring-outer"></div>
+        <div class="page-loader-ring-spin"></div>
+        <span class="page-loader-orn" aria-hidden="true">۞</span>
+      </div>
+      <div class="page-loader-label">
+        <span>جارٍ التحميل</span>
+        <span class="page-loader-dots"><span></span><span></span><span></span></span>
+      </div>
+    </div>
+
     <script>
       import "../scripts/reader.ts";
       import "../scripts/marks.ts";
