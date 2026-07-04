@@ -30,11 +30,14 @@ export interface ChapterMeta {
   firstPage?: number;
 }
 
+export interface CatalogEntry { label: string; value: string }
+export interface ChapterManifest { chapters: ChapterMeta[]; catalog: CatalogEntry[] }
+
 // Per-chapter book assets (M2): gen-book-chapters.ts writes these at build time
 // so the chapter route never re-fetches + re-splits the whole book per request.
-export async function loadChapterManifest(bookId: string): Promise<ChapterMeta[] | null> {
+export async function loadChapterManifest(bookId: string): Promise<ChapterManifest | null> {
   const raw = await assetText(`/content/book/${bookId}.chapters.json`);
-  return raw == null ? null : (JSON.parse(raw) as ChapterMeta[]);
+  return raw == null ? null : (JSON.parse(raw) as ChapterManifest);
 }
 
 // Chapter bodies live in the BOOK_ASSETS R2 bucket (scripts/upload-r2-assets.mjs),

@@ -25,9 +25,8 @@ function collectText(node: any): string {
 
 // Wrap recognised Arabic spans in colour tokens from punctuation already in the
 // text → no database. ﴿…﴾ is unambiguous (Quranic ornate brackets).
-// Quotes «…» / “…” all get ONE colour: punctuation can't
-// tell a hadith from any other citation, so we don't guess. The distinct
-// `tok-hadith` colour stays in CSS for an explicit opt-in later.
+// Quotes «…» / “…” all get ONE colour (tok-quote, blue) — «…» is used almost
+// exclusively for hadith/matn citations across the corpus.
 // Runs AFTER sanitize. Skips code/pre. First matching opener wins.
 // ponytail: \u escapes — esbuild rejects raw Arabic chars in regex literals
 const TOK_RE = new RegExp(
@@ -153,7 +152,11 @@ function rehypeMasailQA() {
   };
 }
 
-const SENTENCE_BREAK_RE = /([^0-9\u0660-\u0669\s٫ـ\.]{2,})\.(\s+)/g;
+// Optional tail after the real word and before the period: a printed
+// footnote digit (plain text, not a <sup>) often sits right before the
+// closing quote — e.g. «...؟ 1». — which would otherwise starve the {2,}
+// word-char lookback right at the dot and silently skip the break.
+const SENTENCE_BREAK_RE = /([^0-9\u0660-\u0669\s٫ـ\.]{2,}(?:\s?[0-9\u0660-\u0669]{1,2}["'»”)\]]?)?)\.(\s+)/g;
 
 function splitSentenceBreaks(value: string): any[] {
   const out: any[] = [];
@@ -259,12 +262,54 @@ function rehypeSentenceBreaks() {
   };
 }
 
+// EPUB-import inline footnotes: `<sup data-fn="N" data-sep-page="M">N</sup>`
+// with the note text bundled on the NEXT page-sep marker's data-notes JSON
+// array (1-indexed by N). reader.ts's popover only wires up
+// `sup[data-fn][data-note]` — without this pass those sups are inert (click
+// does nothing), since data-note is never attached to them.
+function propVal(props: Record<string, any> | undefined, dashName: string): string | undefined {
+  if (!props) return undefined;
+  if (props[dashName] != null) return String(props[dashName]);
+  const camel = dashName.replace(/-([a-z])/g, (_, c: string) => c.toUpperCase());
+  return props[camel] != null ? String(props[camel]) : undefined;
+}
+function rehypeInlineFootnotes() {
+  return (tree: any) => {
+    const notesByPage = new Map<string, string[]>();
+    const collect = (node: any) => {
+      if (node.tagName === "hr") {
+        const page = propVal(node.properties, "data-page");
+        const raw = propVal(node.properties, "data-notes");
+        if (page && raw) {
+          try { notesByPage.set(page, JSON.parse(raw)); } catch { /* malformed — skip */ }
+        }
+      }
+      node.children?.forEach(collect);
+    };
+    collect(tree);
+    if (notesByPage.size === 0) return;
+    const inject = (node: any) => {
+      if (node.tagName === "sup" && node.properties) {
+        const fn = propVal(node.properties, "data-fn");
+        const sepPage = propVal(node.properties, "data-sep-page");
+        if (fn && sepPage && !propVal(node.properties, "data-note")) {
+          const note = notesByPage.get(sepPage)?.[Number(fn) - 1];
+          if (note) node.properties["data-note"] = note;
+        }
+      }
+      node.children?.forEach(inject);
+    };
+    inject(tree);
+  };
+}
+
 const processor = unified()
   .use(remarkParse)
   .use(remarkGfm)
   .use(remarkRehype, { allowDangerousHtml: true })
   .use(rehypeRaw)
   .use(rehypeSanitize, sanitizeSchema)
+  .use(rehypeInlineFootnotes)
   .use(rehypeSentenceBreaks)
   .use(rehypeWikiLinks)
   .use(rehypeArabicTokens)

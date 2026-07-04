@@ -88,7 +88,7 @@ const jsonLd = bookLd({
       { label: entry.data.title },
     ]}
   />
-  <div class:list={["wrap-matn", "reading-pad", { "hadith-accent": isHadith }]}>
+  <div class:list={["wrap-matn", "reading-pad", { "hadith-accent": isHadith }]} data-cite-book={entry.data.title} data-cite-author={author}>
     <div class="reader-head">
       <a class="eyebrow u87c136d pill-link" href={isMatn("book", entry.data) ? "/matn" : "/books"}>{topicLabel}</a>
       <div class:list={["ornament", { "ornament-green": isHadith }]} aria-hidden="true">۞</div>

@@ -633,7 +633,15 @@ function enhanceProse() {
     return sheet;
   }
 
-  const packIds = () => [...document.querySelectorAll<HTMLElement>("[data-ann-pack]")].map((p) => p.id);
+  // Quran pack fragments are fetched on demand and only exist in the DOM once
+  // opened, so [data-ann-pack] alone would only ever list ayat already tapped
+  // this session — the ayah-number buttons are all present from first render
+  // and cover the whole surah, so prefer them when available (quran pages only).
+  const packIds = () => {
+    const btnIds = [...document.querySelectorAll<HTMLElement>(".ayah-num-btn[data-ann]")].map((b) => b.dataset.ann!);
+    if (btnIds.length) return btnIds;
+    return [...document.querySelectorAll<HTMLElement>("[data-ann-pack]")].map((p) => p.id);
+  };
 
   function anchorLabel(pack: HTMLElement): string {
     const mPage = pack.id.match(/^ann-page-(\d+)$/);
@@ -702,11 +710,27 @@ function enhanceProse() {
     const nav = (label: string, targetId: string | undefined, cls: string) => {
       const b = document.createElement("button");
       b.type = "button"; b.className = "ann-nav " + cls; b.textContent = label;
-      if (!targetId) b.disabled = true;
-      else b.addEventListener("click", () => {
-        (document.getElementById(targetId)?.closest(".verse") || document.getElementById(targetId))
-          ?.scrollIntoView({ behavior: "smooth", block: "center" });
-        openSheet(targetId);
+      if (!targetId) { b.disabled = true; return b; }
+      b.addEventListener("click", () => {
+        const jump = () => {
+          (document.getElementById(targetId)?.closest(".verse") || document.getElementById(targetId))
+            ?.scrollIntoView({ behavior: "smooth", block: "center" });
+          openSheet(targetId);
+        };
+        // quran packs are fetched fragments, only appended to <body> once opened
+        // — prev/next used to only reach ayat already tapped this session
+        // because packIds() (and thus this button's target) only counted packs
+        // already in the DOM. The ayah-number buttons cover the whole surah
+        // from first render, so use them to resolve + fetch a not-yet-opened
+        // target instead of silently doing nothing.
+        if (document.getElementById(targetId)) { jump(); return; }
+        const srcBtn = document.querySelector<HTMLElement>(`[data-ann="${targetId}"][data-ann-src]`);
+        const annSrc = srcBtn?.dataset.annSrc;
+        if (!annSrc) return;
+        fetch(annSrc).then((r) => (r.ok ? r.text() : "")).then((html) => {
+          if (html) document.body.insertAdjacentHTML("beforeend", html);
+          jump();
+        });
       });
       return b;
     };
@@ -880,6 +904,10 @@ function onPage() {
 }
 onPage();
 document.addEventListener("astro:page-load", onPage);
+// bfcache restore (mobile back/swipe gesture) doesn't fire Astro's router
+// events, so a drawer/popover left open before navigating away could restore
+// "stuck" open with no working close handler — reset chrome state on it too.
+window.addEventListener("pageshow", (e) => { if (e.persisted) { setDrawer(false); closeAllPops(); } });
 
 // View transitions swap <html>, wiping the attributes the pre-paint inline script
 // set → re-apply saved theme/scale/numbers/mode after each swap (before paint, so

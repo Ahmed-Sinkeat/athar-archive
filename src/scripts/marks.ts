@@ -167,8 +167,33 @@ function pageTitle(): string {
 function positionTools(range: Range) {
   const rect = range.getBoundingClientRect();
   const t = toolbar();
-  t.style.top = `${rect.top + window.scrollY - 8}px`;
+  // Below the selection, not above: the native mobile selection/copy pill
+  // renders right above the selection (and its handles), so a toolbar placed
+  // there is invisible under it — reported as "can't highlight, the pill
+  // covers it". Below stays clear of that OS chrome.
+  t.style.top = `${rect.bottom + window.scrollY + 8}px`;
   t.style.left = `${rect.left + rect.width / 2}px`;
+}
+
+// citation metadata for the "نسخ مع المصدر" action — book/author come from the
+// nearest [data-cite-book] ancestor (set server-side on the reading container),
+// page/juz from the last .page-sep marker before the selection start.
+function citeMeta(range: Range): { book: string; author: string; page?: string; juz?: string } | null {
+  const startEl = range.startContainer.nodeType === 1 ? (range.startContainer as Element) : range.startContainer.parentElement;
+  const container = startEl?.closest<HTMLElement>("[data-cite-book]");
+  if (!container) return null;
+  let page: string | undefined, juz: string | undefined;
+  container.querySelectorAll<HTMLElement>(".page-sep[data-page]").forEach((el) => {
+    const pos = el.compareDocumentPosition(range.startContainer);
+    if (pos === 0 || pos & Node.DOCUMENT_POSITION_FOLLOWING) { page = el.dataset.page; juz = el.dataset.juz; }
+  });
+  return { book: container.dataset.citeBook || "", author: container.dataset.citeAuthor || "", page, juz };
+}
+function copyWithSource(range: Range, text: string, onDone: (label: string) => void) {
+  const meta = citeMeta(range);
+  if (!meta) return;
+  const parts = [meta.book, meta.author, meta.page ? `ص ${meta.page}` : "", meta.juz ? `ج ${meta.juz}` : ""].filter(Boolean);
+  navigator.clipboard?.writeText(`"${text}"\n— ${parts.join("، ")}`).then(() => onDone("تم النسخ ✓"));
 }
 
 function showToolbar(range: Range) {
@@ -191,6 +216,9 @@ function showToolbar(range: Range) {
   btn("مراجعة", "review", () => openNote("review", off, text));
   btn("فائدة", "benefit", () => openNote("benefit", off, text));
   btn("إشارة", "bookmark", () => { addMark("bookmark", off, text); done(); });
+  if (citeMeta(range)) {
+    const c = btn("انسخ مع المصدر", null, () => copyWithSource(range, text, (label) => { c.lastChild!.textContent = label; setTimeout(done, 900); }));
+  }
   if (over.length) { const d = btn("حذف", null, () => { removeMarks(new Set(over.map((m) => m.id))); done(); }); d.classList.add("aa-del"); }
   positionTools(range);
   t.setAttribute("data-open", "");

@@ -88,6 +88,13 @@ describe("markdownToSafeHtml", () => {
       expect(html2).toContain('<span class="tok-quote">«الْإِيمَانُ»</span>.<br class="sentence-br">فَقَالَتِ');
     });
 
+    it("breaks sentences ending with a plain-text footnote digit before the closing quote", () => {
+      // Muwatta-style: printed footnote number sits inside the quote, before
+      // the closing mark and the sentence-final dot -- not a <sup> at all.
+      const html = markdownToSafeHtml('فَقَالَ: أَفَلَا وكلتَ الْأُولَى كَمَا وَكَّلْتَ الْأُخْرَى؟ 1". عُبَيْدٍ قَالَ');
+      expect(html).toContain('<br class="sentence-br">');
+    });
+
     it("does not break inside heading tags, code blocks, or custom tags", () => {
       const html1 = markdownToSafeHtml("## بَابُ نَعْتِ الْإِيمَانِ. اسْتِكْمَالِهِ");
       expect(html1).not.toContain("br");
@@ -107,6 +114,18 @@ describe("markdownToSafeHtml", () => {
       // Case 3: Dot is after <sup>, followed by space
       const html2 = markdownToSafeHtml("علماً»<sup>1</sup>. وقال سلمان");
       expect(html2).toContain('علماً»<sup>1</sup>.<br class="sentence-br">وقال سلمان');
+    });
+  });
+
+  describe("inline epub footnotes (data-fn + data-sep-page)", () => {
+    it("wires a data-note attribute from the page-sep's data-notes so the popover can open", () => {
+      const md = `نص قبل<sup data-fn="2" data-sep-page="36">2</sup>بعد النص.
+
+<hr class="page-sep" data-page="36" data-notes='["ملاحظة أولى.","ملاحظة ثانية."]' />
+
+نص تال.`;
+      const html = markdownToSafeHtml(md);
+      expect(html).toContain('data-note="ملاحظة ثانية."');
     });
   });
 });

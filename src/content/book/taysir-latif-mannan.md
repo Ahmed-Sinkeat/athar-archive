@@ -1,5 +1,5 @@
 ---
-title: "تيسير اللطيف المنان"
+title: "تيسير اللطيف المنان في خلاصة تفسير القرآن"
 person: "al-saadi"
 status: "published"
 published_at: "2026-06-27"

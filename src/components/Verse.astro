@@ -46,7 +46,7 @@ const popId = `ann-${anchor}`;
 <div class="verse" id={anchor}>
   <div class="verse-inner">
     <div class="vnum">{toArabicDigits(n)}</div>
-    <div class="verse-body" data-ar>
+    <div class:list={["verse-body", { "no-ajz": !ajz }]} data-ar>
       <div class="sadr">
         {inSadr ? (
           <>{inSadr.before}<a class="ann-mark" href={`#${popId}`} data-ann={popId} aria-haspopup="dialog">{inSadr.mark}</a>{inSadr.after}</>
