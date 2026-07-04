@@ -1,6 +1,8 @@
-// Personal, device-only reading layer: highlights (مراجعة/حفظ + فائدة), bookmarks
-// (إشارات مرجعية), in-page find with highlighting, and Kindle-style resume
-// (آخر موضع قراءة). Nothing leaves the browser — all state in localStorage.
+// Personal, device-only reading layer: highlights (خطأ للإبلاغ عنه + فائدة +
+// ملاحظة), in-page find with highlighting, and Kindle-style resume (آخر موضع
+// قراءة). Nothing leaves the browser — all state in localStorage. "خطأ" marks
+// are reviewed and sent as one batch from /benefits (see library.ts), not
+// per-page — this file only records and paints them.
 //
 // Highlights paint via the CSS Custom Highlight API (no DOM mutation, so they
 // never fight reader.ts's tashkeel/annotation surgery and inherit every theme).
@@ -12,7 +14,7 @@
 
 import { stripTashkeel } from "../lib/display";
 
-type Kind = "review" | "benefit" | "bookmark";
+type Kind = "mistake" | "benefit" | "note";
 interface Mark {
   id: string;
   start: number;
@@ -23,7 +25,7 @@ interface Mark {
   title?: string;
 }
 
-const HL_NAME: Record<Kind, string> = { review: "aa-review", benefit: "aa-benefit", bookmark: "aa-bookmark" };
+const HL_NAME: Record<Kind, string> = { mistake: "aa-mistake", benefit: "aa-benefit", note: "aa-note-hl" };
 const docId = () => location.pathname.replace(/\/$/, "") || "/";
 const keyFor = (path: string) => "aa-marks:" + path;
 const posKey = () => "aa-pos:" + docId();
@@ -98,7 +100,7 @@ function paint() {
   if (!supportsHL) return;
   const r = root();
   if (!r) return;
-  (["review", "benefit", "bookmark"] as Kind[]).forEach((k) => {
+  (["mistake", "benefit", "note"] as Kind[]).forEach((k) => {
     let hl = highlights[k];
     if (!hl) { hl = new (window as any).Highlight(); highlights[k] = hl; CSS.highlights.set(HL_NAME[k], hl); }
     hl.clear();
@@ -213,9 +215,9 @@ function showToolbar(range: Range) {
     t.appendChild(b);
     return b;
   };
-  btn("مراجعة", "review", () => openNote("review", off, text));
+  btn("خطأ", "mistake", () => openNote("mistake", off, text));
   btn("فائدة", "benefit", () => openNote("benefit", off, text));
-  btn("إشارة", "bookmark", () => { addMark("bookmark", off, text); done(); });
+  btn("ملاحظة", "note", () => openNote("note", off, text));
   if (citeMeta(range)) {
     const c = btn("انسخ مع المصدر", null, () => copyWithSource(range, text, (label) => { c.lastChild!.textContent = label; setTimeout(done, 900); }));
   }
@@ -231,7 +233,7 @@ function openNote(kind: Kind, off: { start: number; end: number }, text: string)
   const wrap = document.createElement("div");
   wrap.className = "aa-note";
   const ta = document.createElement("textarea");
-  ta.placeholder = "أضف فائدة… (اختياري)";
+  ta.placeholder = kind === "mistake" ? "صِفِ الخطأ… (اختياري)" : kind === "note" ? "أضف ملاحظة… (اختياري)" : "أضف فائدة… (اختياري)";
   ta.addEventListener("mousedown", (e) => e.stopPropagation());
   const ok = document.createElement("button");
   ok.textContent = "حفظ";
@@ -403,21 +405,6 @@ document.addEventListener("astro:before-swap", saveScroll); // SPA nav won't fir
 // expose the find opener for an optional button (data-action="page:find")
 document.addEventListener("click", (e) => {
   if ((e.target as HTMLElement).closest('[data-action="page:find"]')) { e.preventDefault(); openFind(); }
-  const sendBtn = (e.target as HTMLElement).closest<HTMLElement>('[data-action="transcript:send-review"]');
-  if (sendBtn) {
-    e.preventDefault();
-    const bookTitle = sendBtn.dataset.book || "الكتاب";
-    const marks = load().filter(m => m.kind === "review");
-    if (!marks.length) {
-      alert("لا توجد ملاحظات مراجعة (تظليل المراجعة) مسجلة حالياً في هذه الصفحة.");
-      return;
-    }
-    const body = `ملاحظات مراجعة تفريغ: ${bookTitle}\n\n` + marks.map(m => {
-      return `موضع: "${m.text}"\nملاحظة: ${m.note || "لا توجد ملاحظة إضافية"}\n`;
-    }).join("\n---\n\n");
-    
-    window.location.href = `mailto:admin@ahlalathar.com?subject=مراجعة تفريغ: ${encodeURIComponent(bookTitle)}&body=${encodeURIComponent(body)}`;
-  }
 });
 
 function onPage() {

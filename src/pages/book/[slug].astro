@@ -107,12 +107,6 @@ const jsonLd = bookLd({
     </div>
     {audios.length > 0 && <div class="u49fcd85"><AudioPlayer sources={audios} label="استماعٌ إلى المتن" /></div>}
 
-    {entry.data.transcript_status && (
-      <div class="wrap-mid" style="margin-top: 1rem; text-align: center;">
-        <button type="button" class="btn" data-action="transcript:send-review" data-book={entry.data.title}>أرسل ملاحظات المراجعة عبر البريد</button>
-      </div>
-    )}
-
     <div class="rule-short"></div>
 
     {chunked ? (
