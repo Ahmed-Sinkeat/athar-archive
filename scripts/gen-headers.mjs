@@ -18,8 +18,12 @@ function walk(dir) {
   });
 }
 
-// inline <script> with no src and not JSON-LD (JSON-LD isn't executed → not script-src governed)
-const INLINE_SCRIPT = /<script(?![^>]*\bsrc=)(?![^>]*application\/ld\+json)[^>]*>([\s\S]*?)<\/script>/g;
+// inline <script> with no src and not a data island (application/json, JSON-LD —
+// neither is executed by the browser, so CSP script-src doesn't govern them).
+// Without this exclusion, per-page data (e.g. each book's chapter-slug map)
+// hashes to a distinct value and the hash list grows without bound as content
+// is added, eventually exceeding Cloudflare's 2000-char-per-line _headers limit.
+const INLINE_SCRIPT = /<script(?![^>]*\bsrc=)(?![^>]*\btype=["']application\/(?:ld\+json|json)["'])[^>]*>([\s\S]*?)<\/script>/g;
 
 const hashes = new Set();
 for (const file of walk(DIST)) {
