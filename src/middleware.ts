@@ -5,8 +5,9 @@ import { defineMiddleware } from "astro:middleware";
 // alone does NOT populate Cloudflare's cache for a Worker response (cf-cache-status
 // stays DYNAMIC) — the Cache API is the documented path. Static asset responses are
 // untouched (they get _headers + their own caching).
-// /book/<slug>/<chapter> and /series/<slug>/<lesson> — the on-demand reading routes.
-const READING = /^\/(?:book|series)\/[^/]+\/[^/]+\/?$/;
+// /book/<slug>/<chapter>, /series/<slug>/<lesson>, and /tafsir-frag/<surah>/<ayah>.html
+// — the on-demand reading routes.
+const READING = /^\/(?:book|series)\/[^/]+\/[^/]+\/?$|^\/tafsir-frag\/\d+\/\d+\.html$/;
 
 // Cache key is versioned by build id (below), so a long TTL here is safe — a
 // redeploy can't serve a stale entry, it just misses and repopulates.

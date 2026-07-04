@@ -59,8 +59,8 @@ ok(/"@type":\["CreativeWork","Poem"\]/.test(poem), "Poem JSON-LD");
 ok(/badge-matn/.test(poem), "متن badge on poem reader");
 
 // --- book reader: prose + audio? + annotation packs (open in the bottom sheet) ---
-section("/book/kitab-al-tawhid-epub");
-const book = read("book/kitab-al-tawhid-epub/index.html");
+section("/book/kitab-al-tawhid");
+const book = read("book/kitab-al-tawhid/index.html");
 ok(/"@type":"Book"/.test(book), "Book JSON-LD");
 
 // --- person hub lists works ---
@@ -70,8 +70,8 @@ ok(/من آثارِه في الأرشيف/.test(person), "person lists works sec
 ok(/"@type":"ProfilePage"/.test(person), "ProfilePage JSON-LD");
 
 // --- topic hub lists materials ---
-section("/topic/aam-other");
-const topic = read("topic/aam-other/index.html");
+section("/topic/aam-aqeedah");
+const topic = read("topic/aam-aqeedah/index.html");
 ok((topic.match(/class="card"/g) || []).length >= 1, "topic lists linked materials");
 
 // --- questions QAPage ---
