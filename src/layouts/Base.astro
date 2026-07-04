@@ -122,8 +122,8 @@ const fullTitle = title.includes("أهل الأثر") ? title : `${title} · أ�
   <body>
     <header class="topbar" transition:persist>
       <div class="wrap topbar-row">
-        <button class="icon-btn hamburger" data-action="menu:toggle" aria-label="القائمة">
-          <span class="ham-lines"></span>
+        <button class="hamburger" data-action="menu:toggle" aria-label="القائمة" aria-expanded="false" aria-controls="mobile-drawer">
+          <span aria-hidden="true">☰</span> القائمة
         </button>
 
         <a href="/" class="brand" aria-label="أهل الأثر — الصفحة الرئيسية">
@@ -201,19 +201,19 @@ const fullTitle = title.includes("أهل الأثر") ? title : `${title} · أ�
       <div class="progress-track"><div class="progress-bar" data-progress></div></div>
     </header>
 
-    <!-- mobile drawer -->
+    <!-- mobile nav: compact anchored dropdown (HANDOFF.md §3.5) — not a full-height drawer -->
     <div class="drawer-backdrop" data-drawer-backdrop transition:persist></div>
-    <aside class="drawer" data-drawer aria-label="القائمة" transition:persist>
-      <div class="drawer-head">
-        <span class="brand-name u94aa034" >أهل الأثر</span>
-        <button class="icon-btn u5f04d9d" data-action="menu:close" aria-label="إغلاق" >×</button>
-      </div>
+    <aside class="drawer" id="mobile-drawer" data-drawer aria-label="القائمة" transition:persist>
       <a href={searchHref} class="drawer-search">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="20" y1="20" x2="16.65" y2="16.65"></line></svg>
         <span>البحث</span>
       </a>
-      <div class="drawer-section-label">التصفّح</div>
       {navAll.map((n) => <a href={n.href} data-nav={n.id} aria-current={activeNav === n.id ? "page" : undefined}>{n.label}</a>)}
+      <div class="drawer-swatches theme-swatches">
+        <button type="button" class="theme-swatch theme-swatch-paper" data-theme-btn="paper" data-action="theme:paper" aria-pressed="true" aria-label="سمة ورقية (سيبيا)" title="سيبيا"></button>
+        <button type="button" class="theme-swatch theme-swatch-noir" data-theme-btn="noir" data-action="theme:noir" aria-pressed="false" aria-label="سمة داكنة بالأسود والذهبي" title="أسود وذهبي"></button>
+        <button type="button" class="theme-swatch theme-swatch-mono" data-theme-btn="mono" data-action="theme:mono" aria-pressed="false" aria-label="سمة بيضاء نظيفة" title="أبيض وأسود"></button>
+      </div>
     </aside>
 
     <main data-active-nav={activeNav}>

@@ -14,7 +14,7 @@ const LS = {
 };
 
 const SCALE_MIN = 0.8;
-const SCALE_MAX = 1.6;
+const SCALE_MAX = 1.3; // base 20px * 1.3 = 26px, matches HANDOFF.md §2's 16-26 range
 const SCALE_STEP = 0.1;
 
 let root = document.documentElement;
@@ -107,14 +107,16 @@ document.addEventListener("change", (e) => {
   });
 });
 
-// --- mobile drawer ---
+// --- mobile nav dropdown ---
 function setDrawer(open: boolean) {
   const drawer = document.querySelector<HTMLElement>("[data-drawer]");
   const backdrop = document.querySelector<HTMLElement>("[data-drawer-backdrop]");
   if (!drawer || !backdrop) return;
   drawer.toggleAttribute("data-open", open);
   backdrop.toggleAttribute("data-open", open);
-  document.body.style.overflow = open ? "hidden" : "";
+  document.querySelectorAll<HTMLElement>('[data-action="menu:toggle"]').forEach((b) =>
+    b.setAttribute("aria-expanded", String(open)),
+  );
 }
 
 // --- topbar search + popovers ---

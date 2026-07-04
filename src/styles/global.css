@@ -58,12 +58,14 @@ html[data-theme="noir"] {
   --brand: #D4A72C; --brand2: #E8C158; --onbrand: #14120A;
   --gold: #D4A72C; --green: #6FBF9B; --copper: #CC9A6E; --blue: #7FA6E8;
 }
-/* mono — white + black, Notion-style clean */
+/* mono — crisp cool white + lapis-blue chrome (HANDOFF.md §1: NOT a
+   grayscale/Notion theme; bg/card must be visibly distinct or it's the
+   flat all-#FFFFFF bug this replaces) */
 html[data-theme="mono"] {
-  --bg: #FFFFFF; --card: #FFFFFF; --inset: #F1F1EF;
-  --ink: #191919; --ink2: #6B6B6B; --ink3: #9B9B9B;
-  --line: rgba(25,25,25,.09); --line2: rgba(25,25,25,.18);
-  --brand: #1A1A1A; --brand2: #000000; --onbrand: #FFFFFF;
+  --bg: #EEF1F6; --card: #FFFFFF; --inset: #E4E9F1;
+  --ink: #1B2028; --ink2: #5B6472; --ink3: #8D95A5;
+  --line: rgba(27,32,40,.11); --line2: rgba(27,32,40,.24);
+  --brand: #1E4E8C; --brand2: #173E70; --onbrand: #F6FAFF;
   --gold: #8E6A1C; --green: #2A5C49; --copper: #8C4A2E; --blue: #2A4C8C;
 }
 
@@ -195,6 +197,7 @@ img { max-width: 100%; }
 }
 /* theme swatches (settings popover) */
 .theme-swatches { display: flex; gap: 10px; padding: 4px 2px 12px; }
+.drawer-swatches { border-top: 1px solid var(--rule); margin-top: 6px; padding-top: 12px; justify-content: center; }
 .theme-swatch {
   width: 30px; height: 30px; border-radius: 50%; border: 2px solid transparent;
   cursor: pointer; padding: 0; position: relative;
@@ -216,12 +219,13 @@ img { max-width: 100%; }
 .progress-track { height: 2px; background: var(--rule); }
 .progress-bar { height: 100%; width: 0; background: var(--accent); transition: width 0.12s linear; }
 
-.hamburger { display: none; }
-.ham-lines, .ham-lines::before, .ham-lines::after {
-  display: block; width: 16px; height: 1.6px; background: currentColor; border-radius: 2px; position: relative;
+/* HANDOFF.md §3.5: rounded "☰ القائمة" pill, not a bare icon button */
+.hamburger {
+  display: none; align-items: center; gap: 6px; font-family: var(--f-ui); font-size: 13.5px;
+  color: var(--ink2); background: var(--surface); border: 1px solid var(--rule-strong);
+  border-radius: 999px; padding: 7px 14px; cursor: pointer; touch-action: manipulation;
 }
-.ham-lines::before, .ham-lines::after { content: ""; position: absolute; left: 0; }
-.ham-lines::before { top: -5px; } .ham-lines::after { top: 5px; }
+.hamburger span { font-size: 13px; }
 
 /* ---- popovers (filter + reading settings) ---- */
 .popover {
@@ -263,20 +267,24 @@ img { max-width: 100%; }
 .pop-btns { display: flex; gap: 6px; }
 .pop-toggle { width: 100%; justify-content: flex-start; }
 
-/* ---------- mobile drawer ---------- */
-.drawer-backdrop { display: none; position: fixed; inset: 0; z-index: 60; background: rgba(20, 16, 12, 0.45); }
+/* ---------- mobile nav dropdown (HANDOFF.md §3.5) ----------
+   Compact anchored card below the "☰ القائمة" trigger, not a full-height
+   side drawer: rounded, own scroll, max-height ~75vh. Closes on outside
+   click (invisible backdrop, just a click-catcher) or picking a nav item. */
+.drawer-backdrop { display: none; position: fixed; inset: 0; z-index: 60; }
 .drawer-backdrop[data-open] { display: block; }
 .drawer {
-  position: fixed; top: 0; right: 0; z-index: 61; width: min(82vw, 320px); height: 100%;
-  background: var(--surface); border-left: 1px solid var(--rule-strong);
-  box-shadow: -18px 0 50px rgba(0, 0, 0, 0.22); transform: translateX(100%);
-  transition: transform 0.28s ease; padding: 22px 20px; overflow-y: auto;
+  position: fixed; top: 64px; inset-inline-end: 14px; z-index: 61; width: min(78vw, 280px);
+  max-height: 75vh; overflow-y: auto;
+  background: var(--surface); border: 1px solid var(--rule-strong); border-radius: 12px;
+  box-shadow: 0 14px 40px rgba(20, 16, 12, 0.18);
+  opacity: 0; visibility: hidden; transform: translateY(-6px);
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+  padding: 10px; display: grid; gap: 2px;
 }
-.drawer[data-open] { transform: translateX(0); }
-.drawer-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; }
-.drawer a { display: block; font-size: 16px; color: var(--ink); text-decoration: none; padding: 11px 12px; border-radius: 9px; }
+.drawer[data-open] { opacity: 1; visibility: visible; transform: translateY(0); }
+.drawer a { display: block; font-size: 15px; color: var(--ink); text-decoration: none; padding: 10px 12px; border-radius: 9px; }
 .drawer a:hover { background: var(--paper-2); }
-.drawer-section-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.2em; color: var(--ink-faint); margin: 16px 0 8px; }
 a.icon-btn { text-decoration: none; }
 .sr-only, .hero-title { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 .u-center-text { text-align: center; }
@@ -501,8 +509,11 @@ summary::-webkit-details-marker { display: none; }
   .ajz {
     padding-inline-start: 0;
   }
+  /* HANDOFF.md §3.5: keep the ❁ on mobile — poetry's one signature mark —
+     re-flowed as a small centered line between the stacked hemistichs
+     instead of the desktop's absolutely-centered overlap. */
   .verse-hemistich-rule {
-    display: none;
+    position: static; display: block; transform: none; width: auto; height: auto; margin: 2px 0;
   }
 }
 .chapter-band { text-align: center; margin: 40px 0 26px; }
@@ -666,10 +677,10 @@ textarea.cinput { resize: vertical; line-height: 1.7; }
 .weekly-card.k-copper .weekly-ref { color: var(--copper); }
 
 /* ---------- prose (matn / article / lesson body) — Phase 4 ---------- */
-.prose { font-family: var(--font-serif); }
+.prose { font-family: var(--f-disp); }
 .prose p {
-  /* Phase 4: reduced from 20px → 18px, tightened line-height, narrower measure */
-  font-size: calc(18.5px * var(--reading-scale)); line-height: 2.0; color: var(--ink);
+  /* HANDOFF.md §2: matn body is --f-matn, default 20px (16-26 adjustable), line-height 2.2 */
+  font-size: calc(20px * var(--reading-scale)); line-height: 2.2; color: var(--ink);
   margin: 0 0 1.6em; text-wrap: pretty;
   text-align: justify; text-align-last: right;
 }
@@ -680,6 +691,7 @@ textarea.cinput { resize: vertical; line-height: 1.7; }
   margin: 40px 0 14px; scroll-margin-top: 90px; letter-spacing: -0.01em;
 }
 .prose h2 { font-size: calc(22px * var(--reading-scale)); }
+.prose h2::before { content: "۞ "; color: var(--gold); } /* HANDOFF.md §5: sub-headings (باب…) get a gold ۞ */
 .prose h3 { font-size: calc(19px * var(--reading-scale)); }
 .prose blockquote {
   /* Phase 2: verdigris for blockquotes — differentiate from accent red */
@@ -893,7 +905,7 @@ html.hide-vnums .vnum { display: none; }
 /* ---------- responsive ---------- */
 @media (max-width: 860px) {
   .topnav { display: none; }
-  .hamburger { display: grid; }
+  .hamburger { display: flex; }
   .brand { align-items: center; }
   /* on mobile the expanded field shouldn't overflow the row */
   .topsearch.is-open .topsearch-input { width: clamp(140px, 52vw, 240px); }
@@ -902,6 +914,12 @@ html.hide-vnums .vnum { display: none; }
   .lesson-grid { grid-template-columns: 1fr; }
   .toc-side { display: none; }
   .browse4-grid { grid-template-columns: 1fr 1fr; }
+  .prevnext { grid-template-columns: 1fr; } /* HANDOFF.md §3.5: generic 2-col cards go 2→1 */
+  /* HANDOFF.md §3.5 general mobile discipline: unscaled desktop rhythm reads
+     as "empty" on phones more than any single broken component */
+  .hero { padding-top: 22px; }
+  .home-section { padding-top: 26px; }
+  .section-head h2 { font-size: 17px; }
 }
 @media (max-width: 480px) {
   .browse4-grid { grid-template-columns: 1fr; }
@@ -911,7 +929,7 @@ html.hide-vnums .vnum { display: none; }
    Mockup reader grid: TOC 232px on the inline-start (right in RTL), article
    left — DOM keeps content first, so both children are placed explicitly. */
 .chap-outer { max-width: 960px; margin: 0 auto; padding-inline: 28px; }
-.chap-grid { display: grid; grid-template-columns: 232px 1fr; gap: 44px; align-items: start; }
+.chap-grid { display: grid; grid-template-columns: 232px 1fr; gap: 52px; align-items: start; } /* HANDOFF.md §5 */
 .chap-grid > .reading-pad { grid-column: 2; grid-row: 1; min-width: 0; }
 .chap-toc-aside { grid-column: 1; grid-row: 1; position: sticky; top: 80px; margin-top: 52px; }
 /* TOC as a quiet rail, not a boxed card: hairline on the content side,
@@ -1273,15 +1291,21 @@ html[data-theme="noir"] ::highlight(aa-find)    { background-color: rgba(255, 15
 .mujam-def { font-family: var(--font-ui); font-size: 0.92rem; color: var(--ink-soft); }
 .mujam-def-head { font-family: var(--font-ui); font-size: 1rem; color: var(--ink-soft); margin-top: 6px; }
 
-/* --- page separator (EPUB-imported books) — static "ص N" marker, no popup --- */
-.page-sep { display: flex; align-items: center; gap: 8px; margin: 24px 0; padding-block-start: 4px; border-block-start: 1px solid var(--rule); color: var(--ink-faint); font-family: var(--font-ui); font-size: 0.78rem; }
-.page-sep::before { content: "ص " attr(data-page); }
+/* --- page separator (EPUB-imported books) — HANDOFF.md §5: dashed hairline
+   with a «ص N» pill, hidden when the page-numbers reader setting is off --- */
+.page-sep { display: flex; justify-content: center; margin: 24px 0; padding-block-start: 12px; border-block-start: 1px dashed var(--rule); }
+.page-sep::before {
+  content: "ص " attr(data-page);
+  font-family: var(--font-ui); font-size: 12.5px; color: var(--ink-faint);
+  border: 1px solid var(--rule-strong); border-radius: 20px; padding: 3px 12px;
+  background: var(--surface); margin-top: -22px;
+}
 /* عرض مستمر — hide the page marker AND rejoin the two <p>s markdown split around
    it (blank lines around the <hr> are required for it to parse as a block, so a
    mid-sentence break always yields two block <p>s); without this the paragraph
    margin still shows as an unexplained gap even with the label gone. */
 html.pages-flow .page-sep { display: inline; margin: 0; padding: 0; border: none; color: transparent; }
-html.pages-flow .page-sep::before { content: " "; }
+html.pages-flow .page-sep::before { content: " "; border: none; background: none; padding: 0; margin: 0; }
 html.pages-flow p:has(+ .page-sep),
 html.pages-flow .page-sep + p { display: inline; margin: 0; }
 
@@ -1290,9 +1314,10 @@ html.pages-flow .page-sep + p { display: inline; margin: 0; }
    تخريج note is cited by) rather than a CSS counter — a per-page counter would
    restart at 1 while the inline superscript keeps counting continuously through
    the whole chapter, so the two would drift apart page after page. */
-.page-footnotes { margin: 10px 0 24px; padding: 10px 14px; border-top: 1px solid var(--rule); background: var(--paper-2); border-radius: 8px; }
+.page-footnotes { margin: 10px 0 24px; padding: 10px 14px; border: 1px solid var(--rule); background: var(--paper-2); border-radius: 8px; }
+.page-footnotes .fn-kicker { font-family: var(--font-ui); font-size: 10.5px; font-weight: 600; letter-spacing: .1em; color: var(--ink-faint); display: block; margin-bottom: 6px; }
 .page-footnotes ol { list-style: none; margin: 0; padding: 0; }
-.page-footnotes li { font-family: var(--font-ui); font-size: 12.5px; line-height: 1.8; color: var(--ink-soft); padding: 4px 0; display: none; }
+.page-footnotes li { font-family: var(--f-matn); font-size: 14.5px; line-height: 1.8; color: var(--ink-soft); padding: 4px 0; display: none; }
 .page-footnotes li::before { content: attr(data-fn-num) ". "; color: var(--ink-faint); }
 .page-footnotes li:target { display: block; color: var(--ink); background: color-mix(in srgb, var(--accent) 12%, transparent); border-radius: 4px; }
 .page-footnotes p { display: inline; margin: 0; }

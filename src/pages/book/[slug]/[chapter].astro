@@ -192,7 +192,7 @@ function renderFooter(pageNum: number): string {
       return `<li id="${it.id}" data-fn-num="${num}">${markdownToSafeHtml(it.body)}</li>`;
     })
     .join("");
-  return `<aside class="page-footnotes"><ol>${lis}</ol></aside>`;
+  return `<aside class="page-footnotes"><span class="fn-kicker">الحواشي وفروق النسخ</span><ol>${lis}</ol></aside>`;
 }
 
 // 5. Splice a printed-footer <aside> after each page's content — right before
@@ -346,18 +346,18 @@ const finalContent = (() => {
 
         <!-- prev / next navigation — 2-col cards (mockup) -->
         <nav class="prevnext" aria-label="تنقل بين الفصول">
-          {next ? (
-            <a href={hrefFor("book", entry.id, { chapter: next.slug })}>
-              <span class="pn-kicker">التالي ←</span>
-              <span class="pn-title">{next.title}</span>
-            </a>
-          ) : <span class="pn-end">آخرُ فصول الكتاب</span>}
           {prev ? (
             <a href={hrefFor("book", entry.id, { chapter: prev.slug })}>
               <span class="pn-kicker">→ السابق</span>
               <span class="pn-title">{prev.title}</span>
             </a>
           ) : <span class="pn-end">أولُ فصول الكتاب</span>}
+          {next ? (
+            <a href={hrefFor("book", entry.id, { chapter: next.slug })}>
+              <span class="pn-kicker">التالي ←</span>
+              <span class="pn-title">{next.title}</span>
+            </a>
+          ) : <span class="pn-end">آخرُ فصول الكتاب</span>}
         </nav>
       </div>
 
