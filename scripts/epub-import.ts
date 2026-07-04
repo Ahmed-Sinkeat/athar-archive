@@ -326,7 +326,7 @@ export function pageToVerseLines(
   const headings: string[] = [];
   inner = inner.replace(/<span class=["']title["']>([\s\S]*?)<\/span>/gi, (_m, t) => {
     const h = cleanInline(t).replace(/^[\d\s.ـ\-–—]+/, "");
-    if (h) headings.push(`## ${h}`);
+    if (h && !/^\[?\s*ص\s*:?\s*\d+\s*\]?$/.test(h)) headings.push(`## ${h}`);
     return "";
   });
 
@@ -376,9 +376,14 @@ export function pageToMd(xhtml: string, pageId: string): { md: string; notes: st
   inner = extracted.cleaned;
   const fnotes = extracted.fnotes;
 
-  // chapter titles → H2
-  inner = inner.replace(/<span class=["']title["']>([\s\S]*?)<\/span>/gi,
-    (_m, t) => `\n## ${cleanInline(t).replace(/^[\d\s.ـ\-–—]+/, "")}\n`);
+  // chapter titles → H2, except inline print-page markers like "[ص: 104]"
+  // which Shamela also tags with class="title" but which appear mid-sentence
+  // and must not fragment the text into fake chapters.
+  inner = inner.replace(/<span class=["']title["']>([\s\S]*?)<\/span>/gi, (_m, t) => {
+    const h = cleanInline(t).replace(/^[\d\s.ـ\-–—]+/, "");
+    if (/^\[?\s*ص\s*:?\s*\d+\s*\]?$/.test(h)) return `[${h.replace(/^\[|\]$/g, "")}]`;
+    return `\n## ${h}\n`;
+  });
   inner = inner.replace(/<span class=["']red["']>([\s\S]*?)<\/span>/gi, "$1");
 
   // structure → text
@@ -1175,6 +1180,15 @@ function selftest() {
   a(notes[0] === "إسناده صحيح",   "note text in notes array: " + notes[0]);
   a(parsedJuz === "1",             "parsed juz: " + parsedJuz);
   a(parsedPage === "3",            "parsed page: " + parsedPage);
+
+  // ── inline print-page marker must not fragment into a fake chapter ──
+  const pageMarkerSample =
+    `<body><div id="book-container"><hr/>` +
+    `قال حَمَّادُ بْنُ قِيرَاطٍ<span class="title">[ص: 104]</span>: سَمِعْتُ إِبْرَاهِيمَ` +
+    `</div><hr/></body>`;
+  const pm = pageToMd(pageMarkerSample, "P1");
+  a(!pm.md.includes("##"),          "page marker not promoted to heading: " + pm.md);
+  a(pm.md.includes("[ص: 104]"),     "page marker text kept inline: " + pm.md);
 
   // ── poem verse extraction ──
   const versePage =

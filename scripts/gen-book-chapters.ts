@@ -5,6 +5,12 @@
 // For chunked books this also removes the whole-book .md asset copied by
 // copy-content-assets.mjs — the 25 MiB-per-asset risk it created. Runs after
 // copy-content-assets.mjs.
+//
+// Chapter bodies write to dist/r2-upload/ (not dist/client/) — a large book can
+// be thousands of chapter files, which pushed deploys toward the Workers Static
+// Assets 20k-file ceiling. scripts/upload-r2-assets.mjs pushes that directory to
+// the BOOK_ASSETS R2 bucket instead; only the small per-book manifest stays a
+// static asset (one file per book, not per chapter).
 import fs from "node:fs";
 import path from "node:path";
 import { loadContentFromDisk } from "../src/lib/load.js";
@@ -20,7 +26,7 @@ function main() {
     if (!a.chunked) continue;
     chunkedCount++;
 
-    const dir = path.resolve(`dist/client/content/book/${book.id}`);
+    const dir = path.resolve(`dist/r2-upload/book/${book.id}`);
     fs.mkdirSync(dir, { recursive: true });
     // "اقرأ في موضعه" deep-links (#pN) need to know which chapter a page lives
     // in even for heading-split chapters (no firstPage from page-slicing) — fall
@@ -44,7 +50,7 @@ function main() {
     if (fs.existsSync(wholeBook)) fs.rmSync(wholeBook);
   }
 
-  console.log(`✓ gen-book-chapters: ${chunkedCount} chunked book(s), ${chapterCount} chapter file(s) → dist/client/content/book`);
+  console.log(`✓ gen-book-chapters: ${chunkedCount} chunked book(s), ${chapterCount} chapter file(s) → dist/r2-upload/book`);
 }
 
 main();

@@ -1,7 +1,12 @@
 // Per-verse tafsir fragments (M1 of HANDOFF-perf-size.md). Replaces inlining the
 // 93MB quran-tafsir-index.json into every surah page (surah 2 was 7.8MB of HTML)
-// with one small static fragment per verse, fetched on demand when the reader
-// opens a verse's tafsir sheet. Runs after `astro build`.
+// with one small fragment per verse, fetched on demand when the reader opens a
+// verse's tafsir sheet. Runs after `astro build`.
+//
+// Fragments write to dist/r2-upload/ (not dist/client/) — ~6,200 files pushed
+// deploys toward the Workers Static Assets 20k-file ceiling. scripts/upload-r2-assets.mjs
+// pushes them to the BOOK_ASSETS R2 bucket; src/pages/tafsir-frag/[surah]/[ayah].ts
+// serves them on demand (was a plain static file before, same URL shape).
 import fs from "node:fs";
 import path from "node:path";
 import { markdownToSafeHtml } from "../src/lib/sanitize.js";
@@ -13,7 +18,7 @@ const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/"/g, "&quot;").repl
 
 function main() {
   const index = tafsirIndex as Record<string, TafsirNote[]>;
-  const outRoot = path.resolve("dist/client/tafsir-frag");
+  const outRoot = path.resolve("dist/r2-upload/tafsir-frag");
   let written = 0;
 
   for (const [verseKey, notes] of Object.entries(index)) {
@@ -35,7 +40,7 @@ function main() {
     written++;
   }
 
-  console.log(`✓ gen-tafsir-frags: ${written} verse fragment(s) → dist/client/tafsir-frag`);
+  console.log(`✓ gen-tafsir-frags: ${written} verse fragment(s) → dist/r2-upload/tafsir-frag`);
 }
 
 main();

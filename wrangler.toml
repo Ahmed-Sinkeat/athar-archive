@@ -12,3 +12,14 @@ enabled = true
 binding = "SEARCH"
 database_name = "athar-search"
 database_id = "e504e022-1bc1-4d05-a482-e1f815c31004"
+
+# Book chapter bodies + Quran tafsir fragments (thousands of small files —
+# moved off Workers Static Assets so deploys stay under the 20k-file ceiling
+# as more books get added). Uploaded by scripts/upload-r2-assets.mjs, which
+# needs remote=true here to reach the real bucket via getPlatformProxy
+# (Astro dev never touches this binding — book-asset.ts's DEV branch reads
+# from disk instead — so this has no effect on local app dev).
+[[r2_buckets]]
+binding = "BOOK_ASSETS"
+bucket_name = "athar-book-assets"
+remote = true

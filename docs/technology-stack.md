@@ -70,7 +70,7 @@ Stable. Cloudflare Workers matches our global scaling demands with minimal maint
 ## Cloudflare R2
 
 ### Purpose
-Object storage for large media files (Opus-encoded recitations, PDF downloads, cover images).
+Object storage for large media files (Opus-encoded recitations, PDF downloads, cover images), and — since 2026-07-03 — book chapter bodies and Quran tafsir fragments, moved off Workers Static Assets to keep deploys under the 20,000-file limit as more books are added (see `docs/HANDOFF-perf-size.md`).
 
 ### Why we chose it
 Cloudflare R2 provides S3-compatible storage with **zero egress fees**. In a digital library, users download large files (PDF/Audio) repeatedly. Traditional storage providers (like AWS S3) charge per GB of downloaded traffic, which would make the archive financially unsustainable at scale. R2 eliminates egress bills entirely.

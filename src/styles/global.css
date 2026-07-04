@@ -1261,15 +1261,25 @@ html[data-theme="noir"] ::highlight(aa-find)    { background-color: rgba(255, 15
 /* --- page separator (EPUB-imported books) — static "ص N" marker, no popup --- */
 .page-sep { display: flex; align-items: center; gap: 8px; margin: 24px 0; padding-block-start: 4px; border-block-start: 1px solid var(--rule); color: var(--ink-faint); font-family: var(--font-ui); font-size: 0.78rem; }
 .page-sep::before { content: "ص " attr(data-page); }
-/* عرض مستمر — hide page markers; the printed-footer footnotes stay visible regardless */
-html.pages-flow .page-sep { display: none; }
+/* عرض مستمر — hide the page marker AND rejoin the two <p>s markdown split around
+   it (blank lines around the <hr> are required for it to parse as a block, so a
+   mid-sentence break always yields two block <p>s); without this the paragraph
+   margin still shows as an unexplained gap even with the label gone. */
+html.pages-flow .page-sep { display: inline; margin: 0; padding: 0; border: none; color: transparent; }
+html.pages-flow .page-sep::before { content: " "; }
+html.pages-flow p:has(+ .page-sep),
+html.pages-flow .page-sep + p { display: inline; margin: 0; }
 
-/* --- printed-footer footnotes: one <aside> per page, right after its content --- */
+/* --- printed-footer footnotes: one <aside> per page, right after its content ---
+   Numbers come from data-fn-num (set server-side to match the inline marker a
+   تخريج note is cited by) rather than a CSS counter — a per-page counter would
+   restart at 1 while the inline superscript keeps counting continuously through
+   the whole chapter, so the two would drift apart page after page. */
 .page-footnotes { margin: 10px 0 24px; padding: 10px 14px; border-top: 1px solid var(--rule); background: var(--paper-2); border-radius: 8px; }
-.page-footnotes ol { list-style: none; margin: 0; padding: 0; counter-reset: fn; }
-.page-footnotes li { counter-increment: fn; font-family: var(--font-ui); font-size: 12.5px; line-height: 1.8; color: var(--ink-soft); padding: 4px 0; }
-.page-footnotes li::before { content: counter(fn) ". "; color: var(--ink-faint); }
-.page-footnotes li:target { color: var(--ink); background: color-mix(in srgb, var(--accent) 12%, transparent); border-radius: 4px; }
+.page-footnotes ol { list-style: none; margin: 0; padding: 0; }
+.page-footnotes li { font-family: var(--font-ui); font-size: 12.5px; line-height: 1.8; color: var(--ink-soft); padding: 4px 0; display: none; }
+.page-footnotes li::before { content: attr(data-fn-num) ". "; color: var(--ink-faint); }
+.page-footnotes li:target { display: block; color: var(--ink); background: color-mix(in srgb, var(--accent) 12%, transparent); border-radius: 4px; }
 .page-footnotes p { display: inline; margin: 0; }
 /* «إخفاء الحواشي» reader setting — hides the footer block entirely, page-sep
    page numbers stay visible. */

@@ -1,7 +1,6 @@
 ---
 import { markdownToSafeHtml } from "../lib/sanitize";
 import { toArabicDigits, stripTashkeel } from "../lib/display";
-import InlineNoteGroup from "./InlineNoteGroup.astro";
 import type { AnnNote } from "../lib/site";
 
 interface Props {
@@ -42,13 +41,7 @@ function locate(text: string, ph?: string): { before: string; mark: string; afte
 // phrase but there are notes, the whole صدر carries the mark.
 const inSadr = locate(sadr, phrase);
 const inAjz = inSadr ? null : locate(ajz ?? "", phrase);
-const wholeSadr = hasNotes && !phrase;
 const popId = `ann-${anchor}`;
-// Phrase-level marks keep the tap-to-open sheet (verse-dense pages would
-// drown in inline <details>); whole-verse notes (no phrase) render inline.
-const inlineNotes = wholeSadr ? notes : [];
-const sheetNotes = wholeSadr ? [] : notes;
-const KIND_ORDER = ["شرح", "تخريج", "حكم", "حاشية", "إعراب"];
 ---
 <div class="verse" id={anchor}>
   <div class="verse-inner">
@@ -75,9 +68,9 @@ const KIND_ORDER = ["شرح", "تخريج", "حكم", "حاشية", "إعراب"
       )}
     </div>
   </div>
-  {sheetNotes.length > 0 && (
+  {hasNotes && (
     <div class="ann-pack" id={popId} data-ann-pack hidden>
-      {sheetNotes.map((nt) => (
+      {notes.map((nt) => (
         <div class={`ann-entry k-${KIND_SLUG[nt.kind] ?? "sharh"}`} data-kind={nt.kind} data-label={nt.annotator ? `${nt.kind} — ${nt.annotator}` : nt.kind}>
           <div class="ann-entry-body" data-ar><Fragment set:html={markdownToSafeHtml(nt.body)} /></div>
           {nt.sourceHref && <a class="ann-source-link" href={nt.sourceHref}>اقرأ في موضعه{nt.sourceLabel ? `: ${nt.sourceLabel}` : ""} ←</a>}
@@ -85,9 +78,4 @@ const KIND_ORDER = ["شرح", "تخريج", "حكم", "حاشية", "إعراب"
       ))}
     </div>
   )}
-  <InlineNoteGroup
-    notes={inlineNotes.map((nt) => ({ kind: nt.kind, body: nt.body, sourceLabel: nt.sourceLabel || nt.annotator, sourceHref: nt.sourceHref }))}
-    kindOrder={KIND_ORDER}
-    kindClass={KIND_SLUG}
-  />
 </div>

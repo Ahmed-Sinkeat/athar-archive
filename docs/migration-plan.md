@@ -47,6 +47,9 @@ lessons) force the change.
   annotations — unchanged), sets a cache header → Cloudflare edge-caches it.
 - Holds 381 MB now; if ~6 GB gets clunky at full 10k, that's when to add a card and
   move bodies to **R2** (10 GB free). Can go a long way first without a card.
+  **Update 2026-07-03:** done sooner than expected — file *count*, not size, became the
+  binding constraint first (one file per chapter, not per book). Chapter bodies + tafsir
+  fragments now live in R2 (`BOOK_ASSETS` bucket); see `docs/HANDOFF-perf-size.md` §M4.
 
 ## Book landing = static TOC
 Extend the content loader to extract **chapter headings only** (titles + slugs) when it

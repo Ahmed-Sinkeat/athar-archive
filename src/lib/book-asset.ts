@@ -37,8 +37,16 @@ export async function loadChapterManifest(bookId: string): Promise<ChapterMeta[]
   return raw == null ? null : (JSON.parse(raw) as ChapterMeta[]);
 }
 
+// Chapter bodies live in the BOOK_ASSETS R2 bucket (scripts/upload-r2-assets.mjs),
+// not Workers Static Assets — a large book is thousands of chapter files, which
+// pushed deploys toward the 20k-file asset ceiling. DEV keeps reading the local
+// dev-server path (pre-R2 behavior, unchanged).
 export async function loadChapterBody(bookId: string, chapterSlug: string): Promise<string | null> {
-  return assetText(`/content/book/${bookId}/${chapterSlug}.md`);
+  if (import.meta.env.DEV) return assetText(`/content/book/${bookId}/${chapterSlug}.md`);
+  const { env } = await import("cloudflare:workers");
+  const bucket = (env as { BOOK_ASSETS?: { get(key: string): Promise<{ text(): Promise<string> } | null> } }).BOOK_ASSETS;
+  const obj = await bucket?.get(`book/${bookId}/${chapterSlug}.md`);
+  return obj ? await obj.text() : null;
 }
 
 export async function loadContentBody(collection: string, id: string): Promise<string | null> {

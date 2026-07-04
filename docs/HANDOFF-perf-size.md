@@ -70,26 +70,56 @@ gitignored. File count 10,380/20,000 (52%). `pnpm test` 84/84, `pnpm smoke` pass
 `book-asset.ts`'s `loadContentBody` is now unused by the book route (kept — still the
 DEV/lesson-asset path).
 
-## Next scaling options (not needed yet — headroom is ~2x)
+## M4 — All book chapter bodies + Quran tafsir fragments moved to R2 (done 2026-07-03)
 
-The 20,000-file Workers Static Assets limit and the 25 MiB per-asset limit are the two
-ceilings this repo can hit again as content grows (more tafsir sources → more fragments;
-bigger books → bigger chapter files). Two options, in order of effort:
+**Scope: every chunked book in the `book` collection, not just tafsir books.** Any book
+big enough to be split into chapters by `analyzeBook()` — سيرة ابن هشام, الموطأ, فتاوى
+الشنقيطي, تفسير ابن كثير, all of them — had its per-chapter `.md` files shipped as
+Workers Static Assets. Tafsir-ibn-kathir was the worst single offender (named in the
+M1/M2 symptoms above), but the file-count problem was never tafsir-specific: M1 fixed
+the Quran tafsir fragments, M2 moved every chunked book's chapters to per-file assets —
+and it's that general per-chapter mechanism, across all 19 currently-chunked books, that
+M4 moves to R2. Quran tafsir fragments move too (they're the other half of the same
+file-count problem), but they're one category among many books, not the whole scope.
 
-1. **Move fragments/chapters to R2 instead of Static Assets.** R2 has no per-object-count
-   limit and no egress fee (the audio pipeline already uses it — see
-   `docs/media-and-backup.md`). Swap `ASSETS.fetch()` for `env.R2_BUCKET.get()` in
-   `src/lib/book-asset.ts` / the tafsir-fragment fetch helper in `reader.ts`. Cost: one
-   R2 binding + one more indirection in two fetch helpers; no change to the on-demand
-   route shape from M1/M2.
-2. **Bundle small files into fewer bigger ones.** E.g. one JSON per surah (114 files)
-   instead of one per verse (6,236), sliced client-side after fetch; or bundle a book's
-   chapters into fewer multi-chapter files. Zero new infra, but gives back some of the
-   "fetch exactly the one small thing" simplicity M1/M2 were built for — prefer option 1
-   if R2 is already in play.
+M1/M2 bought headroom, not a fix — file count still grew by one file per chapter/verse
+for every book, so it was only a matter of time (a few more Ibn-Kathir-sized books,
+~6,400 files each) before the 20,000-file ceiling came back. Implemented "Next scaling
+option 1" from the prior version of this doc:
 
-Trigger: revisit when `find dist/client -type f | wc -l` crosses ~16,000 (80% of the
-20k limit), or when any single asset approaches 20 MiB.
+- New `BOOK_ASSETS` R2 bucket, bound in `wrangler.toml` (`remote = true`, so build
+  scripts reach the real bucket via `getPlatformProxy` without a separate S3 key).
+- `gen-book-chapters.ts` (runs across **every** chunked book) and `gen-tafsir-frags.ts`
+  write chapter bodies + tafsir fragments to `dist/r2-upload/` instead of `dist/client/`
+  — they no longer count as Workers Static Assets at all. Only each book's small
+  `<slug>.chapters.json` manifest (titles/slugs, not bodies) stays a static asset — one
+  file per book, not per chapter.
+- `scripts/upload-r2-assets.mjs` (`pnpm r2:upload`, wired into `pnpm deploy`) pushes
+  `dist/r2-upload/` to the bucket. Uses an in-process `getPlatformProxy` binding call,
+  not `wrangler r2 object put` per file — the CLI's per-invocation startup made ~10k
+  files take over an hour; the binding call does the same puts in a few minutes.
+- `src/lib/book-asset.ts`'s `loadChapterBody` (used by **every** book's chapter route,
+  not a tafsir-only path) and the new `src/pages/tafsir-frag/[surah]/[ayah].html.ts`
+  on-demand route read from R2 in production (unchanged dev fallback to disk).
+
+Result: a new chunked book — of any kind — now costs **one file** (its manifest) in
+`dist/client` regardless of chapter count, instead of one file per chapter. File count
+is no longer coupled to book content size **for any book**, tafsir or otherwise — this
+ceiling doesn't come back from that source. `find dist/client -type f` dropped from what
+would have been ~10,900 to 524; the 10,392 chapter/fragment files across all 19 chunked
+books live in R2 instead (~175 MB — 4,156 chapter files + 6,236 tafsir fragments).
+
+## Next scaling options (not currently needed)
+
+`dist/client`'s remaining ~524 files are prerendered pages (Quran, poems, topics,
+listings, etc.), which grow far slower than book content did and aren't what was ever
+going to hit 20k. The 25 MiB per-asset limit is also moot for anything R2-backed (R2
+objects go up to 5 TB). If a *different* content type starts growing the static-asset
+count the same way books did, the same move (write to `dist/r2-upload/`, upload via
+`pnpm r2:upload`, read via the `BOOK_ASSETS` binding) applies directly.
+
+Trigger: revisit if `find dist/client -type f | wc -l` crosses ~16,000 (80% of the
+20k limit) again, from some other content source.
 
 ## Verification
 

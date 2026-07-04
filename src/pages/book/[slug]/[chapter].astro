@@ -161,12 +161,16 @@ for (const [pNum, fns] of footnotesByPage) {
 }
 
 // 4. Point each GFM footnote ref [^id] at its footer <li> instead of the
-// (now-stripped) end-of-document Footnotes section.
+// (now-stripped) end-of-document Footnotes section. Also record the inline
+// marker's own number so the footer <li> can display that same number instead
+// of a per-page-restarted count (see .page-footnotes li::before in global.css).
+const numberByFooterId = new Map<string, string>();
 const footnoteRefsWired = html.replace(
   /<sup><a href="#user-content-fn-([a-zA-Z0-9_-]+)"[^>]*data-footnote-ref[^>]*>(\d+)<\/a><\/sup>/g,
   (match, id, num) => {
     const target = footnoteAnchorById.get(id);
     if (!target) return match;
+    numberByFooterId.set(target, num);
     return `<sup><a href="#${target}">${num}</a></sup>`;
   },
 );
@@ -174,8 +178,12 @@ const footnoteRefsWired = html.replace(
 function renderFooter(pageNum: number): string {
   const items = footerItemsByPage.get(pageNum);
   if (!items?.length) return "";
+  let hashiyaCounter = 0;
   const lis = items
-    .map((it) => `<li id="${it.id}">${markdownToSafeHtml(it.body)}</li>`)
+    .map((it) => {
+      const num = numberByFooterId.get(it.id) ?? String(++hashiyaCounter);
+      return `<li id="${it.id}" data-fn-num="${num}">${markdownToSafeHtml(it.body)}</li>`;
+    })
     .join("");
   return `<aside class="page-footnotes"><ol>${lis}</ol></aside>`;
 }

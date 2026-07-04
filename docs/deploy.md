@@ -5,8 +5,8 @@
 static pages ship as assets alongside it.
 
 ```sh
-pnpm build     # validate:content → astro build → copy-content-assets → redirects → headers
-pnpm deploy    # wrangler deploy -c dist/server/wrangler.json → workers.dev host
+pnpm build     # validate:content → astro build → copy-content-assets → tafsir-frags/book-chapters (dist/r2-upload) → redirects → headers
+pnpm deploy    # r2:upload (dist/r2-upload → BOOK_ASSETS bucket) → wrangler deploy -c dist/server/wrangler.json → workers.dev host
 ```
 
 - Live host: `athar-archive.ahmedsinkeat2002.workers.dev` (flip `site`/`siteUrl` to
@@ -15,6 +15,9 @@ pnpm deploy    # wrangler deploy -c dist/server/wrangler.json → workers.dev ho
   (the DNS/nameserver steps in the historical section below still apply to getting the zone onto Cloudflare).
 - Deploys are manual from a local machine; there is no Git-connected build.
 - Limits to respect: **25 MiB per asset**, **20,000 files per deploy** (see `technology-stack.md`).
+  Book chapter bodies and tafsir fragments no longer count against this — they're
+  uploaded to the `BOOK_ASSETS` R2 bucket by `pnpm deploy` instead of shipped as
+  Worker assets (see `docs/HANDOFF-perf-size.md` §M4).
 
 ---
 
