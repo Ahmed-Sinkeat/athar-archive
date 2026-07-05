@@ -15,6 +15,9 @@ jobs:
       # the token to this job's deps, unlike the deploy job below.
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      # Baked into the client bundle at build time (PUBLIC_ prefix), unlike the
+      # KEYSTATIC_* secrets which are read at runtime via Cloudflare Worker secrets.
+      PUBLIC_KEYSTATIC_GITHUB_APP_SLUG: ${{ secrets.PUBLIC_KEYSTATIC_GITHUB_APP_SLUG }}
     steps:
       - uses: actions/checkout@v4
         with:
