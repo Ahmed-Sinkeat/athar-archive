@@ -1,10 +1,14 @@
 ---
-title: "تفت فُؤَادك الْأَيَّام فتا ... وتنحت جسمك السَّاعَات نحتا…"
-person: "al-ilbiri"
-status: "published"
-published_at: "2026-07-02"
-work_type: "قصيدة"
-description: "من ديوان الإلبيري"
+slug: ''
+title: تائية الألبيري
+status: published
+published_at: 2026-07-02
+aliases: []
+person: al-ilbiri
+topics: []
+work_type: قصيدة
+description: من ديوان الإلبيري
+attachments: []
 ---
 تفت فُؤَادك الْأَيَّام فتا ... وتنحت جسمك السَّاعَات نحتا
 وتدعوك الْمنون دُعَاء صدق ... أَلا يَا صَاح أَنْت أُرِيد أنتا
