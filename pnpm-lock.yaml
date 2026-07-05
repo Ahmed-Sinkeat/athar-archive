@@ -206,6 +206,9 @@ settings:
 overrides:
   vite: 7.3.5
 
+patchedDependencies:
+  '@keystatic/astro': 859447eb6f73a32decd1f82ee42232dd8742fd3d9264a722bec28b8dfe9d9344
+
 importers:
 
   .:
@@ -218,7 +221,7 @@ importers:
         version: 6.0.1(@types/node@26.0.0)(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(lightningcss@1.32.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(tsx@4.22.4)(yaml@2.9.0)
       '@keystatic/astro':
         specifier: ^5.1.0
-        version: 5.1.0(@keystatic/core@0.5.50(@react-spectrum/provider@3.11.1(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(astro@6.4.8(@types/node@26.0.0)(idb-keyval@6.2.6)(lightningcss@1.32.0)(rollup@4.62.2)(tsx@4.22.4)(yaml@2.9.0))(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+        version: 5.1.0(patch_hash=859447eb6f73a32decd1f82ee42232dd8742fd3d9264a722bec28b8dfe9d9344)(@keystatic/core@0.5.50(@react-spectrum/provider@3.11.1(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(astro@6.4.8(@types/node@26.0.0)(idb-keyval@6.2.6)(lightningcss@1.32.0)(rollup@4.62.2)(tsx@4.22.4)(yaml@2.9.0))(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       '@keystatic/core':
         specifier: ^0.5.50
         version: 0.5.50(@react-spectrum/provider@3.11.1(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
@@ -5046,7 +5049,7 @@ snapshots:
       - '@react-spectrum/provider'
       - supports-color
 
-  '@keystatic/astro@5.1.0(@keystatic/core@0.5.50(@react-spectrum/provider@3.11.1(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(astro@6.4.8(@types/node@26.0.0)(idb-keyval@6.2.6)(lightningcss@1.32.0)(rollup@4.62.2)(tsx@4.22.4)(yaml@2.9.0))(react-dom@19.2.7(react@19.2.7))(react@19.2.7)':
+  '@keystatic/astro@5.1.0(patch_hash=859447eb6f73a32decd1f82ee42232dd8742fd3d9264a722bec28b8dfe9d9344)(@keystatic/core@0.5.50(@react-spectrum/provider@3.11.1(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(astro@6.4.8(@types/node@26.0.0)(idb-keyval@6.2.6)(lightningcss@1.32.0)(rollup@4.62.2)(tsx@4.22.4)(yaml@2.9.0))(react-dom@19.2.7(react@19.2.7))(react@19.2.7)':
     dependencies:
       '@babel/runtime': 7.29.7
       '@keystatic/core': 0.5.50(@react-spectrum/provider@3.11.1(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react-dom@19.2.7(react@19.2.7))(react@19.2.7)

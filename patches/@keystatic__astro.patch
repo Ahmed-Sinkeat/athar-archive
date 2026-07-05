@@ -1,0 +1,29 @@
+diff --git a/dist/keystatic-astro-api.js b/dist/keystatic-astro-api.js
+index 80131fee419d290a8d6c992d5bfcc355b9d39871..f3db42adf3b815d626103323f30c5b261cdff7da 100644
+--- a/dist/keystatic-astro-api.js
++++ b/dist/keystatic-astro-api.js
+@@ -1,10 +1,22 @@
+ import { makeGenericAPIRouteHandler } from '@keystatic/core/api/generic';
+ import { parseString } from 'set-cookie-parser';
+ 
++// ponytail: Astro 6 removed context.locals.runtime (throws on access instead
++// of being undefined) — read the Cloudflare Worker env via the module import
++// instead. Upgrade path: drop this once @keystatic/astro ships a fix upstream.
++async function getCfEnv() {
++  try {
++    const { env } = await import('cloudflare:workers');
++    return env;
++  } catch {
++    return undefined;
++  }
++}
++
+ function makeHandler(_config) {
+   return async function keystaticAPIRoute(context) {
+-    var _context$locals, _ref, _config$clientId, _ref2, _config$clientSecret, _ref3, _config$secret;
+-    const envVarsForCf = (_context$locals = context.locals) === null || _context$locals === void 0 || (_context$locals = _context$locals.runtime) === null || _context$locals === void 0 ? void 0 : _context$locals.env;
++    var _ref, _config$clientId, _ref2, _config$clientSecret, _ref3, _config$secret;
++    const envVarsForCf = await getCfEnv();
+     const handler = makeGenericAPIRouteHandler({
+       ..._config,
+       clientId: (_ref = (_config$clientId = _config.clientId) !== null && _config$clientId !== void 0 ? _config$clientId : envVarsForCf === null || envVarsForCf === void 0 ? void 0 : envVarsForCf.KEYSTATIC_GITHUB_CLIENT_ID) !== null && _ref !== void 0 ? _ref : tryOrUndefined(() => {

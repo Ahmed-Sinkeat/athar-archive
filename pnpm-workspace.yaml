@@ -5,3 +5,6 @@ allowBuilds:
 
 overrides:
   vite: 7.3.5
+
+patchedDependencies:
+  '@keystatic/astro': patches/@keystatic__astro.patch
