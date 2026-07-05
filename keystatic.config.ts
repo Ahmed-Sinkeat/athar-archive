@@ -15,9 +15,11 @@ const slugField = (extraPatternNote = "") =>
   fields.slug({
     name: {
       label: `Slug (id) — لا تغيّره بعد النشر${extraPatternNote}`,
+    },
+    slug: {
+      generate: (name) => name,
       validation: { pattern: { regex: SLUG_RE, message: "lowercase a-z0-9, single/double hyphens only" } },
     },
-    slug: { generate: (name) => name },
   });
 
 const statusField = fields.select({
