@@ -103,7 +103,7 @@ const book = defineCollection({
   loader: fmLoader("./src/content/book"),
   schema: z.object({
     ...shared,
-    person: slug,           // → Person (author)
+    person: slug.optional(),           // → Person (author, unknown/anonymous allowed)
     // study classification — drives the متن badge + study modes (poems are always متن)
     kind: z.enum(["متن", "مرجع", "مجموع"]).optional(),
     // section beyond kind — routes to /quran /hadith /tarajim (still also under /books)

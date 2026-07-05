@@ -24,7 +24,10 @@ const SOURCE_TYPES: Record<string, readonly string[]> = {
 };
 
 // Entities that require a person field
-const REQUIRES_PERSON = new Set(["book", "poem", "benefit", "article"]);
+const REQUIRES_PERSON = new Set(["poem", "benefit", "article"]);
+// book's person is optional (anonymous/unknown-author works allowed) but is
+// still ref-checked below when present.
+const CHECKS_PERSON_IF_PRESENT = new Set(["book"]);
 
 function buildMap(entries: ContentEntry[]): CollectionMap {
   const map: CollectionMap = new Map();
@@ -65,11 +68,13 @@ export function validate(entries: ContentEntry[]): BuildError[] {
 
     // --- id slug format already checked above ---
 
-    // --- mandatory person ref ---
-    if (REQUIRES_PERSON.has(collection)) {
+    // --- mandatory / optional person ref ---
+    if (REQUIRES_PERSON.has(collection) || CHECKS_PERSON_IF_PRESENT.has(collection)) {
       const personId = str(data.person);
       if (!personId) {
-        fail(collection, id, "mandatory-relation", `'${collection}/${id}' is missing required field 'person'`);
+        if (REQUIRES_PERSON.has(collection)) {
+          fail(collection, id, "mandatory-relation", `'${collection}/${id}' is missing required field 'person'`);
+        }
       } else {
         const person = get(map, "person", personId);
         if (!person) {

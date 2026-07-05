@@ -44,7 +44,7 @@ export async function getStaticPaths() {
       c.firstPage ?? (c.content.match(/data-page="(\d+)"/)?.[1] ? Number(c.content.match(/data-page="(\d+)"/)![1]) : undefined);
     // Phase 2: chunked books → store a light TOC (titles+slugs) only; the body and
     // its annotations live on the on-demand chapter pages, never in this landing's HTML.
-    paths.push({ params: { slug: entry.id }, props: { entry, chunked: a.chunked, toc: a.chapters.map((c) => ({ title: c.title, slug: c.slug, parent: c.parent, parentTitle: c.parentTitle, firstPage: firstPageOf(c) })), tocNested: a.chunked ? [] : parseToc(body ?? ""), body: a.chunked ? undefined : body, byAnchor: a.chunked ? {} : byAnchor, audios, commentaries, author: names.get(entry.data.person), topicLabel: labelFor("book", entry.data), origin: originOf(entry.data, graph), subjects: subjectTitlesFor(entry.data.topics, graph), related: relatedTo(entry, graph, names), backlinks: backlinksList(entry, graph, names) } });
+    paths.push({ params: { slug: entry.id }, props: { entry, chunked: a.chunked, toc: a.chapters.map((c) => ({ title: c.title, slug: c.slug, parent: c.parent, parentTitle: c.parentTitle, firstPage: firstPageOf(c) })), tocNested: a.chunked ? [] : parseToc(body ?? ""), body: a.chunked ? undefined : body, byAnchor: a.chunked ? {} : byAnchor, audios, commentaries, author: entry.data.person ? names.get(entry.data.person) : undefined, topicLabel: labelFor("book", entry.data), origin: originOf(entry.data, graph), subjects: subjectTitlesFor(entry.data.topics, graph), related: relatedTo(entry, graph, names), backlinks: backlinksList(entry, graph, names) } });
   }
   return paths;
 }

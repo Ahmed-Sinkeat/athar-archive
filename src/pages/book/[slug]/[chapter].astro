@@ -42,7 +42,7 @@ const chapter = { ...chapterMeta, content: chapterContent };
 const graph = await loadGraph();
 const names = await personNameMap();
 const byAnchor = notesByAnchor("book", entry.id, graph, names);
-const author = names.get(entry.data.person);
+const author = entry.data.person ? names.get(entry.data.person) : undefined;
 // "المقدمة" is pulled out of the reading flow when it's a catalog block (see
 // gen-book-chapters.ts) — shown as its own panel above the TOC instead, so it
 // no longer competes with real content chapters for a slot in the list.
