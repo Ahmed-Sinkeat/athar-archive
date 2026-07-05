@@ -51,6 +51,15 @@ jobs:
       - name: Build (Astro + Pagefind + redirects)
         run: pnpm build
 
+      # Book/tafsir chapter bodies are served from R2 at request time, not
+      # baked into the Worker — without this, new/edited book chapters 404
+      # forever no matter how many times you deploy. No diffing (re-puts
+      # every file every run, ~9k+ objects) — fine for now, revisit if it
+      # ever makes CI painfully slow.
+      - name: Upload chapter bodies to R2
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push' && env.CLOUDFLARE_API_TOKEN != ''
+        run: pnpm r2:upload
+
       - name: Smoke test (per-template invariants over dist/)
         run: pnpm smoke
 
