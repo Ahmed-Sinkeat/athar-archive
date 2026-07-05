@@ -44,9 +44,9 @@ describe("slug-format", () => {
 // --- mandatory person ref ---
 
 describe("mandatory-relation: person", () => {
-  it("fails a book with no person", () => {
+  it("allows a book with no person (anonymous/unknown author)", () => {
     const errors = validate([entry("book", "orphan-book", { title: "كتاب" })]);
-    expect(errors.some((e) => e.rule === "mandatory-relation" && e.id === "orphan-book")).toBe(true);
+    expect(errors.some((e) => e.rule === "mandatory-relation" && e.id === "orphan-book")).toBe(false);
   });
 
   it("fails a benefit with no person", () => {
