@@ -415,6 +415,7 @@ summary::-webkit-details-marker { display: none; }
 
 /* ---------- reading: shared ornaments ---------- */
 .reader-head { text-align: center; }
+.reader-head .eyebrow { display: inline-block; margin-bottom: 14px; }
 /* Phase 1+4: Noto Naskh at 600; slightly reduced max-size for narrower measure */
 /* scales with --reading-scale too — otherwise cranking the font-size control
    grows the verse text past the fixed title, flipping the hierarchy */
