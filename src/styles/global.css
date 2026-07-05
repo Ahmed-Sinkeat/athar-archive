@@ -416,7 +416,9 @@ summary::-webkit-details-marker { display: none; }
 /* ---------- reading: shared ornaments ---------- */
 .reader-head { text-align: center; }
 /* Phase 1+4: Noto Naskh at 600; slightly reduced max-size for narrower measure */
-.reader-title { font-family: var(--font-serif); font-weight: 700; font-size: clamp(32px, 6vw, 52px); color: var(--ink); margin: 0; line-height: 1.1; letter-spacing: -0.015em; }
+/* scales with --reading-scale too — otherwise cranking the font-size control
+   grows the verse text past the fixed title, flipping the hierarchy */
+.reader-title { font-family: var(--font-serif); font-weight: 700; font-size: calc(clamp(32px, 6vw, 52px) * var(--reading-scale)); color: var(--ink); margin: 0; line-height: 1.1; letter-spacing: -0.015em; }
 .reader-byline { font-family: var(--font-ui); font-size: 14.5px; color: var(--ink-soft); margin-top: 16px; }
 .reader-origin { font-family: var(--font-ui); font-size: 13.5px; color: var(--ink-soft); margin-top: 4px; }
 .reader-origin a { color: var(--accent); }

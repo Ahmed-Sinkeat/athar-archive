@@ -7,23 +7,26 @@ import { hrefFor, toArabicDigits, labelFor } from "../lib/display";
 import { analyzePoem } from "../lib/chunk";
 import { readBody } from "../lib/read-body";
 import { collectionLd } from "../lib/structured-data";
+import { buildSubjectGroups } from "../lib/browse";
 
 const graph = await loadGraph();
 const names = await personNameMap();
 const allPoems = graph.all.filter((e) => e.collection === "poem" && e.data.status === "published");
+const { groups, uncategorized } = buildSubjectGroups("poem", graph);
 
 const verseCountLabel = (n: number) =>
   n === 2 ? `${toArabicDigits(n)} بيتان` : n >= 3 && n <= 10 ? `${toArabicDigits(n)} أبيات` : `${toArabicDigits(n)} بيتًا`;
 
 // poem titles fall back to the first hemistich — showing those in the meta row
 // would just repeat the verse below, so keep only real occasion titles
-const strip = (s: string) => s.replace(/[ؐ-ًؚ-ٰٟۖ-ۭـ]/g, "").trim();
-const cards = await Promise.all(
+const strip = (s: string) => s.replace(/[ؐ-ًؚ-ٰٟۖ-ۭـ]/g, "").trim();
+const cardList = await Promise.all(
   allPoems.map(async (p) => {
     const { verses, verseCount } = analyzePoem(await readBody(p as any));
     const title = p.data.title as string;
     const isVerseTitle = verses[0] && strip(verses[0].sadr).startsWith(strip(title).slice(0, 18));
     return {
+      id: p.id,
       href: hrefFor("poem", p.id),
       kind: labelFor("poem", p.data),
       poet: p.data.person ? names.get(p.data.person as string) ?? "" : "",
@@ -33,39 +36,121 @@ const cards = await Promise.all(
     };
   })
 );
+const cardsById = new Map(cardList.map((c) => [c.id, c]));
 ---
 <Base title="الشعر" description="منظوماتٌ علميةٌ محقَّقةٌ مُشكَّلةٌ مع الشروح والتخريج." activeNav="poems" searchScope={{ type: "poem" }} jsonLd={collectionLd({ title: "الشعر", path: "/poems", crumbs: [{ name: "الرئيسية", path: "/" }, { name: "الشعر", path: "/poems" }] })}>
   <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "الشعر" }]} />
   <div class="wrap-mid uf5db21c">
     <h1 class="page-title">الشعر والمنظومات</h1>
-    <p class="hub-lede poems-lede">{toArabicDigits(cards.length)} منظومة علمية مُشكَّلة مُرقَّمة الأبيات، مع الشروح والتخريج.</p>
+    <p class="hub-lede poems-lede">{toArabicDigits(cardList.length)} منظومة علمية مُشكَّلة مُرقَّمة الأبيات، مع الشروح والتخريج.</p>
     <SectionSearch scope="poem" placeholder="ابحث في الشعر…" />
 
-    <div class="poem-cards">
-      {cards.map((c) => (
-        <a class="poem-card" href={c.href}>
-          <div class="poem-card-meta">
-            <span class="poem-badge">{c.kind}</span>
-            <span class="poem-byline">{[c.poet, c.title].filter(Boolean).join(" · ")}</span>
-            <span class="row-spacer"></span>
-            <span class="row-meta">{verseCountLabel(c.count)}</span>
-          </div>
-          {c.first && (
-            <p class="poem-card-verse" data-ar>
-              {c.first.sadr}
-              {c.first.ajz && <Fragment><span class="poem-sep" aria-hidden="true">❁</span>{c.first.ajz}</Fragment>}
-            </p>
-          )}
-        </a>
-      ))}
+    <div class="browse show-flat" data-browse>
+      <div class="browse-toolbar">
+        <button type="button" class="btn browse-flat-toggle" data-flat-toggle>عرض مُجمَّع</button>
+      </div>
+
+      <div class="browse-flat">
+        <div class="poem-cards">
+          {cardList.map((c) => (
+            <a class="poem-card" href={c.href}>
+              <div class="poem-card-meta">
+                <span class="poem-badge">{c.kind}</span>
+                <span class="poem-byline">{[c.poet, c.title].filter(Boolean).join(" · ")}</span>
+                <span class="row-spacer"></span>
+                <span class="row-meta">{verseCountLabel(c.count)}</span>
+              </div>
+              {c.first && (
+                <p class="poem-card-verse" data-ar>
+                  {c.first.sadr}
+                  {c.first.ajz && <Fragment><span class="poem-sep" aria-hidden="true">❁</span>{c.first.ajz}</Fragment>}
+                </p>
+              )}
+            </a>
+          ))}
+        </div>
+        {cardList.length === 0 && <p class="faint">لا توجد موادُّ في هذا القسم بعد.</p>}
+      </div>
+
+      <div class="masail-tree browse-grouped">
+        {groups.map((g) => (
+          <details class="masail-subject">
+            <summary>
+              <span class="masail-subject-name">{g.title}</span>
+              <span class="faint masail-count">{toArabicDigits(g.count)}</span>
+            </summary>
+            <div class="masail-topics">
+              {g.topics.map((t) => (
+                <details class="masail-topic">
+                  <summary>
+                    <span>{t.title}</span>
+                    <span class="faint masail-count">{toArabicDigits(t.items.length)}</span>
+                  </summary>
+                  <div class="poem-cards browse-cards">
+                    {t.items.map((it) => {
+                      const c = cardsById.get(it.id);
+                      return c ? (
+                        <a class="poem-card" href={c.href}>
+                          <div class="poem-card-meta">
+                            <span class="poem-badge">{c.kind}</span>
+                            <span class="poem-byline">{[c.poet, c.title].filter(Boolean).join(" · ")}</span>
+                            <span class="row-spacer"></span>
+                            <span class="row-meta">{verseCountLabel(c.count)}</span>
+                          </div>
+                          {c.first && (
+                            <p class="poem-card-verse" data-ar>
+                              {c.first.sadr}
+                              {c.first.ajz && <Fragment><span class="poem-sep" aria-hidden="true">❁</span>{c.first.ajz}</Fragment>}
+                            </p>
+                          )}
+                        </a>
+                      ) : null;
+                    })}
+                  </div>
+                </details>
+              ))}
+            </div>
+          </details>
+        ))}
+
+        {uncategorized.length > 0 && (
+          <details class="masail-subject">
+            <summary>
+              <span class="masail-subject-name">موضوعاتٌ أخرى</span>
+              <span class="faint masail-count">{toArabicDigits(uncategorized.length)}</span>
+            </summary>
+            <div class="poem-cards browse-cards">
+              {uncategorized.map((it) => {
+                const c = cardsById.get(it.id);
+                return c ? (
+                  <a class="poem-card" href={c.href}>
+                    <div class="poem-card-meta">
+                      <span class="poem-badge">{c.kind}</span>
+                      <span class="poem-byline">{[c.poet, c.title].filter(Boolean).join(" · ")}</span>
+                      <span class="row-spacer"></span>
+                      <span class="row-meta">{verseCountLabel(c.count)}</span>
+                    </div>
+                    {c.first && (
+                      <p class="poem-card-verse" data-ar>
+                        {c.first.sadr}
+                        {c.first.ajz && <Fragment><span class="poem-sep" aria-hidden="true">❁</span>{c.first.ajz}</Fragment>}
+                      </p>
+                    )}
+                  </a>
+                ) : null;
+              })}
+            </div>
+          </details>
+        )}
+      </div>
     </div>
-    {cards.length === 0 && <p class="faint">لا توجد موادُّ في هذا القسم بعد.</p>}
   </div>
 </Base>
 
 <style>
   /* full-width poem cards — first verse as the title (HANDOFF §5 الشعر) */
   .poem-cards { display: flex; flex-direction: column; gap: 12px; margin-top: 22px; }
+  .browse-cards.poem-cards { margin-top: 0; }
   .poem-card {
     display: block; background: var(--card); border: 1px solid var(--line); border-radius: 10px;
     padding: 20px 22px; color: var(--ink); text-decoration: none; transition: border-color .15s;
