@@ -21,7 +21,26 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          lfs: true
+          lfs: false
+
+      # GitHub's free LFS bandwidth is 1 GiB/month; `checkout: lfs: true` was
+      # re-downloading the full ~290MB of tracked LFS content on every single
+      # push, which is only 3-4 pushes before CI checkouts start failing.
+      # actions/cache storage is separate from that quota, so cache the LFS
+      # objects keyed on their pointer content (oids) — unchanged files never
+      # touch LFS bandwidth again after the first run.
+      - name: Create LFS file list
+        run: git lfs ls-files -l | cut -d' ' -f1 | sort > .lfs-assets-id
+
+      - name: Restore LFS cache
+        uses: actions/cache@v4
+        id: lfs-cache
+        with:
+          path: .git/lfs
+          key: lfs-${{ hashFiles('.lfs-assets-id') }}
+
+      - name: Git LFS pull
+        run: git lfs pull
 
       - uses: pnpm/action-setup@v4
         with:
