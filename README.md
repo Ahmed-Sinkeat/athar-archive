@@ -11,9 +11,9 @@ A static, RTL Arabic knowledge archive. **The content is the origin; the technol
 ## Stack
 
 - **Astro** (static output) · **Markdown + Zod** content collections (source of truth)
-- **Pagefind** — static Arabic search, no server
-- **Cloudflare Workers + Static Assets** (hosting, `pnpm deploy`) · **Cloudflare R2** (audio in Opus, attachments)
-- Content renders **fully without JavaScript**; JS only enhances (search, audio, reading prefs).
+- **Cloudflare D1 (FTS5)** search via a Worker API route (`/api/search`) — not Pagefind; index rebuilt with `pnpm search:gen && pnpm search:index` (not automatic yet, see CONTRIBUTING.md)
+- **Cloudflare Workers + Static Assets** (hosting, `pnpm deploy`) · **Cloudflare R2** (book/tafsir chapter bodies, audio, attachments — pushed on every CI deploy via `pnpm r2:upload`)
+- Content renders **fully without JavaScript** for the reading path; JS enhances (search, audio, reading prefs).
 
 ## Quick start
 
@@ -28,7 +28,7 @@ pnpm test           # vitest (validators, graph, chapters, chunking, sanitize)
 
 ## The entities
 
-Person · Subject · Topic · Book · Poem · Series · Lesson · Questions · Benefit · Article · Audio · Annotation · Term (المعجم) (+ Announcement and Highlight — مختار الأسبوع: آية/حديث/بيت — as homepage chrome). **القرآن** is a separate collection — 114 surahs as a mushaf spine with a `/quran/<surah>` ayah reader.
+Person · Subject · Topic · Book · Poem · Questions · Benefit · Article · Audio · Annotation · Term (المعجم) (+ Announcement and Highlight — مختار الأسبوع: آية/حديث/بيت — as homepage chrome). The old Series/Lesson split was retired — a lesson is now just a book with audio attached. **القرآن** is a separate collection — 114 surahs as a mushaf spine with a `/quran/<surah>` ayah reader.
 
 Books carry an optional **genre** (`قرآن|حديث|تراجم`) routing them to dedicated `/quran` `/hadith` `/tarajim` sections (still under `/books`); `/hadith` adds a صحيح/حسن/ضعيف/موضوع grading facet.
 
