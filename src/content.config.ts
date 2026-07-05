@@ -15,7 +15,9 @@ const shared = {
   aliases: z.array(slug).optional(),
 };
 
-const topicsField = z.array(slug).min(1).max(5).optional();
+// Keystatic writes [] (not an omitted field) when no topics are picked, so
+// this must tolerate an empty array, not just an absent one.
+const topicsField = z.array(slug).max(5).optional();
 
 // نوع العمل (work_type) — structural/authorial nature of a work, independent of its
 // subject/topic. See docs/knowledge-taxonomy.md §3 in Athar-Engine.
