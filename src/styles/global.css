@@ -70,7 +70,7 @@ html[data-theme="mono"] {
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
 body {
   margin: 0;
   background: var(--paper);
@@ -78,6 +78,7 @@ body {
   font-family: var(--font-ui);
   transition: background 0.35s, color 0.35s;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 ::selection { background: rgba(154, 47, 36, 0.16); }
 ::-webkit-scrollbar { width: 11px; height: 11px; }

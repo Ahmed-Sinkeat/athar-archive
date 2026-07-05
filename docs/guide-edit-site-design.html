@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Guide: Editing the Site's Look (Logo, Colors, Menus, Footer)</title>
+<style>
+  body { font-family: -apple-system, Segoe UI, Arial, sans-serif; max-width: 780px; margin: 40px auto; padding: 0 20px; line-height: 1.55; color: #222; }
+  h1 { border-bottom: 3px solid #7A2222; padding-bottom: 8px; }
+  h2 { color: #7A2222; margin-top: 2.2em; }
+  code { background: #f2eee8; padding: 2px 6px; border-radius: 4px; font-size: 0.92em; }
+  pre { background: #f2eee8; padding: 12px 16px; border-radius: 6px; overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+  th, td { border: 1px solid #ddd; padding: 8px 10px; text-align: left; vertical-align: top; }
+  th { background: #7A2222; color: #fff; }
+  .warn { background: #fff3cd; border-left: 4px solid #8E6A1C; padding: 10px 14px; margin: 1em 0; }
+  .step { background: #f9f7f3; border: 1px solid #eee; border-radius: 6px; padding: 14px 18px; margin: 1em 0; }
+</style>
+</head>
+<body>
+
+<h1>Editing the Site's Look</h1>
+<p>Everything on the site that <strong>isn't book/poem/lesson content</strong> — logo, favicon, colors, fonts, menu labels, footer — lives in a small set of code files. This guide points to each one.</p>
+
+<div class="warn"><strong>Golden rule:</strong> only change the readable Arabic/English text or the file being replaced. Never touch anything between <code>&lt; &gt;</code> or <code>{ }</code>, or CSS variable names.</div>
+
+<h2>1. Logo &amp; favicon</h2>
+<table>
+<tr><th>What</th><th>File</th><th>How to change</th></tr>
+<tr><td>Hero logo (light mode)</td><td><code>public/calligraphy/logo_light.webp</code></td><td>Replace this file directly, <strong>keep the same filename</strong> and roughly the same square shape (shown at 560×560).</td></tr>
+<tr><td>Hero logo (dark mode)</td><td><code>public/calligraphy/logo_dark.webp</code></td><td>Same as above — this one shows automatically when the visitor's system is in dark mode.</td></tr>
+<tr><td>Site name text (header/footer, not the hero image)</td><td><code>src/layouts/Base.astro</code> (~line 71, 84, ~226)</td><td>Find "أهل الأثر" and replace the text in all 3 places.</td></tr>
+<tr><td>Favicon (browser tab icon)</td><td><code>public/favicon.svg</code></td><td>Replace this file directly with your new icon (keep the filename <code>favicon.svg</code>).</td></tr>
+</table>
+<p>The hero logo markup itself is in <code>src/pages/index.astro</code> (~line 107) if you ever need to resize it or change the alt text.</p>
+
+<h2>2. Colors, fonts, themes</h2>
+<p>All in one file: <code>src/styles/global.css</code>, at the top (<code>:root</code> block, line ~9).</p>
+<pre>--brand: #7A2222;   /* main maroon */
+--brand2: ...;      /* secondary brand color */
+--gold: #8E6A1C;    /* accent gold */
+--f-disp: 'Amiri';               /* headings */
+--f-quran: 'Amiri Quran';        /* Quran text */
+--f-ui: 'IBM Plex Sans Arabic';  /* body / UI text */</pre>
+<p>The site has 3 themes (paper / noir / mono) — each one redefines these same variables further down the file (~line 58, ~68). Change a color in all three places if you want it consistent across themes.</p>
+
+<h2>3. Menu, footer, and page chrome text</h2>
+<p>Nearly everything visible outside actual content lives in <code>src/layouts/Base.astro</code> (one file, used on every page):</p>
+<table>
+<tr><th>Visible element</th><th>Where in the file</th></tr>
+<tr><td>Top menu links</td><td>the <code>nav</code> array</td></tr>
+<tr><td>Side-drawer extra links</td><td>the <code>navAll</code> array</td></tr>
+<tr><td>Footer link columns + brand blurb</td><td><code>&lt;footer class="site-footer"&gt;</code> block, ~line 223</td></tr>
+<tr><td>Search placeholder, filter buttons</td><td><code>searchTypes</code>, search box markup</td></tr>
+<tr><td>Reading-settings popup (font/theme controls)</td><td><code>settings-pop</code> block</td></tr>
+</table>
+<p>Home page, browse pages, and reader chrome text live in their own files under <code>src/pages/</code> — see <code>docs/editing-text.en.md</code> for the full per-page table.</p>
+
+<h2>How to make a change</h2>
+<div class="step">
+1. Open the repo on GitHub, find the file above.<br>
+2. Click the pencil ✏️ (Edit).<br>
+3. Change only the value/text you intend to (a color hex, a font name, a label).<br>
+4. Scroll down, click <strong>Commit changes</strong> — the site rebuilds automatically in a few minutes.
+</div>
+<p>Mistake? GitHub keeps full history — revert the commit, no harm done.</p>
+
+</body>
+</html>

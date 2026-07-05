@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Guide: Adding, Editing &amp; Deleting Content (Keystatic)</title>
+<style>
+  body { font-family: -apple-system, Segoe UI, Arial, sans-serif; max-width: 780px; margin: 40px auto; padding: 0 20px; line-height: 1.55; color: #222; }
+  h1 { border-bottom: 3px solid #7A2222; padding-bottom: 8px; }
+  h2 { color: #7A2222; margin-top: 2.2em; }
+  code { background: #f2eee8; padding: 2px 6px; border-radius: 4px; font-size: 0.92em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+  th, td { border: 1px solid #ddd; padding: 8px 10px; text-align: left; vertical-align: top; }
+  th { background: #7A2222; color: #fff; }
+  .warn { background: #fff3cd; border-left: 4px solid #8E6A1C; padding: 10px 14px; margin: 1em 0; }
+  .step { background: #f9f7f3; border: 1px solid #eee; border-radius: 6px; padding: 14px 18px; margin: 1em 0; }
+  .danger { background: #fdecea; border-left: 4px solid #c0392b; padding: 10px 14px; margin: 1em 0; }
+</style>
+</head>
+<body>
+
+<h1>Adding, Editing &amp; Deleting Content</h1>
+<p>Content (books, poems, people, articles, questions, etc.) can be managed two ways. Both are still supported — pick whichever suits you:</p>
+
+<table>
+<tr><th></th><th><code>/keystatic</code> (recommended)</th><th><code>/compose</code></th></tr>
+<tr><td>What it is</td><td>Full CMS: browse, create, edit, delete with real form fields</td><td>Unlisted maintainer tool: fill a form, it generates a ready-to-paste file</td></tr>
+<tr><td>How you save</td><td>Click Save — commits straight to GitHub for you</td><td>Click "نشر إلى GitHub" — copies the text and opens GitHub's commit page pre-filled; you paste and click Commit yourself</td></tr>
+<tr><td>Editing existing entries</td><td>Yes, built in</td><td>Yes — it prefills the form from the existing entry</td></tr>
+<tr><td>Deleting entries</td><td>Yes, built in</td><td>No — delete the file directly on GitHub instead</td></tr>
+</table>
+<p>Both write to the same content files, so it's safe to use one for some edits and the other for others.</p>
+
+<h2>1. Open the admin panel</h2>
+<div class="step">
+Go to <code>yoursite.com/keystatic</code> and sign in with GitHub (the repo owner's account, or whoever you've given access to).<br><br>
+Or, for the simpler paste-based tool: go to <code>yoursite.com/compose</code> (it's not linked in the menu, but works the same for anyone with repo access).
+</div>
+<p>Both are connected directly to the GitHub repo. Every save creates a real commit straight to the live <code>main</code> branch — <strong>there is no draft/review step</strong>, changes go live on the next automatic rebuild (a few minutes).</p>
+
+<h2>2. What you can manage</h2>
+<table>
+<tr><th>Collection</th><th>What it is</th></tr>
+<tr><td>Book</td><td>Full books/texts (matn, etc.)</td></tr>
+<tr><td>Poem</td><td>Poetic works (منظومات)</td></tr>
+<tr><td>Article</td><td>Written articles</td></tr>
+<tr><td>Question</td><td>Q&amp;A / fatwa-style entries</td></tr>
+<tr><td>Person</td><td>Scholar/author profiles</td></tr>
+<tr><td>Subject / Topic / Term</td><td>Classification &amp; glossary entries</td></tr>
+<tr><td>Benefit</td><td>Short benefit/lesson snippets</td></tr>
+<tr><td>Audio</td><td>Audio lesson references</td></tr>
+<tr><td>Annotation</td><td>Notes attached to a piece of content</td></tr>
+<tr><td>Highlight / Announcement</td><td>Site highlights &amp; announcements</td></tr>
+</table>
+<p><em>Not editable here:</em> the Quran collection (114 surahs) — that's auto-generated, not hand-edited.</p>
+
+<h2>3. Add, edit, or delete an entry</h2>
+<div class="step">
+<strong>Add:</strong> open the collection in the Keystatic sidebar → "Create" → fill in the fields → Save.<br><br>
+<strong>Edit:</strong> open the collection → click the existing entry → change fields → Save.<br><br>
+<strong>Delete:</strong> open the entry → the Delete option is in the entry's page (usually near the Save button).
+</div>
+
+<h2>Fields every entry shares</h2>
+<table>
+<tr><th>Field</th><th>Notes</th></tr>
+<tr><td><code>slug</code></td><td>Becomes part of the URL. <strong>Don't change it after the page is published</strong> — old links will break.</td></tr>
+<tr><td><code>status</code></td><td>draft / review / published / archived — only <strong>published</strong> shows on the live site.</td></tr>
+<tr><td><code>published_at</code> / <code>updated_at</code></td><td>Dates shown/sorted on the site.</td></tr>
+<tr><td><code>aliases</code></td><td>Alternate URLs that redirect to this entry.</td></tr>
+</table>
+
+<div class="danger">
+<strong>Gotchas — fields that look free-text but must match an exact value</strong> (get these wrong and the entry silently stops showing up in filters/search):
+<ul>
+<li><code>Topic → subject</code> is required.</li>
+<li><code>Question → topics</code> needs at least one.</li>
+<li><code>Annotation</code> needs <code>target_type</code>, <code>target_id</code>, and <code>anchor</code> together.</li>
+<li><code>Audio</code> needs <code>source_type</code>, <code>source_id</code>, and <code>url</code> together.</li>
+<li>Fields like era, ṭabaqa, kind, genre, work_type, grade, rutba are typed as plain text but the site expects specific Arabic values — copy the value from a similar existing entry rather than typing a new one from scratch.</li>
+</ul>
+</div>
+
+<h2>Undo a mistake</h2>
+<p>Every save is a GitHub commit. If something goes wrong, the repo owner can revert the commit in GitHub's history — no content is permanently lost.</p>
+
+</body>
+</html>

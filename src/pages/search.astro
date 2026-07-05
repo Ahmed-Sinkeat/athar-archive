@@ -18,6 +18,7 @@ import Breadcrumbs from "../components/Breadcrumbs.astro";
       <button type="button" id="go" class="search-submit">بحث</button>
     </div>
 
+    <span id="results-count" class="search-count"></span>
     <div class="search-scope-row">
       <div class="search-scope-chips" role="group" aria-label="تحديد نطاق البحث">
         <button type="button" class="search-scope-chip" data-scope="" aria-pressed="true">الكل</button>
@@ -29,7 +30,6 @@ import Breadcrumbs from "../components/Breadcrumbs.astro";
         <button type="button" class="search-scope-chip" data-scope="person" aria-pressed="false">الأعلام</button>
         <button type="button" class="search-scope-chip" data-scope="term" aria-pressed="false">المعجم</button>
       </div>
-      <span id="results-count" class="search-count"></span>
     </div>
     <div id="scope-note" class="faint u608848d"></div>
     <div id="results" class="search-results" aria-live="polite"></div>
@@ -51,7 +51,7 @@ import Breadcrumbs from "../components/Breadcrumbs.astro";
         padding: 0 26px; font-family: var(--font-ui); font-size: 14px; font-weight: 600; cursor: pointer;
       }
       .search-submit:hover { background: var(--brand2, var(--accent)); }
-      .search-scope-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 16px 0 28px; }
+      .search-scope-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 0 0 28px; }
       .search-scope-chips { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
       .search-scope-chip {
         font-family: var(--font-ui); font-size: 11.5px; color: var(--ink-soft); background: none;
@@ -60,7 +60,7 @@ import Breadcrumbs from "../components/Breadcrumbs.astro";
       }
       .search-scope-chip:hover { border-color: var(--rule-strong); }
       .search-scope-chip[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); font-weight: 600; }
-      .search-count { margin-inline-start: auto; font-size: 12px; color: var(--ink-faint); }
+      .search-count { display: block; font-size: 12px; color: var(--ink-faint); margin: 14px 0 10px; }
       .search-results { display: flex; flex-direction: column; gap: 12px; }
       .search-hit {
         display: block; text-align: start; background: var(--surface); border: 1px solid var(--rule);

@@ -280,6 +280,7 @@ function toggleFnInline(marker: HTMLElement, buildBody: () => Node[]) {
   host.insertAdjacentElement("afterend", box);
   fnInline.set(marker, box);
   marker.setAttribute("aria-expanded", "true");
+  box.scrollIntoView({ behavior: "smooth", block: "nearest" });
 }
 document.addEventListener("click", (e) => {
   const t = e.target as HTMLElement;
