@@ -234,7 +234,6 @@ export default config({
       label: "الصوتيات (Audio)",
       slugField: "slug",
       path: "src/content/audio/*",
-      format: { contentField: "body" },
       schema: {
         slug: slugField(),
         ...sharedFields,
