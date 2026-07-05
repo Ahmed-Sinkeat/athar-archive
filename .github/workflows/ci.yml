@@ -60,7 +60,7 @@ jobs:
       - name: Type-check
         run: pnpm exec tsc --noEmit --skipLibCheck
 
-      # SQL for the D1 search index → dist/search-index/000.sql (loaded by deploy job)
+      # SQL for the D1 search index → dist/search-index/000.sql (loaded below)
       # Disabled while books are being added in bulk — re-enable (flip `false` to
       # `github.ref == 'refs/heads/main' && github.event_name == 'push'`) once the
       # content additions settle down.
@@ -68,36 +68,12 @@ jobs:
         if: false
         run: pnpm search:gen
 
-      # Hand the built site to the deploy job.
-      - name: Upload dist
-        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        uses: actions/upload-artifact@v4
-        with:
-          name: dist
-          path: dist
-
-  # Separate job: no dependency code runs here, so holding the token is safe.
-  # Skips itself (no red ✗) until the CLOUDFLARE_API_TOKEN secret is set.
-  deploy:
-    needs: build
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-    runs-on: ubuntu-latest
-    env:
-      CF_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-    steps:
-      - uses: actions/checkout@v4 # for wrangler.toml
-      - uses: pnpm/action-setup@v4
-        with:
-          version: 11
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-      - uses: actions/download-artifact@v4
-        with:
-          name: dist
-          path: dist
+      # ponytail: deploy inline instead of a separate job — the old artifact
+      # upload/download step was hitting the repo's Actions storage quota
+      # (16.7k files per run). Same job already holds CLOUDFLARE_API_TOKEN
+      # for the R2 binding above, so no security separation is lost.
       - name: Deploy to Cloudflare
-        if: ${{ env.CF_API_TOKEN != '' }}
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push' && env.CLOUDFLARE_API_TOKEN != ''
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
