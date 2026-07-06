@@ -1,5 +1,5 @@
 ---
-title: "كتاب متون طالب العلم - المستوى الخامس - ٢"
+title: "زاد المستقنع في اختصار المقنع"
 status: published
 published_at: 2026-07-05
 person: abd-al-mhsn-al-qasm

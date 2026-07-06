@@ -1,5 +1,5 @@
 ---
-title: "كتاب متون طالب العلم - المستوى الخامس - ٣"
+title: "الخلاصة في النحو (ألفية ابن مالك)"
 status: published
 published_at: 2026-07-05
 person: abd-al-mhsn-al-qasm

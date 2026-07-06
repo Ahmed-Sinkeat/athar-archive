@@ -1,5 +1,5 @@
 ---
-title: "كتاب متون طالب العلم - الإضافية - ٦"
+title: "المحرر في أحاديث الأحكام"
 status: published
 published_at: 2026-07-05
 person: abd-al-mhsn-al-qasm

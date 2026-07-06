@@ -1,5 +1,5 @@
 ---
-title: "كتاب متون طالب العلم - الإضافية - ٣"
+title: "المقدمة الجزرية في التجويد"
 status: published
 published_at: 2026-07-05
 person: abd-al-mhsn-al-qasm
