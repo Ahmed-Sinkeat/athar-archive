@@ -1,9 +1,12 @@
 ---
 title: "كشف الشبهات"
 status: published
-published_at: 2026-07-05
+published_at: 2026-07-06
 person: ibn-abdul-wahhab
-topics: ["aam-other"]
+kind: متن
+topics: ["al-aqeedah-al-aamah"]
+authored_year: 1206
+description: "كشف الشبهات في التوحيد لشيخ الإسلام محمد بن عبد الوهاب"
 ---
 # بطاقة الكتاب وفهرس الموضوعات
 
@@ -772,3 +775,4 @@ topics: ["aam-other"]
 
 تم بحمد الله
 <hr class="page-sep" data-page="91" />
+

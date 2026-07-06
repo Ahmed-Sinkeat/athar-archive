@@ -1,10 +1,12 @@
 ---
 title: "المقدمة الجزرية في التجويد"
 status: published
-published_at: 2026-07-05
+published_at: 2026-07-06
 person: ibn-al-jazari
-topics: ["aam-other"]
-kind: متن
+work_type: "منظومة"
+topics: ["al-tajweed"]
+authored_year: 833
+description: "المقدمة الجزرية (المقدمة فيما على قارئ القرآن أن يعلمه) لابن الجزري"
 ---
 # بطاقة الكتاب وفهرس الموضوعات
 
@@ -425,3 +427,4 @@ kind: متن
 
 * * *
 <hr class="page-sep" data-page="38" />
+

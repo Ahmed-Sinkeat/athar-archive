@@ -1,10 +1,12 @@
 ---
 title: "نخبة الفكر في مصطلح أهل الأثر"
 status: published
-published_at: 2026-07-05
+published_at: 2026-07-06
 person: ibn-hajar
-topics: ["aam-other"]
 kind: متن
+topics: ["mustalah-al-hadith"]
+authored_year: 852
+description: "نخبة الفكر في مصطلح أهل الأثر للحافظ ابن حجر العسقلاني"
 ---
 # بطاقة الكتاب وفهرس الموضوعات
 
@@ -498,3 +500,4 @@ kind: متن
 
 تم بحمد الله
 <hr class="page-sep" data-page="43" />
+

@@ -1,9 +1,12 @@
 ---
 title: "العمدة في الأحكام"
 status: published
-published_at: 2026-07-05
+published_at: 2026-07-06
 person: abd-al-ghani-al-maqdisi
-topics: ["aam-other"]
+kind: متن
+topics: ["mutoon-al-hadith"]
+authored_year: 600
+description: "عمدة الأحكام عن سيد الأنام للحافظ عبد الغني بن عبد الواحد المقدسي"
 ---
 # بطاقة الكتاب وفهرس الموضوعات
 
@@ -2675,3 +2678,4 @@ topics: ["aam-other"]
 
 تم بحمد الله
 <hr class="page-sep" data-page="241" />
+

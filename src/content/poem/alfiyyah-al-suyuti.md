@@ -1,10 +1,12 @@
 ---
 title: "ألفية السيوطي في علم الحديث"
 status: published
-published_at: 2026-07-05
+published_at: 2026-07-06
 person: al-suyuti
-topics: ["aam-other"]
-kind: متن
+work_type: "منظومة"
+topics: ["mustalah-al-hadith"]
+authored_year: 911
+description: "ألفية السيوطي في مصطلح الحديث وعلومه للإمام جلال الدين السيوطي"
 ---
 # بطاقة الكتاب وفهرس الموضوعات
 
@@ -2525,3 +2527,4 @@ kind: متن
 
 تم بحمد الله
 <hr class="page-sep" data-page="155" />
+

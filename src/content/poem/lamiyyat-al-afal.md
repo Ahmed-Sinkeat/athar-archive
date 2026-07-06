@@ -1,10 +1,12 @@
 ---
 title: "لامية الأفعال في التصريف"
 status: published
-published_at: 2026-07-05
+published_at: 2026-07-06
 person: ibn-malik
-topics: ["aam-other"]
-kind: متن
+work_type: "منظومة"
+topics: ["al-sarf"]
+authored_year: 672
+description: "لامية الأفعال في علم التصريف للإمام جمال الدين بن مالك"
 ---
 # بطاقة الكتاب وفهرس الموضوعات
 
@@ -410,3 +412,4 @@ kind: متن
 
 تم بحمد الله
 <hr class="page-sep" data-page="39" />
+

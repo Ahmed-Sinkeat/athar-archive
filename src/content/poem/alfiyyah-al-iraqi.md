@@ -1,10 +1,12 @@
 ---
 title: "ألفية العراقي في علوم الحديث"
 status: published
-published_at: 2026-07-05
+published_at: 2026-07-06
 person: al-iraqi
-topics: ["aam-other"]
-kind: متن
+work_type: "منظومة"
+topics: ["mustalah-al-hadith"]
+authored_year: 806
+description: "ألفية العراقي (التبصرة والتذكرة في علوم الحديث) للحافظ زين الدين العراقي"
 ---
 # بطاقة الكتاب وفهرس الموضوعات
 
@@ -2418,3 +2420,4 @@ kind: متن
 
 تم بحمد الله
 <hr class="page-sep" data-page="135" />
+
