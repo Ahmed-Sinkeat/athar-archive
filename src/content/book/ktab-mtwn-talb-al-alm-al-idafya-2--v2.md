@@ -2,7 +2,7 @@
 title: "العمدة في الأحكام"
 status: published
 published_at: 2026-07-05
-person: abd-al-mhsn-al-qasm
+person: abd-al-ghani-al-maqdisi
 topics: ["aam-other"]
 ---
 # بطاقة الكتاب وفهرس الموضوعات

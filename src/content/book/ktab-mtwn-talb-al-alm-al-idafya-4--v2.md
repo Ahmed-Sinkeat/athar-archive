@@ -2,7 +2,7 @@
 title: "كشف الشبهات"
 status: published
 published_at: 2026-07-05
-person: abd-al-mhsn-al-qasm
+person: ibn-abdul-wahhab
 topics: ["aam-other"]
 ---
 # بطاقة الكتاب وفهرس الموضوعات

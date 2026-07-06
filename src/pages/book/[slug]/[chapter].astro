@@ -43,6 +43,9 @@ const graph = await loadGraph();
 const names = await personNameMap();
 const byAnchor = notesByAnchor("book", entry.id, graph, names);
 const author = entry.data.person ? names.get(entry.data.person) : undefined;
+const commentaries = graph.commentariesOf(entry.id)
+  .filter(isPub)
+  .map(c => ({ href: hrefFor("book", c.id), title: c.data.title, author: c.data.person ? names.get(c.data.person as string) : "" }));
 // "المقدمة" is pulled out of the reading flow when it's a catalog block (see
 // gen-book-chapters.ts) — shown as its own panel above the TOC instead, so it
 // no longer competes with real content chapters for a slot in the list.
@@ -392,13 +395,31 @@ const finalContent = (() => {
               {g.slug === currentGroupKey && nestedToc.length > 0 && (
                 <div class="toc-nested" style="margin-bottom: 0.5rem; font-size: 0.85em;">
                   {nestedToc.map((h) => (
-                    <a href={`#${h.slug}`} style={`padding-inline-start: ${(h.depth - 1) * 0.75}rem; padding-top: 0.25rem; padding-bottom: 0.25rem; display: block;`}>{h.title}</a>
+                    <a
+                      href={`#${h.slug}`}
+                      class:list={[
+                        "toc-nested-link",
+                        h.depth === 2 ? "toc-nested-h2" : "toc-nested-h3"
+                      ]}
+                    >
+                      {h.title}
+                    </a>
                   ))}
                 </div>
               )}
             </>
           ))}
         </div>
+        {commentaries.length > 0 && (
+          <div class="toc-box" style="margin-top: 1rem;">
+            <div class="toc-label">الشروح والتعليقات</div>
+            {commentaries.map(c => (
+              <a href={c.href} style="font-size: 13px;">
+                {c.title} {c.author && <span class="faint" style="font-size: 0.85em;">— {c.author}</span>}
+              </a>
+            ))}
+          </div>
+        )}
       </aside>
     </div>
   </div>

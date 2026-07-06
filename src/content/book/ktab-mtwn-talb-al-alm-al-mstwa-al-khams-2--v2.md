@@ -2,7 +2,7 @@
 title: "زاد المستقنع في اختصار المقنع"
 status: published
 published_at: 2026-07-05
-person: abd-al-mhsn-al-qasm
+person: al-hajjawi
 topics: ["aam-other"]
 ---
 # بطاقة الكتاب وفهرس الموضوعات

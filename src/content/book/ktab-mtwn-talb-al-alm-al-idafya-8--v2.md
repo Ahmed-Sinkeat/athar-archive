@@ -2,7 +2,7 @@
 title: "ألفية السيوطي في علم الحديث"
 status: published
 published_at: 2026-07-05
-person: abd-al-mhsn-al-qasm
+person: al-suyuti
 topics: ["aam-other"]
 ---
 # بطاقة الكتاب وفهرس الموضوعات

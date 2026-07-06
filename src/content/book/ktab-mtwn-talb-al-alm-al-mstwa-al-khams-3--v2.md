@@ -2,7 +2,7 @@
 title: "الخلاصة في النحو (ألفية ابن مالك)"
 status: published
 published_at: 2026-07-05
-person: abd-al-mhsn-al-qasm
+person: ibn-malik
 topics: ["aam-other"]
 ---
 ### بطاقة الكتاب وفهرس الموضوعات

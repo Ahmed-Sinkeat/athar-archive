@@ -2,7 +2,7 @@
 title: "المحرر في أحاديث الأحكام"
 status: published
 published_at: 2026-07-05
-person: abd-al-mhsn-al-qasm
+person: ibn-abd-al-hadi
 topics: ["aam-other"]
 ---
 # بطاقة الكتاب وفهرس الموضوعات

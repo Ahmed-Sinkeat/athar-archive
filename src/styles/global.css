@@ -70,7 +70,7 @@ html[data-theme="mono"] {
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; overflow-x: hidden; }
+html { scroll-behavior: smooth; overflow-x: clip; }
 body {
   margin: 0;
   background: var(--paper);
@@ -78,7 +78,7 @@ body {
   font-family: var(--font-ui);
   transition: background 0.35s, color 0.35s;
   min-height: 100vh;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 ::selection { background: rgba(154, 47, 36, 0.16); }
 ::-webkit-scrollbar { width: 11px; height: 11px; }
@@ -693,12 +693,12 @@ textarea.cinput { resize: vertical; line-height: 1.7; }
 .tok-quran-ref { color: var(--ink-faint); font-size: 0.88em; }
 .prose h2, .prose h3 {
   /* Phase 1: font-display is now Noto Naskh — use 600 weight */
-  font-family: var(--font-display); font-weight: 700; color: var(--ink);
+  font-family: var(--font-display); font-weight: 700;
   margin: 40px 0 14px; scroll-margin-top: 90px; letter-spacing: -0.01em;
 }
-.prose h2 { font-size: calc(22px * var(--reading-scale)); }
+.prose h2 { font-size: calc(22px * var(--reading-scale)); color: var(--accent); }
 .prose h2::before { content: "۞ "; color: var(--gold); } /* HANDOFF.md §5: sub-headings (باب…) get a gold ۞ */
-.prose h3 { font-size: calc(19px * var(--reading-scale)); }
+.prose h3 { font-size: calc(19px * var(--reading-scale)); color: var(--verdigris); }
 .prose blockquote {
   /* Phase 2: verdigris for blockquotes — differentiate from accent red */
   border-inline-start: 3px solid var(--verdigris); margin: 0 0 22px; padding-inline-start: 18px;
@@ -946,6 +946,10 @@ html.hide-vnums .vnum { display: none; }
 .hadith-accent .chap-toc-aside .toc-box a.toc-current { color: var(--green); }
 .chap-toc-aside .toc-box { max-height: 70vh; overflow-y: auto; }
 .chap-toc-aside .toc-label { font-family: var(--font-ui); font-size: 11.5px; letter-spacing: .1em; color: var(--ink-faint); margin-bottom: 8px; }
+.toc-nested-link { display: block; padding-top: 0.25rem; padding-bottom: 0.25rem; font-size: 12.5px; text-decoration: none; border-inline-start: 2px solid transparent; transition: color 0.15s; }
+.toc-nested-h2 { padding-inline-start: 14px; color: var(--accent) !important; font-weight: 600; }
+.toc-nested-h3 { padding-inline-start: 28px; color: var(--verdigris) !important; font-size: 12px; }
+.toc-nested-link:hover { opacity: 0.8; text-decoration: underline; }
 /* catalog panel ("عن هذه الطبعة") — pulled out of the chapter list, sits
    above the TOC on both the desktop rail and the mobile disclosure */
 .book-catalog { border: 1px solid var(--rule); border-radius: 9px; background: var(--surface); margin-bottom: 14px; }

@@ -2,7 +2,7 @@
 title: "ألفية العراقي في علوم الحديث"
 status: published
 published_at: 2026-07-05
-person: abd-al-mhsn-al-qasm
+person: al-iraqi
 topics: ["aam-other"]
 ---
 # بطاقة الكتاب وفهرس الموضوعات
