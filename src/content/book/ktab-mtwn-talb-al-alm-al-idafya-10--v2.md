@@ -4,6 +4,7 @@ status: published
 published_at: 2026-07-05
 person: ibn-malik
 topics: ["aam-other"]
+kind: متن
 ---
 # بطاقة الكتاب وفهرس الموضوعات
 

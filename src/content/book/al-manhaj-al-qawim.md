@@ -6,6 +6,7 @@ person: al-badr-al-bali
 authored_year: 778
 topics: ["aam-aqeedah"]
 edition: "الأولى، 1422 هـ"
+kind: متن
 ---
 المنهج القويم في اختصار الصراط المستقيم
 

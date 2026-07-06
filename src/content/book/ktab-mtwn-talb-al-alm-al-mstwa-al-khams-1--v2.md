@@ -4,6 +4,7 @@ status: published
 published_at: 2026-07-05
 person: ibn-hajar
 topics: ["aam-other"]
+kind: متن
 ---
 ### بطاقة الكتاب وفهرس الموضوعات
 
