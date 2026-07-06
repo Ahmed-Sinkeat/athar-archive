@@ -1,10 +1,7 @@
 ---
-slug: ''
 title: كتاب متون طالب العلم - المستوى الأول
 status: published
 published_at: 2026-07-05
-aliases:
-  - متون طالب العلم
 person: abd-al-mhsn-al-qasm
 work_type: متن
 topics:
