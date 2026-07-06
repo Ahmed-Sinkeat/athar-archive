@@ -1,6 +1,6 @@
 ---
 title: "تراجم العلماء"
-subject: tarajim-wa-tabaqat
+subject: sirah-wa-tarikh
 status: published
 published_at: 2026-06-25
 ---
