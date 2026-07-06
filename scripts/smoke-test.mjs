@@ -75,8 +75,8 @@ const topic = read("topic/aam-aqeedah/index.html");
 ok((topic.match(/class="card"/g) || []).length >= 1, "topic lists linked materials");
 
 // --- questions QAPage ---
-section("/questions/masail-al-asma-was-sifat");
-const q = read("questions/masail-al-asma-was-sifat/index.html");
+section("/questions/fatawa-shanqiti--1");
+const q = read("questions/fatawa-shanqiti--1/index.html");
 ok(/"@type":"QAPage"/.test(q), "QAPage JSON-LD");
 
 // --- search is noindex ---
