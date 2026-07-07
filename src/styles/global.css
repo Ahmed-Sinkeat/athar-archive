@@ -1024,6 +1024,14 @@ html.hide-vnums .vnum { display: none; }
 .book-catalog dl { margin: 0; padding: 2px 14px 12px; display: grid; grid-template-columns: auto 1fr; gap: 4px 10px; }
 .book-catalog dt { font-family: var(--font-ui); font-size: 11.5px; color: var(--ink-faint); white-space: nowrap; }
 .book-catalog dd { margin: 0; font-family: var(--font-ui); font-size: 12.5px; color: var(--ink-soft); }
+/* "عن المتن" sidebar card — author + tahqiq note + reading progress, sits
+   below the chapter list so the sidebar doesn't feel like a bare list */
+.book-info-card { border: 1px solid var(--rule); border-radius: var(--radius-lg); background: var(--surface); padding: 14px; margin-top: 14px; }
+.book-info-title { font-family: var(--font-display); font-weight: 700; font-size: 15px; color: var(--ink); margin-top: 6px; }
+.book-info-author { font-family: var(--font-ui); font-size: 12.5px; color: var(--ink-soft); margin-top: 4px; }
+.book-info-author strong { color: var(--ink); font-weight: 600; }
+.book-info-edition { font-family: var(--font-ui); font-size: 11.5px; color: var(--ink-faint); margin-top: 4px; line-height: 1.6; }
+.book-info-progress { margin-top: 12px; }
 /* mobile TOC disclosure — hidden on desktop, shown on mobile */
 .chap-mobile-toc { display: none; border: 1px solid var(--rule); border-radius: var(--radius-lg); background: var(--surface); margin-top: 14px; }
 .chap-mobile-toc summary { padding: 9px 14px; cursor: pointer; font-family: var(--font-ui); font-size: 13px; font-weight: 600; color: var(--accent); list-style: none; display: flex; justify-content: space-between; align-items: center; }
@@ -1284,16 +1292,43 @@ html[data-theme="noir"] ::highlight(aa-find)    { background-color: rgba(255, 15
 .lib-src { font-family: var(--font-ui); font-size: 12.5px; color: var(--ink-faint); margin-top: 9px; }
 .lib-del { position: absolute; inset-block-start: 10px; inset-inline-end: 12px; background: transparent; border: 0; color: var(--ink-faint); cursor: pointer; font-size: 18px; line-height: 1; }
 .lib-del:hover { color: var(--accent); }
-.lib-tabs { display: flex; gap: 8px; margin-bottom: 20px; }
-.lib-tabs button { font-family: var(--font-ui); font-size: 14px; color: var(--ink-soft); background: var(--surface); border: 1px solid var(--rule-strong); border-radius: var(--radius-pill); padding: 7px 18px; cursor: pointer; }
+.lib-tabs { display: flex; justify-content: center; gap: 8px; margin-bottom: 20px; }
+.lib-tabs button { display: inline-flex; align-items: center; gap: 7px; font-family: var(--font-ui); font-size: 14px; color: var(--ink-soft); background: var(--surface); border: 1px solid var(--rule-strong); border-radius: var(--radius-pill); padding: 7px 18px; cursor: pointer; }
 .lib-tabs button[aria-pressed="true"] { color: var(--accent); border-color: var(--accent); }
+/* color-coded per kind — same palette as the highlight/selection-toolbar dots
+   (aa-tools .aa-dot), so a تظليل color and its كُناشتي tab visually match */
+.lib-tab-dot { width: 8px; height: 8px; border-radius: 50%; flex: none; }
+.lib-tab-dot.k-mistake { background: rgba(155,89,182,0.95); }
+.lib-tab-dot.k-benefit { background: rgba(60,175,110,0.95); }
+.lib-tab-dot.k-note { background: rgba(240,195,60,0.95); }
 .lib-send { display: block; margin-bottom: 18px; }
-.lib-group-tabs { display: flex; align-items: center; gap: 8px; margin-bottom: 18px; font-family: var(--font-ui); font-size: 13px; }
+.lib-group-tabs { display: flex; justify-content: center; align-items: center; gap: 8px; margin-bottom: 18px; font-family: var(--font-ui); font-size: 13px; }
 .lib-group-tabs button { font-size: 13px; color: var(--ink-soft); background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius-pill); padding: 4px 13px; cursor: pointer; }
 .lib-group-tabs button[aria-pressed="true"] { color: var(--accent); border-color: var(--accent); }
 .lib-group { margin-bottom: 22px; }
-.lib-group summary { cursor: pointer; font-family: var(--font-display); font-weight: 600; font-size: 16px; color: var(--ink); padding: 10px 0; border-bottom: 1px solid var(--rule); margin-bottom: 14px; }
-.lib-group .card-grid { margin-top: 0; }
+.lib-group summary {
+  cursor: pointer; list-style: none; display: flex; align-items: center; gap: 10px;
+  font-family: var(--font-display); font-weight: 600; font-size: 16px; color: var(--ink); padding: 4px 2px 14px;
+}
+.lib-group summary::-webkit-details-marker { display: none; }
+.lib-group-count {
+  font-family: var(--font-mono); font-size: 11.5px; color: var(--accent);
+  width: 22px; height: 22px; border: 1px solid var(--accent-border); border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center; flex: none;
+}
+.lib-group summary::after {
+  content: "›"; margin-inline-start: auto; color: var(--ink-faint); transition: transform 0.15s;
+  transform: rotate(90deg);
+}
+.lib-group:not([open]) summary::after { transform: rotate(-90deg); }
+/* one shared bordered box per group, entries stacked with dividers inside —
+   not a card-grid of independently-boxed entries */
+.lib-group-box { border: 1px solid var(--rule-strong); border-radius: var(--radius-lg); background: var(--surface); overflow: hidden; }
+.lib-entry { position: relative; padding: 18px 20px; text-align: center; }
+.lib-entry + .lib-entry { border-top: 1px solid var(--rule); }
+.lib-entry .benefit-quote { border: none; background: none; padding: 0; border-radius: 0; }
+.lib-entry .lib-note, .lib-entry .lib-src { text-align: center; }
+.lib-entry .lib-del { inset-inline-end: 10px; inset-block-start: 12px; }
 /* --- flat list rows (listing pages: الكتب / الشعر / الدروس / الأعلام / …) --- */
 /* Override card-box styles when inside .flat-list so items render as rows */
 .flat-list { list-style: none; padding: 0; margin: 0; border-block-start: 1px solid var(--rule); }

@@ -65,27 +65,35 @@ function sendMistakes(items: Item[]) {
   window.location.href = `mailto:admin@ahlalathar.com?subject=${encodeURIComponent("إبلاغ عن أخطاء")}&body=${encodeURIComponent(body)}`;
 }
 
-function buildCard(m: Item): HTMLElement {
-  const a = document.createElement("a");
-  a.className = "lib-card";
-  a.href = `${m.path}#m=${m.id}`;
-
+// Shared body-builder for a mark's quote/note/source, used by both the
+// mistake tab's card grid (buildCard, boxed independently) and grouped
+// benefit/note lists (buildEntry, stacked rows inside one shared box).
+function fillMarkBody(container: HTMLElement, m: Item) {
   const q = document.createElement("div");
   q.className = "benefit-quote";
   q.setAttribute("data-ar", "");
   q.textContent = `«${m.text}»`;
-  a.appendChild(q);
+  container.appendChild(q);
+  if (m.note) { const n = document.createElement("div"); n.className = "lib-note"; n.textContent = m.note; container.appendChild(n); }
+  if (m.title) { const s = document.createElement("div"); s.className = "lib-src"; s.textContent = "من: " + m.title; container.appendChild(s); }
+}
 
-  if (m.note) { const n = document.createElement("div"); n.className = "lib-note"; n.textContent = m.note; a.appendChild(n); }
-  if (m.title) { const s = document.createElement("div"); s.className = "lib-src"; s.textContent = "من: " + m.title; a.appendChild(s); }
-
+function buildDeleteBtn(m: Item): HTMLButtonElement {
   const del = document.createElement("button");
   del.className = "lib-del";
   del.type = "button";
   del.setAttribute("aria-label", "حذف");
   del.textContent = "×";
   del.addEventListener("click", (e) => { e.preventDefault(); removeMark(m.path, m.id); render(); });
-  a.appendChild(del);
+  return del;
+}
+
+function buildCard(m: Item): HTMLElement {
+  const a = document.createElement("a");
+  a.className = "lib-card";
+  a.href = `${m.path}#m=${m.id}`;
+  fillMarkBody(a, m);
+  a.appendChild(buildDeleteBtn(m));
   return a;
 }
 
@@ -94,6 +102,22 @@ function buildGrid(items: Item[]): HTMLElement {
   grid.className = "card-grid u44f04b0";
   for (const m of items) grid.appendChild(buildCard(m));
   return grid;
+}
+
+// One shared bordered box per group (see .lib-group-box), entries stacked
+// with dividers — not a grid of individually-boxed cards.
+function buildGroupBox(items: Item[]): HTMLElement {
+  const box = document.createElement("div");
+  box.className = "lib-group-box";
+  for (const m of items) {
+    const a = document.createElement("a");
+    a.className = "lib-entry";
+    a.href = `${m.path}#m=${m.id}`;
+    fillMarkBody(a, m);
+    a.appendChild(buildDeleteBtn(m));
+    box.appendChild(a);
+  }
+  return box;
 }
 
 // "حسب الكتاب" groups by the mark's own title (1 group per source, no lookup
@@ -148,11 +172,11 @@ function render() {
     details.className = "lib-group";
     details.open = true;
     const summary = document.createElement("summary");
+    const countEl = document.createElement("span"); countEl.className = "lib-group-count"; countEl.textContent = String(groupItemsList.length);
     const labelEl = document.createElement("span"); labelEl.textContent = label;
-    const countEl = document.createElement("span"); countEl.className = "faint"; countEl.textContent = ` (${groupItemsList.length})`;
-    summary.append(labelEl, countEl);
+    summary.append(countEl, labelEl);
     details.appendChild(summary);
-    details.appendChild(buildGrid(groupItemsList));
+    details.appendChild(buildGroupBox(groupItemsList));
     listEl.appendChild(details);
   }
 }

@@ -29,12 +29,13 @@ for (const collection of ["book", "poem", "article"] as const) {
 <Base title="كُناشة" description="فوائدُك وملاحظاتُك وأخطاؤك المحفوظةُ على هذا الجهاز." activeNav="benefits" noindex>
   <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "كُناشة" }]} />
   <div class="wrap-mid u91a8701">
+    <div class="ornament" aria-hidden="true">۞</div>
     <h1 class="page-title">كُناشتي</h1>
     <p class="page-intro">فوائدُك وملاحظاتُك — تُصنَع بتظليلِ النصِّ أثناء القراءة، وتُحفَظ على هذا الجهازِ وحده. الأخطاءُ وحدَها تُرسَل عند الضغط على زرّ الإرسال.</p>
     <div class="lib-tabs" data-lib-tabs>
-      <button data-lib-tab="benefit" aria-pressed="true">الفوائد</button>
-      <button data-lib-tab="note" aria-pressed="false">الملاحظات</button>
-      <button data-lib-tab="mistake" aria-pressed="false">الأخطاء</button>
+      <button data-lib-tab="benefit" aria-pressed="true"><span class="lib-tab-dot k-benefit"></span>الفوائد</button>
+      <button data-lib-tab="note" aria-pressed="false"><span class="lib-tab-dot k-note"></span>الملاحظات</button>
+      <button data-lib-tab="mistake" aria-pressed="false"><span class="lib-tab-dot k-mistake"></span>الأخطاء</button>
     </div>
     <div class="lib-group-tabs" data-lib-group-tabs hidden>
       <span class="faint">تنظيم:</span>
@@ -49,3 +50,10 @@ for (const collection of ["book", "poem", "article"] as const) {
     import "../scripts/library.ts";
   </script>
 </Base>
+
+<style>
+  /* .page-intro's max-width is meant to cap a left/right-flowing block on
+     most pages; this page centers everything, so it also needs margin:auto
+     to actually sit centered rather than just its text being centered. */
+  .page-intro { margin-inline: auto; }
+</style>

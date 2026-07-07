@@ -392,6 +392,16 @@ const finalContent = (() => {
             ))}
           </div>
         )}
+        <div class="book-info-card">
+          <div class="toc-label">عن المتن</div>
+          <div class="book-info-title">{entry.data.title}</div>
+          {author && <div class="book-info-author">تأليف <strong>{author}</strong></div>}
+          {entry.data.edition && <div class="book-info-edition">{entry.data.edition}</div>}
+          <div class="book-info-progress">
+            <div class="faint" style="font-size: 11.5px;">تقدّمك في الكتاب: {chapter.title} — {chIdx + 1} من {allChapters.length}</div>
+            <div class="bar"><span style={`width: ${Math.round(((chIdx + 1) / allChapters.length) * 100)}%`}></span></div>
+          </div>
+        </div>
       </ReaderSidebar>
     </div>
   </div>
