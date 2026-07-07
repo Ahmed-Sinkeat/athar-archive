@@ -4,6 +4,7 @@ import { ClientRouter } from "astro:transitions";
 import "../styles/global.css";
 import "../styles/extracted.css"; // generated from former inline styles — must load AFTER global.css
 import { config } from "../../ahlalathar.config";
+import { toArabicDigits } from "../lib/display";
 
 interface Props {
   title: string;
@@ -65,6 +66,18 @@ const filterSubjects = (await getCollection("subject"))
   .filter((s) => s.data.status === "published")
   .map((s) => s.data.title)
   .sort((a, b) => a.localeCompare(b, "ar"));
+
+// Quran juz/page jump (topbar-level so it's reachable from any /quran/* page,
+// not just the mushaf hub) — shown/hidden by reader.ts based on activeNav.
+const quranSurahs = (await getCollection("quran")).sort((a, b) => (a.data.number as number) - (b.data.number as number));
+const JUZ_START_PAGE = [1, 22, 42, 62, 82, 102, 121, 142, 162, 182, 201, 222, 242, 262, 282, 302, 322, 342, 362, 382, 402, 422, 442, 462, 482, 502, 522, 542, 562, 582];
+const surahPages = quranSurahs.map((s) => ({ id: s.id, start: s.data.start_page as number }));
+const pageHref = (page: number) => {
+  let s = surahPages[0];
+  for (const cand of surahPages) { if (cand.start <= page) s = cand; else break; }
+  return `/quran/${s.id}#p${page}`;
+};
+const juzOptions = JUZ_START_PAGE.map((page, i) => ({ n: i + 1, href: pageHref(page) }));
 
 const fullTitle = title.includes("أهل الأثر") ? title : `${title} · أهل الأثر`;
 ---
@@ -141,6 +154,15 @@ const fullTitle = title.includes("أهل الأثر") ? title : `${title} · أ�
         <div class="topbar-tools">
           <!-- top-bar search removed: search now lives per-section (listing pages),
                on the home hero, and in the drawer. -->
+          <!-- Quran juz/page jump: only shown on /quran/* pages (reader.ts onPage) -->
+          <div class="quran-jump" data-quran-jump hidden>
+            <select data-quran-jump-juz aria-label="الانتقال إلى جزء">
+              <option value="">الجزء</option>
+              {juzOptions.map((j) => <option value={j.href}>{toArabicDigits(j.n)}</option>)}
+            </select>
+            <input type="number" min="1" max="604" placeholder="صفحة" data-quran-jump-page aria-label="الانتقال إلى صفحة" />
+          </div>
+          <script type="application/json" data-quran-surah-pages set:html={JSON.stringify(surahPages)} />
           <!-- reading-page-only tools: hidden by marks.ts/reader.ts unless the
                page has a .prose/.verse (or sidebar) to act on -->
           <button class="icon-btn" data-action="page:find" aria-label="بحث في الصفحة" hidden>

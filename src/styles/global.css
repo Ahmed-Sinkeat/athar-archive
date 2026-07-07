@@ -6,11 +6,20 @@
    Content renders fully without JS; prefs are enhancement.
    ============================================================ */
 
+/* KFGQPC HAFS Uthmanic Script — freely distributed for Quran text
+   reproduction (King Fahd Glorious Qur'an Printing Complex). Self-hosted,
+   sourced from quran.com's public frontend repo. */
+@font-face {
+  font-family: 'UthmanicHafs';
+  src: url('/fonts/quran/UthmanicHafs1Ver18.woff2') format('woff2');
+  font-display: swap;
+}
+
 :root, [data-theme="paper"] {
   /* ── typography (docs/HANDOFF-visual-redesign.md §3) ── */
   --f-disp:  'Amiri', serif;
   --f-matn:  'Noto Naskh Arabic', serif;
-  --f-quran: 'Amiri Quran', 'Amiri', serif;
+  --f-quran: 'UthmanicHafs', 'Amiri Quran', 'Amiri', serif;
   --f-ui:    'IBM Plex Sans Arabic', system-ui, sans-serif;
 
   /* ── color tokens (docs/HANDOFF-visual-redesign.md §1) ── */
@@ -1378,6 +1387,14 @@ html[data-theme="noir"] ::highlight(aa-find)    { background-color: rgba(255, 15
 
 /* --- page separator (EPUB-imported books) — HANDOFF.md §5: dashed hairline
    with a «ص N» pill, hidden when the page-numbers reader setting is off --- */
+.quran-jump { display: flex; align-items: center; gap: 6px; }
+.quran-jump select, .quran-jump input {
+  font-family: var(--font-ui); font-size: 12.5px; padding: 4px 6px;
+  border: 1px solid var(--rule); border-radius: 6px; background: var(--surface); color: var(--ink);
+}
+.quran-jump input[type="number"] { width: 4.5rem; }
+@media (max-width: 720px) { .quran-jump { display: none; } }
+
 .page-sep { display: flex; justify-content: center; margin: 24px 0; padding-block-start: 12px; border-block-start: 1px dashed var(--rule); }
 .page-sep::before {
   content: "ص " attr(data-page);

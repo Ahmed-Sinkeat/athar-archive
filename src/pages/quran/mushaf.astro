@@ -8,6 +8,16 @@ import { toArabicDigits } from "../../lib/display";
 // Surah list — sorted by number
 const surahs = (await getCollection("quran"))
   .sort((a, b) => (a.data.number as number) - (b.data.number as number));
+
+// Standard 604-page Madani mushaf: fixed starting page of each of the 30 ajza'.
+const JUZ_START_PAGE = [1, 22, 42, 62, 82, 102, 121, 142, 162, 182, 201, 222, 242, 262, 282, 302, 322, 342, 362, 382, 402, 422, 442, 462, 482, 502, 522, 542, 562, 582];
+// page N belongs to the surah with the greatest start_page <= N
+const pageHref = (page: number) => {
+  let s = surahs[0];
+  for (const cand of surahs) { if ((cand.data.start_page as number) <= page) s = cand; else break; }
+  return `/quran/${s.id}#p${page}`;
+};
+const juzOptions = JUZ_START_PAGE.map((page, i) => ({ n: i + 1, href: pageHref(page) }));
 ---
 <Base title="المصحف الشريف" description="تصفح سور القرآن الكريم وقراءة آياته بالرسم العثماني." activeNav="quran" jsonLd={collectionLd({ title: "المصحف الشريف", path: "/quran/mushaf", crumbs: [{ name: "الرئيسية", path: "/" }, { name: "القرآن وعلومه", path: "/quran" }, { name: "المصحف الشريف", path: "/quran/mushaf" }] })}>
   <Breadcrumbs items={[
@@ -17,6 +27,36 @@ const surahs = (await getCollection("quran"))
   ]} />
   <div class="wrap-mid">
     <h1 class="page-title">المصحف الشريف</h1>
+
+    <form class="jump-bar" dir="rtl">
+      <label>
+        الجزء
+        <select data-jump-select>
+          <option value="">اختر الجزء</option>
+          {juzOptions.map((j) => <option value={j.href}>{toArabicDigits(j.n)}</option>)}
+        </select>
+      </label>
+      <label>
+        الصفحة
+        <input type="number" min="1" max="604" placeholder="١–٦٠٤" data-jump-page />
+      </label>
+    </form>
+    <script type="application/json" data-surah-pages set:html={JSON.stringify(surahs.map((s) => ({ id: s.id, start: s.data.start_page })))} />
+    <script>
+      const surahPages: { id: string; start: number }[] = JSON.parse(document.querySelector('script[data-surah-pages]')!.textContent || "[]");
+      document.querySelector<HTMLSelectElement>("[data-jump-select]")?.addEventListener("change", (e) => {
+        const href = (e.target as HTMLSelectElement).value;
+        if (href) location.href = href;
+      });
+      document.querySelector<HTMLInputElement>("[data-jump-page]")?.addEventListener("keydown", (e) => {
+        if (e.key !== "Enter") return;
+        const n = parseInt((e.target as HTMLInputElement).value, 10);
+        if (!(n >= 1 && n <= 604)) return;
+        let s = surahPages[0];
+        for (const cand of surahPages) { if (cand.start <= n) s = cand; else break; }
+        location.href = `/quran/${s.id}#p${n}`;
+      });
+    </script>
 
     {surahs.length > 0 && (
       <section class="surah-list" aria-label="فهرس السور">
@@ -38,6 +78,13 @@ const surahs = (await getCollection("quran"))
 </Base>
 
 <style>
+  .jump-bar { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-block-start: 1rem; }
+  .jump-bar label { display: flex; align-items: center; gap: 0.5rem; font-family: var(--font-ui); font-size: 13px; color: var(--ink-soft); }
+  .jump-bar select, .jump-bar input {
+    font-family: var(--font-ui); font-size: 13px; padding: 4px 8px;
+    border: 1px solid var(--rule); border-radius: 6px; background: var(--surface); color: var(--ink);
+  }
+  .jump-bar input[type="number"] { width: 5rem; }
   .surah-list { margin-block: 2.5rem; }
   .surah-grid {
     display: grid;

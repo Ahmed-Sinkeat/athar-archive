@@ -299,6 +299,24 @@ document.addEventListener("click", (e) => {
   if ((e.target as HTMLElement).closest("[data-drawer-backdrop]")) setDrawer(false);
 });
 
+// topbar Quran juz/page jump (persisted header, bound once)
+document.addEventListener("change", (e) => {
+  const el = e.target as HTMLElement;
+  if (!el.matches("[data-quran-jump-juz]")) return;
+  const href = (el as HTMLSelectElement).value;
+  if (href) location.href = href;
+});
+document.addEventListener("keydown", (e) => {
+  const el = e.target as HTMLElement;
+  if (!el.matches("[data-quran-jump-page]") || e.key !== "Enter") return;
+  const n = parseInt((el as HTMLInputElement).value, 10);
+  if (!(n >= 1 && n <= 604)) return;
+  const pages: { id: string; start: number }[] = JSON.parse(document.querySelector('script[data-quran-surah-pages]')?.textContent || "[]");
+  let s = pages[0];
+  for (const cand of pages) { if (cand.start <= n) s = cand; else break; }
+  if (s) location.href = `/quran/${s.id}#p${n}`;
+});
+
 // per-athar permalink: "#" link injected before each numbered narration
 // (see injectAtharAnchors in src/lib/hadith.ts) — copies the deep link +
 // a plain-text citation alongside its native hash navigation.
@@ -1030,6 +1048,8 @@ function onPage() {
   // ReaderSidebar (book chapters, small books, poems, articles)
   const hasSidebar = !!document.querySelector("[data-mobile-sidebar]");
   document.querySelectorAll<HTMLElement>('[data-action="sidebar:mobile-toggle"], [data-action="sidebar:desktop-toggle"]').forEach((b) => { b.hidden = !hasSidebar; });
+  const quranJump = document.querySelector<HTMLElement>("[data-quran-jump]");
+  if (quranJump) quranJump.hidden = document.querySelector("main")?.dataset.activeNav !== "quran";
 }
 onPage();
 document.addEventListener("astro:page-load", onPage);

@@ -99,11 +99,8 @@ const processedParagraphs = paragraphs.map((para, idx) => {
   text = text.replace(/<hr class="page-sep" data-page="(\d+)" \/>/g, (match, pageStr) => {
     const pNum = parseInt(pageStr, 10);
     const notes = pageNotesData.get(pNum);
-    if (notes && notes.length > 0) {
-      const escapedNotes = JSON.stringify(notes).replace(/'/g, "&apos;");
-      return `<hr class="page-sep" data-page="${pNum}" data-notes='${escapedNotes}' />`;
-    }
-    return match;
+    const notesAttr = notes && notes.length > 0 ? ` data-notes='${JSON.stringify(notes).replace(/'/g, "&apos;")}'` : "";
+    return `<hr class="page-sep" data-page="${pNum}" id="p${pNum}"${notesAttr} />`;
   });
 
   const verseKey = `${data.number}:${para.id}`;
@@ -222,8 +219,9 @@ const processedParagraphs = paragraphs.map((para, idx) => {
 
   /* gold circled ayah number, trailing the ayah text */
   .ayah-num {
-    display: inline-block; width: 20px; height: 20px; line-height: 18px; text-align: center;
-    margin-inline: 3px; border: 1px solid var(--gold); border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+    min-width: 20px; height: 20px; padding-inline: 3px; box-sizing: border-box;
+    margin-inline: 3px; border: 1px solid var(--gold); border-radius: 999px;
     font-family: var(--font-ui); font-size: 10px; color: var(--gold-text);
     vertical-align: middle;
   }
