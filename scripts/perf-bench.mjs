@@ -4,9 +4,8 @@
  *
  * Measures and reports:
  *   1. Astro build time
- *   2. Pagefind index time
- *   3. Per-content-type file counts
- *   4. Dist output stats (page count, total size)
+ *   2. Per-content-type file counts
+ *   3. Dist output stats (page count, total size)
  *
  * Usage:
  *   node scripts/perf-bench.mjs [--count=N] [--skip-gen] [--skip-clean]
@@ -189,21 +188,16 @@ const buildMs = timedExec("Astro build", "pnpm build");
 if (existsSync(DIST)) {
   const allFiles  = walk(DIST);
   const htmlFiles = allFiles.filter(f => f.endsWith(".html"));
-  const pagefind  = allFiles.filter(f => f.includes("pagefind"));
   const totalSize = allFiles.reduce((sum, f) => {
     try { return sum + statSync(f).size; } catch { return sum; }
   }, 0);
   const htmlSize  = htmlFiles.reduce((sum, f) => {
     try { return sum + statSync(f).size; } catch { return sum; }
   }, 0);
-  const pfSize    = pagefind.reduce((sum, f) => {
-    try { return sum + statSync(f).size; } catch { return sum; }
-  }, 0);
 
   console.log(`\n📦 Dist output:`);
   console.log(`   HTML pages     : ${htmlFiles.length}`);
   console.log(`   HTML size      : ${fmtBytes(htmlSize)}`);
-  console.log(`   Pagefind files : ${pagefind.length} (${fmtBytes(pfSize)})`);
   console.log(`   Total dist     : ${fmtBytes(totalSize)}`);
 }
 

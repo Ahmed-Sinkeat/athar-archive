@@ -8,7 +8,7 @@ import AudioPlayer from "../../components/AudioPlayer.astro";
 import RelatedStrip from "../../components/RelatedStrip.astro";
 import Relations from "../../components/Relations.astro";
 import { markdownToSafeHtml } from "../../lib/sanitize";
-import { isPub, loadGraph, personNameMap, subjectTitlesFor, notesByAnchor, relatedTo, backlinksList, originOf } from "../../lib/site";
+import { isPub, loadGraph, personNameMap, notesByAnchor, relatedTo, backlinksList, originOf } from "../../lib/site";
 import { analyzeBook } from "../../lib/chunk";
 import { readBody } from "../../lib/read-body";
 import { hrefFor, toArabicDigits, isMatn, labelFor } from "../../lib/display";
@@ -44,12 +44,12 @@ export async function getStaticPaths() {
       c.firstPage ?? (c.content.match(/data-page="(\d+)"/)?.[1] ? Number(c.content.match(/data-page="(\d+)"/)![1]) : undefined);
     // Phase 2: chunked books → store a light TOC (titles+slugs) only; the body and
     // its annotations live on the on-demand chapter pages, never in this landing's HTML.
-    paths.push({ params: { slug: entry.id }, props: { entry, chunked: a.chunked, toc: a.chapters.map((c) => ({ title: c.title, slug: c.slug, parent: c.parent, parentTitle: c.parentTitle, firstPage: firstPageOf(c) })), tocNested: a.chunked ? [] : parseToc(body ?? ""), body: a.chunked ? undefined : body, byAnchor: a.chunked ? {} : byAnchor, audios, commentaries, author: entry.data.person ? names.get(entry.data.person) : undefined, topicLabel: labelFor("book", entry.data), origin: originOf(entry.data, graph), subjects: subjectTitlesFor(entry.data.topics, graph), related: relatedTo(entry, graph, names), backlinks: backlinksList(entry, graph, names) } });
+    paths.push({ params: { slug: entry.id }, props: { entry, chunked: a.chunked, toc: a.chapters.map((c) => ({ title: c.title, slug: c.slug, parent: c.parent, parentTitle: c.parentTitle, firstPage: firstPageOf(c) })), tocNested: a.chunked ? [] : parseToc(body ?? ""), body: a.chunked ? undefined : body, byAnchor: a.chunked ? {} : byAnchor, audios, commentaries, author: entry.data.person ? names.get(entry.data.person) : undefined, topicLabel: labelFor("book", entry.data), origin: originOf(entry.data, graph), related: relatedTo(entry, graph, names), backlinks: backlinksList(entry, graph, names) } });
   }
   return paths;
 }
 
-const { entry, chunked, toc, tocNested, body, byAnchor, audios, commentaries, author, topicLabel, origin, subjects, related, backlinks } = Astro.props;
+const { entry, chunked, toc, tocNested, body, byAnchor, audios, commentaries, author, topicLabel, origin, related, backlinks } = Astro.props;
 const KIND_SLUG: Record<string, string> = { شرح: "sharh", حاشية: "hashiya", تخريج: "takhrij", إعراب: "iraab" };
 // Oversized chapters get re-split into "صفحات S-E" slices (parent set) — group
 // those back under the parent chapter for the TOC instead of listing each slice.
@@ -79,7 +79,7 @@ const jsonLd = bookLd({
   crumbs: [{ name: "الرئيسية", path: "/" }, { name: "الكتب", path: "/books" }, { name: entry.data.title, path }],
 });
 ---
-<Base title={entry.data.title} description={entry.data.description} activeNav="books" ogType="book" jsonLd={jsonLd} searchMeta={{ title: entry.data.title, type: "book", id: entry.id, person: author, matn: isMatn("book", entry.data), subjects }} searchScope={{ in: entry.id, label: entry.data.title }}>
+<Base title={entry.data.title} description={entry.data.description} activeNav="books" ogType="book" jsonLd={jsonLd} searchScope={{ in: entry.id, label: entry.data.title }}>
   <Breadcrumbs
     width="wrap-matn"
     items={[
@@ -157,9 +157,9 @@ const jsonLd = bookLd({
       </>
     )}
 
-    {/* All annotations now open in the bottom sheet: phrase notes are wrapped
-        inline; whole-paragraph notes attach to their فقرة. The packs stay in the
-        DOM (hidden) so Pagefind/no-JS still see the text. */}
+    {/* All annotations now open in the sidebar/popup panel: phrase notes are
+        wrapped inline; whole-paragraph notes attach to their فقرة. The packs
+        stay in the DOM (hidden) so the search index/no-JS still see the text. */}
     {anchors.map(([anchor, notes]) => (
       <div class="ann-pack" id={`ann-${anchor}`} data-ann-pack data-phrase={notes.find((n) => n.phrase)?.phrase} hidden>
         {notes.map((nt) => (

@@ -9,14 +9,11 @@ interface Props {
   title: string;
   description?: string;
   activeNav?: string;
-  searchMeta?: { title: string; type: string; person?: string; era?: string; id?: string; matn?: boolean; aliases?: string[]; subjects?: string[] };
   searchScope?: { type?: string; in?: string; person?: string; label?: string };
   noindex?: boolean;
   ogType?: string;
   jsonLd?: unknown;
 }
-// searchMeta stays on Props (pages still pass it) but is no longer read — Pagefind
-// was removed; search is Google site-search now. ponytail: unthread it from pages later.
 const { title, description, activeNav, searchScope, noindex, ogType = "website", jsonLd } = Astro.props;
 const canonical = new URL(Astro.url.pathname.replace(/\/$/, "") || "/", config.siteUrl).href;
 
@@ -39,7 +36,7 @@ const nav = [
   { id: "poems", label: "الشعر", href: "/poems" },
   { id: "subjects", label: "الموضوعات", href: "/subjects" },
   { id: "people", label: "التراجم والأعلام", href: "/people" },
-  { id: "articles", label: "المقالات", href: "/articles" },
+  { id: "articles", label: "مقالات ومحاضرات", href: "/articles" },
   { id: "questions", label: "المسائل", href: "/questions" },
 ];
 // Drawer keeps extra pages reachable (شبكة المعرفة, كُناشة, معجم, etc.).
@@ -50,7 +47,8 @@ const navAll = [
 ];
 
 // In-bar search filter: type checkboxes + a specific-عَلَم picker (both backed by
-// real Pagefind facets). Person values are the display names the facets store.
+// the D1 (FTS5) search index via /api/search). Person values are the display
+// names the index stores.
 const searchTypes = [
   { id: "book", label: "كتاب" },
   { id: "poem", label: "منظومة" },
@@ -111,6 +109,8 @@ const fullTitle = title.includes("أهل الأثر") ? title : `${title} · أ�
           if (t === "noir" || t === "mono") document.documentElement.setAttribute("data-theme", t);
           const s = localStorage.getItem("aa-scale");
           if (s) document.documentElement.style.setProperty("--reading-scale", s);
+          const w = localStorage.getItem("aa-width");
+          if (w === "wide" || w === "full") document.documentElement.setAttribute("data-width", w);
           if (localStorage.getItem("aa-vnums") === "0") document.documentElement.classList.add("hide-vnums");
         } catch (e) {}
       })();
@@ -190,6 +190,14 @@ const fullTitle = title.includes("أهل الأثر") ? title : `${title} · أ�
           <div class="pop-btns">
             <button class="icon-btn" data-action="font:dec" aria-label="تصغير الخط">أ−</button>
             <button class="icon-btn" data-action="font:inc" aria-label="تكبير الخط">أ+</button>
+          </div>
+        </div>
+        <div class="pop-row">
+          <span class="pop-label">عرض القراءة</span>
+          <div class="pop-btns width-btns">
+            <button class="icon-btn" data-width-btn="normal" data-action="width:normal" aria-pressed="true" aria-label="عرض عادي" title="عادي">عادي</button>
+            <button class="icon-btn" data-width-btn="wide" data-action="width:wide" aria-pressed="false" aria-label="عرض واسع" title="واسع">واسع</button>
+            <button class="icon-btn" data-width-btn="full" data-action="width:full" aria-pressed="false" aria-label="ملء الشاشة" title="ملء الشاشة">ملء الشاشة</button>
           </div>
         </div>
         <button class="toggle-btn pop-toggle" data-toggle="tashkeel" data-action="toggle:tashkeel" aria-pressed="true"><span class="toggle-dot"></span>التشكيل</button>

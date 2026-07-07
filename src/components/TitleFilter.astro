@@ -1,0 +1,53 @@
+---
+// Client-side title-only filter for list pages (books/poems/matn/people/...).
+// Replaces the old per-page SectionSearch (a live /api/search dropdown) which
+// duplicated the header's global search and confused "two searches on one
+// page" — this one only narrows the cards already on screen, by title, no
+// network request. Deep full-text search still lives in the header search.
+interface Props { placeholder?: string }
+const { placeholder = "تصفية حسب العنوان…" } = Astro.props;
+---
+<div class="title-filter">
+  <input type="search" class="title-filter-input" placeholder={placeholder} aria-label={placeholder} autocomplete="off" data-title-filter />
+  <p class="title-filter-empty faint" data-title-filter-empty hidden>لا نتائج مطابقة.</p>
+</div>
+
+<style>
+  .title-filter { margin-bottom: 18px; }
+  .title-filter-input {
+    width: 100%; font-family: var(--font-ui); font-size: 15px; color: var(--ink);
+    background: var(--surface); border: 1px solid var(--rule-strong); border-radius: 10px;
+    padding: 10px 14px;
+  }
+  .title-filter-empty { padding: 10px 2px 0; font-size: 13px; }
+</style>
+
+<script is:inline data-astro-rerun>
+  (() => {
+    document.querySelectorAll("[data-title-filter]").forEach((input) => {
+      if (input.dataset.wired) return;
+      input.dataset.wired = "1";
+      const scope = input.closest(".title-filter").parentElement;
+      const empty = scope.querySelector("[data-title-filter-empty]");
+      const norm = (s) => s.normalize("NFKD").replace(/[ً-ٰٟ]/g, "").toLowerCase();
+      input.addEventListener("input", () => {
+        const q = norm(input.value.trim());
+        const items = scope.querySelectorAll("[data-title]");
+        let shown = 0;
+        items.forEach((el) => {
+          const match = !q || norm(el.dataset.title || "").includes(q);
+          el.hidden = !match;
+          if (match) shown++;
+        });
+        // collapse now-empty subject/topic groups (shared markup across the
+        // browse/masail grouped views) so filtering doesn't leave bare headers
+        scope.querySelectorAll(".century-node, .masail-subject, .masail-topic").forEach((g) => {
+          const kids = g.querySelectorAll("[data-title]");
+          if (kids.length === 0) return;
+          g.hidden = q !== "" && ![...kids].some((k) => !k.hidden);
+        });
+        empty.hidden = shown > 0 || !q;
+      });
+    });
+  })();
+</script>

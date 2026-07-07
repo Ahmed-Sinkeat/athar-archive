@@ -53,12 +53,31 @@ const csp = [
   "frame-ancestors 'none'",
 ].join("; ");
 
+// /admin (Sveltia CMS) is self-hosted (public/admin/sveltia-cms.js) so script-src
+// 'self' still holds, but the CMS itself needs to talk to GitHub's API/OAuth
+// worker and preview avatars/images from GitHub — Cloudflare applies _headers
+// blocks in file order, so this one (written after the site-wide block) wins
+// for anything under /admin/*.
+const adminCsp = [
+  "default-src 'self'",
+  "script-src 'self'",
+  "style-src 'self' 'unsafe-inline'",
+  "img-src 'self' data: https://avatars.githubusercontent.com https://raw.githubusercontent.com",
+  "connect-src 'self' https://api.github.com https://raw.githubusercontent.com https://*.workers.dev",
+  "frame-src 'self' https://github.com",
+  "base-uri 'self'",
+  "form-action 'self'",
+].join("; ");
+
 const out = `/*
   X-Content-Type-Options: nosniff
   X-Frame-Options: DENY
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: geolocation=(), microphone=(), camera=()
   Content-Security-Policy: ${csp}
+
+/admin/*
+  Content-Security-Policy: ${adminCsp}
 `;
 
 // Keep the adapter's existing rules (e.g. /_astro/* immutable Cache-Control) and

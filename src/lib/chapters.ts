@@ -215,7 +215,23 @@ export function parseBook(body: string): ParsedBook {
     .split(/\s+/)
     .filter(Boolean).length;
 
-  return { paragraphs, wordCount, chapters: splitChapters(body).chapters };
+  // Real prose before the first ## heading (splitChapters' `preamble`) used to
+  // just be dropped here — chunked books rendered only `.chapters`, so any
+  // text before the first heading (e.g. a book that opens with narrations
+  // before its first named باب) silently vanished from the chunked reader.
+  // Surface it as its own leading chapter instead of losing it.
+  const { preamble, chapters } = splitChapters(body);
+  let allChapters = chapters;
+  if (preamble) {
+    const seen = new Set(chapters.map((c) => c.slug));
+    const slug = uniqueSlug(slugifyArabic("مقدمة الكتاب") || "muqaddima", seen);
+    allChapters = [
+      { title: "مقدمة الكتاب", slug, order: 0, content: preamble },
+      ...chapters.map((c) => ({ ...c, order: c.order + 1 })),
+    ];
+  }
+
+  return { paragraphs, wordCount, chapters: allChapters };
 }
 
 // --- Nested TOC (h1-h6 in-page outline for books / audio-books) ---

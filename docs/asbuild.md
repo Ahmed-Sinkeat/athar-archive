@@ -7,7 +7,7 @@ Definition-of-Done (DoD) status, decisions, and any deviations from the plan.
 > Updated after every phase. Companion: [`structure.md`](./structure.md).
 
 **Project:** أهل الأثر — Arabic Islamic knowledge archive
-**Stack:** Astro (static + on-demand reading routes) · Markdown + Zod Content Collections · Pagefind (search, P4) · Cloudflare Workers Static Assets/R2 (P6/P8; deployed via `wrangler`, not Pages)
+**Stack:** Astro (static + on-demand reading routes) · Markdown + Zod Content Collections · Cloudflare D1 (FTS5) search via `/api/search` (superseded Pagefind, documented as it happened in P4 below) · Cloudflare Workers Static Assets/R2 (P6/P8; deployed via `wrangler`, not Pages)
 **Last updated:** UX-R complete · reading/browse/search redesign (top bar, browse IA, inline شرح chooser, /compose) · see the UX-R section below
 
 ---

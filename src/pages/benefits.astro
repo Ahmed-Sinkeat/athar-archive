@@ -1,10 +1,30 @@
 ---
+import { getCollection } from "astro:content";
 import Base from "../layouts/Base.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
+import { isPub, loadGraph, personNameMap } from "../lib/site";
+import { hrefFor } from "../lib/display";
 // كُناشتي — فوائدُ وملاحظاتٌ وأخطاءٌ خاصةٌ بهذا الجهاز فقط. تُصنع بتظليل النصِّ أثناء
 // القراءة وتُحفَظ في المتصفّح (localStorage). الفوائد والملاحظات لا تُرسَل لأيِّ
 // خادم؛ الأخطاء وحدَها تُرسَل دفعةً واحدةً بالبريد من تبويب «الأخطاء». القائمة
 // تُبنى في المتصفّح من scripts/library.ts.
+
+// Marks only carry {path, title} (set client-side when highlighted) — no
+// person/topics — so "organize by topic/person" needs a lookup from path to
+// that metadata. Built at build time (ponytail: inline data island, same
+// pattern as compose.astro's index — this page is noindex + perf-exempt).
+const graph = await loadGraph();
+const names = await personNameMap();
+const sourceIndex: { path: string; person: string; topics: string[] }[] = [];
+for (const collection of ["book", "poem", "article"] as const) {
+  for (const entry of (await getCollection(collection)).filter(isPub)) {
+    const person = entry.data.person ? names.get(entry.data.person as string) ?? "" : "";
+    const topics = ((entry.data.topics as string[] | undefined) ?? [])
+      .map((t) => graph.getById("topic", t)?.data.title as string | undefined)
+      .filter((t): t is string => !!t);
+    sourceIndex.push({ path: hrefFor(collection, entry.id), person, topics });
+  }
+}
 ---
 <Base title="كُناشة" description="فوائدُك وملاحظاتُك وأخطاؤك المحفوظةُ على هذا الجهاز." activeNav="benefits" noindex>
   <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "كُناشة" }]} />
@@ -16,8 +36,15 @@ import Breadcrumbs from "../components/Breadcrumbs.astro";
       <button data-lib-tab="note" aria-pressed="false">الملاحظات</button>
       <button data-lib-tab="mistake" aria-pressed="false">الأخطاء</button>
     </div>
+    <div class="lib-group-tabs" data-lib-group-tabs hidden>
+      <span class="faint">تنظيم:</span>
+      <button data-lib-group="book" aria-pressed="true">حسب الكتاب</button>
+      <button data-lib-group="topic" aria-pressed="false">حسب الموضوع</button>
+      <button data-lib-group="person" aria-pressed="false">حسب العَلَم</button>
+    </div>
     <div data-lib-list></div>
   </div>
+  <script type="application/json" id="lib-source-index" set:html={JSON.stringify(sourceIndex)} />
   <script>
     import "../scripts/library.ts";
   </script>

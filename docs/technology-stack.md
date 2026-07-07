@@ -94,7 +94,7 @@ Stable. R2 is core to our cost-control strategies.
 A potential upgrade search engine for advanced full-text Arabic searches.
 
 ### Why we chose it
-Meilisearch is currently documented as our **escalation pathway**. Our current production search utilizes Pagefind (static indexing) and Google Site Search. Pagefind handles diacritics and basic matches but lacks root-word Arabic morphology. If real-world corpus testing reveals poor search recall (e.g. failing to match hamza-variants or proclitics), Meilisearch will be deployed. It is open-source, supports advanced Arabic tokenizer mapping, and is highly performant.
+Meilisearch is currently documented as our **escalation pathway**. Production search is now Cloudflare D1 (SQLite FTS5) via a Worker API route (`/api/search`) — the earlier static-indexing approach (Pagefind, then Google Site Search) is retired; see `docs/asbuild.md` for that history. FTS5 handles diacritics and basic matches but lacks root-word Arabic morphology. If real-world corpus testing reveals poor search recall (e.g. failing to match hamza-variants or proclitics), Meilisearch will be deployed. It is open-source, supports advanced Arabic tokenizer mapping, and is highly performant.
 
 ### Alternatives considered
 * **Elasticsearch / OpenSearch:** Enterprise search platforms.
@@ -105,7 +105,7 @@ Meilisearch is currently documented as our **escalation pathway**. Our current p
 * **Algolia:** Closed-source, proprietary, and becomes exceptionally expensive as search queries scale.
 
 ### Future replacement policy
-Experimental / Escalation. Meilisearch is not yet active, but stands as the designated upgrade path if Pagefind limits are hit.
+Experimental / Escalation. Meilisearch is not yet active, but stands as the designated upgrade path if the current D1/FTS5 search hits its limits.
 
 ---
 
@@ -149,19 +149,21 @@ Stable.
 
 ---
 
-## Keystatic
+## Sveltia CMS
 
 ### Purpose
-A Git-CMS editor interface.
+A Git-CMS editor interface at `/admin`, replacing both Keystatic and the copy/paste `/compose` tool.
 
 ### Why we chose it
-Keystatic is currently **deferred** in favor of the lightweight `/compose` tool. Keystatic is an excellent Markdown editing interface, but it requires setup configuration and adds dependencies. The lightweight `/compose` tool generates identical valid frontmatter stubs locally without any package overhead.
+Keystatic required its own GitHub App + patched dependency (`patches/@keystatic__astro.patch`) and the `/compose` tool never committed anything itself — it only generated a markdown stub the admin had to paste into GitHub's web editor by hand. Sveltia CMS is a single self-hosted bundle (`public/admin/sveltia-cms.js`, ~2MB, vendored so CSP `script-src 'self'` still holds) driven by one `public/admin/config.yml` mirroring the `src/content.config.ts` schemas — real GUI editing, save = a real GitHub commit, includes delete. No React, no build-time integration, no patch file.
 
 ### Alternatives considered
-* **Decap CMS (formerly Netlify CMS):** Traditional static site Git CMS.
+* **Keystatic:** required `@astrojs/react` + `@keystatic/astro` + `@keystatic/core` + a patched dependency just for the admin route.
+* **Decap CMS (formerly Netlify CMS):** aging, slower maintenance, more complex OAuth setup than Sveltia's.
+* **Pages CMS:** newer, smaller community; not chosen over Sveltia's simpler single-file self-hosting.
 
-### Why they were rejected
-* **Decap CMS:** An aging library with slow active maintenance, relying on complex external configurations and client-side authenticators.
+### Setup still required
+GitHub OAuth needs a small Cloudflare Worker (`sveltia-cms-auth`) deployed and registered as a GitHub OAuth App — see the TODO comment at the top of `public/admin/config.yml`. Until that's done, open `/admin` locally in a Chromium browser and use "Work with Local Repository" (no server needed).
 
 ### Future replacement policy
 Replaceable. Git-based editing is modular; any interface can write to the underlying Markdown files.

@@ -7,7 +7,7 @@ import StudyBar from "../../components/StudyBar.astro";
 import AudioPlayer from "../../components/AudioPlayer.astro";
 import RelatedStrip from "../../components/RelatedStrip.astro";
 import Relations from "../../components/Relations.astro";
-import { isPub, loadGraph, personNameMap, personEraMap, notesByAnchor, subjectTitlesFor, relatedTo, backlinksList } from "../../lib/site";
+import { isPub, loadGraph, personNameMap, personEraMap, notesByAnchor, relatedTo, backlinksList } from "../../lib/site";
 import { analyzePoem } from "../../lib/chunk";
 import { readBody } from "../../lib/read-body";
 import { hrefFor, toArabicDigits, eraLabel, eraHref } from "../../lib/display";
@@ -35,12 +35,12 @@ export async function getStaticPaths() {
     const commentaries = graph.commentariesOf(entry.id)
       .filter(isPub)
       .map(c => ({ href: hrefFor("book", c.id), title: c.data.title, author: c.data.person ? names.get(c.data.person as string) : "" }));
-    paths.push({ params: { slug: entry.id }, props: { entry, a, byAnchor, audios, commentaries, author: names.get(entry.data.person), era: eras.get(entry.data.person), subjects: subjectTitlesFor(entry.data.topics, graph), related: relatedTo(entry, graph, names), backlinks: backlinksList(entry, graph, names) } });
+    paths.push({ params: { slug: entry.id }, props: { entry, a, byAnchor, audios, commentaries, author: names.get(entry.data.person), era: eras.get(entry.data.person), related: relatedTo(entry, graph, names), backlinks: backlinksList(entry, graph, names) } });
   }
   return paths;
 }
 
-const { entry, a, byAnchor, audios, commentaries, author, era, subjects, related, backlinks } = Astro.props;
+const { entry, a, byAnchor, audios, commentaries, author, era, related, backlinks } = Astro.props;
 const path = `/poem/${entry.id}`;
 const jsonLd = poemLd({
   title: entry.data.title, authorId: entry.data.person, authorName: author,
@@ -50,7 +50,7 @@ const jsonLd = poemLd({
 const chapterNums = new Set(a.chapters.flatMap((c) => c.verses.map((v) => v.n)));
 const preamble = a.verses.filter((v) => !chapterNums.has(v.n));
 ---
-<Base title={entry.data.title} description={entry.data.description} activeNav="poems" ogType="article" jsonLd={jsonLd} searchMeta={{ title: entry.data.title, type: "poem", id: entry.id, person: author, era, matn: true, subjects }} searchScope={{ in: entry.id, label: entry.data.title }}>
+<Base title={entry.data.title} description={entry.data.description} activeNav="poems" ogType="article" jsonLd={jsonLd} searchScope={{ in: entry.id, label: entry.data.title }}>
   <Breadcrumbs
     width="wrap-read"
     items={[

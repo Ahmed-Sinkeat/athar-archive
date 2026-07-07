@@ -101,15 +101,37 @@ function splitOversizedChapters(chapters: RawChapter[]): RawChapter[] {
   return out.map((c, i) => ({ ...c, order: i + 1 }));
 }
 
+// Printed-page span from the source's own <hr data-page="N"> markers
+// (max - min + 1) — a book quoted starting mid-volume (e.g. page 103-179 of a
+// larger compiled collection) has a genuine length of 76 pages, not 179;
+// absolute page numbers alone would overstate it. Returns 0 when the source
+// carries no page markers at all (can't be measured this way).
+function pageSpan(body: string): number {
+  let min = Infinity, max = 0;
+  for (const m of body.matchAll(/data-page="(\d+)"/g)) {
+    const n = Number(m[1]);
+    if (n < min) min = n;
+    if (n > max) max = n;
+  }
+  return max > 0 ? max - min + 1 : 0;
+}
+
 // A book chapterizes when it exceeds EITHER the word or chapter-count
-// threshold AND has more than one chapter to split into.
+// threshold AND has more than one chapter to split into — unless it's short
+// enough in printed pages that chapter routes would be overkill (config.
+// bookMaxPagesForNoSplit): a small book with many brief chapters still reads
+// better as one page with an inline TOC than fragmented across routes.
 export function analyzeBook(
   body: string,
   threshold: { words: number; chapters: number } = config.bookChapterThreshold,
+  maxPagesForNoSplit: number = config.bookMaxPagesForNoSplit,
 ): AnalyzedBook {
   const parsed = parseBook(body);
   let aboveThreshold =
     parsed.wordCount > threshold.words || parsed.chapters.length > threshold.chapters;
+
+  const pages = pageSpan(body);
+  if (pages > 0 && pages < maxPagesForNoSplit) aboveThreshold = false;
 
   let chunked = aboveThreshold && parsed.chapters.length > 1;
 

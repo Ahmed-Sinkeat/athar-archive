@@ -65,7 +65,7 @@ const jsonLd = personLd({
   crumbs: [{ name: "الرئيسية", path: "/" }, { name: "الأعلام", path: "/people" }, { name: entry.data.title, path }],
 });
 ---
-<Base title={entry.data.title} description={entry.data.bio} activeNav="people" ogType="profile" jsonLd={jsonLd} searchMeta={{ title: entry.data.title, type: "person", aliases: entry.data.also_known_as }} searchScope={{ person: entry.data.title, label: entry.data.title }}>
+<Base title={entry.data.title} description={entry.data.bio} activeNav="people" ogType="profile" jsonLd={jsonLd} searchScope={{ person: entry.data.title, label: entry.data.title }}>
   <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "الأعلام", href: "/people" }, { label: entry.data.title }]} />
   <div class="wrap-mid uf5db21c" >
     <h1 class="page-title">{entry.data.title}</h1>

@@ -318,6 +318,10 @@ export function pageToVerseLines(
   let inner = cleaned.match(/<div[^>]*id=["']book-container["'][^>]*>([\s\S]+)<\/div>\s*(?:<hr[^>]*>)?\s*<\/body>/i)?.[1] ??
     cleaned.match(/<div[^>]*id=["']book-container["'][^>]*>([\s\S]*?)<\/div>/i)?.[1] ?? "";
 
+  if (!inner.trim()) {
+    inner = cleaned.match(/<body[^>]*>([\s\S]+?)<\/body>/i)?.[1] ?? cleaned;
+  }
+
 
   inner = inner.replace(/<span class=["']footnote-hr["']>[\s\S]*?<\/span>/gi, "");
   const extracted = extractFootnotes(inner);
@@ -341,9 +345,28 @@ export function pageToVerseLines(
     if (parts.length !== 2) continue; // not a verse line (0 or >1 separators)
     const sadr = ornate(cleanInline(parts[0].replace(VERSE_NUM_RE, "")));
     const ajuz = ornate(cleanInline(parts[1]));
-    // Strip trailing inline footnote digit markers (they live in notes[])
-    const clean = (s: string) => s.replace(/\d+$/, "").trim();
-    if (sadr || ajuz) lines.push(`${clean(sadr)} --- ${clean(ajuz)}`);
+    // Strip inline footnote digit markers — real prod bug: some sources bake a
+    // footnote-reference number directly into the verse text with no
+    // recognizable <span> wrapper (parenthesized "(3)"/"(٣)" mid-hemistich, or
+    // a bare digit glued straight onto the end of the previous Arabic word,
+    // "القديم1") — those aren't caught by VERSE_NUM_RE (which only strips a
+    // LEADING <span class="red">N -</span> marker) and just rode along as
+    // regular text, duplicating the site's own per-verse numbering in the
+    // reader. \d only matches ASCII 0-9; Arabic-Indic ٠-٩ needs its own class.
+    const clean = (s: string) => s
+      .replace(/\s*[(\[][٠-٩0-9]+[)\]]\s*/g, " ")       // "(3)" / "[٣]" anywhere
+      .replace(/([؀-ۿ])[0-9]+/g, "$1")                    // "القديم1" glued to a word
+      .replace(/\d+$/, "")                                 // bare trailing digit(s)
+      .replace(/\s+/g, " ")
+      .trim();
+    // Another real prod bug (السفارينية): the whole verse line came wrapped in
+    // a single pair of parens, "(صدر --- عجز)" — after splitting on the ---
+    // separator that leaves a leading "(" on صدر and a trailing ")" on عجز
+    // (sometimes missing/misplaced entirely on OCR'd sources, so only strip
+    // when actually present rather than assuming both).
+    const cleanSadr = clean(sadr).replace(/^\(/, "");
+    const cleanAjuz = clean(ajuz).replace(/\)$/, "");
+    if (sadr || ajuz) lines.push(`${cleanSadr} --- ${cleanAjuz}`);
   }
 
   return { lines, notes: fnotes.map((f) => f.t), headings };
@@ -371,6 +394,10 @@ export function pageToMd(xhtml: string, pageId: string): { md: string; notes: st
   // Greedy capture: book-container inner content up to the last </div> before </body>.
   let inner = cleaned.match(/<div[^>]*id=["']book-container["'][^>]*>([\s\S]+)<\/div>\s*(?:<hr[^>]*>)?\s*<\/body>/i)?.[1] ??
     cleaned.match(/<div[^>]*id=["']book-container["'][^>]*>([\s\S]*?)<\/div>/i)?.[1] ?? "";
+
+  if (!inner.trim()) {
+    inner = cleaned.match(/<body[^>]*>([\s\S]+?)<\/body>/i)?.[1] ?? cleaned;
+  }
 
   // footnotes
   inner = inner.replace(/<span class=["']footnote-hr["']>[\s\S]*?<\/span>/gi, "");

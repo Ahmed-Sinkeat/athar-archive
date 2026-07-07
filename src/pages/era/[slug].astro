@@ -40,7 +40,7 @@ const jsonLd = collectionLd({
   crumbs: [{ name: "الرئيسية", path: "/" }, { name: "الأعلام", path: "/people" }, { name: label, path }],
 });
 ---
-<Base title={`العصر ${era}`} description={`أعلامُ ومنظوماتُ العصر ${era} في الأرشيف.`} activeNav="people" jsonLd={jsonLd} searchMeta={{ title: `العصر ${era}`, type: "subject" }}>
+<Base title={`العصر ${era}`} description={`أعلامُ ومنظوماتُ العصر ${era} في الأرشيف.`} activeNav="people" jsonLd={jsonLd}>
   <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "الأعلام", href: "/people" }, { label }]} />
   <div class="wrap-mid uf5db21c">
     <div class="eyebrow u87c136d">العصر</div>

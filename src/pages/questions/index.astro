@@ -1,7 +1,7 @@
 ---
 import Base from "../../layouts/Base.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
-import SectionSearch from "../../components/SectionSearch.astro";
+import TitleFilter from "../../components/TitleFilter.astro";
 import { personNameMap, loadGraph } from "../../lib/site";
 import { hrefFor, toArabicDigits } from "../../lib/display";
 import { buildSubjectGroups } from "../../lib/browse";
@@ -28,7 +28,7 @@ const topicsForFilter = [...topicMap.entries()]
   <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "المسائل" }]} />
   <div class="wrap-mid uf5db21c">
     <h1 class="page-title">المسائل</h1>
-    <SectionSearch scope="question" placeholder="ابحث في المسائل…" />
+    <TitleFilter placeholder="تصفية حسب السؤال…" />
 
     {(personsForFilter.length > 1 || topicsForFilter.length > 1) && (
       <div class="browse-filters browse-filters-standalone">
@@ -64,6 +64,7 @@ const topicsForFilter = [...topicMap.entries()]
                 <ul class="masail-list">
                   {t.items.map((it) => (
                     <li
+                      data-title={it.data.title}
                       data-person={(it.data.person as string | undefined) ?? ""}
                       data-topics={((it.data.topics as string[] | undefined) ?? []).join(",")}
                     >
@@ -89,6 +90,7 @@ const topicsForFilter = [...topicMap.entries()]
           <ul class="masail-list masail-list-flush">
             {uncategorized.map((it) => (
               <li
+                data-title={it.data.title}
                 data-person={(it.data.person as string | undefined) ?? ""}
                 data-topics={((it.data.topics as string[] | undefined) ?? []).join(",")}
               ><a href={hrefFor("question", it.id)}>{it.data.title}</a></li>

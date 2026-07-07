@@ -89,8 +89,8 @@ The entire site regenerates from the repository:
 ```bash
 git clone <remote> athar-archive && cd athar-archive
 pnpm install
-pnpm build            # validate:content → astro build → pagefind → _redirects
-# deploy dist/ to Cloudflare Pages
+pnpm build            # validate:content → astro build → copy-content-assets → tafsir-frags/book-chapters → redirects → headers
+pnpm deploy            # r2:upload (book/tafsir assets → BOOK_ASSETS bucket) → wrangler deploy
 ```
 
 - **Site/content/search/SEO**: fully reconstructed by `pnpm build` — no database, no external state.

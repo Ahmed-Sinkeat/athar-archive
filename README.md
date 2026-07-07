@@ -21,8 +21,8 @@ A static, RTL Arabic knowledge archive. **The content is the origin; the technol
 pnpm install
 pnpm dev            # local dev server
 pnpm new <entity> <slug>   # scaffold a new content file (see CONTRIBUTING.md)
-pnpm build          # validate content → astro build → pagefind index → _redirects
-pnpm preview        # serve the production build (search works here)
+pnpm build          # validate content → astro build → chapter/tafsir assets → _redirects → _headers
+pnpm preview        # serve the production build
 pnpm test           # vitest (validators, graph, chapters, chunking, sanitize)
 ```
 

@@ -2,7 +2,7 @@
 import { getCollection } from "astro:content";
 import Base from "../layouts/Base.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
-import SectionSearch from "../components/SectionSearch.astro";
+import TitleFilter from "../components/TitleFilter.astro";
 import { isPub, loadGraph } from "../lib/site";
 import { hrefFor, toArabicDigits, ERA_VALUES } from "../lib/display";
 import { collectionLd } from "../lib/structured-data";
@@ -51,7 +51,7 @@ const centuries = [...centuryBuckets.entries()]
   <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "التراجم والأعلام" }]} />
   <div class="wrap-mid uf5db21c" style="padding-bottom: 80px;">
     <h1 class="page-title">التراجم والأعلام</h1>
-    <SectionSearch scope="person" placeholder="ابحث في الأعلام…" />
+    <TitleFilter placeholder="تصفية حسب الاسم…" />
 
     <!-- century timeline is the primary view (mockup التراجم); flat sortable list behind the toggle -->
     <div class="browse" data-browse>
@@ -101,7 +101,7 @@ const centuries = [...centuryBuckets.entries()]
             </div>
             <div class="century-people">
               {ppl.map((p) => (
-                <a class="person-card" href={hrefFor("person", p.id)}>
+                <a class="person-card" href={hrefFor("person", p.id)} data-title={p.data.title}>
                   <div class="person-card-name">{p.data.title}</div>
                   <div class="person-card-meta faint">
                     {p.data.tabaqa ?? p.data.era ?? ""}
@@ -123,7 +123,7 @@ const centuries = [...centuryBuckets.entries()]
             </div>
             <div class="century-people">
               {undated.map((p) => (
-                <a class="person-card" href={hrefFor("person", p.id)}>
+                <a class="person-card" href={hrefFor("person", p.id)} data-title={p.data.title}>
                   <div class="person-card-name">{p.data.title}</div>
                   <div class="person-card-meta faint">{p.data.tabaqa ?? p.data.era ?? ""}</div>
                   <span class="pill person-card-count">{toArabicDigits(worksOf(p.id))} مصدر</span>

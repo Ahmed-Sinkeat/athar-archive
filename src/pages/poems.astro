@@ -1,7 +1,7 @@
 ---
 import Base from "../layouts/Base.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
-import SectionSearch from "../components/SectionSearch.astro";
+import TitleFilter from "../components/TitleFilter.astro";
 import { personNameMap, loadGraph } from "../lib/site";
 import { hrefFor, toArabicDigits, labelFor } from "../lib/display";
 import { analyzePoem } from "../lib/chunk";
@@ -27,6 +27,7 @@ const cardList = await Promise.all(
     const isVerseTitle = verses[0] && strip(verses[0].sadr).startsWith(strip(title).slice(0, 18));
     return {
       id: p.id,
+      rawTitle: title,
       href: hrefFor("poem", p.id),
       kind: labelFor("poem", p.data),
       poet: p.data.person ? names.get(p.data.person as string) ?? "" : "",
@@ -43,7 +44,7 @@ const cardsById = new Map(cardList.map((c) => [c.id, c]));
   <div class="wrap-mid uf5db21c">
     <h1 class="page-title">الشعر والمنظومات</h1>
     <p class="hub-lede poems-lede">{toArabicDigits(cardList.length)} منظومة علمية مُشكَّلة مُرقَّمة الأبيات، مع الشروح والتخريج.</p>
-    <SectionSearch scope="poem" placeholder="ابحث في الشعر…" />
+    <TitleFilter placeholder="تصفية حسب العنوان…" />
 
     <div class="browse show-flat" data-browse>
       <div class="browse-toolbar">
@@ -53,7 +54,7 @@ const cardsById = new Map(cardList.map((c) => [c.id, c]));
       <div class="browse-flat">
         <div class="poem-cards">
           {cardList.map((c) => (
-            <a class="poem-card" href={c.href}>
+            <a class="poem-card" href={c.href} data-title={c.rawTitle}>
               <div class="poem-card-meta">
                 <span class="poem-badge">{c.kind}</span>
                 <span class="poem-byline">{[c.poet, c.title].filter(Boolean).join(" · ")}</span>
@@ -90,7 +91,7 @@ const cardsById = new Map(cardList.map((c) => [c.id, c]));
                     {t.items.map((it) => {
                       const c = cardsById.get(it.id);
                       return c ? (
-                        <a class="poem-card" href={c.href}>
+                        <a class="poem-card" href={c.href} data-title={c.rawTitle}>
                           <div class="poem-card-meta">
                             <span class="poem-badge">{c.kind}</span>
                             <span class="poem-byline">{[c.poet, c.title].filter(Boolean).join(" · ")}</span>
@@ -123,7 +124,7 @@ const cardsById = new Map(cardList.map((c) => [c.id, c]));
               {uncategorized.map((it) => {
                 const c = cardsById.get(it.id);
                 return c ? (
-                  <a class="poem-card" href={c.href}>
+                  <a class="poem-card" href={c.href} data-title={c.rawTitle}>
                     <div class="poem-card-meta">
                       <span class="poem-badge">{c.kind}</span>
                       <span class="poem-byline">{[c.poet, c.title].filter(Boolean).join(" · ")}</span>

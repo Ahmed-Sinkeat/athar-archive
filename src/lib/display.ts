@@ -27,7 +27,7 @@ export const ENTITY: Record<
   // ponytail: series + lesson retired; درس is a book; سلسلة شرح is book.sharh_of
   question: { one: "مسائل", many: "المسائل", index: "/questions" },
   benefit: { one: "فائدة", many: "الفوائد", index: "/benefits" },
-  article: { one: "مقالة", many: "المقالات", index: "/articles" },
+  article: { one: "مقالة", many: "مقالات ومحاضرات", index: "/articles" },
   term: { one: "مصطلح", many: "المعجم", index: "/mujam" },
 };
 

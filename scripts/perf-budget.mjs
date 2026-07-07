@@ -5,7 +5,7 @@
 //      stays under budget — content pages must stay light (NFR-01);
 //   2. meaningful content is present WITHOUT JS (server-rendered, FR-P-05);
 //   3. the page is RTL Arabic (<html dir="rtl" lang="ar">).
-// `/search` is a JS-driven tool page (Pagefind) and is exempt from 1–2.
+// `/search` is a JS-driven tool page (D1/FTS5-backed) and is exempt from 1–2.
 // tafsir-frag/*.html are ann-pack markup fetched by JS and injected into an
 // already-RTL poem/quran page (gen-tafsir-frags.ts) — not standalone
 // documents, so they're excluded from all three checks entirely.
@@ -22,7 +22,7 @@ if (!existsSync(DIST)) {
 
 const BUDGET = 150 * 1024; // bytes: render-critical CSS+JS per page (HTML/content excluded — real Arabic books run 1 MB+ of legit prose; NFR-01 = ship light code)
 const TEXT_FLOOR = 100;    // min visible chars rendered without JS
-const JS_DRIVEN = new Set(["/search", "/compose", "/graph"]); // JS-driven tool pages exempt from weight/text
+const JS_DRIVEN = new Set(["/search", "/compose", "/graph", "/admin"]); // JS-driven tool pages exempt from weight/text
 
 const walk = (d) =>
   readdirSync(d, { withFileTypes: true }).flatMap((e) => {

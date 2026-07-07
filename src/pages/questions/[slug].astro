@@ -62,7 +62,7 @@ let answerTitle = "الجواب";
   }
 }
 ---
-<Base title={entry.data.title} activeNav="questions" ogType="article" jsonLd={jsonLd} searchMeta={{ title: entry.data.title, type: "question", person: personName, subjects }}>
+<Base title={entry.data.title} activeNav="questions" ogType="article" jsonLd={jsonLd}>
   <Breadcrumbs width="wrap-read" items={[{ label: "الرئيسية", href: "/" }, { label: "المسائل", href: "/questions" }, { label: entry.data.title }]} />
   <article class="wrap-read reading-pad">
     <header class="masala-head">

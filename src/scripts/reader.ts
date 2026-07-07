@@ -7,6 +7,7 @@ import { stripTashkeel } from "../lib/display";
 const LS = {
   theme: "aa-theme",
   scale: "aa-scale",
+  width: "aa-width",
   tashkeel: "aa-tashkeel",
   vnums: "aa-vnums",
   pages: "aa-pages",
@@ -26,6 +27,23 @@ function setScale(v: number) {
   const clamped = Math.min(SCALE_MAX, Math.max(SCALE_MIN, Math.round(v * 100) / 100));
   root.style.setProperty("--reading-scale", String(clamped));
   localStorage.setItem(LS.scale, String(clamped));
+}
+
+// --- reading width (3 states: normal default / wide / full) ---
+// Fixed px column widths (.wrap-matn/.wrap-read) stay a constant CSS size
+// regardless of browser zoom, so zooming out just grows empty margins
+// instead of re-wrapping text into the freed space — this toggle is the
+// escape hatch (data-width="full" switches the column to a vw-based cap
+// in global.css, which actually grows with the zoomed-out viewport).
+type ReadingWidth = "normal" | "wide" | "full";
+
+function setWidth(w: ReadingWidth) {
+  if (w === "normal") root.removeAttribute("data-width");
+  else root.setAttribute("data-width", w);
+  localStorage.setItem(LS.width, w);
+  document.querySelectorAll<HTMLElement>("[data-width-btn]").forEach((b) =>
+    b.setAttribute("aria-pressed", String(b.dataset.widthBtn === w)),
+  );
 }
 
 // --- theme (3 states: paper default / noir / mono) ---
@@ -223,6 +241,9 @@ refreshFilterIndicator();
 const actions: Record<string, () => void> = {
   "font:inc": () => setScale(getScale() + SCALE_STEP),
   "font:dec": () => setScale(getScale() - SCALE_STEP),
+  "width:normal": () => setWidth("normal"),
+  "width:wide": () => setWidth("wide"),
+  "width:full": () => setWidth("full"),
   "toggle:tashkeel": () => applyTashkeel(root.classList.contains("no-tashkeel")),
   "toggle:verseNums": () => applyVnums(root.classList.contains("hide-vnums")),
   "toggle:pages": () => applyPages(root.classList.contains("pages-flow")),
@@ -647,13 +668,55 @@ function enhanceProse() {
     bodyEl = document.createElement("div"); bodyEl.className = "ann-sheet-body"; bodyEl.setAttribute("data-ar", "");
     footEl = document.createElement("div"); footEl.className = "ann-sheet-foot";
     sheet.append(head, tabsEl, chipsEl, bodyEl, footEl);
-    // Surah pages provide an anchor slot below the ayat: the sheet mounts there
-    // as an anchored panel instead of a modal over the mushaf (the modal hid the
-    // very text being explained — HANDOFF §5 tafsir panel). Elsewhere: modal.
+    // Surah pages provide an anchor slot below the ayat — only used today to
+    // pick the gold تفسير accent (.ann-panel); placement itself is CSS fixed
+    // positioning (docked sidebar on wide screens, floating popup below that),
+    // shared by every kind of annotation, so where it lands in the DOM no
+    // longer matters for layout.
     const slot = document.getElementById("tafsir-panel-slot");
     if (slot) { sheet.classList.add("ann-panel"); slot.appendChild(sheet); }
     else document.body.appendChild(sheet);
+    wireDragAndResize(sheet, head);
     return sheet;
+  }
+
+  // Floating/movable/resizable pop menu: drag by the header, resize via the
+  // native CSS `resize: both` handle (bottom-inline-end corner). Either one
+  // switches the panel to explicit fixed left/top (is-dragged) so the
+  // desktop docked-sidebar rule and the centering transform stop fighting
+  // the user's placement; the position/size then persists for the session.
+  function wireDragAndResize(sheet: HTMLElement, handle: HTMLElement) {
+    let dragging = false, dx = 0, dy = 0;
+    const toFixedBox = () => {
+      const r = sheet.getBoundingClientRect();
+      sheet.style.left = `${r.left}px`;
+      sheet.style.top = `${r.top}px`;
+      sheet.style.right = "auto";
+      sheet.style.bottom = "auto";
+      sheet.classList.add("is-dragged");
+    };
+    handle.addEventListener("pointerdown", (e) => {
+      if ((e.target as HTMLElement).closest(".ann-sheet-close")) return;
+      toFixedBox();
+      dragging = true;
+      dx = e.clientX - sheet.offsetLeft;
+      dy = e.clientY - sheet.offsetTop;
+      handle.setPointerCapture(e.pointerId);
+    });
+    handle.addEventListener("pointermove", (e) => {
+      if (!dragging) return;
+      sheet.style.left = `${e.clientX - dx}px`;
+      sheet.style.top = `${e.clientY - dy}px`;
+    });
+    const stop = () => { dragging = false; };
+    handle.addEventListener("pointerup", stop);
+    handle.addEventListener("pointercancel", stop);
+    // Native `resize: both` (CSS) sets width/height as inline styles when the
+    // user drags the corner handle — inline style already outranks the
+    // desktop sidebar's class-based width/height, so it just works without
+    // extra JS. Over-constrained top+bottom+height resolves per spec by
+    // dropping `bottom` once `height` is explicit, so vertical resize is
+    // still free to move even though the sidebar rule sets both.
   }
 
   // Quran pack fragments are fetched on demand and only exist in the DOM once
@@ -899,6 +962,12 @@ window.addEventListener("scroll", updateTopbarVisibility, { passive: true });
 
 // --- sync control states from storage on load (values already applied pre-paint) ---
 syncThemeButtons(currentTheme());
+{
+  const w = localStorage.getItem(LS.width);
+  document.querySelectorAll<HTMLElement>("[data-width-btn]").forEach((b) =>
+    b.setAttribute("aria-pressed", String(b.dataset.widthBtn === (w === "wide" || w === "full" ? w : "normal"))),
+  );
+}
 applyVnums(localStorage.getItem(LS.vnums) !== "0");
 applyPages(localStorage.getItem(LS.pages) !== "flow");
 applyFootnotes(localStorage.getItem(LS.footnotes) !== "0");

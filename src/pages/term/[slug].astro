@@ -2,21 +2,20 @@
 import { getCollection } from "astro:content";
 import Base from "../../layouts/Base.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
-import { isPub, loadGraph, subjectTitlesFor } from "../../lib/site";
+import { isPub } from "../../lib/site";
 import { markdownToSafeHtml } from "../../lib/sanitize";
 
 export async function getStaticPaths() {
   const terms = (await getCollection("term")).filter(isPub);
-  const graph = await loadGraph();
   return terms.map((entry) => ({
     params: { slug: entry.id },
-    props: { entry, subjects: subjectTitlesFor(entry.data.topics, graph) },
+    props: { entry },
   }));
 }
 
-const { entry, subjects } = Astro.props;
+const { entry } = Astro.props;
 ---
-<Base title={entry.data.title} description={entry.data.definition} activeNav="mujam" searchMeta={{ title: entry.data.title, type: "term", subjects }}>
+<Base title={entry.data.title} description={entry.data.definition} activeNav="mujam">
   <Breadcrumbs width="wrap-read" items={[{ label: "الرئيسية", href: "/" }, { label: "المعجم", href: "/mujam" }, { label: entry.data.title }]} />
   <div class="wrap-read reading-pad">
     <div class="reader-head">

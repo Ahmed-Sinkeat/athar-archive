@@ -91,7 +91,7 @@ export function originOf(data: Record<string, any>, graph: Graph): OriginLink | 
 }
 
 // A material's subject titles, derived from its topics[] (topic → subject).
-// Used to emit the Pagefind `subject` facet so search can filter by فن.
+// Used to emit the `subject` facet in the D1 search index so search can filter by فن.
 export function subjectTitlesFor(topicIds: string[] | undefined, graph: Graph): string[] {
   if (!topicIds?.length) return [];
   const titles = new Set<string>();

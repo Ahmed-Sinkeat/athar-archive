@@ -4,7 +4,6 @@
  *
  * Generates realistic Arabic Islamic content at scale to benchmark:
  *   - Astro build time (cold and warm)
- *   - Pagefind search index time
  *   - Schema validation throughput
  *
  * Usage:
@@ -668,7 +667,7 @@ console.log(`
    Time elapsed  : ${genSec}s
 
 Next steps:
-  pnpm build              → measure full build + pagefind index time
+  pnpm build              → measure full build time
   pnpm perf:budget        → check per-page render weight
   node scripts/gen-perf-content.mjs --clean  → remove generated files
 `);
