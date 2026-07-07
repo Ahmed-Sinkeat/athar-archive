@@ -104,7 +104,7 @@ const gdata = JSON.stringify({ nodes, links }).replace(/</g, "\\u003c");
 
     <!-- global graph search input -->
     <div style="margin-bottom: 24px; display: flex; justify-content: center; width: 100%;">
-      <input type="search" id="graph-search" class="pop-search" placeholder="البحث في الشبكة والتركيز على العناوين والروابط (مثال: ابن تيمية)..." aria-label="ابحث في الشبكة" style="width: 100%; max-width: 600px; padding: 12px 20px; font-size: 15px; border-radius: 8px; border: 1px solid var(--rule-strong); background: var(--surface); color: var(--ink); box-shadow: 0 2px 8px rgba(0,0,0,0.05);" autocomplete="off" />
+      <input type="search" id="graph-search" class="pop-search" placeholder="البحث في الشبكة والتركيز على العناوين والروابط (مثال: ابن تيمية)..." aria-label="ابحث في الشبكة" style="width: 100%; max-width: 600px; padding: 12px 20px; font-size: 15px; border-radius: var(--radius); border: 1px solid var(--rule-strong); background: var(--surface); color: var(--ink);" autocomplete="off" />
     </div>
 
     <p class="faint graph-hint">كلُّ نقطةٍ مادةٌ أو عَلَمٌ أو فنّ؛ الخطوطُ روابطُها. اسحبِ النقطةَ لتحريكها، مرِّرْ للتكبير، وانقرْها لفتحِها. أزِلِ العلامةَ عن نوعٍ لإخفائه.</p>
@@ -175,8 +175,7 @@ const gdata = JSON.stringify({ nodes, links }).replace(/</g, "\\u003c");
     width: 300px;
     background: var(--surface);
     border: 1px solid var(--rule-strong);
-    border-radius: 8px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    border-radius: var(--radius-lg);
     padding: 12px;
     display: flex;
     flex-direction: column;

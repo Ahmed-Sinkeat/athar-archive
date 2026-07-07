@@ -100,17 +100,15 @@ const juzOptions = JUZ_START_PAGE.map((page, i) => ({ n: i + 1, href: pageHref(p
     gap: 6px;
     padding: 20px 14px;
     border: 1px solid var(--rule);
-    border-radius: 12px;
+    border-radius: var(--radius-lg);
     background: var(--surface);
     text-decoration: none;
     text-align: center;
-    transition: background 0.15s, border-color 0.15s, box-shadow 0.15s;
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.6), 0 3px 10px rgba(26,20,16,0.03);
+    transition: background 0.15s, border-color 0.15s;
   }
   .surah-card:hover {
     background: color-mix(in srgb, var(--gold) 8%, var(--surface));
     border-color: var(--gold-soft);
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.6), 0 6px 18px rgba(26,20,16,0.08);
   }
   /* rotated-square number ornament (HANDOFF §5, القرآن hub) */
   .surah-num {
