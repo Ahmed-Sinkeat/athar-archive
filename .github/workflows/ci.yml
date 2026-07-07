@@ -79,12 +79,20 @@ jobs:
       - name: Type-check
         run: pnpm exec tsc --noEmit --skipLibCheck
 
-      # SQL for the D1 search index → dist/search-index/000.sql (loaded below)
-      # Disabled while books are being added in bulk — re-enable (flip `false` to
-      # `github.ref == 'refs/heads/main' && github.event_name == 'push'`) once the
-      # content additions settle down.
+      # Fetch the remote doc_hash table (url→hash) so gen-search-index.ts can
+      # diff against it and only emit SQL for docs that actually changed —
+      # `|| true` in the pnpm script covers the first-ever run (table doesn't
+      # exist yet) by falling back to a full rebuild.
+      - name: Fetch search-index hashes
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push' && env.CLOUDFLARE_API_TOKEN != ''
+        run: pnpm search:hashes
+
+      # SQL for the D1 search index → dist/search-index/*.sql (loaded below).
+      # Incremental (see gen-search-index.ts): a normal deploy touching a
+      # handful of books costs a few hundred row writes, not a 30k-row full
+      # reindex, so this can run on every push instead of being gated off.
       - name: Generate search index
-        if: false
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push' && env.CLOUDFLARE_API_TOKEN != ''
         run: pnpm search:gen
 
       # ponytail: deploy inline instead of a separate job — the old artifact
@@ -102,23 +110,23 @@ jobs:
       # Book/tafsir chapter bodies are served from R2 at request time, not
       # baked into the Worker — without this, new/edited book chapters 404
       # forever no matter how many times you deploy. Runs after deploy so a
-      # slow/stuck upload never delays the site going live; no diffing
-      # (re-puts every file every run, ~15k+ objects — took ~10min locally,
-      # took 40+min and had to be cancelled the one time it ran in CI, so
-      # this is unproven at CI network speed). continue-on-error so a
-      # timeout here doesn't fail the whole deploy.
+      # slow/stuck upload never delays the site going live. Diffs against a
+      # remote md5 index (upload-r2-assets.mjs) so unchanged files are
+      # skipped — only new/edited chapter bodies actually upload. The
+      # timeout/continue-on-error stay as a safety net for a cold cache
+      # (first run after adding this, or a very large batch of new books).
       - name: Upload chapter bodies to R2
         if: github.ref == 'refs/heads/main' && github.event_name == 'push' && env.CLOUDFLARE_API_TOKEN != ''
         timeout-minutes: 20
         continue-on-error: true
         run: pnpm r2:upload
 
-      # Full reindex ≈ 30k row writes; D1 free allows 100k/day → ~3 deploys/day
-      # before this step errors until 00:00 UTC (deploy above still succeeds).
-      # Disabled alongside "Generate search index" above — no dist/search-index/
-      # to load while that's off.
+      # Loads whatever gen-search-index.ts produced above — normally a small
+      # incremental diff (few hundred writes), occasionally a full rebuild
+      # (~30k writes, first run or after a bulk import) against D1's
+      # 100k writes/day free quota.
       - name: Refresh search index (D1)
-        if: false
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push' && env.CLOUDFLARE_API_TOKEN != ''
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}

@@ -19,7 +19,8 @@
     "perf:bench": "node scripts/perf-bench.mjs",
     "test": "vitest run",
     "search:gen": "tsx scripts/gen-search-index.ts",
-    "search:index": "pnpm search:gen && for f in dist/search-index/*.sql; do wrangler d1 execute athar-search --remote -y --file \"$f\" || exit 1; done",
+    "search:hashes": "wrangler d1 execute athar-search --remote -y --command \"SELECT url, hash FROM doc_hash\" --json > .search-hashes.json || echo '[]' > .search-hashes.json",
+    "search:index": "pnpm search:hashes && pnpm search:gen && for f in dist/search-index/*.sql; do wrangler d1 execute athar-search --remote -y --file \"$f\" || exit 1; done",
     "search:index:local": "pnpm search:gen && for f in dist/search-index/*.sql; do wrangler d1 execute athar-search --local -y --file \"$f\" || exit 1; done",
     "r2:upload": "node scripts/upload-r2-assets.mjs",
     "deploy": "pnpm r2:upload && wrangler deploy -c dist/server/wrangler.json"

@@ -16,6 +16,11 @@ Thumbs.db
 scripts/pagefind-spike/site/pagefind/
 
 .wrangler/
+.search-hashes.json
+
+# Local staging for scripts/upload-media.sh (rclone → R2 athar-media bucket) —
+# media never lives in git/LFS, only the r2.ahlalathar.com URL in frontmatter.
+audio/
 
 # Extracted/raw books for import
 books/
