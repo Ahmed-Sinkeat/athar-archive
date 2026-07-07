@@ -90,9 +90,9 @@ const kindOptions = [...new Set(
               <span>{t.title}</span>
               <span class="faint masail-count">{toArabicDigits(t.items.length)}</span>
             </summary>
-            <div class="card-grid browse-cards">
-              {t.items.map((it: ContentEntry) => <EntityCard {...card(it)} />)}
-            </div>
+            <ol class="flat-list browse-cards">
+              {t.items.map((it: ContentEntry) => <li><EntityCard {...card(it)} /></li>)}
+            </ol>
           </details>
         ))}
       </div>
@@ -105,9 +105,9 @@ const kindOptions = [...new Set(
         <span class="masail-subject-name">{otherLabel}</span>
         <span class="faint masail-count">{toArabicDigits(uncategorized.length)}</span>
       </summary>
-      <div class="card-grid browse-cards">
-        {uncategorized.map((it: ContentEntry) => <EntityCard {...card(it)} />)}
-      </div>
+      <ol class="flat-list browse-cards">
+        {uncategorized.map((it: ContentEntry) => <li><EntityCard {...card(it)} /></li>)}
+      </ol>
     </details>
   )}
   </div>
