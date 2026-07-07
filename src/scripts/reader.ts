@@ -7,7 +7,6 @@ import { stripTashkeel } from "../lib/display";
 const LS = {
   theme: "aa-theme",
   scale: "aa-scale",
-  width: "aa-width",
   sidebar: "aa-sidebar",
   tashkeel: "aa-tashkeel",
   vnums: "aa-vnums",
@@ -30,24 +29,7 @@ function setScale(v: number) {
   localStorage.setItem(LS.scale, String(clamped));
 }
 
-// --- reading width (3 states: normal default / wide / full) ---
-// Fixed px column widths (.wrap-matn/.wrap-read) stay a constant CSS size
-// regardless of browser zoom, so zooming out just grows empty margins
-// instead of re-wrapping text into the freed space — this toggle is the
-// escape hatch (data-width="full" switches the column to a vw-based cap
-// in global.css, which actually grows with the zoomed-out viewport).
-type ReadingWidth = "normal" | "wide" | "full";
-
-function setWidth(w: ReadingWidth) {
-  if (w === "normal") root.removeAttribute("data-width");
-  else root.setAttribute("data-width", w);
-  localStorage.setItem(LS.width, w);
-  document.querySelectorAll<HTMLElement>("[data-width-btn]").forEach((b) =>
-    b.setAttribute("aria-pressed", String(b.dataset.widthBtn === w)),
-  );
-}
-
-// --- reader sidebar (desktop show/hide, persisted like width/theme) ---
+// --- reader sidebar (desktop show/hide, persisted like theme) ---
 function isSidebarHidden(): boolean {
   return root.getAttribute("data-sidebar") === "hidden";
 }
@@ -259,9 +241,6 @@ refreshFilterIndicator();
 const actions: Record<string, () => void> = {
   "font:inc": () => setScale(getScale() + SCALE_STEP),
   "font:dec": () => setScale(getScale() - SCALE_STEP),
-  "width:normal": () => setWidth("normal"),
-  "width:wide": () => setWidth("wide"),
-  "width:full": () => setWidth("full"),
   "toggle:tashkeel": () => applyTashkeel(root.classList.contains("no-tashkeel")),
   "toggle:verseNums": () => applyVnums(root.classList.contains("hide-vnums")),
   "toggle:pages": () => applyPages(root.classList.contains("pages-flow")),
@@ -1010,12 +989,6 @@ window.addEventListener("scroll", updateTopbarVisibility, { passive: true });
 
 // --- sync control states from storage on load (values already applied pre-paint) ---
 syncThemeButtons(currentTheme());
-{
-  const w = localStorage.getItem(LS.width);
-  document.querySelectorAll<HTMLElement>("[data-width-btn]").forEach((b) =>
-    b.setAttribute("aria-pressed", String(b.dataset.widthBtn === (w === "wide" || w === "full" ? w : "normal"))),
-  );
-}
 document.querySelectorAll<HTMLElement>('[data-action="sidebar:desktop-toggle"]').forEach((b) =>
   b.setAttribute("aria-pressed", String(localStorage.getItem(LS.sidebar) === "hidden")),
 );
@@ -1068,9 +1041,6 @@ function applyStoredPrefs() {
     else root.removeAttribute("data-theme");
     const s = localStorage.getItem(LS.scale);
     if (s) root.style.setProperty("--reading-scale", s);
-    const w = localStorage.getItem(LS.width);
-    if (w === "wide" || w === "full") root.setAttribute("data-width", w);
-    else root.removeAttribute("data-width");
     if (localStorage.getItem(LS.sidebar) === "hidden") root.setAttribute("data-sidebar", "hidden");
     else root.removeAttribute("data-sidebar");
     root.classList.toggle("hide-vnums", localStorage.getItem(LS.vnums) === "0");

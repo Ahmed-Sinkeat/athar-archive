@@ -182,7 +182,7 @@ const footnoteRefsWired = html.replace(
     const target = footnoteAnchorById.get(id);
     if (!target) return match;
     numberByFooterId.set(target, num);
-    return `<sup><a href="#${target}">${num}</a></sup>`;
+    return `<sup><a href="#${target}" data-footnote-ref>${num}</a></sup>`;
   },
 );
 

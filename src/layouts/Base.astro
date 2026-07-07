@@ -122,8 +122,6 @@ const fullTitle = title.includes("أهل الأثر") ? title : `${title} · أ�
           if (t === "noir" || t === "mono") document.documentElement.setAttribute("data-theme", t);
           const s = localStorage.getItem("aa-scale");
           if (s) document.documentElement.style.setProperty("--reading-scale", s);
-          const w = localStorage.getItem("aa-width");
-          if (w === "wide" || w === "full") document.documentElement.setAttribute("data-width", w);
           if (localStorage.getItem("aa-sidebar") === "hidden") document.documentElement.setAttribute("data-sidebar", "hidden");
           if (localStorage.getItem("aa-vnums") === "0") document.documentElement.classList.add("hide-vnums");
         } catch (e) {}
@@ -224,14 +222,6 @@ const fullTitle = title.includes("أهل الأثر") ? title : `${title} · أ�
           <div class="pop-btns">
             <button class="icon-btn" data-action="font:dec" aria-label="تصغير الخط">أ−</button>
             <button class="icon-btn" data-action="font:inc" aria-label="تكبير الخط">أ+</button>
-          </div>
-        </div>
-        <div class="pop-row">
-          <span class="pop-label">عرض القراءة</span>
-          <div class="pop-btns width-btns">
-            <button class="icon-btn" data-width-btn="normal" data-action="width:normal" aria-pressed="true" aria-label="عرض عادي" title="عادي">عادي</button>
-            <button class="icon-btn" data-width-btn="wide" data-action="width:wide" aria-pressed="false" aria-label="عرض واسع" title="واسع">واسع</button>
-            <button class="icon-btn" data-width-btn="full" data-action="width:full" aria-pressed="false" aria-label="ملء الشاشة" title="ملء الشاشة">ملء الشاشة</button>
           </div>
         </div>
         <button class="toggle-btn pop-toggle" data-toggle="tashkeel" data-action="toggle:tashkeel" aria-pressed="true"><span class="toggle-dot"></span>التشكيل</button>

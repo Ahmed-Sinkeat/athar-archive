@@ -135,14 +135,6 @@ img { max-width: 100%; }
    affected by page padding), it just left a dead gap before the footer. */
 .reading-pad { padding-block: 30px 50px; }
 
-/* عرض القراءة (reading-settings popover) — manual override on top of the
-   automatic zoom-fluid widths above, for readers who want a wider/full
-   column regardless of zoom level. */
-:root[data-width="wide"] .wrap-read { max-width: 980px; }
-:root[data-width="wide"] .wrap-matn { max-width: 900px; }
-:root[data-width="full"] .wrap-read,
-:root[data-width="full"] .wrap-matn { max-width: min(1400px, 94vw); }
-
 .mono-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.24em; color: var(--gold-text); }
 .eyebrow { font-family: var(--font-ui); font-size: 12px; letter-spacing: 0.22em; color: var(--gold-text); text-transform: uppercase; }
 .muted { color: var(--ink-soft); }
@@ -251,8 +243,6 @@ img { max-width: 100%; }
 @media (min-width: 761px) {
   [data-action="sidebar:mobile-toggle"] { display: none !important; }
 }
-.width-btns .icon-btn { width: auto; padding: 0 10px; font-size: 12px; white-space: nowrap; }
-.width-btns .icon-btn[aria-pressed="true"] { color: var(--accent); border-color: var(--accent); }
 /* theme swatches (settings popover) */
 .theme-swatches { display: flex; gap: 10px; padding: 4px 2px 12px; }
 .drawer-swatches { border-top: 1px solid var(--rule); margin-top: 6px; padding-top: 12px; justify-content: center; }
