@@ -132,10 +132,22 @@ function setDrawer(open: boolean) {
 }
 
 // --- topbar search + popovers ---
-const topsearch = document.querySelector<HTMLFormElement>("[data-topsearch]");
-const tsInput = document.querySelector<HTMLInputElement>("[data-topsearch-input]");
-const filterPop = document.querySelector<HTMLElement>("[data-filter-pop]");
-const settingsPop = document.querySelector<HTMLElement>("[data-settings-pop]");
+// The topbar is transition:persist (same DOM node kept across SPA navigations),
+// but a bfcache restore (back button) followed by a forward SPA nav can leave
+// Astro's persist-tracking out of sync, cloning a fresh header and orphaning
+// these references — the gear/filter buttons then silently stop responding
+// until a manual reload. `let` + re-querying in requeryChrome() (called from
+// onPage()/pageshow below) keeps them pointed at whatever's actually live.
+let topsearch = document.querySelector<HTMLFormElement>("[data-topsearch]");
+let tsInput = document.querySelector<HTMLInputElement>("[data-topsearch-input]");
+let filterPop = document.querySelector<HTMLElement>("[data-filter-pop]");
+let settingsPop = document.querySelector<HTMLElement>("[data-settings-pop]");
+function requeryChrome() {
+  topsearch = document.querySelector<HTMLFormElement>("[data-topsearch]");
+  tsInput = document.querySelector<HTMLInputElement>("[data-topsearch-input]");
+  filterPop = document.querySelector<HTMLElement>("[data-filter-pop]");
+  settingsPop = document.querySelector<HTMLElement>("[data-settings-pop]");
+}
 
 function isSearchOpen(): boolean {
   return !!topsearch?.classList.contains("is-open");
@@ -187,13 +199,16 @@ function refreshFilterIndicator() {
 
 // Type-to-filter the (potentially long) عَلَم / موضوع checklists. Matches on the
 // visible label text; checked boxes stay checked even while hidden.
+// Delegated on document (not bound to the specific input) — the persisted
+// topbar can occasionally get cloned by the router (see requeryChrome above),
+// which would otherwise leave a direct listener attached to a detached node.
 function wireChecklistSearch(searchSel: string, listSel: string) {
-  const inp = document.querySelector<HTMLInputElement>(searchSel);
-  const list = filterPop?.querySelector<HTMLElement>(listSel);
-  if (!inp || !list) return;
-  inp.addEventListener("input", () => {
+  document.addEventListener("input", (e) => {
+    const inp = (e.target as HTMLElement).closest<HTMLInputElement>(searchSel);
+    if (!inp) return;
+    const list = filterPop?.querySelector<HTMLElement>(listSel);
     const q = inp.value.trim();
-    list.querySelectorAll<HTMLElement>(".pop-check").forEach((lab) => {
+    list?.querySelectorAll<HTMLElement>(".pop-check").forEach((lab) => {
       const name = lab.getAttribute("data-name") || lab.textContent || "";
       lab.classList.toggle("is-hidden", q !== "" && !name.includes(q));
     });
@@ -203,12 +218,15 @@ wireChecklistSearch("[data-filter-person-search]", "[data-filter-person]");
 wireChecklistSearch("[data-filter-subject-search]", "[data-filter-subject]");
 
 // Enter in the field (no go-button click) submits; collapsed → just open.
-topsearch?.addEventListener("submit", (e) => {
+document.addEventListener("submit", (e) => {
+  if (!(e.target as HTMLElement).closest("[data-topsearch]")) return;
   e.preventDefault();
   if (!isSearchOpen()) { openSearch(); return; }
   location.href = buildSearchUrl();
 });
-filterPop?.addEventListener("change", refreshFilterIndicator);
+document.addEventListener("change", (e) => {
+  if ((e.target as HTMLElement).closest("[data-filter-pop]")) refreshFilterIndicator();
+});
 
 // dismiss popovers / collapse search on outside click + Escape
 document.addEventListener("click", (e) => {
@@ -918,10 +936,13 @@ function enhanceProse() {
     if (sheet && !sheet.hidden && !sheet.classList.contains("ann-panel")) close();
   });
   function setup() {
-    // Clean up any stale sheets in the DOM (e.g. from cached pages)
-    const oldSheet = document.querySelector(".ann-sheet");
-    if (oldSheet) oldSheet.remove();
-    
+    // Clean up any stale sheets in the DOM (e.g. from cached pages) — ALL of
+    // them, not just the first: a sheet dragged via wireDragAndResize gets
+    // reparented (fixed positioning, sometimes onto document.body directly),
+    // so more than one can end up coexisting after a swap, which read as a
+    // "duplicated menu" when the user had moved the panel before navigating.
+    document.querySelectorAll(".ann-sheet").forEach((el) => el.remove());
+
     // Re-create the sheet and bind references to the current page DOM
     build();
   }
@@ -1001,6 +1022,7 @@ function updateActiveNav() {
 // and the persisted header keep working without re-binding.
 function onPage() {
   root = document.documentElement;
+  requeryChrome();
   enhanceProse();
   if (localStorage.getItem(LS.tashkeel) === "0") applyTashkeel(false); // re-bare new content
   updateActiveNav();
@@ -1018,7 +1040,7 @@ document.addEventListener("astro:page-load", onPage);
 // bfcache restore (mobile back/swipe gesture) doesn't fire Astro's router
 // events, so a drawer/popover left open before navigating away could restore
 // "stuck" open with no working close handler — reset chrome state on it too.
-window.addEventListener("pageshow", (e) => { if (e.persisted) { setDrawer(false); closeAllPops(); } });
+window.addEventListener("pageshow", (e) => { if (e.persisted) { requeryChrome(); setDrawer(false); closeAllPops(); } });
 
 // View transitions swap <html>, wiping the attributes the pre-paint inline script
 // set → re-apply saved theme/scale/numbers/mode after each swap (before paint, so

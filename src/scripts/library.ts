@@ -43,9 +43,6 @@ function removeMark(path: string, id: string) {
   } catch {}
 }
 
-const listEl = document.querySelector<HTMLElement>("[data-lib-list]");
-const tabs = document.querySelector<HTMLElement>("[data-lib-tabs]");
-const groupTabs = document.querySelector<HTMLElement>("[data-lib-group-tabs]");
 let kind: Kind = "benefit";
 let groupBy: GroupBy = "book";
 
@@ -118,6 +115,14 @@ function groupItems(items: Item[]): [string, Item[]][] {
 }
 
 function render() {
+  // Re-query rather than cache at module scope: this script is a plain
+  // <script> (not a module re-run per navigation), and this page can be
+  // reached via a browser back-navigation after visiting a book/article to
+  // highlight text — if that restore doesn't fire astro:page-load, a stale
+  // reference here would write into a detached node, leaving the visible
+  // (current) list empty until a manual reload.
+  const listEl = document.querySelector<HTMLElement>("[data-lib-list]");
+  const groupTabs = document.querySelector<HTMLElement>("[data-lib-group-tabs]");
   if (!listEl) return;
   const items = allMarks().filter((m) => m.kind === kind);
   listEl.textContent = "";
@@ -152,21 +157,27 @@ function render() {
   }
 }
 
-tabs?.addEventListener("click", (e) => {
-  const btn = (e.target as HTMLElement).closest<HTMLElement>("[data-lib-tab]");
-  if (!btn) return;
-  kind = btn.dataset.libTab as Kind;
-  tabs.querySelectorAll<HTMLElement>("[data-lib-tab]").forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
-  render();
-});
-
-groupTabs?.addEventListener("click", (e) => {
-  const btn = (e.target as HTMLElement).closest<HTMLElement>("[data-lib-group]");
-  if (!btn) return;
-  groupBy = btn.dataset.libGroup as GroupBy;
-  groupTabs.querySelectorAll<HTMLElement>("[data-lib-group]").forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
-  render();
+// Delegated on document (not the tab containers directly) for the same
+// stale-reference reason as render()'s re-query above.
+document.addEventListener("click", (e) => {
+  const t = e.target as HTMLElement;
+  const tabBtn = t.closest<HTMLElement>("[data-lib-tabs] [data-lib-tab]");
+  if (tabBtn) {
+    kind = tabBtn.dataset.libTab as Kind;
+    tabBtn.parentElement?.querySelectorAll<HTMLElement>("[data-lib-tab]").forEach((b) => b.setAttribute("aria-pressed", String(b === tabBtn)));
+    render();
+    return;
+  }
+  const groupBtn = t.closest<HTMLElement>("[data-lib-group-tabs] [data-lib-group]");
+  if (groupBtn) {
+    groupBy = groupBtn.dataset.libGroup as GroupBy;
+    groupBtn.parentElement?.querySelectorAll<HTMLElement>("[data-lib-group]").forEach((b) => b.setAttribute("aria-pressed", String(b === groupBtn)));
+    render();
+  }
 });
 
 render();
 document.addEventListener("astro:page-load", render);
+// bfcache restore (back button) doesn't fire astro:page-load — see render()'s
+// comment on why a stale reference there would otherwise show an empty list.
+window.addEventListener("pageshow", (e) => { if (e.persisted) render(); });
