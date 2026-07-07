@@ -231,6 +231,12 @@ document.addEventListener("click", (e) => {
     chapToc.open = false;
     document.querySelectorAll<HTMLElement>('[data-action="chaptoc:toggle"]').forEach((b) => b.setAttribute("aria-expanded", "false"));
   }
+  // native <details> popovers (تفسير/شرح tabs, edition info) never auto-close
+  // on outside click — browsers only do that for the newer popover= attribute,
+  // which these predate. Close any that aren't ambient sidebar navigation.
+  document.querySelectorAll<HTMLDetailsElement>("details.inline-note[open], details.book-catalog[open]").forEach((d) => {
+    if (!d.contains(t)) d.open = false;
+  });
 });
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") { closeAllPops(); topsearch?.classList.remove("is-open"); }
@@ -382,6 +388,17 @@ document.addEventListener("click", (e) => {
     }, wait + 160);
   };
   document.addEventListener("astro:page-load", finish);
+  // bfcache restore (mobile back/swipe) doesn't fire astro:page-load, so a
+  // loader shown right before leaving the page restores stuck "visible" —
+  // its pointer-events:auto covers the full viewport, blocking every click
+  // until a hard reload. Force it closed on restore.
+  window.addEventListener("pageshow", (e) => {
+    if (!e.persisted) return;
+    clearTimeout(showT);
+    shown = false;
+    bar.removeAttribute("data-visible");
+    seal.removeAttribute("data-visible");
+  });
 })();
 
 // --- in-page search ---
@@ -1023,6 +1040,9 @@ function applyStoredPrefs() {
     else root.removeAttribute("data-theme");
     const s = localStorage.getItem(LS.scale);
     if (s) root.style.setProperty("--reading-scale", s);
+    const w = localStorage.getItem(LS.width);
+    if (w === "wide" || w === "full") root.setAttribute("data-width", w);
+    else root.removeAttribute("data-width");
     root.classList.toggle("hide-vnums", localStorage.getItem(LS.vnums) === "0");
     root.classList.toggle("no-tashkeel", localStorage.getItem(LS.tashkeel) === "0");
     root.classList.toggle("pages-flow", localStorage.getItem(LS.pages) === "flow");
