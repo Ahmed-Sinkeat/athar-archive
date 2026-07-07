@@ -4,6 +4,7 @@ import Base from "../../../layouts/Base.astro";
 import Breadcrumbs from "../../../components/Breadcrumbs.astro";
 import Verse from "../../../components/Verse.astro";
 import StudyBar from "../../../components/StudyBar.astro";
+import ReaderSidebar from "../../../components/ReaderSidebar.astro";
 import { isPub, loadGraph, personNameMap, notesByAnchor } from "../../../lib/site";
 import { analyzePoem } from "../../../lib/chunk";
 import { readBody } from "../../../lib/read-body";
@@ -45,24 +46,10 @@ const next = (allChapters as any[])[chIdx + 1] ?? null;
     ]}
   />
 
-  <!-- floating jump-to-chapter button: reaches the TOC below without scrolling
-       back up on a long page; hidden on desktop where the sidebar TOC is visible -->
-  <button class="fab-toc" data-action="chaptoc:toggle" aria-label="فهرس الأبواب" aria-expanded="false" aria-controls="chap-mobile-toc">☰</button>
-
   <div class="chap-outer">
     <div class="chap-grid">
       <!-- main reading column -->
       <div class="reading-pad">
-        <!-- mobile TOC (hidden on desktop) -->
-        <details class="chap-mobile-toc" id="chap-mobile-toc">
-          <summary>أبواب المنظومة · {(allChapters as any[]).length} باب</summary>
-          <ul class="chap-mobile-list">
-            {(allChapters as any[]).map((c: any) => (
-              <li><a href={hrefFor("poem", entry.id, { chapter: c.slug })} class:list={[{ 'is-current': c.slug === chapter.slug }]}>{c.title}</a></li>
-            ))}
-          </ul>
-        </details>
-
         <div class="reader-head">
           <div class="eyebrow u87c136d">منظومة · {author}</div>
           <h1 class="reader-title ubd7542b">{chapter.title}</h1>
@@ -93,15 +80,14 @@ const next = (allChapters as any[])[chIdx + 1] ?? null;
         </nav>
       </div>
 
-      <!-- sidebar TOC (hidden on mobile) -->
-      <aside class="toc-side chap-toc-aside">
+      <ReaderSidebar label={`أبواب المنظومة · ${(allChapters as any[]).length} باب`}>
         <div class="toc-box has-current">
           <div class="toc-label">أبواب {entry.data.title}</div>
           {(allChapters as any[]).map((c: any) => (
             <a href={hrefFor("poem", entry.id, { chapter: c.slug })} class:list={[{ 'toc-current': c.slug === chapter.slug }]}>{c.title}</a>
           ))}
         </div>
-      </aside>
+      </ReaderSidebar>
     </div>
   </div>
 </Base>

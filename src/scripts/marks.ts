@@ -321,20 +321,12 @@ function closeFind() {
   findHL?.clear();
   findMatches = [];
 }
-// floating opener — reading pages only (mobile has no Ctrl+F)
-let findFab: HTMLButtonElement | null = null;
+// topbar opener — reading pages only (mobile has no Ctrl+F); the button
+// itself lives in Base.astro, wired via the [data-action="page:find"]
+// delegate below — this just shows/hides it per page.
 function syncFindFab() {
   const reading = !!root()?.querySelector(".prose, .verse");
-  if (reading && !findFab) {
-    findFab = document.createElement("button");
-    findFab.className = "aa-findbtn";
-    findFab.type = "button";
-    findFab.setAttribute("aria-label", "بحث في الصفحة");
-    findFab.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="20" y1="20" x2="16.65" y2="16.65"></line></svg>';
-    findFab.addEventListener("click", openFind);
-    document.body.appendChild(findFab);
-  }
-  if (findFab) findFab.hidden = !reading;
+  document.querySelectorAll<HTMLElement>('[data-action="page:find"]').forEach((b) => { b.hidden = !reading; });
 }
 
 // --- resume (آخر موضع قراءة) ---

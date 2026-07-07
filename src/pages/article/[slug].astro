@@ -4,6 +4,7 @@ import Base from "../../layouts/Base.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import Prose from "../../components/Prose.astro";
 import AudioPlayer from "../../components/AudioPlayer.astro";
+import ReaderSidebar from "../../components/ReaderSidebar.astro";
 import { isPub, loadGraph } from "../../lib/site";
 import { readBody } from "../../lib/read-body";
 import { articleLd } from "../../lib/structured-data";
@@ -47,25 +48,32 @@ const jsonLd = articleLd({
 ---
 <Base title={entry.data.title} description={entry.data.description} activeNav="articles" ogType="article" jsonLd={jsonLd}>
   <Breadcrumbs width="wrap-read" items={[{ label: "الرئيسية", href: "/" }, { label: "مقالات ومحاضرات", href: "/articles" }, { label: entry.data.title }]} />
-  <div class="wrap-read reading-pad">
-    <div class="reader-head">
-      <div class="eyebrow u87c136d" >مقالة</div>
-      <h1 class="reader-title ub9b0323" >{entry.data.title}</h1>
-      <div class="reader-byline">{author}</div>
+  <div class="chap-outer">
+    <div class="chap-grid">
+      <div class="reading-pad">
+        <div class="reader-head">
+          <div class="eyebrow u87c136d" >مقالة</div>
+          <h1 class="reader-title ub9b0323" >{entry.data.title}</h1>
+          <div class="reader-byline">{author}</div>
+        </div>
+
+        {audio && <div class="u583f758"><AudioPlayer sources={[audio]} label="استماعٌ إلى المقالة" /></div>}
+
+        <div class="rule-short"></div>
+        <div class="ua26bda7"><Prose body={body} /></div>
+        <div class="ornament ud38b410" >۞</div>
+      </div>
+
+      {tocNested?.length > 0 && (
+        <ReaderSidebar label="فهرس العناوين">
+          <div class="toc-box has-current">
+            <div class="toc-label">فهرس العناوين</div>
+            {tocNested.map((h) => (
+              <a href={`#${h.slug}`} style={`padding-inline-start: ${(h.depth - 2) * 1}rem`}>{h.title}</a>
+            ))}
+          </div>
+        </ReaderSidebar>
+      )}
     </div>
-
-    {audio && <div class="u583f758"><AudioPlayer sources={[audio]} label="استماعٌ إلى المقالة" /></div>}
-
-    <div class="rule-short"></div>
-    {tocNested?.length > 0 && (
-      <nav class="toc-box has-current" aria-label="فهرس العناوين">
-        <div class="toc-label">فهرس العناوين</div>
-        {tocNested.map((h) => (
-          <a href={`#${h.slug}`} style={`padding-inline-start: ${(h.depth - 2) * 1}rem`}>{h.title}</a>
-        ))}
-      </nav>
-    )}
-    <div class="ua26bda7"><Prose body={body} /></div>
-    <div class="ornament ud38b410" >۞</div>
   </div>
 </Base>

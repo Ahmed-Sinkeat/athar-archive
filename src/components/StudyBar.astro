@@ -1,22 +1,20 @@
 ---
-// In-page toolbar for متن/prose readers: search-in-page + optional download.
-// Font-size/تشكيل/حواشي/صفحات toggles live only in the header gear popover
-// (Base.astro) now — this bar used to duplicate them as a sticky sub-toolbar,
-// which read as two settings menus stacking on top of each other on mobile.
+// In-page toolbar for متن/prose readers: download only. Search-in-page used to
+// live here too (a text input wired to the deprecated window.find()) — removed
+// as a duplicate of the topbar's "بحث في الصفحة" button (marks.ts's aa-find,
+// CSS Custom Highlight API, match count + next/prev). Font-size/تشكيل/حواشي/
+// صفحات toggles live only in the header gear popover (Base.astro).
 interface Props {
   downloadUrl?: string;
 }
 const { downloadUrl } = Astro.props;
 ---
-<div class="studybar" data-studybar>
-  <div class="studybar-tools" style="display: flex; gap: 12px; align-items: center;">
-    <div class="inpage-search-box" style="display: flex; gap: 4px; align-items: center;">
-      <input type="search" class="pop-search" data-inpage-search placeholder="بحث في الصفحة..." aria-label="بحث في الصفحة" style="width: 140px; padding: 4px 8px; border-radius: 6px; font-size: 13px;" />
-    </div>
-    {downloadUrl && (
+{downloadUrl && (
+  <div class="studybar" data-studybar>
+    <div class="studybar-tools" style="display: flex; gap: 12px; align-items: center;">
       <a href={downloadUrl} download class="icon-btn" aria-label="تحميل الملف" title="تحميل">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
       </a>
-    )}
+    </div>
   </div>
-</div>
+)}

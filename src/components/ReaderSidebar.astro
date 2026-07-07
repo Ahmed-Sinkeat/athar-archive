@@ -1,0 +1,18 @@
+---
+// Shared sidebar/mobile-popup shell for any reader page (book chapters, small
+// books, poems, articles). Desktop: sticky aside. Mobile: a <details> popup,
+// opened from the topbar's [data-action="sidebar:mobile-toggle"] button
+// (reader.ts) — its own <summary> stays in the DOM (native fallback / a11y)
+// but is visually hidden so there's exactly one way to open it on mobile.
+interface Props {
+  label: string;
+}
+const { label } = Astro.props;
+---
+<aside class="toc-side chap-toc-aside">
+  <slot />
+</aside>
+<details class="chap-mobile-toc" data-mobile-sidebar>
+  <summary>{label}</summary>
+  <div class="mobile-sidebar-body"><slot /></div>
+</details>

@@ -9,6 +9,7 @@ import Base from "../../../layouts/Base.astro";
 import Breadcrumbs from "../../../components/Breadcrumbs.astro";
 import StudyBar from "../../../components/StudyBar.astro";
 import InlineNoteGroup from "../../../components/InlineNoteGroup.astro";
+import ReaderSidebar from "../../../components/ReaderSidebar.astro";
 import { isPub, loadGraph, personNameMap, notesByAnchor } from "../../../lib/site";
 import { markdownToSafeHtml } from "../../../lib/sanitize";
 import { parseToc, extractFootnotesByPage } from "../../../lib/chapters";
@@ -246,10 +247,6 @@ const finalContent = (() => {
     ]}
   />
 
-  <!-- floating jump-to-chapter button: reaches the TOC below without scrolling
-       back up on a long page; hidden on desktop where the sidebar TOC is visible -->
-  <button class="fab-toc" data-action="chaptoc:toggle" aria-label="فهرس الفصول" aria-expanded="false" aria-controls="chap-mobile-toc">☰</button>
-
   <div class:list={["chap-outer", { "hadith-accent": isHadith }]}>
     <div class="chap-grid">
       <!-- main reading column -->
@@ -278,31 +275,6 @@ const finalContent = (() => {
             </details>
           )}
 
-          <!-- mobile TOC toggle (hidden on desktop via CSS — sidebar covers it there) -->
-          <details class="chap-mobile-toc" id="chap-mobile-toc">
-            <summary>فصول الكتاب · {tocGroups.length} فصل</summary>
-            <ul class="chap-mobile-list">
-              {tocGroups.map((g) => (
-                <li>
-                  {g.slices.length > 0 ? (
-                    <details class="toc-group" open={g.slug === currentGroupKey}>
-                      <summary class="toc-group-summary">
-                        <a href={g.href} class:list={[{ 'is-current': g.slug === currentGroupKey }]}>{g.title}</a>
-                        <span class="toc-group-arrow" aria-hidden="true">›</span>
-                      </summary>
-                      <ul class="chap-mobile-list">
-                        {g.slices.map((s) => (
-                          <li><a href={s.href} class:list={[{ 'is-current': s.slug === chapter.slug }]}>{s.title}</a></li>
-                        ))}
-                      </ul>
-                    </details>
-                  ) : (
-                    <a href={g.href} class:list={[{ 'is-current': g.slug === currentGroupKey }]}>{g.title}</a>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </details>
           {entry.data.transcript_status && (
             <div style="margin-top: 0.5rem;">
               <span class={`pill ${entry.data.transcript_status === 'قيد المراجعة' ? 'tag-accent' : ''}`}>{entry.data.transcript_status}</span>
@@ -359,7 +331,7 @@ const finalContent = (() => {
       </div>
 
       <!-- sidebar TOC (hidden on mobile via CSS) -->
-      <aside class="toc-side chap-toc-aside">
+      <ReaderSidebar label={`فصول الكتاب · ${tocGroups.length} فصل`}>
         {catalog.length > 0 && (
           <details class="book-catalog">
             <summary>عن هذه الطبعة</summary>
@@ -420,7 +392,7 @@ const finalContent = (() => {
             ))}
           </div>
         )}
-      </aside>
+      </ReaderSidebar>
     </div>
   </div>
 </Base>

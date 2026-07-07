@@ -8,6 +8,7 @@ const LS = {
   theme: "aa-theme",
   scale: "aa-scale",
   width: "aa-width",
+  sidebar: "aa-sidebar",
   tashkeel: "aa-tashkeel",
   vnums: "aa-vnums",
   pages: "aa-pages",
@@ -44,6 +45,17 @@ function setWidth(w: ReadingWidth) {
   document.querySelectorAll<HTMLElement>("[data-width-btn]").forEach((b) =>
     b.setAttribute("aria-pressed", String(b.dataset.widthBtn === w)),
   );
+}
+
+// --- reader sidebar (desktop show/hide, persisted like width/theme) ---
+function isSidebarHidden(): boolean {
+  return root.getAttribute("data-sidebar") === "hidden";
+}
+function setSidebarHidden(hidden: boolean) {
+  if (hidden) root.setAttribute("data-sidebar", "hidden");
+  else root.removeAttribute("data-sidebar");
+  localStorage.setItem(LS.sidebar, hidden ? "hidden" : "visible");
+  document.querySelectorAll<HTMLElement>('[data-action="sidebar:desktop-toggle"]').forEach((b) => b.setAttribute("aria-pressed", String(hidden)));
 }
 
 // --- theme (3 states: paper default / noir / mono) ---
@@ -263,17 +275,18 @@ const actions: Record<string, () => void> = {
   "search:toggle": () => { if (!isSearchOpen()) openSearch(); else topsearch?.classList.remove("is-open"); },
   "search:filter": () => togglePop(filterPop, "search:filter"),
   "search:apply": () => { location.href = buildSearchUrl(); },
-  "search:next": () => { const q = document.querySelector<HTMLInputElement>("[data-inpage-search]")?.value.trim(); if (q) (window as any).find(q, false, false, true, false, true, false); },
-  "search:prev": () => { const q = document.querySelector<HTMLInputElement>("[data-inpage-search]")?.value.trim(); if (q) (window as any).find(q, false, true, true, false, true, false); },
   "settings:toggle": () => togglePop(settingsPop, "settings:toggle"),
-  // floating jump button: same <details> the inline "فصول الكتاب" summary
-  // controls, just reachable without scrolling back to the top of a long page.
-  "chaptoc:toggle": () => {
-    const el = document.querySelector<HTMLDetailsElement>(".chap-mobile-toc");
+  // topbar "chapter/heading list" icon → open the current page's sidebar
+  // popup (ReaderSidebar.astro's <details>, mobile-only via CSS).
+  "sidebar:mobile-toggle": () => {
+    const el = document.querySelector<HTMLDetailsElement>("[data-mobile-sidebar]");
     if (!el) return;
     el.open = !el.open;
-    document.querySelectorAll<HTMLElement>('[data-action="chaptoc:toggle"]').forEach((b) => b.setAttribute("aria-expanded", String(el.open)));
+    if (el.open) el.scrollIntoView({ block: "nearest" });
   },
+  // topbar "show/hide sidebar" icon (desktop) — same persisted-pref pattern as
+  // reading width/theme.
+  "sidebar:desktop-toggle": () => setSidebarHidden(!isSidebarHidden()),
 };
 
 document.addEventListener("click", (e) => {
@@ -400,18 +413,6 @@ document.addEventListener("click", (e) => {
     seal.removeAttribute("data-visible");
   });
 })();
-
-// --- in-page search ---
-const inpageSearch = document.querySelector<HTMLInputElement>("[data-inpage-search]");
-if (inpageSearch) {
-  inpageSearch.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      const q = inpageSearch.value.trim();
-      if (q) (window as any).find(q, false, e.shiftKey, true, false, true, false);
-    }
-  });
-}
 
 // --- browse «عرض الكل» toggle + flat-list sort (delegated → survives transitions) ---
 function applySort(container: HTMLElement) {
@@ -997,6 +998,9 @@ syncThemeButtons(currentTheme());
     b.setAttribute("aria-pressed", String(b.dataset.widthBtn === (w === "wide" || w === "full" ? w : "normal"))),
   );
 }
+document.querySelectorAll<HTMLElement>('[data-action="sidebar:desktop-toggle"]').forEach((b) =>
+  b.setAttribute("aria-pressed", String(localStorage.getItem(LS.sidebar) === "hidden")),
+);
 applyVnums(localStorage.getItem(LS.vnums) !== "0");
 applyPages(localStorage.getItem(LS.pages) !== "flow");
 applyFootnotes(localStorage.getItem(LS.footnotes) !== "0");
@@ -1022,6 +1026,10 @@ function onPage() {
   updateActiveNav();
   updateProgress();
   setDrawer(false); // a navigation always closes the (persisted) drawer
+  // sidebar topbar icons: only meaningful on pages that actually have a
+  // ReaderSidebar (book chapters, small books, poems, articles)
+  const hasSidebar = !!document.querySelector("[data-mobile-sidebar]");
+  document.querySelectorAll<HTMLElement>('[data-action="sidebar:mobile-toggle"], [data-action="sidebar:desktop-toggle"]').forEach((b) => { b.hidden = !hasSidebar; });
 }
 onPage();
 document.addEventListener("astro:page-load", onPage);
@@ -1043,6 +1051,8 @@ function applyStoredPrefs() {
     const w = localStorage.getItem(LS.width);
     if (w === "wide" || w === "full") root.setAttribute("data-width", w);
     else root.removeAttribute("data-width");
+    if (localStorage.getItem(LS.sidebar) === "hidden") root.setAttribute("data-sidebar", "hidden");
+    else root.removeAttribute("data-sidebar");
     root.classList.toggle("hide-vnums", localStorage.getItem(LS.vnums) === "0");
     root.classList.toggle("no-tashkeel", localStorage.getItem(LS.tashkeel) === "0");
     root.classList.toggle("pages-flow", localStorage.getItem(LS.pages) === "flow");

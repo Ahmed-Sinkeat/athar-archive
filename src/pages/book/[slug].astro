@@ -4,6 +4,7 @@ import Base from "../../layouts/Base.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import Prose from "../../components/Prose.astro";
 import StudyBar from "../../components/StudyBar.astro";
+import ReaderSidebar from "../../components/ReaderSidebar.astro";
 import AudioPlayer from "../../components/AudioPlayer.astro";
 import RelatedStrip from "../../components/RelatedStrip.astro";
 import Relations from "../../components/Relations.astro";
@@ -134,32 +135,27 @@ const jsonLd = bookLd({
           )
         ))}
       </nav>
-    ) : isMatn("book", entry.data) ? (
-      <>
-        {tocNested?.length > 0 && (
-          <nav class="toc-box has-current" aria-label="فهرس العناوين">
-            <div class="toc-label">فهرس العناوين</div>
-            {tocNested.map((h) => (
-              <a href={`#${h.slug}`} style={`padding-inline-start: ${(h.depth - 2) * 1}rem`}>{h.title}</a>
-            ))}
-          </nav>
-        )}
-        <StudyBar downloadUrl={entry.data.attachments?.[0]?.url} />
-        <div class="u49fcd85" data-matn={entry.id} data-unit="فقرة"><Prose body={body ?? ""} /></div>
-      </>
     ) : (
-      <>
+      <div class="chap-grid">
+        <div class="reading-pad" style="padding: 0;">
+          <StudyBar downloadUrl={entry.data.attachments?.[0]?.url} />
+          {isMatn("book", entry.data) ? (
+            <div class="u49fcd85" data-matn={entry.id} data-unit="فقرة"><Prose body={body ?? ""} /></div>
+          ) : (
+            <div class="u49fcd85"><Prose body={body ?? ""} /></div>
+          )}
+        </div>
         {tocNested?.length > 0 && (
-          <nav class="toc-box has-current" aria-label="فهرس العناوين">
-            <div class="toc-label">فهرس العناوين</div>
-            {tocNested.map((h) => (
-              <a href={`#${h.slug}`} style={`padding-inline-start: ${(h.depth - 2) * 1}rem`}>{h.title}</a>
-            ))}
-          </nav>
+          <ReaderSidebar label="فهرس العناوين">
+            <div class="toc-box has-current">
+              <div class="toc-label">فهرس العناوين</div>
+              {tocNested.map((h) => (
+                <a href={`#${h.slug}`} style={`padding-inline-start: ${(h.depth - 2) * 1}rem`}>{h.title}</a>
+              ))}
+            </div>
+          </ReaderSidebar>
         )}
-        <StudyBar downloadUrl={entry.data.attachments?.[0]?.url} />
-        <div class="u49fcd85"><Prose body={body ?? ""} /></div>
-      </>
+      </div>
     )}
 
     {/* All annotations now open in the sidebar/popup panel: phrase notes are

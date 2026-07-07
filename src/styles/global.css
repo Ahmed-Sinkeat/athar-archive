@@ -232,6 +232,16 @@ img { max-width: 100%; }
   cursor: pointer; display: grid; place-items: center; font-size: 13px;
   touch-action: manipulation; /* ponytail: kills 300ms tap delay without JS */
 }
+.icon-btn[hidden] { display: none; } /* [hidden]'s UA display:none loses to .icon-btn's display:grid without this */
+/* topbar sidebar toggles: reader.ts only shows these on pages with a
+   ReaderSidebar; within that, split further by viewport — the mobile popup
+   opener has no job on desktop (sidebar already visible there) and vice versa */
+@media (max-width: 760px) {
+  [data-action="sidebar:desktop-toggle"] { display: none !important; }
+}
+@media (min-width: 761px) {
+  [data-action="sidebar:mobile-toggle"] { display: none !important; }
+}
 .width-btns .icon-btn { width: auto; padding: 0 10px; font-size: 12px; white-space: nowrap; }
 .width-btns .icon-btn[aria-pressed="true"] { color: var(--accent); border-color: var(--accent); }
 /* theme swatches (settings popover) */
@@ -981,6 +991,11 @@ html.hide-vnums .vnum { display: none; }
 .chap-outer { max-width: 960px; margin: 0 auto; padding-inline: 28px; }
 .chap-grid { display: grid; grid-template-columns: 232px 1fr; gap: 52px; align-items: start; } /* HANDOFF.md §5 */
 .chap-grid > .reading-pad { grid-column: 2; grid-row: 1; min-width: 0; }
+/* desktop sidebar show/hide (reader.ts "sidebar:desktop-toggle", persisted
+   like reading width/theme) — content column expands to fill the freed space */
+[data-sidebar="hidden"] .chap-grid { grid-template-columns: 1fr; }
+[data-sidebar="hidden"] .chap-grid > .reading-pad { grid-column: 1; }
+[data-sidebar="hidden"] .toc-side { display: none; }
 .chap-toc-aside { grid-column: 1; grid-row: 1; position: sticky; top: 80px; margin-top: 52px; }
 /* TOC as a quiet rail, not a boxed card: hairline on the content side,
    active item = maroon 700 on its 2px rail (green on hadith books) */
@@ -1020,18 +1035,14 @@ html.hide-vnums .vnum { display: none; }
   .chap-mobile-toc { display: block; }
 }
 
-/* floating jump-to-chapter button — reaches the TOC from anywhere on a long
-   page instead of scrolling back to the top; sidebar TOC covers desktop already */
-.fab-toc {
-  display: none; position: fixed; bottom: 20px; inset-inline-end: 18px; z-index: 45;
-  width: 46px; height: 46px; border-radius: 50%; border: none; cursor: pointer;
-  background: var(--accent-solid); color: var(--onbrand); font-size: 19px; line-height: 1;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28);
-}
+/* mobile sidebar popup: opened solely from the topbar's
+   [data-action="sidebar:mobile-toggle"] icon (reader.ts) — the <summary>
+   that used to be its own visible trigger is hidden so there's exactly one
+   way to open it, matching the in-page-search dedup above. */
+.chap-mobile-toc summary { display: none; }
 @media (max-width: 780px) {
-  .fab-toc { display: grid; place-items: center; }
-  /* opened via the FAB (or the inline summary) becomes a bottom sheet, reachable
-     regardless of scroll position, instead of expanding in place in the flow */
+  /* becomes a bottom sheet, reachable regardless of scroll position, instead
+     of expanding in place in the flow */
   .chap-mobile-toc[open] {
     position: fixed; inset-inline: 12px; bottom: 76px; top: auto;
     max-height: 65vh; overflow-y: auto; z-index: 46;
@@ -1277,10 +1288,6 @@ html[data-theme="noir"] ::highlight(aa-find)    { background-color: rgba(255, 15
 .lib-group { margin-bottom: 22px; }
 .lib-group summary { cursor: pointer; font-family: var(--font-display); font-weight: 600; font-size: 16px; color: var(--ink); padding: 10px 0; border-bottom: 1px solid var(--rule); margin-bottom: 14px; }
 .lib-group .card-grid { margin-top: 0; }
-.aa-findbtn { position: fixed; z-index: 74; inset-block-end: 22px; inset-inline-end: 18px; width: 48px; height: 48px; border-radius: 50%; border: 1px solid var(--rule-strong); background: var(--surface); color: var(--ink); display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 10px 28px rgba(20,16,12,0.20); }
-.aa-findbtn[hidden] { display: none; }
-.aa-findbtn:hover { border-color: var(--accent); }
-
 /* --- flat list rows (listing pages: الكتب / الشعر / الدروس / الأعلام / …) --- */
 /* Override card-box styles when inside .flat-list so items render as rows */
 .flat-list { list-style: none; padding: 0; margin: 0; border-block-start: 1px solid var(--rule); }
