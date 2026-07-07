@@ -116,6 +116,16 @@ export interface PoemChapter {
   slug: string;
   order: number;
   verses: Verse[];
+  prose?: string; // set instead of verses for known front-matter chapters (see isProseChapterTitle)
+}
+
+// Recurring editorial front-matter heading (manuscript copies used in the
+// tahqiq) — verbatim across most imported poems, always prose, never verses.
+// Not a general heuristic: matched by exact known title text only, to avoid
+// false-positives on real chapter headings.
+const PROSE_CHAPTER_TITLES = new Set(["النسخ المعتمدة في تحقيق هذا المتن"]);
+function isProseChapterTitle(title: string): boolean {
+  return PROSE_CHAPTER_TITLES.has(title.trim().replace(/:$/, "").trim());
 }
 
 export interface ParsedPoem {
@@ -143,6 +153,17 @@ function lineToVerse(line: string, n: number): Verse {
   return { n, sadr, ajz, anchor: `v${n}` };
 }
 
+// Many poems have no ## chapters at all — their entire body IS the preamble
+// (e.g. diwan-ilbiri--*), so preamble can't be unconditionally excluded from
+// verse-counting. But every front-matter preamble in this corpus (the "بطاقة
+// الكتاب" book-info card, or a title-only heading) starts with a markdown
+// heading as its very first content line — real verses never do. That one
+// signal reliably tells the two apart.
+function isFrontMatterPreamble(preamble: string): boolean {
+  const firstLine = preamble.split("\n").find((l) => l.trim())?.trim();
+  return !!firstLine && firstLine.startsWith("#");
+}
+
 export function parsePoem(body: string): ParsedPoem {
   const { preamble, chapters: rawChapters } = splitChapters(body);
   const verses: Verse[] = [];
@@ -160,14 +181,12 @@ export function parsePoem(body: string): ParsedPoem {
     return out;
   };
 
-  // verses in the preamble are numbered first, then chapter verses
-  collect(preamble);
-  const chapters: PoemChapter[] = rawChapters.map((c) => ({
-    title: c.title,
-    slug: c.slug,
-    order: c.order,
-    verses: collect(c.content),
-  }));
+  if (!isFrontMatterPreamble(preamble)) collect(preamble);
+  const chapters: PoemChapter[] = rawChapters.map((c) =>
+    isProseChapterTitle(c.title)
+      ? { title: c.title, slug: c.slug, order: c.order, verses: [], prose: c.content }
+      : { title: c.title, slug: c.slug, order: c.order, verses: collect(c.content) },
+  );
 
   return {
     verses,

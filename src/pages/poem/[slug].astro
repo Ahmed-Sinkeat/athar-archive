@@ -12,6 +12,7 @@ import { analyzePoem } from "../../lib/chunk";
 import { readBody } from "../../lib/read-body";
 import { hrefFor, toArabicDigits, eraLabel, eraHref } from "../../lib/display";
 import { poemLd } from "../../lib/structured-data";
+import { markdownToSafeHtml } from "../../lib/sanitize";
 
 export async function getStaticPaths() {
   const poems = (await getCollection("poem")).filter(isPub);
@@ -88,7 +89,7 @@ const preamble = a.verses.filter((v) => !chapterNums.has(v.n));
         {a.chapters.map((c) => (
           <a class="card u6f3d7fe" href={hrefFor("poem", entry.id, { chapter: c.slug })} >
             <div class="card-title ub9199e2" >{c.title}</div>
-            <div class="faint uade9c31" >{toArabicDigits(c.verses.length)} بيت</div>
+            {!c.prose && <div class="faint uade9c31" >{toArabicDigits(c.verses.length)} بيت</div>}
           </a>
         ))}
       </div>
@@ -100,7 +101,11 @@ const preamble = a.verses.filter((v) => !chapterNums.has(v.n));
           {a.chapters.map((c) => (
             <>
               <div class="chapter-band"><span>{c.title}</span></div>
-              {c.verses.map((v) => <Verse n={v.n} sadr={v.sadr} ajz={v.ajz} anchor={v.anchor} notes={byAnchor[v.anchor]} />)}
+              {c.prose ? (
+                <div class="u49fcd85 poem-chapter-prose" set:html={markdownToSafeHtml(c.prose)} />
+              ) : (
+                c.verses.map((v) => <Verse n={v.n} sadr={v.sadr} ajz={v.ajz} anchor={v.anchor} notes={byAnchor[v.anchor]} />)
+              )}
             </>
           ))}
         </div>

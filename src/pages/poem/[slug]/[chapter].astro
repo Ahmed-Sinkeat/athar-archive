@@ -9,6 +9,7 @@ import { isPub, loadGraph, personNameMap, notesByAnchor } from "../../../lib/sit
 import { analyzePoem } from "../../../lib/chunk";
 import { readBody } from "../../../lib/read-body";
 import { hrefFor, toArabicDigits } from "../../../lib/display";
+import { markdownToSafeHtml } from "../../../lib/sanitize";
 
 export async function getStaticPaths() {
   const poems = (await getCollection("poem")).filter(isPub);
@@ -53,15 +54,19 @@ const next = (allChapters as any[])[chIdx + 1] ?? null;
         <div class="reader-head">
           <div class="eyebrow u87c136d">منظومة · {author}</div>
           <h1 class="reader-title ubd7542b">{chapter.title}</h1>
-          <div class="reader-byline">{entry.data.title} · {toArabicDigits(chapter.verses.length)} بيت</div>
+          <div class="reader-byline">{entry.data.title}{!chapter.prose && ` · ${toArabicDigits(chapter.verses.length)} بيت`}</div>
         </div>
         <div class="rule-short"></div>
         <StudyBar />
-        <div class="verses" data-matn={entry.id} data-unit="بيت">
-          {(chapter.verses as any[]).map((v: any) => (
-            <Verse n={v.n} sadr={v.sadr} ajz={v.ajz} anchor={v.anchor} notes={byAnchor[v.anchor]} />
-          ))}
-        </div>
+        {chapter.prose ? (
+          <div class="u49fcd85 poem-chapter-prose" set:html={markdownToSafeHtml(chapter.prose)} />
+        ) : (
+          <div class="verses" data-matn={entry.id} data-unit="بيت">
+            {(chapter.verses as any[]).map((v: any) => (
+              <Verse n={v.n} sadr={v.sadr} ajz={v.ajz} anchor={v.anchor} notes={byAnchor[v.anchor]} />
+            ))}
+          </div>
+        )}
 
         <!-- prev / next navigation — 2-col cards (mockup) -->
         <nav class="prevnext" aria-label="تنقل بين الأجزاء">

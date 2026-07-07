@@ -93,6 +93,28 @@ describe("parsePoem", () => {
     expect(poem.verses[0]).toMatchObject({ sadr: "بيت بلا عجز", anchor: "v1" });
     expect(poem.verses[0].ajz).toBeUndefined();
   });
+
+  it("excludes a heading-led preamble (front-matter book-info card) from verses", () => {
+    const poem = parsePoem(
+      "# بطاقة الكتاب وفهرس الموضوعات\n\nالكتاب: كذا\n\n## باب\n\nبيت --- عجزه",
+    );
+    expect(poem.verseCount).toBe(1);
+    expect(poem.verses[0].sadr).toBe("بيت");
+  });
+
+  it("keeps a heading-less preamble as real verses (poems with no ## chapters)", () => {
+    const poem = parsePoem("بيت أول --- عجزه\n\nبيت ثانٍ --- عجزه");
+    expect(poem.verseCount).toBe(2);
+  });
+
+  it("renders a known front-matter chapter (manuscript-copies list) as prose, not verses", () => {
+    const poem = parsePoem(
+      "## النسخ المعتمدة في تحقيق هذا المتن:\n\n- نسخة أولى\n\n## باب\n\nبيت --- عجزه",
+    );
+    expect(poem.chapters[0].prose).toContain("نسخة أولى");
+    expect(poem.chapters[0].verses).toEqual([]);
+    expect(poem.verseCount).toBe(1);
+  });
 });
 
 describe("parseBook", () => {
