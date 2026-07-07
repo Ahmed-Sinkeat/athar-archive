@@ -124,9 +124,13 @@ jobs:
       # Loads whatever gen-search-index.ts produced above — normally a small
       # incremental diff (few hundred writes), occasionally a full rebuild
       # (~30k writes, first run or after a bulk import) against D1's
-      # 100k writes/day free quota.
+      # 100k writes/day free quota. continue-on-error: a D1 hiccup (auth,
+      # quota, transient API error) shouldn't fail the whole CI run when the
+      # actual deploy (Worker + R2) above it already succeeded — search
+      # goes briefly stale, not the site.
       - name: Refresh search index (D1)
         if: github.ref == 'refs/heads/main' && github.event_name == 'push' && env.CLOUDFLARE_API_TOKEN != ''
+        continue-on-error: true
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
