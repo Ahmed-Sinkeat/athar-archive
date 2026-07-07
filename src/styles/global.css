@@ -1409,28 +1409,45 @@ html.pages-flow .page-sep + p { display: inline; margin: 0; }
 .page-footnotes { margin: 10px 0 24px; padding: 10px 14px; border: 1px solid var(--rule); background: var(--paper-2); border-radius: 8px; }
 .page-footnotes .fn-kicker { font-family: var(--font-ui); font-size: 10.5px; font-weight: 600; letter-spacing: .1em; color: var(--ink-faint); display: block; margin-bottom: 6px; }
 .page-footnotes ol { list-style: none; margin: 0; padding: 0; }
-.page-footnotes li { font-family: var(--f-matn); font-size: 14.5px; line-height: 1.8; color: var(--ink-soft); padding: 4px 0; display: none; }
+/* Always visible, like a printed book's footnotes -- no click-to-reveal (that
+   mechanism silently broke when a ref lost an attribute during a rewrite,
+   dumping readers at the page bottom; always-visible removes the failure
+   mode entirely). :target still gets a brief highlight so a jump from the
+   inline marker is easy to spot. */
+.page-footnotes li { font-family: var(--f-matn); font-size: 14.5px; line-height: 1.8; color: var(--ink-soft); padding: 4px 0; scroll-margin-top: 90px; }
 .page-footnotes li::before { content: attr(data-fn-num) ". "; color: var(--ink-faint); }
-.page-footnotes li:target { display: block; color: var(--ink); background: color-mix(in srgb, var(--accent) 12%, transparent); border-radius: 4px; }
+.page-footnotes li:target { color: var(--ink); background: color-mix(in srgb, var(--accent) 12%, transparent); border-radius: 4px; }
 .page-footnotes p { display: inline; margin: 0; }
-/* «إخفاء الحواشي» reader setting — hides the footer block entirely, page-sep
+/* «إخفاء الحواشي» reader setting -- hides the footer block entirely, page-sep
    page numbers stay visible. */
-html.hide-footnotes .page-footnotes { display: none; }
-/* inline footnote ref sups (future EPUB imports) */
+html.hide-footnotes .page-footnotes,
+html.hide-footnotes .prose section.footnotes { display: none; }
+/* inline footnote ref sups (future EPUB imports) -- no separate always-shown
+   location for these yet, so they stay click-to-reveal (see reader.ts). */
 sup[data-fn] { cursor: pointer; color: var(--accent); font-size: 0.72em; margin-inline-start: 1px; }
 sup[data-fn]:hover { text-decoration: underline; }
 
-/* GFM footnotes (حاشية + تخريج) expand inline via .fn-inline in reader.ts.
-   Keep only the small superscript marker in the matn; hide the printed bottom list so
-   the reading view stays matn + page separators + page numbers. The hidden <section>
-   stays in the DOM so the inline box can clone each note by id.
-   ponytail: JS-only reveal; add a <details> fallback if no-JS/AT access is needed. */
+/* GFM footnotes (حاشية + تخريج): small superscript marker inline, full note
+   always visible in a printed-endnotes-style box at the end of the content --
+   same always-visible + «إخفاء الحواشي» pattern as .page-footnotes above. */
 .prose [data-footnote-ref] { cursor: pointer; color: var(--accent); text-decoration: none; font-size: 0.72em; margin-inline-start: 2px; padding: 0 1px; }
 .prose [data-footnote-ref]:hover { text-decoration: underline; }
 /* separate runs of adjacent refs (e.g. a name carrying [12][13][14]) so they don't jam */
 .prose sup + sup { margin-inline-start: 4px; }
-.prose [data-footnotes],
-.prose section.footnotes { display: none; }
+.prose section.footnotes {
+  margin: 24px 0 8px; padding: 10px 14px; border: 1px solid var(--rule);
+  background: var(--paper-2); border-radius: 8px;
+}
+.prose section.footnotes::before {
+  content: "الحواشي والتخريج"; display: block; font-family: var(--font-ui);
+  font-size: 10.5px; font-weight: 600; letter-spacing: .1em; color: var(--ink-faint);
+  margin-bottom: 6px;
+}
+.prose section.footnotes ol { margin: 0; padding-inline-start: 1.4em; }
+.prose section.footnotes li { font-family: var(--f-matn); font-size: 14.5px; line-height: 1.8; color: var(--ink-soft); padding: 4px 0; scroll-margin-top: 90px; }
+.prose section.footnotes li p { display: inline; margin: 0; }
+.prose section.footnotes li:target { color: var(--ink); background: color-mix(in srgb, var(--accent) 12%, transparent); border-radius: 4px; }
+.prose section.footnotes .data-footnote-backref { margin-inline-start: 4px; }
 
 /* narrator-list (scholar's shuyukh and talamidhah listing) */
 .narrator-list {

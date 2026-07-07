@@ -333,21 +333,10 @@ function toggleFnInline(marker: HTMLElement, buildBody: () => Node[]) {
 }
 document.addEventListener("click", (e) => {
   const t = e.target as HTMLElement;
-  // standard markdown footnote refs
-  const ref = t.closest<HTMLAnchorElement>("[data-footnote-ref]");
-  if (ref) {
-    e.preventDefault();
-    const id = ref.getAttribute("href")?.slice(1);
-    const target = id ? document.getElementById(id) : null;
-    if (target) {
-      toggleFnInline(ref, () => {
-        const clone = target.cloneNode(true) as HTMLElement;
-        clone.querySelector(".data-footnote-backref")?.remove();
-        return Array.from(clone.childNodes);
-      });
-    }
-    return;
-  }
+  // Standard markdown footnote refs ([data-footnote-ref]) are plain <a href="#...">
+  // anchors now — the footer/endnotes list they point at is always visible (see
+  // global.css), so the browser's native anchor jump (+ global smooth-scroll,
+  // scroll-margin-top, :target highlight) handles this with no JS needed.
   // EPUB inline footnote sups with embedded note text (data-note set at server render)
   const fnSup = t.closest<HTMLElement>("sup[data-fn][data-note]");
   if (fnSup && !fnSup.dataset.sepPage) {
