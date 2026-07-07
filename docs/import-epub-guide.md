@@ -16,10 +16,10 @@ Correction to an earlier version of this doc: `athar-archive/scripts/epub-import
 
 ## What this means practically
 - **Quick one-off import** (a metn/poem you want live today) → use `athar-archive`'s `pnpm import:epub`. It's simpler, direct, good enough for the Shamela format it targets.
-- **Higher-fidelity compile with regression protection** (headings, footnotes, poetry, tables verified against a golden corpus, or a book Athar-Engine has already been tuned against) → compile it in `Athar-Engine` (`compile-canonical.ts` / `compile-all-epubs.ts`), then run `sync-website-bodies.mjs` to push the compiled body into athar-archive, keeping the frontmatter you already curated there.
-- They are **not interchangeable inputs to the same pipeline** — Athar-Engine's output only overwrites the *body*, never the frontmatter fields (person/topics/etc.) that athar-archive's own importer or `/compose` set.
+- **Higher-fidelity compile with regression protection** (headings, footnotes, poetry, tables verified against a golden corpus, or a book Athar-Engine has already been tuned against) → compile it in `Athar-Engine` (`compile-canonical.ts` / `compile-all-epubs.ts`), then bring it into athar-archive with **`ingest-new-book.mjs`** (new book) or **`sync-website-bodies.mjs`** (existing book, body-only refresh).
+- They are **not interchangeable inputs to the same pipeline** — Athar-Engine's output only overwrites the *body*, never the frontmatter fields (person/topics/etc.) that athar-archive's own importer, `/compose`, or `ingest-new-book.mjs` set.
 
-## Guide: importing your `starterbooks` EPUBs
+## Guide: importing an EPUB
 
 **Path A — fast, direct (athar-archive importer):**
 ```
@@ -29,7 +29,7 @@ pnpm import:epub /home/sinkeat/Projects/books/starterbooks/                     
 pnpm validate:content
 ```
 
-**Path B — via Athar-Engine's compiler (higher fidelity, regression-checked):**
+**Path B — via Athar-Engine's compiler, book already has a content file on the site (higher fidelity, regression-checked):**
 ```
 cd /home/sinkeat/Projects/Athar-Engine
 # add the book to compile-all-epubs.ts's list, or run compile-canonical.ts directly:
@@ -37,7 +37,20 @@ pnpm exec tsx scripts/compile-canonical.ts "<epub path>" canonical-corpus/<folde
 node scripts/sync-website-bodies.mjs --dry     # preview what would sync into athar-archive
 node scripts/sync-website-bodies.mjs           # write it (only touches files that already exist on the site)
 ```
-Path B assumes the book already (or will) exist as a stub in athar-archive (frontmatter set up), since `sync-website-bodies.mjs` only updates existing files by slug match.
+
+**Path C — via Athar-Engine's compiler, book is brand new (2026-07-07, `ingest-new-book.mjs`):**
+```
+cd /home/sinkeat/Projects/Athar-Engine
+pnpm exec tsx scripts/compile-canonical.ts "<epub path>" canonical-corpus/<folder> <slug>
+node scripts/ingest-new-book.mjs <folder> --slug <slug> --title "<title>" --person <person-slug> \
+  --kind مرجع --topics <topic-slug> --authored-year <year> --status published \
+  --description "<one-line description>"
+```
+This is the gap Path B always had (it "only updates files that already exist on the site" —
+refuses to touch anything without a content file, by design, to avoid clobbering curated
+frontmatter). `ingest-new-book.mjs` writes a brand-new content file with frontmatter built
+from the CLI flags, and refuses to run if the slug already exists (use Path B for that case
+instead). Proven on 13 books so far (سيرة ابن هشام, then a batch of early-salaf works).
 
 ## What I actually did (and got wrong first)
 1. First pass, I only looked inside `athar-archive/` and concluded "Athar Engine" was just a marketing name for that repo's own stack — wrong. I hadn't checked for a sibling directory.

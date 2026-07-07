@@ -1,6 +1,32 @@
 # Athar Archive visual redesign — Phase 1: foundation + home
 
-**Status: design approved, not yet implemented.**
+**Status (2026-07-07): implemented.** The token migration in §1 and the home
+reskin in §6 are both live on `main` — verified by direct comparison
+against the mockup source this session (`src/styles/global.css`'s color/
+type tokens are byte-identical to the mockup's). The rollout continued
+past this Phase 1 scope too: `global.css` has "Phase 2/3/4" comments
+throughout marking later reskin passes (quote-band verdigris, shadow-lift
+cards, narrower ~680px reading measure, etc.) — done incrementally,
+directly on `main`, not through the branch below.
+
+**Note on the branch:** `redesign/visual-v2` (last commit 2026-07-03) is a
+**separate, abandoned implementation attempt of the same mockup** — it
+diverged from `main` before this phased rollout and was never merged
+(204 commits only on that branch, 268+ only on `main` as of 2026-07-07).
+Don't merge it — the work it contains was superseded by the direct-to-main
+approach this doc and its sibling phases used. If reviving anything from
+it, diff specific values, don't merge wholesale (main has since touched
+the same CSS territory independently for unrelated feature work).
+
+**2026-07-07 follow-up work** (not a rewrite of this doc, just closing gaps
+found by comparing the live site to the mockup source directly):
+CSS discipline pass (removed ~18 box-shadow rules the spec explicitly
+forbids, unified 14 ad-hoc border-radius values down to a 2-token system),
+two real layout bugs (a reading-column-width regression from a sidebar
+grid nested in the wrong container; the hero calligraphy image swapping on
+OS dark-mode instead of the site's own theme), and كُناشتي (`/benefits`,
+never covered by the original mockup screens) reskinned to match a newer
+mockup iteration the user added directly in the Claude Design project.
 
 ## Context
 

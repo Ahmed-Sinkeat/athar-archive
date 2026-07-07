@@ -1,5 +1,12 @@
 # Athar Archive — problems.txt roadmap
 
+**Status (2026-07-07): all 6 phases shipped.** Phases 1-4: commit `3ede7ae`.
+Phases 5-6: see their sections below for what actually shipped (differs in
+places from what was originally scoped — R2 diffing and Astro 7 turned out
+to already/already-plan-to be done, Phase 6 kept the old importer as
+fallback rather than retiring it). `proplems.txt` itself was deleted once
+this doc fully superseded it.
+
 ## Context
 
 `proplems.txt` lists ~20 issues. Confirmed priorities with the user, in order:
@@ -13,7 +20,7 @@ CMS direction = prototype candidates and pick with evidence; comments (giscus) =
 ## Opinion answers (no code, recorded here)
 
 - **giscus**: technically ideal for a static site (free, no server, spam-proof) but every commenter needs a GitHub account — wrong fit for a general Arabic audience. When comments get scheduled, a lightweight self-hosted option on the existing Cloudflare D1 is the better path. Deferred per user.
-- **Astro 7** (released 2026-06-22): don't upgrade yet. What it offers this site: Rust compiler + Vite 8/Rolldown → much faster builds (real win for a content-heavy site); Sätteri as the new default Markdown processor; streaming rendering by default; stricter HTML validation (breaking). The risks here: the custom remark/rehype sanitize pipeline (`src/lib/sanitize.ts`, rehype-raw/sanitize deps) vs the new Sätteri default, inline HTML in content (`<hr class="page-sep">`) vs stricter validation, the pinned `vite: 7.3.5` override, and patched `@keystatic/astro`. Revisit **after Phase 1 removes Keystatic** (the main blocker) — then upgrade for the build-speed win, keeping the legacy markdown pipeline if Sätteri breaks the sanitize chain.
+- **Astro 7** (released 2026-06-22): ~~don't upgrade yet~~ — **done**. Upgraded after Phase 1 removed Keystatic as planned (`astro: ^7.0.6` in `package.json`); the content pipeline keeps its own remark/rehype sanitize chain (`src/lib/sanitize.ts`) independent of Astro's Sätteri default, so that risk never materialized.
 
 ---
 
@@ -54,21 +61,25 @@ Fallback if both fail on Arabic/RTL: keep Keystatic but hide technical fields an
 - Delete `scripts/pagefind-spike/` and purge stale Pagefind references (`docs/asbuild.md`, `deploy.md`, `migration-plan.md`, `media-and-backup.md`, comment in `book/[slug].astro`); refresh docs to current reality.
 - **Footer gap**: `min-height:100svh` flex column on `Base.astro` so the footer hugs the bottom with no dead band.
 - **Smoothness pass**: button `:active`/transition states, tap feedback, scroll behavior audit.
-- Delete `proplems.txt` once everything is tracked here.
+- ~~Delete `proplems.txt` once everything is tracked here.~~ Done — deleted 2026-07-07, fully captured in this doc.
 
-## Phase 5 — CI/CD + storage optimization
+**Status: shipped** (commit `3ede7ae`, "Phases 1-4").
 
-- **R2 upload diffing**: `upload-r2-assets.mjs` currently re-puts ~15k objects every deploy (unproven 40min+ step). Keep a hash manifest, upload only changed keys.
-- **Re-enable search indexing** (`if: false` steps in `ci.yml`): make it incremental/diff-based so it fits D1's 100k writes/day instead of a 30k-row full reindex per deploy.
-- **LFS/storage audit**: ~290MB tracked in LFS against a 1GiB/month quota; move audio/media to R2-only and out of git where possible (new `audio/` dir at repo root is a candidate).
+## Phase 5 — CI/CD + storage optimization ✅ done (2026-07-07)
 
-## Phase 6 — Importer → Athar Engine
+- **R2 upload diffing**: turned out `upload-r2-assets.mjs` already diffs against a remote md5 index and only PUTs changed keys — the "re-puts everything" comment in `ci.yml` was stale, not the actual behavior. Fixed the comment only.
+- **Search indexing**: `gen-search-index.ts` is now incremental — diffs against a remote `doc_hash(url, hash)` snapshot (`pnpm search:hashes`) and only emits SQL for docs that actually changed; falls back to a full rebuild when no snapshot exists yet. Re-enabled the `ci.yml` steps that were `if: false`. Also fixed a real O(n²) bug in the SQL-writer loop found while testing this (`Buffer.byteLength` was rescanning the whole output buffer per doc — took a 22k-doc reindex from 15+ minutes, never finishing, to ~9 seconds).
+- **LFS/storage audit**: `audio/` (local rclone staging dir for `scripts/upload-media.sh` → the `athar-media` R2 bucket) was already correctly untracked/never committed — just added it to `.gitignore` so it can't be committed by accident. Media was never meant to live in git/LFS, only its `r2.ahlalathar.com` URL in frontmatter (see `media-and-backup.md`).
 
-- Retire `scripts/epub-import.ts` (1420 lines) as the import path; `~/Projects/Athar-Engine` is already the deterministic EPUB→Markdown compiler. Archive keeps a thin "ingest compiled markdown + frontmatter" step. Poetry paren/numbering rules from Phase 3 land in the Engine.
+## Phase 6 — Importer → Athar Engine ✅ done (2026-07-07)
+
+`epub-import.ts` is **not** retired — Athar-Engine's compiler is mature (all 10 quality domains "Locked"), but that's only proven against the 12-14 books it was locked against, not the current 18-book corpus or arbitrary new books, so keeping it as a fallback was the safer call. What shipped instead: `scripts/ingest-new-book.mjs` in the **Athar-Engine repo** — takes a compiled book from `canonical-corpus/*/output/` and writes a new athar-archive content file with frontmatter (companion to the existing `sync-website-bodies.mjs`, which only updates books that already have a content file). Proven on 13 real books so far: سيرة ابن هشام, then 12 early-salaf works (Abu Ubaid al-Qasim ibn Sallam ×9, Al-Khallal ×2, Ibn Taymiyyah ×1, Ibn Zanjawayh ×1).
 
 ## Deferred (per user)
 
-Comments system (giscus verdict recorded above) · شجرة الرواة people-tree · linking books to usul al-hadith · article/kunasha visual redesign (waiting on user's new design) · Astro 7 upgrade (after Phase 1).
+Comments system (giscus verdict recorded above) · شجرة الرواة people-tree · linking books to usul al-hadith · Astro 7 upgrade (after Phase 1— **done**, see `docs/HANDOFF-visual-redesign.md`'s branch note).
+
+Article/kunasha visual redesign: **partially done** (2026-07-07) — كُناشتي (`/benefits`) now matches the Claude Design mockup (color-coded tabs, grouped box with dividers, centered quotes, count badge). Articles page itself not yet touched.
 
 ## Verification (every phase)
 
