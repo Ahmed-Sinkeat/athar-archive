@@ -94,29 +94,33 @@ const jsonLd = bookLd({
       { label: entry.data.title },
     ]}
   />
-  <div class:list={["wrap-matn", "reading-pad", { "hadith-accent": isHadith }]} data-cite-book={entry.data.title} data-cite-author={author}>
-    <div class="reader-head">
-      <a class="eyebrow u87c136d pill-link" href={isMatn("book", entry.data) ? "/matn" : "/books"}>{topicLabel}</a>
-      <div class:list={["ornament", { "ornament-green": isHadith }]} aria-hidden="true">۞</div>
-      <h1 class="reader-title ue7e55f7" >{entry.data.title}</h1>
-      <div class="reader-byline">{author}</div>
-      {origin && (
-        <div class="reader-origin">
-          {origin.relation}: <a href={origin.href}>{origin.title}</a>
-        </div>
-      )}
-      {entry.data.transcript_status && (
-        <div style="margin-top: 0.5rem;">
-          <span class={`pill ${entry.data.transcript_status === 'قيد المراجعة' ? 'tag-accent' : ''}`}>{entry.data.transcript_status}</span>
-        </div>
-      )}
-    </div>
-    {audios.length > 0 && <div class="u49fcd85"><AudioPlayer sources={audios} label="استماعٌ إلى المتن" /></div>}
-
-    <div class="rule-short"></div>
-
-    {chunked ? (
-      /* light TOC: links to the on-demand chapter pages; no body in this HTML */
+  {/* Reading measure comes from the grid arithmetic (chap-outer 960px minus the
+      232px sidebar minus the gap ≈ 680px), matching book/[slug]/[chapter].astro
+      and the mockup's "Article column max 680px" — NOT from wrapping the whole
+      grid in wrap-matn's own (narrower) fixed measure, which would carve the
+      sidebar's width out of the reading column instead of giving it its own. */}
+  <div class:list={["chap-outer", { "hadith-accent": isHadith }]}>
+  {chunked ? (
+    <div class="wrap-matn reading-pad" data-cite-book={entry.data.title} data-cite-author={author}>
+      <div class="reader-head">
+        <a class="eyebrow u87c136d pill-link" href={isMatn("book", entry.data) ? "/matn" : "/books"}>{topicLabel}</a>
+        <div class="ornament" aria-hidden="true">۞</div>
+        <h1 class="reader-title ue7e55f7" >{entry.data.title}</h1>
+        <div class="reader-byline">{author}</div>
+        {origin && (
+          <div class="reader-origin">
+            {origin.relation}: <a href={origin.href}>{origin.title}</a>
+          </div>
+        )}
+        {entry.data.transcript_status && (
+          <div style="margin-top: 0.5rem;">
+            <span class={`pill ${entry.data.transcript_status === 'قيد المراجعة' ? 'tag-accent' : ''}`}>{entry.data.transcript_status}</span>
+          </div>
+        )}
+      </div>
+      {audios.length > 0 && <div class="u49fcd85"><AudioPlayer sources={audios} label="استماعٌ إلى المتن" /></div>}
+      <div class="rule-short"></div>
+      {/* light TOC: links to the on-demand chapter pages; no body in this HTML */}
       <nav class="toc-box has-current" aria-label="فهرس الفصول">
         <div class="toc-label">فصول الكتاب · {toArabicDigits(groupToc(toc).length)} فصل</div>
         {groupToc(toc).map((g) => (
@@ -135,44 +139,64 @@ const jsonLd = bookLd({
           )
         ))}
       </nav>
-    ) : (
-      <div class="chap-grid">
-        <div class="reading-pad" style="padding: 0;">
-          <StudyBar downloadUrl={entry.data.attachments?.[0]?.url} />
-          {isMatn("book", entry.data) ? (
-            <div class="u49fcd85" data-matn={entry.id} data-unit="فقرة"><Prose body={body ?? ""} /></div>
-          ) : (
-            <div class="u49fcd85"><Prose body={body ?? ""} /></div>
+      <div class="ornament ud38b410" >۞</div>
+    </div>
+  ) : (
+    <div class="chap-grid">
+      <div class="reading-pad" data-cite-book={entry.data.title} data-cite-author={author}>
+        <div class="reader-head">
+          <a class="eyebrow u87c136d pill-link" href={isMatn("book", entry.data) ? "/matn" : "/books"}>{topicLabel}</a>
+          <div class:list={["ornament", { "ornament-green": isHadith }]} aria-hidden="true">۞</div>
+          <h1 class="reader-title ue7e55f7" >{entry.data.title}</h1>
+          <div class="reader-byline">{author}</div>
+          {origin && (
+            <div class="reader-origin">
+              {origin.relation}: <a href={origin.href}>{origin.title}</a>
+            </div>
+          )}
+          {entry.data.transcript_status && (
+            <div style="margin-top: 0.5rem;">
+              <span class={`pill ${entry.data.transcript_status === 'قيد المراجعة' ? 'tag-accent' : ''}`}>{entry.data.transcript_status}</span>
+            </div>
           )}
         </div>
-        {tocNested?.length > 0 && (
-          <ReaderSidebar label="فهرس العناوين">
-            <div class="toc-box has-current">
-              <div class="toc-label">فهرس العناوين</div>
-              {tocNested.map((h) => (
-                <a href={`#${h.slug}`} style={`padding-inline-start: ${(h.depth - 2) * 1}rem`}>{h.title}</a>
-              ))}
-            </div>
-          </ReaderSidebar>
+        {audios.length > 0 && <div class="u49fcd85"><AudioPlayer sources={audios} label="استماعٌ إلى المتن" /></div>}
+        <div class="rule-short"></div>
+        <StudyBar downloadUrl={entry.data.attachments?.[0]?.url} />
+        {isMatn("book", entry.data) ? (
+          <div class="u49fcd85" data-matn={entry.id} data-unit="فقرة"><Prose body={body ?? ""} /></div>
+        ) : (
+          <div class="u49fcd85"><Prose body={body ?? ""} /></div>
         )}
-      </div>
-    )}
 
-    {/* All annotations now open in the sidebar/popup panel: phrase notes are
-        wrapped inline; whole-paragraph notes attach to their فقرة. The packs
-        stay in the DOM (hidden) so the search index/no-JS still see the text. */}
-    {anchors.map(([anchor, notes]) => (
-      <div class="ann-pack" id={`ann-${anchor}`} data-ann-pack data-phrase={notes.find((n) => n.phrase)?.phrase} hidden>
-        {notes.map((nt) => (
-          <div class={`ann-entry k-${KIND_SLUG[nt.kind] ?? "sharh"}`} data-kind={nt.kind} data-label={nt.annotator ? `${nt.kind} — ${nt.annotator}` : nt.kind}>
-            <div class="ann-entry-body" data-ar><Fragment set:html={markdownToSafeHtml(nt.body)} /></div>
-            {nt.sourceHref && <a class="ann-source-link" href={nt.sourceHref}>اقرأ في موضعه{nt.sourceLabel ? `: ${nt.sourceLabel}` : ""} ←</a>}
+        {/* All annotations now open in the sidebar/popup panel: phrase notes are
+            wrapped inline; whole-paragraph notes attach to their فقرة. The packs
+            stay in the DOM (hidden) so the search index/no-JS still see the text. */}
+        {anchors.map(([anchor, notes]) => (
+          <div class="ann-pack" id={`ann-${anchor}`} data-ann-pack data-phrase={notes.find((n) => n.phrase)?.phrase} hidden>
+            {notes.map((nt) => (
+              <div class={`ann-entry k-${KIND_SLUG[nt.kind] ?? "sharh"}`} data-kind={nt.kind} data-label={nt.annotator ? `${nt.kind} — ${nt.annotator}` : nt.kind}>
+                <div class="ann-entry-body" data-ar><Fragment set:html={markdownToSafeHtml(nt.body)} /></div>
+                {nt.sourceHref && <a class="ann-source-link" href={nt.sourceHref}>اقرأ في موضعه{nt.sourceLabel ? `: ${nt.sourceLabel}` : ""} ←</a>}
+              </div>
+            ))}
           </div>
         ))}
-      </div>
-    ))}
 
-    <div class="ornament ud38b410" >۞</div>
+        <div class="ornament ud38b410" >۞</div>
+      </div>
+      {tocNested?.length > 0 && (
+        <ReaderSidebar label="فهرس العناوين">
+          <div class="toc-box has-current">
+            <div class="toc-label">فهرس العناوين</div>
+            {tocNested.map((h) => (
+              <a href={`#${h.slug}`} style={`padding-inline-start: ${(h.depth - 2) * 1}rem`}>{h.title}</a>
+            ))}
+          </div>
+        </ReaderSidebar>
+      )}
+    </div>
+  )}
   </div>
   {commentaries.length > 0 && (
     <div class="wrap-mid" style="margin-top: 2rem; border-top: 1px solid var(--border, #e0e0e0); padding-top: 1rem;">

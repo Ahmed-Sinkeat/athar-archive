@@ -104,18 +104,19 @@ const latest = [
           <div class="hero-eyebrow">الأرشيفُ العلميُّ للمتونِ والمنظوماتِ الإسلامية</div>
           <h1 class="hero-title">أهل الأثر</h1>
 
-          <picture class="hero-calligraphy" aria-hidden="true">
-            <source media="(prefers-color-scheme: dark)" srcset="/calligraphy/logo_dark.webp" />
-            <img
-              src="/calligraphy/logo_light.webp"
-              alt=""
-              class="hero-calligraphy-img"
-              width="560"
-              height="560"
-              loading="eager"
-              decoding="async"
-            />
-          </picture>
+          {/* One asset, re-tinted via the data-theme CSS filter below — the site's
+              theme (paper/noir/mono) is independent of the OS's prefers-color-scheme,
+              so a <picture><source media="prefers-color-scheme"> swap would show the
+              wrong variant whenever the two disagree (e.g. OS dark + site "paper"). */}
+          <img
+            src="/calligraphy/logo_light.webp"
+            alt=""
+            class="hero-calligraphy hero-calligraphy-img"
+            width="596"
+            height="489"
+            loading="eager"
+            decoding="async"
+          />
 
           <p class="hero-lede">متونٌ ومنظوماتٌ وتراجمٌ وأسانيد — في تجربة قراءة هادئة.</p>
 
