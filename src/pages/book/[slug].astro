@@ -13,7 +13,9 @@ import { analyzeBook } from "../../lib/chunk";
 import { readBody } from "../../lib/read-body";
 import { hrefFor, toArabicDigits, isMatn, labelFor } from "../../lib/display";
 import { bookLd } from "../../lib/structured-data";
-import { parseToc } from "../../lib/chapters";
+import { parseToc, parseBook } from "../../lib/chapters";
+import { isAtharNumberedBook, injectAtharAnchors, type TakhrijLink } from "../../lib/hadith";
+import takhrijData from "../../data/takhrij.json";
 
 export async function getStaticPaths() {
   const books = (await getCollection("book")).filter(isPub);
@@ -23,6 +25,9 @@ export async function getStaticPaths() {
   for (const entry of books) {
     const body = await readBody(entry);
     const a = analyzeBook(body);
+    const atharNumbered = !a.chunked && isAtharNumberedBook(parseBook(body).paragraphs);
+    const takhrijFor = (n: number) => (takhrijData as Record<string, TakhrijLink[]>)[`${entry.id}:${n}`];
+    const renderBody = atharNumbered ? injectAtharAnchors(body, takhrijFor) : body;
     const byAnchor = notesByAnchor("book", entry.id, graph, names);
     const audios = graph.audioForSource("book", entry.id)
       .filter((x) => x.data.status === "published")
@@ -44,7 +49,7 @@ export async function getStaticPaths() {
       c.firstPage ?? (c.content.match(/data-page="(\d+)"/)?.[1] ? Number(c.content.match(/data-page="(\d+)"/)![1]) : undefined);
     // Phase 2: chunked books → store a light TOC (titles+slugs) only; the body and
     // its annotations live on the on-demand chapter pages, never in this landing's HTML.
-    paths.push({ params: { slug: entry.id }, props: { entry, chunked: a.chunked, toc: a.chapters.map((c) => ({ title: c.title, slug: c.slug, parent: c.parent, parentTitle: c.parentTitle, firstPage: firstPageOf(c) })), tocNested: a.chunked ? [] : parseToc(body ?? ""), body: a.chunked ? undefined : body, byAnchor: a.chunked ? {} : byAnchor, audios, commentaries, author: entry.data.person ? names.get(entry.data.person) : undefined, topicLabel: labelFor("book", entry.data), origin: originOf(entry.data, graph), related: relatedTo(entry, graph, names), backlinks: backlinksList(entry, graph, names) } });
+    paths.push({ params: { slug: entry.id }, props: { entry, chunked: a.chunked, toc: a.chapters.map((c) => ({ title: c.title, slug: c.slug, parent: c.parent, parentTitle: c.parentTitle, firstPage: firstPageOf(c) })), tocNested: a.chunked ? [] : parseToc(body ?? ""), body: a.chunked ? undefined : renderBody, byAnchor: a.chunked ? {} : byAnchor, audios, commentaries, author: entry.data.person ? names.get(entry.data.person) : undefined, topicLabel: labelFor("book", entry.data), origin: originOf(entry.data, graph), related: relatedTo(entry, graph, names), backlinks: backlinksList(entry, graph, names) } });
   }
   return paths;
 }
@@ -110,7 +115,7 @@ const jsonLd = bookLd({
     <div class="rule-short"></div>
 
     {chunked ? (
-      <!-- light TOC: links to the on-demand chapter pages; no body in this HTML -->
+      /* light TOC: links to the on-demand chapter pages; no body in this HTML */
       <nav class="toc-box has-current" aria-label="فهرس الفصول">
         <div class="toc-label">فصول الكتاب · {toArabicDigits(groupToc(toc).length)} فصل</div>
         {groupToc(toc).map((g) => (

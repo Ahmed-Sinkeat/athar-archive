@@ -137,6 +137,22 @@ function rehypeHeadingIds() {
   };
 }
 
+// rehype-sanitize's default (GitHub) schema restricts <a> classNames to just
+// footnote-backref use — any other class on an <a> (like injectAtharAnchors'
+// .athar-cite permalink) is silently dropped. Re-add it post-sanitize instead
+// of loosening the shared schema (which would also loosen untrusted content).
+function rehypeAtharCite() {
+  return (tree: any) => {
+    const visit = (node: any) => {
+      if (node.type === "element" && node.tagName === "a" && node.properties?.dataAthar != null) {
+        node.properties.className = [...(node.properties.className ?? []), "athar-cite"];
+      }
+      if (node.children) node.children.forEach(visit);
+    };
+    visit(tree);
+  };
+}
+
 // Color السؤال/الجواب bold markers in مسائل content (runs after sanitize; trusted).
 function rehypeMasailQA() {
   return (tree: any) => {
@@ -310,6 +326,7 @@ const processor = unified()
   .use(rehypeRaw)
   .use(rehypeSanitize, sanitizeSchema)
   .use(rehypeInlineFootnotes)
+  .use(rehypeAtharCite)
   .use(rehypeSentenceBreaks)
   .use(rehypeWikiLinks)
   .use(rehypeArabicTokens)

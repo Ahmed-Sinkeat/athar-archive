@@ -16,6 +16,8 @@ import path from "node:path";
 import { loadContentFromDisk } from "../src/lib/load.js";
 import { analyzeBook } from "../src/lib/chunk.js";
 import { parseBook } from "../src/lib/chapters.js";
+import { isAtharNumberedBook, injectAtharAnchors, type TakhrijLink } from "../src/lib/hadith.js";
+import takhrijData from "../src/data/takhrij.json" with { type: "json" };
 
 // تفسير الميسر only: this edition's paragraphs are commentary-only (no ﴿ayah﴾
 // quoted inline), unlike ibn Kathir / Taysir al-Latif which already quote the
@@ -116,8 +118,11 @@ function main() {
     const firstPageOf = (c: (typeof a.chapters)[number]) =>
       c.firstPage ?? (c.content.match(/data-page="(\d+)"/)?.[1] ? Number(c.content.match(/data-page="(\d+)"/)![1]) : undefined);
     const manifest = a.chapters.map((c) => ({ title: c.title, rawTitle: c.rawTitle, slug: c.slug, parent: c.parent, parentTitle: c.parentTitle, firstPage: firstPageOf(c) }));
+    const atharNumbered = isAtharNumberedBook(parseBook(book.body).paragraphs);
+    const takhrijFor = (n: number) => (takhrijData as Record<string, TakhrijLink[]>)[`${book.id}:${n}`];
     for (const c of a.chapters) {
-      const content = book.id === TAFSIR_AYAH_SOURCE ? injectAyat(c.content) : c.content;
+      let content = book.id === TAFSIR_AYAH_SOURCE ? injectAyat(c.content) : c.content;
+      if (atharNumbered) content = injectAtharAnchors(content, takhrijFor);
       fs.writeFileSync(path.join(dir, `${c.slug}.md`), content, "utf-8");
       chapterCount++;
     }

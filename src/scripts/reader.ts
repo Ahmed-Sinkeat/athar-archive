@@ -280,6 +280,18 @@ document.addEventListener("click", (e) => {
   if ((e.target as HTMLElement).closest("[data-drawer-backdrop]")) setDrawer(false);
 });
 
+// per-athar permalink: "#" link injected before each numbered narration
+// (see injectAtharAnchors in src/lib/hadith.ts) — copies the deep link +
+// a plain-text citation alongside its native hash navigation.
+document.addEventListener("click", (e) => {
+  const a = (e.target as HTMLElement).closest<HTMLAnchorElement>(".athar-cite");
+  if (!a) return;
+  const n = a.dataset.athar;
+  const book = a.closest<HTMLElement>("[data-cite-book]")?.dataset.citeBook || document.title.split(" · ")[0];
+  const url = `${location.origin}${location.pathname}#athar-${n}`;
+  navigator.clipboard?.writeText(`${url}\n«${book}» — أثر ${n}`);
+});
+
 // --- inline footnotes (markdown [^refs] + EPUB <sup data-fn> refs) ---
 // Expands right under the paragraph containing the marker, toggled by a
 // +/- indicator (see [data-footnote-ref]::after / sup[data-fn]::after in

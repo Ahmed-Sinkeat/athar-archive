@@ -9,6 +9,8 @@ import { loadContentFromDisk } from "../src/lib/load.js";
 import { analyzeBook } from "../src/lib/chunk.js";
 import { parseBook } from "../src/lib/chapters.js";
 import { normalizeArabic } from "../src/lib/ar-normalize.js";
+import { isAtharNumberedBook, parseAtharNumber } from "../src/lib/hadith.js";
+import { toArabicDigits } from "../src/lib/display.js";
 
 interface Doc {
   type: string;
@@ -54,7 +56,35 @@ function main() {
       }
       case "book": {
         const a = analyzeBook(e.body);
-        if (a.chunked) {
+        // Athar-numbered books (e.g. "١٧ - حدثنا...") index one doc per athar
+        // instead of per-chapter/whole-book — a search hit should land on the
+        // narration itself (#athar-N), not force scanning a whole chapter for it.
+        const atharNumbered = isAtharNumberedBook(parseBook(e.body).paragraphs);
+        if (atharNumbered && a.chunked) {
+          for (const c of a.chapters) {
+            for (const p of parseBook(c.content).paragraphs) {
+              const n = parseAtharNumber(p.text);
+              if (n === null) continue;
+              docs.push({
+                type: "book", book: e.id, person,
+                url: `/book/${e.id}/${c.slug}#athar-${n}`,
+                displayTitle: `${title} — الأثر ${toArabicDigits(n)}`,
+                title, text: strip(p.text),
+              });
+            }
+          }
+        } else if (atharNumbered) {
+          for (const p of parseBook(e.body).paragraphs) {
+            const n = parseAtharNumber(p.text);
+            if (n === null) continue;
+            docs.push({
+              type: "book", book: e.id, person,
+              url: `/book/${e.id}#athar-${n}`,
+              displayTitle: `${title} — الأثر ${toArabicDigits(n)}`,
+              title, text: strip(p.text),
+            });
+          }
+        } else if (a.chunked) {
           for (const c of a.chapters) {
             docs.push({
               type: "book", book: e.id, person,

@@ -37,7 +37,7 @@ An earlier revision of this document selected **HTMX**, but it was never install
 The interactivity surface turned out to be small and mostly DOM-local (open a sheet from a hidden `.ann-pack`, toggle prefs). No fragment-swapping over the network was needed, so a library — even a small one — would have been dead weight. Content still renders fully without JavaScript.
 
 ### Future replacement policy
-Add a library only when a concrete feature needs network-driven partial updates that the vanilla modules can't express cleanly.
+Add a library only when a concrete feature needs network-driven partial updates that the vanilla modules can't express cleanly. Re-evaluated 2026-07-07 (Astro 7 upgrade + athar features plan): still not adopted — the one network feature (`/api/search`) returns JSON to a tiny vanilla renderer, and ClientRouter already owns navigation (htmx would compete with it for DOM/nav ownership, plus its `hx-on` attributes are blocked by the strict CSP). **Adoption trigger:** the deferred D1-backed comments system (form → Worker → HTML fragment) — adopt htmx 2.x then, loaded only on those pages.
 
 ---
 
