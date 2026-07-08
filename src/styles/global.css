@@ -1435,6 +1435,7 @@ html[data-theme="noir"] ::highlight(aa-find)    { background-color: rgba(255, 15
 /* --- page separator (EPUB-imported books) — HANDOFF.md §5: dashed hairline
    with a «ص N» pill, hidden when the page-numbers reader setting is off --- */
 .quran-jump { display: flex; align-items: center; gap: 6px; }
+.quran-jump[hidden] { display: none; } /* [hidden]'s UA display:none loses to .quran-jump's display:flex without this */
 .quran-jump select, .quran-jump input {
   font-family: var(--font-ui); font-size: 12.5px; padding: 4px 6px;
   border: 1px solid var(--rule); border-radius: var(--radius); background: var(--surface); color: var(--ink);

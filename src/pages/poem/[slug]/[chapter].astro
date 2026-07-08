@@ -37,7 +37,7 @@ const chIdx = (allChapters as any[]).findIndex((c: any) => c.slug === chapter.sl
 const prev = (allChapters as any[])[chIdx - 1] ?? null;
 const next = (allChapters as any[])[chIdx + 1] ?? null;
 ---
-<Base title={`${chapter.title} · ${entry.data.title}`} activeNav="poems" searchScope={{ in: entry.id, label: entry.data.title }}>
+<Base title={`${chapter.title} · ${entry.data.title}`} activeNav="poems" searchScope={{ in: entry.id, label: entry.data.title }} readingPage>
   <Breadcrumbs
     items={[
       { label: "الرئيسية", href: "/" },

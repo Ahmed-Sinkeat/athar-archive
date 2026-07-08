@@ -237,7 +237,7 @@ const finalContent = (() => {
   return out;
 })();
 ---
-<Base title={`${chapter.title} · ${entry.data.title}`} activeNav="books" searchScope={{ in: entry.id, label: entry.data.title }}>
+<Base title={`${chapter.title} · ${entry.data.title}`} activeNav="books" searchScope={{ in: entry.id, label: entry.data.title }} readingPage>
   <Breadcrumbs
     items={[
       { label: "الرئيسية", href: "/" },

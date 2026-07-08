@@ -4,6 +4,7 @@ status: published
 published_at: 2026-07-06
 person: al-nawawi
 kind: متن
+genre: حديث
 
 topics: ["aam-hadith"]
 authored_year: 676

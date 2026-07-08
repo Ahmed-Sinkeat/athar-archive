@@ -19,7 +19,7 @@ const pageHref = (page: number) => {
 };
 const juzOptions = JUZ_START_PAGE.map((page, i) => ({ n: i + 1, href: pageHref(page) }));
 ---
-<Base title="المصحف الشريف" description="تصفح سور القرآن الكريم وقراءة آياته بالرسم العثماني." activeNav="quran" jsonLd={collectionLd({ title: "المصحف الشريف", path: "/quran/mushaf", crumbs: [{ name: "الرئيسية", path: "/" }, { name: "القرآن وعلومه", path: "/quran" }, { name: "المصحف الشريف", path: "/quran/mushaf" }] })}>
+<Base title="المصحف الشريف" description="تصفح سور القرآن الكريم وقراءة آياته بالرسم العثماني." activeNav="quran" jsonLd={collectionLd({ title: "المصحف الشريف", path: "/quran/mushaf", crumbs: [{ name: "الرئيسية", path: "/" }, { name: "القرآن وعلومه", path: "/quran" }, { name: "المصحف الشريف", path: "/quran/mushaf" }] })} readingPage>
   <Breadcrumbs items={[
     { label: "الرئيسية", href: "/" },
     { label: "القرآن وعلومه", href: "/quran" },

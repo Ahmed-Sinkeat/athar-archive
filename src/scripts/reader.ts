@@ -1104,6 +1104,11 @@ function onPage() {
   document.querySelectorAll<HTMLElement>('[data-action="sidebar:mobile-toggle"], [data-action="sidebar:desktop-toggle"]').forEach((b) => { b.hidden = !hasSidebar; });
   const quranJump = document.querySelector<HTMLElement>("[data-quran-jump]");
   if (quranJump) quranJump.hidden = document.querySelector("main")?.dataset.activeNav !== "quran";
+  // reading-settings gear: only meaningful on pages with actual body content
+  // to read (book/poem/article/quran/question), not browse/listing pages
+  const isReadingPage = document.querySelector("main")?.dataset.reading === "1";
+  document.querySelectorAll<HTMLElement>('[data-action="settings:toggle"]').forEach((b) => { b.hidden = !isReadingPage; });
+  if (!isReadingPage) document.querySelector<HTMLElement>("[data-settings-pop]")?.setAttribute("hidden", "");
 }
 onPage();
 document.addEventListener("astro:page-load", onPage);

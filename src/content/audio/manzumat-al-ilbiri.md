@@ -3,7 +3,7 @@ title: "منظومة الإلبيري — سالم العنزي"
 status: published
 published_at: 2026-07-07
 source_type: poem
-source_id: manzumat-al-ilbiri
+source_id: diwan-ilbiri--1
 url: https://r2.ahlalathar.com/audio/manzumat-al-ilbiri.opus
 format: opus
 duration: "13:47"

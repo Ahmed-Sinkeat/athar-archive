@@ -51,7 +51,7 @@ const jsonLd = poemLd({
 const chapterNums = new Set(a.chapters.flatMap((c) => c.verses.map((v) => v.n)));
 const preamble = a.verses.filter((v) => !chapterNums.has(v.n));
 ---
-<Base title={entry.data.title} description={entry.data.description} activeNav="poems" ogType="article" jsonLd={jsonLd} searchScope={{ in: entry.id, label: entry.data.title }}>
+<Base title={entry.data.title} description={entry.data.description} activeNav="poems" ogType="article" jsonLd={jsonLd} searchScope={{ in: entry.id, label: entry.data.title }} readingPage>
   <Breadcrumbs
     width="wrap-read"
     items={[
