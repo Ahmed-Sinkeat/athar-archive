@@ -206,7 +206,8 @@ async function crawl(opt: Opt): Promise<RawPost[]> {
     cursor = minId;
     await sleep(400);
   }
-  return (opt.since ? all.filter((p) => p.id > opt.since) : all).sort((a, b) => a.id - b.id);
+  const since = opt.since;
+  return (since ? all.filter((p) => p.id > since) : all).sort((a, b) => a.id - b.id);
 }
 
 // ─────────────────────────────────────────────
