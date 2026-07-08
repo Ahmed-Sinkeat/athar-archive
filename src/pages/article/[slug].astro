@@ -50,7 +50,7 @@ const jsonLd = articleLd({
   <Breadcrumbs width="wrap-read" items={[{ label: "الرئيسية", href: "/" }, { label: "مقالات ومحاضرات", href: "/articles" }, { label: entry.data.title }]} />
   <div class="chap-outer">
     <div class="chap-grid">
-      <div class="reading-pad">
+      <div class="reading-pad" data-cite-book={entry.data.title} data-cite-author={author}>
         <div class="reader-head">
           <div class="eyebrow u87c136d" >مقالة</div>
           <h1 class="reader-title ub9b0323" >{entry.data.title}</h1>

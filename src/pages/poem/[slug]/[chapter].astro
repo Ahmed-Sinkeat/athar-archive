@@ -50,7 +50,7 @@ const next = (allChapters as any[])[chIdx + 1] ?? null;
   <div class="chap-outer">
     <div class="chap-grid">
       <!-- main reading column -->
-      <div class="reading-pad">
+      <div class="reading-pad" data-cite-book={entry.data.title} data-cite-author={author}>
         <div class="reader-head">
           <div class="eyebrow u87c136d">منظومة · {author}</div>
           <h1 class="reader-title ubd7542b">{chapter.title}</h1>

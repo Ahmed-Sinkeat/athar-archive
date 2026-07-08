@@ -64,7 +64,7 @@ let answerTitle = "الجواب";
 ---
 <Base title={entry.data.title} activeNav="questions" ogType="article" jsonLd={jsonLd} readingPage>
   <Breadcrumbs width="wrap-read" items={[{ label: "الرئيسية", href: "/" }, { label: "المسائل", href: "/questions" }, { label: entry.data.title }]} />
-  <article class="wrap-read reading-pad">
+  <article class="wrap-read reading-pad" data-cite-book={entry.data.title} data-cite-author={personName}>
     <header class="masala-head">
       <span class="masala-badge">مسألة</span>
       <h1 class="masala-title">{entry.data.title}</h1>
