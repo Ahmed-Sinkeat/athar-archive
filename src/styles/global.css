@@ -324,6 +324,8 @@ img { max-width: 100%; }
 .pop-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .pop-label { font-size: 13px; color: var(--ink-soft); }
 .pop-btns { display: flex; gap: 6px; }
+.pop-width-btns .icon-btn { width: auto; padding-inline: 10px; }
+.pop-width-btns .icon-btn[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
 .pop-toggle { width: 100%; justify-content: flex-start; }
 
 /* ---------- mobile nav dropdown (HANDOFF.md §3.5) ----------
@@ -443,6 +445,12 @@ summary::-webkit-details-marker { display: none; }
 
 /* ---------- cards / grids ---------- */
 .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(248px, 1fr)); gap: 18px; }
+/* smaller square cards for dense listings (person page works grid) */
+.card-grid-compact { grid-template-columns: repeat(auto-fill, minmax(168px, 1fr)); gap: 12px; }
+.card-grid-compact .card { padding: 16px 14px; }
+.card-grid-compact .card-title { font-size: 15px; line-height: 1.4; }
+.card-grid-compact .card-kindrow { margin-bottom: 8px; }
+.card-grid-compact .card-cta { margin-top: 10px; font-size: 11.5px; }
 .card {
   text-decoration: none; border: 1px solid var(--rule); border-radius: var(--radius-lg);
   background: var(--surface); padding: 26px 24px; display: block;
@@ -996,6 +1004,13 @@ html.hide-vnums .vnum { display: none; }
    Mockup reader grid: TOC 232px on the inline-start (right in RTL), article
    left — DOM keeps content first, so both children are placed explicitly. */
 .chap-outer { max-width: 960px; margin: 0 auto; padding-inline: 28px; }
+/* reading-width setting (reader.ts "width:narrow/normal/wide", persisted like
+   theme) — only the reading column grows/shrinks; .chap-grid's sidebar track
+   stays a fixed 232px below, so widening never eats into the sidebar. */
+[data-width="narrow"] .chap-outer { max-width: 760px; }
+[data-width="wide"] .chap-outer { max-width: 1200px; }
+[data-width="narrow"] .wrap-read { max-width: min(900px, max(600px, 32vw)); }
+[data-width="wide"] .wrap-read { max-width: min(1400px, max(900px, 46vw)); }
 .chap-grid { display: grid; grid-template-columns: 232px 1fr; gap: 52px; align-items: start; } /* HANDOFF.md §5 */
 .chap-grid > .reading-pad { grid-column: 2; grid-row: 1; min-width: 0; }
 /* desktop sidebar show/hide (reader.ts "sidebar:desktop-toggle", persisted

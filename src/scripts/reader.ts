@@ -12,6 +12,9 @@ const LS = {
   vnums: "aa-vnums",
   pages: "aa-pages",
   footnotes: "aa-footnotes",
+  width: "aa-width",
+  browseView: "aa-browse-view",
+  browseOpen: "aa-browse-open",
 };
 
 const SCALE_MIN = 0.8;
@@ -27,6 +30,22 @@ function setScale(v: number) {
   const clamped = Math.min(SCALE_MAX, Math.max(SCALE_MIN, Math.round(v * 100) / 100));
   root.style.setProperty("--reading-scale", String(clamped));
   localStorage.setItem(LS.scale, String(clamped));
+}
+
+// --- reading-column width (narrow/normal/wide) — scales .chap-outer's
+// max-width; the sidebar column itself stays a fixed 232px (see global.css
+// .chap-grid), so widening only grows the reading column, never the sidebar.
+type Width = "narrow" | "normal" | "wide";
+function setWidth(w: Width) {
+  if (w === "normal") root.removeAttribute("data-width");
+  else root.setAttribute("data-width", w);
+  localStorage.setItem(LS.width, w);
+  syncWidthButtons(w);
+}
+function syncWidthButtons(w: Width) {
+  document.querySelectorAll<HTMLElement>("[data-width-btn]").forEach((b) => {
+    b.setAttribute("aria-pressed", String(b.dataset.widthBtn === w));
+  });
 }
 
 // --- reader sidebar (desktop show/hide, persisted like theme) ---
@@ -266,6 +285,9 @@ const actions: Record<string, () => void> = {
   "theme:paper": () => setTheme("paper"),
   "theme:noir": () => setTheme("noir"),
   "theme:mono": () => setTheme("mono"),
+  "width:narrow": () => setWidth("narrow"),
+  "width:normal": () => setWidth("normal"),
+  "width:wide": () => setWidth("wide"),
   "menu:toggle": () => setDrawer(true),
   "menu:close": () => setDrawer(false),
   // closed → open the bar; open → just close it (Enter in the field runs the search).
@@ -469,8 +491,55 @@ document.addEventListener("click", (e) => {
   const flatBtn = t.closest<HTMLElement>("[data-flat-toggle]");
   if (flatBtn) {
     const wrap = flatBtn.closest<HTMLElement>("[data-browse]");
-    if (wrap) flatBtn.textContent = wrap.classList.toggle("show-flat") ? "عرض مُجمَّع" : "عرض الكل";
+    if (wrap) {
+      const flat = wrap.classList.toggle("show-flat");
+      flatBtn.textContent = flat ? "عرض مُجمَّع" : "عرض الكل";
+      localStorage.setItem(LS.browseView, flat ? "flat" : "grouped");
+    }
   }
+});
+
+// Restore the flat/grouped browse preference (shared across all browse pages)
+// and each <details> subject/topic open state (per-page, since the tree
+// differs per listing) — both reset to defaults on every navigation
+// otherwise, since view-transition swaps replace the DOM.
+function restoreBrowseState() {
+  const wrap = document.querySelector<HTMLElement>("[data-browse]");
+  if (!wrap) return;
+  const view = localStorage.getItem(LS.browseView);
+  if (view === "grouped") {
+    wrap.classList.remove("show-flat");
+    const btn = wrap.querySelector<HTMLElement>("[data-flat-toggle]");
+    if (btn) btn.textContent = "عرض الكل";
+  }
+  const openKey = LS.browseOpen + ":" + location.pathname;
+  const open = new Set(JSON.parse(localStorage.getItem(openKey) || "[]") as string[]);
+  const detailsEls = [...wrap.querySelectorAll<HTMLDetailsElement>(".masail-subject, .masail-topic")];
+  detailsEls.forEach((d, i) => {
+    const key = d.querySelector("summary")?.textContent?.trim() || String(i);
+    d.dataset.persistKey = key;
+    if (open.has(key)) d.open = true;
+    d.addEventListener("toggle", () => {
+      const cur = new Set(JSON.parse(localStorage.getItem(openKey) || "[]") as string[]);
+      if (d.open) cur.add(key); else cur.delete(key);
+      localStorage.setItem(openKey, JSON.stringify([...cur]));
+    });
+  });
+}
+document.addEventListener("astro:page-load", restoreBrowseState);
+
+// --- person page: filter work cards by category (كتب/مقالات/أخرى) ---
+document.addEventListener("click", (e) => {
+  const btn = (e.target as HTMLElement).closest<HTMLElement>("[data-person-tab]");
+  if (!btn) return;
+  const group = btn.closest<HTMLElement>("[data-person-tabs]");
+  const works = btn.closest<HTMLElement>("[data-person-works]");
+  if (!group || !works) return;
+  const cat = btn.dataset.personTab!;
+  group.querySelectorAll<HTMLElement>("[data-person-tab]").forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
+  works.querySelectorAll<HTMLElement>(".card").forEach((c) => {
+    c.hidden = cat !== "all" && c.dataset.kind !== cat;
+  });
 });
 
 // Browse page in-page filter: person + topic + kind <select> dropdowns on listing pages.
@@ -999,6 +1068,7 @@ window.addEventListener("scroll", updateTopbarVisibility, { passive: true });
 
 // --- sync control states from storage on load (values already applied pre-paint) ---
 syncThemeButtons(currentTheme());
+syncWidthButtons((root.getAttribute("data-width") as Width) || "normal");
 document.querySelectorAll<HTMLElement>('[data-action="sidebar:desktop-toggle"]').forEach((b) =>
   b.setAttribute("aria-pressed", String(localStorage.getItem(LS.sidebar) === "hidden")),
 );
@@ -1054,6 +1124,9 @@ function applyStoredPrefs() {
     if (s) root.style.setProperty("--reading-scale", s);
     if (localStorage.getItem(LS.sidebar) === "hidden") root.setAttribute("data-sidebar", "hidden");
     else root.removeAttribute("data-sidebar");
+    const w = localStorage.getItem(LS.width);
+    if (w === "narrow" || w === "wide") root.setAttribute("data-width", w);
+    else root.removeAttribute("data-width");
     root.classList.toggle("hide-vnums", localStorage.getItem(LS.vnums) === "0");
     root.classList.toggle("no-tashkeel", localStorage.getItem(LS.tashkeel) === "0");
     root.classList.toggle("pages-flow", localStorage.getItem(LS.pages) === "flow");

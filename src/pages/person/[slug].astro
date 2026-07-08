@@ -17,7 +17,11 @@ export async function getStaticPaths() {
     const works = graph
       .materialsByPerson(entry.id)
       .filter(isPub)
-      .map((w) => ({ collection: w.collection, id: w.id, title: w.data.title as string, series: w.data.series as string | undefined, kind: labelFor(w.collection, w.data), audio: graph.audioForSource(w.collection, w.id).length > 0 }));
+      .map((w) => ({
+        collection: w.collection, id: w.id, title: w.data.title as string, series: w.data.series as string | undefined,
+        kind: labelFor(w.collection, w.data), audio: graph.audioForSource(w.collection, w.id).length > 0,
+        category: w.collection === "book" || w.collection === "poem" ? "book" : w.collection === "article" ? "article" : "other",
+      }));
     // works are shown above; the panel surfaces only the rest (mentions, etc.)
     const backlinks = backlinksList(entry, graph, names).filter((b) => b.relation !== "من مؤلَّفاته");
 
@@ -56,6 +60,13 @@ export async function getStaticPaths() {
 }
 
 const { entry, works, backlinks, shuyukh, talamidhah } = Astro.props;
+const workTabs = [
+  { id: "book", label: "الكتب" },
+  { id: "article", label: "المقالات" },
+  { id: "other", label: "أخرى" },
+]
+  .map((t) => ({ ...t, count: works.filter((w) => w.category === t.id).length }))
+  .filter((t) => t.count > 0);
 const meta = [entry.data.born && `و. ${entry.data.born}`, entry.data.died && `ت. ${entry.data.died}`, entry.data.location]
   .filter(Boolean)
   .join(" · ");
@@ -99,9 +110,15 @@ const jsonLd = personLd({
     )}
 
     {works.length > 0 && (
-      <div class="ud34d921">
+      <div class="ud34d921" data-person-works>
         <div class="section-label">من آثارِه في الأرشيف</div>
-        <div class="card-grid">
+        {workTabs.length > 1 && (
+          <div class="lib-tabs" data-person-tabs>
+            <button data-person-tab="all" aria-pressed="true">الكل ({works.length})</button>
+            {workTabs.map((t) => <button data-person-tab={t.id} aria-pressed="false">{t.label} ({t.count})</button>)}
+          </div>
+        )}
+        <div class="card-grid card-grid-compact">
           {works.map((w) => (
             <EntityCard
               href={hrefFor(w.collection, w.id, { series: w.series })}
@@ -109,6 +126,7 @@ const jsonLd = personLd({
               kind={w.kind}
               audio={w.audio}
               cta="اطّلع ←"
+              filterKey={w.category}
             />
           ))}
         </div>
