@@ -69,7 +69,7 @@ Fallback if both fail on Arabic/RTL: keep Keystatic but hide technical fields an
 
 - **R2 upload diffing**: turned out `upload-r2-assets.mjs` already diffs against a remote md5 index and only PUTs changed keys — the "re-puts everything" comment in `ci.yml` was stale, not the actual behavior. Fixed the comment only.
 - **Search indexing**: `gen-search-index.ts` is now incremental — diffs against a remote `doc_hash(url, hash)` snapshot (`pnpm search:hashes`) and only emits SQL for docs that actually changed; falls back to a full rebuild when no snapshot exists yet. Re-enabled the `ci.yml` steps that were `if: false`. Also fixed a real O(n²) bug in the SQL-writer loop found while testing this (`Buffer.byteLength` was rescanning the whole output buffer per doc — took a 22k-doc reindex from 15+ minutes, never finishing, to ~9 seconds).
-- **LFS/storage audit**: `audio/` (local rclone staging dir for `scripts/upload-media.sh` → the `athar-media` R2 bucket) was already correctly untracked/never committed — just added it to `.gitignore` so it can't be committed by accident. Media was never meant to live in git/LFS, only its `r2.ahlalathar.com` URL in frontmatter (see `media-and-backup.md`).
+- **LFS/storage audit**: `audio/` (local rclone staging dir for `scripts/upload-media.sh` → the `athar-media` R2 bucket) was already correctly untracked/never committed — just added it to `.gitignore` so it can't be committed by accident. Media was never meant to live in git/LFS, only its `r2.arthurarchive.com` URL in frontmatter (see `media-and-backup.md`).
 
 ## Phase 6 — Importer → Athar Engine ✅ done (2026-07-07)
 

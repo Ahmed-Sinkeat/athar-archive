@@ -62,7 +62,7 @@ function sendMistakes(items: Item[]) {
   const body = [...byTitle.entries()].map(([title, marks]) =>
     `${title}\n` + marks.map((m) => `- موضع: "${m.text}"\n  ملاحظة: ${m.note || "لا توجد ملاحظة إضافية"}`).join("\n"),
   ).join("\n\n");
-  window.location.href = `mailto:admin@ahlalathar.com?subject=${encodeURIComponent("إبلاغ عن أخطاء")}&body=${encodeURIComponent(body)}`;
+  window.location.href = `mailto:admin@arthurarchive.com?subject=${encodeURIComponent("إبلاغ عن أخطاء")}&body=${encodeURIComponent(body)}`;
 }
 
 // Shared body-builder for a mark's quote/note/source, used by both the

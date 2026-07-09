@@ -203,6 +203,14 @@ img { max-width: 100%; }
 .topbar.topbar-hidden { transform: translateY(-100%); }
 /* single-line chrome: brand (start) · nav (center) · search + settings (end) */
 .topbar-row { display: flex; align-items: center; gap: 14px; padding: 11px 0; }
+/* narrow phones: hamburger pill + brand + sidebar toggle can outgrow the row
+   width with no wrap, pushing the sidebar toggle off-screen — drop the
+   hamburger's text label first to buy the row room back */
+@media (max-width: 480px) {
+  .topbar-row { gap: 8px; }
+  .hamburger-label { display: none; }
+  .hamburger { padding-inline: 9px; }
+}
 .brand { display: flex; flex-direction: column; align-items: flex-start; text-decoration: none; line-height: 1.05; flex: none; }
 /* Phase 1: Noto Naskh Arabic gives brand name a manuscript authority feel */
 .brand-name { font-family: var(--font-serif); font-weight: 700; font-size: 21px; color: var(--ink); letter-spacing: -0.01em; }
@@ -218,6 +226,7 @@ img { max-width: 100%; }
 
 /* ---- search + settings tools ---- */
 .topbar-tools { display: flex; align-items: center; gap: 8px; margin-inline-start: auto; flex: none; position: relative; }
+.topbar-sidebar-tools { display: flex; align-items: center; gap: 8px; flex: none; }
 
 .topsearch { display: flex; align-items: center; }
 .topsearch-input {
@@ -246,10 +255,10 @@ img { max-width: 100%; }
 /* topbar sidebar toggles: reader.ts only shows these on pages with a
    ReaderSidebar; within that, split further by viewport — the mobile popup
    opener has no job on desktop (sidebar already visible there) and vice versa */
-@media (max-width: 760px) {
+@media (max-width: 780px) {
   [data-action="sidebar:desktop-toggle"] { display: none !important; }
 }
-@media (min-width: 761px) {
+@media (min-width: 781px) {
   [data-action="sidebar:mobile-toggle"] { display: none !important; }
 }
 /* theme swatches (settings popover) */
@@ -1019,6 +1028,19 @@ html.hide-vnums .vnum { display: none; }
 [data-sidebar="hidden"] .chap-grid > .reading-pad { grid-column: 1; }
 [data-sidebar="hidden"] .toc-side { display: none; }
 .chap-toc-aside { grid-column: 1; grid-row: 1; position: sticky; top: 80px; margin-top: 52px; }
+/* on very wide screens .chap-outer centers the grid, leaving a dead gap
+   between the real viewport edge and the aside; past 1300px there's room for
+   both the full reading column and the rail, so pin the aside to the true
+   edge instead of leaving it stranded inside the centered column */
+@media (min-width: 1300px) {
+  .chap-grid { grid-template-columns: 1fr; }
+  .chap-grid > .reading-pad { grid-column: 1; }
+  .chap-toc-aside {
+    position: fixed; grid-column: unset; grid-row: unset;
+    inset-inline-end: 32px; top: 80px; width: 232px;
+    max-height: calc(100vh - 100px); overflow-y: auto; margin-top: 0;
+  }
+}
 /* TOC as a quiet rail, not a boxed card: hairline on the content side,
    active item = maroon 700 on its 2px rail (green on hadith books) */
 .chap-toc-aside { border-inline-end: 1px solid var(--line); padding-inline-end: 18px; }
@@ -1031,6 +1053,13 @@ html.hide-vnums .vnum { display: none; }
 .toc-nested-h2 { padding-inline-start: 14px; color: var(--accent) !important; font-weight: 600; }
 .toc-nested-h3 { padding-inline-start: 28px; color: var(--verdigris) !important; font-size: 12px; }
 .toc-nested-link:hover { opacity: 0.8; text-decoration: underline; }
+.toc-nested-link.toc-current { border-inline-start-color: currentColor; font-weight: 700; }
+/* collapsible h2 group in the in-page TOC — small arrow, rotates open */
+.toc-nested-group summary { display: flex; align-items: center; gap: 4px; cursor: pointer; list-style: none; }
+.toc-nested-group summary::-webkit-details-marker { display: none; }
+.toc-nested-group summary .toc-nested-link { flex: 1; padding: 0; }
+.toc-nested-arrow { font-size: 11px; color: var(--ink-faint); transition: transform 0.15s; }
+.toc-nested-group[open] .toc-nested-arrow { transform: rotate(90deg); }
 /* catalog panel ("عن هذه الطبعة") — pulled out of the chapter list, sits
    above the TOC on both the desktop rail and the mobile disclosure */
 .book-catalog { border: 1px solid var(--rule); border-radius: var(--radius-lg); background: var(--surface); margin-bottom: 14px; }

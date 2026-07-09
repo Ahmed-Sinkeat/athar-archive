@@ -46,7 +46,7 @@ const csp = [
   "style-src 'self' https://fonts.googleapis.com",
   "font-src 'self' https://fonts.gstatic.com",
   "img-src 'self' data:",
-  "media-src 'self' https://r2.ahlalathar.com",
+  "media-src 'self' https://r2.arthurarchive.com",
   "connect-src 'self'",
   "base-uri 'self'",
   "form-action 'self'",

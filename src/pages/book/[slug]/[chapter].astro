@@ -87,11 +87,24 @@ const isHadith = entry.data.genre === "حديث";
 const KIND_SLUG: Record<string, string> = { شرح: "sharh", حاشية: "hashiya", تخريج: "takhrij", إعراب: "iraab" };
 const phraseAnchors = Object.entries(byAnchor).filter(([, notes]: any) => notes.some((n: any) => n.phrase));
 
+const bookPageCount = Math.max(0, ...manifest.map((c) => c.lastPage ?? 0));
+
 const chIdx = allChapters.findIndex((c) => c.slug === chapter.slug);
 const prev = allChapters[chIdx - 1] ?? null;
 const next = allChapters[chIdx + 1] ?? null;
 
 const nestedToc = parseToc(chapter.content);
+// group h3s under their preceding h2 so the in-page TOC can collapse each
+// section instead of listing every sub-heading flat
+interface NestedTocGroup { slug: string; title: string; children: { slug: string; title: string }[] }
+const nestedTocGroups: NestedTocGroup[] = [];
+for (const h of nestedToc) {
+  if (h.depth === 2 || nestedTocGroups.length === 0) {
+    nestedTocGroups.push({ slug: h.slug, title: h.title, children: [] });
+  } else {
+    nestedTocGroups[nestedTocGroups.length - 1].children.push({ slug: h.slug, title: h.title });
+  }
+}
 
 // 1. Map paragraph anchors to page numbers
 const parts = chapter.content.split(/(<hr class="page-sep" data-page="\d+"[^\>]*\/>)/);
@@ -331,7 +344,7 @@ const finalContent = (() => {
       </div>
 
       <!-- sidebar TOC (hidden on mobile via CSS) -->
-      <ReaderSidebar label={`فصول الكتاب · ${tocGroups.length} فصل`}>
+      <ReaderSidebar label={bookPageCount > 0 ? `فصول الكتاب · ${tocGroups.length} فصل · ${bookPageCount} صفحة` : `فصول الكتاب · ${tocGroups.length} فصل`}>
         {catalog.length > 0 && (
           <details class="book-catalog">
             <summary>عن هذه الطبعة</summary>
@@ -346,7 +359,7 @@ const finalContent = (() => {
           </details>
         )}
         <div class="toc-box has-current">
-          <div class="toc-label">فصول {entry.data.title}</div>
+          <div class="toc-label">فصول {entry.data.title}{bookPageCount > 0 ? ` · ${bookPageCount} صفحة` : ""}</div>
           {tocGroups.map((g) => (
             <>
               {g.slices.length > 0 ? (
@@ -364,18 +377,22 @@ const finalContent = (() => {
               ) : (
                 <a href={g.href} class:list={[{ 'toc-current': g.slug === currentGroupKey }]}>{g.title}</a>
               )}
-              {g.slug === currentGroupKey && nestedToc.length > 0 && (
+              {g.slug === currentGroupKey && nestedTocGroups.length > 0 && (
                 <div class="toc-nested" style="margin-bottom: 0.5rem; font-size: 0.85em;">
-                  {nestedToc.map((h) => (
-                    <a
-                      href={`#${h.slug}`}
-                      class:list={[
-                        "toc-nested-link",
-                        h.depth === 2 ? "toc-nested-h2" : "toc-nested-h3"
-                      ]}
-                    >
-                      {h.title}
-                    </a>
+                  {nestedTocGroups.map((h2) => (
+                    h2.children.length > 0 ? (
+                      <details class="toc-nested-group" open>
+                        <summary>
+                          <a href={`#${h2.slug}`} class="toc-nested-link toc-nested-h2">{h2.title}</a>
+                          <span class="toc-nested-arrow" aria-hidden="true">›</span>
+                        </summary>
+                        {h2.children.map((h3) => (
+                          <a href={`#${h3.slug}`} class="toc-nested-link toc-nested-h3">{h3.title}</a>
+                        ))}
+                      </details>
+                    ) : (
+                      <a href={`#${h2.slug}`} class="toc-nested-link toc-nested-h2">{h2.title}</a>
+                    )
                   ))}
                 </div>
               )}

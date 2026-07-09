@@ -9,7 +9,7 @@ backed up separately.
 ## 1. Storage — Cloudflare R2
 
 - **Bucket:** `athar-media` (S3-compatible).
-- **Public host:** `https://r2.ahlalathar.com` (R2 custom domain / public bucket binding). Already allowed by `media-src`/`img-src` in `public/_headers`.
+- **Public host:** `https://r2.arthurarchive.com` (R2 custom domain / public bucket binding). Already allowed by `media-src`/`img-src` in `public/_headers`.
 - **Why R2:** no egress fees, S3 API, edge-served. Audio in **Opus** (small, high quality).
 
 ### Key convention
@@ -22,7 +22,7 @@ pdf/<book-id>.pdf      epub/<book-id>.epub
 
 URLs are stored **explicitly** in content frontmatter (the `Audio` entity's `url`,
 or a book's `attachments[].url`/`cover`) — not derived — so storage can move
-without touching the model. Keep them under `r2.ahlalathar.com`.
+without touching the model. Keep them under `r2.arthurarchive.com`.
 
 ---
 

@@ -1109,9 +1109,26 @@ function onPage() {
   const isReadingPage = document.querySelector("main")?.dataset.reading === "1";
   document.querySelectorAll<HTMLElement>('[data-action="settings:toggle"]').forEach((b) => { b.hidden = !isReadingPage; });
   if (!isReadingPage) document.querySelector<HTMLElement>("[data-settings-pop]")?.setAttribute("hidden", "");
+  syncTocCurrent();
 }
 onPage();
 document.addEventListener("astro:page-load", onPage);
+
+// in-page heading TOC (nestedToc / flat فهرس العناوين list): mark the link for
+// the current #hash active, since these anchors have no server-known "current
+// chapter" the way the chapter-list TOC does
+function syncTocCurrent() {
+  document.querySelectorAll<HTMLElement>(".toc-nested-link, .chap-toc-aside .toc-box a[href^='#'], .chap-mobile-toc a[href^='#']").forEach((a) => {
+    a.classList.toggle("toc-current", a.getAttribute("href") === location.hash);
+  });
+}
+document.addEventListener("click", (e) => {
+  const a = (e.target as HTMLElement).closest<HTMLAnchorElement>("a[href^='#']");
+  if (a && (a.matches(".toc-nested-link") || a.closest(".chap-toc-aside .toc-box, .chap-mobile-toc"))) {
+    requestAnimationFrame(syncTocCurrent);
+  }
+});
+window.addEventListener("hashchange", syncTocCurrent);
 // bfcache restore (mobile back/swipe gesture) doesn't fire Astro's router
 // events, so a drawer/popover left open before navigating away could restore
 // "stuck" open with no working close handler — reset chrome state on it too.

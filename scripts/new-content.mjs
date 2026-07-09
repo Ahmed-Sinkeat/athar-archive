@@ -40,7 +40,7 @@ const TEMPLATES = {
     `# died: 728 هـ          # optional`,
     `# location: حرّان        # optional`,
     `# era: العباسي          # optional: الجاهلي | صدر الإسلام | الأموي | العباسي | الأندلسي | المتأخّر | الحديث`,
-    `# image: https://r2.ahlalathar.com/img/...   # optional`,
+    `# image: https://r2.arthurarchive.com/img/...   # optional`,
   ]) + "\nالترجمة بالعربية…\n",
 
   subject: (t) => fm([...shared(t),
@@ -58,7 +58,7 @@ const TEMPLATES = {
     `# topics: [topic-id-here]   # optional, 1–5`,
     `# description: تعريف الكتاب  # optional`,
     `# edition: ط. دار…          # optional`,
-    `# cover: https://r2.ahlalathar.com/img/...   # optional`,
+    `# cover: https://r2.arthurarchive.com/img/...   # optional`,
   ]) + "\n## باب أول\n\nنصّ الفقرة الأولى… {#p1}\n",
 
   poem: (t) => fm([...shared(t),
@@ -104,7 +104,7 @@ const TEMPLATES = {
   audio: (t) => fm([...shared(t),
     `source_type: lesson        # REQUIRED: lesson | book | poem | article`,
     `source_id: source-id-here  # REQUIRED → معرّف المصدر`,
-    `url: https://r2.ahlalathar.com/audio/...   # REQUIRED`,
+    `url: https://r2.arthurarchive.com/audio/...   # REQUIRED`,
     `format: opus               # opus | mp3`,
     `# duration: "1:02:30"       # optional`,
     `# size_bytes: 12345678      # optional`,

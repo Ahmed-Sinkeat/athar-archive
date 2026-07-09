@@ -117,7 +117,13 @@ function main() {
     // back to the first <hr data-page="N"> actually inside the chapter's content.
     const firstPageOf = (c: (typeof a.chapters)[number]) =>
       c.firstPage ?? (c.content.match(/data-page="(\d+)"/)?.[1] ? Number(c.content.match(/data-page="(\d+)"/)![1]) : undefined);
-    const manifest = a.chapters.map((c) => ({ title: c.title, rawTitle: c.rawTitle, slug: c.slug, parent: c.parent, parentTitle: c.parentTitle, firstPage: firstPageOf(c) }));
+    // last page seen in a chapter's own content — used to derive the book's
+    // total page count (max across chapters) for the sidebar header
+    const lastPageOf = (c: (typeof a.chapters)[number]) => {
+      const pages = [...c.content.matchAll(/data-page="(\d+)"/g)].map((m) => Number(m[1]));
+      return pages.length > 0 ? Math.max(...pages) : undefined;
+    };
+    const manifest = a.chapters.map((c) => ({ title: c.title, rawTitle: c.rawTitle, slug: c.slug, parent: c.parent, parentTitle: c.parentTitle, firstPage: firstPageOf(c), lastPage: lastPageOf(c) }));
     const atharNumbered = isAtharNumberedBook(parseBook(book.body).paragraphs);
     const takhrijFor = (n: number) => (takhrijData as Record<string, TakhrijLink[]>)[`${book.id}:${n}`];
     for (const c of a.chapters) {

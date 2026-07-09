@@ -149,7 +149,7 @@ Definition-of-Done (DoD) status, decisions, and any deviations from the plan.
 
 ## P5 — SEO, structured data, feeds, permanence ✅
 
-**Domain ratified: `ahlalathar.com`** (the last open decision). Single source of truth in `ahlalathar.config.ts` (`siteUrl`); all `.net` references updated (config, astro.config, robots, audio fixture).
+**Domain ratified: `arthurarchive.com`** (the last open decision). Single source of truth in `ahlalathar.config.ts` (`siteUrl`); all `.net` references updated (config, astro.config, robots, audio fixture).
 
 **Built**
 - `src/lib/structured-data.ts` — per-type JSON-LD builders, each with a `BreadcrumbList`: `ProfilePage`+`Person`, `Book`, `CreativeWork`/`Poem`, `Course` (series), `LearningResource` (lesson), `Quotation` (benefit), `Article`, `QAPage` (questions), `CollectionPage` (subject/topic), and `WebSite`+`SearchAction` on home.
@@ -180,14 +180,15 @@ Definition-of-Done (DoD) status, decisions, and any deviations from the plan.
 - Fixtures: `al-wasitiyyah` cover + PDF/EPUB; `al-bayquniyyah` recitation Audio.
 
 **Built (ops docs/scripts)** — R2 can't be provisioned from here, so:
-- `docs/media-and-backup.md` — R2 bucket + public host (`r2.ahlalathar.com`, already in CSP), Opus encoding (`ffmpeg`), key convention, upload, weekly media backup + `rclone check`, and the **NFR-04 "rebuild from Git" recovery** (site from `pnpm build`; media links in Git, bytes in the R2 backup).
+- `docs/media-and-backup.md` — R2 bucket + public host (`r2.arthurarchive.com`, already in CSP), Opus encoding (`ffmpeg`), key convention, upload, weekly media backup + `rclone check`, and the **NFR-04 "rebuild from Git" recovery** (site from `pnpm build`; media links in Git, bytes in the R2 backup).
 - `scripts/upload-media.sh` — `rclone` mirror to R2 with immutable cache headers.
 
 **DoD**
 - ✅ A lesson/poem/book/article plays from its (R2) URL via an accessible native player; attachments download.
 - ✅ No lesson without a transcript can reach `published` (build-time gate).
 - ✅ Recovery procedure documented (rehearsal is a P8 checklist item).
-- ⏳ Real R2 bucket + actual media uploads — **infra, pending launch** (issue #12). Audio/attachment URLs currently point at the future `r2.ahlalathar.com`.
+- ✅ Real R2 bucket created, custom domain connected (`r2.arthurarchive.com` — a placeholder domain, real one pending purchase).
+- ⏳ Actual media uploads into the bucket — **infra, pending** (issue #12). Bucket is empty; audio/downloads 404 until real files are uploaded.
 
 **Deviations**
 - **D13 — Native `<audio controls>` instead of the mockup's custom JS audio bar.** Native is keyboard- and screen-reader-accessible with zero JS (helps issue #3) and still styled to fit; the custom seek/speed bar was JS-only and less accessible.
@@ -221,7 +222,7 @@ Still open (need data / your input / big refactor): **#1** Arabic search recall 
 | D8 | Annotations revealed JS-free via `:target` | Keep šarḥ reachable without JS; enhance with reader.ts |
 | D9 | `/books` = combined library (books+poems); `/poems` also kept | Matches mockup library + nav "المكتبة" |
 | D10 | No diacritic-stripped search field | Spike proved Pagefind normalizes Arabic diacritics — mitigation redundant |
-| D11 | Domain = `ahlalathar.com` | User ratified .com over .net (2026-06); resolves the last open decision |
+| D11 | Domain = `arthurarchive.com` | User ratified .com over .net (2026-06); resolves the last open decision |
 | D12 | `_redirects` written by post-build script | Astro treats `_redirects.ts` as private (underscore); script writes `dist/_redirects` |
 | D13 | Native `<audio controls>` over the mockup's custom JS bar | Keyboard/SR-accessible, JS-free; styled to fit |
 

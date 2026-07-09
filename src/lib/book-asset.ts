@@ -28,6 +28,7 @@ export interface ChapterMeta {
   parent?: string;
   parentTitle?: string;
   firstPage?: number;
+  lastPage?: number;
 }
 
 export interface CatalogEntry { label: string; value: string }

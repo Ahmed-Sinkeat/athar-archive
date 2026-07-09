@@ -10,9 +10,9 @@ export default defineConfig({
   // filePath). The default "workerd" prerender has no fs. On-demand routes still run
   // in workerd at runtime and read content via the ASSETS binding instead.
   adapter: cloudflare({ prerenderEnvironment: "node" }),
-  // TEMPORARY: live workers.dev host (sitemap/RSS absolute URLs). Flip to
-  // https://ahlalathar.com when the custom domain goes live. Mirror in ahlalathar.config.ts.
-  site: "https://athar-archive.ahmedsinkeat2002.workers.dev",
+  // TEMPORARY: placeholder domain, real one (athararchive.com) pending purchase.
+  // Mirror in ahlalathar.config.ts.
+  site: "https://athar.arthurarchive.com",
   trailingSlash: "never",
   // Prefetch internal links on hover → instant navigation; pairs with the
   // <ClientRouter /> view transitions in Base.astro for an SPA-like feel.

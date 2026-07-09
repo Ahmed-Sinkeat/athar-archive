@@ -9,11 +9,21 @@ pnpm build     # validate:content → astro build → copy-content-assets → ta
 pnpm deploy    # r2:upload (dist/r2-upload → BOOK_ASSETS bucket) → wrangler deploy -c dist/server/wrangler.json → workers.dev host
 ```
 
-- Live host: `athar-archive.ahmedsinkeat2002.workers.dev` (flip `site`/`siteUrl` to
-  `ahlalathar.com` when the custom domain goes live — see `astro.config.ts` / `ahlalathar.config.ts`).
-- Custom domain, when ready: Worker → **Settings → Domains & Routes → Add custom domain**
-  (the DNS/nameserver steps in the historical section below still apply to getting the zone onto Cloudflare).
-- Deploys are manual from a local machine; there is no Git-connected build.
+- Live host: `athar.arthurarchive.com` — a **subdomain**, added via Worker →
+  **Settings → Domains & Routes → Add custom domain** (not Pages, and not the
+  apex). `site`/`siteUrl` in `astro.config.ts` / `ahlalathar.config.ts` match
+  this. `arthurarchive.com` is itself a placeholder domain (real one,
+  `athararchive.com`, pending purchase) — when that's bought, repeat the same
+  Domains & Routes step with the new domain/subdomain and flip `site`/`siteUrl`
+  again.
+- The DNS/nameserver steps in the historical Pages section below still apply
+  to getting a new zone onto Cloudflare in the first place, but the actual
+  "add custom domain" step happens on the **Worker**, not a Pages project.
+- Deploys **do** run through GitHub: `.github/workflows/ci.yml` builds, tests, validates,
+  and deploys to Cloudflare (+ refreshes the D1 search index) on every push to `main`,
+  gated on `CLOUDFLARE_API_TOKEN`/`CLOUDFLARE_ACCOUNT_ID` repo secrets. `pnpm deploy`
+  from a local machine also works (same wrangler command) but skips CI's checks —
+  prefer pushing to `main` unless you need a manual out-of-band deploy.
 - Limits to respect: **25 MiB per asset**, **20,000 files per deploy** (see `technology-stack.md`).
   Book chapter bodies and tafsir fragments no longer count against this — they're
   uploaded to the `BOOK_ASSETS` R2 bucket by `pnpm deploy` instead of shipped as
@@ -29,7 +39,7 @@ DNS/domain steps. The build has since gained an adapter and on-demand routes, so
 
 ## Repo readiness (done)
 
-- `astro.config.ts`: `output: static`, `site: https://ahlalathar.com`, `trailingSlash: never`, `build.format: directory`.
+- `astro.config.ts`: `output: static`, `site: https://arthurarchive.com`, `trailingSlash: never`, `build.format: directory`.
 - `pnpm build` emits `dist/` including `_headers` (CSP, from `scripts/gen-headers.mjs`) and
   `_redirects` (aliases → 301, from `scripts/gen-redirects.ts`) — Cloudflare Pages applies both natively.
 - `.node-version` pins Node 22 (matches CI; local dev may run newer).
@@ -71,21 +81,21 @@ Save & Deploy. The build runs `pnpm install` then `pnpm build`
 
 ## 3. Custom domain + DNS
 
-Pages project → **Custom domains → Set up a custom domain**. Add `ahlalathar.com` and `www.ahlalathar.com`.
+Pages project → **Custom domains → Set up a custom domain**. Add `arthurarchive.com` and `www.arthurarchive.com`.
 
-- **If `ahlalathar.com` is already a Cloudflare zone:** Pages auto-creates the DNS record (CNAME; apex via
+- **If `arthurarchive.com` is already a Cloudflare zone:** Pages auto-creates the DNS record (CNAME; apex via
   CNAME flattening). Just confirm and proceed.
-- **If the domain is registered elsewhere (not on Cloudflare):** dashboard → **Add a site** → `ahlalathar.com` →
+- **If the domain is registered elsewhere (not on Cloudflare):** dashboard → **Add a site** → `arthurarchive.com` →
   copy the two Cloudflare **nameservers** → set them at your **registrar** → wait for activation → then add the custom domain.
 - **If the domain isn't registered:** register it first (Cloudflare Registrar or any registrar), then follow the step above.
 
-Canonical host = **apex** `ahlalathar.com` (matches `site` in `astro.config.ts`). Redirect `www` → apex with a
+Canonical host = **apex** `arthurarchive.com` (matches `site` in `astro.config.ts`). Redirect `www` → apex with a
 Cloudflare Redirect Rule.
 
 ## 4. Production checks
 
 - HTTPS active (auto certificate); HTTP → HTTPS redirect on.
-- `https://ahlalathar.com/sitemap.xml` and `/robots.txt` resolve; canonical tags read `https://ahlalathar.com/...`.
+- `https://arthurarchive.com/sitemap.xml` and `/robots.txt` resolve; canonical tags read `https://arthurarchive.com/...`.
 - Re-run the §2 checks on the apex domain.
 
 ## 5. Lock down `/compose` (Cloudflare Access)
@@ -102,7 +112,7 @@ Cloudflare dashboard → **Zero Trust → Access → Applications → Add an app
 |---|---|
 | Application name | `Athar compose` |
 | Session duration | `24 hours` (your choice) |
-| Application domain | `ahlalathar.com` · path `/compose` |
+| Application domain | `arthurarchive.com` · path `/compose` |
 
 Add a second domain row for `*.pages.dev` path `/compose` if you also want preview deploys gated.
 

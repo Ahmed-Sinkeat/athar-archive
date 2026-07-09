@@ -246,7 +246,7 @@ describe("audio source", () => {
         title: "صوت الشرح",
         source_type: "book",
         source_id: "al-wasitiyyah",
-        url: "https://r2.ahlalathar.com/audio/sharh.opus",
+        url: "https://r2.arthurarchive.com/audio/sharh.opus",
       }),
     ];
     const errors = validate(corpus);
@@ -297,7 +297,7 @@ describe("valid corpus", () => {
       entry("benefit", "tawhid-benefit", { title: "فائدة التوحيد", person: "ibn-taymiyyah", source_type: "book", source_id: "al-wasitiyyah", topics: ["al-asma-was-sifat"] }),
       entry("benefit", "general-benefit", { title: "فائدة عامة", person: "ibn-taymiyyah" }),
       entry("article", "maqala-tawhid", { title: "مقالة في التوحيد", person: "ibn-taymiyyah", topics: ["al-asma-was-sifat"] }),
-      entry("audio", "audio-sharh-wasitiyyah", { title: "صوت الشرح", source_type: "book", source_id: "sharh-al-wasitiyyah", url: "https://r2.ahlalathar.com/audio/sharh.opus" }),
+      entry("audio", "audio-sharh-wasitiyyah", { title: "صوت الشرح", source_type: "book", source_id: "sharh-al-wasitiyyah", url: "https://r2.arthurarchive.com/audio/sharh.opus" }),
       entry("question", "masail-al-asma-was-sifat", { title: "مسائل الأسماء والصفات", person: "ibn-taymiyyah", topics: ["al-asma-was-sifat"] }),
       entry("annotation", "alfiyyah-ibn-malik--v1--sharh", { title: "شرح البيت الأول", target_type: "poem", target_id: "alfiyyah-ibn-malik", anchor: "v1" }),
       entry("announcement", "launch", { title: "انطلاق الموقع", priority: 9 }),
