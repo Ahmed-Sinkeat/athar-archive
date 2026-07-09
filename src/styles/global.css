@@ -1120,6 +1120,15 @@ html.hide-vnums .vnum { display: none; }
 .toc-nested-group[open] .toc-nested-arrow { transform: rotate(90deg); }
 /* catalog panel ("عن هذه الطبعة") — pulled out of the chapter list, sits
    above the TOC on both the desktop rail and the mobile disclosure */
+.sharh-picker { border: 1px solid var(--rule); border-radius: var(--radius-lg); background: var(--surface); margin-bottom: 14px; }
+.sharh-picker summary { padding: 10px 14px; cursor: pointer; font-family: var(--font-ui); font-size: 13.5px; font-weight: 600; color: var(--accent); list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.sharh-picker summary::-webkit-details-marker { display: none; }
+.sharh-picker-body { padding: 0 14px 14px; }
+.sharh-picker-body .title-filter { margin-bottom: 8px; }
+.sharh-list { display: flex; flex-direction: column; gap: 2px; max-height: 240px; overflow-y: auto; }
+.sharh-list a { display: flex; flex-direction: column; gap: 1px; padding: 7px 8px; border-radius: var(--radius); text-decoration: none; font-family: var(--font-ui); font-size: 13px; color: var(--ink); }
+.sharh-list a:hover { background: var(--paper-2); }
+.sharh-list a .faint { font-size: 11.5px; }
 .book-catalog { border: 1px solid var(--rule); border-radius: var(--radius-lg); background: var(--surface); margin-bottom: 14px; }
 .book-catalog summary { padding: 9px 14px; cursor: pointer; font-family: var(--font-ui); font-size: 13px; font-weight: 600; color: var(--accent); list-style: none; }
 .book-catalog summary::-webkit-details-marker { display: none; }
@@ -1439,12 +1448,16 @@ html[data-theme="noir"] ::highlight(aa-find)    { background-color: rgba(255, 15
   background: var(--paper-2); border-inline-start: 3px solid var(--rule-strong);
   border-radius: 9px;
 }
-.lib-entry.k-benefit { border-inline-start-color: rgba(60,175,110,0.95); }
-.lib-entry.k-note { border-inline-start-color: rgba(240,195,60,0.95); }
+/* theme-aware tokens (--green/--gold already re-tint per theme — e.g. golden
+   on noir) instead of fixed rgba literals, which looked wrong once the
+   surface/ink around them changed theme. No site token reads as "purple" for
+   mistakes, so k-mistake keeps a literal — it's the rarest kind. */
+.lib-entry.k-benefit { border-inline-start-color: var(--green); }
+.lib-entry.k-note { border-inline-start-color: var(--gold); }
 .lib-entry.k-mistake { border-inline-start-color: rgba(155,89,182,0.95); }
-.lib-entry.k-benefit .benefit-quote { color: rgba(40,130,85,1); }
-.lib-entry.k-note .benefit-quote { color: rgba(160,120,10,1); }
-.lib-entry.k-mistake .benefit-quote { color: rgba(110,65,130,1); }
+.lib-entry.k-benefit .benefit-quote { color: var(--green); }
+.lib-entry.k-note .benefit-quote { color: var(--gold); }
+.lib-entry.k-mistake .benefit-quote { color: rgba(155,89,182,1); }
 .lib-entry .benefit-quote { border: none; background: none; padding: 0; border-radius: 0; font-size: 15.5px; line-height: 1.95; }
 .lib-entry .lib-src { font-size: 11.5px; }
 .lib-entry .lib-del { inset-inline-end: 10px; inset-block-start: 12px; width: 24px; height: 24px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; }

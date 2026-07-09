@@ -50,6 +50,7 @@ function syncWidthButtons(w: Width) {
 
 // --- theme (3 states: paper default / noir / mono) ---
 type Theme = "paper" | "noir" | "mono";
+const THEME_CYCLE: Theme[] = ["paper", "noir", "mono"];
 
 function setTheme(t: Theme) {
   if (t === "paper") root.removeAttribute("data-theme");
@@ -64,6 +65,9 @@ function currentTheme(): Theme {
 function syncThemeButtons(t: Theme) {
   document.querySelectorAll<HTMLElement>("[data-theme-btn]").forEach((b) => {
     b.setAttribute("aria-pressed", String(b.dataset.themeBtn === t));
+  });
+  document.querySelectorAll<HTMLElement>("[data-theme-icon]").forEach((el) => {
+    el.hidden = el.dataset.themeIcon !== t;
   });
 }
 
@@ -271,6 +275,7 @@ const actions: Record<string, () => void> = {
   "toggle:verseNums": () => applyVnums(root.classList.contains("hide-vnums")),
   "toggle:pages": () => applyPages(root.classList.contains("pages-flow")),
   "toggle:footnotes": () => applyFootnotes(root.classList.contains("hide-footnotes")),
+  "theme:cycle": () => setTheme(THEME_CYCLE[(THEME_CYCLE.indexOf(currentTheme()) + 1) % THEME_CYCLE.length]),
   "theme:paper": () => setTheme("paper"),
   "theme:noir": () => setTheme("noir"),
   "theme:mono": () => setTheme("mono"),

@@ -10,11 +10,12 @@ import Breadcrumbs from "../../../components/Breadcrumbs.astro";
 import StudyBar from "../../../components/StudyBar.astro";
 import InlineNoteGroup from "../../../components/InlineNoteGroup.astro";
 import ReaderSidebar from "../../../components/ReaderSidebar.astro";
+import TitleFilter from "../../../components/TitleFilter.astro";
 import { isPub, loadGraph, personNameMap, notesByAnchor } from "../../../lib/site";
 import { markdownToSafeHtml } from "../../../lib/sanitize";
 import { parseToc, extractFootnotesByPage } from "../../../lib/chapters";
 import { loadChapterManifest, loadChapterBody, notFound } from "../../../lib/book-asset";
-import { hrefFor, labelFor, isMatn } from "../../../lib/display";
+import { hrefFor, labelFor, isMatn, toArabicDigits } from "../../../lib/display";
 import { parseHadithOrdinal } from "../../../lib/hadith";
 import hadithIndexData from "../../../data/hadith-index.json";
 
@@ -351,6 +352,25 @@ const finalContent = (() => {
 
       <!-- sidebar TOC (hidden on mobile via CSS) -->
       <ReaderSidebar label={bookPageCount > 0 ? `فصول الكتاب · ${tocGroups.length} فصل · ${bookPageCount} صفحة` : `فصول الكتاب · ${tocGroups.length} فصل`}>
+        {commentaries.length > 0 && (
+          <details class="sharh-picker">
+            <summary>
+              <span>الشروح والتعليقات</span>
+              <span class="faint masail-count">{toArabicDigits(commentaries.length)}</span>
+            </summary>
+            <div class="sharh-picker-body">
+              <TitleFilter placeholder="ابحث في الشروح…" />
+              <div class="sharh-list">
+                {commentaries.map(c => (
+                  <a href={c.href} data-title={c.title}>
+                    <span>{c.title}</span>
+                    {c.author && <span class="faint">{c.author}</span>}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </details>
+        )}
         {catalog.length > 0 && (
           <details class="book-catalog">
             <summary>عن هذه الطبعة</summary>
@@ -405,18 +425,7 @@ const finalContent = (() => {
             </>
           ))}
         </div>
-        {commentaries.length > 0 && (
-          <div class="toc-box" style="margin-top: 1rem;">
-            <div class="toc-label">الشروح والتعليقات</div>
-            {commentaries.map(c => (
-              <a href={c.href} style="font-size: 13px;">
-                {c.title} {c.author && <span class="faint" style="font-size: 0.85em;">— {c.author}</span>}
-              </a>
-            ))}
-          </div>
-        )}
         <div class="book-info-card">
-          <div class="toc-label">عن المتن</div>
           <div class="book-info-title">{entry.data.title}</div>
           {author && <div class="book-info-author">تأليف <strong>{author}</strong></div>}
           {entry.data.edition && <div class="book-info-edition">{entry.data.edition}</div>}

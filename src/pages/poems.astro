@@ -45,10 +45,7 @@ const cardsById = new Map(cardList.map((c) => [c.id, c]));
 const publishedPoems = (await getCollection("poem")).filter((p) => p.data.status === "published");
 const wk = Math.floor(Date.now() / 6.048e8);
 const featured = publishedPoems.length ? publishedPoems[wk % publishedPoems.length] : null;
-const featuredVerses = featured ? analyzePoem(await readBody(featured)).verses.slice(0, 1) : [];
-const featuredText = featured
-  ? featured.data.description || (featuredVerses[0] && `${featuredVerses[0].sadr} ${featuredVerses[0].ajz ?? ""}`)
-  : "";
+const featuredVerses = featured ? analyzePoem(await readBody(featured)).verses.slice(0, 3) : [];
 ---
 <Base title="الشعر" description="منظوماتٌ علميةٌ محقَّقةٌ مُشكَّلةٌ مع الشروح والتخريج." activeNav="poems" searchScope={{ type: "poem" }} jsonLd={collectionLd({ title: "الشعر", path: "/poems", crumbs: [{ name: "الرئيسية", path: "/" }, { name: "الشعر", path: "/poems" }] })}>
   <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "الشعر" }]} />
@@ -59,8 +56,12 @@ const featuredText = featured
     {featured && (
       <div class="weekly-card k-copper poem-of-week">
         <div class="weekly-kicker k-copper">منظومةُ الأسبوع</div>
-        <p class="weekly-text" data-ar>{featuredText}</p>
-        <div class="weekly-foot">
+        <div class="weekly-text poem-of-week-verses" data-ar>
+          {featuredVerses.map((v) => (
+            <p>{v.sadr}{v.ajz && <Fragment><span class="poem-sep" aria-hidden="true">❁</span>{v.ajz}</Fragment>}</p>
+          ))}
+        </div>
+        <div class="weekly-foot poem-of-week-foot">
           <span class="faint">{featured.data.title} · {featured.data.person ? names.get(featured.data.person as string) : ""}</span>
           <a class="weekly-ref" href={hrefFor("poem", featured.id)}>اقرأ المنظومة ←</a>
         </div>
@@ -193,4 +194,7 @@ const featuredText = featured
   .poem-sep { color: var(--copper); padding: 0 10px; }
   .poems-lede { margin-bottom: 18px; }
   .poem-of-week { margin-bottom: 26px; }
+  .poem-of-week-verses p { margin: 0 0 8px; }
+  .poem-of-week-verses p:last-child { margin-bottom: 0; }
+  .poem-of-week-foot .faint { font-size: 11px; }
 </style>
