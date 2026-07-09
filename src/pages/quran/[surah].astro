@@ -134,7 +134,7 @@ const processedParagraphs = paragraphs.map((para, idx) => {
           <div class="ornament" aria-hidden="true">۞</div>
           <h1 class="reader-title surah-title">{surahTitle}</h1>
           <div class="reader-byline faint">{data.ayah_count} آية</div>
-          <button type="button" class="toggle-btn dl-btn" data-action="download:toggle" data-dl-kind="quran" data-dl-id={entry.id} data-dl-title={surahTitle} aria-pressed="false">
+          <button type="button" class="toggle-btn" style="margin-top: 12px;" data-action="download:toggle" data-dl-kind="quran" data-dl-id={entry.id} data-dl-title={surahTitle} aria-pressed="false">
             <span class="toggle-dot"></span><span data-dl-label>تنزيل للقراءة دون اتصال</span>
           </button>
         </div>

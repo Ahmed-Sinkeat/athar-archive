@@ -110,17 +110,13 @@ function buildShareBtn(m: Item): HTMLButtonElement {
   share.type = "button";
   share.setAttribute("aria-label", "مشاركة");
   share.textContent = "⇅";
-  share.addEventListener("click", async (e) => {
+  share.addEventListener("click", (e) => {
     e.preventDefault();
-    const citation = citationFor(m);
-    const parts = [citation, m.page ? `ص ${m.page}` : ""].filter(Boolean).join("، ");
+    const parts = [citationFor(m), m.page ? `ص ${m.page}` : ""].filter(Boolean).join("، ");
     const url = `${location.origin}${m.path}#m=${m.id}`;
     const text = `"${m.text}"\n— ${parts}`;
-    if (navigator.share) {
-      try { await navigator.share({ text, url }); } catch { /* user cancelled */ }
-    } else {
-      navigator.clipboard?.writeText(`${text}\n${url}`).then(() => { share.textContent = "✓"; setTimeout(() => { share.textContent = "⇅"; }, 900); });
-    }
+    if (navigator.share) navigator.share({ text, url }).catch(() => {});
+    else navigator.clipboard?.writeText(`${text}\n${url}`).then(() => { share.textContent = "✓"; setTimeout(() => { share.textContent = "⇅"; }, 900); });
   });
   return share;
 }

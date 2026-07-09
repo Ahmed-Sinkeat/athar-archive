@@ -287,16 +287,13 @@ img { max-width: 100%; }
 .toggle-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--ink-faint); }
 .toggle-btn[aria-pressed="true"] .toggle-dot { background: var(--accent); }
 
-/* offline-download button (downloads.ts) + topbar downloads-pop list */
-.dl-btn { margin-top: 12px; }
-.dl-btn[data-dl-busy] { opacity: 0.6; pointer-events: none; }
+[data-dl-busy] { opacity: 0.6; pointer-events: none; }
 .downloads-pop { max-height: 60vh; overflow-y: auto; }
-.dl-empty { font-size: 12.5px; line-height: 1.6; }
-.dl-row { display: grid; gap: 4px; padding: 8px 0; border-bottom: 1px solid var(--rule); }
+.dl-row { display: grid; gap: 4px; padding: 8px 0; border-bottom: 1px solid var(--rule); font-family: var(--font-ui); }
 .dl-row:last-child { border-bottom: none; }
 .dl-row-title { font-size: 13.5px; color: var(--ink); }
 .dl-row-meta { display: flex; align-items: center; justify-content: space-between; gap: 10px; font-size: 12px; }
-.dl-row-remove { background: none; border: none; color: var(--ink-faint); cursor: pointer; font-family: var(--font-ui); font-size: 12px; text-decoration: underline; padding: 0; }
+.dl-row-remove { background: none; border: none; color: var(--ink-faint); cursor: pointer; font: inherit; text-decoration: underline; padding: 0; }
 .dl-row-remove:hover { color: var(--accent); }
 
 .progress-track { height: 2px; background: var(--rule); }
@@ -1393,12 +1390,13 @@ html[data-theme="noir"] ::highlight(aa-find)    { background-color: rgba(255, 15
 .aa-note { display: flex; gap: 5px; align-items: stretch; }
 .aa-note textarea { font-family: var(--font-ui); font-size: 13px; color: var(--ink); background: var(--paper); border: 1px solid var(--rule); border-radius: var(--radius); padding: 6px 9px; width: 200px; height: 54px; resize: none; }
 
+/* .aa-share-actions buttons reuse .aa-tools button (descendant selector
+   already matches them, nested or not) — only the layout differs here. */
 .aa-share { display: grid; gap: 7px; padding: 3px; min-width: 200px; }
 .aa-share-range { display: flex; align-items: center; gap: 6px; font-family: var(--font-ui); font-size: 12px; color: var(--ink-soft); }
 .aa-share-range input { width: 46px; font-family: var(--font-ui); font-size: 13px; color: var(--ink); background: var(--paper); border: 1px solid var(--rule); border-radius: var(--radius); padding: 4px 6px; text-align: center; }
 .aa-share-actions { display: flex; gap: 6px; }
-.aa-share-actions button { flex: 1; font-family: var(--font-ui); font-size: 13px; color: var(--ink); background: var(--paper); border: 1px solid var(--rule); border-radius: var(--radius); padding: 6px 11px; cursor: pointer; }
-.aa-share-actions button:hover { border-color: var(--accent); }
+.aa-share-actions button { flex: 1; justify-content: center; }
 
 /* --- in-page find bar --- */
 .aa-find { position: fixed; z-index: 75; top: 64px; right: 16px; display: flex; align-items: center; gap: 7px; background: var(--surface); border: 1px solid var(--rule-strong); border-radius: var(--radius-pill); padding: 5px 7px 5px 14px; }
@@ -1422,10 +1420,10 @@ html[data-theme="noir"] ::highlight(aa-find)    { background-color: rgba(255, 15
 .lib-card:hover { border-color: var(--accent); }
 .lib-note { font-family: var(--font-ui); font-size: 14px; color: var(--ink-soft); margin-top: 9px; line-height: 1.8; }
 .lib-src { font-family: var(--font-ui); font-size: 12.5px; color: var(--ink-faint); margin-top: 9px; }
-.lib-del { position: absolute; inset-block-start: 10px; inset-inline-end: 12px; background: transparent; border: 0; color: var(--ink-faint); cursor: pointer; font-size: 18px; line-height: 1; }
-.lib-del:hover { color: var(--accent); }
-.lib-share { position: absolute; inset-block-start: 10px; inset-inline-end: 38px; background: transparent; border: 0; color: var(--ink-faint); cursor: pointer; font-size: 15px; line-height: 1; }
-.lib-share:hover { color: var(--accent); }
+.lib-del, .lib-share { position: absolute; inset-block-start: 10px; background: transparent; border: 0; color: var(--ink-faint); cursor: pointer; line-height: 1; }
+.lib-del:hover, .lib-share:hover { color: var(--accent); }
+.lib-del { inset-inline-end: 12px; font-size: 18px; }
+.lib-share { inset-inline-end: 38px; font-size: 15px; }
 /* segmented pill control — one shared inset track, active tab lifts on a card+shadow */
 .lib-tabs { display: flex; justify-content: center; gap: 2px; margin-bottom: 20px; background: var(--paper-2); border-radius: var(--radius-pill); padding: 4px; width: fit-content; margin-inline: auto; }
 .lib-io { display: flex; justify-content: center; gap: 8px; margin-bottom: 20px; }
@@ -1479,10 +1477,10 @@ html[data-theme="noir"] ::highlight(aa-find)    { background-color: rgba(255, 15
 .lib-entry.k-mistake .benefit-quote { color: rgba(155,89,182,1); }
 .lib-entry .benefit-quote { border: none; background: none; padding: 0; border-radius: 0; font-size: 15.5px; line-height: 1.95; }
 .lib-entry .lib-src { font-size: 11.5px; }
-.lib-entry .lib-del { inset-inline-end: 10px; inset-block-start: 12px; width: 24px; height: 24px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; }
-.lib-entry .lib-del:hover { background: var(--rule-strong); color: var(--ink); }
-.lib-entry .lib-share { inset-inline-end: 36px; inset-block-start: 12px; width: 24px; height: 24px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; }
-.lib-entry .lib-share:hover { background: var(--rule-strong); color: var(--ink); }
+.lib-entry .lib-del, .lib-entry .lib-share { inset-block-start: 12px; width: 24px; height: 24px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; }
+.lib-entry .lib-del:hover, .lib-entry .lib-share:hover { background: var(--rule-strong); color: var(--ink); }
+.lib-entry .lib-del { inset-inline-end: 10px; }
+.lib-entry .lib-share { inset-inline-end: 36px; }
 /* --- flat list rows (listing pages: الكتب / الشعر / الدروس / الأعلام / …) --- */
 /* Override card-box styles when inside .flat-list so items render as rows */
 .flat-list { list-style: none; padding: 0; margin: 0; border-block-start: 1px solid var(--rule); }
