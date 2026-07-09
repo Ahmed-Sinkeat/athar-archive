@@ -43,7 +43,7 @@ const inSadr = locate(sadr, phrase);
 const inAjz = inSadr ? null : locate(ajz ?? "", phrase);
 const popId = `ann-${anchor}`;
 ---
-<div class="verse" id={anchor}>
+<div class="verse" id={anchor} data-vn={n}>
   <div class="verse-inner">
     <div class="vnum">{toArabicDigits(n)}</div>
     <div class:list={["verse-body", { "no-ajz": !ajz }]} data-ar>

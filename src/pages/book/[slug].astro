@@ -108,6 +108,9 @@ const jsonLd = bookLd({
         <div class="ornament" aria-hidden="true">۞</div>
         <h1 class="reader-title ue7e55f7" >{entry.data.title}</h1>
         <div class="reader-byline">{author}</div>
+        <button type="button" class="toggle-btn dl-btn" data-action="download:toggle" data-dl-kind="book" data-dl-id={entry.id} data-dl-title={entry.data.title} aria-pressed="false">
+          <span class="toggle-dot"></span><span data-dl-label>تنزيل للقراءة دون اتصال</span>
+        </button>
         {origin && (
           <div class="reader-origin">
             {origin.relation}: <a href={origin.href}>{origin.title}</a>
@@ -156,6 +159,9 @@ const jsonLd = bookLd({
           <div class:list={["ornament", { "ornament-green": isHadith }]} aria-hidden="true">۞</div>
           <h1 class="reader-title ue7e55f7" >{entry.data.title}</h1>
           <div class="reader-byline">{author}</div>
+          <button type="button" class="toggle-btn dl-btn" data-action="download:toggle" data-dl-kind="book" data-dl-id={entry.id} data-dl-title={entry.data.title} aria-pressed="false">
+            <span class="toggle-dot"></span><span data-dl-label>تنزيل للقراءة دون اتصال</span>
+          </button>
           {origin && (
             <div class="reader-origin">
               {origin.relation}: <a href={origin.href}>{origin.title}</a>

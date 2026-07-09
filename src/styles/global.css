@@ -287,6 +287,18 @@ img { max-width: 100%; }
 .toggle-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--ink-faint); }
 .toggle-btn[aria-pressed="true"] .toggle-dot { background: var(--accent); }
 
+/* offline-download button (downloads.ts) + topbar downloads-pop list */
+.dl-btn { margin-top: 12px; }
+.dl-btn[data-dl-busy] { opacity: 0.6; pointer-events: none; }
+.downloads-pop { max-height: 60vh; overflow-y: auto; }
+.dl-empty { font-size: 12.5px; line-height: 1.6; }
+.dl-row { display: grid; gap: 4px; padding: 8px 0; border-bottom: 1px solid var(--rule); }
+.dl-row:last-child { border-bottom: none; }
+.dl-row-title { font-size: 13.5px; color: var(--ink); }
+.dl-row-meta { display: flex; align-items: center; justify-content: space-between; gap: 10px; font-size: 12px; }
+.dl-row-remove { background: none; border: none; color: var(--ink-faint); cursor: pointer; font-family: var(--font-ui); font-size: 12px; text-decoration: underline; padding: 0; }
+.dl-row-remove:hover { color: var(--accent); }
+
 .progress-track { height: 2px; background: var(--rule); }
 .progress-bar { height: 100%; width: 0; background: var(--accent); transition: width 0.12s linear; }
 
@@ -1381,6 +1393,13 @@ html[data-theme="noir"] ::highlight(aa-find)    { background-color: rgba(255, 15
 .aa-note { display: flex; gap: 5px; align-items: stretch; }
 .aa-note textarea { font-family: var(--font-ui); font-size: 13px; color: var(--ink); background: var(--paper); border: 1px solid var(--rule); border-radius: var(--radius); padding: 6px 9px; width: 200px; height: 54px; resize: none; }
 
+.aa-share { display: grid; gap: 7px; padding: 3px; min-width: 200px; }
+.aa-share-range { display: flex; align-items: center; gap: 6px; font-family: var(--font-ui); font-size: 12px; color: var(--ink-soft); }
+.aa-share-range input { width: 46px; font-family: var(--font-ui); font-size: 13px; color: var(--ink); background: var(--paper); border: 1px solid var(--rule); border-radius: var(--radius); padding: 4px 6px; text-align: center; }
+.aa-share-actions { display: flex; gap: 6px; }
+.aa-share-actions button { flex: 1; font-family: var(--font-ui); font-size: 13px; color: var(--ink); background: var(--paper); border: 1px solid var(--rule); border-radius: var(--radius); padding: 6px 11px; cursor: pointer; }
+.aa-share-actions button:hover { border-color: var(--accent); }
+
 /* --- in-page find bar --- */
 .aa-find { position: fixed; z-index: 75; top: 64px; right: 16px; display: flex; align-items: center; gap: 7px; background: var(--surface); border: 1px solid var(--rule-strong); border-radius: var(--radius-pill); padding: 5px 7px 5px 14px; }
 .aa-find[hidden] { display: none; }
@@ -1405,6 +1424,8 @@ html[data-theme="noir"] ::highlight(aa-find)    { background-color: rgba(255, 15
 .lib-src { font-family: var(--font-ui); font-size: 12.5px; color: var(--ink-faint); margin-top: 9px; }
 .lib-del { position: absolute; inset-block-start: 10px; inset-inline-end: 12px; background: transparent; border: 0; color: var(--ink-faint); cursor: pointer; font-size: 18px; line-height: 1; }
 .lib-del:hover { color: var(--accent); }
+.lib-share { position: absolute; inset-block-start: 10px; inset-inline-end: 38px; background: transparent; border: 0; color: var(--ink-faint); cursor: pointer; font-size: 15px; line-height: 1; }
+.lib-share:hover { color: var(--accent); }
 /* segmented pill control — one shared inset track, active tab lifts on a card+shadow */
 .lib-tabs { display: flex; justify-content: center; gap: 2px; margin-bottom: 20px; background: var(--paper-2); border-radius: var(--radius-pill); padding: 4px; width: fit-content; margin-inline: auto; }
 .lib-io { display: flex; justify-content: center; gap: 8px; margin-bottom: 20px; }
@@ -1460,6 +1481,8 @@ html[data-theme="noir"] ::highlight(aa-find)    { background-color: rgba(255, 15
 .lib-entry .lib-src { font-size: 11.5px; }
 .lib-entry .lib-del { inset-inline-end: 10px; inset-block-start: 12px; width: 24px; height: 24px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; }
 .lib-entry .lib-del:hover { background: var(--rule-strong); color: var(--ink); }
+.lib-entry .lib-share { inset-inline-end: 36px; inset-block-start: 12px; width: 24px; height: 24px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; }
+.lib-entry .lib-share:hover { background: var(--rule-strong); color: var(--ink); }
 /* --- flat list rows (listing pages: الكتب / الشعر / الدروس / الأعلام / …) --- */
 /* Override card-box styles when inside .flat-list so items render as rows */
 .flat-list { list-style: none; padding: 0; margin: 0; border-block-start: 1px solid var(--rule); }
@@ -1595,14 +1618,15 @@ html.pages-flow .page-sep + p { display: inline; margin: 0; }
 /* --- printed-footer footnotes: one <aside> per page, right after its content ---
    Numbers (data-fn-num, set server-side) restart at ١ on every page — حاشية
    and تخريج mixed into one simple sequential count, no per-kind heading. */
-.page-footnotes { margin: 10px 0 24px; padding: 10px 14px; border: 1px solid var(--rule); background: var(--paper-2); border-radius: var(--radius); }
+.page-footnotes { margin: 8px 0 18px; padding: 7px 12px; border: 1px solid var(--rule); background: var(--paper-2); border-radius: var(--radius); }
 .page-footnotes ol { list-style: none; margin: 0; padding: 0; }
 /* Always visible, like a printed book's footnotes -- no click-to-reveal (that
    mechanism silently broke when a ref lost an attribute during a rewrite,
    dumping readers at the page bottom; always-visible removes the failure
    mode entirely). :target still gets a brief highlight so a jump from the
-   inline marker is easy to spot. */
-.page-footnotes li { font-family: var(--f-matn); font-size: calc(16.5px * var(--reading-scale)); line-height: 1.9; color: var(--ink); padding: 5px 0; scroll-margin-top: 90px; }
+   inline marker is easy to spot. Small + tight like a real printed footnote,
+   not body-text size — it should read as a compact reference block. */
+.page-footnotes li { font-family: var(--f-matn); font-size: calc(12.5px * var(--reading-scale)); line-height: 1.5; color: var(--ink-soft); padding: 2px 0; scroll-margin-top: 90px; }
 .page-footnotes li::before { content: attr(data-fn-num) ". "; color: var(--ink-soft); font-weight: 600; }
 .page-footnotes li:target { color: var(--ink); background: color-mix(in srgb, var(--accent) 12%, transparent); border-radius: 4px; }
 .page-footnotes p { display: inline; margin: 0; }
@@ -1625,7 +1649,7 @@ sup[data-fn]:hover { text-decoration: underline; }
 /* separate runs of adjacent refs (e.g. a name carrying [12][13][14]) so they don't jam */
 .prose sup + sup { margin-inline-start: 4px; }
 .prose section.footnotes {
-  margin: 24px 0 8px; padding: 10px 14px; border: 1px solid var(--rule);
+  margin: 18px 0 8px; padding: 7px 12px; border: 1px solid var(--rule);
   background: var(--paper-2); border-radius: var(--radius);
 }
 .prose section.footnotes::before {
@@ -1634,7 +1658,7 @@ sup[data-fn]:hover { text-decoration: underline; }
   margin-bottom: 6px;
 }
 .prose section.footnotes ol { margin: 0; padding-inline-start: 1.4em; }
-.prose section.footnotes li { font-family: var(--f-matn); font-size: 14.5px; line-height: 1.8; color: var(--ink-soft); padding: 4px 0; scroll-margin-top: 90px; }
+.prose section.footnotes li { font-family: var(--f-matn); font-size: 12px; line-height: 1.5; color: var(--ink-soft); padding: 2px 0; scroll-margin-top: 90px; }
 .prose section.footnotes li p { display: inline; margin: 0; }
 .prose section.footnotes li:target { color: var(--ink); background: color-mix(in srgb, var(--accent) 12%, transparent); border-radius: 4px; }
 .prose section.footnotes .data-footnote-backref { margin-inline-start: 4px; }

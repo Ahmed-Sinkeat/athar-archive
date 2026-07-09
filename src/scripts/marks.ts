@@ -24,6 +24,7 @@ interface Mark {
   note?: string;
   title?: string;
   section?: string;
+  page?: string; // nearest preceding .page-sep at save time — see pageAtRange()
 }
 
 const HL_NAME: Record<Kind, string> = { mistake: "aa-mistake", benefit: "aa-benefit", note: "aa-note-hl" };
@@ -146,8 +147,8 @@ function overlapping(off: { start: number; end: number }): Mark[] {
   return load().filter((m) => m.start < off.end && off.start < m.end);
 }
 
-function addMark(kind: Kind, off: { start: number; end: number }, text: string, note?: string): Mark {
-  const mark: Mark = { id: Math.random().toString(36).slice(2, 9), ...off, kind, text, note, title: pageTitle(), section: pageSection() };
+function addMark(kind: Kind, off: { start: number; end: number }, text: string, note?: string, page?: string): Mark {
+  const mark: Mark = { id: Math.random().toString(36).slice(2, 9), ...off, kind, text, note, title: pageTitle(), section: pageSection(), page };
   const marks = load();
   marks.push(mark);
   save(marks);
@@ -171,6 +172,22 @@ function pageTitle(): string {
 function pageSection(): string | undefined {
   return document.querySelector(".reader-subtitle")?.textContent?.trim() || undefined;
 }
+// nearest .page-sep marker at or before a point in the DOM — used both for
+// citing a live selection (citeMeta) and for stamping a page onto a saved
+// kunashti mark so it can be cited later, off the original page.
+function pageAtNode(container: HTMLElement, node: Node): string | undefined {
+  let page: string | undefined;
+  container.querySelectorAll<HTMLElement>(".page-sep[data-page]").forEach((el) => {
+    const pos = el.compareDocumentPosition(node);
+    if (pos === 0 || pos & Node.DOCUMENT_POSITION_FOLLOWING) page = el.dataset.page;
+  });
+  return page;
+}
+function pageAtRange(range: Range): string | undefined {
+  const container = document.querySelector<HTMLElement>("[data-cite-book]");
+  if (!container) return undefined;
+  return pageAtNode(container, range.startContainer);
+}
 
 function positionTools(range: Range) {
   const rect = range.getBoundingClientRect();
@@ -183,25 +200,80 @@ function positionTools(range: Range) {
   t.style.left = `${rect.left + rect.width / 2}px`;
 }
 
-// citation metadata for the "نسخ مع المصدر" action — book/author come from the
-// nearest [data-cite-book] ancestor (set server-side on the reading container),
-// page/juz from the last .page-sep marker before the selection start.
-function citeMeta(range: Range): { book: string; author: string; page?: string; juz?: string } | null {
-  const startEl = range.startContainer.nodeType === 1 ? (range.startContainer as Element) : range.startContainer.parentElement;
+// citation metadata for the share/copy action — book/author/kind come from the
+// nearest [data-cite-book] ancestor (set server-side per reading page type):
+// plain book/article/question pages cite by page number, poem pages by بيت
+// number (Verse.astro's data-vn), quran pages by آية number (data-anchor).
+type CiteKind = "book" | "poem" | "quran";
+interface CiteMeta {
+  kind: CiteKind; book: string; author: string; url: string;
+  page?: string; pageTo?: string; juz?: string;
+  vn?: number; vnTo?: number;
+  ayahFrom?: string; ayahTo?: string; surah?: string;
+}
+function elOf(node: Node): Element | null {
+  return node.nodeType === 1 ? (node as Element) : node.parentElement;
+}
+function citeMeta(range: Range): CiteMeta | null {
+  const startEl = elOf(range.startContainer);
+  const endEl = elOf(range.endContainer);
   const container = startEl?.closest<HTMLElement>("[data-cite-book]");
   if (!container) return null;
+  const kind = (container.dataset.citeKind as CiteKind) || "book";
+  const book = container.dataset.citeBook || "";
+  const author = container.dataset.citeAuthor || "";
+  const url = location.origin + location.pathname;
+
+  if (kind === "quran") {
+    const ayahFrom = startEl?.closest<HTMLElement>(".ayah[data-anchor]")?.dataset.anchor;
+    const ayahTo = endEl?.closest<HTMLElement>(".ayah[data-anchor]")?.dataset.anchor ?? ayahFrom;
+    return { kind, book, author, url, ayahFrom, ayahTo, surah: container.dataset.citeSurah || book };
+  }
+  if (kind === "poem") {
+    const vnStr = startEl?.closest<HTMLElement>(".verse[data-vn]")?.dataset.vn;
+    const vnToStr = endEl?.closest<HTMLElement>(".verse[data-vn]")?.dataset.vn;
+    const vn = vnStr ? Number(vnStr) : undefined;
+    return { kind, book, author, url, vn, vnTo: vnToStr ? Number(vnToStr) : vn };
+  }
   let page: string | undefined, juz: string | undefined;
   container.querySelectorAll<HTMLElement>(".page-sep[data-page]").forEach((el) => {
     const pos = el.compareDocumentPosition(range.startContainer);
     if (pos === 0 || pos & Node.DOCUMENT_POSITION_FOLLOWING) { page = el.dataset.page; juz = el.dataset.juz; }
   });
-  return { book: container.dataset.citeBook || "", author: container.dataset.citeAuthor || "", page, juz };
+  return { kind, book, author, url, page, pageTo: page, juz };
 }
-function copyWithSource(range: Range, text: string, onDone: (label: string) => void) {
-  const meta = citeMeta(range);
-  if (!meta) return;
-  const parts = [meta.book, meta.author, meta.page ? `ص ${meta.page}` : "", meta.juz ? `ج ${meta.juz}` : ""].filter(Boolean);
-  navigator.clipboard?.writeText(`"${text}"\n— ${parts.join("، ")}`).then(() => onDone("تم النسخ ✓"));
+
+// Quran citations always quote the FULL ayah(s) spanning the selection, never
+// just the selected substring — a partial-ayah quote reads as a misquote of
+// the Qur'an, so the range (adjustable in the share popover) always wins.
+function fullAyahRangeText(container: HTMLElement, from: string, to: string): string {
+  const fromN = Number(from), toN = Number(to);
+  const parts: string[] = [];
+  container.querySelectorAll<HTMLElement>(".ayah[data-anchor]").forEach((el) => {
+    const n = Number(el.dataset.anchor);
+    if (n >= fromN && n <= toN) {
+      const t = el.querySelector(".ayah-text")?.textContent?.trim();
+      if (t) parts.push(t);
+    }
+  });
+  return parts.join(" ");
+}
+
+function buildCitation(meta: CiteMeta, container: HTMLElement, fallbackText: string): { text: string; url: string } {
+  if (meta.kind === "quran" && meta.ayahFrom) {
+    const to = meta.ayahTo || meta.ayahFrom;
+    const text = fullAyahRangeText(container, meta.ayahFrom, to) || fallbackText;
+    const ref = meta.ayahFrom === to ? `الآية ${meta.ayahFrom}` : `الآيات ${meta.ayahFrom}-${to}`;
+    return { text: `﴿ ${text} ﴾\n— سورة ${meta.surah}، ${ref}`, url: meta.url };
+  }
+  if (meta.kind === "poem" && meta.vn) {
+    const ref = meta.vnTo && meta.vnTo !== meta.vn ? `الأبيات ${meta.vn}-${meta.vnTo}` : `البيت ${meta.vn}`;
+    const parts = [meta.book, meta.author, ref].filter(Boolean);
+    return { text: `"${fallbackText}"\n— ${parts.join("، ")}`, url: meta.url };
+  }
+  const pageRef = meta.page ? (meta.pageTo && meta.pageTo !== meta.page ? `ص ${meta.page}-${meta.pageTo}` : `ص ${meta.page}`) : "";
+  const parts = [meta.book, meta.author, pageRef, meta.juz ? `ج ${meta.juz}` : ""].filter(Boolean);
+  return { text: `"${fallbackText}"\n— ${parts.join("، ")}`, url: meta.url };
 }
 
 function showToolbar(range: Range) {
@@ -221,19 +293,84 @@ function showToolbar(range: Range) {
     t.appendChild(b);
     return b;
   };
-  btn("خطأ", "mistake", () => openNote("mistake", off, text));
-  btn("فائدة", "benefit", () => openNote("benefit", off, text));
-  btn("ملاحظة", "note", () => openNote("note", off, text));
+  btn("خطأ", "mistake", () => openNote("mistake", off, text, range));
+  btn("فائدة", "benefit", () => openNote("benefit", off, text, range));
+  btn("ملاحظة", "note", () => openNote("note", off, text, range));
   if (citeMeta(range)) {
-    const c = btn("انسخ مع المصدر", null, () => copyWithSource(range, text, (label) => { c.lastChild!.textContent = label; setTimeout(done, 900); }));
+    btn("مشاركة", null, () => openShare(range, text));
   }
   if (over.length) { const d = btn("حذف", null, () => { removeMarks(new Set(over.map((m) => m.id))); done(); }); d.classList.add("aa-del"); }
   positionTools(range);
   t.setAttribute("data-open", "");
 }
 
-function openNote(kind: Kind, off: { start: number; end: number }, text: string) {
-  const mark = addMark(kind, off, text); // mark exists immediately; note optional
+// share composer: lets the reader widen/narrow the cited range (page for a
+// book, بيت for a poem, آية for the Qur'an — see citeMeta) before copying or
+// handing off to the native share sheet.
+function openShare(range: Range, text: string) {
+  const meta = citeMeta(range);
+  const container = elOf(range.startContainer)?.closest<HTMLElement>("[data-cite-book]");
+  if (!meta || !container) return;
+  const t = toolbar();
+  t.innerHTML = "";
+  const wrap = document.createElement("div");
+  wrap.className = "aa-share";
+
+  let fromInput: HTMLInputElement | null = null, toInput: HTMLInputElement | null = null;
+  const rangeRow = (label1: string, v1: string | number, label2: string, v2: string | number) => {
+    const row = document.createElement("div");
+    row.className = "aa-share-range";
+    const l1 = document.createElement("span"); l1.textContent = label1;
+    fromInput = document.createElement("input"); fromInput.type = "number"; fromInput.min = "1"; fromInput.value = String(v1);
+    const l2 = document.createElement("span"); l2.textContent = label2;
+    toInput = document.createElement("input"); toInput.type = "number"; toInput.min = "1"; toInput.value = String(v2);
+    row.append(l1, fromInput, l2, toInput);
+    wrap.appendChild(row);
+  };
+  if (meta.kind === "quran" && meta.ayahFrom) rangeRow("من آية", meta.ayahFrom, "إلى", meta.ayahTo || meta.ayahFrom);
+  else if (meta.kind === "poem" && meta.vn) rangeRow("من بيت", meta.vn, "إلى", meta.vnTo || meta.vn);
+  else if (meta.kind === "book" && meta.page) rangeRow("من صفحة", meta.page, "إلى", meta.pageTo || meta.page);
+
+  const currentMeta = (): CiteMeta => {
+    if (!fromInput || !toInput) return meta;
+    const m = { ...meta };
+    if (meta.kind === "quran") { m.ayahFrom = fromInput.value; m.ayahTo = toInput.value; }
+    else if (meta.kind === "poem") { m.vn = Number(fromInput.value); m.vnTo = Number(toInput.value); }
+    else { m.page = fromInput.value; m.pageTo = toInput.value; }
+    return m;
+  };
+
+  const actions = document.createElement("div");
+  actions.className = "aa-share-actions";
+  const copyBtn = document.createElement("button");
+  copyBtn.type = "button";
+  copyBtn.textContent = "نسخ";
+  const shareBtn = document.createElement("button");
+  shareBtn.type = "button";
+  shareBtn.textContent = "مشاركة";
+  actions.append(copyBtn, shareBtn);
+  wrap.appendChild(actions);
+  t.appendChild(wrap);
+  t.setAttribute("data-open", "");
+
+  copyBtn.addEventListener("mousedown", (e) => e.preventDefault());
+  copyBtn.addEventListener("click", () => {
+    const { text: cited, url } = buildCitation(currentMeta(), container, text);
+    navigator.clipboard?.writeText(`${cited}\n${url}`).then(() => { copyBtn.textContent = "تم النسخ ✓"; setTimeout(done, 900); });
+  });
+  shareBtn.addEventListener("mousedown", (e) => e.preventDefault());
+  shareBtn.addEventListener("click", async () => {
+    const { text: cited, url } = buildCitation(currentMeta(), container, text);
+    if (navigator.share) {
+      try { await navigator.share({ text: cited, url }); done(); } catch { /* user cancelled */ }
+    } else {
+      navigator.clipboard?.writeText(`${cited}\n${url}`).then(() => { shareBtn.textContent = "تم النسخ ✓"; setTimeout(done, 1200); });
+    }
+  });
+}
+
+function openNote(kind: Kind, off: { start: number; end: number }, text: string, range?: Range) {
+  const mark = addMark(kind, off, text, undefined, range ? pageAtRange(range) : undefined); // mark exists immediately; note optional
   const t = toolbar();
   t.innerHTML = "";
   const wrap = document.createElement("div");

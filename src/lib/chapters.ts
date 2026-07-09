@@ -116,7 +116,7 @@ export interface PoemChapter {
   slug: string;
   order: number;
   verses: Verse[];
-  prose?: string; // set instead of verses for known front-matter chapters (see isProseChapterTitle)
+  prose?: string; // front matter ahead of this chapter's verses (see splitFrontMatter) — renders before verses, not instead of them
 }
 
 // Recurring editorial front-matter heading (manuscript copies used in the
@@ -138,12 +138,40 @@ export interface ParsedPoem {
 // A verse line uses ` --- ` (or ` ... `) to separate the two hemistichs.
 const HEMISTICH_SEP = /\s+(?:---|\.\.\.|‏…|…)\s+/;
 
+// A bare basmala line is never itself a verse — it's the standard divider
+// between a chapter's front matter (title/bio/manuscript list) and its real
+// verses. Excluded defensively even outside splitFrontMatter below, so a
+// second/misplaced occurrence can't eat a vnum slot either.
+const BASMALA_RE = /^بسم الله الرحمن الرحيم\s*$/m;
+
 function isContentLine(line: string): boolean {
   const t = line.trim();
   if (!t) return false;
   if (t.startsWith("#")) return false; // sub-headings inside a chapter
-  if (/^-{3,}$/.test(t)) return false; // horizontal rule
+  if (/^-{3,}$/.test(t)) return false; // horizontal rule (dash form)
+  if (/^<hr\b/i.test(t)) return false; // horizontal rule / page-sep marker (HTML form)
+  if (/^\*\s*\*\s*\*$/.test(t)) return false; // "* * *" section divider
+  if (/^\*\*.+\*\*$/.test(t)) return false; // bold-wrapped sub-heading line, e.g. "**[في الوقف]**"
+  if (t === "بسم الله الرحمن الرحيم") return false;
   return true;
+}
+
+// Chapter content sometimes carries front matter (poet bio, manuscript list —
+// see PROSE_CHAPTER_TITLES below) ahead of the real verses, with no heading to
+// separate them. Every such front-matter block in this corpus ends right
+// before the poem's basmala, so split there: everything up to and including
+// it renders as prose, everything after collects as verses. Falls back to the
+// known-title allowlist when no basmala is present at all (fully-prose
+// chapter, e.g. a manuscript list immediately followed by another heading).
+function splitFrontMatter(title: string, content: string): { prose?: string; verseContent: string } {
+  const m = content.match(BASMALA_RE);
+  if (m && m.index !== undefined) {
+    const splitAt = m.index + m[0].length;
+    const prose = content.slice(0, splitAt).trim();
+    return { prose: prose || undefined, verseContent: content.slice(splitAt) };
+  }
+  if (isProseChapterTitle(title)) return { prose: content, verseContent: "" };
+  return { verseContent: content };
 }
 
 function lineToVerse(line: string, n: number): Verse {
@@ -182,11 +210,10 @@ export function parsePoem(body: string): ParsedPoem {
   };
 
   if (!isFrontMatterPreamble(preamble)) collect(preamble);
-  const chapters: PoemChapter[] = rawChapters.map((c) =>
-    isProseChapterTitle(c.title)
-      ? { title: c.title, slug: c.slug, order: c.order, verses: [], prose: c.content }
-      : { title: c.title, slug: c.slug, order: c.order, verses: collect(c.content) },
-  );
+  const chapters: PoemChapter[] = rawChapters.map((c) => {
+    const { prose, verseContent } = splitFrontMatter(c.title, c.content);
+    return { title: c.title, slug: c.slug, order: c.order, verses: collect(verseContent), prose };
+  });
 
   return {
     verses,

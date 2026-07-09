@@ -50,17 +50,16 @@ const next = (allChapters as any[])[chIdx + 1] ?? null;
   <div class="chap-outer">
     <div class="chap-grid">
       <!-- main reading column -->
-      <div class="reading-pad" data-cite-book={entry.data.title} data-cite-author={author}>
+      <div class="reading-pad" data-cite-book={entry.data.title} data-cite-author={author} data-cite-kind="poem">
         <div class="reader-head">
           <div class="eyebrow u87c136d">منظومة · {author}</div>
           <h1 class="reader-title ubd7542b">{chapter.title}</h1>
-          <div class="reader-byline">{entry.data.title}{!chapter.prose && ` · ${toArabicDigits(chapter.verses.length)} بيت`}</div>
+          <div class="reader-byline">{entry.data.title}{chapter.verses.length > 0 && ` · ${toArabicDigits(chapter.verses.length)} بيت`}</div>
         </div>
         <div class="rule-short"></div>
         <StudyBar />
-        {chapter.prose ? (
-          <div class="u49fcd85 poem-chapter-prose" set:html={markdownToSafeHtml(chapter.prose)} />
-        ) : (
+        {chapter.prose && <div class="u49fcd85 poem-chapter-prose" set:html={markdownToSafeHtml(chapter.prose)} />}
+        {chapter.verses.length > 0 && (
           <div class="verses" data-matn={entry.id} data-unit="بيت">
             {(chapter.verses as any[]).map((v: any) => (
               <Verse n={v.n} sadr={v.sadr} ajz={v.ajz} anchor={v.anchor} notes={byAnchor[v.anchor]} />

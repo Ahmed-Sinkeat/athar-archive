@@ -6,7 +6,7 @@
 
 type Kind = "mistake" | "benefit" | "note";
 type GroupBy = "book" | "topic" | "person";
-interface Mark { id: string; kind: Kind; text: string; note?: string; title?: string; section?: string }
+interface Mark { id: string; kind: Kind; text: string; note?: string; title?: string; section?: string; page?: string }
 interface Item extends Mark { path: string }
 interface SourceMeta { path: string; person: string; topics: string[]; title: string }
 
@@ -102,11 +102,35 @@ function buildDeleteBtn(m: Item): HTMLButtonElement {
   return del;
 }
 
+// citation + page (if captured — see marks.ts's pageAtRange) + a link back to
+// the exact mark on its original page, same shape as the in-page share popover.
+function buildShareBtn(m: Item): HTMLButtonElement {
+  const share = document.createElement("button");
+  share.className = "lib-share";
+  share.type = "button";
+  share.setAttribute("aria-label", "مشاركة");
+  share.textContent = "⇅";
+  share.addEventListener("click", async (e) => {
+    e.preventDefault();
+    const citation = citationFor(m);
+    const parts = [citation, m.page ? `ص ${m.page}` : ""].filter(Boolean).join("، ");
+    const url = `${location.origin}${m.path}#m=${m.id}`;
+    const text = `"${m.text}"\n— ${parts}`;
+    if (navigator.share) {
+      try { await navigator.share({ text, url }); } catch { /* user cancelled */ }
+    } else {
+      navigator.clipboard?.writeText(`${text}\n${url}`).then(() => { share.textContent = "✓"; setTimeout(() => { share.textContent = "⇅"; }, 900); });
+    }
+  });
+  return share;
+}
+
 function buildCard(m: Item): HTMLElement {
   const a = document.createElement("a");
   a.className = "lib-card";
   a.href = `${m.path}#m=${m.id}`;
   fillMarkBody(a, m);
+  a.appendChild(buildShareBtn(m));
   a.appendChild(buildDeleteBtn(m));
   return a;
 }
@@ -128,6 +152,7 @@ function buildGroupBox(items: Item[]): HTMLElement {
     a.className = `lib-entry k-${m.kind}`;
     a.href = `${m.path}#m=${m.id}`;
     fillMarkBody(a, m);
+    a.appendChild(buildShareBtn(m));
     a.appendChild(buildDeleteBtn(m));
     box.appendChild(a);
   }
