@@ -200,6 +200,53 @@ document.addEventListener("click", (e) => {
   }
 });
 
+// Export/import all "aa-marks:*" keys as one JSON file — the only way this
+// data survives a domain change or a new device, since localStorage never
+// crosses origins on its own.
+function exportMarks() {
+  const data: Record<string, unknown> = {};
+  for (let i = 0; i < localStorage.length; i++) {
+    const k = localStorage.key(i);
+    if (k?.startsWith("aa-marks:")) data[k] = JSON.parse(localStorage.getItem(k) || "[]");
+  }
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = `athar-kunasha-${new Date().toISOString().slice(0, 10)}.json`;
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+async function importMarks(file: File) {
+  let data: Record<string, unknown>;
+  try { data = JSON.parse(await file.text()); }
+  catch { alert("الملف غير صالح."); return; }
+  let count = 0;
+  for (const [k, v] of Object.entries(data)) {
+    if (!k.startsWith("aa-marks:") || !Array.isArray(v)) continue;
+    // merge with any existing marks on this device rather than overwrite,
+    // de-duped by mark id
+    const existing = JSON.parse(localStorage.getItem(k) || "[]") as Mark[];
+    const seen = new Set(existing.map((m) => m.id));
+    const merged = [...existing, ...(v as Mark[]).filter((m) => !seen.has(m.id))];
+    localStorage.setItem(k, JSON.stringify(merged));
+    count += merged.length;
+  }
+  render();
+  alert(`تمّ الاستيراد (${count} عنصرًا في المجموع).`);
+}
+
+document.addEventListener("click", (e) => {
+  const t = e.target as HTMLElement;
+  if (t.closest("[data-lib-export]")) exportMarks();
+  if (t.closest("[data-lib-import-btn]")) document.querySelector<HTMLInputElement>("[data-lib-import]")?.click();
+});
+document.addEventListener("change", (e) => {
+  const input = (e.target as HTMLElement).closest<HTMLInputElement>("[data-lib-import]");
+  const file = input?.files?.[0];
+  if (file) importMarks(file).finally(() => { input.value = ""; });
+});
+
 render();
 document.addEventListener("astro:page-load", render);
 // bfcache restore (back button) doesn't fire astro:page-load — see render()'s

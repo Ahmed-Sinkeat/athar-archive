@@ -43,6 +43,14 @@ for (const collection of ["book", "poem", "article"] as const) {
       <button data-lib-group="topic" aria-pressed="false">حسب الموضوع</button>
       <button data-lib-group="person" aria-pressed="false">حسب العَلَم</button>
     </div>
+    <!-- data lives in this browser's localStorage only — export/import lets
+         it survive a domain change or a new device, since neither carries
+         localStorage across automatically -->
+    <div class="lib-io">
+      <button type="button" class="btn" data-lib-export>تصدير نسخة احتياطية</button>
+      <button type="button" class="btn" data-lib-import-btn>استيراد نسخة احتياطية</button>
+      <input type="file" accept="application/json" data-lib-import hidden />
+    </div>
     <div data-lib-list></div>
   </div>
   <script type="application/json" id="lib-source-index" set:html={JSON.stringify(sourceIndex)} />

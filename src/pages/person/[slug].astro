@@ -118,17 +118,36 @@ const jsonLd = personLd({
             {workTabs.map((t) => <button data-person-tab={t.id} aria-pressed="false">{t.label} ({t.count})</button>)}
           </div>
         )}
-        <div class="card-grid card-grid-compact">
-          {works.map((w) => (
-            <EntityCard
-              href={hrefFor(w.collection, w.id, { series: w.series })}
-              title={w.title}
-              kind={w.kind}
-              audio={w.audio}
-              cta="اطّلع ←"
-              filterKey={w.category}
-            />
-          ))}
+        <div class="browse" data-browse>
+          <div class="browse-toolbar">
+            <button type="button" class="btn browse-flat-toggle" data-flat-toggle>عرض كقائمة</button>
+          </div>
+          <div class="browse-flat">
+            <ol class="flat-list">
+              {works.map((w) => (
+                <li data-title={w.title} data-kind={w.category}>
+                  <a class="flat-row" href={hrefFor(w.collection, w.id, { series: w.series })}>
+                    <span class="flat-row-main">
+                      <span class="flat-row-title">{w.title}</span>
+                    </span>
+                    <span class="flat-row-meta faint">{w.kind}</span>
+                  </a>
+                </li>
+              ))}
+            </ol>
+          </div>
+          <div class="card-grid card-grid-compact browse-grouped">
+            {works.map((w) => (
+              <EntityCard
+                href={hrefFor(w.collection, w.id, { series: w.series })}
+                title={w.title}
+                kind={w.kind}
+                audio={w.audio}
+                cta="اطّلع ←"
+                filterKey={w.category}
+              />
+            ))}
+          </div>
         </div>
       </div>
     )}

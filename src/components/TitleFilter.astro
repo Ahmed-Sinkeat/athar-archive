@@ -29,7 +29,12 @@ const { placeholder = "تصفية حسب العنوان…" } = Astro.props;
       input.dataset.wired = "1";
       const scope = input.closest(".title-filter").parentElement;
       const empty = scope.querySelector("[data-title-filter-empty]");
-      const norm = (s) => s.normalize("NFKD").replace(/[ً-ٰٟ]/g, "").toLowerCase();
+      // strip tashkeel, then fold hamza-alef/ya/ta-marbuta variants so
+      // "الألبيري" matches a search for "الالبيري" (and vice versa) — common
+      // spelling drift in Arabic text, not a real difference to the reader
+      const norm = (s) => s.normalize("NFKD").replace(/[ً-ٰٟ]/g, "")
+        .replace(/[إأآٱ]/g, "ا").replace(/ة/g, "ه").replace(/ى/g, "ي")
+        .toLowerCase();
       input.addEventListener("input", () => {
         const q = norm(input.value.trim());
         const items = scope.querySelectorAll("[data-title]");

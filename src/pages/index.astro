@@ -23,20 +23,30 @@ const [people, books, poems, articles, benefits, announcements, highlights, ques
 ]);
 const hadithBooks = books.filter((b) => (b.data as any).genre === "حديث" && b.data.status === "published");
 
-// مختارات الأسبوع: one published آية / حديث / بيت per kind, rotating by week index.
-// ponytail: build-time pick (stable within a week); refreshes on each rebuild/deploy.
+// مختارات الأسبوع: one حديث (curated highlight) + one whole كتاب/منظومة/مقال
+// entry each, rotating by week index. ponytail: build-time pick (stable
+// within a week); refreshes on each rebuild/deploy. آية dropped per request —
+// كتاب/منظومة/مقال aren't curated highlight excerpts (no content for that
+// kind exists), so they're picked straight from their own collections instead.
 const wk = Math.floor(Date.now() / 6.048e8);
-const pickWeekly = (kind: string) => {
-  const arr = pub(highlights).filter((h) => h.data.kind === kind);
-  return arr.length ? arr[wk % arr.length] : null;
-};
-const weekly = ["آية", "حديث", "بيت"].map((kind) => ({ kind, entry: pickWeekly(kind) })).filter((w) => w.entry);
-// each text tradition gets its own dress (kicker accent + body font), per HANDOFF §5
+const pickEntry = <T,>(arr: T[]): T | null => (arr.length ? arr[wk % arr.length] : null);
+const pickWeekly = (kind: string) => pickEntry(pub(highlights).filter((h) => h.data.kind === kind));
+const hadithPick = pickWeekly("حديث");
+const weekly = hadithPick ? [{ kind: "حديث", entry: hadithPick }] : [];
 const weeklyDress: Record<string, { cls: string; textCls: string; label: string }> = {
-  "آية": { cls: "k-gold", textCls: "weekly-text-quran", label: "آية الأسبوع" },
   "حديث": { cls: "k-green", textCls: "weekly-text-hadith", label: "حديث الأسبوع" },
-  "بيت": { cls: "k-copper", textCls: "", label: "من المنظومات" },
 };
+
+// strip the lightweight markdown this codebase uses (headers/emphasis/quote
+// markers) down to a plain excerpt — same idea as the QAPage JSON-LD strip.
+function excerptOf(entry: { data: { description?: string } }, body: string): string {
+  if (entry.data.description) return entry.data.description;
+  return body.replace(/^#{1,6}\s+.*$/gm, "").replace(/[*_`>#]/g, "").replace(/\s+/g, " ").trim().slice(0, 160);
+}
+const featuredBook = pickEntry(pub(books));
+const featuredArticle = pickEntry(pub(articles));
+const featuredBookExcerpt = featuredBook ? excerptOf(featuredBook, await readBody(featuredBook)) : "";
+const featuredArticleExcerpt = featuredArticle ? excerptOf(featuredArticle, await readBody(featuredArticle)) : "";
 
 // Resolve a highlight's source link, and (for a بيت) its era + subject pills.
 const graph = await loadGraph();
@@ -81,9 +91,9 @@ const stats = [
 
 const anns = pub(announcements).sort((a, b) => (b.data.priority ?? 5) - (a.data.priority ?? 5)).slice(0, 3);
 
-// featured: first published poem, with its opening verses
-const featured = pub(poems)[0];
-const featuredVerses = featured ? analyzePoem(await readBody(featured)).verses.slice(0, 2) : [];
+// recommended poem, rotating weekly like the rest of مختارات الأسبوع
+const featured = pickEntry(pub(poems));
+const featuredVerses = featured ? analyzePoem(await readBody(featured)).verses.slice(0, 1) : [];
 
 // latest across materials by published_at — متن/مصدر أصلي get the accent type-badge (HANDOFF §4)
 const SOURCE_KINDS = new Set(["متن", "مصدر أصلي"]);
@@ -185,46 +195,38 @@ const latest = [
     </div>
   )}
 
-  {featured && (
-    <div class="home-section">
-      <div class="section-head"><h2>منظومة مختارة</h2><div class="rule-fill"></div></div>
-      <div class="u0ef5d25">
-        <div>
-          <div class="eyebrow u57e29a5" >منظومة · {personName.get(featured.data.person)}</div>
-          <h3 class="reader-title u8bd951d" >{featured.data.title}</h3>
-          {featured.data.description && <p class="prose u86de7ac" ><span class="u515ff4e">{featured.data.description}</span></p>}
-          <a class="btn btn-accent u8a77e5a"  href={hrefFor("poem", featured.id)}>اقرأ المنظومة ←</a>
-        </div>
-        <div class="u474572a" data-ar>
-          {featuredVerses.map((v) => (
-            <div class="ud8c0226">
-              <div class="sadr u881f70f" >{v.sadr}</div>
-              {v.ajz && <div class="ajz u881f70f" >{v.ajz}</div>}
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  )}
-
-  {weekly.length > 0 && (
+  {(featured || weekly.length > 0 || featuredBook || featuredArticle) && (
     <div class="home-section">
       <div class="section-head"><h2>مختارات الأسبوع</h2><div class="rule-fill"></div></div>
       <div class="weekly-grid">
+        {featuredBook && (
+          <div class="weekly-card k-brand">
+            <div class="weekly-kicker k-brand">كتاب مختار</div>
+            <p class="weekly-text" data-ar>{featuredBookExcerpt}</p>
+            <div class="weekly-foot">
+              <span class="faint">{featuredBook.data.title}</span>
+              <a class="weekly-ref" href={hrefFor("book", featuredBook.id)}>اقرأ الكتاب ←</a>
+            </div>
+          </div>
+        )}
+        {featured && (
+          <div class="weekly-card k-copper">
+            <div class="weekly-kicker k-copper">منظومة مختارة</div>
+            <p class="weekly-text" data-ar>
+              {featured.data.description || (featuredVerses[0] && `${featuredVerses[0].sadr} ${featuredVerses[0].ajz ?? ""}`)}
+            </p>
+            <div class="weekly-foot">
+              <span class="faint">{featured.data.title} · {personName.get(featured.data.person)}</span>
+              <a class="weekly-ref" href={hrefFor("poem", featured.id)}>اقرأ المنظومة ←</a>
+            </div>
+          </div>
+        )}
         {weekly.map(({ kind, entry }) => {
           const m = weeklyMeta(entry);
           const dress = weeklyDress[kind] ?? { cls: "", textCls: "", label: kind };
           return (
           <div class={`weekly-card ${dress.cls}`}>
-            {kind === "بيت" && (m.era || m.subjects.length) ? (
-              <div class="weekly-pills">
-                <span class={`weekly-kicker ${dress.cls}`}>{dress.label}</span>
-                {m.eraLink && <a class="pill tag-verdigris pill-link" href={m.eraLink}>{m.era}</a>}
-                {m.subjects.map((s) => <a class="pill tag-accent pill-link" href={s.href}>{s.title}</a>)}
-              </div>
-            ) : (
-              <div class={`weekly-kicker ${dress.cls}`}>{dress.label}</div>
-            )}
+            <div class={`weekly-kicker ${dress.cls}`}>{dress.label}</div>
             <p class={`weekly-text ${dress.textCls}`} data-ar>{entry!.body.trim()}</p>
             {entry!.data.reference && (
               <div class="weekly-foot">
@@ -235,6 +237,16 @@ const latest = [
           </div>
           );
         })}
+        {featuredArticle && (
+          <div class="weekly-card k-verdigris">
+            <div class="weekly-kicker k-verdigris">مقال مختار</div>
+            <p class="weekly-text" data-ar>{featuredArticleExcerpt}</p>
+            <div class="weekly-foot">
+              <span class="faint">{featuredArticle.data.title}</span>
+              <a class="weekly-ref" href={hrefFor("article", featuredArticle.id)}>اقرأ المقالة ←</a>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   )}

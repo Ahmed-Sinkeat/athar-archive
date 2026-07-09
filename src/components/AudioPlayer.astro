@@ -41,6 +41,14 @@ const meta = (s: Source) =>
       <source src={cur.url} type={mime(cur.format)} data-audio-source />
       <a href={cur.url}>تنزيل الملف الصوتي</a>
     </audio>
-    <a class="btn u8e0fa20" href={cur.url} download data-audio-dl>تحميل</a>
+    <div class="audio-tools">
+      <div class="audio-speed" data-audio-speed role="group" aria-label="سرعة التشغيل">
+        {["0.75", "1", "1.25", "1.5", "2"].map((r) => (
+          <button type="button" data-speed={r} aria-pressed={r === "1" ? "true" : "false"}>{r}×</button>
+        ))}
+      </div>
+      <!-- href stays as a same-origin-download fallback (no-JS, or blob fetch failing e.g. CORS) -->
+      <a class="btn u8e0fa20" href={cur.url} download data-audio-dl>تحميل</a>
+    </div>
   </figure>
 )}

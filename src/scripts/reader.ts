@@ -15,6 +15,7 @@ const LS = {
   width: "aa-width",
   browseView: "aa-browse-view",
   browseOpen: "aa-browse-open",
+  audioSpeed: "aa-audio-speed",
 };
 
 const SCALE_MIN = 0.8;
@@ -537,7 +538,7 @@ document.addEventListener("click", (e) => {
   if (!group || !works) return;
   const cat = btn.dataset.personTab!;
   group.querySelectorAll<HTMLElement>("[data-person-tab]").forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
-  works.querySelectorAll<HTMLElement>(".card").forEach((c) => {
+  works.querySelectorAll<HTMLElement>(".card, .flat-list li").forEach((c) => {
     c.hidden = cat !== "all" && c.dataset.kind !== cat;
   });
 });
@@ -1042,6 +1043,77 @@ document.addEventListener("change", (e) => {
   if (dl) dl.href = opt.dataset.url || "";
 });
 
+// resume playback position — keyed by the audio file's own URL (stable across
+// domain/path changes to the page itself), saved on pause/seek/unload and
+// restored once metadata loads so seeking to a saved time is valid
+function audioProgressKey(el: HTMLAudioElement): string | null {
+  const src = el.currentSrc || el.querySelector("source")?.src;
+  return src ? "aa-audio-progress:" + src : null;
+}
+document.addEventListener(
+  "loadedmetadata",
+  (e) => {
+    const el = e.target as HTMLElement;
+    if (!(el instanceof HTMLAudioElement) || !el.hasAttribute("data-audio-el")) return;
+    const key = audioProgressKey(el);
+    const saved = key ? parseFloat(localStorage.getItem(key) || "") : NaN;
+    if (!isNaN(saved) && saved > 0 && saved < el.duration - 2) el.currentTime = saved;
+    // playbackRate resets on load() in some browsers — reapply the site-wide preference
+    const speed = parseFloat(localStorage.getItem(LS.audioSpeed) || "1");
+    if (!isNaN(speed)) el.playbackRate = speed;
+  },
+  true,
+);
+["pause", "seeked"].forEach((evt) =>
+  document.addEventListener(
+    evt,
+    (e) => {
+      const el = e.target as HTMLElement;
+      if (!(el instanceof HTMLAudioElement) || !el.hasAttribute("data-audio-el")) return;
+      const key = audioProgressKey(el);
+      if (key) localStorage.setItem(key, String(el.currentTime));
+    },
+    true,
+  ),
+);
+
+// playback speed — one site-wide preference (not per-recording), applied to
+// every <audio> immediately and to future loads via the loadedmetadata handler above
+document.addEventListener("click", (e) => {
+  const btn = (e.target as HTMLElement).closest<HTMLElement>("[data-audio-speed] [data-speed]");
+  if (!btn) return;
+  const rate = parseFloat(btn.dataset.speed!);
+  const group = btn.closest<HTMLElement>("[data-audio-speed]")!;
+  const fig = btn.closest<HTMLElement>("[data-audio]");
+  const audio = fig?.querySelector<HTMLAudioElement>("[data-audio-el]");
+  if (audio) audio.playbackRate = rate;
+  localStorage.setItem(LS.audioSpeed, String(rate));
+  group.querySelectorAll<HTMLElement>("[data-speed]").forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
+});
+
+// direct download — the plain <a download> is ignored cross-origin (R2's
+// domain differs from the site's), so fetch the file as a blob and download
+// that instead (same-origin blob: URL, which browsers always honor). Needs
+// CORS enabled on the R2 bucket for the site's origin; falls back to letting
+// the link navigate normally (old behavior) if the fetch fails.
+document.addEventListener("click", (e) => {
+  const dl = (e.target as HTMLElement).closest<HTMLAnchorElement>("[data-audio-dl]");
+  if (!dl) return;
+  e.preventDefault();
+  const url = dl.href;
+  const filename = url.split("/").pop() || "audio";
+  fetch(url)
+    .then((r) => { if (!r.ok) throw new Error(String(r.status)); return r.blob(); })
+    .then((blob) => {
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = filename;
+      a.click();
+      URL.revokeObjectURL(a.href);
+    })
+    .catch(() => { window.location.href = url; });
+});
+
 // --- reading progress bar (header persists across transitions; recompute per page) ---
 const bar = document.querySelector<HTMLElement>("[data-progress]");
 function updateProgress() {
@@ -1094,6 +1166,20 @@ function onPage() {
   root = document.documentElement;
   requeryChrome();
   enhanceProse();
+  // audio speed preference: sync button UI + already-rendered <audio> elements
+  // (loadedmetadata may already have fired before this listener existed on a
+  // freshly-swapped page, e.g. preload="metadata" resolving fast from cache)
+  const savedSpeed = localStorage.getItem(LS.audioSpeed);
+  if (savedSpeed) {
+    document.querySelectorAll<HTMLElement>("[data-audio-speed]").forEach((group) => {
+      group.querySelectorAll<HTMLElement>("[data-speed]").forEach((b) =>
+        b.setAttribute("aria-pressed", String(b.dataset.speed === savedSpeed)),
+      );
+    });
+    document.querySelectorAll<HTMLAudioElement>("[data-audio-el]").forEach((el) => {
+      el.playbackRate = parseFloat(savedSpeed);
+    });
+  }
   if (localStorage.getItem(LS.tashkeel) === "0") applyTashkeel(false); // re-bare new content
   updateActiveNav();
   updateProgress();
