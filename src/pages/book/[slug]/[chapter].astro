@@ -13,7 +13,8 @@ import ReaderSidebar from "../../../components/ReaderSidebar.astro";
 import TitleFilter from "../../../components/TitleFilter.astro";
 import { isPub, loadGraph, personNameMap, notesByAnchor } from "../../../lib/site";
 import { markdownToSafeHtml } from "../../../lib/sanitize";
-import { parseToc, extractFootnotesByPage } from "../../../lib/chapters";
+import { parseToc } from "../../../lib/chapters";
+import { wirePageFootnotes } from "../../../lib/page-footnotes";
 import { loadChapterManifest, loadChapterBody, notFound } from "../../../lib/book-asset";
 import { hrefFor, labelFor, isMatn, toArabicDigits } from "../../../lib/display";
 import { parseHadithOrdinal } from "../../../lib/hadith";
@@ -154,114 +155,12 @@ for (const [anchor, notes] of Object.entries(byAnchor)) {
   }
 }
 
-// 2b. Group compiled-markdown footnotes ([^id]: body) by page — these bundle
-// at the source's own page/paragraph boundary, not next to whichever inline
-// citation marker they actually annotate (Ibn Kathir routinely piles 5 defs
-// onto the last few words before a page break). Rendered as a page-footer list
-// (like a printed book) instead of an unlabeled popover.
-const { itemsByPage: footnotesByPage } = extractFootnotesByPage(chapter.content);
-
-// 3. Compile with the [^id]: definitions still in place — remark-gfm only
-// recognizes [^id] as a real footnote reference (vs. literal text) when a
-// matching definition exists in the same document. Its own end-of-document
-// <section data-footnotes> is stripped after, in favor of our per-page footer.
-const html = markdownToSafeHtml(chapter.content).replace(/<section data-footnotes[^>]*>[\s\S]*?<\/section>\n?/, "");
-
-// Combine DB حاشية notes + compiled footnotes into one ordered per-page list,
-// each item addressable as #fn-{page}-{index} — this IS the footer.
-interface FooterItem { id: string; kind: string; body: string }
-const footerItemsByPage = new Map<number, FooterItem[]>();
-const footnoteAnchorById = new Map<string, string>(); // [^id] → its footer <li> id
-for (const [pNum, bodies] of dbHashiyasByPage) {
-  const items = bodies.map((body, i) => ({ id: `fn-${pNum}-${i}`, kind: "حاشية", body }));
-  footerItemsByPage.set(pNum, items);
-}
-for (const [pNum, fns] of footnotesByPage) {
-  const existing = footerItemsByPage.get(pNum) ?? [];
-  fns.forEach((fn, i) => {
-    const id = `fn-${pNum}-${existing.length + i}`;
-    footnoteAnchorById.set(fn.id, id);
-  });
-  footerItemsByPage.set(pNum, [...existing, ...fns.map((fn, i) => ({ id: `fn-${pNum}-${existing.length + i}`, kind: "تخريج", body: fn.body }))]);
-}
-
-// 4. Number every footer item sequentially within its own page (١، ٢، ٣…) —
-// حاشية and تخريج mixed in one simple per-page count, not the compiled
-// footnote's own chapter-wide continuous number. That continuous number used
-// to leave gaps on any page carrying both kinds (e.g. "١، ٢، ٧، ٨" — the
-// حاشية items claimed 1-2 from a page-local counter while the تخريج items
-// kept their real chapter-wide numbers). The inline [^id] marker below gets
-// this same page-relative number, so a click still lands on a matching one.
-const numberByFooterId = new Map<string, string>();
-for (const items of footerItemsByPage.values()) {
-  items.forEach((it, i) => numberByFooterId.set(it.id, String(i + 1)));
-}
-
-// Relabel each GFM footnote ref [^id] with the page-relative number computed
-// above, and drop the <a>/href entirely — plain, non-clickable text like a
-// printed page's own footnote marker, not a link (was previously clickable,
-// which also silently broke whenever remark-gfm's exact attribute order in
-// the compiled <sup><a ...> didn't match this regex verbatim; matching only
-// on the one attribute that's actually load-bearing — data-footnote-ref —
-// instead of the full tag shape is more robust to that).
-const footnoteRefsWired = html.replace(
-  /<sup><a\s+([^>]*data-footnote-ref[^>]*)>\d+<\/a><\/sup>/g,
-  (match, attrs) => {
-    const hrefMatch = attrs.match(/href="#user-content-fn-([a-zA-Z0-9_-]+)"/);
-    const id = hrefMatch?.[1];
-    const target = id && footnoteAnchorById.get(id);
-    const num = target && numberByFooterId.get(target);
-    if (!num) return match;
-    return `<sup class="fn-ref">${num}</sup>`;
-  },
-);
-
-function renderFooter(pageNum: number): string {
-  const items = footerItemsByPage.get(pageNum);
-  if (!items?.length) return "";
-  const lis = items
-    .map((it) => `<li id="${it.id}" data-fn-num="${numberByFooterId.get(it.id)}">${markdownToSafeHtml(it.body)}</li>`)
-    .join("");
-  return `<aside class="page-footnotes"><ol>${lis}</ol></aside>`;
-}
-
-// 5. Splice a printed-footer <aside> after each page's content — right before
-// the marker that starts the NEXT page, and after the last page's content.
-// The marker itself becomes a static "ص N" <div> (was <hr>, so ::before can
-// render its page-number content — <hr> pseudo-elements are unreliable).
-// Some imports (Muwatta) emit page markers out of order (90→91→90→91…): guard
-// with "once per page" sets or the same page's full footer — and a duplicate
-// id="pN" separator — would render again at every re-entry.
-const finalContent = (() => {
-  const segments = footnoteRefsWired.split(/(<hr\s+[^>]*class="page-sep"[^>]*>)/);
-  let out = "";
-  let curPage = currentPageNum;
-  const footeredPages = new Set<number>();
-  const emittedSeps = new Set<string>();
-  const footerOnce = (p: number) => {
-    if (footeredPages.has(p)) return "";
-    footeredPages.add(p);
-    return renderFooter(p);
-  };
-  for (let i = 0; i < segments.length; i++) {
-    const isMarker = i % 2 === 1;
-    if (isMarker) {
-      out += footerOnce(curPage);
-      const m = segments[i].match(/data-page="(\d+)"/);
-      const page = m ? m[1] : String(curPage);
-      const juzM = segments[i].match(/data-juz="([^"]+)"/);
-      if (!emittedSeps.has(page)) {
-        emittedSeps.add(page);
-        out += `<div class="page-sep" id="p${page}" data-page="${page}"${juzM ? ` data-juz="${juzM[1]}"` : ""}></div>`;
-      }
-      if (m) curPage = parseInt(m[1], 10);
-    } else {
-      out += segments[i];
-    }
-  }
-  out += footerOnce(curPage);
-  return out;
-})();
+// 3. All footnote handling (GFM [^id] refs/defs, EPUB data-fn sups +
+// data-notes arrays, the DB حاشية notes grouped above) lives in the shared
+// wirePageFootnotes — same pass the single-page book route uses, so every
+// book behaves identically: plain non-clickable markers, always-visible
+// per-page footer boxes, page-seps normalized to "ص N" <div>s.
+const finalContent = wirePageFootnotes(markdownToSafeHtml(chapter.content), chapter.content, dbHashiyasByPage);
 ---
 <Base title={`${chapter.title} · ${entry.data.title}`} activeNav="books" searchScope={{ in: entry.id, label: entry.data.title }} readingPage>
   <Breadcrumbs

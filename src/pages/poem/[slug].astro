@@ -11,6 +11,7 @@ import { isPub, loadGraph, personNameMap, personEraMap, notesByAnchor, relatedTo
 import { analyzePoem } from "../../lib/chunk";
 import { readBody } from "../../lib/read-body";
 import { hrefFor, toArabicDigits, eraLabel, eraHref } from "../../lib/display";
+import { MATLA_TITLE } from "../../lib/chapters";
 import { poemLd } from "../../lib/structured-data";
 import { markdownToSafeHtml } from "../../lib/sanitize";
 
@@ -87,11 +88,18 @@ const preamble = a.verses.filter((v) => !chapterNums.has(v.n));
 
     <div class="rule-short"></div>
 
+    {a.frontMatter && (
+      <details class="poem-frontmatter">
+        <summary>عن هذه الطبعة والنسخ المعتمدة</summary>
+        <div class="prose poem-chapter-prose" data-ar set:html={markdownToSafeHtml(a.frontMatter)} />
+      </details>
+    )}
+
     {a.chunked ? (
       <div class="card-grid u654c43f" >
         {a.chapters.map((c) => (
           <a class="card u6f3d7fe" href={hrefFor("poem", entry.id, { chapter: c.slug })} >
-            <div class="card-title ub9199e2" >{c.title}</div>
+            <div class="card-title ub9199e2" >{c.title || MATLA_TITLE}</div>
             {c.verses.length > 0 && <div class="faint uade9c31" >{toArabicDigits(c.verses.length)} بيت</div>}
           </a>
         ))}
@@ -103,7 +111,7 @@ const preamble = a.verses.filter((v) => !chapterNums.has(v.n));
           {preamble.map((v) => <Verse n={v.n} sadr={v.sadr} ajz={v.ajz} anchor={v.anchor} notes={byAnchor[v.anchor]} />)}
           {a.chapters.map((c) => (
             <>
-              <div class="chapter-band"><span>{c.title}</span></div>
+              {c.title && <div class="chapter-band"><span>{c.title}</span></div>}
               {c.prose && <div class="u49fcd85 poem-chapter-prose" set:html={markdownToSafeHtml(c.prose)} />}
               {c.verses.map((v) => <Verse n={v.n} sadr={v.sadr} ajz={v.ajz} anchor={v.anchor} notes={byAnchor[v.anchor]} />)}
             </>

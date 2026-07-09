@@ -339,47 +339,9 @@ document.addEventListener("click", (e) => {
   navigator.clipboard?.writeText(`${url}\n«${book}» — أثر ${n}`);
 });
 
-// --- inline footnotes (markdown [^refs] + EPUB <sup data-fn> refs) ---
-// Expands right under the paragraph containing the marker, toggled by a
-// +/- indicator (see [data-footnote-ref]::after / sup[data-fn]::after in
-// global.css). Several can be open at once — no auto-collapsing others.
-const fnInline = new WeakMap<HTMLElement, HTMLElement>();
-function toggleFnInline(marker: HTMLElement, buildBody: () => Node[]) {
-  const open = fnInline.get(marker);
-  if (open) {
-    open.remove();
-    fnInline.delete(marker);
-    marker.setAttribute("aria-expanded", "false");
-    return;
-  }
-  const host = marker.closest("p, li") || marker.parentElement;
-  if (!host) return;
-  const box = document.createElement("div");
-  box.className = "fn-inline";
-  box.append(...buildBody());
-  host.insertAdjacentElement("afterend", box);
-  fnInline.set(marker, box);
-  marker.setAttribute("aria-expanded", "true");
-  box.scrollIntoView({ behavior: "smooth", block: "nearest" });
-}
-document.addEventListener("click", (e) => {
-  const t = e.target as HTMLElement;
-  // Standard markdown footnote refs ([data-footnote-ref]) are plain <a href="#...">
-  // anchors now — the footer/endnotes list they point at is always visible (see
-  // global.css), so the browser's native anchor jump (+ global smooth-scroll,
-  // scroll-margin-top, :target highlight) handles this with no JS needed.
-  // EPUB inline footnote sups with embedded note text (data-note set at server render)
-  const fnSup = t.closest<HTMLElement>("sup[data-fn][data-note]");
-  if (fnSup && !fnSup.dataset.sepPage) {
-    e.preventDefault();
-    toggleFnInline(fnSup, () => {
-      const p = document.createElement("p");
-      // ponytail: textContent not innerHTML — note is plain text from the book
-      p.textContent = fnSup.dataset.note || "";
-      return [p];
-    });
-  }
-});
+// Footnotes need no JS: every marker is a plain <sup class="fn-ref"> and the
+// notes sit in always-visible per-page footer boxes (lib/page-footnotes.ts).
+// The old click-to-reveal popover path (data-note sups) is gone.
 
 // --- page-transition loader (top progress bar + center seal) ---
 // Mirrors the "Page Loader" design: don't show anything for a fast/cached

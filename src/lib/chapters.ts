@@ -112,11 +112,11 @@ export interface Verse {
 }
 
 export interface PoemChapter {
-  title: string;
+  title: string; // empty for the synthetic opening chapter — renderers fall back to MATLA_TITLE where a label is required (cards/TOC) and skip the band where it isn't
   slug: string;
   order: number;
   verses: Verse[];
-  prose?: string; // front matter ahead of this chapter's verses (see splitFrontMatter) — renders before verses, not instead of them
+  prose?: string; // prose-only front-matter chapters on the no-basmala path (see parsePoem)
 }
 
 // Recurring editorial front-matter heading (manuscript copies used in the
@@ -128,21 +128,29 @@ function isProseChapterTitle(title: string): boolean {
   return PROSE_CHAPTER_TITLES.has(title.trim().replace(/:$/, "").trim());
 }
 
+// Label renderers use for the synthetic untitled opening chapter (chunked
+// poems need a card/TOC name; single-page poems just skip the band).
+export const MATLA_TITLE = "مطلع المنظومة";
+export const MATLA_SLUG = "matla";
+
 export interface ParsedPoem {
   verses: Verse[];
   verseCount: number;
   openingVerse?: string;
   chapters: PoemChapter[];
+  // Poem-level front matter (poet bio, manuscript list, khutbah prose before
+  // the first verse) — markdown, rendered as a collapsed panel by the poem
+  // pages. Only set on the basmala path below.
+  frontMatter?: string;
 }
 
 // A verse line uses ` --- ` (or ` ... `) to separate the two hemistichs.
 const HEMISTICH_SEP = /\s+(?:---|\.\.\.|‏…|…)\s+/;
 
-// A bare basmala line is never itself a verse — it's the standard divider
-// between a chapter's front matter (title/bio/manuscript list) and its real
-// verses. Excluded defensively even outside splitFrontMatter below, so a
-// second/misplaced occurrence can't eat a vnum slot either.
-const BASMALA_RE = /^بسم الله الرحمن الرحيم\s*$/m;
+// spelled out or as the single ligature codepoint (﷽, U+FDFD)
+function isBasmalaLine(t: string): boolean {
+  return t === "بسم الله الرحمن الرحيم" || t === "﷽";
+}
 
 function isContentLine(line: string): boolean {
   const t = line.trim();
@@ -150,28 +158,12 @@ function isContentLine(line: string): boolean {
   if (t.startsWith("#")) return false; // sub-headings inside a chapter
   if (/^-{3,}$/.test(t)) return false; // horizontal rule (dash form)
   if (/^<hr\b/i.test(t)) return false; // horizontal rule / page-sep marker (HTML form)
-  if (/^\*\s*\*\s*\*$/.test(t)) return false; // "* * *" section divider
+  if (t === "*" || /^\*\s*\*\s*\*$/.test(t)) return false; // "*" / "* * *" ornament dividers
   if (/^\*\*.+\*\*$/.test(t)) return false; // bold-wrapped sub-heading line, e.g. "**[في الوقف]**"
-  if (t === "بسم الله الرحمن الرحيم") return false;
+  if (/^\[.+\]$/.test(t)) return false; // bracket-wrapped metadata/labels, e.g. "[عدد الأبيات: ١٠٠]", "[خاتمة]"
+  if (isBasmalaLine(t)) return false; // never a verse, wherever it appears
+  if (t === "تم بحمد الله") return false; // colophon closing line, not a verse
   return true;
-}
-
-// Chapter content sometimes carries front matter (poet bio, manuscript list —
-// see PROSE_CHAPTER_TITLES below) ahead of the real verses, with no heading to
-// separate them. Every such front-matter block in this corpus ends right
-// before the poem's basmala, so split there: everything up to and including
-// it renders as prose, everything after collects as verses. Falls back to the
-// known-title allowlist when no basmala is present at all (fully-prose
-// chapter, e.g. a manuscript list immediately followed by another heading).
-function splitFrontMatter(title: string, content: string): { prose?: string; verseContent: string } {
-  const m = content.match(BASMALA_RE);
-  if (m && m.index !== undefined) {
-    const splitAt = m.index + m[0].length;
-    const prose = content.slice(0, splitAt).trim();
-    return { prose: prose || undefined, verseContent: content.slice(splitAt) };
-  }
-  if (isProseChapterTitle(title)) return { prose: content, verseContent: "" };
-  return { verseContent: content };
 }
 
 function lineToVerse(line: string, n: number): Verse {
@@ -209,11 +201,67 @@ export function parsePoem(body: string): ParsedPoem {
     return out;
   };
 
-  if (!isFrontMatterPreamble(preamble)) collect(preamble);
-  const chapters: PoemChapter[] = rawChapters.map((c) => {
-    const { prose, verseContent } = splitFrontMatter(c.title, c.content);
-    return { title: c.title, slug: c.slug, order: c.order, verses: collect(verseContent), prose };
-  });
+  // Tahqiq-layout front matter is a POEM-level region, not a per-chapter one:
+  // bio lines, the manuscript list, the basmala, and sometimes the author's
+  // own khutbah prose after it — possibly spanning several ## headings —
+  // all precede the poem's first real verse (first line with a hemistich
+  // separator). A basmala in that region is the signal this file uses that
+  // layout at all; verse-only diwans (no basmala, verses from line one) and
+  // heading-only fronts take the plain path below. Whatever precedes the
+  // first verse becomes ParsedPoem.frontMatter (the بطاقة الكتاب preamble
+  // stays excluded as before), and the verses between the split point and the
+  // first real heading become a synthetic untitled opening chapter — so
+  // chunked poems keep them reachable and cards stop claiming the manuscript
+  // list is "N بيت".
+  const excludedPreamble = isFrontMatterPreamble(preamble);
+  const segments: { title?: string; slug?: string; excluded: boolean; lines: string[] }[] = [
+    { excluded: excludedPreamble, lines: preamble.split("\n") },
+    ...rawChapters.map((c) => ({ title: c.title, slug: c.slug, excluded: false, lines: c.content.split("\n") })),
+  ];
+  let split: { seg: number; line: number } | null = null;
+  let sawBasmala = false;
+  outer: for (let s = 0; s < segments.length; s++) {
+    for (let l = 0; l < segments[s].lines.length; l++) {
+      const t = segments[s].lines[l].trim();
+      if (isBasmalaLine(t)) sawBasmala = true;
+      if (HEMISTICH_SEP.test(segments[s].lines[l])) { split = { seg: s, line: l }; break outer; }
+    }
+  }
+
+  if (split && sawBasmala) {
+    const fmParts: string[] = [];
+    const pushFm = (seg: (typeof segments)[number], lines: string[]) => {
+      if (seg.excluded) return;
+      const text = lines.join("\n").trim();
+      if (!text) return;
+      fmParts.push((seg.title ? `### ${seg.title}\n\n` : "") + text);
+    };
+    for (let s = 0; s < split.seg; s++) pushFm(segments[s], segments[s].lines);
+    pushFm(segments[split.seg], segments[split.seg].lines.slice(0, split.line));
+    // a basmala dangling at the very end belongs to the verses, not the panel
+    const frontMatter = fmParts.join("\n\n").replace(/(?:بسم الله الرحمن الرحيم|﷽)\s*$/, "").trim() || undefined;
+
+    const chapters: PoemChapter[] = [];
+    const matlaVerses = collect(segments[split.seg].lines.slice(split.line).join("\n"));
+    if (matlaVerses.length) chapters.push({ title: "", slug: MATLA_SLUG, order: 0, verses: matlaVerses });
+    for (let s = split.seg + 1; s < segments.length; s++) {
+      const seg = segments[s];
+      chapters.push(
+        isProseChapterTitle(seg.title ?? "")
+          ? { title: seg.title!, slug: seg.slug!, order: s, verses: [], prose: seg.lines.join("\n") }
+          : { title: seg.title!, slug: seg.slug!, order: s, verses: collect(seg.lines.join("\n")) },
+      );
+    }
+    return { verses, verseCount: verses.length, openingVerse: verses[0]?.sadr, chapters, frontMatter };
+  }
+
+  // No tahqiq front matter detected — plain layout (diwans, heading-only fronts).
+  if (!excludedPreamble) collect(preamble);
+  const chapters: PoemChapter[] = rawChapters.map((c) =>
+    isProseChapterTitle(c.title)
+      ? { title: c.title, slug: c.slug, order: c.order, verses: [], prose: c.content }
+      : { title: c.title, slug: c.slug, order: c.order, verses: collect(c.content) },
+  );
 
   return {
     verses,

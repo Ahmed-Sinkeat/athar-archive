@@ -10,6 +10,7 @@ import { analyzePoem } from "../../../lib/chunk";
 import { readBody } from "../../../lib/read-body";
 import { hrefFor, toArabicDigits } from "../../../lib/display";
 import { markdownToSafeHtml } from "../../../lib/sanitize";
+import { MATLA_TITLE } from "../../../lib/chapters";
 
 export async function getStaticPaths() {
   const poems = (await getCollection("poem")).filter(isPub);
@@ -21,11 +22,13 @@ export async function getStaticPaths() {
     const a = analyzePoem(body);
     if (!a.chunked) continue;
     const byAnchor = notesByAnchor("poem", entry.id, graph, names);
-    const tocChapters = a.chapters.map((c) => ({ title: c.title, slug: c.slug, verses: c.verses.length }));
+    // the synthetic opening chapter has an empty title — label it here once so
+    // every consumer below (h1, TOC, prev/next, breadcrumbs) shows the same name
+    const tocChapters = a.chapters.map((c) => ({ title: c.title || MATLA_TITLE, slug: c.slug, verses: c.verses.length }));
     for (const c of a.chapters) {
       paths.push({
         params: { slug: entry.id, chapter: c.slug },
-        props: { entry, chapter: c, byAnchor, author: names.get(entry.data.person), allChapters: tocChapters },
+        props: { entry, chapter: { ...c, title: c.title || MATLA_TITLE }, byAnchor, author: names.get(entry.data.person), allChapters: tocChapters },
       });
     }
   }

@@ -280,46 +280,11 @@ function rehypeSentenceBreaks() {
   };
 }
 
-// EPUB-import inline footnotes: `<sup data-fn="N" data-sep-page="M">N</sup>`
-// with the note text bundled on the NEXT page-sep marker's data-notes JSON
-// array (1-indexed by N). reader.ts's popover only wires up
-// `sup[data-fn][data-note]` — without this pass those sups are inert (click
-// does nothing), since data-note is never attached to them.
-function propVal(props: Record<string, any> | undefined, dashName: string): string | undefined {
-  if (!props) return undefined;
-  if (props[dashName] != null) return String(props[dashName]);
-  const camel = dashName.replace(/-([a-z])/g, (_, c: string) => c.toUpperCase());
-  return props[camel] != null ? String(props[camel]) : undefined;
-}
-function rehypeInlineFootnotes() {
-  return (tree: any) => {
-    const notesByPage = new Map<string, string[]>();
-    const collect = (node: any) => {
-      if (node.tagName === "hr") {
-        const page = propVal(node.properties, "data-page");
-        const raw = propVal(node.properties, "data-notes");
-        if (page && raw) {
-          try { notesByPage.set(page, JSON.parse(raw)); } catch { /* malformed — skip */ }
-        }
-      }
-      node.children?.forEach(collect);
-    };
-    collect(tree);
-    if (notesByPage.size === 0) return;
-    const inject = (node: any) => {
-      if (node.tagName === "sup" && node.properties) {
-        const fn = propVal(node.properties, "data-fn");
-        const sepPage = propVal(node.properties, "data-sep-page");
-        if (fn && sepPage && !propVal(node.properties, "data-note")) {
-          const note = notesByPage.get(sepPage)?.[Number(fn) - 1];
-          if (note) node.properties["data-note"] = note;
-        }
-      }
-      node.children?.forEach(inject);
-    };
-    inject(tree);
-  };
-}
+// EPUB-import inline footnotes (`<sup data-fn>` + page-sep data-notes) pass
+// through untouched here — lib/page-footnotes.ts's wirePageFootnotes converts
+// them into plain markers + always-visible per-page footer boxes on the book
+// reading routes. (They used to become click-to-reveal popovers wired via a
+// data-note attribute; that path is gone.)
 
 const processor = unified()
   .use(remarkParse)
@@ -327,7 +292,6 @@ const processor = unified()
   .use(remarkRehype, { allowDangerousHtml: true })
   .use(rehypeRaw)
   .use(rehypeSanitize, sanitizeSchema)
-  .use(rehypeInlineFootnotes)
   .use(rehypeAtharCite)
   .use(rehypeSentenceBreaks)
   .use(rehypeWikiLinks)

@@ -1,11 +1,17 @@
 ---
 import { markdownToSafeHtml } from "../lib/sanitize";
+import { wirePageFootnotes } from "../lib/page-footnotes";
 
 interface Props {
   body: string;
   class?: string;
+  // Book reading pages: render footnotes (GFM + EPUB data-notes) as
+  // always-visible per-page footer boxes instead of clickable refs/endnotes —
+  // same treatment as the chunked chapter route (see lib/page-footnotes.ts).
+  pageFootnotes?: boolean;
 }
-const { body, class: cls } = Astro.props;
-const html = markdownToSafeHtml(body);
+const { body, class: cls, pageFootnotes = false } = Astro.props;
+const compiled = markdownToSafeHtml(body);
+const html = pageFootnotes ? wirePageFootnotes(compiled, body) : compiled;
 ---
 <div class:list={["prose", cls]} data-ar set:html={html}></div>

@@ -177,9 +177,9 @@ const jsonLd = bookLd({
         <div class="rule-short"></div>
         <StudyBar downloadUrl={entry.data.attachments?.[0]?.url} />
         {isMatn("book", entry.data) ? (
-          <div class="u49fcd85" data-matn={entry.id} data-unit="فقرة"><Prose body={body ?? ""} /></div>
+          <div class="u49fcd85" data-matn={entry.id} data-unit="فقرة"><Prose body={body ?? ""} pageFootnotes /></div>
         ) : (
-          <div class="u49fcd85"><Prose body={body ?? ""} /></div>
+          <div class="u49fcd85"><Prose body={body ?? ""} pageFootnotes /></div>
         )}
 
         {/* All annotations now open in the sidebar/popup panel: phrase notes are

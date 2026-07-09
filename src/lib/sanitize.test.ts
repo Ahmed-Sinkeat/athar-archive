@@ -118,14 +118,15 @@ describe("markdownToSafeHtml", () => {
   });
 
   describe("inline epub footnotes (data-fn + data-sep-page)", () => {
-    it("wires a data-note attribute from the page-sep's data-notes so the popover can open", () => {
+    it("passes data-fn sups through for page-footnotes.ts to rewrite (no popover data-note wiring)", () => {
       const md = `نص قبل<sup data-fn="2" data-sep-page="36">2</sup>بعد النص.
 
 <hr class="page-sep" data-page="36" data-notes='["ملاحظة أولى.","ملاحظة ثانية."]' />
 
 نص تال.`;
       const html = markdownToSafeHtml(md);
-      expect(html).toContain('data-note="ملاحظة ثانية."');
+      expect(html).toContain('data-fn="2"');
+      expect(html).not.toContain("data-note=");
     });
   });
 });
