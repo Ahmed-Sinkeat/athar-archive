@@ -2,7 +2,6 @@
 import { getCollection } from "astro:content";
 import Base from "../layouts/Base.astro";
 import { toArabicDigits, hrefFor, eraLabel, eraHref, labelFor } from "../lib/display";
-import { analyzePoem } from "../lib/chunk";
 import { readBody } from "../lib/read-body";
 import { websiteLd } from "../lib/structured-data";
 import { loadGraph, personEraMap } from "../lib/site";
@@ -41,10 +40,17 @@ const weeklyDress: Record<string, { cls: string; textCls: string; label: string 
 // markers) down to a plain excerpt — same idea as the QAPage JSON-LD strip.
 function excerptOf(entry: { data: { description?: string } }, body: string): string {
   if (entry.data.description) return entry.data.description;
-  return body.replace(/^#{1,6}\s+.*$/gm, "").replace(/[*_`>#]/g, "").replace(/\s+/g, " ").trim().slice(0, 160);
+  return body
+    .replace(/<!--[\s\S]*?-->/g, "") // importer artifacts, e.g. "<!-- telegram: https://t.me/... -->"
+    .replace(/^#{1,6}\s+.*$/gm, "")
+    .replace(/[*_`>#]/g, "")
+    .replace(/\s+/g, " ")
+    .trim()
+    .slice(0, 160);
 }
 const featuredBook = pickEntry(pub(books));
 const featuredArticle = pickEntry(pub(articles));
+// منظومة الأسبوع moved to /poems — no featured poem pick here anymore
 const featuredBookExcerpt = featuredBook ? excerptOf(featuredBook, await readBody(featuredBook)) : "";
 const featuredArticleExcerpt = featuredArticle ? excerptOf(featuredArticle, await readBody(featuredArticle)) : "";
 
@@ -90,10 +96,6 @@ const stats = [
 ];
 
 const anns = pub(announcements).sort((a, b) => (b.data.priority ?? 5) - (a.data.priority ?? 5)).slice(0, 3);
-
-// recommended poem, rotating weekly like the rest of مختارات الأسبوع
-const featured = pickEntry(pub(poems));
-const featuredVerses = featured ? analyzePoem(await readBody(featured)).verses.slice(0, 1) : [];
 
 // latest across materials by published_at — متن/مصدر أصلي get the accent type-badge (HANDOFF §4)
 const SOURCE_KINDS = new Set(["متن", "مصدر أصلي"]);
@@ -195,7 +197,7 @@ const latest = [
     </div>
   )}
 
-  {(featured || weekly.length > 0 || featuredBook || featuredArticle) && (
+  {(weekly.length > 0 || featuredBook || featuredArticle) && (
     <div class="home-section">
       <div class="section-head"><h2>مختارات الأسبوع</h2><div class="rule-fill"></div></div>
       <div class="weekly-grid">
@@ -206,18 +208,6 @@ const latest = [
             <div class="weekly-foot">
               <span class="faint">{featuredBook.data.title}</span>
               <a class="weekly-ref" href={hrefFor("book", featuredBook.id)}>اقرأ الكتاب ←</a>
-            </div>
-          </div>
-        )}
-        {featured && (
-          <div class="weekly-card k-copper">
-            <div class="weekly-kicker k-copper">منظومة مختارة</div>
-            <p class="weekly-text" data-ar>
-              {featured.data.description || (featuredVerses[0] && `${featuredVerses[0].sadr} ${featuredVerses[0].ajz ?? ""}`)}
-            </p>
-            <div class="weekly-foot">
-              <span class="faint">{featured.data.title} · {personName.get(featured.data.person)}</span>
-              <a class="weekly-ref" href={hrefFor("poem", featured.id)}>اقرأ المنظومة ←</a>
             </div>
           </div>
         )}

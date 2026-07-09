@@ -168,10 +168,10 @@ img { max-width: 100%; }
    where one does, the press just snaps instantly, which still reads as a
    response rather than nothing. touch-action:manipulation also drops the
    old mobile-browser 300ms tap delay on all of these. */
-:where(.btn, .btn-accent, .btn-danger, .icon-btn, .card, .pill, a.pill-link, .sort-btn, .theme-swatch, .toggle-btn, .chap-chip, .lib-tabs button, .browse-flat-toggle) {
+:where(.btn, .btn-accent, .btn-danger, .icon-btn, .card, .pill, a.pill-link, .sort-btn, .theme-swatch, .toggle-btn, .chap-chip, .lib-tabs button, .browse-view-toggle button) {
   touch-action: manipulation;
 }
-:where(.btn, .btn-accent, .btn-danger, .icon-btn, .card, .pill, a.pill-link, .sort-btn, .theme-swatch, .toggle-btn, .chap-chip, .lib-tabs button, .browse-flat-toggle):active {
+:where(.btn, .btn-accent, .btn-danger, .icon-btn, .card, .pill, a.pill-link, .sort-btn, .theme-swatch, .toggle-btn, .chap-chip, .lib-tabs button, .browse-view-toggle button):active {
   transform: scale(0.96);
   transition: transform 0.08s ease;
 }
@@ -261,12 +261,8 @@ img { max-width: 100%; }
   touch-action: manipulation; /* ponytail: kills 300ms tap delay without JS */
 }
 .icon-btn[hidden] { display: none; } /* [hidden]'s UA display:none loses to .icon-btn's display:grid without this */
-/* topbar sidebar toggles: reader.ts only shows these on pages with a
-   ReaderSidebar; within that, split further by viewport — the mobile popup
-   opener has no job on desktop (sidebar already visible there) and vice versa */
-@media (max-width: 780px) {
-  [data-action="sidebar:desktop-toggle"] { display: none !important; }
-}
+/* topbar sidebar toggle: reader.ts only shows this on pages with a
+   ReaderSidebar, and only on mobile — desktop always shows the sidebar */
 @media (min-width: 781px) {
   [data-action="sidebar:mobile-toggle"] { display: none !important; }
 }
@@ -759,6 +755,7 @@ textarea.cinput { resize: vertical; line-height: 1.7; }
 .weekly-text {
   flex: 1; margin: 0; color: var(--ink); text-wrap: pretty;
   font-family: var(--f-disp); font-size: calc(17px * var(--reading-scale)); line-height: 1.9;
+  display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden;
 }
 .weekly-text-quran { font-family: var(--f-quran); font-size: calc(23px * var(--reading-scale)); line-height: 2.1; text-align: center; padding: 6px 0; }
 .weekly-text-hadith { font-family: var(--f-matn); font-size: calc(17px * var(--reading-scale)); line-height: 2; }
@@ -803,16 +800,75 @@ textarea.cinput { resize: vertical; line-height: 1.7; }
   display: flex; flex-direction: column; gap: 10px;
 }
 .audio-caption { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; font-family: var(--font-ui); font-size: 13.5px; color: var(--ink-soft); }
-.audio-pick { font-family: var(--font-ui); font-size: 13px; color: var(--ink); background: var(--surface); border: 1px solid var(--rule-strong); border-radius: var(--radius); padding: 4px 8px; cursor: pointer; max-width: 60%; }
 .audio audio { width: 100%; height: 40px; }
-.audio-tools { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
-.audio-speed { display: flex; gap: 4px; }
-.audio-speed button {
-  font-family: var(--font-mono); font-size: 12px; color: var(--ink-soft); background: var(--surface);
-  border: 1px solid var(--rule-strong); border-radius: var(--radius); padding: 4px 9px; cursor: pointer;
+
+/* ---------- persistent audio player (poem/book reader) ---------- */
+/* reserve room in the reading column so the fixed bar never covers the tail of the content */
+body.has-audio-bar .reading-pad, body.has-audio-bar .wrap-matn { padding-bottom: 130px; }
+
+/* fill/handle anchor to the physical left always — media timelines read
+   left→right even on this RTL site (see AudioPlayer.astro / reader.ts's
+   seekFromClientX, which seeks off clientX, not a logical/RTL-aware offset) */
+.audio-rail { position: relative; height: 4px; background: var(--line); cursor: pointer; }
+.audio-rail-fill { position: absolute; inset-block: 0; left: 0; width: 0%; background: var(--copper); pointer-events: none; }
+.audio-rail-handle {
+  position: absolute; top: 50%; left: 0%; transform: translate(-50%, -50%);
+  width: 11px; height: 11px; border-radius: 99px; background: var(--copper); box-shadow: 0 0 0 3px var(--card);
+  pointer-events: none;
 }
-.audio-speed button[aria-pressed="true"] { color: var(--accent); border-color: var(--accent); }
-.audio .btn { align-self: flex-start; }
+
+.audio-bar {
+  position: fixed; inset-inline: 0; inset-block-end: 0; z-index: 60;
+  background: color-mix(in srgb, var(--card) 97%, transparent); backdrop-filter: blur(16px);
+  border-top: 1px solid var(--line); box-shadow: 0 -10px 30px rgba(0,0,0,.1);
+}
+.audio-row { max-width: 900px; margin: 0 auto; padding: 12px 28px; display: flex; align-items: center; gap: 16px; }
+.audio-toggle {
+  flex: none; width: 46px; height: 46px; border-radius: 99px; border: none; cursor: pointer;
+  background: var(--copper); color: var(--onbrand); display: grid; place-items: center;
+}
+.audio-info { min-width: 0; flex: 1; display: flex; flex-direction: column; gap: 2px; overflow: hidden; }
+.audio-title { margin: 0; font-family: var(--font-display); font-weight: 700; font-size: 14.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.audio-subtitle { margin: 0; font-size: 10.5px; color: var(--ink-faint); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.audio-time { flex: none; font-size: 11.5px; color: var(--ink-faint); font-variant-numeric: tabular-nums; white-space: nowrap; unicode-bidi: isolate; }
+.audio-speed-wrap { position: relative; flex: none; }
+.audio-speed {
+  background: var(--paper-2); border: 1px solid var(--rule); border-radius: var(--radius);
+  padding: 6px 10px; font-family: inherit; font-size: 11.5px; font-weight: 600; color: var(--ink-soft);
+  cursor: pointer; white-space: nowrap; unicode-bidi: isolate;
+}
+.audio-speed-menu {
+  position: absolute; bottom: calc(100% + 8px); inset-inline-start: 50%; transform: translateX(-50%);
+  z-index: 61; background: var(--card); border: 1px solid var(--rule-strong); border-radius: var(--radius-lg);
+  padding: 5px; display: flex; flex-direction: column; gap: 1px; box-shadow: 0 12px 28px rgba(0,0,0,.2); min-width: 66px;
+}
+[dir="rtl"] .audio-speed-menu { transform: translateX(50%); }
+.audio-speed-menu button {
+  border: none; border-radius: 6px; padding: 7px 10px; font-family: inherit; font-size: 12px;
+  cursor: pointer; background: transparent; color: var(--ink-soft); text-align: center; white-space: nowrap; unicode-bidi: isolate;
+}
+.audio-speed-menu button[aria-pressed="true"] { background: var(--paper-2); color: var(--accent); font-weight: 700; }
+.audio-dl {
+  flex: none; background: none; border: 1px solid var(--rule-strong); border-radius: var(--radius);
+  width: 32px; height: 32px; display: grid; place-items: center; color: var(--ink-soft); transition: border-color .15s, color .15s;
+}
+.audio-dl:hover { border-color: var(--accent); color: var(--accent); }
+.audio-minimize { flex: none; background: none; border: none; padding: 4px; color: var(--ink-faint); cursor: pointer; display: grid; place-items: center; }
+
+/* physical corner (not inset-inline-end) — the prototype fixes this to the
+   bottom-right regardless of page direction, like most floating action buttons */
+.audio-fab {
+  position: fixed; bottom: 20px; right: 20px; z-index: 60;
+  width: 58px; height: 58px; border-radius: 99px; padding: 3px; border: none; cursor: pointer;
+  background: conic-gradient(var(--copper) var(--audio-progress, 0%), var(--line) 0);
+  box-shadow: 0 10px 26px rgba(0,0,0,.24);
+}
+.audio-fab-inner { display: flex; width: 100%; height: 100%; border-radius: 99px; background: var(--card); align-items: center; justify-content: center; color: var(--copper); }
+
+@media (max-width: 640px) {
+  .audio-row { padding: 9px 16px; gap: 10px; }
+  .audio-toggle { width: 40px; height: 40px; }
+}
 
 /* ---------- attachments / downloads ---------- */
 .downloads { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
@@ -825,18 +881,6 @@ textarea.cinput { resize: vertical; line-height: 1.7; }
 .download-link .fmt { font-family: var(--font-mono); font-size: 10px; letter-spacing: .08em; color: var(--ink-faint); text-transform: uppercase; }
 
 /* ---------- lesson reader ---------- */
-.audio-bar {
-  display: flex; align-items: center; gap: 14px; background: var(--surface);
-  border: 1px solid var(--rule-strong); border-radius: var(--radius-lg); padding: 13px 18px;
-  margin-top: 8px;
-}
-.audio-play {
-  width: 44px; height: 44px; border-radius: 50%; background: var(--accent-solid);
-  display: grid; place-items: center; flex: 0 0 auto; border: none; cursor: pointer;
-}
-.audio-play::before { content: ""; width: 0; height: 0; border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent var(--onbrand); margin-inline-start: 2px; }
-.audio-time { font-family: var(--font-ui); font-size: 11.5px; color: var(--ink-faint); direction: ltr; }
-.audio-track { flex: 1; height: 6px; background: var(--rule); border-radius: 4px; position: relative; overflow: hidden; }
 .lesson-grid { display: grid; grid-template-columns: 1fr 240px; gap: 40px; align-items: start; margin-top: 34px; }
 .toc-side { position: sticky; top: 150px; }
 .toc-box { border: 1px solid var(--rule); border-radius: var(--radius-lg); background: var(--surface); padding: 16px; }
@@ -1039,22 +1083,19 @@ html.hide-vnums .vnum { display: none; }
 [data-width="wide"] .wrap-read { max-width: min(1400px, max(900px, 46vw)); }
 .chap-grid { display: grid; grid-template-columns: 232px 1fr; gap: 52px; align-items: start; } /* HANDOFF.md §5 */
 .chap-grid > .reading-pad { grid-column: 2; grid-row: 1; min-width: 0; }
-/* desktop sidebar show/hide (reader.ts "sidebar:desktop-toggle", persisted
-   like reading width/theme) — content column expands to fill the freed space */
-[data-sidebar="hidden"] .chap-grid { grid-template-columns: 1fr; }
-[data-sidebar="hidden"] .chap-grid > .reading-pad { grid-column: 1; }
-[data-sidebar="hidden"] .toc-side { display: none; }
 .chap-toc-aside { grid-column: 1; grid-row: 1; position: sticky; top: 80px; margin-top: 52px; }
 /* on very wide screens .chap-outer centers the grid, leaving a dead gap
    between the real viewport edge and the aside; past 1300px there's room for
    both the full reading column and the rail, so pin the aside to the true
-   edge instead of leaving it stranded inside the centered column */
+   edge instead of leaving it stranded inside the centered column. Physical
+   `right` (not inset-inline-end) — this is an RTL site, so inline-end would
+   pin it to the physical LEFT instead, opposite of the sidebar's actual side. */
 @media (min-width: 1300px) {
   .chap-grid { grid-template-columns: 1fr; }
   .chap-grid > .reading-pad { grid-column: 1; }
   .chap-toc-aside {
     position: fixed; grid-column: unset; grid-row: unset;
-    inset-inline-end: 32px; top: 80px; width: 232px;
+    right: 32px; top: 80px; width: 232px;
     max-height: calc(100vh - 100px); overflow-y: auto; margin-top: 0;
   }
 }
@@ -1093,6 +1134,11 @@ html.hide-vnums .vnum { display: none; }
 .book-info-author strong { color: var(--ink); font-weight: 600; }
 .book-info-edition { font-family: var(--font-ui); font-size: 11.5px; color: var(--ink-faint); margin-top: 4px; line-height: 1.6; }
 .book-info-progress { margin-top: 12px; }
+/* "تابع القراءة" resume card on the book's main page — populated client-side
+   (marks.ts) from the last chapter progress recorded on a chapter page */
+.book-resume-card { margin-bottom: 22px; }
+.book-resume-link { display: block; margin-top: 6px; font-family: var(--font-display); font-weight: 700; font-size: 15px; color: var(--accent); text-decoration: none; }
+.book-resume-link:hover { text-decoration: underline; }
 /* mobile TOC disclosure — hidden on desktop, shown on mobile */
 .chap-mobile-toc { display: none; border: 1px solid var(--rule); border-radius: var(--radius-lg); background: var(--surface); margin-top: 14px; }
 .chap-mobile-toc summary { padding: 9px 14px; cursor: pointer; font-family: var(--font-ui); font-size: 13px; font-weight: 600; color: var(--accent); list-style: none; display: flex; justify-content: space-between; align-items: center; }
@@ -1149,7 +1195,6 @@ html.hide-vnums .vnum { display: none; }
 .eyebrow.pill-link:hover { background: none; color: var(--verdigris); text-decoration: underline; }
 
 /* browse: «عرض الكل» flat sortable list ⇆ grouped accordion */
-.browse-toolbar { display: flex; justify-content: flex-start; margin-bottom: 16px; }
 .browse-flat { display: none; }
 .show-flat .browse-flat { display: block; }
 .show-flat .browse-grouped { display: none; }
@@ -1353,10 +1398,11 @@ html[data-theme="noir"] ::highlight(aa-find)    { background-color: rgba(255, 15
 .lib-src { font-family: var(--font-ui); font-size: 12.5px; color: var(--ink-faint); margin-top: 9px; }
 .lib-del { position: absolute; inset-block-start: 10px; inset-inline-end: 12px; background: transparent; border: 0; color: var(--ink-faint); cursor: pointer; font-size: 18px; line-height: 1; }
 .lib-del:hover { color: var(--accent); }
-.lib-tabs { display: flex; justify-content: center; gap: 8px; margin-bottom: 20px; }
+/* segmented pill control — one shared inset track, active tab lifts on a card+shadow */
+.lib-tabs { display: flex; justify-content: center; gap: 2px; margin-bottom: 20px; background: var(--paper-2); border-radius: var(--radius-pill); padding: 4px; width: fit-content; margin-inline: auto; }
 .lib-io { display: flex; justify-content: center; gap: 8px; margin-bottom: 20px; }
-.lib-tabs button { display: inline-flex; align-items: center; gap: 7px; font-family: var(--font-ui); font-size: 14px; color: var(--ink-soft); background: var(--surface); border: 1px solid var(--rule-strong); border-radius: var(--radius-pill); padding: 7px 18px; cursor: pointer; }
-.lib-tabs button[aria-pressed="true"] { color: var(--accent); border-color: var(--accent); }
+.lib-tabs button { display: inline-flex; align-items: center; gap: 7px; font-family: var(--font-ui); font-size: 14px; font-weight: 500; color: var(--ink-faint); background: transparent; border: none; border-radius: var(--radius-pill); padding: 7px 18px; cursor: pointer; }
+.lib-tabs button[aria-pressed="true"] { color: var(--ink); font-weight: 600; background: var(--surface); box-shadow: 0 1px 4px rgba(0,0,0,.12); }
 /* color-coded per kind — same palette as the highlight/selection-toolbar dots
    (aa-tools .aa-dot), so a تظليل color and its كُناشتي tab visually match */
 .lib-tab-dot { width: 8px; height: 8px; border-radius: 50%; flex: none; }
@@ -1365,8 +1411,8 @@ html[data-theme="noir"] ::highlight(aa-find)    { background-color: rgba(255, 15
 .lib-tab-dot.k-note { background: rgba(240,195,60,0.95); }
 .lib-send { display: block; margin-bottom: 18px; }
 .lib-group-tabs { display: flex; justify-content: center; align-items: center; gap: 8px; margin-bottom: 18px; font-family: var(--font-ui); font-size: 13px; }
-.lib-group-tabs button { font-size: 13px; color: var(--ink-soft); background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius-pill); padding: 4px 13px; cursor: pointer; }
-.lib-group-tabs button[aria-pressed="true"] { color: var(--accent); border-color: var(--accent); }
+.lib-group-tabs button { font-size: 13px; font-weight: 500; color: var(--ink-soft); background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius-pill); padding: 4px 13px; cursor: pointer; }
+.lib-group-tabs button[aria-pressed="true"] { color: var(--accent); border-color: var(--accent); font-weight: 600; background: color-mix(in srgb, var(--accent) 10%, transparent); }
 .lib-group { margin-bottom: 22px; }
 .lib-group summary {
   cursor: pointer; list-style: none; display: flex; align-items: center; gap: 10px;
@@ -1374,8 +1420,8 @@ html[data-theme="noir"] ::highlight(aa-find)    { background-color: rgba(255, 15
 }
 .lib-group summary::-webkit-details-marker { display: none; }
 .lib-group-count {
-  font-family: var(--font-mono); font-size: 11.5px; color: var(--accent);
-  width: 22px; height: 22px; border: 1px solid var(--accent-border); border-radius: 50%;
+  font-family: var(--font-ui); font-size: 11.5px; font-weight: 600; color: var(--ink-soft);
+  background: var(--paper-2); border-radius: var(--radius-pill); padding: 3px 10px;
   display: inline-flex; align-items: center; justify-content: center; flex: none;
 }
 .lib-group summary::after {
@@ -1383,14 +1429,26 @@ html[data-theme="noir"] ::highlight(aa-find)    { background-color: rgba(255, 15
   transform: rotate(90deg);
 }
 .lib-group:not([open]) summary::after { transform: rotate(-90deg); }
-/* one shared bordered box per group, entries stacked with dividers inside —
-   not a card-grid of independently-boxed entries */
-.lib-group-box { border: 1px solid var(--rule-strong); border-radius: var(--radius-lg); background: var(--surface); overflow: hidden; }
-.lib-entry { position: relative; padding: 18px 20px; text-align: center; }
-.lib-entry + .lib-entry { border-top: 1px solid var(--rule); }
-.lib-entry .benefit-quote { border: none; background: none; padding: 0; border-radius: 0; }
-.lib-entry .lib-note, .lib-entry .lib-src { text-align: center; }
-.lib-entry .lib-del { inset-inline-end: 10px; inset-block-start: 12px; }
+.lib-group-label { display: flex; align-items: baseline; gap: 8px; }
+.lib-group-title { font-weight: 600; }
+.lib-group-chapter { font-family: var(--font-ui); font-weight: 400; font-size: 12.5px; color: var(--ink-faint); }
+/* group is a stack of independently-boxed cards, one per mark, accented by kind */
+.lib-group-box { display: flex; flex-direction: column; gap: 10px; }
+.lib-entry {
+  position: relative; padding: 16px; padding-inline-end: 44px; text-align: start;
+  background: var(--paper-2); border-inline-start: 3px solid var(--rule-strong);
+  border-radius: 9px;
+}
+.lib-entry.k-benefit { border-inline-start-color: rgba(60,175,110,0.95); }
+.lib-entry.k-note { border-inline-start-color: rgba(240,195,60,0.95); }
+.lib-entry.k-mistake { border-inline-start-color: rgba(155,89,182,0.95); }
+.lib-entry.k-benefit .benefit-quote { color: rgba(40,130,85,1); }
+.lib-entry.k-note .benefit-quote { color: rgba(160,120,10,1); }
+.lib-entry.k-mistake .benefit-quote { color: rgba(110,65,130,1); }
+.lib-entry .benefit-quote { border: none; background: none; padding: 0; border-radius: 0; font-size: 15.5px; line-height: 1.95; }
+.lib-entry .lib-src { font-size: 11.5px; }
+.lib-entry .lib-del { inset-inline-end: 10px; inset-block-start: 12px; width: 24px; height: 24px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; }
+.lib-entry .lib-del:hover { background: var(--rule-strong); color: var(--ink); }
 /* --- flat list rows (listing pages: الكتب / الشعر / الدروس / الأعلام / …) --- */
 /* Override card-box styles when inside .flat-list so items render as rows */
 .flat-list { list-style: none; padding: 0; margin: 0; border-block-start: 1px solid var(--rule); }
@@ -1422,6 +1480,8 @@ html[data-theme="noir"] ::highlight(aa-find)    { background-color: rgba(255, 15
   margin: 0; margin-inline-start: auto;
 }
 .flat-list .card-cta { display: none; }
+.flat-list .card-kindrow .pill { min-width: 60px; text-align: center; }
+.flat-list .card::after { content: "←"; flex: none; font-size: 13px; color: var(--ink-faint); }
 
 @media (max-width: 600px) {
   .flat-list .card {
@@ -1449,7 +1509,26 @@ html[data-theme="noir"] ::highlight(aa-find)    { background-color: rgba(255, 15
 .flat-row-meta { font-family: var(--font-ui); font-size: 12.5px; color: var(--ink-faint); white-space: nowrap; }
 /* Gold monospace counter — matches verse numbers and stat strip */
 .flat-row-count { font-family: var(--font-mono); font-size: 12px; color: var(--gold-text); white-space: nowrap; }
-/* Browse filter bar */
+/* browse toolbar: two-state segmented pill, مُجمَّع ⇆ قائمة (grouped/flat view) */
+.browse-toolbar { display: flex; justify-content: flex-start; margin-bottom: 12px; }
+.browse-view-toggle {
+  display: inline-flex; border: 1px solid var(--line2); border-radius: var(--radius);
+  overflow: hidden;
+}
+.browse-view-toggle button {
+  font-family: var(--font-ui); font-size: 13px; font-weight: 600; color: var(--ink-soft);
+  background: var(--surface); border: none; padding: 7px 16px; cursor: pointer;
+}
+.browse-view-toggle button + button { border-inline-start: 1px solid var(--line2); }
+.browse-view-toggle button[aria-pressed="true"] { background: var(--ink); color: var(--surface); }
+
+/* Browse filter bar: labeled card holding the نوع/علم/موضوع selects */
+.browse-filter-bar {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  margin-block-end: 16px; padding: 12px 14px; background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+}
+.browse-filter-label { font-family: var(--font-ui); font-size: 12px; font-weight: 700; color: var(--ink-faint); flex: none; }
 .browse-filters { display: flex; gap: 8px; flex-wrap: wrap; margin-block-end: 12px; }
 .browse-filters-standalone { margin-block-end: 16px; }
 .browse-filter {
@@ -1458,11 +1537,7 @@ html[data-theme="noir"] ::highlight(aa-find)    { background-color: rgba(255, 15
   border-radius: var(--radius); padding: 6px 10px; cursor: pointer; max-width: 220px;
 }
 .browse-filter:focus { outline: none; border-color: var(--accent); }
-.browse-toolbar {
-  display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: space-between;
-  margin-block-end: 16px; padding: 12px 14px; background: var(--card); border: 1px solid var(--line);
-  border-radius: var(--radius-lg);
-}
+.browse-filter-text { cursor: text; }
 
 /* --- chapter chip bar (book index + chapter pages) --- */
 .chap-bar { display: flex; flex-wrap: wrap; gap: 6px; margin-block: 20px 4px; }
@@ -1507,20 +1582,17 @@ html.pages-flow p:has(+ .page-sep),
 html.pages-flow .page-sep + p { display: inline; margin: 0; }
 
 /* --- printed-footer footnotes: one <aside> per page, right after its content ---
-   Numbers come from data-fn-num (set server-side to match the inline marker a
-   تخريج note is cited by) rather than a CSS counter — a per-page counter would
-   restart at 1 while the inline superscript keeps counting continuously through
-   the whole chapter, so the two would drift apart page after page. */
+   Numbers (data-fn-num, set server-side) restart at ١ on every page — حاشية
+   and تخريج mixed into one simple sequential count, no per-kind heading. */
 .page-footnotes { margin: 10px 0 24px; padding: 10px 14px; border: 1px solid var(--rule); background: var(--paper-2); border-radius: var(--radius); }
-.page-footnotes .fn-kicker { font-family: var(--font-ui); font-size: 10.5px; font-weight: 600; letter-spacing: .1em; color: var(--ink-faint); display: block; margin-bottom: 6px; }
 .page-footnotes ol { list-style: none; margin: 0; padding: 0; }
 /* Always visible, like a printed book's footnotes -- no click-to-reveal (that
    mechanism silently broke when a ref lost an attribute during a rewrite,
    dumping readers at the page bottom; always-visible removes the failure
    mode entirely). :target still gets a brief highlight so a jump from the
    inline marker is easy to spot. */
-.page-footnotes li { font-family: var(--f-matn); font-size: 14.5px; line-height: 1.8; color: var(--ink-soft); padding: 4px 0; scroll-margin-top: 90px; }
-.page-footnotes li::before { content: attr(data-fn-num) ". "; color: var(--ink-faint); }
+.page-footnotes li { font-family: var(--f-matn); font-size: 15.5px; line-height: 1.85; color: var(--ink); padding: 4px 0; scroll-margin-top: 90px; }
+.page-footnotes li::before { content: attr(data-fn-num) ". "; color: var(--ink-soft); font-weight: 600; }
 .page-footnotes li:target { color: var(--ink); background: color-mix(in srgb, var(--accent) 12%, transparent); border-radius: 4px; }
 .page-footnotes p { display: inline; margin: 0; }
 /* «إخفاء الحواشي» reader setting -- hides the footer block entirely, page-sep

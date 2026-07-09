@@ -119,8 +119,14 @@ const jsonLd = bookLd({
           </div>
         )}
       </div>
-      {audios.length > 0 && <div class="u49fcd85"><AudioPlayer sources={audios} label="استماعٌ إلى المتن" /></div>}
+      {audios.length > 0 && <AudioPlayer sources={audios} title={entry.data.title} subtitle={author} />}
       <div class="rule-short"></div>
+      {/* populated client-side from localStorage (marks.ts) if you've read a chapter before */}
+      <div class="book-info-card book-resume-card" data-book-resume={entry.id} hidden>
+        <div class="toc-label">تابع القراءة</div>
+        <a class="book-resume-link" data-book-resume-link></a>
+        <div class="bar"><span data-book-resume-bar></span></div>
+      </div>
       {/* light TOC: links to the on-demand chapter pages; no body in this HTML */}
       <nav class="toc-box has-current" aria-label="فهرس الفصول">
         <div class="toc-label">فصول الكتاب · {toArabicDigits(groupToc(toc).length)} فصل</div>
@@ -161,7 +167,7 @@ const jsonLd = bookLd({
             </div>
           )}
         </div>
-        {audios.length > 0 && <div class="u49fcd85"><AudioPlayer sources={audios} label="استماعٌ إلى المتن" /></div>}
+        {audios.length > 0 && <AudioPlayer sources={audios} title={entry.data.title} subtitle={author} />}
         <div class="rule-short"></div>
         <StudyBar downloadUrl={entry.data.attachments?.[0]?.url} />
         {isMatn("book", entry.data) ? (

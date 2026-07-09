@@ -1,4 +1,10 @@
 ---
+// Persistent audio player — fixed to the viewport bottom so play/pause/seek/
+// speed stay reachable without scrolling back to the top. Real playback runs
+// on a hidden native <audio> (data-audio-el); reader.ts drives the custom
+// bar/FAB UI off its play/pause/timeupdate/ended events. Progressive
+// enhancement: no-JS still gets a plain, fully-usable native <audio controls>
+// (data-audio-fallback), hidden once JS confirms it can render the bar.
 import { toArabicDigits } from "../lib/display";
 
 interface Source {
@@ -10,45 +16,67 @@ interface Source {
 }
 interface Props {
   sources: Source[];
-  label?: string;
+  title: string;
+  subtitle?: string;
 }
-const { sources, label = "الاستماع" } = Astro.props;
+const { sources, title, subtitle } = Astro.props;
 const list = sources.filter((s) => s?.url);
 const cur = list[0];
 const mime = (f?: "opus" | "mp3") => (f === "mp3" ? "audio/mpeg" : "audio/ogg; codecs=opus");
-const meta = (s: Source) =>
-  [s.duration, s.sizeBytes ? `${toArabicDigits((s.sizeBytes / 1_048_576).toFixed(1))} م.ب` : null].filter(Boolean).join(" · ");
 ---
 {cur && (
-  <figure class="audio" data-audio>
-    <figcaption class="audio-caption">
-      <span>{label}</span>
-      {/* multiple recitations → a small native dropdown (the arrow) to switch; single → just metadata */}
-      {list.length > 1 ? (
-        <select class="audio-pick" data-audio-pick aria-label="اختر التسجيل">
-          {list.map((s, i) => (
-            <option value={i} data-url={s.url} data-type={mime(s.format)} data-meta={meta(s)}>
-              {s.label || `تسجيل ${i + 1}`}
-            </option>
-          ))}
-        </select>
-      ) : (
-        <span class="faint u6cb285c" data-audio-meta>{meta(cur)}</span>
-      )}
-    </figcaption>
-    <!-- native controls: fully usable without our JS, keyboard + screen-reader friendly -->
-    <audio controls preload="metadata" data-audio-el>
+  <div data-audio>
+    <audio preload="metadata" data-audio-el hidden>
       <source src={cur.url} type={mime(cur.format)} data-audio-source />
-      <a href={cur.url}>تنزيل الملف الصوتي</a>
     </audio>
-    <div class="audio-tools">
-      <div class="audio-speed" data-audio-speed role="group" aria-label="سرعة التشغيل">
-        {["0.75", "1", "1.25", "1.5", "2"].map((r) => (
-          <button type="button" data-speed={r} aria-pressed={r === "1" ? "true" : "false"}>{r}×</button>
-        ))}
+
+    <noscript>
+      <figure class="audio">
+        <figcaption class="audio-caption">{title}{subtitle && ` — ${subtitle}`}</figcaption>
+        <audio controls preload="none">
+          <source src={cur.url} type={mime(cur.format)} />
+          <a href={cur.url}>تنزيل الملف الصوتي</a>
+        </audio>
+      </figure>
+    </noscript>
+
+    <button type="button" class="audio-fab" data-audio-fab hidden aria-label="فتح المشغّل">
+      <span class="audio-fab-inner">
+        <span data-audio-icon-play><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M7 5l12 7-12 7V5z"></path></svg></span>
+        <span data-audio-icon-pause hidden><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"></rect><rect x="14" y="5" width="4" height="14" rx="1"></rect></svg></span>
+      </span>
+    </button>
+
+    <div class="audio-bar" data-audio-bar hidden>
+      <div class="audio-rail" data-audio-rail>
+        <div class="audio-rail-fill" data-audio-fill></div>
+        <div class="audio-rail-handle" data-audio-handle></div>
       </div>
-      <!-- href stays as a same-origin-download fallback (no-JS, or blob fetch failing e.g. CORS) -->
-      <a class="btn u8e0fa20" href={cur.url} download data-audio-dl>تحميل</a>
+      <div class="audio-row">
+        <button type="button" class="audio-toggle" data-audio-toggle aria-label="تشغيل / إيقاف">
+          <span data-audio-icon-play><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M7 5l12 7-12 7V5z"></path></svg></span>
+          <span data-audio-icon-pause hidden><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"></rect><rect x="14" y="5" width="4" height="14" rx="1"></rect></svg></span>
+        </button>
+        <div class="audio-info">
+          <p class="audio-title">{title}</p>
+          {subtitle && <p class="audio-subtitle">{subtitle}</p>}
+        </div>
+        <span class="audio-time" dir="ltr" data-audio-time>0:00 / 0:00</span>
+        <span class="audio-speed-wrap">
+          <button type="button" dir="ltr" class="audio-speed" data-audio-speed-toggle>×1</button>
+          <div class="audio-speed-menu" data-audio-speed-menu hidden>
+            {["2", "1.5", "1.25", "1", "0.75"].map((r) => (
+              <button type="button" dir="ltr" data-speed={r} aria-pressed={r === "1" ? "true" : "false"}>×{r}</button>
+            ))}
+          </div>
+        </span>
+        <a class="audio-dl" href={cur.url} download data-audio-dl title="تحميل" aria-label="تحميل">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 19h16"></path></svg>
+        </a>
+        <button type="button" class="audio-minimize" data-audio-minimize title="تصغير" aria-label="تصغير">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"></path></svg>
+        </button>
+      </div>
     </div>
-  </figure>
+  </div>
 )}

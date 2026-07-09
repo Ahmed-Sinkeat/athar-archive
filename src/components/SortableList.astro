@@ -53,6 +53,7 @@ const sortedItems = [...items].sort((a, b) => a.data.title.localeCompare(b.data.
         data-title={it.data.title}
         data-year={yearOf(it)}
         data-person={(it.data.person as string | undefined) ?? ""}
+        data-person-name={it.data.person ? (graph.getById("person", it.data.person as string)?.data.title as string | undefined) ?? "" : ""}
         data-topics={((it.data.topics as string[] | undefined) ?? []).join(",")}
         data-kind={(it.data.kind as string | undefined) ?? ""}
       ><EntityCard {...card(it)} /></li>

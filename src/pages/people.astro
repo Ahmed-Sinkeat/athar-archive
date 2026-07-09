@@ -56,7 +56,10 @@ const centuries = [...centuryBuckets.entries()]
     <!-- century timeline is the primary view (mockup التراجم); flat sortable list behind the toggle -->
     <div class="browse" data-browse>
       <div class="browse-toolbar">
-        <button type="button" class="btn browse-flat-toggle" data-flat-toggle>عرض الكل</button>
+        <div class="browse-view-toggle" role="group" aria-label="طريقة العرض">
+          <button type="button" data-flat-toggle="grouped" aria-pressed="true">مُجمَّع</button>
+          <button type="button" data-flat-toggle="flat" aria-pressed="false">قائمة</button>
+        </div>
       </div>
 
       <div class="browse-flat">

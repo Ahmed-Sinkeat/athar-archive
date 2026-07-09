@@ -57,7 +57,7 @@ const jsonLd = articleLd({
           <div class="reader-byline">{author}</div>
         </div>
 
-        {audio && <div class="u583f758"><AudioPlayer sources={[audio]} label="استماعٌ إلى المقالة" /></div>}
+        {audio && <AudioPlayer sources={[audio]} title={entry.data.title} subtitle={author} />}
 
         <div class="rule-short"></div>
         <div class="ua26bda7"><Prose body={body} /></div>

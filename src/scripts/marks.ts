@@ -23,6 +23,7 @@ interface Mark {
   text: string;
   note?: string;
   title?: string;
+  section?: string;
 }
 
 const HL_NAME: Record<Kind, string> = { mistake: "aa-mistake", benefit: "aa-benefit", note: "aa-note-hl" };
@@ -146,7 +147,7 @@ function overlapping(off: { start: number; end: number }): Mark[] {
 }
 
 function addMark(kind: Kind, off: { start: number; end: number }, text: string, note?: string): Mark {
-  const mark: Mark = { id: Math.random().toString(36).slice(2, 9), ...off, kind, text, note, title: pageTitle() };
+  const mark: Mark = { id: Math.random().toString(36).slice(2, 9), ...off, kind, text, note, title: pageTitle(), section: pageSection() };
   const marks = load();
   marks.push(mark);
   save(marks);
@@ -164,6 +165,11 @@ function updateNote(id: string, note: string) {
 }
 function pageTitle(): string {
   return (document.querySelector("h1.reader-title, h1.page-title, .reader-byline")?.textContent || document.title.split(" · ")[0] || "").trim();
+}
+// .reader-subtitle only exists on nested كتاب/باب chapter pages — the sub-heading
+// one level below pageTitle() (see book/[slug]/[chapter].astro's reader-subtitle)
+function pageSection(): string | undefined {
+  return document.querySelector(".reader-subtitle")?.textContent?.trim() || undefined;
 }
 
 function positionTools(range: Range) {
@@ -399,6 +405,35 @@ document.addEventListener("click", (e) => {
   if ((e.target as HTMLElement).closest('[data-action="page:find"]')) { e.preventDefault(); openFind(); }
 });
 
+// --- book chapter progress (تابع القراءة on the book's main page) — which
+// chapter you last opened, separate from maybeResume()'s in-page scroll offset ---
+function recordBookProgress() {
+  const el = document.querySelector<HTMLElement>("[data-book-progress]");
+  const bookId = el?.dataset.bookProgress;
+  if (!el || !bookId) return;
+  try {
+    localStorage.setItem("aa-book-progress:" + bookId, JSON.stringify({
+      href: location.pathname,
+      title: el.dataset.bookProgressTitle,
+      idx: Number(el.dataset.bookProgressIdx),
+      total: Number(el.dataset.bookProgressTotal),
+    }));
+  } catch {}
+}
+function showBookResume() {
+  const el = document.querySelector<HTMLElement>("[data-book-resume]");
+  const bookId = el?.dataset.bookResume;
+  if (!el || !bookId) return;
+  let saved: { href: string; title: string; idx: number; total: number } | null = null;
+  try { saved = JSON.parse(localStorage.getItem("aa-book-progress:" + bookId) || "null"); } catch {}
+  if (!saved?.href || !saved.total) { el.hidden = true; return; }
+  const link = el.querySelector<HTMLAnchorElement>("[data-book-resume-link]");
+  const bar = el.querySelector<HTMLElement>("[data-book-resume-bar]");
+  if (link) { link.href = saved.href; link.textContent = `${saved.title} — متابعة القراءة ←`; }
+  if (bar) bar.style.width = `${Math.round((saved.idx / saved.total) * 100)}%`;
+  el.hidden = false;
+}
+
 function onPage() {
   hideTools();
   closeFind();
@@ -407,6 +442,8 @@ function onPage() {
   syncFindFab();
   maybeResume();
   jumpToHash();
+  recordBookProgress();
+  showBookResume();
 }
 onPage();
 document.addEventListener("astro:page-load", onPage);

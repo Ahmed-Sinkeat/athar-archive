@@ -1,4 +1,5 @@
 ---
+import { getCollection } from "astro:content";
 import Base from "../layouts/Base.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
 import TitleFilter from "../components/TitleFilter.astro";
@@ -38,17 +39,42 @@ const cardList = await Promise.all(
   })
 );
 const cardsById = new Map(cardList.map((c) => [c.id, c]));
+
+// منظومةُ الأسبوع — same weekly rotation as the homepage's مختارات الأسبوع / the
+// حديث الأسبوع card on /hadith (moved here from the homepage per request)
+const publishedPoems = (await getCollection("poem")).filter((p) => p.data.status === "published");
+const wk = Math.floor(Date.now() / 6.048e8);
+const featured = publishedPoems.length ? publishedPoems[wk % publishedPoems.length] : null;
+const featuredVerses = featured ? analyzePoem(await readBody(featured)).verses.slice(0, 1) : [];
+const featuredText = featured
+  ? featured.data.description || (featuredVerses[0] && `${featuredVerses[0].sadr} ${featuredVerses[0].ajz ?? ""}`)
+  : "";
 ---
 <Base title="الشعر" description="منظوماتٌ علميةٌ محقَّقةٌ مُشكَّلةٌ مع الشروح والتخريج." activeNav="poems" searchScope={{ type: "poem" }} jsonLd={collectionLd({ title: "الشعر", path: "/poems", crumbs: [{ name: "الرئيسية", path: "/" }, { name: "الشعر", path: "/poems" }] })}>
   <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "الشعر" }]} />
   <div class="wrap-mid uf5db21c">
     <h1 class="page-title">الشعر والمنظومات</h1>
     <p class="hub-lede poems-lede">{toArabicDigits(cardList.length)} منظومة علمية مُشكَّلة مُرقَّمة الأبيات، مع الشروح والتخريج.</p>
+
+    {featured && (
+      <div class="weekly-card k-copper poem-of-week">
+        <div class="weekly-kicker k-copper">منظومةُ الأسبوع</div>
+        <p class="weekly-text" data-ar>{featuredText}</p>
+        <div class="weekly-foot">
+          <span class="faint">{featured.data.title} · {featured.data.person ? names.get(featured.data.person as string) : ""}</span>
+          <a class="weekly-ref" href={hrefFor("poem", featured.id)}>اقرأ المنظومة ←</a>
+        </div>
+      </div>
+    )}
+
     <TitleFilter placeholder="تصفية حسب العنوان…" />
 
     <div class="browse show-flat" data-browse>
       <div class="browse-toolbar">
-        <button type="button" class="btn browse-flat-toggle" data-flat-toggle>عرض مُجمَّع</button>
+        <div class="browse-view-toggle" role="group" aria-label="طريقة العرض">
+          <button type="button" data-flat-toggle="grouped" aria-pressed="false">مُجمَّع</button>
+          <button type="button" data-flat-toggle="flat" aria-pressed="true">قائمة</button>
+        </div>
       </div>
 
       <div class="browse-flat">
@@ -166,4 +192,5 @@ const cardsById = new Map(cardList.map((c) => [c.id, c]));
   .poem-card-verse { margin: 0; font-family: var(--f-disp); font-size: 19px; line-height: 1.9; }
   .poem-sep { color: var(--copper); padding: 0 10px; }
   .poems-lede { margin-bottom: 18px; }
+  .poem-of-week { margin-bottom: 26px; }
 </style>

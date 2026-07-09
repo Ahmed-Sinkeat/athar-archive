@@ -51,7 +51,14 @@ const kindOptions = [...new Set(
 ---
 <div class="browse show-flat" data-browse>
   <div class="browse-toolbar">
-    {(kindOptions.length > 1 || personOptions.length > 1 || topicOptions.length > 1) && (
+    <div class="browse-view-toggle" role="group" aria-label="طريقة العرض">
+      <button type="button" data-flat-toggle="grouped" aria-pressed="false">مُجمَّع</button>
+      <button type="button" data-flat-toggle="flat" aria-pressed="true">قائمة</button>
+    </div>
+  </div>
+  {(kindOptions.length > 1 || personOptions.length > 1 || topicOptions.length > 1) && (
+    <div class="browse-filter-bar">
+      <span class="browse-filter-label">تصفية:</span>
       <div class="browse-filters">
         {kindOptions.length > 1 && (
           <select class="browse-filter" data-filter-key="kind" aria-label="فلترة بالنوع">
@@ -60,10 +67,12 @@ const kindOptions = [...new Set(
           </select>
         )}
         {personOptions.length > 1 && (
-          <select class="browse-filter" data-filter-key="person" aria-label="فلترة بالعَلَم">
-            <option value="">كل الأعلام</option>
-            {personOptions.map((p) => <option value={p.id}>{p.name}</option>)}
-          </select>
+          <>
+            <input type="text" list="browse-person-list" class="browse-filter browse-filter-text" data-filter-key="person" aria-label="فلترة بالعَلَم" placeholder="كل الأعلام" />
+            <datalist id="browse-person-list">
+              {personOptions.map((p) => <option value={p.name} />)}
+            </datalist>
+          </>
         )}
         {topicOptions.length > 1 && (
           <select class="browse-filter" data-filter-key="topic" aria-label="فلترة بالموضوع">
@@ -72,9 +81,8 @@ const kindOptions = [...new Set(
           </select>
         )}
       </div>
-    )}
-    <button type="button" class="btn browse-flat-toggle" data-flat-toggle>عرض مُجمَّع</button>
-  </div>
+    </div>
+  )}
   <div class="browse-flat"><SortableList items={allItems} card={card} /></div>
   <div class="masail-tree browse-grouped">
   {groups.map((g: SubjectGroup) => (

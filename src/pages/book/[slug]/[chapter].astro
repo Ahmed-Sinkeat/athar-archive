@@ -184,17 +184,27 @@ for (const [pNum, fns] of footnotesByPage) {
   footerItemsByPage.set(pNum, [...existing, ...fns.map((fn, i) => ({ id: `fn-${pNum}-${existing.length + i}`, kind: "تخريج", body: fn.body }))]);
 }
 
-// 4. Point each GFM footnote ref [^id] at its footer <li> instead of the
-// (now-stripped) end-of-document Footnotes section. Also record the inline
-// marker's own number so the footer <li> can display that same number instead
-// of a per-page-restarted count (see .page-footnotes li::before in global.css).
+// 4. Number every footer item sequentially within its own page (١، ٢، ٣…) —
+// حاشية and تخريج mixed in one simple per-page count, not the compiled
+// footnote's own chapter-wide continuous number. That continuous number used
+// to leave gaps on any page carrying both kinds (e.g. "١، ٢، ٧، ٨" — the
+// حاشية items claimed 1-2 from a page-local counter while the تخريج items
+// kept their real chapter-wide numbers). The inline [^id] marker below gets
+// this same page-relative number, so a click still lands on a matching one.
 const numberByFooterId = new Map<string, string>();
+for (const items of footerItemsByPage.values()) {
+  items.forEach((it, i) => numberByFooterId.set(it.id, String(i + 1)));
+}
+
+// Point each GFM footnote ref [^id] at its footer <li> instead of the
+// (now-stripped) end-of-document Footnotes section, relabeled with the
+// page-relative number computed above.
 const footnoteRefsWired = html.replace(
-  /<sup><a href="#user-content-fn-([a-zA-Z0-9_-]+)"[^>]*data-footnote-ref[^>]*>(\d+)<\/a><\/sup>/g,
-  (match, id, num) => {
+  /<sup><a href="#user-content-fn-([a-zA-Z0-9_-]+)"[^>]*data-footnote-ref[^>]*>\d+<\/a><\/sup>/g,
+  (match, id) => {
     const target = footnoteAnchorById.get(id);
-    if (!target) return match;
-    numberByFooterId.set(target, num);
+    const num = target && numberByFooterId.get(target);
+    if (!target || !num) return match;
     return `<sup><a href="#${target}" data-footnote-ref>${num}</a></sup>`;
   },
 );
@@ -202,14 +212,10 @@ const footnoteRefsWired = html.replace(
 function renderFooter(pageNum: number): string {
   const items = footerItemsByPage.get(pageNum);
   if (!items?.length) return "";
-  let hashiyaCounter = 0;
   const lis = items
-    .map((it) => {
-      const num = numberByFooterId.get(it.id) ?? String(++hashiyaCounter);
-      return `<li id="${it.id}" data-fn-num="${num}">${markdownToSafeHtml(it.body)}</li>`;
-    })
+    .map((it) => `<li id="${it.id}" data-fn-num="${numberByFooterId.get(it.id)}">${markdownToSafeHtml(it.body)}</li>`)
     .join("");
-  return `<aside class="page-footnotes"><span class="fn-kicker">الحواشي وفروق النسخ</span><ol>${lis}</ol></aside>`;
+  return `<aside class="page-footnotes"><ol>${lis}</ol></aside>`;
 }
 
 // 5. Splice a printed-footer <aside> after each page's content — right before
@@ -414,7 +420,13 @@ const finalContent = (() => {
           <div class="book-info-title">{entry.data.title}</div>
           {author && <div class="book-info-author">تأليف <strong>{author}</strong></div>}
           {entry.data.edition && <div class="book-info-edition">{entry.data.edition}</div>}
-          <div class="book-info-progress">
+          <div
+            class="book-info-progress"
+            data-book-progress={entry.id}
+            data-book-progress-title={chapter.title}
+            data-book-progress-idx={chIdx + 1}
+            data-book-progress-total={allChapters.length}
+          >
             <div class="faint" style="font-size: 11.5px;">تقدّمك في الكتاب: {chapter.title} — {chIdx + 1} من {allChapters.length}</div>
             <div class="bar"><span style={`width: ${Math.round(((chIdx + 1) / allChapters.length) * 100)}%`}></span></div>
           </div>

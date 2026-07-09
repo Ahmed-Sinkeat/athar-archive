@@ -6,9 +6,9 @@
 
 type Kind = "mistake" | "benefit" | "note";
 type GroupBy = "book" | "topic" | "person";
-interface Mark { id: string; kind: Kind; text: string; note?: string; title?: string }
+interface Mark { id: string; kind: Kind; text: string; note?: string; title?: string; section?: string }
 interface Item extends Mark { path: string }
-interface SourceMeta { path: string; person: string; topics: string[] }
+interface SourceMeta { path: string; person: string; topics: string[]; title: string }
 
 // path → {person, topics}, built at build time (benefits.astro) since marks
 // themselves only carry {path, title}. Chapter/page sub-routes
@@ -65,6 +65,17 @@ function sendMistakes(items: Item[]) {
   window.location.href = `mailto:admin@arthurarchive.com?subject=${encodeURIComponent("إبلاغ عن أخطاء")}&body=${encodeURIComponent(body)}`;
 }
 
+// book » chapter » باب, e.g. "زاد المستقنع، كتاب الصلاة – باب الأذان والإقامة".
+// title/section may repeat the book name on flat (non-chaptered) pages — drop dupes.
+function citationFor(m: Item): string {
+  const book = metaFor(m.path)?.title || m.title;
+  if (!book) return "";
+  const parts = [book];
+  if (m.title && m.title !== book) parts.push(m.title);
+  if (m.section && m.section !== m.title) parts.push(m.section);
+  return "من: " + parts.join("، ");
+}
+
 // Shared body-builder for a mark's quote/note/source, used by both the
 // mistake tab's card grid (buildCard, boxed independently) and grouped
 // benefit/note lists (buildEntry, stacked rows inside one shared box).
@@ -75,7 +86,8 @@ function fillMarkBody(container: HTMLElement, m: Item) {
   q.textContent = `«${m.text}»`;
   container.appendChild(q);
   if (m.note) { const n = document.createElement("div"); n.className = "lib-note"; n.textContent = m.note; container.appendChild(n); }
-  if (m.title) { const s = document.createElement("div"); s.className = "lib-src"; s.textContent = "من: " + m.title; container.appendChild(s); }
+  const citation = citationFor(m);
+  if (citation) { const s = document.createElement("div"); s.className = "lib-src"; s.textContent = citation; container.appendChild(s); }
 }
 
 function buildDeleteBtn(m: Item): HTMLButtonElement {
@@ -111,7 +123,7 @@ function buildGroupBox(items: Item[]): HTMLElement {
   box.className = "lib-group-box";
   for (const m of items) {
     const a = document.createElement("a");
-    a.className = "lib-entry";
+    a.className = `lib-entry k-${m.kind}`;
     a.href = `${m.path}#m=${m.id}`;
     fillMarkBody(a, m);
     a.appendChild(buildDeleteBtn(m));
@@ -129,7 +141,10 @@ function groupItems(items: Item[]): [string, Item[]][] {
   const groups = new Map<string, Item[]>();
   const add = (key: string, m: Item) => { if (!groups.has(key)) groups.set(key, []); groups.get(key)!.push(m); };
   for (const m of items) {
-    if (groupBy === "book") { add(m.title || "بلا عنوان", m); continue; }
+    // group by the source's real book/poem/article title, not the mark's own
+    // title — on a nested كتاب/باب chapter page m.title is the chapter, not
+    // the book (see citationFor's comment)
+    if (groupBy === "book") { add(metaFor(m.path)?.title || m.title || "بلا عنوان", m); continue; }
     const meta = metaFor(m.path);
     if (groupBy === "person") { add(meta?.person || "غير مصنَّف", m); continue; }
     if (meta?.topics.length) meta.topics.forEach((t) => add(t, m));
@@ -173,8 +188,20 @@ function render() {
     details.open = true;
     const summary = document.createElement("summary");
     const countEl = document.createElement("span"); countEl.className = "lib-group-count"; countEl.textContent = String(groupItemsList.length);
-    const labelEl = document.createElement("span"); labelEl.textContent = label;
-    summary.append(countEl, labelEl);
+    const labelWrap = document.createElement("span"); labelWrap.className = "lib-group-label";
+    const titleEl = document.createElement("span"); titleEl.className = "lib-group-title"; titleEl.textContent = label;
+    labelWrap.appendChild(titleEl);
+    // "حسب الكتاب" only: show the chapter under the book title, when every
+    // item in the group shares one (a book group can span several chapters)
+    if (groupBy === "book") {
+      const chapters = new Set(groupItemsList.map((m) => m.title || ""));
+      const chapter = chapters.size === 1 ? [...chapters][0] : "";
+      if (chapter && chapter !== label) {
+        const chapEl = document.createElement("span"); chapEl.className = "lib-group-chapter"; chapEl.textContent = chapter;
+        labelWrap.appendChild(chapEl);
+      }
+    }
+    summary.append(labelWrap, countEl);
     details.appendChild(summary);
     details.appendChild(buildGroupBox(groupItemsList));
     listEl.appendChild(details);

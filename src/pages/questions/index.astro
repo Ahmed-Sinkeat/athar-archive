@@ -33,10 +33,12 @@ const topicsForFilter = [...topicMap.entries()]
     {(personsForFilter.length > 1 || topicsForFilter.length > 1) && (
       <div class="browse-filters browse-filters-standalone">
         {personsForFilter.length > 1 && (
-          <select class="browse-filter" data-filter-key="person" aria-label="فلترة بالعَلَم">
-            <option value="">كل الأعلام</option>
-            {personsForFilter.map((p) => <option value={p.id}>{p.name}</option>)}
-          </select>
+          <>
+            <input type="text" list="questions-person-list" class="browse-filter browse-filter-text" data-filter-key="person" aria-label="فلترة بالعَلَم" placeholder="كل الأعلام" />
+            <datalist id="questions-person-list">
+              {personsForFilter.map((p) => <option value={p.name} />)}
+            </datalist>
+          </>
         )}
         {topicsForFilter.length > 1 && (
           <select class="browse-filter" data-filter-key="topic" aria-label="فلترة بالموضوع">
@@ -66,6 +68,7 @@ const topicsForFilter = [...topicMap.entries()]
                     <li
                       data-title={it.data.title}
                       data-person={(it.data.person as string | undefined) ?? ""}
+                      data-person-name={it.data.person ? names.get(it.data.person as string) ?? "" : ""}
                       data-topics={((it.data.topics as string[] | undefined) ?? []).join(",")}
                     >
                       <a href={hrefFor("question", it.id)}>
@@ -92,6 +95,7 @@ const topicsForFilter = [...topicMap.entries()]
               <li
                 data-title={it.data.title}
                 data-person={(it.data.person as string | undefined) ?? ""}
+                data-person-name={it.data.person ? names.get(it.data.person as string) ?? "" : ""}
                 data-topics={((it.data.topics as string[] | undefined) ?? []).join(",")}
               ><a href={hrefFor("question", it.id)}>{it.data.title}</a></li>
             ))}

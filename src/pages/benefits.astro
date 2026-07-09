@@ -15,14 +15,14 @@ import { hrefFor } from "../lib/display";
 // pattern as compose.astro's index — this page is noindex + perf-exempt).
 const graph = await loadGraph();
 const names = await personNameMap();
-const sourceIndex: { path: string; person: string; topics: string[] }[] = [];
+const sourceIndex: { path: string; person: string; topics: string[]; title: string }[] = [];
 for (const collection of ["book", "poem", "article"] as const) {
   for (const entry of (await getCollection(collection)).filter(isPub)) {
     const person = entry.data.person ? names.get(entry.data.person as string) ?? "" : "";
     const topics = ((entry.data.topics as string[] | undefined) ?? [])
       .map((t) => graph.getById("topic", t)?.data.title as string | undefined)
       .filter((t): t is string => !!t);
-    sourceIndex.push({ path: hrefFor(collection, entry.id), person, topics });
+    sourceIndex.push({ path: hrefFor(collection, entry.id), person, topics, title: entry.data.title as string });
   }
 }
 ---

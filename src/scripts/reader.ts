@@ -7,7 +7,6 @@ import { stripTashkeel } from "../lib/display";
 const LS = {
   theme: "aa-theme",
   scale: "aa-scale",
-  sidebar: "aa-sidebar",
   tashkeel: "aa-tashkeel",
   vnums: "aa-vnums",
   pages: "aa-pages",
@@ -47,17 +46,6 @@ function syncWidthButtons(w: Width) {
   document.querySelectorAll<HTMLElement>("[data-width-btn]").forEach((b) => {
     b.setAttribute("aria-pressed", String(b.dataset.widthBtn === w));
   });
-}
-
-// --- reader sidebar (desktop show/hide, persisted like theme) ---
-function isSidebarHidden(): boolean {
-  return root.getAttribute("data-sidebar") === "hidden";
-}
-function setSidebarHidden(hidden: boolean) {
-  if (hidden) root.setAttribute("data-sidebar", "hidden");
-  else root.removeAttribute("data-sidebar");
-  localStorage.setItem(LS.sidebar, hidden ? "hidden" : "visible");
-  document.querySelectorAll<HTMLElement>('[data-action="sidebar:desktop-toggle"]').forEach((b) => b.setAttribute("aria-pressed", String(hidden)));
 }
 
 // --- theme (3 states: paper default / noir / mono) ---
@@ -304,9 +292,6 @@ const actions: Record<string, () => void> = {
     el.open = !el.open;
     if (el.open) el.scrollIntoView({ block: "nearest" });
   },
-  // topbar "show/hide sidebar" icon (desktop) — same persisted-pref pattern as
-  // reading width/theme.
-  "sidebar:desktop-toggle": () => setSidebarHidden(!isSidebarHidden()),
 };
 
 document.addEventListener("click", (e) => {
@@ -493,8 +478,11 @@ document.addEventListener("click", (e) => {
   if (flatBtn) {
     const wrap = flatBtn.closest<HTMLElement>("[data-browse]");
     if (wrap) {
-      const flat = wrap.classList.toggle("show-flat");
-      flatBtn.textContent = flat ? "عرض مُجمَّع" : "عرض الكل";
+      const flat = flatBtn.dataset.flatToggle === "flat";
+      wrap.classList.toggle("show-flat", flat);
+      wrap.querySelectorAll<HTMLElement>("[data-flat-toggle]").forEach((b) =>
+        b.setAttribute("aria-pressed", String(b === flatBtn)),
+      );
       localStorage.setItem(LS.browseView, flat ? "flat" : "grouped");
     }
   }
@@ -510,8 +498,9 @@ function restoreBrowseState() {
   const view = localStorage.getItem(LS.browseView);
   if (view === "grouped") {
     wrap.classList.remove("show-flat");
-    const btn = wrap.querySelector<HTMLElement>("[data-flat-toggle]");
-    if (btn) btn.textContent = "عرض الكل";
+    wrap.querySelectorAll<HTMLElement>("[data-flat-toggle]").forEach((b) =>
+      b.setAttribute("aria-pressed", String(b.dataset.flatToggle === "grouped")),
+    );
   }
   const openKey = LS.browseOpen + ":" + location.pathname;
   const open = new Set(JSON.parse(localStorage.getItem(openKey) || "[]") as string[]);
@@ -543,36 +532,40 @@ document.addEventListener("click", (e) => {
   });
 });
 
-// Browse page in-page filter: person + topic + kind <select> dropdowns on listing pages.
-// Works on BrowseGroups flat list (data-person / data-topics / data-kind on each <li>),
-// the lesson list in series/index.astro, and the masail accordion ([data-masail-browse]).
-document.addEventListener("change", (e) => {
-  const sel = (e.target as HTMLElement).closest<HTMLSelectElement>("[data-filter-key]");
-  if (!sel) return;
-  const key = sel.dataset.filterKey!;
-  const val = sel.value;
+// Browse page in-page filter: person (searchable text input) + topic/kind <select>
+// dropdowns on listing pages. Works on BrowseGroups flat list (data-person /
+// data-person-name / data-topics / data-kind on each <li>), the lesson list in
+// series/index.astro, and the masail accordion ([data-masail-browse]). Person
+// matches by name substring (like the title search below) since its list is too
+// long to pick an exact id from a <select> — see data-filter-key="person" markup.
+const norm = (s: string) => stripTashkeel(s.trim().toLowerCase());
+function applyBrowseFilter(el: HTMLInputElement | HTMLSelectElement) {
+  const key = el.dataset.filterKey!;
+  const val = el.value;
+  const needle = key === "person" ? norm(val) : val;
+  const personMatch = (name: string | undefined) => !!needle && norm(name ?? "").includes(needle);
 
   // flat-list (BrowseGroups + lessons)
-  const scope = sel.closest("[data-browse]") ?? sel.closest(".wrap-mid");
+  const scope = el.closest("[data-browse]") ?? el.closest(".wrap-mid");
   if (scope) {
     scope.querySelectorAll<HTMLElement>(".flat-list li").forEach((li) => {
       if (!val) { li.classList.remove("is-hidden"); return; }
       const match = key === "kind"
         ? li.dataset.kind === val
         : key === "person"
-          ? li.dataset.person === val
+          ? personMatch(li.dataset.personName)
           : (li.dataset.topics ?? "").split(",").includes(val);
       li.classList.toggle("is-hidden", !match);
     });
   }
 
   // masail accordion ([data-masail-browse])
-  const masailScope = sel.closest<HTMLElement>("[data-masail-browse]");
+  const masailScope = el.closest<HTMLElement>("[data-masail-browse]");
   if (masailScope) {
     masailScope.querySelectorAll<HTMLElement>(".masail-list li[data-person]").forEach((li) => {
       if (!val) { li.classList.remove("is-hidden"); return; }
       const match = key === "person"
-        ? li.dataset.person === val
+        ? personMatch(li.dataset.personName)
         : (li.dataset.topics ?? "").split(",").includes(val);
       li.classList.toggle("is-hidden", !match);
     });
@@ -586,6 +579,14 @@ document.addEventListener("change", (e) => {
       ds.style.display = (visible || !val) ? "" : "none";
     });
   }
+}
+document.addEventListener("change", (e) => {
+  const sel = (e.target as HTMLElement).closest<HTMLSelectElement>("select[data-filter-key]");
+  if (sel) applyBrowseFilter(sel);
+});
+document.addEventListener("input", (e) => {
+  const el = (e.target as HTMLElement).closest<HTMLInputElement>('input[data-filter-key="person"]');
+  if (el) applyBrowseFilter(el);
 });
 
 // --- local in-page search / filtering for listing pages ---
@@ -1027,22 +1028,6 @@ function enhanceProse() {
   document.addEventListener("astro:page-load", setup);
 })();
 
-// --- audio recitation switcher (متون/منظومات with multiple recordings) ---
-// Delegated so it keeps working on content swapped in by view transitions.
-document.addEventListener("change", (e) => {
-  const sel = (e.target as HTMLElement).closest<HTMLSelectElement>("[data-audio-pick]");
-  if (!sel) return;
-  const fig = sel.closest<HTMLElement>("[data-audio]");
-  const opt = sel.selectedOptions[0];
-  if (!fig || !opt) return;
-  const audio = fig.querySelector<HTMLAudioElement>("[data-audio-el]");
-  const src = fig.querySelector<HTMLSourceElement>("[data-audio-source]");
-  const dl = fig.querySelector<HTMLAnchorElement>("[data-audio-dl]");
-  if (src) { src.src = opt.dataset.url || ""; src.type = opt.dataset.type || ""; }
-  if (audio) audio.load();
-  if (dl) dl.href = opt.dataset.url || "";
-});
-
 // resume playback position — keyed by the audio file's own URL (stable across
 // domain/path changes to the page itself), saved on pause/seek/unload and
 // restored once metadata loads so seeking to a saved time is valid
@@ -1077,19 +1062,129 @@ document.addEventListener(
   ),
 );
 
-// playback speed — one site-wide preference (not per-recording), applied to
-// every <audio> immediately and to future loads via the loadedmetadata handler above
+// --- persistent audio bar: play/pause, seek, speed popover, minimize ⇆ FAB ---
+// Real playback is the hidden native <audio data-audio-el>; this drives a
+// custom fixed bar off its events so the poem/book reader never needs to
+// scroll back to the top to control it. See AudioPlayer.astro for markup.
+const formatTime = (s: number): string => {
+  if (!isFinite(s) || s < 0) s = 0;
+  return `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}`;
+};
+function setIcons(scope: HTMLElement, playing: boolean) {
+  scope.querySelectorAll<HTMLElement>("[data-audio-icon-play]").forEach((el) => { el.hidden = playing; });
+  scope.querySelectorAll<HTMLElement>("[data-audio-icon-pause]").forEach((el) => { el.hidden = !playing; });
+}
+function syncAudioUI(fig: HTMLElement, audio: HTMLAudioElement) {
+  setIcons(fig, !audio.paused);
+  const pct = audio.duration ? Math.min(100, (audio.currentTime / audio.duration) * 100) : 0;
+  fig.querySelector<HTMLElement>("[data-audio-fill]")?.style.setProperty("width", `${pct}%`);
+  fig.querySelector<HTMLElement>("[data-audio-handle]")?.style.setProperty("left", `${pct}%`);
+  fig.querySelector<HTMLElement>("[data-audio-fab]")?.style.setProperty("--audio-progress", `${pct}%`);
+  const time = fig.querySelector("[data-audio-time]");
+  if (time) time.textContent = `${formatTime(audio.currentTime)} / ${formatTime(audio.duration || 0)}`;
+}
+function seekFromClientX(fig: HTMLElement, audio: HTMLAudioElement, rail: HTMLElement, clientX: number) {
+  if (!audio.duration) return;
+  const rect = rail.getBoundingClientRect();
+  // physical left edge is always 0%, regardless of RTL — timelines read left→right
+  const frac = Math.min(1, Math.max(0, (clientX - rect.left) / rect.width));
+  audio.currentTime = frac * audio.duration;
+  syncAudioUI(fig, audio);
+}
+function closeSpeedMenu(fig: HTMLElement) {
+  const menu = fig.querySelector<HTMLElement>("[data-audio-speed-menu]");
+  if (menu) menu.hidden = true;
+}
 document.addEventListener("click", (e) => {
-  const btn = (e.target as HTMLElement).closest<HTMLElement>("[data-audio-speed] [data-speed]");
-  if (!btn) return;
-  const rate = parseFloat(btn.dataset.speed!);
-  const group = btn.closest<HTMLElement>("[data-audio-speed]")!;
-  const fig = btn.closest<HTMLElement>("[data-audio]");
-  const audio = fig?.querySelector<HTMLAudioElement>("[data-audio-el]");
-  if (audio) audio.playbackRate = rate;
-  localStorage.setItem(LS.audioSpeed, String(rate));
-  group.querySelectorAll<HTMLElement>("[data-speed]").forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
+  const t = e.target as HTMLElement;
+  const fig = t.closest<HTMLElement>("[data-audio]");
+
+  const toggle = t.closest<HTMLElement>("[data-audio-toggle]");
+  if (toggle) {
+    const audio = fig?.querySelector<HTMLAudioElement>("[data-audio-el]");
+    if (audio) { audio.paused ? audio.play() : audio.pause(); }
+    return;
+  }
+  const rail = t.closest<HTMLElement>("[data-audio-rail]");
+  if (rail) {
+    const audio = fig?.querySelector<HTMLAudioElement>("[data-audio-el]");
+    if (audio) seekFromClientX(fig!, audio, rail, e.clientX);
+    return;
+  }
+  const minimize = t.closest<HTMLElement>("[data-audio-minimize]");
+  if (minimize && fig) {
+    fig.querySelector<HTMLElement>("[data-audio-bar]")!.hidden = true;
+    fig.querySelector<HTMLElement>("[data-audio-fab]")!.hidden = false;
+    document.body.classList.remove("has-audio-bar");
+    closeSpeedMenu(fig);
+    return;
+  }
+  const fab = t.closest<HTMLElement>("[data-audio-fab]");
+  if (fab && fig) {
+    fig.querySelector<HTMLElement>("[data-audio-fab]")!.hidden = true;
+    fig.querySelector<HTMLElement>("[data-audio-bar]")!.hidden = false;
+    document.body.classList.add("has-audio-bar");
+    return;
+  }
+  const speedToggle = t.closest<HTMLElement>("[data-audio-speed-toggle]");
+  if (speedToggle && fig) {
+    const menu = fig.querySelector<HTMLElement>("[data-audio-speed-menu]")!;
+    menu.hidden = !menu.hidden;
+    return;
+  }
+  const speedBtn = t.closest<HTMLElement>("[data-audio-speed-menu] [data-speed]");
+  if (speedBtn && fig) {
+    const rate = parseFloat(speedBtn.dataset.speed!);
+    const audio = fig.querySelector<HTMLAudioElement>("[data-audio-el]");
+    if (audio) audio.playbackRate = rate;
+    localStorage.setItem(LS.audioSpeed, String(rate));
+    fig.querySelectorAll<HTMLElement>("[data-audio-speed-menu] [data-speed]").forEach((b) =>
+      b.setAttribute("aria-pressed", String(b === speedBtn)),
+    );
+    const pill = fig.querySelector("[data-audio-speed-toggle]");
+    if (pill) pill.textContent = `×${speedBtn.dataset.speed}`;
+    closeSpeedMenu(fig);
+    return;
+  }
+  // click outside an open speed popover closes it
+  document.querySelectorAll<HTMLElement>("[data-audio-speed-menu]:not([hidden])").forEach((menu) => {
+    if (!menu.closest("[data-audio]")?.contains(t) || (!menu.contains(t) && !t.closest("[data-audio-speed-toggle]"))) menu.hidden = true;
+  });
 });
+["play", "pause", "ended", "timeupdate", "loadedmetadata"].forEach((evt) =>
+  document.addEventListener(
+    evt,
+    (e) => {
+      const el = e.target as HTMLElement;
+      if (!(el instanceof HTMLAudioElement) || !el.hasAttribute("data-audio-el")) return;
+      const fig = el.closest<HTMLElement>("[data-audio]");
+      if (fig) syncAudioUI(fig, el);
+    },
+    true,
+  ),
+);
+// mount: reveal the bar (starts expanded) + reserve reading-column space;
+// re-runs per onPage() since view transitions swap in a fresh <audio> (or none)
+function initAudioBar() {
+  document.body.classList.remove("has-audio-bar");
+  const fig = document.querySelector<HTMLElement>("[data-audio]");
+  const audio = fig?.querySelector<HTMLAudioElement>("[data-audio-el]");
+  if (!fig || !audio) return;
+  fig.querySelector<HTMLElement>("[data-audio-bar]")!.hidden = false;
+  fig.querySelector<HTMLElement>("[data-audio-fab]")!.hidden = true;
+  document.body.classList.add("has-audio-bar");
+  const speed = parseFloat(localStorage.getItem(LS.audioSpeed) || "1");
+  if (!isNaN(speed)) {
+    audio.playbackRate = speed;
+    const label = String(speed);
+    fig.querySelectorAll<HTMLElement>("[data-audio-speed-menu] [data-speed]").forEach((b) =>
+      b.setAttribute("aria-pressed", String(b.dataset.speed === label)),
+    );
+    const pill = fig.querySelector("[data-audio-speed-toggle]");
+    if (pill) pill.textContent = `×${label}`;
+  }
+  syncAudioUI(fig, audio);
+}
 
 // direct download — the plain <a download> is ignored cross-origin (R2's
 // domain differs from the site's), so fetch the file as a blob and download
@@ -1141,9 +1236,6 @@ window.addEventListener("scroll", updateTopbarVisibility, { passive: true });
 // --- sync control states from storage on load (values already applied pre-paint) ---
 syncThemeButtons(currentTheme());
 syncWidthButtons((root.getAttribute("data-width") as Width) || "normal");
-document.querySelectorAll<HTMLElement>('[data-action="sidebar:desktop-toggle"]').forEach((b) =>
-  b.setAttribute("aria-pressed", String(localStorage.getItem(LS.sidebar) === "hidden")),
-);
 applyVnums(localStorage.getItem(LS.vnums) !== "0");
 applyPages(localStorage.getItem(LS.pages) !== "flow");
 applyFootnotes(localStorage.getItem(LS.footnotes) !== "0");
@@ -1187,7 +1279,7 @@ function onPage() {
   // sidebar topbar icons: only meaningful on pages that actually have a
   // ReaderSidebar (book chapters, small books, poems, articles)
   const hasSidebar = !!document.querySelector("[data-mobile-sidebar]");
-  document.querySelectorAll<HTMLElement>('[data-action="sidebar:mobile-toggle"], [data-action="sidebar:desktop-toggle"]').forEach((b) => { b.hidden = !hasSidebar; });
+  document.querySelectorAll<HTMLElement>('[data-action="sidebar:mobile-toggle"]').forEach((b) => { b.hidden = !hasSidebar; });
   const quranJump = document.querySelector<HTMLElement>("[data-quran-jump]");
   if (quranJump) quranJump.hidden = document.querySelector("main")?.dataset.activeNav !== "quran";
   // reading-settings gear: only meaningful on pages with actual body content
@@ -1195,7 +1287,11 @@ function onPage() {
   const isReadingPage = document.querySelector("main")?.dataset.reading === "1";
   document.querySelectorAll<HTMLElement>('[data-action="settings:toggle"]').forEach((b) => { b.hidden = !isReadingPage; });
   if (!isReadingPage) document.querySelector<HTMLElement>("[data-settings-pop]")?.setAttribute("hidden", "");
+  // بيت numbering only means anything on poems — hide the toggle elsewhere
+  const isPoemPage = document.querySelector("main")?.dataset.activeNav === "poems";
+  document.querySelectorAll<HTMLElement>('[data-toggle="verseNums"]').forEach((b) => { b.hidden = !isPoemPage; });
   syncTocCurrent();
+  initAudioBar();
 }
 onPage();
 document.addEventListener("astro:page-load", onPage);
@@ -1230,8 +1326,6 @@ function applyStoredPrefs() {
     else root.removeAttribute("data-theme");
     const s = localStorage.getItem(LS.scale);
     if (s) root.style.setProperty("--reading-scale", s);
-    if (localStorage.getItem(LS.sidebar) === "hidden") root.setAttribute("data-sidebar", "hidden");
-    else root.removeAttribute("data-sidebar");
     const w = localStorage.getItem(LS.width);
     if (w === "narrow" || w === "wide") root.setAttribute("data-width", w);
     else root.removeAttribute("data-width");

@@ -80,7 +80,7 @@ const preamble = a.verses.filter((v) => !chapterNums.has(v.n));
       </div>
     )}
 
-    {audios.length > 0 && <div class="u49fcd85"><AudioPlayer sources={audios} label="استماعٌ إلى المنظومة" /></div>}
+    {audios.length > 0 && <AudioPlayer sources={audios} title={entry.data.title} subtitle={author} />}
 
     <div class="rule-short"></div>
 
