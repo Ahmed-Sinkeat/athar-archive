@@ -1083,22 +1083,13 @@ html.hide-vnums .vnum { display: none; }
 [data-width="wide"] .wrap-read { max-width: min(1400px, max(900px, 46vw)); }
 .chap-grid { display: grid; grid-template-columns: 232px 1fr; gap: 52px; align-items: start; } /* HANDOFF.md §5 */
 .chap-grid > .reading-pad { grid-column: 2; grid-row: 1; min-width: 0; }
-.chap-toc-aside { grid-column: 1; grid-row: 1; position: sticky; top: 80px; margin-top: 52px; }
-/* on very wide screens .chap-outer centers the grid, leaving a dead gap
-   between the real viewport edge and the aside; past 1300px there's room for
-   both the full reading column and the rail, so pin the aside to the true
-   edge instead of leaving it stranded inside the centered column. Physical
-   `right` (not inset-inline-end) — this is an RTL site, so inline-end would
-   pin it to the physical LEFT instead, opposite of the sidebar's actual side. */
-@media (min-width: 1300px) {
-  .chap-grid { grid-template-columns: 1fr; }
-  .chap-grid > .reading-pad { grid-column: 1; }
-  .chap-toc-aside {
-    position: fixed; grid-column: unset; grid-row: unset;
-    right: 32px; top: 80px; width: 232px;
-    max-height: calc(100vh - 100px); overflow-y: auto; margin-top: 0;
-  }
-}
+/* ponytail: previously pinned to position:fixed past 1300px to avoid a "dead
+   gap" to the true viewport edge on very wide screens — dropped after it
+   caused a real layout break (overlapping sidebar/content) crossing that
+   breakpoint under browser zoom. position:sticky at every desktop width is
+   less fragile than switching positioning modes mid-session; revisit only
+   with a concrete "stranded on wide screens" complaint. */
+.chap-toc-aside { grid-column: 1; grid-row: 1; position: sticky; top: 80px; margin-top: 52px; max-height: calc(100vh - 100px); overflow-y: auto; }
 /* TOC as a quiet rail, not a boxed card: hairline on the content side,
    active item = maroon 700 on its 2px rail (green on hadith books) */
 .chap-toc-aside { border-inline-end: 1px solid var(--line); padding-inline-end: 18px; }
@@ -1350,10 +1341,13 @@ html.hide-vnums .vnum { display: none; }
 
 /* --- token colors: آية ﴿﴾ · حديث «» · اقتباس "" (wrapped at build) --- */
 /* One accent per source (HANDOFF §5): آيات gold in the Quran face, حديث green,
-   parenthetical variants quiet ink — no red quotes anywhere; body stays ink.
-   Tokens ride the theme palette automatically (gold/green re-map per theme). */
+   parenthetical variants quiet ink. Tokens ride the theme palette
+   automatically (gold/green re-map per theme) — hadith/brace-ayah are fixed
+   literals instead since no site token stays "red" in hue across themes
+   the way gold/green/copper do (--brand swaps to gold in noir, blue in mono). */
 .tok-ayah   { color: var(--gold); font-family: var(--f-quran); }
-.tok-hadith { color: var(--green); }
+.tok-ayah-brace { color: #B23B2E; font-family: var(--f-quran); } /* {ayah} — plain-brace citation style, same kind as ﴿ayah﴾ but a brighter red per request */
+.tok-hadith { color: #7A2222; } /* ((hadith)) */
 .tok-quote  { color: var(--blue); } /* «...» — matn/hadith citations */
 .tok-paren  { color: var(--ink2); }
 /* "[.....]" isnad-elision markers are all bidi-neutral characters (brackets,
@@ -1388,7 +1382,7 @@ html[data-theme="noir"] ::highlight(aa-find)    { background-color: rgba(255, 15
 .aa-note textarea { font-family: var(--font-ui); font-size: 13px; color: var(--ink); background: var(--paper); border: 1px solid var(--rule); border-radius: var(--radius); padding: 6px 9px; width: 200px; height: 54px; resize: none; }
 
 /* --- in-page find bar --- */
-.aa-find { position: fixed; z-index: 75; top: 64px; inset-inline-end: 16px; display: flex; align-items: center; gap: 7px; background: var(--surface); border: 1px solid var(--rule-strong); border-radius: var(--radius-pill); padding: 5px 7px 5px 14px; }
+.aa-find { position: fixed; z-index: 75; top: 64px; right: 16px; display: flex; align-items: center; gap: 7px; background: var(--surface); border: 1px solid var(--rule-strong); border-radius: var(--radius-pill); padding: 5px 7px 5px 14px; }
 .aa-find[hidden] { display: none; }
 .aa-find input { font-family: var(--font-ui); font-size: 14px; color: var(--ink); background: transparent; border: 0; outline: none; width: clamp(120px, 30vw, 200px); }
 .aa-find .aa-find-count { font-family: var(--font-mono); font-size: 12px; color: var(--ink-faint); min-width: 44px; text-align: center; }
@@ -1396,7 +1390,11 @@ html[data-theme="noir"] ::highlight(aa-find)    { background-color: rgba(255, 15
 .aa-find button:hover { color: var(--accent); background: var(--paper-2); }
 
 /* --- resume pill (آخر موضع قراءة) --- */
-.aa-resume { position: fixed; z-index: 75; inset-block-end: 22px; inset-inline-start: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 9px; font-family: var(--font-ui); font-size: 14px; color: var(--onbrand); background: var(--accent-solid); border: 1px solid var(--line2); border-radius: var(--radius-pill); padding: 11px 20px; cursor: pointer; }
+/* physical left (not inset-inline-start) — 50%+translateX(-50%) centering only
+   works paired with a physical side; inset-inline-start flips to `right` in
+   RTL, which needs the opposite-sign translate (see .audio-speed-menu) — left
+   sidesteps that entirely since it's never direction-relative */
+.aa-resume { position: fixed; z-index: 75; inset-block-end: 22px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 9px; font-family: var(--font-ui); font-size: 14px; color: var(--onbrand); background: var(--accent-solid); border: 1px solid var(--line2); border-radius: var(--radius-pill); padding: 11px 20px; cursor: pointer; }
 .aa-resume[hidden] { display: none; }
 
 /* --- مكتبتي: personal benefits + bookmarks list (/benefits) --- */
@@ -1446,7 +1444,7 @@ html[data-theme="noir"] ::highlight(aa-find)    { background-color: rgba(255, 15
 .lib-entry {
   position: relative; padding: 16px; padding-inline-end: 44px; text-align: start;
   background: var(--paper-2); border-inline-start: 3px solid var(--rule-strong);
-  border-radius: 9px;
+  border-radius: 9px; text-decoration: none; color: inherit; display: block;
 }
 /* theme-aware tokens (--green/--gold already re-tint per theme — e.g. golden
    on noir) instead of fixed rgba literals, which looked wrong once the
@@ -1604,7 +1602,7 @@ html.pages-flow .page-sep + p { display: inline; margin: 0; }
    dumping readers at the page bottom; always-visible removes the failure
    mode entirely). :target still gets a brief highlight so a jump from the
    inline marker is easy to spot. */
-.page-footnotes li { font-family: var(--f-matn); font-size: 15.5px; line-height: 1.85; color: var(--ink); padding: 4px 0; scroll-margin-top: 90px; }
+.page-footnotes li { font-family: var(--f-matn); font-size: calc(16.5px * var(--reading-scale)); line-height: 1.9; color: var(--ink); padding: 5px 0; scroll-margin-top: 90px; }
 .page-footnotes li::before { content: attr(data-fn-num) ". "; color: var(--ink-soft); font-weight: 600; }
 .page-footnotes li:target { color: var(--ink); background: color-mix(in srgb, var(--accent) 12%, transparent); border-radius: 4px; }
 .page-footnotes p { display: inline; margin: 0; }
@@ -1619,9 +1617,11 @@ sup[data-fn]:hover { text-decoration: underline; }
 
 /* GFM footnotes (حاشية + تخريج): small superscript marker inline, full note
    always visible in a printed-endnotes-style box at the end of the content --
-   same always-visible + «إخفاء الحواشي» pattern as .page-footnotes above. */
-.prose [data-footnote-ref] { cursor: pointer; color: var(--accent); text-decoration: none; font-size: 0.72em; margin-inline-start: 2px; padding: 0 1px; }
-.prose [data-footnote-ref]:hover { text-decoration: underline; }
+   same always-visible + «إخفاء الحواشي» pattern as .page-footnotes above.
+   Plain text, not a link — no cursor/color/hover; a printed page's own
+   footnote marker isn't clickable either, and it never actually needs to be
+   since the note is already sitting right there on the same page. */
+.prose .fn-ref { color: var(--ink-faint); font-size: 0.72em; margin-inline-start: 2px; padding: 0 1px; }
 /* separate runs of adjacent refs (e.g. a name carrying [12][13][14]) so they don't jam */
 .prose sup + sup { margin-inline-start: 4px; }
 .prose section.footnotes {

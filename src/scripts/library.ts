@@ -43,8 +43,10 @@ function removeMark(path: string, id: string) {
   } catch {}
 }
 
-let kind: Kind = "benefit";
-let groupBy: GroupBy = "book";
+const savedKind = localStorage.getItem("aa-lib-kind");
+const savedGroupBy = localStorage.getItem("aa-lib-group");
+let kind: Kind = savedKind === "note" || savedKind === "mistake" ? savedKind : "benefit";
+let groupBy: GroupBy = savedGroupBy === "topic" || savedGroupBy === "person" ? savedGroupBy : "book";
 
 const EMPTY_MSG: Record<Kind, string> = {
   benefit: "لا فوائدَ بعد. ظلِّلْ نصًّا أثناء القراءة ثمّ اختر «فائدة» لإضافته هنا.",
@@ -215,6 +217,7 @@ document.addEventListener("click", (e) => {
   const tabBtn = t.closest<HTMLElement>("[data-lib-tabs] [data-lib-tab]");
   if (tabBtn) {
     kind = tabBtn.dataset.libTab as Kind;
+    localStorage.setItem("aa-lib-kind", kind);
     tabBtn.parentElement?.querySelectorAll<HTMLElement>("[data-lib-tab]").forEach((b) => b.setAttribute("aria-pressed", String(b === tabBtn)));
     render();
     return;
@@ -222,6 +225,7 @@ document.addEventListener("click", (e) => {
   const groupBtn = t.closest<HTMLElement>("[data-lib-group-tabs] [data-lib-group]");
   if (groupBtn) {
     groupBy = groupBtn.dataset.libGroup as GroupBy;
+    localStorage.setItem("aa-lib-group", groupBy);
     groupBtn.parentElement?.querySelectorAll<HTMLElement>("[data-lib-group]").forEach((b) => b.setAttribute("aria-pressed", String(b === groupBtn)));
     render();
   }
@@ -274,8 +278,19 @@ document.addEventListener("change", (e) => {
   if (file) importMarks(file).finally(() => { input.value = ""; });
 });
 
+// server-rendered tabs always show الفوائد/حسب الكتاب pressed — sync to
+// whatever kind/groupBy localStorage actually restored above
+function syncTabUI() {
+  document.querySelectorAll<HTMLElement>("[data-lib-tab]").forEach((b) =>
+    b.setAttribute("aria-pressed", String(b.dataset.libTab === kind)),
+  );
+  document.querySelectorAll<HTMLElement>("[data-lib-group]").forEach((b) =>
+    b.setAttribute("aria-pressed", String(b.dataset.libGroup === groupBy)),
+  );
+}
+syncTabUI();
 render();
-document.addEventListener("astro:page-load", render);
+document.addEventListener("astro:page-load", () => { syncTabUI(); render(); });
 // bfcache restore (back button) doesn't fire astro:page-load — see render()'s
 // comment on why a stale reference there would otherwise show an empty list.
-window.addEventListener("pageshow", (e) => { if (e.persisted) render(); });
+window.addEventListener("pageshow", (e) => { if (e.persisted) { syncTabUI(); render(); } });

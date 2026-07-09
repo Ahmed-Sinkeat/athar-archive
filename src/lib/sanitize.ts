@@ -31,15 +31,17 @@ function collectText(node: any): string {
 // ponytail: \u escapes — esbuild rejects raw Arabic chars in regex literals
 const TOK_RE = new RegExp(
   "(﴿[^﴾]*﴾)" +
-  "|(\\[[\\u0600-\\u06FF\\s]+:[\\d\\u0660-\\u0669]+(?:[-\\u2013][\\d\\u0660-\\u0669]+)?\\])" +
+  "|(\\{[^}]{1,300}\\})" +  // ayah cited with plain braces instead of ﴿﴾ — same kind, different author convention
+  "|(\\[[\\u0600-\\u06FF\\s]+?:\\s*[\\d\\u0660-\\u0669]+(?:[-\\u2013][\\d\\u0660-\\u0669]+)?\\])" +  // "[سورة: رقم]" — \s* before the digits allows the normal typographic space after the colon (wasn't previously allowed); name group stays lazy + still allows internal spaces (multi-word names like "آل عمران")
   "|(«[^»]*»)" +
   "|([“”][^“”]*[“”])" +
   '|("[^"]*")' +
+  "|(\\(\\([^)]{1,200}\\)\\))" +  // (( hadith )) — must precede the single-paren pattern below, or it eats only one side
   "|(\\([^)]{1,200}\\))" +  // ponytail: cap 200 chars to avoid backtracking
   "|(\\[\\.{2,}\\])",  // isnad-elision marker, e.g. "[.....]" — see tok-elision
   "g"
 );
-const TOK_CLASS = ["tok-ayah", "tok-quran-ref", "tok-quote", "tok-quote", "tok-quote", "tok-paren", "tok-elision"];
+const TOK_CLASS = ["tok-ayah", "tok-ayah-brace", "tok-quran-ref", "tok-quote", "tok-quote", "tok-quote", "tok-hadith", "tok-paren", "tok-elision"];
 
 function splitTokens(value: string): any[] {
   const out: any[] = [];

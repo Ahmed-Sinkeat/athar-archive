@@ -197,16 +197,22 @@ for (const items of footerItemsByPage.values()) {
   items.forEach((it, i) => numberByFooterId.set(it.id, String(i + 1)));
 }
 
-// Point each GFM footnote ref [^id] at its footer <li> instead of the
-// (now-stripped) end-of-document Footnotes section, relabeled with the
-// page-relative number computed above.
+// Relabel each GFM footnote ref [^id] with the page-relative number computed
+// above, and drop the <a>/href entirely — plain, non-clickable text like a
+// printed page's own footnote marker, not a link (was previously clickable,
+// which also silently broke whenever remark-gfm's exact attribute order in
+// the compiled <sup><a ...> didn't match this regex verbatim; matching only
+// on the one attribute that's actually load-bearing — data-footnote-ref —
+// instead of the full tag shape is more robust to that).
 const footnoteRefsWired = html.replace(
-  /<sup><a href="#user-content-fn-([a-zA-Z0-9_-]+)"[^>]*data-footnote-ref[^>]*>\d+<\/a><\/sup>/g,
-  (match, id) => {
-    const target = footnoteAnchorById.get(id);
+  /<sup><a\s+([^>]*data-footnote-ref[^>]*)>\d+<\/a><\/sup>/g,
+  (match, attrs) => {
+    const hrefMatch = attrs.match(/href="#user-content-fn-([a-zA-Z0-9_-]+)"/);
+    const id = hrefMatch?.[1];
+    const target = id && footnoteAnchorById.get(id);
     const num = target && numberByFooterId.get(target);
-    if (!target || !num) return match;
-    return `<sup><a href="#${target}" data-footnote-ref>${num}</a></sup>`;
+    if (!num) return match;
+    return `<sup class="fn-ref">${num}</sup>`;
   },
 );
 
