@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 985"
+title: "ما حكم العمل مع الكفار يعني الدولة التي تسكن فيها كافرة وانت تعمل في مجال تدريس في…"
 status: published
 published_at: 2021-11-02
 person: abu-jafar-al-khalifi

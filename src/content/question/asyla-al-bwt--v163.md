@@ -1,5 +1,5 @@
 ---
-title: "#رقم_[685]  :"
+title: "في بعض محاضراتكم تذكرون ” المدرسة الهندية في سياق ذكر بعض العلماء الذين تأثروا بها” فما…"
 status: published
 published_at: 2021-09-09
 person: abu-jafar-al-khalifi

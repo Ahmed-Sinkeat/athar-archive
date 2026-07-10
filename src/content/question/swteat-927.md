@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 927"
+title: "انا من سنوات وانا أستخدم الجوال مع العلم أنه ما يمر يوم أو يومين إلا وأنظر فيه للنساء من…"
 status: published
 published_at: 2021-11-01
 person: abu-jafar-al-khalifi

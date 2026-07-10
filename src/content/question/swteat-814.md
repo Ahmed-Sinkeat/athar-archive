@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 814"
+title: "و ما يدخل في الوطنية المذمومة و هل هناك كتب تتحدث عن هذا الأمر أرجو إجابة موسعة و جزاكم…"
 status: published
 published_at: 2021-10-09
 person: abu-jafar-al-khalifi

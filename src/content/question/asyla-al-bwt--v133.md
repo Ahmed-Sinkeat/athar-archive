@@ -1,5 +1,5 @@
 ---
-title: "السلام عليكم"
+title: "أنا أعيش في مكان المسؤولين فيه أشاعرة وأمروا بتشكيل لجنة لتبحث في المساجد عن أي كتب…"
 status: published
 published_at: 2021-08-10
 person: abu-jafar-al-khalifi

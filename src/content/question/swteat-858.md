@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 858"
+title: "يا شيخ ما حكم قراءة القرآن بالمقامات، وما حكم الإستماع إليها ؟"
 status: published
 published_at: 2021-10-11
 person: abu-jafar-al-khalifi

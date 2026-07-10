@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 888"
+title: "ما حكم استخدام تطبيقات التواصل الاجتماعي (سناب، تويتر، انستقرام..) والتي يظهر فيها أحيانا…"
 status: published
 published_at: 2021-10-21
 person: abu-jafar-al-khalifi

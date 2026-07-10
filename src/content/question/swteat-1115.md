@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1115"
+title: "أنا لا أجيد حفظ القرآن كاملا هل علي من إثم ؟ ولكني أحفظ منه قليل ما تيسر منه ولكني أحب أن…"
 status: published
 published_at: 2022-05-05
 person: abu-jafar-al-khalifi

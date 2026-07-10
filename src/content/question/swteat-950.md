@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 950"
+title: "رجل من مصر وهو يعمل في الكويت وزوجته وأبناؤه يقيمون في مصر وتزوج بامرأة ثانية من مصر أيضا…"
 status: published
 published_at: 2021-11-02
 person: abu-jafar-al-khalifi

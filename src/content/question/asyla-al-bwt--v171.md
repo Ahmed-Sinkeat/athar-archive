@@ -1,5 +1,5 @@
 ---
-title: "#رقم_[738]  :"
+title: "هل صحيح ان عورة الأمة من السرة إلى الركبة؟ ومن قال بهذا؟ وما الرد على من قال(اذا كان سبب…"
 status: published
 published_at: 2021-09-19
 person: abu-jafar-al-khalifi

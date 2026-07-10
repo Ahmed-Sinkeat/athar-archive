@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 836"
+title: "ماحكم العدوى وهل الميت تموت علته معه ?"
 status: published
 published_at: 2021-10-11
 person: abu-jafar-al-khalifi

@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1080"
+title: "أنا أم وحيدة زوجي سجين وعندي طفلين أبني عمره 9 سنوات وابنتي حوالي 8 سنوات ،واسكن فوق منزل…"
 status: published
 published_at: 2022-01-24
 person: abu-jafar-al-khalifi

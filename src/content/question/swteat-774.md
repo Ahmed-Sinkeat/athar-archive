@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 774"
+title: "ما رأيك ب درس السيرة المبتدأ والخبر للكملي ؟"
 status: published
 published_at: 2021-10-02
 person: abu-jafar-al-khalifi

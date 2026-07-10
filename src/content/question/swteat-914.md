@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 914"
+title: "فودافون كاش خدمة تحويل أموال تأخذ جنيه على كل 100 جنيه رسم لتحويل الأموال فهل تعاملاتها…"
 status: published
 published_at: 2021-11-01
 person: abu-jafar-al-khalifi

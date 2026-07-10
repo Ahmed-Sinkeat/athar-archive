@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 953"
+title: "يريد تعليق الشيخ على هذه النقولات : [ قال شيخ مشايخ الديوبندية الحاج إمداد الله المهاجر…"
 status: published
 published_at: 2021-11-02
 person: abu-jafar-al-khalifi

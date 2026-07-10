@@ -166,8 +166,13 @@ function isContentLine(line: string): boolean {
   return true;
 }
 
+// Verses imported with the print edition's own numbering ("١ - يقول…",
+// "12- …") carry it into the text and double up with the rendered vnum
+// badge — strip the leading number + separator, the parser renumbers anyway.
+const LEADING_VERSE_NUM = /^[0-9٠-٩۰-۹]+\s*[-–—.)ـ]\s*/;
+
 function lineToVerse(line: string, n: number): Verse {
-  const parts = line.trim().split(HEMISTICH_SEP);
+  const parts = line.trim().replace(LEADING_VERSE_NUM, "").split(HEMISTICH_SEP);
   const sadr = parts[0].trim();
   const ajz = parts.length > 1 ? parts.slice(1).join(" ").trim() : undefined;
   return { n, sadr, ajz, anchor: `v${n}` };

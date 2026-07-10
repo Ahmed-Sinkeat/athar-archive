@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 781"
+title: "تمنيت لو يتكلم عن قضية دخول الحركة الاسلامية عندنا في داخل فلسطين المحتلة ومشاركتهم…"
 status: published
 published_at: 2021-10-02
 person: abu-jafar-al-khalifi

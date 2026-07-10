@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 926"
+title: "كيف يقال لمن اثبت الاستواء والعلو وانكر اقعاد النبي صلى الله عليه اثر مجاهد جهمي؟ الم…"
 status: published
 published_at: 2021-11-01
 person: abu-jafar-al-khalifi

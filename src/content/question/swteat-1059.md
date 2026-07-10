@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1059"
+title: "انا طالبة ماجستير ولدي بحث عن النسوية اردت أن أسأل حضرتك عن المراجع، لأن حضرتك رددت عليهم…"
 status: published
 published_at: 2022-01-01
 person: abu-jafar-al-khalifi

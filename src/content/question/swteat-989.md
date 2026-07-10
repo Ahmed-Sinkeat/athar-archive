@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 989"
+title: "اعرف ان هناك خلافا في تعيين اسماء الله الحسنى أريد كتابا ترون أنه اقرب للحق في هذا…"
 status: published
 published_at: 2021-11-02
 person: abu-jafar-al-khalifi

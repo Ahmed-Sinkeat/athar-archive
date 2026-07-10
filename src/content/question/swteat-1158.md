@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1158"
+title: "ما توجيه قول المجد في دفع الاتهامات عنه المنسوبة له : وإني أكفر البوصيري لقوله ( يا أكرم…"
 status: published
 published_at: 2024-02-26
 person: abu-jafar-al-khalifi

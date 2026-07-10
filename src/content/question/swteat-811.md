@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 811"
+title: "بطاقة منتشرة فيها إستنكار لمجموعة من قصص السير"
 status: published
 published_at: 2021-10-09
 person: abu-jafar-al-khalifi

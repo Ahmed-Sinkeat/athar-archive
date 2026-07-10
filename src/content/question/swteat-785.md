@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 785"
+title: "بعض الإخوة يقولون أن قول : اللهم صل على محمد وعلى آله وصحبه وسلم، بدعة وأن الصحيح عدم ذكر…"
 status: published
 published_at: 2021-10-05
 person: abu-jafar-al-khalifi

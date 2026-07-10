@@ -9,7 +9,7 @@ export const GET: APIRoute = async () => {
   const origin = config.siteUrl;
   const pub = (c: any[]) => c.filter((e) => e.data.status === "published");
 
-  const kinds: [string, string][] = [["book", "متن"], ["poem", "منظومة"], ["article", "مقالة"], ["benefit", "فائدة"]];
+  const kinds: [string, string][] = [["book", "متن"], ["poem", "منظومة"], ["article", "مقالة"]];
   const items: { title: string; link: string; date: Date; desc: string }[] = [];
   for (const [coll, label] of kinds) {
     for (const e of pub(await getCollection(coll as any))) {

@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1131"
+title: "من البداية أرجو أن تعذرني على الإطالة, يعلم الله كم أنا مضطر وفي عجلة من أمري على هذا…"
 status: published
 published_at: 2022-09-20
 person: abu-jafar-al-khalifi

@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 775"
+title: "البوت أرسل لى قناة لأخبار العراق هل أنت مع الحكومة العراقية ؟ سؤالى : هل يجوز أن أشحن…"
 status: published
 published_at: 2021-10-02
 person: abu-jafar-al-khalifi

@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1191"
+title: "شيخ هل لابن تيمية كلام في ابن دقيق العيد؟"
 status: published
 published_at: 2025-01-09
 person: abu-jafar-al-khalifi

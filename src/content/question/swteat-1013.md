@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1013"
+title: "ما حكم الكسب من علي مواقع العمل الحر علي الإنترنت ؟"
 status: published
 published_at: 2021-11-07
 person: abu-jafar-al-khalifi

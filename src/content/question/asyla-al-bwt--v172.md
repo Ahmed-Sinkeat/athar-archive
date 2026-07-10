@@ -1,5 +1,5 @@
 ---
-title: "#رقم_[744]  :"
+title: "ما حكم الضمان الاجتماعي ؟ انظر هذا البحث يفي بالمقصود بإذن الله"
 status: published
 published_at: 2021-09-19
 person: abu-jafar-al-khalifi

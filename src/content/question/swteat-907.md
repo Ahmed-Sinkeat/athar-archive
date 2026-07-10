@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 907"
+title: "انا طالبة في السنة الرابعه من كلية الطب و ابي و امي و اخوالي و اعملي و اولادهم اساتذة في…"
 status: published
 published_at: 2021-10-30
 person: abu-jafar-al-khalifi

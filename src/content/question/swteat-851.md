@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 851"
+title: "ارجوا من الشيخ التعقيب على هذا الموضوع الخطير هذا واحد ينتمي لمؤسسة الازهر الخبيثة الى…"
 status: published
 published_at: 2021-10-11
 person: abu-jafar-al-khalifi

@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 791"
+title: "هل يجوز اخذ لقاح كورونا شرعا مع مافيه من خلايا اجنة مجهضة وجيلاتين خنزير وهل يجوز التداوي…"
 status: published
 published_at: 2021-10-05
 person: abu-jafar-al-khalifi

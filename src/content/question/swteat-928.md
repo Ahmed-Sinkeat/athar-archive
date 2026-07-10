@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 928"
+title: "قبل فترة قام أحدهم بالتشهير بإحدى طالبات العلم الشرعي على تويتر ونشر محادثات لها مع شخص…"
 status: published
 published_at: 2021-11-01
 person: abu-jafar-al-khalifi

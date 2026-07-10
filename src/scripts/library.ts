@@ -98,7 +98,12 @@ function buildDeleteBtn(m: Item): HTMLButtonElement {
   del.type = "button";
   del.setAttribute("aria-label", "حذف");
   del.textContent = "×";
-  del.addEventListener("click", (e) => { e.preventDefault(); removeMark(m.path, m.id); render(); });
+  del.addEventListener("click", (e) => {
+    e.preventDefault();
+    if (!confirm("حذف هذه الفائدة من الكُناشة؟ لا يمكن التراجع.")) return;
+    removeMark(m.path, m.id);
+    render();
+  });
   return del;
 }
 
@@ -115,7 +120,8 @@ function buildShareBtn(m: Item): HTMLButtonElement {
     const parts = [citationFor(m), m.page ? `ص ${m.page}` : ""].filter(Boolean).join("، ");
     const url = `${location.origin}${m.path}#m=${m.id}`;
     const text = `"${m.text}"\n— ${parts}`;
-    if (navigator.share) navigator.share({ text, url }).catch(() => {});
+    // url inside text: some Android share targets take only one of {text, url}
+    if (navigator.share) navigator.share({ text: `${text}\n${url}` }).catch(() => {});
     else navigator.clipboard?.writeText(`${text}\n${url}`).then(() => { share.textContent = "✓"; setTimeout(() => { share.textContent = "⇅"; }, 900); });
   });
   return share;

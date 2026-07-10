@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1023"
+title: "لماذا لم يقتل الرسول - صلى الله عليه وسلم - أسامة بن زيد قِصاصا بالشخص الذي قتله بعد ما…"
 status: published
 published_at: 2021-11-13
 person: abu-jafar-al-khalifi

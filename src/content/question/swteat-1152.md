@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1152"
+title: "حديث فألك من فيك.. ما صحته، وكيف نفهمه؟"
 status: published
 published_at: 2024-02-17
 person: abu-jafar-al-khalifi

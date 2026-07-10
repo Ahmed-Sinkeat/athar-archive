@@ -1,5 +1,5 @@
 ---
-title: "#رقم_[748]  :"
+title: "ما حكم من تلبس عباية ملونة وتكشف وجهها في المقابلة رجاء أن يقبلوها في العمل ثم تبدأ عملها…"
 status: published
 published_at: 2021-09-21
 person: abu-jafar-al-khalifi

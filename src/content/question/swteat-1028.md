@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1028"
+title: "أنا بشتغل في شركة و لي زميلة طيبة جدا و احسبها نفسها نقيه لكنها متبرجة و مُدخنة - أسأل…"
 status: published
 published_at: 2021-11-21
 person: abu-jafar-al-khalifi

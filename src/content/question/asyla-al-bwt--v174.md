@@ -1,5 +1,5 @@
 ---
-title: "#رقم_[749]  :"
+title: "ما هي مدة القصر للمسافر ؟ انظر المقالات التالية : 1- إفادة في مسألة المسافة التي تقصر…"
 status: published
 published_at: 2021-09-21
 person: abu-jafar-al-khalifi

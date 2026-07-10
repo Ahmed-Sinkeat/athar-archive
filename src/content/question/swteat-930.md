@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 930"
+title: "هل صحيح ان من كفر المسلمين بالتوحيد كافر؟ وما الدليل على ذلك جزاك الله خيرا."
 status: published
 published_at: 2021-11-01
 person: abu-jafar-al-khalifi

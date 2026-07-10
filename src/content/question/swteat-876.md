@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 876"
+title: "ياشيخ هذا مصحف وحاطين عليه الوان المثلية بالترتيب واللون الفاتح اصلا( 🏳️‍🌈) وحذرت بعض…"
 status: published
 published_at: 2021-10-21
 person: abu-jafar-al-khalifi

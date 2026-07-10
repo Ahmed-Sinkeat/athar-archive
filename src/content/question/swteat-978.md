@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 978"
+title: "هل ترون -شيخَنا- أنه من الأولى لطالب العلم، محدود القدرة نسبيا، اقتناءَ مصنف ابن أبي شيبة…"
 status: published
 published_at: 2021-11-02
 person: abu-jafar-al-khalifi

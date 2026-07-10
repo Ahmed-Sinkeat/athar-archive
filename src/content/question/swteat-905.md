@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 905"
+title: "اريد جوابا قاطعا عن حكم بيع السماعات ١)ان كان اكثر من يشتريها يشتريها لاستماع موسقا ٢) و…"
 status: published
 published_at: 2021-10-30
 person: abu-jafar-al-khalifi

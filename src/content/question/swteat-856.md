@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 856"
+title: "أريد شرحا لانظمة البنوك وهذا الباب في الفقه كله للضرورة و كيفية اسقاط تلك المصطلحات على…"
 status: published
 published_at: 2021-10-11
 person: abu-jafar-al-khalifi

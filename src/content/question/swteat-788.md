@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 788"
+title: "عند رؤية المنكر هل يُجزئ ترك المكان بدون ان يتكلم ؟ ومن يفعل المنكر يعلم انه بسببه"
 status: published
 published_at: 2021-10-05
 person: abu-jafar-al-khalifi

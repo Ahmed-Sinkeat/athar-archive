@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1199"
+title: "ما حكم الاحتفال بعيد رأس السنة الأمازيغية بحيث يحدث صراع كل عام بخصوص حكم هذا الشيء…"
 status: published
 published_at: 2025-01-11
 person: abu-jafar-al-khalifi

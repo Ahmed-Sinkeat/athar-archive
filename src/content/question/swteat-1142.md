@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1142"
+title: "كيف اقنع والدي أني لست تكفيري ولا غالٍ ولا مغسول دماغي كما يظن ، كيف أقنعه بوجود فتن…"
 status: published
 published_at: 2024-02-01
 person: abu-jafar-al-khalifi

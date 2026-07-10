@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 891"
+title: "لماذا يجب الوضوء عند اكل لحم الجمل ؟"
 status: published
 published_at: 2021-10-21
 person: abu-jafar-al-khalifi

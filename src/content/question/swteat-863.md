@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 863"
+title: "ماحكم وضع الشنطه على الكتف وقت الخروج سمعت انها لاتجوز لأنها تظهر حجم الكتف"
 status: published
 published_at: 2021-10-18
 person: abu-jafar-al-khalifi

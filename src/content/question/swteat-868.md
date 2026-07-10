@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 868"
+title: "انا طالب علم وساكن في السعودية ومثل ما يعرف الشيخ الوضع عندنا شديد شوي من ناحيه الدين…"
 status: published
 published_at: 2021-10-18
 person: abu-jafar-al-khalifi

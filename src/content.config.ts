@@ -164,23 +164,8 @@ const question = defineCollection({
   }),
 });
 
-// --- 09. Benefit (الفائدة) — polymorphic source, optional ---
-
-const benefit = defineCollection({
-  loader: glob({ pattern: "**/*.md", base: "./src/content/benefit" }),
-  schema: z
-    .object({
-      ...shared,
-      person: slug,         // → Person (required)
-      topics: topicsField,
-      source_type: z.enum(["book", "article", "poem"]).optional(),
-      source_id: slug.optional(),
-    })
-    .refine(
-      (b) => (b.source_type == null) === (b.source_id == null),
-      "source_type and source_id must both be set or both omitted",
-    ),
-});
+// --- 09. Benefit retired as an authored collection — الفوائد (كُناشة) are
+// device-local (marks.ts/library.ts), never editorial content. ---
 
 // --- 10. Article (المقالة) ---
 
@@ -305,7 +290,6 @@ export const collections = {
   book,
   poem,
   question,
-  benefit,
   article,
   audio,
   annotation,

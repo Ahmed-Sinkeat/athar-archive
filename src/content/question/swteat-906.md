@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 906"
+title: "ياشيخ كنت اناقش فتاة دائما ماتضع صور فتيات صغار في عرضها فأخبرتها ان تزيلها من باب سد…"
 status: published
 published_at: 2021-10-30
 person: abu-jafar-al-khalifi

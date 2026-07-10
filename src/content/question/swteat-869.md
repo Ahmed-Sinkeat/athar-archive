@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 869"
+title: "يا شيخ، بالله عليك أفتنا ماذا نفعل نحن الفتيات! أنا فتاة أدرس في الجامعة أحاول كل فصل أن…"
 status: published
 published_at: 2021-10-18
 person: abu-jafar-al-khalifi

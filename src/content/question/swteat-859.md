@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 859"
+title: "ما رأيكم بكتاب الدلائل الوفية في تحقيق عقيدة النووي؟"
 status: published
 published_at: 2021-10-11
 person: abu-jafar-al-khalifi

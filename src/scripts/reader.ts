@@ -1058,6 +1058,30 @@ function seekFromClientX(fig: HTMLElement, audio: HTMLAudioElement, rail: HTMLEl
   audio.currentTime = frac * audio.duration;
   syncAudioUI(fig, audio);
 }
+// drag-to-seek (touch + mouse): pointer capture on the rail so a finger can
+// scrub anywhere on screen once the drag starts — a bare click still seeks
+// (pointerdown fires once with the tap position)
+let seekingRail: HTMLElement | null = null;
+document.addEventListener("pointerdown", (e) => {
+  const rail = (e.target as HTMLElement).closest<HTMLElement>("[data-audio-rail]");
+  if (!rail) return;
+  const fig = rail.closest<HTMLElement>("[data-audio]");
+  const audio = fig?.querySelector<HTMLAudioElement>("[data-audio-el]");
+  if (!fig || !audio) return;
+  seekingRail = rail;
+  try { rail.setPointerCapture(e.pointerId); } catch {}
+  seekFromClientX(fig, audio, rail, e.clientX);
+});
+document.addEventListener("pointermove", (e) => {
+  if (!seekingRail) return;
+  const fig = seekingRail.closest<HTMLElement>("[data-audio]")!;
+  const audio = fig.querySelector<HTMLAudioElement>("[data-audio-el]");
+  if (audio) seekFromClientX(fig, audio, seekingRail, e.clientX);
+});
+["pointerup", "pointercancel"].forEach((evt) =>
+  document.addEventListener(evt, () => { seekingRail = null; }),
+);
+
 function closeSpeedMenu(fig: HTMLElement) {
   const menu = fig.querySelector<HTMLElement>("[data-audio-speed-menu]");
   if (menu) menu.hidden = true;
@@ -1069,15 +1093,23 @@ document.addEventListener("click", (e) => {
   const toggle = t.closest<HTMLElement>("[data-audio-toggle]");
   if (toggle) {
     const audio = fig?.querySelector<HTMLAudioElement>("[data-audio-el]");
-    if (audio) { audio.paused ? audio.play() : audio.pause(); }
+    if (audio) {
+      if (audio.paused) {
+        // a failed/stalled element (network blip, SW hiccup) leaves play()
+        // rejecting forever — reload the source once and retry before giving up
+        audio.play().catch(() => {
+          const at = audio.currentTime;
+          audio.load();
+          audio.addEventListener("loadedmetadata", () => { if (at > 0) audio.currentTime = at; }, { once: true });
+          audio.play().catch(() => {});
+        });
+      } else {
+        audio.pause();
+      }
+    }
     return;
   }
-  const rail = t.closest<HTMLElement>("[data-audio-rail]");
-  if (rail) {
-    const audio = fig?.querySelector<HTMLAudioElement>("[data-audio-el]");
-    if (audio) seekFromClientX(fig!, audio, rail, e.clientX);
-    return;
-  }
+  // (rail seeking handled by the pointer-drag handlers below)
   const minimize = t.closest<HTMLElement>("[data-audio-minimize]");
   if (minimize && fig) {
     fig.querySelector<HTMLElement>("[data-audio-bar]")!.hidden = true;

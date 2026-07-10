@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1114"
+title: "أريد أن أسأل الشيخ عن حكم السبحة هل يجوز أن أسبح بها ؟ لأني لي سبحة فيها ألف خرز و انا…"
 status: published
 published_at: 2022-05-05
 person: abu-jafar-al-khalifi

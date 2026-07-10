@@ -8,12 +8,11 @@ import { loadGraph, personEraMap } from "../lib/site";
 
 const pub = (c: any[]) => c.filter((e) => e.data.status === "published");
 
-const [people, books, poems, articles, benefits, announcements, highlights, questions, subjects, quranSurahs] = await Promise.all([
+const [people, books, poems, articles, announcements, highlights, questions, subjects, quranSurahs] = await Promise.all([
   getCollection("person"),
   getCollection("book"),
   getCollection("poem"),
   getCollection("article"),
-  getCollection("benefit"),
   getCollection("announcement"),
   getCollection("highlight"),
   getCollection("question"),
@@ -103,17 +102,16 @@ const latest = [
   ...pub(books).map((e) => { const kind = labelFor("book", e.data); return { e, kind, isSource: SOURCE_KINDS.has(kind) }; }),
   ...pub(poems).map((e) => ({ e, kind: "منظومة", isSource: false })),
   ...pub(articles).map((e) => ({ e, kind: "مقالة", isSource: false })),
-  ...pub(benefits).map((e) => ({ e, kind: "فائدة", isSource: false })),
 ]
   .sort((a, b) => +new Date(b.e.data.published_at) - +new Date(a.e.data.published_at))
   .slice(0, 5);
 ---
-<Base title="أهل الأثر | الأرشيف العلمي للمتون والمنظومات الإسلامية" description="الأرشيف العلمي لأهل السنة والجماعة: متونٌ ومنظوماتٌ ودروسٌ محقَّقةً ومُشكَّلةً، في تجربة قراءة هادئة." activeNav="home" jsonLd={websiteLd()}>
+<Base title="أهل الأثر | أرشيف المواد العلمية" description="موقعٌ يُعنى بجمع التراث الإسلامي على مرِّ العصور، مع سهولة البحث والقراءة." activeNav="home" jsonLd={websiteLd()}>
   <section class="hero">
     <div class="plate-outer">
       <div class="plate-inner">
         <div class="hero-inner">
-          <div class="hero-eyebrow">الأرشيفُ العلميُّ للمتونِ والمنظوماتِ الإسلامية</div>
+          <div class="hero-eyebrow">أرشيفُ المواد العلمية</div>
           <h1 class="hero-title">أهل الأثر</h1>
 
           {/* One asset, re-tinted via the data-theme CSS filter below — the site's
@@ -130,7 +128,7 @@ const latest = [
             decoding="async"
           />
 
-          <p class="hero-lede">موقعٌ يُعنى بجمع تراثِ علماء أهل السنة والأثر على مرِّ العصور، في تجربة قراءةٍ سهلةٍ ومريحة.</p>
+          <p class="hero-lede">موقعٌ يُعنى بجمع التراثِ الإسلامي على مرِّ العصور، مع سهولةِ البحث والقراءة.</p>
 
           <div class="divider-orn" aria-hidden="true">۞</div>
 
@@ -159,7 +157,7 @@ const latest = [
     <div class="browse4-grid">
       <a class="browse4-card accent-brand" href="/books">
         <div class="browse4-card-head"><span class="browse4-card-title">الكتب</span><span class="browse4-card-meta">{toArabicDigits(pub(books).length)} كتابًا</span></div>
-        <p class="browse4-card-sub">متونٌ ومراجعُ ومجاميعُ محقَّقةٌ مُشكَّلةٌ، مرتَّبةٌ حسب الفنِّ.</p>
+        <p class="browse4-card-sub">متونٌ ومراجعُ ومجاميعُ مرتَّبةٌ حسب الفنِّ.</p>
       </a>
       <a class="browse4-card accent-gold" href="/quran">
         <div class="browse4-card-head"><span class="browse4-card-title">القرآن</span><span class="browse4-card-meta">{toArabicDigits(pub(quranSurahs).length)} سورة</span></div>
@@ -171,7 +169,7 @@ const latest = [
       </a>
       <a class="browse4-card accent-copper" href="/poems">
         <div class="browse4-card-head"><span class="browse4-card-title">الشعر</span><span class="browse4-card-meta">{toArabicDigits(pub(poems).length)} منظومة</span></div>
-        <p class="browse4-card-sub">منظوماتٌ علميةٌ محقَّقةٌ مُشكَّلةٌ مع الشروح والتخريج.</p>
+        <p class="browse4-card-sub">منظوماتٌ علميةٌ مع الشروح والتخريج.</p>
       </a>
     </div>
     <div class="browse-pills">

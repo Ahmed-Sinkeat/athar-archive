@@ -1,5 +1,5 @@
 ---
-title: "#رقم_[688]  :"
+title: "هل يصح هذا الأثر وإن لم يصح فهل معناه صحيح وله أصل يوافقه ويحتج البعض بهذا للأنكار على من…"
 status: published
 published_at: 2021-09-09
 person: abu-jafar-al-khalifi

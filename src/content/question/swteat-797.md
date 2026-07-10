@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 797"
+title: "هل الأصل في الإنسان الخير أم الشر ؟"
 status: published
 published_at: 2021-10-05
 person: abu-jafar-al-khalifi

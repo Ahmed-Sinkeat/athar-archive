@@ -1,5 +1,5 @@
 ---
-title: "#رقم_[694]  :"
+title: "كيف نفكك سؤال ” هل الإسلام صالح لكل زمان ومكان؟ ” أشعر أنه سؤال مجمل فما هو الصواب في…"
 status: published
 published_at: 2021-09-09
 person: abu-jafar-al-khalifi

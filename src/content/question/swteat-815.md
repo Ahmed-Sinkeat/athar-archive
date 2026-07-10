@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 815"
+title: "شيخنا بارك الله فيك ما رأيك بمذهب الشيخ محمد بن إبراهيم آل الشيخ والشيخ محمد الأمين…"
 status: published
 published_at: 2021-10-09
 person: abu-jafar-al-khalifi

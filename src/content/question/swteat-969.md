@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 969"
+title: "كتب أحدهم: جمهور الفقهاء على استحباب التبرك بقبور الصالحين ؛ ومن ذلك الدعاء في ذلك المكان…"
 status: published
 published_at: 2021-11-02
 person: abu-jafar-al-khalifi

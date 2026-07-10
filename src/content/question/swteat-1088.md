@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1088"
+title: "النبي أولى بالمؤمنين من أنفسهم وأزواجه أمهاتهم.... عبارة ”وأزواجه أمهاتهم” واضحة في سياق…"
 status: published
 published_at: 2022-01-31
 person: abu-jafar-al-khalifi

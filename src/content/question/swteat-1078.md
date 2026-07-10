@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1078"
+title: "ما حكم لبس البنطلون تحت ملابس البيت وقت الشتاء حتى يحمي من البرد لأن ابن باز قال البنطلون…"
 status: published
 published_at: 2022-01-20
 person: abu-jafar-al-khalifi

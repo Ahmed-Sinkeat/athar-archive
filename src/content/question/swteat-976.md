@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 976"
+title: "ياشيخ سؤالي هل يجوز أخذ الإرث من أب لا يصلي أبدا الا في أول يوم رمضان وكان اذا نُصح يقول…"
 status: published
 published_at: 2021-11-02
 person: abu-jafar-al-khalifi

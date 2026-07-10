@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 944"
+title: "نذرت أن أفعل طاعة للأبد ، وهي سُنة مؤكدة، وكنت افرط فيها ، هذا النذر مر عليه سنوات، وفي…"
 status: published
 published_at: 2021-11-02
 person: abu-jafar-al-khalifi

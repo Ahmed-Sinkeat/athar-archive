@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 913"
+title: "ما رأيكم بكتاب الاغاني لأبي الفرج الأصبهاني ؟"
 status: published
 published_at: 2021-10-30
 person: abu-jafar-al-khalifi

@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 958"
+title: "مالعمل في من ابتلي باخت على غير الجادة لاعلاقة بالدين و سهر وعودة في وقت متأخر ليلا…"
 status: published
 published_at: 2021-11-02
 person: abu-jafar-al-khalifi

@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 998"
+title: "نريد ردا على من يستدل على جواز سماع الغناء بأثر عبدالله بن جعفر"
 status: published
 published_at: 2021-11-02
 person: abu-jafar-al-khalifi

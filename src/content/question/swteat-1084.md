@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1084"
+title: "أنا أطلب العلم ولدي همة في طلب العلم شاب لكن لدي إشكالية كبيرة أني عندما أرى بعض الإخوة…"
 status: published
 published_at: 2022-01-25
 person: abu-jafar-al-khalifi

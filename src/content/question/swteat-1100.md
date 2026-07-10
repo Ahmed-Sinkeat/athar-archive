@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1100"
+title: "مع أقتراب المدارس أذكر نفسي بالفساد الذي يحصل -لايوجد أختلاط- ولكن الجامعة التي سأذهب…"
 status: published
 published_at: 2022-02-06
 person: abu-jafar-al-khalifi

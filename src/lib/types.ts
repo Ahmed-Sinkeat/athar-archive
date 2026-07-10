@@ -17,7 +17,6 @@ export const COLLECTIONS = [
   "book",
   "poem",
   "question",
-  "benefit",
   "article",
   "audio",
   "annotation",
@@ -35,7 +34,6 @@ export const MATERIAL_COLLECTIONS = [
   "book",
   "poem",
   "article",
-  "benefit",
   "question",
 ] as const;
 

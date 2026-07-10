@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1016"
+title: "استمعت إلى عدد من المسلمين المتخصصين الذين ينصحون المرأة بالخروج إلى تجمعات لائقة ولو…"
 status: published
 published_at: 2021-11-07
 person: abu-jafar-al-khalifi

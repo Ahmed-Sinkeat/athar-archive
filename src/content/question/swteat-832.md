@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 832"
+title: "سمعت لك مراجعات ومناصحات رقم ( 11 ) ورقم ( 25 ) شيخنا عبدالله وانا لي تجربة وقصة مع…"
 status: published
 published_at: 2021-10-11
 person: abu-jafar-al-khalifi

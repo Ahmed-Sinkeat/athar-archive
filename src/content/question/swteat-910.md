@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 910"
+title: "سؤالي: عن قراءة سورة البقرة. - قراءة سورة البقرة لسبب دنيوي معين كطلب الزواج. - قراءة…"
 status: published
 published_at: 2021-10-30
 person: abu-jafar-al-khalifi

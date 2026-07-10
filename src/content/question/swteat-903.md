@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 903"
+title: "ما رأيك شيخنا بالتعزير بالمال ؟"
 status: published
 published_at: 2021-10-30
 person: abu-jafar-al-khalifi

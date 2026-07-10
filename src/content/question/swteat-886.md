@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 886"
+title: "ما صحة آثر الصحابي عبدالله بن عباس- رضي الله عنهما-: ” سبع أرضين في كل أرض نبي كنبيكم...…"
 status: published
 published_at: 2021-10-21
 person: abu-jafar-al-khalifi

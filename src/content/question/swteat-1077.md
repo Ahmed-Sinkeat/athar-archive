@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1077"
+title: "تقدم لخطبتي شخص و سالت شخصا كان تلميذه في المدرسة التي يشتغل بها فقال لي انه يسب الدين و…"
 status: published
 published_at: 2022-01-20
 person: abu-jafar-al-khalifi

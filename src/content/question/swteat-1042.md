@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1042"
+title: "هل يجوز ذهاب الى محكمة في بلاد الكفر اذا أجبر التحاكم اليه ؟"
 status: published
 published_at: 2021-12-28
 person: abu-jafar-al-khalifi

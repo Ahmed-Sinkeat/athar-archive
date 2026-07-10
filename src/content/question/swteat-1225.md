@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1225"
+title: "عندنا في مصر في الأرياف وكذا يأتون بخفاش وطواط يعني ويذبحونه و يمسحون دمه على مكان في جسم…"
 status: published
 published_at: 2025-08-23
 person: abu-jafar-al-khalifi

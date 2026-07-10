@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1125"
+title: "أنا شابة متزوجة ولدي طفلين وزوجي غائب (سجين) وشبه منعزلة عن المجتمع لا أكاد أخرج من بيتي…"
 status: published
 published_at: 2022-07-06
 person: abu-jafar-al-khalifi

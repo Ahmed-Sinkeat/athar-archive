@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 974"
+title: "لماذا أمريكا مهتمة جدا بالمرأة الأفغانية؟! ”‏بيان أميركي أوروبي: ‏لدينا قلق كبير حول…"
 status: published
 published_at: 2021-11-02
 person: abu-jafar-al-khalifi

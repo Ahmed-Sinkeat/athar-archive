@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 783"
+title: "أَخْبَرَنَا أَبُو نعيم الحافظ، حدثنا محمد بن إبراهيم بن علي قَالَ: سمعت حمزة بن علي…"
 status: published
 published_at: 2021-10-05
 person: abu-jafar-al-khalifi

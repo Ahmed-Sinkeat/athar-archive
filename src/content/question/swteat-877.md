@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 877"
+title: "ماهوالرد حول من يقول، أنه لايجوز، أصبحنا وأصبح الملك لله وأمسى الملك لله في أذكار الصباح…"
 status: published
 published_at: 2021-10-21
 person: abu-jafar-al-khalifi

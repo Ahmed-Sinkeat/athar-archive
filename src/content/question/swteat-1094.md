@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1094"
+title: "قد قرأت منذ مدة كتيّبا صغيرا في عن أحكام للجمعة أصدره الإخوة في قنوات الآثار جزاهم خيرا…"
 status: published
 published_at: 2022-02-06
 person: abu-jafar-al-khalifi

@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1113"
+title: "وردت مجموعة من الأسئلة حول الإسرائيليات والآثار التي توصف بأنها ” إسرائيلية ”"
 status: published
 published_at: 2022-04-19
 person: abu-jafar-al-khalifi

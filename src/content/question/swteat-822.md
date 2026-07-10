@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 822"
+title: "هل ثبت سماع الاصمعي من سفيان الثوري؟"
 status: published
 published_at: 2021-10-09
 person: abu-jafar-al-khalifi

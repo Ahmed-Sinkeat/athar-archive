@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 849"
+title: "شيخنا حياك الله يا شيخ أرى الكثير من الاسئلة التي تُسأل بها في البوت على الذنوب والمعاصي…"
 status: published
 published_at: 2021-10-11
 person: abu-jafar-al-khalifi

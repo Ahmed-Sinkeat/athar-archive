@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 880"
+title: "ما الكتاب الذي تنصح به للبدء بحفظ الاحاديث؟ وهل الحفظ يكون بالسند ام بلا سند واذا جاز…"
 status: published
 published_at: 2021-10-21
 person: abu-jafar-al-khalifi

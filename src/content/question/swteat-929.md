@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 929"
+title: "انا فتاة على قدر من التدين وتقدم لي شاب لا اعرف عنه الا انه محافظ على صلاة الجماعة ولكن…"
 status: published
 published_at: 2021-11-01
 person: abu-jafar-al-khalifi

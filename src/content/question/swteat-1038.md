@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1038"
+title: "كيف يمكن فهم اضطراب العديد من فقهاء المذاهب في الترجيح بين أقوال مجتهدي مذاهبهم؟ مثلا…"
 status: published
 published_at: 2021-12-25
 person: abu-jafar-al-khalifi

@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 825"
+title: "ما رأي شيخنا الخليفي بربيع المدخلي؟"
 status: published
 published_at: 2021-10-09
 person: abu-jafar-al-khalifi

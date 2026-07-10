@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1007"
+title: "هل يوجد ارتباط بين متمذهبة الشافعية فقها والاشعرية والاعتزال والتكلم عقيدةً؟ وإذا كان..…"
 status: published
 published_at: 2021-11-07
 person: abu-jafar-al-khalifi

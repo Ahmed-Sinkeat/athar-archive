@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1175"
+title: "سؤال عن العلم بالعمل ( من دروس مختصر التحرير ) - وينصح بالرجوع إلى دروس شرح مقدمة مسند…"
 status: published
 published_at: 2024-12-15
 person: abu-jafar-al-khalifi

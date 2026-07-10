@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1195"
+title: "شيخنا بالنسبة للذين يعملون في مداجن الدجاج ويقع على ملابسهم من روث الدجاج فهل يجوز له…"
 status: published
 published_at: 2025-01-10
 person: abu-jafar-al-khalifi

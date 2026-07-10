@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 866"
+title: "ورقة من منهج دراسي جاء فيها : أن عمر لما دخل بيت المقدس أعطاهم الأمان على كنائسهم وفيها…"
 status: published
 published_at: 2021-10-18
 person: abu-jafar-al-khalifi

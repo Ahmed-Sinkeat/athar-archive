@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1177"
+title: "هل يسن صلاة ركعتين عند المصيبة ؟ بما رواه أبو عبيد القاسم بن سلام في شواهد القرآن : حدثنا…"
 status: published
 published_at: 2025-01-05
 person: abu-jafar-al-khalifi

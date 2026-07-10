@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 873"
+title: "هل المثنى بن حارثة صحابي أم تابعي؟"
 status: published
 published_at: 2021-10-18
 person: abu-jafar-al-khalifi

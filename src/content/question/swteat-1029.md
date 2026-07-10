@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1029"
+title: "ولله الحمد التزمت من ٤ سنوات وكنت مدمن ع الحشيش والتدخين واستطعت التغلب على ادمان استمر…"
 status: published
 published_at: 2021-11-21
 person: abu-jafar-al-khalifi

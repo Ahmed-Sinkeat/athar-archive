@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1141"
+title: "هل صحيح أن عبدالرحمن بن عديس البلوي كان مما شاركو في حصار عثمان رضي الله عنه؟ لان هناك…"
 status: published
 published_at: 2024-02-01
 person: abu-jafar-al-khalifi

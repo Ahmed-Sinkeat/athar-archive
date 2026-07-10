@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 991"
+title: "مرت ست سنوات وقلبى يزداد مرضا وبعدا عن الصراط المستقيم كنت فى قمة الالتزام قبلها لكن لا…"
 status: published
 published_at: 2021-11-02
 person: abu-jafar-al-khalifi

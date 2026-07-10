@@ -1,5 +1,5 @@
 ---
-title: "#رقم_[710]  :"
+title: "هل يصح القول بأن حواء هي من أشارت لآدم أن يأكل من الشجرة ؟ وأن الله عاقب جنس النساء…"
 status: published
 published_at: 2021-09-11
 person: abu-jafar-al-khalifi

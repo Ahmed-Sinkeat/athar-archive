@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 878"
+title: "هل السجود للتحية، كفر؟"
 status: published
 published_at: 2021-10-21
 person: abu-jafar-al-khalifi

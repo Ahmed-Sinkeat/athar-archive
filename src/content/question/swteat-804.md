@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 804"
+title: "سؤالي ليس عن حكم أو فتوى إنما سؤالي هو أنني طلبت العلم الشرعي منذ فترة ليست بالطويلة…"
 status: published
 published_at: 2021-10-09
 person: abu-jafar-al-khalifi

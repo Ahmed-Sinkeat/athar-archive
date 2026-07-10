@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 967"
+title: "ما حكم بطاقات التميز التي تعطيها البنوك لمن كان لديه مال عندهم بلغ ١٠٠ ألف مثلا وهل تعتبر…"
 status: published
 published_at: 2021-11-02
 person: abu-jafar-al-khalifi

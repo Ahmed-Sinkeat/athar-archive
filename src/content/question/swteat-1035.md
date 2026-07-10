@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1035"
+title: "شيخي أحسن الله إليك كنت قد اقتبست كلامًا لك ولم أستأذن منك [ وذكر النقل المقتبس ] ثم قال…"
 status: published
 published_at: 2021-12-25
 person: abu-jafar-al-khalifi

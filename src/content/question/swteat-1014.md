@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1014"
+title: "ما حكم اطالة الشعر للرجال وجعله ضفائر او ربطه بربطه من الخلف؟"
 status: published
 published_at: 2021-11-07
 person: abu-jafar-al-khalifi

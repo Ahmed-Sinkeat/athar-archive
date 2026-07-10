@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 931"
+title: "شيخ بارك الله فيك هل تصح مواعيد الصلوات التي تقررها الجهات الرسمية وخاصة صلاة الفجر ؟"
 status: published
 published_at: 2021-11-01
 person: abu-jafar-al-khalifi

@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1192"
+title: "ذكرت في شرح عمدة الفقه لابن قدامة في باب الحيض أنه يجب على المرأة إن انتهت من الحيض في…"
 status: published
 published_at: 2025-01-10
 person: abu-jafar-al-khalifi

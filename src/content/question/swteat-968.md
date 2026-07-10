@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 968"
+title: "هل حديث الرايات السود ينطبق على طالبان اليوم ؟ - أرسل السائل نص الحديث كاملاً -"
 status: published
 published_at: 2021-11-02
 person: abu-jafar-al-khalifi

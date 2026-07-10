@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1003"
+title: "ينشر بعضهم أقوالا لابن تيمية رحمه الله يستدل بها بعض الباحثين على إمامة أبي حنيفة وأنه…"
 status: published
 published_at: 2021-11-07
 person: abu-jafar-al-khalifi

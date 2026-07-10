@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 973"
+title: "هل هناك اشكال في التسمية باسم ماريا لأن هناك قريبة لي قررت تغير اسمها إلى (ماريا) لأن…"
 status: published
 published_at: 2021-11-02
 person: abu-jafar-al-khalifi

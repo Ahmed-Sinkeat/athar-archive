@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 937"
+title: "هل تأثم المرأة إن اختارت عدم الزواج خوفاً من عدم تأديتها لحق الزوج لعظم حقه عليها ؟"
 status: published
 published_at: 2021-11-01
 person: abu-jafar-al-khalifi

@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 807"
+title: "أيها المبارك أحتاج بعض أسماء كتب تقرأ على جماعة المسجد تكون صحيحة خاصة في باب المواعظ…"
 status: published
 published_at: 2021-10-09
 person: abu-jafar-al-khalifi

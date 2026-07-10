@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 948"
+title: "مالراجح في قول أذكار النوم في نوم النهار ؟"
 status: published
 published_at: 2021-11-02
 person: abu-jafar-al-khalifi

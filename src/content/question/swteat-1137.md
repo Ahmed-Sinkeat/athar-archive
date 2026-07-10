@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1137"
+title: "سؤال عن كتابة نُشرت حول تكفير الجيوش ؟"
 status: published
 published_at: 2024-01-25
 person: abu-jafar-al-khalifi

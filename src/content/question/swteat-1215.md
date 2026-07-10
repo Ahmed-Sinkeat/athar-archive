@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1215"
+title: "ورحمة وبركاته ياشيخ ماقولك في هذا الكلام: فداود بن أبي هند إمام السنة وموسى بن سيار من…"
 status: published
 published_at: 2025-04-23
 person: abu-jafar-al-khalifi

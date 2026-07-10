@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 820"
+title: "دكتور اسنان يعمل في الحكومة وفي عيادته الخاصة يسأل في ظل توافر طبيبات الاسنان النساء هل…"
 status: published
 published_at: 2021-10-09
 person: abu-jafar-al-khalifi

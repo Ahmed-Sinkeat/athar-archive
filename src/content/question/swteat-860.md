@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 860"
+title: "منشور منتشر كتب فيه :"
 status: published
 published_at: 2021-10-11
 person: abu-jafar-al-khalifi

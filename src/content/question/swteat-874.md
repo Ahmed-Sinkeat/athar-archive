@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 874"
+title: "شيخنا الحبيب؛ سمعت ثناء كبيرا على شرح الشيخ سامي الصقير على الروض المربع هل تنصحون…"
 status: published
 published_at: 2021-10-18
 person: abu-jafar-al-khalifi

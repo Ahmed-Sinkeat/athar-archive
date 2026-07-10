@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 999"
+title: "هل العادة السرية محرمة؟"
 status: published
 published_at: 2021-11-02
 person: abu-jafar-al-khalifi

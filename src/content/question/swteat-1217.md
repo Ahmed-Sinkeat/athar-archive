@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1217"
+title: "هل صح حديث في النهي عن الإعطاء بالشمال والأخذ بالشمال ؟"
 status: published
 published_at: 2025-04-29
 person: abu-jafar-al-khalifi

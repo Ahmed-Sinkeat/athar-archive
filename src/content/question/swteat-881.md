@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 881"
+title: "شيخنا عبدالله تعرفت على مجموعة شباب على فيسبوك من كركوك العراق ودخلت معهم في قروبات، ليس…"
 status: published
 published_at: 2021-10-21
 person: abu-jafar-al-khalifi

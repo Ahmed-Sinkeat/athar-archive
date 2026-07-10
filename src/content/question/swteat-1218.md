@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1218"
+title: "هل يصح هذا الأثر عن الشافعي في الحلية وهل فيه دلالة على عدم أحقية علي في حروبه عند…"
 status: published
 published_at: 2025-05-05
 person: abu-jafar-al-khalifi

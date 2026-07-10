@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1216"
+title: "هل صحيح أن الإمام أحمد هو أول من ربع بعلي بن أبي طالب رضي الله عنه ؟"
 status: published
 published_at: 2025-04-25
 person: abu-jafar-al-khalifi

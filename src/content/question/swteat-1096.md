@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1096"
+title: "( كتب بالعامية المصرية ) عندي اسأله كتير 1-للأسف اهلي مش ملتزمين اوي وهما مش متعلمين هما…"
 status: published
 published_at: 2022-02-06
 person: abu-jafar-al-khalifi

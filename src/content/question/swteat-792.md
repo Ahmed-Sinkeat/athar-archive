@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 792"
+title: "الحمد لله أنا بعافية ولكن صحتي ليست تماما لذلك ربما لو أخذت اللقاح أكون سببت لنفسي ضرر…"
 status: published
 published_at: 2021-10-05
 person: abu-jafar-al-khalifi

@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1112"
+title: "انتشرت تغريدة لصالح المغامسي يقول فيها : :هذه ليلة النصف من شبان وتسمى عند البعض بليلة…"
 status: published
 published_at: 2022-03-20
 person: abu-jafar-al-khalifi

@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 935"
+title: "يا شيخ الحمد لله على نعمة الإسلام وأرجو ألا يكون هذا استرسال مع الوسواس لكن قول الله…"
 status: published
 published_at: 2021-11-01
 person: abu-jafar-al-khalifi

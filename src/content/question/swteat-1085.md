@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1085"
+title: "( من صفحة في الفيسبوك وكتب بالعامية المصرية ) أنا في موقف ومحتاج نصيحتك وحط نفسك مكاني…"
 status: published
 published_at: 2022-01-30
 person: abu-jafar-al-khalifi

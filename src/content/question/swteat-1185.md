@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1185"
+title: "خبر يستدل به بعض أهل البدع قال عبد الرزاق صاحب المصنف قال، أخبرنا جعفر بن سليمان، عن عوف،…"
 status: published
 published_at: 2025-01-06
 person: abu-jafar-al-khalifi

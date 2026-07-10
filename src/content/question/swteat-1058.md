@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1058"
+title: "يا شيخ ، كل شيء في الإسلام كنت أظنه حرام ، أجد البعض يجادل فيها و يجعله مسألة خلافية ، و…"
 status: published
 published_at: 2022-01-01
 person: abu-jafar-al-khalifi

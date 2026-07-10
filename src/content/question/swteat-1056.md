@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1056"
+title: "ذكرت في إحدى الأجوبة (جواب سؤال المحاكم الغربية) وقلت بالنص (اذا كان هناك حق سيذهب لك فإن…"
 status: published
 published_at: 2021-12-28
 person: abu-jafar-al-khalifi

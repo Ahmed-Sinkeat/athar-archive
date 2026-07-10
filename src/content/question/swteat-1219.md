@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1219"
+title: "هل يصح هذا الأثر ؟ وما توجيهه إن كان صحيحا ؟ ٨٨١٦] عبد الرزاق، قَالَ: أَخْبَرَنَا يَحْيَى…"
 status: published
 published_at: 2025-05-05
 person: abu-jafar-al-khalifi

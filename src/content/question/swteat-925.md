@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 925"
+title: "شيخنا،حبذا لو تعلق على النقاش الذي حصل في كتاب الشيخ وليد السعيدان في أصول الفقه و جزاكم…"
 status: published
 published_at: 2021-11-01
 person: abu-jafar-al-khalifi

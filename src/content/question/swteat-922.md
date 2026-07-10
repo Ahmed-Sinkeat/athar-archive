@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 922"
+title: "أما القائلون بقدم العالم فقولهم يستلزم امتناع حدوث حادث، فإن القديم إما واجب بنفسه، أو…"
 status: published
 published_at: 2021-11-01
 person: abu-jafar-al-khalifi

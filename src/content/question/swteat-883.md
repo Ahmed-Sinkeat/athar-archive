@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 883"
+title: "ما هو الدليل الذي استند إليه الألباني في حلّ كشف الوجه واليدين ؟ وهل قيّد ذلك بعدم كون…"
 status: published
 published_at: 2021-10-21
 person: abu-jafar-al-khalifi

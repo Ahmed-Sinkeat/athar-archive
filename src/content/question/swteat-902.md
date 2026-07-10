@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 902"
+title: "سائلة تقول : انا ندماااانه مرره وأحس صلاتي وعبادات مهي مقبوله لأني كنت أغتاب الناس وكنت…"
 status: published
 published_at: 2021-10-30
 person: abu-jafar-al-khalifi

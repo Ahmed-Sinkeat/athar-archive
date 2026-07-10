@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1224"
+title: "ما توجيه هذه الرواية عن الإمام مالك رحمه الله قال الإمام أحمد : حدثنا شعيب بن حرب قال:…"
 status: published
 published_at: 2025-08-06
 person: abu-jafar-al-khalifi

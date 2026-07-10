@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 794"
+title: "قَالَ إِسْحَاقُ : أَخْبَرَنَا الْمُعْتَمِرُ بْنُ سُلَيْمَانَ , قَالَ : سَمِعْتُ أَبِي…"
 status: published
 published_at: 2021-10-05
 person: abu-jafar-al-khalifi

@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 798"
+title: "ليس بسؤال وإنما اقتراحٌ، ودنا الشيخ عبدالله يعلّق لنا على أحد كتب السياسة الشرعية،…"
 status: published
 published_at: 2021-10-05
 person: abu-jafar-al-khalifi

@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1161"
+title: "ما معنى ان يقال إمام ثقة مدلس (في هشام ابن بشير)"
 status: published
 published_at: 2024-03-03
 person: abu-jafar-al-khalifi

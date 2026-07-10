@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1150"
+title: "ما صحة الأثر الذي ينشره الدكتور جاسم المطوع وغيره عن عمر رضي الله عنه : أنه إذا دخل على…"
 status: published
 published_at: 2024-02-13
 person: abu-jafar-al-khalifi

@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 799"
+title: "ذكر ابن عثيمين في شرحه للقواعد المثلى أن حديث (أن الله يضحك حتى تبدو أضراسه)لا يصح…"
 status: published
 published_at: 2021-10-05
 person: abu-jafar-al-khalifi

@@ -186,12 +186,12 @@ export function validate(entries: ContentEntry[]): BuildError[] {
       }
     }
 
-    // --- optional article.audio ref ---
-    if (collection === "article" && data.audio) {
+    // --- optional article/question .audio ref ---
+    if ((collection === "article" || collection === "question") && data.audio) {
       const audioId = str(data.audio);
       const audioEntry = get(map, "audio", audioId);
       if (!audioEntry) {
-        fail(collection, id, "ref-resolution", `audio '${audioId}' not found (referenced by 'article/${id}')`);
+        fail(collection, id, "ref-resolution", `audio '${audioId}' not found (referenced by '${collection}/${id}')`);
       }
     }
 

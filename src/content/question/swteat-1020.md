@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1020"
+title: "انا بنت معقود علي وزواجي بعد شهرين اعاني من مشكلة عدم الاشباع العاطفي لي من قبل الزوج وهو…"
 status: published
 published_at: 2021-11-12
 person: abu-jafar-al-khalifi

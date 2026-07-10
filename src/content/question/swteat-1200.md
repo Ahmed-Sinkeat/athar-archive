@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1200"
+title: "هل هناك أفكار دعويه للقرى و الباديه عندنا في النقب"
 status: published
 published_at: 2025-01-11
 person: abu-jafar-al-khalifi

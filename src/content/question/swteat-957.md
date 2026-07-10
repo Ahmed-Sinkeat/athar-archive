@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 957"
+title: "هل النسوية مسلمة او هل تجوز الزواج من نسوية تعرف اصل الفكرة وأن مركزها ليس الله وهل هذا…"
 status: published
 published_at: 2021-11-02
 person: abu-jafar-al-khalifi

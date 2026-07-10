@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1068"
+title: "ياشيخ عندي مشكلة أحتاج اسأل اهل العلم عنها لاحظت في نفسي كثرة البحث وأشعر ان هذا الأمر…"
 status: published
 published_at: 2022-01-16
 person: abu-jafar-al-khalifi

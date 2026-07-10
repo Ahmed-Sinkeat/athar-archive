@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1118"
+title: "قد وجدت بعض الاخوة ينتقد أمورا في برامج مثل صناعة المحاور والبناء المنهجي و.. و وغالب…"
 status: published
 published_at: 2022-05-05
 person: abu-jafar-al-khalifi

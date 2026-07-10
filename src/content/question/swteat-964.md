@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 964"
+title: "هل يخرج الانسان من دائرة اتباع مذهب السلف اذا وصل لدرجه معينة في التميع بالأحكام على…"
 status: published
 published_at: 2021-11-02
 person: abu-jafar-al-khalifi

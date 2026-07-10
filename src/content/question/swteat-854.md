@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 854"
+title: "الوضع مزري ياشيخ كل من هب ودب اصبح يتكلم في امور الدين ويفتي على كيفه وهذا منتشر بين…"
 status: published
 published_at: 2021-10-11
 person: abu-jafar-al-khalifi

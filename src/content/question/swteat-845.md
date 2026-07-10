@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 845"
+title: "اسأل الله ان ينزل عليكم رحماته وسكينته يا شيخ عندي استفسار او مقترح خطر ببالي وهو بحث عن…"
 status: published
 published_at: 2021-10-11
 person: abu-jafar-al-khalifi

@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 843"
+title: "كنت فيما سبق من يترك معظم الصلوات وكنت اتهاون جدا حتى ان بعض الاحيان احدث نفسي ان صليت…"
 status: published
 published_at: 2021-10-11
 person: abu-jafar-al-khalifi

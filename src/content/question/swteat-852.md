@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 852"
+title: "فيه رجل يسألكم يقول: هناك فتاة مستقيمة تزوجت ثم طلقت ومعها ابن صغير ارسلت إلي تريدني ان…"
 status: published
 published_at: 2021-10-11
 person: abu-jafar-al-khalifi

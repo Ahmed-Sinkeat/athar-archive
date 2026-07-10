@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1106"
+title: "هل يصح استناد القائلين بجواز التعويض المعنوي بالأثر الوارد عن عثمان رضي الله عنه بقضائه…"
 status: published
 published_at: 2022-02-07
 person: abu-jafar-al-khalifi

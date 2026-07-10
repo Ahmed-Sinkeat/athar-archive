@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 995"
+title: "مارأي الشيخ أبي جعفر في موضوع العذر بلجهل في العقيدة وماهي الكتب المفيدة في الموضوع"
 status: published
 published_at: 2021-11-02
 person: abu-jafar-al-khalifi

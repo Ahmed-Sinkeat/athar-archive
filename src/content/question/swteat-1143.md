@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1143"
+title: "تحت شعار عبادة ورياضة ! يمارسون الرياضة في مسجد بتركيا بإشراف مدرب متخصص مبادرة أطلقتها…"
 status: published
 published_at: 2024-02-05
 person: abu-jafar-al-khalifi

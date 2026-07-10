@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1047"
+title: "انا اشتغل مع والدي بالتجارة (تجارة الالبسة) ونعمل في محل قمنا بتاجيره من شخص يشتغل بتجارة…"
 status: published
 published_at: 2021-12-28
 person: abu-jafar-al-khalifi

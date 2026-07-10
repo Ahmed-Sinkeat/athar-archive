@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1043"
+title: "هل لجماعة الإخوان جرأة في الكلام على علماء السلف من المتقدمين والمعاصرين؟"
 status: published
 published_at: 2021-12-28
 person: abu-jafar-al-khalifi

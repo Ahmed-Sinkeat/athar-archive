@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 975"
+title: "لماذا أمر عبدالله بن المبارك ان تعاد الصلاة خلف ابي يوسف هل هو يكفره؟ ولماذا؟ بسبب الحيل ؟"
 status: published
 published_at: 2021-11-02
 person: abu-jafar-al-khalifi

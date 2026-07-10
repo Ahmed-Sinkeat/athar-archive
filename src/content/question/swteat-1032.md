@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1032"
+title: "الاول الوديعة في البنوك الاسلامية عبارة عن مضاربة جهالة النسبة - كم لصاحب المال وكم للبنك…"
 status: published
 published_at: 2021-11-21
 person: abu-jafar-al-khalifi

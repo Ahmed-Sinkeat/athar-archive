@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 889"
+title: "ما رأيكم بهذا الجواب؟ [ [ س 3 –ما حكم الأشعرية في هذا الزمان ؟ ج ـ الأشعرية قسمان : 1…"
 status: published
 published_at: 2021-10-21
 person: abu-jafar-al-khalifi

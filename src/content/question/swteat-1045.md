@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1045"
+title: "سؤال واستشكال حول تعريف العبادة"
 status: published
 published_at: 2021-12-28
 person: abu-jafar-al-khalifi

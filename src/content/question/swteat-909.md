@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 909"
+title: "هناك عدد من طلبة العلم يعيش نفسية المؤامرة فينظر إلى كل نقد أنه مبني على حقد أو حسد وأنه…"
 status: published
 published_at: 2021-10-30
 person: abu-jafar-al-khalifi

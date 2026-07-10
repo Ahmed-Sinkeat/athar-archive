@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1021"
+title: "هل عندك نصائح عن طريقة البحث عن زوج صالحة ؟"
 status: published
 published_at: 2021-11-13
 person: abu-jafar-al-khalifi

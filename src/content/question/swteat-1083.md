@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1083"
+title: "أشكل علي كون صفة العلو لله ذاتية أزلية، مع أن العلو لا يتصور -والله أعلم- إلا بالنسبة إلى…"
 status: published
 published_at: 2022-01-24
 person: abu-jafar-al-khalifi

@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1182"
+title: "إذا قام الامام للركعة الثالثة و أنا لم يكمل التشهد ماذا افعل ؟ أكمله و أتابع الامام و…"
 status: published
 published_at: 2025-01-06
 person: abu-jafar-al-khalifi

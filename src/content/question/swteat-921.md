@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 921"
+title: "يا شيخ أنا قمت بفتح قناة في التلقرام لدعوة النساء للحجاب، وهي قناة خاصة بالنساء، أسجل…"
 status: published
 published_at: 2021-11-01
 person: abu-jafar-al-khalifi

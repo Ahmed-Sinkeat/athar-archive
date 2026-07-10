@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 819"
+title: "ما حكم العمل في شركة تشتري منها منتج تكسب منه ارباح بنسب محددة كل شهر؟ وعندما تضم اناس…"
 status: published
 published_at: 2021-10-09
 person: abu-jafar-al-khalifi

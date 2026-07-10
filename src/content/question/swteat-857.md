@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 857"
+title: "قد والحمد لله فهمنا عن الشيخ أهمية مبحث الأسماء والصفات، فبارك الله في الشيخ. عندنا إمام…"
 status: published
 published_at: 2021-10-11
 person: abu-jafar-al-khalifi

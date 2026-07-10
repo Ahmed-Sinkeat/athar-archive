@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 945"
+title: "منذ زمن طويل وأنا يشكل علي في دعوة المسلمين لغيرهم في الغرب أنهم ينظرون للفتيات المدعوات…"
 status: published
 published_at: 2021-11-02
 person: abu-jafar-al-khalifi

@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 795"
+title: "سؤالي عن حكم الاشتراك وعمل لايك في قنوات اليوتيوب التعليمية الاجنبيه وطبعا فيها نساء…"
 status: published
 published_at: 2021-10-05
 person: abu-jafar-al-khalifi

@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1160"
+title: "لي قريب مراهق تلقف بعض شبه الزنادقة على السنة من جنس (لماذا لم تنقل لنا خطب النبي صلى…"
 status: published
 published_at: 2024-03-03
 person: abu-jafar-al-khalifi

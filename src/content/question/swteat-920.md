@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 920"
+title: "انا طالب علم واحفظ اربع اجزاء من القران واحفظ كذا متن ومستمر بطلب العلم ولله الحمد لكن…"
 status: published
 published_at: 2021-11-01
 person: abu-jafar-al-khalifi

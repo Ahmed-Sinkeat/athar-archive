@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1190"
+title: "أعمل في مجال الوساطة في بيع وشراء العقارات ونأخذ عمولة من المشتري على كل بيعة ولكن…"
 status: published
 published_at: 2025-01-08
 person: abu-jafar-al-khalifi

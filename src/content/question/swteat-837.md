@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 837"
+title: "هل هناك مصادر جيدة لاخبار اشراط الساعة وعن تنزيلها على الواقع ؟"
 status: published
 published_at: 2021-10-11
 person: abu-jafar-al-khalifi

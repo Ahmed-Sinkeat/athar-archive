@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 777"
+title: "هل يجوز أقضي كفارة (إطعام مساكين) في يوم العيد؟ عشان ما لقيت غير ذا اليوم هالحين هل في…"
 status: published
 published_at: 2021-10-02
 person: abu-jafar-al-khalifi

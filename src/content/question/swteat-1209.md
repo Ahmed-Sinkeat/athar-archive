@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1209"
+title: "ذكرتم في درس المحرر انه لا توجد رواية في الصحيحين في أمر غسل الكافر اذا اسلم وهناك رواية…"
 status: published
 published_at: 2025-01-21
 person: abu-jafar-al-khalifi

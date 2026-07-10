@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 952"
+title: "هل التأويل مانع من التكفير في السمعيات الامور الخبرية مثل الجهل أم لا مع الأدلة بعد اذنكم"
 status: published
 published_at: 2021-11-02
 person: abu-jafar-al-khalifi

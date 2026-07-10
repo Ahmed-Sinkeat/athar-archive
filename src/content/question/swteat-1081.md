@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1081"
+title: "أسأل عن كيفية التخلص من الهواجس والانطباعات الفكرية و النفسية السلبية مثل الصورة النمطية…"
 status: published
 published_at: 2022-01-24
 person: abu-jafar-al-khalifi

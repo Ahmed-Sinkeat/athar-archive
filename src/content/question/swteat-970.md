@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 970"
+title: "ما حكم تعليم الاولاد فى المدارس الحكومية الموجودة فى البلاد الاسلامية كتركيا مثلا ... مع…"
 status: published
 published_at: 2021-11-02
 person: abu-jafar-al-khalifi

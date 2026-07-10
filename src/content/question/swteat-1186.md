@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1186"
+title: "هل إبراهيم عليه السلام هو خير البشر بعد نبينا محمد صلى الله عليه وسلم ؟"
 status: published
 published_at: 2025-01-07
 person: abu-jafar-al-khalifi

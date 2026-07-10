@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1221"
+title: "هل يصح هذا الخبر : حدثنا يحيى بن آدم ثنا إسرائيل عن أبي إسحاق عن هبيرة بن يريم قال خرج…"
 status: published
 published_at: 2025-05-22
 person: abu-jafar-al-khalifi

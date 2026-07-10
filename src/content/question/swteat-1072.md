@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1072"
+title: "هل انعقد الإجماع على كفر القائلين بخلق القرآن؟"
 status: published
 published_at: 2022-01-16
 person: abu-jafar-al-khalifi

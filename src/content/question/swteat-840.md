@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 840"
+title: "إقامة حفلات لبس النقاب أو الحجاب جائز شرعا؟ وهل فيه تفصيل بين من كان أهلها ومحيطها في…"
 status: published
 published_at: 2021-10-11
 person: abu-jafar-al-khalifi

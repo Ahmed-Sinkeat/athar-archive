@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 780"
+title: "في صناعة التطبيقات للجوالات مجال للأرباح من الإعلانات علما أن هذه الإعلانات لا تستطيع…"
 status: published
 published_at: 2021-10-02
 person: abu-jafar-al-khalifi

@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 961"
+title: "كيف يكون ”إكرام” الشعر ، من قوله عليه الصلاة والسلام : ”من كان له شعر فليكرمه” ؟ - هل هو…"
 status: published
 published_at: 2021-11-02
 person: abu-jafar-al-khalifi

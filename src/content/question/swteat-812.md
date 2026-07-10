@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 812"
+title: "بحثت كثيراً عن هذا ولم اجد ضالتي علمتُ أن بالإمكان أن أنوي بعبادتي عبادتين في آن واحد…"
 status: published
 published_at: 2021-10-09
 person: abu-jafar-al-khalifi

@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 833"
+title: "موقف أخطأ عمر واصابت امراة يصح الاثر والمقالة"
 status: published
 published_at: 2021-10-11
 person: abu-jafar-al-khalifi

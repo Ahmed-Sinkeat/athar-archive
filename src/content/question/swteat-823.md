@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 823"
+title: "شيخنا وجدت هذا الكلام في كتاب لطائف المعارف، و الذي أعلمه عن ابن رجب أنه كان سلفي العقيدة…"
 status: published
 published_at: 2021-10-09
 person: abu-jafar-al-khalifi

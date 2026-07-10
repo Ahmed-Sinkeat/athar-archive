@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 826"
+title: "الله يبارك فيك و يحفظك الشيخ . هل طلب الدعاء من الغير ينافي كمال التوحيد و التوكل ؟"
 status: published
 published_at: 2021-10-09
 person: abu-jafar-al-khalifi

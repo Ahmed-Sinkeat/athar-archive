@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1227"
+title: "هل صحيح أن من دعاء اللباس إذا لبس ثوبا [سماه باسمه] قميصاً أو رداء أو عمامة يقول: ”…"
 status: published
 published_at: 2025-12-01
 person: abu-jafar-al-khalifi

@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 865"
+title: "ما حكم رجوع الموظف الى بيته القريب من دوامه (ربع ساعة من بيته) في الوقت الذي لا يوجد فيه…"
 status: published
 published_at: 2021-10-18
 person: abu-jafar-al-khalifi

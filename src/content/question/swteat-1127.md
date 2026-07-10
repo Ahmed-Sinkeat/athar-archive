@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1127"
+title: "أبا جعفر- تعلمنا منك أنه ليس من هدي السلف كثرة اطلاق ألقاب مثل الشيخ إلا أن قدرك عندي…"
 status: published
 published_at: 2022-07-06
 person: abu-jafar-al-khalifi

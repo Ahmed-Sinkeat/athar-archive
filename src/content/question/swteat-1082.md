@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1082"
+title: "رجاءاً هل من طريقة للتخلص من إدمان الإباحية والعادة السرية ؟ وكيف أغض بصري ؟ أنا أقضي جل…"
 status: published
 published_at: 2022-01-24
 person: abu-jafar-al-khalifi

@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1051"
+title: "هل لعبة العرائس الموجودة اليوم هي نفس العروسة التي كانت تلعب بها الصحابية زوج النبي صلى…"
 status: published
 published_at: 2021-12-28
 person: abu-jafar-al-khalifi

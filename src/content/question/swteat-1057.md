@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1057"
+title: "وردت أسئلة كثيرة حول الاحتفال برأس السنة وتهنئة الكفار بذلك ! ومنها سائل يقول : قبل قليل…"
 status: published
 published_at: 2022-01-01
 person: abu-jafar-al-khalifi

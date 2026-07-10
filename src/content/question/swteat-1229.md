@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1229"
+title: "هل يوجد عند أهل السنة فتاوى في جواز إعارة الفروج ؟"
 status: published
 published_at: 2026-02-04
 person: abu-jafar-al-khalifi

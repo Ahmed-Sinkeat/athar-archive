@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1223"
+title: "هل تصح هذه الرواية في كتاب الكامل لابن عدي أخبرنا الساجي قال حدثنا أحمد بن محمد قال سمعت…"
 status: published
 published_at: 2025-07-28
 person: abu-jafar-al-khalifi

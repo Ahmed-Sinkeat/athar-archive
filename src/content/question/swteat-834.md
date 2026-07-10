@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 834"
+title: "كيف نفرق بين الامر في عدم المغالاة والأمر في أن للمرأة حقها في طلب ما تشاء في الخطاب…"
 status: published
 published_at: 2021-10-11
 person: abu-jafar-al-khalifi

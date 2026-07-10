@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 992"
+title: "انا احضر شرح الشيخ الخليفي للجامع وكنت استمع بشكل يومي لدرس واحد على الاقل، ولكني تأخرت…"
 status: published
 published_at: 2021-11-02
 person: abu-jafar-al-khalifi

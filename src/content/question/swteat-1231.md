@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1231"
+title: "سؤال عن آثار ابن سيرين في الفتن لنعيم بن حماد في تفضيل المهدي على أبي بكر وعمر"
 status: published
 published_at: 2026-04-08
 person: abu-jafar-al-khalifi

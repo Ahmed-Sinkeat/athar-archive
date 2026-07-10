@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 847"
+title: "هل ابن حبان أشعري ؟"
 status: published
 published_at: 2021-10-11
 person: abu-jafar-al-khalifi

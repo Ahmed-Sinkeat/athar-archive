@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 793"
+title: "هل المشروبات الغازية مثل البيبسي و الكولا حرام قياسا على الدخان؟ وهل تكلم أحدا على هذه…"
 status: published
 published_at: 2021-10-05
 person: abu-jafar-al-khalifi

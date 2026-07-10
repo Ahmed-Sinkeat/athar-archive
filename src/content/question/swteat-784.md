@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 784"
+title: "يا شيخ هل ممكن تفصيل لمسألة الشرط الفاسد والمفسد وبيان كلام أهل الرأي فيها وسبب الذكر هو…"
 status: published
 published_at: 2021-10-05
 person: abu-jafar-al-khalifi

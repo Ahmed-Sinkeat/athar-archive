@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1193"
+title: "هل يجب سجود السهو لمن نسي قول رب اغفر لي بين السجدتين لاني يومياً اسجد سهو بسبب نسياني لها"
 status: published
 published_at: 2025-01-10
 person: abu-jafar-al-khalifi

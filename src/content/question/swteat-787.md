@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 787"
+title: "أشكل علي القول بأن القصص التي حدثوا بها الصحابة في التفسير - في الأمم الماضية - كيف يسوغ…"
 status: published
 published_at: 2021-10-05
 person: abu-jafar-al-khalifi

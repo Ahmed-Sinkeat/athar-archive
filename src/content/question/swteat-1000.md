@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1000"
+title: "أحسن الله اليكم، هل ثبت ان النور من اسماء الله الحسنى؟"
 status: published
 published_at: 2021-11-02
 person: abu-jafar-al-khalifi

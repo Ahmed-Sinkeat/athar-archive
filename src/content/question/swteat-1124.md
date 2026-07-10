@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1124"
+title: "انا ولدت شيعياً..مؤخرا تعمقت في المذهب السني واقتعنت به تماماً ..انا اصلي وأصوم وفق فقه…"
 status: published
 published_at: 2022-07-06
 person: abu-jafar-al-khalifi

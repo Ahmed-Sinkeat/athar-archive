@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1102"
+title: "هل وقت الشروق يتعين بالرؤية فقط ام يمكن الاعتماد على ما يذكر في التقويم اليومي؟ وعليه حكم…"
 status: published
 published_at: 2022-02-07
 person: abu-jafar-al-khalifi

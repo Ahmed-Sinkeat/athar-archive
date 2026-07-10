@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1006"
+title: "ابتليت با اب أستطيع ان اجزم با ان كل الصفات و الخصال السيئة في الدنيا متواجدة فيه و لكنه…"
 status: published
 published_at: 2021-11-07
 person: abu-jafar-al-khalifi

@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1065"
+title: "بارك الله لكم في وقتكم ونفعكم بعلمكم. أنا فتاة كنت موظفة وكان عملي مختلط وكنت أدرب الرجال…"
 status: published
 published_at: 2022-01-12
 person: abu-jafar-al-khalifi

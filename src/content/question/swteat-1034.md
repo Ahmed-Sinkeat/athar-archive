@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1034"
+title: "نفع الله بك يا شيخنا وبارك في علمك وعملك أنا طالب جامعي من الجزائر أتابعك منذ مدة وأقرأ…"
 status: published
 published_at: 2021-12-25
 person: abu-jafar-al-khalifi

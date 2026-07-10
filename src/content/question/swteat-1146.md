@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1146"
+title: "في الدروس العلمية هل للشيخ أن يدع بعد نهاية مجلسه؟ ويرفع الناس أيديهم؟"
 status: published
 published_at: 2024-02-10
 person: abu-jafar-al-khalifi

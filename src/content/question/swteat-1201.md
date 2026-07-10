@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1201"
+title: "كيف يصح استدلالنا بما ينقله ابن بطة رحمه الله في الإبانة وهو ضعيف ؟"
 status: published
 published_at: 2025-01-12
 person: abu-jafar-al-khalifi

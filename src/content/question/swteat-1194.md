@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1194"
+title: "الاول اذا اكلت طعام فيه ذهب وانا لا اعلم فهل علي إثم ؟ والثاني ما حكم الطهي في أواني…"
 status: published
 published_at: 2025-01-10
 person: abu-jafar-al-khalifi

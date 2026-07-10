@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1214"
+title: "هل صحيح أن عبد الرزاق انفرد بأحاديث مكذوبة ؟ وبعضها موجود في الصحيح وهل ثبت عنه الطعن في…"
 status: published
 published_at: 2025-04-13
 person: abu-jafar-al-khalifi

@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 993"
+title: "هل الألباني يعتقد عقيدة الجهمية في الإيمان أم هو من أهل السنة وجزاكم الله خيرا"
 status: published
 published_at: 2021-11-02
 person: abu-jafar-al-khalifi

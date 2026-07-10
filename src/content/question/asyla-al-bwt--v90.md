@@ -1,5 +1,5 @@
 ---
-title: "ما رأيك في هذا الكلام👇"
+title: "ما رأيك في هذا الكلام👇 ”يجب في خطابنا عن المرأة أن لا نخاطب المرأة، بل نخاطب الرجل، لأنه…"
 status: published
 published_at: 2021-07-24
 person: abu-jafar-al-khalifi

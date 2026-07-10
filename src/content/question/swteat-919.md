@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 919"
+title: "كيف نرد على من يزعم تناقض أهل السنة في إثبات الصفات، فيزعم أن أهل السنة يأولون بعض الصفات…"
 status: published
 published_at: 2021-11-01
 person: abu-jafar-al-khalifi

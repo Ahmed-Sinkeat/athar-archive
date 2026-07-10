@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1183"
+title: "تروى أثار عن عمر في كراهة لبس الخاتم الحديد فهل هذا يقاس على الساعات الحديد؟"
 status: published
 published_at: 2025-01-06
 person: abu-jafar-al-khalifi

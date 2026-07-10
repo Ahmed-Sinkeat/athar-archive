@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1198"
+title: "من مات ليلة الجمعة او يومها يثبت في فضل ذلك شي ؟"
 status: published
 published_at: 2025-01-11
 person: abu-jafar-al-khalifi

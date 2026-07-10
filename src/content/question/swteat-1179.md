@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1179"
+title: "كيف نوفق بين حديث كَانَ النَّبِيُّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ ” يَفْتَتِحُ…"
 status: published
 published_at: 2025-01-05
 person: abu-jafar-al-khalifi

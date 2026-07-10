@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1128"
+title: "انا شاب أعيش في أحد الدول الإسلامية، و أعمل في مجال تقنية المعلومات. عُرض علي عمل براتب…"
 status: published
 published_at: 2022-07-06
 person: abu-jafar-al-khalifi

@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 898"
+title: "هل لي ان أخذ بكلام الشافعيه أن اكثر مدة للحيض هي ١٥ يوم؟(زمان الامكان)؟ بحكم انني موسوسه…"
 status: published
 published_at: 2021-10-24
 person: abu-jafar-al-khalifi

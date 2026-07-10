@@ -117,11 +117,15 @@ export function openShare(toolbar: HTMLElement, range: Range, text: string, done
   actions.className = "aa-share-actions";
   const copyBtn = document.createElement("button");
   copyBtn.type = "button";
-  copyBtn.textContent = "نسخ";
+  copyBtn.textContent = "نسخ النص";
+  const linkBtn = document.createElement("button");
+  linkBtn.type = "button";
+  linkBtn.textContent = "نسخ الرابط";
   const shareBtn = document.createElement("button");
   shareBtn.type = "button";
   shareBtn.textContent = "مشاركة";
-  actions.append(copyBtn, shareBtn);
+  shareBtn.classList.add("aa-share-primary");
+  actions.append(shareBtn, copyBtn, linkBtn);
   wrap.appendChild(actions);
   toolbar.appendChild(wrap);
   toolbar.setAttribute("data-open", "");
@@ -131,11 +135,17 @@ export function openShare(toolbar: HTMLElement, range: Range, text: string, done
     const { text: cited, url } = buildCitation(currentMeta(), container, text);
     navigator.clipboard?.writeText(`${cited}\n${url}`).then(() => { copyBtn.textContent = "تم النسخ ✓"; setTimeout(done, 900); });
   });
+  linkBtn.addEventListener("mousedown", (e) => e.preventDefault());
+  linkBtn.addEventListener("click", () => {
+    navigator.clipboard?.writeText(meta.url).then(() => { linkBtn.textContent = "تم النسخ ✓"; setTimeout(done, 900); });
+  });
   shareBtn.addEventListener("mousedown", (e) => e.preventDefault());
   shareBtn.addEventListener("click", async () => {
     const { text: cited, url } = buildCitation(currentMeta(), container, text);
     if (navigator.share) {
-      try { await navigator.share({ text: cited, url }); done(); } catch { /* user cancelled */ }
+      // url goes INSIDE text: some Android targets (Telegram, WhatsApp) take
+      // only one of {text, url} from the share intent, dropping the link
+      try { await navigator.share({ text: `${cited}\n${url}` }); done(); } catch { /* user cancelled */ }
     } else {
       navigator.clipboard?.writeText(`${cited}\n${url}`).then(() => { shareBtn.textContent = "تم النسخ ✓"; setTimeout(done, 1200); });
     }

@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1119"
+title: "وردت مجموعة من الأسئلة حول الشهادة على الكافر بالنار وبعض الفتاوى المعاصرة في الباب..."
 status: published
 published_at: 2022-05-13
 person: abu-jafar-al-khalifi

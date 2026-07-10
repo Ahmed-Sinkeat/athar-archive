@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 918"
+title: "سؤالي هو عن جواب شبهة يرددها بعض الملاحدة وهي من حديث جاء في الحديث الصحيح الذي رواه أبو…"
 status: published
 published_at: 2021-11-01
 person: abu-jafar-al-khalifi

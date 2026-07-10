@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 839"
+title: "ما رأي فضيلتكم بما قاله الشيخ بسام جرار في حساباته بأن هذا عام زوال اسرائيل ١٤٤٣هجرية…"
 status: published
 published_at: 2021-10-11
 person: abu-jafar-al-khalifi

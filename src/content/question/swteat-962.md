@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 962"
+title: "لماذا تظهر الإعلانات في قناة الشيخ في يوتيوب؟ كل فيديو إعلان غير لائق لتيك توك. هل هي…"
 status: published
 published_at: 2021-11-02
 person: abu-jafar-al-khalifi

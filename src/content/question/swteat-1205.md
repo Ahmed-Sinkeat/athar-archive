@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1205"
+title: "شيخنا عندك مقال او صوتية في عبد الله بن أبي نجيح؟ هل هو اعتزل باخر عمره وأخذوا عنه الحديث…"
 status: published
 published_at: 2025-01-16
 person: abu-jafar-al-khalifi

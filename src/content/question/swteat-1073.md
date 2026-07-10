@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1073"
+title: "أتمنى الجواب بأقرب وقت شيخنا ما حكم الابتعاث للدراسة في دولة أجنبية غير مسلمة وهل المبتعث…"
 status: published
 published_at: 2022-01-16
 person: abu-jafar-al-khalifi

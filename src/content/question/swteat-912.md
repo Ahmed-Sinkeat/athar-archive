@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 912"
+title: "النقل كله من السائل ثم الجواب عليه في الرسالة القادمة : ينقل مقالا من الشابكة يقول صاحبه…"
 status: published
 published_at: 2021-10-30
 person: abu-jafar-al-khalifi

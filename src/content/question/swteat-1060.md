@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1060"
+title: "سؤال... من تحت مطحنة العمل والإنجاز مع قلة تقدير الذات أنا في مطحنة العمل والإنجاز الذي…"
 status: published
 published_at: 2022-01-01
 person: abu-jafar-al-khalifi

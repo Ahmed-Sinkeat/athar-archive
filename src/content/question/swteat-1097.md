@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1097"
+title: "هل منع السكان المسلمين من مغادرة الاراضي التي تسيطر عليها السلطة المسلمة إلى الأراضي التي…"
 status: published
 published_at: 2022-02-06
 person: abu-jafar-al-khalifi

@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1145"
+title: "شيخنا هل يجوز التطبب بالضفدع والإنتفاع به في العلاج بعد ذبحه ؟"
 status: published
 published_at: 2024-02-08
 person: abu-jafar-al-khalifi

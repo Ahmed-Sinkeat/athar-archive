@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 923"
+title: "حدثنا عبيد الله بن معاذ، قال: ثنا أبي، عن السري بن يحيى، عن محمد بن سيرين قال: قال الحجاج…"
 status: published
 published_at: 2021-11-01
 person: abu-jafar-al-khalifi

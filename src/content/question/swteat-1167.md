@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1167"
+title: "سؤال عن اسم الله الجواد"
 status: published
 published_at: 2024-07-22
 person: abu-jafar-al-khalifi

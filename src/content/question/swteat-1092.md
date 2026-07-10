@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1092"
+title: "شيخنا الحبيب ابو جعفر يعلم الله اني لست من المجادلين ولست ممن يحب الجدل ولا اقول بالسيف…"
 status: published
 published_at: 2022-02-06
 person: abu-jafar-al-khalifi

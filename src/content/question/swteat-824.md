@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 824"
+title: "شيخ بارك الله فيك هل الأرض مسطحة أم كروية ؟ وهل هي كوكب ؟ وهل يوجد فضاء لا متناهي فيه…"
 status: published
 published_at: 2021-10-09
 person: abu-jafar-al-khalifi

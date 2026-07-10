@@ -81,6 +81,12 @@ describe("parsePoem", () => {
     expect(poem.openingVerse).toBe("صدر أول");
   });
 
+  it("strips the print edition's leading verse number (Arabic or Latin digits)", () => {
+    const poem = parsePoem("١ - يقول راجي عفو رب سامع --- محمد ابن الجزري الشافعي\n\n12- صدر آخر --- عجزه");
+    expect(poem.verses[0]).toMatchObject({ n: 1, sadr: "يقول راجي عفو رب سامع", ajz: "محمد ابن الجزري الشافعي" });
+    expect(poem.verses[1].sadr).toBe("صدر آخر");
+  });
+
   it("counts verses in the preamble before chapter verses", () => {
     const poem = parsePoem("بيت تمهيدي --- عجزه\n\n## باب\n\nبيت في الباب --- عجزه");
     expect(poem.verseCount).toBe(2);

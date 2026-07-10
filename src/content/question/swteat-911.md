@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 911"
+title: "خالي هو سني وكان يمدح الشيخ محمد عبدالوهاب ويدافع عنه وكان يصلي بجامع سني حتى اغلقوه…"
 status: published
 published_at: 2021-10-30
 person: abu-jafar-al-khalifi

@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 956"
+title: "أخبرنا عن يأجوج ومأجوج، أعدادهم وصفاتهم وعن صحة أنهم يتواجدون في الأرضين السبع كما جاء في…"
 status: published
 published_at: 2021-11-02
 person: abu-jafar-al-khalifi

@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1144"
+title: "وجدت قولًا في كتاب إعانة الطالبين حل ألفاظ فتح المعين للدمياطي فيه استحباب الشافعية عند…"
 status: published
 published_at: 2024-02-07
 person: abu-jafar-al-khalifi

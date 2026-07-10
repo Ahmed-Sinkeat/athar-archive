@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1164"
+title: "سؤال = طلاب في مدرسة / يريدون الاعتكاف / والمدرسة ملتزمة بقوانين الوزارة وجداول عمل…"
 status: published
 published_at: 2024-03-29
 person: abu-jafar-al-khalifi

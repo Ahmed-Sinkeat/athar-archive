@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1064"
+title: "أستاذ عبد الله أنا [ .... ] ، أدرس اختصاص الفيزياء في الجامعة بفضل الله تعالى، وعلوم…"
 status: published
 published_at: 2022-01-11
 person: abu-jafar-al-khalifi

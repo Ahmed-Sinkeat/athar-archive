@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 892"
+title: "الاستطالة لا يسلم منها أحد من الطوائف المتأخرة حتى المنتسبين للسنة والجماعة منهم، وهذا…"
 status: published
 published_at: 2021-10-21
 person: abu-jafar-al-khalifi

@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 896"
+title: "بعض الإخوة الباكستانيين إذا انصرف من صلاته كبر تكبيرة واحدة ثم استغفر واحتج بحديث ابن…"
 status: published
 published_at: 2021-10-24
 person: abu-jafar-al-khalifi

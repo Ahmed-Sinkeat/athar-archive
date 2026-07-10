@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1048"
+title: "هل كان تقسيم النصوص إلى قطعية الثبوت والدلالة أو ظنية الدلالة و إلى ظنية الثبوت...إلى…"
 status: published
 published_at: 2021-12-28
 person: abu-jafar-al-khalifi

@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1211"
+title: "ما القول فيما روي في تاريخ بغداد من مدح يزيد بن هارون لأبي حنيفة ؟"
 status: published
 published_at: 2025-01-31
 person: abu-jafar-al-khalifi

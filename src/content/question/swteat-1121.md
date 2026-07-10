@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1121"
+title: "ما حكم من فُقِد زوجُها لمدة طويلة من الزمن .. ثم تقدّم لها احدهم فتزوجها (وزوجها الاصلي…"
 status: published
 published_at: 2022-06-07
 person: abu-jafar-al-khalifi

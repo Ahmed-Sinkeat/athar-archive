@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1226"
+title: "ما صحة هذا الخبر : عن أَنَسَ بْنَ مَالِكٍ : سَمِعْتُ رَسُولَ اللَّهِ صَلَّى اللهُ…"
 status: published
 published_at: 2025-08-23
 person: abu-jafar-al-khalifi

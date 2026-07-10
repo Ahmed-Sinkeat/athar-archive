@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1001"
+title: "قل لي كلمة تشجعني على ارتداء النقاب يا شيخ إن كنت أقلد القول باستحبابه وأقيم في بلد ليس…"
 status: published
 published_at: 2021-11-03
 person: abu-jafar-al-khalifi

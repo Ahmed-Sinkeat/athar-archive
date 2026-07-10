@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1116"
+title: "مشكلتي بعد أن -والحمدلله- من الله علي في صف ثاني تركت كل شي حرام إلا - العادة السرية -…"
 status: published
 published_at: 2022-05-05
 person: abu-jafar-al-khalifi

@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1136"
+title: "هل صح عن سفيان بن عيينة أنه قال : رحم الله أبا حنيفة إنه كان من المصلين كما رواه الخطيب…"
 status: published
 published_at: 2022-12-23
 person: abu-jafar-al-khalifi

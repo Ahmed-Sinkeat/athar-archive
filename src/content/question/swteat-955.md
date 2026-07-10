@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 955"
+title: "احد المشايخ غفر الله له يعالج الناس من السحر بالخنق و ياخذ اموال باهظة ولا يشفي أحد وحين…"
 status: published
 published_at: 2021-11-02
 person: abu-jafar-al-khalifi

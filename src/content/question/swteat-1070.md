@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1070"
+title: "أرسلت لكم صورة من كتاب مادة قررت حديثا في المدارس السعودية، وأرسلت لكم الكتاب كاملا آمل…"
 status: published
 published_at: 2022-01-16
 person: abu-jafar-al-khalifi

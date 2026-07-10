@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1157"
+title: "ما رأيك بهذا الكلام في حق نعيم بن حماد قال مسلمة بن قاسم في كتاب ”الصلة”: كان صدوقًا،…"
 status: published
 published_at: 2024-02-26
 person: abu-jafar-al-khalifi

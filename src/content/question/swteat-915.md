@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 915"
+title: "ما حكم لعب الالعاب مثل: Estimation الكترونيا أو فعليا (ورق أو كوتشينة من اسمها يبدو أن…"
 status: published
 published_at: 2021-11-01
 person: abu-jafar-al-khalifi

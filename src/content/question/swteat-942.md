@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 942"
+title: "هل للشيخ نصائح للمنشغلين بالحسابات الدعوية ؟ وهل هناك مواضيع ينبغي الاعتناء بها ؟…"
 status: published
 published_at: 2021-11-02
 person: abu-jafar-al-khalifi

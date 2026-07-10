@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1109"
+title: "شيخنا نسأل الله لكم التوفيق أنا رجل من العجم وهناك مسائل دائما تزعجني.... وهي مسألة الدار…"
 status: published
 published_at: 2022-02-20
 person: abu-jafar-al-khalifi

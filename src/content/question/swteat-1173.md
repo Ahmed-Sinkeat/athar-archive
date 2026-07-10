@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1173"
+title: "هل شذ ابن تيمية في دعواه أن الكبائر قد تكفر بالأعمال الصالحة ؟"
 status: published
 published_at: 2024-11-29
 person: abu-jafar-al-khalifi

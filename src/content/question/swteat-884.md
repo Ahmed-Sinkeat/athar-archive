@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 884"
+title: "انا من بلد عربي افريقي كان هنالك شيخ لكنه شاب في عمره حافظ للقران الكريم بدأ تحفيظ النساء…"
 status: published
 published_at: 2021-10-21
 person: abu-jafar-al-khalifi

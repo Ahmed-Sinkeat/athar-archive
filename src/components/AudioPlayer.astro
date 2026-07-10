@@ -23,6 +23,11 @@ const { sources, title, subtitle } = Astro.props;
 const list = sources.filter((s) => s?.url);
 const cur = list[0];
 const mime = (f?: "opus" | "mp3") => (f === "mp3" ? "audio/mpeg" : "audio/ogg; codecs=opus");
+const sizeLabel = cur?.sizeBytes
+  ? cur.sizeBytes < 1024 * 1024
+    ? `${Math.round(cur.sizeBytes / 1024)} KB`
+    : `${(cur.sizeBytes / (1024 * 1024)).toFixed(1)} MB`
+  : null;
 ---
 {cur && (
   <div data-audio>
@@ -70,8 +75,9 @@ const mime = (f?: "opus" | "mp3") => (f === "mp3" ? "audio/mpeg" : "audio/ogg; c
             ))}
           </div>
         </span>
-        <a class="audio-dl" href={cur.url} download data-audio-dl title="تحميل" aria-label="تحميل">
+        <a class="audio-dl" href={cur.url} download data-audio-dl title={sizeLabel ? `تحميل (${sizeLabel})` : "تحميل"} aria-label={sizeLabel ? `تحميل (${sizeLabel})` : "تحميل"}>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 19h16"></path></svg>
+          {sizeLabel && <span class="audio-dl-size" dir="ltr">{sizeLabel}</span>}
         </a>
         <button type="button" class="audio-minimize" data-audio-minimize title="تصغير" aria-label="تصغير">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"></path></svg>

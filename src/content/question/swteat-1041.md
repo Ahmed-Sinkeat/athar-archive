@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1041"
+title: "لو الزهر (النرد) علي قول غالب العلماء أنه محرم فهل هذا لعلة خاصة فيه أو لأنه يعين علي لعب…"
 status: published
 published_at: 2021-12-28
 person: abu-jafar-al-khalifi

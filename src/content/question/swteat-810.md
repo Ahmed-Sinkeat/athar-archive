@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 810"
+title: "سؤالي عن حديث الاربعه اللذين يخرجون من النار بعدها يرجعون ويقول احدهم ما ظننت اني ارجع…"
 status: published
 published_at: 2021-10-09
 person: abu-jafar-al-khalifi

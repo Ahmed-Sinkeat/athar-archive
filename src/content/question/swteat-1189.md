@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1189"
+title: "إذا تمّ الطلاق بين الزوجين و بينهما ولد وماتت الطليقة(أم الولد) ، من أحق بحضانة الولد…"
 status: published
 published_at: 2025-01-08
 person: abu-jafar-al-khalifi

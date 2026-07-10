@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 862"
+title: "ما حكم لعبة الشطرنج؟"
 status: published
 published_at: 2021-10-18
 person: abu-jafar-al-khalifi

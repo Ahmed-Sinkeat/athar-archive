@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1069"
+title: "أنا طالبة بالجامعة و الحمد لله على نعمه التي أغدقنا بها لكن نفسي يعتريها أحيانا حزن و كدر…"
 status: published
 published_at: 2022-01-16
 person: abu-jafar-al-khalifi

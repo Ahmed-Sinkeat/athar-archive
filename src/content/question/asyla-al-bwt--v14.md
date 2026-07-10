@@ -1,5 +1,5 @@
 ---
-title: "السلام عليكم"
+title: "أشهد الله على محبتك فيه لما رأيت لك من حرص على نصر مذهب السلف والاهتمام بتراثهم العظيم…"
 status: published
 published_at: 2021-07-10
 person: abu-jafar-al-khalifi

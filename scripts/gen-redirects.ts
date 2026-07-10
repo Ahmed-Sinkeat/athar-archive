@@ -9,7 +9,8 @@ import { hrefFor } from "../src/lib/display.js";
 
 function main() {
   const entries = loadContentFromDisk();
-  const lines: string[] = [];
+  // static page moves (not slug aliases): تواصل merged into /about
+  const lines: string[] = ["/contact /about#contact 301"];
 
   for (const e of entries) {
     if (e.data.status === "archived") continue; // archived keeps its own URL

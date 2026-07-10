@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 790"
+title: "بالنسبة لقضاء الصلاة الفائتة نسيت صلاة الظهر وجاء وقت العصر كيف أصلي هل أصلي صلاة العصر…"
 status: published
 published_at: 2021-10-05
 person: abu-jafar-al-khalifi

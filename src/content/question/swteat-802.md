@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 802"
+title: "وردت أسئلة كثيرة حول بدعة المولد النبوي"
 status: published
 published_at: 2021-10-09
 person: abu-jafar-al-khalifi

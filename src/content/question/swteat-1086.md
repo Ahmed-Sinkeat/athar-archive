@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1086"
+title: "سؤال ما صحة الحديث المذكور في مصنف ابن أبي شيبة : حدثنا محمد بن بشر نا عبيد الله بن عمر…"
 status: published
 published_at: 2022-01-30
 person: abu-jafar-al-khalifi

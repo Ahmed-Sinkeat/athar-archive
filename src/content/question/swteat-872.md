@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 872"
+title: "ما رأي الشيخ بكتاب ”موسوعة التفسير المأثور”؟"
 status: published
 published_at: 2021-10-18
 person: abu-jafar-al-khalifi

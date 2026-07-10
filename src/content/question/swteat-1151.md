@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1151"
+title: "يا شيخ في أمر عَدَم جَواز قِراءَة الحائِض لِلقُرآن كُلَّما أخبَرتُ أحَدًا اِحتَجَّ…"
 status: published
 published_at: 2024-02-15
 person: abu-jafar-al-khalifi

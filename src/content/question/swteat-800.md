@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 800"
+title: "لدي ولد وُلِد بست أصابع هل يجوز قطع الأصبع الزائد ؟"
 status: published
 published_at: 2021-10-05
 person: abu-jafar-al-khalifi

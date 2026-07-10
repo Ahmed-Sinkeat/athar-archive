@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1062"
+title: "هل الذي يعاني من اضطراب الشخصية الحدية محاسب مثل غيره وهو يجتهد في علاج نفسه ولكن لديه…"
 status: published
 published_at: 2022-01-01
 person: abu-jafar-al-khalifi

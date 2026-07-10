@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1155"
+title: "يحكم بكفر تارك الصلاة ام يشترط في انزال الكفر عليه عرضه على القاضي ؟ انظر الجواب التالي :"
 status: published
 published_at: 2024-02-25
 person: abu-jafar-al-khalifi

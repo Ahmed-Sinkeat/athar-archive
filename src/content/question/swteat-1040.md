@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1040"
+title: "عند الذهاب لعقد الزواج في المحكمة يتم طلب رسوم وفي وصل الرسوم يتم تخصيص جزء من الرسوم…"
 status: published
 published_at: 2021-12-25
 person: abu-jafar-al-khalifi

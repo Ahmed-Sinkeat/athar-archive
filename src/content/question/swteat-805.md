@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 805"
+title: "احتاج منك فتوى يا شيخ وما عندي احد اسأله ومتحرج من هذا الشي كثير، بدخل بالموضوع على طول؛…"
 status: published
 published_at: 2021-10-09
 person: abu-jafar-al-khalifi

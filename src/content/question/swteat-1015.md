@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1015"
+title: "لاحظت أنك تنتقد أمورا على المعلمي في كتابه ”العبادة” فهل من الممكن أن تبين هذه الأمور…"
 status: published
 published_at: 2021-11-07
 person: abu-jafar-al-khalifi

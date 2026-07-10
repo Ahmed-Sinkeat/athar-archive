@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 917"
+title: "ما رأيكم بمنهج الشيخ صالح العصيمي واحترامه لجميع العلماء وتعظيمهم ؟"
 status: published
 published_at: 2021-11-01
 person: abu-jafar-al-khalifi

@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 816"
+title: "رجل يسكن في بلد اوروبي، و قرر ان لا يتزوج حتى ينتقل الى بلد اخر و يعيش بين المسلمين. اذا…"
 status: published
 published_at: 2021-10-09
 person: abu-jafar-al-khalifi

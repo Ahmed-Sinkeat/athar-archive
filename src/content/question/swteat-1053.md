@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1053"
+title: "كيف أتعامل مع كثرة التفكير في الموت حتى صار وسوسة تورث غما مقعدا عن العمل مالمطريقة…"
 status: published
 published_at: 2021-12-28
 person: abu-jafar-al-khalifi

@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1139"
+title: "هناك حديث نريد نعرف هل هو مكذوب عن النبى أم صحيح. وكذا عن مكحول، قال: قدم وفد الأشعرين…"
 status: published
 published_at: 2024-01-28
 person: abu-jafar-al-khalifi

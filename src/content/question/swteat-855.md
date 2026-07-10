@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 855"
+title: "ارجو ان يفصل لنا الشيخ حال ابن لهيعة في الرواية المرفوعة او الموقوفة. وهل ينصح برسالة…"
 status: published
 published_at: 2021-10-11
 person: abu-jafar-al-khalifi

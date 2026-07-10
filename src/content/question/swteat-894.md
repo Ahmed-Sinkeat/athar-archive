@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 894"
+title: "كيف يتخلص الشاب من ذنوب الخلوات ؟"
 status: published
 published_at: 2021-10-24
 person: abu-jafar-al-khalifi

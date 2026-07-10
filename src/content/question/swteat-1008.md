@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1008"
+title: "تعليقا من سائلة على جواب سابق : هل الأخلاق السيئة لاتوجد في مصر فقط سبحان الله العظيم…"
 status: published
 published_at: 2021-11-07
 person: abu-jafar-al-khalifi

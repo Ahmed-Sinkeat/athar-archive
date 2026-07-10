@@ -12,7 +12,10 @@ interface DownloadEntry {
   urls: string[];
   bytes: number;
   ts: number;
+  path?: string; // landing page it was downloaded from (older manifests lack it)
 }
+
+const KIND_LABEL: Record<string, string> = { book: "كتاب", poem: "منظومة", quran: "سورة" };
 
 function keyOf(kind: string, id: string): string {
   return `${kind}:${id}`;
@@ -80,7 +83,7 @@ async function startDownload(btn: HTMLElement) {
     if (label) label.textContent = `جارٍ التنزيل… ${done}/${urls.length}`;
   }
   const manifest = getManifest();
-  manifest[keyOf(kind, id)] = { kind, id, title, urls, bytes, ts: Date.now() };
+  manifest[keyOf(kind, id)] = { kind, id, title, urls, bytes, ts: Date.now(), path: location.pathname };
   saveManifest(manifest);
   btn.removeAttribute("data-dl-busy");
   renderDownloadButton(btn);
@@ -111,7 +114,10 @@ function renderDownloadButton(btn: HTMLElement) {
     if (label) label.textContent = `متوفر دون اتصال (${formatSize(entry.bytes)}) — إزالة`;
   } else {
     btn.setAttribute("aria-pressed", "false");
-    if (label) label.textContent = "تنزيل للقراءة دون اتصال";
+    // exact bytes are unknowable before fetching; the page count is the
+    // honest pre-download size signal we do have
+    const n = collectUrls().length;
+    if (label) label.textContent = n > 1 ? `تنزيل للقراءة دون اتصال (${n} صفحة)` : "تنزيل للقراءة دون اتصال";
   }
 }
 
@@ -122,10 +128,13 @@ function renderDownloadsList() {
   if (!list) return;
   const entries = Object.values(getManifest()).sort((a, b) => b.ts - a.ts);
   list.innerHTML = entries
-    .map(
-      (e) =>
-        `<div class="dl-row"><div class="dl-row-title">${escapeHtml(e.title)}</div><div class="dl-row-meta"><span class="faint">${formatSize(e.bytes)}</span><button type="button" class="dl-row-remove" data-action="downloads:remove" data-dl-kind="${escapeHtml(e.kind)}" data-dl-id="${escapeHtml(e.id)}">إزالة</button></div></div>`,
-    )
+    .map((e) => {
+      const title = e.path
+        ? `<a class="dl-row-title" href="${escapeHtml(e.path)}">${escapeHtml(e.title)}</a>`
+        : `<div class="dl-row-title">${escapeHtml(e.title)}</div>`;
+      const date = new Date(e.ts).toLocaleDateString("ar", { year: "numeric", month: "long", day: "numeric" });
+      return `<div class="dl-row">${title}<div class="dl-row-meta"><span class="faint">${KIND_LABEL[e.kind] ?? e.kind} · ${formatSize(e.bytes)} · ${date}</span><button type="button" class="dl-row-remove" data-action="downloads:remove" data-dl-kind="${escapeHtml(e.kind)}" data-dl-id="${escapeHtml(e.id)}">إزالة</button></div></div>`;
+    })
     .join("");
   if (empty) empty.hidden = entries.length > 0;
   const totalBytes = entries.reduce((s, e) => s + e.bytes, 0);
@@ -141,31 +150,21 @@ document.addEventListener("click", (e) => {
     if (toggleBtn.hasAttribute("data-dl-busy")) return;
     const kind = toggleBtn.dataset.dlKind!;
     const id = toggleBtn.dataset.dlId!;
-    if (getManifest()[keyOf(kind, id)]) removeDownload(kind, id).then(() => renderDownloadButton(toggleBtn));
-    else startDownload(toggleBtn);
+    const entry = getManifest()[keyOf(kind, id)];
+    if (entry) {
+      if (!confirm(`إزالة «${entry.title}» من التنزيلات؟`)) return;
+      removeDownload(kind, id).then(() => renderDownloadButton(toggleBtn));
+    } else startDownload(toggleBtn);
     return;
   }
 
   const removeBtn = target.closest<HTMLElement>('[data-action="downloads:remove"]');
   if (removeBtn) {
     e.preventDefault();
+    const entry = getManifest()[keyOf(removeBtn.dataset.dlKind!, removeBtn.dataset.dlId!)];
+    if (entry && !confirm(`إزالة «${entry.title}» من التنزيلات؟`)) return;
     removeDownload(removeBtn.dataset.dlKind!, removeBtn.dataset.dlId!);
     return;
-  }
-
-  const toggleList = target.closest<HTMLElement>('[data-action="downloads:toggle"]');
-  if (toggleList) {
-    e.preventDefault();
-    const pop = document.querySelector<HTMLElement>("[data-downloads-pop]");
-    if (!pop) return;
-    pop.hidden = !pop.hidden;
-    toggleList.setAttribute("aria-expanded", String(!pop.hidden));
-    if (!pop.hidden) renderDownloadsList();
-    return;
-  }
-
-  if (!target.closest("[data-downloads-pop]") && !target.closest('[data-action="downloads:toggle"]')) {
-    document.querySelector<HTMLElement>("[data-downloads-pop]")?.setAttribute("hidden", "");
   }
 });
 

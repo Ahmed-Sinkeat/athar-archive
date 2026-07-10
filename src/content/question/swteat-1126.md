@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1126"
+title: "لو تكرمتم نصيحة منكم لعلها تهوّن ما في القلب.. كنت قد استمعت لعدة صوتيات لكم وكانت لها…"
 status: published
 published_at: 2022-07-06
 person: abu-jafar-al-khalifi

@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1066"
+title: "ما الموقف الذي ينبغي أخذه من فقهاء الحنابلة في عصور ما قبل ابن تيمية، الذين مشت عليهم بعض…"
 status: published
 published_at: 2022-01-16
 person: abu-jafar-al-khalifi

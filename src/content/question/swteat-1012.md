@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1012"
+title: "أعيش في السويد، ولدي أصدقاء يفكرون بأخذ قرض ربوي بقيمة عالية وعدم سداده مرة أخرى، يريدون…"
 status: published
 published_at: 2021-11-07
 person: abu-jafar-al-khalifi

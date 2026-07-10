@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 848"
+title: "ما رأيكم في كتابات ومؤلفات علوي السقاف المشرف العام على موقع الدرر السنية؟"
 status: published
 published_at: 2021-10-11
 person: abu-jafar-al-khalifi

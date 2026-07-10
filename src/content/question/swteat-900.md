@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 900"
+title: "ما تعليقك علي احداث افغانستان من ناحية دخولها كابول ومن ناحية بيانها ضد السلفية ؟"
 status: published
 published_at: 2021-10-25
 person: abu-jafar-al-khalifi

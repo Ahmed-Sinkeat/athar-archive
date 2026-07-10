@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 830"
+title: "بما أن جميع البنوك خاضعة للنظام العالمي ”الربوي” فعلى فرض أن الرواتب الحكومية لا تخلو من…"
 status: published
 published_at: 2021-10-09
 person: abu-jafar-al-khalifi

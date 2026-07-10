@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1111"
+title: "سؤال عن كيفية التوازن النفسي في مواجهة الجهمية المعاصرين ؟ ( تنبيه هذا ورد للشيخ في دروس…"
 status: published
 published_at: 2022-02-21
 person: abu-jafar-al-khalifi

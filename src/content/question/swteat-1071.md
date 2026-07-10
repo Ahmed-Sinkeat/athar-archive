@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1071"
+title: "يا شيخ أنا أعمل في مكتب محاماة ، وأخبرني زميل فالمكتب عن قضية ادى فيها موكلنا اليمين على…"
 status: published
 published_at: 2022-01-16
 person: abu-jafar-al-khalifi

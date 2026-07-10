@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 829"
+title: "ما هو مذهب السلف الصالح في مسألة التكافؤ في النسب في الزواج و هل يحق للولي رفض من ليس من…"
 status: published
 published_at: 2021-10-09
 person: abu-jafar-al-khalifi

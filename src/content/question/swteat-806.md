@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 806"
+title: "هل وردت أدلة صريحة بقبول توبة مرتكب الكبائر أم أن العلماء استنبطوها من نصوص عموم المغفرة…"
 status: published
 published_at: 2021-10-09
 person: abu-jafar-al-khalifi

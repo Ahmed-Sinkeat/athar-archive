@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1168"
+title: "مستل من لقاء مع أبي مريم عبد الرحمن بن ذاكر الهاشمي : سؤال عن ضوابط التعامل مع الكفار"
 status: published
 published_at: 2024-08-05
 person: abu-jafar-al-khalifi

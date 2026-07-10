@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 971"
+title: "أريد شرح لهذا الحديث جزاكم الله خير وبالذات قوله :” وهو الباطن فليس دونه شيء ” حدثني زهير…"
 status: published
 published_at: 2021-11-02
 person: abu-jafar-al-khalifi

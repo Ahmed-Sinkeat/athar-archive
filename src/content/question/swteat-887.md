@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 887"
+title: "الطالب حينما ينتهي من مثل الطحاوية بشرح ابن أبي العز والتدمرية يجد صعوبة في الانتقال…"
 status: published
 published_at: 2021-10-21
 person: abu-jafar-al-khalifi

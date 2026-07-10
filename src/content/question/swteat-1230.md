@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1230"
+title: "هل صح عن ابن عمر أنه قال : كذب أبو هريرة كما في جامع بيان العلم وفضله لابن عبد البر ؟"
 status: published
 published_at: 2026-04-01
 person: abu-jafar-al-khalifi

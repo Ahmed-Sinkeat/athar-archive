@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1024"
+title: "ما رأيك في الهجوم الشديد على الشيخ وليد السعيدان والاستهزاء به بسبب كتاب أصول الفقه على…"
 status: published
 published_at: 2021-11-13
 person: abu-jafar-al-khalifi

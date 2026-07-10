@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1022"
+title: "أنا فى خلاف مع اهلى بسبب انى عايزه زوج متدين يصلى الصلوات الخمس فى المسجد وله حظ من…"
 status: published
 published_at: 2021-11-13
 person: abu-jafar-al-khalifi

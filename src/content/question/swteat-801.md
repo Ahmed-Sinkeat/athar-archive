@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 801"
+title: "هل يوجد كتاب أو محقق أو موقع حقق في الأحاديث التي وردت في كتاب الفتن لنعيم بن حماد ?"
 status: published
 published_at: 2021-10-09
 person: abu-jafar-al-khalifi

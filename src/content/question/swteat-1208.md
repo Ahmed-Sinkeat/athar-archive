@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1208"
+title: "ما الموقف من كلام ابن قتيبة في الذراعين والصدر ؟"
 status: published
 published_at: 2025-01-17
 person: abu-jafar-al-khalifi

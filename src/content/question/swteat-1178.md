@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1178"
+title: "يستدل أحدهم لعدم تكفير الجهمية بما رواه ابن الجوزي في المناقب أخبرنا محمد بن أبي منصور،…"
 status: published
 published_at: 2025-01-05
 person: abu-jafar-al-khalifi

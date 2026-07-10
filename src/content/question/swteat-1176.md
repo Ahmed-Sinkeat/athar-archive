@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1176"
+title: "هل يصح تسمية النبي عليه الصلاة والسلام ب طه ؟"
 status: published
 published_at: 2025-01-05
 person: abu-jafar-al-khalifi

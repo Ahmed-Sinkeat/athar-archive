@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1010"
+title: "سؤالي: قد يرد على الألسنة مقالة كفرية، ولا يكون القائل بها كافرًا ما لم تقم عليه الحجة أو…"
 status: published
 published_at: 2021-11-07
 person: abu-jafar-al-khalifi

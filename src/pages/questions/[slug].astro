@@ -47,6 +47,14 @@ export async function getStaticPaths() {
 }
 
 const { entry, body, personName, personId, subjects, others, audio } = Astro.props;
+
+// Imported voice-answer fatwas say «انظر التسجيل الصوتي أعلاه» — honest only
+// when the audio actually rendered; without it, say the recording is missing.
+const NO_AUDIO_NOTE = `<p><em>الجوابُ صوتيٌّ، والتسجيلُ غيرُ متوفرٍ حاليًا.</em></p>`;
+const fixAnswer = (h: string | null) =>
+  h && !audio && h.includes("انظر التسجيل الصوتي")
+    ? h.replace(/<p>(?:(?!<p)[\s\S])*?انظر التسجيل الصوتي[\s\S]*?<\/p>/, NO_AUDIO_NOTE)
+    : h;
 const path = `/questions/${entry.id}`;
 const answerText = body.replace(/[#*_`>]/g, "").replace(/\s+/g, " ").trim().slice(0, 4000);
 const jsonLd = questionLd({
@@ -100,10 +108,10 @@ let answerTitle = "الجواب";
           <div class="prose masala-q-body" data-ar set:html={questionHtml} />
         </section>
         <div class="section-head"><h2>{answerTitle}</h2><div class="rule-fill"></div></div>
-        <div class="prose masala-answer" data-ar set:html={answerHtml} />
+        <div class="prose masala-answer" data-ar set:html={fixAnswer(answerHtml)} />
       </>
     ) : (
-      <div class="prose" data-ar set:html={html} />
+      <div class="prose" data-ar set:html={fixAnswer(html)} />
     )}
 
     {others.length > 0 && (

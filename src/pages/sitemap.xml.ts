@@ -9,7 +9,7 @@ export const GET: APIRoute = async () => {
     urls.push({ loc: new URL(path, origin).href, lastmod: date ? new Date(date as string).toISOString() : undefined });
 
   // static, indexable pages (search is noindex → excluded)
-  ["/", "/books", "/poems", "/topics", "/subjects", "/people", "/articles", "/benefits", "/questions", "/about", "/contact"].forEach((p) => add(p));
+  ["/", "/books", "/poems", "/topics", "/subjects", "/people", "/articles", "/benefits", "/questions", "/about"].forEach((p) => add(p));
 
   const pub = (c: any[]) => c.filter((e) => e.data.status === "published");
   const when = (e: any) => e.data.updated_at ?? e.data.published_at;
@@ -23,7 +23,6 @@ export const GET: APIRoute = async () => {
   for (const e of pub(await getCollection("poem"))) {
     add(`/poem/${e.id}`, when(e));
   }
-  for (const e of pub(await getCollection("benefit"))) add(`/benefit/${e.id}`, when(e));
   for (const e of pub(await getCollection("article"))) add(`/article/${e.id}`, when(e));
   for (const e of pub(await getCollection("question"))) add(`/questions/${e.id}`, when(e));
 

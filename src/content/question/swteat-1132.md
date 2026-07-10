@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1132"
+title: "شيخي أنا إحدى طالباتك بدأت أتعلم العلم الشرعي من دروسك لكن تواجهني مصطلحات صعبة خاصة اني…"
 status: published
 published_at: 2022-09-20
 person: abu-jafar-al-khalifi

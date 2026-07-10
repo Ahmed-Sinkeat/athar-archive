@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 899"
+title: "في الحديث الذي رواه مسلم قول عَلِيٌّ : وَالَّذِي فَلَقَ الْحَبَّةَ ، وَبَرَأَ النَّسَمَةَ…"
 status: published
 published_at: 2021-10-24
 person: abu-jafar-al-khalifi

@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 940"
+title: "موسوعة التفسير بالمأثور الصادرة مؤخرا بإشراف الدكتور الطيار هل تغني عن تفاسير السلف أمثال…"
 status: published
 published_at: 2021-11-01
 person: abu-jafar-al-khalifi

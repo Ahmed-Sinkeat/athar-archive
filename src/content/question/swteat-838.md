@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 838"
+title: "شيخي جزاك الله خير ما أحكام التعامل مع الوالد المرتد بشكل عام؟ وهل زكاته عني تُقبل؟ وهل…"
 status: published
 published_at: 2021-10-11
 person: abu-jafar-al-khalifi

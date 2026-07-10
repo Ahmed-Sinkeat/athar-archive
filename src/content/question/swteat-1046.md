@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1046"
+title: "هل تعد المتعصبات من النسويات المتأسلمات وأشباههم من الرجال المنتسبون لمذهبهن من الزنادقة…"
 status: published
 published_at: 2021-12-28
 person: abu-jafar-al-khalifi

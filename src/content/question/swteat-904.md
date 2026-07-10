@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 904"
+title: "انا ممتنع عن الجمع والجماعات منذ فترة ، منذ تم السيطرة بشكل كامل علي المساجد من قبل…"
 status: published
 published_at: 2021-10-30
 person: abu-jafar-al-khalifi

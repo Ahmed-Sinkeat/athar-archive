@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1030"
+title: "١_هل يجب الوضوء في غسل الكوع ان تبدأ من المفصل ام تبدأ من أطراف الأصابع الي المرفق؟ ٢/هل…"
 status: published
 published_at: 2021-11-21
 person: abu-jafar-al-khalifi

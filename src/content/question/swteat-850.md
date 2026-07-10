@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 850"
+title: "هل كان مع الإمام أحمد شعرات من رأس النبي صلى الله عليه وسلم يتبرك بها؟ وما حكم التبرك…"
 status: published
 published_at: 2021-10-11
 person: abu-jafar-al-khalifi

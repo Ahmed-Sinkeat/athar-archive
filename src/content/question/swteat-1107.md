@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1107"
+title: "شيخ رأيت كلام لأبو منصور الأزهري اللغوي العباسي مفاده أن القول بخلق القرآن كفر أصغر وقد…"
 status: published
 published_at: 2022-02-13
 person: abu-jafar-al-khalifi

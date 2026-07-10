@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 786"
+title: "رأيت في احد الفيديوهات شيعي اثنا عشري او امامي يقول انتم يا ايها الوهابية تعظمون الصحابه…"
 status: published
 published_at: 2021-10-05
 person: abu-jafar-al-khalifi

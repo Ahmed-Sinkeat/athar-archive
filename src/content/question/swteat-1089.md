@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1089"
+title: "كيف كان الحنابلة يدرّسون علم الحديث قديمًا؟ ولماذا كتب تقعيد علوم الحديث عند المتوسطين…"
 status: published
 published_at: 2022-01-31
 person: abu-jafar-al-khalifi

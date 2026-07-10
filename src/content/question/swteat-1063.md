@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1063"
+title: "من المعلوم أن هناك تلازماً ما بين الكفر العملي كإهانة المصحف وما بين الكفر الإعتقادي لكن…"
 status: published
 published_at: 2022-01-01
 person: abu-jafar-al-khalifi

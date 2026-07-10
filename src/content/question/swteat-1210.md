@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1210"
+title: "ما القول في رواية سعيد بن ابي عروبة لأبي حنيفة التي في الانتقاء؟"
 status: published
 published_at: 2025-01-29
 person: abu-jafar-al-khalifi

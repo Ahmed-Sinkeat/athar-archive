@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1184"
+title: "إذا كنت لا أعرف من ظلمت فأطلب العفو منه إذا استغفرت الله لي وله فهل يغفر الله لي بذلك…"
 status: published
 published_at: 2025-01-06
 person: abu-jafar-al-khalifi

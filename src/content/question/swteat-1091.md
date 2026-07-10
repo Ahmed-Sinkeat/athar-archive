@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1091"
+title: "أنا طالب جامعي ويوجد بعض الكتب متاحة عبر الانترنت ولكن دور النشر لا تسمح بهذا وأنا قد…"
 status: published
 published_at: 2022-01-31
 person: abu-jafar-al-khalifi

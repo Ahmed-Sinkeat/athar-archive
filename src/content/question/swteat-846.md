@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 846"
+title: "في عصر الفتن الفكرية والاخلاقية والضياع هل المجاهدة امامها الآن تعتبر هي مشروع العمر…"
 status: published
 published_at: 2021-10-11
 person: abu-jafar-al-khalifi

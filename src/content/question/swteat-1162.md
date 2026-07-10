@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1162"
+title: "ما صحة هذا الاثر في تفسير ابن أبي حاتم عن طاوس رضي الله عنه قال: ما على الأرض رجل يقرأ…"
 status: published
 published_at: 2024-03-05
 person: abu-jafar-al-khalifi

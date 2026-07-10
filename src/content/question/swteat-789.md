@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 789"
+title: "ما حكم تخصيص ما بين الظهر والعصر يوم الأربعاء بالدعاء ؟"
 status: published
 published_at: 2021-10-05
 person: abu-jafar-al-khalifi

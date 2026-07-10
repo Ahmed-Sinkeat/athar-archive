@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1076"
+title: "سمعت الصوتية الاخيرة عن التشجيع لارتداء النقاب، واحب جدا ارتداءه من زمن. لكن اهلي يرفضون…"
 status: published
 published_at: 2022-01-20
 person: abu-jafar-al-khalifi

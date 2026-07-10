@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 835"
+title: "هل ابن الزنا تقبل شهادته كعدل أم لا كون أمه زانية"
 status: published
 published_at: 2021-10-11
 person: abu-jafar-al-khalifi

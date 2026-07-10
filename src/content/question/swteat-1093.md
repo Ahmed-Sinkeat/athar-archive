@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1093"
+title: "قبل بضع سنوات في زمن الغفلة و زمن الجاهلية (لم أصلي وعشت مثل المشركة) ، كنت أظلم كثير من…"
 status: published
 published_at: 2022-02-06
 person: abu-jafar-al-khalifi

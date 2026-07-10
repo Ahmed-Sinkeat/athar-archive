@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 987"
+title: "ما رأيك يا شيخ في الآتي : 1. مسألة التقصير الفاحش في الثناء على من فعل الخير أو الإحسان…"
 status: published
 published_at: 2021-11-02
 person: abu-jafar-al-khalifi

@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1170"
+title: "مستل من لقاء مع أبي مريم عبد الرحمن بن ذاكر الهاشمي : سؤال عن العيش في بلد لا أقدر على…"
 status: published
 published_at: 2024-08-15
 person: abu-jafar-al-khalifi

@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1165"
+title: "سؤال حول صيام عرفة إذا وافق يوم سبت مع ورود حديث في النهي عن إفراد يوم السبت بالصيام"
 status: published
 published_at: 2024-06-14
 person: abu-jafar-al-khalifi

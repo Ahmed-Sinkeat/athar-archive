@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 916"
+title: "ماذا تقولون شيخنا في شاب، رفض فتاة ملتزمة ومحجبة (ألغى فكرة التقدم لها) بعد أن لاحظ أنها…"
 status: published
 published_at: 2021-11-01
 person: abu-jafar-al-khalifi

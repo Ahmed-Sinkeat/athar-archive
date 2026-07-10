@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 994"
+title: "هل هناك من السلف من قال بشرك من طلب الدعاء من الميت ؟ وخصوصاً الحنابلة ؟"
 status: published
 published_at: 2021-11-02
 person: abu-jafar-al-khalifi

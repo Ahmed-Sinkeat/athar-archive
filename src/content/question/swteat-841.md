@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 841"
+title: "غفر الله لنا ولكم ورحمنا الله وإياكم برحمته قرأت لأحدهم كلاماً جميلاً في التحلي بالحكمة…"
 status: published
 published_at: 2021-10-11
 person: abu-jafar-al-khalifi

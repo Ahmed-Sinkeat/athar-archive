@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1033"
+title: "أخي الكريم عبدالله، تعلمت كثيرا من صوتياتكم ومقالاتك التي تتكلم على الواقع وكم رددت لي…"
 status: published
 published_at: 2021-11-21
 person: abu-jafar-al-khalifi

@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1234"
+title: "هل صحيح أنه يستحب قضاء رمضان يوم عاشوراء كما يذكره البعض ؟"
 status: published
 published_at: 2026-06-25
 person: abu-jafar-al-khalifi

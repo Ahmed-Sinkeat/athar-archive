@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1108"
+title: "هناك جواب ( حوار في فيسبوك ) للمدعو حسن البخاري وهو كالتالي: السائل : قال الصوفية : مدد…"
 status: published
 published_at: 2022-02-14
 person: abu-jafar-al-khalifi

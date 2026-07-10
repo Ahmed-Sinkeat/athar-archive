@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 879"
+title: "الكتب المصنفة في الملاحم والفتن و أشراط الساعة كثيرة منها القديم ومنها المعاصر. حبذا كلمة…"
 status: published
 published_at: 2021-10-21
 person: abu-jafar-al-khalifi

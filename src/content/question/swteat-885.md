@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 885"
+title: "ما حكم اخراج زكاة مال أختي من مالي"
 status: published
 published_at: 2021-10-21
 person: abu-jafar-al-khalifi

@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1174"
+title: "سؤال عن أثر الشعبي في القراءة على القبر ؟"
 status: published
 published_at: 2024-11-29
 person: abu-jafar-al-khalifi

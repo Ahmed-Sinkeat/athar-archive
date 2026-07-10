@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1050"
+title: "أشكل علي حديث في صحيح مسلم ١٧٥٧. فيه قول العباس لعمر عن علي (فَقَالَ عَبَّاسٌ : يَا…"
 status: published
 published_at: 2021-12-28
 person: abu-jafar-al-khalifi

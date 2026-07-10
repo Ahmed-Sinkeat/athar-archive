@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1075"
+title: "تحدث ياشيخ جزاك الله خيرا عن مخاطر مواقع التواصل على دين وأخلاق الشباب والبنات.. خاصة…"
 status: published
 published_at: 2022-01-20
 person: abu-jafar-al-khalifi

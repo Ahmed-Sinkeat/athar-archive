@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1105"
+title: "هل يمكن لفتاة مصابة بالاكتئاب الزواج؟ خاصة أن المرض يؤثر عليها وعلى حياتها ونشاطها بشكل…"
 status: published
 published_at: 2022-02-07
 person: abu-jafar-al-khalifi

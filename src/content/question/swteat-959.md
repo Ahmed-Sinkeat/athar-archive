@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 959"
+title: "ما حكم نفي الزمان عن الله او تنزيه الله عن الزمان ؟! وهل للزمان وجود او هو مجرد مفهوم…"
 status: published
 published_at: 2021-11-02
 person: abu-jafar-al-khalifi

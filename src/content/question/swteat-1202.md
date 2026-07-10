@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1202"
+title: "سؤال حول حديث الخلافة بعدي ثلاثون عاما والراوي سعيد بن جمهان وحديث سفينة رضي الله عنه في…"
 status: published
 published_at: 2025-01-12
 person: abu-jafar-al-khalifi

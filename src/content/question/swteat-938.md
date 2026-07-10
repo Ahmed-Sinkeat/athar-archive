@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 938"
+title: "أنا وأخي نعمل في متجر في أحد الأسواق التجاريه وغالبية العاملين و الموظفين في السوق من…"
 status: published
 published_at: 2021-11-01
 person: abu-jafar-al-khalifi

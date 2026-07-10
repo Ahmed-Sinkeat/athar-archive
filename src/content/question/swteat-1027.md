@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1027"
+title: "ما رأيكم في ترك إقامة الحجة على معرض عن الحق وأنا متأكد بأنه سيرتد فور إقامة الحجة ؟…"
 status: published
 published_at: 2021-11-18
 person: abu-jafar-al-khalifi

@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 828"
+title: "شيخ انا عمري 21 عام وانا طالب موحد خرجت لطلب العلم في روسيا(انني عابر سبيل من اجل العلم)…"
 status: published
 published_at: 2021-10-09
 person: abu-jafar-al-khalifi

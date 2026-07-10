@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1009"
+title: "ما وجه إعجاز القرآن تحديدًا عند أهل الحديث؟ وما القول في خوض البلاغيين من معتزلة أو…"
 status: published
 published_at: 2021-11-07
 person: abu-jafar-al-khalifi

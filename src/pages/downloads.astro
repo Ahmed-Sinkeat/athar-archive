@@ -1,0 +1,21 @@
+---
+import Base from "../layouts/Base.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+// The list itself is client-side (downloads.ts renders it from the local
+// manifest) — this page is just the shell, so it scales to any number of
+// downloads and is noindex (device-local state, nothing to crawl).
+---
+<Base title="التنزيلات" description="ما نزّلتَه للقراءة دون اتصال على هذا الجهاز." activeNav="home" noindex>
+  <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "التنزيلات" }]} />
+  <div class="wrap-mid reading-pad">
+    <h1 class="page-title">التنزيلات <span class="faint" data-downloads-total></span></h1>
+    <p class="faint downloads-hint">كل ما نزّلتَه للقراءة دون اتصال، محفوظٌ على هذا الجهاز فقط.</p>
+    <div class="downloads-page-list" data-downloads-list></div>
+    <div class="faint" data-downloads-empty>لا توجد تنزيلات بعد — افتح كتابًا أو منظومة أو سورة واضغط «تنزيل للقراءة دون اتصال».</div>
+  </div>
+</Base>
+
+<style>
+  .downloads-hint { font-size: 13px; margin: -6px 0 22px; }
+  [data-downloads-empty] { font-size: 13.5px; line-height: 1.8; }
+</style>

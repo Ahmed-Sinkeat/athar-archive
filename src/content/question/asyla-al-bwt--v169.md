@@ -1,5 +1,5 @@
 ---
-title: "#رقم_[714]  :"
+title: "كيف يكون عذاب القبر ؟ انظر كتاب [ أهوال القبور وأحوال أهلها إلى النشور ] للحافظ ابن رجب"
 status: published
 published_at: 2021-09-11
 person: abu-jafar-al-khalifi

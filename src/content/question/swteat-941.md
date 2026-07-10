@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 941"
+title: "ياشيخ انا طالب في كلية الطب وبدأت اشعر ان هذه الدراسة هي دنيوية محضة وليس فيها عبودية او…"
 status: published
 published_at: 2021-11-01
 person: abu-jafar-al-khalifi

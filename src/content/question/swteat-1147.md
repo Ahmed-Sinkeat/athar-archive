@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1147"
+title: "شيخنا أنا والدي عليه دين تقريبا 100 ألف دينار وظروفنا يعني نوعا ما صعبة منذ فترة.. عنده…"
 status: published
 published_at: 2024-02-10
 person: abu-jafar-al-khalifi

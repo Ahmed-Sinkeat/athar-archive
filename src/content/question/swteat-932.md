@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 932"
+title: "كيف التعامل مع الاختلاط في فترة الجامعة ؟"
 status: published
 published_at: 2021-11-01
 person: abu-jafar-al-khalifi

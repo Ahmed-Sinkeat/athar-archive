@@ -23,6 +23,12 @@ for (const g of groups) for (const t of g.topics) topicMap.set(t.id, t.title);
 const topicsForFilter = [...topicMap.entries()]
   .map(([id, title]) => ({ id, title }))
   .sort((a, b) => a.title.localeCompare(b.title, "ar"));
+
+// flat «قائمة» view — newest first, same li markup as the tree so the
+// person/topic/title filters work on both
+const flatQuestions = [...allQuestions].sort(
+  (a, b) => +new Date(b.data.published_at as string) - +new Date(a.data.published_at as string),
+);
 ---
 <Base title="المسائل" description="مسائلُ علميةٌ مجموعةٌ على هيئة سؤالٍ وجواب، مرتَّبةٌ حسب الفنِّ والموضوع." activeNav="questions" searchScope={{ type: "question" }} jsonLd={collectionLd({ title: "المسائل", path: "/questions", crumbs: [{ name: "الرئيسية", path: "/" }, { name: "المسائل", path: "/questions" }] })}>
   <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "المسائل" }]} />
@@ -49,7 +55,28 @@ const topicsForFilter = [...topicMap.entries()]
       </div>
     )}
 
+    <div class="masail-view-toggle" role="group" aria-label="طريقة العرض">
+      <button type="button" data-masail-view="tree" aria-pressed="true">حسب الموضوع</button>
+      <button type="button" data-masail-view="flat" aria-pressed="false">قائمة</button>
+    </div>
+
     <div class="masail-tree" data-masail-browse>
+      <ul class="masail-list masail-list-flush masail-flat" hidden>
+        {flatQuestions.map((it) => (
+          <li
+            data-title={it.data.title}
+            data-person={(it.data.person as string | undefined) ?? ""}
+            data-person-name={it.data.person ? names.get(it.data.person as string) ?? "" : ""}
+            data-topics={((it.data.topics as string[] | undefined) ?? []).join(",")}
+          >
+            <a href={hrefFor("question", it.id)}>
+              <span>{it.data.title}</span>
+              {it.data.person && <span class="faint"> · {names.get(it.data.person as string)}</span>}
+            </a>
+          </li>
+        ))}
+      </ul>
+
       {groups.map((g, gi) => (
         <details class="masail-subject" open={gi === 0}>
           <summary>
@@ -104,4 +131,29 @@ const topicsForFilter = [...topicMap.entries()]
       )}
     </div>
   </div>
+
+  <script is:inline data-astro-rerun>
+    (() => {
+      const browse = document.querySelector("[data-masail-browse]");
+      if (!browse) return;
+      const flat = browse.querySelector(".masail-flat");
+      const trees = [...browse.querySelectorAll(":scope > details")];
+      const btns = document.querySelectorAll("[data-masail-view]");
+      const apply = (view) => {
+        const isFlat = view === "flat";
+        if (flat) flat.hidden = !isFlat;
+        trees.forEach((d) => { d.style.display = isFlat ? "none" : ""; });
+        btns.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.masailView === view)));
+      };
+      btns.forEach((b) =>
+        b.addEventListener("click", () => {
+          apply(b.dataset.masailView);
+          try { localStorage.setItem("aa-masail-view", b.dataset.masailView); } catch {}
+        }),
+      );
+      let saved = "tree";
+      try { saved = localStorage.getItem("aa-masail-view") || "tree"; } catch {}
+      apply(saved);
+    })();
+  </script>
 </Base>

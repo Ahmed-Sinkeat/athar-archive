@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1104"
+title: "ما معنى هذا الأثر قال حُذَيْفَةَ ، قَالَ : يَأْتِي عَلَى النَّاسِ زَمَانٌ لَوِ…"
 status: published
 published_at: 2022-02-07
 person: abu-jafar-al-khalifi

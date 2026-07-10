@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1079"
+title: "أنا أطلب العلم ولكن عندي معصية التدخين لم أتخلص منها إلى الان ، فكيف العمل بارك الله فيكم…"
 status: published
 published_at: 2022-01-20
 person: abu-jafar-al-khalifi

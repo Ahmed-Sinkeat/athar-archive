@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 996"
+title: "هل من كتب تبين عقيدة الاسماعيلية؟ واليامية منهم؟"
 status: published
 published_at: 2021-11-02
 person: abu-jafar-al-khalifi

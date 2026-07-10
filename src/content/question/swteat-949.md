@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 949"
+title: "ما مصير الناس المسلمين (الذين يؤدون الفرائض كلها وإضافة لكثير من النوافل وأخلاقهم حسنة…"
 status: published
 published_at: 2021-11-02
 person: abu-jafar-al-khalifi

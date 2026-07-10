@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1222"
+title: "هل صح أن ابن معين اتهم الشافعي بالتشيع ؟"
 status: published
 published_at: 2025-07-16
 person: abu-jafar-al-khalifi

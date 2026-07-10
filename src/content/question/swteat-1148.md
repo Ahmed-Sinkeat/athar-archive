@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1148"
+title: "حول قول الذهبي في آخر ترجمة المريسي :ومن كفر ببدعة وإن جلت فليس هو مثل الكافر الأصلي ولا…"
 status: published
 published_at: 2024-02-11
 person: abu-jafar-al-khalifi

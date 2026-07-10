@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1138"
+title: "هل يردد خلف المؤذن من يقضي حاجته؟ أو ينتظر حتى يخرج من الخلاء فيسرد الترديد كاملا؟"
 status: published
 published_at: 2024-01-26
 person: abu-jafar-al-khalifi

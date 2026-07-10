@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1087"
+title: "سؤال فقهي لو تأذن لي أنا شغلي خارج القاهرة بسافر السبت من القاهرة لشغلي وارجع الخمیس…"
 status: published
 published_at: 2022-01-31
 person: abu-jafar-al-khalifi

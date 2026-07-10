@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 997"
+title: "هل يجوز الاستماع لقراءة إسلام صبحي ؟ وهل هو يستخدم المقامات المحرمة أم لا ؟ وهل يجوز نشر…"
 status: published
 published_at: 2021-11-02
 person: abu-jafar-al-khalifi

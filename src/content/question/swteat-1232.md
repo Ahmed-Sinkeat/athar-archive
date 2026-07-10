@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1232"
+title: "ما حجة جمهور المتأخرين في قولهم في استحباب استقبال القبلة عند الوضوء ؟"
 status: published
 published_at: 2026-05-29
 person: abu-jafar-al-khalifi

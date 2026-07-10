@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 934"
+title: "ما التفصيل في الولد للفراش في وجود اختبارات مثل ال dna التي بها يثبت الزنا على المرأة او…"
 status: published
 published_at: 2021-11-01
 person: abu-jafar-al-khalifi

@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 933"
+title: "والدتي مغرمه في مشاهدة برنامج السناب وتتابع كثير من المشاهير الذين يعرضون ممتلكاتهم…"
 status: published
 published_at: 2021-11-01
 person: abu-jafar-al-khalifi

@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 818"
+title: "هل يلزم على طالب العلم ان يحفظ القرآن اولا ثم يطلب العلم ام يطلب و يحفظ القرآن ؟"
 status: published
 published_at: 2021-10-09
 person: abu-jafar-al-khalifi

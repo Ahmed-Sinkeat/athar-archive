@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1017"
+title: "ما الواجب تجاه من يعظم سيد قطب ؟ أحد أفراد اسرتي يعظمه ويترحم عليه ويعتذر له ويعذره…"
 status: published
 published_at: 2021-11-10
 person: abu-jafar-al-khalifi

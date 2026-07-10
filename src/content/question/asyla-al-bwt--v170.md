@@ -1,5 +1,5 @@
 ---
-title: "#رقم_[724]  :"
+title: "أنا فتاة بعمر 27 سنة لدي مشكلة مرتبطة جينياً اعاني منها من عمر الـ 9 سنوات. وهي…"
 status: published
 published_at: 2021-09-15
 person: abu-jafar-al-khalifi

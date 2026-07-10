@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 963"
+title: "ما الفرق بين الركن والشرط ؟ كأن نقول مثلا الفرق بين أركان التوحيد وهي الايمان بالله تعالى…"
 status: published
 published_at: 2021-11-02
 person: abu-jafar-al-khalifi

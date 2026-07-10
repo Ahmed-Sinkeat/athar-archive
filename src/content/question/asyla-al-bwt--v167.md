@@ -1,5 +1,5 @@
 ---
-title: "#رقم_[703]  :"
+title: "سؤال للشيخ وفقه الله هل هناك نصوص لأحمد وتلاميذته تقطع على الحنابلة المتأخرين باب التفويض…"
 status: published
 published_at: 2021-09-11
 person: abu-jafar-al-khalifi

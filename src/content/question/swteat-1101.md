@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1101"
+title: "عندي مشكلة عدم الخشوع في الصلاة، تعبت منها، و دائما ما أختم صلاتي و قلبي يعتصر حرقة على…"
 status: published
 published_at: 2022-02-07
 person: abu-jafar-al-khalifi

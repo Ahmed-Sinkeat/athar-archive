@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 981"
+title: "اقترب اليوم الوطني في بلادنا وارى الناس يستبشرون به فما حكمه وما حكم الانتفاع بالعروض…"
 status: published
 published_at: 2021-11-02
 person: abu-jafar-al-khalifi

@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1169"
+title: "مستل من لقاء مع أبي مريم عبد الرحمن بن ذاكر الهاشمي : سؤال هل الأفضل فتح حساب بعد إغلاقه…"
 status: published
 published_at: 2024-08-05
 person: abu-jafar-al-khalifi

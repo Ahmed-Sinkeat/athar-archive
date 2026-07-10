@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 908"
+title: "الوديعة التي تشترط أن تدفع قبل التملك للشقة ثم يدخلونها في بنك ربوي يدر ريعا ومن الريع…"
 status: published
 published_at: 2021-10-30
 person: abu-jafar-al-khalifi

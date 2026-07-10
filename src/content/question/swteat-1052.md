@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1052"
+title: "أشكل عليّ الجمع بين الأحدايث الشريفة التالية فكيف نوفق بينها : ”لا عدوى ولا طيرة” ”فر من…"
 status: published
 published_at: 2021-12-28
 person: abu-jafar-al-khalifi

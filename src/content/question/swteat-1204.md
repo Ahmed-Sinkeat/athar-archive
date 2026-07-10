@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1204"
+title: "هل كان وكيع وابن المبارك من أهل الرأي؟ كنت سمعتها من أحد المشايخ في درس ما فتعجبت لكن لم…"
 status: published
 published_at: 2025-01-14
 person: abu-jafar-al-khalifi

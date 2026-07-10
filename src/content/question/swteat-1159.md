@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1159"
+title: "لماذا لا يأخذ أهل السنة والجماعة بالآحاد في القراءات أما في الأحاديث يأخذون بالآحاد في…"
 status: published
 published_at: 2024-03-02
 person: abu-jafar-al-khalifi

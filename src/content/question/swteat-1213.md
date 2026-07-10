@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1213"
+title: "لماذا ذكر البخاري قول سعيد لن جبير في تفسير الكرسي بالعلم. فهل هو لا يثبت الكرسي لله ؟…"
 status: published
 published_at: 2025-04-13
 person: abu-jafar-al-khalifi

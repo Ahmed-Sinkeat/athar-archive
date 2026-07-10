@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1135"
+title: "السلام علیکم و رحمة الله و بركاته شيخنا قرأت في كتاب الدكتور عبد الله الشهري (المخرج…"
 status: published
 published_at: 2022-09-20
 person: abu-jafar-al-khalifi

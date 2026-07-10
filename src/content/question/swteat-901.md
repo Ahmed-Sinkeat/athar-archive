@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 901"
+title: "سائلة تقول : من شروط التوبة (إن كان مالًا ترد إليهم أموالهم إلا أن يسمحوا) اليوم ونا…"
 status: published
 published_at: 2021-10-30
 person: abu-jafar-al-khalifi

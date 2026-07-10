@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1036"
+title: "مذهب ابن أبي ليلى رحمه الله في كلام الله .. فيه إشكال؟ ولو كان فيه إشكال ما مرتبته؟ يصل…"
 status: published
 published_at: 2021-12-25
 person: abu-jafar-al-khalifi

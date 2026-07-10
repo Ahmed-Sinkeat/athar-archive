@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1117"
+title: "أنا موظفة و دخلي جيد، تقدم لخطبتي شاب ذو دين و خلق فيما نحسبه و هو يرفض أن أشتغل -لأن…"
 status: published
 published_at: 2022-05-05
 person: abu-jafar-al-khalifi

@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 960"
+title: "سؤالي: أشكل علي في سلسلة مراجعات و مناصحات التقويم العلمي للمشايخ وطلبة العلم، فأنا بدأت…"
 status: published
 published_at: 2021-11-02
 person: abu-jafar-al-khalifi

@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 861"
+title: "ماذا أفعل إذا عطست وحيدا ؟ هل يشمّتني ملكاي ؟ هل هناك أثرٌ في ذلك ؟"
 status: published
 published_at: 2021-10-18
 person: abu-jafar-al-khalifi

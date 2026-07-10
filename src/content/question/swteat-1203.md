@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1203"
+title: "بعد الاستماع إلى تسجيلكم الأخير بعنوان: ”من أين دخل الوسواس على كثير من أبناء الجيل؟”،…"
 status: published
 published_at: 2025-01-14
 person: abu-jafar-al-khalifi

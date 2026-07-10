@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 773"
+title: "أود أن أسأل عن الدورة التي ستقيمونها للنساء هذه الأيام ،لم يتيسر لي التسجيل ، هل ستسجل…"
 status: published
 published_at: 2021-10-02
 person: abu-jafar-al-khalifi

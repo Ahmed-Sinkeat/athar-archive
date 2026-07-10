@@ -47,11 +47,11 @@ const wk = Math.floor(Date.now() / 6.048e8);
 const featured = publishedPoems.length ? publishedPoems[wk % publishedPoems.length] : null;
 const featuredVerses = featured ? analyzePoem(await readBody(featured)).verses.slice(0, 3) : [];
 ---
-<Base title="الشعر" description="منظوماتٌ علميةٌ محقَّقةٌ مُشكَّلةٌ مع الشروح والتخريج." activeNav="poems" searchScope={{ type: "poem" }} jsonLd={collectionLd({ title: "الشعر", path: "/poems", crumbs: [{ name: "الرئيسية", path: "/" }, { name: "الشعر", path: "/poems" }] })}>
+<Base title="الشعر" description="منظوماتٌ علميةٌ مع الشروح والتخريج." activeNav="poems" searchScope={{ type: "poem" }} jsonLd={collectionLd({ title: "الشعر", path: "/poems", crumbs: [{ name: "الرئيسية", path: "/" }, { name: "الشعر", path: "/poems" }] })}>
   <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "الشعر" }]} />
   <div class="wrap-mid uf5db21c">
     <h1 class="page-title">الشعر والمنظومات</h1>
-    <p class="hub-lede poems-lede">{toArabicDigits(cardList.length)} منظومة علمية مُشكَّلة مُرقَّمة الأبيات، مع الشروح والتخريج.</p>
+    <p class="hub-lede poems-lede">{toArabicDigits(cardList.length)} منظومة علمية مُرقَّمة الأبيات، مع الشروح والتخريج.</p>
 
     {featured && (
       <div class="weekly-card k-copper poem-of-week">

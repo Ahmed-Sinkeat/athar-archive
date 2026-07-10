@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1180"
+title: "هناك صوتية لك تحدثت بها عن صفة الحقو لله سبحانه وتعالى ما هو اسم الصوتية ؟ الصوتية […"
 status: published
 published_at: 2025-01-05
 person: abu-jafar-al-khalifi

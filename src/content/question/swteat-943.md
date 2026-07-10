@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 943"
+title: "احسن الله اليكم نحن نعلم من متابعتك ان الاشاعره لديهم مقالات كفريه كثيره وعلى راسها قولهم…"
 status: published
 published_at: 2021-11-02
 person: abu-jafar-al-khalifi

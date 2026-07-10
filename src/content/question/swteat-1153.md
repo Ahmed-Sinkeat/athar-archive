@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1153"
+title: "من سبق الالباني لتقسيم كتب السنن لصحيح وضعيف بهذا الشكل وهل هذا الفعل أمر محمود أم مذموم…"
 status: published
 published_at: 2024-02-23
 person: abu-jafar-al-khalifi

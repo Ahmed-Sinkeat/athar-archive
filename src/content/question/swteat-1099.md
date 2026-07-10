@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1099"
+title: "مالفرق بين كلام ابن عثيمين هذا ( أرسل صاحب مقطعا صوتيا ) هذا وأطروحة جمال الدين القاسمي…"
 status: published
 published_at: 2022-02-06
 person: abu-jafar-al-khalifi

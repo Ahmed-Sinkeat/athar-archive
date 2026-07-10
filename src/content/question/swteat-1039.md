@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1039"
+title: "هل يصح ما نقله السبكي في «طبقاته» أن البويطي سجن في المحنة بسبب وشاية حرملة والمزني وابن…"
 status: published
 published_at: 2021-12-25
 person: abu-jafar-al-khalifi

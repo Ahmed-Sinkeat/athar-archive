@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 882"
+title: "هل أنا مؤاخذ إذا لم أكن حبّاً خاصّاً للعلماء مثل ابن تيمية رحمه الله - بما أن كل شخص يؤخذ…"
 status: published
 published_at: 2021-10-21
 person: abu-jafar-al-khalifi

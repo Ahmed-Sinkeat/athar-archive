@@ -1,5 +1,5 @@
 ---
-title: "#رقم_[700]  :"
+title: "أرى ان هذا مهم فأرجوا ان تكون الإجابة واضحة وفقك الله ما معنى قول الله تبارك وتعالى بسم…"
 status: published
 published_at: 2021-09-09
 person: abu-jafar-al-khalifi

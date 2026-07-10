@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 827"
+title: "هناك من يقول: لا نقبل ذم الكلام الهروي لأنه صوفي و هم من يقول أن الأشاعرة أئمة الإسلام.…"
 status: published
 published_at: 2021-10-09
 person: abu-jafar-al-khalifi

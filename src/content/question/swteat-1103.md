@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1103"
+title: "هل وضع الفقهاء ضابطاً أو حداً لمعرفة من هو الرجل الوسيم الذي يُخشى من النظر إليه الفتنة ؟…"
 status: published
 published_at: 2022-02-07
 person: abu-jafar-al-khalifi

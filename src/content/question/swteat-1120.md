@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1120"
+title: "بعد مقدمة كتبها السائل : س1 : ما قولكم فيمن يقول في الدراسات الطبية أن الإنسان يجب أن…"
 status: published
 published_at: 2022-05-13
 person: abu-jafar-al-khalifi

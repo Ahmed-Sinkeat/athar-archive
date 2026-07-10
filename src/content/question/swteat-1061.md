@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1061"
+title: "أنا في كلية الشريعة الإسلامية وفي سنة الرابعة ان شاء الله. أنا تبقى لي سنة وأتخرج وفعلا…"
 status: published
 published_at: 2022-01-01
 person: abu-jafar-al-khalifi

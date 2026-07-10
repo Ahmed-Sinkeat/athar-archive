@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 809"
+title: "شيخنا في مسألة التشريك في العبادات التي تتداخل هل يحصل لي الأجر على كل نية ؟ يعني اذا…"
 status: published
 published_at: 2021-10-09
 person: abu-jafar-al-khalifi

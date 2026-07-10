@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 972"
+title: "سمعت أحد المشايخ يقول أن الناس تقتصر سبب وحكمة الخلق في آية واحدة مما ورد في القرآن…"
 status: published
 published_at: 2021-11-02
 person: abu-jafar-al-khalifi

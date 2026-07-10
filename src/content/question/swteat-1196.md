@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1196"
+title: "قلت في احد دروس شرح نقض الدارمي أن ابن الجوزي إتهم الجويني بأنه يقول أن الله عزوجل يعلم…"
 status: published
 published_at: 2025-01-11
 person: abu-jafar-al-khalifi

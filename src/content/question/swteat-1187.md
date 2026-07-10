@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1187"
+title: "هل صح ما أورد الأصبهاني في العظمة في قصة إرم ذات العماد والراعي الذي وجدها في أيام معاوية…"
 status: published
 published_at: 2025-01-07
 person: abu-jafar-al-khalifi

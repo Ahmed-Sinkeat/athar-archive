@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1123"
+title: "شيخ عبدالله الله يفتح عليك ويسعدك إمامنا وخطيبنا في يوم عرفة بمسجد نمرة هو الدكتور محمد…"
 status: published
 published_at: 2022-07-06
 person: abu-jafar-al-khalifi

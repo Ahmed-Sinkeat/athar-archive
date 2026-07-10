@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 984"
+title: "ما الرد على من يستدل بنقل البيهقي أن ابن خزيمة تحول للأشعرية في آخر حياته الذي نص فيه أنه…"
 status: published
 published_at: 2021-11-02
 person: abu-jafar-al-khalifi

@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 966"
+title: "هل قصة إتكاء الخضر على يد عمر بن عبد العزيز صحيحة ؟"
 status: published
 published_at: 2021-11-02
 person: abu-jafar-al-khalifi

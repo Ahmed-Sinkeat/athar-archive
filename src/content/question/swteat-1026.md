@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1026"
+title: "هل يجوز للمسلم أن ينزه نفسه من كسب الرزق في الصناعة والحرف والمهن كالحدادة والنجارة…"
 status: published
 published_at: 2021-11-13
 person: abu-jafar-al-khalifi

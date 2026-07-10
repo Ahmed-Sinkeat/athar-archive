@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 893"
+title: "كيف يجب أن نتعامل مع مواضيع اجتماعية حساسة أو أسلوب حياة لم يعد موجودًا في عصرنا ، ولكن…"
 status: published
 published_at: 2021-10-24
 person: abu-jafar-al-khalifi

@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 890"
+title: "كيف أطلب العلم وهل تنصحني بمذهب الحنابلة في الدراسة"
 status: published
 published_at: 2021-10-21
 person: abu-jafar-al-khalifi

@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1110"
+title: "على قول عدد من العلماء بأن الخلع يشترط فيه موافقة الزوج ما المخرج للمرأة إذن ؟ إن كانت…"
 status: published
 published_at: 2022-02-21
 person: abu-jafar-al-khalifi

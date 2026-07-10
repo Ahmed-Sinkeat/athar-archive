@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1206"
+title: "َممكن يا شيخ تفصل لي مسأله ربا البنوك"
 status: published
 published_at: 2025-01-16
 person: abu-jafar-al-khalifi

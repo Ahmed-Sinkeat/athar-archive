@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1011"
+title: "عندي أب صعب جدا، لا يصرف علينا و لا يحترمنا، أمي هي التي تشتغل منذ صغري، لكن الآن ستتوقف…"
 status: published
 published_at: 2021-11-07
 person: abu-jafar-al-khalifi

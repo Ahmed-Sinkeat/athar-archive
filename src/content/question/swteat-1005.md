@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1005"
+title: "شيخنا جزاكم اللّٰه خيرا سألت هذا قبل قرابة شهر ولم يرد علي ولا أعلم هل فات منكم سهوا أم…"
 status: published
 published_at: 2021-11-07
 person: abu-jafar-al-khalifi

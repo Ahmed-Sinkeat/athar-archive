@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1031"
+title: "يا شيخ بالله انا والدي يعمل في السلك القانوني محامٍ بالتحديد ومستشار قانوني ويعمل بعض…"
 status: published
 published_at: 2021-11-21
 person: abu-jafar-al-khalifi

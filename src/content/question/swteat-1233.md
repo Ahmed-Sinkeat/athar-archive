@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1233"
+title: "هل ما ورد في لعن الحكم بن أبي العاص وأبنائه صحيح كما في الصحيحة للألباني ؟"
 status: published
 published_at: 2026-06-22
 person: abu-jafar-al-khalifi

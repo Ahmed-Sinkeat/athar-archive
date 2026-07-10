@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1154"
+title: "ياشيخ انا كنت اعاني من وساوس استمرت لسنتين تقريبا وقبل عدة اشهر تخلصت منها وبعد ذلك اتتني…"
 status: published
 published_at: 2024-02-23
 person: abu-jafar-al-khalifi

@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1130"
+title: "هذا موقع السبيل ( وضع السائل الرابط ) وبيتكلم فى صفات الله عزوجل وكلمة تنزيه تتكرر كثيرا…"
 status: published
 published_at: 2022-07-06
 person: abu-jafar-al-khalifi

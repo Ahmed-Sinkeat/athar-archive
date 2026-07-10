@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 947"
+title: "ما سر الارتباط بين الوصفين”صبار وشكور” في القران الكريم وما الحكمة من ذكرهما بعد ذكر نعم…"
 status: published
 published_at: 2021-11-02
 person: abu-jafar-al-khalifi

@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 817"
+title: "شيخنا الحبيب نريد ترشيحكم لشيخ يشرح فتح البارى ، وإن أمكن شيخ يشرح الكتب التسعة ."
 status: published
 published_at: 2021-10-09
 person: abu-jafar-al-khalifi

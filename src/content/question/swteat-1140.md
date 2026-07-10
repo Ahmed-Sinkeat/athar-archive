@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1140"
+title: "مشكلتي انا وصغيرة أهلي مامتفقين مشاكل دائمة وهذا اول سبب لكرهي لزواج وسبب ثاني حبي للعلم…"
 status: published
 published_at: 2024-01-29
 person: abu-jafar-al-khalifi

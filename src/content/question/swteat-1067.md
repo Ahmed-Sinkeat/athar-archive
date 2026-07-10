@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1067"
+title: "أولا جزاكم الله خيرا شيخنا فقد رتبت وشفيت أمورا كانت تختلجنا ورددت على تساؤلات لطالما…"
 status: published
 published_at: 2022-01-16
 person: abu-jafar-al-khalifi

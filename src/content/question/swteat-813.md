@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 813"
+title: "أتساءل إن كان عندكم من نية في استكمال شرح عمدة الفقه. إذ أن ما شرحتموه منه ما شاء الله…"
 status: published
 published_at: 2021-10-09
 person: abu-jafar-al-khalifi

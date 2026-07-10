@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1090"
+title: "ما العلاقة بين النفس وأمارتها بالسوء وبين نزغ الشيطان؟ ألا يكفي أن لا يتوقف الإنسان عن…"
 status: published
 published_at: 2022-01-31
 person: abu-jafar-al-khalifi

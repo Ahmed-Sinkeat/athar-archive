@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 779"
+title: "وعدت إحدى قريباتي بشراء عطر لها واشتريته؛ لكن قبل أن أسلمها إياه عرفت عن موضوع الخلاف في…"
 status: published
 published_at: 2021-10-02
 person: abu-jafar-al-khalifi

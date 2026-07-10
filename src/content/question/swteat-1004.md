@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1004"
+title: "اذا امكن تدلوني عن مقالاتكم بموقف شيخ الاسلام من الأشاعرة"
 status: published
 published_at: 2021-11-07
 person: abu-jafar-al-khalifi

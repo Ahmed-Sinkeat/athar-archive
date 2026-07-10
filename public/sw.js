@@ -8,6 +8,9 @@ self.addEventListener("activate", (e) => e.waitUntil(self.clients.claim()));
 
 self.addEventListener("fetch", (event) => {
   if (event.request.method !== "GET") return;
+  // media must hit the network untouched: answering a Range request from the
+  // Cache API returns a full 200, which browsers reject → playback dies
+  if (event.request.headers.has("range") || event.request.destination === "audio" || event.request.destination === "video") return;
   event.respondWith(
     caches.open(CACHE_NAME).then(async (cache) => {
       const cached = await cache.match(event.request);

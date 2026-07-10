@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1181"
+title: "ما صحة هذا الأثر عن علي رضي الله عنه؟ «أيها الناس لا تطيعوا النساء، ولا تدعوهن يدبرن…"
 status: published
 published_at: 2025-01-06
 person: abu-jafar-al-khalifi

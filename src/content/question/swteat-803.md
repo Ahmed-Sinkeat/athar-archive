@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 803"
+title: "طالبة علم وتخصصها العقيدة ويعني منتشرة في الوسط وإن كان بشكل صغير لكن يتابعها رجال أقول…"
 status: published
 published_at: 2021-10-09
 person: abu-jafar-al-khalifi

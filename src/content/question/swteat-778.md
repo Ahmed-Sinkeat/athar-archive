@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 778"
+title: "١/ حكم الأسهم المختلطة ؟ ٢/ وهل كل الشركات الأجنبية تدخل في الأسهم المختلطة ؟"
 status: published
 published_at: 2021-10-02
 person: abu-jafar-al-khalifi

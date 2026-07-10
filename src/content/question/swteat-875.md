@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 875"
+title: "دعوة بعض البنوك الاسلامية للناس بقولهم حول راتبك علينا ونعطيك قرض حسن مقسط بدون ارباح هل…"
 status: published
 published_at: 2021-10-18
 person: abu-jafar-al-khalifi

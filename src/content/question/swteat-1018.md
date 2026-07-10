@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1018"
+title: "هل تغيير خلق الله يقتصر فقط على جسد الإنسان والبهائم أم هو أوسع من ذلك بحيث يشمل جميع…"
 status: published
 published_at: 2021-11-13
 person: abu-jafar-al-khalifi

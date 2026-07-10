@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 983"
+title: "اختي ترى ان العلماء يغيرون في الدين ويحرمون على المرأة ما أحل الله لها فهي تشك بالعلماء…"
 status: published
 published_at: 2021-11-02
 person: abu-jafar-al-khalifi

@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1095"
+title: "ونفعنا بعلمك، لديكم ممن يتابعكم من الشباب عدد لا بأس به، أرجو منك أن توجه رسالة توعوية…"
 status: published
 published_at: 2022-02-06
 person: abu-jafar-al-khalifi

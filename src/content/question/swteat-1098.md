@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1098"
+title: "قلت اني أعيش في الغرب، ولدي ولدان حفظهم الله وحفظ أولادكم، وانا لا أنوي ولا أفكر ابدا…"
 status: published
 published_at: 2022-02-06
 person: abu-jafar-al-khalifi

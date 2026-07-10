@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1133"
+title: "أريد الفتوى في ” طبيب (طالب) أو (حديث تخرج) ، أراد العمل فى تخصص معين مثل العناية أو…"
 status: published
 published_at: 2022-09-20
 person: abu-jafar-al-khalifi

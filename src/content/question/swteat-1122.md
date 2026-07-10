@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1122"
+title: "لدي سؤال لأخت أعرفها من اليمن سأنقله لكم: تقول : انا فتاة بقي أشهر وأدخل في الثلاثين من…"
 status: published
 published_at: 2022-06-07
 person: abu-jafar-al-khalifi

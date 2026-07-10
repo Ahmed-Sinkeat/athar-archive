@@ -14,7 +14,7 @@ const terms = (await getCollection("term")).filter(isPub)
   <div class="wrap-mid" style="padding-bottom: 80px;">
     <TitleFilter placeholder="تصفية حسب المصطلح…" />
     {terms.length === 0 ? (
-      <p class="faint" style="padding: 48px 0">لا توجد مصطلحات بعد — أضِفْ أوّلَ مصطلح من <a href="/compose">إدارة المحتوى</a>.</p>
+      <p class="faint" style="padding: 48px 0">لا توجد مصطلحات بعد.</p>
     ) : (
       <ol class="mujam-list">
         {terms.map((t) => (

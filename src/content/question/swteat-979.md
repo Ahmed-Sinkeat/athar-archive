@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 979"
+title: "هل اركان الايمان الستة تدرك بالفطرة والعقل وعندي ادلة اريد الرد عليها 1-(واذا اخذ ربك من…"
 status: published
 published_at: 2021-11-02
 person: abu-jafar-al-khalifi

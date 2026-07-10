@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 831"
+title: "ما رأيك في طرح الدكتور أبا الفداء حسام بن مسعود وخصوصاً نقده لمنهجية بعض المشتغلين في…"
 status: published
 published_at: 2021-10-11
 person: abu-jafar-al-khalifi

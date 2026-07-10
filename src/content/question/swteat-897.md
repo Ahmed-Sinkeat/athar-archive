@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 897"
+title: "أحيانا ينزل لي دم الحيض و لم أصل بعد الصلاة المفروض مني في ذلك الوقت و عند اغتسالي هل يجب…"
 status: published
 published_at: 2021-10-24
 person: abu-jafar-al-khalifi

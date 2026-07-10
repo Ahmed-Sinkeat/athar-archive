@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1054"
+title: "التوفيق بين العمل وبين طلب العلم و تحضير الماجستير والسعي لإيجاد بديل عن العمل الحالي،…"
 status: published
 published_at: 2021-12-28
 person: abu-jafar-al-khalifi

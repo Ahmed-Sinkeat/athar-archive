@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1019"
+title: "هل عندكم بحث في حجية فهم السلف؟ وحبذا لو أمكن الإشارة إلى مراجع تعين على ضبط فهم السلف…"
 status: published
 published_at: 2021-11-12
 person: abu-jafar-al-khalifi

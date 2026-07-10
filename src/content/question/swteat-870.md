@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 870"
+title: "شيخ أحسن الله إليك ما حكم عمل المرأة -بضوابط شرعية- بغير حاجة ؟"
 status: published
 published_at: 2021-10-18
 person: abu-jafar-al-khalifi

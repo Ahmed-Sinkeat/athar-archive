@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1074"
+title: "يا شيخ ما حكم قراءة القرآن بالمقامات، وما حكم الإستماع إليها ؟"
 status: published
 published_at: 2022-01-20
 person: abu-jafar-al-khalifi

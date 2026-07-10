@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 990"
+title: "ارجوك شيخنا رد انا في حاجة للنصيحة بشدة لا يمكن حتى ان انطق عليها اسم ام تسب الله امامي…"
 status: published
 published_at: 2021-11-02
 person: abu-jafar-al-khalifi

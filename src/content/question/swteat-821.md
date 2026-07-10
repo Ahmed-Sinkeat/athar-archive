@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 821"
+title: "كيف نوفق بين قصة النبي صلى الله عليه و سلم مع السيدة ماريا القبطية في بيت السيدة حفصة و…"
 status: published
 published_at: 2021-10-09
 person: abu-jafar-al-khalifi

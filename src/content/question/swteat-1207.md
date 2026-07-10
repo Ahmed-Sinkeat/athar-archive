@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1207"
+title: "هل يجوز الصلاة على النبي بغير الاثار المورودة عنه مثل قول اللهم صل وسلم على محمد وعلى آل…"
 status: published
 published_at: 2025-01-17
 person: abu-jafar-al-khalifi

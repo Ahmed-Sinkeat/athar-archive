@@ -1,5 +1,5 @@
 ---
-title: "مسألة رقم 1049"
+title: "في القرآن الكريم نجد قوله تعالى: ”...ويقتلون النبيين بغير حق”، ”.... سيدا وحصورا ونبيا من…"
 status: published
 published_at: 2021-12-28
 person: abu-jafar-al-khalifi
