@@ -19,4 +19,4 @@ rclone sync "$SRC" "r2:${BUCKET}" \
   --exclude ".DS_Store" \
   --header-upload "Cache-Control: public, max-age=31536000, immutable"
 
-echo "Done. Verify a sample URL resolves under https://r2.ahlalathar.com/"
+echo "Done. Verify a sample URL resolves under https://r2.arthurarchive.com/"

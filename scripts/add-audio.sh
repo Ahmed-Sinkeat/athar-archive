@@ -8,7 +8,7 @@
 #   scripts/add-audio.sh /path/to/file.m4a audio/manzumat-al-ilbiri.opus
 #
 # The output key becomes the R2 object key. The public URL will be:
-#   https://r2.ahlalathar.com/<output-key>
+#   https://r2.arthurarchive.com/<output-key>
 #
 # Opus encoding settings:
 #   - 48 kHz mono (speech — default for recitation/lecture audio)
@@ -47,6 +47,6 @@ echo "⟳ Uploading to R2: athar-media/${KEY} …"
 echo ""
 echo "✓ Done."
 echo ""
-echo "  URL:          https://r2.ahlalathar.com/${KEY}"
+echo "  URL:          https://r2.arthurarchive.com/${KEY}"
 echo "  size_bytes:   ${SIZE}"
 echo "  duration:     ${DURATION_FMT}"

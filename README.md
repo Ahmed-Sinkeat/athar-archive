@@ -42,7 +42,7 @@ Polymorphic links (`source_type`/`target_type`) have no DB foreign keys — **Zo
 - **مختارات الأسبوع** — the home shows a weekly-rotating آية/حديث/بيت (the `highlight` collection). متون/منظومات with more than one recitation get a small native dropdown to switch recordings.
 - **Connections** — a collapsible «ما يشير إلى هذا» relations panel at page end (backlinks: شروح، فوائد، سلاسل، authored works, unlinked mentions), subtle inline `[[type:slug]]` wiki-links, and a person→شيوخ narrator graph (شيوخه/تلاميذه on each عَلَم). Connectivity stays out of the reading flow — clean-UI is a hard gate.
 - **`/roadmap`** — طريق طلب العلم page, content from `src/data/roadmap.md` (edit to fill it out); linked from the home hero.
-- **`/compose`** (إدارة المحتوى) — maintainer tool to **add or edit** content. Common types are featured (the rest under «أنواع أخرى»); fields are grouped into guided sections (أساسيات/تفاصيل/النص); references (الناظم/الموضوعات/المتن…) are **searchable name pickers**, not raw slugs; long bodies can be **uploaded** as `.txt`/`.md`. Live-builds a valid `file.md` to copy/download/commit. Unlinked + `noindex`; gate it with Cloudflare Access (see `docs/deploy.md`).
+- **`/admin`** — Sveltia CMS, GitHub-backed. Full create/edit/delete with real form fields; references (الناظم/الموضوعات/المتن…) are relation pickers, not raw slugs; audio can be uploaded directly or linked by URL. Every save is a real commit to `main`. Unlinked + `noindex`; access controlled via GitHub repo permissions (see `docs/deploy.md` §5).
 
 ## Docs
 

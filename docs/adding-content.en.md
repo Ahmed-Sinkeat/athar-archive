@@ -2,9 +2,9 @@
 
 *النسخة العربية: [adding-content.ar.md](./adding-content.ar.md)*
 
-All material is added from the admin page `/compose`: pick the type, fill the
-fields, then press **«نشر إلى GitHub»** (the text is copied and the save page
-opens at the right path — paste and Commit). Changing the *interface* text
+All material is added from the CMS at `/admin` (Sveltia, GitHub-backed — see
+`docs/technology-stack.md`): pick the collection, fill the fields, Save —
+that's a real commit straight to `main`. Changing the *interface* text
 (menus/titles) has a [separate guide](./editing-text.en.md).
 
 ---
@@ -33,7 +33,7 @@ Write **one بيت (verse) per line**, separating the صدر (first hemistich) f
 
 ## Adding a شرح / إعراب / حاشية / تخريج (annotation)
 
-In `/compose` choose «شرح / حاشية», then:
+In `/admin` open the **Annotation** collection, then:
 
 1. **المتن (target):** pick the poem or book by name.
 2. **الموضع (anchor):** `v1` = first verse, `v2` = second… and `p1` = first
@@ -53,9 +53,10 @@ the bottom moves between annotated spots.
 
 ## Other types
 
-كتاب · درس · سلسلة · عَلَم · فائدة · مقالة · مسألة · صوتية · مختار الأسبوع — all
-added the same way in `/compose`, each field with a short hint. Start with status
-«مسودة» (draft) and switch to «منشور» (published) when ready.
+كتاب · عَلَم · مقالة · مسألة · صوتية · مختار الأسبوع — all added the same way in
+`/admin`, each field with a short hint. Start with status «مسودة» (draft) and
+switch to «منشور» (published) when ready. (فائدة/كُناشة is reader-local, not a
+CMS collection — see `docs/technology-stack.md`.)
 
 ---
 

@@ -98,29 +98,21 @@ Cloudflare Redirect Rule.
 - `https://arthurarchive.com/sitemap.xml` and `/robots.txt` resolve; canonical tags read `https://arthurarchive.com/...`.
 - Re-run the §2 checks on the apex domain.
 
-## 5. Lock down `/compose` (Cloudflare Access)
+## 5. `/admin` access control
 
-`/compose` is the maintainer authoring tool. It never writes to the site — it only
-generates a `.md` file you copy/commit, so production is only ever changed through Git.
-It's `noindex`, excluded from the sitemap, `Disallow`ed in `robots.txt`, and unlinked from
-the site. To stop anyone who knows the URL from opening it, gate the path at the edge —
-no app code, no password in the bundle:
+`/admin` (Sveltia CMS, see `docs/technology-stack.md`) writes straight to `main` via
+GitHub — access is controlled by GitHub itself, not a site-level gate:
 
-Cloudflare dashboard → **Zero Trust → Access → Applications → Add an application → Self-hosted**.
-
-| Field | Value |
-|---|---|
-| Application name | `Athar compose` |
-| Session duration | `24 hours` (your choice) |
-| Application domain | `arthurarchive.com` · path `/compose` |
-
-Add a second domain row for `*.pages.dev` path `/compose` if you also want preview deploys gated.
-
-Then **Add a policy**: Action **Allow**, Include → **Emails** → `ahmedsinkeat2002@gmail.com`.
-For the login method, **One-time PIN** (email code) needs no identity-provider setup; or wire Google.
-
-Save. Now `/compose` prompts for your email + a one-time code; everyone else is blocked at
-Cloudflare's edge before the page loads. Zero Trust is free up to 50 users.
+- **Who can sign in:** anyone with **write access** to the repo (GitHub → repo →
+  **Settings → Collaborators**). Add/remove editors there.
+- **Auth backend:** `public/admin/config.yml`'s `backend.base_url` points at a
+  deployed `sveltia-cms-auth` Cloudflare Worker (GitHub OAuth). That worker holds
+  `GITHUB_CLIENT_ID`/`GITHUB_CLIENT_SECRET`/`ALLOWED_DOMAINS` as secrets — rotate
+  them there, not in this repo, if the OAuth App is ever recreated.
+- `/admin` is `noindex` and unlinked from the site nav, but the page itself is
+  publicly reachable — that's fine, since it's useless without a GitHub account
+  that has repo write access. Add Cloudflare Access in front of it only if you
+  want a second factor before the GitHub sign-in screen even loads.
 
 ## Auto-deploy & rollback
 

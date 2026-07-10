@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Guide: Adding, Editing &amp; Deleting Content (Keystatic)</title>
+<title>Guide: Adding, Editing &amp; Deleting Content (CMS)</title>
 <style>
   body { font-family: -apple-system, Segoe UI, Arial, sans-serif; max-width: 780px; margin: 40px auto; padding: 0 20px; line-height: 1.55; color: #222; }
   h1 { border-bottom: 3px solid #7A2222; padding-bottom: 8px; }
@@ -19,23 +19,13 @@
 <body>
 
 <h1>Adding, Editing &amp; Deleting Content</h1>
-<p>Content (books, poems, people, articles, questions, etc.) can be managed two ways. Both are still supported — pick whichever suits you:</p>
-
-<table>
-<tr><th></th><th><code>/keystatic</code> (recommended)</th><th><code>/compose</code></th></tr>
-<tr><td>What it is</td><td>Full CMS: browse, create, edit, delete with real form fields</td><td>Unlisted maintainer tool: fill a form, it generates a ready-to-paste file</td></tr>
-<tr><td>How you save</td><td>Click Save — commits straight to GitHub for you</td><td>Click "نشر إلى GitHub" — copies the text and opens GitHub's commit page pre-filled; you paste and click Commit yourself</td></tr>
-<tr><td>Editing existing entries</td><td>Yes, built in</td><td>Yes — it prefills the form from the existing entry</td></tr>
-<tr><td>Deleting entries</td><td>Yes, built in</td><td>No — delete the file directly on GitHub instead</td></tr>
-</table>
-<p>Both write to the same content files, so it's safe to use one for some edits and the other for others.</p>
+<p>Content (books, poems, people, articles, questions, etc.) is managed from a single CMS at <code>/admin</code> (<a href="https://github.com/sveltia/sveltia-cms" target="_blank" rel="noopener">Sveltia</a>) — full create/edit/delete with real form fields, no copy-paste step.</p>
 
 <h2>1. Open the admin panel</h2>
 <div class="step">
-Go to <code>yoursite.com/keystatic</code> and sign in with GitHub (the repo owner's account, or whoever you've given access to).<br><br>
-Or, for the simpler paste-based tool: go to <code>yoursite.com/compose</code> (it's not linked in the menu, but works the same for anyone with repo access).
+Go to <code>yoursite.com/admin</code> and sign in with GitHub (any account with write access to the repo).
 </div>
-<p>Both are connected directly to the GitHub repo. Every save creates a real commit straight to the live <code>main</code> branch — <strong>there is no draft/review step</strong>, changes go live on the next automatic rebuild (a few minutes).</p>
+<p>Every save is a real commit straight to the live <code>main</code> branch — <strong>there is no draft/review step</strong>, changes go live on the next automatic rebuild (a few minutes).</p>
 
 <h2>2. What you can manage</h2>
 <table>
@@ -46,18 +36,17 @@ Or, for the simpler paste-based tool: go to <code>yoursite.com/compose</code> (i
 <tr><td>Question</td><td>Q&amp;A / fatwa-style entries</td></tr>
 <tr><td>Person</td><td>Scholar/author profiles</td></tr>
 <tr><td>Subject / Topic / Term</td><td>Classification &amp; glossary entries</td></tr>
-<tr><td>Benefit</td><td>Short benefit/lesson snippets</td></tr>
-<tr><td>Audio</td><td>Audio lesson references</td></tr>
+<tr><td>Audio</td><td>Audio recordings — drop a file directly or paste an R2/external URL</td></tr>
 <tr><td>Annotation</td><td>Notes attached to a piece of content</td></tr>
 <tr><td>Highlight / Announcement</td><td>Site highlights &amp; announcements</td></tr>
 </table>
-<p><em>Not editable here:</em> the Quran collection (114 surahs) — that's auto-generated, not hand-edited.</p>
+<p><em>Not editable here:</em> the Quran collection (114 surahs, auto-generated) and «الفوائد / كُناشة» (device-local reader bookmarks, not editorial content — see <code>docs/technology-stack.md</code>).</p>
 
 <h2>3. Add, edit, or delete an entry</h2>
 <div class="step">
-<strong>Add:</strong> open the collection in the Keystatic sidebar → "Create" → fill in the fields → Save.<br><br>
+<strong>Add:</strong> open the collection in the sidebar → "Create" → fill in the fields → Save.<br><br>
 <strong>Edit:</strong> open the collection → click the existing entry → change fields → Save.<br><br>
-<strong>Delete:</strong> open the entry → the Delete option is in the entry's page (usually near the Save button).
+<strong>Delete:</strong> open the entry → the Delete option is near the Save button.
 </div>
 
 <h2>Fields every entry shares</h2>

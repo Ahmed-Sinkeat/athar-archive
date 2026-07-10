@@ -3,8 +3,8 @@
 *English version: [editing-text.en.md](./editing-text.en.md)*
 
 هذا الدليلُ لتغييرِ **النصِّ الظاهرِ** في الموقع: أسماءُ القوائم، وعناوينُ الصفحات،
-والأزرار، والتلميحات. أمّا **المحتوى** نفسُه (الكتبُ والمنظوماتُ والدروس) فيُضاف
-ويُعدَّل من صفحةِ الإدارة `/compose` — وله دليلُه.
+والأزرار، والتلميحات. أمّا **المحتوى** نفسُه (الكتبُ والمنظوماتُ والمسائل) فيُضاف
+ويُعدَّل من نظامِ الإدارة `/admin` — انظر `docs/adding-content.ar.md`.
 
 > القاعدةُ الذهبية: غيِّرِ النصَّ العربيَّ الذي تقرؤه فقط. لا تلمسْ شيئًا بين
 > `< >` ولا بين `{ }` ولا الكلماتِ الإنجليزيةَ ولا أسماءَ الأنماطِ مثل `uf5db21c`.
@@ -50,12 +50,11 @@
 | أزرارُ التصفية (النوع/الأعلام/الموضوعات) وأسماءُ الأنواع | `src/layouts/Base.astro` — `searchTypes` |
 | إعداداتُ القراءة (حجم الخط/التشكيل/الترقيم/السمة) | `src/layouts/Base.astro` — نافذةُ `settings-pop` |
 | عنوانُ الرئيسية، الأزرارُ، الإحصاءاتُ، عناوينُ الأقسام، البطاقات | `src/pages/index.astro` |
-| عناوينُ صفحاتِ التصفّح ومقدِّماتُها | `src/pages/books.astro` · `poems.astro` · `series/index.astro` · `questions/index.astro` · `articles.astro` · `people.astro` · `subjects.astro` · `benefits.astro` · `matn.astro` |
+| عناوينُ صفحاتِ التصفّح ومقدِّماتُها | `src/pages/books.astro` · `poems.astro` · `questions/index.astro` · `articles.astro` · `people.astro` · `subjects.astro` · `benefits.astro` · `matn.astro` |
 | شارةُ نوعِ المحتوى (منظومة / متن / مرجع / مجموع) | `src/lib/display.ts` — `labelFor` |
 | أسماءُ العصور (الأموي/العباسي/الأندلسي…) | `src/lib/display.ts` — `ERA_VALUES` و`eraLabel` |
 | نصوصُ صفحةِ القراءة (منظومة، نظمُ، متن، بيت، باب) | `src/pages/poem/[slug].astro` و`src/pages/book/[slug].astro` |
-| أسماءُ الأنواعِ في صفحةِ الإدارة | `src/lib/content-forms.ts` — حقلُ `label` لكلِّ نوع |
-| شرحُ كلِّ نوعٍ في صفحةِ الإدارة | `src/scripts/compose.ts` — `TYPE_DESC` |
+| أسماءُ المجموعاتِ والحقولِ في نظامِ الإدارة | `public/admin/config.yml` |
 | أزرارُ الترتيب (أبجديًّا/بالتاريخ) و«عرض الكل» | `src/components/SortableList.astro` و`BrowseGroups.astro` |
 
 ---
