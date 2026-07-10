@@ -30,14 +30,15 @@ describe("analyzePoem", () => {
   });
 
   it("chapterizes above the verse threshold with multiple chapters", () => {
-    const poem = analyzePoem(poemBody(3, 70)); // 210 verses, 3 chapters
+    // explicit threshold — independent of ahlalathar.config.ts's tunable default
+    const poem = analyzePoem(poemBody(3, 70), 200); // 210 verses, 3 chapters
     expect(poem.verseCount).toBe(210);
     expect(poem.chunked).toBe(true);
   });
 
   it("falls back to single-page when above threshold but lacking chapters", () => {
     const body = Array.from({ length: 250 }, (_, i) => `صدر ${i} --- عجز ${i}`).join("\n");
-    const poem = analyzePoem(body);
+    const poem = analyzePoem(body, 200);
     expect(poem.verseCount).toBe(250);
     expect(poem.chapters).toHaveLength(0);
     expect(poem.chunked).toBe(false);

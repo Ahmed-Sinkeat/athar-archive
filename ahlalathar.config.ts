@@ -1,7 +1,7 @@
 export const config = {
   domain: "athar.arthurarchive.com", // TEMPORARY: placeholder domain, real one (athararchive.com) pending purchase
   siteUrl: "https://athar.arthurarchive.com",
-  poemChapterThreshold: 200, // verses — above → chapter pages
+  poemChapterThreshold: 400, // verses — above → chapter pages
   bookChapterThreshold: { words: 6000, chapters: 8 }, // above either → chapter pages
   // Below this printed-page span, never split into chapter routes even if the
   // word/chapter-count threshold above is crossed — a short book with many
