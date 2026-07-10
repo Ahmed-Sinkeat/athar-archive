@@ -1,6 +1,6 @@
 ---
 title: "حافظ الحكمي"
-status: draft
+status: published
 published_at: 2026-07-10
 born: "1342هـ"
 died: "1377هـ"

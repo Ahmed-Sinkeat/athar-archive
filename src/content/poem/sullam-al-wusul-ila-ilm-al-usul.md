@@ -2,7 +2,7 @@
 title: "سلم الوصول إلى علم الأصول"
 person: al-hakami
 topics: ["tahwid-al-ibada"]
-status: draft
+status: published
 published_at: 2026-07-10
 description: "منظومة في العقيدة والتوحيد، نظمها الشيخ حافظ الحكمي سنة 1362هـ، شاملة لأبواب التوحيد والشرك والإيمان والنبوة، في مقدمة وأربعة عشر فصلاً وخاتمة."
 authored_year: 1362
