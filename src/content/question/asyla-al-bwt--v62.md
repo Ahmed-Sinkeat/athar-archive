@@ -1,0 +1,22 @@
+---
+title: "[ أسئلة البوت @alkulifyQ_bot ]"
+status: draft
+published_at: 2021-07-18
+person: abu-jafar-al-khalifi
+topics: ["al-asma-was-sifat"]
+audio: swteat--asyla-al-bwt--v62
+---
+## السؤال
+
+[ أسئلة البوت @alkulifyQ_bot ]
+
+
+السؤال :
+كل أسماء الله كاملة وإذا كان اسمين مقترنين يكون كمال فوق كمال فممكن شرح لكمال قوله تعالى { إِنَّ رَبَّكَ حَكِيمٌ عَلِيمٌ }؟
+
+
+الجواب 👇
+
+## الجواب
+
+(انظر التسجيل الصوتي أعلاه)

@@ -1,0 +1,27 @@
+---
+title: "[ أسئلة البوت @alkulifyQ_bot ]"
+status: draft
+published_at: 2021-09-11
+person: abu-jafar-al-khalifi
+topics: ["aam-other"]
+audio: swteat--asyla-al-bwt--v168
+---
+## السؤال
+
+[ أسئلة البوت @alkulifyQ_bot ]
+
+https://t.me/swteat_k
+
+السؤال #رقم_[710]  :
+
+هل يصح القول بأن حواء هي من أشارت لآدم أن يأكل من الشجرة ؟
+ وأن الله عاقب جنس النساء بالحيض بسبب ذلك؟
+
+الجواب :
+
+- استمع لهذا المقطع من هذه الصوتية : https://t.me/alkulife/10171
+وما بعده
+
+## الجواب
+
+(انظر التسجيل الصوتي أعلاه)

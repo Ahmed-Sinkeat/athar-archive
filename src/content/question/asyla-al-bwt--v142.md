@@ -1,0 +1,22 @@
+---
+title: "[ أسئلة البوت @alkulifyQ_bot ]"
+status: draft
+published_at: 2021-08-16
+person: abu-jafar-al-khalifi
+topics: ["aam-other"]
+audio: swteat--asyla-al-bwt--v142
+---
+## السؤال
+
+[ أسئلة البوت @alkulifyQ_bot ]
+
+السؤال : 
+
+هل يجوز شراء الشاة بناء على كمية اللحم الذي بداخلها ؟ 
+بمعنى :  أني أقول للبائع بقدر اللحم الذي سيكون فيها أعطيك ثمنها
+
+الجواب 👇
+
+## الجواب
+
+(انظر التسجيل الصوتي أعلاه)

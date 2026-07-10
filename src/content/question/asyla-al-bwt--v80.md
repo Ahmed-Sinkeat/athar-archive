@@ -1,0 +1,21 @@
+---
+title: "[ أسئلة البوت @alkulifyQ_bot ]"
+status: draft
+published_at: 2021-07-23
+person: abu-jafar-al-khalifi
+topics: ["aam-other"]
+audio: swteat--asyla-al-bwt--v80
+---
+## السؤال
+
+[ أسئلة البوت @alkulifyQ_bot ]
+
+
+السؤال :
+كيف أجمع بين قول الأصوليين أن العدد لا مفهوم له وبين قولهم عند ذكر أمثلة النص : الأعداد؟
+
+الجواب 👇
+
+## الجواب
+
+(انظر التسجيل الصوتي أعلاه)

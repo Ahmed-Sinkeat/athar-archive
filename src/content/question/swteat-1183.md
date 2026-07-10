@@ -1,0 +1,15 @@
+---
+title: "مسألة رقم 1183"
+status: published
+published_at: 2025-01-06
+person: abu-jafar-al-khalifi
+topics: ["aam-other"]
+audio: swteat--swteat-1183
+---
+## السؤال
+
+تروى أثار عن عمر في كراهة لبس الخاتم الحديد فهل هذا يقاس على الساعات الحديد؟
+
+## الجواب
+
+(انظر التسجيل الصوتي أعلاه)

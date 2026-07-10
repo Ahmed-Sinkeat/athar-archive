@@ -1,0 +1,15 @@
+---
+title: "مسألة رقم 1079"
+status: published
+published_at: 2022-01-20
+person: abu-jafar-al-khalifi
+topics: ["aam-other"]
+audio: swteat--swteat-1079
+---
+## السؤال
+
+أنا أطلب العلم ولكن عندي معصية التدخين لم أتخلص منها إلى الان ، فكيف العمل بارك الله فيكم ؟
+
+## الجواب
+
+(انظر التسجيل الصوتي أعلاه)

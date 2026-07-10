@@ -1,0 +1,31 @@
+---
+title: "مسألة رقم 1019"
+status: published
+published_at: 2021-11-12
+person: abu-jafar-al-khalifi
+topics: ["aam-other"]
+---
+## السؤال
+
+هل عندكم بحث في حجية فهم السلف؟ 
+وحبذا لو أمكن الإشارة إلى مراجع تعين على ضبط فهم السلف للنصوص.
+
+## الجواب
+
+1- مقال بعنوان [ السلفية قطعية قرآنية وخيار عقلاني ... ]
+http://alkulify.blogspot.com/2015/10/blog-post_16.html?m=1
+
+2- مقال [ هل يفهمون المذهبية حقا ؟!  ]
+https://t.me/alkulife/9017
+
+3- صوتية [ علي بن أبي طالب والعقل السلفي  ]
+https://t.me/alkulife/9845
+
+4- مقال [ ياسر قاضي واختبار عمر بن الخطاب -رضي الله عنه- في العقيدة ]
+https://t.me/alkulife/10088
+
+5- مقال [ تحرير ابن كثير أن قول الصحابي حجة عند الشافعي ]
+http://alkulify.blogspot.com/2013/10/blog-post_6989.html?m=1
+
+6- تقويم المعاصرين ( الحلقة السادسة عشر )
+http://alkulify.blogspot.com/2015/05/blog-post_23.html?m=1

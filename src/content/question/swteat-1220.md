@@ -1,0 +1,15 @@
+---
+title: "مسألة رقم 1220"
+status: published
+published_at: 2025-05-08
+person: abu-jafar-al-khalifi
+topics: ["aam-other"]
+audio: swteat--swteat-1220
+---
+## السؤال
+
+ماحكم من يقول أخرجتني من رحمة الله لشخص يؤذيه أو أخرجتني من عفو الله
+
+## الجواب
+
+(انظر التسجيل الصوتي أعلاه)

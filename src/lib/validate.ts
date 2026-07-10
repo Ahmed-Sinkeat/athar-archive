@@ -20,7 +20,7 @@ type CollectionMap = Map<string, Map<string, { status: string; data: Record<stri
 // SourceType master sets per entity (mirrors config.ts enums)
 const SOURCE_TYPES: Record<string, readonly string[]> = {
   benefit: ["book", "article", "poem"],
-  audio: ["book", "poem", "article"],
+  audio: ["book", "poem", "article", "question"],
 };
 
 // Entities that require a person field

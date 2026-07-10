@@ -1,0 +1,24 @@
+---
+title: "[ أسئلة البوت @alkulifyQ_bot ]"
+status: draft
+published_at: 2021-07-10
+person: abu-jafar-al-khalifi
+topics: ["tahwid-al-ibada"]
+audio: swteat--asyla-al-bwt--v17
+---
+## السؤال
+
+[ أسئلة البوت @alkulifyQ_bot ]
+
+
+السؤال :
+ما رأيكم في التأصيلات التي ذكرها صاحب كتاب قواعد ومسائل في توحيد الإلهية ؟
+والتي رتبها على شكل قواعد ؟
+
+
+
+الجواب 👇
+
+## الجواب
+
+(انظر التسجيل الصوتي أعلاه)

@@ -1,0 +1,24 @@
+---
+title: "[ أسئلة البوت @alkulifyQ_bot ]"
+status: draft
+published_at: 2021-07-11
+person: abu-jafar-al-khalifi
+topics: ["aam-other"]
+audio: swteat--asyla-al-bwt--v29
+---
+## السؤال
+
+[ أسئلة البوت @alkulifyQ_bot ]
+
+
+السؤال :
+هل هناك آثار عن السلف في صحة الصلاة بالتباعد وماراي الشيخ في ذلك ؟
+
+[ عدة أسئلة وصلت في موضوع التباعد في الصلاة ]
+
+
+الجواب 👇
+
+## الجواب
+
+(انظر التسجيل الصوتي أعلاه)

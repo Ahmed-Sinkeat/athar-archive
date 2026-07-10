@@ -1,0 +1,19 @@
+---
+title: "مسألة رقم 1165"
+status: published
+published_at: 2024-06-14
+person: abu-jafar-al-khalifi
+topics: ["aam-other"]
+audio: swteat--swteat-1165
+---
+## السؤال
+
+.
+
+.
+
+سؤال حول صيام عرفة إذا وافق يوم سبت مع ورود حديث في النهي عن إفراد يوم السبت بالصيام
+
+## الجواب
+
+(انظر التسجيل الصوتي أعلاه)

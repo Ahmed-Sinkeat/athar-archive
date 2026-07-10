@@ -1,0 +1,15 @@
+---
+title: "مسألة رقم 1233"
+status: published
+published_at: 2026-06-22
+person: abu-jafar-al-khalifi
+topics: ["aam-other"]
+audio: swteat--swteat-1233
+---
+## السؤال
+
+هل ما ورد في لعن الحكم بن أبي العاص وأبنائه صحيح كما في الصحيحة للألباني ؟
+
+## الجواب
+
+(انظر التسجيل الصوتي أعلاه)

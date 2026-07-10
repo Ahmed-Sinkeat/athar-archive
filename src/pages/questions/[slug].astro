@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import Base from "../../layouts/Base.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import AudioPlayer from "../../components/AudioPlayer.astro";
 import { isPub, loadGraph, subjectTitlesFor } from "../../lib/site";
 import { readBody } from "../../lib/read-body";
 import { markdownMasailToHtml } from "../../lib/sanitize";
@@ -15,6 +16,7 @@ export async function getStaticPaths() {
   for (const entry of questions) {
     const body = await readBody(entry);
     const person = entry.data.person ? graph.getById("person", entry.data.person) : null;
+    const audioEntry = entry.data.audio ? graph.getById("audio", entry.data.audio) : null;
     // مسائل أخرى: same مجيب first, then the rest
     const others = [...questions]
       .filter((q) => q.id !== entry.id)
@@ -27,13 +29,24 @@ export async function getStaticPaths() {
       }));
     paths.push({
       params: { slug: entry.id },
-      props: { entry, body, personName: person?.data.title as string | undefined, personId: person?.id, subjects: subjectTitlesFor(entry.data.topics, graph), others },
+      props: {
+        entry, body, personName: person?.data.title as string | undefined, personId: person?.id,
+        subjects: subjectTitlesFor(entry.data.topics, graph), others,
+        audio: audioEntry
+          ? {
+              url: audioEntry.data.url as string,
+              format: audioEntry.data.format as "opus" | "mp3" | undefined,
+              duration: (audioEntry.data.duration as string | null) ?? null,
+              sizeBytes: (audioEntry.data.size_bytes as number | null) ?? null,
+            }
+          : null,
+      },
     });
   }
   return paths;
 }
 
-const { entry, body, personName, personId, subjects, others } = Astro.props;
+const { entry, body, personName, personId, subjects, others, audio } = Astro.props;
 const path = `/questions/${entry.id}`;
 const answerText = body.replace(/[#*_`>]/g, "").replace(/\s+/g, " ").trim().slice(0, 4000);
 const jsonLd = questionLd({
@@ -77,6 +90,8 @@ let answerTitle = "الجواب";
         </p>
       )}
     </header>
+
+    {audio && <AudioPlayer sources={[audio]} title={entry.data.title} subtitle={personName} />}
 
     {questionHtml && answerHtml ? (
       <>

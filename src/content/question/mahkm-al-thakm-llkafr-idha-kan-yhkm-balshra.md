@@ -1,0 +1,15 @@
+---
+title: "ماحكم التحاكم للكافر إذا كان يحكم بالشرع"
+status: draft
+published_at: 2020-02-13
+person: abu-jafar-al-khalifi
+topics: ["aam-other"]
+audio: swteat--mahkm-al-thakm-llkafr-idha-kan-yhkm-balshra
+---
+## السؤال
+
+ماحكم التحاكم للكافر إذا كان يحكم بالشرع؟
+
+## الجواب
+
+(انظر التسجيل الصوتي أعلاه)

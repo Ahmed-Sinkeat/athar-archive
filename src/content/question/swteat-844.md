@@ -1,0 +1,15 @@
+---
+title: "مسألة رقم 844"
+status: published
+published_at: 2021-10-11
+person: abu-jafar-al-khalifi
+topics: ["aam-other"]
+audio: swteat--swteat-844
+---
+## السؤال
+
+السلام عليكم ماهو حلول الحوادث ولماذا يقال أن شيخ الإسلام قال به بارك الله فيكم?
+
+## الجواب
+
+(انظر التسجيل الصوتي أعلاه)

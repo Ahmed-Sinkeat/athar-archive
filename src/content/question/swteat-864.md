@@ -1,0 +1,15 @@
+---
+title: "مسألة رقم 864"
+status: published
+published_at: 2021-10-18
+person: abu-jafar-al-khalifi
+topics: ["aam-other"]
+audio: swteat--swteat-864
+---
+## السؤال
+
+هل يجب في الحجاب الشرعي ان يكون الجزء بين الكتف والراس لا يمس الحجاب؟
+
+## الجواب
+
+(انظر التسجيل الصوتي أعلاه)

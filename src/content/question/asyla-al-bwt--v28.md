@@ -1,0 +1,24 @@
+---
+title: "[ أسئلة البوت @alkulifyQ_bot ]"
+status: draft
+published_at: 2021-07-11
+person: abu-jafar-al-khalifi
+topics: ["aam-other"]
+audio: swteat--asyla-al-bwt--v28
+---
+## السؤال
+
+[ أسئلة البوت @alkulifyQ_bot ]
+
+
+السؤال :
+لماذا الالباني هو الوحيد(وفقا لموقع الدرر السنية) الذي صحح حديث أشباه الرحال؟
+
+
+الجواب 👇
+
+المقال الذي أحال عليه الشيخ في الجواب  : https://t.me/alkulife/2021
+
+## الجواب
+
+(انظر التسجيل الصوتي أعلاه)

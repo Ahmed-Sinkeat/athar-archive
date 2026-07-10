@@ -1,0 +1,23 @@
+---
+title: "[ أسئلة البوت @alkulifyQ_bot ]"
+status: draft
+published_at: 2021-07-10
+person: abu-jafar-al-khalifi
+topics: ["aam-other"]
+audio: swteat--asyla-al-bwt--v13
+---
+## السؤال
+
+[ أسئلة البوت @alkulifyQ_bot ]
+
+
+السؤال :
+لو ذكر لنا أبو جعفر سبب الضعف في صناعة الحديث والعلل منذ عصور إلى عصرنا 
+وذكر لنا شيئا من آفات طلبة الحديث ..
+
+
+الجواب 👇
+
+## الجواب
+
+(انظر التسجيل الصوتي أعلاه)

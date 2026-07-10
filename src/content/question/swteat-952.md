@@ -1,0 +1,16 @@
+---
+title: "مسألة رقم 952"
+status: published
+published_at: 2021-11-02
+person: abu-jafar-al-khalifi
+topics: ["aam-other"]
+audio: swteat--swteat-952
+---
+## السؤال
+
+هل التأويل مانع من التكفير في السمعيات الامور الخبرية مثل الجهل أم لا 
+مع الأدلة بعد اذنكم
+
+## الجواب
+
+(انظر التسجيل الصوتي أعلاه)

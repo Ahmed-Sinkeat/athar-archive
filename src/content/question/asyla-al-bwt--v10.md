@@ -1,0 +1,24 @@
+---
+title: "[ أسئلة البوت @alkulifyQ_bot ]"
+status: draft
+published_at: 2021-07-09
+person: abu-jafar-al-khalifi
+topics: ["aam-other"]
+audio: swteat--asyla-al-bwt--v10
+---
+## السؤال
+
+[ أسئلة البوت @alkulifyQ_bot ]
+
+
+السؤال :
+هل الإقبال على كتب المتكلمين مذموم مطلقا لكل أحد؟ 
+أم أنه لابد من مجموعة من طلاب العلم يكونون ملمين بمنهج المتكلمين ؟
+
+
+الجواب 
+👇
+
+## الجواب
+
+(انظر التسجيل الصوتي أعلاه)

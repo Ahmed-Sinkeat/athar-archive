@@ -1,0 +1,15 @@
+---
+title: "مسألة رقم 1166"
+status: published
+published_at: 2024-07-20
+person: abu-jafar-al-khalifi
+topics: ["aam-other"]
+audio: swteat--swteat-1166
+---
+## السؤال
+
+سؤال عن عن منشور لدكتور يتكلم فيه عن كلام ابن تيمية في ازالة الوحشة بين الحنبلية والأشعرية
+
+## الجواب
+
+(انظر التسجيل الصوتي أعلاه)

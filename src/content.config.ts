@@ -160,6 +160,7 @@ const question = defineCollection({
     ...shared,
     person: slug.optional(),            // → Person (optional)
     topics: z.array(slug).min(1).max(5), // required for Questions
+    audio: slug.optional(),             // → Audio (optional)
   }),
 });
 
@@ -201,7 +202,7 @@ const audio = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/audio" }),
   schema: z.object({
     ...shared,
-    source_type: z.enum(["book", "poem", "article"]), // required
+    source_type: z.enum(["book", "poem", "article", "question"]), // required
     source_id: slug,                                             // required
     url: z.string().url(),
     format: z.enum(["opus", "mp3"]).default("opus"),

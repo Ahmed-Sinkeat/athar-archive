@@ -1,0 +1,15 @@
+---
+title: "مسألة رقم 1197"
+status: published
+published_at: 2025-01-11
+person: abu-jafar-al-khalifi
+topics: ["aam-other"]
+audio: swteat--swteat-1197
+---
+## السؤال
+
+هل الذين يشتركون في أرض يجب عليهم الزكاة من جميع الأرض أم كل واحد ونصيبه ؟
+
+## الجواب
+
+(انظر التسجيل الصوتي أعلاه)

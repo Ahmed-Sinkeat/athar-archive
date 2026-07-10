@@ -1,0 +1,17 @@
+---
+title: "مسألة رقم 790"
+status: published
+published_at: 2021-10-05
+person: abu-jafar-al-khalifi
+topics: ["aam-other"]
+---
+## السؤال
+
+بالنسبة لقضاء الصلاة الفائتة 
+نسيت صلاة الظهر وجاء وقت العصر كيف أصلي
+ هل أصلي صلاة العصر أولا أم صلاة الظهر قضاء
+
+## الجواب
+
+انظر مقال [ باب من ذكر صلاة عليه وهو في أخرى ]
+https://alkulify.blogspot.com/2013/10/blog-post_9144.html?m=1

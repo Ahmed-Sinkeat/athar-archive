@@ -1,0 +1,15 @@
+---
+title: "مسألة رقم 817"
+status: published
+published_at: 2021-10-09
+person: abu-jafar-al-khalifi
+topics: ["aam-other"]
+audio: swteat--swteat-817
+---
+## السؤال
+
+شيخنا الحبيب نريد ترشيحكم لشيخ يشرح فتح البارى ، وإن أمكن شيخ يشرح الكتب التسعة .
+
+## الجواب
+
+(انظر التسجيل الصوتي أعلاه)
