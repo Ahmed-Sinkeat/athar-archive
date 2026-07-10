@@ -20,9 +20,12 @@ export default defineConfig({
 
   trailingSlash: "never",
 
-  // Prefetch internal links on hover → instant navigation; pairs with the
-  // <ClientRouter /> view transitions in Base.astro for an SPA-like feel.
-  prefetch: { prefetchAll: true, defaultStrategy: "hover" },
+  // "hover" never fires on a touchscreen — most traffic here is mobile, so
+  // every tap was a cold, unprefetched navigation (the loader you keep seeing
+  // even on "static" pages). "tap" starts the fetch on touchstart/mousedown,
+  // ahead of the click that actually triggers navigation — same gesture,
+  // just gets the network request a head start.
+  prefetch: { prefetchAll: true, defaultStrategy: "tap" },
 
   build: {
     format: "directory",

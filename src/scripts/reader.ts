@@ -382,7 +382,10 @@ document.addEventListener("click", (e) => {
   const seal = document.querySelector<HTMLElement>("[data-page-loader]");
   if (!bar || !barFill || !seal) return;
 
-  const SHOW_DELAY = 150;
+  // 150ms was tight enough that ordinary mobile round-trip latency crossed
+  // it on almost every navigation, even cached/static ones — the loader felt
+  // like it was firing constantly instead of only for genuinely slow loads.
+  const SHOW_DELAY = 300;
   const MIN_VISIBLE = 420;
   let showT = 0, shown = false, shownAt = 0;
 
