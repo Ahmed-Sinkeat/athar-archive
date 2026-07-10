@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "لماذا الالباني هو الوحيد(وفقا لموقع الدرر السنية) الذي صحح حديث أشباه الرحال"
+status: published
 published_at: 2021-07-11
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

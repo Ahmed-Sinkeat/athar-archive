@@ -1,6 +1,6 @@
 ---
 title: "تتمة الرد على هراء الدكتور المغربي"
-status: draft
+status: published
 published_at: 2021-07-24
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

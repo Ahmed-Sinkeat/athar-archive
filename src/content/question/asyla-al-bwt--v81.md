@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "هل يجوز التصدق في يوم واحد عن شهر أو عن عدة أيام"
+status: published
 published_at: 2021-07-23
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

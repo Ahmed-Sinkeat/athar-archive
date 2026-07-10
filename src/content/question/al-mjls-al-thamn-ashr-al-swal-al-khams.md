@@ -1,6 +1,6 @@
 ---
-title: "[ المجلس الثامن عشر ] السؤال الخامس [ 5 ]"
-status: draft
+title: "سؤال عن لفظة الحدوث في قول الله تعالى { وَمَا يَأْتِيهِم مِّن ذِكْرٍ مِّنَ الرَّحْمَٰنِ مُ"
+status: published
 published_at: 2021-07-06
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

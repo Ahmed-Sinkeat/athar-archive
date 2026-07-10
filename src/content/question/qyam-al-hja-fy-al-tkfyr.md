@@ -1,6 +1,6 @@
 ---
 title: "قيام الحجة في التكفير"
-status: draft
+status: published
 published_at: 2020-05-23
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

@@ -1,6 +1,6 @@
 ---
-title: "السؤال الخامس :"
-status: draft
+title: "مارأي الشيخ في الجدل الدائر عن كتاب يوسف سمرين"
+status: published
 published_at: 2020-10-13
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

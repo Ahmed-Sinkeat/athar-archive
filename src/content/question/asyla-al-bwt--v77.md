@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "كثير من المعاصرين يهمّشون تفسير السلف، وكأنه غير موجود"
+status: published
 published_at: 2021-07-23
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

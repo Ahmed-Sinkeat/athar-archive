@@ -1,6 +1,6 @@
 ---
-title: "[ المجلس العشرون ]"
-status: draft
+title: "سؤال : ليبرالي أو أشعري ينتسب لهم ولا يعرف معتقداتهم ما حكمه"
+status: published
 published_at: 2021-07-08
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

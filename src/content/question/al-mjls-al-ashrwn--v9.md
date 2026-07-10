@@ -1,6 +1,6 @@
 ---
-title: "[ المجلس العشرون ]"
-status: draft
+title: "رجل ستيني تزوج من امرأة ستينية واتفقا على أن لا يرث أحدهما من الآخر ما حكم ذلك"
+status: published
 published_at: 2021-07-08
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

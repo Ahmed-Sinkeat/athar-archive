@@ -1,6 +1,6 @@
 ---
 title: "حكم العادة السرية"
-status: draft
+status: published
 published_at: 2020-05-07
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

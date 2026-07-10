@@ -1,6 +1,6 @@
 ---
-title: "السؤال الرابع:"
-status: draft
+title: "كيف تكون قراءة كتب السلف"
+status: published
 published_at: 2020-10-13
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

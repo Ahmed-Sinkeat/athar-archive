@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال الأم لطفلين مصابين بالتوحد"
-status: draft
+status: published
 published_at: 2021-09-11
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

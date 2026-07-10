@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "بعض مسائل الفقه تعتمد على \"العُرف\" السائد بين الناس، لكن العُرف يتغير بتغير الزمان والأحوا"
+status: published
 published_at: 2021-08-10
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

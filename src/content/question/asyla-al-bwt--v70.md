@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "نحتاج تحرير النزاع في وضع اليدين بعد الرفع من الركوع"
+status: published
 published_at: 2021-07-23
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

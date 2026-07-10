@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "التوفيق بين بيع ما لا تملك وبيع السلم"
+status: published
 published_at: 2021-07-23
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

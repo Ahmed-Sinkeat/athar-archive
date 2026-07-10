@@ -1,6 +1,6 @@
 ---
 title: "هل ترى لطالب العلم دراسة المنطق"
-status: draft
+status: published
 published_at: 2020-04-28
 person: abu-jafar-al-khalifi
 topics: ["adab-talab-al-ilm"]

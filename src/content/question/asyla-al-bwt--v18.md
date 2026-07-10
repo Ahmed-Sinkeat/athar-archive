@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "ماحكم من قال أن لعلي رضي الله عنه منزلة نبي ولكنه ليس بنبي مستشهداً بقوله صلى الله عليه وس"
+status: published
 published_at: 2021-07-10
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

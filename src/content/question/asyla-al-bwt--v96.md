@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "في قوله تعالى { ولاجناح عليكم فيما عرضتم به من خطبه النساء او اكننتم في انفسكم علم الله ان"
+status: published
 published_at: 2021-07-24
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

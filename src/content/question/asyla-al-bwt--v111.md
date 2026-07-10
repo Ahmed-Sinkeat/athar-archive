@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "١-ثبت ان اليهود كفروا  كفرا اكبر بتغيير حكم  الرجم  لانهم غيروا حكم الله ونسبوه الى الله ف"
+status: published
 published_at: 2021-08-05
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "شيخنا، أرغب بالدعاء بأن يؤتيني الله حفظ إمام أو خيرا منه، أو فهم إمام أو خيرا منه، لكن فيّ"
+status: published
 published_at: 2021-07-13
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

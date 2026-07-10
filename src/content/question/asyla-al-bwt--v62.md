@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "كل أسماء الله كاملة وإذا كان اسمين مقترنين يكون كمال فوق كمال فممكن شرح لكمال قوله تعالى {"
+status: published
 published_at: 2021-07-18
 person: abu-jafar-al-khalifi
 topics: ["al-asma-was-sifat"]

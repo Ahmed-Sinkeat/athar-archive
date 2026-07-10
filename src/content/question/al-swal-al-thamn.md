@@ -1,6 +1,6 @@
 ---
-title: "السؤال الثامن:"
-status: draft
+title: "مالفرق بين الأشاعرة الأوائل والأشاعرة المتأخرين"
+status: published
 published_at: 2020-06-04
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

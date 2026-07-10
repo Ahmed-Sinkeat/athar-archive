@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "لو سمحت شيخي,  ما هو حكم هجر أصدقاء الانترنت الضالين مثل المسلمين الكيوت والنسوية ?"
+status: published
 published_at: 2021-07-18
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "هناك الدكتور [ ناجي لمين ]  في المغرب يحاول ربط مدرسة المنار بالسلفية المعاصرة كما يقولون"
+status: published
 published_at: 2021-07-24
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

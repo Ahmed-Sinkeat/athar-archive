@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "إذا كان خير متاع الدنيا للرجل هو المرأة ، فما خير متاع الدنيا للمرأة"
+status: published
 published_at: 2021-08-07
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

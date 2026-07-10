@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال طلب العلم في سن ٢٧"
-status: draft
+status: published
 published_at: 2021-09-19
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

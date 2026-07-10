@@ -1,6 +1,6 @@
 ---
-title: "[ المجلس الثامن عشر ] السؤال الرابع [ 4 ]"
-status: draft
+title: "ذكرت مرة أن اسم الغزالي [ محمد الغزالي السقا ] محوري التأثير في طريقة الحركيين فكيف ذلك"
+status: published
 published_at: 2021-07-06
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

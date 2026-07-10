@@ -1,6 +1,6 @@
 ---
 title: "لماذا عقيقة البنت شاة والولد شاتين"
-status: draft
+status: published
 published_at: 2020-04-04
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

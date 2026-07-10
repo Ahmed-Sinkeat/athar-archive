@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "أسئلة من المسلمين في الغرب:"
+status: published
 published_at: 2021-07-23
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

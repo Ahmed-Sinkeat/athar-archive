@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "زانى حكم عليه القاضى بالجلد لأنه ليس متزوج"
+status: published
 published_at: 2021-07-10
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

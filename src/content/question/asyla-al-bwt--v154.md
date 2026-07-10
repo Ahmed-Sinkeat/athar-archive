@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "إذا كانت الجهة التي تقيم الجمع و العيد و تعين أئمة المساجد في البلد ماتريدية"
+status: published
 published_at: 2021-08-17
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

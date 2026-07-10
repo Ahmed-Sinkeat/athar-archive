@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "سؤالي وفقكم الله عن حديث السبعة الذين يظلهم الله تحت ظل عرشه، هل يفهم من عمل مثل العفة أو"
+status: published
 published_at: 2021-07-15
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

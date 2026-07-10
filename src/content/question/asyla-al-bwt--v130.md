@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "ماحكم الدعايات الإعلانية التي يتم تعديلها عن طريق برامج التصميم (للصور والفيديوهات)وتغيير"
+status: published
 published_at: 2021-08-07
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

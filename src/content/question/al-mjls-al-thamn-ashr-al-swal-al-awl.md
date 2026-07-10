@@ -1,6 +1,6 @@
 ---
-title: "[ المجلس الثامن عشر ] السؤال الأول [ 1 ]"
-status: draft
+title: "قال الإمام أبو داود في رسالته لأهل مكة : ما سكت عنه فهو صالح هل لك أن تشرح لنا هذه العبارة"
+status: published
 published_at: 2021-07-06
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

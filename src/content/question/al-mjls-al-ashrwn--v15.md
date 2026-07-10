@@ -1,6 +1,6 @@
 ---
-title: "[ المجلس العشرون ]"
-status: draft
+title: "سؤال عن حكم طلب الشفاعة من النبي صلى الله عليه وسلم"
+status: published
 published_at: 2021-07-08
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

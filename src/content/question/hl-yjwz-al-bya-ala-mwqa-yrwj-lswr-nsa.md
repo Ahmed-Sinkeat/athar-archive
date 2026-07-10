@@ -1,6 +1,6 @@
 ---
 title: "هل يجوز البيع على موقع يروج لصور نساء"
-status: draft
+status: published
 published_at: 2020-04-03
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

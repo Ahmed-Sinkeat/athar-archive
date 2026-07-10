@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "ممكن توضيح عن كل ما بتعلق بالارض والشمس والقمر والسماء"
+status: published
 published_at: 2021-07-08
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

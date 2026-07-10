@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "هل يجب رد المظالم المتعلقة بالعباد بعد التوبة"
+status: published
 published_at: 2021-07-23
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

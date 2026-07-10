@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "عندنا في البلد عند زيارة الأرحام تأتي المرأة من بنات العم أو الخال  كاشفة عن وجهها وتسلم"
+status: published
 published_at: 2021-07-23
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

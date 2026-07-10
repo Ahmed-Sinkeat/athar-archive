@@ -1,6 +1,6 @@
 ---
 title: "ماهو علاج النظر المحرم"
-status: draft
+status: published
 published_at: 2020-02-22
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

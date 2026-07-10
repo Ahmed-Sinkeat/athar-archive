@@ -1,6 +1,6 @@
 ---
 title: "كيف نصل إلى مرحلة التدبر والتلذذ أثناء قراءة القرآن"
-status: draft
+status: published
 published_at: 2020-11-01
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

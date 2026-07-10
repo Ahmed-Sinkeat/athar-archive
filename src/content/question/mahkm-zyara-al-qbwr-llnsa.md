@@ -1,6 +1,6 @@
 ---
 title: "ماحكم زيارة القبور للنساء"
-status: draft
+status: published
 published_at: 2020-03-02
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

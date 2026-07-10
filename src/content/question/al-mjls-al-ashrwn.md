@@ -1,6 +1,6 @@
 ---
-title: "[ المجلس العشرون ]"
-status: draft
+title: "- السؤال :  نتمنى من الشيخ يوشح لنا قضية التكفير باللوازم"
+status: published
 published_at: 2021-07-08
 person: abu-jafar-al-khalifi
 topics: ["al-asma-was-sifat"]

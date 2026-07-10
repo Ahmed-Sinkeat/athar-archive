@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "ما رأيكم في التأصيلات التي ذكرها صاحب كتاب قواعد ومسائل في توحيد الإلهية"
+status: published
 published_at: 2021-07-10
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

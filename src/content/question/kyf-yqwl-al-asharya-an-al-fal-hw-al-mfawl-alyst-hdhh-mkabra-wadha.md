@@ -1,6 +1,6 @@
 ---
 title: "كيف يقول الأشعرية أن الفعل هو المفعول أليست هذه مكابرة واضحة"
-status: draft
+status: published
 published_at: 2020-03-02
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

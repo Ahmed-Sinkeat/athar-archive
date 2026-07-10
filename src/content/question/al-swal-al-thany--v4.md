@@ -1,6 +1,6 @@
 ---
-title: "السؤال الثاني:"
-status: draft
+title: "غرد أحدهم بتغريدة يقول فيها:"
+status: published
 published_at: 2020-07-09
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

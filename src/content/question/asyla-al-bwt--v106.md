@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "لاحظت  في شروحاتكم الصوتية عدم وجود أي شرح لكتب شيخ الإسلام ابن تيمية"
+status: published
 published_at: 2021-07-27
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

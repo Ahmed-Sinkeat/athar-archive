@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "لو يعيد الشيخ تأصيل مسألة الخلاف في تكفير من يحكم بغير ما أنزل الله"
+status: published
 published_at: 2021-07-09
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

@@ -1,6 +1,6 @@
 ---
 title: "تفسير قوله تعالى: ( ولقد همت به وهم بها لولا أن رأى برهان ربه )"
-status: draft
+status: published
 published_at: 2020-02-16
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

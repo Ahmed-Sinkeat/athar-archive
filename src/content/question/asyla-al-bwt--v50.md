@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "ما رايك بتخريج الأحاديث لدى الحويني"
+status: published
 published_at: 2021-07-15
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

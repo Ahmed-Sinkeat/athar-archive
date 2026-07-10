@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "هل إسحق أفضل أم إسماعيل ( عليهما السلام )"
+status: published
 published_at: 2021-07-27
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

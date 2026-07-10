@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "ما حكم الربح من اعلانات يوتيوب مع ما فيها من المنكرات التي تُعرض بدون إذن صاحب القناة"
+status: published
 published_at: 2021-07-13
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

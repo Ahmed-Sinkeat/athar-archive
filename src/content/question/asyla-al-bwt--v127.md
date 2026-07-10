@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "أقدم مخطوط للقرآن الكريم والذي كتبه أحد الصحابة رضي الله عنهم موجود الآن في إنجلترا"
+status: published
 published_at: 2021-08-07
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

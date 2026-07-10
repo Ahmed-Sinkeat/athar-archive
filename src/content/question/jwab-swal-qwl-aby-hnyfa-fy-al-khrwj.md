@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال قول ابي حنيفة في الخروج"
-status: draft
+status: published
 published_at: 2021-08-18
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

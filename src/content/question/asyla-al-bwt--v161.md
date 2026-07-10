@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "تنبيه : للاخوة جميعا بارك الله فيكم وشكر الله لكم حرصكم"
+status: published
 published_at: 2021-08-25
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

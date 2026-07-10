@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "ما سبب الهجمة مؤخرا على ابن القيم"
+status: published
 published_at: 2021-08-07
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

@@ -1,6 +1,6 @@
 ---
 title: "التعامل مع الآثار التي تقابل النص"
-status: draft
+status: published
 published_at: 2020-02-16
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

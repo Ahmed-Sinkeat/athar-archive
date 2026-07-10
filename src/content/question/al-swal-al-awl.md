@@ -1,6 +1,6 @@
 ---
-title: "السؤال الأول:"
-status: draft
+title: "هل وردت آثاراً صحيحة عن الصحابة في المسح على الجوربين"
+status: published
 published_at: 2020-02-10
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

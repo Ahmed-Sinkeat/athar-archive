@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "ما توجيه النقل عن شيخ الإسلام ابن تيمية حيث أنه ينتشر بين كثير من المنتسبين لطلب العلم وال"
+status: published
 published_at: 2021-07-29
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

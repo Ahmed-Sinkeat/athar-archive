@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "ما صحّة القاعدة التي تقول بإن  [ الحديث الضعيف إذا انطبق على الواقع أصبح صحيحاً ]"
+status: published
 published_at: 2021-07-10
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

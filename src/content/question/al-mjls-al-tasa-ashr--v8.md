@@ -1,6 +1,6 @@
 ---
-title: "[ المجلس التاسع عشر ]"
-status: draft
+title: "سمعت كلاماً لأحد كبار علماء مذهبه يقول عن الإمام أحمد أنه لم يكن غزير فقه"
+status: published
 published_at: 2021-07-07
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

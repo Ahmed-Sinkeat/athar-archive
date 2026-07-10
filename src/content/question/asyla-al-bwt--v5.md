@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "ما رأيكم بمقولة الشيخ محمد بن عبدالوهاب بأن أغلب مافي الاقناع والمنتهى مخالفان لمذهب الإما"
+status: published
 published_at: 2021-07-09
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

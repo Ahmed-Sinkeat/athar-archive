@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "ما الكتب والدراسات المنصوح بها في مجال علم المقاصد الشرعية"
+status: published
 published_at: 2021-07-12
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

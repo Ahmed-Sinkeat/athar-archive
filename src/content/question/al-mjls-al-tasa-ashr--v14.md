@@ -1,6 +1,6 @@
 ---
-title: "[ المجلس التاسع عشر ]"
-status: draft
+title: "ماهي مصادر السنة النبوية وطريقة إثباتها"
+status: published
 published_at: 2021-07-07
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

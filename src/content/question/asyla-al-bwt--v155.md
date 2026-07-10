@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "والدتى تصلي ولكن تخرج إلى الشرفة وتضع قماشة خفيفة لا تغطي الرأس كاملة و يديها مكشوفتان من"
+status: published
 published_at: 2021-08-17
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

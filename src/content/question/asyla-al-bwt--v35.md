@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "هل تفسير الطبري يغني عن بقية تفاسير السلف"
+status: published
 published_at: 2021-07-12
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

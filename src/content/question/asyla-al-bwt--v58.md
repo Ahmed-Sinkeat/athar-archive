@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "كيف نفرق بين شخص وقع في البدعة وشخص خالف السنة"
+status: published
 published_at: 2021-07-18
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

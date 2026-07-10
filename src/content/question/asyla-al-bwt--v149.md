@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "ما حكم الرجل الذي يتعمد لفت أنظار الفتيات(يتميلح) بكشف بعض أجزاء من جسده، أو بطريقة كلامه،"
+status: published
 published_at: 2021-08-16
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

@@ -1,6 +1,6 @@
 ---
 title: "هل يكفر من قاتل مع الكفار ضد المسلمين لغرض دنيوي"
-status: draft
+status: published
 published_at: 2020-10-27
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

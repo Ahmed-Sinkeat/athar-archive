@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "حكم الشراء والبيع والتجارة في البيتكوين والعملات الالكترونية"
+status: published
 published_at: 2021-07-15
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

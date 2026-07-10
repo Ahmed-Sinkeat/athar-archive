@@ -1,6 +1,6 @@
 ---
-title: "السؤال السابع :"
-status: draft
+title: "متى تشد الأحاديث الضعيفة بعضها، ونريد أمثلة للحسن لغيره عند المتقدمين"
+status: published
 published_at: 2020-06-19
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

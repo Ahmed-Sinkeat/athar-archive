@@ -1,6 +1,6 @@
 ---
-title: "[ المجلس التاسع عشر ]"
-status: draft
+title: "ما هو منهج المتقدمين في زيادة الثقات"
+status: published
 published_at: 2021-07-07
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

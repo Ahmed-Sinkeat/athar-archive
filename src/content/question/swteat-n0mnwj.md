@@ -1,6 +1,6 @@
 ---
-title: "https://t"
-status: draft
+title: "ماحكم الDropshopping"
+status: published
 published_at: 2021-07-08
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

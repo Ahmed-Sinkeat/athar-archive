@@ -1,6 +1,6 @@
 ---
-title: "[ المجلس العشرون ]"
-status: draft
+title: "هل البدعة تدخل في العادات"
+status: published
 published_at: 2021-07-08
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

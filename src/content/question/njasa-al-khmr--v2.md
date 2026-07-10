@@ -1,6 +1,6 @@
 ---
 title: "نجاسة الخمر"
-status: draft
+status: published
 published_at: 2020-04-01
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

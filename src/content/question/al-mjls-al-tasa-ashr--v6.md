@@ -1,6 +1,6 @@
 ---
-title: "[ المجلس التاسع عشر ]"
-status: draft
+title: "قول الأئمة عن مالك أنه لا يروي إلا عن ثقة هل هذا على إطلاقه"
+status: published
 published_at: 2021-07-07
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

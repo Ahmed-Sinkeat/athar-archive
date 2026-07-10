@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "قرأت كلاما (لا أذكر أين أو كان بحديث أم لا)أن الشخص اذا تزوج وكانت نيته انجاب من يعبد الله"
+status: published
 published_at: 2021-07-13
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

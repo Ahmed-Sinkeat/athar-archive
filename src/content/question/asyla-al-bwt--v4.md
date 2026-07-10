@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "مغترب في المانيا يباع اللحم في هذه البلاد و احيانا ما يقرن كلمة  (حلال ) هذا بالنسبة للحوم"
+status: published
 published_at: 2021-07-09
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

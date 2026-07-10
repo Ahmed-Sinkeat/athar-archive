@@ -1,6 +1,6 @@
 ---
 title: "هل تتفق مع ماذهب إليه وائل حلاق في نظرية الدولة المستحيلة من حيث القول باستحالة أسلمة الدو"
-status: draft
+status: published
 published_at: 2020-04-01
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

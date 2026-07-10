@@ -1,6 +1,6 @@
 ---
-title: "[ المجلس التاسع عشر ]"
-status: draft
+title: "ألتوسل بالأعمال الصالحة هل يذهب أجر العمل الصالح بحيث يكون عجلت له حسنته أو هل ينقصه"
+status: published
 published_at: 2021-07-07
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

@@ -1,6 +1,6 @@
 ---
-title: "السؤال الثالث:"
-status: draft
+title: "ماحكم الزواج وتكوين أسرة مسلمة في بلاد الغرب"
+status: published
 published_at: 2020-08-19
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

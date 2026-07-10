@@ -1,6 +1,6 @@
 ---
 title: "مسألة التسليمة الواحدة"
-status: draft
+status: published
 published_at: 2020-03-17
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

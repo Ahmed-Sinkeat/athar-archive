@@ -1,6 +1,6 @@
 ---
-title: "[ المجلس العشرون ]"
-status: draft
+title: "هل الله عزوجل يضل ويغوي"
+status: published
 published_at: 2021-07-08
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

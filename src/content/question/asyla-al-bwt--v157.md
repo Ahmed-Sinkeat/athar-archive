@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "هل المقصود ب اية (إنكم إذا مثلهم ) الكفر مباشرة لمن قعد دون انكار حتى يخضوا في حديث غيره"
+status: published
 published_at: 2021-08-18
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

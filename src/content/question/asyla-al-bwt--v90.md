@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "ما رأيك في هذا الكلام👇"
+status: published
 published_at: 2021-07-24
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "انا عبر الرؤى ، و معروف ان طرق التعبير تكون بالتصحيف اللفظي ، أو الأحاديث ، أو الأمثلة و ا"
+status: published
 published_at: 2021-07-09
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

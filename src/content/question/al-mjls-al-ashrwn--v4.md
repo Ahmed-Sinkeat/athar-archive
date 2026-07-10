@@ -1,6 +1,6 @@
 ---
-title: "[ المجلس العشرون ]"
-status: draft
+title: "هل يشرع ويستجاب الدعاء بالرزق مع ترك السعي له لحاجة طلب العلم وهل بالإمكان الجمع بينهما"
+status: published
 published_at: 2021-07-08
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

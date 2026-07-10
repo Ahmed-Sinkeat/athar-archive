@@ -1,6 +1,6 @@
 ---
-title: "[ المجلس الثامن عشر ] السؤال العاشر [ 10 ]"
-status: draft
+title: "جلسة تخفيف بذكر بعض الأشعار العامية واللطائف"
+status: published
 published_at: 2021-07-06
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

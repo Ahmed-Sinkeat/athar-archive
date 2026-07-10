@@ -1,6 +1,6 @@
 ---
 title: "هل الخلاف بين الأشاعرة والماتريدية في الأصول كثير"
-status: draft
+status: published
 published_at: 2020-05-07
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

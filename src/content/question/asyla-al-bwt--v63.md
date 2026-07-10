@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "قرأنا في بعض الكتب أن المرء يصل بذنوبه وعصيانه لله سبحانه وتعالى إلى مرحلةٍ لا تُرجى بعدها"
+status: published
 published_at: 2021-07-18
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

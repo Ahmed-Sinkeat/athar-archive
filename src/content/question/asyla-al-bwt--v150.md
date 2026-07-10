@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "شيخ ما قولكم فيمن يزعم ان الاخذ بظواهر النصوص يناقض بعضه"
+status: published
 published_at: 2021-08-17
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

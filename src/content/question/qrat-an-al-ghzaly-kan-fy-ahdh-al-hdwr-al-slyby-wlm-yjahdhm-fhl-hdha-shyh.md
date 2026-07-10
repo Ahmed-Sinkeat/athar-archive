@@ -1,6 +1,6 @@
 ---
 title: "قرأت أن الغزالي كان في عهده الحضور الصليبي ولم يجاهدهم فهل هذا صحيح"
-status: draft
+status: published
 published_at: 2020-04-28
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

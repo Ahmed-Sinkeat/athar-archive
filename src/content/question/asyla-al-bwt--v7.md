@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "ما هو العلاج من الشذوذ الجنسي، الذي ارتبط بالذاكرة من الصغر"
+status: published
 published_at: 2021-07-09
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

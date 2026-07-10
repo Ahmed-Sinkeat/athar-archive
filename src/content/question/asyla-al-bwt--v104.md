@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "لعبت لعبة الكترونية ، وفي احدى مراحل اللعبه كان يجب عليك أن تختار جماعه أو  ما شابه ذلك"
+status: published
 published_at: 2021-07-27
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

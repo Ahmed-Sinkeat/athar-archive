@@ -1,6 +1,6 @@
 ---
 title: "الحد الذي تبرأ به الذمة من الإنكار على الكفار"
-status: draft
+status: published
 published_at: 2020-04-03
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

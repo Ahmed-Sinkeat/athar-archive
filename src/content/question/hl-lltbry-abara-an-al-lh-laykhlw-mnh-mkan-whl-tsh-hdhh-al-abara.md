@@ -1,6 +1,6 @@
 ---
 title: "هل للطبري عبارة أن الله لايخلو منه مكان وهل تصح هذه العبارة"
-status: draft
+status: published
 published_at: 2020-05-07
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

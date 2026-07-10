@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "كيف نميز بين التحايل على الشرع وبين المباح"
+status: published
 published_at: 2021-07-14
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

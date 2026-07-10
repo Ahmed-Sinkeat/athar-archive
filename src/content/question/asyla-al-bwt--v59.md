@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "إذا كانت النية مجرد القصد"
+status: published
 published_at: 2021-07-18
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

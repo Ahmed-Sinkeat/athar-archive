@@ -1,6 +1,6 @@
 ---
-title: "السؤال الثاني:"
-status: draft
+title: "مالحل لمن يقرأ كتاباً فينسى معلوماته"
+status: published
 published_at: 2020-06-14
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

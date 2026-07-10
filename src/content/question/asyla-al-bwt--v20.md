@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "هل صحيح ما يثيره الأشعرية حول كتاب السنة للإمام عبد الله بن الإمام أحمد"
+status: published
 published_at: 2021-07-10
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "سؤالي عن كيفية الشعور بالندم من التوبة"
+status: published
 published_at: 2021-07-15
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

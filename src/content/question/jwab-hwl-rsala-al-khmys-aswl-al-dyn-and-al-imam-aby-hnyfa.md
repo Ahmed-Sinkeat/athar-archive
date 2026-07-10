@@ -1,6 +1,6 @@
 ---
 title: "جواب حول رسالة الخميس أصول الدين عند الإمام أبي حنيفة"
-status: draft
+status: published
 published_at: 2021-08-24
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

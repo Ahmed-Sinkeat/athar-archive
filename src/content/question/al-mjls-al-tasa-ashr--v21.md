@@ -1,6 +1,6 @@
 ---
-title: "[ المجلس التاسع عشر ]"
-status: draft
+title: "استطراد حول المقال عن أسانيد التفسير ونقاش مع تلميذ المردود عليه 👇"
+status: published
 published_at: 2021-07-07
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

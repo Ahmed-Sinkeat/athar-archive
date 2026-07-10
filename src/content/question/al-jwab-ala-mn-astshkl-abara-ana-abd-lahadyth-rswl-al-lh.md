@@ -1,6 +1,6 @@
 ---
 title: "الجواب على من استشكل عبارة أنا عبد لأحاديث رسول الله ﷺ"
-status: draft
+status: published
 published_at: 2020-03-17
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

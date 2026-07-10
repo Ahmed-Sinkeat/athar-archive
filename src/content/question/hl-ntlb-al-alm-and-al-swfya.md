@@ -1,6 +1,6 @@
 ---
 title: "هل نطلب العلم عند الصوفية"
-status: draft
+status: published
 published_at: 2020-03-02
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

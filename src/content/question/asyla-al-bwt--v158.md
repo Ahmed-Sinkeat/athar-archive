@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "عذراً على طول السؤال؛"
+status: published
 published_at: 2021-08-18
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

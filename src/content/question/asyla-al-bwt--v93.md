@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "ابن آجروم / ابن مالك / ابن هشام / الحريري / البيقوني / العراقي / ابن الجزري / الشاطبي ( صا"
+status: published
 published_at: 2021-07-24
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

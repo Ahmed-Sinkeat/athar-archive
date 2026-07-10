@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "السلام عليكم ورحمة الله وبركاته احسن الله إليكم"
+status: published
 published_at: 2021-07-13
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

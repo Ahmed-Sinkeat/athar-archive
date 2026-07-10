@@ -1,6 +1,6 @@
 ---
 title: "مارأيك في صفحة قطوف الآسك"
-status: draft
+status: published
 published_at: 2020-04-02
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

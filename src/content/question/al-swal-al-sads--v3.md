@@ -1,6 +1,6 @@
 ---
-title: "السؤال السادس :"
-status: draft
+title: "هل يجوز تقليد أصوات الحيوانات"
+status: published
 published_at: 2020-08-20
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

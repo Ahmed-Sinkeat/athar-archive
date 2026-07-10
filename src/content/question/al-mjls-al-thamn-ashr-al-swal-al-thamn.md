@@ -1,6 +1,6 @@
 ---
-title: "[ المجلس الثامن عشر ] السؤال الثامن [ 8 ]"
-status: draft
+title: "سؤال عن كتاب الأشاعرة لخالد الغامدي"
+status: published
 published_at: 2021-07-06
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

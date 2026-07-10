@@ -1,6 +1,6 @@
 ---
 title: "مالفرق بين منهج المتقدمين والمتأخرين في الحديث"
-status: draft
+status: published
 published_at: 2020-02-13
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "#رقم_[703]  :"
+status: published
 published_at: 2021-09-11
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

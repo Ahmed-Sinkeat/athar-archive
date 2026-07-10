@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "ما رأيكم في حديث أن الله عز و جل استلقى و وضع رجلا على رجل"
+status: published
 published_at: 2021-07-12
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

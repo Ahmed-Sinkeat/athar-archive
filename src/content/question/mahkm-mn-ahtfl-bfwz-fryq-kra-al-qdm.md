@@ -1,6 +1,6 @@
 ---
 title: "ماحكم من احتفل بفوز فريق كرة القدم"
-status: draft
+status: published
 published_at: 2021-04-04
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

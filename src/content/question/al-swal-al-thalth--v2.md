@@ -1,6 +1,6 @@
 ---
-title: "السؤال الثالث:"
-status: draft
+title: "ماحكم أهل الفترة"
+status: published
 published_at: 2020-06-15
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

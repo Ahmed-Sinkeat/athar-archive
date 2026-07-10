@@ -1,6 +1,6 @@
 ---
 title: "مايقول الشيخ في جمع الجديع في كتابه تحرير علوم الحديث"
-status: draft
+status: published
 published_at: 2020-04-28
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

@@ -1,6 +1,6 @@
 ---
 title: "لماذا نبدع أبا ثور ولانبدع ابن خزيمة"
-status: draft
+status: published
 published_at: 2021-04-02
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

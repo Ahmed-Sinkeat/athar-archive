@@ -1,6 +1,6 @@
 ---
-title: "السؤال الرابع :"
-status: draft
+title: "ماهو الرد على شبهة من قال بطهارة الدم والرد على استدلالهم بأثر عمر وابن مسعود رضي الله عنه"
+status: published
 published_at: 2020-06-19
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

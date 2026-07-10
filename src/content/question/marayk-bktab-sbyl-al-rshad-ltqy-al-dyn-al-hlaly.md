@@ -1,6 +1,6 @@
 ---
 title: "مارأيك بكتاب سبيل الرشاد لتقي الدين الهلالي"
-status: draft
+status: published
 published_at: 2020-11-01
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

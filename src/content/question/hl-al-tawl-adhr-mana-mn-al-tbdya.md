@@ -1,6 +1,6 @@
 ---
 title: "هل التأول عذر مانع من التبديع"
-status: draft
+status: published
 published_at: 2020-11-01
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

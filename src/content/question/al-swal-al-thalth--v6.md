@@ -1,6 +1,6 @@
 ---
-title: "السؤال الثالث :"
-status: draft
+title: "مالحكمة من وجود ساعة استجابة في يوم الجمعة"
+status: published
 published_at: 2020-10-13
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

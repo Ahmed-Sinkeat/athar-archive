@@ -1,6 +1,6 @@
 ---
-title: "[ المجلس الثامن عشر ] السؤال التاسع [ 9 ]"
-status: draft
+title: "سؤال عن لفظ الأبعاد والحد"
+status: published
 published_at: 2021-07-06
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

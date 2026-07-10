@@ -1,6 +1,6 @@
 ---
-title: "[ المجلس التاسع عشر ]"
-status: draft
+title: "ما حكم العمل عند شخص يقول أن الروافض من يكفر أبا بكر وعمر ويطعن بعرض أم المؤمنين عائشة ليس"
+status: published
 published_at: 2021-07-07
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

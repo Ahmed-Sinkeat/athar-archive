@@ -1,6 +1,6 @@
 ---
 title: "تتمة جواب عقيدة الشوكاني"
-status: draft
+status: published
 published_at: 2021-08-16
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

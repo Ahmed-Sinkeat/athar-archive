@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "السلام عليكم يا شيخ انا شاب في 22 من عمري قهرتني الذنوب حتى أنني وصلت لمرحلة لا أحس بشيء ف"
+status: published
 published_at: 2021-08-10
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

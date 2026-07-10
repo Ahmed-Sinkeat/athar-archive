@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "فيه كتب شرعية مكتوب على غلافها(طبعت على نفقة فلان- يوزع مجانا- طباعة وزارة الشؤون الاسلامي"
+status: published
 published_at: 2021-07-27
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

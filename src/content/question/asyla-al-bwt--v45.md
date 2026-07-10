@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "بأي كتاب في التفسير و أصول التفسير تنصح المبتدئين في هذا الفن"
+status: published
 published_at: 2021-07-15
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "أريد أن أبدا الاستماع لشرح صوتي لسنن الترمذي ما هو الشرح الذي تنصح به"
+status: published
 published_at: 2021-08-05
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

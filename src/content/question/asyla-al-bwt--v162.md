@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "يستدل بعضهم برواية في مسائل عبد الله لأبيه الإمام أحمد :"
+status: published
 published_at: 2021-09-09
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

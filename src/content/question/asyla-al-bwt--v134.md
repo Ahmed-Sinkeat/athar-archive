@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "ما هو الكتاب العقدي الجامع الذي تقرأه وتكرره إلى أن تموت والذي تنصح به"
+status: published
 published_at: 2021-08-10
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

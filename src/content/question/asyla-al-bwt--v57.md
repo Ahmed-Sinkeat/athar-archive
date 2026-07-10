@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "عندنا هنا في الجزائر غالب مصليات الجنائز داخل سور المقبرة"
+status: published
 published_at: 2021-07-18
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

@@ -1,6 +1,6 @@
 ---
 title: "الفرق بين متقدمي المالكية ومتأخريهم"
-status: draft
+status: published
 published_at: 2020-04-03
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

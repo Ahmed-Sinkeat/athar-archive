@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "متى يستخدم المسلم التقية وأين مواضع مشروعيتها وهل لها أحكام نريد كلام  واسع عن التقية بارك"
+status: published
 published_at: 2021-07-15
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

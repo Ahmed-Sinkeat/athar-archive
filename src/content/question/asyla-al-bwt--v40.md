@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "ما قولكم ب [ عبد الرحمن الحجي  ] كنت قد استمعت له فوجدته يرد على كثيرين من أهل البدع"
+status: published
 published_at: 2021-07-13
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

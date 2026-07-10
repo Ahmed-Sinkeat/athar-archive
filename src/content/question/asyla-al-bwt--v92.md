@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "نريد ردا على دعوى أن الله يمكن أن يخلف وعيده للكفار بدخول النار بدعوى أن من الخصال الحميدة"
+status: published
 published_at: 2021-07-24
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

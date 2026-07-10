@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "غالباً ما يحتج الليبراليين وشرذمة النسويات ومن شابههم على التعدد ويقولون ان التعدد حكم خاص"
+status: published
 published_at: 2021-08-23
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

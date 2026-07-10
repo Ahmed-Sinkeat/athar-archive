@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال نسخ اللفظ وبقاء الحكم"
-status: draft
+status: published
 published_at: 2021-08-17
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "أن رَجُلًا سَأَلَ عَلِيًّا رَضِيَ الله عَنْهُ عَنِ الْغُسْلِ"
+status: published
 published_at: 2021-08-17
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

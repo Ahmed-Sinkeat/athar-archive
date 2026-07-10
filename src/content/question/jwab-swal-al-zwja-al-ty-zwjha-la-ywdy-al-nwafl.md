@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال الزوجة التي زوجها لا يؤدي النوافل"
-status: draft
+status: published
 published_at: 2021-09-17
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

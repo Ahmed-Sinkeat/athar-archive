@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "السلام عليكم يا شيخ أعرف الكثير من طلابك ذكورا و إناثا يتابعوك و يتعلمون منك إلا أني أرى ف"
+status: published
 published_at: 2021-08-10
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

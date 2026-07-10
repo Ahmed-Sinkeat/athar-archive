@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "أنا كنت غير ملتزم بالصلاة"
+status: published
 published_at: 2021-08-07
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

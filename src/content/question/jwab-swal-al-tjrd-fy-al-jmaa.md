@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال التجرد في الجماع"
-status: draft
+status: published
 published_at: 2021-09-09
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

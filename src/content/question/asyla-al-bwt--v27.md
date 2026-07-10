@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "أعمل مع جهة أشعرية صوفيه بتحفيظ القرءان وبعض دروس التزكية ولكن لهم مخالفات في بعض الأمور م"
+status: published
 published_at: 2021-07-11
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

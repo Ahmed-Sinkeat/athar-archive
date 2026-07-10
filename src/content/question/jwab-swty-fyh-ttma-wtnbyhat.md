@@ -1,6 +1,6 @@
 ---
 title: "جواب صوتي فيه تتمة وتنبيهات 👇"
-status: draft
+status: published
 published_at: 2021-07-24
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

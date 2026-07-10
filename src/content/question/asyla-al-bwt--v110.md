@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "أريد أن أستفسر عن شيء في نص شرعي، وهو حديث أن رَسُولَ اللهِ صَلَّى اللهُ عَلَيْهِ وَعلى آل"
+status: published
 published_at: 2021-08-05
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

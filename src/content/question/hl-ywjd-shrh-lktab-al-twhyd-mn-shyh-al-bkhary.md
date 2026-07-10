@@ -1,6 +1,6 @@
 ---
 title: "هل يوجد شرح لكتاب التوحيد من صحيح البخاري"
-status: draft
+status: published
 published_at: 2020-02-13
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

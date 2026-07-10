@@ -1,6 +1,6 @@
 ---
-title: "السؤال الأول :"
-status: draft
+title: "أصول كل خلل أيديولوجي موجوداً في الدين عقيدة الجبر هل نستطيع تخريج حتمية الصراع عند المارك"
+status: published
 published_at: 2020-10-08
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

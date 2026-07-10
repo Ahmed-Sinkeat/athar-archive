@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "انا ملتزمة ولله الحمد وعلمي الشرعي بسيط ولدي أخ دائما يناقشني في أمور دينية وصحيح البخاري"
+status: published
 published_at: 2021-08-16
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

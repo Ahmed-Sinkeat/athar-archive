@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "فضيلة الشيخ كان عندي صاحب من أحب الإخوة إلي ثم ذات مرة ناقشته حول عباد القبور فقال إنه متو"
+status: published
 published_at: 2021-07-18
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

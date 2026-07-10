@@ -1,6 +1,6 @@
 ---
 title: "مقدمة المجلس 👇"
-status: draft
+status: published
 published_at: 2021-07-06
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

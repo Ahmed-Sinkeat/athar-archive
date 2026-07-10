@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "ما حكم من يُؤمِّم ابن حجر من العلماء ويترحم عليه وهم يعلمون أنه ينكر علو الله تبارك وتعالى"
+status: published
 published_at: 2021-07-22
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

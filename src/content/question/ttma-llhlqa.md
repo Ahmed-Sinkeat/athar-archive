@@ -1,6 +1,6 @@
 ---
 title: "تتمة للحلقة :"
-status: draft
+status: published
 published_at: 2020-08-15
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

@@ -1,6 +1,6 @@
 ---
 title: "هل يخالف الشيخ الإمام أحمد في بعض المسائل الفقهية"
-status: draft
+status: published
 published_at: 2020-04-28
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

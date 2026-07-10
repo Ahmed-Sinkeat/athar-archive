@@ -1,6 +1,6 @@
 ---
-title: "السؤال الثامن :"
-status: draft
+title: "مالفرق بين علم الكلام والفلسفة"
+status: published
 published_at: 2020-08-20
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

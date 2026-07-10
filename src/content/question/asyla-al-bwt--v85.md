@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "كيف نرد على من يدعى أن الخُلُق من العلم بدليل أن الله عز وجل مدح نبيه صلى الله عليه وسلم ف"
+status: published
 published_at: 2021-07-23
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

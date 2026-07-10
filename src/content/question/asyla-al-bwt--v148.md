@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "هناك فيديو للدكتور بسام جرار على اليوتيوب يرد فيه على شبهة هل الإنسان مخير أم مسير"
+status: published
 published_at: 2021-08-16
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

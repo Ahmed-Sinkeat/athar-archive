@@ -1,6 +1,6 @@
 ---
-title: "[ المجلس التاسع عشر ]"
-status: draft
+title: "قرأت كلام الشيخ في الجاسوسية ولكن أريد أن أتبين أليست تدخل في مظاهرة الكفار على المسلمين و"
+status: published
 published_at: 2021-07-07
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

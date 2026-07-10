@@ -1,6 +1,6 @@
 ---
 title: "رأي الشيخ في كتاب العذر بالجهل لسلطان العميري ولمدحت فراج"
-status: draft
+status: published
 published_at: 2020-03-02
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

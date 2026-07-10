@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "ابني قد تخرج من المرحلة الثانوية وقد طلب مني أن يلتحق في الجامعة قسم القانون والأنظمة منطق"
+status: published
 published_at: 2021-08-07
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

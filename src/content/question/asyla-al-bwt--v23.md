@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "تقدم لي شاب مؤخرا ،يكبرني ب 8 سنوات ، المشكلة أن الشاب متزوج مرتين من قبل و مطلق الاثنتين"
+status: published
 published_at: 2021-07-10
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

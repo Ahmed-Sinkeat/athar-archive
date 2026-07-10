@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "كنت أدرس كتابا - المفروض أنه لأهل السنة - للمبتدئين في علوم القرآن"
+status: published
 published_at: 2021-08-07
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

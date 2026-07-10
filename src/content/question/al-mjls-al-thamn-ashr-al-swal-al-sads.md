@@ -1,6 +1,6 @@
 ---
-title: "[ المجلس الثامن عشر ] السؤال السادس [ 6 ]"
-status: draft
+title: "أفضل الكتب في مسألة التحسين والتقبيح العقليين"
+status: published
 published_at: 2021-07-06
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

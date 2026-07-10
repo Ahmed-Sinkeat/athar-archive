@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "كنت قبل فترة قد نذرت أن أصوم شهرين لله إذا رزقني الله أمراً فحصل ما كنت أريد"
+status: published
 published_at: 2021-07-10
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

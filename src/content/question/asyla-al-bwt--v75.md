@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "سؤال شيخنا إذا تفضلتم/ لمن يعيش في بلاد الكفر (الغرب) من المسلمين لسبب أو لآخر وحصل أن شُت"
+status: published
 published_at: 2021-07-23
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "يستدل من يدعى أن النبي صلى الله عليه و سلم يعلم الغيب بالأحاديث التى يخبر فيها النبي صلى ا"
+status: published
 published_at: 2021-08-07
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

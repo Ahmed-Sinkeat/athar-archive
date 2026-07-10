@@ -1,6 +1,6 @@
 ---
-title: "[ المجلس التاسع عشر ]"
-status: draft
+title: "بعض الأشاعرة يستدل بحديث [ لتفتحن القسطنطينة فلنعم الأمير أميرها ولنعم الجيش ذلك الجيش ]"
+status: published
 published_at: 2021-07-07
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

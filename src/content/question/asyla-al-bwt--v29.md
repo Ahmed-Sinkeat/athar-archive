@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "هل هناك آثار عن السلف في صحة الصلاة بالتباعد وماراي الشيخ في ذلك"
+status: published
 published_at: 2021-07-11
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

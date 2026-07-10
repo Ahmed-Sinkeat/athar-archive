@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "- : نحتاج وبشدة إلى فقه الفتور وفقه ما بعد المعصية فهل من موعظة ومراجع نطلع عليها في هذان"
+status: published
 published_at: 2021-07-15
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

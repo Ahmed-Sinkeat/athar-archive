@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "هلاّ أخبرتني يا شيخ عن سبب ضلال من سميتهم في سلسلة مراجعات ومناصحات وغيرهم ممن ضل عن طريق"
+status: published
 published_at: 2021-08-05
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

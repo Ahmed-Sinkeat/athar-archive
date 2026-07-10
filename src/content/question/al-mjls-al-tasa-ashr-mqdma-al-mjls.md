@@ -1,6 +1,6 @@
 ---
-title: "[ المجلس التاسع عشر ] مقدمة المجلس 👇"
-status: draft
+title: "مقدمة المجلس التاسع عشر"
+status: published
 published_at: 2021-07-07
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

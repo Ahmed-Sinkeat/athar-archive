@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال سلسلة المرأة"
-status: draft
+status: published
 published_at: 2021-09-26
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "كثير من طلبة العلم ومن فيهم خير تركوا الحديث في وسائل التواصل بحجة الخوف من القبض عليهم من"
+status: published
 published_at: 2021-07-10
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

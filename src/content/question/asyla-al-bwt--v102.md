@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "حصل عندنا أن الأمارة أرسلت المزكي إلى القرى والبوادي لكي يجمع زكاة بهيمة الأنعام"
+status: published
 published_at: 2021-07-27
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

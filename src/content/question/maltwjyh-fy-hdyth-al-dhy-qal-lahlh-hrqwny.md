@@ -1,6 +1,6 @@
 ---
 title: "مالتوجيه في حديث الذي قال لأهله حرقوني"
-status: draft
+status: published
 published_at: 2020-04-01
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

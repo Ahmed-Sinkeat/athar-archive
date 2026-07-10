@@ -1,6 +1,6 @@
 ---
-title: "السؤال الثاني :"
-status: draft
+title: "نبذة عن مسائل أحمد وماهي أعلاها"
+status: published
 published_at: 2020-06-04
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

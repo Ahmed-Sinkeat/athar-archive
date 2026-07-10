@@ -1,6 +1,6 @@
 ---
-title: "السؤال الثاني :"
-status: draft
+title: "ماعقيدة الذهبي وماموقفه من الجدل وماموقفه من الأدلة العقلية"
+status: published
 published_at: 2020-08-15
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

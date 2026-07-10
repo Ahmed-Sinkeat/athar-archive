@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "كنت سألتكم أني أعمل مع جهة أشعرية وعندهم مخالفات"
+status: published
 published_at: 2021-08-16
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

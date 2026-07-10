@@ -1,6 +1,6 @@
 ---
-title: "السؤال الرابع:"
-status: draft
+title: "هل قوام السنة الأصبهاني صاحب الحجة في بيان المحجة يثبت الصفات الاختيارية"
+status: published
 published_at: 2020-07-09
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

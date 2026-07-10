@@ -1,6 +1,6 @@
 ---
-title: "السؤال السادس:"
-status: draft
+title: "لماذا لانرى اهتماماً كبيراً بالنسوية مثل الإهتمام بالإلحاد"
+status: published
 published_at: 2020-06-19
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

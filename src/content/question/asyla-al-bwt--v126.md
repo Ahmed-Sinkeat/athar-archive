@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "ما الصواب في مسألة الشهادة لأحد العلماء و الصالحين بالجنة ممن لم يأت نص فيه بسبب حسن خاتمت"
+status: published
 published_at: 2021-08-07
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

@@ -1,6 +1,6 @@
 ---
-title: "[ المجلس الثامن عشر ] خاتمة المجلس 👇"
-status: draft
+title: "خاتمة المجلس الثامن عشر"
+status: published
 published_at: 2021-07-06
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

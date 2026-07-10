@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال التكييف الفقهي للتلقيح"
-status: draft
+status: published
 published_at: 2021-09-26
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

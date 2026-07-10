@@ -1,6 +1,6 @@
 ---
-title: "السؤال الأول:"
-status: draft
+title: "ماهو شرك العرب في الجاهلية ومافرقه عن شرك قوم موسى عليه السلام حينما اتخذوا العجل وشرك قوم"
+status: published
 published_at: 2020-06-14
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

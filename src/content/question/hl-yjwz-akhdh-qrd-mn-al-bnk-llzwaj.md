@@ -1,6 +1,6 @@
 ---
 title: "هل يجوز أخذ قرض من البنك للزواج"
-status: draft
+status: published
 published_at: 2020-05-07
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

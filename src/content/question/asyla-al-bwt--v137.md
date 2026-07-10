@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "أنا سعيد جدا بصوتياتك التي تبين منزلة السنة وفضل طلبها والعلم والرد على الشبهات التي أثارت"
+status: published
 published_at: 2021-08-10
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

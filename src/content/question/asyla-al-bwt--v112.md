@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "في موضوع منتشر بين نقاد جماعة داعش و القاعدة و طالبان"
+status: published
 published_at: 2021-08-05
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

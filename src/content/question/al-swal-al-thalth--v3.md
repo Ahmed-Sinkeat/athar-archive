@@ -1,6 +1,6 @@
 ---
-title: "السؤال الثالث:"
-status: draft
+title: "هل طاعة الزوجة لزوجها واجبة"
+status: published
 published_at: 2020-06-28
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

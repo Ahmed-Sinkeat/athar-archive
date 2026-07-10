@@ -1,6 +1,6 @@
 ---
-title: "[ المجلس الثامن عشر ] السؤال الثالث [  3 ]"
-status: draft
+title: "درجة الإحسان في مراتب الإيمان هل هي حالة يسعى إليها الإنسان أم يعيش لحظتها بأن يعيش المقام"
+status: published
 published_at: 2021-07-06
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

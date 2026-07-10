@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "عند انتهاء طالب العلم مع شيخه من كتاب ماذا يجب عليه"
+status: published
 published_at: 2021-07-23
 person: abu-jafar-al-khalifi
 topics: ["adab-talab-al-ilm"]

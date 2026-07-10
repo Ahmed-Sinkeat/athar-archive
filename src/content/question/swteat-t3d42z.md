@@ -1,6 +1,6 @@
 ---
-title: "https://t"
-status: draft
+title: "مارأي الشيخ وفقه الله في جعل كتاب الروض المربع أصلا"
+status: published
 published_at: 2021-07-08
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

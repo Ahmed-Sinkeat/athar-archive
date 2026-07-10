@@ -1,6 +1,6 @@
 ---
-title: "السؤال الثالث :"
-status: draft
+title: "هل الأفضل لمن صلى لوحده صلاة التراويح أن يجعل ختمة خاصة لها"
+status: published
 published_at: 2020-06-04
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

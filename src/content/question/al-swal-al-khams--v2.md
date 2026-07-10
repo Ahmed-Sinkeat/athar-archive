@@ -1,6 +1,6 @@
 ---
-title: "السؤال الخامس:"
-status: draft
+title: "هل الغرب معذورين لأن الإسلام وصل إليهم مشوه"
+status: published
 published_at: 2020-06-19
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "شيخنا بوجعفر ما قولك فيمن دائما يتهم نجد وعلمائها للحديث الصحيح الذي فيه دعى النبي ﷺ لليمن"
+status: published
 published_at: 2021-08-17
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

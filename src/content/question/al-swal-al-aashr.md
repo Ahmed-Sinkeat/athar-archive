@@ -1,6 +1,6 @@
 ---
-title: "السؤال العاشر :"
-status: draft
+title: "قانون الجذب أصوله والرد عليه"
+status: published
 published_at: 2020-06-04
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

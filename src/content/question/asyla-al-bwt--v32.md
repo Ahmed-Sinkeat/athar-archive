@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "ما حكم عروض من مغسلة ملابس الذي يدفع ٥٠ ريال مقدما يغسل عندهم الى أن  يصل الى ما قيمته ٦٥"
+status: published
 published_at: 2021-07-12
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

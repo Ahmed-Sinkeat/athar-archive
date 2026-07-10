@@ -1,6 +1,6 @@
 ---
-title: "السؤال الأول :"
-status: draft
+title: "مارأيكم بعلم الفلسفة"
+status: published
 published_at: 2020-06-28
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

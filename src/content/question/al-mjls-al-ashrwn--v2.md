@@ -1,6 +1,6 @@
 ---
-title: "[ المجلس العشرون ]"
-status: draft
+title: "هل يصح قول بعضهم أنه يمكن الجمع بين التكفير بالمقالة وعدم تكفير مذهب كامل يقول بها"
+status: published
 published_at: 2021-07-08
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

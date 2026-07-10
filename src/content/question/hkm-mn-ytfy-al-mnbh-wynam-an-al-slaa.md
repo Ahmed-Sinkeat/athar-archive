@@ -1,6 +1,6 @@
 ---
 title: "حكم من يطفئ المنبه وينام عن الصلاة"
-status: draft
+status: published
 published_at: 2020-03-02
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

@@ -1,6 +1,6 @@
 ---
 title: "الإستثناء في الإيمان عند الإمام أحمد"
-status: draft
+status: published
 published_at: 2020-02-13
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

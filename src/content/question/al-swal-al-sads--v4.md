@@ -1,6 +1,6 @@
 ---
-title: "السؤال السادس :"
-status: draft
+title: "هل من الفقهاء من تحدث عن التسوية في الزكاة"
+status: published
 published_at: 2020-10-13
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "وردت مجموعة كبيرة حول بعض أعيان الأشاعرة وعلى رأسهم ابن حجر والنووي وهذا جمع لما كتب ونشر"
+status: published
 published_at: 2021-08-23
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

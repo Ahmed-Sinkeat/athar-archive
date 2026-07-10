@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "ما حكم تعليم اللغة الانجليزية كمدرس خصوصي وأخذ أجرة على ذلك"
+status: published
 published_at: 2021-07-12
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

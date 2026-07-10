@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "هل يجوز البكاء والدعاء أثناء الصلاة"
+status: published
 published_at: 2021-08-10
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

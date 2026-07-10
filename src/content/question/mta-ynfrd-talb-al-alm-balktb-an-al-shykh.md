@@ -1,6 +1,6 @@
 ---
 title: "متى ينفرد طالب العلم بالكتب عن الشيخ"
-status: draft
+status: published
 published_at: 2020-02-12
 person: abu-jafar-al-khalifi
 topics: ["adab-talab-al-ilm"]

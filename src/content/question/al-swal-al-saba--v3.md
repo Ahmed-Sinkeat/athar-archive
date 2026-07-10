@@ -1,6 +1,6 @@
 ---
-title: "السؤال السابع:"
-status: draft
+title: "حكم الاشتغال بالاعجاز العلمي"
+status: published
 published_at: 2020-08-20
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

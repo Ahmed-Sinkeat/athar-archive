@@ -1,6 +1,6 @@
 ---
-title: "[ المجلس العشرون ]"
-status: draft
+title: "ما السبيل للحافظ على اليقين عند الدعاء بدفع شر عظيم سيقع أو جلب خير عظيم"
+status: published
 published_at: 2021-07-08
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

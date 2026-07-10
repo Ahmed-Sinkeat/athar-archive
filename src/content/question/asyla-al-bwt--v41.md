@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "ياشيخ عفى الله عنك انت تدعو لتقديم حق الله على حق الناس أقصد من المسلمين"
+status: published
 published_at: 2021-07-14
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

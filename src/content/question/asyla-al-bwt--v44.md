@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "يقال لنا : لا يجوز أن نكره العاصي بل نكره المعصية"
+status: published
 published_at: 2021-07-14
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

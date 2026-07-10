@@ -1,6 +1,6 @@
 ---
-title: "السؤال الأول:"
-status: draft
+title: "كيف تدرس كتب ابن رشد وهو من الباطنية"
+status: published
 published_at: 2020-08-15
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

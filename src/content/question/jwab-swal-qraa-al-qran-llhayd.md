@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال قراءة القرآن للحائض"
-status: draft
+status: published
 published_at: 2021-08-23
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

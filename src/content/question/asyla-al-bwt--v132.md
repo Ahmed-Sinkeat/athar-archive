@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "-ما هو حكم عوام النصيرية و الرافضة و الدروز و الاسماعيلية و غيرهم من طوائف الكفر"
+status: published
 published_at: 2021-08-10
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

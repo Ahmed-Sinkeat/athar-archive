@@ -1,6 +1,6 @@
 ---
-title: "السؤال الثالث:"
-status: draft
+title: "مامعنى قول الامام احمد ثلاث كتب ليس لها أصول وذكر منها التفسير"
+status: published
 published_at: 2020-07-09
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
-title: "[ المجلس الثامن عشر ] السؤال الثاني [ 2 ]"
-status: draft
+title: "من كان متمكناً ومتأصلاً في عقيدة أهل السنة هل ينصح بقراءة كتاب إحياء علوم الدين للغزالي"
+status: published
 published_at: 2021-07-06
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

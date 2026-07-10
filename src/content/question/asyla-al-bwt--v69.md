@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "في سوريا منظمات تعطي مساعدات من جملة هذه المساعدات بطاقة بقيمة 2دولار يشتري بها طعام وغيره"
+status: published
 published_at: 2021-07-23
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

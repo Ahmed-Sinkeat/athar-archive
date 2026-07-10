@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "من عجز عن الركوع في الصلاة لمرض أو كبر سن هل يومئ للركوع برأسه وهو قائم أم يومئ للركوع برأ"
+status: published
 published_at: 2021-07-24
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

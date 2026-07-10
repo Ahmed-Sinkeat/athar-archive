@@ -1,6 +1,6 @@
 ---
 title: "إذا ثبت قول عن التابعي لم يرد فيه دليل هل يجوز أن نقول عنه بدعة"
-status: draft
+status: published
 published_at: 2020-05-23
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

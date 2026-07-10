@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "تفسير \"كيدكن عظيم\" هل هو خاص لامراة عزيز مصر ومن معها"
+status: published
 published_at: 2021-08-05
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

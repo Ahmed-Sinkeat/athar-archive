@@ -1,6 +1,6 @@
 ---
 title: "هل يوجد شرح لعقيدة الرازيين غير شرح الطريفي وهل شرح الطريفي جيد"
-status: draft
+status: published
 published_at: 2020-04-28
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

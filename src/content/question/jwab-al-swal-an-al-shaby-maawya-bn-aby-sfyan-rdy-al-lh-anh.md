@@ -1,6 +1,6 @@
 ---
 title: "جواب السؤال عن الصحابي معاوية بن أبي سفيان رضي الله عنه"
-status: draft
+status: published
 published_at: 2020-10-27
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

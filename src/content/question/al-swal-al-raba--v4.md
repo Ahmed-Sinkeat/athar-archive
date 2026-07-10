@@ -1,6 +1,6 @@
 ---
-title: "السؤال الرابع :"
-status: draft
+title: "حكم من نام عن صلاة الفجر حتى شروق الشمس ثم أخر قضاءها حتى صلاة الظهر"
+status: published
 published_at: 2020-08-19
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

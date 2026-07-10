@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "هل للشيخ أن يتحدث عن تقسيم أفعال النبي صلى الله عليه و سلم الموجود في كتب أصول الفقه"
+status: published
 published_at: 2021-07-23
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

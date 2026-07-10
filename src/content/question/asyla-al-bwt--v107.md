@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "هل تعتبر غيبة للشخص مثلاً إذا كانت بالملامح (تكشير الملامح أو غيرها من هذا القبيل) فقط دون"
+status: published
 published_at: 2021-07-27
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

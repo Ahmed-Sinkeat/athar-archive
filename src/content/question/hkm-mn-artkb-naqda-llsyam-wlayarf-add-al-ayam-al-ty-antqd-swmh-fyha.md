@@ -1,6 +1,6 @@
 ---
 title: "حكم من ارتكب ناقضاً للصيام ولايعرف عدد الأيام التي انتقض صومه فيها"
-status: draft
+status: published
 published_at: 2020-05-07
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

@@ -1,6 +1,6 @@
 ---
 title: "زكاة المال المستفاد ( الراتب الشهري )"
-status: draft
+status: published
 published_at: 2020-02-10
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]

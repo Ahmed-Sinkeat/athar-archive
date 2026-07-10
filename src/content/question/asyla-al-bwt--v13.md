@@ -1,6 +1,6 @@
 ---
-title: "[ أسئلة البوت @alkulifyQ_bot ]"
-status: draft
+title: "لو ذكر لنا أبو جعفر سبب الضعف في صناعة الحديث والعلل منذ عصور إلى عصرنا"
+status: published
 published_at: 2021-07-10
 person: abu-jafar-al-khalifi
 topics: ["aam-other"]
