@@ -44,11 +44,8 @@ ok(poemCardCount >= 2, "poems index lists cards");
 ok(/poem-badge[^>]*>(منظومة|قصيدة)</.test(poems), "work-type badge on poem cards");
 ok(/poem-sep/.test(poems), "❁ hemistich separator on poem cards");
 
-// --- composer (unlisted maintainer tool) ---
-section("/compose");
-const compose = read("compose/index.html");
-ok(/id="ctype"/.test(compose), "composer renders");
-ok(/name="robots" content="noindex"/.test(compose), "composer is noindex");
+// --- composer (unlisted maintainer tool) retired — /compose deleted; content
+// is now edited via the Sveltia CMS (/admin), not this build's concern ---
 
 // --- poem reader: verses + stacked annotations ---
 section("/poem (reader)");
