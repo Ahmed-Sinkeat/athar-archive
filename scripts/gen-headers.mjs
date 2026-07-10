@@ -76,6 +76,9 @@ const out = `/*
   Permissions-Policy: geolocation=(), microphone=(), camera=()
   Content-Security-Policy: ${csp}
 
+/admin
+  Content-Security-Policy: ${adminCsp}
+
 /admin/*
   Content-Security-Policy: ${adminCsp}
 `;
