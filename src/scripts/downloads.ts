@@ -104,6 +104,25 @@ async function removeDownload(kind: string, id: string) {
     .forEach(renderDownloadButton);
 }
 
+// pre-download size estimate: HEAD each page (cheap — headers only, no body)
+// and sum Content-Length. Cached in-memory per kind:id so re-opening the
+// popover or navigating back doesn't re-probe the same book/poem/surah.
+const sizeEstimateCache = new Map<string, number>();
+async function estimateSize(kind: string, id: string, urls: string[]): Promise<number | null> {
+  const key = keyOf(kind, id);
+  if (sizeEstimateCache.has(key)) return sizeEstimateCache.get(key)!;
+  try {
+    const lengths = await Promise.all(
+      urls.map((u) => fetch(u, { method: "HEAD" }).then((r) => Number(r.headers.get("content-length")) || 0)),
+    );
+    const total = lengths.reduce((a, b) => a + b, 0);
+    sizeEstimateCache.set(key, total);
+    return total;
+  } catch {
+    return null; // offline/blocked HEAD — fall back to the page-count label
+  }
+}
+
 function renderDownloadButton(btn: HTMLElement) {
   const kind = btn.dataset.dlKind!;
   const id = btn.dataset.dlId!;
@@ -112,12 +131,22 @@ function renderDownloadButton(btn: HTMLElement) {
   if (entry) {
     btn.setAttribute("aria-pressed", "true");
     if (label) label.textContent = `متوفر دون اتصال (${formatSize(entry.bytes)}) — إزالة`;
-  } else {
-    btn.setAttribute("aria-pressed", "false");
-    // exact bytes are unknowable before fetching; the page count is the
-    // honest pre-download size signal we do have
-    const n = collectUrls().length;
-    if (label) label.textContent = n > 1 ? `تنزيل للقراءة دون اتصال (${n} صفحة)` : "تنزيل للقراءة دون اتصال";
+    return;
+  }
+  btn.setAttribute("aria-pressed", "false");
+  const urls = collectUrls();
+  const cached = sizeEstimateCache.get(keyOf(kind, id));
+  if (label) {
+    label.textContent = cached != null
+      ? `تنزيل للقراءة دون اتصال (${formatSize(cached)})`
+      : urls.length > 1 ? `تنزيل للقراءة دون اتصال (${urls.length} صفحة)` : "تنزيل للقراءة دون اتصال";
+  }
+  if (cached == null && !btn.hasAttribute("data-dl-busy")) {
+    estimateSize(kind, id, urls).then((bytes) => {
+      if (bytes == null || btn.getAttribute("aria-pressed") === "true") return;
+      const l = btn.querySelector("[data-dl-label]");
+      if (l) l.textContent = `تنزيل للقراءة دون اتصال (${formatSize(bytes)})`;
+    });
   }
 }
 

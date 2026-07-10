@@ -131,7 +131,13 @@ export function wirePageFootnotes(
     const notes = epubNotesByPage.get(p) ?? [];
     return footerHtml(notes.map((body, i) => ({ id: `fn-e${p}-${i}`, num: String(i + 1), body })));
   };
+  // Keyed by page:juz, not just page — some imports (Muwatta) emit the SAME
+  // page marker twice within one volume (dedupe wants that), but a
+  // multi-volume book can legitimately have "page 3" in both volume 1 and
+  // volume 2 (dedupe must NOT collapse those into one). juz defaults to ""
+  // for single-volume books, so that case behaves exactly as before.
   const emittedSeps = new Set<string>();
+  const usedIds = new Set<string>();
   let result = "";
   for (let i = 0; i < segments.length; i++) {
     if (i % 2 === 1) {
@@ -143,9 +149,17 @@ export function wirePageFootnotes(
       result += gfmFooterOnce(curPage);
       result += epubFooterOnce(page);
       const juzM = segments[i].match(/data-juz="([^"]+)"/);
-      if (!emittedSeps.has(page)) {
-        emittedSeps.add(page);
-        result += `<div class="page-sep" id="p${page}" data-page="${page}"${juzM ? ` data-juz="${juzM[1]}"` : ""}></div>`;
+      const juz = juzM ? juzM[1] : "";
+      const dedupeKey = `${page}:${juz}`;
+      if (!emittedSeps.has(dedupeKey)) {
+        emittedSeps.add(dedupeKey);
+        // first claim of a page number gets the plain #pN id (keeps existing
+        // links/citations working); a later volume reusing that same page
+        // number gets a juz-suffixed id instead of a colliding duplicate id
+        const plainId = `p${page}`;
+        const id = usedIds.has(plainId) ? `${plainId}-v${juz || emittedSeps.size}` : plainId;
+        usedIds.add(plainId);
+        result += `<div class="page-sep" id="${id}" data-page="${page}"${juzM ? ` data-juz="${juz}"` : ""}></div>`;
       }
       if (m) curPage = parseInt(m[1], 10);
     } else {

@@ -97,6 +97,22 @@ describe("wirePageFootnotes", () => {
     expect(html.match(/id="p91"/g)?.length).toBe(1);
   });
 
+  it("keeps both volumes' page markers when page numbers repeat across juz (no cross-volume dedup/collision)", () => {
+    const content = `أ
+
+<hr class="page-sep" data-page="3" data-juz="1" />
+
+ب
+
+<hr class="page-sep" data-page="3" data-juz="2" />
+
+ج`;
+    const html = wire(content);
+    expect(html.match(/class="page-sep"/g)?.length).toBe(2);
+    expect(html).toContain('id="p3" data-page="3" data-juz="1"');
+    expect(html).toMatch(/id="p3-v2" data-page="3" data-juz="2"/);
+  });
+
   it("leaves footnote-free content untouched apart from page-sep normalization", () => {
     const html = wire("مجرد نص عادي بلا حواشٍ.");
     expect(html).not.toContain("page-footnotes");

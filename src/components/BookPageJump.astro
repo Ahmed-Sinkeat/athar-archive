@@ -1,0 +1,26 @@
+---
+// «الانتقال إلى صفحة» — jump to a printed page number, with a volume (مجلد)
+// picker when the book has more than one (page numbers can repeat across
+// volumes, see lib/page-footnotes.ts). Submits to reader.ts's book-jump
+// handler; works the same whether the book is chunked into chapter routes
+// or a single page.
+import { toArabicDigits } from "../lib/display";
+
+interface Props {
+  bookHref: string;
+  volumes?: string[];
+}
+const { bookHref, volumes = [] } = Astro.props;
+---
+<form class="book-jump" data-book-jump data-book-href={bookHref}>
+  <span class="book-jump-label">الانتقال إلى صفحة</span>
+  <div class="book-jump-row">
+    {volumes.length > 1 && (
+      <select data-book-jump-vol aria-label="المجلد">
+        {volumes.map((v, i) => <option value={v}>{`مجلد ${toArabicDigits(i + 1)}`}</option>)}
+      </select>
+    )}
+    <input type="number" min="1" inputmode="numeric" data-book-jump-page placeholder="رقم الصفحة" aria-label="رقم الصفحة" />
+    <button type="submit" class="icon-btn" aria-label="اذهب">←</button>
+  </div>
+</form>

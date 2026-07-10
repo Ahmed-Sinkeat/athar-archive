@@ -327,6 +327,36 @@ document.addEventListener("keydown", (e) => {
   if (s) location.href = `/quran/${s.id}#p${n}`;
 });
 
+// book page/volume jump (BookPageJump.astro) — rendered twice by
+// ReaderSidebar (desktop aside + mobile popup), so this is event-delegated
+// rather than keyed by id.
+document.addEventListener("submit", (e) => {
+  const form = (e.target as HTMLElement).closest<HTMLFormElement>("[data-book-jump]");
+  if (!form) return;
+  e.preventDefault();
+  const page = form.querySelector<HTMLInputElement>("[data-book-jump-page]")?.value;
+  const n = page ? parseInt(page, 10) : NaN;
+  if (!(n >= 1)) return;
+  const vol = form.querySelector<HTMLSelectElement>("[data-book-jump-vol]")?.value;
+  const qs = vol ? `?v=${encodeURIComponent(vol)}` : "";
+  location.href = `${form.dataset.bookHref}${qs}#p${n}`;
+});
+
+// Volume-qualified page anchors: a multi-volume book can reuse a page number
+// across volumes, so only the first-seen one keeps the plain #pN id — later
+// volumes get #pN-vJ (lib/page-footnotes.ts). If the URL names a volume
+// (?v=) and the plain-id element belongs to a different one, retarget.
+function fixVolumeAnchor() {
+  const m = location.hash.match(/^#p(\d+)$/);
+  const v = new URLSearchParams(location.search).get("v");
+  if (!m || !v) return;
+  const plain = document.getElementById(`p${m[1]}`);
+  if (plain && plain.dataset.juz === v) return;
+  document.getElementById(`p${m[1]}-v${v}`)?.scrollIntoView();
+}
+fixVolumeAnchor();
+document.addEventListener("astro:page-load", fixVolumeAnchor);
+
 // per-athar permalink: "#" link injected before each numbered narration
 // (see injectAtharAnchors in src/lib/hadith.ts) — copies the deep link +
 // a plain-text citation alongside its native hash navigation.

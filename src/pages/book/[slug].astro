@@ -5,6 +5,7 @@ import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import Prose from "../../components/Prose.astro";
 import StudyBar from "../../components/StudyBar.astro";
 import ReaderSidebar from "../../components/ReaderSidebar.astro";
+import BookPageJump from "../../components/BookPageJump.astro";
 import AudioPlayer from "../../components/AudioPlayer.astro";
 import RelatedStrip from "../../components/RelatedStrip.astro";
 import Relations from "../../components/Relations.astro";
@@ -48,14 +49,19 @@ export async function getStaticPaths() {
     // actually inside heading-split chapters (no firstPage from page-slicing).
     const firstPageOf = (c: (typeof a.chapters)[number]) =>
       c.firstPage ?? (c.content.match(/data-page="(\d+)"/)?.[1] ? Number(c.content.match(/data-page="(\d+)"/)![1]) : undefined);
+    // multi-volume (مجلد) books carry data-juz on each page-sep (epub-import
+    // --merge-volumes) — one entry per volume in source order, so the reader
+    // jump control can offer a volume picker instead of a raw page number.
+    const firstJuzOf = (c: (typeof a.chapters)[number]) => c.content.match(/data-juz="([^"]+)"/)?.[1];
+    const volumes = [...new Set([...body.matchAll(/data-juz="([^"]+)"/g)].map((m) => m[1]))];
     // Phase 2: chunked books → store a light TOC (titles+slugs) only; the body and
     // its annotations live on the on-demand chapter pages, never in this landing's HTML.
-    paths.push({ params: { slug: entry.id }, props: { entry, chunked: a.chunked, toc: a.chapters.map((c) => ({ title: c.title, slug: c.slug, parent: c.parent, parentTitle: c.parentTitle, firstPage: firstPageOf(c) })), tocNested: a.chunked ? [] : parseToc(body ?? ""), body: a.chunked ? undefined : renderBody, byAnchor: a.chunked ? {} : byAnchor, audios, commentaries, author: entry.data.person ? names.get(entry.data.person) : undefined, topicLabel: labelFor("book", entry.data), origin: originOf(entry.data, graph), related: relatedTo(entry, graph, names), backlinks: backlinksList(entry, graph, names) } });
+    paths.push({ params: { slug: entry.id }, props: { entry, chunked: a.chunked, toc: a.chapters.map((c) => ({ title: c.title, slug: c.slug, parent: c.parent, parentTitle: c.parentTitle, firstPage: firstPageOf(c), juz: firstJuzOf(c) })), volumes, tocNested: a.chunked ? [] : parseToc(body ?? ""), body: a.chunked ? undefined : renderBody, byAnchor: a.chunked ? {} : byAnchor, audios, commentaries, author: entry.data.person ? names.get(entry.data.person) : undefined, topicLabel: labelFor("book", entry.data), origin: originOf(entry.data, graph), related: relatedTo(entry, graph, names), backlinks: backlinksList(entry, graph, names) } });
   }
   return paths;
 }
 
-const { entry, chunked, toc, tocNested, body, byAnchor, audios, commentaries, author, topicLabel, origin, related, backlinks } = Astro.props;
+const { entry, chunked, toc, volumes, tocNested, body, byAnchor, audios, commentaries, author, topicLabel, origin, related, backlinks } = Astro.props;
 const bookPageCount = Math.max(0, ...[...(body ?? "").matchAll(/data-page="(\d+)"/g)].map((m) => Number(m[1])));
 const KIND_SLUG: Record<string, string> = { شرح: "sharh", حاشية: "hashiya", تخريج: "takhrij", إعراب: "iraab" };
 // Oversized chapters get re-split into "صفحات S-E" slices (parent set) — group
@@ -107,7 +113,7 @@ const jsonLd = bookLd({
         <a class="eyebrow u87c136d pill-link" href={isMatn("book", entry.data) ? "/matn" : "/books"}>{topicLabel}</a>
         <div class="ornament" aria-hidden="true">۞</div>
         <h1 class="reader-title ue7e55f7" >{entry.data.title}</h1>
-        <div class="reader-byline">{author}</div>
+        <div class="reader-byline">{entry.data.person ? <a href={hrefFor("person", entry.data.person)}>{author}</a> : author}</div>
         <button type="button" class="toggle-btn" style="margin-top: 12px;" data-action="download:toggle" data-dl-kind="book" data-dl-id={entry.id} data-dl-title={entry.data.title} aria-pressed="false">
           <span class="toggle-dot"></span><span data-dl-label>تنزيل للقراءة دون اتصال</span>
         </button>
@@ -130,6 +136,10 @@ const jsonLd = bookLd({
         <a class="book-resume-link" data-book-resume-link></a>
         <div class="bar"><span data-book-resume-bar></span></div>
       </div>
+      {/* bookPageCount is computed from `body`, which chunked books don't carry
+          (their pages live in the on-demand chapter routes) — gate on the toc's
+          own firstPage markers instead */}
+      {toc.some((c: any) => c.firstPage != null) && <BookPageJump bookHref={hrefFor("book", entry.id)} volumes={volumes} />}
       {/* light TOC: links to the on-demand chapter pages; no body in this HTML */}
       <nav class="toc-box has-current" aria-label="فهرس الفصول">
         <div class="toc-label">فصول الكتاب · {toArabicDigits(groupToc(toc).length)} فصل</div>
@@ -158,7 +168,7 @@ const jsonLd = bookLd({
           <a class="eyebrow u87c136d pill-link" href={isMatn("book", entry.data) ? "/matn" : "/books"}>{topicLabel}</a>
           <div class:list={["ornament", { "ornament-green": isHadith }]} aria-hidden="true">۞</div>
           <h1 class="reader-title ue7e55f7" >{entry.data.title}</h1>
-          <div class="reader-byline">{author}</div>
+          <div class="reader-byline">{entry.data.person ? <a href={hrefFor("person", entry.data.person)}>{author}</a> : author}</div>
           <button type="button" class="toggle-btn" style="margin-top: 12px;" data-action="download:toggle" data-dl-kind="book" data-dl-id={entry.id} data-dl-title={entry.data.title} aria-pressed="false">
             <span class="toggle-dot"></span><span data-dl-label>تنزيل للقراءة دون اتصال</span>
           </button>
@@ -200,6 +210,7 @@ const jsonLd = bookLd({
       </div>
       {tocNested?.length > 0 && (
         <ReaderSidebar label={bookPageCount > 0 ? `فهرس العناوين · ${bookPageCount} صفحة` : "فهرس العناوين"}>
+          {bookPageCount > 0 && <BookPageJump bookHref={hrefFor("book", entry.id)} volumes={volumes} />}
           <div class="toc-box has-current">
             <div class="toc-label">{bookPageCount > 0 ? `فهرس العناوين · ${bookPageCount} صفحة` : "فهرس العناوين"}</div>
             {tocNested.map((h) => (
@@ -224,7 +235,7 @@ const jsonLd = bookLd({
   <div class="wrap-mid"><RelatedStrip items={related} /></div>
   <Relations items={backlinks} />
   {chunked && (
-    <script type="application/json" data-page-map set:html={JSON.stringify(toc.filter((c: any) => c.firstPage != null).map((c: any) => ({ slug: c.slug, firstPage: c.firstPage })))} />
+    <script type="application/json" data-page-map set:html={JSON.stringify(toc.filter((c: any) => c.firstPage != null).map((c: any) => ({ slug: c.slug, firstPage: c.firstPage, juz: c.juz })))} />
     <script>
       // "اقرأ في موضعه" (#pN) lands here first — the hash never reaches the
       // server for a chunked book. Find the chapter whose page range covers N
@@ -232,21 +243,23 @@ const jsonLd = bookLd({
       //
       // ponytail: walk chapters in source order (NOT sorted by firstPage) and
       // keep the last one whose firstPage <= N — some multi-volume books
-      // (e.g. tafsir-ibn-kathir) reset page numbering per volume/juz, so a
-      // global sort would scramble volumes together and land on the wrong
-      // one. Source order at least keeps each volume's own pages contiguous;
-      // it can still mis-land on the SAME page number in a later volume.
-      // Real fix needs volume boundaries, which the manifest doesn't carry.
+      // reset page numbering per volume/juz, so a global sort would scramble
+      // volumes together. Source order at least keeps each volume's own
+      // pages contiguous. If the URL names a volume (?v=, from BookPageJump),
+      // prefer chapters matching it first — that's the disambiguator a bare
+      // page number alone can't give.
       (() => {
         const m = location.hash.match(/^#p(\d+)$/);
         if (!m) return;
         const target = parseInt(m[1], 10);
+        const wantVol = new URLSearchParams(location.search).get("v");
         const mapEl = document.querySelector('script[data-page-map]');
         if (!mapEl) return;
-        const pages: { slug: string; firstPage: number }[] = JSON.parse(mapEl.textContent || "[]");
+        const allPages: { slug: string; firstPage: number; juz?: string }[] = JSON.parse(mapEl.textContent || "[]");
+        const pages = wantVol && allPages.some((c) => c.juz === wantVol) ? allPages.filter((c) => c.juz === wantVol) : allPages;
         let chapter = pages[0];
         for (const c of pages) { if (c.firstPage <= target) chapter = c; else break; }
-        if (chapter) location.replace(`${location.pathname}/${encodeURIComponent(chapter.slug)}${location.hash}`);
+        if (chapter) location.replace(`${location.pathname}/${encodeURIComponent(chapter.slug)}${location.search}${location.hash}`);
       })();
     </script>
   )}

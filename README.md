@@ -2,11 +2,11 @@
 
 A static digital library powered by Athar Engine.
 
-أرشيفٌ علميٌّ للمتون والمنظومات والدروس، محقَّقةً ومُشكَّلةً — تجربةُ قراءةٍ هادئةٍ تجعلُ المعرفةَ هي الأصل.
+موقعٌ يُعنى بجمع التراث الإسلامي على مرِّ العصور، مع سهولة البحث والقراءة.
 
 A static, RTL Arabic knowledge archive. **The content is the origin; the technology is a replaceable layer** — the whole site is rebuildable from Git alone.
 
-[![CI](https://github.com/Ahmed-Sinkeat/athar-archive/actions/workflows/ci.yml/badge.svg)](../../actions)
+[![CI](https://github.com/Ahmed-Sinkeat/athar-archive/actions/workflows/ci.yml/badge.svg)](https://github.com/Ahmed-Sinkeat/athar-archive/actions/workflows/ci.yml)
 
 ## Stack
 
@@ -28,7 +28,7 @@ pnpm test           # vitest (validators, graph, chapters, chunking, sanitize)
 
 ## The entities
 
-Person · Subject · Topic · Book · Poem · Questions · Benefit · Article · Audio · Annotation · Term (المعجم) (+ Announcement and Highlight — مختار الأسبوع: آية/حديث/بيت — as homepage chrome). The old Series/Lesson split was retired — a lesson is now just a book with audio attached. **القرآن** is a separate collection — 114 surahs as a mushaf spine with a `/quran/<surah>` ayah reader.
+Person · Subject · Topic · Book · Poem · Question · Article · Audio · Annotation · Term (المعجم) (+ Announcement and Highlight — مختار الأسبوع: آية/حديث/بيت — as homepage chrome). The old Series/Lesson split was retired — a lesson is now just a book with audio attached. **الفوائد (كُناشة)** are device-local reader bookmarks (`localStorage`), not a CMS/Git-authored collection. **القرآن** is a separate collection — 114 surahs as a mushaf spine with a `/quran/<surah>` ayah reader.
 
 Books carry an optional **genre** (`قرآن|حديث|تراجم`) routing them to dedicated `/quran` `/hadith` `/tarajim` sections (still under `/books`); `/hadith` adds a صحيح/حسن/ضعيف/موضوع grading facet.
 
@@ -48,12 +48,16 @@ Polymorphic links (`source_type`/`target_type`) have no DB foreign keys — **Zo
 
 | Doc | What |
 |---|---|
-| [`CONTRIBUTING.md`](CONTRIBUTING.md) | How to add content — per-entity templates, id/slug rules, publish gates (Arabic) |
+| [`CONTRIBUTING.md`](CONTRIBUTING.md) | How to add content via Git — per-entity templates, id/slug rules, publish gates (Arabic) |
+| [`docs/adding-content.ar.md`](docs/adding-content.ar.md) / [`.en.md`](docs/adding-content.en.md) | How to add content via the `/admin` CMS instead |
+| [`docs/editing-text.ar.md`](docs/editing-text.ar.md) / [`.en.md`](docs/editing-text.en.md) | Changing site interface text (menus, labels) |
+| [`docs/deploy.md`](docs/deploy.md) | Cloudflare Workers deploy + domain + `/admin` access control |
 | [`docs/governance.md`](docs/governance.md) | Roles + branch-protection settings (team-only publish) |
 | [`docs/structure.md`](docs/structure.md) | Current repository layout |
+| [`docs/technology-stack.md`](docs/technology-stack.md) | Why each piece of the stack was chosen |
 | [`docs/asbuild.md`](docs/asbuild.md) | Phase-by-phase as-built record vs the build plan |
 | [`docs/issue.md`](docs/issue.md) | Ranked issue / watch register |
-| [`docs/media-and-backup.md`](docs/media-and-backup.md) | R2 media + “rebuild from Git” recovery |
+| [`docs/media-and-backup.md`](docs/media-and-backup.md) | R2 media + "rebuild from Git" recovery |
 
 ## License
 

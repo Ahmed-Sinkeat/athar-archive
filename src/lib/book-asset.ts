@@ -29,10 +29,11 @@ export interface ChapterMeta {
   parentTitle?: string;
   firstPage?: number;
   lastPage?: number;
+  juz?: string;
 }
 
 export interface CatalogEntry { label: string; value: string }
-export interface ChapterManifest { chapters: ChapterMeta[]; catalog: CatalogEntry[] }
+export interface ChapterManifest { chapters: ChapterMeta[]; catalog: CatalogEntry[]; volumes?: string[] }
 
 // Per-chapter book assets (M2): gen-book-chapters.ts writes these at build time
 // so the chapter route never re-fetches + re-splits the whole book per request.

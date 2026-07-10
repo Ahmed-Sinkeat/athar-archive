@@ -123,7 +123,11 @@ function main() {
       const pages = [...c.content.matchAll(/data-page="(\d+)"/g)].map((m) => Number(m[1]));
       return pages.length > 0 ? Math.max(...pages) : undefined;
     };
-    const manifest = a.chapters.map((c) => ({ title: c.title, rawTitle: c.rawTitle, slug: c.slug, parent: c.parent, parentTitle: c.parentTitle, firstPage: firstPageOf(c), lastPage: lastPageOf(c) }));
+    // multi-volume (مجلد) books carry data-juz on each page-sep — one entry
+    // per volume in source order, feeds the reader's page/volume jump control
+    const firstJuzOf = (c: (typeof a.chapters)[number]) => c.content.match(/data-juz="([^"]+)"/)?.[1];
+    const volumes = [...new Set([...book.body.matchAll(/data-juz="([^"]+)"/g)].map((m) => m[1]))];
+    const manifest = a.chapters.map((c) => ({ title: c.title, rawTitle: c.rawTitle, slug: c.slug, parent: c.parent, parentTitle: c.parentTitle, firstPage: firstPageOf(c), lastPage: lastPageOf(c), juz: firstJuzOf(c) }));
     const atharNumbered = isAtharNumberedBook(parseBook(book.body).paragraphs);
     const takhrijFor = (n: number) => (takhrijData as Record<string, TakhrijLink[]>)[`${book.id}:${n}`];
     for (const c of a.chapters) {
@@ -135,7 +139,7 @@ function main() {
     const catalog = extractCatalog(a.chapters);
     fs.writeFileSync(
       path.resolve(`dist/client/content/book/${book.id}.chapters.json`),
-      JSON.stringify({ chapters: manifest, catalog }),
+      JSON.stringify({ chapters: manifest, catalog, volumes }),
       "utf-8",
     );
 
