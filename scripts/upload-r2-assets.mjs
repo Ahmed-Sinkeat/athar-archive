@@ -81,6 +81,19 @@ async function main() {
   );
   console.log(`  ${toUpload.length} to upload, ${files.length - toUpload.length} unchanged (skipped)`);
 
+  // 4. Prune uploader-owned objects (they carry our md5 metadata — anything
+  //    put by other tools isn't in remoteIndex and is never touched) that no
+  //    longer exist in the build. Without this, unpublishing/renaming a book
+  //    leaves its old chapter pages live in R2, still served by the route.
+  const toDelete = [...remoteIndex.keys()].filter((key) => !localIndex.has(key));
+  if (toDelete.length > 0) {
+    console.log(`  ${toDelete.length} stale remote object(s) to delete`);
+    for (let i = 0; i < toDelete.length; i += 1000) {
+      await bucket.delete(toDelete.slice(i, i + 1000));
+    }
+    console.log(`  deleted ${toDelete.length} stale object(s)`);
+  }
+
   if (toUpload.length === 0) {
     await dispose();
     console.log("✓ upload-r2-assets: everything up to date");
