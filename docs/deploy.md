@@ -1,13 +1,40 @@
 # athar-archive — Deployment (Cloudflare Workers)
 
 **Current (2026-07):** the site deploys as a **Worker with Static Assets**, not Pages.
-`@astrojs/cloudflare` emits the Worker (on-demand reading routes + `ASSETS` binding);
-static pages ship as assets alongside it.
+`@astrojs/cloudflare` emits the Worker; static pages ship as assets alongside it.
 
 ```sh
-pnpm build     # validate:content → astro build → copy-content-assets → tafsir-frags/book-chapters (dist/r2-upload) → redirects → headers
-pnpm deploy    # r2:upload (dist/r2-upload → BOOK_ASSETS bucket) → wrangler deploy -c dist/server/wrangler.json → workers.dev host
+pnpm build     # validate:content → gen-takhrij → astro build (prerenders ~10k chapter pages, ~3 min) → copy-content-assets → tafsir-frags → gen-book-chapters (moves pages to dist/r2-upload) → redirects → headers
+pnpm deploy    # r2:upload (dist/r2-upload → BOOK_ASSETS bucket, md5-diffed + prunes stale) → wrangler deploy -c dist/server/wrangler.json
 ```
+
+## Chapter prerender architecture (2026-07-11, the 1102 fix)
+
+The free Workers plan allows ~10ms CPU/request; the old on-demand chapter route
+(knowledge-graph build + markdown render per request) blew it under load →
+error 1102 on a third of requests. Now **nothing renders at request time**:
+
+1. `src/pages/book-pages/[slug]/[chapter].astro` prerenders every chapter of
+   every chunked book at build time (shadow path; analysis in `src/lib/book-build.ts`).
+2. `scripts/gen-book-chapters.ts` (post-build) moves those ~10k HTML files to
+   `dist/r2-upload/pages/book/` and rewrites `/book-pages/` → `/book/` in them
+   (canonical/og URLs). They can't stay static assets — 20k-file deploy ceiling.
+3. `src/pages/book/[slug]/[chapter].ts` (the real URL) is a thin on-demand
+   route: one R2 read, ~1ms CPU. `src/middleware.ts` adds edge caching on top.
+   (Middleware alone can't do this — Astro runs no middleware for URLs that
+   match no route, so the thin route must exist.)
+
+**Ordering rule: R2 upload always BEFORE `wrangler deploy`.** The pages
+reference the build's hashed `/_astro/*.css`; deploying the Worker first would
+serve chapters pointing at deleted CSS. CI does this in the right order.
+
+**What a deploy uploads:**
+
+| Change | R2 upload | Time |
+|---|---|---|
+| add/edit one book (CMS or git) | just that book's chapter pages | seconds |
+| add articles/questions/poems | nothing (static assets only) | — |
+| design change (CSS/JS/layout) | all ~10k pages (~2.4GB) | ~15–45 min |
 
 - Live host: `athar.arthurarchive.com` — a **subdomain**, added via Worker →
   **Settings → Domains & Routes → Add custom domain** (not Pages, and not the
@@ -20,14 +47,15 @@ pnpm deploy    # r2:upload (dist/r2-upload → BOOK_ASSETS bucket) → wrangler 
   to getting a new zone onto Cloudflare in the first place, but the actual
   "add custom domain" step happens on the **Worker**, not a Pages project.
 - Deploys **do** run through GitHub: `.github/workflows/ci.yml` builds, tests, validates,
-  and deploys to Cloudflare (+ refreshes the D1 search index) on every push to `main`,
-  gated on `CLOUDFLARE_API_TOKEN`/`CLOUDFLARE_ACCOUNT_ID` repo secrets. `pnpm deploy`
-  from a local machine also works (same wrangler command) but skips CI's checks —
-  prefer pushing to `main` unless you need a manual out-of-band deploy.
-- Limits to respect: **25 MiB per asset**, **20,000 files per deploy** (see `technology-stack.md`).
-  Book chapter bodies and tafsir fragments no longer count against this — they're
-  uploaded to the `BOOK_ASSETS` R2 bucket by `pnpm deploy` instead of shipped as
-  Worker assets (see `docs/HANDOFF-perf-size.md` §M4).
+  uploads R2 pages, and deploys to Cloudflare (+ refreshes the D1 search index) on every
+  push to `main`, gated on `CLOUDFLARE_API_TOKEN`/`CLOUDFLARE_ACCOUNT_ID` repo secrets.
+  `pnpm deploy` from a local machine also works but skips CI's checks — prefer pushing
+  to `main` unless you need a manual out-of-band deploy.
+- Limits and current usage (2026-07): **25 MiB per asset**; **20,000 files per
+  deploy** (at ~8.5k — chapter pages and tafsir frags in R2 don't count);
+  **R2 10GB free** (at ~2.5GB; doubling the library ≈ 5GB — fine); R2 writes
+  1M/month free (a full design re-upload is ~10k). GitHub only stores source
+  markdown (~200MB) — generated pages never touch it.
 
 ---
 

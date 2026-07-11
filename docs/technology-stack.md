@@ -44,14 +44,14 @@ Add a library only when a concrete feature needs network-driven partial updates 
 ## Cloudflare Workers + Static Assets
 
 ### Purpose
-Hosting: static pages served from Workers Static Assets (CDN), on-demand reading routes rendered by the Worker that `@astrojs/cloudflare` emits, deployed with `wrangler deploy` (`pnpm deploy`). *(An earlier revision of this doc said Cloudflare Pages; the project actually deploys as a Worker — Pages was never set up.)*
+Hosting: static pages served from Workers Static Assets (CDN); book chapter pages prerendered at build time into the `BOOK_ASSETS` R2 bucket and served by a thin Worker route (one R2 read — see `docs/deploy.md`), deployed with `wrangler deploy` (`pnpm deploy`). *(An earlier revision of this doc said Cloudflare Pages; the project actually deploys as a Worker — Pages was never set up.)*
 
 ### Why we chose it
 Global CDN coverage, free static-asset bandwidth, and one deploy artifact for the hybrid split: stable pages (TOCs, home, surahs) as prebuilt assets, heavy reading pages (`/book/<slug>/<chapter>`) rendered on demand at the edge and cached via the Cache API (`src/middleware.ts`). Content markdown is shipped as assets and read by the Worker through the `ASSETS` binding.
 
 ### Hard limits that shape the architecture
 * **25 MiB per static asset** — `tafsir-ibn-kathir.md` sits at ~99% of this; per-chapter content assets are the planned fix (see `HANDOFF-perf-size.md`).
-* **20,000 files per deploy** — why chapter pages are on-demand instead of ~44k prerendered pages.
+* **20,000 files per deploy** — why the ~10k prerendered chapter pages live in R2 instead of shipping as static assets.
 * **Worker bundle ≤ a few MB gzipped** — large JSON indexes must be assets, not imports.
 
 ### Alternatives considered

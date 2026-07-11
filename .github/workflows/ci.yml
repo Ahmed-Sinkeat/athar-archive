@@ -99,6 +99,19 @@ jobs:
       # upload/download step was hitting the repo's Actions storage quota
       # (16.7k files per run). Same job already holds CLOUDFLARE_API_TOKEN
       # for the R2 binding above, so no security separation is lost.
+      # Prerendered chapter pages + tafsir fragments are served from R2 at
+      # request time (see docs/deploy.md). This MUST run before the Worker
+      # deploy and MUST succeed: the pages reference this build's hashed
+      # /_astro/*.css files, so deploying the Worker/assets first (or with a
+      # half-finished upload) would serve chapters pointing at deleted CSS.
+      # Diffs against a remote md5 index (upload-r2-assets.mjs): content-only
+      # pushes upload just the changed book's pages (seconds); a design/CSS
+      # change re-uploads all ~10k pages (~2.4GB — hence the long timeout).
+      - name: Upload chapter pages to R2
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push' && env.CLOUDFLARE_API_TOKEN != ''
+        timeout-minutes: 45
+        run: pnpm r2:upload
+
       - name: Deploy to Cloudflare
         if: github.ref == 'refs/heads/main' && github.event_name == 'push' && env.CLOUDFLARE_API_TOKEN != ''
         uses: cloudflare/wrangler-action@v3
@@ -106,20 +119,6 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: deploy -c dist/server/wrangler.json
-
-      # Book/tafsir chapter bodies are served from R2 at request time, not
-      # baked into the Worker — without this, new/edited book chapters 404
-      # forever no matter how many times you deploy. Runs after deploy so a
-      # slow/stuck upload never delays the site going live. Diffs against a
-      # remote md5 index (upload-r2-assets.mjs) so unchanged files are
-      # skipped — only new/edited chapter bodies actually upload. The
-      # timeout/continue-on-error stay as a safety net for a cold cache
-      # (first run after adding this, or a very large batch of new books).
-      - name: Upload chapter bodies to R2
-        if: github.ref == 'refs/heads/main' && github.event_name == 'push' && env.CLOUDFLARE_API_TOKEN != ''
-        timeout-minutes: 20
-        continue-on-error: true
-        run: pnpm r2:upload
 
       # Loads whatever gen-search-index.ts produced above — normally a small
       # incremental diff (few hundred writes), occasionally a full rebuild
