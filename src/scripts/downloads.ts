@@ -78,20 +78,43 @@ async function startDownload(btn: HTMLElement) {
   const cache = await caches.open(CACHE_NAME);
   let bytes = 0;
   let done = 0;
+  // hashed JS/CSS the downloaded pages reference — without them an offline
+  // page renders but no script boots (no audio player, no TOC). Scraped from
+  // each page's HTML as it's downloaded.
+  // ponytail: misses fonts and dynamically-imported chunks; add if offline
+  // pages visibly break without them.
+  const assets = new Set<string>();
   // ponytail: sequential fetch — simple and gentle on the Worker for big
   // books; parallelize with a concurrency cap if downloads feel too slow.
   for (const url of urls) {
     try {
       const res = await fetch(url);
       if (res.ok) {
-        bytes += (await res.clone().blob()).size;
+        const clone = res.clone();
         await cache.put(url, res);
+        const blob = await clone.blob();
+        bytes += blob.size;
+        if (blob.type.includes("text/html")) {
+          for (const m of (await blob.text()).matchAll(/\/_astro\/[\w.@-]+\.\w+/g)) assets.add(m[0]);
+        }
       }
     } catch {
       // one failed page shouldn't abort the whole download
     }
     done++;
     if (label) label.textContent = `جارٍ التنزيل… ${done}/${urls.length}`;
+  }
+  for (const url of assets) {
+    try {
+      const res = await fetch(url);
+      if (res.ok) {
+        bytes += (await res.clone().blob()).size;
+        await cache.put(url, res);
+        urls.push(url); // recorded in the manifest so removeDownload cleans them up
+      }
+    } catch {
+      // a missing asset shouldn't abort the download
+    }
   }
   const manifest = getManifest();
   manifest[keyOf(kind, id)] = { kind, id, title, urls, bytes, ts: Date.now(), path: location.pathname };

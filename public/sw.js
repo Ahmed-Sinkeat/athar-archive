@@ -1,6 +1,8 @@
-// ponytail: cache-first only for URLs the user explicitly downloaded via
-// downloads.ts (aa-downloads cache) — everything else is untouched, so this
-// never accidentally makes the rest of the site stale offline.
+// Serves the aa-downloads cache (pages + audio + their JS/CSS, stored by
+// downloads.ts). Pages/assets are network-first: online always gets the
+// freshly deployed version, the cache is only a fallback for offline or for
+// hashed assets deleted by a redeploy. Cache-first here caused stale pages
+// pointing at dead /_astro bundles → broken player until a hard reload.
 const CACHE_NAME = "aa-downloads";
 
 self.addEventListener("install", () => self.skipWaiting());
@@ -29,22 +31,36 @@ async function mediaResponse(request) {
   });
 }
 
+async function networkFirst(request) {
+  const cache = await caches.open(CACHE_NAME);
+  let res;
+  try {
+    res = await fetch(request);
+  } catch (err) {
+    const cached = await cache.match(request);
+    if (cached) return cached;
+    throw err;
+  }
+  if (!res.ok) {
+    // e.g. a redeploy deleted the hashed /_astro asset an offline-downloaded
+    // page still references — the copy stored at download time keeps it working
+    const cached = await cache.match(request);
+    if (cached) return cached;
+  }
+  return res;
+}
+
 self.addEventListener("fetch", (event) => {
-  if (event.request.method !== "GET") return;
-  if (event.request.headers.has("range") || event.request.destination === "audio" || event.request.destination === "video") {
-    event.respondWith(mediaResponse(event.request));
+  const req = event.request;
+  if (req.method !== "GET") return;
+  // audio by destination, Range header, or extension (a plain fetch() for the
+  // blob download has destination "" and no Range — catch it by extension)
+  if (req.headers.has("range") || req.destination === "audio" || req.destination === "video" || /\.(opus|mp3|m4a|ogg)(\?|$)/.test(req.url)) {
+    event.respondWith(mediaResponse(req));
     return;
   }
-  event.respondWith(
-    caches.open(CACHE_NAME).then(async (cache) => {
-      const cached = await cache.match(event.request);
-      if (cached) return cached;
-      try {
-        return await fetch(event.request);
-      } catch (err) {
-        if (cached) return cached;
-        throw err;
-      }
-    }),
-  );
+  // other cross-origin traffic (GitHub API from /admin, analytics, …) is none
+  // of our business — intercepting it only adds failure modes
+  if (new URL(req.url).origin !== location.origin) return;
+  event.respondWith(networkFirst(req));
 });

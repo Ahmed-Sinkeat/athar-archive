@@ -55,13 +55,15 @@ const csp = [
 
 // /admin (Sveltia CMS) is self-hosted (public/admin/sveltia-cms.js) so script-src
 // 'self' still holds, but the CMS itself needs to talk to GitHub's API/OAuth
-// worker and preview avatars/images from GitHub — Cloudflare applies _headers
-// blocks in file order, so this one (written after the site-wide block) wins
-// for anything under /admin/*.
+// worker, load Google Fonts, and preview avatars/images from GitHub. NB:
+// Cloudflare does NOT replace headers from a more general _headers rule — it
+// appends, and two CSP headers enforce as their intersection (strictest wins) —
+// so the /admin blocks must `!`-detach the site-wide CSP before setting theirs.
 const adminCsp = [
   "default-src 'self'",
   "script-src 'self'",
-  "style-src 'self' 'unsafe-inline'",
+  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+  "font-src 'self' https://fonts.gstatic.com",
   "img-src 'self' data: https://avatars.githubusercontent.com https://raw.githubusercontent.com",
   "connect-src 'self' https://api.github.com https://raw.githubusercontent.com https://*.workers.dev",
   "frame-src 'self' https://github.com",
@@ -77,9 +79,11 @@ const out = `/*
   Content-Security-Policy: ${csp}
 
 /admin
+  ! Content-Security-Policy
   Content-Security-Policy: ${adminCsp}
 
 /admin/*
+  ! Content-Security-Policy
   Content-Security-Policy: ${adminCsp}
 `;
 
