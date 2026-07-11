@@ -282,21 +282,6 @@ const finalContent = wirePageFootnotes(markdownToSafeHtml(chapter.content), chap
       <!-- sidebar TOC (hidden on mobile via CSS) -->
       <ReaderSidebar label={bookPageCount > 0 ? `فصول الكتاب · ${tocGroups.length} فصل · ${bookPageCount} صفحة` : `فصول الكتاب · ${tocGroups.length} فصل`}>
         {bookPageCount > 0 && <BookPageJump bookHref={hrefFor("book", entry.id)} volumes={volumes} />}
-        <div class="book-info-card">
-          <div class="book-info-title">{entry.data.title}</div>
-          {author && <div class="book-info-author">تأليف <strong>{author}</strong></div>}
-          {entry.data.edition && <div class="book-info-edition">{entry.data.edition}</div>}
-          <div
-            class="book-info-progress"
-            data-book-progress={entry.id}
-            data-book-progress-title={chapter.title}
-            data-book-progress-idx={chIdx + 1}
-            data-book-progress-total={allChapters.length}
-          >
-            <div class="faint" style="font-size: 11.5px;">تقدّمك في الكتاب: {chapter.title} — {chIdx + 1} من {allChapters.length}</div>
-            <div class="bar"><span style={`width: ${Math.round(((chIdx + 1) / allChapters.length) * 100)}%`}></span></div>
-          </div>
-        </div>
         {commentaries.length > 0 && (
           <details class="sharh-picker">
             <summary>
@@ -314,19 +299,6 @@ const finalContent = wirePageFootnotes(markdownToSafeHtml(chapter.content), chap
                 ))}
               </div>
             </div>
-          </details>
-        )}
-        {catalog.length > 0 && (
-          <details class="book-catalog">
-            <summary>عن هذه الطبعة</summary>
-            <dl>
-              {catalog.map((c) => (
-                <>
-                  <dt>{c.label}</dt>
-                  <dd>{c.value}</dd>
-                </>
-              ))}
-            </dl>
           </details>
         )}
         <div class="toc-box has-current">

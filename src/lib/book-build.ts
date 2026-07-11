@@ -6,7 +6,7 @@
 // plan's ~10ms CPU budget and 1102'd under load).
 import fs from "node:fs";
 import path from "node:path";
-import { analyzeBook } from "./chunk";
+import { analyzeBook, deriveVolumes } from "./chunk";
 import { parseBook } from "./chapters";
 import { isAtharNumberedBook, injectAtharAnchors, type TakhrijLink } from "./hadith";
 
@@ -124,14 +124,17 @@ export function buildBookChapters(
     return pages.length > 0 ? Math.max(...pages) : undefined;
   };
   // multi-volume (مجلد) books carry data-juz on each page-sep — one entry
-  // per volume in source order, feeds the reader's page/volume jump control
-  const firstJuzOf = (c: (typeof a.chapters)[number]) => c.content.match(/data-juz="([^"]+)"/)?.[1];
-  const volumes = [...new Set([...body.matchAll(/data-juz="([^"]+)"/g)].map((m) => m[1]))];
+  // per volume in source order, feeds the reader's page/volume jump control.
+  // Books without explicit tags fall back to a synthetic volume derived from
+  // page-number resets (see deriveVolumes) — see book/[slug].astro for the
+  // matching client-side redirect logic that consumes `juz`.
+  const rawJuzOf = (c: (typeof a.chapters)[number]) => c.content.match(/data-juz="([^"]+)"/)?.[1];
+  const { volumes, juzAt } = deriveVolumes(body, a.chapters.map((c) => ({ firstPage: firstPageOf(c) })));
 
   const atharNumbered = isAtharNumberedBook(parseBook(body).paragraphs);
   const takhrijFor = (n: number) => opts.takhrij[`${bookId}:${n}`];
 
-  const chapters = a.chapters.map((c) => {
+  const chapters = a.chapters.map((c, i) => {
     let content = bookId === TAFSIR_AYAH_SOURCE && opts.injectAyat ? opts.injectAyat(c.content) : c.content;
     if (atharNumbered) content = injectAtharAnchors(content, takhrijFor);
     return {
@@ -142,7 +145,7 @@ export function buildBookChapters(
       parentTitle: c.parentTitle,
       firstPage: firstPageOf(c),
       lastPage: lastPageOf(c),
-      juz: firstJuzOf(c),
+      juz: rawJuzOf(c) ?? juzAt(i),
       content,
     };
   });

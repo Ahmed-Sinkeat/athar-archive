@@ -116,6 +116,31 @@ function pageSpan(body: string): number {
   return max > 0 ? max - min + 1 : 0;
 }
 
+// Multi-volume (مجلد) books ideally carry data-juz on each page-sep (epub
+// import --merge-volumes), but most don't — the printed page number itself
+// still resets to ~1 at every volume boundary. When no explicit tags exist,
+// treat any drop in firstPage (walking chapters in source order) as a new
+// volume, so the reader's page/volume jump control still has something to
+// offer instead of silently guessing volume 1 for every page number.
+export function deriveVolumes(
+  body: string,
+  chapters: { firstPage?: number }[],
+): { volumes: string[]; juzAt: (i: number) => string | undefined } {
+  const tagged = [...new Set([...body.matchAll(/data-juz="([^"]+)"/g)].map((m) => m[1]))];
+  if (tagged.length > 0) return { volumes: tagged, juzAt: () => undefined };
+
+  let vol = 0;
+  let prevPage: number | undefined;
+  const juz: (string | undefined)[] = chapters.map((c) => {
+    if (c.firstPage == null) return undefined;
+    if (prevPage != null && c.firstPage < prevPage) vol++;
+    prevPage = c.firstPage;
+    return String(vol);
+  });
+  const volumes = vol > 0 ? [...new Set(juz.filter((j): j is string => j != null))] : [];
+  return { volumes, juzAt: (i) => juz[i] };
+}
+
 // A book chapterizes when it exceeds EITHER the word or chapter-count
 // threshold AND has more than one chapter to split into — unless it's short
 // enough in printed pages that chapter routes would be overkill (config.

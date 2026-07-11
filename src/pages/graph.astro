@@ -143,7 +143,7 @@ const gdata = JSON.stringify({ nodes, links }).replace(/</g, "\\u003c");
     <div class="graph-legend" data-graph-legend>
       {present.map((t) => (
         <label class="graph-leg" data-type={t}>
-          <input type="checkbox" checked={t !== "chapter"} />
+          <input type="checkbox" checked={t !== "chapter" && t !== "article" && t !== "question"} />
           <span class="graph-dot" style={`background:${COLORS[t]}`}></span>
           <span class="graph-leg-name">{LABELS[t] ?? t}</span>
           <span class="faint graph-leg-count">{toArabicDigits(counts[t])}</span>

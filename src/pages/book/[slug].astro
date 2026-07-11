@@ -11,7 +11,7 @@ import RelatedStrip from "../../components/RelatedStrip.astro";
 import Relations from "../../components/Relations.astro";
 import { markdownToSafeHtml } from "../../lib/sanitize";
 import { isPub, loadGraph, personNameMap, notesByAnchor, relatedTo, backlinksList, originOf } from "../../lib/site";
-import { analyzeBook } from "../../lib/chunk";
+import { analyzeBook, deriveVolumes } from "../../lib/chunk";
 import { readBody } from "../../lib/read-body";
 import { hrefFor, toArabicDigits, isMatn, labelFor } from "../../lib/display";
 import { bookLd } from "../../lib/structured-data";
@@ -52,11 +52,14 @@ export async function getStaticPaths() {
     // multi-volume (مجلد) books carry data-juz on each page-sep (epub-import
     // --merge-volumes) — one entry per volume in source order, so the reader
     // jump control can offer a volume picker instead of a raw page number.
-    const firstJuzOf = (c: (typeof a.chapters)[number]) => c.content.match(/data-juz="([^"]+)"/)?.[1];
-    const volumes = [...new Set([...body.matchAll(/data-juz="([^"]+)"/g)].map((m) => m[1]))];
+    // Untagged books still reset their printed page number at each volume
+    // boundary, so deriveVolumes synthesizes one from that (see chunk.ts).
+    const rawJuzOf = (c: (typeof a.chapters)[number]) => c.content.match(/data-juz="([^"]+)"/)?.[1];
+    const { volumes, juzAt } = deriveVolumes(body, a.chapters.map((c) => ({ firstPage: firstPageOf(c) })));
+    const firstJuzOf = (c: (typeof a.chapters)[number], i: number) => rawJuzOf(c) ?? juzAt(i);
     // Phase 2: chunked books → store a light TOC (titles+slugs) only; the body and
     // its annotations live on the on-demand chapter pages, never in this landing's HTML.
-    paths.push({ params: { slug: entry.id }, props: { entry, chunked: a.chunked, toc: a.chapters.map((c) => ({ title: c.title, slug: c.slug, parent: c.parent, parentTitle: c.parentTitle, firstPage: firstPageOf(c), juz: firstJuzOf(c) })), volumes, tocNested: a.chunked ? [] : parseToc(body ?? ""), body: a.chunked ? undefined : renderBody, byAnchor: a.chunked ? {} : byAnchor, audios, commentaries, author: entry.data.person ? names.get(entry.data.person) : undefined, topicLabel: labelFor("book", entry.data), origin: originOf(entry.data, graph), related: relatedTo(entry, graph, names), backlinks: backlinksList(entry, graph, names) } });
+    paths.push({ params: { slug: entry.id }, props: { entry, chunked: a.chunked, toc: a.chapters.map((c, i) => ({ title: c.title, slug: c.slug, parent: c.parent, parentTitle: c.parentTitle, firstPage: firstPageOf(c), juz: firstJuzOf(c, i) })), volumes, tocNested: a.chunked ? [] : parseToc(body ?? ""), body: a.chunked ? undefined : renderBody, byAnchor: a.chunked ? {} : byAnchor, audios, commentaries, author: entry.data.person ? names.get(entry.data.person) : undefined, topicLabel: labelFor("book", entry.data), origin: originOf(entry.data, graph), related: relatedTo(entry, graph, names), backlinks: backlinksList(entry, graph, names) } });
   }
   return paths;
 }
