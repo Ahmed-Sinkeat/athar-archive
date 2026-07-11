@@ -6,6 +6,12 @@ on:
   pull_request:
     branches: [main]
 
+# Deploys must land in commit order — without this, two concurrent runs can
+# finish out of order and an older build overwrites a newer deploy.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
