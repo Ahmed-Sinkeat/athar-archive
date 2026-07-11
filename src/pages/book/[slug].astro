@@ -15,7 +15,7 @@ import { analyzeBook, deriveVolumes } from "../../lib/chunk";
 import { readBody } from "../../lib/read-body";
 import { hrefFor, toArabicDigits, isMatn, labelFor } from "../../lib/display";
 import { bookLd } from "../../lib/structured-data";
-import { parseToc, parseBook } from "../../lib/chapters";
+import { parseToc, parseBook, collapseManuscriptNote } from "../../lib/chapters";
 import { isAtharNumberedBook, injectAtharAnchors, type TakhrijLink } from "../../lib/hadith";
 import takhrijData from "../../data/takhrij.json";
 
@@ -29,7 +29,7 @@ export async function getStaticPaths() {
     const a = analyzeBook(body);
     const atharNumbered = !a.chunked && isAtharNumberedBook(parseBook(body).paragraphs);
     const takhrijFor = (n: number) => (takhrijData as Record<string, TakhrijLink[]>)[`${entry.id}:${n}`];
-    const renderBody = atharNumbered ? injectAtharAnchors(body, takhrijFor) : body;
+    const renderBody = collapseManuscriptNote(atharNumbered ? injectAtharAnchors(body, takhrijFor) : body);
     const byAnchor = notesByAnchor("book", entry.id, graph, names);
     const audios = graph.audioForSource("book", entry.id)
       .filter((x) => x.data.status === "published")

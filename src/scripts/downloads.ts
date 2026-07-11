@@ -50,6 +50,17 @@ function collectUrls(): string[] {
     if (href && href.startsWith("/")) urls.add(href);
   }
   if (urls.size === 0) urls.add(location.pathname);
+  // audio on this page (single track or lesson-series playlist) — cross-origin
+  // R2 URLs, fetchable because the bucket allows this origin via CORS
+  for (const el of document.querySelectorAll<HTMLElement>("[data-audio]")) {
+    const tracks = el.dataset.audioTracks;
+    if (tracks) {
+      try { for (const t of JSON.parse(tracks)) if (t?.url) urls.add(t.url); } catch { /* malformed JSON → skip */ }
+    } else {
+      const src = el.querySelector<HTMLSourceElement>("[data-audio-source]")?.src;
+      if (src) urls.add(src);
+    }
+  }
   return [...urls];
 }
 

@@ -12,6 +12,7 @@
 
 import { getCollection } from "astro:content";
 import Base from "../../../layouts/Base.astro";
+import AudioPlayer from "../../../components/AudioPlayer.astro";
 import Breadcrumbs from "../../../components/Breadcrumbs.astro";
 import StudyBar from "../../../components/StudyBar.astro";
 import InlineNoteGroup from "../../../components/InlineNoteGroup.astro";
@@ -52,6 +53,15 @@ export async function getStaticPaths() {
 
     const byAnchor = notesByAnchor("book", entry.id, graph, names);
     const author = entry.data.person ? names.get(entry.data.person) : undefined;
+    const audios = graph.audioForSource("book", entry.id)
+      .filter((x) => x.data.status === "published")
+      .map((au) => ({
+        url: au.data.url as string,
+        format: au.data.format as "opus" | "mp3" | undefined,
+        duration: (au.data.duration as string | null) ?? null,
+        sizeBytes: (au.data.size_bytes as number | null) ?? null,
+        label: au.data.title as string,
+      }));
     const commentaries = graph.commentariesOf(entry.id)
       .filter(isPub)
       .map((c) => ({ href: hrefFor("book", c.id), title: c.data.title, author: c.data.person ? names.get(c.data.person as string) : "" }));
@@ -60,7 +70,7 @@ export async function getStaticPaths() {
     for (const chapter of built.chapters) {
       paths.push({
         params: { slug: entry.id, chapter: chapter.slug },
-        props: { entry, chapter, manifest, catalog: built.catalog, volumes: built.volumes, byAnchor, author, commentaries },
+        props: { entry, chapter, manifest, catalog: built.catalog, volumes: built.volumes, byAnchor, author, commentaries, audios },
       });
     }
   }
@@ -71,8 +81,11 @@ type HadithNote = { kind: string; label: string; sourceSlug: string; sourceTitle
 const hadithIndex = hadithIndexData as Record<string, HadithNote[]>;
 const HADITH_KIND_CLASS: Record<string, string> = { شرح: "sharh", تخريج: "takhrij", حكم: "takhrij" };
 
-const { entry, chapter, manifest, catalog, volumes, byAnchor, author, commentaries } = Astro.props;
+const { entry, chapter, manifest, catalog, volumes, byAnchor, author, commentaries, audios } = Astro.props;
 const chapterMeta = chapter;
+// open the lesson matching this chapter (audio titles use the كتاب heading text)
+const norm = (s?: string) => (s ?? "").trim();
+const initialTrack = Math.max(0, audios.findIndex((a: { label: string }) => norm(a.label) === norm(chapter.title) || norm(a.label) === norm(chapterMeta.parentTitle)));
 // "المقدمة" is pulled out of the reading flow when it's a catalog block (see
 // gen-book-chapters.ts) — shown as its own panel above the TOC instead, so it
 // no longer competes with real content chapters for a slot in the list.
@@ -229,6 +242,8 @@ const finalContent = wirePageFootnotes(markdownToSafeHtml(chapter.content), chap
               <span class={`pill ${entry.data.transcript_status === 'قيد المراجعة' ? 'tag-accent' : ''}`}>{entry.data.transcript_status}</span>
             </div>
           )}
+
+          {audios.length > 0 && <AudioPlayer sources={audios} title={entry.data.title} subtitle={author} initial={initialTrack} />}
         </div>
 
         <div class="rule-short"></div>

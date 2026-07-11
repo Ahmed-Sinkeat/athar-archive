@@ -128,6 +128,37 @@ function isProseChapterTitle(title: string): boolean {
   return PROSE_CHAPTER_TITLES.has(title.trim().replace(/:$/, "").trim());
 }
 
+// Collapse the recurring «النسخ المعتمدة في تحقيق هذا المتن» bullet block
+// (editorial tahqiq front-matter, not author text) into a <details> box so it
+// stops opening the reading page. Matched by the exact known bullet text only.
+// Page-sep <hr>s inside the block are hoisted after it to keep page markers in
+// the reading flow.
+const MANUSCRIPT_MARKER = /^-\s*النسخ المعتمدة في تحقيق هذا المتن:?\s*$/;
+export function collapseManuscriptNote(body: string): string {
+  const lines = body.split("\n");
+  const start = lines.findIndex((l) => MANUSCRIPT_MARKER.test(l.trim()));
+  if (start === -1) return body;
+  const inner: string[] = [];
+  const hoisted: string[] = [];
+  let end = start + 1;
+  for (; end < lines.length; end++) {
+    const t = lines[end].trim();
+    if (t === "" || t.startsWith("- ")) { inner.push(lines[end]); continue; }
+    if (t.startsWith('<hr class="page-sep"')) { hoisted.push(t); continue; }
+    break;
+  }
+  const block = [
+    '<details class="book-catalog">',
+    "<summary>عن هذه الطبعة والنسخ المعتمدة</summary>",
+    "",
+    ...inner,
+    "",
+    "</details>",
+    ...hoisted,
+  ];
+  return [...lines.slice(0, start), ...block, ...lines.slice(end)].join("\n");
+}
+
 // Label renderers use for the synthetic untitled opening chapter (chunked
 // poems need a card/TOC name; single-page poems just skip the band).
 export const MATLA_TITLE = "مطلع المنظومة";

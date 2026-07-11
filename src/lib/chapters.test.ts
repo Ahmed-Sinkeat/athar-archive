@@ -6,6 +6,7 @@ import {
   parseBook,
   parseToc,
   extractAnchors,
+  collapseManuscriptNote,
 } from "./chapters.js";
 
 describe("slugifyArabic", () => {
@@ -167,3 +168,27 @@ describe("extractAnchors", () => {
   });
 });
 
+
+describe("collapseManuscriptNote", () => {
+  it("wraps the manuscript bullet block in <details> and hoists page-seps", () => {
+    const body = [
+      "## القواعد الأربع",
+      "",
+      "- النسخ المعتمدة في تحقيق هذا المتن:",
+      "",
+      "- نسخة خطية بمركز الملك فيصل.",
+      '  <hr class="page-sep" data-page="30" />',
+      "",
+      "بسم الله الرحمن الرحيم",
+    ].join("\n");
+    const out = collapseManuscriptNote(body);
+    expect(out).toContain("<details class=\"book-catalog\">");
+    expect(out).toContain("عن هذه الطبعة والنسخ المعتمدة");
+    expect(out).not.toContain("- النسخ المعتمدة في تحقيق هذا المتن:");
+    // page-sep survives outside the details block
+    expect(out.indexOf('data-page="30"')).toBeGreaterThan(out.indexOf("</details>"));
+    expect(out).toContain("بسم الله الرحمن الرحيم");
+    // no marker → unchanged
+    expect(collapseManuscriptNote("نص عادي")).toBe("نص عادي");
+  });
+});

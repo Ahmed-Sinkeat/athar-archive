@@ -20,12 +20,14 @@ const verseCountLabel = (n: number) =>
 
 // poem titles fall back to the first hemistich — showing those in the meta row
 // would just repeat the verse below, so keep only real occasion titles
-const strip = (s: string) => s.replace(/[ؐ-ًؚ-ٰٟۖ-ۭـ]/g, "").trim();
+// tashkeel + tatweel only, as \u escapes — raw Arabic ranges got mangled here
+// before and stripped every letter, which blanked ALL card titles
+const strip = (s: string) => s.replace(/[\u0610-\u061A\u064B-\u065F\u0670\u06D6-\u06ED\u0640]/g, "").trim();
 const cardList = await Promise.all(
   allPoems.map(async (p) => {
     const { verses, verseCount } = analyzePoem(await readBody(p as any));
     const title = p.data.title as string;
-    const isVerseTitle = verses[0] && strip(verses[0].sadr).startsWith(strip(title).slice(0, 18));
+    const isVerseTitle = !!verses[0] && strip(title).length > 0 && strip(verses[0].sadr).startsWith(strip(title).slice(0, 18));
     return {
       id: p.id,
       rawTitle: title,

@@ -18,10 +18,12 @@ interface Props {
   sources: Source[];
   title: string;
   subtitle?: string;
+  initial?: number; // preselected track (lesson matching the current chapter)
 }
-const { sources, title, subtitle } = Astro.props;
+const { sources, title, subtitle, initial = 0 } = Astro.props;
 const list = sources.filter((s) => s?.url);
-const cur = list[0];
+const cur = list[initial] ?? list[0];
+const curIdx = list[initial] ? initial : 0;
 const mime = (f?: "opus" | "mp3") => (f === "mp3" ? "audio/mpeg" : "audio/ogg; codecs=opus");
 // multi-track (lesson series): reader.ts swaps the <source> from this JSON and
 // auto-advances on `ended`
@@ -33,7 +35,7 @@ const sizeLabel = cur?.sizeBytes
   : null;
 ---
 {cur && (
-  <div data-audio data-audio-tracks={tracks} data-audio-index={tracks ? "0" : undefined}>
+  <div data-audio data-audio-tracks={tracks} data-audio-index={tracks ? String(curIdx) : undefined}>
     <audio preload="metadata" data-audio-el hidden>
       <source src={cur.url} type={mime(cur.format)} data-audio-source />
     </audio>
@@ -77,7 +79,7 @@ const sizeLabel = cur?.sizeBytes
             </button>
             <div class="audio-speed-menu audio-track-menu" data-audio-list-menu hidden>
               {list.map((s, i) => (
-                <button type="button" data-track={i} aria-pressed={i === 0 ? "true" : "false"}>{s.label || toArabicDigits(i + 1)}</button>
+                <button type="button" data-track={i} aria-pressed={i === curIdx ? "true" : "false"}>{s.label || toArabicDigits(i + 1)}</button>
               ))}
             </div>
           </span>
