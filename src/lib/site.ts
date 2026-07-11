@@ -6,12 +6,21 @@ import { buildGraph, toContentEntries, type Graph } from "./graph";
 import { COLLECTIONS } from "./types";
 import { hrefFor, labelFor } from "./display";
 
+// Rebuilding this from every collection's full body text is expensive (real
+// prod incident: the on-demand book chapter route hit Worker CPU limits under
+// load). Content is fixed for the lifetime of a build or a warm Worker
+// isolate, so cache the built graph at module scope instead of rebuilding it
+// per call/request.
+let cachedGraph: Graph | null = null;
+
 export async function loadGraph(): Promise<Graph> {
+  if (cachedGraph) return cachedGraph;
   const cols = await Promise.all(COLLECTIONS.map((c) => getCollection(c as any)));
   const entries = toContentEntries(
     cols.flat().map((e: any) => ({ collection: e.collection, id: e.id, data: e.data, body: e.body, filePath: e.filePath })),
   );
-  return buildGraph(entries);
+  cachedGraph = buildGraph(entries);
+  return cachedGraph;
 }
 
 export async function personNameMap(): Promise<Map<string, string>> {

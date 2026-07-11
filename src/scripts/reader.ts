@@ -382,11 +382,13 @@ document.addEventListener("click", (e) => {
   const seal = document.querySelector<HTMLElement>("[data-page-loader]");
   if (!bar || !barFill || !seal) return;
 
-  // 150ms was tight enough that ordinary mobile round-trip latency crossed
-  // it on almost every navigation, even cached/static ones — the loader felt
-  // like it was firing constantly instead of only for genuinely slow loads.
-  const SHOW_DELAY = 300;
-  const MIN_VISIBLE = 420;
+  // 150ms, then 300ms, were both tight enough that ordinary mobile round-trip
+  // latency (~400-600ms TTFB even on static pages) crossed them on almost every
+  // navigation — the loader fired constantly and its forced minimum display
+  // time made pages FEEL slower than they were. Only show it for genuinely
+  // slow loads, and once shown just avoid a sub-200ms flash.
+  const SHOW_DELAY = 650;
+  const MIN_VISIBLE = 200;
   let showT = 0, shown = false, shownAt = 0;
 
   document.addEventListener("astro:before-preparation", () => {

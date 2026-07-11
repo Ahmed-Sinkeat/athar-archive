@@ -40,5 +40,7 @@ export default defineConfig({
     locales: ["ar"],
   },
 
-  integrations: [sitemap()]
+  // /book-pages/ is the chapter prerender shadow path (moved to R2 post-build,
+  // served at /book/); it must not leak into the sitemap.
+  integrations: [sitemap({ filter: (page) => !page.includes("/book-pages/") })]
 });

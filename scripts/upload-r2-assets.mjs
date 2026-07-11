@@ -36,7 +36,18 @@ async function buildRemoteIndex(bucket) {
   const index = new Map();
   let cursor;
   do {
-    const page = await bucket.list({ limit: 1000, cursor, include: ["customMetadata"] });
+    // the remote-binding tunnel throws transient 500s — retry with backoff
+    let page;
+    for (let attempt = 1; ; attempt++) {
+      try {
+        page = await bucket.list({ limit: 1000, cursor, include: ["customMetadata"] });
+        break;
+      } catch (e) {
+        if (attempt >= 5) throw e;
+        console.warn(`  list retry ${attempt} (${e.message || e})`);
+        await new Promise((r) => setTimeout(r, attempt * 2000));
+      }
+    }
     for (const obj of page.objects) {
       if (obj.customMetadata?.md5) index.set(obj.key, obj.customMetadata.md5);
     }

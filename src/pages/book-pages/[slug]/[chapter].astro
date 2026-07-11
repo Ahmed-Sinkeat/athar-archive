@@ -1,10 +1,16 @@
 ---
-// On-demand (migration plan, Phase 1): instead of pre-building ~44k chapter pages,
-// the Worker reads the one book from ASSETS, extracts the one chapter, renders, and
-// the middleware edge-caches the result. Book body never enters the static build.
-export const prerender = false;
+// Prerender factory for book chapters (like the poem chapter route, but at a
+// shadow path): every chapter of every chunked book renders here at build time,
+// then scripts/gen-book-chapters.ts moves the HTML into R2 (rewriting
+// /book-pages/ → /book/ in canonical/og URLs) and the thin on-demand route at
+// src/pages/book/[slug]/[chapter].ts serves it with a single R2 read. The old
+// in-route on-demand render rebuilt the knowledge graph + ran markdown→HTML per
+// cold request, which blew the free plan's ~10ms CPU budget (error 1102).
+// Shadow path because prerendered files must leave dist/client (20k-file asset
+// ceiling), and Astro runs no middleware/route at all for URLs matching nothing
+// — the real /book/... path needs a live route to serve from R2.
 
-import { getEntry } from "astro:content";
+import { getCollection } from "astro:content";
 import Base from "../../../layouts/Base.astro";
 import Breadcrumbs from "../../../components/Breadcrumbs.astro";
 import StudyBar from "../../../components/StudyBar.astro";
@@ -16,40 +22,57 @@ import { isPub, loadGraph, personNameMap, notesByAnchor } from "../../../lib/sit
 import { markdownToSafeHtml } from "../../../lib/sanitize";
 import { parseToc } from "../../../lib/chapters";
 import { wirePageFootnotes } from "../../../lib/page-footnotes";
-import { loadChapterManifest, loadChapterBody, notFound } from "../../../lib/book-asset";
+import { readBody } from "../../../lib/read-body";
+import { buildBookChapters, buildAyahInjector, TAFSIR_AYAH_SOURCE } from "../../../lib/book-build";
 import { hrefFor, labelFor, isMatn, toArabicDigits } from "../../../lib/display";
-import { parseHadithOrdinal } from "../../../lib/hadith";
+import { parseHadithOrdinal, type TakhrijLink } from "../../../lib/hadith";
 import hadithIndexData from "../../../data/hadith-index.json";
+import takhrijData from "../../../data/takhrij.json";
+
+export async function getStaticPaths() {
+  const books = ((await getCollection("book")) as any[]).filter(isPub);
+  const graph = await loadGraph();
+  const names = await personNameMap();
+  const takhrij = takhrijData as Record<string, TakhrijLink[]>;
+  // lazy: the injector parses a 93MB build-time JSON — only pay it if the
+  // tafsir book is actually published + chunked
+  let injectAyat: ((c: string) => string) | undefined;
+  const paths: any[] = [];
+
+  for (const entry of books) {
+    const body = await readBody(entry);
+    if (entry.id === TAFSIR_AYAH_SOURCE && !injectAyat) {
+      const quran = (await getCollection("quran")) as any[];
+      injectAyat = buildAyahInjector(
+        await Promise.all(quran.map(async (q) => ({ number: q.data.number as number, body: await readBody(q) }))),
+      );
+    }
+    const built = buildBookChapters(entry.id, body, { takhrij, injectAyat });
+    if (!built) continue;
+
+    const byAnchor = notesByAnchor("book", entry.id, graph, names);
+    const author = entry.data.person ? names.get(entry.data.person) : undefined;
+    const commentaries = graph.commentariesOf(entry.id)
+      .filter(isPub)
+      .map((c) => ({ href: hrefFor("book", c.id), title: c.data.title, author: c.data.person ? names.get(c.data.person as string) : "" }));
+    const manifest = built.chapters.map(({ content: _content, ...meta }) => meta);
+
+    for (const chapter of built.chapters) {
+      paths.push({
+        params: { slug: entry.id, chapter: chapter.slug },
+        props: { entry, chapter, manifest, catalog: built.catalog, volumes: built.volumes, byAnchor, author, commentaries },
+      });
+    }
+  }
+  return paths;
+}
 
 type HadithNote = { kind: string; label: string; sourceSlug: string; sourceTitle: string; sourceHref: string; body: string; grade?: string };
 const hadithIndex = hadithIndexData as Record<string, HadithNote[]>;
 const HADITH_KIND_CLASS: Record<string, string> = { شرح: "sharh", تخريج: "takhrij", حكم: "takhrij" };
 
-const { slug, chapter: chapterSlug } = Astro.params as { slug: string; chapter: string };
-
-const entry = await getEntry("book", slug);
-if (!entry || !isPub(entry)) return notFound();
-
-const manifestData = await loadChapterManifest(slug);
-if (!manifestData) return notFound();
-const { chapters: manifest, catalog, volumes = [] } = manifestData;
-const chapterMeta = manifest.find((c) => c.slug === chapterSlug);
-if (!chapterMeta) return notFound();
-const chapterContent = await loadChapterBody(slug, chapterSlug);
-if (chapterContent == null) return notFound();
-const chapter = { ...chapterMeta, content: chapterContent };
-
-// ponytail: builds the whole knowledge graph per cold request just to read this
-// book's annotations + author name. Fine at current scale and the result is
-// edge-cached (paid once per chapter). If the per-request build gets slow nearer
-// ~10k entities, scope it to getCollection("annotation") filtered to this target.
-const graph = await loadGraph();
-const names = await personNameMap();
-const byAnchor = notesByAnchor("book", entry.id, graph, names);
-const author = entry.data.person ? names.get(entry.data.person) : undefined;
-const commentaries = graph.commentariesOf(entry.id)
-  .filter(isPub)
-  .map(c => ({ href: hrefFor("book", c.id), title: c.data.title, author: c.data.person ? names.get(c.data.person as string) : "" }));
+const { entry, chapter, manifest, catalog, volumes, byAnchor, author, commentaries } = Astro.props;
+const chapterMeta = chapter;
 // "المقدمة" is pulled out of the reading flow when it's a catalog block (see
 // gen-book-chapters.ts) — shown as its own panel above the TOC instead, so it
 // no longer competes with real content chapters for a slot in the list.
