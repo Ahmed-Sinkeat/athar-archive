@@ -150,53 +150,15 @@ collections:
           - { label: "الحجم (بايت)", name: size_bytes, widget: number, required: false, value_type: int }
       - { label: "الأبيات", name: body, widget: markdown, required: false }
 
-  - name: question
-    label: "المسائل"
-    folder: src/content/question
-    create: true
-    delete: true
-    slug: "{{fields.slug}}"
-    fields:
-      - { label: "Slug (id) — لا تغيّره بعد النشر", name: slug, widget: string, meta: true, pattern: ["^[a-z0-9]+(--?[a-z0-9]+)*$", "lowercase a-z0-9, single/double hyphens only"] }
-      - { label: "العنوان", name: title, widget: string }
-      - { label: "الحالة", name: status, widget: select, options: [draft, review, published, archived], default: draft }
-      - { label: "تاريخ النشر", name: published_at, widget: datetime, type: date }
-      - { label: "تاريخ التحديث", name: updated_at, widget: datetime, type: date, required: false }
-      - { label: "أسماء بديلة (redirects)", name: aliases, widget: list, required: false }
-      - { label: "الشخص", name: person, widget: relation, required: false, collection: person, search_fields: [title], value_field: "{{slug}}", display_fields: [title] }
-      - { label: "المواضيع", name: topics, widget: relation, multiple: true, collection: topic, search_fields: [title], value_field: "{{slug}}", display_fields: [title] }
-      - { label: "الصوتية", name: audio, widget: relation, required: false, collection: audio, search_fields: [title], value_field: "{{slug}}", display_fields: [title] }
-      - { label: "المحتوى", name: body, widget: markdown, required: false }
-
   # benefit collection retired — الفوائد (كُناشة) are device-local, not editorial
 
-  - name: article
-    label: "مقالات ومحاضرات"
-    folder: src/content/article
-    create: true
-    delete: true
-    slug: "{{fields.slug}}"
-    fields:
-      - { label: "Slug (id) — لا تغيّره بعد النشر", name: slug, widget: string, meta: true, pattern: ["^[a-z0-9]+(--?[a-z0-9]+)*$", "lowercase a-z0-9, single/double hyphens only"] }
-      - { label: "العنوان", name: title, widget: string }
-      - { label: "الحالة", name: status, widget: select, options: [draft, review, published, archived], default: draft }
-      - { label: "تاريخ النشر", name: published_at, widget: datetime, type: date }
-      - { label: "تاريخ التحديث", name: updated_at, widget: datetime, type: date, required: false }
-      - { label: "أسماء بديلة (redirects)", name: aliases, widget: list, required: false }
-      - { label: "الكاتب", name: person, widget: relation, collection: person, search_fields: [title], value_field: "{{slug}}", display_fields: [title] }
-      - { label: "المواضيع", name: topics, widget: relation, required: false, multiple: true, collection: topic, search_fields: [title], value_field: "{{slug}}", display_fields: [title] }
-      - { label: "الصوتية", name: audio, widget: relation, required: false, collection: audio, search_fields: [title], value_field: "{{slug}}", display_fields: [title] }
-      - { label: "الوصف", name: description, widget: text, required: false }
-      - label: "المرفقات"
-        name: attachments
-        widget: list
-        required: false
-        fields:
-          - { label: "التسمية", name: label, widget: string }
-          - { label: "الرابط", name: url, widget: string }
-          - { label: "الصيغة", name: format, widget: select, required: false, options: [pdf, epub, docx, zip] }
-          - { label: "الحجم (بايت)", name: size_bytes, widget: number, required: false, value_type: int }
-      - { label: "المحتوى", name: body, widget: markdown, required: false }
+  # article (2363 entries) + question (957) intentionally NOT in the CMS:
+  # Sveltia bulk-fetches every entry of every collection from GitHub GraphQL on
+  # load, and those two made the load ~30 MB across queries running 6-13s each —
+  # right at GitHub's gateway timeout, so /admin randomly failed with 502/504.
+  # Both are import-script-managed (telegram-import / blogspot-import), not
+  # hand-edited here. Edit the markdown in src/content/{article,question}/
+  # directly if needed; paste the collections back if CMS editing becomes real.
 
   - name: audio
     label: "الصوتيات"
