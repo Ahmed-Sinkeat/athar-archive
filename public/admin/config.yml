@@ -31,12 +31,12 @@ collections:
     delete: true
     slug: "{{fields.slug}}"
     fields:
-      - { label: "Slug (id) — لا تغيّره بعد النشر", name: slug, widget: string, meta: true, pattern: ["^[a-z0-9]+(--?[a-z0-9]+)*$", "lowercase a-z0-9, single/double hyphens only"] }
+      - { label: "Slug (id) — لا تغيّره بعد النشر", name: slug, widget: string, meta: true, pattern: ["^[a-z0-9]+(--?[a-z0-9]+)*$", "lowercase a-z0-9, single/double hyphens only"], hint: "يُكتب مرة واحدة عند إنشاء مادة جديدة ويصبح رابط الصفحة. عند تعديل مادة موجودة اتركه فارغًا — لا تأثير له." }
       - { label: "العنوان", name: title, widget: string }
-      - { label: "الحالة", name: status, widget: select, options: [draft, review, published, archived], default: draft }
+      - { label: "الحالة", name: status, widget: select, default: draft, options: [{ label: "مسودة", value: draft }, { label: "مراجعة", value: review }, { label: "منشور", value: published }, { label: "مؤرشف", value: archived }] }
       - { label: "تاريخ النشر", name: published_at, widget: datetime, type: date }
       - { label: "تاريخ التحديث", name: updated_at, widget: datetime, type: date, required: false }
-      - { label: "أسماء بديلة (redirects)", name: aliases, widget: list, required: false }
+      - { label: "روابط قديمة (تحويل 301)", name: aliases, widget: list, required: false, hint: "إذا غيّرتَ الـ slug ضَع القديم هنا، فيتحول الرابط القديم إلى الجديد تلقائيًا. ليس للعناوين البديلة." }
       - { label: "السيرة", name: bio, widget: text, required: false }
       - { label: "صورة", name: image, widget: string, required: false }
       - { label: "الميلاد", name: born, widget: string, required: false }
@@ -57,12 +57,12 @@ collections:
     delete: true
     slug: "{{fields.slug}}"
     fields:
-      - { label: "Slug (id) — لا تغيّره بعد النشر", name: slug, widget: string, meta: true, pattern: ["^[a-z0-9]+(--?[a-z0-9]+)*$", "lowercase a-z0-9, single/double hyphens only"] }
+      - { label: "Slug (id) — لا تغيّره بعد النشر", name: slug, widget: string, meta: true, pattern: ["^[a-z0-9]+(--?[a-z0-9]+)*$", "lowercase a-z0-9, single/double hyphens only"], hint: "يُكتب مرة واحدة عند إنشاء مادة جديدة ويصبح رابط الصفحة. عند تعديل مادة موجودة اتركه فارغًا — لا تأثير له." }
       - { label: "العنوان", name: title, widget: string }
-      - { label: "الحالة", name: status, widget: select, options: [draft, review, published, archived], default: draft }
+      - { label: "الحالة", name: status, widget: select, default: draft, options: [{ label: "مسودة", value: draft }, { label: "مراجعة", value: review }, { label: "منشور", value: published }, { label: "مؤرشف", value: archived }] }
       - { label: "تاريخ النشر", name: published_at, widget: datetime, type: date }
       - { label: "تاريخ التحديث", name: updated_at, widget: datetime, type: date, required: false }
-      - { label: "أسماء بديلة (redirects)", name: aliases, widget: list, required: false }
+      - { label: "روابط قديمة (تحويل 301)", name: aliases, widget: list, required: false, hint: "إذا غيّرتَ الـ slug ضَع القديم هنا، فيتحول الرابط القديم إلى الجديد تلقائيًا. ليس للعناوين البديلة." }
       - { label: "الوصف", name: description, widget: text, required: false }
       - { label: "المحتوى", name: body, widget: markdown, required: false }
 
@@ -73,12 +73,12 @@ collections:
     delete: true
     slug: "{{fields.slug}}"
     fields:
-      - { label: "Slug (id) — لا تغيّره بعد النشر", name: slug, widget: string, meta: true, pattern: ["^[a-z0-9]+(--?[a-z0-9]+)*$", "lowercase a-z0-9, single/double hyphens only"] }
+      - { label: "Slug (id) — لا تغيّره بعد النشر", name: slug, widget: string, meta: true, pattern: ["^[a-z0-9]+(--?[a-z0-9]+)*$", "lowercase a-z0-9, single/double hyphens only"], hint: "يُكتب مرة واحدة عند إنشاء مادة جديدة ويصبح رابط الصفحة. عند تعديل مادة موجودة اتركه فارغًا — لا تأثير له." }
       - { label: "العنوان", name: title, widget: string }
-      - { label: "الحالة", name: status, widget: select, options: [draft, review, published, archived], default: draft }
+      - { label: "الحالة", name: status, widget: select, default: draft, options: [{ label: "مسودة", value: draft }, { label: "مراجعة", value: review }, { label: "منشور", value: published }, { label: "مؤرشف", value: archived }] }
       - { label: "تاريخ النشر", name: published_at, widget: datetime, type: date }
       - { label: "تاريخ التحديث", name: updated_at, widget: datetime, type: date, required: false }
-      - { label: "أسماء بديلة (redirects)", name: aliases, widget: list, required: false }
+      - { label: "روابط قديمة (تحويل 301)", name: aliases, widget: list, required: false, hint: "إذا غيّرتَ الـ slug ضَع القديم هنا، فيتحول الرابط القديم إلى الجديد تلقائيًا. ليس للعناوين البديلة." }
       - { label: "التصنيف الأب", name: subject, widget: relation, collection: subject, search_fields: [title], value_field: "{{slug}}", display_fields: [title] }
       - { label: "الوصف", name: description, widget: text, required: false }
       - { label: "المحتوى", name: body, widget: markdown, required: false }
@@ -90,12 +90,12 @@ collections:
     delete: true
     slug: "{{fields.slug}}"
     fields:
-      - { label: "Slug (id) — لا تغيّره بعد النشر", name: slug, widget: string, meta: true, pattern: ["^[a-z0-9]+(--?[a-z0-9]+)*$", "lowercase a-z0-9, single/double hyphens only"] }
+      - { label: "Slug (id) — لا تغيّره بعد النشر", name: slug, widget: string, meta: true, pattern: ["^[a-z0-9]+(--?[a-z0-9]+)*$", "lowercase a-z0-9, single/double hyphens only"], hint: "يُكتب مرة واحدة عند إنشاء مادة جديدة ويصبح رابط الصفحة. عند تعديل مادة موجودة اتركه فارغًا — لا تأثير له." }
       - { label: "العنوان", name: title, widget: string }
-      - { label: "الحالة", name: status, widget: select, options: [draft, review, published, archived], default: draft }
+      - { label: "الحالة", name: status, widget: select, default: draft, options: [{ label: "مسودة", value: draft }, { label: "مراجعة", value: review }, { label: "منشور", value: published }, { label: "مؤرشف", value: archived }] }
       - { label: "تاريخ النشر", name: published_at, widget: datetime, type: date }
       - { label: "تاريخ التحديث", name: updated_at, widget: datetime, type: date, required: false }
-      - { label: "أسماء بديلة (redirects)", name: aliases, widget: list, required: false }
+      - { label: "روابط قديمة (تحويل 301)", name: aliases, widget: list, required: false, hint: "إذا غيّرتَ الـ slug ضَع القديم هنا، فيتحول الرابط القديم إلى الجديد تلقائيًا. ليس للعناوين البديلة." }
       - { label: "المؤلف", name: person, widget: relation, required: false, collection: person, search_fields: [title], value_field: "{{slug}}", display_fields: [title] }
       - { label: "النوع", name: kind, widget: select, required: false, options: ["متن", "مرجع", "مجموع"] }
       - { label: "القسم", name: genre, widget: select, required: false, options: ["قرآن", "حديث", "تراجم"] }
@@ -128,12 +128,12 @@ collections:
     delete: true
     slug: "{{fields.slug}}"
     fields:
-      - { label: "Slug (id) — لا تغيّره بعد النشر", name: slug, widget: string, meta: true, pattern: ["^[a-z0-9]+(--?[a-z0-9]+)*$", "lowercase a-z0-9, single/double hyphens only"] }
+      - { label: "Slug (id) — لا تغيّره بعد النشر", name: slug, widget: string, meta: true, pattern: ["^[a-z0-9]+(--?[a-z0-9]+)*$", "lowercase a-z0-9, single/double hyphens only"], hint: "يُكتب مرة واحدة عند إنشاء مادة جديدة ويصبح رابط الصفحة. عند تعديل مادة موجودة اتركه فارغًا — لا تأثير له." }
       - { label: "العنوان", name: title, widget: string }
-      - { label: "الحالة", name: status, widget: select, options: [draft, review, published, archived], default: draft }
+      - { label: "الحالة", name: status, widget: select, default: draft, options: [{ label: "مسودة", value: draft }, { label: "مراجعة", value: review }, { label: "منشور", value: published }, { label: "مؤرشف", value: archived }] }
       - { label: "تاريخ النشر", name: published_at, widget: datetime, type: date }
       - { label: "تاريخ التحديث", name: updated_at, widget: datetime, type: date, required: false }
-      - { label: "أسماء بديلة (redirects)", name: aliases, widget: list, required: false }
+      - { label: "روابط قديمة (تحويل 301)", name: aliases, widget: list, required: false, hint: "إذا غيّرتَ الـ slug ضَع القديم هنا، فيتحول الرابط القديم إلى الجديد تلقائيًا. ليس للعناوين البديلة." }
       - { label: "الناظم", name: person, widget: relation, collection: person, search_fields: [title], value_field: "{{slug}}", display_fields: [title] }
       - { label: "المواضيع", name: topics, widget: relation, required: false, multiple: true, collection: topic, search_fields: [title], value_field: "{{slug}}", display_fields: [title] }
       - { label: "نوع العمل", name: work_type, widget: select, required: false, options: ["مصدر أصلي", "متن", "منظومة", "شرح", "مختصر", "حاشية", "رسالة", "مجموع", "موسوعة", "تحقيق", "فهرس", "تفسير", "سيرة", "ديوان", "فتاوى", "قصيدة"] }
@@ -167,12 +167,12 @@ collections:
     delete: true
     slug: "{{fields.slug}}"
     fields:
-      - { label: "Slug (id) — لا تغيّره بعد النشر", name: slug, widget: string, meta: true, pattern: ["^[a-z0-9]+(--?[a-z0-9]+)*$", "lowercase a-z0-9, single/double hyphens only"] }
+      - { label: "Slug (id) — لا تغيّره بعد النشر", name: slug, widget: string, meta: true, pattern: ["^[a-z0-9]+(--?[a-z0-9]+)*$", "lowercase a-z0-9, single/double hyphens only"], hint: "يُكتب مرة واحدة عند إنشاء مادة جديدة ويصبح رابط الصفحة. عند تعديل مادة موجودة اتركه فارغًا — لا تأثير له." }
       - { label: "العنوان", name: title, widget: string }
-      - { label: "الحالة", name: status, widget: select, options: [draft, review, published, archived], default: draft }
+      - { label: "الحالة", name: status, widget: select, default: draft, options: [{ label: "مسودة", value: draft }, { label: "مراجعة", value: review }, { label: "منشور", value: published }, { label: "مؤرشف", value: archived }] }
       - { label: "تاريخ النشر", name: published_at, widget: datetime, type: date }
       - { label: "تاريخ التحديث", name: updated_at, widget: datetime, type: date, required: false }
-      - { label: "أسماء بديلة (redirects)", name: aliases, widget: list, required: false }
+      - { label: "روابط قديمة (تحويل 301)", name: aliases, widget: list, required: false, hint: "إذا غيّرتَ الـ slug ضَع القديم هنا، فيتحول الرابط القديم إلى الجديد تلقائيًا. ليس للعناوين البديلة." }
       - { label: "نوع المصدر", name: source_type, widget: select, options: [book, poem, article, question] }
       - { label: "معرّف المصدر", name: source_id, widget: string }
       # file widget: non-technical editors just drop an audio file (uploads to
@@ -190,12 +190,12 @@ collections:
     delete: true
     slug: "{{fields.slug}}"
     fields:
-      - { label: "Slug (id) — لا تغيّره بعد النشر", name: slug, widget: string, meta: true, pattern: ["^[a-z0-9]+(--?[a-z0-9]+)*$", "lowercase a-z0-9, single/double hyphens only"] }
+      - { label: "Slug (id) — لا تغيّره بعد النشر", name: slug, widget: string, meta: true, pattern: ["^[a-z0-9]+(--?[a-z0-9]+)*$", "lowercase a-z0-9, single/double hyphens only"], hint: "يُكتب مرة واحدة عند إنشاء مادة جديدة ويصبح رابط الصفحة. عند تعديل مادة موجودة اتركه فارغًا — لا تأثير له." }
       - { label: "العنوان", name: title, widget: string }
-      - { label: "الحالة", name: status, widget: select, options: [draft, review, published, archived], default: draft }
+      - { label: "الحالة", name: status, widget: select, default: draft, options: [{ label: "مسودة", value: draft }, { label: "مراجعة", value: review }, { label: "منشور", value: published }, { label: "مؤرشف", value: archived }] }
       - { label: "تاريخ النشر", name: published_at, widget: datetime, type: date }
       - { label: "تاريخ التحديث", name: updated_at, widget: datetime, type: date, required: false }
-      - { label: "أسماء بديلة (redirects)", name: aliases, widget: list, required: false }
+      - { label: "روابط قديمة (تحويل 301)", name: aliases, widget: list, required: false, hint: "إذا غيّرتَ الـ slug ضَع القديم هنا، فيتحول الرابط القديم إلى الجديد تلقائيًا. ليس للعناوين البديلة." }
       - { label: "نوع الهدف", name: target_type, widget: select, options: [book, poem, quran] }
       - { label: "معرّف الهدف", name: target_id, widget: string }
       - { label: "الموضع (anchor)", name: anchor, widget: string, hint: "مثال: v5, p3, أو slug عنوان" }
@@ -214,12 +214,12 @@ collections:
     delete: true
     slug: "{{fields.slug}}"
     fields:
-      - { label: "Slug (id) — لا تغيّره بعد النشر", name: slug, widget: string, meta: true, pattern: ["^[a-z0-9]+(--?[a-z0-9]+)*$", "lowercase a-z0-9, single/double hyphens only"] }
+      - { label: "Slug (id) — لا تغيّره بعد النشر", name: slug, widget: string, meta: true, pattern: ["^[a-z0-9]+(--?[a-z0-9]+)*$", "lowercase a-z0-9, single/double hyphens only"], hint: "يُكتب مرة واحدة عند إنشاء مادة جديدة ويصبح رابط الصفحة. عند تعديل مادة موجودة اتركه فارغًا — لا تأثير له." }
       - { label: "العنوان", name: title, widget: string }
-      - { label: "الحالة", name: status, widget: select, options: [draft, review, published, archived], default: draft }
+      - { label: "الحالة", name: status, widget: select, default: draft, options: [{ label: "مسودة", value: draft }, { label: "مراجعة", value: review }, { label: "منشور", value: published }, { label: "مؤرشف", value: archived }] }
       - { label: "تاريخ النشر", name: published_at, widget: datetime, type: date }
       - { label: "تاريخ التحديث", name: updated_at, widget: datetime, type: date, required: false }
-      - { label: "أسماء بديلة (redirects)", name: aliases, widget: list, required: false }
+      - { label: "روابط قديمة (تحويل 301)", name: aliases, widget: list, required: false, hint: "إذا غيّرتَ الـ slug ضَع القديم هنا، فيتحول الرابط القديم إلى الجديد تلقائيًا. ليس للعناوين البديلة." }
       - { label: "الأولوية", name: priority, widget: number, default: 5, min: 1, max: 10, value_type: int }
       - { label: "تاريخ الانتهاء", name: expires_at, widget: datetime, type: date, required: false }
       - { label: "المحتوى", name: body, widget: markdown, required: false }
@@ -231,12 +231,12 @@ collections:
     delete: true
     slug: "{{fields.slug}}"
     fields:
-      - { label: "Slug (id) — لا تغيّره بعد النشر", name: slug, widget: string, meta: true, pattern: ["^[a-z0-9]+(--?[a-z0-9]+)*$", "lowercase a-z0-9, single/double hyphens only"] }
+      - { label: "Slug (id) — لا تغيّره بعد النشر", name: slug, widget: string, meta: true, pattern: ["^[a-z0-9]+(--?[a-z0-9]+)*$", "lowercase a-z0-9, single/double hyphens only"], hint: "يُكتب مرة واحدة عند إنشاء مادة جديدة ويصبح رابط الصفحة. عند تعديل مادة موجودة اتركه فارغًا — لا تأثير له." }
       - { label: "العنوان", name: title, widget: string }
-      - { label: "الحالة", name: status, widget: select, options: [draft, review, published, archived], default: draft }
+      - { label: "الحالة", name: status, widget: select, default: draft, options: [{ label: "مسودة", value: draft }, { label: "مراجعة", value: review }, { label: "منشور", value: published }, { label: "مؤرشف", value: archived }] }
       - { label: "تاريخ النشر", name: published_at, widget: datetime, type: date }
       - { label: "تاريخ التحديث", name: updated_at, widget: datetime, type: date, required: false }
-      - { label: "أسماء بديلة (redirects)", name: aliases, widget: list, required: false }
+      - { label: "روابط قديمة (تحويل 301)", name: aliases, widget: list, required: false, hint: "إذا غيّرتَ الـ slug ضَع القديم هنا، فيتحول الرابط القديم إلى الجديد تلقائيًا. ليس للعناوين البديلة." }
       - { label: "النوع", name: kind, widget: select, options: ["آية", "حديث", "بيت"] }
       - { label: "المصدر/التخريج", name: reference, widget: string, required: false }
       - { label: "نوع المصدر", name: source_type, widget: select, required: false, options: [poem, book, article] }
@@ -250,12 +250,12 @@ collections:
     delete: true
     slug: "{{fields.slug}}"
     fields:
-      - { label: "Slug (id) — لا تغيّره بعد النشر", name: slug, widget: string, meta: true, pattern: ["^[a-z0-9]+(--?[a-z0-9]+)*$", "lowercase a-z0-9, single/double hyphens only"] }
+      - { label: "Slug (id) — لا تغيّره بعد النشر", name: slug, widget: string, meta: true, pattern: ["^[a-z0-9]+(--?[a-z0-9]+)*$", "lowercase a-z0-9, single/double hyphens only"], hint: "يُكتب مرة واحدة عند إنشاء مادة جديدة ويصبح رابط الصفحة. عند تعديل مادة موجودة اتركه فارغًا — لا تأثير له." }
       - { label: "العنوان", name: title, widget: string }
-      - { label: "الحالة", name: status, widget: select, options: [draft, review, published, archived], default: draft }
+      - { label: "الحالة", name: status, widget: select, default: draft, options: [{ label: "مسودة", value: draft }, { label: "مراجعة", value: review }, { label: "منشور", value: published }, { label: "مؤرشف", value: archived }] }
       - { label: "تاريخ النشر", name: published_at, widget: datetime, type: date }
       - { label: "تاريخ التحديث", name: updated_at, widget: datetime, type: date, required: false }
-      - { label: "أسماء بديلة (redirects)", name: aliases, widget: list, required: false }
+      - { label: "روابط قديمة (تحويل 301)", name: aliases, widget: list, required: false, hint: "إذا غيّرتَ الـ slug ضَع القديم هنا، فيتحول الرابط القديم إلى الجديد تلقائيًا. ليس للعناوين البديلة." }
       - { label: "التعريف", name: definition, widget: text, required: false }
       - { label: "المواضيع", name: topics, widget: relation, required: false, multiple: true, collection: topic, search_fields: [title], value_field: "{{slug}}", display_fields: [title] }
       - { label: "أسماء بديلة", name: also_known_as, widget: list, required: false, field: { label: اسم, widget: string } }
