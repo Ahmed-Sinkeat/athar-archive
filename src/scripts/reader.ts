@@ -1121,6 +1121,26 @@ function closeSpeedMenu(fig: HTMLElement) {
   const menu = fig.querySelector<HTMLElement>("[data-audio-speed-menu]");
   if (menu) menu.hidden = true;
 }
+// --- multi-track lesson series: swap the <source> from data-audio-tracks JSON ---
+function setTrack(fig: HTMLElement, idx: number, autoplay: boolean) {
+  const tracks = JSON.parse(fig.dataset.audioTracks || "[]") as { url: string; format?: string; label?: string }[];
+  const t = tracks[idx];
+  const audio = fig.querySelector<HTMLAudioElement>("[data-audio-el]");
+  const source = fig.querySelector<HTMLSourceElement>("[data-audio-source]");
+  if (!t || !audio || !source) return;
+  fig.dataset.audioIndex = String(idx);
+  source.src = t.url;
+  source.type = t.format === "mp3" ? "audio/mpeg" : "audio/ogg; codecs=opus";
+  audio.load();
+  if (autoplay) audio.play().catch(() => {});
+  const label = fig.querySelector<HTMLElement>("[data-audio-track-label]");
+  if (label) label.textContent = t.label || "";
+  const dl = fig.querySelector<HTMLAnchorElement>("[data-audio-dl]");
+  if (dl) dl.href = t.url;
+  fig.querySelectorAll<HTMLElement>("[data-audio-list-menu] [data-track]").forEach((b) =>
+    b.setAttribute("aria-pressed", String(b.dataset.track === String(idx))),
+  );
+}
 document.addEventListener("click", (e) => {
   const t = e.target as HTMLElement;
   const fig = t.closest<HTMLElement>("[data-audio]");
@@ -1160,6 +1180,19 @@ document.addEventListener("click", (e) => {
     document.body.classList.add("has-audio-bar");
     return;
   }
+  const listToggle = t.closest<HTMLElement>("[data-audio-list-toggle]");
+  if (listToggle && fig) {
+    const menu = fig.querySelector<HTMLElement>("[data-audio-list-menu]")!;
+    menu.hidden = !menu.hidden;
+    closeSpeedMenu(fig);
+    return;
+  }
+  const trackBtn = t.closest<HTMLElement>("[data-audio-list-menu] [data-track]");
+  if (trackBtn && fig) {
+    setTrack(fig, Number(trackBtn.dataset.track), true);
+    fig.querySelector<HTMLElement>("[data-audio-list-menu]")!.hidden = true;
+    return;
+  }
   const speedToggle = t.closest<HTMLElement>("[data-audio-speed-toggle]");
   if (speedToggle && fig) {
     const menu = fig.querySelector<HTMLElement>("[data-audio-speed-menu]")!;
@@ -1180,11 +1213,24 @@ document.addEventListener("click", (e) => {
     closeSpeedMenu(fig);
     return;
   }
-  // click outside an open speed popover closes it
-  document.querySelectorAll<HTMLElement>("[data-audio-speed-menu]:not([hidden])").forEach((menu) => {
-    if (!menu.closest("[data-audio]")?.contains(t) || (!menu.contains(t) && !t.closest("[data-audio-speed-toggle]"))) menu.hidden = true;
+  // click outside an open speed/track popover closes it
+  document.querySelectorAll<HTMLElement>("[data-audio-speed-menu]:not([hidden]), [data-audio-list-menu]:not([hidden])").forEach((menu) => {
+    if (!menu.closest("[data-audio]")?.contains(t) || (!menu.contains(t) && !t.closest("[data-audio-speed-toggle], [data-audio-list-toggle]"))) menu.hidden = true;
   });
 });
+// lesson series: when a track ends, move to the next one and keep playing
+document.addEventListener(
+  "ended",
+  (e) => {
+    const el = e.target as HTMLElement;
+    if (!(el instanceof HTMLAudioElement) || !el.hasAttribute("data-audio-el")) return;
+    const fig = el.closest<HTMLElement>("[data-audio]");
+    if (!fig?.dataset.audioTracks) return;
+    const next = Number(fig.dataset.audioIndex || "0") + 1;
+    if (next < (JSON.parse(fig.dataset.audioTracks) as unknown[]).length) setTrack(fig, next, true);
+  },
+  true,
+);
 ["play", "pause", "ended", "timeupdate", "loadedmetadata"].forEach((evt) =>
   document.addEventListener(
     evt,

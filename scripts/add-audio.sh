@@ -37,9 +37,9 @@ DURATION="$(ffprobe -v quiet -show_entries format=duration -of csv=p=0 "$TMP" 2>
 DURATION_FMT="$(printf '%d:%02d' $((${DURATION%.*} / 60)) $((${DURATION%.*} % 60)))"
 
 echo "✓ Encoded: ${SIZE} bytes, duration ${DURATION_FMT}"
-echo "⟳ Uploading to R2: athar-media/${KEY} …"
+echo "⟳ Uploading to R2: athar-media1/${KEY} …"
 
-./node_modules/.bin/wrangler r2 object put "athar-media/${KEY}" \
+./node_modules/.bin/wrangler r2 object put "athar-media1/${KEY}" \
   --file "$TMP" \
   --content-type "audio/ogg; codecs=opus" \
   --remote

@@ -23,6 +23,9 @@ const { sources, title, subtitle } = Astro.props;
 const list = sources.filter((s) => s?.url);
 const cur = list[0];
 const mime = (f?: "opus" | "mp3") => (f === "mp3" ? "audio/mpeg" : "audio/ogg; codecs=opus");
+// multi-track (lesson series): reader.ts swaps the <source> from this JSON and
+// auto-advances on `ended`
+const tracks = list.length > 1 ? JSON.stringify(list.map((s) => ({ url: s.url, format: s.format ?? "opus", label: s.label ?? "" }))) : undefined;
 const sizeLabel = cur?.sizeBytes
   ? cur.sizeBytes < 1024 * 1024
     ? `${Math.round(cur.sizeBytes / 1024)} KB`
@@ -30,7 +33,7 @@ const sizeLabel = cur?.sizeBytes
   : null;
 ---
 {cur && (
-  <div data-audio>
+  <div data-audio data-audio-tracks={tracks} data-audio-index={tracks ? "0" : undefined}>
     <audio preload="metadata" data-audio-el hidden>
       <source src={cur.url} type={mime(cur.format)} data-audio-source />
     </audio>
@@ -64,9 +67,21 @@ const sizeLabel = cur?.sizeBytes
         </button>
         <div class="audio-info">
           <p class="audio-title">{title}</p>
-          {subtitle && <p class="audio-subtitle">{subtitle}</p>}
+          {tracks ? <p class="audio-subtitle" data-audio-track-label>{cur.label}</p> : subtitle && <p class="audio-subtitle">{subtitle}</p>}
         </div>
         <span class="audio-time" dir="ltr" data-audio-time>0:00 / 0:00</span>
+        {tracks && (
+          <span class="audio-speed-wrap">
+            <button type="button" class="audio-speed" data-audio-list-toggle aria-label="قائمة المقاطع">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10"></path></svg>
+            </button>
+            <div class="audio-speed-menu audio-track-menu" data-audio-list-menu hidden>
+              {list.map((s, i) => (
+                <button type="button" data-track={i} aria-pressed={i === 0 ? "true" : "false"}>{s.label || toArabicDigits(i + 1)}</button>
+              ))}
+            </div>
+          </span>
+        )}
         <span class="audio-speed-wrap">
           <button type="button" dir="ltr" class="audio-speed" data-audio-speed-toggle>×1</button>
           <div class="audio-speed-menu" data-audio-speed-menu hidden>

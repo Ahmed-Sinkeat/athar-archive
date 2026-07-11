@@ -826,6 +826,9 @@ body.has-audio-bar .reading-pad, body.has-audio-bar .wrap-matn { padding-bottom:
   cursor: pointer; background: transparent; color: var(--ink-soft); text-align: center; white-space: nowrap; unicode-bidi: isolate;
 }
 .audio-speed-menu button[aria-pressed="true"] { background: var(--paper-2); color: var(--accent); font-weight: 700; }
+/* lesson-series track list — same popover, but long: scroll + start-aligned labels */
+.audio-track-menu { max-height: min(50vh, 340px); overflow-y: auto; min-width: 170px; }
+.audio-track-menu button { text-align: start; }
 .audio-dl {
   flex: none; background: none; border: 1px solid var(--rule-strong); border-radius: var(--radius);
   min-width: 32px; height: 32px; padding: 0 8px; display: inline-flex; gap: 6px; align-items: center; justify-content: center;

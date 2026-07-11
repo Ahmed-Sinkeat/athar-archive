@@ -1,6 +1,6 @@
 ---
 title: "الأمر بالمعروف والنهي عن المنكر للخلال (شرح أبي جعفر الخليفي)"
-status: draft
+status: published
 published_at: 2026-07-11
 person: abu-jafar-al-khalifi
 kind: مرجع
