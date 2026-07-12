@@ -1737,3 +1737,98 @@ html.hide-footnotes .prose section.footnotes { display: none; }
 @media (prefers-reduced-motion: reduce) {
   .page-loader-ring-spin, .page-loader-orn, .page-loader-dots span { animation-duration: .001ms; animation-iteration-count: 1; }
 }
+
+/* ============================================================
+   Mobile app design (≤640px) — Claude Design "Athar Mobile"
+   (project 9dcc547d). App-style chrome: bottom tab bar, bottom
+   sheets, compact header. Desktop (>640px) untouched.
+   ============================================================ */
+.tabbar { display: none; }
+
+@media (max-width: 640px) {
+  /* ---- bottom tab bar (1a) / reading toolbar (1c) ---- */
+  .tabbar {
+    position: fixed; bottom: 0; inset-inline: 0; z-index: 55;
+    display: flex; background: var(--card); border-top: 1px solid var(--line2);
+    padding: 6px 8px calc(6px + env(safe-area-inset-bottom));
+  }
+  .tabbar a, .tabbar button {
+    flex: 1; display: flex; flex-direction: column; align-items: center; gap: 3px;
+    min-height: 44px; padding: 6px 0; background: none; border: none; cursor: pointer;
+    font-family: var(--f-ui); font-size: 10px; font-weight: 500; color: var(--ink3);
+    text-decoration: none; touch-action: manipulation;
+  }
+  .tabbar a[aria-current="page"] { color: var(--brand); font-weight: 700; }
+  .tabbar .tab-orn { font-family: var(--f-disp); font-size: 21px; line-height: 22px; }
+  .tabbar .tab-aa { font-size: 17px; font-weight: 700; line-height: 22px; }
+  .tabbar .tab-aa small { font-size: 11px; }
+
+  /* content must clear the fixed tabbar */
+  body { padding-bottom: calc(62px + env(safe-area-inset-bottom)); }
+
+  /* tabbar replaces the hamburger + topbar clutter */
+  .hamburger { display: none !important; }
+  .topbar-tools [data-action="theme:cycle"],
+  .topbar-tools a[href="/downloads"] { display: none; } /* live in المزيد sheet / tabs now */
+  .topbar-row { padding: 8px 0; }
+  .topbar-bar { padding-top: env(safe-area-inset-top); }
+
+  /* ---- المزيد drawer → bottom sheet (1b) ---- */
+  .drawer-backdrop[data-open] { background: rgba(38, 25, 15, .4); z-index: 60; }
+  .drawer {
+    top: auto; bottom: 0; inset-inline: 0; width: auto; max-height: 78vh; z-index: 61;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0; border-bottom: none;
+    padding: 10px 16px calc(14px + env(safe-area-inset-bottom));
+    transform: translateY(18px); gap: 0;
+  }
+  .drawer::before {
+    content: ""; display: block; width: 40px; height: 4px; border-radius: var(--radius-pill);
+    background: var(--line2); margin: 0 auto 10px;
+  }
+  .drawer a {
+    display: flex; align-items: center; min-height: 50px; padding: 0 2px;
+    font-size: 16px; font-weight: 600; border-bottom: 1px solid var(--line); border-radius: 0;
+  }
+  .drawer-search { border: none; margin-bottom: 0; gap: 12px; }
+
+  /* ---- popovers (settings 1d, filter) → bottom sheets ---- */
+  .popover {
+    position: fixed; top: auto; bottom: 0; inset-inline: 0; z-index: 61;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0; border-bottom: none;
+    padding: 14px 16px calc(18px + env(safe-area-inset-bottom));
+    max-height: 78vh; overflow-y: auto;
+  }
+  .popover .icon-btn, .popover .toggle-btn { min-height: 44px; }
+  .theme-swatches .theme-swatch { width: 44px; height: 44px; }
+
+  /* ---- compact hero → app home (1a) ---- */
+  .hero { padding-top: 12px; }
+  .hero-calligraphy-img { display: none; }
+  .hero-eyebrow { display: none; }
+  .plate-outer, .plate-inner { border: none; padding: 0; background: none; }
+  .divider-orn { display: none; }
+  .browse4-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+
+  /* ---- entity cards → list rows (2a) ---- */
+  .card { padding: 12px 14px; }
+  .card .card-title {
+    font-size: 16px; font-weight: 600;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .card .card-sub { font-size: 12px; color: var(--ink3); }
+  .card .card-cta { display: none; }
+
+  /* ---- compact footer (app has no footer; keep a slim strip) ---- */
+  .footer-grid { display: none; }
+  .site-footer .wrap-mid { padding-block: 6px 10px; }
+  .footer-strip { margin-top: 0; padding-top: 10px; border-top: none; }
+
+  /* page heads a notch tighter on phones */
+  .page-title { font-size: 27px; }
+}
+
+/* installed as an app (PWA/TWA): no browser chrome — a touch more breathing
+   room at the very top so the header doesn't kiss the status bar */
+@media (display-mode: standalone) and (max-width: 640px) {
+  .topbar-bar { padding-top: max(env(safe-area-inset-top), 8px); }
+}

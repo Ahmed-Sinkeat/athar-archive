@@ -322,6 +322,54 @@ const fullTitle = title.includes("أهل الأثر") ? title : `${title} · أ�
       </div>
     </footer>
 
+    <!-- mobile app tab bar (Claude Design "Athar Mobile" 1a/1c) — ≤640px only.
+         Reading pages swap tabs for reading tools per the design. -->
+    <nav class="tabbar" aria-label="التنقل السفلي">
+      {readingPage ? (
+        <>
+          <button data-action="sidebar:mobile-toggle" aria-label="فهرس الفصول">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h10M4 18h13"></path></svg>
+            <span>الفهرس</span>
+          </button>
+          <button data-action="settings:toggle" aria-label="إعدادات العرض">
+            <span class="tab-aa" aria-hidden="true">أ<small>أ</small></span>
+            <span>العرض</span>
+          </button>
+          <button data-action="page:share" aria-label="مشاركة الصفحة">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="12" r="2.5"></circle><circle cx="18" cy="6" r="2.5"></circle><circle cx="18" cy="18" r="2.5"></circle><path d="M8.2 10.8l7.6-3.6M8.2 13.2l7.6 3.6"></path></svg>
+            <span>مشاركة</span>
+          </button>
+          <button data-action="menu:toggle" aria-label="القائمة">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+            <span>المزيد</span>
+          </button>
+        </>
+      ) : (
+        <>
+          <a href="/" aria-current={Astro.url.pathname === "/" ? "page" : undefined}>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5L12 3l9 7.5"></path><path d="M5 9.5V21h14V9.5"></path></svg>
+            <span>الرئيسية</span>
+          </a>
+          <a href="/books" aria-current={activeNav === "books" ? "page" : undefined}>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h9a3 3 0 013 3v13a3 3 0 00-3-3H4z"></path><path d="M20 4h-4v13h4z"></path></svg>
+            <span>الكتب</span>
+          </a>
+          <a href="/quran" aria-current={activeNav === "quran" ? "page" : undefined}>
+            <span class="tab-orn" aria-hidden="true">۞</span>
+            <span>القرآن</span>
+          </a>
+          <a href={searchHref} aria-current={Astro.url.pathname.startsWith("/search") ? "page" : undefined}>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
+            <span>البحث</span>
+          </a>
+          <button data-action="menu:toggle" aria-label="القائمة">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+            <span>المزيد</span>
+          </button>
+        </>
+      )}
+    </nav>
+
     <!-- page-transition loader: top progress bar + center seal, only shown if
          navigation actually takes a moment (see wirePageLoader in reader.ts) -->
     <div class="page-progress" data-page-progress transition:persist>
