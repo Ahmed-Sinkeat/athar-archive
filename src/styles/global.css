@@ -1439,6 +1439,7 @@ html[data-theme="noir"] ::highlight(aa-find)    { background-color: rgba(255, 15
 .lib-tab-dot.k-mistake { background: rgba(155,89,182,0.95); }
 .lib-tab-dot.k-benefit { background: rgba(60,175,110,0.95); }
 .lib-tab-dot.k-note { background: rgba(240,195,60,0.95); }
+.lib-tab-dot.k-saved { background: var(--gold-text); }
 .lib-send { display: block; margin-bottom: 18px; }
 .lib-group-tabs { display: flex; justify-content: center; align-items: center; gap: 8px; margin-bottom: 18px; font-family: var(--font-ui); font-size: 13px; }
 .lib-group-tabs button { font-size: 13px; font-weight: 500; color: var(--ink-soft); background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius-pill); padding: 4px 13px; cursor: pointer; }
@@ -1476,6 +1477,7 @@ html[data-theme="noir"] ::highlight(aa-find)    { background-color: rgba(255, 15
 .lib-entry.k-benefit { border-inline-start-color: var(--green); }
 .lib-entry.k-note { border-inline-start-color: var(--gold); }
 .lib-entry.k-mistake { border-inline-start-color: rgba(155,89,182,0.95); }
+.lib-entry.k-saved { border-inline-start-color: var(--gold-text); }
 .lib-entry.k-benefit .benefit-quote { color: var(--green); }
 .lib-entry.k-note .benefit-quote { color: var(--gold); }
 .lib-entry.k-mistake .benefit-quote { color: rgba(155,89,182,1); }
@@ -1485,6 +1487,7 @@ html[data-theme="noir"] ::highlight(aa-find)    { background-color: rgba(255, 15
 .lib-entry .lib-del:hover, .lib-entry .lib-share:hover { background: var(--rule-strong); color: var(--ink); }
 .lib-entry .lib-del { inset-inline-end: 10px; }
 .lib-entry .lib-share { inset-inline-end: 36px; }
+.lib-entry-title { font-family: var(--font-display); font-weight: 700; font-size: 15.5px; color: var(--ink); padding-inline-end: 34px; }
 /* --- flat list rows (listing pages: الكتب / الشعر / الدروس / الأعلام / …) --- */
 /* Override card-box styles when inside .flat-list so items render as rows */
 .flat-list { list-style: none; padding: 0; margin: 0; border-block-start: 1px solid var(--rule); }
@@ -1800,6 +1803,8 @@ html.hide-footnotes .prose section.footnotes { display: none; }
   .tabbar .tab-orn { font-family: var(--f-disp); font-size: 21px; line-height: 22px; }
   .tabbar .tab-aa { font-size: 17px; font-weight: 700; line-height: 22px; }
   .tabbar .tab-aa small { font-size: 11px; }
+  .tab-save[aria-pressed="true"] { color: var(--gold); }
+  .tab-save[aria-pressed="true"] svg { fill: var(--gold); }
   body { padding-bottom: calc(62px + env(safe-area-inset-bottom)); }
 
   /* ════ المزيد drawer → bottom sheet (1b) ════ */

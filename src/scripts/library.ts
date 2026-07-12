@@ -5,10 +5,23 @@
 // leave the device, unlike benefit/note which just stay in the list.
 
 type Kind = "mistake" | "benefit" | "note";
+type TabKind = Kind | "saved";
 type GroupBy = "book" | "topic" | "person";
 interface Mark { id: string; kind: Kind; text: string; note?: string; title?: string; section?: string; page?: string }
 interface Item extends Mark { path: string }
 interface SourceMeta { path: string; person: string; topics: string[]; title: string }
+// حفظ (bookmark a whole page — see marks.ts's toggleSaved) lives in its own
+// flat store, not aa-marks:<path>: it has no quote/offset, just needs to be
+// enumerable as one list.
+interface SavedPage { path: string; title: string; section?: string; savedAt: number }
+function loadSavedPages(): SavedPage[] {
+  try { return JSON.parse(localStorage.getItem("aa-saved") || "[]"); } catch { return []; }
+}
+function removeSavedPage(path: string) {
+  const list = loadSavedPages().filter((s) => s.path !== path);
+  if (list.length) localStorage.setItem("aa-saved", JSON.stringify(list));
+  else localStorage.removeItem("aa-saved");
+}
 
 // path → {person, topics}, built at build time (benefits.astro) since marks
 // themselves only carry {path, title}. Chapter/page sub-routes
@@ -43,15 +56,17 @@ function removeMark(path: string, id: string) {
   } catch {}
 }
 
-const savedKind = localStorage.getItem("aa-lib-kind");
+const savedTabKind = localStorage.getItem("aa-lib-kind");
 const savedGroupBy = localStorage.getItem("aa-lib-group");
-let kind: Kind = savedKind === "note" || savedKind === "mistake" ? savedKind : "benefit";
+let kind: TabKind =
+  savedTabKind === "note" || savedTabKind === "mistake" || savedTabKind === "saved" ? savedTabKind : "benefit";
 let groupBy: GroupBy = savedGroupBy === "topic" || savedGroupBy === "person" ? savedGroupBy : "book";
 
-const EMPTY_MSG: Record<Kind, string> = {
+const EMPTY_MSG: Record<TabKind, string> = {
   benefit: "لا فوائدَ بعد. ظلِّلْ نصًّا أثناء القراءة ثمّ اختر «فائدة» لإضافته هنا.",
   note: "لا ملاحظاتٍ بعد. ظلِّلْ نصًّا أثناء القراءة ثمّ اختر «ملاحظة» لإضافتها هنا.",
   mistake: "لا أخطاءَ بعد. ظلِّلْ نصًّا أثناء القراءة ثمّ اختر «خطأ» للإبلاغ عنه هنا.",
+  saved: "لا صفحاتٍ محفوظة بعد. من صفحة القراءة، اضغط «حفظ» لإضافتها هنا.",
 };
 
 function sendMistakes(items: Item[]) {
@@ -192,9 +207,40 @@ function render() {
   const listEl = document.querySelector<HTMLElement>("[data-lib-list]");
   const groupTabs = document.querySelector<HTMLElement>("[data-lib-group-tabs]");
   if (!listEl) return;
-  const items = allMarks().filter((m) => m.kind === kind);
   listEl.textContent = "";
-  if (groupTabs) groupTabs.hidden = kind === "mistake";
+  if (groupTabs) groupTabs.hidden = kind === "mistake" || kind === "saved";
+  if (kind === "saved") {
+    const saved = loadSavedPages().sort((a, b) => b.savedAt - a.savedAt);
+    if (!saved.length) {
+      const empty = document.createElement("div");
+      empty.className = "lib-empty";
+      empty.textContent = EMPTY_MSG.saved;
+      listEl.appendChild(empty);
+      return;
+    }
+    const box = document.createElement("div");
+    box.className = "lib-group-box";
+    for (const s of saved) {
+      const a = document.createElement("a");
+      a.className = "lib-entry k-saved";
+      a.href = s.path;
+      const title = document.createElement("div");
+      title.className = "lib-entry-title";
+      title.textContent = s.section ? `${s.title} — ${s.section}` : s.title;
+      a.appendChild(title);
+      const del = document.createElement("button");
+      del.className = "lib-del";
+      del.type = "button";
+      del.setAttribute("aria-label", "إزالة من المحفوظات");
+      del.textContent = "×";
+      del.addEventListener("click", (e) => { e.preventDefault(); removeSavedPage(s.path); render(); });
+      a.appendChild(del);
+      box.appendChild(a);
+    }
+    listEl.appendChild(box);
+    return;
+  }
+  const items = allMarks().filter((m) => m.kind === kind);
   if (kind === "mistake" && items.length) {
     const send = document.createElement("button");
     send.type = "button";
@@ -243,7 +289,7 @@ document.addEventListener("click", (e) => {
   const t = e.target as HTMLElement;
   const tabBtn = t.closest<HTMLElement>("[data-lib-tabs] [data-lib-tab]");
   if (tabBtn) {
-    kind = tabBtn.dataset.libTab as Kind;
+    kind = tabBtn.dataset.libTab as TabKind;
     localStorage.setItem("aa-lib-kind", kind);
     tabBtn.parentElement?.querySelectorAll<HTMLElement>("[data-lib-tab]").forEach((b) => b.setAttribute("aria-pressed", String(b === tabBtn)));
     render();
@@ -265,7 +311,7 @@ function exportMarks() {
   const data: Record<string, unknown> = {};
   for (let i = 0; i < localStorage.length; i++) {
     const k = localStorage.key(i);
-    if (k?.startsWith("aa-marks:")) data[k] = JSON.parse(localStorage.getItem(k) || "[]");
+    if (k?.startsWith("aa-marks:") || k === "aa-saved") data[k] = JSON.parse(localStorage.getItem(k) || "[]");
   }
   const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
   const a = document.createElement("a");
@@ -281,7 +327,17 @@ async function importMarks(file: File) {
   catch { alert("الملف غير صالح."); return; }
   let count = 0;
   for (const [k, v] of Object.entries(data)) {
-    if (!k.startsWith("aa-marks:") || !Array.isArray(v)) continue;
+    if (!Array.isArray(v)) continue;
+    if (k === "aa-saved") {
+      // saved pages have no id — de-dup by path instead
+      const existing = loadSavedPages();
+      const seen = new Set(existing.map((s) => s.path));
+      const merged = [...existing, ...(v as SavedPage[]).filter((s) => !seen.has(s.path))];
+      localStorage.setItem(k, JSON.stringify(merged));
+      count += merged.length;
+      continue;
+    }
+    if (!k.startsWith("aa-marks:")) continue;
     // merge with any existing marks on this device rather than overwrite,
     // de-duped by mark id
     const existing = JSON.parse(localStorage.getItem(k) || "[]") as Mark[];

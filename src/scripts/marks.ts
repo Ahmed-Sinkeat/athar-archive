@@ -373,6 +373,34 @@ function maybeResume() {
   window.addEventListener("touchmove", dismiss, { once: true, passive: true });
 }
 
+// --- حفظ: bookmark the current page for later (distinct from فائدة, which
+// saves a selected quote) — no selection needed, one tap saves the whole
+// book/poem/chapter/article/question. Own store, not aa-marks:<path>: a
+// bookmark isn't anchored to an offset inside the page, it just needs to be
+// enumerable as a flat list (see library.ts's "المحفوظات" tab). ---
+interface Saved { path: string; title: string; section?: string; savedAt: number }
+const SAVED_KEY = "aa-saved";
+function loadSaved(): Saved[] {
+  try { return JSON.parse(localStorage.getItem(SAVED_KEY) || "[]"); } catch { return []; }
+}
+function isSaved(path = docId()): boolean {
+  return loadSaved().some((s) => s.path === path);
+}
+function toggleSaved() {
+  const path = docId();
+  const list = loadSaved();
+  const idx = list.findIndex((s) => s.path === path);
+  if (idx >= 0) list.splice(idx, 1);
+  else list.push({ path, title: pageTitle(), section: pageSection(), savedAt: Date.now() });
+  if (list.length) localStorage.setItem(SAVED_KEY, JSON.stringify(list));
+  else localStorage.removeItem(SAVED_KEY);
+  syncSaveBtn();
+}
+function syncSaveBtn() {
+  const on = isSaved();
+  document.querySelectorAll<HTMLElement>('[data-action="page:save"]').forEach((b) => b.setAttribute("aria-pressed", String(on)));
+}
+
 // jump to a specific mark from /benefits (#m=<id>)
 function jumpToHash() {
   const m = location.hash.match(/^#m=(\w+)$/);
@@ -409,6 +437,7 @@ document.addEventListener("astro:before-swap", saveScroll); // SPA nav won't fir
 // expose the find opener for an optional button (data-action="page:find")
 document.addEventListener("click", (e) => {
   if ((e.target as HTMLElement).closest('[data-action="page:find"]')) { e.preventDefault(); openFind(); }
+  if ((e.target as HTMLElement).closest('[data-action="page:save"]')) { e.preventDefault(); toggleSaved(); }
 });
 
 // --- book chapter progress (تابع القراءة on the book's main page) — which
@@ -450,6 +479,7 @@ function onPage() {
   jumpToHash();
   recordBookProgress();
   showBookResume();
+  syncSaveBtn();
 }
 onPage();
 document.addEventListener("astro:page-load", onPage);

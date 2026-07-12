@@ -289,11 +289,6 @@ const actions: Record<string, () => void> = {
   "search:filter": () => togglePop(filterPop, "search:filter"),
   "search:apply": () => { location.href = buildSearchUrl(); },
   "settings:toggle": () => togglePop(settingsPop, "settings:toggle"),
-  // mobile reading toolbar (tabbar) — native share sheet; clipboard fallback
-  "page:share": () => {
-    if (navigator.share) navigator.share({ title: document.title, url: location.href }).catch(() => {});
-    else navigator.clipboard?.writeText(location.href);
-  },
   // topbar "chapter/heading list" icon → open the current page's sidebar
   // popup (ReaderSidebar.astro's <details>, mobile-only via CSS).
   "sidebar:mobile-toggle": () => {
