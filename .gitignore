@@ -25,3 +25,10 @@ scripts/pagefind-spike/site/pagefind/
 # Extracted/raw books for import
 books/
 import-output/
+
+# build data fetched from R2 (pnpm data:fetch) — was git LFS, quota kept killing CI
+src/data/quran-tafsir-index.json
+src/data/hadith-index.json
+src/data/takhrij.json
+src/content/book/tafsir-ibn-kathir.md
+src/content/book/tafsir-muyassar.md

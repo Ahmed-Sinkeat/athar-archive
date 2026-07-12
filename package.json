@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "new": "node scripts/new-content.mjs",
+    "data:fetch": "node scripts/fetch-build-data.mjs",
     "import:epub": "tsx scripts/epub-import.ts",
     "import:telegram": "tsx scripts/telegram-import.ts",
     "import:blogspot": "tsx scripts/blogspot-import.ts",
