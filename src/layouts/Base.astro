@@ -82,6 +82,13 @@ const pageHref = (page: number) => {
 const juzOptions = JUZ_START_PAGE.map((page, i) => ({ n: i + 1, href: pageHref(page) }));
 
 const fullTitle = title.includes("أهل الأثر") ? title : `${title} · أهل الأثر`;
+
+// Mobile reading-page compact header (design 1c): back to the section hub +
+// the work's title, with the chapter (if any) as a subtitle. Chapter pages
+// format title as "chapter · work" — split on that; single-page reading
+// views (whole book/poem/article/question) have no " · " and no subtitle.
+const readerHref = navAll.find((n) => n.id === activeNav)?.href ?? "/";
+const [readerSub, readerMain] = title.includes(" · ") ? title.split(" · ") : [undefined, title];
 ---
 
 <!doctype html>
@@ -139,8 +146,22 @@ const fullTitle = title.includes("أهل الأثر") ? title : `${title} · أ�
     )}
   </head>
   <body>
-    <header class="topbar" transition:persist>
+    <header class="topbar" data-reading={readingPage ? "1" : undefined} transition:persist>
       <div class="topbar-bar">
+      <!-- mobile-only reading header (design 1c): back to hub + work title
+           (+ chapter subtitle) + jump-to-chapter-list, replaces the brand row -->
+      <div class="wrap topbar-reading-row">
+        <a href={readerHref} class="icon-btn" aria-label="عودة">
+          <svg width="12" height="20" viewBox="0 0 12 20" fill="none" aria-hidden="true"><path d="M10 2l-8 8 8 8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </a>
+        <div class="topbar-reading-title">
+          <span class="topbar-reading-main">{readerMain}</span>
+          {readerSub && <span class="topbar-reading-sub">{readerSub}</span>}
+        </div>
+        <button class="icon-btn" data-action="sidebar:mobile-toggle" aria-label="فهرس الفصول">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h10M4 18h13"></path></svg>
+        </button>
+      </div>
       <div class="wrap topbar-row">
         <button class="hamburger" data-action="menu:toggle" aria-label="القائمة" aria-expanded="false" aria-controls="mobile-drawer">
           <span aria-hidden="true">☰</span> <span class="hamburger-label">القائمة</span>
