@@ -3,7 +3,6 @@ title: "التعليق على ثلاثة الأصول"
 status: published
 published_at: 2026-07-12
 person: abu-jafar-al-khalifi
-kind: شرح
 sharh_of: al-usul-al-thalathah
 ---
 
