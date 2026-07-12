@@ -198,6 +198,18 @@ img { max-width: 100%; }
 }
 .tag-accent { color: var(--accent); }
 
+/* --- PWA install banner (install-banner.ts) --- */
+.install-banner {
+  position: fixed; inset-inline: 12px; bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+  z-index: 60; display: flex; align-items: center; gap: 12px;
+  background: var(--surface); border: 1px solid var(--rule-strong); border-radius: var(--radius-lg);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.18); padding: 12px 14px; max-width: 480px; margin-inline: auto;
+}
+.install-banner[hidden] { display: none; }
+.install-banner span { font-family: var(--font-ui); font-size: 13.5px; color: var(--ink); flex: 1; }
+.install-banner-actions { display: flex; align-items: center; gap: 6px; flex: none; }
+.install-banner .btn-accent { padding: 7px 16px; font-size: 13px; }
+
 /* --- hadith grading chips (/hadith hub) --- */
 .grade-facet { display: flex; flex-wrap: wrap; gap: 8px; }
 .grade {
@@ -209,9 +221,15 @@ img { max-width: 100%; }
 .tag-verdigris { color: var(--verdigris); }
 
 /* ---------- header ---------- */
-.topbar { position: sticky; top: 0; z-index: 40; background: var(--paper); border-bottom: 1px solid var(--rule); transition: transform 0.25s ease; }
-/* auto-hide on scroll-down, reappear on scroll-up (reader.ts) */
-.topbar.topbar-hidden { transform: translateY(-100%); }
+.topbar { position: sticky; top: 0; z-index: 40; }
+/* auto-hide on scroll-down, reappear on scroll-up (reader.ts). The transform
+   lives on .topbar-bar (a plain positioned div), not on .topbar itself —
+   sticky + transform on the same element is broken in iOS Safari: WebKit
+   miscomputes the sticky offset once a transform is applied (worse with the
+   dynamic toolbar resizing the viewport mid-scroll), leaving the header
+   painted stuck mid-page instead of pinned to the top. */
+.topbar-bar { position: relative; background: var(--paper); border-bottom: 1px solid var(--rule); transition: transform 0.25s ease; }
+.topbar.topbar-hidden .topbar-bar { transform: translateY(-100%); }
 /* single-line chrome: brand (start) · nav (center) · search + settings (end) */
 .topbar-row { display: flex; align-items: center; gap: 14px; padding: 11px 0; }
 /* narrow phones: hamburger pill + brand + sidebar toggle can outgrow the row
@@ -271,6 +289,7 @@ img { max-width: 100%; }
 /* theme swatches (settings popover) */
 .theme-swatches { display: flex; gap: 10px; padding: 4px 2px 12px; }
 .drawer-swatches { border-top: 1px solid var(--rule); margin-top: 6px; padding-top: 12px; justify-content: center; }
+.install-drawer-btn { width: 100%; text-align: center; margin-top: 10px; }
 .theme-swatch {
   width: 30px; height: 30px; border-radius: 50%; border: 2px solid transparent;
   cursor: pointer; padding: 0; position: relative;

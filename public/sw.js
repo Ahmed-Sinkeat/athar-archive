@@ -5,7 +5,10 @@
 // pointing at dead /_astro bundles → broken player until a hard reload.
 const CACHE_NAME = "aa-downloads";
 
-self.addEventListener("install", () => self.skipWaiting());
+self.addEventListener("install", (e) => {
+  e.waitUntil(caches.open(CACHE_NAME).then((c) => c.add("/offline.html")));
+  self.skipWaiting();
+});
 self.addEventListener("activate", (e) => e.waitUntil(self.clients.claim()));
 
 // Media needs Range support: answering a Range request with a full 200 from
@@ -39,6 +42,7 @@ async function networkFirst(request) {
   } catch (err) {
     const cached = await cache.match(request);
     if (cached) return cached;
+    if (request.mode === "navigate") return cache.match("/offline.html");
     throw err;
   }
   if (!res.ok) {
