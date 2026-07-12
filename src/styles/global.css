@@ -1740,13 +1740,33 @@ html.hide-footnotes .prose section.footnotes { display: none; }
 
 /* ============================================================
    Mobile app design (≤640px) — Claude Design "Athar Mobile"
-   (project 9dcc547d). App-style chrome: bottom tab bar, bottom
-   sheets, compact header. Desktop (>640px) untouched.
+   (project 9dcc547d). Faithful, screen-by-screen: values copied
+   from the mockup markup. Desktop (>640px) untouched.
    ============================================================ */
 .tabbar { display: none; }
+.mobile-search-btn { display: none; }
+.browse4-orn { display: none; }
 
 @media (max-width: 640px) {
-  /* ---- bottom tab bar (1a) / reading toolbar (1c) ---- */
+  /* ════ app header (1a) ════ */
+  .topbar-bar { background: var(--bg); border-bottom: 1px solid var(--line); padding-top: env(safe-area-inset-top); }
+  .topbar-row { padding: 10px 0 8px; gap: 8px; }
+  .brand-name { font-size: 24px; line-height: 1.1; }
+  .brand-sub { font-family: var(--f-ui); font-size: 11px; letter-spacing: .3px; color: var(--gold); margin-top: 1px; }
+  /* 44px square icon buttons, card bg, line2 border — mockup buttons */
+  .icon-btn, .topbar-sidebar-tools .icon-btn {
+    width: 44px; height: 44px; border-radius: var(--radius);
+    background: var(--card); border-color: var(--line2);
+  }
+  .mobile-search-btn { display: grid; }
+  .quran-jump { display: none !important; }
+  .topbar-tools a[href="/downloads"] { display: none; } /* lives in المزيد sheet */
+  .hamburger { display: none !important; }
+  /* reading progress: 3px hairline on inset (1c) */
+  .progress-track { height: 3px; background: var(--inset); }
+  .progress-bar { background: var(--brand); }
+
+  /* ════ bottom tab bar (1a) / reading toolbar (1c) ════ */
   .tabbar {
     position: fixed; bottom: 0; inset-inline: 0; z-index: 55;
     display: flex; background: var(--card); border-top: 1px solid var(--line2);
@@ -1762,18 +1782,9 @@ html.hide-footnotes .prose section.footnotes { display: none; }
   .tabbar .tab-orn { font-family: var(--f-disp); font-size: 21px; line-height: 22px; }
   .tabbar .tab-aa { font-size: 17px; font-weight: 700; line-height: 22px; }
   .tabbar .tab-aa small { font-size: 11px; }
-
-  /* content must clear the fixed tabbar */
   body { padding-bottom: calc(62px + env(safe-area-inset-bottom)); }
 
-  /* tabbar replaces the hamburger + topbar clutter */
-  .hamburger { display: none !important; }
-  .topbar-tools [data-action="theme:cycle"],
-  .topbar-tools a[href="/downloads"] { display: none; } /* live in المزيد sheet / tabs now */
-  .topbar-row { padding: 8px 0; }
-  .topbar-bar { padding-top: env(safe-area-inset-top); }
-
-  /* ---- المزيد drawer → bottom sheet (1b) ---- */
+  /* ════ المزيد drawer → bottom sheet (1b) ════ */
   .drawer-backdrop[data-open] { background: rgba(38, 25, 15, .4); z-index: 60; }
   .drawer {
     top: auto; bottom: 0; inset-inline: 0; width: auto; max-height: 78vh; z-index: 61;
@@ -1791,7 +1802,7 @@ html.hide-footnotes .prose section.footnotes { display: none; }
   }
   .drawer-search { border: none; margin-bottom: 0; gap: 12px; }
 
-  /* ---- popovers (settings 1d, filter) → bottom sheets ---- */
+  /* ════ popovers (settings 1d, filter) → bottom sheets ════ */
   .popover {
     position: fixed; top: auto; bottom: 0; inset-inline: 0; z-index: 61;
     border-radius: var(--radius-lg) var(--radius-lg) 0 0; border-bottom: none;
@@ -1801,15 +1812,88 @@ html.hide-footnotes .prose section.footnotes { display: none; }
   .popover .icon-btn, .popover .toggle-btn { min-height: 44px; }
   .theme-swatches .theme-swatch { width: 44px; height: 44px; }
 
-  /* ---- compact hero → app home (1a) ---- */
-  .hero { padding-top: 12px; }
-  .hero-calligraphy-img { display: none; }
-  .hero-eyebrow { display: none; }
-  .plate-outer, .plate-inner { border: none; padding: 0; background: none; }
-  .divider-orn { display: none; }
+  /* ════ home (1a) ════ */
+  .hero { padding: 14px 16px 0; }
+  .hero-eyebrow, .hero-lede, .hero-calligraphy-img, .divider-orn, .hero-pills { display: none; }
+  .hero .plate-outer, .hero .plate-inner { border: none; padding: 0; background: none; box-shadow: none; }
+  /* search → inset pill, 48px (mockup) */
+  .hero form { display: flex; }
+  .hero form > div { flex: 1; display: flex; }
+  .hero input[type="text"] {
+    flex: 1; height: 48px; background: var(--inset); border: 1px solid var(--line);
+    border-radius: var(--radius-pill); padding: 0 16px;
+    font-family: var(--f-ui); font-size: 15px; color: var(--ink);
+  }
+  .hero input[type="text"]::placeholder { color: var(--ink3); }
+  .hero .hero-filter, .hero .btn-accent { display: none; }
+  /* section labels: 13px/700 ink2, no rule line (mockup h2) */
+  .home-section { margin-top: 20px; }
+  .section-head { margin-bottom: 10px; }
+  .section-head h2 {
+    font-family: var(--f-ui); font-size: 13px; font-weight: 700; color: var(--ink2);
+    letter-spacing: 0; text-transform: none;
+  }
+  .section-head .rule-fill { display: none; }
+  /* 2×2 section cards with ornament glyphs (mockup) */
   .browse4-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .browse4-card {
+    background: var(--card); border: 1px solid var(--line2); border-radius: var(--radius-lg);
+    padding: 14px; display: flex; flex-direction: column; gap: 8px;
+  }
+  .browse4-orn { display: block; font-family: var(--f-disp); font-size: 22px; line-height: 1; }
+  .accent-brand .browse4-orn { color: var(--brand); }
+  .accent-gold .browse4-orn { color: var(--gold); }
+  .accent-green .browse4-orn { color: var(--green); }
+  .accent-copper .browse4-orn { color: var(--copper); }
+  .browse4-card-head { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+  .browse4-card-title { font-family: var(--f-disp); font-size: 19px; font-weight: 700; color: var(--ink); }
+  .browse4-card-meta { font-family: var(--f-ui); font-size: 12px; color: var(--ink3); }
+  .browse4-card-sub { display: none; }
+  /* weekly picks: one card per row, bordered kicker pill (mockup) */
+  .weekly-grid { grid-template-columns: 1fr; gap: 10px; }
+  .weekly-card { background: var(--card); border: 1px solid var(--line2); border-radius: var(--radius-lg); padding: 16px; }
+  .weekly-kicker {
+    display: inline-block; font-family: var(--f-ui); font-size: 11px; font-weight: 700;
+    border: 1px solid currentColor; border-radius: var(--radius-pill); padding: 3px 10px; margin-bottom: 10px;
+  }
+  .weekly-text { font-family: var(--f-matn); font-size: 18px; line-height: 1.9; }
+  /* latest additions: divided rows (mockup) */
+  .latest-row { padding: 12px 2px; border-bottom: 1px solid var(--line); min-height: 44px; }
+  .latest-name {
+    font-family: var(--f-matn); font-size: 15px; font-weight: 600;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .stats-section { display: none; }
 
-  /* ---- entity cards → list rows (2a) ---- */
+  /* ════ list/browse pages (2a) — books, poems, hadith, articles, questions ════ */
+  .page-title { font-size: 27px; }
+  .hub-lede { font-size: 12px; }
+  /* filter bar selects → compact pill-like controls (mockup's chip row is a
+     select-driven filter here, not a fixed static set — kept as <select> to
+     avoid touching browse-filter.ts's behavior, restyled to read as chips) */
+  .browse-filter-bar { padding: 10px 12px; gap: 8px; border-radius: var(--radius-lg); }
+  .browse-filter {
+    font-size: 13px; padding: 7px 14px; border-radius: var(--radius-pill);
+    border-color: var(--line2); min-height: 32px;
+  }
+  .browse-view-toggle button { padding: 9px 16px; min-height: 44px; }
+
+  /* row cards: matn-font title, outline pills, chevron — mockup 2a */
+  .flat-list .card, .flat-row {
+    padding: 13px 14px; gap: 12px; min-height: 44px; border-bottom-color: var(--line);
+  }
+  .flat-list .card-title, .flat-row-title {
+    font-family: var(--f-matn); font-size: 16px; font-weight: 600;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .flat-list .card-sub, .flat-row-sub { font-size: 12px; color: var(--ink3); }
+  .flat-list .pill, .flat-row .pill {
+    font-size: 10px; font-weight: 700; padding: 2px 8px; min-width: 0;
+    background: none; border-color: currentColor;
+  }
+  .flat-list .card::after { font-size: 14px; }
+
+  /* ════ entity cards (grids outside flat-list — related strips etc.) ════ */
   .card { padding: 12px 14px; }
   .card .card-title {
     font-size: 16px; font-weight: 600;
@@ -1818,13 +1902,43 @@ html.hide-footnotes .prose section.footnotes { display: none; }
   .card .card-sub { font-size: 12px; color: var(--ink3); }
   .card .card-cta { display: none; }
 
-  /* ---- compact footer (app has no footer; keep a slim strip) ---- */
+  /* ════ poem verses (2c) — stacked hemistichs, no side-by-side room on phones ════ */
+  .verse-body { grid-template-columns: 1fr; gap: 4px; }
+  .sadr, .ajz { font-size: calc(22px * var(--reading-scale)); line-height: 1.9; text-align: right; }
+  .verse-hemistich-rule { display: none; }
+
+  /* ════ reading pages (1c) — book/matn chapter view ════ */
+  .reading-pad { padding-block: 10px 30px; }
+  .reader-head .eyebrow { display: none; } /* chapter tabbar back-button covers book nav */
+  .reader-title { font-size: calc(23px * var(--reading-scale)) !important; line-height: 1.5; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .reader-byline { font-size: 12px; margin-top: 6px; }
+  .reader-subtitle { font-size: 11px; }
+  .rule-short { margin: 14px auto 4px; }
+
+  /* ════ search (2b) ════ */
+  .search-page { padding-top: 4px; }
+  .search-bar { height: 48px; border-radius: var(--radius-pill); background: var(--inset); border-color: var(--line); }
+  .search-input { font-family: var(--f-ui); font-size: 15px; }
+  .search-submit { border-radius: var(--radius-pill); padding: 0 20px; height: 40px; margin: 5px; }
+  .search-scope-row { margin-bottom: 18px; }
+  .search-scope-chip { font-size: 12px; font-weight: 600; padding: 7px 14px; border-color: var(--line2); }
+  .search-scope-chip[aria-pressed="true"] { background: var(--brand); border-color: var(--brand); color: var(--onbrand); font-weight: 700; }
+  .search-hit {
+    border-inline-end-width: 1px; border-radius: var(--radius-lg); border-color: var(--line2);
+    background: var(--card); padding: 12px 14px;
+  }
+  .search-hit-kicker { font-size: 12px; font-weight: 700; letter-spacing: 0; margin-bottom: 4px; }
+  .search-hit-snippet { font-family: var(--f-matn); font-size: 15px; line-height: 1.8; }
+
+  /* ════ downloads (2d) ════ */
+  .dl-row { padding: 13px 2px; min-height: 44px; }
+  .dl-row-title { font-family: var(--f-matn); font-size: 16px; font-weight: 600; }
+
+  /* ════ chrome trims ════ */
   .footer-grid { display: none; }
   .site-footer .wrap-mid { padding-block: 6px 10px; }
   .footer-strip { margin-top: 0; padding-top: 10px; border-top: none; }
-
-  /* page heads a notch tighter on phones */
-  .page-title { font-size: 27px; }
+  .page-title { font-size: 28px; }
 }
 
 /* installed as an app (PWA/TWA): no browser chrome — a touch more breathing

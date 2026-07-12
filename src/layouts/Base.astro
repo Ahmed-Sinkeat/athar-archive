@@ -166,6 +166,10 @@ const fullTitle = title.includes("أهل الأثر") ? title : `${title} · أ�
         </nav>
 
         <div class="topbar-tools">
+          <!-- mobile app header (design 1a): search icon button — desktop hides it -->
+          <a class="icon-btn mobile-search-btn" href={searchHref} aria-label="البحث">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
+          </a>
           <!-- top-bar search removed: search now lives per-section (listing pages),
                on the home hero, and in the drawer. -->
           <!-- Quran juz/page jump: only shown on /quran/* pages (reader.ts onPage) -->
