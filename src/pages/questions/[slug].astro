@@ -58,7 +58,7 @@ const fixAnswer = (h: string | null) =>
 const path = `/questions/${entry.id}`;
 const answerText = body.replace(/[#*_`>]/g, "").replace(/\s+/g, " ").trim().slice(0, 4000);
 const jsonLd = questionLd({
-  title: entry.data.title, answerText, path,
+  title: entry.data.title, answerText, path, publishedAt: entry.data.published_at,
   crumbs: [{ name: "الرئيسية", path: "/" }, { name: "المسائل", path: "/questions" }, { name: entry.data.title, path }],
 });
 

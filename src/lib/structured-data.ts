@@ -141,7 +141,7 @@ export function articleLd(o: { title: string; authorId?: string; authorName?: st
   );
 }
 
-export function questionLd(o: { title: string; answerText: string; path: string; crumbs: Crumb[] }) {
+export function questionLd(o: { title: string; answerText: string; path: string; publishedAt: Date; crumbs: Crumb[] }) {
   return graph(
     {
       "@type": "QAPage",
@@ -149,7 +149,14 @@ export function questionLd(o: { title: string; answerText: string; path: string;
       mainEntity: {
         "@type": "Question",
         name: o.title,
-        acceptedAnswer: { "@type": "Answer", text: o.answerText },
+        text: o.title, // every question here has exactly one answer, so answerCount is always 1
+        answerCount: 1,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: o.answerText,
+          url: absUrl(o.path),
+          datePublished: o.publishedAt.toISOString(),
+        },
       },
     },
     breadcrumbList(o.crumbs),
