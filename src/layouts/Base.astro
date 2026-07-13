@@ -149,7 +149,10 @@ const [readerSub, readerMain] = title.includes(" · ") ? title.split(" · ") : [
     <header class="topbar" data-reading={readingPage ? "1" : undefined} transition:persist>
       <div class="topbar-bar">
       <!-- mobile-only reading header (design 1c): back to hub + work title
-           (+ chapter subtitle) + jump-to-chapter-list, replaces the brand row -->
+           (+ chapter subtitle) + settings (theme/font/width — the one and
+           only settings entry point on mobile, see .settings-pop). The
+           chapter list lives only in the bottom toolbar's الفهرس, not here
+           too — one button per job, not two ways to the same place. -->
       <div class="wrap topbar-reading-row">
         <a href={readerHref} class="icon-btn" aria-label="عودة">
           <svg width="12" height="20" viewBox="0 0 12 20" fill="none" aria-hidden="true"><path d="M10 2l-8 8 8 8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
@@ -158,8 +161,8 @@ const [readerSub, readerMain] = title.includes(" · ") ? title.split(" · ") : [
           <span class="topbar-reading-main">{readerMain}</span>
           {readerSub && <span class="topbar-reading-sub">{readerSub}</span>}
         </div>
-        <button class="icon-btn" data-action="sidebar:mobile-toggle" aria-label="فهرس الفصول">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h10M4 18h13"></path></svg>
+        <button class="icon-btn" data-action="settings:toggle" aria-label="الإعدادات والمظهر" aria-expanded="false">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06-.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
         </button>
       </div>
       <div class="wrap topbar-row">
@@ -297,11 +300,13 @@ const [readerSub, readerMain] = title.includes(" · ") ? title.split(" · ") : [
         <span>البحث</span>
       </a>
       {navAll.map((n) => <a href={n.href} data-nav={n.id} aria-current={activeNav === n.id ? "page" : undefined}>{n.label}</a>)}
-      <div class="drawer-swatches theme-swatches">
-        <button type="button" class="theme-swatch theme-swatch-paper" data-theme-btn="paper" data-action="theme:paper" aria-pressed="true" aria-label="سمة ورقية (سيبيا)" title="سيبيا"></button>
-        <button type="button" class="theme-swatch theme-swatch-noir" data-theme-btn="noir" data-action="theme:noir" aria-pressed="false" aria-label="سمة داكنة بالأسود والذهبي" title="أسود وذهبي"></button>
-        <button type="button" class="theme-swatch theme-swatch-mono" data-theme-btn="mono" data-action="theme:mono" aria-pressed="false" aria-label="سمة بيضاء نظيفة" title="أبيض وأسود"></button>
-      </div>
+      <a href="/downloads" class="drawer-downloads" data-nav="downloads" aria-current={Astro.url.pathname === "/downloads" ? "page" : undefined}>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"></path><path d="M7 10l5 5 5-5"></path><path d="M4 19h16"></path></svg>
+        <span>التنزيلات</span>
+      </a>
+      <!-- theme switching on mobile lives in one place: the settings gear
+           (header on reading pages, .mobile-search-btn's neighbor elsewhere)
+           — no separate swatch row here duplicating that sheet. -->
       <!-- persistent re-entry point in case the install banner was dismissed
            by mistake — hidden by install-banner.ts unless install is possible -->
       <button type="button" class="btn install-drawer-btn" data-action="install:reopen" hidden>تثبيت التطبيق</button>
@@ -355,10 +360,6 @@ const [readerSub, readerMain] = title.includes(" · ") ? title.split(" · ") : [
           <button data-action="sidebar:mobile-toggle" aria-label="فهرس الفصول">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h10M4 18h13"></path></svg>
             <span>الفهرس</span>
-          </button>
-          <button data-action="settings:toggle" aria-label="إعدادات العرض">
-            <span class="tab-aa" aria-hidden="true">أ<small>أ</small></span>
-            <span>العرض</span>
           </button>
           <button data-action="page:save" class="tab-save" aria-pressed="false" aria-label="حفظ للقراءة لاحقًا">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"></path></svg>

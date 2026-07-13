@@ -288,7 +288,6 @@ img { max-width: 100%; }
 }
 /* theme swatches (settings popover) */
 .theme-swatches { display: flex; gap: 10px; padding: 4px 2px 12px; }
-.drawer-swatches { border-top: 1px solid var(--rule); margin-top: 6px; padding-top: 12px; justify-content: center; }
 .install-drawer-btn { width: 100%; text-align: center; margin-top: 10px; }
 .theme-swatch {
   width: 30px; height: 30px; border-radius: 50%; border: 2px solid transparent;
@@ -377,6 +376,7 @@ a.dl-row-title:hover { color: var(--accent); }
 .drawer[data-open] { opacity: 1; visibility: visible; transform: translateY(0); }
 .drawer a { display: block; font-size: 15px; color: var(--ink); text-decoration: none; padding: 10px 12px; border-radius: var(--radius); }
 .drawer a:hover { background: var(--paper-2); }
+.drawer-downloads { display: flex; align-items: center; gap: 10px; border-top: 1px solid var(--rule); margin-top: 6px; padding-top: 14px; }
 a.icon-btn { text-decoration: none; }
 .sr-only, .hero-title { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 .u-center-text { text-align: center; }
@@ -1781,8 +1781,13 @@ html.hide-footnotes .prose section.footnotes { display: none; }
   }
   .mobile-search-btn { display: grid; }
   .quran-jump { display: none !important; }
-  .topbar-tools a[href="/downloads"] { display: none; } /* lives in المزيد sheet */
+  .topbar-tools a[href="/downloads"] { display: none; } /* real link lives in the drawer instead, see .drawer-downloads */
   .hamburger { display: none !important; }
+  /* settings gear: the ONE theme/font/width entry point on mobile — desktop
+     hides it outside reading pages ([hidden] attr), force it visible here so
+     non-reading pages aren't left with no way to change theme (drawer's own
+     swatch row was removed as the redundant second entry point) */
+  .topbar-tools [data-action="settings:toggle"][hidden] { display: grid; }
   /* reading progress: 3px hairline on inset (1c) */
   .progress-track { height: 3px; background: var(--inset); }
   .progress-bar { background: var(--brand); }
@@ -1801,8 +1806,6 @@ html.hide-footnotes .prose section.footnotes { display: none; }
   }
   .tabbar a[aria-current="page"] { color: var(--brand); font-weight: 700; }
   .tabbar .tab-orn { font-family: var(--f-disp); font-size: 21px; line-height: 22px; }
-  .tabbar .tab-aa { font-size: 17px; font-weight: 700; line-height: 22px; }
-  .tabbar .tab-aa small { font-size: 11px; }
   .tab-save[aria-pressed="true"] { color: var(--gold); }
   .tab-save[aria-pressed="true"] svg { fill: var(--gold); }
   body { padding-bottom: calc(62px + env(safe-area-inset-bottom)); }
@@ -1940,9 +1943,12 @@ html.hide-footnotes .prose section.footnotes { display: none; }
 
   /* ════ search (2b) ════ */
   .search-page { padding-top: 4px; }
-  .search-bar { height: 48px; border-radius: var(--radius-pill); background: var(--inset); border-color: var(--line); }
-  .search-input { font-family: var(--f-ui); font-size: 15px; }
-  .search-submit { border-radius: var(--radius-pill); padding: 0 20px; height: 40px; margin: 5px; }
+  /* min-width:0 on both flex levels — <input> won't shrink below its
+     intrinsic content width otherwise, pushing search-submit off-screen */
+  .search-bar-row { min-width: 0; }
+  .search-bar { height: 48px; min-width: 0; border-radius: var(--radius-pill); background: var(--inset); border-color: var(--line); }
+  .search-input { min-width: 0; font-family: var(--f-ui); font-size: 15px; }
+  .search-submit { flex: none; border-radius: var(--radius-pill); padding: 0 16px; height: 40px; margin: 5px; }
   .search-scope-row { margin-bottom: 18px; }
   .search-scope-chip { font-size: 12px; font-weight: 600; padding: 7px 14px; border-color: var(--line2); }
   .search-scope-chip[aria-pressed="true"] { background: var(--brand); border-color: var(--brand); color: var(--onbrand); font-weight: 700; }
@@ -1962,6 +1968,16 @@ html.hide-footnotes .prose section.footnotes { display: none; }
   .site-footer .wrap-mid { padding-block: 6px 10px; }
   .footer-strip { margin-top: 0; padding-top: 10px; border-top: none; }
   .page-title { font-size: 28px; }
+
+  /* audio bar/FAB were pinned to viewport bottom:0 like the tabbar, at a
+     HIGHER z-index — they visually covered the tabbar instead of stacking
+     above it. Push both up to clear it, and extend the reading-content
+     clearance (.has-audio-bar) to cover tabbar + audio bar together. */
+  .audio-bar { inset-block-end: calc(62px + env(safe-area-inset-bottom)); }
+  .audio-fab { bottom: calc(62px + env(safe-area-inset-bottom) + 20px); }
+  body.has-audio-bar .reading-pad, body.has-audio-bar .wrap-matn {
+    padding-bottom: calc(130px + 62px + env(safe-area-inset-bottom));
+  }
 }
 
 /* installed as an app (PWA/TWA): no browser chrome — a touch more breathing
