@@ -3,7 +3,7 @@ title: "ما حكم بطاقات التميز التي تعطيها البنوك
 status: published
 published_at: 2021-11-02
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["fiqh-aam"]
 audio: swteat--swteat-967
 ---
 ## السؤال

@@ -3,7 +3,7 @@ title: "الرد على من ادعى أن تبعاً كان نبيا ؟"
 status: published
 published_at: 2024-01-07
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/10907 (+1 more) -->
 

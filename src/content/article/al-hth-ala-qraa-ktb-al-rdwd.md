@@ -3,7 +3,7 @@ title: "الحث على قراءة كتب الردود"
 status: published
 published_at: 2025-04-19
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tahwid-al-ibada", "al-sunnah-wal-bidah"]
+topics: ["adab-talab-al-ilm"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13595 (+1 more) -->
 

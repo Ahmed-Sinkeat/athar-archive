@@ -3,6 +3,7 @@ title: "الكلام على حديث ابن عباس : ( أول ما خلق ال
 status: published
 published_at: 2024-09-04
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/12437 -->
 

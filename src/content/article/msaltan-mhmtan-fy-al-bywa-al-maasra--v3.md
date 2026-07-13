@@ -3,6 +3,7 @@ title: "مسألتان مهمتان في البيوع المعاصرة"
 status: published
 published_at: 2025-08-23
 person: abu-jafar-al-khalifi
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/14462 -->
 

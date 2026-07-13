@@ -3,7 +3,7 @@ title: "سؤال = طلاب في مدرسة / يريدون الاعتكاف / و
 status: published
 published_at: 2024-03-29
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["fiqh-aam"]
 audio: swteat--swteat-1164
 ---
 ## السؤال

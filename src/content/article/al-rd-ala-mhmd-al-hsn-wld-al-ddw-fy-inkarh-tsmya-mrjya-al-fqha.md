@@ -3,7 +3,7 @@ title: "الرد على محمد الحسن ولد الددو في إنكاره 
 status: published
 published_at: 2024-12-05
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran", "al-sunnah-wal-bidah"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/12921 (+3 more) -->
 

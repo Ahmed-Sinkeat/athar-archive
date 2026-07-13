@@ -3,7 +3,7 @@ title: "كراهية السلف لاتخاذ سجادة خاصة للصلاة ..
 status: published
 published_at: 2023-06-17
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/9541 (+1 more) -->
 

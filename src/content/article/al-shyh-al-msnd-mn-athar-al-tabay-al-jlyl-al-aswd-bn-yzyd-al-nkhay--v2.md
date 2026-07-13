@@ -3,6 +3,7 @@ title: "الصحيح المسند من آثار التابعي الجليل ال
 status: published
 published_at: 2021-11-11
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/5970 (+3 more) -->
 

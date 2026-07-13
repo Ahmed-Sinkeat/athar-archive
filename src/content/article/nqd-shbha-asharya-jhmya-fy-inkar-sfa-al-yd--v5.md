@@ -3,6 +3,7 @@ title: "نقض شبهة أشعرية جهمية في إنكار صفة اليد"
 status: published
 published_at: 2023-05-20
 person: abu-jafar-al-khalifi
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/9351 (+1 more) -->
 

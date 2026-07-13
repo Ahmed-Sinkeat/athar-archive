@@ -3,7 +3,7 @@ title: "جيش أرسلان الذي به غلب"
 status: published
 published_at: 2021-01-26
 person: abu-jafar-al-khalifi
-topics: ["al-firaq-war-rudud", "tahwid-al-ibada", "al-iman"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/3481 (+1 more) -->
 

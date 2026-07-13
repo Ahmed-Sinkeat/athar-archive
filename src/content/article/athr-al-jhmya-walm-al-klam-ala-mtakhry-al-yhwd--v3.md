@@ -3,7 +3,7 @@ title: "أثر الجهمية وعلم الكلام على متأخري اليه
 status: published
 published_at: 2023-10-07
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "al-firaq-war-rudud", "tahwid-al-ibada"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/10237 (+3 more) -->
 

@@ -3,7 +3,7 @@ title: "من تناقضات ابن حزم في العقيدة ...."
 status: published
 published_at: 2024-12-05
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran", "al-asma-was-sifat"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/12967 (+5 more) -->
 

@@ -3,7 +3,7 @@ title: "فأفحم الرافضي ..."
 status: published
 published_at: 2020-06-22
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "al-iman"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/1687 (+1 more) -->
 

@@ -3,6 +3,7 @@ title: "حمية شامية على السنة ..."
 status: published
 published_at: 2025-07-28
 person: abu-jafar-al-khalifi
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/14143 -->
 

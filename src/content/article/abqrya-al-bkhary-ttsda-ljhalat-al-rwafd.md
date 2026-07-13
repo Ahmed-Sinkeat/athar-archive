@@ -3,7 +3,7 @@ title: "عبقرية البخاري تتصدى لجهالات الروافض ...
 status: published
 published_at: 2021-02-22
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "al-firaq-war-rudud", "tazkiyat-al-nafs"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/3803 (+5 more) -->
 

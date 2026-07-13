@@ -4,7 +4,7 @@ status: published
 published_at: 2026-07-04
 person: ibn-khumayyir-al-sabti
 authored_year: 614
-topics: ["aam-aqeedah"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "الأولى، 1411هـ - 1990م"
 description: "بتحقيق محمد رضوان الداية"
 ---

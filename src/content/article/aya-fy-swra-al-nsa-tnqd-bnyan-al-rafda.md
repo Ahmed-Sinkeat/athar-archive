@@ -3,6 +3,7 @@ title: "آية في سورة النساء تنقض بنيان الرافضة ...
 status: draft
 published_at: 2016-09-23
 person: abu-jafar-al-khalifi
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2016/09/blog-post_23.html -->
 

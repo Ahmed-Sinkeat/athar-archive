@@ -3,6 +3,7 @@ title: "براءة ابن أبي حاتم من تهمة التشيع"
 status: published
 published_at: 2022-01-21
 person: abu-jafar-al-khalifi
+topics: ["tarajim-al-ulama"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/6500 -->
 

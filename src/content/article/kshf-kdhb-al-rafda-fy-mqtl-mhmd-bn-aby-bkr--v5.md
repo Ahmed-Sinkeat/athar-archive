@@ -3,6 +3,7 @@ title: "كشف كذب الرافضة في مقتل محمد بن أبي بكر"
 status: published
 published_at: 2024-04-26
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/11636 -->
 

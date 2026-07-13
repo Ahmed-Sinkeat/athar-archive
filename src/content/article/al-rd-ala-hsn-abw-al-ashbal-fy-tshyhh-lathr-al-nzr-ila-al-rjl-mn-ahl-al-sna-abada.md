@@ -3,7 +3,7 @@ title: "الرد على حسن أبو الأشبال في تصحيحه لأثر 
 status: published
 published_at: 2024-11-04
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/12776 -->
 

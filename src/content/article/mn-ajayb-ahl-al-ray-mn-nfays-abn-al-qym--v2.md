@@ -3,6 +3,7 @@ title: "من عجائب أهل الرأي ( من نفائس ابن القيم )"
 status: published
 published_at: 2023-12-24
 person: abu-jafar-al-khalifi
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/10798 -->
 

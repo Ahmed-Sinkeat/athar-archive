@@ -3,6 +3,7 @@ title: "ابن حجر : لا يختلفون في أن رأي الصحابي إذ
 status: published
 published_at: 2024-12-31
 person: abu-jafar-al-khalifi
+topics: ["usul-al-fiqh"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13087 -->
 

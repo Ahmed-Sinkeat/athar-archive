@@ -3,7 +3,7 @@ title: "هل هناك فرق بين الأشاعرة المشتغلين بالح
 status: published
 published_at: 2020-02-13
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["al-firaq-war-rudud"]
 audio: swteat--hl-hnak-frq-byn-al-ashaara-al-mshtghlyn-balhdyth-walashaara-al-mtklmyn
 ---
 ## السؤال

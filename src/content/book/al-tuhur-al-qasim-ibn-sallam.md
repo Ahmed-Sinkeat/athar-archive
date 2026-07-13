@@ -4,6 +4,7 @@ status: published
 published_at: 2026-07-07
 person: al-qasim-ibn-sallam
 kind: مرجع
+topics: ["fiqh-hanbali"]
 authored_year: 224
 description: "كتاب الطهور لأبي عبيد القاسم بن سلام في فقه الطهارة"
 ---

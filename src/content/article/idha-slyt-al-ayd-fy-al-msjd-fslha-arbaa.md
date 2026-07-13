@@ -3,6 +3,7 @@ title: "إذا صليت العيد في المسجد فصلها أربعاً !"
 status: draft
 published_at: 2013-10-19
 person: abu-jafar-al-khalifi
+topics: ["fiqh-aam"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2013/10/blog-post_7894.html -->
 

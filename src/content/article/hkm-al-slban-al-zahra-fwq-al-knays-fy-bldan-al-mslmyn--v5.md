@@ -3,7 +3,7 @@ title: "حكم الصلبان الظاهرة فوق الكنائس في بلدا
 status: published
 published_at: 2025-06-05
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran"]
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13801 (+4 more) -->
 

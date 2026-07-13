@@ -3,6 +3,7 @@ title: "عندما يصير جالينوس حاكماً على الكتاب وا
 status: published
 published_at: 2025-01-09
 person: abu-jafar-al-khalifi
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13096 -->
 

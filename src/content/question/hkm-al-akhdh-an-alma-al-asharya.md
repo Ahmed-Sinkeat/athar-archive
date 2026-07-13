@@ -3,7 +3,7 @@ title: "حكم الأخذ عن علماء الأشعرية"
 status: published
 published_at: 2020-02-11
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["fiqh-aam"]
 audio: swteat--hkm-al-akhdh-an-alma-al-asharya
 ---
 ## السؤال

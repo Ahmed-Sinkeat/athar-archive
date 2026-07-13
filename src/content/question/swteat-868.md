@@ -3,7 +3,7 @@ title: "انا طالب علم وساكن في السعودية ومثل ما ي
 status: published
 published_at: 2021-10-18
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["adab-talab-al-ilm"]
 audio: swteat--swteat-868
 ---
 ## السؤال

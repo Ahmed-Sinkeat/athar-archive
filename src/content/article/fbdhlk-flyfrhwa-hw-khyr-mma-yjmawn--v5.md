@@ -3,7 +3,7 @@ title: "فبذلك فليفرحوا هو خيرٌ مما يجمعون"
 status: published
 published_at: 2023-01-02
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "al-asma-was-sifat", "al-iman"]
+topics: ["tafsir-al-quran"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/8524 (+2 more) -->
 

@@ -3,6 +3,7 @@ title: "فائدة نفيسة : استنكار الإمام أحمد لحديث 
 status: published
 published_at: 2023-05-08
 person: abu-jafar-al-khalifi
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/9246 -->
 

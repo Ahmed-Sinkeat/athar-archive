@@ -3,7 +3,7 @@ title: "الإجماع على كفر منكر الرجم في الإسلام"
 status: published
 published_at: 2024-05-04
 person: abu-jafar-al-khalifi
-topics: ["al-firaq-war-rudud", "tahwid-al-ibada", "al-sunnah-wal-bidah"]
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/11686 (+2 more) -->
 

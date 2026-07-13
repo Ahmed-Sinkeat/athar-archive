@@ -3,6 +3,7 @@ title: "صلابة امرأة في السنة"
 status: published
 published_at: 2021-01-01
 person: abu-jafar-al-khalifi
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/3325 -->
 

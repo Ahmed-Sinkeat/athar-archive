@@ -3,7 +3,7 @@ title: "المعطلة والمشركون وجهان لعملة واحدة ..."
 status: published
 published_at: 2021-09-12
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tahwid-al-ibada"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/5161 -->
 

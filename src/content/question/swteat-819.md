@@ -3,7 +3,7 @@ title: "ما حكم العمل في شركة تشتري منها منتج تكس
 status: published
 published_at: 2021-10-09
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["fiqh-aam"]
 ---
 ## السؤال
 

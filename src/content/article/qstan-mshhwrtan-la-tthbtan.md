@@ -3,7 +3,7 @@ title: "قصتان مشهورتان لا تثبتان !"
 status: published
 published_at: 2024-12-15
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "al-iman", "al-imamah-was-sahabah"]
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/12996 (+1 more) -->
 

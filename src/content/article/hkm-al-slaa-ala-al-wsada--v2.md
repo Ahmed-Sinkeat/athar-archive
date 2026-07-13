@@ -3,6 +3,7 @@ title: "حكم الصلاة على الوسادة"
 status: published
 published_at: 2021-02-15
 person: abu-jafar-al-khalifi
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/3724 -->
 

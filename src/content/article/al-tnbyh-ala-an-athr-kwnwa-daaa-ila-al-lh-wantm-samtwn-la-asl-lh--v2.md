@@ -3,6 +3,7 @@ title: "التنبيه على أن أثر ( كونوا دعاة إلى الله 
 status: published
 published_at: 2021-10-18
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/5599 -->
 

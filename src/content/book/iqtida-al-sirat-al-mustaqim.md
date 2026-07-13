@@ -4,7 +4,7 @@ status: published
 published_at: 2026-07-04
 person: ibn-taymiyyah
 authored_year: 728
-topics: ["aam-aqeedah"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "السابعة، 1419هـ - 1999م"
 description: "بتحقيق ناصر عبد الكريم العقل"
 ---

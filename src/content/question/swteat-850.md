@@ -3,7 +3,7 @@ title: "هل كان مع الإمام أحمد شعرات من رأس النبي
 status: published
 published_at: 2021-10-11
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["fiqh-aam"]
 audio: swteat--swteat-850
 ---
 ## السؤال

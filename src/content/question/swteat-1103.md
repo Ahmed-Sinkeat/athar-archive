@@ -3,7 +3,7 @@ title: "هل وضع الفقهاء ضابطاً أو حداً لمعرفة من 
 status: published
 published_at: 2022-02-07
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["tarajim-al-ulama"]
 audio: swteat--swteat-1103
 ---
 ## السؤال

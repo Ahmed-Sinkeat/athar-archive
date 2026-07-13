@@ -3,7 +3,7 @@ title: "فائدة حديثية عقدية : تصحيح سفيان الثوري 
 status: published
 published_at: 2022-06-03
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran"]
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/7269 (+1 more) -->
 

@@ -3,7 +3,7 @@ title: "هل يجوز شراء الشاة بناء على كمية اللحم ا
 status: published
 published_at: 2021-08-16
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["fiqh-aam"]
 audio: swteat--asyla-al-bwt--v142
 ---
 ## السؤال

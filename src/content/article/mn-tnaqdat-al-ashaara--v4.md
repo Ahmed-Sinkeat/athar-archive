@@ -3,6 +3,7 @@ title: "من تناقضات الأشاعرة"
 status: published
 published_at: 2021-09-03
 person: abu-jafar-al-khalifi
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/5101 (+1 more) -->
 

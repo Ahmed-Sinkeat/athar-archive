@@ -3,7 +3,7 @@ title: "هل من الفقهاء من تحدث عن التسوية في الزك
 status: published
 published_at: 2020-10-13
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["fiqh-aam"]
 audio: swteat--al-swal-al-sads--v4
 ---
 ## السؤال

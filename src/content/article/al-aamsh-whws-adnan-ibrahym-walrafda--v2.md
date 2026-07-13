@@ -3,7 +3,7 @@ title: "الأعمش وهوس عدنان إبراهيم والرافضة ..."
 status: published
 published_at: 2023-08-28
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/9900 (+1 more) -->
 

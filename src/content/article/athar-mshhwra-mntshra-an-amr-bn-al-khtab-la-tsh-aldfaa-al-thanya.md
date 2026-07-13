@@ -3,6 +3,7 @@ title: "آثار مشهورة منتشرة عن عمر بن الخطاب لا ت
 status: draft
 published_at: 2014-04-11
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2014/04/blog-post_11.html -->
 

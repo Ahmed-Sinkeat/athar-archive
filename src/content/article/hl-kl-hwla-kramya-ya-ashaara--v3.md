@@ -3,7 +3,7 @@ title: "هل كل هؤلاء كرامية يا أشاعرة ؟"
 status: published
 published_at: 2020-07-17
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/1955 (+1 more) -->
 

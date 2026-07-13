@@ -3,7 +3,7 @@ title: "مالضابط في الحكم باسلام المرء"
 status: published
 published_at: 2020-06-28
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["fiqh-aam"]
 audio: swteat--al-swal-al-thany--v3
 ---
 ## السؤال

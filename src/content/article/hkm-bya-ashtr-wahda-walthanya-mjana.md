@@ -3,6 +3,7 @@ title: "حكم بيع ( اشتر واحدة والثانية مجاناً )"
 status: published
 published_at: 2021-04-12
 person: abu-jafar-al-khalifi
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/4200 -->
 

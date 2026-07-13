@@ -3,7 +3,7 @@ title: "باب من كفره السلف من أهل البدع"
 status: published
 published_at: 2020-12-09
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tahwid-al-ibada", "al-iman"]
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/3197 (+3 more) -->
 

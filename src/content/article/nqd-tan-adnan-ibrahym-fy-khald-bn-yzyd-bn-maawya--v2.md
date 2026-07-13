@@ -3,7 +3,7 @@ title: "نقض طعن عدنان إبراهيم في خالد بن يزيد بن
 status: published
 published_at: 2023-08-17
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran", "tazkiyat-al-nafs"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/9828 (+5 more) -->
 

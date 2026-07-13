@@ -3,7 +3,7 @@ title: "باب فيما أثبته الجهمية من العقائد بأخبا
 status: published
 published_at: 2021-12-03
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/6170 (+1 more) -->
 

@@ -3,7 +3,7 @@ title: "ما حكم تعليم اللغة الانجليزية كمدرس خصو
 status: published
 published_at: 2021-07-12
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["fiqh-aam"]
 audio: swteat--asyla-al-bwt--v31
 ---
 ## السؤال

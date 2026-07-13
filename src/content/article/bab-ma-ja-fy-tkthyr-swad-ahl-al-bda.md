@@ -3,7 +3,7 @@ title: "باب ما جاء في تكثير سواد أهل البدع"
 status: draft
 published_at: 2013-11-21
 person: abu-jafar-al-khalifi
-topics: ["tahwid-al-ibada", "al-aqeedah-al-aamah"]
+topics: ["fiqh-aam"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2013/11/blog-post_3087.html -->
 

@@ -3,7 +3,7 @@ title: "هبك عفا عنك فأين الحياء منه ؟"
 status: published
 published_at: 2021-10-03
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran", "tazkiyat-al-nafs"]
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/5348 (+1 more) -->
 

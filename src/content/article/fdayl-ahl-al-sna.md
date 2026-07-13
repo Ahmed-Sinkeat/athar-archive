@@ -3,7 +3,7 @@ title: "فضائل أهل السنة\n￼"
 status: published
 published_at: 2020-08-27
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran", "al-firaq-war-rudud"]
+topics: ["al-sunnah-wal-bidah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/2318 (+4 more) -->
 

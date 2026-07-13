@@ -4,7 +4,7 @@ status: published
 published_at: 2026-07-07
 person: ibn-taymiyyah
 kind: مرجع
-topics: ["al-akhlaq-wal-adab"]
+topics: ["al-siyasah-al-shariyyah"]
 authored_year: 728
 description: "كتاب الأمر بالمعروف والنهي عن المنكر لشيخ الإسلام ابن تيمية"
 ---

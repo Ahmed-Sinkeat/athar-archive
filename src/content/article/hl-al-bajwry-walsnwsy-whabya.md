@@ -3,7 +3,7 @@ title: "هل الباجوري والسنوسي وهابية ؟!"
 status: published
 published_at: 2026-01-05
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tahwid-al-ibada"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/15185 (+1 more) -->
 

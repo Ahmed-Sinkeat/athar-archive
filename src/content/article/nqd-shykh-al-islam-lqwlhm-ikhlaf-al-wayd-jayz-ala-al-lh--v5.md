@@ -3,6 +3,7 @@ title: "نقد شيخ الإسلام لقولهم ( إخلاف الوعيد جا
 status: published
 published_at: 2024-02-24
 person: abu-jafar-al-khalifi
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/11263 -->
 

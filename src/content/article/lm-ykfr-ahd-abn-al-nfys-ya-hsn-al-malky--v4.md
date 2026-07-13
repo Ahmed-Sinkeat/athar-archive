@@ -3,7 +3,7 @@ title: "لم يكفر أحد ابن النفيس يا حسن المالكي"
 status: published
 published_at: 2025-01-20
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "al-firaq-war-rudud"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13178 (+2 more) -->
 

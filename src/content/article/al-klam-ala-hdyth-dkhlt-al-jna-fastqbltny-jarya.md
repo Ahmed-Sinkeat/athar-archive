@@ -3,6 +3,7 @@ title: "الكلام على حديث ( دخلت الجنة فاستقبلتني 
 status: published
 published_at: 2020-09-21
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/2602 -->
 

@@ -4,7 +4,7 @@ status: published
 published_at: 2026-07-04
 person: al-badr-al-bali
 authored_year: 778
-topics: ["aam-aqeedah"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "الأولى، 1422 هـ"
 kind: متن
 ---

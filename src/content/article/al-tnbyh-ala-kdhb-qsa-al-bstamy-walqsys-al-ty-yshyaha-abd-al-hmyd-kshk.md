@@ -3,6 +3,7 @@ title: "التنبيه على كذب قصة البسطامي والقسيس ال
 status: published
 published_at: 2024-10-20
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/12624 (+1 more) -->
 

@@ -3,6 +3,7 @@ title: "بيان شذوذ زيادة ( ولا يعز من عاديت ) في حد
 status: published
 published_at: 2021-04-16
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/4240 (+1 more) -->
 

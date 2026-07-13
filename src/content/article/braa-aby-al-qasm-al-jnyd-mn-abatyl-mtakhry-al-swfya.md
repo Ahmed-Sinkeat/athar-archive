@@ -3,7 +3,7 @@ title: "براءة أبي القاسم الجنيد من أباطيل متأخر
 status: published
 published_at: 2020-11-27
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "al-firaq-war-rudud", "tahwid-al-ibada"]
+topics: ["tarajim-al-ulama"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/3113 (+19 more) -->
 

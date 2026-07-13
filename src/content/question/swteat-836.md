@@ -3,7 +3,7 @@ title: "ماحكم العدوى وهل الميت تموت علته معه ?"
 status: published
 published_at: 2021-10-11
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["fiqh-aam"]
 audio: swteat--swteat-836
 ---
 ## السؤال

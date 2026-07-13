@@ -3,6 +3,7 @@ title: "شرح أصول السنة"
 status: published
 published_at: 2026-07-12
 person: abu-jafar-al-khalifi
+topics: ["al-sunnah-wal-bidah"]
 sharh_of: usul-al-sunnah-ahmad-ibn-hanbal
 ---
 

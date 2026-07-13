@@ -3,7 +3,7 @@ title: "ذو الخويصرة ليس صحابياً"
 status: published
 published_at: 2023-02-27
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "al-iman"]
+topics: ["al-imamah-was-sahabah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/8805 (+1 more) -->
 

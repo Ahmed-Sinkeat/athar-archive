@@ -4,6 +4,7 @@ status: published
 published_at: 2026-07-04
 person: abu-jafar-al-khalifi
 kind: مرجع
+topics: ["fiqh-hanbali"]
 work_type: شرح
 transcript_status: قيد المراجعة
 description: "تفريغ دروس شرح كتاب الطهارة من عمدة الفقه لابن قدامة المقدسي — مادة اختبار لمحرك الاستيراد من ملفات ماركداون."

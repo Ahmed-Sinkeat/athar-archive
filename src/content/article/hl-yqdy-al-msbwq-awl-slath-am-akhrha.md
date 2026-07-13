@@ -3,6 +3,7 @@ title: "هل يقضي المسبوق أول صلاته أم آخرها ؟"
 status: published
 published_at: 2021-03-13
 person: abu-jafar-al-khalifi
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/4051 (+1 more) -->
 

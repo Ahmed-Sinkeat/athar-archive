@@ -3,7 +3,7 @@ title: "السلفية قطعية قرآنية وخيار عقلاني ..."
 status: published
 published_at: 2024-03-18
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran", "tazkiyat-al-nafs"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/11385 (+1 more) -->
 

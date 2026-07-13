@@ -3,7 +3,7 @@ title: "الإرجاء عند الاشاعرة"
 status: published
 published_at: 2020-11-09
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "tahwid-al-ibada", "al-iman"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/2986 (+2 more) -->
 

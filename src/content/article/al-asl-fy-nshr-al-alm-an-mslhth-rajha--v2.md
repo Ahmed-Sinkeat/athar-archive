@@ -3,7 +3,7 @@ title: "الأصل في نشر العلم أن مصلحته راجحة"
 status: published
 published_at: 2025-05-04
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "tahwid-al-ibada", "al-sunnah-wal-bidah"]
+topics: ["adab-talab-al-ilm"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13613 (+4 more) -->
 

@@ -3,7 +3,7 @@ title: "شبهات داحضة على القرآن والحديث ...."
 status: published
 published_at: 2021-09-30
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/5321 (+6 more) -->
 

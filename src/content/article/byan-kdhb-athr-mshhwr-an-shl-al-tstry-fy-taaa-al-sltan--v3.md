@@ -3,6 +3,7 @@ title: "بيان كذب أثر مشهور عن سهل التستري في طاع
 status: published
 published_at: 2022-06-17
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/7324 -->
 

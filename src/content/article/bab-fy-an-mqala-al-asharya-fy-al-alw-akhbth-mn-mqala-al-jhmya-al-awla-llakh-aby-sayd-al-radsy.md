@@ -3,7 +3,7 @@ title: "باب في أن مقالة الأشعرية في العلو أخبث م
 status: published
 published_at: 2020-02-07
 person: abu-jafar-al-khalifi
-topics: ["al-firaq-war-rudud", "tahwid-al-ibada", "al-asma-was-sifat"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/364 (+11 more) -->
 

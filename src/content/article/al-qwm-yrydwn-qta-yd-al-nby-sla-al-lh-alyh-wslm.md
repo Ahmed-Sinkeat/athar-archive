@@ -3,7 +3,7 @@ title: "القوم يريدون قطع يد النبي صلى الله عليه 
 status: published
 published_at: 2020-02-21
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "al-asma-was-sifat"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/492 (+4 more) -->
 

@@ -3,7 +3,7 @@ title: "من أخبار المتعصبين !"
 status: published
 published_at: 2025-04-19
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran", "tahwid-al-ibada"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13583 (+3 more) -->
 

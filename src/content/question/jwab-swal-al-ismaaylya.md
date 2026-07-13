@@ -3,7 +3,7 @@ title: "جواب سؤال الإسماعيلية"
 status: published
 published_at: 2021-09-26
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["al-firaq-war-rudud"]
 audio: swteat--jwab-swal-al-ismaaylya
 ---
 ## السؤال

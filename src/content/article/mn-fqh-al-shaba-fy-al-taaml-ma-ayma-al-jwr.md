@@ -3,7 +3,7 @@ title: "من فقه الصحابة في التعامل مع أئمة الجور 
 status: draft
 published_at: 2014-02-25
 person: abu-jafar-al-khalifi
-topics: ["tahwid-al-ibada", "al-aqeedah-al-aamah"]
+topics: ["al-siyasah-al-shariyyah"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2014/02/blog-post_6539.html -->
 

@@ -3,6 +3,7 @@ title: "نظرة بلاغية في سورة الفلق ..."
 status: published
 published_at: 2023-03-24
 person: abu-jafar-al-khalifi
+topics: ["al-balaghah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/8948 -->
 

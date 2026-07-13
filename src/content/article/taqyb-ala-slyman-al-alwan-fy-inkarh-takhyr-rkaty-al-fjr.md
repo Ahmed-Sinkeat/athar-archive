@@ -3,6 +3,7 @@ title: "تعقيب على سليمان العلوان في إنكاره تأخي
 status: draft
 published_at: 2013-10-19
 person: abu-jafar-al-khalifi
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2013/10/blog-post_7805.html -->
 

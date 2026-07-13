@@ -3,7 +3,7 @@ title: "الرد على ناصر العقل في قوله أن بدعة اللف
 status: published
 published_at: 2025-08-27
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/14588 (+2 more) -->
 

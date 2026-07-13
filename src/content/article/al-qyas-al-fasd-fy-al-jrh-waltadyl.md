@@ -3,7 +3,7 @@ title: "القياس الفاسد في الجرح والتعديل ..."
 status: published
 published_at: 2024-10-20
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "al-asma-was-sifat", "tazkiyat-al-nafs"]
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/12644 (+4 more) -->
 

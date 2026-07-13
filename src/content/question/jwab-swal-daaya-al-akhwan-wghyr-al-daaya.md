@@ -3,7 +3,7 @@ title: "جواب سؤال داعية الاخوان وغير الداعية"
 status: published
 published_at: 2021-09-18
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["al-firaq-war-rudud"]
 audio: swteat--jwab-swal-daaya-al-akhwan-wghyr-al-daaya
 ---
 ## السؤال

@@ -3,7 +3,7 @@ title: "بين تدوين الكتاب المقدس وتدوين السنة ال
 status: published
 published_at: 2021-11-13
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran", "tazkiyat-al-nafs"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/6034 (+5 more) -->
 

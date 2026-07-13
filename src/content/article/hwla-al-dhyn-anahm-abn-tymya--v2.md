@@ -3,7 +3,7 @@ title: "هؤلاء الذين عناهم ابن تيمية ؟"
 status: published
 published_at: 2025-04-17
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "tahwid-al-ibada", "al-asma-was-sifat"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13533 (+2 more) -->
 

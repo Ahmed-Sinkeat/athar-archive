@@ -3,7 +3,7 @@ title: "أبو منصور الماتردي ينقض على أصحابه والأ
 status: published
 published_at: 2024-05-24
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "tahwid-al-ibada"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/11799 (+1 more) -->
 

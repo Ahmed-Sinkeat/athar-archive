@@ -3,7 +3,7 @@ title: "تنفير قيادات الإخوان القديمة من دراسة ا
 status: published
 published_at: 2024-07-27
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "al-sunnah-wal-bidah"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/12179 (+2 more) -->
 

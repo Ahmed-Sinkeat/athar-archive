@@ -3,7 +3,7 @@ title: "نقض شبهة ( في مسجد الخيف قبر سبعين نبيا)"
 status: published
 published_at: 2021-01-08
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/3363 -->
 

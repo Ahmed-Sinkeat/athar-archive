@@ -3,7 +3,7 @@ title: "انا طالب علم واحفظ اربع اجزاء من القران 
 status: published
 published_at: 2021-11-01
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["adab-talab-al-ilm"]
 audio: swteat--swteat-920
 ---
 ## السؤال

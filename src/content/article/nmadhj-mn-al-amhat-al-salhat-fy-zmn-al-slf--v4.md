@@ -3,7 +3,7 @@ title: "نماذج من الأمهات الصالحات في زمن السلف..
 status: published
 published_at: 2021-04-24
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "al-firaq-war-rudud", "tazkiyat-al-nafs"]
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/4279 (+2 more) -->
 

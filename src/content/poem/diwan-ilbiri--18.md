@@ -4,6 +4,7 @@ person: "al-ilbiri"
 status: "published"
 published_at: "2026-07-02"
 work_type: "قصيدة"
+topics: ["tazkiyat-al-nafs"]
 description: "من ديوان الإلبيري — صفحة 68"
 ---
 لبرزت فِي ميدان كل بطالة ... وبرز غَيْرِي فِي التقى أَي تبريز

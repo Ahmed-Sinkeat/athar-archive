@@ -4,7 +4,7 @@ status: published
 published_at: 2026-07-04
 person: shams-al-din-al-qurtubi
 authored_year: 671
-topics: ["aam-aqeedah"]
+topics: ["al-aqeedah-al-aamah"]
 description: "بتحقيق د. أحمد حجازي السقا"
 ---
 ## بِسم الله الرَّحْمَن الرَّحِيم

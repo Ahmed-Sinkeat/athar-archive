@@ -3,6 +3,7 @@ title: "تعقيب على من أنكر حكم التيمم للميت عند ا
 status: published
 published_at: 2025-03-03
 person: abu-jafar-al-khalifi
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13341 -->
 

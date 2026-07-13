@@ -3,7 +3,7 @@ title: "الإمام السجاد يدعو لبني أمية وجنودهم وي
 status: published
 published_at: 2023-04-23
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "al-imamah-was-sahabah"]
+topics: ["al-imamah-was-sahabah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/9137 (+2 more) -->
 

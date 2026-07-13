@@ -3,7 +3,7 @@ title: "هل أراد النبي صلى الله عليه وسلم تطليق س
 status: published
 published_at: 2021-08-02
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran"]
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/4833 (+1 more) -->
 

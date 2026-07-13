@@ -3,7 +3,7 @@ title: "الرد على الرافضة في دعواهم أن أبا حنيفة 
 status: published
 published_at: 2021-01-11
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tazkiyat-al-nafs"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/3375 (+1 more) -->
 

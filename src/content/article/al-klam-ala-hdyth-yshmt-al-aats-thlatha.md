@@ -3,6 +3,7 @@ title: "الكلام على حديث : ( يشمت العاطس ثلاثاً )"
 status: published
 published_at: 2020-06-29
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/1787 -->
 

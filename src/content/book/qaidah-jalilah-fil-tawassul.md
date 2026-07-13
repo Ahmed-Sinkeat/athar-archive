@@ -4,7 +4,7 @@ status: published
 published_at: 2026-07-04
 person: ibn-taymiyyah
 authored_year: 728
-topics: ["aam-aqeedah"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "الأولى (لمكتبة الفرقان) 1422هـ - 2001هـ"
 description: "بتحقيق ربيع بن هادي عمير المدخلي"
 kind: متن

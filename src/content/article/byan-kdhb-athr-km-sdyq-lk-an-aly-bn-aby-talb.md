@@ -3,6 +3,7 @@ title: "بيان كذب أثر ( كم صديق لك ..؟ ) عن علي بن أب
 status: published
 published_at: 2024-09-20
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/12509 -->
 

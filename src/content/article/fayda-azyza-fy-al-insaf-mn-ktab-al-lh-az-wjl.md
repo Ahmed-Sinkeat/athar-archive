@@ -3,7 +3,7 @@ title: "فائدة عزيزة في الإنصاف من كتاب الله عز و
 status: draft
 published_at: 2015-05-25
 person: abu-jafar-al-khalifi
-topics: ["al-akhlaq-wal-adab", "tafsir-al-quran", "ulum-al-quran"]
+topics: ["fiqh-aam"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2015/05/blog-post_25.html -->
 

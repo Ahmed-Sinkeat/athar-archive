@@ -3,6 +3,7 @@ title: "هكذا كانوا يسلون من مات له ولد ..."
 status: published
 published_at: 2021-06-04
 person: abu-jafar-al-khalifi
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/4504 -->
 

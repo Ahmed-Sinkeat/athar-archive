@@ -3,7 +3,7 @@ title: "قاعدة في أن إنكار الشرك والبدع يكون قبل 
 status: published
 published_at: 2025-02-18
 person: abu-jafar-al-khalifi
-topics: ["tahwid-al-ibada", "al-sunnah-wal-bidah"]
+topics: ["usul-al-fiqh"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13280 (+1 more) -->
 

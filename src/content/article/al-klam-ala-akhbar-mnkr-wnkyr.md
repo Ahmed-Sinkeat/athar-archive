@@ -3,7 +3,7 @@ title: "الكلام على : ( أخبار منكر ونكير )"
 status: published
 published_at: 2024-07-01
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tazkiyat-al-nafs", "al-iman"]
+topics: ["al-samiyyat"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/12003 (+4 more) -->
 

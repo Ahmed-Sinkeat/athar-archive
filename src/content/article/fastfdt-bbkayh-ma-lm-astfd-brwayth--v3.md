@@ -3,6 +3,7 @@ title: "فاستفدت ببكائه ما لم أستفد بروايته ...."
 status: published
 published_at: 2021-05-17
 person: abu-jafar-al-khalifi
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/4416 -->
 

@@ -3,6 +3,7 @@ title: "من لطائف الاحتجاجات التي أسكتت الرافضة 
 status: published
 published_at: 2020-06-29
 person: abu-jafar-al-khalifi
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/1763 (+3 more) -->
 

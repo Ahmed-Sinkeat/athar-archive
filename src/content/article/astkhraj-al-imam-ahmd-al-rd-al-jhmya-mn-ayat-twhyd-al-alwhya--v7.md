@@ -3,7 +3,7 @@ title: "استخراج الإمام أحمد الرد الجهمية من آيا
 status: published
 published_at: 2022-07-29
 person: abu-jafar-al-khalifi
-topics: ["tahwid-al-ibada", "al-asma-was-sifat"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/7579 -->
 

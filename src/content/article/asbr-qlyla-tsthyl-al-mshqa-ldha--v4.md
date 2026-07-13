@@ -3,6 +3,7 @@ title: "اصبر قليلاً تستحيل المشقة لذة !"
 status: published
 published_at: 2024-02-16
 person: abu-jafar-al-khalifi
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/11176 -->
 

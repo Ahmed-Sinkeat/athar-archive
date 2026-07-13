@@ -3,6 +3,7 @@ title: "فكيف لو رأى شيخ الإسلام ما أحدثه النساء 
 status: published
 published_at: 2021-01-08
 person: abu-jafar-al-khalifi
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/3367 (+1 more) -->
 

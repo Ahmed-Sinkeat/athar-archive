@@ -3,7 +3,7 @@ title: "قاعدة من القرآن : العدو الداخلي هو العدو
 status: published
 published_at: 2023-10-30
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "al-firaq-war-rudud", "al-iman"]
+topics: ["usul-al-fiqh"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/10459 (+1 more) -->
 

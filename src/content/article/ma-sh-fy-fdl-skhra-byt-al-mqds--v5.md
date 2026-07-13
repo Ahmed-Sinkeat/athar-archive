@@ -3,7 +3,7 @@ title: "ما صح في فضل صخرة بيت المقدس"
 status: published
 published_at: 2023-04-17
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran"]
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/9106 -->
 

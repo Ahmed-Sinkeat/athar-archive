@@ -3,7 +3,7 @@ title: "نقض شبهة ( أين ذهبت خطب النبي صلى الله عل
 status: published
 published_at: 2022-09-09
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran", "tazkiyat-al-nafs"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/7972 (+5 more) -->
 

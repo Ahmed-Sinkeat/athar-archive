@@ -3,7 +3,7 @@ title: "وقفة مع القشيري في نفيه الحكمة عن آيات ا
 status: published
 published_at: 2023-01-23
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran", "tahwid-al-ibada"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/8666 (+1 more) -->
 

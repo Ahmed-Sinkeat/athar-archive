@@ -3,7 +3,7 @@ title: "ما انقضى عنا يوم الجمل حتى تريدين أَن تأ
 status: published
 published_at: 2024-11-04
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "al-imamah-was-sahabah"]
+topics: ["al-imamah-was-sahabah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/12734 -->
 

@@ -3,7 +3,7 @@ title: "وهم الحرية والمساواة !"
 status: published
 published_at: 2023-05-30
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "al-firaq-war-rudud"]
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/9427 (+2 more) -->
 

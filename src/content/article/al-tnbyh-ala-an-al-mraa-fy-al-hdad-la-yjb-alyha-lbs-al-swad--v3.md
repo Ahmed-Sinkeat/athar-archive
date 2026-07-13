@@ -3,6 +3,7 @@ title: "التنبيه على أن المرأة في الحداد لا يجب ع
 status: published
 published_at: 2026-01-31
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/15212 -->
 

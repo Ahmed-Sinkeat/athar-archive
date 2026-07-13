@@ -3,6 +3,7 @@ title: "الفروع الفقهية التي بناها الشافعية على 
 status: published
 published_at: 2025-08-08
 person: abu-jafar-al-khalifi
+topics: ["usul-al-fiqh-shafii"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/14256 -->
 

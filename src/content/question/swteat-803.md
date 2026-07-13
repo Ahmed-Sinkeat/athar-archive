@@ -3,7 +3,7 @@ title: "طالبة علم وتخصصها العقيدة ويعني منتشرة 
 status: published
 published_at: 2021-10-09
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["al-aqeedah-al-aamah"]
 audio: swteat--swteat-803
 ---
 ## السؤال

@@ -5,7 +5,7 @@ published_at: 2026-07-06
 person: al-ilbiri
 
 work_type: منظومة
-topics: ["al-adab"]
+topics: ["adab-talab-al-ilm"]
 authored_year: 460
 description: "منظومة أبي إسحاق الإلبيري التائية في الحث على طلب العلم والأخلاق"
 ---

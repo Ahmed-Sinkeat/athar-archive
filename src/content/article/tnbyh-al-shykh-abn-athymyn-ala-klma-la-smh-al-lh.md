@@ -3,6 +3,7 @@ title: "تنبيه الشيخ ابن عثيمين على كلمة ( لا سمح 
 status: draft
 published_at: 2013-09-30
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2013/09/blog-post_817.html -->
 

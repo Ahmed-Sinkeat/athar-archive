@@ -3,7 +3,7 @@ title: "لا دفاعاً عن يزيد بن معاوية وإنما حبا في
 status: published
 published_at: 2024-04-26
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "al-imamah-was-sahabah"]
+topics: ["al-imamah-was-sahabah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/11628 (+2 more) -->
 

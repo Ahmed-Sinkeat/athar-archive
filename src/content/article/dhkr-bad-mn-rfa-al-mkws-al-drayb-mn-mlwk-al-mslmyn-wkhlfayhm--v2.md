@@ -3,7 +3,7 @@ title: "ذكر بعض من رفع المكوس ( الضرائب ) من ملوك 
 status: published
 published_at: 2020-10-12
 person: abu-jafar-al-khalifi
-topics: ["tahwid-al-ibada", "al-sunnah-wal-bidah"]
+topics: ["al-siyasah-al-shariyyah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/2785 (+3 more) -->
 

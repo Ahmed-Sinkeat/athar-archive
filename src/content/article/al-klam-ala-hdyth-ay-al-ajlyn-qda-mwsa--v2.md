@@ -3,6 +3,7 @@ title: "الكلام على حديث : ( أي الأجلين قضى موسى )"
 status: published
 published_at: 2025-11-30
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/15048 -->
 

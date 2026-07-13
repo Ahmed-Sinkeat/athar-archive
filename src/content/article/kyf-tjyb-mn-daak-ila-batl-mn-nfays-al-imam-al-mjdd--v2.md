@@ -3,6 +3,7 @@ title: "كيف تجيب من دعاك إلى باطل ( من نفائس الإم
 status: published
 published_at: 2022-12-30
 person: abu-jafar-al-khalifi
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/8509 -->
 

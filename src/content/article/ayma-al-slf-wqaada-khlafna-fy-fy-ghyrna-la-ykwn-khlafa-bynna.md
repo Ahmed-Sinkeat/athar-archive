@@ -3,7 +3,7 @@ title: "أئمة السلف وقاعدة خلافنا في في غيرنا لا 
 status: draft
 published_at: 2013-11-05
 person: abu-jafar-al-khalifi
-topics: ["tahwid-al-ibada", "al-aqeedah-al-aamah"]
+topics: ["usul-al-fiqh"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2013/11/blog-post_2705.html -->
 

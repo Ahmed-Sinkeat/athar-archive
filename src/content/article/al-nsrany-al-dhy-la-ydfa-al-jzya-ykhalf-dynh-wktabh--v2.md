@@ -3,6 +3,7 @@ title: "النصراني الذي لا يدفع الجزية يخالف دينه
 status: published
 published_at: 2023-06-10
 person: abu-jafar-al-khalifi
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/9502 -->
 

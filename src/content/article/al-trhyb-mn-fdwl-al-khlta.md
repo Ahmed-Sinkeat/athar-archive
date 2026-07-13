@@ -3,7 +3,7 @@ title: "الترهيب من فضول الخلطة"
 status: published
 published_at: 2023-02-19
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tahwid-al-ibada", "tazkiyat-al-nafs"]
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/8756 (+3 more) -->
 

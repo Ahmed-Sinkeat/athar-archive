@@ -3,7 +3,7 @@ title: "أهل الأهواء وقاعدة الغاية تبرر الوسيلة"
 status: published
 published_at: 2020-08-02
 person: abu-jafar-al-khalifi
-topics: ["al-firaq-war-rudud", "tahwid-al-ibada", "al-sunnah-wal-bidah"]
+topics: ["usul-al-fiqh"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/2095 (+2 more) -->
 

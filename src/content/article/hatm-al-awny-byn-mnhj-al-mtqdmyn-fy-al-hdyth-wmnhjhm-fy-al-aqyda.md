@@ -3,7 +3,7 @@ title: "حاتم العوني بين منهج المتقدمين في الحدي
 status: published
 published_at: 2020-06-13
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran", "al-firaq-war-rudud"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/1608 (+7 more) -->
 

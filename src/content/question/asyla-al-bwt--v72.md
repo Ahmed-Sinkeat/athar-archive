@@ -3,7 +3,7 @@ title: "أنا أسكن بالغرب ولديّ حساب بنكي ويعطونن
 status: published
 published_at: 2021-07-23
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["fiqh-aam"]
 audio: swteat--asyla-al-bwt--v72
 ---
 ## السؤال

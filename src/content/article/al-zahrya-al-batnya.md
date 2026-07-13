@@ -3,7 +3,7 @@ title: "الظاهرية الباطنية ..."
 status: published
 published_at: 2025-04-17
 person: abu-jafar-al-khalifi
-topics: ["tahwid-al-ibada", "al-asma-was-sifat", "al-sunnah-wal-bidah"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13530 (+1 more) -->
 

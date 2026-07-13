@@ -3,7 +3,7 @@ title: "جواب سؤال الكفارات"
 status: published
 published_at: 2021-08-24
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["fiqh-aam"]
 audio: swteat--jwab-swal-al-kfarat
 ---
 ## السؤال

@@ -3,6 +3,7 @@ title: "إثبات صحة حديث أبي قتادة في صيام يوم عرف
 status: published
 published_at: 2024-06-15
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/11952 -->
 

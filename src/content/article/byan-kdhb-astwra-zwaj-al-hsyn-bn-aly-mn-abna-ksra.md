@@ -3,6 +3,7 @@ title: "بيان كذب أسطورة زواج الحسين بن علي من اب
 status: published
 published_at: 2020-06-20
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/1686 -->
 

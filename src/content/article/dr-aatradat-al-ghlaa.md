@@ -3,7 +3,7 @@ title: "درء اعتراضات الغلاة ..."
 status: published
 published_at: 2024-11-04
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran", "al-sunnah-wal-bidah"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/12747 (+7 more) -->
 

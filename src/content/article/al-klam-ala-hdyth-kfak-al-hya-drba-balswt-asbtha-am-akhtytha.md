@@ -3,6 +3,7 @@ title: "الكلام على حديث : ( كفاك الحية ضربة بالسو
 status: published
 published_at: 2024-12-05
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/12933 -->
 

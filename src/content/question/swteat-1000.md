@@ -3,7 +3,7 @@ title: "أحسن الله اليكم، هل ثبت ان النور من اسما
 status: published
 published_at: 2021-11-02
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["mustalah-al-hadith"]
 ---
 ## السؤال
 

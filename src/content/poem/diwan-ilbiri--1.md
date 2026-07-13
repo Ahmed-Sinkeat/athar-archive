@@ -5,8 +5,8 @@ status: published
 published_at: 2026-07-02
 aliases: []
 person: al-ilbiri
-topics: []
 work_type: قصيدة
+topics: ["tazkiyat-al-nafs"]
 description: من ديوان الإلبيري
 attachments: []
 ---

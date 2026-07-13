@@ -3,7 +3,7 @@ title: "جواب سؤال طلب العلم في سن ٢٧"
 status: published
 published_at: 2021-09-19
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["adab-talab-al-ilm"]
 audio: swteat--jwab-swal-tlb-al-alm-fy-sn-27
 ---
 ## السؤال

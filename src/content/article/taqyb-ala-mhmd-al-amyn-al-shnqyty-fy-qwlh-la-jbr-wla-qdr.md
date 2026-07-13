@@ -3,6 +3,7 @@ title: "تعقيب على محمد الأمين الشنقيطي في قوله (
 status: draft
 published_at: 2014-05-02
 person: abu-jafar-al-khalifi
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2014/05/blog-post_2.html -->
 

@@ -3,7 +3,7 @@ title: "قاعدة في أن إظهار الشريعة في بلاد الكفر 
 status: published
 published_at: 2023-09-29
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "tahwid-al-ibada", "al-sunnah-wal-bidah"]
+topics: ["usul-al-fiqh"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/10163 (+3 more) -->
 

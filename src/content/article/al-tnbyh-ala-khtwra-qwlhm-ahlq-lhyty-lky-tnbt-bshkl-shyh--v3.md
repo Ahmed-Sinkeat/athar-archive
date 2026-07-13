@@ -3,6 +3,7 @@ title: "التنبيه على خطورة قولهم ( أحلق لحيتي لكي
 status: published
 published_at: 2024-03-04
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/11302 -->
 

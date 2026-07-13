@@ -3,7 +3,7 @@ title: "الصحيح المسند من آثار بقية العشرة المبش
 status: published
 published_at: 2021-10-24
 person: abu-jafar-al-khalifi
-topics: ["al-asma-was-sifat", "tazkiyat-al-nafs", "al-imamah-was-sahabah"]
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/5708 (+9 more) -->
 

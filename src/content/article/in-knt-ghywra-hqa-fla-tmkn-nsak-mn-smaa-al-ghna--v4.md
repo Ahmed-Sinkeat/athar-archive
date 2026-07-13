@@ -3,7 +3,7 @@ title: "إن كنت غيوراً حقاً فلا تمكن نساءك من سما
 status: published
 published_at: 2023-12-08
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "al-iman", "al-imamah-was-sahabah"]
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/10663 (+2 more) -->
 

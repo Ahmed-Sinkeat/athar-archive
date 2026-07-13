@@ -3,7 +3,7 @@ title: "بحث في العقيدة التي رواها محمد بن عوف ال
 status: published
 published_at: 2020-06-20
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/1684 (+1 more) -->
 

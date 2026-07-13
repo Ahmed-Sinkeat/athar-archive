@@ -3,6 +3,7 @@ title: "الكلام على زيادة ( المعوذتين في الوتر مع
 status: published
 published_at: 2021-05-01
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/4340 -->
 

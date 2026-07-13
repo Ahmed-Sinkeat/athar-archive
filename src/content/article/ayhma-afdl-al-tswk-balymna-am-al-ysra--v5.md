@@ -3,6 +3,7 @@ title: "أيهما أفضل التسوك باليمنى أم اليسرى ؟"
 status: published
 published_at: 2023-08-04
 person: abu-jafar-al-khalifi
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/9796 -->
 

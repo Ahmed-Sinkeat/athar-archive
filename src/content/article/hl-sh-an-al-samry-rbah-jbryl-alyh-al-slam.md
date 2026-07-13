@@ -3,7 +3,7 @@ title: "هل صح أن السامري رباه جبريل عليه السلام 
 status: published
 published_at: 2025-01-20
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "al-firaq-war-rudud"]
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13191 -->
 

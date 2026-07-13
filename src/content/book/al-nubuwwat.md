@@ -4,7 +4,7 @@ status: published
 published_at: 2026-07-04
 person: ibn-taymiyyah
 authored_year: 728
-topics: ["aam-aqeedah"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "الأولى، 1420هـ/2000م"
 description: "بتحقيق عبد العزيز بن صالح الطويان"
 ---

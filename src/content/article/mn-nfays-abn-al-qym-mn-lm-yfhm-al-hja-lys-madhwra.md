@@ -3,7 +3,7 @@ title: "من نفائس ابن القيم : من لم يفهم الحجة ليس
 status: published
 published_at: 2024-10-20
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "tahwid-al-ibada", "al-sunnah-wal-bidah"]
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/12626 (+2 more) -->
 

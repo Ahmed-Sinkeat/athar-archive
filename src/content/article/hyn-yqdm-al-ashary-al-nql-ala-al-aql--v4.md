@@ -3,6 +3,7 @@ title: "حين يقدم الأشعري النقل على العقل ..."
 status: published
 published_at: 2022-04-01
 person: abu-jafar-al-khalifi
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/6926 -->
 

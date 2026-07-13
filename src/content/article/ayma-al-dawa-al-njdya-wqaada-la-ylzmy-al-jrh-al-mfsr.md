@@ -3,7 +3,7 @@ title: "أئمة الدعوة النجدية وقاعدة «لا يلزمي ال
 status: published
 published_at: 2024-10-05
 person: abu-jafar-al-khalifi
-topics: ["al-firaq-war-rudud", "al-sunnah-wal-bidah"]
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/12556 (+3 more) -->
 

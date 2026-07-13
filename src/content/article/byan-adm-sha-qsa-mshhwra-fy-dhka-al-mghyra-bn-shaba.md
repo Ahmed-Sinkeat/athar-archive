@@ -3,6 +3,7 @@ title: "بيان عدم صحة قصة مشهورة في ذكاء المغيرة 
 status: published
 published_at: 2021-11-07
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/5954 -->
 

@@ -3,7 +3,7 @@ title: "نظرات في نظرات حاكم العبيسان التفسيرية 
 status: published
 published_at: 2025-06-05
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "al-firaq-war-rudud", "al-imamah-was-sahabah"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13867 (+3 more) -->
 

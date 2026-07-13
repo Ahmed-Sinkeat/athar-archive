@@ -3,6 +3,7 @@ title: "الحكمة من تسلط أهل الباطل على أهل الحق أ
 status: published
 published_at: 2023-01-07
 person: abu-jafar-al-khalifi
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/8557 (+1 more) -->
 

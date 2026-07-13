@@ -3,7 +3,7 @@ title: "مسائل مهمة في الاستثناء في الإيمان ..."
 status: published
 published_at: 2024-11-09
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "al-firaq-war-rudud", "al-iman"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/12777 (+6 more) -->
 

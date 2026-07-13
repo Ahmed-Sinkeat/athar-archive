@@ -3,6 +3,7 @@ title: "الكلام على حديث : ( لا تقتلوا الجراد فإنه
 status: published
 published_at: 2026-03-01
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/15281 -->
 

@@ -3,7 +3,7 @@ title: "الصحيح المسند من آثار شريح القاضي ..."
 status: published
 published_at: 2021-02-13
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "al-asma-was-sifat", "tazkiyat-al-nafs"]
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/3651 (+7 more) -->
 

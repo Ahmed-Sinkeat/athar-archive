@@ -3,7 +3,7 @@ title: "من نفائس شيخ الإسلام : الأشاعرة ذموا الس
 status: published
 published_at: 2021-08-23
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "tahwid-al-ibada"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/4996 (+2 more) -->
 

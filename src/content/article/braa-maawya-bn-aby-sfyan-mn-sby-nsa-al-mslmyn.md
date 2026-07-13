@@ -3,6 +3,7 @@ title: "براءة معاوية بن أبي سفيان من سبي نساء ال
 status: published
 published_at: 2021-09-24
 person: abu-jafar-al-khalifi
+topics: ["tarajim-al-ulama"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/5273 -->
 

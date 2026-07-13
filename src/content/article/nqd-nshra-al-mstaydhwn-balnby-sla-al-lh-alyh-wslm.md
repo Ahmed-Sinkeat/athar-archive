@@ -3,7 +3,7 @@ title: "نقض نشرة ( المستعيذون بالنبي صلى الله عل
 status: published
 published_at: 2020-08-10
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran", "tahwid-al-ibada"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/2178 (+3 more) -->
 

@@ -3,7 +3,7 @@ title: "مشكلتي بعد أن -والحمدلله- من الله علي في 
 status: published
 published_at: 2022-05-05
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["tazkiyat-al-nafs"]
 audio: swteat--swteat-1116
 ---
 ## السؤال

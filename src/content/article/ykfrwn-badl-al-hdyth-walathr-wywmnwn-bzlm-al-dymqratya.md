@@ -3,7 +3,7 @@ title: "يكفرون بعدل الحديث والأثر ويؤمنون بظلم 
 status: draft
 published_at: 2014-04-22
 person: abu-jafar-al-khalifi
-topics: ["tahwid-al-ibada", "al-aqeedah-al-aamah"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2014/04/blog-post_22.html -->
 

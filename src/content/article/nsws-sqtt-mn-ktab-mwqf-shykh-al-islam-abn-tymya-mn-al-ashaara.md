@@ -3,7 +3,7 @@ title: "نصوص سقطت من كتاب ( موقف شيخ الإسلام ابن 
 status: published
 published_at: 2020-07-30
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "al-firaq-war-rudud", "tahwid-al-ibada"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/2063 (+8 more) -->
 

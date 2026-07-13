@@ -3,6 +3,7 @@ title: "الكلام على حديث : ( أَوَّلُ مَنْ يَرِدُ ا
 status: published
 published_at: 2025-05-13
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13669 -->
 

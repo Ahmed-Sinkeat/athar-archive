@@ -3,6 +3,7 @@ title: "الكلام على زيادة ( بيمينه) في حديث ( يعقد 
 status: published
 published_at: 2020-06-29
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/1762 -->
 

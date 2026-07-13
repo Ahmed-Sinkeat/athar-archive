@@ -3,7 +3,7 @@ title: "هل كان التكفير منتشر في عصر شيخ الإسلام"
 status: published
 published_at: 2021-07-09
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["al-firaq-war-rudud"]
 audio: swteat--asyla-al-bwt--v12
 ---
 ## السؤال

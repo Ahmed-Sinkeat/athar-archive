@@ -3,7 +3,7 @@ title: "خالد ياسين يشكو إلى الله خذلان بعض أئمة 
 status: draft
 published_at: 2014-08-21
 person: abu-jafar-al-khalifi
-topics: ["tahwid-al-ibada", "al-aqeedah-al-aamah", "al-firaq-war-rudud"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2014/08/blog-post_21.html -->
 

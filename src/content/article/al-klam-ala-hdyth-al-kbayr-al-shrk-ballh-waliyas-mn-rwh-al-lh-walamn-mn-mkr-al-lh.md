@@ -3,7 +3,7 @@ title: "الكلام على حديث ( الكبائر الشرك بالله وا
 status: published
 published_at: 2025-11-02
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "tahwid-al-ibada"]
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/14968 -->
 

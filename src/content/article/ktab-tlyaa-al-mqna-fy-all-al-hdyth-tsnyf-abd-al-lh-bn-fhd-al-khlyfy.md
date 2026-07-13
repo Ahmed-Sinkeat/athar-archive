@@ -3,7 +3,7 @@ title: "[كتاب]: طليعة المقنع في علل الحديث\n\nتصني
 status: published
 published_at: 2025-10-24
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran", "tazkiyat-al-nafs"]
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/14825 (+91 more) -->
 

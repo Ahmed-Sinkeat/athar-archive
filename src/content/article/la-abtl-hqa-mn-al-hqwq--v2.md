@@ -3,6 +3,7 @@ title: "لا أبطل حقاً من الحقوق"
 status: published
 published_at: 2025-05-13
 person: abu-jafar-al-khalifi
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13686 -->
 

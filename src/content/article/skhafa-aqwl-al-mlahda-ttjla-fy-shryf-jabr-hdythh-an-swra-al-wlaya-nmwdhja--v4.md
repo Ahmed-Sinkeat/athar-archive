@@ -3,6 +3,7 @@ title: "سخافة عقول الملاحدة تتجلى في شريف جابر :
 status: published
 published_at: 2024-04-14
 person: abu-jafar-al-khalifi
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/11538 (+1 more) -->
 

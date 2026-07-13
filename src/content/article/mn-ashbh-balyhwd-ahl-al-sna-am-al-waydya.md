@@ -3,7 +3,7 @@ title: "من أشبه باليهود أهل السنة أم الوعيدية ...
 status: published
 published_at: 2023-10-30
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran"]
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/10450 (+2 more) -->
 

@@ -3,6 +3,7 @@ title: "لطيفة : أبيات للمتنبي ربما قالها شيخ الإ
 status: published
 published_at: 2020-12-20
 person: abu-jafar-al-khalifi
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/3267 -->
 

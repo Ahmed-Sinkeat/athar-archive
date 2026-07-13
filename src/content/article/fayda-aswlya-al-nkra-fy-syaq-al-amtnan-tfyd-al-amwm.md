@@ -3,6 +3,7 @@ title: "فائدة أصولية : النكرة في سياق الامتنان ت
 status: published
 published_at: 2023-12-14
 person: abu-jafar-al-khalifi
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/10715 -->
 

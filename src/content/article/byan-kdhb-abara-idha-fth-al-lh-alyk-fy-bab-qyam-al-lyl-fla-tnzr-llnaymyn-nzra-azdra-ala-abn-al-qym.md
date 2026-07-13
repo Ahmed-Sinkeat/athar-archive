@@ -3,6 +3,7 @@ title: "بيان كذب عبارة ( إذا فتح الله عليك في باب
 status: published
 published_at: 2024-02-16
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/11185 (+1 more) -->
 

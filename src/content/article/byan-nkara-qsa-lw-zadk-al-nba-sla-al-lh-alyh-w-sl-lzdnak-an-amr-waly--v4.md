@@ -3,6 +3,7 @@ title: "بيان نكارة قصة ( لو زادك النبى صلى الله ع
 status: published
 published_at: 2022-08-15
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/7818 -->
 

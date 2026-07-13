@@ -3,7 +3,7 @@ title: "ما صحّة القاعدة التي تقول بإن  [ الحديث ا
 status: published
 published_at: 2021-07-10
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["al-firaq-war-rudud"]
 audio: swteat--asyla-al-bwt--v15
 ---
 ## السؤال

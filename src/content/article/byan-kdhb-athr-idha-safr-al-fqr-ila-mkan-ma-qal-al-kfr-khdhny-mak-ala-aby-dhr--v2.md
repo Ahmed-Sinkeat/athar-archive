@@ -3,6 +3,7 @@ title: "بيان كذب أثر ( إذا سافر الفقر إلى مكانٍ م
 status: published
 published_at: 2022-08-19
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/7861 -->
 

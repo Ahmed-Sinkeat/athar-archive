@@ -3,6 +3,7 @@ title: "من حذق الإمام الشافعي في الرد على أهل ال
 status: published
 published_at: 2023-12-22
 person: abu-jafar-al-khalifi
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/10788 -->
 

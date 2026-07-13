@@ -238,8 +238,4 @@ function onPage() {
 onPage();
 document.addEventListener("astro:page-load", onPage);
 
-if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("/sw.js").catch(() => {});
-}
-
 export {};

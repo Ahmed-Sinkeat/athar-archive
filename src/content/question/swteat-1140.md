@@ -3,7 +3,7 @@ title: "مشكلتي انا وصغيرة أهلي مامتفقين مشاكل د
 status: published
 published_at: 2024-01-29
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["fiqh-aam"]
 ---
 ## السؤال
 

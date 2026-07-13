@@ -3,7 +3,7 @@ title: "حديث عظيم فيه الرد على القبورية الطاعني
 status: published
 published_at: 2020-10-01
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/2698 (+1 more) -->
 

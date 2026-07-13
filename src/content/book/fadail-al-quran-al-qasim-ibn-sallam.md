@@ -4,7 +4,7 @@ status: published
 published_at: 2026-07-07
 person: al-qasim-ibn-sallam
 kind: مرجع
-topics: ["ulum-al-quran"]
+topics: ["ulum-al-quran", "fadail-hadith"]
 authored_year: 224
 description: "فضائل القرآن لأبي عبيد القاسم بن سلام"
 ---

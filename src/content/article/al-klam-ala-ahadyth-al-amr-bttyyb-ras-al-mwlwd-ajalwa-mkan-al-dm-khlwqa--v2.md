@@ -3,6 +3,7 @@ title: "الكلام على أحاديث الأمر بتطييب رأس المو
 status: published
 published_at: 2025-07-28
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/14154 -->
 

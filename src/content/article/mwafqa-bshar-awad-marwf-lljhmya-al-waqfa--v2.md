@@ -3,7 +3,7 @@ title: "موافقة بشار عواد معروف للجهمية الواقفة 
 status: published
 published_at: 2025-08-08
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/14232 (+1 more) -->
 

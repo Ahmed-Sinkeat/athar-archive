@@ -3,7 +3,7 @@ title: "بماذا يذكرك هذا الكلام؟"
 status: published
 published_at: 2025-05-04
 person: abu-jafar-al-khalifi
-topics: ["al-firaq-war-rudud", "tahwid-al-ibada"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13658 (+1 more) -->
 

@@ -3,7 +3,7 @@ title: "سلف ابن تيمية في تعريف الإيمان لغة بأنه 
 status: published
 published_at: 2023-08-25
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "al-asma-was-sifat"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/9886 -->
 

@@ -3,7 +3,7 @@ title: "كل معطل يقدم العقل على النقل"
 status: published
 published_at: 2022-07-11
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "tahwid-al-ibada"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/7423 (+4 more) -->
 

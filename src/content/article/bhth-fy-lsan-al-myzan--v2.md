@@ -3,7 +3,7 @@ title: "بحث في لسان الميزان"
 status: published
 published_at: 2025-01-20
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "al-asma-was-sifat"]
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13175 (+1 more) -->
 

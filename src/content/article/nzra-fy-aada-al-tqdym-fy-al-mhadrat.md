@@ -3,6 +3,7 @@ title: "نظرة في عادة التقديم في المحاضرات ..."
 status: draft
 published_at: 2013-10-17
 person: abu-jafar-al-khalifi
+topics: ["adab-talab-al-ilm"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2013/10/blog-post_5291.html -->
 

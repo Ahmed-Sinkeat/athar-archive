@@ -3,7 +3,7 @@ title: "حقائق لا يعرفها كثير من المسلمين عن قطع 
 status: published
 published_at: 2025-06-09
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran", "al-firaq-war-rudud"]
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13975 (+2 more) -->
 

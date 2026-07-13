@@ -3,7 +3,7 @@ title: "نفي الفارق المؤثر بين المعتزلة ومتأخري 
 status: published
 published_at: 2024-07-12
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran", "al-firaq-war-rudud"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/12096 (+2 more) -->
 

@@ -3,6 +3,7 @@ title: "تعقيب على محمد بن موسى الشريف في تصحيحه 
 status: published
 published_at: 2025-08-08
 person: abu-jafar-al-khalifi
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/14229 -->
 

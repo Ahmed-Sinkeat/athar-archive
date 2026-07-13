@@ -3,7 +3,7 @@ title: "التحذير من إشاعة الفاحشة بين المؤمنين و
 status: published
 published_at: 2024-02-03
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "al-sunnah-wal-bidah"]
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/11109 (+1 more) -->
 

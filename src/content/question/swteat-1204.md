@@ -3,7 +3,7 @@ title: "هل كان وكيع وابن المبارك من أهل الرأي؟ ك
 status: published
 published_at: 2025-01-14
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["tarajim-al-ulama"]
 ---
 ## السؤال
 

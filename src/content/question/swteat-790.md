@@ -3,7 +3,7 @@ title: "بالنسبة لقضاء الصلاة الفائتة نسيت صلاة 
 status: published
 published_at: 2021-10-05
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["fiqh-aam"]
 ---
 ## السؤال
 

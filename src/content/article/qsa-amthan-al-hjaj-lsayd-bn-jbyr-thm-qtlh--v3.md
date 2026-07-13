@@ -3,6 +3,7 @@ title: "قصة امتحان الحجاج لسعيد بن جبير ثم قتله"
 status: published
 published_at: 2024-09-20
 person: abu-jafar-al-khalifi
+topics: ["tarajim-al-ulama"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/12512 (+3 more) -->
 

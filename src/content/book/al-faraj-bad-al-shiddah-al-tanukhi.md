@@ -4,6 +4,7 @@ status: published
 published_at: 2026-07-12
 person: at-tanukhi
 kind: متن
+topics: ["al-adab"]
 authored_year: 384
 ---
 ## المقدمة

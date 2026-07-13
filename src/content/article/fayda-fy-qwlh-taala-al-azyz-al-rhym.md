@@ -3,7 +3,7 @@ title: "فائدة في قوله تعالى : ( العزيز الرحيم )"
 status: draft
 published_at: 2013-10-21
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "ulum-al-quran"]
+topics: ["fiqh-aam"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2013/10/blog-post_2526.html -->
 

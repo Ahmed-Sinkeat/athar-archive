@@ -4,7 +4,7 @@ status: published
 published_at: 2026-07-03
 person: ibrahim-al-harbi
 authored_year: 285
-topics: ["aam-aqeedah"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "الأولى، 1416هـ - 1995م"
 description: "بتحقيق علي بن عبد العزيز علي الشبل"
 ---

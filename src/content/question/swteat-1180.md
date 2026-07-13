@@ -3,7 +3,7 @@ title: "هناك صوتية لك تحدثت بها عن صفة الحقو لله
 status: published
 published_at: 2025-01-05
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 ## السؤال
 

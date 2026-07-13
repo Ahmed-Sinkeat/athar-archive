@@ -4,7 +4,7 @@ status: published
 published_at: 2026-07-03
 person: al-harith-al-muhasibi
 authored_year: 243
-topics: ["aam-aqeedah"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "الثانية، 1398"
 description: "بتحقيق حسين القوتلي"
 ---

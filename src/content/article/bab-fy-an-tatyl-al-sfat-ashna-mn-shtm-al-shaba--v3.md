@@ -3,7 +3,7 @@ title: "باب في أن تعطيل الصفات أشنع من شتم الصحا
 status: published
 published_at: 2022-04-29
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "tahwid-al-ibada"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/7087 (+1 more) -->
 

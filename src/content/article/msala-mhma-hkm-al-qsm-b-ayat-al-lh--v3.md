@@ -3,6 +3,7 @@ title: "مسألة مهمة : حكم القسم ب( آيات الله )"
 status: published
 published_at: 2024-03-04
 person: abu-jafar-al-khalifi
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/11294 -->
 

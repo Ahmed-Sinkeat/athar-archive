@@ -3,7 +3,7 @@ title: "سؤالي: قد يرد على الألسنة مقالة كفرية، و
 status: published
 published_at: 2021-11-07
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["fiqh-aam"]
 ---
 ## السؤال
 

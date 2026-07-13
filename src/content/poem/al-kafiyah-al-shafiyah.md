@@ -3,7 +3,7 @@ title: "نونية ابن القيم = الكافية الشافية"
 status: published
 published_at: 2026-07-03
 person: ibn-al-qayyim
-topics: ["aam-aqeedah"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "الثانية، 1417هـ"
 ---
 ## أول القصيدة

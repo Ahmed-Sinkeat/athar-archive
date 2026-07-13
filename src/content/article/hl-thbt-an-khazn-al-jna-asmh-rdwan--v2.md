@@ -3,6 +3,7 @@ title: "هل ثبت أن خازن الجنة اسمه ( رضوان ) ؟"
 status: published
 published_at: 2024-06-08
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/11887 (+2 more) -->
 

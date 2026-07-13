@@ -3,7 +3,7 @@ title: "هل أباح الله لنا نكاح الفاجرات يا ياسر ا
 status: published
 published_at: 2023-06-23
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "al-imamah-was-sahabah"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/9580 -->
 

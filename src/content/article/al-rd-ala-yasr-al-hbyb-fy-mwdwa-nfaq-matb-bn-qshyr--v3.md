@@ -3,7 +3,7 @@ title: "الرد على ياسر الحبيب في موضوع نفاق معتب 
 status: published
 published_at: 2023-03-03
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran", "al-iman"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/8834 (+1 more) -->
 

@@ -3,6 +3,7 @@ title: "هل الكتاب الذي فوق العرش مخلوق ؟"
 status: published
 published_at: 2025-09-20
 person: abu-jafar-al-khalifi
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/14690 -->
 

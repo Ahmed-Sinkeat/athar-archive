@@ -3,6 +3,7 @@ title: "بيان عدم صحة قصة الزبير بن العوام مع زوج
 status: published
 published_at: 2024-05-24
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/11811 (+1 more) -->
 

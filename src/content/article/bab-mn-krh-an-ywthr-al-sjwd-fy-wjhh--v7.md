@@ -3,7 +3,7 @@ title: "باب من كره أن يؤثر السجود في وجهه"
 status: published
 published_at: 2023-04-07
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran"]
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/9034 -->
 

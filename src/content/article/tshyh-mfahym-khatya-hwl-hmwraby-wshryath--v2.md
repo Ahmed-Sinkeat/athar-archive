@@ -3,7 +3,7 @@ title: "تصحيح مفاهيم خاطئة حول حمورابي وشريعته 
 status: published
 published_at: 2023-10-02
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "al-firaq-war-rudud", "al-sunnah-wal-bidah"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/10193 (+2 more) -->
 

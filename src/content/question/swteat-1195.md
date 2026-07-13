@@ -3,7 +3,7 @@ title: "شيخنا بالنسبة للذين يعملون في مداجن الد
 status: published
 published_at: 2025-01-10
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["fiqh-aam"]
 audio: swteat--swteat-1195
 ---
 ## السؤال

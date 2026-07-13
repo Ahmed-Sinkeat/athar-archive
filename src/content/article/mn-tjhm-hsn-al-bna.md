@@ -3,7 +3,7 @@ title: "من تجهم حسن البنا ..."
 status: published
 published_at: 2024-07-21
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran", "tahwid-al-ibada"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/12148 (+1 more) -->
 

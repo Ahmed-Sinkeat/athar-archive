@@ -3,7 +3,7 @@ title: "أثران نفيسان في مسألتين هامتين ..."
 status: published
 published_at: 2020-06-05
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "tahwid-al-ibada", "al-sunnah-wal-bidah"]
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/1498 (+2 more) -->
 

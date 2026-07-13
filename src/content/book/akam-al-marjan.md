@@ -4,7 +4,7 @@ status: published
 published_at: 2026-07-04
 person: al-shibli
 authored_year: 769
-topics: ["aam-aqeedah"]
+topics: ["al-aqeedah-al-aamah"]
 description: "بتحقيق إبراهيم محمد الجمل"
 ---
 ## بِسم الله الرَّحْمَن الرَّحِيم

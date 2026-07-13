@@ -3,7 +3,7 @@ title: "هل يصح قول بعضهم أنه يمكن الجمع بين التك
 status: published
 published_at: 2021-07-08
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["al-firaq-war-rudud"]
 audio: swteat--al-mjls-al-ashrwn--v2
 ---
 ## السؤال

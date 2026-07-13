@@ -3,7 +3,7 @@ title: "هل نطلب العلم عند الصوفية"
 status: published
 published_at: 2020-03-02
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["al-firaq-war-rudud"]
 audio: swteat--hl-ntlb-al-alm-and-al-swfya
 ---
 ## السؤال

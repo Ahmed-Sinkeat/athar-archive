@@ -3,6 +3,7 @@ title: "لا يجوز الجزع عند رؤية المنكر ..."
 status: published
 published_at: 2021-01-29
 person: abu-jafar-al-khalifi
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/3493 -->
 

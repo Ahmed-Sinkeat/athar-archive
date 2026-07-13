@@ -3,7 +3,7 @@ title: "هل يكفر من قاتل مع الكفار ضد المسلمين لغ
 status: published
 published_at: 2020-10-27
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["al-firaq-war-rudud"]
 audio: swteat--hl-ykfr-mn-qatl-ma-al-kfar-dd-al-mslmyn-lghrd-dnywy
 ---
 ## السؤال

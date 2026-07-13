@@ -3,6 +3,7 @@ title: "التنبيه على لفظة منكرة نسبها عبد الرحمن
 status: draft
 published_at: 2013-09-29
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2013/09/blog-post_6064.html -->
 

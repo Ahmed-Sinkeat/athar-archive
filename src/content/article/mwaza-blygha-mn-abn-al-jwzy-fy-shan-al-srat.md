@@ -3,7 +3,7 @@ title: "موعظة بليغة من ابن الجوزي في شأن الصراط"
 status: draft
 published_at: 2013-10-20
 person: abu-jafar-al-khalifi
-topics: ["al-akhlaq-wal-adab"]
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2013/10/blog-post_8304.html -->
 

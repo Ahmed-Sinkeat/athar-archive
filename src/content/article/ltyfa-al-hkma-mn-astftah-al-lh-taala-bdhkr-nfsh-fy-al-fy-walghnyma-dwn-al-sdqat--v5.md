@@ -3,6 +3,7 @@ title: "لطيفة الحكمة من استفتاح الله تعالى بذكر
 status: published
 published_at: 2023-04-14
 person: abu-jafar-al-khalifi
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/9087 -->
 

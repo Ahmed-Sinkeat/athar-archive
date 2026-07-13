@@ -3,7 +3,7 @@ title: "الرد على هاني كشك في إنكاره اشتقاق اسم ا
 status: published
 published_at: 2025-07-28
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "tahwid-al-ibada", "al-asma-was-sifat"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/14140 (+1 more) -->
 

@@ -3,6 +3,7 @@ title: "باب من استحب تأخير الركعتين بعد المغرب"
 status: published
 published_at: 2021-03-01
 person: abu-jafar-al-khalifi
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/3921 -->
 

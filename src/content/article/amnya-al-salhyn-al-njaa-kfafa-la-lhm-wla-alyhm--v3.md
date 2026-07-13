@@ -3,7 +3,7 @@ title: "أمنية الصالحين : النجاة كفافاً لا لهم ول
 status: published
 published_at: 2023-01-27
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran", "tazkiyat-al-nafs"]
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/8692 (+1 more) -->
 

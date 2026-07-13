@@ -3,6 +3,7 @@ title: "الكلام على حديث ( الصورة الرأس )"
 status: published
 published_at: 2025-12-28
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/15104 -->
 

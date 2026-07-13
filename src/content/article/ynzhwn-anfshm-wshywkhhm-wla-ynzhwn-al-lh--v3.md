@@ -3,6 +3,7 @@ title: "ينزهون أنفسهم وشيوخهم ولا ينزهون الله !"
 status: published
 published_at: 2022-03-28
 person: abu-jafar-al-khalifi
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/6900 -->
 

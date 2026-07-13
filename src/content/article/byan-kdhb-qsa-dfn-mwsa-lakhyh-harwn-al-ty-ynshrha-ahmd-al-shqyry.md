@@ -3,6 +3,7 @@ title: "بيان كذب قصة دفن موسى لأخيه هارون التي ي
 status: published
 published_at: 2024-06-03
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/11861 -->
 

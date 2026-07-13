@@ -3,7 +3,7 @@ title: "براهين وقرائن جديدة على حفظ السنة"
 status: published
 published_at: 2020-03-13
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tahwid-al-ibada"]
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/665 (+1 more) -->
 

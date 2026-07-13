@@ -3,6 +3,7 @@ title: "تنبيهات شرعية حول قضية البطالة ..."
 status: published
 published_at: 2023-01-02
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/8527 (+2 more) -->
 

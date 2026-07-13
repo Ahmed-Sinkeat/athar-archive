@@ -3,7 +3,7 @@ title: "الصحيح المسند من آثار التابعي الجليل أب
 status: published
 published_at: 2021-02-08
 person: abu-jafar-al-khalifi
-topics: ["tazkiyat-al-nafs", "al-sunnah-wal-bidah"]
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/3603 (+3 more) -->
 

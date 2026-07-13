@@ -3,7 +3,7 @@ title: "تناقض المستدلين بحديث النهي عن كتابة ال
 status: published
 published_at: 2024-08-12
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tazkiyat-al-nafs"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/12251 (+2 more) -->
 

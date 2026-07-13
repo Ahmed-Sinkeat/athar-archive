@@ -3,7 +3,7 @@ title: "من حذق الإمام البخاري في الرد على أهل ال
 status: published
 published_at: 2025-06-09
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "al-imamah-was-sahabah", "al-sunnah-wal-bidah"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13969 (+1 more) -->
 

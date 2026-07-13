@@ -3,7 +3,7 @@ title: "معنى قولنا : التحيات لله"
 status: published
 published_at: 2023-02-11
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran"]
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/8735 -->
 

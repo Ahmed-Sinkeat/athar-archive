@@ -3,7 +3,7 @@ title: "انظر كيف جمع بين التوحيد وبر والدته ..."
 status: published
 published_at: 2020-12-18
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tahwid-al-ibada"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/3253 -->
 

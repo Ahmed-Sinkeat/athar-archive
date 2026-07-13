@@ -3,6 +3,7 @@ title: "سنة التكبير عند اشتداد الريح ..."
 status: published
 published_at: 2025-03-24
 person: abu-jafar-al-khalifi
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13465 -->
 

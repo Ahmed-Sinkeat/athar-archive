@@ -3,6 +3,7 @@ title: "المعينات على الصبر على أذى الناس والعفو
 status: published
 published_at: 2021-01-22
 person: abu-jafar-al-khalifi
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/3447 (+2 more) -->
 

@@ -3,7 +3,7 @@ title: "من زندقة الأشاعرة : القرآن الذين بين أيد
 status: published
 published_at: 2024-03-04
 person: abu-jafar-al-khalifi
-topics: ["al-firaq-war-rudud", "tahwid-al-ibada"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/11295 (+4 more) -->
 

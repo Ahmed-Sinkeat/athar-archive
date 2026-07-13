@@ -3,6 +3,7 @@ title: "التنبيه على قولهم ( محبكم فلان ابن فلان )
 status: draft
 published_at: 2014-03-24
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2014/03/blog-post_24.html -->
 

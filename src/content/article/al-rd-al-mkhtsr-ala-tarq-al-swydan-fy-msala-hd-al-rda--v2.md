@@ -3,6 +3,7 @@ title: "الرد المختصر على طارق السويدان في مسألة
 status: published
 published_at: 2024-12-05
 person: abu-jafar-al-khalifi
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/12930 (+2 more) -->
 

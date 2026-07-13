@@ -3,6 +3,7 @@ title: "بيان المعنى الصحيح لقوله عليه الصلاة وا
 status: published
 published_at: 2021-07-19
 person: abu-jafar-al-khalifi
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/4758 (+1 more) -->
 

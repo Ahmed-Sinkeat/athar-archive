@@ -3,7 +3,7 @@ title: "مساكين الملوك"
 status: published
 published_at: 2023-01-16
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tahwid-al-ibada"]
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/8619 (+2 more) -->
 

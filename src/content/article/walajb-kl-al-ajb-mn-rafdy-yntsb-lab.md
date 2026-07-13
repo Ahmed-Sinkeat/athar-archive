@@ -3,7 +3,7 @@ title: "والعجب كل العجب من رافضي ينتسب لأب ..."
 status: draft
 published_at: 2013-09-26
 person: abu-jafar-al-khalifi
-topics: ["tahwid-al-ibada", "al-aqeedah-al-aamah"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2013/09/blog-post_1083.html -->
 

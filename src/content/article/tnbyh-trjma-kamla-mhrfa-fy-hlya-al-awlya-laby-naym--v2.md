@@ -3,6 +3,7 @@ title: "تنبيه : ترجمة كاملة محرفة في حلية الأولي
 status: published
 published_at: 2022-05-23
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/7220 (+1 more) -->
 

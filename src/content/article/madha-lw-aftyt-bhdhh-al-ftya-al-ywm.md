@@ -3,6 +3,7 @@ title: "ماذا لو أفتيت بهذه الفتيا اليوم ؟"
 status: published
 published_at: 2024-06-03
 person: abu-jafar-al-khalifi
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/11849 -->
 

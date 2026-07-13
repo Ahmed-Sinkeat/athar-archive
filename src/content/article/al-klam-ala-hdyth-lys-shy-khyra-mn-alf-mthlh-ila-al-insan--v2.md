@@ -3,6 +3,7 @@ title: "الكلام على حديث : ( ليس شيء خيرا من ألف مث
 status: published
 published_at: 2026-05-31
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/15651 -->
 

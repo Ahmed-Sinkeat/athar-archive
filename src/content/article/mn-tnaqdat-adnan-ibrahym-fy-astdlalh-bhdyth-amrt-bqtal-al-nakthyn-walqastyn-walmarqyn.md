@@ -3,7 +3,7 @@ title: "من تناقضات عدنان إبراهيم في استدلاله بح
 status: published
 published_at: 2024-11-16
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tahwid-al-ibada"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/12840 (+6 more) -->
 

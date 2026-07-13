@@ -3,7 +3,7 @@ title: "يتكلمون وكأن الجنة ملكهم ..."
 status: published
 published_at: 2023-12-11
 person: abu-jafar-al-khalifi
-topics: ["al-firaq-war-rudud", "tahwid-al-ibada", "tazkiyat-al-nafs"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/10686 (+4 more) -->
 

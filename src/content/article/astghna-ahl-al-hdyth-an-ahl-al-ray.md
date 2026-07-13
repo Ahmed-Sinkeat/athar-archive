@@ -3,7 +3,7 @@ title: "استغناء أهل الحديث عن أهل الرأي ..."
 status: published
 published_at: 2024-08-29
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]
+topics: ["usul-al-fiqh"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/12393 (+2 more) -->
 

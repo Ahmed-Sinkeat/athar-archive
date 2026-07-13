@@ -3,7 +3,7 @@ title: "من وصايا «الفضيل بن عياض» في لزوم السنة 
 status: published
 published_at: 2025-08-23
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tazkiyat-al-nafs", "al-iman"]
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/14484 (+1 more) -->
 

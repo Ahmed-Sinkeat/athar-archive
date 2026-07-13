@@ -3,7 +3,7 @@ title: "من كفر الحجاج من الأئمة وهل قولهم حجة ؟"
 status: published
 published_at: 2021-10-09
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["fiqh-aam"]
 ---
 ## السؤال
 

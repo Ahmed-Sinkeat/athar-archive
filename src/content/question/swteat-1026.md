@@ -3,7 +3,7 @@ title: "هل يجوز للمسلم أن ينزه نفسه من كسب الرزق
 status: published
 published_at: 2021-11-13
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["fiqh-aam"]
 ---
 ## السؤال
 

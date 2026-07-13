@@ -3,7 +3,7 @@ title: "ماحكم التحاكم للكافر إذا كان يحكم بالشر
 status: published
 published_at: 2020-02-13
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["fiqh-aam"]
 audio: swteat--mahkm-al-thakm-llkafr-idha-kan-yhkm-balshra
 ---
 ## السؤال

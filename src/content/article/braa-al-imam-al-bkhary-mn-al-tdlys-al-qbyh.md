@@ -3,7 +3,7 @@ title: "براءة الإمام البخاري من التدليس القبيح 
 status: published
 published_at: 2021-11-12
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tahwid-al-ibada"]
+topics: ["tarajim-al-ulama"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/6001 (+9 more) -->
 

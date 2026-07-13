@@ -3,6 +3,7 @@ title: "هل عصير الكوكتيل محرم ؟!"
 status: published
 published_at: 2023-12-03
 person: abu-jafar-al-khalifi
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/10637 (+1 more) -->
 

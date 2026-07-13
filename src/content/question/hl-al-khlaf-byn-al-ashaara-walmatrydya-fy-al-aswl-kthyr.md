@@ -3,7 +3,7 @@ title: "هل الخلاف بين الأشاعرة والماتريدية في ا
 status: published
 published_at: 2020-05-07
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["al-firaq-war-rudud"]
 audio: swteat--hl-al-khlaf-byn-al-ashaara-walmatrydya-fy-al-aswl-kthyr
 ---
 ## السؤال

@@ -3,6 +3,7 @@ title: "الكذب على رسول الله صلى الله عليه وسلم ف
 status: draft
 published_at: 2016-07-04
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2016/07/normal-0-false-false-false-en-us-x-none.html -->
 

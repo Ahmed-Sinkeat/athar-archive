@@ -3,7 +3,7 @@ title: "هل أولياؤكم أجل من الإمام البخاري ؟"
 status: draft
 published_at: 2014-05-29
 person: abu-jafar-al-khalifi
-topics: ["tahwid-al-ibada", "al-aqeedah-al-aamah", "al-firaq-war-rudud"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2014/05/blog-post_29.html -->
 

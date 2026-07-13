@@ -3,7 +3,7 @@ title: "نقض طعن الرافضة في الكسائي صاحب اللغة ...
 status: published
 published_at: 2024-04-26
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran", "al-imamah-was-sahabah"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/11647 -->
 

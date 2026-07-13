@@ -3,7 +3,7 @@ title: "بين وجادات التطوريين ووجادات المحدثين .
 status: published
 published_at: 2023-09-05
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran", "al-firaq-war-rudud"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/9962 (+6 more) -->
 

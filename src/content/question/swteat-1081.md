@@ -3,7 +3,7 @@ title: "أسأل عن كيفية التخلص من الهواجس والانطب
 status: published
 published_at: 2022-01-24
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["tazkiyat-al-nafs"]
 audio: swteat--swteat-1081
 ---
 ## السؤال

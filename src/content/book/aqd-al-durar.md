@@ -4,7 +4,7 @@ status: published
 published_at: 2026-07-04
 person: yusuf-al-sulami
 authored_year: 658
-topics: ["aam-aqeedah"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "الثانية، 1410 هـ - 1989 م"
 ---
 عقد الدرر في أخبار المنتظر يوسف بن يحيى بن علي المقدسي الشافعي السلمي

@@ -3,7 +3,7 @@ title: "غلاة الصوفية بين تقديس الشيوخ وانتقاص ا
 status: published
 published_at: 2021-08-28
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "al-firaq-war-rudud", "tahwid-al-ibada"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/5045 (+1 more) -->
 

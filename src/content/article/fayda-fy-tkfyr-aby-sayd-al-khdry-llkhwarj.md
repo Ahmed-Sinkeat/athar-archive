@@ -3,7 +3,7 @@ title: "فائدة في تكفير أبي سعيد الخدري للخوارج"
 status: draft
 published_at: 2013-10-27
 person: abu-jafar-al-khalifi
-topics: ["tahwid-al-ibada", "al-aqeedah-al-aamah"]
+topics: ["fiqh-aam"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2013/10/blog-post_2410.html -->
 

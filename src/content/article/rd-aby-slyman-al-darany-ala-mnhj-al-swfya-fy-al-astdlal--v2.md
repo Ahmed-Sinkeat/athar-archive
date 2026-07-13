@@ -3,7 +3,7 @@ title: "رد أبي سليمان الداراني على منهج الصوفية
 status: published
 published_at: 2020-11-06
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran", "tazkiyat-al-nafs"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/2963 -->
 

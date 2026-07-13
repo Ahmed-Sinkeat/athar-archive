@@ -3,7 +3,7 @@ title: "حلمي القمص يعقوب يثبت النبوة من حيث لا ي
 status: published
 published_at: 2023-10-02
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "al-firaq-war-rudud", "tahwid-al-ibada"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/10177 (+7 more) -->
 

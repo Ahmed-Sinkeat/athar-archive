@@ -3,7 +3,7 @@ title: "مشابهة الأشاعرة والماتردية للمشركين"
 status: published
 published_at: 2021-09-20
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran", "tahwid-al-ibada"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/5233 (+2 more) -->
 

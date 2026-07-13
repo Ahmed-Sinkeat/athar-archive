@@ -3,7 +3,7 @@ title: "أما إنكم ستسألون عنها وإن لم تكن ناطقة ..
 status: published
 published_at: 2022-02-04
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran", "tazkiyat-al-nafs"]
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/6579 (+3 more) -->
 

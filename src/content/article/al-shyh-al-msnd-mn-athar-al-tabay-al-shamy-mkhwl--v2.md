@@ -3,7 +3,7 @@ title: "الصحيح المسند من آثار التابعي الشامي مك
 status: published
 published_at: 2021-10-30
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "tazkiyat-al-nafs"]
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/5803 (+3 more) -->
 

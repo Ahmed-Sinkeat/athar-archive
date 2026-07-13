@@ -3,7 +3,7 @@ title: "كتاب متون طالب العلم - المستوى التمهيدي"
 status: published
 published_at: 2026-07-05
 person: abd-al-mhsn-al-qasm
-topics: ["aam-other"]
+topics: ["adab-talab-al-ilm"]
 ---
 # بطاقة الكتاب وفهرس الموضوعات
 

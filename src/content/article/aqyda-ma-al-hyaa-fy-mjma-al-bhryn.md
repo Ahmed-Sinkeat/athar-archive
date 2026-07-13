@@ -3,7 +3,7 @@ title: "عقيدة ماء الحياة في مجمع البحرين ..."
 status: published
 published_at: 2023-12-24
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "tahwid-al-ibada"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/10804 (+1 more) -->
 

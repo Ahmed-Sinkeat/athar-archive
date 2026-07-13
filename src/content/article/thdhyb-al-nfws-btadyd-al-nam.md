@@ -3,7 +3,7 @@ title: "تهذيب النفوس بتعديد النعم ..."
 status: published
 published_at: 2021-10-11
 person: abu-jafar-al-khalifi
-topics: ["tahwid-al-ibada", "al-sunnah-wal-bidah"]
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/5410 (+2 more) -->
 

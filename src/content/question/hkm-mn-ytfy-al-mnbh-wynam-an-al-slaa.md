@@ -3,7 +3,7 @@ title: "حكم من يطفئ المنبه وينام عن الصلاة"
 status: published
 published_at: 2020-03-02
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["fiqh-aam"]
 audio: swteat--hkm-mn-ytfy-al-mnbh-wynam-an-al-slaa
 ---
 ## السؤال

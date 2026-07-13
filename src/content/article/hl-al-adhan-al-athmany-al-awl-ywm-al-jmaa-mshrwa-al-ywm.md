@@ -3,6 +3,7 @@ title: "هل الأذان العثماني الأول يوم الجمعة مشر
 status: published
 published_at: 2024-01-11
 person: abu-jafar-al-khalifi
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/10954 -->
 

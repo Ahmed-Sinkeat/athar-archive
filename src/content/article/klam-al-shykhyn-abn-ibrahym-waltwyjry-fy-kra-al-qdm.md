@@ -3,6 +3,7 @@ title: "كلام الشيخين ابن إبراهيم والتويجري في ك
 status: draft
 published_at: 2013-10-15
 person: abu-jafar-al-khalifi
+topics: ["fiqh-aam"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2013/10/blog-post_9175.html -->
 

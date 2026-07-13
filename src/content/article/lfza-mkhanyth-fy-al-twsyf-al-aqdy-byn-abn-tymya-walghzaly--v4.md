@@ -3,6 +3,7 @@ title: "لفظة ( مخانيث ) في التوصيف العقدي بين ابن
 status: published
 published_at: 2023-07-07
 person: abu-jafar-al-khalifi
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/9644 (+1 more) -->
 

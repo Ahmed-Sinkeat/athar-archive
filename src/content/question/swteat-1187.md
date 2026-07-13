@@ -3,7 +3,7 @@ title: "هل صح ما أورد الأصبهاني في العظمة في قصة
 status: published
 published_at: 2025-01-07
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["mustalah-al-hadith"]
 audio: swteat--swteat-1187
 ---
 ## السؤال

@@ -3,7 +3,7 @@ title: "براءة السلف من عقيدة التفويض ( الحلقة ال
 status: published
 published_at: 2023-04-30
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran", "tahwid-al-ibada"]
+topics: ["tarajim-al-ulama"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/9176 (+4 more) -->
 

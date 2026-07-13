@@ -3,7 +3,7 @@ title: "نقض شبهة إسنادية حول حديث ابن عباس في ان
 status: published
 published_at: 2022-05-16
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "al-imamah-was-sahabah"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/7158 (+2 more) -->
 

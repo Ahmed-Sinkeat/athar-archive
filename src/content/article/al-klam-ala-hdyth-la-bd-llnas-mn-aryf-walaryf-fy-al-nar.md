@@ -3,6 +3,7 @@ title: "الكلام على حديث : ( لا بد للناس من عريف وا
 status: published
 published_at: 2020-07-11
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/1904 (+1 more) -->
 

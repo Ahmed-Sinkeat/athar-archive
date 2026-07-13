@@ -3,7 +3,7 @@ title: "إنه الإمام أحمد أيها الحدوشي !"
 status: published
 published_at: 2024-12-31
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13035 (+3 more) -->
 

@@ -3,7 +3,7 @@ title: "هل الآحاد ينسخ المتواتر والقران"
 status: published
 published_at: 2021-07-09
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["mustalah-al-hadith"]
 audio: swteat--asyla-al-bwt--v6
 ---
 ## السؤال

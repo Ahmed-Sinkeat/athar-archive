@@ -3,7 +3,7 @@ title: "جواب سؤال الأسماء والصفات والألوهية"
 status: published
 published_at: 2021-09-09
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["al-aqeedah-al-aamah"]
 audio: swteat--jwab-swal-al-asma-walsfat-walalwhya
 ---
 ## السؤال

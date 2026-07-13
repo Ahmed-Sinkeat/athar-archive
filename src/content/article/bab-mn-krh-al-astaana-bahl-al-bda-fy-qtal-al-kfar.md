@@ -3,7 +3,7 @@ title: "باب من كره الاستعانة بأهل البدع في قتال 
 status: draft
 published_at: 2013-10-20
 person: abu-jafar-al-khalifi
-topics: ["tahwid-al-ibada", "al-aqeedah-al-aamah"]
+topics: ["fiqh-aam"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2013/10/blog-post_6032.html -->
 

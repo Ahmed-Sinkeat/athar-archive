@@ -3,7 +3,7 @@ title: "فائدة : الحنيف المستقيم !"
 status: published
 published_at: 2022-03-04
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran"]
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/6758 -->
 

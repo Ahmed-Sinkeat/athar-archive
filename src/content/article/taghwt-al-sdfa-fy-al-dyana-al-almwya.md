@@ -3,7 +3,7 @@ title: "طاغوت الصدفة في الديانة العلموية ..."
 status: published
 published_at: 2023-05-31
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "al-firaq-war-rudud"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/9435 (+4 more) -->
 

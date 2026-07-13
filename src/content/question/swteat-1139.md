@@ -3,7 +3,7 @@ title: "هناك حديث نريد نعرف هل هو مكذوب عن النبى
 status: published
 published_at: 2024-01-28
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["al-firaq-war-rudud"]
 audio: swteat--swteat-1139
 ---
 ## السؤال

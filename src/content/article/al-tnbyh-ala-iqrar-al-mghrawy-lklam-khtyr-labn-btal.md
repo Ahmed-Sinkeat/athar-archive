@@ -3,7 +3,7 @@ title: "التنبيه على إقرار المغراوي لكلام خطير ل
 status: published
 published_at: 2024-11-09
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "al-asma-was-sifat", "al-sunnah-wal-bidah"]
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/12790 (+2 more) -->
 

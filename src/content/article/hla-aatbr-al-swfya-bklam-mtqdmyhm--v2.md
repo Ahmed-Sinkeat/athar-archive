@@ -3,7 +3,7 @@ title: "هلا اعتبر الصوفية بكلام متقدميهم ..."
 status: published
 published_at: 2021-10-22
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "tahwid-al-ibada", "al-qadr"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/5706 (+1 more) -->
 

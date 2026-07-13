@@ -3,7 +3,7 @@ title: "براءة الإمام الزهري من تهمة التدليس"
 status: published
 published_at: 2021-12-03
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "adab-talab-al-ilm"]
+topics: ["tarajim-al-ulama"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/6161 (+3 more) -->
 

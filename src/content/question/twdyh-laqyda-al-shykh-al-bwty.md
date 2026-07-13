@@ -3,7 +3,7 @@ title: "توضيح لعقيدة الشيخ البوطي"
 status: published
 published_at: 2020-03-27
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["al-aqeedah-al-aamah"]
 audio: swteat--twdyh-laqyda-al-shykh-al-bwty
 ---
 ## السؤال

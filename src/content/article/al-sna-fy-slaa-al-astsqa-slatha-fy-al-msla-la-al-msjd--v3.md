@@ -3,7 +3,7 @@ title: "السنة في صلاة الاستسقاء صلاتها في المصل
 status: published
 published_at: 2026-01-05
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran"]
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/15149 (+3 more) -->
 

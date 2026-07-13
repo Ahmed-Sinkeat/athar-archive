@@ -3,7 +3,7 @@ title: "تعقيب على الدكتور هشام الصيني فيما وافق
 status: published
 published_at: 2022-01-09
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "al-iman"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/6430 (+3 more) -->
 

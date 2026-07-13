@@ -3,6 +3,7 @@ title: "باب تضليل من خالف الدليل في مسألة فقهية"
 status: published
 published_at: 2026-01-05
 person: abu-jafar-al-khalifi
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/15196 -->
 

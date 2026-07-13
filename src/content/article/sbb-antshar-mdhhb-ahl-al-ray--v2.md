@@ -3,6 +3,7 @@ title: "سبب انتشار مذهب أهل الرأي !"
 status: published
 published_at: 2022-02-27
 person: abu-jafar-al-khalifi
+topics: ["usul-al-fiqh"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/6737 (+1 more) -->
 

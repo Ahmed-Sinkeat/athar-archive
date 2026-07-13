@@ -3,7 +3,7 @@ title: "قاعدة جليلة في تمييز الجهمية ..."
 status: published
 published_at: 2024-10-05
 person: abu-jafar-al-khalifi
-topics: ["tahwid-al-ibada", "al-sunnah-wal-bidah"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/12543 (+2 more) -->
 

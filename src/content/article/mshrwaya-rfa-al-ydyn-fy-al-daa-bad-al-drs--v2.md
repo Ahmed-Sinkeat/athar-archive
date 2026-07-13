@@ -3,7 +3,7 @@ title: "مشروعية رفع اليدين في الدعاء بعد الدرس"
 status: published
 published_at: 2025-08-08
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tahwid-al-ibada", "al-iman"]
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/14299 -->
 

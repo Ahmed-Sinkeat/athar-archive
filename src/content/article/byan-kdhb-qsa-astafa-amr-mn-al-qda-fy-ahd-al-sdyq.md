@@ -3,6 +3,7 @@ title: "بيان كذب قصة استعفاء عمر من القضاء في عه
 status: published
 published_at: 2020-07-11
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/1910 -->
 

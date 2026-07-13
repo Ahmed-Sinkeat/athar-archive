@@ -3,7 +3,7 @@ title: "بيان مخالفة الصلابي لإجماع مفسري السلف 
 status: draft
 published_at: 2013-10-19
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "ulum-al-quran"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2013/10/blog-post_6361.html -->
 

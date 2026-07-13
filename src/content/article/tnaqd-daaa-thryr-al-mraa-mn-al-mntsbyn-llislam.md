@@ -3,6 +3,7 @@ title: "تناقض دعاة تحرير المرأة من المنتسبين لل
 status: published
 published_at: 2020-06-29
 person: abu-jafar-al-khalifi
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/1788 -->
 

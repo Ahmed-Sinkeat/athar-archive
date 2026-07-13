@@ -3,6 +3,7 @@ title: "باب من ذكر صلاة عليه وهو في أخرى"
 status: draft
 published_at: 2013-10-20
 person: abu-jafar-al-khalifi
+topics: ["fiqh-aam"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2013/10/blog-post_9144.html -->
 

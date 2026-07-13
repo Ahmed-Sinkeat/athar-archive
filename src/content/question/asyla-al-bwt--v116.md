@@ -3,7 +3,7 @@ title: "إذا تصدق العبد ثم بطلت صدقته بذنوب ثم تا
 status: published
 published_at: 2021-08-05
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["tazkiyat-al-nafs"]
 audio: swteat--asyla-al-bwt--v116
 ---
 ## السؤال

@@ -3,6 +3,7 @@ title: "أقوال الأطباء قديماً وحديثاً في مسألة ا
 status: published
 published_at: 2020-07-16
 person: abu-jafar-al-khalifi
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/1951 (+2 more) -->
 

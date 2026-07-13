@@ -3,7 +3,7 @@ title: "ذم ابو حنيفة متواتر لا شك"
 status: published
 published_at: 2021-07-24
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["mustalah-al-hadith"]
 audio: swteat--asyla-al-bwt--v95
 ---
 ## السؤال

@@ -3,7 +3,7 @@ title: "لماذا لم يجاهد سفيان الثوري ؟"
 status: draft
 published_at: 2013-09-24
 person: abu-jafar-al-khalifi
-topics: ["tahwid-al-ibada", "al-aqeedah-al-aamah"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2013/09/normal-0-false-false-false-en-us-x-none_24.html -->
 

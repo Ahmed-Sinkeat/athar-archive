@@ -3,7 +3,7 @@ title: "هل صح عن ابن عمر أنه قال : كذب أبو هريرة ك
 status: published
 published_at: 2026-04-01
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["mustalah-al-hadith"]
 audio: swteat--swteat-1230
 ---
 ## السؤال

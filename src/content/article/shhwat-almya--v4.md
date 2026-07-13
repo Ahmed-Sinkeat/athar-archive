@@ -3,7 +3,7 @@ title: "شهوات علمية"
 status: published
 published_at: 2024-02-05
 person: abu-jafar-al-khalifi
-topics: ["al-iman", "al-sunnah-wal-bidah"]
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/11125 (+2 more) -->
 

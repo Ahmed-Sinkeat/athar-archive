@@ -4,7 +4,7 @@ status: published
 published_at: 2026-07-04
 person: al-zarkashi
 authored_year: 794
-topics: ["aam-aqeedah"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "الثالثة، 1405هـ/ 1985م"
 description: "بتحقيق علي محيي الدين علي القرة راغي"
 ---

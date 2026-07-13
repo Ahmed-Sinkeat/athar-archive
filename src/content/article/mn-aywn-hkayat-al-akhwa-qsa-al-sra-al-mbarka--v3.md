@@ -3,6 +3,7 @@ title: "من عيون حكايات الأخوة [ قصة الصرة المبار
 status: published
 published_at: 2022-07-11
 person: abu-jafar-al-khalifi
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/7422 -->
 

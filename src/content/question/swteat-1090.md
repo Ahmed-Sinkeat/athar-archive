@@ -3,7 +3,7 @@ title: "ما العلاقة بين النفس وأمارتها بالسوء وب
 status: published
 published_at: 2022-01-31
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["tazkiyat-al-nafs"]
 audio: swteat--swteat-1090
 ---
 ## السؤال

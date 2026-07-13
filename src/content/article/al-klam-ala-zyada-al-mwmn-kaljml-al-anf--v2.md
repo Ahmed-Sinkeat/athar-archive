@@ -3,7 +3,7 @@ title: "الكلام على زيادة ( المؤمن كالجمل الأنف )"
 status: published
 published_at: 2025-01-20
 person: abu-jafar-al-khalifi
-topics: ["tazkiyat-al-nafs", "al-iman"]
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13177 -->
 

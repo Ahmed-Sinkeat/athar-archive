@@ -3,6 +3,7 @@ title: "من حلف بالقرآن فعليه بكل آية يمين ..."
 status: draft
 published_at: 2014-02-21
 person: abu-jafar-al-khalifi
+topics: ["fiqh-aam"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2014/02/blog-post_21.html -->
 

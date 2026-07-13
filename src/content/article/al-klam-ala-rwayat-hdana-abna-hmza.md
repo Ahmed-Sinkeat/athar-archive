@@ -3,6 +3,7 @@ title: "الكلام على روايات حضانة ابنة حمزة ..."
 status: published
 published_at: 2023-07-22
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/9701 (+1 more) -->
 

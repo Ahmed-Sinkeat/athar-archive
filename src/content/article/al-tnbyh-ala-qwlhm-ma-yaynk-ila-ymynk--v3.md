@@ -3,7 +3,7 @@ title: "التنبيه على قولهم ( ما يعينك إلا يمينك )"
 status: published
 published_at: 2024-01-18
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "tahwid-al-ibada"]
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/10994 -->
 

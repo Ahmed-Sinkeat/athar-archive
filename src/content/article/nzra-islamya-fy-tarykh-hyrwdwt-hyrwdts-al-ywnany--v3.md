@@ -3,7 +3,7 @@ title: "نظرة إسلامية في تاريخ هيرودوت ( هيرودتس 
 status: published
 published_at: 2022-05-23
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran", "al-firaq-war-rudud"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/7211 (+8 more) -->
 

@@ -3,6 +3,7 @@ title: "بيان كذب أثر (استشر عدوك مرة لتعلم مقدار
 status: published
 published_at: 2024-08-06
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/12226 -->
 

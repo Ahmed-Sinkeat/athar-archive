@@ -4,7 +4,7 @@ status: published
 published_at: 2026-07-04
 person: ibn-qudamah
 authored_year: 620
-topics: ["aam-aqeedah"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "الأولى، 1410هـ - 1990م"
 description: "بتحقيق عبد الرحمن بن محمد سعيد دمشقية"
 ---

@@ -3,7 +3,7 @@ title: "شيخنا صلاة التسابيح هل صحت في السنة وهل 
 status: published
 published_at: 2021-11-01
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["mustalah-al-hadith"]
 audio: swteat--swteat-924
 ---
 ## السؤال

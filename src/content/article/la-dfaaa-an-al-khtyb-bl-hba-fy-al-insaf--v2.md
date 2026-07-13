@@ -3,7 +3,7 @@ title: "لا دفاعاً عن الخطيب بل حباً في الإنصاف"
 status: published
 published_at: 2023-10-08
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]
+topics: ["tarajim-al-ulama"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/10262 (+6 more) -->
 

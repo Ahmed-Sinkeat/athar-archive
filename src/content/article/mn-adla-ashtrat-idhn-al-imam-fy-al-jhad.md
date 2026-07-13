@@ -3,7 +3,7 @@ title: "من أدلة اشتراط إذن الإمام في الجهاد"
 status: draft
 published_at: 2013-10-10
 person: abu-jafar-al-khalifi
-topics: ["tahwid-al-ibada", "al-aqeedah-al-aamah"]
+topics: ["al-siyasah-al-shariyyah"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2013/10/blog-post_7854.html -->
 

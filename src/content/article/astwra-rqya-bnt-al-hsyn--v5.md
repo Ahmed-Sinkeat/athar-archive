@@ -3,6 +3,7 @@ title: "أسطورة رقية بنت الحسين ..."
 status: published
 published_at: 2022-12-05
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/8377 -->
 

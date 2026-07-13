@@ -3,7 +3,7 @@ title: "هل يسن صلاة ركعتين عند المصيبة ؟ بما روا
 status: published
 published_at: 2025-01-05
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["mustalah-al-hadith"]
 audio: swteat--swteat-1177
 ---
 ## السؤال

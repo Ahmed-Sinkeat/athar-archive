@@ -3,7 +3,7 @@ title: "ماحكم من يقول أخرجتني من رحمة الله لشخص 
 status: published
 published_at: 2025-05-08
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["fiqh-aam"]
 audio: swteat--swteat-1220
 ---
 ## السؤال

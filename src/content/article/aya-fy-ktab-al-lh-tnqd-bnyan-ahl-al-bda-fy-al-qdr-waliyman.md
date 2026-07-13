@@ -3,7 +3,7 @@ title: "آية في كتاب الله تنقض بنيان أهل البدع في
 status: published
 published_at: 2021-01-11
 person: abu-jafar-al-khalifi
-topics: ["tahwid-al-ibada", "al-sunnah-wal-bidah"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/3374 -->
 

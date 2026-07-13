@@ -3,6 +3,7 @@ title: "باب الطواف بالبيت خير من تكرار العمرة ...
 status: published
 published_at: 2021-04-02
 person: abu-jafar-al-khalifi
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/4147 -->
 

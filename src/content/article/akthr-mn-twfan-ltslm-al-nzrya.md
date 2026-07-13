@@ -3,7 +3,7 @@ title: "أكثر من طوفان لتسلم النظرية ..."
 status: draft
 published_at: 2017-03-07
 person: abu-jafar-al-khalifi
-topics: ["tahwid-al-ibada", "al-aqeedah-al-aamah"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2017/03/blog-post_28.html -->
 

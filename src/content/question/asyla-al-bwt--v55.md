@@ -3,7 +3,7 @@ title: "أنا شاب سني عراقي أعيش في وسط مليء بالشي
 status: published
 published_at: 2021-07-18
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["al-firaq-war-rudud"]
 audio: swteat--asyla-al-bwt--v55
 ---
 ## السؤال

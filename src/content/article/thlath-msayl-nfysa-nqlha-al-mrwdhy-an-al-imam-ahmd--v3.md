@@ -3,6 +3,7 @@ title: "ثلاث مسائل نفيسة نقلها المروذي عن الإما
 status: published
 published_at: 2022-05-17
 person: abu-jafar-al-khalifi
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/7175 -->
 

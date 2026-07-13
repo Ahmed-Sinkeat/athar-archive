@@ -3,7 +3,7 @@ title: "ماسبب إجازة الخوارج لإمامة المرأة"
 status: published
 published_at: 2020-02-13
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["al-firaq-war-rudud"]
 audio: swteat--masbb-ijaza-al-khwarj-limama-al-mraa
 ---
 ## السؤال

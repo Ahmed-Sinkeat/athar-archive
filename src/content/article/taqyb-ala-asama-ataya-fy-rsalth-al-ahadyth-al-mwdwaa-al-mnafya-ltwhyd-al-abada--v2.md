@@ -3,7 +3,7 @@ title: "تعقيب على أسامة عطايا في رسالته الأحادي
 status: published
 published_at: 2022-02-07
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran", "tahwid-al-ibada"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/6606 (+2 more) -->
 

@@ -3,6 +3,7 @@ title: "لامية ابن تيمية"
 person: "ibn-taymiyyah"
 status: "published"
 published_at: "2026-07-02"
+topics: ["al-aqeedah-al-aamah"]
 description: "من كتاب شرح لامية ابن تيمية لعمر العيد"
 ---
 يا سائلي عن مذهبي وعقيدتي رزق الهدى من للهداية يسأل

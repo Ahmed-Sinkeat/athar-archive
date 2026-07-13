@@ -3,7 +3,7 @@ title: "باب في المناسبة بين العلم والجود بالمال
 status: published
 published_at: 2023-03-24
 person: abu-jafar-al-khalifi
-topics: ["al-firaq-war-rudud", "tahwid-al-ibada", "al-iman"]
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/8952 (+2 more) -->
 

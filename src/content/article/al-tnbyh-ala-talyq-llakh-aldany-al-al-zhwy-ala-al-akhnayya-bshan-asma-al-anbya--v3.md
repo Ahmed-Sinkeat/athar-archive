@@ -3,7 +3,7 @@ title: "التنبيه على تعليق للأخ «الداني آل الزهو
 status: published
 published_at: 2025-10-10
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "al-sunnah-wal-bidah"]
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/14704 (+3 more) -->
 

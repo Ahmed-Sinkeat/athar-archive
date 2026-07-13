@@ -3,7 +3,7 @@ title: "أعظم الذكر الذي غفل عنه النبي صلى الله ع
 status: published
 published_at: 2023-08-28
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "tahwid-al-ibada"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/9905 (+1 more) -->
 

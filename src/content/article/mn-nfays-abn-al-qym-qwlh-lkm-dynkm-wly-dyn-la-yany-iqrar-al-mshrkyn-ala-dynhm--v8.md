@@ -3,7 +3,7 @@ title: "من نفائس ابن القيم : قوله ( لكم دينكم ولي 
 status: published
 published_at: 2023-12-02
 person: abu-jafar-al-khalifi
-topics: ["tahwid-al-ibada", "al-sunnah-wal-bidah"]
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/10631 -->
 

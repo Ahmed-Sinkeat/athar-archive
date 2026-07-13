@@ -3,7 +3,7 @@ title: "النبي أولى بالمؤمنين من أنفسهم وأزواجه 
 status: published
 published_at: 2022-01-31
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["fiqh-aam"]
 audio: swteat--swteat-1088
 ---
 ## السؤال

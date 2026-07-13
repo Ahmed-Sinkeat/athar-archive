@@ -3,6 +3,7 @@ title: "أصح صيغ التكبير في العيدين عن الصحابة"
 status: draft
 published_at: 2013-10-08
 person: abu-jafar-al-khalifi
+topics: ["fiqh-aam"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2013/10/blog-post_2469.html -->
 

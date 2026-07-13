@@ -3,7 +3,7 @@ title: "وأخبرني الحسين بن إدريس ، عن أبي حامد ال
 status: published
 published_at: 2025-10-25
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran", "adab-talab-al-ilm"]
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/14917 (+4 more) -->
 

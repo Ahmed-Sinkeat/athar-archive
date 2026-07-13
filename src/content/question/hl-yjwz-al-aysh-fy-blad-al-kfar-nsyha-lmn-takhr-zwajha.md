@@ -3,7 +3,7 @@ title: "هل يجوز العيش في بلاد الكفار / نصيحة لمن 
 status: published
 published_at: 2020-02-13
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["fiqh-aam"]
 audio: swteat--hl-yjwz-al-aysh-fy-blad-al-kfar-nsyha-lmn-takhr-zwajha
 ---
 ## السؤال

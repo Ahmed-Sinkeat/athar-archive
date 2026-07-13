@@ -3,7 +3,7 @@ title: "تنبيه على مسألة الصلاة في مسجد فيه قبر"
 status: published
 published_at: 2025-05-04
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "al-firaq-war-rudud", "al-sunnah-wal-bidah"]
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13645 (+4 more) -->
 

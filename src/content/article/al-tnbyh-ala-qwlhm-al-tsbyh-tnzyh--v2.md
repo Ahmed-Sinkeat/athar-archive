@@ -3,6 +3,7 @@ title: "التنبيه على قولهم ( التسبيح تنزيه )"
 status: published
 published_at: 2023-04-23
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/9132 -->
 

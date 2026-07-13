@@ -3,7 +3,7 @@ title: "ما حكم الاحتفال بعيد رأس السنة الأمازيغ
 status: published
 published_at: 2025-01-11
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["fiqh-aam"]
 audio: swteat--swteat-1199
 ---
 ## السؤال

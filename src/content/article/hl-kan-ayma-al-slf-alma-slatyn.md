@@ -3,7 +3,7 @@ title: "هل كان أئمة السلف علماء سلاطين ؟"
 status: published
 published_at: 2020-03-30
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "al-firaq-war-rudud", "tazkiyat-al-nafs"]
+topics: ["tarajim-al-ulama"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/860 (+7 more) -->
 

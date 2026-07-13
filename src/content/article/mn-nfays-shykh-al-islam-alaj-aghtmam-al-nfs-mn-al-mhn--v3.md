@@ -3,6 +3,7 @@ title: "من نفائس شيخ الإسلام : علاج اغتمام النفس
 status: published
 published_at: 2022-04-29
 person: abu-jafar-al-khalifi
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/7086 -->
 

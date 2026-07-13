@@ -3,7 +3,7 @@ title: "ما أبعدهم عن قواعد أهل التمييع ..."
 status: draft
 published_at: 2013-09-30
 person: abu-jafar-al-khalifi
-topics: ["tahwid-al-ibada", "al-aqeedah-al-aamah"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2013/09/blog-post_8773.html -->
 

@@ -3,6 +3,7 @@ title: "استحباب الطهارة للدعاء ..."
 status: published
 published_at: 2023-07-24
 person: abu-jafar-al-khalifi
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/9724 -->
 

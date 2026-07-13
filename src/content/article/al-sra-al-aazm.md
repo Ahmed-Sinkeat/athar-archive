@@ -3,6 +3,7 @@ title: "الصرع الأعظم !"
 status: published
 published_at: 2020-04-19
 person: abu-jafar-al-khalifi
+topics: ["al-samiyyat"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/1086 -->
 

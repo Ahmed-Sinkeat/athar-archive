@@ -3,6 +3,7 @@ title: "هل صح عن الحسن البصري أنه أهدى رطباً لمن
 status: published
 published_at: 2025-01-20
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13174 -->
 

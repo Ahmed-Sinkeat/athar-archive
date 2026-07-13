@@ -3,7 +3,7 @@ title: "ذنوب وأفكار الشيطان في الخلوه دائما تضع
 status: published
 published_at: 2021-07-09
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["tazkiyat-al-nafs"]
 audio: swteat--asyla-al-bwt--v2
 ---
 ## السؤال

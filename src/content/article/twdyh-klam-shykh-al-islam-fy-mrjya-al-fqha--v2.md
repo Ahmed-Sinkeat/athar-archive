@@ -3,6 +3,7 @@ title: "توضيح كلام شيخ الإسلام في مرجئة الفقهاء
 status: published
 published_at: 2025-01-09
 person: abu-jafar-al-khalifi
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13117 (+2 more) -->
 

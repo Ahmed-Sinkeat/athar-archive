@@ -3,7 +3,7 @@ title: "هل يجوز البكاء والدعاء أثناء الصلاة"
 status: published
 published_at: 2021-08-10
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["fiqh-aam"]
 audio: swteat--asyla-al-bwt--v136
 ---
 ## السؤال

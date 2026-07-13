@@ -3,7 +3,7 @@ title: "ما حكم التضخم في القروض"
 status: published
 published_at: 2021-07-15
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["fiqh-aam"]
 audio: swteat--asyla-al-bwt--v54
 ---
 ## السؤال

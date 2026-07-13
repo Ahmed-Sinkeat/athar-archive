@@ -3,7 +3,7 @@ title: "هل صحيح أن الإسلام دين إنساني أو دين إنس
 status: published
 published_at: 2021-07-06
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["mustalah-al-hadith"]
 audio: swteat--al-mjls-al-thamn-ashr-al-swal-al-saba
 ---
 ## السؤال

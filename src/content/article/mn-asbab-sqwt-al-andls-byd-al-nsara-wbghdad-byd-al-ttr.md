@@ -3,7 +3,7 @@ title: "من أسباب سقوط الأندلس بيد النصارى وبغدا
 status: published
 published_at: 2021-05-10
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "tahwid-al-ibada", "al-sunnah-wal-bidah"]
+topics: ["tarajim-al-ulama"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/4388 (+1 more) -->
 

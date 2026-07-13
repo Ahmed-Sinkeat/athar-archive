@@ -3,7 +3,7 @@ title: "التنبيه على قول الشيخ عبد العزيز الراجح
 status: draft
 published_at: 2013-09-30
 person: abu-jafar-al-khalifi
-topics: ["tahwid-al-ibada", "al-aqeedah-al-aamah", "al-firaq-war-rudud"]
+topics: ["mustalah-al-hadith"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2013/09/blog-post_6377.html -->
 

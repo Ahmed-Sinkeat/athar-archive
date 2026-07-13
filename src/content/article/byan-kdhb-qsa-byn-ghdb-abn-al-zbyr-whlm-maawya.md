@@ -3,6 +3,7 @@ title: "بيان كذب قصة ( بين غضب ابن الزبير وحلم مع
 status: published
 published_at: 2021-08-07
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/4877 -->
 

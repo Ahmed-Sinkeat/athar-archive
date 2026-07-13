@@ -3,6 +3,7 @@ title: "رد الباقلاني على قول متأخري الأشاعرة في
 status: published
 published_at: 2023-03-06
 person: abu-jafar-al-khalifi
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/8847 -->
 

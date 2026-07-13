@@ -3,7 +3,7 @@ title: "من هو خطيب الأنبياء ؟"
 status: published
 published_at: 2025-01-20
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran", "tahwid-al-ibada"]
+topics: ["tafsir-al-quran"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13158 (+1 more) -->
 

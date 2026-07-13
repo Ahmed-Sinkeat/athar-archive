@@ -3,6 +3,7 @@ title: "هل يجوز غيبة تارك الصلاة ؟"
 status: published
 published_at: 2026-01-31
 person: abu-jafar-al-khalifi
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/15216 -->
 

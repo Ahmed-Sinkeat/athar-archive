@@ -3,7 +3,7 @@ title: "هل دعا ابن باجه إلى فصل الفلسفة عن الدين
 status: published
 published_at: 2024-05-24
 person: abu-jafar-al-khalifi
-topics: ["al-firaq-war-rudud", "tahwid-al-ibada", "tazkiyat-al-nafs"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/11795 (+2 more) -->
 

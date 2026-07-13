@@ -3,7 +3,7 @@ title: "لسان حالهم : الإنسان أقدس من الله ..."
 status: published
 published_at: 2023-11-17
 person: abu-jafar-al-khalifi
-topics: ["al-firaq-war-rudud", "al-wala-wal-bara"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/10539 (+2 more) -->
 

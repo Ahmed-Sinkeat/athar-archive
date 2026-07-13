@@ -3,7 +3,7 @@ title: "الرد على أبي بكر الجزائري في قوله أن الإ
 status: published
 published_at: 2025-09-10
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "al-sunnah-wal-bidah"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/14614 (+2 more) -->
 

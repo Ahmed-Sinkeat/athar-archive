@@ -3,7 +3,7 @@ title: "هل يجب في الحجاب الشرعي ان يكون الجزء بي
 status: published
 published_at: 2021-10-18
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["fiqh-aam"]
 audio: swteat--swteat-864
 ---
 ## السؤال

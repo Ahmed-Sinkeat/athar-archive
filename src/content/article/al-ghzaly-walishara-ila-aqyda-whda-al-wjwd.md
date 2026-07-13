@@ -3,6 +3,7 @@ title: "الغزالي والإشارة إلى عقيدة وحدة الوجود 
 status: published
 published_at: 2024-12-05
 person: abu-jafar-al-khalifi
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/12927 (+1 more) -->
 

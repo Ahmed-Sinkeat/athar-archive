@@ -3,7 +3,7 @@ title: "دعوة بعض البنوك الاسلامية للناس بقولهم 
 status: published
 published_at: 2021-10-18
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["fiqh-aam"]
 audio: swteat--swteat-875
 ---
 ## السؤال

@@ -3,7 +3,7 @@ title: "فما تهيا لأحد منهم أَن يغرب علي حديثا !"
 status: published
 published_at: 2021-12-16
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran"]
+topics: ["tarajim-al-ulama"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/6273 (+2 more) -->
 

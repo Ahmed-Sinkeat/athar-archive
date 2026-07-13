@@ -3,7 +3,7 @@ title: "باب ما كانوا يقولون للمريض إذا بريء"
 status: published
 published_at: 2025-08-08
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tazkiyat-al-nafs"]
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/14268 -->
 

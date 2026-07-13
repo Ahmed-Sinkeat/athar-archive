@@ -3,6 +3,7 @@ title: "هل ثبت عن أحد من السلف أنه قال لا حد لأكث
 status: published
 published_at: 2026-05-31
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/15637 -->
 

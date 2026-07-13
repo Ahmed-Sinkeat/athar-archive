@@ -3,7 +3,7 @@ title: "ياشيخ انا ممن بلي في أهله ببذور النسوية 
 status: published
 published_at: 2021-07-23
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["al-firaq-war-rudud"]
 audio: swteat--asyla-al-bwt--v71
 ---
 ## السؤال

@@ -3,6 +3,7 @@ title: "بيان ضعف حديث ( لو قمت الليل وصمت النهار 
 status: published
 published_at: 2024-05-07
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/11723 -->
 

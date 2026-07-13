@@ -3,7 +3,7 @@ title: "بيان كذب محمد رشيد رضا على الحافظ ابن كث
 status: draft
 published_at: 2014-03-28
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "ulum-al-quran", "al-firaq-war-rudud"]
+topics: ["mustalah-al-hadith"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2013/12/blog-post_27.html -->
 

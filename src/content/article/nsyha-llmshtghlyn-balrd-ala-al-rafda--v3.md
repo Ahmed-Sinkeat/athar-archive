@@ -3,7 +3,7 @@ title: "نصيحة للمشتغلين بالرد على الرافضة ..."
 status: published
 published_at: 2023-03-03
 person: abu-jafar-al-khalifi
-topics: ["tazkiyat-al-nafs", "al-imamah-was-sahabah"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/8832 -->
 

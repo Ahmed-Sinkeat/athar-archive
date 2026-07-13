@@ -3,6 +3,7 @@ title: "بيان جهل عدنان إبراهيم في مقطعه ( معاوية
 status: published
 published_at: 2020-07-04
 person: abu-jafar-al-khalifi
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/1861 (+2 more) -->
 

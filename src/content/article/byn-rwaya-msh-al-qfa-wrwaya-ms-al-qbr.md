@@ -3,7 +3,7 @@ title: "بين رواية مسح القفا ورواية مس القبر ..."
 status: published
 published_at: 2020-02-21
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "al-sunnah-wal-bidah"]
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/482 (+3 more) -->
 

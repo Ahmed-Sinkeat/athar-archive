@@ -4,7 +4,7 @@ status: published
 published_at: 2026-07-04
 person: abd-al-muhsin-al-abbad
 authored_year: 1353
-topics: ["aam-aqeedah"]
+topics: ["al-aqeedah-al-aamah", "fadail-hadith"]
 edition: "الأولى، 1422هـ/2001م"
 ---
 فضل أهل البيت وعلو مكانتهم عند أهل السنة والجماعة تأليف: عبد المحسن بن حمد العباد البدر بسم الله الرحمن الرحيم

@@ -3,7 +3,7 @@ title: "كيف أدرس الفقه من كتب الحديث المسندة"
 status: published
 published_at: 2021-07-08
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["adab-talab-al-ilm"]
 audio: swteat--al-mjls-al-ashrwn--v7
 ---
 ## السؤال

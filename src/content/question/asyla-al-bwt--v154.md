@@ -3,7 +3,7 @@ title: "إذا كانت الجهة التي تقيم الجمع و العيد و
 status: published
 published_at: 2021-08-17
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["al-aqeedah-al-aamah"]
 audio: swteat--asyla-al-bwt--v154
 ---
 ## السؤال

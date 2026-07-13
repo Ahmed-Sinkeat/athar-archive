@@ -3,6 +3,7 @@ title: "من مفاسد وضع مؤخر للمهر"
 status: published
 published_at: 2023-09-03
 person: abu-jafar-al-khalifi
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/9946 -->
 

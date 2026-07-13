@@ -3,7 +3,7 @@ title: "براءة الإمام أحمد من القول بأن ( التلاوة
 status: draft
 published_at: 2014-03-26
 person: abu-jafar-al-khalifi
-topics: ["tahwid-al-ibada", "al-aqeedah-al-aamah", "al-firaq-war-rudud"]
+topics: ["tarajim-al-ulama"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2014/03/blog-post_3460.html -->
 

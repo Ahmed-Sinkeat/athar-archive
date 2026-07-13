@@ -3,6 +3,7 @@ title: "من نفائس شيخ الإسلام : أخلصوا لله فشربوا
 status: published
 published_at: 2022-12-31
 person: abu-jafar-al-khalifi
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/8515 -->
 

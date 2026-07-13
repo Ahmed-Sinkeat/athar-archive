@@ -3,6 +3,7 @@ title: "جواب من سأل عن صحة أثر ( إن الله جعل عمر ح
 status: published
 published_at: 2024-11-22
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/12880 -->
 

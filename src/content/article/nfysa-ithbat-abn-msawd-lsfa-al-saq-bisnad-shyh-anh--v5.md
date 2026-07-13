@@ -3,7 +3,7 @@ title: "نفيسة : إثبات ابن مسعود لصفة الساق بإسنا
 status: published
 published_at: 2024-08-24
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran", "al-iman"]
+topics: ["al-asma-was-sifat"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/12351 -->
 

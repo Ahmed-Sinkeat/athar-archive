@@ -3,6 +3,7 @@ title: "فعادوا إلى شبهة المقلدة القدامى"
 status: published
 published_at: 2020-11-02
 person: abu-jafar-al-khalifi
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/2944 -->
 

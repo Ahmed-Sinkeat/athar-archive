@@ -3,6 +3,7 @@ title: "موقف بولس من المرأة"
 status: published
 published_at: 2025-05-04
 person: abu-jafar-al-khalifi
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13650 -->
 

@@ -3,7 +3,7 @@ title: "أرادوا أن يطعنوا في نبوته فأثبتوها ..."
 status: published
 published_at: 2020-03-26
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran", "tahwid-al-ibada"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/803 (+3 more) -->
 

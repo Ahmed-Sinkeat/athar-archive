@@ -3,6 +3,7 @@ title: "هل صح أن زيد بن علي أخذ عن واصل بن عطاء ؟"
 status: published
 published_at: 2020-08-24
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/2282 -->
 

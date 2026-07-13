@@ -3,7 +3,7 @@ title: "هل كان ابن أبي ذئب يؤوي القدرية ؟"
 status: published
 published_at: 2024-10-13
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "al-sunnah-wal-bidah"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/12573 (+2 more) -->
 

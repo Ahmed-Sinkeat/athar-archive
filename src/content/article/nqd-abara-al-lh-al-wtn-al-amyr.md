@@ -3,6 +3,7 @@ title: "نقد عبارة ( الله الوطن الأمير )"
 status: published
 published_at: 2025-11-30
 person: abu-jafar-al-khalifi
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/15061 -->
 

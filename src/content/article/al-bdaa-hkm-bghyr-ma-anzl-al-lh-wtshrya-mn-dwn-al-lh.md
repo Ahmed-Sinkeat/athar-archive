@@ -3,7 +3,7 @@ title: "البدعة حكمٌ بغير ما أنزل الله وتشريع من 
 status: draft
 published_at: 2013-10-02
 person: abu-jafar-al-khalifi
-topics: ["tahwid-al-ibada", "al-aqeedah-al-aamah"]
+topics: ["al-sunnah-wal-bidah"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2013/10/blog-post_6308.html -->
 

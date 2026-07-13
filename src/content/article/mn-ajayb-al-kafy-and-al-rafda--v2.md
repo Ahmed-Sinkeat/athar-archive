@@ -3,7 +3,7 @@ title: "من عجائب الكافي عند الرافضة ..."
 status: published
 published_at: 2021-12-10
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tahwid-al-ibada", "al-asma-was-sifat"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/6219 (+14 more) -->
 

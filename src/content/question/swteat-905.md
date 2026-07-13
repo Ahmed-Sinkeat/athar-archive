@@ -3,7 +3,7 @@ title: "اريد جوابا قاطعا عن حكم بيع السماعات ١)ا
 status: published
 published_at: 2021-10-30
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["fiqh-aam"]
 audio: swteat--swteat-905
 ---
 ## السؤال

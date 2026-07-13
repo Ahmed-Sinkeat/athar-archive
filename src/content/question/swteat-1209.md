@@ -3,7 +3,7 @@ title: "ذكرتم في درس المحرر انه لا توجد رواية في
 status: published
 published_at: 2025-01-21
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["al-firaq-war-rudud"]
 audio: swteat--swteat-1209
 ---
 ## السؤال

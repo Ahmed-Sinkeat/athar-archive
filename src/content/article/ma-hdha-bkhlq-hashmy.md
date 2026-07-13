@@ -3,6 +3,7 @@ title: "ما هذا بخلق هاشمي !"
 status: published
 published_at: 2025-07-01
 person: abu-jafar-al-khalifi
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13988 -->
 

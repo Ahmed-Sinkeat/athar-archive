@@ -3,7 +3,7 @@ title: "قول أرسطو واضع المنطق فيمن لا دين له"
 status: published
 published_at: 2024-12-05
 person: abu-jafar-al-khalifi
-topics: ["al-firaq-war-rudud", "al-sunnah-wal-bidah"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/12917 (+1 more) -->
 

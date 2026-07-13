@@ -3,7 +3,7 @@ title: "نصيحة للدكتور منقذ السقار حول حصره للكف
 status: published
 published_at: 2025-08-23
 person: abu-jafar-al-khalifi
-topics: ["al-iman", "al-wala-wal-bara"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/14450 -->
 

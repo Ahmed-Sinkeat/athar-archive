@@ -3,7 +3,7 @@ title: "سائلة تقول : من شروط التوبة (إن كان مالًا
 status: published
 published_at: 2021-10-30
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["tazkiyat-al-nafs"]
 audio: swteat--swteat-901
 ---
 ## السؤال

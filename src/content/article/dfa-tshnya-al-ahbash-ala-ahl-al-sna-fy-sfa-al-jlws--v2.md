@@ -3,7 +3,7 @@ title: "دفع تشنيع الأحباش على أهل السنة في صفة ا
 status: published
 published_at: 2025-10-10
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran", "al-asma-was-sifat"]
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/14727 (+2 more) -->
 

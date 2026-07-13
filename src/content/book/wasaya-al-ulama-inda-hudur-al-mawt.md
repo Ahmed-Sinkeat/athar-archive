@@ -4,6 +4,7 @@ status: published
 published_at: 2026-07-12
 person: ibn-zabr-al-rabii
 kind: متن
+topics: ["tazkiyat-al-nafs"]
 authored_year: 379
 ---
 # بطاقة الكتاب وفهرس الموضوعات

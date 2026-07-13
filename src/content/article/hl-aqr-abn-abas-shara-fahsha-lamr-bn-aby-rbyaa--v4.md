@@ -3,6 +3,7 @@ title: "هل أقر ابن عباس شعراً فاحشاً لعمر بن أبي
 status: published
 published_at: 2024-04-26
 person: abu-jafar-al-khalifi
+topics: ["tarajim-al-ulama"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/11633 (+2 more) -->
 

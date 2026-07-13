@@ -3,7 +3,7 @@ title: "شيخنا الحبيب نريد ترشيحكم لشيخ يشرح فتح
 status: published
 published_at: 2021-10-09
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["fiqh-aam"]
 audio: swteat--swteat-817
 ---
 ## السؤال

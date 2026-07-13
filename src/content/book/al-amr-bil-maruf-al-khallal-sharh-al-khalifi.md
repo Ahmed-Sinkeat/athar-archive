@@ -4,6 +4,7 @@ status: published
 published_at: 2026-07-11
 person: abu-jafar-al-khalifi
 kind: مرجع
+topics: ["al-siyasah-al-shariyyah"]
 work_type: شرح
 transcript_status: قيد المراجعة
 description: "تفريغ دروس شرح كتاب الأمر بالمعروف والنهي عن المنكر لأبي بكر الخلال"

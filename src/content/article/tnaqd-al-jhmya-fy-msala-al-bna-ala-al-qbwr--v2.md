@@ -3,6 +3,7 @@ title: "تناقض الجهمية في مسألة البناء على القبو
 status: published
 published_at: 2024-05-24
 person: abu-jafar-al-khalifi
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/11806 (+1 more) -->
 

@@ -3,6 +3,7 @@ title: "الكلام على حديث ( إذا زخرفتم مساجدكم وحل
 status: published
 published_at: 2020-08-31
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/2358 -->
 

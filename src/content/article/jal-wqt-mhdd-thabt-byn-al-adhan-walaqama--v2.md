@@ -3,6 +3,7 @@ title: "جعل وقت محدد ثابت بين الأذان والاقامة"
 status: published
 published_at: 2021-03-29
 person: abu-jafar-al-khalifi
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/4128 (+1 more) -->
 

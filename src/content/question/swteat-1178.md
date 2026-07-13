@@ -3,7 +3,7 @@ title: "يستدل أحدهم لعدم تكفير الجهمية بما رواه
 status: published
 published_at: 2025-01-05
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["al-firaq-war-rudud"]
 audio: swteat--swteat-1178
 ---
 ## السؤال

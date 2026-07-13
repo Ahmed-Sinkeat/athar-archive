@@ -3,7 +3,7 @@ title: "فائدة : أفضلية الصلاة في المسجد العتيق ع
 status: published
 published_at: 2023-09-29
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "al-sunnah-wal-bidah"]
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/10151 -->
 

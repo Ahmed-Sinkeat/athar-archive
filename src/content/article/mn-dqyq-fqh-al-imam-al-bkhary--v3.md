@@ -3,6 +3,7 @@ title: "من دقيق فقه الإمام البخاري"
 status: published
 published_at: 2021-07-30
 person: abu-jafar-al-khalifi
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/4810 (+1 more) -->
 

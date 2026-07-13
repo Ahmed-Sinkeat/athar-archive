@@ -3,6 +3,7 @@ title: "الكلام على حديث : ( أذن لي أن أحدث عن ملك -
 status: published
 published_at: 2022-08-29
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/7904 -->
 

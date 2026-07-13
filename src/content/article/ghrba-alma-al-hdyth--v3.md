@@ -3,6 +3,7 @@ title: "غربة علماء الحديث"
 status: published
 published_at: 2021-07-30
 person: abu-jafar-al-khalifi
+topics: ["tarajim-al-ulama"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/4804 -->
 

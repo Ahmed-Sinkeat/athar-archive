@@ -3,7 +3,7 @@ title: "اسكت فقد أفسدت القصيدة ..."
 status: published
 published_at: 2025-07-28
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tazkiyat-al-nafs", "al-sunnah-wal-bidah"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/14121 (+3 more) -->
 

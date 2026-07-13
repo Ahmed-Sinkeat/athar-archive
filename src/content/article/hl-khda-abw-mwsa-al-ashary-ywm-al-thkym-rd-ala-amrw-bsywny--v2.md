@@ -3,7 +3,7 @@ title: "هل خدع أبو موسى الأشعري يوم التحكيم ( رد 
 status: published
 published_at: 2020-07-20
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/1987 (+12 more) -->
 

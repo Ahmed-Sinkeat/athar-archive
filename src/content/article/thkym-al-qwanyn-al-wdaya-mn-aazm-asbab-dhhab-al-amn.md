@@ -3,7 +3,7 @@ title: "تحكيم القوانين الوضعية من أعظم أسباب ذه
 status: published
 published_at: 2021-06-06
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "al-firaq-war-rudud", "tahwid-al-ibada"]
+topics: ["al-siyasah-al-shariyyah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/4514 (+1 more) -->
 

@@ -3,6 +3,7 @@ title: "مخالفة الرازي للإجماع الذي نقله إمامه ا
 status: published
 published_at: 2021-12-17
 person: abu-jafar-al-khalifi
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/6285 (+2 more) -->
 

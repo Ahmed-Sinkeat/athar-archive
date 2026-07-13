@@ -3,6 +3,7 @@ title: "بيان كذب أثر ( إياكم أن تؤذوا أحداً من ال
 status: published
 published_at: 2020-08-15
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/2208 -->
 

@@ -3,6 +3,7 @@ title: "الكلام على أثر ندم عائشة على الخروج يوم 
 status: published
 published_at: 2023-06-28
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/9598 (+1 more) -->
 

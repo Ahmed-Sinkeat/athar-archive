@@ -3,7 +3,7 @@ title: "محمد إلياس إمام التبليغ تلقى الطريقة في
 status: draft
 published_at: 2014-12-13
 person: abu-jafar-al-khalifi
-topics: ["tahwid-al-ibada", "al-aqeedah-al-aamah", "al-firaq-war-rudud"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2014/12/blog-post_13.html -->
 

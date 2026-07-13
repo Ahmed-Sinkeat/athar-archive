@@ -3,7 +3,7 @@ title: "لطيفة : كلام الغزالي في أبي حنيفة ..."
 status: draft
 published_at: 2015-02-14
 person: abu-jafar-al-khalifi
-topics: ["tahwid-al-ibada", "al-aqeedah-al-aamah", "al-firaq-war-rudud"]
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2015/02/blog-post_14.html -->
 

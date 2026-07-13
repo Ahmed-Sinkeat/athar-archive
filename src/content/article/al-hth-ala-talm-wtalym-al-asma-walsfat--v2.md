@@ -3,7 +3,7 @@ title: "الحث على تعلم وتعليم الأسماء والصفات"
 status: published
 published_at: 2025-05-13
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran", "al-asma-was-sifat"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13677 (+2 more) -->
 

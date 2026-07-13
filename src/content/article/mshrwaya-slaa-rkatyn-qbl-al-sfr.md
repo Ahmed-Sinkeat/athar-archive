@@ -3,6 +3,7 @@ title: "مشروعية صلاة ركعتين قبل السفر.."
 status: draft
 published_at: 2013-09-25
 person: abu-jafar-al-khalifi
+topics: ["fiqh-aam"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2013/09/blog-post_9103.html -->
 

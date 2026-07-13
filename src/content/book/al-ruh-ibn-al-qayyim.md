@@ -4,7 +4,7 @@ status: published
 published_at: 2026-07-04
 person: ibn-al-qayyim
 authored_year: 751
-topics: ["aam-aqeedah"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 ## الْمَسْأَلَة الأولى وَهِي هَل تعرف الْأَمْوَات زِيَارَة الْأَحْيَاء وسلامهم أم لَا قَالَ
 

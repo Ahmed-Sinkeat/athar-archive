@@ -3,6 +3,7 @@ title: "بحث في أثر ابن عمر في مشروعية الإعلان عن
 status: published
 published_at: 2023-07-07
 person: abu-jafar-al-khalifi
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/9646 (+2 more) -->
 

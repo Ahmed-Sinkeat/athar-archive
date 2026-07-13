@@ -3,6 +3,7 @@ title: "هل يذم حفص بن غياث نفسه ؟"
 status: published
 published_at: 2024-12-31
 person: abu-jafar-al-khalifi
+topics: ["tarajim-al-ulama"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13093 -->
 

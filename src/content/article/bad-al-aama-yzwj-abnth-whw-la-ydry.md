@@ -3,7 +3,7 @@ title: "بعض العامة يزوج ابنته وهو لا يدري !"
 status: published
 published_at: 2022-07-20
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran"]
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/7535 (+2 more) -->
 

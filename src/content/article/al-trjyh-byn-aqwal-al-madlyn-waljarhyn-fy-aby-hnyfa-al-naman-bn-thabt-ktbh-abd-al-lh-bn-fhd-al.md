@@ -3,7 +3,7 @@ title: "الترجيح بين أقوال المعدلين والجارحين\nف
 status: published
 published_at: 2025-10-19
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran", "al-asma-was-sifat"]
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/14776 (+41 more) -->
 

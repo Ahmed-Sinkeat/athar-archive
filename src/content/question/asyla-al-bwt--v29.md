@@ -3,7 +3,7 @@ title: "هل هناك آثار عن السلف في صحة الصلاة بالت
 status: published
 published_at: 2021-07-11
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["fiqh-aam"]
 audio: swteat--asyla-al-bwt--v29
 ---
 ## السؤال

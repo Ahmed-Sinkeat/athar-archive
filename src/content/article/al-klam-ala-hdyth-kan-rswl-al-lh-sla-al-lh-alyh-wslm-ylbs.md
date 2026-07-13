@@ -3,6 +3,7 @@ title: "الكلام على حديث ( كَانَ رَسُولُ اللَّهِ 
 status: published
 published_at: 2025-09-20
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/14678 -->
 

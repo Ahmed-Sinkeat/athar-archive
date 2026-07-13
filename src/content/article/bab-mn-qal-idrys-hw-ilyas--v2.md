@@ -3,7 +3,7 @@ title: "باب من قال إدريس هو إلياس"
 status: published
 published_at: 2026-01-05
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran"]
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/15181 -->
 

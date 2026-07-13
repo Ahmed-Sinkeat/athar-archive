@@ -3,6 +3,7 @@ title: "فهل شكرنا نحن النعمة ؟"
 status: published
 published_at: 2022-02-11
 person: abu-jafar-al-khalifi
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/6638 -->
 

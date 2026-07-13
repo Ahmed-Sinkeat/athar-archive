@@ -3,6 +3,7 @@ title: "ألا يدل هذا الحديث في صحيح البخاري على أ
 status: published
 published_at: 2025-08-16
 person: abu-jafar-al-khalifi
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/14407 -->
 

@@ -3,7 +3,7 @@ title: "حسنات الدعاة أم سيئاتهم !"
 status: published
 published_at: 2025-08-08
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "tahwid-al-ibada", "al-sunnah-wal-bidah"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/14211 (+1 more) -->
 

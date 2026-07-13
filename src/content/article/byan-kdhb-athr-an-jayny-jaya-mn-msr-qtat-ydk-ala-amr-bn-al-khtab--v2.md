@@ -3,6 +3,7 @@ title: "بيان كذب أثر (ان جائني جائع من مصر قطعت ي
 status: published
 published_at: 2021-08-13
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/4922 -->
 

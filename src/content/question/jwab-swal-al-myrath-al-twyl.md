@@ -3,7 +3,7 @@ title: "جواب سؤال الميراث الطويل"
 status: published
 published_at: 2021-08-18
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["fiqh-aam"]
 audio: swteat--jwab-swal-al-myrath-al-twyl
 ---
 ## السؤال

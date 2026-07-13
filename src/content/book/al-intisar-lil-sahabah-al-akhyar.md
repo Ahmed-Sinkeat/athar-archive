@@ -4,7 +4,7 @@ status: published
 published_at: 2026-07-04
 person: abd-al-muhsin-al-abbad
 authored_year: 1353
-topics: ["aam-aqeedah"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "الثانية، 1423هـ"
 ---
 الانتصار للصحابةِ الأخيار في ردِّ أباطيل حسن المالكي تأليف: عبد المحسن بن حمد العباد البدر

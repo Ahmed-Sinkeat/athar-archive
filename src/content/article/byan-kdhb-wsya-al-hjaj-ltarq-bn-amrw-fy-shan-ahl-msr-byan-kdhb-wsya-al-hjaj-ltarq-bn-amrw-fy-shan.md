@@ -3,7 +3,7 @@ title: "بيان كذب وصية الحجاج لطارق بن عمرو في شأ
 status: published
 published_at: 2024-12-31
 person: abu-jafar-al-khalifi
-topics: ["tahwid-al-ibada", "al-sunnah-wal-bidah"]
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13039 -->
 

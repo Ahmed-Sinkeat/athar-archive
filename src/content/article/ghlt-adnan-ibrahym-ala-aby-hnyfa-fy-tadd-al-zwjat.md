@@ -3,6 +3,7 @@ title: "غلط عدنان إبراهيم على أبي حنيفة في تعدد 
 status: draft
 published_at: 2016-07-01
 person: abu-jafar-al-khalifi
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2016/07/blog-post.html -->
 

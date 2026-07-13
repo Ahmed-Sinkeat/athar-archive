@@ -3,6 +3,7 @@ title: "بحث في مسألة احترام الحروف العربية"
 status: draft
 published_at: 2013-10-26
 person: abu-jafar-al-khalifi
+topics: ["al-adab"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2013/10/blog-post_4671.html -->
 

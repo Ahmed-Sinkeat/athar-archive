@@ -3,6 +3,7 @@ title: "تعقيب على محمد الريمي في قوله ( شيث ليس ب
 status: published
 published_at: 2022-02-04
 person: abu-jafar-al-khalifi
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/6583 -->
 

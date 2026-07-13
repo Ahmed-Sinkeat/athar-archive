@@ -3,6 +3,7 @@ title: "تصريح عبد الغني المقدسي أن بدعة الأشاعر
 status: published
 published_at: 2020-11-23
 person: abu-jafar-al-khalifi
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/3083 -->
 

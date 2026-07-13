@@ -3,6 +3,7 @@ title: "من نفائس شيخ الإسلام : أنفع الدعاء"
 status: published
 published_at: 2022-06-03
 person: abu-jafar-al-khalifi
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/7279 -->
 

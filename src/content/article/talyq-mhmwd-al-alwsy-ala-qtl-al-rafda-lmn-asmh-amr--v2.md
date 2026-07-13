@@ -3,7 +3,7 @@ title: "تعليق محمود الآلوسي على قتل الرافضة لمن
 status: published
 published_at: 2024-11-16
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "al-firaq-war-rudud"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/12827 (+2 more) -->
 

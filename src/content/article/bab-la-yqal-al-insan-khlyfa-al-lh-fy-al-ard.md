@@ -3,6 +3,7 @@ title: "باب لا يقال الإنسان خليفة الله في الأرض"
 status: draft
 published_at: 2013-10-25
 person: abu-jafar-al-khalifi
+topics: ["fiqh-aam"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2013/10/blog-post_1193.html -->
 

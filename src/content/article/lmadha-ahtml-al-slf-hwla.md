@@ -3,7 +3,7 @@ title: "لماذا احتمل السلف هؤلاء ؟"
 status: published
 published_at: 2021-12-23
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran", "tahwid-al-ibada"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/6328 (+14 more) -->
 

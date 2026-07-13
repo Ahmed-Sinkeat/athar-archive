@@ -3,7 +3,7 @@ title: "هل يجوز ذهاب الى محكمة في بلاد الكفر اذا
 status: published
 published_at: 2021-12-28
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["fiqh-aam"]
 audio: swteat--swteat-1042
 ---
 ## السؤال

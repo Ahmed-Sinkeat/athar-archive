@@ -3,6 +3,7 @@ title: "محمد خليل هراس: فهؤلاء لا يشك أنهم فساق (
 status: published
 published_at: 2025-08-08
 person: abu-jafar-al-khalifi
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/14221 -->
 

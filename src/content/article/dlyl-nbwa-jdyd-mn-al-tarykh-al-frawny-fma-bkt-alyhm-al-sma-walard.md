@@ -3,6 +3,7 @@ title: "دليل نبوة جديد من التاريخ الفرعوني : فما
 status: published
 published_at: 2020-03-31
 person: abu-jafar-al-khalifi
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/883 -->
 

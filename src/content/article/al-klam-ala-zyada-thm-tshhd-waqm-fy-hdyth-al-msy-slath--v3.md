@@ -3,6 +3,7 @@ title: "الكلام على زيادة ( ثم تشهد وأقم ) في حديث 
 status: published
 published_at: 2025-04-19
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13587 -->
 

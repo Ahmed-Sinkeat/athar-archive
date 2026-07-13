@@ -3,7 +3,7 @@ title: "قاعدة في إثبات قطعية عدالة الصحابة ..."
 status: published
 published_at: 2021-02-08
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "al-iman", "al-imamah-was-sahabah"]
+topics: ["usul-al-fiqh"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/3608 (+5 more) -->
 

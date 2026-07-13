@@ -3,7 +3,7 @@ title: "ما رأيك في طرح الدكتور أبا الفداء حسام ب
 status: published
 published_at: 2021-10-11
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["adab-talab-al-ilm"]
 audio: swteat--swteat-831
 ---
 ## السؤال

@@ -3,6 +3,7 @@ title: "من دعا إلى كلام السلف لم يهدر جهود الخلف
 status: published
 published_at: 2024-09-20
 person: abu-jafar-al-khalifi
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/12510 -->
 

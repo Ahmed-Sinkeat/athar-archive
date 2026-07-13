@@ -3,6 +3,7 @@ title: "من دقيق فقه عمر بن الخطاب - رضي الله عنه -
 status: published
 published_at: 2025-10-10
 person: abu-jafar-al-khalifi
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/14719 -->
 

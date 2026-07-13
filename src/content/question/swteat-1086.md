@@ -3,7 +3,7 @@ title: "سؤال ما صحة الحديث المذكور في مصنف ابن أ
 status: published
 published_at: 2022-01-30
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["mustalah-al-hadith"]
 ---
 ## السؤال
 

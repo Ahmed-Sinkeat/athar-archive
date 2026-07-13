@@ -3,6 +3,7 @@ title: "قاعدة مهمة في التكفير ...."
 status: published
 published_at: 2025-01-30
 person: abu-jafar-al-khalifi
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13212 -->
 

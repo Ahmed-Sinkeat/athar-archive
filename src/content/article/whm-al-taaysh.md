@@ -3,7 +3,7 @@ title: "وهم التعايش ..."
 status: published
 published_at: 2023-05-27
 person: abu-jafar-al-khalifi
-topics: ["al-firaq-war-rudud", "tahwid-al-ibada"]
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/9399 (+6 more) -->
 

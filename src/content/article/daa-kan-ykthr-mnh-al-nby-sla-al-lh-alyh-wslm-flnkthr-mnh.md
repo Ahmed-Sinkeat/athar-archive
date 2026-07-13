@@ -3,6 +3,7 @@ title: "دعاء كان يكثر منه النبي صلى الله عليه وس
 status: published
 published_at: 2021-07-11
 person: abu-jafar-al-khalifi
+topics: ["aam-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/4720 (+1 more) -->
 

@@ -3,6 +3,7 @@ title: "من نفائس ابن القيم : معظم أهل الكتاب في ز
 status: published
 published_at: 2020-10-26
 person: abu-jafar-al-khalifi
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/2891 (+1 more) -->
 

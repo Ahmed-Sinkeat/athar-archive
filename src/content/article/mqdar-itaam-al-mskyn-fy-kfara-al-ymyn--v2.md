@@ -3,6 +3,7 @@ title: "مقدار إطعام المسكين في كفارة اليمين"
 status: published
 published_at: 2021-05-10
 person: abu-jafar-al-khalifi
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/4390 -->
 

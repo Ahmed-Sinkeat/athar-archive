@@ -4,7 +4,7 @@ status: published
 published_at: 2026-07-03
 person: ibn-al-kalbi
 authored_year: 204
-topics: ["aam-aqeedah"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "الرابعة، 2000م"
 description: "بتحقيق أحمد زكي باشا"
 ---

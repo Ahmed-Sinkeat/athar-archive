@@ -3,7 +3,7 @@ title: "الزواج بنية الطلاق السياحي ( نظرة فقهية 
 status: published
 published_at: 2023-05-15
 person: abu-jafar-al-khalifi
-topics: ["al-firaq-war-rudud", "tahwid-al-ibada"]
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/9314 (+1 more) -->
 

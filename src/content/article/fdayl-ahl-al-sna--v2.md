@@ -3,7 +3,7 @@ title: "فضائل أهل السنة"
 status: published
 published_at: 2024-11-16
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran", "al-firaq-war-rudud"]
+topics: ["al-sunnah-wal-bidah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/12831 (+4 more) -->
 

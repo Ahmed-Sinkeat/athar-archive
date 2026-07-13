@@ -3,7 +3,7 @@ title: "وردت أسئلة كثيرة حول الاحتفال برأس السن
 status: published
 published_at: 2022-01-01
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["al-firaq-war-rudud"]
 ---
 ## السؤال
 

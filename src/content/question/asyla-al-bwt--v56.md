@@ -3,7 +3,7 @@ title: "لو سمحت شيخي,  ما هو حكم هجر أصدقاء الانت
 status: published
 published_at: 2021-07-18
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["fiqh-aam"]
 audio: swteat--asyla-al-bwt--v56
 ---
 ## السؤال

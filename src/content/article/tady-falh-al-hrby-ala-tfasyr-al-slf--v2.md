@@ -3,7 +3,7 @@ title: "تعدي فالح الحربي على تفاسير السلف ..."
 status: published
 published_at: 2025-08-08
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "al-asma-was-sifat"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/14296 (+2 more) -->
 

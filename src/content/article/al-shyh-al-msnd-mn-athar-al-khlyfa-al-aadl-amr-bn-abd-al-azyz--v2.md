@@ -3,7 +3,7 @@ title: "الصحيح المسند من آثار الخليفة العادل / ع
 status: published
 published_at: 2021-10-31
 person: abu-jafar-al-khalifi
-topics: ["tazkiyat-al-nafs", "al-iman", "al-sunnah-wal-bidah"]
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/5810 (+18 more) -->
 

@@ -3,6 +3,7 @@ title: "الكلام على حديث : ( يَدْرُسُ الإِسْلاَمُ
 status: published
 published_at: 2024-12-31
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13057 -->
 

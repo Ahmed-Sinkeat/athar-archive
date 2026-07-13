@@ -3,7 +3,7 @@ title: "البوت أرسل لى قناة لأخبار العراق هل أنت 
 status: published
 published_at: 2021-10-02
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["fiqh-aam"]
 audio: swteat--swteat-775
 ---
 ## السؤال

@@ -3,6 +3,7 @@ title: "هبك عفا عنك فقد فاتتك جنة الدنيا"
 status: published
 published_at: 2022-06-25
 person: abu-jafar-al-khalifi
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/7360 (+1 more) -->
 

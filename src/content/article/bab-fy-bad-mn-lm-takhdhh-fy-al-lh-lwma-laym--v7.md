@@ -3,7 +3,7 @@ title: "باب في بعض من لم تأخذه في الله لومة لائم 
 status: published
 published_at: 2023-12-11
 person: abu-jafar-al-khalifi
-topics: ["tahwid-al-ibada", "al-imamah-was-sahabah", "al-sunnah-wal-bidah"]
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/10671 (+3 more) -->
 

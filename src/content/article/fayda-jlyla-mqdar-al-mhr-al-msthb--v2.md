@@ -3,7 +3,7 @@ title: "فائدة جليلة : مقدار المهر المستحب ..."
 status: published
 published_at: 2023-11-11
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran"]
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/10513 (+1 more) -->
 

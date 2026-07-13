@@ -3,6 +3,7 @@ title: "بيان كذب قصة مرض أحمد والشافعي ..."
 status: published
 published_at: 2024-07-22
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/12162 -->
 

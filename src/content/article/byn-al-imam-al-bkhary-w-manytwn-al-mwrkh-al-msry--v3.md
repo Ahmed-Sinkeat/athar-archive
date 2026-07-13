@@ -3,7 +3,7 @@ title: "بين الإمام البخاري و مانيتون المؤرخ الم
 status: published
 published_at: 2023-09-22
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tahwid-al-ibada"]
+topics: ["tarajim-al-ulama"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/10041 (+6 more) -->
 

@@ -3,7 +3,7 @@ title: "ما حكم تزويج الإثنا عشري من مسلمة"
 status: published
 published_at: 2021-07-24
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["fiqh-aam"]
 audio: swteat--asyla-al-bwt--v91
 ---
 ## السؤال

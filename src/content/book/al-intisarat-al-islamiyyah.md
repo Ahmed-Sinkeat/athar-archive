@@ -4,7 +4,7 @@ status: published
 published_at: 2026-07-04
 person: al-tufi
 authored_year: 716
-topics: ["aam-aqeedah"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "الأولى، 1419هـ"
 description: "بتحقيق سالم بن محمد القرني"
 ---

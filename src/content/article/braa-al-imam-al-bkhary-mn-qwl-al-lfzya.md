@@ -3,6 +3,7 @@ title: "براءة الإمام البخاري من قول اللفظية"
 status: published
 published_at: 2025-08-27
 person: abu-jafar-al-khalifi
+topics: ["tarajim-al-ulama"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/14582 (+2 more) -->
 

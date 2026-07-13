@@ -3,7 +3,7 @@ title: "التجوز في قبول رواية الضعفاء للآثار الت
 status: published
 published_at: 2021-12-12
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran"]
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/6234 (+1 more) -->
 

@@ -3,7 +3,7 @@ title: "عدنان بين عرض أبي جهل وعرض معاوية !"
 status: published
 published_at: 2023-06-17
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tahwid-al-ibada"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/9539 (+1 more) -->
 

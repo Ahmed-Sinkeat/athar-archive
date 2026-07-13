@@ -3,7 +3,7 @@ title: "هلا عملوا بوصية الرجل الصالح"
 status: draft
 published_at: 2013-10-06
 person: abu-jafar-al-khalifi
-topics: ["al-akhlaq-wal-adab"]
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2013/10/normal-0-false-false-false-en-us-x-none_6.html -->
 

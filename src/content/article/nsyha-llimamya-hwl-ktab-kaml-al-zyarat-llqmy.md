@@ -3,7 +3,7 @@ title: "نصيحة للإمامية حول كتاب كامل الزيارات ل
 status: published
 published_at: 2023-03-20
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "al-imamah-was-sahabah"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/8927 (+6 more) -->
 

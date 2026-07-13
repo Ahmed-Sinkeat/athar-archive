@@ -3,7 +3,7 @@ title: "تأكيد عدم صحة رواية الحربي عن أحمد في أن
 status: draft
 published_at: 2014-03-27
 person: abu-jafar-al-khalifi
-topics: ["tahwid-al-ibada", "al-aqeedah-al-aamah"]
+topics: ["mustalah-al-hadith"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2014/03/blog-post_27.html -->
 

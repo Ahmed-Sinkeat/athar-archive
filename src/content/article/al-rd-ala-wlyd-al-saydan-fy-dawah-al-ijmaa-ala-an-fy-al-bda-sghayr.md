@@ -3,7 +3,7 @@ title: "الرد على « وليد السعيدان » في دعواه الإج
 status: published
 published_at: 2025-08-23
 person: abu-jafar-al-khalifi
-topics: ["tahwid-al-ibada", "al-sunnah-wal-bidah"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/14510 (+2 more) -->
 

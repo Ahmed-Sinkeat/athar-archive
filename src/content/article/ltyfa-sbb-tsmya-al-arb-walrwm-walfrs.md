@@ -3,6 +3,7 @@ title: "لطيفة : سبب تسمية العرب والروم والفرس"
 status: published
 published_at: 2020-10-29
 person: abu-jafar-al-khalifi
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/2926 -->
 

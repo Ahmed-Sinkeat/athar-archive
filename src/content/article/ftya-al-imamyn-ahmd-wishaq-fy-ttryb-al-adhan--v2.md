@@ -3,6 +3,7 @@ title: "فتيا الإمامين أحمد وإسحاق في تطريب الأذ
 status: published
 published_at: 2023-12-01
 person: abu-jafar-al-khalifi
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/10625 -->
 

@@ -3,7 +3,7 @@ title: "قرأنا في بعض الكتب أن المرء يصل بذنوبه و
 status: published
 published_at: 2021-07-18
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["tazkiyat-al-nafs"]
 audio: swteat--asyla-al-bwt--v63
 ---
 ## السؤال

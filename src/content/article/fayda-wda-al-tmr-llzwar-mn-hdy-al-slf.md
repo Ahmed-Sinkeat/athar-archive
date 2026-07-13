@@ -3,6 +3,7 @@ title: "فائدة : وضع التمر للزوار من هدي السلف ..."
 status: published
 published_at: 2020-12-28
 person: abu-jafar-al-khalifi
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/3320 -->
 

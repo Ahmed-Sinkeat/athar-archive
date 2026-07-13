@@ -3,6 +3,7 @@ title: "هل صح عن الإمام أحمد أنه ردد أبياتاً لأب
 status: published
 published_at: 2020-08-17
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/2230 -->
 

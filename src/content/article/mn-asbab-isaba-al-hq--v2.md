@@ -3,7 +3,7 @@ title: "من أسباب إصابة الحق ..."
 status: published
 published_at: 2021-06-28
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]
+topics: ["al-sunnah-wal-bidah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/4622 (+6 more) -->
 

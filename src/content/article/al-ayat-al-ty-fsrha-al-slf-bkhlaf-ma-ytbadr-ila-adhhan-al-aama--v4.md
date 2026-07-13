@@ -3,7 +3,7 @@ title: "الآيات التي فسرها السلف بخلاف ما يتبادر
 status: published
 published_at: 2022-01-03
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "al-asma-was-sifat", "tazkiyat-al-nafs"]
+topics: ["tafsir-al-quran"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/6399 (+7 more) -->
 

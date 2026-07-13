@@ -3,6 +3,7 @@ title: "التنبيه على دعاء ينسبه المغامسي للحسن ا
 status: published
 published_at: 2024-02-05
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/11124 -->
 

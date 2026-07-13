@@ -3,7 +3,7 @@ title: "حكم الطلب من المواقع الصينية"
 status: published
 published_at: 2021-04-04
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["fiqh-aam"]
 audio: swteat--hkm-al-tlb-mn-al-mwaqa-al-synya
 ---
 ## السؤال

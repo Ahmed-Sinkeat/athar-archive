@@ -3,6 +3,7 @@ title: "مشروعية قراءة يس عند المحتضر ..."
 status: published
 published_at: 2023-06-22
 person: abu-jafar-al-khalifi
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/9575 (+1 more) -->
 

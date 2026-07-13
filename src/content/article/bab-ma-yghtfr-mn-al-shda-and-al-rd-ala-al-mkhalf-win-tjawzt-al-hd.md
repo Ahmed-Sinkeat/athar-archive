@@ -3,7 +3,7 @@ title: "باب ما يغتفر من الشدة عند الرد على المخا
 status: published
 published_at: 2025-06-05
 person: abu-jafar-al-khalifi
-topics: ["al-iman", "al-sunnah-wal-bidah"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13874 -->
 

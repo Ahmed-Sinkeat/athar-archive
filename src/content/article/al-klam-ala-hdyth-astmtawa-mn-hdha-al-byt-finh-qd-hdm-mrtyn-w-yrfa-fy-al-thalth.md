@@ -3,6 +3,7 @@ title: "الكلام على حديث : ( استمتعوا من هذا البيت
 status: published
 published_at: 2024-10-13
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/12581 -->
 

@@ -3,6 +3,7 @@ title: "الرد على شبهة حركية في إسقاط الجزية"
 status: published
 published_at: 2025-08-16
 person: abu-jafar-al-khalifi
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/14397 (+1 more) -->
 

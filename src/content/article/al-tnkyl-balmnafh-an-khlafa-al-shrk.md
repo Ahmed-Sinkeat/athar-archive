@@ -3,7 +3,7 @@ title: "التنكيل بالمنافح عن خلافة الشرك ..."
 status: draft
 published_at: 2014-11-07
 person: abu-jafar-al-khalifi
-topics: ["tahwid-al-ibada", "al-aqeedah-al-aamah", "al-firaq-war-rudud"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2014/11/blog-post_66.html -->
 

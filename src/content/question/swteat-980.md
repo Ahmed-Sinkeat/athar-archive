@@ -3,7 +3,7 @@ title: "هل يصح ان اصوم عاشوراء على توقيت بلدي ام
 status: published
 published_at: 2021-11-02
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["mustalah-al-hadith"]
 audio: swteat--swteat-980
 ---
 ## السؤال

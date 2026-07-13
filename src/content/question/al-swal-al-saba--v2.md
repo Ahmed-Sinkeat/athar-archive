@@ -3,7 +3,7 @@ title: "متى تشد الأحاديث الضعيفة بعضها، ونريد أ
 status: published
 published_at: 2020-06-19
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["mustalah-al-hadith"]
 audio: swteat--al-swal-al-saba--v2
 ---
 ## السؤال

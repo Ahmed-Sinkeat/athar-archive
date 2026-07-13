@@ -3,6 +3,7 @@ title: "الكلام على حديث : ( لا سمر إلا لمصل أو مسا
 status: published
 published_at: 2026-04-14
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/15463 -->
 

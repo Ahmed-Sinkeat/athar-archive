@@ -3,6 +3,7 @@ title: "من نفائس ابن القيم : فائدة السر في حروف ق
 status: published
 published_at: 2022-02-12
 person: abu-jafar-al-khalifi
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/6643 -->
 

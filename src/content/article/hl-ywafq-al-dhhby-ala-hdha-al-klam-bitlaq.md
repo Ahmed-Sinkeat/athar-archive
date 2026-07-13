@@ -3,7 +3,7 @@ title: "هل يوافق الذهبي على هذا الكلام بإطلاق ؟"
 status: draft
 published_at: 2013-10-18
 person: abu-jafar-al-khalifi
-topics: ["tahwid-al-ibada", "al-aqeedah-al-aamah"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2013/10/blog-post_9354.html -->
 

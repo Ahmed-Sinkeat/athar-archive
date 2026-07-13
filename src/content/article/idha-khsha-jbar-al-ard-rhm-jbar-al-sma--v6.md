@@ -3,6 +3,7 @@ title: "إذا خشع جبار الأرض رحم جبار السماء ..."
 status: published
 published_at: 2023-11-17
 person: abu-jafar-al-khalifi
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/10538 -->
 

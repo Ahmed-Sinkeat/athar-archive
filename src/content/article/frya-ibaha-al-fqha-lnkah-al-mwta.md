@@ -3,6 +3,7 @@ title: "فرية إباحة الفقهاء لنكاح الموتى"
 status: published
 published_at: 2020-09-21
 person: abu-jafar-al-khalifi
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/2596 (+1 more) -->
 

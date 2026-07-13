@@ -3,6 +3,7 @@ title: "الكلام على حديث : ( كان إذا سجد ضم أصابعه)
 status: published
 published_at: 2025-02-11
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13236 -->
 

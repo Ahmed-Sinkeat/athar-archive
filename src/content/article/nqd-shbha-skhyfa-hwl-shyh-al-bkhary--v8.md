@@ -3,7 +3,7 @@ title: "نقض شبهة سخيفة حول صحيح البخاري ..."
 status: published
 published_at: 2024-08-19
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/12295 (+1 more) -->
 

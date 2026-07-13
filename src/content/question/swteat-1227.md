@@ -3,7 +3,7 @@ title: "هل صحيح أن من دعاء اللباس إذا لبس ثوبا [س
 status: published
 published_at: 2025-12-01
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["mustalah-al-hadith"]
 audio: swteat--swteat-1227
 ---
 ## السؤال

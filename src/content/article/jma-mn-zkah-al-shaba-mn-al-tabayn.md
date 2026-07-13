@@ -3,7 +3,7 @@ title: "[ جمع ] من زكاه الصحابة من التابعين"
 status: published
 published_at: 2021-01-17
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tazkiyat-al-nafs"]
+topics: ["tarajim-al-ulama"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/3410 (+2 more) -->
 

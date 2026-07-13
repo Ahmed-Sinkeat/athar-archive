@@ -4,6 +4,7 @@ person: "al-ilbiri"
 status: "published"
 published_at: "2026-07-02"
 work_type: "قصيدة"
+topics: ["tazkiyat-al-nafs"]
 description: "من ديوان الإلبيري — صفحة 109"
 ---
 أَتَيْتُك راجيا يَاذَا الْجلَال ... فَفرج مَا ترى من سوء حَالي

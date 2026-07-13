@@ -3,7 +3,7 @@ title: "مهمات في فقه الصدقة ..."
 status: published
 published_at: 2023-07-24
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tazkiyat-al-nafs", "al-sunnah-wal-bidah"]
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/9727 (+2 more) -->
 

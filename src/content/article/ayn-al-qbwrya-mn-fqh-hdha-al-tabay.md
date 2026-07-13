@@ -3,7 +3,7 @@ title: "أين القبورية من فقه هذا التابعي ؟"
 status: published
 published_at: 2020-08-01
 person: abu-jafar-al-khalifi
-topics: ["tahwid-al-ibada", "al-sunnah-wal-bidah"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/2079 -->
 

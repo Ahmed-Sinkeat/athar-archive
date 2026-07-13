@@ -3,7 +3,7 @@ title: "اطمئن إن اتقيت فإن معك السميع العليم"
 status: published
 published_at: 2020-05-22
 person: abu-jafar-al-khalifi
-topics: ["al-firaq-war-rudud", "al-asma-was-sifat", "al-sunnah-wal-bidah"]
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/1355 (+1 more) -->
 

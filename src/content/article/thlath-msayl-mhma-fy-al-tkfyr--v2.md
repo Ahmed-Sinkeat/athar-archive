@@ -3,7 +3,7 @@ title: "ثلاث مسائل مهمة في التكفير ..."
 status: published
 published_at: 2024-11-16
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "al-asma-was-sifat", "al-imamah-was-sahabah"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/12809 (+8 more) -->
 

@@ -4,7 +4,7 @@ status: published
 published_at: 2026-07-04
 person: diya-al-din-al-maqdisi
 authored_year: 643
-topics: ["aam-aqeedah"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "الأولى، 1409هـ 1989م"
 description: "بتحقيق عبد الله بن يوسف الجديع"
 ---

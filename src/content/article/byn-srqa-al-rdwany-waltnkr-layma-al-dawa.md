@@ -3,7 +3,7 @@ title: "بين سرقة الرضواني والتنكر لأئمة الدعوة"
 status: published
 published_at: 2024-09-20
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran", "al-firaq-war-rudud"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/12497 (+11 more) -->
 

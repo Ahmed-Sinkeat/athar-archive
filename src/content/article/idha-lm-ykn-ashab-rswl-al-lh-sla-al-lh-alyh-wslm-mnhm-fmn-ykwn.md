@@ -3,6 +3,7 @@ title: "إذا لم يكن أصحاب رسول الله صلى الله عليه
 status: published
 published_at: 2020-08-29
 person: abu-jafar-al-khalifi
+topics: ["al-imamah-was-sahabah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/2336 (+1 more) -->
 

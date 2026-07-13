@@ -3,7 +3,7 @@ title: "مخالفة الأشاعرة لأهل السنة في صفة القدر
 status: published
 published_at: 2021-08-30
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "adab-talab-al-ilm"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/5088 (+1 more) -->
 

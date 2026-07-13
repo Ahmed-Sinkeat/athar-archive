@@ -3,7 +3,7 @@ title: "ما من مبطل إلا وفي القرآن ما يرد باطله"
 status: published
 published_at: 2022-12-23
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/8452 (+1 more) -->
 

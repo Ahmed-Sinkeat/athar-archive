@@ -3,6 +3,7 @@ title: "الكلام على حديث : ( دخل على شاب وهو في الم
 status: published
 published_at: 2022-10-14
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/8121 -->
 

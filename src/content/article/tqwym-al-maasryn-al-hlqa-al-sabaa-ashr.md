@@ -3,7 +3,7 @@ title: "تقويم المعاصرين ( الحلقة السابعة عشر )"
 status: draft
 published_at: 2015-06-09
 person: abu-jafar-al-khalifi
-topics: ["tahwid-al-ibada", "al-aqeedah-al-aamah"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2015/06/blog-post_9.html -->
 

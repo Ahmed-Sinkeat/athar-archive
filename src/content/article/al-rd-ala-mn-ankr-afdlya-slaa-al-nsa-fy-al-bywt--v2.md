@@ -3,6 +3,7 @@ title: "الرد على من أنكر أفضلية صلاة النساء في ا
 status: published
 published_at: 2020-09-04
 person: abu-jafar-al-khalifi
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/2412 (+1 more) -->
 

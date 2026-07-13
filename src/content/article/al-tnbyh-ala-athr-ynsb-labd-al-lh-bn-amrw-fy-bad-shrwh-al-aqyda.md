@@ -3,7 +3,7 @@ title: "التنبيه على أثر ينسب لعبد الله بن عمرو ف
 status: published
 published_at: 2020-07-27
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran", "tazkiyat-al-nafs"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/2048 (+1 more) -->
 

@@ -3,7 +3,7 @@ title: "موعظة من جني سلفي ..."
 status: published
 published_at: 2024-03-04
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "al-firaq-war-rudud", "al-asma-was-sifat"]
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/11301 -->
 

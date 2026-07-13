@@ -3,7 +3,7 @@ title: "الحث على الاستغفار للمؤمنين والمؤمنات .
 status: published
 published_at: 2021-04-30
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tazkiyat-al-nafs"]
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/4325 (+2 more) -->
 

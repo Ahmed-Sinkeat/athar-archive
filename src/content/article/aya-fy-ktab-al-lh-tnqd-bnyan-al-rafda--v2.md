@@ -3,7 +3,7 @@ title: "آية في كتاب الله تنقض بنيان الرافضة"
 status: published
 published_at: 2025-08-16
 person: abu-jafar-al-khalifi
-topics: ["al-firaq-war-rudud", "al-iman", "al-imamah-was-sahabah"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/14301 (+1 more) -->
 

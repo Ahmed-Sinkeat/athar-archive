@@ -3,7 +3,7 @@ title: "[ مثبت ] : ظاهرة اختزال الدين ..."
 status: draft
 published_at: 2014-08-01
 person: abu-jafar-al-khalifi
-topics: ["tahwid-al-ibada", "al-aqeedah-al-aamah", "al-firaq-war-rudud"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2014/08/blog-post_56.html -->
 

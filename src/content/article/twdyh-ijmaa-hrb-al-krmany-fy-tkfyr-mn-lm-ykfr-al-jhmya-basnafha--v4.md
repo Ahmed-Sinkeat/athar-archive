@@ -3,7 +3,7 @@ title: "توضيح إجماع حرب الكرماني في تكفير من لم 
 status: published
 published_at: 2024-08-19
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran", "al-firaq-war-rudud"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/12334 (+2 more) -->
 

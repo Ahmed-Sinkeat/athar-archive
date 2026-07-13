@@ -3,7 +3,7 @@ title: "النووي يحكم على إمامه الأشعري بأنه تكلم
 status: published
 published_at: 2024-08-12
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran", "tazkiyat-al-nafs"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/12273 (+1 more) -->
 

@@ -3,7 +3,7 @@ title: "ما حكم دراسة المرأة في جامعة غير مختلطة 
 status: published
 published_at: 2021-12-25
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["fiqh-aam"]
 audio: swteat--swteat-1037
 ---
 ## السؤال

@@ -3,7 +3,7 @@ title: "جواب سؤال تدريس الكافر لأولاد المسلمين"
 status: published
 published_at: 2021-09-11
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["al-firaq-war-rudud"]
 audio: swteat--jwab-swal-tdrys-al-kafr-lawlad-al-mslmyn
 ---
 ## السؤال

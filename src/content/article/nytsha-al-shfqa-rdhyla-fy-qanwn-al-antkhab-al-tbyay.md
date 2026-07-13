@@ -3,7 +3,7 @@ title: "نيتشة : الشفقة رذيلة في قانون الانتخاب ا
 status: published
 published_at: 2023-05-12
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "al-firaq-war-rudud"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/9281 (+1 more) -->
 

@@ -3,7 +3,7 @@ title: "بعض الإخوة يقولون أن قول : اللهم صل على م
 status: published
 published_at: 2021-10-05
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["al-firaq-war-rudud"]
 audio: swteat--swteat-785
 ---
 ## السؤال

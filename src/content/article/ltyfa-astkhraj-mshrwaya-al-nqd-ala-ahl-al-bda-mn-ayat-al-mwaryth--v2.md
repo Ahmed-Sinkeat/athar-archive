@@ -3,7 +3,7 @@ title: "لطيفة : استخراج مشروعية النقض على أهل ال
 status: published
 published_at: 2024-12-31
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "al-sunnah-wal-bidah"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13033 -->
 

@@ -3,7 +3,7 @@ title: "الصحيح المسند من آثار التابعي الجليل مس
 status: published
 published_at: 2021-03-08
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "tazkiyat-al-nafs", "al-sunnah-wal-bidah"]
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/4009 (+5 more) -->
 

@@ -3,7 +3,7 @@ title: "هل تصح هذه الرواية في كتاب الكامل لابن ع
 status: published
 published_at: 2025-07-28
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["mustalah-al-hadith"]
 audio: swteat--swteat-1223
 ---
 ## السؤال

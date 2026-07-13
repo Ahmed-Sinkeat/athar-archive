@@ -3,6 +3,7 @@ title: "عادات في التصنيف يحتاج التزامها إلى دلي
 status: draft
 published_at: 2013-09-29
 person: abu-jafar-al-khalifi
+topics: ["adab-talab-al-ilm"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2013/09/blog-post_4154.html -->
 

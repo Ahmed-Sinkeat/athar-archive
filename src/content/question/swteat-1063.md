@@ -3,7 +3,7 @@ title: "من المعلوم أن هناك تلازماً ما بين الكفر 
 status: published
 published_at: 2022-01-01
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["al-firaq-war-rudud"]
 ---
 ## السؤال
 

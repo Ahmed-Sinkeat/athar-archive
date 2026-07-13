@@ -3,6 +3,7 @@ title: "أبيات تنسب للإمام أحمد ولا تصح ..."
 status: published
 published_at: 2024-12-15
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13004 -->
 

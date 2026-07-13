@@ -4,7 +4,7 @@ status: published
 published_at: 2026-07-04
 person: ibn-taymiyyah
 authored_year: 728
-topics: ["aam-aqeedah"]
+topics: ["al-aqeedah-al-aamah"]
 description: "بتحقيق د. محمد رشاد سالم"
 ---
 ## مسألة فيما إذا كان [في] العبد محبة

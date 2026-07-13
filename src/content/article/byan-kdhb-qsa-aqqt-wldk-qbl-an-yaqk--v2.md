@@ -3,6 +3,7 @@ title: "بيان كذب قصة (عققت ولدك قبل أن يعقك )"
 status: published
 published_at: 2021-07-23
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/4772 -->
 

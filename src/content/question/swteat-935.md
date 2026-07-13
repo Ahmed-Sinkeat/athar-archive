@@ -3,7 +3,7 @@ title: "يا شيخ الحمد لله على نعمة الإسلام وأرجو 
 status: published
 published_at: 2021-11-01
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["tazkiyat-al-nafs"]
 audio: swteat--swteat-935
 ---
 ## السؤال

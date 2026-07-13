@@ -3,6 +3,7 @@ title: "الرد على من لم يكفر البهائية والقادياني
 status: published
 published_at: 2025-03-03
 person: abu-jafar-al-khalifi
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13320 -->
 

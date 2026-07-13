@@ -3,6 +3,7 @@ title: "ما تعلمه بنو آدم من الحيوانات ..."
 status: published
 published_at: 2020-11-23
 person: abu-jafar-al-khalifi
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/3079 (+2 more) -->
 

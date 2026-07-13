@@ -3,6 +3,7 @@ title: "التحذير من عقيدة الأشاعرة في اشتراط الم
 status: published
 published_at: 2025-11-16
 person: abu-jafar-al-khalifi
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/15019 (+1 more) -->
 

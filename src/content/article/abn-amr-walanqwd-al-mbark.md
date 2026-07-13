@@ -3,7 +3,7 @@ title: "ابن عمر والعنقود المبارك !"
 status: published
 published_at: 2020-12-14
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tazkiyat-al-nafs"]
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/3225 -->
 

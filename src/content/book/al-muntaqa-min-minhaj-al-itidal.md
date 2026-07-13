@@ -4,7 +4,7 @@ status: published
 published_at: 2026-07-04
 person: al-dhahabi
 authored_year: 748
-topics: ["aam-aqeedah"]
+topics: ["al-aqeedah-al-aamah"]
 description: "بتحقيق محب الدين الخطيب"
 ---
 ## بِسم الله الرَّحْمَن الرَّحِيم

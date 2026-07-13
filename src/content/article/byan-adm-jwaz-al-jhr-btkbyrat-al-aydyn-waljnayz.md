@@ -3,6 +3,7 @@ title: "بيان عدم جواز الجهر بتكبيرات العيدين وا
 status: draft
 published_at: 2014-02-26
 person: abu-jafar-al-khalifi
+topics: ["fiqh-aam"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2014/02/blog-post_1185.html -->
 

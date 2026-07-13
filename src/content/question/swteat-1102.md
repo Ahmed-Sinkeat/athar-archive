@@ -3,7 +3,7 @@ title: "هل وقت الشروق يتعين بالرؤية فقط ام يمكن 
 status: published
 published_at: 2022-02-07
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["fiqh-aam"]
 audio: swteat--swteat-1102
 ---
 ## السؤال

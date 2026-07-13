@@ -3,7 +3,7 @@ title: "التنبيه على قولهم ( معاداة السامية ) و ( ن
 status: draft
 published_at: 2015-09-30
 person: abu-jafar-al-khalifi
-topics: ["tahwid-al-ibada", "al-aqeedah-al-aamah"]
+topics: ["mustalah-al-hadith"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2015/09/blog-post_57.html -->
 

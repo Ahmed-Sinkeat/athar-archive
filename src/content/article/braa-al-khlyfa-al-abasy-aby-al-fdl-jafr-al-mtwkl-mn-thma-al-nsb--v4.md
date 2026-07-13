@@ -3,7 +3,7 @@ title: "براءة الخليفة العباسي أبي الفضل جعفر ال
 status: published
 published_at: 2022-09-09
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tahwid-al-ibada", "al-sunnah-wal-bidah"]
+topics: ["tarajim-al-ulama"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/7970 (+1 more) -->
 

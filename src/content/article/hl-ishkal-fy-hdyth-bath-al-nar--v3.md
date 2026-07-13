@@ -3,6 +3,7 @@ title: "حل إشكال في حديث ( بعث النار )"
 status: published
 published_at: 2024-04-22
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/11589 (+1 more) -->
 

@@ -141,6 +141,11 @@ const [readerSub, readerMain] = title.includes(" · ") ? title.split(" · ") : [
         } catch (e) {}
       })();
     </script>
+    <script is:inline>
+      // register ASAP (not gated behind downloads.ts's dynamic chunk) so the
+      // shell cache is warm and repeat/offline launches are cache-first fast
+      if ("serviceWorker" in navigator) navigator.serviceWorker.register("/sw.js").catch(() => {});
+    </script>
     {import.meta.env.PUBLIC_CF_BEACON && (
       <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon={`{"token": "${import.meta.env.PUBLIC_CF_BEACON}"}`}></script>
     )}

@@ -3,6 +3,7 @@ title: "التعليق على الإبانة الصغرى لابن بطة الع
 status: published
 published_at: 2026-07-12
 person: abu-jafar-al-khalifi
+topics: ["al-sunnah-wal-bidah"]
 ---
 
 ## التعليق على الإبانة الصغرى لابن بطة العكبري

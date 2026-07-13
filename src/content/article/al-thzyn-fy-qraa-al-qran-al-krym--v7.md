@@ -3,7 +3,7 @@ title: "التحزين في قراءة القرآن الكريم"
 status: published
 published_at: 2023-04-14
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran"]
+topics: ["al-tajweed"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/9084 (+1 more) -->
 

@@ -4,7 +4,7 @@ status: published
 published_at: 2026-07-04
 person: ibn-taymiyyah
 authored_year: 728
-topics: ["aam-aqeedah"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "الطبعة السابعة المجددة 1426هـ - 2005م"
 description: "بتحقيق محمد زهير الشاويش"
 kind: متن

@@ -3,6 +3,7 @@ title: "ثلاث وصايا مكذوبة على الإمام مالك"
 status: published
 published_at: 2024-07-27
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/12169 -->
 

@@ -3,7 +3,7 @@ title: "رد الإمام الأثرم على من احتج بحديث ( لا ط
 status: published
 published_at: 2025-08-16
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/14319 (+1 more) -->
 

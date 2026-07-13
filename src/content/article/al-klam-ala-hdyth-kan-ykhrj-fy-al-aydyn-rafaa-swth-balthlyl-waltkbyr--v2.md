@@ -3,6 +3,7 @@ title: "الكلام على حديث ( كَانَ يَخْرُجُ في العي
 status: published
 published_at: 2022-07-08
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/7411 (+1 more) -->
 

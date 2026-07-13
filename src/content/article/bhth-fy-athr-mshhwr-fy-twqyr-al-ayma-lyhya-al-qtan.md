@@ -3,6 +3,7 @@ title: "بحث في أثر مشهور في توقير الأئمة ليحيى ا
 status: published
 published_at: 2021-09-03
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/5104 -->
 

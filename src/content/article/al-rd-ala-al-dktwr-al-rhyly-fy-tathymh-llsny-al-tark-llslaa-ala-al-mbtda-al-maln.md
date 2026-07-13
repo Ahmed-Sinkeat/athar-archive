@@ -3,7 +3,7 @@ title: "الرد على الدكتور الرحيلي في تأثيمه للسن
 status: published
 published_at: 2025-08-08
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/14286 (+2 more) -->
 

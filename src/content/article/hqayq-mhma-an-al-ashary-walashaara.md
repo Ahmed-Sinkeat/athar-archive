@@ -3,7 +3,7 @@ title: "حقائق مهمة عن الأشعري والأشاعرة"
 status: published
 published_at: 2023-06-10
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran", "tahwid-al-ibada"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/9503 (+5 more) -->
 

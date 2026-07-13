@@ -3,7 +3,7 @@ title: "التنبيه على قولهم ( هذه قشور ) و ( شكليات )
 status: published
 published_at: 2021-04-30
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "al-firaq-war-rudud", "tahwid-al-ibada"]
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/4322 (+2 more) -->
 

@@ -3,7 +3,7 @@ title: "هل من كتب تبين عقيدة الاسماعيلية؟ واليا
 status: published
 published_at: 2021-11-02
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 ## السؤال
 

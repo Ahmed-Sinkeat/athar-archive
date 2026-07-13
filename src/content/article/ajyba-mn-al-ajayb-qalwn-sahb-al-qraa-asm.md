@@ -3,6 +3,7 @@ title: "عجيبة من العجائب : قالون صاحب القراءة أص
 status: published
 published_at: 2020-05-15
 person: abu-jafar-al-khalifi
+topics: ["al-qiraat"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/1301 -->
 

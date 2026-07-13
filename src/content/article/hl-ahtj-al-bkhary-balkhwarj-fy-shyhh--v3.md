@@ -3,7 +3,7 @@ title: "هل احتج البخاري بالخوارج في صحيحه ؟"
 status: published
 published_at: 2021-12-25
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran", "al-iman"]
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/6348 (+2 more) -->
 

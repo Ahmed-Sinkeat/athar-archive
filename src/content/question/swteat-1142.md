@@ -3,7 +3,7 @@ title: "كيف اقنع والدي أني لست تكفيري ولا غالٍ و
 status: published
 published_at: 2024-02-01
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["al-firaq-war-rudud"]
 audio: swteat--swteat-1142
 ---
 ## السؤال

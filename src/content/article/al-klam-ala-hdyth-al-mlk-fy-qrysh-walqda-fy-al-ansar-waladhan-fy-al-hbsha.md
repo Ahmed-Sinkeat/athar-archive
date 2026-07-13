@@ -3,6 +3,7 @@ title: "الكلام على حديث ( المُلْكُ فِي قُرَيْشٍ 
 status: published
 published_at: 2020-08-22
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/2251 -->
 

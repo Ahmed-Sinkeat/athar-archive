@@ -3,6 +3,7 @@ title: "باب من كان يستحب إذا صلى الجمعة أن يتحول
 status: published
 published_at: 2021-07-23
 person: abu-jafar-al-khalifi
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/4774 -->
 

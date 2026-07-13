@@ -3,7 +3,7 @@ title: "كيف أطلب العلم وهل تنصحني بمذهب الحنابل
 status: published
 published_at: 2021-10-21
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["adab-talab-al-ilm"]
 ---
 ## السؤال
 

@@ -3,6 +3,7 @@ title: "تعقيب على محمد رسلان في قوله (المتشيعون 
 status: draft
 published_at: 2014-03-15
 person: abu-jafar-al-khalifi
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2014/03/blog-post_5267.html -->
 

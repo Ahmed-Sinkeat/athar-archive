@@ -3,7 +3,7 @@ title: "١_هل يجب الوضوء في غسل الكوع ان تبدأ من ا
 status: published
 published_at: 2021-11-21
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["fiqh-aam"]
 audio: swteat--swteat-1030
 ---
 ## السؤال

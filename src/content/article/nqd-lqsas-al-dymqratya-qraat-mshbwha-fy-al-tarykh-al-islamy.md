@@ -3,7 +3,7 @@ title: "« نقد لقصاص الديمقراطية » قراءات مشبوهة
 status: published
 published_at: 2025-07-14
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/14048 -->
 

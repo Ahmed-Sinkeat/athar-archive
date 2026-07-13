@@ -3,6 +3,7 @@ title: "نقد ابن القيم لتعريف الصلاة ب( الدعاء )"
 status: published
 published_at: 2020-05-12
 person: abu-jafar-al-khalifi
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/1277 -->
 

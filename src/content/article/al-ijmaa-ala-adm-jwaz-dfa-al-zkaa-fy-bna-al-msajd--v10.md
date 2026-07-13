@@ -3,6 +3,7 @@ title: "الإجماع على عدم جواز دفع الزكاة في بناء 
 status: published
 published_at: 2025-08-08
 person: abu-jafar-al-khalifi
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/14245 (+1 more) -->
 

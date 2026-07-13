@@ -3,7 +3,7 @@ title: "التحذير من مذهب السالمية في القرآن الكر
 status: published
 published_at: 2024-07-01
 person: abu-jafar-al-khalifi
-topics: ["tahwid-al-ibada", "al-sunnah-wal-bidah"]
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/12001 (+1 more) -->
 

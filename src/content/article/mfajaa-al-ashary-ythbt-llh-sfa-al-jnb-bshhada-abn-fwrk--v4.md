@@ -3,7 +3,7 @@ title: "مفاجأة : الأشعري يثبت لله صفة الجنب بشها
 status: published
 published_at: 2024-12-15
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "al-sunnah-wal-bidah"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/12988 -->
 

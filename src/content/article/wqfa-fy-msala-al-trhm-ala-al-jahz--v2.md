@@ -3,7 +3,7 @@ title: "وقفة في مسألة الترحم على الجاحظ ..."
 status: published
 published_at: 2025-01-09
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "al-sunnah-wal-bidah"]
+topics: ["tarajim-al-ulama"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13113 (+2 more) -->
 

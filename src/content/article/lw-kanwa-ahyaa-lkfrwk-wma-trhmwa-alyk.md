@@ -3,7 +3,7 @@ title: "لو كانوا أحياءاً لكفروك وما ترحموا عليك
 status: published
 published_at: 2020-09-10
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran", "al-firaq-war-rudud"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/2465 (+8 more) -->
 

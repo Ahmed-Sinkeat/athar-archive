@@ -3,7 +3,7 @@ title: "المرأة مكانها البيت !"
 status: published
 published_at: 2023-12-28
 person: abu-jafar-al-khalifi
-topics: ["al-firaq-war-rudud", "tahwid-al-ibada"]
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/10843 (+1 more) -->
 

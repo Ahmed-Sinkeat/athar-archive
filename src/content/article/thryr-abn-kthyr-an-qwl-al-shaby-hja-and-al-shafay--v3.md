@@ -3,6 +3,7 @@ title: "تحرير ابن كثير أن قول الصحابي حجة عند ال
 status: published
 published_at: 2025-08-23
 person: abu-jafar-al-khalifi
+topics: ["usul-al-fiqh-shafii"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/14505 -->
 

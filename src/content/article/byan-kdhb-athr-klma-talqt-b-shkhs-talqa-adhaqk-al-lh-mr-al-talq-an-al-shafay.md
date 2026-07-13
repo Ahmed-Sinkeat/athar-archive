@@ -3,6 +3,7 @@ title: "بيان كذب أثر ( كلما تعلقت بـ شخص تعلقاً أ
 status: published
 published_at: 2024-09-30
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/12526 -->
 

@@ -3,7 +3,7 @@ title: "موافقة وحيد بالي للأشاعرة في اشتراطهم ا
 status: published
 published_at: 2025-09-10
 person: abu-jafar-al-khalifi
-topics: ["tahwid-al-ibada", "al-sunnah-wal-bidah"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/14637 -->
 

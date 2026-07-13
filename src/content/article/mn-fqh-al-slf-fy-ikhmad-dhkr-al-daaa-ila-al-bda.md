@@ -3,7 +3,7 @@ title: "من فقه السلف في إخماد ذكر الدعاة إلى الب
 status: published
 published_at: 2025-10-19
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tazkiyat-al-nafs", "al-sunnah-wal-bidah"]
+topics: ["al-sunnah-wal-bidah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/14740 (+2 more) -->
 

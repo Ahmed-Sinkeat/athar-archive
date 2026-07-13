@@ -3,7 +3,7 @@ title: "من أسباب البراءة من النفاق"
 status: published
 published_at: 2022-03-20
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran", "tahwid-al-ibada"]
+topics: ["tarajim-al-ulama"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/6851 (+5 more) -->
 

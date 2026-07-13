@@ -3,6 +3,7 @@ title: "بيان عدم جواز الجهر بتكبيرات صلاة العيد
 status: published
 published_at: 2022-07-08
 person: abu-jafar-al-khalifi
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/7413 -->
 

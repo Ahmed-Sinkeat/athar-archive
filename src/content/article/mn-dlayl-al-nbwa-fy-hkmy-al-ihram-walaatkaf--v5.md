@@ -3,6 +3,7 @@ title: "من دلائل النبوة في حكمي الإحرام والاعتك
 status: published
 published_at: 2024-03-18
 person: abu-jafar-al-khalifi
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/11389 (+1 more) -->
 

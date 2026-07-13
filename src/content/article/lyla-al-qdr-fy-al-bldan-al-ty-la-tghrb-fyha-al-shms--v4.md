@@ -3,6 +3,7 @@ title: "ليلة القدر في البلدان التي لا تغرب فيها 
 status: published
 published_at: 2023-04-17
 person: abu-jafar-al-khalifi
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/9108 (+1 more) -->
 

@@ -3,7 +3,7 @@ title: "سلف الدعاة إلى ( تجديد الخطاب الديني ) أو
 status: published
 published_at: 2020-06-20
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran", "tahwid-al-ibada"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/1677 (+3 more) -->
 

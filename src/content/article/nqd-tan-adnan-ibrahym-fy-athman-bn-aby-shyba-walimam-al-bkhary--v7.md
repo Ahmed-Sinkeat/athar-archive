@@ -3,7 +3,7 @@ title: "نقض طعن عدنان إبراهيم في عثمان بن أبي شي
 status: published
 published_at: 2023-09-29
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/10152 (+1 more) -->
 

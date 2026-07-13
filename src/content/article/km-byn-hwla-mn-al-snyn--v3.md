@@ -3,7 +3,7 @@ title: "كم بين هؤلاء من السنين ؟!"
 status: published
 published_at: 2022-05-07
 person: abu-jafar-al-khalifi
-topics: ["tahwid-al-ibada", "al-sunnah-wal-bidah"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/7108 (+1 more) -->
 

@@ -3,7 +3,7 @@ title: "لوثة الجهمية عند فريد الدين آيدين الهاش
 status: published
 published_at: 2022-03-29
 person: abu-jafar-al-khalifi
-topics: ["al-firaq-war-rudud", "tahwid-al-ibada"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/6912 (+1 more) -->
 

@@ -3,7 +3,7 @@ title: "إجماعية وليست خلافية يا أحمد شملان ..."
 status: published
 published_at: 2024-04-30
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/11648 (+1 more) -->
 

@@ -3,7 +3,7 @@ title: "هذه صفة من ينفر عن كتب السلف"
 status: published
 published_at: 2020-12-07
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tahwid-al-ibada", "al-asma-was-sifat"]
+topics: ["al-sunnah-wal-bidah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/3192 (+1 more) -->
 

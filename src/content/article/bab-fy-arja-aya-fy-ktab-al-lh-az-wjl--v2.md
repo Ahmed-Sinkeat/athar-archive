@@ -3,7 +3,7 @@ title: "باب في أرجى آية في كتاب الله عز وجل"
 status: published
 published_at: 2021-06-04
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran", "tahwid-al-ibada"]
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/4501 (+2 more) -->
 

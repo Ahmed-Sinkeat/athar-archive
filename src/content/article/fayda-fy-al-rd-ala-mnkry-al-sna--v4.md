@@ -3,7 +3,7 @@ title: "فائدة في الرد على منكري السنة ..."
 status: published
 published_at: 2021-03-05
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran", "al-imamah-was-sahabah"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/3968 (+5 more) -->
 

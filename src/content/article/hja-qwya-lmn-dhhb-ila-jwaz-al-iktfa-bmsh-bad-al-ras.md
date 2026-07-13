@@ -3,6 +3,7 @@ title: "حجة قوية لمن ذهب إلى جواز الإكتفاء بمسح 
 status: published
 published_at: 2023-08-12
 person: abu-jafar-al-khalifi
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/9812 -->
 

@@ -3,7 +3,7 @@ title: "غنيمة الموت على التوحيد"
 status: published
 published_at: 2025-01-30
 person: abu-jafar-al-khalifi
-topics: ["tahwid-al-ibada", "al-sunnah-wal-bidah"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13201 (+1 more) -->
 

@@ -3,6 +3,7 @@ title: "أيها الإمام انتظره حتى يدرك الركعة !"
 status: published
 published_at: 2021-05-30
 person: abu-jafar-al-khalifi
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/4479 -->
 

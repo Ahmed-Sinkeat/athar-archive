@@ -3,7 +3,7 @@ title: "لماذا خرج البخاري أحاديث عكرمة البربري 
 status: published
 published_at: 2021-03-06
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/3981 (+21 more) -->
 

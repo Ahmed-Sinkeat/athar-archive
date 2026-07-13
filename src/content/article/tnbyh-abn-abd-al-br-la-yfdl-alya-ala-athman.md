@@ -3,6 +3,7 @@ title: "تنبيه : ابن عبد البر لا يفضل علياً على عث
 status: published
 published_at: 2024-01-07
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/10905 (+1 more) -->
 

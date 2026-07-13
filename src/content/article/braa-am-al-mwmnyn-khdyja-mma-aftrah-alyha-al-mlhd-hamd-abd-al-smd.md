@@ -3,7 +3,7 @@ title: "براءة أم المؤمنين خديجة مما افتراه عليه
 status: published
 published_at: 2023-05-07
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "al-firaq-war-rudud"]
+topics: ["tarajim-al-ulama"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/9240 -->
 

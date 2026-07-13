@@ -3,7 +3,7 @@ title: "أحسن الله إليك هل يصح شيء من أخبار قس بن 
 status: published
 published_at: 2021-08-07
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["mustalah-al-hadith"]
 audio: swteat--asyla-al-bwt--v120
 ---
 ## السؤال

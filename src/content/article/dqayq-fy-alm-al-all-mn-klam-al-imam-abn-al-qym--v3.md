@@ -3,6 +3,7 @@ title: "دقائق في علم العلل من كلام الإمام ابن ال
 status: published
 published_at: 2021-12-31
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/6380 (+1 more) -->
 

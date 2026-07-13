@@ -3,7 +3,7 @@ title: "حقيقة فصل الدين عن الدولة في أوروبا ..."
 status: draft
 published_at: 2016-07-01
 person: abu-jafar-al-khalifi
-topics: ["tahwid-al-ibada", "al-aqeedah-al-aamah"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2016/07/blog-post_1.html -->
 

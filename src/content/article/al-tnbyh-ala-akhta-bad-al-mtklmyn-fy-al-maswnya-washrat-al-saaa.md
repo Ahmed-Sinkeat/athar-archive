@@ -3,7 +3,7 @@ title: "التنبيه على أخطاء بعض المتكلمين في الما
 status: published
 published_at: 2020-06-12
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "al-sunnah-wal-bidah"]
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/1588 (+2 more) -->
 

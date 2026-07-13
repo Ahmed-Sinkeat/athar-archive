@@ -3,7 +3,7 @@ title: "وقفة مع كلام الذهبي في أبان بن تغلب الشي
 status: published
 published_at: 2020-02-10
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/402 (+3 more) -->
 

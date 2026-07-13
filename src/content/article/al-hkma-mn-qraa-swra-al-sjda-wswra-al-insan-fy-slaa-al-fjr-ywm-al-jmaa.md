@@ -3,6 +3,7 @@ title: "الحكمة من قراءة سورة السجدة وسورة الإنس
 status: published
 published_at: 2020-04-17
 person: abu-jafar-al-khalifi
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/1071 -->
 

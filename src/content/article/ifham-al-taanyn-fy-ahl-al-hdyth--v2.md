@@ -3,7 +3,7 @@ title: "إفحام الطاعنين في أهل الحديث"
 status: published
 published_at: 2025-07-13
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "al-iman"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/14009 (+3 more) -->
 

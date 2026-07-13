@@ -3,7 +3,7 @@ title: "ما حكم تخصيص ما بين الظهر والعصر يوم الأ
 status: published
 published_at: 2021-10-05
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["fiqh-aam"]
 audio: swteat--swteat-789
 ---
 ## السؤال

@@ -3,7 +3,7 @@ title: "ماحكم الDropshopping"
 status: published
 published_at: 2021-07-08
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["fiqh-aam"]
 audio: swteat--swteat-n0mnwj
 ---
 ## السؤال

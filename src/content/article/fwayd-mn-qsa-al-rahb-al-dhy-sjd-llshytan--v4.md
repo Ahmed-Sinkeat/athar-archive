@@ -3,7 +3,7 @@ title: "فوائد من قصة الراهب الذي سجد للشيطان !"
 status: published
 published_at: 2022-11-18
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran"]
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/8304 -->
 

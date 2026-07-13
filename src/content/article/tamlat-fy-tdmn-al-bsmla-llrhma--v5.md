@@ -3,7 +3,7 @@ title: "تأملات في تضمن البسملة للرحمة ..."
 status: published
 published_at: 2022-04-15
 person: abu-jafar-al-khalifi
-topics: ["tahwid-al-ibada", "al-asma-was-sifat"]
+topics: ["al-asma-was-sifat"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/7013 (+2 more) -->
 

@@ -3,6 +3,7 @@ title: "الكلام على حديث التزام البيت"
 status: published
 published_at: 2026-02-05
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/15227 -->
 

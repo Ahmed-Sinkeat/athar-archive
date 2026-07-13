@@ -3,6 +3,7 @@ title: "علاج ألم المصيبة"
 status: published
 published_at: 2022-06-24
 person: abu-jafar-al-khalifi
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/7352 (+3 more) -->
 

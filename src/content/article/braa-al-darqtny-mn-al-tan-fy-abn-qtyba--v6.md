@@ -3,6 +3,7 @@ title: "براءة الدارقطني من الطعن في ابن قتيبة ...
 status: published
 published_at: 2023-09-22
 person: abu-jafar-al-khalifi
+topics: ["tarajim-al-ulama"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/10056 -->
 

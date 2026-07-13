@@ -3,7 +3,7 @@ title: "الأثر القديم للرافضة على الزيدية"
 status: draft
 published_at: 2013-10-03
 person: abu-jafar-al-khalifi
-topics: ["tahwid-al-ibada", "al-aqeedah-al-aamah"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2013/10/blog-post_7601.html -->
 

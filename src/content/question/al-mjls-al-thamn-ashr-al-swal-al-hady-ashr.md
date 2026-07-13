@@ -3,7 +3,7 @@ title: "حول تيار تنظيم القاعدة"
 status: published
 published_at: 2021-07-06
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["al-firaq-war-rudud"]
 audio: swteat--al-mjls-al-thamn-ashr-al-swal-al-hady-ashr
 ---
 ## السؤال

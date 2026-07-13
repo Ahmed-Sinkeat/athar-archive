@@ -3,6 +3,7 @@ title: "حكم استخدام البخور في الرقية"
 status: published
 published_at: 2025-11-02
 person: abu-jafar-al-khalifi
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/14977 -->
 

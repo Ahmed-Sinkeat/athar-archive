@@ -3,6 +3,7 @@ title: "الكلام على حديث ( إن لله عز وجل عبادا يعر
 status: published
 published_at: 2025-08-23
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/14515 -->
 

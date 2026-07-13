@@ -3,6 +3,7 @@ title: "حكم الدعاء للسلاطين في خطبة الجمعة"
 status: published
 published_at: 2021-02-19
 person: abu-jafar-al-khalifi
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/3745 (+1 more) -->
 

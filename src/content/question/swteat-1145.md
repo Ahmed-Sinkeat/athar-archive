@@ -3,7 +3,7 @@ title: "شيخنا هل يجوز التطبب بالضفدع والإنتفاع 
 status: published
 published_at: 2024-02-08
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["fiqh-aam"]
 audio: swteat--swteat-1145
 ---
 ## السؤال

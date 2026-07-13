@@ -3,7 +3,7 @@ title: "الكلام على حديث : ( إن الله حيي ستير )"
 status: published
 published_at: 2024-07-27
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "tazkiyat-al-nafs"]
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/12172 (+1 more) -->
 

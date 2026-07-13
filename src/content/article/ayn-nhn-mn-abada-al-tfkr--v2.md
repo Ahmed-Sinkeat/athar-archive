@@ -3,7 +3,7 @@ title: "أين نحن من عبادة التفكر ؟"
 status: published
 published_at: 2021-01-11
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tazkiyat-al-nafs"]
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/3378 -->
 

@@ -3,6 +3,7 @@ title: "بيان كذب قصة ( وصف الطبيب العسل لعمر بن ا
 status: published
 published_at: 2021-08-20
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/4979 -->
 

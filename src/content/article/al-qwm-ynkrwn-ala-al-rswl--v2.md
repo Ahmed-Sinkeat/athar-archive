@@ -3,7 +3,7 @@ title: "القوم ينكرون على الرسول ؟"
 status: published
 published_at: 2021-07-30
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran", "tahwid-al-ibada"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/4799 (+4 more) -->
 

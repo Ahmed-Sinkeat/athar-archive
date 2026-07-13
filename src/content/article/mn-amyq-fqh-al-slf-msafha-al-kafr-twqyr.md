@@ -3,6 +3,7 @@ title: "من عميق فقه السلف ( مصافحة الكافر توقير )
 status: published
 published_at: 2020-12-18
 person: abu-jafar-al-khalifi
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/3251 -->
 

@@ -3,7 +3,7 @@ title: "١/ حكم الأسهم المختلطة ؟ ٢/ وهل كل الشركا
 status: published
 published_at: 2021-10-02
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["fiqh-aam"]
 ---
 ## السؤال
 

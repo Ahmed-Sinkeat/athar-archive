@@ -3,7 +3,7 @@ title: "الرد على «وليد السعيدان» في مسألة التعا
 status: published
 published_at: 2025-08-23
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "al-asma-was-sifat", "al-sunnah-wal-bidah"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/14488 (+3 more) -->
 

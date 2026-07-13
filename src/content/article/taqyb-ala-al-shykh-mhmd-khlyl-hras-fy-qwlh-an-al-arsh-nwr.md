@@ -3,7 +3,7 @@ title: "تعقيب على الشيخ محمد خليل هراس في قوله أ
 status: published
 published_at: 2022-02-12
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tazkiyat-al-nafs"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/6647 (+1 more) -->
 

@@ -3,6 +3,7 @@ title: "أخذ الشافعي بأقوال الصحابة وإن خالفت ال
 status: published
 published_at: 2020-10-05
 person: abu-jafar-al-khalifi
+topics: ["usul-al-fiqh-shafii"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/2733 -->
 

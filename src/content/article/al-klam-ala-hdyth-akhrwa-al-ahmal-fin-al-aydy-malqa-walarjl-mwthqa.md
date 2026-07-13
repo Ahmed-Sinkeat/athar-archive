@@ -3,6 +3,7 @@ title: "الكلام على حديث ( أخروا الأحمال فإن الأي
 status: published
 published_at: 2025-08-27
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/14593 -->
 

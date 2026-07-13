@@ -3,6 +3,7 @@ title: "مقياس جاهلي لمعرفة الحق ..."
 status: published
 published_at: 2024-09-20
 person: abu-jafar-al-khalifi
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/12491 -->
 

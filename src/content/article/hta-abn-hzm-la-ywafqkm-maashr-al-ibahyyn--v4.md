@@ -3,6 +3,7 @@ title: "حتى ابن حزم لا يوافقكم معاشر الإباحيين .
 status: published
 published_at: 2024-07-12
 person: abu-jafar-al-khalifi
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/12107 -->
 

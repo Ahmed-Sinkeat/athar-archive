@@ -3,7 +3,7 @@ title: "تعليق على مقال ( هل يَكفر من قال لأخيه ( أ
 status: published
 published_at: 2025-05-13
 person: abu-jafar-al-khalifi
-topics: ["al-firaq-war-rudud", "al-sunnah-wal-bidah"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13737 (+2 more) -->
 

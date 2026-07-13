@@ -3,6 +3,7 @@ title: "الكلام على حديث ( ما تحاب رجلان في الله إ
 status: published
 published_at: 2023-01-27
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/8688 -->
 

@@ -3,6 +3,7 @@ title: "بيان غلط من نسب عبارة (إذا مشيتَ مع من تع
 status: published
 published_at: 2022-09-12
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/7982 -->
 

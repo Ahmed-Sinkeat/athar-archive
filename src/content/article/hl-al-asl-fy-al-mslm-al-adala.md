@@ -3,6 +3,7 @@ title: "هل الأصل في المسلم العدالة ؟"
 status: published
 published_at: 2024-10-20
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/12605 (+1 more) -->
 

@@ -3,7 +3,7 @@ title: "نونية القحطاني"
 status: published
 published_at: 2026-07-03
 person: abu-abdullah-al-qahtani
-topics: ["aam-aqeedah"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "الأولى"
 description: "بتحقيق عبد العزيز بن محمد بن منصور الجربوع"
 ---

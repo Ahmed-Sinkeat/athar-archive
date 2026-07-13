@@ -3,7 +3,7 @@ title: "من تناقض الرافضة وعدنان إبراهيم في استد
 status: published
 published_at: 2021-08-23
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "al-iman"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/5001 (+1 more) -->
 

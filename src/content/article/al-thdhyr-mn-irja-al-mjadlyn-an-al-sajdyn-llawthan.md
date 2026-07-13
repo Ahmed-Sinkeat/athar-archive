@@ -3,7 +3,7 @@ title: "التحذير من إرجاء المجادلين عن الساجدين 
 status: published
 published_at: 2024-12-31
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "tahwid-al-ibada"]
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13052 (+2 more) -->
 

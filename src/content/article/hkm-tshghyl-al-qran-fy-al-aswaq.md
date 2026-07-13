@@ -3,6 +3,7 @@ title: "حكم تشغيل القرآن في الأسواق ..."
 status: published
 published_at: 2023-12-17
 person: abu-jafar-al-khalifi
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/10743 -->
 

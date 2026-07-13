@@ -3,7 +3,7 @@ title: "هل يجوز اخذ لقاح كورونا شرعا مع مافيه من
 status: published
 published_at: 2021-10-05
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["fiqh-aam"]
 audio: swteat--swteat-791
 ---
 ## السؤال

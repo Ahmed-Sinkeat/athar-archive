@@ -3,7 +3,7 @@ title: "اغضب لله كما ينبغي !"
 status: published
 published_at: 2020-10-26
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/2887 (+1 more) -->
 

@@ -3,6 +3,7 @@ title: "من عيون حكايات العفو : ثامنوني فيه وتركت
 status: published
 published_at: 2020-05-01
 person: abu-jafar-al-khalifi
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/1186 -->
 

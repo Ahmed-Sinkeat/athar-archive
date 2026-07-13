@@ -3,6 +3,7 @@ title: "بيان نكارة قصة زواج سعد الأسود السلمي"
 status: published
 published_at: 2024-02-07
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/11143 (+1 more) -->
 

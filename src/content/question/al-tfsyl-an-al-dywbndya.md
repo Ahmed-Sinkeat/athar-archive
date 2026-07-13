@@ -3,7 +3,7 @@ title: "التفصيل عن الديوبندية"
 status: published
 published_at: 2020-02-11
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["al-firaq-war-rudud"]
 audio: swteat--al-tfsyl-an-al-dywbndya
 ---
 ## السؤال

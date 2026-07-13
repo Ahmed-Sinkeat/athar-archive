@@ -3,7 +3,7 @@ title: "فائدة في قتال الخوارج مع أئمة الجور"
 status: published
 published_at: 2025-05-13
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran", "al-firaq-war-rudud"]
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13774 (+9 more) -->
 

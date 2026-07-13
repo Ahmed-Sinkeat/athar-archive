@@ -3,7 +3,7 @@ title: "لم يكن يسبهم مع شدته عليهم ..."
 status: published
 published_at: 2024-07-06
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "al-firaq-war-rudud"]
+topics: ["tarajim-al-ulama"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/12049 (+1 more) -->
 

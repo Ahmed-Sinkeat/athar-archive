@@ -3,6 +3,7 @@ title: "الكلام على حديث ( مَا أُرَانَا إِلَّا قَ
 status: published
 published_at: 2025-07-01
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13997 -->
 

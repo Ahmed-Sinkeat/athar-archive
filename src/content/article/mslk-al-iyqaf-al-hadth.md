@@ -3,7 +3,7 @@ title: "مسلك الإيقاف الحادث !"
 status: published
 published_at: 2024-02-03
 person: abu-jafar-al-khalifi
-topics: ["al-iman", "al-sunnah-wal-bidah"]
+topics: ["al-sunnah-wal-bidah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/11104 (+1 more) -->
 

@@ -3,7 +3,7 @@ title: "فائدة نفيسة : كل الصفات الثابتة سمعية عق
 status: published
 published_at: 2020-08-09
 person: abu-jafar-al-khalifi
-topics: ["al-firaq-war-rudud", "tahwid-al-ibada"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/2167 (+1 more) -->
 

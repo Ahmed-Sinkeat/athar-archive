@@ -3,7 +3,7 @@ title: "الرد على من أنكر وجود موقوف له حكم الرفع
 status: published
 published_at: 2023-08-21
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "al-asma-was-sifat", "al-sunnah-wal-bidah"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/9858 (+2 more) -->
 

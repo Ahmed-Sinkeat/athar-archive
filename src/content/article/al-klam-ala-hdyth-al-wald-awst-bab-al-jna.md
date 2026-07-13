@@ -3,6 +3,7 @@ title: "الكلام على حديث : ( الوالد أوسط باب الجنة
 status: published
 published_at: 2024-11-09
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/12784 -->
 

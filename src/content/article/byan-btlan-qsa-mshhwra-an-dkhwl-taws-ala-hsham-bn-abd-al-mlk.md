@@ -3,6 +3,7 @@ title: "بيان بطلان قصة مشهورة عن دخول طاوس على ه
 status: published
 published_at: 2025-02-11
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13260 -->
 

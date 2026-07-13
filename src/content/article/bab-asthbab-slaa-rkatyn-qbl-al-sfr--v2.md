@@ -3,6 +3,7 @@ title: "باب استحباب صلاة ركعتين قبل السفر"
 status: published
 published_at: 2023-09-22
 person: abu-jafar-al-khalifi
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/10048 -->
 

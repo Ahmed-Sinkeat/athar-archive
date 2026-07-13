@@ -3,6 +3,7 @@ title: "يا أصحاب مواقع التواصل الاجتماعي : ذم ال
 status: draft
 published_at: 2013-10-17
 person: abu-jafar-al-khalifi
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2013/10/blog-post_1665.html -->
 

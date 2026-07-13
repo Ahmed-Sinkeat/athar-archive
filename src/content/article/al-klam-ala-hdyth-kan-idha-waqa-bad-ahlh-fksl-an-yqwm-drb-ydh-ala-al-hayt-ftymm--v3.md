@@ -3,6 +3,7 @@ title: "الكلام على حديث ( كان إذا واقع بعض أهله ف
 status: published
 published_at: 2024-06-03
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/11850 -->
 

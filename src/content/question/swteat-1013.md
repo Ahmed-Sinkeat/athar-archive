@@ -3,7 +3,7 @@ title: "ما حكم الكسب من علي مواقع العمل الحر علي
 status: published
 published_at: 2021-11-07
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["fiqh-aam"]
 audio: swteat--swteat-1013
 ---
 ## السؤال

@@ -3,7 +3,7 @@ title: "التحذير من كلام الخطابي في الطائفة المم
 status: draft
 published_at: 2014-05-26
 person: abu-jafar-al-khalifi
-topics: ["tahwid-al-ibada", "al-aqeedah-al-aamah", "al-firaq-war-rudud"]
+topics: ["mustalah-al-hadith"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2014/05/blog-post_30.html -->
 

@@ -3,7 +3,7 @@ title: "باب حفظ الله عز وجل للمؤمن في ذريته ..."
 status: published
 published_at: 2021-06-13
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran", "tazkiyat-al-nafs"]
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/4543 (+1 more) -->
 

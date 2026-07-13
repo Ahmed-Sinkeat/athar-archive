@@ -3,7 +3,7 @@ title: "هذه هي وسطية محمد المهدي - تراثي اليمن - !
 status: draft
 published_at: 2013-11-10
 person: abu-jafar-al-khalifi
-topics: ["tahwid-al-ibada", "al-aqeedah-al-aamah", "al-firaq-war-rudud"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2013/11/blog-post_5162.html -->
 

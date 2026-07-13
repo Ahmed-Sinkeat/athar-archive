@@ -3,6 +3,7 @@ title: "الكلام على حديث ( لو نجا أحد من ضمة القبر
 status: published
 published_at: 2026-02-05
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/15248 -->
 

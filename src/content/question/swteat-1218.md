@@ -3,7 +3,7 @@ title: "هل يصح هذا الأثر عن الشافعي في الحلية وه
 status: published
 published_at: 2025-05-05
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["mustalah-al-hadith"]
 audio: swteat--swteat-1218
 ---
 ## السؤال

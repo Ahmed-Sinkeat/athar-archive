@@ -3,6 +3,7 @@ title: "نبينا أولى بالتعجب من المسيح عليهما الص
 status: published
 published_at: 2023-05-16
 person: abu-jafar-al-khalifi
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/9324 (+1 more) -->
 

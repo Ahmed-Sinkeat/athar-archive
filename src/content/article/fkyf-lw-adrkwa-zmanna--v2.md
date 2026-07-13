@@ -3,7 +3,7 @@ title: "فكيف لو أدركوا زماننا !"
 status: published
 published_at: 2022-12-16
 person: abu-jafar-al-khalifi
-topics: ["tahwid-al-ibada", "al-sunnah-wal-bidah"]
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/8422 (+1 more) -->
 

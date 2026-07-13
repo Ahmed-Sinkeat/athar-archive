@@ -3,7 +3,7 @@ title: "ما حكم من يُؤمِّم ابن حجر من العلماء ويت
 status: published
 published_at: 2021-07-22
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["fiqh-aam"]
 audio: swteat--asyla-al-bwt--v67
 ---
 ## السؤال

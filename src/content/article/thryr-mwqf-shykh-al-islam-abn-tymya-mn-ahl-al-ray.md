@@ -3,7 +3,7 @@ title: "تحرير موقف شيخ الإسلام ابن تيمية من أهل 
 status: draft
 published_at: 2013-10-02
 person: abu-jafar-al-khalifi
-topics: ["tahwid-al-ibada", "al-aqeedah-al-aamah"]
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2013/10/blog-post_9097.html -->
 

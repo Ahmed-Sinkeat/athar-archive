@@ -3,6 +3,7 @@ title: "الكلام على حديث : ( إن أوليائي يوم القيام
 status: published
 published_at: 2024-11-16
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/12870 -->
 

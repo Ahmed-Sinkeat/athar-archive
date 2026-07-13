@@ -3,6 +3,7 @@ title: "الرد كذب عدنان إبراهيم في دعواه أن قتلى 
 status: published
 published_at: 2023-12-01
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/10623 (+1 more) -->
 

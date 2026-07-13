@@ -3,7 +3,7 @@ title: "ذكرت في شرح عمدة الفقه لابن قدامة في باب
 status: published
 published_at: 2025-01-10
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["fiqh-aam"]
 ---
 ## السؤال
 

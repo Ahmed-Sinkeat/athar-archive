@@ -3,7 +3,7 @@ title: "الآلوسي : الرازي إمام في نقل ما لا يثبت ع
 status: published
 published_at: 2021-01-11
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "al-sunnah-wal-bidah"]
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/3377 -->
 

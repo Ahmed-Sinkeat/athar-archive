@@ -3,6 +3,7 @@ title: "كلمة نفيسة لشيخ الإسلام في ضرورة التفري
 status: published
 published_at: 2021-04-24
 person: abu-jafar-al-khalifi
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/4277 -->
 

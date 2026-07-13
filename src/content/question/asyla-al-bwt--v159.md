@@ -3,7 +3,7 @@ title: "وردت مجموعة كبيرة حول بعض أعيان الأشاعر
 status: published
 published_at: 2021-08-23
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["fiqh-aam"]
 audio: swteat--asyla-al-bwt--v159
 ---
 ## السؤال

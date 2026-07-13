@@ -3,6 +3,7 @@ title: "هل تؤمنون ببقية هذه العقيدة معاشر المفي
 status: published
 published_at: 2024-08-24
 person: abu-jafar-al-khalifi
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/12349 -->
 

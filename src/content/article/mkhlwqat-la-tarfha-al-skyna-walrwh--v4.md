@@ -3,7 +3,7 @@ title: "مخلوقات لا تعرفها : السكينة والروح !"
 status: published
 published_at: 2023-04-08
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/9037 (+1 more) -->
 

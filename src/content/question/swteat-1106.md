@@ -3,7 +3,7 @@ title: "هل يصح استناد القائلين بجواز التعويض ال
 status: published
 published_at: 2022-02-07
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["mustalah-al-hadith"]
 audio: swteat--swteat-1106
 ---
 ## السؤال

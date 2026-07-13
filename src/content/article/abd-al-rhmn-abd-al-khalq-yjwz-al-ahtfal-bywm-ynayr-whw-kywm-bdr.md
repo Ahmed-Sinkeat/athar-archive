@@ -3,7 +3,7 @@ title: "عبد الرحمن عبد الخالق : يجوز الاحتفال بي
 status: draft
 published_at: 2013-10-07
 person: abu-jafar-al-khalifi
-topics: ["tahwid-al-ibada", "al-aqeedah-al-aamah", "al-firaq-war-rudud"]
+topics: ["fiqh-aam"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2013/10/25.html -->
 

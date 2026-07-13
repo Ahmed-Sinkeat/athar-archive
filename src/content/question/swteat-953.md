@@ -3,7 +3,7 @@ title: "يريد تعليق الشيخ على هذه النقولات : [ قال
 status: published
 published_at: 2021-11-02
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["al-firaq-war-rudud"]
 ---
 ## السؤال
 

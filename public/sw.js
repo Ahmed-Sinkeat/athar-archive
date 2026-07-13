@@ -82,6 +82,10 @@ async function networkFirst(request) {
     // page still references — the copy stored at download time keeps it working
     const cached = await cache.match(request);
     if (cached) return cached;
+  } else if (request.mode === "navigate" || request.destination === "style" || request.destination === "script") {
+    // opportunistic: any page/asset actually visited gets cached, so recently
+    // read content (not just explicit downloads) still opens offline
+    cache.put(request, res.clone());
   }
   return res;
 }

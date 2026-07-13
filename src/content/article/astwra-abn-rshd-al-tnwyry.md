@@ -3,7 +3,7 @@ title: "أسطورة ابن رشد التنويري"
 status: published
 published_at: 2020-06-19
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "al-firaq-war-rudud", "tazkiyat-al-nafs"]
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/1669 (+4 more) -->
 

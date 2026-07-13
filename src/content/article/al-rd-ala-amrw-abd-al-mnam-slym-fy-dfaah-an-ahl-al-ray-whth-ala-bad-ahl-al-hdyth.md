@@ -3,7 +3,7 @@ title: "الرد على عمرو عبد المنعم سليم في دفاعه ع
 status: published
 published_at: 2025-08-23
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/14558 (+3 more) -->
 

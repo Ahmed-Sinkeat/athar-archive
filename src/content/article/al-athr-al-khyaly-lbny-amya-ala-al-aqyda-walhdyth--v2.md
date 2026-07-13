@@ -3,7 +3,7 @@ title: "الأثر الخيالي لبني أمية على العقيدة وال
 status: published
 published_at: 2020-04-13
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran", "al-sunnah-wal-bidah"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/1021 (+2 more) -->
 

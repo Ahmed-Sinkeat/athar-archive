@@ -3,7 +3,7 @@ title: "ما حكم لعبة الشطرنج؟"
 status: published
 published_at: 2021-10-18
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["fiqh-aam"]
 ---
 ## السؤال
 

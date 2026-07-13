@@ -3,6 +3,7 @@ title: "إدامة النظر مفتاح المحبة فاحفظ بصرك"
 status: published
 published_at: 2022-03-14
 person: abu-jafar-al-khalifi
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/6799 (+1 more) -->
 

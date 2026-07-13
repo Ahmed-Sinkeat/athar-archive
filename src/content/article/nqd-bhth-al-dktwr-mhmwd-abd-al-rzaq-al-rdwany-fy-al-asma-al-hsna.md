@@ -3,7 +3,7 @@ title: "نقد بحث الدكتور «محمود عبد الرزاق الرضو
 status: published
 published_at: 2020-12-05
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran", "al-asma-was-sifat"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/3167 (+5 more) -->
 

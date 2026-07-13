@@ -3,6 +3,7 @@ title: "الكلام على حديث ( ثلاثة يحبهم الله ويضحك
 status: published
 published_at: 2025-01-30
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13209 -->
 

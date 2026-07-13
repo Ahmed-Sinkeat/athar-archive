@@ -3,7 +3,7 @@ title: "نحتاج وبشدة إلى فقه الفتور وفقه ما بعد ا
 status: published
 published_at: 2021-07-15
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["tazkiyat-al-nafs"]
 audio: swteat--asyla-al-bwt--v47
 ---
 ## السؤال

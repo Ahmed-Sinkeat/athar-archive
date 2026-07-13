@@ -3,7 +3,7 @@ title: "ماذا خسر الناس بترك المسلمين للجهاد ...\n\
 status: published
 published_at: 2023-10-18
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "al-firaq-war-rudud", "tahwid-al-ibada"]
+topics: ["al-siyasah-al-shariyyah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/10345 (+9 more) -->
 

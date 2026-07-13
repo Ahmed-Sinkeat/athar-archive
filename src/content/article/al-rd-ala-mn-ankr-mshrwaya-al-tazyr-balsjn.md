@@ -3,6 +3,7 @@ title: "الرد على من أنكر مشروعية التعزير بالسجن
 status: draft
 published_at: 2013-10-07
 person: abu-jafar-al-khalifi
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2013/10/blog-post_5272.html -->
 

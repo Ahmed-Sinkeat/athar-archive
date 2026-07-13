@@ -3,6 +3,7 @@ title: "الكلام على حديث :( ليصل أحدكم في مسجده ول
 status: published
 published_at: 2023-05-07
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/9239 -->
 

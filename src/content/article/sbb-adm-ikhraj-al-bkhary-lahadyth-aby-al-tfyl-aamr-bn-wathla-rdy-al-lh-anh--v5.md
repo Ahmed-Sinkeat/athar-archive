@@ -3,7 +3,7 @@ title: "سبب عدم إخراج البخاري لأحاديث أبي الطفي
 status: published
 published_at: 2021-08-20
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/4974 (+4 more) -->
 

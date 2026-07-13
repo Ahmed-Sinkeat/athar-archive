@@ -3,6 +3,7 @@ title: "هذا أجر النافلة فكيف بأجر الفريضة ؟"
 status: published
 published_at: 2022-04-15
 person: abu-jafar-al-khalifi
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/7018 -->
 

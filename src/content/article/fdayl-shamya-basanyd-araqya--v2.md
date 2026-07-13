@@ -3,7 +3,7 @@ title: "فضائل شامية بأسانيد عراقية"
 status: published
 published_at: 2020-11-07
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran"]
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/2975 -->
 

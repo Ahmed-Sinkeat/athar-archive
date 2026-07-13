@@ -3,7 +3,7 @@ title: "بيع الوهم : كوكب قد توجد فيه حياة ..."
 status: published
 published_at: 2022-12-09
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "al-firaq-war-rudud"]
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/8390 -->
 

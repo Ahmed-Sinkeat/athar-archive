@@ -3,6 +3,7 @@ title: "من نفائس شيخ الإسلام : ثبات أهل السنة"
 status: published
 published_at: 2025-11-30
 person: abu-jafar-al-khalifi
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/15089 -->
 

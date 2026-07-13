@@ -3,6 +3,7 @@ title: "نقض شبهة ( عريانا يجر ثوبه )"
 status: published
 published_at: 2023-08-20
 person: abu-jafar-al-khalifi
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/9847 -->
 

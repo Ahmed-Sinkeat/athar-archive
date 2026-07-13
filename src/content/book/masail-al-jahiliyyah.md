@@ -4,7 +4,7 @@ status: published
 published_at: 2026-07-04
 person: ibn-abdul-wahhab
 authored_year: 1206
-topics: ["aam-aqeedah"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 ## مقدمة
 

@@ -3,6 +3,7 @@ title: "فائدة هامة في زكاة الدين على المعسر أو ا
 status: published
 published_at: 2025-03-22
 person: abu-jafar-al-khalifi
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13417 -->
 

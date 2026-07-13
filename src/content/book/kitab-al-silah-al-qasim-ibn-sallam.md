@@ -4,6 +4,7 @@ status: published
 published_at: 2026-07-07
 person: al-qasim-ibn-sallam
 kind: مرجع
+topics: ["al-siyasah-al-shariyyah"]
 authored_year: 224
 description: "كتاب السلاح لأبي عبيد القاسم بن سلام"
 ---

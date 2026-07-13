@@ -3,7 +3,7 @@ title: "هل يوصف الله عز وجل بالسكوت ؟"
 status: draft
 published_at: 2013-10-22
 person: abu-jafar-al-khalifi
-topics: ["tahwid-al-ibada", "al-aqeedah-al-aamah"]
+topics: ["al-asma-was-sifat"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2013/10/blog-post_621.html -->
 

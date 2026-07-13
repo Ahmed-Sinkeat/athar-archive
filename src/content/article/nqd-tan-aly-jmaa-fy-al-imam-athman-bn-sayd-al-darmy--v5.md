@@ -3,7 +3,7 @@ title: "نقض طعن « علي جمعة » في الإمام عثمان بن س
 status: published
 published_at: 2025-08-16
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/14327 (+1 more) -->
 

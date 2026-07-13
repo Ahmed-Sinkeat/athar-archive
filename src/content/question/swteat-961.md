@@ -3,7 +3,7 @@ title: "كيف يكون ”إكرام” الشعر ، من قوله عليه ا
 status: published
 published_at: 2021-11-02
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["fiqh-aam"]
 audio: swteat--swteat-961
 ---
 ## السؤال

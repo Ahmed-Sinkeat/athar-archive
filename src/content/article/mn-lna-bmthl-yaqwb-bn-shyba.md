@@ -3,7 +3,7 @@ title: "من لنا بمثل يعقوب بن شيبة ؟!"
 status: published
 published_at: 2025-07-01
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]
+topics: ["tarajim-al-ulama"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13996 -->
 

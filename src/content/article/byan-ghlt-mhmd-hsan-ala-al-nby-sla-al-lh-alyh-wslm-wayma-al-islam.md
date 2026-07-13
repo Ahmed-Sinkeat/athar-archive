@@ -3,6 +3,7 @@ title: "بيان غلط محمد حسان على النبي صلى الله عل
 status: published
 published_at: 2024-12-05
 person: abu-jafar-al-khalifi
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/12949 (+1 more) -->
 

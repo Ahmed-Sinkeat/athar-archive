@@ -3,6 +3,7 @@ title: "فتيا شيخ الإسلام في مانع الحمل ..."
 status: published
 published_at: 2021-03-19
 person: abu-jafar-al-khalifi
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/4075 -->
 

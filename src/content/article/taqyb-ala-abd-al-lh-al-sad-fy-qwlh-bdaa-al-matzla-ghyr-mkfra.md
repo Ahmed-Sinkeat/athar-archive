@@ -3,7 +3,7 @@ title: "تعقيب على عبد الله السعد في قوله بدعة ال
 status: published
 published_at: 2025-09-20
 person: abu-jafar-al-khalifi
-topics: ["al-firaq-war-rudud", "al-asma-was-sifat", "al-sunnah-wal-bidah"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/14683 (+3 more) -->
 

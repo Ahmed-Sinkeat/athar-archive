@@ -4,7 +4,7 @@ status: published
 published_at: 2026-07-04
 person: said-ibn-wahf-al-qahtani
 authored_year: 1440
-topics: ["aam-aqeedah"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 10 رسائل سعيد بن علي بن وهف القحطاني نور الإسلام وظلمات الكفر في ضوء الكتاب والسنة تأليف الفقير إلى الله تعالى د. سعيد بن علي بن وهف القحطاني
 

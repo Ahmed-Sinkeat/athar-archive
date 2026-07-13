@@ -3,7 +3,7 @@ title: "مشروعية طرد المشغبين من حلق العلم"
 status: published
 published_at: 2025-06-05
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "al-imamah-was-sahabah", "al-sunnah-wal-bidah"]
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13856 (+2 more) -->
 

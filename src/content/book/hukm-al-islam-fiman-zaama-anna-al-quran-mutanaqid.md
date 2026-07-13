@@ -4,7 +4,7 @@ status: published
 published_at: 2026-07-04
 person: ibn-baz
 authored_year: 1420
-topics: ["aam-aqeedah"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "السنة السابعة، العدد الأول، رجب 1394هـ/1974م"
 ---
 ## مدخل...

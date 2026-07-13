@@ -3,6 +3,7 @@ title: "هكذا نهار الجنة"
 status: published
 published_at: 2026-01-05
 person: abu-jafar-al-khalifi
+topics: ["al-samiyyat"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/15153 -->
 

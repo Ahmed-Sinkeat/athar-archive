@@ -3,7 +3,7 @@ title: "تنبيه السلفيين على عدم تسويق كتابات «ثر
 status: draft
 published_at: 2013-10-01
 person: abu-jafar-al-khalifi
-topics: ["tahwid-al-ibada", "al-aqeedah-al-aamah"]
+topics: ["mustalah-al-hadith"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2013/10/blog-post_7846.html -->
 

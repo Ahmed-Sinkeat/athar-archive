@@ -3,7 +3,7 @@ title: "نقد الدعوة إلى الوطنية"
 status: published
 published_at: 2025-11-30
 person: abu-jafar-al-khalifi
-topics: ["al-wala-wal-bara", "al-sunnah-wal-bidah"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/15056 (+2 more) -->
 

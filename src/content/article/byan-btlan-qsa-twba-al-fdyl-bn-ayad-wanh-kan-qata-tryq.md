@@ -3,6 +3,7 @@ title: "بيان بطلان قصة توبة الفضيل بن عياض وأنه 
 status: published
 published_at: 2025-02-11
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13266 -->
 

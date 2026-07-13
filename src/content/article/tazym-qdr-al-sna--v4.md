@@ -3,7 +3,7 @@ title: "تعظيم قدر السنة ..."
 status: published
 published_at: 2022-03-04
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/6753 (+4 more) -->
 

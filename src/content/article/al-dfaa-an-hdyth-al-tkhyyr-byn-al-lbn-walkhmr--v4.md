@@ -3,7 +3,7 @@ title: "الدفاع عن حديث التخيير بين اللبن والخمر
 status: published
 published_at: 2023-08-25
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "adab-talab-al-ilm"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/9894 (+5 more) -->
 

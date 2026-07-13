@@ -3,7 +3,7 @@ title: "مقدمة في فضل مسكنة القلب ..."
 status: published
 published_at: 2021-01-04
 person: abu-jafar-al-khalifi
-topics: ["al-asma-was-sifat", "tazkiyat-al-nafs", "al-iman"]
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/3337 (+3 more) -->
 

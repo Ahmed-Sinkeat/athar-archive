@@ -3,7 +3,7 @@ title: "لطيفة : ما رواه الكلبي في فضل أبي بكر وعم
 status: published
 published_at: 2021-10-11
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran", "al-imamah-was-sahabah"]
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/5414 (+4 more) -->
 

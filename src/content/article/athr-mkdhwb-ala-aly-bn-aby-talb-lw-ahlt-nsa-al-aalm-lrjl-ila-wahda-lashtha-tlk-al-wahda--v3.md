@@ -3,6 +3,7 @@ title: "أثر مكذوب على علي بن أبي طالب ( لو أُحلّت
 status: published
 published_at: 2022-06-24
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/7351 -->
 

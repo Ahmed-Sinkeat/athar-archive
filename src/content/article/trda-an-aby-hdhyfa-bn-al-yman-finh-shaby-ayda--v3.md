@@ -3,6 +3,7 @@ title: "ترضى عن أبي حذيفة بن اليمان فإنه صحابي أ
 status: published
 published_at: 2023-03-03
 person: abu-jafar-al-khalifi
+topics: ["al-imamah-was-sahabah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/8820 -->
 

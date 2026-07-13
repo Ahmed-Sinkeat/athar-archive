@@ -3,7 +3,7 @@ title: "سؤالي عن كيفية الشعور بالندم من التوبة"
 status: published
 published_at: 2021-07-15
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["tazkiyat-al-nafs"]
 audio: swteat--asyla-al-bwt--v46
 ---
 ## السؤال

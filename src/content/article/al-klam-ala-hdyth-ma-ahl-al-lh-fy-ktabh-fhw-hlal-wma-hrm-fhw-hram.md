@@ -3,6 +3,7 @@ title: "الكلام على حديث : ( ما أحل الله في كتابه ف
 status: published
 published_at: 2023-05-01
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/9181 -->
 

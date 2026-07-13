@@ -3,7 +3,7 @@ title: "التنبيه على تسمية دول الكفر بـ«الدول ال
 status: published
 published_at: 2025-11-02
 person: abu-jafar-al-khalifi
-topics: ["al-firaq-war-rudud", "tahwid-al-ibada"]
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/14947 (+5 more) -->
 

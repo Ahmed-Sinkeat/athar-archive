@@ -3,6 +3,7 @@ title: "من نفائس شيخ الإسلام: كفر منكري العلو أظ
 status: published
 published_at: 2026-01-05
 person: abu-jafar-al-khalifi
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/15140 (+1 more) -->
 

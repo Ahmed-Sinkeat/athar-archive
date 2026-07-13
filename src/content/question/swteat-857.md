@@ -3,7 +3,7 @@ title: "قد والحمد لله فهمنا عن الشيخ أهمية مبحث 
 status: published
 published_at: 2021-10-11
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["al-aqeedah-al-aamah"]
 audio: swteat--swteat-857
 ---
 ## السؤال

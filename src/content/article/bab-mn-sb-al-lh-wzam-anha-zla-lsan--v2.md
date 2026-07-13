@@ -3,6 +3,7 @@ title: "باب من سب الله وزعم أنها زلة لسان"
 status: published
 published_at: 2025-10-10
 person: abu-jafar-al-khalifi
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/14720 -->
 

@@ -3,7 +3,7 @@ title: "نظرة شرعية في معدلات الانتحار العالية ..
 status: published
 published_at: 2022-12-30
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "al-firaq-war-rudud"]
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/8511 (+2 more) -->
 

@@ -3,7 +3,7 @@ title: "نظرات علمية في كتاب « اركب معنا » للدكتو
 status: published
 published_at: 2022-02-21
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tahwid-al-ibada"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/6696 (+3 more) -->
 

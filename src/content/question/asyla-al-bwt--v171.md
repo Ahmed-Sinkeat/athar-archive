@@ -3,7 +3,7 @@ title: "هل صحيح ان عورة الأمة من السرة إلى الركب
 status: published
 published_at: 2021-09-19
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["mustalah-al-hadith"]
 audio: swteat--asyla-al-bwt--v171
 ---
 ## السؤال

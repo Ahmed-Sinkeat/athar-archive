@@ -3,6 +3,7 @@ title: "بشارة صلب أم بشارة نجاة ..."
 status: published
 published_at: 2023-03-17
 person: abu-jafar-al-khalifi
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/8909 -->
 

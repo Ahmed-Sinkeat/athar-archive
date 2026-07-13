@@ -3,6 +3,7 @@ title: "بيان كذب قصة أم أبي حنيفة مع عمر بن ذر ..."
 status: published
 published_at: 2024-01-25
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/11056 -->
 

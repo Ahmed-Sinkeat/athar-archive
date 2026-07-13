@@ -3,6 +3,7 @@ title: "من نفائس ابن القيم : الأشاعرة الظانون با
 status: published
 published_at: 2023-07-07
 person: abu-jafar-al-khalifi
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/9649 (+3 more) -->
 

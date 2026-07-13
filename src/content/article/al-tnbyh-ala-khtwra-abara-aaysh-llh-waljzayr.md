@@ -3,6 +3,7 @@ title: "التنبيه على خطورة عبارة ( أعيش لله والجز
 status: draft
 published_at: 2013-09-29
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2013/09/blog-post_340.html -->
 

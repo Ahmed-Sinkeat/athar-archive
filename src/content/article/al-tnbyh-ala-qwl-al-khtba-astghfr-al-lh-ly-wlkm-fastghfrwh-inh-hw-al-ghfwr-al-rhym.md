@@ -3,6 +3,7 @@ title: "التنبيه على قول الخطباء( أستغفر الله لي 
 status: draft
 published_at: 2013-10-01
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2013/10/blog-post_3777.html -->
 

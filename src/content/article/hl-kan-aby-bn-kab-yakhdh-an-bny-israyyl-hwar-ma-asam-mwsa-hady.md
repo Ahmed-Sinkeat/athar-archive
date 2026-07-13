@@ -3,6 +3,7 @@ title: "هل كان أبي بن كعب يأخذ عن بني إسرائيل؟( ح
 status: published
 published_at: 2025-05-13
 person: abu-jafar-al-khalifi
+topics: ["tafsir-al-quran"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13726 (+1 more) -->
 

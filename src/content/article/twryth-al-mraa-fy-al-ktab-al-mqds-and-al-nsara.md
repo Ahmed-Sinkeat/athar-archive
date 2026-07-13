@@ -3,6 +3,7 @@ title: "توريث المرأة في الكتاب المقدس عند النصا
 status: published
 published_at: 2024-11-04
 person: abu-jafar-al-khalifi
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/12725 -->
 

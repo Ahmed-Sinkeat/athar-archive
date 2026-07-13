@@ -3,7 +3,7 @@ title: "مناقضة قانون تحديد سن الزواج للشريعة ال
 status: published
 published_at: 2022-02-14
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "tahwid-al-ibada"]
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/6662 (+1 more) -->
 

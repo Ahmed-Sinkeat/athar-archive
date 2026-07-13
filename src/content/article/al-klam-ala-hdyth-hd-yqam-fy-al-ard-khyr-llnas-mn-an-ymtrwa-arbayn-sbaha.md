@@ -3,6 +3,7 @@ title: "الكلام على حديث : ( حد يقام في الأرض خير ل
 status: published
 published_at: 2024-08-24
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/12350 -->
 

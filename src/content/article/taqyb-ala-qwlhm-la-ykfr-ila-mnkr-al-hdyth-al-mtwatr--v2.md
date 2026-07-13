@@ -3,6 +3,7 @@ title: "تعقيب على قولهم لا يكفر إلا منكر الحديث 
 status: published
 published_at: 2025-10-10
 person: abu-jafar-al-khalifi
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/14731 (+1 more) -->
 

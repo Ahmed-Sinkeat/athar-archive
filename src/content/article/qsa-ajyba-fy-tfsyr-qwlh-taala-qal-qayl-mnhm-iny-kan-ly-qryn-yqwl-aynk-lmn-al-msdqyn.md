@@ -3,7 +3,7 @@ title: "قصة عجيبة في تفسير قوله تعالى (قَالَ قائ
 status: draft
 published_at: 2013-10-17
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "ulum-al-quran"]
+topics: ["tafsir-al-quran"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2013/10/blog-post_7101.html -->
 

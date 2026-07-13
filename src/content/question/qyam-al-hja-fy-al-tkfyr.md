@@ -3,7 +3,7 @@ title: "قيام الحجة في التكفير"
 status: published
 published_at: 2020-05-23
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["fiqh-aam"]
 audio: swteat--qyam-al-hja-fy-al-tkfyr
 ---
 ## السؤال

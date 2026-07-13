@@ -3,6 +3,7 @@ title: "من عيون حكايات السخاء : سألت بقدرها وأعط
 status: published
 published_at: 2020-12-21
 person: abu-jafar-al-khalifi
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/3284 -->
 

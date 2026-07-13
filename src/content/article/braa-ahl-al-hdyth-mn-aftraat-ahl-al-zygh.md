@@ -3,7 +3,7 @@ title: "براءة أهل الحديث من افتراءات أهل الزيغ"
 status: published
 published_at: 2025-08-23
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]
+topics: ["tarajim-al-ulama"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/14571 (+3 more) -->
 

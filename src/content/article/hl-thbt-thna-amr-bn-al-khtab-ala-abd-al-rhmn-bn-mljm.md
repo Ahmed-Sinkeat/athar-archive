@@ -3,6 +3,7 @@ title: "هل ثبت ثناء عمر بن الخطاب على عبد الرحمن
 status: published
 published_at: 2020-07-19
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/1982 -->
 

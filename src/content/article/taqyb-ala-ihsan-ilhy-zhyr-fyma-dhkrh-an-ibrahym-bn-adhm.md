@@ -3,7 +3,7 @@ title: "تعقيب على إحسان إلهي ظهير فيما ذكره عن إ
 status: published
 published_at: 2021-08-28
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tazkiyat-al-nafs"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/5031 (+6 more) -->
 

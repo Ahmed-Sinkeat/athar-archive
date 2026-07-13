@@ -3,6 +3,7 @@ title: "الأرض والقمر ليسا كوكبين !"
 status: draft
 published_at: 2013-10-19
 person: abu-jafar-al-khalifi
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2013/10/blog-post_5618.html -->
 

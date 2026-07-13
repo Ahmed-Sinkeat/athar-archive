@@ -3,7 +3,7 @@ title: "أسماء الله الحسنى الثابتة في الكتاب وال
 status: published
 published_at: 2024-03-29
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran", "tahwid-al-ibada"]
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/11459 (+6 more) -->
 

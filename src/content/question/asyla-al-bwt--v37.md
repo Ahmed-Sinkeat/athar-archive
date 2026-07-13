@@ -3,7 +3,7 @@ title: "ما حكم الربح من اعلانات يوتيوب مع ما فيه
 status: published
 published_at: 2021-07-13
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["fiqh-aam"]
 audio: swteat--asyla-al-bwt--v37
 ---
 ## السؤال

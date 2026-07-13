@@ -3,7 +3,7 @@ title: "هل مرجئة الفقهاء من أهل السنة ؟"
 status: published
 published_at: 2020-03-13
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/674 (+2 more) -->
 

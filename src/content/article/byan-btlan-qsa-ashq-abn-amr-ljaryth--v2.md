@@ -3,6 +3,7 @@ title: "بيان بطلان قصة عشق ابن عمر لجاريته"
 status: published
 published_at: 2021-11-25
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/6125 -->
 

@@ -3,7 +3,7 @@ title: "المعنى الصحيح لقولهم ( كان صحفياً )"
 status: published
 published_at: 2021-07-16
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran"]
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/4755 (+1 more) -->
 

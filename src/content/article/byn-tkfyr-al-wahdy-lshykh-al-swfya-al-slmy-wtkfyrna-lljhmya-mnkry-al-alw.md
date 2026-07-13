@@ -3,7 +3,7 @@ title: "بين تكفير الواحدي لشيخ الصوفية السلمي و
 status: published
 published_at: 2020-02-10
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "tahwid-al-ibada", "al-sunnah-wal-bidah"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/398 (+1 more) -->
 

@@ -3,7 +3,7 @@ title: "هل صحيح أن عبدالرحمن بن عديس البلوي كان 
 status: published
 published_at: 2024-02-01
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["mustalah-al-hadith"]
 ---
 ## السؤال
 

@@ -3,7 +3,7 @@ title: "يحكم بكفر تارك الصلاة ام يشترط في انزال 
 status: published
 published_at: 2024-02-25
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["fiqh-aam"]
 ---
 ## السؤال
 

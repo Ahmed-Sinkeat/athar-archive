@@ -3,7 +3,7 @@ title: "التحذير من انتقاص أمهات المؤمنين بحجة ا
 status: published
 published_at: 2025-05-13
 person: abu-jafar-al-khalifi
-topics: ["tazkiyat-al-nafs", "al-imamah-was-sahabah"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13746 (+3 more) -->
 

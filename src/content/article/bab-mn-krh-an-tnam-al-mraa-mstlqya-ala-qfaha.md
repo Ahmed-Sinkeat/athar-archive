@@ -3,6 +3,7 @@ title: "باب من كره أن تنام المرأة مستلقية على قف
 status: published
 published_at: 2020-02-17
 person: abu-jafar-al-khalifi
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/447 -->
 

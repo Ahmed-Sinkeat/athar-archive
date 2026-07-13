@@ -3,6 +3,7 @@ title: "الرد على من استدل بنقش خاتم أنس على جواز
 status: published
 published_at: 2025-11-30
 person: abu-jafar-al-khalifi
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/15083 (+1 more) -->
 

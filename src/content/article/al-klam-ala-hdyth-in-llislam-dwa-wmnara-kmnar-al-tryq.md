@@ -3,6 +3,7 @@ title: "الكلام على حديث : ( إن للإسلام ضوءاً ومنا
 status: published
 published_at: 2024-08-01
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/12199 -->
 

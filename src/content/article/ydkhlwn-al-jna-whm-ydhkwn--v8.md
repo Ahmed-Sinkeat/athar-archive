@@ -3,6 +3,7 @@ title: "يدخلون الجنة وهم يضحكون !"
 status: published
 published_at: 2024-01-29
 person: abu-jafar-al-khalifi
+topics: ["al-samiyyat"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/11069 -->
 

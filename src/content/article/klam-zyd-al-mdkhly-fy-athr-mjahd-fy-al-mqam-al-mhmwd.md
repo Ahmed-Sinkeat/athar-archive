@@ -3,7 +3,7 @@ title: "كلام زيد المدخلي في أثر مجاهد في المقام 
 status: published
 published_at: 2025-02-11
 person: abu-jafar-al-khalifi
-topics: ["tahwid-al-ibada", "al-sunnah-wal-bidah"]
+topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13261 (+1 more) -->
 

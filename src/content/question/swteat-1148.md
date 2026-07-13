@@ -3,7 +3,7 @@ title: "حول قول الذهبي في آخر ترجمة المريسي :ومن
 status: published
 published_at: 2024-02-11
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["al-firaq-war-rudud"]
 audio: swteat--swteat-1148
 ---
 ## السؤال

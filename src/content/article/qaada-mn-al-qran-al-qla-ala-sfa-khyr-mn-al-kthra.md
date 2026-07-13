@@ -3,7 +3,7 @@ title: "قاعدة من القرآن : القلة على صفاء خير من ا
 status: published
 published_at: 2020-04-03
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "al-iman"]
+topics: ["usul-al-fiqh"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/951 -->
 

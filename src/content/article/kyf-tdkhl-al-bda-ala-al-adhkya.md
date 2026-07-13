@@ -3,7 +3,7 @@ title: "كيف تدخل البدع على الأذكياء ؟"
 status: published
 published_at: 2025-06-05
 person: abu-jafar-al-khalifi
-topics: ["al-firaq-war-rudud", "al-iman", "al-sunnah-wal-bidah"]
+topics: ["al-sunnah-wal-bidah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13883 -->
 

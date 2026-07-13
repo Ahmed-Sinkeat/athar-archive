@@ -3,7 +3,7 @@ title: "من قدم قول تابعي على قول الصحابي يستتاب 
 status: published
 published_at: 2025-04-19
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran"]
+topics: ["usul-al-fiqh"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13565 (+1 more) -->
 

@@ -3,7 +3,7 @@ title: "هل لك أن تكون من أضياف الله ؟"
 status: published
 published_at: 2022-12-30
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran"]
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/8510 -->
 

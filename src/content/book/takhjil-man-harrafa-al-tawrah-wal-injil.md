@@ -4,7 +4,7 @@ status: published
 published_at: 2026-07-04
 person: salih-al-jafari
 authored_year: 668
-topics: ["aam-aqeedah"]
+topics: ["al-aqeedah-al-aamah"]
 edition: "الأولى، 1419هـ/1998م"
 description: "بتحقيق محمود عبد الرحمن قدح"
 ---

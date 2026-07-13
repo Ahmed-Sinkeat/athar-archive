@@ -3,6 +3,7 @@ title: "عيبه أنه لم يصنف ببغداد .."
 status: published
 published_at: 2020-05-19
 person: abu-jafar-al-khalifi
+topics: ["tarajim-al-ulama"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/1345 -->
 

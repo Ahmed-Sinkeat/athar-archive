@@ -3,7 +3,7 @@ title: "تباين معنى الذات بين إطلاق السلف وإطلاق
 status: published
 published_at: 2025-08-23
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]
+topics: ["al-asma-was-sifat"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/14431 -->
 

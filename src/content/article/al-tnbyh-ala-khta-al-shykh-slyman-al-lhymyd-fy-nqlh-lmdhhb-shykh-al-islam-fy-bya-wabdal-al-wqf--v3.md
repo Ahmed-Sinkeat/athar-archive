@@ -3,6 +3,7 @@ title: "التنبيه على خطأ الشيخ سليمان اللهيميد ف
 status: published
 published_at: 2026-01-05
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/15192 (+2 more) -->
 

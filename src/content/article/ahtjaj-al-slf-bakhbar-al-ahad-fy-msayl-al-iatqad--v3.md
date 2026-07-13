@@ -3,7 +3,7 @@ title: "احتجاج السلف بأخبار الآحاد في مسائل الإ
 status: published
 published_at: 2025-04-19
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran", "tahwid-al-ibada"]
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13545 (+5 more) -->
 

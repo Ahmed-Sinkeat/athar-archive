@@ -3,6 +3,7 @@ title: "تناقض ناصر العقل في منعه من سؤال العامة 
 status: published
 published_at: 2024-10-13
 person: abu-jafar-al-khalifi
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/12602 -->
 

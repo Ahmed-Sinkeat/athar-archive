@@ -3,7 +3,7 @@ title: "هل صح حديث في النهي عن الإعطاء بالشمال و
 status: published
 published_at: 2025-04-29
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["mustalah-al-hadith"]
 audio: swteat--swteat-1217
 ---
 ## السؤال

@@ -3,7 +3,7 @@ title: "تحرير موقف أحمد شاكر من محمد عبده و جمال
 status: published
 published_at: 2025-07-01
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran", "al-firaq-war-rudud"]
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13978 (+1 more) -->
 

@@ -3,6 +3,7 @@ title: "براءة عقبة بن عامر مما ذكره النووي في ته
 status: published
 published_at: 2021-10-18
 person: abu-jafar-al-khalifi
+topics: ["tarajim-al-ulama"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/5600 -->
 

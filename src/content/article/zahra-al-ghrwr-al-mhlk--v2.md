@@ -3,7 +3,7 @@ title: "ظاهرة الغرور المهلك ..."
 status: published
 published_at: 2025-01-09
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "tahwid-al-ibada", "al-asma-was-sifat"]
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13132 (+3 more) -->
 

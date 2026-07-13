@@ -3,6 +3,7 @@ title: "فكيف لو رأى القرطبي زماننا ؟"
 status: draft
 published_at: 2013-10-06
 person: abu-jafar-al-khalifi
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2013/10/blog-post_6992.html -->
 

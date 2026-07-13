@@ -3,7 +3,7 @@ title: "بين معجزات السيد المسيح ( يسوع ) ومعجزات 
 status: published
 published_at: 2020-03-16
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/680 (+5 more) -->
 

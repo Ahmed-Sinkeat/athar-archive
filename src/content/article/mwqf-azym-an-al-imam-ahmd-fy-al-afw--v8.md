@@ -3,6 +3,7 @@ title: "موقف عظيم عن الإمام أحمد في العفو ..."
 status: published
 published_at: 2025-03-03
 person: abu-jafar-al-khalifi
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13371 -->
 

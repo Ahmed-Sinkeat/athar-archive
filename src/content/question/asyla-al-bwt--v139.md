@@ -3,7 +3,7 @@ title: "ما هي عقيدة الشوكاني وابن الأمير"
 status: published
 published_at: 2021-08-16
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["al-aqeedah-al-aamah"]
 audio: swteat--asyla-al-bwt--v139
 ---
 ## السؤال

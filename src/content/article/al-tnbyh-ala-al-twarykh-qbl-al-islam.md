@@ -3,6 +3,7 @@ title: "التنبيه على التواريخ قبل الإسلام ..."
 status: draft
 published_at: 2016-02-05
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2016/02/blog-post_5.html -->
 

@@ -3,7 +3,7 @@ title: "عذاب القبر حقيقة قرآنية قطعية ..."
 status: published
 published_at: 2024-01-06
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran", "tazkiyat-al-nafs"]
+topics: ["al-samiyyat"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/10888 (+4 more) -->
 

@@ -3,6 +3,7 @@ title: "الكلام على زيادة ( نكسر حر هذا ببرد هذا ) 
 status: published
 published_at: 2022-10-22
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/8168 (+1 more) -->
 

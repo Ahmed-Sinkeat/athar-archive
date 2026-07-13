@@ -3,7 +3,7 @@ title: "سؤال عن حكم طلب الشفاعة من النبي صلى الل
 status: published
 published_at: 2021-07-08
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["fiqh-aam"]
 audio: swteat--al-mjls-al-ashrwn--v15
 ---
 ## السؤال

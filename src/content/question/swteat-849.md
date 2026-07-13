@@ -3,7 +3,7 @@ title: "شيخنا حياك الله يا شيخ أرى الكثير من الا
 status: published
 published_at: 2021-10-11
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["tazkiyat-al-nafs"]
 audio: swteat--swteat-849
 ---
 ## السؤال

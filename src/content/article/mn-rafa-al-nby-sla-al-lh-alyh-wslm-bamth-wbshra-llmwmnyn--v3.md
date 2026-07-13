@@ -3,6 +3,7 @@ title: "من رأفة النبي صلى الله عليه وسلم بأمته و
 status: published
 published_at: 2023-01-13
 person: abu-jafar-al-khalifi
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/8598 -->
 

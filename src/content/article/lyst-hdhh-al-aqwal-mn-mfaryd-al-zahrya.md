@@ -3,6 +3,7 @@ title: "ليست هذه الأقوال من مفاريد الظاهرية"
 status: draft
 published_at: 2013-10-30
 person: abu-jafar-al-khalifi
+topics: ["fiqh-aam"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2013/10/blog-post_2257.html -->
 

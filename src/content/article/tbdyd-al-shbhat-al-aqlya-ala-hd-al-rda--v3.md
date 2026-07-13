@@ -3,7 +3,7 @@ title: "تبديد الشبهات العقلية على حد الردة ..."
 status: published
 published_at: 2025-04-17
 person: abu-jafar-al-khalifi
-topics: ["al-firaq-war-rudud", "tahwid-al-ibada"]
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13522 (+1 more) -->
 

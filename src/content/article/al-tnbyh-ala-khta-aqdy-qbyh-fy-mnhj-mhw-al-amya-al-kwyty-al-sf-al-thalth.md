@@ -3,6 +3,7 @@ title: "التنبيه على خطأ عقدي قبيح في منهج محو ال
 status: published
 published_at: 2025-10-10
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/14711 -->
 

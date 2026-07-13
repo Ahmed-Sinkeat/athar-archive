@@ -3,6 +3,7 @@ title: "مشروعية المصافحة أثناء الصلاة"
 status: published
 published_at: 2023-08-21
 person: abu-jafar-al-khalifi
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/9857 -->
 

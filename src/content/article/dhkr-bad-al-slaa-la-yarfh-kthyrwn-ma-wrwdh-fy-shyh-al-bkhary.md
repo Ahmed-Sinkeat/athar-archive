@@ -3,6 +3,7 @@ title: "ذكر بعد الصلاة لا يعرفه كثيرون مع وروده 
 status: published
 published_at: 2021-06-04
 person: abu-jafar-al-khalifi
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/4505 -->
 

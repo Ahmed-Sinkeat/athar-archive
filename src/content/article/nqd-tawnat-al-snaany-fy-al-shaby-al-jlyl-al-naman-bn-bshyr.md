@@ -3,7 +3,7 @@ title: "نقض طعونات الصنعاني في الصحابي الجليل ا
 status: published
 published_at: 2022-02-13
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tahwid-al-ibada"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/6654 (+3 more) -->
 

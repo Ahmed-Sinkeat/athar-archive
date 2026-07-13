@@ -3,7 +3,7 @@ title: "هل يوجد ارتباط بين متمذهبة الشافعية فقه
 status: published
 published_at: 2021-11-07
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["al-aqeedah-al-aamah"]
 audio: swteat--swteat-1007
 ---
 ## السؤال

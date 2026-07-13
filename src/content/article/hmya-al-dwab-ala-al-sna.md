@@ -3,6 +3,7 @@ title: "حمية الدواب على السنة !"
 status: published
 published_at: 2024-09-23
 person: abu-jafar-al-khalifi
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/12520 (+1 more) -->
 

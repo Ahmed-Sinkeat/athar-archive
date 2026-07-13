@@ -3,7 +3,7 @@ title: "حتى لا يأثم الناس فيك !"
 status: published
 published_at: 2025-04-19
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran", "al-sunnah-wal-bidah"]
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13572 (+1 more) -->
 

@@ -3,7 +3,7 @@ title: "الدفاع عن أحاديث الصحيحين والرد على الز
 status: published
 published_at: 2025-07-28
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "al-wala-wal-bara"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/14128 (+2 more) -->
 

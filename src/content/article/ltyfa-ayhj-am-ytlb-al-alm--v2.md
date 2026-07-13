@@ -3,6 +3,7 @@ title: "لطيفة : أيحج أم يطلب العلم ؟"
 status: published
 published_at: 2021-08-09
 person: abu-jafar-al-khalifi
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/4896 -->
 

@@ -3,7 +3,7 @@ title: "براءة الإمام أحمد من تهمة إنكار الإجماع
 status: published
 published_at: 2025-04-17
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "al-sunnah-wal-bidah"]
+topics: ["tarajim-al-ulama"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13518 (+3 more) -->
 

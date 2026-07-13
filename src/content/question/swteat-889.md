@@ -3,7 +3,7 @@ title: "ما رأيكم بهذا الجواب؟ [ [ س 3 –ما حكم الأش
 status: published
 published_at: 2021-10-21
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["fiqh-aam"]
 ---
 ## السؤال
 

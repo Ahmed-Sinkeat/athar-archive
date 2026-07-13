@@ -3,7 +3,7 @@ title: "تعليقات على رسالة الطريفي في أسانيد الت
 status: draft
 published_at: 2013-10-02
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "ulum-al-quran", "mustalah-al-hadith"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2013/10/blog-post_9881.html -->
 

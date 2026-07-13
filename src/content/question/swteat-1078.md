@@ -3,7 +3,7 @@ title: "ما حكم لبس البنطلون تحت ملابس البيت وقت 
 status: published
 published_at: 2022-01-20
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["fiqh-aam"]
 audio: swteat--swteat-1078
 ---
 ## السؤال

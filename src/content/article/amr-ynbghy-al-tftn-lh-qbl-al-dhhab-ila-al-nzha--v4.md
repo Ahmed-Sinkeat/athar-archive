@@ -3,6 +3,7 @@ title: "أمر ينبغي التفطن له قبل الذهاب إلى النز�
 status: published
 published_at: 2024-01-29
 person: abu-jafar-al-khalifi
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/11064 -->
 

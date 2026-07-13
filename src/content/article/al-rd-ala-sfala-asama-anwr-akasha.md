@@ -3,7 +3,7 @@ title: "الرد على سفالة أسامة أنور عكاشة"
 status: published
 published_at: 2020-08-02
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "al-imamah-was-sahabah"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/2109 (+4 more) -->
 

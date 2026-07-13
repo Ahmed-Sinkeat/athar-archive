@@ -3,6 +3,7 @@ title: "بيان أن الغسل ليوم عرفة ليس بدعة"
 status: published
 published_at: 2022-07-07
 person: abu-jafar-al-khalifi
+topics: ["fiqh-aam"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/7408 -->
 

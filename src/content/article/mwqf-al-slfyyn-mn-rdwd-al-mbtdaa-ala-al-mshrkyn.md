@@ -3,7 +3,7 @@ title: "موقف السلفيين من ردود المبتدعة على المش
 status: draft
 published_at: 2013-09-27
 person: abu-jafar-al-khalifi
-topics: ["tahwid-al-ibada", "al-aqeedah-al-aamah"]
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2013/09/blog-post_499.html -->
 

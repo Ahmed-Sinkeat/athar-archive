@@ -3,7 +3,7 @@ title: "حماد بن سلمة وهوس الصوفية"
 status: published
 published_at: 2021-02-19
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "al-firaq-war-rudud"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/3743 (+1 more) -->
 

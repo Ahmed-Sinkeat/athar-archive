@@ -3,7 +3,7 @@ title: "كراهية المسارعة في حفظ القرآن دون تفقه"
 status: published
 published_at: 2021-05-21
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tafsir-al-quran", "tahwid-al-ibada"]
+topics: ["adab-talab-al-ilm"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/4442 -->
 

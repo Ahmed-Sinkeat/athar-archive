@@ -3,7 +3,7 @@ title: "إذا رددوه يكونون كفاراً يا دكتور منقذ !"
 status: draft
 published_at: 2013-10-17
 person: abu-jafar-al-khalifi
-topics: ["tahwid-al-ibada", "al-aqeedah-al-aamah", "al-firaq-war-rudud"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2013/10/blog-post_7046.html -->
 

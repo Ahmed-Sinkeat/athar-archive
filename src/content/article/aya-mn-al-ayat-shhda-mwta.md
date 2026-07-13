@@ -3,6 +3,7 @@ title: "آية من الآيات شهداء مؤتة !"
 status: published
 published_at: 2020-11-05
 person: abu-jafar-al-khalifi
+topics: ["al-sirah-al-nabawiyyah"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/2959 -->
 

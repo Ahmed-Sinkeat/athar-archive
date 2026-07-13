@@ -3,6 +3,7 @@ title: "تنبيه حول كتبي المنشورة في بعض المواقع"
 status: draft
 published_at: 2014-12-05
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2014/12/blog-post_5.html -->
 

@@ -3,6 +3,7 @@ title: "بيان كذب قصة أبي بكر وعمر مع المرأة العج
 status: published
 published_at: 2020-06-22
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/1700 -->
 

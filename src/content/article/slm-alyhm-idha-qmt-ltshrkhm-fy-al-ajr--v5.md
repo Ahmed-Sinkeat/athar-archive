@@ -3,7 +3,7 @@ title: "سلم عليهم إذا قمت لتشركهم في الأجر ..."
 status: published
 published_at: 2022-07-29
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tazkiyat-al-nafs"]
+topics: ["tazkiyat-al-nafs"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/7563 -->
 

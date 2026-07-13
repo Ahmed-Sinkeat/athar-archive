@@ -3,7 +3,7 @@ title: "جواب مدرسي العقيدة"
 status: published
 published_at: 2021-09-18
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["al-aqeedah-al-aamah"]
 audio: swteat--jwab-mdrsy-al-aqyda
 ---
 ## السؤال

@@ -3,7 +3,7 @@ title: "أهذا ما يريدونه للمرأة المسلمة ؟!\n\n["
 status: published
 published_at: 2022-02-02
 person: abu-jafar-al-khalifi
-topics: ["tafsir-al-quran", "al-firaq-war-rudud"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/6558 (+9 more) -->
 

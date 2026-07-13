@@ -3,7 +3,7 @@ title: "هل تصح العمرة عن الطفل الذي مات قبل البل
 status: published
 published_at: 2026-01-08
 person: abu-jafar-al-khalifi
-topics: ["aam-other"]
+topics: ["fiqh-aam"]
 audio: swteat--swteat-1228
 ---
 ## السؤال

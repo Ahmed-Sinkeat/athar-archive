@@ -3,7 +3,7 @@ title: "حكم الاستغفار لمن مات على الشرك جاهلاً"
 status: draft
 published_at: 2013-10-22
 person: abu-jafar-al-khalifi
-topics: ["tahwid-al-ibada", "al-aqeedah-al-aamah"]
+topics: ["fiqh-aam"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2013/10/blog-post_3223.html -->
 

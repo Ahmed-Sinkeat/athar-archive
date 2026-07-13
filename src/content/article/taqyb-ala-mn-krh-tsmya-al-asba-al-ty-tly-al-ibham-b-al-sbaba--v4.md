@@ -3,7 +3,7 @@ title: "تعقيب على من كره تسمية الأصبع التي تلي ا
 status: published
 published_at: 2025-04-17
 person: abu-jafar-al-khalifi
-topics: ["mustalah-al-hadith", "tazkiyat-al-nafs"]
+topics: ["al-firaq-war-rudud"]
 ---
 <!-- telegram: https://t.me/Abdullah_Alkulify/13489 (+1 more) -->
 

@@ -3,6 +3,7 @@ title: "تنبيه هام حول عورة الأمة ..."
 status: draft
 published_at: 2014-05-30
 person: abu-jafar-al-khalifi
+topics: ["mustalah-al-hadith"]
 ---
 <!-- blogspot: https://alkulify.blogspot.com/2014/05/blog-post_8508.html -->
 
