@@ -1754,6 +1754,7 @@ html.hide-footnotes .prose section.footnotes { display: none; }
    ============================================================ */
 .tabbar { display: none; }
 .mobile-search-btn { display: none; }
+.browse-filter-chips { display: none; }
 .browse4-orn { display: none; }
 
 @media (max-width: 640px) {
@@ -1894,13 +1895,28 @@ html.hide-footnotes .prose section.footnotes { display: none; }
   /* ════ list/browse pages (2a) — books, poems, hadith, articles, questions ════ */
   .page-title { font-size: 27px; }
   .hub-lede { font-size: 12px; }
-  /* filter bar selects → compact pill-like controls (mockup's chip row is a
-     select-driven filter here, not a fixed static set — kept as <select> to
-     avoid touching browse-filter.ts's behavior, restyled to read as chips) */
   .browse-filter-bar { padding: 10px 12px; gap: 8px; border-radius: var(--radius-lg); }
   .browse-filter {
     font-size: 13px; padding: 7px 14px; border-radius: var(--radius-pill);
     border-color: var(--line2); min-height: 32px;
+  }
+  /* نوع filter: real tappable chips on mobile (design 2a) instead of the
+     select — small bounded value set, unlike person (hundreds of names,
+     stays a search-input) and topic (stays a select). See reader.ts's
+     .browse-filter-chips click handler. */
+  .browse-filter-select { display: none; }
+  .browse-filter-chips {
+    display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none;
+    padding-block: 1px; /* keeps the pressed chip's border from clipping */
+  }
+  .browse-filter-chips button {
+    flex: none; font-family: var(--f-ui); font-size: 12px; font-weight: 600;
+    color: var(--ink2); background: none; border: 1px solid var(--line2);
+    border-radius: var(--radius-pill); padding: 7px 14px; white-space: nowrap;
+    cursor: pointer; touch-action: manipulation;
+  }
+  .browse-filter-chips button[aria-pressed="true"] {
+    background: var(--brand); border-color: var(--brand); color: var(--onbrand); font-weight: 700;
   }
   .browse-view-toggle button { padding: 9px 16px; min-height: 44px; }
 

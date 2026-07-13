@@ -541,7 +541,7 @@ document.addEventListener("click", (e) => {
 // matches by name substring (like the title search below) since its list is too
 // long to pick an exact id from a <select> — see data-filter-key="person" markup.
 const norm = (s: string) => stripTashkeel(s.trim().toLowerCase());
-function applyBrowseFilter(el: HTMLInputElement | HTMLSelectElement) {
+function applyBrowseFilter(el: HTMLInputElement | HTMLSelectElement | HTMLButtonElement) {
   const key = el.dataset.filterKey!;
   const val = el.value;
   const needle = key === "person" ? norm(val) : val;
@@ -589,6 +589,19 @@ document.addEventListener("change", (e) => {
 document.addEventListener("input", (e) => {
   const el = (e.target as HTMLElement).closest<HTMLInputElement>('input[data-filter-key="person"]');
   if (el) applyBrowseFilter(el);
+});
+// mobile chip row (design 2a) — same filter engine as the select, plus
+// active-chip UI state; keeps the paired <select> in sync so switching
+// between mobile/desktop widths (or a resize) never shows two different filters
+document.addEventListener("click", (e) => {
+  const chip = (e.target as HTMLElement).closest<HTMLButtonElement>(".browse-filter-chips button[data-filter-key]");
+  if (!chip) return;
+  chip.parentElement!.querySelectorAll<HTMLButtonElement>("button[data-filter-key]").forEach((b) =>
+    b.setAttribute("aria-pressed", String(b === chip)),
+  );
+  const sel = chip.closest(".browse-filters")?.querySelector<HTMLSelectElement>(`select[data-filter-key="${chip.dataset.filterKey}"]`);
+  if (sel) sel.value = chip.value;
+  applyBrowseFilter(chip);
 });
 
 // --- local in-page search / filtering for listing pages ---

@@ -61,10 +61,18 @@ const kindOptions = [...new Set(
       <span class="browse-filter-label">تصفية:</span>
       <div class="browse-filters">
         {kindOptions.length > 1 && (
-          <select class="browse-filter" data-filter-key="kind" aria-label="فلترة بالنوع">
-            <option value="">كل الأنواع</option>
-            {kindOptions.map((k) => <option value={k}>{k}</option>)}
-          </select>
+          <>
+            <select class="browse-filter browse-filter-select" data-filter-key="kind" aria-label="فلترة بالنوع">
+              <option value="">كل الأنواع</option>
+              {kindOptions.map((k) => <option value={k}>{k}</option>)}
+            </select>
+            {/* mobile-only tappable chips (design 2a) — same data-filter-key
+                engine as the select above, driven by reader.ts's click handler */}
+            <div class="browse-filter-chips" role="group" aria-label="فلترة بالنوع">
+              <button type="button" data-filter-key="kind" value="" aria-pressed="true">الكل</button>
+              {kindOptions.map((k) => <button type="button" data-filter-key="kind" value={k} aria-pressed="false">{k}</button>)}
+            </div>
+          </>
         )}
         {personOptions.length > 1 && (
           <>
