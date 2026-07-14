@@ -3,7 +3,6 @@ title: "نكت الإعراب (قواعد الإعراب ونزهة الطلاب
 status: published
 published_at: 2026-07-06
 person: ibn-hisham
-kind: متن
 topics: ["al-nahw"]
 authored_year: 761
 description: "نكت الإعراب في القواعد النحوية لابن هشام الأنصاري"

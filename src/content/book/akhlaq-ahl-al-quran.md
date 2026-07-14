@@ -3,7 +3,6 @@ title: "أخلاق أهل القرآن"
 status: published
 published_at: 2026-07-06
 person: al-ajurri
-kind: متن
 topics: ["tazkiyat-al-nafs"]
 authored_year: 360
 description: "أخلاق أهل القرآن للإمام أبي بكر الآجري"

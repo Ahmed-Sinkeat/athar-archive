@@ -3,7 +3,6 @@ title: "بداية العابد وكفاية الزهد"
 status: published
 published_at: 2026-07-06
 person: al-baali
-kind: متن
 topics: ["fiqh-hanbali"]
 authored_year: 1192
 description: "بداية العابد وكفاية الزاهد في فقه الإمام أحمد بن حنبل للشيخ عبد الرحمن البعلي"

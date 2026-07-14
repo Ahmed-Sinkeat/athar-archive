@@ -3,7 +3,6 @@ title: "الوابل الصيب من الكلم الطيب"
 status: published
 published_at: 2026-07-06
 person: ibn-al-qayyim
-kind: متن
 topics: ["tazkiyat-al-nafs"]
 authored_year: 751
 description: "الوابل الصيب من الكلم الطيب للإمام ابن القيم"

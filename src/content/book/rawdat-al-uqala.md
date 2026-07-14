@@ -3,7 +3,6 @@ title: "روضة العقلاء ونزهة الفضلاء"
 status: published
 published_at: 2026-07-06
 person: ibn-hibban
-kind: متن
 topics: ["al-adab"]
 authored_year: 354
 description: "روضة العقلاء ونزهة الفضلاء للإمام ابن حبان البستي"

@@ -3,7 +3,6 @@ title: "المطر والرعد والبرق"
 status: published
 published_at: 2026-07-12
 person: ibn-abi-al-dunya
-kind: متن
 topics: ["al-samiyyat"]
 authored_year: 281
 ---

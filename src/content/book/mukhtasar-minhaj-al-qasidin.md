@@ -3,7 +3,6 @@ title: "مختصر منهاج القاصدين"
 status: published
 published_at: 2026-07-06
 person: ibn-qudamah-al-maqdisi
-kind: متن
 topics: ["tazkiyat-al-nafs"]
 authored_year: 689
 description: "مختصر منهاج القاصدين في التربية وتزكية النفوس لنجم الدين ابن قدامة"

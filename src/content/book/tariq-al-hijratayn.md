@@ -3,7 +3,6 @@ title: "طريق الهجرتين وباب السعادتين"
 status: published
 published_at: 2026-07-06
 person: ibn-al-qayyim
-kind: متن
 topics: ["tazkiyat-al-nafs"]
 authored_year: 751
 description: "طريق الهجرتين وباب السعادتين للإمام ابن القيم"

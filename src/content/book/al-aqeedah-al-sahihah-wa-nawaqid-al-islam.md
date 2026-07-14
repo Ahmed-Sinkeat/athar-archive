@@ -4,7 +4,6 @@ status: published
 published_at: 2026-07-04
 person: ibn-baz
 authored_year: 1420
-kind: متن
 topics: ["al-aqeedah-al-aamah", "tahwid-al-ibada"]
 ---
 [

@@ -3,7 +3,6 @@ title: "آداب العشرة وذكر الصحبة والأخوة"
 status: published
 published_at: 2026-07-06
 person: al-ghazzi
-kind: متن
 topics: ["al-adab"]
 authored_year: 984
 description: "آداب العشرة وذكر الصحبة والأخوة للشيخ بدر الدين الغزي"

@@ -3,7 +3,6 @@ title: "مختصر أخلاق حملة القرآن"
 status: published
 published_at: 2026-07-06
 person: khalid-al-sabt
-kind: متن
 topics: ["tazkiyat-al-nafs"]
 authored_year: 1440
 description: "مختصر أخلاق حملة القرآن للشيخ الدكتور خالد السبت"

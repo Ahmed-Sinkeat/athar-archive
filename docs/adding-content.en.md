@@ -58,6 +58,18 @@ the bottom moves between annotated spots.
 switch to «منشور» (published) when ready. (فائدة/كُناشة is reader-local, not a
 CMS collection — see `docs/technology-stack.md`.)
 
+### The book "kind" field — when to set it, when to leave it empty
+
+The `/admin` dropdown only offers `متن` / `مرجع` / `مجموع` — **there is no
+"كتاب" option because it isn't a value you write**; any book with the kind
+field left empty automatically displays as «كتاب» (fallback in
+`src/lib/display.ts`). So leave it empty by default, and only pick «متن» for
+genuinely famous works actually composed/classified for memorization and
+commentary (الأصول الثلاثة, القواعد الأربع, الآجرومية, زاد المستقنع, بلوغ
+المرام…) — not for every short treatise. Ibn Abi al-Dunya-style thematic
+hadith/athar collections (الزهد, الصبر, الشكر…) are anthologies on a topic,
+not memorized متون, and should stay untagged (كتاب).
+
 ---
 
 ## Book Page Separators & Footnotes
@@ -114,7 +126,7 @@ Subfolders under your main category (or terms in the EPUB's internal metadata/ti
 ### Command-line Options
 - `--out <dir>`: Output path for markdown files (defaults to `src/content/`).
 - `--genre <genre>`: Explicitly set the genre (`قرآن|حديث|تراجم`).
-- `--kind <kind>`: Explicitly set the kind (`متن|شرح|مستخلص|معجم`).
+- `--kind <kind>`: Explicitly set the kind (`متن|مرجع|مجموع`) — leave unset for non-متن books; the tool auto-detects famous متون (`MATN_TITLE_RE` in `epub-import.ts`), so only pass this for a genuine متن the auto-detector missed.
 - `--merge-volumes`: Merge multiple EPUB files inside the directory into a single multi-volume book.
 - `--dry-run`: Run the parser and display the output metadata without writing files to disk.
 - `--selftest`: Run internal unit tests on footnote/hadith parsing.

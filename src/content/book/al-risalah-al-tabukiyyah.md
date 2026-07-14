@@ -3,7 +3,6 @@ title: "الرسالة التبوكية (زاد المهاجر إلى ربه)"
 status: published
 published_at: 2026-07-06
 person: ibn-al-qayyim
-kind: متن
 topics: ["tazkiyat-al-nafs"]
 authored_year: 751
 description: "الرسالة التبوكية زاد المهاجر إلى ربه للإمام ابن القيم"

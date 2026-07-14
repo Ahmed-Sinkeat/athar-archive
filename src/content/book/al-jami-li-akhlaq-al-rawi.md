@@ -3,7 +3,6 @@ title: "الجامع لأخلاق الراوي وآداب السامع"
 status: published
 published_at: 2026-07-06
 person: al-khatib-al-baghdadi
-kind: متن
 topics: ["adab-talab-al-ilm"]
 authored_year: 463
 description: "الجامع لأخلاق الراوي وآداب السامع للخطيب البغدادي"

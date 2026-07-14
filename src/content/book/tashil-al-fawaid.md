@@ -3,7 +3,6 @@ title: "تسهيل الفوائد وتكميل المقاصد"
 status: published
 published_at: 2026-07-06
 person: ibn-malik
-kind: متن
 topics: ["al-nahw"]
 authored_year: 672
 description: "تسهيل الفوائد وتكميل المقاصد في النحو للإمام ابن مالك"

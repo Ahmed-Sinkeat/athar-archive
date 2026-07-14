@@ -3,7 +3,6 @@ title: "مغني اللبيب عن كتب الأعاريب"
 status: published
 published_at: 2026-07-06
 person: ibn-hisham
-kind: متن
 topics: ["al-nahw"]
 authored_year: 761
 description: "مغني اللبيب عن كتب الأعاريب لابن هشام الأنصاري"

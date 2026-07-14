@@ -3,7 +3,6 @@ title: "فضائل رمضان"
 status: published
 published_at: 2026-07-12
 person: ibn-abi-al-dunya
-kind: متن
 topics: ["fadail-hadith"]
 authored_year: 281
 ---

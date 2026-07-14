@@ -3,7 +3,6 @@ title: "جامع بيان العلم وفضله"
 status: published
 published_at: 2026-07-06
 person: ibn-abd-al-barr
-kind: متن
 topics: ["adab-talab-al-ilm"]
 authored_year: 463
 description: "جامع بيان العلم وفضله للإمام ابن عبد البر القرطبي"

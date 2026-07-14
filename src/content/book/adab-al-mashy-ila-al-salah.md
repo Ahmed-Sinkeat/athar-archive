@@ -3,7 +3,6 @@ title: "آداب المشي إلى الصلاة"
 status: published
 published_at: 2026-07-06
 person: ibn-abdul-wahhab
-kind: متن
 topics: ["fiqh-hanbali"]
 authored_year: 1206
 description: "آداب المشي إلى الصلاة لشيخ الإسلام محمد بن عبد الوهاب"

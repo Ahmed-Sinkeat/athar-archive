@@ -7,7 +7,6 @@ authored_year: 728
 topics: ["al-aqeedah-al-aamah"]
 edition: "الطبعة الثانية 1425هـ / 2004م"
 description: "بتحقيق د. حمد بن عبد المحسن التويجري"
-kind: متن
 ---
 ## [الفتوى الحموية الكبرى]ـ
 

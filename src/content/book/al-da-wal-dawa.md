@@ -3,7 +3,6 @@ title: "الداء والدواء (الجواب الكافي لمن سأل عن 
 status: published
 published_at: 2026-07-06
 person: ibn-al-qayyim
-kind: متن
 topics: ["tazkiyat-al-nafs"]
 authored_year: 751
 description: "الداء والدواء (الجواب الكافي) للإمام ابن القيم"

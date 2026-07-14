@@ -3,7 +3,6 @@ title: "تذكرة السامع والمتكلم في أدب العالم وال
 status: published
 published_at: 2026-07-06
 person: ibn-jamaah
-kind: متن
 topics: ["adab-talab-al-ilm"]
 authored_year: 733
 description: "تذكرة السامع والمتكلم في أدب العالم والمتعلم لبدر الدين بن جماعة"

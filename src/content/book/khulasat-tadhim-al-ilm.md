@@ -3,7 +3,6 @@ title: "خلاصة تعظيم العلم"
 status: published
 published_at: 2026-07-06
 person: salih-al-osaimi
-kind: متن
 topics: ["adab-talab-al-ilm"]
 authored_year: 1435
 description: "خلاصة تعظيم العلم للشيخ صالح بن عبد الله العصيمي"

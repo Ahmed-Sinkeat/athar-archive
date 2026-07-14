@@ -3,7 +3,6 @@ title: "بهجة المجالس وأنس المجالس"
 status: published
 published_at: 2026-07-06
 person: ibn-abd-al-barr
-kind: متن
 topics: ["al-adab"]
 authored_year: 463
 description: "بهجة المجالس وأنس المجالس للإمام ابن عبد البر القرطبي"

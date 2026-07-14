@@ -97,7 +97,7 @@ collections:
       - { label: "تاريخ التحديث", name: updated_at, widget: datetime, type: date, required: false }
       - { label: "روابط قديمة (تحويل 301)", name: aliases, widget: list, required: false, hint: "إذا غيّرتَ الـ slug ضَع القديم هنا، فيتحول الرابط القديم إلى الجديد تلقائيًا. ليس للعناوين البديلة." }
       - { label: "المؤلف", name: person, widget: relation, required: false, collection: person, search_fields: [title], value_field: "{{slug}}", display_fields: [title] }
-      - { label: "النوع", name: kind, widget: select, required: false, options: ["متن", "مرجع", "مجموع"] }
+      - { label: "النوع", name: kind, widget: select, required: false, hint: "اتركْه فارغًا لكتابٍ عاديّ — «كتاب» و«فارغ» متطابقان في العرض. اختر «متن» فقط لمتونٍ حقيقيةٍ مشهورةٍ صُنِّفت للحفظ (كالأصول الثلاثة أو الآجرومية)، لا لكل رسالةٍ قصيرة.", options: ["كتاب", "متن", "مرجع", "مجموع"] }
       - { label: "القسم", name: genre, widget: select, required: false, options: ["قرآن", "حديث", "تراجم"] }
       - { label: "شرحٌ لكتاب (sharh_of)", name: sharh_of, widget: relation, required: false, collection: book, search_fields: [title], value_field: "{{slug}}", display_fields: [title] }
       - { label: "مختصرٌ لكتاب (mukhtasar_of)", name: mukhtasar_of, widget: relation, required: false, collection: book, search_fields: [title], value_field: "{{slug}}", display_fields: [title] }

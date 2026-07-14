@@ -4,6 +4,7 @@ status: published
 published_at: 2021-10-11
 person: abu-jafar-al-khalifi
 topics: ["fiqh-aam"]
+aliases: ["swteat-1074"]
 ---
 ## السؤال
 

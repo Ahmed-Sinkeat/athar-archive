@@ -3,7 +3,6 @@ title: "الجهاد"
 status: published
 published_at: 2026-07-12
 person: ibn-abi-asim
-kind: متن
 topics: ["al-siyasah-al-shariyyah"]
 authored_year: 287
 ---

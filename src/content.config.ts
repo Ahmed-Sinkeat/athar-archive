@@ -107,7 +107,7 @@ const book = defineCollection({
     ...shared,
     person: slug.optional(),           // → Person (author, unknown/anonymous allowed)
     // study classification — drives the متن badge + study modes (poems are always متن)
-    kind: z.enum(["متن", "مرجع", "مجموع"]).optional(),
+    kind: z.enum(["كتاب", "متن", "مرجع", "مجموع"]).optional(),
     // section beyond kind — routes to /quran /hadith /tarajim (still also under /books)
     genre: z.enum(["قرآن", "حديث", "تراجم"]).optional(),
     // a شرح/تعليق of another book (فتح المجيد → كتاب التوحيد) — drives the parent's

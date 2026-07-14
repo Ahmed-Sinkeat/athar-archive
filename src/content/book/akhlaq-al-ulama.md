@@ -3,7 +3,6 @@ title: "أخلاق العلماء"
 status: published
 published_at: 2026-07-06
 person: al-ajurri
-kind: متن
 topics: ["adab-talab-al-ilm"]
 authored_year: 360
 description: "أخلاق العلماء للإمام أبي بكر الآجري"

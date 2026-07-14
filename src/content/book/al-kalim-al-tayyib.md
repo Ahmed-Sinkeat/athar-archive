@@ -3,7 +3,6 @@ title: "الكلم الطيب"
 status: published
 published_at: 2026-07-06
 person: ibn-taymiyyah
-kind: متن
 topics: ["tazkiyat-al-nafs"]
 authored_year: 728
 description: "الكلم الطيب من الأذكار النبوية لشيخ الإسلام ابن تيمية"

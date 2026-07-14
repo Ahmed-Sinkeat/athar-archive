@@ -3,7 +3,6 @@ title: "مختار الصحاح"
 status: published
 published_at: 2026-07-06
 person: abu-bakr-al-razi
-kind: متن
 topics: ["al-mufradat"]
 authored_year: 666
 description: "معجم مختار الصحاح لأبي بكر الرازي"
