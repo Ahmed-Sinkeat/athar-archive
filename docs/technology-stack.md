@@ -67,6 +67,29 @@ Stable. Cloudflare Workers matches our global scaling demands with minimal maint
 
 ---
 
+## PWA (installable + offline)
+
+### Purpose
+Makes the site installable as an app (`public/manifest.webmanifest`, `public/icons/`) and usable offline, without a native rewrite or a Play Store listing.
+
+### What shipped
+`public/sw.js` runs four caching strategies: (1) `aa-shell` precaches the hub pages (`/`, `/books`, `/quran`, …) plus `/dl-sizes.json` at install for an instant, cache-first open; (2) `aa-downloads` is stale-while-revalidate for everything else same-origin except `/api/*` (which stays network-first so search results are live) — any page/script/style/image the user actually visits opens instantly from cache and works offline, while a background refetch keeps the copy at most one visit stale; (3) `aa-fonts` caches Google Fonts CSS+woff2 cache-first, so Arabic type renders offline and without a third-party round-trip; (4) a Range-aware handler slices cached audio into proper `206` responses, since answering a Range request with a full `200` from the Cache API kills playback — and audio elements carry `crossorigin="anonymous"` (the R2 media bucket allows the site origins via CORS) because Android Chrome rejects *opaque* SW-served range responses even though desktop tolerates them. Registration happens eagerly from an inline `<head>` script in `Base.astro` (not gated behind the lazily-loaded `downloads.ts` chunk) so caching starts as early as possible.
+
+List rows on `/books`, `/poems`, and `/articles` carry a quick download-for-offline button showing the exact size before downloading (Turath-style): `scripts/gen-dl-sizes.mjs` sums each entity's built pages (`dist/client` + R2-prerendered chapters) plus linked audio `size_bytes` into `dl-sizes.json` at build time, and `downloads.ts` fetches the not-currently-open landing page, parses its TOC out of the HTML, and feeds the normal download pipeline.
+
+### Alternatives considered
+* **Native rewrite (Kotlin/Compose or Flutter):** a full second frontend duplicating the whole content pipeline.
+* **TWA / Play Store wrapper (Bubblewrap):** a thin native wrapper around the same PWA.
+
+### Why they were rejected
+* **Native rewrite:** weeks of work, a new language, and an ongoing second frontend to keep in sync for zero content gain — the site already renders fully server-side.
+* **TWA/Play Store:** explicitly declined — no Play Store listing wanted. The installable PWA (Chrome "Add to Home Screen" / iOS Safari Share sheet) covers the same "app on the home screen" outcome for free, with nothing to maintain in a store.
+
+### Future replacement policy
+Stable. Revisit only if a feature needs a native-only API the web platform can't reach (background audio already works via the Media Session API in Chrome).
+
+---
+
 ## Cloudflare R2
 
 ### Purpose
