@@ -1,6 +1,6 @@
 ---
 title: "تحقيق الإيمان لابن تيمية"
-status: published
+status: draft # broken import: only Albani gradings, book text missing — reimport needed
 published_at: 2026-07-04
 person: ibn-taymiyyah
 authored_year: 728

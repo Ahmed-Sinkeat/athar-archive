@@ -1,0 +1,94 @@
+---
+// Paginated articles index — the old single page rendered all ~2400 articles
+// twice (flat + grouped views) into 6 MB of HTML; 100 rows/page keeps it
+// light. The grouped view's job (browse by فن) is covered by subject chips
+// linking to the subject pages; sorting is fixed newest-first (they're dated
+// contemporary articles, not classical works).
+import type { GetStaticPaths, Page } from "astro";
+import Base from "../../layouts/Base.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import EntityCard from "../../components/EntityCard.astro";
+import TitleFilter from "../../components/TitleFilter.astro";
+import { personNameMap, loadGraph } from "../../lib/site";
+import { hrefFor, toArabicDigits } from "../../lib/display";
+import { buildSubjectGroups } from "../../lib/browse";
+import { collectionLd } from "../../lib/structured-data";
+import type { ContentEntry } from "../../lib/types";
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const graph = await loadGraph();
+  const { groups, uncategorized } = buildSubjectGroups("article", graph);
+  const seen = new Set<string>();
+  const all: ContentEntry[] = [];
+  const add = (it: ContentEntry) => { if (!seen.has(it.id)) { seen.add(it.id); all.push(it); } };
+  for (const g of groups) for (const t of g.topics) for (const it of t.items) add(it);
+  for (const it of uncategorized) add(it);
+  all.sort((a, b) => +new Date(b.data.published_at as Date) - +new Date(a.data.published_at as Date));
+  return paginate(all, { pageSize: 100 });
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props as { page: Page<ContentEntry> };
+const graph = await loadGraph();
+const names = await personNameMap();
+const { groups } = buildSubjectGroups("article", graph);
+
+const card = (it: ContentEntry) => ({
+  href: hrefFor("article", it.id),
+  title: it.data.title as string,
+  kind: "مقالة",
+  kindColor: "tag-verdigris",
+  sub: it.data.person ? names.get(it.data.person as string) ?? "" : "",
+  cta: "اقرأ ←",
+  dlKind: "article",
+  dlId: it.id,
+});
+
+// numbered pagination: first, last, and a window around the current page
+const pageWindow = (() => {
+  const total = page.lastPage;
+  const cur = page.currentPage;
+  const nums = new Set<number>([1, total]);
+  for (let i = cur - 2; i <= cur + 2; i++) if (i >= 1 && i <= total) nums.add(i);
+  return [...nums].sort((a, b) => a - b);
+})();
+const pageHref = (n: number) => (n === 1 ? "/articles" : `/articles/${n}`);
+---
+<Base
+  title={page.currentPage === 1 ? "مقالات ومحاضرات" : `مقالات ومحاضرات — صفحة ${toArabicDigits(page.currentPage)}`}
+  description="مقالاتٌ علميةٌ محرَّرةٌ في مسائل العلم وأصوله."
+  activeNav="articles"
+  jsonLd={page.currentPage === 1 ? collectionLd({ title: "مقالات ومحاضرات", path: "/articles", crumbs: [{ name: "الرئيسية", path: "/" }, { name: "مقالات ومحاضرات", path: "/articles" }] }) : undefined}
+>
+  <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "مقالات ومحاضرات" }]} />
+  <div class="wrap-mid uf5db21c">
+    <h1 class="page-title">مقالات ومحاضرات</h1>
+    <p class="hub-lede">{toArabicDigits(page.total)} مقالةً ومحاضرةً — الأحدثُ أولًا.</p>
+
+    <!-- browse by فن: replaces the old embedded grouped view (each subject
+         page already lists its own materials) -->
+    <div class="article-subject-chips">
+      {groups.map((g) => (
+        <a class="pill-link" href={`/subject/${g.id}`}>{g.title} · {toArabicDigits(g.count)}</a>
+      ))}
+    </div>
+
+    <TitleFilter placeholder="تصفية في هذه الصفحة… (للبحث الشامل استخدم البحث)" />
+
+    <ol class="flat-list">
+      {page.data.map((it) => (
+        <li data-title={it.data.title}><EntityCard {...card(it)} /></li>
+      ))}
+    </ol>
+
+    <nav class="pagination" aria-label="الصفحات" dir="rtl">
+      {page.url.prev && <a class="page-btn" href={page.url.prev} rel="prev">→ السابق</a>}
+      {pageWindow.map((n, i) => (
+        <>
+          {i > 0 && pageWindow[i - 1] < n - 1 && <span class="page-gap">…</span>}
+          <a class="page-btn" href={pageHref(n)} aria-current={n === page.currentPage ? "page" : undefined}>{toArabicDigits(n)}</a>
+        </>
+      ))}
+      {page.url.next && <a class="page-btn" href={page.url.next} rel="next">التالي ←</a>}
+    </nav>
+  </div>
+</Base>

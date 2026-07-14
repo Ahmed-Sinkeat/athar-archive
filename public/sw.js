@@ -1,10 +1,8 @@
 // Serves the aa-downloads cache (pages + audio + their JS/CSS, stored by
-// downloads.ts and opportunistically by staleWhileRevalidate below). Pages/
-// assets are stale-while-revalidate: anything visited opens instantly from
-// cache and works offline, and a background refetch keeps the copy at most
-// one visit stale. (Pure cache-first with NO revalidation once caused stale
-// pages pointing at dead /_astro bundles → broken player until a hard
-// reload — the background refresh + the !res.ok fallback cover that now.)
+// downloads.ts and opportunistically by the fetch handlers below). HTML pages
+// are network-first (see htmlNetworkFirst) so a deploy is visible on the very
+// next online open; CSS/JS/images/fonts are stale-while-revalidate for an
+// instant open. Both fall back to whatever's cached when offline.
 const CACHE_NAME = "aa-downloads";
 
 // App shell: the hub/nav pages, precached at install so the app opens
@@ -100,14 +98,29 @@ async function networkFirst(request) {
   }
 }
 
-// Everything else same-origin: stale-while-revalidate — any page/asset ever
-// visited opens instantly from cache (and fully offline), while a background
-// refetch updates the copy for the NEXT visit. Content can be one visit stale;
-// for an archive of classical texts that's the right trade for app-fast opens.
+// HTML documents (top-level navigations) go network-first below — SWR served
+// a stale page on every open until a SECOND visit, which meant a shipped fix
+// (e.g. the <audio crossorigin> attribute for Android playback) stayed broken
+// on a phone until a hard reload. Non-HTML assets keep stale-while-revalidate:
+// instant + offline, and staleness there is harmless (/_astro/* is hashed and
+// immutable anyway; images/fonts rarely change).
 function cacheable(request) {
-  return request.mode === "navigate" || request.destination === "style" ||
-    request.destination === "script" || request.destination === "image" ||
-    request.destination === "font"; // self-hosted /fonts/gf/*.woff2
+  return request.destination === "style" || request.destination === "script" ||
+    request.destination === "image" || request.destination === "font"; // self-hosted /fonts/gf/*.woff2
+}
+
+// Explicitly downloaded pages (via downloads.ts) stay available offline since
+// they're written straight into this same cache; network-first just means an
+// online visit always gets the latest copy instead of a stuck one.
+async function htmlNetworkFirst(request) {
+  const cache = await caches.open(CACHE_NAME);
+  try {
+    const res = await fetch(request);
+    if (res.ok) cache.put(request, res.clone());
+    return res;
+  } catch {
+    return (await cache.match(request)) || cache.match("/offline.html");
+  }
 }
 async function staleWhileRevalidate(event) {
   const request = event.request;
@@ -129,7 +142,6 @@ async function staleWhileRevalidate(event) {
     const fallback = await cache.match(request);
     return fallback || res;
   }
-  if (request.mode === "navigate") return cache.match("/offline.html");
   throw new Error("offline and uncached: " + request.url);
 }
 
@@ -156,6 +168,10 @@ self.addEventListener("fetch", (event) => {
   }
   if (SHELL_URLS.includes(url.pathname.replace(/\/$/, "") || "/")) {
     event.respondWith(shellCacheFirst(req));
+    return;
+  }
+  if (req.mode === "navigate") {
+    event.respondWith(htmlNetworkFirst(req));
     return;
   }
   event.respondWith(staleWhileRevalidate(event));

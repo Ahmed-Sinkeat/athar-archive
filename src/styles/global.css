@@ -1494,6 +1494,24 @@ html[data-theme="noir"] ::highlight(aa-find)    { background-color: rgba(255, 15
 .lib-entry .lib-del { inset-inline-end: 10px; }
 .lib-entry .lib-share { inset-inline-end: 36px; }
 .lib-entry-title { font-family: var(--font-display); font-weight: 700; font-size: 15.5px; color: var(--ink); padding-inline-end: 34px; }
+/* --- paginated articles index --- */
+.article-subject-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+.article-subject-chips .pill-link {
+  font-family: var(--font-ui); font-size: 12.5px; color: var(--ink-soft);
+  border: 1px solid var(--rule); border-radius: var(--radius-pill); padding: 5px 12px;
+  background: var(--surface);
+}
+.article-subject-chips .pill-link:hover { color: var(--accent); border-color: var(--accent-border); }
+.pagination { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 6px; margin-top: 26px; font-family: var(--font-ui); }
+.pagination .page-btn {
+  min-width: 38px; min-height: 38px; display: inline-flex; align-items: center; justify-content: center;
+  padding: 4px 12px; font-size: 14px; color: var(--ink-soft); text-decoration: none;
+  border: 1px solid var(--rule); border-radius: var(--radius); background: var(--surface);
+}
+.pagination .page-btn:hover { color: var(--accent); border-color: var(--accent-border); }
+.pagination .page-btn[aria-current="page"] { color: var(--accent); border-color: var(--accent); font-weight: 600; background: color-mix(in srgb, var(--accent) 8%, transparent); }
+.pagination .page-gap { color: var(--ink-faint); }
+
 /* --- واصل القراءة (home shelf) — rendered client-side from aa-recent --- */
 .recent-shelf { display: flex; flex-direction: column; gap: 10px; }
 .recent-card {
