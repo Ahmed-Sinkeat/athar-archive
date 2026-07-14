@@ -28,22 +28,33 @@ const mime = (f?: "opus" | "mp3") => (f === "mp3" ? "audio/mpeg" : "audio/ogg; c
 // multi-track (lesson series): reader.ts swaps the <source> from this JSON and
 // auto-advances on `ended`
 const tracks = list.length > 1 ? JSON.stringify(list.map((s) => ({ url: s.url, format: s.format ?? "opus", label: s.label ?? "" }))) : undefined;
+// transition:persist key — the compiler chokes on inline template literals in
+// this directive, so it's computed here
+const persistKey = cur ? "audio:" + cur.url : undefined;
 const sizeLabel = cur?.sizeBytes
   ? cur.sizeBytes < 1024 * 1024
     ? `${Math.round(cur.sizeBytes / 1024)} KB`
     : `${(cur.sizeBytes / (1024 * 1024)).toFixed(1)} MB`
   : null;
 ---
+<!-- persist keyed by the audio URL: navigating between pages that share this
+     audio (a book's landing + its chapters) keeps the SAME element — playback
+     continues across the navigation. Different work → different key → the old
+     player is dropped and audio stops, as it should. All controls are
+     document-delegated in reader.ts, so the moved node needs no re-wiring. -->
 {cur && (
-  <div data-audio data-audio-tracks={tracks} data-audio-index={tracks ? String(curIdx) : undefined}>
-    <audio preload="metadata" data-audio-el hidden>
+  <div data-audio data-audio-tracks={tracks} data-audio-index={tracks ? String(curIdx) : undefined} transition:persist={persistKey}>
+    <!-- crossorigin: CORS-mode media requests give the SW readable (non-opaque)
+         responses — Android Chrome rejects opaque range responses through a SW
+         (desktop is lenient), which silently killed playback on phones -->
+    <audio preload="metadata" crossorigin="anonymous" data-audio-el hidden>
       <source src={cur.url} type={mime(cur.format)} data-audio-source />
     </audio>
 
     <noscript>
       <figure class="audio">
         <figcaption class="audio-caption">{title}{subtitle && ` — ${subtitle}`}</figcaption>
-        <audio controls preload="none">
+        <audio controls preload="none" crossorigin="anonymous">
           <source src={cur.url} type={mime(cur.format)} />
           <a href={cur.url}>تنزيل الملف الصوتي</a>
         </audio>

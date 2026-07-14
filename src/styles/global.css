@@ -358,6 +358,11 @@ a.dl-row-title:hover { color: var(--accent); }
 .pop-width-btns .icon-btn { width: auto; padding-inline: 10px; }
 .pop-width-btns .icon-btn[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
 .pop-toggle { width: 100%; justify-content: flex-start; }
+/* عن الموقع / تواصل row at the bottom of the settings sheet — the footer that
+   normally carries these is hidden in the mobile app layout */
+.pop-links { display: flex; gap: 16px; margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--rule); }
+.pop-links a { font-size: 13px; color: var(--ink2); text-decoration: none; }
+.pop-links a:hover { text-decoration: underline; }
 
 /* ---------- mobile nav dropdown (HANDOFF.md §3.5) ----------
    Compact anchored card below the "☰ القائمة" trigger, not a full-height
@@ -374,8 +379,9 @@ a.dl-row-title:hover { color: var(--accent); }
   padding: 10px; display: grid; gap: 2px;
 }
 .drawer[data-open] { opacity: 1; visibility: visible; transform: translateY(0); }
-.drawer a { display: block; font-size: 15px; color: var(--ink); text-decoration: none; padding: 10px 12px; border-radius: var(--radius); }
-.drawer a:hover { background: var(--paper-2); }
+.drawer a, .drawer .drawer-find { display: block; font-size: 15px; color: var(--ink); text-decoration: none; padding: 10px 12px; border-radius: var(--radius); }
+.drawer a:hover, .drawer .drawer-find:hover { background: var(--paper-2); }
+.drawer .drawer-find { background: none; width: 100%; font-family: inherit; text-align: start; cursor: pointer; }
 .drawer-downloads { display: flex; align-items: center; gap: 10px; border-top: 1px solid var(--rule); margin-top: 6px; padding-top: 14px; }
 a.icon-btn { text-decoration: none; }
 .sr-only, .hero-title { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
@@ -1488,6 +1494,39 @@ html[data-theme="noir"] ::highlight(aa-find)    { background-color: rgba(255, 15
 .lib-entry .lib-del { inset-inline-end: 10px; }
 .lib-entry .lib-share { inset-inline-end: 36px; }
 .lib-entry-title { font-family: var(--font-display); font-weight: 700; font-size: 15.5px; color: var(--ink); padding-inline-end: 34px; }
+/* --- واصل القراءة (home shelf) — rendered client-side from aa-recent --- */
+.recent-shelf { display: flex; flex-direction: column; gap: 10px; }
+.recent-card {
+  display: flex; align-items: center; gap: 12px; text-decoration: none;
+  background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius-lg);
+  padding: 13px 16px; color: inherit; transition: border-color 0.15s;
+}
+.recent-card:hover { border-color: var(--accent-border); }
+.recent-titles { display: flex; flex-direction: column; gap: 2px; min-width: 0; flex: 1; }
+.recent-title { font-family: var(--font-display); font-weight: 700; font-size: 16.5px; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.recent-sub { font-family: var(--font-ui); font-size: 12.5px; color: var(--ink-soft); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.recent-pct { font-family: var(--font-ui); font-size: 12px; font-weight: 600; color: var(--accent); flex: none; }
+.recent-arrow { color: var(--ink-faint); font-size: 13px; flex: none; }
+
+/* quick download-for-offline button on list rows (books/poems/articles) —
+   size shown before downloading (dl-sizes.json), ✓ once available offline */
+.card-dl {
+  flex: none; display: inline-flex; flex-direction: column; align-items: center; gap: 1px;
+  min-width: 40px; min-height: 40px; justify-content: center;
+  background: none; border: 1px solid var(--rule); border-radius: var(--radius);
+  color: var(--ink-faint); cursor: pointer; padding: 4px 6px;
+  font-family: var(--font-ui);
+}
+.card-dl:hover { color: var(--accent); border-color: var(--accent-border); }
+.card-dl[aria-pressed="true"] { color: var(--accent); border-color: var(--accent-border); }
+.card-dl[data-dl-busy] { opacity: 0.6; }
+.card-dl-size { font-size: 9.5px; line-height: 1.2; white-space: nowrap; }
+/* grid-card view: pin to the card's top-left corner (RTL: inline-end side) */
+.card { position: relative; }
+.card > .card-dl { position: absolute; inset-inline-start: 10px; inset-block-start: 10px; }
+/* flat rows + poem meta rows are flex — sit inline, no pinning */
+.flat-list .card > .card-dl, .poem-card-meta .card-dl { position: static; }
+
 /* --- flat list rows (listing pages: الكتب / الشعر / الدروس / الأعلام / …) --- */
 /* Override card-box styles when inside .flat-list so items render as rows */
 .flat-list { list-style: none; padding: 0; margin: 0; border-block-start: 1px solid var(--rule); }
@@ -1753,7 +1792,6 @@ html.hide-footnotes .prose section.footnotes { display: none; }
    from the mockup markup. Desktop (>640px) untouched.
    ============================================================ */
 .tabbar { display: none; }
-.mobile-search-btn { display: none; }
 .browse-filter-chips { display: none; }
 .browse4-orn { display: none; }
 
@@ -1780,7 +1818,6 @@ html.hide-footnotes .prose section.footnotes { display: none; }
     width: 44px; height: 44px; border-radius: var(--radius);
     background: var(--card); border-color: var(--line2);
   }
-  .mobile-search-btn { display: grid; }
   .quran-jump { display: none !important; }
   .topbar-tools a[href="/downloads"] { display: none; } /* real link lives in the drawer instead, see .drawer-downloads */
   .hamburger { display: none !important; }
@@ -1788,7 +1825,10 @@ html.hide-footnotes .prose section.footnotes { display: none; }
      hides it outside reading pages ([hidden] attr), force it visible here so
      non-reading pages aren't left with no way to change theme (drawer's own
      swatch row was removed as the redundant second entry point) */
-  .topbar-tools [data-action="settings:toggle"][hidden] { display: grid; }
+  /* !important: must out-rank the global [hidden]{display:none !important}
+     guard — without it this rule silently loses and phones have no settings
+     entry (nor عن الموقع) outside reading pages */
+  .topbar-tools [data-action="settings:toggle"][hidden] { display: grid !important; }
   /* reading progress: 3px hairline on inset (1c) */
   .progress-track { height: 3px; background: var(--inset); }
   .progress-bar { background: var(--brand); }
@@ -1823,11 +1863,22 @@ html.hide-footnotes .prose section.footnotes { display: none; }
     content: ""; display: block; width: 40px; height: 4px; border-radius: var(--radius-pill);
     background: var(--line2); margin: 0 auto 10px;
   }
-  .drawer a {
+  .drawer a, .drawer .drawer-find {
     display: flex; align-items: center; min-height: 50px; padding: 0 2px;
     font-size: 16px; font-weight: 600; border-bottom: 1px solid var(--line); border-radius: 0;
   }
   .drawer-search { border: none; margin-bottom: 0; gap: 12px; }
+
+  /* drawer rows read as a tappable list (1b): trailing chevron */
+  .drawer a:not(.drawer-search)::after {
+    content: "‹"; margin-inline-start: auto; color: var(--ink3); font-size: 18px;
+  }
+
+  /* ════ كُناشة (2f) ════ */
+  .lib-tabs { width: 100%; }
+  .lib-tabs button { flex: 1; justify-content: center; padding: 9px 4px; font-size: 13px; gap: 5px; }
+  .lib-io .btn { font-size: 13px; padding: 8px 12px; white-space: nowrap; }
+  .lib-group-tabs { flex-wrap: wrap; }
 
   /* ════ popovers (settings 1d, filter) → bottom sheets ════ */
   .popover {
@@ -1843,16 +1894,9 @@ html.hide-footnotes .prose section.footnotes { display: none; }
   .hero { padding: 14px 16px 0; }
   .hero-eyebrow, .hero-lede, .hero-calligraphy-img, .divider-orn, .hero-pills { display: none; }
   .hero .plate-outer, .hero .plate-inner { border: none; padding: 0; background: none; box-shadow: none; }
-  /* search → inset pill, 48px (mockup) */
-  .hero form { display: flex; }
-  .hero form > div { flex: 1; display: flex; }
-  .hero input[type="text"] {
-    flex: 1; height: 48px; background: var(--inset); border: 1px solid var(--line);
-    border-radius: var(--radius-pill); padding: 0 16px;
-    font-family: var(--f-ui); font-size: 15px; color: var(--ink);
-  }
-  .hero input[type="text"]::placeholder { color: var(--ink3); }
-  .hero .hero-filter, .hero .btn-accent { display: none; }
+  /* home search hidden on mobile: the ONE search entry point is the bottom
+     tab bar — a second big pill here read as a duplicate */
+  .hero form { display: none; }
   /* section labels: 13px/700 ink2, no rule line (mockup h2) */
   .home-section { margin-top: 20px; }
   .section-head { margin-bottom: 10px; }

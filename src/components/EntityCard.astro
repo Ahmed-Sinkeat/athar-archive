@@ -11,8 +11,10 @@ interface Props {
   filterKey?: string;
   audio?: boolean;    // render a صوت badge (has a linked audio entry)
   era?: string;       // العصر — canonical value; badge shows eraLabel(), data-era filters
+  dlKind?: string;    // + dlId: render a quick download-for-offline button on the
+  dlId?: string;      //   row itself (size filled from /dl-sizes.json by downloads.ts)
 }
-const { href, title, kind, kindColor = "tag-accent", corner, sub, cta = "ادخل ←", filterKey, audio, era } = Astro.props;
+const { href, title, kind, kindColor = "tag-accent", corner, sub, cta = "ادخل ←", filterKey, audio, era, dlKind, dlId } = Astro.props;
 const hasRow = kind || corner || audio || era;
 ---
 <a class="card" href={href} data-kind={filterKey} data-era={era}>
@@ -31,4 +33,12 @@ const hasRow = kind || corner || audio || era;
   <div class="card-title">{title}</div>
   {sub && <div class="card-sub">{sub}</div>}
   {cta && <div class="card-cta">{cta}</div>}
+  {dlKind && dlId && (
+    <button type="button" class="card-dl" data-action="download:toggle" data-dl-compact
+      data-dl-kind={dlKind} data-dl-id={dlId} data-dl-title={title} data-dl-path={href}
+      aria-pressed="false" aria-label={`تنزيل «${title}» للقراءة دون اتصال`} title="تنزيل للقراءة دون اتصال">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"></path><path d="M7 10l5 5 5-5"></path><path d="M4 19h16"></path></svg>
+      <span class="card-dl-size" data-dl-size dir="ltr"></span>
+    </button>
+  )}
 </a>

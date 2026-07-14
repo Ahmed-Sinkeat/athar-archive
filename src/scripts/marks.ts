@@ -469,6 +469,22 @@ function showBookResume() {
   el.hidden = false;
 }
 
+// --- واصل القراءة (home shelf) — most recent reading pages, one entry per
+// work (deduped by title), rendered on the home page by reader.ts ---
+function recordRecent() {
+  const main = document.querySelector<HTMLElement>("main");
+  if (main?.dataset.reading !== "1") return;
+  const title = main.dataset.readerMain;
+  if (!title) return;
+  try {
+    const list: { path: string; title: string; sub?: string; ts: number }[] =
+      JSON.parse(localStorage.getItem("aa-recent") || "[]");
+    const entry = { path: docId(), title, sub: main.dataset.readerSub || undefined, ts: Date.now() };
+    localStorage.setItem("aa-recent",
+      JSON.stringify([entry, ...list.filter((e) => e.title !== title)].slice(0, 4)));
+  } catch { /* best-effort */ }
+}
+
 function onPage() {
   hideTools();
   closeFind();
@@ -478,6 +494,7 @@ function onPage() {
   maybeResume();
   jumpToHash();
   recordBookProgress();
+  recordRecent();
   showBookResume();
   syncSaveBtn();
 }

@@ -1,8 +1,10 @@
 // Serves the aa-downloads cache (pages + audio + their JS/CSS, stored by
-// downloads.ts). Pages/assets are network-first: online always gets the
-// freshly deployed version, the cache is only a fallback for offline or for
-// hashed assets deleted by a redeploy. Cache-first here caused stale pages
-// pointing at dead /_astro bundles → broken player until a hard reload.
+// downloads.ts and opportunistically by staleWhileRevalidate below). Pages/
+// assets are stale-while-revalidate: anything visited opens instantly from
+// cache and works offline, and a background refetch keeps the copy at most
+// one visit stale. (Pure cache-first with NO revalidation once caused stale
+// pages pointing at dead /_astro bundles → broken player until a hard
+// reload — the background refresh + the !res.ok fallback cover that now.)
 const CACHE_NAME = "aa-downloads";
 
 // App shell: the hub/nav pages, precached at install so the app opens
@@ -15,7 +17,15 @@ const SHELL_CACHE = "aa-shell";
 const SHELL_URLS = [
   "/", "/books", "/quran", "/hadith", "/poems", "/people", "/articles",
   "/questions", "/benefits", "/subjects", "/search", "/downloads", "/about",
+  "/dl-sizes.json", // per-entity download sizes for the list-row buttons
+  "/fonts/fonts.css", // self-hosted font faces — woff2s cached on use (SWR)
 ];
+
+// Web fonts (Google Fonts CSS + woff2) — cache-first in their own cache:
+// they're versioned URLs that basically never change, they're render-critical
+// for Arabic, and without this they're the one thing still needing network
+// on an otherwise fully-offline app.
+const FONT_CACHE = "aa-fonts";
 
 self.addEventListener("install", (e) => {
   e.waitUntil(Promise.all([
@@ -48,7 +58,9 @@ async function shellCacheFirst(request) {
 // the stored body into a proper 206; cache miss falls through to network.
 async function mediaResponse(request) {
   const cached = await (await caches.open(CACHE_NAME)).match(request.url);
-  if (!cached) return fetch(request);
+  // opaque bodies are unreadable — slicing one yields an empty broken 206;
+  // treat it like a miss and let the network serve it
+  if (!cached || cached.type === "opaque") return fetch(request);
   const range = request.headers.get("range");
   if (!range) return cached;
   const buf = await cached.arrayBuffer();
@@ -66,28 +78,59 @@ async function mediaResponse(request) {
   });
 }
 
+async function fontCacheFirst(request) {
+  const cache = await caches.open(FONT_CACHE);
+  const cached = await cache.match(request);
+  if (cached) return cached;
+  const res = await fetch(request);
+  // stylesheet <link> fetches are no-cors → opaque (ok:false) but still cacheable
+  if (res.ok || res.type === "opaque") cache.put(request, res.clone());
+  return res;
+}
+
+// /api/* only: search results must be live — cache is an offline fallback
 async function networkFirst(request) {
   const cache = await caches.open(CACHE_NAME);
-  let res;
   try {
-    res = await fetch(request);
+    return await fetch(request);
   } catch (err) {
     const cached = await cache.match(request);
     if (cached) return cached;
-    if (request.mode === "navigate") return cache.match("/offline.html");
     throw err;
   }
-  if (!res.ok) {
+}
+
+// Everything else same-origin: stale-while-revalidate — any page/asset ever
+// visited opens instantly from cache (and fully offline), while a background
+// refetch updates the copy for the NEXT visit. Content can be one visit stale;
+// for an archive of classical texts that's the right trade for app-fast opens.
+function cacheable(request) {
+  return request.mode === "navigate" || request.destination === "style" ||
+    request.destination === "script" || request.destination === "image" ||
+    request.destination === "font"; // self-hosted /fonts/gf/*.woff2
+}
+async function staleWhileRevalidate(event) {
+  const request = event.request;
+  const cache = await caches.open(CACHE_NAME);
+  const cached = await cache.match(request);
+  const refresh = fetch(request).then((res) => {
+    if (res.ok && cacheable(request)) cache.put(request, res.clone());
+    return res;
+  }).catch(() => null);
+  if (cached) {
+    event.waitUntil(refresh); // keep the SW alive until the refresh lands
+    return cached;
+  }
+  const res = await refresh;
+  if (res && res.ok) return res;
+  if (res) {
     // e.g. a redeploy deleted the hashed /_astro asset an offline-downloaded
     // page still references — the copy stored at download time keeps it working
-    const cached = await cache.match(request);
-    if (cached) return cached;
-  } else if (request.mode === "navigate" || request.destination === "style" || request.destination === "script") {
-    // opportunistic: any page/asset actually visited gets cached, so recently
-    // read content (not just explicit downloads) still opens offline
-    cache.put(request, res.clone());
+    const fallback = await cache.match(request);
+    return fallback || res;
   }
-  return res;
+  if (request.mode === "navigate") return cache.match("/offline.html");
+  throw new Error("offline and uncached: " + request.url);
 }
 
 self.addEventListener("fetch", (event) => {
@@ -99,13 +142,21 @@ self.addEventListener("fetch", (event) => {
     event.respondWith(mediaResponse(req));
     return;
   }
+  const url = new URL(req.url);
+  if (url.hostname === "fonts.googleapis.com" || url.hostname === "fonts.gstatic.com") {
+    event.respondWith(fontCacheFirst(req));
+    return;
+  }
   // other cross-origin traffic (GitHub API from /admin, analytics, …) is none
   // of our business — intercepting it only adds failure modes
-  const url = new URL(req.url);
   if (url.origin !== location.origin) return;
+  if (url.pathname.startsWith("/api/")) {
+    event.respondWith(networkFirst(req));
+    return;
+  }
   if (SHELL_URLS.includes(url.pathname.replace(/\/$/, "") || "/")) {
     event.respondWith(shellCacheFirst(req));
     return;
   }
-  event.respondWith(networkFirst(req));
+  event.respondWith(staleWhileRevalidate(event));
 });

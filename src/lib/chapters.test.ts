@@ -95,6 +95,16 @@ describe("parsePoem", () => {
     expect(poem.chapters[0].verses[0].n).toBe(2);
   });
 
+  it("splits when the separator is glued to the preceding word", () => {
+    const poem = parsePoem("ثم يعود الخوض والجدال... وتظهر الأئمة الضلال");
+    expect(poem.verses[0]).toMatchObject({ sadr: "ثم يعود الخوض والجدال", ajz: "وتظهر الأئمة الضلال" });
+  });
+
+  it("does NOT split a fully-attached ellipsis (quote elision, not a separator)", () => {
+    const poem = parsePoem("قال...فسكت عنه القوم جميعا");
+    expect(poem.verses[0].ajz).toBeUndefined();
+  });
+
   it("handles a single-hemistich verse (no separator)", () => {
     const poem = parsePoem("بيت بلا عجز");
     expect(poem.verses[0]).toMatchObject({ sadr: "بيت بلا عجز", anchor: "v1" });

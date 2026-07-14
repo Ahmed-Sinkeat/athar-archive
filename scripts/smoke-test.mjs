@@ -67,8 +67,8 @@ ok(/من آثارِه في الأرشيف/.test(person), "person lists works sec
 ok(/"@type":"ProfilePage"/.test(person), "ProfilePage JSON-LD");
 
 // --- topic hub lists materials ---
-section("/topic/aam-aqeedah");
-const topic = read("topic/aam-aqeedah/index.html");
+section("/topic/al-aqeedah-al-aamah");
+const topic = read("topic/al-aqeedah-al-aamah/index.html");
 ok((topic.match(/class="card"/g) || []).length >= 1, "topic lists linked materials");
 
 // --- questions QAPage ---

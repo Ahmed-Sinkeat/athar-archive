@@ -89,6 +89,12 @@ const featuredVerses = featured ? analyzePoem(await readBody(featured)).verses.s
                 <span class="poem-byline">{[c.poet, c.title].filter(Boolean).join(" · ")}</span>
                 <span class="row-spacer"></span>
                 <span class="row-meta">{verseCountLabel(c.count)}</span>
+                <button type="button" class="card-dl" data-action="download:toggle" data-dl-compact
+                  data-dl-kind="poem" data-dl-id={c.id} data-dl-title={c.rawTitle} data-dl-path={c.href}
+                  aria-pressed="false" aria-label={`تنزيل «${c.rawTitle}» للقراءة دون اتصال`} title="تنزيل للقراءة دون اتصال">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"></path><path d="M7 10l5 5 5-5"></path><path d="M4 19h16"></path></svg>
+                  <span class="card-dl-size" data-dl-size dir="ltr"></span>
+                </button>
               </div>
               {c.first && (
                 <p class="poem-card-verse" data-ar>

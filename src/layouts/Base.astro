@@ -117,14 +117,9 @@ const [readerSub, readerMain] = title.includes(" · ") ? title.split(" · ") : [
     <link rel="manifest" href="/manifest.webmanifest" />
     <meta name="theme-color" content="#2c4a3e" />
     <link rel="apple-touch-icon" href="/icons/icon-192.png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="preload" as="style"
-      href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Amiri+Quran&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap"
-      onload="this.onload=null;this.rel='stylesheet'"
-    />
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Amiri+Quran&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" /></noscript>
+    <!-- self-hosted fonts (public/fonts/) — same-origin: no third-party
+         round-trip, works fully offline via the SW, one less failure mode -->
+    <link rel="stylesheet" href="/fonts/fonts.css" />
     <!-- pre-paint: apply saved theme/scale/prefs before first paint to avoid flash -->
     <script is:inline>
       (() => {
@@ -195,12 +190,9 @@ const [readerSub, readerMain] = title.includes(" · ") ? title.split(" · ") : [
         </nav>
 
         <div class="topbar-tools">
-          <!-- mobile app header (design 1a): search icon button — desktop hides it -->
-          <a class="icon-btn mobile-search-btn" href={searchHref} aria-label="البحث">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
-          </a>
-          <!-- top-bar search removed: search now lives per-section (listing pages),
-               on the home hero, and in the drawer. -->
+          <!-- top-bar search removed entirely: on mobile the ONE search entry is
+               the bottom tab bar (or the المزيد menu on reading pages); desktop
+               keeps per-section searches + the drawer. -->
           <!-- Quran juz/page jump: only shown on /quran/* pages (reader.ts onPage) -->
           <div class="quran-jump" data-quran-jump hidden>
             <select data-quran-jump-juz aria-label="الانتقال إلى جزء">
@@ -291,6 +283,12 @@ const [readerSub, readerMain] = title.includes(" · ") ? title.split(" · ") : [
         <button class="toggle-btn pop-toggle" data-toggle="verseNums" data-action="toggle:verseNums" aria-pressed="true"><span class="toggle-dot"></span>ترقيم الأبيات</button>
         <button class="toggle-btn pop-toggle" data-toggle="pages" data-action="toggle:pages" aria-pressed="true"><span class="toggle-dot"></span>عرض الصفحات</button>
         <button class="toggle-btn pop-toggle" data-toggle="footnotes" data-action="toggle:footnotes" aria-pressed="true"><span class="toggle-dot"></span>الحواشي والتخريج</button>
+        <!-- the footer (where these normally live) is hidden in the mobile app
+             layout — the gear sheet is their one reachable home on phones -->
+        <div class="pop-links">
+          <a href="/about">عن الموقع</a>
+          <a href="/about#contact">تواصل</a>
+        </div>
       </div>
 
       <div class="progress-track"><div class="progress-bar" data-progress></div></div>
@@ -302,8 +300,14 @@ const [readerSub, readerMain] = title.includes(" · ") ? title.split(" · ") : [
     <aside class="drawer" id="mobile-drawer" data-drawer aria-label="القائمة" transition:persist>
       <a href={searchHref} class="drawer-search">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="20" y1="20" x2="16.65" y2="16.65"></line></svg>
-        <span>البحث</span>
+        <span>ابحث في الموقع</span>
       </a>
+      <!-- reading pages only (marks.ts syncFindFab unhides it): opens the
+           in-page find bar — the header has no room for it on mobile -->
+      <button type="button" class="drawer-search drawer-find" data-action="page:find" hidden>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="20" y1="20" x2="16.65" y2="16.65"></line><path d="M8 11h6"></path></svg>
+        <span>بحث في الصفحة</span>
+      </button>
       {navAll.map((n) => <a href={n.href} data-nav={n.id} aria-current={activeNav === n.id ? "page" : undefined}>{n.label}</a>)}
       <a href="/downloads" class="drawer-downloads" data-nav="downloads" aria-current={Astro.url.pathname === "/downloads" ? "page" : undefined}>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"></path><path d="M7 10l5 5 5-5"></path><path d="M4 19h16"></path></svg>
@@ -317,7 +321,11 @@ const [readerSub, readerMain] = title.includes(" · ") ? title.split(" · ") : [
       <button type="button" class="btn install-drawer-btn" data-action="install:reopen" hidden>تثبيت التطبيق</button>
     </aside>
 
-    <main data-active-nav={activeNav} data-reading={readingPage ? "1" : undefined}>
+    <!-- reader-* attrs: per-page source of truth for the persisted header —
+         the topbar keeps the FIRST page's server-rendered state across SPA
+         navigations, so reader.ts onPage() re-syncs it from here every swap -->
+    <main data-active-nav={activeNav} data-reading={readingPage ? "1" : undefined}
+      data-reader-main={readerMain} data-reader-sub={readerSub} data-reader-back={readerHref}>
       <slot />
     </main>
 
@@ -385,13 +393,13 @@ const [readerSub, readerMain] = title.includes(" · ") ? title.split(" · ") : [
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h9a3 3 0 013 3v13a3 3 0 00-3-3H4z"></path><path d="M20 4h-4v13h4z"></path></svg>
             <span>الكتب</span>
           </a>
-          <a href="/quran" aria-current={activeNav === "quran" ? "page" : undefined}>
-            <span class="tab-orn" aria-hidden="true">۞</span>
-            <span>القرآن</span>
-          </a>
           <a href={searchHref} aria-current={Astro.url.pathname.startsWith("/search") ? "page" : undefined}>
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
             <span>البحث</span>
+          </a>
+          <a href="/quran" aria-current={activeNav === "quran" ? "page" : undefined}>
+            <span class="tab-orn" aria-hidden="true">۞</span>
+            <span>القرآن</span>
           </a>
           <button data-action="menu:toggle" aria-label="القائمة">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>

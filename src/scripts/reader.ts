@@ -1335,6 +1335,56 @@ applyFootnotes(localStorage.getItem(LS.footnotes) !== "0");
 if (localStorage.getItem(LS.tashkeel) === "0") applyTashkeel(false);
 else document.querySelectorAll<HTMLElement>('[data-toggle="tashkeel"]').forEach((b) => b.setAttribute("aria-pressed", "true"));
 
+// The topbar is transition:persist — without this re-sync it keeps the FIRST
+// page's data-reading + reading title forever, showing a stale reading header
+// on browse pages (and vice versa) until a hard reload. <main> carries the
+// fresh per-page values (data-reader-* in Base.astro).
+function syncTopbarFromMain() {
+  const main = document.querySelector("main");
+  const bar = document.querySelector<HTMLElement>(".topbar");
+  if (!bar || !main) return;
+  if (main.dataset.reading === "1") bar.setAttribute("data-reading", "1");
+  else bar.removeAttribute("data-reading");
+  const mainEl = bar.querySelector<HTMLElement>(".topbar-reading-main");
+  if (mainEl) mainEl.textContent = main.dataset.readerMain || "";
+  let subEl = bar.querySelector<HTMLElement>(".topbar-reading-sub");
+  const sub = main.dataset.readerSub || "";
+  if (!subEl && sub && mainEl) {
+    subEl = document.createElement("span");
+    subEl.className = "topbar-reading-sub";
+    mainEl.parentElement?.appendChild(subEl);
+  }
+  if (subEl) { subEl.textContent = sub; subEl.hidden = !sub; }
+  const backEl = bar.querySelector<HTMLAnchorElement>(".topbar-reading-row a[aria-label='عودة']");
+  if (backEl && main.dataset.readerBack) backEl.setAttribute("href", main.dataset.readerBack);
+}
+
+// --- واصل القراءة home shelf: recent reading pages recorded by marks.ts ---
+const AR_DIGITS = "٠١٢٣٤٥٦٧٨٩";
+const arNum = (n: number) => String(n).replace(/\d/g, (d) => AR_DIGITS[+d]);
+const escHtml = (s: string) => s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]!);
+function renderRecentShelf() {
+  const shelf = document.querySelector<HTMLElement>("[data-recent-shelf]");
+  if (!shelf) return;
+  let list: { path: string; title: string; sub?: string }[] = [];
+  // escHtml below covers attribute breakout; the startsWith("/") guard covers
+  // what escaping can't — a javascript: href smuggled into localStorage
+  try {
+    list = JSON.parse(localStorage.getItem("aa-recent") || "[]")
+      .filter((e: { path?: string; title?: string }) => typeof e.path === "string" && e.path.startsWith("/") && e.title)
+      .slice(0, 3);
+  } catch { /* corrupt → empty */ }
+  const box = shelf.querySelector<HTMLElement>("[data-recent-list]");
+  if (!box || list.length === 0) { shelf.hidden = true; return; }
+  box.innerHTML = list.map((e) => {
+    const ratio = parseFloat(localStorage.getItem("aa-pos:" + e.path) || "0");
+    const pct = ratio > 0 ? `<span class="recent-pct" dir="rtl">${arNum(Math.round(ratio * 100))}٪</span>` : "";
+    const sub = e.sub ? `<span class="recent-sub">${escHtml(e.sub)}</span>` : "";
+    return `<a class="recent-card" href="${escHtml(e.path)}"><span class="recent-titles"><span class="recent-title">${escHtml(e.title)}</span>${sub}</span>${pct}<span class="recent-arrow" aria-hidden="true">←</span></a>`;
+  }).join("");
+  shelf.hidden = false;
+}
+
 // Highlight the nav item for the current page (header is persisted, so its
 // aria-current would otherwise stay on whatever page first rendered it).
 function updateActiveNav() {
@@ -1368,6 +1418,7 @@ function onPage() {
   if (localStorage.getItem(LS.tashkeel) === "0") applyTashkeel(false); // re-bare new content
   updateActiveNav();
   updateProgress();
+  renderRecentShelf();
   setDrawer(false); // a navigation always closes the (persisted) drawer
   // sidebar topbar icons: only meaningful on pages that actually have a
   // ReaderSidebar (book chapters, small books, poems, articles)
@@ -1378,6 +1429,7 @@ function onPage() {
   // reading-settings gear: only meaningful on pages with actual body content
   // to read (book/poem/article/quran/question), not browse/listing pages
   const isReadingPage = document.querySelector("main")?.dataset.reading === "1";
+  syncTopbarFromMain();
   document.querySelectorAll<HTMLElement>('[data-action="settings:toggle"]').forEach((b) => { b.hidden = !isReadingPage; });
   if (!isReadingPage) document.querySelector<HTMLElement>("[data-settings-pop]")?.setAttribute("hidden", "");
   // بيت numbering only means anything on poems — hide the toggle elsewhere
@@ -1431,10 +1483,11 @@ function applyStoredPrefs() {
 document.addEventListener("astro:after-swap", () => {
   root = document.documentElement;
   applyStoredPrefs();
+  syncTopbarFromMain(); // before paint — no flash of the previous page's header
 });
 
 // Close the drawer the moment a link inside it is clicked (the SPA router would
 // otherwise leave the persisted drawer open over the new page).
 document.addEventListener("click", (e) => {
-  if ((e.target as HTMLElement).closest("[data-drawer] a")) setDrawer(false);
+  if ((e.target as HTMLElement).closest("[data-drawer] a, [data-drawer] button")) setDrawer(false);
 });

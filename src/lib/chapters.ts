@@ -91,11 +91,15 @@ export function splitChapters(body: string): ChapterSplit {
 }
 
 function finalizeChapter(c: { title: string; lines: string[] }, index: number): RawChapter {
-  const cleanTitle = c.title.replace(/<[^>]*>/g, "").replace(/\s+/g, " ").trim();
+  // imported headings sometimes wrap the whole title in markdown bold (`**…**`),
+  // which isn't real HTML — strip it before the HTML-preservation check below,
+  // so it doesn't come back via rawTitle as literal asterisks on the page
+  const mdStripped = c.title.replace(/\*\*(.+?)\*\*/g, "$1").replace(/__(.+?)__/g, "$1");
+  const cleanTitle = mdStripped.replace(/<[^>]*>/g, "").replace(/\s+/g, " ").trim();
   const slug = slugifyArabic(cleanTitle) || `chapter-${index + 1}`;
   return {
     title: cleanTitle,
-    rawTitle: c.title !== cleanTitle ? c.title : undefined,
+    rawTitle: mdStripped.trim() !== cleanTitle ? mdStripped.trim() : undefined,
     slug,
     order: index + 1,
     content: c.lines.join("\n").trim()
@@ -176,7 +180,10 @@ export interface ParsedPoem {
 }
 
 // A verse line uses ` --- ` (or ` ... `) to separate the two hemistichs.
-const HEMISTICH_SEP = /\s+(?:---|\.\.\.|‏…|…)\s+/;
+// whitespace required on ONE side only: imports often glue the separator to
+// the preceding word («والجدال... وتظهر») — but fully-attached (no space at
+// all) stays unsplit, that's a real ellipsis inside a quote, not a separator
+const HEMISTICH_SEP = /(?:\s+(?:---|\.\.\.|‏…|…)\s*|\s*(?:---|\.\.\.|‏…|…)\s+)/;
 
 // spelled out or as the single ligature codepoint (﷽, U+FDFD)
 function isBasmalaLine(t: string): boolean {

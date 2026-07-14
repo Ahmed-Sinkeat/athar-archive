@@ -10,10 +10,11 @@
     "import:telegram": "tsx scripts/telegram-import.ts",
     "import:blogspot": "tsx scripts/blogspot-import.ts",
     "dedupe:articles": "tsx scripts/dedupe-articles.ts",
-    "build": "pnpm validate:content && tsx scripts/gen-takhrij.ts && astro build && node scripts/copy-content-assets.mjs && tsx scripts/gen-tafsir-frags.ts && tsx scripts/gen-book-chapters.ts && tsx scripts/gen-redirects.ts && node scripts/gen-headers.mjs",
+    "build": "pnpm validate:content && tsx scripts/gen-takhrij.ts && astro build && node scripts/copy-content-assets.mjs && tsx scripts/gen-tafsir-frags.ts && tsx scripts/gen-book-chapters.ts && tsx scripts/gen-redirects.ts && node scripts/gen-dl-sizes.mjs && node scripts/gen-headers.mjs",
     "preview": "astro preview",
     "validate": "astro check",
     "validate:content": "tsx scripts/validate-content.ts",
+    "audit:content": "tsx scripts/audit-content.ts",
     "a11y": "node scripts/a11y-audit.mjs",
     "smoke": "node scripts/smoke-test.mjs",
     "check:links": "node scripts/check-links.mjs",
@@ -27,7 +28,7 @@
     "search:index": "pnpm search:hashes && pnpm search:gen && for f in dist/search-index/*.sql; do wrangler d1 execute athar-search --remote -y --file \"$f\" || exit 1; done",
     "search:index:local": "pnpm search:gen && for f in dist/search-index/*.sql; do wrangler d1 execute athar-search --local -y --file \"$f\" || exit 1; done",
     "r2:upload": "node scripts/upload-r2-assets.mjs",
-    "deploy": "pnpm r2:upload && wrangler deploy -c dist/server/wrangler.json"
+    "deploy": "node scripts/smoke-test.mjs && pnpm r2:upload && wrangler deploy -c dist/server/wrangler.json"
   },
   "keywords": [],
   "author": "",

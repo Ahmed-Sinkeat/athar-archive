@@ -18,6 +18,8 @@ const card = (it: any) => ({
   kindColor: "tag-verdigris",
   sub: it.data.person ? names.get(it.data.person) ?? "" : "",
   cta: "اقرأ ←",
+  dlKind: "article",
+  dlId: it.id,
 });
 ---
 <Base title="مقالات ومحاضرات" description="مقالاتٌ علميةٌ محرَّرةٌ في مسائل العلم وأصوله." activeNav="articles" jsonLd={collectionLd({ title: "مقالات ومحاضرات", path: "/articles", crumbs: [{ name: "الرئيسية", path: "/" }, { name: "مقالات ومحاضرات", path: "/articles" }] })}>

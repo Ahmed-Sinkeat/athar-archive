@@ -41,27 +41,36 @@ function formatSize(bytes: number): string {
 
 // Same-book/poem chapter links are already on the landing page's own TOC —
 // reuse them instead of asking the server for a manifest. No TOC (single-page
-// book/poem, or a Quran surah page) → just download the current page.
-function collectUrls(): string[] {
-  const links = document.querySelectorAll<HTMLAnchorElement>(".toc-box a[href], .card-grid a[href]");
-  const urls = new Set<string>();
+// book/poem, or a Quran surah page) → just download the landing page itself.
+// `doc` may be a DOMParser document of a NOT-currently-open landing page —
+// that's how the quick download buttons on list rows work without navigating.
+function collectUrls(doc: Document = document, pagePath: string = location.pathname): string[] {
+  const links = doc.querySelectorAll<HTMLAnchorElement>(".toc-box a[href], .card-grid a[href]");
+  const urls = new Set<string>([pagePath]); // the landing page itself is part of the download
   for (const a of links) {
     const href = a.getAttribute("href");
     if (href && href.startsWith("/")) urls.add(href);
   }
-  if (urls.size === 0) urls.add(location.pathname);
   // audio on this page (single track or lesson-series playlist) — cross-origin
   // R2 URLs, fetchable because the bucket allows this origin via CORS
-  for (const el of document.querySelectorAll<HTMLElement>("[data-audio]")) {
+  for (const el of doc.querySelectorAll<HTMLElement>("[data-audio]")) {
     const tracks = el.dataset.audioTracks;
     if (tracks) {
       try { for (const t of JSON.parse(tracks)) if (t?.url) urls.add(t.url); } catch { /* malformed JSON → skip */ }
     } else {
-      const src = el.querySelector<HTMLSourceElement>("[data-audio-source]")?.src;
+      const src = el.querySelector<HTMLSourceElement>("[data-audio-source]")?.getAttribute("src");
       if (src) urls.add(src);
     }
   }
   return [...urls];
+}
+
+// exact per-entity download sizes, computed at build time (gen-dl-sizes.mjs)
+// — one small JSON instead of a HEAD probe per page
+let sizesPromise: Promise<Record<string, number>> | null = null;
+function getSizes(): Promise<Record<string, number>> {
+  sizesPromise ??= fetch("/dl-sizes.json").then((r) => (r.ok ? r.json() : {})).catch(() => ({}));
+  return sizesPromise;
 }
 
 function escapeHtml(s: string): string {
@@ -72,9 +81,26 @@ async function startDownload(btn: HTMLElement) {
   const kind = btn.dataset.dlKind!;
   const id = btn.dataset.dlId!;
   const title = btn.dataset.dlTitle || document.title;
-  const urls = collectUrls();
+  const path = btn.dataset.dlPath || location.pathname;
   const label = btn.querySelector("[data-dl-label]");
+  const sizeEl = btn.querySelector<HTMLElement>("[data-dl-size]");
   btn.setAttribute("data-dl-busy", "1");
+  // quick download from a list row: the landing page isn't open, so fetch it
+  // and read its TOC/audio from the parsed HTML instead of the live DOM
+  let urls: string[];
+  if (path !== location.pathname) {
+    try {
+      const res = await fetch(path);
+      if (!res.ok) throw new Error(String(res.status));
+      urls = collectUrls(new DOMParser().parseFromString(await res.text(), "text/html"), path);
+    } catch {
+      btn.removeAttribute("data-dl-busy");
+      if (sizeEl) sizeEl.textContent = "تعذّر";
+      return;
+    }
+  } else {
+    urls = collectUrls();
+  }
   const cache = await caches.open(CACHE_NAME);
   let bytes = 0;
   let done = 0;
@@ -103,6 +129,7 @@ async function startDownload(btn: HTMLElement) {
     }
     done++;
     if (label) label.textContent = `جارٍ التنزيل… ${done}/${urls.length}`;
+    if (sizeEl) sizeEl.textContent = `${done}/${urls.length}`;
   }
   for (const url of assets) {
     try {
@@ -117,7 +144,7 @@ async function startDownload(btn: HTMLElement) {
     }
   }
   const manifest = getManifest();
-  manifest[keyOf(kind, id)] = { kind, id, title, urls, bytes, ts: Date.now(), path: location.pathname };
+  manifest[keyOf(kind, id)] = { kind, id, title, urls, bytes, ts: Date.now(), path };
   saveManifest(manifest);
   btn.removeAttribute("data-dl-busy");
   renderDownloadButton(btn);
@@ -160,28 +187,43 @@ async function estimateSize(kind: string, id: string, urls: string[]): Promise<n
 function renderDownloadButton(btn: HTMLElement) {
   const kind = btn.dataset.dlKind!;
   const id = btn.dataset.dlId!;
-  const entry = getManifest()[keyOf(kind, id)];
+  const key = keyOf(kind, id);
+  const entry = getManifest()[key];
   const label = btn.querySelector("[data-dl-label]");
+  const sizeEl = btn.querySelector<HTMLElement>("[data-dl-size]");
   if (entry) {
     btn.setAttribute("aria-pressed", "true");
     if (label) label.textContent = `متوفر دون اتصال (${formatSize(entry.bytes)}) — إزالة`;
+    if (sizeEl) sizeEl.textContent = "✓";
     return;
   }
   btn.setAttribute("aria-pressed", "false");
-  const urls = collectUrls();
-  const cached = sizeEstimateCache.get(keyOf(kind, id));
-  if (label) {
-    label.textContent = cached != null
-      ? `تنزيل للقراءة دون اتصال (${formatSize(cached)})`
-      : urls.length > 1 ? `تنزيل للقراءة دون اتصال (${urls.length} صفحة)` : "تنزيل للقراءة دون اتصال";
-  }
-  if (cached == null && !btn.hasAttribute("data-dl-busy")) {
-    estimateSize(kind, id, urls).then((bytes) => {
-      if (bytes == null || btn.getAttribute("aria-pressed") === "true") return;
-      const l = btn.querySelector("[data-dl-label]");
-      if (l) l.textContent = `تنزيل للقراءة دون اتصال (${formatSize(bytes)})`;
-    });
-  }
+  // exact size from the build-time manifest; per-page HEAD probing stays as a
+  // fallback for anything the manifest misses (e.g. Quran surahs)
+  getSizes().then((sizes) => {
+    if (btn.getAttribute("aria-pressed") === "true" || btn.hasAttribute("data-dl-busy")) return;
+    const bytes = sizes[key];
+    if (bytes != null) {
+      if (label) label.textContent = `تنزيل للقراءة دون اتصال (${formatSize(bytes)})`;
+      if (sizeEl) sizeEl.textContent = formatSize(bytes);
+      return;
+    }
+    if (sizeEl) { sizeEl.textContent = ""; return; } // compact rows: no probe storm
+    const urls = collectUrls();
+    const cached = sizeEstimateCache.get(key);
+    if (label) {
+      label.textContent = cached != null
+        ? `تنزيل للقراءة دون اتصال (${formatSize(cached)})`
+        : urls.length > 1 ? `تنزيل للقراءة دون اتصال (${urls.length} صفحة)` : "تنزيل للقراءة دون اتصال";
+    }
+    if (cached == null && !btn.hasAttribute("data-dl-busy")) {
+      estimateSize(kind, id, urls).then((bytes2) => {
+        if (bytes2 == null || btn.getAttribute("aria-pressed") === "true") return;
+        const l = btn.querySelector("[data-dl-label]");
+        if (l) l.textContent = `تنزيل للقراءة دون اتصال (${formatSize(bytes2)})`;
+      });
+    }
+  });
 }
 
 function renderDownloadsList() {
