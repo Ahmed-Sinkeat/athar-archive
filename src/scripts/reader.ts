@@ -50,7 +50,6 @@ function syncWidthButtons(w: Width) {
 
 // --- theme (3 states: paper default / noir / mono) ---
 type Theme = "paper" | "noir" | "mono";
-const THEME_CYCLE: Theme[] = ["paper", "noir", "mono"];
 
 function setTheme(t: Theme) {
   if (t === "paper") root.removeAttribute("data-theme");
@@ -65,9 +64,6 @@ function currentTheme(): Theme {
 function syncThemeButtons(t: Theme) {
   document.querySelectorAll<HTMLElement>("[data-theme-btn]").forEach((b) => {
     b.setAttribute("aria-pressed", String(b.dataset.themeBtn === t));
-  });
-  document.querySelectorAll<HTMLElement>("[data-theme-icon]").forEach((el) => {
-    el.hidden = el.dataset.themeIcon !== t;
   });
 }
 
@@ -275,7 +271,6 @@ const actions: Record<string, () => void> = {
   "toggle:verseNums": () => applyVnums(root.classList.contains("hide-vnums")),
   "toggle:pages": () => applyPages(root.classList.contains("pages-flow")),
   "toggle:footnotes": () => applyFootnotes(root.classList.contains("hide-footnotes")),
-  "theme:cycle": () => setTheme(THEME_CYCLE[(THEME_CYCLE.indexOf(currentTheme()) + 1) % THEME_CYCLE.length]),
   "theme:paper": () => setTheme("paper"),
   "theme:noir": () => setTheme("noir"),
   "theme:mono": () => setTheme("mono"),
@@ -287,7 +282,18 @@ const actions: Record<string, () => void> = {
   // closed → open the bar; open → just close it (Enter in the field runs the search).
   "search:toggle": () => { if (!isSearchOpen()) openSearch(); else topsearch?.classList.remove("is-open"); },
   "search:filter": () => togglePop(filterPop, "search:filter"),
-  "search:apply": () => { location.href = buildSearchUrl(); },
+  // already on /search: re-run the live query instead of a full reload (keeps
+  // the page's own results list + load-more state working as expected)
+  "search:apply": () => {
+    const url = buildSearchUrl();
+    if (location.pathname === "/search") {
+      history.replaceState(null, "", url);
+      closeAllPops();
+      window.dispatchEvent(new Event("aa-search-refresh"));
+    } else {
+      location.href = url;
+    }
+  },
   "settings:toggle": () => togglePop(settingsPop, "settings:toggle"),
   // topbar "chapter/heading list" icon → open the current page's sidebar
   // popup (ReaderSidebar.astro's <details>, mobile-only via CSS).
@@ -1061,9 +1067,31 @@ document.addEventListener(
     // playbackRate resets on load() in some browsers — reapply the site-wide preference
     const speed = parseFloat(localStorage.getItem(LS.audioSpeed) || "1");
     if (!isNaN(speed)) el.playbackRate = speed;
+    // same track carried across an in-app navigation (see astro:before-swap
+    // below) — resume playing instead of leaving it seeked-but-paused
+    if (key && sessionStorage.getItem("aa-audio-resume") === key) {
+      sessionStorage.removeItem("aa-audio-resume");
+      el.play().catch(() => {});
+    }
   },
   true,
 );
+// Same-audio continuity across navigation (e.g. a book's chapters sharing one
+// lesson): this Astro version's transition:persist only accepts a compile-time
+// string literal (see AudioPlayer.astro — a runtime expression renders as the
+// literal source text, which broke playback across ALL pages), so DOM
+// persistence isn't available here. Instead, save the position right before a
+// swap under the same key loadedmetadata already restores from above, and flag
+// a resume — the new page's audio only matches that key if it's the exact same
+// URL, so a genuinely different track just starts fresh as it should.
+document.addEventListener("astro:before-swap", () => {
+  const el = document.querySelector<HTMLAudioElement>("[data-audio-el]");
+  if (!el || el.paused) return;
+  const key = audioProgressKey(el);
+  if (!key) return;
+  localStorage.setItem(key, String(el.currentTime));
+  sessionStorage.setItem("aa-audio-resume", key);
+});
 ["pause", "seeked"].forEach((evt) =>
   document.addEventListener(
     evt,

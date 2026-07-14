@@ -61,6 +61,9 @@ const jsonLd = questionLd({
   title: entry.data.title, answerText, path, publishedAt: entry.data.published_at,
   crumbs: [{ name: "الرئيسية", path: "/" }, { name: "المسائل", path: "/questions" }, { name: entry.data.title, path }],
 });
+// no description field in these questions' frontmatter — a snippet of the
+// actual answer is a genuinely useful meta description, not a filler one
+const pageDescription = answerText ? answerText.slice(0, 155) + (answerText.length > 155 ? "…" : "") : entry.data.title;
 
 // Split the rendered body at the «الجواب» heading (tagged masail-a by the
 // processor) so السؤال gets its own subordinate card and الجواب its section
@@ -83,7 +86,7 @@ let answerTitle = "الجواب";
   }
 }
 ---
-<Base title={entry.data.title} activeNav="questions" ogType="article" jsonLd={jsonLd} readingPage>
+<Base title={entry.data.title} description={pageDescription} activeNav="questions" ogType="article" jsonLd={jsonLd} readingPage>
   <Breadcrumbs width="wrap-read" items={[{ label: "الرئيسية", href: "/" }, { label: "المسائل", href: "/questions" }, { label: entry.data.title }]} />
   <article class="wrap-read reading-pad" data-cite-book={entry.data.title} data-cite-author={personName}>
     <header class="masala-head">

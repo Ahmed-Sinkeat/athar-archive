@@ -246,6 +246,11 @@ function renderDownloadsList() {
   if (totalEl) totalEl.textContent = entries.length > 0 ? `· ${formatSize(totalBytes)}` : "";
 }
 
+// Capture phase: these buttons sit inside a card <a href>, and ClientRouter's
+// own click listener (Base.astro, bubble phase) decides whether to soft-navigate
+// by checking ev.defaultPrevented — since it's registered earlier in the page
+// than this module script, its bubble-phase handler would otherwise run BEFORE
+// this one and already navigate into the card. Capture always runs first.
 document.addEventListener("click", (e) => {
   const target = e.target as HTMLElement;
 
@@ -271,7 +276,7 @@ document.addEventListener("click", (e) => {
     removeDownload(removeBtn.dataset.dlKind!, removeBtn.dataset.dlId!);
     return;
   }
-});
+}, true);
 
 function onPage() {
   document.querySelectorAll<HTMLElement>('[data-action="download:toggle"]').forEach(renderDownloadButton);

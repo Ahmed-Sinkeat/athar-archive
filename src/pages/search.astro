@@ -5,7 +5,10 @@ import Breadcrumbs from "../components/Breadcrumbs.astro";
 // scripts/gen-search-index.ts). Replaced the Google site-search delegation —
 // still no keys, no third-party (SEC-01); noindex (FR-S-04/06).
 // Scope params carried from section pages / reader: scope=<type>, in=<book|poem id>,
-// person=<slug>, label=<human hint>.
+// person=<slug,slug>, label=<human hint>. types=<a,b> and person=<a,b> (multi)
+// also come from the shared filter popover (Base.astro) via reader.ts's
+// buildSearchUrl(); "search:apply" re-runs this page's own query instead of a
+// full reload when already here (see the aa-search-refresh listener below).
 ---
 <Base title="البحث" activeNav="home" noindex>
   <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "البحث" }]} />
@@ -13,12 +16,13 @@ import Breadcrumbs from "../components/Breadcrumbs.astro";
     <div class="search-bar-row">
       <div class="search-bar">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path></svg>
-        <input id="q" type="search" autocomplete="off" placeholder="ابحث في المتون والمنظومات والأعلام…" class="search-input" />
+        <input id="q" data-topsearch-input type="search" autocomplete="off" placeholder="ابحث في المتون والمنظومات والأعلام…" class="search-input" />
       </div>
       <button type="button" id="go" class="search-submit">بحث</button>
     </div>
 
-    <span id="results-count" class="search-count"></span>
+    <div id="history" class="search-history" hidden></div>
+
     <div class="search-scope-row">
       <div class="search-scope-chips" role="group" aria-label="تحديد نطاق البحث">
         <button type="button" class="search-scope-chip" data-scope="" aria-pressed="true">الكل</button>
@@ -30,9 +34,31 @@ import Breadcrumbs from "../components/Breadcrumbs.astro";
         <button type="button" class="search-scope-chip" data-scope="person" aria-pressed="false">الأعلام</button>
         <button type="button" class="search-scope-chip" data-scope="term" aria-pressed="false">المعجم</button>
       </div>
+      <button type="button" class="search-filter-btn" data-action="search:filter" aria-expanded="false" aria-label="تصفية حسب المؤلف">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"></path></svg>
+        تصفية
+      </button>
+    </div>
+
+    <div class="search-tools-row">
+      <span id="results-count" class="search-count"></span>
+      <label class="search-tool">دقة البحث
+        <select id="mode">
+          <option value="all">كل الكلمات</option>
+          <option value="any">أي كلمة</option>
+          <option value="phrase">العبارة نفسها</option>
+        </select>
+      </label>
+      <label class="search-tool">الترتيب
+        <select id="sort">
+          <option value="relevance">الأقرب صلة</option>
+          <option value="death">وفاة المؤلف</option>
+        </select>
+      </label>
     </div>
     <div id="scope-note" class="faint u608848d"></div>
     <div id="results" class="search-results" aria-live="polite"></div>
+    <button type="button" id="more" class="search-load-more" hidden>تحميل المزيد</button>
 
     <style is:global>
       .search-page { padding-top: 8px; }
@@ -51,7 +77,13 @@ import Breadcrumbs from "../components/Breadcrumbs.astro";
         padding: 0 26px; font-family: var(--font-ui); font-size: 14px; font-weight: 600; cursor: pointer;
       }
       .search-submit:hover { background: var(--brand2, var(--accent)); }
-      .search-scope-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 0 0 28px; }
+      .search-history { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 0; }
+      .search-history-chip {
+        font-family: var(--font-ui); font-size: 11.5px; color: var(--ink-faint); background: none;
+        border: 1px dashed var(--rule); border-radius: 999px; padding: 4px 12px; cursor: pointer;
+      }
+      .search-history-chip:hover { border-style: solid; color: var(--ink-soft); }
+      .search-scope-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin: 16px 0 12px; }
       .search-scope-chips { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
       .search-scope-chip {
         font-family: var(--font-ui); font-size: 11.5px; color: var(--ink-soft); background: none;
@@ -60,12 +92,24 @@ import Breadcrumbs from "../components/Breadcrumbs.astro";
       }
       .search-scope-chip:hover { border-color: var(--rule-strong); }
       .search-scope-chip[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); font-weight: 600; }
-      .search-count { display: block; font-size: 12px; color: var(--ink-faint); margin: 14px 0 10px; }
+      .search-filter-btn {
+        display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-ui); font-size: 11.5px;
+        color: var(--ink-soft); background: none; border: 1px solid var(--rule); border-radius: 999px;
+        padding: 5px 14px; cursor: pointer;
+      }
+      .search-filter-btn[aria-expanded="true"], .search-filter-btn:hover { border-color: var(--rule-strong); color: var(--ink); }
+      .search-tools-row { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin: 0 0 20px; }
+      .search-tool { display: flex; align-items: center; gap: 6px; font-family: var(--font-ui); font-size: 11.5px; color: var(--ink-faint); }
+      .search-tool select {
+        font-family: var(--font-ui); font-size: 12px; color: var(--ink); background: var(--surface);
+        border: 1px solid var(--rule); border-radius: 6px; padding: 3px 8px; cursor: pointer;
+      }
+      .search-count { font-size: 12px; color: var(--ink-faint); }
       .search-results { display: flex; flex-direction: column; gap: 12px; }
       .search-hit {
         display: block; text-align: start; background: var(--surface); border: 1px solid var(--rule);
         border-inline-end: 3px solid var(--accent); border-radius: 10px; padding: 18px 20px;
-        text-decoration: none; color: var(--ink); transition: border-color .15s;
+        text-decoration: none; color: var(--ink); transition: border-color .15s; position: relative;
       }
       .search-hit:hover { border-color: var(--accent); }
       .search-hit[data-type="quran"] { border-inline-end-color: var(--gold-text); }
@@ -81,6 +125,18 @@ import Breadcrumbs from "../components/Breadcrumbs.astro";
       .search-hit[data-type="article"] .search-hit-kicker, .search-hit[data-type="term"] .search-hit-kicker { color: var(--verdigris); }
       .search-hit-snippet { margin: 0; font-family: var(--font-serif); font-size: 16px; line-height: 2; color: var(--ink); }
       .search-hit-snippet mark { background: var(--gold-soft); color: inherit; border-radius: 3px; padding: 0 3px; }
+      .search-hit-cite { margin: 10px 0 0; font-family: var(--font-ui); font-size: 11.5px; color: var(--ink-faint); }
+      .search-hit-copy {
+        position: absolute; inset-inline-end: 14px; top: 14px; background: none; border: none; cursor: pointer;
+        color: var(--ink-faint); padding: 4px; line-height: 0; border-radius: 6px;
+      }
+      .search-hit-copy:hover { color: var(--ink); background: var(--paper); }
+      .search-load-more {
+        display: block; margin: 20px auto 0; font-family: var(--font-ui); font-size: 13px; font-weight: 600;
+        color: var(--ink); background: var(--surface); border: 1px solid var(--rule-strong); border-radius: 8px;
+        padding: 10px 24px; cursor: pointer;
+      }
+      .search-load-more:hover { border-color: var(--accent); color: var(--accent); }
       .search-empty { font-family: var(--font-ui); font-size: 14px; color: var(--ink-soft); margin-top: 24px; }
     </style>
 
@@ -95,55 +151,126 @@ import Breadcrumbs from "../components/Breadcrumbs.astro";
       if (!input) return;
       const results = document.getElementById("results");
       const countEl = document.getElementById("results-count");
+      const moreBtn = document.getElementById("more");
+      const modeEl = document.getElementById("mode");
+      const sortEl = document.getElementById("sort");
+      const historyEl = document.getElementById("history");
       const params = new URLSearchParams(location.search);
       const label = params.get("label");
       const inBook = params.get("in") || "";
-      const person = params.get("person") || "";
       if (label) document.getElementById("scope-note").textContent = `سياق: ${label}`;
 
       const TYPE_LABEL = { quran: "قرآن", book: "كتاب", poem: "منظومة", article: "مقالة", question: "مسألة", term: "معجم", person: "عَلَم" };
-      let scope = params.get("scope") || (params.get("types") || "").split(",")[0] || "";
+      let scope = params.get("scope") || "";
       if (!TYPE_LABEL[scope]) scope = "";
+      let extraTypes = (params.get("types") || "").split(",").filter((t) => t && TYPE_LABEL[t]);
+      let persons = (params.get("person") || "").split(",").filter(Boolean);
       const chips = document.querySelectorAll(".search-scope-chip");
+      const syncChips = () => chips.forEach((chip) => chip.setAttribute("aria-pressed", String((chip.dataset.scope || "") === scope)));
+      syncChips();
       chips.forEach((chip) => {
-        chip.setAttribute("aria-pressed", String((chip.dataset.scope || "") === scope));
         chip.addEventListener("click", () => {
           scope = chip.dataset.scope || "";
-          chips.forEach((c) => c.setAttribute("aria-pressed", String(c === chip)));
+          extraTypes = []; // a chip click is a fresh, simple choice
+          syncChips();
+          offset = 0;
           go();
         });
       });
+      modeEl.value = params.get("mode") || "all";
+      sortEl.value = params.get("sort") || "relevance";
+      modeEl.addEventListener("change", () => { offset = 0; go(); });
+      sortEl.addEventListener("change", () => { offset = 0; go(); });
 
+      // recent searches (localStorage, most-recent-first, capped)
+      const HIST_KEY = "aa-search-history";
+      const getHistory = () => { try { return JSON.parse(localStorage.getItem(HIST_KEY) || "[]"); } catch { return []; } };
+      const addHistory = (term) => {
+        const h = [term, ...getHistory().filter((t) => t !== term)].slice(0, 8);
+        localStorage.setItem(HIST_KEY, JSON.stringify(h));
+      };
       const esc = (s) => s.replace(/[&<>]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]));
+      const renderHistory = () => {
+        const h = getHistory();
+        if (!h.length || input.value.trim()) { historyEl.hidden = true; return; }
+        historyEl.innerHTML = h.map((t) => `<button type="button" class="search-history-chip">${esc(t)}</button>`).join("");
+        historyEl.hidden = false;
+      };
+      historyEl.addEventListener("click", (e) => {
+        const btn = e.target.closest(".search-history-chip");
+        if (!btn) return;
+        input.value = btn.textContent;
+        offset = 0;
+        go();
+      });
+      input.addEventListener("focus", renderHistory);
+
       let seq = 0;
-      const go = async () => {
-        const terms = input.value.trim();
-        const my = ++seq;
-        if (!terms) { results.innerHTML = ""; countEl.textContent = ""; return; }
-        const p = new URLSearchParams({ q: terms });
-        if (scope) p.set("type", scope);
-        if (inBook) p.set("book", inBook);
-        if (person && !inBook) p.set("person", person.split(",")[0]);
-        const res = await fetch("/api/search?" + p).catch(() => null);
-        if (my !== seq) return; // a newer query already answered
-        const hits = res && res.ok ? (await res.json()).hits : null;
-        if (my !== seq) return;
-        if (!hits) { results.innerHTML = '<p class="search-empty">تعذَّر البحث الآن — حاولْ لاحقًا.</p>'; countEl.textContent = ""; return; }
-        if (!hits.length) { results.innerHTML = '<p class="search-empty">لا نتائج.</p>'; countEl.textContent = ""; return; }
-        countEl.textContent = `${hits.length} نتائج عن «${terms}»`;
-        results.innerHTML = hits.map((h) =>
-          `<a class="search-hit" data-type="${esc(h.type)}" href="${esc(h.url)}">` +
+      let offset = 0;
+      let lastHits = [];
+      const renderHit = (h) => {
+        const cite = h.person_name
+          ? `<p class="search-hit-cite">${esc(h.person_name)}${h.death_year ? ` (ت ${h.death_year}هـ)` : ""}</p>` : "";
+        const plain = (h.title + " — " + h.snippet.replace(/<\/?mark>/g, "")).replace(/&lt;|&gt;|&amp;/g, "");
+        return `<div class="search-hit" data-type="${esc(h.type)}">` +
+          `<a href="${esc(h.url)}" style="display:block;color:inherit;text-decoration:none;">` +
           `<p class="search-hit-kicker">${TYPE_LABEL[h.type] || ""} · ${esc(h.title)}</p>` +
           `<p class="search-hit-snippet">${esc(h.snippet).replaceAll("&lt;mark&gt;", "<mark>").replaceAll("&lt;/mark&gt;", "</mark>")}</p>` +
-          `</a>`).join("");
+          cite + `</a>` +
+          `<button type="button" class="search-hit-copy" data-copy="${esc(plain)}" title="نسخ" aria-label="نسخ النتيجة">` +
+          `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>` +
+          `</button></div>`;
       };
+      results.addEventListener("click", (e) => {
+        const btn = e.target.closest(".search-hit-copy");
+        if (!btn) return;
+        const ok = () => { btn.setAttribute("title", "نُسخ ✓"); setTimeout(() => btn.setAttribute("title", "نسخ"), 1200); };
+        const fail = () => { btn.setAttribute("title", "تعذَّر النسخ"); setTimeout(() => btn.setAttribute("title", "نسخ"), 1200); };
+        (navigator.clipboard?.writeText(btn.dataset.copy || "") || Promise.reject()).then(ok, fail);
+      });
+
+      const go = async (append = false) => {
+        const terms = input.value.trim();
+        const my = ++seq;
+        if (!terms) { results.innerHTML = ""; countEl.textContent = ""; moreBtn.hidden = true; renderHistory(); return; }
+        historyEl.hidden = true;
+        const p = new URLSearchParams({ q: terms, mode: modeEl.value, sort: sortEl.value, offset: String(offset) });
+        const types = new Set(extraTypes);
+        if (scope) types.add(scope);
+        if (types.size) p.set("type", [...types].join(","));
+        if (inBook) p.set("book", inBook);
+        if (persons.length) p.set("person", persons.join(","));
+        const res = await fetch("/api/search?" + p).catch(() => null);
+        if (my !== seq) return; // a newer query already answered
+        const data = res && res.ok ? await res.json() : null;
+        if (my !== seq) return;
+        if (!data) { results.innerHTML = '<p class="search-empty">تعذَّر البحث الآن — حاولْ لاحقًا.</p>'; countEl.textContent = ""; moreBtn.hidden = true; return; }
+        lastHits = append ? lastHits.concat(data.hits) : data.hits;
+        if (!lastHits.length) { results.innerHTML = '<p class="search-empty">لا نتائج.</p>'; countEl.textContent = ""; moreBtn.hidden = true; return; }
+        countEl.textContent = `${lastHits.length}${data.hasMore ? "+" : ""} نتيجة عن «${terms}»`;
+        if (append) results.insertAdjacentHTML("beforeend", data.hits.map(renderHit).join(""));
+        else results.innerHTML = data.hits.map(renderHit).join("");
+        moreBtn.hidden = !data.hasMore;
+        if (!append) addHistory(terms);
+      };
+      moreBtn.addEventListener("click", () => { offset += 20; go(true); });
 
       let t;
-      input.addEventListener("input", () => { clearTimeout(t); t = setTimeout(go, 250); });
-      input.addEventListener("keydown", (e) => { if (e.key === "Enter") { clearTimeout(t); go(); } });
-      document.getElementById("go")?.addEventListener("click", () => { clearTimeout(t); go(); });
+      input.addEventListener("input", () => { clearTimeout(t); offset = 0; t = setTimeout(go, 250); historyEl.hidden = true; });
+      input.addEventListener("keydown", (e) => { if (e.key === "Enter") { clearTimeout(t); offset = 0; go(); } });
+      document.getElementById("go")?.addEventListener("click", () => { clearTimeout(t); offset = 0; go(); });
+      window.addEventListener("aa-search-refresh", () => {
+        const p2 = new URLSearchParams(location.search);
+        scope = p2.get("scope") || "";
+        if (!TYPE_LABEL[scope]) scope = "";
+        extraTypes = (p2.get("types") || "").split(",").filter((t) => t && TYPE_LABEL[t]);
+        persons = (p2.get("person") || "").split(",").filter(Boolean);
+        syncChips();
+        offset = 0;
+        go();
+      });
       const initial = params.get("q");
-      if (initial) { input.value = initial; go(); }
+      if (initial) { input.value = initial; go(); } else { renderHistory(); }
       input.focus();
     })();
   </script>

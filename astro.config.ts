@@ -41,6 +41,9 @@ export default defineConfig({
   },
 
   // /book-pages/ is the chapter prerender shadow path (moved to R2 post-build,
-  // served at /book/); it must not leak into the sitemap.
-  integrations: [sitemap({ filter: (page) => !page.includes("/book-pages/") })]
+  // served at /book/) — the sitemap runs during `astro build`, before that move
+  // happens, so it must rewrite (not drop) these: dropping them meant ~13k real
+  // chapter pages — the bulk of the site's actual content — were never listed
+  // in the sitemap at all.
+  integrations: [sitemap({ serialize: (item) => ({ ...item, url: item.url.replace("/book-pages/", "/book/") }) })]
 });

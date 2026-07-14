@@ -89,13 +89,16 @@ function groupToc(items: { title: string; slug: string; parent?: string; parentT
 const anchors = Object.entries(byAnchor);
 const path = `/book/${entry.id}`;
 const isHadith = entry.data.genre === "حديث";
+// fallback only when a book has no real description at all — never overrides one
+const pageDescription = (entry.data.description as string | undefined) ||
+  `${entry.data.title}${author ? ` — ${author}` : ""}، النص الكامل على أهل الأثر.`;
 const jsonLd = bookLd({
   title: entry.data.title, authorId: entry.data.person, authorName: author,
-  description: entry.data.description, path,
+  description: pageDescription, path,
   crumbs: [{ name: "الرئيسية", path: "/" }, { name: "الكتب", path: "/books" }, { name: entry.data.title, path }],
 });
 ---
-<Base title={entry.data.title} description={entry.data.description} activeNav="books" ogType="book" jsonLd={jsonLd} searchScope={{ in: entry.id, label: entry.data.title }} readingPage>
+<Base title={entry.data.title} description={pageDescription} activeNav="books" ogType="book" jsonLd={jsonLd} searchScope={{ in: entry.id, label: entry.data.title }} readingPage>
   <Breadcrumbs
     width="wrap-matn"
     items={[

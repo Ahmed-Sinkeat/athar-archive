@@ -5,6 +5,7 @@ published_at: 2026-07-04
 person: ibn-abdul-wahhab
 authored_year: 1206
 topics: ["al-aqeedah-al-aamah"]
+description: "رسالة يعدّد فيها محمد بن عبد الوهاب المسائل التي خالف فيها النبي ﷺ أهل الجاهلية، اعتقادًا وعملًا، مرتّبةً على نحو مئة مسألة."
 ---
 ## مقدمة
 

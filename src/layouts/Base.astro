@@ -50,24 +50,23 @@ const navAll = [
 ];
 
 // In-bar search filter: type checkboxes + a specific-عَلَم picker (both backed by
-// the D1 (FTS5) search index via /api/search). Person values are the display
-// names the index stores.
+// the D1 (FTS5) search index via /api/search — see TYPES in api/search.ts).
+// Checkbox values are the id/slug the index actually stores; "lesson"/"benefit"
+// were retired collections (no longer indexed) and quran/term/person were
+// missing entirely — this list had drifted out of sync with the real index.
 const searchTypes = [
   { id: "book", label: "كتاب" },
   { id: "poem", label: "منظومة" },
-  { id: "lesson", label: "درس" },
+  { id: "quran", label: "قرآن" },
   { id: "question", label: "مسائل" },
-  { id: "benefit", label: "كُناشة" },
   { id: "article", label: "مقالة" },
+  { id: "term", label: "معجم" },
+  { id: "person", label: "عَلَم" },
 ];
 const filterPersons = (await getCollection("person"))
   .filter((p) => p.data.status === "published")
-  .map((p) => p.data.title)
-  .sort((a, b) => a.localeCompare(b, "ar"));
-const filterSubjects = (await getCollection("subject"))
-  .filter((s) => s.data.status === "published")
-  .map((s) => s.data.title)
-  .sort((a, b) => a.localeCompare(b, "ar"));
+  .map((p) => ({ id: p.id, name: p.data.title as string }))
+  .sort((a, b) => a.name.localeCompare(b.name, "ar"));
 
 // Quran juz/page jump (topbar-level so it's reachable from any /quran/* page,
 // not just the mushaf hub) — shown/hidden by reader.ts based on activeNav.
@@ -202,13 +201,6 @@ const [readerSub, readerMain] = title.includes(" · ") ? title.split(" · ") : [
             <input type="number" min="1" max="604" placeholder="صفحة" data-quran-jump-page aria-label="الانتقال إلى صفحة" />
           </div>
           <script type="application/json" data-quran-surah-pages set:html={JSON.stringify(surahPages)} />
-          <!-- theme cycle: always visible (not just reading pages) — one click steps
-               paper → noir → mono → paper; icon swaps to match (reader.ts syncThemeButtons) -->
-          <button class="icon-btn" data-action="theme:cycle" aria-label="تبديل السمة">
-            <span data-theme-icon="paper"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg></span>
-            <span data-theme-icon="noir" hidden><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
-            <span data-theme-icon="mono" hidden><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor" stroke="none"></path></svg></span>
-          </button>
           <!-- downloaded-for-offline manager — a real page (/downloads), not a
                popover: scales past a handful of entries -->
           <a class="icon-btn" href="/downloads" aria-label="التنزيلات">
@@ -239,21 +231,13 @@ const [readerSub, readerMain] = title.includes(" · ") ? title.split(" · ") : [
           <input type="search" class="pop-search" data-filter-person-search placeholder="ابحثْ عن عَلَم…" aria-label="ابحث عن عَلَم" autocomplete="off" />
           <div class="pop-checklist" data-filter-person>
             {filterPersons.map((p) => (
-              <label class="pop-check" data-name={p}><input type="checkbox" value={p} /><span>{p}</span></label>
+              <label class="pop-check" data-name={p.name}><input type="checkbox" value={p.id} /><span>{p.name}</span></label>
             ))}
           </div>
         </div>
-        {filterSubjects.length > 0 && (
-          <div class="pop-field">
-            <span>الموضوعات</span>
-            <input type="search" class="pop-search" data-filter-subject-search placeholder="ابحثْ عن موضوع…" aria-label="ابحث عن موضوع" autocomplete="off" />
-            <div class="pop-checklist" data-filter-subject>
-              {filterSubjects.map((s) => (
-                <label class="pop-check" data-name={s}><input type="checkbox" value={s} /><span>{s}</span></label>
-              ))}
-            </div>
-          </div>
-        )}
+        <!-- ponytail: subject filtering dropped from the UI — the search index
+             (docs FTS5 table) has no subject column, so this would need a schema
+             addition + full reindex to actually work; add it back once that's done. -->
         <button type="button" class="btn-accent pop-apply" data-action="search:apply">تطبيق البحث</button>
       </div>
 
