@@ -9,7 +9,9 @@ const { placeholder = "تصفية حسب العنوان…" } = Astro.props;
 ---
 <div class="title-filter">
   <input type="search" class="title-filter-input" placeholder={placeholder} aria-label={placeholder} autocomplete="off" data-title-filter />
-  <p class="title-filter-empty faint" data-title-filter-empty hidden>لا نتائج مطابقة.</p>
+  <p class="title-filter-empty faint" data-title-filter-empty hidden>
+    لا نتائج مطابقة في هذه الصفحة — <a href="/search" data-title-filter-search-link>جرّب البحث الشامل</a>
+  </p>
 </div>
 
 <style>
@@ -29,6 +31,7 @@ const { placeholder = "تصفية حسب العنوان…" } = Astro.props;
       input.dataset.wired = "1";
       const scope = input.closest(".title-filter").parentElement;
       const empty = scope.querySelector("[data-title-filter-empty]");
+      const searchLink = empty.querySelector("[data-title-filter-search-link]");
       // strip tashkeel, then fold hamza-alef/ya/ta-marbuta variants so
       // "الألبيري" matches a search for "الالبيري" (and vice versa) — common
       // spelling drift in Arabic text, not a real difference to the reader
@@ -52,6 +55,7 @@ const { placeholder = "تصفية حسب العنوان…" } = Astro.props;
           g.hidden = q !== "" && ![...kids].some((k) => !k.hidden);
         });
         empty.hidden = shown > 0 || !q;
+        if (searchLink) searchLink.href = `/search?q=${encodeURIComponent(input.value.trim())}`;
       });
     });
   })();
