@@ -21,31 +21,33 @@ function body(file: string): string {
 }
 
 // --- 1. duplicate title+person within a collection ---
-for (const coll of ["book", "poem", "article", "question"]) {
-  const dir = path.join(ROOT, coll);
-  if (!fs.existsSync(dir)) continue;
+// book spans two folders (book/ + book-lg/) but is ONE collection — scan them
+// together so a duplicate split across the folders is still caught
+for (const [coll, dirs] of [["book", ["book", "book-lg"]], ["poem", ["poem"]], ["article", ["article"]], ["question", ["question"]]] as [string, string[]][]) {
   const byKey = new Map<string, string[]>();
-  for (const f of fs.readdirSync(dir)) {
-    if (!f.endsWith(".md")) continue;
-    const p = path.join(dir, f);
-    if (fm(p, "status") !== "published") continue;
-    const title = fm(p, "title");
-    if (!title) continue;
-    // صوتيات share generic titles («تتمة الجواب») across DIFFERENT recordings —
-    // distinct audio ids means distinct content, not a duplicate
-    const key = `${normalizeArabic(title)}|${fm(p, "person") ?? ""}`;
-    byKey.set(key, [...(byKey.get(key) ?? []), f]);
+  for (const dir of dirs.map((d) => path.join(ROOT, d)).filter(fs.existsSync)) {
+    for (const f of fs.readdirSync(dir)) {
+      if (!f.endsWith(".md")) continue;
+      const p = path.join(dir, f);
+      if (fm(p, "status") !== "published") continue;
+      const title = fm(p, "title");
+      if (!title) continue;
+      // صوتيات share generic titles («تتمة الجواب») across DIFFERENT recordings —
+      // distinct audio ids means distinct content, not a duplicate
+      const key = `${normalizeArabic(title)}|${fm(p, "person") ?? ""}`;
+      byKey.set(key, [...(byKey.get(key) ?? []), path.join(dir, f)]);
+    }
   }
   for (const [key, files] of byKey) {
     if (files.length < 2) continue;
-    const audios = new Set(files.map((f) => fm(path.join(dir, f), "audio") ?? ""));
+    const audios = new Set(files.map((p) => fm(p, "audio") ?? ""));
     if (audios.size === files.length && ![...audios].includes("")) continue; // all have their own recording
-    findings.push(`DUPLICATE ${coll}: «${key.split("|")[0]}» → ${files.join(", ")}`);
+    findings.push(`DUPLICATE ${coll}: «${key.split("|")[0]}» → ${files.map((p) => path.basename(p)).join(", ")}`);
   }
 }
 
 // --- 2..5 book body damage ---
-const bookDir = path.join(ROOT, "book");
+for (const bookDir of [path.join(ROOT, "book"), path.join(ROOT, "book-lg")].filter(fs.existsSync))
 for (const f of fs.readdirSync(bookDir)) {
   if (!f.endsWith(".md")) continue;
   const p = path.join(bookDir, f);
@@ -60,11 +62,19 @@ for (const f of fs.readdirSync(bookDir)) {
   const orphanHash = lines.filter((l) => /^#{1,6}\s*$/.test(l.trim()) && l.trim() !== "").length;
   // bold-only lines that look like headings (short, no sentence punctuation)
   const boldHead = lines.filter((l) => /^\*\*[^*]{3,80}\*\*\s*$/.test(l.trim()) && !/[.،؛:]/.test(l)).length;
+  // epub-import.ts strips the Shamela `<div class="center">الجزء: N ¦ الصفحة:
+  // M</div>` footer before it reaches markdown — but some sources wrap it
+  // differently (no class="center", "-" separator, word juz like "المقدمة")
+  // and the stripping silently no-ops, leaving the footer as a literal body
+  // line. (Literal "(^N) note text" footnotes are NOT flagged here — that's
+  // now a supported convention, see extractCaretNotesByPage in chapters.ts.)
+  const leakedFooter = lines.filter((l) => /^الجزء:\s*\S.*[-¦]\s*الصفحة:\s*[٠-٩0-9]+\s*$/.test(l.trim())).length;
   if (content.length < 10) findings.push(`EMPTY book: ${f} (${content.length} lines)`);
   if (h2 <= 1 && content.length > 300) findings.push(`UNDIVIDED book: ${f} (${content.length} lines, ${h2} chapter headings)`);
   if (h1Bold > 0) findings.push(`H1-BOLD-HEADINGS book: ${f} (${h1Bold} «# **…**» lines — broken chapter split)`);
   if (orphanHash > 0) findings.push(`ORPHAN-HASH book: ${f} (${orphanHash} bare # lines)`);
   if (boldHead >= 5) findings.push(`BOLD-ONLY-HEADINGS book: ${f} (${boldHead} bold-only lines)`);
+  if (leakedFooter > 0) findings.push(`LEAKED-PAGE-FOOTER book: ${f} (${leakedFooter} literal «الجزء: … الصفحة: N» lines — import didn't strip the source footer)`);
 }
 
 if (findings.length) {

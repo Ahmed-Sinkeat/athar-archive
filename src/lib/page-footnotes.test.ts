@@ -78,6 +78,52 @@ describe("wirePageFootnotes", () => {
     });
   });
 
+  describe("Caret footnotes ((^N) inline + defs, a legacy import format)", () => {
+    const content = `نص فيه إحالة(^١) وأخرى(^٢).
+
+(^١) أول حاشية.
+(^٢) ثانية حاشية.
+
+<hr class="page-sep" data-page="6" />
+
+نص الصفحة التالية(^١).
+
+(^١) حاشية الصفحة الثانية.`;
+
+    it("converts the inline marker into a plain page-numbered sup", () => {
+      const html = wire(content);
+      expect(html).not.toContain("(^");
+      expect(html).toContain('<sup class="fn-ref">١</sup>');
+      expect(html).toContain('<sup class="fn-ref">٢</sup>');
+    });
+
+    it("renders the defs in a per-page footer box before the page marker", () => {
+      const html = wire(content);
+      const footerAt = html.indexOf('class="page-footnotes"');
+      const sepAt = html.indexOf('id="p6"');
+      expect(footerAt).toBeGreaterThan(-1);
+      expect(sepAt).toBeGreaterThan(footerAt);
+      expect(html).toContain("أول حاشية");
+      expect(html).toContain("ثانية حاشية");
+      expect(html).toContain("حاشية الصفحة الثانية");
+    });
+
+    it("splices a note that runs past a page break back onto the note it continues", () => {
+      const withContinuation = `نص فيه إحالة(^١).
+
+(^١) بداية الحاشية
+
+<hr class="page-sep" data-page="9" />
+
+= وتتمتها بعد كسر الصفحة.
+
+نص الصفحة التالية.`;
+      const html = wire(withContinuation);
+      expect(html).not.toContain("= وتتمتها");
+      expect(html).toContain("بداية الحاشية وتتمتها بعد كسر الصفحة.");
+    });
+  });
+
   it("emits each page separator once even when a marker repeats (Muwatta out-of-order pages)", () => {
     const content = `أ
 

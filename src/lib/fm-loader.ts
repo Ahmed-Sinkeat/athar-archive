@@ -6,27 +6,31 @@ import { readdir, readFile } from "node:fs/promises";
 import { join, resolve, relative } from "node:path";
 import matter from "gray-matter";
 
-export function fmLoader(base: string): Loader {
-  const absBase = resolve(base);
+// Accepts several base dirs so one collection can span folders (book/ +
+// book-lg/): ids stay the bare filename either way, so splitting a folder
+// never changes an entry's id or URL.
+export function fmLoader(base: string | string[]): Loader {
+  const absBases = (Array.isArray(base) ? base : [base]).map((b) => resolve(b));
   return {
     name: "fm-loader",
     load: async ({ store, parseData, generateDigest, logger }) => {
-      let files: string[];
-      try {
-        files = (await readdir(absBase, { recursive: true }) as string[])
-          .filter((f) => f.endsWith(".md"))
-          .map((f) => f.replace(/\\/g, "/"));
-      } catch {
-        logger.warn(`fm-loader: directory not found — ${absBase}`);
-        files = [];
+      const found: { absBase: string; file: string }[] = [];
+      for (const absBase of absBases) {
+        try {
+          for (const f of (await readdir(absBase, { recursive: true })) as string[]) {
+            if (f.endsWith(".md")) found.push({ absBase, file: f.replace(/\\/g, "/") });
+          }
+        } catch {
+          logger.warn(`fm-loader: directory not found — ${absBase}`);
+        }
       }
 
-      const fileSet = new Set(files.map((f) => f.replace(/\.md$/, "")));
+      const fileSet = new Set(found.map(({ file }) => file.replace(/\.md$/, "")));
       for (const [id] of store.entries()) {
         if (!fileSet.has(id)) store.delete(id);
       }
 
-      for (const file of files) {
+      for (const { absBase, file } of found) {
         const filePath = relative(process.cwd(), join(absBase, file));
         const raw = await readFile(filePath, "utf-8");
         const { data } = matter(raw);

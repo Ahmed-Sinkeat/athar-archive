@@ -9,8 +9,8 @@ const FILES = [
   "src/data/quran-tafsir-index.json",
   "src/data/hadith-index.json",
   // takhrij.json deliberately absent: gen-takhrij.ts regenerates it every build
-  "src/content/book/tafsir-ibn-kathir.md",
-  "src/content/book/tafsir-muyassar.md",
+  "src/content/book-lg/tafsir-ibn-kathir.md",
+  "src/content/book-lg/tafsir-muyassar.md",
 ];
 
 for (const f of FILES) {

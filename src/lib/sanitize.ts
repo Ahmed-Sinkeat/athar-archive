@@ -12,7 +12,7 @@ import rehypeRaw from "rehype-raw";
 import rehypeSanitize from "rehype-sanitize";
 import rehypeStringify from "rehype-stringify";
 import { sanitizeSchema } from "./sanitize-schema.js";
-import { slugifyArabic } from "./chapters.js";
+import { slugifyArabic, stripCaretFootnoteMarkup } from "./chapters.js";
 import { hrefFor } from "./display.js";
 import { WIKILINK_RE, WIKILINK_TYPES } from "./wikilink.js";
 
@@ -33,6 +33,7 @@ const TOK_RE = new RegExp(
   "(﴿[^﴾]*﴾)" +
   "|(\\{[^}]{1,300}\\})" +  // ayah cited with plain braces instead of ﴿﴾ — same kind, different author convention
   "|(\\[[\\u0600-\\u06FF\\s]+?:\\s*[\\d\\u0660-\\u0669]+(?:[-\\u2013][\\d\\u0660-\\u0669]+)?\\])" +  // "[سورة: رقم]" — \s* before the digits allows the normal typographic space after the colon (wasn't previously allowed); name group stays lazy + still allows internal spaces (multi-word names like "آل عمران")
+  "|(\\[[\\u0660-\\u06690-9]+\\])" +  // bare "[N]" — inline list/enumeration numbering some books use mid-sentence (fiqh condition lists, etc.); style it small like the source rather than let it read as leaked text
   "|(«[^»]*»)" +
   "|([“”][^“”]*[“”])" +
   '|("[^"]*")' +
@@ -41,7 +42,7 @@ const TOK_RE = new RegExp(
   "|(\\[\\.{2,}\\])",  // isnad-elision marker, e.g. "[.....]" — see tok-elision
   "g"
 );
-const TOK_CLASS = ["tok-ayah", "tok-ayah-brace", "tok-quran-ref", "tok-quote", "tok-quote", "tok-quote", "tok-hadith", "tok-paren", "tok-elision"];
+const TOK_CLASS = ["tok-ayah", "tok-ayah-brace", "tok-quran-ref", "tok-listnum", "tok-quote", "tok-quote", "tok-quote", "tok-hadith", "tok-paren", "tok-elision"];
 
 function splitTokens(value: string): any[] {
   const out: any[] = [];
@@ -313,7 +314,7 @@ const masailProcessor = unified()
   .use(rehypeStringify);
 
 export function markdownToSafeHtml(markdown: string): string {
-  return String(processor.processSync(markdown));
+  return String(processor.processSync(stripCaretFootnoteMarkup(markdown)));
 }
 
 export function markdownMasailToHtml(markdown: string): string {

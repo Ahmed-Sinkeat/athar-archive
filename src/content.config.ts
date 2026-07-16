@@ -102,7 +102,9 @@ const topic = defineCollection({
 // --- 04. Book (الكتاب) ---
 
 const book = defineCollection({
-  loader: fmLoader("./src/content/book"),
+  // two folders, one collection: book/ is small + CMS-editable, book-lg/ holds
+  // ≥100KB imported texts (see src/lib/load.ts EXTRA_DIRS for the same split)
+  loader: fmLoader(["./src/content/book", "./src/content/book-lg"]),
   schema: z.object({
     ...shared,
     person: slug.optional(),           // → Person (author, unknown/anonymous allowed)

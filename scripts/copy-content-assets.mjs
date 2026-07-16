@@ -5,13 +5,16 @@ import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
 
-const COLLECTIONS = ["book", "lesson"]; // collections whose reading routes are on-demand
+// collections whose reading routes are on-demand; book-lg is the second half
+// of the book collection (big imported texts) and shares book's public URL
+// space (/content/book/<id>.md), so it copies into the same output folder
+const COLLECTIONS = [["book", "book"], ["book-lg", "book"], ["lesson", "lesson"]];
 
 let copied = 0;
 let skipped = 0;
-for (const col of COLLECTIONS) {
+for (const [col, outCol] of COLLECTIONS) {
   const src = path.resolve(`src/content/${col}`);
-  const dst = path.resolve(`dist/client/content/${col}`);
+  const dst = path.resolve(`dist/client/content/${outCol}`);
   if (!fs.existsSync(src)) continue;
   // recursive: ids from fmLoader keep their subdir path, so preserve it
   for (const rel of fs.readdirSync(src, { recursive: true })) {

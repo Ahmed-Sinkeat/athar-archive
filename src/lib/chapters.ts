@@ -451,6 +451,94 @@ export function extractFootnotesByPage(content: string): FootnotesByPage {
   return { itemsByPage, pageIndexById };
 }
 
+// A handful of book-lg imports came from a source epub-import.ts wasn't built
+// for: neither `<span class="footnote">` (its EPUB path) nor `[^id]:` (GFM).
+// Their footnotes never got extracted and sit as literal "(^N) note text" —
+// which happens to already be the printed edition's own per-page numbering,
+// same as the EPUB data-notes convention, so no renumbering is needed here
+// either. A note can run past a page break too: the source marks the
+// continuation with a leading "= " on the next page, right before that
+// page's own notes. A handful of books use a lone, unnumbered "(*)" instead
+// of "(^N)" for a single aside — same shape, no digit, no caret.
+const CARET_DEF_RE = /^\((?:\^[٠-٩0-9]+|\*)\)\s+([\s\S]*)$/;
+const CARET_CONTINUATION_RE = /^=\s+(\S[\s\S]*)$/;
+
+/**
+ * Groups a chapter's literal "(^N) note text" lines by printed page. Keyed
+ * like EPUB data-notes — by the page-sep marker that comes right AFTER the
+ * text (its own data-page value describes "the text right above it"), not
+ * the page the text started on.
+ */
+export function extractCaretNotesByPage(content: string): Map<string, string[]> {
+  const parts = content.split(PAGE_SEP_SPLIT_RE);
+  const notesByPage = new Map<string, string[]>();
+  let pending: string[] = [];
+  let prevPageKey: string | null = null;
+
+  for (const part of parts) {
+    const m = part.match(PAGE_SEP_NUM_RE);
+    if (m) {
+      if (pending.length) {
+        notesByPage.set(m[1], [...(notesByPage.get(m[1]) ?? []), ...pending]);
+        prevPageKey = m[1];
+        pending = [];
+      }
+      continue;
+    }
+
+    const notes: string[] = [];
+    let curBody: string[] | null = null;
+    for (const block of part.split(/\n\s*\n/)) {
+      const trimmed = block.trim();
+      if (!trimmed) continue;
+      const contM = !CARET_DEF_RE.test(trimmed) && trimmed.match(CARET_CONTINUATION_RE);
+      if (contM) {
+        const prevNotes = prevPageKey ? notesByPage.get(prevPageKey) : undefined;
+        if (prevNotes?.length) prevNotes[prevNotes.length - 1] += " " + contM[1];
+        continue;
+      }
+      const lines = trimmed.split("\n");
+      if (!CARET_DEF_RE.test(lines[0])) continue; // ordinary body paragraph
+      for (const line of lines) {
+        const dm = line.match(CARET_DEF_RE);
+        if (dm) {
+          if (curBody) notes.push(curBody.join(" ").trim());
+          curBody = [dm[1]];
+        } else if (curBody) {
+          curBody.push(line);
+        }
+      }
+    }
+    if (curBody) notes.push(curBody.join(" ").trim());
+    pending = notes; // attach to whichever page-sep marker comes next
+  }
+  // trailing notes after the LAST page-sep have no marker to attach to
+  // (same inherent limit the EPUB data-notes convention has) — best effort:
+  // fold them onto the last page we did manage to key.
+  if (pending.length && prevPageKey) {
+    notesByPage.set(prevPageKey, [...(notesByPage.get(prevPageKey) ?? []), ...pending]);
+  }
+
+  return notesByPage;
+}
+
+/**
+ * Drop caret-footnote def/continuation paragraphs from the raw markdown
+ * before it's compiled to HTML — extractCaretNotesByPage() re-surfaces their
+ * text in the per-page footer, so left in place they'd render a second time
+ * as plain body paragraphs. Called from markdownToSafeHtml itself, same as
+ * remark-gfm removing `[^id]:` defs from the flow of GFM-footnote books.
+ */
+export function stripCaretFootnoteMarkup(content: string): string {
+  return content
+    .split(/\n\s*\n/)
+    .filter((para) => {
+      const first = para.trim().split("\n")[0];
+      return !CARET_DEF_RE.test(first) && !CARET_CONTINUATION_RE.test(first);
+    })
+    .join("\n\n");
+}
+
 // --- anchor enumeration (used by the validator for annotation resolution) ---
 
 export function extractAnchors(collection: string, body: string): Set<string> {

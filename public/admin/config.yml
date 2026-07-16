@@ -50,9 +50,17 @@ collections:
       - { label: "الشيوخ (narrates_from)", name: narrates_from, widget: relation, required: false, multiple: true, collection: person, search_fields: [title], value_field: "{{slug}}", display_fields: [title] }
       - { label: "المحتوى", name: body, widget: markdown, required: false }
 
+  # book/ is CMS-editable again via a folder split (2026-07-15): files ≥100KB
+  # (whole imported book texts, 136MB total) live in src/content/book-lg/ —
+  # same collection + ids (src/lib/fm-loader.ts reads both), but the CMS only
+  # lists book/ (6.5MB), keeping /admin loads far below GitHub's gateway
+  # timeout. validate:content FAILS the build if a ≥100KB file lands in book/.
+  # subject + topic are hide: true — present only to feed relation dropdowns.
+
   - name: subject
     label: "التصنيفات"
     folder: src/content/subject
+    hide: true
     create: true
     delete: true
     slug: "{{fields.slug}}"
@@ -69,6 +77,7 @@ collections:
   - name: topic
     label: "المواضيع"
     folder: src/content/topic
+    hide: true
     create: true
     delete: true
     slug: "{{fields.slug}}"
@@ -120,143 +129,7 @@ collections:
           - { label: "الصيغة", name: format, widget: select, required: false, options: [pdf, epub, docx, zip] }
           - { label: "الحجم (بايت)", name: size_bytes, widget: number, required: false, value_type: int }
       - { label: "المحتوى", name: body, widget: markdown, required: false }
-
-  - name: poem
-    label: "المنظومات"
-    folder: src/content/poem
-    create: true
-    delete: true
-    slug: "{{fields.slug}}"
-    fields:
-      - { label: "Slug (id) — لا تغيّره بعد النشر", name: slug, widget: string, meta: true, pattern: ["^[a-z0-9]+(--?[a-z0-9]+)*$", "lowercase a-z0-9, single/double hyphens only"], hint: "يُكتب مرة واحدة عند إنشاء مادة جديدة ويصبح رابط الصفحة. عند تعديل مادة موجودة اتركه فارغًا — لا تأثير له." }
-      - { label: "العنوان", name: title, widget: string }
-      - { label: "الحالة", name: status, widget: select, default: draft, options: [{ label: "مسودة", value: draft }, { label: "مراجعة", value: review }, { label: "منشور", value: published }, { label: "مؤرشف", value: archived }] }
-      - { label: "تاريخ النشر", name: published_at, widget: datetime, type: date }
-      - { label: "تاريخ التحديث", name: updated_at, widget: datetime, type: date, required: false }
-      - { label: "روابط قديمة (تحويل 301)", name: aliases, widget: list, required: false, hint: "إذا غيّرتَ الـ slug ضَع القديم هنا، فيتحول الرابط القديم إلى الجديد تلقائيًا. ليس للعناوين البديلة." }
-      - { label: "الناظم", name: person, widget: relation, collection: person, search_fields: [title], value_field: "{{slug}}", display_fields: [title] }
-      - { label: "المواضيع", name: topics, widget: relation, required: false, multiple: true, collection: topic, search_fields: [title], value_field: "{{slug}}", display_fields: [title] }
-      - { label: "نوع العمل", name: work_type, widget: select, required: false, options: ["مصدر أصلي", "متن", "منظومة", "شرح", "مختصر", "حاشية", "رسالة", "مجموع", "موسوعة", "تحقيق", "فهرس", "تفسير", "سيرة", "ديوان", "فتاوى", "قصيدة"] }
-      - { label: "سنة النظم (هجري)", name: authored_year, widget: number, required: false, value_type: int }
-      - { label: "الوصف", name: description, widget: text, required: false }
-      - label: "المرفقات"
-        name: attachments
-        widget: list
-        required: false
-        fields:
-          - { label: "التسمية", name: label, widget: string }
-          - { label: "الرابط", name: url, widget: string }
-          - { label: "الصيغة", name: format, widget: select, required: false, options: [pdf, epub, docx, zip] }
-          - { label: "الحجم (بايت)", name: size_bytes, widget: number, required: false, value_type: int }
-      - { label: "الأبيات", name: body, widget: markdown, required: false }
-
-  # benefit collection retired — الفوائد (كُناشة) are device-local, not editorial
-
-  # article (2363 entries) + question (957) intentionally NOT in the CMS:
-  # Sveltia bulk-fetches every entry of every collection from GitHub GraphQL on
-  # load, and those two made the load ~30 MB across queries running 6-13s each —
-  # right at GitHub's gateway timeout, so /admin randomly failed with 502/504.
-  # Both are import-script-managed (telegram-import / blogspot-import), not
-  # hand-edited here. Edit the markdown in src/content/{article,question}/
-  # directly if needed; paste the collections back if CMS editing becomes real.
-
-  - name: audio
-    label: "الصوتيات"
-    folder: src/content/audio
-    create: true
-    delete: true
-    slug: "{{fields.slug}}"
-    fields:
-      - { label: "Slug (id) — لا تغيّره بعد النشر", name: slug, widget: string, meta: true, pattern: ["^[a-z0-9]+(--?[a-z0-9]+)*$", "lowercase a-z0-9, single/double hyphens only"], hint: "يُكتب مرة واحدة عند إنشاء مادة جديدة ويصبح رابط الصفحة. عند تعديل مادة موجودة اتركه فارغًا — لا تأثير له." }
-      - { label: "العنوان", name: title, widget: string }
-      - { label: "الحالة", name: status, widget: select, default: draft, options: [{ label: "مسودة", value: draft }, { label: "مراجعة", value: review }, { label: "منشور", value: published }, { label: "مؤرشف", value: archived }] }
-      - { label: "تاريخ النشر", name: published_at, widget: datetime, type: date }
-      - { label: "تاريخ التحديث", name: updated_at, widget: datetime, type: date, required: false }
-      - { label: "روابط قديمة (تحويل 301)", name: aliases, widget: list, required: false, hint: "إذا غيّرتَ الـ slug ضَع القديم هنا، فيتحول الرابط القديم إلى الجديد تلقائيًا. ليس للعناوين البديلة." }
-      - { label: "نوع المصدر", name: source_type, widget: select, options: [book, poem, article, question] }
-      - { label: "معرّف المصدر", name: source_id, widget: string }
-      # file widget: non-technical editors just drop an audio file (uploads to
-      # public/uploads and commits with the entry); choose_url keeps the
-      # external-link (R2) path for big files
-      - { label: "الملف الصوتي أو الرابط", name: url, widget: file, choose_url: true }
-      - { label: "الصيغة", name: format, widget: select, default: opus, options: [opus, mp3] }
-      - { label: "المدة", name: duration, widget: string, required: false }
-      - { label: "الحجم (بايت)", name: size_bytes, widget: number, required: false, value_type: int }
-
-  - name: annotation
-    label: "الشروح والحواشي"
-    folder: src/content/annotation
-    create: true
-    delete: true
-    slug: "{{fields.slug}}"
-    fields:
-      - { label: "Slug (id) — لا تغيّره بعد النشر", name: slug, widget: string, meta: true, pattern: ["^[a-z0-9]+(--?[a-z0-9]+)*$", "lowercase a-z0-9, single/double hyphens only"], hint: "يُكتب مرة واحدة عند إنشاء مادة جديدة ويصبح رابط الصفحة. عند تعديل مادة موجودة اتركه فارغًا — لا تأثير له." }
-      - { label: "العنوان", name: title, widget: string }
-      - { label: "الحالة", name: status, widget: select, default: draft, options: [{ label: "مسودة", value: draft }, { label: "مراجعة", value: review }, { label: "منشور", value: published }, { label: "مؤرشف", value: archived }] }
-      - { label: "تاريخ النشر", name: published_at, widget: datetime, type: date }
-      - { label: "تاريخ التحديث", name: updated_at, widget: datetime, type: date, required: false }
-      - { label: "روابط قديمة (تحويل 301)", name: aliases, widget: list, required: false, hint: "إذا غيّرتَ الـ slug ضَع القديم هنا، فيتحول الرابط القديم إلى الجديد تلقائيًا. ليس للعناوين البديلة." }
-      - { label: "نوع الهدف", name: target_type, widget: select, options: [book, poem, quran] }
-      - { label: "معرّف الهدف", name: target_id, widget: string }
-      - { label: "الموضع (anchor)", name: anchor, widget: string, hint: "مثال: v5, p3, أو slug عنوان" }
-      - { label: "النوع", name: kind, widget: select, default: "شرح", options: ["شرح", "حاشية", "تخريج", "إعراب", "تفسير"] }
-      - { label: "الدرجة", name: grade, widget: select, required: false, options: ["صحيح", "حسن", "ضعيف", "موضوع"] }
-      - { label: "المُعلِّق", name: annotator, widget: relation, required: false, collection: person, search_fields: [title], value_field: "{{slug}}", display_fields: [title] }
-      - { label: "العبارة (phrase)", name: phrase, widget: string, required: false }
-      - { label: "نوع مصدر إضافي", name: source_type, widget: select, required: false, options: [book, poem, article] }
-      - { label: "معرّف مصدر إضافي", name: source_id, widget: string, required: false }
-      - { label: "المحتوى", name: body, widget: markdown, required: false }
-
-  - name: announcement
-    label: "الإعلانات"
-    folder: src/content/announcement
-    create: true
-    delete: true
-    slug: "{{fields.slug}}"
-    fields:
-      - { label: "Slug (id) — لا تغيّره بعد النشر", name: slug, widget: string, meta: true, pattern: ["^[a-z0-9]+(--?[a-z0-9]+)*$", "lowercase a-z0-9, single/double hyphens only"], hint: "يُكتب مرة واحدة عند إنشاء مادة جديدة ويصبح رابط الصفحة. عند تعديل مادة موجودة اتركه فارغًا — لا تأثير له." }
-      - { label: "العنوان", name: title, widget: string }
-      - { label: "الحالة", name: status, widget: select, default: draft, options: [{ label: "مسودة", value: draft }, { label: "مراجعة", value: review }, { label: "منشور", value: published }, { label: "مؤرشف", value: archived }] }
-      - { label: "تاريخ النشر", name: published_at, widget: datetime, type: date }
-      - { label: "تاريخ التحديث", name: updated_at, widget: datetime, type: date, required: false }
-      - { label: "روابط قديمة (تحويل 301)", name: aliases, widget: list, required: false, hint: "إذا غيّرتَ الـ slug ضَع القديم هنا، فيتحول الرابط القديم إلى الجديد تلقائيًا. ليس للعناوين البديلة." }
-      - { label: "الأولوية", name: priority, widget: number, default: 5, min: 1, max: 10, value_type: int }
-      - { label: "تاريخ الانتهاء", name: expires_at, widget: datetime, type: date, required: false }
-      - { label: "المحتوى", name: body, widget: markdown, required: false }
-
-  - name: highlight
-    label: "مختارات الأسبوع"
-    folder: src/content/highlight
-    create: true
-    delete: true
-    slug: "{{fields.slug}}"
-    fields:
-      - { label: "Slug (id) — لا تغيّره بعد النشر", name: slug, widget: string, meta: true, pattern: ["^[a-z0-9]+(--?[a-z0-9]+)*$", "lowercase a-z0-9, single/double hyphens only"], hint: "يُكتب مرة واحدة عند إنشاء مادة جديدة ويصبح رابط الصفحة. عند تعديل مادة موجودة اتركه فارغًا — لا تأثير له." }
-      - { label: "العنوان", name: title, widget: string }
-      - { label: "الحالة", name: status, widget: select, default: draft, options: [{ label: "مسودة", value: draft }, { label: "مراجعة", value: review }, { label: "منشور", value: published }, { label: "مؤرشف", value: archived }] }
-      - { label: "تاريخ النشر", name: published_at, widget: datetime, type: date }
-      - { label: "تاريخ التحديث", name: updated_at, widget: datetime, type: date, required: false }
-      - { label: "روابط قديمة (تحويل 301)", name: aliases, widget: list, required: false, hint: "إذا غيّرتَ الـ slug ضَع القديم هنا، فيتحول الرابط القديم إلى الجديد تلقائيًا. ليس للعناوين البديلة." }
-      - { label: "النوع", name: kind, widget: select, options: ["آية", "حديث", "بيت"] }
-      - { label: "المصدر/التخريج", name: reference, widget: string, required: false }
-      - { label: "نوع المصدر", name: source_type, widget: select, required: false, options: [poem, book, article] }
-      - { label: "معرّف المصدر", name: source_id, widget: string, required: false }
-      - { label: "النص", name: body, widget: markdown, required: false }
-
-  - name: term
-    label: "المعجم"
-    folder: src/content/term
-    create: true
-    delete: true
-    slug: "{{fields.slug}}"
-    fields:
-      - { label: "Slug (id) — لا تغيّره بعد النشر", name: slug, widget: string, meta: true, pattern: ["^[a-z0-9]+(--?[a-z0-9]+)*$", "lowercase a-z0-9, single/double hyphens only"], hint: "يُكتب مرة واحدة عند إنشاء مادة جديدة ويصبح رابط الصفحة. عند تعديل مادة موجودة اتركه فارغًا — لا تأثير له." }
-      - { label: "العنوان", name: title, widget: string }
-      - { label: "الحالة", name: status, widget: select, default: draft, options: [{ label: "مسودة", value: draft }, { label: "مراجعة", value: review }, { label: "منشور", value: published }, { label: "مؤرشف", value: archived }] }
-      - { label: "تاريخ النشر", name: published_at, widget: datetime, type: date }
-      - { label: "تاريخ التحديث", name: updated_at, widget: datetime, type: date, required: false }
-      - { label: "روابط قديمة (تحويل 301)", name: aliases, widget: list, required: false, hint: "إذا غيّرتَ الـ slug ضَع القديم هنا، فيتحول الرابط القديم إلى الجديد تلقائيًا. ليس للعناوين البديلة." }
-      - { label: "التعريف", name: definition, widget: text, required: false }
-      - { label: "المواضيع", name: topics, widget: relation, required: false, multiple: true, collection: topic, search_fields: [title], value_field: "{{slug}}", display_fields: [title] }
-      - { label: "أسماء بديلة", name: also_known_as, widget: list, required: false, field: { label: اسم, widget: string } }
-      - { label: "المحتوى", name: body, widget: markdown, required: false }
+  # annotation (14) + announcement (1) + highlight (2) + term (1) removed from
+  # the CMS 2026-07-15 per the same policy — editors work on الكتب + الأعلام
+  # only; these tiny collections are edited as markdown files directly.
+  # Restore their blocks from git history if CMS editing becomes real.

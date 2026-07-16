@@ -24,7 +24,7 @@
 // deduped — some imports emit the same page marker more than once.
 
 import { markdownToSafeHtml } from "./sanitize.js";
-import { extractFootnotesByPage } from "./chapters.js";
+import { extractFootnotesByPage, extractCaretNotesByPage } from "./chapters.js";
 
 const SEP_SPLIT_RE = /(<hr\s+[^>]*class="page-sep"[^>]*>)/;
 
@@ -43,10 +43,25 @@ function extractEpubNotesByPage(content: string): Map<string, string[]> {
   return out;
 }
 
+// Caret-footnote imports (see extractCaretNotesByPage): the inline marker is
+// plain "(^N)" (or, rarely, an unnumbered "(*)") text — like EPUB sups it
+// already carries the printed edition's own per-page number, so no lookup
+// needed here. Usually wrapped in a <span class="tok-paren"> by
+// markdownToSafeHtml's parenthetical tokenizer, but that tokenizer skips
+// parens already inside a quote span (or a few other spots), so also catch
+// any it left bare. Needed in the main body AND inside footer note bodies
+// (one note can reference another).
+function convertCaretRefs(html: string): string {
+  const toSup = (_: string, digit?: string, star?: string) => `<sup class="fn-ref">${digit ?? star}</sup>`;
+  return html
+    .replace(/<span class="tok-paren">\((?:\^([٠-٩0-9]+)|(\*))\)<\/span>/g, toSup)
+    .replace(/\((?:\^([٠-٩0-9]+)|(\*))\)/g, toSup);
+}
+
 function footerHtml(items: Array<{ id: string; num: string; body: string }>): string {
   if (!items.length) return "";
   const lis = items
-    .map((it) => `<li id="${it.id}" data-fn-num="${it.num}">${markdownToSafeHtml(it.body)}</li>`)
+    .map((it) => `<li id="${it.id}" data-fn-num="${it.num}">${convertCaretRefs(markdownToSafeHtml(it.body))}</li>`)
     .join("");
   return `<aside class="page-footnotes"><ol>${lis}</ol></aside>`;
 }
@@ -105,7 +120,12 @@ export function wirePageFootnotes(
   // (both come from the source book's own per-page numbering), so keep it.
   out = out.replace(/<sup\s+[^>]*\bdata-fn=[^>]*>([^<]*)<\/sup>/g, '<sup class="fn-ref">$1</sup>');
 
+  out = convertCaretRefs(out);
+
   const epubNotesByPage = extractEpubNotesByPage(content);
+  for (const [page, notes] of extractCaretNotesByPage(content)) {
+    epubNotesByPage.set(page, [...(epubNotesByPage.get(page) ?? []), ...notes]);
+  }
 
   // Splice a footer <aside> after each page's content — right before the next
   // page marker — and normalize the marker itself into a static "ص N" <div>.
