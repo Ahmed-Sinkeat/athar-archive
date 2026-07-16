@@ -151,6 +151,28 @@ async function startDownload(btn: HTMLElement) {
   renderDownloadsList();
 }
 
+// "download all" on the downloads page — reuses startDownload per item
+// (same sequential, gentle-on-the-Worker fetch), skipping ones already saved.
+async function downloadAllIn(allBtn: HTMLElement) {
+  const details = allBtn.closest("details");
+  const label = allBtn.querySelector<HTMLElement>("[data-dl-all-label]");
+  const pending = details
+    ? [...details.querySelectorAll<HTMLElement>('[data-action="download:toggle"]')]
+      .filter((b) => !getManifest()[keyOf(b.dataset.dlKind!, b.dataset.dlId!)])
+    : [];
+  if (pending.length === 0) {
+    if (label) { label.textContent = "الكل متوفر بالفعل"; setTimeout(() => { label.textContent = "تنزيل الكل"; }, 1200); }
+    return;
+  }
+  allBtn.setAttribute("data-dl-busy", "1");
+  for (let i = 0; i < pending.length; i++) {
+    if (label) label.textContent = `جارٍ التنزيل… ${i + 1}/${pending.length}`;
+    await startDownload(pending[i]);
+  }
+  allBtn.removeAttribute("data-dl-busy");
+  if (label) label.textContent = "تنزيل الكل";
+}
+
 async function removeDownload(kind: string, id: string) {
   const manifest = getManifest();
   const entry = manifest[keyOf(kind, id)];
@@ -271,6 +293,14 @@ function renderDownloadsList() {
 // this one and already navigate into the card. Capture always runs first.
 document.addEventListener("click", (e) => {
   const target = e.target as HTMLElement;
+
+  const allBtn = target.closest<HTMLElement>('[data-action="download:all"]');
+  if (allBtn) {
+    e.preventDefault();
+    if (allBtn.hasAttribute("data-dl-busy")) return;
+    downloadAllIn(allBtn);
+    return;
+  }
 
   const toggleBtn = target.closest<HTMLElement>('[data-action="download:toggle"]');
   if (toggleBtn) {

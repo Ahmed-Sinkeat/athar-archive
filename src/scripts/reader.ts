@@ -365,14 +365,21 @@ document.addEventListener("astro:page-load", fixVolumeAnchor);
 
 // per-athar permalink: "#" link injected before each numbered narration
 // (see injectAtharAnchors in src/lib/hadith.ts) — copies the deep link +
-// a plain-text citation alongside its native hash navigation.
+// a plain-text citation. preventDefault so it doesn't also hash-navigate to
+// itself (no visible scroll, but it did silently push a history entry) —
+// copy was the only effect, and with no feedback shown it read as broken.
 document.addEventListener("click", (e) => {
   const a = (e.target as HTMLElement).closest<HTMLAnchorElement>(".athar-cite");
   if (!a) return;
+  e.preventDefault();
   const n = a.dataset.athar;
   const book = a.closest<HTMLElement>("[data-cite-book]")?.dataset.citeBook || document.title.split(" · ")[0];
   const url = `${location.origin}${location.pathname}#athar-${n}`;
-  navigator.clipboard?.writeText(`${url}\n«${book}» — أثر ${n}`);
+  navigator.clipboard?.writeText(`${url}\n«${book}» — أثر ${n}`).then(() => {
+    const prev = a.textContent;
+    a.textContent = "✓";
+    setTimeout(() => { a.textContent = prev; }, 900);
+  });
 });
 
 // Footnotes need no JS: every marker is a plain <sup class="fn-ref"> and the
@@ -772,6 +779,13 @@ function enhanceProse() {
   let sheet: HTMLElement | null = null;
   let titleEl!: HTMLElement, ayahEl!: HTMLElement, tabsEl!: HTMLElement, chipsEl!: HTMLElement, bodyEl!: HTMLElement, footEl!: HTMLElement;
   let activeVerse: HTMLElement | null = null;
+  // Reading preference, not per-ayah state: once the user picks a tab/source,
+  // every later open (next/prev nav, a fresh ayah tap, even after closing the
+  // sheet) should keep showing it — carried at module scope so it survives
+  // all of those, and only silently falls back (to kinds[0]/entries[0]) when
+  // the new anchor doesn't have that kind or source at all.
+  let lastKind: string | null = null;
+  let lastSourceLabel: string | null = null;
 
   function build(): HTMLElement {
     if (sheet && sheet.isConnected) return sheet;
@@ -895,19 +909,29 @@ function enhanceProse() {
   function renderChips(entries: HTMLElement[], selectIndex = 0) {
     chipsEl.textContent = "";
     chipsEl.hidden = entries.length < 2;
+    // A remembered source label wins over the numeric default whenever this
+    // anchor actually has it — falls back to selectIndex (usually 0) otherwise.
+    const remembered = lastSourceLabel ? entries.findIndex((en, i) => sourceLabel(en, i) === lastSourceLabel) : -1;
+    const initialIndex = remembered >= 0 ? remembered : selectIndex;
     entries.forEach((en, i) => {
       if (entries.length < 2) return;
+      const label = sourceLabel(en, i);
       const b = document.createElement("button");
-      b.type = "button"; b.className = "ann-chip"; b.textContent = sourceLabel(en, i);
-      b.setAttribute("aria-pressed", String(i === selectIndex));
+      b.type = "button"; b.className = "ann-chip"; b.textContent = label;
+      b.setAttribute("aria-pressed", String(i === initialIndex));
       b.addEventListener("click", () => {
         chipsEl.querySelectorAll(".ann-chip").forEach((c) => c.setAttribute("aria-pressed", "false"));
         b.setAttribute("aria-pressed", "true");
+        lastSourceLabel = label;
         showEntry(en);
       });
       chipsEl.appendChild(b);
     });
-    showEntry(entries[selectIndex] || entries[0]);
+    // Only an explicit click (above) should update the remembered preference —
+    // this render can itself be a forced fallback (this ayah lacks the
+    // remembered source), and that must not overwrite the preference for
+    // ayat that still have it.
+    showEntry(entries[initialIndex] || entries[0]);
   }
 
   function selectKind(byKind: Map<string, HTMLElement[]>, kind: string, entryIndex = 0) {
@@ -949,6 +973,24 @@ function enhanceProse() {
     footEl.append(nav("‹ السابق", ids[i - 1], "ann-prev"), nav("التالي ›", ids[i + 1], "ann-next"));
   }
 
+  // Quran packs are fetched on open, so hitting "next" cold means a network
+  // round trip before the sheet can update — quietly warm both neighbors'
+  // fragments right after the current one renders, so by the time the user
+  // actually clicks next/prev the fetch (usually) already happened.
+  function prefetchNeighbors(packId: string) {
+    const ids = packIds();
+    const i = ids.indexOf(packId);
+    for (const targetId of [ids[i - 1], ids[i + 1]]) {
+      if (!targetId || document.getElementById(targetId)) continue;
+      const srcBtn = document.querySelector<HTMLElement>(`[data-ann="${targetId}"][data-ann-src]`);
+      const annSrc = srcBtn?.dataset.annSrc;
+      if (!annSrc) continue;
+      fetch(annSrc).then((r) => (r.ok ? r.text() : "")).then((html) => {
+        if (html && !document.getElementById(targetId)) document.body.insertAdjacentHTML("beforeend", html);
+      }).catch(() => {});
+    }
+  }
+
   function openSheet(packId: string, entryIndex = 0) {
     const pack = document.getElementById(packId);
     if (!pack) return;
@@ -979,13 +1021,15 @@ function enhanceProse() {
     kinds.forEach((k) => {
       const t = document.createElement("button");
       t.type = "button"; t.className = "ann-tab"; t.setAttribute("data-kind", k); t.textContent = KIND_LABEL[k] || k;
-      t.addEventListener("click", () => selectKind(byKind, k));
+      t.addEventListener("click", () => { lastKind = k; selectKind(byKind, k); });
       tabsEl.appendChild(t);
     });
-    selectKind(byKind, kinds[0], entryIndex);
+    const initialKind = lastKind && byKind.has(lastKind) ? lastKind : kinds[0];
+    selectKind(byKind, initialKind, entryIndex);
     renderFoot(packId);
     sheet!.hidden = false;
     requestAnimationFrame(() => sheet!.classList.add("is-shown"));
+    prefetchNeighbors(packId);
   }
 
   function close() {
@@ -1023,9 +1067,10 @@ function enhanceProse() {
     // tapping a verse that carries notes opens its sheet
     const pack = t.closest<HTMLElement>(".verse")?.querySelector<HTMLElement>("[data-ann-pack]");
     if (pack && !t.closest("a, button")) { openSheet(pack.id); return; }
-    // anchored panel is part of the page flow — outside clicks shouldn't dismiss
-    // it (✕ and Escape still do); the floating modal keeps outside-click close
-    if (sheet && !sheet.hidden && !sheet.classList.contains("ann-panel")) close();
+    // outside-click closes any open sheet, tafsir panel included (✕ and
+    // Escape still work too) — anything on the sheet itself, or a click that
+    // opened/re-opened a different anchor, already returned above.
+    if (sheet && !sheet.hidden) close();
   });
   function setup() {
     // Clean up any stale sheets in the DOM (e.g. from cached pages) — ALL of
@@ -1486,6 +1531,13 @@ function onPage() {
   // بيت numbering only means anything on poems — hide the toggle elsewhere
   const isPoemPage = document.querySelector("main")?.dataset.activeNav === "poems";
   document.querySelectorAll<HTMLElement>('[data-toggle="verseNums"]').forEach((b) => { b.hidden = !isPoemPage; });
+  // tashkeel/pages/footnotes act on regular book/poem markup this page doesn't
+  // have: the ayah text carries no [data-ar] (always fully diacritized, never
+  // stripped), its page-seps are forced visible with !important regardless of
+  // the "flow" class, and there are no inline footnote markers to hide — all
+  // three toggles are dead weight here, so hide them like verseNums above.
+  const isQuranPage = document.querySelector("main")?.dataset.activeNav === "quran";
+  document.querySelectorAll<HTMLElement>('[data-toggle="tashkeel"], [data-toggle="pages"], [data-toggle="footnotes"]').forEach((b) => { b.hidden = isQuranPage; });
   syncTocCurrent();
   initAudioBar();
 }

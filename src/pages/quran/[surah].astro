@@ -3,9 +3,11 @@ import { getCollection } from "astro:content";
 import Base from "../../layouts/Base.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import Relations from "../../components/Relations.astro";
+import ReaderSidebar from "../../components/ReaderSidebar.astro";
 import { markdownToSafeHtml } from "../../lib/sanitize";
 import { notesByAnchor, loadGraph, personNameMap } from "../../lib/site";
 import { parseBook } from "../../lib/chapters";
+import { toArabicDigits } from "../../lib/display";
 // Build-time only: used to know WHICH verses have tafsir (so we render a
 // clickable ayah-num button), never to inline note bodies into page HTML —
 // those are fetched on demand from /tafsir-frag/<surah>/<ayah>.html (M1).
@@ -22,14 +24,15 @@ export async function getStaticPaths() {
     const { paragraphs } = parseBook(body);
     const i = byNumber.findIndex((s) => s.id === entry.id);
     const nav = (s: typeof entry | undefined) => (s ? { href: `/quran/${s.id}`, name: s.data.name as string } : null);
+    const surahList = byNumber.map((s) => ({ id: s.id, number: s.data.number as number, name: s.data.name as string }));
     return {
       params: { surah: entry.id },
-      props: { entry, paragraphs, byAnchor, prev: nav(byNumber[i - 1]), next: nav(byNumber[i + 1]) },
+      props: { entry, paragraphs, byAnchor, prev: nav(byNumber[i - 1]), next: nav(byNumber[i + 1]), surahList },
     };
   });
 }
 
-const { entry, paragraphs, byAnchor, prev, next } = Astro.props;
+const { entry, paragraphs, byAnchor, prev, next, surahList } = Astro.props;
 const { data } = entry;
 const tafsirVerseKeys = new Set(Object.keys(tafsirIndex as Record<string, unknown[]>));
 const surahTitle = `سورة ${data.name}`;
@@ -122,6 +125,7 @@ const processedParagraphs = paragraphs.map((para, idx) => {
     { label: surahTitle },
   ]} />
 
+  <div class="chap-grid">
   <div class="wrap-matn reading-pad" dir="rtl" data-cite-book={surahTitle} data-cite-kind="quran" data-cite-surah={data.name}>
     <div class="plate-outer surah-plate">
       <div class="plate-inner surah-plate-inner">
@@ -185,6 +189,18 @@ const processedParagraphs = paragraphs.map((para, idx) => {
 
     <Relations items={[]} />
   </div>
+
+  <ReaderSidebar label={`سور القرآن · ${toArabicDigits(surahList.length)} سورة`}>
+    <div class="toc-box has-current">
+      <div class="toc-label">سور القرآن الكريم</div>
+      {surahList.map((s) => (
+        <a href={`/quran/${s.id}`} class:list={[{ "toc-current": s.id === entry.id }]}>
+          {toArabicDigits(s.number)} — سورة {s.name}
+        </a>
+      ))}
+    </div>
+  </ReaderSidebar>
+  </div>
 </Base>
 
 <style>
@@ -204,13 +220,16 @@ const processedParagraphs = paragraphs.map((para, idx) => {
   .plate-corner.c-br { bottom: 8px; right: 10px; }
   .plate-corner.c-bl { bottom: 8px; left: 10px; }
   .surah-plate .reader-head { margin: 0; }
-  .surah-title { font-size: clamp(28px, 5vw, 34px); }
+  /* this overrides .reader-title's own reading-scale-aware font-size (global.css) —
+     keep it scaling too, or the font +/- control visibly resizes the title
+     but not the ayah text below it, which is the whole point of the control */
+  .surah-title { font-size: calc(clamp(28px, 5vw, 34px) * var(--reading-scale)); }
   .surah-dl { display: flex; justify-content: center; text-align: center; margin: 14px auto 0; }
 
   /* continuous centered ayah block — NOT one-per-line (HANDOFF §5) */
   .ayah-list {
     direction: rtl; margin-block: 2rem; text-align: center; text-wrap: pretty;
-    font-family: var(--font-quran); font-size: 1.4rem; line-height: 2.5; color: var(--ink);
+    font-family: var(--font-quran); font-size: calc(1.4rem * var(--reading-scale)); line-height: 2.5; color: var(--ink);
   }
   .ayah { display: inline; }
   .ayah-text { display: inline; }

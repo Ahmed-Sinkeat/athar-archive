@@ -42,6 +42,12 @@ const groups = [
     {groups.map((g) => g.items.length > 0 && (
       <details class="downloads-browse-group">
         <summary><span>{g.label}</span><span class="faint masail-count">{g.items.length}</span></summary>
+        <div class="downloads-all-row">
+          <button type="button" class="downloads-all-btn" data-action="download:all">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"></path><path d="M7 10l5 5 5-5"></path><path d="M4 19h16"></path></svg>
+            <span data-dl-all-label>تنزيل الكل</span>
+          </button>
+        </div>
         <ul class="downloads-browse-list">
           {g.items.map((it) => (
             <li>
@@ -74,6 +80,14 @@ const groups = [
     padding: 11px 14px; font-family: var(--font-ui); font-weight: 600; font-size: 14px;
   }
   .downloads-browse-group summary::-webkit-details-marker { display: none; }
+  .downloads-all-row { padding: 0 14px 10px; border-top: 1px solid var(--rule); }
+  .downloads-all-btn {
+    display: inline-flex; align-items: center; gap: 6px; margin-top: 10px;
+    background: none; border: 1px solid var(--rule); border-radius: var(--radius);
+    color: var(--ink-faint); cursor: pointer; padding: 5px 10px; font-family: var(--font-ui); font-size: 12.5px;
+  }
+  .downloads-all-btn:hover { color: var(--accent); border-color: var(--accent-border); }
+  .downloads-all-btn[data-dl-busy] { opacity: 0.6; pointer-events: none; }
   .downloads-browse-list { list-style: none; margin: 0; padding: 0 14px 8px; display: grid; gap: 2px; }
   .downloads-browse-list li { display: flex; align-items: center; gap: 8px; padding: 6px 0; border-top: 1px solid var(--rule); }
   .downloads-browse-list a { flex: 1; min-width: 0; font-size: 13.5px; color: var(--ink); text-decoration: none; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
