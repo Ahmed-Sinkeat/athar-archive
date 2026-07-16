@@ -1390,6 +1390,7 @@ html.hide-vnums .vnum { display: none; }
    in its logical (reading-order) position, same fix already used for
    .prose code above. */
 .tok-elision { unicode-bidi: isolate; }
+.tok-marker { font-weight: 700; } /* flattened enumeration markers ("الموضع الثالث:") + attribution intros */
 
 /* --- personal highlights (CSS Custom Highlight API) --- */
 ::highlight(aa-mistake)  { background-color: rgba(155, 89, 182, 0.35); }
@@ -1891,10 +1892,15 @@ html.hide-footnotes .prose section.footnotes { display: none; }
   /* ════ المزيد drawer → bottom sheet (1b) ════ */
   .drawer-backdrop[data-open] { background: rgba(38, 25, 15, .4); z-index: 60; }
   /* Small anchored dropdown, same idea as desktop — not a bottom sheet: this
-     is a handful of nav links, not a screen's worth of content. */
+     is a handful of nav links, not a screen's worth of content. Anchored near
+     the المزيد trigger, which lives at the tabbar's inline-start end (bottom
+     of the screen on mobile), not the desktop hamburger's top-end spot. */
   .drawer {
+    top: auto; bottom: calc(62px + env(safe-area-inset-bottom) + 8px);
     width: min(78vw, 260px); max-height: 72vh; padding: 8px; gap: 1px;
+    transform: translateY(6px);
   }
+  .drawer[data-open] { transform: translateY(0); }
   .drawer a, .drawer .drawer-find {
     display: flex; align-items: center; gap: 10px; min-height: 42px; padding: 0 8px;
     font-size: 14.5px; font-weight: 500; border-radius: var(--radius);

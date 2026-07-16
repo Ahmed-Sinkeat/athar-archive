@@ -39,10 +39,20 @@ const TOK_RE = new RegExp(
   '|("[^"]*")' +
   "|(\\(\\([^)]{1,200}\\)\\))" +  // (( hadith )) — must precede the single-paren pattern below, or it eats only one side
   "|(\\([^)]{1,200}\\))" +  // ponytail: cap 200 chars to avoid backtracking
-  "|(\\[\\.{2,}\\])",  // isnad-elision marker, e.g. "[.....]" — see tok-elision
+  "|(\\[\\.{2,}\\])" +  // isnad-elision marker, e.g. "[.....]" — see tok-elision
+  // Athar-Engine's EPUB→Markdown pass flattens the source's bulleted/numbered
+  // enumerations ("• الموضع الأول: …", "الثاني: …") into one running paragraph,
+  // sometimes leaving a stray "* " where the bullet used to be. Bold the
+  // marker itself (category noun + ordinal, or a bare ordinal) so it still
+  // reads as a list, and drop the leading "* " artifact — matched only right
+  // before a marker, never a bare/loose asterisk elsewhere.
+  "|((?:\\*\\s*)?(?:المطلب|الموضع|الوجه|السبب|النوع|الفصل|الأمر|الجواب|الدليل)\\s+(?:الأول|الثاني|الثالث|الرابع|الخامس|السادس|السابع|الثامن|التاسع|العاشر)\\s*:)" +
+  "|((?:^|(?<=\\s))(?:\\*\\s*)?و?(?:الأول|الثاني|الثالث|الرابع|الخامس|السادس|السابع|الثامن|التاسع|العاشر)\\s*:)" +
+  // attribution intros ("وقال في موضع آخر:", "وقال الإمام ابن القيم رحمه الله:")
+  "|(وقال\\s+(?:في موضع آخر|(?:الإمام|الحافظ|الشيخ)\\s+[\\u0600-\\u06FF][\\u0600-\\u06FF\\s]{0,25}?\\s+رحمه(?:\\s+الله)?(?:\\s+تعالى)?)\\s*:)",
   "g"
 );
-const TOK_CLASS = ["tok-ayah", "tok-ayah-brace", "tok-quran-ref", "tok-listnum", "tok-quote", "tok-quote", "tok-quote", "tok-hadith", "tok-paren", "tok-elision"];
+const TOK_CLASS = ["tok-ayah", "tok-ayah-brace", "tok-quran-ref", "tok-listnum", "tok-quote", "tok-quote", "tok-quote", "tok-hadith", "tok-paren", "tok-elision", "tok-marker", "tok-marker", "tok-marker"];
 
 function splitTokens(value: string): any[] {
   const out: any[] = [];
@@ -51,7 +61,10 @@ function splitTokens(value: string): any[] {
     const i = m.index!;
     if (i > last) out.push({ type: "text", value: value.slice(last, i) });
     const cls = TOK_CLASS[m.slice(1).findIndex(Boolean)];
-    out.push({ type: "element", tagName: "span", properties: { className: [cls] }, children: [{ type: "text", value: m[0] }] });
+    // tok-marker's leading "* " (a flattened bullet artifact) is part of the
+    // match so `last` advances past it, but it shouldn't render.
+    const text = cls === "tok-marker" ? m[0].replace(/^\*\s*/, "") : m[0];
+    out.push({ type: "element", tagName: "span", properties: { className: [cls] }, children: [{ type: "text", value: text }] });
     last = i + m[0].length;
   }
   if (last < value.length) out.push({ type: "text", value: value.slice(last) });
