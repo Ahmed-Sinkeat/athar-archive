@@ -378,7 +378,15 @@ export function pageToVerseLines(
 export function pageToMd(xhtml: string, pageId: string): { md: string; notes: string[]; parsedPage: string; parsedJuz?: string } {
   // The Shamela footer is a sibling div OUTSIDE book-container:
   //   </div><hr/><div class="center">الجزء: N ¦ الصفحة: M</div></body>
-  const footerMatch = xhtml.match(/<div[^>]*class=["']center["'][^>]*>([\s\S]*?)<\/div>/i);
+  // A second, unrelated export format (no book-container at all, semantic
+  // <h2>/<p> tags instead of <span class="title">/<br>) instead uses
+  // <p class="text-center">الصفحة: N</p> — no جزء part. Check both.
+  // Not anchored to "الصفحة:" being first — a third variant puts "الجزء: X -"
+  // before it ("الجزء: مقدمة - الصفحة: 3") — but still requires the paragraph
+  // to actually contain a page reference, so a genuinely centered piece of
+  // content (not a footer) in this format never gets mistaken for one.
+  const footerMatch = xhtml.match(/<div[^>]*class=["']center["'][^>]*>([\s\S]*?)<\/div>/i)
+    ?? xhtml.match(/<p[^>]*class=["']text-center["'][^>]*>([\s\S]*?الصفحة:\s*\d+[\s\S]*?)<\/p>/i);
   let parsedPage = pageId;
   let parsedJuz: string | undefined;
   if (footerMatch) {
@@ -388,9 +396,11 @@ export function pageToMd(xhtml: string, pageId: string): { md: string; notes: st
     const pgMatch = footer.match(/الصفحة:\s*(\d+)/);
     if (pgMatch) parsedPage = pgMatch[1];
   }
-  
+
   // Strip it from the full xhtml before extraction so it doesn't pollute inner.
-  const cleaned = xhtml.replace(/<div[^>]*class=["']center["'][^>]*>[\s\S]*?<\/div>/gi, "");
+  const cleaned = xhtml
+    .replace(/<div[^>]*class=["']center["'][^>]*>[\s\S]*?<\/div>/gi, "")
+    .replace(/<p[^>]*class=["']text-center["'][^>]*>[\s\S]*?الصفحة:\s*\d+[\s\S]*?<\/p>/gi, "");
   // Greedy capture: book-container inner content up to the last </div> before </body>.
   let inner = cleaned.match(/<div[^>]*id=["']book-container["'][^>]*>([\s\S]+)<\/div>\s*(?:<hr[^>]*>)?\s*<\/body>/i)?.[1] ??
     cleaned.match(/<div[^>]*id=["']book-container["'][^>]*>([\s\S]*?)<\/div>/i)?.[1] ?? "";
@@ -398,6 +408,13 @@ export function pageToMd(xhtml: string, pageId: string): { md: string; notes: st
   if (!inner.trim()) {
     inner = cleaned.match(/<body[^>]*>([\s\S]+?)<\/body>/i)?.[1] ?? cleaned;
   }
+
+  // Second format's own headings/paragraphs: <h2-6> chapter titles (no
+  // class="title" span at all) and <p> paragraph boundaries (no <br> at
+  // all) — without this, <p>a</p><p>b</p> collapses to "ab" with no space
+  // once tags are stripped below, and every heading is silently dropped.
+  inner = inner.replace(/<h([1-6])[^>]*>([\s\S]*?)<\/h\1>/gi, (_m, level, t) => `\n${"#".repeat(Number(level))} ${cleanInline(t)}\n`);
+  inner = inner.replace(/<\/p>/gi, "\n\n").replace(/<p[^>]*>/gi, "");
 
   // footnotes
   inner = inner.replace(/<span class=["']footnote-hr["']>[\s\S]*?<\/span>/gi, "");
@@ -1330,6 +1347,23 @@ function selftest() {
   a(inferHadithCategory(fakeMeta("كتاب الزوائد"), "/x/13ـ كتب التخريج والزوائد/k.epub") === "تخريج", "تخريج folder");
   a(inferHadithCategory(fakeMeta("جزء من حديث"), "/x/أجزاء حديثية/k.epub") === "أجزاء حديثية", "أجزاء folder");
   a(inferHadithCategory(fakeMeta("كتاب الصمت", "ابن أبي الدنيا"), "/x/حديث/k.epub") === "كتب الآثار", "آثار: ابن أبي الدنيا");
+
+  // ── second export format: no book-container, semantic <h2>/<p>, and a
+  // <p class="text-center">الصفحة: N</p> footer instead of a <div class="center"> ──
+  const secondFormatSample =
+    `<body> <h2 id="toc-1">باب الوضوء</h2><p>الجملة الأولى.</p><p>الجملة الثانية.</p><p class="text-center">الصفحة: 7</p> </body>`;
+  const sf = pageToMd(secondFormatSample, "P1");
+  a(sf.md.includes("## باب الوضوء"), "h2 → heading: " + sf.md);
+  a(sf.md.includes("الجملة الأولى.") && sf.md.includes("الجملة الثانية."), "both <p> kept: " + sf.md);
+  a(!sf.md.includes("الأولى.الجملة"), "adjacent <p> tags don't fuse without a space: " + sf.md);
+  a(!sf.md.includes("الصفحة"), "text-center footer stripped from body: " + sf.md);
+  a(sf.parsedPage === "7", "text-center footer page parsed: " + sf.parsedPage);
+
+  // ── same format's third variant: "الجزء: X - الصفحة: N" (juz first, a
+  // non-numeric جزء label like a مقدمة section) — still just a footer ──
+  const sf2 = pageToMd(`<body> <p>محتوى.</p><p class="text-center">الجزء: مقدمة - الصفحة: 3</p> </body>`, "P1");
+  a(!sf2.md.includes("الصفحة") && !sf2.md.includes("الجزء"), "جزء-first footer stripped: " + sf2.md);
+  a(sf2.parsedPage === "3", "جزء-first footer page parsed: " + sf2.parsedPage);
 
   // ── mergeDuplicateSurahTitles (مقاتل بن سليمان-style double surah title) ──
   const doubleTitleBody =

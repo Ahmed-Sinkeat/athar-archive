@@ -14,43 +14,57 @@ Correction to an earlier version of this doc: `athar-archive/scripts/epub-import
 | Status | Production, used ad hoc per book | Active R&D — "Phase 1" frozen scope (structure/typography only; entity/semantic extraction is built but frozen until Phase 2) |
 | Maturity signal | Simple enough to read top to bottom in one sitting | Has its own docs/, ADRs, rules/, quality/ — a project in its own right |
 
-## What this means practically
-- **Quick one-off import** (a metn/poem you want live today) → use `athar-archive`'s `pnpm import:epub`. It's simpler, direct, good enough for the Shamela format it targets.
-- **Higher-fidelity compile with regression protection** (headings, footnotes, poetry, tables verified against a golden corpus, or a book Athar-Engine has already been tuned against) → compile it in `Athar-Engine` (`compile-canonical.ts` / `compile-all-epubs.ts`), then bring it into athar-archive with **`ingest-new-book.mjs`** (new book) or **`sync-website-bodies.mjs`** (existing book, body-only refresh).
+## What this means practically — Athar-Engine is the default (2026-07-16)
+
+**Default to Path B/C (Athar-Engine) for every new book, not just the ones already in its corpus.** This reverses the old guidance below, after a concrete incident: importing ~80 books in one session via `epub-import.ts` produced real defects — missing headings on a whole second EPUB template (`<h2>`/`<p>` tags instead of Shamela's `<span class="title">`), fused paragraphs, leaked page-footer text, and a duplicate of **فتح المجيد شرح كتاب التوحيد** that Athar-Engine had *already compiled* (`canonical-corpus/16-fath-al-majid`) — its version had richer metadata (full author lineage/dates), correctly separated embedded poetry into verse lines, and real linked footnotes; the quick importer's version flattened all of that. Same story every time this has come up before.
+
+Athar-Engine's `compile-canonical.ts` **does work on books outside its original corpus** — tested live on two fresh books, not just the existing 30 — but had two silent-failure traps that likely explain why it kept getting skipped: it required `<golden_dir>/output/` and `.../benchmarks/` to already exist (bare `ENOENT` otherwise), and silently defaulted an *omitted* slug argument to a hardcoded leftover test value (`al-arbaeen-al-nawawiyyah-epub`) instead of erroring. Both fixed 2026-07-16 (`compile-canonical.ts` now auto-creates those two dirs and requires the slug explicitly) — if you hit either failure again, the fix didn't make it into this checkout, not a reason to fall back to Path A.
+
+**Only reach for `pnpm import:epub` (Path A) when Athar-Engine genuinely can't be used** — e.g. a format Pandoc can't parse at all — not merely because it's fewer steps. Path A is still fine for quick drafts you plan to re-compile properly later, but don't let that become the default it's kept becoming.
+
+- Before compiling anything, `ls canonical-corpus/` in Athar-Engine — the book may already be done.
 - They are **not interchangeable inputs to the same pipeline** — Athar-Engine's output only overwrites the *body*, never the frontmatter fields (person/topics/etc.) that athar-archive's own importer, `/compose`, or `ingest-new-book.mjs` set.
 
 ## Guide: importing an EPUB
 
-**Path A — fast, direct (athar-archive importer):**
+**Path C — Athar-Engine, book is brand new (default — start here):**
+```
+cd /home/sinkeat/Projects/Athar-Engine
+ls canonical-corpus/                                                    # check it isn't already compiled
+pnpm exec tsx scripts/compile-canonical.ts "<epub path>" canonical-corpus/<n>-<name> <slug>
+# <golden_dir> and its output/+benchmarks/ subdirs are auto-created — nothing to mkdir first
+node scripts/ingest-new-book.mjs <n>-<name> --slug <slug> --title "<title>" --person <person-slug> \
+  --kind مرجع --topics <topic-slug> --authored-year <year> --status published \
+  --description "<one-line description>"
+cd /home/sinkeat/Projects/athar-archive && pnpm validate:content
+```
+`ingest-new-book.mjs` writes a brand-new content file with frontmatter built from the CLI
+flags, and refuses to run if the slug already exists. It always writes into `src/content/book/`
+— move to `book-lg/` yourself afterward if the compiled `.md` is ≥100KB (CMS folder-size rule).
+Proven on 13+ books (سيرة ابن هشام, a batch of early-salaf works, plus the size/format-agnostic
+test run that produced the auto-mkdir fix above).
+
+**Path B — Athar-Engine, book already has a content file on the site (refresh only):**
+```
+cd /home/sinkeat/Projects/Athar-Engine
+pnpm exec tsx scripts/compile-canonical.ts "<epub path>" canonical-corpus/<n>-<name> <slug>
+node scripts/sync-website-bodies.mjs --dry     # preview what would sync into athar-archive
+node scripts/sync-website-bodies.mjs           # write it (only touches files that already exist on the site)
+```
+
+**Path A — athar-archive's own importer (fallback only, not the default):**
 ```
 cd /home/sinkeat/Projects/athar-archive
 pnpm import:epub "/home/sinkeat/Projects/books/starterbooks/<file>.epub" --dry-run   # inspect first
 pnpm import:epub /home/sinkeat/Projects/books/starterbooks/                          # whole folder, once happy
 pnpm validate:content
 ```
-
-**Path B — via Athar-Engine's compiler, book already has a content file on the site (higher fidelity, regression-checked):**
-```
-cd /home/sinkeat/Projects/Athar-Engine
-# add the book to compile-all-epubs.ts's list, or run compile-canonical.ts directly:
-pnpm exec tsx scripts/compile-canonical.ts "<epub path>" canonical-corpus/<folder> <slug>
-node scripts/sync-website-bodies.mjs --dry     # preview what would sync into athar-archive
-node scripts/sync-website-bodies.mjs           # write it (only touches files that already exist on the site)
-```
-
-**Path C — via Athar-Engine's compiler, book is brand new (2026-07-07, `ingest-new-book.mjs`):**
-```
-cd /home/sinkeat/Projects/Athar-Engine
-pnpm exec tsx scripts/compile-canonical.ts "<epub path>" canonical-corpus/<folder> <slug>
-node scripts/ingest-new-book.mjs <folder> --slug <slug> --title "<title>" --person <person-slug> \
-  --kind مرجع --topics <topic-slug> --authored-year <year> --status published \
-  --description "<one-line description>"
-```
-This is the gap Path B always had (it "only updates files that already exist on the site" —
-refuses to touch anything without a content file, by design, to avoid clobbering curated
-frontmatter). `ingest-new-book.mjs` writes a brand-new content file with frontmatter built
-from the CLI flags, and refuses to run if the slug already exists (use Path B for that case
-instead). Proven on 13 books so far (سيرة ابن هشام, then a batch of early-salaf works).
+Reach for this only when Athar-Engine genuinely can't handle the source (e.g. a format Pandoc
+can't parse) — not just because it's fewer steps. It's regex-based against one specific Shamela
+HTML template; anything else silently drops headings/paragraph boundaries/footers rather than
+erroring, which is exactly what happened across ~80 books in one sitting before this note
+existed. If you use it anyway, budget time to manually verify headings survived, paragraphs
+didn't fuse, and no page-footer text leaked into the body — don't assume it "just worked."
 
 ## What I actually did (and got wrong first)
 1. First pass, I only looked inside `athar-archive/` and concluded "Athar Engine" was just a marketing name for that repo's own stack — wrong. I hadn't checked for a sibling directory.
