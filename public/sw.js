@@ -25,8 +25,15 @@ const SHELL_URLS = [
 ];
 async function precacheShell() {
   const cache = await caches.open(SHELL_CACHE);
-  if (await cache.match("/")) return; // already done on a previous visit
+  // NOT cache.match("/") — "/" is the app's start_url, so it's already cached
+  // the instant anyone just opens the app via the normal cache-first-then-
+  // refresh path in shellCacheFirst, regardless of whether this bulk precache
+  // ever ran. That made the check always true and silently skipped every
+  // other shell page for basically everyone. A marker only this function ever
+  // writes is the only reliable "already done" signal.
+  if (await cache.match("/__shell-precached__")) return;
   await Promise.allSettled(SHELL_URLS.map((u) => cache.add(u)));
+  await cache.put("/__shell-precached__", new Response(""));
 }
 
 // Web fonts (Google Fonts CSS + woff2) — cache-first in their own cache:
@@ -48,7 +55,12 @@ const QURAN_URLS = ["/quran", "/quran/mushaf", ...Array.from({ length: 114 }, (_
 // hashed JS/CSS never lands in any cache for an offline-from-first-open visit.
 async function precacheQuran() {
   const cache = await caches.open(CACHE_NAME);
-  if (await cache.match("/quran/1")) return; // already done on a previous visit
+  // NOT cache.match("/quran/1") — this cache also holds anything the user
+  // opens normally (htmlNetworkFirst caches every visited page here too), so
+  // if they'd simply read Al-Fatiha first — likely, it's the first surah —
+  // the check would already read true despite surahs 2-114 never having run
+  // through this function. Same class of bug as precacheShell's marker fix.
+  if (await cache.match("/__quran-precached__")) return;
   const assets = new Set();
   await Promise.allSettled(QURAN_URLS.map(async (url) => {
     const res = await fetch(url);
@@ -61,6 +73,7 @@ async function precacheQuran() {
     const res = await fetch(u);
     if (res.ok) await cache.put(u, res);
   }));
+  await cache.put("/__quran-precached__", new Response(""));
 }
 
 self.addEventListener("install", (e) => {
