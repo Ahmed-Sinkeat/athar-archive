@@ -426,8 +426,9 @@ export function pageToMd(xhtml: string, pageId: string): { md: string; notes: st
   for (const fn of fnotes) {
     const escapedN = fn.n.replace(/[-\/\\^$*+?.()|[\]{}]/g, "\\$&");
     
-    // Pattern 1: bracketed forms like (1) or [1] (which might be preceded or followed by spaces and a dot)
-    const bracketedPattern = new RegExp(`\\s*(\\(|\\s*\\[)${escapedN}(\\)|\\s*\\])\\s*(\\.)?(\\s*)`, "g");
+    // Pattern 1: bracketed forms like (1), [1], or «1» (Arabic guillemets, e.g. مقاتل بن سليمان's
+    // edition) — which might be preceded or followed by spaces and a dot.
+    const bracketedPattern = new RegExp(`\\s*(\\(|\\s*\\[|\\s*«)${escapedN}(\\)|\\s*\\]|\\s*»)\\s*(\\.)?(\\s*)`, "g");
     text = text.replace(bracketedPattern, (_match, _open, _close, dot, trailingSpace) => {
       const dotStr = dot ? "." : "";
       const spaceStr = trailingSpace ? " " : "";
@@ -807,7 +808,8 @@ function uniqueSlug(base: string, collection: string, contentRoot: string, meta?
   };
 
   const baseFile = join(dir, base + ".md");
-  if (existsSync(baseFile)) {
+  if (!existsSync(baseFile)) return base; // nothing to collide with — a brand-new slug shouldn't get "--v2"
+  {
     const fm = getFrontmatter(baseFile);
     const editionMatch = (fm.edition || "") === (meta.edition || "");
     const descriptionMatch = (fm.description || "") === (meta.muhaqqiq ? `بتحقيق ${meta.muhaqqiq}` : "");
@@ -869,6 +871,26 @@ function buildPoemBody(pages: { id: string; xhtml: string }[]): string {
     }
   }
   return out.join("\n").replace(/\n{3,}/g, "\n\n").trim();
+}
+
+// Some تفسير editions (e.g. مقاتل بن سليمان) print the surah name twice: a
+// bare "## سورة الفاتحة" title page, then immediately a fuller "##
+// [سورة الفاتحة (1) : الآيات 1 الى 7]" title page carrying the range — same
+// section, two headings, with only a one-line مكية/مدنية blurb between them.
+// Left alone, every surah becomes two chapters, one an almost-empty stub —
+// doubling the book's chapter count and forcing an extra next-click per surah.
+// Scoped to headings starting with "سورة " so it can't fire on other books'
+// (باب/كتاب/فصل) headings.
+// The gap between the two headings varies (a plain مكية/مدنية sentence, a
+// page-sep before and/or after it, or nothing at all when the bracketed
+// title follows immediately) — so rather than modelling every layout, just
+// drop the bare heading line and keep whatever sits between it and the
+// bracketed one untouched, as long as no OTHER heading intervenes first.
+function mergeDuplicateSurahTitles(body: string): string {
+  return body.replace(
+    /^## سورة [^\n]+\n\n((?:(?!^## )[\s\S]){0,500}?)(?=^## \[سورة )/gm,
+    (_m, middle: string) => middle,
+  );
 }
 
 // ─────────────────────────────────────────────
@@ -1042,7 +1064,7 @@ function build(file: string, opt: Opt): BuildResult {
       return { path: annPath, text: annText };
     });
   } else {
-    body = isPoem ? buildPoemBody(pages) : buildBookBody(pages);
+    body = isPoem ? buildPoemBody(pages) : mergeDuplicateSurahTitles(buildBookBody(pages));
   }
 
   const primaryPath = join(opt.out, collection, bookSlug + ".md");
@@ -1162,7 +1184,7 @@ function buildMerged(files: string[], opt: Opt): BuildResult {
       return { path: annPath, text: annText };
     });
   } else {
-    body = isPoem ? buildPoemBody(allPages) : buildBookBody(allPages);
+    body = isPoem ? buildPoemBody(allPages) : mergeDuplicateSurahTitles(buildBookBody(allPages));
   }
   return {
     primary: { path: join(opt.out, collection, bookSlug + ".md"), text: fm + body, collection },
@@ -1309,6 +1331,42 @@ function selftest() {
   a(inferHadithCategory(fakeMeta("جزء من حديث"), "/x/أجزاء حديثية/k.epub") === "أجزاء حديثية", "أجزاء folder");
   a(inferHadithCategory(fakeMeta("كتاب الصمت", "ابن أبي الدنيا"), "/x/حديث/k.epub") === "كتب الآثار", "آثار: ابن أبي الدنيا");
 
+  // ── mergeDuplicateSurahTitles (مقاتل بن سليمان-style double surah title) ──
+  const doubleTitleBody =
+    `## سورة الفاتحة\n\n<hr class="page-sep" data-page="31" data-juz="1" />\n\n` +
+    `سورة الفاتحة مكية وهي سبع آيات\n\n` +
+    `## [سورة الفاتحة (1) : الآيات 1 الى 7]\n\nبِسْمِ اللَّهِ...\n\n` +
+    `<hr class="page-sep" data-page="33" data-juz="1" />`;
+  const mergedTitle = mergeDuplicateSurahTitles(doubleTitleBody);
+  a(!mergedTitle.includes("## سورة الفاتحة\n"),            "bare surah heading dropped: " + mergedTitle);
+  a(mergedTitle.includes("## [سورة الفاتحة (1) : الآيات 1 الى 7]"), "bracketed heading kept: " + mergedTitle);
+  a(mergedTitle.includes("سورة الفاتحة مكية وهي سبع آيات"), "blurb kept as body text: " + mergedTitle);
+  a((mergedTitle.match(/^## /gm) ?? []).length === 1,       "exactly one heading survives: " + mergedTitle);
+  // other books' باب/فصل headings must never be touched by this.
+  const unrelatedBody = `## باب الإيمان\n\nنص قصير\n\n## فصل\n\nنص آخر`;
+  a(mergeDuplicateSurahTitles(unrelatedBody) === unrelatedBody, "non-قرآن headings untouched");
+  // real-world variants seen in مقاتل: a second page-sep between the blurb
+  // and the bracketed title, and no blurb at all (heading touches heading).
+  const twoHrBody =
+    `## سورة الرعد\n\n<hr class="page-sep" data-page="355" />\n\n` +
+    `(13) سورة الرعد مدنية وآياتها ثلاث وأربعون\n\n<hr class="page-sep" data-page="357" />\n\n` +
+    `## [سورة الرعد (13) : الآيات 1 الى 113]\n\nالمر...`;
+  const twoHrMerged = mergeDuplicateSurahTitles(twoHrBody);
+  a((twoHrMerged.match(/^## /gm) ?? []).length === 1, "two-page-sep variant merges to one heading: " + twoHrMerged);
+  const noGapBody = `## سورة الحجر\n\n## [سورة الحجر (15) : الآيات 1 الى 99]\n\nالر...`;
+  const noGapMerged = mergeDuplicateSurahTitles(noGapBody);
+  a((noGapMerged.match(/^## /gm) ?? []).length === 1, "no-gap variant merges to one heading: " + noGapMerged);
+
+  // ── guillemet «N» footnote markers (مقاتل بن سليمان uses «N», not (N)/[N]) ──
+  const guillemetSample =
+    `<body><div id="book-container"><hr/>` +
+    `<span class="title">سورة الفاتحة</span><br />قَالَ: فَاتِحَةُ الْكِتَابِ مَدَنِيَّةٌ «2» .` +
+    `<span class="footnote-hr">&nbsp;</span>` +
+    `<span class="footnote">(1) هكذا بالأصل.(2) لم يرد عن الرسول قول فى ذلك.</span>` +
+    `</div><hr/></body>`;
+  const guillemetResult = pageToMd(guillemetSample, "P1");
+  a(!guillemetResult.md.includes("«2»"),                   "guillemet marker replaced: " + guillemetResult.md);
+  a(guillemetResult.md.includes('<sup data-fn="2"'),       "guillemet marker → linked sup: " + guillemetResult.md);
 
   console.log("✓ selftest passed (all assertions)");
 }
