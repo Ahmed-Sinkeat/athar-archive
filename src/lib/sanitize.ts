@@ -34,6 +34,7 @@ const TOK_RE = new RegExp(
   "|(\\{[^}]{1,300}\\})" +  // ayah cited with plain braces instead of ﴿﴾ — same kind, different author convention
   "|(\\[[\\u0600-\\u06FF\\s]+?:\\s*[\\d\\u0660-\\u0669]+(?:[-\\u2013][\\d\\u0660-\\u0669]+)?\\])" +  // "[سورة: رقم]" — \s* before the digits allows the normal typographic space after the colon (wasn't previously allowed); name group stays lazy + still allows internal spaces (multi-word names like "آل عمران")
   "|(\\[[\\u0660-\\u06690-9]+\\])" +  // bare "[N]" — inline list/enumeration numbering some books use mid-sentence (fiqh condition lists, etc.); style it small like the source rather than let it read as leaked text
+  "|(\\([\\u0660-\\u06690-9]{1,3}\\))" +  // bare "(N)" — a footnote marker the importer left inline as flattened text instead of a real <sup> (same fix as tok-listnum above, parens instead of brackets); must precede the generic paren pattern below so it isn't swallowed as a plain aside
   "|(«[^»]*»)" +
   "|([“”][^“”]*[“”])" +
   '|("[^"]*")' +
@@ -52,7 +53,7 @@ const TOK_RE = new RegExp(
   "|(وقال\\s+(?:في موضع آخر|(?:الإمام|الحافظ|الشيخ)\\s+[\\u0600-\\u06FF][\\u0600-\\u06FF\\s]{0,25}?\\s+رحمه(?:\\s+الله)?(?:\\s+تعالى)?)\\s*:)",
   "g"
 );
-const TOK_CLASS = ["tok-ayah", "tok-ayah-brace", "tok-quran-ref", "tok-listnum", "tok-quote", "tok-quote", "tok-quote", "tok-hadith", "tok-paren", "tok-elision", "tok-marker", "tok-marker", "tok-marker"];
+const TOK_CLASS = ["tok-ayah", "tok-ayah-brace", "tok-quran-ref", "tok-listnum", "tok-listnum", "tok-quote", "tok-quote", "tok-quote", "tok-hadith", "tok-paren", "tok-elision", "tok-marker", "tok-marker", "tok-marker"];
 
 function splitTokens(value: string): any[] {
   const out: any[] = [];

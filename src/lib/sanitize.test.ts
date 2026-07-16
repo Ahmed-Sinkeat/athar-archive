@@ -39,6 +39,13 @@ describe("markdownToSafeHtml", () => {
     expect(html).toContain('<span class="tok-quote">"كلمة"</span>');
   });
 
+  it("styles a bare parenthesized number like the bracket form, not the generic aside color", () => {
+    const html = markdownToSafeHtml("لكن تباح: ضبة (٤)، يسيرة. (١) في (ج): وجار كراكد.");
+    expect(html).toContain('<span class="tok-listnum">(٤)</span>');
+    expect(html).toContain('<span class="tok-listnum">(١)</span>');
+    expect(html).toContain('<span class="tok-paren">(ج)</span>');
+  });
+
   it("does not tokenise inside code spans", () => {
     const html = markdownToSafeHtml('`«not a hadith»`');
     expect(html).not.toContain("tok-hadith");
