@@ -73,8 +73,9 @@ function cleanBody(raw: string): string {
 
 function main() {
   const file = process.argv[2];
+  const mergeInto = process.argv.includes("--merge") ? "src/data/quran-tafsir-index.json" : null;
   if (!file) {
-    console.error("usage: tsx scripts/gen-tafsir-index-muqatil.ts <book-md-path>");
+    console.error("usage: tsx scripts/gen-tafsir-index-muqatil.ts <book-md-path> [--merge]");
     process.exit(1);
   }
   const raw = fs.readFileSync(path.resolve(file), "utf-8");
@@ -186,8 +187,31 @@ function main() {
     }
   }
 
-  const outPath = path.resolve("src/data/muqatil-tafsir-index.preview.json");
-  fs.writeFileSync(outPath, JSON.stringify(index, null, 1), "utf-8");
+  let outPath: string;
+  if (mergeInto) {
+    // Merge in place into the live (fetched-from-R2) index — dedup by
+    // sourceSlug so re-running this (e.g. on every CI trigger) is a no-op
+    // once this book's notes are already there, instead of piling up
+    // duplicate copies on every run.
+    outPath = path.resolve(mergeInto);
+    const live: Record<string, TafsirNote[]> = fs.existsSync(outPath)
+      ? JSON.parse(fs.readFileSync(outPath, "utf-8"))
+      : {};
+    let merged = 0;
+    for (const [key, notes] of Object.entries(index)) {
+      const existing = (live[key] ??= []);
+      for (const note of notes) {
+        if (existing.some((n) => n.sourceSlug === note.sourceSlug)) continue;
+        existing.push(note);
+        merged++;
+      }
+    }
+    fs.writeFileSync(outPath, JSON.stringify(live), "utf-8");
+    console.log(`✓ merged ${merged} new note(s) into ${outPath} (${Object.keys(live).length} verse keys total)`);
+  } else {
+    outPath = path.resolve("src/data/muqatil-tafsir-index.preview.json");
+    fs.writeFileSync(outPath, JSON.stringify(index, null, 1), "utf-8");
+  }
 
   const totalAyat = 6236;
   console.log(`✓ surahs processed: ${surahsProcessed}/114`);
