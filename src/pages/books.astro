@@ -22,8 +22,6 @@ const card = (it: any) => {
     audio: graph.audioForSource("book", it.id).length > 0,
     sub: it.data.person ? names.get(it.data.person) ?? "" : "",
     cta: "ادخل القراءة ←",
-    dlKind: "book",
-    dlId: it.id,
   };
 };
 ---

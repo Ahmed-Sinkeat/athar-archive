@@ -226,6 +226,23 @@ function renderDownloadButton(btn: HTMLElement) {
   });
 }
 
+// Storage estimate is origin-wide (everything the SW/app caches, not just
+// downloads), so it's the "out of" denominator only — the number itself
+// stays our own manifest total, the one thing the user actually chose to save.
+function renderUsageBar(totalBytes: number) {
+  const box = document.querySelector<HTMLElement>("[data-downloads-usage]");
+  const label = document.querySelector<HTMLElement>("[data-downloads-usage-label]");
+  const fill = document.querySelector<HTMLElement>("[data-downloads-usage-fill]");
+  if (!box || !label || !fill || !totalBytes) { if (box) box.hidden = true; return; }
+  box.hidden = false;
+  label.textContent = `${formatSize(totalBytes)} مُستخدَمة`;
+  navigator.storage?.estimate?.().then((est) => {
+    if (!est.quota) return;
+    label.textContent = `${formatSize(totalBytes)} من ${formatSize(est.quota)} مساحة متاحة`;
+    fill.style.width = `${Math.min(100, (totalBytes / est.quota) * 100)}%`;
+  }).catch(() => {});
+}
+
 function renderDownloadsList() {
   const list = document.querySelector<HTMLElement>("[data-downloads-list]");
   const empty = document.querySelector<HTMLElement>("[data-downloads-empty]");
@@ -244,6 +261,7 @@ function renderDownloadsList() {
   if (empty) empty.hidden = entries.length > 0;
   const totalBytes = entries.reduce((s, e) => s + e.bytes, 0);
   if (totalEl) totalEl.textContent = entries.length > 0 ? `· ${formatSize(totalBytes)}` : "";
+  renderUsageBar(totalBytes);
 }
 
 // Capture phase: these buttons sit inside a card <a href>, and ClientRouter's

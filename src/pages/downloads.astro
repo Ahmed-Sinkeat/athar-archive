@@ -1,21 +1,81 @@
 ---
 import Base from "../layouts/Base.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
-// The list itself is client-side (downloads.ts renders it from the local
-// manifest) — this page is just the shell, so it scales to any number of
+import { getCollection } from "astro:content";
+import { hrefFor } from "../lib/display";
+// The manifest list itself is client-side (downloads.ts renders it from
+// local storage) — the browse-and-download lists below are the one place on
+// the site a "تنزيل" button lives now (books/poems/articles/questions no
+// longer carry their own per-page button); this page scales to any number of
 // downloads and is noindex (device-local state, nothing to crawl).
+
+const KIND_LABEL: Record<string, string> = { book: "كتاب", poem: "منظومة", article: "مقالة", question: "مسألة" };
+
+async function listOf(collection: "book" | "poem" | "article" | "question") {
+  const entries = (await getCollection(collection)).filter((e) => e.data.status === "published");
+  return entries
+    .map((e) => ({ id: e.id, title: e.data.title as string, href: hrefFor(collection, e.id) }))
+    .sort((a, b) => a.title.localeCompare(b.title, "ar"));
+}
+const groups = [
+  { kind: "book", label: "الكتب", items: await listOf("book") },
+  { kind: "poem", label: "المنظومات", items: await listOf("poem") },
+  { kind: "article", label: "المقالات", items: await listOf("article") },
+  { kind: "question", label: "المسائل", items: await listOf("question") },
+];
 ---
-<Base title="التنزيلات" description="ما نزّلتَه للقراءة دون اتصال على هذا الجهاز." activeNav="home" noindex>
+<Base title="التنزيلات" description="ما نزّلتَه للقراءة دون اتصال على هذا الجهاز، وتنزيل المزيد." activeNav="home" noindex>
   <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "التنزيلات" }]} />
   <div class="wrap-mid reading-pad">
     <h1 class="page-title">التنزيلات <span class="faint" data-downloads-total></span></h1>
     <p class="faint downloads-hint">كل ما نزّلتَه للقراءة دون اتصال، محفوظٌ على هذا الجهاز فقط.</p>
+
+    <div class="downloads-usage" data-downloads-usage hidden>
+      <span class="faint downloads-usage-label" data-downloads-usage-label></span>
+      <div class="downloads-usage-bar"><div class="downloads-usage-fill" data-downloads-usage-fill></div></div>
+    </div>
+
     <div class="downloads-page-list" data-downloads-list></div>
-    <div class="faint" data-downloads-empty>لا توجد تنزيلات بعد — افتح كتابًا أو منظومة أو سورة واضغط «تنزيل للقراءة دون اتصال».</div>
+    <div class="faint" data-downloads-empty>لا توجد تنزيلات بعد — اختر من القوائم أدناه.</div>
+
+    <h2 class="downloads-browse-title">تنزيل المزيد</h2>
+    {groups.map((g) => g.items.length > 0 && (
+      <details class="downloads-browse-group">
+        <summary><span>{g.label}</span><span class="faint masail-count">{g.items.length}</span></summary>
+        <ul class="downloads-browse-list">
+          {g.items.map((it) => (
+            <li>
+              <a href={it.href}>{it.title}</a>
+              <button type="button" class="card-dl" data-action="download:toggle"
+                data-dl-kind={g.kind} data-dl-id={it.id} data-dl-title={it.title} data-dl-path={it.href}
+                aria-pressed="false" aria-label={`تنزيل «${it.title}» للقراءة دون اتصال`} title="تنزيل للقراءة دون اتصال">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"></path><path d="M7 10l5 5 5-5"></path><path d="M4 19h16"></path></svg>
+                <span class="card-dl-size" data-dl-size dir="ltr"></span>
+              </button>
+            </li>
+          ))}
+        </ul>
+      </details>
+    ))}
   </div>
 </Base>
 
 <style>
-  .downloads-hint { font-size: 13px; margin: -6px 0 22px; }
+  .downloads-hint { font-size: 13px; margin: -6px 0 16px; }
   [data-downloads-empty] { font-size: 13.5px; line-height: 1.8; }
+  .downloads-usage { margin-bottom: 18px; }
+  .downloads-usage-label { font-size: 12.5px; }
+  .downloads-usage-bar { height: 5px; border-radius: 99px; background: var(--rule); margin-top: 6px; overflow: hidden; }
+  .downloads-usage-fill { height: 100%; background: var(--accent); border-radius: inherit; }
+  .downloads-browse-title { font-family: var(--font-display); font-size: 16px; font-weight: 700; margin: 26px 0 10px; }
+  .downloads-browse-group { border: 1px solid var(--rule); border-radius: var(--radius); margin-bottom: 8px; }
+  .downloads-browse-group summary {
+    cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 10px;
+    padding: 11px 14px; font-family: var(--font-ui); font-weight: 600; font-size: 14px;
+  }
+  .downloads-browse-group summary::-webkit-details-marker { display: none; }
+  .downloads-browse-list { list-style: none; margin: 0; padding: 0 14px 8px; display: grid; gap: 2px; }
+  .downloads-browse-list li { display: flex; align-items: center; gap: 8px; padding: 6px 0; border-top: 1px solid var(--rule); }
+  .downloads-browse-list a { flex: 1; min-width: 0; font-size: 13.5px; color: var(--ink); text-decoration: none; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .downloads-browse-list a:hover { color: var(--accent); }
 </style>

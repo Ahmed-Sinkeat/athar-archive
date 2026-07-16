@@ -16,8 +16,15 @@ interface Props {
 }
 const { href, title, kind, kindColor = "tag-accent", corner, sub, cta = "ادخل ←", filterKey, audio, era, dlKind, dlId } = Astro.props;
 const hasRow = kind || corner || audio || era;
+// div + stretched link overlay, NOT a link wrapping everything: a <button>
+// nested inside an <a> is invalid HTML and made download taps depend on JS
+// being loaded to preventDefault the navigation. The empty .card-link
+// stretches over the card (CSS inset 0); .card-dl stacks above it, so the
+// button works even with zero JS in the picture. Layout is untouched — the
+// content stays direct children of .card (flat-list flex rows rely on it).
 ---
-<a class="card" href={href} data-kind={filterKey} data-era={era}>
+<div class="card" data-kind={filterKey} data-era={era}>
+  <a class="card-link" href={href} aria-label={title}></a>
   {
     hasRow && (
       <div class="card-kindrow">
@@ -41,4 +48,4 @@ const hasRow = kind || corner || audio || era;
       <span class="card-dl-size" data-dl-size dir="ltr"></span>
     </button>
   )}
-</a>
+</div>

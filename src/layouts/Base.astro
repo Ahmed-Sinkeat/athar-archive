@@ -49,6 +49,23 @@ const navAll = [
   { id: "subjects", label: "الموضوعات", href: "/subjects" },
 ];
 
+// Drawer row icons — one glance beats a wall of identical text rows. Colors
+// reuse the same content-type identity the reader already has (Quran=gold,
+// حديث=green like .hadith-accent, poems=copper) — only established/generic
+// ones get a color; secondary categories stay plain so nothing looks garish.
+const NAV_ICON: Record<string, string> = {
+  books: '<path d="M4 4h9a3 3 0 013 3v13a3 3 0 00-3-3H4z"/><path d="M20 4h-4v13h4z"/>',
+  quran: '<path d="M12 3l1.4 4.3L18 9l-4.6 1.7L12 15l-1.4-4.3L6 9l4.6-1.7L12 3z"/><path d="M5 4v2.5M3.7 5.3h2.6M19 16v2.5M17.7 17.3h2.6"/>',
+  hadith: '<path d="M4 4h16v11H8l-4 4V4z"/>',
+  poems: '<path d="M12 3.5l1.3 3.9L17 8.7l-3.7 1.4L12 14l-1.3-3.9L7 8.7l3.7-1.4L12 3.5z"/><path d="M5 4.5v2M4 5.5h2M18.5 15v2M17.5 16h2"/>',
+  people: '<circle cx="12" cy="8" r="4"/><path d="M4 20c0-4.4 3.6-6.5 8-6.5s8 2.1 8 6.5"/>',
+  articles: '<path d="M6 3h9l5 5v13H6z"/><path d="M15 3v5h5"/><path d="M9 12h6M9 16h6"/>',
+  questions: '<circle cx="12" cy="12" r="9"/><path d="M9.6 9.5a2.4 2.4 0 014.7.7c0 1.6-2.3 2-2.3 3.6"/><circle cx="12" cy="17.2" r=".7" fill="currentColor" stroke="none"/>',
+  benefits: '<path d="M6 3h12v18l-6-4-6 4z"/>',
+  subjects: '<path d="M4 4h8l8 8-8 8-8-8V4z"/><circle cx="8" cy="8" r="1.3" fill="currentColor" stroke="none"/>',
+};
+const NAV_COLOR: Record<string, string> = { quran: "gold", hadith: "green", poems: "copper", people: "blue" };
+
 // In-bar search filter: type checkboxes + a specific-عَلَم picker (both backed by
 // the D1 (FTS5) search index via /api/search — see TYPES in api/search.ts).
 // Checkbox values are the id/slug the index actually stores; "lesson"/"benefit"
@@ -138,7 +155,46 @@ const [readerSub, readerMain] = title.includes(" · ") ? title.split(" · ") : [
     <script is:inline>
       // register ASAP (not gated behind downloads.ts's dynamic chunk) so the
       // shell cache is warm and repeat/offline launches are cache-first fast
-      if ("serviceWorker" in navigator) navigator.serviceWorker.register("/sw.js").catch(() => {});
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("/sw.js").then((reg) => {
+          // SPA soft-navigations (ClientRouter) never trigger the browser's SW
+          // update check, and Android keeps installed PWAs warm for days — so a
+          // deploy could sit unseen behind the old worker indefinitely. Poll on
+          // page-loads, at most every 5 minutes.
+          let last = 0;
+          document.addEventListener("astro:page-load", () => {
+            if (Date.now() - last < 3e5) return;
+            last = Date.now();
+            reg.update().catch(() => {});
+          });
+        }).catch(() => {});
+        // a new worker took over (skipWaiting+claim) — its fresh pages/CSS only
+        // show after a reload, but forcing that immediately mid-read yanks the
+        // page out from under whoever's reading. Show a small dismissible
+        // banner instead; they reload on their own terms. Guard: skip the very
+        // first install (no previous controller), which would banner every
+        // new visitor's tab for no reason.
+        const hadController = !!navigator.serviceWorker.controller;
+        navigator.serviceWorker.addEventListener("controllerchange", () => {
+          if (hadController) document.querySelector("[data-update-banner]")?.removeAttribute("hidden");
+        });
+        document.addEventListener("click", (e) => {
+          const t = e.target;
+          if (t.closest?.('[data-action="update:reload"]')) location.reload();
+          if (t.closest?.('[data-action="update:dismiss"]')) t.closest("[data-update-banner]")?.setAttribute("hidden", "");
+        });
+        // Full app precache (shell pages + Quran, ~12MB together) is only for
+        // people who actually installed the app — SW registration above
+        // happens for EVERY visitor, but that download must not. Gated on
+        // display-mode: standalone (checked on every load, since install can
+        // happen well after someone's first visit) and skipped on metered/
+        // data-saver connections. sw.js no-ops if it already ran.
+        const isStandaloneApp =
+          window.matchMedia("(display-mode: standalone)").matches || navigator.standalone === true;
+        if (isStandaloneApp && !navigator.connection?.saveData) {
+          navigator.serviceWorker.ready.then((r) => r.active?.postMessage({ type: "precache-app" })).catch(() => {});
+        }
+      }
     </script>
     {import.meta.env.PUBLIC_CF_BEACON && (
       <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon={`{"token": "${import.meta.env.PUBLIC_CF_BEACON}"}`}></script>
@@ -292,11 +348,19 @@ const [readerSub, readerMain] = title.includes(" · ") ? title.split(" · ") : [
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="20" y1="20" x2="16.65" y2="16.65"></line><path d="M8 11h6"></path></svg>
         <span>بحث في الصفحة</span>
       </button>
-      {navAll.map((n) => <a href={n.href} data-nav={n.id} aria-current={activeNav === n.id ? "page" : undefined}>{n.label}</a>)}
+      {navAll.map((n) => (
+        <a href={n.href} data-nav={n.id} aria-current={activeNav === n.id ? "page" : undefined} class:list={["drawer-nav-item", NAV_COLOR[n.id] && `nav-${NAV_COLOR[n.id]}`]}>
+          <svg class="drawer-nav-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={NAV_ICON[n.id] ?? ""} />
+          <span>{n.label}</span>
+        </a>
+      ))}
       <a href="/downloads" class="drawer-downloads" data-nav="downloads" aria-current={Astro.url.pathname === "/downloads" ? "page" : undefined}>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"></path><path d="M7 10l5 5 5-5"></path><path d="M4 19h16"></path></svg>
         <span>التنزيلات</span>
       </a>
+      <!-- on phones the footer (the only other place these live) is a long
+           scroll away — keep عن الموقع reachable from the drawer too -->
+      <a href="/about" data-nav="about" aria-current={Astro.url.pathname === "/about" ? "page" : undefined}>عن الموقع</a>
       <!-- theme switching on mobile lives in one place: the settings gear
            (header on reading pages, .mobile-search-btn's neighbor elsewhere)
            — no separate swatch row here duplicating that sheet. -->
@@ -418,6 +482,16 @@ const [readerSub, readerMain] = title.includes(" · ") ? title.split(" · ") : [
       <div class="install-banner-actions">
         <button type="button" class="btn-accent" data-action="install:accept" hidden>تثبيت</button>
         <button type="button" class="icon-btn" data-action="install:dismiss" aria-label="إغلاق">✕</button>
+      </div>
+    </div>
+
+    <!-- shown once a new deploy's service worker takes over — see the
+         controllerchange listener above. Reload is the user's choice, not forced. -->
+    <div class="install-banner" data-update-banner hidden>
+      <span>تحديثٌ جديدٌ متوفّر</span>
+      <div class="install-banner-actions">
+        <button type="button" class="btn-accent" data-action="update:reload">تحديث</button>
+        <button type="button" class="icon-btn" data-action="update:dismiss" aria-label="إغلاق">✕</button>
       </div>
     </div>
 

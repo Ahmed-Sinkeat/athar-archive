@@ -142,11 +142,33 @@ function buildShareBtn(m: Item): HTMLButtonElement {
   return share;
 }
 
+// Plain copy, separate from share: share always includes a link back (and on
+// devices with navigator.share opens the OS sheet instead of the clipboard),
+// copy is just the quote + citation text for pasting elsewhere.
+function buildCopyBtn(m: Item): HTMLButtonElement {
+  const copy = document.createElement("button");
+  copy.className = "lib-copy";
+  copy.type = "button";
+  copy.setAttribute("aria-label", "نسخ");
+  copy.textContent = "⧉";
+  copy.addEventListener("click", (e) => {
+    e.preventDefault();
+    const citation = citationFor(m);
+    const text = citation ? `"${m.text}"\n— ${citation}` : `"${m.text}"`;
+    navigator.clipboard?.writeText(text).then(() => {
+      copy.textContent = "✓";
+      setTimeout(() => { copy.textContent = "⧉"; }, 900);
+    });
+  });
+  return copy;
+}
+
 function buildCard(m: Item): HTMLElement {
   const a = document.createElement("a");
   a.className = "lib-card";
   a.href = `${m.path}#m=${m.id}`;
   fillMarkBody(a, m);
+  a.appendChild(buildCopyBtn(m));
   a.appendChild(buildShareBtn(m));
   a.appendChild(buildDeleteBtn(m));
   return a;
@@ -169,6 +191,7 @@ function buildGroupBox(items: Item[]): HTMLElement {
     a.className = `lib-entry k-${m.kind}`;
     a.href = `${m.path}#m=${m.id}`;
     fillMarkBody(a, m);
+    a.appendChild(buildCopyBtn(m));
     a.appendChild(buildShareBtn(m));
     a.appendChild(buildDeleteBtn(m));
     box.appendChild(a);

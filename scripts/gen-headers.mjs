@@ -39,15 +39,22 @@ for (const file of walk(DIST)) {
 const scriptHashes = [...hashes].sort().join(" ");
 const csp = [
   "default-src 'self'",
-  // scripts: self + the hashed inline scripts (no 'unsafe-inline')
-  `script-src 'self' ${scriptHashes}`,
-  // styles: external only (no inline <style> / no style= attrs after the sweep).
-  // JS reading-prefs use CSSOM (.style.setProperty) which CSP does not govern.
-  "style-src 'self' https://fonts.googleapis.com",
+  // scripts: self + the hashed inline scripts (no 'unsafe-inline') + the
+  // Cloudflare Insights beacon (its <script src> is in Base.astro's head)
+  `script-src 'self' https://static.cloudflareinsights.com ${scriptHashes}`,
+  // 'unsafe-inline' restored: templates DO use style= attrs (TOC depth
+  // indentation, etc.) and the strict policy was silently stripping them
+  // in production. Styles-only, script-src stays hash-locked.
+  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
   "font-src 'self' https://fonts.gstatic.com",
   "img-src 'self' data:",
   "media-src 'self' https://r2.arthurarchive.com",
-  "connect-src 'self'",
+  // r2 MUST be in connect-src too: this same CSP is served with /sw.js, and a
+  // worker's fetch() is governed by its script's CSP — with bare 'self' the
+  // service worker could not fetch audio at all, which killed playback on
+  // every SW-controlled page (only the very first page a visitor ever opened
+  // played, via media-src). downloads.ts audio caching needs it as well.
+  "connect-src 'self' https://r2.arthurarchive.com",
   "base-uri 'self'",
   "form-action 'self'",
   "frame-ancestors 'none'",
@@ -76,6 +83,8 @@ const out = `/*
   X-Frame-Options: DENY
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: geolocation=(), microphone=(), camera=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  Cross-Origin-Opener-Policy: same-origin-allow-popups
   Content-Security-Policy: ${csp}
 
 /admin
@@ -102,6 +111,11 @@ const runtimeHeaders = {
   "X-Frame-Options": "DENY",
   "Referrer-Policy": "strict-origin-when-cross-origin",
   "Permissions-Policy": "geolocation=(), microphone=(), camera=()",
+  "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+  // allow-popups, not strict same-origin: /admin's Sveltia CMS logs in via a
+  // GitHub OAuth popup that messages back through window.opener — same-origin
+  // would sever that and silently break login.
+  "Cross-Origin-Opener-Policy": "same-origin-allow-popups",
   // Unique per build so the middleware's Cache API key changes on every deploy —
   // otherwise a stale cached on-demand page keeps pointing at now-deleted
   // /_astro/*.css files (hashed filenames) until it happens to be evicted.

@@ -80,31 +80,20 @@ const featuredVerses = featured ? analyzePoem(await readBody(featured)).verses.s
         </div>
       </div>
 
+      <!-- flat «قائمة» view: plain divided text rows, not cards. Downloading
+           lives on /downloads now, not scattered per-row here. -->
       <div class="browse-flat">
-        <div class="poem-cards">
+        <ul class="poem-rows">
           {cardList.map((c) => (
-            <a class="poem-card" href={c.href} data-title={c.rawTitle}>
-              <div class="poem-card-meta">
-                <span class="poem-badge">{c.kind}</span>
-                <span class="poem-byline">{[c.poet, c.title].filter(Boolean).join(" · ")}</span>
-                <span class="row-spacer"></span>
-                <span class="row-meta">{verseCountLabel(c.count)}</span>
-                <button type="button" class="card-dl" data-action="download:toggle" data-dl-compact
-                  data-dl-kind="poem" data-dl-id={c.id} data-dl-title={c.rawTitle} data-dl-path={c.href}
-                  aria-pressed="false" aria-label={`تنزيل «${c.rawTitle}» للقراءة دون اتصال`} title="تنزيل للقراءة دون اتصال">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"></path><path d="M7 10l5 5 5-5"></path><path d="M4 19h16"></path></svg>
-                  <span class="card-dl-size" data-dl-size dir="ltr"></span>
-                </button>
-              </div>
-              {c.first && (
-                <p class="poem-card-verse" data-ar>
-                  {c.first.sadr}
-                  {c.first.ajz && <Fragment><span class="poem-sep" aria-hidden="true">❁</span>{c.first.ajz}</Fragment>}
-                </p>
-              )}
-            </a>
+            <li class="poem-row" data-title={c.rawTitle}>
+              <a class="poem-row-link" href={c.href}>
+                <span class="poem-row-title">{c.rawTitle}</span>
+                {c.poet && <span class="poem-row-poet">{c.poet}</span>}
+              </a>
+              <span class="row-meta">{verseCountLabel(c.count)}</span>
+            </li>
           ))}
-        </div>
+        </ul>
         {cardList.length === 0 && <p class="faint">لا توجد موادُّ في هذا القسم بعد.</p>}
       </div>
 
@@ -184,7 +173,16 @@ const featuredVerses = featured ? analyzePoem(await readBody(featured)).verses.s
 </Base>
 
 <style>
-  /* full-width poem cards — first verse as the title (HANDOFF §5 الشعر) */
+  /* flat «قائمة» view: plain divided text rows, not cards */
+  .poem-rows { list-style: none; margin: 22px 0 0; padding: 0; }
+  .poem-row { display: flex; align-items: center; gap: 12px; padding: 10px 2px; min-height: 44px; border-bottom: 1px solid var(--line); }
+  .poem-row-link { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 2px; color: var(--ink); text-decoration: none; }
+  .poem-row-title { font-size: 15.5px; font-weight: 600; }
+  .poem-row-link:hover .poem-row-title { color: var(--copper); }
+  .poem-row-poet { font-family: var(--f-ui); font-size: 12px; color: var(--ink2); }
+  .poem-row .row-meta { flex: none; }
+
+  /* grouped «مُجمَّع» view keeps the verse-preview cards (HANDOFF §5 الشعر) */
   .poem-cards { display: flex; flex-direction: column; gap: 12px; margin-top: 22px; }
   .browse-cards.poem-cards { margin-top: 0; }
   .poem-card {

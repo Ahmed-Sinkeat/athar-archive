@@ -24,11 +24,6 @@ const topicsForFilter = [...topicMap.entries()]
   .map(([id, title]) => ({ id, title }))
   .sort((a, b) => a.title.localeCompare(b.title, "ar"));
 
-// flat «قائمة» view — newest first, same li markup as the tree so the
-// person/topic/title filters work on both
-const flatQuestions = [...allQuestions].sort(
-  (a, b) => +new Date(b.data.published_at as string) - +new Date(a.data.published_at as string),
-);
 ---
 <Base title="المسائل" description="مسائلُ علميةٌ مجموعةٌ على هيئة سؤالٍ وجواب، مرتَّبةٌ حسب الفنِّ والموضوع." activeNav="questions" searchScope={{ type: "question" }} jsonLd={collectionLd({ title: "المسائل", path: "/questions", crumbs: [{ name: "الرئيسية", path: "/" }, { name: "المسائل", path: "/questions" }] })}>
   <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "المسائل" }]} />
@@ -47,10 +42,18 @@ const flatQuestions = [...allQuestions].sort(
           </>
         )}
         {topicsForFilter.length > 1 && (
-          <select class="browse-filter" data-filter-key="topic" aria-label="فلترة بالموضوع">
-            <option value="">كل الموضوعات</option>
-            {topicsForFilter.map((t) => <option value={t.id}>{t.title}</option>)}
-          </select>
+          <>
+            <select class="browse-filter" data-filter-key="topic" aria-label="فلترة بالموضوع">
+              <option value="">كل الموضوعات</option>
+              {topicsForFilter.map((t) => <option value={t.id}>{t.title}</option>)}
+            </select>
+            {/* mobile-only tappable chips (same pattern as BrowseGroups.astro's
+                kind filter) — same data-filter-key engine, driven by reader.ts */}
+            <div class="browse-filter-chips" role="group" aria-label="فلترة بالموضوع">
+              <button type="button" data-filter-key="topic" value="" aria-pressed="true">الكل</button>
+              {topicsForFilter.map((t) => <button type="button" data-filter-key="topic" value={t.id} aria-pressed="false">{t.title}</button>)}
+            </div>
+          </>
         )}
       </div>
     )}
@@ -60,23 +63,10 @@ const flatQuestions = [...allQuestions].sort(
       <button type="button" data-masail-view="flat" aria-pressed="false">قائمة</button>
     </div>
 
+    <!-- flat «قائمة» view is built CLIENT-side by cloning the tree's <li>s
+         (script below): rendering all ~950 questions twice server-side made
+         this the heaviest HTML page on the site (~1MB) for zero benefit -->
     <div class="masail-tree" data-masail-browse>
-      <ul class="masail-list masail-list-flush masail-flat" hidden>
-        {flatQuestions.map((it) => (
-          <li
-            data-title={it.data.title}
-            data-person={(it.data.person as string | undefined) ?? ""}
-            data-person-name={it.data.person ? names.get(it.data.person as string) ?? "" : ""}
-            data-topics={((it.data.topics as string[] | undefined) ?? []).join(",")}
-          >
-            <a href={hrefFor("question", it.id)}>
-              <span>{it.data.title}</span>
-              {it.data.person && <span class="faint"> · {names.get(it.data.person as string)}</span>}
-            </a>
-          </li>
-        ))}
-      </ul>
-
       {groups.map((g, gi) => (
         <details class="masail-subject" open={gi === 0}>
           <summary>
@@ -97,8 +87,12 @@ const flatQuestions = [...allQuestions].sort(
                       data-person={(it.data.person as string | undefined) ?? ""}
                       data-person-name={it.data.person ? names.get(it.data.person as string) ?? "" : ""}
                       data-topics={((it.data.topics as string[] | undefined) ?? []).join(",")}
+                      data-ts={+new Date(it.data.published_at as string) || 0}
                     >
                       <a href={hrefFor("question", it.id)}>
+                        {(it.data.topics as string[] | undefined)?.[0] && topicMap.get((it.data.topics as string[])[0]) && (
+                          <span class="pill tag-accent masail-topic-tag">{topicMap.get((it.data.topics as string[])[0])}</span>
+                        )}
                         <span>{it.data.title}</span>
                         {it.data.person && <span class="faint"> · {names.get(it.data.person as string)}</span>}
                       </a>
@@ -124,6 +118,7 @@ const flatQuestions = [...allQuestions].sort(
                 data-person={(it.data.person as string | undefined) ?? ""}
                 data-person-name={it.data.person ? names.get(it.data.person as string) ?? "" : ""}
                 data-topics={((it.data.topics as string[] | undefined) ?? []).join(",")}
+                data-ts={+new Date(it.data.published_at as string) || 0}
               ><a href={hrefFor("question", it.id)}>{it.data.title}</a></li>
             ))}
           </ul>
@@ -136,11 +131,22 @@ const flatQuestions = [...allQuestions].sort(
     (() => {
       const browse = document.querySelector("[data-masail-browse]");
       if (!browse) return;
-      const flat = browse.querySelector(".masail-flat");
       const trees = [...browse.querySelectorAll(":scope > details")];
       const btns = document.querySelectorAll("[data-masail-view]");
+      // flat view built lazily from the tree's own <li>s, newest first —
+      // the filters keep working on the clones (same data-* attrs)
+      let flat = null;
+      const buildFlat = () => {
+        flat = document.createElement("ul");
+        flat.className = "masail-list masail-list-flush masail-flat";
+        [...browse.querySelectorAll(":scope > details li[data-title]")]
+          .sort((a, b) => (+b.dataset.ts || 0) - (+a.dataset.ts || 0))
+          .forEach((li) => flat.appendChild(li.cloneNode(true)));
+        browse.prepend(flat);
+      };
       const apply = (view) => {
         const isFlat = view === "flat";
+        if (isFlat && !flat) buildFlat();
         if (flat) flat.hidden = !isFlat;
         trees.forEach((d) => { d.style.display = isFlat ? "none" : ""; });
         btns.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.masailView === view)));

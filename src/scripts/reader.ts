@@ -1162,6 +1162,29 @@ function closeSpeedMenu(fig: HTMLElement) {
   const menu = fig.querySelector<HTMLElement>("[data-audio-speed-menu]");
   if (menu) menu.hidden = true;
 }
+// The bar's تحميل link points at r2.arthurarchive.com — a different origin,
+// where the `download` attribute is ignored by spec, so a plain click
+// NAVIGATED to the raw .opus (a black media-viewer page on phones) instead of
+// saving it. Fetch → blob → object URL keeps it a real download.
+document.addEventListener("click", (e) => {
+  const dl = (e.target as HTMLElement).closest<HTMLAnchorElement>("[data-audio-dl]");
+  if (!dl || new URL(dl.href, location.href).origin === location.origin) return;
+  e.preventDefault();
+  if (dl.hasAttribute("data-dl-busy")) return;
+  dl.setAttribute("data-dl-busy", "1");
+  const name = dl.href.split("/").pop() || "audio.opus";
+  fetch(dl.href)
+    .then((r) => { if (!r.ok) throw new Error(String(r.status)); return r.blob(); })
+    .then((blob) => {
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = name;
+      a.click();
+      setTimeout(() => URL.revokeObjectURL(a.href), 60_000);
+    })
+    .catch(() => { window.open(dl.href, "_blank"); }) // still reachable, just not saved-as
+    .finally(() => dl.removeAttribute("data-dl-busy"));
+});
 // --- multi-track lesson series: swap the <source> from data-audio-tracks JSON ---
 function setTrack(fig: HTMLElement, idx: number, autoplay: boolean) {
   const tracks = JSON.parse(fig.dataset.audioTracks || "[]") as { url: string; format?: string; label?: string }[];
@@ -1335,7 +1358,7 @@ const bar = document.querySelector<HTMLElement>("[data-progress]");
 function updateProgress() {
   if (!bar) return;
   const h = document.documentElement.scrollHeight - window.innerHeight;
-  bar.style.width = `${h > 0 ? (window.scrollY / h) * 100 : 0}%`;
+  bar.style.transform = `scaleX(${h > 0 ? window.scrollY / h : 0})`;
 }
 window.addEventListener("scroll", updateProgress, { passive: true });
 window.addEventListener("resize", updateProgress);
