@@ -15,6 +15,8 @@ const LS = {
   browseView: "aa-browse-view",
   browseOpen: "aa-browse-open",
   audioSpeed: "aa-audio-speed",
+  annKind: "aa-ann-kind",
+  annSource: "aa-ann-source",
 };
 
 const SCALE_MIN = 0.8;
@@ -781,11 +783,12 @@ function enhanceProse() {
   let activeVerse: HTMLElement | null = null;
   // Reading preference, not per-ayah state: once the user picks a tab/source,
   // every later open (next/prev nav, a fresh ayah tap, even after closing the
-  // sheet) should keep showing it — carried at module scope so it survives
-  // all of those, and only silently falls back (to kinds[0]/entries[0]) when
-  // the new anchor doesn't have that kind or source at all.
-  let lastKind: string | null = null;
-  let lastSourceLabel: string | null = null;
+  // sheet, a page reload, or a brand new visit) should keep showing it —
+  // persisted to localStorage, and only silently falls back (to
+  // kinds[0]/entries[0]) when the new anchor doesn't have that kind or
+  // source at all.
+  let lastKind: string | null = localStorage.getItem(LS.annKind);
+  let lastSourceLabel: string | null = localStorage.getItem(LS.annSource);
 
   function build(): HTMLElement {
     if (sheet && sheet.isConnected) return sheet;
@@ -923,6 +926,7 @@ function enhanceProse() {
         chipsEl.querySelectorAll(".ann-chip").forEach((c) => c.setAttribute("aria-pressed", "false"));
         b.setAttribute("aria-pressed", "true");
         lastSourceLabel = label;
+        localStorage.setItem(LS.annSource, label);
         showEntry(en);
       });
       chipsEl.appendChild(b);
@@ -1021,7 +1025,7 @@ function enhanceProse() {
     kinds.forEach((k) => {
       const t = document.createElement("button");
       t.type = "button"; t.className = "ann-tab"; t.setAttribute("data-kind", k); t.textContent = KIND_LABEL[k] || k;
-      t.addEventListener("click", () => { lastKind = k; selectKind(byKind, k); });
+      t.addEventListener("click", () => { lastKind = k; localStorage.setItem(LS.annKind, k); selectKind(byKind, k); });
       tabsEl.appendChild(t);
     });
     const initialKind = lastKind && byKind.has(lastKind) ? lastKind : kinds[0];
