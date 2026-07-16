@@ -5,12 +5,17 @@
 // instant open. Both fall back to whatever's cached when offline.
 const CACHE_NAME = "aa-downloads";
 
-// App shell: the hub/nav pages, precached at install so the app opens
+// App shell: the hub/nav pages, precached so the installed app opens
 // instantly and works offline right after installing — separate cache from
 // aa-downloads (that one is for books/audio the user explicitly chose to
 // save; this one is chrome, not content, and is fine to silently evict/
 // refresh). CSS/JS need no entry here: /_astro/* already ships immutable
 // Cache-Control, so the browser's own HTTP cache handles those for free.
+// ~2.8MB across 13 pages — same reasoning as QURAN_URLS below: NOT part of
+// the unconditional install step (every visitor, installed or not, would pay
+// for it), only triggered once display-mode is standalone. A casual browser
+// visitor still gets each shell page cached the normal way, on-demand, the
+// first time they actually visit it (see shellCacheFirst).
 const SHELL_CACHE = "aa-shell";
 const SHELL_URLS = [
   "/", "/books", "/quran", "/hadith", "/poems", "/people", "/articles",
@@ -18,6 +23,11 @@ const SHELL_URLS = [
   "/dl-sizes.json", // per-entity download sizes for the list-row buttons
   "/fonts/fonts.css", // self-hosted font faces — woff2s cached on use (SWR)
 ];
+async function precacheShell() {
+  const cache = await caches.open(SHELL_CACHE);
+  if (await cache.match("/")) return; // already done on a previous visit
+  await Promise.allSettled(SHELL_URLS.map((u) => cache.add(u)));
+}
 
 // Web fonts (Google Fonts CSS + woff2) — cache-first in their own cache:
 // they're versioned URLs that basically never change, they're render-critical
@@ -25,18 +35,44 @@ const SHELL_URLS = [
 // on an otherwise fully-offline app.
 const FONT_CACHE = "aa-fonts";
 
+// The full mus-haf (114 surah pages), precached into aa-downloads — same
+// cache downloads.ts writes to — so the whole Quran reads offline with no
+// explicit "download" needed. NOT part of the install step: that runs for
+// every visitor, installed or not, and this is several MB. Only triggered by
+// a postMessage from Base.astro, sent once display-mode is standalone (see
+// there for the reasoning). Each surah is its own single-page route (no
+// per-surah TOC), unlike multi-chapter books.
+const QURAN_URLS = ["/quran", "/quran/mushaf", ...Array.from({ length: 114 }, (_, i) => `/quran/${i + 1}`)];
+
+// Mirrors downloads.ts's own asset-scrape: a precached page is useless if its
+// hashed JS/CSS never lands in any cache for an offline-from-first-open visit.
+async function precacheQuran() {
+  const cache = await caches.open(CACHE_NAME);
+  if (await cache.match("/quran/1")) return; // already done on a previous visit
+  const assets = new Set();
+  await Promise.allSettled(QURAN_URLS.map(async (url) => {
+    const res = await fetch(url);
+    if (!res.ok) return;
+    const text = await res.clone().text();
+    await cache.put(url, res);
+    for (const m of text.matchAll(/\/_astro\/[\w.@-]+\.\w+/g)) assets.add(m[0]);
+  }));
+  await Promise.allSettled([...assets].map(async (u) => {
+    const res = await fetch(u);
+    if (res.ok) await cache.put(u, res);
+  }));
+}
+
 self.addEventListener("install", (e) => {
-  e.waitUntil(Promise.all([
-    caches.open(CACHE_NAME).then((c) => c.add("/offline.html")),
-    // best-effort: one page failing to precache (offline install, a route
-    // renamed) shouldn't block the rest from caching
-    caches.open(SHELL_CACHE).then((c) =>
-      Promise.allSettled(SHELL_URLS.map((u) => c.add(u))),
-    ),
-  ]));
+  // tiny, and needed by ANY visitor's offline fallback (see htmlNetworkFirst)
+  // — everything else below is app-only, see precacheShell/precacheQuran.
+  e.waitUntil(caches.open(CACHE_NAME).then((c) => c.add("/offline.html")));
   self.skipWaiting();
 });
 self.addEventListener("activate", (e) => e.waitUntil(self.clients.claim()));
+self.addEventListener("message", (e) => {
+  if (e.data?.type === "precache-app") e.waitUntil(Promise.all([precacheShell(), precacheQuran()]));
+});
 
 // Shell pages: cache-first for an instant open, then silently refetch and
 // update the cache for next time — the count/list on these hub pages can be
