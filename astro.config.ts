@@ -45,5 +45,10 @@ export default defineConfig({
   // happens, so it must rewrite (not drop) these: dropping them meant ~13k real
   // chapter pages — the bulk of the site's actual content — were never listed
   // in the sitemap at all.
-  integrations: [sitemap({ serialize: (item) => ({ ...item, url: item.url.replace("/book-pages/", "/book/") }) })]
+  integrations: [
+    sitemap({
+      filter: (page) => !page.includes("/ga-test"),
+      serialize: (item) => ({ ...item, url: item.url.replace("/book-pages/", "/book/") }),
+    }),
+  ]
 });
