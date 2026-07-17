@@ -9,10 +9,13 @@ import type { APIRoute } from "astro";
 export const prerender = false;
 
 const ID_OK = /^\d+$/;
+// bare "255" = the per-ayah stub; "255.tafsir-ibn-kathir" = one source's body
+// (gen-tafsir-frags.ts v2 — per-source split)
+const AYAH_OK = /^\d+(\.[a-z0-9-]+)?$/;
 
 export const GET: APIRoute = async ({ params }) => {
   const { surah, ayah } = params;
-  if (!surah || !ayah || !ID_OK.test(surah) || !ID_OK.test(ayah)) return new Response("Not found", { status: 404 });
+  if (!surah || !ayah || !ID_OK.test(surah) || !AYAH_OK.test(ayah)) return new Response("Not found", { status: 404 });
 
   if (import.meta.env.DEV) {
     try {

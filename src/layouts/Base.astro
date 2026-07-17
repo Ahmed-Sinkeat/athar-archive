@@ -112,6 +112,7 @@ const [readerSub, readerMain] = title.includes(" · ") ? title.split(" · ") : [
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="aa-build" content={__AA_BUILD__} />
     <title>{fullTitle}</title>
     {description && <meta name="description" content={description} />}
     {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}

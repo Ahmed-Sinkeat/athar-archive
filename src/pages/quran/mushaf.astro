@@ -28,6 +28,10 @@ const juzOptions = JUZ_START_PAGE.map((page, i) => ({ n: i + 1, href: pageHref(p
   <div class="wrap-mid">
     <h1 class="page-title">المصحف الشريف</h1>
 
+    <div class="quran-resume" data-quran-resume hidden>
+      <span class="faint">آخر قراءة:</span> <a href="/quran"></a>
+    </div>
+
     <form class="jump-bar" dir="rtl">
       <label>
         الجزء
@@ -78,6 +82,12 @@ const juzOptions = JUZ_START_PAGE.map((page, i) => ({ n: i + 1, href: pageHref(p
 </Base>
 
 <style>
+  .quran-resume {
+    margin-block-start: 1rem; padding: 10px 14px; font-family: var(--font-ui); font-size: 13.5px;
+    border: 1px solid color-mix(in srgb, var(--gold) 35%, transparent); border-radius: var(--radius);
+    background: color-mix(in srgb, var(--gold) 6%, var(--card));
+  }
+  .quran-resume a { color: var(--gold-text); text-decoration: none; font-weight: 600; }
   .jump-bar { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-block-start: 1rem; }
   .jump-bar label { display: flex; align-items: center; gap: 0.5rem; font-family: var(--font-ui); font-size: 13px; color: var(--ink-soft); }
   .jump-bar select, .jump-bar input {

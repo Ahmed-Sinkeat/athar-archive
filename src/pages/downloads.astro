@@ -70,11 +70,5 @@ const groups = [
   }
   .downloads-all-row + .downloads-all-row { border-top: 1px solid var(--rule); }
   .downloads-all-row .masail-count { font-weight: 400; }
-  .downloads-all-btn {
-    display: inline-flex; align-items: center; gap: 6px; margin-inline-start: auto;
-    background: none; border: 1px solid var(--rule); border-radius: var(--radius);
-    color: var(--ink-faint); cursor: pointer; padding: 5px 10px; font-family: var(--font-ui); font-size: 12.5px;
-  }
-  .downloads-all-btn:hover { color: var(--accent); border-color: var(--accent-border); }
-  .downloads-all-btn[data-dl-busy] { opacity: 0.6; pointer-events: none; }
+  /* .downloads-all-btn styles moved to global.css — the person page reuses them */
 </style>

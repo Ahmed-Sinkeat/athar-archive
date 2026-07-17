@@ -119,6 +119,46 @@ function applyFootnotes(show: boolean) {
   );
 }
 
+// --- cross-deploy soft-nav guard ---
+// A ClientRouter soft-nav that lands on a page built AFTER this module was
+// compiled runs the new build's scripts alongside this still-alive module —
+// two annotation sheets, doubled listeners (seen live 2026-07-17). One hard
+// reload swaps cleanly to the new build. Can't loop: a page's script hashes
+// are pinned in its own HTML, so HTML and JS can only disagree across a
+// soft-nav, never after a full load.
+document.addEventListener("astro:page-load", () => {
+  const meta = document.querySelector<HTMLMetaElement>('meta[name="aa-build"]')?.content;
+  if (meta && meta !== __AA_BUILD__) location.reload();
+});
+
+// --- تسميع (memorization) mode — poem/quran pages only ---
+// Blur the "answer" (poem عجز / quran ayah text) until the reader taps it.
+// A per-session activity, deliberately NOT persisted: nobody wants
+// yesterday's blur greeting them when they come back just to read.
+function applyTasmi(on: boolean) {
+  root.classList.toggle("tasmi-mode", on);
+  // fresh round every time it's switched on
+  if (on) document.querySelectorAll(".tasmi-revealed").forEach((el) => el.classList.remove("tasmi-revealed"));
+  document.querySelectorAll<HTMLElement>('[data-action="toggle:tasmi"]').forEach((b) =>
+    b.setAttribute("aria-pressed", String(on)),
+  );
+}
+// Reveal on tap — capture phase so it wins over the ann-sheet's bubble
+// listener: the first tap on an annotated verse reveals, the second opens
+// the sheet. Links and buttons (ayah tafsir numbers) keep working normally.
+document.addEventListener("click", (e) => {
+  if (!root.classList.contains("tasmi-mode")) return;
+  const t = e.target as HTMLElement;
+  if (t.closest("a, button")) return;
+  const unit = t.closest<HTMLElement>(".verses .verse, .ayah-list .ayah");
+  if (!unit || unit.classList.contains("tasmi-revealed")) return;
+  unit.classList.add("tasmi-revealed");
+  e.preventDefault();
+  e.stopPropagation();
+}, true);
+// soft nav drops the <html> class — resync the buttons to reality
+document.addEventListener("astro:page-load", () => applyTasmi(root.classList.contains("tasmi-mode")));
+
 // --- inline-note شرح tab picker (InlineNoteGroup.astro) ---
 document.addEventListener("change", (e) => {
   const input = e.target as HTMLElement;
@@ -273,6 +313,7 @@ const actions: Record<string, () => void> = {
   "toggle:verseNums": () => applyVnums(root.classList.contains("hide-vnums")),
   "toggle:pages": () => applyPages(root.classList.contains("pages-flow")),
   "toggle:footnotes": () => applyFootnotes(root.classList.contains("hide-footnotes")),
+  "toggle:tasmi": () => applyTasmi(!root.classList.contains("tasmi-mode")),
   "theme:paper": () => setTheme("paper"),
   "theme:noir": () => setTheme("noir"),
   "theme:mono": () => setTheme("mono"),
@@ -305,7 +346,25 @@ const actions: Record<string, () => void> = {
     el.open = !el.open;
     if (el.open) el.scrollIntoView({ block: "nearest" });
   },
+  // long-page shortcuts (surah pages' floating buttons)
+  "scroll:top": () => window.scrollTo({ top: 0, behavior: "smooth" }),
+  "scroll:bottom": () => window.scrollTo({ top: document.documentElement.scrollHeight, behavior: "smooth" }),
 };
+
+// "إلى الآية…" jump input (surah sidebar) — delegated so it survives soft navs.
+// Ayah spans carry their bare number as the element id.
+document.addEventListener("keydown", (e) => {
+  const inp = (e.target as HTMLElement).closest?.<HTMLInputElement>("[data-ayah-jump]");
+  if (!inp || e.key !== "Enter") return;
+  e.preventDefault();
+  const n = parseInt(inp.value, 10);
+  const el = n >= 1 ? document.getElementById(String(n)) : null;
+  if (!el) return;
+  el.scrollIntoView({ behavior: "smooth", block: "center" });
+  // close the mobile sidebar popup if the jump came from inside it
+  const details = inp.closest<HTMLDetailsElement>("[data-mobile-sidebar]");
+  if (details) details.open = false;
+});
 
 document.addEventListener("click", (e) => {
   const el = (e.target as HTMLElement).closest<HTMLElement>("[data-action]");
@@ -767,6 +826,7 @@ function enhanceProse() {
   let scrimEl: HTMLElement | null = null;
   let titleEl!: HTMLElement, ayahEl!: HTMLElement, bodyEl!: HTMLElement, footEl!: HTMLElement;
   let kindDD!: DD, srcDD!: DD;
+  let dlBtn: HTMLButtonElement | null = null, dlLabel!: HTMLElement;
   let activeVerse: HTMLElement | null = null;
   // Reading preference, not per-ayah state: once the user picks a tab/source,
   // every later open (next/prev nav, a fresh ayah tap, even after closing the
@@ -823,7 +883,15 @@ function enhanceProse() {
     const controls = document.createElement("div"); controls.className = "ann-sheet-controls";
     kindDD = makeDropdown("kind");
     srcDD = makeDropdown("source");
-    controls.append(kindDD.root, srcDD.root);
+    // "download this tafsir" (quran per-source fragments only — see updateDlBtn):
+    // downloads.ts's delegated download:toggle handler does the actual work,
+    // fetching the source's /tafsir-dl/<slug>.json url list.
+    dlBtn = document.createElement("button");
+    dlBtn.type = "button"; dlBtn.className = "ann-dl-tafsir"; dlBtn.hidden = true;
+    dlBtn.dataset.action = "download:toggle"; dlBtn.dataset.dlKind = "tafsir"; dlBtn.dataset.dlPath = "/quran/mushaf";
+    dlLabel = document.createElement("span"); dlLabel.setAttribute("data-dl-label", "");
+    dlBtn.append(dlLabel);
+    controls.append(kindDD.root, srcDD.root, dlBtn);
     bodyEl = document.createElement("div"); bodyEl.className = "ann-sheet-body"; bodyEl.setAttribute("data-ar", "");
     footEl = document.createElement("div"); footEl.className = "ann-sheet-foot";
     sheet.append(head, controls, bodyEl, footEl);
@@ -844,6 +912,16 @@ function enhanceProse() {
     scrimEl.addEventListener("click", close);
     document.body.appendChild(scrimEl);
     wireDragAndResize(sheet, head);
+    // horizontal swipe = prev/next anchor (Arabic page-turn direction: swipe
+    // right advances). Vertical-dominant moves are scrolling, not swipes.
+    let swipeX = 0, swipeY = 0;
+    sheet.addEventListener("touchstart", (e) => { swipeX = e.touches[0].clientX; swipeY = e.touches[0].clientY; }, { passive: true });
+    sheet.addEventListener("touchend", (e) => {
+      const dx = e.changedTouches[0].clientX - swipeX;
+      const dy = e.changedTouches[0].clientY - swipeY;
+      if (Math.abs(dx) < 60 || Math.abs(dy) > Math.abs(dx)) return;
+      footEl.querySelector<HTMLButtonElement>(dx > 0 ? ".ann-next" : ".ann-prev")?.click();
+    }, { passive: true });
     return sheet;
   }
 
@@ -924,16 +1002,63 @@ function enhanceProse() {
   const sourceLabel = (en: HTMLElement, i: number) =>
     (en.getAttribute("data-label") || "").split(" — ")[1] || `المصدر ${toAr(i + 1)}`;
 
+  // Quran stubs declare their source's body file in data-lazy-src (per-source
+  // fragments, gen-tafsir-frags.ts v2) — fetched the first time that source is
+  // actually shown, then cached in the stub for instant re-shows. Poems/books
+  // keep their build-time inline entries and never hit the lazy path.
+  let showSeq = 0;
   function showEntry(en: HTMLElement) {
+    const seq = ++showSeq; // a newer show wins over an in-flight fetch's render
+    updateDlBtn(en);
+    const lazy = en.getAttribute("data-lazy-src");
+    if (lazy && !en.querySelector(".ann-entry-body")) {
+      bodyEl.textContent = "جارٍ تحميل التفسير…";
+      fetch(lazy)
+        .then((r) => (r.ok ? r.text() : ""))
+        .then((html) => {
+          if (html) {
+            const tpl = document.createElement("template");
+            tpl.innerHTML = html; // sanitized at build, same trust as v1 fragments
+            const loaded = tpl.content.querySelector(".ann-entry");
+            if (loaded && !en.querySelector(".ann-entry-body")) en.append(...loaded.childNodes);
+          }
+          if (seq === showSeq) renderEntryBody(en);
+        })
+        .catch(() => { if (seq === showSeq) renderEntryBody(en); });
+      return;
+    }
+    renderEntryBody(en);
+  }
+  function renderEntryBody(en: HTMLElement) {
     bodyEl.textContent = "";
     const src0 = en.querySelector(".ann-entry-body");
-    if (src0) bodyEl.append(...[...src0.cloneNode(true).childNodes]); // already sanitized at build
+    if (!src0) {
+      // lazy fetch failed — most likely offline without this tafsir downloaded
+      bodyEl.textContent = "تعذَّر تحميلُ هذا التفسير — تحقَّقْ من اتصالك، أو نزِّلْهُ كاملًا من زرِّ التنزيل أعلاه ليُقرأَ دون اتصال.";
+      return;
+    }
+    bodyEl.append(...[...src0.cloneNode(true).childNodes]); // already sanitized at build
     const src = en.querySelector<HTMLAnchorElement>(".ann-source-link");
     if (src) {
       const a = document.createElement("a");
       a.className = "ann-source-link"; a.href = src.href; a.textContent = src.textContent || "";
       bodyEl.appendChild(a);
     }
+  }
+  // Only quran per-source entries get the download button; label reflects the
+  // manifest downloads.ts maintains (same localStorage key).
+  function updateDlBtn(en: HTMLElement) {
+    if (!dlBtn) return;
+    const m = (en.getAttribute("data-lazy-src") || "").match(/\.([a-z0-9-]+)\.html$/);
+    if (!m) { dlBtn.hidden = true; return; }
+    const slug = m[1];
+    dlBtn.dataset.dlId = slug;
+    dlBtn.dataset.dlTitle = (en.getAttribute("data-label") || "").split(" — ")[1] || slug;
+    let has = false;
+    try { has = !!JSON.parse(localStorage.getItem("aa-downloads-manifest") || "{}")[`tafsir:${slug}`]; } catch { /* ignore */ }
+    dlBtn.setAttribute("aria-pressed", String(has));
+    dlLabel.textContent = has ? "متوفرٌ دون اتصال — إزالة" : "تنزيل هذا التفسير كاملًا";
+    dlBtn.hidden = false;
   }
 
   function renderSourceMenu(entries: HTMLElement[], selectIndex = 0) {
@@ -1135,6 +1260,15 @@ function enhanceProse() {
   }
 
   document.addEventListener("keydown", (e) => { if (e.key === "Escape") close(); });
+  // arrow keys page between annotated anchors while the sheet is open —
+  // ← is التالي (RTL reading direction), → is السابق
+  document.addEventListener("keydown", (e) => {
+    if (!sheet || sheet.hidden) return;
+    if (e.target instanceof HTMLElement && e.target.closest("input, textarea, select")) return;
+    if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
+    e.preventDefault();
+    footEl.querySelector<HTMLButtonElement>(e.key === "ArrowLeft" ? ".ann-next" : ".ann-prev")?.click();
+  });
   document.addEventListener("astro:after-swap", () => {
     root = document.documentElement;
     close();

@@ -15,7 +15,7 @@ interface DownloadEntry {
   path?: string; // landing page it was downloaded from (older manifests lack it)
 }
 
-const KIND_LABEL: Record<string, string> = { book: "كتاب", poem: "منظومة", quran: "سورة" };
+const KIND_LABEL: Record<string, string> = { book: "كتاب", poem: "منظومة", quran: "سورة", article: "مقالة" };
 
 function keyOf(kind: string, id: string): string {
   return `${kind}:${id}`;
@@ -51,6 +51,13 @@ function collectUrls(doc: Document = document, pagePath: string = location.pathn
     const href = a.getAttribute("href");
     if (href && href.startsWith("/")) urls.add(href);
   }
+  // tafsir/annotation fragments fetched on demand by reader.ts (surah pages'
+  // ayah buttons carry data-ann-src) — without these a downloaded surah's
+  // tafsir popup is dead offline; sw.js serves them from this same cache.
+  for (const el of doc.querySelectorAll<HTMLElement>("[data-ann-src]")) {
+    const src = el.dataset.annSrc;
+    if (src && src.startsWith("/")) urls.add(src);
+  }
   // audio on this page (single track or lesson-series playlist) — cross-origin
   // R2 URLs, fetchable because the bucket allows this origin via CORS
   for (const el of doc.querySelectorAll<HTMLElement>("[data-audio]")) {
@@ -85,10 +92,32 @@ async function startDownload(btn: HTMLElement) {
   const label = btn.querySelector("[data-dl-label]");
   const sizeEl = btn.querySelector<HTMLElement>("[data-dl-size]");
   btn.setAttribute("data-dl-busy", "1");
-  // quick download from a list row: the landing page isn't open, so fetch it
-  // and read its TOC/audio from the parsed HTML instead of the live DOM
   let urls: string[];
-  if (path !== location.pathname) {
+  // a whole tafsir (the ann-sheet's "تنزيل هذا التفسير كاملًا" button): the
+  // url list — that source's per-ayah stubs + bodies — comes from the
+  // build-time manifest, since a tafsir has no landing page to scrape
+  if (kind === "tafsir") {
+    try {
+      const res = await fetch(`/tafsir-dl/${id}.json`);
+      if (!res.ok) throw new Error(String(res.status));
+      const man = (await res.json()) as { urls: string[]; bytes?: number };
+      // big tafsirs (ابن كثير ≈ 105MB) deserve a heads-up on metered connections
+      if (man.bytes && man.bytes > 20 * 1024 * 1024 &&
+          !confirm(`حجم هذا التفسير كاملًا نحو ${formatSize(man.bytes)} — أتريد المتابعة؟`)) {
+        btn.removeAttribute("data-dl-busy");
+        renderDownloadButton(btn);
+        return;
+      }
+      urls = man.urls;
+    } catch {
+      btn.removeAttribute("data-dl-busy");
+      const l = btn.querySelector("[data-dl-label]");
+      if (l) l.textContent = "تعذّر التنزيل";
+      return;
+    }
+  } else if (path !== location.pathname) {
+    // quick download from a list row: the landing page isn't open, so fetch it
+    // and read its TOC/audio from the parsed HTML instead of the live DOM
     try {
       const res = await fetch(path);
       if (!res.ok) throw new Error(String(res.status));
@@ -101,6 +130,9 @@ async function startDownload(btn: HTMLElement) {
   } else {
     urls = collectUrls();
   }
+  // ask the browser not to evict the offline library under storage pressure —
+  // silent grant/deny, idempotent, so just ask on every download
+  navigator.storage?.persist?.().catch(() => {});
   const cache = await caches.open(CACHE_NAME);
   let bytes = 0;
   let done = 0;
@@ -162,13 +194,15 @@ async function startDownload(btn: HTMLElement) {
 async function downloadAllIn(allBtn: HTMLElement) {
   const kind = allBtn.dataset.dlKind!;
   const label = allBtn.querySelector<HTMLElement>("[data-dl-all-label]");
-  let items: { id: string; title: string; path: string }[] = [];
+  // items may override the button-level kind (person pages mix books/poems/
+  // articles under one "download all" button)
+  let items: { id: string; title: string; path: string; kind?: string }[] = [];
   try { items = JSON.parse(allBtn.dataset.dlItems || "[]"); } catch { /* malformed → nothing to download */ }
   const pending = items
-    .filter((it) => !getManifest()[keyOf(kind, it.id)])
+    .filter((it) => !getManifest()[keyOf(it.kind ?? kind, it.id)])
     .map((it) => {
       const el = document.createElement("div");
-      el.dataset.dlKind = kind;
+      el.dataset.dlKind = it.kind ?? kind;
       el.dataset.dlId = it.id;
       el.dataset.dlTitle = it.title;
       el.dataset.dlPath = it.path;
@@ -234,6 +268,11 @@ function renderDownloadButton(btn: HTMLElement) {
     return;
   }
   btn.setAttribute("aria-pressed", "false");
+  // the sheet's tafsir button has no landing page to size-probe — plain label
+  if (kind === "tafsir") {
+    if (label) label.textContent = "تنزيل هذا التفسير كاملًا";
+    return;
+  }
   // exact size from the build-time manifest; per-page HEAD probing stays as a
   // fallback for anything the manifest misses (e.g. Quran surahs)
   getSizes().then((sizes) => {

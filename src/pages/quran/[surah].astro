@@ -37,6 +37,7 @@ export async function getStaticPaths() {
 
 const { entry, paragraphs, byAnchor, prev, next, surahList } = Astro.props;
 const { data } = entry;
+const ayahCount = data.ayah_count as number;
 const tafsirVerseKeys = new Set(tafsirKeys as string[]);
 const surahTitle = `سورة ${data.name}`;
 const path = `/quran/${entry.id}`;
@@ -149,6 +150,9 @@ const processedParagraphs = paragraphs.map((para, idx) => {
     <button type="button" class="toggle-btn surah-dl" data-action="download:toggle" data-dl-kind="quran" data-dl-id={entry.id} data-dl-title={surahTitle} aria-pressed="false">
       <span class="toggle-dot"></span><span data-dl-label>تنزيل للقراءة دون اتصال</span>
     </button>
+    <button type="button" class="toggle-btn surah-dl surah-tasmi" data-action="toggle:tasmi" aria-pressed="false" title="إخفاء الآيات حتى تنقر عليها">
+      <span class="toggle-dot"></span><span>وضع التسميع</span>
+    </button>
 
     <div class="ayah-list">
       {processedParagraphs.map((para) => {
@@ -193,7 +197,25 @@ const processedParagraphs = paragraphs.map((para, idx) => {
     <Relations items={[]} />
   </div>
 
+  <!-- long-surah shortcuts: fixed ↑/↓ so reaching either end is one tap -->
+  <div class="surah-scroll-fabs" aria-hidden="false">
+    <button type="button" class="icon-btn" data-action="scroll:top" aria-label="إلى أول السورة">↑</button>
+    <button type="button" class="icon-btn" data-action="scroll:bottom" aria-label="إلى آخر السورة">↓</button>
+  </div>
+
   <ReaderSidebar label={`سور القرآن · ${toArabicDigits(surahList.length)} سورة`}>
+    <div class="toc-box surah-jump-box">
+      <div class="toc-label">تنقُّل داخل السورة</div>
+      <input class="ayah-jump" type="number" inputmode="numeric" min="1" max={ayahCount}
+        placeholder={`إلى الآية… (١–${toArabicDigits(ayahCount)})`} data-ayah-jump />
+      {[...pageAyahsMap.keys()].length > 1 && (
+        <div class="surah-page-links">
+          {[...pageAyahsMap.keys()].sort((a, b) => a - b).map((p) => (
+            <a href={`#p${p}`} title={`الصفحة ${toArabicDigits(p)}`}>{toArabicDigits(p)}</a>
+          ))}
+        </div>
+      )}
+    </div>
     <div class="toc-box has-current">
       <div class="toc-label">سور القرآن الكريم</div>
       {surahList.map((s) => (
@@ -207,7 +229,27 @@ const processedParagraphs = paragraphs.map((para, idx) => {
 </Base>
 
 <style>
-  :global(.page-sep) { display: flex !important; }
+  :global(.page-sep) { display: flex !important; scroll-margin-top: 90px; }
+
+  /* within-surah navigation (sidebar box): ayah jump + page-number chips */
+  .ayah-jump {
+    width: 100%; box-sizing: border-box; padding: 7px 10px; font-family: var(--font-ui); font-size: 13px;
+    border: 1px solid var(--rule); border-radius: var(--radius); background: var(--surface); color: var(--ink);
+  }
+  .surah-page-links { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .surah-page-links a {
+    display: inline-grid; place-items: center; min-width: 30px; height: 26px; padding-inline: 4px;
+    border: 1px solid var(--rule); border-radius: var(--radius); text-decoration: none;
+    font-family: var(--font-mono); font-size: 11.5px; color: var(--ink-soft);
+  }
+  .surah-page-links a:hover { border-color: var(--gold); color: var(--gold-text); }
+
+  /* fixed ↑/↓ shortcuts — bottom start corner, clear of the tafsir panel */
+  .surah-scroll-fabs {
+    position: fixed; inset-inline-start: 14px; bottom: 14px; z-index: 40;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .surah-scroll-fabs .icon-btn { background: var(--card); border: 1px solid var(--line2); }
 
   /* gold double-border plate (HANDOFF §4: manuscript plate, Quran variant) —
      corner ۞ at all 4 corners + soft gold tint, per the mockup */
@@ -228,6 +270,7 @@ const processedParagraphs = paragraphs.map((para, idx) => {
      but not the ayah text below it, which is the whole point of the control */
   .surah-title { font-size: calc(clamp(28px, 5vw, 34px) * var(--reading-scale)); }
   .surah-dl { display: flex; justify-content: center; text-align: center; margin: 14px auto 0; }
+  .surah-tasmi { margin-top: 8px; }
 
   /* continuous centered ayah block — NOT one-per-line (HANDOFF §5) */
   .ayah-list {

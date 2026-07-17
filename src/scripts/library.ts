@@ -335,6 +335,10 @@ function exportMarks() {
   for (let i = 0; i < localStorage.length; i++) {
     const k = localStorage.key(i);
     if (k?.startsWith("aa-marks:") || k === "aa-saved") data[k] = JSON.parse(localStorage.getItem(k) || "[]");
+    // reading positions ride along so a new device resumes every book/surah
+    // where the old one left off (plain string / JSON-object values)
+    if (k?.startsWith("aa-pos:") || k?.startsWith("aa-book-progress:") || k === "aa-recent")
+      data[k] = localStorage.getItem(k);
   }
   const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
   const a = document.createElement("a");
@@ -350,6 +354,13 @@ async function importMarks(file: File) {
   catch { alert("الملف غير صالح."); return; }
   let count = 0;
   for (const [k, v] of Object.entries(data)) {
+    // reading positions (exported as raw strings): restore only when this
+    // device has none — never clobber a position the reader set here
+    if ((k.startsWith("aa-pos:") || k.startsWith("aa-book-progress:") || k === "aa-recent") &&
+        typeof v === "string") {
+      if (!localStorage.getItem(k)) localStorage.setItem(k, v);
+      continue;
+    }
     if (!Array.isArray(v)) continue;
     if (k === "aa-saved") {
       // saved pages have no id — de-dup by path instead

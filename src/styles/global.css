@@ -640,6 +640,35 @@ summary::-webkit-details-marker { display: none; }
     white-space: nowrap;
   }
 }
+/* per-source tafsir entries (gen-tafsir-frags.ts v2) */
+.ann-note-sep { border: 0; border-top: 1px dashed var(--rule); margin-block: 0.8rem; }
+.ann-src-inline { display: block; margin-top: 4px; font-size: 12px; color: var(--accent); text-decoration: none; }
+.ann-dl-tafsir {
+  background: none; border: 1px solid var(--rule); border-radius: 999px; cursor: pointer;
+  padding: 4px 10px; font-family: var(--font-ui); font-size: 11.5px; color: var(--ink-faint);
+}
+.ann-dl-tafsir:hover { color: var(--accent); border-color: var(--accent-border); }
+.ann-dl-tafsir[aria-pressed="true"] { color: var(--accent); }
+.ann-dl-tafsir[data-dl-busy] { opacity: 0.6; pointer-events: none; }
+
+/* تسميع mode (reader.ts applyTasmi): blur the answer until tapped —
+   poems hide the عجز, quran pages hide the ayah text itself */
+.verses .ajz, .ayah-list .ayah-text { transition: filter 0.25s; }
+html.tasmi-mode .verses .verse:not(.tasmi-revealed) { cursor: pointer; }
+html.tasmi-mode .verses .verse:not(.tasmi-revealed) .ajz { filter: blur(7px); user-select: none; }
+html.tasmi-mode .ayah-list .ayah:not(.tasmi-revealed) { cursor: pointer; }
+html.tasmi-mode .ayah-list .ayah:not(.tasmi-revealed) .ayah-text { filter: blur(8px); user-select: none; }
+
+/* "download all" pill — downloads page group rows + person pages (آثاره) */
+.downloads-all-btn {
+  display: inline-flex; align-items: center; gap: 6px; margin-inline-start: auto;
+  background: none; border: 1px solid var(--rule); border-radius: var(--radius);
+  color: var(--ink-faint); cursor: pointer; padding: 5px 10px; font-family: var(--font-ui); font-size: 12.5px;
+}
+.downloads-all-btn:hover { color: var(--accent); border-color: var(--accent-border); }
+.downloads-all-btn[data-dl-busy] { opacity: 0.6; pointer-events: none; }
+.person-dl-all { margin: 2px 0 12px; }
+
 /* poem front matter (bio + manuscript list + khutbah, see parsePoem's
    frontMatter) — collapsed panel above the verses, same idiom as the books'
    «عن هذه الطبعة» box */

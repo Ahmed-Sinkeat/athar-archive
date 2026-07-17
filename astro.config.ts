@@ -8,6 +8,14 @@ export default defineConfig({
   // The Cloudflare adapter emits the Worker that renders + edge-caches those routes.
   output: "static",
 
+  // One constant per BUILD (evaluated once when this config loads), stamped
+  // into Base.astro's <meta name="aa-build"> AND compiled into reader.ts.
+  // A ClientRouter soft-nav that crosses a deploy runs the NEW page's module
+  // scripts in a document where the OLD modules are still alive — two
+  // annotation sheets, double listeners (seen live 2026-07-17). reader.ts
+  // compares its compiled-in value against the meta and hard-reloads once.
+  vite: { define: { __AA_BUILD__: JSON.stringify(String(Date.now())) } },
+
   // prerenderEnvironment: "node" — prerender static routes in Node at build time so
   // they can still readBody() book/poem/article text from disk (fmLoader stores only
   // filePath). The default "workerd" prerender has no fs. On-demand routes still run

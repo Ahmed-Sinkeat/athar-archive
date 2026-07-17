@@ -112,6 +112,16 @@ const jsonLd = personLd({
     {works.length > 0 && (
       <div class="ud34d921" data-person-works>
         <div class="section-label">من آثارِه في الأرشيف</div>
+        {(() => {
+          const dl = works.filter((w) => ["book", "poem", "article"].includes(w.collection));
+          return dl.length > 0 && (
+            <button type="button" class="downloads-all-btn person-dl-all" data-action="download:all" data-dl-kind="book"
+              data-dl-items={JSON.stringify(dl.map((w) => ({ kind: w.collection, id: w.id, title: w.title, path: hrefFor(w.collection, w.id, { series: w.series }) })))}>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"></path><path d="M7 10l5 5 5-5"></path><path d="M4 19h16"></path></svg>
+              <span data-dl-all-label>تنزيل آثارِه كلِّها دون اتصال ({dl.length})</span>
+            </button>
+          );
+        })()}
         {workTabs.length > 1 && (
           <div class="lib-tabs" data-person-tabs>
             <button data-person-tab="all" aria-pressed="true">الكل ({works.length})</button>

@@ -485,6 +485,22 @@ function recordRecent() {
   } catch { /* best-effort */ }
 }
 
+// mushaf resume: latest /quran/ entry from aa-recent (recordRecent below) —
+// the mushaf grid is where a reading session starts, so surface the way back
+// in; the surah page's own "تابع القراءة ↓" then restores the exact spot.
+function showQuranResume() {
+  const el = document.querySelector<HTMLElement>("[data-quran-resume]");
+  if (!el) return;
+  let list: { path: string; title: string }[] = [];
+  try { list = JSON.parse(localStorage.getItem("aa-recent") || "[]"); } catch { /* best-effort */ }
+  const hit = list.find((e) => e.path.startsWith("/quran/") && e.path !== "/quran/mushaf");
+  const link = el.querySelector<HTMLAnchorElement>("a");
+  if (!hit || !link) { el.hidden = true; return; }
+  link.href = hit.path;
+  link.textContent = `${hit.title} — تابعِ القراءة ←`;
+  el.hidden = false;
+}
+
 function onPage() {
   hideTools();
   closeFind();
@@ -496,6 +512,7 @@ function onPage() {
   recordBookProgress();
   recordRecent();
   showBookResume();
+  showQuranResume();
   syncSaveBtn();
 }
 onPage();

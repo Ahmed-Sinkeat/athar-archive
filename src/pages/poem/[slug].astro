@@ -72,6 +72,11 @@ const preamble = a.verses.filter((v) => !chapterNums.has(v.n));
       <button type="button" class="toggle-btn" style="margin-top: 12px;" data-action="download:toggle" data-dl-kind="poem" data-dl-id={entry.id} data-dl-title={entry.data.title} aria-pressed="false">
         <span class="toggle-dot"></span><span data-dl-label>تنزيل للقراءة دون اتصال</span>
       </button>
+      {!a.chunked && (
+        <button type="button" class="toggle-btn" style="margin-top: 8px;" data-action="toggle:tasmi" aria-pressed="false" title="إخفاء الأعجاز حتى تنقر عليها">
+          <span class="toggle-dot"></span><span>وضع التسميع</span>
+        </button>
+      )}
       <div class="meta-pills">
         <a class="badge-matn pill-link" href="/matn">متن</a>
         {era && <a class="pill tag-verdigris pill-link" href={eraHref(era)}>{eraLabel(era)}</a>}

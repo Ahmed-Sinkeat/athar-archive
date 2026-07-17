@@ -58,6 +58,11 @@ const next = (allChapters as any[])[chIdx + 1] ?? null;
           <div class="eyebrow u87c136d">منظومة · {author}</div>
           <h1 class="reader-title ubd7542b">{chapter.title}</h1>
           <div class="reader-byline">{entry.data.title}{chapter.verses.length > 0 && ` · ${toArabicDigits(chapter.verses.length)} بيت`}</div>
+          {chapter.verses.length > 0 && (
+            <button type="button" class="toggle-btn" style="margin-top: 10px;" data-action="toggle:tasmi" aria-pressed="false" title="إخفاء الأعجاز حتى تنقر عليها">
+              <span class="toggle-dot"></span><span>وضع التسميع</span>
+            </button>
+          )}
         </div>
         <div class="rule-short"></div>
         <StudyBar />

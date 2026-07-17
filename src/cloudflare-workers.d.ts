@@ -6,3 +6,7 @@
 declare module "cloudflare:workers" {
   export const env: unknown;
 }
+
+// Build-run constant injected by vite.define (astro.config.ts) — used by
+// Base.astro's <meta name="aa-build"> and reader.ts's cross-deploy check.
+declare const __AA_BUILD__: string;
