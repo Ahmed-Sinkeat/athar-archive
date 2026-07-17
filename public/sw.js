@@ -219,7 +219,21 @@ self.addEventListener("fetch", (event) => {
     event.respondWith(shellCacheFirst(req));
     return;
   }
-  if (req.mode === "navigate") {
+  // Page HTML must be network-first, same reasoning as the comment above
+  // htmlNetworkFirst — but `mode === "navigate"` only catches real browser
+  // navigations. Astro's ClientRouter (view-transitions soft nav) fetches the
+  // next page with plain fetch(), which is mode:"cors"/destination:"" — that
+  // fell through to staleWhileRevalidate below and served whatever HTML this
+  // URL last resolved to, forever (no TTL, and cacheable() already excludes
+  // documents from ever refreshing that entry). A soft-navigated visitor
+  // could get stale HTML pointing at a since-deleted build's hashed CSS/JS —
+  // renders with zero styling. Route on the URL shape instead of request
+  // metadata: every page route here is an extensionless clean URL, every
+  // asset is under /_astro/ or has a file extension, so "not an asset" is a
+  // reliable enough proxy for "this is page HTML" regardless of how the
+  // fetch was triggered.
+  const isAsset = url.pathname.startsWith("/_astro/") || /\.[a-z0-9]+$/i.test(url.pathname);
+  if (req.mode === "navigate" || !isAsset) {
     event.respondWith(htmlNetworkFirst(req));
     return;
   }

@@ -8,10 +8,15 @@ on:
   workflow_dispatch:
 
 # Deploys must land in commit order — without this, two concurrent runs can
-# finish out of order and an older build overwrites a newer deploy.
+# finish out of order and an older build overwrites a newer deploy. On PRs,
+# cancelling a superseded run is fine (nothing user-facing is mid-flight). On
+# push to main, cancelling is NOT fine — it can kill an in-progress R2 upload
+# mid-way, leaving live pages 404ing until the next push (see 2026-07-17
+# incident). A queued-not-cancelled run still lands in order, just without
+# killing the one ahead of it.
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   build:
