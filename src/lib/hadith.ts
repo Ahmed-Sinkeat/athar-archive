@@ -101,7 +101,7 @@ export function injectAtharAnchors(body: string, takhrijFor?: (n: number) => Tak
       const takhrijHtml = links?.length
         ? `\n\n<div class="athar-takhrij">ورد أيضاً في: ${links.map((l) => `<a href="${l.href}">${l.title}</a>`).join("، ")}</div>`
         : "";
-      return `<span id="athar-${n}" class="athar-anchor"></span><a href="#athar-${n}" class="athar-cite" data-athar="${n}" aria-label="نسخ رابط الأثر ${n}">#</a> ${block}${takhrijHtml}`;
+      return `<span id="athar-${n}" class="athar-anchor"></span>${block}${takhrijHtml}`;
     })
     .join("\n\n");
 }

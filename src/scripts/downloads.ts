@@ -153,13 +153,27 @@ async function startDownload(btn: HTMLElement) {
 
 // "download all" on the downloads page — reuses startDownload per item
 // (same sequential, gentle-on-the-Worker fetch), skipping ones already saved.
+// No per-item rows exist on this page anymore (just the group's own "تنزيل
+// الكل" button), so the item list travels as a data-dl-items JSON blob on
+// the button itself instead of being read off sibling DOM elements; each
+// item becomes a detached (never-appended) element just to satisfy
+// startDownload's dataset-reading contract — its optional label/size lookups
+// (querySelector on an empty element) no-op harmlessly.
 async function downloadAllIn(allBtn: HTMLElement) {
-  const details = allBtn.closest("details");
+  const kind = allBtn.dataset.dlKind!;
   const label = allBtn.querySelector<HTMLElement>("[data-dl-all-label]");
-  const pending = details
-    ? [...details.querySelectorAll<HTMLElement>('[data-action="download:toggle"]')]
-      .filter((b) => !getManifest()[keyOf(b.dataset.dlKind!, b.dataset.dlId!)])
-    : [];
+  let items: { id: string; title: string; path: string }[] = [];
+  try { items = JSON.parse(allBtn.dataset.dlItems || "[]"); } catch { /* malformed → nothing to download */ }
+  const pending = items
+    .filter((it) => !getManifest()[keyOf(kind, it.id)])
+    .map((it) => {
+      const el = document.createElement("div");
+      el.dataset.dlKind = kind;
+      el.dataset.dlId = it.id;
+      el.dataset.dlTitle = it.title;
+      el.dataset.dlPath = it.path;
+      return el;
+    });
   if (pending.length === 0) {
     if (label) { label.textContent = "الكل متوفر بالفعل"; setTimeout(() => { label.textContent = "تنزيل الكل"; }, 1200); }
     return;

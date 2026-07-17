@@ -69,6 +69,9 @@ const preamble = a.verses.filter((v) => !chapterNums.has(v.n));
       <a class="eyebrow u87c136d pill-link" href="/poems">منظومة</a>
       <h1 class="reader-title">{entry.data.title}</h1>
       <div class="reader-byline">{entry.data.person ? <a href={hrefFor("person", entry.data.person)}>{author}</a> : author}</div>
+      <button type="button" class="toggle-btn" style="margin-top: 12px;" data-action="download:toggle" data-dl-kind="poem" data-dl-id={entry.id} data-dl-title={entry.data.title} aria-pressed="false">
+        <span class="toggle-dot"></span><span data-dl-label>تنزيل للقراءة دون اتصال</span>
+      </button>
       <div class="meta-pills">
         <a class="badge-matn pill-link" href="/matn">متن</a>
         {era && <a class="pill tag-verdigris pill-link" href={eraHref(era)}>{eraLabel(era)}</a>}

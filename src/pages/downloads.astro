@@ -39,30 +39,19 @@ const groups = [
     <div class="faint" data-downloads-empty>لا توجد تنزيلات بعد — اختر من القوائم أدناه.</div>
 
     <h2 class="downloads-browse-title">تنزيل المزيد</h2>
-    {groups.map((g) => g.items.length > 0 && (
-      <details class="downloads-browse-group">
-        <summary><span>{g.label}</span><span class="faint masail-count">{g.items.length}</span></summary>
+    <p class="faint downloads-hint">لتنزيل كتاب أو منظومة بعينها، افتح صفحتها واضغط زر التنزيل هناك.</p>
+    <div class="downloads-all-groups">
+      {groups.map((g) => g.items.length > 0 && (
         <div class="downloads-all-row">
-          <button type="button" class="downloads-all-btn" data-action="download:all">
+          <span>{g.label}</span><span class="faint masail-count">{g.items.length}</span>
+          <button type="button" class="downloads-all-btn" data-action="download:all" data-dl-kind={g.kind}
+            data-dl-items={JSON.stringify(g.items.map((it) => ({ id: it.id, title: it.title, path: it.href })))}>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"></path><path d="M7 10l5 5 5-5"></path><path d="M4 19h16"></path></svg>
             <span data-dl-all-label>تنزيل الكل</span>
           </button>
         </div>
-        <ul class="downloads-browse-list">
-          {g.items.map((it) => (
-            <li>
-              <a href={it.href}>{it.title}</a>
-              <button type="button" class="card-dl" data-action="download:toggle"
-                data-dl-kind={g.kind} data-dl-id={it.id} data-dl-title={it.title} data-dl-path={it.href}
-                aria-pressed="false" aria-label={`تنزيل «${it.title}» للقراءة دون اتصال`} title="تنزيل للقراءة دون اتصال">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"></path><path d="M7 10l5 5 5-5"></path><path d="M4 19h16"></path></svg>
-                <span class="card-dl-size" data-dl-size dir="ltr"></span>
-              </button>
-            </li>
-          ))}
-        </ul>
-      </details>
-    ))}
+      ))}
+    </div>
   </div>
 </Base>
 
@@ -74,22 +63,18 @@ const groups = [
   .downloads-usage-bar { height: 5px; border-radius: 99px; background: var(--rule); margin-top: 6px; overflow: hidden; }
   .downloads-usage-fill { height: 100%; background: var(--accent); border-radius: inherit; }
   .downloads-browse-title { font-family: var(--font-display); font-size: 16px; font-weight: 700; margin: 26px 0 10px; }
-  .downloads-browse-group { border: 1px solid var(--rule); border-radius: var(--radius); margin-bottom: 8px; }
-  .downloads-browse-group summary {
-    cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 10px;
-    padding: 11px 14px; font-family: var(--font-ui); font-weight: 600; font-size: 14px;
+  .downloads-all-groups { border: 1px solid var(--rule); border-radius: var(--radius); }
+  .downloads-all-row {
+    display: flex; align-items: center; gap: 10px; padding: 11px 14px;
+    font-family: var(--font-ui); font-weight: 600; font-size: 14px;
   }
-  .downloads-browse-group summary::-webkit-details-marker { display: none; }
-  .downloads-all-row { padding: 0 14px 10px; border-top: 1px solid var(--rule); }
+  .downloads-all-row + .downloads-all-row { border-top: 1px solid var(--rule); }
+  .downloads-all-row .masail-count { font-weight: 400; }
   .downloads-all-btn {
-    display: inline-flex; align-items: center; gap: 6px; margin-top: 10px;
+    display: inline-flex; align-items: center; gap: 6px; margin-inline-start: auto;
     background: none; border: 1px solid var(--rule); border-radius: var(--radius);
     color: var(--ink-faint); cursor: pointer; padding: 5px 10px; font-family: var(--font-ui); font-size: 12.5px;
   }
   .downloads-all-btn:hover { color: var(--accent); border-color: var(--accent-border); }
   .downloads-all-btn[data-dl-busy] { opacity: 0.6; pointer-events: none; }
-  .downloads-browse-list { list-style: none; margin: 0; padding: 0 14px 8px; display: grid; gap: 2px; }
-  .downloads-browse-list li { display: flex; align-items: center; gap: 8px; padding: 6px 0; border-top: 1px solid var(--rule); }
-  .downloads-browse-list a { flex: 1; min-width: 0; font-size: 13.5px; color: var(--ink); text-decoration: none; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .downloads-browse-list a:hover { color: var(--accent); }
 </style>

@@ -365,25 +365,6 @@ function fixVolumeAnchor() {
 fixVolumeAnchor();
 document.addEventListener("astro:page-load", fixVolumeAnchor);
 
-// per-athar permalink: "#" link injected before each numbered narration
-// (see injectAtharAnchors in src/lib/hadith.ts) — copies the deep link +
-// a plain-text citation. preventDefault so it doesn't also hash-navigate to
-// itself (no visible scroll, but it did silently push a history entry) —
-// copy was the only effect, and with no feedback shown it read as broken.
-document.addEventListener("click", (e) => {
-  const a = (e.target as HTMLElement).closest<HTMLAnchorElement>(".athar-cite");
-  if (!a) return;
-  e.preventDefault();
-  const n = a.dataset.athar;
-  const book = a.closest<HTMLElement>("[data-cite-book]")?.dataset.citeBook || document.title.split(" · ")[0];
-  const url = `${location.origin}${location.pathname}#athar-${n}`;
-  navigator.clipboard?.writeText(`${url}\n«${book}» — أثر ${n}`).then(() => {
-    const prev = a.textContent;
-    a.textContent = "✓";
-    setTimeout(() => { a.textContent = prev; }, 900);
-  });
-});
-
 // Footnotes need no JS: every marker is a plain <sup class="fn-ref"> and the
 // notes sit in always-visible per-page footer boxes (lib/page-footnotes.ts).
 // The old click-to-reveal popover path (data-note sups) is gone.
