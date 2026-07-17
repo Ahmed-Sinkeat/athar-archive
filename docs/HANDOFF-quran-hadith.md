@@ -21,6 +21,37 @@ All 5 phases complete and on `main`. Self-contained record; assume zero prior co
 - **Phase 4 — Quran spine + tafsir.** `quran` content collection (114 surahs parsed in-house from the mushaf epub: `number`/`name`/`ayah_count`); `/quran` browse + `/quran/[surah]` ayah reader with per-آية tafsir notes (`notesByAnchor`); `annotation` gained `target_type:"quran"` + `kind:"تفسير"`.
 - **Phase 5 — Narrator/تراجم graph.** `person.rutba` (جرح/تعديل) + `person.narrates_from` (curated شيوخ edges); تلاميذ derived in-graph (`shuyukhFor`/`talamidhaFor`); person→person edges in `src/pages/graph.astro`; شيوخه/تلاميذه lists + `rutba` pill on `person/[slug].astro`; semi-link mentions («ذُكر في N موضعًا» → search) in the Relations panel only, gated by `also_known_as` match.
 
+## Tafsir sources (as of 2026-07-17)
+
+`src/data/quran-tafsir-index.json` (gitignored, fetched from R2 — see
+HANDOFF-perf-size.md M5) now carries 8 sources across 2 kinds, one script
+per source's citation format:
+
+- **تفسير** (7): التفسير الميسر, تفسير ابن كثير, تيسير اللطيف المنان
+  (السعدي, pre-existing) · تفسير مقاتل بن سليمان (`gen-tafsir-index-muqatil.ts`
+  — inline `-N-` markers, range-inferred) · عبد الرزاق الصنعاني (`gen-tafsir-index-tagged.ts`
+  — explicit `[سورة:آية]` citation tags) · تفسير القرآن العزيز لابن أبي زمنين
+  (`gen-tafsir-index-zamanin.ts` — trailing "من الآية N إلى الآية M" range
+  footers) · تيسير الكريم الرحمن (السعدي، `gen-tafsir-index-sadi.ts` — its
+  own chapter headings are unreliable, surah resolved by cross-matching the
+  quoted verse text against the `quran` collection) · التفسير القيم لابن
+  القيم (`gen-tafsir-index-qayyim.ts` — chapter headings + فصل sub-section
+  accumulation; thematic essays, so coverage is sparse but per-entry quality
+  is high).
+- **تعليق** (1, new kind — not lumped under تفسير since it's a scholar's
+  commentary gathered from athar, not a primary tafsir text): التعليق على
+  التفسير من كتب ابن أبي الدنيا (شرح أبي جعفر الخليفي), same tagged-citation
+  script as عبد الرزاق. `src/scripts/reader.ts`'s `KIND_ORDER`/`KIND_LABEL`
+  carries the tab label ("تعليق وشرح").
+
+تفسير النسفي (مدارك التنزيل) and its person entry were removed entirely
+(`src/content/book-lg/tafsir-al-nasafi.md`, `src/content/person/al-nasafi.md`)
+— no other content referenced either slug.
+
+Each `gen-tafsir-index-*.ts` script writes a reviewed PREVIEW file by
+default; `--merge` is the explicit, separate step into the live index
+(same convention `gen-tafsir-index-muqatil.ts` established).
+
 ## Deviations from the plan (intentional)
 - Collection named **`quran`**, not `surah`. Ayah anchors are the body's paragraph ids (not a `{surah}:{ayah}` composite).
 - Surah pages render the Relations panel **empty** (`<Relations items={[]} />`) — tafsir is shown inline per-آية, so duplicating it in an end-of-page panel would violate the clean-UI gate.

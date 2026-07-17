@@ -109,6 +109,49 @@ ceiling doesn't come back from that source. `find dist/client -type f` dropped f
 would have been ~10,900 to 524; the 10,392 chapter/fragment files across all 19 chunked
 books live in R2 instead (~175 MB — 4,156 chapter files + 6,236 tafsir fragments).
 
+## M5 — Index growth (93MB→336MB) broke astro check/build; R2 fetch compressed (done 2026-07-17)
+
+Five more tafsir sources merged (see HANDOFF-quran-hadith.md's "Tafsir
+sources" section) grew `quran-tafsir-index.json` from 93MB to 336MB. Two
+places still imported the whole file even though M1/M4 already moved note
+*bodies* out of the request/render path:
+
+- `src/pages/quran/[surah].astro` imported the full file just to build
+  `tafsirVerseKeys` — `new Set(Object.keys(tafsirIndex))`, a boolean "does
+  this verse have tafsir" check that never reads a note body. Vite had to
+  bundle the whole 336MB as a page module dependency to satisfy that one
+  `Object.keys()` call — OOM'd both `astro check` and `astro build`.
+- `scripts/gen-tafsir-frags.ts` used `import tafsirIndex from
+  "…quran-tafsir-index.json" with { type: "json" }` — a literal JSON module
+  import, which forces TypeScript to infer a full literal type for the
+  entire object graph at check-time. `astro check` type-checks every `.ts`
+  file in the project, not just Astro pages, so this OOM'd it independently
+  of the `[surah].astro` fix.
+
+Fixed:
+- New `scripts/gen-tafsir-keys.ts`: reads the full index via
+  `fs.readFileSync`+`JSON.parse` (a plain Node script, cheap) and writes
+  `src/data/quran-tafsir-keys.json` — just the ~6,200 verse keys with
+  notes, 48KB. `[surah].astro` imports that instead. Runs before `astro
+  build` in `package.json`'s `build` script (gitignored, regenerated every
+  build, same treatment as its parent).
+- `gen-tafsir-frags.ts` switched to `fs.readFileSync`+`JSON.parse` too —
+  opaque to the type-checker, same fix in spirit as M1's own "don't import
+  the whole thing" lesson, just for the boolean-check and type-inference
+  angles instead of the render-path angle M1 already solved.
+- `scripts/fetch-build-data.mjs`: `quran-tafsir-index.json` is now stored
+  gzip-compressed in R2 (`quran-tafsir-index.json.gz`) and decompressed
+  locally via `zlib.gunzipSync` after download — 336MB → 31MB (~11x, Arabic
+  prose repeats enough to compress well), cutting every future CI build's
+  "Fetch build data from R2" transfer to a fraction of the raw size.
+  Round-trip verified byte-identical before the switch.
+
+Verification: `astro check` — 144 files, 0 crashes (6 pre-existing errors
+in `book-pages/[slug]/[chapter].astro`, unrelated). Upload to R2 needed 4
+attempts from this session's sandbox (large sustained transfers were
+flaky; small files and normal API calls were fine) — re-downloaded and
+byte-compared against the local `.gz` before trusting it.
+
 ## Next scaling options (not currently needed)
 
 `dist/client`'s remaining ~524 files are prerendered pages (Quran, poems, topics,
