@@ -582,16 +582,17 @@ summary::-webkit-details-marker { display: none; }
 .verse { padding: 16px 0; border-bottom: 1px solid var(--rule); scroll-margin-top: 90px; }
 .verse-inner { display: flex; align-items: flex-start; gap: 16px; }
 /* الشعر → copper dress (HANDOFF §1: one accent per tradition) */
+/* staggered ديوان layout (user's reference screenshot): plain «١ -» number at
+   the verse's top-right, صدر right-aligned on its own line, عجز dropped below
+   and pulled toward center — replaces the old side-by-side hemistich columns */
 .vnum {
-  font-family: var(--font-mono); font-size: 11px; color: var(--copper); width: 28px; height: 28px;
-  border: 1px solid color-mix(in srgb, var(--copper) 45%, transparent); border-radius: 50%; display: grid; place-items: center;
-  flex: 0 0 auto; margin-top: 6px;
+  font-family: var(--font-mono); font-size: 12px; color: var(--copper);
+  flex: 0 0 auto; margin-top: 12px;
 }
-/* Cap the verse measure; scaled with reading-scale control.
-   Slightly wider to accommodate side-by-side columns (640 vs 520) for better hemistichal pacing. */
+.vnum::after { content: "-"; margin-inline-start: 4px; }
+/* Cap the verse measure; scaled with reading-scale control. */
 .verse-body {
   flex: 1; min-width: 0; max-width: calc(640px * var(--reading-scale));
-  display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
   position: relative;
 }
 .sadr, .ajz {
@@ -602,21 +603,26 @@ summary::-webkit-details-marker { display: none; }
   line-height: 1.85; color: var(--ink);
 }
 .sadr { text-align: right; }
-.ajz { text-align: left; }
-/* single-hemistich lines (no ` --- ` separator in the source) — let the one
-   line span the whole width instead of sitting stuck in the right column */
-.verse-body.no-ajz { grid-template-columns: 1fr; }
+.ajz { text-align: center; }
+/* single-hemistich lines (no ` --- ` separator in the source) get centered */
 .verse-body.no-ajz .sadr { text-align: center; }
-/* copper ❁ hemistich separator (HANDOFF §4 signature element) */
-.verse-hemistich-rule {
-  display: block; width: 1em; height: 1.2em;
-  position: absolute; inset-inline-start: 50%; top: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  pointer-events: none;
+/* the ❁ hemistich separator belonged to the side-by-side columns — the
+   staggered layout doesn't have a between-columns slot for it */
+.verse-hemistich-rule { display: none; }
+/* annotated verse: cream block (reference screenshot) only on hover, or while
+   its sheet is open — on touch the tap itself opens the sheet, which applies
+   .ann-active-verse. Whole verse is the tap target (reader.ts opens the
+   ann-sheet on verse tap), so it works even with verse numbers hidden.
+   padding-inline stays on so the highlight causes no layout shift. */
+.verse.has-ann {
+  cursor: pointer; border-radius: var(--radius-lg); padding-inline: 14px;
+  /* whisper-subtle resting cue, one step off the page color; transparent
+     mixes so all three states sit naturally on every theme's background */
+  background: color-mix(in srgb, var(--gold) 5%, transparent);
 }
-.verse-hemistich-rule::before {
-  content: "❁"; color: var(--copper); font-size: 13px; opacity: 0.75;
-}
+.verse.has-ann:hover { background: color-mix(in srgb, var(--gold) 14%, transparent); }
+/* .ann-active-verse alone loses the specificity fight against the rules above */
+.verse.has-ann.ann-active-verse { background: color-mix(in srgb, var(--gold) 22%, transparent); }
 .verses .inline-note { border-inline-start-color: var(--copper); }
 .verses .inline-note summary,
 .verses .inline-note-more,
@@ -626,29 +632,12 @@ summary::-webkit-details-marker { display: none; }
   background: color-mix(in srgb, var(--copper) 12%, transparent);
 }
 @media (max-width: 640px) {
-  /* diwan.net-style mobile verse: centered stacked hemistichs, no side number
-     column crowding the line — closer to the printed-page feel of a دِيوان. */
-  .verse-inner { flex-direction: column; align-items: center; gap: 4px; }
-  .vnum { margin-top: 0; }
-  .verse-body {
-    grid-template-columns: 1fr; gap: 4px;
-    max-width: 100%; text-align: center;
-  }
+  /* same staggered layout, tighter type; long hemistichs scroll instead of wrap */
+  .verse-body { max-width: 100%; overflow-x: auto; }
   .sadr, .ajz {
-    text-align: center;
     font-size: calc(19px * var(--reading-scale));
     line-height: 2;
     white-space: nowrap;
-  }
-  .verse-body { overflow-x: auto; }
-  .ajz {
-    padding-inline-start: 0;
-  }
-  /* HANDOFF.md §3.5: keep the ❁ on mobile — poetry's one signature mark —
-     re-flowed as a small centered line between the stacked hemistichs
-     instead of the desktop's absolutely-centered overlap. */
-  .verse-hemistich-rule {
-    position: static; display: block; transform: none; width: auto; height: auto; margin: 2px 0;
   }
 }
 /* poem front matter (bio + manuscript list + khutbah, see parsePoem's
