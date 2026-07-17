@@ -22,8 +22,19 @@ export const GET: APIRoute = async ({ params, url }) => {
   }
 
   const { env } = await import("cloudflare:workers");
-  const bucket = (env as unknown as { BOOK_ASSETS?: { get(key: string): Promise<{ text(): Promise<string> } | null> } }).BOOK_ASSETS;
+  const { BOOK_ASSETS: bucket, CHAPTER_ASSETS: assetsJson } = env as unknown as {
+    BOOK_ASSETS?: { get(key: string): Promise<{ text(): Promise<string> } | null> };
+    CHAPTER_ASSETS?: string;
+  };
   const obj = await bucket?.get(`pages/book/${slug}/${chapter}.html`);
   if (!obj) return notFound();
-  return new Response(await obj.text(), { headers: HTML });
+  // Stored pages carry stable /_astro-live/<name>.<ext> placeholders instead of
+  // hashed asset URLs (gen-book-chapters.ts §4) — swap in this deploy's real
+  // hashes here, so a CSS/JS-only change never re-uploads R2. Pages from before
+  // the placeholder era have no tokens and pass through byte-identical.
+  let html = await obj.text();
+  for (const [logical, hashed] of Object.entries(JSON.parse(assetsJson ?? "{}") as Record<string, string>)) {
+    html = html.replaceAll(`/_astro-live/${logical}`, hashed);
+  }
+  return new Response(html, { headers: HTML });
 };

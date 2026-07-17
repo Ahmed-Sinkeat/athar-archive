@@ -102,12 +102,21 @@ jobs:
       # deploy and MUST succeed: the pages reference this build's hashed
       # /_astro/*.css files, so deploying the Worker/assets first (or with a
       # half-finished upload) would serve chapters pointing at deleted CSS.
-      # Diffs against a remote md5 index (upload-r2-assets.mjs): content-only
-      # pushes upload just the changed book's pages (seconds); a design/CSS
-      # change re-uploads all ~10k pages (~2.4GB — hence the long timeout).
+      # Diffs against a remote md5 index (upload-r2-assets.mjs): only changed
+      # pages upload. Stored pages carry stable /_astro-live/ placeholders
+      # instead of hashed asset URLs (gen-book-chapters.ts §4), so CSS/JS-only
+      # changes upload nothing — only real markup/content changes do. The long
+      # timeout covers template changes that legitimately dirty every page.
+      # Direct S3-API uploads (upload-r2-assets.mjs) — needs the R2 S3
+      # credentials below, NOT the wrangler API token. The script fails loudly
+      # if they're missing rather than silently skipping (a skipped upload +
+      # a deployed Worker = new chapters 404ing).
       - name: Upload chapter pages to R2
         if: github.ref == 'refs/heads/main' && github.event_name == 'push' && env.CLOUDFLARE_API_TOKEN != ''
-        timeout-minutes: 45
+        timeout-minutes: 20
+        env:
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
         run: pnpm r2:upload
 
       - name: Deploy to Cloudflare

@@ -1,25 +1,164 @@
 // Pushes dist/r2-upload/ (chapter bodies + tafsir fragments — see gen-book-chapters.ts
-// and gen-tafsir-frags.ts) to the BOOK_ASSETS R2 bucket. Separate from `pnpm build`
-// (like search:index for D1) since it hits the network and shouldn't run on every
-// local build — invoke explicitly (CI / before deploy) via `pnpm r2:upload`.
+// and gen-tafsir-frags.ts) to the athar-book-assets R2 bucket over R2's
+// S3-compatible API — direct signed HTTPS, no workerd. The previous
+// getPlatformProxy/remote-binding version tunneled every PUT through a local
+// workerd process whose proxy dropped connections under load (kj disconnects,
+// 502s) and took ~28min for a full re-upload; direct PUTs at higher
+// concurrency with real retries do it in a few minutes.
 //
-// Uses getPlatformProxy (in-process R2 binding, wrangler.toml has remote=true on
-// this bucket) rather than shelling out to `wrangler r2 object put` per file — the
-// CLI's per-invocation startup cost made ~10k small files take over an hour.
+// Needs env (CI secrets / local shell):
+//   CLOUDFLARE_ACCOUNT_ID  — already present for wrangler
+//   R2_ACCESS_KEY_ID / R2_SECRET_ACCESS_KEY — dashboard → R2 → Manage API
+//     tokens → create token with Object Read & Write on athar-book-assets
 //
-// Diff strategy: one R2 list() pass builds a remote {key → md5} map up front, then
-// only files whose local md5 differs (or are missing remotely) get PUT. This costs
-// ~16k÷1000 = ~17 list pages instead of ~16k individual HEAD requests, cutting the
-// "nothing changed" path from minutes to seconds.
+// Diff strategy: one ListObjectsV2 pass per local top-level prefix (pages/,
+// tafsir-frag/) builds a remote {key → md5} map — R2's ETag IS the md5 for
+// single-part uploads (both S3 PUTs and the old binding PUTs), so this stays
+// compatible with objects uploaded by the previous version and needs no custom
+// metadata. Only new/changed files are PUT; stale keys under those prefixes are
+// deleted. Listing is scoped to local prefixes so build-data/ (uploaded by
+// other jobs into the same bucket) can never be touched or pruned.
+// ponytail: a top-level prefix REMOVED from the build entirely stops being
+// listed, so its remote objects linger — delete them by hand if that ever
+// happens (has never happened; prefixes are pages/ and tafsir-frag/).
+//
+// `--selftest` verifies the SigV4 signer against the worked example in AWS's
+// SigV4 docs (no network) — run it after touching any signing code.
 import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
-import { getPlatformProxy } from "wrangler";
+import assert from "node:assert";
 
 const ROOT = path.resolve("dist/r2-upload");
-const CONCURRENCY = 24;
+const BUCKET = "athar-book-assets";
+const CONCURRENCY = 64;
+const RETRIES = 5;
 const CONTENT_TYPE = { ".md": "text/markdown; charset=utf-8", ".html": "text/html; charset=utf-8" };
+
+const sha256hex = (d) => crypto.createHash("sha256").update(d).digest("hex");
+const hmac = (key, d) => crypto.createHmac("sha256", key).update(d).digest();
 const md5 = (buf) => crypto.createHash("md5").update(buf).digest("hex");
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+// RFC 3986 (S3 canonical form): encodeURIComponent plus the five it leaves bare
+const enc = (s) => encodeURIComponent(s).replace(/[!'()*]/g, (c) => "%" + c.charCodeAt(0).toString(16).toUpperCase());
+
+// --- SigV4 core (kept pure so --selftest can drive it with the AWS vector) ---
+function sigv4({ method, uri, query, headers, payloadHash, amzDate, region, keyId, secret }) {
+  const date = amzDate.slice(0, 8);
+  const canonicalQuery = Object.entries(query)
+    .map(([k, v]) => `${enc(k)}=${enc(String(v))}`)
+    .sort()
+    .join("&");
+  // callers pass lowercase header names — canonical form needs no re-casing
+  const names = Object.keys(headers).sort();
+  const canonicalHeaders = names.map((h) => `${h}:${String(headers[h]).trim()}\n`).join("");
+  const signedHeaders = names.join(";");
+  const canonicalRequest = [method, uri, canonicalQuery, canonicalHeaders, signedHeaders, payloadHash].join("\n");
+  const scope = `${date}/${region}/s3/aws4_request`;
+  const stringToSign = ["AWS4-HMAC-SHA256", amzDate, scope, sha256hex(canonicalRequest)].join("\n");
+  const kSigning = hmac(hmac(hmac(hmac(`AWS4${secret}`, date), region), "s3"), "aws4_request");
+  const signature = crypto.createHmac("sha256", kSigning).update(stringToSign).digest("hex");
+  return {
+    signature,
+    authorization: `AWS4-HMAC-SHA256 Credential=${keyId}/${scope}, SignedHeaders=${signedHeaders}, Signature=${signature}`,
+    canonicalQuery,
+  };
+}
+
+function selftest() {
+  // Worked example from AWS "Signature Version 4 signing process" docs
+  // (GET test.txt, examplebucket, us-east-1, 20130524) — documented signature
+  // below. If this asserts, the signer core is wrong; do not upload with it.
+  const { signature } = sigv4({
+    method: "GET",
+    uri: "/test.txt",
+    query: {},
+    headers: {
+      host: "examplebucket.s3.amazonaws.com",
+      range: "bytes=0-9",
+      "x-amz-content-sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "x-amz-date": "20130524T000000Z",
+    },
+    payloadHash: "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    amzDate: "20130524T000000Z",
+    region: "us-east-1",
+    keyId: "AKIAIOSFODNN7EXAMPLE",
+    secret: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+  });
+  assert.strictEqual(signature, "f0e8bdb87c964420e857bd35b5d6ed310bd44f0170aba48dd91039c6036bdb41");
+  console.log("✓ sigv4 selftest: matches the AWS documentation vector");
+}
+
+// --- request helper: sign + fetch + retry on 5xx/network ---
+function makeClient() {
+  const account = process.env.CLOUDFLARE_ACCOUNT_ID;
+  const keyId = process.env.R2_ACCESS_KEY_ID;
+  const secret = process.env.R2_SECRET_ACCESS_KEY;
+  if (!account || !keyId || !secret) {
+    console.error(
+      "✗ upload-r2-assets: missing CLOUDFLARE_ACCOUNT_ID / R2_ACCESS_KEY_ID / R2_SECRET_ACCESS_KEY.\n" +
+        "  Create S3 credentials: Cloudflare dashboard → R2 → Manage API tokens →\n" +
+        `  Object Read & Write scoped to ${BUCKET}, then export the two keys.`
+    );
+    process.exit(1);
+  }
+  const host = `${account}.r2.cloudflarestorage.com`;
+
+  return async function s3(method, key, { query = {}, body, contentType } = {}) {
+    const uri = `/${BUCKET}` + (key ? "/" + key.split("/").map(enc).join("/") : "");
+    const payloadHash = sha256hex(body ?? "");
+    let lastErr;
+    for (let attempt = 1; attempt <= RETRIES; attempt++) {
+      const amzDate = new Date().toISOString().replace(/[-:]|\.\d{3}/g, "");
+      // host is signed but not passed to fetch (the URL supplies it; undici
+      // treats an explicit Host header as forbidden)
+      const signHeaders = { host, "x-amz-content-sha256": payloadHash, "x-amz-date": amzDate };
+      if (contentType) signHeaders["content-type"] = contentType;
+      const { authorization, canonicalQuery } = sigv4({
+        method, uri, query, headers: signHeaders, payloadHash, amzDate, region: "auto", keyId, secret,
+      });
+      const { host: _h, ...sendHeaders } = signHeaders;
+      try {
+        const res = await fetch(`https://${host}${uri}${canonicalQuery ? "?" + canonicalQuery : ""}`, {
+          method,
+          headers: { ...sendHeaders, authorization },
+          body,
+        });
+        if (res.status >= 500) throw new Error(`HTTP ${res.status}: ${(await res.text()).slice(0, 200)}`);
+        return res;
+      } catch (e) {
+        lastErr = e;
+        if (attempt < RETRIES) await sleep(attempt * 2000);
+      }
+    }
+    throw lastErr;
+  };
+}
+
+const unxml = (s) =>
+  s.replace(/&quot;/g, '"').replace(/&apos;/g, "'").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&amp;/g, "&");
+
+/** Paginate ListObjectsV2 under `prefix` → {key → md5}. ETag = md5 for single-part uploads. */
+async function listPrefix(s3, prefix) {
+  const index = new Map();
+  let token;
+  do {
+    const query = { "list-type": "2", "max-keys": "1000", prefix };
+    if (token) query["continuation-token"] = token;
+    const res = await s3("GET", "", { query });
+    if (!res.ok) throw new Error(`list ${prefix}: HTTP ${res.status}: ${(await res.text()).slice(0, 300)}`);
+    const xml = await res.text();
+    for (const m of xml.matchAll(/<Contents>([\s\S]*?)<\/Contents>/g)) {
+      const key = unxml(m[1].match(/<Key>([\s\S]*?)<\/Key>/)[1]);
+      const etag = unxml(m[1].match(/<ETag>([\s\S]*?)<\/ETag>/)[1]).replace(/"/g, "");
+      index.set(key, etag);
+    }
+    token = /<IsTruncated>true<\/IsTruncated>/.test(xml)
+      ? unxml(xml.match(/<NextContinuationToken>([\s\S]*?)<\/NextContinuationToken>/)[1])
+      : undefined;
+  } while (token);
+  return index;
+}
 
 function walk(dir) {
   const out = [];
@@ -31,38 +170,13 @@ function walk(dir) {
   return out;
 }
 
-/** Paginate through bucket.list() and return {key → md5} for every object. */
-async function buildRemoteIndex(bucket) {
-  const index = new Map();
-  let cursor;
-  do {
-    // the remote-binding tunnel throws transient 500s — retry with backoff
-    let page;
-    for (let attempt = 1; ; attempt++) {
-      try {
-        page = await bucket.list({ limit: 1000, cursor, include: ["customMetadata"] });
-        break;
-      } catch (e) {
-        if (attempt >= 5) throw e;
-        console.warn(`  list retry ${attempt} (${e.message || e})`);
-        await new Promise((r) => setTimeout(r, attempt * 2000));
-      }
-    }
-    for (const obj of page.objects) {
-      if (obj.customMetadata?.md5) index.set(obj.key, obj.customMetadata.md5);
-    }
-    cursor = page.truncated ? page.cursor : undefined;
-  } while (cursor);
-  return index;
-}
-
 async function main() {
+  if (process.argv.includes("--selftest")) return selftest();
   if (!fs.existsSync(ROOT)) {
     console.log("✓ upload-r2-assets: nothing to upload (dist/r2-upload missing — run the build first)");
     return;
   }
-  const { env, dispose } = await getPlatformProxy({ configPath: "wrangler.toml" });
-  const bucket = env.BOOK_ASSETS;
+  const s3 = makeClient();
 
   // 1. Enumerate local files and compute their md5s (all local, fast).
   const files = walk(ROOT);
@@ -70,32 +184,37 @@ async function main() {
     files.map((f) => [path.relative(ROOT, f).split(path.sep).join("/"), { file: f, hash: md5(fs.readFileSync(f)) }])
   );
 
-  // 2. One paginated list() pass to know what's already in R2.
-  console.log(`Scanning remote bucket (${files.length} local files)…`);
-  const remoteIndex = await buildRemoteIndex(bucket);
+  // 2. One paginated list pass per local top-level prefix.
+  const prefixes = fs.readdirSync(ROOT).filter((n) => fs.statSync(path.join(ROOT, n)).isDirectory());
+  console.log(`Scanning remote bucket (${files.length} local files, prefixes: ${prefixes.join(", ")})…`);
+  const remoteIndex = new Map();
+  for (const p of prefixes) for (const [k, v] of await listPrefix(s3, `${p}/`)) remoteIndex.set(k, v);
   console.log(`  remote: ${remoteIndex.size} objects indexed`);
 
   // 3. Only PUT files that are new or whose md5 changed.
-  const toUpload = [...localIndex.entries()].filter(
-    ([key, { hash }]) => remoteIndex.get(key) !== hash
-  );
+  const toUpload = [...localIndex.entries()].filter(([key, { hash }]) => remoteIndex.get(key) !== hash);
   console.log(`  ${toUpload.length} to upload, ${files.length - toUpload.length} unchanged (skipped)`);
 
-  // 4. Prune uploader-owned objects (they carry our md5 metadata — anything
-  //    put by other tools isn't in remoteIndex and is never touched) that no
-  //    longer exist in the build. Without this, unpublishing/renaming a book
-  //    leaves its old chapter pages live in R2, still served by the route.
+  // 4. Prune remote objects (within the listed prefixes only) that no longer
+  //    exist in the build — otherwise unpublishing/renaming a book leaves its
+  //    old chapter pages live in R2, still served by the route.
   const toDelete = [...remoteIndex.keys()].filter((key) => !localIndex.has(key));
+  let deleted = 0;
   if (toDelete.length > 0) {
     console.log(`  ${toDelete.length} stale remote object(s) to delete`);
-    for (let i = 0; i < toDelete.length; i += 1000) {
-      await bucket.delete(toDelete.slice(i, i + 1000));
-    }
-    console.log(`  deleted ${toDelete.length} stale object(s)`);
+    let nextDel = 0;
+    await Promise.all(
+      Array.from({ length: Math.min(CONCURRENCY, toDelete.length) }, async () => {
+        while (nextDel < toDelete.length) {
+          await s3("DELETE", toDelete[nextDel++]);
+          deleted++;
+        }
+      })
+    );
+    console.log(`  deleted ${deleted} stale object(s)`);
   }
 
   if (toUpload.length === 0) {
-    await dispose();
     console.log("✓ upload-r2-assets: everything up to date");
     return;
   }
@@ -108,14 +227,15 @@ async function main() {
     while (next < toUpload.length) {
       const [key, { file, hash }] = toUpload[next++];
       const body = fs.readFileSync(file);
-      const opts = {
-        httpMetadata: { contentType: CONTENT_TYPE[path.extname(file)] || "application/octet-stream" },
-        customMetadata: { md5: hash },
-      };
       try {
-        // One retry — the remote-binding tunnel occasionally drops under load.
-        try { await bucket.put(key, body, opts); }
-        catch { await bucket.put(key, body, opts); }
+        const res = await s3("PUT", key, {
+          body,
+          contentType: CONTENT_TYPE[path.extname(file)] || "application/octet-stream",
+        });
+        if (!res.ok) throw new Error(`HTTP ${res.status}: ${(await res.text()).slice(0, 200)}`);
+        // single-part PUT ⇒ ETag must equal our md5 — catches silent corruption
+        const etag = (res.headers.get("etag") || "").replace(/"/g, "");
+        if (etag && etag !== hash) throw new Error(`etag mismatch (${etag} ≠ ${hash})`);
         done++;
         if (done % 500 === 0) console.log(`  ${done}/${toUpload.length} uploaded…`);
       } catch (e) {
@@ -126,8 +246,7 @@ async function main() {
   }
 
   await Promise.all(Array.from({ length: CONCURRENCY }, worker));
-  await dispose();
-  console.log(`✓ upload-r2-assets: ${done} uploaded, ${files.length - toUpload.length} unchanged, ${failed} failed — ${files.length} total`);
+  console.log(`✓ upload-r2-assets: ${done} uploaded, ${files.length - toUpload.length} unchanged, ${deleted} pruned, ${failed} failed — ${files.length} total`);
   if (failed > 0) process.exit(1);
 }
 
