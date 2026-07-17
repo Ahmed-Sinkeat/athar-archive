@@ -1113,6 +1113,7 @@ function enhanceProse() {
     kinds.forEach((k) => {
       const item = document.createElement("button");
       item.type = "button"; item.className = "ann-dd-item"; item.dataset.kind = k; item.setAttribute("role", "option");
+      if (!byKind.get(k)!.some((en) => !en.hasAttribute("data-missing"))) item.classList.add("is-missing");
       item.textContent = KIND_LABEL[k] || k;
       item.addEventListener("click", () => {
         lastKind = k; localStorage.setItem(LS.annKind, k);
@@ -1203,17 +1204,18 @@ function enhanceProse() {
     ayahEl.hidden = !ayahText;
     ayahEl.textContent = ayahText ? `﴿ ${ayahText} ﴾` : "";
     const byKind = entriesByKind(pack);
-    // a kind whose entries are ALL data-missing stubs stays hidden — kinds are
-    // categories, not authors anyone follows (agreed: only the SOURCE menu
-    // always shows everything)
-    const kinds = [...byKind.keys()]
-      .filter((k) => byKind.get(k)!.some((en) => !en.hasAttribute("data-missing")))
-      .sort((a, b) => {
-        const ia = KIND_ORDER.indexOf(a), ib = KIND_ORDER.indexOf(b);
-        return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib);
-      });
+    // ALL kinds always listed (user: ابن أبي الدنيا's تعليق tab must stay
+    // reachable even on ayat he skipped) — same always-show philosophy as the
+    // source menu; an all-missing kind renders dimmed and its sources show
+    // the honest «ليس لهذا المصدر كلام» state. With no remembered kind,
+    // start on the first kind that actually has content here.
+    const kinds = [...byKind.keys()].sort((a, b) => {
+      const ia = KIND_ORDER.indexOf(a), ib = KIND_ORDER.indexOf(b);
+      return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib);
+    });
     renderKindMenu(byKind, kinds);
-    const initialKind = lastKind && kinds.includes(lastKind) ? lastKind : kinds[0];
+    const firstWithContent = kinds.find((k) => byKind.get(k)!.some((en) => !en.hasAttribute("data-missing")));
+    const initialKind = lastKind && byKind.has(lastKind) ? lastKind : (firstWithContent ?? kinds[0]);
     selectKind(byKind, initialKind, entryIndex);
     renderFoot(packId);
     sheet!.hidden = false;

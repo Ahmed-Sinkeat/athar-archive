@@ -178,3 +178,44 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: r2 object put athar-book-assets/build-data/quran-tafsir-index.json --file src/data/quran-tafsir-index.json --remote
+
+  # Manual-only, runs AFTER sync-tafsir-index (needs:) so the two dispatch jobs
+  # can't race on the shared index object. Re-extracts ابن أبي زمنين with the
+  # corrected leading-header semantics + content-driven misprint relocation
+  # (--replace strips the old systematically-shifted placements first), audits
+  # every resulting range against the mushaf (exit 1 blocks the upload), then
+  # pushes the fixed index back to R2. Rerun the latest main deploy afterwards
+  # so the tafsir fragments regenerate from the fixed index.
+  fix-zamanin-index:
+    if: github.event_name == 'workflow_dispatch'
+    needs: sync-tafsir-index
+    runs-on: ubuntu-latest
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - name: Install
+        run: pnpm install --frozen-lockfile
+      - name: Fetch current build data from R2
+        run: pnpm data:fetch
+      - name: Re-extract ابن أبي زمنين (replace mode)
+        run: pnpm exec tsx scripts/gen-tafsir-index-zamanin.ts src/content/book-lg/tafsir-al-quran-al-aziz-ibn-abi-zamanin.md --replace
+      - name: Audit every zamanin range against the mushaf
+        run: pnpm exec tsx scripts/fix-tafsir-index-zamanin.ts
+      - name: Gzip + upload fixed index to R2
+        run: gzip -kf src/data/quran-tafsir-index.json
+      - uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: r2 object put athar-book-assets/build-data/quran-tafsir-index.json.gz --file src/data/quran-tafsir-index.json.gz --remote
