@@ -11,7 +11,10 @@ import { toArabicDigits } from "../../lib/display";
 // Build-time only: used to know WHICH verses have tafsir (so we render a
 // clickable ayah-num button), never to inline note bodies into page HTML —
 // those are fetched on demand from /tafsir-frag/<surah>/<ayah>.html (M1).
-import tafsirIndex from "../../data/quran-tafsir-index.json";
+// A small keys-only sidecar (gen-tafsir-keys.ts), NOT the full 300+MB
+// index — importing that here forced Vite to bundle the whole thing as a
+// page module dependency and OOM'd both `astro check` and `astro build`.
+import tafsirKeys from "../../data/quran-tafsir-keys.json";
 
 export async function getStaticPaths() {
   const surahs = await getCollection("quran");
@@ -34,7 +37,7 @@ export async function getStaticPaths() {
 
 const { entry, paragraphs, byAnchor, prev, next, surahList } = Astro.props;
 const { data } = entry;
-const tafsirVerseKeys = new Set(Object.keys(tafsirIndex as Record<string, unknown[]>));
+const tafsirVerseKeys = new Set(tafsirKeys as string[]);
 const surahTitle = `سورة ${data.name}`;
 const path = `/quran/${entry.id}`;
 

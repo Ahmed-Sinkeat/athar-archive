@@ -1259,27 +1259,41 @@ html.hide-vnums .vnum { display: none; }
 
 /* ---------- annotation sheet — scholarly marginal note feel ----------
    Shared by شرح/حاشية/تخريج (books & poems) and تفسير (Quran, .ann-panel
-   variant) — one component, one placement rule: a docked sidebar on wide
-   screens (٤٢ desktop layout the physical left of the reading column,
-   regardless of RTL — matches the mockup ask), a floating, draggable,
-   resizable popup below that breakpoint. Dragging (via the header) or
-   resizing overrides the transform/size below through inline styles set
-   by reader.ts. */
+   variant) — one component, two placement rules: a docked sidebar on wide
+   screens (desktop layout, physical left of the reading column, regardless
+   of RTL), a bottom sheet (scrim + slide-up) below that breakpoint — the
+   native mobile convention, not a freely dragged/resized window. Dragging
+   (via the header) or resizing only apply at the docked-sidebar breakpoint
+   (gated in reader.ts) and override the position/size below via inline
+   styles. */
 .ann-sheet {
-  position: fixed; z-index: 200; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.97);
-  width: min(680px, 90vw); max-height: 72vh; min-width: 280px; min-height: 200px;
-  overflow-y: auto; resize: both;
-  background: var(--surface); border: 1px solid var(--rule-strong);
-  border-radius: var(--radius-lg); padding: 24px 28px;
-  opacity: 0; transition: opacity 0.18s, transform 0.18s;
+  position: fixed; z-index: 200; left: 0; right: 0; bottom: 0; top: auto;
+  max-height: 82vh; min-height: 200px;
+  overflow-y: auto; resize: none;
+  background: var(--surface); border: 1px solid var(--rule-strong); border-bottom: none;
+  border-radius: 20px 20px 0 0; padding: 20px 20px 24px;
+  transform: translateY(100%); transition: transform 0.22s ease;
   /* Warm left border accent — like a footnote rule */
   border-inline-start: 3px solid var(--verdigris);
 }
-.ann-sheet.is-shown { transform: translate(-50%, -50%) scale(1); opacity: 1; }
-.ann-sheet.is-dragged, .ann-sheet.is-dragged.is-shown { transform: none; }
-@media (max-width: 640px) { .ann-sheet { width: 92vw; max-height: 78vh; } }
+.ann-sheet.is-shown { transform: translateY(0); }
 .ann-sheet[hidden] { display: none; }
-.ann-sheet-head { cursor: move; touch-action: none; }
+.ann-sheet-head { position: relative; cursor: default; touch-action: auto; }
+/* decorative drag-handle bar — dismissal itself is ✕/scrim/Escape, no swipe
+   gesture implemented, this just signals "sheet" the way native ones do */
+.ann-sheet-head::before {
+  content: ""; position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
+  width: 36px; height: 4px; border-radius: 3px; background: var(--rule-strong);
+}
+
+/* dimmed backdrop behind the mobile bottom sheet; tap to dismiss. No
+   backdrop at the docked-sidebar breakpoint (page stays interactive). */
+.ann-scrim {
+  position: fixed; inset: 0; z-index: 199; background: rgba(20, 15, 5, .38);
+  opacity: 0; transition: opacity 0.22s ease; pointer-events: none;
+}
+.ann-scrim.is-shown { opacity: 1; pointer-events: auto; }
+.ann-scrim[hidden] { display: none; }
 
 /* docked sidebar on wide screens — left edge of the viewport (not
    inset-inline-start: the user wants "the left", consistently, regardless
@@ -1290,10 +1304,20 @@ html.hide-vnums .vnum { display: none; }
    already moved via a click that didn't change left/top (e.g. re-opening
    on a different anchor while still docked at a dragged spot). */
 @media (min-width: 1100px) {
+  .ann-scrim { display: none; }
+  .ann-sheet {
+    border-bottom: 1px solid var(--rule-strong); border-radius: var(--radius-lg); padding: 24px 28px;
+    resize: both; transform: scale(0.97); transition: opacity 0.18s, transform 0.18s; opacity: 0;
+  }
+  .ann-sheet.is-shown { transform: scale(1); opacity: 1; }
+  .ann-sheet.is-dragged, .ann-sheet.is-dragged.is-shown { transform: none; }
+  .ann-sheet-head { cursor: move; touch-action: none; }
+  .ann-sheet-head::before { display: none; }
   .ann-sheet:not(.is-dragged) {
     top: 96px; left: 24px; bottom: 24px; right: auto;
     transform: none; width: 340px; max-height: none; height: auto;
   }
+  .ann-sheet.is-dragged { width: min(680px, 90vw); max-height: 72vh; min-width: 280px; }
 }
 /* Header redesigned: تحقيق footnote feel, not browser popup */
 .ann-sheet-head {
@@ -1311,14 +1335,35 @@ html.hide-vnums .vnum { display: none; }
   transition: border-color 0.15s, color 0.15s;
 }
 .ann-sheet-close:hover { border-color: var(--accent-border); color: var(--accent); }
-.ann-sheet-tabs { display: flex; flex-wrap: wrap; gap: 4px; border-bottom: 1px solid var(--rule); padding-bottom: 8px; margin-bottom: 12px; }
-.ann-sheet-tabs[hidden] { display: none; }
-.ann-tab { font-family: var(--font-ui); font-size: 14px; background: none; border: none; border-bottom: 2px solid transparent; padding: 5px 10px; cursor: pointer; color: var(--ink-soft); }
-.ann-tab[aria-pressed="true"] { color: var(--accent); border-bottom-color: var(--accent); }
-.ann-sheet-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
-.ann-sheet-chips[hidden] { display: none; }
-.ann-chip { font-family: var(--font-ui); font-size: 13px; border: 1px solid var(--rule-strong); border-radius: var(--radius-pill); padding: 4px 13px; background: var(--surface); cursor: pointer; color: var(--ink-soft); }
-.ann-chip[aria-pressed="true"] { border-color: var(--accent-solid); background: var(--accent-solid); color: var(--onbrand); }
+/* kind picker (تفسير/الغريب/…) and source picker (ابن كثير/الطبري/…) — the
+   same small dropdown for both: a pill showing the current pick + a popover
+   list that scrolls internally. Scales from 2 items to 20+ without ever
+   changing shape, so one component replaces the old tab row + chip row. */
+.ann-sheet-controls { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+.ann-dd { position: relative; min-width: 0; }
+.ann-dd[hidden] { display: none; }
+.ann-dd-btn {
+  display: flex; align-items: center; gap: 6px; max-width: 100%;
+  font-family: var(--font-ui); font-size: 13px; font-weight: 600; color: var(--ink-soft);
+  background: var(--paper-2); border: 1px solid var(--rule-strong); border-radius: var(--radius);
+  padding: 6px 12px; cursor: pointer;
+}
+.ann-dd-btn:hover { border-color: var(--accent-border); color: var(--ink); }
+.ann-dd-label { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ann-dd-chevron { font-size: 10px; opacity: 0.6; }
+.ann-dd-menu {
+  position: absolute; z-index: 5; top: calc(100% + 4px); inset-inline-start: 0;
+  min-width: 160px; max-width: 260px; max-height: 240px; overflow-y: auto;
+  background: var(--surface); border: 1px solid var(--rule-strong); border-radius: var(--radius-lg);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.18); padding: 6px;
+}
+.ann-dd-menu[hidden] { display: none; }
+.ann-dd-item {
+  display: block; width: 100%; text-align: start; font-family: var(--font-ui); font-size: 13px;
+  color: var(--ink-soft); background: none; border: none; border-radius: var(--radius); padding: 8px 10px; cursor: pointer;
+}
+.ann-dd-item:hover { background: var(--paper-2); }
+.ann-dd-item[aria-selected="true"] { color: var(--accent); font-weight: 700; background: color-mix(in srgb, var(--accent) 10%, transparent); }
 .ann-sheet-body { font-family: var(--font-serif); font-size: calc(16px * var(--reading-scale)); line-height: 2; color: var(--ink); }
 .ann-sheet-body .ann-source-link { display: inline-block; margin-top: 10px; }
 .ann-sheet-foot { display: flex; justify-content: space-between; margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--rule-strong); }
@@ -1333,8 +1378,8 @@ html.hide-vnums .vnum { display: none; }
 .ann-sheet.ann-panel .ann-sheet-title::before { content: ""; width: 7px; height: 7px; background: var(--gold); transform: rotate(45deg); flex: none; }
 .ann-sheet-ayah { font-family: var(--f-quran); font-size: 16px; color: var(--ink2); min-width: 0; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin-inline: 10px; }
 .ann-sheet-ayah[hidden] { display: none; }
-.ann-sheet.ann-panel .ann-tab[aria-pressed="true"] { color: var(--ink); border-bottom-color: var(--gold); }
-.ann-sheet.ann-panel .ann-chip[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--card); }
+.ann-sheet.ann-panel .ann-dd-btn:hover { border-color: var(--gold-soft); }
+.ann-sheet.ann-panel .ann-dd-item[aria-selected="true"] { color: var(--ink); background: color-mix(in srgb, var(--gold) 16%, transparent); }
 .ann-sheet.ann-panel .ann-nav { color: var(--gold); }
 .ann-active-verse { background: color-mix(in srgb, var(--accent) 8%, transparent); border-radius: var(--radius); }
 .verse:has(> [data-ann-pack]) .verse-body { cursor: pointer; }

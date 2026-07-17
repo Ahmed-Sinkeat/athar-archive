@@ -10,14 +10,18 @@
 import fs from "node:fs";
 import path from "node:path";
 import { markdownToSafeHtml } from "../src/lib/sanitize.js";
-import tafsirIndex from "../src/data/quran-tafsir-index.json" with { type: "json" };
 
 type TafsirNote = { kind: string; label: string; sourceHref?: string; sourceTitle?: string; body: string };
 
 const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
 
 function main() {
-  const index = tafsirIndex as Record<string, TafsirNote[]>;
+  // fs.readFileSync + JSON.parse, NOT a JSON module import — an `import
+  // ... with { type: "json" }` for a 300+MB file forces TypeScript to infer
+  // a full literal type for the whole object graph at check-time, which
+  // OOMs `astro check` (it type-checks every .ts file in the project, not
+  // just Astro pages). A plain runtime read is opaque to the type-checker.
+  const index: Record<string, TafsirNote[]> = JSON.parse(fs.readFileSync(path.resolve("src/data/quran-tafsir-index.json"), "utf-8"));
   const outRoot = path.resolve("dist/r2-upload/tafsir-frag");
   let written = 0;
 

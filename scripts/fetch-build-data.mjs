@@ -4,6 +4,7 @@
 // (local dev never redownloads). Needs CLOUDFLARE_API_TOKEN in CI.
 import { execFileSync } from "node:child_process";
 import fs from "node:fs";
+import zlib from "node:zlib";
 
 const FILES = [
   "src/data/quran-tafsir-index.json",
@@ -13,16 +14,34 @@ const FILES = [
   "src/content/book-lg/tafsir-muyassar.md",
 ];
 
+// Stored gzip-compressed in R2 — quran-tafsir-index.json is 336MB raw but
+// ~31MB gzipped (Arabic prose repeats enough that it compresses ~11x), so
+// this cuts the CI transfer to a fraction of the raw size. Decompressed
+// locally right after download; every other file here is small enough to
+// fetch as-is.
+const GZIPPED = new Set(["src/data/quran-tafsir-index.json"]);
+
 for (const f of FILES) {
-  // >200 bytes: a stale git-LFS pointer file (~130 bytes) doesn't count as present
   if (fs.existsSync(f) && fs.statSync(f).size > 200) {
     console.log(`✓ ${f} (present)`);
     continue;
   }
   console.log(`↓ ${f}`);
-  execFileSync(
-    "pnpm",
-    ["exec", "wrangler", "r2", "object", "get", `athar-book-assets/build-data/${f.split("/").pop()}`, "--file", f, "--remote"],
-    { stdio: "inherit" },
-  );
+  const name = f.split("/").pop();
+  if (GZIPPED.has(f)) {
+    const gzPath = `${f}.gz`;
+    execFileSync(
+      "pnpm",
+      ["exec", "wrangler", "r2", "object", "get", `athar-book-assets/build-data/${name}.gz`, "--file", gzPath, "--remote"],
+      { stdio: "inherit" },
+    );
+    fs.writeFileSync(f, zlib.gunzipSync(fs.readFileSync(gzPath)));
+    fs.unlinkSync(gzPath);
+  } else {
+    execFileSync(
+      "pnpm",
+      ["exec", "wrangler", "r2", "object", "get", `athar-book-assets/build-data/${name}`, "--file", f, "--remote"],
+      { stdio: "inherit" },
+    );
+  }
 }

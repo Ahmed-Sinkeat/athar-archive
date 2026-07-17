@@ -752,15 +752,21 @@ function enhanceProse() {
 // prev/next between annotated anchors. All data comes from the hidden
 // [data-ann-pack] blocks (build-time, no network, sanitized at build).
 (() => {
-  const KIND_ORDER = ["شرح", "تفسير", "غريب", "إعراب", "حاشية", "تخريج", "حكم", "فوائد"];
-  const KIND_SLUG: Record<string, string> = { شرح: "sharh", حاشية: "hashiya", تخريج: "takhrij", إعراب: "iraab", تفسير: "tafsir", غريب: "tafsir", حكم: "takhrij", فوائد: "sharh" };
+  const KIND_ORDER = ["شرح", "تفسير", "غريب", "تعليق", "إعراب", "حاشية", "تخريج", "حكم", "فوائد"];
+  const KIND_SLUG: Record<string, string> = { شرح: "sharh", حاشية: "hashiya", تخريج: "takhrij", إعراب: "iraab", تفسير: "tafsir", غريب: "tafsir", تعليق: "tafsir", حكم: "takhrij", فوائد: "sharh" };
   // Tab label ≠ stored kind: غريب the DB kind stays as-is (matches annotation
   // data), but the tab reads "الغريب والمعاني" — clearer than the bare word.
-  const KIND_LABEL: Record<string, string> = { غريب: "الغريب والمعاني", تفسير: "التفسير" };
+  // تعليق is its own tab (not lumped under تفسير) — sources like التعليق على
+  // التفسير من كتب ابن أبي الدنيا are a scholar's commentary/شرح gathered
+  // from athar, not a primary tafsir text.
+  const KIND_LABEL: Record<string, string> = { غريب: "الغريب والمعاني", تفسير: "التفسير", تعليق: "تعليق وشرح" };
   const toAr = (n: number) => String(n).replace(/[0-9]/g, (d) => "٠١٢٣٤٥٦٧٨٩"[+d]);
 
+  type DD = { root: HTMLElement; btn: HTMLButtonElement; label: HTMLElement; menu: HTMLElement };
   let sheet: HTMLElement | null = null;
-  let titleEl!: HTMLElement, ayahEl!: HTMLElement, tabsEl!: HTMLElement, chipsEl!: HTMLElement, bodyEl!: HTMLElement, footEl!: HTMLElement;
+  let scrimEl: HTMLElement | null = null;
+  let titleEl!: HTMLElement, ayahEl!: HTMLElement, bodyEl!: HTMLElement, footEl!: HTMLElement;
+  let kindDD!: DD, srcDD!: DD;
   let activeVerse: HTMLElement | null = null;
   // Reading preference, not per-ayah state: once the user picks a tab/source,
   // every later open (next/prev nav, a fresh ayah tap, even after closing the
@@ -770,6 +776,33 @@ function enhanceProse() {
   // source at all.
   let lastKind: string | null = localStorage.getItem(LS.annKind);
   let lastSourceLabel: string | null = localStorage.getItem(LS.annSource);
+
+  // One dropdown-button component for both the kind picker and the source
+  // picker: a pill showing the current pick + a small popover list. Scales
+  // identically whether the list has 2 items or 20 (the popover just
+  // scrolls), so it replaces the old tab row AND the old chip row.
+  function makeDropdown(name: string): DD {
+    const root = document.createElement("div"); root.className = "ann-dd"; root.dataset.dd = name;
+    const btn = document.createElement("button");
+    btn.type = "button"; btn.className = "ann-dd-btn";
+    btn.setAttribute("aria-haspopup", "listbox"); btn.setAttribute("aria-expanded", "false");
+    const label = document.createElement("span"); label.className = "ann-dd-label";
+    const chevron = document.createElement("span"); chevron.className = "ann-dd-chevron"; chevron.setAttribute("aria-hidden", "true"); chevron.textContent = "⌄";
+    btn.append(label, chevron);
+    const menu = document.createElement("div"); menu.className = "ann-dd-menu"; menu.hidden = true; menu.setAttribute("role", "listbox");
+    btn.addEventListener("click", () => {
+      const willOpen = menu.hidden;
+      closeMenus();
+      menu.hidden = !willOpen;
+      btn.setAttribute("aria-expanded", String(willOpen));
+    });
+    root.append(btn, menu);
+    return { root, btn, label, menu };
+  }
+
+  function closeMenus() {
+    for (const dd of [kindDD, srcDD]) { dd.menu.hidden = true; dd.btn.setAttribute("aria-expanded", "false"); }
+  }
 
   function build(): HTMLElement {
     if (sheet && sheet.isConnected) return sheet;
@@ -787,19 +820,29 @@ function enhanceProse() {
     x.type = "button"; x.className = "ann-sheet-close"; x.setAttribute("aria-label", "إغلاق"); x.textContent = "×";
     x.addEventListener("click", close);
     head.append(titleEl, ayahEl, x);
-    tabsEl = document.createElement("div"); tabsEl.className = "ann-sheet-tabs";
-    chipsEl = document.createElement("div"); chipsEl.className = "ann-sheet-chips";
+    const controls = document.createElement("div"); controls.className = "ann-sheet-controls";
+    kindDD = makeDropdown("kind");
+    srcDD = makeDropdown("source");
+    controls.append(kindDD.root, srcDD.root);
     bodyEl = document.createElement("div"); bodyEl.className = "ann-sheet-body"; bodyEl.setAttribute("data-ar", "");
     footEl = document.createElement("div"); footEl.className = "ann-sheet-foot";
-    sheet.append(head, tabsEl, chipsEl, bodyEl, footEl);
+    sheet.append(head, controls, bodyEl, footEl);
+    // Any click inside the sheet that isn't on a dropdown closes both open
+    // menus — the outside-click-closes-sheet listener further below returns
+    // early for clicks inside the sheet, so this is the only thing that closes
+    // a menu left open when the user clicks the body text or the header.
+    sheet.addEventListener("click", (e) => { if (!(e.target as HTMLElement).closest(".ann-dd")) closeMenus(); });
     // Surah pages provide an anchor slot below the ayat — only used today to
     // pick the gold تفسير accent (.ann-panel); placement itself is CSS fixed
-    // positioning (docked sidebar on wide screens, floating popup below that),
+    // positioning (docked sidebar on wide screens, bottom sheet below that),
     // shared by every kind of annotation, so where it lands in the DOM no
     // longer matters for layout.
     const slot = document.getElementById("tafsir-panel-slot");
     if (slot) { sheet.classList.add("ann-panel"); slot.appendChild(sheet); }
     else document.body.appendChild(sheet);
+    scrimEl = document.createElement("div"); scrimEl.className = "ann-scrim"; scrimEl.hidden = true;
+    scrimEl.addEventListener("click", close);
+    document.body.appendChild(scrimEl);
     wireDragAndResize(sheet, head);
     return sheet;
   }
@@ -821,6 +864,9 @@ function enhanceProse() {
     };
     handle.addEventListener("pointerdown", (e) => {
       if ((e.target as HTMLElement).closest(".ann-sheet-close")) return;
+      // Below the docked-sidebar breakpoint the sheet is a bottom sheet, not a
+      // floating window — dismiss via ✕/scrim/Escape instead of dragging.
+      if (window.innerWidth < 1100) return;
       toFixedBox();
       dragging = true;
       dx = e.clientX - sheet.offsetLeft;
@@ -890,38 +936,61 @@ function enhanceProse() {
     }
   }
 
-  function renderChips(entries: HTMLElement[], selectIndex = 0) {
-    chipsEl.textContent = "";
-    chipsEl.hidden = entries.length < 2;
+  function renderSourceMenu(entries: HTMLElement[], selectIndex = 0) {
+    srcDD.root.hidden = entries.length < 2;
     // A remembered source label wins over the numeric default whenever this
     // anchor actually has it — falls back to selectIndex (usually 0) otherwise.
     const remembered = lastSourceLabel ? entries.findIndex((en, i) => sourceLabel(en, i) === lastSourceLabel) : -1;
     const initialIndex = remembered >= 0 ? remembered : selectIndex;
+    srcDD.menu.textContent = "";
     entries.forEach((en, i) => {
       if (entries.length < 2) return;
       const label = sourceLabel(en, i);
-      const b = document.createElement("button");
-      b.type = "button"; b.className = "ann-chip"; b.textContent = label;
-      b.setAttribute("aria-pressed", String(i === initialIndex));
-      b.addEventListener("click", () => {
-        chipsEl.querySelectorAll(".ann-chip").forEach((c) => c.setAttribute("aria-pressed", "false"));
-        b.setAttribute("aria-pressed", "true");
+      const item = document.createElement("button");
+      item.type = "button"; item.className = "ann-dd-item"; item.setAttribute("role", "option");
+      item.setAttribute("aria-selected", String(i === initialIndex));
+      item.textContent = label;
+      item.addEventListener("click", () => {
+        srcDD.menu.querySelectorAll(".ann-dd-item").forEach((c) => c.setAttribute("aria-selected", "false"));
+        item.setAttribute("aria-selected", "true");
+        srcDD.label.textContent = label;
         lastSourceLabel = label;
         localStorage.setItem(LS.annSource, label);
+        closeMenus();
         showEntry(en);
       });
-      chipsEl.appendChild(b);
+      srcDD.menu.appendChild(item);
     });
+    const initial = entries[initialIndex] || entries[0];
+    srcDD.label.textContent = sourceLabel(initial, initialIndex);
     // Only an explicit click (above) should update the remembered preference —
     // this render can itself be a forced fallback (this ayah lacks the
     // remembered source), and that must not overwrite the preference for
     // ayat that still have it.
-    showEntry(entries[initialIndex] || entries[0]);
+    showEntry(initial);
+  }
+
+  function renderKindMenu(byKind: Map<string, HTMLElement[]>, kinds: string[]) {
+    kindDD.root.hidden = kinds.length < 2;
+    kindDD.menu.textContent = "";
+    kinds.forEach((k) => {
+      const item = document.createElement("button");
+      item.type = "button"; item.className = "ann-dd-item"; item.dataset.kind = k; item.setAttribute("role", "option");
+      item.textContent = KIND_LABEL[k] || k;
+      item.addEventListener("click", () => {
+        lastKind = k; localStorage.setItem(LS.annKind, k);
+        closeMenus();
+        selectKind(byKind, k);
+      });
+      kindDD.menu.appendChild(item);
+    });
   }
 
   function selectKind(byKind: Map<string, HTMLElement[]>, kind: string, entryIndex = 0) {
-    tabsEl.querySelectorAll(".ann-tab").forEach((t) => t.setAttribute("aria-pressed", String(t.getAttribute("data-kind") === kind)));
-    renderChips(byKind.get(kind)!, entryIndex);
+    kindDD.label.textContent = KIND_LABEL[kind] || kind;
+    kindDD.menu.querySelectorAll<HTMLElement>(".ann-dd-item").forEach((el) =>
+      el.setAttribute("aria-selected", String(el.dataset.kind === kind)));
+    renderSourceMenu(byKind.get(kind)!, entryIndex);
   }
 
   function renderFoot(packId: string) {
@@ -1001,24 +1070,20 @@ function enhanceProse() {
       const ia = KIND_ORDER.indexOf(a), ib = KIND_ORDER.indexOf(b);
       return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib);
     });
-    tabsEl.textContent = "";
-    tabsEl.hidden = kinds.length < 2;
-    kinds.forEach((k) => {
-      const t = document.createElement("button");
-      t.type = "button"; t.className = "ann-tab"; t.setAttribute("data-kind", k); t.textContent = KIND_LABEL[k] || k;
-      t.addEventListener("click", () => { lastKind = k; localStorage.setItem(LS.annKind, k); selectKind(byKind, k); });
-      tabsEl.appendChild(t);
-    });
+    renderKindMenu(byKind, kinds);
     const initialKind = lastKind && byKind.has(lastKind) ? lastKind : kinds[0];
     selectKind(byKind, initialKind, entryIndex);
     renderFoot(packId);
     sheet!.hidden = false;
     requestAnimationFrame(() => sheet!.classList.add("is-shown"));
+    if (scrimEl) { scrimEl.hidden = false; requestAnimationFrame(() => scrimEl!.classList.add("is-shown")); }
     prefetchNeighbors(packId);
   }
 
   function close() {
     if (sheet) { sheet.hidden = true; sheet.classList.remove("is-shown"); }
+    if (scrimEl) { scrimEl.hidden = true; scrimEl.classList.remove("is-shown"); }
+    if (kindDD) closeMenus();
     if (activeVerse) { activeVerse.classList.remove("ann-active-verse"); activeVerse = null; }
   }
 
@@ -1063,7 +1128,7 @@ function enhanceProse() {
     // reparented (fixed positioning, sometimes onto document.body directly),
     // so more than one can end up coexisting after a swap, which read as a
     // "duplicated menu" when the user had moved the panel before navigating.
-    document.querySelectorAll(".ann-sheet").forEach((el) => el.remove());
+    document.querySelectorAll(".ann-sheet, .ann-scrim").forEach((el) => el.remove());
 
     // Re-create the sheet and bind references to the current page DOM
     build();
@@ -1074,6 +1139,7 @@ function enhanceProse() {
     root = document.documentElement;
     close();
     sheet = null;
+    scrimEl = null;
   });
   setup();
   document.addEventListener("astro:page-load", setup);
