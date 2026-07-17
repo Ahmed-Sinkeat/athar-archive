@@ -641,6 +641,7 @@ summary::-webkit-details-marker { display: none; }
   }
 }
 /* per-source tafsir entries (gen-tafsir-frags.ts v2) */
+.ann-dd-item.is-missing { opacity: 0.5; }
 .ann-note-sep { border: 0; border-top: 1px dashed var(--rule); margin-block: 0.8rem; }
 .ann-src-inline { display: block; margin-top: 4px; font-size: 12px; color: var(--accent); text-decoration: none; }
 .ann-dl-tafsir {

@@ -1010,6 +1010,12 @@ function enhanceProse() {
   function showEntry(en: HTMLElement) {
     const seq = ++showSeq; // a newer show wins over an in-flight fetch's render
     updateDlBtn(en);
+    // stub declares the source exists but has nothing on THIS ayah — honest
+    // empty state instead of silently switching the reader to another author
+    if (en.hasAttribute("data-missing")) {
+      bodyEl.textContent = "ليس لهذا المصدرِ كلامٌ على هذه الآية.";
+      return;
+    }
     const lazy = en.getAttribute("data-lazy-src");
     if (lazy && !en.querySelector(".ann-entry-body")) {
       bodyEl.textContent = "جارٍ تحميل التفسير…";
@@ -1049,9 +1055,11 @@ function enhanceProse() {
   // manifest downloads.ts maintains (same localStorage key).
   function updateDlBtn(en: HTMLElement) {
     if (!dlBtn) return;
-    const m = (en.getAttribute("data-lazy-src") || "").match(/\.([a-z0-9-]+)\.html$/);
-    if (!m) { dlBtn.hidden = true; return; }
-    const slug = m[1];
+    // data-slug on v2.1 stubs (present AND missing entries); lazy-src parse
+    // keeps v2.0 stubs already in R2 working until they're re-uploaded
+    const slug = en.getAttribute("data-slug") ||
+      ((en.getAttribute("data-lazy-src") || "").match(/\.([a-z0-9-]+)\.html$/)?.[1] ?? "");
+    if (!slug) { dlBtn.hidden = true; return; }
     dlBtn.dataset.dlId = slug;
     dlBtn.dataset.dlTitle = (en.getAttribute("data-label") || "").split(" — ")[1] || slug;
     let has = false;
@@ -1064,9 +1072,12 @@ function enhanceProse() {
   function renderSourceMenu(entries: HTMLElement[], selectIndex = 0) {
     srcDD.root.hidden = entries.length < 2;
     // A remembered source label wins over the numeric default whenever this
-    // anchor actually has it — falls back to selectIndex (usually 0) otherwise.
+    // anchor lists it — even as a data-missing stub (the honest «ليس لهذا
+    // المصدر كلام» beats silently switching authors). With no remembered
+    // pick, default to the first source that actually has content here.
     const remembered = lastSourceLabel ? entries.findIndex((en, i) => sourceLabel(en, i) === lastSourceLabel) : -1;
-    const initialIndex = remembered >= 0 ? remembered : selectIndex;
+    const firstPresent = entries.findIndex((en) => !en.hasAttribute("data-missing"));
+    const initialIndex = remembered >= 0 ? remembered : selectIndex > 0 ? selectIndex : Math.max(firstPresent, 0);
     srcDD.menu.textContent = "";
     entries.forEach((en, i) => {
       if (entries.length < 2) return;
@@ -1074,6 +1085,7 @@ function enhanceProse() {
       const item = document.createElement("button");
       item.type = "button"; item.className = "ann-dd-item"; item.setAttribute("role", "option");
       item.setAttribute("aria-selected", String(i === initialIndex));
+      if (en.hasAttribute("data-missing")) item.classList.add("is-missing");
       item.textContent = label;
       item.addEventListener("click", () => {
         srcDD.menu.querySelectorAll(".ann-dd-item").forEach((c) => c.setAttribute("aria-selected", "false"));
@@ -1191,12 +1203,17 @@ function enhanceProse() {
     ayahEl.hidden = !ayahText;
     ayahEl.textContent = ayahText ? `﴿ ${ayahText} ﴾` : "";
     const byKind = entriesByKind(pack);
-    const kinds = [...byKind.keys()].sort((a, b) => {
-      const ia = KIND_ORDER.indexOf(a), ib = KIND_ORDER.indexOf(b);
-      return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib);
-    });
+    // a kind whose entries are ALL data-missing stubs stays hidden — kinds are
+    // categories, not authors anyone follows (agreed: only the SOURCE menu
+    // always shows everything)
+    const kinds = [...byKind.keys()]
+      .filter((k) => byKind.get(k)!.some((en) => !en.hasAttribute("data-missing")))
+      .sort((a, b) => {
+        const ia = KIND_ORDER.indexOf(a), ib = KIND_ORDER.indexOf(b);
+        return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib);
+      });
     renderKindMenu(byKind, kinds);
-    const initialKind = lastKind && byKind.has(lastKind) ? lastKind : kinds[0];
+    const initialKind = lastKind && kinds.includes(lastKind) ? lastKind : kinds[0];
     selectKind(byKind, initialKind, entryIndex);
     renderFoot(packId);
     sheet!.hidden = false;

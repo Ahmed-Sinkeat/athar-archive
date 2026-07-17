@@ -42,6 +42,17 @@ function main() {
   let stubs = 0;
   let bodies = 0;
 
+  // Pass 1 — the canonical source list (first-appearance order). Every stub
+  // lists EVERY source in this same order; ones absent on that ayah are
+  // data-missing="1" (dimmed in the sheet, «ليس لهذا المصدر كلام…» on select).
+  // A stable menu keeps the reader's chosen tafsir sticky across ayat instead
+  // of silently falling back to another author — and stops "where did the
+  // other tafsirs go?" confusion when coverage is partial (السعدي, ابن القيم…).
+  const canon = new Map<string, { kind: string; label: string }>();
+  for (const notes of Object.values(index)) {
+    for (const nt of notes) if (!canon.has(nt.sourceSlug)) canon.set(nt.sourceSlug, { kind: nt.kind, label: nt.label });
+  }
+
   for (const [verseKey, notes] of Object.entries(index)) {
     if (!notes.length) continue;
     const [surah, ayah] = verseKey.split(":");
@@ -60,7 +71,6 @@ function main() {
 
     const dir = path.join(outRoot, surah);
     fs.mkdirSync(dir, { recursive: true });
-    const stubEntries: string[] = [];
 
     for (const [slug, group] of groups) {
       const first = group[0];
@@ -82,7 +92,6 @@ function main() {
       const bodyFile = `<div class="ann-entry k-tafsir" data-kind="${esc(first.kind)}" data-label="${esc(first.label)}">${bodyHtml}${tail}</div>`;
       fs.writeFileSync(path.join(dir, `${ayah}.${slug}.html`), bodyFile, "utf-8");
       bodies++;
-      stubEntries.push(`<div class="ann-entry k-tafsir" data-kind="${esc(first.kind)}" data-label="${esc(first.label)}" data-lazy-src="${bodyUrl}"></div>`);
 
       const src = bySource.get(slug) ?? { title: first.sourceTitle || first.label, urls: [], bytes: 0 };
       src.urls.push(stubUrl, bodyUrl);
@@ -90,9 +99,18 @@ function main() {
       bySource.set(slug, src);
     }
 
+    // stub = the FULL canonical list, in canonical order; absent → data-missing
+    const allEntries = [...canon.entries()].map(([slug, meta]) => {
+      const group = groups.get(slug);
+      if (group) {
+        const first = group[0];
+        return `<div class="ann-entry k-tafsir" data-kind="${esc(first.kind)}" data-label="${esc(first.label)}" data-slug="${slug}" data-lazy-src="/tafsir-frag/${surah}/${ayah}.${slug}.html"></div>`;
+      }
+      return `<div class="ann-entry k-tafsir" data-kind="${esc(meta.kind)}" data-label="${esc(meta.label)}" data-slug="${slug}" data-missing="1"></div>`;
+    });
     fs.writeFileSync(
       path.join(dir, `${ayah}.html`),
-      `<div class="ann-pack" id="ann-quran-${surah}-${ayah}" data-ann-pack hidden>${stubEntries.join("")}</div>`,
+      `<div class="ann-pack" id="ann-quran-${surah}-${ayah}" data-ann-pack hidden>${allEntries.join("")}</div>`,
       "utf-8",
     );
     stubs++;

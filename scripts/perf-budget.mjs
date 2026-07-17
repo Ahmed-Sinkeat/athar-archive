@@ -20,7 +20,7 @@ if (!existsSync(DIST)) {
   process.exit(1);
 }
 
-const BUDGET = 204 * 1024; // bytes: render-critical CSS+JS per page (HTML/content excluded — real Arabic books run 1 MB+ of legit prose; NFR-01 = ship light code). 150→160 for mobile app chrome (tab bar + bottom sheets CSS); 160→164 when /benefits' library.ts grew for the حفظ/"المحفوظات" bookmark tab; 164→204 when the mobile app redesign (settings/drawer anchored dropdowns + per-category icons) landed across every page's shared Base.css, plus /benefits' own copy-button addition — heaviest page (benefits, its own scoped CSS+JS on top of the shared bundle) measured 200.5 KB.
+const BUDGET = 212 * 1024; // bytes: render-critical CSS+JS per page (HTML/content excluded — real Arabic books run 1 MB+ of legit prose; NFR-01 = ship light code). 150→160 for mobile app chrome (tab bar + bottom sheets CSS); 160→164 when /benefits' library.ts grew for the حفظ/"المحفوظات" bookmark tab; 164→204 when the mobile app redesign (settings/drawer anchored dropdowns + per-category icons) landed across every page's shared Base.css, plus /benefits' own copy-button addition — heaviest page (benefits, its own scoped CSS+JS on top of the shared bundle) measured 200.5 KB. 204→212 for the 2026-07-17 UX batch (تسميع mode, lazy per-source tafsir + sheet download button, surah jump nav, cross-deploy soft-nav guard) — measured 204.6 KB.
 const TEXT_FLOOR = 100;    // min visible chars rendered without JS
 const JS_DRIVEN = new Set(["/search", "/compose", "/graph", "/admin"]); // JS-driven tool pages exempt from weight/text
 
