@@ -144,9 +144,11 @@ jobs:
         if: github.ref == 'refs/heads/main' && github.event_name == 'push' && env.CLOUDFLARE_API_TOKEN != ''
         continue-on-error: true
         run: |
+          fail=0
           for f in dist/search-index/*.sql; do
-            pnpm exec wrangler d1 execute athar-search --remote -y --file "$f"
+            pnpm exec wrangler d1 execute athar-search --remote -y --file "$f" || { echo "::warning::D1 import failed for $f — continuing to next file"; fail=1; }
           done
+          exit $fail
 
   # Manual-only (workflow_dispatch), independent of the build job above — for
   # merging a book's freshly-extracted per-ayah tafsir notes into the shared
