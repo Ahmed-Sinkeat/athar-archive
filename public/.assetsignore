@@ -1,0 +1,7 @@
+# Raw content/book(-lg) markdown is mirrored here via the public/content
+# symlink, but nothing reads it at runtime anymore — book chapters are served
+# from prerendered R2 HTML (see src/lib/book-asset.ts, src/pages/book/[slug]/
+# [chapter].ts). Excluded so oversized imports (Tabari, Qurtubi, ...) don't
+# trip Cloudflare Workers' 25 MiB per-asset limit.
+content/book/**
+content/book-lg/**
