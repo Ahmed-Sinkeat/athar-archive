@@ -55,25 +55,32 @@ const ALT_NAMES: Record<string, string> = {
   "قاف": "ق",
 };
 
-// "سورة <name> من الآية (N) إلى الآية (M)." — but this print run is
-// inconsistent about it: missing parens, "حتى" instead of "إلى", a bare
-// ayah with no closing clause at all, plural الآيات in the lead phrase, even
-// an OCR-split digit ("7 8" for 78) in a couple of spots. Matching against a
-// diacritic/letter-variant-normalized copy of the text covers every variant
-// actually seen (see the survey that produced this pattern) — but this
-// print is so heavily vocalized that nearly every letter carries a mark, so
-// a length-preserving replace (mark -> space) shatters words into
-// letter-by-letter spacing ("مِنْ" -> "م ن"). Deleting marks instead means
-// match positions in the normalized text no longer line up with the
-// original, so this also returns a position map back to it.
-const TASHKEEL_RE = /[ً-ٰٟۖ-ۭ]/; // NOT chapters.ts's ARABIC_DIACRITICS: that range starts at U+0610, which overlaps the entire base Arabic letter block (U+0621-U+064A) and eats real letters too
+// "سورة <name> من الآية (N) إلى الآية (M)." — but this print run turned out
+// to use well over a dozen distinct footer phrasings once surveyed properly
+// (missing "من", missing "ال", "حتى" vs "إلى" vs a bare "-", parens around
+// the whole range vs each number vs none, trailing "." vs "]" vs nothing…).
+// A regex enumerating every syntax shape is a losing game — this instead
+// matches the surah NAME literally (a closed, known list) and pulls
+// whatever digit groups follow it before the next sentence boundary,
+// regardless of the words in between. The content-driven misprint repair
+// right below this already re-verifies every resulting block against the
+// mushaf and relocates-or-drops it — that safety net is what makes this
+// permissive approach fine to run unsupervised.
+//
+// Diacritic/letter-variant normalization: this print is so heavily vocalized
+// that nearly every letter carries a mark, so a length-preserving replace
+// (mark -> space) shatters words into letter-by-letter spacing ("مِنْ" ->
+// "م ن"). Deleting marks instead means match positions in the normalized
+// text no longer line up with the original, so this also returns a position
+// map back to it.
+const TASHKEEL_RE = /[\u0610-\u061A\u064B-\u065F\u0670\u06D6-\u06ED]/; // NOT chapters.ts's ARABIC_DIACRITICS: that range starts at U+0610, which overlaps the entire base Arabic letter block (U+0621-U+064A) and eats real letters too
 function normalizeWithMap(s: string): { norm: string; map: number[] } {
   let norm = "";
   const map: number[] = [];
   for (let i = 0; i < s.length; i++) {
     let ch = s[i];
     if (TASHKEEL_RE.test(ch)) continue; // dropped entirely, not mapped
-    if (ch === "آ" || ch === "أ" || ch === "إ") ch = "ا"; // آ أ إ -> ا
+    if (ch === "آ" || ch === "أ" || ch === "إ" || ch === "ٱ") ch = "ا"; // آ أ إ ٱ -> ا
     else if (ch === "ى") ch = "ي"; // ى -> ي
     else if (ch === "ة") ch = "ه"; // ة -> ه
     norm += ch;
@@ -81,7 +88,14 @@ function normalizeWithMap(s: string): { norm: string; map: number[] } {
   }
   return { norm, map };
 }
-const RANGE_RE = /سور[ةه]\s+([^\n.]{2,25}?)\s+(?:الايات?\s+)?من\s*الاي[ةه]\s*\(?\s*(\d+(?:\s\d)?)\s*\)?\s*(?:(?:الي|حتي)\s*(?:(?:ال)?ايه?\s*)?\(?\s*(\d+(?:\s\d)?)\s*\)?|فقط)?\s*\./gd;
+
+// "سورة" as a common noun (not followed by a real surah name) does occur —
+// only accept the longest known name that actually starts right there, so a
+// two-word name like "آل عمران" is never partially matched by "آل" alone.
+function matchSurahName(norm: string, at: number, namesByLenDesc: { name: string; num: number }[]): { name: string; num: number } | null {
+  for (const cand of namesByLenDesc) if (norm.startsWith(cand.name, at)) return cand;
+  return null;
+}
 
 function main() {
   const file = process.argv[2] ?? "src/content/book-lg/tafsir-al-quran-al-aziz-ibn-abi-zamanin.md";
@@ -120,27 +134,51 @@ function main() {
 
   const { norm: normConcat, map: posMap } = normalizeWithMap(concat);
 
+  // Names for matchSurahName must be normalized the SAME way as normConcat
+  // (hamza/ya/ta-marbuta unified, not just tashkeel-stripped) — resolveSurah
+  // above only strips tashkeel, which is fine for the misprint-repair path
+  // (it looks names up in nameMap directly) but not for matching against
+  // normConcat here.
+  const namesByLenDesc: { name: string; num: number }[] = [];
+  for (const [strippedName, num] of nameMap) namesByLenDesc.push({ name: normalizeWithMap(strippedName).norm, num });
+  for (const [alt, canonical] of Object.entries(ALT_NAMES)) {
+    const num = nameMap.get(canonical);
+    if (num) namesByLenDesc.push({ name: normalizeWithMap(alt).norm, num });
+  }
+  namesByLenDesc.sort((a, b) => b.name.length - a.name.length);
+
   const index: Record<string, TafsirNote[]> = {};
   const markers: { start: number; end: number; surahNum: number; ayahStart: number; ayahEnd: number }[] = [];
   let unresolved = 0;
-  const unresolvedNames = new Map<string, number>();
 
-  const numFrom = (s?: string) => (s === undefined ? undefined : Number(s.replace(/\s+/g, ""))); // "7 8" -> 78
-  for (const m of normConcat.matchAll(RANGE_RE) as IterableIterator<RegExpMatchArray & { indices: Array<[number, number] | undefined> }>) {
-    const nameSpan = m.indices[1]!;
-    const name = concat.slice(posMap[nameSpan[0]], posMap[nameSpan[1] - 1] + 1); // original (diacritized) name
-    const surahNum = resolveSurah(name);
-    if (surahNum === null) {
-      unresolved++;
-      unresolvedNames.set(name, (unresolvedNames.get(name) ?? 0) + 1);
-      continue;
-    }
-    const ayahStart = numFrom(m[2])!;
-    const ayahEnd = numFrom(m[3]) ?? ayahStart; // no closing clause, or "فقط" = single ayah
-    const origStart = posMap[m.indices[0]![0]];
-    const matchEndNorm = m.indices[0]![1];
-    const origEnd = matchEndNorm >= posMap.length ? concat.length : posMap[matchEndNorm];
-    markers.push({ start: origStart, end: origEnd, surahNum, ayahStart, ayahEnd });
+  const SURAH_RE = /سور[ةه]\s+/g;
+  // ponytail: no OCR-split-digit joining ("7 8" -> 78) here — that pattern
+  // was narrow enough to hand-verify against the ~40-surah original extraction,
+  // but scanning permissively over the whole book, an optional joined digit
+  // readily concatenates two UNRELATED numbers (a page/folio aside, a second
+  // range's own opening digit) into garbage ("12" + stray "1" -> "121"). A
+  // missed rare OCR-split ayah is far cheaper than a systematically wrong one.
+  let sm: RegExpExecArray | null;
+  while ((sm = SURAH_RE.exec(normConcat))) {
+    const afterKeyword = sm.index + sm[0].length;
+    const hit = matchSurahName(normConcat, afterKeyword, namesByLenDesc);
+    if (!hit) { unresolved++; continue; }
+    const tailStart = afterKeyword + hit.name.length;
+    // clause tail: up to the next sentence/bracket/paragraph boundary, or
+    // the next "سورة" if none appears first (caps a clause that never closes)
+    const nextSurah = normConcat.indexOf("سوره", tailStart);
+    const cap = tailStart + 80;
+    const hardStop = Math.min(nextSurah < 0 ? cap : Math.min(nextSurah, cap), normConcat.length);
+    const terminator = normConcat.slice(tailStart, hardStop).search(/[.\]\n]/);
+    const clauseEnd = terminator < 0 ? hardStop : tailStart + terminator;
+    const clause = normConcat.slice(tailStart, clauseEnd);
+    const nums = [...clause.matchAll(/\d+/g)].map((n) => Number(n[0]));
+    if (!nums.length) continue; // opening banner ("وهي مكية كلها"), not a range footer
+    const ayahStart = nums[0];
+    const ayahEnd = nums[1] ?? nums[0];
+    const origStart = posMap[sm.index];
+    const origEnd = clauseEnd >= posMap.length ? concat.length : posMap[clauseEnd];
+    markers.push({ start: origStart, end: origEnd, surahNum: hit.num, ayahStart, ayahEnd });
   }
 
   // Misprint repair, content-driven: the print misnumbers a handful of
@@ -230,8 +268,7 @@ function main() {
     fs.writeFileSync(outPath, JSON.stringify(index, null, 1), "utf-8");
   }
 
-  console.log(`✓ markers found: ${markers.length + unresolved}, resolved: ${markers.length}, unresolved: ${unresolved}`);
-  if (unresolvedNames.size) console.log(`✗ unresolved surah names:`, [...unresolvedNames.entries()].sort((a, b) => b[1] - a[1]));
+  console.log(`✓ markers found: ${markers.length + unresolved}, resolved: ${markers.length}, unresolved ("سورة" not followed by a known name): ${unresolved}`);
   console.log(`✓ ayat covered: ${ayatCovered}/6236`);
   console.log(`✓ written → ${outPath}`);
 }

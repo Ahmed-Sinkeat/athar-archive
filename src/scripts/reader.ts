@@ -17,6 +17,7 @@ const LS = {
   audioSpeed: "aa-audio-speed",
   annKind: "aa-ann-kind",
   annSource: "aa-ann-source",
+  annPinned: "aa-ann-pinned",
 };
 
 const SCALE_MIN = 0.8;
@@ -370,7 +371,17 @@ document.addEventListener("click", (e) => {
   const el = (e.target as HTMLElement).closest<HTMLElement>("[data-action]");
   if (!el) return;
   const fn = actions[el.dataset.action || ""];
-  if (fn) { e.preventDefault(); fn(); }
+  if (fn) {
+    e.preventDefault();
+    // topsearch/filterPop/settingsPop are cached refs, refreshed only on
+    // specific lifecycle hooks (onPage, pageshow) — a click landing between a
+    // router DOM-swap and the next such hook would still act on a detached
+    // header (button visibly does nothing until reload). Re-sync right here,
+    // at the one choke point every data-action click passes through, so the
+    // action always sees whatever's actually live.
+    requeryChrome();
+    fn();
+  }
 });
 document.addEventListener("click", (e) => {
   if ((e.target as HTMLElement).closest("[data-drawer-backdrop]")) setDrawer(false);
@@ -825,7 +836,7 @@ function enhanceProse() {
   let sheet: HTMLElement | null = null;
   let scrimEl: HTMLElement | null = null;
   let titleEl!: HTMLElement, ayahEl!: HTMLElement, bodyEl!: HTMLElement, footEl!: HTMLElement;
-  let kindDD!: DD, srcDD!: DD;
+  let kindRow!: HTMLElement, srcRow!: HTMLElement, srcDD!: DD;
   let dlBtn: HTMLButtonElement | null = null, dlLabel!: HTMLElement;
   let activeVerse: HTMLElement | null = null;
   // Reading preference, not per-ayah state: once the user picks a tab/source,
@@ -861,7 +872,8 @@ function enhanceProse() {
   }
 
   function closeMenus() {
-    for (const dd of [kindDD, srcDD]) { dd.menu.hidden = true; dd.btn.setAttribute("aria-expanded", "false"); }
+    if (!srcDD) return;
+    srcDD.menu.hidden = true; srcDD.btn.setAttribute("aria-expanded", "false");
   }
 
   function build(): HTMLElement {
@@ -881,8 +893,12 @@ function enhanceProse() {
     x.addEventListener("click", close);
     head.append(titleEl, ayahEl, x);
     const controls = document.createElement("div"); controls.className = "ann-sheet-controls";
-    kindDD = makeDropdown("kind");
+    // kinds + pinned sources are always-visible chip rows; the dropdown only
+    // remains as the "all sources" list where each source carries a pin toggle
+    kindRow = document.createElement("div"); kindRow.className = "ann-chips ann-kinds";
+    srcRow = document.createElement("div"); srcRow.className = "ann-chips ann-srcs";
     srcDD = makeDropdown("source");
+    srcDD.label.textContent = "كل المصادر";
     // "download this tafsir" (quran per-source fragments only — see updateDlBtn):
     // downloads.ts's delegated download:toggle handler does the actual work,
     // fetching the source's /tafsir-dl/<slug>.json url list.
@@ -891,7 +907,7 @@ function enhanceProse() {
     dlBtn.dataset.action = "download:toggle"; dlBtn.dataset.dlKind = "tafsir"; dlBtn.dataset.dlPath = "/quran/mushaf";
     dlLabel = document.createElement("span"); dlLabel.setAttribute("data-dl-label", "");
     dlBtn.append(dlLabel);
-    controls.append(kindDD.root, srcDD.root, dlBtn);
+    controls.append(kindRow, srcRow, srcDD.root, dlBtn);
     bodyEl = document.createElement("div"); bodyEl.className = "ann-sheet-body"; bodyEl.setAttribute("data-ar", "");
     footEl = document.createElement("div"); footEl.className = "ann-sheet-foot";
     sheet.append(head, controls, bodyEl, footEl);
@@ -932,6 +948,8 @@ function enhanceProse() {
   // the user's placement; the position/size then persists for the session.
   function wireDragAndResize(sheet: HTMLElement, handle: HTMLElement) {
     let dragging = false, dx = 0, dy = 0;
+    // phone bottom sheet: vertical drag on the header resizes the sheet height
+    let vResize = false, startY = 0, startH = 0;
     const toFixedBox = () => {
       const r = sheet.getBoundingClientRect();
       sheet.style.left = `${r.left}px`;
@@ -942,9 +960,15 @@ function enhanceProse() {
     };
     handle.addEventListener("pointerdown", (e) => {
       if ((e.target as HTMLElement).closest(".ann-sheet-close")) return;
-      // Below the docked-sidebar breakpoint the sheet is a bottom sheet, not a
-      // floating window — dismiss via ✕/scrim/Escape instead of dragging.
-      if (window.innerWidth < 1100) return;
+      // Below the docked-sidebar breakpoint the sheet is a bottom sheet —
+      // dragging the header up/down resizes it instead of moving it.
+      if (window.innerWidth < 1100) {
+        vResize = true; dragging = true;
+        startY = e.clientY; startH = sheet.getBoundingClientRect().height;
+        handle.setPointerCapture(e.pointerId);
+        return;
+      }
+      vResize = false;
       toFixedBox();
       dragging = true;
       dx = e.clientX - sheet.offsetLeft;
@@ -953,6 +977,13 @@ function enhanceProse() {
     });
     handle.addEventListener("pointermove", (e) => {
       if (!dragging) return;
+      if (vResize) {
+        const h = Math.min(window.innerHeight * 0.92, Math.max(180, startH + (startY - e.clientY)));
+        sheet.style.height = `${h}px`;
+        sheet.style.maxHeight = "none";
+        sheet.style.minHeight = "0";
+        return;
+      }
       sheet.style.left = `${e.clientX - dx}px`;
       sheet.style.top = `${e.clientY - dy}px`;
     });
@@ -1007,6 +1038,32 @@ function enhanceProse() {
   // actually shown, then cached in the stub for instant re-shows. Poems/books
   // keep their build-time inline entries and never hit the lazy path.
   let showSeq = 0;
+  // Shared by showEntry (needs the result rendered) and prefetchNeighbors
+  // (fire-and-forget, just wants the body cached on `en` before it's needed) —
+  // in-flight fetches for the same entry are deduped via a WeakMap so a
+  // prefetch and a real open racing each other don't double-fetch.
+  const inflight = new WeakMap<HTMLElement, Promise<void>>();
+  function fetchEntryBody(en: HTMLElement): Promise<void> {
+    if (en.querySelector(".ann-entry-body")) return Promise.resolve();
+    const lazy = en.getAttribute("data-lazy-src");
+    if (!lazy) return Promise.resolve();
+    const existing = inflight.get(en);
+    if (existing) return existing;
+    const p = fetch(lazy)
+      .then((r) => (r.ok ? r.text() : ""))
+      .then((html) => {
+        if (html) {
+          const tpl = document.createElement("template");
+          tpl.innerHTML = html; // sanitized at build, same trust as v1 fragments
+          const loaded = tpl.content.querySelector(".ann-entry");
+          if (loaded && !en.querySelector(".ann-entry-body")) en.append(...loaded.childNodes);
+        }
+      })
+      .catch(() => {})
+      .finally(() => inflight.delete(en));
+    inflight.set(en, p);
+    return p;
+  }
   function showEntry(en: HTMLElement) {
     const seq = ++showSeq; // a newer show wins over an in-flight fetch's render
     updateDlBtn(en);
@@ -1014,23 +1071,25 @@ function enhanceProse() {
     // empty state instead of silently switching the reader to another author
     if (en.hasAttribute("data-missing")) {
       bodyEl.textContent = "ليس لهذا المصدرِ كلامٌ على هذه الآية.";
+      // one-tap escape hatch: jump to the next source (same kind) that DOES
+      // have content here — the dropdown items map 1:1 to entries, so clicking
+      // the item reuses all selection/persistence logic for free
+      const items = [...srcDD.menu.querySelectorAll<HTMLButtonElement>(".ann-dd-item")];
+      const i = items.findIndex((it) => it.getAttribute("aria-selected") === "true");
+      const next = items.find((it, j) => j > i && !it.classList.contains("is-missing"))
+        ?? items.find((it) => !it.classList.contains("is-missing"));
+      if (next) {
+        const b = document.createElement("button");
+        b.type = "button"; b.className = "ann-nav ann-goto-src";
+        b.textContent = `الانتقال إلى: ${next.textContent} ‹`;
+        b.addEventListener("click", () => next.click());
+        bodyEl.appendChild(b);
+      }
       return;
     }
-    const lazy = en.getAttribute("data-lazy-src");
-    if (lazy && !en.querySelector(".ann-entry-body")) {
+    if (en.getAttribute("data-lazy-src") && !en.querySelector(".ann-entry-body")) {
       bodyEl.textContent = "جارٍ تحميل التفسير…";
-      fetch(lazy)
-        .then((r) => (r.ok ? r.text() : ""))
-        .then((html) => {
-          if (html) {
-            const tpl = document.createElement("template");
-            tpl.innerHTML = html; // sanitized at build, same trust as v1 fragments
-            const loaded = tpl.content.querySelector(".ann-entry");
-            if (loaded && !en.querySelector(".ann-entry-body")) en.append(...loaded.childNodes);
-          }
-          if (seq === showSeq) renderEntryBody(en);
-        })
-        .catch(() => { if (seq === showSeq) renderEntryBody(en); });
+      fetchEntryBody(en).then(() => { if (seq === showSeq) renderEntryBody(en); });
       return;
     }
     renderEntryBody(en);
@@ -1069,7 +1128,50 @@ function enhanceProse() {
     dlBtn.hidden = false;
   }
 
+  // Pinned sources = which (up to 5) sources render as always-visible chips.
+  // Persisted by label; pinning a sixth drops the oldest pin.
+  const getPinned = (): string[] => {
+    try { const v = JSON.parse(localStorage.getItem(LS.annPinned) || "[]"); return Array.isArray(v) ? v : []; } catch { return []; }
+  };
+  let curEntries: HTMLElement[] = [];
+
+  function selectSource(i: number, remember = true) {
+    const en = curEntries[i];
+    if (!en) return;
+    srcDD.menu.querySelectorAll(".ann-dd-item").forEach((c, j) => c.setAttribute("aria-selected", String(j === i)));
+    renderSrcChips(i); // re-render, not just re-highlight: an unpinned pick still gets a visible chip
+    // Only an explicit pick should update the remembered preference — the
+    // initial render can itself be a forced fallback (this ayah lacks the
+    // remembered source), and that must not overwrite the preference for
+    // ayat that still have it.
+    if (remember) { lastSourceLabel = sourceLabel(en, i); localStorage.setItem(LS.annSource, lastSourceLabel); }
+    closeMenus();
+    showEntry(en);
+  }
+
+  function renderSrcChips(selectedIndex: number) {
+    srcRow.hidden = curEntries.length < 2;
+    srcRow.textContent = "";
+    if (srcRow.hidden) return;
+    const labels = curEntries.map((en, i) => sourceLabel(en, i));
+    const pinned = getPinned();
+    // no pins yet → first five sources as they come; pins → those, in list order
+    let idxs = (pinned.length ? labels.map((_, i) => i).filter((i) => pinned.includes(labels[i])) : labels.map((_, i) => i)).slice(0, 5);
+    if (selectedIndex >= 0 && !idxs.includes(selectedIndex)) idxs.push(selectedIndex);
+    for (const i of idxs) {
+      const chip = document.createElement("button");
+      chip.type = "button"; chip.className = "ann-chip"; chip.dataset.idx = String(i);
+      chip.setAttribute("aria-selected", String(i === selectedIndex));
+      if (curEntries[i].hasAttribute("data-missing")) chip.classList.add("is-missing");
+      chip.textContent = labels[i];
+      chip.title = labels[i];
+      chip.addEventListener("click", () => selectSource(i));
+      srcRow.appendChild(chip);
+    }
+  }
+
   function renderSourceMenu(entries: HTMLElement[], selectIndex = 0) {
+    curEntries = entries;
     srcDD.root.hidden = entries.length < 2;
     // A remembered source label wins over the numeric default whenever this
     // anchor lists it — even as a data-missing stub (the honest «ليس لهذا
@@ -1082,51 +1184,51 @@ function enhanceProse() {
     entries.forEach((en, i) => {
       if (entries.length < 2) return;
       const label = sourceLabel(en, i);
+      const row = document.createElement("div"); row.className = "ann-dd-row";
       const item = document.createElement("button");
       item.type = "button"; item.className = "ann-dd-item"; item.setAttribute("role", "option");
       item.setAttribute("aria-selected", String(i === initialIndex));
       if (en.hasAttribute("data-missing")) item.classList.add("is-missing");
       item.textContent = label;
-      item.addEventListener("click", () => {
-        srcDD.menu.querySelectorAll(".ann-dd-item").forEach((c) => c.setAttribute("aria-selected", "false"));
-        item.setAttribute("aria-selected", "true");
-        srcDD.label.textContent = label;
-        lastSourceLabel = label;
-        localStorage.setItem(LS.annSource, label);
-        closeMenus();
-        showEntry(en);
+      item.addEventListener("click", () => selectSource(i));
+      const pin = document.createElement("button");
+      pin.type = "button"; pin.className = "ann-pin"; pin.textContent = "📌";
+      pin.setAttribute("aria-label", `تثبيت ${label}`);
+      pin.setAttribute("aria-pressed", String(getPinned().includes(label)));
+      pin.addEventListener("click", () => {
+        let p = getPinned();
+        if (p.includes(label)) p = p.filter((x) => x !== label);
+        else { p.push(label); if (p.length > 5) p.shift(); } // ponytail: oldest pin drops; no "unpin something first" dialog
+        localStorage.setItem(LS.annPinned, JSON.stringify(p));
+        srcDD.menu.querySelectorAll<HTMLElement>(".ann-pin").forEach((el, j) =>
+          el.setAttribute("aria-pressed", String(p.includes(sourceLabel(entries[j], j)))));
+        const cur = [...srcDD.menu.querySelectorAll(".ann-dd-item")].findIndex((it) => it.getAttribute("aria-selected") === "true");
+        renderSrcChips(cur);
       });
-      srcDD.menu.appendChild(item);
+      row.append(item, pin);
+      srcDD.menu.appendChild(row);
     });
-    const initial = entries[initialIndex] || entries[0];
-    srcDD.label.textContent = sourceLabel(initial, initialIndex);
-    // Only an explicit click (above) should update the remembered preference —
-    // this render can itself be a forced fallback (this ayah lacks the
-    // remembered source), and that must not overwrite the preference for
-    // ayat that still have it.
-    showEntry(initial);
+    selectSource(initialIndex >= 0 ? initialIndex : 0, false); // also renders the chips
   }
 
-  function renderKindMenu(byKind: Map<string, HTMLElement[]>, kinds: string[]) {
-    kindDD.root.hidden = kinds.length < 2;
-    kindDD.menu.textContent = "";
+  function renderKindChips(byKind: Map<string, HTMLElement[]>, kinds: string[]) {
+    kindRow.hidden = kinds.length < 2;
+    kindRow.textContent = "";
     kinds.forEach((k) => {
-      const item = document.createElement("button");
-      item.type = "button"; item.className = "ann-dd-item"; item.dataset.kind = k; item.setAttribute("role", "option");
-      if (!byKind.get(k)!.some((en) => !en.hasAttribute("data-missing"))) item.classList.add("is-missing");
-      item.textContent = KIND_LABEL[k] || k;
-      item.addEventListener("click", () => {
+      const chip = document.createElement("button");
+      chip.type = "button"; chip.className = "ann-chip"; chip.dataset.kind = k;
+      if (!byKind.get(k)!.some((en) => !en.hasAttribute("data-missing"))) chip.classList.add("is-missing");
+      chip.textContent = KIND_LABEL[k] || k;
+      chip.addEventListener("click", () => {
         lastKind = k; localStorage.setItem(LS.annKind, k);
-        closeMenus();
         selectKind(byKind, k);
       });
-      kindDD.menu.appendChild(item);
+      kindRow.appendChild(chip);
     });
   }
 
   function selectKind(byKind: Map<string, HTMLElement[]>, kind: string, entryIndex = 0) {
-    kindDD.label.textContent = KIND_LABEL[kind] || kind;
-    kindDD.menu.querySelectorAll<HTMLElement>(".ann-dd-item").forEach((el) =>
+    kindRow.querySelectorAll<HTMLElement>(".ann-chip").forEach((el) =>
       el.setAttribute("aria-selected", String(el.dataset.kind === kind)));
     renderSourceMenu(byKind.get(kind)!, entryIndex);
   }
@@ -1168,17 +1270,40 @@ function enhanceProse() {
   // Quran packs are fetched on open, so hitting "next" cold means a network
   // round trip before the sheet can update — quietly warm both neighbors'
   // fragments right after the current one renders, so by the time the user
-  // actually clicks next/prev the fetch (usually) already happened.
+  // actually clicks next/prev the fetch (usually) already happened. Also warm
+  // whichever entry's BODY next/prev would actually land on (same default-pick
+  // logic as openSheet/renderSourceMenu) — the pack stub alone still leaves a
+  // "جارٍ تحميل…" flash for the per-source fetch underneath it.
+  function prefetchDefaultBody(pack: HTMLElement) {
+    const byKind = entriesByKind(pack);
+    const kinds = [...byKind.keys()].sort((a, b) => {
+      const ia = KIND_ORDER.indexOf(a), ib = KIND_ORDER.indexOf(b);
+      return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib);
+    });
+    const firstWithContent = kinds.find((k) => byKind.get(k)!.some((en) => !en.hasAttribute("data-missing")));
+    const kind = lastKind && byKind.has(lastKind) ? lastKind : (firstWithContent ?? kinds[0]);
+    const entries = kind ? byKind.get(kind) : undefined;
+    if (!entries?.length) return;
+    const remembered = lastSourceLabel ? entries.findIndex((en, i) => sourceLabel(en, i) === lastSourceLabel) : -1;
+    const firstPresent = entries.findIndex((en) => !en.hasAttribute("data-missing"));
+    const entry = entries[remembered >= 0 ? remembered : Math.max(firstPresent, 0)];
+    if (entry) fetchEntryBody(entry);
+  }
   function prefetchNeighbors(packId: string) {
     const ids = packIds();
     const i = ids.indexOf(packId);
     for (const targetId of [ids[i - 1], ids[i + 1]]) {
-      if (!targetId || document.getElementById(targetId)) continue;
+      if (!targetId) continue;
+      const existing = document.getElementById(targetId);
+      if (existing) { prefetchDefaultBody(existing); continue; }
       const srcBtn = document.querySelector<HTMLElement>(`[data-ann="${targetId}"][data-ann-src]`);
       const annSrc = srcBtn?.dataset.annSrc;
       if (!annSrc) continue;
       fetch(annSrc).then((r) => (r.ok ? r.text() : "")).then((html) => {
-        if (html && !document.getElementById(targetId)) document.body.insertAdjacentHTML("beforeend", html);
+        if (!html || document.getElementById(targetId)) return;
+        document.body.insertAdjacentHTML("beforeend", html);
+        const pack = document.getElementById(targetId);
+        if (pack) prefetchDefaultBody(pack);
       }).catch(() => {});
     }
   }
@@ -1213,7 +1338,7 @@ function enhanceProse() {
       const ia = KIND_ORDER.indexOf(a), ib = KIND_ORDER.indexOf(b);
       return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib);
     });
-    renderKindMenu(byKind, kinds);
+    renderKindChips(byKind, kinds);
     const firstWithContent = kinds.find((k) => byKind.get(k)!.some((en) => !en.hasAttribute("data-missing")));
     const initialKind = lastKind && byKind.has(lastKind) ? lastKind : (firstWithContent ?? kinds[0]);
     selectKind(byKind, initialKind, entryIndex);
@@ -1227,7 +1352,7 @@ function enhanceProse() {
   function close() {
     if (sheet) { sheet.hidden = true; sheet.classList.remove("is-shown"); }
     if (scrimEl) { scrimEl.hidden = true; scrimEl.classList.remove("is-shown"); }
-    if (kindDD) closeMenus();
+    closeMenus();
     if (activeVerse) { activeVerse.classList.remove("ann-active-verse"); activeVerse = null; }
   }
 

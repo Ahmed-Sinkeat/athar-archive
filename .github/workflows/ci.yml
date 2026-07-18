@@ -62,7 +62,7 @@ jobs:
       - name: Validate content (cross-entity, build-fail rules)
         run: pnpm validate:content
 
-      - name: Build (Astro + Pagefind + redirects)
+      - name: Build (Astro + fragments + redirects)
         run: pnpm build
 
       - name: Smoke test (per-template invariants over dist/)
@@ -130,18 +130,23 @@ jobs:
       # Loads whatever gen-search-index.ts produced above — normally a small
       # incremental diff (few hundred writes), occasionally a full rebuild
       # (~30k writes, first run or after a bulk import) against D1's
-      # 100k writes/day free quota. continue-on-error: a D1 hiccup (auth,
-      # quota, transient API error) shouldn't fail the whole CI run when the
-      # actual deploy (Worker + R2) above it already succeeded — search
-      # goes briefly stale, not the site.
+      # 100k writes/day free quota. gen-search-index.ts caps each SQL file at
+      # 5MB specifically so a big diff spans multiple files instead of one
+      # remote import stalling out — but this step used to run only
+      # dist/search-index/000.sql, a leftover from before that split existed,
+      # so any 001.sql+ from a large diff was silently never applied. Loop
+      # over every file, same as the local `search:index` pnpm script (which
+      # never had this bug — it already loops). continue-on-error: a D1
+      # hiccup (auth, quota, transient API error) shouldn't fail the whole CI
+      # run when the actual deploy (Worker + R2) above it already succeeded —
+      # search goes briefly stale, not the site.
       - name: Refresh search index (D1)
         if: github.ref == 'refs/heads/main' && github.event_name == 'push' && env.CLOUDFLARE_API_TOKEN != ''
         continue-on-error: true
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: d1 execute athar-search --remote -y --file dist/search-index/000.sql
+        run: |
+          for f in dist/search-index/*.sql; do
+            pnpm exec wrangler d1 execute athar-search --remote -y --file "$f"
+          done
 
   # Manual-only (workflow_dispatch), independent of the build job above — for
   # merging a book's freshly-extracted per-ayah tafsir notes into the shared

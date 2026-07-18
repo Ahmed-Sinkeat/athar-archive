@@ -10,17 +10,29 @@ type GroupBy = "book" | "topic" | "person";
 interface Mark { id: string; kind: Kind; text: string; note?: string; title?: string; section?: string; page?: string }
 interface Item extends Mark { path: string }
 interface SourceMeta { path: string; person: string; topics: string[]; title: string }
-// حفظ (bookmark a whole page — see marks.ts's toggleSaved) lives in its own
-// flat store, not aa-marks:<path>: it has no quote/offset, just needs to be
-// enumerable as one list.
-interface SavedPage { path: string; title: string; section?: string; savedAt: number }
-function loadSavedPages(): SavedPage[] {
-  try { return JSON.parse(localStorage.getItem("aa-saved") || "[]"); } catch { return []; }
+// حفظ (bookmark a specific scroll position — see marks.ts's addBookmark) lives
+// in its own flat store, not aa-marks:<path>: it has no quote/offset into the
+// page text, just needs to be enumerable as one list. Several entries can
+// share the same path (different places in the same long page).
+interface SavedPlace { id: string; path: string; title: string; section?: string; savedAt: number; scrollY: number; page?: string }
+function loadSavedPlaces(): SavedPlace[] {
+  try {
+    return (JSON.parse(localStorage.getItem("aa-saved") || "[]") as Partial<SavedPlace>[]).map((s) => ({
+      id: s.id ?? Math.random().toString(36).slice(2, 9),
+      path: s.path!, title: s.title ?? "", section: s.section, savedAt: s.savedAt ?? Date.now(),
+      scrollY: s.scrollY ?? 0, page: s.page,
+    }));
+  } catch { return []; }
 }
-function removeSavedPage(path: string) {
-  const list = loadSavedPages().filter((s) => s.path !== path);
+function removeSavedPlace(id: string) {
+  const list = loadSavedPlaces().filter((s) => s.id !== id);
   if (list.length) localStorage.setItem("aa-saved", JSON.stringify(list));
   else localStorage.removeItem("aa-saved");
+}
+function renameSavedPlace(id: string, title: string) {
+  const list = loadSavedPlaces();
+  const s = list.find((x) => x.id === id);
+  if (s) { s.title = title; localStorage.setItem("aa-saved", JSON.stringify(list)); }
 }
 
 // path → {person, topics}, built at build time (benefits.astro) since marks
@@ -66,7 +78,7 @@ const EMPTY_MSG: Record<TabKind, string> = {
   benefit: "لا فوائدَ بعد. ظلِّلْ نصًّا أثناء القراءة ثمّ اختر «فائدة» لإضافته هنا.",
   note: "لا ملاحظاتٍ بعد. ظلِّلْ نصًّا أثناء القراءة ثمّ اختر «ملاحظة» لإضافتها هنا.",
   mistake: "لا أخطاءَ بعد. ظلِّلْ نصًّا أثناء القراءة ثمّ اختر «خطأ» للإبلاغ عنه هنا.",
-  saved: "لا صفحاتٍ محفوظة بعد. من صفحة القراءة، اضغط «حفظ» لإضافتها هنا.",
+  saved: "لا مواضعَ محفوظة بعد. من صفحة القراءة، اضغط «حفظ» ثم «احفظ هذا الموضع» لإضافته هنا.",
 };
 
 function sendMistakes(items: Item[]) {
@@ -233,7 +245,7 @@ function render() {
   listEl.textContent = "";
   if (groupTabs) groupTabs.hidden = kind === "mistake" || kind === "saved";
   if (kind === "saved") {
-    const saved = loadSavedPages().sort((a, b) => b.savedAt - a.savedAt);
+    const saved = loadSavedPlaces().sort((a, b) => b.savedAt - a.savedAt);
     if (!saved.length) {
       const empty = document.createElement("div");
       empty.className = "lib-empty";
@@ -246,17 +258,29 @@ function render() {
     for (const s of saved) {
       const a = document.createElement("a");
       a.className = "lib-entry k-saved";
-      a.href = s.path;
+      a.href = `${s.path}#s=${s.id}`; // marks.ts scrolls to s.scrollY on arrival
       const title = document.createElement("div");
       title.className = "lib-entry-title";
-      title.textContent = s.section ? `${s.title} — ${s.section}` : s.title;
+      const label = s.page ? `صفحة ${s.page}` : s.section;
+      title.textContent = label ? `${s.title} — ${label}` : s.title;
       a.appendChild(title);
+      const rename = document.createElement("button");
+      rename.className = "lib-rename";
+      rename.type = "button";
+      rename.setAttribute("aria-label", "إعادة تسمية");
+      rename.textContent = "✎";
+      rename.addEventListener("click", (e) => {
+        e.preventDefault();
+        const next = prompt("اسم هذا الموضع:", s.title || "");
+        if (next != null && next.trim()) { renameSavedPlace(s.id, next.trim()); render(); }
+      });
+      a.appendChild(rename);
       const del = document.createElement("button");
       del.className = "lib-del";
       del.type = "button";
       del.setAttribute("aria-label", "إزالة من المحفوظات");
       del.textContent = "×";
-      del.addEventListener("click", (e) => { e.preventDefault(); removeSavedPage(s.path); render(); });
+      del.addEventListener("click", (e) => { e.preventDefault(); removeSavedPlace(s.id); render(); });
       a.appendChild(del);
       box.appendChild(a);
     }
@@ -363,10 +387,11 @@ async function importMarks(file: File) {
     }
     if (!Array.isArray(v)) continue;
     if (k === "aa-saved") {
-      // saved pages have no id — de-dup by path instead
-      const existing = loadSavedPages();
-      const seen = new Set(existing.map((s) => s.path));
-      const merged = [...existing, ...(v as SavedPage[]).filter((s) => !seen.has(s.path))];
+      // several places can share a path now — de-dup by id, not path; a
+      // pre-multi-bookmark export has no id, so fall back to path there
+      const existing = loadSavedPlaces();
+      const seen = new Set(existing.map((s) => s.id || s.path));
+      const merged = [...existing, ...(v as Partial<SavedPlace>[]).filter((s) => !seen.has(s.id || s.path!))];
       localStorage.setItem(k, JSON.stringify(merged));
       count += merged.length;
       continue;

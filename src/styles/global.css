@@ -361,6 +361,9 @@ a.dl-row-title:hover { color: var(--accent); }
 .pop-btns { display: flex; gap: 6px; }
 .pop-width-btns .icon-btn { width: auto; padding-inline: 10px; }
 .pop-width-btns .icon-btn[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
+/* desktop حفظ icon — same "has a saved place here" indicator as .tab-save below */
+button[data-action="page:save"].icon-btn[aria-pressed="true"] { color: var(--gold); }
+button[data-action="page:save"].icon-btn[aria-pressed="true"] svg { fill: var(--gold); }
 .pop-toggle { width: 100%; justify-content: flex-start; }
 /* تشكيل/ترقيم الأبيات/عرض الصفحات/الحواشي only mean anything while reading —
    on hub pages (home, /books, …) they were dead rows in the settings sheet.
@@ -1287,22 +1290,23 @@ html.hide-vnums .vnum { display: none; }
    styles. */
 .ann-sheet {
   position: fixed; z-index: 200; left: 0; right: 0; bottom: 0; top: auto;
-  max-height: 82vh; min-height: 200px;
-  overflow-y: auto; resize: none;
+  max-height: 88vh; min-height: 42vh;
+  overflow-y: auto; resize: none; overscroll-behavior: contain;
   background: var(--surface); border: 1px solid var(--rule-strong); border-bottom: none;
-  border-radius: 20px 20px 0 0; padding: 20px 20px 24px;
-  transform: translateY(100%); transition: transform 0.22s ease;
+  border-radius: 20px 20px 0 0; padding: 24px 20px calc(24px + env(safe-area-inset-bottom));
+  box-shadow: 0 -14px 40px rgba(0, 0, 0, 0.22);
+  transform: translateY(100%); transition: transform 0.28s cubic-bezier(0.32, 0.72, 0.28, 1);
   /* Warm left border accent — like a footnote rule */
   border-inline-start: 3px solid var(--verdigris);
 }
 .ann-sheet.is-shown { transform: translateY(0); }
 .ann-sheet[hidden] { display: none; }
-.ann-sheet-head { position: relative; cursor: default; touch-action: auto; }
-/* decorative drag-handle bar — dismissal itself is ✕/scrim/Escape, no swipe
-   gesture implemented, this just signals "sheet" the way native ones do */
+.ann-sheet-head { position: relative; cursor: default; touch-action: none; }
+/* drag-handle bar — on phones dragging the header up/down resizes the sheet
+   (wireDragAndResize); dismissal itself stays ✕/scrim/Escape */
 .ann-sheet-head::before {
-  content: ""; position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
-  width: 36px; height: 4px; border-radius: 3px; background: var(--rule-strong);
+  content: ""; position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+  width: 44px; height: 5px; border-radius: 3px; background: var(--rule-strong);
 }
 
 /* dimmed backdrop behind the mobile bottom sheet; tap to dismiss. No
@@ -1354,11 +1358,28 @@ html.hide-vnums .vnum { display: none; }
   transition: border-color 0.15s, color 0.15s;
 }
 .ann-sheet-close:hover { border-color: var(--accent-border); color: var(--accent); }
-/* kind picker (تفسير/الغريب/…) and source picker (ابن كثير/الطبري/…) — the
-   same small dropdown for both: a pill showing the current pick + a popover
-   list that scrolls internally. Scales from 2 items to 20+ without ever
-   changing shape, so one component replaces the old tab row + chip row. */
+/* kinds (تفسير/الغريب/…) and pinned sources are always-visible chip rows; the
+   dropdown remains only as the "كل المصادر" list where each source carries a
+   pin toggle (up to five pins → chips). */
 .ann-sheet-controls { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+.ann-chips { display: flex; flex-wrap: wrap; gap: 6px; flex-basis: 100%; }
+.ann-chips[hidden] { display: none; }
+/* source chips: one scrollable line — five names wrap badly in a 340px panel */
+.ann-srcs { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 2px; scrollbar-width: thin; }
+.ann-chip {
+  flex: none; font-family: var(--font-ui); font-size: 12.5px; font-weight: 600; color: var(--ink-soft);
+  background: var(--paper-2); border: 1px solid var(--rule-strong); border-radius: 999px;
+  padding: 5px 12px; cursor: pointer; max-width: 170px;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.ann-chip:hover { border-color: var(--accent-border); color: var(--ink); }
+.ann-chip[aria-selected="true"] { color: var(--accent); border-color: var(--accent-border); background: color-mix(in srgb, var(--accent) 10%, transparent); }
+.ann-chip.is-missing { opacity: 0.5; }
+.ann-sheet.ann-panel .ann-chip[aria-selected="true"] { color: var(--ink); border-color: var(--gold-soft); background: color-mix(in srgb, var(--gold) 16%, transparent); }
+.ann-dd-row { display: flex; align-items: center; }
+.ann-dd-row .ann-dd-item { flex: 1; min-width: 0; }
+.ann-pin { flex: none; background: none; border: none; cursor: pointer; font-size: 13px; padding: 4px 6px; opacity: 0.3; filter: grayscale(1); }
+.ann-pin[aria-pressed="true"] { opacity: 1; filter: none; }
 .ann-dd { position: relative; min-width: 0; }
 .ann-dd[hidden] { display: none; }
 .ann-dd-btn {
@@ -1388,6 +1409,7 @@ html.hide-vnums .vnum { display: none; }
 .ann-sheet-foot { display: flex; justify-content: space-between; margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--rule-strong); }
 .ann-nav { font-family: var(--font-ui); font-size: 14px; background: none; border: none; cursor: pointer; color: var(--accent); padding: 4px 8px; }
 .ann-nav:disabled { color: var(--ink-soft); opacity: 0.5; cursor: default; }
+.ann-goto-src { display: block; margin-top: 10px; padding-inline-start: 0; }
 
 /* ---------- تفسير panel (surah reader) ----------
    Same sheet machinery as شرح/حاشية/تخريج above, gold-dressed instead of
@@ -1483,6 +1505,33 @@ html[data-theme="noir"] ::highlight(aa-find)    { background-color: rgba(255, 15
 .aa-share-range input { width: 46px; font-family: var(--font-ui); font-size: 13px; color: var(--ink); background: var(--paper); border: 1px solid var(--rule); border-radius: var(--radius); padding: 4px 6px; text-align: center; }
 .aa-share-actions { display: flex; flex-wrap: wrap; gap: 6px; }
 .aa-share-actions button { flex: 1; justify-content: center; white-space: nowrap; }
+
+/* حفظ الموضع popover — one click/tap on phone or desktop, see marks.ts */
+.aa-saved-pop {
+  position: absolute; z-index: 80; min-width: 220px; max-width: 280px;
+  padding: 10px; background: var(--surface); border: 1px solid var(--rule-strong);
+  border-radius: var(--radius-lg); box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+.aa-saved-pop[hidden] { display: none; }
+.aa-saved-add {
+  width: 100%; font-family: var(--font-ui); font-size: 13px; color: var(--accent);
+  background: var(--paper); border: 1px solid var(--rule-strong); border-radius: var(--radius);
+  padding: 8px 10px; cursor: pointer; text-align: center;
+}
+.aa-saved-add:hover { border-color: var(--accent); }
+.aa-saved-list { display: grid; gap: 4px; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--rule); }
+.aa-saved-row { display: flex; align-items: center; gap: 4px; }
+.aa-saved-jump {
+  flex: 1; min-width: 0; text-align: start; font-family: var(--font-ui); font-size: 13px;
+  color: var(--ink); background: none; border: none; padding: 6px 4px; cursor: pointer;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.aa-saved-jump:hover { color: var(--accent); }
+.aa-saved-rename, .aa-saved-del {
+  flex: none; font-size: 13px; color: var(--ink-faint); background: none; border: none;
+  cursor: pointer; padding: 4px 6px; line-height: 1;
+}
+.aa-saved-rename:hover, .aa-saved-del:hover { color: var(--accent); }
 .aa-share-actions .aa-share-primary { background: var(--accent); color: var(--onbrand); border-color: var(--accent); }
 
 /* --- in-page find bar --- */
@@ -1507,9 +1556,10 @@ html[data-theme="noir"] ::highlight(aa-find)    { background-color: rgba(255, 15
 .lib-card:hover { border-color: var(--accent); }
 .lib-note { font-family: var(--font-ui); font-size: 14px; color: var(--ink-soft); margin-top: 9px; line-height: 1.8; }
 .lib-src { font-family: var(--font-ui); font-size: 12.5px; color: var(--ink-faint); margin-top: 9px; }
-.lib-del, .lib-share, .lib-copy { position: absolute; inset-block-start: 10px; background: transparent; border: 0; color: var(--ink-faint); cursor: pointer; line-height: 1; }
-.lib-del:hover, .lib-share:hover, .lib-copy:hover { color: var(--accent); }
+.lib-del, .lib-share, .lib-copy, .lib-rename { position: absolute; inset-block-start: 10px; background: transparent; border: 0; color: var(--ink-faint); cursor: pointer; line-height: 1; }
+.lib-del:hover, .lib-share:hover, .lib-copy:hover, .lib-rename:hover { color: var(--accent); }
 .lib-del { inset-inline-end: 12px; font-size: 18px; }
+.lib-rename { inset-inline-end: 34px; font-size: 13px; }
 .lib-share { inset-inline-end: 38px; font-size: 15px; }
 .lib-copy { inset-inline-end: 64px; font-size: 15px; }
 /* segmented pill control — one shared inset track, active tab lifts on a card+shadow */
@@ -1567,10 +1617,13 @@ html[data-theme="noir"] ::highlight(aa-find)    { background-color: rgba(255, 15
 .lib-entry.k-mistake .benefit-quote { color: rgba(155,89,182,1); }
 .lib-entry .benefit-quote { border: none; background: none; padding: 0; border-radius: 0; font-size: 15.5px; line-height: 1.95; }
 .lib-entry .lib-src { font-size: 11.5px; }
-.lib-entry .lib-del, .lib-entry .lib-share, .lib-entry .lib-copy { inset-block-start: 12px; width: 24px; height: 24px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; }
-.lib-entry .lib-del:hover, .lib-entry .lib-share:hover, .lib-entry .lib-copy:hover { background: var(--rule-strong); color: var(--ink); }
+.lib-entry .lib-del, .lib-entry .lib-share, .lib-entry .lib-copy, .lib-entry .lib-rename { inset-block-start: 12px; width: 24px; height: 24px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; }
+.lib-entry .lib-del:hover, .lib-entry .lib-share:hover, .lib-entry .lib-copy:hover, .lib-entry .lib-rename:hover { background: var(--rule-strong); color: var(--ink); }
 .lib-entry .lib-del { inset-inline-end: 10px; }
-.lib-entry .lib-share { inset-inline-end: 36px; }
+/* rename (saved-tab entries) and share (benefit/note/mistake entries) never
+   appear on the same entry — safe to share one slot */
+.lib-entry .lib-rename, .lib-entry .lib-share { inset-inline-end: 36px; }
+.lib-entry .lib-copy { inset-inline-end: 62px; }
 .lib-entry .lib-copy { inset-inline-end: 62px; }
 .lib-entry-title { font-family: var(--font-display); font-weight: 700; font-size: 15.5px; color: var(--ink); padding-inline-end: 34px; }
 /* --- paginated articles index --- */

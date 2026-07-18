@@ -373,32 +373,127 @@ function maybeResume() {
   window.addEventListener("touchmove", dismiss, { once: true, passive: true });
 }
 
-// --- حفظ: bookmark the current page for later (distinct from فائدة, which
-// saves a selected quote) — no selection needed, one tap saves the whole
-// book/poem/chapter/article/question. Own store, not aa-marks:<path>: a
-// bookmark isn't anchored to an offset inside the page, it just needs to be
+// --- حفظ: bookmark a specific PLACE for later (distinct from فائدة, which
+// saves a selected quote) — no selection needed, one tap saves the current
+// scroll position on the current book/poem/chapter/article/question. Several
+// places per page are allowed (page 30 and page 40 of the same continuous
+// route are two different scrollY values, not the same "page" in the old
+// one-bookmark-per-URL sense). Own store, not aa-marks:<path>: a bookmark
+// isn't anchored to an offset inside the page's text, it just needs to be
 // enumerable as a flat list (see library.ts's "المحفوظات" tab). ---
-interface Saved { path: string; title: string; section?: string; savedAt: number }
+interface Saved { id: string; path: string; title: string; section?: string; savedAt: number; scrollY: number; page?: string }
 const SAVED_KEY = "aa-saved";
 function loadSaved(): Saved[] {
-  try { return JSON.parse(localStorage.getItem(SAVED_KEY) || "[]"); } catch { return []; }
+  try {
+    // pre-multi-bookmark entries have no id/scrollY — keep them listed (title
+    // still works, jump just lands at the top) instead of dropping them.
+    return (JSON.parse(localStorage.getItem(SAVED_KEY) || "[]") as Partial<Saved>[]).map((s) => ({
+      id: s.id ?? Math.random().toString(36).slice(2, 9),
+      path: s.path!, title: s.title ?? "", section: s.section, savedAt: s.savedAt ?? Date.now(),
+      scrollY: s.scrollY ?? 0, page: s.page,
+    }));
+  } catch { return []; }
 }
-function isSaved(path = docId()): boolean {
-  return loadSaved().some((s) => s.path === path);
-}
-function toggleSaved() {
-  const path = docId();
-  const list = loadSaved();
-  const idx = list.findIndex((s) => s.path === path);
-  if (idx >= 0) list.splice(idx, 1);
-  else list.push({ path, title: pageTitle(), section: pageSection(), savedAt: Date.now() });
+function writeSaved(list: Saved[]) {
   if (list.length) localStorage.setItem(SAVED_KEY, JSON.stringify(list));
   else localStorage.removeItem(SAVED_KEY);
+}
+function savedForPath(path = docId()): Saved[] {
+  return loadSaved().filter((s) => s.path === path);
+}
+// Best-effort page label off whatever .page-sep the viewport is currently
+// over — nice-to-have for books (which have them); Quran/poems just fall
+// back to the plain title, which is still enough to tell entries apart.
+function currentPageLabel(): string | undefined {
+  const el = document.elementFromPoint(window.innerWidth / 2, 96) as HTMLElement | null;
+  const r = root();
+  return el && r ? pageAtNode(r, el) : undefined;
+}
+function addBookmark() {
+  const list = loadSaved();
+  list.push({
+    id: crypto.randomUUID?.() ?? Math.random().toString(36).slice(2, 9),
+    path: docId(), title: pageTitle(), section: pageSection(),
+    savedAt: Date.now(), scrollY: window.scrollY, page: currentPageLabel(),
+  });
+  writeSaved(list);
   syncSaveBtn();
 }
+function removeBookmark(id: string) { writeSaved(loadSaved().filter((s) => s.id !== id)); syncSaveBtn(); }
+function renameBookmark(id: string, title: string) {
+  const list = loadSaved();
+  const s = list.find((x) => x.id === id);
+  if (s) { s.title = title; writeSaved(list); }
+}
 function syncSaveBtn() {
-  const on = isSaved();
+  const on = savedForPath().length > 0;
   document.querySelectorAll<HTMLElement>('[data-action="page:save"]').forEach((b) => b.setAttribute("aria-pressed", String(on)));
+}
+
+// One click/tap, phone or desktop: opens a small popover under the save
+// button with "+ احفظ هذا الموضع" on top and this page's saved places below
+// it (jump / rename / remove) — no gesture to remember, no separate desktop
+// entry point needed.
+let savedPop: HTMLElement | null = null;
+function savedPopover(): HTMLElement {
+  if (savedPop && savedPop.isConnected) return savedPop;
+  savedPop = document.createElement("div");
+  savedPop.className = "aa-saved-pop";
+  savedPop.hidden = true;
+  document.body.appendChild(savedPop);
+  return savedPop;
+}
+function closeSavedPopover() { savedPopover().hidden = true; }
+function renderSavedPopover() {
+  const pop = savedPopover();
+  pop.textContent = "";
+  const addBtn = document.createElement("button");
+  addBtn.type = "button"; addBtn.className = "aa-saved-add";
+  addBtn.textContent = "+ احفظ هذا الموضع";
+  addBtn.addEventListener("click", () => { addBookmark(); renderSavedPopover(); });
+  pop.appendChild(addBtn);
+  const list = savedForPath().sort((a, b) => b.savedAt - a.savedAt);
+  if (!list.length) return;
+  const box = document.createElement("div"); box.className = "aa-saved-list";
+  for (const s of list) {
+    const row = document.createElement("div"); row.className = "aa-saved-row";
+    const jump = document.createElement("button");
+    jump.type = "button"; jump.className = "aa-saved-jump";
+    jump.textContent = s.page ? `${s.title || pageTitle()} — صفحة ${s.page}` : (s.title || pageTitle());
+    jump.addEventListener("click", () => { window.scrollTo({ top: s.scrollY, behavior: "smooth" }); closeSavedPopover(); });
+    const rename = document.createElement("button");
+    rename.type = "button"; rename.className = "aa-saved-rename"; rename.setAttribute("aria-label", "إعادة تسمية"); rename.textContent = "✎";
+    rename.addEventListener("click", () => {
+      const next = prompt("اسم هذا الموضع:", s.title || "");
+      if (next != null && next.trim()) { renameBookmark(s.id, next.trim()); renderSavedPopover(); }
+    });
+    const del = document.createElement("button");
+    del.type = "button"; del.className = "aa-saved-del"; del.setAttribute("aria-label", "حذف"); del.textContent = "×";
+    del.addEventListener("click", () => { removeBookmark(s.id); renderSavedPopover(); });
+    row.append(jump, rename, del);
+    box.appendChild(row);
+  }
+  pop.appendChild(box);
+}
+function positionSavedPopover(btn: HTMLElement) {
+  const r = btn.getBoundingClientRect();
+  const pop = savedPopover();
+  pop.style.top = `${r.bottom + window.scrollY + 6}px`;
+  pop.style.left = `${Math.max(8, Math.min(r.left, window.innerWidth - 260))}px`;
+}
+function toggleSavedPopover(btn: HTMLElement) {
+  const pop = savedPopover();
+  if (!pop.hidden) { closeSavedPopover(); return; }
+  renderSavedPopover();
+  positionSavedPopover(btn);
+  pop.hidden = false;
+}
+// cross-page jump from كناشة (/benefits): #s=<id> in the href
+function jumpToSavedHash() {
+  const m = location.hash.match(/^#s=([\w-]+)$/);
+  if (!m) return;
+  const s = loadSaved().find((x) => x.id === m[1]);
+  if (s) window.scrollTo({ top: s.scrollY, behavior: "smooth" });
 }
 
 // jump to a specific mark from /benefits (#m=<id>)
@@ -436,8 +531,11 @@ document.addEventListener("astro:before-swap", saveScroll); // SPA nav won't fir
 
 // expose the find opener for an optional button (data-action="page:find")
 document.addEventListener("click", (e) => {
-  if ((e.target as HTMLElement).closest('[data-action="page:find"]')) { e.preventDefault(); openFind(); }
-  if ((e.target as HTMLElement).closest('[data-action="page:save"]')) { e.preventDefault(); toggleSaved(); }
+  const t = e.target as HTMLElement;
+  if (t.closest('[data-action="page:find"]')) { e.preventDefault(); openFind(); return; }
+  const saveBtn = t.closest<HTMLElement>('[data-action="page:save"]');
+  if (saveBtn) { e.preventDefault(); toggleSavedPopover(saveBtn); return; }
+  if (savedPop && !savedPop.hidden && !t.closest(".aa-saved-pop")) closeSavedPopover();
 });
 
 // --- book chapter progress (تابع القراءة on the book's main page) — which
@@ -509,6 +607,8 @@ function onPage() {
   syncFindFab();
   maybeResume();
   jumpToHash();
+  jumpToSavedHash();
+  closeSavedPopover();
   recordBookProgress();
   recordRecent();
   showBookResume();
@@ -518,3 +618,4 @@ function onPage() {
 onPage();
 document.addEventListener("astro:page-load", onPage);
 window.addEventListener("hashchange", jumpToHash);
+window.addEventListener("hashchange", jumpToSavedHash);
