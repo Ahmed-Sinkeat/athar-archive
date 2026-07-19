@@ -478,15 +478,24 @@ function renderSavedPopover() {
 function positionSavedPopover(btn: HTMLElement) {
   const r = btn.getBoundingClientRect();
   const pop = savedPopover();
-  pop.style.top = `${r.bottom + window.scrollY + 6}px`;
+  // pop must already be unhidden (real layout) when this runs — the mobile
+  // tab bar's حفظ button sits at the very bottom of the viewport, so
+  // "below the button" (the desktop icon's placement, which has room under
+  // it) would render the popover entirely off-screen there. Flip above the
+  // button instead whenever there isn't room below.
+  const h = pop.getBoundingClientRect().height;
+  const top = (r.bottom + 6 + h > window.innerHeight)
+    ? r.top + window.scrollY - h - 6
+    : r.bottom + window.scrollY + 6;
+  pop.style.top = `${Math.max(8, top)}px`;
   pop.style.left = `${Math.max(8, Math.min(r.left, window.innerWidth - 260))}px`;
 }
 function toggleSavedPopover(btn: HTMLElement) {
   const pop = savedPopover();
   if (!pop.hidden) { closeSavedPopover(); return; }
   renderSavedPopover();
+  pop.hidden = false; // unhide first — positionSavedPopover needs real layout to measure height
   positionSavedPopover(btn);
-  pop.hidden = false;
 }
 // cross-page jump from كناشة (/benefits): #s=<id> in the href
 function jumpToSavedHash() {
