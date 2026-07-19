@@ -583,7 +583,7 @@ summary::-webkit-details-marker { display: none; }
 /* ---------- poem verses — Phase 4 reading tuning ---------- */
 .verses { margin-top: 8px; }
 .verse { padding: 16px 0; border-bottom: 1px solid var(--rule); scroll-margin-top: 90px; }
-.verse-inner { display: flex; align-items: flex-start; gap: 16px; }
+.verse-inner { display: flex; align-items: flex-start; justify-content: center; gap: 16px; }
 /* الشعر → copper dress (HANDOFF §1: one accent per tradition) */
 /* staggered ديوان layout (user's reference screenshot): plain «١ -» number at
    the verse's top-right, صدر right-aligned on its own line, عجز dropped below
@@ -635,12 +635,14 @@ summary::-webkit-details-marker { display: none; }
   background: color-mix(in srgb, var(--copper) 12%, transparent);
 }
 @media (max-width: 640px) {
-  /* same staggered layout, tighter type; long hemistichs scroll instead of wrap */
-  .verse-body { max-width: 100%; overflow-x: auto; }
+  /* same staggered layout as desktop (صدر right, عجز centered), just tighter
+     type — nowrap+scroll used to fight the centered عجز (a centered line
+     wider than its box overflows both edges, breaking the stagger), so let
+     it wrap like everything else instead of forcing a single scrollable line. */
+  .verse-body { max-width: 100%; }
   .sadr, .ajz {
     font-size: calc(19px * var(--reading-scale));
     line-height: 2;
-    white-space: nowrap;
   }
 }
 /* per-source tafsir entries (gen-tafsir-frags.ts v2) */

@@ -2,10 +2,10 @@
 title: "لامية الضمدي"
 status: published
 published_at: 2026-07-18
-person: al-nabighah-al-jadi
+person: al-damadi
 work_type: قصيدة
 topics: ["al-adab"]
-description: "قصيدة للنابغة الجعدي"
+description: "لامية ابن عمر الضمدي، استُسقي بها في قحطٍ شديد سنة 973هـ"
 ---
 ١ - إِن مسّنا الضّر أو ضاقت بنا الحيل … فلن يخيب لنا في ربنا أمل
 
