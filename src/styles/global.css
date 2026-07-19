@@ -635,15 +635,21 @@ summary::-webkit-details-marker { display: none; }
   background: color-mix(in srgb, var(--copper) 12%, transparent);
 }
 @media (max-width: 640px) {
-  /* same staggered layout as desktop (صدر right, عجز centered), just tighter
-     type — nowrap+scroll used to fight the centered عجز (a centered line
-     wider than its box overflows both edges, breaking the stagger), so let
-     it wrap like everything else instead of forcing a single scrollable line. */
-  .verse-body { max-width: 100%; }
+  /* tighter type; each hemistich stays one line (never wraps). عجز is
+     right-anchored (not fully centered like desktop — a centered nowrap line
+     that overflows shows its MIDDLE first, the start only reached by
+     scrolling right, which reads as broken) but inset from الصدر's own right
+     edge so the two hemistichs stay visually distinct instead of stacking
+     flush on top of each other. A long عجز always starts at this same inset
+     spot and only trails further left — overflow (rare) hides the tail end
+     only, never the start, so scrolling is optional, not required. */
+  .verse-body { max-width: 100%; overflow-x: auto; }
   .sadr, .ajz {
     font-size: calc(19px * var(--reading-scale));
     line-height: 2;
+    white-space: nowrap;
   }
+  .ajz { text-align: right; margin-inline-start: 12%; }
 }
 /* per-source tafsir entries (gen-tafsir-frags.ts v2) */
 .ann-dd-item.is-missing { opacity: 0.5; }

@@ -1,7 +1,39 @@
+import fs from "node:fs";
+import path from "node:path";
 import { defineConfig } from "astro/config";
 import cloudflare from "@astrojs/cloudflare";
 
 import sitemap from "@astrojs/sitemap";
+
+// Dev-only: serve dist/r2-upload/tafsir-frag/* over HTTP. The on-demand route
+// at src/pages/tafsir-frag/[surah]/[ayah].html.ts tries `node:fs` for this in
+// DEV, but on-demand routes run inside the Cloudflare Workers (workerd)
+// sandbox even locally — `fs.readFile` isn't implemented there
+// ("[unenv] fs.readFile is not implemented yet!"), so every fragment fetch
+// silently 404s. This plugin runs in the plain-Node Vite dev server (outside
+// workerd), so real fs access works, and it intercepts the request before it
+// ever reaches that broken branch — same fix shape as book-asset.ts's
+// assetText(), which fetches dist/client/* from the dev server itself instead
+// of reading it directly for the same underlying reason.
+function serveTafsirFragDev() {
+  return {
+    name: "serve-tafsir-frag-dev",
+    enforce: "pre" as const,
+    configureServer(server: { middlewares: { use: (fn: (req: any, res: any, next: () => void) => void) => void } }) {
+      server.middlewares.use((req, res, next) => {
+        if (!req.url?.startsWith("/tafsir-frag/")) return next();
+        const rel = decodeURIComponent(req.url.split("?")[0]!);
+        if (!/^\/tafsir-frag\/\d+\/\d+(\.[a-z0-9-]+)?\.html$/.test(rel)) return next();
+        const filePath = path.join(process.cwd(), "dist/r2-upload", rel);
+        fs.readFile(filePath, "utf-8", (err, html) => {
+          if (err) { res.statusCode = 404; res.end("Not found"); return; }
+          res.setHeader("content-type", "text/html; charset=utf-8");
+          res.end(html);
+        });
+      });
+    },
+  };
+}
 
 export default defineConfig({
   // static by default; reading routes opt into on-demand via `export const prerender = false`.
@@ -14,7 +46,10 @@ export default defineConfig({
   // scripts in a document where the OLD modules are still alive — two
   // annotation sheets, double listeners (seen live 2026-07-17). reader.ts
   // compares its compiled-in value against the meta and hard-reloads once.
-  vite: { define: { __AA_BUILD__: JSON.stringify(String(Date.now())) } },
+  vite: {
+    define: { __AA_BUILD__: JSON.stringify(String(Date.now())) },
+    plugins: [serveTafsirFragDev()],
+  },
 
   // prerenderEnvironment: "node" — prerender static routes in Node at build time so
   // they can still readBody() book/poem/article text from disk (fmLoader stores only
