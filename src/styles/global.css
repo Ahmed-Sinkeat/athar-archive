@@ -51,13 +51,21 @@
   --blue:    #2A4C8C;   /* حديث text inside «»  */
 
   /* ── shape & spacing discipline (HANDOFF §3: "Radii: 7-10px on cards/
-     controls, 99px pills... Borders over shadows — this design uses no
-     box-shadows"). Two radius steps + one pill, not the dozen ad-hoc values
-     that crept in per-component over time. ── */
+     controls, 99px pills"). Two radius steps + one pill, not the dozen
+     ad-hoc values that crept in per-component over time. Depth: borders at
+     rest — box-shadows exist only as interaction feedback (hover/press/
+     focus); see the interaction layer at the end of this file. ── */
   --radius:      8px;   /* controls, inputs, icon buttons, small chips */
   --radius-lg:   10px;  /* cards, popovers, panels, sheets */
   --radius-pill: 99px;
   --sp-1: 4px; --sp-2: 8px; --sp-3: 12px; --sp-4: 16px; --sp-5: 24px; --sp-6: 32px; --sp-7: 48px;
+
+  /* ── motion & depth (Claude Design "الحركة والتفاعل", project 1dadc31f) ── */
+  --ease:        cubic-bezier(.25,.8,.35,1);   /* smooth glide — hovers, color */
+  --ease-spring: cubic-bezier(.34,1.5,.64,1);  /* springy — switch thumbs, tabs */
+  --ease-fluid:  cubic-bezier(.16,1,.3,1);     /* decelerating — sheets, drawers */
+  --t-fast: .15s; --t-base: .22s; --t-sheet: .3s;
+  --shdw: #26190F;      /* feedback-shadow base color (per theme below) */
 
   /* ── legacy names aliased to the tokens above — every existing
      component keeps working unchanged and re-themes automatically.
@@ -86,6 +94,7 @@ html[data-theme="noir"] {
   --line: rgba(242,236,221,.12); --line2: rgba(242,236,221,.28);
   --brand: #D4A72C; --brand2: #E8C158; --onbrand: #14120A;
   --gold: #D4A72C; --green: #6FBF9B; --copper: #CC9A6E; --blue: #7FA6E8;
+  --shdw: #000000; /* ink is cream here — a light shadow reads as glow */
 }
 /* mono — crisp cool white + lapis-blue chrome (HANDOFF.md §1: NOT a
    grayscale/Notion theme; bg/card must be visibly distinct or it's the
@@ -96,6 +105,7 @@ html[data-theme="mono"] {
   --line: rgba(27,32,40,.11); --line2: rgba(27,32,40,.24);
   --brand: #1E4E8C; --brand2: #173E70; --onbrand: #F6FAFF;
   --gold: #8E6A1C; --green: #2A5C49; --copper: #8C4A2E; --blue: #2A4C8C;
+  --shdw: #1B2028;
 }
 
 * { box-sizing: border-box; }
@@ -190,7 +200,10 @@ img { max-width: 100%; }
   transition: background 0.15s;
 }
 .btn-accent:hover { background: var(--accent); border-color: var(--accent); color: var(--onbrand); }
-.btn-danger { background: #c0392b; border-color: #c0392b; color: #fff; margin-inline-start: 8px; }
+/* mockup danger: outline at rest, fills on hover — destructive actions
+   shouldn't shout until aimed at */
+.btn-danger { background: transparent; border: 1.5px solid #A6392C; color: #A6392C; margin-inline-start: 8px; }
+.btn-danger:hover { background: #A6392C; border-color: #A6392C; color: #FBF3EC; }
 .pill {
   font-family: var(--font-ui); font-size: 12.5px; color: var(--ink-faint);
   border: 1px solid var(--rule-strong); border-radius: var(--radius-pill); padding: 4px 13px;
@@ -303,9 +316,10 @@ img { max-width: 100%; }
   background: transparent; border: 1px solid var(--rule-strong); border-radius: var(--radius);
   padding: 7px 12px; cursor: pointer; display: inline-flex; align-items: center; gap: 7px; line-height: 1;
 }
-.toggle-btn[aria-pressed="true"] { color: var(--accent); border-color: var(--accent); }
+/* active chips fill solid (mockup رقائق التصفية / وضع التسميع) */
+.toggle-btn[aria-pressed="true"] { color: var(--onbrand); background: var(--accent-solid); border-color: var(--accent-solid); }
 .toggle-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--ink-faint); }
-.toggle-btn[aria-pressed="true"] .toggle-dot { background: var(--accent); }
+.toggle-btn[aria-pressed="true"] .toggle-dot { background: var(--onbrand); }
 
 [data-dl-busy] { opacity: 0.6; pointer-events: none; }
 /* /downloads page rows (popover version retired) */
@@ -337,6 +351,11 @@ a.dl-row-title:hover { color: var(--accent); }
   position: absolute; top: calc(100% + 8px); inset-inline-end: 0; z-index: 50; min-width: 230px;
   background: var(--surface); border: 1px solid var(--rule-strong); border-radius: var(--radius-lg);
   padding: 12px; display: grid; gap: 9px;
+  transition: opacity var(--t-fast) var(--ease), transform var(--t-base) var(--ease-fluid);
+}
+/* entrance only — exit snaps when [hidden] lands, which is fine for a dismiss */
+@starting-style {
+  .popover:not([hidden]) { opacity: 0; transform: translateY(-6px); }
 }
 .popover[hidden] { display: none; }
 .pop-title { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.2em; color: var(--ink-faint); }
@@ -360,7 +379,8 @@ a.dl-row-title:hover { color: var(--accent); }
 .pop-label { font-size: 13px; color: var(--ink-soft); }
 .pop-btns { display: flex; gap: 6px; }
 .pop-width-btns .icon-btn { width: auto; padding-inline: 10px; }
-.pop-width-btns .icon-btn[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
+/* segmented control: the picked width fills solid (mockup عرض النص) */
+.pop-width-btns .icon-btn[aria-pressed="true"] { background: var(--accent-solid); border-color: var(--accent-solid); color: var(--onbrand); }
 /* desktop حفظ icon — same "has a saved place here" indicator as .tab-save below */
 button[data-action="page:save"].icon-btn[aria-pressed="true"] { color: var(--gold); }
 button[data-action="page:save"].icon-btn[aria-pressed="true"] svg { fill: var(--gold); }
@@ -386,7 +406,7 @@ button[data-action="page:save"].icon-btn[aria-pressed="true"] svg { fill: var(--
   max-height: 75vh; overflow-y: auto;
   background: var(--surface); border: 1px solid var(--rule-strong); border-radius: var(--radius-lg);
   opacity: 0; visibility: hidden; transform: translateY(-6px);
-  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+  transition: opacity var(--t-fast) var(--ease), transform var(--t-base) var(--ease-fluid), visibility var(--t-base);
   padding: 10px; display: grid; gap: 2px;
 }
 .drawer[data-open] { opacity: 1; visibility: visible; transform: translateY(0); }
@@ -1303,7 +1323,7 @@ html.hide-vnums .vnum { display: none; }
   background: var(--surface); border: 1px solid var(--rule-strong); border-bottom: none;
   border-radius: 20px 20px 0 0; padding: 24px 20px calc(24px + env(safe-area-inset-bottom));
   box-shadow: 0 -14px 40px rgba(0, 0, 0, 0.22);
-  transform: translateY(100%); transition: transform 0.28s cubic-bezier(0.32, 0.72, 0.28, 1);
+  transform: translateY(100%); transition: transform var(--t-sheet) var(--ease-fluid);
   /* Warm left border accent — like a footnote rule */
   border-inline-start: 3px solid var(--verdigris);
 }
@@ -1321,9 +1341,13 @@ html.hide-vnums .vnum { display: none; }
    backdrop at the docked-sidebar breakpoint (page stays interactive). */
 .ann-scrim {
   position: fixed; inset: 0; z-index: 199; background: rgba(20, 15, 5, .38);
-  opacity: 0; transition: opacity 0.22s ease; pointer-events: none;
+  opacity: 0; pointer-events: none;
+  /* blur is transitioned itself — element opacity doesn't reliably fade a
+     backdrop-filter, so a static blur would pop in */
+  backdrop-filter: blur(0); -webkit-backdrop-filter: blur(0);
+  transition: opacity 0.22s ease, backdrop-filter 0.28s ease, -webkit-backdrop-filter 0.28s ease;
 }
-.ann-scrim.is-shown { opacity: 1; pointer-events: auto; }
+.ann-scrim.is-shown { opacity: 1; pointer-events: auto; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
 .ann-scrim[hidden] { display: none; }
 
 /* docked sidebar on wide screens — left edge of the viewport (not
@@ -2203,4 +2227,153 @@ html.hide-footnotes .prose section.footnotes { display: none; }
    room at the very top so the header doesn't kiss the status bar */
 @media (display-mode: standalone) and (max-width: 640px) {
   .topbar-bar { padding-top: max(env(safe-area-inset-top), 8px); }
+}
+
+/* ============================================================
+   Interaction layer — Claude Design "الحركة والتفاعل"
+   (project 1dadc31f: Interaction.dc + Screens.dc).
+   Depth is FEEDBACK, not decoration: shadows appear only on
+   hover/press/focus; cards, panels and sheets stay flat +
+   bordered at rest. Small tactile controls (switch tracks)
+   keep a faint always-on inset "grip" — that exception does
+   not extend to cards. Spring easing only on switches/tabs;
+   everything else glides. Shadow tint follows the content-type
+   accent where the element declares one (gold Quran, green
+   Hadith, copper Poetry, blue People), else stays neutral ink.
+   Lives at the end of the file so its same-specificity rules
+   win cascade ties against the component rules above.
+   prefers-reduced-motion: the global kill switch at the top of
+   this file already flattens all of it.
+   ============================================================ */
+
+/* ---- buttons: lift on hover, sink on press ---- */
+.btn, .btn-accent, .btn-danger {
+  transition: background var(--t-fast) var(--ease), color var(--t-fast) var(--ease),
+    border-color var(--t-fast) var(--ease), transform var(--t-fast) var(--ease),
+    box-shadow var(--t-fast) var(--ease);
+}
+.btn:hover { transform: translateY(-1px); box-shadow: 0 3px 10px color-mix(in srgb, var(--shdw) 10%, transparent); }
+.btn:active { transform: translateY(0); background: var(--inset); box-shadow: inset 0 2px 5px color-mix(in srgb, var(--shdw) 18%, transparent); }
+.btn-accent:hover { transform: translateY(-1px); box-shadow: 0 6px 18px color-mix(in srgb, var(--brand) 34%, transparent); }
+.btn-accent:active { transform: translateY(1px) scale(.98); background: var(--accent-solid); box-shadow: inset 0 2px 6px color-mix(in srgb, var(--shdw) 35%, transparent); }
+.btn-danger:hover { transform: translateY(-1px); box-shadow: 0 4px 14px color-mix(in srgb, #A6392C 28%, transparent); }
+.btn-danger:active { transform: translateY(1px); background: #8A2F24; box-shadow: inset 0 2px 6px color-mix(in srgb, var(--shdw) 40%, transparent); }
+:where(.btn, .btn-accent, .btn-danger, .icon-btn, .toggle-btn):disabled {
+  opacity: .45; cursor: not-allowed; transform: none; box-shadow: none;
+}
+
+.icon-btn {
+  transition: color var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease),
+    background var(--t-fast) var(--ease), transform var(--t-fast) var(--ease),
+    box-shadow var(--t-fast) var(--ease);
+}
+.icon-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 12px color-mix(in srgb, var(--shdw) 16%, transparent); }
+.icon-btn:active { transform: translateY(1px); box-shadow: inset 0 2px 5px color-mix(in srgb, var(--shdw) 22%, transparent); }
+
+/* audio play button — same press language, copper identity */
+.audio-toggle { transition: transform var(--t-fast) var(--ease), box-shadow var(--t-fast) var(--ease); }
+.audio-toggle:hover { transform: translateY(-1px); box-shadow: 0 6px 18px color-mix(in srgb, var(--copper) 36%, transparent); }
+.audio-toggle:active { transform: translateY(1px) scale(.96); box-shadow: inset 0 3px 8px color-mix(in srgb, var(--shdw) 40%, transparent); }
+
+/* ---- cards: flat at rest, lift + accent-tinted shadow on hover ---- */
+.card, .person-card, .recent-card, .lib-card {
+  transition: border-color var(--t-fast) var(--ease), background var(--t-fast) var(--ease),
+    transform var(--t-base) var(--ease), box-shadow var(--t-base) var(--ease);
+}
+.card:hover, .person-card:hover, .recent-card:hover, .lib-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 26px color-mix(in srgb, var(--lift-tint, var(--shdw)) 22%, transparent);
+}
+.card:active, .person-card:active, .recent-card:active, .lib-card:active {
+  transform: translateY(-1px) scale(.99);
+  box-shadow: 0 4px 10px color-mix(in srgb, var(--lift-tint, var(--shdw)) 16%, transparent);
+}
+.person-card { --lift-tint: var(--blue); }
+.browse4-card { transition: border-color var(--t-fast) var(--ease), transform var(--t-base) var(--ease), box-shadow var(--t-base) var(--ease); }
+.browse4-card:hover { transform: translateY(-3px); box-shadow: 0 10px 26px color-mix(in srgb, var(--card-accent, var(--shdw)) 24%, transparent); }
+.browse4-card:active { transform: translateY(-1px) scale(.99); box-shadow: 0 4px 10px color-mix(in srgb, var(--card-accent, var(--shdw)) 18%, transparent); }
+
+/* list rows are rows, not cards: nudge forward (RTL: left, toward the
+   chevron) instead of lifting off a stack they visually belong to */
+.flat-list .card:hover, .flat-list .card:active { transform: translateX(-3px); box-shadow: none; }
+.latest-row, .flat-row { transition: background var(--t-fast) var(--ease), transform var(--t-fast) var(--ease); }
+.latest-row:hover, .flat-row:hover { transform: translateX(-3px); }
+
+/* ---- chip family: soft shadow feedback on top of existing color hovers ---- */
+.chip, .pill-link, .ghost-pill, .ann-chip, .chap-chip, .sort-btn, .toggle-btn,
+.masail-view-toggle button, .browse-filter-chips button, .search-scope-chip,
+.ann-dl-tafsir, .ann-dd-btn, .downloads-all-btn, .card-dl, .pagination .page-btn, .theme-swatch {
+  transition: background var(--t-fast) var(--ease), color var(--t-fast) var(--ease),
+    border-color var(--t-fast) var(--ease), transform var(--t-fast) var(--ease),
+    box-shadow var(--t-fast) var(--ease);
+}
+.chip:hover, .pill-link:hover, .ghost-pill:hover, .ann-chip:hover, .chap-chip:hover,
+.sort-btn:hover, .toggle-btn:hover, .masail-view-toggle button:hover,
+.browse-filter-chips button:hover, .search-scope-chip:hover,
+.ann-dl-tafsir:hover, .ann-dd-btn:hover, .downloads-all-btn:hover, .card-dl:hover, .pagination .page-btn:hover {
+  box-shadow: 0 3px 10px color-mix(in srgb, var(--shdw) 12%, transparent);
+}
+.theme-swatch:hover { transform: translateY(-1px); box-shadow: 0 3px 9px color-mix(in srgb, var(--shdw) 25%, transparent); }
+
+/* ---- desktop top nav: press feedback on the link pills ---- */
+.topnav a {
+  transition: color var(--t-fast) var(--ease), background var(--t-fast) var(--ease),
+    transform var(--t-fast) var(--ease);
+}
+.topnav a:active { transform: translateY(1px) scale(.97); }
+
+/* ---- bottom tab bar: springy nudge; القرآن lights up gold (content-type
+   activation color — other tabs keep the maroon default) ---- */
+.tabbar a, .tabbar button {
+  transition: color var(--t-fast) var(--ease), transform var(--t-base) var(--ease-spring);
+}
+.tabbar a:active, .tabbar button:active { transform: translateY(1px) scale(.95); }
+.tabbar a[href="/quran"][aria-current="page"] { color: var(--gold); }
+
+/* ---- settings toggles → real switches (springy thumb on an inset-"grip"
+   track). Scoped to .pop-toggle: standalone .toggle-btn chips elsewhere
+   (تسميع, تنزيل) keep their pill look and the filled active state above. ---- */
+.pop-toggle { border: none; background: none; padding: 9px 2px; font-size: 13px; font-weight: 600; color: var(--ink); }
+.pop-toggle:hover { box-shadow: none; }
+.pop-toggle[aria-pressed="true"] { background: none; border: none; color: var(--ink); }
+.pop-toggle .toggle-dot {
+  order: 2; margin-inline-start: auto; flex: none; position: relative;
+  width: 40px; height: 23px; border-radius: var(--radius-pill);
+  background: var(--inset);
+  box-shadow: inset 0 2px 4px color-mix(in srgb, var(--shdw) 12%, transparent);
+  transition: background var(--t-base) var(--ease);
+}
+.pop-toggle .toggle-dot::after {
+  content: ""; position: absolute; top: 2.5px; inset-inline-start: 2.5px;
+  width: 18px; height: 18px; border-radius: 50%;
+  background: var(--card); border: 1px solid var(--line2);
+  box-shadow: 0 1px 3px color-mix(in srgb, var(--shdw) 25%, transparent);
+  transition: transform var(--t-base) var(--ease-spring);
+}
+.pop-toggle[aria-pressed="true"] .toggle-dot { background: var(--accent-solid); }
+/* RTL: thumb rests at the inline start (right), springs 17px leftward when on */
+.pop-toggle[aria-pressed="true"] .toggle-dot::after { transform: translateX(-17px); }
+
+/* ---- settings on phones: bottom sheet, not a dropdown (mockup شريحة
+   الإعدادات) — 300ms fluid slide-up, dim scrim via the 100vmax-spread
+   shadow trick (no extra backdrop element; outside-tap dismissal already
+   exists in reader.ts). ---- */
+@media (max-width: 640px) {
+  .settings-pop {
+    position: fixed; top: auto; inset-inline: 0; bottom: 0; max-width: none; max-height: 82vh;
+    border-radius: 16px 16px 0 0; border-bottom: none; z-index: 80;
+    padding: 22px 20px calc(20px + env(safe-area-inset-bottom));
+    box-shadow: 0 0 0 100vmax rgba(38, 25, 15, .4);
+    transition: transform var(--t-sheet) var(--ease-fluid);
+  }
+  .settings-pop::before {
+    content: ""; position: absolute; top: 8px; left: 50%; transform: translateX(-50%);
+    width: 36px; height: 4px; border-radius: var(--radius-pill); background: var(--line2);
+  }
+  @starting-style {
+    .settings-pop:not([hidden]) { opacity: 1; transform: translateY(100%); }
+  }
+  /* topbar auto-hide applies a transform, which would turn .topbar-bar into
+     the fixed sheet's containing block mid-scroll and yank it off-screen */
+  .topbar:has(.settings-pop:not([hidden])) .topbar-bar { transform: none !important; }
 }

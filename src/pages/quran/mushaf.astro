@@ -114,11 +114,19 @@ const juzOptions = JUZ_START_PAGE.map((page, i) => ({ n: i + 1, href: pageHref(p
     background: var(--surface);
     text-decoration: none;
     text-align: center;
-    transition: background 0.15s, border-color 0.15s;
+    transition: background 0.15s, border-color 0.15s,
+      transform var(--t-base) var(--ease), box-shadow var(--t-base) var(--ease);
   }
+  /* interaction layer (global.css): lift + gold-tinted feedback shadow */
   .surah-card:hover {
     background: color-mix(in srgb, var(--gold) 8%, var(--surface));
     border-color: var(--gold-soft);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 26px color-mix(in srgb, var(--gold) 24%, transparent);
+  }
+  .surah-card:active {
+    transform: translateY(-1px) scale(.99);
+    box-shadow: 0 4px 10px color-mix(in srgb, var(--gold) 18%, transparent);
   }
   /* rotated-square number ornament (HANDOFF §5, القرآن hub) */
   .surah-num {
