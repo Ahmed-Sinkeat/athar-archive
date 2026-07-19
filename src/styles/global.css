@@ -420,7 +420,9 @@ button[data-action="page:save"].icon-btn[aria-pressed="true"] svg { fill: var(--
 .drawer .drawer-find { background: none; width: 100%; font-family: inherit; text-align: start; cursor: pointer; }
 .drawer-downloads { display: flex; align-items: center; gap: 10px; border-top: 1px solid var(--rule); margin-top: 6px; padding-top: 14px; }
 a.icon-btn { text-decoration: none; }
-.sr-only, .hero-title { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+/* hero title is typeset now (was sr-only behind a calligraphy image) */
+.hero-title { font-family: var(--f-disp); font-weight: 700; font-size: clamp(42px, 6.5vw, 64px); line-height: 1.15; color: var(--ink); margin: 0; }
 .u-center-text { text-align: center; }
 .drawer-search { display: flex; align-items: center; gap: 9px; border: 1px solid var(--rule-strong); margin-bottom: 6px; }
 
@@ -1006,36 +1008,26 @@ body.has-audio-bar .reading-pad, body.has-audio-bar .wrap-matn { padding-bottom:
 .bar { height: 6px; background: var(--paper-2); border-radius: 4px; margin-top: 16px; overflow: hidden; }
 .bar > span { display: block; height: 100%; background: var(--accent); border-radius: 4px; }
 
-/* ---------- home — manuscript-plate redesign ---------- */
+/* ---------- home hero — single flat card (Screens.dc mockup) ----------
+   Replaced the double-border manuscript plate + calligraphy image with one
+   bordered card and a typeset Amiri title. .plate-outer/.plate-inner stay
+   defined below this file's remit — the quran surah plate still uses them. */
 .hero { max-width: 1200px; margin: 0 auto; padding: 36px 28px 0; }
-/* double-border manuscript plate: outer --line2, inner --line, per HANDOFF §4 */
+/* double-border manuscript plate — still used by quran/[surah].astro */
 .plate-outer { border: 1px solid var(--line2); padding: 7px; border-radius: 2px; }
 .plate-inner { border: 1px solid var(--line); border-radius: 1px; background: var(--card); }
-.hero-inner { max-width: 620px; margin: 0 auto; padding: clamp(48px, 7vw, 64px) 28px clamp(40px, 6vw, 56px); text-align: center; }
-
+.hero-card {
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius-lg);
+  padding: clamp(40px, 6vw, 56px) 28px clamp(36px, 5vw, 48px);
+  display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px;
+}
 .hero-eyebrow {
-  font-family: var(--f-ui); font-size: 11.5px; font-weight: 600; letter-spacing: 0.14em;
-  color: var(--ink3); margin-bottom: 22px;
-}
-
-/* Calligraphy image — the site name rendered as calligraphy art */
-.hero-calligraphy { display: block; margin: 0 auto; }
-.hero-calligraphy-img {
-  width: clamp(190px, 34vw, 340px); height: auto;
-  /* tint the black ink to the current ink color via CSS filter */
-  filter: brightness(0) saturate(0) invert(0);
-  opacity: 0.88;
-  display: block; margin: 0 auto;
-}
-/* In dark mode, invert the black ink to cream */
-html[data-theme="noir"] .hero-calligraphy-img {
-  filter: brightness(0) saturate(0) invert(1);
-  opacity: 0.82;
+  font-family: var(--f-ui); font-size: 12px; font-weight: 600; letter-spacing: 0.16em;
+  color: var(--gold);
 }
 .hero-lede {
-  font-family: var(--font-serif); font-size: clamp(16px, 2.2vw, 20px);
-  line-height: 1.85; color: var(--ink-soft); max-width: 42ch;
-  margin: 16px auto 0; text-wrap: pretty;
+  font-family: var(--f-ui); font-size: 15px; line-height: 1.8;
+  color: var(--ink2); max-width: 520px; margin: 0; text-wrap: pretty;
 }
 .divider-orn { margin-top: 12px; margin-bottom: 22px; display: flex; align-items: center; justify-content: center; gap: 16px; color: var(--gold); font-size: 17px; }
 
@@ -1046,7 +1038,10 @@ html[data-theme="noir"] .hero-calligraphy-img {
   text-decoration: none; display: inline-block; cursor: pointer; transition: border-color .15s, color .15s;
 }
 .ghost-pill:hover { border-color: var(--brand); color: var(--brand); }
-.hero-pills { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-top: 18px; }
+/* hero quick links: borderless ghost buttons (mockup تصفّح الأرشيف / عن الموقع) */
+.hero-pills { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
+.hero-pills .ghost-pill { border-color: transparent; font-size: 13px; font-weight: 600; padding: 8px 16px; }
+.hero-pills .ghost-pill:hover { background: var(--inset); color: var(--ink); border-color: transparent; box-shadow: none; }
 
 /* section header: Amiri h2 + hairline rule filling remaining width (HANDOFF §2) */
 .section-head { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
@@ -2075,8 +2070,10 @@ html.hide-footnotes .prose section.footnotes { display: none; }
 
   /* ════ home (1a) ════ */
   .hero { padding: 14px 16px 0; }
-  .hero-eyebrow, .hero-lede, .hero-calligraphy-img, .divider-orn, .hero-pills { display: none; }
-  .hero .plate-outer, .hero .plate-inner { border: none; padding: 0; background: none; box-shadow: none; }
+  .hero-eyebrow, .hero-lede, .divider-orn, .hero-pills { display: none; }
+  /* app layout keeps just the title — strip the card chrome */
+  .hero-card { border: none; padding: 10px 0 0; background: none; gap: 8px; }
+  .hero-title { font-size: 34px; }
   /* home search hidden on mobile: the ONE search entry point is the bottom
      tab bar — a second big pill here read as a duplicate */
   .hero form { display: none; }

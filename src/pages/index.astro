@@ -108,46 +108,27 @@ const latest = [
 ---
 <Base title="أهل الأثر | أرشيف المواد العلمية" description="موقعٌ يُعنى بجمع التراث الإسلامي على مرِّ العصور، مع سهولة البحث والقراءة." activeNav="home" jsonLd={websiteLd()}>
   <section class="hero">
-    <div class="plate-outer">
-      <div class="plate-inner">
-        <div class="hero-inner">
-          <div class="hero-eyebrow">أرشيفُ المواد العلمية</div>
-          <h1 class="hero-title">أهل الأثر</h1>
+    {/* single flat card, typeset Amiri title (Screens.dc home) — replaced the
+        double-border plate + calligraphy image */}
+    <div class="hero-card">
+      <div class="hero-eyebrow">أرشيفُ المواد العلمية</div>
+      <h1 class="hero-title">أهل الأثر</h1>
+      <p class="hero-lede">موقعٌ يُعنى بجمع التراثِ الإسلامي على مرِّ العصور، مع سهولةِ البحث والقراءة.</p>
 
-          {/* One asset, re-tinted via the data-theme CSS filter below — the site's
-              theme (paper/noir/mono) is independent of the OS's prefers-color-scheme,
-              so a <picture><source media="prefers-color-scheme"> swap would show the
-              wrong variant whenever the two disagree (e.g. OS dark + site "paper"). */}
-          <img
-            src="/calligraphy/logo_light.webp"
-            alt=""
-            class="hero-calligraphy hero-calligraphy-img"
-            width="380"
-            height="312"
-            loading="eager"
-            decoding="async"
-          />
-
-          <p class="hero-lede">موقعٌ يُعنى بجمع التراثِ الإسلامي على مرِّ العصور، مع سهولةِ البحث والقراءة.</p>
-
-          <div class="divider-orn" aria-hidden="true">۞</div>
-
-          <form action="/search" method="get" class="u5fbcbc5">
-            <div class="u537b78d">
-              <input name="q" type="text" placeholder="ابحث في المتون والمنظومات والدروس والفوائد…" class="u38ae86c" />
-              <button type="button" class="icon-btn hero-filter" data-action="search:filter" aria-label="تصفية البحث" aria-expanded="false">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
-              </button>
-              <button class="btn-accent u4964676" type="submit">بحث</button>
-            </div>
-          </form>
-
-          <div class="hero-pills">
-            <a class="ghost-pill" href="/graph">شبكة المعرفة</a>
-            <a class="ghost-pill" href="/benefits">كُناشة الفوائد</a>
-            <a class="ghost-pill" href="/roadmap">طريق طلب العلم</a>
-          </div>
+      <form action="/search" method="get" class="u5fbcbc5">
+        <div class="u537b78d">
+          <input name="q" type="text" placeholder="ابحث في المتون والمنظومات والدروس والفوائد…" class="u38ae86c" />
+          <button type="button" class="icon-btn hero-filter" data-action="search:filter" aria-label="تصفية البحث" aria-expanded="false">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
+          </button>
+          <button class="btn-accent u4964676" type="submit">بحث</button>
         </div>
+      </form>
+
+      <div class="hero-pills">
+        <a class="ghost-pill" href="/graph">شبكة المعرفة</a>
+        <a class="ghost-pill" href="/benefits">كُناشة الفوائد</a>
+        <a class="ghost-pill" href="/roadmap">طريق طلب العلم</a>
       </div>
     </div>
   </section>
