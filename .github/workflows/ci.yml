@@ -64,6 +64,8 @@ jobs:
 
       - name: Build (Astro + fragments + redirects)
         run: pnpm build
+        env:
+          NODE_OPTIONS: --max-old-space-size=6656
 
       - name: Smoke test (per-template invariants over dist/)
         run: pnpm smoke
