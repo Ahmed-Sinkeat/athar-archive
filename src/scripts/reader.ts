@@ -18,6 +18,7 @@ const LS = {
   annKind: "aa-ann-kind",
   annSource: "aa-ann-source",
   annPinned: "aa-ann-pinned",
+  followAudio: "aa-follow-audio",
 };
 
 const SCALE_MIN = 0.8;
@@ -118,6 +119,44 @@ function applyFootnotes(show: boolean) {
   document.querySelectorAll<HTMLElement>('[data-toggle="footnotes"]').forEach((b) =>
     b.setAttribute("aria-pressed", String(show)),
   );
+}
+
+// --- follow-audio bayt highlighting (poem pages with per-bayt timing data) ---
+function applyFollowAudio(on: boolean) {
+  localStorage.setItem(LS.followAudio, on ? "1" : "0");
+  document.querySelectorAll<HTMLElement>('[data-toggle="followAudio"]').forEach((b) =>
+    b.setAttribute("aria-pressed", String(on)),
+  );
+  if (!on) document.querySelectorAll(".verse.is-active").forEach((el) => el.classList.remove("is-active"));
+}
+let followTiming: { v: number; t: number }[] | null = null;
+let followActiveVerse: HTMLElement | null = null;
+function loadFollowTiming() {
+  const verses = document.querySelector<HTMLElement>(".verses[data-timing]");
+  try {
+    followTiming = verses ? JSON.parse(verses.dataset.timing!) : null;
+  } catch {
+    followTiming = null;
+  }
+  followActiveVerse = null;
+}
+function applyFollowAudioHighlight(currentTime: number) {
+  if (!followTiming || localStorage.getItem(LS.followAudio) === "0") return;
+  // last cue whose start time has passed
+  let active = followTiming[0];
+  for (const cue of followTiming) {
+    if (cue.t > currentTime) break;
+    active = cue;
+  }
+  if (followActiveVerse?.dataset.vn === String(active.v)) return;
+  followActiveVerse?.classList.remove("is-active");
+  followActiveVerse = document.querySelector<HTMLElement>(`.verse[data-vn="${active.v}"]`);
+  if (!followActiveVerse) return;
+  followActiveVerse.classList.add("is-active");
+  const rect = followActiveVerse.getBoundingClientRect();
+  if (rect.top < 80 || rect.bottom > innerHeight - 80) {
+    followActiveVerse.scrollIntoView({ block: "center", behavior: "smooth" });
+  }
 }
 
 // --- cross-deploy soft-nav guard ---
@@ -313,6 +352,7 @@ const actions: Record<string, () => void> = {
   "toggle:tashkeel": () => applyTashkeel(root.classList.contains("no-tashkeel")),
   "toggle:verseNums": () => applyVnums(root.classList.contains("hide-vnums")),
   "toggle:pages": () => applyPages(root.classList.contains("pages-flow")),
+  "toggle:followAudio": () => applyFollowAudio(localStorage.getItem(LS.followAudio) === "0"),
   "toggle:footnotes": () => applyFootnotes(root.classList.contains("hide-footnotes")),
   "toggle:tasmi": () => applyTasmi(!root.classList.contains("tasmi-mode")),
   "theme:paper": () => setTheme("paper"),
@@ -1677,6 +1717,7 @@ document.addEventListener(
       if (!(el instanceof HTMLAudioElement) || !el.hasAttribute("data-audio-el")) return;
       const fig = el.closest<HTMLElement>("[data-audio]");
       if (fig) syncAudioUI(fig, el);
+      if (evt === "timeupdate") applyFollowAudioHighlight(el.currentTime);
     },
     true,
   ),
@@ -1860,6 +1901,10 @@ function onPage() {
   // بيت numbering only means anything on poems — hide the toggle elsewhere
   const isPoemPage = document.querySelector("main")?.dataset.activeNav === "poems";
   document.querySelectorAll<HTMLElement>('[data-toggle="verseNums"]').forEach((b) => { b.hidden = !isPoemPage; });
+  // "follow audio" only means anything on a poem timed with per-bayt cues
+  loadFollowTiming();
+  document.querySelectorAll<HTMLElement>('[data-toggle="followAudio"]').forEach((b) => { b.hidden = !followTiming; });
+  applyFollowAudio(localStorage.getItem(LS.followAudio) !== "0");
   // tashkeel/pages/footnotes act on regular book/poem markup this page doesn't
   // have: the ayah text carries no [data-ar] (always fully diacritized, never
   // stripped), its page-seps are forced visible with !important regardless of

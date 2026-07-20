@@ -605,6 +605,8 @@ summary::-webkit-details-marker { display: none; }
 /* ---------- poem verses — Phase 4 reading tuning ---------- */
 .verses { margin-top: 8px; }
 .verse { padding: 16px 0; border-bottom: 1px solid var(--rule); scroll-margin-top: 90px; }
+/* تتبّع النص مع الصوت — active بيت while its audio cue is playing */
+.verse.is-active .sadr, .verse.is-active .ajz { color: var(--copper); transition: color var(--t-base) var(--ease); }
 .verse-inner { display: flex; align-items: flex-start; justify-content: center; gap: 16px; }
 /* الشعر → copper dress (HANDOFF §1: one accent per tradition) */
 /* staggered ديوان layout (user's reference screenshot): plain «١ -» number at

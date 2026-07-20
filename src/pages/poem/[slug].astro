@@ -54,6 +54,13 @@ const jsonLd = poemLd({
 });
 const chapterNums = new Set(a.chapters.flatMap((c) => c.verses.map((v) => v.n)));
 const preamble = a.verses.filter((v) => !chapterNums.has(v.n));
+
+// per-bayt audio timestamps (سمة "تتبّع الصوت") — only exists for poems an
+// editor has manually timed; absent for the rest, feature just no-ops there
+const timingFiles = import.meta.glob<{ default: { v: number; t: number }[] }>(
+  "../../content/poem-timing/*.json", { eager: true },
+);
+const timing = timingFiles[`../../content/poem-timing/${entry.id}.json`]?.default;
 ---
 <Base title={entry.data.title} description={pageDescription} activeNav="poems" ogType="article" jsonLd={jsonLd} searchScope={{ in: entry.id, label: entry.data.title }} readingPage>
   <Breadcrumbs
@@ -115,7 +122,7 @@ const preamble = a.verses.filter((v) => !chapterNums.has(v.n));
     ) : (
       <>
         <StudyBar />
-        <div class="verses" data-matn={entry.id} data-unit="بيت">
+        <div class="verses" data-matn={entry.id} data-unit="بيت" data-timing={timing ? JSON.stringify(timing) : undefined}>
           {preamble.map((v) => <Verse n={v.n} sadr={v.sadr} ajz={v.ajz} anchor={v.anchor} notes={byAnchor[v.anchor]} />)}
           {a.chapters.map((c) => (
             <>
