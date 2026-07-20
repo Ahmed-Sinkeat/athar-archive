@@ -155,8 +155,14 @@ export function analyzeBook(
   let aboveThreshold =
     parsed.wordCount > threshold.words || parsed.chapters.length > threshold.chapters;
 
+  // Multi-volume books reset their printed page number at every volume
+  // boundary, so pageSpan (max-min over the whole body) can look tiny for a
+  // genuinely huge book — only trust it to veto chunking when the chapter
+  // count doesn't already clear the threshold on its own.
   const pages = pageSpan(body);
-  if (pages > 0 && pages < maxPagesForNoSplit) aboveThreshold = false;
+  if (pages > 0 && pages < maxPagesForNoSplit && parsed.chapters.length <= threshold.chapters) {
+    aboveThreshold = false;
+  }
 
   let chunked = aboveThreshold && parsed.chapters.length > 1;
 
