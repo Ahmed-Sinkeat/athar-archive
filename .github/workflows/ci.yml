@@ -27,6 +27,9 @@ jobs:
       # the token to this job's deps, unlike the deploy job below.
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      # ubuntu-latest has 7GB; the corpus outgrew V8's default heap during
+      # prerender and search-index generation alike (both OOM'd separately).
+      NODE_OPTIONS: --max-old-space-size=6656
     steps:
       - uses: actions/checkout@v4
         with:
@@ -64,8 +67,6 @@ jobs:
 
       - name: Build (Astro + fragments + redirects)
         run: pnpm build
-        env:
-          NODE_OPTIONS: --max-old-space-size=6656
 
       - name: Smoke test (per-template invariants over dist/)
         run: pnpm smoke
