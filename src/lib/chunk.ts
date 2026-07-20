@@ -106,14 +106,25 @@ function splitOversizedChapters(chapters: RawChapter[]): RawChapter[] {
 // larger compiled collection) has a genuine length of 76 pages, not 179;
 // absolute page numbers alone would overstate it. Returns 0 when the source
 // carries no page markers at all (can't be measured this way).
+// But a straight max-min over the WHOLE body breaks for multi-volume books,
+// which reset their printed page number at every volume boundary (a 25MB,
+// 229-chapter book measured 86 "pages" — just its last volume's span). Sum
+// each volume's own span instead, treating any drop in page number (walking
+// markers in source order) as a new volume — same signal deriveVolumes()
+// below uses.
 function pageSpan(body: string): number {
-  let min = Infinity, max = 0;
+  let total = 0;
+  let segMin = Infinity, segMax = 0, prev: number | undefined;
+  const flush = () => { if (segMax > 0) total += segMax - segMin + 1; };
   for (const m of body.matchAll(/data-page="(\d+)"/g)) {
     const n = Number(m[1]);
-    if (n < min) min = n;
-    if (n > max) max = n;
+    if (prev != null && n < prev) { flush(); segMin = Infinity; segMax = 0; }
+    if (n < segMin) segMin = n;
+    if (n > segMax) segMax = n;
+    prev = n;
   }
-  return max > 0 ? max - min + 1 : 0;
+  flush();
+  return total;
 }
 
 // Multi-volume (مجلد) books ideally carry data-juz on each page-sep (epub
@@ -155,12 +166,13 @@ export function analyzeBook(
   let aboveThreshold =
     parsed.wordCount > threshold.words || parsed.chapters.length > threshold.chapters;
 
-  // Multi-volume books reset their printed page number at every volume
-  // boundary, so pageSpan (max-min over the whole body) can look tiny for a
-  // genuinely huge book — only trust it to veto chunking when the chapter
-  // count doesn't already clear the threshold on its own.
+  // The page-span veto assumes a genuinely small book — but sparse/missing
+  // page-sep markers (an incomplete compile) can make pageSpan look tiny for
+  // a book that's actually enormous. Word count doesn't depend on page
+  // markers at all, so once it's far past the threshold, trust it over a
+  // page-span measurement that's clearly not covering the whole book.
   const pages = pageSpan(body);
-  if (pages > 0 && pages < maxPagesForNoSplit && parsed.chapters.length <= threshold.chapters) {
+  if (pages > 0 && pages < maxPagesForNoSplit && parsed.wordCount <= threshold.words * 10) {
     aboveThreshold = false;
   }
 
