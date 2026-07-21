@@ -347,6 +347,21 @@ const processedParagraphs = paragraphs.map((para, idx) => {
   .ayah-text :global(.tw-madd-arid) { color: var(--tw-user-madd-arid, var(--madd-arid)); }
   .ayah-text :global(.tw-madd-badal) { color: var(--tw-user-madd-badal, var(--madd-badal)); }
 
+  /* settings-popover color-customization UI (Base.astro renders it, gated to
+     tajweedPage) — kept in this page's own scoped stylesheet rather than the
+     shared global.css bundle, since that bundle ships to every page and this
+     only matters on this one; see the SSR-conditional note in Base.astro. */
+  :global(.tajweed-advanced) { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--rule); }
+  :global(.tajweed-advanced summary) { font-size: 13px; color: var(--ink-soft); cursor: pointer; }
+  :global(.tajweed-grid) { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 12px; margin: 10px 0; }
+  :global(.tajweed-color-row) { display: flex; align-items: center; gap: 8px; font-size: 12.5px; color: var(--ink); cursor: pointer; }
+  :global(.tajweed-color-row input[type="color"]) {
+    width: 22px; height: 22px; padding: 0; border: 1px solid var(--rule-strong); border-radius: 6px;
+    background: none; cursor: pointer; flex: none;
+  }
+  :global(.pop-reset) { font-size: 13px; color: var(--ink2); background: none; border: none; padding: 0; cursor: pointer; font-family: inherit; }
+  :global(.pop-reset:hover) { text-decoration: underline; }
+
   .ayah-notes { margin-block-start: 0.5rem; }
   .ayah-note {
     display: flex;

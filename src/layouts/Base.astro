@@ -338,30 +338,37 @@ const [readerSub, readerMain] = title.includes(" · ") ? title.split(" · ") : [
         <button class="toggle-btn pop-toggle" data-toggle="pages" data-action="toggle:pages" aria-pressed="true"><span class="toggle-dot"></span>عرض الصفحات</button>
         <button class="toggle-btn pop-toggle" data-toggle="footnotes" data-action="toggle:footnotes" aria-pressed="true"><span class="toggle-dot"></span>الحواشي والتخريج</button>
         <button class="toggle-btn pop-toggle" data-toggle="followAudio" data-action="toggle:followAudio" aria-pressed="true" hidden><span class="toggle-dot"></span>تتبّع النص مع الصوت</button>
-        <!-- tajweed-only: same "irrelevant off the quran surah page" story as
-             .pop-toggle above, same fix — .topbar's data-tajweed is resynced
-             from <main> on every swap (syncTopbarFromMain), since the header
-             persists and would otherwise show a stale page's controls. -->
-        <div class="pop-row tajweed-only">
-          <span class="pop-label">ألوان أحكام التجويد</span>
-          <div class="pop-btns">
-            <button type="button" class="icon-btn" data-action="tajweed:preset:default" title="الألوان الافتراضية">افتراضي</button>
-            <button type="button" class="icon-btn" data-action="tajweed:preset:vivid" title="ألوان زاهية عالية التباين">زاهي</button>
-            <button type="button" class="icon-btn" data-action="tajweed:preset:muted" title="ألوان هادئة منخفضة التشبع">هادئ</button>
-          </div>
-        </div>
-        <details class="tajweed-advanced tajweed-only">
-          <summary>تخصيص لون كل حكم</summary>
-          <div class="tajweed-grid">
-            {Object.entries(TAJWEED_LABELS).map(([rule, label]) => (
-              <label class="tajweed-color-row">
-                <input type="color" data-tajweed-color={rule} value={TAJWEED_COLORS[rule]} aria-label={label} />
-                <span>{label}</span>
-              </label>
-            ))}
-          </div>
-          <button type="button" class="pop-reset" data-action="tajweed:reset">إعادة تعيين الألوان</button>
-        </details>
+        {tajweedPage && (
+          <>
+            <!-- SSR-conditional, not always-render+CSS-hide: this markup/CSS
+                 would otherwise ship on all ~4800 pages via the shared bundle
+                 and blew the render-budget check (228 KB) by riding along on
+                 every page just to stay hidden. Tradeoff: soft-navigating
+                 straight to /quran/1 from a page that rendered the header
+                 without this section won't show it until a hard reload —
+                 acceptable while only one surah has tajweed at all. -->
+            <div class="pop-row">
+              <span class="pop-label">ألوان أحكام التجويد</span>
+              <div class="pop-btns">
+                <button type="button" class="icon-btn" data-action="tajweed:preset:default" title="الألوان الافتراضية">افتراضي</button>
+                <button type="button" class="icon-btn" data-action="tajweed:preset:vivid" title="ألوان زاهية عالية التباين">زاهي</button>
+                <button type="button" class="icon-btn" data-action="tajweed:preset:muted" title="ألوان هادئة منخفضة التشبع">هادئ</button>
+              </div>
+            </div>
+            <details class="tajweed-advanced">
+              <summary>تخصيص لون كل حكم</summary>
+              <div class="tajweed-grid">
+                {Object.entries(TAJWEED_LABELS).map(([rule, label]) => (
+                  <label class="tajweed-color-row">
+                    <input type="color" data-tajweed-color={rule} value={TAJWEED_COLORS[rule]} aria-label={label} />
+                    <span>{label}</span>
+                  </label>
+                ))}
+              </div>
+              <button type="button" class="pop-reset" data-action="tajweed:reset">إعادة تعيين الألوان</button>
+            </details>
+          </>
+        )}
         <!-- the footer (where these normally live) is hidden in the mobile app
              layout — the gear sheet is their one reachable home on phones -->
         <div class="pop-links">
@@ -411,7 +418,7 @@ const [readerSub, readerMain] = title.includes(" · ") ? title.split(" · ") : [
     <!-- reader-* attrs: per-page source of truth for the persisted header —
          the topbar keeps the FIRST page's server-rendered state across SPA
          navigations, so reader.ts onPage() re-syncs it from here every swap -->
-    <main data-active-nav={activeNav} data-reading={readingPage ? "1" : undefined} data-tajweed={tajweedPage ? "1" : undefined}
+    <main data-active-nav={activeNav} data-reading={readingPage ? "1" : undefined}
       data-reader-main={readerMain} data-reader-sub={readerSub} data-reader-back={readerHref}>
       <slot />
     </main>
@@ -546,6 +553,8 @@ const [readerSub, readerMain] = title.includes(" · ") ? title.split(" · ") : [
       // (render-budget gate) — it's a whole feature (Cache API + SW + a
       // popover), not something every page needs synchronously on load.
       import("../scripts/downloads.ts");
+      // poem-page-only prototype; no-ops immediately if the toggle button isn't on the page
+      import("../scripts/voice-follow.ts");
     </script>
   </body>
 </html>

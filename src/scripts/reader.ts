@@ -1866,8 +1866,6 @@ function syncTopbarFromMain() {
   if (!bar || !main) return;
   if (main.dataset.reading === "1") bar.setAttribute("data-reading", "1");
   else bar.removeAttribute("data-reading");
-  if (main.dataset.tajweed === "1") bar.setAttribute("data-tajweed", "1");
-  else bar.removeAttribute("data-tajweed");
   const mainEl = bar.querySelector<HTMLElement>(".topbar-reading-main");
   if (mainEl) mainEl.textContent = main.dataset.readerMain || "";
   let subEl = bar.querySelector<HTMLElement>(".topbar-reading-sub");
