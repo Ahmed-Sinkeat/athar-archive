@@ -33,7 +33,7 @@ ok(/(action|href)="\/search/.test(home), "search affordance present (hero form +
 section("/books");
 const books = read("books/index.html");
 ok((books.match(/class="card"/g) || []).length >= 1, "books index lists cards");
-ok(/class="masail-subject"/.test(books), "books grouped in تصنيف accordion");
+ok(/class="article-subject-chips"/.test(books), "books subject chips (تصنيف) present");
 ok(/card-kindrow/.test(books), "book kind pill on cards");
 
 // --- poems index (full-width verse cards, work-type badge) ---
