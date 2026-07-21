@@ -695,9 +695,6 @@ html.tasmi-mode .verses .verse:not(.tasmi-revealed) .ajz { filter: blur(7px); us
 html.tasmi-mode .ayah-list .ayah:not(.tasmi-revealed) { cursor: pointer; }
 html.tasmi-mode .ayah-list .ayah:not(.tasmi-revealed) .ayah-text { filter: blur(8px); user-select: none; }
 
-/* voice-follow.ts (poem-page prototype): bayt lights up once recited */
-.verse.voice-read { background: var(--verdigris-wash); border-radius: var(--radius); transition: background 0.4s; }
-
 /* "download all" pill — downloads page group rows + person pages (آثاره) */
 .downloads-all-btn {
   display: inline-flex; align-items: center; gap: 6px; margin-inline-start: auto;

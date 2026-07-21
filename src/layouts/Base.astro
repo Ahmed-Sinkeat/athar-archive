@@ -553,8 +553,6 @@ const [readerSub, readerMain] = title.includes(" · ") ? title.split(" · ") : [
       // (render-budget gate) — it's a whole feature (Cache API + SW + a
       // popover), not something every page needs synchronously on load.
       import("../scripts/downloads.ts");
-      // poem-page-only prototype; no-ops immediately if the toggle button isn't on the page
-      import("../scripts/voice-follow.ts");
     </script>
   </body>
 </html>
