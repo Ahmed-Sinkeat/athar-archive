@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "أهل الأثر — Islamic knowledge archive",
   "scripts": {
-    "dev": "astro dev",
+    "dev": "NODE_OPTIONS=--max-old-space-size=6656 astro dev",
     "new": "node scripts/new-content.mjs",
     "data:fetch": "node scripts/fetch-build-data.mjs",
     "import:epub": "tsx scripts/epub-import.ts",

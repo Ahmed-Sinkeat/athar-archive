@@ -5,6 +5,7 @@ import "../styles/global.css";
 import "../styles/extracted.css"; // generated from former inline styles — must load AFTER global.css
 import { config } from "../../ahlalathar.config";
 import { toArabicDigits, searchHrefFor } from "../lib/display";
+import { TAJWEED_COLORS, TAJWEED_LABELS } from "../lib/tajweed";
 
 interface Props {
   title: string;
@@ -15,8 +16,12 @@ interface Props {
   ogType?: string;
   jsonLd?: unknown;
   readingPage?: boolean; // font/theme/width/تشكيل settings only make sense on actual reading content
+  tajweedPage?: boolean; // tajweed color settings — only the (currently gated) quran surah pages
 }
-const { title, description, activeNav, searchScope, noindex, ogType = "website", jsonLd, readingPage = false } = Astro.props;
+const {
+  title, description, activeNav, searchScope, noindex, ogType = "website", jsonLd,
+  readingPage = false, tajweedPage = false,
+} = Astro.props;
 const canonical = new URL(Astro.url.pathname.replace(/\/$/, "") || "/", config.siteUrl).href;
 const GA_ID = "G-NBHR8NV97G";
 
@@ -143,6 +148,8 @@ const [readerSub, readerMain] = title.includes(" · ") ? title.split(" · ") : [
           if (localStorage.getItem("aa-vnums") === "0") document.documentElement.classList.add("hide-vnums");
           const w = localStorage.getItem("aa-width");
           if (w === "narrow" || w === "wide") document.documentElement.setAttribute("data-width", w);
+          const tw = JSON.parse(localStorage.getItem("aa-tajweed-colors") || "{}");
+          for (const rule in tw) document.documentElement.style.setProperty("--tw-user-" + rule, tw[rule]);
         } catch (e) {}
       })();
     </script>
@@ -331,6 +338,30 @@ const [readerSub, readerMain] = title.includes(" · ") ? title.split(" · ") : [
         <button class="toggle-btn pop-toggle" data-toggle="pages" data-action="toggle:pages" aria-pressed="true"><span class="toggle-dot"></span>عرض الصفحات</button>
         <button class="toggle-btn pop-toggle" data-toggle="footnotes" data-action="toggle:footnotes" aria-pressed="true"><span class="toggle-dot"></span>الحواشي والتخريج</button>
         <button class="toggle-btn pop-toggle" data-toggle="followAudio" data-action="toggle:followAudio" aria-pressed="true" hidden><span class="toggle-dot"></span>تتبّع النص مع الصوت</button>
+        <!-- tajweed-only: same "irrelevant off the quran surah page" story as
+             .pop-toggle above, same fix — .topbar's data-tajweed is resynced
+             from <main> on every swap (syncTopbarFromMain), since the header
+             persists and would otherwise show a stale page's controls. -->
+        <div class="pop-row tajweed-only">
+          <span class="pop-label">ألوان أحكام التجويد</span>
+          <div class="pop-btns">
+            <button type="button" class="icon-btn" data-action="tajweed:preset:default" title="الألوان الافتراضية">افتراضي</button>
+            <button type="button" class="icon-btn" data-action="tajweed:preset:vivid" title="ألوان زاهية عالية التباين">زاهي</button>
+            <button type="button" class="icon-btn" data-action="tajweed:preset:muted" title="ألوان هادئة منخفضة التشبع">هادئ</button>
+          </div>
+        </div>
+        <details class="tajweed-advanced tajweed-only">
+          <summary>تخصيص لون كل حكم</summary>
+          <div class="tajweed-grid">
+            {Object.entries(TAJWEED_LABELS).map(([rule, label]) => (
+              <label class="tajweed-color-row">
+                <input type="color" data-tajweed-color={rule} value={TAJWEED_COLORS[rule]} aria-label={label} />
+                <span>{label}</span>
+              </label>
+            ))}
+          </div>
+          <button type="button" class="pop-reset" data-action="tajweed:reset">إعادة تعيين الألوان</button>
+        </details>
         <!-- the footer (where these normally live) is hidden in the mobile app
              layout — the gear sheet is their one reachable home on phones -->
         <div class="pop-links">
@@ -380,7 +411,7 @@ const [readerSub, readerMain] = title.includes(" · ") ? title.split(" · ") : [
     <!-- reader-* attrs: per-page source of truth for the persisted header —
          the topbar keeps the FIRST page's server-rendered state across SPA
          navigations, so reader.ts onPage() re-syncs it from here every swap -->
-    <main data-active-nav={activeNav} data-reading={readingPage ? "1" : undefined}
+    <main data-active-nav={activeNav} data-reading={readingPage ? "1" : undefined} data-tajweed={tajweedPage ? "1" : undefined}
       data-reader-main={readerMain} data-reader-sub={readerSub} data-reader-back={readerHref}>
       <slot />
     </main>

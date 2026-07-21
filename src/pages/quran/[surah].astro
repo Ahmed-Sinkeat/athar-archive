@@ -5,6 +5,7 @@ import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import Relations from "../../components/Relations.astro";
 import ReaderSidebar from "../../components/ReaderSidebar.astro";
 import { markdownToSafeHtml } from "../../lib/sanitize";
+import { applyTajweed, TAJWEED_COLORS } from "../../lib/tajweed";
 import { notesByAnchor, loadGraph, personNameMap } from "../../lib/site";
 import { parseBook } from "../../lib/chapters";
 import { toArabicDigits } from "../../lib/display";
@@ -97,8 +98,10 @@ for (const [pageNum, ayahs] of pageAyahsMap.entries()) {
 }
 
 // 3. Process paragraphs to inject start page separator and set notes on all separators
+// ponytail: tajweed coloring is only validated against Al-Fatiha's own text
+// so far — gate it to surah 1 until the rest of the mushaf is checked too.
 const processedParagraphs = paragraphs.map((para, idx) => {
-  let text = para.text;
+  let text = data.number === 1 ? applyTajweed(para.text) : para.text;
   if (idx === 0) {
     text = `<hr class="page-sep" data-page="${data.start_page}" />\n` + text;
   }
@@ -121,7 +124,7 @@ const processedParagraphs = paragraphs.map((para, idx) => {
   };
 });
 ---
-<Base title={surahTitle} description={`${surahTitle} — ${data.ayah_count} آية`} activeNav="quran" readingPage>
+<Base title={surahTitle} description={`${surahTitle} — ${data.ayah_count} آية`} activeNav="quran" readingPage tajweedPage={data.number === 1}>
   <Breadcrumbs items={[
     { label: "الرئيسية", href: "/" },
     { label: "القرآن وعلومه", href: "/quran" },
@@ -216,7 +219,10 @@ const processedParagraphs = paragraphs.map((para, idx) => {
         </div>
       )}
     </div>
-    <div class="toc-box has-current">
+    <!-- sitewide surah index, not this surah's own TOC — data-dl-skip keeps
+         downloads.ts's collectUrls() from bundling all 114 surahs into a
+         single-surah "download for offline" -->
+    <div class="toc-box has-current" data-dl-skip>
       <div class="toc-label">سور القرآن الكريم</div>
       {surahList.map((s) => (
         <a href={`/quran/${s.id}`} class:list={[{ "toc-current": s.id === entry.id }]}>
@@ -228,7 +234,7 @@ const processedParagraphs = paragraphs.map((para, idx) => {
   </div>
 </Base>
 
-<style>
+<style define:vars={TAJWEED_COLORS}>
   :global(.page-sep) { display: flex !important; scroll-margin-top: 90px; }
 
   /* within-surah navigation (sidebar box): ayah jump + page-number chips */
@@ -320,6 +326,26 @@ const processedParagraphs = paragraphs.map((para, idx) => {
     border: 1px dashed var(--line); border-radius: 10px; padding: 14px 16px;
     color: var(--ink3); font-size: 12px; display: flex; align-items: center;
   }
+
+  /* tajweed rule colors (surah 1 only for now — see the ponytail note above).
+     --tw-user-* is a separate custom-property namespace reader.ts writes to
+     on :root for saved overrides — it's never set here, so when unset the
+     var() fallback reads the build-time default from define:vars above with
+     no cascade fight between the two. */
+  .ayah-text :global(.tw-qalqalah) { color: var(--tw-user-qalqalah, var(--qalqalah)); }
+  .ayah-text :global(.tw-ikhfa) { color: var(--tw-user-ikhfa, var(--ikhfa)); }
+  .ayah-text :global(.tw-ikhfa-syafawi) { color: var(--tw-user-ikhfa-syafawi, var(--ikhfa-syafawi)); }
+  .ayah-text :global(.tw-iqlab) { color: var(--tw-user-iqlab, var(--iqlab)); }
+  .ayah-text :global(.tw-idgham-bighunnah) { color: var(--tw-user-idgham-bighunnah, var(--idgham-bighunnah)); }
+  .ayah-text :global(.tw-idgham-bilaghunnah) { color: var(--tw-user-idgham-bilaghunnah, var(--idgham-bilaghunnah)); }
+  .ayah-text :global(.tw-idgham-mimi) { color: var(--tw-user-idgham-mimi, var(--idgham-mimi)); }
+  .ayah-text :global(.tw-idgham-shamsiyyah) { color: var(--tw-user-idgham-shamsiyyah, var(--idgham-shamsiyyah)); }
+  .ayah-text :global(.tw-ghunnah) { color: var(--tw-user-ghunnah, var(--ghunnah)); }
+  .ayah-text :global(.tw-madd-tabii) { color: var(--tw-user-madd-tabii, var(--madd-tabii)); }
+  .ayah-text :global(.tw-madd-wajib) { color: var(--tw-user-madd-wajib, var(--madd-wajib)); }
+  .ayah-text :global(.tw-madd-jaiz) { color: var(--tw-user-madd-jaiz, var(--madd-jaiz)); }
+  .ayah-text :global(.tw-madd-arid) { color: var(--tw-user-madd-arid, var(--madd-arid)); }
+  .ayah-text :global(.tw-madd-badal) { color: var(--tw-user-madd-badal, var(--madd-badal)); }
 
   .ayah-notes { margin-block-start: 0.5rem; }
   .ayah-note {

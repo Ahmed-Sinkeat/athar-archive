@@ -3,6 +3,7 @@
 // in Base.astro applies theme/scale/vnums before first paint to avoid flash.
 
 import { stripTashkeel } from "../lib/display";
+import { TAJWEED_COLORS, TAJWEED_PRESETS } from "../lib/tajweed";
 
 const LS = {
   theme: "aa-theme",
@@ -19,6 +20,7 @@ const LS = {
   annSource: "aa-ann-source",
   annPinned: "aa-ann-pinned",
   followAudio: "aa-follow-audio",
+  tajweedColors: "aa-tajweed-colors",
 };
 
 const SCALE_MIN = 0.8;
@@ -157,6 +159,41 @@ function applyFollowAudioHighlight(currentTime: number) {
   if (rect.top < 80 || rect.bottom > innerHeight - 80) {
     followActiveVerse.scrollIntoView({ block: "center", behavior: "smooth" });
   }
+}
+
+// --- tajweed color overrides (quran surah pages only, see .tajweed-only) ---
+// Stored as override-only entries (rule -> hex). The page's own CSS reads
+// var(--tw-user-RULE, var(--RULE)) (see [surah].astro) — an unset rule here
+// just falls through to the build-time default, no extra bookkeeping needed.
+function getTajweedOverrides(): Record<string, string> {
+  try {
+    return JSON.parse(localStorage.getItem(LS.tajweedColors) || "{}");
+  } catch {
+    return {};
+  }
+}
+function applyTajweedColor(rule: string, hex: string, persist = true) {
+  root.style.setProperty(`--tw-user-${rule}`, hex);
+  const input = document.querySelector<HTMLInputElement>(`[data-tajweed-color="${rule}"]`);
+  if (input) input.value = hex;
+  if (!persist) return;
+  const overrides = getTajweedOverrides();
+  overrides[rule] = hex;
+  localStorage.setItem(LS.tajweedColors, JSON.stringify(overrides));
+}
+function applyTajweedPreset(name: keyof typeof TAJWEED_PRESETS) {
+  for (const [rule, hex] of Object.entries(TAJWEED_PRESETS[name])) applyTajweedColor(rule, hex);
+}
+function resetTajweedColors() {
+  localStorage.removeItem(LS.tajweedColors);
+  for (const [rule, hex] of Object.entries(TAJWEED_COLORS)) {
+    root.style.removeProperty(`--tw-user-${rule}`);
+    const input = document.querySelector<HTMLInputElement>(`[data-tajweed-color="${rule}"]`);
+    if (input) input.value = hex;
+  }
+}
+function syncTajweedColors() {
+  for (const [rule, hex] of Object.entries(getTajweedOverrides())) applyTajweedColor(rule, hex, false);
 }
 
 // --- cross-deploy soft-nav guard ---
@@ -355,6 +392,10 @@ const actions: Record<string, () => void> = {
   "toggle:followAudio": () => applyFollowAudio(localStorage.getItem(LS.followAudio) === "0"),
   "toggle:footnotes": () => applyFootnotes(root.classList.contains("hide-footnotes")),
   "toggle:tasmi": () => applyTasmi(!root.classList.contains("tasmi-mode")),
+  "tajweed:preset:default": () => resetTajweedColors(),
+  "tajweed:preset:vivid": () => applyTajweedPreset("vivid"),
+  "tajweed:preset:muted": () => applyTajweedPreset("muted"),
+  "tajweed:reset": () => resetTajweedColors(),
   "theme:paper": () => setTheme("paper"),
   "theme:noir": () => setTheme("noir"),
   "theme:mono": () => setTheme("mono"),
@@ -425,6 +466,12 @@ document.addEventListener("click", (e) => {
 });
 document.addEventListener("click", (e) => {
   if ((e.target as HTMLElement).closest("[data-drawer-backdrop]")) setDrawer(false);
+});
+// tajweed advanced picker — "input" fires continuously while dragging, so the
+// text updates live instead of only on release.
+document.addEventListener("input", (e) => {
+  const el = e.target as HTMLElement;
+  if (el instanceof HTMLInputElement && el.dataset.tajweedColor) applyTajweedColor(el.dataset.tajweedColor, el.value);
 });
 
 // topbar Quran juz/page jump (persisted header, bound once)
@@ -1807,6 +1854,7 @@ applyPages(localStorage.getItem(LS.pages) !== "flow");
 applyFootnotes(localStorage.getItem(LS.footnotes) !== "0");
 if (localStorage.getItem(LS.tashkeel) === "0") applyTashkeel(false);
 else document.querySelectorAll<HTMLElement>('[data-toggle="tashkeel"]').forEach((b) => b.setAttribute("aria-pressed", "true"));
+syncTajweedColors(); // CSS vars already applied pre-paint; this just syncs the picker swatches
 
 // The topbar is transition:persist — without this re-sync it keeps the FIRST
 // page's data-reading + reading title forever, showing a stale reading header
@@ -1818,6 +1866,8 @@ function syncTopbarFromMain() {
   if (!bar || !main) return;
   if (main.dataset.reading === "1") bar.setAttribute("data-reading", "1");
   else bar.removeAttribute("data-reading");
+  if (main.dataset.tajweed === "1") bar.setAttribute("data-tajweed", "1");
+  else bar.removeAttribute("data-tajweed");
   const mainEl = bar.querySelector<HTMLElement>(".topbar-reading-main");
   if (mainEl) mainEl.textContent = main.dataset.readerMain || "";
   let subEl = bar.querySelector<HTMLElement>(".topbar-reading-sub");

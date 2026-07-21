@@ -46,7 +46,7 @@ function formatSize(bytes: number): string {
 // `doc` may be a DOMParser document of a NOT-currently-open landing page —
 // that's how the quick download buttons on list rows work without navigating.
 function collectUrls(doc: Document = document, pagePath: string = location.pathname): string[] {
-  const links = doc.querySelectorAll<HTMLAnchorElement>(".toc-box a[href], .card-grid a[href]");
+  const links = doc.querySelectorAll<HTMLAnchorElement>(".toc-box:not([data-dl-skip]) a[href], .card-grid a[href]");
   const urls = new Set<string>([pagePath]); // the landing page itself is part of the download
   for (const a of links) {
     const href = a.getAttribute("href");

@@ -389,11 +389,25 @@ button[data-action="page:save"].icon-btn[aria-pressed="true"] svg { fill: var(--
    on hub pages (home, /books, …) they were dead rows in the settings sheet.
    .topbar carries data-reading (synced per-page, see syncTopbarFromMain). */
 .topbar:not([data-reading="1"]) .pop-toggle { display: none; }
+.topbar:not([data-tajweed="1"]) .tajweed-only { display: none; }
 /* عن الموقع / تواصل row at the bottom of the settings sheet — the footer that
    normally carries these is hidden in the mobile app layout */
 .pop-links { display: flex; gap: 16px; margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--rule); }
 .pop-links a { font-size: 13px; color: var(--ink2); text-decoration: none; }
 .pop-links a:hover { text-decoration: underline; }
+
+/* تخصيص لون كل حكم — collapsed by default, 14 rows would otherwise dominate
+   the settings sheet; the 3 preset buttons above stay the always-visible option */
+.tajweed-advanced { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--rule); }
+.tajweed-advanced summary { font-size: 13px; color: var(--ink-soft); cursor: pointer; }
+.tajweed-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 12px; margin: 10px 0; }
+.tajweed-color-row { display: flex; align-items: center; gap: 8px; font-size: 12.5px; color: var(--ink); cursor: pointer; }
+.tajweed-color-row input[type="color"] {
+  width: 22px; height: 22px; padding: 0; border: 1px solid var(--rule-strong); border-radius: 6px;
+  background: none; cursor: pointer; flex: none;
+}
+.pop-reset { font-size: 13px; color: var(--ink2); background: none; border: none; padding: 0; cursor: pointer; font-family: inherit; }
+.pop-reset:hover { text-decoration: underline; }
 
 /* ---------- mobile nav dropdown (HANDOFF.md §3.5) ----------
    Compact anchored card below the "☰ القائمة" trigger, not a full-height
