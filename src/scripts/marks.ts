@@ -505,6 +505,22 @@ function jumpToSavedHash() {
   if (s) window.scrollTo({ top: s.scrollY, behavior: "smooth" });
 }
 
+// arriving from a /search result (?aa-hl=<term>): most content types have no
+// per-paragraph anchor in the search index (only quran ayahs and "athar"-
+// numbered narrations do), so a plain #hash often lands at the top of the
+// book/chapter with nothing marked. Reuse the in-page find bar instead —
+// it already does tashkeel-insensitive matching + highlight + scroll-to-first,
+// works for every content type, and needs no index/anchor changes.
+function jumpToSearchHl() {
+  const term = new URLSearchParams(location.search).get("aa-hl");
+  if (!term || !root()?.querySelector(".prose, .verse")) return;
+  const bar = ensureFindBar();
+  bar.hidden = false;
+  const input = bar.querySelector<HTMLInputElement>("input");
+  if (input) input.value = term;
+  runFind(term);
+}
+
 // jump to a specific mark from /benefits (#m=<id>)
 function jumpToHash() {
   const m = location.hash.match(/^#m=(\w+)$/);
@@ -617,6 +633,7 @@ function onPage() {
   maybeResume();
   jumpToHash();
   jumpToSavedHash();
+  jumpToSearchHl();
   closeSavedPopover();
   recordBookProgress();
   recordRecent();

@@ -4,6 +4,7 @@ import Base from "../../layouts/Base.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import Verse from "../../components/Verse.astro";
 import StudyBar from "../../components/StudyBar.astro";
+import ReaderSidebar from "../../components/ReaderSidebar.astro";
 import AudioPlayer from "../../components/AudioPlayer.astro";
 import RelatedStrip from "../../components/RelatedStrip.astro";
 import Relations from "../../components/Relations.astro";
@@ -54,6 +55,10 @@ const jsonLd = poemLd({
 });
 const chapterNums = new Set(a.chapters.flatMap((c) => c.verses.map((v) => v.n)));
 const preamble = a.verses.filter((v) => !chapterNums.has(v.n));
+// single-page poems with inline باب headings (e.g. العقيدة السفارينية) get the
+// same sidebar TOC book/[slug].astro's non-chunked branch has — chunked poems
+// don't need it, their chapter picker IS the TOC (card grid above)
+const hasToc = !a.chunked && a.chapters.some((c) => c.title);
 
 // per-bayt audio timestamps (سمة "تتبّع الصوت") — only exists for poems an
 // editor has manually timed; absent for the rest, feature just no-ops there
@@ -71,7 +76,7 @@ const timing = timingFiles[`../../content/poem-timing/${entry.id}.json`]?.defaul
       { label: entry.data.title },
     ]}
   />
-  <div class="wrap-read reading-pad" data-cite-book={entry.data.title} data-cite-author={author} data-cite-kind="poem">
+  <div class:list={["wrap-read", { "reading-pad": !hasToc }]} data-cite-book={entry.data.title} data-cite-author={author} data-cite-kind="poem">
     <div class="reader-head">
       <a class="eyebrow u87c136d pill-link" href="/poems">منظومة</a>
       <h1 class="reader-title">{entry.data.title}</h1>
@@ -119,6 +124,29 @@ const timing = timingFiles[`../../content/poem-timing/${entry.id}.json`]?.defaul
           </a>
         ))}
       </div>
+    ) : hasToc ? (
+      <div class="chap-grid">
+        <div class="reading-pad">
+          <StudyBar />
+          <div class="verses" data-matn={entry.id} data-unit="بيت" data-timing={timing ? JSON.stringify(timing) : undefined}>
+            {preamble.map((v) => <Verse n={v.n} sadr={v.sadr} ajz={v.ajz} anchor={v.anchor} notes={byAnchor[v.anchor]} />)}
+            {a.chapters.map((c) => (
+              <>
+                {c.title && <div class="chapter-band" id={c.slug}><span>{c.title}</span></div>}
+                {c.prose && <div class="u49fcd85 poem-chapter-prose" set:html={markdownToSafeHtml(c.prose)} />}
+                {c.verses.map((v) => <Verse n={v.n} sadr={v.sadr} ajz={v.ajz} anchor={v.anchor} notes={byAnchor[v.anchor]} />)}
+              </>
+            ))}
+          </div>
+          <div class="ornament ud38b410" >۞</div>
+        </div>
+        <ReaderSidebar label="فهرس الأبواب">
+          <div class="toc-box has-current">
+            <div class="toc-label">فهرس الأبواب</div>
+            {a.chapters.filter((c) => c.title).map((c) => <a href={`#${c.slug}`}>{c.title}</a>)}
+          </div>
+        </ReaderSidebar>
+      </div>
     ) : (
       <>
         <StudyBar />
@@ -135,7 +163,7 @@ const timing = timingFiles[`../../content/poem-timing/${entry.id}.json`]?.defaul
       </>
     )}
 
-    <div class="ornament ud38b410" >۞</div>
+    {!hasToc && <div class="ornament ud38b410" >۞</div>}
   </div>
   {commentaries.length > 0 && (
     <div class="wrap-mid" style="margin-top: 2rem; border-top: 1px solid var(--border, #e0e0e0); padding-top: 1rem;">

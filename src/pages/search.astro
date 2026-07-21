@@ -126,11 +126,18 @@ import Breadcrumbs from "../components/Breadcrumbs.astro";
       .search-hit-snippet { margin: 0; font-family: var(--font-serif); font-size: 16px; line-height: 2; color: var(--ink); }
       .search-hit-snippet mark { background: var(--gold-soft); color: inherit; border-radius: 3px; padding: 0 3px; }
       .search-hit-cite { margin: 10px 0 0; font-family: var(--font-ui); font-size: 11.5px; color: var(--ink-faint); }
-      .search-hit-copy {
-        position: absolute; inset-inline-end: 14px; top: 14px; background: none; border: none; cursor: pointer;
+      .search-hit-full {
+        margin: 10px 0 0; padding-top: 10px; border-top: 1px dashed var(--rule);
+        font-family: var(--font-serif); font-size: 15px; line-height: 2; color: var(--ink-soft); white-space: pre-wrap;
+      }
+      .search-hit-actions { position: absolute; inset-inline-end: 14px; top: 14px; display: flex; gap: 2px; }
+      .search-hit-expand, .search-hit-copy {
+        background: none; border: none; cursor: pointer;
         color: var(--ink-faint); padding: 4px; line-height: 0; border-radius: 6px;
       }
-      .search-hit-copy:hover { color: var(--ink); background: var(--paper); }
+      .search-hit-expand:hover, .search-hit-copy:hover { color: var(--ink); background: var(--paper); }
+      .search-hit-expand[aria-expanded="true"] svg { transform: rotate(180deg); }
+      .search-hit-expand svg { transition: transform .15s; }
       .search-load-more {
         display: block; margin: 20px auto 0; font-family: var(--font-ui); font-size: 13px; font-weight: 600;
         color: var(--ink); background: var(--surface); border: 1px solid var(--rule-strong); border-radius: 8px;
@@ -208,25 +215,70 @@ import Breadcrumbs from "../components/Breadcrumbs.astro";
       let seq = 0;
       let offset = 0;
       let lastHits = [];
-      const renderHit = (h) => {
+      // search links to a paragraph anchor for quran/"athar"-numbered books only —
+      // everything else has none, so the target page can't scroll/highlight on
+      // its own. aa-hl carries the query there instead; marks.ts's in-page find
+      // (already tashkeel-insensitive, already highlights + scrolls) picks it up
+      // on load. Query params must come before any #hash, not after.
+      const withHl = (url, term) => {
+        if (!term) return url;
+        const i = url.indexOf("#");
+        const path = i < 0 ? url : url.slice(0, i);
+        const hash = i < 0 ? "" : url.slice(i);
+        return `${path}${path.includes("?") ? "&" : "?"}aa-hl=${encodeURIComponent(term)}${hash}`;
+      };
+      const renderHit = (h, terms) => {
         const cite = h.person_name
           ? `<p class="search-hit-cite">${esc(h.person_name)}${h.death_year ? ` (ت ${h.death_year}هـ)` : ""}</p>` : "";
-        const plain = (h.title + " — " + h.snippet.replace(/<\/?mark>/g, "")).replace(/&lt;|&gt;|&amp;/g, "");
-        return `<div class="search-hit" data-type="${esc(h.type)}">` +
-          `<a href="${esc(h.url)}" style="display:block;color:inherit;text-decoration:none;">` +
+        return `<div class="search-hit" data-type="${esc(h.type)}" data-url="${esc(h.url)}">` +
+          `<a href="${esc(withHl(h.url, terms))}" style="display:block;color:inherit;text-decoration:none;">` +
           `<p class="search-hit-kicker">${TYPE_LABEL[h.type] || ""} · ${esc(h.title)}</p>` +
           `<p class="search-hit-snippet">${esc(h.snippet).replaceAll("&lt;mark&gt;", "<mark>").replaceAll("&lt;/mark&gt;", "</mark>")}</p>` +
           cite + `</a>` +
-          `<button type="button" class="search-hit-copy" data-copy="${esc(plain)}" title="نسخ" aria-label="نسخ النتيجة">` +
+          `<div class="search-hit-full" hidden></div>` +
+          `<div class="search-hit-actions">` +
+          `<button type="button" class="search-hit-expand" title="عرض النص كاملاً" aria-label="عرض النص كاملاً" aria-expanded="false">` +
+          `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg>` +
+          `</button>` +
+          `<button type="button" class="search-hit-copy" title="نسخ" aria-label="نسخ النتيجة">` +
           `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>` +
-          `</button></div>`;
+          `</button></div></div>`;
       };
-      results.addEventListener("click", (e) => {
-        const btn = e.target.closest(".search-hit-copy");
-        if (!btn) return;
-        const ok = () => { btn.setAttribute("title", "نُسخ ✓"); setTimeout(() => btn.setAttribute("title", "نسخ"), 1200); };
-        const fail = () => { btn.setAttribute("title", "تعذَّر النسخ"); setTimeout(() => btn.setAttribute("title", "نسخ"), 1200); };
-        (navigator.clipboard?.writeText(btn.dataset.copy || "") || Promise.reject()).then(ok, fail);
+      // full paragraph text isn't in the search response (kept light — see
+      // api/search.ts) — fetched once per result, on demand, and cached here
+      // for both "expand" and "copy" to share.
+      const fullTextCache = new Map();
+      const fetchFullText = async (url) => {
+        if (fullTextCache.has(url)) return fullTextCache.get(url);
+        const p = fetch("/api/search?url=" + encodeURIComponent(url))
+          .then((r) => (r.ok ? r.json() : { text: "" }))
+          .then((d) => d.text || "")
+          .catch(() => "");
+        fullTextCache.set(url, p);
+        return p;
+      };
+      results.addEventListener("click", async (e) => {
+        const card = e.target.closest(".search-hit");
+        if (!card) return;
+        const url = card.dataset.url;
+        const expandBtn = e.target.closest(".search-hit-expand");
+        if (expandBtn) {
+          const full = card.querySelector(".search-hit-full");
+          const open = expandBtn.getAttribute("aria-expanded") === "true";
+          if (open) { full.hidden = true; expandBtn.setAttribute("aria-expanded", "false"); return; }
+          if (!full.textContent) { full.textContent = "…"; full.hidden = false; full.textContent = (await fetchFullText(url)) || "تعذَّر تحميل النص."; }
+          else full.hidden = false;
+          expandBtn.setAttribute("aria-expanded", "true");
+          return;
+        }
+        const copyBtn = e.target.closest(".search-hit-copy");
+        if (copyBtn) {
+          const ok = () => { copyBtn.setAttribute("title", "نُسخ ✓"); setTimeout(() => copyBtn.setAttribute("title", "نسخ"), 1200); };
+          const fail = () => { copyBtn.setAttribute("title", "تعذَّر النسخ"); setTimeout(() => copyBtn.setAttribute("title", "نسخ"), 1200); };
+          const title = card.querySelector(".search-hit-kicker")?.textContent || "";
+          const full = (await fetchFullText(url)) || card.querySelector(".search-hit-snippet")?.textContent || "";
+          (navigator.clipboard?.writeText(`${title}\n${full}`) || Promise.reject()).then(ok, fail);
+        }
       });
 
       const go = async (append = false) => {
@@ -247,9 +299,12 @@ import Breadcrumbs from "../components/Breadcrumbs.astro";
         if (!data) { results.innerHTML = '<p class="search-empty">تعذَّر البحث الآن — حاولْ لاحقًا.</p>'; countEl.textContent = ""; moreBtn.hidden = true; return; }
         lastHits = append ? lastHits.concat(data.hits) : data.hits;
         if (!lastHits.length) { results.innerHTML = '<p class="search-empty">لا نتائج.</p>'; countEl.textContent = ""; moreBtn.hidden = true; return; }
-        countEl.textContent = `${lastHits.length}${data.hasMore ? "+" : ""} نتيجة عن «${terms}»`;
-        if (append) results.insertAdjacentHTML("beforeend", data.hits.map(renderHit).join(""));
-        else results.innerHTML = data.hits.map(renderHit).join("");
+        countEl.textContent = data.approximate
+          ? `${lastHits.length}${data.hasMore ? "+" : ""} نتيجة تقريبية — لا مطابقة تامة لِـ «${terms}»`
+          : `${lastHits.length}${data.hasMore ? "+" : ""} نتيجة عن «${terms}»`;
+        const html = data.hits.map((h) => renderHit(h, terms)).join("");
+        if (append) results.insertAdjacentHTML("beforeend", html);
+        else results.innerHTML = html;
         moreBtn.hidden = !data.hasMore;
         if (!append) addHistory(terms);
       };
