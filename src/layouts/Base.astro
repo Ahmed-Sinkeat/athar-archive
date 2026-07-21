@@ -553,6 +553,8 @@ const [readerSub, readerMain] = title.includes(" · ") ? title.split(" · ") : [
       // (render-budget gate) — it's a whole feature (Cache API + SW + a
       // popover), not something every page needs synchronously on load.
       import("../scripts/downloads.ts");
+      // hidden timing-capture tool; no-ops immediately unless ?tap is in the URL
+      import("../scripts/timing-capture.ts");
     </script>
   </body>
 </html>

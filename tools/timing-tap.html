@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>أداة توقيت الأبيات — محلية فقط</title>
+<style>
+  body { font-family: system-ui, sans-serif; max-width: 560px; margin: 24px auto; padding: 0 16px; background: #1b1b1b; color: #eee; }
+  h1 { font-size: 18px; }
+  .row { display: flex; gap: 8px; align-items: center; margin: 8px 0; flex-wrap: wrap; }
+  input[type=number] { font-size: 16px; width: 80px; padding: 6px; background: #111; color: #eee; border: 1px solid #444; border-radius: 6px; }
+  button { font-size: 14px; padding: 8px 14px; border-radius: 6px; border: 1px solid #555; background: #2a2a2a; color: #eee; cursor: pointer; }
+  button:hover { background: #3a3a3a; }
+  button.primary { background: #2a5c49; border-color: #2a5c49; }
+  button.danger { background: #6b2a2a; border-color: #6b2a2a; }
+  #clock { font-size: 40px; font-variant-numeric: tabular-nums; text-align: center; padding: 12px; }
+  #nextBtn { display: block; width: 100%; font-size: 34px; padding: 28px; background: #2a5c49; border-color: #2a5c49; border-radius: 10px; margin: 8px 0; }
+  #nextBtn:active { background: #1e4636; }
+  #nextBtn:disabled { opacity: .4; cursor: default; }
+  #log { font-family: monospace; font-size: 13px; max-height: 160px; overflow-y: auto; background: #111; border: 1px solid #333; border-radius: 6px; padding: 8px; white-space: pre-wrap; }
+  #out { width: 100%; height: 140px; font-family: monospace; font-size: 12px; background: #111; color: #9c9; border: 1px solid #333; border-radius: 6px; padding: 8px; }
+  .hint { color: #999; font-size: 13px; }
+  kbd { background: #333; padding: 2px 6px; border-radius: 4px; }
+</style>
+</head>
+<body>
+<h1>أداة توقيت الأبيات (محلية — لا تُنشر على الموقع)</h1>
+<p class="hint">١) أدخل عدد الأبيات. ٢) شغّل الصوت من الموقع في تبويب آخر واضغط <kbd>بدء</kbd> هنا في نفس اللحظة. ٣) اضغط الزر الأخضر الكبير عند بداية كل بيت.</p>
+
+<div class="row">
+  <span>عدد الأبيات:</span>
+  <input type="number" id="count" min="1" value="78">
+  <span class="hint" id="status"></span>
+</div>
+
+<div class="row">
+  <button id="startBtn" class="primary">بدء (اضغطه لحظة تشغيل الصوت)</button>
+  <button id="resetBtn" class="danger">إعادة الساعة</button>
+</div>
+
+<div id="clock">0.0s</div>
+<button id="nextBtn" class="primary"></button>
+
+<div class="row">
+  <button id="undoBtn">تراجع للبيت السابق</button>
+  <button id="exportBtn">تصدير JSON</button>
+</div>
+
+<div id="log"></div>
+<textarea id="out" readonly placeholder="سيظهر هنا الـ JSON بعد الضغط على تصدير"></textarea>
+
+<script>
+const countEl = document.getElementById("count");
+const statusEl = document.getElementById("status");
+const startBtn = document.getElementById("startBtn");
+const resetBtn = document.getElementById("resetBtn");
+const clockEl = document.getElementById("clock");
+const nextBtn = document.getElementById("nextBtn");
+const logEl = document.getElementById("log");
+const undoBtn = document.getElementById("undoBtn");
+const exportBtn = document.getElementById("exportBtn");
+const outEl = document.getElementById("out");
+
+let total = 0;
+let cues = []; // {v, t}
+let startedAt = null; // performance.now() at the moment "بدء" was pressed
+
+function elapsed() {
+  return startedAt === null ? 0 : (performance.now() - startedAt) / 1000;
+}
+
+function render() {
+  const idx = cues.length;
+  const finished = total > 0 && idx >= total;
+  nextBtn.textContent = finished ? "✅ انتهت كل الأبيات" : `بيت ${idx + 1} — اضغط هنا`;
+  nextBtn.disabled = !total || finished || startedAt === null;
+  logEl.textContent = cues.map(c => `${c.v}\t${c.t.toFixed(2)}s`).join("\n");
+  statusEl.textContent = total ? `${idx} / ${total}` : "";
+}
+
+startBtn.addEventListener("click", () => {
+  total = Math.max(1, parseInt(countEl.value, 10) || 0);
+  cues = [];
+  startedAt = performance.now();
+  render();
+});
+resetBtn.addEventListener("click", () => { startedAt = null; cues = []; render(); });
+
+function mark() {
+  if (!total || cues.length >= total || startedAt === null) return;
+  cues.push({ v: cues.length + 1, t: Math.round(elapsed() * 10) / 10 });
+  render();
+}
+function undo() {
+  if (!cues.length) return;
+  cues.pop();
+  render();
+}
+
+nextBtn.addEventListener("click", mark);
+undoBtn.addEventListener("click", undo);
+
+setInterval(() => { if (startedAt !== null) clockEl.textContent = elapsed().toFixed(1) + "s"; }, 100);
+
+exportBtn.addEventListener("click", () => {
+  outEl.value = JSON.stringify(cues, null, 2);
+  outEl.select();
+});
+
+render();
+</script>
+</body>
+</html>
