@@ -35,6 +35,15 @@ jobs:
         with:
           lfs: false
 
+      # ubuntu-latest ships ~30GB of preinstalled SDKs this Node/Astro project
+      # never touches (Android, .NET, GHC/Haskell). The corpus's static build
+      # (one HTML file per book-page across the whole /book-pages/ tree) grew
+      # past the runner's remaining free disk — ENOSPC mid-generate (2026-07-21)
+      # — so free that space before the build needs it, same growth pattern
+      # that already forced the NODE_OPTIONS heap bump below.
+      - name: Free disk space
+        run: sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL
+
       - uses: pnpm/action-setup@v4
         with:
           version: 11
