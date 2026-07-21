@@ -1,0 +1,96 @@
+---
+// Paginated books index — the old single page rendered all ~810 books TWICE
+// (flat SortableList + full grouped topic-tree, both always in the DOM,
+// toggled by CSS) into a slow-opening page. Same fix as articles/[...page]:
+// paginate the flat list, drop the grouped tree in favor of subject chips
+// (each subject already has its own /subject/[slug] page). Sort controls
+// (أبجديًّا/بالتاريخ) are kept — SortableList still owns those, just over a
+// 100-item page instead of the full corpus.
+import type { GetStaticPaths, Page } from "astro";
+import Base from "../../layouts/Base.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import SortableList from "../../components/SortableList.astro";
+import TitleFilter from "../../components/TitleFilter.astro";
+import { personNameMap, loadGraph } from "../../lib/site";
+import { hrefFor, labelFor, toArabicDigits } from "../../lib/display";
+import { buildSubjectGroups } from "../../lib/browse";
+import { collectionLd } from "../../lib/structured-data";
+import type { ContentEntry } from "../../lib/types";
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const graph = await loadGraph();
+  const { groups, uncategorized } = buildSubjectGroups("book", graph);
+  const seen = new Set<string>();
+  const all: ContentEntry[] = [];
+  const add = (it: ContentEntry) => { if (!seen.has(it.id)) { seen.add(it.id); all.push(it); } };
+  for (const g of groups) for (const t of g.topics) for (const it of t.items) add(it);
+  for (const it of uncategorized) add(it);
+  all.sort((a, b) => (a.data.title as string).localeCompare(b.data.title as string, "ar"));
+  return paginate(all, { pageSize: 100 });
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props as { page: Page<ContentEntry> };
+const graph = await loadGraph();
+const names = await personNameMap();
+const { groups, uncategorized } = buildSubjectGroups("book", graph);
+const total = groups.reduce((sum, g) => sum + g.count, 0) + uncategorized.length;
+
+const card = (it: ContentEntry) => {
+  const kind = labelFor("book", it.data);
+  return {
+    href: hrefFor("book", it.id),
+    title: it.data.title as string,
+    kind,
+    kindColor: kind === "متن" || kind === "مصدر أصلي" ? "tag-accent" : "",
+    audio: graph.audioForSource("book", it.id).length > 0,
+    sub: it.data.person ? names.get(it.data.person as string) ?? "" : "",
+    cta: "ادخل القراءة ←",
+    dlKind: "book",
+    dlId: it.id,
+  };
+};
+
+// numbered pagination: first, last, and a window around the current page
+const pageWindow = (() => {
+  const totalPages = page.lastPage;
+  const cur = page.currentPage;
+  const nums = new Set<number>([1, totalPages]);
+  for (let i = cur - 2; i <= cur + 2; i++) if (i >= 1 && i <= totalPages) nums.add(i);
+  return [...nums].sort((a, b) => a - b);
+})();
+const pageHref = (n: number) => (n === 1 ? "/books" : `/books/${n}`);
+---
+<Base
+  title={page.currentPage === 1 ? "الكتب" : `الكتب — صفحة ${toArabicDigits(page.currentPage)}`}
+  description="متونٌ ومراجعُ ومجاميعُ مرتَّبةٌ حسب الفنِّ."
+  activeNav="books"
+  searchScope={{ type: "book" }}
+  jsonLd={page.currentPage === 1 ? collectionLd({ title: "الكتب", path: "/books", crumbs: [{ name: "الرئيسية", path: "/" }, { name: "الكتب", path: "/books" }] }) : undefined}
+>
+  <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "الكتب" }]} />
+  <div class="wrap-mid uf5db21c">
+    <h1 class="page-title">الكتب</h1>
+    <p class="hub-lede">{toArabicDigits(total)} كتابًا — متونٌ وشروحٌ ومصادرُ أصلية، مرتَّبةً حسبَ الفنِّ.</p>
+
+    <div class="article-subject-chips">
+      {groups.map((g) => (
+        <a class="pill-link" href={`/subject/${g.id}`}>{g.title} · {toArabicDigits(g.count)}</a>
+      ))}
+    </div>
+
+    <TitleFilter placeholder="تصفية حسب العنوان…" scope={{ type: "book" }} />
+
+    <SortableList items={page.data} card={card} />
+
+    <nav class="pagination" aria-label="الصفحات" dir="rtl">
+      {page.url.prev && <a class="page-btn" href={page.url.prev} rel="prev">→ السابق</a>}
+      {pageWindow.map((n, i) => (
+        <>
+          {i > 0 && pageWindow[i - 1] < n - 1 && <span class="page-gap">…</span>}
+          <a class="page-btn" href={pageHref(n)} aria-current={n === page.currentPage ? "page" : undefined}>{toArabicDigits(n)}</a>
+        </>
+      ))}
+      {page.url.next && <a class="page-btn" href={page.url.next} rel="next">التالي ←</a>}
+    </nav>
+  </div>
+</Base>

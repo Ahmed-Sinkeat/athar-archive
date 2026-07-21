@@ -31,6 +31,7 @@ function getManifest(): Record<string, DownloadEntry> {
 
 function saveManifest(m: Record<string, DownloadEntry>) {
   localStorage.setItem(MANIFEST_KEY, JSON.stringify(m));
+  window.dispatchEvent(new Event("aa:downloads-changed")); // list rows re-sort downloaded-first
 }
 
 function formatSize(bytes: number): string {

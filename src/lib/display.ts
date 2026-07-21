@@ -102,3 +102,19 @@ export function hrefFor(
 export function sourceHref(type: string, id: string): string {
   return hrefFor(type, id);
 }
+
+export interface SearchScope { type?: string; in?: string; person?: string; label?: string }
+
+// /search link carrying a page's scope (collection type, or a specific work's
+// "in" scope) — shared by Base.astro's header search and TitleFilter.astro's
+// "no matches on this page" fallback, so both hand off to the same slice of
+// the index instead of a generic sitewide search.
+export function searchHrefFor(scope?: SearchScope): string {
+  if (!scope) return "/search";
+  const p = new URLSearchParams();
+  if (scope.in) { p.set("in", scope.in); if (scope.label) p.set("label", scope.label); }
+  else if (scope.person) { p.set("person", scope.person); if (scope.label) p.set("label", scope.label); }
+  else if (scope.type) { p.set("scope", scope.type); }
+  const qs = p.toString();
+  return qs ? `/search?${qs}` : "/search";
+}

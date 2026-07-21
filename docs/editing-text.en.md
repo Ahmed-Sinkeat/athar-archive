@@ -50,7 +50,7 @@ Note: the small «منظومة» badge shown on each poem is separate — it liv
 | Filter buttons (type/person/subject) + type names | `src/layouts/Base.astro` — `searchTypes` |
 | Reading settings (font/tashkeel/numbers/theme) | `src/layouts/Base.astro` — `settings-pop` |
 | Home title, buttons, stats, section labels, cards | `src/pages/index.astro` |
-| Browse page titles and intros | `src/pages/books.astro` · `poems.astro` · `questions/index.astro` · `articles.astro` · `people.astro` · `subjects.astro` · `benefits.astro` · `matn.astro` |
+| Browse page titles and intros | `src/pages/books/[...page].astro` · `poems.astro` · `questions/index.astro` · `articles/[...page].astro` · `people.astro` · `subjects.astro` · `benefits.astro` · `matn.astro` |
 | Content-type badge (منظومة / متن / مرجع / مجموع) | `src/lib/display.ts` — `labelFor` |
 | Era names (الأموي/العباسي/الأندلسي…) | `src/lib/display.ts` — `ERA_VALUES`, `eraLabel` |
 | Reader-page chrome (منظومة، نظمُ، متن، بيت، باب) | `src/pages/poem/[slug].astro`, `src/pages/book/[slug].astro` |

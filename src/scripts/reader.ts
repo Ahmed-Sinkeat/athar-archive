@@ -535,6 +535,17 @@ document.addEventListener("astro:page-load", fixVolumeAnchor);
 })();
 
 // --- browse «عرض الكل» toggle + flat-list sort (delegated → survives transitions) ---
+// downloaded items always float to the top, ahead of whatever sort is active
+function isDownloaded(li: HTMLElement): boolean {
+  const btn = li.querySelector<HTMLElement>(".card-dl");
+  if (!btn) return false;
+  try {
+    const m = JSON.parse(localStorage.getItem("aa-downloads-manifest") || "{}");
+    return !!m[`${btn.dataset.dlKind}:${btn.dataset.dlId}`];
+  } catch {
+    return false;
+  }
+}
 function applySort(container: HTMLElement) {
   const list = container.querySelector<HTMLElement>(".flat-list");
   if (!list) return;
@@ -543,6 +554,8 @@ function applySort(container: HTMLElement) {
   [...list.children]
     .sort((a, b) => {
       const A = a as HTMLElement, B = b as HTMLElement;
+      const dlA = isDownloaded(A), dlB = isDownloaded(B);
+      if (dlA !== dlB) return dlA ? -1 : 1;
       if (key === "year") {
         const na = A.dataset.year ? +A.dataset.year : NaN;
         const nb = B.dataset.year ? +B.dataset.year : NaN;
@@ -595,6 +608,12 @@ document.addEventListener("click", (e) => {
     }
   }
 });
+function applyAllSorts() {
+  document.querySelectorAll<HTMLElement>("[data-sortable]").forEach(applySort);
+}
+applyAllSorts();
+document.addEventListener("astro:page-load", applyAllSorts);
+window.addEventListener("aa:downloads-changed", applyAllSorts);
 
 // Restore the flat/grouped browse preference (shared across all browse pages)
 // and each <details> subject/topic open state (per-page, since the tree
@@ -1601,7 +1620,7 @@ document.addEventListener("click", (e) => {
 });
 // --- multi-track lesson series: swap the <source> from data-audio-tracks JSON ---
 function setTrack(fig: HTMLElement, idx: number, autoplay: boolean) {
-  const tracks = JSON.parse(fig.dataset.audioTracks || "[]") as { url: string; format?: string; label?: string }[];
+  const tracks = JSON.parse(fig.dataset.audioTracks || "[]") as { url: string; format?: string; label?: string; sizeBytes?: number | null }[];
   const t = tracks[idx];
   const audio = fig.querySelector<HTMLAudioElement>("[data-audio-el]");
   const source = fig.querySelector<HTMLSourceElement>("[data-audio-source]");
@@ -1614,7 +1633,17 @@ function setTrack(fig: HTMLElement, idx: number, autoplay: boolean) {
   const label = fig.querySelector<HTMLElement>("[data-audio-track-label]");
   if (label) label.textContent = t.label || "";
   const dl = fig.querySelector<HTMLAnchorElement>("[data-audio-dl]");
-  if (dl) dl.href = t.url;
+  if (dl) {
+    dl.href = t.url;
+    const sizeEl = dl.querySelector<HTMLElement>(".audio-dl-size");
+    const sizeLabel = t.sizeBytes
+      ? t.sizeBytes < 1024 * 1024 ? `${Math.round(t.sizeBytes / 1024)} KB` : `${(t.sizeBytes / (1024 * 1024)).toFixed(1)} MB`
+      : null;
+    if (sizeEl) sizeEl.textContent = sizeLabel ?? "";
+    const dlLabel = sizeLabel ? `تحميل (${sizeLabel})` : "تحميل";
+    dl.title = dlLabel;
+    dl.setAttribute("aria-label", dlLabel);
+  }
   fig.querySelectorAll<HTMLElement>("[data-audio-list-menu] [data-track]").forEach((b) =>
     b.setAttribute("aria-pressed", String(b.dataset.track === String(idx))),
   );
@@ -1745,28 +1774,6 @@ function initAudioBar() {
   syncAudioUI(fig, audio);
 }
 
-// direct download — the plain <a download> is ignored cross-origin (R2's
-// domain differs from the site's), so fetch the file as a blob and download
-// that instead (same-origin blob: URL, which browsers always honor). Needs
-// CORS enabled on the R2 bucket for the site's origin; falls back to letting
-// the link navigate normally (old behavior) if the fetch fails.
-document.addEventListener("click", (e) => {
-  const dl = (e.target as HTMLElement).closest<HTMLAnchorElement>("[data-audio-dl]");
-  if (!dl) return;
-  e.preventDefault();
-  const url = dl.href;
-  const filename = url.split("/").pop() || "audio";
-  fetch(url)
-    .then((r) => { if (!r.ok) throw new Error(String(r.status)); return r.blob(); })
-    .then((blob) => {
-      const a = document.createElement("a");
-      a.href = URL.createObjectURL(blob);
-      a.download = filename;
-      a.click();
-      URL.revokeObjectURL(a.href);
-    })
-    .catch(() => { window.location.href = url; });
-});
 
 // --- reading progress bar (header persists across transitions; recompute per page) ---
 const bar = document.querySelector<HTMLElement>("[data-progress]");

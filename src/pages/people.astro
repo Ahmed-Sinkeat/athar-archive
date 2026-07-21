@@ -47,11 +47,11 @@ const centuries = [...centuryBuckets.entries()]
   .sort((a, b) => a[0] - b[0])
   .map(([n, ppl]) => ({ n, people: ppl.sort((a, b) => a.data.title.localeCompare(b.data.title, "ar")) }));
 ---
-<Base title="التراجم والأعلام" description="تراجمُ الناظمين والمصنِّفين والشُّرّاح، وما لكلٍّ منهم في الأرشيف." activeNav="people" jsonLd={collectionLd({ title: "التراجم والأعلام", path: "/people", crumbs: [{ name: "الرئيسية", path: "/" }, { name: "التراجم والأعلام", path: "/people" }] })}>
+<Base title="التراجم والأعلام" description="تراجمُ الناظمين والمصنِّفين والشُّرّاح، وما لكلٍّ منهم في الأرشيف." activeNav="people" searchScope={{ type: "person" }} jsonLd={collectionLd({ title: "التراجم والأعلام", path: "/people", crumbs: [{ name: "الرئيسية", path: "/" }, { name: "التراجم والأعلام", path: "/people" }] })}>
   <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "التراجم والأعلام" }]} />
   <div class="wrap-mid uf5db21c" style="padding-bottom: 80px;">
     <h1 class="page-title">التراجم والأعلام</h1>
-    <TitleFilter placeholder="تصفية حسب الاسم…" />
+    <TitleFilter placeholder="تصفية حسب الاسم…" scope={{ type: "person" }} />
 
     <!-- century timeline is the primary view (mockup التراجم); flat sortable list behind the toggle -->
     <div class="browse" data-browse>

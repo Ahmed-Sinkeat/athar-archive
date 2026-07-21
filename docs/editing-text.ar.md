@@ -50,7 +50,7 @@
 | أزرارُ التصفية (النوع/الأعلام/الموضوعات) وأسماءُ الأنواع | `src/layouts/Base.astro` — `searchTypes` |
 | إعداداتُ القراءة (حجم الخط/التشكيل/الترقيم/السمة) | `src/layouts/Base.astro` — نافذةُ `settings-pop` |
 | عنوانُ الرئيسية، الأزرارُ، الإحصاءاتُ، عناوينُ الأقسام، البطاقات | `src/pages/index.astro` |
-| عناوينُ صفحاتِ التصفّح ومقدِّماتُها | `src/pages/books.astro` · `poems.astro` · `questions/index.astro` · `articles.astro` · `people.astro` · `subjects.astro` · `benefits.astro` · `matn.astro` |
+| عناوينُ صفحاتِ التصفّح ومقدِّماتُها | `src/pages/books/[...page].astro` · `poems.astro` · `questions/index.astro` · `articles/[...page].astro` · `people.astro` · `subjects.astro` · `benefits.astro` · `matn.astro` |
 | شارةُ نوعِ المحتوى (منظومة / متن / مرجع / مجموع) | `src/lib/display.ts` — `labelFor` |
 | أسماءُ العصور (الأموي/العباسي/الأندلسي…) | `src/lib/display.ts` — `ERA_VALUES` و`eraLabel` |
 | نصوصُ صفحةِ القراءة (منظومة، نظمُ، متن، بيت، باب) | `src/pages/poem/[slug].astro` و`src/pages/book/[slug].astro` |

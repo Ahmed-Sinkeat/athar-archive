@@ -304,7 +304,7 @@ const finalContent = wirePageFootnotes(markdownToSafeHtml(chapter.content), chap
               <span class="faint masail-count">{toArabicDigits(commentaries.length)}</span>
             </summary>
             <div class="sharh-picker-body">
-              <TitleFilter placeholder="ابحث في الشروح…" />
+              <TitleFilter placeholder="ابحث في الشروح…" scope={{ type: "book" }} />
               <div class="sharh-list">
                 {commentaries.map(c => (
                   <a href={c.href} data-title={c.title}>

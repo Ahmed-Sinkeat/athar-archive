@@ -9,10 +9,10 @@ import { hrefFor } from "../lib/display";
 const terms = (await getCollection("term")).filter(isPub)
   .sort((a, b) => a.data.title.localeCompare(b.data.title, "ar"));
 ---
-<Base title="المعجم" description="معجمٌ لمصطلحات العلوم الإسلامية وتعريفاتها." activeNav="mujam">
+<Base title="المعجم" description="معجمٌ لمصطلحات العلوم الإسلامية وتعريفاتها." activeNav="mujam" searchScope={{ type: "term" }}>
   <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "المعجم" }]} />
   <div class="wrap-mid" style="padding-bottom: 80px;">
-    <TitleFilter placeholder="تصفية حسب المصطلح…" />
+    <TitleFilter placeholder="تصفية حسب المصطلح…" scope={{ type: "term" }} />
     {terms.length === 0 ? (
       <p class="faint" style="padding: 48px 0">لا توجد مصطلحات بعد.</p>
     ) : (

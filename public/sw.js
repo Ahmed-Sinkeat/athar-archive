@@ -18,7 +18,7 @@ const CACHE_NAME = "aa-downloads";
 // first time they actually visit it (see shellCacheFirst).
 const SHELL_CACHE = "aa-shell";
 const SHELL_URLS = [
-  "/", "/books", "/quran", "/hadith", "/poems", "/people", "/articles",
+  "/", "/books", "/quran", "/quran/mushaf", "/hadith", "/poems", "/people", "/articles",
   "/questions", "/benefits", "/subjects", "/search", "/downloads", "/about",
   "/dl-sizes.json", // per-entity download sizes for the list-row buttons
   "/fonts/fonts.css", // self-hosted font faces — woff2s cached on use (SWR)

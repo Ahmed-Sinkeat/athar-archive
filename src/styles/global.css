@@ -1743,6 +1743,8 @@ html[data-theme="noir"] ::highlight(aa-find)    { background-color: rgba(255, 15
 .flat-list .card-cta { display: none; }
 .flat-list .card-kindrow .pill { min-width: 60px; text-align: center; }
 .flat-list .card::after { content: "←"; flex: none; font-size: 13px; color: var(--ink-faint); }
+/* a per-row download-for-offline button (card-dl) replaces the plain arrow */
+.flat-list .card:has(.card-dl)::after { content: none; }
 
 @media (max-width: 600px) {
   .flat-list .card {

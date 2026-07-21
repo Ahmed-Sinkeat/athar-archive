@@ -4,7 +4,7 @@ import { ClientRouter } from "astro:transitions";
 import "../styles/global.css";
 import "../styles/extracted.css"; // generated from former inline styles — must load AFTER global.css
 import { config } from "../../ahlalathar.config";
-import { toArabicDigits } from "../lib/display";
+import { toArabicDigits, searchHrefFor } from "../lib/display";
 
 interface Props {
   title: string;
@@ -21,15 +21,7 @@ const canonical = new URL(Astro.url.pathname.replace(/\/$/, "") || "/", config.s
 const GA_ID = "G-NBHR8NV97G";
 
 // Search affordance: links to /search, carrying the current page's scope (Part D).
-const searchHref = (() => {
-  if (!searchScope) return "/search";
-  const p = new URLSearchParams();
-  if (searchScope.in) { p.set("in", searchScope.in); if (searchScope.label) p.set("label", searchScope.label); }
-  else if (searchScope.person) { p.set("person", searchScope.person); if (searchScope.label) p.set("label", searchScope.label); }
-  else if (searchScope.type) { p.set("scope", searchScope.type); }
-  const qs = p.toString();
-  return qs ? `/search?${qs}` : "/search";
-})();
+const searchHref = searchHrefFor(searchScope);
 
 // Top nav (RTL: first item renders rightmost, last renders leftmost) —
 // الكتب / القرآن / الحديث / الشعر / الأعلام / المقالات / المسائل / كُناشة
@@ -434,17 +426,21 @@ const [readerSub, readerMain] = title.includes(" · ") ? title.split(" · ") : [
     <nav class="tabbar" aria-label="التنقل السفلي">
       {readingPage ? (
         <>
-          <button data-action="sidebar:mobile-toggle" aria-label="فهرس الفصول">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h10M4 18h13"></path></svg>
-            <span>الفهرس</span>
+          <!-- المزيد opens the drawer (.drawer, opens on the same side as this
+               button) — placed first in DOM so RTL renders it on the right,
+               next to where the drawer actually appears; الفهرس (a popup
+               anchored to its own toggle, not the drawer) moves to the left. -->
+          <button data-action="menu:toggle" aria-label="القائمة">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+            <span>المزيد</span>
           </button>
           <button data-action="page:save" class="tab-save" aria-pressed="false" aria-label="حفظ للقراءة لاحقًا">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"></path></svg>
             <span>حفظ</span>
           </button>
-          <button data-action="menu:toggle" aria-label="القائمة">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
-            <span>المزيد</span>
+          <button data-action="sidebar:mobile-toggle" aria-label="فهرس الفصول">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h10M4 18h13"></path></svg>
+            <span>الفهرس</span>
           </button>
         </>
       ) : (

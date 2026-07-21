@@ -4,13 +4,18 @@
 // duplicated the header's global search and confused "two searches on one
 // page" — this one only narrows the cards already on screen, by title, no
 // network request. Deep full-text search still lives in the header search.
-interface Props { placeholder?: string }
-const { placeholder = "تصفية حسب العنوان…" } = Astro.props;
+import { searchHrefFor, type SearchScope } from "../lib/display";
+interface Props { placeholder?: string; scope?: SearchScope }
+const { placeholder = "تصفية حسب العنوان…", scope } = Astro.props;
+// base query string (scope only, no q=) — the client script appends q= as
+// the visitor types, so the fallback lands on this same page's slice of the
+// index instead of a generic sitewide search
+const searchBase = searchHrefFor(scope);
 ---
 <div class="title-filter">
   <input type="search" class="title-filter-input" placeholder={placeholder} aria-label={placeholder} autocomplete="off" data-title-filter />
   <p class="title-filter-empty faint" data-title-filter-empty hidden>
-    لا نتائج مطابقة في هذه الصفحة — <a href="/search" data-title-filter-search-link>جرّب البحث الشامل</a>
+    لا نتائج مطابقة في هذه الصفحة — <a href={searchBase} data-title-filter-search-link data-search-base={searchBase}>جرّب البحث الشامل</a>
   </p>
 </div>
 
@@ -55,7 +60,11 @@ const { placeholder = "تصفية حسب العنوان…" } = Astro.props;
           g.hidden = q !== "" && ![...kids].some((k) => !k.hidden);
         });
         empty.hidden = shown > 0 || !q;
-        if (searchLink) searchLink.href = `/search?q=${encodeURIComponent(input.value.trim())}`;
+        if (searchLink) {
+          const base = searchLink.dataset.searchBase || "/search";
+          const sep = base.includes("?") ? "&" : "?";
+          searchLink.href = `${base}${sep}q=${encodeURIComponent(input.value.trim())}`;
+        }
       });
     });
   })();
