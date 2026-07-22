@@ -3,8 +3,9 @@
 // (scripts/gen-search-meta.ts) for author name/death-year — joined at query
 // time rather than added to the FTS5 schema, since FTS5 tables can't
 // ALTER TABLE ADD COLUMN (would force a full ~22k-doc reindex).
-// Query params: q (required), mode (any|all|phrase), type/book/person
-// (comma-separated, optional scope filters), sort (relevance|death), offset.
+// Query params: q (required), mode (any|all|phrase), field (all|title|text),
+// type/book/person (comma-separated, optional scope filters), sort
+// (relevance|death), offset.
 import type { APIRoute } from "astro";
 import { normalizeArabic } from "../../lib/ar-normalize.js";
 
@@ -66,7 +67,15 @@ export const GET: APIRoute = async ({ url }) => {
   if (tokens.length === 0) return json({ hits: [], hasMore: false });
 
   const mode = ["any", "all", "phrase"].includes(url.searchParams.get("mode") ?? "") ? url.searchParams.get("mode")! : "all";
-  const match = buildMatch(tokens, mode);
+  // field=title restricts matching to the title column only (skips a book's
+  // whole text) — e.g. searching for an author or work by name without
+  // pulling in every unrelated paragraph that happens to mention the word.
+  // field=text is the opposite: body text only, titles excluded. FTS5's
+  // `column: (expr)` syntax scopes an already-built match expression to one
+  // column without changing how buildMatch() itself works.
+  const field = ["title", "text"].includes(url.searchParams.get("field") ?? "") ? url.searchParams.get("field")! : "all";
+  const scoped = (expr: string) => (field === "all" ? expr : `${field}: (${expr})`);
+  const match = scoped(buildMatch(tokens, mode));
 
   const conds: string[] = ["docs MATCH ?1"];
   const binds: (string | number)[] = [match];
@@ -88,8 +97,13 @@ export const GET: APIRoute = async ({ url }) => {
   const limitBind = binds.length + 1;
   const offsetBind = binds.length + 2;
 
+  // snippet() takes a column INDEX, not a name (0=title, 1=text — see the
+  // fts5(title, text, ...) column order in gen-search-index.ts) — a
+  // title-only search should quote the title back, not an unrelated body
+  // snippet that happens to share no words with what was actually matched.
+  const snippetCol = field === "title" ? 0 : 1;
   const sql = `SELECT docs.type, docs.url, docs.display_title AS title,
-                snippet(docs, 1, '<mark>', '</mark>', '…', 16) AS snippet,
+                snippet(docs, ${snippetCol}, '<mark>', '</mark>', '…', 16) AS snippet,
                 pm.name AS person_name, pm.death_year AS death_year
          FROM docs LEFT JOIN person_meta pm ON pm.slug = docs.person
          WHERE ${conds.join(" AND ")}
@@ -102,7 +116,7 @@ export const GET: APIRoute = async ({ url }) => {
     // rather than silently switching modes or just showing "no results"
     let approximate = false;
     if (results.length === 0 && mode === "all") {
-      const orBinds = [buildMatch(tokens, "any"), ...binds.slice(1)];
+      const orBinds = [scoped(buildMatch(tokens, "any")), ...binds.slice(1)];
       ({ results } = await db.prepare(sql).bind(...orBinds, PAGE_SIZE + 1, offset).all());
       approximate = results.length > 0;
     }

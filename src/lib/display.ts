@@ -14,6 +14,16 @@ export function stripTashkeel(text: string): string {
   return text.replace(TASHKEEL_RE, "");
 }
 
+// A small minority of audio entries (~15 of 900+) encode the reciter's name
+// in their own title as "العمل — القارئ" (e.g. "تائية الإلبيري — سالم
+// العنزي") — most don't carry a reciter at all, there's no dedicated schema
+// field for it. Pull the name out when it's there instead of showing the
+// raw, unsplit label (today's multi-track behavior) or nothing (today's
+// single-track behavior).
+export function reciterOf(label?: string | null): string | undefined {
+  return label?.split(" — ")[1]?.trim() || undefined;
+}
+
 // Arabic singular/plural labels + index routes per entity (URL Map §01).
 export const ENTITY: Record<
   string,

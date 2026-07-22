@@ -1,5 +1,5 @@
 ---
-title: "منظومة الإلبيري — سالم العنزي"
+title: "تائية الإلبيري — سالم العنزي"
 status: published
 published_at: 2026-07-07
 source_type: poem

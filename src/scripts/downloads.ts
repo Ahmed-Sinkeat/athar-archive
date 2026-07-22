@@ -15,7 +15,7 @@ interface DownloadEntry {
   path?: string; // landing page it was downloaded from (older manifests lack it)
 }
 
-const KIND_LABEL: Record<string, string> = { book: "كتاب", poem: "منظومة", quran: "سورة", article: "مقالة" };
+const KIND_LABEL: Record<string, string> = { book: "كتاب", poem: "منظومة", quran: "سورة", article: "مقالة", audio: "مقطع صوتي" };
 
 function keyOf(kind: string, id: string): string {
   return `${kind}:${id}`;
@@ -59,17 +59,10 @@ function collectUrls(doc: Document = document, pagePath: string = location.pathn
     const src = el.dataset.annSrc;
     if (src && src.startsWith("/")) urls.add(src);
   }
-  // audio on this page (single track or lesson-series playlist) — cross-origin
-  // R2 URLs, fetchable because the bucket allows this origin via CORS
-  for (const el of doc.querySelectorAll<HTMLElement>("[data-audio]")) {
-    const tracks = el.dataset.audioTracks;
-    if (tracks) {
-      try { for (const t of JSON.parse(tracks)) if (t?.url) urls.add(t.url); } catch { /* malformed JSON → skip */ }
-    } else {
-      const src = el.querySelector<HTMLSourceElement>("[data-audio-source]")?.getAttribute("src");
-      if (src) urls.add(src);
-    }
-  }
+  // Audio is NOT bundled in here on purpose — this is the text-only "read
+  // offline" download; each track has its own separate cache-based download
+  // button (data-dl-kind="audio" below), so a big multi-hour lesson series
+  // doesn't get pulled in every time someone just wants the page text.
   return [...urls];
 }
 
@@ -94,10 +87,15 @@ async function startDownload(btn: HTMLElement) {
   const sizeEl = btn.querySelector<HTMLElement>("[data-dl-size]");
   btn.setAttribute("data-dl-busy", "1");
   let urls: string[];
-  // a whole tafsir (the ann-sheet's "تنزيل هذا التفسير كاملًا" button): the
-  // url list — that source's per-ayah stubs + bodies — comes from the
-  // build-time manifest, since a tafsir has no landing page to scrape
-  if (kind === "tafsir") {
+  // a single audio track (AudioPlayer's تحميل button) — the id IS the url,
+  // no page to scrape; the whole point is downloading just this one track
+  // instead of the page's full text+audio bundle
+  if (kind === "audio") {
+    urls = [id];
+  } else if (kind === "tafsir") {
+    // a whole tafsir (the ann-sheet's "تنزيل هذا التفسير كاملًا" button): the
+    // url list — that source's per-ayah stubs + bodies — comes from the
+    // build-time manifest, since a tafsir has no landing page to scrape
     try {
       const res = await fetch(`/tafsir-dl/${id}.json`);
       if (!res.ok) throw new Error(String(res.status));
@@ -274,6 +272,9 @@ function renderDownloadButton(btn: HTMLElement) {
     if (label) label.textContent = "تنزيل هذا التفسير كاملًا";
     return;
   }
+  // AudioPlayer already server-renders this track's size next to the icon —
+  // nothing to compute or overwrite here
+  if (kind === "audio") return;
   // exact size from the build-time manifest; per-page HEAD probing stays as a
   // fallback for anything the manifest misses (e.g. Quran surahs)
   getSizes().then((sizes) => {
@@ -386,5 +387,11 @@ function onPage() {
 }
 onPage();
 document.addEventListener("astro:page-load", onPage);
+// reader.ts (lesson-series track switch) swaps [data-audio-dl]'s data-dl-id
+// to the newly-selected track's url — re-render so aria-pressed/✓ reflects
+// THAT track's own offline state, not the one it replaced
+window.addEventListener("aa:audio-track-changed", () => {
+  document.querySelectorAll<HTMLElement>('[data-action="download:toggle"][data-dl-kind="audio"]').forEach(renderDownloadButton);
+});
 
 export {};

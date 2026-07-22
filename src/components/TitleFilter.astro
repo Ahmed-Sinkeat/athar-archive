@@ -1,50 +1,111 @@
 ---
 // Client-side title-only filter for list pages (books/poems/matn/people/...).
-// Replaces the old per-page SectionSearch (a live /api/search dropdown) which
-// duplicated the header's global search and confused "two searches on one
-// page" — this one only narrows the cards already on screen, by title, no
-// network request. Deep full-text search still lives in the header search.
-import { searchHrefFor, type SearchScope } from "../lib/display";
+// Narrows the cards already on screen, by title, no network request — AND,
+// whenever the page has a `scope` (its collection type), a query that comes
+// up empty locally falls back to the real /api/search index (paginated pages
+// like /books only ever have ~100 of ~1000+ items in the DOM, so a title
+// match elsewhere in the corpus would otherwise require clicking through
+// pages to find). Results render right here, inline — never a "no matches,
+// try the full search" hand-off to another page.
+import type { SearchScope } from "../lib/display";
 interface Props { placeholder?: string; scope?: SearchScope }
 const { placeholder = "تصفية حسب العنوان…", scope } = Astro.props;
-// base query string (scope only, no q=) — the client script appends q= as
-// the visitor types, so the fallback lands on this same page's slice of the
-// index instead of a generic sitewide search
-const searchBase = searchHrefFor(scope);
 ---
-<div class="title-filter">
-  <input type="search" class="title-filter-input" placeholder={placeholder} aria-label={placeholder} autocomplete="off" data-title-filter />
-  <p class="title-filter-empty faint" data-title-filter-empty hidden>
-    لا نتائج مطابقة في هذه الصفحة — <a href={searchBase} data-title-filter-search-link data-search-base={searchBase}>جرّب البحث الشامل</a>
-  </p>
+<div class="title-filter" data-search-type={scope?.type ?? ""}>
+  {scope && (
+    <div class="title-filter-field-row" role="group" aria-label="نطاق البحث الشامل">
+      <button type="button" class="title-filter-field-chip" data-field="all" aria-pressed="true">الكل</button>
+      <button type="button" class="title-filter-field-chip" data-field="title" aria-pressed="false">العنوان فقط</button>
+      <button type="button" class="title-filter-field-chip" data-field="text" aria-pressed="false">النص فقط</button>
+    </div>
+  )}
+  <input type="search" class="title-filter-input" placeholder={placeholder} aria-label={placeholder} autocomplete="off" data-title-filter data-title-filter-field="all" />
+  <p class="title-filter-empty faint" data-title-filter-empty hidden>لا نتائج مطابقة.</p>
+  <div class="title-filter-live" data-title-filter-live hidden></div>
 </div>
 
 <style>
   .title-filter { margin-bottom: 18px; }
+  .title-filter-field-row { display: flex; gap: 6px; margin-bottom: 6px; }
+  .title-filter-field-chip {
+    font-family: var(--font-ui); font-size: 11.5px; color: var(--ink-soft); background: none;
+    border: 1px solid var(--rule); border-radius: 999px; padding: 3px 11px; cursor: pointer;
+  }
+  .title-filter-field-chip[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); font-weight: 600; }
   .title-filter-input {
     width: 100%; font-family: var(--font-ui); font-size: 15px; color: var(--ink);
     background: var(--surface); border: 1px solid var(--rule-strong); border-radius: 10px;
     padding: 10px 14px;
   }
   .title-filter-empty { padding: 10px 2px 0; font-size: 13px; }
+  .title-filter-live { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+  .title-filter-live-hit {
+    display: block; background: var(--surface); border: 1px solid var(--rule);
+    border-inline-end: 3px solid var(--accent); border-radius: 10px; padding: 12px 16px;
+    text-decoration: none; color: var(--ink);
+  }
+  .title-filter-live-hit:hover { border-color: var(--accent); }
+  .title-filter-live-title { margin: 0 0 4px; font-family: var(--font-ui); font-size: 13px; font-weight: 600; }
+  .title-filter-live-snippet { margin: 0; font-family: var(--font-serif); font-size: 14.5px; line-height: 1.85; color: var(--ink-soft); }
+  .title-filter-live-snippet mark { background: var(--gold-soft); color: inherit; border-radius: 3px; padding: 0 3px; }
+  .title-filter-live-cite { margin: 4px 0 0; font-family: var(--font-ui); font-size: 11.5px; color: var(--ink-faint); }
 </style>
 
 <script is:inline data-astro-rerun>
   (() => {
+    const esc = (s) => s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
     document.querySelectorAll("[data-title-filter]").forEach((input) => {
       if (input.dataset.wired) return;
       input.dataset.wired = "1";
-      const scope = input.closest(".title-filter").parentElement;
-      const empty = scope.querySelector("[data-title-filter-empty]");
-      const searchLink = empty.querySelector("[data-title-filter-search-link]");
+      const wrap = input.closest(".title-filter");
+      const scope = wrap.parentElement;
+      const empty = wrap.querySelector("[data-title-filter-empty]");
+      const live = wrap.querySelector("[data-title-filter-live]");
+      const searchType = wrap.dataset.searchType;
       // strip tashkeel, then fold hamza-alef/ya/ta-marbuta variants so
       // "الألبيري" matches a search for "الالبيري" (and vice versa) — common
       // spelling drift in Arabic text, not a real difference to the reader
       const norm = (s) => s.normalize("NFKD").replace(/[ً-ٰٟ]/g, "")
         .replace(/[إأآٱ]/g, "ا").replace(/ة/g, "ه").replace(/ى/g, "ي")
         .toLowerCase();
-      input.addEventListener("input", () => {
-        const q = norm(input.value.trim());
+      // No local match on this page (paginated listings like /books only
+      // ever hold ~100 of 1000+ titles in the DOM at once) → fall back to
+      // the real search index, scoped to this page's type, rendered right
+      // here — never a "try the full search" hand-off. Debounced + sequenced
+      // so a fast typist's earlier, slower request can't overwrite a later one.
+      let seq = 0;
+      let debounce;
+      const runLiveSearch = (raw) => {
+        clearTimeout(debounce);
+        if (raw.length < 2) { live.hidden = true; live.innerHTML = ""; return; }
+        debounce = setTimeout(async () => {
+          const mySeq = ++seq;
+          try {
+            const field = input.dataset.titleFilterField || "all";
+            const res = await fetch(`/api/search?q=${encodeURIComponent(raw)}&type=${encodeURIComponent(searchType)}&field=${field}`);
+            const data = res.ok ? await res.json() : { hits: [] };
+            if (mySeq !== seq) return; // a newer keystroke already superseded this
+            const hits = (data.hits || []).slice(0, 8);
+            if (!hits.length) {
+              live.innerHTML = `<p class="title-filter-empty faint">لا نتائج مطابقة.</p>`;
+              live.hidden = false;
+              return;
+            }
+            live.innerHTML = hits.map((h) => {
+              const cite = h.person_name
+                ? `<p class="title-filter-live-cite">${esc(h.person_name)}${h.death_year ? ` (ت ${h.death_year}هـ)` : ""}</p>` : "";
+              const snippet = esc(h.snippet || "").replaceAll("&lt;mark&gt;", "<mark>").replaceAll("&lt;/mark&gt;", "</mark>");
+              return `<a class="title-filter-live-hit" href="${esc(h.url)}">` +
+                `<p class="title-filter-live-title">${esc(h.title)}</p>` +
+                `<p class="title-filter-live-snippet">${snippet}</p>${cite}</a>`;
+            }).join("");
+            live.hidden = false;
+          } catch { /* offline/API hiccup — local-only filtering still works */ }
+        }, 300);
+      };
+      const apply = () => {
+        const raw = input.value.trim();
+        const q = norm(raw);
         const items = scope.querySelectorAll("[data-title]");
         let shown = 0;
         items.forEach((el) => {
@@ -59,12 +120,26 @@ const searchBase = searchHrefFor(scope);
           if (kids.length === 0) return;
           g.hidden = q !== "" && ![...kids].some((k) => !k.hidden);
         });
-        empty.hidden = shown > 0 || !q;
-        if (searchLink) {
-          const base = searchLink.dataset.searchBase || "/search";
-          const sep = base.includes("?") ? "&" : "?";
-          searchLink.href = `${base}${sep}q=${encodeURIComponent(input.value.trim())}`;
+        if (shown > 0 || !q) {
+          empty.hidden = true;
+          live.hidden = true; live.innerHTML = ""; clearTimeout(debounce);
+        } else if (searchType) {
+          // don't flash "no results" while the real search is still in flight
+          empty.hidden = true;
+          runLiveSearch(raw);
+        } else {
+          // no scope on this page → no fallback to try, this really is empty
+          empty.hidden = false;
+          live.hidden = true; live.innerHTML = ""; clearTimeout(debounce);
         }
+      };
+      input.addEventListener("input", apply);
+      wrap.querySelectorAll("[data-field]").forEach((chip) => {
+        chip.addEventListener("click", () => {
+          wrap.querySelectorAll("[data-field]").forEach((b) => b.setAttribute("aria-pressed", String(b === chip)));
+          input.dataset.titleFilterField = chip.dataset.field;
+          if (input.value.trim()) apply();
+        });
       });
     });
   })();

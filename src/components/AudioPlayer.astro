@@ -5,7 +5,7 @@
 // bar/FAB UI off its play/pause/timeupdate/ended events. Progressive
 // enhancement: no-JS still gets a plain, fully-usable native <audio controls>
 // (data-audio-fallback), hidden once JS confirms it can render the bar.
-import { toArabicDigits } from "../lib/display";
+import { toArabicDigits, reciterOf } from "../lib/display";
 
 interface Source {
   url: string;
@@ -19,8 +19,9 @@ interface Props {
   title: string;
   subtitle?: string;
   initial?: number; // preselected track (lesson matching the current chapter)
+  loopByVerse?: boolean; // page has per-bayt timing (.verses[data-timing]) — show the "loop from bayt to bayt" control
 }
-const { sources, title, subtitle, initial = 0 } = Astro.props;
+const { sources, title, subtitle, initial = 0, loopByVerse = false } = Astro.props;
 const list = sources.filter((s) => s?.url);
 const cur = list[initial] ?? list[0];
 const curIdx = list[initial] ? initial : 0;
@@ -28,6 +29,12 @@ const mime = (f?: "opus" | "mp3") => (f === "mp3" ? "audio/mpeg" : "audio/ogg; c
 // multi-track (lesson series): reader.ts swaps the <source> from this JSON and
 // auto-advances on `ended`
 const tracks = list.length > 1 ? JSON.stringify(list.map((s) => ({ url: s.url, format: s.format ?? "opus", label: s.label ?? "", sizeBytes: s.sizeBytes ?? null }))) : undefined;
+// Prefer the reciter's name whenever this track's own title encodes one
+// ("العمل — القارئ" — see reciterOf); otherwise fall back to whatever this
+// slot showed before: the raw label for a multi-track lesson series (it's
+// really "which chapter/lesson is this", not a person, but still useful to
+// show), or the work's author for a single, unlabeled track.
+const curSubtitle = reciterOf(cur?.label) ?? (tracks ? cur?.label : subtitle);
 const sizeLabel = cur?.sizeBytes
   ? cur.sizeBytes < 1024 * 1024
     ? `${Math.round(cur.sizeBytes / 1024)} KB`
@@ -79,7 +86,7 @@ const sizeLabel = cur?.sizeBytes
         </button>
         <div class="audio-info">
           <p class="audio-title">{title}</p>
-          {tracks ? <p class="audio-subtitle" data-audio-track-label>{cur.label}</p> : subtitle && <p class="audio-subtitle">{subtitle}</p>}
+          <p class="audio-subtitle" data-audio-track-label hidden={!curSubtitle}>{curSubtitle}</p>
         </div>
         <span class="audio-time" dir="ltr" data-audio-time>0:00 / 0:00</span>
         {tracks && (
@@ -102,10 +109,26 @@ const sizeLabel = cur?.sizeBytes
             ))}
           </div>
         </span>
-        <a class="audio-dl" href={cur.url} download data-audio-dl title={sizeLabel ? `تحميل (${sizeLabel})` : "تحميل"} aria-label={sizeLabel ? `تحميل (${sizeLabel})` : "تحميل"}>
+        {loopByVerse && (
+          <span class="audio-speed-wrap">
+            <button type="button" class="audio-speed" data-loop-toggle aria-pressed="false" aria-label="تكرار مقطع من الأبيات" title="تكرار مقطع من الأبيات">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 1l4 4-4 4"></path><path d="M3 11V9a4 4 0 014-4h14"></path><path d="M7 23l-4-4 4-4"></path><path d="M21 13v2a4 4 0 01-4 4H3"></path></svg>
+              <span data-loop-status></span>
+            </button>
+            <div class="audio-speed-menu audio-loop-menu" data-loop-menu hidden>
+              <label>من بيت <input type="number" min="1" inputmode="numeric" data-loop-from /></label>
+              <label>إلى بيت <input type="number" min="1" inputmode="numeric" data-loop-to /></label>
+              <label>عدد مرّات التكرار <input type="number" min="1" value="3" inputmode="numeric" data-loop-count /></label>
+              <button type="button" class="audio-loop-start" data-loop-start>ابدأ التكرار</button>
+            </div>
+          </span>
+        )}
+        <button type="button" class="audio-dl" data-audio-dl data-action="download:toggle" data-dl-kind="audio" data-dl-id={cur.url}
+          data-dl-title={cur.label ? `${title} — ${cur.label}` : title} data-dl-path={Astro.url.pathname}
+          aria-pressed="false" title={sizeLabel ? `تحميل (${sizeLabel})` : "تحميل"} aria-label={sizeLabel ? `تحميل (${sizeLabel})` : "تحميل"}>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 19h16"></path></svg>
           <span class="audio-dl-size" dir="ltr">{sizeLabel}</span>
-        </a>
+        </button>
         <button type="button" class="audio-minimize" data-audio-minimize title="تصغير" aria-label="تصغير">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"></path></svg>
         </button>

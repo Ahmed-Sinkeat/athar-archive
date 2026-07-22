@@ -9,11 +9,14 @@ import { toArabicDigits } from "../lib/display";
 interface Props {
   bookHref: string;
   volumes?: string[];
+  pageCount?: number;
 }
-const { bookHref, volumes = [] } = Astro.props;
+const { bookHref, volumes = [], pageCount = 0 } = Astro.props;
 ---
 <form class="book-jump" data-book-jump data-book-href={bookHref}>
-  <span class="book-jump-label">الانتقال إلى صفحة</span>
+  <span class="book-jump-label">
+    الانتقال إلى صفحة{pageCount > 0 && <span class="faint"> · {toArabicDigits(pageCount)} صفحة</span>}
+  </span>
   <div class="book-jump-row">
     {volumes.length > 1 && (
       <select data-book-jump-vol aria-label="المجلد">

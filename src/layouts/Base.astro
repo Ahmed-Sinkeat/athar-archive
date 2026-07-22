@@ -561,6 +561,10 @@ const [readerSub, readerMain] = title.includes(" · ") ? title.split(" · ") : [
       // reader.ts lazy-imports this module separately when the settings-panel
       // "help time this poem" button is clicked instead.
       import("../scripts/timing-capture.ts");
+      // voice-follow (تتبّع بالصوت) — no-ops immediately on any page without
+      // its [data-voice-toggle] button (single-page poems only, see
+      // poem/[slug].astro); dynamic so it stays out of the site-wide bundle.
+      import("../scripts/voice-follow.ts");
     </script>
   </body>
 </html>

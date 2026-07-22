@@ -6,6 +6,7 @@ import Verse from "../../components/Verse.astro";
 import StudyBar from "../../components/StudyBar.astro";
 import ReaderSidebar from "../../components/ReaderSidebar.astro";
 import AudioPlayer from "../../components/AudioPlayer.astro";
+import InlineSearch from "../../components/InlineSearch.astro";
 import RelatedStrip from "../../components/RelatedStrip.astro";
 import Relations from "../../components/Relations.astro";
 import { isPub, loadGraph, personNameMap, personEraMap, notesByAnchor, relatedTo, backlinksList } from "../../lib/site";
@@ -89,6 +90,14 @@ const timing = timingFiles[`../../content/poem-timing/${entry.id}.json`]?.defaul
           <span class="toggle-dot"></span><span>وضع التسميع</span>
         </button>
       )}
+      {!a.chunked && (
+        <div style="margin-top: 8px; display: flex; align-items: center; gap: 8px;">
+          <button type="button" class="toggle-btn" data-voice-toggle aria-pressed="false" title="تجريبي: يضيء كل بيت عند إلقائه — يعمل حاليًا في Chrome فقط">
+            <span class="toggle-dot"></span><span>تتبّع بالصوت</span>
+          </button>
+          <span class="faint" data-voice-status style="font-size: 12px;"></span>
+        </div>
+      )}
       <div class="meta-pills">
         <a class="badge-matn pill-link" href="/matn">متن</a>
         {era && <a class="pill tag-verdigris pill-link" href={eraHref(era)}>{eraLabel(era)}</a>}
@@ -104,7 +113,9 @@ const timing = timingFiles[`../../content/poem-timing/${entry.id}.json`]?.defaul
       </div>
     )}
 
-    {audios.length > 0 && <AudioPlayer sources={audios} title={entry.data.title} subtitle={author} />}
+    {audios.length > 0 && <AudioPlayer sources={audios} title={entry.data.title} subtitle={author} loopByVerse={!!timing?.length} />}
+
+    <InlineSearch placeholder={`ابحث في ${entry.data.title}…`} params={{ book: entry.id }} />
 
     <div class="rule-short"></div>
 

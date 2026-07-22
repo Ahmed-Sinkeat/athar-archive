@@ -4,6 +4,7 @@ import Base from "../../layouts/Base.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import Relations from "../../components/Relations.astro";
 import ReaderSidebar from "../../components/ReaderSidebar.astro";
+import InlineSearch from "../../components/InlineSearch.astro";
 import { markdownToSafeHtml } from "../../lib/sanitize";
 import { applyTajweed, TAJWEED_COLORS } from "../../lib/tajweed";
 import { notesByAnchor, loadGraph, personNameMap } from "../../lib/site";
@@ -156,6 +157,8 @@ const processedParagraphs = paragraphs.map((para, idx) => {
     <button type="button" class="toggle-btn surah-dl surah-tasmi" data-action="toggle:tasmi" aria-pressed="false" title="إخفاء الآيات حتى تنقر عليها">
       <span class="toggle-dot"></span><span>وضع التسميع</span>
     </button>
+
+    <InlineSearch placeholder="ابحث عن آية… (بأي لفظ من نصها)" params={{ type: "quran" }} />
 
     <div class="ayah-list">
       {processedParagraphs.map((para) => {

@@ -56,17 +56,19 @@ const jsonLd = collectionLd({
     {materials.length > 0 ? (
       <div data-typefilter-scope>
         <TypeFilter types={[...new Set(materials.map((m) => m.collection))]} />
-        <div class="card-grid">
+        <ol class="flat-list">
           {materials.map((m) => (
-            <EntityCard
-              href={hrefFor(m.collection, m.id, { series: m.series })}
-              title={m.title}
-              kind={ENTITY[m.collection]?.one}
-              filterKey={m.collection}
-              cta="اطّلع ←"
-            />
+            <li>
+              <EntityCard
+                href={hrefFor(m.collection, m.id, { series: m.series })}
+                title={m.title}
+                kind={ENTITY[m.collection]?.one}
+                filterKey={m.collection}
+                cta="اطّلع ←"
+              />
+            </li>
           ))}
-        </div>
+        </ol>
       </div>
     ) : (
       <p class="faint">لا توجد موادُّ مرتبطةٌ بعد.</p>

@@ -30,7 +30,7 @@ const card = (it: ContentEntry) => ({
   <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "المتون" }]} />
   <div class="wrap-mid uf5db21c">
     <h1 class="page-title">المتون</h1>
-    <TitleFilter placeholder="تصفية حسب العنوان…" />
+    <TitleFilter placeholder="ابحث بالعنوان أو النص…" scope={{ type: "book,poem" }} />
     <SortableList items={items} card={card} />
   </div>
 </Base>

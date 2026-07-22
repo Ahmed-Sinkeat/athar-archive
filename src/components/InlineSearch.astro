@@ -1,0 +1,100 @@
+---
+// Real, always-live search that renders results right here — never a
+// "no matches, try the full search" hand-off elsewhere. Every keystroke
+// (debounced) queries the same D1 FTS index the header search uses, scoped
+// by whatever `params` narrows it to (e.g. {type: "quran"} for every ayah,
+// {book: entry.id} for one specific book/poem's own pages — gen-search-index.ts
+// tags every doc row with its owning `book` id, so this one query param is
+// enough to search all of a chunked book's chapters at once, not just
+// whichever chapter happens to be open). A hit's `url` already points at the
+// right page (and, for quran/athar-numbered narrations, the exact anchor).
+interface Props { placeholder: string; params: Record<string, string>; emptyText?: string }
+const { placeholder, params, emptyText = "لا نتائج مطابقة." } = Astro.props;
+const paramsQs = new URLSearchParams(params).toString();
+---
+<div class="inline-search">
+  <div class="inline-search-field-row" role="group" aria-label="نطاق البحث">
+    <button type="button" class="inline-search-field-chip" data-field="all" aria-pressed="true">الكل</button>
+    <button type="button" class="inline-search-field-chip" data-field="title" aria-pressed="false">العنوان فقط</button>
+    <button type="button" class="inline-search-field-chip" data-field="text" aria-pressed="false">النص فقط</button>
+  </div>
+  <input type="search" class="inline-search-input" placeholder={placeholder} aria-label={placeholder} autocomplete="off" data-inline-search data-inline-search-params={paramsQs} data-inline-search-empty={emptyText} data-inline-search-field="all" />
+  <div class="inline-search-results" data-inline-search-results hidden></div>
+</div>
+
+<style>
+  .inline-search { margin-bottom: 18px; position: relative; }
+  .inline-search-field-row { display: flex; gap: 6px; margin-bottom: 6px; }
+  .inline-search-field-chip {
+    font-family: var(--font-ui); font-size: 11.5px; color: var(--ink-soft); background: none;
+    border: 1px solid var(--rule); border-radius: 999px; padding: 3px 11px; cursor: pointer;
+  }
+  .inline-search-field-chip[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); font-weight: 600; }
+  .inline-search-input {
+    width: 100%; font-family: var(--font-ui); font-size: 15px; color: var(--ink);
+    background: var(--surface); border: 1px solid var(--rule-strong); border-radius: 10px;
+    padding: 10px 14px;
+  }
+  .inline-search-results { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+  .inline-search-hit {
+    display: block; background: var(--surface); border: 1px solid var(--rule);
+    border-inline-end: 3px solid var(--accent); border-radius: 10px; padding: 12px 16px;
+    text-decoration: none; color: var(--ink);
+  }
+  .inline-search-hit:hover { border-color: var(--accent); }
+  .inline-search-hit-title { margin: 0 0 4px; font-family: var(--font-ui); font-size: 12.5px; font-weight: 600; color: var(--accent); }
+  .inline-search-hit-snippet { margin: 0; font-family: var(--font-serif); font-size: 15.5px; line-height: 1.9; color: var(--ink); }
+  .inline-search-hit-snippet mark { background: var(--gold-soft); color: inherit; border-radius: 3px; padding: 0 3px; }
+  .inline-search-empty { padding: 10px 2px 0; font-size: 13px; }
+</style>
+
+<script is:inline data-astro-rerun>
+  (() => {
+    const esc = (s) => s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+    document.querySelectorAll("[data-inline-search]").forEach((input) => {
+      if (input.dataset.wired) return;
+      input.dataset.wired = "1";
+      const wrap = input.closest(".inline-search");
+      const results = wrap.querySelector("[data-inline-search-results]");
+      const extra = input.dataset.inlineSearchParams || "";
+      const emptyText = input.dataset.inlineSearchEmpty || "لا نتائج مطابقة.";
+      let seq = 0;
+      let debounce;
+      const runSearch = () => {
+        clearTimeout(debounce);
+        const q = input.value.trim();
+        if (q.length < 2) { results.hidden = true; results.innerHTML = ""; return; }
+        debounce = setTimeout(async () => {
+          const mySeq = ++seq;
+          try {
+            const field = input.dataset.inlineSearchField || "all";
+            const res = await fetch(`/api/search?q=${encodeURIComponent(q)}&field=${field}${extra ? `&${extra}` : ""}`);
+            const data = res.ok ? await res.json() : { hits: [] };
+            if (mySeq !== seq) return; // a newer keystroke already superseded this
+            const hits = data.hits || [];
+            if (!hits.length) {
+              results.innerHTML = `<p class="inline-search-empty faint">${esc(emptyText)}</p>`;
+              results.hidden = false;
+              return;
+            }
+            results.innerHTML = hits.map((h) => {
+              const snippet = esc(h.snippet || "").replaceAll("&lt;mark&gt;", "<mark>").replaceAll("&lt;/mark&gt;", "</mark>");
+              return `<a class="inline-search-hit" href="${esc(h.url)}">` +
+                `<p class="inline-search-hit-title">${esc(h.title)}</p>` +
+                `<p class="inline-search-hit-snippet">${snippet}</p></a>`;
+            }).join("");
+            results.hidden = false;
+          } catch { /* offline/API hiccup — no results, no crash */ }
+        }, 300);
+      };
+      input.addEventListener("input", runSearch);
+      wrap.querySelectorAll("[data-field]").forEach((chip) => {
+        chip.addEventListener("click", () => {
+          wrap.querySelectorAll("[data-field]").forEach((b) => b.setAttribute("aria-pressed", String(b === chip)));
+          input.dataset.inlineSearchField = chip.dataset.field;
+          if (input.value.trim()) runSearch();
+        });
+      });
+    });
+  })();
+</script>

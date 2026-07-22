@@ -29,7 +29,7 @@ const topicsForFilter = [...topicMap.entries()]
   <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "المسائل" }]} />
   <div class="wrap-mid uf5db21c">
     <h1 class="page-title">المسائل</h1>
-    <TitleFilter placeholder="تصفية حسب السؤال…" />
+    <TitleFilter placeholder="ابحث بالسؤال أو الجواب…" scope={{ type: "question" }} />
 
     {(personsForFilter.length > 1 || topicsForFilter.length > 1) && (
       <div class="browse-filters browse-filters-standalone">

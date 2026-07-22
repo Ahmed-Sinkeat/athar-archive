@@ -2,7 +2,7 @@
 // readable without it). Persists to localStorage; the pre-paint inline script
 // in Base.astro applies theme/scale/vnums before first paint to avoid flash.
 
-import { stripTashkeel } from "../lib/display";
+import { stripTashkeel, reciterOf } from "../lib/display";
 import { TAJWEED_COLORS, TAJWEED_PRESETS } from "../lib/tajweed";
 
 const LS = {
@@ -133,6 +133,26 @@ function applyFollowAudio(on: boolean) {
 }
 let followTiming: { v: number; t: number }[] | null = null;
 let followActiveVerse: HTMLElement | null = null;
+// --- loop-a-range-of-bayts (uses the same per-bayt cues as follow-audio) ---
+let loopState: { from: number; to: number; fromTime: number; endTime: number; remaining: number } | null = null;
+function loopStatusText(): string {
+  return loopState ? `×${loopState.remaining}` : "";
+}
+function syncLoopButton(fig: HTMLElement) {
+  const btn = fig.querySelector<HTMLElement>("[data-loop-toggle]");
+  if (!btn) return;
+  btn.setAttribute("aria-pressed", String(!!loopState));
+  const status = btn.querySelector("[data-loop-status]");
+  if (status) status.textContent = loopStatusText();
+}
+// called every timeupdate; seeks back to the range's start once playback
+// passes its end, up to the repeat count chosen in the popover
+function applyLoop(audio: HTMLAudioElement, fig: HTMLElement) {
+  if (!loopState || audio.currentTime < loopState.endTime) return;
+  loopState.remaining--;
+  if (loopState.remaining <= 0) { loopState = null; } else { audio.currentTime = loopState.fromTime; }
+  syncLoopButton(fig);
+}
 function loadFollowTiming() {
   const verses = document.querySelector<HTMLElement>(".verses[data-timing]");
   try {
@@ -366,9 +386,9 @@ document.addEventListener("click", (e) => {
   }
   if (!t.closest("[data-topsearch]")) closeSearch();
   const chapToc = document.querySelector<HTMLDetailsElement>(".chap-mobile-toc");
-  if (chapToc?.open && !t.closest(".chap-mobile-toc") && !t.closest('[data-action="chaptoc:toggle"]')) {
+  if (chapToc?.open && !t.closest(".chap-mobile-toc") && !t.closest('[data-action="sidebar:mobile-toggle"]')) {
     chapToc.open = false;
-    document.querySelectorAll<HTMLElement>('[data-action="chaptoc:toggle"]').forEach((b) => b.setAttribute("aria-expanded", "false"));
+    document.querySelectorAll<HTMLElement>('[data-action="sidebar:mobile-toggle"]').forEach((b) => b.setAttribute("aria-expanded", "false"));
   }
   // native <details> popovers (تفسير/شرح tabs, edition info) never auto-close
   // on outside click — browsers only do that for the newer popover= attribute,
@@ -506,6 +526,17 @@ document.addEventListener("submit", (e) => {
   const vol = form.querySelector<HTMLSelectElement>("[data-book-jump-vol]")?.value;
   const qs = vol ? `?v=${encodeURIComponent(vol)}` : "";
   location.href = `${form.dataset.bookHref}${qs}#p${n}`;
+});
+// Picking a volume with no page number typed did nothing (the submit
+// handler above silently bails without a valid page) — treat a bare volume
+// pick as "take me to the start of that volume" instead.
+document.addEventListener("change", (e) => {
+  const vol = (e.target as HTMLElement).closest<HTMLSelectElement>("[data-book-jump-vol]");
+  if (!vol) return;
+  const form = vol.closest<HTMLFormElement>("[data-book-jump]");
+  const pageInput = form?.querySelector<HTMLInputElement>("[data-book-jump-page]");
+  if (pageInput && !pageInput.value) pageInput.value = "1";
+  form?.requestSubmit();
 });
 
 // Volume-qualified page anchors: a multi-volume book can reuse a page number
@@ -734,8 +765,10 @@ function applyBrowseFilter(el: HTMLInputElement | HTMLSelectElement | HTMLButton
     });
   }
 
-  // masail accordion ([data-masail-browse])
-  const masailScope = el.closest<HTMLElement>("[data-masail-browse]");
+  // masail accordion ([data-masail-browse]) — it's a sibling of the filter
+  // controls (both live under .wrap-mid), not an ancestor, so this has to
+  // search down from `scope` rather than climb up from `el`.
+  const masailScope = scope?.querySelector<HTMLElement>("[data-masail-browse]");
   if (masailScope) {
     masailScope.querySelectorAll<HTMLElement>(".masail-list li[data-person]").forEach((li) => {
       if (!val) { li.classList.remove("is-hidden"); return; }
@@ -851,7 +884,12 @@ document.addEventListener("click", (e) => {
   if (!scope) return;
   const val = btn.dataset.type || "";
   scope.querySelectorAll<HTMLElement>("[data-typefilter] button").forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
-  scope.querySelectorAll<HTMLElement>(".card[data-kind]").forEach((c) => c.classList.toggle("is-hidden", !!val && c.dataset.kind !== val));
+  // toggle the closest <li> when the card grid is wrapped as .flat-list rows
+  // (subject/topic pages) — otherwise an empty, still-bordered row is left
+  // behind; card-grid pages have no <li> ancestor, so this is just the card
+  scope.querySelectorAll<HTMLElement>(".card[data-kind]").forEach((c) =>
+    (c.closest("li") ?? c).classList.toggle("is-hidden", !!val && c.dataset.kind !== val),
+  );
 });
 
 // --- prose books: wrap each شرح phrase inline (poems mark server-side; prose
@@ -1643,29 +1681,9 @@ function closeSpeedMenu(fig: HTMLElement) {
   const menu = fig.querySelector<HTMLElement>("[data-audio-speed-menu]");
   if (menu) menu.hidden = true;
 }
-// The bar's تحميل link points at r2.arthurarchive.com — a different origin,
-// where the `download` attribute is ignored by spec, so a plain click
-// NAVIGATED to the raw .opus (a black media-viewer page on phones) instead of
-// saving it. Fetch → blob → object URL keeps it a real download.
-document.addEventListener("click", (e) => {
-  const dl = (e.target as HTMLElement).closest<HTMLAnchorElement>("[data-audio-dl]");
-  if (!dl || new URL(dl.href, location.href).origin === location.origin) return;
-  e.preventDefault();
-  if (dl.hasAttribute("data-dl-busy")) return;
-  dl.setAttribute("data-dl-busy", "1");
-  const name = dl.href.split("/").pop() || "audio.opus";
-  fetch(dl.href)
-    .then((r) => { if (!r.ok) throw new Error(String(r.status)); return r.blob(); })
-    .then((blob) => {
-      const a = document.createElement("a");
-      a.href = URL.createObjectURL(blob);
-      a.download = name;
-      a.click();
-      setTimeout(() => URL.revokeObjectURL(a.href), 60_000);
-    })
-    .catch(() => { window.open(dl.href, "_blank"); }) // still reachable, just not saved-as
-    .finally(() => dl.removeAttribute("data-dl-busy"));
-});
+// [data-audio-dl] itself is now a plain download:toggle button (downloads.ts
+// owns its click handling, caching the track via the Cache API like every
+// other offline download instead of forcing a device Save-As).
 // --- multi-track lesson series: swap the <source> from data-audio-tracks JSON ---
 function setTrack(fig: HTMLElement, idx: number, autoplay: boolean) {
   const tracks = JSON.parse(fig.dataset.audioTracks || "[]") as { url: string; format?: string; label?: string; sizeBytes?: number | null }[];
@@ -1679,10 +1697,17 @@ function setTrack(fig: HTMLElement, idx: number, autoplay: boolean) {
   audio.load();
   if (autoplay) audio.play().catch(() => {});
   const label = fig.querySelector<HTMLElement>("[data-audio-track-label]");
-  if (label) label.textContent = t.label || "";
-  const dl = fig.querySelector<HTMLAnchorElement>("[data-audio-dl]");
+  if (label) {
+    // reciter name when this track's own title encodes one, else the raw
+    // label (a lesson series' chapter/part name — still worth showing)
+    const shown = reciterOf(t.label) ?? t.label ?? "";
+    label.textContent = shown;
+    label.hidden = !shown;
+  }
+  const dl = fig.querySelector<HTMLElement>("[data-audio-dl]");
   if (dl) {
-    dl.href = t.url;
+    dl.dataset.dlId = t.url;
+    dl.dataset.dlTitle = t.label ? `${fig.querySelector(".audio-title")?.textContent ?? ""} — ${t.label}` : "";
     const sizeEl = dl.querySelector<HTMLElement>(".audio-dl-size");
     const sizeLabel = t.sizeBytes
       ? t.sizeBytes < 1024 * 1024 ? `${Math.round(t.sizeBytes / 1024)} KB` : `${(t.sizeBytes / (1024 * 1024)).toFixed(1)} MB`
@@ -1691,6 +1716,9 @@ function setTrack(fig: HTMLElement, idx: number, autoplay: boolean) {
     const dlLabel = sizeLabel ? `تحميل (${sizeLabel})` : "تحميل";
     dl.title = dlLabel;
     dl.setAttribute("aria-label", dlLabel);
+    // downloads.ts owns aria-pressed/✓ for this button but loads lazily —
+    // it re-renders this on the event below once it's up
+    window.dispatchEvent(new Event("aa:audio-track-changed"));
   }
   fig.querySelectorAll<HTMLElement>("[data-audio-list-menu] [data-track]").forEach((b) =>
     b.setAttribute("aria-pressed", String(b.dataset.track === String(idx))),
@@ -1768,9 +1796,43 @@ document.addEventListener("click", (e) => {
     closeSpeedMenu(fig);
     return;
   }
-  // click outside an open speed/track popover closes it
-  document.querySelectorAll<HTMLElement>("[data-audio-speed-menu]:not([hidden]), [data-audio-list-menu]:not([hidden])").forEach((menu) => {
-    if (!menu.closest("[data-audio]")?.contains(t) || (!menu.contains(t) && !t.closest("[data-audio-speed-toggle], [data-audio-list-toggle]"))) menu.hidden = true;
+  const loopToggle = t.closest<HTMLElement>("[data-loop-toggle]");
+  if (loopToggle && fig) {
+    if (loopState) {
+      // already looping — this click stops it, rather than reopening the popover
+      loopState = null;
+      syncLoopButton(fig);
+    } else {
+      const menu = fig.querySelector<HTMLElement>("[data-loop-menu]")!;
+      menu.hidden = !menu.hidden;
+      closeSpeedMenu(fig);
+      const listMenu = fig.querySelector<HTMLElement>("[data-audio-list-menu]");
+      if (listMenu) listMenu.hidden = true;
+    }
+    return;
+  }
+  const loopStart = t.closest<HTMLElement>("[data-loop-start]");
+  if (loopStart && fig) {
+    const menu = fig.querySelector<HTMLElement>("[data-loop-menu]")!;
+    const from = Number(menu.querySelector<HTMLInputElement>("[data-loop-from]")?.value);
+    const to = Number(menu.querySelector<HTMLInputElement>("[data-loop-to]")?.value);
+    const count = Math.max(1, Number(menu.querySelector<HTMLInputElement>("[data-loop-count]")?.value) || 1);
+    const audio = fig.querySelector<HTMLAudioElement>("[data-audio-el]");
+    const fromCue = followTiming?.find((c) => c.v === from);
+    const toIdx = followTiming?.findIndex((c) => c.v === to) ?? -1;
+    if (audio && fromCue && toIdx >= 0 && to >= from) {
+      const endTime = toIdx + 1 < (followTiming?.length ?? 0) ? followTiming![toIdx + 1].t : (audio.duration || Infinity);
+      loopState = { from, to, fromTime: fromCue.t, endTime, remaining: count };
+      audio.currentTime = fromCue.t;
+      audio.play().catch(() => {});
+      syncLoopButton(fig);
+      menu.hidden = true;
+    }
+    return;
+  }
+  // click outside an open speed/track/loop popover closes it
+  document.querySelectorAll<HTMLElement>("[data-audio-speed-menu]:not([hidden]), [data-audio-list-menu]:not([hidden]), [data-loop-menu]:not([hidden])").forEach((menu) => {
+    if (!menu.closest("[data-audio]")?.contains(t) || (!menu.contains(t) && !t.closest("[data-audio-speed-toggle], [data-audio-list-toggle], [data-loop-toggle]"))) menu.hidden = true;
   });
 });
 // lesson series: when a track ends, move to the next one and keep playing
@@ -1794,7 +1856,10 @@ document.addEventListener(
       if (!(el instanceof HTMLAudioElement) || !el.hasAttribute("data-audio-el")) return;
       const fig = el.closest<HTMLElement>("[data-audio]");
       if (fig) syncAudioUI(fig, el);
-      if (evt === "timeupdate") applyFollowAudioHighlight(el.currentTime);
+      if (evt === "timeupdate") {
+        applyFollowAudioHighlight(el.currentTime);
+        if (fig) applyLoop(el, fig);
+      }
     },
     true,
   ),
@@ -1959,6 +2024,7 @@ function onPage() {
   document.querySelectorAll<HTMLElement>('[data-toggle="verseNums"]').forEach((b) => { b.hidden = !isPoemPage; });
   // "follow audio" only means anything on a poem timed with per-bayt cues
   loadFollowTiming();
+  loopState = null; // fresh <audio> element per page swap — any loop dies with it
   document.querySelectorAll<HTMLElement>('[data-toggle="followAudio"]').forEach((b) => { b.hidden = !followTiming; });
   applyFollowAudio(localStorage.getItem(LS.followAudio) !== "0");
   // "help time this poem": only on poems with audio but no timing cues yet

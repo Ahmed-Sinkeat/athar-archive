@@ -37,36 +37,38 @@ function locate(text: string, ph?: string): { before: string; mark: string; afte
   return { before: text.slice(0, start), mark: text.slice(start, end), after: text.slice(end) };
 }
 
-// Where does the mark go? prefer the صدر, fall back to the عجز; if there's no
-// phrase but there are notes, the whole صدر carries the mark.
-let inSadr = locate(sadr, phrase);
-let inAjz = inSadr ? null : locate(ajz ?? "", phrase);
-if (hasNotes && !inSadr && !inAjz) inSadr = { before: "", mark: sadr, after: "" };
+// Where does the mark go? prefer the صدر, fall back to the عجز. If there's no
+// locatable phrase, no inline underline — the .verse-text card (CSS) + the
+// whole-verse tap handler (reader.ts) already carry the "has notes" signal.
+const inSadr = locate(sadr, phrase);
+const inAjz = inSadr ? null : locate(ajz ?? "", phrase);
 const popId = `ann-${anchor}`;
 ---
 <div class:list={["verse", { "has-ann": hasNotes }]} id={anchor} data-vn={n}>
   <div class="verse-inner">
     <div class="vnum">{toArabicDigits(n)}</div>
     <div class:list={["verse-body", { "no-ajz": !ajz }]} data-ar>
-      <div class="sadr">
-        {inSadr ? (
-          <>{inSadr.before}<a class="ann-mark" href={`#${popId}`} data-ann={popId} aria-haspopup="dialog">{inSadr.mark}</a>{inSadr.after}</>
-        ) : (
-          sadr
+      <div class="verse-text">
+        <div class="sadr">
+          {inSadr ? (
+            <>{inSadr.before}<a class="ann-mark" href={`#${popId}`} data-ann={popId} aria-haspopup="dialog">{inSadr.mark}</a>{inSadr.after}</>
+          ) : (
+            sadr
+          )}
+        </div>
+        {ajz && (
+          <>
+            <span class="verse-hemistich-rule" aria-hidden="true"></span>
+            <div class="ajz">
+              {inAjz ? (
+                <>{inAjz.before}<a class="ann-mark" href={`#${popId}`} data-ann={popId} aria-haspopup="dialog">{inAjz.mark}</a>{inAjz.after}</>
+              ) : (
+                ajz
+              )}
+            </div>
+          </>
         )}
       </div>
-      {ajz && (
-        <>
-          <span class="verse-hemistich-rule" aria-hidden="true"></span>
-          <div class="ajz">
-            {inAjz ? (
-              <>{inAjz.before}<a class="ann-mark" href={`#${popId}`} data-ann={popId} aria-haspopup="dialog">{inAjz.mark}</a>{inAjz.after}</>
-            ) : (
-              ajz
-            )}
-          </div>
-        </>
-      )}
     </div>
   </div>
   {hasNotes && (

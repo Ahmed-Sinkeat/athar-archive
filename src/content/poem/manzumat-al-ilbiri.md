@@ -1,5 +1,5 @@
 ---
-title: "منظومة الإلبيري"
+title: "تائية الإلبيري"
 status: published
 published_at: 2026-07-06
 person: al-ilbiri

@@ -73,7 +73,7 @@ const pageHref = (n: number) => (n === 1 ? "/articles" : `/articles/${n}`);
       ))}
     </div>
 
-    <TitleFilter placeholder="تصفية في هذه الصفحة… (للبحث الشامل استخدم البحث)" scope={{ type: "article" }} />
+    <TitleFilter placeholder="ابحث بالعنوان أو النص…" scope={{ type: "article" }} />
 
     <ol class="flat-list">
       {page.data.map((it) => (

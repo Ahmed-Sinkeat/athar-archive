@@ -49,6 +49,13 @@ import Breadcrumbs from "../components/Breadcrumbs.astro";
           <option value="phrase">العبارة نفسها</option>
         </select>
       </label>
+      <label class="search-tool">نطاق البحث
+        <select id="field">
+          <option value="all">العنوان والنص</option>
+          <option value="title">العنوان فقط</option>
+          <option value="text">النص فقط</option>
+        </select>
+      </label>
       <label class="search-tool">الترتيب
         <select id="sort">
           <option value="relevance">الأقرب صلة</option>
@@ -160,6 +167,7 @@ import Breadcrumbs from "../components/Breadcrumbs.astro";
       const countEl = document.getElementById("results-count");
       const moreBtn = document.getElementById("more");
       const modeEl = document.getElementById("mode");
+      const fieldEl = document.getElementById("field");
       const sortEl = document.getElementById("sort");
       const historyEl = document.getElementById("history");
       const params = new URLSearchParams(location.search);
@@ -185,8 +193,10 @@ import Breadcrumbs from "../components/Breadcrumbs.astro";
         });
       });
       modeEl.value = params.get("mode") || "all";
+      fieldEl.value = params.get("field") || "all";
       sortEl.value = params.get("sort") || "relevance";
       modeEl.addEventListener("change", () => { offset = 0; go(); });
+      fieldEl.addEventListener("change", () => { offset = 0; go(); });
       sortEl.addEventListener("change", () => { offset = 0; go(); });
 
       // recent searches (localStorage, most-recent-first, capped)
@@ -286,7 +296,7 @@ import Breadcrumbs from "../components/Breadcrumbs.astro";
         const my = ++seq;
         if (!terms) { results.innerHTML = ""; countEl.textContent = ""; moreBtn.hidden = true; renderHistory(); return; }
         historyEl.hidden = true;
-        const p = new URLSearchParams({ q: terms, mode: modeEl.value, sort: sortEl.value, offset: String(offset) });
+        const p = new URLSearchParams({ q: terms, mode: modeEl.value, field: fieldEl.value, sort: sortEl.value, offset: String(offset) });
         const types = new Set(extraTypes);
         if (scope) types.add(scope);
         if (types.size) p.set("type", [...types].join(","));

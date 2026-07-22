@@ -7,6 +7,7 @@ import StudyBar from "../../components/StudyBar.astro";
 import ReaderSidebar from "../../components/ReaderSidebar.astro";
 import BookPageJump from "../../components/BookPageJump.astro";
 import AudioPlayer from "../../components/AudioPlayer.astro";
+import InlineSearch from "../../components/InlineSearch.astro";
 import RelatedStrip from "../../components/RelatedStrip.astro";
 import Relations from "../../components/Relations.astro";
 import { markdownToSafeHtml } from "../../lib/sanitize";
@@ -136,6 +137,7 @@ const jsonLd = bookLd({
         )}
       </div>
       {audios.length > 0 && <AudioPlayer sources={audios} title={entry.data.title} subtitle={author} />}
+      <InlineSearch placeholder="ابحث في هذا الكتاب… (كل الفصول)" params={{ book: entry.id }} />
       <div class="rule-short"></div>
       {/* populated client-side from localStorage (marks.ts) if you've read a chapter before */}
       <div class="book-info-card book-resume-card" data-book-resume={entry.id} hidden>
@@ -191,6 +193,7 @@ const jsonLd = bookLd({
           )}
         </div>
         {audios.length > 0 && <AudioPlayer sources={audios} title={entry.data.title} subtitle={author} />}
+        <InlineSearch placeholder="ابحث في هذا الكتاب…" params={{ book: entry.id }} />
         <div class="rule-short"></div>
         <StudyBar downloadUrl={entry.data.attachments?.[0]?.url} />
         {isMatn("book", entry.data) ? (
@@ -217,7 +220,7 @@ const jsonLd = bookLd({
       </div>
       {tocNested?.length > 0 && (
         <ReaderSidebar label={bookPageCount > 0 ? `فهرس العناوين · ${bookPageCount} صفحة` : "فهرس العناوين"}>
-          {bookPageCount > 0 && <BookPageJump bookHref={hrefFor("book", entry.id)} volumes={volumes} />}
+          {bookPageCount > 0 && <BookPageJump bookHref={hrefFor("book", entry.id)} volumes={volumes} pageCount={bookPageCount} />}
           <div class="toc-box has-current">
             <div class="toc-label">{bookPageCount > 0 ? `فهرس العناوين · ${bookPageCount} صفحة` : "فهرس العناوين"}</div>
             {tocNested.map((h) => (

@@ -19,6 +19,7 @@ import InlineNoteGroup from "../../../components/InlineNoteGroup.astro";
 import ReaderSidebar from "../../../components/ReaderSidebar.astro";
 import BookPageJump from "../../../components/BookPageJump.astro";
 import TitleFilter from "../../../components/TitleFilter.astro";
+import InlineSearch from "../../../components/InlineSearch.astro";
 import { isPub, loadGraph, personNameMap, notesByAnchor } from "../../../lib/site";
 import { markdownToSafeHtml } from "../../../lib/sanitize";
 import { parseToc } from "../../../lib/chapters";
@@ -246,6 +247,8 @@ const finalContent = wirePageFootnotes(markdownToSafeHtml(chapter.content), chap
           {audios.length > 0 && <AudioPlayer sources={audios} title={entry.data.title} subtitle={author} initial={initialTrack} />}
         </div>
 
+        <InlineSearch placeholder={`ابحث في ${entry.data.title}… (كل الصفحات)`} params={{ book: entry.id }} />
+
         <div class="rule-short"></div>
 
         {isMatn("book", entry.data) ? (
@@ -296,7 +299,7 @@ const finalContent = wirePageFootnotes(markdownToSafeHtml(chapter.content), chap
 
       <!-- sidebar TOC (hidden on mobile via CSS) -->
       <ReaderSidebar label={bookPageCount > 0 ? `فصول الكتاب · ${tocGroups.length} فصل · ${bookPageCount} صفحة` : `فصول الكتاب · ${tocGroups.length} فصل`}>
-        {bookPageCount > 0 && <BookPageJump bookHref={hrefFor("book", entry.id)} volumes={volumes} />}
+        {bookPageCount > 0 && <BookPageJump bookHref={hrefFor("book", entry.id)} volumes={volumes} pageCount={bookPageCount} />}
         {commentaries.length > 0 && (
           <details class="sharh-picker">
             <summary>

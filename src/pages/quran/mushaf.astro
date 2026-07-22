@@ -66,7 +66,7 @@ const juzOptions = JUZ_START_PAGE.map((page, i) => ({ n: i + 1, href: pageHref(p
     {surahs.length > 0 && (
       <section class="surah-list" aria-label="فهرس السور">
         <h2 class="section-label">سور القرآن الكريم</h2>
-        <TitleFilter placeholder="تصفية حسب اسم السورة… (للبحث عن آية استخدم البحث الشامل)" scope={{ type: "quran" }} />
+        <TitleFilter placeholder="ابحث باسم السورة أو بنص الآية…" scope={{ type: "quran" }} />
         <ol class="surah-grid" dir="rtl">
           {surahs.map((s) => (
             <li data-title={s.data.name}>
