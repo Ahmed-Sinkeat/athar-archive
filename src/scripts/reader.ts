@@ -21,6 +21,7 @@ const LS = {
   annPinned: "aa-ann-pinned",
   followAudio: "aa-follow-audio",
   tajweedColors: "aa-tajweed-colors",
+  favorites: "aa-favorites",
 };
 
 const SCALE_MIN = 0.8;
@@ -808,6 +809,76 @@ document.addEventListener("click", (e) => {
   const sel = chip.closest(".browse-filters")?.querySelector<HTMLSelectElement>(`select[data-filter-key="${chip.dataset.filterKey}"]`);
   if (sel) sel.value = chip.value;
   applyBrowseFilter(chip);
+});
+
+// --- المفضلة: favorite a book/poem/article/question from its card or its own
+// reading page; a "المفضلة" chip on each listing page then shows only that
+// page's own type. Client-only (localStorage), no server/account — same
+// pattern as downloads.ts's manifest, just a plain array of "type:id" keys
+// since there's nothing else to remember per favorite (no size, no progress).
+function getFavorites(): Set<string> {
+  try {
+    const v = JSON.parse(localStorage.getItem(LS.favorites) || "[]");
+    return new Set(Array.isArray(v) ? v : []);
+  } catch { return new Set(); }
+}
+function favKey(kind: string, id: string): string { return `${kind}:${id}`; }
+function isFavorited(kind: string, id: string): boolean { return getFavorites().has(favKey(kind, id)); }
+function setFavoriteButtons(kind: string, id: string, on: boolean) {
+  const key = favKey(kind, id);
+  document.querySelectorAll<HTMLElement>(`[data-action="favorite:toggle"][data-fav-key="${key}"]`)
+    .forEach((b) => b.setAttribute("aria-pressed", String(on)));
+}
+function toggleFavorite(kind: string, id: string) {
+  const favs = getFavorites();
+  const key = favKey(kind, id);
+  const on = !favs.has(key);
+  if (on) favs.add(key); else favs.delete(key);
+  localStorage.setItem(LS.favorites, JSON.stringify([...favs]));
+  setFavoriteButtons(kind, id, on);
+  document.querySelectorAll<HTMLElement>('[data-action="favorites:filter"]').forEach(applyFavoritesFilter);
+}
+function syncFavoriteButtons() {
+  const favs = getFavorites();
+  document.querySelectorAll<HTMLElement>('[data-action="favorite:toggle"]').forEach((b) => {
+    b.setAttribute("aria-pressed", String(favs.has(b.dataset.favKey || "")));
+  });
+}
+document.addEventListener("astro:page-load", syncFavoriteButtons);
+document.addEventListener("click", (e) => {
+  const btn = (e.target as HTMLElement).closest<HTMLElement>('[data-action="favorite:toggle"]');
+  if (!btn) return;
+  e.preventDefault();
+  const kind = btn.dataset.favKind, id = btn.dataset.favId;
+  if (kind && id) toggleFavorite(kind, id);
+});
+
+// "المفضلة" filter chip on a listing page: hides every [data-fav-key] item
+// (card/row) not in the favorites set. Scoped to the chip's own page — not
+// persisted across navigation, same as the type-filter chips beside it.
+function applyFavoritesFilter(chip: HTMLElement) {
+  const on = chip.getAttribute("aria-pressed") !== "true"; // this call flips it
+  chip.setAttribute("aria-pressed", String(on));
+  const favs = getFavorites();
+  const scope = chip.closest("[data-browse]") ?? chip.closest(".wrap-mid") ?? document;
+  scope.querySelectorAll<HTMLElement>("[data-fav-key]").forEach((el) => {
+    const item = el.closest("li") ?? el;
+    item.classList.toggle("is-hidden", on && !favs.has(el.dataset.favKey || ""));
+  });
+  // masail accordion: also collapse now-empty topics/subjects, same as the
+  // person/topic filters (applyBrowseFilter) right above this block
+  scope.querySelectorAll<HTMLElement>(".masail-topic").forEach((dt) => {
+    const visible = [...dt.querySelectorAll<HTMLElement>(".masail-list li")].some((li) => !li.classList.contains("is-hidden"));
+    dt.style.display = (visible || !on) ? "" : "none";
+  });
+  scope.querySelectorAll<HTMLElement>(".masail-subject").forEach((ds) => {
+    const visible = [...ds.querySelectorAll<HTMLElement>(".masail-topic")].some((t) => t.style.display !== "none");
+    ds.style.display = (visible || !on) ? "" : "none";
+  });
+}
+document.addEventListener("click", (e) => {
+  const chip = (e.target as HTMLElement).closest<HTMLElement>('[data-action="favorites:filter"]');
+  if (chip) applyFavoritesFilter(chip);
 });
 
 // --- local in-page search / filtering for listing pages ---

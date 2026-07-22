@@ -1,10 +1,10 @@
 ---
 title: "الدرة البهية نظم الآجرومية"
-status: published
-published_at: 2026-07-22
-person: al-amryty
-kind: كتاب
+status: "published"
+published_at: "2026-07-22"
+person: "al-amryty"
 topics: ["al-nahw"]
+work_type: "منظومة"
 ---
 ## المقدمة
 

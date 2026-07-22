@@ -52,6 +52,8 @@ const poemCard = (it: any) => {
     corner: verseCountLabel(c.count),
     dlKind: "poem",
     dlId: it.id,
+    favKind: "poem",
+    favId: it.id,
   };
 };
 
@@ -84,6 +86,7 @@ const featuredVerses = featured ? analyzePoem(await readBody(featured)).verses.s
     )}
 
     <TitleFilter placeholder="تصفية حسب العنوان…" scope={{ type: "poem" }} />
+    <button type="button" class="chip fav-filter-chip" data-action="favorites:filter" aria-pressed="false">☆ المفضلة</button>
 
     <div class="browse show-flat" data-browse>
       <div class="browse-toolbar">
@@ -118,7 +121,7 @@ const featuredVerses = featured ? analyzePoem(await readBody(featured)).verses.s
                     {t.items.map((it) => {
                       const c = cardsById.get(it.id);
                       return c ? (
-                        <a class="poem-card" href={c.href} data-title={c.rawTitle}>
+                        <a class="poem-card" href={c.href} data-title={c.rawTitle} data-fav-key={`poem:${it.id}`}>
                           <div class="poem-card-meta">
                             <span class="poem-badge">{c.kind}</span>
                             <span class="poem-byline">{[c.poet, c.title].filter(Boolean).join(" · ")}</span>

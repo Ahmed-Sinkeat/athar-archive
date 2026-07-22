@@ -1,10 +1,10 @@
 ---
 title: "الدرة السنية منظومة في علم الفرائض"
-status: published
-published_at: 2026-07-19
-person: mhmd-bay-blaalm
-kind: مرجع
+status: "published"
+published_at: "2026-07-22"
+person: "mhmd-bay-blaalm"
 topics: ["fiqh-maliki"]
+work_type: "منظومة"
 description: "الدرة السنية منظومة في علم الفرائض"
 ---
 ## المقدمة

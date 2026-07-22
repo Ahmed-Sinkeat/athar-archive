@@ -1,10 +1,10 @@
 ---
 title: "الكوكب الزهري نظم مختصر الأخضري"
-status: published
-published_at: 2026-07-19
-person: mhmd-bay-blaalm
-kind: مرجع
+status: "published"
+published_at: "2026-07-22"
+person: "mhmd-bay-blaalm"
 topics: ["fiqh-maliki"]
+work_type: "منظومة"
 description: "الكوكب الزهري نظم مختصر الأخضري"
 ---
 ## المقدمة

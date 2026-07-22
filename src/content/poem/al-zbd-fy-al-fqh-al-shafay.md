@@ -1,10 +1,10 @@
 ---
 title: "الزبد في الفقه الشافعي"
-status: published
-published_at: 2026-07-19
-person: abn-rslan
-kind: مرجع
+status: "published"
+published_at: "2026-07-22"
+person: "abn-rslan"
 topics: ["fiqh-shafii"]
+work_type: "منظومة"
 description: "الزبد في الفقه الشافعي"
 ---
 ## المقدمة

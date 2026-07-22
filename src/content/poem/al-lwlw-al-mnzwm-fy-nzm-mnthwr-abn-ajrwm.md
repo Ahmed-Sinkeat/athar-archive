@@ -1,10 +1,10 @@
 ---
 title: "اللؤلؤ المنظوم في نظم منثور ابن آجروم"
-status: published
-published_at: 2026-07-22
-person: mhmd-bay-blaalm
-kind: كتاب
+status: "published"
+published_at: "2026-07-22"
+person: "mhmd-bay-blaalm"
 topics: ["al-nahw"]
+work_type: "منظومة"
 ---
 ## المقدمة
 

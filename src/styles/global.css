@@ -525,9 +525,16 @@ summary::-webkit-details-marker { display: none; }
 .masail-list { list-style: none; margin: 2px 0 8px; padding: 0 22px; display: grid; gap: 2px; }
 .masail-list-flush { padding: 10px 18px 14px; }
 .browse-cards { padding: 8px 14px 16px; }
-.masail-list a { display: block; font-family: var(--font-serif); font-size: 16px; color: var(--ink); text-decoration: none; padding: 8px 12px; border-radius: var(--radius); }
+.masail-list li { display: flex; align-items: center; gap: 2px; }
+.masail-list a { display: block; flex: 1; min-width: 0; font-family: var(--font-serif); font-size: 16px; color: var(--ink); text-decoration: none; padding: 8px 12px; border-radius: var(--radius); }
 .masail-topic-tag { font-size: 11px; padding: 2px 9px; margin-inline-end: 8px; vertical-align: middle; }
 .masail-list a:hover { background: var(--paper-2); color: var(--accent); }
+.masail-fav {
+  flex: none; background: none; border: none; cursor: pointer; font-size: 15px; line-height: 1;
+  padding: 6px; color: var(--ink-faint); opacity: 0.5;
+}
+.masail-fav:hover { opacity: 1; color: var(--gold-text); }
+.masail-fav[aria-pressed="true"] { opacity: 1; color: var(--gold-text); }
 
 /* ---------- cards / grids ---------- */
 .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(248px, 1fr)); gap: 18px; }
@@ -1422,8 +1429,10 @@ html.hide-vnums .vnum { display: none; }
 .ann-sheet-controls { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
 .ann-chips { display: flex; flex-wrap: wrap; gap: 6px; flex-basis: 100%; }
 .ann-chips[hidden] { display: none; }
-/* source chips: one scrollable line — five names wrap badly in a 340px panel */
-.ann-srcs { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 2px; scrollbar-width: thin; }
+/* Source chips wrap across rows like every other chip row (was a single
+   horizontally-scrolling line) — that scroll gesture fought the page's own
+   swipe-to-next-ayah gesture. All sources stay visible/tappable at once
+   instead of needing a scroll interaction to reach the rest. */
 .ann-chip {
   flex: none; font-family: var(--font-ui); font-size: 12.5px; font-weight: 600; color: var(--ink-soft);
   background: var(--paper-2); border: 1px solid var(--rule-strong); border-radius: 999px;
@@ -1751,6 +1760,20 @@ html[data-theme="noir"] ::highlight(aa-find)    { background-color: rgba(255, 15
 /* flat rows + poem meta rows are flex — sit inline, no pinning; relative (not
    static) so the row's download button still stacks above the stretched link */
 .flat-list .card > .card-dl, .poem-card-meta .card-dl { position: relative; inset: auto; z-index: 1; }
+
+/* المفضلة star toggle — same button language as .card-dl, opposite corner so
+   both can sit on the same card without overlapping. */
+.card-fav {
+  flex: none; display: inline-flex; align-items: center; justify-content: center;
+  min-width: 32px; min-height: 32px;
+  background: none; border: 1px solid var(--rule); border-radius: var(--radius);
+  color: var(--ink-faint); cursor: pointer; padding: 4px;
+}
+.card-fav:hover { color: var(--gold-text); border-color: var(--gold-soft); }
+.card-fav[aria-pressed="true"] { color: var(--gold-text); border-color: var(--gold-soft); background: color-mix(in srgb, var(--gold) 14%, transparent); }
+.card-fav[aria-pressed="true"] svg { fill: currentColor; }
+.card > .card-fav { position: absolute; inset-inline-end: 10px; inset-block-start: 10px; z-index: 1; }
+.flat-list .card > .card-fav, .poem-card-meta .card-fav { position: relative; inset: auto; z-index: 1; }
 
 /* --- flat list rows (listing pages: الكتب / الشعر / الدروس / الأعلام / …) --- */
 /* Override card-box styles when inside .flat-list so items render as rows */

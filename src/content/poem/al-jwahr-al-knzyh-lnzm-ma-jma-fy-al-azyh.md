@@ -1,10 +1,10 @@
 ---
 title: "الجواهر الكنزية لنظم ما جمع في العزية"
-status: published
-published_at: 2026-07-19
-person: mhmd-bay-blaalm
-kind: مرجع
+status: "published"
+published_at: "2026-07-22"
+person: "mhmd-bay-blaalm"
 topics: ["fiqh-maliki"]
+work_type: "منظومة"
 description: "الجواهر الكنزية لنظم ما جمع في العزية"
 ---
 ## المقدمة

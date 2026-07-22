@@ -62,6 +62,7 @@ const topicsForFilter = [...topicMap.entries()]
       <button type="button" data-masail-view="tree" aria-pressed="true">حسب الموضوع</button>
       <button type="button" data-masail-view="flat" aria-pressed="false">قائمة</button>
     </div>
+    <button type="button" class="chip fav-filter-chip" data-action="favorites:filter" aria-pressed="false">☆ المفضلة</button>
 
     <!-- flat «قائمة» view is built CLIENT-side by cloning the tree's <li>s
          (script below): rendering all ~950 questions twice server-side made
@@ -88,6 +89,7 @@ const topicsForFilter = [...topicMap.entries()]
                       data-person-name={it.data.person ? names.get(it.data.person as string) ?? "" : ""}
                       data-topics={((it.data.topics as string[] | undefined) ?? []).join(",")}
                       data-ts={+new Date(it.data.published_at as string) || 0}
+                      data-fav-key={`question:${it.id}`}
                     >
                       <a href={hrefFor("question", it.id)}>
                         {(it.data.topics as string[] | undefined)?.[0] && topicMap.get((it.data.topics as string[])[0]) && (
@@ -96,6 +98,9 @@ const topicsForFilter = [...topicMap.entries()]
                         <span>{it.data.title}</span>
                         {it.data.person && <span class="faint"> · {names.get(it.data.person as string)}</span>}
                       </a>
+                      <button type="button" class="masail-fav" data-action="favorite:toggle"
+                        data-fav-kind="question" data-fav-id={it.id} data-fav-key={`question:${it.id}`}
+                        aria-pressed="false" aria-label={`إضافة «${it.data.title}» إلى المفضلة`} title="المفضلة">★</button>
                     </li>
                   ))}
                 </ul>
@@ -119,7 +124,13 @@ const topicsForFilter = [...topicMap.entries()]
                 data-person-name={it.data.person ? names.get(it.data.person as string) ?? "" : ""}
                 data-topics={((it.data.topics as string[] | undefined) ?? []).join(",")}
                 data-ts={+new Date(it.data.published_at as string) || 0}
-              ><a href={hrefFor("question", it.id)}>{it.data.title}</a></li>
+                data-fav-key={`question:${it.id}`}
+              >
+                <a href={hrefFor("question", it.id)}>{it.data.title}</a>
+                <button type="button" class="masail-fav" data-action="favorite:toggle"
+                  data-fav-kind="question" data-fav-id={it.id} data-fav-key={`question:${it.id}`}
+                  aria-pressed="false" aria-label={`إضافة «${it.data.title}» إلى المفضلة`} title="المفضلة">★</button>
+              </li>
             ))}
           </ul>
         </details>

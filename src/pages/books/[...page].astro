@@ -47,6 +47,8 @@ const card = (it: ContentEntry) => {
     cta: "ادخل القراءة ←",
     dlKind: "book",
     dlId: it.id,
+    favKind: "book",
+    favId: it.id,
   };
 };
 
@@ -79,6 +81,7 @@ const pageHref = (n: number) => (n === 1 ? "/books" : `/books/${n}`);
     </div>
 
     <TitleFilter placeholder="تصفية حسب العنوان…" scope={{ type: "book" }} />
+    <button type="button" class="chip fav-filter-chip" data-action="favorites:filter" aria-pressed="false">☆ المفضلة</button>
 
     <SortableList items={page.data} card={card} />
 

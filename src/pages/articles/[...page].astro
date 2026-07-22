@@ -41,6 +41,8 @@ const card = (it: ContentEntry) => ({
   cta: "اقرأ ←",
   dlKind: "article",
   dlId: it.id,
+  favKind: "article",
+  favId: it.id,
 });
 
 // numbered pagination: first, last, and a window around the current page
@@ -74,10 +76,11 @@ const pageHref = (n: number) => (n === 1 ? "/articles" : `/articles/${n}`);
     </div>
 
     <TitleFilter placeholder="ابحث بالعنوان أو النص…" scope={{ type: "article" }} />
+    <button type="button" class="chip fav-filter-chip" data-action="favorites:filter" aria-pressed="false">☆ المفضلة</button>
 
     <ol class="flat-list">
       {page.data.map((it) => (
-        <li data-title={it.data.title}><EntityCard {...card(it)} /></li>
+        <li data-title={it.data.title} data-fav-key={`article:${it.id}`}><EntityCard {...card(it)} /></li>
       ))}
     </ol>
 

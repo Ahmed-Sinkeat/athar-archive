@@ -1,14 +1,13 @@
 ---
 title: "نظم الآجرومية"
-status: published
-published_at: 2026-07-22
-person: abn-ab
-kind: كتاب
+status: "published"
+published_at: "2026-07-22"
+person: "abn-ab"
 topics: ["al-nahw"]
+work_type: "منظومة"
 authored_year: 1120
 description: "نظم لمتن الآجرومية"
 ---
-
 ## مقدمة
 
 قَالَ ابْنُ آبَّ وَاسْمُهُ مُحَمَّدُ ... اللهَ فِي كُلِّ الأُمُورِ أَحْمَدُ

@@ -1,10 +1,10 @@
 ---
 title: "ألفية ابن مالك"
-status: published
-published_at: 2026-07-22
-person: ibn-malik
-kind: كتاب
+status: "published"
+published_at: "2026-07-22"
+person: "ibn-malik"
 topics: ["al-nahw"]
+work_type: "منظومة"
 ---
 ## المقدمة
 

@@ -13,8 +13,10 @@ interface Props {
   era?: string;       // العصر — canonical value; badge shows eraLabel(), data-era filters
   dlKind?: string;    // + dlId: render a quick download-for-offline button on the
   dlId?: string;      //   row itself (size filled from /dl-sizes.json by downloads.ts)
+  favKind?: string;   // + favId: render a المفضلة star toggle on the row
+  favId?: string;     //   itself (reader.ts owns the click/state, localStorage only)
 }
-const { href, title, kind, kindColor = "tag-accent", corner, sub, cta = "ادخل ←", filterKey, audio, era, dlKind, dlId } = Astro.props;
+const { href, title, kind, kindColor = "tag-accent", corner, sub, cta = "ادخل ←", filterKey, audio, era, dlKind, dlId, favKind, favId } = Astro.props;
 const hasRow = kind || corner || audio || era;
 // div + stretched link overlay, NOT a link wrapping everything: a <button>
 // nested inside an <a> is invalid HTML and made download taps depend on JS
@@ -46,6 +48,13 @@ const hasRow = kind || corner || audio || era;
       aria-pressed="false" aria-label={`تنزيل «${title}» للقراءة دون اتصال`} title="تنزيل للقراءة دون اتصال">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"></path><path d="M7 10l5 5 5-5"></path><path d="M4 19h16"></path></svg>
       <span class="card-dl-size" data-dl-size dir="ltr"></span>
+    </button>
+  )}
+  {favKind && favId && (
+    <button type="button" class="card-fav" data-action="favorite:toggle"
+      data-fav-kind={favKind} data-fav-id={favId} data-fav-key={`${favKind}:${favId}`}
+      aria-pressed="false" aria-label={`إضافة «${title}» إلى المفضلة`} title="المفضلة">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
     </button>
   )}
 </div>

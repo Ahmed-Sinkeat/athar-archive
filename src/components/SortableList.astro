@@ -56,6 +56,7 @@ const sortedItems = [...items].sort((a, b) => a.data.title.localeCompare(b.data.
         data-person-name={it.data.person ? (graph.getById("person", it.data.person as string)?.data.title as string | undefined) ?? "" : ""}
         data-topics={((it.data.topics as string[] | undefined) ?? []).join(",")}
         data-kind={(it.data.kind as string | undefined) ?? ""}
+        data-fav-key={`${it.collection}:${it.id}`}
       ><EntityCard {...card(it)} /></li>
     ))}
   </ol>

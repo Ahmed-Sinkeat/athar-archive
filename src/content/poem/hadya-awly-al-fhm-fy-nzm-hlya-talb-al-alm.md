@@ -1,14 +1,13 @@
 ---
 title: "حادية أولي الفهم في نظم حلية طالب العلم"
-status: published
-published_at: 2026-07-22
-person: sltan-bn-mhmd-bn-sbhan-al-shmry
-kind: كتاب
+status: "published"
+published_at: "2026-07-22"
+person: "sltan-bn-mhmd-bn-sbhan-al-shmry"
 topics: ["adab-talab-al-ilm"]
+work_type: "منظومة"
 authored_year: 1417
 description: "نظم لكتاب حلية طالب العلم لبكر بن عبد الله أبو زيد"
 ---
-
 ## المقدمة
 
 ذات الوشاح تغنت وانثنت طربا ... وأشغلتك بلحظ يشتكي التعبا
