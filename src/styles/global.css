@@ -636,20 +636,22 @@ summary::-webkit-details-marker { display: none; }
 /* the ❁ hemistich separator belonged to the side-by-side columns — the
    staggered layout doesn't have a between-columns slot for it */
 .verse-hemistich-rule { display: none; }
-/* annotated verse: cream block (reference screenshot) only on hover, or while
-   its sheet is open — on touch the tap itself opens the sheet, which applies
-   .ann-active-verse. Whole verse is the tap target (reader.ts opens the
-   ann-sheet on verse tap), so it works even with verse numbers hidden.
-   padding-inline stays on so the highlight causes no layout shift. */
-.verse.has-ann {
-  cursor: pointer; border-radius: var(--radius-lg); padding-inline: 14px;
+/* annotated verse: whole row stays tap target (reader.ts opens the ann-sheet
+   on verse tap — works even with verse numbers hidden), but the visible cue
+   is a card hugging just the صدر/عجز text (.verse-text, display:table shrinks
+   to the wider line) instead of the old full-column wash — doesn't rely on
+   .vnum, and doesn't paint padding nobody reads. */
+.verse.has-ann { cursor: pointer; }
+.verse.has-ann .verse-text {
+  display: table; border-radius: var(--radius-lg); padding: 6px 16px; margin: -6px 0;
   /* whisper-subtle resting cue, one step off the page color; transparent
      mixes so all three states sit naturally on every theme's background */
-  background: color-mix(in srgb, var(--gold) 5%, transparent);
+  background: color-mix(in srgb, var(--gold) 6%, transparent);
+  transition: background var(--t-base) var(--ease);
 }
-.verse.has-ann:hover { background: color-mix(in srgb, var(--gold) 14%, transparent); }
+.verse.has-ann:hover .verse-text { background: color-mix(in srgb, var(--gold) 12%, transparent); }
 /* .ann-active-verse alone loses the specificity fight against the rules above */
-.verse.has-ann.ann-active-verse { background: color-mix(in srgb, var(--gold) 22%, transparent); }
+.verse.has-ann.ann-active-verse .verse-text { background: color-mix(in srgb, var(--gold) 18%, transparent); }
 .verses .inline-note { border-inline-start-color: var(--copper); }
 .verses .inline-note summary,
 .verses .inline-note-more,
@@ -694,6 +696,9 @@ html.tasmi-mode .verses .verse:not(.tasmi-revealed) { cursor: pointer; }
 html.tasmi-mode .verses .verse:not(.tasmi-revealed) .ajz { filter: blur(7px); user-select: none; }
 html.tasmi-mode .ayah-list .ayah:not(.tasmi-revealed) { cursor: pointer; }
 html.tasmi-mode .ayah-list .ayah:not(.tasmi-revealed) .ayah-text { filter: blur(8px); user-select: none; }
+
+/* voice-follow.ts (poem-page prototype): bayt lights up once recited */
+.verse.voice-read { background: var(--verdigris-wash); border-radius: var(--radius); transition: background 0.4s; }
 
 /* "download all" pill — downloads page group rows + person pages (آثاره) */
 .downloads-all-btn {
@@ -837,9 +842,10 @@ html:not(.has-js) .ann-pack:target { display: block; margin-top: 8px; }
   text-align: justify; text-align-last: right;
 }
 /* no indent where it reads wrong: right after a heading, or in card excerpts */
-.prose h2 + p, .prose h3 + p, .prose blockquote p { text-indent: 0; }
+.prose h2 + p, .prose h3 + p, .prose h4 + p, .prose h5 + p, .prose h6 + p,
+.prose blockquote p { text-indent: 0; }
 .tok-quran-ref { color: var(--ink-faint); font-size: 0.88em; }
-.prose h2, .prose h3 {
+.prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
   /* Phase 1: font-display is now Noto Naskh — use 600 weight */
   font-family: var(--font-display); font-weight: 700;
   margin: 40px 0 14px; scroll-margin-top: 90px; letter-spacing: -0.01em;
@@ -847,6 +853,14 @@ html:not(.has-js) .ann-pack:target { display: block; margin-top: 8px; }
 .prose h2 { font-size: calc(24px * var(--reading-scale)); color: var(--accent); }
 .prose h2::before { content: "۞ "; color: var(--gold); } /* HANDOFF.md §5: sub-headings (باب…) get a gold ۞ */
 .prose h3 { font-size: calc(21px * var(--reading-scale)); color: var(--verdigris); }
+/* books built mostly/only on h3-h5 (no ## chapter divisions) still need a
+   clear size step down at each level — was unstyled below h3, falling back
+   to the browser default (smaller than body text at h5/h6). */
+.prose h4 { font-size: calc(19px * var(--reading-scale)); color: var(--ink); margin-top: 30px; }
+.prose h5, .prose h6 {
+  font-size: calc(18px * var(--reading-scale)); color: var(--ink-soft);
+  margin-top: 24px; font-weight: 600;
+}
 .prose blockquote {
   /* Phase 2: verdigris for blockquotes — differentiate from accent red */
   border-inline-start: 3px solid var(--verdigris); margin: 0 0 22px; padding-inline-start: 18px;

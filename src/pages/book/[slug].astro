@@ -66,6 +66,7 @@ export async function getStaticPaths() {
 
 const { entry, chunked, toc, volumes, tocNested, body, byAnchor, audios, commentaries, author, topicLabel, origin, related, backlinks } = Astro.props;
 const bookPageCount = Math.max(0, ...[...(body ?? "").matchAll(/data-page="(\d+)"/g)].map((m) => Number(m[1])));
+const tocMinDepth = tocNested?.length ? Math.min(...tocNested.map((h: { depth: number }) => h.depth)) : 2;
 const KIND_SLUG: Record<string, string> = { شرح: "sharh", حاشية: "hashiya", تخريج: "takhrij", إعراب: "iraab" };
 // Oversized chapters get re-split into "صفحات S-E" slices (parent set) — group
 // those back under the parent chapter for the TOC instead of listing each slice.
@@ -220,7 +221,10 @@ const jsonLd = bookLd({
           <div class="toc-box has-current">
             <div class="toc-label">{bookPageCount > 0 ? `فهرس العناوين · ${bookPageCount} صفحة` : "فهرس العناوين"}</div>
             {tocNested.map((h) => (
-              <a href={`#${h.slug}`} style={`padding-inline-start: ${(h.depth - 2) * 1}rem`}>{h.title}</a>
+              // indent relative to the shallowest heading actually used — a
+              // book with no ## divisions (h3-only, or h3-h5) shouldn't have
+              // its top level pinned 1rem+ right just because depth counts from h2
+              <a href={`#${h.slug}`} style={`padding-inline-start: ${(h.depth - tocMinDepth) * 1}rem`}>{h.title}</a>
             ))}
           </div>
         </ReaderSidebar>
