@@ -1,15 +1,20 @@
-// Hidden per-bayt timing capture for poem-timing/*.json. Activate a poem page
-// by opening it with ?tap in the URL — nothing renders otherwise, so regular
-// visitors never see this. Replaces the two-tab workflow in tools/timing-tap.html:
-// taps here read the real <audio> currentTime directly, so there's no separate
-// stopwatch to start in sync with playback.
-function init() {
+// Per-bayt timing capture for poem-timing/*.json — reachable from the reading
+// settings panel (poems with audio but no timing yet show a "help time this
+// poem" button, see reader.ts's isPoemPage/followTiming visibility check) or
+// directly via ?tap in the URL. Replaces the two-tab workflow in
+// tools/timing-tap.html: taps here read the real <audio> currentTime
+// directly, so there's no separate stopwatch to start in sync with playback.
+const REPORT_MAILTO = "tashih@arthurarchive.com"; // matches ahlalathar.config.ts reportErrorMailto
+
+export function openTapPanel() {
   document.querySelector("[data-tap-panel]")?.remove();
-  if (!new URLSearchParams(location.search).has("tap")) return;
 
   const audio = document.querySelector<HTMLAudioElement>("[data-audio-el]");
-  const verseEls = Array.from(document.querySelectorAll<HTMLElement>(".verses[data-matn] .verse"));
+  const versesRoot = document.querySelector<HTMLElement>(".verses[data-matn]");
+  const verseEls = Array.from(versesRoot?.querySelectorAll<HTMLElement>(".verse") ?? []);
   if (!audio || !verseEls.length) return;
+  const poemSlug = versesRoot!.dataset.matn!;
+  const poemTitle = document.querySelector("h1")?.textContent?.trim() || poemSlug;
 
   let cues: { v: number; t: number }[] = [];
 
@@ -24,6 +29,8 @@ function init() {
       <div style="display:flex;gap:6px;">
         <button type="button" data-tap-undo style="padding:6px 10px;">تراجع</button>
         <button type="button" data-tap-export style="padding:6px 10px;">تصدير JSON</button>
+        <button type="button" data-tap-send hidden style="padding:6px 10px;background:#2a5c49;">إرسال</button>
+        <button type="button" data-tap-close style="padding:6px 10px;" aria-label="إغلاق">✕</button>
       </div>
     </div>
     <button type="button" data-tap-next style="display:block;width:100%;font-size:22px;padding:16px;background:#2a5c49;color:#eee;border:1px solid #2a5c49;border-radius:10px;"></button>
@@ -34,6 +41,7 @@ function init() {
   const statusEl = panel.querySelector<HTMLElement>("[data-tap-status]")!;
   const nextBtn = panel.querySelector<HTMLButtonElement>("[data-tap-next]")!;
   const outEl = panel.querySelector<HTMLTextAreaElement>("[data-tap-out]")!;
+  const sendBtn = panel.querySelector<HTMLButtonElement>("[data-tap-send]")!;
 
   function render() {
     const idx = cues.length;
@@ -55,12 +63,22 @@ function init() {
   panel.querySelector("[data-tap-export]")!.addEventListener("click", () => {
     outEl.value = JSON.stringify(cues, null, 2);
     outEl.hidden = false;
+    sendBtn.hidden = false;
     outEl.select();
     navigator.clipboard?.writeText(outEl.value).catch(() => {});
   });
+  sendBtn.addEventListener("click", () => {
+    const subject = `توقيت أبيات: ${poemTitle} (${poemSlug})`;
+    const body = `مرفق توقيت الأبيات لقصيدة «${poemTitle}» (${poemSlug}) — الصقها في src/content/poem-timing/${poemSlug}.json:\n\n${outEl.value}`;
+    location.href = `mailto:${REPORT_MAILTO}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  });
+  panel.querySelector("[data-tap-close]")!.addEventListener("click", () => panel.remove());
 
   render();
 }
 
-init();
-document.addEventListener("astro:page-load", init);
+if (new URLSearchParams(location.search).has("tap")) openTapPanel();
+document.addEventListener("astro:page-load", () => {
+  document.querySelector("[data-tap-panel]")?.remove();
+  if (new URLSearchParams(location.search).has("tap")) openTapPanel();
+});

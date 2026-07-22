@@ -844,9 +844,9 @@ html:not(.has-js) .ann-pack:target { display: block; margin-top: 8px; }
   font-family: var(--font-display); font-weight: 700;
   margin: 40px 0 14px; scroll-margin-top: 90px; letter-spacing: -0.01em;
 }
-.prose h2 { font-size: calc(22px * var(--reading-scale)); color: var(--accent); }
+.prose h2 { font-size: calc(24px * var(--reading-scale)); color: var(--accent); }
 .prose h2::before { content: "۞ "; color: var(--gold); } /* HANDOFF.md §5: sub-headings (باب…) get a gold ۞ */
-.prose h3 { font-size: calc(19px * var(--reading-scale)); color: var(--verdigris); }
+.prose h3 { font-size: calc(21px * var(--reading-scale)); color: var(--verdigris); }
 .prose blockquote {
   /* Phase 2: verdigris for blockquotes — differentiate from accent red */
   border-inline-start: 3px solid var(--verdigris); margin: 0 0 22px; padding-inline-start: 18px;
@@ -1475,6 +1475,12 @@ html.hide-vnums .vnum { display: none; }
 .prose ul, .prose ol { margin: 0 0 22px; padding-inline-start: 26px; color: var(--ink-soft); font-size: calc(18px * var(--reading-scale)); line-height: 2; }
 .prose li { margin-bottom: 8px; }
 .prose li::marker { color: var(--accent); }
+/* classical fiqh matn enumeration ("الأول: … الثاني: …") compiles to <ul> but
+   isn't a modern bullet list in the source print convention — no marker, no
+   indent, reads as flowing prose like the rest of the body. */
+.prose ul { list-style: none; padding-inline-start: 0; margin: 0 0 1.4em; font-size: inherit; color: inherit; line-height: 2.1; }
+.prose ul li { margin: 0 0 1.4em; text-align: justify; text-align-last: right; }
+.prose ul li:last-child { margin-bottom: 0; }
 .prose hr { border: 0; height: 0; border-top: 1px solid var(--rule-strong); margin: 34px auto; width: 42%; }
 .prose code { font-family: var(--font-mono); font-size: 0.88em; background: var(--paper-2); border: 1px solid var(--rule); border-radius: var(--radius); padding: 1px 5px; direction: ltr; unicode-bidi: isolate; }
 .prose pre { background: var(--paper-2); border: 1px solid var(--rule-strong); border-radius: var(--radius-lg); padding: 14px 16px; overflow-x: auto; margin: 0 0 22px; direction: ltr; }

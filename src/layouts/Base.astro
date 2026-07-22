@@ -338,6 +338,10 @@ const [readerSub, readerMain] = title.includes(" · ") ? title.split(" · ") : [
         <button class="toggle-btn pop-toggle" data-toggle="pages" data-action="toggle:pages" aria-pressed="true"><span class="toggle-dot"></span>عرض الصفحات</button>
         <button class="toggle-btn pop-toggle" data-toggle="footnotes" data-action="toggle:footnotes" aria-pressed="true"><span class="toggle-dot"></span>الحواشي والتخريج</button>
         <button class="toggle-btn pop-toggle" data-toggle="followAudio" data-action="toggle:followAudio" aria-pressed="true" hidden><span class="toggle-dot"></span>تتبّع النص مع الصوت</button>
+        <!-- shown only on poems that have audio but no per-bayt timing yet
+             (see reader.ts's isPoemPage/followTiming sync) — lets any reader
+             volunteer to time the poem instead of only the site owner. -->
+        <button type="button" class="toggle-btn pop-toggle" data-action="tap:open" hidden>ساعدنا بتوقيت هذه القصيدة</button>
         {tajweedPage && (
           <>
             <!-- SSR-conditional, not always-render+CSS-hide: this markup/CSS
@@ -553,7 +557,9 @@ const [readerSub, readerMain] = title.includes(" · ") ? title.split(" · ") : [
       // (render-budget gate) — it's a whole feature (Cache API + SW + a
       // popover), not something every page needs synchronously on load.
       import("../scripts/downloads.ts");
-      // hidden timing-capture tool; no-ops immediately unless ?tap is in the URL
+      // timing-capture tool; no-ops immediately unless ?tap is in the URL —
+      // reader.ts lazy-imports this module separately when the settings-panel
+      // "help time this poem" button is clicked instead.
       import("../scripts/timing-capture.ts");
     </script>
   </body>

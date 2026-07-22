@@ -390,6 +390,7 @@ const actions: Record<string, () => void> = {
   "toggle:verseNums": () => applyVnums(root.classList.contains("hide-vnums")),
   "toggle:pages": () => applyPages(root.classList.contains("pages-flow")),
   "toggle:followAudio": () => applyFollowAudio(localStorage.getItem(LS.followAudio) === "0"),
+  "tap:open": () => { import("./timing-capture.ts").then((m) => m.openTapPanel()); },
   "toggle:footnotes": () => applyFootnotes(root.classList.contains("hide-footnotes")),
   "toggle:tasmi": () => applyTasmi(!root.classList.contains("tasmi-mode")),
   "tajweed:preset:default": () => resetTajweedColors(),
@@ -1960,6 +1961,11 @@ function onPage() {
   loadFollowTiming();
   document.querySelectorAll<HTMLElement>('[data-toggle="followAudio"]').forEach((b) => { b.hidden = !followTiming; });
   applyFollowAudio(localStorage.getItem(LS.followAudio) !== "0");
+  // "help time this poem": only on poems with audio but no timing cues yet
+  const hasAudio = !!document.querySelector("[data-audio-el]");
+  document.querySelectorAll<HTMLElement>('[data-action="tap:open"]').forEach((b) => {
+    b.hidden = !(isPoemPage && hasAudio && !followTiming);
+  });
   // tashkeel/pages/footnotes act on regular book/poem markup this page doesn't
   // have: the ayah text carries no [data-ar] (always fully diacritized, never
   // stripped), its page-seps are forced visible with !important regardless of
