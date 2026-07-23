@@ -31,4 +31,17 @@ for (const [col, outCol] of COLLECTIONS) {
     copied++;
   }
 }
+// astro build's own public/ passthrough copies public/content (a symlink to
+// src/content) verbatim — draft status and all — into dist/client/content/
+// BEFORE this script runs, including a raw dist/client/content/book-lg/ that
+// duplicates what the loop above already wrote (correctly, published-only)
+// into dist/client/content/book/. public/.assetsignore lists content/book-lg/**
+// specifically to keep that raw copy out of the Cloudflare deploy (oversized
+// imports blow the 25 MiB per-asset limit), but that's an unverified ignore
+// rule sitting between here and the actual upload — remove the directory
+// outright instead of trusting it: nothing ever reads from /content/book-lg/*
+// at runtime (only /content/book/* is a real route, via the ASSETS binding).
+const rawBookLg = path.resolve("dist/client/content/book-lg");
+if (fs.existsSync(rawBookLg)) fs.rmSync(rawBookLg, { recursive: true, force: true });
+
 console.log(`✓ copy-content-assets: ${copied} published copied → dist/client/content, ${skipped} draft(s) skipped`);
