@@ -42,7 +42,7 @@ const poems = read("poems/index.html");
 const poemCardCount = (poems.match(/class="poem-card"/g) || []).length;
 ok(poemCardCount >= 2, "poems index lists cards");
 ok(/poem-badge[^>]*>(منظومة|قصيدة)</.test(poems), "work-type badge on poem cards");
-ok(/poem-sep/.test(poems), "❁ hemistich separator on poem cards");
+ok(/poem-card-verse"[^>]*>[^]*?<br\s*\/?>/.test(poems), "سدر/عجز render as two lines on poem cards");
 
 // --- composer (unlisted maintainer tool) retired — /compose deleted; content
 // is now edited via the Sveltia CMS (/admin), not this build's concern ---
