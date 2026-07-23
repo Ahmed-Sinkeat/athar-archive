@@ -11,7 +11,15 @@ const READING = /^\/(?:book|series)\/[^/]+\/[^/]+\/?$|^\/tafsir-frag\/\d+\/\d+\.
 
 // Cache key is versioned by build id (below), so a long TTL here is safe — a
 // redeploy can't serve a stale entry, it just misses and repopulates.
-const CACHE_CONTROL = "public, s-maxage=86400, stale-while-revalidate=604800";
+// no-transform: stop Cloudflare's free-plan JavaScript Detections (Bot Fight
+// Mode) from injecting its per-request /cdn-cgi/challenge-platform/jsd inline
+// script. That script's hash changes every request, so the strict hash-based
+// CSP (no 'unsafe-inline') always blocked it — filling the console with CSP
+// violations and breaking the page's own scripts. JS Detections can't be
+// toggled off on the free plan, but Cloudflare honours no-transform and skips
+// the injection. Also disables Rocket Loader / email-obfuscation / Polish on
+// these pages — none of which this static archive relies on.
+const CACHE_CONTROL = "public, s-maxage=86400, stale-while-revalidate=604800, no-transform";
 
 // _headers only covers static asset responses, so the build also writes the same
 // header set to _headers.json; read it once per isolate and apply to on-demand pages.
