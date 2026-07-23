@@ -1538,12 +1538,17 @@ function enhanceProse() {
     activeVerse?.classList.add("ann-active-verse");
 
     titleEl.textContent = anchorLabel(pack);
-    // anchored panel head shows the selected ayah itself, single line + ellipsis
-    const ayahText = sheet!.classList.contains("ann-panel")
-      ? activeVerse?.querySelector(".ayah-text")?.textContent?.trim()
-      : undefined;
-    ayahEl.hidden = !ayahText;
-    ayahEl.textContent = ayahText ? `﴿ ${ayahText} ﴾` : "";
+    // sheet head shows the anchored text itself, single line + ellipsis — ayat
+    // (.ayah-text) and poem bayts (.sadr/.ajz) are mutually exclusive markup,
+    // so one derivation covers both without an ann-panel/content-type check
+    const ayahText = activeVerse?.querySelector(".ayah-text")?.textContent?.trim();
+    const baytText = !ayahText
+      ? [activeVerse?.querySelector(".sadr")?.textContent?.trim(), activeVerse?.querySelector(".ajz")?.textContent?.trim()]
+          .filter(Boolean).join("  —  ")
+      : "";
+    ayahEl.hidden = !ayahText && !baytText;
+    ayahEl.classList.toggle("is-bayt", !!baytText);
+    ayahEl.textContent = ayahText ? `﴿ ${ayahText} ﴾` : baytText;
     const byKind = entriesByKind(pack);
     // ALL kinds always listed (user: ابن أبي الدنيا's تعليق tab must stay
     // reachable even on ayat he skipped) — same always-show philosophy as the
@@ -1581,6 +1586,11 @@ function enhanceProse() {
     // now-detached button finds nothing, so this used to misread the click as
     // "outside the sheet" and immediately close it right after it reopened.
     if (e.composedPath().some((el) => el instanceof Element && el.classList.contains("ann-sheet"))) return;
+    // a click that ends a mobile long-press text-selection (copying a bayt/ayah)
+    // fires on the same has-ann verse this listener opens the sheet for — without
+    // this guard every attempt to select+copy annotated text got hijacked into
+    // opening/reopening the sheet instead, clearing the selection mid-copy.
+    if (!window.getSelection()?.isCollapsed) return;
     const mark = t.closest<HTMLElement>(".ann-mark");
     if (mark) {
       e.preventDefault();

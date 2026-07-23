@@ -1486,6 +1486,7 @@ html.hide-vnums .vnum { display: none; }
 .ann-sheet.ann-panel .ann-sheet-title::before { content: ""; width: 7px; height: 7px; background: var(--gold); transform: rotate(45deg); flex: none; }
 .ann-sheet-ayah { font-family: var(--f-quran); font-size: 16px; color: var(--ink2); min-width: 0; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin-inline: 10px; }
 .ann-sheet-ayah[hidden] { display: none; }
+.ann-sheet-ayah.is-bayt { font-family: var(--font-serif); font-weight: 700; }
 .ann-sheet.ann-panel .ann-dd-btn:hover { border-color: var(--gold-soft); }
 .ann-sheet.ann-panel .ann-dd-item[aria-selected="true"] { color: var(--ink); background: color-mix(in srgb, var(--gold) 16%, transparent); }
 .ann-sheet.ann-panel .ann-nav { color: var(--gold); }
