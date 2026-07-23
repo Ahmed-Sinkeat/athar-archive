@@ -146,6 +146,11 @@ jobs:
       - name: Build (Astro prerender — this shard's slice of chapters only)
         run: pnpm exec astro build
 
+      # Rides in the artifact so the finish job can prove the merge kept every
+      # chapter this shard rendered (see "Merge shard chapter pages + verify").
+      - name: Record this shard's chapter count
+        run: find dist/client/book-pages -name index.html | wc -l > dist/client/book-pages/.count-shard-${{ matrix.shard }}
+
       - name: Upload this shard's book-chapter pages
         uses: actions/upload-artifact@v4
         with:
@@ -194,15 +199,31 @@ jobs:
           name: build-primary
           path: dist
 
-      # merge-multiple unions every shard-N artifact's files straight into
-      # dist/client/book-pages alongside shard 0's own slice already there —
-      # no filename collisions since each book's chapters live in one shard.
-      - name: Merge remaining shards' book-chapter pages
+      # Download each shard artifact into its OWN dir — NOT merge-multiple.
+      # download-artifact's merge-multiple silently dropped ~half the files when
+      # unioning the 8 large shard artifacts into one directory, which took
+      # roughly half the site's book chapters offline (all jobs still green).
+      # cp-merge them explicitly below instead — deterministic — then verify the
+      # union count equals the sum every shard recorded.
+      - name: Download shard chapter artifacts (separate dirs)
         uses: actions/download-artifact@v4
         with:
           pattern: book-pages-shard-*
-          path: dist/client/book-pages
-          merge-multiple: true
+          path: dist/_shards
+
+      - name: Merge shard chapter pages + verify none lost
+        run: |
+          mkdir -p dist/client/book-pages
+          for d in dist/_shards/book-pages-shard-*/; do cp -a "$d." dist/client/book-pages/; done
+          expected=$(cat dist/client/book-pages/.count-shard-* | awk '{s+=$1} END{print s}')
+          actual=$(find dist/client/book-pages -name index.html | wc -l)
+          rm -f dist/client/book-pages/.count-shard-*
+          rm -rf dist/_shards
+          echo "chapter pages: expected=$expected merged=$actual"
+          if [ "$actual" -lt "$expected" ]; then
+            echo "::error::merge lost $((expected - actual)) chapter page(s) — refusing to deploy a partial corpus"
+            exit 1
+          fi
 
       - name: Finish build (fragments, chapters → R2 staging, redirects, headers)
         run: pnpm build:finish
