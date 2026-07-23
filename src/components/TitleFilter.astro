@@ -19,7 +19,10 @@ const { placeholder = "تصفية حسب العنوان…", scope } = Astro.pro
       <button type="button" class="title-filter-field-chip" data-field="text" aria-pressed="false">النص فقط</button>
     </div>
   )}
-  <input type="search" class="title-filter-input" placeholder={placeholder} aria-label={placeholder} autocomplete="off" data-title-filter data-title-filter-field="all" />
+  <div class="title-filter-input-row">
+    <input type="search" class="title-filter-input" placeholder={placeholder} aria-label={placeholder} autocomplete="off" data-title-filter data-title-filter-field="all" />
+    <span class="title-filter-spinner" data-title-filter-spinner hidden aria-hidden="true"></span>
+  </div>
   <p class="title-filter-empty faint" data-title-filter-empty hidden>لا نتائج مطابقة.</p>
   <div class="title-filter-live" data-title-filter-live hidden></div>
 </div>
@@ -32,11 +35,20 @@ const { placeholder = "تصفية حسب العنوان…", scope } = Astro.pro
     border: 1px solid var(--rule); border-radius: 999px; padding: 3px 11px; cursor: pointer;
   }
   .title-filter-field-chip[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); font-weight: 600; }
+  .title-filter-input-row { position: relative; }
   .title-filter-input {
     width: 100%; font-family: var(--font-ui); font-size: 15px; color: var(--ink);
     background: var(--surface); border: 1px solid var(--rule-strong); border-radius: 10px;
     padding: 10px 14px;
   }
+  .title-filter-spinner {
+    position: absolute; inset-inline-end: 14px; top: 50%; translate: 0 -50%;
+    width: 14px; height: 14px; border-radius: 50%;
+    border: 2px solid var(--rule-strong); border-inline-start-color: var(--accent);
+    animation: title-filter-spin .6s linear infinite;
+  }
+  .title-filter-spinner[hidden] { display: none; }
+  @keyframes title-filter-spin { to { transform: rotate(360deg); } }
   .title-filter-empty { padding: 10px 2px 0; font-size: 13px; }
   .title-filter-live { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
   .title-filter-live-hit {
@@ -61,7 +73,12 @@ const { placeholder = "تصفية حسب العنوان…", scope } = Astro.pro
       const scope = wrap.parentElement;
       const empty = wrap.querySelector("[data-title-filter-empty]");
       const live = wrap.querySelector("[data-title-filter-live]");
+      const spinner = wrap.querySelector("[data-title-filter-spinner]");
       const searchType = wrap.dataset.searchType;
+      // "العنوان فقط" gets a clear generic label; "الكل" keeps whatever
+      // type-specific wording the page passed in (e.g. "تصفية حسب الاسم…").
+      const basePlaceholder = input.getAttribute("placeholder") || "";
+      const PLACEHOLDER_BY_FIELD = { all: basePlaceholder, title: "تصفية حسب العنوان…", text: "بحث في النص…" };
       // strip tashkeel, then fold hamza-alef/ya/ta-marbuta variants so
       // "الألبيري" matches a search for "الالبيري" (and vice versa) — common
       // spelling drift in Arabic text, not a real difference to the reader
@@ -77,7 +94,8 @@ const { placeholder = "تصفية حسب العنوان…", scope } = Astro.pro
       let debounce;
       const runLiveSearch = (raw) => {
         clearTimeout(debounce);
-        if (raw.length < 2) { live.hidden = true; live.innerHTML = ""; return; }
+        if (raw.length < 2) { live.hidden = true; live.innerHTML = ""; spinner.hidden = true; return; }
+        spinner.hidden = false;
         debounce = setTimeout(async () => {
           const mySeq = ++seq;
           try {
@@ -85,6 +103,7 @@ const { placeholder = "تصفية حسب العنوان…", scope } = Astro.pro
             const res = await fetch(`/api/search?q=${encodeURIComponent(raw)}&type=${encodeURIComponent(searchType)}&field=${field}`);
             const data = res.ok ? await res.json() : { hits: [] };
             if (mySeq !== seq) return; // a newer keystroke already superseded this
+            spinner.hidden = true;
             const hits = (data.hits || []).slice(0, 8);
             if (!hits.length) {
               live.innerHTML = `<p class="title-filter-empty faint">لا نتائج مطابقة.</p>`;
@@ -100,16 +119,22 @@ const { placeholder = "تصفية حسب العنوان…", scope } = Astro.pro
                 `<p class="title-filter-live-snippet">${snippet}</p>${cite}</a>`;
             }).join("");
             live.hidden = false;
-          } catch { /* offline/API hiccup — local-only filtering still works */ }
+          } catch { spinner.hidden = true; /* offline/API hiccup — local-only filtering still works */ }
         }, 300);
       };
       const apply = () => {
         const raw = input.value.trim();
         const q = norm(raw);
+        const field = input.dataset.titleFilterField || "all";
+        // "النص فقط" has nothing to match against locally — cards only carry
+        // a title (data-title), never their full body — so matching by title
+        // here anyway silently ignored the user's field choice. Always defer
+        // to the live index instead.
+        const localEligible = field !== "text";
         const items = scope.querySelectorAll("[data-title]");
         let shown = 0;
         items.forEach((el) => {
-          const match = !q || norm(el.dataset.title || "").includes(q);
+          const match = !q || (localEligible && norm(el.dataset.title || "").includes(q));
           el.hidden = !match;
           if (match) shown++;
         });
@@ -138,6 +163,7 @@ const { placeholder = "تصفية حسب العنوان…", scope } = Astro.pro
         chip.addEventListener("click", () => {
           wrap.querySelectorAll("[data-field]").forEach((b) => b.setAttribute("aria-pressed", String(b === chip)));
           input.dataset.titleFilterField = chip.dataset.field;
+          input.placeholder = PLACEHOLDER_BY_FIELD[chip.dataset.field] ?? basePlaceholder;
           if (input.value.trim()) apply();
         });
       });

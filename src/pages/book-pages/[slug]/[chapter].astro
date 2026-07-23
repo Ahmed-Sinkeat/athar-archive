@@ -26,6 +26,7 @@ import { parseToc } from "../../../lib/chapters";
 import { wirePageFootnotes } from "../../../lib/page-footnotes";
 import { readBody } from "../../../lib/read-body";
 import { buildBookChapters, buildAyahInjector, TAFSIR_AYAH_SOURCE } from "../../../lib/book-build";
+import { shardPaths } from "../../../lib/build-shard";
 import { hrefFor, labelFor, isMatn, toArabicDigits } from "../../../lib/display";
 import { parseHadithOrdinal, type TakhrijLink } from "../../../lib/hadith";
 import hadithIndexData from "../../../data/hadith-index.json";
@@ -75,7 +76,11 @@ export async function getStaticPaths() {
       });
     }
   }
-  return paths;
+  // ponytail: every shard still computes the full chapter list for every book
+  // (buildBookChapters' own chunking cost isn't split) — only the actual page
+  // RENDER is divided, which is where the wall-clock time is. Split chunking
+  // too if that computation itself ever becomes the bottleneck.
+  return shardPaths(paths);
 }
 
 type HadithNote = { kind: string; label: string; sourceSlug: string; sourceTitle: string; sourceHref: string; body: string; grade?: string };

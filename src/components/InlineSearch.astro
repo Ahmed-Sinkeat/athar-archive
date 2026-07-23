@@ -18,7 +18,10 @@ const paramsQs = new URLSearchParams(params).toString();
     <button type="button" class="inline-search-field-chip" data-field="title" aria-pressed="false">العنوان فقط</button>
     <button type="button" class="inline-search-field-chip" data-field="text" aria-pressed="false">النص فقط</button>
   </div>
-  <input type="search" class="inline-search-input" placeholder={placeholder} aria-label={placeholder} autocomplete="off" data-inline-search data-inline-search-params={paramsQs} data-inline-search-empty={emptyText} data-inline-search-field="all" />
+  <div class="inline-search-input-row">
+    <input type="search" class="inline-search-input" placeholder={placeholder} aria-label={placeholder} autocomplete="off" data-inline-search data-inline-search-params={paramsQs} data-inline-search-empty={emptyText} data-inline-search-field="all" />
+    <span class="inline-search-spinner" data-inline-search-spinner hidden aria-hidden="true"></span>
+  </div>
   <div class="inline-search-results" data-inline-search-results hidden></div>
 </div>
 
@@ -30,11 +33,20 @@ const paramsQs = new URLSearchParams(params).toString();
     border: 1px solid var(--rule); border-radius: 999px; padding: 3px 11px; cursor: pointer;
   }
   .inline-search-field-chip[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); font-weight: 600; }
+  .inline-search-input-row { position: relative; }
   .inline-search-input {
     width: 100%; font-family: var(--font-ui); font-size: 15px; color: var(--ink);
     background: var(--surface); border: 1px solid var(--rule-strong); border-radius: 10px;
     padding: 10px 14px;
   }
+  .inline-search-spinner {
+    position: absolute; inset-inline-end: 14px; top: 50%; translate: 0 -50%;
+    width: 14px; height: 14px; border-radius: 50%;
+    border: 2px solid var(--rule-strong); border-inline-start-color: var(--accent);
+    animation: inline-search-spin .6s linear infinite;
+  }
+  .inline-search-spinner[hidden] { display: none; }
+  @keyframes inline-search-spin { to { transform: rotate(360deg); } }
   .inline-search-results { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
   .inline-search-hit {
     display: block; background: var(--surface); border: 1px solid var(--rule);
@@ -56,6 +68,7 @@ const paramsQs = new URLSearchParams(params).toString();
       input.dataset.wired = "1";
       const wrap = input.closest(".inline-search");
       const results = wrap.querySelector("[data-inline-search-results]");
+      const spinner = wrap.querySelector("[data-inline-search-spinner]");
       const extra = input.dataset.inlineSearchParams || "";
       const emptyText = input.dataset.inlineSearchEmpty || "لا نتائج مطابقة.";
       let seq = 0;
@@ -63,7 +76,8 @@ const paramsQs = new URLSearchParams(params).toString();
       const runSearch = () => {
         clearTimeout(debounce);
         const q = input.value.trim();
-        if (q.length < 2) { results.hidden = true; results.innerHTML = ""; return; }
+        if (q.length < 2) { results.hidden = true; results.innerHTML = ""; spinner.hidden = true; return; }
+        spinner.hidden = false;
         debounce = setTimeout(async () => {
           const mySeq = ++seq;
           try {
@@ -71,6 +85,7 @@ const paramsQs = new URLSearchParams(params).toString();
             const res = await fetch(`/api/search?q=${encodeURIComponent(q)}&field=${field}${extra ? `&${extra}` : ""}`);
             const data = res.ok ? await res.json() : { hits: [] };
             if (mySeq !== seq) return; // a newer keystroke already superseded this
+            spinner.hidden = true;
             const hits = data.hits || [];
             if (!hits.length) {
               results.innerHTML = `<p class="inline-search-empty faint">${esc(emptyText)}</p>`;
@@ -84,7 +99,7 @@ const paramsQs = new URLSearchParams(params).toString();
                 `<p class="inline-search-hit-snippet">${snippet}</p></a>`;
             }).join("");
             results.hidden = false;
-          } catch { /* offline/API hiccup — no results, no crash */ }
+          } catch { spinner.hidden = true; /* offline/API hiccup — no results, no crash */ }
         }, 300);
       };
       input.addEventListener("input", runSearch);

@@ -4,8 +4,10 @@ import Base from "../../layouts/Base.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import { isPub } from "../../lib/site";
 import { markdownToSafeHtml } from "../../lib/sanitize";
+import { isPrimaryShard } from "../../lib/build-shard";
 
 export async function getStaticPaths() {
+  if (!isPrimaryShard) return [];
   const terms = (await getCollection("term")).filter(isPub);
   return terms.map((entry) => ({
     params: { slug: entry.id },

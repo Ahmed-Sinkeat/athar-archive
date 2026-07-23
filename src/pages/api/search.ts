@@ -33,13 +33,21 @@ const json = (body: unknown, status = 200) =>
 // a multi-word query ("هذا وأما" typed as "هذا وام") doesn't kill the whole
 // AND match on its own; phrase mode keeps the old last-token-only prefix,
 // since prefixing every word inside a quoted phrase isn't meaningful FTS5 syntax.
+// Tokens shorter than this stay an exact match instead — Arabic's short
+// grammatical particles (يا، في، من، لا، ما، هل...) are almost all ≤2 letters,
+// and prefix-expanding one turns it into a wildcard that also matches any
+// unrelated word merely starting with it ("يا" → "ياجوج", "ياسمين"...).
+const MIN_PREFIX_LEN = 3;
 function buildMatch(tokens: string[], mode: string): string {
   const clean = tokens.map((t) => t.replaceAll('"', ""));
+  const withPrefix = (t: string) => (t.length >= MIN_PREFIX_LEN ? `${t}*` : t);
   if (mode === "phrase") {
-    const words = clean.map((t, i) => (i === clean.length - 1 ? `${t}*` : t));
+    const words = clean.map((t, i) => (i === clean.length - 1 ? withPrefix(t) : t));
     return `"${words.join(" ")}"`;
   }
-  const quoted = clean.map((t) => `"${t}"*`);
+  // the *, unlike phrase mode's, must sit OUTSIDE the closing quote here —
+  // FTS5 only treats it as a wildcard there; inside the quotes it's literal.
+  const quoted = clean.map((t) => (t.length >= MIN_PREFIX_LEN ? `"${t}"*` : `"${t}"`));
   return quoted.join(mode === "any" ? " OR " : " ");
 }
 

@@ -19,7 +19,14 @@ concurrency:
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
-  build:
+  # Two independent kinds of prerender work, decoupled via BUILD_ROLE
+  # (src/lib/build-shard.ts) so neither carries the other's cost:
+  #   - build-primary: the ~5.4k regular-route pages (every route EXCEPT
+  #     book-pages/[slug]/[chapter].astro), once.
+  #   - build-chapters: book-pages/[slug]/[chapter].astro alone, ~75k pages —
+  #     dwarfs every other route combined — split BUILD_SHARD_COUNT ways.
+  # Both only produce artifacts; finish (below) merges + deploys.
+  build-primary:
     runs-on: ubuntu-latest
     env:
       # astro build opens a remote Cloudflare session to resolve the R2 binding
@@ -30,6 +37,8 @@ jobs:
       # ubuntu-latest has 7GB; the corpus outgrew V8's default heap during
       # prerender and search-index generation alike (both OOM'd separately).
       NODE_OPTIONS: --max-old-space-size=6656
+      BUILD_ROLE: primary
+      BUILD_SHARD_COUNT: 8
     steps:
       - uses: actions/checkout@v4
         with:
@@ -71,11 +80,132 @@ jobs:
       - name: Unit tests
         run: pnpm test
 
-      - name: Validate content (cross-entity, build-fail rules)
-        run: pnpm validate:content
+      - name: Build data prep (validate content, takhrij, tafsir keys)
+        run: pnpm build:prep
 
-      - name: Build (Astro + fragments + redirects)
-        run: pnpm build
+      - name: Build (Astro prerender — regular routes only, zero chapters)
+        run: pnpm exec astro build
+
+      - name: Upload primary dist
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-primary
+          path: dist
+          retention-days: 1
+
+  build-chapters:
+    strategy:
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7]
+    runs-on: ubuntu-latest
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      NODE_OPTIONS: --max-old-space-size=6656
+      BUILD_ROLE: chapters
+      BUILD_SHARD: ${{ matrix.shard }}
+      BUILD_SHARD_COUNT: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+
+      - name: Free disk space
+        run: sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Fetch build data from R2
+        run: pnpm data:fetch
+
+      - name: Cache Astro data store
+        uses: actions/cache@v4
+        with:
+          path: .astro
+          key: astro-${{ hashFiles('src/content/**') }}
+          restore-keys: astro-
+
+      # Every shard needs takhrij.json / quran-tafsir-keys.json on disk before
+      # astro build (route modules import them at load time regardless of
+      # which shard's getStaticPaths actually uses them) — cheap (~2min), run
+      # it in every shard rather than plumb the generated files through as
+      # another artifact.
+      - name: Build data prep (validate content, takhrij, tafsir keys)
+        run: pnpm build:prep
+
+      - name: Build (Astro prerender — this shard's slice of chapters only)
+        run: pnpm exec astro build
+
+      - name: Upload this shard's book-chapter pages
+        uses: actions/upload-artifact@v4
+        with:
+          name: book-pages-shard-${{ matrix.shard }}
+          path: dist/client/book-pages
+          retention-days: 1
+
+  # Merges build-chapters' output into build-primary's dist/, then runs
+  # everything that needs the FULL page set once: post-processing, the
+  # verification gates, search indexing, and deploy.
+  finish:
+    needs: [build-primary, build-chapters]
+    runs-on: ubuntu-latest
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      NODE_OPTIONS: --max-old-space-size=6656
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+
+      - name: Free disk space
+        run: sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      # gen-tafsir-frags.ts (part of build:finish below) reads the tafsir
+      # index directly, same as the build job.
+      - name: Fetch build data from R2
+        run: pnpm data:fetch
+
+      - name: Download primary shard's dist
+        uses: actions/download-artifact@v4
+        with:
+          name: build-primary
+          path: dist
+
+      # merge-multiple unions every shard-N artifact's files straight into
+      # dist/client/book-pages alongside shard 0's own slice already there —
+      # no filename collisions since each book's chapters live in one shard.
+      - name: Merge remaining shards' book-chapter pages
+        uses: actions/download-artifact@v4
+        with:
+          pattern: book-pages-shard-*
+          path: dist/client/book-pages
+          merge-multiple: true
+
+      - name: Finish build (fragments, chapters → R2 staging, redirects, headers)
+        run: pnpm build:finish
 
       - name: Smoke test (per-template invariants over dist/)
         run: pnpm smoke

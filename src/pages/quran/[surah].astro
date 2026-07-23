@@ -17,8 +17,10 @@ import { toArabicDigits } from "../../lib/display";
 // index — importing that here forced Vite to bundle the whole thing as a
 // page module dependency and OOM'd both `astro check` and `astro build`.
 import tafsirKeys from "../../data/quran-tafsir-keys.json";
+import { isPrimaryShard } from "../../lib/build-shard";
 
 export async function getStaticPaths() {
+  if (!isPrimaryShard) return [];
   const surahs = await getCollection("quran");
   const graph = await loadGraph();
   const names = await personNameMap();

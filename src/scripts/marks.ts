@@ -516,9 +516,20 @@ function jumpToSearchHl() {
   if (!term || !root()?.querySelector(".prose, .verse")) return;
   const bar = ensureFindBar();
   bar.hidden = false;
+  let used = term;
+  runFind(used);
+  // The full query is often an AND of separate words (search's default mode),
+  // not a literal contiguous phrase — runFind does an exact substring match,
+  // so it comes up empty whenever the matched words aren't adjacent on the
+  // page. Fall back to the single longest word, which is both the most
+  // locatable (least likely to be a common false-positive) and most likely
+  // to actually be present verbatim near the real match.
+  if (!findMatches.length) {
+    const longest = term.split(/\s+/).sort((a, b) => b.length - a.length)[0];
+    if (longest && longest !== term) { used = longest; runFind(used); }
+  }
   const input = bar.querySelector<HTMLInputElement>("input");
-  if (input) input.value = term;
-  runFind(term);
+  if (input) input.value = used;
 }
 
 // jump to a specific mark from /benefits (#m=<id>)

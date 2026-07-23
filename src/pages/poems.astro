@@ -75,7 +75,7 @@ const featuredVerses = featured ? analyzePoem(await readBody(featured)).verses.s
         <div class="weekly-kicker k-copper">منظومةُ الأسبوع</div>
         <div class="weekly-text poem-of-week-verses" data-ar>
           {featuredVerses.map((v) => (
-            <p>{v.sadr}{v.ajz && <Fragment><span class="poem-sep" aria-hidden="true">❁</span>{v.ajz}</Fragment>}</p>
+            <p>{v.sadr}{v.ajz && <><br />{v.ajz}</>}</p>
           ))}
         </div>
         <div class="weekly-foot poem-of-week-foot">
@@ -85,16 +85,16 @@ const featuredVerses = featured ? analyzePoem(await readBody(featured)).verses.s
       </div>
     )}
 
-    <TitleFilter placeholder="تصفية حسب العنوان…" scope={{ type: "poem" }} />
-    <button type="button" class="chip fav-filter-chip" data-action="favorites:filter" aria-pressed="false">☆ المفضلة</button>
-
     <div class="browse show-flat" data-browse>
       <div class="browse-toolbar">
         <div class="browse-view-toggle" role="group" aria-label="طريقة العرض">
+          <button type="button" class="fav-filter-chip" data-action="favorites:filter" aria-pressed="false">☆ المفضلة</button>
           <button type="button" data-flat-toggle="grouped" aria-pressed="false">مُجمَّع</button>
           <button type="button" data-flat-toggle="flat" aria-pressed="true">قائمة</button>
         </div>
       </div>
+
+      <TitleFilter placeholder="تصفية حسب العنوان…" scope={{ type: "poem" }} />
 
       <!-- flat «قائمة» view: sortable rows (أبجديًّا/بالتاريخ) with a per-row
            download-for-offline button, same as /books -->
@@ -131,7 +131,7 @@ const featuredVerses = featured ? analyzePoem(await readBody(featured)).verses.s
                           {c.first && (
                             <p class="poem-card-verse" data-ar>
                               {c.first.sadr}
-                              {c.first.ajz && <Fragment><span class="poem-sep" aria-hidden="true">❁</span>{c.first.ajz}</Fragment>}
+                              {c.first.ajz && <><br />{c.first.ajz}</>}
                             </p>
                           )}
                         </a>
@@ -154,7 +154,7 @@ const featuredVerses = featured ? analyzePoem(await readBody(featured)).verses.s
               {uncategorized.map((it) => {
                 const c = cardsById.get(it.id);
                 return c ? (
-                  <a class="poem-card" href={c.href} data-title={c.rawTitle}>
+                  <a class="poem-card" href={c.href} data-title={c.rawTitle} data-fav-key={`poem:${it.id}`}>
                     <div class="poem-card-meta">
                       <span class="poem-badge">{c.kind}</span>
                       <span class="poem-byline">{[c.poet, c.title].filter(Boolean).join(" · ")}</span>
@@ -164,7 +164,7 @@ const featuredVerses = featured ? analyzePoem(await readBody(featured)).verses.s
                     {c.first && (
                       <p class="poem-card-verse" data-ar>
                         {c.first.sadr}
-                        {c.first.ajz && <Fragment><span class="poem-sep" aria-hidden="true">❁</span>{c.first.ajz}</Fragment>}
+                        {c.first.ajz && <><br />{c.first.ajz}</>}
                       </p>
                     )}
                   </a>
@@ -194,7 +194,6 @@ const featuredVerses = featured ? analyzePoem(await readBody(featured)).verses.s
   }
   .poem-byline { font-family: var(--f-ui); font-size: 12.5px; font-weight: 600; color: var(--ink2); }
   .poem-card-verse { margin: 0; font-family: var(--f-disp); font-size: 19px; line-height: 1.9; }
-  .poem-sep { color: var(--copper); padding: 0 10px; }
   .poems-lede { margin-bottom: 18px; }
   .poem-of-week { margin-bottom: 26px; }
   .poem-of-week-verses p { margin: 0 0 8px; }

@@ -836,7 +836,7 @@ function toggleFavorite(kind: string, id: string) {
   if (on) favs.add(key); else favs.delete(key);
   localStorage.setItem(LS.favorites, JSON.stringify([...favs]));
   setFavoriteButtons(kind, id, on);
-  document.querySelectorAll<HTMLElement>('[data-action="favorites:filter"]').forEach(applyFavoritesFilter);
+  document.querySelectorAll<HTMLElement>('[data-action="favorites:filter"]').forEach(refreshFavoritesFilter);
 }
 function syncFavoriteButtons() {
   const favs = getFavorites();
@@ -856,9 +856,11 @@ document.addEventListener("click", (e) => {
 // "المفضلة" filter chip on a listing page: hides every [data-fav-key] item
 // (card/row) not in the favorites set. Scoped to the chip's own page — not
 // persisted across navigation, same as the type-filter chips beside it.
-function applyFavoritesFilter(chip: HTMLElement) {
-  const on = chip.getAttribute("aria-pressed") !== "true"; // this call flips it
-  chip.setAttribute("aria-pressed", String(on));
+// Re-applies the chip's CURRENT state without touching aria-pressed — needed
+// so toggleFavorite() (any star on the page) can refresh visibility without
+// also flipping the filter on/off as a side effect.
+function refreshFavoritesFilter(chip: HTMLElement) {
+  const on = chip.getAttribute("aria-pressed") === "true";
   const favs = getFavorites();
   const scope = chip.closest("[data-browse]") ?? chip.closest(".wrap-mid") ?? document;
   scope.querySelectorAll<HTMLElement>("[data-fav-key]").forEach((el) => {
@@ -875,6 +877,10 @@ function applyFavoritesFilter(chip: HTMLElement) {
     const visible = [...ds.querySelectorAll<HTMLElement>(".masail-topic")].some((t) => t.style.display !== "none");
     ds.style.display = (visible || !on) ? "" : "none";
   });
+}
+function applyFavoritesFilter(chip: HTMLElement) {
+  chip.setAttribute("aria-pressed", String(chip.getAttribute("aria-pressed") !== "true"));
+  refreshFavoritesFilter(chip);
 }
 document.addEventListener("click", (e) => {
   const chip = (e.target as HTMLElement).closest<HTMLElement>('[data-action="favorites:filter"]');

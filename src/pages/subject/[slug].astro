@@ -7,8 +7,10 @@ import TypeFilter from "../../components/TypeFilter.astro";
 import { isPub, loadGraph } from "../../lib/site";
 import { ENTITY, hrefFor, toArabicDigits } from "../../lib/display";
 import { collectionLd } from "../../lib/structured-data";
+import { isPrimaryShard } from "../../lib/build-shard";
 
 export async function getStaticPaths() {
+  if (!isPrimaryShard) return [];
   const subjects = (await getCollection("subject")).filter(isPub);
   const graph = await loadGraph();
   return subjects.map((entry) => {

@@ -11,8 +11,10 @@ import { readBody } from "../../../lib/read-body";
 import { hrefFor, toArabicDigits } from "../../../lib/display";
 import { markdownToSafeHtml } from "../../../lib/sanitize";
 import { MATLA_TITLE } from "../../../lib/chapters";
+import { isPrimaryShard } from "../../../lib/build-shard";
 
 export async function getStaticPaths() {
+  if (!isPrimaryShard) return [];
   const poems = (await getCollection("poem")).filter(isPub);
   const graph = await loadGraph();
   const names = await personNameMap();
