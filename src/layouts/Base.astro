@@ -408,6 +408,10 @@ const [readerSub, readerMain] = title.includes(" · ") ? title.split(" · ") : [
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"></path><path d="M7 10l5 5 5-5"></path><path d="M4 19h16"></path></svg>
         <span>التنزيلات</span>
       </a>
+      <a href="/adhkar" class="drawer-downloads" data-nav="adhkar" aria-current={Astro.url.pathname === "/adhkar" ? "page" : undefined}>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3.5 2"></path></svg>
+        <span>الأذكار</span>
+      </a>
       <!-- on phones the footer (the only other place these live) is a long
            scroll away — keep عن الموقع reachable from the drawer too -->
       <a href="/about" data-nav="about" aria-current={Astro.url.pathname === "/about" ? "page" : undefined}>عن الموقع</a>
@@ -448,6 +452,7 @@ const [readerSub, readerMain] = title.includes(" · ") ? title.split(" · ") : [
             <a href="/benefits">كُناشة</a>
             <a href="/articles">المقالات</a>
             <a href="/questions">المسائل</a>
+            <a href="/adhkar">الأذكار</a>
             <a href="/roadmap">طريق طلب العلم</a>
           </nav>
           <nav class="footer-col" aria-label="الموقع">

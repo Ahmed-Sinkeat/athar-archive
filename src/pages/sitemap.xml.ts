@@ -9,7 +9,7 @@ export const GET: APIRoute = async () => {
     urls.push({ loc: new URL(path, origin).href, lastmod: date ? new Date(date as string).toISOString() : undefined });
 
   // static, indexable pages (search is noindex → excluded)
-  ["/", "/books", "/poems", "/topics", "/subjects", "/people", "/articles", "/benefits", "/questions", "/about"].forEach((p) => add(p));
+  ["/", "/books", "/poems", "/topics", "/subjects", "/people", "/articles", "/benefits", "/questions", "/adhkar", "/about"].forEach((p) => add(p));
 
   const pub = (c: any[]) => c.filter((e) => e.data.status === "published");
   const when = (e: any) => e.data.updated_at ?? e.data.published_at;

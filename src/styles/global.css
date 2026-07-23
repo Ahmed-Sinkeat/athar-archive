@@ -636,8 +636,11 @@ summary::-webkit-details-marker { display: none; }
   font-weight: 700;
   line-height: 1.85; color: var(--ink);
 }
+/* staggered ديوان cascade: صدر anchored to the right, عجز dropped onto its own
+   line and pulled to the left (aldiwan reference) — not centered under the
+   صدر. Both wrap to as many lines as they need; nothing is ever clipped. */
 .sadr { text-align: right; }
-.ajz { text-align: center; }
+.ajz { text-align: left; }
 /* single-hemistich lines (no ` --- ` separator in the source) get centered */
 .verse-body.no-ajz .sadr { text-align: center; }
 /* the ❁ hemistich separator belonged to the side-by-side columns — the
@@ -668,21 +671,10 @@ summary::-webkit-details-marker { display: none; }
   background: color-mix(in srgb, var(--copper) 12%, transparent);
 }
 @media (max-width: 640px) {
-  /* tighter type; each hemistich stays one line (never wraps). عجز is
-     right-anchored (not fully centered like desktop — a centered nowrap line
-     that overflows shows its MIDDLE first, the start only reached by
-     scrolling right, which reads as broken) but inset from الصدر's own right
-     edge so the two hemistichs stay visually distinct instead of stacking
-     flush on top of each other. A long عجز always starts at this same inset
-     spot and only trails further left — overflow (rare) hides the tail end
-     only, never the start, so scrolling is optional, not required. */
-  .verse-body { max-width: 100%; overflow-x: auto; }
-  .sadr, .ajz {
-    font-size: calc(19px * var(--reading-scale));
-    line-height: 2;
-    white-space: nowrap;
-  }
-  .ajz { text-align: right; margin-inline-start: 12%; }
+  /* the whole بيت is always fully visible — long hemistichs wrap onto extra
+     lines rather than overflowing into a sideways scroll that hid the tail of
+     the line. (Type size + staggered alignment: the poem-verses block below.) */
+  .verse-body { max-width: 100%; }
 }
 /* per-source tafsir entries (gen-tafsir-frags.ts v2) */
 .ann-dd-item.is-missing { opacity: 0.5; }
@@ -756,6 +748,15 @@ html.tasmi-mode .ayah-list .ayah:not(.tasmi-revealed) .ayah-text { filter: blur(
 /* no-JS fallback only: with JS the note opens in the bottom sheet, so don't also
    reveal it inline when the #anchor is targeted (that was the duplicate). */
 html:not(.has-js) .ann-pack:target { display: block; margin-top: 8px; }
+
+/* /adhkar's tabs/toolbar/progress bar only flip which of the two already-
+   rendered sections is hidden — inert without JS, so hide them and let both
+   sections show in full under their own heading instead of gating one behind
+   a dead button. */
+html:not(.has-js) .azkar-toolbar-actions,
+html:not(.has-js) .azkar-tabs,
+html:not(.has-js) .azkar-progress-track,
+html:not(.has-js) .azkar-progress-label { display: none; }
 
 .ann-pop { position: fixed; z-index: 70; width: min(360px, calc(100vw - 16px)); background: var(--surface); border: 1px solid var(--rule-strong); border-radius: var(--radius-lg); overflow: hidden; opacity: 0; transform: translateY(5px); transition: opacity 0.13s ease, transform 0.13s ease; }
 .ann-pop.is-shown { opacity: 1; transform: none; }
@@ -1576,8 +1577,34 @@ html[data-theme="noir"] ::highlight(aa-find)    { background-color: rgba(255, 15
 .aa-tools .aa-dot.benefit { background: rgba(60,175,110,0.95); }
 .aa-tools .aa-dot.note { background: rgba(240,195,60,0.95); }
 .aa-tools .aa-del { color: var(--accent); }
+/* نسخ = the primary, one-tap action — accent-filled so it reads first */
+.aa-tools .aa-copy { background: var(--accent); color: var(--onbrand); border-color: var(--accent); font-weight: 600; }
+.aa-tools .aa-copy:hover { background: var(--brand2, var(--accent)); border-color: var(--brand2, var(--accent)); }
 .aa-note { display: flex; gap: 5px; align-items: stretch; }
 .aa-note textarea { font-family: var(--font-ui); font-size: 13px; color: var(--ink); background: var(--paper); border: 1px solid var(--rule); border-radius: var(--radius); padding: 6px 9px; width: 200px; height: 54px; resize: none; }
+.aa-note button { font-family: var(--font-ui); font-size: 13px; color: var(--ink); background: var(--paper); border: 1px solid var(--rule); border-radius: var(--radius); padding: 6px 11px; cursor: pointer; }
+.aa-note button:hover { border-color: var(--accent); }
+
+/* tap-a-highlight note popup (marks.ts showNotePopup) — view/edit/delete the
+   note saved on a فائدة/ملاحظة/خطأ, matches the .aa-tools surface */
+.aa-notepop {
+  position: absolute; z-index: 80; max-width: min(300px, calc(100vw - 16px));
+  background: var(--surface); border: 1px solid var(--rule-strong); border-radius: var(--radius-lg);
+  padding: 10px 12px; box-shadow: 0 6px 20px rgba(0,0,0,0.14);
+}
+.aa-notepop[hidden] { display: none; }
+.aa-notepop-head { display: flex; align-items: center; gap: 7px; margin-bottom: 6px; }
+.aa-notepop-head .aa-dot { width: 10px; height: 10px; border-radius: 50%; flex: none; }
+.aa-notepop .aa-dot.mistake { background: rgba(155,89,182,0.95); }
+.aa-notepop .aa-dot.benefit { background: rgba(60,175,110,0.95); }
+.aa-notepop .aa-dot.note { background: rgba(240,195,60,0.95); }
+.aa-notepop-kind { font-family: var(--font-ui); font-size: 11.5px; font-weight: 600; letter-spacing: 0.04em; color: var(--ink-soft); }
+.aa-notepop-body { font-family: var(--font-serif); font-size: 15px; line-height: 1.9; color: var(--ink); white-space: pre-wrap; word-break: break-word; }
+.aa-notepop-body.is-empty { font-family: var(--font-ui); font-size: 12.5px; font-style: italic; color: var(--ink-faint); }
+.aa-notepop-actions { display: flex; gap: 6px; margin-top: 10px; }
+.aa-notepop button { font-family: var(--font-ui); font-size: 12.5px; color: var(--ink); background: var(--paper); border: 1px solid var(--rule); border-radius: var(--radius); padding: 5px 12px; cursor: pointer; }
+.aa-notepop button:hover { border-color: var(--accent); }
+.aa-notepop .aa-del { color: var(--accent); }
 
 /* .aa-share-actions buttons reuse .aa-tools button (descendant selector
    already matches them, nested or not) — only the layout differs here. */
@@ -2140,10 +2167,20 @@ html.hide-footnotes .prose section.footnotes { display: none; }
 
   /* ════ home (1a) ════ */
   .hero { padding: 14px 16px 0; }
-  .hero-eyebrow, .hero-lede, .divider-orn, .hero-pills { display: none; }
+  .hero-eyebrow, .hero-lede, .divider-orn { display: none; }
   /* app layout keeps just the title — strip the card chrome */
   .hero-card { border: none; padding: 10px 0 0; background: none; gap: 8px; }
   .hero-title { font-size: 34px; }
+  /* quick-links stay on mobile (المتون/الأذكار/كُناشة/…) — the search form is
+     the only thing the tab bar duplicates, not these section shortcuts. Scroll
+     sideways instead of wrapping into several tall rows on a narrow screen. */
+  .hero-pills {
+    display: flex; flex-wrap: nowrap; overflow-x: auto; justify-content: flex-start;
+    margin-top: 2px; padding-bottom: 4px; -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .hero-pills::-webkit-scrollbar { display: none; }
+  .hero-pills .ghost-pill { flex: 0 0 auto; background: var(--inset); }
   /* home search hidden on mobile: the ONE search entry point is the bottom
      tab bar — a second big pill here read as a duplicate */
   .hero form { display: none; }
@@ -2238,9 +2275,13 @@ html.hide-footnotes .prose section.footnotes { display: none; }
   .card .card-sub { font-size: 12px; color: var(--ink3); }
   .card .card-cta { display: none; }
 
-  /* ════ poem verses (2c) — stacked hemistichs, no side-by-side room on phones ════ */
-  .verse-body { grid-template-columns: 1fr; gap: 4px; }
-  .sadr, .ajz { font-size: calc(22px * var(--reading-scale)); line-height: 1.9; text-align: right; }
+  /* ════ poem verses (2c) — stacked hemistichs, no side-by-side room on phones ════
+     صدر right, عجز dropped to the left (staggered ديوان). Full بيت always shown:
+     long lines wrap, never scroll sideways. */
+  .verse-body { gap: 4px; }
+  .sadr, .ajz { font-size: calc(22px * var(--reading-scale)); line-height: 1.9; }
+  .sadr { text-align: right; }
+  .ajz { text-align: left; }
   .verse-hemistich-rule { display: none; }
 
   /* ════ reading pages (1c) — book/matn chapter view ════ */

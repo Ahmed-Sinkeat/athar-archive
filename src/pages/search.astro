@@ -4,11 +4,12 @@ import Breadcrumbs from "../components/Breadcrumbs.astro";
 // Real on-site search: client fetches /api/search (D1 FTS5 index built by
 // scripts/gen-search-index.ts). Replaced the Google site-search delegation —
 // still no keys, no third-party (SEC-01); noindex (FR-S-04/06).
-// Scope params carried from section pages / reader: scope=<type>, in=<book|poem id>,
-// person=<slug,slug>, label=<human hint>. types=<a,b> and person=<a,b> (multi)
-// also come from the shared filter popover (Base.astro) via reader.ts's
-// buildSearchUrl(); "search:apply" re-runs this page's own query instead of a
-// full reload when already here (see the aa-search-refresh listener below).
+// ONE control: بالنص (full-text) | بالعنوان (titles only). Content-type scoping
+// and the الكل/mode/sort selects were removed per request — title mode returns a
+// clean one-row-per-work list (API dedupes chunked-book chapters), text mode
+// lists each matching passage with an expandable snippet and lands on the exact
+// spot (chapter/ayah url + aa-hl in-page scroll). `in=<book id>` may still arrive
+// from an in-reader "search this book" link and narrows the query if present.
 ---
 <Base title="البحث" activeNav="home" noindex>
   <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "البحث" }]} />
@@ -23,47 +24,13 @@ import Breadcrumbs from "../components/Breadcrumbs.astro";
 
     <div id="history" class="search-history" hidden></div>
 
-    <div class="search-scope-row">
-      <div class="search-scope-chips" role="group" aria-label="تحديد نطاق البحث">
-        <button type="button" class="search-scope-chip" data-scope="" aria-pressed="true">الكل</button>
-        <button type="button" class="search-scope-chip" data-scope="quran" aria-pressed="false">القرآن</button>
-        <button type="button" class="search-scope-chip" data-scope="book" aria-pressed="false">الكتب</button>
-        <button type="button" class="search-scope-chip" data-scope="poem" aria-pressed="false">الشعر</button>
-        <button type="button" class="search-scope-chip" data-scope="question" aria-pressed="false">المسائل</button>
-        <button type="button" class="search-scope-chip" data-scope="article" aria-pressed="false">المقالات</button>
-        <button type="button" class="search-scope-chip" data-scope="person" aria-pressed="false">الأعلام</button>
-        <button type="button" class="search-scope-chip" data-scope="term" aria-pressed="false">المعجم</button>
-      </div>
-      <button type="button" class="search-filter-btn" data-action="search:filter" aria-expanded="false" aria-label="تصفية حسب المؤلف">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"></path></svg>
-        تصفية
-      </button>
+    <div class="search-modes" role="group" aria-label="نوع البحث">
+      <button type="button" class="search-mode" data-mode="text" aria-pressed="true">بالنص</button>
+      <button type="button" class="search-mode" data-mode="title" aria-pressed="false">بالعنوان</button>
     </div>
-
     <div class="search-tools-row">
       <span id="results-count" class="search-count"></span>
-      <label class="search-tool">دقة البحث
-        <select id="mode">
-          <option value="all">كل الكلمات</option>
-          <option value="any">أي كلمة</option>
-          <option value="phrase">العبارة نفسها</option>
-        </select>
-      </label>
-      <label class="search-tool">نطاق البحث
-        <select id="field">
-          <option value="all">العنوان والنص</option>
-          <option value="title">العنوان فقط</option>
-          <option value="text">النص فقط</option>
-        </select>
-      </label>
-      <label class="search-tool">الترتيب
-        <select id="sort">
-          <option value="relevance">الأقرب صلة</option>
-          <option value="death">وفاة المؤلف</option>
-        </select>
-      </label>
     </div>
-    <div id="scope-note" class="faint u608848d"></div>
     <div id="results" class="search-results" aria-live="polite"></div>
     <button type="button" id="more" class="search-load-more" hidden>تحميل المزيد</button>
 
@@ -90,59 +57,54 @@ import Breadcrumbs from "../components/Breadcrumbs.astro";
         border: 1px dashed var(--rule); border-radius: 999px; padding: 4px 12px; cursor: pointer;
       }
       .search-history-chip:hover { border-style: solid; color: var(--ink-soft); }
-      .search-scope-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin: 16px 0 12px; }
-      .search-scope-chips { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-      .search-scope-chip {
-        font-family: var(--font-ui); font-size: 11.5px; color: var(--ink-soft); background: none;
-        border: 1px solid var(--rule); border-radius: 999px; padding: 5px 14px; cursor: pointer;
-        transition: border-color .15s, color .15s, background .15s;
+      /* two-mode toggle (بالنص / بالعنوان) — segmented pill, the ONLY search
+         control now (content-type scoping + الكل removed per request) */
+      .search-modes { display: inline-flex; gap: 4px; margin: 16px 0 10px; padding: 3px; background: var(--inset); border-radius: 999px; }
+      .search-mode {
+        font-family: var(--font-ui); font-size: 12.5px; font-weight: 600; color: var(--ink-soft);
+        background: none; border: none; border-radius: 999px; padding: 6px 18px; cursor: pointer;
+        transition: background .15s, color .15s;
       }
-      .search-scope-chip:hover { border-color: var(--rule-strong); }
-      .search-scope-chip[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); font-weight: 600; }
-      .search-filter-btn {
-        display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-ui); font-size: 11.5px;
-        color: var(--ink-soft); background: none; border: 1px solid var(--rule); border-radius: 999px;
-        padding: 5px 14px; cursor: pointer;
-      }
-      .search-filter-btn[aria-expanded="true"], .search-filter-btn:hover { border-color: var(--rule-strong); color: var(--ink); }
-      .search-tools-row { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin: 0 0 20px; }
-      .search-tool { display: flex; align-items: center; gap: 6px; font-family: var(--font-ui); font-size: 11.5px; color: var(--ink-faint); }
-      .search-tool select {
-        font-family: var(--font-ui); font-size: 12px; color: var(--ink); background: var(--surface);
-        border: 1px solid var(--rule); border-radius: 6px; padding: 3px 8px; cursor: pointer;
-      }
+      .search-mode[aria-pressed="true"] { background: var(--surface); color: var(--ink); box-shadow: 0 1px 3px color-mix(in srgb, var(--shdw) 12%, transparent); }
+      .search-tools-row { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin: 0 0 16px; }
       .search-count { font-size: 12px; color: var(--ink-faint); }
-      .search-results { display: flex; flex-direction: column; gap: 12px; }
+
+      /* results as a clean book-list (matches /books rows): kind pill, title,
+         author. Text mode adds an expandable snippet of the match below. */
+      .search-results { display: flex; flex-direction: column; gap: 10px; }
       .search-hit {
-        display: block; text-align: start; background: var(--surface); border: 1px solid var(--rule);
-        border-inline-end: 3px solid var(--accent); border-radius: 10px; padding: 18px 20px;
-        text-decoration: none; color: var(--ink); transition: border-color .15s; position: relative;
+        position: relative; background: var(--surface); border: 1px solid var(--rule);
+        border-inline-end: 3px solid var(--accent); border-radius: 10px; padding: 14px 18px;
+        color: var(--ink); transition: border-color .15s;
       }
       .search-hit:hover { border-color: var(--accent); }
       .search-hit[data-type="quran"] { border-inline-end-color: var(--gold-text); }
       .search-hit[data-type="poem"] { border-inline-end-color: var(--copper); }
-      .search-hit[data-type="book"], .search-hit[data-type="question"] { border-inline-end-color: var(--accent); }
       .search-hit[data-type="article"], .search-hit[data-type="term"] { border-inline-end-color: var(--verdigris); }
-      .search-hit-kicker {
-        margin: 0 0 8px; font-family: var(--font-ui); font-size: 10.5px; font-weight: 600;
-        letter-spacing: .1em; color: var(--accent);
-      }
-      .search-hit[data-type="quran"] .search-hit-kicker { color: var(--gold-text); }
-      .search-hit[data-type="poem"] .search-hit-kicker { color: var(--copper); }
-      .search-hit[data-type="article"] .search-hit-kicker, .search-hit[data-type="term"] .search-hit-kicker { color: var(--verdigris); }
-      .search-hit-snippet { margin: 0; font-family: var(--font-serif); font-size: 16px; line-height: 2; color: var(--ink); }
-      .search-hit-snippet mark { background: var(--gold-soft); color: inherit; border-radius: 3px; padding: 0 3px; }
-      .search-hit-cite { margin: 10px 0 0; font-family: var(--font-ui); font-size: 11.5px; color: var(--ink-faint); }
-      .search-hit-full {
+      /* stretched overlay link: whole row navigates, but the expand/copy
+         buttons (stacked above) stay independently clickable — same invalid-
+         nesting-avoidance pattern as EntityCard's .card-link */
+      .search-hit-link { position: absolute; inset: 0; z-index: 0; border-radius: inherit; }
+      .search-hit > :not(.search-hit-link):not(.search-hit-actions) { position: relative; z-index: 1; pointer-events: none; }
+      .search-hit-kindrow { margin: 0 0 6px; }
+      .search-hit-kindrow .pill { font-size: 10.5px; padding: 2px 9px; }
+      .search-hit-title { font-family: var(--font-display); font-weight: 700; font-size: 18px; line-height: 1.5; color: var(--ink); }
+      .search-hit[data-type="poem"] .search-hit-title { color: var(--copper); }
+      .search-hit-sub { margin-top: 3px; font-family: var(--font-ui); font-size: 12.5px; color: var(--ink-faint); }
+      .search-hit-snippet {
         margin: 10px 0 0; padding-top: 10px; border-top: 1px dashed var(--rule);
-        font-family: var(--font-serif); font-size: 15px; line-height: 2; color: var(--ink-soft); white-space: pre-wrap;
+        font-family: var(--font-serif); font-size: 16px; line-height: 2; color: var(--ink-soft);
       }
-      .search-hit-actions { position: absolute; inset-inline-end: 14px; top: 14px; display: flex; gap: 2px; }
+      .search-hit-snippet mark { background: var(--gold-soft); color: var(--ink); border-radius: 3px; padding: 0 3px; }
+      .search-hit-full {
+        margin: 8px 0 0; font-family: var(--font-serif); font-size: 15.5px; line-height: 2; color: var(--ink); white-space: pre-wrap;
+      }
+      .search-hit-actions { position: absolute; z-index: 2; inset-inline-end: 12px; bottom: 10px; display: flex; gap: 2px; }
       .search-hit-expand, .search-hit-copy {
         background: none; border: none; cursor: pointer;
         color: var(--ink-faint); padding: 4px; line-height: 0; border-radius: 6px;
       }
-      .search-hit-expand:hover, .search-hit-copy:hover { color: var(--ink); background: var(--paper); }
+      .search-hit-expand:hover, .search-hit-copy:hover { color: var(--ink); background: var(--inset); }
       .search-hit-expand[aria-expanded="true"] svg { transform: rotate(180deg); }
       .search-hit-expand svg { transition: transform .15s; }
       .search-load-more {
@@ -166,38 +128,26 @@ import Breadcrumbs from "../components/Breadcrumbs.astro";
       const results = document.getElementById("results");
       const countEl = document.getElementById("results-count");
       const moreBtn = document.getElementById("more");
-      const modeEl = document.getElementById("mode");
-      const fieldEl = document.getElementById("field");
-      const sortEl = document.getElementById("sort");
       const historyEl = document.getElementById("history");
       const params = new URLSearchParams(location.search);
-      const label = params.get("label");
+      // a book scope may still arrive from an in-reader "search this book" link
       const inBook = params.get("in") || "";
-      if (label) document.getElementById("scope-note").textContent = `سياق: ${label}`;
 
       const TYPE_LABEL = { quran: "قرآن", book: "كتاب", poem: "منظومة", article: "مقالة", question: "مسألة", term: "معجم", person: "عَلَم" };
-      let scope = params.get("scope") || "";
-      if (!TYPE_LABEL[scope]) scope = "";
-      let extraTypes = (params.get("types") || "").split(",").filter((t) => t && TYPE_LABEL[t]);
-      let persons = (params.get("person") || "").split(",").filter(Boolean);
-      const chips = document.querySelectorAll(".search-scope-chip");
-      const syncChips = () => chips.forEach((chip) => chip.setAttribute("aria-pressed", String((chip.dataset.scope || "") === scope)));
-      syncChips();
-      chips.forEach((chip) => {
-        chip.addEventListener("click", () => {
-          scope = chip.dataset.scope || "";
-          extraTypes = []; // a chip click is a fresh, simple choice
-          syncChips();
+      // the ONE control: بالنص (full-text) | بالعنوان (titles only)
+      let field = params.get("field") === "title" ? "title" : "text";
+      const modeBtns = document.querySelectorAll(".search-mode");
+      const syncModes = () => modeBtns.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.mode === field)));
+      syncModes();
+      modeBtns.forEach((b) => {
+        b.addEventListener("click", () => {
+          if (b.dataset.mode === field) return;
+          field = b.dataset.mode;
+          syncModes();
           offset = 0;
           go();
         });
       });
-      modeEl.value = params.get("mode") || "all";
-      fieldEl.value = params.get("field") || "all";
-      sortEl.value = params.get("sort") || "relevance";
-      modeEl.addEventListener("change", () => { offset = 0; go(); });
-      fieldEl.addEventListener("change", () => { offset = 0; go(); });
-      sortEl.addEventListener("change", () => { offset = 0; go(); });
 
       // recent searches (localStorage, most-recent-first, capped)
       const HIST_KEY = "aa-search-history";
@@ -237,14 +187,30 @@ import Breadcrumbs from "../components/Breadcrumbs.astro";
         const hash = i < 0 ? "" : url.slice(i);
         return `${path}${path.includes("?") ? "&" : "?"}aa-hl=${encodeURIComponent(term)}${hash}`;
       };
+      // title mode → land on the WORK itself (a book's own landing page, not
+      // whichever chapter row happened to win the group); text mode → land on
+      // the exact passage (chapter/ayah/athar url + aa-hl scroll-to-match).
+      const landingUrl = (h) => (h.book ? `/book/${h.book}` : h.url);
       const renderHit = (h, terms) => {
-        const cite = h.person_name
-          ? `<p class="search-hit-cite">${esc(h.person_name)}${h.death_year ? ` (ت ${h.death_year}هـ)` : ""}</p>` : "";
-        return `<div class="search-hit" data-type="${esc(h.type)}" data-url="${esc(h.url)}">` +
-          `<a href="${esc(withHl(h.url, terms))}" style="display:block;color:inherit;text-decoration:none;">` +
-          `<p class="search-hit-kicker">${TYPE_LABEL[h.type] || ""} · ${esc(h.title)}</p>` +
-          `<p class="search-hit-snippet">${esc(h.snippet).replaceAll("&lt;mark&gt;", "<mark>").replaceAll("&lt;/mark&gt;", "</mark>")}</p>` +
-          cite + `</a>` +
+        const type = esc(h.type);
+        const sub = h.person_name
+          ? `<div class="search-hit-sub">${esc(h.person_name)}${h.death_year ? ` (ت ${h.death_year}هـ)` : ""}</div>` : "";
+        const kindPill = TYPE_LABEL[h.type]
+          ? `<div class="search-hit-kindrow"><span class="pill">${TYPE_LABEL[h.type]}</span></div>` : "";
+        const head = kindPill + `<div class="search-hit-title">${esc(h.title)}</div>` + sub;
+
+        if (field === "title") {
+          // clean book-list row — no snippet, whole row opens the work
+          return `<div class="search-hit" data-type="${type}">` +
+            `<a class="search-hit-link" href="${esc(landingUrl(h))}" aria-label="${esc(h.title)}"></a>` +
+            head + `</div>`;
+        }
+        // text mode: same row + the matched passage, expandable + copyable
+        const snippet = esc(h.snippet || "").replaceAll("&lt;mark&gt;", "<mark>").replaceAll("&lt;/mark&gt;", "</mark>");
+        return `<div class="search-hit" data-type="${type}" data-url="${esc(h.url)}">` +
+          `<a class="search-hit-link" href="${esc(withHl(h.url, terms))}" aria-label="${esc(h.title)}"></a>` +
+          head +
+          `<p class="search-hit-snippet">${snippet}</p>` +
           `<div class="search-hit-full" hidden></div>` +
           `<div class="search-hit-actions">` +
           `<button type="button" class="search-hit-expand" title="عرض النص كاملاً" aria-label="عرض النص كاملاً" aria-expanded="false">` +
@@ -285,7 +251,7 @@ import Breadcrumbs from "../components/Breadcrumbs.astro";
         if (copyBtn) {
           const ok = () => { copyBtn.setAttribute("title", "نُسخ ✓"); setTimeout(() => copyBtn.setAttribute("title", "نسخ"), 1200); };
           const fail = () => { copyBtn.setAttribute("title", "تعذَّر النسخ"); setTimeout(() => copyBtn.setAttribute("title", "نسخ"), 1200); };
-          const title = card.querySelector(".search-hit-kicker")?.textContent || "";
+          const title = card.querySelector(".search-hit-title")?.textContent || "";
           const full = (await fetchFullText(url)) || card.querySelector(".search-hit-snippet")?.textContent || "";
           (navigator.clipboard?.writeText(`${title}\n${full}`) || Promise.reject()).then(ok, fail);
         }
@@ -296,12 +262,8 @@ import Breadcrumbs from "../components/Breadcrumbs.astro";
         const my = ++seq;
         if (!terms) { results.innerHTML = ""; countEl.textContent = ""; moreBtn.hidden = true; renderHistory(); return; }
         historyEl.hidden = true;
-        const p = new URLSearchParams({ q: terms, mode: modeEl.value, field: fieldEl.value, sort: sortEl.value, offset: String(offset) });
-        const types = new Set(extraTypes);
-        if (scope) types.add(scope);
-        if (types.size) p.set("type", [...types].join(","));
+        const p = new URLSearchParams({ q: terms, field, offset: String(offset) });
         if (inBook) p.set("book", inBook);
-        if (persons.length) p.set("person", persons.join(","));
         const res = await fetch("/api/search?" + p).catch(() => null);
         if (my !== seq) return; // a newer query already answered
         const data = res && res.ok ? await res.json() : null;
@@ -324,16 +286,6 @@ import Breadcrumbs from "../components/Breadcrumbs.astro";
       input.addEventListener("input", () => { clearTimeout(t); offset = 0; t = setTimeout(go, 250); historyEl.hidden = true; });
       input.addEventListener("keydown", (e) => { if (e.key === "Enter") { clearTimeout(t); offset = 0; go(); } });
       document.getElementById("go")?.addEventListener("click", () => { clearTimeout(t); offset = 0; go(); });
-      window.addEventListener("aa-search-refresh", () => {
-        const p2 = new URLSearchParams(location.search);
-        scope = p2.get("scope") || "";
-        if (!TYPE_LABEL[scope]) scope = "";
-        extraTypes = (p2.get("types") || "").split(",").filter((t) => t && TYPE_LABEL[t]);
-        persons = (p2.get("person") || "").split(",").filter(Boolean);
-        syncChips();
-        offset = 0;
-        go();
-      });
       const initial = params.get("q");
       if (initial) { input.value = initial; go(); } else { renderHistory(); }
       input.focus();

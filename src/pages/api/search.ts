@@ -110,8 +110,26 @@ export const GET: APIRoute = async ({ url }) => {
   // title-only search should quote the title back, not an unrelated body
   // snippet that happens to share no words with what was actually matched.
   const snippetCol = field === "title" ? 0 : 1;
-  const sql = `SELECT docs.type, docs.url, docs.display_title AS title,
-                snippet(docs, ${snippetCol}, '<mark>', '</mark>', '…', 16) AS snippet,
+  // Title mode returns a clean ONE-ROW-PER-WORK list: a chunked book stores one
+  // index row per chapter, all carrying the same title, so a raw title match
+  // floods the results with duplicates of the same book. Collapse by owning
+  // book (COALESCE → the doc's own url for non-book types, which are already
+  // one row each). rank is aggregated in the OUTER query as min() over a plain
+  // column computed inside the subquery — FTS5's rank/snippet aux functions
+  // can't be used directly under GROUP BY, so they're evaluated in the subquery
+  // where the FTS cursor context is valid. Text mode keeps every passage row.
+  const snippet = `snippet(docs, ${snippetCol}, '<mark>', '</mark>', '…', 16)`;
+  const sql = field === "title"
+    ? `SELECT d.type, d.url, d.title, d.book, d.snippet, pm.name AS person_name, pm.death_year AS death_year
+         FROM (SELECT docs.type AS type, docs.url AS url, docs.display_title AS title, docs.book AS book,
+                      docs.person AS person, ${snippet} AS snippet, rank AS r
+               FROM docs WHERE ${conds.join(" AND ")}) d
+         LEFT JOIN person_meta pm ON pm.slug = d.person
+         GROUP BY COALESCE(NULLIF(d.book, ''), d.url)
+         ORDER BY ${sort === "death" ? "(pm.death_year IS NULL), pm.death_year ASC" : "min(d.r)"}
+         LIMIT ?${limitBind} OFFSET ?${offsetBind}`
+    : `SELECT docs.type, docs.url, docs.display_title AS title, docs.book,
+                ${snippet} AS snippet,
                 pm.name AS person_name, pm.death_year AS death_year
          FROM docs LEFT JOIN person_meta pm ON pm.slug = docs.person
          WHERE ${conds.join(" AND ")}

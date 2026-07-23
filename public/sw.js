@@ -19,7 +19,7 @@ const CACHE_NAME = "aa-downloads";
 const SHELL_CACHE = "aa-shell";
 const SHELL_URLS = [
   "/", "/books", "/quran", "/quran/mushaf", "/hadith", "/poems", "/people", "/articles",
-  "/questions", "/benefits", "/subjects", "/search", "/downloads", "/about",
+  "/questions", "/benefits", "/subjects", "/search", "/downloads", "/adhkar", "/about",
   "/dl-sizes.json", // per-entity download sizes for the list-row buttons
   "/fonts/fonts.css", // self-hosted font faces — woff2s cached on use (SWR)
 ];

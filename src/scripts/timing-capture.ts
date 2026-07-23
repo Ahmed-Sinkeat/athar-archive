@@ -20,9 +20,16 @@ export function openTapPanel() {
 
   const panel = document.createElement("div");
   panel.dataset.tapPanel = "";
+  // sit directly ABOVE the audio bar, not over it — otherwise the panel covers
+  // play/scrub and you can't drive the very audio you're timing against. The
+  // bar's own offset (mobile lifts it above the tab bar + safe-area) is folded
+  // in by anchoring to its measured top edge; z-index 59 keeps it under the
+  // bar's own z-index:60 as a safety net if they ever touch.
+  const bar = document.querySelector<HTMLElement>(".audio-bar");
+  const gapFromBottom = bar ? Math.round(window.innerHeight - bar.getBoundingClientRect().top) : 0;
   panel.style.cssText =
-    "position:fixed;inset-inline:0;bottom:0;z-index:9999;background:#1b1b1b;color:#eee;" +
-    "font:14px system-ui,sans-serif;padding:10px 12px;border-top:1px solid #444;direction:rtl;";
+    `position:fixed;inset-inline:0;bottom:${gapFromBottom}px;z-index:59;background:#1b1b1b;color:#eee;` +
+    "font:14px system-ui,sans-serif;padding:10px 12px;border-top:1px solid #444;border-bottom:1px solid #444;direction:rtl;";
   panel.innerHTML = `
     <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:6px;">
       <span data-tap-status></span>

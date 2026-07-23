@@ -13,13 +13,10 @@ const { placeholder, params, emptyText = "لا نتائج مطابقة." } = Ast
 const paramsQs = new URLSearchParams(params).toString();
 ---
 <div class="inline-search">
-  <div class="inline-search-field-row" role="group" aria-label="نطاق البحث">
-    <button type="button" class="inline-search-field-chip" data-field="all" aria-pressed="true">الكل</button>
-    <button type="button" class="inline-search-field-chip" data-field="title" aria-pressed="false">العنوان فقط</button>
-    <button type="button" class="inline-search-field-chip" data-field="text" aria-pressed="false">النص فقط</button>
-  </div>
+  <!-- always full-text within this scope: an "العنوان فقط" toggle made no
+       sense here (you search a surah/book by its wording, not its name) -->
   <div class="inline-search-input-row">
-    <input type="search" class="inline-search-input" placeholder={placeholder} aria-label={placeholder} autocomplete="off" data-inline-search data-inline-search-params={paramsQs} data-inline-search-empty={emptyText} data-inline-search-field="all" />
+    <input type="search" class="inline-search-input" placeholder={placeholder} aria-label={placeholder} autocomplete="off" data-inline-search data-inline-search-params={paramsQs} data-inline-search-empty={emptyText} data-inline-search-field="text" />
     <span class="inline-search-spinner" data-inline-search-spinner hidden aria-hidden="true"></span>
   </div>
   <div class="inline-search-results" data-inline-search-results hidden></div>
@@ -27,12 +24,6 @@ const paramsQs = new URLSearchParams(params).toString();
 
 <style>
   .inline-search { margin-bottom: 18px; position: relative; }
-  .inline-search-field-row { display: flex; gap: 6px; margin-bottom: 6px; }
-  .inline-search-field-chip {
-    font-family: var(--font-ui); font-size: 11.5px; color: var(--ink-soft); background: none;
-    border: 1px solid var(--rule); border-radius: 999px; padding: 3px 11px; cursor: pointer;
-  }
-  .inline-search-field-chip[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); font-weight: 600; }
   .inline-search-input-row { position: relative; }
   .inline-search-input {
     width: 100%; font-family: var(--font-ui); font-size: 15px; color: var(--ink);
@@ -103,13 +94,6 @@ const paramsQs = new URLSearchParams(params).toString();
         }, 300);
       };
       input.addEventListener("input", runSearch);
-      wrap.querySelectorAll("[data-field]").forEach((chip) => {
-        chip.addEventListener("click", () => {
-          wrap.querySelectorAll("[data-field]").forEach((b) => b.setAttribute("aria-pressed", String(b === chip)));
-          input.dataset.inlineSearchField = chip.dataset.field;
-          if (input.value.trim()) runSearch();
-        });
-      });
     });
   })();
 </script>

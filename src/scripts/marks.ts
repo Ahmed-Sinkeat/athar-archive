@@ -213,6 +213,11 @@ function showToolbar(range: Range) {
   const off = offsetsFromRange(r, range);
   if (!off) return;
   const text = range.toString().replace(/\s+/g, " ").trim();
+  // exactly what's selected right now — captured up front so "نسخ" always
+  // copies THIS, never a runaway selection the native pill may have grown
+  // (the reported "copies the whole page" when a selection auto-scrolls off
+  // the bottom on mobile). Preserve the raw text, only trimming the ends.
+  const rawText = range.toString().replace(/[ \t]+\n/g, "\n").trim();
   const t = toolbar();
   t.innerHTML = "";
   const over = overlapping(off);
@@ -225,6 +230,14 @@ function showToolbar(range: Range) {
     t.appendChild(b);
     return b;
   };
+  // one-tap copy, first so it's the easy default — no drilling into مشاركة
+  const copyBtn = btn("نسخ", null, () => {
+    (navigator.clipboard?.writeText(rawText) ?? Promise.reject()).then(
+      () => { copyBtn.textContent = "نُسِخ ✓"; setTimeout(done, 650); },
+      () => { copyBtn.textContent = "تعذّر"; setTimeout(() => (copyBtn.textContent = "نسخ"), 900); },
+    );
+  });
+  copyBtn.classList.add("aa-copy");
   btn("خطأ", "mistake", () => openNote("mistake", off, text, range));
   btn("فائدة", "benefit", () => openNote("benefit", off, text, range));
   btn("ملاحظة", "note", () => openNote("note", off, text, range));
@@ -258,6 +271,118 @@ function openNote(kind: Kind, off: { start: number; end: number }, text: string,
 }
 
 function done() { hideTools(); window.getSelection()?.removeAllRanges(); }
+
+// --- tap an existing highlight → view/edit/delete its note (فائدة/ملاحظة/خطأ) ---
+// CSS Custom Highlights paint no DOM element, so there's nothing to attach a
+// click to — hit-test the tap point back to a text offset instead, then look
+// up which saved mark's range covers it. Mirrors offsetsFromRange's accounting
+// so a tapped offset lines up with the stored start/end exactly.
+const KIND_AR: Record<Kind, string> = { mistake: "خطأ", benefit: "فائدة", note: "ملاحظة" };
+function caretOffsetAt(r: HTMLElement, x: number, y: number): number | null {
+  const doc = document as Document & {
+    caretPositionFromPoint?: (x: number, y: number) => { offsetNode: Node; offset: number } | null;
+    caretRangeFromPoint?: (x: number, y: number) => Range | null;
+  };
+  let node: Node | null = null, offset = 0;
+  if (doc.caretPositionFromPoint) {
+    const p = doc.caretPositionFromPoint(x, y);
+    if (p) { node = p.offsetNode; offset = p.offset; }
+  } else if (doc.caretRangeFromPoint) {
+    const rg = doc.caretRangeFromPoint(x, y);
+    if (rg) { node = rg.startContainer; offset = rg.startOffset; }
+  }
+  if (!node || node.nodeType !== 3 || !r.contains(node)) return null;
+  let acc = 0;
+  for (const t of textNodes(r)) {
+    if (t === node) return acc + offset;
+    acc += t.nodeValue!.length;
+  }
+  return null;
+}
+function markAtOffset(off: number): Mark | null {
+  const hits = load().filter((m) => m.start <= off && off < m.end);
+  if (!hits.length) return null;
+  // overlaps: prefer one that actually has a note, then the tightest span
+  hits.sort((a, b) => Number(!!b.note) - Number(!!a.note) || (a.end - a.start) - (b.end - b.start));
+  return hits[0];
+}
+
+let notePop: HTMLElement | null = null;
+function notePopEl(): HTMLElement {
+  if (notePop && notePop.isConnected) return notePop;
+  notePop = document.createElement("div");
+  notePop.className = "aa-notepop";
+  notePop.hidden = true;
+  document.body.appendChild(notePop);
+  return notePop;
+}
+function hideNotePop() { if (notePop) notePop.hidden = true; }
+function positionNotePop(pop: HTMLElement, x: number, y: number) {
+  pop.hidden = false;
+  pop.style.visibility = "hidden";
+  pop.style.top = "0"; pop.style.left = "0";
+  const w = pop.offsetWidth, h = pop.offsetHeight;
+  const left = Math.max(8, Math.min(x - w / 2, window.innerWidth - w - 8));
+  // below the tap by default; flip above if it would spill past the viewport
+  const below = y + 12 + h <= window.innerHeight;
+  pop.style.left = `${left}px`;
+  pop.style.top = `${(below ? y + 12 : y - h - 12) + window.scrollY}px`;
+  pop.style.visibility = "";
+}
+function showNotePopup(mark: Mark, x: number, y: number) {
+  const pop = notePopEl();
+  pop.innerHTML = "";
+  const head = document.createElement("div");
+  head.className = "aa-notepop-head";
+  const dot = document.createElement("span"); dot.className = "aa-dot " + mark.kind;
+  const label = document.createElement("span"); label.className = "aa-notepop-kind"; label.textContent = KIND_AR[mark.kind];
+  head.append(dot, label);
+  const body = document.createElement("div");
+  body.className = "aa-notepop-body" + (mark.note ? "" : " is-empty");
+  body.textContent = mark.note || "بلا نص — اضغط «تعديل» لإضافته";
+  const actions = document.createElement("div");
+  actions.className = "aa-notepop-actions";
+  const editBtn = document.createElement("button");
+  editBtn.type = "button"; editBtn.textContent = "تعديل";
+  editBtn.addEventListener("click", () => editNotePopup(mark, x, y));
+  const delBtn = document.createElement("button");
+  delBtn.type = "button"; delBtn.className = "aa-del"; delBtn.textContent = "حذف";
+  delBtn.addEventListener("click", () => { removeMarks(new Set([mark.id])); hideNotePop(); });
+  actions.append(editBtn, delBtn);
+  pop.append(head, body, actions);
+  positionNotePop(pop, x, y);
+}
+function editNotePopup(mark: Mark, x: number, y: number) {
+  const pop = notePopEl();
+  pop.innerHTML = "";
+  const wrap = document.createElement("div");
+  wrap.className = "aa-note";
+  const ta = document.createElement("textarea");
+  ta.value = mark.note || "";
+  ta.placeholder = mark.kind === "mistake" ? "صِفِ الخطأ…" : mark.kind === "note" ? "أضف ملاحظة…" : "أضف فائدة…";
+  const ok = document.createElement("button");
+  ok.type = "button"; ok.textContent = "حفظ";
+  ok.addEventListener("click", () => { const v = ta.value.trim(); updateNote(mark.id, v); mark.note = v; hideNotePop(); });
+  wrap.append(ta, ok);
+  pop.appendChild(wrap);
+  positionNotePop(pop, x, y);
+  ta.focus();
+}
+// a plain tap (no active selection) inside reading text, landing on a saved
+// highlight → open its note popup. Skips interactive elements + the tool
+// popups themselves so it never fights a link, the create-toolbar, or itself.
+function onReadingClick(e: MouseEvent) {
+  const target = e.target as HTMLElement;
+  if (target.closest("a, button, input, textarea, select, .aa-tools, .aa-notepop, .aa-saved-pop, [data-tap-panel]")) return;
+  const sel = window.getSelection();
+  if (sel && !sel.isCollapsed) return; // an active selection → the create-toolbar owns this
+  const r = root();
+  if (!r || !r.contains(target)) { hideNotePop(); return; }
+  const off = caretOffsetAt(r, e.clientX, e.clientY);
+  const mark = off != null ? markAtOffset(off) : null;
+  if (mark) { e.preventDefault(); showNotePopup(mark, e.clientX, e.clientY); }
+  else hideNotePop();
+}
 
 // --- in-page find (البحث داخل الكتاب مع التمييز) ---
 let findBar: HTMLElement | null = null;
@@ -546,8 +671,12 @@ function jumpToHash() {
 // --- wiring (delegated + per-page) ---
 let scrollTimer: number | undefined;
 document.addEventListener("selectionchange", () => {
-  const range = currentSelectionRange();
-  if (!range) { if (!tools?.querySelector(".aa-note")) hideTools(); return; }
+  // Stay CHEAP here: this fires on every tick of a selection drag, so only
+  // check the collapse flag — do NOT serialize the range (range.toString() on
+  // a growing selection was the source of the laggy, "not fast or normal"
+  // drag). The toolbar itself is (re)built once, on selection END, below.
+  const sel = window.getSelection();
+  if ((!sel || sel.isCollapsed) && !tools?.querySelector(".aa-note")) hideTools();
 });
 function onSelectEnd() {
   const range = currentSelectionRange();
@@ -556,10 +685,17 @@ function onSelectEnd() {
 document.addEventListener("mouseup", () => setTimeout(onSelectEnd, 0));
 document.addEventListener("touchend", () => setTimeout(onSelectEnd, 0));
 document.addEventListener("mousedown", (e) => {
-  if (!(e.target as HTMLElement).closest(".aa-tools")) hideTools();
+  const t = e.target as HTMLElement;
+  if (!t.closest(".aa-tools")) hideTools();
+  // clicking away from an open note popup dismisses it (the popup's own
+  // buttons are handled before this via stopPropagation-free direct listeners)
+  if (notePop && !notePop.hidden && !t.closest(".aa-notepop")) hideNotePop();
 });
+// view/edit a saved highlight's note on a plain tap — after mouseup, so it
+// never competes with a drag-select finishing (which leaves a live selection)
+document.addEventListener("click", onReadingClick);
 document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") { hideTools(); closeFind(); }
+  if (e.key === "Escape") { hideTools(); hideNotePop(); closeFind(); }
 });
 window.addEventListener("scroll", () => { clearTimeout(scrollTimer); scrollTimer = window.setTimeout(saveScroll, 400); }, { passive: true });
 window.addEventListener("beforeunload", saveScroll);

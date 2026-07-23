@@ -2114,10 +2114,11 @@ function onPage() {
   loopState = null; // fresh <audio> element per page swap — any loop dies with it
   document.querySelectorAll<HTMLElement>('[data-toggle="followAudio"]').forEach((b) => { b.hidden = !followTiming; });
   applyFollowAudio(localStorage.getItem(LS.followAudio) !== "0");
-  // "help time this poem": only on poems with audio but no timing cues yet
+  // "help time this poem": on every poem that has audio — including ones
+  // already timed, so timing can be re-recorded/corrected, not only added once
   const hasAudio = !!document.querySelector("[data-audio-el]");
   document.querySelectorAll<HTMLElement>('[data-action="tap:open"]').forEach((b) => {
-    b.hidden = !(isPoemPage && hasAudio && !followTiming);
+    b.hidden = !(isPoemPage && hasAudio);
   });
   // tashkeel/pages/footnotes act on regular book/poem markup this page doesn't
   // have: the ayah text carries no [data-ar] (always fully diacritized, never
