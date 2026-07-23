@@ -32,24 +32,26 @@ import path from "node:path";
 const SRC = path.resolve("dist/client/book-pages");
 const OUT = path.resolve("dist/r2-upload/pages/book");
 const WRANGLER_JSON = path.resolve("dist/server/wrangler.json");
+const ASTRO_DIR = path.resolve("dist/client/_astro");
 const ASSET_RE = /\/_astro\/([\w.-]+)\.([A-Za-z0-9_-]{8})\.(css|js)\b/g;
+const ASSET_FILE_RE = /^([\w.-]+)\.([A-Za-z0-9_-]{8})\.(css|js)$/;
 
-// logical name ("Base.css") → hashed URL ("/_astro/Base.TzsMRw8c.css")
+// logical name ("Base.css") → hashed URL ("/_astro/Base.TzsMRw8c.css") — built
+// from dist/client/_astro itself (the one set of assets actually deployed),
+// NOT from scanning chapter HTML: CI splits the build across shards (see
+// BUILD_ROLE), each running its own Vite build, and Vite's content hash for a
+// shared chunk isn't stable across separate invocations even when the source
+// is byte-identical — chapters from different shards can carry different,
+// equally "real" hashes for the same logical asset. The deployed assets are
+// all from one build (build-primary), so that's the only source of truth.
 const assetMap = new Map<string, string>();
+for (const f of fs.existsSync(ASTRO_DIR) ? fs.readdirSync(ASTRO_DIR) : []) {
+  const m = f.match(ASSET_FILE_RE);
+  if (m) assetMap.set(`${m[1]}.${m[3]}`, `/_astro/${f}`);
+}
 
 function toPlaceholders(html: string): string {
-  return html.replace(ASSET_RE, (full, name: string, _hash: string, ext: string) => {
-    const logical = `${name}.${ext}`;
-    const prev = assetMap.get(logical);
-    if (prev && prev !== full) {
-      // two different hashes for one logical name in a single build — the
-      // placeholder would serve the wrong file; better to fail the build
-      console.error(`✗ gen-book-chapters: asset name collision: ${logical} → ${prev} AND ${full}`);
-      process.exit(1);
-    }
-    assetMap.set(logical, full);
-    return `/_astro-live/${logical}`;
-  });
+  return html.replace(ASSET_RE, (_full, name: string, _hash: string, ext: string) => `/_astro-live/${name}.${ext}`);
 }
 
 let moved = 0;
