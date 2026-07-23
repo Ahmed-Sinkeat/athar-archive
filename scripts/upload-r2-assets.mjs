@@ -87,6 +87,14 @@ function selftest() {
   });
   assert.strictEqual(signature, "f0e8bdb87c964420e857bd35b5d6ed310bd44f0170aba48dd91039c6036bdb41");
   console.log("✓ sigv4 selftest: matches the AWS documentation vector");
+
+  // prune guard: the real incident (36941 of 75290) must be refused; a genuine
+  // removal — even a big multi-hundred-chapter book — must still prune.
+  assert.strictEqual(pruneTooLarge(36941, 75290), true, "catastrophic mass-prune must be refused");
+  assert.strictEqual(pruneTooLarge(600, 75290), false, "removing one big book must still prune");
+  assert.strictEqual(pruneTooLarge(400, 3000), false, "under the absolute floor → prune");
+  assert.strictEqual(pruneTooLarge(700, 1000), true, "70% of a small bucket → refuse");
+  console.log("✓ prune-guard selftest: mass deletions refused, real removals allowed");
 }
 
 // --- request helper: sign + fetch + retry on 5xx/network ---
@@ -160,6 +168,20 @@ async function listPrefix(s3, prefix) {
   return index;
 }
 
+// Prune safety valve. A healthy deploy prunes a handful of objects (a book
+// edited or unpublished). Deleting a large FRACTION of the whole bucket means
+// the LOCAL build is incomplete — a broken chapter-shard merge, a failed
+// download — not that that much content was really removed. Pruning then wipes
+// live pages that are merely absent from THIS build (real incident: a
+// half-empty merge pruned ~37k live chapter pages). Refuse in that case. Both
+// conditions must hold, so removing one big multi-hundred-chapter book (a real
+// action, well under the fraction) still prunes normally. Pure for --selftest.
+const PRUNE_FRACTION_LIMIT = 0.1;
+const PRUNE_ABS_FLOOR = 500;
+function pruneTooLarge(deleteCount, remoteSize) {
+  return deleteCount > PRUNE_ABS_FLOOR && deleteCount > remoteSize * PRUNE_FRACTION_LIMIT;
+}
+
 function walk(dir) {
   const out = [];
   for (const name of fs.readdirSync(dir)) {
@@ -200,7 +222,17 @@ async function main() {
   //    old chapter pages live in R2, still served by the route.
   const toDelete = [...remoteIndex.keys()].filter((key) => !localIndex.has(key));
   let deleted = 0;
-  if (toDelete.length > 0) {
+  let pruneSkipped = 0;
+  if (toDelete.length > 0 && pruneTooLarge(toDelete.length, remoteIndex.size) && process.env.PRUNE_ALLOW_LARGE !== "1") {
+    // dead-man's switch: don't wipe live pages a broken build merely omitted
+    pruneSkipped = toDelete.length;
+    console.error(
+      `⚠ REFUSING to prune ${toDelete.length} object(s) — ${((toDelete.length / remoteIndex.size) * 100).toFixed(1)}% ` +
+      `of the ${remoteIndex.size} remote objects. A deletion that large almost always means an INCOMPLETE local ` +
+      `build (e.g. a broken chapter-shard merge), not a real removal — pruning would take live pages offline. ` +
+      `Skipping deletion; uploads still proceed. If this mass removal is genuinely intended, re-run with PRUNE_ALLOW_LARGE=1.`
+    );
+  } else if (toDelete.length > 0) {
     console.log(`  ${toDelete.length} stale remote object(s) to delete`);
     let nextDel = 0;
     await Promise.all(
@@ -246,7 +278,8 @@ async function main() {
   }
 
   await Promise.all(Array.from({ length: CONCURRENCY }, worker));
-  console.log(`✓ upload-r2-assets: ${done} uploaded, ${files.length - toUpload.length} unchanged, ${deleted} pruned, ${failed} failed — ${files.length} total`);
+  const pruneNote = pruneSkipped ? `, ${pruneSkipped} prune SKIPPED (guard)` : "";
+  console.log(`✓ upload-r2-assets: ${done} uploaded, ${files.length - toUpload.length} unchanged, ${deleted} pruned${pruneNote}, ${failed} failed — ${files.length} total`);
   if (failed > 0) process.exit(1);
 }
 
