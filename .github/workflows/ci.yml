@@ -216,6 +216,13 @@ jobs:
       - name: Render budget (page weight, JS-free content, RTL over dist/)
         run: pnpm perf:budget
 
+      # This job never runs `astro build` itself (that happened in build-primary/
+      # build-chapters, on other runners) — tsc needs the astro:content/
+      # astro:middleware virtual-module types that only `astro build` or
+      # `astro sync` generates, in THIS job's own workspace.
+      - name: Sync Astro types (for type-check below)
+        run: pnpm exec astro sync
+
       - name: Type-check
         run: pnpm exec tsc --noEmit --skipLibCheck
 
