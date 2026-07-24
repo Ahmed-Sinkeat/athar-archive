@@ -3,7 +3,7 @@ title: "شذا العرف في فن الصرف"
 status: published
 published_at: 2026-07-06
 person: ahmad-al-hamalawy
-kind: متن
+kind: كتاب
 topics: ["al-sarf"]
 authored_year: 1351
 description: "شذا العرف في فن الصرف للشيخ أحمد الحملاوي"

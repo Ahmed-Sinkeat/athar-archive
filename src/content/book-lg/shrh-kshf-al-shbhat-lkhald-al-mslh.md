@@ -3,7 +3,7 @@ title: "شرح كشف الشبهات لخالد المصلح"
 status: published
 published_at: 2026-07-16
 person: khald-al-mslh
-kind: متن
+kind: كتاب
 topics: ["tahwid-al-ibada"]
 ---
 ## شرح كشف الشبهات [1]

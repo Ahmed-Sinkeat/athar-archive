@@ -3,7 +3,7 @@ title: "المحرر في أحاديث الأحكام"
 status: published
 published_at: 2026-07-06
 person: ibn-abd-al-hadi
-kind: متن
+kind: كتاب
 genre: حديث
 topics: ["mutoon-al-hadith"]
 authored_year: 744

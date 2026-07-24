@@ -3,7 +3,7 @@ title: "العمدة في الأحكام"
 status: published
 published_at: 2026-07-06
 person: abd-al-ghani-al-maqdisi
-kind: متن
+kind: كتاب
 genre: حديث
 topics: ["mutoon-al-hadith"]
 authored_year: 600

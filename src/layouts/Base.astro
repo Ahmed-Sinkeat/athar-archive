@@ -570,6 +570,9 @@ const [readerSub, readerMain] = title.includes(" · ") ? title.split(" · ") : [
       // its [data-voice-toggle] button (single-page poems only, see
       // poem/[slug].astro); dynamic so it stays out of the site-wide bundle.
       import("../scripts/voice-follow.ts");
+      // /matn page interactivity — no-ops immediately on any other page
+      // without [data-matn-page]; dynamic for the same render-budget reason.
+      import("../scripts/matn-page.ts");
     </script>
   </body>
 </html>

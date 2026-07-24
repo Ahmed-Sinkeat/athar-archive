@@ -3,7 +3,7 @@ title: "شرح ثلاثة الأصول لخالد المصلح"
 status: published
 published_at: 2026-07-16
 person: khald-al-mslh
-kind: متن
+kind: كتاب
 topics: ["tahwid-al-ibada"]
 ---
 شرح الأصول الثلاثة -

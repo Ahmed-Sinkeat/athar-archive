@@ -3,7 +3,7 @@ title: "شرح الطحاوية لخالد المصلح"
 status: published
 published_at: 2026-07-16
 person: khald-al-mslh
-kind: متن
+kind: كتاب
 topics: ["al-aqeedah-al-aamah"]
 ---
 ## شرح العقيدة الطحاوية [1]

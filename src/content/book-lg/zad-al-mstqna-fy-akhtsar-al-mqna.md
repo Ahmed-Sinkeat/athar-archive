@@ -3,7 +3,7 @@ title: "زاد المستقنع في اختصار المقنع"
 status: published
 published_at: 2026-07-20
 person: al-hjawy
-kind: متن
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "زاد المستقنع في اختصار المقنع"
 ---

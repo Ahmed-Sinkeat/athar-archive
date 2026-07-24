@@ -3,7 +3,7 @@ title: "التنبيهات اللطيفة على ما احتوت عليه الع
 status: published
 published_at: 2026-07-16
 person: abd-al-rhmn-al-sady
-kind: متن
+kind: كتاب
 topics: ["al-aqeedah-al-aamah"]
 edition: "الأولى، 1414هـ"
 ---

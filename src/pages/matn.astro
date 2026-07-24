@@ -1,36 +1,334 @@
 ---
+import { getCollection } from "astro:content";
 import Base from "../layouts/Base.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
-import SortableList from "../components/SortableList.astro";
-import TitleFilter from "../components/TitleFilter.astro";
-import { personNameMap, loadGraph } from "../lib/site";
-import { hrefFor, isMatn, labelFor } from "../lib/display";
+import { personNameMap } from "../lib/site";
+import { hrefFor, toArabicDigits } from "../lib/display";
 import { collectionLd } from "../lib/structured-data";
-import type { ContentEntry } from "../lib/types";
 
-const graph = await loadGraph();
+// مسار الدراسة (متون طالب العلم): قائمة مُنسَّقة يدويًّا، لا كل ما هو isMatn()
+// (ذاك يشمل كل منظومة منشورة + كل كتاب كان يحمل kind: متن، وهي مئات المواد —
+// المطلوب هنا منهجٌ مُختار حسب المستوى، لا فهرس شامل). المستوى ١ فارغ اليوم:
+// نواقض الإسلام/القواعد الأربع/الأصول الثلاثة/الأربعون النووية لم تُضَف بعد
+// كنصٍّ مستقل (شروحها فقط موجودة) — ستظهر تلقائيًّا فور إضافتها هنا.
+// authorOverride: بعض الملفات مؤلَّفة عمليًّا كطبعة مدمجة متن+شرح (person
+// يشير إلى الشارح لا صاحب المتن الأصلي) — العرض هنا ينسب المتن لمؤلفه الحقيقي.
+type Subject = "aqidah" | "hadith" | "fiqh" | "nahw" | "usul" | "mustalah" | "faraid" | "tajwid" | "adab";
+type Madhab = "hanbali" | "maliki" | "shafii";
+interface CurriculumEntry {
+  level: 1 | 2 | 3 | 4;
+  collection: "book" | "poem";
+  id: string;
+  subject: Subject;
+  madhab?: Madhab;
+  authorOverride?: string;
+}
+const CURRICULUM: CurriculumEntry[] = [
+  { level: 2, collection: "poem", id: "tuhfat-al-atfal", subject: "tajwid" },
+  { level: 2, collection: "book", id: "shrh-shrwt-al-slah-warkanha-wwajbatha-lshykh-al-aslam-mhmd-b", subject: "fiqh", madhab: "hanbali", authorOverride: "محمد بن عبد الوهاب" },
+  { level: 2, collection: "book", id: "ktab-al-twhyd-wqra-aywn-al-mwhdyn-fy-thqyq-dawa-al-anbya-walmrslyn", subject: "aqidah", authorOverride: "محمد بن عبد الوهاب" },
+  { level: 3, collection: "poem", id: "al-manzumah-al-bayquniyyah", subject: "mustalah" },
+  { level: 3, collection: "poem", id: "manzumat-al-ilbiri", subject: "adab" },
+  { level: 4, collection: "poem", id: "unwan-al-hikam", subject: "adab" },
+  { level: 4, collection: "poem", id: "al-rahabiyyah", subject: "faraid" },
+];
+
+const LEVEL_NAME: Record<1 | 2 | 3 | 4, string> = {
+  1: "المستوى الأول", 2: "المستوى الثاني", 3: "المستوى الثالث", 4: "المستوى الرابع",
+};
+const SUBJECT_LABEL: Record<Subject, string> = {
+  aqidah: "عقيدة", hadith: "حديث", fiqh: "فقه", nahw: "نحو", usul: "أصول الفقه",
+  mustalah: "مصطلح الحديث", faraid: "فرائض", tajwid: "تجويد", adab: "آداب",
+};
+const MADHAB_LABEL: Record<Madhab, string> = { hanbali: "حنبلي", maliki: "مالكي", shafii: "شافعي" };
+
 const names = await personNameMap();
+const books = await getCollection("book");
+const poems = await getCollection("poem");
+const bookById = new Map(books.map((b) => [b.id, b]));
+const poemById = new Map(poems.map((p) => [p.id, p]));
 
-// كل المتون: every published منظومة + كتاب marked متن, in one flat sortable list.
-const yr = (e: ContentEntry) => (e.data as { authored_year?: number }).authored_year ?? Number.POSITIVE_INFINITY;
-const items = graph.all
-  .filter((e) => (e.collection === "poem" || e.collection === "book") && e.data.status === "published" && isMatn(e.collection, e.data))
-  .sort((a, b) => yr(a) - yr(b) || (a.data.title as string).localeCompare(b.data.title as string, "ar"));
+const items = CURRICULUM.map((c) => {
+  const entry = c.collection === "book" ? bookById.get(c.id) : poemById.get(c.id);
+  if (!entry || entry.data.status !== "published") return null;
+  return {
+    level: c.level,
+    subject: c.subject,
+    madhab: c.madhab,
+    href: hrefFor(c.collection, c.id),
+    title: entry.data.title as string,
+    author: c.authorOverride ?? (entry.data.person ? names.get(entry.data.person as string) ?? "" : ""),
+    description: (entry.data.description as string | undefined) ?? "",
+  };
+}).filter((x): x is NonNullable<typeof x> => x !== null);
 
-const card = (it: ContentEntry) => ({
-  href: hrefFor(it.collection, it.id),
-  title: it.data.title,
-  kind: labelFor(it.collection, it.data),
-  audio: graph.audioForSource(it.collection, it.id).length > 0,
-  sub: it.data.person ? names.get(it.data.person as string) ?? "" : "",
-  cta: "ادخل القراءة ←",
-});
+const levels = ([1, 2, 3, 4] as const)
+  .map((n) => ({ id: n, name: LEVEL_NAME[n], items: items.filter((it) => it.level === n) }))
+  .filter((lvl) => lvl.items.length > 0);
+
+const subjectsPresent = [...new Set(items.map((it) => it.subject))];
+const madhabPresent = items.some((it) => it.madhab);
 ---
-<Base title="المتون" description="كلُّ ما يُحفظ ويُدرَّس: المنظوماتُ ومتونُ الكتب، مرتَّبةً حسب الفنِّ." activeNav="books" jsonLd={collectionLd({ title: "المتون", path: "/matn", crumbs: [{ name: "الرئيسية", path: "/" }, { name: "المتون", path: "/matn" }] })}>
+<Base
+  title="المتون"
+  description="متونُ طالب العلم مرتَّبةً حسب مستوى الطلب، مع تتبُّع القراءة والحفظ."
+  activeNav="books"
+  jsonLd={collectionLd({ title: "المتون", path: "/matn", crumbs: [{ name: "الرئيسية", path: "/" }, { name: "المتون", path: "/matn" }] })}
+>
   <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "المتون" }]} />
-  <div class="wrap-mid uf5db21c">
+  <div class="wrap-mid matn-page" data-matn-page>
     <h1 class="page-title">المتون</h1>
-    <TitleFilter placeholder="ابحث بالعنوان أو النص…" scope={{ type: "book,poem" }} />
-    <SortableList items={items} card={card} />
+    <p class="hub-lede">سلسلة المتون العلمية مرتّبة حسب مستوى الطلب.</p>
+    <p class="matn-stat faint" data-matn-stat>{toArabicDigits(levels.length)} مستويات · {toArabicDigits(items.length)} متنًا ومنظومة · أُتمّ <span data-matn-completed>{toArabicDigits(0)}</span></p>
+
+    {subjectsPresent.length > 1 && (
+      <div class="matn-chip-row" role="group" aria-label="تصفية حسب الفن">
+        <button type="button" class="matn-chip" data-subject-chip="all" aria-pressed="true">الكل</button>
+        {subjectsPresent.map((s) => (
+          <button type="button" class="matn-chip" data-subject-chip={s} aria-pressed="false">{SUBJECT_LABEL[s]}</button>
+        ))}
+      </div>
+    )}
+
+    <div class="matn-controls-row">
+      <div class="matn-scope-row" role="group" aria-label="نطاق البحث">
+        <button type="button" class="matn-scope-btn" data-matn-scope="all" aria-pressed="true">الكل</button>
+        <button type="button" class="matn-scope-btn" data-matn-scope="title" aria-pressed="false">العنوان فقط</button>
+        <button type="button" class="matn-scope-btn" data-matn-scope="text" aria-pressed="false">النص فقط</button>
+      </div>
+
+      {madhabPresent && (
+        <div class="matn-madhab-wrap" data-madhab-wrap>
+          <button type="button" class="matn-madhab-btn" data-madhab-toggle aria-expanded="false">
+            <span data-madhab-label>المذهب: كل المذاهب</span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" data-madhab-chevron><path d="M7 10l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="matn-madhab-popover" data-madhab-popover hidden>
+            <button type="button" class="matn-madhab-opt" data-madhab-opt="all" aria-pressed="true">كل المذاهب</button>
+            <button type="button" class="matn-madhab-opt" data-madhab-opt="hanbali" aria-pressed="false">{MADHAB_LABEL.hanbali}</button>
+            <button type="button" class="matn-madhab-opt" data-madhab-opt="maliki" aria-pressed="false">{MADHAB_LABEL.maliki}</button>
+            <button type="button" class="matn-madhab-opt" data-madhab-opt="shafii" aria-pressed="false">{MADHAB_LABEL.shafii}</button>
+          </div>
+        </div>
+      )}
+    </div>
+
+    <div class="matn-search-bar">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="1.7"/><line x1="15.5" y1="15.5" x2="21" y2="21" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+      <input type="search" class="matn-search-input" placeholder="ابحث عن متن أو ناظم أو مؤلف…" autocomplete="off" data-matn-search />
+      <button type="button" class="matn-search-clear" data-matn-clear hidden aria-label="مسح البحث">×</button>
+    </div>
+
+    <div class="matn-levels" data-matn-levels>
+      {levels.map((lvl, li) => (
+        <div class="matn-level" data-matn-level data-level-id={lvl.id}>
+          <div class="matn-level-rail">
+            <div class:list={["matn-rail-line", { "is-first": li === 0, "is-last": li === levels.length - 1 }]}></div>
+            <div class="matn-rail-node" data-rail-node>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M12 5.5c-1.6-1-4-1.5-7-1.5v14c3 0 5.4.5 7 1.5 1.6-1 4-1.5 7-1.5V4c-3 0-5.4.5-7 1.5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><line x1="12" y1="5.5" x2="12" y2="19" stroke="currentColor" stroke-width="1.5"/></svg>
+            </div>
+          </div>
+          <div class="matn-level-content">
+            <button type="button" class="matn-level-header" data-level-toggle aria-expanded="true">
+              <div class="matn-level-headtext">
+                <span class="matn-level-name">{lvl.name}</span>
+                <span class="matn-level-meta" data-level-meta>{toArabicDigits(lvl.items.length)} متنًا</span>
+              </div>
+              <div class="matn-level-headright">
+                <div class="matn-progress-track"><div class="matn-progress-fill" data-level-progress></div></div>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="matn-chevron" data-level-chevron><path d="M7 10l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+            </button>
+            <div class="matn-items" data-level-items>
+              {lvl.items.map((it) => (
+                <div class="matn-item" data-matn-item data-item-key={it.href} data-title={it.title} data-author={it.author} data-text={it.description} data-subject={it.subject} data-madhab={it.madhab ?? ""}>
+                  <div class="matn-item-row">
+                    <button type="button" class="matn-item-readarea" data-item-read-toggle>
+                      <span class="matn-checkbox" data-item-checkbox aria-hidden="true">
+                        <svg width="11" height="11" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7" stroke="var(--onbrand)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+                      </span>
+                      <span class="matn-item-textcol">
+                        <span class="matn-item-titlerow">
+                          <span class="matn-item-title" data-item-title>{it.title}</span>
+                          <span class:list={["matn-tag", `k-${it.subject}`]}>{SUBJECT_LABEL[it.subject]}</span>
+                          {it.madhab && <span class="matn-tag matn-tag-madhab">{MADHAB_LABEL[it.madhab]}</span>}
+                        </span>
+                        {it.author && <span class="matn-item-author">{it.author}</span>}
+                        {it.description && <span class="matn-item-excerpt" data-item-excerpt>{it.description}</span>}
+                      </span>
+                    </button>
+                    <div class="matn-item-actions">
+                      <a class="matn-action-btn matn-action-read" href={it.href}>اقرأ ←</a>
+                      <button type="button" class="matn-action-btn" data-item-sharh>الشرح</button>
+                      <button type="button" class="matn-action-btn" data-item-memo>حفظ</button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+    <p class="matn-empty faint" data-matn-empty hidden>لا توجد نتائج مطابقة لبحثك.</p>
   </div>
 </Base>
+
+<style>
+  .matn-page { padding-bottom: 40px; }
+  .hub-lede { font-size: 14px; color: var(--ink-soft); line-height: 1.8; max-width: 640px; margin: 4px 0 8px; }
+  .matn-stat { font-size: 12.5px; margin-bottom: 18px; }
+
+  .matn-chip-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+  .matn-chip {
+    padding: 8px 16px; border-radius: var(--radius-pill); font-size: 12.5px; font-weight: 600;
+    font-family: var(--font-ui); cursor: pointer; border: 1px solid var(--rule-strong);
+    background: var(--surface); color: var(--ink);
+  }
+  .matn-chip[aria-pressed="true"] { background: var(--accent); color: var(--onbrand); border-color: var(--accent); }
+
+  .matn-controls-row { display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; margin-bottom: 10px; }
+  .matn-scope-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .matn-scope-btn {
+    padding: 7px 16px; border-radius: var(--radius-pill); font-size: 12.5px; font-family: var(--font-ui);
+    cursor: pointer; border: 1px solid var(--rule-strong); background: var(--surface); color: var(--ink);
+    transition: background var(--t-fast) var(--ease), color var(--t-fast) var(--ease);
+  }
+  .matn-scope-btn[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+  .matn-madhab-wrap { position: relative; }
+  .matn-madhab-btn {
+    display: flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: var(--radius);
+    font-size: 13px; font-family: var(--font-ui); font-weight: 600; cursor: pointer;
+    border: 1px solid var(--rule-strong); background: var(--surface); color: var(--ink);
+  }
+  .matn-madhab-wrap.is-active .matn-madhab-btn { border-color: var(--accent); background: var(--accent-wash); color: var(--accent); }
+  [data-madhab-chevron] { transition: transform var(--t-fast) var(--ease); }
+  .matn-madhab-btn[aria-expanded="true"] [data-madhab-chevron] { transform: rotate(180deg); }
+  .matn-madhab-popover {
+    position: absolute; top: calc(100% + 8px); inset-inline-start: 0; z-index: 5;
+    background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius-lg);
+    padding: 6px; min-width: 160px; box-shadow: 0 10px 28px color-mix(in srgb, var(--shdw) 18%, transparent);
+  }
+  .matn-madhab-opt {
+    display: block; width: 100%; text-align: right; padding: 10px 14px; border: none; border-radius: 7px;
+    cursor: pointer; font-family: var(--font-ui); font-size: 13px; background: none; color: var(--ink);
+  }
+  .matn-madhab-opt[aria-pressed="true"] { background: var(--accent-wash); color: var(--accent); font-weight: 700; }
+
+  .matn-search-bar {
+    display: flex; align-items: center; gap: 10px; background: var(--paper-2); border: 1px solid var(--rule-strong);
+    border-radius: var(--radius); padding: 13px 16px; margin-bottom: 26px; color: var(--ink-faint);
+  }
+  .matn-search-input { flex: 1; border: none; background: transparent; outline: none; font-family: var(--font-ui); font-size: 14px; color: var(--ink); min-width: 0; }
+  .matn-search-clear { background: none; border: none; color: var(--ink-faint); font-size: 16px; cursor: pointer; flex-shrink: 0; }
+  .matn-search-clear[hidden] { display: none; }
+
+  .matn-levels { display: flex; flex-direction: column; }
+  .matn-level[hidden] { display: none; }
+  .matn-level { display: flex; align-items: stretch; }
+  .matn-level-rail { width: 40px; flex-shrink: 0; position: relative; }
+  .matn-rail-line {
+    /* spans the FULL row height by default so consecutive rows' lines meet
+       at the row boundary and read as one continuous line behind the nodes —
+       only the first/last row clip it to start/end at their own node */
+    position: absolute; inset-inline-end: 50%; translate: 50% 0; width: 2px; background: var(--rule-strong);
+    top: 0; bottom: 0;
+  }
+  .matn-rail-line.is-first { top: 32px; }
+  .matn-rail-line.is-last { bottom: auto; height: 32px; }
+  .matn-rail-node {
+    position: absolute; top: 32px; inset-inline-end: 50%; translate: 50% -50%; width: 32px; height: 32px;
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    background: var(--surface); border: 1.6px solid var(--gold); color: var(--gold);
+  }
+  .matn-level.is-complete .matn-rail-node { background: var(--verdigris-wash); border-color: var(--green); color: var(--green); }
+  .matn-level.is-celebrating .matn-rail-node { animation: matnNodePop .6s ease; }
+
+  .matn-level-content { flex: 1; min-width: 0; padding-bottom: 20px; }
+  .matn-level:last-child .matn-level-content { padding-bottom: 0; }
+  .matn-level-header {
+    width: 100%; height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 10px;
+    padding: 0 20px; background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius-lg);
+    cursor: pointer; font-family: inherit; text-align: right;
+  }
+  .matn-level.is-complete .matn-level-header { background: var(--verdigris-wash); border-color: color-mix(in srgb, var(--green) 35%, transparent); }
+  .matn-level.is-celebrating .matn-level-header { animation: matnLevelPulse 1.1s ease-out; }
+  .matn-level-headtext { display: flex; flex-direction: column; gap: 3px; align-items: flex-start; min-width: 0; }
+  .matn-level-name { font-family: var(--font-serif); font-weight: 700; font-size: 18px; color: var(--ink); white-space: nowrap; }
+  .matn-level-meta { font-size: 11.5px; color: var(--ink-faint); }
+  .matn-level-headright { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
+  .matn-progress-track { width: 80px; height: 4px; border-radius: var(--radius-pill); background: var(--rule-strong); overflow: hidden; }
+  .matn-progress-fill { width: 0%; height: 100%; background: var(--accent); border-radius: var(--radius-pill); transition: width .3s ease; }
+  .matn-level.is-complete .matn-progress-fill { background: var(--green); }
+  .matn-chevron { color: var(--ink-faint); transition: transform .2s ease; }
+  .matn-level-header[aria-expanded="true"] .matn-chevron { transform: rotate(180deg); }
+
+  .matn-items { display: flex; flex-direction: column; gap: 2px; margin-top: 10px; padding: 6px 4px 0; }
+  .matn-level-header[aria-expanded="false"] + .matn-items { display: none; }
+  .matn-item[hidden] { display: none; }
+  .matn-item-row { display: flex; align-items: center; gap: 8px; }
+  .matn-item-readarea {
+    display: flex; align-items: flex-start; gap: 12px; flex: 1; min-width: 0; background: none; border: none;
+    padding: 13px 6px; cursor: pointer; text-align: right; font-family: inherit; border-radius: var(--radius);
+  }
+  .matn-item-readarea:hover { background: color-mix(in srgb, var(--ink) 4%, transparent); }
+  .matn-checkbox {
+    width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: 2px; border: 1.8px solid var(--rule-strong); background: transparent;
+    transition: background var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease);
+  }
+  .matn-checkbox svg { visibility: hidden; }
+  .matn-item.is-read .matn-checkbox { background: var(--green); border-color: var(--green); }
+  .matn-item.is-read .matn-checkbox svg { visibility: visible; }
+  .matn-item-textcol { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+  .matn-item-titlerow { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .matn-item-title { font-family: var(--font-serif); font-weight: 700; font-size: 16.5px; color: var(--ink); }
+  .matn-item.is-read .matn-item-title { color: var(--ink-soft); }
+  .matn-tag { font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: var(--radius-pill); font-family: var(--font-ui); flex-shrink: 0; white-space: nowrap; }
+  .matn-tag.k-aqidah { color: var(--accent); background: var(--accent-wash); }
+  .matn-tag.k-hadith { color: var(--green); background: var(--verdigris-wash); }
+  .matn-tag.k-fiqh, .matn-tag.k-adab { color: var(--ink-soft); background: var(--paper-2); }
+  .matn-tag.k-nahw, .matn-tag.k-usul, .matn-tag.k-mustalah, .matn-tag.k-faraid, .matn-tag.k-tajwid { color: var(--gold); background: var(--gold-soft); }
+  .matn-tag-madhab { border: 1px solid var(--rule-strong); color: var(--ink-soft); background: transparent; }
+  .matn-item-author { font-size: 12.5px; color: var(--ink-faint); }
+  .matn-item-excerpt { font-family: var(--font-serif); font-size: 13px; color: var(--ink-soft); line-height: 1.7; margin-top: 2px; }
+  .matn-item-actions { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+  .matn-action-btn {
+    display: flex; align-items: center; gap: 5px; padding: 7px 12px; border-radius: var(--radius-pill);
+    font-size: 11px; font-family: var(--font-ui); font-weight: 600; cursor: pointer; flex-shrink: 0;
+    border: 1px solid var(--rule-strong); background: var(--surface); color: var(--ink-soft); white-space: nowrap;
+    text-decoration: none;
+  }
+  .matn-action-read { color: var(--accent); border-color: var(--accent-border); }
+  .matn-action-btn[data-item-sharh][aria-pressed="true"] { background: var(--accent); color: var(--onbrand); border-color: var(--accent); }
+  .matn-action-btn[data-item-memo][aria-pressed="true"] { background: var(--gold); color: var(--onbrand); border-color: var(--gold); }
+
+  .matn-empty { text-align: center; padding: 50px 20px; }
+  .matn-empty[hidden] { display: none; }
+
+  @keyframes matnLevelPulse {
+    0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--green) 40%, transparent); }
+    60% { box-shadow: 0 0 0 12px color-mix(in srgb, var(--green) 0%, transparent); }
+    100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--green) 0%, transparent); }
+  }
+  @keyframes matnNodePop {
+    0% { scale: 1; }
+    40% { scale: 1.28; }
+    100% { scale: 1; }
+  }
+
+  @media (max-width: 720px) {
+    .matn-level-rail { width: 30px; }
+    .matn-rail-node { width: 26px; height: 26px; top: 29px; }
+    .matn-rail-line.is-first { top: 29px; }
+    .matn-rail-line.is-last { height: 29px; }
+    .matn-level-header { height: 58px; padding: 0 14px; }
+    .matn-level-name { font-size: 15.5px; }
+    .matn-progress-track { width: 44px; }
+    .matn-item-row { flex-direction: column; align-items: flex-start; }
+    .matn-item-readarea { width: 100%; padding: 11px 6px; }
+    .matn-item-actions { margin-inline-start: 32px; }
+    .matn-item-title { font-size: 15px; }
+  }
+</style>

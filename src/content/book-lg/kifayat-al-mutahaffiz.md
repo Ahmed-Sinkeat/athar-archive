@@ -3,7 +3,7 @@ title: "كفاية المتحفظ ونهاية المتلفظ في اللغة ا
 status: published
 published_at: 2026-07-06
 person: ibn-al-ajdabi
-kind: متن
+kind: كتاب
 topics: ["al-mufradat"]
 authored_year: 600
 description: "كفاية المتحفظ ونهاية المتلفظ في اللغة العربية للأجدابي الطرابلسي"

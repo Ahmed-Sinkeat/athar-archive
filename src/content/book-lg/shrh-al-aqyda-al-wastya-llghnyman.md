@@ -3,7 +3,7 @@ title: "شرح العقيدة الواسطية للغنيمان"
 status: published
 published_at: 2026-07-16
 person: al-ghunayman
-kind: متن
+kind: كتاب
 topics: ["al-aqeedah-al-aamah"]
 ---
 ## شرح العقيدة الواسطية [1]

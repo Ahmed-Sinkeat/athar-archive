@@ -3,7 +3,7 @@ title: "زاد المستقنع في اختصار المقنع"
 status: published
 published_at: 2026-07-06
 person: al-hajjawi
-kind: متن
+kind: كتاب
 topics: ["fiqh-hanbali"]
 authored_year: 968
 description: "زاد المستقنع في اختصار المقنع للإمام شرف الدين الحجاوي"

@@ -3,7 +3,7 @@ title: "متممة الأجرومية في علم العربية"
 status: published
 published_at: 2026-07-06
 person: al-hattab
-kind: متن
+kind: كتاب
 topics: ["al-nahw"]
 authored_year: 954
 description: "متممة الأجرومية للشيخ الحطاب الرعيني"
