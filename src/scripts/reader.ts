@@ -37,6 +37,11 @@ function setScale(v: number) {
   const clamped = Math.min(SCALE_MAX, Math.max(SCALE_MIN, Math.round(v * 100) / 100));
   root.style.setProperty("--reading-scale", String(clamped));
   localStorage.setItem(LS.scale, String(clamped));
+  // a font-size change can re-wrap صدر without .verse-text's own box
+  // resizing (already pinned to a narrow phone's 100% width) — restagger
+  // explicitly instead of relying solely on the ResizeObserver-less resize
+  // listener below to catch it
+  restaggerHemistichs();
 }
 
 // --- reading-column width (narrow/normal/wide) — scales .chap-outer's
@@ -256,6 +261,66 @@ document.addEventListener("click", (e) => {
 }, true);
 // soft nav drops the <html> class — resync the buttons to reality
 document.addEventListener("astro:page-load", () => applyTasmi(root.classList.contains("tasmi-mode")));
+
+// --- staggered hemistich stacking (poem بيت) ---
+// عجز should start exactly where صدر's own text ends (a real diwan page), and
+// neither hemistich should ever wrap or scroll — a بيت too long for one line
+// gets its font shrunk down to HEMI_SHRINK_FLOOR instead. Past that floor
+// (pathologically long بيت on a tiny phone) we give up and let it wrap —
+// better than either scrolling or unreadable micro-text.
+const HEMI_SHRINK_FLOOR = 0.7;
+
+// Flips white-space to nowrap, reads the now-unwrapped width, flips it back
+// — synchronous, so the browser never paints the momentary nowrap state.
+function naturalLineWidth(el: HTMLElement): number {
+  const prev = el.style.whiteSpace;
+  el.style.whiteSpace = "nowrap";
+  const w = el.getBoundingClientRect().width;
+  el.style.whiteSpace = prev;
+  return w;
+}
+
+// Shrinks `measure`'s hemistich (via CSS vars on `host`) so it fits in
+// `available` px on one line; returns its resulting on-screen width, or 0 if
+// it gave up and let it wrap (no single "end" left to stagger against).
+function fitOneLine(measure: HTMLElement, host: HTMLElement, scaleVar: string, wrapVar: string, available: number): number {
+  const natural = naturalLineWidth(measure);
+  if (natural <= available) {
+    host.style.setProperty(scaleVar, "1");
+    host.style.setProperty(wrapVar, "nowrap");
+    return natural;
+  }
+  const needed = available / natural;
+  if (needed >= HEMI_SHRINK_FLOOR) {
+    host.style.setProperty(scaleVar, String(needed));
+    host.style.setProperty(wrapVar, "nowrap");
+    return available;
+  }
+  host.style.setProperty(scaleVar, "1");
+  host.style.setProperty(wrapVar, "normal");
+  return 0;
+}
+
+function restaggerHemistichs() {
+  document.querySelectorAll<HTMLElement>(".verse-text").forEach((verseText) => {
+    const sadrMeasure = verseText.querySelector<HTMLElement>(".sadr-measure");
+    const ajzMeasure = verseText.querySelector<HTMLElement>(".ajz-measure");
+    if (!sadrMeasure) return;
+    const available = verseText.clientWidth;
+    const sadrWidth = fitOneLine(sadrMeasure, verseText, "--sadr-scale", "--sadr-wrap", available);
+    verseText.style.setProperty("--sadr-w", `${sadrWidth}px`);
+    if (ajzMeasure) fitOneLine(ajzMeasure, verseText, "--ajz-scale", "--ajz-wrap", available - sadrWidth);
+  });
+}
+document.addEventListener("astro:page-load", restaggerHemistichs);
+// font swap-in can change صدر's rendered width after first paint
+document.fonts?.ready.then(restaggerHemistichs);
+// window resize (incl. phone rotation) changes how much of each بيت wraps
+let staggerResizeTimer: ReturnType<typeof setTimeout>;
+window.addEventListener("resize", () => {
+  clearTimeout(staggerResizeTimer);
+  staggerResizeTimer = setTimeout(restaggerHemistichs, 100);
+});
 
 // --- inline-note شرح tab picker (InlineNoteGroup.astro) ---
 document.addEventListener("change", (e) => {

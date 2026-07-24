@@ -632,15 +632,29 @@ summary::-webkit-details-marker { display: none; }
 .sadr, .ajz {
   /* bold Amiri — the classical ديوان look (cf. aldiwan): regular Amiri reads
      spindly at verse sizes, bold carries the calligraphic weight */
-  font-family: var(--font-serif); font-size: calc(24px * var(--reading-scale));
+  font-family: var(--font-serif);
   font-weight: 700;
   line-height: 1.85; color: var(--ink);
 }
-/* staggered ديوان cascade: صدر anchored to the right, عجز dropped onto its own
-   line and pulled to the left (aldiwan reference) — not centered under the
-   صدر. Both wrap to as many lines as they need; nothing is ever clipped. */
-.sadr { text-align: right; }
-.ajz { text-align: left; }
+/* staggered ديوان cascade: صدر anchored to the right; عجز starts exactly
+   where صدر's own text ends (a real manuscript's staircase), not at a fixed
+   edge — --sadr-w is صدر's measured on-screen single-line width (reader.ts
+   restaggerHemistichs). Neither hemistich wraps or scrolls: a بيت too long
+   for one line gets shrunk (--sadr-scale/--ajz-scale, floor 0.7x) until it
+   fits; only past that floor does it fall back to wrapping (--sadr-w: 0,
+   full-width عجز) as a last resort. */
+.sadr {
+  text-align: right;
+  font-size: calc(24px * var(--reading-scale) * var(--sadr-scale, 1));
+  white-space: var(--sadr-wrap, normal);
+}
+.ajz {
+  text-align: right;
+  font-size: calc(24px * var(--reading-scale) * var(--ajz-scale, 1));
+  white-space: var(--ajz-wrap, normal);
+  width: calc(100% - var(--sadr-w, 0px));
+  margin-inline-start: var(--sadr-w, 0px);
+}
 /* single-hemistich lines (no ` --- ` separator in the source) get centered */
 .verse-body.no-ajz .sadr { text-align: center; }
 /* the ❁ hemistich separator belonged to the side-by-side columns — the
@@ -2276,12 +2290,13 @@ html.hide-footnotes .prose section.footnotes { display: none; }
   .card .card-cta { display: none; }
 
   /* ════ poem verses (2c) — stacked hemistichs, no side-by-side room on phones ════
-     صدر right, عجز dropped to the left (staggered ديوان). Full بيت always shown:
-     long lines wrap, never scroll sideways. */
+     صدر right, عجز starts where صدر's text ends (staggered ديوان, see the
+     base .ajz rule for --sadr-w/--sadr-scale/--ajz-scale). Full بيت always
+     shown: long lines shrink to fit, never scroll sideways. */
   .verse-body { gap: 4px; }
-  .sadr, .ajz { font-size: calc(22px * var(--reading-scale)); line-height: 1.9; }
-  .sadr { text-align: right; }
-  .ajz { text-align: left; }
+  .sadr, .ajz { line-height: 1.9; }
+  .sadr { font-size: calc(22px * var(--reading-scale) * var(--sadr-scale, 1)); }
+  .ajz { font-size: calc(22px * var(--reading-scale) * var(--ajz-scale, 1)); }
   .verse-hemistich-rule { display: none; }
 
   /* ════ reading pages (1c) — book/matn chapter view ════ */

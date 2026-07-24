@@ -49,23 +49,23 @@ const popId = `ann-${anchor}`;
     <div class="vnum">{toArabicDigits(n)}</div>
     <div class:list={["verse-body", { "no-ajz": !ajz }]} data-ar>
       <div class="verse-text">
-        <div class="sadr">
+        <div class="sadr"><span class="sadr-measure">
           {inSadr ? (
             <>{inSadr.before}<a class="ann-mark" href={`#${popId}`} data-ann={popId} aria-haspopup="dialog">{inSadr.mark}</a>{inSadr.after}</>
           ) : (
             sadr
           )}
-        </div>
+        </span></div>
         {ajz && (
           <>
             <span class="verse-hemistich-rule" aria-hidden="true"></span>
-            <div class="ajz">
+            <div class="ajz"><span class="ajz-measure">
               {inAjz ? (
                 <>{inAjz.before}<a class="ann-mark" href={`#${popId}`} data-ann={popId} aria-haspopup="dialog">{inAjz.mark}</a>{inAjz.after}</>
               ) : (
                 ajz
               )}
-            </div>
+            </span></div>
           </>
         )}
       </div>
