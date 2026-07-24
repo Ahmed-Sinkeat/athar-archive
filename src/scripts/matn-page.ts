@@ -122,29 +122,31 @@ function setup(root: HTMLElement) {
 
   function applyFilters() {
     const q = norm(query.trim());
-    let anyVisible = false;
+    items.forEach((el) => {
+      const subj = el.dataset.subject || "";
+      const madhab = el.dataset.madhab || "";
+      const subjOk = subjectFilter === "all" || subj === subjectFilter;
+      // madhab filter only prunes items that actually carry a madhab (fiqh
+      // works) — items without one are unaffected regardless of collection
+      const madhabOk = !madhab || madhabFilter === "all" || madhab === madhabFilter;
+      let searchOk = true;
+      if (q) {
+        const title = norm(el.dataset.title || "");
+        const author = norm(el.dataset.author || "");
+        const text = norm(el.dataset.text || "");
+        const titleHit = title.includes(q) || author.includes(q);
+        const textHit = text.includes(q);
+        searchOk = scope === "title" ? titleHit : scope === "text" ? textHit : titleHit || textHit;
+      }
+      el.hidden = !(subjOk && madhabOk && searchOk);
+    });
+
+    // level-grouped view (روadmap): fold per-item visibility up into levels.
+    // flat view (كل المتون) has no [data-matn-level] — falls through untouched.
+    let anyVisible = items.some((el) => !el.hidden);
     levelEls.forEach((lvlEl) => {
-      let levelHasVisible = false;
-      lvlEl.querySelectorAll<HTMLElement>("[data-matn-item]").forEach((el) => {
-        const subj = el.dataset.subject || "";
-        const madhab = el.dataset.madhab || "";
-        const subjOk = subjectFilter === "all" || subj === subjectFilter;
-        const madhabOk = subj !== "fiqh" || madhabFilter === "all" || madhab === madhabFilter;
-        let searchOk = true;
-        if (q) {
-          const title = norm(el.dataset.title || "");
-          const author = norm(el.dataset.author || "");
-          const text = norm(el.dataset.text || "");
-          const titleHit = title.includes(q) || author.includes(q);
-          const textHit = text.includes(q);
-          searchOk = scope === "title" ? titleHit : scope === "text" ? textHit : titleHit || textHit;
-        }
-        const visible = subjOk && madhabOk && searchOk;
-        el.hidden = !visible;
-        if (visible) levelHasVisible = true;
-      });
+      const levelHasVisible = Array.from(lvlEl.querySelectorAll<HTMLElement>("[data-matn-item]")).some((it) => !it.hidden);
       lvlEl.hidden = !levelHasVisible;
-      if (levelHasVisible) anyVisible = true;
       // reveal matches while actively searching, regardless of the saved
       // collapsed state — restored once the query is cleared
       const header = lvlEl.querySelector<HTMLElement>("[data-level-toggle]");
@@ -161,8 +163,6 @@ function setup(root: HTMLElement) {
     chip.addEventListener("click", () => {
       root.querySelectorAll<HTMLElement>("[data-subject-chip]").forEach((b) => b.setAttribute("aria-pressed", String(b === chip)));
       subjectFilter = chip.dataset.subjectChip || "all";
-      const madhabWrap = root.querySelector<HTMLElement>("[data-madhab-wrap]");
-      if (madhabWrap) madhabWrap.hidden = !(subjectFilter === "all" || subjectFilter === "fiqh");
       applyFilters();
     });
   });
@@ -172,7 +172,7 @@ function setup(root: HTMLElement) {
   const madhabBtn = root.querySelector<HTMLElement>("[data-madhab-toggle]");
   const madhabPopover = root.querySelector<HTMLElement>("[data-madhab-popover]");
   const madhabLabel = root.querySelector<HTMLElement>("[data-madhab-label]");
-  const MADHAB_BTN_LABEL: Record<string, string> = { all: "كل المذاهب", hanbali: "حنبلي", maliki: "مالكي", shafii: "شافعي" };
+  const MADHAB_BTN_LABEL: Record<string, string> = { all: "كل المذاهب", hanbali: "حنبلي", maliki: "مالكي", shafii: "شافعي", hanafi: "حنفي" };
   madhabBtn?.addEventListener("click", () => {
     const open = madhabBtn.getAttribute("aria-expanded") !== "true";
     madhabBtn.setAttribute("aria-expanded", String(open));
@@ -209,6 +209,20 @@ function setup(root: HTMLElement) {
 }
 
 document.addEventListener("astro:page-load", () => {
-  const root = document.querySelector<HTMLElement>("[data-matn-page]");
-  if (root) setup(root);
+  const page = document.querySelector<HTMLElement>("[data-matn-page]");
+  if (!page) return;
+
+  // each view (منهجية مقترحة / كل المتون) gets its own scoped setup() call —
+  // filters/search/progress operate independently per view container
+  const views = Array.from(page.querySelectorAll<HTMLElement>("[data-matn-view]"));
+  views.forEach(setup);
+
+  const viewBtns = Array.from(page.querySelectorAll<HTMLElement>("[data-view-btn]"));
+  viewBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const target = btn.dataset.viewBtn;
+      viewBtns.forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
+      views.forEach((v) => { v.hidden = v.dataset.matnView !== target; });
+    });
+  });
 });

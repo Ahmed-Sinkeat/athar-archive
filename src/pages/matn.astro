@@ -6,41 +6,64 @@ import { personNameMap } from "../lib/site";
 import { hrefFor, toArabicDigits } from "../lib/display";
 import { collectionLd } from "../lib/structured-data";
 
-// مسار الدراسة (متون طالب العلم): قائمة مُنسَّقة يدويًّا، لا كل ما هو isMatn()
-// (ذاك يشمل كل منظومة منشورة + كل كتاب كان يحمل kind: متن، وهي مئات المواد —
-// المطلوب هنا منهجٌ مُختار حسب المستوى، لا فهرس شامل). المستوى ١ فارغ اليوم:
-// نواقض الإسلام/القواعد الأربع/الأصول الثلاثة/الأربعون النووية لم تُضَف بعد
-// كنصٍّ مستقل (شروحها فقط موجودة) — ستظهر تلقائيًّا فور إضافتها هنا.
-// authorOverride: بعض الملفات مؤلَّفة عمليًّا كطبعة مدمجة متن+شرح (person
-// يشير إلى الشارح لا صاحب المتن الأصلي) — العرض هنا ينسب المتن لمؤلفه الحقيقي.
+// مسار الدراسة (متون طالب العلم): قائمة مُنسَّقة يدويًّا لتبويب «منهجية مقترحة».
+// التبويب الآخر «كل المتون» يعرض كل ما هو isMatn() تلقائيًّا (أسفل الصفحة).
+// عناصر لم تُضَف بعد كنصٍّ مستقل ستظهر هنا تلقائيًّا فور إضافتها.
+type Level = 0 | 1 | 2 | 3 | 4;
 type Subject = "aqidah" | "hadith" | "fiqh" | "nahw" | "usul" | "mustalah" | "faraid" | "tajwid" | "adab";
-type Madhab = "hanbali" | "maliki" | "shafii";
+type Madhab = "hanbali" | "maliki" | "shafii" | "hanafi";
 interface CurriculumEntry {
-  level: 1 | 2 | 3 | 4;
+  level: Level;
   collection: "book" | "poem";
   id: string;
   subject: Subject;
   madhab?: Madhab;
-  authorOverride?: string;
 }
 const CURRICULUM: CurriculumEntry[] = [
-  { level: 2, collection: "poem", id: "tuhfat-al-atfal", subject: "tajwid" },
-  { level: 2, collection: "book", id: "shrh-shrwt-al-slah-warkanha-wwajbatha-lshykh-al-aslam-mhmd-b", subject: "fiqh", madhab: "hanbali", authorOverride: "محمد بن عبد الوهاب" },
-  { level: 2, collection: "book", id: "ktab-al-twhyd-wqra-aywn-al-mwhdyn-fy-thqyq-dawa-al-anbya-walmrslyn", subject: "aqidah", authorOverride: "محمد بن عبد الوهاب" },
-  { level: 3, collection: "poem", id: "al-manzumah-al-bayquniyyah", subject: "mustalah" },
-  { level: 3, collection: "poem", id: "manzumat-al-ilbiri", subject: "adab" },
+  { level: 0, collection: "book", id: "nawaqid-al-islam", subject: "aqidah" },
+  { level: 0, collection: "book", id: "al-qawaid-al-arba", subject: "aqidah" },
+  { level: 0, collection: "book", id: "al-usul-al-thalathah", subject: "aqidah" },
+  { level: 0, collection: "poem", id: "tuhfat-al-atfal", subject: "tajwid" },
+  { level: 1, collection: "book", id: "al-arbaeen-al-nawawiyyah", subject: "hadith" },
+  { level: 1, collection: "book", id: "shurut-al-salah", subject: "fiqh", madhab: "hanbali" },
+  { level: 1, collection: "poem", id: "al-manzumah-al-bayquniyyah", subject: "mustalah" },
+  { level: 1, collection: "poem", id: "manzumat-al-ilbiri", subject: "adab" },
+  { level: 1, collection: "book", id: "byan-fdl-alm-al-slf-ala-alm-al-khlf", subject: "adab" },
+  { level: 1, collection: "book", id: "kitab-al-ilm-abi-khaythama", subject: "hadith" },
+  { level: 2, collection: "book", id: "al-risalah-al-latifah-fi-usul-al-fiqh", subject: "usul" },
+  { level: 2, collection: "book", id: "al-aqeedah-al-wasitiyyah", subject: "aqidah" },
+  { level: 2, collection: "book", id: "al-ajurrumiyyah", subject: "nahw" },
+  { level: 2, collection: "book", id: "umdat-al-fiqh-ibn-qudamah", subject: "fiqh", madhab: "hanbali" },
+  { level: 2, collection: "book", id: "umdat-al-ahkam", subject: "hadith" },
+  { level: 3, collection: "book", id: "kitab-at-tawhid", subject: "aqidah" },
+  { level: 3, collection: "book", id: "qatr-al-nada", subject: "nahw" },
+  { level: 3, collection: "poem", id: "qasidat-ibn-abi-al-aswad-fil-sunnah", subject: "aqidah" },
+  { level: 3, collection: "book", id: "al-samt-wa-adab-al-lisan", subject: "adab" },
+  { level: 3, collection: "book", id: "kitab-al-tamyiz", subject: "mustalah" },
   { level: 4, collection: "poem", id: "unwan-al-hikam", subject: "adab" },
   { level: 4, collection: "poem", id: "al-rahabiyyah", subject: "faraid" },
 ];
 
-const LEVEL_NAME: Record<1 | 2 | 3 | 4, string> = {
-  1: "المستوى الأول", 2: "المستوى الثاني", 3: "المستوى الثالث", 4: "المستوى الرابع",
+// نصوصٌ طُلِبت ولم تُضَف بعد (لا ملفّ محتوًى لها) — تُعرَض مُعتِّمةً في القائمة
+// كتذكيرٍ بما ينقص، لا كعنصرٍ فعليّ قابلٍ للقراءة.
+interface PendingEntry { level: Level; title: string; author: string; subject: Subject }
+const PENDING: PendingEntry[] = [
+  { level: 0, title: "عقيدة الرازيين", author: "أبو حاتم وأبو زرعة الرازيان", subject: "aqidah" },
+  { level: 2, title: "الدروس التثقيفية في علم الحديث", author: "عبد الله الخليفي", subject: "mustalah" },
+];
+
+const LEVEL_NAME: Record<Level, string> = {
+  0: "المستوى التمهيدي", 1: "المستوى الأول", 2: "المستوى الثاني", 3: "المستوى الثالث", 4: "المستوى الرابع",
 };
 const SUBJECT_LABEL: Record<Subject, string> = {
   aqidah: "عقيدة", hadith: "حديث", fiqh: "فقه", nahw: "نحو", usul: "أصول الفقه",
   mustalah: "مصطلح الحديث", faraid: "فرائض", tajwid: "تجويد", adab: "آداب",
 };
-const MADHAB_LABEL: Record<Madhab, string> = { hanbali: "حنبلي", maliki: "مالكي", shafii: "شافعي" };
+const MADHAB_LABEL: Record<Madhab, string> = { hanbali: "حنبلي", maliki: "مالكي", shafii: "شافعي", hanafi: "حنفي" };
+// كل المتون: المذهب يُشتقّ من موضوعات الكتاب (fiqh-hanbali وأخواتها) بدل حقلٍ يدويّ.
+const MADHAB_TOPIC: Record<string, Madhab> = {
+  "fiqh-hanbali": "hanbali", "fiqh-maliki": "maliki", "fiqh-shafii": "shafii", "fiqh-hanafi": "hanafi",
+};
 
 const names = await personNameMap();
 const books = await getCollection("book");
@@ -57,17 +80,72 @@ const items = CURRICULUM.map((c) => {
     madhab: c.madhab,
     href: hrefFor(c.collection, c.id),
     title: entry.data.title as string,
-    author: c.authorOverride ?? (entry.data.person ? names.get(entry.data.person as string) ?? "" : ""),
+    author: entry.data.person ? names.get(entry.data.person as string) ?? "" : "",
     description: (entry.data.description as string | undefined) ?? "",
+    pending: false as const,
   };
 }).filter((x): x is NonNullable<typeof x> => x !== null);
 
-const levels = ([1, 2, 3, 4] as const)
-  .map((n) => ({ id: n, name: LEVEL_NAME[n], items: items.filter((it) => it.level === n) }))
+const pendingItems = PENDING.map((p) => ({
+  level: p.level, subject: p.subject, madhab: undefined,
+  href: "", title: p.title, author: p.author, description: "", pending: true as const,
+}));
+const allLevelItems = [...items, ...pendingItems];
+
+const levels = ([0, 1, 2, 3, 4] as const)
+  .map((n) => ({ id: n, name: LEVEL_NAME[n], items: allLevelItems.filter((it) => it.level === n) }))
   .filter((lvl) => lvl.items.length > 0);
 
 const subjectsPresent = [...new Set(items.map((it) => it.subject))];
 const madhabPresent = items.some((it) => it.madhab);
+
+// كل المتون: كل كتابٍ بـ kind:متن + كل منظومةٍ فعليّة (work_type:منظومة، أو
+// غير مصنَّفة بعد لكنها ليست قصيدة أدبية) — لا كل قصيدةٍ منشورة، فالديوان
+// يضمّ شعرًا أدبيًّا محضًا (كالمعلقات وأغلب ديوان الإلبيري) وليس كله متنًا
+// للحفظ. مصنَّفة حسب الموضوع/المذهب الحقيقيَّين من شجرة topic→subject.
+const topics = await getCollection("topic");
+const subjects = await getCollection("subject");
+const topicSubject = new Map(topics.map((t) => [t.id, t.data.subject as string]));
+const subjectTitle = new Map(subjects.map((s) => [s.id, s.data.title as string]));
+
+function subjectFor(itemTopics: string[]): { id: string; title: string } {
+  for (const t of itemTopics) {
+    const sid = topicSubject.get(t);
+    if (sid) return { id: sid, title: subjectTitle.get(sid) ?? sid };
+  }
+  return { id: "other", title: "غير مصنَّف" };
+}
+function madhabFor(itemTopics: string[]): Madhab | undefined {
+  for (const t of itemTopics) if (MADHAB_TOPIC[t]) return MADHAB_TOPIC[t];
+  return undefined;
+}
+
+const allSource: { collection: "book" | "poem"; entry: (typeof books)[number] | (typeof poems)[number] }[] = [
+  ...books.filter((b) => b.data.status === "published" && b.data.kind === "متن").map((entry) => ({ collection: "book" as const, entry })),
+  ...poems.filter((p) => p.data.status === "published" && p.data.work_type !== "قصيدة").map((entry) => ({ collection: "poem" as const, entry })),
+];
+
+const allItems = allSource
+  .map(({ collection, entry }) => {
+    const itemTopics = Array.isArray(entry.data.topics) ? (entry.data.topics as string[]) : [];
+    const subj = subjectFor(itemTopics);
+    return {
+      href: hrefFor(collection, entry.id),
+      title: entry.data.title as string,
+      author: entry.data.person ? names.get(entry.data.person as string) ?? "" : "",
+      description: (entry.data.description as string | undefined) ?? "",
+      subjectId: subj.id,
+      subjectTitle: subj.title,
+      madhab: madhabFor(itemTopics),
+    };
+  })
+  .sort((a, b) => a.title.localeCompare(b.title, "ar"));
+
+const allSubjectLabel = new Map(allItems.map((it) => [it.subjectId, it.subjectTitle]));
+const allSubjectsPresent = [...allSubjectLabel.keys()].sort((a, b) =>
+  (allSubjectLabel.get(a) ?? "").localeCompare(allSubjectLabel.get(b) ?? "", "ar"),
+);
+const allMadhabPresent = allItems.some((it) => it.madhab);
 ---
 <Base
   title="المتون"
@@ -78,7 +156,14 @@ const madhabPresent = items.some((it) => it.madhab);
   <Breadcrumbs items={[{ label: "الرئيسية", href: "/" }, { label: "المتون" }]} />
   <div class="wrap-mid matn-page" data-matn-page>
     <h1 class="page-title">المتون</h1>
-    <p class="hub-lede">سلسلة المتون العلمية مرتّبة حسب مستوى الطلب.</p>
+    <p class="hub-lede">منهجيةٌ مقترحةٌ لمتون طالب العلم حسب المستوى، أو فهرسٌ كاملٌ لكل متنٍ ومنظومة.</p>
+
+    <div class="matn-view-toggle" role="group" aria-label="طريقة العرض">
+      <button type="button" class="matn-view-btn" data-view-btn="roadmap" aria-pressed="true">منهجية مقترحة</button>
+      <button type="button" class="matn-view-btn" data-view-btn="all" aria-pressed="false">كل المتون</button>
+    </div>
+
+  <div data-matn-view="roadmap">
     <p class="matn-stat faint" data-matn-stat>{toArabicDigits(levels.length)} مستويات · {toArabicDigits(items.length)} متنًا ومنظومة · أُتمّ <span data-matn-completed>{toArabicDigits(0)}</span></p>
 
     {subjectsPresent.length > 1 && (
@@ -140,7 +225,22 @@ const madhabPresent = items.some((it) => it.madhab);
               </div>
             </button>
             <div class="matn-items" data-level-items>
-              {lvl.items.map((it) => (
+              {lvl.items.map((it) => it.pending ? (
+                <div class="matn-item matn-item-pending" data-matn-item data-item-key="" data-title={it.title} data-author={it.author} data-text="" data-subject={it.subject} data-madhab="">
+                  <div class="matn-item-row">
+                    <span class="matn-item-readarea">
+                      <span class="matn-item-textcol">
+                        <span class="matn-item-titlerow">
+                          <span class="matn-item-title" data-item-title>{it.title}</span>
+                          <span class:list={["matn-tag", `k-${it.subject}`]}>{SUBJECT_LABEL[it.subject]}</span>
+                          <span class="matn-tag matn-tag-pending">لم يُضَف بعد</span>
+                        </span>
+                        {it.author && <span class="matn-item-author">{it.author}</span>}
+                      </span>
+                    </span>
+                  </div>
+                </div>
+              ) : (
                 <div class="matn-item" data-matn-item data-item-key={it.href} data-title={it.title} data-author={it.author} data-text={it.description} data-subject={it.subject} data-madhab={it.madhab ?? ""}>
                   <div class="matn-item-row">
                     <button type="button" class="matn-item-readarea" data-item-read-toggle>
@@ -172,12 +272,93 @@ const madhabPresent = items.some((it) => it.madhab);
     </div>
     <p class="matn-empty faint" data-matn-empty hidden>لا توجد نتائج مطابقة لبحثك.</p>
   </div>
+
+  <div data-matn-view="all" hidden>
+    <p class="matn-stat faint" data-matn-stat>{toArabicDigits(allItems.length)} متنًا ومنظومة</p>
+
+    {allSubjectsPresent.length > 1 && (
+      <div class="matn-chip-row" role="group" aria-label="تصفية حسب الموضوع">
+        <button type="button" class="matn-chip" data-subject-chip="all" aria-pressed="true">الكل</button>
+        {allSubjectsPresent.map((s) => (
+          <button type="button" class="matn-chip" data-subject-chip={s} aria-pressed="false">{allSubjectLabel.get(s)}</button>
+        ))}
+      </div>
+    )}
+
+    <div class="matn-controls-row">
+      <div class="matn-scope-row" role="group" aria-label="نطاق البحث">
+        <button type="button" class="matn-scope-btn" data-matn-scope="all" aria-pressed="true">الكل</button>
+        <button type="button" class="matn-scope-btn" data-matn-scope="title" aria-pressed="false">العنوان فقط</button>
+        <button type="button" class="matn-scope-btn" data-matn-scope="text" aria-pressed="false">النص فقط</button>
+      </div>
+
+      {allMadhabPresent && (
+        <div class="matn-madhab-wrap" data-madhab-wrap>
+          <button type="button" class="matn-madhab-btn" data-madhab-toggle aria-expanded="false">
+            <span data-madhab-label>المذهب: كل المذاهب</span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" data-madhab-chevron><path d="M7 10l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="matn-madhab-popover" data-madhab-popover hidden>
+            <button type="button" class="matn-madhab-opt" data-madhab-opt="all" aria-pressed="true">كل المذاهب</button>
+            <button type="button" class="matn-madhab-opt" data-madhab-opt="hanbali" aria-pressed="false">{MADHAB_LABEL.hanbali}</button>
+            <button type="button" class="matn-madhab-opt" data-madhab-opt="maliki" aria-pressed="false">{MADHAB_LABEL.maliki}</button>
+            <button type="button" class="matn-madhab-opt" data-madhab-opt="shafii" aria-pressed="false">{MADHAB_LABEL.shafii}</button>
+            <button type="button" class="matn-madhab-opt" data-madhab-opt="hanafi" aria-pressed="false">{MADHAB_LABEL.hanafi}</button>
+          </div>
+        </div>
+      )}
+    </div>
+
+    <div class="matn-search-bar">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="1.7"/><line x1="15.5" y1="15.5" x2="21" y2="21" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+      <input type="search" class="matn-search-input" placeholder="ابحث عن متن أو ناظم أو مؤلف…" autocomplete="off" data-matn-search />
+      <button type="button" class="matn-search-clear" data-matn-clear hidden aria-label="مسح البحث">×</button>
+    </div>
+
+    <div class="matn-items matn-items-flat" data-flat-items>
+      {allItems.map((it) => (
+        <div class="matn-item" data-matn-item data-item-key={it.href} data-title={it.title} data-author={it.author} data-text={it.description} data-subject={it.subjectId} data-madhab={it.madhab ?? ""}>
+          <div class="matn-item-row">
+            <button type="button" class="matn-item-readarea" data-item-read-toggle>
+              <span class="matn-checkbox" data-item-checkbox aria-hidden="true">
+                <svg width="11" height="11" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7" stroke="var(--onbrand)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+              </span>
+              <span class="matn-item-textcol">
+                <span class="matn-item-titlerow">
+                  <span class="matn-item-title" data-item-title>{it.title}</span>
+                  <span class="matn-tag k-other">{it.subjectTitle}</span>
+                  {it.madhab && <span class="matn-tag matn-tag-madhab">{MADHAB_LABEL[it.madhab]}</span>}
+                </span>
+                {it.author && <span class="matn-item-author">{it.author}</span>}
+                {it.description && <span class="matn-item-excerpt" data-item-excerpt>{it.description}</span>}
+              </span>
+            </button>
+            <div class="matn-item-actions">
+              <a class="matn-action-btn matn-action-read" href={it.href}>اقرأ ←</a>
+              <button type="button" class="matn-action-btn" data-item-sharh>الشرح</button>
+              <button type="button" class="matn-action-btn" data-item-memo>حفظ</button>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+    <p class="matn-empty faint" data-matn-empty hidden>لا توجد نتائج مطابقة لبحثك.</p>
+  </div>
+  </div>
 </Base>
 
 <style>
   .matn-page { padding-bottom: 40px; }
   .hub-lede { font-size: 14px; color: var(--ink-soft); line-height: 1.8; max-width: 640px; margin: 4px 0 8px; }
   .matn-stat { font-size: 12.5px; margin-bottom: 18px; }
+
+  .matn-view-toggle { display: flex; gap: 8px; margin-bottom: 20px; }
+  .matn-view-btn {
+    padding: 10px 20px; border-radius: var(--radius-pill); font-size: 13.5px; font-weight: 700;
+    font-family: var(--font-ui); cursor: pointer; border: 1px solid var(--rule-strong);
+    background: var(--surface); color: var(--ink);
+  }
+  .matn-view-btn[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
 
   .matn-chip-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
   .matn-chip {
@@ -290,7 +471,11 @@ const madhabPresent = items.some((it) => it.madhab);
   .matn-tag.k-hadith { color: var(--green); background: var(--verdigris-wash); }
   .matn-tag.k-fiqh, .matn-tag.k-adab { color: var(--ink-soft); background: var(--paper-2); }
   .matn-tag.k-nahw, .matn-tag.k-usul, .matn-tag.k-mustalah, .matn-tag.k-faraid, .matn-tag.k-tajwid { color: var(--gold); background: var(--gold-soft); }
+  .matn-tag.k-other { color: var(--ink-soft); background: var(--paper-2); }
   .matn-tag-madhab { border: 1px solid var(--rule-strong); color: var(--ink-soft); background: transparent; }
+  .matn-tag-pending { border: 1px dashed var(--rule-strong); color: var(--ink-faint); background: transparent; }
+  .matn-item-pending { opacity: .55; }
+  .matn-item-pending .matn-item-readarea { cursor: default; }
   .matn-item-author { font-size: 12.5px; color: var(--ink-faint); }
   .matn-item-excerpt { font-family: var(--font-serif); font-size: 13px; color: var(--ink-soft); line-height: 1.7; margin-top: 2px; }
   .matn-item-actions { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
