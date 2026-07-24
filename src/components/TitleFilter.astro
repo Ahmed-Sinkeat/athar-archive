@@ -13,21 +13,25 @@ const { placeholder = "تصفية حسب العنوان…", scope } = Astro.pro
 ---
 <div class="title-filter" data-search-type={scope?.type ?? ""}>
   {scope && (
-    <div class="title-filter-field-row" role="group" aria-label="نطاق البحث الشامل">
-      <button type="button" class="title-filter-field-chip" data-field="all" aria-pressed="true">الكل</button>
-      <button type="button" class="title-filter-field-chip" data-field="title" aria-pressed="false">العنوان فقط</button>
-      <button type="button" class="title-filter-field-chip" data-field="text" aria-pressed="false">النص فقط</button>
+    <div class="title-filter-field-row" role="group" aria-label="نطاق البحث">
+      <button type="button" class="title-filter-field-chip" data-field="title" aria-pressed="true">العنوان</button>
+      <button type="button" class="title-filter-field-chip" data-field="text" aria-pressed="false">النص</button>
     </div>
   )}
   <div class="title-filter-input-row">
-    <input type="search" class="title-filter-input" placeholder={placeholder} aria-label={placeholder} autocomplete="off" data-title-filter data-title-filter-field="all" />
+    <input type="search" class="title-filter-input" placeholder={placeholder} aria-label={placeholder} autocomplete="off" data-title-filter data-title-filter-field="title" />
     <span class="title-filter-spinner" data-title-filter-spinner hidden aria-hidden="true"></span>
   </div>
   <p class="title-filter-empty faint" data-title-filter-empty hidden>لا نتائج مطابقة.</p>
   <div class="title-filter-live" data-title-filter-live hidden></div>
 </div>
 
-<style>
+<style is:global>
+  /* global, not scoped: .title-filter-live-hit and friends are injected at
+     runtime via innerHTML (see script below) — elements built that way never
+     get Astro's scoped data-astro-cid attribute, so a scoped <style> here
+     would silently never match them (bare unstyled links, no cards). Same
+     reason /search.astro's .search-hit block is is:global too. */
   .title-filter { margin-bottom: 18px; }
   .title-filter-field-row { display: flex; gap: 6px; margin-bottom: 6px; }
   .title-filter-field-chip {
@@ -75,10 +79,10 @@ const { placeholder = "تصفية حسب العنوان…", scope } = Astro.pro
       const live = wrap.querySelector("[data-title-filter-live]");
       const spinner = wrap.querySelector("[data-title-filter-spinner]");
       const searchType = wrap.dataset.searchType;
-      // "العنوان فقط" gets a clear generic label; "الكل" keeps whatever
-      // type-specific wording the page passed in (e.g. "تصفية حسب الاسم…").
+      // "العنوان" keeps whatever type-specific wording the page passed in
+      // (e.g. "تصفية حسب الاسم…"); "النص" gets its own generic label.
       const basePlaceholder = input.getAttribute("placeholder") || "";
-      const PLACEHOLDER_BY_FIELD = { all: basePlaceholder, title: "تصفية حسب العنوان…", text: "بحث في النص…" };
+      const PLACEHOLDER_BY_FIELD = { title: basePlaceholder, text: "بحث في النص…" };
       // strip tashkeel, then fold hamza-alef/ya/ta-marbuta variants so
       // "الألبيري" matches a search for "الالبيري" (and vice versa) — common
       // spelling drift in Arabic text, not a real difference to the reader
@@ -99,7 +103,7 @@ const { placeholder = "تصفية حسب العنوان…", scope } = Astro.pro
         debounce = setTimeout(async () => {
           const mySeq = ++seq;
           try {
-            const field = input.dataset.titleFilterField || "all";
+            const field = input.dataset.titleFilterField || "title";
             const res = await fetch(`/api/search?q=${encodeURIComponent(raw)}&type=${encodeURIComponent(searchType)}&field=${field}`);
             const data = res.ok ? await res.json() : { hits: [] };
             if (mySeq !== seq) return; // a newer keystroke already superseded this
@@ -125,8 +129,8 @@ const { placeholder = "تصفية حسب العنوان…", scope } = Astro.pro
       const apply = () => {
         const raw = input.value.trim();
         const q = norm(raw);
-        const field = input.dataset.titleFilterField || "all";
-        // "النص فقط" has nothing to match against locally — cards only carry
+        const field = input.dataset.titleFilterField || "title";
+        // "النص" has nothing to match against locally — cards only carry
         // a title (data-title), never their full body — so matching by title
         // here anyway silently ignored the user's field choice. Always defer
         // to the live index instead.
