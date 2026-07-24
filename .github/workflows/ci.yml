@@ -167,6 +167,7 @@ jobs:
     env:
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      CLOUDFLARE_ZONE_ID: ${{ secrets.CLOUDFLARE_ZONE_ID }}
       NODE_OPTIONS: --max-old-space-size=6656
     steps:
       - uses: actions/checkout@v4
@@ -296,6 +297,24 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: deploy -c dist/server/wrangler.json
+
+      # The Worker deploy above replaces /_astro/* wholesale — old hashed files
+      # just stop existing. Cloudflare's edge cache (separate from the Workers
+      # Cache API in middleware.ts, which the __v=X-Build-Id query param already
+      # busts) doesn't know a deploy happened and keeps serving previously
+      # cached HTML for up to s-maxage/stale-while-revalidate, which still
+      # references those now-deleted asset hashes — a 404 on a page's own
+      # <script>/<link> that self-inflicts a broken/stuck page until that one
+      # URL's cache entry naturally expires. No purge-by-prefix on free/pro
+      # plans, so this clears everything; the cost is a brief cache-miss window
+      # right after each deploy, not a functional loss.
+      - name: Purge Cloudflare cache
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push' && env.CLOUDFLARE_API_TOKEN != '' && env.CLOUDFLARE_ZONE_ID != ''
+        run: |
+          curl -sf -X POST "https://api.cloudflare.com/client/v4/zones/$CLOUDFLARE_ZONE_ID/purge_cache" \
+            -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+            -H "Content-Type: application/json" \
+            --data '{"purge_everything":true}'
 
       # Loads whatever gen-search-index.ts produced above — normally a small
       # incremental diff (few hundred writes), occasionally a full rebuild

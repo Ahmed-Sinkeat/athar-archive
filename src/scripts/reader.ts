@@ -640,9 +640,15 @@ document.addEventListener("astro:page-load", fixVolumeAnchor);
   // slow loads, and once shown just avoid a sub-200ms flash.
   const SHOW_DELAY = 650;
   const MIN_VISIBLE = 200;
-  let showT = 0, shown = false, shownAt = 0;
+  // Cloudflare's free-plan Bot Fight Mode can silently net::ERR_ABORT the fetch()
+  // ClientRouter uses for a soft nav — no error, no rejection, the promise just
+  // never settles, so astro:page-load never fires and the page sits blank forever
+  // (the old DOM is already torn down by then). A real top-level navigation isn't
+  // subject to the same heuristic, so falling back to one recovers every time.
+  const WATCHDOG_TIMEOUT = 8000;
+  let showT = 0, watchdogT = 0, shown = false, shownAt = 0;
 
-  document.addEventListener("astro:before-preparation", () => {
+  document.addEventListener("astro:before-preparation", (e) => {
     shown = false;
     showT = window.setTimeout(() => {
       shown = true;
@@ -652,10 +658,15 @@ document.addEventListener("astro:page-load", fixVolumeAnchor);
       barFill.style.width = "16%";
       requestAnimationFrame(() => requestAnimationFrame(() => { barFill.style.width = "74%"; }));
     }, SHOW_DELAY);
+
+    clearTimeout(watchdogT);
+    const target = e.to.href;
+    watchdogT = window.setTimeout(() => { location.href = target; }, WATCHDOG_TIMEOUT);
   });
 
   const finish = () => {
     clearTimeout(showT);
+    clearTimeout(watchdogT);
     if (!shown) return;
     const wait = Math.max(0, MIN_VISIBLE - (Date.now() - shownAt));
     barFill.style.width = "100%";
@@ -673,6 +684,7 @@ document.addEventListener("astro:page-load", fixVolumeAnchor);
   window.addEventListener("pageshow", (e) => {
     if (!e.persisted) return;
     clearTimeout(showT);
+    clearTimeout(watchdogT);
     shown = false;
     bar.removeAttribute("data-visible");
     seal.removeAttribute("data-visible");
