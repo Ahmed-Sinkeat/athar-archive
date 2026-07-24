@@ -20,17 +20,34 @@ import ReaderSidebar from "../../../components/ReaderSidebar.astro";
 import BookPageJump from "../../../components/BookPageJump.astro";
 import TitleFilter from "../../../components/TitleFilter.astro";
 import InlineSearch from "../../../components/InlineSearch.astro";
-import { isPub, loadGraph, personNameMap, notesByAnchor } from "../../../lib/site";
+import { isPub, loadGraph, personNameMap, notesByAnchor, type AnnNote } from "../../../lib/site";
 import { markdownToSafeHtml } from "../../../lib/sanitize";
 import { parseToc } from "../../../lib/chapters";
 import { wirePageFootnotes } from "../../../lib/page-footnotes";
 import { readBody } from "../../../lib/read-body";
-import { buildBookChapters, buildAyahInjector, TAFSIR_AYAH_SOURCE } from "../../../lib/book-build";
+import { buildBookChapters, buildAyahInjector, TAFSIR_AYAH_SOURCE, type ChapterMeta, type CatalogEntry } from "../../../lib/book-build";
 import { shardPaths } from "../../../lib/build-shard";
 import { hrefFor, labelFor, isMatn, toArabicDigits } from "../../../lib/display";
 import { parseHadithOrdinal, type TakhrijLink } from "../../../lib/hadith";
 import hadithIndexData from "../../../data/hadith-index.json";
 import takhrijData from "../../../data/takhrij.json";
+
+// entry/audios stay loose (`entry.data.*` is accessed ~15 ways across this
+// file with mixed types) — only the fields whose untyped .map/.filter/
+// .findIndex calls astro check actually flagged get real types here.
+interface CommentaryLink { href: string; title: string; author: string }
+interface AudioTrack { url: string; format?: "opus" | "mp3"; duration: string | null; sizeBytes: number | null; label: string }
+interface Props {
+  entry: any;
+  chapter: ChapterMeta & { content: string };
+  manifest: ChapterMeta[];
+  catalog: CatalogEntry[];
+  volumes: string[];
+  byAnchor: Record<string, AnnNote[]>;
+  author: string | undefined;
+  commentaries: CommentaryLink[];
+  audios: AudioTrack[];
+}
 
 export async function getStaticPaths() {
   const books = ((await getCollection("book")) as any[]).filter(isPub);
@@ -40,7 +57,7 @@ export async function getStaticPaths() {
   // lazy: the injector parses a 93MB build-time JSON — only pay it if the
   // tafsir book is actually published + chunked
   let injectAyat: ((c: string) => string) | undefined;
-  const paths: any[] = [];
+  const paths: { params: { slug: string; chapter: string }; props: Props }[] = [];
 
   for (const entry of books) {
     const body = await readBody(entry);
@@ -66,7 +83,7 @@ export async function getStaticPaths() {
       }));
     const commentaries = graph.commentariesOf(entry.id)
       .filter(isPub)
-      .map((c) => ({ href: hrefFor("book", c.id), title: c.data.title, author: c.data.person ? names.get(c.data.person as string) : "" }));
+      .map((c) => ({ href: hrefFor("book", c.id), title: c.data.title as string, author: c.data.person ? (names.get(c.data.person as string) ?? "") : "" }));
     const manifest = built.chapters.map(({ content: _content, ...meta }) => meta);
 
     for (const chapter of built.chapters) {
