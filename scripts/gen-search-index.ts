@@ -255,7 +255,13 @@ function main() {
   // rows, and the new hash row. Default leaves headroom under the free plan's
   // 100k/day; on Workers Paid (50M rows written/month included) raise it and
   // the whole corpus lands in one run.
-  const ROW_BUDGET = Number(process.env.SEARCH_ROW_BUDGET ?? 80_000);
+  // 40k, not 80k: measured on run 30162955298, an 80k budget emitted 20112
+  // urls across 36 sql files and D1 refused 21 of them once the day's writes
+  // ran out — an hour of CI spent failing. Resumability meant nothing was lost
+  // (the failed files' hashes stayed stale and roll to the next deploy), but
+  // emitting work the quota can't absorb just burns time. Half the budget
+  // lands nearly the same number of urls per day, in half the runtime.
+  const ROW_BUDGET = Number(process.env.SEARCH_ROW_BUDGET ?? 40_000);
 
   const rowsByUrl = new Map<string, Doc[]>();
   for (const d of alive) {
