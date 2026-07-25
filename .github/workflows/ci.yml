@@ -308,13 +308,29 @@ jobs:
       # URL's cache entry naturally expires. No purge-by-prefix on free/pro
       # plans, so this clears everything; the cost is a brief cache-miss window
       # right after each deploy, not a functional loss.
+      # continue-on-error: same reasoning as the D1 step below — a purge
+      # failure (bad token scope, stale zone ID, transient API error)
+      # shouldn't fail the whole run when deploy already succeeded; the
+      # comment above already treats a cache-miss window as an acceptable
+      # cost, so failing to even TRIGGER the purge is the same bounded
+      # degradation, not a functional loss. -sf alone swallowed the response
+      # body on failure (bare exit 22, no clue why) — capture it so the next
+      # failure is actually diagnosable from the Actions log.
       - name: Purge Cloudflare cache
         if: github.ref == 'refs/heads/main' && github.event_name == 'push' && env.CLOUDFLARE_API_TOKEN != '' && env.CLOUDFLARE_ZONE_ID != ''
+        continue-on-error: true
         run: |
-          curl -sf -X POST "https://api.cloudflare.com/client/v4/zones/$CLOUDFLARE_ZONE_ID/purge_cache" \
+          resp=$(curl -s -w '\n%{http_code}' -X POST "https://api.cloudflare.com/client/v4/zones/$CLOUDFLARE_ZONE_ID/purge_cache" \
             -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
             -H "Content-Type: application/json" \
-            --data '{"purge_everything":true}'
+            --data '{"purge_everything":true}')
+          code=$(tail -n1 <<< "$resp")
+          body=$(sed '$d' <<< "$resp")
+          if [ "$code" != "200" ]; then
+            echo "::warning::Cache purge failed (HTTP $code): $body"
+          else
+            echo "$body"
+          fi
 
       # Loads whatever gen-search-index.ts produced above — normally a small
       # incremental diff (few hundred writes), occasionally a full rebuild
