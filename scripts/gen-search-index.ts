@@ -48,10 +48,20 @@ function strip(md: string): string {
 function main() {
   const entries = loadContentFromDisk().filter((e) => e.data.status === "published");
   const docs: Doc[] = [];
+  const personName = new Map(
+    entries.filter((e) => e.collection === "person").map((e) => [e.id, String(e.data.title ?? "")]),
+  );
 
   for (const e of entries) {
     const title = String(e.data.title ?? "");
     const person = String(e.data.person ?? "");
+    // An author's NAME never reached the index — only their slug, in the
+    // UNINDEXED `person` column — so searching «عادل بن عزوز» matched his
+    // person page and nothing he actually wrote, and the only way to his books
+    // was via /person. Fold the display name into the searchable title column.
+    // displayTitle (what a result renders) stays the clean work title.
+    const byline = personName.get(person);
+    const searchTitle = byline ? `${title} ${byline}` : title;
     switch (e.collection) {
       case "quran": {
         for (const p of parseBook(e.body).paragraphs) {
@@ -79,7 +89,7 @@ function main() {
                 type: "book", book: e.id, person,
                 url: `/book/${e.id}/${c.slug}#athar-${n}`,
                 displayTitle: `${title} — الأثر ${toArabicDigits(n)}`,
-                title, text: strip(p.text),
+                title: searchTitle, text: strip(p.text),
               });
             }
           }
@@ -91,7 +101,7 @@ function main() {
               type: "book", book: e.id, person,
               url: `/book/${e.id}#athar-${n}`,
               displayTitle: `${title} — الأثر ${toArabicDigits(n)}`,
-              title, text: strip(p.text),
+              title: searchTitle, text: strip(p.text),
             });
           }
         } else if (a.chunked) {
@@ -100,11 +110,11 @@ function main() {
               type: "book", book: e.id, person,
               url: `/book/${e.id}/${c.slug}`,
               displayTitle: `${title} — ${c.title}`,
-              title: `${title} ${c.title}`, text: strip(c.content),
+              title: `${searchTitle} ${c.title}`, text: strip(c.content),
             });
           }
         } else {
-          docs.push({ type: "book", book: e.id, person, url: `/book/${e.id}`, displayTitle: title, title, text: strip(e.body) });
+          docs.push({ type: "book", book: e.id, person, url: `/book/${e.id}`, displayTitle: title, title: searchTitle, text: strip(e.body) });
         }
         break;
       }
@@ -115,13 +125,13 @@ function main() {
         docs.push({
           type: e.collection, book: e.collection === "poem" ? e.id : "", person,
           url: `/${urls[e.collection]}/${e.id}`,
-          displayTitle: title, title,
+          displayTitle: title, title: searchTitle,
           text: strip([e.data.description ?? "", e.data.definition ?? "", e.body].join(" ")),
         });
         break;
       }
       case "question": {
-        docs.push({ type: "question", book: "", person, url: `/questions/${e.id}`, displayTitle: title, title, text: strip(e.body) });
+        docs.push({ type: "question", book: "", person, url: `/questions/${e.id}`, displayTitle: title, title: searchTitle, text: strip(e.body) });
         break;
       }
       case "person": {

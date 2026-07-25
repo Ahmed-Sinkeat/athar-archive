@@ -37,24 +37,37 @@ for (const file of walk(DIST)) {
 }
 
 const scriptHashes = [...hashes].sort().join(" ");
+
+// Google Analytics 4 (Base.astro loads gtag.js; the gtag config block next to
+// it is inline and already hash-allowed above). Until these were listed, the
+// CSP blocked gtag.js outright and GA had never once reported — the site just
+// logged a CSP violation on every page load. gtag.js is served from
+// googletagmanager.com; the collect beacon goes to google-analytics.com (and
+// analytics.google.com for some regions), with an <img> pixel as its no-fetch
+// fallback, so all three directives need the allowance, not just script-src.
+const GA_SCRIPT = "https://www.googletagmanager.com";
+const GA_CONNECT = "https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com";
+const GA_IMG = "https://*.google-analytics.com https://*.googletagmanager.com";
+
 const csp = [
   "default-src 'self'",
   // scripts: self + the hashed inline scripts (no 'unsafe-inline') + the
   // Cloudflare Insights beacon (its <script src> is in Base.astro's head)
-  `script-src 'self' https://static.cloudflareinsights.com ${scriptHashes}`,
+  // + Google Tag Manager (gtag.js)
+  `script-src 'self' https://static.cloudflareinsights.com ${GA_SCRIPT} ${scriptHashes}`,
   // 'unsafe-inline' restored: templates DO use style= attrs (TOC depth
   // indentation, etc.) and the strict policy was silently stripping them
   // in production. Styles-only, script-src stays hash-locked.
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
   "font-src 'self' https://fonts.gstatic.com",
-  "img-src 'self' data:",
+  `img-src 'self' data: ${GA_IMG}`,
   "media-src 'self' https://r2.arthurarchive.com",
   // r2 MUST be in connect-src too: this same CSP is served with /sw.js, and a
   // worker's fetch() is governed by its script's CSP — with bare 'self' the
   // service worker could not fetch audio at all, which killed playback on
   // every SW-controlled page (only the very first page a visitor ever opened
   // played, via media-src). downloads.ts audio caching needs it as well.
-  "connect-src 'self' https://r2.arthurarchive.com",
+  `connect-src 'self' https://r2.arthurarchive.com ${GA_CONNECT}`,
   "base-uri 'self'",
   "form-action 'self'",
   "frame-ancestors 'none'",

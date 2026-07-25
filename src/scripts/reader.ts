@@ -231,7 +231,17 @@ function syncTajweedColors() {
 // soft-nav, never after a full load.
 document.addEventListener("astro:page-load", () => {
   const meta = document.querySelector<HTMLMetaElement>('meta[name="aa-build"]')?.content;
-  if (meta && meta !== __AA_BUILD__) location.reload();
+  if (!meta || meta === __AA_BUILD__) return;
+  // Reload ONCE per page, not in a loop. The "can't loop" reasoning above held
+  // only while a page's build id and its scripts shipped together; prerendered
+  // chapter pages serve stored HTML with live asset URLs swapped in, so a stale
+  // stored build id used to disagree forever and reload forever. That's fixed
+  // at the source (book/[slug]/[chapter].ts restamps the meta) — this is the
+  // guard that keeps any future staleness a one-time blip, not a broken page.
+  const key = `aa-reloaded:${__AA_BUILD__}:${location.pathname}`;
+  if (sessionStorage.getItem(key)) return;
+  sessionStorage.setItem(key, "1");
+  location.reload();
 });
 
 // --- تسميع (memorization) mode — poem/quran pages only ---
@@ -283,8 +293,9 @@ function naturalLineWidth(el: HTMLElement): number {
 // Shrinks `measure`'s hemistich (via CSS vars on `host`) so it fits in
 // `available` px on one line; returns its resulting on-screen width, or 0 if
 // it gave up and let it wrap (no single "end" left to stagger against).
-function fitOneLine(measure: HTMLElement, host: HTMLElement, scaleVar: string, wrapVar: string, available: number): number {
-  const natural = naturalLineWidth(measure);
+// `natural` may be passed in when the caller already measured it (the عجز —
+// its width decides the stagger offset, so it's known before the fit).
+function fitOneLine(measure: HTMLElement, host: HTMLElement, scaleVar: string, wrapVar: string, available: number, natural = naturalLineWidth(measure)): number {
   if (natural <= available) {
     host.style.setProperty(scaleVar, "1");
     host.style.setProperty(wrapVar, "nowrap");
@@ -306,10 +317,27 @@ function restaggerHemistichs() {
     const sadrMeasure = verseText.querySelector<HTMLElement>(".sadr-measure");
     const ajzMeasure = verseText.querySelector<HTMLElement>(".ajz-measure");
     if (!sadrMeasure) return;
+    // Measure at 1x against the full width: a previous pass' shrink/offset is
+    // still applied otherwise, so a resize would fit each hemistich against
+    // its own already-shrunk width and creep smaller every time.
+    verseText.style.setProperty("--sadr-scale", "1");
+    verseText.style.setProperty("--ajz-scale", "1");
+    verseText.style.setProperty("--sadr-w", "0px");
     const available = verseText.clientWidth;
     const sadrWidth = fitOneLine(sadrMeasure, verseText, "--sadr-scale", "--sadr-wrap", available);
-    verseText.style.setProperty("--sadr-w", `${sadrWidth}px`);
-    if (ajzMeasure) fitOneLine(ajzMeasure, verseText, "--ajz-scale", "--ajz-wrap", available - sadrWidth);
+    if (!ajzMeasure) {
+      verseText.style.setProperty("--sadr-w", `${sadrWidth}px`);
+      return;
+    }
+    // The عجز starts where صدر's text ended — but on a phone that leaves it a
+    // sliver, and a sliver wraps into one word per line. Pull the stagger
+    // start back toward the right (never past the edge) until the عجز has room
+    // for one line at the shrink floor: the staircase is worth less than the
+    // بيت being readable.
+    const ajzNatural = naturalLineWidth(ajzMeasure);
+    const offset = Math.max(0, Math.min(sadrWidth, available - ajzNatural * HEMI_SHRINK_FLOOR));
+    verseText.style.setProperty("--sadr-w", `${offset}px`);
+    fitOneLine(ajzMeasure, verseText, "--ajz-scale", "--ajz-wrap", available - offset, ajzNatural);
   });
 }
 document.addEventListener("astro:page-load", restaggerHemistichs);

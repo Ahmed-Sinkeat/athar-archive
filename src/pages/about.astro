@@ -19,9 +19,15 @@ import { config } from "../../ahlalathar.config";
       <h2>هل المحتوى مجاني؟</h2>
       <p>نعم، بالكامل. لا اشتراك ولا إعلانات.</p>
 
-      <h2 id="contact">تواصل وساهِم</h2>
+      <h2 id="contact">تواصل</h2>
       <p>نبِّهنا على خطأ في نصٍّ، أو اقترح إضافةَ مادة أو تعديلَها أو إزالتَها، على البريد:</p>
       <p><a href={`mailto:${config.reportErrorMailto}`}>{config.reportErrorMailto}</a></p>
+
+      <h2 id="musahama">مساهمة</h2>
+      <p>الأرشيف مجانيٌّ بالكامل، لا اشتراك فيه ولا إعلانات؛ ونفقاتُه — من استضافةٍ ونطاقٍ وتخزينٍ للصوتيات — يتحمَّلها القائمون عليه. فمن أراد أن يشارك في نفقاته فله ذلك، وليس ذلك بلازمٍ على أحد.</p>
+      {config.paypalUrl && (
+        <p><a class="btn" href={config.paypalUrl} target="_blank" rel="noopener">المساهمة عبر PayPal</a></p>
+      )}
       <p>وأعظمُ ما تساهم به دعاؤك لنا بالثبات والتوفيق.</p>
     </div>
   </div>

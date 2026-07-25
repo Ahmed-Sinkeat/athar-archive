@@ -36,5 +36,12 @@ export const GET: APIRoute = async ({ params, url }) => {
   for (const [logical, hashed] of Object.entries(JSON.parse(assetsJson ?? "{}") as Record<string, string>)) {
     html = html.replaceAll(`/_astro-live/${logical}`, hashed);
   }
+  // ...and restamp the build id for the same reason. The scripts this page
+  // loads are THIS deploy's (just swapped in above), but the stored HTML still
+  // carries the build id of whenever it was uploaded — reader.ts reads that as
+  // "soft-nav crossed a deploy" and hard-reloads, which serves the same stale
+  // meta again: an infinite reload loop on every prerendered chapter page
+  // (seen live 2026-07-25). Making the meta tell the truth ends it.
+  html = html.replace(/(<meta name="aa-build" content=")[^"]*/, `$1${__AA_BUILD__}`);
   return new Response(html, { headers: HTML });
 };

@@ -378,6 +378,7 @@ const [readerSub, readerMain] = title.includes(" · ") ? title.split(" · ") : [
         <div class="pop-links">
           <a href="/about">عن الموقع</a>
           <a href="/about#contact">تواصل</a>
+          <a href="/about#musahama">مساهمة</a>
         </div>
       </div>
 
@@ -415,6 +416,7 @@ const [readerSub, readerMain] = title.includes(" · ") ? title.split(" · ") : [
       <!-- on phones the footer (the only other place these live) is a long
            scroll away — keep عن الموقع reachable from the drawer too -->
       <a href="/about" data-nav="about" aria-current={Astro.url.pathname === "/about" ? "page" : undefined}>عن الموقع</a>
+      <a href="/about#musahama" data-nav="musahama">مساهمة</a>
       <!-- theme switching on mobile lives in one place: the settings gear
            (header on reading pages, .mobile-search-btn's neighbor elsewhere)
            — no separate swatch row here duplicating that sheet. -->
@@ -459,11 +461,18 @@ const [readerSub, readerMain] = title.includes(" · ") ? title.split(" · ") : [
             <div class="footer-col-h">الموقع</div>
             <a href="/about">عن الموقع</a>
             <a href="/about#contact">تواصل</a>
+            <a href="/about#musahama">مساهمة</a>
           </nav>
         </div>
         <div class="footer-strip">
           <span class="footer-orn" aria-hidden="true">۞</span>
           <span>أهل الأثر · ١٤٤٧هـ</span>
+          <!-- عدد الزوار — off via config.visitorCounter. When on, filled by the
+               visits script below, which leaves it hidden if the counter is
+               unreachable so a D1 hiccup shows nothing rather than «٠ زائر» -->
+          {config.visitorCounter && (
+            <span data-visits hidden>· <span data-visits-n></span> زائر</span>
+          )}
         </div>
       </div>
     </footer>
@@ -573,6 +582,32 @@ const [readerSub, readerMain] = title.includes(" · ") ? title.split(" · ") : [
       // /matn page interactivity — no-ops immediately on any other page
       // without [data-matn-page]; dynamic for the same render-budget reason.
       import("../scripts/matn-page.ts");
+
+      // عدد الزوار (footer). Counted once per session: the first page view
+      // POSTs and caches the total, every later page in that session renders
+      // the cached number without touching the network. toLocaleString("ar-EG")
+      // gives the Arabic-Indic digits the rest of the site uses — no helper.
+      const showVisits = () => {
+        const box = document.querySelector<HTMLElement>("[data-visits]");
+        const slot = box?.querySelector<HTMLElement>("[data-visits-n]");
+        if (!box || !slot) return;
+        const paint = (n: string) => {
+          slot.textContent = Number(n).toLocaleString("ar-EG");
+          box.hidden = false;
+        };
+        const cached = sessionStorage.getItem("aa-visits");
+        if (cached) return paint(cached);
+        fetch("/api/visits", { method: "POST" })
+          .then((r) => r.json())
+          .then((d) => {
+            if (typeof d.visits !== "number") return;
+            sessionStorage.setItem("aa-visits", String(d.visits));
+            paint(String(d.visits));
+          })
+          .catch(() => {});
+      };
+      showVisits();
+      document.addEventListener("astro:page-load", showVisits);
     </script>
   </body>
 </html>
