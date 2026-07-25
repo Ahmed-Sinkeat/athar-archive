@@ -215,7 +215,14 @@ jobs:
       - name: Merge shard chapter pages + verify none lost
         run: |
           mkdir -p dist/client/book-pages
-          for d in dist/_shards/book-pages-shard-*/; do cp -a "$d." dist/client/book-pages/; done
+          # hard-link rather than copy: same filesystem, ~78k files, and this
+          # was 2m14s of pure byte-shuffling. gen-book-chapters.ts only ever
+          # reads these and writes elsewhere, so sharing inodes is safe; the
+          # `rm -rf dist/_shards` below then just drops a link. Falls back to a
+          # real copy if the artifacts ever land on a different mount.
+          for d in dist/_shards/book-pages-shard-*/; do
+            cp -al "$d." dist/client/book-pages/ 2>/dev/null || cp -a "$d." dist/client/book-pages/
+          done
           expected=$(cat dist/client/book-pages/.count-shard-* | awk '{s+=$1} END{print s}')
           actual=$(find dist/client/book-pages -name index.html | wc -l)
           rm -f dist/client/book-pages/.count-shard-*

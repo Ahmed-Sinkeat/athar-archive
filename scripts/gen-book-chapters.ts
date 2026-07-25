@@ -50,8 +50,19 @@ for (const f of fs.existsSync(ASTRO_DIR) ? fs.readdirSync(ASTRO_DIR) : []) {
   if (m) assetMap.set(`${m[1]}.${m[3]}`, `/_astro/${f}`);
 }
 
+// The asset hashes were not in fact the only volatile bytes: <meta
+// name="aa-build"> carries Date.now() from config load, so EVERY page's md5
+// changed on every build and all 78k re-uploaded to R2 every deploy (~14 min
+// of a 58-min pipeline, measured 2026-07-25) — the placeholder scheme above
+// was being defeated one meta tag at a time. Blank it here; the thin route
+// restamps it with the live build id per request, exactly as it does the
+// asset URLs, so what R2 stores no longer has to be a real build id.
+const BUILD_META_RE = /(<meta name="aa-build" content=")[^"]*/;
+
 function toPlaceholders(html: string): string {
-  return html.replace(ASSET_RE, (_full, name: string, _hash: string, ext: string) => `/_astro-live/${name}.${ext}`);
+  return html
+    .replace(ASSET_RE, (_full, name: string, _hash: string, ext: string) => `/_astro-live/${name}.${ext}`)
+    .replace(BUILD_META_RE, "$1");
 }
 
 let moved = 0;
