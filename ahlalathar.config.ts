@@ -15,7 +15,7 @@ export const config = {
   // مساهمة (/about#musahama). Empty → the section renders without a donate
   // button, so a placeholder link is never shipped. Put the real paypal.me /
   // PayPal.Me business URL here when it exists.
-  paypalUrl: "" as string,
+  paypalUrl: "https://www.paypal.com/paypalme/AtharArchive9" as string,
   // عدد الزوار in the footer. Off for now — flip to true to bring it back.
   // While false the footer element never renders, the script no-ops without
   // it, and /api/visits is never called: nothing is counted, so the number
