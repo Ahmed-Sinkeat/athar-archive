@@ -464,7 +464,10 @@ const allMadhabPresent = allItems.some((it) => it.madhab);
   .matn-item.is-read .matn-checkbox svg { visibility: visible; }
   .matn-item-textcol { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
   .matn-item-titlerow { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-  .matn-item-title { font-family: var(--font-serif); font-weight: 700; font-size: 16.5px; color: var(--ink); }
+  /* Amiri at 16.5px sat too close to the author/description beneath it — the
+     title read as another line of body text rather than the row's heading.
+     Arabic serif needs the extra size to carry weight at list sizes. */
+  .matn-item-title { font-family: var(--font-serif); font-weight: 700; font-size: 19px; line-height: 1.5; color: var(--ink); }
   .matn-item.is-read .matn-item-title { color: var(--ink-soft); }
   .matn-tag { font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: var(--radius-pill); font-family: var(--font-ui); flex-shrink: 0; white-space: nowrap; }
   .matn-tag.k-aqidah { color: var(--accent); background: var(--accent-wash); }
@@ -514,6 +517,6 @@ const allMadhabPresent = allItems.some((it) => it.madhab);
     .matn-item-row { flex-direction: column; align-items: flex-start; }
     .matn-item-readarea { width: 100%; padding: 11px 6px; }
     .matn-item-actions { margin-inline-start: 32px; }
-    .matn-item-title { font-size: 15px; }
+    .matn-item-title { font-size: 17px; }
   }
 </style>

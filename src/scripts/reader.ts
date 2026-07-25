@@ -290,26 +290,16 @@ function naturalLineWidth(el: HTMLElement): number {
   return w;
 }
 
-// Shrinks `measure`'s hemistich (via CSS vars on `host`) so it fits in
-// `available` px on one line; returns its resulting on-screen width, or 0 if
-// it gave up and let it wrap (no single "end" left to stagger against).
-// `natural` may be passed in when the caller already measured it (the عجز —
-// its width decides the stagger offset, so it's known before the fit).
-function fitOneLine(measure: HTMLElement, host: HTMLElement, scaleVar: string, wrapVar: string, available: number, natural = naturalLineWidth(measure)): number {
-  if (natural <= available) {
-    host.style.setProperty(scaleVar, "1");
-    host.style.setProperty(wrapVar, "nowrap");
-    return natural;
-  }
-  const needed = available / natural;
-  if (needed >= HEMI_SHRINK_FLOOR) {
-    host.style.setProperty(scaleVar, String(needed));
-    host.style.setProperty(wrapVar, "nowrap");
-    return available;
-  }
-  host.style.setProperty(scaleVar, "1");
-  host.style.setProperty(wrapVar, "normal");
-  return 0;
+// How much room the بيت actually has. NOT verseText.clientWidth: an annotated
+// verse's .verse-text is display:table (the has-ann card hugs its text), so its
+// own width is shrink-to-fit — it reports the text's width, not the column's,
+// and a previous pass' nowrap can push it to overflow. Measure the block parent
+// and subtract the card's padding.
+function lineWidth(verseText: HTMLElement): number {
+  const box = verseText.parentElement;
+  if (!box) return verseText.clientWidth;
+  const cs = getComputedStyle(verseText);
+  return box.clientWidth - (parseFloat(cs.paddingInlineStart) || 0) - (parseFloat(cs.paddingInlineEnd) || 0);
 }
 
 function restaggerHemistichs() {
@@ -317,27 +307,39 @@ function restaggerHemistichs() {
     const sadrMeasure = verseText.querySelector<HTMLElement>(".sadr-measure");
     const ajzMeasure = verseText.querySelector<HTMLElement>(".ajz-measure");
     if (!sadrMeasure) return;
-    // Measure at 1x against the full width: a previous pass' shrink/offset is
-    // still applied otherwise, so a resize would fit each hemistich against
-    // its own already-shrunk width and creep smaller every time.
-    verseText.style.setProperty("--sadr-scale", "1");
-    verseText.style.setProperty("--ajz-scale", "1");
-    verseText.style.setProperty("--sadr-w", "0px");
-    const available = verseText.clientWidth;
-    const sadrWidth = fitOneLine(sadrMeasure, verseText, "--sadr-scale", "--sadr-wrap", available);
-    if (!ajzMeasure) {
-      verseText.style.setProperty("--sadr-w", `${sadrWidth}px`);
-      return;
-    }
-    // The عجز starts where صدر's text ended — but on a phone that leaves it a
-    // sliver, and a sliver wraps into one word per line. Pull the stagger
-    // start back toward the right (never past the edge) until the عجز has room
-    // for one line at the shrink floor: the staircase is worth less than the
-    // بيت being readable.
-    const ajzNatural = naturalLineWidth(ajzMeasure);
-    const offset = Math.max(0, Math.min(sadrWidth, available - ajzNatural * HEMI_SHRINK_FLOOR));
-    verseText.style.setProperty("--sadr-w", `${offset}px`);
-    fitOneLine(ajzMeasure, verseText, "--ajz-scale", "--ajz-wrap", available - offset, ajzNatural);
+    // Reset to 1x, unwrapped, unstaggered before measuring — otherwise each
+    // pass fits the hemistichs against their own already-shrunk widths and a
+    // resize creeps them smaller every time.
+    const set = (k: string, v: string) => verseText.style.setProperty(k, v);
+    set("--sadr-scale", "1"); set("--ajz-scale", "1");
+    set("--sadr-wrap", "normal"); set("--ajz-wrap", "normal");
+    set("--sadr-w", "0px");
+
+    const available = lineWidth(verseText);
+    const sadrNatural = naturalLineWidth(sadrMeasure);
+    const ajzNatural = ajzMeasure ? naturalLineWidth(ajzMeasure) : 0;
+
+    // ONE scale for the whole بيت. Fitting each hemistich to its own leftover
+    // room shrank the عجز alone, and a full-size صدر sitting above a visibly
+    // smaller عجز reads as a rendering fault rather than a ديوان. Both are
+    // sized off the WIDER hemistich, so they always match — and since the عجز
+    // may start anywhere from صدر's end back to the right edge, a بيت whose
+    // halves each fit the column keeps both at full size.
+    const widest = Math.max(sadrNatural, ajzNatural);
+    const needed = widest > available && widest > 0 ? available / widest : 1;
+
+    // Past the floor even one hemistich can't be read; wrapping beats
+    // micro-type, and a wrapped بيت has no single "end" to stagger against.
+    if (needed < HEMI_SHRINK_FLOOR) return;
+
+    set("--sadr-scale", String(needed)); set("--ajz-scale", String(needed));
+    set("--sadr-wrap", "nowrap"); set("--ajz-wrap", "nowrap");
+    if (!ajzMeasure) return;
+
+    // Stagger as far as the عجز allows: start where صدر's text ends, but pull
+    // back toward the right edge rather than squeeze the عجز onto a second line.
+    const offset = Math.max(0, Math.min(sadrNatural * needed, available - ajzNatural * needed));
+    set("--sadr-w", `${offset}px`);
   });
 }
 document.addEventListener("astro:page-load", restaggerHemistichs);
