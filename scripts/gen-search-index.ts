@@ -233,32 +233,79 @@ function main() {
   const write = (line: string) => {
     flushStmt();
     buf += line; bufBytes += blen(line);
-    if (bufBytes > FILE_MAX) flushFile();
   };
 
-  // Changed/removed docs: drop their old rows first (a doc's chunk count can
-  // change between runs, so delete-by-url then reinsert rather than update).
-  const dirtyUrls = incremental ? new Set([...changedUrls, ...removedUrls]) : new Set<string>();
-  for (const u of dirtyUrls) write(`DELETE FROM docs WHERE url = ${q(u)};\nDELETE FROM doc_hash WHERE url = ${q(u)};\n`);
+  // --- resumable emit ---------------------------------------------------
+  // D1's free plan REFUSES writes past 100k rows/day, and a corpus-wide change
+  // (folding author names into the title dirtied ~96% of rows) needs far more
+  // than one day's worth. The emit order used to make that unrecoverable: every
+  // DELETE came first — including `DELETE FROM doc_hash` — and every doc_hash
+  // upsert came last, so a run cut short by quota advanced NO hashes while
+  // having emptied the hash table. The next run then saw an empty hash set,
+  // fell into full-rebuild mode, DROPped docs, and got no further. A thrash
+  // loop that leaves search broken rather than merely stale.
+  //
+  // So: emit one URL at a time as a self-contained unit — its DELETEs, its
+  // rows, then its doc_hash upsert — and only ever start a new sql FILE on a
+  // unit boundary. A file that fails (or is never reached) leaves exactly those
+  // urls' hashes untouched, so the next deploy resumes precisely there.
+  // The budget counts REAL rows written, deletes included — D1 bills a deleted
+  // row the same as an inserted one. Per changed url that is: its old doc rows
+  // deleted (≈ as many as we re-insert), its doc_hash row deleted, the new doc
+  // rows, and the new hash row. Default leaves headroom under the free plan's
+  // 100k/day; on Workers Paid (50M rows written/month included) raise it and
+  // the whole corpus lands in one run.
+  const ROW_BUDGET = Number(process.env.SEARCH_ROW_BUDGET ?? 80_000);
 
+  const rowsByUrl = new Map<string, Doc[]>();
   for (const d of alive) {
-    const r = row(d);
-    const rBytes = blen(r);
-    if (stmt && stmtBytes + rBytes > STMT_MAX) flushStmt();
-    if (bufBytes + stmtBytes + rBytes > FILE_MAX) flushFile();
-    const hadStmt = !!stmt;
-    stmt += hadStmt ? `,\n${r}` : r;
-    stmtBytes += rBytes + (hadStmt ? 2 : 0); // +2 for ",\n"
+    const list = rowsByUrl.get(d.url);
+    if (list) list.push(d); else rowsByUrl.set(d.url, [d]);
   }
-  for (const d of liveDocs) {
-    if (!changedUrls.has(d.url)) continue;
-    write(`INSERT OR REPLACE INTO doc_hash (url, hash) VALUES (${q(d.url)}, ${q(currentHashes.get(d.url)!)});\n`);
+
+  // removed first (cheap, and frees their rows), then the changed ones
+  const units: { url: string; rows: Doc[]; hash: string | null }[] = [
+    ...removedUrls.map((url) => ({ url, rows: [] as Doc[], hash: null })),
+    ...[...changedUrls].map((url) => ({ url, rows: rowsByUrl.get(url) ?? [], hash: currentHashes.get(url)! })),
+  ];
+
+  let spent = 0;
+  let emitted = 0;
+  let done = 0;
+  for (const unit of units) {
+    // full rebuild dropped the tables, so nothing is deleted there
+    const cost = incremental ? unit.rows.length * 2 + 2 : unit.rows.length + 1;
+    if (spent + cost > ROW_BUDGET) break; // the rest keep their old hash → next run
+    // file boundaries only BETWEEN units, never inside one
+    if (bufBytes + stmtBytes > FILE_MAX) flushFile();
+
+    if (incremental) write(`DELETE FROM docs WHERE url = ${q(unit.url)};\nDELETE FROM doc_hash WHERE url = ${q(unit.url)};\n`);
+    for (const d of unit.rows) {
+      const r = row(d);
+      const rBytes = blen(r);
+      if (stmt && stmtBytes + rBytes > STMT_MAX) flushStmt();
+      const hadStmt = !!stmt;
+      stmt += hadStmt ? `,\n${r}` : r;
+      stmtBytes += rBytes + (hadStmt ? 2 : 0); // +2 for ",\n"
+    }
+    if (unit.hash !== null) write(`INSERT OR REPLACE INTO doc_hash (url, hash) VALUES (${q(unit.url)}, ${q(unit.hash)});\n`);
+    spent += cost;
+    emitted += unit.rows.length;
+    done++;
   }
   flushFile();
 
+  const deferred = units.length - done;
   const bytes = fs.readdirSync(outDir).reduce((n, f) => n + fs.statSync(path.join(outDir, f)).size, 0);
   const mode = incremental ? `incremental: ${changedUrls.size} changed, ${removedUrls.length} removed, ${liveDocs.length - changedUrls.size} unchanged (skipped)` : "full rebuild";
-  console.log(`search index (${mode}): ${alive.length} row(s) → ${fileNo} sql file(s), ${(bytes / 1e6).toFixed(1)} MB in ${outDir}`);
+  console.log(`search index (${mode}): ${emitted} row(s) → ${fileNo} sql file(s), ${(bytes / 1e6).toFixed(1)} MB in ${outDir}`);
+  if (deferred > 0) {
+    console.log(
+      `::warning::search index budget reached — ${done} of ${units.length} url(s) emitted this run, ` +
+        `${deferred} deferred to the next deploy (their doc_hash is deliberately left stale so they get picked up). ` +
+        `Raise SEARCH_ROW_BUDGET (currently ${ROW_BUDGET}) only if the D1 plan allows more than 100k row writes/day.`,
+    );
+  }
   if (!incremental && alive.length === 0) throw new Error("search index came out empty — refusing to write a DROP-only script");
 }
 
