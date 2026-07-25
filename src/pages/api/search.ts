@@ -19,10 +19,17 @@ interface D1Like {
   prepare(sql: string): { bind(...v: (string | number)[]): { all(): Promise<{ results: unknown[] }> } };
 }
 
+// 30 min, not 5. Every repeat of a query inside the window is a D1 read pass
+// that never happens — and D1's free plan refuses reads once the daily
+// allowance is gone, which shows up as an empty search rather than an error.
+// The index only changes on deploy, so half an hour of staleness costs
+// nothing; stale-while-revalidate keeps a popular query warm for a day.
+const CACHE = "public, max-age=1800, stale-while-revalidate=86400";
 const json = (body: unknown, status = 200) =>
   new Response(JSON.stringify(body), {
     status,
-    headers: { "content-type": "application/json; charset=utf-8", "cache-control": "public, max-age=300" },
+    // never cache a failure — the next request should get a real attempt
+    headers: { "content-type": "application/json; charset=utf-8", "cache-control": status === 200 ? CACHE : "no-store" },
   });
 
 // mode=all (default): implicit AND across tokens, matching the current behavior.
@@ -119,11 +126,19 @@ export const GET: APIRoute = async ({ url }) => {
   // can't be used directly under GROUP BY, so they're evaluated in the subquery
   // where the FTS cursor context is valid. Text mode keeps every passage row.
   const snippet = `snippet(docs, ${snippetCol}, '<mark>', '</mark>', '…', 16)`;
+  // Bound the inner materialisation. A common word can match tens of thousands
+  // of titles, and every one of them had snippet() computed and buffered before
+  // the outer GROUP BY threw nearly all of it away. FTS5 still has to score the
+  // whole match set to order by rank (there's no index on rank), so this caps
+  // CPU and memory rather than rows read — the read saving comes from the cache
+  // above and the retry gate below. Deep pagination past the cap degrades to
+  // fewer groups, which is why it comfortably clears the 2000 offset ceiling.
+  const TITLE_SCAN_CAP = 5000;
   const sql = field === "title"
     ? `SELECT d.type, d.url, d.title, d.book, d.snippet, pm.name AS person_name, pm.death_year AS death_year
          FROM (SELECT docs.type AS type, docs.url AS url, docs.display_title AS title, docs.book AS book,
                       docs.person AS person, ${snippet} AS snippet, rank AS r
-               FROM docs WHERE ${conds.join(" AND ")}) d
+               FROM docs WHERE ${conds.join(" AND ")} ORDER BY rank LIMIT ${TITLE_SCAN_CAP}) d
          LEFT JOIN person_meta pm ON pm.slug = d.person
          GROUP BY COALESCE(NULLIF(d.book, ''), d.url)
          ORDER BY ${sort === "death" ? "(pm.death_year IS NULL), pm.death_year ASC" : "min(d.r)"}
@@ -135,21 +150,40 @@ export const GET: APIRoute = async ({ url }) => {
          WHERE ${conds.join(" AND ")}
          ORDER BY ${orderBy}
          LIMIT ?${limitBind} OFFSET ?${offsetBind}`;
+  // The OR retry is the single most expensive query this endpoint can make —
+  // it matches the UNION of every token's prefix expansion instead of the
+  // intersection — and it only fires on searches that already found nothing.
+  // Worth it for a typo in a short query, not worth it otherwise:
+  //  - offset > 0: the user is paging through results, so page 1 wasn't empty;
+  //    a retry here can only be for a page past the end.
+  //  - many tokens: ORing five prefix-expanded words scans an enormous slice
+  //    of the index, and a five-word query that matches nothing is usually
+  //    genuinely absent rather than one typo away from a hit.
+  const RETRY_MAX_TOKENS = 4;
+  const mayRetry = mode === "all" && offset === 0 && tokens.length <= RETRY_MAX_TOKENS;
+
   try {
     let { results } = await db.prepare(sql).bind(...binds, PAGE_SIZE + 1, offset).all();
     // strict "all words" found nothing — a single mistyped/missing word
     // shouldn't dead-end the search; retry loosened to "any word" and say so,
     // rather than silently switching modes or just showing "no results"
     let approximate = false;
-    if (results.length === 0 && mode === "all") {
+    if (results.length === 0 && mayRetry) {
       const orBinds = [scoped(buildMatch(tokens, "any")), ...binds.slice(1)];
       ({ results } = await db.prepare(sql).bind(...orBinds, PAGE_SIZE + 1, offset).all());
       approximate = results.length > 0;
     }
     const hasMore = results.length > PAGE_SIZE;
     return json({ hits: results.slice(0, PAGE_SIZE), hasMore, approximate });
-  } catch {
-    // index not loaded yet (fresh DB) or malformed MATCH — treat as no results
-    return json({ hits: [], hasMore: false });
+  } catch (err) {
+    // This used to return 200 with an empty hit list, which made a BROKEN
+    // search indistinguishable from an honestly empty one. D1's free plan
+    // refuses reads once the daily allowance is spent, so the whole site's
+    // search would quietly answer «لا نتائج» for the rest of the day and
+    // nothing anywhere would say so. Fail loudly instead: search.astro already
+    // renders «تعذَّر البحث الآن» for a non-ok response, and the Worker log
+    // gets the reason (observability is on in wrangler.toml).
+    console.error("search query failed", { message: String(err), tokens: tokens.length, field, mode });
+    return json({ hits: [], hasMore: false, error: "search unavailable" }, 503);
   }
 };
