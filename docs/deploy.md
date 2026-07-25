@@ -4,7 +4,7 @@
 `@astrojs/cloudflare` emits the Worker; static pages ship as assets alongside it.
 
 ```sh
-pnpm build     # validate:content → gen-takhrij → astro build (prerenders ~10k chapter pages, ~3 min) → copy-content-assets → tafsir-frags → gen-book-chapters (moves pages to dist/r2-upload) → redirects → headers
+pnpm build     # validate:content → gen-takhrij → astro build (prerenders ~78k chapter pages; CI shards this 8 ways, ~14 min) → copy-content-assets → tafsir-frags → gen-book-chapters (moves pages to dist/r2-upload) → redirects → headers
 pnpm deploy    # r2:upload (dist/r2-upload → BOOK_ASSETS bucket, md5-diffed + prunes stale) → wrangler deploy -c dist/server/wrangler.json
 ```
 
@@ -16,7 +16,7 @@ error 1102 on a third of requests. Now **nothing renders at request time**:
 
 1. `src/pages/book-pages/[slug]/[chapter].astro` prerenders every chapter of
    every chunked book at build time (shadow path; analysis in `src/lib/book-build.ts`).
-2. `scripts/gen-book-chapters.ts` (post-build) moves those ~10k HTML files to
+2. `scripts/gen-book-chapters.ts` (post-build) moves those ~78k HTML files to
    `dist/r2-upload/pages/book/` and rewrites `/book-pages/` → `/book/` in them
    (canonical/og URLs). They can't stay static assets — 20k-file deploy ceiling.
 3. `src/pages/book/[slug]/[chapter].ts` (the real URL) is a thin on-demand
@@ -28,13 +28,29 @@ error 1102 on a third of requests. Now **nothing renders at request time**:
 reference the build's hashed `/_astro/*.css`; deploying the Worker first would
 serve chapters pointing at deleted CSS. CI does this in the right order.
 
+**Volatile-bytes rule (2026-07-25).** Stored pages must be byte-identical across
+builds when their content hasn't changed, or every deploy re-uploads all 78k of
+them. Two things are therefore *blanked/tokenised* by `gen-book-chapters.ts` and
+restamped per request by the thin route:
+
+| In the stored page | Restored at serve time from |
+|---|---|
+| `/_astro-live/<name>.<ext>` placeholders | `vars.CHAPTER_ASSETS` (this deploy's hashes) |
+| `<meta name="aa-build" content="">` | `__AA_BUILD__` |
+
+The build id was missed originally, which silently defeated the whole scheme —
+`Date.now()` at config load meant every page's md5 changed every build, so all
+78,130 re-uploaded every deploy (~14 min of an ~58 min pipeline). **Anything else
+per-build added to these pages must be tokenised the same way.**
+
 **What a deploy uploads:**
 
 | Change | R2 upload | Time |
 |---|---|---|
 | add/edit one book (CMS or git) | just that book's chapter pages | seconds |
 | add articles/questions/poems | nothing (static assets only) | — |
-| design change (CSS/JS/layout) | all ~10k pages (~2.4GB) | ~15–45 min |
+| design change (CSS/JS/layout) | **nothing** (placeholders absorb it) | ~3 min (scan only) |
+| chapter markup/template change | all ~78k pages (~2.4GB) | ~15–45 min |
 
 - Live host: `athar.arthurarchive.com` — a **subdomain**, added via Worker →
   **Settings → Domains & Routes → Add custom domain** (not Pages, and not the
@@ -56,6 +72,40 @@ serve chapters pointing at deleted CSS. CI does this in the right order.
   **R2 10GB free** (at ~2.5GB; doubling the library ≈ 5GB — fine); R2 writes
   1M/month free (a full design re-upload is ~10k). GitHub only stores source
   markdown (~200MB) — generated pages never touch it.
+
+## Search index (D1) — resumable, budgeted
+
+`gen-search-index.ts` diffs against the remote `doc_hash` table and emits SQL for
+changed docs only. Two rules keep a corpus-wide change survivable:
+
+1. **One URL = one self-contained unit** — its `DELETE`s, its rows, then its
+   `doc_hash` upsert — and a new SQL file only ever starts *between* units. A file
+   that fails, or is never reached, leaves exactly those URLs' hashes untouched,
+   so the next deploy resumes precisely there.
+2. **`SEARCH_ROW_BUDGET`** (default 40,000) caps *real rows written per run*,
+   deletes included — D1 bills a deleted row like an inserted one, so a changed
+   URL costs roughly `rows × 2 + 2`.
+
+**Why it matters.** D1's free plan refuses writes past 100k rows/day. Before this,
+every `DELETE` (including `DELETE FROM doc_hash`) was emitted first and every hash
+upsert last, so a quota-truncated run advanced **no** hashes while having emptied
+the hash table — the next run then saw an empty hash set, fell into full-rebuild
+mode, `DROP`ped `docs`, and got no further. A thrash loop that broke search rather
+than merely delaying it.
+
+**Operational notes**
+
+- CI logs `::warning::search index budget reached — N of M url(s) emitted` when
+  work is deferred. **That warning is expected progress, not a failure.**
+- A corpus-wide change (e.g. folding author names into the title, which dirtied
+  ~124k of 126.5k URLs) takes several daily runs to converge. Search stays fully
+  usable throughout — old rows are replaced in place, never dropped.
+- Deploying more than once a day does not speed it up; later runs hit the quota,
+  fail, and get retried, which is now harmless.
+- On Workers Paid (50M rows written/month included), raise `SEARCH_ROW_BUDGET`
+  and the whole corpus lands in one run.
+- The D1 refresh step runs **after** the Worker deploy, so a slow or partial
+  reindex never delays the site going live.
 
 ---
 
