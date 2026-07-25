@@ -4,6 +4,7 @@ status: published
 published_at: 2026-07-16
 person: abd-al-krym-al-khdyr
 topics: ["al-aqeedah-al-aamah"]
+sharh_of: al-qasidah-al-haiyyah-ibn-abi-dawud
 ---
 ## [شرح المنظومة الحائية لابن أبي داود]ـ
 

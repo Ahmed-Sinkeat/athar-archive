@@ -12,14 +12,23 @@ const FILES = [
   // takhrij.json deliberately absent: gen-takhrij.ts regenerates it every build
   "src/content/book-lg/tafsir-ibn-kathir.md",
   "src/content/book-lg/tafsir-muyassar.md",
+  "src/content/book-lg/al-bidayah-wal-nihayah.md",
+  "src/content/book-lg/majmu-al-fatawa.md",
+  "src/content/book-lg/tafsir-tabari.md",
 ];
 
 // Stored gzip-compressed in R2 — quran-tafsir-index.json is 336MB raw but
 // ~31MB gzipped (Arabic prose repeats enough that it compresses ~11x), so
 // this cuts the CI transfer to a fraction of the raw size. Decompressed
-// locally right after download; every other file here is small enough to
-// fetch as-is.
-const GZIPPED = new Set(["src/data/quran-tafsir-index.json"]);
+// locally right after download. al-bidayah-wal-nihayah.md (36MB) and
+// majmu-al-fatawa.md (49MB) gzip too, same reasoning — both cross whatever
+// upload-path size ceiling ungzipped single PUTs were hitting.
+const GZIPPED = new Set([
+  "src/data/quran-tafsir-index.json",
+  "src/content/book-lg/al-bidayah-wal-nihayah.md",
+  "src/content/book-lg/majmu-al-fatawa.md",
+  "src/content/book-lg/tafsir-tabari.md",
+]);
 
 for (const f of FILES) {
   if (fs.existsSync(f) && fs.statSync(f).size > 200) {

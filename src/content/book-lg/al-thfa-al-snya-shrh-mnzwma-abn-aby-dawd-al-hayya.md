@@ -4,6 +4,7 @@ status: published
 published_at: 2026-07-16
 person: abd-al-rzaq-bn-abd-al-mhsn-al-bdr
 topics: ["al-aqeedah-al-aamah"]
+sharh_of: al-qasidah-al-haiyyah-ibn-abi-dawud
 ---
 بسم الله الرحمن الرحيم
 
