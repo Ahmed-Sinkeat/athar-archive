@@ -91,6 +91,18 @@ describe("analyzeBook", () => {
     for (const c of book.chapters) expect(c.content.length).toBeLessThan(giant.length);
   });
 
+  it("dedupes chapter slugs when multi-volume page numbers reset (real bug: 321 chapters silently overwrote each other)", () => {
+    // two "volumes", each restarting at printed page 1 — page-split slugs
+    // (pages-1-40, …) come out identical per volume without dedup.
+    const volume = Array.from({ length: 80 }, (_, i) => `<hr class="page-sep" data-page="${i + 1}" />\nنص الصفحة ${i + 1}.`).join("\n\n");
+    const body = `${volume}\n\n${volume}\n`;
+    const book = analyzeBook(body, { words: 10, chapters: 2 }, 0);
+    expect(book.chunked).toBe(true);
+    const slugs = book.chapters.map((c) => c.slug);
+    expect(new Set(slugs).size).toBe(slugs.length);
+    expect(slugs.some((s) => /-2$/.test(s))).toBe(true); // dedup actually fired
+  });
+
   it("tags oversized-chapter slices with parent/parentTitle/firstPage for TOC grouping", () => {
     const giant = Array.from({ length: 80 }, (_, i) => `<hr class="page-sep" data-page="${i + 1}" />\nنص الصفحة ${i + 1}.`).join("\n\n");
     const body = `## باب صغير\n\nنص قصير.\n\n## باب كبير\n\n${giant}\n`;

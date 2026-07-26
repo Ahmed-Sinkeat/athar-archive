@@ -1,8 +1,19 @@
 # athar-archive — Android app plan
 
-**Status (2026-07-25):** decided, not started. No Kotlin written yet.
-**Decision: hybrid WebView shell in Kotlin.** Full native reconsidered only if
-the app succeeds and the WebView feel proves to be the thing holding it back.
+**Status (2026-07-26):** pre-work started — see `android/README.md`. Done: content
+JSON pipeline (`pnpm app:gen` → R2 `app/v1/`: catalog + per-chapter md +
+pre-normalized search text + hash manifest, served at `/app/v1/*`) and the
+`ar-normalize` Kotlin port with golden vectors (`pnpm app:vectors`). Fixing the
+export surfaced and fixed a live bug: page-split chapter slugs collided in
+multi-volume books — 321 chapters silently overwrote each other on the site,
+in D1 search, and in the export (`src/lib/chunk.ts`).
+**Direction (revised 2026-07-26): scoped native Kotlin** — a frozen-scope
+reading/listening companion (library, reader, audio, downloads, offline
+search), NOT full site parity; content flows from the JSON pipeline with no app
+release. TWA rejected by the user; full-parity native still rejected (two UIs
+forever). The hybrid-WebView analysis below is kept for reference — its
+pre-work findings (capability layer, storage expectations) still inform the web
+side.
 
 ---
 

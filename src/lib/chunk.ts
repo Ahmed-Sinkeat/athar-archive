@@ -3,7 +3,7 @@
 // Thresholds live in ahlalathar.config.ts (tunable without reprocessing).
 
 import { config } from "../../ahlalathar.config.js";
-import { parseBook, parsePoem, type ParsedBook, type ParsedPoem } from "./chapters.js";
+import { parseBook, parsePoem, uniqueSlug, type ParsedBook, type ParsedPoem } from "./chapters.js";
 
 export interface AnalyzedPoem extends ParsedPoem {
   chunked: boolean;
@@ -187,7 +187,17 @@ export function analyzeBook(
     }
   }
 
-  if (chunked) parsed.chapters = splitOversizedChapters(parsed.chapters);
+  if (chunked) {
+    parsed.chapters = splitOversizedChapters(parsed.chapters);
+    // Page-split slugs (…pages-<s>-<e>) repeat when a multi-volume book resets
+    // its printed page numbers per volume — colliding slugs silently overwrote
+    // each other in every consumer (prerendered site pages, D1 search docs,
+    // app export): measured 321 lost chapters across 10 books, 168 in
+    // ftawa-nwr-ala-al-drb alone. First occurrence keeps its slug, so all
+    // currently-reachable URLs are unchanged; the rest become -2, -3, …
+    const seen = new Set<string>();
+    parsed.chapters = parsed.chapters.map((c) => ({ ...c, slug: uniqueSlug(c.slug, seen) }));
+  }
 
   return { ...parsed, chunked };
 }

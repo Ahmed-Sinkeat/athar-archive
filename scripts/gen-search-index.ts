@@ -19,6 +19,7 @@ import { loadContentFromDisk } from "../src/lib/load.js";
 import { analyzeBook } from "../src/lib/chunk.js";
 import { parseBook } from "../src/lib/chapters.js";
 import { normalizeArabic } from "../src/lib/ar-normalize.js";
+import { stripMd as strip } from "../src/lib/strip-md.js";
 import { isAtharNumberedBook, parseAtharNumber } from "../src/lib/hadith.js";
 import { toArabicDigits } from "../src/lib/display.js";
 
@@ -30,19 +31,6 @@ interface Doc {
   displayTitle: string;
   title: string;  // normalized, searchable
   text: string;   // normalized, searchable
-}
-
-// markdown/html → normalized plain text for indexing
-function strip(md: string): string {
-  return normalizeArabic(
-    md
-      .replace(/<[^>]+>/g, " ")
-      .replace(/\{#[^}]*\}/g, " ")
-      .replace(/\[\[([^\]|]*\|)?([^\]]*)\]\]/g, "$2")
-      .replace(/[#>*_`[\]()|]/g, " ")
-      .replace(/\s+/g, " ")
-      .trim(),
-  );
 }
 
 function main() {

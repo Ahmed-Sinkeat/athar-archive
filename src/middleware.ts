@@ -7,7 +7,7 @@ import { defineMiddleware } from "astro:middleware";
 // untouched (they get _headers + their own caching).
 // /book/<slug>/<chapter>, /series/<slug>/<lesson>, and /tafsir-frag/<surah>/<ayah>.html
 // — the on-demand reading routes.
-const READING = /^\/(?:book|series)\/[^/]+\/[^/]+\/?$|^\/tafsir-frag\/\d+\/\d+\.html$/;
+const READING = /^\/(?:book|series)\/[^/]+\/[^/]+\/?$|^\/tafsir-frag\/\d+\/\d+\.html$|^\/app\/v1\/.+\.json$/;
 
 // Cache key is versioned by build id (below), so a long TTL here is safe — a
 // redeploy can't serve a stale entry, it just misses and repopulates.
