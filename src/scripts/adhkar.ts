@@ -76,13 +76,16 @@ function init() {
     const remaining = counts[el.dataset.period as Period][id];
     const done = remaining === 0;
     const fraction = total ? (total - remaining) / total : 0;
-    el.classList.toggle("is-done", done);
+    // "done" styling lives on the card (badge sits outside the tap button
+    // now), aria-pressed stays on the interactive element itself.
+    el.closest(".azkar-card")?.classList.toggle("is-done", done);
     el.setAttribute("aria-pressed", String(done));
-    const ring = el.querySelector<SVGCircleElement>("[data-azkar-ring]");
+    const scope = el.closest(".azkar-card") ?? el;
+    const ring = scope.querySelector<SVGCircleElement>("[data-azkar-ring]");
     if (ring) ring.style.strokeDashoffset = String(RING_C * (1 - fraction));
-    const num = el.querySelector<HTMLElement>("[data-azkar-num]");
+    const num = scope.querySelector<HTMLElement>("[data-azkar-num]");
     if (num) num.textContent = done ? "" : toArabicDigits(remaining);
-    const mark = el.querySelector<HTMLElement>("[data-azkar-check]");
+    const mark = scope.querySelector<HTMLElement>("[data-azkar-check]");
     if (mark) mark.style.display = done ? "" : "none";
   }
 
