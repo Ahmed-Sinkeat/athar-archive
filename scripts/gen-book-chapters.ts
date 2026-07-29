@@ -79,6 +79,11 @@ for (const slug of fs.existsSync(SRC) ? fs.readdirSync(SRC) : []) {
     const dst = path.join(OUT, slug, `${ch}.html`);
     fs.mkdirSync(path.dirname(dst), { recursive: true });
     fs.writeFileSync(dst, html, "utf-8");
+    // drop the source page immediately — writing all ~75k transformed copies
+    // before the single rmSync at the end meant 2× the chapter corpus (~48GB)
+    // on disk at once, which filled the CI finish runner (2026-07-30). The
+    // final rmSync below still sweeps the emptied dirs.
+    fs.rmSync(page);
     moved++;
     hadChapters = true;
   }

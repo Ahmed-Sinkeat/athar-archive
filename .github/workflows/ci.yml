@@ -195,8 +195,16 @@ jobs:
         with:
           lfs: false
 
+      # This job briefly holds the merged dist (~27GB) plus the r2-staging pass
+      # over it, so it needs every GB the image will give up — the extra paths
+      # and docker prune below buy ~10GB more than the build jobs' cleanup
+      # (added after the corpus grew past ~3GB and the runner hit ENOSPC,
+      # 2026-07-30).
       - name: Free disk space
-        run: sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL
+        run: |
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL /usr/local/share/boost /usr/share/swift /usr/local/.ghcup
+          sudo docker system prune -af > /dev/null 2>&1 || true
+          df -h / | tail -1
 
       - uses: pnpm/action-setup@v4
         with:
