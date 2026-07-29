@@ -77,6 +77,19 @@ jobs:
           key: astro-${{ hashFiles('src/content/**') }}
           restore-keys: astro-
 
+      # Reinstates the 2026-06-24 fix (065b8d7a) that this pipeline lost when
+      # build-primary/build-chapters were split out — sync and build had gone
+      # back to running as one process, piling content-parsing memory on top
+      # of Vite's render-phase memory instead of releasing it in between.
+      # Content grew ~1GB since (198 more hadith books, several 50-80MB each)
+      # on top of an already-large corpus, enough to OOM even the 7GB runner
+      # doing both in one go (2026-07-29). Same fix, same reasoning: sync
+      # exits and V8 releases its parsing memory before build starts fresh.
+      - name: Sync Astro content
+        run: pnpm exec astro sync
+        env:
+          NODE_OPTIONS: --max-old-space-size=6656
+
       - name: Unit tests
         run: pnpm test
 
@@ -134,6 +147,14 @@ jobs:
           path: .astro
           key: astro-${{ hashFiles('src/content/**') }}
           restore-keys: astro-
+
+      # See the matching step in build-primary — same 2026-06-24 fix
+      # (065b8d7a) reinstated for the same reason: sync as its own process so
+      # V8 releases parsing memory before this shard's astro build starts.
+      - name: Sync Astro content
+        run: pnpm exec astro sync
+        env:
+          NODE_OPTIONS: --max-old-space-size=6656
 
       # Every shard needs takhrij.json / quran-tafsir-keys.json on disk before
       # astro build (route modules import them at load time regardless of
