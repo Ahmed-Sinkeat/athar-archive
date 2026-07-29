@@ -30,10 +30,17 @@ export async function getStaticPaths() {
   for (const entry of books) {
     const body = await readBody(entry);
     const a = analyzeBook(body);
+    // chunked books never use renderBody/byAnchor (props sets body:undefined,
+    // byAnchor:{} below) — the on-demand chapter route computes its own per-
+    // chapter version of both instead. Computing them anyway here was a full
+    // extra collapseManuscriptNote/injectAtharAnchors pass over the ENTIRE
+    // body (up to 80MB+ for the largest hadith collections) just to discard
+    // the result, on every one of ~200 large books, every build — enough on
+    // its own to OOM the CI runner once the corpus grew past ~3GB (2026-07-29).
     const atharNumbered = !a.chunked && isAtharNumberedBook(parseBook(body).paragraphs);
     const takhrijFor = (n: number) => (takhrijData as Record<string, TakhrijLink[]>)[`${entry.id}:${n}`];
-    const renderBody = collapseManuscriptNote(atharNumbered ? injectAtharAnchors(body, takhrijFor) : body);
-    const byAnchor = notesByAnchor("book", entry.id, graph, names);
+    const renderBody = a.chunked ? "" : collapseManuscriptNote(atharNumbered ? injectAtharAnchors(body, takhrijFor) : body);
+    const byAnchor = a.chunked ? {} : notesByAnchor("book", entry.id, graph, names);
     const audios = graph.audioForSource("book", entry.id)
       .filter((x) => x.data.status === "published")
       .map((au) => ({
