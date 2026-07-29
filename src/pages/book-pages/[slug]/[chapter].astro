@@ -25,7 +25,7 @@ import { markdownToSafeHtml } from "../../../lib/sanitize";
 import { parseToc } from "../../../lib/chapters";
 import { wirePageFootnotes } from "../../../lib/page-footnotes";
 import { readBody } from "../../../lib/read-body";
-import { buildBookChapters, buildAyahInjector, TAFSIR_AYAH_SOURCE, type ChapterMeta, type CatalogEntry } from "../../../lib/book-build";
+import { builtForCached } from "../../../lib/book-build";
 import { shardPaths } from "../../../lib/build-shard";
 import { hrefFor, labelFor, isMatn, toArabicDigits } from "../../../lib/display";
 import { parseHadithOrdinal, type TakhrijLink } from "../../../lib/hadith";
@@ -39,35 +39,34 @@ interface CommentaryLink { href: string; title: string; author: string }
 interface AudioTrack { url: string; format?: "opus" | "mp3"; duration: string | null; sizeBytes: number | null; label: string }
 interface Props {
   entry: any;
-  chapter: ChapterMeta & { content: string };
-  manifest: ChapterMeta[];
-  catalog: CatalogEntry[];
-  volumes: string[];
+  chapterSlug: string;
   byAnchor: Record<string, AnnNote[]>;
   author: string | undefined;
   commentaries: CommentaryLink[];
   audios: AudioTrack[];
 }
 
+// builtForCached (book-build.ts) holds the one-book memo that lets props stay
+// text-free — see its comment for the CI OOM story. The quran loader is passed
+// in (not imported by the lib) so book-build.ts stays usable outside Astro.
+const loadQuran = async () => {
+  const quran = (await getCollection("quran")) as any[];
+  return Promise.all(quran.map(async (q) => ({ number: q.data.number as number, body: await readBody(q) })));
+};
+
 export async function getStaticPaths() {
   const books = ((await getCollection("book")) as any[]).filter(isPub);
   const graph = await loadGraph();
   const names = await personNameMap();
   const takhrij = takhrijData as Record<string, TakhrijLink[]>;
-  // lazy: the injector parses a 93MB build-time JSON — only pay it if the
-  // tafsir book is actually published + chunked
-  let injectAyat: ((c: string) => string) | undefined;
+  const loadQuranHoisted = async () => {
+    const quran = (await getCollection("quran")) as any[];
+    return Promise.all(quran.map(async (q) => ({ number: q.data.number as number, body: await readBody(q) })));
+  };
   const paths: { params: { slug: string; chapter: string }; props: Props }[] = [];
 
   for (const entry of books) {
-    const body = await readBody(entry);
-    if (entry.id === TAFSIR_AYAH_SOURCE && !injectAyat) {
-      const quran = (await getCollection("quran")) as any[];
-      injectAyat = buildAyahInjector(
-        await Promise.all(quran.map(async (q) => ({ number: q.data.number as number, body: await readBody(q) }))),
-      );
-    }
-    const built = buildBookChapters(entry.id, body, { takhrij, injectAyat });
+    const built = await builtForCached(entry, takhrij, loadQuranHoisted);
     if (!built) continue;
 
     const byAnchor = notesByAnchor("book", entry.id, graph, names);
@@ -84,12 +83,10 @@ export async function getStaticPaths() {
     const commentaries = graph.commentariesOf(entry.id)
       .filter(isPub)
       .map((c) => ({ href: hrefFor("book", c.id), title: c.data.title as string, author: c.data.person ? (names.get(c.data.person as string) ?? "") : "" }));
-    const manifest = built.chapters.map(({ content: _content, ...meta }) => meta);
-
     for (const chapter of built.chapters) {
       paths.push({
         params: { slug: entry.id, chapter: chapter.slug },
-        props: { entry, chapter, manifest, catalog: built.catalog, volumes: built.volumes, byAnchor, author, commentaries, audios },
+        props: { entry, chapterSlug: chapter.slug, byAnchor, author, commentaries, audios },
       });
     }
   }
@@ -104,7 +101,11 @@ type HadithNote = { kind: string; label: string; sourceSlug: string; sourceTitle
 const hadithIndex = hadithIndexData as Record<string, HadithNote[]>;
 const HADITH_KIND_CLASS: Record<string, string> = { شرح: "sharh", تخريج: "takhrij", حكم: "takhrij" };
 
-const { entry, chapter, manifest, catalog, volumes, byAnchor, author, commentaries, audios } = Astro.props;
+const { entry, chapterSlug, byAnchor, author, commentaries, audios } = Astro.props;
+const built = (await builtForCached(entry, takhrijData as Record<string, TakhrijLink[]>, loadQuran))!;
+const { catalog, volumes } = built;
+const manifest = built.chapters.map(({ content: _content, ...meta }) => meta);
+const chapter = built.chapters.find((c) => c.slug === chapterSlug)!;
 const chapterMeta = chapter;
 // open the lesson matching this chapter (audio titles use the كتاب heading text)
 const norm = (s?: string) => (s ?? "").trim();

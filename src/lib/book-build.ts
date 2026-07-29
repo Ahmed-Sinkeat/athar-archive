@@ -8,6 +8,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { analyzeBook, deriveVolumes } from "./chunk";
 import { parseBook } from "./chapters";
+import { readBody } from "./read-body";
 import { isAtharNumberedBook, injectAtharAnchors, type TakhrijLink } from "./hadith";
 
 export interface ChapterMeta {
@@ -151,4 +152,31 @@ export function buildBookChapters(
   });
 
   return { chapters, catalog: extractCatalog(a.chapters), volumes };
+}
+
+// One-book memo for the prerendered chapter route. Chapter text is
+// deliberately NOT carried in getStaticPaths props: Astro retains every
+// path's props until the whole build ends, so props holding content meant
+// the entire chunked corpus (~3GB+ of Arabic text) live in one heap at once
+// — the CI OOM of 2026-07-29. Each page render re-derives its book through
+// this memo instead. Renders are sequential (build.concurrency defaults to
+// 1) and paths stay grouped by book, so each book is rebuilt once per shard
+// — the same work getStaticPaths already does to enumerate chapters. Lives
+// here (a real module) rather than in the .astro file because Astro hoists
+// getStaticPaths out of frontmatter scope AND re-runs frontmatter per page,
+// so state declared there neither reaches getStaticPaths nor persists.
+let builtMemo: { id: string; built: BuiltBook | null } | null = null;
+// lazy: the injector parses a 93MB build-time JSON — only pay it if the
+// tafsir book is actually published + chunked
+let injectAyatCached: ((c: string) => string) | undefined;
+export async function builtForCached(
+  entry: { id: string; filePath?: string; body?: string },
+  takhrij: Record<string, TakhrijLink[]>,
+  loadQuran: () => Promise<{ number: number; body: string }[]>,
+): Promise<BuiltBook | null> {
+  if (!builtMemo || builtMemo.id !== entry.id) {
+    if (entry.id === TAFSIR_AYAH_SOURCE && !injectAyatCached) injectAyatCached = buildAyahInjector(await loadQuran());
+    builtMemo = { id: entry.id, built: buildBookChapters(entry.id, await readBody(entry), { takhrij, injectAyat: injectAyatCached }) };
+  }
+  return builtMemo.built;
 }

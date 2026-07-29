@@ -30,16 +30,6 @@ export async function getStaticPaths() {
   for (const entry of books) {
     const body = await readBody(entry);
     const a = analyzeBook(body);
-    // chunked books never use renderBody/byAnchor (props sets body:undefined,
-    // byAnchor:{} below) — the on-demand chapter route computes its own per-
-    // chapter version of both instead. Computing them anyway here was a full
-    // extra collapseManuscriptNote/injectAtharAnchors pass over the ENTIRE
-    // body (up to 80MB+ for the largest hadith collections) just to discard
-    // the result, on every one of ~200 large books, every build — enough on
-    // its own to OOM the CI runner once the corpus grew past ~3GB (2026-07-29).
-    const atharNumbered = !a.chunked && isAtharNumberedBook(parseBook(body).paragraphs);
-    const takhrijFor = (n: number) => (takhrijData as Record<string, TakhrijLink[]>)[`${entry.id}:${n}`];
-    const renderBody = a.chunked ? "" : collapseManuscriptNote(atharNumbered ? injectAtharAnchors(body, takhrijFor) : body);
     const byAnchor = a.chunked ? {} : notesByAnchor("book", entry.id, graph, names);
     const audios = graph.audioForSource("book", entry.id)
       .filter((x) => x.data.status === "published")
@@ -67,14 +57,24 @@ export async function getStaticPaths() {
     const rawJuzOf = (c: (typeof a.chapters)[number]) => c.content.match(/data-juz="([^"]+)"/)?.[1];
     const { volumes, juzAt } = deriveVolumes(body, a.chapters.map((c) => ({ firstPage: firstPageOf(c) })));
     const firstJuzOf = (c: (typeof a.chapters)[number], i: number) => rawJuzOf(c) ?? juzAt(i);
-    // Phase 2: chunked books → store a light TOC (titles+slugs) only; the body and
-    // its annotations live on the on-demand chapter pages, never in this landing's HTML.
-    paths.push({ params: { slug: entry.id }, props: { entry, chunked: a.chunked, toc: a.chapters.map((c, i) => ({ title: c.title, slug: c.slug, parent: c.parent, parentTitle: c.parentTitle, firstPage: firstPageOf(c), juz: firstJuzOf(c, i) })), volumes, tocNested: a.chunked ? [] : parseToc(body ?? ""), body: a.chunked ? undefined : renderBody, byAnchor: a.chunked ? {} : byAnchor, audios, commentaries, author: entry.data.person ? names.get(entry.data.person) : undefined, topicLabel: labelFor("book", entry.data), origin: originOf(entry.data, graph), related: relatedTo(entry, graph, names), backlinks: backlinksList(entry, graph, names) } });
+    // Light props only — never the body. Astro retains every path's props
+    // until the entire build finishes, so carrying each non-chunked book's
+    // text here meant the whole corpus live in one heap at once (the CI OOM
+    // of 2026-07-29); the page frontmatter re-reads its own body instead.
+    paths.push({ params: { slug: entry.id }, props: { entry, chunked: a.chunked, toc: a.chapters.map((c, i) => ({ title: c.title, slug: c.slug, parent: c.parent, parentTitle: c.parentTitle, firstPage: firstPageOf(c), juz: firstJuzOf(c, i) })), volumes, byAnchor, audios, commentaries, author: entry.data.person ? names.get(entry.data.person) : undefined, topicLabel: labelFor("book", entry.data), origin: originOf(entry.data, graph), related: relatedTo(entry, graph, names), backlinks: backlinksList(entry, graph, names) } });
   }
   return paths;
 }
 
-const { entry, chunked, toc, volumes, tocNested, body, byAnchor, audios, commentaries, author, topicLabel, origin, related, backlinks } = Astro.props;
+const { entry, chunked, toc, volumes, byAnchor, audios, commentaries, author, topicLabel, origin, related, backlinks } = Astro.props;
+// body/tocNested are re-derived here per page instead of riding in props
+// (see the note in getStaticPaths) — chunked books skip it entirely, same
+// as before: their text lives on the chapter pages.
+const rawBody = chunked ? "" : await readBody(entry);
+const takhrijFor = (n: number) => (takhrijData as Record<string, TakhrijLink[]>)[`${entry.id}:${n}`];
+const atharNumbered = !chunked && isAtharNumberedBook(parseBook(rawBody).paragraphs);
+const body = chunked ? undefined : collapseManuscriptNote(atharNumbered ? injectAtharAnchors(rawBody, takhrijFor) : rawBody);
+const tocNested = chunked ? [] : parseToc(rawBody);
 const bookPageCount = Math.max(0, ...[...(body ?? "").matchAll(/data-page="(\d+)"/g)].map((m) => Number(m[1])));
 const tocMinDepth = tocNested?.length ? Math.min(...tocNested.map((h: { depth: number }) => h.depth)) : 2;
 const KIND_SLUG: Record<string, string> = { شرح: "sharh", حاشية: "hashiya", تخريج: "takhrij", إعراب: "iraab" };
