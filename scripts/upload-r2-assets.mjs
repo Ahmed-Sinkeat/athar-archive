@@ -182,11 +182,15 @@ function pruneTooLarge(deleteCount, remoteSize) {
   return deleteCount > PRUNE_ABS_FLOOR && deleteCount > remoteSize * PRUNE_FRACTION_LIMIT;
 }
 
-function walk(dir) {
-  const out = [];
+// out threaded through recursion (not `out.push(...walk(abs))`) — spreading a
+// child call's result as push() arguments hits V8's call-stack/argument-count
+// ceiling once a single subdirectory holds enough files (~75k chapter pages
+// across ~950 books after the hadith import, 2026-07-30: "Maximum call stack
+// size exceeded" on the largest book's chapter directory).
+function walk(dir, out = []) {
   for (const name of fs.readdirSync(dir)) {
     const abs = path.join(dir, name);
-    if (fs.statSync(abs).isDirectory()) out.push(...walk(abs));
+    if (fs.statSync(abs).isDirectory()) walk(abs, out);
     else out.push(abs);
   }
   return out;
