@@ -320,7 +320,11 @@ jobs:
       # a deployed Worker = new chapters 404ing).
       - name: Upload chapter pages to R2
         if: github.ref == 'refs/heads/main' && github.event_name == 'push' && env.CLOUDFLARE_API_TOKEN != ''
-        timeout-minutes: 20
+        # 40, not 20: the hadith-book import's first full upload measured
+        # ~58 files/sec at CONCURRENCY=64 (run 30515310645, 2026-07-30) — 84977
+        # new files needs ~24.4min, past the old 20min cap. One-time backlog;
+        # steady-state uploads only carry the files that actually changed.
+        timeout-minutes: 40
         env:
           R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
           R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
