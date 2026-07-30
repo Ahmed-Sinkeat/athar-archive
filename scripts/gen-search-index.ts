@@ -15,7 +15,8 @@
 import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
-import { loadContentFromDisk } from "../src/lib/load.js";
+import { loadContentMetaFromDisk } from "../src/lib/load.js";
+import { readBody } from "../src/lib/read-body.js";
 import { analyzeBook } from "../src/lib/chunk.js";
 import { parseBook } from "../src/lib/chapters.js";
 import { normalizeArabic } from "../src/lib/ar-normalize.js";
@@ -33,110 +34,19 @@ interface Doc {
   text: string;   // normalized, searchable
 }
 
-function main() {
-  const entries = loadContentFromDisk().filter((e) => e.data.status === "published");
-  const docs: Doc[] = [];
+async function main() {
+  // Metadata only — body.js loads lazily per entry (readBody below), never
+  // all at once. book-lg alone is 3.2GB+; the old code loaded every body into
+  // one `entries` array AND built a same-order-of-magnitude `docs` array
+  // alongside it, so both were fully live at once — the ~6.5GB CI OOM ceiling
+  // hit on 2026-07-29/30 (same "hold two copies of the corpus" shape as the
+  // Astro getStaticPaths props fix). Now each entry's text exists only for
+  // the moment it's hashed and (if changed) written to a SQL file; nothing
+  // beyond that survives past its own iteration.
+  const metaEntries = loadContentMetaFromDisk().filter((e) => e.data.status === "published");
   const personName = new Map(
-    entries.filter((e) => e.collection === "person").map((e) => [e.id, String(e.data.title ?? "")]),
+    metaEntries.filter((e) => e.collection === "person").map((e) => [e.id, String(e.data.title ?? "")]),
   );
-
-  for (const e of entries) {
-    const title = String(e.data.title ?? "");
-    const person = String(e.data.person ?? "");
-    // An author's NAME never reached the index — only their slug, in the
-    // UNINDEXED `person` column — so searching «عادل بن عزوز» matched his
-    // person page and nothing he actually wrote, and the only way to his books
-    // was via /person. Fold the display name into the searchable title column.
-    // displayTitle (what a result renders) stays the clean work title.
-    const byline = personName.get(person);
-    const searchTitle = byline ? `${title} ${byline}` : title;
-    switch (e.collection) {
-      case "quran": {
-        for (const p of parseBook(e.body).paragraphs) {
-          docs.push({
-            type: "quran", book: e.id, person: "",
-            url: `/quran/${e.id}#${p.id}`,
-            displayTitle: `${title} — الآية ${p.id}`,
-            title, text: strip(p.text),
-          });
-        }
-        break;
-      }
-      case "book": {
-        const a = analyzeBook(e.body);
-        // Athar-numbered books (e.g. "١٧ - حدثنا...") index one doc per athar
-        // instead of per-chapter/whole-book — a search hit should land on the
-        // narration itself (#athar-N), not force scanning a whole chapter for it.
-        const atharNumbered = isAtharNumberedBook(parseBook(e.body).paragraphs);
-        if (atharNumbered && a.chunked) {
-          for (const c of a.chapters) {
-            for (const p of parseBook(c.content).paragraphs) {
-              const n = parseAtharNumber(p.text);
-              if (n === null) continue;
-              docs.push({
-                type: "book", book: e.id, person,
-                url: `/book/${e.id}/${c.slug}#athar-${n}`,
-                displayTitle: `${title} — الأثر ${toArabicDigits(n)}`,
-                title: searchTitle, text: strip(p.text),
-              });
-            }
-          }
-        } else if (atharNumbered) {
-          for (const p of parseBook(e.body).paragraphs) {
-            const n = parseAtharNumber(p.text);
-            if (n === null) continue;
-            docs.push({
-              type: "book", book: e.id, person,
-              url: `/book/${e.id}#athar-${n}`,
-              displayTitle: `${title} — الأثر ${toArabicDigits(n)}`,
-              title: searchTitle, text: strip(p.text),
-            });
-          }
-        } else if (a.chunked) {
-          for (const c of a.chapters) {
-            docs.push({
-              type: "book", book: e.id, person,
-              url: `/book/${e.id}/${c.slug}`,
-              displayTitle: `${title} — ${c.title}`,
-              title: `${searchTitle} ${c.title}`, text: strip(c.content),
-            });
-          }
-        } else {
-          docs.push({ type: "book", book: e.id, person, url: `/book/${e.id}`, displayTitle: title, title: searchTitle, text: strip(e.body) });
-        }
-        break;
-      }
-      case "poem":
-      case "article":
-      case "term": {
-        const urls: Record<string, string> = { poem: "poem", article: "article", term: "term" };
-        docs.push({
-          type: e.collection, book: e.collection === "poem" ? e.id : "", person,
-          url: `/${urls[e.collection]}/${e.id}`,
-          displayTitle: title, title: searchTitle,
-          text: strip([e.data.description ?? "", e.data.definition ?? "", e.body].join(" ")),
-        });
-        break;
-      }
-      case "question": {
-        docs.push({ type: "question", book: "", person, url: `/questions/${e.id}`, displayTitle: title, title: searchTitle, text: strip(e.body) });
-        break;
-      }
-      case "person": {
-        const aka = Array.isArray(e.data.also_known_as) ? e.data.also_known_as.join(" ") : "";
-        docs.push({
-          type: "person", book: "", person: e.id, url: `/person/${e.id}`,
-          displayTitle: title, title: `${title} ${normalizeArabic(aka)}`,
-          text: strip([e.data.bio ?? "", aka, e.body].join(" ")),
-        });
-        break;
-      }
-      // subject/topic/benefit/audio/annotation/announcement/highlight: no own
-      // page or embedded-only — nothing search can honestly link to.
-    }
-  }
-
-  const liveDocs = docs.filter((d) => d.text || d.title);
 
   // Load the remote doc_hash snapshot (see `pnpm search:hashes`). Empty/missing
   // → full-rebuild mode (can't safely diff against unknown remote state).
@@ -150,32 +60,6 @@ function main() {
   const incremental = Object.keys(remoteHashes).length > 0;
 
   const hashOf = (d: Doc) => crypto.createHash("sha256").update([d.title, d.text, d.displayTitle, d.type, d.book, d.person].join("\0")).digest("hex");
-  const currentHashes = new Map(liveDocs.map((d) => [d.url, hashOf(d)]));
-
-  const changedUrls = incremental
-    ? new Set(liveDocs.filter((d) => remoteHashes[d.url] !== currentHashes.get(d.url)).map((d) => d.url))
-    : new Set(liveDocs.map((d) => d.url)); // full rebuild: everything is "changed"
-  const removedUrls = incremental
-    ? Object.keys(remoteHashes).filter((u) => !currentHashes.has(u))
-    : [];
-
-  // Split long bodies into ~15k-char rows (same url/title): keeps every INSERT
-  // under D1's 100 KB statement cap (Arabic ≈ 2 bytes/char) and tightens snippets.
-  const CHUNK = 15_000;
-  const alive = liveDocs
-    .filter((d) => changedUrls.has(d.url))
-    .flatMap((d) => {
-      if (d.text.length <= CHUNK) return [d];
-      const parts: Doc[] = [];
-      let rest = d.text;
-      while (rest.length > 0) {
-        let cut = rest.length <= CHUNK ? rest.length : rest.lastIndexOf(" ", CHUNK);
-        if (cut <= 0) cut = CHUNK;
-        parts.push({ ...d, text: rest.slice(0, cut) });
-        rest = rest.slice(cut + 1);
-      }
-      return parts;
-    });
   const q = (s: string) => `'${s.replace(/'/g, "''").replace(/[\u0000-\u001f]/g, " ")}'`;
   const row = (d: Doc) => `(${q(normalizeArabic(d.title))},${q(d.text)},${q(d.type)},${q(d.book)},${q(d.person)},${q(d.url)},${q(d.displayTitle)})`;
 
@@ -223,7 +107,7 @@ function main() {
     buf += line; bufBytes += blen(line);
   };
 
-  // --- resumable emit ---------------------------------------------------
+  // --- resumable, streaming emit ----------------------------------------
   // D1's free plan REFUSES writes past 100k rows/day, and a corpus-wide change
   // (folding author names into the title dirtied ~96% of rows) needs far more
   // than one day's worth. The emit order used to make that unrecoverable: every
@@ -251,30 +135,32 @@ function main() {
   // lands nearly the same number of urls per day, in half the runtime.
   const ROW_BUDGET = Number(process.env.SEARCH_ROW_BUDGET ?? 40_000);
 
-  const rowsByUrl = new Map<string, Doc[]>();
-  for (const d of alive) {
-    const list = rowsByUrl.get(d.url);
-    if (list) list.push(d); else rowsByUrl.set(d.url, [d]);
-  }
-
-  // removed first (cheap, and frees their rows), then the changed ones
-  const units: { url: string; rows: Doc[]; hash: string | null }[] = [
-    ...removedUrls.map((url) => ({ url, rows: [] as Doc[], hash: null })),
-    ...[...changedUrls].map((url) => ({ url, rows: rowsByUrl.get(url) ?? [], hash: currentHashes.get(url)! })),
-  ];
+  // Split one doc's text into ~15k-char rows sharing its url (keeps every
+  // INSERT under D1's 100 KB statement cap; Arabic ≈ 2 bytes/char).
+  const CHUNK = 15_000;
+  const splitDoc = (d: Doc): Doc[] => {
+    if (d.text.length <= CHUNK) return [d];
+    const parts: Doc[] = [];
+    let rest = d.text;
+    while (rest.length > 0) {
+      let cut = rest.length <= CHUNK ? rest.length : rest.lastIndexOf(" ", CHUNK);
+      if (cut <= 0) cut = CHUNK;
+      parts.push({ ...d, text: rest.slice(0, cut) });
+      rest = rest.slice(cut + 1);
+    }
+    return parts;
+  };
 
   let spent = 0;
   let emitted = 0;
+  let candidates = 0; // urls whose hash actually differs (or is new) — would-be emits
   let done = 0;
-  for (const unit of units) {
-    // full rebuild dropped the tables, so nothing is deleted there
-    const cost = incremental ? unit.rows.length * 2 + 2 : unit.rows.length + 1;
-    if (spent + cost > ROW_BUDGET) break; // the rest keep their old hash → next run
-    // file boundaries only BETWEEN units, never inside one
-    if (bufBytes + stmtBytes > FILE_MAX) flushFile();
-
-    if (incremental) write(`DELETE FROM docs WHERE url = ${q(unit.url)};\nDELETE FROM doc_hash WHERE url = ${q(unit.url)};\n`);
-    for (const d of unit.rows) {
+  const emitUnit = (url: string, rows: Doc[], hash: string | null): boolean => {
+    const cost = incremental ? rows.length * 2 + 2 : rows.length + 1;
+    if (spent + cost > ROW_BUDGET) return false; // the rest keep their old hash → next run
+    if (bufBytes + stmtBytes > FILE_MAX) flushFile(); // file boundaries only BETWEEN units, never inside one
+    if (incremental) write(`DELETE FROM docs WHERE url = ${q(url)};\nDELETE FROM doc_hash WHERE url = ${q(url)};\n`);
+    for (const d of rows) {
       const r = row(d);
       const rBytes = blen(r);
       if (stmt && stmtBytes + rBytes > STMT_MAX) flushStmt();
@@ -282,25 +168,154 @@ function main() {
       stmt += hadStmt ? `,\n${r}` : r;
       stmtBytes += rBytes + (hadStmt ? 2 : 0); // +2 for ",\n"
     }
-    if (unit.hash !== null) write(`INSERT OR REPLACE INTO doc_hash (url, hash) VALUES (${q(unit.url)}, ${q(unit.hash)});\n`);
+    if (hash !== null) write(`INSERT OR REPLACE INTO doc_hash (url, hash) VALUES (${q(url)}, ${q(hash)});\n`);
     spent += cost;
-    emitted += unit.rows.length;
+    emitted += rows.length;
     done++;
+    return true;
+  };
+
+  // Only currentHashes.size stays live for the WHOLE run (short url/hash
+  // strings, tens of MB at most for ~200k docs) — everything text-shaped is
+  // scoped to processDoc's single call.
+  const currentHashes = new Map<string, string>();
+  const processDoc = (d: Doc) => {
+    if (!(d.text || d.title)) return; // matches the old liveDocs filter
+    const hash = hashOf(d);
+    currentHashes.set(d.url, hash);
+    if (incremental && remoteHashes[d.url] === hash) return; // unchanged, nothing to do
+    candidates++;
+    emitUnit(d.url, splitDoc(d), hash);
+  };
+
+  for (const e of metaEntries) {
+    const title = String(e.data.title ?? "");
+    const person = String(e.data.person ?? "");
+    // An author's NAME never reached the index — only their slug, in the
+    // UNINDEXED `person` column — so searching «عادل بن عزوز» matched his
+    // person page and nothing he actually wrote, and the only way to his books
+    // was via /person. Fold the display name into the searchable title column.
+    // displayTitle (what a result renders) stays the clean work title.
+    const byline = personName.get(person);
+    const searchTitle = byline ? `${title} ${byline}` : title;
+    switch (e.collection) {
+      case "quran": {
+        const body = await readBody(e);
+        for (const p of parseBook(body).paragraphs) {
+          processDoc({
+            type: "quran", book: e.id, person: "",
+            url: `/quran/${e.id}#${p.id}`,
+            displayTitle: `${title} — الآية ${p.id}`,
+            title, text: strip(p.text),
+          });
+        }
+        break;
+      }
+      case "book": {
+        const body = await readBody(e);
+        const a = analyzeBook(body);
+        // Athar-numbered books (e.g. "١٧ - حدثنا...") index one doc per athar
+        // instead of per-chapter/whole-book — a search hit should land on the
+        // narration itself (#athar-N), not force scanning a whole chapter for it.
+        const atharNumbered = isAtharNumberedBook(parseBook(body).paragraphs);
+        if (atharNumbered && a.chunked) {
+          for (const c of a.chapters) {
+            for (const p of parseBook(c.content).paragraphs) {
+              const n = parseAtharNumber(p.text);
+              if (n === null) continue;
+              processDoc({
+                type: "book", book: e.id, person,
+                url: `/book/${e.id}/${c.slug}#athar-${n}`,
+                displayTitle: `${title} — الأثر ${toArabicDigits(n)}`,
+                title: searchTitle, text: strip(p.text),
+              });
+            }
+          }
+        } else if (atharNumbered) {
+          for (const p of parseBook(body).paragraphs) {
+            const n = parseAtharNumber(p.text);
+            if (n === null) continue;
+            processDoc({
+              type: "book", book: e.id, person,
+              url: `/book/${e.id}#athar-${n}`,
+              displayTitle: `${title} — الأثر ${toArabicDigits(n)}`,
+              title: searchTitle, text: strip(p.text),
+            });
+          }
+        } else if (a.chunked) {
+          for (const c of a.chapters) {
+            processDoc({
+              type: "book", book: e.id, person,
+              url: `/book/${e.id}/${c.slug}`,
+              displayTitle: `${title} — ${c.title}`,
+              title: `${searchTitle} ${c.title}`, text: strip(c.content),
+            });
+          }
+        } else {
+          processDoc({ type: "book", book: e.id, person, url: `/book/${e.id}`, displayTitle: title, title: searchTitle, text: strip(body) });
+        }
+        break;
+      }
+      case "poem":
+      case "article":
+      case "term": {
+        const body = await readBody(e);
+        const urls: Record<string, string> = { poem: "poem", article: "article", term: "term" };
+        processDoc({
+          type: e.collection, book: e.collection === "poem" ? e.id : "", person,
+          url: `/${urls[e.collection]}/${e.id}`,
+          displayTitle: title, title: searchTitle,
+          text: strip([e.data.description ?? "", e.data.definition ?? "", body].join(" ")),
+        });
+        break;
+      }
+      case "question": {
+        const body = await readBody(e);
+        processDoc({ type: "question", book: "", person, url: `/questions/${e.id}`, displayTitle: title, title: searchTitle, text: strip(body) });
+        break;
+      }
+      case "person": {
+        const body = await readBody(e);
+        const aka = Array.isArray(e.data.also_known_as) ? e.data.also_known_as.join(" ") : "";
+        processDoc({
+          type: "person", book: "", person: e.id, url: `/person/${e.id}`,
+          displayTitle: title, title: `${title} ${normalizeArabic(aka)}`,
+          text: strip([e.data.bio ?? "", aka, body].join(" ")),
+        });
+        break;
+      }
+      // subject/topic/benefit/audio/annotation/announcement/highlight: no own
+      // page or embedded-only — nothing search can honestly link to.
+    }
+  }
+
+  // Removed urls need the FULL currentHashes set to diff against, so they're
+  // only knowable once every entry above has run — same reasoning as before,
+  // just computed at the end of one pass instead of before a second one. One
+  // real behavior change from the old "removed first" ordering: removed urls
+  // now queue AFTER changed ones, so under sustained budget pressure a stale
+  // (deleted-book) search hit could take longer to get swept than new/changed
+  // content does to land — cosmetic, not a correctness issue (still resumable,
+  // still converges next run).
+  const removedUrls = incremental ? Object.keys(remoteHashes).filter((u) => !currentHashes.has(u)) : [];
+  for (const url of removedUrls) {
+    candidates++;
+    emitUnit(url, [], null);
   }
   flushFile();
 
-  const deferred = units.length - done;
+  const deferred = candidates - done;
   const bytes = fs.readdirSync(outDir).reduce((n, f) => n + fs.statSync(path.join(outDir, f)).size, 0);
-  const mode = incremental ? `incremental: ${changedUrls.size} changed, ${removedUrls.length} removed, ${liveDocs.length - changedUrls.size} unchanged (skipped)` : "full rebuild";
+  const mode = incremental ? `incremental: ${candidates} changed/removed, ${currentHashes.size - (candidates - removedUrls.length)} unchanged (skipped)` : "full rebuild";
   console.log(`search index (${mode}): ${emitted} row(s) → ${fileNo} sql file(s), ${(bytes / 1e6).toFixed(1)} MB in ${outDir}`);
   if (deferred > 0) {
     console.log(
-      `::warning::search index budget reached — ${done} of ${units.length} url(s) emitted this run, ` +
+      `::warning::search index budget reached — ${done} of ${candidates} url(s) emitted this run, ` +
         `${deferred} deferred to the next deploy (their doc_hash is deliberately left stale so they get picked up). ` +
         `Raise SEARCH_ROW_BUDGET (currently ${ROW_BUDGET}) only if the D1 plan allows more than 100k row writes/day.`,
     );
   }
-  if (!incremental && alive.length === 0) throw new Error("search index came out empty — refusing to write a DROP-only script");
+  if (!incremental && emitted === 0) throw new Error("search index came out empty — refusing to write a DROP-only script");
 }
 
-main();
+await main();
