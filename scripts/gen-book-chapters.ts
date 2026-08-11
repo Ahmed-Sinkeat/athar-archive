@@ -99,11 +99,16 @@ for (const slug of fs.existsSync(SRC) ? fs.readdirSync(SRC) : []) {
 // the shadow pages must not ship as static assets — /book-pages/ is not a real URL
 if (fs.existsSync(SRC)) fs.rmSync(SRC, { recursive: true, force: true });
 
-// ship the placeholder → live-URL map with the Worker itself (see header §4)
+// ship the placeholder → live-URL map with the Worker itself (see header §4), and
+// force Cloudflare's static-asset serving to match trailingSlash: "never" (astro.config.ts).
+// The default html_handling ("auto-trailing-slash") 307s /foo -> /foo/, whose canonical
+// tag then points back to /foo — the URL that just redirected away from it. GSC flagged
+// ~3.4k pages over this ("Alternate page with proper canonical tag", found 2026-07-30).
+const wj = JSON.parse(fs.readFileSync(WRANGLER_JSON, "utf-8"));
+wj.assets = { ...wj.assets, html_handling: "drop-trailing-slash" };
 if (assetMap.size > 0) {
-  const wj = JSON.parse(fs.readFileSync(WRANGLER_JSON, "utf-8"));
   wj.vars = { ...wj.vars, CHAPTER_ASSETS: JSON.stringify(Object.fromEntries(assetMap)) };
-  fs.writeFileSync(WRANGLER_JSON, JSON.stringify(wj, null, 2), "utf-8");
 }
+fs.writeFileSync(WRANGLER_JSON, JSON.stringify(wj, null, 2), "utf-8");
 
 console.log(`✓ gen-book-chapters: ${moved} chapter page(s) → dist/r2-upload/pages/book (${assetMap.size} asset placeholder(s)), ${unbundled} whole-book md dropped from static assets`);
