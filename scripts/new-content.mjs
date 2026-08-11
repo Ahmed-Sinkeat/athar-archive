@@ -83,7 +83,7 @@ const TEMPLATES = {
   audio: (t) => fm([...shared(t),
     `source_type: book          # REQUIRED: book | poem | article | question`,
     `source_id: source-id-here  # REQUIRED → معرّف المصدر`,
-    `url: https://r2.arthurarchive.com/audio/...   # REQUIRED (أو ارفع الملف مباشرة عبر /admin)`,
+    `url: https://r2.arthurarchive.com/audio/...   # REQUIRED`,
     `format: opus               # opus | mp3`,
     `# duration: "1:02:30"       # optional`,
     `# size_bytes: 12345678      # optional`,

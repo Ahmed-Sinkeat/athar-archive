@@ -169,7 +169,7 @@ published_at: 2026-06-21
 title: تلاوة البيقونية
 source_type: poem         # ← إلزامي: book | poem | article | question
 source_id: al-bayquniyyah # ← إلزامي: معرّف المصدر
-url: https://r2.arthurarchive.com/audio/al-bayquniyyah.opus   # ← إلزامي (أو ملفٌ مرفوعٌ مباشرةً عبر /admin)
+url: https://r2.arthurarchive.com/audio/al-bayquniyyah.opus   # ← إلزامي
 format: opus              # opus | mp3 (الافتراضي opus)
 status: draft
 published_at: 2026-06-21

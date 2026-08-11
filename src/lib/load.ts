@@ -8,7 +8,9 @@ import { COLLECTIONS, type ContentEntry } from "./types.js";
 
 // book spans two folders: book/ (small, hand-editable, listed in the CMS) and
 // book-lg/ (≥100KB imported texts the CMS must never load) — same collection,
-// same ids, split only so /admin doesn't pull 143MB through GitHub's API
+// same ids. The split originally kept /admin (deleted 2026-08-11) from pulling
+// 143MB through GitHub's API; it is now vestigial but harmless — leave it, both
+// dirs are one collection and moving 955 files would churn every book's history
 const EXTRA_DIRS: Record<string, string[]> = { book: ["book-lg"] };
 
 export function loadContentFromDisk(root = "src/content"): ContentEntry[] {

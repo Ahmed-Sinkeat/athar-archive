@@ -47,7 +47,7 @@ ok(/poem-badge[^>]*>(منظومة|قصيدة)</.test(poems), "work-type badge on
 ok(/poem-card-verse"[^>]*>[^]*?<br\b[^>]*>/.test(poems), "سدر/عجز render as two lines on poem cards");
 
 // --- composer (unlisted maintainer tool) retired — /compose deleted; content
-// is now edited via the Sveltia CMS (/admin), not this build's concern ---
+// is edited through the GitHub web UI, not this build's concern ---
 
 // --- poem reader: verses + stacked annotations ---
 section("/poem (reader)");

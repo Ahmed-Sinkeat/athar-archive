@@ -4,7 +4,8 @@
 
 This guide is for changing the **visible text** of the site: menu names, page
 titles, buttons, and hints. The **content itself** (books, poems, questions) is
-added and edited from the CMS at `/admin` — see `docs/adding-content.en.md`.
+added and edited through the GitHub web UI — see
+[`adding-content.en.md`](./adding-content.en.md).
 
 > Golden rule: only change the Arabic text you can read. Never touch anything
 > between `< >` or `{ }`, any English words, or style names like `uf5db21c`.
@@ -54,7 +55,6 @@ Note: the small «منظومة» badge shown on each poem is separate — it liv
 | Content-type badge (منظومة / متن / مرجع / مجموع) | `src/lib/display.ts` — `labelFor` |
 | Era names (الأموي/العباسي/الأندلسي…) | `src/lib/display.ts` — `ERA_VALUES`, `eraLabel` |
 | Reader-page chrome (منظومة، نظمُ، متن، بيت، باب) | `src/pages/poem/[slug].astro`, `src/pages/book/[slug].astro` |
-| CMS collection labels/fields | `public/admin/config.yml` |
 | Sort buttons (alphabetical/by date) + «عرض الكل» | `src/components/SortableList.astro`, `BrowseGroups.astro` |
 
 ---

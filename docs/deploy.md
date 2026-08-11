@@ -176,21 +176,26 @@ Cloudflare Redirect Rule.
 - `https://arthurarchive.com/sitemap.xml` and `/robots.txt` resolve; canonical tags read `https://arthurarchive.com/...`.
 - Re-run the §2 checks on the apex domain.
 
-## 5. `/admin` access control
+## 5. Editor access (`/admin` removed)
 
-`/admin` (Sveltia CMS, see `docs/technology-stack.md`) writes straight to `main` via
-GitHub — access is controlled by GitHub itself, not a site-level gate:
+The Sveltia CMS at `/admin` was **deleted on 2026-08-11**. It had never been the
+authoring path — every commit in the repo's history is plain Git — and it could
+only ever see the books under `src/content/book/`, not the far larger
+`src/content/book-lg/`. Content is authored through the GitHub web UI; see
+[`adding-content.ar.md`](./adding-content.ar.md).
 
-- **Who can sign in:** anyone with **write access** to the repo (GitHub → repo →
-  **Settings → Collaborators**). Add/remove editors there.
-- **Auth backend:** `public/admin/config.yml`'s `backend.base_url` points at a
-  deployed `sveltia-cms-auth` Cloudflare Worker (GitHub OAuth). That worker holds
-  `GITHUB_CLIENT_ID`/`GITHUB_CLIENT_SECRET`/`ALLOWED_DOMAINS` as secrets — rotate
-  them there, not in this repo, if the OAuth App is ever recreated.
-- `/admin` is `noindex` and unlinked from the site nav, but the page itself is
-  publicly reachable — that's fine, since it's useless without a GitHub account
-  that has repo write access. Add Cloudflare Access in front of it only if you
-  want a second factor before the GitHub sign-in screen even loads.
+**Access control is therefore just GitHub's:** grant or revoke **write access**
+to the repo under GitHub → repo → **Settings → Collaborators**.
+
+**Leftovers to clean up outside this repo** (deleting the panel does not touch them):
+
+- The `sveltia-cms-auth` Cloudflare Worker at
+  `sveltia-cms-auth.ahmedsinkeat2002.workers.dev` is still deployed and still
+  holds `GITHUB_CLIENT_ID` / `GITHUB_CLIENT_SECRET` / `ALLOWED_DOMAINS`.
+  Delete it: `wrangler delete --name sveltia-cms-auth`
+- The corresponding **GitHub OAuth App** can then be deleted under GitHub →
+  Settings → Developer settings → OAuth Apps.
+- `.env` may still carry unused `KEYSTATIC_*` keys from the earlier CMS.
 
 ## Auto-deploy & rollback
 

@@ -46,7 +46,7 @@ Polymorphic links (`source_type`/`target_type`) have no DB foreign keys — **Zo
 - **مختارات الأسبوع** — the home shows a weekly-rotating آية/حديث/بيت (the `highlight` collection). متون/منظومات with more than one recitation get a small native dropdown to switch recordings.
 - **Connections** — a collapsible «ما يشير إلى هذا» relations panel at page end (backlinks: شروح، فوائد، سلاسل، authored works, unlinked mentions), subtle inline `[[type:slug]]` wiki-links, and a person→شيوخ narrator graph (شيوخه/تلاميذه on each عَلَم). Connectivity stays out of the reading flow — clean-UI is a hard gate.
 - **`/roadmap`** — طريق طلب العلم page, content from `src/data/roadmap.md` (edit to fill it out); linked from the home hero.
-- **`/admin`** — a Sveltia CMS panel is still deployed here, but **it is not the working path and is effectively retired**: no content has come through it (every commit is plain Git), it only ever exposed الكتب + الأشخاص, and it can only see the 284 books under `src/content/book/` — not the 955 in `src/content/book-lg/`. **Content is authored and edited through GitHub** — see [`docs/adding-content.ar.md`](docs/adding-content.ar.md).
+- **Authoring** — content is written and edited **through the GitHub web UI**; see [`docs/adding-content.ar.md`](docs/adding-content.ar.md). The Sveltia CMS that used to sit at `/admin` was deleted on 2026-08-11: nothing was ever authored through it, and it could only see the 284 books in `src/content/book/`, never the 955 in `src/content/book-lg/`.
 
 ## Docs
 
@@ -55,7 +55,7 @@ Polymorphic links (`source_type`/`target_type`) have no DB foreign keys — **Zo
 | [`docs/adding-content.ar.md`](docs/adding-content.ar.md) / [`.en.md`](docs/adding-content.en.md) | **Start here for content.** Adding/editing a book through the GitHub web UI, no coding — frontmatter template, the `book`/`book-lg` split, undoing mistakes |
 | [`CONTRIBUTING.md`](CONTRIBUTING.md) | The same job via Git + Pull Request — per-entity templates, id/slug rules, publish gates (Arabic) |
 | [`docs/editing-text.ar.md`](docs/editing-text.ar.md) / [`.en.md`](docs/editing-text.en.md) | Changing site interface text (menus, labels) |
-| [`docs/deploy.md`](docs/deploy.md) | Cloudflare Workers deploy + domain + `/admin` access control |
+| [`docs/deploy.md`](docs/deploy.md) | Cloudflare Workers deploy + domain + editor access |
 | [`docs/structure.md`](docs/structure.md) | Current repository layout |
 | [`docs/technology-stack.md`](docs/technology-stack.md) | Why each piece of the stack was chosen |
 | [`docs/android-app.md`](docs/android-app.md) | Native Android app + the `app/v1` JSON pipeline |

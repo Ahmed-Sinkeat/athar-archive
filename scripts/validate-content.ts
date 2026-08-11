@@ -6,10 +6,13 @@ import path from "node:path";
 import { loadContentFromDisk } from "../src/lib/load.js";
 import { validate, formatErrors } from "../src/lib/validate.js";
 
-// src/content/book/ is listed in the CMS, which bulk-downloads every file in
-// it through GitHub's API on /admin load — big files there broke /admin with
-// 502/504 for everyone. Whole-book imports belong in src/content/book-lg/
-// (same collection, same ids, not CMS-loaded). Hard limit so it can't regress.
+// Originally: src/content/book/ was the folder the Sveltia CMS listed, and it
+// bulk-downloaded every file there through GitHub's API on /admin load, so big
+// files 502/504'd the panel for everyone. The CMS was deleted 2026-08-11, so
+// that reason is gone — but the split itself is still load-bearing (src/lib/load.ts
+// reads both dirs as one collection) and unwinding it would rewrite the history of
+// 955 files for no gain. Keep the limit: it costs nothing and keeps the two folders
+// meaning what every doc says they mean.
 const BOOK_CMS_LIMIT = 100 * 1024;
 function oversizedCmsBooks(): string[] {
   const dir = path.resolve("src/content/book");

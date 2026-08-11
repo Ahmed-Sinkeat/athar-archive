@@ -73,40 +73,14 @@ const csp = [
   "frame-ancestors 'none'",
 ].join("; ");
 
-// /admin (Sveltia CMS) is self-hosted (public/admin/sveltia-cms.js) so script-src
-// 'self' still holds, but the CMS itself needs to talk to GitHub's API/OAuth
-// worker, load Google Fonts, and preview avatars/images from GitHub. NB:
-// Cloudflare does NOT replace headers from a more general _headers rule — it
-// appends, and two CSP headers enforce as their intersection (strictest wins) —
-// so the /admin blocks must `!`-detach the site-wide CSP before setting theirs.
-const adminCsp = [
-  "default-src 'self'",
-  "script-src 'self'",
-  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-  "font-src 'self' https://fonts.gstatic.com",
-  "img-src 'self' data: https://avatars.githubusercontent.com https://raw.githubusercontent.com",
-  "connect-src 'self' https://api.github.com https://raw.githubusercontent.com https://*.workers.dev",
-  "frame-src 'self' https://github.com",
-  "base-uri 'self'",
-  "form-action 'self'",
-].join("; ");
-
 const out = `/*
   X-Content-Type-Options: nosniff
   X-Frame-Options: DENY
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: geolocation=(), microphone=(), camera=()
   Strict-Transport-Security: max-age=31536000; includeSubDomains
-  Cross-Origin-Opener-Policy: same-origin-allow-popups
+  Cross-Origin-Opener-Policy: same-origin
   Content-Security-Policy: ${csp}
-
-/admin
-  ! Content-Security-Policy
-  Content-Security-Policy: ${adminCsp}
-
-/admin/*
-  ! Content-Security-Policy
-  Content-Security-Policy: ${adminCsp}
 `;
 
 // Keep the adapter's existing rules (e.g. /_astro/* immutable Cache-Control) and
@@ -125,10 +99,11 @@ const runtimeHeaders = {
   "Referrer-Policy": "strict-origin-when-cross-origin",
   "Permissions-Policy": "geolocation=(), microphone=(), camera=()",
   "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
-  // allow-popups, not strict same-origin: /admin's Sveltia CMS logs in via a
-  // GitHub OAuth popup that messages back through window.opener — same-origin
-  // would sever that and silently break login.
-  "Cross-Origin-Opener-Policy": "same-origin-allow-popups",
+  // strict same-origin since the Sveltia CMS was deleted (2026-08-11) — its
+  // GitHub OAuth popup, which messaged back through window.opener, was the only
+  // thing that needed allow-popups. Nothing on the site opens a popup now;
+  // rel=noopener target=_blank links are unaffected by this.
+  "Cross-Origin-Opener-Policy": "same-origin",
   // Unique per build so the middleware's Cache API key changes on every deploy —
   // otherwise a stale cached on-demand page keeps pointing at now-deleted
   // /_astro/*.css files (hashed filenames) until it happens to be evicted.

@@ -206,5 +206,7 @@ A team member converts it to the correct format and publishes it.
 | Change the site's interface text (menus, buttons) | [`editing-text.en.md`](./editing-text.en.md) |
 | Understand the repo layout | [`structure.md`](./structure.md) |
 
-> **Note:** the site still has an old `/admin` route (a Sveltia CMS panel).
-> **Don't use it** — all work goes through GitHub as described in this guide.
+> **Historical note:** the site used to have an editing panel at `/admin`. It was
+> deleted on 2026-08-11 — no content was ever added through it, and it could only
+> see 284 of the 1,239 books. If you find it mentioned in an older document,
+> ignore that: all work goes through GitHub as described in this guide.
