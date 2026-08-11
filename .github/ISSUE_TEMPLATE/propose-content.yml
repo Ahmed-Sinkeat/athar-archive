@@ -1,5 +1,5 @@
 name: اقتراح محتوى
-description: اقتراح مادة جديدة (متن، منظومة، درس، مقالة، فائدة، مسألة…)
+description: اقتراح مادة جديدة (كتاب، متن، منظومة، مقالة، مسألة…)
 title: "[محتوى] "
 labels: ["content"]
 body:
@@ -8,6 +8,9 @@ body:
       value: |
         شكراً لإسهامك. سيراجع الفريق الاقتراح ويحوّله إلى ملف Markdown صحيح ضمن الأرشيف.
         المتطوّع لا يلتزم في Git مباشرة — راجع CONTRIBUTING §01.
+
+        عندك صلاحية الكتابة على المستودع؟ تستطيع إضافة الكتاب بنفسك من GitHub مباشرةً
+        دون الحاجة إلى هذا النموذج — انظر [دليل المبتدئين](https://github.com/Ahmed-Sinkeat/athar-archive/blob/main/docs/adding-content.ar.md).
   - type: dropdown
     id: entity
     attributes:
@@ -18,13 +21,12 @@ body:
         - topic
         - book
         - poem
-        - series
-        - lesson
         - question
-        - benefit
         - article
         - audio
         - annotation
+        - term
+        - highlight
         - announcement
     validations:
       required: true

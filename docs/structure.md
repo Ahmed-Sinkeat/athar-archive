@@ -2,6 +2,8 @@
 
 ```
 docs/
+├─ adding-content.ar.md      # ⭐ non-technical guide: adding/editing a book (Arabic) — start here
+├─ adding-content.en.md      # same, English
 ├─ structure.md              # this file — current repo layout
 ├─ asbuild.md                # phase-by-phase as-built record vs BUILD-PLAN (historical log, P0–UX-R)
 ├─ issue.md                  # ranked issue / watch register
@@ -11,6 +13,7 @@ docs/
 ├─ technology-stack.md       # architectural technology decisions registry
 ├─ editing-text.ar.md        # UI/translation editing guide (Arabic)
 ├─ editing-text.en.md        # UI/translation editing guide (English)
-├─ guide-edit-site-design.html   # non-technical guide: editing site design/theme
-└─ guide-manage-content.html     # non-technical guide: managing content via /admin
+└─ guide-edit-site-design.html   # non-technical guide: editing site design/theme
+                                 # (guide-manage-content.html was deleted 2026-08-11 —
+                                 #  stale CMS collection list, superseded by adding-content.*)
 ```
