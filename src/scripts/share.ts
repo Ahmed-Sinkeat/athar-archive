@@ -5,14 +5,12 @@
 
 // book/author/kind come from the nearest [data-cite-book] ancestor (set
 // server-side per reading page type): plain book/article/question pages cite
-// by page number, poem pages by بيت number (Verse.astro's data-vn), quran
-// pages by آية number (data-anchor).
-type CiteKind = "book" | "poem" | "quran";
+// by page number, poem pages by بيت number (Verse.astro's data-vn).
+type CiteKind = "book" | "poem";
 interface CiteMeta {
   kind: CiteKind; book: string; author: string; url: string;
   page?: string; pageTo?: string; juz?: string;
   vn?: number; vnTo?: number;
-  ayahFrom?: string; ayahTo?: string; surah?: string;
 }
 function elOf(node: Node): Element | null {
   return node.nodeType === 1 ? (node as Element) : node.parentElement;
@@ -27,11 +25,6 @@ function citeMeta(range: Range): { meta: CiteMeta; container: HTMLElement } | nu
   const author = container.dataset.citeAuthor || "";
   const url = location.origin + location.pathname;
 
-  if (kind === "quran") {
-    const ayahFrom = startEl?.closest<HTMLElement>(".ayah[data-anchor]")?.dataset.anchor;
-    const ayahTo = endEl?.closest<HTMLElement>(".ayah[data-anchor]")?.dataset.anchor ?? ayahFrom;
-    return { meta: { kind, book, author, url, ayahFrom, ayahTo, surah: container.dataset.citeSurah || book }, container };
-  }
   if (kind === "poem") {
     const vnStr = startEl?.closest<HTMLElement>(".verse[data-vn]")?.dataset.vn;
     const vnToStr = endEl?.closest<HTMLElement>(".verse[data-vn]")?.dataset.vn;
@@ -46,29 +39,7 @@ function citeMeta(range: Range): { meta: CiteMeta; container: HTMLElement } | nu
   return { meta: { kind, book, author, url, page, pageTo: page, juz }, container };
 }
 
-// Quran citations always quote the FULL ayah(s) spanning the selection, never
-// just the selected substring — a partial-ayah quote reads as a misquote of
-// the Qur'an, so the range (adjustable below) always wins.
-function fullAyahRangeText(container: HTMLElement, from: string, to: string): string {
-  const fromN = Number(from), toN = Number(to);
-  const parts: string[] = [];
-  container.querySelectorAll<HTMLElement>(".ayah[data-anchor]").forEach((el) => {
-    const n = Number(el.dataset.anchor);
-    if (n >= fromN && n <= toN) {
-      const t = el.querySelector(".ayah-text")?.textContent?.trim();
-      if (t) parts.push(t);
-    }
-  });
-  return parts.join(" ");
-}
-
-function buildCitation(meta: CiteMeta, container: HTMLElement, fallbackText: string): { text: string; url: string } {
-  if (meta.kind === "quran" && meta.ayahFrom) {
-    const to = meta.ayahTo || meta.ayahFrom;
-    const text = fullAyahRangeText(container, meta.ayahFrom, to) || fallbackText;
-    const ref = meta.ayahFrom === to ? `الآية ${meta.ayahFrom}` : `الآيات ${meta.ayahFrom}-${to}`;
-    return { text: `﴿ ${text} ﴾\n— سورة ${meta.surah}، ${ref}`, url: meta.url };
-  }
+function buildCitation(meta: CiteMeta, fallbackText: string): { text: string; url: string } {
   if (meta.kind === "poem" && meta.vn) {
     const ref = meta.vnTo && meta.vnTo !== meta.vn ? `الأبيات ${meta.vn}-${meta.vnTo}` : `البيت ${meta.vn}`;
     const parts = [meta.book, meta.author, ref].filter(Boolean);
@@ -80,11 +51,11 @@ function buildCitation(meta: CiteMeta, container: HTMLElement, fallbackText: str
 }
 
 // lets the reader widen/narrow the cited range (page for a book, بيت for a
-// poem, آية for the Qur'an) before copying or handing off to the share sheet.
+// poem) before copying or handing off to the share sheet.
 export function openShare(toolbar: HTMLElement, range: Range, text: string, done: () => void) {
   const cite = citeMeta(range);
   if (!cite) return;
-  const { meta, container } = cite;
+  const { meta } = cite;
   toolbar.innerHTML = "";
   const wrap = document.createElement("div");
   wrap.className = "aa-share";
@@ -100,15 +71,13 @@ export function openShare(toolbar: HTMLElement, range: Range, text: string, done
     row.append(l1, fromInput, l2, toInput);
     wrap.appendChild(row);
   };
-  if (meta.kind === "quran" && meta.ayahFrom) rangeRow("من آية", meta.ayahFrom, "إلى", meta.ayahTo || meta.ayahFrom);
-  else if (meta.kind === "poem" && meta.vn) rangeRow("من بيت", meta.vn, "إلى", meta.vnTo || meta.vn);
+  if (meta.kind === "poem" && meta.vn) rangeRow("من بيت", meta.vn, "إلى", meta.vnTo || meta.vn);
   else if (meta.kind === "book" && meta.page) rangeRow("من صفحة", meta.page, "إلى", meta.pageTo || meta.page);
 
   const currentMeta = (): CiteMeta => {
     if (!fromInput || !toInput) return meta;
     const m = { ...meta };
-    if (meta.kind === "quran") { m.ayahFrom = fromInput.value; m.ayahTo = toInput.value; }
-    else if (meta.kind === "poem") { m.vn = Number(fromInput.value); m.vnTo = Number(toInput.value); }
+    if (meta.kind === "poem") { m.vn = Number(fromInput.value); m.vnTo = Number(toInput.value); }
     else { m.page = fromInput.value; m.pageTo = toInput.value; }
     return m;
   };
@@ -132,7 +101,7 @@ export function openShare(toolbar: HTMLElement, range: Range, text: string, done
 
   copyBtn.addEventListener("mousedown", (e) => e.preventDefault());
   copyBtn.addEventListener("click", () => {
-    const { text: cited, url } = buildCitation(currentMeta(), container, text);
+    const { text: cited, url } = buildCitation(currentMeta(), text);
     navigator.clipboard?.writeText(`${cited}\n${url}`).then(() => { copyBtn.textContent = "تم النسخ ✓"; setTimeout(done, 900); });
   });
   linkBtn.addEventListener("mousedown", (e) => e.preventDefault());
@@ -141,7 +110,7 @@ export function openShare(toolbar: HTMLElement, range: Range, text: string, done
   });
   shareBtn.addEventListener("mousedown", (e) => e.preventDefault());
   shareBtn.addEventListener("click", async () => {
-    const { text: cited, url } = buildCitation(currentMeta(), container, text);
+    const { text: cited, url } = buildCitation(currentMeta(), text);
     if (navigator.share) {
       // url goes INSIDE text: some Android targets (Telegram, WhatsApp) take
       // only one of {text, url} from the share intent, dropping the link

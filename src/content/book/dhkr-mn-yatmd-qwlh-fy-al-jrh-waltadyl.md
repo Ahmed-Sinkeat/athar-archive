@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: al-dhhby-shms-al-dyn
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 748
 description: "ذكر من يعتمد قوله في الجرح والتعديل، تأليف الذهبي، شمس الدين (ت 0748هـ)"
 ---

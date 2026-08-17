@@ -23,7 +23,6 @@ export const COLLECTIONS = [
   "announcement",
   "highlight",
   "term",
-  "quran",
 ] as const;
 
 export type CollectionName = (typeof COLLECTIONS)[number];

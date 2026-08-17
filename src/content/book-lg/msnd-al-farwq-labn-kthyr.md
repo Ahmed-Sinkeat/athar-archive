@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: ibn-kathir
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 774
 description: "مسند الفاروق لابن كثير، تأليف ابن كثير (ت 0774هـ)"
 ---

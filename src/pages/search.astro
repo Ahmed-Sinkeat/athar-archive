@@ -78,7 +78,6 @@ import Breadcrumbs from "../components/Breadcrumbs.astro";
         color: var(--ink); transition: border-color .15s;
       }
       .search-hit:hover { border-color: var(--accent); }
-      .search-hit[data-type="quran"] { border-inline-end-color: var(--gold-text); }
       .search-hit[data-type="poem"] { border-inline-end-color: var(--copper); }
       .search-hit[data-type="article"], .search-hit[data-type="term"] { border-inline-end-color: var(--verdigris); }
       /* stretched overlay link: whole row navigates, but the expand/copy
@@ -133,7 +132,7 @@ import Breadcrumbs from "../components/Breadcrumbs.astro";
       // a book scope may still arrive from an in-reader "search this book" link
       const inBook = params.get("in") || "";
 
-      const TYPE_LABEL = { quran: "قرآن", book: "كتاب", poem: "منظومة", article: "مقالة", question: "مسألة", term: "معجم", person: "عَلَم" };
+      const TYPE_LABEL = { book: "كتاب", poem: "منظومة", article: "مقالة", question: "مسألة", term: "معجم", person: "عَلَم" };
       // the ONE control: بالنص (full-text) | بالعنوان (titles only)
       let field = params.get("field") === "title" ? "title" : "text";
       const modeBtns = document.querySelectorAll(".search-mode");
@@ -175,9 +174,9 @@ import Breadcrumbs from "../components/Breadcrumbs.astro";
       let seq = 0;
       let offset = 0;
       let lastHits = [];
-      // search links to a paragraph anchor for quran/"athar"-numbered books only —
-      // everything else has none, so the target page can't scroll/highlight on
-      // its own. aa-hl carries the query there instead; marks.ts's in-page find
+      // search results have no paragraph anchor, so the target page can't
+      // scroll/highlight on its own. aa-hl carries the query there instead;
+      // marks.ts's in-page find
       // (already tashkeel-insensitive, already highlights + scrolls) picks it up
       // on load. Query params must come before any #hash, not after.
       const withHl = (url, term) => {
@@ -189,7 +188,7 @@ import Breadcrumbs from "../components/Breadcrumbs.astro";
       };
       // title mode → land on the WORK itself (a book's own landing page, not
       // whichever chapter row happened to win the group); text mode → land on
-      // the exact passage (chapter/ayah/athar url + aa-hl scroll-to-match).
+      // the exact passage (chapter url + aa-hl scroll-to-match).
       const landingUrl = (h) => (h.book ? `/book/${h.book}` : h.url);
       const renderHit = (h, terms) => {
         const type = esc(h.type);

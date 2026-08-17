@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: al-mqdsy-dya-al-dyn
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 643
 description: "لأحاديث المختارة = المستخرج من الأحاديث المختارة مما لم يخرجه البخاري ومسلم في صحيحيهما، تأليف المقدسي، ضياء الدين (ت 0643هـ)"
 ---

@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: al-khrayty
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 327
 description: "مساوئ الأخلاق للخرائطي، تأليف الخرائطي (ت 0327هـ)"
 ---

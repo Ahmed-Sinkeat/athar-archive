@@ -9,7 +9,7 @@
 /* the UA's [hidden]{display:none} has the lowest-priority origin in the
    cascade, so ANY same-specificity author rule (.foo{display:flex/block/...})
    silently wins and keeps a "hidden" element visible — the exact bug several
-   components patched one at a time below (.icon-btn[hidden], .quran-jump[hidden],
+   components patched one at a time below (.icon-btn[hidden],
    etc). One !important here fixes every instance at once, past and future;
    the narrow per-component overrides still elsewhere in this file are now
    redundant but harmless. */
@@ -223,14 +223,6 @@ img { max-width: 100%; }
 .install-banner-actions { display: flex; align-items: center; gap: 6px; flex: none; }
 .install-banner .btn-accent { padding: 7px 16px; font-size: 13px; }
 
-/* --- hadith grading chips (/hadith hub) --- */
-.grade-facet { display: flex; flex-wrap: wrap; gap: 8px; }
-.grade {
-  font-family: var(--font-ui); font-size: 12.5px; border-radius: var(--radius-pill); padding: 4px 13px;
-  display: inline-block; border: 1px solid var(--rule-strong); background: var(--surface); color: var(--ink-soft);
-}
-.grade-صحيح, .grade-حسن { color: var(--green); border-color: color-mix(in srgb, var(--green) 45%, transparent); }
-.grade-ضعيف, .grade-موضوع { color: var(--copper); border-color: color-mix(in srgb, var(--copper) 45%, transparent); }
 .tag-verdigris { color: var(--verdigris); }
 
 /* ---------- header ---------- */
@@ -588,20 +580,6 @@ summary::-webkit-details-marker { display: none; }
 .ornament { text-align: center; color: var(--gold); font-size: 1.2em; }
 .ornament-green { color: var(--green); }
 
-/* الحديث → green dress (HANDOFF §1: one accent per tradition), scoped to
-   hadith-genre book readers only — everything else keeps the maroon default */
-.hadith-accent .toc-box:not(.has-current) a:first-of-type,
-.hadith-accent .toc-box a.toc-current { border-inline-start-color: var(--green); }
-.hadith-accent .prevnext a:hover { border-color: var(--green); }
-.hadith-accent .inline-note { border-inline-start-color: var(--green); }
-.hadith-accent .inline-note summary,
-.hadith-accent .inline-note-more,
-.hadith-accent .ann-source-link { color: var(--green); }
-.hadith-accent .inline-note-tab-input:checked + .inline-note-tab {
-  color: var(--green); border-color: var(--green);
-  background: color-mix(in srgb, var(--green) 12%, transparent);
-}
-
 .hint {
   display: flex; align-items: center; gap: 12px; background: var(--paper-2); border: 1px solid var(--rule);
   border-radius: var(--radius-lg); padding: 11px 15px; margin: 34px 0 8px; font-family: var(--font-ui);
@@ -690,25 +668,15 @@ summary::-webkit-details-marker { display: none; }
      the line. (Type size + staggered alignment: the poem-verses block below.) */
   .verse-body { max-width: 100%; }
 }
-/* per-source tafsir entries (gen-tafsir-frags.ts v2) */
+/* annotation sheet entries */
 .ann-dd-item.is-missing { opacity: 0.5; }
 .ann-note-sep { border: 0; border-top: 1px dashed var(--rule); margin-block: 0.8rem; }
 .ann-src-inline { display: block; margin-top: 4px; font-size: 12px; color: var(--accent); text-decoration: none; }
-.ann-dl-tafsir {
-  background: none; border: 1px solid var(--rule); border-radius: 999px; cursor: pointer;
-  padding: 4px 10px; font-family: var(--font-ui); font-size: 11.5px; color: var(--ink-faint);
-}
-.ann-dl-tafsir:hover { color: var(--accent); border-color: var(--accent-border); }
-.ann-dl-tafsir[aria-pressed="true"] { color: var(--accent); }
-.ann-dl-tafsir[data-dl-busy] { opacity: 0.6; pointer-events: none; }
 
-/* تسميع mode (reader.ts applyTasmi): blur the answer until tapped —
-   poems hide the عجز, quran pages hide the ayah text itself */
-.verses .ajz, .ayah-list .ayah-text { transition: filter 0.25s; }
+/* تسميع mode (reader.ts applyTasmi): blur the answer (the poem's عجز) until tapped */
+.verses .ajz { transition: filter 0.25s; }
 html.tasmi-mode .verses .verse:not(.tasmi-revealed) { cursor: pointer; }
 html.tasmi-mode .verses .verse:not(.tasmi-revealed) .ajz { filter: blur(7px); user-select: none; }
-html.tasmi-mode .ayah-list .ayah:not(.tasmi-revealed) { cursor: pointer; }
-html.tasmi-mode .ayah-list .ayah:not(.tasmi-revealed) .ayah-text { filter: blur(8px); user-select: none; }
 
 /* voice-follow.ts (poem-page prototype): bayt lights up once recited */
 .verse.voice-read { background: var(--verdigris-wash); border-radius: var(--radius); transition: background 0.4s; }
@@ -783,9 +751,7 @@ html:not(.has-js) .azkar-progress-label { display: none; }
 .ann-pop-body { font-family: var(--font-serif); font-size: calc(16px * var(--reading-scale)); line-height: 1.95; color: var(--ink-soft); padding: 13px 16px; max-height: 50vh; overflow: auto; }
 .ann-source-link { display: block; font-family: var(--font-ui); font-size: 12.5px; color: var(--accent); text-decoration: none; padding: 10px 16px; border-top: 1px solid var(--rule); }
 .ann-source-link:hover { background: var(--paper-2); }
-.athar-takhrij { font-family: var(--font-ui); font-size: 12.5px; color: var(--ink-soft); margin: 4px 0 12px; }
-.athar-takhrij a { color: var(--accent); text-decoration: none; }
-.athar-takhrij a:hover { text-decoration: underline; }
+
 .ann-menu { display: grid; gap: 2px; padding: 8px; }
 .ann-menu-item { font-family: var(--font-ui); font-size: 14px; text-align: start; color: var(--ink); background: none; border: 1px solid transparent; border-radius: var(--radius); padding: 11px 12px; cursor: pointer; display: flex; align-items: center; gap: 9px; }
 .ann-menu-item::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); flex: none; }
@@ -1063,12 +1029,8 @@ body.has-audio-bar .reading-pad, body.has-audio-bar .wrap-matn { padding-bottom:
 
 /* ---------- home hero — single flat card (Screens.dc mockup) ----------
    Replaced the double-border manuscript plate + calligraphy image with one
-   bordered card and a typeset Amiri title. .plate-outer/.plate-inner stay
-   defined below this file's remit — the quran surah plate still uses them. */
+   bordered card and a typeset Amiri title. */
 .hero { max-width: 1200px; margin: 0 auto; padding: 36px 28px 0; }
-/* double-border manuscript plate — still used by quran/[surah].astro */
-.plate-outer { border: 1px solid var(--line2); padding: 7px; border-radius: 2px; }
-.plate-inner { border: 1px solid var(--line); border-radius: 1px; background: var(--card); }
 .hero-card {
   background: var(--card); border: 1px solid var(--line); border-radius: var(--radius-lg);
   padding: clamp(40px, 6vw, 56px) 28px clamp(36px, 5vw, 48px);
@@ -1220,11 +1182,10 @@ html.hide-vnums .vnum { display: none; }
    with a concrete "stranded on wide screens" complaint. */
 .chap-toc-aside { grid-column: 1; grid-row: 1; position: sticky; top: 80px; margin-top: 52px; max-height: calc(100vh - 100px); overflow-y: auto; }
 /* TOC as a quiet rail, not a boxed card: hairline on the content side,
-   active item = maroon 700 on its 2px rail (green on hadith books) */
+   active item = maroon 700 on its 2px rail */
 .chap-toc-aside { border-inline-end: 1px solid var(--line); padding-inline-end: 18px; }
 .chap-toc-aside .toc-box { border: none; background: none; border-radius: 0; padding: 0; }
 .chap-toc-aside .toc-box a.toc-current { color: var(--brand); font-weight: 700; }
-.hadith-accent .chap-toc-aside .toc-box a.toc-current { color: var(--green); }
 .chap-toc-aside .toc-box { max-height: 70vh; overflow-y: auto; }
 .chap-toc-aside .toc-label { font-family: var(--font-ui); font-size: 11.5px; letter-spacing: .1em; color: var(--ink-faint); margin-bottom: 8px; }
 .toc-nested-link { display: block; padding-top: 0.25rem; padding-bottom: 0.25rem; font-size: 12.5px; text-decoration: none; border-inline-start: 2px solid transparent; transition: color 0.15s; }
@@ -1926,15 +1887,6 @@ html[data-theme="noir"] ::highlight(aa-find)    { background-color: rgba(255, 15
 
 /* --- page separator (EPUB-imported books) — HANDOFF.md §5: dashed hairline
    with a «ص N» pill, hidden when the page-numbers reader setting is off --- */
-.quran-jump { display: flex; align-items: center; gap: 6px; }
-.quran-jump[hidden] { display: none; } /* [hidden]'s UA display:none loses to .quran-jump's display:flex without this */
-.quran-jump select, .quran-jump input {
-  font-family: var(--font-ui); font-size: 12.5px; padding: 4px 6px;
-  border: 1px solid var(--rule); border-radius: var(--radius); background: var(--surface); color: var(--ink);
-}
-.quran-jump input[type="number"] { width: 4.5rem; }
-@media (max-width: 720px) { .quran-jump { display: none; } }
-
 .page-sep { display: flex; justify-content: center; margin: 22px 0; padding-block-start: 11px; border-block-start: 1px solid var(--rule); }
 .page-sep::before {
   content: "ص " attr(data-page);
@@ -2108,7 +2060,6 @@ html.hide-footnotes .prose section.footnotes { display: none; }
     width: 44px; height: 44px; border-radius: var(--radius);
     background: var(--card); border-color: var(--line2);
   }
-  .quran-jump { display: none !important; }
   .topbar-tools a[href="/downloads"] { display: none; } /* real link lives in the drawer instead, see .drawer-downloads */
   .hamburger { display: none !important; }
   /* settings gear: the ONE theme/font/width entry point on mobile — desktop
@@ -2425,7 +2376,7 @@ html.hide-footnotes .prose section.footnotes { display: none; }
 /* ---- chip family: soft shadow feedback on top of existing color hovers ---- */
 .chip, .pill-link, .ghost-pill, .ann-chip, .chap-chip, .sort-btn, .toggle-btn,
 .masail-view-toggle button, .browse-filter-chips button, .search-scope-chip,
-.ann-dl-tafsir, .ann-dd-btn, .downloads-all-btn, .card-dl, .pagination .page-btn, .theme-swatch {
+.ann-dd-btn, .downloads-all-btn, .card-dl, .pagination .page-btn, .theme-swatch {
   transition: background var(--t-fast) var(--ease), color var(--t-fast) var(--ease),
     border-color var(--t-fast) var(--ease), transform var(--t-fast) var(--ease),
     box-shadow var(--t-fast) var(--ease);
@@ -2433,7 +2384,7 @@ html.hide-footnotes .prose section.footnotes { display: none; }
 .chip:hover, .pill-link:hover, .ghost-pill:hover, .ann-chip:hover, .chap-chip:hover,
 .sort-btn:hover, .toggle-btn:hover, .masail-view-toggle button:hover,
 .browse-filter-chips button:hover, .search-scope-chip:hover,
-.ann-dl-tafsir:hover, .ann-dd-btn:hover, .downloads-all-btn:hover, .card-dl:hover, .pagination .page-btn:hover {
+.ann-dd-btn:hover, .downloads-all-btn:hover, .card-dl:hover, .pagination .page-btn:hover {
   box-shadow: 0 3px 10px color-mix(in srgb, var(--shdw) 12%, transparent);
 }
 .theme-swatch:hover { transform: translateY(-1px); box-shadow: 0 3px 9px color-mix(in srgb, var(--shdw) 25%, transparent); }
@@ -2451,7 +2402,6 @@ html.hide-footnotes .prose section.footnotes { display: none; }
   transition: color var(--t-fast) var(--ease), transform var(--t-base) var(--ease-spring);
 }
 .tabbar a:active, .tabbar button:active { transform: translateY(1px) scale(.95); }
-.tabbar a[href="/quran"][aria-current="page"] { color: var(--gold); }
 
 /* ---- settings toggles → real switches (springy thumb on an inset-"grip"
    track). Scoped to .pop-toggle: standalone .toggle-btn chips elsewhere

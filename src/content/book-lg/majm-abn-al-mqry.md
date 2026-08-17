@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: abn-al-mqry
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 381
 description: "معجم ابن المقرئ، تأليف ابن المقرئ (ت 0381هـ)"
 ---

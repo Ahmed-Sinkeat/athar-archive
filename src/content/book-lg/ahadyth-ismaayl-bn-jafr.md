@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: ismaayl-bn-jafr
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 180
 description: "أحاديث إسماعيل بن جعفر، تأليف إسماعيل بن جعفر (ت 0180هـ)"
 ---

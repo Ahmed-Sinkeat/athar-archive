@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: al-khallal
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 311
 description: "السنة لأبي بكر بن الخلال، تأليف أبو بكر الخلال (ت 0311هـ)"
 ---

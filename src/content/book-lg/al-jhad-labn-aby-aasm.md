@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: ibn-abi-asim
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 287
 description: "الجهاد لابن أبي عاصم، تأليف ابن أبي عاصم (ت 0287هـ)"
 ---

@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: al-fakhy-abw-mhmd
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 353
 description: "فوائد أبي محمد الفاكهي، تأليف الفاكهي، أبو محمد (ت 0353هـ)"
 ---

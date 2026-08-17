@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: abw-bkr-bn-aby-shyba
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 235
 description: "الأدب لابن أبي شيبة، تأليف أبو بكر بن أبي شيبة (ت 0235هـ)"
 ---

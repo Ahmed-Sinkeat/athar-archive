@@ -1,69 +1,38 @@
-// Pushes dist/r2-upload/ (chapter bodies + tafsir fragments — see gen-book-chapters.ts
-// and gen-tafsir-frags.ts) to the athar-book-assets R2 bucket over R2's
-// S3-compatible API — direct signed HTTPS, no workerd. The previous
-// getPlatformProxy/remote-binding version tunneled every PUT through a local
-// workerd process whose proxy dropped connections under load (kj disconnects,
-// 502s) and took ~28min for a full re-upload; direct PUTs at higher
-// concurrency with real retries do it in a few minutes.
+// Pushes dist/r2-upload/ (book chapter bodies — see gen-book-chapters.ts) to
+// the athar-book-assets R2 bucket over R2's S3-compatible API — direct signed
+// HTTPS, no workerd. The previous getPlatformProxy/remote-binding version
+// tunneled every PUT through a local workerd process whose proxy dropped
+// connections under load (kj disconnects, 502s) and took ~28min for a full
+// re-upload; direct PUTs at higher concurrency with real retries do it in a
+// few minutes. Signer + listing live in scripts/lib/r2.mjs (shared with the
+// read-only `pnpm r2:inventory` report).
 //
-// Needs env (CI secrets / local shell):
-//   CLOUDFLARE_ACCOUNT_ID  — already present for wrangler
-//   R2_ACCESS_KEY_ID / R2_SECRET_ACCESS_KEY — dashboard → R2 → Manage API
-//     tokens → create token with Object Read & Write on athar-book-assets
+// Diff strategy: one ListObjectsV2 pass per OWNED_PREFIXES entry (lib/r2.mjs)
+// builds a remote {key → md5} map — R2's ETag IS the md5 for single-part
+// uploads (both S3 PUTs and the old binding PUTs), so this stays compatible
+// with objects uploaded by the previous version and needs no custom metadata.
+// Only new/changed files are PUT; stale keys under those prefixes are deleted.
+// Listing is scoped to the owned prefixes so build-data/ (uploaded by other
+// jobs into the same bucket) can never be touched or pruned.
 //
-// Diff strategy: one ListObjectsV2 pass per local top-level prefix (pages/,
-// tafsir-frag/) builds a remote {key → md5} map — R2's ETag IS the md5 for
-// single-part uploads (both S3 PUTs and the old binding PUTs), so this stays
-// compatible with objects uploaded by the previous version and needs no custom
-// metadata. Only new/changed files are PUT; stale keys under those prefixes are
-// deleted. Listing is scoped to local prefixes so build-data/ (uploaded by
-// other jobs into the same bucket) can never be touched or pruned.
-// ponytail: a top-level prefix REMOVED from the build entirely stops being
-// listed, so its remote objects linger — delete them by hand if that ever
-// happens (has never happened; prefixes are pages/ and tafsir-frag/).
+// Ownership is DECLARED, not inferred from what dist/r2-upload happens to hold.
+// The old version listed only prefixes present locally, so a prefix the build
+// stopped emitting silently stopped being listed and its objects lingered in
+// R2 forever (app/v1 and tafsir-frag both did exactly that). Now a retired
+// prefix stays in OWNED_PREFIXES until its objects are actually gone, and a
+// local directory NOT in that list is a hard error rather than a silent
+// unmanaged upload.
 //
 // `--selftest` verifies the SigV4 signer against the worked example in AWS's
 // SigV4 docs (no network) — run it after touching any signing code.
 import fs from "node:fs";
 import path from "node:path";
-import crypto from "node:crypto";
 import assert from "node:assert";
+import { BUCKET, OWNED_PREFIXES, RETIRED_PREFIXES, makeClient, listPrefix, md5, sigv4 } from "./lib/r2.mjs";
 
 const ROOT = path.resolve("dist/r2-upload");
-const BUCKET = "athar-book-assets";
 const CONCURRENCY = 64;
-const RETRIES = 5;
 const CONTENT_TYPE = { ".md": "text/markdown; charset=utf-8", ".html": "text/html; charset=utf-8" };
-
-const sha256hex = (d) => crypto.createHash("sha256").update(d).digest("hex");
-const hmac = (key, d) => crypto.createHmac("sha256", key).update(d).digest();
-const md5 = (buf) => crypto.createHash("md5").update(buf).digest("hex");
-const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-// RFC 3986 (S3 canonical form): encodeURIComponent plus the five it leaves bare
-const enc = (s) => encodeURIComponent(s).replace(/[!'()*]/g, (c) => "%" + c.charCodeAt(0).toString(16).toUpperCase());
-
-// --- SigV4 core (kept pure so --selftest can drive it with the AWS vector) ---
-function sigv4({ method, uri, query, headers, payloadHash, amzDate, region, keyId, secret }) {
-  const date = amzDate.slice(0, 8);
-  const canonicalQuery = Object.entries(query)
-    .map(([k, v]) => `${enc(k)}=${enc(String(v))}`)
-    .sort()
-    .join("&");
-  // callers pass lowercase header names — canonical form needs no re-casing
-  const names = Object.keys(headers).sort();
-  const canonicalHeaders = names.map((h) => `${h}:${String(headers[h]).trim()}\n`).join("");
-  const signedHeaders = names.join(";");
-  const canonicalRequest = [method, uri, canonicalQuery, canonicalHeaders, signedHeaders, payloadHash].join("\n");
-  const scope = `${date}/${region}/s3/aws4_request`;
-  const stringToSign = ["AWS4-HMAC-SHA256", amzDate, scope, sha256hex(canonicalRequest)].join("\n");
-  const kSigning = hmac(hmac(hmac(hmac(`AWS4${secret}`, date), region), "s3"), "aws4_request");
-  const signature = crypto.createHmac("sha256", kSigning).update(stringToSign).digest("hex");
-  return {
-    signature,
-    authorization: `AWS4-HMAC-SHA256 Credential=${keyId}/${scope}, SignedHeaders=${signedHeaders}, Signature=${signature}`,
-    canonicalQuery,
-  };
-}
 
 function selftest() {
   // Worked example from AWS "Signature Version 4 signing process" docs
@@ -95,77 +64,13 @@ function selftest() {
   assert.strictEqual(pruneTooLarge(400, 3000), false, "under the absolute floor → prune");
   assert.strictEqual(pruneTooLarge(700, 1000), true, "70% of a small bucket → refuse");
   console.log("✓ prune-guard selftest: mass deletions refused, real removals allowed");
-}
 
-// --- request helper: sign + fetch + retry on 5xx/network ---
-function makeClient() {
-  const account = process.env.CLOUDFLARE_ACCOUNT_ID;
-  const keyId = process.env.R2_ACCESS_KEY_ID;
-  const secret = process.env.R2_SECRET_ACCESS_KEY;
-  if (!account || !keyId || !secret) {
-    console.error(
-      "✗ upload-r2-assets: missing CLOUDFLARE_ACCOUNT_ID / R2_ACCESS_KEY_ID / R2_SECRET_ACCESS_KEY.\n" +
-        "  Create S3 credentials: Cloudflare dashboard → R2 → Manage API tokens →\n" +
-        `  Object Read & Write scoped to ${BUCKET}, then export the two keys.`
-    );
-    process.exit(1);
-  }
-  const host = `${account}.r2.cloudflarestorage.com`;
-
-  return async function s3(method, key, { query = {}, body, contentType } = {}) {
-    const uri = `/${BUCKET}` + (key ? "/" + key.split("/").map(enc).join("/") : "");
-    const payloadHash = sha256hex(body ?? "");
-    let lastErr;
-    for (let attempt = 1; attempt <= RETRIES; attempt++) {
-      const amzDate = new Date().toISOString().replace(/[-:]|\.\d{3}/g, "");
-      // host is signed but not passed to fetch (the URL supplies it; undici
-      // treats an explicit Host header as forbidden)
-      const signHeaders = { host, "x-amz-content-sha256": payloadHash, "x-amz-date": amzDate };
-      if (contentType) signHeaders["content-type"] = contentType;
-      const { authorization, canonicalQuery } = sigv4({
-        method, uri, query, headers: signHeaders, payloadHash, amzDate, region: "auto", keyId, secret,
-      });
-      const { host: _h, ...sendHeaders } = signHeaders;
-      try {
-        const res = await fetch(`https://${host}${uri}${canonicalQuery ? "?" + canonicalQuery : ""}`, {
-          method,
-          headers: { ...sendHeaders, authorization },
-          body,
-        });
-        if (res.status >= 500) throw new Error(`HTTP ${res.status}: ${(await res.text()).slice(0, 200)}`);
-        return res;
-      } catch (e) {
-        lastErr = e;
-        if (attempt < RETRIES) await sleep(attempt * 2000);
-      }
-    }
-    throw lastErr;
-  };
-}
-
-const unxml = (s) =>
-  s.replace(/&quot;/g, '"').replace(/&apos;/g, "'").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&amp;/g, "&");
-
-/** Paginate ListObjectsV2 under `prefix` → {key → md5}. ETag = md5 for single-part uploads. */
-async function listPrefix(s3, prefix) {
-  const index = new Map();
-  let token;
-  do {
-    const query = { "list-type": "2", "max-keys": "1000", prefix };
-    if (token) query["continuation-token"] = token;
-    const res = await s3("GET", "", { query });
-    if (!res.ok) throw new Error(`list ${prefix}: HTTP ${res.status}: ${(await res.text()).slice(0, 300)}`);
-    const xml = await res.text();
-    for (const m of xml.matchAll(/<Contents>([\s\S]*?)<\/Contents>/g)) {
-      const key = unxml(m[1].match(/<Key>([\s\S]*?)<\/Key>/)[1]);
-      const etag = unxml(m[1].match(/<ETag>([\s\S]*?)<\/ETag>/)[1]).replace(/"/g, "");
-      index.set(key, etag);
-    }
-    token = /<IsTruncated>true<\/IsTruncated>/.test(xml)
-      ? unxml(xml.match(/<NextContinuationToken>([\s\S]*?)<\/NextContinuationToken>/)[1])
-      : undefined;
-  } while (token);
-  return index;
+  // ownership: a retired prefix must never still be claimed as owned, or the
+  // next deploy would mass-delete it instead of leaving it for manual review
+  const overlap = OWNED_PREFIXES.filter((p) => RETIRED_PREFIXES.includes(p));
+  assert.deepStrictEqual(overlap, [], `prefix in both OWNED and RETIRED: ${overlap.join(", ")}`);
+  assert.ok(OWNED_PREFIXES.every((p) => p.endsWith("/")), "owned prefixes must end in /");
+  console.log(`✓ ownership selftest: owns ${OWNED_PREFIXES.join(", ")}; retired (untouched) ${RETIRED_PREFIXES.join(", ") || "none"}`);
 }
 
 // Prune safety valve. A healthy deploy prunes a handful of objects (a book
@@ -210,18 +115,38 @@ async function main() {
     files.map((f) => [path.relative(ROOT, f).split(path.sep).join("/"), { file: f, hash: md5(fs.readFileSync(f)) }])
   );
 
-  // 2. One paginated list pass per local top-level prefix.
-  const prefixes = fs.readdirSync(ROOT).filter((n) => fs.statSync(path.join(ROOT, n)).isDirectory());
-  console.log(`Scanning remote bucket (${files.length} local files, prefixes: ${prefixes.join(", ")})…`);
-  const remoteIndex = new Map();
-  for (const p of prefixes) for (const [k, v] of await listPrefix(s3, `${p}/`)) remoteIndex.set(k, v);
-  console.log(`  remote: ${remoteIndex.size} objects indexed`);
+  // 2. Every local top-level directory must be a declared owned prefix —
+  //    an undeclared one would be uploaded but never listed, so it could
+  //    never be diffed or pruned again. Fail loudly instead.
+  const localPrefixes = fs.readdirSync(ROOT)
+    .filter((n) => fs.statSync(path.join(ROOT, n)).isDirectory())
+    .map((n) => `${n}/`);
+  const undeclared = localPrefixes.filter((p) => !OWNED_PREFIXES.includes(p));
+  if (undeclared.length > 0) {
+    console.error(
+      `✗ upload-r2-assets: dist/r2-upload holds prefix(es) ${undeclared.join(", ")} that are not in ` +
+      `OWNED_PREFIXES (scripts/lib/r2.mjs). Add them there — an undeclared prefix would upload but never ` +
+      `be listed, so its objects could never be diffed or pruned again.`,
+    );
+    process.exit(1);
+  }
 
-  // 3. Only PUT files that are new or whose md5 changed.
+  // 3. One paginated list pass per OWNED prefix — including any the build no
+  //    longer emits, so retiring a feature prunes its objects instead of
+  //    stranding them (guard below still gates a mass deletion).
+  console.log(`Scanning remote bucket (${files.length} local files, owned prefixes: ${OWNED_PREFIXES.join(", ")})…`);
+  const remoteIndex = new Map();
+  for (const p of OWNED_PREFIXES) await listPrefix(s3, p, ({ key, etag }) => remoteIndex.set(key, etag));
+  console.log(`  remote: ${remoteIndex.size} objects indexed`);
+  if (RETIRED_PREFIXES.length > 0) {
+    console.log(`  note: ${RETIRED_PREFIXES.join(", ")} retired but NOT managed here — see \`pnpm r2:inventory\` before deleting`);
+  }
+
+  // 4. Only PUT files that are new or whose md5 changed.
   const toUpload = [...localIndex.entries()].filter(([key, { hash }]) => remoteIndex.get(key) !== hash);
   console.log(`  ${toUpload.length} to upload, ${files.length - toUpload.length} unchanged (skipped)`);
 
-  // 4. Prune remote objects (within the listed prefixes only) that no longer
+  // 5. Prune remote objects (within the listed prefixes only) that no longer
   //    exist in the build — otherwise unpublishing/renaming a book leaves its
   //    old chapter pages live in R2, still served by the route.
   const toDelete = [...remoteIndex.keys()].filter((key) => !localIndex.has(key));

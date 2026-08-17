@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: al-shafay
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 204
 description: "مسند الشافعي، تأليف الشافعي (ت 0204هـ)"
 ---

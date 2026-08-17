@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: al-bukhari
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 256
 description: "قرة العينين برفع اليدين في الصلاة، تأليف البخاري (ت 0256هـ)"
 ---

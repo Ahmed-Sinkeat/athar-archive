@@ -4,7 +4,6 @@ status: draft
 published_at: 2026-07-18
 person: musaid-al-tayyar
 kind: مرجع
-genre: قرآن
 topics: ["tafsir-al-quran"]
 ---
 ## المقدمة

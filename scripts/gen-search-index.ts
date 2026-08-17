@@ -1,8 +1,9 @@
 // Build the D1 FTS5 search index as SQL files under dist/search-index/.
 // Load remotely with `pnpm search:index` (or `pnpm search:index:local` for the
-// dev server's local D1). Granularity mirrors the site's deep links: quran =
-// per ayah, chunked books = per chapter (same slugs as gen-book-chapters.ts),
-// everything else = one doc.
+// dev server's local D1). Granularity mirrors the site's deep links: chunked
+// books = per chapter (same slugs as gen-book-chapters.ts), everything else =
+// one doc. Every book is indexed by the same rules — no per-collection or
+// per-narration special cases.
 //
 // Incremental: `pnpm search:hashes` dumps the remote `doc_hash(url, hash)`
 // table to `.search-hashes.json` before this runs. When that file has content,
@@ -18,15 +19,12 @@ import crypto from "node:crypto";
 import { loadContentMetaFromDisk } from "../src/lib/load.js";
 import { readBody } from "../src/lib/read-body.js";
 import { analyzeBook } from "../src/lib/chunk.js";
-import { parseBook } from "../src/lib/chapters.js";
 import { normalizeArabic } from "../src/lib/ar-normalize.js";
 import { stripMd as strip } from "../src/lib/strip-md.js";
-import { isAtharNumberedBook, parseAtharNumber } from "../src/lib/hadith.js";
-import { toArabicDigits } from "../src/lib/display.js";
 
 interface Doc {
   type: string;
-  book: string;   // owning book/poem/surah id — powers the `in=` scope filter
+  book: string;   // owning book/poem id — powers the `in=` scope filter
   person: string; // author slug — powers the `person=` scope filter
   url: string;
   displayTitle: string;
@@ -199,50 +197,10 @@ async function main() {
     const byline = personName.get(person);
     const searchTitle = byline ? `${title} ${byline}` : title;
     switch (e.collection) {
-      case "quran": {
-        const body = await readBody(e);
-        for (const p of parseBook(body).paragraphs) {
-          processDoc({
-            type: "quran", book: e.id, person: "",
-            url: `/quran/${e.id}#${p.id}`,
-            displayTitle: `${title} — الآية ${p.id}`,
-            title, text: strip(p.text),
-          });
-        }
-        break;
-      }
       case "book": {
         const body = await readBody(e);
         const a = analyzeBook(body);
-        // Athar-numbered books (e.g. "١٧ - حدثنا...") index one doc per athar
-        // instead of per-chapter/whole-book — a search hit should land on the
-        // narration itself (#athar-N), not force scanning a whole chapter for it.
-        const atharNumbered = isAtharNumberedBook(parseBook(body).paragraphs);
-        if (atharNumbered && a.chunked) {
-          for (const c of a.chapters) {
-            for (const p of parseBook(c.content).paragraphs) {
-              const n = parseAtharNumber(p.text);
-              if (n === null) continue;
-              processDoc({
-                type: "book", book: e.id, person,
-                url: `/book/${e.id}/${c.slug}#athar-${n}`,
-                displayTitle: `${title} — الأثر ${toArabicDigits(n)}`,
-                title: searchTitle, text: strip(p.text),
-              });
-            }
-          }
-        } else if (atharNumbered) {
-          for (const p of parseBook(body).paragraphs) {
-            const n = parseAtharNumber(p.text);
-            if (n === null) continue;
-            processDoc({
-              type: "book", book: e.id, person,
-              url: `/book/${e.id}#athar-${n}`,
-              displayTitle: `${title} — الأثر ${toArabicDigits(n)}`,
-              title: searchTitle, text: strip(p.text),
-            });
-          }
-        } else if (a.chunked) {
+        if (a.chunked) {
           for (const c of a.chapters) {
             processDoc({
               type: "book", book: e.id, person,

@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: al-sraj-al-thqfy
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 313
 description: "حديث السراج، تأليف السراج الثقفي (ت 0313هـ)"
 ---

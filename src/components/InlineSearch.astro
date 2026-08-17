@@ -2,12 +2,12 @@
 // Real, always-live search that renders results right here — never a
 // "no matches, try the full search" hand-off elsewhere. Every keystroke
 // (debounced) queries the same D1 FTS index the header search uses, scoped
-// by whatever `params` narrows it to (e.g. {type: "quran"} for every ayah,
+// by whatever `params` narrows it to (e.g. {in: "<book-id>"} for one book,
 // {book: entry.id} for one specific book/poem's own pages — gen-search-index.ts
 // tags every doc row with its owning `book` id, so this one query param is
 // enough to search all of a chunked book's chapters at once, not just
 // whichever chapter happens to be open). A hit's `url` already points at the
-// right page (and, for quran/athar-numbered narrations, the exact anchor).
+// right page.
 interface Props { placeholder: string; params: Record<string, string>; emptyText?: string }
 const { placeholder, params, emptyText = "لا نتائج مطابقة." } = Astro.props;
 const paramsQs = new URLSearchParams(params).toString();

@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: al-bukhari
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 256
 description: "خلق أفعال العباد للبخاري، تأليف البخاري (ت 0256هـ)"
 ---

@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: al-fakhy-abw-abd-al-lh
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 272
 description: "أخبار مكة للفاكهي، تأليف الفاكهي، أبو عبد الله (ت 0272هـ)"
 ---

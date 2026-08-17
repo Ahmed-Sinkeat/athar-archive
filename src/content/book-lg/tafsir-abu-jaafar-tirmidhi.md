@@ -4,7 +4,6 @@ status: published
 published_at: 2026-07-18
 person: abu-jaafar-tirmidhi
 kind: مرجع
-genre: قرآن
 topics: ["tafsir-al-quran"]
 ---
 ## المقدمة

@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: al-firyabi
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 301
 description: "القدر للفريابي مخرجا، تأليف الفريابي (ت 0301هـ)"
 ---

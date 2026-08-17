@@ -4,7 +4,6 @@ status: published
 published_at: 2026-07-06
 person: ibn-hajar
 kind: متن
-genre: حديث
 topics: ["mustalah-al-hadith"]
 authored_year: 852
 description: "نخبة الفكر في مصطلح أهل الأثر للحافظ ابن حجر العسقلاني"

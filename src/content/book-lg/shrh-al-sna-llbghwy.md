@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: al-bghwy-abw-mhmd
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 516
 description: "شرح السنة للبغوي، تأليف البغوي ، أبو محمد (ت 0516هـ)"
 ---

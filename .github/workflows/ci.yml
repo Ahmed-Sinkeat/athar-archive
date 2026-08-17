@@ -65,7 +65,7 @@ jobs:
       - name: Install
         run: pnpm install --frozen-lockfile
 
-      # Build-time data (97MB tafsir index etc.) lives in R2, not git LFS —
+      # Build-time data (the largest book markdown) lives in R2, not git LFS —
       # LFS's 1GB/month bandwidth quota kept killing CI; R2 egress is free.
       - name: Fetch build data from R2
         run: pnpm data:fetch
@@ -81,7 +81,7 @@ jobs:
       # build-primary/build-chapters were split out — sync and build had gone
       # back to running as one process, piling content-parsing memory on top
       # of Vite's render-phase memory instead of releasing it in between.
-      # Content grew ~1GB since (198 more hadith books, several 50-80MB each)
+      # Content grew ~1GB since (198 more imported books, several 50-80MB each)
       # on top of an already-large corpus, enough to OOM even the 7GB runner
       # doing both in one go (2026-07-29). Same fix, same reasoning: sync
       # exits and V8 releases its parsing memory before build starts fresh.
@@ -93,7 +93,7 @@ jobs:
       - name: Unit tests
         run: pnpm test
 
-      - name: Build data prep (validate content, takhrij, tafsir keys)
+      - name: Validate content
         run: pnpm build:prep
 
       - name: Build (Astro prerender — regular routes only, zero chapters)
@@ -156,12 +156,7 @@ jobs:
         env:
           NODE_OPTIONS: --max-old-space-size=6656
 
-      # Every shard needs takhrij.json / quran-tafsir-keys.json on disk before
-      # astro build (route modules import them at load time regardless of
-      # which shard's getStaticPaths actually uses them) — cheap (~2min), run
-      # it in every shard rather than plumb the generated files through as
-      # another artifact.
-      - name: Build data prep (validate content, takhrij, tafsir keys)
+      - name: Validate content
         run: pnpm build:prep
 
       - name: Build (Astro prerender — this shard's slice of chapters only)
@@ -218,8 +213,7 @@ jobs:
       - name: Install
         run: pnpm install --frozen-lockfile
 
-      # gen-tafsir-frags.ts (part of build:finish below) reads the tafsir
-      # index directly, same as the build job.
+      # build:finish needs the large book markdown on disk, same as the build job.
       - name: Fetch build data from R2
         run: pnpm data:fetch
 
@@ -304,7 +298,7 @@ jobs:
       # upload/download step was hitting the repo's Actions storage quota
       # (16.7k files per run). Same job already holds CLOUDFLARE_API_TOKEN
       # for the R2 binding above, so no security separation is lost.
-      # Prerendered chapter pages + tafsir fragments are served from R2 at
+      # Prerendered chapter pages are served from R2 at
       # request time (see docs/deploy.md). This MUST run before the Worker
       # deploy and MUST succeed: the pages reference this build's hashed
       # /_astro/*.css files, so deploying the Worker/assets first (or with a
@@ -320,7 +314,7 @@ jobs:
       # a deployed Worker = new chapters 404ing).
       - name: Upload chapter pages to R2
         if: github.ref == 'refs/heads/main' && github.event_name == 'push' && env.CLOUDFLARE_API_TOKEN != ''
-        # 40, not 20: the hadith-book import's first full upload measured
+        # 40, not 20: the bulk import's first full upload measured
         # ~58 files/sec at CONCURRENCY=64 (run 30515310645, 2026-07-30) — 84977
         # new files needs ~24.4min, past the old 20min cap. One-time backlog;
         # steady-state uploads only carry the files that actually changed.
@@ -394,80 +388,3 @@ jobs:
             pnpm exec wrangler d1 execute athar-search --remote -y --file "$f" || { echo "::warning::D1 import failed for $f — continuing to next file"; fail=1; }
           done
           exit $fail
-
-  # Manual-only (workflow_dispatch), independent of the build job above — for
-  # merging a book's freshly-extracted per-ayah tafsir notes into the shared
-  # build-data/quran-tafsir-index.json on R2 without pulling/pushing a ~100MB
-  # file over a contributor's own (possibly metered) connection. Idempotent:
-  # gen-tafsir-index-muqatil.ts --merge dedupes by sourceSlug, so re-running
-  # this after the index already has a book's notes is a no-op.
-  sync-tafsir-index:
-    if: github.event_name == 'workflow_dispatch'
-    runs-on: ubuntu-latest
-    env:
-      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          lfs: false
-      - uses: pnpm/action-setup@v4
-        with:
-          version: 11
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: pnpm
-      - name: Install
-        run: pnpm install --frozen-lockfile
-      - name: Fetch current build data from R2
-        run: pnpm data:fetch
-      - name: Merge مقاتل بن سليمان's per-ayah tafsir notes
-        run: pnpm exec tsx scripts/gen-tafsir-index-muqatil.ts src/content/book-lg/tfsyr-mqatl-bn-slyman.md --merge
-      - name: Upload merged index back to R2
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: r2 object put athar-book-assets/build-data/quran-tafsir-index.json --file src/data/quran-tafsir-index.json --remote
-
-  # Manual-only, runs AFTER sync-tafsir-index (needs:) so the two dispatch jobs
-  # can't race on the shared index object. Re-extracts ابن أبي زمنين with the
-  # corrected leading-header semantics + content-driven misprint relocation
-  # (--replace strips the old systematically-shifted placements first), audits
-  # every resulting range against the mushaf (exit 1 blocks the upload), then
-  # pushes the fixed index back to R2. Rerun the latest main deploy afterwards
-  # so the tafsir fragments regenerate from the fixed index.
-  fix-zamanin-index:
-    if: github.event_name == 'workflow_dispatch'
-    needs: sync-tafsir-index
-    runs-on: ubuntu-latest
-    env:
-      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          lfs: false
-      - uses: pnpm/action-setup@v4
-        with:
-          version: 11
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: pnpm
-      - name: Install
-        run: pnpm install --frozen-lockfile
-      - name: Fetch current build data from R2
-        run: pnpm data:fetch
-      - name: Re-extract ابن أبي زمنين (replace mode)
-        run: pnpm exec tsx scripts/gen-tafsir-index-zamanin.ts src/content/book-lg/tafsir-al-quran-al-aziz-ibn-abi-zamanin.md --replace
-      - name: Audit every zamanin range against the mushaf
-        run: pnpm exec tsx scripts/fix-tafsir-index-zamanin.ts
-      - name: Gzip + upload fixed index to R2
-        run: gzip -kf src/data/quran-tafsir-index.json
-      - uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: r2 object put athar-book-assets/build-data/quran-tafsir-index.json.gz --file src/data/quran-tafsir-index.json.gz --remote

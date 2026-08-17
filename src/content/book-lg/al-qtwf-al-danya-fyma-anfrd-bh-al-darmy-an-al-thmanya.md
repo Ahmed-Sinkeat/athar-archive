@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: marzouq-al-zahrani
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 1442
 description: "القطوف الدانية فيما انفرد به الدارمي عن الثمانية، تأليف مرزوق بن هياس الزهراني (ت 1442هـ)"
 ---

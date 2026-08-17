@@ -110,8 +110,6 @@ const book = defineCollection({
     person: slug.optional(),           // → Person (author, unknown/anonymous allowed)
     // study classification — drives the متن badge + study modes (poems are always متن)
     kind: z.enum(["كتاب", "متن", "مرجع", "مجموع"]).optional(),
-    // section beyond kind — routes to /quran /hadith /tarajim (still also under /books)
-    genre: z.enum(["قرآن", "حديث", "تراجم"]).optional(),
     // a شرح/تعليق of another book (فتح المجيد → كتاب التوحيد) — drives the parent's
     // "شروحه وتعليقاته" list. The lesson/series split was retired: a درس is a book
     // with audio; a سلسلة شرح is a book with sharh_of.
@@ -123,8 +121,6 @@ const book = defineCollection({
     work_type: workTypeField,
     // دروس مفرّغة (audio transcribed to text) — review state shown as a pill.
     transcript_status: z.enum(["مراجَع", "قيد المراجعة"]).optional(),
-    // تصنيف كتب الحديث — drives facets on /hadith
-    hadith_category: z.enum(["امهات الكتب", "كتب الآثار", "أجزاء حديثية", "تخريج", "علل", "عام"]).optional(),
     topics: topicsField,
     authored_year: z.number().int().optional(), // hijri سنة التصنيف — default browse sort
     description: z.string().optional(),
@@ -205,7 +201,7 @@ const annotation = defineCollection({
   schema: z
     .object({
       ...shared,
-      target_type: z.enum(["book", "poem", "quran"]),  // required
+      target_type: z.enum(["book", "poem"]),   // required
       target_id: slug,                         // required
       anchor: z.string().min(1),               // e.g., "v5", "p3", heading slug
       // kind drives the note label/accent in the reader (شرح/حاشية/تخريج/إعراب)
@@ -270,19 +266,6 @@ const term = defineCollection({
   }),
 });
 
-// --- 16. Quran (المصحف) — 114 surah entries parsed from mushaf epub ---
-
-const quran = defineCollection({
-  loader: glob({ pattern: "**/*.md", base: "./src/content/quran" }),
-  schema: z.object({
-    ...shared,
-    number: z.number().int().min(1).max(114),
-    name: z.string().min(1),       // Arabic name without سورة prefix
-    start_page: z.number().int().min(1).max(604),
-    ayah_count: z.number().int().positive(),
-  }),
-});
-
 // --- export ---
 
 export const collections = {
@@ -298,5 +281,4 @@ export const collections = {
   announcement,
   highlight,
   term,
-  quran,
 };

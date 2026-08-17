@@ -41,7 +41,7 @@ build, **ranked**. Living doc — updated each phase alongside `asbuild.md`.
 | 🟠 | Domain extension `.net` vs `.com` undecided | Ratified **`.com`** in P5 (D11). |
 | 🟡 | `verse_count`/`opening_verse` hand-stored vs derived | Made derived-only in P2 (D3, FR-C-06). |
 | 🟡 | **Real content corpus not seeded** (was #7) | Long past — corpus is now 6,000+ content entries (`pnpm validate:content`, 2026-07). |
-| 🟠 | **R2 media bucket empty** (was #12) | `athar-book-assets` bucket is live and populated (~2.5GB, see `docs/deploy.md`'s usage table); chapter pages + tafsir fragments served from it in production. |
+| 🟠 | **R2 media bucket empty** (was #12) | `athar-book-assets` bucket is live and populated (~2.5GB, see `docs/deploy.md`'s usage table); chapter pages served from it in production. |
 
 ---
 

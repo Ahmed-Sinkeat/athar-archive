@@ -4,7 +4,6 @@ status: review
 published_at: 2026-07-18
 person: muhyi-al-din-darwish
 kind: مرجع
-genre: قرآن
 topics: ["ulum-al-quran"]
 ---
 ## المقدمة

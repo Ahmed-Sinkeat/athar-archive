@@ -3,7 +3,6 @@ title: "تفسير عبد الرزاق الصنعاني"
 status: published
 published_at: 2026-07-16
 person: abd-al-razzaq-al-sanani
-genre: قرآن
 topics: ["tafsir-al-quran"]
 authored_year: 211
 description: "تفسير عبد الرزاق بن همام الصنعاني، من أقدم تفاسير القرآن المسندة الواصلة إلينا"

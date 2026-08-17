@@ -3,7 +3,6 @@
 // in Base.astro applies theme/scale/vnums before first paint to avoid flash.
 
 import { stripTashkeel, reciterOf } from "../lib/display";
-import { TAJWEED_COLORS, TAJWEED_PRESETS } from "../lib/tajweed";
 
 const LS = {
   theme: "aa-theme",
@@ -20,7 +19,6 @@ const LS = {
   annSource: "aa-ann-source",
   annPinned: "aa-ann-pinned",
   followAudio: "aa-follow-audio",
-  tajweedColors: "aa-tajweed-colors",
   favorites: "aa-favorites",
 };
 
@@ -187,41 +185,6 @@ function applyFollowAudioHighlight(currentTime: number) {
   }
 }
 
-// --- tajweed color overrides (quran surah pages only, see .tajweed-only) ---
-// Stored as override-only entries (rule -> hex). The page's own CSS reads
-// var(--tw-user-RULE, var(--RULE)) (see [surah].astro) — an unset rule here
-// just falls through to the build-time default, no extra bookkeeping needed.
-function getTajweedOverrides(): Record<string, string> {
-  try {
-    return JSON.parse(localStorage.getItem(LS.tajweedColors) || "{}");
-  } catch {
-    return {};
-  }
-}
-function applyTajweedColor(rule: string, hex: string, persist = true) {
-  root.style.setProperty(`--tw-user-${rule}`, hex);
-  const input = document.querySelector<HTMLInputElement>(`[data-tajweed-color="${rule}"]`);
-  if (input) input.value = hex;
-  if (!persist) return;
-  const overrides = getTajweedOverrides();
-  overrides[rule] = hex;
-  localStorage.setItem(LS.tajweedColors, JSON.stringify(overrides));
-}
-function applyTajweedPreset(name: keyof typeof TAJWEED_PRESETS) {
-  for (const [rule, hex] of Object.entries(TAJWEED_PRESETS[name])) applyTajweedColor(rule, hex);
-}
-function resetTajweedColors() {
-  localStorage.removeItem(LS.tajweedColors);
-  for (const [rule, hex] of Object.entries(TAJWEED_COLORS)) {
-    root.style.removeProperty(`--tw-user-${rule}`);
-    const input = document.querySelector<HTMLInputElement>(`[data-tajweed-color="${rule}"]`);
-    if (input) input.value = hex;
-  }
-}
-function syncTajweedColors() {
-  for (const [rule, hex] of Object.entries(getTajweedOverrides())) applyTajweedColor(rule, hex, false);
-}
-
 // --- cross-deploy soft-nav guard ---
 // A ClientRouter soft-nav that lands on a page built AFTER this module was
 // compiled runs the new build's scripts alongside this still-alive module —
@@ -244,8 +207,8 @@ document.addEventListener("astro:page-load", () => {
   location.reload();
 });
 
-// --- تسميع (memorization) mode — poem/quran pages only ---
-// Blur the "answer" (poem عجز / quran ayah text) until the reader taps it.
+// --- تسميع (memorization) mode — poem pages only ---
+// Blur the "answer" (the poem's عجز) until the reader taps it.
 // A per-session activity, deliberately NOT persisted: nobody wants
 // yesterday's blur greeting them when they come back just to read.
 function applyTasmi(on: boolean) {
@@ -258,12 +221,12 @@ function applyTasmi(on: boolean) {
 }
 // Reveal on tap — capture phase so it wins over the ann-sheet's bubble
 // listener: the first tap on an annotated verse reveals, the second opens
-// the sheet. Links and buttons (ayah tafsir numbers) keep working normally.
+// the sheet. Links and buttons keep working normally.
 document.addEventListener("click", (e) => {
   if (!root.classList.contains("tasmi-mode")) return;
   const t = e.target as HTMLElement;
   if (t.closest("a, button")) return;
-  const unit = t.closest<HTMLElement>(".verses .verse, .ayah-list .ayah");
+  const unit = t.closest<HTMLElement>(".verses .verse");
   if (!unit || unit.classList.contains("tasmi-revealed")) return;
   unit.classList.add("tasmi-revealed");
   e.preventDefault();
@@ -509,10 +472,6 @@ const actions: Record<string, () => void> = {
   "tap:open": () => { import("./timing-capture.ts").then((m) => m.openTapPanel()); },
   "toggle:footnotes": () => applyFootnotes(root.classList.contains("hide-footnotes")),
   "toggle:tasmi": () => applyTasmi(!root.classList.contains("tasmi-mode")),
-  "tajweed:preset:default": () => resetTajweedColors(),
-  "tajweed:preset:vivid": () => applyTajweedPreset("vivid"),
-  "tajweed:preset:muted": () => applyTajweedPreset("muted"),
-  "tajweed:reset": () => resetTajweedColors(),
   "theme:paper": () => setTheme("paper"),
   "theme:noir": () => setTheme("noir"),
   "theme:mono": () => setTheme("mono"),
@@ -545,25 +504,10 @@ const actions: Record<string, () => void> = {
     el.open = !el.open;
     if (el.open) el.scrollIntoView({ block: "nearest" });
   },
-  // long-page shortcuts (surah pages' floating buttons)
+  // long-page shortcuts (floating buttons on very long pages)
   "scroll:top": () => window.scrollTo({ top: 0, behavior: "smooth" }),
   "scroll:bottom": () => window.scrollTo({ top: document.documentElement.scrollHeight, behavior: "smooth" }),
 };
-
-// "إلى الآية…" jump input (surah sidebar) — delegated so it survives soft navs.
-// Ayah spans carry their bare number as the element id.
-document.addEventListener("keydown", (e) => {
-  const inp = (e.target as HTMLElement).closest?.<HTMLInputElement>("[data-ayah-jump]");
-  if (!inp || e.key !== "Enter") return;
-  e.preventDefault();
-  const n = parseInt(inp.value, 10);
-  const el = n >= 1 ? document.getElementById(String(n)) : null;
-  if (!el) return;
-  el.scrollIntoView({ behavior: "smooth", block: "center" });
-  // close the mobile sidebar popup if the jump came from inside it
-  const details = inp.closest<HTMLDetailsElement>("[data-mobile-sidebar]");
-  if (details) details.open = false;
-});
 
 document.addEventListener("click", (e) => {
   const el = (e.target as HTMLElement).closest<HTMLElement>("[data-action]");
@@ -584,31 +528,6 @@ document.addEventListener("click", (e) => {
 document.addEventListener("click", (e) => {
   if ((e.target as HTMLElement).closest("[data-drawer-backdrop]")) setDrawer(false);
 });
-// tajweed advanced picker — "input" fires continuously while dragging, so the
-// text updates live instead of only on release.
-document.addEventListener("input", (e) => {
-  const el = e.target as HTMLElement;
-  if (el instanceof HTMLInputElement && el.dataset.tajweedColor) applyTajweedColor(el.dataset.tajweedColor, el.value);
-});
-
-// topbar Quran juz/page jump (persisted header, bound once)
-document.addEventListener("change", (e) => {
-  const el = e.target as HTMLElement;
-  if (!el.matches("[data-quran-jump-juz]")) return;
-  const href = (el as HTMLSelectElement).value;
-  if (href) location.href = href;
-});
-document.addEventListener("keydown", (e) => {
-  const el = e.target as HTMLElement;
-  if (!el.matches("[data-quran-jump-page]") || e.key !== "Enter") return;
-  const n = parseInt((el as HTMLInputElement).value, 10);
-  if (!(n >= 1 && n <= 604)) return;
-  const pages: { id: string; start: number }[] = JSON.parse(document.querySelector('script[data-quran-surah-pages]')?.textContent || "[]");
-  let s = pages[0];
-  for (const cand of pages) { if (cand.start <= n) s = cand; else break; }
-  if (s) location.href = `/quran/${s.id}#p${n}`;
-});
-
 // book page/volume jump (BookPageJump.astro) — rendered twice by
 // ReaderSidebar (desktop aside + mobile popup), so this is event-delegated
 // rather than keyed by id.
@@ -1145,7 +1064,7 @@ function enhanceProse() {
   });
 }
 
-// --- annotation bottom-sheet (Quran-app style) ---
+// --- annotation bottom-sheet ---
 // Tap a verse (or a highlighted phrase) → a sheet rises from the bottom with one
 // TAB per kind (شرح / إعراب / حاشية / تخريج), source CHIPS within a kind, and
 // prev/next between annotated anchors. All data comes from the hidden
@@ -1164,12 +1083,11 @@ function enhanceProse() {
   type DD = { root: HTMLElement; btn: HTMLButtonElement; label: HTMLElement; menu: HTMLElement };
   let sheet: HTMLElement | null = null;
   let scrimEl: HTMLElement | null = null;
-  let titleEl!: HTMLElement, ayahEl!: HTMLElement, bodyEl!: HTMLElement, footEl!: HTMLElement;
+  let titleEl!: HTMLElement, quoteEl!: HTMLElement, bodyEl!: HTMLElement, footEl!: HTMLElement;
   let kindRow!: HTMLElement, srcRow!: HTMLElement, srcDD!: DD;
-  let dlBtn: HTMLButtonElement | null = null, dlLabel!: HTMLElement;
   let activeVerse: HTMLElement | null = null;
-  // Reading preference, not per-ayah state: once the user picks a tab/source,
-  // every later open (next/prev nav, a fresh ayah tap, even after closing the
+  // Reading preference, not per-anchor state: once the user picks a tab/source,
+  // every later open (next/prev nav, a fresh anchor tap, even after closing the
   // sheet, a page reload, or a brand new visit) should keep showing it —
   // persisted to localStorage, and only silently falls back (to
   // kinds[0]/entries[0]) when the new anchor doesn't have that kind or
@@ -1215,12 +1133,12 @@ function enhanceProse() {
     head.className = "ann-sheet-head";
     titleEl = document.createElement("span");
     titleEl.className = "ann-sheet-title";
-    ayahEl = document.createElement("span");
-    ayahEl.className = "ann-sheet-ayah"; ayahEl.hidden = true; ayahEl.setAttribute("data-ar", "");
+    quoteEl = document.createElement("span");
+    quoteEl.className = "ann-sheet-ayah"; quoteEl.hidden = true; quoteEl.setAttribute("data-ar", "");
     const x = document.createElement("button");
     x.type = "button"; x.className = "ann-sheet-close"; x.setAttribute("aria-label", "إغلاق"); x.textContent = "×";
     x.addEventListener("click", close);
-    head.append(titleEl, ayahEl, x);
+    head.append(titleEl, quoteEl, x);
     const controls = document.createElement("div"); controls.className = "ann-sheet-controls";
     // kinds + pinned sources are always-visible chip rows; the dropdown only
     // remains as the "all sources" list where each source carries a pin toggle
@@ -1228,15 +1146,7 @@ function enhanceProse() {
     srcRow = document.createElement("div"); srcRow.className = "ann-chips ann-srcs";
     srcDD = makeDropdown("source");
     srcDD.label.textContent = "كل المصادر";
-    // "download this tafsir" (quran per-source fragments only — see updateDlBtn):
-    // downloads.ts's delegated download:toggle handler does the actual work,
-    // fetching the source's /tafsir-dl/<slug>.json url list.
-    dlBtn = document.createElement("button");
-    dlBtn.type = "button"; dlBtn.className = "ann-dl-tafsir"; dlBtn.hidden = true;
-    dlBtn.dataset.action = "download:toggle"; dlBtn.dataset.dlKind = "tafsir"; dlBtn.dataset.dlPath = "/quran/mushaf";
-    dlLabel = document.createElement("span"); dlLabel.setAttribute("data-dl-label", "");
-    dlBtn.append(dlLabel);
-    controls.append(kindRow, srcRow, srcDD.root, dlBtn);
+    controls.append(kindRow, srcRow, srcDD.root);
     bodyEl = document.createElement("div"); bodyEl.className = "ann-sheet-body"; bodyEl.setAttribute("data-ar", "");
     footEl = document.createElement("div"); footEl.className = "ann-sheet-foot";
     sheet.append(head, controls, bodyEl, footEl);
@@ -1327,21 +1237,11 @@ function enhanceProse() {
     // still free to move even though the sidebar rule sets both.
   }
 
-  // Quran pack fragments are fetched on demand and only exist in the DOM once
-  // opened, so [data-ann-pack] alone would only ever list ayat already tapped
-  // this session — the ayah-number buttons are all present from first render
-  // and cover the whole surah, so prefer them when available (quran pages only).
-  const packIds = () => {
-    const btnIds = [...document.querySelectorAll<HTMLElement>(".ayah-num-btn[data-ann]")].map((b) => b.dataset.ann!);
-    if (btnIds.length) return btnIds;
-    return [...document.querySelectorAll<HTMLElement>("[data-ann-pack]")].map((p) => p.id);
-  };
+  const packIds = () => [...document.querySelectorAll<HTMLElement>("[data-ann-pack]")].map((p) => p.id);
 
   function anchorLabel(pack: HTMLElement): string {
     const mPage = pack.id.match(/^ann-page-(\d+)$/);
     if (mPage) return `الصفحة ${toAr(+mPage[1])}`;
-    const mQuran = pack.id.match(/^ann-quran-(\d+)-(\d+)$/);
-    if (mQuran) return `الآية ${toAr(+mQuran[2])}`;
     const verse = pack.closest<HTMLElement>(".verse");
     const n = verse?.querySelector(".vnum")?.textContent?.trim();
     if (n) return `البيت ${n}`;
@@ -1362,41 +1262,8 @@ function enhanceProse() {
   const sourceLabel = (en: HTMLElement, i: number) =>
     (en.getAttribute("data-label") || "").split(" — ")[1] || `المصدر ${toAr(i + 1)}`;
 
-  // Quran stubs declare their source's body file in data-lazy-src (per-source
-  // fragments, gen-tafsir-frags.ts v2) — fetched the first time that source is
-  // actually shown, then cached in the stub for instant re-shows. Poems/books
-  // keep their build-time inline entries and never hit the lazy path.
-  let showSeq = 0;
-  // Shared by showEntry (needs the result rendered) and prefetchNeighbors
-  // (fire-and-forget, just wants the body cached on `en` before it's needed) —
-  // in-flight fetches for the same entry are deduped via a WeakMap so a
-  // prefetch and a real open racing each other don't double-fetch.
-  const inflight = new WeakMap<HTMLElement, Promise<void>>();
-  function fetchEntryBody(en: HTMLElement): Promise<void> {
-    if (en.querySelector(".ann-entry-body")) return Promise.resolve();
-    const lazy = en.getAttribute("data-lazy-src");
-    if (!lazy) return Promise.resolve();
-    const existing = inflight.get(en);
-    if (existing) return existing;
-    const p = fetch(lazy)
-      .then((r) => (r.ok ? r.text() : ""))
-      .then((html) => {
-        if (html) {
-          const tpl = document.createElement("template");
-          tpl.innerHTML = html; // sanitized at build, same trust as v1 fragments
-          const loaded = tpl.content.querySelector(".ann-entry");
-          if (loaded && !en.querySelector(".ann-entry-body")) en.append(...loaded.childNodes);
-        }
-      })
-      .catch(() => {})
-      .finally(() => inflight.delete(en));
-    inflight.set(en, p);
-    return p;
-  }
   function showEntry(en: HTMLElement) {
-    const seq = ++showSeq; // a newer show wins over an in-flight fetch's render
-    updateDlBtn(en);
-    // stub declares the source exists but has nothing on THIS ayah — honest
+    // an entry can declare the source exists but say nothing here — honest
     // empty state instead of silently switching the reader to another author
     if (en.hasAttribute("data-missing")) {
       bodyEl.textContent = "ليس لهذا المصدرِ كلامٌ على هذه الآية.";
@@ -1416,19 +1283,13 @@ function enhanceProse() {
       }
       return;
     }
-    if (en.getAttribute("data-lazy-src") && !en.querySelector(".ann-entry-body")) {
-      bodyEl.textContent = "جارٍ تحميل التفسير…";
-      fetchEntryBody(en).then(() => { if (seq === showSeq) renderEntryBody(en); });
-      return;
-    }
     renderEntryBody(en);
   }
   function renderEntryBody(en: HTMLElement) {
     bodyEl.textContent = "";
     const src0 = en.querySelector(".ann-entry-body");
     if (!src0) {
-      // lazy fetch failed — most likely offline without this tafsir downloaded
-      bodyEl.textContent = "تعذَّر تحميلُ هذا التفسير — تحقَّقْ من اتصالك، أو نزِّلْهُ كاملًا من زرِّ التنزيل أعلاه ليُقرأَ دون اتصال.";
+      bodyEl.textContent = "تعذَّر عرضُ هذا الشرح.";
       return;
     }
     bodyEl.append(...[...src0.cloneNode(true).childNodes]); // already sanitized at build
@@ -1439,24 +1300,6 @@ function enhanceProse() {
       bodyEl.appendChild(a);
     }
   }
-  // Only quran per-source entries get the download button; label reflects the
-  // manifest downloads.ts maintains (same localStorage key).
-  function updateDlBtn(en: HTMLElement) {
-    if (!dlBtn) return;
-    // data-slug on v2.1 stubs (present AND missing entries); lazy-src parse
-    // keeps v2.0 stubs already in R2 working until they're re-uploaded
-    const slug = en.getAttribute("data-slug") ||
-      ((en.getAttribute("data-lazy-src") || "").match(/\.([a-z0-9-]+)\.html$/)?.[1] ?? "");
-    if (!slug) { dlBtn.hidden = true; return; }
-    dlBtn.dataset.dlId = slug;
-    dlBtn.dataset.dlTitle = (en.getAttribute("data-label") || "").split(" — ")[1] || slug;
-    let has = false;
-    try { has = !!JSON.parse(localStorage.getItem("aa-downloads-manifest") || "{}")[`tafsir:${slug}`]; } catch { /* ignore */ }
-    dlBtn.setAttribute("aria-pressed", String(has));
-    dlLabel.textContent = has ? "متوفرٌ دون اتصال — إزالة" : "تنزيل هذا التفسير كاملًا";
-    dlBtn.hidden = false;
-  }
-
   // Pinned sources = which (up to 5) sources render as always-visible chips.
   // Persisted by label; pinning a sixth drops the oldest pin.
   const getPinned = (): string[] => {
@@ -1470,9 +1313,9 @@ function enhanceProse() {
     srcDD.menu.querySelectorAll(".ann-dd-item").forEach((c, j) => c.setAttribute("aria-selected", String(j === i)));
     renderSrcChips(i); // re-render, not just re-highlight: an unpinned pick still gets a visible chip
     // Only an explicit pick should update the remembered preference — the
-    // initial render can itself be a forced fallback (this ayah lacks the
+    // initial render can itself be a forced fallback (this anchor lacks the
     // remembered source), and that must not overwrite the preference for
-    // ayat that still have it.
+    // anchors that still have it.
     if (remember) { lastSourceLabel = sourceLabel(en, i); localStorage.setItem(LS.annSource, lastSourceLabel); }
     closeMenus();
     showEntry(en);
@@ -1571,70 +1414,13 @@ function enhanceProse() {
       b.type = "button"; b.className = "ann-nav " + cls; b.textContent = label;
       if (!targetId) { b.disabled = true; return b; }
       b.addEventListener("click", () => {
-        const jump = () => {
-          (document.getElementById(targetId)?.closest(".verse") || document.getElementById(targetId))
-            ?.scrollIntoView({ behavior: "smooth", block: "center" });
-          openSheet(targetId);
-        };
-        // quran packs are fetched fragments, only appended to <body> once opened
-        // — prev/next used to only reach ayat already tapped this session
-        // because packIds() (and thus this button's target) only counted packs
-        // already in the DOM. The ayah-number buttons cover the whole surah
-        // from first render, so use them to resolve + fetch a not-yet-opened
-        // target instead of silently doing nothing.
-        if (document.getElementById(targetId)) { jump(); return; }
-        const srcBtn = document.querySelector<HTMLElement>(`[data-ann="${targetId}"][data-ann-src]`);
-        const annSrc = srcBtn?.dataset.annSrc;
-        if (!annSrc) return;
-        fetch(annSrc).then((r) => (r.ok ? r.text() : "")).then((html) => {
-          if (html) document.body.insertAdjacentHTML("beforeend", html);
-          jump();
-        });
+        (document.getElementById(targetId)?.closest(".verse") || document.getElementById(targetId))
+          ?.scrollIntoView({ behavior: "smooth", block: "center" });
+        openSheet(targetId);
       });
       return b;
     };
     footEl.append(nav("‹ السابق", ids[i - 1], "ann-prev"), nav("التالي ›", ids[i + 1], "ann-next"));
-  }
-
-  // Quran packs are fetched on open, so hitting "next" cold means a network
-  // round trip before the sheet can update — quietly warm both neighbors'
-  // fragments right after the current one renders, so by the time the user
-  // actually clicks next/prev the fetch (usually) already happened. Also warm
-  // whichever entry's BODY next/prev would actually land on (same default-pick
-  // logic as openSheet/renderSourceMenu) — the pack stub alone still leaves a
-  // "جارٍ تحميل…" flash for the per-source fetch underneath it.
-  function prefetchDefaultBody(pack: HTMLElement) {
-    const byKind = entriesByKind(pack);
-    const kinds = [...byKind.keys()].sort((a, b) => {
-      const ia = KIND_ORDER.indexOf(a), ib = KIND_ORDER.indexOf(b);
-      return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib);
-    });
-    const firstWithContent = kinds.find((k) => byKind.get(k)!.some((en) => !en.hasAttribute("data-missing")));
-    const kind = lastKind && byKind.has(lastKind) ? lastKind : (firstWithContent ?? kinds[0]);
-    const entries = kind ? byKind.get(kind) : undefined;
-    if (!entries?.length) return;
-    const remembered = lastSourceLabel ? entries.findIndex((en, i) => sourceLabel(en, i) === lastSourceLabel) : -1;
-    const firstPresent = entries.findIndex((en) => !en.hasAttribute("data-missing"));
-    const entry = entries[remembered >= 0 ? remembered : Math.max(firstPresent, 0)];
-    if (entry) fetchEntryBody(entry);
-  }
-  function prefetchNeighbors(packId: string) {
-    const ids = packIds();
-    const i = ids.indexOf(packId);
-    for (const targetId of [ids[i - 1], ids[i + 1]]) {
-      if (!targetId) continue;
-      const existing = document.getElementById(targetId);
-      if (existing) { prefetchDefaultBody(existing); continue; }
-      const srcBtn = document.querySelector<HTMLElement>(`[data-ann="${targetId}"][data-ann-src]`);
-      const annSrc = srcBtn?.dataset.annSrc;
-      if (!annSrc) continue;
-      fetch(annSrc).then((r) => (r.ok ? r.text() : "")).then((html) => {
-        if (!html || document.getElementById(targetId)) return;
-        document.body.insertAdjacentHTML("beforeend", html);
-        const pack = document.getElementById(targetId);
-        if (pack) prefetchDefaultBody(pack);
-      }).catch(() => {});
-    }
   }
 
   function openSheet(packId: string, entryIndex = 0) {
@@ -1642,26 +1428,16 @@ function enhanceProse() {
     if (!pack) return;
     build();
     if (activeVerse) activeVerse.classList.remove("ann-active-verse");
-    // quran packs are fetched fragments appended to <body>, so closest(".verse")
-    // finds nothing — resolve the ayah span from the pack id instead
-    const mQuran = packId.match(/^ann-quran-\d+-(\d+)$/);
-    activeVerse =
-      pack.closest<HTMLElement>(".verse") ??
-      (mQuran ? document.getElementById(mQuran[1])?.closest<HTMLElement>(".verse") ?? null : null);
+    activeVerse = pack.closest<HTMLElement>(".verse");
     activeVerse?.classList.add("ann-active-verse");
 
     titleEl.textContent = anchorLabel(pack);
-    // sheet head shows the anchored text itself, single line + ellipsis — ayat
-    // (.ayah-text) and poem bayts (.sadr/.ajz) are mutually exclusive markup,
-    // so one derivation covers both without an ann-panel/content-type check
-    const ayahText = activeVerse?.querySelector(".ayah-text")?.textContent?.trim();
-    const baytText = !ayahText
-      ? [activeVerse?.querySelector(".sadr")?.textContent?.trim(), activeVerse?.querySelector(".ajz")?.textContent?.trim()]
-          .filter(Boolean).join("  —  ")
-      : "";
-    ayahEl.hidden = !ayahText && !baytText;
-    ayahEl.classList.toggle("is-bayt", !!baytText);
-    ayahEl.textContent = ayahText ? `﴿ ${ayahText} ﴾` : baytText;
+    // sheet head shows the anchored text itself (a poem بيت), single line + ellipsis
+    const baytText = [activeVerse?.querySelector(".sadr")?.textContent?.trim(), activeVerse?.querySelector(".ajz")?.textContent?.trim()]
+      .filter(Boolean).join("  —  ");
+    quoteEl.hidden = !baytText;
+    quoteEl.classList.toggle("is-bayt", !!baytText);
+    quoteEl.textContent = baytText;
     const byKind = entriesByKind(pack);
     // ALL kinds always listed (user: ابن أبي الدنيا's تعليق tab must stay
     // reachable even on ayat he skipped) — same always-show philosophy as the
@@ -1680,7 +1456,6 @@ function enhanceProse() {
     sheet!.hidden = false;
     requestAnimationFrame(() => sheet!.classList.add("is-shown"));
     if (scrimEl) { scrimEl.hidden = false; requestAnimationFrame(() => scrimEl!.classList.add("is-shown")); }
-    prefetchNeighbors(packId);
   }
 
   function close() {
@@ -1699,7 +1474,7 @@ function enhanceProse() {
     // now-detached button finds nothing, so this used to misread the click as
     // "outside the sheet" and immediately close it right after it reopened.
     if (e.composedPath().some((el) => el instanceof Element && el.classList.contains("ann-sheet"))) return;
-    // a click that ends a mobile long-press text-selection (copying a bayt/ayah)
+    // a click that ends a mobile long-press text-selection (copying a بيت)
     // fires on the same has-ann verse this listener opens the sheet for — without
     // this guard every attempt to select+copy annotated text got hijacked into
     // opening/reopening the sheet instead, clearing the selection mid-copy.
@@ -2114,7 +1889,6 @@ applyPages(localStorage.getItem(LS.pages) !== "flow");
 applyFootnotes(localStorage.getItem(LS.footnotes) !== "0");
 if (localStorage.getItem(LS.tashkeel) === "0") applyTashkeel(false);
 else document.querySelectorAll<HTMLElement>('[data-toggle="tashkeel"]').forEach((b) => b.setAttribute("aria-pressed", "true"));
-syncTajweedColors(); // CSS vars already applied pre-paint; this just syncs the picker swatches
 
 // The topbar is transition:persist — without this re-sync it keeps the FIRST
 // page's data-reading + reading title forever, showing a stale reading header
@@ -2205,10 +1979,8 @@ function onPage() {
   // ReaderSidebar (book chapters, small books, poems, articles)
   const hasSidebar = !!document.querySelector("[data-mobile-sidebar]");
   document.querySelectorAll<HTMLElement>('[data-action="sidebar:mobile-toggle"]').forEach((b) => { b.hidden = !hasSidebar; });
-  const quranJump = document.querySelector<HTMLElement>("[data-quran-jump]");
-  if (quranJump) quranJump.hidden = document.querySelector("main")?.dataset.activeNav !== "quran";
   // reading-settings gear: only meaningful on pages with actual body content
-  // to read (book/poem/article/quran/question), not browse/listing pages
+  // to read (book/poem/article/question), not browse/listing pages
   const isReadingPage = document.querySelector("main")?.dataset.reading === "1";
   syncTopbarFromMain();
   document.querySelectorAll<HTMLElement>('[data-action="settings:toggle"]').forEach((b) => { b.hidden = !isReadingPage; });
@@ -2227,13 +1999,6 @@ function onPage() {
   document.querySelectorAll<HTMLElement>('[data-action="tap:open"]').forEach((b) => {
     b.hidden = !(isPoemPage && hasAudio);
   });
-  // tashkeel/pages/footnotes act on regular book/poem markup this page doesn't
-  // have: the ayah text carries no [data-ar] (always fully diacritized, never
-  // stripped), its page-seps are forced visible with !important regardless of
-  // the "flow" class, and there are no inline footnote markers to hide — all
-  // three toggles are dead weight here, so hide them like verseNums above.
-  const isQuranPage = document.querySelector("main")?.dataset.activeNav === "quran";
-  document.querySelectorAll<HTMLElement>('[data-toggle="tashkeel"], [data-toggle="pages"], [data-toggle="footnotes"]').forEach((b) => { b.hidden = isQuranPage; });
   syncTocCurrent();
   initAudioBar();
 }

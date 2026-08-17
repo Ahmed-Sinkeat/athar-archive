@@ -58,7 +58,7 @@ const poemCard = (it: any) => {
 };
 
 // منظومةُ الأسبوع — same weekly rotation as the homepage's مختارات الأسبوع / the
-// حديث الأسبوع card on /hadith (moved here from the homepage per request)
+// weekly highlight on the homepage
 const publishedPoems = (await getCollection("poem")).filter((p) => p.data.status === "published");
 const wk = Math.floor(Date.now() / 6.048e8);
 const featured = publishedPoems.length ? publishedPoems[wk % publishedPoems.length] : null;

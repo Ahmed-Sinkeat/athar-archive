@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: mhmd-bn-al-hsn-al-shybany
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 189
 description: "الآثار لمحمد بن الحسن، تأليف محمد بن الحسن الشيباني (ت 0189هـ)"
 ---

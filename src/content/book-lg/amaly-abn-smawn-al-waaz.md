@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: abn-smawn-al-waaz
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 387
 description: "أمالي ابن سمعون الواعظ، تأليف ابن سمعون الواعظ (ت 0387هـ)"
 ---

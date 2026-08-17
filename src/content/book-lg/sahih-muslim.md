@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-27
 person: muslim-ibn-al-hajjaj
 kind: متن
-genre: حديث
-hadith_category: "امهات الكتب"
 authored_year: 261
 description: "صحيح مسلم، تأليف مسلم (ت 0261هـ)"
 ---

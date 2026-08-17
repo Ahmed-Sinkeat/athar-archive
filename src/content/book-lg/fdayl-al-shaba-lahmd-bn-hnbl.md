@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: ahmad-ibn-hanbal
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 241
 description: "فضائل الصحابة لأحمد بن حنبل، تأليف أحمد بن حنبل (ت 0241هـ)"
 ---

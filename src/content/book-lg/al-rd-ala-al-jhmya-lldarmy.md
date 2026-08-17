@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: al-darmy-abw-sayd
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 280
 description: "الرد على الجهمية للدارمي، تأليف الدارمي، أبو سعيد (ت 0280هـ)"
 ---

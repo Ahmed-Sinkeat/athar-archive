@@ -27,17 +27,11 @@ scripts/pagefind-spike/site/pagefind/
 import-output/
 
 # build data fetched from R2 (pnpm data:fetch) — was git LFS, quota kept killing CI
-src/data/quran-tafsir-index.json
-src/data/hadith-index.json
-src/data/takhrij.json
-# derived from quran-tafsir-index.json by gen-tafsir-keys.ts, runs before astro build
-src/data/quran-tafsir-keys.json
 src/content/book-lg/tafsir-ibn-kathir.md
 src/content/book-lg/tafsir-muyassar.md
 src/content/book-lg/al-bidayah-wal-nihayah.md
 src/content/book-lg/majmu-al-fatawa.md
 src/content/book-lg/tafsir-tabari.md
-src/data/*-tafsir-index.preview.json
 
 # Obsidian vault config (opened src/content as a vault locally)
 .obsidian/

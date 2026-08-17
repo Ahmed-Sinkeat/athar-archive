@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: al-qdaay
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 454
 description: "مسند الشهاب القضاعي، تأليف القضاعي (ت 0454هـ)"
 ---

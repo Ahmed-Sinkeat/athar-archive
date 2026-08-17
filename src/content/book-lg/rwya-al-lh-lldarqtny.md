@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: al-daraqutni
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 385
 description: "رؤية الله للدارقطني، تأليف الدارقطني (ت 0385هـ)"
 ---

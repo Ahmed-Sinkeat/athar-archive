@@ -4,8 +4,9 @@
 `@astrojs/cloudflare` emits the Worker; static pages ship as assets alongside it.
 
 ```sh
-pnpm build     # validate:content → gen-takhrij → astro build (prerenders ~78k chapter pages; CI shards this 8 ways, ~14 min) → copy-content-assets → tafsir-frags → gen-book-chapters (moves pages to dist/r2-upload) → redirects → headers
-pnpm deploy    # r2:upload (dist/r2-upload → BOOK_ASSETS bucket, md5-diffed + prunes stale) → wrangler deploy -c dist/server/wrangler.json
+pnpm build       # validate:content → astro build (prerenders ~78k chapter pages; CI shards this 8 ways, ~14 min) → copy-content-assets → gen-book-chapters (moves pages to dist/r2-upload) → redirects → headers
+pnpm deploy      # r2:upload (dist/r2-upload → BOOK_ASSETS bucket, md5-diffed + prunes stale) → wrangler deploy -c dist/server/wrangler.json
+pnpm r2:inventory # READ-ONLY: object count + bytes per top-level R2 prefix, and which prefixes this repo owns
 ```
 
 ## Chapter prerender architecture (2026-07-11, the 1102 fix)
@@ -68,10 +69,36 @@ per-build added to these pages must be tokenised the same way.**
   `pnpm deploy` from a local machine also works but skips CI's checks — prefer pushing
   to `main` unless you need a manual out-of-band deploy.
 - Limits and current usage (2026-07): **25 MiB per asset**; **20,000 files per
-  deploy** (at ~8.5k — chapter pages and tafsir frags in R2 don't count);
+  deploy** (at ~8.5k — chapter pages in R2 don't count);
   **R2 10GB free** (at ~2.5GB; doubling the library ≈ 5GB — fine); R2 writes
   1M/month free (a full design re-upload is ~10k). GitHub only stores source
   markdown (~200MB) — generated pages never touch it.
+
+## R2 prefix ownership
+
+`scripts/lib/r2.mjs` declares two lists, and they are the whole contract:
+
+- **`OWNED_PREFIXES`** (`pages/`) — the uploader lists these on every deploy and
+  prunes anything under them that the build no longer emits. Ownership is
+  *declared*, not inferred from `dist/r2-upload`: the old code listed only the
+  prefixes that happened to exist locally, so a prefix the build stopped
+  emitting silently stopped being listed and its objects stayed in R2 forever.
+  A local directory that is **not** in this list now fails the upload loudly
+  instead of being uploaded into a corner nothing manages.
+- **`RETIRED_PREFIXES`** (`tafsir-frag/`, `app/`) — prefixes this repo used to
+  own and no longer generates. The uploader never touches them. `pnpm
+  r2:inventory` reports their object count and bytes so the deletion is a
+  reviewed decision made against real numbers. Delete them deliberately, then
+  drop the entry from the list.
+
+Anything in neither list (e.g. `build-data/`, written by a different job) is
+left strictly alone.
+
+The mass-deletion guard is unchanged and independent of all this: a prune of
+more than 500 objects **and** more than 10% of the bucket is refused, because a
+deletion that large almost always means an incomplete local build rather than a
+real removal (a half-empty shard merge once pruned ~37k live chapter pages).
+Override only with `PRUNE_ALLOW_LARGE=1`, deliberately.
 
 ## Search index (D1) — resumable, budgeted
 

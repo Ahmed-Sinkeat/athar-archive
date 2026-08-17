@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: al-tbrany
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 360
 description: "المعجم الكبير للطبراني من ج 21، تأليف الطبراني (ت 0360هـ)"
 ---

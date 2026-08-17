@@ -3,7 +3,6 @@ title: "الهداية إلى بلوغ النهاية"
 status: published
 published_at: 2026-07-16
 person: makki-ibn-abi-talib
-genre: قرآن
 topics: ["tafsir-al-quran"]
 authored_year: 437
 description: "الهداية إلى بلوغ النهاية في علم معاني القرآن وتفسيره وأحكامه، لمكي بن أبي طالب القيسي، من أوسع تفاسير القراءات وعلوم القرآن"

@@ -7,9 +7,6 @@ import fs from "node:fs";
 import zlib from "node:zlib";
 
 const FILES = [
-  "src/data/quran-tafsir-index.json",
-  "src/data/hadith-index.json",
-  // takhrij.json deliberately absent: gen-takhrij.ts regenerates it every build
   "src/content/book-lg/tafsir-ibn-kathir.md",
   "src/content/book-lg/tafsir-muyassar.md",
   "src/content/book-lg/al-bidayah-wal-nihayah.md",
@@ -17,14 +14,12 @@ const FILES = [
   "src/content/book-lg/tafsir-tabari.md",
 ];
 
-// Stored gzip-compressed in R2 — quran-tafsir-index.json is 336MB raw but
-// ~31MB gzipped (Arabic prose repeats enough that it compresses ~11x), so
-// this cuts the CI transfer to a fraction of the raw size. Decompressed
-// locally right after download. al-bidayah-wal-nihayah.md (36MB) and
-// majmu-al-fatawa.md (49MB) gzip too, same reasoning — both cross whatever
-// upload-path size ceiling ungzipped single PUTs were hitting.
+// Stored gzip-compressed in R2 — Arabic prose repeats enough that it
+// compresses ~11x, cutting the CI transfer to a fraction of the raw size.
+// Decompressed locally right after download. al-bidayah-wal-nihayah.md (36MB)
+// and majmu-al-fatawa.md (49MB) both cross whatever upload-path size ceiling
+// ungzipped single PUTs were hitting.
 const GZIPPED = new Set([
-  "src/data/quran-tafsir-index.json",
   "src/content/book-lg/al-bidayah-wal-nihayah.md",
   "src/content/book-lg/majmu-al-fatawa.md",
   "src/content/book-lg/tafsir-tabari.md",

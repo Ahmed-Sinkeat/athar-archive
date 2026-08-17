@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-29
 person: abw-bkr-al-byhqy
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 458
 description: "شعب الإيمان، تأليف أبو بكر البيهقي (ت 0458هـ)"
 ---

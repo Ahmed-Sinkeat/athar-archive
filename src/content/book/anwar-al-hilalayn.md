@@ -4,7 +4,6 @@ status: review
 published_at: 2026-07-18
 person: muhammad-al-khamis
 kind: مرجع
-genre: قرآن
 topics: ["tafsir-al-quran"]
 ---
 ## المقدمة

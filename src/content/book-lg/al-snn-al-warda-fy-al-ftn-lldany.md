@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: abw-amrw-al-dany
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 444
 description: "السنن الواردة في الفتن للداني، تأليف أبو عمرو الداني (ت 0444هـ)"
 ---

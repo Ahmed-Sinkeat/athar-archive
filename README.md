@@ -16,7 +16,7 @@ A static, RTL Arabic knowledge archive. **The content is the origin; the technol
 
 - **Astro** (static output) · **Markdown + Zod** content collections (source of truth)
 - **Cloudflare D1 (FTS5)** search via a Worker API route (`/api/search`) — not Pagefind; the index refreshes incrementally on every `main` deploy (CI), capped by `SEARCH_ROW_BUDGET` to stay inside D1's daily write quota, so new content can take several deploys to become searchable
-- **Cloudflare Workers + Static Assets** (hosting, `pnpm deploy`) · **Cloudflare R2** (book/tafsir chapter bodies, audio, attachments — pushed on every CI deploy via `pnpm r2:upload`)
+- **Cloudflare Workers + Static Assets** (hosting, `pnpm deploy`) · **Cloudflare R2** (book chapter bodies, audio, attachments — pushed on every CI deploy via `pnpm r2:upload`; `pnpm r2:inventory` reports what is stored there, read-only)
 - Content renders **fully without JavaScript** for the reading path; JS enhances (search, audio, reading prefs).
 
 ## Quick start
@@ -25,16 +25,16 @@ A static, RTL Arabic knowledge archive. **The content is the origin; the technol
 pnpm install
 pnpm dev            # local dev server
 pnpm new <entity> <slug>   # scaffold a new content file (see CONTRIBUTING.md)
-pnpm build          # validate content → astro build → chapter/tafsir assets → _redirects → _headers
+pnpm build          # validate content → astro build → chapter assets → _redirects → _headers
 pnpm preview        # serve the production build
 pnpm test           # vitest (validators, graph, chapters, chunking, sanitize)
 ```
 
 ## The entities
 
-Person · Subject · Topic · Book · Poem · Question · Article · Audio · Annotation · Term (المعجم) (+ Announcement and Highlight — مختار الأسبوع: آية/حديث/بيت — as homepage chrome). The old Series/Lesson split was retired — a lesson is now just a book with audio attached. **الفوائد (كُناشة)** are device-local reader bookmarks (`localStorage`), not a CMS/Git-authored collection. **القرآن** is a separate collection — 114 surahs as a mushaf spine with a `/quran/<surah>` ayah reader.
+Person · Subject · Topic · Book · Poem · Question · Article · Audio · Annotation · Term (المعجم) (+ Announcement and Highlight — مختار الأسبوع: آية/حديث/بيت — as homepage chrome). The old Series/Lesson split was retired — a lesson is now just a book with audio attached. **الفوائد (كُناشة)** are device-local reader bookmarks (`localStorage`), not a CMS/Git-authored collection.
 
-Books carry an optional **genre** (`قرآن|حديث|تراجم`) routing them to dedicated `/quran` `/hadith` `/tarajim` sections (still under `/books`); `/hadith` adds a صحيح/حسن/ضعيف/موضوع grading facet.
+**One kind of reading entity.** There are no specialist sections: works of تفسير، حديث، علوم القرآن and the rest are ordinary books, read through the ordinary book reader, found through the ordinary subjects/topics/search. Books carry no genre or section field, and nothing in the pipeline is indexed per-ayah or per-narration. The specialist `/quran`, `/hadith`, `/tafsir` and `/tafsir-frag` routes were retired on 2026-08-16 (they 301 to `/books`); every work they held is still here. Subjects and topics such as **علوم القرآن** and **علوم الحديث** are untouched — they are ordinary classification, not a product.
 
 Polymorphic links (`source_type`/`target_type`) have no DB foreign keys — **Zod + a build-time cross-entity validator** are their only guard. A dangling reference fails the build; it never ships silently.
 
@@ -45,7 +45,6 @@ Polymorphic links (`source_type`/`target_type`) have no DB foreign keys — **Zo
 - **Inline شرح chooser** — marked phrases open a popover; multiple شروح on one spot show a chooser, then reveal with the phrase highlighted (click / long-press). Build-time data, JS-free `:target` fallback. Book bottom حواشٍ collapse under a `<details>`.
 - **مختارات الأسبوع** — the home shows a weekly-rotating آية/حديث/بيت (the `highlight` collection). متون/منظومات with more than one recitation get a small native dropdown to switch recordings.
 - **Connections** — a collapsible «ما يشير إلى هذا» relations panel at page end (backlinks: شروح، فوائد، سلاسل، authored works, unlinked mentions), subtle inline `[[type:slug]]` wiki-links, and a person→شيوخ narrator graph (شيوخه/تلاميذه on each عَلَم). Connectivity stays out of the reading flow — clean-UI is a hard gate.
-- **`/roadmap`** — طريق طلب العلم page, content from `src/data/roadmap.md` (edit to fill it out); linked from the home hero.
 - **Authoring** — content is written and edited **through the GitHub web UI**; see [`docs/adding-content.ar.md`](docs/adding-content.ar.md). The Sveltia CMS that used to sit at `/admin` was deleted on 2026-08-11: nothing was ever authored through it, and it could only see the 284 books in `src/content/book/`, never the 955 in `src/content/book-lg/`.
 
 ## Docs
@@ -58,7 +57,7 @@ Polymorphic links (`source_type`/`target_type`) have no DB foreign keys — **Zo
 | [`docs/deploy.md`](docs/deploy.md) | Cloudflare Workers deploy + domain + editor access |
 | [`docs/structure.md`](docs/structure.md) | Current repository layout |
 | [`docs/technology-stack.md`](docs/technology-stack.md) | Why each piece of the stack was chosen |
-| [`docs/android-app.md`](docs/android-app.md) | Native Android app + the `app/v1` JSON pipeline |
+| [`docs/android-app.md`](docs/android-app.md) | Native Android app |
 | [`docs/import-epub-guide.md`](docs/import-epub-guide.md) | Bulk-importing books from EPUB |
 | [`docs/asbuild.md`](docs/asbuild.md) | Phase-by-phase as-built record vs the build plan |
 | [`docs/issue.md`](docs/issue.md) | Ranked issue / watch register |

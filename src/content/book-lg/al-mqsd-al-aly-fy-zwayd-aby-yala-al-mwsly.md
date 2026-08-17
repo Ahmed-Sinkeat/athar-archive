@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: nwr-al-dyn-al-hythmy
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 807
 description: "المقصد العلي في زوائد أبي يعلى الموصلي، تأليف نور الدين الهيثمي (ت 0807هـ)"
 ---

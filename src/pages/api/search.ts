@@ -11,7 +11,7 @@ import { normalizeArabic } from "../../lib/ar-normalize.js";
 
 export const prerender = false;
 
-const TYPES = new Set(["quran", "book", "poem", "article", "question", "term", "person"]);
+const TYPES = new Set(["book", "poem", "article", "question", "term", "person"]);
 const SLUG_OK = /^[a-z0-9-]+$/;
 const PAGE_SIZE = 20;
 

@@ -95,30 +95,27 @@ const COMMENTARY_RE = /(?<=^|\P{L})(?:شرح|توضيح|حاشية|تفسير|ت
 const POEM_VERSE_THRESHOLD = 0.70;
 
 // ─────────────────────────────────────────────
-// Genre classification: رار فن folder → section (قرآن / حديث / تراجم).
-// The هاردسك collection is organized by فن ("06ـ (199) متون الحديث",
-// "01ـ (164) التفاسير", …); the epub's parent folder decides its section.
-// Absent = ordinary book. Override per-import with --genre.
+// Source-layout detection (NOT a content classification — every import is an
+// ordinary book). Shamela narration collections print "<n> - <isnad>" per
+// paragraph with [التخريج] footnotes, a markup shape buildHadithBody knows how
+// to turn into clean markdown; ordinary prose books don't. The هاردسك
+// collection is filed by فن, so the parent folder is the cheapest signal that
+// an epub uses that layout.
 // ─────────────────────────────────────────────
-const GENRE_FOLDER_MAP: Array<{ pattern: RegExp; genre: string }> = [
-  { pattern: /tafsir|quran|تفسير|التفاسير|علوم القرآن|قراءات|تجويد|رسم|مصحف|قرآن/ui, genre: "قرآن" },
-  { pattern: /hadith|حديث|تخريج|زوائد|علل|سؤالات|سنن|مسانيد|مسند|صحيح|جامع|أربعين|أربعون|موطأ/ui, genre: "حديث" },
-  { pattern: /tarajim|biography|تراجم|رجال|طبقات|سير|وفيات|أنساب/ui, genre: "تراجم" },
-];
+const NARRATION_LAYOUT_FOLDER = /hadith|حديث|تخريج|زوائد|علل|سؤالات|سنن|مسانيد|مسند|صحيح|جامع|أربعين|أربعون|موطأ/ui;
 
-/** Infer section genre from the epub's parent folders (walking up recursively). */
-function genreFor(file: string): string | undefined {
+/** Does this epub's folder path suggest the Shamela narration layout? */
+function usesNarrationLayout(file: string): boolean {
   let current = dirname(file);
   while (true) {
     const folder = basename(current);
     if (!folder) break;
-    const match = GENRE_FOLDER_MAP.find((g) => g.pattern.test(folder));
-    if (match) return match.genre;
+    if (NARRATION_LAYOUT_FOLDER.test(folder)) return true;
     const parent = dirname(current);
     if (parent === current) break;
     current = parent;
   }
-  return undefined;
+  return false;
 }
 
 // متن keywords → kind: متن
@@ -180,27 +177,6 @@ const SECTION_TOPIC_MAP: Array<{ pattern: RegExp; topic: string; subject: string
   // Tarajim
   { pattern: /تراجم|طبقات|سير|وفيات|رجال|biography|tarajim/ui,                topic: "tarajim-al-ulama",  subject: "tarajim" },
 ];
-
-// ─────────────────────────────────────────────
-// Hadith category inference
-// ─────────────────────────────────────────────
-// Known امهات (the six/nine + Muwatta)
-const UMMAHAT_TITLES = /البخاري|مسلم|أبو داود|الترمذي|النسائي|ابن ماجه|أحمد|الدارمي|موطأ/u;
-// أجزاء: typically short standalone narration collections
-const AJZA_FOLDER = /أجزاء|جزء/u;
-// تخريج / علل books
-const TAKHRIJ_FOLDER = /تخريج|زوائد|علل|سؤالات/u;
-// آثار-style: ابن أبي الدنيا, etc.
-const ATHAR_AUTHOR = /ابن أبي الدنيا/u;
-
-function inferHadithCategory(meta: Meta, file: string): string | undefined {
-  const folder = basename(dirname(file));
-  if (UMMAHAT_TITLES.test(meta.title) || UMMAHAT_TITLES.test(meta.creator)) return "امهات الكتب";
-  if (TAKHRIJ_FOLDER.test(folder) || TAKHRIJ_FOLDER.test(meta.qism ?? "")) return "تخريج";
-  if (AJZA_FOLDER.test(folder) || AJZA_FOLDER.test(meta.title)) return "أجزاء حديثية";
-  if (ATHAR_AUTHOR.test(meta.creator)) return "كتب الآثار";
-  return undefined;
-}
 
 // ─────────────────────────────────────────────
 // Poem verse detection
@@ -501,7 +477,7 @@ interface Meta {
   qism?: string;        // قسم / subject classification from info.xhtml
   isPoem: boolean;      // detected from markup
   poemByTitle: boolean; // detected from title keywords
-  hadithCategory?: string; // inferred in readEpub for genre=حديث books
+  narrationLayout?: boolean; // Shamela "<n> - <isnad>" markup, see usesNarrationLayout
 }
 
 /** Read all info-title → info-desc pairs from info.xhtml */
@@ -603,10 +579,7 @@ function readEpub(file: string): { meta: Meta; pages: { id: string; xhtml: strin
       }
     }
 
-    // Infer hadith_category for hadith-genre books
-    if (genreFor(file) === "حديث" || (meta.qism && /حديث|سنن/u.test(meta.qism))) {
-      meta.hadithCategory = inferHadithCategory(meta, file);
-    }
+    meta.narrationLayout = usesNarrationLayout(file) || !!(meta.qism && /حديث|سنن/u.test(meta.qism));
 
     return { meta, pages };
   } finally {
@@ -985,7 +958,6 @@ function buildHadithBody(pages: { id: string; xhtml: string }[]): {
 interface Opt {
   out: string;
   kind?: string;
-  genre?: string;       // --genre override; else inferred from source فن folder
   status: string;
   slug?: string;
   personSlug?: string;
@@ -1008,7 +980,6 @@ function build(file: string, opt: Opt): BuildResult {
   const isPoem = meta.isPoem || meta.poemByTitle;
   const collection = isPoem ? "poem" : "book";
   const kind = detectKind(meta, opt.kind);
-  const genre = opt.genre ?? genreFor(file);
 
   const personSlug = opt.personSlug ?? slugify(meta.creator || "unknown");
   const baseSlug   = opt.slug ?? slugify(meta.title);
@@ -1045,8 +1016,6 @@ function build(file: string, opt: Opt): BuildResult {
     `published_at: ${opt.today}`,
     `person: ${personSlug}`,
     kind ? `kind: ${kind}` : null,
-    genre ? `genre: ${genre}` : null,
-    (genre === "حديث" && meta.hadithCategory) ? `hadith_category: ${meta.hadithCategory}` : null,
     topics.length ? `topics: ${yList(topics)}` : null,
     meta.edition  ? `edition: ${y(meta.edition)}`  : null,
     meta.muhaqqiq ? `description: ${y("بتحقيق " + meta.muhaqqiq)}` : null,
@@ -1057,7 +1026,7 @@ function build(file: string, opt: Opt): BuildResult {
   // ── Body ──
   let body: string;
   let takhrijStubs: { path: string; text: string }[] = [];
-  if (genre === "حديث" && !isPoem) {
+  if (meta.narrationLayout && !isPoem) {
     const { md, takhrij } = buildHadithBody(pages);
     body = md;
     takhrijStubs = takhrij.map(({ anchor, text }) => {
@@ -1158,7 +1127,6 @@ function buildMerged(files: string[], opt: Opt): BuildResult {
     personResult = { path: personPath, text: personLines };
   }
 
-  const genre = opt.genre ?? genreFor(files[0]);
   const fm = [
     "---",
     `title: ${y(mergedMeta.title)}`,
@@ -1166,8 +1134,6 @@ function buildMerged(files: string[], opt: Opt): BuildResult {
     `published_at: ${opt.today}`,
     `person: ${personSlug}`,
     kind ? `kind: ${kind}` : null,
-    genre ? `genre: ${genre}` : null,
-    (genre === "حديث" && mergedMeta.hadithCategory) ? `hadith_category: ${mergedMeta.hadithCategory}` : null,
     topics.length ? `topics: ${yList(topics)}` : null,
     mergedMeta.edition  ? `edition: ${y(mergedMeta.edition)}`  : null,
     mergedMeta.muhaqqiq ? `description: ${y("بتحقيق " + mergedMeta.muhaqqiq)}` : null,
@@ -1177,7 +1143,7 @@ function buildMerged(files: string[], opt: Opt): BuildResult {
 
   let body: string;
   let takhrijStubs: { path: string; text: string }[] = [];
-  if (genre === "حديث" && !isPoem) {
+  if (mergedMeta.narrationLayout && !isPoem) {
     const { md, takhrij } = buildHadithBody(allPages);
     body = md;
     takhrijStubs = takhrij.map(({ anchor, text }) => {
@@ -1295,11 +1261,10 @@ function selftest() {
   a(MATN_TITLE_RE.test("متن الأجرومية"), "matn detection");
   a(MATN_TITLE_RE.test("العقيدة الواسطية"), "matn detection: الواسطية");
 
-  // ── genre from فن folder ──
-  a(genreFor("/x/06ـ (199) متون الحديث/k.epub") === "حديث", "genre folder → حديث");
-  a(genreFor("/x/01ـ (164) التفاسير/k.epub") === "قرآن", "genre folder → قرآن");
-  a(genreFor("/x/13ـ (147) كتب التخريج والزوائد/k.epub") === "حديث", "genre folder → حديث (تخريج)");
-  a(genreFor("/x/aqeeda/k.epub") === undefined, "no genre for aqeeda folder");
+  // ── narration source layout from فن folder ──
+  a(usesNarrationLayout("/x/06ـ (199) متون الحديث/k.epub"), "narration layout folder");
+  a(usesNarrationLayout("/x/13ـ (147) كتب التخريج والزوائد/k.epub"), "narration layout folder (تخريج)");
+  a(!usesNarrationLayout("/x/aqeeda/k.epub"), "no narration layout for aqeeda folder");
 
   // ── info.xhtml field reading ──
   const fakeInfo = `<span class="info-title">الناشر:</span><span class="info-desc"> دار الذكرى</span>` +
@@ -1340,13 +1305,6 @@ function selftest() {
   const joined = verseLines2.join("\n");
   a(!joined.includes("الجزء"), "footer stripped from poem: " + joined);
 
-  // ── hadith_category inference ──
-  const fakeMeta = (title: string, creator = "", qism = "") =>
-    ({ title, creator, qism, isPoem: false, poemByTitle: false }) as Meta;
-  a(inferHadithCategory(fakeMeta("صحيح البخاري"), "/x/حديث/k.epub") === "امهات الكتب", "امهات: البخاري");
-  a(inferHadithCategory(fakeMeta("كتاب الزوائد"), "/x/13ـ كتب التخريج والزوائد/k.epub") === "تخريج", "تخريج folder");
-  a(inferHadithCategory(fakeMeta("جزء من حديث"), "/x/أجزاء حديثية/k.epub") === "أجزاء حديثية", "أجزاء folder");
-  a(inferHadithCategory(fakeMeta("كتاب الصمت", "ابن أبي الدنيا"), "/x/حديث/k.epub") === "كتب الآثار", "آثار: ابن أبي الدنيا");
 
   // ── second export format: no book-container, semantic <h2>/<p>, and a
   // <p class="text-center">الصفحة: N</p> footer instead of a <div class="center"> ──
@@ -1413,7 +1371,7 @@ function main() {
   if (argv.includes("--selftest")) return selftest();
 
   const flag = (name: string) => { const i = argv.indexOf(name); return i >= 0 ? argv[i + 1] : undefined; };
-  const valued = new Set(["--out", "--kind", "--status", "--slug", "--person-slug", "--sharh-of", "--genre"]);
+  const valued = new Set(["--out", "--kind", "--status", "--slug", "--person-slug", "--sharh-of"]);
   const positional = argv.filter((a, i) => !a.startsWith("--") && !valued.has(argv[i - 1]));
 
   if (!positional.length) {
@@ -1434,7 +1392,6 @@ function main() {
   const opt: Opt = {
     out:          flag("--out") ?? "src/content",
     kind:         flag("--kind"),
-    genre:        flag("--genre"),
     status:       flag("--status") ?? "published",
     slug:         flag("--slug"),
     personSlug:   flag("--person-slug"),

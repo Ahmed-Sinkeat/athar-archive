@@ -4,7 +4,6 @@ status: draft
 published_at: 2026-07-18
 person: hasan-izz-al-din-al-jamal
 kind: مرجع
-genre: قرآن
 topics: ["ulum-al-quran"]
 ---
 ## المقدمة

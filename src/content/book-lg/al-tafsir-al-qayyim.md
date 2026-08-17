@@ -3,7 +3,6 @@ title: "التفسير القيم (تفسير القرآن الكريم لابن
 status: published
 published_at: 2026-07-16
 person: ibn-al-qayyim
-genre: قرآن
 topics: ["tafsir-al-quran"]
 authored_year: 751
 description: "التفسير القيم، جمع لتفسير ابن القيم من مصنفاته المتفرقة، رتبه على ترتيب سور القرآن الكريم"

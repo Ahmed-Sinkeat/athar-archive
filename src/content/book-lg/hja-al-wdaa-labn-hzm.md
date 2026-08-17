@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: abn-hzm
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 456
 description: "حجة الوداع لابن حزم، تأليف ابن حزم (ت 0456هـ)"
 ---

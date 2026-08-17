@@ -5,7 +5,6 @@ status: "published"
 published_at: "2026-06-27"
 kind: "مرجع"
 work_type: "تفسير"
-genre: "قرآن"
 topics: ["tafsir-al-quran"]
 authored_year: 1376
 volumes: 1

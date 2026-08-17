@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: al-ajry
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 360
 description: "الشريعة للآجري، تأليف الآجري (ت 0360هـ)"
 ---

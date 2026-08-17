@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: al-twsy-aly-bn-nsr
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 312
 description: "مختصر الأحكام = مستخرج الطوسي على جامع الترمذي، تأليف الطوسي، علي بن نصر (ت 0312هـ)"
 ---

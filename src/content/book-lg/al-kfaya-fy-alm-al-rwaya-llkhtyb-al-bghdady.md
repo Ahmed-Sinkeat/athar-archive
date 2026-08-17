@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: al-khatib-al-baghdadi
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 463
 description: "الكفاية في علم الرواية للخطيب البغدادي، تأليف الخطيب البغدادي (ت 0463هـ)"
 ---

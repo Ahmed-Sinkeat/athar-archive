@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-27
 person: ibn-majah
 kind: متن
-genre: حديث
-hadith_category: "امهات الكتب"
 authored_year: 273
 description: "سنن ابن ماجه ت الأرنؤوط، تأليف ابن ماجه (ت 0273هـ)"
 ---

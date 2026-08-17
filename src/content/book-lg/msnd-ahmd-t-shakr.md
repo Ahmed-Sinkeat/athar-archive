@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: ahmad-ibn-hanbal
 kind: متن
-genre: حديث
-hadith_category: "امهات الكتب"
 authored_year: 241
 description: "مسند أحمد ت شاكر، تأليف أحمد بن حنبل (ت 0241هـ)"
 ---

@@ -10,7 +10,19 @@ import { hrefFor } from "../src/lib/display.js";
 function main() {
   const entries = loadContentFromDisk();
   // static page moves (not slug aliases): تواصل merged into /about
-  const lines: string[] = ["/contact /about#contact 301"];
+  const lines: string[] = [
+    "/contact /about#contact 301",
+    // Retired specialist sections. Their works are all still here as ordinary
+    // books, so the honest destination for every one of these hubs is /books —
+    // not a 404, and not a subject page that only covers part of what they held.
+    // /quran/* and /tafsir-frag/* had per-surah/per-ayah URLs with no
+    // one-to-one successor; the wildcards fold them into the same landing page.
+    "/quran /books 301",
+    "/quran/* /books 301",
+    "/hadith /books 301",
+    "/tafsir /books 301",
+    "/tafsir-frag/* /books 301",
+  ];
 
   for (const e of entries) {
     if (e.data.status === "archived") continue; // archived keeps its own URL

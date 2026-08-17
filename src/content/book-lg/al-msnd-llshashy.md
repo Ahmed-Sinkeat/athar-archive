@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: al-shashy-al-hythm-bn-klyb
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 335
 description: "المسند للشاشي، تأليف الشاشي، الهيثم بن كليب (ت 0335هـ)"
 ---

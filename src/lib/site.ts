@@ -49,7 +49,7 @@ export interface AnnNote {
 // Published annotations for a target, grouped by anchor and enriched with the
 // annotator name + a resolved source link. Shared by the poem readers.
 export function notesByAnchor(
-  targetType: "book" | "poem" | "quran",
+  targetType: "book" | "poem",
   targetId: string,
   graph: Graph,
   names: Map<string, string>,

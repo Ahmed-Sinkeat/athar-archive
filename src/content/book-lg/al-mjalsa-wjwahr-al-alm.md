@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: al-dynwry-abw-bkr
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 333
 description: "المجالسة وجواهر العلم، تأليف الدينوري، أبو بكر (ت 0333هـ)"
 ---

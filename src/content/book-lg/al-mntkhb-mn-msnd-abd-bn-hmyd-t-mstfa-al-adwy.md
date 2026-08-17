@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: abd-bn-hmyd
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 249
 description: "المنتخب من مسند عبد بن حميد ت مصطفى العدوي، تأليف عبد بن حميد (ت 0249هـ)"
 ---

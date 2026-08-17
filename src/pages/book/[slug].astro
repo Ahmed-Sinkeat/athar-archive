@@ -16,9 +16,7 @@ import { analyzeBook, deriveVolumes } from "../../lib/chunk";
 import { readBody } from "../../lib/read-body";
 import { hrefFor, toArabicDigits, isMatn, labelFor } from "../../lib/display";
 import { bookLd } from "../../lib/structured-data";
-import { parseToc, parseBook, collapseManuscriptNote } from "../../lib/chapters";
-import { isAtharNumberedBook, injectAtharAnchors, type TakhrijLink } from "../../lib/hadith";
-import takhrijData from "../../data/takhrij.json";
+import { parseToc, collapseManuscriptNote } from "../../lib/chapters";
 import { isPrimaryShard } from "../../lib/build-shard";
 
 export async function getStaticPaths() {
@@ -71,9 +69,7 @@ const { entry, chunked, toc, volumes, byAnchor, audios, commentaries, author, to
 // (see the note in getStaticPaths) — chunked books skip it entirely, same
 // as before: their text lives on the chapter pages.
 const rawBody = chunked ? "" : await readBody(entry);
-const takhrijFor = (n: number) => (takhrijData as Record<string, TakhrijLink[]>)[`${entry.id}:${n}`];
-const atharNumbered = !chunked && isAtharNumberedBook(parseBook(rawBody).paragraphs);
-const body = chunked ? undefined : collapseManuscriptNote(atharNumbered ? injectAtharAnchors(rawBody, takhrijFor) : rawBody);
+const body = chunked ? undefined : collapseManuscriptNote(rawBody);
 const tocNested = chunked ? [] : parseToc(rawBody);
 const bookPageCount = Math.max(0, ...[...(body ?? "").matchAll(/data-page="(\d+)"/g)].map((m) => Number(m[1])));
 const tocMinDepth = tocNested?.length ? Math.min(...tocNested.map((h: { depth: number }) => h.depth)) : 2;
@@ -99,7 +95,6 @@ function groupToc(items: { title: string; slug: string; parent?: string; parentT
 }
 const anchors = Object.entries(byAnchor);
 const path = `/book/${entry.id}`;
-const isHadith = entry.data.genre === "حديث";
 // fallback only when a book has no real description at all — never overrides one
 const pageDescription = (entry.data.description as string | undefined) ||
   `${entry.data.title}${author ? ` — ${author}` : ""}، النص الكامل على أهل الأثر.`;
@@ -123,7 +118,7 @@ const jsonLd = bookLd({
       and the mockup's "Article column max 680px" — NOT from wrapping the whole
       grid in wrap-matn's own (narrower) fixed measure, which would carve the
       sidebar's width out of the reading column instead of giving it its own. */}
-  <div class:list={["chap-outer", { "hadith-accent": isHadith }]}>
+  <div class="chap-outer">
   {chunked ? (
     <div class="wrap-matn reading-pad" data-cite-book={entry.data.title} data-cite-author={author}>
       <div class="reader-head">
@@ -184,7 +179,7 @@ const jsonLd = bookLd({
       <div class="reading-pad" data-cite-book={entry.data.title} data-cite-author={author}>
         <div class="reader-head">
           <a class="eyebrow u87c136d pill-link" href={isMatn("book", entry.data) ? "/matn" : "/books"}>{topicLabel}</a>
-          <div class:list={["ornament", { "ornament-green": isHadith }]} aria-hidden="true">۞</div>
+          <div class="ornament" aria-hidden="true">۞</div>
           <h1 class="reader-title ue7e55f7" >{entry.data.title}</h1>
           <div class="reader-byline">{entry.data.person ? <a href={hrefFor("person", entry.data.person)}>{author}</a> : author}</div>
           <button type="button" class="toggle-btn" style="margin-top: 12px;" data-action="download:toggle" data-dl-kind="book" data-dl-id={entry.id} data-dl-title={entry.data.title} aria-pressed="false">

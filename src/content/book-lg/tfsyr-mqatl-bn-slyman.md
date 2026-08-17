@@ -3,7 +3,6 @@ title: "تفسير مقاتل بن سليمان"
 status: published
 published_at: 2026-07-16
 person: mqatl
-genre: قرآن
 topics: ["tafsir-al-quran"]
 edition: "الأولى - 1423 هـ"
 description: "بتحقيق عبد الله محمود شحاته"

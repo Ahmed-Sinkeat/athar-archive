@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: al-azrqy
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 250
 description: "أخبار مكة للأزرقي، تأليف الأزرقي (ت 0250هـ)"
 ---

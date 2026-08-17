@@ -116,7 +116,6 @@ Everything after that is **optional** — delete any line you don't need:
 | --- | --- |
 | `person` | The author's filename, copied exactly from `src/content/person/`. **If you don't know it, delete the line** — an invented name here **fails the build**, whereas omitting it is harmless. |
 | `kind` | Only `كتاب`, `متن`, `مرجع`, or `مجموع`. Leave it as `كتاب` or delete the line. Use `متن` only for well-known memorization texts, not every short treatise. |
-| `genre` | Only `قرآن`, `حديث`, or `تراجم` — routes the book to its dedicated section. Delete otherwise. |
 | `topics` | Topics in brackets, **five maximum**, e.g. `["al-nahw", "al-balaghah"]`. The available names are the filenames in `src/content/topic/` — copy them exactly; a name that doesn't exist **fails the build**. |
 | `authored_year` | Hijri year of authorship, digits only: `761`. |
 | `description` | A short description in quotes. |
@@ -141,9 +140,10 @@ Everything after the closing `---` is the book text. Write normal Arabic prose:
 1. **Never rename a published book's file.** The filename *is* the URL; renaming
    it breaks every existing link. If you must, add the old name to the card:
    `aliases: ["old-name"]`
-2. **Never invent values** for `kind` or `genre`. The allowed values are listed
-   above, exactly. Anything else silently drops the book out of filtering and
-   search.
+2. **Never invent values** for `kind`. The allowed values are listed above,
+   exactly. Anything else silently drops the book out of filtering and search.
+   There is no `genre` line any more — every book is an ordinary book, including
+   works of تفسير and حديث; use `topics` to classify them.
 3. **Don't forget `status: published`** and then wonder why the book isn't showing.
 4. **Never delete the `---` lines** or their contents unless you know what
    you're doing. Without them the file isn't read at all.

@@ -15,7 +15,7 @@ interface DownloadEntry {
   path?: string; // landing page it was downloaded from (older manifests lack it)
 }
 
-const KIND_LABEL: Record<string, string> = { book: "كتاب", poem: "منظومة", quran: "سورة", article: "مقالة", audio: "مقطع صوتي" };
+const KIND_LABEL: Record<string, string> = { book: "كتاب", poem: "منظومة", article: "مقالة", audio: "مقطع صوتي" };
 
 function keyOf(kind: string, id: string): string {
   return `${kind}:${id}`;
@@ -42,7 +42,7 @@ function formatSize(bytes: number): string {
 
 // Same-book/poem chapter links are already on the landing page's own TOC —
 // reuse them instead of asking the server for a manifest. No TOC (single-page
-// book/poem, or a Quran surah page) → just download the landing page itself.
+// book/poem) → just download the landing page itself.
 // `doc` may be a DOMParser document of a NOT-currently-open landing page —
 // that's how the quick download buttons on list rows work without navigating.
 function collectUrls(doc: Document = document, pagePath: string = location.pathname): string[] {
@@ -51,13 +51,6 @@ function collectUrls(doc: Document = document, pagePath: string = location.pathn
   for (const a of links) {
     const href = a.getAttribute("href");
     if (href && href.startsWith("/")) urls.add(href);
-  }
-  // tafsir/annotation fragments fetched on demand by reader.ts (surah pages'
-  // ayah buttons carry data-ann-src) — without these a downloaded surah's
-  // tafsir popup is dead offline; sw.js serves them from this same cache.
-  for (const el of doc.querySelectorAll<HTMLElement>("[data-ann-src]")) {
-    const src = el.dataset.annSrc;
-    if (src && src.startsWith("/")) urls.add(src);
   }
   // Audio is NOT bundled in here on purpose — this is the text-only "read
   // offline" download; each track has its own separate cache-based download
@@ -92,28 +85,6 @@ async function startDownload(btn: HTMLElement) {
   // instead of the page's full text+audio bundle
   if (kind === "audio") {
     urls = [id];
-  } else if (kind === "tafsir") {
-    // a whole tafsir (the ann-sheet's "تنزيل هذا التفسير كاملًا" button): the
-    // url list — that source's per-ayah stubs + bodies — comes from the
-    // build-time manifest, since a tafsir has no landing page to scrape
-    try {
-      const res = await fetch(`/tafsir-dl/${id}.json`);
-      if (!res.ok) throw new Error(String(res.status));
-      const man = (await res.json()) as { urls: string[]; bytes?: number };
-      // big tafsirs (ابن كثير ≈ 105MB) deserve a heads-up on metered connections
-      if (man.bytes && man.bytes > 20 * 1024 * 1024 &&
-          !confirm(`حجم هذا التفسير كاملًا نحو ${formatSize(man.bytes)} — أتريد المتابعة؟`)) {
-        btn.removeAttribute("data-dl-busy");
-        renderDownloadButton(btn);
-        return;
-      }
-      urls = man.urls;
-    } catch {
-      btn.removeAttribute("data-dl-busy");
-      const l = btn.querySelector("[data-dl-label]");
-      if (l) l.textContent = "تعذّر التنزيل";
-      return;
-    }
   } else if (path !== location.pathname) {
     // quick download from a list row: the landing page isn't open, so fetch it
     // and read its TOC/audio from the parsed HTML instead of the live DOM
@@ -267,16 +238,11 @@ function renderDownloadButton(btn: HTMLElement) {
     return;
   }
   btn.setAttribute("aria-pressed", "false");
-  // the sheet's tafsir button has no landing page to size-probe — plain label
-  if (kind === "tafsir") {
-    if (label) label.textContent = "تنزيل هذا التفسير كاملًا";
-    return;
-  }
   // AudioPlayer already server-renders this track's size next to the icon —
   // nothing to compute or overwrite here
   if (kind === "audio") return;
   // exact size from the build-time manifest; per-page HEAD probing stays as a
-  // fallback for anything the manifest misses (e.g. Quran surahs)
+  // fallback for anything the manifest misses
   getSizes().then((sizes) => {
     if (btn.getAttribute("aria-pressed") === "true" || btn.hasAttribute("data-dl-busy")) return;
     const bytes = sizes[key];

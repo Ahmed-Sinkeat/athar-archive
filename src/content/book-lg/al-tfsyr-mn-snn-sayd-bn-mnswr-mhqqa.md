@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: sayd-bn-mnswr
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 227
 description: "التفسير من سنن سعيد بن منصور - محققا، تأليف سعيد بن منصور (ت 0227هـ)"
 ---

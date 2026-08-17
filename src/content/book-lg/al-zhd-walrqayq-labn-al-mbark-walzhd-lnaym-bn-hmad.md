@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: abn-al-mbark
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 181
 description: "الزهد والرقائق لابن المبارك والزهد لنعيم بن حماد، تأليف ابن المبارك (ت 0181هـ)"
 ---

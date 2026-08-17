@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: abn-shahyn
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 385
 description: "الترغيب في فضائل الأعمال وثواب ذلك لابن شاهين، تأليف ابن شاهين (ت 0385هـ)"
 ---

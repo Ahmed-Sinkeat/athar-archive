@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: al-tbryzy-abw-abd-al-lh
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 741
 description: "مشكاة المصابيح، تأليف التبريزي، أبو عبد الله (ت 0741هـ)"
 ---

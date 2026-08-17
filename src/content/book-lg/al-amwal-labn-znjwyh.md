@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: ibn-zanjawayh
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 251
 description: "الأموال لابن زنجويه، تأليف ابن زنجويه (ت 0251هـ)"
 ---

@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: al-qtyay
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 368
 description: "جزء الألف دينار للقطيعي، تأليف القطيعي (ت 0368هـ)"
 ---

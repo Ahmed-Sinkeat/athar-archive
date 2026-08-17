@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: ibn-mandah
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 395
 description: "الإيمان لابن منده، تأليف ابن منده محمد بن إسحاق (ت 0395هـ)"
 ---

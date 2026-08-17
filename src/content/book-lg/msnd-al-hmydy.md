@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: al-hmydy-abw-bkr
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 219
 description: "مسند الحميدي، تأليف الحميدي، أبو بكر (ت 0219هـ)"
 ---

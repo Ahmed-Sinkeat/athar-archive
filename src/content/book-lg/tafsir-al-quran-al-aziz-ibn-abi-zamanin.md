@@ -3,7 +3,6 @@ title: "تفسير القرآن العزيز لابن أبي زمنين"
 status: published
 published_at: 2026-07-16
 person: ibn-abi-zamanin
-genre: قرآن
 topics: ["tafsir-al-quran"]
 authored_year: 399
 description: "تفسير القرآن العزيز لأبي عبد الله محمد بن عبد الله بن أبي زمنين الأندلسي، من أوجز التفاسير المسندة"

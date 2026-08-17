@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: abw-bkr-al-shafay
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 354
 description: "الفوائد الشهير بالغيلانيات لأبي بكر الشافعي، تأليف أبو بكر الشافعي (ت 0354هـ)"
 ---

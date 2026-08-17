@@ -545,8 +545,8 @@ export function extractAnchors(collection: string, body: string): Set<string> {
   if (collection === "poem") {
     return new Set(parsePoem(body).verses.map((v) => v.anchor));
   }
-  // book + quran: paragraph anchors; also expose heading slugs for TOC links
-  if (collection === "book" || collection === "quran") {
+  // book: paragraph anchors; also expose heading slugs for TOC links
+  if (collection === "book") {
     const { paragraphs } = parseBook(body);
     const toc = parseToc(body);
     return new Set([...paragraphs.map((p) => p.id), ...toc.map((h) => h.slug)]);

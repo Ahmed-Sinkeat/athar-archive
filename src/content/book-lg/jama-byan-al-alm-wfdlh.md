@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: ibn-abd-al-barr
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 463
 description: "جامع بيان العلم وفضله، تأليف ابن عبد البر (ت 0463هـ)"
 ---

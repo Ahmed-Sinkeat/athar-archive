@@ -4,7 +4,6 @@ status: review
 published_at: 2026-07-18
 person: ibn-uthaymeen
 kind: مرجع
-genre: قرآن
 topics: ["tafsir-al-quran"]
 description: "تفسير الشيخ محمد بن صالح العثيمين لسور: الفاتحة، البقرة، الكهف، السجدة، الزخرف، الحجرات إلى الحديد، وجزء عم (الشعراء وسبأ غير مدرجتين لعطب في المصدر)"
 ---

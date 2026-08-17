@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: qady-al-marstan
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 535
 description: "مشيخة قاضي المارستان، تأليف قاضي المارستان (ت 0535هـ)"
 ---

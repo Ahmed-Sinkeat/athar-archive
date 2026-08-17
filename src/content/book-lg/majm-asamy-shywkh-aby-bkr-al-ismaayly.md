@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: abu-bakr-al-ismaili
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 371
 description: "معجم أسامي شيوخ أبي بكر الإسماعيلي، تأليف أبو بكر الإسماعيلي (ت 0371هـ)"
 ---

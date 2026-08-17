@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: al-dwlaby
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 310
 description: "الكنى والأسماء للدولابي، تأليف الدولابي (ت 0310هـ)"
 ---

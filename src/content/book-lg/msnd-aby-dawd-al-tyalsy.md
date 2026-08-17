@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: abw-dawd-al-tyalsy
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 204
 description: "مسند أبي داود الطيالسي، تأليف أبو داود الطيالسي (ت 0204هـ)"
 ---

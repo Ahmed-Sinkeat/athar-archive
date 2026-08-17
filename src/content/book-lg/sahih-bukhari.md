@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-27
 person: al-bukhari
 kind: متن
-genre: حديث
-hadith_category: "امهات الكتب"
 authored_year: 256
 description: "صحيح البخاري، تأليف البخاري (ت 256هـ)"
 ---

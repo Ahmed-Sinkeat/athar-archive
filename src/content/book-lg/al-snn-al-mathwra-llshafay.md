@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: al-muzani
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 264
 description: "السنن المأثورة للشافعي، تأليف المزني (ت 0264هـ)"
 ---

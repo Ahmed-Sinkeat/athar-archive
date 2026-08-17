@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-29
 person: al-nasai
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 303
 description: "السنن الكبرى للنسائي، تأليف النسائي (ت 0303هـ)"
 ---

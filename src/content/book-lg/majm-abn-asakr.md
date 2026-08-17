@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: abn-asakr-abw-al-qasm
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 571
 description: "معجم ابن عساكر، تأليف ابن عساكر، أبو القاسم (ت 0571هـ)"
 ---

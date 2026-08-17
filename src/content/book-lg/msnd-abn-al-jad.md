@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: abn-al-jad
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 230
 description: "مسند ابن الجعد، تأليف ابن الجعد (ت 0230هـ)"
 ---

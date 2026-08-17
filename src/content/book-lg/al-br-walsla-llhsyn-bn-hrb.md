@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: al-hsyn-bn-hrb
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 246
 description: "البر والصلة للحسين بن حرب، تأليف الحسين بن حرب (ت 0246هـ)"
 ---

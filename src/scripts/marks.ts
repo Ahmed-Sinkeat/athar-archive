@@ -527,7 +527,7 @@ function savedForPath(path = docId()): Saved[] {
   return loadSaved().filter((s) => s.path === path);
 }
 // Best-effort page label off whatever .page-sep the viewport is currently
-// over — nice-to-have for books (which have them); Quran/poems just fall
+// over — nice-to-have for books (which have them); poems just fall
 // back to the plain title, which is still enough to tell entries apart.
 function currentPageLabel(): string | undefined {
   const el = document.elementFromPoint(window.innerWidth / 2, 96) as HTMLElement | null;
@@ -630,9 +630,8 @@ function jumpToSavedHash() {
   if (s) window.scrollTo({ top: s.scrollY, behavior: "smooth" });
 }
 
-// arriving from a /search result (?aa-hl=<term>): most content types have no
-// per-paragraph anchor in the search index (only quran ayahs and "athar"-
-// numbered narrations do), so a plain #hash often lands at the top of the
+// arriving from a /search result (?aa-hl=<term>): search results carry no
+// per-paragraph anchor, so a plain #hash often lands at the top of the
 // book/chapter with nothing marked. Reuse the in-page find bar instead —
 // it already does tashkeel-insensitive matching + highlight + scroll-to-first,
 // works for every content type, and needs no index/anchor changes.
@@ -755,22 +754,6 @@ function recordRecent() {
   } catch { /* best-effort */ }
 }
 
-// mushaf resume: latest /quran/ entry from aa-recent (recordRecent below) —
-// the mushaf grid is where a reading session starts, so surface the way back
-// in; the surah page's own "تابع القراءة ↓" then restores the exact spot.
-function showQuranResume() {
-  const el = document.querySelector<HTMLElement>("[data-quran-resume]");
-  if (!el) return;
-  let list: { path: string; title: string }[] = [];
-  try { list = JSON.parse(localStorage.getItem("aa-recent") || "[]"); } catch { /* best-effort */ }
-  const hit = list.find((e) => e.path.startsWith("/quran/") && e.path !== "/quran/mushaf");
-  const link = el.querySelector<HTMLAnchorElement>("a");
-  if (!hit || !link) { el.hidden = true; return; }
-  link.href = hit.path;
-  link.textContent = `${hit.title} — تابعِ القراءة ←`;
-  el.hidden = false;
-}
-
 function onPage() {
   hideTools();
   closeFind();
@@ -785,7 +768,6 @@ function onPage() {
   recordBookProgress();
   recordRecent();
   showBookResume();
-  showQuranResume();
   syncSaveBtn();
 }
 onPage();

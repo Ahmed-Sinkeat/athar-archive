@@ -14,10 +14,10 @@ if (!existsSync(DIST)) {
   process.exit(1);
 }
 
-// On-demand worker routes (book chapters, lessons, tafsir fragments) have no
+// On-demand worker routes (book chapters) have no
 // static file — mirror the middleware matcher (src/middleware.ts) so links to
 // them aren't flagged broken.
-const ON_DEMAND = /^\/(?:book|series)\/[^/]+\/[^/]+\/?$|^\/tafsir-frag\/\d+\/\d+\.html$/;
+const ON_DEMAND = /^\/book\/[^/]+\/[^/]+\/?$/;
 
 const walk = (dir) =>
   readdirSync(dir, { withFileTypes: true }).flatMap((e) => {

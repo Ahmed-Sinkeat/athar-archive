@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-27
 person: al-nasai
 kind: متن
-genre: حديث
-hadith_category: "امهات الكتب"
 authored_year: 303
 description: "سنن النسائي، تأليف النسائي (ت 0303هـ)"
 ---

@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: al-qrtby-abn-wdah
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 286
 description: "البدع لابن وضاح، تأليف القرطبي، ابن وضاح (ت 0286هـ)"
 ---

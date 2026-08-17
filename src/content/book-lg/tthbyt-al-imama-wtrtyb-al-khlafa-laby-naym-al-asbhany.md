@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: abu-nuaym-al-asbahani
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 430
 description: "تثبيت الإمامة وترتيب الخلافة لأبي نعيم الأصبهاني، تأليف أبو نعيم الأصبهاني (ت 0430هـ)"
 ---

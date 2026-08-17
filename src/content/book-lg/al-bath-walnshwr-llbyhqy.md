@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: abw-bkr-al-byhqy
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 458
 description: "البعث والنشور للبيهقي، تأليف أبو بكر البيهقي (ت 0458هـ)"
 ---

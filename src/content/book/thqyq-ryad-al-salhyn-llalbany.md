@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: al-nawawi
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 676
 description: "تحقيق رياض الصالحين للألباني، تأليف النووي (ت 0676هـ)"
 ---

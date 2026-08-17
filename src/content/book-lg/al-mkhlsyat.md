@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: al-mkhls
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 393
 description: "المخلصيات، تأليف المخلص (ت 0393هـ)"
 ---

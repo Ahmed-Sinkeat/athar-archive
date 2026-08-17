@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: khythma-bn-slyman-al-atrablsy
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 343
 description: "من حديث خيثمة بن سليمان، تأليف خيثمة بن سليمان الأطرابلسي (ت 0343هـ)"
 ---

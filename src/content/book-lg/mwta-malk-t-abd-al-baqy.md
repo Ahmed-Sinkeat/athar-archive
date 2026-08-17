@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: malik-ibn-anas
 kind: متن
-genre: حديث
-hadith_category: "امهات الكتب"
 authored_year: 179
 description: "موطأ مالك ت عبد الباقي، تأليف مالك بن أنس (ت 0179هـ)"
 ---

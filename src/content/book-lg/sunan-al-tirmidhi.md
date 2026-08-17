@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-27
 person: al-tirmidhi
 kind: متن
-genre: حديث
-hadith_category: "امهات الكتب"
 authored_year: 279
 description: "سنن الترمذي ت بشار، تأليف الترمذي، محمد بن عيسى (ت 0279هـ)"
 ---

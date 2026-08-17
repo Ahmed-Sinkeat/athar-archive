@@ -5,7 +5,6 @@ import "../styles/global.css";
 import "../styles/extracted.css"; // generated from former inline styles — must load AFTER global.css
 import { config } from "../../ahlalathar.config";
 import { toArabicDigits, searchHrefFor } from "../lib/display";
-import { TAJWEED_COLORS, TAJWEED_LABELS } from "../lib/tajweed";
 
 interface Props {
   title: string;
@@ -16,11 +15,10 @@ interface Props {
   ogType?: string;
   jsonLd?: unknown;
   readingPage?: boolean; // font/theme/width/تشكيل settings only make sense on actual reading content
-  tajweedPage?: boolean; // tajweed color settings — only the (currently gated) quran surah pages
 }
 const {
   title, description, activeNav, searchScope, noindex, ogType = "website", jsonLd,
-  readingPage = false, tajweedPage = false,
+  readingPage = false,
 } = Astro.props;
 const canonical = new URL(Astro.url.pathname.replace(/\/$/, "") || "/", config.siteUrl).href;
 const GA_ID = "G-NBHR8NV97G";
@@ -29,11 +27,9 @@ const GA_ID = "G-NBHR8NV97G";
 const searchHref = searchHrefFor(searchScope);
 
 // Top nav (RTL: first item renders rightmost, last renders leftmost) —
-// الكتب / القرآن / الحديث / الشعر / الأعلام / المقالات / المسائل / كُناشة
+// الكتب / الشعر / الأعلام / المقالات / المسائل / كُناشة
 const nav = [
   { id: "books", label: "الكتب", href: "/books" },
-  { id: "quran", label: "القرآن", href: "/quran" },
-  { id: "hadith", label: "الحديث", href: "/hadith" },
   { id: "poems", label: "الشعر", href: "/poems" },
   { id: "people", label: "التراجم والأعلام", href: "/people" },
   { id: "articles", label: "مقالات ومحاضرات", href: "/articles" },
@@ -48,13 +44,11 @@ const navAll = [
 ];
 
 // Drawer row icons — one glance beats a wall of identical text rows. Colors
-// reuse the same content-type identity the reader already has (Quran=gold,
-// حديث=green like .hadith-accent, poems=copper) — only established/generic
-// ones get a color; secondary categories stay plain so nothing looks garish.
+// reuse the same content-type identity the reader already has (poems=copper)
+// — only established/generic ones get a color; secondary categories stay
+// plain so nothing looks garish.
 const NAV_ICON: Record<string, string> = {
   books: '<path d="M4 4h9a3 3 0 013 3v13a3 3 0 00-3-3H4z"/><path d="M20 4h-4v13h4z"/>',
-  quran: '<path d="M12 3l1.4 4.3L18 9l-4.6 1.7L12 15l-1.4-4.3L6 9l4.6-1.7L12 3z"/><path d="M5 4v2.5M3.7 5.3h2.6M19 16v2.5M17.7 17.3h2.6"/>',
-  hadith: '<path d="M4 4h16v11H8l-4 4V4z"/>',
   poems: '<path d="M12 3.5l1.3 3.9L17 8.7l-3.7 1.4L12 14l-1.3-3.9L7 8.7l3.7-1.4L12 3.5z"/><path d="M5 4.5v2M4 5.5h2M18.5 15v2M17.5 16h2"/>',
   people: '<circle cx="12" cy="8" r="4"/><path d="M4 20c0-4.4 3.6-6.5 8-6.5s8 2.1 8 6.5"/>',
   articles: '<path d="M6 3h9l5 5v13H6z"/><path d="M15 3v5h5"/><path d="M9 12h6M9 16h6"/>',
@@ -62,17 +56,16 @@ const NAV_ICON: Record<string, string> = {
   benefits: '<path d="M6 3h12v18l-6-4-6 4z"/>',
   subjects: '<path d="M4 4h8l8 8-8 8-8-8V4z"/><circle cx="8" cy="8" r="1.3" fill="currentColor" stroke="none"/>',
 };
-const NAV_COLOR: Record<string, string> = { quran: "gold", hadith: "green", poems: "copper", people: "blue" };
+const NAV_COLOR: Record<string, string> = { poems: "copper", people: "blue" };
 
 // In-bar search filter: type checkboxes + a specific-عَلَم picker (both backed by
 // the D1 (FTS5) search index via /api/search — see TYPES in api/search.ts).
 // Checkbox values are the id/slug the index actually stores; "lesson"/"benefit"
-// were retired collections (no longer indexed) and quran/term/person were
-// missing entirely — this list had drifted out of sync with the real index.
+// were retired collections (no longer indexed) and term/person were missing
+// entirely — this list had drifted out of sync with the real index.
 const searchTypes = [
   { id: "book", label: "كتاب" },
   { id: "poem", label: "منظومة" },
-  { id: "quran", label: "قرآن" },
   { id: "question", label: "مسائل" },
   { id: "article", label: "مقالة" },
   { id: "term", label: "معجم" },
@@ -82,18 +75,6 @@ const filterPersons = (await getCollection("person"))
   .filter((p) => p.data.status === "published")
   .map((p) => ({ id: p.id, name: p.data.title as string }))
   .sort((a, b) => a.name.localeCompare(b.name, "ar"));
-
-// Quran juz/page jump (topbar-level so it's reachable from any /quran/* page,
-// not just the mushaf hub) — shown/hidden by reader.ts based on activeNav.
-const quranSurahs = (await getCollection("quran")).sort((a, b) => (a.data.number as number) - (b.data.number as number));
-const JUZ_START_PAGE = [1, 22, 42, 62, 82, 102, 121, 142, 162, 182, 201, 222, 242, 262, 282, 302, 322, 342, 362, 382, 402, 422, 442, 462, 482, 502, 522, 542, 562, 582];
-const surahPages = quranSurahs.map((s) => ({ id: s.id, start: s.data.start_page as number }));
-const pageHref = (page: number) => {
-  let s = surahPages[0];
-  for (const cand of surahPages) { if (cand.start <= page) s = cand; else break; }
-  return `/quran/${s.id}#p${page}`;
-};
-const juzOptions = JUZ_START_PAGE.map((page, i) => ({ n: i + 1, href: pageHref(page) }));
 
 const fullTitle = title.includes("أهل الأثر") ? title : `${title} · أهل الأثر`;
 
@@ -148,8 +129,6 @@ const [readerSub, readerMain] = title.includes(" · ") ? title.split(" · ") : [
           if (localStorage.getItem("aa-vnums") === "0") document.documentElement.classList.add("hide-vnums");
           const w = localStorage.getItem("aa-width");
           if (w === "narrow" || w === "wide") document.documentElement.setAttribute("data-width", w);
-          const tw = JSON.parse(localStorage.getItem("aa-tajweed-colors") || "{}");
-          for (const rule in tw) document.documentElement.style.setProperty("--tw-user-" + rule, tw[rule]);
         } catch (e) {}
       })();
     </script>
@@ -184,7 +163,7 @@ const [readerSub, readerMain] = title.includes(" · ") ? title.split(" · ") : [
           if (t.closest?.('[data-action="update:reload"]')) location.reload();
           if (t.closest?.('[data-action="update:dismiss"]')) t.closest("[data-update-banner]")?.setAttribute("hidden", "");
         });
-        // Full app precache (shell pages + Quran, ~12MB together) is only for
+        // Full app shell precache (the hub/nav pages) is only for
         // people who actually installed the app — SW registration above
         // happens for EVERY visitor, but that download must not. Gated on
         // display-mode: standalone (checked on every load, since install can
@@ -256,15 +235,6 @@ const [readerSub, readerMain] = title.includes(" · ") ? title.split(" · ") : [
           <!-- top-bar search removed entirely: on mobile the ONE search entry is
                the bottom tab bar (or the المزيد menu on reading pages); desktop
                keeps per-section searches + the drawer. -->
-          <!-- Quran juz/page jump: only shown on /quran/* pages (reader.ts onPage) -->
-          <div class="quran-jump" data-quran-jump hidden>
-            <select data-quran-jump-juz aria-label="الانتقال إلى جزء">
-              <option value="">الجزء</option>
-              {juzOptions.map((j) => <option value={j.href}>{toArabicDigits(j.n)}</option>)}
-            </select>
-            <input type="number" min="1" max="604" placeholder="صفحة" data-quran-jump-page aria-label="الانتقال إلى صفحة" />
-          </div>
-          <script type="application/json" data-quran-surah-pages set:html={JSON.stringify(surahPages)} />
           <!-- downloaded-for-offline manager — a real page (/downloads), not a
                popover: scales past a handful of entries -->
           <a class="icon-btn" href="/downloads" aria-label="التنزيلات">
@@ -342,37 +312,6 @@ const [readerSub, readerMain] = title.includes(" · ") ? title.split(" · ") : [
              (see reader.ts's isPoemPage/followTiming sync) — lets any reader
              volunteer to time the poem instead of only the site owner. -->
         <button type="button" class="toggle-btn pop-toggle" data-action="tap:open" hidden>ساعدنا بتوقيت هذه القصيدة</button>
-        {tajweedPage && (
-          <>
-            <!-- SSR-conditional, not always-render+CSS-hide: this markup/CSS
-                 would otherwise ship on all ~4800 pages via the shared bundle
-                 and blew the render-budget check (228 KB) by riding along on
-                 every page just to stay hidden. Tradeoff: soft-navigating
-                 straight to /quran/1 from a page that rendered the header
-                 without this section won't show it until a hard reload —
-                 acceptable while only one surah has tajweed at all. -->
-            <div class="pop-row">
-              <span class="pop-label">ألوان أحكام التجويد</span>
-              <div class="pop-btns">
-                <button type="button" class="icon-btn" data-action="tajweed:preset:default" title="الألوان الافتراضية">افتراضي</button>
-                <button type="button" class="icon-btn" data-action="tajweed:preset:vivid" title="ألوان زاهية عالية التباين">زاهي</button>
-                <button type="button" class="icon-btn" data-action="tajweed:preset:muted" title="ألوان هادئة منخفضة التشبع">هادئ</button>
-              </div>
-            </div>
-            <details class="tajweed-advanced">
-              <summary>تخصيص لون كل حكم</summary>
-              <div class="tajweed-grid">
-                {Object.entries(TAJWEED_LABELS).map(([rule, label]) => (
-                  <label class="tajweed-color-row">
-                    <input type="color" data-tajweed-color={rule} value={TAJWEED_COLORS[rule]} aria-label={label} />
-                    <span>{label}</span>
-                  </label>
-                ))}
-              </div>
-              <button type="button" class="pop-reset" data-action="tajweed:reset">إعادة تعيين الألوان</button>
-            </details>
-          </>
-        )}
         <!-- the footer (where these normally live) is hidden in the mobile app
              layout — the gear sheet is their one reachable home on phones -->
         <div class="pop-links">
@@ -443,8 +382,6 @@ const [readerSub, readerMain] = title.includes(" · ") ? title.split(" · ") : [
           <nav class="footer-col" aria-label="التصفّح">
             <div class="footer-col-h">التصفّح</div>
             <a href="/books">الكتب</a>
-            <a href="/quran">القرآن</a>
-            <a href="/hadith">الحديث</a>
             <a href="/poems">الشعر</a>
             <a href="/subjects">الموضوعات</a>
             <a href="/people">التراجم والأعلام</a>
@@ -513,9 +450,9 @@ const [readerSub, readerMain] = title.includes(" · ") ? title.split(" · ") : [
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
             <span>البحث</span>
           </a>
-          <a href="/quran" aria-current={activeNav === "quran" ? "page" : undefined}>
+          <a href="/poems" aria-current={activeNav === "poems" ? "page" : undefined}>
             <span class="tab-orn" aria-hidden="true">۞</span>
-            <span>القرآن</span>
+            <span>الشعر</span>
           </a>
           <button data-action="menu:toggle" aria-label="القائمة">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>

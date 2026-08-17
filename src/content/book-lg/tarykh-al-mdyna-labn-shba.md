@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: abn-shba
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 262
 description: "تاريخ المدينة لابن شبة، تأليف ابن شبة (ت 0262هـ)"
 ---

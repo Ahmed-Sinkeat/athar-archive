@@ -15,7 +15,6 @@ import Base from "../../../layouts/Base.astro";
 import AudioPlayer from "../../../components/AudioPlayer.astro";
 import Breadcrumbs from "../../../components/Breadcrumbs.astro";
 import StudyBar from "../../../components/StudyBar.astro";
-import InlineNoteGroup from "../../../components/InlineNoteGroup.astro";
 import ReaderSidebar from "../../../components/ReaderSidebar.astro";
 import BookPageJump from "../../../components/BookPageJump.astro";
 import TitleFilter from "../../../components/TitleFilter.astro";
@@ -24,13 +23,9 @@ import { isPub, loadGraph, personNameMap, notesByAnchor, type AnnNote } from "..
 import { markdownToSafeHtml } from "../../../lib/sanitize";
 import { parseToc } from "../../../lib/chapters";
 import { wirePageFootnotes } from "../../../lib/page-footnotes";
-import { readBody } from "../../../lib/read-body";
 import { builtForCached } from "../../../lib/book-build";
 import { shardPaths } from "../../../lib/build-shard";
 import { hrefFor, labelFor, isMatn, toArabicDigits } from "../../../lib/display";
-import { parseHadithOrdinal, type TakhrijLink } from "../../../lib/hadith";
-import hadithIndexData from "../../../data/hadith-index.json";
-import takhrijData from "../../../data/takhrij.json";
 
 // entry/audios stay loose (`entry.data.*` is accessed ~15 ways across this
 // file with mixed types) — only the fields whose untyped .map/.filter/
@@ -47,26 +42,16 @@ interface Props {
 }
 
 // builtForCached (book-build.ts) holds the one-book memo that lets props stay
-// text-free — see its comment for the CI OOM story. The quran loader is passed
-// in (not imported by the lib) so book-build.ts stays usable outside Astro.
-const loadQuran = async () => {
-  const quran = (await getCollection("quran")) as any[];
-  return Promise.all(quran.map(async (q) => ({ number: q.data.number as number, body: await readBody(q) })));
-};
+// text-free — see its comment for the CI OOM story.
 
 export async function getStaticPaths() {
   const books = ((await getCollection("book")) as any[]).filter(isPub);
   const graph = await loadGraph();
   const names = await personNameMap();
-  const takhrij = takhrijData as Record<string, TakhrijLink[]>;
-  const loadQuranHoisted = async () => {
-    const quran = (await getCollection("quran")) as any[];
-    return Promise.all(quran.map(async (q) => ({ number: q.data.number as number, body: await readBody(q) })));
-  };
   const paths: { params: { slug: string; chapter: string }; props: Props }[] = [];
 
   for (const entry of books) {
-    const built = await builtForCached(entry, takhrij, loadQuranHoisted);
+    const built = await builtForCached(entry);
     if (!built) continue;
 
     const byAnchor = notesByAnchor("book", entry.id, graph, names);
@@ -97,12 +82,8 @@ export async function getStaticPaths() {
   return shardPaths(paths);
 }
 
-type HadithNote = { kind: string; label: string; sourceSlug: string; sourceTitle: string; sourceHref: string; body: string; grade?: string };
-const hadithIndex = hadithIndexData as Record<string, HadithNote[]>;
-const HADITH_KIND_CLASS: Record<string, string> = { شرح: "sharh", تخريج: "takhrij", حكم: "takhrij" };
-
 const { entry, chapterSlug, byAnchor, author, commentaries, audios } = Astro.props;
-const built = (await builtForCached(entry, takhrijData as Record<string, TakhrijLink[]>, loadQuran))!;
+const built = (await builtForCached(entry))!;
 const { catalog, volumes } = built;
 const manifest = built.chapters.map(({ content: _content, ...meta }) => meta);
 const chapter = built.chapters.find((c) => c.slug === chapterSlug)!;
@@ -138,14 +119,6 @@ function groupToc(items: typeof allChapters): TocGroup[] {
 }
 const tocGroups = groupToc(allChapters);
 const currentGroupKey = chapterMeta.parent ?? chapterMeta.slug;
-
-// Matn hubs (currently just the Arbaeen — see ADR-0013): each chapter here is
-// already scoped to one "## الحديث <ordinal>" heading — surface this hadith's
-// notes as inline <details> after the prose, ordered شرح → تخريج → حكم.
-const hadithOrdinal = parseHadithOrdinal(chapter.title);
-const hadithNotes = hadithOrdinal !== null ? hadithIndex[`${entry.id}:${hadithOrdinal}`] : undefined;
-const HADITH_KIND_ORDER = ["شرح", "تخريج", "حكم"];
-const isHadith = entry.data.genre === "حديث";
 
 const KIND_SLUG: Record<string, string> = { شرح: "sharh", حاشية: "hashiya", تخريج: "takhrij", إعراب: "iraab" };
 const phraseAnchors = Object.entries(byAnchor).filter(([, notes]: any) => notes.some((n: any) => n.phrase));
@@ -233,13 +206,13 @@ const finalContent = wirePageFootnotes(markdownToSafeHtml(chapter.content), chap
     ]}
   />
 
-  <div class:list={["chap-outer", { "hadith-accent": isHadith }]}>
+  <div class="chap-outer">
     <div class="chap-grid">
       <!-- main reading column -->
       <div class="reading-pad" data-cite-book={entry.data.title} data-cite-author={author}>
         <div class="reader-head">
           <div class="eyebrow u87c136d"><a class="faint" href={hrefFor("book", entry.id)}>{entry.data.title}</a></div>
-          <div class:list={["ornament", { "ornament-green": isHadith }]} aria-hidden="true">۞</div>
+          <div class="ornament" aria-hidden="true">۞</div>
           <h1
             class:list={["reader-title", "ue7e55f7"]}
             set:html={chapterMeta.parentTitle ?? (chapter.rawTitle || chapter.title)}
@@ -296,12 +269,6 @@ const finalContent = wirePageFootnotes(markdownToSafeHtml(chapter.content), chap
             ))}
           </div>
         ))}
-
-        <InlineNoteGroup
-          notes={hadithNotes?.map((nt) => ({ kind: nt.kind, body: nt.body, sourceLabel: nt.sourceTitle, sourceHref: nt.sourceHref })) ?? []}
-          kindOrder={HADITH_KIND_ORDER}
-          kindClass={HADITH_KIND_CLASS}
-        />
 
         <!-- prev / next navigation — 2-col cards (mockup) -->
         <nav class="prevnext" aria-label="تنقل بين الفصول">

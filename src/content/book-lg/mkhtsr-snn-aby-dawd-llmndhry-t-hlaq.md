@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: abd-al-azym-al-mndhry
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 656
 description: "مختصر سنن أبي داود للمنذري ت حلاق، تأليف عبد العظيم المنذري (ت 0656هـ)"
 ---

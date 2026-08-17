@@ -8,7 +8,7 @@ import { loadGraph, personEraMap } from "../lib/site";
 
 const pub = (c: any[]) => c.filter((e) => e.data.status === "published");
 
-const [people, books, poems, articles, announcements, highlights, questions, subjects, quranSurahs] = await Promise.all([
+const [people, books, poems, articles, announcements, highlights, questions, subjects] = await Promise.all([
   getCollection("person"),
   getCollection("book"),
   getCollection("poem"),
@@ -17,9 +17,7 @@ const [people, books, poems, articles, announcements, highlights, questions, sub
   getCollection("highlight"),
   getCollection("question"),
   getCollection("subject"),
-  getCollection("quran"),
 ]);
-const hadithBooks = books.filter((b) => (b.data as any).genre === "حديث" && b.data.status === "published");
 
 // مختارات الأسبوع: one حديث (curated highlight) + one whole كتاب/منظومة/مقال
 // entry each, rotating by week index. ponytail: build-time pick (stable
@@ -146,15 +144,15 @@ const latest = [
         <div class="browse4-card-head"><span class="browse4-card-title">الكتب</span><span class="browse4-card-meta">{toArabicDigits(pub(books).length)} كتابًا</span></div>
         <p class="browse4-card-sub">متونٌ ومراجعُ ومجاميعُ مرتَّبةٌ حسب الفنِّ.</p>
       </a>
-      <a class="browse4-card accent-gold" href="/quran">
+      <a class="browse4-card accent-gold" href="/subjects">
         <span class="browse4-orn" aria-hidden="true">۞</span>
-        <div class="browse4-card-head"><span class="browse4-card-title">القرآن</span><span class="browse4-card-meta">{toArabicDigits(pub(quranSurahs).length)} سورة</span></div>
-        <p class="browse4-card-sub">التفاسيرُ وعلومُ القرآنِ والقراءات.</p>
+        <div class="browse4-card-head"><span class="browse4-card-title">الموضوعات</span><span class="browse4-card-meta">{toArabicDigits(pub(subjects).length)} فنًّا</span></div>
+        <p class="browse4-card-sub">فهرسُ الفنونِ والموضوعاتِ عبر الأرشيف.</p>
       </a>
-      <a class="browse4-card accent-green" href="/hadith">
+      <a class="browse4-card accent-green" href="/people">
         <span class="browse4-orn" aria-hidden="true">؎</span>
-        <div class="browse4-card-head"><span class="browse4-card-title">الحديث</span><span class="browse4-card-meta">{toArabicDigits(hadithBooks.length)} كتب</span></div>
-        <p class="browse4-card-sub">متونُ الحديثِ وتخاريجُه وعلَلُه.</p>
+        <div class="browse4-card-head"><span class="browse4-card-title">التراجم والأعلام</span><span class="browse4-card-meta">{toArabicDigits(pub(people).length)} عَلَمًا</span></div>
+        <p class="browse4-card-sub">تراجمُ المصنِّفينَ والرواةِ والشعراء.</p>
       </a>
       <a class="browse4-card accent-copper" href="/poems">
         <span class="browse4-orn" aria-hidden="true">؏</span>
@@ -163,8 +161,7 @@ const latest = [
       </a>
     </div>
     <div class="browse-pills">
-      <a class="ghost-pill" href="/people">التراجم والأعلام <span class="browse-pills-count">· {toArabicDigits(pub(people).length)}</span></a>
-      <a class="ghost-pill" href="/subjects">الموضوعات <span class="browse-pills-count">· {toArabicDigits(pub(subjects).length)} فنًّا</span></a>
+      <a class="ghost-pill" href="/topics">الموضوعات التفصيلية</a>
       <a class="ghost-pill" href="/questions">المسائل <span class="browse-pills-count">· {toArabicDigits(pub(questions).length)}</span></a>
       <a class="ghost-pill" href="/articles">المقالات</a>
     </div>

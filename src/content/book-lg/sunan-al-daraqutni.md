@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-27
 person: al-daraqutni
 kind: متن
-genre: حديث
-hadith_category: "امهات الكتب"
 authored_year: 385
 description: "سنن الدارقطني، تأليف الدارقطني (ت 0385هـ)"
 ---

@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: ibn-wahb
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 197
 description: "الجامع لابن وهب ت رفعت فوزي عبد المطلب، تأليف ابن وهب (ت 0197هـ)"
 ---

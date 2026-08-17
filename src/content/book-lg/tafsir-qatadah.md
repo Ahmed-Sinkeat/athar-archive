@@ -4,7 +4,6 @@ status: draft
 published_at: 2026-07-18
 person: qatadah-ibn-diamah
 kind: مرجع
-genre: قرآن
 topics: ["tafsir-al-quran"]
 ---
 # تمهيد

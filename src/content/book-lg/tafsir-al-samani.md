@@ -3,7 +3,6 @@ title: "تفسير السمعاني"
 status: published
 published_at: 2026-07-16
 person: al-samani
-genre: قرآن
 topics: ["tafsir-al-quran"]
 authored_year: 489
 description: "تفسير أبي المظفر منصور بن محمد السمعاني، تفسير شافعي على مذهب أهل السنة في الاعتقاد"

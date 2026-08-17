@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: tmam-bn-mhmd-al-dmshqy
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 414
 description: "فوائد تمام، تأليف تمام بن محمد الدمشقي (ت 0414هـ)"
 ---

@@ -4,8 +4,6 @@ status: published
 published_at: 2026-07-28
 person: yhya-bn-al-hsyn-al-shjry
 kind: متن
-genre: حديث
-hadith_category: "كتب الآثار"
 authored_year: 499
 description: "ترتيب الأمالي الخميسية للشجري، تأليف يحيى بن الحسين الشجري (ت 0499هـ)"
 ---
