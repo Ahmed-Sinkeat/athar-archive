@@ -14,15 +14,15 @@ name: R2 cleanup (manual)
 on:
   workflow_dispatch:
     inputs:
-      # Keep in lockstep with RETIRED_PREFIXES in scripts/lib/r2.mjs — that array
-      # is the authority, and the script refuses anything absent from it, so a
-      # stale option here fails safely rather than deleting something live.
+      # Free text, deliberately: RETIRED_PREFIXES in scripts/lib/r2.mjs is the
+      # single authority, and the script refuses anything absent from it (it
+      # prints the valid list on refusal). A `choice` list here would be a
+      # second copy to keep in sync — and cannot even be expressed when nothing
+      # is currently retired, which is the normal state.
       prefix:
-        description: "Retired top-level prefix to delete"
+        description: "Retired top-level prefix to delete, e.g. old-thing/ (must be in RETIRED_PREFIXES)"
         required: true
-        type: choice
-        options:
-          - book/
+        type: string
       confirm:
         description: "Actually delete. Leave unticked for a dry run (recommended first)."
         required: false

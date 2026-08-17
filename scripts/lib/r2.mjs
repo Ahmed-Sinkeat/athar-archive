@@ -25,20 +25,27 @@ export const OWNED_PREFIXES = ["pages/"];
 
 // Prefixes this repo used to own and no longer generates. Reported by
 // `pnpm r2:inventory`, never touched by the uploader — deletion is a reviewed,
-// manual step via .github/workflows/r2-cleanup.yml, whose `prefix` choice list
-// moves in lockstep with this array. Drop an entry once its objects are gone.
+// manual step via .github/workflows/r2-cleanup.yml, which validates its input
+// against THIS array. Empty means nothing is awaiting deletion, and the
+// workflow correctly refuses every prefix.
 //
-// Emptied so far (2026-08-17): tafsir-frag/ (43027 objects) and app/ (128467,
-// the app/v1 JSON export) — both deleted after the specialist sections were
-// retired.
+// To retire a prefix: stop generating it, add it here, run the workflow (dry
+// run, then --confirm), then remove it again. The entry exists only for the
+// window between "no longer generated" and "objects actually gone".
 //
-// book/ is the third instance of the same bug and the reason ownership is now
-// declared rather than inferred: it held per-chapter markdown that the Worker
-// fetched and rendered per request, until 164b2e8f moved chapters to
-// prerendered HTML under pages/book/. The migration never deleted the old
-// objects, and because book/ stopped existing locally the uploader stopped
-// listing it — so 1217 objects have sat unreferenced ever since.
-export const RETIRED_PREFIXES = ["book/"];
+// Cleared 2026-08-17 — all three orphans from one root cause, ownership being
+// inferred from whatever happened to be in dist/r2-upload rather than declared:
+//   book/         1217 objects — per-chapter markdown the Worker rendered per
+//                 request, orphaned by 164b2e8f (chapters → prerendered HTML
+//                 under pages/book/, to fix the Worker CPU crash / error 1102)
+//   tafsir-frag/ 43027 objects — per-ayah tafsir fragments
+//   app/        128467 objects — the app/v1 JSON export for an Android client
+//                 that never shipped
+// Each was retired in code while its objects stayed; each stopped being listed
+// the moment it stopped existing locally, so no diff or prune ever saw it
+// again. OWNED_PREFIXES above is the fix: declared, and an undeclared local
+// directory is now a hard error.
+export const RETIRED_PREFIXES = [];
 
 const sha256hex = (d) => crypto.createHash("sha256").update(d).digest("hex");
 const hmac = (key, d) => crypto.createHmac("sha256", key).update(d).digest();
