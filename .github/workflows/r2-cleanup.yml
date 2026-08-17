@@ -1,0 +1,85 @@
+name: R2 cleanup (manual)
+
+# Delete a RETIRED top-level R2 prefix, using the R2 credentials this repo
+# already holds as Actions secrets — so no one has to copy them onto a laptop.
+#
+# Manual only. Never runs on push. Dry run unless you tick `confirm`.
+#
+# Deletable prefixes come from RETIRED_PREFIXES in scripts/lib/r2.mjs; the
+# script refuses anything else, so this workflow cannot be pointed at pages/
+# (live chapter bodies) or build-data/ (owned by a different job).
+#
+# Run it from the Actions tab → "R2 cleanup (manual)" → Run workflow.
+
+on:
+  workflow_dispatch:
+    inputs:
+      prefix:
+        description: "Retired top-level prefix to delete"
+        required: true
+        type: choice
+        options:
+          - tafsir-frag/
+          - app/
+      confirm:
+        description: "Actually delete. Leave unticked for a dry run (recommended first)."
+        required: false
+        default: false
+        type: boolean
+
+# Never let two deletions (or a deletion and a deploy's R2 upload) interleave.
+concurrency:
+  group: r2-mutation
+  cancel-in-progress: false
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    env:
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+      R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+
+      # No `pnpm install`: these scripts import only node: builtins, so the
+      # job needs nothing from the lockfile and finishes in seconds.
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Guard rails self-test (no network)
+        run: |
+          node scripts/r2-delete-prefix.mjs --selftest
+          node scripts/r2-inventory.mjs --selftest
+
+      - name: Inventory BEFORE
+        run: node scripts/r2-inventory.mjs
+
+      # PREFIX/CONFIRM go through env, never interpolated into the shell line.
+      # They are `choice`/`boolean` inputs so GitHub already constrains them to
+      # the declared values, and r2-delete-prefix.mjs rejects anything outside
+      # RETIRED_PREFIXES — this is just the third layer.
+      - name: Delete "${{ inputs.prefix }}" (${{ inputs.confirm && 'CONFIRMED' || 'dry run' }})
+        env:
+          PREFIX: ${{ inputs.prefix }}
+          CONFIRM: ${{ inputs.confirm }}
+        run: |
+          if [ "$CONFIRM" = "true" ]; then
+            node scripts/r2-delete-prefix.mjs "$PREFIX" --confirm
+          else
+            node scripts/r2-delete-prefix.mjs "$PREFIX"
+          fi
+
+      - name: Inventory AFTER
+        if: ${{ inputs.confirm }}
+        run: node scripts/r2-inventory.mjs
+
+      - name: Reminder
+        if: ${{ inputs.confirm }}
+        env:
+          PREFIX: ${{ inputs.prefix }}
+        run: |
+          echo "::notice::If '$PREFIX' is now empty, remove it from RETIRED_PREFIXES in scripts/lib/r2.mjs — the cleanup isn't finished until the list says so."
