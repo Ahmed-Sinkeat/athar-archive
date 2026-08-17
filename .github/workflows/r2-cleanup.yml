@@ -14,13 +14,15 @@ name: R2 cleanup (manual)
 on:
   workflow_dispatch:
     inputs:
+      # Keep in lockstep with RETIRED_PREFIXES in scripts/lib/r2.mjs — that array
+      # is the authority, and the script refuses anything absent from it, so a
+      # stale option here fails safely rather than deleting something live.
       prefix:
         description: "Retired top-level prefix to delete"
         required: true
         type: choice
         options:
-          - tafsir-frag/
-          - app/
+          - book/
       confirm:
         description: "Actually delete. Leave unticked for a dry run (recommended first)."
         required: false

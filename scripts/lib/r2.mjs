@@ -25,8 +25,20 @@ export const OWNED_PREFIXES = ["pages/"];
 
 // Prefixes this repo used to own and no longer generates. Reported by
 // `pnpm r2:inventory`, never touched by the uploader — deletion is a reviewed,
-// manual step (see docs/deploy.md). Empty this list once they're gone.
-export const RETIRED_PREFIXES = ["tafsir-frag/", "app/"];
+// manual step via .github/workflows/r2-cleanup.yml, whose `prefix` choice list
+// moves in lockstep with this array. Drop an entry once its objects are gone.
+//
+// Emptied so far (2026-08-17): tafsir-frag/ (43027 objects) and app/ (128467,
+// the app/v1 JSON export) — both deleted after the specialist sections were
+// retired.
+//
+// book/ is the third instance of the same bug and the reason ownership is now
+// declared rather than inferred: it held per-chapter markdown that the Worker
+// fetched and rendered per request, until 164b2e8f moved chapters to
+// prerendered HTML under pages/book/. The migration never deleted the old
+// objects, and because book/ stopped existing locally the uploader stopped
+// listing it — so 1217 objects have sat unreferenced ever since.
+export const RETIRED_PREFIXES = ["book/"];
 
 const sha256hex = (d) => crypto.createHash("sha256").update(d).digest("hex");
 const hmac = (key, d) => crypto.createHmac("sha256", key).update(d).digest();
