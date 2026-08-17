@@ -290,8 +290,14 @@ jobs:
       # Incremental (see gen-search-index.ts): a normal deploy touching a
       # handful of books costs a few hundred row writes, not a 30k-row full
       # reindex, so this can run on every push instead of being gated off.
+      # continue-on-error: gen-search-index now REFUSES to run when the
+      # doc_hash snapshot is missing (a failed dump means the remote state is
+      # unknown, and guessing "empty" would DROP the live index). That refusal
+      # must never gate the SITE deploy below it — search goes stale, the site
+      # still ships. The summary step at the end of the job reports it loudly.
       - name: Generate search index
         if: github.ref == 'refs/heads/main' && github.event_name == 'push' && env.CLOUDFLARE_API_TOKEN != ''
+        continue-on-error: true
         run: pnpm search:gen
 
       # ponytail: deploy inline instead of a separate job — the old artifact
@@ -383,8 +389,40 @@ jobs:
         if: github.ref == 'refs/heads/main' && github.event_name == 'push' && env.CLOUDFLARE_API_TOKEN != ''
         continue-on-error: true
         run: |
-          fail=0
-          for f in dist/search-index/*.sql; do
-            pnpm exec wrangler d1 execute athar-search --remote -y --file "$f" || { echo "::warning::D1 import failed for $f — continuing to next file"; fail=1; }
+          shopt -s nullglob
+          files=(dist/search-index/*.sql)
+          if [ ${#files[@]} -eq 0 ]; then
+            echo "SEARCH_STATUS=no-sql" >> "$GITHUB_ENV"
+            echo "::warning::no dist/search-index/*.sql — index generation was skipped or refused; search is UNCHANGED"
+            exit 0
+          fi
+          ok=0; bad=0
+          for f in "${files[@]}"; do
+            if pnpm exec wrangler d1 execute athar-search --remote -y --file "$f"; then
+              ok=$((ok+1))
+            else
+              echo "::warning::D1 import failed for $f — continuing to next file"
+              bad=$((bad+1))
+            fi
           done
-          exit $fail
+          echo "SEARCH_OK=$ok" >> "$GITHUB_ENV"
+          echo "SEARCH_BAD=$bad" >> "$GITHUB_ENV"
+          echo "SEARCH_STATUS=$([ $bad -eq 0 ] && echo ok || echo partial)" >> "$GITHUB_ENV"
+          exit $bad
+
+      # A green build must not imply a fresh index. Both steps above are
+      # continue-on-error, so without this the run reports success while the
+      # search index is stale or half-applied — which is exactly what happened
+      # on 2026-08-17 (21 of 29 files rejected with D1 error 7009, run green,
+      # 87k stale rows left live and only caught by reading logs by hand).
+      - name: Search index status
+        if: always() && github.ref == 'refs/heads/main' && github.event_name == 'push' && env.CLOUDFLARE_API_TOKEN != ''
+        run: |
+          case "${SEARCH_STATUS:-unknown}" in
+            ok)      echo "### ✅ Search index refreshed — ${SEARCH_OK:-?} file(s) applied" >> "$GITHUB_STEP_SUMMARY" ;;
+            partial) echo "### ⚠️ Search index PARTIALLY applied — ${SEARCH_OK:-?} ok, ${SEARCH_BAD:-?} rejected by D1" >> "$GITHUB_STEP_SUMMARY"
+                     echo "Search results may be stale or incomplete. Re-run the deploy, or apply \`dist/search-index/*.sql\` by hand." >> "$GITHUB_STEP_SUMMARY" ;;
+            no-sql)  echo "### ⚠️ Search index NOT updated — no SQL was generated" >> "$GITHUB_STEP_SUMMARY"
+                     echo "Usually the doc_hash snapshot could not be read, so generation refused rather than DROP the live index. See the two steps above." >> "$GITHUB_STEP_SUMMARY" ;;
+            *)       echo "### ⚠️ Search index status unknown — the refresh step did not report" >> "$GITHUB_STEP_SUMMARY" ;;
+          esac

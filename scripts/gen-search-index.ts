@@ -10,9 +10,10 @@
 // only docs whose hash changed (or are new/removed) get DELETE+INSERT SQL —
 // a full reindex is ~30k row writes against D1's 100k/day free quota, so most
 // deploys (a handful of edited books) should cost a few hundred, not 30k.
-// Bootstrap/fallback: no hashes file (first run, or `doc_hash` doesn't exist
-// yet remotely) → full rebuild (DROP + CREATE + insert everything), same as
-// before this was made incremental.
+// Bootstrap: a snapshot that reads cleanly but holds no rows (doc_hash is
+// genuinely empty) → full rebuild (DROP + CREATE + insert everything). A
+// snapshot that is MISSING is a failed dump, not an empty table, and is
+// refused — see the guard at the top of main().
 import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
@@ -33,6 +34,51 @@ interface Doc {
 }
 
 async function main() {
+  // Decide incremental-vs-rebuild FIRST: this gates everything below and
+  // costs nothing, whereas loadContentMetaFromDisk() below scans the whole
+  // corpus (8k+ entries, minutes). Refusing after that work is wasted time.
+  // The remote doc_hash snapshot comes from `pnpm search:hashes`.
+  // Three situations used to collapse into one, and the third is a live hazard
+  // on this infrastructure — D1 answered `7009 Upstream service unavailable`
+  // six times during the 2026-08-17 deploy:
+  //   1. snapshot present, has rows  → incremental.
+  //   2. snapshot present, no rows   → doc_hash is genuinely empty; a bootstrap
+  //                                    full rebuild is the right answer.
+  //   3. snapshot MISSING/unreadable → the dump FAILED, so the remote state is
+  //                                    UNKNOWN. Reading that as "no hashes"
+  //                                    emits DROP TABLE docs and takes a live
+  //                                    100k-row index offline over what is
+  //                                    usually a transient read error.
+  // So absence is now an error rather than an empty set. A full rebuild is
+  // still available, but has to be asked for.
+  const hashesPath = path.resolve(".search-hashes.json");
+  const allowFullRebuild = process.env.SEARCH_ALLOW_FULL_REBUILD === "1";
+  let remoteHashes: Record<string, string> = {};
+  let snapshotOk = false;
+  try {
+    const raw = JSON.parse(fs.readFileSync(hashesPath, "utf-8"));
+    const rows = raw?.[0]?.results ?? [];
+    for (const r of rows) if (r?.url && r?.hash) remoteHashes[r.url] = r.hash;
+    snapshotOk = true;
+  } catch { /* handled immediately below */ }
+  if (!snapshotOk && !allowFullRebuild) {
+    throw new Error(
+      `refusing to run: ${hashesPath} is missing or unreadable, so the remote doc_hash state is UNKNOWN.\n` +
+      `Continuing would emit a FULL REBUILD (DROP TABLE docs) and take search offline — usually over a\n` +
+      `transient D1 read error, not a real need to rebuild.\n` +
+      `  • fix the dump:      pnpm search:hashes\n` +
+      `  • or, deliberately:  SEARCH_ALLOW_FULL_REBUILD=1 pnpm search:gen`,
+    );
+  }
+  const incremental = Object.keys(remoteHashes).length > 0;
+  if (!incremental) {
+    console.log(
+      snapshotOk
+        ? "doc_hash is empty → bootstrap full rebuild (DROP + insert everything)"
+        : "SEARCH_ALLOW_FULL_REBUILD=1 → full rebuild (DROP + insert everything)",
+    );
+  }
+
   // Metadata only — body.js loads lazily per entry (readBody below), never
   // all at once. book-lg alone is 3.2GB+; the old code loaded every body into
   // one `entries` array AND built a same-order-of-magnitude `docs` array
@@ -45,17 +91,6 @@ async function main() {
   const personName = new Map(
     metaEntries.filter((e) => e.collection === "person").map((e) => [e.id, String(e.data.title ?? "")]),
   );
-
-  // Load the remote doc_hash snapshot (see `pnpm search:hashes`). Empty/missing
-  // → full-rebuild mode (can't safely diff against unknown remote state).
-  const hashesPath = path.resolve(".search-hashes.json");
-  let remoteHashes: Record<string, string> = {};
-  try {
-    const raw = JSON.parse(fs.readFileSync(hashesPath, "utf-8"));
-    const rows = raw?.[0]?.results ?? [];
-    for (const r of rows) if (r?.url && r?.hash) remoteHashes[r.url] = r.hash;
-  } catch { /* missing/unparseable → treat as empty, full rebuild below */ }
-  const incremental = Object.keys(remoteHashes).length > 0;
 
   const hashOf = (d: Doc) => crypto.createHash("sha256").update([d.title, d.text, d.displayTitle, d.type, d.book, d.person].join("\0")).digest("hex");
   const q = (s: string) => `'${s.replace(/'/g, "''").replace(/[\u0000-\u001f]/g, " ")}'`;
