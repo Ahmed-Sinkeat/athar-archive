@@ -165,7 +165,10 @@ jobs:
       # Rides in the artifact so the finish job can prove the merge kept every
       # chapter this shard rendered (see "Merge shard chapter pages + verify").
       - name: Record this shard's chapter count
-        run: find dist/client/book-pages -name index.html | wc -l > dist/client/book-pages/.count-shard-${{ matrix.shard }}
+        # NOT dot-prefixed: actions/upload-artifact@v4 excludes hidden files by
+        # default, so a `.count-shard-*` never reached the artifact and the merge
+        # guard in `finish` silently had nothing to compare against.
+        run: find dist/client/book-pages -name index.html | wc -l > dist/client/book-pages/count-shard-${{ matrix.shard }}
 
       - name: Upload this shard's book-chapter pages
         uses: actions/upload-artifact@v4
@@ -246,11 +249,22 @@ jobs:
           for d in dist/_shards/book-pages-shard-*/; do
             cp -al "$d." dist/client/book-pages/ 2>/dev/null || cp -a "$d." dist/client/book-pages/
           done
-          expected=$(cat dist/client/book-pages/.count-shard-* | awk '{s+=$1} END{print s}')
+          shards=$(ls dist/client/book-pages/count-shard-* 2>/dev/null | wc -l)
+          expected=$(cat dist/client/book-pages/count-shard-* 2>/dev/null | awk '{s+=$1} END{print s+0}')
           actual=$(find dist/client/book-pages -name index.html | wc -l)
-          rm -f dist/client/book-pages/.count-shard-*
+          rm -f dist/client/book-pages/count-shard-*
           rm -rf dist/_shards
-          echo "chapter pages: expected=$expected merged=$actual"
+          echo "chapter pages: expected=$expected merged=$actual (from $shards/8 shard count file(s))"
+          # A guard that cannot compute its expectation must FAIL, not pass. It
+          # used to do the opposite: the count files never shipped (hidden-file
+          # exclusion, see the record step), so `expected` was empty, the test
+          # `[ N -lt "" ]` errored, `if` read that as false, and a 38096-of-128517
+          # merge reached the deploy on 2026-08-17 — caught only by an unrelated
+          # "Asset too large" error further down.
+          if [ "$shards" -ne 8 ]; then
+            echo "::error::found $shards/8 shard count files — cannot verify the merge, refusing to deploy"
+            exit 1
+          fi
           if [ "$actual" -lt "$expected" ]; then
             echo "::error::merge lost $((expected - actual)) chapter page(s) — refusing to deploy a partial corpus"
             exit 1
