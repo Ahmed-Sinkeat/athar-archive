@@ -51,6 +51,24 @@ runner has to hold on its very tight disk.
   HTML, so clients need no gzip support and nothing about content negotiation
   changes.
 
+**Measured cost of inflating per cache miss** (`wrangler tail --format json`
+against production, 2026-08-20, 114 requests incl. 99 organic crawler hits on
+`msnd-aby-yala`, every one a distinct URL and therefore a cache miss):
+
+| path | cpu p50 | cpu max |
+|---|---|---|
+| `pages-v2/` big books (read + inflate + substitute) | 9 ms | 13 ms |
+| `pages/` small book (read + substitute) | 3 ms | 5 ms |
+
+114/114 `outcome: ok`, 0 exceptions, all 200. Inflating costs ~5–6 ms over the
+old path. Note `wallTime` is useless for this — the same request logged
+`wallTime 462ms` against `cpuTime 9ms`, because the R2 read is I/O and does not
+count. Measuring this in local workerd with `Date.now()` overstates CPU by two
+orders of magnitude; use `cpuTime` from tail, never a wall clock.
+
+`CHAPTERS_V2="*"` since 2026-08-20. `pages/` is retained as the per-object
+fallback until it is deleted; see "R2 prefix ownership" below for that step.
+
 **Known, unrelated:** this route sends `no-transform` (to stop Bot Fight Mode
 injecting a per-request inline script the hash-based CSP then blocks), and
 Cloudflare honours it by *also* skipping compression — a chapter measured
