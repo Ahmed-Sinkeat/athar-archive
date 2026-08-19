@@ -4,11 +4,11 @@
 
 import fs from "node:fs";
 import path from "node:path";
-import { loadContentFromDisk } from "../src/lib/load.js";
+import { loadContentMetaFromDisk } from "../src/lib/load.js";
 import { hrefFor } from "../src/lib/display.js";
 
 function main() {
-  const entries = loadContentFromDisk();
+  const entries = loadContentMetaFromDisk();
   // static page moves (not slug aliases): تواصل merged into /about
   const lines: string[] = [
     "/contact /about#contact 301",

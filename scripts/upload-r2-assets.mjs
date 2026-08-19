@@ -28,11 +28,25 @@
 import fs from "node:fs";
 import path from "node:path";
 import assert from "node:assert";
-import { BUCKET, OWNED_PREFIXES, RETIRED_PREFIXES, makeClient, listPrefix, md5, sigv4 } from "./lib/r2.mjs";
+import { BUCKET, LEGACY_PREFIXES, OWNED_PREFIXES, RETIRED_PREFIXES, makeClient, listPrefix, md5, sigv4 } from "./lib/r2.mjs";
 
 const ROOT = path.resolve("dist/r2-upload");
 const CONCURRENCY = 64;
 const CONTENT_TYPE = { ".md": "text/markdown; charset=utf-8", ".html": "text/html; charset=utf-8" };
+const IMMUTABLE = "public, max-age=31536000, immutable";
+
+// Chapter pages arrive already gzipped (gen-book-chapters.ts §5). The object's
+// Content-Type is the type of the DECOMPRESSED body and the gzip rides in
+// Content-Encoding — the same split HTTP uses, so the stored bytes can one day
+// be streamed to a client untouched. R2's ETag is still the md5 of what we PUT,
+// i.e. of the compressed bytes, which is exactly what the diff above compares.
+// Pure, for --selftest.
+export function metaFor(file) {
+  if (file.endsWith(".html.gz")) {
+    return { contentType: CONTENT_TYPE[".html"], contentEncoding: "gzip", cacheControl: IMMUTABLE };
+  }
+  return { contentType: CONTENT_TYPE[path.extname(file)] || "application/octet-stream" };
+}
 
 function selftest() {
   // Worked example from AWS "Signature Version 4 signing process" docs
@@ -67,10 +81,21 @@ function selftest() {
 
   // ownership: a retired prefix must never still be claimed as owned, or the
   // next deploy would mass-delete it instead of leaving it for manual review
-  const overlap = OWNED_PREFIXES.filter((p) => RETIRED_PREFIXES.includes(p));
-  assert.deepStrictEqual(overlap, [], `prefix in both OWNED and RETIRED: ${overlap.join(", ")}`);
-  assert.ok(OWNED_PREFIXES.every((p) => p.endsWith("/")), "owned prefixes must end in /");
-  console.log(`✓ ownership selftest: owns ${OWNED_PREFIXES.join(", ")}; retired (untouched) ${RETIRED_PREFIXES.join(", ") || "none"}`);
+  const all = [...OWNED_PREFIXES, ...LEGACY_PREFIXES, ...RETIRED_PREFIXES];
+  assert.strictEqual(new Set(all).size, all.length, `a prefix appears in more than one of OWNED/LEGACY/RETIRED: ${all.join(", ")}`);
+  assert.ok(all.every((p) => p.endsWith("/")), "declared prefixes must end in /");
+  // pages/ is still serving as the route's fallback during the pages-v2
+  // migration: the uploader must not list it (it would prune all ~78k objects)
+  // and the cleanup workflow must keep refusing it (it only accepts RETIRED).
+  assert.ok(!OWNED_PREFIXES.includes("pages/"), "pages/ must not be owned while it is still the route's fallback");
+  console.log(`✓ ownership selftest: owns ${OWNED_PREFIXES.join(", ")}; legacy/serving ${LEGACY_PREFIXES.join(", ") || "none"}; retired (untouched) ${RETIRED_PREFIXES.join(", ") || "none"}`);
+
+  // upload metadata: a gzipped page must declare the DECOMPRESSED type plus the encoding
+  assert.deepStrictEqual(metaFor("dist/r2-upload/pages-v2/book/x/y.html.gz"), {
+    contentType: "text/html; charset=utf-8", contentEncoding: "gzip", cacheControl: IMMUTABLE,
+  });
+  assert.deepStrictEqual(metaFor("dist/r2-upload/x/y.md"), { contentType: "text/markdown; charset=utf-8" });
+  console.log("✓ upload-metadata selftest: .html.gz declares text/html + Content-Encoding: gzip");
 }
 
 // Prune safety valve. A healthy deploy prunes a handful of objects (a book
@@ -189,10 +214,7 @@ async function main() {
       const [key, { file, hash }] = toUpload[next++];
       const body = fs.readFileSync(file);
       try {
-        const res = await s3("PUT", key, {
-          body,
-          contentType: CONTENT_TYPE[path.extname(file)] || "application/octet-stream",
-        });
+        const res = await s3("PUT", key, { body, ...metaFor(file) });
         if (!res.ok) throw new Error(`HTTP ${res.status}: ${(await res.text()).slice(0, 200)}`);
         // single-part PUT ⇒ ETag must equal our md5 — catches silent corruption
         const etag = (res.headers.get("etag") || "").replace(/"/g, "");

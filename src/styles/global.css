@@ -1229,36 +1229,31 @@ html.hide-vnums .vnum { display: none; }
 .book-resume-card { margin-bottom: 22px; }
 .book-resume-link { display: block; margin-top: 6px; font-family: var(--font-display); font-weight: 700; font-size: 15px; color: var(--accent); text-decoration: none; }
 .book-resume-link:hover { text-decoration: underline; }
-/* mobile TOC disclosure — hidden on desktop, shown on mobile */
-.chap-mobile-toc { display: none; border: 1px solid var(--rule); border-radius: var(--radius-lg); background: var(--surface); margin-top: 14px; }
-.chap-mobile-toc summary { padding: 9px 14px; cursor: pointer; font-family: var(--font-ui); font-size: 13px; font-weight: 600; color: var(--accent); list-style: none; display: flex; justify-content: space-between; align-items: center; }
-.chap-mobile-toc summary::-webkit-details-marker { display: none; }
-.chap-mobile-toc summary::after { content: "+"; font-family: var(--font-mono); color: var(--ink-faint); font-size: 15px; }
-.chap-mobile-toc[open] summary::after { content: "−"; }
-.chap-mobile-list { margin: 0; padding: 4px 10px 10px; list-style: none; }
-.chap-mobile-list a { display: block; font-family: var(--font-ui); font-size: 13px; color: var(--ink-soft); text-decoration: none; padding: 6px 8px; border-radius: var(--radius); }
-.chap-mobile-list a:hover { color: var(--accent); }
-.chap-mobile-list a.is-current { color: var(--accent); font-weight: 600; }
+/* sheet header — the sidebar's label, only meaningful once it's a mobile sheet */
+.toc-sheet-head { display: none; }
 @media (max-width: 780px) {
   .chap-outer { padding-inline: 18px; }
   .chap-grid { grid-template-columns: 1fr; }
   .chap-grid > .reading-pad { grid-column: 1; }
+  /* The ONE sidebar DOM (ReaderSidebar.astro) turns into a bottom sheet here,
+     reachable regardless of scroll position. Opened solely from the topbar's
+     [data-action="sidebar:mobile-toggle"] icon (reader.ts), which toggles
+     .is-open — so there's exactly one way to open it, matching the
+     in-page-search dedup above. */
   .chap-toc-aside { display: none; }
-  .chap-mobile-toc { display: block; }
-}
-
-/* mobile sidebar popup: opened solely from the topbar's
-   [data-action="sidebar:mobile-toggle"] icon (reader.ts) — the <summary>
-   that used to be its own visible trigger is hidden so there's exactly one
-   way to open it, matching the in-page-search dedup above. */
-.chap-mobile-toc summary { display: none; }
-@media (max-width: 780px) {
-  /* becomes a bottom sheet, reachable regardless of scroll position, instead
-     of expanding in place in the flow */
-  .chap-mobile-toc[open] {
+  .chap-toc-aside.is-open {
+    display: block;
     position: fixed; inset-inline: 12px; bottom: 76px; top: auto;
     max-height: 65vh; overflow-y: auto; z-index: 46;
-    margin-top: 0;
+    margin: 0; padding: 4px 14px 12px;
+    border: 1px solid var(--rule); border-radius: var(--radius-lg);
+    background: var(--surface);
+  }
+  /* the rail's inner scroller would nest a second scrollbar inside the sheet */
+  .chap-toc-aside.is-open .toc-box { max-height: none; overflow: visible; }
+  .chap-toc-aside.is-open .toc-sheet-head {
+    display: block; padding: 5px 0 9px; font-family: var(--font-ui);
+    font-size: 13px; font-weight: 600; color: var(--accent);
   }
 }
 

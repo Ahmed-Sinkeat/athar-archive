@@ -3,7 +3,7 @@
 // they must not be publicly fetchable. Runs after `astro build`. (migration P1/P3)
 import fs from "node:fs";
 import path from "node:path";
-import matter from "gray-matter";
+import { readFrontmatterData } from "../src/lib/load.js";
 
 // collections whose reading routes are on-demand; book-lg is the second half
 // of the book collection (big imported texts) and shares book's public URL
@@ -21,7 +21,7 @@ for (const [col, outCol] of COLLECTIONS) {
     if (typeof rel !== "string" || !rel.endsWith(".md")) continue;
     const abs = path.join(src, rel);
     if (!fs.statSync(abs).isFile()) continue;
-    if (matter(fs.readFileSync(abs, "utf-8")).data.status !== "published") {
+    if (readFrontmatterData(abs).status !== "published") {
       skipped++;
       continue;
     }

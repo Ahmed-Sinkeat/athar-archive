@@ -14,11 +14,14 @@ import com.atharchive.ui.components.AtharTab
  * `source_type` splits المسائل 854 · الكتب 103 · الشعر 14, which is exactly the tab set.
  */
 
+/**
+ * Tabs are *state* filters, matching Poetry and Articles. The content categories
+ * that used to live here (كتب/شعر/مسائل) are an [AudioType] menu instead — they
+ * are one axis among several, not navigation.
+ */
 enum class AudioTab(val key: String, val label: String) {
     All("all", "الكل"),
-    Books("books", "الكتب"),
-    Poetry("poetry", "الشعر"),
-    Issues("issues", "المسائل"),
+    Downloaded("downloaded", "المحمّلة"),
     MyList("mylist", "قائمتي"),
     ;
 
@@ -26,6 +29,21 @@ enum class AudioTab(val key: String, val label: String) {
         val tabs: List<AtharTab> = entries.map { AtharTab(it.key, it.label) }
         fun fromKey(key: String): AudioTab = entries.first { it.key == key }
     }
+}
+
+/** `source_type` splits المسائل 854 · الكتب 103 · الشعر 14. */
+enum class AudioType(val label: String) {
+    All("الكل"),
+    Books("الكتب"),
+    Poetry("الشعر"),
+    Issues("المسائل"),
+}
+
+enum class AudioSort(val label: String) {
+    Newest("الأحدث"),
+    Longest("الأطول"),
+    Shortest("الأقصر"),
+    Title("العنوان أ–ي"),
 }
 
 enum class AudioSourceKind(val key: String, val label: String) {
@@ -42,6 +60,8 @@ data class AudioUi(
     val sourceKind: AudioSourceKind,
     /** Formatted as authored, e.g. "٢٠:٣١". */
     val durationLabel: String,
+    /** The same duration as a number, so the sort menu can actually order by it. */
+    val durationSeconds: Int,
     val sizeLabel: String,
     /** Absent for all but a handful of recordings today; the row hides the line when null. */
     val speaker: String? = null,
@@ -57,21 +77,34 @@ data class NowPlayingUi(
     val playing: Boolean,
 )
 
+/** A user playlist. Fixture-backed until the data layer lands. */
+data class PlaylistUi(
+    val id: String,
+    val name: String,
+    val countLabel: String,
+)
+
 data class AudioUiState(
     val countLabel: String,
-    val continueListening: NowPlayingUi?,
+    /**
+     * What the mini-player holds. Continue-listening has no section on the screen
+     * any more: the persistent bottom player *is* that affordance.
+     */
+    val nowPlaying: NowPlayingUi?,
     val recordings: List<AudioUi>,
+    val playlists: List<PlaylistUi>,
 )
 
 val AudioFixture = AudioUiState(
     countLabel = "٩٧١ تسجيلًا",
-    continueListening = NowPlayingUi(
+    nowPlaying = NowPlayingUi(
         audio = AudioUi(
             id = "sharh-kitab-al-tawhid-5",
             title = "الدرس الخامس: إثبات صفات الله تعالى",
             sourceTitle = "شرح كتاب التوحيد",
             sourceKind = AudioSourceKind.Book,
             durationLabel = "٤٢:١٨",
+            durationSeconds = 2538,
             sizeLabel = "18.6 MB",
             speaker = "محمد بن صالح العثيمين",
             downloaded = true,
@@ -88,6 +121,7 @@ val AudioFixture = AudioUiState(
             sourceTitle = "العقيدة الواسطية",
             sourceKind = AudioSourceKind.Book,
             durationLabel = "٤٢:١٨",
+            durationSeconds = 2538,
             sizeLabel = "18.6 MB",
             saved = true,
         ),
@@ -97,6 +131,7 @@ val AudioFixture = AudioUiState(
             sourceTitle = "نونية ابن القيم",
             sourceKind = AudioSourceKind.Poem,
             durationLabel = "٣٥:١٠",
+            durationSeconds = 2110,
             sizeLabel = "16.2 MB",
             downloaded = true,
         ),
@@ -106,6 +141,7 @@ val AudioFixture = AudioUiState(
             sourceTitle = "مسألة في التوسل",
             sourceKind = AudioSourceKind.Question,
             durationLabel = "٠٨:٤٧",
+            durationSeconds = 527,
             sizeLabel = "3.1 MB",
         ),
         AudioUi(
@@ -114,6 +150,7 @@ val AudioFixture = AudioUiState(
             sourceTitle = "مدارج السالكين",
             sourceKind = AudioSourceKind.Book,
             durationLabel = "٢٨:١٩",
+            durationSeconds = 1699,
             sizeLabel = "12.1 MB",
             downloaded = true,
             saved = true,
@@ -124,6 +161,7 @@ val AudioFixture = AudioUiState(
             sourceTitle = "المقدمة الآجرومية",
             sourceKind = AudioSourceKind.Book,
             durationLabel = "٢٠:٣١",
+            durationSeconds = 1231,
             sizeLabel = "4.9 MB",
             speaker = "عبد العزيز الصيني",
         ),
@@ -133,7 +171,13 @@ val AudioFixture = AudioUiState(
             sourceTitle = "مسألة في الأذكار",
             sourceKind = AudioSourceKind.Question,
             durationLabel = "٠٥:١٢",
+            durationSeconds = 312,
             sizeLabel = "1.9 MB",
         ),
+    ),
+    playlists = listOf(
+        PlaylistUi("mylist-tawhid", "دروس التوحيد", "٧ تسجيلات"),
+        PlaylistUi("mylist-nahw", "متون النحو", "٤ تسجيلات"),
+        PlaylistUi("mylist-later", "أستمع لاحقًا", "١٢ تسجيلًا"),
     ),
 )

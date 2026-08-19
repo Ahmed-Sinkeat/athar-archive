@@ -19,15 +19,15 @@ import com.atharchive.R
 private val Paper = Color(0xFFFAF9F6)
 private val PaperRaised = Color(0xFFF4F0EC)
 private val PaperPressed = Color(0xFFECE6E1)
-private val Ink = Color(0xFF20201E)
-private val InkSecondary = Color(0xFF6C6762)
+private val Ink = Color(0xFF241E19)          // warm charcoal, never pure black
+private val InkSecondary = Color(0xFF7B6B5C)  // warm taupe, replaces the cold grey
 private val Burgundy = Color(0xFF8F3537)
 private val BurgundyPressed = Color(0xFF71272A)
 private val WarmDivider = Color(0xFFD8D2CC)
 private val PaperGlass = Color(0xF2FAF9F6)
 private val PaperGlassBorder = Color(0xB8CFC7C0)
 private val PaperScrim = Color(0x660F0D0B)
-private val Success = Color(0xFF486B54)
+private val Success = Color(0xFF5E6B45)       // muted olive, not a bright green
 
 private val NightPaper = Color(0xFF151311)
 private val NightRaised = Color(0xFF211E1B)
@@ -40,7 +40,7 @@ private val NightDivider = Color(0xFF403A36)
 private val NightGlass = Color(0xF21B1816)
 private val NightGlassBorder = Color(0xB8534B46)
 private val NightScrim = Color(0x99000000)
-private val NightSuccess = Color(0xFF89B494)
+private val NightSuccess = Color(0xFFA3AE81)  // muted olive, dark theme
 
 val AtharUiFontFamily = FontFamily(
     Font(R.font.ibm_plex_sans_arabic_regular, FontWeight.Normal),

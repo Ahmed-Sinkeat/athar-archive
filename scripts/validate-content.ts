@@ -3,7 +3,8 @@
 
 import fs from "node:fs";
 import path from "node:path";
-import { loadContentFromDisk } from "../src/lib/load.js";
+import { loadContentMetaFromDisk } from "../src/lib/load.js";
+import { readBody } from "../src/lib/read-body.js";
 import { validate, formatErrors } from "../src/lib/validate.js";
 
 // Originally: src/content/book/ was the folder the Sveltia CMS listed, and it
@@ -21,8 +22,22 @@ function oversizedCmsBooks(): string[] {
     .map((f) => `src/content/book/${f} is ≥100KB — move it to src/content/book-lg/ (CMS must not load it)`);
 }
 
-function main() {
-  const entries = loadContentFromDisk();
+async function main() {
+  // Cross-entity validation is frontmatter-only except for annotation anchors.
+  // Loading every book body held the 3.2 GB large-book corpus in one array and
+  // made this mandatory pre-build step OOM. Load metadata for the corpus, then
+  // hydrate only the distinct annotation targets whose anchors are inspected.
+  const entries = loadContentMetaFromDisk();
+  const byKey = new Map(entries.map((entry) => [`${entry.collection}/${entry.id}`, entry]));
+  const annotationTargets = new Set(
+    entries
+      .filter((entry) => entry.collection === "annotation")
+      .map((entry) => `${String(entry.data.target_type ?? "")}/${String(entry.data.target_id ?? "")}`),
+  );
+  await Promise.all([...annotationTargets].map(async (key) => {
+    const target = byKey.get(key);
+    if (target) target.body = await readBody(target);
+  }));
   const errors = validate(entries);
   const oversized = oversizedCmsBooks();
   if (oversized.length) {
@@ -40,4 +55,4 @@ function main() {
   }
 }
 
-main();
+await main();

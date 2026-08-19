@@ -21,7 +21,7 @@ object AtharIcons {
 
     val Books: ImageVector by lazy {
         icon("AtharBooks") {
-            path(stroke = Stroke, strokeLineWidth = 1.65f) {
+            path(stroke = Stroke, strokeLineWidth = 1.75f) {
                 moveTo(12f, 7.2f)
                 curveTo(9.8f, 5.55f, 7.15f, 4.8f, 3.75f, 4.8f)
                 lineTo(3.75f, 17.25f)
@@ -38,7 +38,7 @@ object AtharIcons {
 
     val Poetry: ImageVector by lazy {
         icon("AtharPoetry") {
-            path(stroke = Stroke, strokeLineWidth = 1.65f) {
+            path(stroke = Stroke, strokeLineWidth = 1.75f) {
                 moveTo(20.25f, 3.75f)
                 curveTo(16.15f, 3.2f, 11.15f, 5.25f, 8.3f, 9.4f)
                 curveTo(6.55f, 11.95f, 5.95f, 14.65f, 6.55f, 17.35f)
@@ -57,37 +57,51 @@ object AtharIcons {
         }
     }
 
+    /**
+     * Three staggered note cards — passages the reader deliberately collected.
+     * No outer frame: the active nav state already draws a rounded pill behind it,
+     * and a frame inside that pill reads as two nested boxes.
+     */
     val Kannashah: ImageVector by lazy {
         icon("AtharKannashah") {
-            path(stroke = Stroke, strokeLineWidth = 1.65f) {
-                moveTo(7f, 3.75f)
-                lineTo(18.5f, 3.75f)
-                curveTo(19.45f, 3.75f, 20.2f, 4.5f, 20.2f, 5.45f)
-                lineTo(20.2f, 19.1f)
-                curveTo(20.2f, 20.05f, 19.45f, 20.8f, 18.5f, 20.8f)
-                lineTo(7f, 20.8f)
+            path(stroke = Stroke, strokeLineWidth = 1.75f) {
+                moveTo(9.0f, 4.6f)
+                lineTo(17.6f, 4.6f)
+                arcTo(2.0f, 2.0f, 0f, false, true, 19.6f, 6.6f)
+                lineTo(19.6f, 7.4f)
+                arcTo(2.0f, 2.0f, 0f, false, true, 17.6f, 9.4f)
+                lineTo(9.0f, 9.4f)
+                arcTo(2.0f, 2.0f, 0f, false, true, 7.0f, 7.4f)
+                lineTo(7.0f, 6.6f)
+                arcTo(2.0f, 2.0f, 0f, false, true, 9.0f, 4.6f)
                 close()
-                moveTo(7f, 3.75f)
-                lineTo(7f, 20.8f)
-                moveTo(3.8f, 7.2f)
-                lineTo(8.5f, 7.2f)
-                moveTo(3.8f, 12.25f)
-                lineTo(8.5f, 12.25f)
-                moveTo(3.8f, 17.3f)
-                lineTo(8.5f, 17.3f)
-                moveTo(11f, 8.1f)
-                lineTo(16.8f, 8.1f)
-                moveTo(11f, 12.25f)
-                lineTo(16.8f, 12.25f)
-                moveTo(11f, 16.4f)
-                lineTo(15.1f, 16.4f)
+                moveTo(6.4f, 9.6f)
+                lineTo(15.0f, 9.6f)
+                arcTo(2.0f, 2.0f, 0f, false, true, 17.0f, 11.6f)
+                lineTo(17.0f, 12.4f)
+                arcTo(2.0f, 2.0f, 0f, false, true, 15.0f, 14.4f)
+                lineTo(6.4f, 14.4f)
+                arcTo(2.0f, 2.0f, 0f, false, true, 4.4f, 12.4f)
+                lineTo(4.4f, 11.6f)
+                arcTo(2.0f, 2.0f, 0f, false, true, 6.4f, 9.6f)
+                close()
+                moveTo(9.0f, 14.6f)
+                lineTo(17.6f, 14.6f)
+                arcTo(2.0f, 2.0f, 0f, false, true, 19.6f, 16.6f)
+                lineTo(19.6f, 17.4f)
+                arcTo(2.0f, 2.0f, 0f, false, true, 17.6f, 19.4f)
+                lineTo(9.0f, 19.4f)
+                arcTo(2.0f, 2.0f, 0f, false, true, 7.0f, 17.4f)
+                lineTo(7.0f, 16.6f)
+                arcTo(2.0f, 2.0f, 0f, false, true, 9.0f, 14.6f)
+                close()
             }
         }
     }
 
     val Articles: ImageVector by lazy {
         icon("AtharArticles") {
-            path(stroke = Stroke, strokeLineWidth = 1.65f) {
+            path(stroke = Stroke, strokeLineWidth = 1.75f) {
                 moveTo(6f, 3.5f)
                 lineTo(15.1f, 3.5f)
                 lineTo(19.2f, 7.6f)
@@ -109,7 +123,7 @@ object AtharIcons {
 
     val Issues: ImageVector by lazy {
         icon("AtharIssues") {
-            path(stroke = Stroke, strokeLineWidth = 1.65f) {
+            path(stroke = Stroke, strokeLineWidth = 1.75f) {
                 moveTo(12f, 3.7f)
                 curveTo(16.58f, 3.7f, 20.3f, 7.42f, 20.3f, 12f)
                 curveTo(20.3f, 16.58f, 16.58f, 20.3f, 12f, 20.3f)
@@ -123,6 +137,36 @@ object AtharIcons {
                 curveTo(12.25f, 11.95f, 12f, 12.5f, 12f, 13.35f)
                 moveTo(12f, 16.55f)
                 lineTo(12.01f, 16.55f)
+            }
+        }
+    }
+
+    /**
+     * "Open the reading sidebar" — a window with its panel on the right, because the
+     * app is RTL. Landscape on purpose: [Kannashah] is the portrait notebook, and
+     * [Books] is the open book that means the Books section.
+     */
+    val Sidebar: ImageVector by lazy {
+        icon("AtharSidebar") {
+            path(stroke = Stroke, strokeLineWidth = 1.75f) {
+                moveTo(6f, 5.2f)
+                lineTo(18f, 5.2f)
+                curveTo(19.4f, 5.2f, 20.6f, 6.4f, 20.6f, 7.8f)
+                lineTo(20.6f, 16.2f)
+                curveTo(20.6f, 17.6f, 19.4f, 18.8f, 18f, 18.8f)
+                lineTo(6f, 18.8f)
+                curveTo(4.6f, 18.8f, 3.4f, 17.6f, 3.4f, 16.2f)
+                lineTo(3.4f, 7.8f)
+                curveTo(3.4f, 6.4f, 4.6f, 5.2f, 6f, 5.2f)
+                close()
+                moveTo(14.2f, 5.2f)
+                lineTo(14.2f, 18.8f)
+                moveTo(15.9f, 9.2f)
+                lineTo(18.9f, 9.2f)
+                moveTo(15.9f, 12f)
+                lineTo(18.9f, 12f)
+                moveTo(15.9f, 14.8f)
+                lineTo(18.9f, 14.8f)
             }
         }
     }
@@ -144,7 +188,7 @@ object AtharIcons {
 
     val Settings: ImageVector by lazy {
         icon("AtharSettings") {
-            path(stroke = Stroke, strokeLineWidth = 1.55f) {
+            path(stroke = Stroke, strokeLineWidth = 1.7f) {
                 moveTo(9.55f, 3.35f)
                 lineTo(14.45f, 3.35f)
                 lineTo(14.9f, 5.55f)
@@ -182,7 +226,7 @@ object AtharIcons {
 
     val Adhkar: ImageVector by lazy {
         icon("AtharAdhkar") {
-            path(stroke = Stroke, strokeLineWidth = 1.6f) {
+            path(stroke = Stroke, strokeLineWidth = 1.7f) {
                 moveTo(12f, 8.45f)
                 curveTo(13.96f, 8.45f, 15.55f, 10.04f, 15.55f, 12f)
                 curveTo(15.55f, 13.96f, 13.96f, 15.55f, 12f, 15.55f)
@@ -237,7 +281,7 @@ object AtharIcons {
 
     val People: ImageVector by lazy {
         icon("AtharPeople") {
-            path(stroke = Stroke, strokeLineWidth = 1.65f) {
+            path(stroke = Stroke, strokeLineWidth = 1.75f) {
                 moveTo(9.2f, 4.2f)
                 curveTo(11.05f, 4.2f, 12.55f, 5.7f, 12.55f, 7.55f)
                 curveTo(12.55f, 9.4f, 11.05f, 10.9f, 9.2f, 10.9f)
@@ -261,7 +305,7 @@ object AtharIcons {
 
     val Archive: ImageVector by lazy {
         icon("AtharArchive") {
-            path(stroke = Stroke, strokeLineWidth = 1.65f) {
+            path(stroke = Stroke, strokeLineWidth = 1.75f) {
                 moveTo(4.2f, 8f)
                 lineTo(19.8f, 8f)
                 lineTo(19.8f, 20f)
@@ -274,6 +318,142 @@ object AtharIcons {
                 close()
                 moveTo(9.2f, 12.15f)
                 lineTo(14.8f, 12.15f)
+            }
+        }
+    }
+
+    // ── audio player glyphs ──────────────────────────────────────────────
+    // Same 24dp grid and 1.65dp stroke as the navigation set. The seek arcs
+    // carry no number: the amount is drawn as text inside the button, so one
+    // pair of glyphs serves any interval.
+
+    val SkipPrevious: ImageVector by lazy {
+        icon("AtharSkipPrevious") {
+            path(fill = Fill) {
+                moveTo(18f, 5.6f)
+                lineTo(18f, 18.4f)
+                lineTo(8.6f, 12f)
+                close()
+            }
+            path(stroke = Stroke, strokeLineWidth = 1.75f) {
+                moveTo(6.6f, 5.6f)
+                lineTo(6.6f, 18.4f)
+            }
+        }
+    }
+
+    val SkipNext: ImageVector by lazy {
+        icon("AtharSkipNext") {
+            path(fill = Fill) {
+                moveTo(6f, 5.6f)
+                lineTo(6f, 18.4f)
+                lineTo(15.4f, 12f)
+                close()
+            }
+            path(stroke = Stroke, strokeLineWidth = 1.75f) {
+                moveTo(17.4f, 5.6f)
+                lineTo(17.4f, 18.4f)
+            }
+        }
+    }
+
+    /** Counter-clockwise arc, gap at the top, arrowhead on the left. */
+    /** Counter-clockwise arc, wide gap at the top, solid head on the left. */
+    val SeekBack: ImageVector by lazy {
+        icon("AtharSeekBack") {
+            path(stroke = Stroke, strokeLineWidth = 1.75f) {
+                moveTo(16.5f, 6.64f)
+                arcTo(7f, 7f, 0f, true, true, 9.2f, 5.6f)
+            }
+            path(fill = Fill) {
+                moveTo(11.2f, 2.3f)
+                lineTo(11.2f, 8.7f)
+                lineTo(5.9f, 5.5f)
+                close()
+            }
+        }
+    }
+
+    /** Mirror of [SeekBack]: clockwise arc, solid head on the right. */
+    val SeekForward: ImageVector by lazy {
+        icon("AtharSeekForward") {
+            path(stroke = Stroke, strokeLineWidth = 1.75f) {
+                moveTo(7.5f, 6.64f)
+                arcTo(7f, 7f, 0f, true, false, 14.8f, 5.6f)
+            }
+            path(fill = Fill) {
+                moveTo(12.8f, 2.3f)
+                lineTo(12.8f, 8.7f)
+                lineTo(18.1f, 5.5f)
+                close()
+            }
+        }
+    }
+
+    val Repeat: ImageVector by lazy {
+        icon("AtharRepeat") {
+            path(stroke = Stroke, strokeLineWidth = 1.75f) {
+                moveTo(8.6f, 8.2f)
+                lineTo(15.2f, 8.2f)
+                curveTo(17.4f, 8.2f, 19.2f, 10f, 19.2f, 12.2f)
+                curveTo(19.2f, 13.5f, 18.6f, 14.6f, 17.7f, 15.3f)
+                moveTo(15.4f, 15.8f)
+                lineTo(8.8f, 15.8f)
+                curveTo(6.6f, 15.8f, 4.8f, 14f, 4.8f, 11.8f)
+                curveTo(4.8f, 10.5f, 5.4f, 9.4f, 6.3f, 8.7f)
+            }
+            path(fill = Fill) {
+                moveTo(10.2f, 5.6f)
+                lineTo(10.2f, 10.8f)
+                lineTo(6.7f, 8.2f)
+                close()
+                moveTo(13.8f, 18.4f)
+                lineTo(13.8f, 13.2f)
+                lineTo(17.3f, 15.8f)
+                close()
+            }
+        }
+    }
+
+    val SleepTimer: ImageVector by lazy {
+        icon("AtharSleepTimer") {
+            path(stroke = Stroke, strokeLineWidth = 1.75f) {
+                moveTo(20f, 14.6f)
+                curveTo(18.9f, 15.1f, 17.7f, 15.4f, 16.4f, 15.4f)
+                curveTo(11.8f, 15.4f, 8.1f, 11.7f, 8.1f, 7.1f)
+                curveTo(8.1f, 5.8f, 8.4f, 4.6f, 8.9f, 3.5f)
+                curveTo(5.7f, 4.9f, 3.5f, 8.1f, 3.5f, 11.8f)
+                curveTo(3.5f, 16.8f, 7.5f, 20.8f, 12.5f, 20.8f)
+                curveTo(16.2f, 20.8f, 19.4f, 18.6f, 20f, 14.6f)
+                close()
+            }
+        }
+    }
+
+    val PlusCircle: ImageVector by lazy {
+        icon("AtharPlusCircle") {
+            path(stroke = Stroke, strokeLineWidth = 1.75f) {
+                moveTo(12f, 3.9f)
+                arcTo(8.1f, 8.1f, 0f, true, true, 11.99f, 3.9f)
+                close()
+                moveTo(12f, 8.4f)
+                lineTo(12f, 15.6f)
+                moveTo(8.4f, 12f)
+                lineTo(15.6f, 12f)
+            }
+        }
+    }
+
+    /** Reorder affordance on queue rows. */
+    val DragHandle: ImageVector by lazy {
+        icon("AtharDragHandle") {
+            path(stroke = Stroke, strokeLineWidth = 1.75f) {
+                moveTo(5.5f, 8.4f)
+                lineTo(18.5f, 8.4f)
+                moveTo(5.5f, 12f)
+                lineTo(18.5f, 12f)
+                moveTo(5.5f, 15.6f)
+                lineTo(18.5f, 15.6f)
             }
         }
     }
@@ -321,7 +501,7 @@ object AtharIcons {
 
     val Copy: ImageVector by lazy {
         icon("AtharCopy") {
-            path(stroke = Stroke, strokeLineWidth = 1.65f) {
+            path(stroke = Stroke, strokeLineWidth = 1.75f) {
                 moveTo(9.2f, 8.4f)
                 lineTo(18.2f, 8.4f)
                 lineTo(18.2f, 20.2f)
@@ -338,7 +518,7 @@ object AtharIcons {
 
     val Share: ImageVector by lazy {
         icon("AtharShare") {
-            path(stroke = Stroke, strokeLineWidth = 1.65f) {
+            path(stroke = Stroke, strokeLineWidth = 1.75f) {
                 moveTo(12f, 3.6f)
                 lineTo(12f, 14.6f)
                 moveTo(8.1f, 7.5f)
@@ -354,7 +534,7 @@ object AtharIcons {
 
     val Recent: ImageVector by lazy {
         icon("AtharRecent") {
-            path(stroke = Stroke, strokeLineWidth = 1.65f) {
+            path(stroke = Stroke, strokeLineWidth = 1.75f) {
                 moveTo(12f, 4.4f)
                 curveTo(16.2f, 4.4f, 19.6f, 7.8f, 19.6f, 12f)
                 curveTo(19.6f, 16.2f, 16.2f, 19.6f, 12f, 19.6f)
@@ -370,7 +550,7 @@ object AtharIcons {
 
     val Info: ImageVector by lazy {
         icon("AtharInfo") {
-            path(stroke = Stroke, strokeLineWidth = 1.65f) {
+            path(stroke = Stroke, strokeLineWidth = 1.75f) {
                 moveTo(12f, 4.4f)
                 curveTo(16.2f, 4.4f, 19.6f, 7.8f, 19.6f, 12f)
                 curveTo(19.6f, 16.2f, 16.2f, 19.6f, 12f, 19.6f)
@@ -422,7 +602,7 @@ object AtharIcons {
 
     val Palette: ImageVector by lazy {
         icon("AtharPalette") {
-            path(stroke = Stroke, strokeLineWidth = 1.65f) {
+            path(stroke = Stroke, strokeLineWidth = 1.75f) {
                 moveTo(12f, 3.3f)
                 curveTo(7.15f, 3.3f, 3.3f, 6.85f, 3.3f, 11.35f)
                 curveTo(3.3f, 15.7f, 6.8f, 19.2f, 11.15f, 19.2f)
@@ -447,7 +627,7 @@ object AtharIcons {
 
     val TextSize: ImageVector by lazy {
         icon("AtharTextSize") {
-            path(stroke = Stroke, strokeLineWidth = 1.65f) {
+            path(stroke = Stroke, strokeLineWidth = 1.75f) {
                 moveTo(4f, 6f)
                 lineTo(13.5f, 6f)
                 moveTo(8.75f, 6f)
@@ -480,7 +660,7 @@ object AtharIcons {
 
     val Filter: ImageVector by lazy {
         icon("AtharFilter") {
-            path(stroke = Stroke, strokeLineWidth = 1.65f) {
+            path(stroke = Stroke, strokeLineWidth = 1.75f) {
                 moveTo(4f, 6.2f)
                 lineTo(20f, 6.2f)
                 moveTo(4f, 12f)
@@ -517,7 +697,7 @@ object AtharIcons {
 
     val Check: ImageVector by lazy {
         icon("AtharCheck") {
-            path(stroke = Stroke, strokeLineWidth = 1.9f) {
+            path(stroke = Stroke, strokeLineWidth = 1.8f) {
                 moveTo(4.4f, 12.4f)
                 lineTo(9.5f, 17.5f)
                 lineTo(19.8f, 6.5f)
@@ -538,7 +718,7 @@ object AtharIcons {
 
     val Bookmark: ImageVector by lazy {
         icon("AtharBookmark") {
-            path(stroke = Stroke, strokeLineWidth = 1.65f) {
+            path(stroke = Stroke, strokeLineWidth = 1.75f) {
                 moveTo(7.2f, 3.8f)
                 lineTo(16.8f, 3.8f)
                 curveTo(17.55f, 3.8f, 18.15f, 4.4f, 18.15f, 5.15f)
@@ -548,6 +728,41 @@ object AtharIcons {
                 lineTo(5.85f, 5.15f)
                 curveTo(5.85f, 4.4f, 6.45f, 3.8f, 7.2f, 3.8f)
                 close()
+            }
+        }
+    }
+
+    /** Saved state for [Bookmark] — same silhouette, filled rather than outlined. */
+    val BookmarkFilled: ImageVector by lazy {
+        icon("AtharBookmarkFilled") {
+            path(fill = Fill) {
+                moveTo(7.2f, 3.8f)
+                lineTo(16.8f, 3.8f)
+                curveTo(17.55f, 3.8f, 18.15f, 4.4f, 18.15f, 5.15f)
+                lineTo(18.15f, 20.2f)
+                lineTo(12f, 16.5f)
+                lineTo(5.85f, 20.2f)
+                lineTo(5.85f, 5.15f)
+                curveTo(5.85f, 4.4f, 6.45f, 3.8f, 7.2f, 3.8f)
+                close()
+            }
+        }
+    }
+
+    /** Pen — marks the reader's own words, never the source's. */
+    val Pen: ImageVector by lazy {
+        icon("AtharPen") {
+            path(stroke = Stroke, strokeLineWidth = 1.75f) {
+                moveTo(15.9f, 3.5f)
+                curveTo(16.5f, 2.9f, 17.5f, 2.9f, 18.1f, 3.5f)
+                lineTo(20.5f, 5.9f)
+                curveTo(21.1f, 6.5f, 21.1f, 7.5f, 20.5f, 8.1f)
+                lineTo(8.8f, 19.8f)
+                lineTo(3.7f, 20.9f)
+                lineTo(4.8f, 15.8f)
+                close()
+                moveTo(14.9f, 4.5f)
+                lineTo(19.5f, 9.1f)
             }
         }
     }

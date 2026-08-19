@@ -46,6 +46,7 @@ import androidx.compose.ui.unit.sp
 import com.atharchive.ui.components.AtharEmptyState
 import com.atharchive.ui.components.AtharBookmarkButton
 import com.atharchive.ui.components.AtharMenuButton
+import com.atharchive.ui.components.AtharMetaPill
 import com.atharchive.ui.components.AtharSearchField
 import com.atharchive.ui.components.AtharTabRow
 import com.atharchive.ui.components.AtharTopBar
@@ -299,23 +300,10 @@ private fun PoemRow(
                     horizontalArrangement = Arrangement.spacedBy(6.dp),
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
-                    val factColor = AtharTheme.colors.secondaryText.copy(alpha = 0.72f)
                     if (poem.verseCountLabel != null) {
-                        Text(
-                            text = poem.verseCountLabel,
-                            color = factColor,
-                            style = MaterialTheme.typography.labelSmall,
-                            maxLines = 1,
-                        )
-                        Text("·", color = factColor, style = MaterialTheme.typography.labelSmall)
+                        AtharMetaPill(poem.verseCountLabel)
                     }
-                    Text(
-                        text = poem.sizeLabel,
-                        color = factColor,
-                        style = MaterialTheme.typography.labelSmall
-                            .copy(textDirection = TextDirection.Ltr),
-                        maxLines = 1,
-                    )
+                    AtharMetaPill(poem.sizeLabel, latinDigits = true)
                 }
             }
         }

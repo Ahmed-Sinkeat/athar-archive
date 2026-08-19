@@ -3,6 +3,7 @@
 
 import fs from "node:fs";
 import path from "node:path";
+import { StringDecoder } from "node:string_decoder";
 import matter from "gray-matter";
 import { COLLECTIONS, type ContentEntry } from "./types.js";
 
@@ -12,6 +13,38 @@ import { COLLECTIONS, type ContentEntry } from "./types.js";
 // 143MB through GitHub's API; it is now vestigial but harmless — leave it, both
 // dirs are one collection and moving 955 files would churn every book's history
 const EXTRA_DIRS: Record<string, string[]> = { book: ["book-lg"] };
+const FRONTMATTER_CHUNK_BYTES = 16 * 1024;
+const MAX_FRONTMATTER_BYTES = 1024 * 1024;
+
+// Metadata-only callers must not read a multi-megabyte book merely to reach
+// frontmatter that always ends near the beginning of the file. Reading whole
+// bodies here previously made validate:content retain/scan 3.2 GB before every
+// build. StringDecoder keeps a UTF-8 character split across chunks intact.
+export function readFrontmatterData(filePath: string): Record<string, unknown> {
+  const descriptor = fs.openSync(filePath, "r");
+  const decoder = new StringDecoder("utf8");
+  const buffer = Buffer.allocUnsafe(FRONTMATTER_CHUNK_BYTES);
+  let text = "";
+  let total = 0;
+  try {
+    while (total < MAX_FRONTMATTER_BYTES) {
+      const read = fs.readSync(descriptor, buffer, 0, buffer.byteLength, null);
+      if (read === 0) {
+        text += decoder.end();
+        break;
+      }
+      total += read;
+      text += decoder.write(buffer.subarray(0, read));
+      if (total === read && !text.startsWith("---\n") && !text.startsWith("---\r\n")) return {};
+      const frontmatter = text.match(/^---\r?\n[\s\S]*?\r?\n---(?:\r?\n|$)/)?.[0];
+      if (frontmatter) return matter(frontmatter).data as Record<string, unknown>;
+    }
+  } finally {
+    fs.closeSync(descriptor);
+  }
+  if (total >= MAX_FRONTMATTER_BYTES) throw new Error(`${filePath}: frontmatter exceeds 1 MiB or has no closing delimiter`);
+  return matter(text).data as Record<string, unknown>;
+}
 
 export function loadContentFromDisk(root = "src/content"): ContentEntry[] {
   const contentRoot = path.resolve(root);
@@ -56,7 +89,7 @@ export function loadContentMetaFromDisk(root = "src/content"): ContentEntry[] {
         .filter((f) => f.endsWith(".md"))
         .map((file) => {
           const filePath = path.join(dir, file);
-          const { data } = matter(fs.readFileSync(filePath, "utf-8"));
+          const data = readFrontmatterData(filePath);
           return {
             id: file.replace(/\.md$/, ""),
             collection,

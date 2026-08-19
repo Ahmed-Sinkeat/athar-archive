@@ -19,6 +19,7 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -37,8 +38,8 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.atharchive.ui.components.AtharEmptyState
 import com.atharchive.ui.components.AtharBookmarkButton
+import com.atharchive.ui.components.AtharEmptyState
 import com.atharchive.ui.components.AtharMenuButton
 import com.atharchive.ui.components.AtharSearchField
 import com.atharchive.ui.components.AtharTabRow
@@ -54,6 +55,7 @@ fun ArticlesScreen(
     onSettings: () -> Unit,
     onArticleClick: (ArticleUi) -> Unit,
     onSaveClick: (ArticleUi) -> Unit,
+    onDownloadClick: (ArticleUi) -> Unit,
     modifier: Modifier = Modifier,
     onLogo: (() -> Unit)? = null,
     onBack: (() -> Unit)? = null,
@@ -187,6 +189,7 @@ fun ArticlesScreen(
                         horizontalPadding = horizontalPadding,
                         onClick = { onArticleClick(article) },
                         onSave = { onSaveClick(article) },
+                        onDownload = { onDownloadClick(article) },
                     )
                     if (index != visibleArticles.lastIndex) {
                         HorizontalDivider(
@@ -209,6 +212,7 @@ private fun ArticleRow(
     horizontalPadding: Dp,
     onClick: () -> Unit,
     onSave: () -> Unit,
+    onDownload: () -> Unit,
 ) {
     Row(
         modifier = Modifier
@@ -275,15 +279,29 @@ private fun ArticleRow(
                 maxLines = 2,
                 overflow = TextOverflow.Ellipsis,
             )
-            if (article.downloaded) {
-                Text(
-                    text = "محمّل",
-                    modifier = Modifier.padding(top = 3.dp),
-                    color = AtharTheme.colors.success,
-                    style = MaterialTheme.typography.bodySmall,
-                    fontWeight = FontWeight.Medium,
-                )
-            }
+        }
+        // Articles carry a plain downloaded flag, not Books' progress state machine —
+        // one icon that flips to a check is the whole control.
+        IconButton(
+            onClick = onDownload,
+            modifier = Modifier
+                .size(38.dp)
+                .testTag("article_download_${article.id}"),
+        ) {
+            Icon(
+                imageVector = if (article.downloaded) AtharIcons.Check else AtharIcons.Download,
+                contentDescription = if (article.downloaded) {
+                    "محمّل: ${article.title}"
+                } else {
+                    "تنزيل ${article.title}"
+                },
+                tint = if (article.downloaded) {
+                    AtharTheme.colors.success
+                } else {
+                    AtharTheme.colors.secondaryText
+                },
+                modifier = Modifier.size(19.dp),
+            )
         }
         AtharBookmarkButton(
             saved = article.saved,

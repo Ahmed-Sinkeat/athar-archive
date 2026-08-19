@@ -444,9 +444,9 @@ document.addEventListener("click", (e) => {
     if (settingsPop && !settingsPop.hidden) { settingsPop.hidden = true; popBtns("settings:toggle").forEach((b) => b.setAttribute("aria-expanded", "false")); }
   }
   if (!t.closest("[data-topsearch]")) closeSearch();
-  const chapToc = document.querySelector<HTMLDetailsElement>(".chap-mobile-toc");
-  if (chapToc?.open && !t.closest(".chap-mobile-toc") && !t.closest('[data-action="sidebar:mobile-toggle"]')) {
-    chapToc.open = false;
+  const chapToc = document.querySelector<HTMLElement>("[data-mobile-sidebar]");
+  if (chapToc?.classList.contains("is-open") && !t.closest("[data-mobile-sidebar]") && !t.closest('[data-action="sidebar:mobile-toggle"]')) {
+    chapToc.classList.remove("is-open");
     document.querySelectorAll<HTMLElement>('[data-action="sidebar:mobile-toggle"]').forEach((b) => b.setAttribute("aria-expanded", "false"));
   }
   // native <details> popovers (تفسير/شرح tabs, edition info) never auto-close
@@ -496,13 +496,12 @@ const actions: Record<string, () => void> = {
     }
   },
   "settings:toggle": () => togglePop(settingsPop, "settings:toggle"),
-  // topbar "chapter/heading list" icon → open the current page's sidebar
-  // popup (ReaderSidebar.astro's <details>, mobile-only via CSS).
+  // topbar "chapter/heading list" icon → open the current page's sidebar as a
+  // bottom sheet (ReaderSidebar.astro's single <aside>, mobile-only via CSS).
   "sidebar:mobile-toggle": () => {
-    const el = document.querySelector<HTMLDetailsElement>("[data-mobile-sidebar]");
+    const el = document.querySelector<HTMLElement>("[data-mobile-sidebar]");
     if (!el) return;
-    el.open = !el.open;
-    if (el.open) el.scrollIntoView({ block: "nearest" });
+    el.classList.toggle("is-open");
   },
   // long-page shortcuts (floating buttons on very long pages)
   "scroll:top": () => window.scrollTo({ top: 0, behavior: "smooth" }),
@@ -528,9 +527,9 @@ document.addEventListener("click", (e) => {
 document.addEventListener("click", (e) => {
   if ((e.target as HTMLElement).closest("[data-drawer-backdrop]")) setDrawer(false);
 });
-// book page/volume jump (BookPageJump.astro) — rendered twice by
-// ReaderSidebar (desktop aside + mobile popup), so this is event-delegated
-// rather than keyed by id.
+// book page/volume jump (BookPageJump.astro) — event-delegated rather than
+// keyed by id (it lived in two ReaderSidebar copies before the single-DOM
+// refactor, and delegation is still the cheaper wiring).
 document.addEventListener("submit", (e) => {
   const form = (e.target as HTMLElement).closest<HTMLFormElement>("[data-book-jump]");
   if (!form) return;
@@ -2009,13 +2008,13 @@ document.addEventListener("astro:page-load", onPage);
 // the current #hash active, since these anchors have no server-known "current
 // chapter" the way the chapter-list TOC does
 function syncTocCurrent() {
-  document.querySelectorAll<HTMLElement>(".toc-nested-link, .chap-toc-aside .toc-box a[href^='#'], .chap-mobile-toc a[href^='#']").forEach((a) => {
+  document.querySelectorAll<HTMLElement>(".toc-nested-link, .chap-toc-aside .toc-box a[href^='#']").forEach((a) => {
     a.classList.toggle("toc-current", a.getAttribute("href") === location.hash);
   });
 }
 document.addEventListener("click", (e) => {
   const a = (e.target as HTMLElement).closest<HTMLAnchorElement>("a[href^='#']");
-  if (a && (a.matches(".toc-nested-link") || a.closest(".chap-toc-aside .toc-box, .chap-mobile-toc"))) {
+  if (a && (a.matches(".toc-nested-link") || a.closest(".chap-toc-aside .toc-box"))) {
     requestAnimationFrame(syncTocCurrent);
   }
 });

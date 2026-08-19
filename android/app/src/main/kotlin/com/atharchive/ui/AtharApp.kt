@@ -51,12 +51,16 @@ import com.atharchive.feature.audio.AudioFixture
 import com.atharchive.feature.audio.AudioScreen
 import com.atharchive.feature.audio.AudioProgressBar
 import com.atharchive.feature.audio.AudioUi
+import com.atharchive.feature.audio.NowPlayingUi
+import com.atharchive.feature.audio.PlayerScreen
 import com.atharchive.feature.books.BooksFixture
 import com.atharchive.feature.books.BooksScreen
 import com.atharchive.feature.kannashah.KannashahFixture
 import com.atharchive.feature.kannashah.KannashahScreen
 import com.atharchive.feature.reader.ReaderFixture
 import com.atharchive.feature.reader.ReaderScreen
+import com.atharchive.feature.poemreader.PoemReaderFixture
+import com.atharchive.feature.poemreader.PoemReaderScreen
 import com.atharchive.feature.poetry.PoetryFixture
 import com.atharchive.feature.poetry.PoetryScreen
 import com.atharchive.feature.search.SearchFixture
@@ -89,6 +93,12 @@ private data object SettingsRoute : NavKey
 private data object SectionsRoute : NavKey
 
 @Serializable
+private data object PlayerRoute : NavKey
+
+@Serializable
+private data class PoemReaderRoute(val poemId: String) : NavKey
+
+@Serializable
 private data class ReaderRoute(val bookId: String) : NavKey
 
 @Serializable
@@ -100,9 +110,13 @@ fun AtharApp() {
     val snackbarHostState = remember { SnackbarHostState() }
     val scope = rememberCoroutineScope()
     var booksScrollToTopRequest by rememberSaveable { mutableIntStateOf(0) }
-    var nowPlaying by remember { mutableStateOf<AudioUi?>(null) }
+    var nowPlaying by remember { mutableStateOf(AudioFixture.nowPlaying) }
 
     val inReader = backStack.lastOrNull() is ReaderRoute
+    // The player owns the whole screen, like the reader: no bottom chrome under it.
+    val inPlayer = backStack.lastOrNull() is PlayerRoute
+    // Poetry reads full-screen too: the poem is the only thing on it.
+    val inPoemReader = backStack.lastOrNull() is PoemReaderRoute
     val currentDestination = when (val current = backStack.lastOrNull()) {
         is SectionRoute -> AtharDestination.fromRoute(current.destination)
         else -> AtharDestination.Books
@@ -154,15 +168,17 @@ fun AtharApp() {
         ),
         snackbarHost = { SnackbarHost(snackbarHostState) },
         bottomBar = {
-            if (inReader) return@Scaffold
+            if (inReader || inPlayer || inPoemReader) return@Scaffold
             Column {
                 // The mini player sits above the bar and below everything else: it must
                 // survive navigation, so it lives here rather than inside الصوتيات.
                 nowPlaying?.let { playing ->
                     MiniPlayer(
-                        audio = playing,
-                        onToggle = { announce("تشغيل/إيقاف ${playing.title}") },
-                        onOpen = { navigateTo(AtharDestination.Audio) },
+                        audio = playing.audio,
+                        playing = playing.playing,
+                        progress = playing.progress,
+                        onToggle = { nowPlaying = playing.copy(playing = !playing.playing) },
+                        onOpen = { backStack.add(PlayerRoute) },
                         onClose = { nowPlaying = null },
                     )
                 }
@@ -206,6 +222,26 @@ fun AtharApp() {
                         onPositionChange = { },
                     )
                 }
+                entry<PoemReaderRoute> {
+                    PoemReaderScreen(state = PoemReaderFixture, onBack = ::goBack)
+                }
+                entry<PlayerRoute> {
+                    nowPlaying?.let { playing ->
+                        PlayerScreen(
+                            nowPlaying = playing,
+                            queue = AudioFixture.recordings,
+                            playlists = AudioFixture.playlists,
+                            onCollapse = ::goBack,
+                            onToggle = { nowPlaying = playing.copy(playing = !playing.playing) },
+                            onSelect = { nowPlaying = startPlaying(it) },
+                            onSkipPrevious = { announce("التسجيل السابق") },
+                            onSkipNext = { announce("التسجيل التالي") },
+                            onSeek = { announce("سيتحرّك الموضع مع محرّك التشغيل") },
+                            onMore = { announce("خيارات ${playing.audio.title}") },
+                            onAddToPlaylist = { announce("أُضيف إلى ${it.name}") },
+                        )
+                    }
+                }
                 entry<SectionsRoute> {
                     SectionsScreen(
                         onBack = ::goBack,
@@ -220,6 +256,9 @@ fun AtharApp() {
                             onArticleClick = { announce("فتح ${it.title}") },
                             onSaveClick = {
                                 announce("سيُحفظ ${it.title} في قائمتي مع طبقة البيانات")
+                            },
+                            onDownloadClick = {
+                                announce("سيُربط تنزيل ${it.title} بمدير التنزيل في مرحلة البيانات")
                             },
                             onBack = ::goBack,
                         )
@@ -243,7 +282,7 @@ fun AtharApp() {
                             onLogo = ::openSections,
                             state = PoetryFixture,
                             onSettings = ::openSettings,
-                            onPoemClick = { announce("فتح ${it.title}") },
+                            onPoemClick = { backStack.add(PoemReaderRoute(it.id)) },
                             onDownloadClick = {
                                 announce("سيُربط تنزيل ${it.title} بمدير التنزيل في مرحلة البيانات")
                             },
@@ -256,11 +295,9 @@ fun AtharApp() {
                             onLogo = ::openSections,
                             state = AudioFixture,
                             onSettings = ::openSettings,
-                            onPlay = { nowPlaying = it },
-                            onResumeContinue = {
-                                nowPlaying = AudioFixture.continueListening?.audio
-                            },
+                            onPlay = { nowPlaying = startPlaying(it) },
                             onMore = { announce("خيارات ${it.title}") },
+                            onOpenPlaylist = { announce("فتح قائمة ${it.name}") },
                         )
 
                         AtharDestination.Search -> SearchScreen(
@@ -334,6 +371,8 @@ private fun SectionPlaceholder(
 @Composable
 private fun MiniPlayer(
     audio: AudioUi,
+    playing: Boolean,
+    progress: Float,
     onToggle: () -> Unit,
     onOpen: () -> Unit,
     onClose: () -> Unit,
@@ -359,8 +398,8 @@ private fun MiniPlayer(
                 modifier = Modifier.size(36.dp).testTag("mini_player_toggle"),
             ) {
                 Icon(
-                    imageVector = AtharIcons.Pause,
-                    contentDescription = "إيقاف مؤقت",
+                    imageVector = if (playing) AtharIcons.Pause else AtharIcons.Play,
+                    contentDescription = if (playing) "إيقاف مؤقت" else "تشغيل",
                     tint = AtharTheme.colors.accent,
                     modifier = Modifier.size(18.dp),
                 )
@@ -397,7 +436,7 @@ private fun MiniPlayer(
             }
         }
         AudioProgressBar(
-            progress = 0.42f,
+            progress = progress,
             modifier = Modifier.padding(horizontal = 12.dp, vertical = 2.dp),
         )
     }
@@ -449,3 +488,12 @@ private fun SettingsRow(icon: ImageVector, title: String) {
         }
     }
 }
+
+/** A tapped recording becomes the now-playing item at position zero. */
+private fun startPlaying(audio: AudioUi) = NowPlayingUi(
+    audio = audio,
+    positionLabel = "\u0660\u0660:\u0660\u0660",
+    durationLabel = audio.durationLabel,
+    progress = 0f,
+    playing = true,
+)

@@ -1,0 +1,46 @@
+name: R2 inventory (manual, read-only)
+
+# Print object count + bytes per top-level prefix of athar-book-assets, using
+# the R2 credentials this repo already holds as Actions secrets — so no one has
+# to create or copy an API token onto a laptop just to read the numbers.
+#
+# READ-ONLY by construction: r2-inventory.mjs builds its S3 client with
+# readOnly:true, which throws on any method other than GET/HEAD before a
+# request is ever signed. There is no input that can make it write.
+#
+# Run it from the Actions tab → "R2 inventory (manual, read-only)" → Run workflow.
+
+on:
+  workflow_dispatch:
+    inputs:
+      percentiles:
+        description: "Also print p50/p90/p99/max object size per prefix (slower on big buckets)"
+        required: false
+        default: true
+        type: boolean
+
+jobs:
+  inventory:
+    runs-on: ubuntu-latest
+    env:
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+      R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+
+      # No `pnpm install`: this script imports only node: builtins.
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Inventory
+        run: |
+          node scripts/r2-inventory.mjs ${{ inputs.percentiles && '--percentiles' || '' }} | tee inventory.txt
+          {
+            echo '```'
+            cat inventory.txt
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"

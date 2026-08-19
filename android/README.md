@@ -97,6 +97,19 @@ The first real-device content slice is deliberately short and varied: one publis
 `qasidat-madh-al-sunnah-wa-ittiba-al-salaf` with its existing 5:41 Opus audio and 29 timing
 cues. Exact source paths and acceptance checks are in `main-plan.md` §16.
 
+Generate that M4 slice from the repository root with `pnpm app:gen:slice`. Immutable output
+goes to `dist/app-content/app/v2/`; persistent block identities go to
+`content-ids/<collection>/<id>.ids.json`. An unsigned local run emits
+`index.payload.json` only. The protected signing job sets
+`ATHAR_CONTENT_SIGNING_KEY_FILE` and `ATHAR_CONTENT_SIGNING_KEY_ID` to emit `index.json`.
+
+`pnpm app:publish` is deliberately separate. It requires the dedicated bucket name and
+bucket-scoped `ATHAR_APP_R2_ACCESS_KEY_ID` / `ATHAR_APP_R2_SECRET_ACCESS_KEY`, plus
+`ATHAR_CONTENT_SIGNING_PUBLIC_KEY_FILE` and the signing key ID. It verifies the signature
+and complete artifact hash chain, uploads immutable objects first, then publishes
+`index.json` last. Custom-domain attachment and its immutable-path/index revalidation cache
+rules remain infrastructure setup, not application code.
+
 Opening without Download uses a verified read-through cache: fetch the needed frame (or a
 tiny package whole), import it into Room, prefetch at most one adjacent frame while reading,
 and stop when the reader closes. Download is a different action: it records pin intent,

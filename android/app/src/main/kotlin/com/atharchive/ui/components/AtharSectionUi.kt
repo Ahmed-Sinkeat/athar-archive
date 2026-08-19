@@ -43,6 +43,7 @@ import androidx.compose.ui.semantics.selected
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.style.TextDirection
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -327,6 +328,32 @@ fun AtharMenuButton(
     }
 }
 
+/**
+ * A fact about an item — verse count, file size. Very light beige, no border: it
+ * should read as a quiet label, never as a button or a badge worth tapping.
+ */
+@Composable
+fun AtharMetaPill(
+    text: String,
+    modifier: Modifier = Modifier,
+    latinDigits: Boolean = false,
+) {
+    Text(
+        text = text,
+        modifier = modifier
+            .clip(RoundedCornerShape(5.dp))
+            .background(AtharTheme.colors.pressedSurface)
+            .padding(horizontal = 7.dp, vertical = 2.dp),
+        color = AtharTheme.colors.secondaryText,
+        style = if (latinDigits) {
+            MaterialTheme.typography.labelSmall.copy(textDirection = TextDirection.Ltr)
+        } else {
+            MaterialTheme.typography.labelSmall
+        },
+        maxLines = 1,
+    )
+}
+
 /** Save / unsave. Burgundy means saved; there is no second bookmark mark on the row. */
 @Composable
 fun AtharBookmarkButton(
@@ -343,7 +370,8 @@ fun AtharBookmarkButton(
             .testTag(tag),
     ) {
         Icon(
-            imageVector = AtharIcons.Bookmark,
+            // Filled when saved: the state should be legible without relying on colour.
+            imageVector = if (saved) AtharIcons.BookmarkFilled else AtharIcons.Bookmark,
             contentDescription = if (saved) {
                 "إزالة $itemTitle من قائمتي"
             } else {

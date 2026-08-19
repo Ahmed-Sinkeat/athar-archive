@@ -12,7 +12,7 @@
 // Needs the same credentials as the uploader (see scripts/lib/r2.mjs), except
 // Object Read alone is enough.
 import assert from "node:assert";
-import { BUCKET, OWNED_PREFIXES, RETIRED_PREFIXES, makeClient, listPrefix } from "./lib/r2.mjs";
+import { BUCKET, LEGACY_PREFIXES, OWNED_PREFIXES, RETIRED_PREFIXES, makeClient, listPrefix } from "./lib/r2.mjs";
 
 // Top-level prefix of a key: everything up to and including the first "/".
 // Root-level objects (no slash) are grouped under "(root)" so they can't
@@ -45,6 +45,7 @@ const human = (b) => {
 
 function status(prefix) {
   if (OWNED_PREFIXES.includes(prefix)) return "owned (uploader manages + prunes)";
+  if (LEGACY_PREFIXES.includes(prefix)) return "LEGACY — still served as fallback, no longer generated";
   if (RETIRED_PREFIXES.includes(prefix)) return "RETIRED — obsolete, safe to delete after review";
   return "unmanaged (another job owns this — do not prune from here)";
 }
@@ -69,6 +70,7 @@ async function main() {
   const s3 = makeClient({ readOnly: true });
 
   const objects = [];
+  const showPct = process.argv.includes("--percentiles");
   // one full-bucket pass: unlike the uploader this deliberately looks OUTSIDE
   // the owned prefixes — finding what nobody manages anymore is the whole point
   const total = await listPrefix(s3, "", ({ key, size }) => objects.push({ key, size }));
@@ -102,7 +104,14 @@ async function main() {
       `  drop the entry from RETIRED_PREFIXES in scripts/lib/r2.mjs.`,
     );
   }
-  const unmanaged = rows.filter(([p]) => !OWNED_PREFIXES.includes(p) && !RETIRED_PREFIXES.includes(p));
+  if (showPct) {
+    for (const [prefix] of rows) {
+      const sizes = objects.filter((o) => topPrefix(o.key) === prefix).map((o) => o.size).sort((a, b) => a - b);
+      const at = (q) => human(sizes[Math.min(sizes.length - 1, Math.floor(sizes.length * q))]);
+      console.log(`\n${prefix} page sizes — p50 ${at(0.5)} · p90 ${at(0.9)} · p99 ${at(0.99)} · max ${human(sizes[sizes.length - 1])}`);
+    }
+  }
+  const unmanaged = rows.filter(([p]) => ![...OWNED_PREFIXES, ...LEGACY_PREFIXES, ...RETIRED_PREFIXES].includes(p));
   if (unmanaged.length > 0) {
     console.log(`\nℹ unmanaged prefix(es): ${unmanaged.map(([p]) => p).join(", ")} — owned by another job, left alone.`);
   }

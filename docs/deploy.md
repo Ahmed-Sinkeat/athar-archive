@@ -4,7 +4,7 @@
 `@astrojs/cloudflare` emits the Worker; static pages ship as assets alongside it.
 
 ```sh
-pnpm build       # validate:content → astro build (prerenders ~78k chapter pages; CI shards this 8 ways, ~14 min) → copy-content-assets → gen-book-chapters (moves pages to dist/r2-upload) → redirects → headers
+pnpm build       # validate:content → astro build (prerenders ~78k chapter pages; CI shards this 8 ways, ~14 min) → copy-content-assets → gen-book-chapters (gzips pages into dist/r2-upload/pages-v2) → redirects → headers
 pnpm deploy      # r2:upload (dist/r2-upload → BOOK_ASSETS bucket, md5-diffed + prunes stale) → wrangler deploy -c dist/server/wrangler.json
 pnpm r2:inventory # READ-ONLY: object count + bytes per top-level R2 prefix, and which prefixes this repo owns
 ```
@@ -18,12 +18,47 @@ error 1102 on a third of requests. Now **nothing renders at request time**:
 1. `src/pages/book-pages/[slug]/[chapter].astro` prerenders every chapter of
    every chunked book at build time (shadow path; analysis in `src/lib/book-build.ts`).
 2. `scripts/gen-book-chapters.ts` (post-build) moves those ~78k HTML files to
-   `dist/r2-upload/pages/book/` and rewrites `/book-pages/` → `/book/` in them
-   (canonical/og URLs). They can't stay static assets — 20k-file deploy ceiling.
+   `dist/r2-upload/pages-v2/book/` as **`<chapter>.html.gz`** and rewrites
+   `/book-pages/` → `/book/` in them (canonical/og URLs). They can't stay static
+   assets — 20k-file deploy ceiling.
 3. `src/pages/book/[slug]/[chapter].ts` (the real URL) is a thin on-demand
-   route: one R2 read, ~1ms CPU. `src/middleware.ts` adds edge caching on top.
-   (Middleware alone can't do this — Astro runs no middleware for URLs that
-   match no route, so the thin route must exist.)
+   route: one R2 read, inflate, substitute. `src/middleware.ts` adds edge
+   caching on top, so this runs on cache misses only. (Middleware alone can't do
+   this — Astro runs no middleware for URLs that match no route, so the thin
+   route must exist.)
+
+## Gzipped chapter storage (`pages-v2/`)
+
+Chapter pages are stored gzipped: measured **~84% smaller** than the
+uncompressed `pages/` prefix they replace (16.15% of raw over 400 real pages at
+zlib level 6). The same change roughly quarters the r2-staging copy the finish
+runner has to hold on its very tight disk.
+
+- **Deterministic gzip is load-bearing.** The uploader skips a page whose md5
+  matches R2's ETag, so one volatile byte would re-upload the entire corpus on
+  every deploy. `gzipStable()` pins the gzip MTIME and OS header bytes;
+  `tsx scripts/gen-book-chapters.ts --selftest` checks it (CI runs this).
+- **Compression runs on the libuv threadpool** (`zlib.gzip`, async, pool sized
+  to the CPU count) — 9.8 MB/s single-threaded vs 22+ MB/s here. `build:finish`
+  sets `UV_THREADPOOL_SIZE=8`; without it this silently caps at libuv's 4.
+- **`CHAPTERS_V2` is the rollout switch**, written into the Worker's vars by
+  `gen-book-chapters.ts` from the CI variable of the same name:
+  `""` (default) serves the old `pages/`, `"slug-a,slug-b"` canaries those
+  books, `"*"` serves everything from `pages-v2/`. The route falls back to
+  `pages/` whenever a v2 object is missing **or fails to inflate**, so flipping
+  it can never 404 or 500 a chapter.
+- The Worker inflates with a native `DecompressionStream` and returns plain
+  HTML, so clients need no gzip support and nothing about content negotiation
+  changes.
+
+**Known, unrelated:** this route sends `no-transform` (to stop Bot Fight Mode
+injecting a per-request inline script the hash-based CSP then blocks), and
+Cloudflare honours it by *also* skipping compression — a chapter measured
+917,689 bytes on the wire uncompressed, where the same page as a static asset
+comes back brotli'd at ~107 KB. Storing gzipped does not change that; fixing it
+means either dropping `no-transform` or serving the stored bytes with
+`Content-Encoding: gzip` (which needs the per-request substitution below to go
+away first).
 
 **Ordering rule: R2 upload always BEFORE `wrangler deploy`.** The pages
 reference the build's hashed `/_astro/*.css`; deploying the Worker first would
@@ -76,15 +111,20 @@ per-build added to these pages must be tokenised the same way.**
 
 ## R2 prefix ownership
 
-`scripts/lib/r2.mjs` declares two lists, and they are the whole contract:
+`scripts/lib/r2.mjs` declares three lists, and they are the whole contract:
 
-- **`OWNED_PREFIXES`** (`pages/`) — the uploader lists these on every deploy and
+- **`OWNED_PREFIXES`** (`pages-v2/`) — the uploader lists these on every deploy and
   prunes anything under them that the build no longer emits. Ownership is
   *declared*, not inferred from `dist/r2-upload`: the old code listed only the
   prefixes that happened to exist locally, so a prefix the build stopped
   emitting silently stopped being listed and its objects stayed in R2 forever.
   A local directory that is **not** in this list now fails the upload loudly
   instead of being uploaded into a corner nothing manages.
+- **`LEGACY_PREFIXES`** (`pages/`) — still *serving* as the route's fallback,
+  no longer generated. Deliberately neither owned (the uploader would try to
+  prune all ~78k objects) nor retired (`r2-cleanup.yml` must keep refusing it).
+  Move it to `RETIRED_PREFIXES` only after `CHAPTERS_V2="*"` has been live and
+  monitored and the route's fallback is deleted — that is what makes it dead.
 - **`RETIRED_PREFIXES`** (`tafsir-frag/`, `app/`) — prefixes this repo used to
   own and no longer generates. The uploader never touches them. `pnpm
   r2:inventory` reports their object count and bytes so the deletion is a

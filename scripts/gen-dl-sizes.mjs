@@ -4,22 +4,38 @@
 // gen-book-chapters, when every page this sums actually exists on disk.
 //
 // bytes(entity) = its dist/client pages (landing + any small-book chapters)
-//               + its prerendered R2 chapter pages (dist/r2-upload/pages/…)
+//               + its prerendered R2 chapter pages (dist/r2-upload/pages-v2/…)
 //               + its linked audio size_bytes (from src/content/audio/*.md)
 
 import fs from "node:fs";
 import path from "node:path";
 
 const CLIENT = path.resolve("dist/client");
-const R2PAGES = path.resolve("dist/r2-upload/pages");
+const R2PAGES = path.resolve("dist/r2-upload/pages-v2");
 const AUDIO_DIR = path.resolve("src/content/audio");
+
+// Chapter pages are stored gzipped (gen-book-chapters.ts §5), but the number
+// shown to the reader must be what actually lands in their offline cache: the
+// DECOMPRESSED page. gzip's last 4 bytes are ISIZE — the uncompressed length —
+// so read that rather than inflating ~78k files to weigh them.
+function fileBytes(p, st) {
+  if (!p.endsWith(".gz")) return st.size;
+  const fd = fs.openSync(p, "r");
+  try {
+    const trailer = Buffer.alloc(4);
+    fs.readSync(fd, trailer, 0, 4, st.size - 4);
+    return trailer.readUInt32LE(0);
+  } finally {
+    fs.closeSync(fd);
+  }
+}
 
 function dirBytes(dir) {
   if (!fs.existsSync(dir)) return 0;
   return fs.readdirSync(dir).reduce((sum, f) => {
     const p = path.join(dir, f);
     const st = fs.statSync(p);
-    return sum + (st.isDirectory() ? dirBytes(p) : st.size);
+    return sum + (st.isDirectory() ? dirBytes(p) : fileBytes(p, st));
   }, 0);
 }
 

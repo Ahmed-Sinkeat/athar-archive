@@ -153,6 +153,10 @@ fun ReaderScreen(
                 chapterTitle = chapterTitle,
                 colors = colors,
                 onBack = onBack,
+                onSearch = {
+                    panelTab = ReaderPanelTab.Search
+                    panelOpen = true
+                },
                 onMore = { toast = "قائمة إضافية: نسخ المصدر، معلومات الكتاب، مشاركة" },
             )
         }
@@ -249,6 +253,24 @@ fun ReaderScreen(
                 },
             )
         }
+
+        // Rendered inside the content Box so it stops above the bottom bar instead of
+        // covering it — the poem reader's panel behaves this way and it reads better.
+        if (panelOpen) {
+            ReaderPanel(
+                state = state,
+                colors = colors,
+                currentBlockIndex = currentIndex,
+                query = query,
+                hits = hits,
+                onQueryChange = { query = it },
+                // The panel stays open: a reader comparing places should not have to
+                // reopen it after every jump.
+                onJump = ::jumpTo,
+                onDismiss = { panelOpen = false },
+                initialTab = panelTab,
+            )
+        }
         }
 
         if (audioOpen && state.audio.isNotEmpty()) {
@@ -281,22 +303,6 @@ fun ReaderScreen(
             },
         )
       }
-
-        if (panelOpen) {
-            ReaderPanel(
-                state = state,
-                colors = colors,
-                currentBlockIndex = currentIndex,
-                query = query,
-                hits = hits,
-                onQueryChange = { query = it },
-                // The panel stays open: a reader comparing places should not have to
-                // reopen it after every jump.
-                onJump = ::jumpTo,
-                onDismiss = { panelOpen = false },
-                initialTab = panelTab,
-            )
-        }
 
         toast?.let { message ->
             Box(
@@ -333,6 +339,7 @@ private fun ReaderTopBar(
     chapterTitle: String,
     colors: ReaderColors,
     onBack: () -> Unit,
+    onSearch: () -> Unit,
     onMore: () -> Unit,
 ) {
     Row(
@@ -369,6 +376,7 @@ private fun ReaderTopBar(
                 )
             }
         }
+        IconSlot(AtharIcons.Search, "البحث في الكتاب", colors, "reader_search", onSearch)
         IconSlot(AtharIcons.More, "المزيد", colors, "reader_more", onMore)
     }
 }
@@ -425,7 +433,7 @@ private fun ReaderBottomBar(
         ) {
             // Bookmark sits in the middle — it is the action taken most often, and with
             // no audio the bar is exactly three items around it.
-            ControlButton(AtharIcons.Books, "المحتويات", colors, false, "reader_ctl_contents", Modifier.weight(1f), onContents)
+            ControlButton(AtharIcons.Sidebar, "المحتويات", colors, false, "reader_ctl_contents", Modifier.weight(1f), onContents)
             if (hasAudio) {
                 ControlButton(
                     AtharIcons.Audio,
@@ -438,7 +446,7 @@ private fun ReaderBottomBar(
                 )
             }
             ControlButton(
-                AtharIcons.Bookmark,
+                if (bookmarked) AtharIcons.BookmarkFilled else AtharIcons.Bookmark,
                 if (bookmarked) "إزالة الإشارة" else "إضافة إشارة",
                 colors,
                 bookmarked,

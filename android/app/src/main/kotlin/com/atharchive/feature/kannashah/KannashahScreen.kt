@@ -6,8 +6,10 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -34,8 +36,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -143,7 +148,7 @@ fun KannashahScreen(
                     modifier = Modifier.padding(
                         start = horizontalPadding,
                         end = horizontalPadding,
-                        bottom = 8.dp,
+                        bottom = 6.dp,
                     ),
                     color = AtharTheme.colors.secondaryText,
                     style = MaterialTheme.typography.bodySmall,
@@ -254,9 +259,12 @@ private fun androidx.compose.foundation.lazy.LazyListScope.items(
         )
         if (index != excerpts.lastIndex) {
             HorizontalDivider(
-                modifier = Modifier.padding(horizontal = horizontalPadding),
+                modifier = Modifier.padding(
+                    start = horizontalPadding + 16.dp,
+                    end = horizontalPadding,
+                ),
                 thickness = 0.7.dp,
-                color = AtharTheme.colors.divider.copy(alpha = 0.42f),
+                color = AtharTheme.colors.divider.copy(alpha = 0.2f),
             )
         }
     }
@@ -315,85 +323,126 @@ private fun ExcerptItem(
     onMore: () -> Unit,
     onOpenSource: () -> Unit,
 ) {
-    Column(
+    Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = horizontalPadding, vertical = 12.dp)
+            // IntrinsicSize.Min so the margin rule can run the exact height of the entry
+            .height(IntrinsicSize.Min)
+            .padding(horizontal = horizontalPadding, vertical = 13.dp)
             .testTag("excerpt_${excerpt.id}"),
     ) {
-        // The saved text in full, at reading size. No maxLines: الكناشة is where the
-        // excerpt is read, not a list of links to somewhere it can be read.
-        Text(
-            text = excerpt.text,
-            color = MaterialTheme.colorScheme.onSurface,
-            fontFamily = AtharEditorialFontFamily,
-            fontSize = 16.sp,
-            lineHeight = 30.sp,
+        // The margin rule — first child, so RTL puts it on the right. This, not a
+        // divider, is what gives the page its structure: it reads as an annotation
+        // mark beside a passage rather than a border around a card.
+        Box(
+            Modifier
+                .width(2.dp)
+                .fillMaxHeight()
+                .clip(RoundedCornerShape(1.dp))
+                .background(AtharTheme.colors.accent.copy(alpha = 0.55f)),
         )
-        Text(
-            text = buildString {
-                append(excerpt.sourceTitle)
-                append(" · ")
-                append(excerpt.sourceAuthor)
-                if (excerpt.locationLabel != null) {
-                    append(" · ")
-                    append(excerpt.locationLabel)
-                }
-            },
-            modifier = Modifier
-                .padding(top = 6.dp)
-                .clip(RoundedCornerShape(4.dp))
-                .clickable(role = Role.Button, onClick = onOpenSource)
-                .testTag("excerpt_source_${excerpt.id}"),
-            color = AtharTheme.colors.secondaryText,
-            style = MaterialTheme.typography.bodySmall,
-        )
-        if (excerpt.comment != null) {
-            // The user's own words, never confusable with the source text.
-            Row(modifier = Modifier.padding(top = 8.dp)) {
-                Box(
-                    Modifier
-                        .width(2.dp)
-                        .height(18.dp)
-                        .background(AtharTheme.colors.divider),
-                )
-                Text(
-                    text = excerpt.comment,
-                    modifier = Modifier.padding(start = 8.dp),
-                    color = AtharTheme.colors.secondaryText.copy(alpha = 0.85f),
-                    style = MaterialTheme.typography.bodySmall,
-                )
-            }
-        }
-        if (excerpt.topics.isNotEmpty()) {
-            Row(
-                modifier = Modifier.padding(top = 8.dp),
-                horizontalArrangement = Arrangement.spacedBy(6.dp),
-            ) {
-                excerpt.topics.forEach { topic ->
-                    Surface(
-                        shape = RoundedCornerShape(6.dp),
-                        color = AtharTheme.colors.raisedSurface,
+        Column(modifier = Modifier.padding(start = 14.dp)) {
+            // The saved text in full, at reading size. No maxLines: الكناشة is where the
+            // excerpt is read, not a list of links to somewhere it can be read.
+            Text(
+                text = excerpt.text,
+                color = MaterialTheme.colorScheme.onSurface,
+                fontFamily = AtharEditorialFontFamily,
+                fontSize = 17.5.sp,
+                lineHeight = 32.sp,
+            )
+            // Three ranks in one line: the work in burgundy, then author, then page.
+            Text(
+                text = buildAnnotatedString {
+                    withStyle(
+                        SpanStyle(
+                            color = AtharTheme.colors.accent,
+                            fontWeight = FontWeight.SemiBold,
+                        ),
                     ) {
-                        Text(
-                            text = topic,
-                            modifier = Modifier.padding(horizontal = 8.dp, vertical = 3.dp),
-                            color = AtharTheme.colors.secondaryText,
-                            style = MaterialTheme.typography.labelSmall,
-                            maxLines = 1,
-                            overflow = TextOverflow.Ellipsis,
-                        )
+                        append(excerpt.sourceTitle)
+                    }
+                    append(" · ")
+                    append(excerpt.sourceAuthor)
+                    if (excerpt.locationLabel != null) {
+                        append(" · ")
+                        append(excerpt.locationLabel)
+                    }
+                },
+                modifier = Modifier
+                    .padding(top = 8.dp)
+                    .clip(RoundedCornerShape(4.dp))
+                    .clickable(role = Role.Button, onClick = onOpenSource)
+                    .testTag("excerpt_source_${excerpt.id}"),
+                color = AtharTheme.colors.secondaryText,
+                style = MaterialTheme.typography.bodySmall,
+            )
+            if (excerpt.comment != null) {
+                // The reader's own words — a margin note, tinted so it can never be
+                // mistaken for the source text or for metadata.
+                Row(
+                    modifier = Modifier
+                        .padding(top = 10.dp)
+                        .clip(RoundedCornerShape(8.dp))
+                        .background(AtharTheme.colors.accent.copy(alpha = 0.06f))
+                        .padding(horizontal = 10.dp, vertical = 7.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Icon(
+                        imageVector = AtharIcons.Pen,
+                        contentDescription = null,
+                        tint = AtharTheme.colors.accent.copy(alpha = 0.75f),
+                        modifier = Modifier.size(13.dp),
+                    )
+                    Text(
+                        text = excerpt.comment,
+                        modifier = Modifier.padding(start = 8.dp),
+                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.78f),
+                        style = MaterialTheme.typography.bodySmall,
+                    )
+                }
+            }
+            if (excerpt.topics.isNotEmpty()) {
+                Row(
+                    modifier = Modifier.padding(top = 9.dp),
+                    horizontalArrangement = Arrangement.spacedBy(6.dp),
+                ) {
+                    excerpt.topics.forEachIndexed { index, topic ->
+                        // The first topic is the entry's primary subject and takes a
+                        // faint burgundy tint; the rest stay warm neutral.
+                        val primary = index == 0
+                        Surface(
+                            shape = RoundedCornerShape(6.dp),
+                            color = if (primary) {
+                                AtharTheme.colors.accent.copy(alpha = 0.08f)
+                            } else {
+                                AtharTheme.colors.pressedSurface
+                            },
+                        ) {
+                            Text(
+                                text = topic,
+                                modifier = Modifier.padding(horizontal = 9.dp, vertical = 3.dp),
+                                color = if (primary) {
+                                    AtharTheme.colors.accent
+                                } else {
+                                    AtharTheme.colors.secondaryText
+                                },
+                                style = MaterialTheme.typography.labelSmall,
+                                maxLines = 1,
+                                overflow = TextOverflow.Ellipsis,
+                            )
+                        }
                     }
                 }
             }
-        }
-        Row(
-            modifier = Modifier.padding(top = 4.dp),
-            horizontalArrangement = Arrangement.spacedBy(2.dp),
-        ) {
-            ExcerptAction(AtharIcons.Copy, "نسخ ${excerpt.sourceTitle}", "excerpt_copy_${excerpt.id}", onCopy)
-            ExcerptAction(AtharIcons.Share, "مشاركة ${excerpt.sourceTitle}", "excerpt_share_${excerpt.id}", onShare)
-            ExcerptAction(AtharIcons.More, "خيارات المقتطف", "excerpt_more_${excerpt.id}", onMore)
+            Row(
+                modifier = Modifier.padding(top = 5.dp),
+                horizontalArrangement = Arrangement.spacedBy(2.dp),
+            ) {
+                ExcerptAction(AtharIcons.Copy, "نسخ ${excerpt.sourceTitle}", "excerpt_copy_${excerpt.id}", onCopy)
+                ExcerptAction(AtharIcons.Share, "مشاركة ${excerpt.sourceTitle}", "excerpt_share_${excerpt.id}", onShare)
+                ExcerptAction(AtharIcons.More, "خيارات المقتطف", "excerpt_more_${excerpt.id}", onMore)
+            }
         }
     }
 }
@@ -409,8 +458,8 @@ private fun ExcerptAction(
         Icon(
             imageVector = icon,
             contentDescription = description,
-            tint = AtharTheme.colors.secondaryText.copy(alpha = 0.8f),
-            modifier = Modifier.size(17.dp),
+            tint = AtharTheme.colors.secondaryText,
+            modifier = Modifier.size(18.dp),
         )
     }
 }

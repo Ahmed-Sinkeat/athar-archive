@@ -21,7 +21,19 @@ export const BUCKET = "athar-book-assets";
 // review first, THEN drop the entry.
 // Not listed here = not ours: build-data/ is written by a different job and
 // must never be touched or pruned by this repo's uploader.
-export const OWNED_PREFIXES = ["pages/"];
+export const OWNED_PREFIXES = ["pages-v2/"];
+
+// Prefixes still SERVING but no longer generated. pages/ holds the previous,
+// uncompressed chapter bodies: gen-book-chapters.ts now emits only the gzipped
+// pages-v2/, and the thin route falls back to pages/ for anything missing from
+// it, so those objects are live infrastructure — not owned (the uploader would
+// try to prune all ~78k of them), not retired (the cleanup workflow must keep
+// refusing them; its own header promises it "cannot be pointed at pages/").
+// Listed here purely so `pnpm r2:inventory` reports them honestly instead of
+// as "unmanaged". Move to RETIRED_PREFIXES only after CHAPTERS_V2="*" has been
+// live and monitored and the route's fallback is deleted — that is the step
+// that makes them genuinely dead.
+export const LEGACY_PREFIXES = ["pages/"];
 
 // Prefixes this repo used to own and no longer generates. Reported by
 // `pnpm r2:inventory`, never touched by the uploader — deletion is a reviewed,
@@ -80,25 +92,31 @@ export function sigv4({ method, uri, query, headers, payloadHash, amzDate, regio
 }
 
 // --- request helper: sign + fetch + retry on 5xx/network ---
-export function makeClient({ readOnly = false } = {}) {
+export function makeClient({
+  readOnly = false,
+  bucket = BUCKET,
+  accessKeyId = process.env.R2_ACCESS_KEY_ID,
+  secretAccessKey = process.env.R2_SECRET_ACCESS_KEY,
+  credentialNames = "R2_ACCESS_KEY_ID / R2_SECRET_ACCESS_KEY",
+} = {}) {
   const account = process.env.CLOUDFLARE_ACCOUNT_ID;
-  const keyId = process.env.R2_ACCESS_KEY_ID;
-  const secret = process.env.R2_SECRET_ACCESS_KEY;
+  const keyId = accessKeyId;
+  const secret = secretAccessKey;
   if (!account || !keyId || !secret) {
     console.error(
-      "✗ missing CLOUDFLARE_ACCOUNT_ID / R2_ACCESS_KEY_ID / R2_SECRET_ACCESS_KEY.\n" +
+      `✗ missing CLOUDFLARE_ACCOUNT_ID / ${credentialNames}.\n` +
         "  Create S3 credentials: Cloudflare dashboard → R2 → Manage API tokens →\n" +
-        `  Object Read${readOnly ? "" : " & Write"} scoped to ${BUCKET}, then export the two keys.`,
+        `  Object Read${readOnly ? "" : " & Write"} scoped to ${bucket}, then export the two keys.`,
     );
     process.exit(1);
   }
   const host = `${account}.r2.cloudflarestorage.com`;
 
-  return async function s3(method, key, { query = {}, body, contentType } = {}) {
+  return async function s3(method, key, { query = {}, body, contentType, contentEncoding, cacheControl } = {}) {
     if (readOnly && method !== "GET" && method !== "HEAD") {
       throw new Error(`read-only client refused ${method} ${key}`);
     }
-    const uri = `/${BUCKET}` + (key ? "/" + key.split("/").map(enc).join("/") : "");
+    const uri = `/${bucket}` + (key ? "/" + key.split("/").map(enc).join("/") : "");
     const payloadHash = sha256hex(body ?? "");
     let lastErr;
     for (let attempt = 1; attempt <= RETRIES; attempt++) {
@@ -107,6 +125,10 @@ export function makeClient({ readOnly = false } = {}) {
       // treats an explicit Host header as forbidden)
       const signHeaders = { host, "x-amz-content-sha256": payloadHash, "x-amz-date": amzDate };
       if (contentType) signHeaders["content-type"] = contentType;
+      // stored gzipped, served gzipped — must be SIGNED, not just sent, or R2
+      // rejects the PUT with a signature mismatch
+      if (contentEncoding) signHeaders["content-encoding"] = contentEncoding;
+      if (cacheControl) signHeaders["cache-control"] = cacheControl;
       const { authorization, canonicalQuery } = sigv4({
         method, uri, query, headers: signHeaders, payloadHash, amzDate, region: "auto", keyId, secret,
       });
