@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(adb devices)",
+      "Bash(bc *)",
+      "Bash(ffprobe *)",
+      "Bash(dig *)",
+      "Bash(pnpm validate)",
+      "Bash(pnpm validate:content)",
+      "Bash(pnpm test)",
+      "Bash(pnpm smoke)",
+      "Bash(pnpm check:links)",
+      "Bash(pnpm perf:budget)"
+    ]
+  }
+}

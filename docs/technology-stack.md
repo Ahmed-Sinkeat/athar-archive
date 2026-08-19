@@ -95,6 +95,13 @@ Stable. Revisit only if a feature needs a native-only API the web platform can't
 ### Purpose
 Object storage for large media files (Opus-encoded recitations, PDF downloads, cover images), and — since 2026-07-03 — book chapter bodies, moved off Workers Static Assets to keep deploys under the 20,000-file limit as more books are added (see `docs/HANDOFF-perf-size.md`).
 
+The selected Android design adds a **separate** public app-content bucket (for example
+`athar-app-content`) behind a custom domain. It will contain only the signed,
+content-addressed `app/v2` catalog, `.athar` packages/indexes and attached audio; Android will
+not read GitHub or expose the website bucket's unrelated `pages/` and `build-data/` objects.
+This is the M4 backend contract, not a claim that the bucket has already been provisioned;
+see `docs/main-plan.md` D15–D16 and ADR 0004.
+
 ### Why we chose it
 Cloudflare R2 provides S3-compatible storage with **zero egress fees**. In a digital library, users download large files (PDF/Audio) repeatedly. Traditional storage providers (like AWS S3) charge per GB of downloaded traffic, which would make the archive financially unsustainable at scale. R2 eliminates egress bills entirely.
 
@@ -135,10 +142,16 @@ Experimental / Escalation. Meilisearch is not yet active, but stands as the desi
 ## TypeScript
 
 ### Purpose
-Type-safe script logic for Astro pages, backend middlewares, loading schemas, and browser scripts.
+Type-safe script logic for Astro pages, backend middlewares, loading schemas, browser
+scripts, and the selected Android **build-time** semantic-content generator.
 
 ### Why we chose it
 TypeScript prevents class and data mapping errors before they can reach production. By sharing the type definitions compiled by the Athar Engine, the website templates can guarantee they are matching valid properties, reducing layout crashes to zero.
+
+For Android, TypeScript parses canonical Markdown in CI and emits compact semantic blocks.
+It is not shipped in the APK and never participates in reading, text layout or scrolling;
+those are native Kotlin/Compose/Room paths. Unsupported Markdown must fail generation rather
+than be silently stripped (`docs/main-plan.md` §6).
 
 ### Alternatives considered
 * **Plain JavaScript:** Native script language.

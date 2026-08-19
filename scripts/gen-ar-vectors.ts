@@ -3,7 +3,7 @@
 // same query returns different results in the app — so the port is verified
 // against vectors generated from the TS implementation, not hand-ported hopes).
 //
-// Output: android/core/src/test/resources/ar-normalize-vectors.tsv
+// Output: android/core/athar-text/src/test/resources/ar-normalize-vectors.tsv
 //   one "input<TAB>expected" pair per line, \t \n \\ escaped.
 // Regen: pnpm app:vectors (after any change to src/lib/ar-normalize.ts —
 // ArNormalizeTest.kt then proves the Kotlin side still agrees).
@@ -17,7 +17,7 @@ import assert from "node:assert";
 import { normalizeArabic } from "../src/lib/ar-normalize.js";
 import { loadContentFromDisk } from "../src/lib/load.js";
 
-const OUT = path.resolve("android/core/src/test/resources/ar-normalize-vectors.tsv");
+const OUT = path.resolve("android/core/athar-text/src/test/resources/ar-normalize-vectors.tsv");
 
 const edge: string[] = [
   "", // empty

@@ -1,0 +1,20 @@
+# Gradle / Android build output
+.gradle/
+.kotlin/
+build/
+*/build/
+*/*/build/
+local.properties
+.cxx/
+
+# IDE
+.idea/
+*.iml
+captures/
+
+# Benchmark + test output
+**/benchmarkData/
+**/androidTest-results/
+
+# M0 fixtures: the 82 MB book is fetched, never committed (main-plan.md §16)
+m0/src/main/assets/fixtures/

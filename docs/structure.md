@@ -8,7 +8,11 @@ docs/
 ├─ asbuild.md                # phase-by-phase as-built record vs BUILD-PLAN (historical log, P0–UX-R)
 ├─ issue.md                  # ranked issue / watch register
 ├─ deploy.md                 # Cloudflare Workers deploy runbook (+ D1 search-index budget)
-├─ android-app.md            # Android app plan/roadmap — hybrid WebView decision, pre-work, build order
+├─ main-plan.md              # ⭐ Athar Android — selected plan of record (revised 19 Aug 2026):
+│                            #   architecture, schemas, M0 prototypes, M0–M10 milestones
+├─ android-app.md            # earlier Android roadmap — scoped native Kotlin (revised 2026-07-26;
+│                            #   TWA and full-parity native both rejected). Superseded on
+│                            #   architecture by main-plan.md; kept for the decision history
 ├─ import-epub-guide.md      # Athar-Engine vs epub-import.ts — which importer for which book
 ├─ technology-stack.md       # architectural technology decisions registry
 ├─ editing-text.ar.md        # UI/translation editing guide (Arabic)

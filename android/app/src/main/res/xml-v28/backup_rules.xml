@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  API 28-30. `requireFlags="deviceToDeviceTransfer"` is available from API 28, so
+  athar_user.db can move phone-to-phone without ever entering cloud backup —
+  annotations and reading history survive a device change while still never
+  leaving the user's own hardware.
+
+  athar_content.db and files/books/ stay excluded by omission: rebuildable.
+-->
+<full-backup-content>
+    <include domain="file" path="datastore/settings.preferences_pb" />
+    <include
+        domain="database"
+        path="athar_user.db"
+        requireFlags="deviceToDeviceTransfer" />
+</full-backup-content>

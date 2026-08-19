@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>أهل الأثر — الرئيسيّة</title>
+<style>
+/* ── الخطوط ────────────────────────────────────────────────────────── */
+@font-face{font-family:Amiri;font-style:normal;font-weight:400;font-display:swap;
+  src:url(../../../public/fonts/gf/amiri-J7aRnpd8CGxBHpUrtLMA7w.woff2) format('woff2')}
+@font-face{font-family:Amiri;font-style:normal;font-weight:700;font-display:swap;
+  src:url(../../../public/fonts/gf/amiri-J7acnpd8CGxBHp2VkaY6zp5yGw.woff2) format('woff2')}
+@font-face{font-family:'IBM Plex Sans Arabic';font-style:normal;font-weight:400;font-display:swap;
+  src:url(../../../public/fonts/gf/ibmplexsansarabic-Qw3CZRtWPQCuHme67tEYUIx3Kh0PHR9N6Ys43PWrfQ.woff2) format('woff2')}
+@font-face{font-family:'IBM Plex Sans Arabic';font-style:normal;font-weight:500;font-display:swap;
+  src:url(../../../public/fonts/gf/ibmplexsansarabic-Qw3NZRtWPQCuHme67tEYUIx3Kh0PHR9N6YPO_-CRXMR5Kw.woff2) format('woff2')}
+@font-face{font-family:'IBM Plex Sans Arabic';font-style:normal;font-weight:600;font-display:swap;
+  src:url(../../../public/fonts/gf/ibmplexsansarabic-Qw3NZRtWPQCuHme67tEYUIx3Kh0PHR9N6YPi-OCRXMR5Kw.woff2) format('woff2')}
+@font-face{font-family:'Noto Naskh Arabic';font-style:normal;font-weight:400;font-display:swap;
+  src:url(../../../public/fonts/gf/notonaskharabic-RrQKbpV-9Dd1b1OAGA6M9PkyDuVBeN2DHV20Lg.woff2) format('woff2')}
+
+/* ══ الرموز — أبيضُ دافئ، حبرٌ شبهُ أسود، ذهبٌ محتشمٌ وحيدٌ للتمييز ══ */
+.screen{
+  --canvas:#FFFFFF;
+  --surface:#F7F6F3;          /* سطحٌ دافئٌ للحالة النشِطة فقط */
+  --paper:#F3EFE6;            /* ورقُ أغلفة الكتب المولَّدة */
+  --ink:#242424;
+  --ink-2:#6E6C67;
+  --ink-3:#A6A29A;
+  --line:#EDEAE3;
+  --gold:#A98546;             /* اللون الوحيد — للتمييز لا للزينة */
+  --btn:#1F1E1C;
+  --ui:'IBM Plex Sans Arabic',system-ui,sans-serif;
+  --ed:Amiri,'Noto Naskh Arabic',serif;
+  --read:'Noto Naskh Arabic',Amiri,serif;
+}
+.screen.dark{
+  --canvas:#141413; --surface:#1D1D1B; --paper:#232220;
+  --ink:#EDEBE6; --ink-2:#9D9A94; --ink-3:#726F69;
+  --line:#2A2926; --gold:#C9A461; --btn:#EDEBE6;
+}
+
+/* ── ورقة العرض ───────────────────────────────────────────────────── */
+*{box-sizing:border-box}
+body{margin:0;padding:40px 24px 64px;background:#8F8D87;
+  font-family:'IBM Plex Sans Arabic',system-ui,sans-serif;color:#17160F}
+.sheet-head{max-width:900px;margin:0 auto 28px}
+.sheet-head h1{font-family:Amiri,serif;font-size:30px;margin:0 0 6px;font-weight:700}
+.sheet-head p{margin:0;font-size:13px;line-height:1.75;color:#211F19;max-width:66ch}
+.frames{display:flex;gap:36px;flex-wrap:wrap;justify-content:center;align-items:flex-start}
+.frame-wrap{display:flex;flex-direction:column;gap:10px;align-items:center}
+.frame-label{font-size:12px;font-weight:500;color:#14130E}
+
+/* ── الهاتف ───────────────────────────────────────────────────────── */
+.screen{width:390px;min-height:844px;background:var(--canvas);color:var(--ink);
+  font-family:var(--ui);display:flex;flex-direction:column;overflow:hidden;
+  border-radius:26px;border:1px solid rgba(0,0,0,.28);position:relative;
+  font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+
+/* شريط النظام */
+.sysbar{height:44px;flex:none;display:flex;align-items:center;justify-content:space-between;
+  padding:0 26px;color:var(--ink);direction:ltr}
+.sysbar .clock{font-size:15px;font-weight:600;font-variant-numeric:tabular-nums}
+.sysbar .sys{display:flex;align-items:center;gap:6px}
+.sysbar svg{height:12px;fill:currentColor;display:block}
+
+/* الترويسة — بلا خطٍّ فاصلٍ ولا خلفيّة */
+.header{height:52px;flex:none;display:flex;align-items:center;padding:0 12px}
+.header .brand{flex:1;text-align:center;font-family:var(--ed);font-size:26px;font-weight:700;
+  cursor:pointer;line-height:1}
+.hbtn{width:48px;height:48px;flex:none;display:grid;place-items:center;border:0;background:none;
+  color:var(--ink);border-radius:24px;cursor:pointer}
+.hbtn:hover{background:var(--surface)}
+.hbtn:focus-visible{outline:2px solid var(--gold);outline-offset:-4px}
+.hbtn svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:1.7;
+  stroke-linecap:round;stroke-linejoin:round}
+
+.page{flex:1;padding:0 20px 4px}
+
+/* حقل البحث — أقوى عنصرٍ في أعلى الصفحة */
+.search{margin-top:12px;height:56px;border:1px solid var(--line);border-radius:14px;
+  background:var(--canvas);display:flex;align-items:center;gap:10px;padding:0 16px;cursor:text}
+.search svg{width:19px;height:19px;flex:none;fill:none;stroke:var(--ink-3);stroke-width:1.8;
+  stroke-linecap:round;stroke-linejoin:round}
+.search span{color:var(--ink-3);font-size:14px}
+
+/* عناوين الأقسام — طباعةٌ فقط، بلا خطوطٍ ولا روابطَ صاخبة */
+h2.sec{font-family:var(--ed);font-size:22px;font-weight:700;margin:24px 0 12px;line-height:1.2}
+h2.sec:first-of-type{margin-top:22px}
+
+/* ── واصل ─────────────────────────────────────────────────────────── */
+.resume{position:relative;background:var(--surface);border-radius:18px;padding:18px;
+  display:flex;flex-direction:row-reverse;gap:16px;min-height:186px}
+.cover{width:104px;height:142px;flex:none;border-radius:4px;background:var(--paper);
+  border:1px solid rgba(169,133,70,.28);display:flex;flex-direction:column;align-items:center;
+  justify-content:center;gap:8px;padding:12px 8px;text-align:center;
+  box-shadow:0 1px 2px rgba(36,36,36,.07)}
+.cover .ct{font-family:var(--ed);font-size:13px;font-weight:700;line-height:1.35;color:#3A2E1C}
+.cover .ca{font-family:var(--ui);font-size:7.5px;color:#6E6153;line-height:1.5}
+.cover .orn{color:var(--gold);font-size:11px;line-height:1;opacity:.8}
+.screen.dark .cover .ct{color:#E4DECF}
+.screen.dark .cover .ca{color:#A29A8B}
+
+.resume-body{flex:1;min-width:0;padding-inline-start:50px}
+.resume h3{font-family:var(--ed);font-size:23px;font-weight:700;margin:0 0 6px;line-height:1.25}
+.resume .meta{font-size:12.5px;color:var(--ink-2);margin:0 0 12px;font-variant-numeric:tabular-nums}
+.progress{height:3px;border-radius:2px;background:rgba(36,36,36,.10);margin-bottom:14px;
+  overflow:hidden}
+.screen.dark .progress{background:rgba(255,255,255,.12)}
+.progress i{display:block;height:100%;width:46%;background:var(--gold);border-radius:2px}
+.resume .excerpt{font-family:var(--read);font-size:13px;line-height:1.95;color:var(--ink-2);
+  margin:0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+
+.bookmark{position:absolute;top:18px;inset-inline-start:18px;width:44px;height:44px;
+  border-radius:22px;background:var(--canvas);border:0;display:grid;place-items:center;
+  cursor:pointer;box-shadow:0 1px 3px rgba(36,36,36,.10)}
+.bookmark svg{width:19px;height:19px;fill:none;stroke:var(--ink-2);stroke-width:1.7;
+  stroke-linecap:round;stroke-linejoin:round}
+
+.btn-primary{position:absolute;bottom:18px;inset-inline-end:18px;height:46px;padding:0 22px;
+  border-radius:12px;background:var(--btn);color:var(--canvas);border:0;font-family:var(--ui);
+  font-size:14px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center}
+.btn-primary:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+
+/* ── وصول سريع ────────────────────────────────────────────────────── */
+.quick{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.qcard{height:56px;padding:0 6px;border:1px solid var(--line);border-radius:12px;
+  background:var(--canvas);display:flex;align-items:center;justify-content:center;gap:6px;
+  cursor:pointer;font-family:var(--ui);font-size:12px;font-weight:500;color:var(--ink);
+  white-space:nowrap}
+.qcard:hover{background:var(--surface)}
+.qcard svg{width:18px;height:18px;flex:none;fill:none;stroke:var(--gold);stroke-width:1.6;
+  stroke-linecap:round;stroke-linejoin:round}
+
+/* ── مؤخّرًا ───────────────────────────────────────────────────────── */
+.recent{border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.ritem{display:flex;align-items:center;gap:12px;padding:12px 14px;border-bottom:1px solid var(--line);
+  cursor:pointer}
+.ritem:last-child{border-bottom:0}
+.ritem:hover{background:var(--surface)}
+.rthumb{width:34px;height:46px;flex:none;border-radius:3px;background:var(--paper);
+  border:1px solid rgba(169,133,70,.28);display:grid;place-items:center;padding:3px;
+  text-align:center}
+.rthumb span{font-family:var(--ed);font-size:6px;font-weight:700;line-height:1.25;color:#4A3C26}
+.screen.dark .rthumb span{color:#CFC6B2}
+.rbody{flex:1;min-width:0}
+.rbody .t{font-family:var(--ed);font-size:17px;font-weight:700;line-height:1.3;margin-bottom:2px;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rbody .s{font-size:12px;color:var(--ink-2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rtime{display:flex;align-items:center;gap:8px;flex:none;color:var(--ink-3);font-size:11.5px}
+.rtime svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.5;
+  stroke-linecap:round;stroke-linejoin:round}
+
+/* ── من الأرشيف ───────────────────────────────────────────────────── */
+.feature{border-radius:16px;overflow:hidden;display:flex;background:var(--surface);height:124px}
+.fwash{width:150px;flex:none;position:relative;
+  background:
+    radial-gradient(120% 90% at 20% 15%, rgba(255,255,255,.85), transparent 60%),
+    linear-gradient(200deg,#E8DFCC 0%,#D8CBB0 55%,#C9B995 100%)}
+.fwash::after{content:"";position:absolute;inset:0;opacity:.28;
+  background:repeating-linear-gradient(115deg,rgba(255,255,255,.6) 0 1px,transparent 1px 9px)}
+.screen.dark .fwash{background:
+    radial-gradient(120% 90% at 20% 15%, rgba(255,255,255,.10), transparent 60%),
+    linear-gradient(200deg,#3A352B 0%,#2B2721 55%,#211E1A 100%)}
+.fbody{flex:1;min-width:0;padding:16px 16px 14px;display:flex;flex-direction:column}
+.fbody h3{font-family:var(--ed);font-size:20px;font-weight:700;margin:0 0 4px;line-height:1.25}
+.fbody p{font-size:12px;color:var(--ink-2);margin:0 0 auto;line-height:1.6}
+.btn-ghost{align-self:flex-start;height:34px;padding:0 14px;border-radius:9px;
+  border:1px solid var(--line);background:var(--canvas);color:var(--ink);font-family:var(--ui);
+  font-size:12.5px;font-weight:500;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.btn-ghost svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2;
+  stroke-linecap:round;stroke-linejoin:round}
+
+/* ── إحصاء الأرشيف ────────────────────────────────────────────────── */
+.stat{margin:20px 0 8px;display:flex;align-items:center;justify-content:center;gap:8px;
+  color:var(--ink-3);font-size:12.5px}
+.stat svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.5;
+  stroke-linecap:round;stroke-linejoin:round}
+
+/* ── الشريط السفليّ — خمسُ وِجهاتٍ، بلا كبسولةٍ ولا لون ────────────── */
+.tabbar{flex:none;display:flex;border-top:1px solid var(--line);padding:8px 0 22px;
+  background:var(--canvas)}
+.tab{flex:1;height:48px;border:0;background:none;color:var(--ink-3);display:flex;
+  flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;
+  font-family:var(--ui);font-size:11px;font-weight:500}
+.tab svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:1.6;
+  stroke-linecap:round;stroke-linejoin:round}
+.tab[aria-current=page]{color:var(--ink);font-weight:600}
+.tab[aria-current=page] svg{stroke-width:1.9}
+.gesture{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);width:134px;height:5px;
+  border-radius:3px;background:var(--ink);opacity:.25}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="sheet-head">
+  <h1>أهل الأثر — الرئيسيّة</h1>
+  <p>٣٩٠×٨٤٤، أبيضُ دافئ، بلا بطاقاتٍ إلّا حيث تعني شيئًا (بطاقة «واصل» لأنّها حالةٌ نشِطة).
+     الذهب <code>#A98546</code> هو اللون الوحيد، ولا يظهر إلّا في أيقونات الوصول السريع وخطّ
+     التقدّم. الشريط السفليّ خمسُ وِجهاتٍ محتوًى فقط، والرئيسيّة يُعاد إليها بالضغط على
+     «أهل الأثر». المشغّل الصوتيّ لا يظهر إلّا أثناء التشغيل. الأغلفة مولَّدةٌ طباعيًّا
+     (لا صور في الأرشيف)، ولوحة «من الأرشيف» تدرُّجٌ مؤقّتٌ مكان الصورة.</p>
+</div>
+
+<div class="frames">
+  <div class="frame-wrap"><div class="frame-label">فاتح</div><div class="screen" data-src></div></div>
+  <div class="frame-wrap"><div class="frame-label">داكن</div><div class="screen dark" data-src></div></div>
+</div>
+
+<template id="tpl">
+  <div class="sysbar">
+    <span class="clock">9:41</span>
+    <span class="sys">
+      <svg viewBox="0 0 18 12"><rect x="0" y="8.5" width="3" height="3.5" rx="1"/><rect x="5" y="6" width="3" height="6" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg>
+      <svg viewBox="0 0 16 12"><path d="M8 11.4 0.5 3.7A10.5 10.5 0 0 1 15.5 3.7z"/></svg>
+      <svg viewBox="0 0 26 12"><rect x="0" y="1" width="22" height="10" rx="3" fill="none" stroke="currentColor" stroke-width="1.3" opacity=".5"/><rect x="2" y="3" width="18" height="6" rx="1.5"/><rect x="23.5" y="4.2" width="2" height="3.6" rx="1" opacity=".5"/></svg>
+    </span>
+  </div>
+
+  <!-- الترويسة -->
+  <header class="header">
+    <button class="hbtn" aria-label="بحث">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20.5 20.5 16.2 16.2"/></svg>
+    </button>
+    <div class="brand" role="button" tabindex="0" aria-label="أهل الأثر — العودة إلى الرئيسيّة">أهل الأثر</div>
+    <button class="hbtn" aria-label="الإعدادات">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-2.7 1.1v.3a2 2 0 1 1-4 0v-.2a1.6 1.6 0 0 0-2.8-1.1l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1A1.6 1.6 0 0 0 3.5 15H3a2 2 0 1 1 0-4h.2a1.6 1.6 0 0 0 1.1-2.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1A1.6 1.6 0 0 0 9.9 4.4V4a2 2 0 1 1 4 0v.2a1.6 1.6 0 0 0 2.7 1.1l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0 1.1 2.7h.3a2 2 0 1 1 0 4h-.2a1.6 1.6 0 0 0-1.2 1.1z"/></svg>
+    </button>
+  </header>
+
+  <div class="page">
+
+    <!-- البحث -->
+    <div class="search" role="button" tabindex="0">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20.5 20.5 16.2 16.2"/></svg>
+      <span>ابحث في الكتب والمقالات والمسائل والشعر…</span>
+    </div>
+
+    <!-- واصل -->
+    <h2 class="sec">واصل</h2>
+    <article class="resume">
+      <div class="cover" aria-hidden="true">
+        <div class="ct">العَقيدَة الطَّحاويَّة</div>
+        <div class="orn">۞</div>
+        <div class="ca">للإمام أبي جعفر أحمد بن محمد الطحاوي</div>
+      </div>
+      <div class="resume-body">
+        <h3>العقيدة الطحاوية</h3>
+        <p class="meta">الباب الثالث · ص ١٣١ من ٢٨٤</p>
+        <div class="progress" role="img" aria-label="قرأتَ ٤٦٪"><i></i></div>
+        <p class="excerpt">نقول في توحيد الله معتقدين بتوفيق الله: إنَّ الله واحدٌ لا شريك له، ولا شيء مثله، ولا شيء يعجزه…</p>
+      </div>
+      <button class="bookmark" aria-label="حفظ الموضع">
+        <svg viewBox="0 0 24 24"><path d="M7 4.5h10v15l-5-3.7-5 3.7z"/></svg>
+      </button>
+      <button class="btn-primary">متابعة القراءة</button>
+    </article>
+
+    <!-- وصول سريع -->
+    <h2 class="sec">وصول سريع</h2>
+    <div class="quick">
+      <button class="qcard">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="7.2"/><circle cx="12" cy="4.8" r="1.6"/><path d="M12 19.2v1.8"/></svg>
+        الأذكار</button>
+      <button class="qcard">
+        <svg viewBox="0 0 24 24"><path d="M12 6.6C10.4 5.2 8.4 4.6 4.8 4.6v12.8c3.6 0 5.6.6 7.2 2 1.6-1.4 3.6-2 7.2-2V4.6c-3.6 0-5.6.6-7.2 2z"/><path d="M12 6.6v13.4"/></svg>
+        المتون</button>
+      <button class="qcard">
+        <svg viewBox="0 0 24 24"><path d="M4 14v-4M8 17.5v-11M12 20V4M16 16.5v-9M20 13.5v-3"/></svg>
+        الصوتيات</button>
+      <button class="qcard">
+        <svg viewBox="0 0 24 24"><path d="M3.8 7.4a1.8 1.8 0 0 1 1.8-1.8h3.3l1.9 2.2h7.4a1.8 1.8 0 0 1 1.8 1.8v7.8a1.8 1.8 0 0 1-1.8 1.8H5.6a1.8 1.8 0 0 1-1.8-1.8z"/></svg>
+        المحفوظات</button>
+    </div>
+
+    <!-- مؤخّرًا -->
+    <h2 class="sec">مؤخّرًا</h2>
+    <div class="recent">
+      <div class="ritem">
+        <div class="rthumb" aria-hidden="true"><span>العَقيدَة الواسِطيَّة</span></div>
+        <div class="rbody">
+          <div class="t">العقيدة الواسطية</div>
+          <div class="s">لابن تيمية · ص ٥٦ من ١٥٢</div>
+        </div>
+        <div class="rtime">منذ ١٢ ساعة
+          <svg viewBox="0 0 24 24"><path d="M6 4.5h11a1.6 1.6 0 0 1 1.6 1.6v13.4H7.6A1.6 1.6 0 0 1 6 17.9z"/><path d="M6 16.3h12.6"/></svg>
+        </div>
+      </div>
+      <div class="ritem">
+        <div class="rbody">
+          <div class="t">الاستثناء في الإيمان عند الإمام أحمد</div>
+          <div class="s">مسألة · في باب الإيمان</div>
+        </div>
+        <div class="rtime">منذ يوم
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M9.8 9.7a2.3 2.3 0 1 1 2.9 2.2c-.5.2-.7.6-.7 1.1v.4"/><path d="M12 16.3h.01"/></svg>
+        </div>
+      </div>
+      <div class="ritem">
+        <div class="rbody">
+          <div class="t">عادات في التصنيف يحتاج التزامها إلى دليل</div>
+          <div class="s">مقالة · من مقالات الأرشيف</div>
+        </div>
+        <div class="rtime">منذ يومين
+          <svg viewBox="0 0 24 24"><path d="M6.6 3.8h7.6L18.6 8v12.2H6.6z"/><path d="M14 3.9V8.2h4.4M9.4 12.8h5.2M9.4 16.3h3.4"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- من الأرشيف -->
+    <h2 class="sec">من الأرشيف</h2>
+    <div class="feature">
+      <div class="fwash" aria-hidden="true"></div>
+      <div class="fbody">
+        <h3>نخبة الفكر</h3>
+        <p>في مصطلح أهل الأثر · لابن حجر العسقلاني</p>
+        <button class="btn-ghost">اقرأ الآن
+          <svg viewBox="0 0 24 24"><path d="M14 6l-6 6 6 6"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="stat">
+      <svg viewBox="0 0 24 24"><path d="M3.8 7.6h16.4v11.2a1.4 1.4 0 0 1-1.4 1.4H5.2a1.4 1.4 0 0 1-1.4-1.4z"/><path d="M3 4.6h18v3H3zM10 11.6h4"/></svg>
+      ٤٬١٨٦ مادّة في الأرشيف
+    </div>
+
+  </div>
+
+  <!-- الشريط السفليّ -->
+  <nav class="tabbar">
+    <button class="tab" aria-current="page">
+      <svg viewBox="0 0 24 24"><path d="M12 6.6C10.4 5.2 8.4 4.6 4.8 4.6v12.8c3.6 0 5.6.6 7.2 2 1.6-1.4 3.6-2 7.2-2V4.6c-3.6 0-5.6.6-7.2 2z"/><path d="M12 6.6v13.4"/></svg>
+      الكتب</button>
+    <button class="tab">
+      <svg viewBox="0 0 24 24"><path d="M6.6 3.8h7.6L18.6 8v12.2H6.6z"/><path d="M14 3.9V8.2h4.4M9.4 12.8h5.2M9.4 16.3h3.4"/></svg>
+      المقالات</button>
+    <button class="tab">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M9.8 9.7a2.3 2.3 0 1 1 2.9 2.2c-.5.2-.7.6-.7 1.1v.4"/><path d="M12 16.3h.01"/></svg>
+      المسائل</button>
+    <button class="tab">
+      <svg viewBox="0 0 24 24"><path d="M20 4.2c-4.6.6-8 3-9.8 6.4-1.2 2.3-1.6 4.6-1.5 6.6"/><path d="M20 4.2c-1 5.2-4.2 8-8.6 8.6M8.7 17.2c-1.4 1-2.4 2.1-3.1 2.9"/></svg>
+      الشعر</button>
+    <button class="tab">
+      <svg viewBox="0 0 24 24"><path d="M6 4.2h10.4a1.6 1.6 0 0 1 1.6 1.6v14H7.6A1.6 1.6 0 0 1 6 18.2z"/><path d="M9.4 8.6h5.6M9.4 12.2h3.8"/></svg>
+      الكناشة</button>
+  </nav>
+  <div class="gesture"></div>
+</template>
+
+<script>
+// ponytail: قالبٌ واحدٌ مستنسَخ للإطارين، حتى لا يتباعد الفاتحُ عن الداكن
+for (const el of document.querySelectorAll('.screen[data-src]'))
+  el.append(document.getElementById('tpl').content.cloneNode(true));
+</script>
+</body>
+</html>

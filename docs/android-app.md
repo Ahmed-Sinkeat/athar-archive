@@ -1,5 +1,13 @@
 # athar-archive — Android app plan
 
+> **Superseded:** this is historical option analysis, not an implementation plan. The plan
+> of record is [`main-plan.md`](./main-plan.md), with its selected baseline revised
+> 19 Aug 2026. In
+> particular, its native generic-book scope and D13 replace the hybrid/WebView conclusions
+> below. References below to the retired `app/v1`, per-chapter Markdown delivery and a live
+> WebView are preserved only as a dated decision-history snapshot; Android's selected runtime
+> source is the signed, content-addressed R2 contract in `main-plan.md` D14–D16.
+
 **Status (2026-07-26):** pre-work started — see `android/README.md`. Done: content
 JSON pipeline (`pnpm app:gen` → R2 `app/v1/`: catalog + per-chapter md +
 pre-normalized search text + hash manifest, served at `/app/v1/*`) and the

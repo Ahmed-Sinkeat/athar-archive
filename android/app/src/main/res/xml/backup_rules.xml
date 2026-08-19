@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  API 26-27 ONLY. `requireFlags` does not exist before API 28, so there is no way
+  to say "device transfer but not cloud" here. Privacy wins: private databases are
+  simply never backed up. SAF export/import (M6) is the migration path on these
+  versions.
+
+  A <full-backup-content> block containing any <include> backs up ONLY the included
+  paths, so athar_user.db, athar_content.db and files/books/ are excluded by
+  omission — the latter two are rebuildable and would consume the backup quota.
+
+  API 28-30 overrides this file: see res/xml-v28/backup_rules.xml
+-->
+<full-backup-content>
+    <include domain="file" path="datastore/settings.preferences_pb" />
+</full-backup-content>
