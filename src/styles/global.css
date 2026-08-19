@@ -1231,6 +1231,22 @@ html.hide-vnums .vnum { display: none; }
 .book-resume-link:hover { text-decoration: underline; }
 /* sheet header — the sidebar's label, only meaningful once it's a mobile sheet */
 .toc-sheet-head { display: none; }
+
+/* TRANSITIONAL — delete with the pages/ prefix. ReaderSidebar renders one
+   <aside> now, but the ~128k chapter pages still served from the frozen pages/
+   prefix carry the OLD <details class="chap-mobile-toc"> clone. CSS ships as a
+   static asset and updated instantly; that stored HTML did not. Without these
+   rules those pages show a bare unstyled <summary> and a dead topbar button on
+   mobile. Remove once CHAPTERS_V2="*" is permanent and pages/ is gone. */
+.chap-mobile-toc { display: none; border: 1px solid var(--rule); border-radius: var(--radius-lg); background: var(--surface); margin-top: 14px; }
+.chap-mobile-toc summary { display: none; }
+@media (max-width: 780px) {
+  .chap-mobile-toc { display: block; }
+  .chap-mobile-toc[open] {
+    position: fixed; inset-inline: 12px; bottom: 76px; top: auto;
+    max-height: 65vh; overflow-y: auto; z-index: 46; margin-top: 0;
+  }
+}
 @media (max-width: 780px) {
   .chap-outer { padding-inline: 18px; }
   .chap-grid { grid-template-columns: 1fr; }

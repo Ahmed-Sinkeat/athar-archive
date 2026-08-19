@@ -254,6 +254,63 @@ jobs:
           pattern: book-pages-shard-*
           path: dist/_shards
 
+      # actions/download-artifact@v4 has twice printed "Starting download" for
+      # all 8 shards and then exited 0 with the downloads UNFINISHED — no digest
+      # check, no "Artifact download completed successfully", no "Total of N
+      # artifact(s) downloaded" (2026-08-19 finish log; the 2026-08-18 run
+      # printed all nine). Ruled out: Node 24 (both runs had it), disk (110G
+      # free), the shard builds (all 8 green, artifacts ~993MB each with
+      # digests). It is INTERMITTENT, and on 2026-08-17 it silently shipped
+      # 38096 of 128517 chapter pages — the merge guard below was added for that
+      # incident but blames the merge, which is not where the data is lost.
+      #
+      # Each shard already writes count-shard-N, a manifest of what it actually
+      # rendered. Check every artifact against its own manifest and refetch the
+      # short ones with the CLI — a different implementation from the action, so
+      # it does not share the failure mode. Recovering beats failing an hour of
+      # build. The merge guard stays as the second layer.
+      - name: Verify all 8 shard artifacts actually landed
+        env:
+          GH_TOKEN: ${{ github.token }}
+          # via env, never interpolated into the shell line (same rule as
+          # r2-cleanup.yml). gh run download MUST be given the run id: without
+          # one it resolves to some other/latest run, or wants to prompt.
+          RUN_ID: ${{ github.run_id }}
+          REPO: ${{ github.repository }}
+        run: |
+          for attempt in 1 2 3; do
+            short=""
+            for s in 0 1 2 3 4 5 6 7; do
+              d="dist/_shards/book-pages-shard-$s"
+              # cat|tr, not `tr < file`: a missing file makes the SHELL print
+              # the redirect error, which 2>/dev/null on tr cannot suppress —
+              # and a missing manifest is exactly the case being debugged.
+              want=$(cat "$d/count-shard-$s" 2>/dev/null | tr -dc '0-9')
+              got=$(find "$d" -name index.html 2>/dev/null | wc -l)
+              if [ -z "$want" ] || [ "$got" -ne "$want" ]; then
+                short="$short $s"
+                echo "shard $s: $got page(s) on disk, manifest says ${want:-<missing>}"
+              fi
+            done
+            if [ -z "$short" ]; then
+              echo "✓ all 8 shard artifacts complete"
+              exit 0
+            fi
+            if [ "$attempt" -eq 3 ]; then
+              break
+            fi
+            echo "::warning::attempt $attempt — incomplete shard artifact(s):$short — refetching"
+            for s in $short; do
+              rm -rf "dist/_shards/book-pages-shard-$s"
+              gh run download "$RUN_ID" \
+                --repo "$REPO" \
+                --name "book-pages-shard-$s" \
+                --dir "dist/_shards/book-pages-shard-$s"
+            done
+          done
+          echo "::error::shard artifact(s) still incomplete after 3 attempts:$short"
+          exit 1
+
       - name: Merge shard chapter pages + verify none lost
         run: |
           mkdir -p dist/client/book-pages

@@ -445,8 +445,10 @@ document.addEventListener("click", (e) => {
   }
   if (!t.closest("[data-topsearch]")) closeSearch();
   const chapToc = document.querySelector<HTMLElement>("[data-mobile-sidebar]");
-  if (chapToc?.classList.contains("is-open") && !t.closest("[data-mobile-sidebar]") && !t.closest('[data-action="sidebar:mobile-toggle"]')) {
-    chapToc.classList.remove("is-open");
+  const chapTocOpen = chapToc instanceof HTMLDetailsElement ? chapToc.open : chapToc?.classList.contains("is-open");
+  if (chapTocOpen && !t.closest("[data-mobile-sidebar]") && !t.closest('[data-action="sidebar:mobile-toggle"]')) {
+    if (chapToc instanceof HTMLDetailsElement) chapToc.open = false;
+    else chapToc!.classList.remove("is-open");
     document.querySelectorAll<HTMLElement>('[data-action="sidebar:mobile-toggle"]').forEach((b) => b.setAttribute("aria-expanded", "false"));
   }
   // native <details> popovers (تفسير/شرح tabs, edition info) never auto-close
@@ -501,7 +503,11 @@ const actions: Record<string, () => void> = {
   "sidebar:mobile-toggle": () => {
     const el = document.querySelector<HTMLElement>("[data-mobile-sidebar]");
     if (!el) return;
-    el.classList.toggle("is-open");
+    // TRANSITIONAL (see global.css): chapter pages still served from the frozen
+    // pages/ prefix carry the old <details> clone, which opens via .open, not a
+    // class. Drive whichever shape this page actually has.
+    if (el instanceof HTMLDetailsElement) el.open = !el.open;
+    else el.classList.toggle("is-open");
   },
   // long-page shortcuts (floating buttons on very long pages)
   "scroll:top": () => window.scrollTo({ top: 0, behavior: "smooth" }),
