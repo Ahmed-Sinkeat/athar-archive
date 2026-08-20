@@ -197,13 +197,6 @@ jobs:
       CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
       CLOUDFLARE_ZONE_ID: ${{ secrets.CLOUDFLARE_ZONE_ID }}
       NODE_OPTIONS: --max-old-space-size=6656
-      # pages/ → pages-v2/ rollout switch, baked into the Worker's vars by
-      # gen-book-chapters.ts: unset/"" serves the old uncompressed pages/,
-      # "slug-a,slug-b" canaries those books, "*" serves everything from
-      # pages-v2/. The route falls back to pages/ per object either way, so
-      # this is a canary/kill switch and not a correctness dependency.
-      # Set it under Settings → Secrets and variables → Actions → Variables.
-      CHAPTERS_V2: ${{ vars.CHAPTERS_V2 }}
     steps:
       - uses: actions/checkout@v4
         with:

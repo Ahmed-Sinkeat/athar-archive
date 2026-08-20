@@ -41,12 +41,6 @@ runner has to hold on its very tight disk.
 - **Compression runs on the libuv threadpool** (`zlib.gzip`, async, pool sized
   to the CPU count) — 9.8 MB/s single-threaded vs 22+ MB/s here. `build:finish`
   sets `UV_THREADPOOL_SIZE=8`; without it this silently caps at libuv's 4.
-- **`CHAPTERS_V2` is the rollout switch**, written into the Worker's vars by
-  `gen-book-chapters.ts` from the CI variable of the same name:
-  `""` (default) serves the old `pages/`, `"slug-a,slug-b"` canaries those
-  books, `"*"` serves everything from `pages-v2/`. The route falls back to
-  `pages/` whenever a v2 object is missing **or fails to inflate**, so flipping
-  it can never 404 or 500 a chapter.
 - The Worker inflates with a native `DecompressionStream` and returns plain
   HTML, so clients need no gzip support and nothing about content negotiation
   changes.
@@ -66,8 +60,11 @@ old path. Note `wallTime` is useless for this — the same request logged
 count. Measuring this in local workerd with `Date.now()` overstates CPU by two
 orders of magnitude; use `cpuTime` from tail, never a wall clock.
 
-`CHAPTERS_V2="*"` since 2026-08-20. `pages/` is retained as the per-object
-fallback until it is deleted; see "R2 prefix ownership" below for that step.
+**Migration complete 2026-08-20.** The old uncompressed `pages/` prefix — 128,517
+objects, 55.8 GiB — was deleted through `r2-cleanup.yml` after every chapter was
+confirmed serving from `pages-v2/`. The bucket went **60.2 GB → 5.7 GB**. The
+`CHAPTERS_V2` rollout flag and the route's per-object fallback to `pages/` were
+removed with it; the route is one R2 read again.
 
 **Known, unrelated:** this route sends `no-transform` (to stop Bot Fight Mode
 injecting a per-request inline script the hash-based CSP then blocks), and
@@ -138,11 +135,10 @@ per-build added to these pages must be tokenised the same way.**
   emitting silently stopped being listed and its objects stayed in R2 forever.
   A local directory that is **not** in this list now fails the upload loudly
   instead of being uploaded into a corner nothing manages.
-- **`LEGACY_PREFIXES`** (`pages/`) — still *serving* as the route's fallback,
-  no longer generated. Deliberately neither owned (the uploader would try to
-  prune all ~78k objects) nor retired (`r2-cleanup.yml` must keep refusing it).
-  Move it to `RETIRED_PREFIXES` only after `CHAPTERS_V2="*"` has been live and
-  monitored and the route's fallback is deleted — that is what makes it dead.
+- **`LEGACY_PREFIXES`** (empty) — for a prefix that still *serves* but is no
+  longer generated: neither owned (the uploader would prune it) nor retired
+  (`r2-cleanup.yml` must refuse it). `pages/` sat here during the pages-v2
+  migration and was deleted 2026-08-20.
 - **`RETIRED_PREFIXES`** (`tafsir-frag/`, `app/`) — prefixes this repo used to
   own and no longer generates. The uploader never touches them. `pnpm
   r2:inventory` reports their object count and bytes so the deletion is a

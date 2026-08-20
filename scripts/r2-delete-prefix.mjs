@@ -13,7 +13,7 @@
 //
 // Guard rails, in order:
 //   1. the prefix must be listed in RETIRED_PREFIXES — you cannot point this at
-//      pages/ (live chapter bodies) or build-data/ (another job owns it)
+//      pages-v2/ (live chapter bodies) or build-data/ (another job owns it)
 //   2. dry run is the default; --confirm is required to delete anything
 //   3. it prints the object count and byte total and re-verifies the prefix of
 //      every single key immediately before issuing its DELETE
@@ -51,7 +51,9 @@ function selftest() {
   console.log("✓ keyIsUnder selftest: only true descendants of the named prefix match");
 
   // the whole point of the tool: it must be impossible to aim at a live prefix
-  assert.ok(!RETIRED_PREFIXES.includes("pages/"), "pages/ must never be retired while it serves the site");
+  // pages/ held that role until 2026-08-20; pages-v2/ serves the chapters now,
+  // so the guard follows the live prefix rather than the historical name.
+  assert.ok(!RETIRED_PREFIXES.includes("pages-v2/"), "pages-v2/ must never be retired while it serves the site");
   assert.ok(!RETIRED_PREFIXES.includes("build-data/"), "build-data/ is owned by another job");
   assert.ok(RETIRED_PREFIXES.every((p) => p.endsWith("/")), "retired prefixes must end in /");
   console.log(`✓ target selftest: deletable prefixes are exactly [${RETIRED_PREFIXES.join(", ")}]`);
