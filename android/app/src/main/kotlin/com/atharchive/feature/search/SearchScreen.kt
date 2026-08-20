@@ -3,6 +3,8 @@ package com.atharchive.feature.search
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.background
+import androidx.compose.foundation.horizontalScroll
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
@@ -586,6 +588,9 @@ private fun ActiveChips(
     Row(
         modifier = Modifier
             .fillMaxWidth()
+            // Scope plus two sources plus an author is an ordinary state, and it used
+            // to run past the edge: filters applied that could not be seen or removed.
+            .horizontalScroll(rememberScrollState())
             .padding(start = horizontalPadding, end = horizontalPadding, top = 8.dp)
             .testTag("search_active_chips"),
         horizontalArrangement = Arrangement.spacedBy(6.dp),

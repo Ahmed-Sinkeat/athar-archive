@@ -509,6 +509,10 @@ fun AtharApp(
                             onSettings = ::openSettings,
                             onPlay = { nowPlaying = startPlaying(it) },
                             onMore = { announce("خيارات ${it.title}") },
+                            onSave = { announce("ستُحفظ ${it.title} في قائمتي مع طبقة البيانات") },
+                            onDownload = {
+                                announce("سيُربط تنزيل ${it.title} بمدير التنزيل في مرحلة البيانات")
+                            },
                             onOpenPlaylist = { announce("فتح قائمة ${it.name}") },
                         )
 
@@ -707,6 +711,7 @@ private fun SettingsScreen(
                 "المظهر والقراءة",
                 themeModeLabel,
                 onClick = onAppearance,
+                tag = "settings_appearance",
             )
             HorizontalDivider(color = AtharTheme.colors.divider)
             // Storage lives on its own screen now: the budget, the transfers in flight
@@ -727,10 +732,12 @@ private fun SettingsRow(
     title: String,
     subtitle: String? = null,
     onClick: (() -> Unit)? = null,
+    tag: String? = null,
 ) {
     Surface(
         modifier = Modifier
             .fillMaxWidth()
+            .then(if (tag == null) Modifier else Modifier.testTag(tag))
             .then(if (onClick == null) Modifier else Modifier.clickable(onClick = onClick)),
         color = AtharTheme.colors.canvas,
     ) {

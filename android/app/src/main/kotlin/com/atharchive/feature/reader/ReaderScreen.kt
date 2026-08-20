@@ -418,7 +418,9 @@ private fun ReaderTopBar(
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
             )
-            if (chapterTitle.isNotBlank()) {
+            // A single-chapter work names its one chapter after itself; printing it
+            // twice, six points apart, reads as a rendering fault.
+            if (chapterTitle.isNotBlank() && chapterTitle != bookTitle) {
                 Text(
                     text = chapterTitle,
                     color = colors.secondary,

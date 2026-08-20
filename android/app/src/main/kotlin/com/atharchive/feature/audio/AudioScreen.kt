@@ -36,12 +36,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDirection
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.atharchive.ui.components.AtharBookmarkButton
 import com.atharchive.ui.components.AtharEmptyState
 import com.atharchive.ui.components.AtharMenuButton
 import com.atharchive.ui.components.AtharSearchField
@@ -57,6 +60,8 @@ fun AudioScreen(
     onSettings: () -> Unit,
     onPlay: (AudioUi) -> Unit,
     onMore: (AudioUi) -> Unit,
+    onSave: (AudioUi) -> Unit,
+    onDownload: (AudioUi) -> Unit,
     onOpenPlaylist: (PlaylistUi) -> Unit,
     modifier: Modifier = Modifier,
     onLogo: (() -> Unit)? = null,
@@ -247,6 +252,8 @@ fun AudioScreen(
                             horizontalPadding = horizontalPadding,
                             onPlay = { onPlay(audio) },
                             onMore = { onMore(audio) },
+                            onSave = { onSave(audio) },
+                            onDownload = { onDownload(audio) },
                         )
                         if (index != visible.lastIndex) {
                             // Inset on both sides so the rule reads as belonging to the
@@ -334,11 +341,16 @@ private fun AudioRow(
     horizontalPadding: Dp,
     onPlay: () -> Unit,
     onMore: () -> Unit,
+    onSave: () -> Unit,
+    onDownload: () -> Unit,
 ) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .defaultMinSize(minHeight = 72.dp)
+            // The row plays. Tapping the title was the obvious gesture and it did
+            // nothing at all — the only list in the app that ignored it.
+            .clickable(role = Role.Button, onClick = onPlay)
             .padding(horizontal = horizontalPadding, vertical = 9.dp)
             .testTag("audio_row_${audio.id}"),
         verticalAlignment = Alignment.CenterVertically,
@@ -398,6 +410,40 @@ private fun AudioRow(
                     DownloadedPill()
                 }
             }
+        }
+        // قائمتي filters on audio.saved, and nothing could set it — the tab was
+        // permanently empty for a real listener.
+        AtharBookmarkButton(
+            saved = audio.saved,
+            onToggle = onSave,
+            itemTitle = audio.title,
+            tag = "audio_save_${audio.id}",
+        )
+        Box(
+            modifier = Modifier
+                .size(40.dp)
+                .clip(CircleShape)
+                .clickable(role = Role.Button, onClick = onDownload)
+                .semantics {
+                    contentDescription = if (audio.downloaded) {
+                        "${audio.title} محمّل"
+                    } else {
+                        "تنزيل ${audio.title}، الحجم ${audio.sizeLabel}"
+                    }
+                }
+                .testTag("audio_download_${audio.id}"),
+            contentAlignment = Alignment.Center,
+        ) {
+            Icon(
+                imageVector = if (audio.downloaded) AtharIcons.Check else AtharIcons.Download,
+                contentDescription = null,
+                tint = if (audio.downloaded) {
+                    AtharTheme.colors.success
+                } else {
+                    AtharTheme.colors.secondaryText
+                },
+                modifier = Modifier.size(19.dp),
+            )
         }
         IconButton(
             onClick = onMore,

@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -121,6 +122,9 @@ fun PlayerScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState())
+                // The only full-screen route that was not doing this: the queue ran
+                // under the system nav buttons and its last row could not be tapped.
+                .navigationBarsPadding()
                 .padding(bottom = 28.dp),
         ) {
             // ── header ───────────────────────────────────────────────────────
@@ -524,6 +528,7 @@ private fun AddToPlaylistTile(
             active = false,
             onClick = { open = true },
             tag = "player_add_playlist",
+            modifier = Modifier.fillMaxWidth(),
         ) { tint ->
             Icon(AtharIcons.PlusCircle, null, tint = tint, modifier = Modifier.size(21.dp))
         }
@@ -558,6 +563,7 @@ private fun SleepTile(minutes: Int, onSelect: (Int) -> Unit, modifier: Modifier 
             active = minutes != 0,
             onClick = { open = true },
             tag = "player_sleep",
+            modifier = Modifier.fillMaxWidth(),
         ) { tint ->
             Icon(AtharIcons.SleepTimer, null, tint = tint, modifier = Modifier.size(21.dp))
         }
@@ -597,6 +603,7 @@ private fun SpeedTile(speed: Float, onSelect: (Float) -> Unit, modifier: Modifie
             active = active,
             onClick = { open = true },
             tag = "player_speed",
+            modifier = Modifier.fillMaxWidth(),
         ) { tint ->
             Text(
                 text = speedLabel(speed),

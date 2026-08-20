@@ -93,6 +93,9 @@ dependencies {
     implementation(project(":core:athar-text"))
     implementation(project(":core:data"))
     implementation(libs.androidx.core.ktx)
+    // Macrobenchmark needs this to drop the shader cache between cold starts;
+    // without it StartupBenchmark cannot run at all.
+    implementation(libs.profileinstaller)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.lifecycle.runtime.compose)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
