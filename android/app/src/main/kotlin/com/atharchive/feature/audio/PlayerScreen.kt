@@ -420,7 +420,7 @@ private fun BigPlayButton(playing: Boolean, onClick: () -> Unit) {
         modifier = Modifier
             .size(66.dp)
             .clip(CircleShape)
-            .background(AtharTheme.colors.accent)
+            .background(AtharTheme.colors.primaryAction)
             .clickable(role = Role.Button, onClick = onClick)
             .testTag("player_toggle"),
         contentAlignment = Alignment.Center,
@@ -489,7 +489,7 @@ private fun ActionTile(
             .testTag(tag),
         shape = RoundedCornerShape(11.dp),
         color = if (active) {
-            AtharTheme.colors.accent.copy(alpha = 0.09f)
+            AtharTheme.colors.accentSurface
         } else {
             AtharTheme.colors.raisedSurface
         },

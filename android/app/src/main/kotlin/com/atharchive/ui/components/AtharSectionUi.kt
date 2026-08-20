@@ -74,9 +74,10 @@ fun AtharSearchField(
             .fillMaxWidth()
             .heightIn(min = 46.dp),
         shape = RoundedCornerShape(12.dp),
-        // Filled rather than outlined: one soft shape reads quieter than a hard border.
-        color = AtharTheme.colors.raisedSurface,
-        border = BorderStroke(1.dp, AtharTheme.colors.divider.copy(alpha = 0.45f)),
+        // Nearly flush with the page: a search field should read as part of the
+        // surface it sits on, not as a card floating above it.
+        color = AtharTheme.colors.inputSurface,
+        border = BorderStroke(1.dp, AtharTheme.colors.inputBorder),
     ) {
         Row(
             modifier = Modifier.fillMaxWidth(),
@@ -108,7 +109,7 @@ fun AtharSearchField(
                         if (query.isBlank()) {
                             Text(
                                 text = placeholder,
-                                color = AtharTheme.colors.secondaryText,
+                                color = AtharTheme.colors.placeholderText,
                                 style = MaterialTheme.typography.bodyMedium,
                                 maxLines = 1,
                                 overflow = TextOverflow.Ellipsis,

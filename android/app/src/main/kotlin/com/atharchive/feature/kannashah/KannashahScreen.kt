@@ -480,7 +480,7 @@ private fun ViewToggle(
                     .testTag("kannashah_view_${entry.key}"),
                 shape = RoundedCornerShape(7.dp),
                 color = if (selected) {
-                    AtharTheme.colors.accent.copy(alpha = 0.12f)
+                    AtharTheme.colors.accentSurface
                 } else {
                     AtharTheme.colors.canvas
                 },

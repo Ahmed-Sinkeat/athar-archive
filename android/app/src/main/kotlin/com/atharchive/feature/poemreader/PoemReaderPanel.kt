@@ -1,5 +1,6 @@
 package com.atharchive.feature.poemreader
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -7,6 +8,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
@@ -22,6 +24,8 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -343,8 +347,14 @@ private fun PanelEmpty(title: String, body: String, colors: ReaderColors) {
 /* ── audio ─────────────────────────────────────────────────────────────── */
 
 /**
- * Compact strip above the reading controls. Three named facts — الاسم / المصنف / المنشد —
- * because a recitation is identified by all three, and a poem often has several.
+ * Compact strip above the reading controls.
+ *
+ * It states one fact — who is reciting — because that is the only thing that varies
+ * between the recordings of a poem you are already looking at. The name and the
+ * collection used to sit here too and ran off the edge of a 393dp screen.
+ *
+ * The reciter's name *is* the picker: the thing you want to change is the thing you
+ * tap, rather than a separate «قائمة الصوتيات» chip beside a label that only reported.
  *
  * The progress bar fills from the start edge, which under RTL is the right: playback
  * begins on the right and travels left, so elapsed sits right and total sits left.
@@ -364,6 +374,7 @@ internal fun PoemAudioBar(
     onRepeat: () -> Unit,
 ) {
     var listOpen by remember { mutableStateOf(false) }
+    var speedOpen by remember { mutableStateOf(false) }
     val progress = if (track.durationSeconds == 0) 0f
     else (position.toFloat() / track.durationSeconds).coerceIn(0f, 1f)
 
@@ -374,102 +385,59 @@ internal fun PoemAudioBar(
             .testTag("poem_audio_bar"),
     ) {
         HorizontalDivider(thickness = 0.7.dp, color = colors.divider)
+
+        // Row one: who, and how fast. Both open a picker; neither can overflow.
         Row(
-            modifier = Modifier.fillMaxWidth().padding(start = 10.dp, end = 12.dp, top = 8.dp),
+            modifier = Modifier.fillMaxWidth().padding(start = 12.dp, end = 12.dp, top = 8.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            Box {
-                Row(
-                    modifier = Modifier
-                        .clip(RoundedCornerShape(99.dp))
-                        .background(colors.text.copy(alpha = 0.05f))
-                        .clickable(role = Role.Button) { listOpen = true }
-                        .padding(horizontal = 10.dp, vertical = 5.dp)
-                        .testTag("poem_audio_list"),
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
-                    Text("قائمة الصوتيات", color = colors.secondary, style = MaterialTheme.typography.labelSmall)
+            Box(Modifier.weight(1f)) {
+                BarPill(colors, "poem_audio_reciter", onClick = { listOpen = true }) {
+                    Text(
+                        text = "القارئ: ${track.reciter}",
+                        modifier = Modifier.weight(1f, fill = false),
+                        color = colors.text,
+                        style = MaterialTheme.typography.labelSmall,
+                        fontWeight = FontWeight.SemiBold,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis,
+                    )
                     Icon(
-                        AtharIcons.ChevronDown, null,
+                        AtharIcons.ChevronDown,
+                        contentDescription = null,
                         tint = colors.secondary,
-                        modifier = Modifier.padding(start = 3.dp).size(11.dp),
+                        modifier = Modifier.padding(start = 4.dp).size(11.dp),
                     )
                 }
-                if (listOpen) {
-                    Popup(
-                        alignment = Alignment.BottomCenter,
-                        offset = IntOffset(0, -46),
-                        onDismissRequest = { listOpen = false },
-                        properties = PopupProperties(focusable = true),
-                    ) {
-                        Column(
-                            modifier = Modifier
-                                .width(250.dp)
-                                .clip(RoundedCornerShape(11.dp))
-                                .background(colors.page)
-                                .padding(vertical = 5.dp)
-                                .testTag("poem_audio_list_popup"),
-                        ) {
-                            recordings.forEach { item ->
-                                val active = item.id == track.id
-                                Row(
-                                    modifier = Modifier
-                                        .fillMaxWidth()
-                                        .clickable(role = Role.Button) { onSelect(item); listOpen = false }
-                                        .padding(horizontal = 12.dp, vertical = 8.dp)
-                                        .testTag("poem_audio_opt_${item.id}"),
-                                    verticalAlignment = Alignment.CenterVertically,
-                                ) {
-                                    Icon(
-                                        if (active) AtharIcons.Play else AtharIcons.Audio,
-                                        null,
-                                        tint = if (active) colors.accent else colors.secondary,
-                                        modifier = Modifier.size(14.dp),
-                                    )
-                                    Column(Modifier.padding(start = 9.dp)) {
-                                        Text(
-                                            text = "${item.title} — ${item.reciter}",
-                                            color = if (active) colors.accent else colors.text,
-                                            style = MaterialTheme.typography.bodySmall,
-                                            maxLines = 1,
-                                            overflow = TextOverflow.Ellipsis,
-                                        )
-                                        Text(
-                                            text = "${item.collection} · ${item.durationLabel}",
-                                            color = colors.secondary,
-                                            style = MaterialTheme.typography.labelSmall,
-                                        )
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+                ReciterMenu(
+                    open = listOpen,
+                    recordings = recordings,
+                    current = track,
+                    colors = colors,
+                    onSelect = { onSelect(it); listOpen = false },
+                    onDismiss = { listOpen = false },
+                )
             }
-            Spacer(Modifier.weight(1f))
-            Text(
-                text = "المنشد: ${track.reciter}",
-                color = colors.secondary,
-                style = MaterialTheme.typography.labelSmall,
-                maxLines = 1,
-            )
-            Spacer(Modifier.width(10.dp))
-            Text(
-                text = "المصنف: ${track.collection}",
-                color = colors.secondary,
-                style = MaterialTheme.typography.labelSmall,
-                maxLines = 1,
-            )
-            Spacer(Modifier.width(10.dp))
-            Text(
-                text = "الاسم: ${track.title}",
-                color = colors.text,
-                style = MaterialTheme.typography.labelSmall,
-                fontWeight = FontWeight.SemiBold,
-                maxLines = 1,
-            )
+            Box {
+                BarPill(colors, "poem_audio_speed", onClick = { speedOpen = true }) {
+                    Text(
+                        text = speedLabel(speed),
+                        color = if (speed == 1.0f) colors.secondary else colors.accent,
+                        style = MaterialTheme.typography.labelSmall,
+                        fontWeight = FontWeight.SemiBold,
+                    )
+                }
+                SpeedMenu(
+                    open = speedOpen,
+                    speed = speed,
+                    colors = colors,
+                    onSelect = { onSpeed(it); speedOpen = false },
+                    onDismiss = { speedOpen = false },
+                )
+            }
         }
 
+        // Row two: transport only.
         Row(
             modifier = Modifier.fillMaxWidth().padding(start = 12.dp, end = 12.dp, top = 6.dp, bottom = 8.dp),
             verticalAlignment = Alignment.CenterVertically,
@@ -478,7 +446,7 @@ internal fun PoemAudioBar(
                 modifier = Modifier
                     .size(44.dp)
                     .clip(CircleShape)
-                    .background(colors.accent)
+                    .background(colors.accentFill)
                     .clickable(role = Role.Button, onClick = onToggle)
                     .testTag("poem_audio_toggle"),
                 contentAlignment = Alignment.Center,
@@ -505,24 +473,7 @@ internal fun PoemAudioBar(
                     modifier = Modifier.size(17.dp),
                 )
             }
-            Box(
-                modifier = Modifier
-                    .clip(RoundedCornerShape(99.dp))
-                    .background(colors.text.copy(alpha = 0.05f))
-                    .clickable(role = Role.Button) {
-                        onSpeed(Speeds[(Speeds.indexOf(speed) + 1) % Speeds.size])
-                    }
-                    .padding(horizontal = 9.dp, vertical = 4.dp)
-                    .testTag("poem_audio_speed"),
-            ) {
-                Text(
-                    text = "×${if (speed % 1f == 0f) "${speed.toInt()}.0" else "$speed"}",
-                    color = if (speed == 1.0f) colors.secondary else colors.accent,
-                    style = MaterialTheme.typography.labelSmall,
-                    fontWeight = FontWeight.SemiBold,
-                )
-            }
-            Spacer(Modifier.width(10.dp))
+            Spacer(Modifier.width(6.dp))
             Text(clock(position), color = colors.secondary, style = MaterialTheme.typography.labelSmall)
             Box(
                 modifier = Modifier
@@ -562,7 +513,129 @@ internal fun PoemAudioBar(
     }
 }
 
-private val Speeds = listOf(1.0f, 1.25f, 1.5f)
+/** The bar's one control shape: a quiet capsule that opens a picker. */
+@Composable
+private fun BarPill(
+    colors: ReaderColors,
+    tag: String,
+    onClick: () -> Unit,
+    content: @Composable RowScope.() -> Unit,
+) {
+    Row(
+        modifier = Modifier
+            .clip(RoundedCornerShape(99.dp))
+            .background(colors.text.copy(alpha = 0.05f))
+            .clickable(role = Role.Button, onClick = onClick)
+            .padding(horizontal = 10.dp, vertical = 5.dp)
+            .testTag(tag),
+        verticalAlignment = Alignment.CenterVertically,
+        content = content,
+    )
+}
+
+/**
+ * The recordings of this poem, by voice.
+ *
+ * The collection line carries the weight the removed «المصنف» label used to: a
+ * 42-minute شرح is not an alternative reading of the poem, and the reader has to be
+ * able to see that before choosing it.
+ */
+@Composable
+private fun ReciterMenu(
+    open: Boolean,
+    recordings: List<PoemAudioUi>,
+    current: PoemAudioUi,
+    colors: ReaderColors,
+    onSelect: (PoemAudioUi) -> Unit,
+    onDismiss: () -> Unit,
+) {
+    DropdownMenu(
+        expanded = open,
+        onDismissRequest = onDismiss,
+        containerColor = colors.page,
+        shape = RoundedCornerShape(12.dp),
+        border = BorderStroke(0.7.dp, colors.divider),
+        modifier = Modifier.testTag("poem_audio_reciters"),
+    ) {
+        recordings.forEach { item ->
+            val active = item.id == current.id
+            DropdownMenuItem(
+                text = {
+                    Column {
+                        Text(
+                            text = item.reciter,
+                            color = if (active) colors.accent else colors.text,
+                            style = MaterialTheme.typography.bodySmall,
+                            fontWeight = if (active) FontWeight.SemiBold else FontWeight.Normal,
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis,
+                        )
+                        Text(
+                            text = "${item.collection} · ${item.durationLabel}",
+                            color = colors.secondary,
+                            style = MaterialTheme.typography.labelSmall,
+                        )
+                    }
+                },
+                onClick = { onSelect(item) },
+                trailingIcon = if (active) {
+                    {
+                        Icon(
+                            AtharIcons.Check,
+                            contentDescription = null,
+                            tint = colors.accent,
+                            modifier = Modifier.size(15.dp),
+                        )
+                    }
+                } else {
+                    null
+                },
+                modifier = Modifier.testTag("poem_audio_opt_${item.id}"),
+            )
+        }
+    }
+}
+
+@Composable
+private fun SpeedMenu(
+    open: Boolean,
+    speed: Float,
+    colors: ReaderColors,
+    onSelect: (Float) -> Unit,
+    onDismiss: () -> Unit,
+) {
+    DropdownMenu(
+        expanded = open,
+        onDismissRequest = onDismiss,
+        containerColor = colors.page,
+        shape = RoundedCornerShape(12.dp),
+        border = BorderStroke(0.7.dp, colors.divider),
+        modifier = Modifier.testTag("poem_audio_speeds"),
+    ) {
+        Speeds.forEach { option ->
+            DropdownMenuItem(
+                text = {
+                    Text(
+                        text = speedLabel(option),
+                        color = if (option == speed) colors.accent else colors.text,
+                        style = MaterialTheme.typography.bodyMedium,
+                        fontWeight = if (option == speed) FontWeight.SemiBold else FontWeight.Normal,
+                    )
+                },
+                onClick = { onSelect(option) },
+                modifier = Modifier.testTag("poem_speed_${option.toString().replace('.', '_')}"),
+            )
+        }
+    }
+}
+
+// Same ladder as the full player, so ×2 means the same thing in both places.
+private val Speeds = listOf(0.75f, 1.0f, 1.25f, 1.5f, 2.0f)
+
+private fun speedLabel(speed: Float): String {
+    val text = if (speed % 1f == 0f) "${speed.toInt()}.0" else speed.toString()
+    return "${arabicDigits(text)}×"
+}
 
 /** Seconds to "م:ثث" in Arabic-Indic digits. Escapes, never pasted glyphs. */
 private fun clock(totalSeconds: Int): String {

@@ -28,6 +28,8 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -35,6 +37,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -45,7 +50,6 @@ import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
 import androidx.navigation3.ui.NavDisplay
-import com.atharchive.feature.articles.ArticlesFixture
 import com.atharchive.feature.articles.ArticlesScreen
 import com.atharchive.feature.audio.AudioFixture
 import com.atharchive.feature.audio.AudioScreen
@@ -53,15 +57,11 @@ import com.atharchive.feature.audio.AudioProgressBar
 import com.atharchive.feature.audio.AudioUi
 import com.atharchive.feature.audio.NowPlayingUi
 import com.atharchive.feature.audio.PlayerScreen
-import com.atharchive.feature.books.BooksFixture
 import com.atharchive.feature.books.BooksScreen
 import com.atharchive.feature.kannashah.KannashahFixture
 import com.atharchive.feature.kannashah.KannashahScreen
-import com.atharchive.feature.reader.ReaderFixture
 import com.atharchive.feature.reader.ReaderScreen
-import com.atharchive.feature.poemreader.PoemReaderFixture
 import com.atharchive.feature.poemreader.PoemReaderScreen
-import com.atharchive.feature.poetry.PoetryFixture
 import com.atharchive.feature.poetry.PoetryScreen
 import com.atharchive.feature.search.SearchFixture
 import com.atharchive.feature.sections.AtharSection
@@ -79,6 +79,7 @@ import com.atharchive.ui.theme.AtharEditorialFontFamily
 import com.atharchive.ui.theme.AtharTheme
 import kotlinx.coroutines.launch
 import kotlinx.serialization.Serializable
+import com.atharchive.data.AtharContentViewModel
 
 @Serializable
 private data object BooksCatalogRoute : NavKey
@@ -105,12 +106,15 @@ private data class ReaderRoute(val bookId: String) : NavKey
 private data class SubSectionRoute(val section: String) : NavKey
 
 @Composable
-fun AtharApp() {
+fun AtharApp(contentViewModel: AtharContentViewModel = hiltViewModel()) {
     val backStack = rememberNavBackStack(BooksCatalogRoute)
     val snackbarHostState = remember { SnackbarHostState() }
     val scope = rememberCoroutineScope()
     var booksScrollToTopRequest by rememberSaveable { mutableIntStateOf(0) }
     var nowPlaying by remember { mutableStateOf(AudioFixture.nowPlaying) }
+    val booksState by contentViewModel.books.collectAsStateWithLifecycle()
+    val articlesState by contentViewModel.articles.collectAsStateWithLifecycle()
+    val poetryState by contentViewModel.poetry.collectAsStateWithLifecycle()
 
     val inReader = backStack.lastOrNull() is ReaderRoute
     // The player owns the whole screen, like the reader: no bottom chrome under it.
@@ -200,7 +204,7 @@ fun AtharApp() {
                 entry<BooksCatalogRoute> {
                     BooksScreen(
                         onLogo = ::openSections,
-                        state = BooksFixture,
+                        state = booksState,
                         onSettings = { openSettings() },
                         onBookClick = { backStack.add(ReaderRoute(it.id)) },
                         onDownloadClick = {
@@ -214,16 +218,34 @@ fun AtharApp() {
                     SettingsScreen(onBack = ::goBack)
                 }
                 // The reader owns the whole screen: no bottom navigation inside a book.
-                entry<ReaderRoute> {
-                    ReaderScreen(
-                        state = ReaderFixture,
-                        onBack = ::goBack,
-                        onSaveBenefit = { },
-                        onPositionChange = { },
-                    )
+                entry<ReaderRoute> { route ->
+                    val readerState by contentViewModel.readerState(route.bookId)
+                        .collectAsStateWithLifecycle(initialValue = null)
+                    val pagedBlocks = remember(route.bookId) {
+                        contentViewModel.pagedReaderBlocks(route.bookId)
+                    }.collectAsLazyPagingItems()
+                    LaunchedEffect(route.bookId) { contentViewModel.openReader(route.bookId) }
+                    DisposableEffect(route.bookId) {
+                        onDispose { contentViewModel.closeReader(route.bookId) }
+                    }
+                    readerState?.let { state ->
+                        ReaderScreen(
+                            state = state,
+                            pagedBlocks = pagedBlocks,
+                            onBack = ::goBack,
+                            onSaveBenefit = { },
+                            onPositionChange = { contentViewModel.onReaderPosition(route.bookId, it) },
+                        )
+                    }
                 }
-                entry<PoemReaderRoute> {
-                    PoemReaderScreen(state = PoemReaderFixture, onBack = ::goBack)
+                entry<PoemReaderRoute> { route ->
+                    val poemState by contentViewModel.poemReaderState(route.poemId)
+                        .collectAsStateWithLifecycle(initialValue = null)
+                    LaunchedEffect(route.poemId) { contentViewModel.openReader(route.poemId) }
+                    DisposableEffect(route.poemId) {
+                        onDispose { contentViewModel.closeReader(route.poemId) }
+                    }
+                    poemState?.let { state -> PoemReaderScreen(state = state, onBack = ::goBack) }
                 }
                 entry<PlayerRoute> {
                     nowPlaying?.let { playing ->
@@ -251,9 +273,9 @@ fun AtharApp() {
                 entry<SubSectionRoute> { route ->
                     when (AtharSection.entries.first { it.route == route.section }) {
                         AtharSection.Articles -> ArticlesScreen(
-                            state = ArticlesFixture,
+                            state = articlesState,
                             onSettings = ::openSettings,
-                            onArticleClick = { announce("فتح ${it.title}") },
+                            onArticleClick = { backStack.add(ReaderRoute(it.id)) },
                             onSaveClick = {
                                 announce("سيُحفظ ${it.title} في قائمتي مع طبقة البيانات")
                             },
@@ -280,7 +302,7 @@ fun AtharApp() {
                     when (AtharDestination.fromRoute(route.destination)) {
                         AtharDestination.Poetry -> PoetryScreen(
                             onLogo = ::openSections,
-                            state = PoetryFixture,
+                            state = poetryState,
                             onSettings = ::openSettings,
                             onPoemClick = { backStack.add(PoemReaderRoute(it.id)) },
                             onDownloadClick = {
@@ -380,7 +402,9 @@ private fun MiniPlayer(
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .background(AtharTheme.colors.raisedSurface)
+            // Same ground as the page: the top divider and the progress line are
+            // what separate it, not a slab of a different colour.
+            .background(AtharTheme.colors.canvas)
             .clickable(role = Role.Button, onClick = onOpen)
             .testTag("mini_player"),
     ) {

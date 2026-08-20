@@ -436,7 +436,9 @@ internal fun AudioPlayButton(playing: Boolean, size: Dp, onClick: () -> Unit) {
         modifier = Modifier
             .size(size)
             .clip(CircleShape)
-            .background(AtharTheme.colors.accent)
+            // primaryAction, not accent: a big filled disc in the bright accent
+            // dominates the row in dark mode.
+            .background(AtharTheme.colors.primaryAction)
             .clickable(role = Role.Button, onClick = onClick),
         contentAlignment = Alignment.Center,
     ) {

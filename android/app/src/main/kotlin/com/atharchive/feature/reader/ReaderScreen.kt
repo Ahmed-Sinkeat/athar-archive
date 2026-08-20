@@ -28,6 +28,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
@@ -60,10 +61,12 @@ import androidx.compose.ui.unit.sp
 import com.atharchive.ui.icons.AtharIcons
 import com.atharchive.ui.theme.AtharEditorialFontFamily
 import kotlinx.coroutines.launch
+import androidx.paging.compose.LazyPagingItems
 
 @Composable
 fun ReaderScreen(
     state: ReaderUiState,
+    pagedBlocks: LazyPagingItems<ReaderBlock>? = null,
     onBack: () -> Unit,
     onSaveBenefit: (String) -> Unit,
     onPositionChange: (Int) -> Unit,
@@ -85,7 +88,8 @@ fun ReaderScreen(
     var selectionAlignment by remember { mutableStateOf(Alignment.BottomCenter) }
 
     val colors = rememberReaderColors(settings.palette)
-    val listState = rememberLazyListState(initialFirstVisibleItemIndex = state.readingPositionIndex)
+    // Index 0 belongs to the title item; durable positions are semantic block ordinals.
+    val listState = rememberLazyListState(initialFirstVisibleItemIndex = state.readingPositionIndex + 1)
     val scope = rememberCoroutineScopeCompat()
 
     // Top bar hides on downward scroll only, and returns the instant the reader scrolls up.
@@ -108,7 +112,9 @@ fun ReaderScreen(
 
     // Reading position is written continuously. There is no "save position" control,
     // and this is not a bookmark.
-    val currentIndex by remember { derivedStateOf { listState.firstVisibleItemIndex } }
+    val currentIndex by remember {
+        derivedStateOf { (listState.firstVisibleItemIndex - 1).coerceAtLeast(0) }
+    }
     LaunchedEffect(currentIndex) { onPositionChange(currentIndex) }
 
     val hits = remember(query, state.blocks) { findHits(state, query) }
@@ -121,7 +127,9 @@ fun ReaderScreen(
 
     fun jumpTo(index: Int) {
         jumpedTo = index
-        scope.launch { listState.scrollToItem(index.coerceIn(0, state.blocks.lastIndex)) }
+        scope.launch {
+            listState.scrollToItem(index.coerceIn(0, (state.blockCount - 1).coerceAtLeast(0)) + 1)
+        }
     }
 
     val chapterTitle = remember(state.toc, currentIndex) {
@@ -129,8 +137,8 @@ fun ReaderScreen(
     }
     val progress by remember {
         derivedStateOf {
-            if (state.blocks.size <= 1) 0f
-            else currentIndex.toFloat() / (state.blocks.size - 1)
+            if (state.blockCount <= 1) 0f
+            else currentIndex.toFloat() / (state.blockCount - 1)
         }
     }
 
@@ -195,19 +203,41 @@ fun ReaderScreen(
                     )
                 }
             }
-            itemsIndexed(state.blocks, key = { _, b -> b.id }) { index, block ->
-                BlockView(
-                    block = block,
-                    settings = settings,
-                    colors = colors,
-                    selected = selectedBlock == block.id,
-                    highlighted = block.id in highlighted,
-                    isSearchTarget = query.isNotBlank() && jumpedTo == index,
-                    onLongPress = { fromTop ->
-                        selectedBlock = block.id
-                        selectionAlignment = if (fromTop) Alignment.BottomCenter else Alignment.TopCenter
-                    },
-                )
+            if (pagedBlocks != null) {
+                items(
+                    count = pagedBlocks.itemCount,
+                    key = { index -> pagedBlocks.peek(index)?.id ?: "reader-placeholder-$index" },
+                ) { index ->
+                    pagedBlocks[index]?.let { block ->
+                        BlockView(
+                            block = block,
+                            settings = settings,
+                            colors = colors,
+                            selected = selectedBlock == block.id,
+                            highlighted = block.id in highlighted,
+                            isSearchTarget = false,
+                            onLongPress = { fromTop ->
+                                selectedBlock = block.id
+                                selectionAlignment = if (fromTop) Alignment.BottomCenter else Alignment.TopCenter
+                            },
+                        )
+                    }
+                }
+            } else {
+                itemsIndexed(state.blocks, key = { _, b -> b.id }) { index, block ->
+                    BlockView(
+                        block = block,
+                        settings = settings,
+                        colors = colors,
+                        selected = selectedBlock == block.id,
+                        highlighted = block.id in highlighted,
+                        isSearchTarget = query.isNotBlank() && jumpedTo == index,
+                        onLongPress = { fromTop ->
+                            selectedBlock = block.id
+                            selectionAlignment = if (fromTop) Alignment.BottomCenter else Alignment.TopCenter
+                        },
+                    )
+                }
             }
         }
 
@@ -662,7 +692,7 @@ private fun ReaderAudioStrip(
                     modifier = Modifier
                         .size(30.dp)
                         .clip(CircleShape)
-                        .background(colors.accent),
+                        .background(colors.accentFill),
                     contentAlignment = Alignment.Center,
                 ) {
                     Icon(

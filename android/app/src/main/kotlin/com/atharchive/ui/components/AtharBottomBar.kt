@@ -162,7 +162,7 @@ fun AtharBottomBar(
                 .fillMaxWidth()
                 .onGloballyPositioned { barBounds = it.boundsInWindow() },
         ) {
-            val pillColor = AtharTheme.colors.accent.copy(alpha = 0.12f)
+            val pillColor = AtharTheme.colors.accentSurface
             // Drawn first so it sits behind the icons. Reading the Animatables
             // inside the draw lambda repaints per frame without recomposing.
             Canvas(Modifier.matchParentSize()) {

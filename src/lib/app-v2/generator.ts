@@ -194,15 +194,34 @@ async function audioReference(
   }];
 }
 
-function catalogBase(source: SourceEntry, version: number) {
+function shortOpening(text: string, maximum = 240): string {
+  const compact = text.replace(/\s+/gu, " ").trim();
+  if ([...compact].length <= maximum) return compact;
+  return `${[...compact].slice(0, maximum - 1).join("")}…`;
+}
+
+function catalogBase(source: SourceEntry, version: number, parsed: ReturnType<typeof parseReadableDocument>) {
   const topics = Array.isArray(source.data.topics)
     ? source.data.topics.filter((topic): topic is string => typeof topic === "string").sort()
     : undefined;
   const authoredYear = typeof source.data.authored_year === "number" ? source.data.authored_year : undefined;
+  const publishedAt = source.data.published_at instanceof Date
+    ? source.data.published_at.toISOString().slice(0, 10)
+    : typeof source.data.published_at === "string" ? source.data.published_at : undefined;
   const description = typeof source.data.description === "string" ? source.data.description : undefined;
   const kind = source.target.coll === "book"
     ? String(source.data.kind ?? "كتاب")
     : source.target.coll === "poem" ? String(source.data.work_type ?? "قصيدة") : undefined;
+  const firstParagraph = parsed.blocks.find((block) => block.t === "p" && block.x?.trim())?.x;
+  const excerpt = source.target.coll === "article" && firstParagraph
+    ? shortOpening(firstParagraph)
+    : undefined;
+  const openingVerses = source.target.coll === "poem"
+    ? parsed.blocks
+      .filter((block) => block.t === "verse")
+      .slice(0, 2)
+      .map((block) => block.x ?? `${block.s} … ${block.j}`)
+    : undefined;
   return {
     id: source.target.id,
     coll: source.target.coll,
@@ -211,7 +230,10 @@ function catalogBase(source: SourceEntry, version: number) {
     ...(topics?.length ? { topics } : {}),
     ...(kind ? { kind } : {}),
     ...(authoredYear != null ? { authoredYear } : {}),
+    ...(publishedAt ? { publishedAt } : {}),
     ...(description ? { description } : {}),
+    ...(excerpt ? { excerpt } : {}),
+    ...(openingVerses?.length ? { openingVerses } : {}),
   };
 }
 
@@ -249,7 +271,7 @@ export async function generateAppContent(options: GenerateAppContentOptions): Pr
     await writeAtomic(path.join(appRoot, indexRelative), artifact.indexBytes);
     pendingSidecars.push({ filePath: sidecarPath, sidecar: identified.sidecar });
 
-    const base = catalogBase(source, version);
+    const base = catalogBase(source, version, parsed);
     const person = await personMetadata(options.repositoryRoot, typeof source.data.person === "string" ? source.data.person : undefined);
     const audio = await audioReference(source, options, appRoot);
     const pkg = {

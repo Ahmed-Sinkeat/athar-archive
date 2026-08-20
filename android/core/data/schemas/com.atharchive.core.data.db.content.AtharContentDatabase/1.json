@@ -1,0 +1,585 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "072423df0cc81491ed1b0ba00571a87d",
+    "entities": [
+      {
+        "tableName": "entity",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `coll` TEXT NOT NULL, `v` INTEGER NOT NULL, `hash` TEXT NOT NULL, `title` TEXT NOT NULL, `titleNorm` TEXT NOT NULL, `person` TEXT, `personName` TEXT, `died` INTEGER, `kind` TEXT, `authoredYear` INTEGER, `publishedAt` TEXT, `description` TEXT, `excerpt` TEXT, `openingVersesJson` TEXT NOT NULL, `topicsCsv` TEXT NOT NULL, `pkgPath` TEXT NOT NULL, `pkgHash` TEXT NOT NULL, `pkgSize` INTEGER NOT NULL, `pkgUncompressed` INTEGER NOT NULL, `idxPath` TEXT NOT NULL, `idxHash` TEXT NOT NULL, `idxSize` INTEGER NOT NULL, `pkgBlocks` INTEGER NOT NULL, `pkgChapters` INTEGER NOT NULL, `audioJson` TEXT NOT NULL, `catalogPresent` INTEGER NOT NULL, `availability` TEXT NOT NULL, `transferState` TEXT NOT NULL, `updateAvailable` INTEGER NOT NULL, `localVersion` INTEGER, `localPackageHash` TEXT, `lastOpenedAt` INTEGER, `bytesOnDisk` INTEGER NOT NULL, `importProgress` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "coll",
+            "columnName": "coll",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "v",
+            "columnName": "v",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "hash",
+            "columnName": "hash",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "title",
+            "columnName": "title",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "titleNorm",
+            "columnName": "titleNorm",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "person",
+            "columnName": "person",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "personName",
+            "columnName": "personName",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "died",
+            "columnName": "died",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "kind",
+            "columnName": "kind",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "authoredYear",
+            "columnName": "authoredYear",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "publishedAt",
+            "columnName": "publishedAt",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "description",
+            "columnName": "description",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "excerpt",
+            "columnName": "excerpt",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "openingVersesJson",
+            "columnName": "openingVersesJson",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "topicsCsv",
+            "columnName": "topicsCsv",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "pkgPath",
+            "columnName": "pkgPath",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "pkgHash",
+            "columnName": "pkgHash",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "pkgSize",
+            "columnName": "pkgSize",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "pkgUncompressed",
+            "columnName": "pkgUncompressed",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "idxPath",
+            "columnName": "idxPath",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "idxHash",
+            "columnName": "idxHash",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "idxSize",
+            "columnName": "idxSize",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "pkgBlocks",
+            "columnName": "pkgBlocks",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "pkgChapters",
+            "columnName": "pkgChapters",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "audioJson",
+            "columnName": "audioJson",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "catalogPresent",
+            "columnName": "catalogPresent",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "availability",
+            "columnName": "availability",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "transferState",
+            "columnName": "transferState",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "updateAvailable",
+            "columnName": "updateAvailable",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "localVersion",
+            "columnName": "localVersion",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "localPackageHash",
+            "columnName": "localPackageHash",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "lastOpenedAt",
+            "columnName": "lastOpenedAt",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "bytesOnDisk",
+            "columnName": "bytesOnDisk",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "importProgress",
+            "columnName": "importProgress",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_entity_coll",
+            "unique": false,
+            "columnNames": [
+              "coll"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_entity_coll` ON `${TABLE_NAME}` (`coll`)"
+          },
+          {
+            "name": "index_entity_person",
+            "unique": false,
+            "columnNames": [
+              "person"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_entity_person` ON `${TABLE_NAME}` (`person`)"
+          },
+          {
+            "name": "index_entity_availability",
+            "unique": false,
+            "columnNames": [
+              "availability"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_entity_availability` ON `${TABLE_NAME}` (`availability`)"
+          },
+          {
+            "name": "index_entity_transferState",
+            "unique": false,
+            "columnNames": [
+              "transferState"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_entity_transferState` ON `${TABLE_NAME}` (`transferState`)"
+          },
+          {
+            "name": "index_entity_lastOpenedAt",
+            "unique": false,
+            "columnNames": [
+              "lastOpenedAt"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_entity_lastOpenedAt` ON `${TABLE_NAME}` (`lastOpenedAt`)"
+          },
+          {
+            "name": "index_entity_catalogPresent",
+            "unique": false,
+            "columnNames": [
+              "catalogPresent"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_entity_catalogPresent` ON `${TABLE_NAME}` (`catalogPresent`)"
+          }
+        ]
+      },
+      {
+        "tableName": "contentGeneration",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`singleton` INTEGER NOT NULL, `generationId` TEXT NOT NULL, `catalogHash` TEXT NOT NULL, `tombstonesHash` TEXT NOT NULL, `appliedAt` INTEGER NOT NULL, PRIMARY KEY(`singleton`))",
+        "fields": [
+          {
+            "fieldPath": "singleton",
+            "columnName": "singleton",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "generationId",
+            "columnName": "generationId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "catalogHash",
+            "columnName": "catalogHash",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tombstonesHash",
+            "columnName": "tombstonesHash",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "appliedAt",
+            "columnName": "appliedAt",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "singleton"
+          ]
+        }
+      },
+      {
+        "tableName": "entityFrame",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`entityId` TEXT NOT NULL, `frameOrdinal` INTEGER NOT NULL, `firstBlockOrdinal` INTEGER NOT NULL, `blockCount` INTEGER NOT NULL, `compressedBytes` INTEGER NOT NULL, `lastOpenedAt` INTEGER NOT NULL, PRIMARY KEY(`entityId`, `frameOrdinal`))",
+        "fields": [
+          {
+            "fieldPath": "entityId",
+            "columnName": "entityId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "frameOrdinal",
+            "columnName": "frameOrdinal",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "firstBlockOrdinal",
+            "columnName": "firstBlockOrdinal",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "blockCount",
+            "columnName": "blockCount",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "compressedBytes",
+            "columnName": "compressedBytes",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lastOpenedAt",
+            "columnName": "lastOpenedAt",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "entityId",
+            "frameOrdinal"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_entityFrame_lastOpenedAt",
+            "unique": false,
+            "columnNames": [
+              "lastOpenedAt"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_entityFrame_lastOpenedAt` ON `${TABLE_NAME}` (`lastOpenedAt`)"
+          }
+        ]
+      },
+      {
+        "tableName": "block",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`rowid` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `entityId` TEXT NOT NULL, `ordinal` INTEGER NOT NULL, `blockIdHi` INTEGER NOT NULL, `blockIdLo` INTEGER NOT NULL, `fp64` INTEGER NOT NULL, `chapterAnchor` TEXT NOT NULL, `type` TEXT NOT NULL, `printedPage` INTEGER, `vol` INTEGER, `text` TEXT NOT NULL, `attrs` BLOB NOT NULL, `inlineSpans` BLOB NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "rowid",
+            "columnName": "rowid",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "entityId",
+            "columnName": "entityId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ordinal",
+            "columnName": "ordinal",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "blockIdHi",
+            "columnName": "blockIdHi",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "blockIdLo",
+            "columnName": "blockIdLo",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "fp64",
+            "columnName": "fp64",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "chapterAnchor",
+            "columnName": "chapterAnchor",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "type",
+            "columnName": "type",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "printedPage",
+            "columnName": "printedPage",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "vol",
+            "columnName": "vol",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "text",
+            "columnName": "text",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "attrs",
+            "columnName": "attrs",
+            "affinity": "BLOB",
+            "notNull": true
+          },
+          {
+            "fieldPath": "inlineSpans",
+            "columnName": "inlineSpans",
+            "affinity": "BLOB",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "rowid"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_block_entityId_ordinal",
+            "unique": true,
+            "columnNames": [
+              "entityId",
+              "ordinal"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_block_entityId_ordinal` ON `${TABLE_NAME}` (`entityId`, `ordinal`)"
+          },
+          {
+            "name": "index_block_blockIdHi_blockIdLo",
+            "unique": false,
+            "columnNames": [
+              "blockIdHi",
+              "blockIdLo"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_block_blockIdHi_blockIdLo` ON `${TABLE_NAME}` (`blockIdHi`, `blockIdLo`)"
+          },
+          {
+            "name": "index_block_entityId_chapterAnchor",
+            "unique": false,
+            "columnNames": [
+              "entityId",
+              "chapterAnchor"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_block_entityId_chapterAnchor` ON `${TABLE_NAME}` (`entityId`, `chapterAnchor`)"
+          },
+          {
+            "name": "index_block_fp64",
+            "unique": false,
+            "columnNames": [
+              "fp64"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_block_fp64` ON `${TABLE_NAME}` (`fp64`)"
+          }
+        ]
+      },
+      {
+        "tableName": "chapter",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`entityId` TEXT NOT NULL, `anchor` TEXT NOT NULL, `title` TEXT NOT NULL, `firstOrdinal` INTEGER NOT NULL, PRIMARY KEY(`entityId`, `anchor`))",
+        "fields": [
+          {
+            "fieldPath": "entityId",
+            "columnName": "entityId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "anchor",
+            "columnName": "anchor",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "title",
+            "columnName": "title",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "firstOrdinal",
+            "columnName": "firstOrdinal",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "entityId",
+            "anchor"
+          ]
+        }
+      },
+      {
+        "tableName": "footnote",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`entityId` TEXT NOT NULL, `fnId` TEXT NOT NULL, `text` TEXT NOT NULL, `inlineSpans` BLOB NOT NULL, PRIMARY KEY(`entityId`, `fnId`))",
+        "fields": [
+          {
+            "fieldPath": "entityId",
+            "columnName": "entityId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "fnId",
+            "columnName": "fnId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "text",
+            "columnName": "text",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "inlineSpans",
+            "columnName": "inlineSpans",
+            "affinity": "BLOB",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "entityId",
+            "fnId"
+          ]
+        }
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '072423df0cc81491ed1b0ba00571a87d')"
+    ]
+  }
+}

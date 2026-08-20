@@ -134,7 +134,12 @@ export interface CatalogEntry {
   topics?: string[];
   kind?: string;
   authoredYear?: number;
+  publishedAt?: string;
   description?: string;
+  /** Build-derived opening prose for list presentation; Android never parses Markdown. */
+  excerpt?: string;
+  /** Exact authored verse text, normally the first two lines of a poem. */
+  openingVerses?: string[];
   pkg: PackageCatalogRef;
   audio?: AudioCatalogRef[];
 }

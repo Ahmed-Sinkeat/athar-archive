@@ -16,6 +16,8 @@ data class ReaderColors(
     val secondary: Color,
     val divider: Color,
     val accent: Color,
+    /** Large filled areas — play discs. Deeper than [accent] in the dark palette. */
+    val accentFill: Color,
     val highlight: Color,
     val selection: Color,
 )
@@ -30,6 +32,7 @@ fun rememberReaderColors(palette: ReaderPalette): ReaderColors {
             secondary = Color(0xFF6C6762),
             divider = Color(0xFFE4DFDA),
             accent = accent,
+            accentFill = accent,
             highlight = Color(0x338F3537),
             selection = Color(0x268F3537),
         )
@@ -39,15 +42,17 @@ fun rememberReaderColors(palette: ReaderPalette): ReaderColors {
             secondary = Color(0xFF6E655A),
             divider = Color(0xFFE2D9CA),
             accent = accent,
+            accentFill = accent,
             highlight = Color(0x2E8F3537),
             selection = Color(0x248F3537),
         )
         ReaderPalette.Dark -> ReaderColors(
-            page = Color(0xFF14120F),
-            text = Color(0xFFE9E2D8),
-            secondary = Color(0xFF9A9086),
-            divider = Color(0xFF322C25),
+            page = Color(0xFF11100F),
+            text = Color(0xFFF1EDEA),
+            secondary = Color(0xFFB8B0AA),
+            divider = Color(0xFF292624),
             accent = Color(0xFFD1787D),
+            accentFill = Color(0xFF8F3537),
             highlight = Color(0x40D1787D),
             selection = Color(0x33D1787D),
         )

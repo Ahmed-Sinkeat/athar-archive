@@ -125,6 +125,8 @@ data class ReaderUiState(
     val readingPositionIndex: Int = 0,
     /** Empty for most books; the bottom bar only shows an audio action when it is not. */
     val audio: List<BookAudioUi> = emptyList(),
+    /** Catalog total; real readers page blocks and therefore do not infer this from [blocks]. */
+    val blockCount: Int = blocks.size,
 )
 
 private fun heading(id: String, level: Int, text: String, anchor: String) =

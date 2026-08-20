@@ -177,7 +177,7 @@ private fun ChipRow(
                     .testTag("${tagPrefix}_$index"),
                 shape = RoundedCornerShape(8.dp),
                 color = if (isSelected) {
-                    AtharTheme.colors.accent.copy(alpha = 0.12f)
+                    AtharTheme.colors.accentSurface
                 } else {
                     AtharTheme.colors.raisedSurface
                 },

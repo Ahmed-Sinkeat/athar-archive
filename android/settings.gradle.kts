@@ -47,6 +47,7 @@ dependencyResolutionManagement {
 rootProject.name = "athar-android"
 
 include(":core:athar-text")
+include(":core:data")
 include(":app")
 include(":m0")
 include(":benchmark")

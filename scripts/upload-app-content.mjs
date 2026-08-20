@@ -138,6 +138,10 @@ async function main() {
     throw new Error("the trusted content-signing public key must be RSA-3072 or stronger");
   }
   const generation = validateLocalGeneration(signingKeyId, publicKey);
+  if (process.argv.includes("--validate-only")) {
+    console.log(`\u2713 app-content generation: signed root and ${generation.immutable.length} immutable artifact(s) verified`);
+    return;
+  }
   const s3 = makeClient({
     bucket,
     accessKeyId: process.env.ATHAR_APP_R2_ACCESS_KEY_ID,

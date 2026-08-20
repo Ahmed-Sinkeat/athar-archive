@@ -75,4 +75,49 @@ describe("app/v2 content generator", () => {
     expect(second.rootPayload).toEqual(first.rootPayload);
     expect(existsSync(path.join(appRoot, "index.json"))).toBe(false);
   });
+
+  it("derives list excerpts and opening verses at build time", async () => {
+    const root = fixtureRoot();
+    mkdirSync(path.join(root, "src/content/article"), { recursive: true });
+    mkdirSync(path.join(root, "src/content/poem"), { recursive: true });
+    writeFileSync(path.join(root, "src/content/article/article.md"), [
+      "---",
+      'title: "المقال"',
+      "status: published",
+      "published_at: 2026-08-20",
+      "---",
+      "",
+      "هذه **افتتاحية** المقال كما ألّفها صاحبها.",
+      "",
+    ].join("\n"));
+    writeFileSync(path.join(root, "src/content/poem/poem.md"), [
+      "---",
+      'title: "القصيدة"',
+      "status: published",
+      "---",
+      "",
+      "١ - صدر أول … عجز أول",
+      "",
+      "٢ - صدر ثان … عجز ثان",
+      "",
+      "٣ - صدر ثالث … عجز ثالث",
+      "",
+    ].join("\n"));
+
+    const result = await generateAppContent({
+      repositoryRoot: root,
+      outputRoot: path.join(root, "out"),
+      sidecarRoot: path.join(root, "content-ids"),
+      targets: [{ coll: "article", id: "article" }, { coll: "poem", id: "poem" }],
+    });
+
+    expect(result.catalog.entries.find((entry) => entry.id === "article")).toMatchObject({
+      publishedAt: "2026-08-20",
+      excerpt: "هذه افتتاحية المقال كما ألّفها صاحبها.",
+    });
+    expect(result.catalog.entries.find((entry) => entry.id === "poem")?.openingVerses).toEqual([
+      "صدر أول … عجز أول",
+      "صدر ثان … عجز ثان",
+    ]);
+  });
 });

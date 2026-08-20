@@ -1,6 +1,7 @@
 package com.atharchive
 
 import android.app.Application
+import dagger.hilt.android.HiltAndroidApp
 
 /**
  * Production Application. Holds no domain logic (docs/main-plan.md §3) — DI
@@ -9,4 +10,5 @@ import android.app.Application
  * Until then this module exists so R6 has a real, installable manifest whose
  * backup rules can be verified with `bmgr`.
  */
+@HiltAndroidApp
 class AtharApplication : Application()

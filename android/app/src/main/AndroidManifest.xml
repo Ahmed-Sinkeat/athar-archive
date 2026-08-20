@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <!-- Private user data never reaches cloud backup (docs/main-plan.md §13.1).
          fullBackupContent  → API 26-30, version-qualified: res/xml (26-27) and
                               res/xml-v28 (28-30, adds D2D-only user db)

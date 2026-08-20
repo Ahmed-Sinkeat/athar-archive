@@ -431,7 +431,7 @@ private fun RecentRow(query: String, horizontalPadding: Dp, onClick: () -> Unit)
         Icon(
             imageVector = AtharIcons.Recent,
             contentDescription = null,
-            tint = AtharTheme.colors.secondaryText.copy(alpha = 0.7f),
+            tint = AtharTheme.colors.secondaryText.copy(alpha = 0.45f),
             modifier = Modifier.size(16.dp),
         )
         Text(

@@ -29,16 +29,25 @@ private val PaperGlassBorder = Color(0xB8CFC7C0)
 private val PaperScrim = Color(0x660F0D0B)
 private val Success = Color(0xFF5E6B45)       // muted olive, not a bright green
 
-private val NightPaper = Color(0xFF151311)
-private val NightRaised = Color(0xFF211E1B)
-private val NightPressed = Color(0xFF2A2522)
-private val NightInk = Color(0xFFF2ECE7)
-private val NightInkSecondary = Color(0xFFC1B6AF)
+// Warm near-black, never #000. Surfaces separate by a few points of luminance
+// rather than by shadow, so depth reads as tone and not as Material elevation.
+private val NightPaper = Color(0xFF11100F)
+private val NightRaised = Color(0xFF1D1A18)
+private val NightPressed = Color(0xFF24211E)
+private val NightInk = Color(0xFFF1EDEA)
+private val NightInkSecondary = Color(0xFFB8B0AA)
+// The bright accent stays for small marks — icons, labels, indicators, progress.
 private val NightBurgundy = Color(0xFFD1787D)
 private val NightBurgundyPressed = Color(0xFFE1979B)
-private val NightDivider = Color(0xFF403A36)
-private val NightGlass = Color(0xF21B1816)
-private val NightGlassBorder = Color(0xB8534B46)
+private val NightDivider = Color(0xFF292624)
+private val NightInputSurface = Color(0xFF191715)
+private val NightInputBorder = Color(0xFF302C29)
+private val NightPlaceholder = Color(0xFF99918C)
+// Large filled areas — the selected nav ground, tile actives — take a deeper, less
+// saturated burgundy so they sit under the accent rather than competing with it.
+private val NightAccentSurface = Color(0x4D8F3537)
+private val NightGlass = Color(0xF2141211)
+private val NightGlassBorder = Color(0xB8332F2C)
 private val NightScrim = Color(0x99000000)
 private val NightSuccess = Color(0xFFA3AE81)  // muted olive, dark theme
 
@@ -139,6 +148,12 @@ data class AtharExtraColors(
     val glassBorder: Color,
     val scrim: Color,
     val success: Color,
+    /** Search and text-entry ground; sits nearly flush with [canvas]. */
+    val inputSurface: Color,
+    val inputBorder: Color,
+    val placeholderText: Color,
+    /** Ground for large accent fills. Deeper than [accent] on purpose. */
+    val accentSurface: Color,
 )
 
 private val LightExtraColors = AtharExtraColors(
@@ -155,6 +170,10 @@ private val LightExtraColors = AtharExtraColors(
     glassBorder = PaperGlassBorder,
     scrim = PaperScrim,
     success = Success,
+    inputSurface = PaperRaised,
+    inputBorder = Color(0x73D8D2CC),
+    placeholderText = InkSecondary,
+    accentSurface = Color(0x1F8F3537),
 )
 
 private val DarkExtraColors = AtharExtraColors(
@@ -171,6 +190,10 @@ private val DarkExtraColors = AtharExtraColors(
     glassBorder = NightGlassBorder,
     scrim = NightScrim,
     success = NightSuccess,
+    inputSurface = NightInputSurface,
+    inputBorder = NightInputBorder,
+    placeholderText = NightPlaceholder,
+    accentSurface = NightAccentSurface,
 )
 
 private val LocalAtharExtraColors = staticCompositionLocalOf { LightExtraColors }
