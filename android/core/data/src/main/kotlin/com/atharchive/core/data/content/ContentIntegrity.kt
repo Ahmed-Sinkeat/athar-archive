@@ -1,5 +1,7 @@
 package com.atharchive.core.data.content
 
+import java.io.File
+import java.io.FileInputStream
 import java.security.KeyFactory
 import java.security.MessageDigest
 import java.security.PublicKey
@@ -22,7 +24,20 @@ object ContentDigests {
     fun sha256Hex(bytes: ByteArray): String =
         MessageDigest.getInstance("SHA-256")
             .digest(bytes)
-            .joinToString("") { "%02x".format(it.toInt() and 0xff) }
+            .toHex()
+
+    fun sha256Hex(file: File): String {
+        val digest = MessageDigest.getInstance("SHA-256")
+        FileInputStream(file).use { input ->
+            val buffer = ByteArray(DEFAULT_BUFFER_SIZE)
+            while (true) {
+                val read = input.read(buffer)
+                if (read < 0) break
+                digest.update(buffer, 0, read)
+            }
+        }
+        return digest.digest().toHex()
+    }
 
     fun verify(bytes: ByteArray, expectedHash: String, expectedSize: Long, label: String) {
         if (!Hex64.matches(expectedHash)) fail("$label has a malformed SHA-256")
@@ -32,8 +47,19 @@ object ContentDigests {
         if (sha256Hex(bytes) != expectedHash) fail("$label SHA-256 mismatch")
     }
 
+    fun verify(file: File, expectedHash: String, expectedSize: Long, label: String) {
+        if (!Hex64.matches(expectedHash)) fail("$label has a malformed SHA-256")
+        if (!file.isFile || expectedSize < 0 || file.length() != expectedSize) {
+            fail("$label size ${if (file.isFile) file.length() else -1} differs from expected $expectedSize")
+        }
+        if (sha256Hex(file) != expectedHash) fail("$label SHA-256 mismatch")
+    }
+
     internal fun isSha256(value: String): Boolean = Hex64.matches(value)
 }
+
+private fun ByteArray.toHex(): String =
+    joinToString("") { "%02x".format(it.toInt() and 0xff) }
 
 object SignedRootVerifier {
     private val Base64Url = Regex("^[A-Za-z0-9_-]*$")

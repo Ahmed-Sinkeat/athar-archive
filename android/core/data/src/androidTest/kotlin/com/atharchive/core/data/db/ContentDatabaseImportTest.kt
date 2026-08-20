@@ -18,6 +18,7 @@ import com.atharchive.core.data.db.user.AtharUserDatabase
 import com.atharchive.core.data.db.user.PinnedDownloadEntity
 import com.atharchive.core.data.repository.ContentImporter
 import com.atharchive.core.data.repository.ContentCacheManager
+import com.atharchive.core.data.repository.ContentStoragePolicy
 import com.atharchive.core.data.repository.OfflineContentRebuilder
 import com.atharchive.core.data.repository.RetainedPackageStore
 import com.atharchive.core.data.db.content.ContentGenerationEntity
@@ -155,6 +156,39 @@ class ContentDatabaseImportTest {
         val removed = ContentCacheManager(content, user).evictToBudget(500L * 1024 * 1024)
 
         assertEquals(cached.pkg.size, removed)
+        assertEquals(ContentAvailability.COMPLETE, content.importDao().entity(pinned.id)?.availability)
+        assertEquals(ContentAvailability.ABSENT, content.importDao().entity(cached.id)?.availability)
+    }
+
+    @Test
+    fun lowStorageEvictsToHalfBudgetButLeavesPinnedFrames() = runBlocking {
+        val pinned = entry(400L * 1024 * 1024, "pinned-low-storage")
+        val cached = entry(400L * 1024 * 1024, "cached-low-storage")
+        val importer = ContentImporter(content)
+        importer.applyCatalog(CatalogDocument(2, listOf(pinned, cached)))
+        user.userDataDao().savePinnedDownload(PinnedDownloadEntity(pinned.id, 1L, pinned.pkg.hash))
+        content.importDao().importFrame(
+            pinned.id,
+            EntityFrameEntity(pinned.id, 0, 0, 1, pinned.pkg.size, 1),
+            listOf(block(pinned.id, 0)), emptyList(), emptyList(), 1,
+        )
+        content.importDao().importFrame(
+            cached.id,
+            EntityFrameEntity(cached.id, 0, 0, 1, cached.pkg.size, 2),
+            listOf(block(cached.id, 0)), emptyList(), emptyList(), 2,
+        )
+        val budget = 500L * 1024 * 1024
+        val policy = ContentStoragePolicy(
+            storageRoot = ApplicationProvider.getApplicationContext<Context>().filesDir,
+            cacheManager = ContentCacheManager(content, user),
+            availableBytes = { 400L * 1024 * 1024 },
+            configuredBudgetBytes = { budget },
+        )
+
+        val status = policy.prepareForReadThrough()
+
+        assertTrue(status.lowStorage)
+        assertEquals(cached.pkg.size, status.cacheBytesRemoved)
         assertEquals(ContentAvailability.COMPLETE, content.importDao().entity(pinned.id)?.availability)
         assertEquals(ContentAvailability.ABSENT, content.importDao().entity(cached.id)?.availability)
     }

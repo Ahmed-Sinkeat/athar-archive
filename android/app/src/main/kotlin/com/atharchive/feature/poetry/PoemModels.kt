@@ -39,6 +39,7 @@ data class PoemUi(
     val openingVerses: List<String>,
     val topic: String,
     val downloaded: Boolean = false,
+    val downloading: Boolean = false,
     val saved: Boolean = false,
     val verseCountLabel: String? = null,
     val sizeLabel: String = "—",

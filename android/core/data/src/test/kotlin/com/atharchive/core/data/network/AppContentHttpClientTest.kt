@@ -5,6 +5,7 @@ import com.atharchive.core.data.content.ContentDigests
 import com.atharchive.core.data.content.ContentIntegrityException
 import com.atharchive.core.data.content.FrameIndexEntry
 import com.atharchive.core.data.content.PackageReference
+import java.nio.file.Files
 import kotlinx.coroutines.runBlocking
 import okhttp3.OkHttpClient
 import okhttp3.mockwebserver.MockResponse
@@ -16,6 +17,7 @@ import org.junit.After
 import org.junit.Assert.assertArrayEquals
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertThrows
+import org.junit.Assert.assertFalse
 import org.junit.Before
 import org.junit.Test
 
@@ -86,6 +88,89 @@ class AppContentHttpClientTest {
         }
     }
 
+    @Test
+    fun resumesPackageDownloadFromExistingPartAndVerifiesWholeObject() = runBlocking {
+        val bytes = "immutable-athar-package".encodeToByteArray()
+        val entry = entry(bytes)
+        val directory = Files.createTempDirectory("athar-resume").toFile()
+        val part = directory.resolve("package.part")
+        try {
+            part.writeBytes(bytes.copyOfRange(0, 7))
+            server.enqueue(
+                MockResponse()
+                    .setResponseCode(206)
+                    .setHeader("Content-Range", "bytes 7-${bytes.lastIndex}/${bytes.size}")
+                    .setBody(Buffer().write(bytes, 7, bytes.size - 7)),
+            )
+
+            val result = client.downloadPackage(entry, part)
+
+            assertEquals(7L, result.resumedFrom)
+            assertEquals((bytes.size - 7).toLong(), result.downloadedBytes)
+            assertArrayEquals(bytes, part.readBytes())
+            assertEquals("bytes=7-${bytes.lastIndex}", server.takeRequest().getHeader("Range"))
+        } finally {
+            directory.deleteRecursively()
+        }
+    }
+
+    @Test
+    fun truncatedAttemptKeepsVerifiedPrefixForNextResume() = runBlocking {
+        val bytes = "resume-after-disconnect".encodeToByteArray()
+        val entry = entry(bytes)
+        val directory = Files.createTempDirectory("athar-truncated").toFile()
+        val part = directory.resolve("package.part")
+        try {
+            server.enqueue(
+                MockResponse()
+                    .setResponseCode(206)
+                    .setHeader("Content-Range", "bytes 0-${bytes.lastIndex}/${bytes.size}")
+                    .setBody(Buffer().write(bytes, 0, 8)),
+            )
+            assertThrows(ContentTransportException::class.java) {
+                runBlocking { client.downloadPackage(entry, part) }
+            }
+            assertEquals(8L, part.length())
+
+            server.enqueue(
+                MockResponse()
+                    .setResponseCode(206)
+                    .setHeader("Content-Range", "bytes 8-${bytes.lastIndex}/${bytes.size}")
+                    .setBody(Buffer().write(bytes, 8, bytes.size - 8)),
+            )
+            val resumed = client.downloadPackage(entry, part)
+
+            assertEquals(8L, resumed.resumedFrom)
+            assertArrayEquals(bytes, part.readBytes())
+        } finally {
+            directory.deleteRecursively()
+        }
+    }
+
+    @Test
+    fun hashInvalidCompletePackageIsDeletedBeforeRetry() {
+        val expected = "expected-package".encodeToByteArray()
+        val changed = expected.copyOf().also { it[it.lastIndex] = (it.last().toInt() xor 1).toByte() }
+        val entry = entry(expected)
+        val directory = Files.createTempDirectory("athar-corrupt").toFile()
+        val part = directory.resolve("package.part")
+        try {
+            server.enqueue(
+                MockResponse()
+                    .setResponseCode(206)
+                    .setHeader("Content-Range", "bytes 0-${expected.lastIndex}/${expected.size}")
+                    .setBody(Buffer().write(changed)),
+            )
+
+            assertThrows(ContentIntegrityException::class.java) {
+                runBlocking { client.downloadPackage(entry, part) }
+            }
+            assertFalse(part.exists())
+        } finally {
+            directory.deleteRecursively()
+        }
+    }
+
     private fun entry(packageSize: Long) = CatalogEntry(
         id = "test-book",
         coll = "book",
@@ -104,4 +189,14 @@ class AppContentHttpClientTest {
             chapters = 1,
         ),
     )
+
+    private fun entry(packageBytes: ByteArray): CatalogEntry {
+        val hash = ContentDigests.sha256Hex(packageBytes)
+        return entry(packageBytes.size.toLong()).copy(
+            pkg = entry(packageBytes.size.toLong()).pkg.copy(
+                path = "content/book/test-book/$hash.athar",
+                hash = hash,
+            ),
+        )
+    }
 }

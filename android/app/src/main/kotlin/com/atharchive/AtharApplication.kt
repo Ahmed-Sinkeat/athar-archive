@@ -1,6 +1,7 @@
 package com.atharchive
 
 import android.app.Application
+import com.atharchive.data.ContentDownloadNotifications
 import dagger.hilt.android.HiltAndroidApp
 
 /**
@@ -11,4 +12,9 @@ import dagger.hilt.android.HiltAndroidApp
  * backup rules can be verified with `bmgr`.
  */
 @HiltAndroidApp
-class AtharApplication : Application()
+class AtharApplication : Application() {
+    override fun onCreate() {
+        super.onCreate()
+        ContentDownloadNotifications.createChannel(this)
+    }
+}

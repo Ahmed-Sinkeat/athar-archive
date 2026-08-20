@@ -12,6 +12,8 @@ import com.atharchive.core.data.content.RootPayload
 import com.atharchive.core.data.content.SignedRootVerifier
 import com.atharchive.core.data.content.TombstoneDocument
 import java.io.ByteArrayOutputStream
+import java.io.File
+import java.io.FileOutputStream
 import java.io.InputStream
 import java.security.PublicKey
 import kotlinx.coroutines.Dispatchers
@@ -30,6 +32,11 @@ data class VerifiedGeneration(
 )
 
 data class VerifiedRoot(val root: RootPayload)
+
+data class PackageDownloadResult(
+    val resumedFrom: Long,
+    val downloadedBytes: Long,
+)
 
 class AppContentHttpClient(
     private val baseUrl: HttpUrl,
@@ -85,6 +92,83 @@ class AppContentHttpClient(
             ContentDigests.verify(bytes, frame.sha256, frame.len.toLong(), "package frame ${frame.ord}")
             bytes
         }
+    }
+
+    /**
+     * Resumes the immutable package into [partFile]. A truncated response remains available
+     * for the next attempt; a size/hash-invalid complete file is deleted so corruption can
+     * never become a permanent retry loop.
+     */
+    suspend fun downloadPackage(
+        entry: CatalogEntry,
+        partFile: File,
+        onProgress: (downloadedBytes: Long, totalBytes: Long) -> Unit = { _, _ -> },
+    ): PackageDownloadResult = withContext(Dispatchers.IO) {
+        require(entry.pkg.size > 0) { "package must not be empty" }
+        partFile.parentFile?.mkdirs()
+        check(partFile.parentFile?.isDirectory == true) { "cannot create transfer directory" }
+
+        if (partFile.exists() && partFile.length() > entry.pkg.size) partFile.delete()
+        if (partFile.isFile && partFile.length() == entry.pkg.size) {
+            try {
+                ContentDigests.verify(partFile, entry.pkg.hash, entry.pkg.size, "downloaded package")
+                onProgress(entry.pkg.size, entry.pkg.size)
+                return@withContext PackageDownloadResult(entry.pkg.size, 0)
+            } catch (error: ContentIntegrityException) {
+                partFile.delete()
+            }
+        }
+
+        val resumedFrom = partFile.takeIf(File::isFile)?.length() ?: 0L
+        val last = entry.pkg.size - 1
+        val request = Request.Builder()
+            .url(resolve(entry.pkg.path))
+            .header("Accept-Encoding", "identity")
+            .header("Range", "bytes=$resumedFrom-$last")
+            .build()
+        execute(request).use { response ->
+            if (response.code != 206) {
+                throw ContentTransportException("package request returned HTTP ${response.code}, expected 206")
+            }
+            val expectedRange = "bytes $resumedFrom-$last/${entry.pkg.size}"
+            if (response.header("Content-Range") != expectedRange) {
+                throw ContentTransportException("package response has an unexpected Content-Range")
+            }
+            requireIdentity(response)
+            val body = response.body ?: throw ContentTransportException("package response has no body")
+            val remaining = entry.pkg.size - resumedFrom
+            if (body.contentLength() > remaining) {
+                throw ContentTransportException("package response exceeds its declared range")
+            }
+            FileOutputStream(partFile, resumedFrom > 0).use { output ->
+                body.byteStream().use { input ->
+                    val buffer = ByteArray(DEFAULT_BUFFER_SIZE)
+                    var total = resumedFrom
+                    onProgress(total, entry.pkg.size)
+                    while (true) {
+                        val read = input.read(buffer)
+                        if (read < 0) break
+                        total += read
+                        if (total > entry.pkg.size) {
+                            throw ContentTransportException("package response exceeds its declared size")
+                        }
+                        output.write(buffer, 0, read)
+                        onProgress(total, entry.pkg.size)
+                    }
+                    output.fd.sync()
+                    if (total != entry.pkg.size) {
+                        throw ContentTransportException("package response ended at $total of ${entry.pkg.size} bytes")
+                    }
+                }
+            }
+        }
+        try {
+            ContentDigests.verify(partFile, entry.pkg.hash, entry.pkg.size, "downloaded package")
+        } catch (error: ContentIntegrityException) {
+            partFile.delete()
+            throw error
+        }
+        PackageDownloadResult(resumedFrom, entry.pkg.size - resumedFrom)
     }
 
     private fun get(relativePath: String, maximumBytes: Int): ByteArray {

@@ -319,10 +319,10 @@ private fun PoemRow(
                 .clip(CircleShape)
                 .clickable(role = Role.Button, onClick = onDownload)
                 .semantics {
-                    contentDescription = if (poem.downloaded) {
-                        "${poem.title} محمّلة، الحجم ${poem.sizeLabel}"
-                    } else {
-                        "تنزيل ${poem.title}، الحجم ${poem.sizeLabel}"
+                    contentDescription = when {
+                        poem.downloaded -> "${poem.title} محمّلة، الحجم ${poem.sizeLabel}"
+                        poem.downloading -> "جار تنزيل ${poem.title}، الحجم ${poem.sizeLabel}"
+                        else -> "تنزيل ${poem.title}، الحجم ${poem.sizeLabel}"
                     }
                 }
                 .testTag("poem_download_${poem.id}"),
@@ -331,10 +331,10 @@ private fun PoemRow(
             Icon(
                 imageVector = if (poem.downloaded) AtharIcons.Check else AtharIcons.Download,
                 contentDescription = null,
-                tint = if (poem.downloaded) {
-                    AtharTheme.colors.success
-                } else {
-                    AtharTheme.colors.secondaryText
+                tint = when {
+                    poem.downloaded -> AtharTheme.colors.success
+                    poem.downloading -> AtharTheme.colors.accent
+                    else -> AtharTheme.colors.secondaryText
                 },
                 modifier = Modifier.size(19.dp),
             )

@@ -4,18 +4,24 @@
 19 Aug 2026.
 **M0 results:** [`docs/android/m0-results.md`](../docs/android/m0-results.md).
 **M5 results:** [`docs/android/m5-results.md`](../docs/android/m5-results.md).
+**M6 results:** [`docs/android/m6-results.md`](../docs/android/m6-results.md).
 
 **Product boundary:** Athar is a general Arabic scholarly-library app. Tafsir and Hadith
 works use the ordinary book pipeline; there is no specialist Qurʾan, tafsir-fragment, or
 Hadith subsystem. See `main-plan.md` §0 and D13.
 
-Status: **M5 data layer complete and verified on a real phone (20 Aug 2026).** The dedicated
+Status: **M6 downloads/cache implementation complete; final device-instrumentation acceptance
+is waiting only for HyperOS “Install via USB” permission (20 Aug 2026).** The dedicated
 `athar-app-content` R2 bucket serves the signed four-entry slice at
 `https://app-content.arthurarchive.com/app/v2/`. Books, articles, poetry, and their native
-readers now observe Room Flows; search, downloads, annotations, and Media3 playback remain
-M6–M9 work. `core/data` verifies the signed root and complete hash chain, owns separate
+readers now observe Room Flows; search, annotations, and Media3 playback remain M7–M9 work.
+`core/data` verifies the signed root and complete hash chain, owns separate
 user/content Room databases, performs exact verified HTTP Range reads, imports frames
 transactionally, evicts only unpinned cache data, and rebuilds retained packages offline.
+Explicit downloads are WorkManager-backed, resumable and durably retained; cache limits,
+low-storage eviction and completion notifications are wired. The real staging book passed
+download, unpin/re-download, process-death recovery and a cold fully-offline open on the
+Android 15 phone. See the M6 results for the one remaining test-runner permission gate.
 
 ## Build and test
 

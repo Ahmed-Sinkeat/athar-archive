@@ -280,8 +280,7 @@ private fun ArticleRow(
                 overflow = TextOverflow.Ellipsis,
             )
         }
-        // Articles carry a plain downloaded flag, not Books' progress state machine —
-        // one icon that flips to a check is the whole control.
+        // Articles keep the compact icon control; accent tint is the queued/in-progress state.
         IconButton(
             onClick = onDownload,
             modifier = Modifier
@@ -290,15 +289,15 @@ private fun ArticleRow(
         ) {
             Icon(
                 imageVector = if (article.downloaded) AtharIcons.Check else AtharIcons.Download,
-                contentDescription = if (article.downloaded) {
-                    "محمّل: ${article.title}"
-                } else {
-                    "تنزيل ${article.title}"
+                contentDescription = when {
+                    article.downloaded -> "محمّل: ${article.title}"
+                    article.downloading -> "جار تنزيل ${article.title}"
+                    else -> "تنزيل ${article.title}"
                 },
-                tint = if (article.downloaded) {
-                    AtharTheme.colors.success
-                } else {
-                    AtharTheme.colors.secondaryText
+                tint = when {
+                    article.downloaded -> AtharTheme.colors.success
+                    article.downloading -> AtharTheme.colors.accent
+                    else -> AtharTheme.colors.secondaryText
                 },
                 modifier = Modifier.size(19.dp),
             )

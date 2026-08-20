@@ -57,11 +57,20 @@ sealed interface ContentSyncUiState {
 @HiltViewModel
 class AtharContentViewModel @Inject constructor(
     private val content: ContentAccess,
+    private val downloadScheduler: ContentDownloadScheduler,
 ) : ViewModel() {
     private val userDao = content.userDatabase.userDataDao()
     private val catalogDao = content.contentDatabase.catalogDao()
     private val importDao = content.contentDatabase.importDao()
     private val pins = userDao.observePinnedDownloads()
+    private val pinIds = pins.map { downloads ->
+        downloads.mapTo(hashSetOf(), PinnedDownloadEntity::entityId)
+    }
+    private val retainedPins = combine(pins, content.retainedEntityIds) { downloads, retained ->
+        downloads.asSequence()
+            .map(PinnedDownloadEntity::entityId)
+            .filterTo(hashSetOf()) { it in retained }
+    }
     private val library = userDao.observeLibraryEntries()
     private val positions = userDao.observeReadingPositions()
     private val readerFlows = ConcurrentHashMap<String, Flow<ReaderUiState?>>()
@@ -71,24 +80,35 @@ class AtharContentViewModel @Inject constructor(
     private val prefetchedFrames = ConcurrentHashMap<String, Int>()
 
     private val _syncState = MutableStateFlow<ContentSyncUiState>(ContentSyncUiState.LocalReady)
+    private val _cacheBytes = MutableStateFlow(0L)
     val syncState: StateFlow<ContentSyncUiState> = _syncState
+    val storageStatus = content.storageStatus
+    val cacheBytes: StateFlow<Long> = _cacheBytes
+    val cacheBudgetBytes: StateFlow<Long> = content.cacheBudgetBytes
+    val pinnedCount: StateFlow<Int> = pins.map { it.size }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), 0)
 
     val books: StateFlow<BooksUiState> = combine(
-        catalogDao.observeCollection("book"), pins, library, positions,
-    ) { entities, downloads, shelves, savedPositions ->
-        val pinnedIds = downloads.mapTo(hashSetOf(), PinnedDownloadEntity::entityId)
+        catalogDao.observeCollection("book"), pinIds, retainedPins, library, positions,
+    ) { entities, pinnedIds, retainedIds, shelves, savedPositions ->
         val shelfIds = shelves.mapTo(hashSetOf(), LibraryEntryEntity::entityId)
         val positionById = savedPositions.associateBy(ReadingPositionEntity::entityId)
         BooksUiState(
             archiveCountLabel = "${arabicNumber(entities.size)} كتابًا",
-            books = entities.map { it.toBookUi(it.id in pinnedIds, it.id in shelfIds, positionById[it.id]) },
+            books = entities.map {
+                it.toBookUi(
+                    pinned = it.id in pinnedIds,
+                    retained = it.id in retainedIds,
+                    saved = it.id in shelfIds,
+                    position = positionById[it.id],
+                )
+            },
         )
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), BooksUiState("٠ كتاب", emptyList()))
 
     val articles: StateFlow<ArticlesUiState> = combine(
-        catalogDao.observeCollection("article"), pins, library,
-    ) { entities, downloads, shelves ->
-        val pinnedIds = downloads.mapTo(hashSetOf(), PinnedDownloadEntity::entityId)
+        catalogDao.observeCollection("article"), pinIds, retainedPins, library,
+    ) { entities, pinnedIds, retainedIds, shelves ->
         val shelfIds = shelves.mapTo(hashSetOf(), LibraryEntryEntity::entityId)
         ArticlesUiState(
             countLabel = "${arabicNumber(entities.size)} مقالًا",
@@ -99,7 +119,10 @@ class AtharContentViewModel @Inject constructor(
                     author = entity.personName.orEmpty(),
                     dateLabel = entity.publishedAt?.take(4)?.let { "${arabicNumber(it)}م" }.orEmpty(),
                     excerpt = entity.excerpt.orEmpty(),
-                    downloaded = entity.id in pinnedIds && entity.availability == ContentAvailability.COMPLETE,
+                    downloaded = entity.id in retainedIds && entity.availability == ContentAvailability.COMPLETE,
+                    downloading = entity.id in pinnedIds &&
+                        entity.id !in retainedIds &&
+                        entity.transferState != ContentTransferState.FAILED,
                     saved = entity.id in shelfIds,
                 )
             },
@@ -107,9 +130,8 @@ class AtharContentViewModel @Inject constructor(
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), ArticlesUiState("٠ مقال", emptyList()))
 
     val poetry: StateFlow<PoetryUiState> = combine(
-        catalogDao.observeCollection("poem"), pins, library,
-    ) { entities, downloads, shelves ->
-        val pinnedIds = downloads.mapTo(hashSetOf(), PinnedDownloadEntity::entityId)
+        catalogDao.observeCollection("poem"), pinIds, retainedPins, library,
+    ) { entities, pinnedIds, retainedIds, shelves ->
         val shelfIds = shelves.mapTo(hashSetOf(), LibraryEntryEntity::entityId)
         PoetryUiState(
             countLabel = "${arabicNumber(entities.size)} قصيدة",
@@ -121,7 +143,10 @@ class AtharContentViewModel @Inject constructor(
                     poet = entity.personName.orEmpty(),
                     openingVerses = entry.openingVerses,
                     topic = entity.topicsCsv.substringBefore(',').ifBlank { "—" },
-                    downloaded = entity.id in pinnedIds && entity.availability == ContentAvailability.COMPLETE,
+                    downloaded = entity.id in retainedIds && entity.availability == ContentAvailability.COMPLETE,
+                    downloading = entity.id in pinnedIds &&
+                        entity.id !in retainedIds &&
+                        entity.transferState != ContentTransferState.FAILED,
                     saved = entity.id in shelfIds,
                     verseCountLabel = "${arabicNumber(entity.pkgBlocks.coerceAtLeast(0))} بيتًا",
                     sizeLabel = byteSize(entity.pkgSize),
@@ -135,6 +160,8 @@ class AtharContentViewModel @Inject constructor(
             // This is local disk work only and returns immediately when the content DB is
             // already healthy. UI Flows are active before either rebuild or sync begins.
             runCatching { content.rebuildRetainedContent() }
+            recoverPendingDownloads()
+            refreshCacheBytes()
             sync()
         }
     }
@@ -148,6 +175,7 @@ class AtharContentViewModel @Inject constructor(
             _syncState.value = ContentSyncUiState.Checking
             _syncState.value = try {
                 content.sync()
+                recoverPendingDownloads()
                 ContentSyncUiState.UpToDate
             } catch (error: Throwable) {
                 ContentSyncUiState.Failed(error.message ?: "تعذّر تحديث الفهرس")
@@ -184,6 +212,7 @@ class AtharContentViewModel @Inject constructor(
         viewModelScope.launch {
             val position = userDao.readingPosition(entityId)?.ordinalHint ?: 0
             runCatching { content.open(entityId, position) }
+            refreshCacheBytes()
         }
     }
 
@@ -222,20 +251,65 @@ class AtharContentViewModel @Inject constructor(
         prefetchedFrames.remove(entityId)
     }
 
+    fun toggleDownload(entityId: String) {
+        viewModelScope.launch {
+            val entity = catalogDao.entity(entityId) ?: return@launch
+            if (content.isPinned(entityId)) {
+                if (
+                    entity.transferState == ContentTransferState.FAILED &&
+                    entityId !in content.retainedEntityIds.value
+                ) {
+                    downloadScheduler.enqueue(entityId, entity.coll)
+                } else {
+                    downloadScheduler.cancel(entityId, entity.coll)
+                    content.unpin(entityId)
+                }
+            } else {
+                content.requestDownload(entityId)
+                downloadScheduler.enqueue(entityId, entity.coll)
+            }
+        }
+    }
+
+    fun clearCache() {
+        viewModelScope.launch {
+            content.clearCache()
+            refreshCacheBytes()
+        }
+    }
+
+    fun refreshCacheBytes() {
+        viewModelScope.launch { _cacheBytes.value = content.cacheBytes() }
+    }
+
+    fun setCacheBudget(bytes: Long) {
+        viewModelScope.launch {
+            content.setCacheBudget(bytes)
+            _cacheBytes.value = content.cacheBytes()
+        }
+    }
+
+    private suspend fun recoverPendingDownloads() {
+        content.reconcilePinnedDownloads().forEach { target ->
+            downloadScheduler.enqueue(target.entityId, target.collection)
+        }
+    }
+
     private fun ContentEntity.toBookUi(
         pinned: Boolean,
+        retained: Boolean,
         saved: Boolean,
         position: ReadingPositionEntity?,
     ): BookUi {
         val progress = position?.progressPct?.toFloat()?.coerceIn(0f, 1f)
         val download = when {
-            transferState != ContentTransferState.IDLE && transferState != ContentTransferState.FAILED ->
+            pinned && !retained && transferState != ContentTransferState.FAILED ->
                 BookDownloadUi.Downloading(
                     sizeLabel = byteSize(pkgSize),
                     progress = if (pkgBlocks == 0) 0f else importProgress.toFloat() / pkgBlocks,
                     progressLabel = "${arabicNumber(importProgress * 100 / pkgBlocks.coerceAtLeast(1))}٪",
                 )
-            pinned && availability == ContentAvailability.COMPLETE -> BookDownloadUi.Downloaded(byteSize(pkgSize))
+            retained && availability == ContentAvailability.COMPLETE -> BookDownloadUi.Downloaded(byteSize(pkgSize))
             else -> BookDownloadUi.Available(byteSize(pkgSize))
         }
         return BookUi(

@@ -38,6 +38,7 @@ data class ArticleUi(
     /** Opening extract from the article body — supplied by the build, never derived here. */
     val excerpt: String,
     val downloaded: Boolean = false,
+    val downloading: Boolean = false,
     val saved: Boolean = false,
 )
 

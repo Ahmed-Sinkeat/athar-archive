@@ -48,23 +48,53 @@ class RetainedPackageStore(private val directory: File) {
     ) = withContext(Dispatchers.IO) {
         ContentDigests.verify(packageBytes, entry.pkg.hash, entry.pkg.size, "retained package")
         FramedPackageDecoder.decodeIndex(indexBytes, entry)
-        directory.mkdirs()
-        check(directory.isDirectory) { "cannot create retained content directory" }
+        val files = prepareTargets(entry)
+        writeAtomically(files.packageFile, packageBytes)
+        publishManifest(entry, files, indexBytes)
+    }
 
+    suspend fun retainVerified(
+        entry: CatalogEntry,
+        packageFile: File,
+        indexBytes: ByteArray,
+    ) = withContext(Dispatchers.IO) {
+        ContentDigests.verify(packageFile, entry.pkg.hash, entry.pkg.size, "retained package")
+        FramedPackageDecoder.decodeIndex(indexBytes, entry)
+        val files = prepareTargets(entry)
+        copyAtomically(files.packageFile, packageFile)
+        publishManifest(entry, files, indexBytes)
+    }
+
+    suspend fun containsVerified(entry: CatalogEntry): Boolean = withContext(Dispatchers.IO) {
+        val manifestFile = File(directory, "${safeStem(entry)}.json")
+        if (!manifestFile.isFile) return@withContext false
+        runCatching {
+            val manifest = AppContentJson.decodeFromString<RetainedPackageManifest>(manifestFile.readText())
+            require(
+                manifest.schema == 1 &&
+                    manifest.entry.id == entry.id &&
+                    manifest.entry.coll == entry.coll &&
+                    manifest.entry.v == entry.v &&
+                    manifest.entry.pkg == entry.pkg
+            )
+            val root = directory.canonicalFile
+            val packageFile = File(directory, manifest.packageFile).canonicalFile
+            val indexFile = File(directory, manifest.indexFile).canonicalFile
+            require(packageFile.parentFile == root && indexFile.parentFile == root)
+            ContentDigests.verify(packageFile, entry.pkg.hash, entry.pkg.size, "retained package")
+            FramedPackageDecoder.decodeIndex(indexFile.readBytes(), entry)
+        }.isSuccess
+    }
+
+    suspend fun retainedEntityIds(): Set<String> = withContext(Dispatchers.IO) {
+        manifests().mapTo(linkedSetOf()) { (_, entry) -> entry.id }
+    }
+
+    suspend fun remove(entry: CatalogEntry) = withContext(Dispatchers.IO) {
         val stem = safeStem(entry)
-        val packageName = "$stem.${entry.pkg.hash}.athar"
-        val indexName = "$stem.${entry.pkg.idxHash}.idx"
-        writeAtomically(File(directory, packageName), packageBytes)
-        writeAtomically(File(directory, indexName), indexBytes)
-        val manifest = RetainedPackageManifest(
-            entry = entry,
-            packageFile = packageName,
-            indexFile = indexName,
-        )
-        writeAtomically(
-            File(directory, "$stem.json"),
-            AppContentJson.encodeToString(manifest).encodeToByteArray(),
-        )
+        directory.listFiles().orEmpty()
+            .filter { it.name == "$stem.json" || it.name.startsWith("$stem.") || it.name.startsWith(".$stem.") }
+            .forEach(File::delete)
     }
 
     internal fun manifests(): List<Pair<File, CatalogEntry>> {
@@ -97,11 +127,58 @@ class RetainedPackageStore(private val directory: File) {
         return "${entry.coll}__${entry.id}"
     }
 
+    private data class TargetFiles(
+        val stem: String,
+        val packageFile: File,
+        val indexFile: File,
+    )
+
+    private fun prepareTargets(entry: CatalogEntry): TargetFiles {
+        directory.mkdirs()
+        check(directory.isDirectory) { "cannot create retained content directory" }
+        val stem = safeStem(entry)
+        return TargetFiles(
+            stem = stem,
+            packageFile = File(directory, "$stem.${entry.pkg.hash}.athar"),
+            indexFile = File(directory, "$stem.${entry.pkg.idxHash}.idx"),
+        )
+    }
+
+    private fun publishManifest(entry: CatalogEntry, files: TargetFiles, indexBytes: ByteArray) {
+        writeAtomically(files.indexFile, indexBytes)
+        val manifest = RetainedPackageManifest(
+            entry = entry,
+            packageFile = files.packageFile.name,
+            indexFile = files.indexFile.name,
+        )
+        writeAtomically(
+            File(directory, "${files.stem}.json"),
+            AppContentJson.encodeToString(manifest).encodeToByteArray(),
+        )
+        directory.listFiles().orEmpty()
+            .filter {
+                it.name.startsWith("${files.stem}.") &&
+                    it.name !in setOf(files.packageFile.name, files.indexFile.name, "${files.stem}.json")
+            }
+            .forEach(File::delete)
+    }
+
     private fun writeAtomically(target: File, bytes: ByteArray) {
         val temporary = File(target.parentFile, ".${target.name}.part")
         temporary.outputStream().use { output ->
             output.write(bytes)
             output.fd.sync()
+        }
+        check(temporary.renameTo(target)) { "cannot atomically retain ${target.name}" }
+    }
+
+    private fun copyAtomically(target: File, source: File) {
+        val temporary = File(target.parentFile, ".${target.name}.part")
+        source.inputStream().use { input ->
+            temporary.outputStream().use { output ->
+                input.copyTo(output)
+                output.fd.sync()
+            }
         }
         check(temporary.renameTo(target)) { "cannot atomically retain ${target.name}" }
     }
@@ -141,7 +218,7 @@ class OfflineContentRebuilder(
                 }
                 // The complete-object digest catches reordered or substituted frames even
                 // though each member was independently authenticated during import.
-                ContentDigests.verify(packageFile.readBytes(), entry.pkg.hash, entry.pkg.size, "retained package")
+                ContentDigests.verify(packageFile, entry.pkg.hash, entry.pkg.size, "retained package")
                 packages++
             } catch (error: Throwable) {
                 runCatching { contentDatabase.importDao().clearImportedContent(entry.id) }

@@ -15,6 +15,7 @@ import com.atharchive.core.data.db.user.AtharUserDatabase
 import com.atharchive.core.data.network.AppContentHttpClient
 import com.atharchive.core.data.network.VerifiedGeneration
 import java.security.PublicKey
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.Flow
@@ -44,9 +45,8 @@ class ReadThroughContentRepository(
     private val client: AppContentHttpClient,
     private val importer: ContentImporter,
     private val nowMillis: () -> Long = System::currentTimeMillis,
+    private val mutationMutex: Mutex = Mutex(),
 ) {
-    private val mutationMutex = Mutex()
-
     fun observeCatalog(): Flow<List<ContentEntity>> = database.catalogDao().observeCatalog()
 
     fun observeCollection(collection: String): Flow<List<ContentEntity>> =
@@ -149,15 +149,40 @@ class ReadThroughContentRepository(
         entityId: String,
         currentOrdinal: Int,
         direction: Int = 1,
+        beforeFetch: suspend () -> Boolean = { true },
+        afterFetch: suspend (ReadThroughResult) -> Unit = {},
     ): ReaderPrefetchSession {
         require(direction == -1 || direction == 1)
         val job = scope.launch {
-            val entity = database.catalogDao().entity(entityId) ?: return@launch
-            val indexBytes = client.fetchPackageIndex(entity.toCatalogEntry())
-            val index = FramedPackageDecoder.decodeIndex(indexBytes, entity.toCatalogEntry())
-            val currentFrame = index.frames.indexOfFirst { currentOrdinal in it.ord until (it.ord + it.n) }
-            val target = index.frames.getOrNull(currentFrame + direction) ?: return@launch
-            openFrame(entityId, target.ord)
+            try {
+                if (!beforeFetch()) return@launch
+                val localFrames = database.importDao().frames(entityId)
+                val currentLocal = localFrames.firstOrNull {
+                    currentOrdinal in it.firstBlockOrdinal until (it.firstBlockOrdinal + it.blockCount)
+                }
+                val adjacentLocal = currentLocal?.let { current ->
+                    localFrames.firstOrNull { it.frameOrdinal == current.frameOrdinal + direction }
+                }
+                if (adjacentLocal != null) {
+                    afterFetch(openFrame(entityId, adjacentLocal.firstBlockOrdinal))
+                    return@launch
+                }
+
+                val entity = database.catalogDao().entity(entityId) ?: return@launch
+                val entry = entity.toCatalogEntry()
+                val indexBytes = client.fetchPackageIndex(entry)
+                val index = FramedPackageDecoder.decodeIndex(indexBytes, entry)
+                val currentFrame = index.frames.indexOfFirst {
+                    currentOrdinal in it.ord until (it.ord + it.n)
+                }
+                val target = index.frames.getOrNull(currentFrame + direction) ?: return@launch
+                afterFetch(openFrame(entityId, target.ord))
+            } catch (cancelled: CancellationException) {
+                throw cancelled
+            } catch (_: Throwable) {
+                // Adjacent prefetch is best-effort. A reader backed by local frames must
+                // remain usable when the network is unavailable or a prefetch fails.
+            }
         }
         return ReaderPrefetchSession(job)
     }
@@ -177,14 +202,24 @@ class ContentCacheManager(
         const val DEFAULT_BUDGET_BYTES = 2L * 1024 * 1024 * 1024
         const val MIN_BUDGET_BYTES = 500L * 1024 * 1024
         const val MAX_BUDGET_BYTES = 20L * 1024 * 1024 * 1024
+        const val NO_LIMIT_BYTES = Long.MAX_VALUE
+
+        fun requireConfiguredBudget(bytes: Long) {
+            require(bytes == NO_LIMIT_BYTES || bytes in MIN_BUDGET_BYTES..MAX_BUDGET_BYTES) {
+                "cache budget must be 500 MiB to 20 GiB, or no limit"
+            }
+        }
     }
+
+    suspend fun usedBytes(): Long = contentDatabase.importDao().totalImportedBytes()
 
     suspend fun evictToBudget(
         budgetBytes: Long = DEFAULT_BUDGET_BYTES,
         activeEntityId: String? = null,
         activeFrameOrdinal: Int? = null,
+        activeFrameOrdinals: Set<Int> = activeFrameOrdinal?.let { setOf(it) }.orEmpty(),
     ): Long {
-        require(budgetBytes == Long.MAX_VALUE || budgetBytes in MIN_BUDGET_BYTES..MAX_BUDGET_BYTES)
+        require(budgetBytes == NO_LIMIT_BYTES || budgetBytes in 0..MAX_BUDGET_BYTES)
         val dao = contentDatabase.importDao()
         var total = dao.totalImportedBytes()
         if (total <= budgetBytes) return 0
@@ -193,10 +228,32 @@ class ContentCacheManager(
         for (candidate in dao.evictionCandidates()) {
             if (total <= budgetBytes) break
             if (candidate.entityId in protected) continue
-            if (candidate.entityId == activeEntityId && candidate.frameOrdinal == activeFrameOrdinal) continue
+            if (
+                candidate.entityId == activeEntityId &&
+                candidate.frameOrdinal in activeFrameOrdinals
+            ) continue
             val result = dao.evictFrame(candidate)
             total -= result.bytesRemoved
             removed += result.bytesRemoved
+        }
+        return removed
+    }
+
+    suspend fun clearUnpinned(
+        activeEntityId: String? = null,
+        activeFrameOrdinal: Int? = null,
+        activeFrameOrdinals: Set<Int> = activeFrameOrdinal?.let { setOf(it) }.orEmpty(),
+    ): Long {
+        val dao = contentDatabase.importDao()
+        val protected = userDatabase.userDataDao().pinnedEntityIds().toSet()
+        var removed = 0L
+        for (candidate in dao.evictionCandidates()) {
+            if (candidate.entityId in protected) continue
+            if (
+                candidate.entityId == activeEntityId &&
+                candidate.frameOrdinal in activeFrameOrdinals
+            ) continue
+            removed += dao.evictFrame(candidate).bytesRemoved
         }
         return removed
     }
