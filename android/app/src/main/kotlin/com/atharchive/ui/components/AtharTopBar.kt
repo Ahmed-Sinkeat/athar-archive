@@ -23,6 +23,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -42,6 +43,9 @@ fun AtharTopBar(
     horizontalPadding: androidx.compose.ui.unit.Dp = 20.dp,
     onBack: (() -> Unit)? = null,
     onLogo: (() -> Unit)? = null,
+    actionIcon: ImageVector? = null,
+    actionLabel: String? = null,
+    onAction: (() -> Unit)? = null,
 ) {
     if (!showAppIcon) {
         LegacyAtharTopBar(
@@ -83,11 +87,12 @@ fun AtharTopBar(
             } else {
                 Modifier.size(48.dp)
             }
-            Box(modifier = logoModifier, contentAlignment = Alignment.Center) {
+            Box(
+                modifier = logoModifier.testTag("athar_app_icon"),
+                contentAlignment = Alignment.Center,
+            ) {
                 AtharMark(
-                    modifier = Modifier
-                        .size(30.dp)
-                        .testTag("athar_app_icon"),
+                    modifier = Modifier.size(30.dp),
                     contentDescription = if (onLogo != null) "الأقسام" else null,
                 )
             }
@@ -109,6 +114,23 @@ fun AtharTopBar(
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
             )
+        }
+        // A screen-specific action sits inboard of الإعدادات, the way the readers
+        // put البحث inboard of المزيد.
+        if (actionIcon != null && onAction != null) {
+            IconButton(
+                onClick = onAction,
+                modifier = Modifier
+                    .size(48.dp)
+                    .testTag("athar_action"),
+            ) {
+                Icon(
+                    imageVector = actionIcon,
+                    contentDescription = actionLabel,
+                    modifier = Modifier.size(22.dp),
+                    tint = MaterialTheme.colorScheme.onBackground,
+                )
+            }
         }
         if (onBack == null) {
             IconButton(

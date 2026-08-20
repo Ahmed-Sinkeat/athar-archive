@@ -5,23 +5,27 @@
 **M0 results:** [`docs/android/m0-results.md`](../docs/android/m0-results.md).
 **M5 results:** [`docs/android/m5-results.md`](../docs/android/m5-results.md).
 **M6 results:** [`docs/android/m6-results.md`](../docs/android/m6-results.md).
+**M7 results:** [`docs/android/m7-results.md`](../docs/android/m7-results.md).
 
 **Product boundary:** Athar is a general Arabic scholarly-library app. Tafsir and Hadith
 works use the ordinary book pipeline; there is no specialist Qurʾan, tafsir-fragment, or
 Hadith subsystem. See `main-plan.md` §0 and D13.
 
-Status: **M6 downloads/cache implementation complete; final device-instrumentation acceptance
-is waiting only for HyperOS “Install via USB” permission (20 Aug 2026).** The dedicated
+Status: **M7 search/library implementation and device acceptance complete (20 Aug 2026).**
+The dedicated
 `athar-app-content` R2 bucket serves the signed four-entry slice at
 `https://app-content.arthurarchive.com/app/v2/`. Books, articles, poetry, and their native
-readers now observe Room Flows; search, annotations, and Media3 playback remain M7–M9 work.
+readers now observe Room Flows; compact local FTS, vocalised snippets, direct reader landing,
+durable shelves, and user collections are wired. Annotations and Media3 playback remain
+M8–M9 work.
 `core/data` verifies the signed root and complete hash chain, owns separate
 user/content Room databases, performs exact verified HTTP Range reads, imports frames
 transactionally, evicts only unpinned cache data, and rebuilds retained packages offline.
 Explicit downloads are WorkManager-backed, resumable and durably retained; cache limits,
-low-storage eviction and completion notifications are wired. The real staging book passed
-download, unpin/re-download, process-death recovery and a cold fully-offline open on the
-Android 15 phone. See the M6 results for the one remaining test-runner permission gate.
+low-storage eviction and completion notifications are wired. All 12 `core:data` tests pass
+on the Android 15 phone, including exact phrase retrieval after candidate 80, atomic FTS
+eviction, and personal-library survival across a content-DB replacement. All four M7 app UI
+tests also pass on the Android 15 phone; see the M7 results for the HyperOS runner workaround.
 
 ## Build and test
 
@@ -72,7 +76,7 @@ android/
 Modules are created **when a stable boundary needs them**, never as empty scaffolding. M2–M3
 may keep fixture-driven final UI in `:app` packages while the design settles. Extract
 `core/ui` and stable feature boundaries after that UI is real; `core/data` arrives with M5,
-search behavior with M7, annotations with M8, and the Media3 audio implementation with M9.
+search behavior arrived with M7; annotations follow with M8 and Media3 audio with M9.
 
 Downloads get **no module of their own**: the logic belongs in `core/data`, the UI
 starts inside `feature/library`. Split it out only if that screen actually grows.

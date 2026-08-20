@@ -34,9 +34,9 @@ import com.atharchive.ui.theme.AtharTheme
  * The one bottom sheet left in the app, and it earns it: five filter groups is more than
  * an anchored menu can hold. Everything single-choice elsewhere stays a dropdown.
  *
- * Note what is deliberately absent: any "downloaded only" switch. Scope follows the
- * network — online searches the archive, offline searches what is on the device — and a
- * manual toggle would ask the user to manage something the app already knows.
+ * A downloaded-only switch is deliberately absent. Catalog metadata is complete and
+ * passage search is inherently limited to locally indexed blocks, so the scope already
+ * follows the kind of result instead of asking the reader to manage a redundant toggle.
  */
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)

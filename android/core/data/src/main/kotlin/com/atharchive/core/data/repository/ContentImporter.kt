@@ -1,5 +1,6 @@
 package com.atharchive.core.data.repository
 
+import androidx.room3.withWriteTransaction
 import com.atharchive.core.ArNormalize
 import com.atharchive.core.data.content.AppContentJson
 import com.atharchive.core.data.content.CatalogDocument
@@ -33,12 +34,16 @@ class ContentImporter(
             tombstonesHash = "0".repeat(64),
             appliedAt = nowMillis(),
         )
-        database.catalogDao().applyGeneration(
-            incoming = catalog.entries.map(CatalogEntry::toEntity),
-            tombstonedIds = emptySet(),
-            protectedIds = emptySet(),
-            generation = synthetic,
-        )
+        ContentSearchSchema.ensure(database)
+        database.withWriteTransaction {
+            database.catalogDao().applyGeneration(
+                incoming = catalog.entries.map(CatalogEntry::toEntity),
+                tombstonedIds = emptySet(),
+                protectedIds = emptySet(),
+                generation = synthetic,
+            )
+            ContentSearchSchema.replaceCatalog(this, database.catalogDao().allEntities())
+        }
     }
 
     suspend fun applyGeneration(
@@ -49,17 +54,21 @@ class ContentImporter(
         tombstonedIds: Set<String>,
         protectedIds: Set<String>,
     ) {
-        database.catalogDao().applyGeneration(
-            incoming = catalog.entries.map(CatalogEntry::toEntity),
-            tombstonedIds = tombstonedIds,
-            protectedIds = protectedIds,
-            generation = ContentGenerationEntity(
-                generationId = generationId,
-                catalogHash = catalogHash,
-                tombstonesHash = tombstonesHash,
-                appliedAt = nowMillis(),
-            ),
-        )
+        ContentSearchSchema.ensure(database)
+        database.withWriteTransaction {
+            database.catalogDao().applyGeneration(
+                incoming = catalog.entries.map(CatalogEntry::toEntity),
+                tombstonedIds = tombstonedIds,
+                protectedIds = protectedIds,
+                generation = ContentGenerationEntity(
+                    generationId = generationId,
+                    catalogHash = catalogHash,
+                    tombstonesHash = tombstonesHash,
+                    appliedAt = nowMillis(),
+                ),
+            )
+            ContentSearchSchema.replaceCatalog(this, database.catalogDao().allEntities())
+        }
     }
 
     suspend fun importVerifiedFrame(
@@ -69,33 +78,43 @@ class ContentImporter(
         compressedBytes: ByteArray,
     ): FrameImportResult {
         val dao = database.importDao()
+        ContentSearchSchema.ensure(database)
         dao.markTransfer(entry.id, ContentTransferState.VERIFYING)
         return try {
             val decoded = FramedPackageDecoder.decodeFrame(compressedBytes, frame, entry)
             dao.markTransfer(entry.id, ContentTransferState.IMPORTING)
             val now = nowMillis()
-            dao.importFrame(
-                entityId = entry.id,
-                frame = EntityFrameEntity(
+            database.withWriteTransaction {
+                val result = dao.importFrame(
                     entityId = entry.id,
-                    frameOrdinal = frameNumber,
-                    firstBlockOrdinal = frame.ord,
-                    blockCount = frame.n,
-                    compressedBytes = compressedBytes.size.toLong(),
-                    lastOpenedAt = now,
-                ),
-                blocks = decoded.blocks.map { it.toEntity(entry.id) },
-                chapters = decoded.chapterEntities(entry.id),
-                footnotes = decoded.footnotes.map {
-                    FootnoteEntity(
+                    frame = EntityFrameEntity(
                         entityId = entry.id,
-                        fnId = it.id,
-                        text = it.x,
-                        inlineSpans = encodeSpans(it.sp),
-                    )
-                },
-                now = now,
-            )
+                        frameOrdinal = frameNumber,
+                        firstBlockOrdinal = frame.ord,
+                        blockCount = frame.n,
+                        compressedBytes = compressedBytes.size.toLong(),
+                        lastOpenedAt = now,
+                    ),
+                    blocks = decoded.blocks.map { it.toEntity(entry.id) },
+                    chapters = decoded.chapterEntities(entry.id),
+                    footnotes = decoded.footnotes.map {
+                        FootnoteEntity(
+                            entityId = entry.id,
+                            fnId = it.id,
+                            text = it.x,
+                            inlineSpans = encodeSpans(it.sp),
+                        )
+                    },
+                    now = now,
+                )
+                val indexed = dao.blockWindow(
+                    entry.id,
+                    frame.ord,
+                    frame.ord + frame.n - 1,
+                )
+                ContentSearchSchema.indexBlocks(this, indexed)
+                result
+            }
         } catch (error: Throwable) {
             runCatching { dao.markTransfer(entry.id, ContentTransferState.FAILED) }
             throw error

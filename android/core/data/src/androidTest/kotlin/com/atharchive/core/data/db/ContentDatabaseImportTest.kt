@@ -16,10 +16,12 @@ import com.atharchive.core.data.db.content.ContentBlockEntity
 import com.atharchive.core.data.db.content.EntityFrameEntity
 import com.atharchive.core.data.db.user.AtharUserDatabase
 import com.atharchive.core.data.db.user.PinnedDownloadEntity
+import com.atharchive.core.data.db.user.LibraryStatus
 import com.atharchive.core.data.repository.ContentImporter
 import com.atharchive.core.data.repository.ContentCacheManager
 import com.atharchive.core.data.repository.ContentStoragePolicy
 import com.atharchive.core.data.repository.OfflineContentRebuilder
+import com.atharchive.core.data.repository.PersonalLibraryRepository
 import com.atharchive.core.data.repository.RetainedPackageStore
 import com.atharchive.core.data.db.content.ContentGenerationEntity
 import java.io.File
@@ -226,6 +228,50 @@ class ContentDatabaseImportTest {
         } finally {
             root.deleteRecursively()
         }
+    }
+
+    @Test
+    fun shelvesAndCollectionsSurviveContentRebuildAndCollectionRemovalOwnsNoContent() = runBlocking {
+        val library = PersonalLibraryRepository(user, nowMillis = { 42L }, newId = { "research" })
+        val entry = entry(100, "library-book")
+        ContentImporter(content).applyCatalog(CatalogDocument(2, listOf(entry)))
+        user.userDataDao().savePinnedDownload(PinnedDownloadEntity(entry.id, 1L, entry.pkg.hash))
+        library.setStatus(entry.id, LibraryStatus.READING)
+        val collectionId = library.createCollection("بحوث العقيدة")
+        library.addToCollection(collectionId, entry.id)
+
+        library.deleteCollection(collectionId)
+
+        assertNotNull(content.catalogDao().entity(entry.id))
+        assertEquals(LibraryStatus.READING, user.userDataDao().libraryEntries().single().status)
+        assertNotNull(user.userDataDao().pinnedDownload(entry.id))
+
+        val rebuiltCollectionId = library.createCollection("بحوث العقيدة")
+        library.addToCollection(rebuiltCollectionId, entry.id)
+
+        // Replace the disposable database object, rather than merely clearing its Room
+        // tables, to model the destructive content-DB rebuild used after schema changes.
+        content.close()
+        content = Room.inMemoryDatabaseBuilder<AtharContentDatabase>(
+            ApplicationProvider.getApplicationContext<Context>(),
+        )
+            .setDriver(BundledSQLiteDriver())
+            .setQueryCoroutineContext(Dispatchers.IO)
+            .setSingleConnectionPool()
+            .build()
+
+        assertTrue(content.catalogDao().allEntities().isEmpty())
+
+        assertEquals(LibraryStatus.READING, user.userDataDao().libraryEntries().single().status)
+        assertEquals("بحوث العقيدة", user.userDataDao().userCollections().single().title)
+        assertEquals(entry.id, user.userDataDao().collectionItems().single().entityId)
+
+        library.deleteCollection(rebuiltCollectionId)
+
+        assertTrue(user.userDataDao().userCollections().isEmpty())
+        assertTrue(user.userDataDao().collectionItems().isEmpty())
+        assertEquals(LibraryStatus.READING, user.userDataDao().libraryEntries().single().status)
+        assertNotNull(user.userDataDao().pinnedDownload(entry.id))
     }
 
     private fun entry(

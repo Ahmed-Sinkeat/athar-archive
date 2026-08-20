@@ -93,6 +93,7 @@ fun BooksScreen(
     onBookClick: (BookUi) -> Unit,
     onDownloadClick: (BookUi) -> Unit,
     onSaveClick: (BookUi) -> Unit,
+    onLibrary: () -> Unit = {},
     modifier: Modifier = Modifier,
     scrollToTopRequest: Int = 0,
     onLogo: (() -> Unit)? = null,
@@ -155,6 +156,9 @@ fun BooksScreen(
                 showAppIcon = true,
                 onLogo = onLogo,
                 onBack = onBack,
+                actionIcon = AtharIcons.Archive,
+                actionLabel = "مكتبتي",
+                onAction = onLibrary,
                 horizontalPadding = horizontalPadding,
             )
         LazyColumn(

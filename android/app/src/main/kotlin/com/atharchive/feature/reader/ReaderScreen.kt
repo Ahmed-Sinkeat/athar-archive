@@ -58,10 +58,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.paging.compose.LazyPagingItems
 import com.atharchive.ui.icons.AtharIcons
 import com.atharchive.ui.theme.AtharEditorialFontFamily
 import kotlinx.coroutines.launch
-import androidx.paging.compose.LazyPagingItems
 
 @Composable
 fun ReaderScreen(
@@ -71,6 +71,7 @@ fun ReaderScreen(
     onSaveBenefit: (String) -> Unit,
     onPositionChange: (Int) -> Unit,
     modifier: Modifier = Modifier,
+    initialSearchTarget: ReaderSearchTarget? = null,
 ) {
     var settings by remember { mutableStateOf(ReaderSettings()) }
     var settingsOpen by remember { mutableStateOf(false) }
@@ -83,13 +84,17 @@ fun ReaderScreen(
     var bookmarkedIndex by remember { mutableStateOf<Int?>(null) }
     var toast by remember { mutableStateOf<String?>(null) }
     var jumpedTo by remember { mutableIntStateOf(-1) }
+    var searchTarget by remember(initialSearchTarget) { mutableStateOf(initialSearchTarget) }
     // The toolbar follows the selection to the nearer half of the screen, so it lands
     // close to the thumb instead of always at the bottom.
     var selectionAlignment by remember { mutableStateOf(Alignment.BottomCenter) }
 
     val colors = rememberReaderColors(settings.palette)
-    // Index 0 belongs to the title item; durable positions are semantic block ordinals.
-    val listState = rememberLazyListState(initialFirstVisibleItemIndex = state.readingPositionIndex + 1)
+    // Index 0 belongs to the title item. A partial cache can start at any semantic
+    // ordinal, so translate the durable ordinal to its position in the local window.
+    val initialDisplayIndex = state.blocks.indexOfFirst { it.ordinal == state.readingPositionIndex }
+        .takeIf { it >= 0 } ?: state.readingPositionIndex
+    val listState = rememberLazyListState(initialFirstVisibleItemIndex = initialDisplayIndex + 1)
     val scope = rememberCoroutineScopeCompat()
 
     // Top bar hides on downward scroll only, and returns the instant the reader scrolls up.
@@ -112,9 +117,10 @@ fun ReaderScreen(
 
     // Reading position is written continuously. There is no "save position" control,
     // and this is not a bookmark.
-    val currentIndex by remember {
+    val currentDisplayIndex by remember {
         derivedStateOf { (listState.firstVisibleItemIndex - 1).coerceAtLeast(0) }
     }
+    val currentIndex = state.blocks.getOrNull(currentDisplayIndex)?.ordinal ?: currentDisplayIndex
     LaunchedEffect(currentIndex) { onPositionChange(currentIndex) }
 
     val hits = remember(query, state.blocks) { findHits(state, query) }
@@ -123,6 +129,15 @@ fun ReaderScreen(
             kotlinx.coroutines.delay(1800)
             toast = null
         }
+    }
+    LaunchedEffect(initialSearchTarget) {
+        val target = initialSearchTarget ?: return@LaunchedEffect
+        searchTarget = target
+        val displayIndex = state.blocks.indexOfFirst { it.ordinal == target.ordinal }
+            .takeIf { it >= 0 } ?: target.ordinal
+        listState.scrollToItem(displayIndex.coerceIn(0, (state.blocks.size - 1).coerceAtLeast(0)) + 1)
+        kotlinx.coroutines.delay(2200)
+        searchTarget = null
     }
 
     fun jumpTo(index: Int) {
@@ -215,7 +230,10 @@ fun ReaderScreen(
                             colors = colors,
                             selected = selectedBlock == block.id,
                             highlighted = block.id in highlighted,
-                            isSearchTarget = false,
+                            isSearchTarget = searchTarget?.ordinal == block.ordinal,
+                            searchMatch = searchTarget?.takeIf { it.ordinal == block.ordinal }?.let {
+                                it.matchStart until it.matchEnd
+                            },
                             onLongPress = { fromTop ->
                                 selectedBlock = block.id
                                 selectionAlignment = if (fromTop) Alignment.BottomCenter else Alignment.TopCenter
@@ -232,6 +250,9 @@ fun ReaderScreen(
                         selected = selectedBlock == block.id,
                         highlighted = block.id in highlighted,
                         isSearchTarget = query.isNotBlank() && jumpedTo == index,
+                        searchMatch = searchTarget?.takeIf { it.ordinal == (block.ordinal ?: index) }?.let {
+                            it.matchStart until it.matchEnd
+                        },
                         onLongPress = { fromTop ->
                             selectedBlock = block.id
                             selectionAlignment = if (fromTop) Alignment.BottomCenter else Alignment.TopCenter

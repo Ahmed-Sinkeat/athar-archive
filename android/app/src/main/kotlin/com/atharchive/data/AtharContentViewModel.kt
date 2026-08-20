@@ -13,9 +13,19 @@ import com.atharchive.core.data.db.content.ContentEntity
 import com.atharchive.core.data.db.content.ContentTransferState
 import com.atharchive.core.data.db.content.FootnoteEntity
 import com.atharchive.core.data.db.user.LibraryEntryEntity
+import com.atharchive.core.data.db.user.LibraryStatus
+import com.atharchive.core.data.db.user.CollectionItemEntity
 import com.atharchive.core.data.db.user.PinnedDownloadEntity
+import com.atharchive.core.data.db.user.ReadingHistoryEntity
 import com.atharchive.core.data.db.user.ReadingPositionEntity
+import com.atharchive.core.data.db.user.UserCollectionEntity
 import com.atharchive.core.data.repository.ReaderPrefetchSession
+import com.atharchive.core.data.repository.ContentSearchField
+import com.atharchive.core.data.repository.ContentSearchFilter
+import com.atharchive.core.data.repository.ContentSearchRepository
+import com.atharchive.core.data.repository.ContentSearchRequest
+import com.atharchive.core.data.repository.ContentSearchSort
+import com.atharchive.core.data.repository.PersonalLibraryRepository
 import com.atharchive.core.data.repository.StoredBlockAttributes
 import com.atharchive.core.data.repository.attributes
 import com.atharchive.core.data.repository.toCatalogEntry
@@ -30,18 +40,33 @@ import com.atharchive.feature.poemreader.VerseCue
 import com.atharchive.feature.poemreader.VerseUi
 import com.atharchive.feature.poetry.PoemUi
 import com.atharchive.feature.poetry.PoetryUiState
+import com.atharchive.feature.library.LibraryCollectionUi
+import com.atharchive.feature.library.LibraryShelf
+import com.atharchive.feature.library.LibraryUiState
+import com.atharchive.feature.library.LibraryWorkUi
 import com.atharchive.feature.reader.BookAudioUi
 import com.atharchive.feature.reader.ReaderBlock
 import com.atharchive.feature.reader.ReaderUiState
 import com.atharchive.feature.reader.TocEntry
+import com.atharchive.feature.search.DirectMatchUi
+import com.atharchive.feature.search.SearchField
+import com.atharchive.feature.search.SearchFilters
+import com.atharchive.feature.search.SearchHitUi
+import com.atharchive.feature.search.SearchResultType
+import com.atharchive.feature.search.SearchSort
+import com.atharchive.feature.search.SearchUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.util.concurrent.ConcurrentHashMap
 import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.debounce
+import kotlinx.coroutines.flow.mapLatest
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
@@ -55,6 +80,7 @@ sealed interface ContentSyncUiState {
 }
 
 @HiltViewModel
+@OptIn(FlowPreview::class, ExperimentalCoroutinesApi::class)
 class AtharContentViewModel @Inject constructor(
     private val content: ContentAccess,
     private val downloadScheduler: ContentDownloadScheduler,
@@ -73,6 +99,14 @@ class AtharContentViewModel @Inject constructor(
     }
     private val library = userDao.observeLibraryEntries()
     private val positions = userDao.observeReadingPositions()
+    private val personalLibrary = PersonalLibraryRepository(content.userDatabase)
+    private val contentSearch = ContentSearchRepository(content.contentDatabase)
+    private val userCollections = personalLibrary.observeCollections()
+    private val collectionItems = personalLibrary.observeCollectionItems()
+    private val readingHistory = personalLibrary.observeHistory()
+    private val recentSearches = personalLibrary.observeRecentSearches()
+    private val _searchQuery = MutableStateFlow("")
+    private val _searchFilters = MutableStateFlow(SearchFilters())
     private val readerFlows = ConcurrentHashMap<String, Flow<ReaderUiState?>>()
     private val readerPaging = ConcurrentHashMap<String, Flow<PagingData<ReaderBlock>>>()
     private val poemFlows = ConcurrentHashMap<String, Flow<PoemReaderUiState?>>()
@@ -87,6 +121,128 @@ class AtharContentViewModel @Inject constructor(
     val cacheBudgetBytes: StateFlow<Long> = content.cacheBudgetBytes
     val pinnedCount: StateFlow<Int> = pins.map { it.size }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), 0)
+
+    private val libraryReading = combine(library, positions, retainedPins) { entries, savedPositions, retained ->
+        LibraryReading(entries, savedPositions, retained)
+    }
+    private val libraryOrganization = combine(userCollections, collectionItems, readingHistory) {
+            collections, items, history ->
+        LibraryOrganization(collections, items, history)
+    }
+
+    val personalLibraryState: StateFlow<LibraryUiState> = combine(
+        catalogDao.observeCatalog(),
+        libraryReading,
+        libraryOrganization,
+    ) { entities, reading, organization ->
+        val statusById = reading.entries.associateBy(LibraryEntryEntity::entityId)
+        val positionById = reading.positions.associateBy(ReadingPositionEntity::entityId)
+        val recentById = organization.history.groupBy { it.entityId }
+            .mapValues { (_, rows) -> rows.maxOf { it.openedAt } }
+        val collectionIdsByEntity = organization.items.groupBy { it.entityId }
+            .mapValues { (_, rows) -> rows.mapTo(linkedSetOf()) { it.collectionId } }
+        LibraryUiState(
+            works = entities.map { entity ->
+                val position = positionById[entity.id]
+                LibraryWorkUi(
+                    id = entity.id,
+                    title = entity.title,
+                    author = entity.personName.orEmpty(),
+                    collection = entity.coll,
+                    kind = entity.kind.orEmpty(),
+                    status = statusById[entity.id]?.status.toLibraryShelf(),
+                    progress = position?.progressPct?.toFloat()?.coerceIn(0f, 1f),
+                    progressLabel = position?.let { "${arabicNumber((it.progressPct * 100).toInt())}٪" },
+                    downloaded = entity.id in reading.retained && entity.availability == ContentAvailability.COMPLETE,
+                    recentAt = recentById[entity.id] ?: position?.updatedAt,
+                    collectionIds = collectionIdsByEntity[entity.id].orEmpty(),
+                )
+            },
+            collections = organization.collections.map { collection ->
+                LibraryCollectionUi(
+                    id = collection.id,
+                    title = collection.title,
+                    itemCount = organization.items.count { it.collectionId == collection.id },
+                )
+            },
+        )
+    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), LibraryUiState())
+
+    val search: StateFlow<SearchUiState> = combine(
+        _searchQuery.debounce(120),
+        _searchFilters,
+        recentSearches,
+        catalogDao.observeCatalog(),
+    ) { query, filters, recent, catalog ->
+        SearchInput(query, filters, recent.map { it.q }, catalog)
+    }.mapLatest { input ->
+        val clean = input.query.trim()
+        val base = SearchUiState(
+            query = input.query,
+            filters = input.filters,
+            recentQueries = input.recent,
+            directMatches = emptyList(),
+            hits = emptyList(),
+            availableSources = input.catalog.map { it.title },
+            availableAuthors = input.catalog.mapNotNull { it.personName }.distinct(),
+        )
+        if (clean.length < 2) return@mapLatest base
+        val sourceIds = input.filters.sources.takeIf { it.isNotEmpty() }?.let { sources ->
+            input.catalog.asSequence().filter { it.title in sources }.mapTo(linkedSetOf()) { it.id }
+        }
+        val result = contentSearch.search(
+            ContentSearchRequest(
+                query = clean,
+                field = input.filters.field.toContentField(),
+                sort = input.filters.sort.toContentSort(),
+                filter = ContentSearchFilter(
+                    collections = input.filters.types.mapTo(linkedSetOf()) { it.contentCollection },
+                    entityIds = sourceIds,
+                    authors = input.filters.authors,
+                ),
+            ),
+        )
+        base.copy(
+            directMatches = result.catalog.map { hit ->
+                DirectMatchUi(
+                    id = hit.entityId,
+                    title = hit.title,
+                    kindLabel = hit.kind.ifBlank { hit.collection.toResultType().label },
+                    contextLabel = hit.personName,
+                    type = hit.collection.toResultType(),
+                )
+            },
+            hits = result.blocks.map { hit ->
+                SearchHitUi(
+                    id = "${hit.entityId}:${hit.rowid}",
+                    entityId = hit.entityId,
+                    ordinal = hit.ordinal,
+                    excerpt = hit.excerpt,
+                    matchStart = hit.matchStart,
+                    matchEnd = hit.matchEnd,
+                    sourceMatchStart = hit.sourceMatchStart,
+                    sourceMatchEnd = hit.sourceMatchEnd,
+                    sourceTitle = hit.sourceTitle,
+                    sourceAuthor = hit.sourceAuthor,
+                    locationLabel = listOfNotNull(
+                        hit.chapterTitle.ifBlank { null },
+                        hit.printedPage?.let { "ص ${arabicNumber(it)}" },
+                    ).joinToString(" · ").ifBlank { null },
+                    type = hit.collection.toResultType(),
+                )
+            },
+        )
+    }.stateIn(
+        viewModelScope,
+        SharingStarted.WhileSubscribed(5_000),
+        SearchUiState(
+            recentQueries = emptyList(),
+            directMatches = emptyList(),
+            hits = emptyList(),
+            availableSources = emptyList(),
+            availableAuthors = emptyList(),
+        ),
+    )
 
     val books: StateFlow<BooksUiState> = combine(
         catalogDao.observeCollection("book"), pinIds, retainedPins, library, positions,
@@ -208,12 +364,60 @@ class AtharContentViewModel @Inject constructor(
         }
     }
 
-    fun openReader(entityId: String) {
+    fun openReader(entityId: String, targetOrdinal: Int? = null) {
         viewModelScope.launch {
-            val position = userDao.readingPosition(entityId)?.ordinalHint ?: 0
+            personalLibrary.recordOpened(entityId)
+            val position = targetOrdinal ?: userDao.readingPosition(entityId)?.ordinalHint ?: 0
             runCatching { content.open(entityId, position) }
             refreshCacheBytes()
         }
+    }
+
+    fun setSearchQuery(query: String) {
+        _searchQuery.value = query.take(10_000)
+    }
+
+    fun setSearchFilters(filters: SearchFilters) {
+        _searchFilters.value = filters
+    }
+
+    fun rememberCurrentSearch() {
+        viewModelScope.launch { personalLibrary.rememberSearch(_searchQuery.value) }
+    }
+
+    fun clearRecentSearches() {
+        viewModelScope.launch { personalLibrary.clearRecentSearches() }
+    }
+
+    fun toggleReadLater(entityId: String) {
+        viewModelScope.launch { personalLibrary.toggleReadLater(entityId) }
+    }
+
+    fun setLibraryStatus(entityId: String, shelf: LibraryShelf?) {
+        val status = when (shelf) {
+            LibraryShelf.ReadLater -> LibraryStatus.READ_LATER
+            LibraryShelf.Reading -> LibraryStatus.READING
+            LibraryShelf.Finished -> LibraryStatus.FINISHED
+            null -> null
+            else -> return
+        }
+        viewModelScope.launch { personalLibrary.setStatus(entityId, status) }
+    }
+
+    fun createCollection(title: String) {
+        viewModelScope.launch { personalLibrary.createCollection(title) }
+    }
+
+    fun deleteCollection(collectionId: String) {
+        viewModelScope.launch { personalLibrary.deleteCollection(collectionId) }
+    }
+
+    fun addToCollection(collectionId: String, entityId: String) {
+        viewModelScope.launch { personalLibrary.addToCollection(collectionId, entityId) }
+    }
+
+    fun removeFromCollection(collectionId: String, entityId: String) {
+        viewModelScope.launch { personalLibrary.removeFromCollection(collectionId, entityId) }
     }
 
     fun onReaderPosition(entityId: String, ordinal: Int) {
@@ -388,11 +592,12 @@ private fun ContentBlockEntity.toReaderBlock(): ReaderBlock {
             level = type.drop(1).toIntOrNull() ?: 2,
             text = text,
             anchor = chapterAnchor,
+            ordinal = ordinal,
         )
-        type == "quote" -> ReaderBlock.Quote(id, text)
-        type == "verse" -> ReaderBlock.Verse(id, attrs.s ?: text, attrs.j)
-        type == "page" -> ReaderBlock.PageBreak(id, printedPage ?: 0, vol)
-        else -> ReaderBlock.Paragraph(id, text, attrs.footnotes)
+        type == "quote" -> ReaderBlock.Quote(id, text, ordinal)
+        type == "verse" -> ReaderBlock.Verse(id, attrs.s ?: text, attrs.j, ordinal)
+        type == "page" -> ReaderBlock.PageBreak(id, printedPage ?: 0, vol, ordinal)
+        else -> ReaderBlock.Paragraph(id, text, attrs.footnotes, ordinal)
     }
 }
 
@@ -415,3 +620,56 @@ private fun byteSize(bytes: Long): String = when {
 private fun arabicNumber(value: Any): String = value.toString().map { character ->
     if (character in '0'..'9') "٠١٢٣٤٥٦٧٨٩"[character - '0'] else character
 }.joinToString("")
+
+private data class LibraryReading(
+    val entries: List<LibraryEntryEntity>,
+    val positions: List<ReadingPositionEntity>,
+    val retained: Set<String>,
+)
+
+private data class LibraryOrganization(
+    val collections: List<UserCollectionEntity>,
+    val items: List<CollectionItemEntity>,
+    val history: List<ReadingHistoryEntity>,
+)
+
+private data class SearchInput(
+    val query: String,
+    val filters: SearchFilters,
+    val recent: List<String>,
+    val catalog: List<ContentEntity>,
+)
+
+private fun String?.toLibraryShelf(): LibraryShelf? = when (this) {
+    LibraryStatus.READ_LATER -> LibraryShelf.ReadLater
+    LibraryStatus.READING -> LibraryShelf.Reading
+    LibraryStatus.FINISHED -> LibraryShelf.Finished
+    else -> null
+}
+
+private fun SearchField.toContentField(): ContentSearchField = when (this) {
+    SearchField.FullText -> ContentSearchField.FullText
+    SearchField.Title -> ContentSearchField.Title
+    SearchField.Author -> ContentSearchField.Author
+    SearchField.Topic -> ContentSearchField.Topic
+}
+
+private fun SearchSort.toContentSort(): ContentSearchSort = when (this) {
+    SearchSort.Relevance -> ContentSearchSort.Relevance
+    SearchSort.Newest -> ContentSearchSort.Newest
+}
+
+private val SearchResultType.contentCollection: String
+    get() = when (this) {
+        SearchResultType.Book -> "book"
+        SearchResultType.Poem -> "poem"
+        SearchResultType.Article -> "article"
+        SearchResultType.Issue -> "question"
+    }
+
+private fun String.toResultType(): SearchResultType = when (this) {
+    "poem" -> SearchResultType.Poem
+    "article" -> SearchResultType.Article
+    "question" -> SearchResultType.Issue
+    else -> SearchResultType.Book
+}

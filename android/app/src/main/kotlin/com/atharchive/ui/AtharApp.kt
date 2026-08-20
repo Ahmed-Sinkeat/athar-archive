@@ -57,6 +57,15 @@ import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
 import androidx.navigation3.ui.NavDisplay
 import com.atharchive.feature.articles.ArticlesScreen
+import com.atharchive.feature.adhkar.AdhkarBabsScreen
+import com.atharchive.feature.adhkar.AdhkarFixture
+import com.atharchive.feature.adhkar.AdhkarScreen
+import com.atharchive.feature.downloads.CacheBudget
+import com.atharchive.feature.downloads.DownloadsScreen
+import com.atharchive.feature.downloads.StorageUi
+import com.atharchive.feature.downloads.downloadsUiState
+import com.atharchive.feature.issues.IssuesFixture
+import com.atharchive.feature.issues.IssuesScreen
 import com.atharchive.feature.audio.AudioFixture
 import com.atharchive.feature.audio.AudioScreen
 import com.atharchive.feature.audio.AudioProgressBar
@@ -70,7 +79,8 @@ import com.atharchive.feature.kannashah.KannashahScreen
 import com.atharchive.feature.reader.ReaderScreen
 import com.atharchive.feature.poemreader.PoemReaderScreen
 import com.atharchive.feature.poetry.PoetryScreen
-import com.atharchive.feature.search.SearchFixture
+import com.atharchive.feature.library.LibraryScreen
+import com.atharchive.feature.reader.ReaderSearchTarget
 import com.atharchive.feature.sections.AtharSection
 import com.atharchive.feature.sections.SectionsScreen
 import com.atharchive.feature.search.SearchScreen
@@ -99,6 +109,9 @@ private data class SectionRoute(val destination: String) : NavKey
 private data object SettingsRoute : NavKey
 
 @Serializable
+private data object LibraryRoute : NavKey
+
+@Serializable
 private data object SectionsRoute : NavKey
 
 @Serializable
@@ -108,10 +121,24 @@ private data object PlayerRoute : NavKey
 private data class PoemReaderRoute(val poemId: String) : NavKey
 
 @Serializable
-private data class ReaderRoute(val bookId: String) : NavKey
+private data class ReaderRoute(
+    val bookId: String,
+    val targetOrdinal: Int? = null,
+    val matchStart: Int? = null,
+    val matchEnd: Int? = null,
+) : NavKey
 
 @Serializable
 private data class SubSectionRoute(val section: String) : NavKey
+
+@Serializable
+private data object AdhkarBabsRoute : NavKey
+
+@Serializable
+private data class AdhkarBabRoute(val babId: String) : NavKey
+
+@Serializable
+private data object DownloadsRoute : NavKey
 
 @Composable
 fun AtharApp(contentViewModel: AtharContentViewModel = hiltViewModel()) {
@@ -124,6 +151,8 @@ fun AtharApp(contentViewModel: AtharContentViewModel = hiltViewModel()) {
     val booksState by contentViewModel.books.collectAsStateWithLifecycle()
     val articlesState by contentViewModel.articles.collectAsStateWithLifecycle()
     val poetryState by contentViewModel.poetry.collectAsStateWithLifecycle()
+    val libraryState by contentViewModel.personalLibraryState.collectAsStateWithLifecycle()
+    val searchState by contentViewModel.search.collectAsStateWithLifecycle()
     val storageStatus by contentViewModel.storageStatus.collectAsStateWithLifecycle()
     val cacheBytes by contentViewModel.cacheBytes.collectAsStateWithLifecycle()
     val cacheBudgetBytes by contentViewModel.cacheBudgetBytes.collectAsStateWithLifecycle()
@@ -243,8 +272,33 @@ fun AtharApp(contentViewModel: AtharContentViewModel = hiltViewModel()) {
                             if (it.download is BookDownloadUi.Available) requestNotificationPermission()
                             contentViewModel.toggleDownload(it.id)
                         },
-                        onSaveClick = { announce("سيُحفظ ${it.title} في قائمتي مع طبقة البيانات") },
+                        onSaveClick = { contentViewModel.toggleReadLater(it.id) },
+                        onLibrary = { backStack.add(LibraryRoute) },
                         scrollToTopRequest = booksScrollToTopRequest,
+                    )
+                }
+                entry<LibraryRoute> {
+                    LibraryScreen(
+                        state = libraryState,
+                        onBack = ::goBack,
+                        onOpenWork = { work ->
+                            if (work.collection == "poem") {
+                                backStack.add(PoemReaderRoute(work.id))
+                            } else {
+                                backStack.add(ReaderRoute(work.id))
+                            }
+                        },
+                        onStatusChange = { work, shelf ->
+                            contentViewModel.setLibraryStatus(work.id, shelf)
+                        },
+                        onCreateCollection = contentViewModel::createCollection,
+                        onDeleteCollection = { contentViewModel.deleteCollection(it.id) },
+                        onAddToCollection = { work, collection ->
+                            contentViewModel.addToCollection(collection.id, work.id)
+                        },
+                        onRemoveFromCollection = { work, collection ->
+                            contentViewModel.removeFromCollection(collection.id, work.id)
+                        },
                     )
                 }
                 entry<SettingsRoute> {
@@ -253,11 +307,7 @@ fun AtharApp(contentViewModel: AtharContentViewModel = hiltViewModel()) {
                         cacheBytes = cacheBytes,
                         cacheBudgetBytes = cacheBudgetBytes,
                         pinnedCount = pinnedCount,
-                        onClearCache = {
-                            contentViewModel.clearCache()
-                            announce("مُسحت الذاكرة المؤقتة وبقيت التنزيلات المحفوظة")
-                        },
-                        onCacheBudgetChange = contentViewModel::setCacheBudget,
+                        onDownloads = { backStack.add(DownloadsRoute) },
                         onBack = ::goBack,
                     )
                 }
@@ -268,7 +318,9 @@ fun AtharApp(contentViewModel: AtharContentViewModel = hiltViewModel()) {
                     val pagedBlocks = remember(route.bookId) {
                         contentViewModel.pagedReaderBlocks(route.bookId)
                     }.collectAsLazyPagingItems()
-                    LaunchedEffect(route.bookId) { contentViewModel.openReader(route.bookId) }
+                    LaunchedEffect(route.bookId, route.targetOrdinal) {
+                        contentViewModel.openReader(route.bookId, route.targetOrdinal)
+                    }
                     DisposableEffect(route.bookId) {
                         onDispose { contentViewModel.closeReader(route.bookId) }
                     }
@@ -279,6 +331,13 @@ fun AtharApp(contentViewModel: AtharContentViewModel = hiltViewModel()) {
                             onBack = ::goBack,
                             onSaveBenefit = { },
                             onPositionChange = { contentViewModel.onReaderPosition(route.bookId, it) },
+                            initialSearchTarget = if (
+                                route.targetOrdinal != null && route.matchStart != null && route.matchEnd != null
+                            ) {
+                                ReaderSearchTarget(route.targetOrdinal, route.matchStart, route.matchEnd)
+                            } else {
+                                null
+                            },
                         )
                     }
                 }
@@ -320,9 +379,7 @@ fun AtharApp(contentViewModel: AtharContentViewModel = hiltViewModel()) {
                             state = articlesState,
                             onSettings = ::openSettings,
                             onArticleClick = { backStack.add(ReaderRoute(it.id)) },
-                            onSaveClick = {
-                                announce("سيُحفظ ${it.title} في قائمتي مع طبقة البيانات")
-                            },
+                            onSaveClick = { contentViewModel.toggleReadLater(it.id) },
                             onDownloadClick = {
                                 if (!it.downloaded && !it.downloading) requestNotificationPermission()
                                 contentViewModel.toggleDownload(it.id)
@@ -330,18 +387,77 @@ fun AtharApp(contentViewModel: AtharContentViewModel = hiltViewModel()) {
                             onBack = ::goBack,
                         )
 
-                        AtharSection.Issues -> SectionPlaceholder(
-                            title = AtharSection.Issues.label,
-                            route = AtharSection.Issues.route,
+                        AtharSection.Issues -> IssuesScreen(
+                            state = IssuesFixture,
                             onSettings = ::openSettings,
+                            onIssueClick = { backStack.add(ReaderRoute(it.id)) },
+                            onSaveClick = {
+                                announce("سيُحفظ ${it.question} في قائمتي مع طبقة البيانات")
+                            },
+                            onDownloadClick = {
+                                announce("سيُربط تنزيل المسألة بمدير التنزيل في مرحلة البيانات")
+                            },
+                            onBack = ::goBack,
                         )
 
-                        AtharSection.Adhkar -> SectionPlaceholder(
-                            title = AtharSection.Adhkar.label,
-                            route = AtharSection.Adhkar.route,
+                        AtharSection.Adhkar -> AdhkarScreen(
+                            state = AdhkarFixture,
                             onSettings = ::openSettings,
+                            onOpenBabs = { backStack.add(AdhkarBabsRoute) },
+                            onCopy = { announce("نُسخ الذكر") },
+                            onSave = { announce("ستُحفظ الأذكار في المفضّلة مع طبقة البيانات") },
+                            onBack = ::goBack,
                         )
                     }
+                }
+                entry<AdhkarBabsRoute> {
+                    AdhkarBabsScreen(
+                        state = AdhkarFixture,
+                        onBack = ::goBack,
+                        onOpenBab = { backStack.add(AdhkarBabRoute(it.id)) },
+                    )
+                }
+                entry<AdhkarBabRoute> { route ->
+                    AdhkarScreen(
+                        state = AdhkarFixture,
+                        bab = AdhkarFixture.bab(route.babId),
+                        onSettings = ::openSettings,
+                        onOpenBabs = { backStack.add(AdhkarBabsRoute) },
+                        onCopy = { announce("نُسخ الذكر") },
+                        onSave = { announce("ستُحفظ الأذكار في المفضّلة مع طبقة البيانات") },
+                        onBack = ::goBack,
+                    )
+                }
+                entry<DownloadsRoute> {
+                    LaunchedEffect(Unit) { contentViewModel.refreshCacheBytes() }
+                    DownloadsScreen(
+                        state = downloadsUiState(
+                            books = booksState.books,
+                            articles = articlesState.articles,
+                            poems = poetryState.poems,
+                            storage = StorageUi(
+                                pinnedCountLabel = "${arabicDigits(pinnedCount)} عنصرًا",
+                                cacheLabel = storageSize(cacheBytes),
+                                budget = CacheBudget.fromBytes(cacheBudgetBytes),
+                                cacheFraction = if (cacheBudgetBytes <= 0 ||
+                                    cacheBudgetBytes == Long.MAX_VALUE
+                                ) {
+                                    0f
+                                } else {
+                                    (cacheBytes.toFloat() / cacheBudgetBytes).coerceIn(0f, 1f)
+                                },
+                            ),
+                        ),
+                        onBack = ::goBack,
+                        onBudgetChange = { contentViewModel.setCacheBudget(it.bytes) },
+                        onClearCache = {
+                            contentViewModel.clearCache()
+                            announce("مُسح المؤقّت وبقيت التنزيلات المثبّتة")
+                        },
+                        onPauseResume = { announce("سيتحكّم مدير التنزيل في ${it.title}") },
+                        onCancel = { contentViewModel.toggleDownload(it.id) },
+                        onRemove = { contentViewModel.toggleDownload(it.id) },
+                    )
                 }
                 entry<SectionRoute> { route ->
                     when (AtharDestination.fromRoute(route.destination)) {
@@ -354,9 +470,7 @@ fun AtharApp(contentViewModel: AtharContentViewModel = hiltViewModel()) {
                                 if (!it.downloaded && !it.downloading) requestNotificationPermission()
                                 contentViewModel.toggleDownload(it.id)
                             },
-                            onSaveClick = {
-                                announce("سيُحفظ ${it.title} في قائمتي مع طبقة البيانات")
-                            },
+                            onSaveClick = { contentViewModel.toggleReadLater(it.id) },
                         )
 
                         AtharDestination.Audio -> AudioScreen(
@@ -370,13 +484,34 @@ fun AtharApp(contentViewModel: AtharContentViewModel = hiltViewModel()) {
 
                         AtharDestination.Search -> SearchScreen(
                             onLogo = ::openSections,
-                            state = SearchFixture,
+                            state = searchState,
                             onSettings = ::openSettings,
-                            onOpenResult = {
-                                announce("فتح ${it.sourceTitle} عند ${it.locationLabel ?: "الموضع"}")
+                            onQueryChange = contentViewModel::setSearchQuery,
+                            onFiltersChange = contentViewModel::setSearchFilters,
+                            onOpenResult = { hit ->
+                                contentViewModel.rememberCurrentSearch()
+                                if (hit.type == com.atharchive.feature.search.SearchResultType.Poem) {
+                                    backStack.add(PoemReaderRoute(hit.entityId))
+                                } else {
+                                    backStack.add(
+                                        ReaderRoute(
+                                            bookId = hit.entityId,
+                                            targetOrdinal = hit.ordinal,
+                                            matchStart = hit.sourceMatchStart,
+                                            matchEnd = hit.sourceMatchEnd,
+                                        ),
+                                    )
+                                }
                             },
-                            onOpenDirectMatch = { announce("فتح ${it.title}") },
-                            onClearRecent = { announce("مُسحت عمليات البحث الأخيرة") },
+                            onOpenDirectMatch = { match ->
+                                contentViewModel.rememberCurrentSearch()
+                                if (match.type == com.atharchive.feature.search.SearchResultType.Poem) {
+                                    backStack.add(PoemReaderRoute(match.id))
+                                } else {
+                                    backStack.add(ReaderRoute(match.id))
+                                }
+                            },
+                            onClearRecent = contentViewModel::clearRecentSearches,
                         )
 
                         AtharDestination.Kannashah -> KannashahScreen(
@@ -513,16 +648,13 @@ private fun MiniPlayer(
 }
 
 @Composable
-@OptIn(ExperimentalMaterial3Api::class)
 private fun SettingsScreen(
     cacheBytes: Long,
     cacheBudgetBytes: Long,
     pinnedCount: Int,
-    onClearCache: () -> Unit,
-    onCacheBudgetChange: (Long) -> Unit,
+    onDownloads: () -> Unit,
     onBack: () -> Unit,
 ) {
-    var showCacheBudget by rememberSaveable { mutableStateOf(false) }
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -540,48 +672,14 @@ private fun SettingsScreen(
             HorizontalDivider(color = AtharTheme.colors.divider)
             SettingsRow(AtharIcons.TextSize, "إعدادات القراءة والخط")
             HorizontalDivider(color = AtharTheme.colors.divider)
+            // Storage lives on its own screen now: the budget, the transfers in flight
+            // and what is pinned are one subject, and a sheet could only hold the first.
             SettingsRow(
                 AtharIcons.Download,
                 "التنزيلات والتخزين",
-                "${arabicDigits(pinnedCount)} محفوظ · ${storageSize(cacheBytes)} مؤقت · حد ${cacheBudgetLabel(cacheBudgetBytes)}",
-                onClick = { showCacheBudget = true },
+                "${arabicDigits(pinnedCount)} مثبّت · ${storageSize(cacheBytes)} مؤقّت · حد ${cacheBudgetLabel(cacheBudgetBytes)}",
+                onClick = onDownloads,
             )
-            TextButton(
-                onClick = onClearCache,
-                enabled = cacheBytes > 0,
-                modifier = Modifier.align(Alignment.End),
-            ) {
-                Text("مسح الذاكرة المؤقتة")
-            }
-        }
-    }
-    if (showCacheBudget) {
-        ModalBottomSheet(onDismissRequest = { showCacheBudget = false }) {
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 20.dp, vertical = 12.dp),
-            ) {
-                Text("حد الذاكرة المؤقتة", style = MaterialTheme.typography.titleLarge)
-                CacheBudgetOptions.forEach { bytes ->
-                    TextButton(
-                        onClick = {
-                            onCacheBudgetChange(bytes)
-                            showCacheBudget = false
-                        },
-                        modifier = Modifier.fillMaxWidth(),
-                    ) {
-                        Text(
-                            text = if (bytes == cacheBudgetBytes) {
-                                "✓ ${cacheBudgetLabel(bytes)}"
-                            } else {
-                                cacheBudgetLabel(bytes)
-                            },
-                            modifier = Modifier.fillMaxWidth(),
-                        )
-                    }
-                }
-            }
         }
     }
 }

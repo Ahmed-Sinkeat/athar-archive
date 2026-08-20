@@ -21,6 +21,41 @@ object FtsQueryBuilder {
      */
     fun buildCompactCandidate(raw: String): String? = build(raw, compactCandidates = true)
 
+    /**
+     * Everything a compact contentless index needs after candidate retrieval. Closed
+     * phrases are verified against retained source text because `detail=none` stores no
+     * positions. [highlightTerms] contains normalized recall alternatives in query order,
+     * so callers can map a real source range without trying to parse generated MATCH SQL.
+     */
+    fun compactPlan(raw: String): CompactFtsPlan? {
+        val parsed = parseParts(raw.take(MAX_INPUT_CHARS))
+        if (parsed.isEmpty()) return null
+        var budget = MAX_TOKENS
+        val parts = parsed.mapNotNull { part ->
+            val tokens = part.tokens.take(budget)
+            budget -= tokens.size
+            tokens.takeIf { it.isNotEmpty() }?.let { Part(it, part.closedPhrase) }
+        }
+        val match = build(raw, compactCandidates = true) ?: return null
+        val phrases = parts.asSequence()
+            .filter(Part::closedPhrase)
+            .map { it.tokens.joinToString(" ") }
+            .filter(String::isNotBlank)
+            .toList()
+        val highlights = buildList {
+            addAll(phrases)
+            parts.flatMap(Part::tokens).forEach { token ->
+                add(token)
+                if (token.startsWith("ال") && codePointLength(token) > 3) add(token.drop(2))
+            }
+            val tokens = parts.flatMap(Part::tokens)
+            tokens.zipWithNext().forEach { (first, second) ->
+                if (first == "عبد") add(first + second)
+            }
+        }.distinct()
+        return CompactFtsPlan(match, phrases, highlights)
+    }
+
     private fun build(raw: String, compactCandidates: Boolean): String? {
         if (raw.isBlank()) return null
         val input = raw.take(MAX_INPUT_CHARS)
@@ -126,3 +161,9 @@ object FtsQueryBuilder {
 
     private data class Part(val tokens: List<String>, val closedPhrase: Boolean)
 }
+
+data class CompactFtsPlan(
+    val matchExpression: String,
+    val exactPhrases: List<String>,
+    val highlightTerms: List<String>,
+)

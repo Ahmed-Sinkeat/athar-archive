@@ -13,6 +13,7 @@ package com.atharchive.feature.reader
 
 sealed interface ReaderBlock {
     val id: String
+    val ordinal: Int?
 
     /** level 2 = kitab, level 3 = bab. */
     data class Heading(
@@ -20,33 +21,42 @@ sealed interface ReaderBlock {
         val level: Int,
         val text: String,
         val anchor: String,
+        override val ordinal: Int? = null,
     ) : ReaderBlock
 
     data class Paragraph(
         override val id: String,
         val text: String,
         val footnotes: List<String> = emptyList(),
+        override val ordinal: Int? = null,
     ) : ReaderBlock
 
-    data class Quote(override val id: String, val text: String) : ReaderBlock
+    data class Quote(
+        override val id: String,
+        val text: String,
+        override val ordinal: Int? = null,
+    ) : ReaderBlock
 
     /** [ajuz] is null when the source marks no caesura; the renderer centres it whole. */
     data class Verse(
         override val id: String,
         val sadr: String,
         val ajuz: String? = null,
+        override val ordinal: Int? = null,
     ) : ReaderBlock
 
     data class PageBreak(
         override val id: String,
         val page: Int,
         val volume: Int? = null,
+        override val ordinal: Int? = null,
     ) : ReaderBlock
 
     data class FootnoteBody(
         override val id: String,
         val marker: String,
         val text: String,
+        override val ordinal: Int? = null,
     ) : ReaderBlock
 }
 
@@ -127,6 +137,13 @@ data class ReaderUiState(
     val audio: List<BookAudioUi> = emptyList(),
     /** Catalog total; real readers page blocks and therefore do not infer this from [blocks]. */
     val blockCount: Int = blocks.size,
+)
+
+/** One local-search landing point; offsets are UTF-16 and [matchEnd] is exclusive. */
+data class ReaderSearchTarget(
+    val ordinal: Int,
+    val matchStart: Int,
+    val matchEnd: Int,
 )
 
 private fun heading(id: String, level: Int, text: String, anchor: String) =

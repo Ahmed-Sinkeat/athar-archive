@@ -37,7 +37,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.semantics.ProgressBarRangeInfo
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.progressBarRangeInfo
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.selected
 import androidx.compose.ui.semantics.semantics
@@ -386,4 +388,57 @@ fun AtharBookmarkButton(
             modifier = Modifier.size(18.dp),
         )
     }
+}
+
+/**
+ * Fills from the start edge, which under RTL is the right. Nothing mirrors by hand;
+ * the layout direction does it.
+ */
+@Composable
+fun AtharProgressBar(
+    progress: Float,
+    modifier: Modifier = Modifier,
+    height: Dp = 4.dp,
+    track: Color = AtharTheme.colors.divider,
+) {
+    val clamped = progress.coerceIn(0f, 1f)
+    Box(
+        modifier = modifier
+            .fillMaxWidth()
+            .height(height)
+            .clip(CircleShape)
+            .background(track)
+            .semantics { progressBarRangeInfo = ProgressBarRangeInfo(clamped, 0f..1f) },
+    ) {
+        Box(
+            Modifier
+                .fillMaxWidth(clamped)
+                .height(height)
+                .clip(CircleShape)
+                .background(AtharTheme.colors.accent),
+        )
+    }
+}
+
+/** A heading inside a scrolling list — one rank below the page title. */
+@Composable
+fun AtharSectionHeading(
+    text: String,
+    horizontalPadding: Dp,
+    modifier: Modifier = Modifier,
+    top: Dp = 16.dp,
+) {
+    Text(
+        text = text,
+        modifier = modifier.padding(
+            start = horizontalPadding,
+            end = horizontalPadding,
+            top = top,
+            bottom = 4.dp,
+        ),
+        color = MaterialTheme.colorScheme.onBackground,
+        fontFamily = AtharEditorialFontFamily,
+        fontWeight = FontWeight.Bold,
+        fontSize = 16.sp,
+    )
 }

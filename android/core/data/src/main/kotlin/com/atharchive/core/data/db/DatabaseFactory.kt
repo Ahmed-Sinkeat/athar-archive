@@ -5,6 +5,7 @@ import androidx.room3.Room
 import androidx.sqlite.driver.bundled.BundledSQLiteDriver
 import com.atharchive.core.data.db.content.AtharContentDatabase
 import com.atharchive.core.data.db.user.AtharUserDatabase
+import com.atharchive.core.data.repository.ContentSearchSchema
 import kotlinx.coroutines.Dispatchers
 
 object AtharDatabases {
@@ -23,6 +24,7 @@ object AtharDatabases {
             .setDriver(BundledSQLiteDriver())
             .setQueryCoroutineContext(Dispatchers.IO)
             .setSingleConnectionPool()
+            .addCallback(ContentSearchSchema.callback)
             .fallbackToDestructiveMigration(true)
             .build()
 }

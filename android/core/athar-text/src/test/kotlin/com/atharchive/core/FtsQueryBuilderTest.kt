@@ -42,6 +42,21 @@ class FtsQueryBuilderTest {
     }
 
     @Test
+    fun compactPlanExposesExactPhrasesAndSafeHighlightAlternatives() {
+        val plan = FtsQueryBuilder.compactPlan("«الإيمان» \"طلب العلم\"")!!
+
+        assertEquals(
+            "(\"الايمان\" OR \"ايمان\") AND \"طلب\" AND \"العلم\"",
+            plan.matchExpression,
+        )
+        assertEquals(listOf("طلب العلم"), plan.exactPhrases)
+        assertEquals(
+            listOf("طلب العلم", "الايمان", "ايمان", "طلب", "العلم", "علم"),
+            plan.highlightTerms,
+        )
+    }
+
+    @Test
     fun joinsCompoundNamesAsARecallAlternative() {
         assertEquals("((\"عبد\" \"الله\") OR \"عبدالله\")", FtsQueryBuilder.build("عبد الله"))
     }

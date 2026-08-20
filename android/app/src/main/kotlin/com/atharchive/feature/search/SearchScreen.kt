@@ -48,7 +48,6 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.atharchive.ui.components.AtharEmptyState
-import com.atharchive.ui.components.highlightMatches
 import com.atharchive.ui.components.AtharMenuButton
 import com.atharchive.ui.components.AtharSearchField
 import com.atharchive.ui.components.AtharTopBar
@@ -60,6 +59,8 @@ import com.atharchive.ui.theme.AtharTheme
 fun SearchScreen(
     state: SearchUiState,
     onSettings: () -> Unit,
+    onQueryChange: (String) -> Unit,
+    onFiltersChange: (SearchFilters) -> Unit,
     onOpenResult: (SearchHitUi) -> Unit,
     onOpenDirectMatch: (DirectMatchUi) -> Unit,
     onClearRecent: () -> Unit,
@@ -67,29 +68,27 @@ fun SearchScreen(
     onLogo: (() -> Unit)? = null,
     onBack: (() -> Unit)? = null,
 ) {
-    var query by rememberSaveable { mutableStateOf("") }
-    var filters by remember { mutableStateOf(SearchFilters()) }
+    var query by rememberSaveable { mutableStateOf(state.query) }
+    var filters by remember { mutableStateOf(state.filters) }
     var filtersVisible by rememberSaveable { mutableStateOf(false) }
     var scopedSource by rememberSaveable { mutableStateOf(state.scopedToSource) }
     val listState = rememberLazyListState()
 
+    fun changeFilters(next: SearchFilters) {
+        filters = next
+        onFiltersChange(next)
+    }
+
     val term = query.trim()
     val hasQuery = term.isNotBlank()
 
-    val hits = remember(state.hits, term, filters, scopedSource) {
+    val hits = remember(state.hits, term, scopedSource) {
         if (!hasQuery) {
             emptyList()
         } else {
             state.hits
                 .filter { hit ->
-                    (filters.types.isEmpty() || hit.type in filters.types) &&
-                        (filters.sources.isEmpty() || hit.sourceTitle in filters.sources) &&
-                        (filters.authors.isEmpty() || hit.sourceAuthor in filters.authors) &&
-                        (scopedSource == null || hit.sourceTitle == scopedSource)
-                }
-                .let { list ->
-                    // Relevance is the engine's order, so the default is the order given.
-                    if (filters.sort == SearchSort.Newest) list.reversed() else list
+                    scopedSource == null || hit.sourceTitle == scopedSource
                 }
         }
     }
@@ -124,7 +123,10 @@ fun SearchScreen(
                 AtharSearchField(
                     query = query,
                     placeholder = "ابحث في أهل الأثر…",
-                    onQueryChange = { query = it },
+                    onQueryChange = {
+                        query = it
+                        onQueryChange(it)
+                    },
                     tagPrefix = "search",
                     modifier = Modifier.padding(
                         start = horizontalPadding,
@@ -143,10 +145,10 @@ fun SearchScreen(
                         filters = filters,
                         horizontalPadding = horizontalPadding,
                         onClearScope = { scopedSource = null },
-                        onClearType = { filters = filters.copy(types = filters.types - it) },
-                        onClearSource = { filters = filters.copy(sources = filters.sources - it) },
-                        onClearAuthor = { filters = filters.copy(authors = filters.authors - it) },
-                        onResetField = { filters = filters.copy(field = SearchField.FullText) },
+                        onClearType = { changeFilters(filters.copy(types = filters.types - it)) },
+                        onClearSource = { changeFilters(filters.copy(sources = filters.sources - it)) },
+                        onClearAuthor = { changeFilters(filters.copy(authors = filters.authors - it)) },
+                        onResetField = { changeFilters(filters.copy(field = SearchField.FullText)) },
                     )
                 }
             }
@@ -188,7 +190,10 @@ fun SearchScreen(
                         RecentRow(
                             query = recent,
                             horizontalPadding = horizontalPadding,
-                            onClick = { query = recent },
+                            onClick = {
+                                query = recent
+                                onQueryChange(recent)
+                            },
                         )
                         if (index != state.recentQueries.lastIndex) {
                             HorizontalDivider(
@@ -205,7 +210,7 @@ fun SearchScreen(
                 return@LazyColumn
             }
 
-            if (!state.online) {
+            if (state.fullTextLocalOnly) {
                 item(key = "offline-note") {
                     OfflineNote(horizontalPadding = horizontalPadding)
                 }
@@ -216,16 +221,8 @@ fun SearchScreen(
                     // Offline "no results" must not claim the archive is empty — it only
                     // ever saw what is on the device.
                     AtharEmptyState(
-                        title = if (state.online) {
-                            "لا توجد نتائج"
-                        } else {
-                            "لم نجد نتائج في المحتوى المحمّل"
-                        },
-                        body = if (state.online) {
-                            "جرّب كلمة أقصر، أو امسح بعض المرشحات."
-                        } else {
-                            "اتصل بالإنترنت للبحث في الأرشيف كاملًا."
-                        },
+                        title = "لا توجد نتائج",
+                        body = "جرّب كلمة أقصر، أو امسح بعض المرشحات. البحث النصي يشمل المحتوى الموجود على الجهاز.",
                         tag = "search_empty_state",
                         horizontalPadding = horizontalPadding,
                     )
@@ -240,7 +237,7 @@ fun SearchScreen(
                     sort = filters.sort,
                     horizontalPadding = horizontalPadding,
                     onFilters = { filtersVisible = true },
-                    onSortChange = { filters = filters.copy(sort = it) },
+                    onSortChange = { changeFilters(filters.copy(sort = it)) },
                 )
             }
 
@@ -264,7 +261,6 @@ fun SearchScreen(
                 itemsIndexed(hits, key = { _, hit -> hit.id }) { index, hit ->
                     HitRow(
                         hit = hit,
-                        query = term,
                         horizontalPadding = horizontalPadding,
                         onClick = { onOpenResult(hit) },
                     )
@@ -278,10 +274,10 @@ fun SearchScreen(
                 }
             }
 
-            if (!state.online) {
+            if (state.fullTextLocalOnly) {
                 item(key = "offline-footer") {
                     Text(
-                        text = "اتصل بالإنترنت للبحث في الأرشيف كاملًا",
+                        text = "نزّل أعمالًا أخرى لإضافتها إلى البحث النصي المحلي.",
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(horizontal = horizontalPadding, vertical = 20.dp)
@@ -300,8 +296,8 @@ fun SearchScreen(
             filters = filters,
             sources = state.availableSources,
             authors = state.availableAuthors,
-            onChange = { filters = it },
-            onClear = { filters = SearchFilters() },
+            onChange = ::changeFilters,
+            onClear = { changeFilters(SearchFilters()) },
             onDismiss = { filtersVisible = false },
         )
     }
@@ -398,13 +394,13 @@ private fun OfflineNote(horizontalPadding: Dp) {
             modifier = Modifier.size(14.dp),
         )
         Text(
-            text = "البحث في المحتوى المحمّل فقط",
+            text = "فهرس العناوين كامل، والبحث النصي في المحتوى الموجود على الجهاز",
             modifier = Modifier.weight(1f),
             color = AtharTheme.colors.secondaryText,
             style = MaterialTheme.typography.bodySmall,
         )
         Text(
-            text = "دون اتصال",
+            text = "محلي",
             color = AtharTheme.colors.secondaryText.copy(alpha = 0.7f),
             style = MaterialTheme.typography.labelSmall,
         )
@@ -496,15 +492,22 @@ private fun DirectMatchRow(
 @Composable
 private fun HitRow(
     hit: SearchHitUi,
-    query: String,
     horizontalPadding: Dp,
     onClick: () -> Unit,
 ) {
     // The excerpt is the result. Source, location and type support it, in that order,
     // and each is a clear step quieter than the one above.
     val accent = AtharTheme.colors.accent
-    val highlighted = remember(hit, query, accent) {
-        highlightMatches(hit.excerpt, query, accent.copy(alpha = 0.18f))
+    val highlighted = remember(hit, accent) {
+        val start = hit.matchStart.coerceIn(0, hit.excerpt.length)
+        val end = hit.matchEnd.coerceIn(start, hit.excerpt.length)
+        buildAnnotatedString {
+            append(hit.excerpt.substring(0, start))
+            withStyle(SpanStyle(background = accent.copy(alpha = 0.18f), fontWeight = FontWeight.Bold)) {
+                append(hit.excerpt.substring(start, end))
+            }
+            append(hit.excerpt.substring(end))
+        }
     }
 
     Row(

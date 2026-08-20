@@ -55,17 +55,16 @@ Device: Xiaomi `23053RN02Y`, Android 15, USB ADB.
 - This check exposed and fixed an escaped adjacent-prefetch `UnknownHostException`; the exact
   offline scenario then passed on the rebuilt APK.
 
-## Remaining acceptance gate
+## Follow-up acceptance
 
-`./gradlew :core:data:connectedDebugAndroidTest` builds both APKs but HyperOS rejects the new
-test package before execution:
+The remaining device gate closed on 20 Aug 2026 during M7 verification. The complete
+`:core:data:connectedDebugAndroidTest` suite executed successfully on the same phone:
 
 ```text
-INSTALL_FAILED_USER_RESTRICTED: Install canceled by user
-Starting 0 tests on 23053RN02Y - 15
+Starting 12 tests on 23053RN02Y - 15
+Finished 12 tests on 23053RN02Y - 15
+BUILD SUCCESSFUL
 ```
 
-The production app can be updated over ADB; only installation of the separate
-`com.atharchive.core.data.test` package is blocked. Enable **Developer options → Install via
-USB**, then rerun the command above. M6 should receive its final milestone check only after
-that suite executes successfully.
+That run includes all three `ContentTransferRunnerTest` cases and all seven M6-era
+`ContentDatabaseImportTest` cases. M6 therefore has its final device-instrumentation check.

@@ -10,8 +10,8 @@ package com.atharchive.feature.search
  *    from one book outrank one weak hit from four books, and all four are shown.
  * 2. **Filters are not navigation.** There are no permanent content-type tabs; the user
  *    must never choose where to search before seeing results.
- * 3. **Offline is a scope, not an error.** The same result presentation serves both; only
- *    [SearchUiState.online] changes, and it only adds one quiet line.
+ * 3. **Local full text is a scope, not an error.** The catalog remains complete while
+ *    passage hits come from readable blocks already indexed on this device.
  */
 
 enum class SearchResultType(val key: String, val label: String) {
@@ -53,9 +53,14 @@ data class DirectMatchUi(
  */
 data class SearchHitUi(
     val id: String,
+    val entityId: String,
+    val ordinal: Int,
     val excerpt: String,
     val matchStart: Int,
     val matchEnd: Int,
+    /** UTF-16 offsets in the complete source block, used by tap-to-paragraph. */
+    val sourceMatchStart: Int = matchStart,
+    val sourceMatchEnd: Int = matchEnd,
     val sourceTitle: String,
     val sourceAuthor: String,
     val locationLabel: String?,
@@ -76,9 +81,12 @@ data class SearchFilters(
 }
 
 data class SearchUiState(
+    val query: String = "",
+    val filters: SearchFilters = SearchFilters(),
     val recentQueries: List<String>,
-    /** false → the local index answers; the UI says so quietly and changes nothing else. */
-    val online: Boolean,
+    /** Full text is local in v1; catalog metadata still covers every catalogued work. */
+    val fullTextLocalOnly: Boolean = true,
+    val searching: Boolean = false,
     val directMatches: List<DirectMatchUi>,
     val hits: List<SearchHitUi>,
     val availableSources: List<String>,
@@ -89,7 +97,6 @@ data class SearchUiState(
 
 val SearchFixture = SearchUiState(
     recentQueries = listOf("الإخلاص", "ابن تيمية", "طلب العلم", "العقيدة الطحاوية", "مكارم الأخلاق"),
-    online = true,
     availableSources = listOf(
         "الاستقامة",
         "جامع بيان العلم وفضله",
@@ -116,6 +123,8 @@ val SearchFixture = SearchUiState(
     hits = listOf(
         SearchHitUi(
             id = "hit-istiqama-74",
+            entityId = "al-istiqaama",
+            ordinal = 74,
             excerpt = "فأصل العمل الإخلاص ومتابعة السنة جميعًا",
             matchStart = 14,
             matchEnd = 21,
@@ -126,6 +135,8 @@ val SearchFixture = SearchUiState(
         ),
         SearchHitUi(
             id = "hit-istiqama-121",
+            entityId = "al-istiqaama",
+            ordinal = 121,
             excerpt = "ولا يكون العمل صالحًا إلا بالإخلاص لله",
             matchStart = 26,
             matchEnd = 34,
@@ -136,6 +147,8 @@ val SearchFixture = SearchUiState(
         ),
         SearchHitUi(
             id = "hit-jami-53",
+            entityId = "jami-bayan-al-ilm",
+            ordinal = 53,
             excerpt = "الإخلاص أصل في طلب العلم والعمل به",
             matchStart = 0,
             matchEnd = 8,
@@ -146,6 +159,8 @@ val SearchFixture = SearchUiState(
         ),
         SearchHitUi(
             id = "hit-madarij-312",
+            entityId = "madarij-salikin",
+            ordinal = 312,
             excerpt = "أخلصت لله أمرًا فأقبلت روحي … ونلتُ رضاه والجنةَ دارَ قرار",
             matchStart = 0,
             matchEnd = 6,
@@ -156,6 +171,8 @@ val SearchFixture = SearchUiState(
         ),
         SearchHitUi(
             id = "hit-hilya-48",
+            entityId = "sharh-hilyat-talib-al-ilm",
+            ordinal = 48,
             excerpt = "وما كان لله دام واتصل، والإخلاص سر بين العبد وربه",
             matchStart = 22,
             matchEnd = 30,
@@ -166,6 +183,8 @@ val SearchFixture = SearchUiState(
         ),
         SearchHitUi(
             id = "hit-article-ikhlas",
+            entityId = "article-ikhlas",
+            ordinal = 0,
             excerpt = "الإخلاص شرط في قبول العمل، فلا يقبل الله من العمل إلا ما كان خالصًا لوجهه",
             matchStart = 0,
             matchEnd = 8,

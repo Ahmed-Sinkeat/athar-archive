@@ -27,6 +27,10 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -48,6 +52,7 @@ fun BlockView(
     selected: Boolean,
     highlighted: Boolean,
     isSearchTarget: Boolean,
+    searchMatch: IntRange? = null,
     onLongPress: (fromTop: Boolean) -> Unit,
 ) {
     val body = settings.fontSize.sp
@@ -79,7 +84,7 @@ fun BlockView(
                 horizontalAlignment = if (isKitab) Alignment.CenterHorizontally else Alignment.Start,
             ) {
                 Text(
-                    text = block.text,
+                    text = markedText(block.text, searchMatch, colors),
                     color = if (isKitab) colors.text else colors.accent,
                     fontFamily = AtharEditorialFontFamily,
                     fontWeight = FontWeight.Bold,
@@ -108,7 +113,7 @@ fun BlockView(
                     .testTag("block_${block.id}"),
             ) {
                 Text(
-                    text = block.text,
+                    text = markedText(block.text, searchMatch, colors),
                     color = colors.text,
                     fontFamily = AtharEditorialFontFamily,
                     fontSize = body,
@@ -134,7 +139,7 @@ fun BlockView(
                         .background(colors.accent.copy(alpha = 0.55f)),
                 )
                 Text(
-                    text = block.text,
+                    text = markedText(block.text, searchMatch, colors),
                     color = colors.text.copy(alpha = 0.92f),
                     fontFamily = AtharEditorialFontFamily,
                     fontSize = (settings.fontSize - 1).sp,
@@ -155,11 +160,29 @@ fun BlockView(
                 if (block.ajuz != null) {
                     // Two hemistichs, each centred in its own half — never a guessed break.
                     Row(modifier = Modifier.fillMaxWidth()) {
-                        VerseHalf(block.sadr, colors, settings, Modifier.weight(1f))
-                        VerseHalf(block.ajuz, colors, settings, Modifier.weight(1f))
+                        VerseHalf(
+                            block.sadr,
+                            colors,
+                            settings,
+                            Modifier.weight(1f),
+                            searchMatch.segment(0, block.sadr.length),
+                        )
+                        VerseHalf(
+                            block.ajuz,
+                            colors,
+                            settings,
+                            Modifier.weight(1f),
+                            searchMatch.segment(block.sadr.length + 1, block.ajuz.length),
+                        )
                     }
                 } else {
-                    VerseHalf(block.sadr, colors, settings, Modifier.fillMaxWidth())
+                    VerseHalf(
+                        block.sadr,
+                        colors,
+                        settings,
+                        Modifier.fillMaxWidth(),
+                        searchMatch,
+                    )
                 }
             }
         }
@@ -228,9 +251,10 @@ private fun VerseHalf(
     colors: ReaderColors,
     settings: ReaderSettings,
     modifier: Modifier = Modifier,
+    searchMatch: IntRange? = null,
 ) {
     Text(
-        text = text,
+        text = markedText(text, searchMatch, colors),
         modifier = modifier,
         color = colors.text,
         fontFamily = AtharEditorialFontFamily,
@@ -238,4 +262,24 @@ private fun VerseHalf(
         lineHeight = (settings.fontSize * settings.spacing.multiplier).sp,
         textAlign = TextAlign.Center,
     )
+}
+
+private fun markedText(text: String, match: IntRange?, colors: ReaderColors): AnnotatedString {
+    if (match == null || match.isEmpty()) return AnnotatedString(text)
+    val start = match.first.coerceIn(0, text.length)
+    val end = (match.last + 1).coerceIn(start, text.length)
+    return buildAnnotatedString {
+        append(text.substring(0, start))
+        withStyle(SpanStyle(background = colors.accent.copy(alpha = 0.24f), fontWeight = FontWeight.Bold)) {
+            append(text.substring(start, end))
+        }
+        append(text.substring(end))
+    }
+}
+
+private fun IntRange?.segment(offset: Int, length: Int): IntRange? {
+    val source = this ?: return null
+    val start = source.first.coerceAtLeast(offset)
+    val end = (source.last + 1).coerceAtMost(offset + length)
+    return if (start < end) (start - offset) until (end - offset) else null
 }
