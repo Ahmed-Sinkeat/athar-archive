@@ -483,13 +483,34 @@ jobs:
             echo "::warning::no dist/search-index/*.sql — index generation was skipped or refused; search is UNCHANGED"
             exit 0
           fi
-          ok=0; bad=0
+          ok=0; bad=0; streak=0
           for f in "${files[@]}"; do
-            if pnpm exec wrangler d1 execute athar-search --remote -y --file "$f"; then
-              ok=$((ok+1))
+            applied=""
+            # D1 7009 is "Upstream service unavailable" — an explicit "come back
+            # later", so retry a file before writing it off. There was no retry
+            # at all before, so one blip lost a file for the whole deploy.
+            for delay in 0 15 45; do
+              if [ "$delay" -gt 0 ]; then echo "  retrying $(basename "$f") in ${delay}s…"; sleep "$delay"; fi
+              if pnpm exec wrangler d1 execute athar-search --remote -y --file "$f"; then
+                applied=1; break
+              fi
+            done
+            if [ -n "$applied" ]; then
+              ok=$((ok+1)); streak=0
             else
-              echo "::warning::D1 import failed for $f — continuing to next file"
-              bad=$((bad+1))
+              bad=$((bad+1)); streak=$((streak+1))
+              echo "::warning::D1 import failed for $f after 3 attempts"
+              # Stop rather than spend ~2.5 min per file re-proving D1 is down.
+              # On 2026-08-19 all 22 files failed exactly this way: 51 min of a
+              # 96 min job, every minute of it wasted, and every following
+              # deploy stalled behind it in the concurrency queue. Two files in
+              # a row failing three attempts each, with nothing yet applied, is
+              # not bad luck — it is D1 being unavailable.
+              if [ "$streak" -ge 2 ] && [ "$ok" -eq 0 ]; then
+                echo "::error::D1 rejected the first $bad file(s), 3 attempts each — aborting; search is UNCHANGED"
+                bad=${#files[@]}
+                break
+              fi
             fi
           done
           echo "SEARCH_OK=$ok" >> "$GITHUB_ENV"
