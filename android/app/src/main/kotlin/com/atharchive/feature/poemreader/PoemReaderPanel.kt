@@ -391,7 +391,7 @@ internal fun PoemAudioBar(
             Box(Modifier.weight(1f)) {
                 BarPill(colors, "poem_audio_reciter", onClick = { listOpen = true }) {
                     Text(
-                        text = "القارئ: ${track.reciter}",
+                        text = reciterLabel(track, recordings.size),
                         modifier = Modifier.weight(1f, fill = false),
                         color = colors.text,
                         style = MaterialTheme.typography.labelSmall,
@@ -510,6 +510,19 @@ internal fun PoemAudioBar(
     }
 }
 
+/**
+ * What the picker is called.
+ *
+ * The reciter is the honest label when the catalogue knows one. It often does not —
+ * `toPoemReaderUi` has no field to read it from yet — and a dangling «القارئ:» is
+ * worse than naming the control after what it opens.
+ */
+private fun reciterLabel(track: PoemAudioUi, count: Int): String = when {
+    track.reciter.isNotBlank() -> "القارئ: ${track.reciter}"
+    count > 1 -> "التسجيلات"
+    else -> "التسجيل"
+}
+
 /** The bar's one control shape: a quiet capsule that opens a picker. */
 @Composable
 private fun BarPill(
@@ -558,9 +571,12 @@ private fun ReciterMenu(
             val active = item.id == current.id
             DropdownMenuItem(
                 text = {
+                    // With no reciter the collection is the only name the recording
+                    // has, so it moves up rather than leaving a blank first line.
+                    val named = item.reciter.isNotBlank()
                     Column {
                         Text(
-                            text = item.reciter,
+                            text = if (named) item.reciter else item.collection,
                             color = if (active) colors.accent else colors.text,
                             style = MaterialTheme.typography.bodySmall,
                             fontWeight = if (active) FontWeight.SemiBold else FontWeight.Normal,
@@ -568,7 +584,11 @@ private fun ReciterMenu(
                             overflow = TextOverflow.Ellipsis,
                         )
                         Text(
-                            text = "${item.collection} · ${item.durationLabel}",
+                            text = if (named) {
+                                "${item.collection} · ${item.durationLabel}"
+                            } else {
+                                item.durationLabel
+                            },
                             color = colors.secondary,
                             style = MaterialTheme.typography.labelSmall,
                         )
