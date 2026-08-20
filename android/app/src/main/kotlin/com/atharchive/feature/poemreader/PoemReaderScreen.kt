@@ -6,6 +6,7 @@ import androidx.compose.foundation.interaction.DragInteraction
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -16,6 +17,7 @@ import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -29,6 +31,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -37,7 +40,14 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.geometry.CornerRadius
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Rect
+import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.Role
 import androidx.compose.foundation.gestures.detectTapGestures
@@ -46,7 +56,6 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextLayoutResult
 import androidx.compose.ui.text.buildAnnotatedString
-import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
@@ -303,36 +312,30 @@ fun PoemReaderScreen(
 
 /* ── verse ─────────────────────────────────────────────────────────────── */
 
-/**
- * Places the popover just below the tapped line, centred on it and kept inside the
- * window — flipping above when there is no room beneath.
- *
- * Popup's `alignment` can only position the content *within* the anchor's bounds, so it
- * always overlapped the verse; and `offset` is mirrored under RTL while the tap
- * coordinate from detectTapGestures is not, so combining the two fought itself.
- */
-private class BelowAnchor(private val gapPx: Int) : PopupPositionProvider {
-    override fun calculatePosition(
-        anchorBounds: IntRect,
-        windowSize: IntSize,
-        layoutDirection: LayoutDirection,
-        popupContentSize: IntSize,
-    ): IntOffset {
-        val maxX = (windowSize.width - popupContentSize.width - 16).coerceAtLeast(16)
-        val x = (anchorBounds.left + (anchorBounds.width - popupContentSize.width) / 2)
-            .coerceIn(16, maxX)
-        val below = anchorBounds.bottom + gapPx
-        val y = if (below + popupContentSize.height <= windowSize.height) {
-            below
-        } else {
-            (anchorBounds.top - popupContentSize.height - gapPx).coerceAtLeast(16)
-        }
-        return IntOffset(x, y)
-    }
-}
-
 /** A glossary word and where it sits in the rendered line. */
 private data class WordSpan(val start: Int, val end: Int, val word: String, val meaning: String)
+
+/** The open word, plus the rect it occupies in its own Text's coordinate space. */
+private data class OpenWord(val span: WordSpan, val bounds: Rect)
+
+/**
+ * The rect a span occupies, in the text's own coordinates.
+ *
+ * Under RTL the first character sits to the right of the last, so the horizontal
+ * extent is a min/max rather than first.left..last.right. A word broken across two
+ * lines has no single rect; the first line's box is the honest anchor.
+ */
+private fun TextLayoutResult.boundsOf(span: WordSpan): Rect {
+    val first = getBoundingBox(span.start)
+    val last = getBoundingBox((span.end - 1).coerceAtLeast(span.start))
+    if (first.top != last.top) return first
+    return Rect(
+        minOf(first.left, last.left),
+        first.top,
+        maxOf(first.right, last.right),
+        first.bottom,
+    )
+}
 
 @Composable
 private fun VerseRow(
@@ -415,12 +418,20 @@ private fun Hemistich(
         }
         out
     }
+    // A faint accent ground, not an underline.
+    //
+    // An underline under vocalised Amiri runs straight through the descenders and the
+    // lower harakat, and two glossary words side by side produced one continuous rule
+    // across both. A background span is drawn from the font's own ascent to descent,
+    // so it clears the tashkeel, and because the space between two words belongs to
+    // neither span they always read as two separate marks. It is also the treatment
+    // the app already uses for search matches, so the meaning of the mark carries over.
     val annotated = remember(spans, line, colors) {
         buildAnnotatedString {
             append(line)
             spans.forEach { span ->
                 addStyle(
-                    SpanStyle(textDecoration = TextDecoration.Underline),
+                    SpanStyle(background = colors.accent.copy(alpha = 0.12f)),
                     span.start,
                     span.end,
                 )
@@ -429,7 +440,7 @@ private fun Hemistich(
     }
 
     var layout by remember { mutableStateOf<TextLayoutResult?>(null) }
-    var open by remember { mutableStateOf<WordSpan?>(null) }
+    var open by remember { mutableStateOf<OpenWord?>(null) }
 
     Box(modifier = Modifier.fillMaxWidth()) {
         Text(
@@ -442,7 +453,8 @@ private fun Hemistich(
                     detectTapGestures { pos ->
                         val result = layout ?: return@detectTapGestures
                         val offset = result.getOffsetForPosition(pos)
-                        open = spans.firstOrNull { offset >= it.start && offset < it.end }
+                        val hit = spans.firstOrNull { offset >= it.start && offset < it.end }
+                        open = hit?.let { OpenWord(it, result.boundsOf(it)) }
                     }
                 },
             onTextLayout = { layout = it },
@@ -453,47 +465,124 @@ private fun Hemistich(
             lineHeight = ((settings.fontSize + 1) * settings.spacing.multiplier).sp,
             textAlign = align,
         )
-        open?.let { span ->
-            WordPopover(span.word, span.meaning, colors) { open = null }
+        open?.let { word ->
+            WordCallout(word, colors) { open = null }
         }
     }
 }
 
-/** Small enough to read over the poem without displacing it. */
+private val TailWidth = 14.dp
+private val TailHeight = 7.dp
+
+/**
+ * The meaning, as a callout pinned to the word itself.
+ *
+ * It sits above the word so the finger that opened it is not covering it, and drops
+ * below only when there is no room above. The tail is what gives it a place: without
+ * it the card floated somewhere near the line and belonged to nothing.
+ *
+ * Inverted ground, like the reader's own toast — a tooltip reads as ephemeral, and an
+ * inverted pill needs no border to separate itself from the page in any palette.
+ */
 @Composable
-private fun WordPopover(
-    word: String,
-    meaning: String,
+private fun WordCallout(
+    word: OpenWord,
     colors: ReaderColors,
     onDismiss: () -> Unit,
 ) {
+    val density = LocalDensity.current
+    val tailH = with(density) { TailHeight.roundToPx() }
+    val margin = with(density) { 12.dp.roundToPx() }
+
+    // ponytail: the provider owns the x, and the tail has to point back at the word
+    // from wherever that landed — so it writes the offset back for the content to read.
+    // No cycle: the tail never changes the pill's size, so this settles in one frame.
+    val tailCentre = remember { mutableFloatStateOf(Float.NaN) }
+    var below by remember { mutableStateOf(false) }
+
+    val provider = remember(word, tailH, margin) {
+        object : PopupPositionProvider {
+            override fun calculatePosition(
+                anchorBounds: IntRect,
+                windowSize: IntSize,
+                layoutDirection: LayoutDirection,
+                popupContentSize: IntSize,
+            ): IntOffset {
+                val wordCentreX = anchorBounds.left + word.bounds.center.x
+                val maxX = (windowSize.width - popupContentSize.width - margin)
+                    .coerceAtLeast(margin)
+                val x = (wordCentreX - popupContentSize.width / 2f).toInt().coerceIn(margin, maxX)
+                val above = anchorBounds.top + word.bounds.top.toInt() - popupContentSize.height
+                val fitsAbove = above >= margin
+                below = !fitsAbove
+                tailCentre.floatValue = wordCentreX - x
+                val y = if (fitsAbove) above else anchorBounds.top + word.bounds.bottom.toInt()
+                return IntOffset(x, y)
+            }
+        }
+    }
+
+    val ground = colors.text.copy(alpha = 0.94f)
+    val radiusPx = with(density) { 10.dp.toPx() }
+    val tailWpx = with(density) { TailWidth.toPx() }
+    val tailHpx = with(density) { TailHeight.toPx() }
+
     Popup(
-        popupPositionProvider = BelowAnchor(gapPx = 10),
+        popupPositionProvider = provider,
         onDismissRequest = onDismiss,
         // focusable, or an outside tap never reaches onDismissRequest and it sticks open
         properties = PopupProperties(focusable = true),
     ) {
         Column(
             modifier = Modifier
-                .width(240.dp)
-                .clip(RoundedCornerShape(10.dp))
-                .background(colors.page)
-                .padding(horizontal = 12.dp, vertical = 9.dp)
+                .widthIn(max = 268.dp)
+                .width(IntrinsicSize.Max)
+                .drawBehind {
+                    val bodyTop = if (below) tailHpx else 0f
+                    val bodyBottom = if (below) size.height else size.height - tailHpx
+                    drawRoundRect(
+                        color = ground,
+                        topLeft = Offset(0f, bodyTop),
+                        size = Size(size.width, bodyBottom - bodyTop),
+                        cornerRadius = CornerRadius(radiusPx, radiusPx),
+                    )
+                    val centre = tailCentre.floatValue
+                    if (centre.isNaN()) return@drawBehind
+                    val cx = centre.coerceIn(radiusPx + tailWpx / 2f, size.width - radiusPx - tailWpx / 2f)
+                    val path = Path().apply {
+                        if (below) {
+                            moveTo(cx - tailWpx / 2f, bodyTop)
+                            lineTo(cx, 0f)
+                            lineTo(cx + tailWpx / 2f, bodyTop)
+                        } else {
+                            moveTo(cx - tailWpx / 2f, bodyBottom)
+                            lineTo(cx, size.height)
+                            lineTo(cx + tailWpx / 2f, bodyBottom)
+                        }
+                        close()
+                    }
+                    drawPath(path, ground)
+                }
+                .padding(
+                    top = if (below) TailHeight else 0.dp,
+                    bottom = if (below) 0.dp else TailHeight,
+                )
+                .padding(horizontal = 12.dp, vertical = 8.dp)
                 .testTag("word_popover"),
         ) {
             Text(
-                text = word,
-                color = colors.accent,
+                text = word.span.word,
+                color = colors.page,
                 fontFamily = AtharEditorialFontFamily,
                 fontWeight = FontWeight.Bold,
                 fontSize = 15.sp,
             )
             Text(
-                text = meaning,
-                modifier = Modifier.padding(top = 3.dp),
-                color = colors.text.copy(alpha = 0.85f),
+                text = word.span.meaning,
+                modifier = Modifier.padding(top = 2.dp),
+                color = colors.page.copy(alpha = 0.82f),
                 style = MaterialTheme.typography.bodySmall,
-                lineHeight = 21.sp,
+                lineHeight = 20.sp,
             )
         }
     }
