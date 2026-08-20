@@ -96,6 +96,9 @@ data class InBookHit(
 // ---- reading appearance, independent of the app's light/dark theme ----
 
 enum class ReaderPalette(val label: String) {
+    /** Follows the app's own light/dark choice. The default: a cream page dropped on a
+     *  reader at night was the worst moment in the app. */
+    Follow("تلقائي"),
     White("أبيض"),
     Warm("دافئ"),
     Dark("داكن"),
@@ -110,7 +113,7 @@ enum class ReaderSpacing(val label: String, val multiplier: Float) {
 data class ReaderSettings(
     val fontSize: Int = 19,
     val spacing: ReaderSpacing = ReaderSpacing.Normal,
-    val palette: ReaderPalette = ReaderPalette.Warm,
+    val palette: ReaderPalette = ReaderPalette.Follow,
 ) {
     companion object {
         const val MIN_SIZE = 14

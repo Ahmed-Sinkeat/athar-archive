@@ -93,7 +93,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.sp
 import com.atharchive.ui.theme.AtharEditorialFontFamily
+import com.atharchive.feature.reader.ReaderSettings
+import com.atharchive.ui.settings.AppearanceScreen
 import com.atharchive.ui.theme.AtharTheme
+import com.atharchive.ui.theme.ThemeMode
 import kotlinx.coroutines.launch
 import kotlinx.serialization.Serializable
 import com.atharchive.data.AtharContentViewModel
@@ -140,8 +143,17 @@ private data class AdhkarBabRoute(val babId: String) : NavKey
 @Serializable
 private data object DownloadsRoute : NavKey
 
+@Serializable
+private data object AppearanceRoute : NavKey
+
 @Composable
-fun AtharApp(contentViewModel: AtharContentViewModel = hiltViewModel()) {
+fun AtharApp(
+    themeMode: ThemeMode,
+    onThemeModeChange: (ThemeMode) -> Unit,
+    readerSettings: ReaderSettings,
+    onReaderSettingsChange: (ReaderSettings) -> Unit,
+    contentViewModel: AtharContentViewModel = hiltViewModel(),
+) {
     val context = LocalContext.current
     val backStack = rememberNavBackStack(BooksCatalogRoute)
     val snackbarHostState = remember { SnackbarHostState() }
@@ -307,6 +319,8 @@ fun AtharApp(contentViewModel: AtharContentViewModel = hiltViewModel()) {
                         cacheBytes = cacheBytes,
                         cacheBudgetBytes = cacheBudgetBytes,
                         pinnedCount = pinnedCount,
+                        themeModeLabel = themeMode.label,
+                        onAppearance = { backStack.add(AppearanceRoute) },
                         onDownloads = { backStack.add(DownloadsRoute) },
                         onBack = ::goBack,
                     )
@@ -331,6 +345,8 @@ fun AtharApp(contentViewModel: AtharContentViewModel = hiltViewModel()) {
                             onBack = ::goBack,
                             onSaveBenefit = { },
                             onPositionChange = { contentViewModel.onReaderPosition(route.bookId, it) },
+                            settings = readerSettings,
+                            onSettingsChange = onReaderSettingsChange,
                             initialSearchTarget = if (
                                 route.targetOrdinal != null && route.matchStart != null && route.matchEnd != null
                             ) {
@@ -348,7 +364,12 @@ fun AtharApp(contentViewModel: AtharContentViewModel = hiltViewModel()) {
                     DisposableEffect(route.poemId) {
                         onDispose { contentViewModel.closeReader(route.poemId) }
                     }
-                    poemState?.let { state -> PoemReaderScreen(state = state, onBack = ::goBack) }
+                    poemState?.let { state -> PoemReaderScreen(
+                            state = state,
+                            onBack = ::goBack,
+                            settings = readerSettings,
+                            onSettingsChange = onReaderSettingsChange,
+                        ) }
                 }
                 entry<PlayerRoute> {
                     nowPlaying?.let { playing ->
@@ -409,6 +430,15 @@ fun AtharApp(contentViewModel: AtharContentViewModel = hiltViewModel()) {
                             onBack = ::goBack,
                         )
                     }
+                }
+                entry<AppearanceRoute> {
+                    AppearanceScreen(
+                        themeMode = themeMode,
+                        onThemeModeChange = onThemeModeChange,
+                        reader = readerSettings,
+                        onReaderChange = onReaderSettingsChange,
+                        onBack = ::goBack,
+                    )
                 }
                 entry<AdhkarBabsRoute> {
                     AdhkarBabsScreen(
@@ -652,6 +682,8 @@ private fun SettingsScreen(
     cacheBytes: Long,
     cacheBudgetBytes: Long,
     pinnedCount: Int,
+    themeModeLabel: String,
+    onAppearance: () -> Unit,
     onDownloads: () -> Unit,
     onBack: () -> Unit,
 ) {
@@ -668,9 +700,14 @@ private fun SettingsScreen(
             onBack = onBack,
         )
         Column(modifier = Modifier.padding(horizontal = 20.dp)) {
-            SettingsRow(AtharIcons.Palette, "المظهر")
-            HorizontalDivider(color = AtharTheme.colors.divider)
-            SettingsRow(AtharIcons.TextSize, "إعدادات القراءة والخط")
+            // One row: the page palette follows the app theme now, so appearance and
+            // reading are one subject rather than two dead entries.
+            SettingsRow(
+                AtharIcons.Palette,
+                "المظهر والقراءة",
+                themeModeLabel,
+                onClick = onAppearance,
+            )
             HorizontalDivider(color = AtharTheme.colors.divider)
             // Storage lives on its own screen now: the budget, the transfers in flight
             // and what is pinned are one subject, and a sheet could only hold the first.

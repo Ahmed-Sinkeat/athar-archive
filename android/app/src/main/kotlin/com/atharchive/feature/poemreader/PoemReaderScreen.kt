@@ -94,9 +94,10 @@ import kotlinx.coroutines.launch
 fun PoemReaderScreen(
     state: PoemReaderUiState,
     onBack: () -> Unit,
+    settings: ReaderSettings,
+    onSettingsChange: (ReaderSettings) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    var settings by remember { mutableStateOf(ReaderSettings()) }
     var settingsOpen by remember { mutableStateOf(false) }
     val colors = rememberReaderColors(settings.palette)
     val listState = rememberLazyListState()
@@ -303,7 +304,7 @@ fun PoemReaderScreen(
             ReaderSettingsPopover(
                 settings = settings,
                 colors = colors,
-                onChange = { settings = it },
+                onChange = onSettingsChange,
                 onDismiss = { settingsOpen = false },
             )
         }

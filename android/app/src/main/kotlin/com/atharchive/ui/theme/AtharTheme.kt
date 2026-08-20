@@ -132,6 +132,34 @@ private val AtharTypography = Typography(
     ),
 )
 
+/**
+ * What the reader chose, not what the system did.
+ *
+ * [System] follows the device; the other two override it, so a reader who forces the app
+ * light gets a light app at night — including inside a book.
+ */
+enum class ThemeMode(val label: String) {
+    System("نظام الجهاز"),
+    Light("فاتح"),
+    Dark("داكن"),
+    ;
+
+    @Composable
+    fun resolve(): Boolean = when (this) {
+        System -> isSystemInDarkTheme()
+        Light -> false
+        Dark -> true
+    }
+}
+
+/**
+ * The app's resolved theme, for surfaces that paint their own colours.
+ *
+ * The reader keeps a palette of its own, and it has to be able to ask what the app
+ * settled on without asking the system a second question and disagreeing with it.
+ */
+val LocalAtharDarkTheme = staticCompositionLocalOf { false }
+
 @Immutable
 data class AtharExtraColors(
     val canvas: Color,
@@ -242,6 +270,7 @@ fun AtharTheme(
 
     androidx.compose.runtime.CompositionLocalProvider(
         LocalAtharExtraColors provides if (darkTheme) DarkExtraColors else LightExtraColors,
+        LocalAtharDarkTheme provides darkTheme,
     ) {
         MaterialTheme(
             colorScheme = colorScheme,

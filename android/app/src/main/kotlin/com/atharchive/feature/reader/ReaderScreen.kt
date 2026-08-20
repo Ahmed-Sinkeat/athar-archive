@@ -70,10 +70,11 @@ fun ReaderScreen(
     onBack: () -> Unit,
     onSaveBenefit: (String) -> Unit,
     onPositionChange: (Int) -> Unit,
+    settings: ReaderSettings,
+    onSettingsChange: (ReaderSettings) -> Unit,
     modifier: Modifier = Modifier,
     initialSearchTarget: ReaderSearchTarget? = null,
 ) {
-    var settings by remember { mutableStateOf(ReaderSettings()) }
     var settingsOpen by remember { mutableStateOf(false) }
     var panelOpen by remember { mutableStateOf(false) }
     var query by remember { mutableStateOf("") }
@@ -378,7 +379,7 @@ fun ReaderScreen(
         ReaderSettingsPopover(
             settings = settings,
             colors = colors,
-            onChange = { settings = it },
+            onChange = onSettingsChange,
             onDismiss = { settingsOpen = false },
         )
     }
