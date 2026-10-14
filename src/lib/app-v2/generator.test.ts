@@ -1,9 +1,10 @@
+import { gunzipSync } from "node:zlib";
 import { generateKeyPairSync } from "node:crypto";
 import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { afterEach, describe, expect, it } from "vitest";
-import { generateAppContent } from "./generator.js";
+import { generateAppContent, publishedContentTargets } from "./generator.js";
 import { jsonBytes, verifyRootEnvelope } from "./package.js";
 
 const temporaryRoots: string[] = [];
@@ -41,6 +42,55 @@ afterEach(() => {
 });
 
 describe("app/v2 content generator", () => {
+  it("discovers published sources including large books and rejects ambiguous IDs", async () => {
+    const root = fixtureRoot();
+    mkdirSync(path.join(root, "src/content/book-lg"), { recursive: true });
+    writeFileSync(path.join(root, "src/content/book-lg/large.md"), "---\nstatus: published\ntitle: Large\n---\nFull text");
+    writeFileSync(path.join(root, "src/content/book/draft.md"), "---\nstatus: draft\n---\nDraft");
+    expect(await publishedContentTargets(root)).toEqual([
+      { coll: "book", id: "fixture" }, { coll: "book", id: "large" },
+    ]);
+    mkdirSync(path.join(root, "src/content/question"), { recursive: true });
+    writeFileSync(path.join(root, "src/content/question/fixture.md"), "---\nstatus: published\n---\nQuestion");
+    await expect(publishedContentTargets(root)).rejects.toThrow("duplicate app-content entity ID");
+  });
+
+  it("includes every published recording attached by source, with its actual lesson title", async () => {
+    const root = fixtureRoot();
+    mkdirSync(path.join(root, "src/content/audio"), { recursive: true });
+    const bytes = Buffer.from("verified audio bytes");
+    for (const id of ["lesson-one", "lesson-two"]) {
+      writeFileSync(path.join(root, `src/content/audio/${id}.md`), `---\ntitle: ${id}\nstatus: published\nsource_type: book\nsource_id: fixture\nurl: https://example.com/${id}.opus\nduration: '1:00'\nsize_bytes: ${bytes.length}\n---\n`);
+    }
+    const result = await generateAppContent({ repositoryRoot: root, outputRoot: path.join(root, "out"),
+      sidecarRoot: path.join(root, "ids"), targets: [{ coll: "book", id: "fixture" }], loadAudio: async () => bytes });
+    expect(result.catalog.entries[0]?.audio?.map((audio) => audio.title)).toEqual(["lesson-one", "lesson-two"]);
+  });
+
+  it("keeps published text while omitting its draft recording", async () => {
+    const root = fixtureRoot();
+    const bookPath = path.join(root, "src/content/book/fixture.md");
+    writeFileSync(bookPath, readFileSync(bookPath, "utf8").replace("status: published", "status: published\naudio: draft-audio"));
+    mkdirSync(path.join(root, "src/content/audio"), { recursive: true });
+    writeFileSync(path.join(root, "src/content/audio/draft-audio.md"), "---\nstatus: draft\n---\n");
+    const result = await generateAppContent({ repositoryRoot: root, outputRoot: path.join(root, "out"),
+      sidecarRoot: path.join(root, "ids"), targets: [{ coll: "book", id: "fixture" }] });
+    expect(result.catalog.entries).toHaveLength(1);
+    expect(result.catalog.entries[0]?.audio).toBeUndefined();
+  });
+
+  it("carries removals across generations without deleting retained artifacts", async () => {
+    const root = fixtureRoot();
+    writeFileSync(path.join(root, "src/content/book/removed.md"), "---\nstatus: published\ntitle: Removed\n---\nOld text");
+    const options = { repositoryRoot: root, outputRoot: path.join(root, "out"), sidecarRoot: path.join(root, "ids") };
+    const first = await generateAppContent({ ...options, targets: [{ coll: "book", id: "fixture" }, { coll: "book", id: "removed" }] });
+    const second = await generateAppContent({ ...options, targets: [{ coll: "book", id: "fixture" }] });
+    const third = await generateAppContent({ ...options, targets: [{ coll: "book", id: "fixture" }] });
+    const deleted = JSON.parse(readFileSync(path.join(second.outputDirectory, third.rootPayload.tombstones.path), "utf8")).deleted;
+    expect(deleted).toEqual([expect.objectContaining({ id: "removed", coll: "book" })]);
+    expect(existsSync(path.join(first.outputDirectory, first.catalog.entries.find((entry) => entry.id === "removed")!.pkg.path))).toBe(true);
+  });
+
   it("writes a signed content-addressed generation and reuses its stable IDs", async () => {
     const root = fixtureRoot();
     const outputRoot = path.join(root, "out");
@@ -74,6 +124,30 @@ describe("app/v2 content generator", () => {
     expect(second.entities[0]).toMatchObject({ version: 1, createdIds: 0, reusedIds: 2 });
     expect(second.rootPayload).toEqual(first.rootPayload);
     expect(existsSync(path.join(appRoot, "index.json"))).toBe(false);
+  });
+
+  it("delivers published verse commentary and rejects missing anchors and cues", async () => {
+    const root = fixtureRoot();
+    mkdirSync(path.join(root, "src/content/poem"), { recursive: true });
+    mkdirSync(path.join(root, "src/content/annotation"), { recursive: true });
+    mkdirSync(path.join(root, "src/content/audio"), { recursive: true });
+    mkdirSync(path.join(root, "src/content/poem-timing"), { recursive: true });
+    writeFileSync(path.join(root, "src/content/poem/poem.md"), "---\ntitle: القصيدة\nstatus: published\n---\nصدر أول … عجز أول\nصدر ثان … عجز ثان\n");
+    const annotation = path.join(root, "src/content/annotation/comment.md");
+    writeFileSync(annotation, "---\ntitle: شرح\nstatus: published\ntarget_type: poem\ntarget_id: poem\nanchor: v2\nannotator: author\n---\nتعليق **مهم**\n");
+    const options = { repositoryRoot: root, outputRoot: path.join(root, "out"), sidecarRoot: path.join(root, "ids"), targets: [{ coll: "poem", id: "poem" }] as const };
+    const first = await generateAppContent(options);
+    const poem = first.catalog.entries[0]!;
+    expect(poem.verseCount).toBe(2);
+    const records = gunzipSync(readFileSync(path.join(root, "out/app/v2", poem.pkg.path))).toString().trim().split("\n").map(line => JSON.parse(line));
+    expect(records.find(row => row.n === 2).commentary).toEqual([{ sourceLabel: "شرح · المؤلف", text: "تعليق مهم" }]);
+    writeFileSync(annotation, readFileSync(annotation, "utf8").replace("v2", "v3"));
+    await expect(generateAppContent(options)).rejects.toThrow("missing verse 3");
+    writeFileSync(annotation, readFileSync(annotation, "utf8").replace("v3", "v2"));
+    const audio = Buffer.from("audio");
+    writeFileSync(path.join(root, "src/content/audio/audio.md"), "---\ntitle: إنشاد\nstatus: published\nsource_type: poem\nsource_id: poem\nurl: https://example.com/audio\nduration: '1:00'\n---\n");
+    writeFileSync(path.join(root, "src/content/poem-timing/poem.json"), JSON.stringify([{ v: 1, t: 0 }, { v: 2, t: 1 }, { v: 3, t: 2 }]));
+    await expect(generateAppContent({ ...options, loadAudio: async () => audio })).rejects.toThrow("cues must be sequential");
   });
 
   it("derives list excerpts and opening verses at build time", async () => {

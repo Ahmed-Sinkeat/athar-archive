@@ -1,6 +1,7 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
-import { generateAppContent, type ContentTarget } from "../src/lib/app-v2/generator.js";
+import { fetchAppAudio } from "../src/lib/app-v2/audio.js";
+import { generateAppContent, publishedContentTargets, type ContentTarget } from "../src/lib/app-v2/generator.js";
 
 const SLICE: ContentTarget[] = [
   { coll: "article", id: "byan-kdhb-athr-idha-safr-al-fqr-ila-mkan-ma-qal-al-kfr-khdhny-mak-ala-aby-dhr--v2" },
@@ -15,7 +16,8 @@ function option(name: string): string | undefined {
 }
 
 const repositoryRoot = process.cwd();
-const outputRoot = path.resolve(option("--out") ?? "dist/app-content");
+const slice = process.argv.includes("--slice");
+const outputRoot = path.resolve(option("--out") ?? (slice ? "dist/app-content-slice" : "dist/app-content"));
 const sidecarRoot = path.resolve(option("--sidecars") ?? "content-ids");
 const signingKeyFile = process.env.ATHAR_CONTENT_SIGNING_KEY_FILE;
 const signingKeyId = process.env.ATHAR_CONTENT_SIGNING_KEY_ID;
@@ -31,13 +33,9 @@ const result = await generateAppContent({
   repositoryRoot,
   outputRoot,
   sidecarRoot,
-  targets: SLICE,
+  targets: slice ? SLICE : await publishedContentTargets(repositoryRoot),
   signing,
-  loadAudio: async (url) => {
-    const response = await fetch(url, { signal: AbortSignal.timeout(15 * 60 * 1_000) });
-    if (!response.ok) throw new Error(`audio fetch failed: HTTP ${response.status} ${url}`);
-    return Buffer.from(await response.arrayBuffer());
-  },
+  loadAudio: fetchAppAudio,
 });
 
 for (const entity of result.entities) {

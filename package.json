@@ -30,8 +30,10 @@
     "search:index": "pnpm search:hashes && pnpm search:gen && for f in dist/search-index/*.sql; do wrangler d1 execute athar-search --remote -y --file \"$f\" || exit 1; done",
     "search:index:local": "SEARCH_ALLOW_FULL_REBUILD=1 pnpm search:gen && for f in dist/search-index/*.sql; do wrangler d1 execute athar-search --local -y --file \"$f\" || exit 1; done",
     "app:vectors": "tsx scripts/gen-ar-vectors.ts",
-    "app:gen:slice": "tsx scripts/gen-app-content.ts",
+    "app:gen": "tsx scripts/gen-app-content.ts",
+    "app:gen:slice": "tsx scripts/gen-app-content.ts --slice",
     "app:publish": "node scripts/upload-app-content.mjs",
+    "app:bundle-catalog": "node scripts/bundle-app-catalog.mjs",
     "r2:upload": "node scripts/upload-r2-assets.mjs",
     "r2:inventory": "node scripts/r2-inventory.mjs",
     "deploy": "node scripts/smoke-test.mjs && pnpm r2:upload && wrangler deploy -c dist/server/wrangler.json"

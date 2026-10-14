@@ -8,7 +8,7 @@ import os from "node:os";
 import path from "node:path";
 import { listPrefix, makeClient, md5 } from "./lib/r2.mjs";
 
-const LOCAL_ROOT = path.resolve("dist/app-content/app/v2");
+const LOCAL_ROOT = path.resolve(process.env.ATHAR_LOCAL_ROOT ?? "dist/app-content/app/v2");
 const PREFIX = "app/v2/";
 const IMMUTABLE_CACHE = "public, max-age=31536000, immutable";
 const ROOT_CACHE = "no-cache";
@@ -53,7 +53,7 @@ function localArtifact(localRoot, relative, expectedHash, expectedSize) {
   if (expectedSize != null && bytes.byteLength !== expectedSize) {
     throw new Error(`${relative}: size ${bytes.byteLength} differs from declared ${expectedSize}`);
   }
-  return { key: `${PREFIX}${relative}`, filePath, bytes };
+  return { key: `${PREFIX}${relative}`, filePath, hash: expectedHash, size: bytes.byteLength, md5: md5(bytes) };
 }
 
 function decodeEnvelope(localRoot, keyId, publicKey) {
@@ -113,21 +113,23 @@ export function validateLocalGeneration(keyId, publicKey, localRoot = LOCAL_ROOT
 }
 
 async function upload(s3, artifact, cacheControl) {
+  const bytes = artifact.bytes ?? fs.readFileSync(artifact.filePath);
+  if (artifact.hash && (sha256(bytes) !== artifact.hash || bytes.byteLength !== artifact.size)) {
+    throw new Error(`${artifact.key}: local artifact changed after validation`);
+  }
   const extension = artifact.key.endsWith(".athar.idx") ? ".idx" : path.extname(artifact.key);
   const response = await s3("PUT", artifact.key, {
-    body: artifact.bytes,
+    body: bytes,
     contentType: CONTENT_TYPES.get(extension) ?? "application/octet-stream",
     cacheControl,
   });
   if (!response.ok) throw new Error(`${artifact.key}: HTTP ${response.status}: ${(await response.text()).slice(0, 300)}`);
   const etag = (response.headers.get("etag") ?? "").replaceAll('"', "");
-  if (etag && etag !== md5(artifact.bytes)) throw new Error(`${artifact.key}: R2 ETag differs after upload`);
+  if (etag && etag !== md5(bytes)) throw new Error(`${artifact.key}: R2 ETag differs after upload`);
 }
 
 async function main() {
   if (process.argv.includes("--selftest")) return selftest();
-  const bucket = process.env.ATHAR_APP_R2_BUCKET;
-  if (!bucket) throw new Error("ATHAR_APP_R2_BUCKET is required; the app must use its dedicated R2 bucket");
   const publicKeyFile = process.env.ATHAR_CONTENT_SIGNING_PUBLIC_KEY_FILE;
   const signingKeyId = process.env.ATHAR_CONTENT_SIGNING_KEY_ID;
   if (!publicKeyFile || !signingKeyId) {
@@ -142,6 +144,8 @@ async function main() {
     console.log(`\u2713 app-content generation: signed root and ${generation.immutable.length} immutable artifact(s) verified`);
     return;
   }
+  const bucket = process.env.ATHAR_APP_R2_BUCKET;
+  if (!bucket) throw new Error("ATHAR_APP_R2_BUCKET is required; the app must use its dedicated R2 bucket");
   const s3 = makeClient({
     bucket,
     accessKeyId: process.env.ATHAR_APP_R2_ACCESS_KEY_ID,
@@ -151,7 +155,7 @@ async function main() {
 
   const remote = new Map();
   await listPrefix(s3, PREFIX, (object) => remote.set(object.key, object.etag));
-  const changed = generation.immutable.filter((artifact) => remote.get(artifact.key) !== md5(artifact.bytes));
+  const changed = generation.immutable.filter((artifact) => remote.get(artifact.key) !== artifact.md5);
   for (const artifact of changed) await upload(s3, artifact, IMMUTABLE_CACHE);
   console.log(`immutable: ${changed.length} uploaded, ${generation.immutable.length - changed.length} unchanged`);
 

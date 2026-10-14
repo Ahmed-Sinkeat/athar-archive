@@ -1,6 +1,8 @@
 import { unified } from "unified";
 import remarkGfm from "remark-gfm";
 import remarkParse from "remark-parse";
+import rehypeRaw from "rehype-raw";
+import remarkRehype from "remark-rehype";
 import { slugifyArabic, uniqueSlug } from "../chapters.js";
 import {
   APP_CONTENT_SCHEMA,
@@ -12,7 +14,8 @@ import {
 } from "./contract.js";
 
 interface MarkdownPosition {
-  start?: { line?: number; column?: number };
+  start?: { line?: number; column?: number; offset?: number };
+  end?: { offset?: number };
 }
 
 interface MarkdownNode {
@@ -31,6 +34,39 @@ interface InlineResult {
   text: string;
   spans: InlineSpan[];
   footnotes: string[];
+  references?: { id: string; offset: number }[];
+}
+
+function htmlBlocks(value: string, sourcePath: string): MarkdownNode[] {
+  interface HtmlNode { type: string; tagName?: string; value?: string; properties?: Record<string, unknown>; children?: HtmlNode[] }
+  const processor = unified().use(remarkParse).use(remarkRehype, { allowDangerousHtml: true }).use(rehypeRaw);
+  const tree = processor.runSync(processor.parse(value)) as unknown as HtmlNode;
+  const convert = (node: HtmlNode): MarkdownNode[] => {
+    if (node.type === "comment") return [];
+    if (node.type === "text") return [{ type: "text", value: node.value }];
+    const children = (node.children ?? []).flatMap(convert);
+    const tag = node.tagName;
+    if (!tag || tag === "div" || tag === "span") return children;
+    if (tag === "br") return [{ type: "break" }];
+    if (tag === "hr") return [{ type: "thematicBreak" }];
+    if (/^s\d+$/.test(tag)) return children;
+    if (tag === "a") return [{ type: "link", url: String(node.properties?.href ?? ""), children }];
+    if (tag === "strong" || tag === "b") return [{ type: "strong", children }];
+    if (tag === "em" || tag === "i") return [{ type: "emphasis", children }];
+    if (tag === "p") return [{ type: "paragraph", children }];
+    if (/^h[1-6]$/.test(tag)) return [{ type: "heading", depth: Number(tag[1]), children }];
+    throw new Error(`${sourcePath}: unsupported HTML element ${tag}`);
+  };
+  const nodes = convert(tree);
+  const blocks: MarkdownNode[] = [];
+  let inline: MarkdownNode[] = [];
+  const flush = () => { if (inline.length) blocks.push({ type: "paragraph", children: inline }); inline = []; };
+  for (const node of nodes) {
+    if (node.type === "paragraph" || node.type === "heading" || node.type === "thematicBreak") { flush(); blocks.push(node); }
+    else inline.push(node);
+  }
+  flush();
+  return blocks;
 }
 
 export interface ParseReadableInput {
@@ -87,15 +123,22 @@ function renderInline(
   definitions: Map<string, string>,
   sourcePath: string,
   printedPage?: number,
+  printedVolume?: number,
 ): InlineResult {
   const output = { text: "", spans: [] as InlineSpan[] };
   const footnotes = new Set<string>();
+  const references: { id: string; offset: number }[] = [];
+  const note = (id: string, offset = output.text.length) => { footnotes.add(id); references.push({ id, offset }); };
   const openSup: { start: number; target?: string; footnoteId?: string; node: MarkdownNode }[] = [];
 
   const walk = (node: MarkdownNode) => {
     switch (node.type) {
       case "text":
         addTextWithEntityRefs(node.value ?? "", output);
+        return;
+      case "inlineCode":
+        // shortcut: imported prose keeps its literal code text; add code typography for technical texts.
+        output.text += node.value ?? "";
         return;
       case "break":
         output.text += "\n";
@@ -119,12 +162,14 @@ function renderInline(
       case "footnoteReference": {
         const id = node.identifier ?? "";
         if (!id) fail(sourcePath, node, "missing footnote identifier");
-        footnotes.add(id);
+        note(id);
         return;
       }
       case "html": {
         const html = node.value ?? "";
         if (COMMENT_RE.test(html)) return;
+        // Imported source-position markers contain no readable text.
+        if (/^\s*<m\s+s\s*=\s*\d+\s*>\s*$/i.test(html)) return;
         const complete = html.match(/^\s*<sup\b([^>]*)>([\s\S]*?)<\/sup>\s*$/i);
         if (complete) {
           const attrs = attributes(`<sup ${complete[1]}>`);
@@ -132,7 +177,7 @@ function renderInline(
           output.text += complete[2]!.replace(/<[^>]+>/g, "");
           const target = attrs.get("data-fn");
           if (output.text.length > start) output.spans.push({ k: "sup", s: start, e: output.text.length, ...(target ? { target } : {}) });
-          if (target) footnotes.add(`${attrs.get("data-sep-page") ?? printedPage ?? ""}:${target}`);
+          if (target) note(`${attrs.has("data-sep-page") ? "next:" : ""}${printedVolume != null ? `${printedVolume}:` : ""}${attrs.get("data-sep-page") ?? printedPage ?? ""}:${target}`);
           return;
         }
         if (/^\s*<sup\b[^>]*>\s*$/i.test(html)) {
@@ -142,7 +187,7 @@ function renderInline(
           openSup.push({
             start: output.text.length,
             target,
-            ...(target ? { footnoteId: `${notePage ?? ""}:${target}` } : {}),
+            ...(target ? { footnoteId: `${attrs.has("data-sep-page") ? "next:" : ""}${printedVolume != null ? `${printedVolume}:` : ""}${notePage ?? ""}:${target}` } : {}),
             node,
           });
           return;
@@ -158,7 +203,7 @@ function renderInline(
               ...(opened.target ? { target: opened.target } : {}),
             });
           }
-          if (opened.footnoteId) footnotes.add(opened.footnoteId);
+          if (opened.footnoteId) note(opened.footnoteId, opened.start);
           return;
         }
         fail(sourcePath, node, html.slice(0, 60));
@@ -171,7 +216,7 @@ function renderInline(
   for (const node of nodes) walk(node);
   if (openSup.length > 0) fail(sourcePath, openSup.at(-1)!.node, "unclosed sup");
   output.spans.sort((a, b) => a.s - b.s || b.e - a.e || compareText(a.k, b.k));
-  return { text: output.text, spans: output.spans, footnotes: [...footnotes] };
+  return { text: output.text, spans: output.spans, footnotes: [...footnotes], references };
 }
 
 function pageMarker(html: string) {
@@ -218,15 +263,43 @@ function inlineFields(inline: InlineResult) {
 }
 
 export function parseReadableDocument(input: ParseReadableInput): ParsedDocument {
-  const root = unified().use(remarkParse).use(remarkGfm).parse(input.body) as unknown as MarkdownNode;
+  const parser = unified().use(remarkParse).use(remarkGfm);
+  // Large books are parsed one section at a time; a whole-book Markdown AST can exceed RAM.
+  const chunks = input.body.length > 1_000_000 ? input.body.split(/\n(?=#{1,6} |[ \t]*<hr\b)/) : [input.body];
+  const smallTree = chunks.length === 1 ? parser.parse(input.body) as unknown as MarkdownNode : undefined;
   const definitions = new Map<string, string>();
-  for (const node of root.children ?? []) {
-    if (node.type === "definition" && node.identifier && node.url) definitions.set(node.identifier.toLowerCase(), node.url);
+  const definitionSources = new Map<string, string>();
+  for (const chunk of chunks) {
+    if (!smallTree && !/^ {0,3}\[[^\]\n]+\]:/m.test(chunk)) continue;
+    const tree = smallTree ?? parser.parse(chunk) as unknown as MarkdownNode;
+    for (const node of tree.children ?? []) {
+      if (node.type === "definition" && node.identifier && node.url) definitions.set(node.identifier.toLowerCase(), node.url);
+      if ((node.type === "definition" || node.type === "footnoteDefinition") && node.position?.start?.offset != null && node.position.end?.offset != null) {
+        definitionSources.set(`${node.type === "footnoteDefinition" ? "^" : ""}${node.identifier?.toLowerCase()}`,
+          chunk.slice(node.position.start.offset, node.position.end.offset));
+      }
+    }
   }
+  const referencesFor = (chunk: string) => {
+    const needed = new Map<string, string>();
+    const pending = [chunk];
+    while (pending.length) {
+      for (const match of pending.pop()!.matchAll(/\[([^\]\n]+)\]/g)) {
+        const key = match[1]!.trim().replace(/\s+/g, " ").toLowerCase();
+        const source = definitionSources.get(key);
+        if (source && !needed.has(key)) { needed.set(key, source); pending.push(source); }
+      }
+    }
+    return "\n\n" + [...needed.values()].join("\n\n");
+  };
 
   const blocks: DraftBlock[] = [];
   const chapters: ParsedDocument["chapters"] = [];
   const footnotes: FootnoteRecord[] = [];
+  const markdownNotes = new Map<string, FootnoteRecord>();
+  const noteOwners = new Map<string, DraftBlock | undefined>();
+  const pageOccurrences = new Map<string, number>();
+  let pageNoteAliases = new Map<string, string>();
   const seenAnchors = new Set<string>();
   let currentAnchor: string | undefined;
   let currentPage: number | undefined;
@@ -244,6 +317,9 @@ export function parseReadableDocument(input: ParseReadableInput): ParsedDocument
   const add = (block: Omit<DraftBlock, "a" | "p" | "vol"> & { a?: string; p?: number; vol?: number }) => {
     blocks.push({
       ...block,
+      ...(block.f ? { f: block.f.map(id => id.startsWith("next:")
+        ? `next:${pageNoteAliases.get(id.slice(5)) ?? id.slice(5)}`
+        : pageNoteAliases.get(id) ?? id) } : {}),
       a: block.a ?? ensureChapter(),
       ...(block.p ?? currentPage ? { p: block.p ?? currentPage } : {}),
       ...(block.vol ?? currentVol ? { vol: block.vol ?? currentVol } : {}),
@@ -251,30 +327,51 @@ export function parseReadableDocument(input: ParseReadableInput): ParsedDocument
   };
 
   const addParagraph = (node: MarkdownNode, type: "p" | "quote" | "li" = "p", list?: Partial<DraftBlock>) => {
-    const inline = renderInline(node.children ?? [], definitions, input.sourcePath, currentPage);
-    if (input.coll === "poem" && type === "p") {
-      const numbered = VERSE_NUMBER_RE.test(inline.text);
-      const withoutNumber = inline.text.replace(VERSE_NUMBER_RE, "");
-      const separator = withoutNumber.match(HEMISTICH_RE);
-      if (numbered || separator) {
-        if (inline.spans.length || inline.footnotes.length) {
-          fail(input.sourcePath, node, "inline semantics inside a verse are not representable in schema 2");
+    const inline = renderInline(node.children ?? [], definitions, input.sourcePath, currentPage, currentVol);
+    if (input.coll === "poem" && (type === "p" || (type === "li" && list?.ordered))) {
+      const lines = inline.text.split("\n");
+      // A long unseparated, unnumbered line is prose (an introduction inside a poem file);
+      // its paragraph must not turn every line into a verse.
+      const prose = lines.some(line => line.length > 160 && !VERSE_NUMBER_RE.test(line) && !HEMISTICH_RE.test(line));
+      let offset = 0;
+      for (const line of lines) {
+        const start = offset;
+        offset += line.length + 1;
+        const spans = inline.spans.map(span => ({ ...span, s: Math.max(0, span.s - start), e: Math.min(line.length, span.e - start) }))
+          .filter(span => span.e > span.s);
+        const row = { text: line, spans, footnotes: inline.footnotes.filter(id =>
+          inline.references?.some(ref => ref.id === id && ref.offset >= start && ref.offset <= start + line.length)) };
+        const numbered = VERSE_NUMBER_RE.test(row.text);
+        const withoutNumber = row.text.replace(VERSE_NUMBER_RE, "");
+        const separator = withoutNumber.match(HEMISTICH_RE);
+        if (numbered || separator || (lines.length > 1 && !prose) || type === "li") {
+          verseNumber++;
+          if (row.spans.length || row.footnotes.length) {
+            const prefix = row.text.length - withoutNumber.length + withoutNumber.length - withoutNumber.trimStart().length;
+            const text = withoutNumber.trim();
+            add({ t: "verse", n: verseNumber, x: text,
+              ...(row.spans.length ? { sp: row.spans.map((span) => ({ ...span, s: Math.max(0, span.s - prefix), e: Math.min(text.length, span.e - prefix) })).filter((span) => span.e > span.s) } : {}),
+              ...(row.footnotes.length ? { f: row.footnotes } : {}),
+            });
+            continue;
+          }
+          if (separator?.index != null) {
+            const sadr = withoutNumber.slice(0, separator.index).trim();
+            const ajuz = withoutNumber.slice(separator.index + separator[0].length).trim();
+            add({ t: "verse", n: verseNumber, s: sadr, j: ajuz });
+          } else {
+            add({ t: "verse", n: verseNumber, x: withoutNumber.trim() });
+          }
+          continue;
         }
-        verseNumber++;
-        if (separator?.index != null) {
-          const sadr = withoutNumber.slice(0, separator.index).trim();
-          const ajuz = withoutNumber.slice(separator.index + separator[0].length).trim();
-          add({ t: "verse", n: verseNumber, s: sadr, j: ajuz });
-        } else {
-          add({ t: "verse", n: verseNumber, x: withoutNumber.trim() });
-        }
-        return;
+        add({ t: type, ...inlineFields(row), ...list });
       }
+      return;
     }
     add({ t: type, ...inlineFields(inline), ...list });
   };
 
-  const processList = (node: MarkdownNode, depth = 0) => {
+  const processList = (node: MarkdownNode, depth = 0, quote = false) => {
     const ordered = node.ordered === true;
     const start = node.start ?? 1;
     for (const [itemIndex, item] of (node.children ?? []).entries()) {
@@ -286,10 +383,13 @@ export function parseReadableDocument(input: ParseReadableInput): ParsedDocument
             ordered,
             start: start + itemIndex,
             depth,
+            ...(quote ? { quoted: true } : {}),
             ...(paragraphIndex++ > 0 ? { continuation: true } : {}),
           });
         } else if (child.type === "list") {
-          processList(child, depth + 1);
+          processList(child, depth + 1, quote);
+        } else if (child.type === "html" || child.type === "blockquote" || child.type === "heading" || child.type === "footnoteDefinition" || child.type === "definition") {
+          process(child, quote);
         } else {
           fail(input.sourcePath, child);
         }
@@ -301,10 +401,18 @@ export function parseReadableDocument(input: ParseReadableInput): ParsedDocument
     const id = node.identifier ?? "";
     if (!id) fail(input.sourcePath, node, "missing footnote identifier");
     const parts: InlineResult[] = [];
-    for (const child of node.children ?? []) {
-      if (child.type !== "paragraph") fail(input.sourcePath, child, "footnote bodies support paragraphs only in schema 2");
-      parts.push(renderInline(child.children ?? [], definitions, input.sourcePath, currentPage));
-    }
+    const collect = (child: MarkdownNode, marker = "") => {
+      if (child.type === "paragraph") {
+        parts.push(renderInline([{ type: "text", value: marker }, ...(child.children ?? [])], definitions, input.sourcePath, currentPage, currentVol));
+      } else if (child.type === "list") {
+        for (const [index, item] of (child.children ?? []).entries()) {
+          for (const [partIndex, part] of (item.children ?? []).entries()) {
+            collect(part, partIndex === 0 ? (child.ordered ? `${(child.start ?? 1) + index}. ` : "• ") : "");
+          }
+        }
+      } else fail(input.sourcePath, child, "unsupported footnote body");
+    };
+    for (const child of node.children ?? []) collect(child);
     const text = parts.map((part) => part.text).join("\n\n");
     const spans: InlineSpan[] = [];
     let offset = 0;
@@ -312,7 +420,20 @@ export function parseReadableDocument(input: ParseReadableInput): ParsedDocument
       spans.push(...part.spans.map((span) => ({ ...span, s: span.s + offset, e: span.e + offset })));
       offset += part.text.length + 2;
     }
-    footnotes.push({ id, x: text, ...(spans.length ? { sp: spans } : {}) });
+    const previous = markdownNotes.get(id);
+    if (previous) {
+      // Reused source labels are ambiguous; retain both bodies under their authored label.
+      if (previous.x !== text || JSON.stringify(previous.sp ?? []) !== JSON.stringify(spans)) {
+        const offset = previous.x.length + 2;
+        previous.x += `\n\n${text}`;
+        if (spans.length) previous.sp = [...(previous.sp ?? []), ...spans.map(span => ({ ...span, s: span.s + offset, e: span.e + offset }))];
+      }
+    } else {
+      const note = { id, x: text, ...(spans.length ? { sp: spans } : {}) };
+      footnotes.push(note);
+      markdownNotes.set(id, note);
+    }
+    noteOwners.set(id, blocks.at(-1));
   };
 
   const process = (node: MarkdownNode, quote = false) => {
@@ -325,8 +446,8 @@ export function parseReadableDocument(input: ParseReadableInput): ParsedDocument
       case "heading": {
         const depth = node.depth;
         if (!depth || depth < 1 || depth > 6) fail(input.sourcePath, node, "invalid heading depth");
-        const rendered = trimAnchor(renderInline(node.children ?? [], definitions, input.sourcePath, currentPage));
-        if (!rendered.inline.text) fail(input.sourcePath, node, "empty heading");
+        const rendered = trimAnchor(renderInline(node.children ?? [], definitions, input.sourcePath, currentPage, currentVol));
+        if (!rendered.inline.text) return;
         const headingAnchor = uniqueSlug(
           rendered.anchor ?? (slugifyArabic(rendered.inline.text) || `heading-${blocks.length + 1}`),
           seenAnchors,
@@ -347,8 +468,7 @@ export function parseReadableDocument(input: ParseReadableInput): ParsedDocument
         addParagraph(node, quote ? "quote" : "p");
         return;
       case "list":
-        if (quote) fail(input.sourcePath, node, "lists inside blockquotes are not representable in schema 2");
-        processList(node);
+        processList(node, 0, quote);
         return;
       case "blockquote":
         for (const child of node.children ?? []) process(child, true);
@@ -360,11 +480,22 @@ export function parseReadableDocument(input: ParseReadableInput): ParsedDocument
         const html = node.value ?? "";
         if (COMMENT_RE.test(html)) return;
         const marker = pageMarker(html);
-        if (!marker) fail(input.sourcePath, node, html.slice(0, 60));
+        if (!marker) {
+          for (const block of htmlBlocks(html, input.sourcePath)) process(block, quote);
+          return;
+        }
         currentPage = marker.page;
         currentVol = marker.vol ?? currentVol;
-        add({ t: "page", p: currentPage, ...(currentVol ? { vol: currentVol } : {}) });
-        marker.notes.forEach((text, index) => footnotes.push({ id: `${marker.page}:${index + 1}`, x: text }));
+        const prefix = `${currentVol != null ? `${currentVol}:` : ""}${marker.page}:`;
+        const occurrence = (pageOccurrences.get(prefix) ?? 0) + 1;
+        pageOccurrences.set(prefix, occurrence);
+        pageNoteAliases = new Map(marker.notes.map((_, index) => {
+          const id = `${prefix}${index + 1}`;
+          return [id, occurrence === 1 ? id : `${id}~${occurrence}`];
+        }));
+        const ids = [...pageNoteAliases.values()];
+        add({ t: "page", p: currentPage, f: ids, ...(currentVol ? { vol: currentVol } : {}) });
+        marker.notes.forEach((text, index) => footnotes.push({ id: ids[index]!, x: text }));
         return;
       }
       default:
@@ -372,8 +503,50 @@ export function parseReadableDocument(input: ParseReadableInput): ParsedDocument
     }
   };
 
-  for (const node of root.children ?? []) process(node);
+  let lineOffset = 0;
+  for (const chunk of chunks) {
+    const tree = smallTree ?? parser.parse(chunk + referencesFor(chunk)) as unknown as MarkdownNode;
+    const shiftLines = (node: MarkdownNode) => {
+      if (node.position?.start?.line != null) node.position.start.line += lineOffset;
+      for (const child of node.children ?? []) shiftLines(child);
+    };
+    for (const node of tree.children ?? []) {
+      if ((node.position?.start?.offset ?? 0) < chunk.length) { shiftLines(node); process(node); }
+    }
+    lineOffset += (chunk.match(/\n/g)?.length ?? 0) + 1;
+  }
   if (blocks.length === 0) throw new Error(`${input.sourcePath}: readable document has no semantic blocks`);
+
+  const noteIds = new Set<string>();
+  for (const note of footnotes) {
+    if (noteIds.has(note.id)) throw new Error(`${input.sourcePath}: duplicate footnote identifier ${note.id}`);
+    noteIds.add(note.id);
+  }
+  const pageNotes = new Map<string, string[]>();
+  let nextPage: DraftBlock | undefined;
+  for (let index = blocks.length - 1; index >= 0; index--) {
+    const block = blocks[index]!;
+    if (block.t === "page") {
+      nextPage = block;
+      pageNotes.set(`${block.vol != null ? `${block.vol}:` : ""}${block.p}:`, block.f ?? []);
+    } else if (block.f) {
+      block.f = [...new Set(block.f.flatMap(id => {
+        if (!id.startsWith("next:")) return noteIds.has(id) ? [id] : [];
+        const original = id.slice(5);
+        const page = original.match(/^(?:\d+:)?(\d+):[^:]+$/)?.[1];
+        if (nextPage && String(nextPage.p) === page) return nextPage.f ?? [];
+        return pageNotes.get(original.slice(0, original.lastIndexOf(":") + 1))
+          ?? (noteIds.has(original) ? [original] : []);
+      }))];
+    }
+    if (block.f?.length === 0) delete block.f;
+  }
+  const referencedNotes = new Set(blocks.flatMap(block => block.f ?? []));
+  for (const [id, owner] of noteOwners) {
+    if (referencedNotes.has(id)) continue;
+    const block = owner ?? blocks[0]!;
+    block.f = [...(block.f ?? []), id];
+  }
 
   const pages = blocks.map((block) => block.p).filter((page): page is number => page != null);
   const vols = new Set(blocks.map((block) => block.vol).filter((vol): vol is number => vol != null));
@@ -384,6 +557,6 @@ export function parseReadableDocument(input: ParseReadableInput): ParsedDocument
     blocks,
     chapters,
     footnotes: footnotes.sort((a, b) => compareText(a.id, b.id)),
-    ...(pages.length ? { pages: { from: Math.min(...pages), to: Math.max(...pages), vols: Math.max(1, vols.size) } } : {}),
+    ...(pages.length ? { pages: { from: pages.reduce((a, b) => Math.min(a, b)), to: pages.reduce((a, b) => Math.max(a, b)), vols: Math.max(1, vols.size) } } : {}),
   };
 }

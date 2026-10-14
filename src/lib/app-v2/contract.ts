@@ -1,6 +1,6 @@
 export const APP_CONTENT_SCHEMA = 2 as const;
 export const APP_CONTENT_PREFIX = "app/v2";
-export const APP_FRAME_BLOCKS = 2_000;
+export const APP_FRAME_BLOCKS = 250;
 export const APP_PACKAGE_SPLIT_BYTES = 25 * 1024 * 1024;
 
 export type ReadableCollection = "book" | "article" | "question" | "poem";
@@ -35,10 +35,12 @@ export interface DraftBlock {
   sp?: InlineSpan[];
   f?: string[];
   n?: number;
+  commentary?: { sourceLabel: string; text: string }[];
   ordered?: boolean;
   start?: number;
   depth?: number;
   continuation?: boolean;
+  quoted?: boolean;
   ha?: string;
 }
 
@@ -114,6 +116,7 @@ export interface PackageCatalogRef {
 
 export interface AudioCatalogRef {
   id: string;
+  title?: string;
   path: string;
   hash: string;
   format: "opus" | "mp3";
@@ -140,6 +143,7 @@ export interface CatalogEntry {
   excerpt?: string;
   /** Exact authored verse text, normally the first two lines of a poem. */
   openingVerses?: string[];
+  verseCount?: number;
   pkg: PackageCatalogRef;
   audio?: AudioCatalogRef[];
 }
