@@ -295,7 +295,9 @@ abstract class ContentImportDao {
     @Query("SELECT * FROM entity WHERE id = :entityId")
     abstract suspend fun entity(entityId: String): ContentEntity?
 
-    @Query("UPDATE entity SET transferState = :state WHERE id = :entityId")
+    // A write that changes nothing still re-runs every query watching `entity` (the whole
+    // catalog, several times over), so an unchanged state is not written.
+    @Query("UPDATE entity SET transferState = :state WHERE id = :entityId AND transferState != :state")
     abstract suspend fun markTransfer(entityId: String, state: String)
 
     @Query("DELETE FROM block WHERE entityId = :entityId AND ordinal BETWEEN :first AND :last")

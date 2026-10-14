@@ -174,14 +174,9 @@ fun AtharApp(
     val syncState by contentViewModel.syncState.collectAsStateWithLifecycle()
     val nowPlaying = audioState.nowPlaying
     var editingExcerpt by remember { mutableStateOf<ExcerptUi?>(null) }
+    // Each screen collects its own state inside its entry: a flow collected here runs from
+    // launch, and every write to `entity` re-reads the whole catalog once per running flow.
     val booksState by contentViewModel.books.collectAsStateWithLifecycle()
-    val articlesState by contentViewModel.articles.collectAsStateWithLifecycle()
-    val issuesState by contentViewModel.issues.collectAsStateWithLifecycle()
-    val poetryState by contentViewModel.poetry.collectAsStateWithLifecycle()
-    val libraryState by contentViewModel.personalLibraryState.collectAsStateWithLifecycle()
-    val kannashahState by contentViewModel.kannashahState.collectAsStateWithLifecycle()
-    val searchState by contentViewModel.search.collectAsStateWithLifecycle()
-    val downloadItems by contentViewModel.downloads.collectAsStateWithLifecycle()
     LaunchedEffect(contentViewModel) {
         contentViewModel.errors.collect { snackbarHostState.showSnackbar(it) }
     }
@@ -420,7 +415,7 @@ fun AtharApp(
                 }
                 entry<LibraryRoute> {
                     LibraryScreen(
-                        state = libraryState,
+                        state = contentViewModel.personalLibraryState.collectAsStateWithLifecycle().value,
                         onBack = ::goBack,
                         onOpenWork = { work ->
                             if (work.collection == "audio") { contentViewModel.playAudio(work.id.removePrefix("audio:")); backStack.add(PlayerRoute) }
@@ -601,7 +596,7 @@ fun AtharApp(
                 entry<SubSectionRoute> { route ->
                     when (AtharSection.entries.first { it.route == route.section }) {
                         AtharSection.Articles -> ArticlesScreen(
-                            state = articlesState,
+                            state = contentViewModel.articles.collectAsStateWithLifecycle().value,
                             onSettings = ::openSettings,
                             onArticleClick = { backStack.add(ReaderRoute(it.id)) },
                             onSaveClick = { contentViewModel.toggleReadLater(it.id) },
@@ -610,7 +605,7 @@ fun AtharApp(
                         )
 
                         AtharSection.Issues -> IssuesScreen(
-                            state = issuesState,
+                            state = contentViewModel.issues.collectAsStateWithLifecycle().value,
                             onSettings = ::openSettings,
                             onIssueClick = { backStack.add(ReaderRoute(it.id)) },
                             onSaveClick = { contentViewModel.toggleReadLater(it.id) },
@@ -655,6 +650,7 @@ fun AtharApp(
                 }
                 entry<DownloadsRoute> { route ->
                     LaunchedEffect(Unit) { contentViewModel.refreshCacheBytes() }
+                    val downloadItems by contentViewModel.downloads.collectAsStateWithLifecycle()
                     DownloadsScreen(
                         targetId = route.targetId,
                         state = DownloadsUiState(
@@ -695,7 +691,7 @@ fun AtharApp(
                     tabState.SaveableStateProvider(route.destination) {
                     when (AtharDestination.fromRoute(route.destination)) {
                         AtharDestination.Poetry -> PoetryScreen(
-                            state = poetryState,
+                            state = contentViewModel.poetry.collectAsStateWithLifecycle().value,
                             onSettings = ::openSettings,
                             onPoemClick = { backStack.add(PoemReaderRoute(it.id)) },
                             onDownloadClick = { onDownloadTap(it.id, it.title, it.sizeLabel, it.downloaded, it.transfer) },
@@ -719,7 +715,7 @@ fun AtharApp(
                         )
 
                         AtharDestination.Search -> SearchScreen(
-                            state = searchState,
+                            state = contentViewModel.search.collectAsStateWithLifecycle().value,
                             onSettings = ::openSettings,
                             onQueryChange = contentViewModel::setSearchQuery,
                             onResultsDrawn = contentViewModel::reportSearchResultsDrawn,
@@ -753,7 +749,7 @@ fun AtharApp(
                         )
 
                         AtharDestination.Kannashah -> KannashahScreen(
-                            state = kannashahState,
+                            state = contentViewModel.kannashahState.collectAsStateWithLifecycle().value,
                             onSettings = ::openSettings,
                             onCopy = {
                                 copyText(context, it.text)
