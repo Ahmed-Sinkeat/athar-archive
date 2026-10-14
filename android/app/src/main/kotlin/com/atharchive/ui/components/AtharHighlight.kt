@@ -7,41 +7,25 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
 
-/**
- * Marks every occurrence of [query] in [text] as the user types, so a result visibly
- * explains itself: you can see which letters matched, not just that something did.
- *
- * Matching is literal for now. When the data layer lands this becomes the normalized
- * comparison from `core/athar-text` — a reader searching «الصلاة» must match «الصَّلَاةِ»,
- * and the highlight has to land on the vocalised span including its diacritics
- * (main-plan.md §10.2), which a raw `indexOf` cannot do.
- */
+/** Matches normalized Arabic while painting the original source offsets. */
 fun highlightMatches(
     text: String,
     query: String,
     background: Color,
     bold: Boolean = true,
 ): AnnotatedString {
-    val term = query.trim()
+    val term = com.atharchive.core.ArNormalize.normalize(query.trim())
     if (term.isEmpty()) return AnnotatedString(text)
-
+    val normalized = com.atharchive.core.ArNormalize.normalizeWithMap(text)
     return buildAnnotatedString {
+        append(text)
         var from = 0
         while (true) {
-            val at = text.indexOf(term, from, ignoreCase = true)
-            if (at < 0) {
-                append(text.substring(from))
-                return@buildAnnotatedString
-            }
-            append(text.substring(from, at))
-            withStyle(
-                SpanStyle(
-                    background = background,
-                    fontWeight = if (bold) FontWeight.Bold else null,
-                ),
-            ) {
-                append(text.substring(at, at + term.length))
-            }
+            val at = normalized.text.indexOf(term, from, ignoreCase = true)
+            if (at < 0) break
+            val range = normalized.sourceRange(at, at + term.length)
+            addStyle(SpanStyle(background = background, fontWeight = if (bold) FontWeight.Bold else null),
+                range.first, range.last + 1)
             from = at + term.length
         }
     }

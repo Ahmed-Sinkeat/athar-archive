@@ -1,6 +1,9 @@
 package com.atharchive.feature.poemreader
 
-import androidx.compose.foundation.BorderStroke
+import androidx.compose.ui.graphics.lerp
+import com.atharchive.ui.components.AtharMenuItem
+import com.atharchive.ui.components.AtharMenuColors
+import com.atharchive.ui.components.AtharMenu
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -24,8 +27,6 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.DropdownMenu
-import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -90,13 +91,13 @@ internal fun PoemSidePanel(
                 Spacer(Modifier.weight(1f))
                 Box(
                     modifier = Modifier
-                        .size(34.dp)
+                        .size(48.dp)
                         .clip(CircleShape)
                         .clickable(role = Role.Button, onClick = onDismiss)
                         .testTag("poem_panel_close"),
                     contentAlignment = Alignment.Center,
                 ) {
-                    Icon(AtharIcons.Close, "إغلاق", tint = colors.secondary, modifier = Modifier.size(15.dp))
+                    Icon(AtharIcons.Close, "إغلاق", tint = colors.secondary, modifier = Modifier.size(22.dp))
                 }
             }
             HorizontalDivider(thickness = 0.7.dp, color = colors.divider)
@@ -183,7 +184,7 @@ private fun SharhBody(
 
     Column(Modifier.fillMaxSize()) {
         Text(
-            text = "${arabicNumber(explained.size)} أبيات مشروحة",
+            text = com.atharchive.data.arabicCount(explained.size, "لا أبيات مشروحة", "بيت مشروح واحد", "بيتان مشروحان", "أبيات مشروحة", "بيتًا مشروحًا"),
             modifier = Modifier.padding(start = 14.dp, end = 14.dp, top = 10.dp, bottom = 4.dp),
             color = colors.secondary,
             style = MaterialTheme.typography.labelSmall,
@@ -451,14 +452,14 @@ internal fun PoemAudioBar(
                 Icon(
                     if (playing) AtharIcons.Pause else AtharIcons.Play,
                     contentDescription = if (playing) "إيقاف مؤقت" else "تشغيل",
-                    tint = colors.page,
-                    modifier = Modifier.size(17.dp),
+                    tint = androidx.compose.ui.graphics.Color.White,
+                    modifier = Modifier.size(24.dp),
                 )
             }
             Spacer(Modifier.width(10.dp))
             Box(
                 modifier = Modifier
-                    .size(32.dp)
+                    .size(48.dp)
                     .clip(CircleShape)
                     .clickable(role = Role.Button, onClick = onRepeat)
                     .testTag("poem_audio_repeat"),
@@ -467,7 +468,7 @@ internal fun PoemAudioBar(
                 Icon(
                     AtharIcons.Repeat, "تكرار",
                     tint = if (repeat) colors.accent else colors.secondary,
-                    modifier = Modifier.size(17.dp),
+                    modifier = Modifier.size(24.dp),
                 )
             }
             Spacer(Modifier.width(6.dp))
@@ -559,54 +560,21 @@ private fun ReciterMenu(
     onSelect: (PoemAudioUi) -> Unit,
     onDismiss: () -> Unit,
 ) {
-    DropdownMenu(
+    AtharMenu(
         expanded = open,
-        onDismissRequest = onDismiss,
-        containerColor = colors.page,
-        shape = RoundedCornerShape(12.dp),
-        border = BorderStroke(0.7.dp, colors.divider),
+        onDismiss = onDismiss,
+        width = 260.dp,
+        colors = AtharMenuColors(card = lerp(colors.page, colors.text, 0.07f), ink = colors.text, secondary = colors.secondary, accent = colors.accent),
         modifier = Modifier.testTag("poem_audio_reciters"),
     ) {
         recordings.forEach { item ->
-            val active = item.id == current.id
-            DropdownMenuItem(
-                text = {
-                    // With no reciter the collection is the only name the recording
-                    // has, so it moves up rather than leaving a blank first line.
-                    val named = item.reciter.isNotBlank()
-                    Column {
-                        Text(
-                            text = if (named) item.reciter else item.collection,
-                            color = if (active) colors.accent else colors.text,
-                            style = MaterialTheme.typography.bodySmall,
-                            fontWeight = if (active) FontWeight.SemiBold else FontWeight.Normal,
-                            maxLines = 1,
-                            overflow = TextOverflow.Ellipsis,
-                        )
-                        Text(
-                            text = if (named) {
-                                "${item.collection} · ${item.durationLabel}"
-                            } else {
-                                item.durationLabel
-                            },
-                            color = colors.secondary,
-                            style = MaterialTheme.typography.labelSmall,
-                        )
-                    }
-                },
+            // With no reciter the collection is the only name the recording has.
+            val named = item.reciter.isNotBlank()
+            AtharMenuItem(
+                label = if (named) item.reciter else item.title,
+                subtitle = if (named) "${item.collection} · ${item.durationLabel}" else item.durationLabel,
+                checked = item.id == current.id,
                 onClick = { onSelect(item) },
-                trailingIcon = if (active) {
-                    {
-                        Icon(
-                            AtharIcons.Check,
-                            contentDescription = null,
-                            tint = colors.accent,
-                            modifier = Modifier.size(15.dp),
-                        )
-                    }
-                } else {
-                    null
-                },
                 modifier = Modifier.testTag("poem_audio_opt_${item.id}"),
             )
         }
@@ -621,24 +589,17 @@ private fun SpeedMenu(
     onSelect: (Float) -> Unit,
     onDismiss: () -> Unit,
 ) {
-    DropdownMenu(
+    AtharMenu(
         expanded = open,
-        onDismissRequest = onDismiss,
-        containerColor = colors.page,
-        shape = RoundedCornerShape(12.dp),
-        border = BorderStroke(0.7.dp, colors.divider),
+        onDismiss = onDismiss,
+        width = 180.dp,
+        colors = AtharMenuColors(card = lerp(colors.page, colors.text, 0.07f), ink = colors.text, secondary = colors.secondary, accent = colors.accent),
         modifier = Modifier.testTag("poem_audio_speeds"),
     ) {
         Speeds.forEach { option ->
-            DropdownMenuItem(
-                text = {
-                    Text(
-                        text = speedLabel(option),
-                        color = if (option == speed) colors.accent else colors.text,
-                        style = MaterialTheme.typography.bodyMedium,
-                        fontWeight = if (option == speed) FontWeight.SemiBold else FontWeight.Normal,
-                    )
-                },
+            AtharMenuItem(
+                label = speedLabel(option),
+                checked = option == speed,
                 onClick = { onSelect(option) },
                 modifier = Modifier.testTag("poem_speed_${option.toString().replace('.', '_')}"),
             )

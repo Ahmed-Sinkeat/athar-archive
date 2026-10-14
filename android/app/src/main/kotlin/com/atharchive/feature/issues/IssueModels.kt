@@ -13,7 +13,6 @@ import com.atharchive.ui.components.AtharTab
 enum class IssuesTab(val key: String, val label: String) {
     All("all", "الكل"),
     Downloaded("downloaded", "المحمّلة"),
-    MyList("mylist", "قائمتي"),
     ;
 
     companion object {
@@ -23,7 +22,7 @@ enum class IssuesTab(val key: String, val label: String) {
 }
 
 enum class IssueSort(val label: String) {
-    Newest("الأحدث"),
+    Newest("ترتيب الفهرس"),
     Question("المسألة"),
     Scholar("المجيب"),
 }
@@ -39,6 +38,7 @@ data class IssueUi(
     val sizeLabel: String,
     val downloaded: Boolean = false,
     val saved: Boolean = false,
+    val transfer: com.atharchive.feature.downloads.TransferUi? = null,
 )
 
 data class IssuesUiState(

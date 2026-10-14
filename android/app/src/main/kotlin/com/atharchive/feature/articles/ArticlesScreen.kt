@@ -22,6 +22,11 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import com.atharchive.core.ArNormalize
+import com.atharchive.feature.downloads.TransferUi
+import androidx.compose.ui.input.nestedscroll.nestedScroll
+import com.atharchive.ui.components.AtharCollapsible
+import com.atharchive.ui.components.rememberAtharCollapsingHeader
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -39,6 +44,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.atharchive.ui.components.AtharBookmarkButton
+import com.atharchive.ui.components.AtharDownloadButton
 import com.atharchive.ui.components.AtharEmptyState
 import com.atharchive.ui.components.AtharMenuButton
 import com.atharchive.ui.components.AtharSearchField
@@ -57,7 +63,6 @@ fun ArticlesScreen(
     onSaveClick: (ArticleUi) -> Unit,
     onDownloadClick: (ArticleUi) -> Unit,
     modifier: Modifier = Modifier,
-    onLogo: (() -> Unit)? = null,
     onBack: (() -> Unit)? = null,
 ) {
     var selectedTab by rememberSaveable { mutableStateOf(ArticlesTab.All) }
@@ -74,18 +79,17 @@ fun ArticlesScreen(
             val matchesTab = when (selectedTab) {
                 ArticlesTab.All -> true
                 ArticlesTab.Downloaded -> article.downloaded
-                ArticlesTab.MyList -> article.saved
             }
-            val term = query.trim()
+            val term = ArNormalize.normalize(query.trim())
             val matchesQuery = term.isBlank() ||
-                article.title.contains(term, ignoreCase = true) ||
-                article.author.contains(term, ignoreCase = true)
+                ArNormalize.normalize(article.title).contains(term, ignoreCase = true) ||
+                ArNormalize.normalize(article.author).contains(term, ignoreCase = true)
             matchesTab && matchesQuery
         }.sortedWith(
             when (sort) {
                 ArticleSort.Title -> compareBy { it.title }
                 ArticleSort.Author -> compareBy { it.author }
-                ArticleSort.Newest -> compareBy { state.articles.indexOf(it) }
+                ArticleSort.Newest -> compareBy { it.title }
             },
         )
     }
@@ -104,32 +108,23 @@ fun ArticlesScreen(
                 title = "المقالات",
                 onSettings = onSettings,
                 showAppIcon = true,
-                onLogo = onLogo,
                 onBack = onBack,
                 horizontalPadding = horizontalPadding,
             )
-        LazyColumn(
-            state = listState,
-            modifier = Modifier
-                .fillMaxWidth()
-                .weight(1f)
-                .testTag("articles_screen"),
-            contentPadding = PaddingValues(bottom = 28.dp),
-        ) {
-            item(key = "articles-search") {
-                AtharSearchField(
-                    query = query,
-                    placeholder = "ابحث في ${state.countLabel}…",
-                    onQueryChange = { query = it },
-                    tagPrefix = "articles",
-                    modifier = Modifier.padding(
-                        start = horizontalPadding,
-                        end = horizontalPadding,
-                        top = 4.dp,
-                    ),
-                )
-            }
-            item(key = "articles-tabs") {
+        val header = rememberAtharCollapsingHeader()
+        AtharSearchField(
+            query = query,
+            placeholder = "ابحث في ${state.countLabel}…",
+            onQueryChange = { query = it },
+            tagPrefix = "articles",
+            modifier = Modifier.padding(
+                start = horizontalPadding,
+                end = horizontalPadding,
+                top = 4.dp,
+            ),
+        )
+        AtharCollapsible(header) {
+            Column {
                 AtharTabRow(
                     tabs = ArticlesTab.tabs,
                     selectedKey = selectedTab.key,
@@ -137,8 +132,6 @@ fun ArticlesScreen(
                     tagPrefix = "articles",
                     modifier = Modifier.padding(horizontal = horizontalPadding),
                 )
-            }
-            item(key = "articles-menus") {
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -156,13 +149,21 @@ fun ArticlesScreen(
                         tagPrefix = "articles_sort",
                     )
                 }
-            }
-            item(key = "articles-list-divider") {
                 HorizontalDivider(
                     modifier = Modifier.padding(horizontal = horizontalPadding),
                     color = AtharTheme.colors.divider.copy(alpha = 0.72f),
                 )
             }
+        }
+        LazyColumn(
+            state = listState,
+            modifier = Modifier
+                .fillMaxWidth()
+                .weight(1f)
+                .nestedScroll(header.connection)
+                .testTag("articles_screen"),
+            contentPadding = PaddingValues(bottom = 28.dp),
+        ) {
             if (visibleArticles.isEmpty()) {
                 item(key = "articles-empty") {
                     val (title, body) = when {
@@ -171,7 +172,7 @@ fun ArticlesScreen(
                         selectedTab == ArticlesTab.Downloaded ->
                             "لا توجد مقالات محمّلة" to "نزّل مقالًا لتقرأه دون اتصال."
                         else ->
-                            "قائمتك فارغة" to "ستظهر هنا المقالات المحفوظة في قائمتك."
+                            "لا توجد مقالات" to "لم تتوفر مقالات في هذا القسم بعد."
                     }
                     AtharEmptyState(
                         title = title,
@@ -280,28 +281,14 @@ private fun ArticleRow(
                 overflow = TextOverflow.Ellipsis,
             )
         }
-        // Articles keep the compact icon control; accent tint is the queued/in-progress state.
-        IconButton(
+        AtharDownloadButton(
+            title = article.title,
+            sizeLabel = article.sizeLabel,
+            downloaded = article.downloaded,
+            transfer = article.transfer,
             onClick = onDownload,
-            modifier = Modifier
-                .size(38.dp)
-                .testTag("article_download_${article.id}"),
-        ) {
-            Icon(
-                imageVector = if (article.downloaded) AtharIcons.Check else AtharIcons.Download,
-                contentDescription = when {
-                    article.downloaded -> "محمّل: ${article.title}"
-                    article.downloading -> "جار تنزيل ${article.title}"
-                    else -> "تنزيل ${article.title}"
-                },
-                tint = when {
-                    article.downloaded -> AtharTheme.colors.success
-                    article.downloading -> AtharTheme.colors.accent
-                    else -> AtharTheme.colors.secondaryText
-                },
-                modifier = Modifier.size(19.dp),
-            )
-        }
+            tag = "article_download_${article.id}",
+        )
         AtharBookmarkButton(
             saved = article.saved,
             onToggle = onSave,

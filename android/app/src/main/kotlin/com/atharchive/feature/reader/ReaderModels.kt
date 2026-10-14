@@ -1,5 +1,7 @@
 package com.atharchive.feature.reader
 
+import com.atharchive.core.data.content.InlineSpan
+
 /**
  * Three location concepts live in the reader and must never be conflated:
  *
@@ -14,6 +16,7 @@ package com.atharchive.feature.reader
 sealed interface ReaderBlock {
     val id: String
     val ordinal: Int?
+    val spans: List<InlineSpan> get() = emptyList()
 
     /** level 2 = kitab, level 3 = bab. */
     data class Heading(
@@ -22,6 +25,7 @@ sealed interface ReaderBlock {
         val text: String,
         val anchor: String,
         override val ordinal: Int? = null,
+        override val spans: List<InlineSpan> = emptyList(),
     ) : ReaderBlock
 
     data class Paragraph(
@@ -29,12 +33,16 @@ sealed interface ReaderBlock {
         val text: String,
         val footnotes: List<String> = emptyList(),
         override val ordinal: Int? = null,
+        override val spans: List<InlineSpan> = emptyList(),
+        val listMarker: String? = null,
+        val quoted: Boolean = false,
     ) : ReaderBlock
 
     data class Quote(
         override val id: String,
         val text: String,
         override val ordinal: Int? = null,
+        override val spans: List<InlineSpan> = emptyList(),
     ) : ReaderBlock
 
     /** [ajuz] is null when the source marks no caesura; the renderer centres it whole. */
@@ -43,6 +51,8 @@ sealed interface ReaderBlock {
         val sadr: String,
         val ajuz: String? = null,
         override val ordinal: Int? = null,
+        override val spans: List<InlineSpan> = emptyList(),
+        val footnotes: List<String> = emptyList(),
     ) : ReaderBlock
 
     data class PageBreak(
@@ -50,6 +60,8 @@ sealed interface ReaderBlock {
         val page: Int,
         val volume: Int? = null,
         override val ordinal: Int? = null,
+        override val spans: List<InlineSpan> = emptyList(),
+        val footnotes: List<String> = emptyList(),
     ) : ReaderBlock
 
     data class FootnoteBody(
@@ -57,6 +69,7 @@ sealed interface ReaderBlock {
         val marker: String,
         val text: String,
         override val ordinal: Int? = null,
+        override val spans: List<InlineSpan> = emptyList(),
     ) : ReaderBlock
 }
 
@@ -83,6 +96,19 @@ data class ReaderBenefit(
     val pageLabel: String?,
 )
 
+data class ReaderSelectionEndpoint(
+    val blockId: String,
+    val ordinal: Int,
+    /** UTF-16 code-unit offset into the exact stored block text. */
+    val offset: Int,
+)
+
+data class ReaderSelection(
+    val start: ReaderSelectionEndpoint,
+    val end: ReaderSelectionEndpoint,
+    val quotedText: String,
+)
+
 data class InBookHit(
     val id: String,
     val blockIndex: Int,
@@ -91,6 +117,8 @@ data class InBookHit(
     val matchStart: Int,
     val matchEnd: Int,
     val pageLabel: String?,
+    val sourceMatchStart: Int = matchStart,
+    val sourceMatchEnd: Int = matchEnd,
 )
 
 // ---- reading appearance, independent of the app's light/dark theme ----
@@ -98,7 +126,7 @@ data class InBookHit(
 enum class ReaderPalette(val label: String) {
     /** Follows the app's own light/dark choice. The default: a cream page dropped on a
      *  reader at night was the worst moment in the app. */
-    Follow("تلقائي"),
+    Follow("مثل التطبيق"),
     White("أبيض"),
     Warm("دافئ"),
     Dark("داكن"),
@@ -114,6 +142,12 @@ data class ReaderSettings(
     val fontSize: Int = 19,
     val spacing: ReaderSpacing = ReaderSpacing.Normal,
     val palette: ReaderPalette = ReaderPalette.Follow,
+    val margin: Int = 22,
+    val showTashkeel: Boolean = true,
+    /** «الحواشي» buttons and the footnote bodies. The data stays in the blocks; this only hides it. */
+    val showFootnotes: Boolean = true,
+    /** The page dividers («ص ١٢»). Hidden, the page-break block stays so ordinals never shift. */
+    val showPageNumbers: Boolean = true,
 ) {
     companion object {
         const val MIN_SIZE = 14
@@ -127,6 +161,13 @@ data class BookAudioUi(
     val durationLabel: String,
 )
 
+data class ReaderHighlight(
+    val startOrdinal: Int,
+    val endOrdinal: Int,
+    val startOffset: Int,
+    val endOffset: Int,
+)
+
 data class ReaderUiState(
     val bookTitle: String,
     val author: String,
@@ -134,8 +175,14 @@ data class ReaderUiState(
     val toc: List<TocEntry>,
     val bookmarks: List<ReaderBookmark>,
     val benefits: List<ReaderBenefit>,
+    val highlightedBlockIds: Set<String> = emptySet(),
+    val highlights: List<ReaderHighlight> = emptyList(),
+    val footnotes: Map<String, ReaderBlock.FootnoteBody> = emptyMap(),
+    val sourceUrl: String = "",
+
     /** The automatically restored position; the reader opens here. */
     val readingPositionIndex: Int = 0,
+    val readingOffset: Int = 0,
     /** Empty for most books; the bottom bar only shows an audio action when it is not. */
     val audio: List<BookAudioUi> = emptyList(),
     /** Catalog total; real readers page blocks and therefore do not infer this from [blocks]. */

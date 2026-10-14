@@ -87,6 +87,7 @@ data class SearchUiState(
     /** Full text is local in v1; catalog metadata still covers every catalogued work. */
     val fullTextLocalOnly: Boolean = true,
     val searching: Boolean = false,
+    val hasMore: Boolean = false,
     val directMatches: List<DirectMatchUi>,
     val hits: List<SearchHitUi>,
     val availableSources: List<String>,

@@ -25,6 +25,9 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.ui.input.nestedscroll.nestedScroll
+import com.atharchive.ui.components.AtharCollapsible
+import com.atharchive.ui.components.rememberAtharCollapsingHeader
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -36,20 +39,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.Role
-import androidx.compose.ui.semantics.contentDescription
-import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextDirection
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.atharchive.ui.components.AtharBookmarkButton
 import com.atharchive.ui.components.AtharEmptyState
 import com.atharchive.ui.components.AtharMenuButton
 import com.atharchive.ui.components.AtharSearchField
 import com.atharchive.ui.components.AtharTabRow
 import com.atharchive.ui.components.AtharTopBar
+import com.atharchive.ui.components.AtharMenu
+import com.atharchive.ui.components.AtharMenuItem
+import com.atharchive.feature.downloads.TransferUi
 import com.atharchive.ui.icons.AtharIcons
 import com.atharchive.ui.theme.AtharEditorialFontFamily
 import com.atharchive.ui.theme.AtharTheme
@@ -62,9 +64,7 @@ fun AudioScreen(
     onMore: (AudioUi) -> Unit,
     onSave: (AudioUi) -> Unit,
     onDownload: (AudioUi) -> Unit,
-    onOpenPlaylist: (PlaylistUi) -> Unit,
     modifier: Modifier = Modifier,
-    onLogo: (() -> Unit)? = null,
     onBack: (() -> Unit)? = null,
 ) {
     var selectedTab by rememberSaveable { mutableStateOf(AudioTab.All) }
@@ -80,7 +80,6 @@ fun AudioScreen(
             val matchesTab = when (selectedTab) {
                 AudioTab.All -> true
                 AudioTab.Downloaded -> audio.downloaded
-                AudioTab.MyList -> audio.saved
             }
             val matchesType = when (type) {
                 AudioType.All -> true
@@ -104,10 +103,6 @@ fun AudioScreen(
         }
     }
 
-    // Playlists are the point of قائمتي; the saved recordings sit underneath them.
-    val showPlaylists = selectedTab == AudioTab.MyList &&
-        query.isBlank() &&
-        state.playlists.isNotEmpty()
 
     BoxWithConstraints(
         modifier = modifier
@@ -122,32 +117,23 @@ fun AudioScreen(
                 title = "الصوتيات",
                 onSettings = onSettings,
                 showAppIcon = true,
-                onLogo = onLogo,
                 onBack = onBack,
                 horizontalPadding = horizontalPadding,
             )
-            LazyColumn(
-                state = listState,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .weight(1f)
-                    .testTag("audio_screen"),
-                contentPadding = PaddingValues(bottom = 28.dp),
-            ) {
-                item(key = "audio-search") {
-                    AtharSearchField(
-                        query = query,
-                        placeholder = "ابحث عن درس، سلسلة، شيخ أو موضوع…",
-                        onQueryChange = { query = it },
-                        tagPrefix = "audio",
-                        modifier = Modifier.padding(
-                            start = horizontalPadding,
-                            end = horizontalPadding,
-                            top = 4.dp,
-                        ),
-                    )
-                }
-                item(key = "audio-tabs") {
+            val header = rememberAtharCollapsingHeader()
+            AtharSearchField(
+                query = query,
+                placeholder = "ابحث عن درس، سلسلة، شيخ أو موضوع…",
+                onQueryChange = { query = it },
+                tagPrefix = "audio",
+                modifier = Modifier.padding(
+                    start = horizontalPadding,
+                    end = horizontalPadding,
+                    top = 4.dp,
+                ),
+            )
+            AtharCollapsible(header) {
+                Column {
                     AtharTabRow(
                         tabs = AudioTab.tabs,
                         selectedKey = selectedTab.key,
@@ -155,8 +141,6 @@ fun AudioScreen(
                         tagPrefix = "audio",
                         modifier = Modifier.padding(horizontal = horizontalPadding),
                     )
-                }
-                item(key = "audio-menus") {
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -184,44 +168,21 @@ fun AudioScreen(
                             tagPrefix = "audio_sort",
                         )
                     }
-                }
-                item(key = "audio-list-divider") {
                     HorizontalDivider(
                         modifier = Modifier.padding(horizontal = horizontalPadding),
                         color = AtharTheme.colors.divider.copy(alpha = 0.72f),
                     )
                 }
-
-                if (showPlaylists) {
-                    item(key = "audio-playlists-heading") {
-                        SectionHeading("قوائمي", horizontalPadding, top = 14.dp)
-                    }
-                    items(state.playlists, key = { "pl-${it.id}" }) { playlist ->
-                        PlaylistRow(
-                            playlist = playlist,
-                            horizontalPadding = horizontalPadding,
-                            onClick = { onOpenPlaylist(playlist) },
-                        )
-                    }
-                    item(key = "audio-playlists-divider") {
-                        HorizontalDivider(
-                            modifier = Modifier.padding(
-                                start = horizontalPadding,
-                                end = horizontalPadding,
-                                top = 10.dp,
-                            ),
-                            color = AtharTheme.colors.divider.copy(alpha = 0.72f),
-                        )
-                    }
-                }
-
-                item(key = "audio-list-heading") {
-                    SectionHeading(
-                        text = if (showPlaylists) "التسجيلات المحفوظة" else "الصوتيات",
-                        horizontalPadding = horizontalPadding,
-                        top = if (showPlaylists) 16.dp else 12.dp,
-                    )
-                }
+            }
+            LazyColumn(
+                state = listState,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .weight(1f)
+                    .nestedScroll(header.connection)
+                    .testTag("audio_screen"),
+                contentPadding = PaddingValues(bottom = 28.dp),
+            ) {
 
                 if (visible.isEmpty()) {
                     item(key = "audio-empty") {
@@ -233,8 +194,6 @@ fun AudioScreen(
                                     "امسح بعض المرشحات لعرض مزيد من التسجيلات."
                             selectedTab == AudioTab.Downloaded ->
                                 "لا توجد تسجيلات محمّلة" to "نزّل تسجيلًا لتستمع إليه دون اتصال."
-                            selectedTab == AudioTab.MyList ->
-                                "قائمتك فارغة" to "ستظهر هنا التسجيلات المحفوظة في قائمتك."
                             else ->
                                 "لا توجد تسجيلات" to "لم تتوفر تسجيلات في هذا القسم بعد."
                         }
@@ -254,6 +213,7 @@ fun AudioScreen(
                             onMore = { onMore(audio) },
                             onSave = { onSave(audio) },
                             onDownload = { onDownload(audio) },
+                            playing = state.nowPlaying?.let { it.audio.id == audio.id && it.playing } == true,
                         )
                         if (index != visible.lastIndex) {
                             // Inset on both sides so the rule reads as belonging to the
@@ -274,66 +234,7 @@ fun AudioScreen(
     }
 }
 
-@Composable
-private fun SectionHeading(text: String, horizontalPadding: Dp, top: Dp) {
-    Text(
-        text = text,
-        modifier = Modifier.padding(
-            start = horizontalPadding,
-            end = horizontalPadding,
-            top = top,
-            bottom = 4.dp,
-        ),
-        color = MaterialTheme.colorScheme.onBackground,
-        fontFamily = AtharEditorialFontFamily,
-        fontWeight = FontWeight.Bold,
-        fontSize = 16.sp,
-    )
-}
 
-@Composable
-private fun PlaylistRow(
-    playlist: PlaylistUi,
-    horizontalPadding: Dp,
-    onClick: () -> Unit,
-) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clickable(role = Role.Button, onClick = onClick)
-            .padding(horizontal = horizontalPadding, vertical = 11.dp)
-            .testTag("audio_playlist_${playlist.id}"),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(10.dp),
-    ) {
-        Icon(
-            imageVector = AtharIcons.Bookmark,
-            contentDescription = null,
-            tint = AtharTheme.colors.accent,
-            modifier = Modifier.size(17.dp),
-        )
-        Text(
-            text = playlist.name,
-            modifier = Modifier.weight(1f),
-            color = MaterialTheme.colorScheme.onSurface,
-            style = MaterialTheme.typography.bodyLarge,
-            fontWeight = FontWeight.Medium,
-            maxLines = 1,
-            overflow = TextOverflow.Ellipsis,
-        )
-        Text(
-            text = playlist.countLabel,
-            color = AtharTheme.colors.secondaryText,
-            style = MaterialTheme.typography.labelSmall,
-        )
-        Icon(
-            imageVector = AtharIcons.Forward,
-            contentDescription = null,
-            tint = AtharTheme.colors.secondaryText.copy(alpha = 0.7f),
-            modifier = Modifier.size(15.dp),
-        )
-    }
-}
 
 @Composable
 private fun AudioRow(
@@ -343,6 +244,7 @@ private fun AudioRow(
     onMore: () -> Unit,
     onSave: () -> Unit,
     onDownload: () -> Unit,
+    playing: Boolean = false,
 ) {
     Row(
         modifier = Modifier
@@ -356,7 +258,7 @@ private fun AudioRow(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(10.dp),
     ) {
-        AudioPlayButton(playing = false, size = 34.dp, onClick = onPlay)
+        AudioPlayButton(playing = playing, size = 48.dp, onClick = onPlay)
         Column(Modifier.weight(1f)) {
             Text(
                 text = audio.title,
@@ -381,7 +283,7 @@ private fun AudioRow(
                 )
             }
             Text(
-                text = "${audio.sourceKind.label} · ${audio.sourceTitle}",
+                text = if (audio.sourceTitle == audio.title) audio.sourceKind.label else "${audio.sourceKind.label} · ${audio.sourceTitle}",
                 modifier = Modifier.padding(top = 2.dp),
                 color = AtharTheme.colors.secondaryText,
                 style = MaterialTheme.typography.bodySmall,
@@ -393,70 +295,64 @@ private fun AudioRow(
                 horizontalArrangement = Arrangement.spacedBy(6.dp),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
-                val factColor = AtharTheme.colors.secondaryText.copy(alpha = 0.72f)
+                val factColor = AtharTheme.colors.secondaryText
                 Text(
                     text = audio.durationLabel,
                     color = factColor,
                     style = MaterialTheme.typography.labelSmall,
-                )
-                Text("·", color = factColor, style = MaterialTheme.typography.labelSmall)
-                Text(
-                    text = audio.sizeLabel,
-                    color = factColor,
-                    style = MaterialTheme.typography.labelSmall
-                        .copy(textDirection = TextDirection.Ltr),
                 )
                 if (audio.downloaded) {
                     DownloadedPill()
                 }
             }
         }
-        // قائمتي filters on audio.saved, and nothing could set it — the tab was
-        // permanently empty for a real listener.
-        AtharBookmarkButton(
-            saved = audio.saved,
-            onToggle = onSave,
-            itemTitle = audio.title,
-            tag = "audio_save_${audio.id}",
-        )
-        Box(
-            modifier = Modifier
-                .size(40.dp)
-                .clip(CircleShape)
-                .clickable(role = Role.Button, onClick = onDownload)
-                .semantics {
-                    contentDescription = if (audio.downloaded) {
-                        "${audio.title} محمّل"
-                    } else {
-                        "تنزيل ${audio.title}، الحجم ${audio.sizeLabel}"
-                    }
+        Box {
+            var menu by remember { mutableStateOf(false) }
+            IconButton(
+                onClick = { menu = true },
+                modifier = Modifier
+                    .size(48.dp)
+                    .testTag("audio_more_${audio.id}"),
+            ) {
+                Icon(
+                    imageVector = AtharIcons.More,
+                    contentDescription = "خيارات ${audio.title}",
+                    tint = AtharTheme.colors.secondaryText,
+                    modifier = Modifier.size(22.dp),
+                )
+            }
+            AtharMenu(expanded = menu, onDismiss = { menu = false }, modifier = Modifier.testTag("audio_menu_${audio.id}")) {
+                val transfer = audio.transfer
+                AtharMenuItem(
+                    label = when {
+                        transfer is TransferUi.Running -> "إيقاف التنزيل مؤقتًا"
+                        transfer != null -> "استئناف التنزيل"
+                        audio.downloaded -> "محمّل"
+                        else -> "تنزيل"
+                    },
+                    icon = when {
+                        transfer is TransferUi.Running -> AtharIcons.Pause
+                        audio.downloaded -> AtharIcons.Check
+                        else -> AtharIcons.Download
+                    },
+                    onClick = { menu = false; if (!audio.downloaded || transfer != null) onDownload() },
+                    modifier = Modifier.testTag("audio_download_${audio.id}"),
+                )
+                AtharMenuItem(
+                    label = if (audio.saved) "إزالة من محفوظاتي" else "حفظ في محفوظاتي",
+                    icon = if (audio.saved) AtharIcons.BookmarkFilled else AtharIcons.Bookmark,
+                    onClick = { menu = false; onSave() },
+                    modifier = Modifier.testTag("audio_save_${audio.id}"),
+                )
+                if (audio.sourceEntityId.isNotBlank()) {
+                    AtharMenuItem(
+                        label = if (audio.sourceKind == AudioSourceKind.Poem) "فتح القصيدة" else "فتح النص",
+                        icon = if (audio.sourceKind == AudioSourceKind.Poem) AtharIcons.Poetry else AtharIcons.Books,
+                        onClick = { menu = false; onMore() },
+                        modifier = Modifier.testTag("audio_open_${audio.id}"),
+                    )
                 }
-                .testTag("audio_download_${audio.id}"),
-            contentAlignment = Alignment.Center,
-        ) {
-            Icon(
-                imageVector = if (audio.downloaded) AtharIcons.Check else AtharIcons.Download,
-                contentDescription = null,
-                tint = if (audio.downloaded) {
-                    AtharTheme.colors.success
-                } else {
-                    AtharTheme.colors.secondaryText
-                },
-                modifier = Modifier.size(19.dp),
-            )
-        }
-        IconButton(
-            onClick = onMore,
-            modifier = Modifier
-                .size(32.dp)
-                .testTag("audio_more_${audio.id}"),
-        ) {
-            Icon(
-                imageVector = AtharIcons.More,
-                contentDescription = "خيارات ${audio.title}",
-                tint = AtharTheme.colors.secondaryText,
-                modifier = Modifier.size(18.dp),
-            )
+            }
         }
     }
 }

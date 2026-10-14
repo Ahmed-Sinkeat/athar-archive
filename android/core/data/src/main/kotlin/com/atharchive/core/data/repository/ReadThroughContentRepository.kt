@@ -1,8 +1,5 @@
 package com.atharchive.core.data.repository
 
-import androidx.paging.Pager
-import androidx.paging.PagingConfig
-import androidx.paging.PagingData
 import com.atharchive.core.data.content.CatalogEntry
 import com.atharchive.core.data.content.FramedPackageDecoder
 import com.atharchive.core.data.db.content.AtharContentDatabase
@@ -58,26 +55,17 @@ class ReadThroughContentRepository(
     fun observeBlocks(entityId: String): Flow<List<ContentBlockEntity>> =
         database.importDao().observeBlocks(entityId)
 
-    fun pagedBlocks(entityId: String): Flow<PagingData<ContentBlockEntity>> = Pager(
-        config = PagingConfig(
-            pageSize = 60,
-            prefetchDistance = 20,
-            enablePlaceholders = true,
-            initialLoadSize = 120,
-            maxSize = 300,
-        ),
-        pagingSourceFactory = { database.importDao().pagingSource(entityId) },
-    ).flow
-
-    suspend fun syncCatalog(trustedKeys: Map<String, PublicKey>): CatalogSyncResult = mutationMutex.withLock {
+    suspend fun syncCatalog(trustedKeys: Map<String, PublicKey>, requestedAudioIds: () -> Set<String> = { emptySet() }): CatalogSyncResult {
         val root = client.fetchRoot(trustedKeys).root
         val current = database.catalogDao().generation()
         if (current?.generationId == root.generationId) {
-            return@withLock CatalogSyncResult.UpToDate(root.generationId)
+            return CatalogSyncResult.UpToDate(root.generationId)
         }
 
         val generation = client.fetchGeneration(root)
-        val protectedBefore = userDatabase.userDataDao().protectedEntityIds().toSet()
+        return mutationMutex.withLock {
+        if (database.catalogDao().generation()?.generationId != current?.generationId) return@withLock CatalogSyncResult.UpToDate(database.catalogDao().generation()?.generationId ?: root.generationId)
+        val protectedBefore = protectedIds(requestedAudioIds())
         importer.applyGeneration(
             generationId = root.generationId,
             catalogHash = root.catalog.hash,
@@ -88,10 +76,47 @@ class ReadThroughContentRepository(
         )
         // Re-snapshot after the content transaction. Tombstoned rows were only marked in
         // that transaction, so a concurrent user action cannot lose its content metadata.
-        val protectedAfter = userDatabase.userDataDao().protectedEntityIds().toSet()
+        val protectedAfter = protectedIds(requestedAudioIds())
         database.catalogDao().purgeUnprotectedTombstones(protectedAfter)
         CatalogSyncResult.Applied(generation)
+        }
     }
+
+    /**
+     * First launch only: applies the catalog snapshot shipped inside the app so the library and
+     * title/author/topic search work before (or without) any network. It goes through the same
+     * signature and hash checks as a downloaded generation, and it never runs when a
+     * generation is already applied, so a stale snapshot can not replace a newer catalog.
+     * [read] returns the snapshot file at a path relative to the content root, or null.
+     */
+    suspend fun seedCatalog(trustedKeys: Map<String, PublicKey>, read: (String) -> ByteArray?): Boolean {
+        if (database.catalogDao().generation() != null) return false
+        val envelope = read("index.json") ?: return false
+        val root = com.atharchive.core.data.content.SignedRootVerifier.verify(envelope, trustedKeys)
+        val catalog = com.atharchive.core.data.content.AppContentDocuments.decodeCatalog(
+            read(root.catalog.path) ?: return false, root.catalog,
+        )
+        val tombstones = com.atharchive.core.data.content.AppContentDocuments.decodeTombstones(
+            read(root.tombstones.path) ?: return false, root.tombstones,
+        )
+        return mutationMutex.withLock {
+            if (database.catalogDao().generation() != null) return@withLock false
+            importer.applyGeneration(
+                generationId = root.generationId,
+                catalogHash = root.catalog.hash,
+                tombstonesHash = root.tombstones.hash,
+                catalog = catalog,
+                tombstonedIds = tombstones.deleted.mapTo(mutableSetOf()) { it.id },
+                protectedIds = emptySet(),
+            )
+            true
+        }
+    }
+
+    private suspend fun protectedIds(audioIds: Set<String>): Set<String> = retainedMetadataIds(
+        userDatabase.userDataDao().protectedEntityIds().toSet(), audioIds,
+        database.catalogDao().allEntities().map { it.toCatalogEntry() },
+    )
 
     suspend fun openFrame(entityId: String, targetOrdinal: Int): ReadThroughResult {
         val entity = requireNotNull(database.catalogDao().entity(entityId)) {
@@ -100,13 +125,9 @@ class ReadThroughContentRepository(
         return openFrame(entity.toCatalogEntry(), targetOrdinal)
     }
 
-    suspend fun openFrame(entry: CatalogEntry, targetOrdinal: Int): ReadThroughResult = mutationMutex.withLock {
+    suspend fun openFrame(entry: CatalogEntry, targetOrdinal: Int): ReadThroughResult {
         require(targetOrdinal in 0 until entry.pkg.blocks) { "target ordinal is outside the package" }
         val dao = database.importDao()
-        val local = dao.entity(entry.id)
-        if (local?.updateAvailable == true || (local?.localPackageHash != null && local.localPackageHash != entry.pkg.hash)) {
-            dao.clearImportedContent(entry.id)
-        }
         val cached = dao.frames(entry.id).firstOrNull {
             targetOrdinal >= it.firstBlockOrdinal && targetOrdinal < it.firstBlockOrdinal + it.blockCount
         }
@@ -115,7 +136,7 @@ class ReadThroughContentRepository(
             dao.touchFrame(entry.id, cached.frameOrdinal, now)
             dao.touchEntity(entry.id, now)
             val entity = requireNotNull(dao.entity(entry.id))
-            return@withLock ReadThroughResult(
+            return ReadThroughResult(
                 fromCache = true,
                 frameNumber = cached.frameOrdinal,
                 availability = entity.availability,
@@ -123,7 +144,8 @@ class ReadThroughContentRepository(
             )
         }
 
-        dao.markTransfer(entry.id, ContentTransferState.FETCHING)
+        // No transfer-state writes on the read-through path: every UPDATE on `entity`
+        // re-runs each catalog list query and costs a commit (≈0.3 s each on a Redmi).
         try {
             val indexBytes = client.fetchPackageIndex(entry)
             val index = FramedPackageDecoder.decodeIndex(indexBytes, entry)
@@ -133,7 +155,10 @@ class ReadThroughContentRepository(
             require(frameNumber >= 0) { "package index does not cover target ordinal" }
             val frame = index.frames[frameNumber]
             val bytes = client.fetchFrame(entry, frame)
-            importer.importVerifiedFrame(entry, frameNumber, frame, bytes).toReadThrough(frameNumber)
+            return mutationMutex.withLock {
+                check(dao.entity(entry.id)?.pkgHash == entry.pkg.hash) { "catalog changed during open; retry" }
+                importer.importVerifiedFrame(entry, frameNumber, frame, bytes).toReadThrough(frameNumber)
+            }
         } catch (error: Throwable) {
             runCatching { dao.markTransfer(entry.id, ContentTransferState.FAILED) }
             throw error
@@ -151,32 +176,39 @@ class ReadThroughContentRepository(
         direction: Int = 1,
         beforeFetch: suspend () -> Boolean = { true },
         afterFetch: suspend (ReadThroughResult) -> Unit = {},
+        /** How many frames to keep ready in [direction]; fetched one at a time, nearest first. */
+        count: Int = 1,
     ): ReaderPrefetchSession {
         require(direction == -1 || direction == 1)
+        require(count >= 1)
         val job = scope.launch {
             try {
-                if (!beforeFetch()) return@launch
                 val localFrames = database.importDao().frames(entityId)
                 val currentLocal = localFrames.firstOrNull {
                     currentOrdinal in it.firstBlockOrdinal until (it.firstBlockOrdinal + it.blockCount)
                 }
-                val adjacentLocal = currentLocal?.let { current ->
-                    localFrames.firstOrNull { it.frameOrdinal == current.frameOrdinal + direction }
-                }
-                if (adjacentLocal != null) {
-                    afterFetch(openFrame(entityId, adjacentLocal.firstBlockOrdinal))
-                    return@launch
-                }
+                var index: com.atharchive.core.data.content.PackageIndex? = null
+                for (step in 1..count) {
+                    // Asked again before every frame: storage can run low mid-prefetch.
+                    if (!beforeFetch()) return@launch
+                    val adjacentLocal = currentLocal?.let { current ->
+                        localFrames.firstOrNull { it.frameOrdinal == current.frameOrdinal + direction * step }
+                    }
+                    if (adjacentLocal != null) {
+                        afterFetch(openFrame(entityId, adjacentLocal.firstBlockOrdinal))
+                        continue
+                    }
 
-                val entity = database.catalogDao().entity(entityId) ?: return@launch
-                val entry = entity.toCatalogEntry()
-                val indexBytes = client.fetchPackageIndex(entry)
-                val index = FramedPackageDecoder.decodeIndex(indexBytes, entry)
-                val currentFrame = index.frames.indexOfFirst {
-                    currentOrdinal in it.ord until (it.ord + it.n)
+                    val entity = database.catalogDao().entity(entityId) ?: return@launch
+                    val entry = entity.toCatalogEntry()
+                    val loaded = index ?: FramedPackageDecoder.decodeIndex(client.fetchPackageIndex(entry), entry)
+                        .also { index = it }
+                    val currentFrame = loaded.frames.indexOfFirst {
+                        currentOrdinal in it.ord until (it.ord + it.n)
+                    }
+                    val target = loaded.frames.getOrNull(currentFrame + direction * step) ?: return@launch
+                    afterFetch(openFrame(entityId, target.ord))
                 }
-                val target = index.frames.getOrNull(currentFrame + direction) ?: return@launch
-                afterFetch(openFrame(entityId, target.ord))
             } catch (cancelled: CancellationException) {
                 throw cancelled
             } catch (_: Throwable) {
@@ -258,6 +290,11 @@ class ContentCacheManager(
         return removed
     }
 }
+
+internal fun retainedMetadataIds(userIds: Set<String>, requestedAudioIds: Set<String>, catalog: List<CatalogEntry>): Set<String> =
+    userIds + catalog.filter { source ->
+        source.audio.any { it.id in requestedAudioIds || "audio:${it.id}" in userIds }
+    }.map { it.id }
 
 private fun FrameImportResult.toReadThrough(frameNumber: Int): ReadThroughResult =
     ReadThroughResult(

@@ -47,19 +47,21 @@ class BooksNavigationTest {
 
     @Test
     fun catalogExposesCurrentTabsAndThePersonalLibrary() {
-        listOf("all", "recent", "downloaded", "mylist").forEach { tab ->
+        listOf("all", "recent", "downloaded").forEach { tab ->
             composeRule.onNodeWithTag("books_tab_$tab").assertIsDisplayed()
         }
 
-        composeRule.onNodeWithContentDescription("مكتبتي").performClick()
+        composeRule.onNodeWithTag("settings_action").performClick()
+        composeRule.onNodeWithText("محفوظاتي").performClick()
         composeRule.onNodeWithTag("library_screen").assertIsDisplayed()
-        composeRule.onNodeWithTag("athar_page_title").assertTextEquals("مكتبتي")
+        composeRule.onNodeWithTag("athar_page_title").assertTextEquals("محفوظاتي")
         composeRule.onNodeWithTag("library_empty").assertIsDisplayed()
     }
 
     @Test
     fun libraryOffersCollectionCreation() {
-        composeRule.onNodeWithContentDescription("مكتبتي").performClick()
+        composeRule.onNodeWithTag("settings_action").performClick()
+        composeRule.onNodeWithText("محفوظاتي").performClick()
         composeRule.onNodeWithContentDescription("إنشاء مجموعة").performClick()
         composeRule.onNodeWithText("مجموعة جديدة").assertIsDisplayed()
         composeRule.onNodeWithTag("collection_title").performTextInput("بحوث")

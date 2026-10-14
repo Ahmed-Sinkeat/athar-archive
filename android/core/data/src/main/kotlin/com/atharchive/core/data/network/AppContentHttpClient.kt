@@ -16,6 +16,8 @@ import java.io.File
 import java.io.FileOutputStream
 import java.io.InputStream
 import java.security.PublicKey
+import kotlinx.coroutines.ensureActive
+import kotlin.coroutines.coroutineContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import okhttp3.HttpUrl
@@ -81,7 +83,7 @@ class AppContentHttpClient(
             .header("Accept-Encoding", "identity")
             .header("Range", "bytes=$first-$last")
             .build()
-        execute(request).use { response ->
+        withResponse(request) { response ->
             if (response.code != 206) throw ContentTransportException("frame request returned HTTP ${response.code}, expected 206")
             val expectedRange = "bytes $first-$last/${entry.pkg.size}"
             if (response.header("Content-Range") != expectedRange) {
@@ -103,40 +105,48 @@ class AppContentHttpClient(
         entry: CatalogEntry,
         partFile: File,
         onProgress: (downloadedBytes: Long, totalBytes: Long) -> Unit = { _, _ -> },
+    ): PackageDownloadResult = downloadArtifact(entry.pkg.path, entry.pkg.hash, entry.pkg.size, partFile, onProgress)
+
+    suspend fun downloadArtifact(
+        path: String,
+        hash: String,
+        size: Long,
+        partFile: File,
+        onProgress: (downloadedBytes: Long, totalBytes: Long) -> Unit = { _, _ -> },
     ): PackageDownloadResult = withContext(Dispatchers.IO) {
-        require(entry.pkg.size > 0) { "package must not be empty" }
+        require(size > 0) { "package must not be empty" }
         partFile.parentFile?.mkdirs()
         check(partFile.parentFile?.isDirectory == true) { "cannot create transfer directory" }
 
-        if (partFile.exists() && partFile.length() > entry.pkg.size) partFile.delete()
-        if (partFile.isFile && partFile.length() == entry.pkg.size) {
+        if (partFile.exists() && partFile.length() > size) partFile.delete()
+        if (partFile.isFile && partFile.length() == size) {
             try {
-                ContentDigests.verify(partFile, entry.pkg.hash, entry.pkg.size, "downloaded package")
-                onProgress(entry.pkg.size, entry.pkg.size)
-                return@withContext PackageDownloadResult(entry.pkg.size, 0)
+                ContentDigests.verify(partFile, hash, size, "downloaded package")
+                onProgress(size, size)
+                return@withContext PackageDownloadResult(size, 0)
             } catch (error: ContentIntegrityException) {
                 partFile.delete()
             }
         }
 
         val resumedFrom = partFile.takeIf(File::isFile)?.length() ?: 0L
-        val last = entry.pkg.size - 1
+        val last = size - 1
         val request = Request.Builder()
-            .url(resolve(entry.pkg.path))
+            .url(resolve(path))
             .header("Accept-Encoding", "identity")
             .header("Range", "bytes=$resumedFrom-$last")
             .build()
-        execute(request).use { response ->
+        withResponse(request) { response ->
             if (response.code != 206) {
                 throw ContentTransportException("package request returned HTTP ${response.code}, expected 206")
             }
-            val expectedRange = "bytes $resumedFrom-$last/${entry.pkg.size}"
+            val expectedRange = "bytes $resumedFrom-$last/${size}"
             if (response.header("Content-Range") != expectedRange) {
                 throw ContentTransportException("package response has an unexpected Content-Range")
             }
             requireIdentity(response)
             val body = response.body ?: throw ContentTransportException("package response has no body")
-            val remaining = entry.pkg.size - resumedFrom
+            val remaining = size - resumedFrom
             if (body.contentLength() > remaining) {
                 throw ContentTransportException("package response exceeds its declared range")
             }
@@ -144,57 +154,74 @@ class AppContentHttpClient(
                 body.byteStream().use { input ->
                     val buffer = ByteArray(DEFAULT_BUFFER_SIZE)
                     var total = resumedFrom
-                    onProgress(total, entry.pkg.size)
+                    onProgress(total, size)
                     while (true) {
+                        coroutineContext.ensureActive()
                         val read = input.read(buffer)
                         if (read < 0) break
                         total += read
-                        if (total > entry.pkg.size) {
+                        if (total > size) {
                             throw ContentTransportException("package response exceeds its declared size")
                         }
                         output.write(buffer, 0, read)
-                        onProgress(total, entry.pkg.size)
+                        onProgress(total, size)
                     }
                     output.fd.sync()
-                    if (total != entry.pkg.size) {
-                        throw ContentTransportException("package response ended at $total of ${entry.pkg.size} bytes")
+                    if (total != size) {
+                        throw ContentTransportException("package response ended at $total of ${size} bytes")
                     }
                 }
             }
         }
         try {
-            ContentDigests.verify(partFile, entry.pkg.hash, entry.pkg.size, "downloaded package")
+            ContentDigests.verify(partFile, hash, size, "downloaded package")
         } catch (error: ContentIntegrityException) {
             partFile.delete()
             throw error
         }
-        PackageDownloadResult(resumedFrom, entry.pkg.size - resumedFrom)
+        PackageDownloadResult(resumedFrom, size - resumedFrom)
     }
 
-    private fun get(relativePath: String, maximumBytes: Int): ByteArray {
+    private suspend fun get(relativePath: String, maximumBytes: Int): ByteArray {
         val request = Request.Builder()
             .url(resolve(relativePath))
             .header("Accept-Encoding", "identity")
             .build()
-        execute(request).use { response ->
+        return withResponse(request) { response ->
             if (!response.isSuccessful) throw ContentTransportException("$relativePath returned HTTP ${response.code}")
             requireIdentity(response)
-            return readBounded(response, maximumBytes)
+            readBounded(response, maximumBytes)
         }
     }
 
-    private fun execute(request: Request): Response = try {
-        client.newCall(request).execute()
-    } catch (error: Exception) {
-        throw ContentTransportException("app-content request failed", error)
-    }
+    private suspend fun <T> withResponse(request: Request, consume: (Response) -> T): T =
+        kotlinx.coroutines.suspendCancellableCoroutine { continuation ->
+            val call = client.newCall(request)
+            continuation.invokeOnCancellation { call.cancel() }
+            call.enqueue(object : okhttp3.Callback {
+                override fun onFailure(call: okhttp3.Call, e: java.io.IOException) {
+                    if (continuation.isActive) continuation.resumeWith(Result.failure(ContentTransportException("app-content request failed", e)))
+                }
+                override fun onResponse(call: okhttp3.Call, response: Response) {
+                    val result = runCatching { response.use(consume) }
+                    if (continuation.isActive) continuation.resumeWith(result)
+                }
+            })
+        }
+
+    fun artifactUrl(relativePath: String): String = resolve(relativePath).toString()
 
     private fun resolve(relativePath: String): HttpUrl {
         if (
             relativePath.isBlank() || relativePath.startsWith('/') || '\\' in relativePath ||
             relativePath.split('/').any { it.isBlank() || it == "." || it == ".." }
         ) throw ContentIntegrityException("unsafe app-content path")
-        return baseUrl.resolve(relativePath) ?: throw ContentIntegrityException("unsafe app-content path")
+        val resolved = baseUrl.resolve(relativePath) ?: throw ContentIntegrityException("unsafe app-content path")
+        if (resolved.host != baseUrl.host || resolved.port != baseUrl.port || resolved.scheme != baseUrl.scheme ||
+            !resolved.encodedPath.startsWith(baseUrl.encodedPath) || resolved.query != null || resolved.fragment != null) {
+            throw ContentIntegrityException("unsafe app-content path")
+        }
+        return resolved
     }
 
     private fun requireIdentity(response: Response) {

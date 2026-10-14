@@ -6,10 +6,14 @@
 -->
 <data-extraction-rules>
     <cloud-backup>
+        <include domain="sharedpref" path="athar_appearance.xml" />
         <include domain="file" path="datastore/settings.preferences_pb" />
     </cloud-backup>
 
     <device-transfer>
+        <include domain="sharedpref" path="athar_appearance.xml" />
+        <include domain="sharedpref" path="audio_playback.xml" />
+        <include domain="sharedpref" path="audio_queue.xml" />
         <include domain="file" path="datastore/settings.preferences_pb" />
         <include domain="database" path="athar_user.db" />
     </device-transfer>

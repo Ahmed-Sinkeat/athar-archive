@@ -1,5 +1,7 @@
 package com.atharchive.feature.audio
 
+import com.atharchive.ui.components.AtharMenuItem
+import com.atharchive.ui.components.AtharMenu
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -19,8 +21,15 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.DropdownMenu
-import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.gestures.detectTapGestures
+import androidx.compose.foundation.gestures.detectHorizontalDragGestures
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.semantics.ProgressBarRangeInfo
+import androidx.compose.ui.semantics.progressBarRangeInfo
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -31,7 +40,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -49,7 +57,6 @@ import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.runtime.CompositionLocalProvider
-import com.atharchive.ui.components.AtharMenuButton
 import com.atharchive.ui.icons.AtharIcons
 import com.atharchive.ui.theme.AtharEditorialFontFamily
 import com.atharchive.ui.theme.AtharTheme
@@ -73,6 +80,8 @@ fun PlayerScreen(
     nowPlaying: NowPlayingUi,
     queue: List<AudioUi>,
     playlists: List<PlaylistUi>,
+    collections: List<PlaylistUi> = playlists,
+    onCreateCollection: (String) -> Unit = {},
     onCollapse: () -> Unit,
     onToggle: () -> Unit,
     onSelect: (AudioUi) -> Unit,
@@ -82,34 +91,18 @@ fun PlayerScreen(
     onMore: () -> Unit,
     onAddToPlaylist: (PlaylistUi) -> Unit,
     modifier: Modifier = Modifier,
+    speed: Float = 1f,
+    repeat: Boolean = false,
+    onSpeed: (Float) -> Unit = {},
+    onRepeat: (Boolean) -> Unit = {},
+    onSleep: (Int) -> Unit = {},
+    sleepMinutes: Int = 0,
+    onSeekFraction: (Float) -> Unit = {},
 ) {
-    var speed by rememberSaveable { mutableStateOf(1.0f) }
-    var repeat by rememberSaveable { mutableStateOf(false) }
-    var sleepMinutes by rememberSaveable { mutableStateOf(0) }
-    var queueType by rememberSaveable { mutableStateOf(AudioType.All) }
-    var queueSort by rememberSaveable { mutableStateOf(AudioSort.Newest) }
-
     val audio = nowPlaying.audio
     val remaining = remember(audio.durationSeconds, nowPlaying.progress) {
         ((audio.durationSeconds * (1f - nowPlaying.progress)).toInt()).coerceAtLeast(0)
     }
-    val visibleQueue = remember(queue, queueType, queueSort) {
-        val filtered = queue.filter { item ->
-            when (queueType) {
-                AudioType.All -> true
-                AudioType.Books -> item.sourceKind == AudioSourceKind.Book
-                AudioType.Poetry -> item.sourceKind == AudioSourceKind.Poem
-                AudioType.Issues -> item.sourceKind == AudioSourceKind.Question
-            }
-        }
-        when (queueSort) {
-            AudioSort.Newest -> filtered
-            AudioSort.Longest -> filtered.sortedByDescending { it.durationSeconds }
-            AudioSort.Shortest -> filtered.sortedBy { it.durationSeconds }
-            AudioSort.Title -> filtered.sortedBy { it.title }
-        }
-    }
-
     BoxWithConstraints(
         modifier = modifier
             .fillMaxSize()
@@ -136,13 +129,13 @@ fun PlayerScreen(
             ) {
                 IconButton(
                     onClick = onCollapse,
-                    modifier = Modifier.size(40.dp).testTag("player_collapse"),
+                    modifier = Modifier.size(48.dp).testTag("player_collapse"),
                 ) {
                     Icon(
                         imageVector = AtharIcons.ChevronDown,
                         contentDescription = "إغلاق المشغّل",
                         tint = AtharTheme.colors.secondaryText,
-                        modifier = Modifier.size(20.dp),
+                        modifier = Modifier.size(26.dp),
                     )
                 }
                 Text(
@@ -154,16 +147,28 @@ fun PlayerScreen(
                     fontWeight = FontWeight.Bold,
                     fontSize = 16.sp,
                 )
-                IconButton(
-                    onClick = onMore,
-                    modifier = Modifier.size(40.dp).testTag("player_more"),
-                ) {
-                    Icon(
-                        imageVector = AtharIcons.More,
-                        contentDescription = "خيارات",
-                        tint = AtharTheme.colors.secondaryText,
-                        modifier = Modifier.size(18.dp),
-                    )
+                Box {
+                    var moreOpen by remember { mutableStateOf(false) }
+                    IconButton(
+                        onClick = { moreOpen = true },
+                        modifier = Modifier.size(48.dp).testTag("player_more"),
+                    ) {
+                        Icon(
+                            imageVector = AtharIcons.More,
+                            contentDescription = "خيارات",
+                            tint = AtharTheme.colors.secondaryText,
+                            modifier = Modifier.size(18.dp),
+                        )
+                    }
+                    AtharMenu(expanded = moreOpen, onDismiss = { moreOpen = false }, modifier = Modifier.testTag("player_more_menu")) {
+                        val poem = audio.sourceKind == AudioSourceKind.Poem
+                        AtharMenuItem(
+                            label = if (poem) "فتح القصيدة" else "فتح النص",
+                            icon = if (poem) AtharIcons.Poetry else AtharIcons.Books,
+                            onClick = { moreOpen = false; onMore() },
+                            modifier = Modifier.testTag("player_open_source"),
+                        )
+                    }
                 }
             }
 
@@ -208,7 +213,7 @@ fun PlayerScreen(
                     overflow = TextOverflow.Ellipsis,
                 )
             }
-            Text(
+            if (audio.title != audio.sourceTitle) Text(
                 text = audio.title,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -232,30 +237,10 @@ fun PlayerScreen(
                 TimeLabel(nowPlaying.positionLabel)
                 SeekBar(
                     progress = nowPlaying.progress,
+                    onSeek = onSeekFraction,
                     modifier = Modifier.weight(1f),
                 )
-                TimeLabel(nowPlaying.durationLabel)
-            }
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = pad, end = pad, top = 6.dp),
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
-                Text(
-                    text = "٪${(nowPlaying.progress * 100).toInt().arabicDigits()}",
-                    color = AtharTheme.colors.secondaryText,
-                    style = MaterialTheme.typography.labelSmall,
-                )
-                Text(
-                    text = "الوقت المتبقّي ${formatClock(remaining)}",
-                    modifier = Modifier.weight(1f),
-                    textAlign = TextAlign.Center,
-                    color = AtharTheme.colors.secondaryText,
-                    style = MaterialTheme.typography.labelSmall,
-                )
-                // Keeps the remaining-time label optically centred.
-                Spacer(Modifier.width(34.dp))
+                TimeLabel("\u2066−${formatClock(remaining)}\u2069")
             }
 
             // ── transport (LTR: the tape metaphor does not mirror) ───────────
@@ -268,9 +253,9 @@ fun PlayerScreen(
                     horizontalArrangement = Arrangement.SpaceBetween,
                 ) {
                     GlyphButton(AtharIcons.SkipPrevious, "التسجيل السابق", 26.dp, onSkipPrevious)
-                    SeekButton(AtharIcons.SeekBack, 10, "رجوع ١٠ ثوان") { onSeek(-10) }
+                    SeekButton(AtharIcons.SeekBack, 15, "رجوع ١٥ ثانية") { onSeek(-15) }
                     BigPlayButton(playing = nowPlaying.playing, onClick = onToggle)
-                    SeekButton(AtharIcons.SeekForward, 30, "تقدّم ٣٠ ثانية") { onSeek(30) }
+                    SeekButton(AtharIcons.SeekForward, 15, "تقدّم ١٥ ثانية") { onSeek(15) }
                     GlyphButton(AtharIcons.SkipNext, "التسجيل التالي", 26.dp, onSkipNext)
                 }
             }
@@ -283,19 +268,20 @@ fun PlayerScreen(
                 horizontalArrangement = Arrangement.spacedBy(9.dp),
             ) {
                 AddToPlaylistTile(
-                    playlists = playlists,
+                    playlists = collections,
                     onAdd = onAddToPlaylist,
+                    onCreate = onCreateCollection,
                     modifier = Modifier.weight(1f),
                 )
                 SleepTile(
                     minutes = sleepMinutes,
-                    onSelect = { sleepMinutes = it },
+                    onSelect = onSleep,
                     modifier = Modifier.weight(1f),
                 )
                 ActionTile(
                     label = "تكرار",
                     active = repeat,
-                    onClick = { repeat = !repeat },
+                    onClick = { onRepeat(!repeat) },
                     tag = "player_repeat",
                     modifier = Modifier.weight(1f),
                 ) { tint ->
@@ -303,7 +289,7 @@ fun PlayerScreen(
                 }
                 SpeedTile(
                     speed = speed,
-                    onSelect = { speed = it },
+                    onSelect = onSpeed,
                     modifier = Modifier.weight(1f),
                 )
             }
@@ -332,30 +318,14 @@ fun PlayerScreen(
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.spacedBy(8.dp),
                     ) {
-                        AtharMenuButton(
-                            label = "الترتيب",
-                            options = AudioSort.entries.map { it.label },
-                            selected = queueSort.label,
-                            defaultOption = AudioSort.Newest.label,
-                            onSelect = { l -> queueSort = AudioSort.entries.first { it.label == l } },
-                            tagPrefix = "queue_sort",
-                        )
-                        AtharMenuButton(
-                            label = "النوع",
-                            options = AudioType.entries.map { it.label },
-                            selected = queueType.label,
-                            defaultOption = AudioType.All.label,
-                            onSelect = { l -> queueType = AudioType.entries.first { it.label == l } },
-                            tagPrefix = "queue_type",
-                        )
                         Spacer(Modifier.weight(1f))
-                        Text(
-                            text = "${playlists.size.arabicDigits()} قوائم",
+                        if (playlists.isNotEmpty()) Text(
+                            text = com.atharchive.data.arabicCount(playlists.size, "", "قائمة واحدة", "قائمتان", "قوائم", "قائمة"),
                             color = AtharTheme.colors.secondaryText,
                             style = MaterialTheme.typography.labelSmall,
                         )
                     }
-                    visibleQueue.forEachIndexed { index, item ->
+                    queue.forEachIndexed { index, item ->
                         if (index != 0) {
                             HorizontalDivider(
                                 modifier = Modifier.padding(horizontal = 14.dp),
@@ -385,36 +355,38 @@ private fun TimeLabel(text: String) {
  * right and travels left. The thumb rides the end of the filled span.
  */
 @Composable
-private fun SeekBar(progress: Float, modifier: Modifier = Modifier) {
-    Box(
-        modifier = modifier.height(18.dp),
-        contentAlignment = Alignment.CenterStart,
+private fun SeekBar(progress: Float, modifier: Modifier = Modifier, onSeek: (Float) -> Unit) {
+    // The same thin bar as the mini player and reader, with a small dot; tap or drag.
+    // Fills from the start edge, so under RTL playback travels right → left.
+    val rtl = LocalLayoutDirection.current == LayoutDirection.Rtl
+    val accent = AtharTheme.colors.accent
+    val track = AtharTheme.colors.divider
+    var drag by remember { mutableStateOf<Float?>(null) }
+    val shown = (drag ?: progress).coerceIn(0f, 1f)
+    fun fraction(x: Float, width: Int) = (x / width).coerceIn(0f, 1f).let { if (rtl) 1f - it else it }
+    Canvas(
+        modifier = modifier
+            .height(28.dp)
+            .testTag("player_seek_bar")
+            .semantics { progressBarRangeInfo = ProgressBarRangeInfo(shown, 0f..1f) }
+            .pointerInput(rtl) {
+                detectTapGestures { onSeek(fraction(it.x, size.width)) }
+            }
+            .pointerInput(rtl) {
+                detectHorizontalDragGestures(
+                    onDragStart = { drag = fraction(it.x, size.width) },
+                    onDragEnd = { drag?.let(onSeek); drag = null },
+                    onDragCancel = { drag = null },
+                ) { change, _ -> drag = fraction(change.position.x, size.width) }
+            },
     ) {
-        Box(
-            Modifier
-                .fillMaxWidth()
-                .height(3.dp)
-                .clip(CircleShape)
-                .background(AtharTheme.colors.divider.copy(alpha = 0.75f)),
-        )
-        Box(
-            modifier = Modifier.fillMaxWidth(progress.coerceIn(0f, 1f)),
-            contentAlignment = Alignment.CenterEnd,
-        ) {
-            Box(
-                Modifier
-                    .fillMaxWidth()
-                    .height(3.dp)
-                    .clip(CircleShape)
-                    .background(AtharTheme.colors.accent),
-            )
-            Box(
-                Modifier
-                    .size(11.dp)
-                    .clip(CircleShape)
-                    .background(AtharTheme.colors.accent),
-            )
-        }
+        val y = size.height / 2
+        val h = 3.dp.toPx()
+        val split = if (rtl) size.width * (1f - shown) else size.width * shown
+        drawLine(track, Offset(0f, y), Offset(size.width, y), h, StrokeCap.Round)
+        if (rtl) drawLine(accent, Offset(split, y), Offset(size.width, y), h, StrokeCap.Round)
+        else drawLine(accent, Offset(0f, y), Offset(split, y), h, StrokeCap.Round)
+        drawCircle(accent, radius = (if (drag != null) 7 else 5).dp.toPx(), center = Offset(split, y))
     }
 }
 
@@ -519,12 +491,34 @@ private fun ActionTile(
 private fun AddToPlaylistTile(
     playlists: List<PlaylistUi>,
     onAdd: (PlaylistUi) -> Unit,
+    onCreate: (String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     var open by remember { mutableStateOf(false) }
+    var creating by remember { mutableStateOf(false) }
+    if (creating) {
+        var title by remember { mutableStateOf("") }
+        androidx.compose.material3.AlertDialog(
+            onDismissRequest = { creating = false },
+            title = { Text("مجموعة جديدة") },
+            text = {
+                androidx.compose.material3.OutlinedTextField(
+                    value = title, onValueChange = { title = it.take(80) },
+                    label = { Text("اسم المجموعة") }, singleLine = true,
+                )
+            },
+            confirmButton = {
+                androidx.compose.material3.TextButton(
+                    enabled = title.isNotBlank(),
+                    onClick = { onCreate(title.trim()); creating = false },
+                ) { Text("إنشاء وإضافة") }
+            },
+            dismissButton = { androidx.compose.material3.TextButton(onClick = { creating = false }) { Text("إلغاء") } },
+        )
+    }
     Box(modifier = modifier) {
         ActionTile(
-            label = "إضافة إلى قائمة",
+            label = "إضافة إلى مجموعة",
             active = false,
             onClick = { open = true },
             tag = "player_add_playlist",
@@ -532,24 +526,11 @@ private fun AddToPlaylistTile(
         ) { tint ->
             Icon(AtharIcons.PlusCircle, null, tint = tint, modifier = Modifier.size(21.dp))
         }
-        DropdownMenu(
-            expanded = open,
-            onDismissRequest = { open = false },
-            containerColor = AtharTheme.colors.canvas,
-            shape = RoundedCornerShape(10.dp),
-        ) {
+        AtharMenu(expanded = open, onDismiss = { open = false }) {
             playlists.forEach { playlist ->
-                DropdownMenuItem(
-                    text = {
-                        Text(
-                            text = playlist.name,
-                            color = MaterialTheme.colorScheme.onSurface,
-                            style = MaterialTheme.typography.bodyMedium,
-                        )
-                    },
-                    onClick = { onAdd(playlist); open = false },
-                )
+                AtharMenuItem(playlist.name, onClick = { onAdd(playlist); open = false })
             }
+            AtharMenuItem("مجموعة جديدة…", icon = AtharIcons.PlusCircle, onClick = { creating = true; open = false })
         }
     }
 }
@@ -567,25 +548,11 @@ private fun SleepTile(minutes: Int, onSelect: (Int) -> Unit, modifier: Modifier 
         ) { tint ->
             Icon(AtharIcons.SleepTimer, null, tint = tint, modifier = Modifier.size(21.dp))
         }
-        DropdownMenu(
-            expanded = open,
-            onDismissRequest = { open = false },
-            containerColor = AtharTheme.colors.canvas,
-            shape = RoundedCornerShape(10.dp),
-        ) {
+        AtharMenu(expanded = open, onDismiss = { open = false }, width = 200.dp) {
             SleepOptions.forEach { option ->
-                DropdownMenuItem(
-                    text = {
-                        Text(
-                            text = if (option == 0) "إيقاف" else "${option.arabicDigits()} دقيقة",
-                            color = if (option == minutes) {
-                                AtharTheme.colors.accent
-                            } else {
-                                MaterialTheme.colorScheme.onSurface
-                            },
-                            style = MaterialTheme.typography.bodyMedium,
-                        )
-                    },
+                AtharMenuItem(
+                    label = if (option == 0) "إيقاف" else "${option.arabicDigits()} دقيقة",
+                    checked = option == minutes,
                     onClick = { onSelect(option); open = false },
                 )
             }
@@ -612,27 +579,9 @@ private fun SpeedTile(speed: Float, onSelect: (Float) -> Unit, modifier: Modifie
                 fontSize = 15.sp,
             )
         }
-        DropdownMenu(
-            expanded = open,
-            onDismissRequest = { open = false },
-            containerColor = AtharTheme.colors.canvas,
-            shape = RoundedCornerShape(10.dp),
-        ) {
+        AtharMenu(expanded = open, onDismiss = { open = false }, width = 180.dp) {
             Speeds.forEach { option ->
-                DropdownMenuItem(
-                    text = {
-                        Text(
-                            text = speedLabel(option),
-                            color = if (option == speed) {
-                                AtharTheme.colors.accent
-                            } else {
-                                MaterialTheme.colorScheme.onSurface
-                            },
-                            style = MaterialTheme.typography.bodyMedium,
-                        )
-                    },
-                    onClick = { onSelect(option); open = false },
-                )
+                AtharMenuItem(speedLabel(option), checked = option == speed, onClick = { onSelect(option); open = false })
             }
         }
     }
@@ -666,14 +615,17 @@ private fun QueueRow(item: AudioUi, onPlay: () -> Unit) {
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 val factColor = AtharTheme.colors.secondaryText
-                Text(
-                    text = item.speaker ?: item.sourceTitle,
-                    color = factColor,
-                    style = MaterialTheme.typography.labelSmall,
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis,
-                )
-                Text("·", color = factColor, style = MaterialTheme.typography.labelSmall)
+                val source = item.speaker ?: item.sourceTitle.takeIf { it != item.title }
+                if (source != null) {
+                    Text(
+                        text = source,
+                        color = factColor,
+                        style = MaterialTheme.typography.labelSmall,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis,
+                    )
+                    Text("·", color = factColor, style = MaterialTheme.typography.labelSmall)
+                }
                 Text(
                     text = item.durationLabel,
                     color = factColor,

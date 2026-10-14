@@ -7,6 +7,7 @@ plugins {
 
 android {
     namespace = "com.atharchive.core.data"
+    defaultConfig { testApplicationId = "com.atharchive.core.data.verification" }
 }
 
 room3 {
@@ -16,9 +17,7 @@ room3 {
 dependencies {
     implementation(project(":core:athar-text"))
     api(libs.room.runtime)
-    implementation(libs.room.paging)
     implementation(libs.sqlite.bundled)
-    implementation(libs.paging.runtime)
     implementation(libs.okhttp)
     implementation(libs.kotlinx.serialization.json)
     ksp(libs.room.compiler)

@@ -6,26 +6,25 @@
 **M5 results:** [`docs/android/m5-results.md`](../docs/android/m5-results.md).
 **M6 results:** [`docs/android/m6-results.md`](../docs/android/m6-results.md).
 **M7 results:** [`docs/android/m7-results.md`](../docs/android/m7-results.md).
+**M7.1 interim results:** [`docs/android/m7.1-results.md`](../docs/android/m7.1-results.md).
 
 **Product boundary:** Athar is a general Arabic scholarly-library app. Tafsir and Hadith
 works use the ordinary book pipeline; there is no specialist Qurʾan, tafsir-fragment, or
 Hadith subsystem. See `main-plan.md` §0 and D13.
 
-Status: **M7 search/library implementation and device acceptance complete (20 Aug 2026).**
-The dedicated
-`athar-app-content` R2 bucket serves the signed four-entry slice at
-`https://app-content.arthurarchive.com/app/v2/`. Books, articles, poetry, and their native
-readers now observe Room Flows; compact local FTS, vocalised snippets, direct reader landing,
-durable shelves, and user collections are wired. Annotations and Media3 playback remain
-M8–M9 work.
-`core/data` verifies the signed root and complete hash chain, owns separate
-user/content Room databases, performs exact verified HTTP Range reads, imports frames
-transactionally, evicts only unpinned cache data, and rebuilds retained packages offline.
-Explicit downloads are WorkManager-backed, resumable and durably retained; cache limits,
-low-storage eviction and completion notifications are wired. All 12 `core:data` tests pass
-on the Android 15 phone, including exact phrase retrieval after candidate 80, atomic FTS
-eviction, and personal-library survival across a content-DB replacement. All four M7 app UI
-tests also pass on the Android 15 phone; see the M7 results for the HyperOS runner workaround.
+Status: **Android v1 features implemented; final catalog generation and release verification
+in progress (12 Oct 2026).** See [current evidence and remaining work](../docs/android/v1-progress.md).
+Readers, local search, shelves/collections, annotations/notebook, offline downloads,
+Media3 playback/queues/playlists and transactional SAF backup are wired to real data.
+The Redmi 12 has the latest page-notes debug build; update install and cold launch pass.
+
+`core/data` verifies the signed root and complete hash chain, owns separate user/content
+Room databases, imports frames transactionally, evicts only unpinned cache data, and
+rebuilds retained packages offline. The signed staging origin at
+`https://app-content.arthurarchive.com/app/v2/` still serves the four-entry slice.
+Full publication requires the owner's signing and R2 credentials; a production APK also
+requires the release keystore. Current checks pass: debug build/lint, 32 core JVM tests
+and 27 content tests. New Room device checks compile, but test-APK installation is blocked.
 
 ## Build and test
 
@@ -70,13 +69,13 @@ android/
 │   └── data/                signed sync, Room 3 databases, frame import/cache/rebuild
 ├── app/                     production shell — Application, Activity, backup rules
 ├── m0/                      temporary certification harness
-└── benchmark/               macrobenchmarks; targets :m0 until the real M5 reader
+└── benchmark/               macrobenchmarks; targets the release-like :app benchmark variant
 ```
 
 Modules are created **when a stable boundary needs them**, never as empty scaffolding. M2–M3
 may keep fixture-driven final UI in `:app` packages while the design settles. Extract
 `core/ui` and stable feature boundaries after that UI is real; `core/data` arrives with M5,
-search behavior arrived with M7; annotations follow with M8 and Media3 audio with M9.
+search behavior arrived with M7, annotations with M8 and Media3 audio with M9.
 
 Downloads get **no module of their own**: the logic belongs in `core/data`, the UI
 starts inside `feature/library`. Split it out only if that screen actually grows.
@@ -121,13 +120,29 @@ It preserves visible Unicode and inline semantics at build time; unsupported Mar
 the content build instead of disappearing. Android normalizes already-parsed block text for
 local FTS, pages Room rows and renders native Compose text (main-plan.md §6, D10).
 
+### Bundled catalog snapshot
+
+For an instant library on first launch (and offline), a release build ships the signed root,
+catalog and tombstones of the current generation in `app/src/main/assets/app-content/`
+(git-ignored, about 4.5 MB, ~1 MB in the APK). Regenerate it for **every release**:
+
+```
+npm run app:gen && npm run app:bundle-catalog -- dist/app-content/app/v2
+```
+
+The app applies it only to an **empty** catalog, through the same signature and hash checks as a
+download (`ReadThroughContentRepository.seedCatalog`); a normal sync follows. A missing or stale
+snapshot is harmless — it can never replace a newer applied generation.
+
 The first real-device content slice is deliberately short and varied: one published article,
 `nawaqid-al-islam` as the book, `swteat-866` as the masʾala, and
 `qasidat-madh-al-sunnah-wa-ittiba-al-salaf` with its existing 5:41 Opus audio and 29 timing
 cues. Exact source paths and acceptance checks are in `main-plan.md` §16.
 
-Generate that M4 slice from the repository root with `pnpm app:gen:slice`. Immutable output
-goes to `dist/app-content/app/v2/`; persistent block identities go to
+Generate the full published corpus with `pnpm app:gen`; immutable output goes to
+`dist/app-content/app/v2/`. `pnpm app:gen:slice` keeps the four-entry development slice
+in `dist/app-content-slice/app/v2/` so it cannot replace a full catalog by accident.
+Persistent block identities go to
 `content-ids/<collection>/<id>.ids.json`. An unsigned local run emits
 `index.payload.json` only. The protected signing job sets
 `ATHAR_CONTENT_SIGNING_KEY_FILE` and `ATHAR_CONTENT_SIGNING_KEY_ID` to emit `index.json`.
@@ -159,3 +174,20 @@ production by staying put.
 ⚠️ **Editing Arabic character classes:** always write codepoints as `\u` escapes,
 never paste literals — bidi display reorders them silently (this bit us three
 times while writing `ArNormalize.kt`).
+
+## Current development build
+
+See [v1 progress and verification](../docs/android/v1-progress.md) for the current work,
+phone checks and outstanding release gates. The debug APK remains configured for the
+four-entry signed staging origin until a new signed generation is published.
+
+Release builds require the three `ATHAR_CONTENT_*` origin/public-key values plus
+`ATHAR_ANDROID_KEYSTORE`, `ATHAR_ANDROID_STORE_PASSWORD`, `ATHAR_ANDROID_KEY_ALIAS`
+and `ATHAR_ANDROID_KEY_PASSWORD`. `:app:verifyReleaseConfiguration` rejects missing
+configuration; it does not create or rotate the owner's signing keys.
+
+Audio uses a Media3 foreground service. Text and audio downloads use WorkManager with
+foreground progress, durable intent, pause/resume and bounded retry. The notebook's SAF
+archive contains annotations, text reading positions, shelves and collection membership;
+media files and playback preferences are not embedded in that archive. Appearance can
+use platform backup; audio playback preferences transfer only between devices.

@@ -1,5 +1,7 @@
 package com.atharchive.core.data.repository
 
+import androidx.room3.withWriteTransaction
+
 import com.atharchive.core.data.content.CatalogEntry
 import com.atharchive.core.data.content.ContentDigests
 import com.atharchive.core.data.content.FramedPackageDecoder
@@ -34,6 +36,8 @@ class ContentTransferRunner(
     private val mutationMutex: Mutex = Mutex(),
     private val nowMillis: () -> Long = System::currentTimeMillis,
 ) {
+    private val transferLocks = java.util.concurrent.ConcurrentHashMap<String, Mutex>()
+
     suspend fun requestPin(entityId: String) = mutationMutex.withLock {
         val entry = requireNotNull(contentDatabase.catalogDao().entity(entityId)) {
             "catalog entity $entityId is missing"
@@ -43,7 +47,7 @@ class ContentTransferRunner(
         )
     }
 
-    suspend fun unpin(entityId: String) = mutationMutex.withLock {
+    suspend fun unpin(entityId: String) = transferLocks.getOrPut(entityId) { Mutex() }.withLock { mutationMutex.withLock {
         val entity = contentDatabase.catalogDao().entity(entityId)
         userDatabase.userDataDao().removePinnedDownload(entityId)
         if (entity == null) {
@@ -55,12 +59,12 @@ class ContentTransferRunner(
             }
         }
         contentDatabase.importDao().markTransfer(entityId, ContentTransferState.IDLE)
-    }
+    } }
 
     suspend fun downloadPinned(
         entityId: String,
         onProgress: (downloadedBytes: Long, totalBytes: Long) -> Unit = { _, _ -> },
-    ): ContentTransferResult = mutationMutex.withLock {
+    ): ContentTransferResult = transferLocks.getOrPut(entityId) { Mutex() }.withLock {
         val dao = contentDatabase.importDao()
         val entity = requireNotNull(dao.entity(entityId)) { "catalog entity $entityId is missing" }
         val entry = entity.toCatalogEntry()
@@ -83,7 +87,7 @@ class ContentTransferRunner(
 
         dao.markTransfer(entityId, ContentTransferState.FETCHING)
         try {
-            storagePolicy.prepareForDownload(entry.pkg.uncompressed)
+            mutationMutex.withLock { storagePolicy.prepareForDownload(entry.pkg.uncompressed) }
             val verifiedIndexBytes = loadOrFetchIndex(entry)
             val index = FramedPackageDecoder.decodeIndex(verifiedIndexBytes, entry)
             val partFile = partFile(entry)
@@ -91,33 +95,38 @@ class ContentTransferRunner(
             dao.markTransfer(entityId, ContentTransferState.VERIFYING)
             ensureStillPinned(entry)
 
-            val local = requireNotNull(dao.entity(entityId))
-            if (local.updateAvailable || (local.localPackageHash != null && local.localPackageHash != entry.pkg.hash)) {
-                dao.clearImportedContent(entityId)
-            }
-            val importedFrameNumbers = dao.frames(entityId).mapTo(hashSetOf()) { it.frameOrdinal }
             var importedFrames = 0
-            dao.markTransfer(entityId, ContentTransferState.IMPORTING)
-            RandomAccessFile(partFile, "r").use { packageInput ->
-                index.frames.forEachIndexed { frameNumber, frame ->
+            val replacing = dao.entity(entityId)?.let {
+                it.updateAvailable || (it.localPackageHash != null && it.localPackageHash != entry.pkg.hash)
+            } == true
+            if (replacing) {
+                // A replacement must be all-or-nothing: a malformed new package may never
+                // cost the reader the old text, so it stays in one transaction.
+                // ponytail: this holds the mutex and the single connection for the whole
+                // package; stage replacement frames beside the old ones if updates get large.
+                mutationMutex.withLock {
                     ensureStillPinned(entry)
-                    if (frameNumber in importedFrameNumbers) return@forEachIndexed
-                    val bytes = ByteArray(frame.len)
-                    packageInput.seek(frame.off)
-                    packageInput.readFully(bytes)
-                    importer.importVerifiedFrame(entry, frameNumber, frame, bytes)
-                    dao.markTransfer(entityId, ContentTransferState.IMPORTING)
-                    importedFrames++
+                    check(dao.entity(entityId)?.pkgHash == entry.pkg.hash) { "catalog changed during download; retry" }
+                    contentDatabase.withWriteTransaction {
+                        dao.clearImportedContent(entityId)
+                        dao.markTransfer(entityId, ContentTransferState.IMPORTING)
+                        importedFrames = importFrames(entry, index, partFile, frameLock = null)
+                    }
+                    finishImport(entry, partFile, verifiedIndexBytes)
                 }
+            } else {
+                // First download or resume: every frame commits on its own and a resumed
+                // import skips frames already stored, so nothing is lost on a crash. The
+                // mutex and connection are taken per frame, so reading (or opening this very
+                // book) is never frozen for the whole import.
+                mutationMutex.withLock {
+                    ensureStillPinned(entry)
+                    check(dao.entity(entityId)?.pkgHash == entry.pkg.hash) { "catalog changed during download; retry" }
+                    dao.markTransfer(entityId, ContentTransferState.IMPORTING)
+                }
+                importedFrames = importFrames(entry, index, partFile, frameLock = mutationMutex)
+                mutationMutex.withLock { finishImport(entry, partFile, verifiedIndexBytes) }
             }
-            val completed = requireNotNull(dao.entity(entityId))
-            check(completed.availability == ContentAvailability.COMPLETE) {
-                "package import did not produce complete availability"
-            }
-            ensureStillPinned(entry)
-            retainedStore.retainVerified(entry, partFile, verifiedIndexBytes)
-            removeTransferFiles(entry)
-            dao.markTransfer(entityId, ContentTransferState.IDLE)
             ContentTransferResult(
                 entityId = entityId,
                 packageBytes = entry.pkg.size,
@@ -132,6 +141,46 @@ class ContentTransferRunner(
             runCatching { dao.markTransfer(entityId, ContentTransferState.FAILED) }
             throw error
         }
+    }
+
+    /** Imports the frames not stored yet; [frameLock] is taken per frame, or null if the caller already holds it. */
+    private suspend fun importFrames(
+        entry: CatalogEntry,
+        index: com.atharchive.core.data.content.PackageIndex,
+        partFile: File,
+        frameLock: Mutex?,
+    ): Int {
+        val dao = contentDatabase.importDao()
+        val stored = dao.frames(entry.id).mapTo(hashSetOf()) { it.frameOrdinal }
+        var imported = 0
+        RandomAccessFile(partFile, "r").use { packageInput ->
+            for ((frameNumber, frame) in index.frames.withIndex()) {
+                if (frameNumber in stored) continue
+                val bytes = ByteArray(frame.len)
+                packageInput.seek(frame.off)
+                packageInput.readFully(bytes)
+                suspend fun import() {
+                    ensureStillPinned(entry)
+                    importer.importVerifiedFrame(entry, frameNumber, frame, bytes)
+                    dao.markTransfer(entry.id, ContentTransferState.IMPORTING)
+                }
+                if (frameLock == null) import() else frameLock.withLock { import() }
+                imported++
+            }
+        }
+        return imported
+    }
+
+    private suspend fun finishImport(entry: CatalogEntry, partFile: File, indexBytes: ByteArray) {
+        val dao = contentDatabase.importDao()
+        ensureStillPinned(entry)
+        val completed = requireNotNull(dao.entity(entry.id))
+        check(completed.availability == ContentAvailability.COMPLETE) {
+            "package import did not produce complete availability"
+        }
+        retainedStore.retainVerified(entry, partFile, indexBytes)
+        removeTransferFiles(entry)
+        dao.markTransfer(entry.id, ContentTransferState.IDLE)
     }
 
     private suspend fun ensureStillPinned(entry: CatalogEntry) {

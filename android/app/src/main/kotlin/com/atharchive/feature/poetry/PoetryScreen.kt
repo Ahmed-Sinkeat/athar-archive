@@ -23,6 +23,11 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import com.atharchive.core.ArNormalize
+import com.atharchive.feature.downloads.TransferUi
+import androidx.compose.ui.input.nestedscroll.nestedScroll
+import com.atharchive.ui.components.AtharCollapsible
+import com.atharchive.ui.components.rememberAtharCollapsingHeader
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -45,6 +50,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.atharchive.ui.components.AtharEmptyState
 import com.atharchive.ui.components.AtharBookmarkButton
+import com.atharchive.ui.components.AtharDownloadButton
 import com.atharchive.ui.components.AtharMenuButton
 import com.atharchive.ui.components.AtharMetaPill
 import com.atharchive.ui.components.AtharSearchField
@@ -65,7 +71,6 @@ fun PoetryScreen(
     onSaveClick: (PoemUi) -> Unit,
     onDownloadClick: (PoemUi) -> Unit,
     modifier: Modifier = Modifier,
-    onLogo: (() -> Unit)? = null,
     onBack: (() -> Unit)? = null,
 ) {
     var selectedTab by rememberSaveable { mutableStateOf(PoetryTab.All) }
@@ -84,19 +89,18 @@ fun PoetryScreen(
             val matchesTab = when (selectedTab) {
                 PoetryTab.All -> true
                 PoetryTab.Downloaded -> poem.downloaded
-                PoetryTab.MyList -> poem.saved
             }
-            val term = query.trim()
+            val term = ArNormalize.normalize(query.trim())
             val matchesQuery = term.isBlank() ||
-                poem.title.contains(term, ignoreCase = true) ||
-                poem.poet.contains(term, ignoreCase = true) ||
-                poem.openingVerses.any { it.contains(term, ignoreCase = true) }
+                ArNormalize.normalize(poem.title).contains(term, ignoreCase = true) ||
+                ArNormalize.normalize(poem.poet).contains(term, ignoreCase = true) ||
+                poem.openingVerses.any { ArNormalize.normalize(it).contains(term, ignoreCase = true) }
             matchesTab && matchesQuery && (topic == AllTopics || poem.topic == topic)
         }.sortedWith(
             when (sort) {
                 PoemSort.Title -> compareBy { it.title }
                 PoemSort.Poet -> compareBy { it.poet }
-                PoemSort.Newest -> compareBy { state.poems.indexOf(it) }
+                PoemSort.Newest -> compareBy { it.title }
             },
         )
     }
@@ -115,32 +119,23 @@ fun PoetryScreen(
                 title = "الشعر",
                 onSettings = onSettings,
                 showAppIcon = true,
-                onLogo = onLogo,
                 onBack = onBack,
                 horizontalPadding = horizontalPadding,
             )
-        LazyColumn(
-            state = listState,
-            modifier = Modifier
-                .fillMaxWidth()
-                .weight(1f)
-                .testTag("poetry_screen"),
-            contentPadding = PaddingValues(bottom = 28.dp),
-        ) {
-            item(key = "poetry-search") {
-                AtharSearchField(
-                    query = query,
-                    placeholder = "ابحث عن قصيدة، بيت أو شاعر…",
-                    onQueryChange = { query = it },
-                    tagPrefix = "poetry",
-                    modifier = Modifier.padding(
-                        start = horizontalPadding,
-                        end = horizontalPadding,
-                        top = 4.dp,
-                    ),
-                )
-            }
-            item(key = "poetry-tabs") {
+        val header = rememberAtharCollapsingHeader()
+        AtharSearchField(
+            query = query,
+            placeholder = "ابحث عن قصيدة، بيت أو شاعر…",
+            onQueryChange = { query = it },
+            tagPrefix = "poetry",
+            modifier = Modifier.padding(
+                start = horizontalPadding,
+                end = horizontalPadding,
+                top = 4.dp,
+            ),
+        )
+        AtharCollapsible(header) {
+            Column {
                 AtharTabRow(
                     tabs = PoetryTab.tabs,
                     selectedKey = selectedTab.key,
@@ -148,8 +143,6 @@ fun PoetryScreen(
                     tagPrefix = "poetry",
                     modifier = Modifier.padding(horizontal = horizontalPadding),
                 )
-            }
-            item(key = "poetry-menus") {
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -173,13 +166,21 @@ fun PoetryScreen(
                         tagPrefix = "poetry_sort",
                     )
                 }
-            }
-            item(key = "poetry-list-divider") {
                 HorizontalDivider(
                     modifier = Modifier.padding(horizontal = horizontalPadding),
                     color = AtharTheme.colors.divider.copy(alpha = 0.72f),
                 )
             }
+        }
+        LazyColumn(
+            state = listState,
+            modifier = Modifier
+                .fillMaxWidth()
+                .weight(1f)
+                .nestedScroll(header.connection)
+                .testTag("poetry_screen"),
+            contentPadding = PaddingValues(bottom = 28.dp),
+        ) {
             if (visiblePoems.isEmpty()) {
                 item(key = "poetry-empty") {
                     val (title, body) = when {
@@ -190,7 +191,7 @@ fun PoetryScreen(
                         selectedTab == PoetryTab.Downloaded ->
                             "لا توجد قصائد محمّلة" to "نزّل قصيدة لتقرأها دون اتصال."
                         else ->
-                            "قائمتك فارغة" to "ستظهر هنا القصائد المحفوظة في قائمتك."
+                            "لا توجد قصائد" to "لم تتوفر قصائد في هذا القسم بعد."
                     }
                     AtharEmptyState(
                         title = title,
@@ -303,7 +304,6 @@ private fun PoemRow(
                     if (poem.verseCountLabel != null) {
                         AtharMetaPill(poem.verseCountLabel)
                     }
-                    AtharMetaPill(poem.sizeLabel, latinDigits = true)
                 }
             }
         }
@@ -313,31 +313,13 @@ private fun PoemRow(
             itemTitle = poem.title,
             tag = "poem_save_${poem.id}",
         )
-        Box(
-            modifier = Modifier
-                .size(40.dp)
-                .clip(CircleShape)
-                .clickable(role = Role.Button, onClick = onDownload)
-                .semantics {
-                    contentDescription = when {
-                        poem.downloaded -> "${poem.title} محمّلة، الحجم ${poem.sizeLabel}"
-                        poem.downloading -> "جار تنزيل ${poem.title}، الحجم ${poem.sizeLabel}"
-                        else -> "تنزيل ${poem.title}، الحجم ${poem.sizeLabel}"
-                    }
-                }
-                .testTag("poem_download_${poem.id}"),
-            contentAlignment = Alignment.Center,
-        ) {
-            Icon(
-                imageVector = if (poem.downloaded) AtharIcons.Check else AtharIcons.Download,
-                contentDescription = null,
-                tint = when {
-                    poem.downloaded -> AtharTheme.colors.success
-                    poem.downloading -> AtharTheme.colors.accent
-                    else -> AtharTheme.colors.secondaryText
-                },
-                modifier = Modifier.size(19.dp),
-            )
-        }
+        AtharDownloadButton(
+            title = poem.title,
+            sizeLabel = poem.sizeLabel,
+            downloaded = poem.downloaded,
+            transfer = poem.transfer,
+            onClick = onDownload,
+            tag = "poem_download_${poem.id}",
+        )
     }
 }

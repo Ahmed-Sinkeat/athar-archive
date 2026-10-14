@@ -23,6 +23,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.LayoutDirection
+import androidx.compose.ui.platform.LocalLayoutDirection
+import androidx.compose.runtime.CompositionLocalProvider
+import com.atharchive.feature.reader.SegmentRow
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.Role
@@ -54,6 +58,8 @@ import com.atharchive.ui.theme.ThemeMode
 fun AppearanceScreen(
     themeMode: ThemeMode,
     onThemeModeChange: (ThemeMode) -> Unit,
+    startPlace: com.atharchive.data.StartPlace,
+    onStartPlaceChange: (com.atharchive.data.StartPlace) -> Unit,
     reader: ReaderSettings,
     onReaderChange: (ReaderSettings) -> Unit,
     onBack: () -> Unit,
@@ -66,6 +72,8 @@ fun AppearanceScreen(
             .background(AtharTheme.colors.canvas),
     ) {
         val pad = if (maxWidth >= 720.dp) 32.dp else 20.dp
+        val segmentColors = rememberReaderColors(ReaderPalette.Follow)
+        val segmentPad = Modifier.padding(horizontal = pad, vertical = 6.dp)
 
         Column(modifier = Modifier.fillMaxSize()) {
             AtharTopBar(
@@ -83,30 +91,30 @@ fun AppearanceScreen(
                     .padding(bottom = 28.dp),
             ) {
                 AtharSectionHeading("سمة التطبيق", pad, top = 10.dp)
-                ThemeMode.entries.forEach { mode ->
-                    ChoiceRow(
-                        label = mode.label,
-                        selected = mode == themeMode,
-                        horizontalPadding = pad,
-                        tag = "appearance_theme_${mode.name}",
-                        onClick = { onThemeModeChange(mode) },
-                    )
+                Box(segmentPad) {
+                    SegmentRow(ThemeMode.entries.map { it.label }, themeMode.label, segmentColors, "appearance_theme") { label ->
+                        onThemeModeChange(ThemeMode.entries.first { it.label == label })
+                    }
+                }
+
+                SectionRule(pad)
+                AtharSectionHeading("يفتح التطبيق على", pad, top = 18.dp)
+                val places = com.atharchive.data.StartPlace.entries
+                places.chunked(3).forEachIndexed { row, group ->
+                    Box(segmentPad) {
+                        SegmentRow(group.map { it.label }, startPlace.label, segmentColors, "appearance_start_$row") { label ->
+                            onStartPlaceChange(places.first { it.label == label })
+                        }
+                    }
                 }
 
                 SectionRule(pad)
                 AtharSectionHeading("صفحة القراءة", pad, top = 18.dp)
                 PagePreview(reader, pad)
-                ReaderPalette.entries.forEach { palette ->
-                    ChoiceRow(
-                        label = palette.label,
-                        // The one option that needs saying out loud: it is why the default
-                        // no longer drops a cream page on a reader at night.
-                        note = if (palette == ReaderPalette.Follow) "يتبع سمة التطبيق" else null,
-                        selected = palette == reader.palette,
-                        horizontalPadding = pad,
-                        tag = "appearance_palette_${palette.name}",
-                        onClick = { onReaderChange(reader.copy(palette = palette)) },
-                    )
+                Box(segmentPad) {
+                    SegmentRow(ReaderPalette.entries.map { it.label }, reader.palette.label, segmentColors, "appearance_palette") { label ->
+                        onReaderChange(reader.copy(palette = ReaderPalette.entries.first { it.label == label }))
+                    }
                 }
 
                 SectionRule(pad)
@@ -119,14 +127,10 @@ fun AppearanceScreen(
 
                 SectionRule(pad)
                 AtharSectionHeading("تباعد الأسطر", pad, top = 18.dp)
-                ReaderSpacing.entries.forEach { spacing ->
-                    ChoiceRow(
-                        label = spacing.label,
-                        selected = spacing == reader.spacing,
-                        horizontalPadding = pad,
-                        tag = "appearance_spacing_${spacing.name}",
-                        onClick = { onReaderChange(reader.copy(spacing = spacing)) },
-                    )
+                Box(segmentPad) {
+                    SegmentRow(ReaderSpacing.entries.map { it.label }, reader.spacing.label, segmentColors, "appearance_spacing") { label ->
+                        onReaderChange(reader.copy(spacing = ReaderSpacing.entries.first { it.label == label }))
+                    }
                 }
             }
         }
@@ -166,7 +170,8 @@ private fun PagePreview(reader: ReaderSettings, horizontalPadding: Dp) {
 
 @Composable
 private fun FontSizeRow(size: Int, horizontalPadding: Dp, onChange: (Int) -> Unit) {
-    Row(
+    // Spatial order (small → large), as in the reader's Aa.
+    CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) { Row(
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = horizontalPadding, vertical = 6.dp),
@@ -180,8 +185,9 @@ private fun FontSizeRow(size: Int, horizontalPadding: Dp, onChange: (Int) -> Uni
             onClick = { onChange(size - 1) },
         )
         Text(
-            text = "$size",
+            text = size.toString().map { '\u0660' + (it - '0') }.joinToString(""),
             modifier = Modifier.weight(1f),
+            textAlign = androidx.compose.ui.text.style.TextAlign.Center,
             color = MaterialTheme.colorScheme.onSurface,
             style = MaterialTheme.typography.titleMedium,
         )
@@ -191,7 +197,7 @@ private fun FontSizeRow(size: Int, horizontalPadding: Dp, onChange: (Int) -> Uni
             tag = "appearance_font_plus",
             onClick = { onChange(size + 1) },
         )
-    }
+    } }
 }
 
 @Composable
@@ -215,64 +221,6 @@ private fun StepButton(label: String, enabled: Boolean, tag: String, onClick: ()
             fontSize = 15.sp,
             fontWeight = FontWeight.SemiBold,
         )
-    }
-}
-
-@Composable
-private fun ChoiceRow(
-    label: String,
-    selected: Boolean,
-    horizontalPadding: Dp,
-    tag: String,
-    onClick: () -> Unit,
-    note: String? = null,
-) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .defaultMinSize(minHeight = 52.dp)
-            .clickable(role = Role.RadioButton, onClick = onClick)
-            .semantics { this.selected = selected }
-            .padding(horizontal = horizontalPadding, vertical = 8.dp)
-            .testTag(tag),
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        Column(Modifier.weight(1f)) {
-            Text(
-                text = label,
-                color = if (selected) {
-                    AtharTheme.colors.accent
-                } else {
-                    MaterialTheme.colorScheme.onSurface
-                },
-                style = MaterialTheme.typography.bodyLarge,
-                fontWeight = if (selected) FontWeight.SemiBold else FontWeight.Normal,
-            )
-            if (note != null) {
-                Text(
-                    text = note,
-                    color = AtharTheme.colors.secondaryText,
-                    style = MaterialTheme.typography.labelSmall,
-                )
-            }
-        }
-        // A check, not a radio ring: the app marks state with a check everywhere else.
-        if (selected) {
-            Box(
-                modifier = Modifier
-                    .size(22.dp)
-                    .clip(CircleShape)
-                    .background(AtharTheme.colors.accentSurface),
-                contentAlignment = Alignment.Center,
-            ) {
-                Icon(
-                    imageVector = AtharIcons.Check,
-                    contentDescription = null,
-                    tint = AtharTheme.colors.accent,
-                    modifier = Modifier.size(14.dp),
-                )
-            }
-        }
     }
 }
 

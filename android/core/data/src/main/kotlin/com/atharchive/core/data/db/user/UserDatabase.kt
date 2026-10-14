@@ -11,6 +11,7 @@ import androidx.room3.Query
 import androidx.room3.RoomDatabase
 import androidx.room3.Transaction
 import kotlinx.coroutines.flow.Flow
+import kotlinx.serialization.Serializable
 
 object LibraryStatus {
     const val READ_LATER = "readLater"
@@ -24,6 +25,7 @@ object LibraryStatus {
     tableName = "annotation",
     indices = [Index(value = ["entityId", "startOrdinalHint"])],
 )
+@Serializable
 data class AnnotationEntity(
     @PrimaryKey val id: String,
     val entityId: String,
@@ -51,6 +53,7 @@ data class AnnotationEntity(
 )
 
 @Entity(tableName = "readingPosition")
+@Serializable
 data class ReadingPositionEntity(
     @PrimaryKey val entityId: String,
     val chapterAnchor: String,
@@ -74,6 +77,7 @@ data class ReadingHistoryEntity(
 )
 
 @Entity(tableName = "libraryEntry")
+@Serializable
 data class LibraryEntryEntity(
     @PrimaryKey val entityId: String,
     val status: String,
@@ -82,6 +86,7 @@ data class LibraryEntryEntity(
 )
 
 @Entity(tableName = "userCollection")
+@Serializable
 data class UserCollectionEntity(
     @PrimaryKey val id: String,
     val title: String,
@@ -94,6 +99,7 @@ data class UserCollectionEntity(
     primaryKeys = ["collectionId", "entityId"],
     indices = [Index(value = ["entityId"])],
 )
+@Serializable
 data class CollectionItemEntity(
     val collectionId: String,
     val entityId: String,
@@ -116,6 +122,21 @@ data class RecentSearchEntity(
 @Dao
 interface UserDataDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun saveAnnotation(annotation: AnnotationEntity)
+
+    @Query("DELETE FROM annotation WHERE id = :id")
+    suspend fun deleteAnnotation(id: String)
+
+    @Query("SELECT * FROM annotation WHERE id = :id")
+    suspend fun annotation(id: String): AnnotationEntity?
+
+    @Query("SELECT * FROM annotation ORDER BY updatedAt DESC, id")
+    fun observeAnnotations(): Flow<List<AnnotationEntity>>
+
+    @Query("SELECT * FROM annotation ORDER BY createdAt, id")
+    suspend fun annotations(): List<AnnotationEntity>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun saveReadingPosition(position: ReadingPositionEntity)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -131,7 +152,7 @@ interface UserDataDao {
     suspend fun saveUserCollection(collection: UserCollectionEntity)
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun addCollectionItem(item: CollectionItemEntity)
+    suspend fun addCollectionItem(item: CollectionItemEntity): Long
 
     @Query("DELETE FROM collectionItem WHERE collectionId = :collectionId AND entityId = :entityId")
     suspend fun removeCollectionItem(collectionId: String, entityId: String)
@@ -184,6 +205,9 @@ interface UserDataDao {
     @Query("SELECT * FROM userCollection ORDER BY createdAt, id")
     suspend fun userCollections(): List<UserCollectionEntity>
 
+    @Query("SELECT * FROM userCollection WHERE id = :id")
+    suspend fun userCollection(id: String): UserCollectionEntity?
+
     @Query("SELECT * FROM collectionItem ORDER BY addedAt, collectionId, entityId")
     fun observeCollectionItems(): Flow<List<CollectionItemEntity>>
 
@@ -204,6 +228,9 @@ interface UserDataDao {
 
     @Query("SELECT * FROM readingPosition WHERE entityId = :entityId")
     suspend fun readingPosition(entityId: String): ReadingPositionEntity?
+
+    @Query("SELECT * FROM readingPosition ORDER BY entityId")
+    suspend fun readingPositions(): List<ReadingPositionEntity>
 
     @Query(
         "SELECT entityId FROM pinnedDownload " +

@@ -6,7 +6,6 @@ enum class BooksTab(val key: String, val label: String) {
     All("all", "الكل"),
     Recent("recent", "الأخيرة"),
     Downloaded("downloaded", "المحمّلة"),
-    MyList("mylist", "قائمتي"),
     ;
 
     companion object {
@@ -27,8 +26,7 @@ sealed interface BookDownloadUi {
     data class Available(override val sizeLabel: String) : BookDownloadUi
     data class Downloading(
         override val sizeLabel: String,
-        val progress: Float,
-        val progressLabel: String,
+        val transfer: com.atharchive.feature.downloads.TransferUi,
     ) : BookDownloadUi
 
     data class Downloaded(override val sizeLabel: String) : BookDownloadUi
@@ -48,11 +46,15 @@ data class BookUi(
     val readingPosition: String? = null,
     val readingProgress: Float? = null,
     val readingProgressLabel: String? = null,
+    val topics: List<String> = listOf(discipline),
+    val died: Int? = null,
+    val publishedAt: String = "",
 )
 
 data class BooksUiState(
     val archiveCountLabel: String,
     val books: List<BookUi>,
+    val loaded: Boolean = true,
 )
 
 val BooksFixture = BooksUiState(
@@ -112,8 +114,7 @@ val BooksFixture = BooksUiState(
             kind = "مرجع",
             download = BookDownloadUi.Downloading(
                 sizeLabel = "21.7 MB",
-                progress = 0.64f,
-                progressLabel = "٦٤٪",
+                transfer = com.atharchive.feature.downloads.TransferUi.Running(0.64f, "٦٤٪"),
             ),
             recentRank = 4,
             saved = true,

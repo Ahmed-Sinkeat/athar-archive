@@ -52,6 +52,7 @@ object AppContentDocuments {
         if (entry.v < 1 || !ContentDigests.isSha256(entry.hash) || entry.title.isBlank()) {
             fail("malformed catalog entry ${entry.coll}/${entry.id}")
         }
+        if (entry.verseCount != null && (entry.coll != "poem" || entry.verseCount < 0)) fail("invalid verse count")
         val pkg = entry.pkg
         if (
             !ContentDigests.isSha256(pkg.hash) || !ContentDigests.isSha256(pkg.idxHash) ||
@@ -188,6 +189,7 @@ object FramedPackageDecoder {
             }
             "page" -> if (block.p == null) fail("page block $expectedOrdinal has no page number")
         }
+        if (block.commentary.isNotEmpty() && (block.t != "verse" || block.commentary.any { it.sourceLabel.isBlank() || it.text.isBlank() })) fail("invalid verse commentary")
         block.x?.let { validateSpans(it, block.sp) }
         if (block.x == null && block.sp.isNotEmpty()) fail("block $expectedOrdinal has spans without text")
     }

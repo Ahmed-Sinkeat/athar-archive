@@ -1,5 +1,7 @@
 package com.atharchive.ui.theme
 
+import androidx.compose.ui.unit.dp
+
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Typography
@@ -16,16 +18,27 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import com.atharchive.R
 
-private val Paper = Color(0xFFFAF9F6)
-private val PaperRaised = Color(0xFFF4F0EC)
-private val PaperPressed = Color(0xFFECE6E1)
-private val Ink = Color(0xFF241E19)          // warm charcoal, never pure black
-private val InkSecondary = Color(0xFF7B6B5C)  // warm taupe, replaces the cold grey
+// One palette set, shared by the app and the reader (the reader's fixed palettes are built
+// from these same values): فاتح is the reader's white page, دافئ its cream page, داكن its night.
+private val Paper = Color(0xFFFFFFFF)
+private val PaperRaised = Color(0xFFF6F4F1)
+private val PaperPressed = Color(0xFFEEEAE5)
+internal val LightInk = Color(0xFF1A1A18)
+private val InkSecondary = Color(0xFF6C6762)
 private val Burgundy = Color(0xFF8F3537)
 private val BurgundyPressed = Color(0xFF71272A)
-private val WarmDivider = Color(0xFFD8D2CC)
-private val PaperGlass = Color(0xF2FAF9F6)
-private val PaperGlassBorder = Color(0xB8CFC7C0)
+private val WarmDivider = Color(0xFFE4DFDA)
+private val PaperGlass = Color(0xF2FFFFFF)
+private val PaperGlassBorder = Color(0xB8DAD4CE)
+
+private val Cream = Color(0xFFFAF6EE)
+private val CreamRaised = Color(0xFFF3EDE0)
+private val CreamPressed = Color(0xFFEAE2D2)
+internal val CreamInk = Color(0xFF241F19)
+private val CreamInkSecondary = Color(0xFF6E655A)
+private val CreamDivider = Color(0xFFE2D9CA)
+private val CreamGlass = Color(0xF2FAF6EE)
+private val CreamGlassBorder = Color(0xB8D9CFBC)
 private val PaperScrim = Color(0x660F0D0B)
 private val Success = Color(0xFF5E6B45)       // muted olive, not a bright green
 
@@ -34,7 +47,7 @@ private val Success = Color(0xFF5E6B45)       // muted olive, not a bright green
 private val NightPaper = Color(0xFF11100F)
 private val NightRaised = Color(0xFF1D1A18)
 private val NightPressed = Color(0xFF24211E)
-private val NightInk = Color(0xFFF1EDEA)
+internal val NightInk = Color(0xFFF1EDEA)
 private val NightInkSecondary = Color(0xFFB8B0AA)
 // The bright accent stays for small marks — icons, labels, indicators, progress.
 private val NightBurgundy = Color(0xFFD1787D)
@@ -141,13 +154,15 @@ private val AtharTypography = Typography(
 enum class ThemeMode(val label: String) {
     System("نظام الجهاز"),
     Light("فاتح"),
+    Warm("دافئ"),
     Dark("داكن"),
     ;
 
+    /** Whether the resolved theme is dark. [Warm] is a light theme. */
     @Composable
     fun resolve(): Boolean = when (this) {
         System -> isSystemInDarkTheme()
-        Light -> false
+        Light, Warm -> false
         Dark -> true
     }
 }
@@ -184,7 +199,7 @@ data class AtharExtraColors(
     val accentSurface: Color,
 )
 
-private val LightExtraColors = AtharExtraColors(
+internal val LightExtraColors = AtharExtraColors(
     canvas = Paper,
     raisedSurface = PaperRaised,
     pressedSurface = PaperPressed,
@@ -204,7 +219,20 @@ private val LightExtraColors = AtharExtraColors(
     accentSurface = Color(0x1F8F3537),
 )
 
-private val DarkExtraColors = AtharExtraColors(
+internal val WarmExtraColors = LightExtraColors.copy(
+    canvas = Cream,
+    raisedSurface = CreamRaised,
+    pressedSurface = CreamPressed,
+    divider = CreamDivider,
+    secondaryText = CreamInkSecondary,
+    glassSurface = CreamGlass,
+    glassBorder = CreamGlassBorder,
+    inputSurface = CreamRaised,
+    inputBorder = Color(0x73E2D9CA),
+    placeholderText = CreamInkSecondary,
+)
+
+internal val DarkExtraColors = AtharExtraColors(
     canvas = NightPaper,
     raisedSurface = NightRaised,
     pressedSurface = NightPressed,
@@ -234,8 +262,11 @@ object AtharTheme {
 @Composable
 fun AtharTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
+    /** The cream light theme; ignored when [darkTheme] is true. */
+    warm: Boolean = false,
     content: @Composable () -> Unit,
 ) {
+    val warmLight = warm && !darkTheme
     val colorScheme = if (darkTheme) {
         darkColorScheme(
             primary = NightBurgundy,
@@ -257,24 +288,33 @@ fun AtharTheme(
             onPrimary = Color.White,
             primaryContainer = Color(0xFFF1DFDF),
             onPrimaryContainer = Color(0xFF441517),
-            background = Paper,
-            onBackground = Ink,
-            surface = Paper,
-            onSurface = Ink,
-            surfaceVariant = PaperRaised,
-            onSurfaceVariant = InkSecondary,
-            outline = WarmDivider,
-            outlineVariant = WarmDivider,
+            background = if (warmLight) Cream else Paper,
+            onBackground = if (warmLight) CreamInk else LightInk,
+            surface = if (warmLight) Cream else Paper,
+            onSurface = if (warmLight) CreamInk else LightInk,
+            surfaceVariant = if (warmLight) CreamRaised else PaperRaised,
+            onSurfaceVariant = if (warmLight) CreamInkSecondary else InkSecondary,
+            outline = if (warmLight) CreamDivider else WarmDivider,
+            outlineVariant = if (warmLight) CreamDivider else WarmDivider,
         )
     }
 
     androidx.compose.runtime.CompositionLocalProvider(
-        LocalAtharExtraColors provides if (darkTheme) DarkExtraColors else LightExtraColors,
+        LocalAtharExtraColors provides when {
+            darkTheme -> DarkExtraColors
+            warmLight -> WarmExtraColors
+            else -> LightExtraColors
+        },
         LocalAtharDarkTheme provides darkTheme,
     ) {
         MaterialTheme(
             colorScheme = colorScheme,
             typography = AtharTypography,
+            // Dialogs and sheets use extraLarge (28dp by default); 14dp matches AtharMenu's
+            // card so every floating surface has the same corner.
+            shapes = androidx.compose.material3.Shapes(
+                extraLarge = androidx.compose.foundation.shape.RoundedCornerShape(14.dp),
+            ),
             content = content,
         )
     }

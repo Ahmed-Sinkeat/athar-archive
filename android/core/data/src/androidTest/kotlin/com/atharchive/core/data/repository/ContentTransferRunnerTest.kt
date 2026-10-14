@@ -25,6 +25,7 @@ import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
 import okhttp3.tls.HandshakeCertificates
 import okhttp3.tls.HeldCertificate
+import okhttp3.HttpUrl.Companion.toHttpUrl
 import okio.Buffer
 import org.junit.After
 import org.junit.Assert.assertEquals
@@ -65,6 +66,74 @@ class ContentTransferRunnerTest {
         user.close()
         if (::server.isInitialized) server.shutdown()
         root.deleteRecursively()
+    }
+
+    @Test
+    fun malformedReplacementRollsBackAllFramesAndKeepsOldReadableText() = runBlocking {
+        val oldBytes = gzip(
+            """{"t":"header","schema":2,"coll":"book","id":"offline-book","v":1,"blocks":1,"chapters":[{"a":"main","title":"المقدمة","block":0}],"footnotes":0}""",
+            """{"t":"p","a":"main","i":0,"id":"00000000000000000000000000000001","fp":"0000000000000001","x":"النص القديم المحفوظ"}""",
+        )
+        val oldHash = ContentDigests.sha256Hex(oldBytes)
+        val oldIndex = index(oldBytes, oldHash)
+        val oldEntry = entry(oldBytes, oldHash, oldIndex, ContentDigests.sha256Hex(oldIndex))
+        val importer = ContentImporter(content)
+        importer.applyCatalog(CatalogDocument(2, listOf(oldEntry)))
+        importer.importVerifiedFrame(oldEntry, 0, FrameIndexEntry(0, oldBytes.size, 0, 1, oldHash), oldBytes)
+
+        val first = gzip(
+            """{"t":"header","schema":2,"coll":"book","id":"offline-book","v":1,"blocks":2,"chapters":[{"a":"main","title":"المقدمة","block":0}],"footnotes":0}""",
+            """{"t":"p","a":"main","i":0,"id":"00000000000000000000000000000001","fp":"0000000000000001","x":"نص بديل"}""",
+        )
+        val invalid = gzip("""{"t":"unknown","a":"main","i":1,"id":"00000000000000000000000000000002","fp":"0000000000000002","x":"لا يُقبل"}""")
+        val bytes = first + invalid
+        val frames = listOf(FrameIndexEntry(0, first.size, 0, 1, ContentDigests.sha256Hex(first)),
+            FrameIndexEntry(first.size.toLong(), invalid.size, 1, 1, ContentDigests.sha256Hex(invalid)))
+        val idx = twoFrameIndex(frames)
+        val replacement = entry(bytes, ContentDigests.sha256Hex(bytes), idx, ContentDigests.sha256Hex(idx), blocks = 2)
+        importer.applyCatalog(CatalogDocument(2, listOf(replacement)))
+        val transfers = File(root, "transfers").apply { mkdirs() }
+        File(transfers, "book__${replacement.id}.${replacement.pkg.hash}.part").writeBytes(bytes)
+        File(transfers, "book__${replacement.id}.${replacement.pkg.idxHash}.idx").writeBytes(idx)
+        val runner = ContentTransferRunner(content, user,
+            AppContentHttpClient("https://example.invalid/app/v2/".toHttpUrl(), OkHttpClient()), importer,
+            RetainedPackageStore(File(root, "content")), transfers,
+            ContentStoragePolicy(root, ContentCacheManager(content, user)) { Long.MAX_VALUE })
+        runner.requestPin(replacement.id)
+        val failure = runCatching { runner.downloadPinned(replacement.id) }.exceptionOrNull()
+        assertTrue("invalid replacement must fail", failure is com.atharchive.core.data.content.ContentIntegrityException)
+        assertEquals(listOf("النص القديم المحفوظ"), content.importDao().blocks(oldEntry.id).map { it.text })
+        assertEquals(oldEntry.pkg.hash, content.importDao().entity(oldEntry.id)?.localPackageHash)
+        assertEquals(replacement.pkg.hash, user.userDataDao().pinnedDownload(oldEntry.id)?.pkgHash)
+    }
+
+    // A first download commits frame by frame (so reads are never frozen for the whole
+    // import) and keeps what it has; only a replacement is all-or-nothing, above.
+    @Test
+    fun failedFirstDownloadKeepsStoredFramesForResume() = runBlocking {
+        val first = gzip(
+            """{"t":"header","schema":2,"coll":"book","id":"offline-book","v":1,"blocks":2,"chapters":[{"a":"main","title":"المقدمة","block":0}],"footnotes":0}""",
+            """{"t":"p","a":"main","i":0,"id":"00000000000000000000000000000001","fp":"0000000000000001","x":"الجزء الأول"}""",
+        )
+        val invalid = gzip("""{"t":"unknown","a":"main","i":1,"id":"00000000000000000000000000000002","fp":"0000000000000002","x":"لا يُقبل"}""")
+        val bytes = first + invalid
+        val frames = listOf(FrameIndexEntry(0, first.size, 0, 1, ContentDigests.sha256Hex(first)),
+            FrameIndexEntry(first.size.toLong(), invalid.size, 1, 1, ContentDigests.sha256Hex(invalid)))
+        val idx = twoFrameIndex(frames)
+        val book = entry(bytes, ContentDigests.sha256Hex(bytes), idx, ContentDigests.sha256Hex(idx), blocks = 2)
+        val importer = ContentImporter(content)
+        importer.applyCatalog(CatalogDocument(2, listOf(book)))
+        val transfers = File(root, "transfers").apply { mkdirs() }
+        File(transfers, "book__${book.id}.${book.pkg.hash}.part").writeBytes(bytes)
+        File(transfers, "book__${book.id}.${book.pkg.idxHash}.idx").writeBytes(idx)
+        val runner = ContentTransferRunner(content, user,
+            AppContentHttpClient("https://example.invalid/app/v2/".toHttpUrl(), OkHttpClient()), importer,
+            RetainedPackageStore(File(root, "content")), transfers,
+            ContentStoragePolicy(root, ContentCacheManager(content, user)) { Long.MAX_VALUE })
+        runner.requestPin(book.id)
+        val failure = runCatching { runner.downloadPinned(book.id) }.exceptionOrNull()
+        assertTrue("invalid frame must fail", failure is com.atharchive.core.data.content.ContentIntegrityException)
+        assertEquals(listOf("الجزء الأول"), content.importDao().blocks(book.id).map { it.text })
     }
 
     @Test

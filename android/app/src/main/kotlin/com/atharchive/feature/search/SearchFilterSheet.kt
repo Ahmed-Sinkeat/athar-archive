@@ -18,6 +18,11 @@ import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.selection.toggleable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -163,52 +168,36 @@ private fun ChipRow(
     tagPrefix: String,
     onToggle: (String) -> Unit,
 ) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .horizontalScroll(rememberScrollState()),
-        horizontalArrangement = Arrangement.spacedBy(7.dp),
-    ) {
-        options.forEachIndexed { index, option ->
-            val isSelected = option in selected
-            Surface(
-                modifier = Modifier
-                    .clickable(role = Role.Button) { onToggle(option) }
-                    .testTag("${tagPrefix}_$index"),
-                shape = RoundedCornerShape(8.dp),
-                color = if (isSelected) {
-                    AtharTheme.colors.accentSurface
-                } else {
-                    AtharTheme.colors.raisedSurface
-                },
-            ) {
-                Row(
-                    modifier = Modifier.padding(horizontal = 11.dp, vertical = 7.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
-                    if (isSelected) {
-                        Icon(
-                            imageVector = AtharIcons.Check,
-                            contentDescription = null,
-                            tint = AtharTheme.colors.accent,
-                            modifier = Modifier
-                                .padding(end = 5.dp)
-                                .size(13.dp),
-                        )
-                    }
-                    Text(
-                        text = option,
-                        color = if (isSelected) {
-                            AtharTheme.colors.accent
-                        } else {
-                            AtharTheme.colors.secondaryText
-                        },
-                        style = MaterialTheme.typography.labelMedium,
-                        fontWeight = if (isSelected) FontWeight.SemiBold else FontWeight.Normal,
-                        maxLines = 1,
-                    )
-                }
+    var query by androidx.compose.runtime.remember(tagPrefix) { androidx.compose.runtime.mutableStateOf("") }
+    val matching = androidx.compose.runtime.remember(options, query) {
+        val term = com.atharchive.core.ArNormalize.normalize(query)
+        options.distinct().filter { com.atharchive.core.ArNormalize.normalize(it).contains(term) }
+    }
+    @Composable fun option(text: String, index: Int) {
+        val chosen = text in selected
+        Surface(
+            modifier = Modifier
+                .then(if (options.size > 10) Modifier.fillMaxWidth() else Modifier)
+                .toggleable(value = chosen, role = Role.Checkbox, onValueChange = { onToggle(text) })
+                .testTag("${tagPrefix}_$index"),
+            shape = RoundedCornerShape(8.dp),
+            color = if (chosen) AtharTheme.colors.accentSurface else AtharTheme.colors.raisedSurface,
+        ) {
+            Row(Modifier.heightIn(min = 48.dp).padding(horizontal = 11.dp, vertical = 7.dp), verticalAlignment = Alignment.CenterVertically) {
+                if (chosen) Icon(AtharIcons.Check, null, Modifier.padding(end = 5.dp).size(20.dp), tint = AtharTheme.colors.accent)
+                Text(text, color = if (chosen) AtharTheme.colors.accent else AtharTheme.colors.secondaryText,
+                    style = MaterialTheme.typography.labelMedium)
             }
+        }
+    }
+    Column {
+        if (options.size > 10) {
+            androidx.compose.material3.OutlinedTextField(query, { query = it }, Modifier.fillMaxWidth().testTag("${tagPrefix}_query"), label = { Text("ابحث في الخيارات") }, singleLine = true)
+            androidx.compose.foundation.lazy.LazyColumn(Modifier.fillMaxWidth().height(200.dp), verticalArrangement = Arrangement.spacedBy(7.dp)) {
+                items(matching.size) { index -> option(matching[index], index) }
+            }
+        } else androidx.compose.foundation.lazy.LazyRow(horizontalArrangement = Arrangement.spacedBy(7.dp)) {
+            items(matching.size) { index -> option(matching[index], index) }
         }
     }
 }

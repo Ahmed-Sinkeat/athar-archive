@@ -28,6 +28,7 @@ class ContentStoragePolicy(
     suspend fun prepareForReadThrough(
         activeEntityId: String? = null,
         activeFrameOrdinal: Int? = null,
+        activeFrameOrdinals: Set<Int> = activeFrameOrdinal?.let { setOf(it) }.orEmpty(),
     ): ContentStorageStatus {
         val before = availableBytes()
         val low = before < LOW_STORAGE_BYTES
@@ -35,6 +36,7 @@ class ContentStoragePolicy(
             budgetBytes = if (low) emergencyBudget() else configuredBudgetBytes(),
             activeEntityId = activeEntityId,
             activeFrameOrdinal = activeFrameOrdinal,
+            activeFrameOrdinals = activeFrameOrdinals,
         )
         val after = availableBytes()
         return ContentStorageStatus(lowStorage = low, availableBytes = after, cacheBytesRemoved = removed)

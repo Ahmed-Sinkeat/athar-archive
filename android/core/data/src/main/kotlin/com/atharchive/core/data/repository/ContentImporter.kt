@@ -78,13 +78,21 @@ class ContentImporter(
         compressedBytes: ByteArray,
     ): FrameImportResult {
         val dao = database.importDao()
+        val t0 = android.os.SystemClock.elapsedRealtime()
+        fun lap(stage: String) = android.util.Log.i("AtharOpen", "import ${entry.id}#$frameNumber $stage +${android.os.SystemClock.elapsedRealtime() - t0}ms")
         ContentSearchSchema.ensure(database)
-        dao.markTransfer(entry.id, ContentTransferState.VERIFYING)
+        lap("ensure")
         return try {
             val decoded = FramedPackageDecoder.decodeFrame(compressedBytes, frame, entry)
-            dao.markTransfer(entry.id, ContentTransferState.IMPORTING)
+            lap("decoded ${decoded.blocks.size} blocks")
             val now = nowMillis()
+            val entities = decoded.blocks.map { it.toEntity(entry.id) }
+            lap("mapped")
             database.withWriteTransaction {
+                val local = dao.entity(entry.id)
+                if (local?.localPackageHash != null && local.localPackageHash != entry.pkg.hash) {
+                    dao.clearImportedContent(entry.id)
+                }
                 val result = dao.importFrame(
                     entityId = entry.id,
                     frame = EntityFrameEntity(
@@ -95,7 +103,7 @@ class ContentImporter(
                         compressedBytes = compressedBytes.size.toLong(),
                         lastOpenedAt = now,
                     ),
-                    blocks = decoded.blocks.map { it.toEntity(entry.id) },
+                    blocks = entities,
                     chapters = decoded.chapterEntities(entry.id),
                     footnotes = decoded.footnotes.map {
                         FootnoteEntity(
@@ -107,12 +115,15 @@ class ContentImporter(
                     },
                     now = now,
                 )
+                lap("rows-inserted")
                 val indexed = dao.blockWindow(
                     entry.id,
                     frame.ord,
                     frame.ord + frame.n - 1,
                 )
+                lap("window-read")
                 ContentSearchSchema.indexBlocks(this, indexed)
+                lap("fts-indexed")
                 result
             }
         } catch (error: Throwable) {
@@ -149,6 +160,7 @@ fun CatalogEntry.toEntity(): ContentEntity = ContentEntity(
     pkgBlocks = pkg.blocks,
     pkgChapters = pkg.chapters,
     audioJson = AppContentJson.encodeToString(audio),
+    verseCount = verseCount,
 )
 
 fun ContentEntity.toCatalogEntry(): CatalogEntry = CatalogEntry(
@@ -167,6 +179,7 @@ fun ContentEntity.toCatalogEntry(): CatalogEntry = CatalogEntry(
     description = description,
     excerpt = excerpt,
     openingVerses = AppContentJson.decodeFromString(openingVersesJson),
+    verseCount = verseCount,
     pkg = com.atharchive.core.data.content.PackageReference(
         path = pkgPath,
         hash = pkgHash,
@@ -210,10 +223,12 @@ private fun PackageBlock.toEntity(entityId: String): ContentBlockEntity {
                 s = s,
                 j = j,
                 n = n,
+                commentary = commentary,
                 ordered = ordered,
                 start = start,
                 depth = depth,
                 continuation = continuation,
+                quoted = quoted,
                 ha = ha,
                 footnotes = f,
             ),
@@ -234,10 +249,12 @@ data class StoredBlockAttributes(
     val s: String? = null,
     val j: String? = null,
     val n: Int? = null,
+    val commentary: List<com.atharchive.core.data.content.VerseCommentary> = emptyList(),
     val ordered: Boolean? = null,
     val start: Int? = null,
     val depth: Int? = null,
     val continuation: Boolean? = null,
+    val quoted: Boolean? = null,
     val ha: String? = null,
     val footnotes: List<String> = emptyList(),
 )
@@ -246,4 +263,7 @@ fun ContentBlockEntity.attributes(): StoredBlockAttributes =
     AppContentJson.decodeFromString(attrs.toString(Charsets.UTF_8))
 
 fun ContentBlockEntity.spans(): List<InlineSpan> =
+    AppContentJson.decodeFromString(inlineSpans.toString(Charsets.UTF_8))
+
+fun FootnoteEntity.spans(): List<InlineSpan> =
     AppContentJson.decodeFromString(inlineSpans.toString(Charsets.UTF_8))

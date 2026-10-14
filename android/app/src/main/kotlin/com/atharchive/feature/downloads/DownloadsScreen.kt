@@ -1,5 +1,7 @@
 package com.atharchive.feature.downloads
 
+import com.atharchive.ui.components.AtharMenuItem
+import com.atharchive.ui.components.AtharMenu
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -20,13 +22,13 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.DropdownMenu
-import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -38,7 +40,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextDirection
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -61,8 +62,18 @@ fun DownloadsScreen(
     onCancel: (DownloadUi) -> Unit,
     onRemove: (DownloadUi) -> Unit,
     modifier: Modifier = Modifier,
+    targetId: String? = null,
 ) {
     val listState = rememberLazyListState()
+    var focused by androidx.compose.runtime.remember(targetId) { androidx.compose.runtime.mutableStateOf(false) }
+    androidx.compose.runtime.LaunchedEffect(targetId, state.transfers, state.downloaded) {
+        if (focused || targetId == null) return@LaunchedEffect
+        val transfer = state.transfers.indexOfFirst { it.id == targetId }
+        val downloaded = state.downloaded.indexOfFirst { it.id == targetId }
+        val index = if (transfer >= 0) transfer + 2 else if (downloaded >= 0) downloaded + 2 + if (state.transfers.isEmpty()) 0 else state.transfers.size + 1 else return@LaunchedEffect
+        listState.scrollToItem(index)
+        focused = true
+    }
 
     BoxWithConstraints(
         modifier = modifier
@@ -297,14 +308,13 @@ private fun TransferRow(
                 horizontalArrangement = Arrangement.spacedBy(5.dp),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
-                val factColor = AtharTheme.colors.secondaryText.copy(alpha = 0.72f)
+                val factColor = AtharTheme.colors.secondaryText
                 Text(item.kindLabel, color = factColor, style = MaterialTheme.typography.labelSmall)
                 Text("·", color = factColor, style = MaterialTheme.typography.labelSmall)
                 Text(
                     text = item.sizeLabel,
                     color = factColor,
-                    style = MaterialTheme.typography.labelSmall
-                        .copy(textDirection = TextDirection.Ltr),
+                    style = MaterialTheme.typography.labelSmall,
                 )
                 Text("·", color = factColor, style = MaterialTheme.typography.labelSmall)
                 Text(
@@ -333,7 +343,7 @@ private fun TransferRow(
         IconButton(
             onClick = onPauseResume,
             modifier = Modifier
-                .size(36.dp)
+                .size(48.dp)
                 .testTag("transfer_toggle_${item.id}"),
         ) {
             Icon(
@@ -354,7 +364,7 @@ private fun TransferRow(
         IconButton(
             onClick = onCancel,
             modifier = Modifier
-                .size(36.dp)
+                .size(48.dp)
                 .testTag("transfer_cancel_${item.id}"),
         ) {
             Icon(
@@ -400,14 +410,13 @@ private fun DownloadedRow(
                 modifier = Modifier.padding(top = 2.dp),
                 horizontalArrangement = Arrangement.spacedBy(5.dp),
             ) {
-                val factColor = AtharTheme.colors.secondaryText.copy(alpha = 0.72f)
+                val factColor = AtharTheme.colors.secondaryText
                 Text(item.kindLabel, color = factColor, style = MaterialTheme.typography.labelSmall)
                 Text("·", color = factColor, style = MaterialTheme.typography.labelSmall)
                 Text(
                     text = item.sizeLabel,
                     color = factColor,
-                    style = MaterialTheme.typography.labelSmall
-                        .copy(textDirection = TextDirection.Ltr),
+                    style = MaterialTheme.typography.labelSmall,
                 )
             }
         }
@@ -415,7 +424,7 @@ private fun DownloadedRow(
             IconButton(
                 onClick = { menuOpen = true },
                 modifier = Modifier
-                    .size(36.dp)
+                    .size(48.dp)
                     .testTag("download_more_${item.id}"),
             ) {
                 Icon(
@@ -425,23 +434,10 @@ private fun DownloadedRow(
                     modifier = Modifier.size(18.dp),
                 )
             }
-            DropdownMenu(
-                expanded = menuOpen,
-                onDismissRequest = { menuOpen = false },
-                containerColor = AtharTheme.colors.canvas,
-                shape = RoundedCornerShape(10.dp),
-            ) {
-                DropdownMenuItem(
-                    text = {
-                        Text(
-                            text = "إزالة التنزيل",
-                            color = MaterialTheme.colorScheme.onSurface,
-                            style = MaterialTheme.typography.bodyMedium,
-                        )
-                    },
+            AtharMenu(expanded = menuOpen, onDismiss = { menuOpen = false }, width = 200.dp) {
+                AtharMenuItem("إزالة التنزيل", icon = AtharIcons.Close, destructive = true,
                     onClick = { onRemove(); menuOpen = false },
-                    modifier = Modifier.testTag("download_remove_${item.id}"),
-                )
+                    modifier = Modifier.testTag("download_remove_${item.id}"))
             }
         }
     }

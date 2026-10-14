@@ -2,7 +2,7 @@ package com.atharchive.feature.library
 
 enum class LibraryShelf(val key: String, val label: String) {
     Continue("continue", "واصل القراءة"),
-    ReadLater("readLater", "للقراءة لاحقًا"),
+    ReadLater("readLater", "المحفوظة"),
     Reading("reading", "أقرأ الآن"),
     Finished("finished", "أنهيت"),
     Downloaded("downloaded", "المحمّلة"),

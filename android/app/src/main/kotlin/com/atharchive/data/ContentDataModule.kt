@@ -2,10 +2,11 @@ package com.atharchive.data
 
 import android.content.Context
 import androidx.core.content.edit
-import androidx.paging.Pager
-import androidx.paging.PagingConfig
-import androidx.paging.PagingData
 import com.atharchive.BuildConfig
+import com.atharchive.core.data.content.AudioReference
+import com.atharchive.core.data.content.ContentDigests
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import com.atharchive.core.data.content.SignedRootVerifier
 import com.atharchive.core.data.db.AtharDatabases
 import com.atharchive.core.data.db.content.AtharContentDatabase
@@ -15,6 +16,7 @@ import com.atharchive.core.data.db.content.ContentTransferState
 import com.atharchive.core.data.db.user.PinnedDownloadEntity
 import com.atharchive.core.data.db.user.AtharUserDatabase
 import com.atharchive.core.data.network.AppContentHttpClient
+import com.atharchive.core.data.repository.OrdinalBlockReader
 import com.atharchive.core.data.repository.CatalogSyncResult
 import com.atharchive.core.data.repository.ContentCacheManager
 import com.atharchive.core.data.repository.ContentImporter
@@ -39,10 +41,14 @@ import java.io.File
 import java.util.Base64
 import javax.inject.Inject
 import javax.inject.Singleton
+import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import okhttp3.OkHttpClient
@@ -79,6 +85,9 @@ object ContentDataModule {
         androidx.work.WorkManager.getInstance(context)
 }
 
+/** Frames kept ready ahead of the reader (250 blocks each); ponytail: tune on a slow link. */
+private const val PrefetchAheadFrames = 3
+
 @Singleton
 class ContentAccess @Inject constructor(
     @ApplicationContext private val context: Context,
@@ -100,6 +109,103 @@ class ContentAccess @Inject constructor(
     }
     private val _cacheBudgetBytes = MutableStateFlow(readCacheBudget())
     val cacheBudgetBytes: StateFlow<Long> = _cacheBudgetBytes
+    private val _pausedDownloads = MutableStateFlow(storagePreferences.getStringSet("paused_downloads", emptySet()).orEmpty().toSet())
+    val pausedDownloads: StateFlow<Set<String>> = _pausedDownloads
+    private val _requestedAudio = MutableStateFlow(storagePreferences.getStringSet("requested_audio", emptySet()).orEmpty().toSet())
+    val requestedAudio: StateFlow<Set<String>> = _requestedAudio
+    private val _downloadedAudio = MutableStateFlow(storagePreferences.getStringSet("downloaded_audio", emptySet()).orEmpty().toSet())
+    val downloadedAudio: StateFlow<Set<String>> = _downloadedAudio
+    private val verifiedAudio = java.util.concurrent.ConcurrentHashMap.newKeySet<String>()
+
+    suspend fun reconcileAudioDownloads() = withContext(Dispatchers.IO) {
+        if (_downloadedAudio.value.isEmpty()) return@withContext
+        val references = contentDatabase.catalogDao().allEntities().flatMap { it.toCatalogEntry().audio }.associateBy { it.id }
+        val downloaded = _downloadedAudio.value
+        val valid = downloaded.filterTo(hashSetOf()) { id ->
+            references[id]?.let { audio -> audioFile(audio).let { it.isFile && it.length() == audio.size } } == true
+        }
+        val invalid = downloaded - valid
+        synchronized(storagePreferences) {
+            _downloadedAudio.value -= invalid
+            storagePreferences.edit { putStringSet("downloaded_audio", _downloadedAudio.value) }
+        }
+    }
+
+    private fun markAudioDownloaded(audioId: String, retained: Boolean) = synchronized(storagePreferences) {
+        _downloadedAudio.value = if (retained) _downloadedAudio.value + audioId else _downloadedAudio.value - audioId
+        storagePreferences.edit { putStringSet("downloaded_audio", _downloadedAudio.value) }
+    }
+
+    private suspend fun findAudio(audioId: String): AudioReference =
+        contentDatabase.catalogDao().allEntities().asSequence().flatMap { it.toCatalogEntry().audio.asSequence() }
+            .firstOrNull { it.id == audioId } ?: error("التسجيل غير موجود في الفهرس")
+
+    private fun audioFile(audio: AudioReference) = File(context.filesDir, "audio/${audio.hash}.${audio.format}")
+
+    suspend fun audioUri(audioId: String): String = audioUri(findAudio(audioId))
+
+    suspend fun audioUri(audio: AudioReference): String = withContext(Dispatchers.IO) {
+        val file = audioFile(audio)
+        if (file.isFile && audio.hash !in verifiedAudio) {
+            try {
+                ContentDigests.verify(file, audio.hash, audio.size, "audio")
+                verifiedAudio += audio.hash
+            } catch (error: com.atharchive.core.data.content.ContentIntegrityException) {
+                check(file.delete()) { "تعذّر إزالة التسجيل التالف" }
+                markAudioDownloaded(audio.id, false)
+            }
+        }
+        if (file.isFile) {
+            android.net.Uri.fromFile(file).toString()
+        } else requireNotNull(appContentClient).artifactUrl(audio.path)
+    }
+
+    fun requestAudioDownload(audioId: String) = synchronized(storagePreferences) {
+        _requestedAudio.value += audioId
+        storagePreferences.edit { putStringSet("requested_audio", _requestedAudio.value) }
+    }
+
+    suspend fun runAudioDownload(audioId: String, onProgress: (Long, Long) -> Unit) = withContext(Dispatchers.IO) {
+        val audio = findAudio(audioId)
+        val file = audioFile(audio)
+        val part = File(file.parentFile, "${audio.hash}.part")
+        if (file.isFile) {
+            try { ContentDigests.verify(file, audio.hash, audio.size, "audio") }
+            catch (error: com.atharchive.core.data.content.ContentIntegrityException) {
+                check(file.delete()) { "تعذّر إزالة التسجيل التالف" }
+            }
+        }
+        if (!file.isFile) {
+            file.parentFile?.mkdirs()
+            check((file.parentFile?.usableSpace ?: 0L) > (audio.size - part.length()).coerceAtLeast(0) + 20L * 1024 * 1024) { "مساحة التخزين غير كافية" }
+            requireNotNull(appContentClient).downloadArtifact(audio.path, audio.hash, audio.size, part, onProgress)
+            kotlinx.coroutines.currentCoroutineContext().ensureActive()
+            check(part.renameTo(file)) { "تعذّر حفظ التسجيل" }
+        }
+        ContentDigests.verify(file, audio.hash, audio.size, "audio")
+        verifiedAudio += audio.hash
+        markAudioDownloaded(audioId, true)
+    }
+
+    suspend fun removeAudioDownload(audioId: String) = withContext(Dispatchers.IO) {
+        val audio = findAudio(audioId)
+        val file = audioFile(audio)
+        check(!file.exists() || file.delete()) { "تعذّر حذف التسجيل" }
+        verifiedAudio -= audio.hash
+        val part = File(file.parentFile, "${audio.hash}.part")
+        check(!part.exists() || part.delete()) { "تعذّر حذف التنزيل الجزئي" }
+        markAudioDownloaded(audioId, false)
+        synchronized(storagePreferences) {
+            _requestedAudio.value -= audioId
+            storagePreferences.edit { putStringSet("requested_audio", _requestedAudio.value) }
+        }
+        setDownloadPaused("audio:$audioId", false)
+    }
+
+    fun setDownloadPaused(entityId: String, paused: Boolean) = synchronized(storagePreferences) {
+        _pausedDownloads.value = if (paused) _pausedDownloads.value + entityId else _pausedDownloads.value - entityId
+        storagePreferences.edit { putStringSet("paused_downloads", _pausedDownloads.value) }
+    }
     private val storagePolicy by lazy {
         ContentStoragePolicy(
             storageRoot = context.filesDir,
@@ -167,23 +273,62 @@ class ContentAccess @Inject constructor(
 
     val configured: Boolean get() = configuration != null
 
-    suspend fun sync(): CatalogSyncResult? {
-        val config = configuration ?: return null
-        return repository!!.syncCatalog(mapOf(config.keyId to config.publicKey))
+    /**
+     * Seeds an empty catalog from the snapshot in the app's assets (`app-content/`, put there
+     * by `npm run app:bundle-catalog`). Quietly does nothing without a snapshot, with a
+     * catalog already applied, or when the snapshot does not verify: sync still follows.
+     */
+    suspend fun seedBundledCatalog(): Boolean {
+        val config = configuration ?: return false
+        val source = repository ?: return false
+        return try {
+            kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) {
+                source.seedCatalog(mapOf(config.keyId to config.publicKey)) { path ->
+                    try { context.assets.open("app-content/$path").use { it.readBytes() } }
+                    catch (_: java.io.FileNotFoundException) { null }
+                }
+            }
+        } catch (cancelled: kotlinx.coroutines.CancellationException) {
+            throw cancelled
+        } catch (error: Exception) {
+            android.util.Log.w("AtharContent", "bundled catalog not applied: ${error.message}")
+            false
+        }
     }
 
-    suspend fun open(entityId: String, ordinal: Int): ReadThroughResult? {
+    suspend fun sync(): CatalogSyncResult? {
+        val config = configuration ?: return null
+        return repository!!.syncCatalog(mapOf(config.keyId to config.publicKey)) { _requestedAudio.value }
+    }
+
+    // One open per work at a time: opening the reader asks for the same first frame twice
+    // (route + reader window). The second caller waits, then finds the frame already cached.
+    private val openLocks = java.util.concurrent.ConcurrentHashMap<String, kotlinx.coroutines.sync.Mutex>()
+
+    suspend fun open(entityId: String, ordinal: Int): ReadThroughResult? =
+        openLocks.getOrPut(entityId) { kotlinx.coroutines.sync.Mutex() }.withLock { openLocked(entityId, ordinal) }
+
+    private suspend fun openLocked(entityId: String, ordinal: Int): ReadThroughResult? {
         val source = repository ?: return null
-        val cachedFrame = contentDatabase.importDao().frames(entityId).firstOrNull {
+        val t0 = android.os.SystemClock.elapsedRealtime()
+        fun lap(stage: String) = android.util.Log.i("AtharOpen", "$entityId@$ordinal $stage +${android.os.SystemClock.elapsedRealtime() - t0}ms")
+        lap("start")
+        val frames = contentDatabase.importDao().frames(entityId)
+        val cachedFrame = frames.firstOrNull {
             ordinal in it.firstBlockOrdinal until (it.firstBlockOrdinal + it.blockCount)
         }
+        lap("frames-read")
+        val readingOrdinal = userDatabase.userDataDao().readingPosition(entityId)?.ordinalHint
+        val readingFrame = frames.firstOrNull { readingOrdinal != null && readingOrdinal in it.firstBlockOrdinal until (it.firstBlockOrdinal + it.blockCount) }?.frameOrdinal
         val status = mutationMutex.withLock {
             storagePolicy.prepareForReadThrough(
                 activeEntityId = entityId,
                 activeFrameOrdinal = cachedFrame?.frameOrdinal,
+                activeFrameOrdinals = setOfNotNull(cachedFrame?.frameOrdinal, readingFrame),
             )
         }
         _storageStatus.value = status
+        lap("prepared")
         if (cachedFrame == null && status.lowStorage) {
             throw InsufficientContentStorageException(
                 availableBytes = status.availableBytes,
@@ -192,13 +337,16 @@ class ContentAccess @Inject constructor(
             )
         }
         val result = source.openFrame(entityId, ordinal)
+        lap("openFrame-done")
         mutationMutex.withLock {
             cacheManager.evictToBudget(
                 budgetBytes = _cacheBudgetBytes.value,
                 activeEntityId = entityId,
                 activeFrameOrdinal = result.frameNumber,
+                activeFrameOrdinals = setOfNotNull(result.frameNumber, readingFrame),
             )
         }
+        lap("evicted")
         return result
     }
 
@@ -227,6 +375,7 @@ class ContentAccess @Inject constructor(
     }
 
     suspend fun unpin(entityId: String) {
+        setDownloadPaused(entityId, false)
         requireNotNull(transferRunner) { "app-content origin is not configured" }.unpin(entityId)
         _retainedEntityIds.value -= entityId
     }
@@ -247,7 +396,6 @@ class ContentAccess @Inject constructor(
             val entry = entity.toCatalogEntry()
             val pin = userDao.pinnedDownload(entityId) ?: continue
             if (pin.pkgHash != entry.pkg.hash) {
-                retainedStore.remove(entry)
                 userDao.savePinnedDownload(
                     PinnedDownloadEntity(
                         entityId = entityId,
@@ -261,7 +409,6 @@ class ContentAccess @Inject constructor(
                 importDao.markTransfer(entityId, ContentTransferState.IDLE)
                 verified += entityId
             } else {
-                if (!retained) retainedStore.remove(entry)
                 pending += ContentDownloadTarget(entityId, entity.coll)
             }
         }
@@ -269,17 +416,24 @@ class ContentAccess @Inject constructor(
         pending
     }
 
-    fun pagedBlocks(entityId: String): Flow<PagingData<ContentBlockEntity>> =
-        Pager(
-            config = PagingConfig(
-                pageSize = 60,
-                prefetchDistance = 20,
-                enablePlaceholders = true,
-                initialLoadSize = 120,
-                maxSize = 300,
-            ),
-            pagingSourceFactory = { contentDatabase.importDao().pagingSource(entityId) },
-        ).flow
+    /** The installed package of a work; it changes when a download finishes or replaces it. */
+    fun observePackage(entityId: String): Flow<String?> =
+        contentDatabase.catalogDao().observeEntity(entityId).map { it?.localPackageHash }.distinctUntilChanged()
+
+    private fun blockReader(entityId: String) = OrdinalBlockReader(
+        count = { contentDatabase.catalogDao().entity(entityId)?.pkgBlocks ?: 0 },
+        read = { first, last -> contentDatabase.importDao().blockWindow(entityId, first, last) },
+        fetch = { ordinal -> open(entityId, ordinal) },
+    )
+
+    suspend fun blockCount(entityId: String): Int = blockReader(entityId).count()
+
+    /** Exactly [range], fetching any frame it needs; reads in pieces so one call never holds a huge window. */
+    suspend fun blockRange(entityId: String, range: IntRange): List<ContentBlockEntity> {
+        require(!range.isEmpty() && range.first >= 0 && range.last.toLong() - range.first < 5000) { "نطاق التحديد كبير جدًا" }
+        val reader = blockReader(entityId)
+        return (range step 100).flatMap { reader.range(it, minOf(it + 99, range.last)) }
+    }
 
     fun prefetchAdjacent(
         scope: CoroutineScope,
@@ -288,10 +442,13 @@ class ContentAccess @Inject constructor(
     ): ReaderPrefetchSession? {
         val source = repository ?: return null
         var visibleFrameOrdinal: Int? = null
+        // Frames this session already fetched stay protected from eviction while it runs.
+        val fetched = mutableSetOf<Int>()
         return source.prefetchAdjacent(
             scope = scope,
             entityId = entityId,
             currentOrdinal = currentOrdinal,
+            count = PrefetchAheadFrames,
             beforeFetch = {
                 visibleFrameOrdinal = contentDatabase.importDao().frames(entityId).firstOrNull {
                     currentOrdinal in it.firstBlockOrdinal until (it.firstBlockOrdinal + it.blockCount)
@@ -310,7 +467,7 @@ class ContentAccess @Inject constructor(
                     cacheManager.evictToBudget(
                         budgetBytes = _cacheBudgetBytes.value,
                         activeEntityId = entityId,
-                        activeFrameOrdinals = setOfNotNull(visibleFrameOrdinal, result.frameNumber),
+                        activeFrameOrdinals = setOfNotNull(visibleFrameOrdinal) + fetched.also { it += result.frameNumber },
                     )
                 }
             },
@@ -346,7 +503,7 @@ class ContentAccess @Inject constructor(
             store = retainedStore,
             importer = importer,
         ).let { rebuilder ->
-            if (contentDatabase.catalogDao().allEntities().isEmpty()) {
+            if (!contentDatabase.catalogDao().hasEntities()) {
                 rebuilder.rebuild()
             } else {
                 OfflineRebuildResult(0, 0, 0, emptyMap())

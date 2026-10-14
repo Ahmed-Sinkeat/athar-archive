@@ -86,6 +86,7 @@ data class AudioCue(
 @Serializable
 data class AudioReference(
     val id: String,
+    val title: String? = null,
     val path: String,
     val hash: String,
     val format: String,
@@ -111,6 +112,7 @@ data class CatalogEntry(
     val description: String? = null,
     val excerpt: String? = null,
     val openingVerses: List<String> = emptyList(),
+    val verseCount: Int? = null,
     val pkg: PackageReference,
     val audio: List<AudioReference> = emptyList(),
 )
@@ -182,12 +184,17 @@ data class PackageBlock(
     val sp: List<InlineSpan> = emptyList(),
     val f: List<String> = emptyList(),
     val n: Int? = null,
+    val commentary: List<VerseCommentary> = emptyList(),
     val ordered: Boolean? = null,
     val start: Int? = null,
     val depth: Int? = null,
     val continuation: Boolean? = null,
+    val quoted: Boolean? = null,
     val ha: String? = null,
 )
+
+@Serializable
+data class VerseCommentary(val sourceLabel: String, val text: String)
 
 @Serializable
 data class PackageFootnote(

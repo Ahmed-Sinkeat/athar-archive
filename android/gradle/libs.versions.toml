@@ -33,6 +33,7 @@ espresso = "3.7.0"
 macrobenchmark = "1.4.0"
 uiautomator = "2.4.0"
 profileinstaller = "1.4.1"
+tracing = "1.2.0"
 
 [libraries]
 # --- Compose ---
@@ -93,6 +94,7 @@ espresso-core = { group = "androidx.test.espresso", name = "espresso-core", vers
 benchmark-macro-junit4 = { group = "androidx.benchmark", name = "benchmark-macro-junit4", version.ref = "macrobenchmark" }
 uiautomator = { group = "androidx.test.uiautomator", name = "uiautomator", version.ref = "uiautomator" }
 profileinstaller = { group = "androidx.profileinstaller", name = "profileinstaller", version.ref = "profileinstaller" }
+androidx-tracing = { group = "androidx.tracing", name = "tracing", version.ref = "tracing" }
 
 # --- for build-logic's classpath ---
 gradle-plugin-android = { group = "com.android.tools.build", name = "gradle", version.ref = "agp" }

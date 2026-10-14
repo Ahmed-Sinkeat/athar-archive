@@ -17,6 +17,10 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.TextButton
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -49,8 +53,8 @@ import com.atharchive.ui.theme.AtharEditorialFontFamily
 enum class ReaderPanelTab(val label: String) {
     Contents("المحتويات"),
     Search("البحث"),
-    Benefits("فوائدك"),
-    Bookmarks("المواضع"),
+    Benefits("الكناشة"),
+    Bookmarks("العلامات"),
 }
 
 /**
@@ -75,13 +79,16 @@ fun ReaderPanel(
     onDismiss: () -> Unit,
     modifier: Modifier = Modifier,
     initialTab: ReaderPanelTab = ReaderPanelTab.Contents,
+    searchStatus: String? = null,
+    onPageJump: (Int, Int?) -> Unit = { _, _ -> },
+    docked: Boolean = false,
 ) {
-    var tab by remember { mutableStateOf(initialTab) }
+    var tab by remember(initialTab) { mutableStateOf(initialTab) }
 
     Row(modifier = modifier.fillMaxSize()) {
         Column(
             modifier = Modifier
-                .weight(0.78f)
+                .weight(if (docked) 1f else 0.78f)
                 .fillMaxHeight()
                 .background(colors.page)
                 .testTag("reader_panel"),
@@ -111,7 +118,7 @@ fun ReaderPanel(
                 }
                 Box(
                     modifier = Modifier
-                        .size(36.dp)
+                        .size(48.dp)
                         .clickable(role = Role.Button, onClick = onDismiss)
                         .testTag("reader_panel_close"),
                     contentAlignment = Alignment.Center,
@@ -120,7 +127,7 @@ fun ReaderPanel(
                         imageVector = AtharIcons.Close,
                         contentDescription = "إغلاق",
                         tint = colors.secondary,
-                        modifier = Modifier.size(17.dp),
+                        modifier = Modifier.size(24.dp),
                     )
                 }
             }
@@ -154,15 +161,37 @@ fun ReaderPanel(
             }
             HorizontalDivider(thickness = 0.7.dp, color = colors.divider)
 
+            // ponytail: scans the loaded blocks; fine while a book's blocks are all in memory.
+            val pageBreaks = remember(state.blocks) { state.blocks.filterIsInstance<ReaderBlock.PageBreak>() }
+            val multiVolume = remember(pageBreaks) { pageBreaks.mapNotNull { it.volume }.distinct().size > 1 }
+            if (tab == ReaderPanelTab.Contents && pageBreaks.isNotEmpty()) {
+                var page by remember { mutableStateOf("") }
+                var volume by remember { mutableStateOf("") }
+                Row(Modifier.fillMaxWidth().padding(8.dp), verticalAlignment = Alignment.CenterVertically) {
+                    OutlinedTextField(page, { page = it.take(6) }, Modifier.weight(1f), label = { Text("الصفحة") }, singleLine = true, colors = OutlinedTextFieldDefaults.colors(
+                        focusedTextColor = colors.text, unfocusedTextColor = colors.text,
+                        focusedContainerColor = colors.page, unfocusedContainerColor = colors.page,
+                        focusedLabelColor = colors.accent, unfocusedLabelColor = colors.secondary,
+                        cursorColor = colors.accent, focusedBorderColor = colors.accent, unfocusedBorderColor = colors.divider))
+                    if (multiVolume) OutlinedTextField(volume, { volume = it.take(4) }, Modifier.weight(1f), label = { Text("الجزء") }, singleLine = true, colors = OutlinedTextFieldDefaults.colors(
+                        focusedTextColor = colors.text, unfocusedTextColor = colors.text,
+                        focusedContainerColor = colors.page, unfocusedContainerColor = colors.page,
+                        focusedLabelColor = colors.accent, unfocusedLabelColor = colors.secondary,
+                        cursorColor = colors.accent, focusedBorderColor = colors.accent, unfocusedBorderColor = colors.divider))
+                    TextButton(onClick = { page.toIntOrNull()?.let { onPageJump(it, volume.toIntOrNull()) } },
+                        colors = ButtonDefaults.textButtonColors(contentColor = colors.accent, disabledContentColor = colors.secondary),
+                        enabled = (page.toIntOrNull() ?: 0) > 0 && (volume.isBlank() || (volume.toIntOrNull() ?: 0) > 0)) { Text("انتقل", fontWeight = FontWeight.SemiBold) }
+                }
+            }
             when (tab) {
                 ReaderPanelTab.Contents -> ContentsList(state, colors, currentBlockIndex, onJump)
-                ReaderPanelTab.Search -> PanelSearch(query, hits, colors, onQueryChange, onJump)
+                ReaderPanelTab.Search -> PanelSearch(query, hits, colors, onQueryChange, onJump, searchStatus)
                 ReaderPanelTab.Benefits -> BenefitsList(state, colors, onJump)
                 ReaderPanelTab.Bookmarks -> BookmarksList(state, colors, onJump)
             }
         }
         // Scrim over the sliver of page still showing; tapping it closes the panel.
-        Box(
+        if (!docked) Box(
             modifier = Modifier
                 .weight(0.22f)
                 .fillMaxHeight()
@@ -180,6 +209,7 @@ private fun PanelSearch(
     colors: ReaderColors,
     onQueryChange: (String) -> Unit,
     onJump: (Int) -> Unit,
+    status: String?,
 ) {
     val focusRequester = remember { FocusRequester() }
     LaunchedEffect(Unit) { focusRequester.requestFocus() }
@@ -198,7 +228,7 @@ private fun PanelSearch(
                 imageVector = AtharIcons.Search,
                 contentDescription = null,
                 tint = colors.secondary,
-                modifier = Modifier.size(17.dp),
+                modifier = Modifier.size(24.dp),
             )
             BasicTextField(
                 value = query,
@@ -245,10 +275,10 @@ private fun PanelSearch(
 
         if (query.isNotBlank()) {
             Text(
-                text = if (hits.isEmpty()) {
+                text = status ?: if (hits.isEmpty()) {
                     "لا توجد نتائج"
                 } else {
-                    "${arabic(hits.size)} نتيجة"
+                    "${if (hits.size >= 200) "أول " else ""}${com.atharchive.data.arabicCount(hits.size, "لا نتائج", "نتيجة واحدة", "نتيجتان", "نتائج", "نتيجة")}"
                 },
                 modifier = Modifier.padding(start = 14.dp, end = 14.dp, bottom = 6.dp),
                 color = colors.secondary,
@@ -351,7 +381,7 @@ private fun ContentsList(
 @Composable
 private fun BenefitsList(state: ReaderUiState, colors: ReaderColors, onJump: (Int) -> Unit) {
     if (state.benefits.isEmpty()) {
-        PanelEmpty("لا توجد فوائد من هذا الكتاب", "ظلّل نصًا لتحفظه في كناشتك.", colors)
+        PanelEmpty("لا شيء من هذا الكتاب في الكناشة", "حدّد نصًا واختر «إلى الكناشة».", colors)
         return
     }
     LazyColumn(modifier = Modifier.fillMaxSize()) {
@@ -392,7 +422,7 @@ private fun BenefitsList(state: ReaderUiState, colors: ReaderColors, onJump: (In
 @Composable
 private fun BookmarksList(state: ReaderUiState, colors: ReaderColors, onJump: (Int) -> Unit) {
     if (state.bookmarks.isEmpty()) {
-        PanelEmpty("لا توجد مواضع محفوظة", "اضغط الإشارة لحفظ موضعك الحالي.", colors)
+        PanelEmpty("لا توجد علامات", "اضغط زر العلامة لحفظ موضعك الحالي.", colors)
         return
     }
     LazyColumn(modifier = Modifier.fillMaxSize()) {

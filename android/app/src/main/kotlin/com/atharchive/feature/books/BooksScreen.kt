@@ -1,5 +1,9 @@
 package com.atharchive.feature.books
 
+import com.atharchive.core.ArNormalize
+import androidx.compose.foundation.horizontalScroll
+import androidx.compose.foundation.rememberScrollState
+
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.LocalIndication
@@ -40,6 +44,9 @@ import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
+import androidx.compose.ui.input.nestedscroll.nestedScroll
+import com.atharchive.ui.components.AtharCollapsible
+import com.atharchive.ui.components.rememberAtharCollapsingHeader
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -66,14 +73,16 @@ import androidx.compose.ui.semantics.selected
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
-import androidx.compose.ui.text.style.TextDirection
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.atharchive.ui.components.AtharBookmarkButton
+import com.atharchive.ui.components.AtharDownloadButton
 import com.atharchive.ui.components.AtharEmptyState
+import com.atharchive.ui.components.AtharFilterGroup
+import com.atharchive.ui.components.AtharFilterMenu
 import com.atharchive.ui.components.AtharMenuButton
 import com.atharchive.ui.components.AtharSearchField
 import com.atharchive.ui.components.AtharTabRow
@@ -93,15 +102,16 @@ fun BooksScreen(
     onBookClick: (BookUi) -> Unit,
     onDownloadClick: (BookUi) -> Unit,
     onSaveClick: (BookUi) -> Unit,
-    onLibrary: () -> Unit = {},
     modifier: Modifier = Modifier,
     scrollToTopRequest: Int = 0,
-    onLogo: (() -> Unit)? = null,
     onBack: (() -> Unit)? = null,
 ) {
     var selectedTab by rememberSaveable { mutableStateOf(BooksTab.All) }
     var query by rememberSaveable { mutableStateOf("") }
     var kind by rememberSaveable { mutableStateOf(AllKinds) }
+    var author by rememberSaveable { mutableStateOf("كل المؤلفين") }
+    var topic by rememberSaveable { mutableStateOf("كل الموضوعات") }
+    var century by rememberSaveable { mutableStateOf("كل القرون") }
     var sort by rememberSaveable { mutableStateOf(BookSort.Newest) }
     val listState = rememberLazyListState()
 
@@ -109,7 +119,7 @@ fun BooksScreen(
         if (scrollToTopRequest > 0) listState.animateScrollToItem(0)
     }
 
-    val visibleBooks = remember(state.books, selectedTab, query, kind, sort) {
+    val visibleBooks = remember(state.books, selectedTab, query, kind, sort, author, topic, century) {
         state.books
             .asSequence()
             .filter { book ->
@@ -117,21 +127,23 @@ fun BooksScreen(
                     BooksTab.All -> true
                     BooksTab.Recent -> book.recentRank != null
                     BooksTab.Downloaded -> book.download is BookDownloadUi.Downloaded
-                    BooksTab.MyList -> book.saved
                 }
             }
             .filter { book ->
-                val term = query.trim()
-                term.isBlank() || book.title.contains(term, ignoreCase = true) ||
-                    book.author.contains(term, ignoreCase = true)
+                val term = ArNormalize.normalize(query.trim())
+                term.isBlank() || ArNormalize.normalize(book.title).contains(term, ignoreCase = true) ||
+                    ArNormalize.normalize(book.author).contains(term, ignoreCase = true)
             }
             .filter { kind == AllKinds || it.kind == kind }
+            .filter { author == "كل المؤلفين" || it.author == author }
+            .filter { topic == "كل الموضوعات" || topic in it.topics }
+            .filter { century == "كل القرون" || it.died?.let { year -> "القرن ${(year - 1) / 100 + 1}" } == century }
             .sortedWith(
                 when {
                     selectedTab == BooksTab.Recent -> compareBy { it.recentRank ?: Int.MAX_VALUE }
                     sort == BookSort.Title -> compareBy { it.title }
                     sort == BookSort.Author -> compareBy { it.author }
-                    else -> compareBy { state.books.indexOf(it) }
+                    else -> compareByDescending { it.publishedAt }
                 },
             )
             .toList()
@@ -154,35 +166,23 @@ fun BooksScreen(
                 title = "الكتب",
                 onSettings = onSettings,
                 showAppIcon = true,
-                onLogo = onLogo,
                 onBack = onBack,
-                actionIcon = AtharIcons.Archive,
-                actionLabel = "مكتبتي",
-                onAction = onLibrary,
                 horizontalPadding = horizontalPadding,
             )
-        LazyColumn(
-            state = listState,
-            modifier = Modifier
-                .fillMaxWidth()
-                .weight(1f)
-                .testTag("books_screen"),
-            contentPadding = PaddingValues(bottom = 28.dp),
-        ) {
-            item(key = "books-search") {
-                AtharSearchField(
-                    query = query,
-                    placeholder = "ابحث في ${state.archiveCountLabel}…",
-                    onQueryChange = { query = it },
-                    tagPrefix = "books",
-                    modifier = Modifier.padding(
-                        start = horizontalPadding,
-                        end = horizontalPadding,
-                        top = 4.dp,
-                    ),
-                )
-            }
-            item(key = "books-tabs") {
+        val header = rememberAtharCollapsingHeader()
+        AtharSearchField(
+            query = query,
+            placeholder = "ابحث في ${state.archiveCountLabel}…",
+            onQueryChange = { query = it },
+            tagPrefix = "books",
+            modifier = Modifier.padding(
+                start = horizontalPadding,
+                end = horizontalPadding,
+                top = 4.dp,
+            ),
+        )
+        AtharCollapsible(header) {
+            Column {
                 AtharTabRow(
                     tabs = BooksTab.tabs,
                     selectedKey = selectedTab.key,
@@ -190,21 +190,21 @@ fun BooksScreen(
                     tagPrefix = "books",
                     modifier = Modifier.padding(horizontal = horizontalPadding),
                 )
-            }
-            item(key = "books-menus") {
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
+                        .horizontalScroll(rememberScrollState())
                         .padding(horizontal = horizontalPadding - 4.dp, vertical = 2.dp),
                     horizontalArrangement = Arrangement.spacedBy(10.dp),
                 ) {
-                    AtharMenuButton(
-                        label = "النوع",
-                        options = kinds,
-                        selected = kind,
-                        defaultOption = AllKinds,
-                        onSelect = { kind = it },
-                        tagPrefix = "books_kind",
+                    AtharFilterMenu(
+                        groups = listOf(
+                            AtharFilterGroup("النوع", kinds, kind) { kind = it },
+                            AtharFilterGroup("المؤلف", listOf("كل المؤلفين") + state.books.map { it.author }.filter(String::isNotBlank).distinct().sorted(), author) { author = it },
+                            AtharFilterGroup("الموضوع", listOf("كل الموضوعات") + state.books.flatMap { it.topics }.distinct().sorted(), topic) { topic = it },
+                            AtharFilterGroup("القرن", listOf("كل القرون") + state.books.mapNotNull { it.died?.let { year -> (year - 1) / 100 + 1 } }.distinct().sorted().map { "القرن $it" }, century) { century = it },
+                        ),
+                        tagPrefix = "books_filter",
                     )
                     if (selectedTab != BooksTab.Recent) {
                         AtharMenuButton(
@@ -219,20 +219,28 @@ fun BooksScreen(
                         )
                     }
                 }
-            }
-            item(key = "books-list-divider") {
                 HorizontalDivider(
                     modifier = Modifier.padding(horizontal = horizontalPadding, vertical = 2.dp),
                     thickness = 0.7.dp,
                     color = AtharTheme.colors.divider.copy(alpha = 0.5f),
                 )
             }
+        }
+        LazyColumn(
+            state = listState,
+            modifier = Modifier
+                .fillMaxWidth()
+                .weight(1f)
+                .nestedScroll(header.connection)
+                .testTag("books_screen"),
+            contentPadding = PaddingValues(bottom = 28.dp),
+        ) {
             if (visibleBooks.isEmpty()) {
                 item(key = "books-empty") {
                     val (emptyTitle, emptyBody) = booksEmptyCopy(
                         selectedTab = selectedTab,
                         hasQuery = query.isNotBlank(),
-                        hasFilters = kind != AllKinds,
+                        hasFilters = kind != AllKinds || author != "كل المؤلفين" || topic != "كل الموضوعات" || century != "كل القرون",
                     )
                     AtharEmptyState(
                         title = emptyTitle,
@@ -332,14 +340,6 @@ private fun BookRow(
                     style = MaterialTheme.typography.labelSmall,
                     maxLines = 1,
                 )
-                Text("·", color = factColor, style = MaterialTheme.typography.labelSmall)
-                Text(
-                    text = book.download.sizeLabel,
-                    color = factColor,
-                    style = MaterialTheme.typography.labelSmall
-                        .copy(textDirection = TextDirection.Ltr),
-                    maxLines = 1,
-                )
             }
             if (showReadingProgress) {
                 ReadingProgress(book)
@@ -351,7 +351,14 @@ private fun BookRow(
             itemTitle = book.title,
             tag = "book_save_${book.id}",
         )
-        BookDownloadControl(book = book, onClick = onDownload)
+        AtharDownloadButton(
+            title = book.title,
+            sizeLabel = book.download.sizeLabel,
+            downloaded = book.download is BookDownloadUi.Downloaded,
+            transfer = (book.download as? BookDownloadUi.Downloading)?.transfer,
+            onClick = onDownload,
+            tag = "book_download_${book.id}",
+        )
     }
 }
 
@@ -418,57 +425,6 @@ private fun RtlProgressBar(progress: Float, modifier: Modifier = Modifier) {
     }
 }
 
-@Composable
-private fun BookDownloadControl(book: BookUi, onClick: () -> Unit) {
-    val state = book.download
-    val statusDescription = when (state) {
-        is BookDownloadUi.Available -> "تنزيل ${book.title}، الحجم ${state.sizeLabel}"
-        is BookDownloadUi.Downloading ->
-            "جار تنزيل ${book.title}، ${state.progressLabel} من ${state.sizeLabel}"
-        is BookDownloadUi.Downloaded -> "${book.title} محمّل، الحجم ${state.sizeLabel}"
-    }
-
-    Box(
-        modifier = Modifier
-            .size(40.dp)
-            .clip(CircleShape)
-            .clickable(role = Role.Button, onClick = onClick)
-            .semantics {
-                contentDescription = statusDescription
-                role = Role.Button
-                if (state is BookDownloadUi.Downloading) {
-                    progressBarRangeInfo = ProgressBarRangeInfo(state.progress, 0f..1f)
-                }
-            }
-            .testTag("book_download_${book.id}"),
-        contentAlignment = Alignment.Center,
-    ) {
-        when (state) {
-            is BookDownloadUi.Available -> Icon(
-                imageVector = AtharIcons.Download,
-                contentDescription = null,
-                tint = AtharTheme.colors.secondaryText,
-                modifier = Modifier.size(19.dp),
-            )
-            // Progress replaces the icon rather than sitting beside it, so the control
-            // never changes width mid-download.
-            is BookDownloadUi.Downloading -> Text(
-                text = state.progressLabel,
-                color = AtharTheme.colors.accent,
-                style = MaterialTheme.typography.labelSmall,
-                fontWeight = FontWeight.SemiBold,
-                maxLines = 1,
-            )
-            is BookDownloadUi.Downloaded -> Icon(
-                imageVector = AtharIcons.Check,
-                contentDescription = null,
-                tint = AtharTheme.colors.success,
-                modifier = Modifier.size(19.dp),
-            )
-        }
-    }
-}
-
 private fun booksEmptyCopy(
     selectedTab: BooksTab,
     hasQuery: Boolean,
@@ -478,7 +434,6 @@ private fun booksEmptyCopy(
     hasFilters -> "لا توجد كتب بهذا النوع" to "اختر «كل الأنواع» لعرض مزيد من الكتب."
     selectedTab == BooksTab.Recent -> "لا توجد كتب أخيرة" to "ستظهر هنا الكتب التي فتحتها مؤخرًا."
     selectedTab == BooksTab.Downloaded -> "لا توجد كتب محمّلة" to "نزّل كتابًا لتقرأه دون اتصال."
-    selectedTab == BooksTab.MyList -> "قائمتك فارغة" to "ستظهر هنا الكتب المحفوظة في قائمتك."
     else -> "لا توجد كتب" to "لم تتوفر كتب في هذا القسم بعد."
 }
 

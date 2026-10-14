@@ -26,8 +26,16 @@ enum class KannashahSort(val label: String) {
     SourceOrder("ترتيب المصدر"),
 }
 
+enum class KannashahFilter(val label: String) {
+    All("كل المقتطفات"),
+    Highlights("التظليلات"),
+    Notes("التعليقات"),
+    Lost("فقدت موضعها"),
+}
+
 data class ExcerptUi(
     val id: String,
+    val entityId: String = "",
     /** The saved text, complete. Never shortened for display. */
     val text: String,
     val sourceTitle: String,
@@ -39,12 +47,15 @@ data class ExcerptUi(
     val comment: String? = null,
     /** Sort key for ترتيب المصدر; ordinal within the source work. */
     val sourceOrdinal: Int = 0,
-    val addedOrder: Int = 0,
+    val addedOrder: Long = 0,
+    val kind: String = "highlight",
+    val attachmentState: String = "exact",
+    val sourceUrl: String = "",
 )
 
 data class KannashahUiState(
-    val headline: String,
-    val excerpts: List<ExcerptUi>,
+    val headline: String = "٠ مقتطفات من ٠ مصادر",
+    val excerpts: List<ExcerptUi> = emptyList(),
 )
 
 val KannashahFixture = KannashahUiState(

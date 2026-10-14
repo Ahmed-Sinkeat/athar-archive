@@ -3,6 +3,7 @@ package com.atharchive.ui.components
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -18,8 +19,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material3.DropdownMenu
-import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -50,6 +50,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.atharchive.feature.downloads.TransferUi
 import com.atharchive.ui.icons.AtharIcons
 import com.atharchive.ui.theme.AtharEditorialFontFamily
 import com.atharchive.ui.theme.AtharTheme
@@ -85,7 +86,7 @@ fun AtharSearchField(
             modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            Box(Modifier.size(42.dp), contentAlignment = Alignment.Center) {
+            Box(Modifier.size(48.dp), contentAlignment = Alignment.Center) {
                 Icon(
                     imageVector = AtharIcons.Search,
                     contentDescription = null,
@@ -196,7 +197,8 @@ private fun SectionTab(
             maxLines = if (largeText) 2 else 1,
             overflow = TextOverflow.Clip,
         )
-        Spacer(Modifier.weight(1f))
+        // Fixed gap, not weight(1f): weight swallows all the height once the row is in a bounded column.
+        Spacer(Modifier.height(4.dp))
         Box(
             Modifier
                 .padding(top = 6.dp)
@@ -252,6 +254,7 @@ fun AtharMenuButton(
     onSelect: (String) -> Unit,
     tagPrefix: String,
     modifier: Modifier = Modifier,
+    onSelectIndex: ((Int) -> Unit)? = null,
 ) {
     var expanded by remember { mutableStateOf(false) }
     val isDefault = selected == defaultOption
@@ -283,51 +286,264 @@ fun AtharMenuButton(
                     .size(12.dp),
             )
         }
-        DropdownMenu(
+        AtharMenu(
             expanded = expanded,
-            onDismissRequest = { expanded = false },
-            containerColor = AtharTheme.colors.canvas,
-            shape = RoundedCornerShape(10.dp),
+            onDismiss = { expanded = false },
             modifier = Modifier.testTag("${tagPrefix}_menu_open"),
         ) {
             options.forEachIndexed { index, option ->
-                DropdownMenuItem(
-                    text = {
-                        Text(
-                            text = option,
-                            color = if (option == selected) {
-                                AtharTheme.colors.accent
-                            } else {
-                                MaterialTheme.colorScheme.onSurface
-                            },
-                            style = MaterialTheme.typography.bodyMedium,
-                            fontWeight = if (option == selected) {
-                                FontWeight.SemiBold
-                            } else {
-                                FontWeight.Normal
-                            },
-                        )
-                    },
+                AtharMenuItem(
+                    label = option,
+                    checked = option == selected,
                     onClick = {
-                        onSelect(option)
+                        if (onSelectIndex != null) onSelectIndex(index) else onSelect(option)
                         expanded = false
-                    },
-                    trailingIcon = if (option == selected) {
-                        {
-                            Icon(
-                                imageVector = AtharIcons.Check,
-                                contentDescription = null,
-                                tint = AtharTheme.colors.accent,
-                                modifier = Modifier.size(17.dp),
-                            )
-                        }
-                    } else {
-                        null
                     },
                     modifier = Modifier.testTag("${tagPrefix}_option_$index"),
                 )
             }
         }
+    }
+}
+
+class AtharFilterGroup(
+    val label: String,
+    /** The first option is the "no filter" default, e.g. «كل المؤلفين». */
+    val options: List<String>,
+    val selected: String,
+    val onSelect: (String) -> Unit,
+) {
+    val default get() = options.first()
+    val active get() = selected != default
+}
+
+/**
+ * One «تصفية» control for several filters: the menu lists the groups with their current
+ * value; tapping one drills into its options (iOS-style) and the top row comes back.
+ */
+@Composable
+fun AtharFilterMenu(groups: List<AtharFilterGroup>, tagPrefix: String, modifier: Modifier = Modifier) {
+    var expanded by remember { mutableStateOf(false) }
+    var open by remember { mutableStateOf<Int?>(null) }
+    val activeCount = groups.count { it.active }
+    Box(modifier = modifier) {
+        Row(
+            modifier = Modifier
+                .clip(RoundedCornerShape(6.dp))
+                .clickable(role = Role.DropdownList) { open = null; expanded = true }
+                .padding(horizontal = 4.dp, vertical = 6.dp)
+                .testTag("${tagPrefix}_menu"),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Text(
+                text = if (activeCount == 0) "تصفية" else "تصفية · ${arabicDigits(activeCount)}",
+                color = AtharTheme.colors.secondaryText,
+                style = MaterialTheme.typography.bodySmall,
+                fontWeight = if (activeCount == 0) FontWeight.Normal else FontWeight.SemiBold,
+                maxLines = 1,
+            )
+            Icon(
+                imageVector = AtharIcons.ChevronDown,
+                contentDescription = null,
+                tint = AtharTheme.colors.secondaryText,
+                modifier = Modifier.padding(start = 3.dp).size(12.dp),
+            )
+        }
+        AtharMenu(
+            expanded = expanded,
+            onDismiss = { expanded = false },
+            modifier = Modifier.testTag("${tagPrefix}_menu_open"),
+        ) {
+            val group = open?.let(groups::getOrNull)
+            if (group == null) {
+                groups.forEachIndexed { index, g ->
+                    AtharMenuItem(
+                        label = g.label,
+                        subtitle = g.selected,
+                        icon = AtharIcons.Forward,
+                        onClick = { open = index },
+                        modifier = Modifier.testTag("${tagPrefix}_group_$index"),
+                    )
+                }
+                if (activeCount > 0) {
+                    AtharMenuDivider()
+                    AtharMenuItem(
+                        label = "إزالة التصفية",
+                        destructive = true,
+                        onClick = {
+                            groups.forEach { if (it.active) it.onSelect(it.default) }
+                            expanded = false
+                        },
+                        modifier = Modifier.testTag("${tagPrefix}_clear"),
+                    )
+                }
+            } else {
+                AtharMenuItem(
+                    label = group.label,
+                    icon = AtharIcons.Back,
+                    onClick = { open = null },
+                    modifier = Modifier.testTag("${tagPrefix}_back"),
+                )
+                AtharMenuDivider()
+                group.options.forEachIndexed { index, option ->
+                    AtharMenuItem(
+                        label = option,
+                        checked = option == group.selected,
+                        onClick = {
+                            group.onSelect(option)
+                            expanded = false
+                        },
+                        modifier = Modifier.testTag("${tagPrefix}_option_$index"),
+                    )
+                }
+            }
+        }
+    }
+}
+
+private fun arabicDigits(n: Int) = n.toString().map { if (it.isDigit()) '٠' + (it - '0') else it }.joinToString("")
+
+/**
+ * Tab and filter rows that get out of the way: hidden while the list scrolls down, back on
+ * the first scroll up. The page title and the search field stay outside it, pinned.
+ *
+ * Driven by nested-scroll deltas (the user's gesture), not by the list position, so the
+ * list re-clamping when the header collapses can never flip it back and forth.
+ */
+@androidx.compose.runtime.Stable
+class AtharCollapsingHeader {
+    var visible by mutableStateOf(true)
+        private set
+    private var travelled = 0f
+
+    /** A tap, for chrome that also toggles by touch (the reader). */
+    fun toggle() {
+        visible = !visible
+        travelled = 0f
+    }
+
+    val connection = object : androidx.compose.ui.input.nestedscroll.NestedScrollConnection {
+        override fun onPreScroll(
+            available: androidx.compose.ui.geometry.Offset,
+            source: androidx.compose.ui.input.nestedscroll.NestedScrollSource,
+        ): androidx.compose.ui.geometry.Offset {
+            val dy = available.y
+            // A reversal restarts the count, so a small wobble never toggles the header.
+            if (dy != 0f && (dy > 0f) != (travelled > 0f)) travelled = 0f
+            travelled += dy
+            if (travelled < -Threshold) visible = false else if (travelled > Threshold) visible = true
+            return androidx.compose.ui.geometry.Offset.Zero
+        }
+    }
+
+    private companion object { const val Threshold = 36f }
+}
+
+@Composable
+fun rememberAtharCollapsingHeader(): AtharCollapsingHeader = remember { AtharCollapsingHeader() }
+
+@Composable
+fun AtharCollapsible(header: AtharCollapsingHeader, content: @Composable () -> Unit) {
+    androidx.compose.animation.AnimatedVisibility(
+        visible = header.visible,
+        enter = androidx.compose.animation.expandVertically() + androidx.compose.animation.fadeIn(),
+        exit = androidx.compose.animation.shrinkVertically() + androidx.compose.animation.fadeOut(),
+    ) { content() }
+}
+
+/**
+ * The one download control for every row (books, poems, articles, questions): the state
+ * and the size are always readable, the same way everywhere. [onClick] does not remove a
+ * finished download by itself — the caller asks first.
+ */
+@Composable
+fun AtharDownloadButton(
+    title: String,
+    sizeLabel: String,
+    downloaded: Boolean,
+    transfer: TransferUi?,
+    onClick: () -> Unit,
+    tag: String,
+    modifier: Modifier = Modifier,
+) {
+    val colors = AtharTheme.colors
+    val progress = when (transfer) {
+        is TransferUi.Running -> transfer.progress
+        is TransferUi.Paused -> transfer.progress
+        is TransferUi.Failed -> transfer.progress
+        null -> 0f
+    }
+    // All bytes are here but verification and import still run: say so, not a stuck 100%.
+    val finishing = transfer is TransferUi.Running && progress >= 1f
+    val label = when {
+        transfer is TransferUi.Failed -> "إعادة"
+        transfer is TransferUi.Paused -> "متوقف"
+        finishing -> "إنهاء"
+        transfer is TransferUi.Running -> "${arabicDigits((progress * 100).toInt())}٪"
+        else -> sizeLabel
+    }
+    val description = when {
+        transfer is TransferUi.Failed -> "إعادة تنزيل $title"
+        transfer is TransferUi.Paused -> "استئناف تنزيل $title، $label"
+        finishing -> "جارٍ إنهاء تنزيل $title"
+        transfer is TransferUi.Running -> "إيقاف تنزيل $title مؤقتًا، $label"
+        downloaded -> "$title محمّل، الحجم $sizeLabel. اضغط للإزالة"
+        else -> "تنزيل $title، الحجم $sizeLabel"
+    }
+    val tint = when {
+        transfer is TransferUi.Failed -> colors.accent
+        transfer != null -> colors.accent
+        downloaded -> colors.success
+        else -> colors.secondaryText
+    }
+    Column(
+        modifier = modifier
+            .width(56.dp)
+            .defaultMinSize(minHeight = 48.dp)
+            .clip(RoundedCornerShape(12.dp))
+            .clickable(role = Role.Button, onClick = onClick)
+            .semantics {
+                contentDescription = description
+                if (transfer is TransferUi.Running && !finishing) {
+                    progressBarRangeInfo = ProgressBarRangeInfo(progress.coerceIn(0f, 1f), 0f..1f)
+                }
+            }
+            .padding(vertical = 6.dp)
+            .testTag(tag),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center,
+    ) {
+        Box(Modifier.size(26.dp), contentAlignment = Alignment.Center) {
+            if (transfer != null && transfer !is TransferUi.Failed) {
+                if (finishing) CircularProgressIndicator(
+                    modifier = Modifier.size(24.dp), color = colors.accent, strokeWidth = 2.5.dp,
+                ) else CircularProgressIndicator(
+                    progress = { progress.coerceIn(0f, 1f) },
+                    modifier = Modifier.size(24.dp), color = colors.accent,
+                    trackColor = colors.divider, strokeWidth = 2.5.dp,
+                )
+                if (!finishing) Icon(
+                    imageVector = if (transfer is TransferUi.Paused) AtharIcons.Play else AtharIcons.Pause,
+                    contentDescription = null, tint = tint, modifier = Modifier.size(11.dp),
+                )
+            } else Icon(
+                imageVector = when {
+                    transfer is TransferUi.Failed -> AtharIcons.Repeat
+                    downloaded -> AtharIcons.Check
+                    else -> AtharIcons.Download
+                },
+                contentDescription = null, tint = tint, modifier = Modifier.size(22.dp),
+            )
+        }
+        Text(
+            text = label,
+            color = if (transfer == null && !downloaded) colors.secondaryText else tint,
+            style = MaterialTheme.typography.labelSmall,
+            fontWeight = if (transfer != null) FontWeight.SemiBold else FontWeight.Normal,
+            maxLines = 1,
+            softWrap = false,
+            overflow = TextOverflow.Clip,
+        )
     }
 }
 
@@ -369,23 +585,23 @@ fun AtharBookmarkButton(
     IconButton(
         onClick = onToggle,
         modifier = modifier
-            .size(36.dp)
+            .size(48.dp)
             .testTag(tag),
     ) {
         Icon(
             // Filled when saved: the state should be legible without relying on colour.
             imageVector = if (saved) AtharIcons.BookmarkFilled else AtharIcons.Bookmark,
             contentDescription = if (saved) {
-                "إزالة $itemTitle من قائمتي"
+                "إزالة $itemTitle من محفوظاتي"
             } else {
-                "حفظ $itemTitle في قائمتي"
+                "حفظ $itemTitle في محفوظاتي"
             },
             tint = if (saved) {
                 AtharTheme.colors.accent
             } else {
-                AtharTheme.colors.secondaryText.copy(alpha = 0.75f)
+                AtharTheme.colors.secondaryText
             },
-            modifier = Modifier.size(18.dp),
+            modifier = Modifier.size(22.dp),
         )
     }
 }

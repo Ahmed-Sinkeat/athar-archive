@@ -25,6 +25,9 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.ui.input.nestedscroll.nestedScroll
+import com.atharchive.ui.components.AtharCollapsible
+import com.atharchive.ui.components.rememberAtharCollapsingHeader
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -46,8 +49,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.atharchive.ui.components.AtharEmptyState
 import com.atharchive.ui.components.AtharMenuButton
+import com.atharchive.ui.components.AtharTab
+import com.atharchive.ui.components.AtharTabRow
 import com.atharchive.ui.components.AtharSearchField
 import com.atharchive.ui.components.AtharTopBar
+import com.atharchive.ui.components.AtharMenu
+import com.atharchive.ui.components.AtharMenuItem
 import com.atharchive.ui.icons.AtharIcons
 import com.atharchive.ui.theme.AtharEditorialFontFamily
 import com.atharchive.ui.theme.AtharTheme
@@ -63,26 +70,30 @@ fun KannashahScreen(
     onMore: (ExcerptUi) -> Unit,
     onOpenSource: (ExcerptUi) -> Unit,
     modifier: Modifier = Modifier,
-    onLogo: (() -> Unit)? = null,
     onBack: (() -> Unit)? = null,
 ) {
     var query by rememberSaveable { mutableStateOf("") }
     var view by rememberSaveable { mutableStateOf(KannashahView.All) }
     var grouping by rememberSaveable { mutableStateOf(KannashahGrouping.Topic) }
     var sort by rememberSaveable { mutableStateOf(KannashahSort.Newest) }
+    var filter by rememberSaveable { mutableStateOf(KannashahFilter.All) }
     val listState = rememberLazyListState()
 
-    val matching = remember(state.excerpts, query) {
+    val matching = remember(state.excerpts, query, filter) {
         val term = query.trim()
-        if (term.isBlank()) {
-            state.excerpts
-        } else {
-            state.excerpts.filter {
-                it.text.contains(term, ignoreCase = true) ||
-                    it.sourceTitle.contains(term, ignoreCase = true) ||
-                    it.sourceAuthor.contains(term, ignoreCase = true) ||
-                    it.topics.any { topic -> topic.contains(term, ignoreCase = true) }
+        state.excerpts.filter { excerpt ->
+            val included = when (filter) {
+                KannashahFilter.All -> true
+                KannashahFilter.Highlights -> excerpt.kind == "highlight"
+                KannashahFilter.Notes -> excerpt.kind == "note"
+                KannashahFilter.Lost -> excerpt.attachmentState == "orphaned"
             }
+            included && (term.isBlank() || with(excerpt) {
+                text.contains(term, ignoreCase = true) ||
+                    sourceTitle.contains(term, ignoreCase = true) ||
+                    sourceAuthor.contains(term, ignoreCase = true) ||
+                    topics.any { topic -> topic.contains(term, ignoreCase = true) }
+            })
         }
     }
     val sorted = remember(matching, sort) {
@@ -99,7 +110,7 @@ fun KannashahScreen(
         } else {
             when (grouping) {
                 KannashahGrouping.Topic ->
-                    sorted.flatMap { e -> e.topics.map { it to e } }
+                    sorted.flatMap { e -> e.topics.distinct().ifEmpty { listOf("بلا موضوع") }.map { it to e } }
                         .groupBy({ it.first }, { it.second })
                         .map { (topic, items) ->
                             ExcerptGroup(topic, "${arabicCount(items.size)} مقتطفًا", items)
@@ -130,58 +141,57 @@ fun KannashahScreen(
                 title = "الكناشة",
                 onSettings = onSettings,
                 showAppIcon = true,
-                onLogo = onLogo,
                 onBack = onBack,
                 horizontalPadding = horizontalPadding,
             )
-        LazyColumn(
-            state = listState,
-            modifier = Modifier
-                .fillMaxWidth()
-                .weight(1f)
-                .testTag("kannashah_screen"),
-            contentPadding = PaddingValues(bottom = 28.dp),
-        ) {
-            item(key = "k-headline") {
-                Text(
-                    text = state.headline,
-                    modifier = Modifier.padding(
-                        start = horizontalPadding,
-                        end = horizontalPadding,
-                        bottom = 6.dp,
-                    ),
-                    color = AtharTheme.colors.secondaryText,
-                    style = MaterialTheme.typography.bodySmall,
+        val header = rememberAtharCollapsingHeader()
+        if (state.headline.isNotBlank()) {
+            Text(
+                text = state.headline,
+                modifier = Modifier.padding(
+                    start = horizontalPadding,
+                    end = horizontalPadding,
+                    bottom = 6.dp,
+                ),
+                color = AtharTheme.colors.secondaryText,
+                style = MaterialTheme.typography.bodySmall,
+            )
+        }
+        AtharSearchField(
+            query = query,
+            placeholder = "ابحث في كناشتك…",
+            onQueryChange = { query = it },
+            tagPrefix = "kannashah",
+            modifier = Modifier.padding(
+                start = horizontalPadding,
+                end = horizontalPadding,
+            ),
+        )
+        AtharCollapsible(header) {
+            Column {
+                AtharTabRow(
+                    tabs = KannashahView.entries.map { AtharTab(it.key, it.label) },
+                    selectedKey = view.key,
+                    onSelect = { key -> view = KannashahView.entries.first { it.key == key } },
+                    tagPrefix = "kannashah_view",
+                    modifier = Modifier.padding(horizontal = horizontalPadding),
                 )
-            }
-            item(key = "k-search") {
-                AtharSearchField(
-                    query = query,
-                    placeholder = "ابحث في كناشتك…",
-                    onQueryChange = { query = it },
-                    tagPrefix = "kannashah",
-                    modifier = Modifier.padding(
-                        start = horizontalPadding,
-                        end = horizontalPadding,
-                    ),
-                )
-            }
-            item(key = "k-controls") {
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(
-                            start = horizontalPadding - 4.dp,
-                            end = horizontalPadding - 4.dp,
-                            top = 8.dp,
-                        ),
+                        .padding(horizontal = horizontalPadding - 4.dp, vertical = 2.dp),
                     verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    horizontalArrangement = Arrangement.spacedBy(10.dp),
                 ) {
-                    ViewToggle(
-                        view = view,
-                        onSelect = { view = it },
-                        modifier = Modifier.padding(start = 4.dp),
+                    AtharMenuButton(
+                        label = filter.label,
+                        options = KannashahFilter.entries.map { it.label },
+                        selected = filter.label,
+                        defaultOption = KannashahFilter.All.label,
+                        onSelect = { label ->
+                            filter = KannashahFilter.entries.first { it.label == label }
+                        },
+                        tagPrefix = "kannashah_filter",
                     )
                     if (view == KannashahView.Grouped) {
                         AtharMenuButton(
@@ -208,7 +218,16 @@ fun KannashahScreen(
                     }
                 }
             }
-
+        }
+        LazyColumn(
+            state = listState,
+            modifier = Modifier
+                .fillMaxWidth()
+                .weight(1f)
+                .nestedScroll(header.connection)
+                .testTag("kannashah_screen"),
+            contentPadding = PaddingValues(bottom = 28.dp),
+        ) {
             if (sorted.isEmpty()) {
                 item(key = "k-empty") {
                     AtharEmptyState(
@@ -225,14 +244,14 @@ fun KannashahScreen(
             } else if (view == KannashahView.All) {
                 items(sorted, horizontalPadding, onCopy, onShare, onMore, onOpenSource)
             } else {
-                groups.forEach { group ->
-                    item(key = "group-${group.title}") {
+                groups.forEachIndexed { groupIndex, group ->
+                    item(key = "group-$groupIndex") {
                         GroupHeading(
                             group = group,
                             horizontalPadding = horizontalPadding,
                         )
                     }
-                    items(group.items, horizontalPadding, onCopy, onShare, onMore, onOpenSource)
+                    items(group.items, horizontalPadding, onCopy, onShare, onMore, onOpenSource, "group-$groupIndex:")
                 }
             }
         }
@@ -247,8 +266,9 @@ private fun androidx.compose.foundation.lazy.LazyListScope.items(
     onShare: (ExcerptUi) -> Unit,
     onMore: (ExcerptUi) -> Unit,
     onOpenSource: (ExcerptUi) -> Unit,
+    keyPrefix: String = "",
 ) {
-    itemsIndexed(excerpts) { index, excerpt ->
+    itemsIndexed(excerpts, keyPrefix) { index, excerpt ->
         ExcerptItem(
             excerpt = excerpt,
             horizontalPadding = horizontalPadding,
@@ -272,9 +292,10 @@ private fun androidx.compose.foundation.lazy.LazyListScope.items(
 
 private fun androidx.compose.foundation.lazy.LazyListScope.itemsIndexed(
     excerpts: List<ExcerptUi>,
+    keyPrefix: String,
     content: @Composable (Int, ExcerptUi) -> Unit,
 ) {
-    items(count = excerpts.size, key = { excerpts[it].id }) { index ->
+    items(count = excerpts.size, key = { "$keyPrefix${excerpts[it].id}" }) { index ->
         content(index, excerpts[index])
     }
 }
@@ -441,7 +462,24 @@ private fun ExcerptItem(
             ) {
                 ExcerptAction(AtharIcons.Copy, "نسخ ${excerpt.sourceTitle}", "excerpt_copy_${excerpt.id}", onCopy)
                 ExcerptAction(AtharIcons.Share, "مشاركة ${excerpt.sourceTitle}", "excerpt_share_${excerpt.id}", onShare)
-                ExcerptAction(AtharIcons.More, "خيارات المقتطف", "excerpt_more_${excerpt.id}", onMore)
+                Box {
+                    var menu by remember { mutableStateOf(false) }
+                    ExcerptAction(AtharIcons.More, "خيارات المقتطف", "excerpt_more_${excerpt.id}") { menu = true }
+                    AtharMenu(expanded = menu, onDismiss = { menu = false }, modifier = Modifier.testTag("excerpt_menu_${excerpt.id}")) {
+                        AtharMenuItem(
+                            label = if (excerpt.comment.isNullOrBlank()) "إضافة تعليق" else "تعديل التعليق",
+                            icon = AtharIcons.Pen,
+                            onClick = { menu = false; onMore() },
+                            modifier = Modifier.testTag("excerpt_comment_${excerpt.id}"),
+                        )
+                        AtharMenuItem(
+                            label = "فتح المصدر",
+                            icon = AtharIcons.Books,
+                            onClick = { menu = false; onOpenSource() },
+                            modifier = Modifier.testTag("excerpt_source_${excerpt.id}"),
+                        )
+                    }
+                }
             }
         }
     }
@@ -454,7 +492,7 @@ private fun ExcerptAction(
     tag: String,
     onClick: () -> Unit,
 ) {
-    IconButton(onClick = onClick, modifier = Modifier.size(36.dp).testTag(tag)) {
+    IconButton(onClick = onClick, modifier = Modifier.size(48.dp).testTag(tag)) {
         Icon(
             imageVector = icon,
             contentDescription = description,
@@ -464,38 +502,6 @@ private fun ExcerptAction(
     }
 }
 
-@Composable
-private fun ViewToggle(
-    view: KannashahView,
-    onSelect: (KannashahView) -> Unit,
-    modifier: Modifier = Modifier,
-) {
-    Row(modifier = modifier, horizontalArrangement = Arrangement.spacedBy(4.dp)) {
-        KannashahView.entries.forEach { entry ->
-            val selected = entry == view
-            Surface(
-                modifier = Modifier
-                    .clip(RoundedCornerShape(7.dp))
-                    .clickable(role = Role.Tab) { onSelect(entry) }
-                    .testTag("kannashah_view_${entry.key}"),
-                shape = RoundedCornerShape(7.dp),
-                color = if (selected) {
-                    AtharTheme.colors.accentSurface
-                } else {
-                    AtharTheme.colors.canvas
-                },
-            ) {
-                Text(
-                    text = entry.label,
-                    modifier = Modifier.padding(horizontal = 10.dp, vertical = 5.dp),
-                    color = if (selected) AtharTheme.colors.accent else AtharTheme.colors.secondaryText,
-                    style = MaterialTheme.typography.labelMedium,
-                    fontWeight = if (selected) FontWeight.SemiBold else FontWeight.Normal,
-                )
-            }
-        }
-    }
-}
 
 private fun arabicCount(n: Int): String =
     n.toString().map { "٠١٢٣٤٥٦٧٨٩"[it - '0'] }.joinToString("")

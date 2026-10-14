@@ -1,5 +1,13 @@
 package com.atharchive.feature.poemreader
 
+import androidx.compose.ui.graphics.lerp
+import androidx.compose.ui.platform.LocalContext
+import com.atharchive.ui.components.AtharMenu
+import com.atharchive.ui.components.AtharMenuColors
+import com.atharchive.ui.components.AtharMenuDivider
+import com.atharchive.ui.components.AtharMenuItem
+import com.atharchive.data.AudioPlaybackState
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.DragInteraction
@@ -97,6 +105,15 @@ fun PoemReaderScreen(
     settings: ReaderSettings,
     onSettingsChange: (ReaderSettings) -> Unit,
     modifier: Modifier = Modifier,
+    playback: AudioPlaybackState = AudioPlaybackState(),
+    onPlayAudio: (PoemAudioUi) -> Unit = {},
+    onToggleAudio: () -> Unit = {},
+    onSpeed: (Float) -> Unit = {},
+    onRepeat: (Boolean) -> Unit = {},
+    onOpenReader: () -> Unit = {},
+    initialOrdinal: Int? = null,
+    onPositionChange: (Int) -> Unit = {},
+    onRetry: () -> Unit = {},
 ) {
     var settingsOpen by remember { mutableStateOf(false) }
     val colors = rememberReaderColors(settings.palette)
@@ -107,42 +124,19 @@ fun PoemReaderScreen(
     var sharhVerse by remember { mutableStateOf<VerseUi?>(null) }
     var query by remember { mutableStateOf("") }
     var toast by remember { mutableStateOf<String?>(null) }
+    var moreOpen by remember { mutableStateOf(false) }
 
-    // audio
-    var track by remember { mutableStateOf<PoemAudioUi?>(null) }
-    var playing by remember { mutableStateOf(false) }
-    var position by remember { mutableIntStateOf(0) }
-    var speed by remember { mutableStateOf(1.0f) }
-    var repeat by remember { mutableStateOf(false) }
+    val track = state.recordings.firstOrNull { it.id == playback.id }
+    val playing = track != null && playback.playWhenReady
+    val position = if (track != null) (playback.positionMs / 1000).toInt() else 0
+    val speed = playback.speed
+    val repeat = playback.repeat
+    var audioVisible by remember { mutableStateOf(true) }
     var followScroll by remember { mutableStateOf(true) }
-
     LaunchedEffect(toast) {
         if (toast != null) { delay(1700); toast = null }
     }
-
-    // ponytail: a 1s ticker stands in for the media engine so verse-following is
-    // reviewable. Replace with media3 position callbacks; nothing else changes.
-    LaunchedEffect(playing, track, speed) {
-        val current = track ?: return@LaunchedEffect
-        while (playing) {
-            delay((1000L / speed).toLong())
-            position = if (position >= current.durationSeconds) {
-                if (repeat) 0 else { playing = false; current.durationSeconds }
-            } else {
-                position + 1
-            }
-        }
-    }
-
-    // Which verse the recording is on. Verse-level only: `poem-timing` carries {v,t}
-    // and nothing finer, so no word is ever highlighted.
-    val currentVerse by remember {
-        derivedStateOf {
-            val cues = track?.cues.orEmpty()
-            if (cues.isEmpty()) null
-            else cues.lastOrNull { it.atSeconds <= position }?.verseNumber
-        }
-    }
+    val currentVerse = track?.cues?.lastOrNull { it.atSeconds <= playback.positionMs / 1000.0 }?.verseNumber
 
     // Following stops the moment the reader takes over, and offers its way back.
     // Drag interactions specifically, not isScrollInProgress: the auto-scroll below is
@@ -158,6 +152,23 @@ fun PoemReaderScreen(
             val index = state.verses.indexOfFirst { it.number == verse }
             if (index >= 0) listState.animateScrollToItem(index)
         }
+    }
+
+    androidx.activity.compose.BackHandler(panelMode != null || settingsOpen) {
+        panelMode = null
+        settingsOpen = false
+    }
+    var restored by remember { mutableStateOf(false) }
+    LaunchedEffect(state.verses) {
+        if (!restored && state.verses.isNotEmpty()) {
+            val ordinal = initialOrdinal ?: state.readingOrdinal
+            val index = state.verses.indexOfFirst { it.ordinal >= ordinal }.coerceAtLeast(0)
+            listState.scrollToItem(index)
+            restored = true
+        }
+    }
+    LaunchedEffect(restored, listState.isScrollInProgress) {
+        if (restored && !listState.isScrollInProgress) state.verses.getOrNull(listState.firstVisibleItemIndex)?.let { onPositionChange(it.ordinal) }
     }
 
     fun openSharh(verse: VerseUi) {
@@ -178,7 +189,41 @@ fun PoemReaderScreen(
                 colors = colors,
                 onBack = onBack,
                 onSearch = { panelMode = PanelMode.Search },
-                onMore = { toast = "قائمة إضافية: نسخ القصيدة، معلومات، مشاركة" },
+                onMore = { moreOpen = true },
+                menu = {
+                    // Used to jump straight into the book reader, which lays a poem out as prose.
+                    // That view stays one row away; copy and share are what ⋮ is expected to hold.
+                    val context = LocalContext.current
+                    val poemText = { buildString {
+                        append(state.title)
+                        if (state.poet.isNotBlank()) append(" — ").append(state.poet)
+                        state.verses.forEach { append("\n\n").append(it.sadr).append("\n").append(it.ajz) }
+                    } }
+                    AtharMenu(
+                        expanded = moreOpen,
+                        onDismiss = { moreOpen = false },
+                        colors = AtharMenuColors(card = lerp(colors.page, colors.text, 0.07f), ink = colors.text,
+                            secondary = colors.secondary, accent = colors.accent),
+                        modifier = Modifier.testTag("poem_more_menu"),
+                    ) {
+                        AtharMenuItem("نسخ القصيدة", icon = AtharIcons.Copy, onClick = {
+                            moreOpen = false
+                            context.getSystemService(android.content.ClipboardManager::class.java)
+                                .setPrimaryClip(android.content.ClipData.newPlainText("أثر", poemText()))
+                            toast = "نُسخت القصيدة"
+                        })
+                        AtharMenuItem("مشاركة القصيدة", icon = AtharIcons.Share, onClick = {
+                            moreOpen = false
+                            context.startActivity(android.content.Intent.createChooser(
+                                android.content.Intent(android.content.Intent.ACTION_SEND)
+                                    .setType("text/plain").putExtra(android.content.Intent.EXTRA_TEXT, poemText()),
+                                "مشاركة القصيدة"))
+                        })
+                        AtharMenuDivider()
+                        AtharMenuItem("النص المتصل", subtitle = "كما في الكتاب، بلا ترتيب الأبيات", icon = AtharIcons.Books,
+                            onClick = { moreOpen = false; onOpenReader() })
+                    }
+                },
             )
 
             Box(modifier = Modifier.fillMaxWidth().weight(1f)) {
@@ -190,6 +235,17 @@ fun PoemReaderScreen(
                         modifier = Modifier.fillMaxSize(),
                         contentPadding = PaddingValues(top = 10.dp, bottom = 30.dp),
                     ) {
+                        if (state.verses.isEmpty()) item {
+                            if (!state.bodyLoaded) {
+                                androidx.compose.foundation.layout.Box(Modifier.fillMaxWidth().padding(top = 96.dp)) {
+                                    com.atharchive.ui.components.AtharLoading("جارٍ تحميل القصيدة…", Modifier.align(Alignment.Center))
+                                }
+                            } else Column(Modifier.padding(24.dp)) {
+                                Text("لا توجد أبيات؛ افتح النص الكامل", color = colors.text)
+                                androidx.compose.material3.TextButton(onClick = onRetry) { Text("إعادة المحاولة") }
+                                androidx.compose.material3.TextButton(onClick = onOpenReader) { Text("النص الكامل") }
+                            }
+                        }
                         itemsIndexed(state.verses, key = { _, v -> v.id }) { index, verse ->
                             VerseRow(
                                 verse = verse,
@@ -259,7 +315,7 @@ fun PoemReaderScreen(
                 }
             }
 
-            track?.let { current ->
+            track?.takeIf { audioVisible }?.let { current ->
                 PoemAudioBar(
                     track = current,
                     recordings = state.recordings,
@@ -268,33 +324,25 @@ fun PoemReaderScreen(
                     speed = speed,
                     repeat = repeat,
                     colors = colors,
-                    onToggle = { playing = !playing },
-                    onSelect = {
-                        track = it
-                        position = 0
-                        playing = true
-                        followScroll = true
-                    },
-                    onSpeed = { speed = it },
-                    onRepeat = { repeat = !repeat },
+                    onToggle = onToggleAudio,
+                    onSelect = { onPlayAudio(it); followScroll = true },
+                    onSpeed = onSpeed,
+                    onRepeat = { onRepeat(!repeat) },
                 )
             }
 
             PoemBottomBar(
                 colors = colors,
-                audioOn = track != null,
+                audioOn = track != null && audioVisible,
+                hasAudio = state.recordings.isNotEmpty(),
                 panelOpen = panelMode != null,
                 onMore = { panelMode = if (panelMode != null) null else PanelMode.Sharh },
                 onAudio = {
                     if (track == null) {
-                        track = state.recordings.first()
-                        position = 0
-                        playing = true
+                        state.recordings.firstOrNull()?.let(onPlayAudio)
+                        audioVisible = true
                         followScroll = true
-                    } else {
-                        track = null
-                        playing = false
-                    }
+                    } else audioVisible = !audioVisible
                 },
                 onFont = { settingsOpen = true },
             )
@@ -354,7 +402,7 @@ private fun VerseRow(
                 if (isCurrent) colors.accent.copy(alpha = 0.10f)
                 else androidx.compose.ui.graphics.Color.Transparent,
             )
-            .padding(start = 8.dp, end = 20.dp, top = 10.dp, bottom = 10.dp)
+            .padding(horizontal = settings.margin.dp, vertical = 10.dp)
             .testTag("verse_${verse.id}"),
         verticalAlignment = Alignment.Top,
     ) {
@@ -401,12 +449,13 @@ private fun VerseRow(
  */
 @Composable
 private fun Hemistich(
-    line: String,
+    sourceLine: String,
     state: PoemReaderUiState,
     colors: ReaderColors,
     settings: ReaderSettings,
     align: TextAlign,
 ) {
+    val line = if (settings.showTashkeel) sourceLine else com.atharchive.feature.reader.SelectionText(sourceLine, false).text
     val spans = remember(line, state) {
         val out = mutableListOf<WordSpan>()
         var index = 0
@@ -610,6 +659,7 @@ private fun PoemTopBar(
     onBack: () -> Unit,
     onSearch: () -> Unit,
     onMore: () -> Unit,
+    menu: @Composable () -> Unit = {},
 ) {
     Column {
         Row(
@@ -640,7 +690,10 @@ private fun PoemTopBar(
                 )
             }
             BarIcon(AtharIcons.Search, "البحث في القصيدة", colors, "poem_search", onSearch)
-            BarIcon(AtharIcons.More, "المزيد", colors, "poem_more", onMore)
+            Box {
+                BarIcon(AtharIcons.More, "المزيد", colors, "poem_more", onMore)
+                menu()
+            }
         }
         HorizontalDivider(thickness = 0.7.dp, color = colors.divider)
     }
@@ -656,13 +709,13 @@ private fun BarIcon(
 ) {
     Box(
         modifier = Modifier
-            .size(40.dp)
+            .size(48.dp)
             .clip(CircleShape)
             .clickable(role = Role.Button, onClick = onClick)
             .testTag(tag),
         contentAlignment = Alignment.Center,
     ) {
-        Icon(icon, contentDescription = label, tint = colors.secondary, modifier = Modifier.size(18.dp))
+        Icon(icon, contentDescription = label, tint = colors.secondary, modifier = Modifier.size(24.dp))
     }
 }
 
@@ -670,6 +723,7 @@ private fun BarIcon(
 private fun PoemBottomBar(
     colors: ReaderColors,
     audioOn: Boolean,
+    hasAudio: Boolean,
     panelOpen: Boolean,
     onMore: () -> Unit,
     onAudio: () -> Unit,
@@ -682,7 +736,7 @@ private fun PoemBottomBar(
             verticalAlignment = Alignment.CenterVertically,
         ) {
             ControlSlot(AtharIcons.Sidebar, "المزيد", colors, panelOpen, Modifier.weight(1f), "poem_ctl_more", onMore)
-            ControlSlot(AtharIcons.Audio, "الصوت", colors, audioOn, Modifier.weight(1f), "poem_ctl_audio", onAudio)
+            if (hasAudio) ControlSlot(AtharIcons.Audio, "الصوت", colors, audioOn, Modifier.weight(1f), "poem_ctl_audio", onAudio)
             Box(
                 modifier = Modifier
                     .weight(1f)
@@ -692,7 +746,7 @@ private fun PoemBottomBar(
                 contentAlignment = Alignment.Center,
             ) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    Text("Aa", color = colors.secondary, fontWeight = FontWeight.SemiBold, fontSize = 17.sp)
+                    Text("Aa", color = colors.secondary, fontWeight = FontWeight.SemiBold, fontSize = 20.sp)
                     Text("الخط", color = colors.secondary, style = MaterialTheme.typography.labelSmall)
                 }
             }
@@ -719,7 +773,7 @@ private fun ControlSlot(
         contentAlignment = Alignment.Center,
     ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            Icon(icon, null, tint = tint, modifier = Modifier.size(20.dp))
+            Icon(icon, null, tint = tint, modifier = Modifier.size(26.dp))
             Text(label, color = tint, style = MaterialTheme.typography.labelSmall)
         }
     }

@@ -24,6 +24,9 @@ import com.atharchive.core.data.repository.OfflineContentRebuilder
 import com.atharchive.core.data.repository.PersonalLibraryRepository
 import com.atharchive.core.data.repository.RetainedPackageStore
 import com.atharchive.core.data.db.content.ContentGenerationEntity
+import com.atharchive.core.data.archive.UserDataArchive
+import com.atharchive.core.data.db.user.LibraryEntryEntity
+import java.io.ByteArrayInputStream
 import java.io.File
 import java.io.ByteArrayOutputStream
 import java.util.zip.GZIPOutputStream
@@ -64,11 +67,31 @@ class ContentDatabaseImportTest {
     }
 
     @Test
+    fun malformedArchiveRollsBackEarlierRecordsAndPreservesLocalData() = runBlocking {
+        val dao = user.userDataDao()
+        dao.saveLibraryEntry(LibraryEntryEntity("existing", "reading", 1, 1))
+        val bytes = ByteArrayOutputStream()
+        UserDataArchive(user).exportTo(bytes)
+        dao.saveLibraryEntry(LibraryEntryEntity("existing", "finished", 2, 2))
+        val archive = bytes.toString("UTF-8")
+            .replace("\"updatedAt\":1", "\"updatedAt\":3") + "{broken record}\n"
+        var failed = false
+        try {
+            UserDataArchive(user).importFrom(ByteArrayInputStream(archive.toByteArray()))
+        } catch (_: IllegalArgumentException) {
+            failed = true
+        }
+        assertTrue("malformed archive must fail", failed)
+        assertEquals("finished", dao.libraryEntry("existing")?.status)
+        assertEquals(2L, dao.libraryEntry("existing")?.updatedAt)
+    }
+
+    @Test
     fun verifiedFrameCommitsBlocksAndAvailabilityAtomically() = runBlocking {
         val bytes = gzip(
             """{"t":"header","schema":2,"coll":"book","id":"test-book","v":1,"blocks":2,"chapters":[{"a":"main","title":"المقدمة","block":0}],"footnotes":0}""",
             """{"t":"h2","a":"main","i":0,"id":"00000000000000000000000000000001","fp":"0000000000000001","x":"المقدمة"}""",
-            """{"t":"p","a":"main","i":1,"id":"00000000000000000000000000000002","fp":"0000000000000002","x":"الحمد لله رب العالمين"}""",
+            """{"t":"h3","ha":"subheading","a":"main","i":1,"id":"00000000000000000000000000000002","fp":"0000000000000002","x":"الحمد لله رب العالمين"}""",
         )
         val entry = entry(bytes.size.toLong())
         val importer = ContentImporter(content) { 1234L }
@@ -79,6 +102,8 @@ class ContentDatabaseImportTest {
 
         assertEquals(ContentAvailability.COMPLETE, result.availability)
         assertEquals(listOf("المقدمة", "الحمد لله رب العالمين"), content.importDao().blocks(entry.id).map { it.text })
+        assertEquals(0, content.importDao().headingAnchorOrdinal(entry.id, "main"))
+        assertEquals(1, content.importDao().headingAnchorOrdinal(entry.id, "subheading"))
         assertEquals(1, content.importDao().frames(entry.id).size)
         assertEquals(ContentAvailability.COMPLETE, content.importDao().entity(entry.id)?.availability)
     }

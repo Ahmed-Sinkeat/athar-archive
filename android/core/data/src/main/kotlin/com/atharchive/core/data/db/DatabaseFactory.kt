@@ -23,7 +23,13 @@ object AtharDatabases {
         Room.databaseBuilder<AtharContentDatabase>(context.applicationContext, CONTENT_DATABASE_NAME)
             .setDriver(BundledSQLiteDriver())
             .setQueryCoroutineContext(Dispatchers.IO)
-            .setSingleConnectionPool()
+            // Room's default pool: WAL, several readers beside the one writer, so a download's
+            // import no longer queues every page read behind it. (Writes still go one at a time.)
+            .addMigrations(object : androidx.room3.migration.Migration(1, 2) {
+                override suspend fun migrate(connection: androidx.sqlite.SQLiteConnection) {
+                    connection.prepare("ALTER TABLE entity ADD COLUMN verseCount INTEGER").use { it.step() }
+                }
+            })
             .addCallback(ContentSearchSchema.callback)
             .fallbackToDestructiveMigration(true)
             .build()

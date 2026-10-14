@@ -23,6 +23,11 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import com.atharchive.core.ArNormalize
+import com.atharchive.feature.downloads.TransferUi
+import androidx.compose.ui.input.nestedscroll.nestedScroll
+import com.atharchive.ui.components.AtharCollapsible
+import com.atharchive.ui.components.rememberAtharCollapsingHeader
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -43,6 +48,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.atharchive.ui.components.AtharBookmarkButton
+import com.atharchive.ui.components.AtharDownloadButton
 import com.atharchive.ui.components.AtharEmptyState
 import com.atharchive.ui.components.AtharMenuButton
 import com.atharchive.ui.components.AtharSearchField
@@ -63,7 +69,6 @@ fun IssuesScreen(
     onSaveClick: (IssueUi) -> Unit,
     onDownloadClick: (IssueUi) -> Unit,
     modifier: Modifier = Modifier,
-    onLogo: (() -> Unit)? = null,
     onBack: (() -> Unit)? = null,
 ) {
     var selectedTab by rememberSaveable { mutableStateOf(IssuesTab.All) }
@@ -82,19 +87,18 @@ fun IssuesScreen(
             val matchesTab = when (selectedTab) {
                 IssuesTab.All -> true
                 IssuesTab.Downloaded -> issue.downloaded
-                IssuesTab.MyList -> issue.saved
             }
-            val term = query.trim()
+            val term = ArNormalize.normalize(query.trim())
             val matchesQuery = term.isBlank() ||
-                issue.question.contains(term, ignoreCase = true) ||
-                issue.scholar.contains(term, ignoreCase = true) ||
-                issue.answerExcerpt.contains(term, ignoreCase = true)
+                ArNormalize.normalize(issue.question).contains(term, ignoreCase = true) ||
+                ArNormalize.normalize(issue.scholar).contains(term, ignoreCase = true) ||
+                ArNormalize.normalize(issue.answerExcerpt).contains(term, ignoreCase = true)
             matchesTab && matchesQuery && (topic == AllTopics || issue.topic == topic)
         }.sortedWith(
             when (sort) {
                 IssueSort.Question -> compareBy { it.question }
                 IssueSort.Scholar -> compareBy { it.scholar }
-                IssueSort.Newest -> compareBy { state.issues.indexOf(it) }
+                IssueSort.Newest -> compareBy { it.question }
             },
         )
     }
@@ -113,32 +117,23 @@ fun IssuesScreen(
                 title = "المسائل",
                 onSettings = onSettings,
                 showAppIcon = true,
-                onLogo = onLogo,
                 onBack = onBack,
                 horizontalPadding = horizontalPadding,
             )
-            LazyColumn(
-                state = listState,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .weight(1f)
-                    .testTag("issues_screen"),
-                contentPadding = PaddingValues(bottom = 28.dp),
-            ) {
-                item(key = "issues-search") {
-                    AtharSearchField(
-                        query = query,
-                        placeholder = "ابحث في ${state.countLabel}…",
-                        onQueryChange = { query = it },
-                        tagPrefix = "issues",
-                        modifier = Modifier.padding(
-                            start = horizontalPadding,
-                            end = horizontalPadding,
-                            top = 4.dp,
-                        ),
-                    )
-                }
-                item(key = "issues-tabs") {
+            val header = rememberAtharCollapsingHeader()
+            AtharSearchField(
+                query = query,
+                placeholder = "ابحث في ${state.countLabel}…",
+                onQueryChange = { query = it },
+                tagPrefix = "issues",
+                modifier = Modifier.padding(
+                    start = horizontalPadding,
+                    end = horizontalPadding,
+                    top = 4.dp,
+                ),
+            )
+            AtharCollapsible(header) {
+                Column {
                     AtharTabRow(
                         tabs = IssuesTab.tabs,
                         selectedKey = selectedTab.key,
@@ -146,8 +141,6 @@ fun IssuesScreen(
                         tagPrefix = "issues",
                         modifier = Modifier.padding(horizontal = horizontalPadding),
                     )
-                }
-                item(key = "issues-menus") {
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -173,8 +166,6 @@ fun IssuesScreen(
                             tagPrefix = "issues_sort",
                         )
                     }
-                }
-                item(key = "issues-list-divider") {
                     HorizontalDivider(
                         modifier = Modifier.padding(
                             horizontal = horizontalPadding,
@@ -184,6 +175,16 @@ fun IssuesScreen(
                         color = AtharTheme.colors.divider.copy(alpha = 0.5f),
                     )
                 }
+            }
+            LazyColumn(
+                state = listState,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .weight(1f)
+                    .nestedScroll(header.connection)
+                .testTag("issues_screen"),
+                contentPadding = PaddingValues(bottom = 28.dp),
+            ) {
 
                 if (visible.isEmpty()) {
                     item(key = "issues-empty") {
@@ -194,8 +195,6 @@ fun IssuesScreen(
                                 "لا توجد مسائل بهذه التصفية" to "اختر «كل المواضيع» لعرض مزيد من المسائل."
                             selectedTab == IssuesTab.Downloaded ->
                                 "لا توجد مسائل محمّلة" to "نزّل مسألة لتقرأها دون اتصال."
-                            selectedTab == IssuesTab.MyList ->
-                                "قائمتك فارغة" to "ستظهر هنا المسائل المحفوظة في قائمتك."
                             else ->
                                 "لا توجد مسائل" to "لم تتوفر مسائل في هذا القسم بعد."
                         }
@@ -294,16 +293,9 @@ private fun IssueRow(
                 horizontalArrangement = Arrangement.spacedBy(5.dp),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
-                val factColor = AtharTheme.colors.secondaryText.copy(alpha = 0.72f)
+                val factColor = AtharTheme.colors.secondaryText
                 Text(
                     text = issue.topic,
-                    color = factColor,
-                    style = MaterialTheme.typography.labelSmall,
-                    maxLines = 1,
-                )
-                Text("·", color = factColor, style = MaterialTheme.typography.labelSmall)
-                Text(
-                    text = issue.sizeLabel,
                     color = factColor,
                     style = MaterialTheme.typography.labelSmall,
                     maxLines = 1,
@@ -318,31 +310,13 @@ private fun IssueRow(
             itemTitle = issue.question,
             tag = "issue_save_${issue.id}",
         )
-        Box(
-            modifier = Modifier
-                .size(40.dp)
-                .clip(CircleShape)
-                .clickable(role = Role.Button, onClick = onDownload)
-                .semantics {
-                    contentDescription = if (issue.downloaded) {
-                        "${issue.question} محمّلة، الحجم ${issue.sizeLabel}"
-                    } else {
-                        "تنزيل ${issue.question}، الحجم ${issue.sizeLabel}"
-                    }
-                }
-                .testTag("issue_download_${issue.id}"),
-            contentAlignment = Alignment.Center,
-        ) {
-            Icon(
-                imageVector = if (issue.downloaded) AtharIcons.Check else AtharIcons.Download,
-                contentDescription = null,
-                tint = if (issue.downloaded) {
-                    AtharTheme.colors.success
-                } else {
-                    AtharTheme.colors.secondaryText
-                },
-                modifier = Modifier.size(19.dp),
-            )
-        }
+        AtharDownloadButton(
+            title = issue.question,
+            sizeLabel = issue.sizeLabel,
+            downloaded = issue.downloaded,
+            transfer = issue.transfer,
+            onClick = onDownload,
+            tag = "issue_download_${issue.id}",
+        )
     }
 }

@@ -132,7 +132,7 @@ fun downloadsUiState(
                         title = book.title,
                         kindLabel = book.kind,
                         sizeLabel = state.sizeLabel,
-                        transfer = TransferUi.Running(state.progress, state.progressLabel),
+                        transfer = state.transfer,
                     ),
                 )
             }

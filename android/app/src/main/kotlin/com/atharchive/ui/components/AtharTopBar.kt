@@ -1,5 +1,8 @@
 package com.atharchive.ui.components
 
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.shape.CircleShape
@@ -34,6 +37,15 @@ import com.atharchive.ui.icons.AtharMark
 import com.atharchive.ui.theme.AtharEditorialFontFamily
 import com.atharchive.ui.theme.AtharTheme
 
+/** One row of the app's ⋮ menu. */
+data class AtharAppMenuEntry(val label: String, val icon: ImageVector, val onClick: () -> Unit)
+
+/**
+ * The app-wide ⋮ menu — محفوظاتي, المقالات, المسائل, التنزيلات, الإعدادات. Provided once by
+ * the app shell so every root screen shows the same menu without threading it through.
+ */
+val LocalAtharAppMenu = androidx.compose.runtime.staticCompositionLocalOf<List<AtharAppMenuEntry>> { emptyList() }
+
 @Composable
 fun AtharTopBar(
     title: String,
@@ -42,7 +54,6 @@ fun AtharTopBar(
     showAppIcon: Boolean = false,
     horizontalPadding: androidx.compose.ui.unit.Dp = 20.dp,
     onBack: (() -> Unit)? = null,
-    onLogo: (() -> Unit)? = null,
     actionIcon: ImageVector? = null,
     actionLabel: String? = null,
     onAction: (() -> Unit)? = null,
@@ -79,22 +90,13 @@ fun AtharTopBar(
                 )
             }
         } else {
-            val logoModifier = if (onLogo != null) {
-                Modifier
-                    .size(48.dp)
-                    .clip(CircleShape)
-                    .clickable(role = Role.Button, onClick = onLogo)
-            } else {
-                Modifier.size(48.dp)
-            }
+            // Branding only. It used to open الأقسام, which hid articles and fatwas behind an
+            // unmarked logo; they now sit in the ⋮ menu.
             Box(
-                modifier = logoModifier.testTag("athar_app_icon"),
+                modifier = Modifier.size(48.dp).testTag("athar_app_icon"),
                 contentAlignment = Alignment.Center,
             ) {
-                AtharMark(
-                    modifier = Modifier.size(30.dp),
-                    contentDescription = if (onLogo != null) "الأقسام" else null,
-                )
+                AtharMark(modifier = Modifier.size(30.dp), contentDescription = null)
             }
         }
         Box(
@@ -132,7 +134,31 @@ fun AtharTopBar(
                 )
             }
         }
-        if (onBack == null) {
+        val appMenu = LocalAtharAppMenu.current
+        if (onBack == null && appMenu.isNotEmpty()) {
+            var open by androidx.compose.runtime.saveable.rememberSaveable { androidx.compose.runtime.mutableStateOf(false) }
+            Box {
+                IconButton(
+                    onClick = { open = true },
+                    modifier = Modifier
+                        .size(48.dp)
+                        .testTag("settings_action"),
+                ) {
+                    Icon(
+                        imageVector = AtharIcons.More,
+                        contentDescription = "القائمة",
+                        modifier = Modifier.size(22.dp),
+                        tint = MaterialTheme.colorScheme.onBackground,
+                    )
+                }
+                AtharMenu(expanded = open, onDismiss = { open = false }, width = 220.dp, modifier = Modifier.testTag("app_menu")) {
+                    appMenu.forEachIndexed { index, entry ->
+                        if (index == appMenu.lastIndex) AtharMenuDivider()
+                        AtharMenuItem(entry.label, icon = entry.icon, onClick = { open = false; entry.onClick() })
+                    }
+                }
+            }
+        } else if (onBack == null) {
             IconButton(
                 onClick = onSettings,
                 modifier = Modifier

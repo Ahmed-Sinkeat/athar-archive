@@ -8,12 +8,14 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.content.pm.ServiceInfo
 import android.os.Build
 import androidx.core.content.ContextCompat
 import androidx.work.BackoffPolicy
 import androidx.work.Constraints
 import androidx.work.CoroutineWorker
 import androidx.work.ExistingWorkPolicy
+import androidx.work.ForegroundInfo
 import androidx.work.NetworkType
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
@@ -49,30 +51,56 @@ class ContentDownloadWorker(
     appContext: Context,
     parameters: WorkerParameters,
 ) : CoroutineWorker(appContext, parameters) {
+    override suspend fun getForegroundInfo(): ForegroundInfo = foregroundInfo(-1)
+
+    private fun foregroundInfo(percent: Int): ForegroundInfo {
+        ContentDownloadNotifications.createChannel(applicationContext)
+        val openApp = PendingIntent.getActivity(applicationContext, 0, Intent(applicationContext, MainActivity::class.java),
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
+        val notification = Notification.Builder(applicationContext, "content_downloads")
+            .setSmallIcon(R.drawable.ic_notification).setContentTitle("جارٍ تنزيل المحتوى")
+            .setContentText("يمكنك إيقاف التنزيل أو إلغاؤه من صفحة التنزيلات")
+            .setContentIntent(openApp).setOngoing(true).setOnlyAlertOnce(true)
+            .setProgress(100, percent.coerceAtLeast(0), percent < 0).build()
+        return if (Build.VERSION.SDK_INT >= 29) ForegroundInfo(id.hashCode(), notification, ServiceInfo.FOREGROUND_SERVICE_TYPE_DATA_SYNC)
+        else ForegroundInfo(id.hashCode(), notification)
+    }
+
     override suspend fun doWork(): Result {
         val entityId = inputData.getString(EntityIdKey) ?: return Result.failure()
         val content = EntryPoints.get(
             applicationContext,
             ContentWorkerEntryPoint::class.java,
         ).contentAccess()
-        if (!content.isPinned(entityId)) return Result.success()
+        val isAudio = inputData.getString(CollectionKey) == "audio"
+        val pauseKey = if (isAudio) "audio:$entityId" else entityId
+        if (pauseKey in content.pausedDownloads.value) return Result.success()
+        if (isAudio) {
+            if (entityId !in content.requestedAudio.value) return Result.success()
+        } else if (!content.isPinned(entityId)) return Result.success()
 
         return try {
+            // The notification is a courtesy, never a gate: with the permission denied, or the
+            // app briefly backgrounded by the permission dialog, promoting to foreground can
+            // throw. The transfer must run regardless.
+            // ponytail: unpromoted work may be stopped by the system in the background;
+            // WorkManager retries it (backoff), so the download still completes.
+            try { setForeground(getForegroundInfo()) }
+            catch (cancelled: CancellationException) { throw cancelled }
+            catch (_: Exception) { }
             var lastProgressPercent = -1
-            content.runDownload(entityId) { downloaded, total ->
-                val progressPercent = if (total <= 0) 0 else (downloaded * 100 / total).toInt()
-                if (progressPercent == lastProgressPercent) return@runDownload
-                lastProgressPercent = progressPercent
-                setProgressAsync(
-                    workDataOf(
-                        DownloadedBytesKey to downloaded,
-                        TotalBytesKey to total,
-                    ),
-                )
+            val progress: (Long, Long) -> Unit = { downloaded, total ->
+                val percent = if (total <= 0) 0 else (downloaded * 100 / total).toInt()
+                if (percent != lastProgressPercent) {
+                    lastProgressPercent = percent
+                    setProgressAsync(workDataOf(DownloadedBytesKey to downloaded, TotalBytesKey to total))
+                    runCatching { setForegroundAsync(foregroundInfo(percent)) }
+                }
             }
+            if (isAudio) content.runAudioDownload(entityId, progress) else content.runDownload(entityId, progress)
             ContentDownloadNotifications.completed(
                 applicationContext,
-                entityId,
+                if (isAudio) "audio:$entityId" else entityId,
                 content.entityTitle(entityId),
             )
             Result.success()
@@ -104,7 +132,9 @@ class ContentDownloadWorker(
 class ContentDownloadScheduler @Inject constructor(
     private val workManager: WorkManager,
 ) {
-    fun enqueue(entityId: String, collection: String) {
+    val workInfos = workManager.getWorkInfosByTagFlow(ContentTag)
+
+    fun enqueue(entityId: String, collection: String, replace: Boolean = false) {
         val identity = "content:$collection:$entityId"
         val request = OneTimeWorkRequestBuilder<ContentDownloadWorker>()
             .setInputData(
@@ -118,11 +148,13 @@ class ContentDownloadScheduler @Inject constructor(
             .addTag(ContentTag)
             .addTag(identity)
             .build()
-        workManager.enqueueUniqueWork(identity, ExistingWorkPolicy.KEEP, request)
+        workManager.enqueueUniqueWork(identity, if (replace) ExistingWorkPolicy.REPLACE else ExistingWorkPolicy.KEEP, request)
     }
 
-    fun cancel(entityId: String, collection: String) {
-        workManager.cancelUniqueWork("content:$collection:$entityId")
+    suspend fun cancel(entityId: String, collection: String) {
+        kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) {
+            workManager.cancelUniqueWork("content:$collection:$entityId").result.get()
+        }
     }
 }
 
@@ -154,10 +186,12 @@ object ContentDownloadNotifications {
         val manager = context.getSystemService(NotificationManager::class.java)
         val launchIntent = Intent(context, MainActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+            data = android.net.Uri.parse("athar://download/${android.net.Uri.encode(entityId)}")
+            putExtra("athar_download", entityId)
         }
         val pendingIntent = PendingIntent.getActivity(
             context,
-            0,
+            entityId.hashCode(),
             launchIntent,
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE,
         )

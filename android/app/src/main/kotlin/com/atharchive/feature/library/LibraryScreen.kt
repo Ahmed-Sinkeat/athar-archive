@@ -1,5 +1,8 @@
 package com.atharchive.feature.library
 
+import androidx.compose.foundation.layout.Spacer
+import com.atharchive.ui.components.AtharTabRow
+import com.atharchive.ui.components.AtharTab
 import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -51,13 +54,14 @@ fun LibraryScreen(
     onBack: () -> Unit,
     onOpenWork: (LibraryWorkUi) -> Unit,
     onStatusChange: (LibraryWorkUi, LibraryShelf?) -> Unit,
+    onPlayCollection: (LibraryCollectionUi) -> Unit = {},
     onCreateCollection: (String) -> Unit,
     onDeleteCollection: (LibraryCollectionUi) -> Unit,
     onAddToCollection: (LibraryWorkUi, LibraryCollectionUi) -> Unit,
     onRemoveFromCollection: (LibraryWorkUi, LibraryCollectionUi) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    var shelf by rememberSaveable { mutableStateOf(LibraryShelf.Continue) }
+    var shelf by rememberSaveable { mutableStateOf(LibraryShelf.ReadLater) }
     var collectionId by rememberSaveable { mutableStateOf<String?>(null) }
     var creatingCollection by rememberSaveable { mutableStateOf(false) }
     val collection = state.collections.firstOrNull { it.id == collectionId }
@@ -72,7 +76,7 @@ fun LibraryScreen(
         val horizontalPadding = if (maxWidth >= 720.dp) 32.dp else 20.dp
         Column(Modifier.fillMaxSize()) {
             AtharTopBar(
-                title = "مكتبتي",
+                title = "محفوظاتي",
                 onSettings = {},
                 showAppIcon = true,
                 onBack = onBack,
@@ -85,77 +89,62 @@ fun LibraryScreen(
                 modifier = Modifier.fillMaxSize(),
                 contentPadding = PaddingValues(bottom = 28.dp),
             ) {
+                // Shelves are tabs like every other section; a selected collection replaces them
+                // with its own name. The old shelf menu repeated itself as a heading below.
                 item("library-controls") {
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(horizontal = horizontalPadding - 4.dp, vertical = 6.dp),
-                        horizontalArrangement = Arrangement.spacedBy(12.dp),
-                    ) {
-                        AtharMenuButton(
-                            label = "الرف",
-                            options = LibraryShelf.entries.map { it.label },
-                            selected = if (collection == null) shelf.label else "الرف",
-                            defaultOption = "الرف",
-                            onSelect = { label ->
-                                shelf = LibraryShelf.entries.first { it.label == label }
-                                collectionId = null
-                            },
+                    if (collection == null) {
+                        AtharTabRow(
+                            tabs = LibraryTabs.map { AtharTab(it.key, it.label) },
+                            selectedKey = shelf.key,
+                            onSelect = { key -> shelf = LibraryShelf.entries.first { it.key == key } },
                             tagPrefix = "library_shelf",
+                            modifier = Modifier.padding(horizontal = horizontalPadding - 4.dp),
                         )
-                        if (state.collections.isNotEmpty()) {
-                            AtharMenuButton(
-                                label = "المجموعة",
-                                options = state.collections.map { it.title },
-                                selected = collection?.title ?: "المجموعة",
-                                defaultOption = "المجموعة",
-                                onSelect = { title ->
-                                    collectionId = state.collections.first { it.title == title }.id
-                                },
-                                tagPrefix = "library_collection",
-                            )
-                        }
                     }
-                }
-                item("library-heading") {
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(horizontal = horizontalPadding, vertical = 8.dp),
+                            .padding(horizontal = horizontalPadding, vertical = 6.dp),
                         verticalAlignment = Alignment.CenterVertically,
                     ) {
-                        Text(
-                            text = collection?.title ?: shelf.label,
+                        if (collection != null) Text(
+                            text = collection.title,
                             modifier = Modifier.weight(1f),
                             fontFamily = AtharEditorialFontFamily,
                             fontWeight = FontWeight.Bold,
                             fontSize = 18.sp,
-                        )
-                        Text(
-                            text = arabicDigits(visible.size),
-                            color = AtharTheme.colors.secondaryText,
-                            style = MaterialTheme.typography.bodySmall,
-                        )
+                        ) else Spacer(Modifier.weight(1f))
+                        if (state.collections.isNotEmpty()) {
+                            AtharMenuButton(
+                                label = "المجموعات",
+                                options = state.collections.map { it.title },
+                                selected = collection?.title ?: "المجموعات",
+                                defaultOption = "المجموعات",
+                                onSelect = {},
+                                onSelectIndex = { collectionId = state.collections[it].id },
+                                tagPrefix = "library_collection",
+                            )
+                        }
                         if (collection != null) {
+                            if (visible.any { it.collection == "audio" }) {
+                                TextButton(onClick = { onPlayCollection(collection) }) { Text("تشغيل الكل") }
+                            }
+                            TextButton(onClick = { collectionId = null }) { Text("رجوع للرفوف") }
                             TextButton(
                                 onClick = {
                                     onDeleteCollection(collection)
                                     collectionId = null
                                 },
-                            ) { Text("حذف") }
+                            ) { Text("حذف", color = AtharTheme.colors.accent) }
                         }
                     }
-                    HorizontalDivider(
-                        modifier = Modifier.padding(horizontal = horizontalPadding),
-                        color = AtharTheme.colors.divider.copy(alpha = 0.5f),
-                    )
                 }
                 if (visible.isEmpty()) {
                     item("library-empty") {
                         AtharEmptyState(
-                            title = "هذا الرف فارغ",
+                            title = "لا شيء هنا بعد",
                             body = if (collection == null) {
-                                "غيّر حالة عمل من مكتبته ليظهر هنا."
+                                "اضغط علامة الحفظ على أي كتاب أو قصيدة أو مقال ليظهر في محفوظاتي."
                             } else {
                                 "أضف عملًا إلى هذه المجموعة من أحد الرفوف."
                             },
@@ -280,7 +269,8 @@ private fun LibraryWorkRow(
                     options = available.map { it.title },
                     selected = "أضف إلى مجموعة",
                     defaultOption = "أضف إلى مجموعة",
-                    onSelect = { title -> onAddToCollection(available.first { it.title == title }) },
+                    onSelect = {},
+                    onSelectIndex = { onAddToCollection(available[it]) },
                     tagPrefix = "library_add_${work.id}",
                 )
             }
@@ -318,3 +308,6 @@ private fun CreateCollectionDialog(onDismiss: () -> Unit, onCreate: (String) -> 
 }
 
 private fun arabicDigits(value: Int): String = value.toString().map { "٠١٢٣٤٥٦٧٨٩"[it - '0'] }.joinToString("")
+
+/** The shelves a reader picks between. المحمّلة and الأخيرة live on each section's own tabs. */
+private val LibraryTabs = listOf(LibraryShelf.ReadLater, LibraryShelf.Continue, LibraryShelf.Reading, LibraryShelf.Finished)

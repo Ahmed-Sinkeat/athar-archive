@@ -201,7 +201,7 @@ fun AtharBottomBar(
                         targetValue = if (selected) {
                             AtharTheme.colors.accent
                         } else {
-                            AtharTheme.colors.secondaryText.copy(alpha = 0.85f)
+                            AtharTheme.colors.secondaryText
                         },
                         animationSpec = tween(180),
                         label = "bottom_bar_tint",

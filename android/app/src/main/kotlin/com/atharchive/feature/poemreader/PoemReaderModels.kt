@@ -26,6 +26,7 @@ data class VerseUi(
     val ajz: String,
     /** Absent for most verses; its presence is what draws the margin indicator. */
     val commentary: List<CommentaryUi> = emptyList(),
+    val ordinal: Int = number - 1,
 )
 
 /** One commentator's explanation. Several may exist for the same verse. */
@@ -52,7 +53,7 @@ data class PoemAudioUi(
 )
 
 /** `{v, t}` from `src/content/poem-timing`, unchanged. */
-data class VerseCue(val verseNumber: Int, val atSeconds: Int)
+data class VerseCue(val verseNumber: Int, val atSeconds: Double)
 
 data class PoemReaderUiState(
     val title: String,
@@ -61,6 +62,8 @@ data class PoemReaderUiState(
     val recordings: List<PoemAudioUi>,
     /** Keyed by word with the harakat removed; see [meaningOf]. */
     val glossary: Map<String, String> = emptyMap(),
+    val readingOrdinal: Int = 0,
+    val bodyLoaded: Boolean = true,
 ) {
     /** null → the word is not tappable. No popover ever opens empty. */
     fun meaningOf(word: String): String? = glossary[stripHarakat(word)]
@@ -162,8 +165,8 @@ val PoemReaderFixture = PoemReaderUiState(
             // Spaced for review: a verse advances every ~10s so the follow can be seen
             // without waiting a minute. Real cues come from src/content/poem-timing.
             cues = listOf(
-                VerseCue(1, 2), VerseCue(2, 12), VerseCue(3, 22),
-                VerseCue(4, 32), VerseCue(5, 42), VerseCue(6, 52),
+                VerseCue(1, 2.0), VerseCue(2, 12.0), VerseCue(3, 22.0),
+                VerseCue(4, 32.0), VerseCue(5, 42.0), VerseCue(6, 52.0),
             ),
         ),
         PoemAudioUi(

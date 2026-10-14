@@ -54,6 +54,38 @@ class AppContentHttpClientTest {
     }
 
     @Test
+    fun cancellationClosesAStalledResponseBody() = runBlocking {
+        val bytes = "compressed-frame".encodeToByteArray()
+        val frame = FrameIndexEntry(0, bytes.size, 0, 1, ContentDigests.sha256Hex(bytes))
+        server.enqueue(MockResponse().setResponseCode(206)
+            .setHeader("Content-Range", "bytes 0-${bytes.lastIndex}/${bytes.size}")
+            .setBody(Buffer().write(bytes)).setBodyDelay(4, java.util.concurrent.TimeUnit.SECONDS))
+        val started = System.nanoTime()
+        val completed = kotlinx.coroutines.withTimeoutOrNull(500) { client.fetchFrame(entry(packageSize = bytes.size.toLong()), frame) }
+        org.junit.Assert.assertNull(completed)
+        org.junit.Assert.assertTrue("cancellation waited for the network timeout", (System.nanoTime() - started) / 1_000_000 < 2_000)
+    }
+
+    @Test
+    fun audioArtifactsResumeAndRejectEncodedTraversal() = runBlocking {
+        for (path in listOf("audio/%2e%2e/%2e%2e/index.json", "audio/file.opus?redirect=1", "audio/file.opus#fragment")) {
+            assertThrows(ContentIntegrityException::class.java) { client.artifactUrl(path) }
+        }
+        val bytes = "authenticated opus bytes".toByteArray()
+        val directory = Files.createTempDirectory("athar-audio").toFile()
+        val part = directory.resolve("audio.part")
+        try {
+            part.writeBytes(bytes.take(5).toByteArray())
+            server.enqueue(MockResponse().setResponseCode(206)
+                .setHeader("Content-Range", "bytes 5-${bytes.lastIndex}/${bytes.size}")
+                .setBody(Buffer().write(bytes.copyOfRange(5, bytes.size))))
+            client.downloadArtifact("audio/recording/hash.opus", ContentDigests.sha256Hex(bytes), bytes.size.toLong(), part)
+            assertArrayEquals(bytes, part.readBytes())
+            assertEquals("/app/v2/audio/recording/hash.opus", server.takeRequest().path)
+        } finally { directory.deleteRecursively() }
+    }
+
+    @Test
     fun requestsAndVerifiesTheExactCompressedFrameRange() = runBlocking {
         val bytes = "compressed-frame".encodeToByteArray()
         val frame = FrameIndexEntry(10, bytes.size, 2_000, 25, ContentDigests.sha256Hex(bytes))

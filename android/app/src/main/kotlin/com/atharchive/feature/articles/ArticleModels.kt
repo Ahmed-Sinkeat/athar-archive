@@ -14,7 +14,6 @@ import com.atharchive.ui.components.AtharTab
 enum class ArticlesTab(val key: String, val label: String) {
     All("all", "الكل"),
     Downloaded("downloaded", "المحمّلة"),
-    MyList("mylist", "قائمتي"),
     ;
 
     companion object {
@@ -24,7 +23,7 @@ enum class ArticlesTab(val key: String, val label: String) {
 }
 
 enum class ArticleSort(val label: String) {
-    Newest("الأحدث"),
+    Newest("ترتيب الفهرس"),
     Title("العنوان أ–ي"),
     Author("المؤلف"),
 }
@@ -40,6 +39,8 @@ data class ArticleUi(
     val downloaded: Boolean = false,
     val downloading: Boolean = false,
     val saved: Boolean = false,
+    val transfer: com.atharchive.feature.downloads.TransferUi? = null,
+    val sizeLabel: String = "",
 )
 
 data class ArticlesUiState(

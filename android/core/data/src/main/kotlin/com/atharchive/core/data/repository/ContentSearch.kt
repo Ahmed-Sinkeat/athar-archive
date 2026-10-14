@@ -176,7 +176,7 @@ object ContentSearchSchema {
 }
 
 enum class ContentSearchField { FullText, Title, Author, Topic }
-enum class ContentSearchSort { Relevance, Newest }
+enum class ContentSearchSort { Relevance, Newest, BookOrder }
 
 data class ContentSearchFilter(
     val collections: Set<String> = emptySet(),
@@ -195,6 +195,7 @@ data class ContentSearchRequest(
     val field: ContentSearchField = ContentSearchField.FullText,
     val sort: ContentSearchSort = ContentSearchSort.Relevance,
     val filter: ContentSearchFilter = ContentSearchFilter(),
+    val ordinals: IntRange? = null,
 )
 
 data class CatalogSearchHit(
@@ -230,11 +231,11 @@ data class ContentSearchResult(
 
 class ContentSearchRepository(private val database: AtharContentDatabase) {
     suspend fun search(request: ContentSearchRequest, limit: Int = 50): ContentSearchResult {
-        require(limit in 1..200)
+        require(limit >= 1)
         val plan = FtsQueryBuilder.compactPlan(request.query) ?: return ContentSearchResult(emptyList(), emptyList())
         ContentSearchSchema.ensure(database)
         return database.useReaderConnection { connection ->
-            val catalog = searchCatalog(connection, request, plan, limit.coerceAtMost(12))
+            val catalog = searchCatalog(connection, request, plan, limit)
             val blocks = if (request.field == ContentSearchField.FullText) {
                 searchBlocks(connection, request, plan, limit)
             } else {
@@ -251,11 +252,12 @@ class ContentSearchRepository(private val database: AtharContentDatabase) {
         limit: Int,
     ): List<CatalogSearchHit> {
         val filter = structuredFilter(request.filter, "e")
+        val catalogMatch = requireNotNull(FtsQueryBuilder.build(request.query))
         val scopedMatch = when (request.field) {
-            ContentSearchField.FullText -> plan.matchExpression
-            ContentSearchField.Title -> "titleNorm : (${plan.matchExpression})"
-            ContentSearchField.Author -> "personNorm : (${plan.matchExpression})"
-            ContentSearchField.Topic -> "topicsNorm : (${plan.matchExpression})"
+            ContentSearchField.FullText -> catalogMatch
+            ContentSearchField.Title -> "titleNorm : (${catalogMatch})"
+            ContentSearchField.Author -> "personNorm : (${catalogMatch})"
+            ContentSearchField.Topic -> "topicsNorm : (${catalogMatch})"
         }
         val order = if (request.sort == ContentSearchSort.Newest) {
             "e.publishedAt DESC, e.authoredYear DESC, e.id"
@@ -294,17 +296,19 @@ class ContentSearchRepository(private val database: AtharContentDatabase) {
         limit: Int,
     ): List<BlockSearchHit> {
         val filter = structuredFilter(request.filter, "e")
-        val order = if (request.sort == ContentSearchSort.Newest) {
-            "e.publishedAt DESC, e.authoredYear DESC, b.rowid"
-        } else {
-            "bm25(block_fts), b.rowid"
+        val range = request.ordinals
+        require(range == null || (range.first >= 0 && !range.isEmpty())) { "invalid search block range" }
+        val order = when (request.sort) {
+            ContentSearchSort.Newest -> "e.publishedAt DESC, e.authoredYear DESC, b.rowid"
+            ContentSearchSort.BookOrder -> "b.entityId, b.ordinal"
+            ContentSearchSort.Relevance -> "bm25(block_fts), b.rowid"
         }
         val sql = "SELECT b.rowid, b.entityId, b.ordinal, b.chapterAnchor, c.title, b.printedPage, " +
             "b.type, b.text, e.title, e.personName, e.coll " +
             "FROM block_fts JOIN block b ON b.rowid = block_fts.rowid " +
             "JOIN entity e ON e.id = b.entityId " +
             "LEFT JOIN chapter c ON c.entityId = b.entityId AND c.anchor = b.chapterAnchor " +
-            "WHERE block_fts MATCH ? AND e.catalogPresent = 1${filter.sql} " +
+            "WHERE block_fts MATCH ? AND e.catalogPresent = 1${filter.sql}${if (range == null) "" else " AND b.ordinal BETWEEN ? AND ?"} " +
             "ORDER BY $order LIMIT ? OFFSET ?"
         val result = mutableListOf<BlockSearchHit>()
         var offset = 0
@@ -315,6 +319,7 @@ class ContentSearchRepository(private val database: AtharContentDatabase) {
                 var bind = 1
                 query.bindText(bind++, plan.matchExpression)
                 bind = query.bindAll(bind, filter.values)
+                if (range != null) { query.bindLong(bind++, range.first.toLong()); query.bindLong(bind++, range.last.toLong()) }
                 query.bindLong(bind++, CandidateBatchSize.toLong())
                 query.bindLong(bind, offset.toLong())
                 while (query.step()) {

@@ -70,7 +70,6 @@ fun AdhkarScreen(
     onSave: (DhikrUi) -> Unit,
     modifier: Modifier = Modifier,
     bab: AdhkarBabUi? = null,
-    onLogo: (() -> Unit)? = null,
     onBack: (() -> Unit)? = null,
 ) {
     var selectedTab by rememberSaveable { mutableStateOf(AdhkarTab.Morning) }
@@ -109,12 +108,11 @@ fun AdhkarScreen(
                 title = bab?.label ?: "الأذكار",
                 onSettings = onSettings,
                 showAppIcon = true,
-                onLogo = onLogo,
                 onBack = onBack,
                 horizontalPadding = horizontalPadding,
-                actionIcon = if (bab == null) AtharIcons.Sidebar else null,
+                actionIcon = if (bab == null && state.babs.size > 2) AtharIcons.Sidebar else null,
                 actionLabel = "أبواب الأذكار",
-                onAction = if (bab == null) onOpenBabs else null,
+                onAction = if (bab == null && state.babs.size > 2) onOpenBabs else null,
             )
             LazyColumn(
                 state = listState,

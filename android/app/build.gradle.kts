@@ -19,6 +19,13 @@ val contentSigningKeyId = providers.gradleProperty("athar.contentSigningKeyId")
 val contentPublicKey = providers.gradleProperty("athar.contentPublicKeyDerBase64")
     .orElse(providers.environmentVariable("ATHAR_CONTENT_PUBLIC_KEY_DER_BASE64"))
 
+// The owner's upload key. Never stored in the repo; all four must be set to sign a release.
+val releaseKeystore = providers.environmentVariable("ATHAR_ANDROID_KEYSTORE").orNull
+val releaseStorePassword = providers.environmentVariable("ATHAR_ANDROID_STORE_PASSWORD").orNull
+val releaseKeyAlias = providers.environmentVariable("ATHAR_ANDROID_KEY_ALIAS").orNull
+val releaseKeyPassword = providers.environmentVariable("ATHAR_ANDROID_KEY_PASSWORD").orNull
+val releaseSigningConfigured = listOf(releaseKeystore, releaseStorePassword, releaseKeyAlias, releaseKeyPassword).all { !it.isNullOrBlank() }
+
 // Public, debug-only trust material for the M5 staging generation. The private key is not
 // stored in the repository. Release/benchmark builds remain unconfigured unless CI supplies
 // all three ATHAR_CONTENT_* values.
@@ -45,8 +52,8 @@ android {
     defaultConfig {
         applicationId = "com.atharchive"
         testApplicationId = "com.atharchive.instrumentation"
-        versionCode = 1
-        versionName = "0.1.0-m0"
+        versionCode = 2
+        versionName = "0.2.0-dev"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField("String", "ATHAR_CONTENT_BASE_URL", "".asBuildConfigString())
         buildConfigField("String", "ATHAR_CONTENT_SIGNING_KEY_ID", "".asBuildConfigString())
@@ -55,6 +62,15 @@ android {
 
     buildFeatures {
         buildConfig = true
+    }
+
+    if (releaseSigningConfigured) {
+        signingConfigs.create("production") {
+            storeFile = file(requireNotNull(releaseKeystore))
+            storePassword = releaseStorePassword
+            keyAlias = releaseKeyAlias
+            keyPassword = releaseKeyPassword
+        }
     }
 
     buildTypes {
@@ -68,6 +84,7 @@ android {
             buildConfigField("String", "ATHAR_CONTENT_PUBLIC_KEY_DER_BASE64", publicKey.asBuildConfigString())
         }
         release {
+            if (releaseSigningConfigured) signingConfig = signingConfigs.getByName("production")
             val baseUrl = contentBaseUrl.getOrElse("")
             val keyId = contentSigningKeyId.getOrElse("")
             val publicKey = contentPublicKey.getOrElse("")
@@ -99,18 +116,37 @@ dependencies {
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.lifecycle.runtime.compose)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
-    implementation(libs.paging.runtime)
-    implementation(libs.paging.compose)
     implementation(libs.hilt.android)
     implementation(libs.hilt.navigation.compose)
     implementation(libs.okhttp)
+    implementation(libs.media3.exoplayer)
+    implementation(libs.media3.session)
+    implementation(libs.androidx.tracing)
     implementation(libs.work.runtime.ktx)
     implementation(libs.androidx.navigation3.runtime)
     implementation(libs.androidx.navigation3.ui)
-    implementation(libs.profileinstaller)
     ksp(libs.hilt.compiler)
 
     androidTestImplementation(libs.androidx.test.runner)
     androidTestImplementation(libs.androidx.test.rules)
     androidTestImplementation(libs.androidx.test.ext.junit)
+    androidTestImplementation(libs.compose.ui.test.junit4)
+    debugImplementation(libs.compose.ui.test.manifest)
+    testImplementation(libs.junit4)
 }
+
+// A release with no origin is an app with no library; one with no keystore cannot be signed
+// with the owner's key. Fail loudly instead of shipping either.
+val verifyReleaseConfiguration by tasks.registering {
+    val configuredContent = listOf(contentBaseUrl.orNull, contentSigningKeyId.orNull, contentPublicKey.orNull).all { !it.isNullOrBlank() }
+    doLast {
+        require(configuredContent) {
+            "Release requires ATHAR_CONTENT_BASE_URL, ATHAR_CONTENT_SIGNING_KEY_ID and ATHAR_CONTENT_PUBLIC_KEY_DER_BASE64 (or their athar.* Gradle properties)."
+        }
+        require(releaseSigningConfigured) {
+            "Release requires ATHAR_ANDROID_KEYSTORE, ATHAR_ANDROID_STORE_PASSWORD, ATHAR_ANDROID_KEY_ALIAS and ATHAR_ANDROID_KEY_PASSWORD."
+        }
+    }
+}
+tasks.matching { it.name in setOf("assembleRelease", "bundleRelease", "packageRelease") }
+    .configureEach { dependsOn(verifyReleaseConfiguration) }

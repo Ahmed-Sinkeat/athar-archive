@@ -11,7 +11,6 @@ import com.atharchive.ui.components.AtharTab
 enum class PoetryTab(val key: String, val label: String) {
     All("all", "الكل"),
     Downloaded("downloaded", "المحمّلة"),
-    MyList("mylist", "قائمتي"),
     ;
 
     companion object {
@@ -21,7 +20,7 @@ enum class PoetryTab(val key: String, val label: String) {
 }
 
 enum class PoemSort(val label: String) {
-    Newest("الأحدث"),
+    Newest("ترتيب الفهرس"),
     Title("العنوان أ–ي"),
     Poet("الشاعر"),
 }
@@ -41,6 +40,7 @@ data class PoemUi(
     val downloaded: Boolean = false,
     val downloading: Boolean = false,
     val saved: Boolean = false,
+    val transfer: com.atharchive.feature.downloads.TransferUi? = null,
     val verseCountLabel: String? = null,
     val sizeLabel: String = "—",
 )

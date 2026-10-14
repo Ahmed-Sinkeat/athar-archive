@@ -22,7 +22,6 @@ import com.atharchive.ui.components.AtharTab
 enum class AudioTab(val key: String, val label: String) {
     All("all", "الكل"),
     Downloaded("downloaded", "المحمّلة"),
-    MyList("mylist", "قائمتي"),
     ;
 
     companion object {
@@ -67,6 +66,8 @@ data class AudioUi(
     val speaker: String? = null,
     val downloaded: Boolean = false,
     val saved: Boolean = false,
+    val sourceEntityId: String = "",
+    val transfer: com.atharchive.feature.downloads.TransferUi? = null,
 )
 
 data class NowPlayingUi(
@@ -92,7 +93,10 @@ data class AudioUiState(
      */
     val nowPlaying: NowPlayingUi?,
     val recordings: List<AudioUi>,
+    /** Collections that already hold recordings — what can be played as a list. */
     val playlists: List<PlaylistUi>,
+    /** Every collection the user owns, empty ones included — what a recording can be added to. */
+    val collections: List<PlaylistUi> = emptyList(),
 )
 
 val AudioFixture = AudioUiState(

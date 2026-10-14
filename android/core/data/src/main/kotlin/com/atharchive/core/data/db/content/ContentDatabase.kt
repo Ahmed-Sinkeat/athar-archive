@@ -1,8 +1,6 @@
 package com.atharchive.core.data.db.content
 
-import androidx.paging.PagingSource
 import androidx.room3.Dao
-import androidx.room3.DaoReturnTypeConverters
 import androidx.room3.Database
 import androidx.room3.Entity
 import androidx.room3.Index
@@ -12,7 +10,6 @@ import androidx.room3.PrimaryKey
 import androidx.room3.Query
 import androidx.room3.RoomDatabase
 import androidx.room3.Transaction
-import androidx.room3.paging.PagingSourceDaoReturnTypeConverter
 import kotlinx.coroutines.flow.Flow
 
 object ContentAvailability {
@@ -68,6 +65,7 @@ data class ContentEntity(
     val pkgChapters: Int,
     /** Serialized [com.atharchive.core.data.content.AudioReference] list. */
     val audioJson: String,
+    val verseCount: Int? = null,
     /** False for a protected local work removed by a signed tombstone. */
     val catalogPresent: Boolean = true,
     val availability: String = ContentAvailability.ABSENT,
@@ -176,6 +174,12 @@ abstract class ContentCatalogDao {
     @Query("SELECT * FROM entity")
     abstract suspend fun allEntities(): List<ContentEntity>
 
+    @Query("SELECT EXISTS(SELECT 1 FROM entity)")
+    abstract suspend fun hasEntities(): Boolean
+
+    @Query("SELECT * FROM entity ORDER BY titleNorm, id")
+    abstract fun observeAllEntities(): Flow<List<ContentEntity>>
+
     @Query("SELECT * FROM entity WHERE catalogPresent = 1 ORDER BY titleNorm, id")
     abstract fun observeCatalog(): Flow<List<ContentEntity>>
 
@@ -278,7 +282,6 @@ abstract class ContentCatalogDao {
 }
 
 @Dao
-@DaoReturnTypeConverters(PagingSourceDaoReturnTypeConverter::class)
 abstract class ContentImportDao {
     @Query("SELECT * FROM entity WHERE id = :entityId")
     abstract suspend fun entity(entityId: String): ContentEntity?
@@ -329,14 +332,24 @@ abstract class ContentImportDao {
     @Query("SELECT * FROM block WHERE entityId = :entityId ORDER BY ordinal")
     abstract fun observeBlocks(entityId: String): Flow<List<ContentBlockEntity>>
 
-    @Query("SELECT * FROM block WHERE entityId = :entityId ORDER BY ordinal")
-    abstract fun pagingSource(entityId: String): PagingSource<Int, ContentBlockEntity>
-
     @Query("SELECT * FROM block WHERE entityId = :entityId AND ordinal BETWEEN :first AND :last ORDER BY ordinal")
     abstract suspend fun blockWindow(entityId: String, first: Int, last: Int): List<ContentBlockEntity>
 
+    @Query("SELECT * FROM block WHERE entityId = :entityId AND ordinal BETWEEN :first AND :last ORDER BY ordinal")
+    abstract fun observeBlockWindow(entityId: String, first: Int, last: Int): Flow<List<ContentBlockEntity>>
+
     @Query("SELECT * FROM block WHERE entityId = :entityId AND ordinal = :ordinal LIMIT 1")
     abstract suspend fun blockAt(entityId: String, ordinal: Int): ContentBlockEntity?
+
+    @Query("SELECT ordinal FROM block WHERE entityId = :entityId AND printedPage = :page AND (:volume IS NULL OR vol = :volume) ORDER BY ordinal LIMIT 1")
+    abstract suspend fun printedPageOrdinal(entityId: String, page: Int, volume: Int?): Int?
+
+    @Query("SELECT * FROM block WHERE entityId = :entityId AND blockIdHi = :hi AND blockIdLo = :lo LIMIT 1")
+    abstract suspend fun blockByStableId(entityId: String, hi: Long, lo: Long): ContentBlockEntity?
+
+    @Query("SELECT ordinal FROM block WHERE entityId = :entityId AND type IN ('h1','h2','h3','h4','h5','h6') " +
+        "AND ((type = 'h2' AND chapterAnchor = :anchor) OR json_extract(CAST(attrs AS TEXT), '$.ha') = :anchor) ORDER BY ordinal LIMIT 1")
+    abstract suspend fun headingAnchorOrdinal(entityId: String, anchor: String): Int?
 
     @Query("SELECT * FROM chapter WHERE entityId = :entityId ORDER BY firstOrdinal")
     abstract fun observeChapters(entityId: String): Flow<List<ChapterEntity>>
@@ -388,19 +401,27 @@ abstract class ContentImportDao {
         footnotes: List<FootnoteEntity>,
         now: Long,
     ): FrameImportResult {
+        val t0 = android.os.SystemClock.elapsedRealtime()
+        fun lap(stage: String) = android.util.Log.i("AtharOpen", "dao ${stage} +${android.os.SystemClock.elapsedRealtime() - t0}ms")
         val target = requireNotNull(entity(entityId)) { "catalog entity $entityId is missing" }
         require(blocks.size == frame.blockCount) { "decoded block count differs from frame" }
         require(blocks.zipWithNext().all { (a, b) -> a.ordinal < b.ordinal }) {
             "decoded block ordinals must be strictly increasing"
         }
         deleteBlockRange(entityId, frame.firstBlockOrdinal, frame.firstBlockOrdinal + frame.blockCount - 1)
+        lap("deleted")
         insertBlocks(blocks)
+        lap("blocks-inserted")
         replaceFrame(frame)
         if (chapters.isNotEmpty()) replaceChapters(chapters)
+        lap("chapters ${chapters.size}")
         if (footnotes.isNotEmpty()) replaceFootnotes(footnotes)
+        lap("footnotes ${footnotes.size}")
 
         val importedBlocks = importedBlockCount(entityId)
+        lap("count")
         val bytesOnDisk = importedBytes(entityId)
+        lap("bytes")
         val availability = if (importedBlocks == target.pkgBlocks) {
             ContentAvailability.COMPLETE
         } else {
@@ -409,6 +430,7 @@ abstract class ContentImportDao {
         require(importedBlocks <= target.pkgBlocks) { "imported frames exceed catalog block count" }
         val progress = contiguousProgress(frames(entityId))
         finishImport(entityId, availability, bytesOnDisk, progress, now)
+        lap("finished")
         return FrameImportResult(availability, importedBlocks, bytesOnDisk)
     }
 
@@ -469,7 +491,7 @@ private fun contiguousProgress(frames: List<EntityFrameEntity>): Int {
         ChapterEntity::class,
         FootnoteEntity::class,
     ],
-    version = 1,
+    version = 2,
     exportSchema = true,
 )
 abstract class AtharContentDatabase : RoomDatabase() {

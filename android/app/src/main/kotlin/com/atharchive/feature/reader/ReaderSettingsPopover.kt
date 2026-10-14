@@ -1,7 +1,13 @@
 package com.atharchive.feature.reader
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.border
+import androidx.compose.foundation.selection.selectable
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -18,6 +24,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.LayoutDirection
+import androidx.compose.ui.platform.LocalLayoutDirection
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.Role
@@ -47,14 +56,18 @@ fun ReaderSettingsPopover(
         Column(
             modifier = Modifier
                 .width(288.dp)
+                .heightIn(max = 420.dp)
                 .clip(RoundedCornerShape(14.dp))
                 .background(colors.page)
                 .border(1.dp, colors.divider, RoundedCornerShape(14.dp))
+                .verticalScroll(rememberScrollState())
                 .padding(horizontal = 14.dp, vertical = 12.dp)
                 .testTag("reader_settings_popover"),
         ) {
             GroupLabel("حجم الخط", colors)
-            Row(
+            // A− on the left, A+ on the right, as in every reader: the order is spatial
+            // (small → large), not reading direction.
+            CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) { Row(
                 modifier = Modifier.fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween,
@@ -63,7 +76,7 @@ fun ReaderSettingsPopover(
                     onChange(settings.copy(fontSize = settings.fontSize - 1))
                 }
                 Text(
-                    text = "${settings.fontSize}",
+                    text = settings.fontSize.toString().map { '\u0660' + (it - '0') }.joinToString(""),
                     color = colors.text,
                     fontSize = 15.sp,
                     fontWeight = FontWeight.SemiBold,
@@ -72,7 +85,7 @@ fun ReaderSettingsPopover(
                 StepButton("A+", colors, enabled = settings.fontSize < ReaderSettings.MAX_SIZE, tag = "reader_font_plus") {
                     onChange(settings.copy(fontSize = settings.fontSize + 1))
                 }
-            }
+            } }
 
             GroupLabel("تباعد الأسطر", colors)
             SegmentRow(
@@ -82,6 +95,25 @@ fun ReaderSettingsPopover(
                 tagPrefix = "reader_spacing",
             ) { label ->
                 onChange(settings.copy(spacing = ReaderSpacing.entries.first { it.label == label }))
+            }
+
+            GroupLabel("الهوامش", colors)
+            SegmentRow(listOf("ضيّقة", "عادية", "واسعة"), when (settings.margin) {
+                12 -> "ضيّقة"; 40 -> "واسعة"; else -> "عادية"
+            }, colors, "reader_margin") { label ->
+                onChange(settings.copy(margin = when (label) { "ضيّقة" -> 12; "واسعة" -> 40; else -> 22 }))
+            }
+            GroupLabel("التشكيل", colors)
+            SegmentRow(listOf("ظاهر", "مخفي"), if (settings.showTashkeel) "ظاهر" else "مخفي", colors, "reader_tashkeel") {
+                onChange(settings.copy(showTashkeel = it == "ظاهر"))
+            }
+            GroupLabel("الحواشي", colors)
+            SegmentRow(listOf("ظاهرة", "مخفية"), if (settings.showFootnotes) "ظاهرة" else "مخفية", colors, "reader_footnotes") {
+                onChange(settings.copy(showFootnotes = it == "ظاهرة"))
+            }
+            GroupLabel("أرقام الصفحات", colors)
+            SegmentRow(listOf("ظاهرة", "مخفية"), if (settings.showPageNumbers) "ظاهرة" else "مخفية", colors, "reader_page_numbers") {
+                onChange(settings.copy(showPageNumbers = it == "ظاهرة"))
             }
 
             GroupLabel("مظهر القراءة", colors)
@@ -117,10 +149,11 @@ private fun StepButton(
 ) {
     Box(
         modifier = Modifier
-            .size(40.dp)
+            .size(48.dp)
             .clip(CircleShape)
             .background(colors.divider.copy(alpha = 0.35f))
             .clickable(enabled = enabled, role = Role.Button, onClick = onClick)
+            .semantics { contentDescription = if (label == "A−") "تصغير الخط" else "تكبير الخط" }
             .testTag(tag),
         contentAlignment = Alignment.Center,
     ) {
@@ -133,8 +166,9 @@ private fun StepButton(
     }
 }
 
+/** Shared with the Appearance screen, so both set these settings with the same control. */
 @Composable
-private fun SegmentRow(
+internal fun SegmentRow(
     options: List<String>,
     selected: String,
     colors: ReaderColors,
@@ -154,7 +188,8 @@ private fun SegmentRow(
                     .background(
                         if (isSelected) colors.accent.copy(alpha = 0.13f) else colors.divider.copy(alpha = 0.28f),
                     )
-                    .clickable(role = Role.Button) { onSelect(option) }
+                    .heightIn(min = 48.dp)
+                    .selectable(selected = isSelected, role = Role.RadioButton) { onSelect(option) }
                     .padding(vertical = 8.dp)
                     .testTag("${tagPrefix}_$index"),
                 contentAlignment = Alignment.Center,

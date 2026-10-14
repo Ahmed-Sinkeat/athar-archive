@@ -31,11 +31,13 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.withFrameNanos
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -66,18 +68,20 @@ fun SearchScreen(
     onOpenResult: (SearchHitUi) -> Unit,
     onOpenDirectMatch: (DirectMatchUi) -> Unit,
     onClearRecent: () -> Unit,
+    onResultsDrawn: (String) -> Unit,
+    inputQuery: String = state.query,
+    onLoadMore: () -> Unit = {},
     modifier: Modifier = Modifier,
-    onLogo: (() -> Unit)? = null,
     onBack: (() -> Unit)? = null,
 ) {
-    var query by rememberSaveable { mutableStateOf(state.query) }
-    var filters by remember { mutableStateOf(state.filters) }
+    val query = inputQuery
+    val filters = state.filters
+    val searching = state.searching || inputQuery != state.query
     var filtersVisible by rememberSaveable { mutableStateOf(false) }
     var scopedSource by rememberSaveable { mutableStateOf(state.scopedToSource) }
     val listState = rememberLazyListState()
 
     fun changeFilters(next: SearchFilters) {
-        filters = next
         onFiltersChange(next)
     }
 
@@ -85,7 +89,7 @@ fun SearchScreen(
     val hasQuery = term.isNotBlank()
 
     val hits = remember(state.hits, term, scopedSource) {
-        if (!hasQuery) {
+        if (!hasQuery || searching) {
             emptyList()
         } else {
             state.hits
@@ -94,7 +98,16 @@ fun SearchScreen(
                 }
         }
     }
-    val directMatches = if (hasQuery && scopedSource == null) state.directMatches else emptyList()
+    val directMatches = if (hasQuery && !searching && scopedSource == null) state.directMatches else emptyList()
+
+    LaunchedEffect(state.query, state.directMatches, state.hits) {
+        if (state.query.trim().length >= 2) {
+            // Resume on the frame after these results entered composition, then close the
+            // async trace that began at the matching keystroke.
+            withFrameNanos { _ -> }
+            onResultsDrawn(state.query)
+        }
+    }
 
     BoxWithConstraints(
         modifier = modifier
@@ -109,7 +122,6 @@ fun SearchScreen(
                 title = "البحث",
                 onSettings = onSettings,
                 showAppIcon = true,
-                onLogo = onLogo,
                 onBack = onBack,
                 horizontalPadding = horizontalPadding,
             )
@@ -126,7 +138,6 @@ fun SearchScreen(
                     query = query,
                     placeholder = "ابحث في أهل الأثر…",
                     onQueryChange = {
-                        query = it
                         onQueryChange(it)
                     },
                     tagPrefix = "search",
@@ -156,6 +167,16 @@ fun SearchScreen(
             }
 
             if (!hasQuery) {
+                if (state.recentQueries.isEmpty()) {
+                    item(key = "search-hint") {
+                        AtharEmptyState(
+                            title = "ابحث في المكتبة",
+                            body = "اكتب كلمة من عنوان أو مؤلف أو نص. تظهر العناوين من الفهرس كله، والنصوص مما هو محفوظ على جهازك.",
+                            tag = "search_hint",
+                            horizontalPadding = horizontalPadding,
+                        )
+                    }
+                }
                 if (state.recentQueries.isNotEmpty()) {
                     item(key = "recent-heading") {
                         Row(
@@ -193,7 +214,6 @@ fun SearchScreen(
                             query = recent,
                             horizontalPadding = horizontalPadding,
                             onClick = {
-                                query = recent
                                 onQueryChange(recent)
                             },
                         )
@@ -218,6 +238,27 @@ fun SearchScreen(
                 }
             }
 
+            item(key = "results-bar") {
+                ResultsBar(
+                    count = hits.size + directMatches.size,
+                    readyTag = searchResultsReadyTag(state.query),
+                    filtersActive = filters.isActive,
+                    sort = filters.sort,
+                    horizontalPadding = horizontalPadding,
+                    onFilters = { filtersVisible = true },
+                    onSortChange = { changeFilters(filters.copy(sort = it)) },
+                )
+            }
+
+            if (searching) {
+                item(key = "search-loading") { Text("جارٍ البحث…", Modifier.padding(horizontalPadding)) }
+                return@LazyColumn
+            }
+            if (state.hasMore) {
+                item(key = "search-more") {
+                    TextButton(onClick = onLoadMore) { Text("عرض المزيد · النتائج الحالية ${arabicNumber(hits.size + directMatches.size)}") }
+                }
+            }
             if (hits.isEmpty() && directMatches.isEmpty()) {
                 item(key = "search-empty") {
                     // Offline "no results" must not claim the archive is empty — it only
@@ -225,22 +266,11 @@ fun SearchScreen(
                     AtharEmptyState(
                         title = "لا توجد نتائج",
                         body = "جرّب كلمة أقصر، أو امسح بعض المرشحات. البحث النصي يشمل المحتوى الموجود على الجهاز.",
-                        tag = "search_empty_state",
+                        tag = searchResultsReadyTag(state.query),
                         horizontalPadding = horizontalPadding,
                     )
                 }
                 return@LazyColumn
-            }
-
-            item(key = "results-bar") {
-                ResultsBar(
-                    count = hits.size,
-                    filtersActive = filters.isActive,
-                    sort = filters.sort,
-                    horizontalPadding = horizontalPadding,
-                    onFilters = { filtersVisible = true },
-                    onSortChange = { changeFilters(filters.copy(sort = it)) },
-                )
             }
 
             if (directMatches.isNotEmpty()) {
@@ -324,6 +354,7 @@ private fun ResultsHeading(text: String, horizontalPadding: Dp) {
 @Composable
 private fun ResultsBar(
     count: Int,
+    readyTag: String,
     filtersActive: Boolean,
     sort: SearchSort,
     horizontalPadding: Dp,
@@ -333,11 +364,12 @@ private fun ResultsBar(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(start = horizontalPadding - 4.dp, end = horizontalPadding - 4.dp, top = 10.dp),
+            .padding(start = horizontalPadding - 4.dp, end = horizontalPadding - 4.dp, top = 10.dp)
+            .testTag(readyTag),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Text(
-            text = "${arabicNumber(count)} نتيجة",
+            text = com.atharchive.data.arabicCount(count, "لا نتائج", "نتيجة واحدة", "نتيجتان", "نتائج", "نتيجة"),
             modifier = Modifier
                 .padding(start = 4.dp)
                 .weight(1f)
@@ -377,6 +409,9 @@ private fun ResultsBar(
         )
     }
 }
+
+private fun searchResultsReadyTag(query: String): String =
+    "search_results_${(query.hashCode().toLong() and 0xffffffffL).toString(16)}"
 
 @Composable
 private fun OfflineNote(horizontalPadding: Dp) {

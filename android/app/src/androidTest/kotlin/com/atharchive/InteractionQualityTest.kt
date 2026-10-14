@@ -36,15 +36,13 @@ class InteractionQualityTest {
         composeRule.onNodeWithTag("audio_row_$firstAudio").assertHasClickAction()
     }
 
-    /**
-     * قائمتي filters on `audio.saved`, and no control anywhere could set it — the tab was
-     * permanently empty for a real listener. Same for المحمّلة and downloading.
-     */
+    /** Save and download live in the row's ⋮ menu; both must be reachable from it. */
     @Test
     fun audioCanBeSavedAndDownloadedFromItsRow() {
         composeRule.onNodeWithTag("bottom_audio").performClick()
         composeRule.onNodeWithTag("audio_screen").assertIsDisplayed()
 
+        composeRule.onNodeWithTag("audio_more_$firstAudio").performClick()
         composeRule.onNodeWithTag("audio_save_$firstAudio")
             .assertIsDisplayed()
             .assertHasClickAction()
@@ -67,7 +65,7 @@ class InteractionQualityTest {
         composeRule.onNodeWithTag("section_appearance").assertIsDisplayed()
 
         ThemeModeTags.forEach { composeRule.onNodeWithTag(it).assertIsDisplayed() }
-        composeRule.onNodeWithTag("appearance_palette_Follow")
+        composeRule.onNodeWithTag("appearance_palette_0")
             .assertIsDisplayed()
             .assertHasClickAction()
         composeRule.onNodeWithTag("appearance_preview").assertIsDisplayed()
@@ -75,9 +73,10 @@ class InteractionQualityTest {
 
     private companion object {
         val ThemeModeTags = listOf(
-            "appearance_theme_System",
-            "appearance_theme_Light",
-            "appearance_theme_Dark",
+            "appearance_theme_0",
+            "appearance_theme_1",
+            "appearance_theme_2",
+            "appearance_theme_3",
         )
     }
 }

@@ -9,6 +9,9 @@
 -->
 <full-backup-content>
     <include domain="file" path="datastore/settings.preferences_pb" />
+    <include domain="sharedpref" path="athar_appearance.xml" />
+    <include domain="sharedpref" path="audio_playback.xml" requireFlags="deviceToDeviceTransfer" />
+    <include domain="sharedpref" path="audio_queue.xml" requireFlags="deviceToDeviceTransfer" />
     <include
         domain="database"
         path="athar_user.db"

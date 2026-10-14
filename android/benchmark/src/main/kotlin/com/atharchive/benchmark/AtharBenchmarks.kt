@@ -1,12 +1,17 @@
 package com.atharchive.benchmark
 
+import android.os.SystemClock
+import androidx.benchmark.macro.ExperimentalMetricApi
 import androidx.benchmark.macro.FrameTimingMetric
 import androidx.benchmark.macro.StartupMode
 import androidx.benchmark.macro.StartupTimingMetric
+import androidx.benchmark.macro.TraceSectionMetric
 import androidx.benchmark.macro.junit4.MacrobenchmarkRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.uiautomator.By
+import androidx.test.uiautomator.BySelector
 import androidx.test.uiautomator.UiDevice
+import androidx.test.uiautomator.UiObject2
 import androidx.test.uiautomator.Until
 import java.util.regex.Pattern
 import org.junit.Rule
@@ -33,8 +38,13 @@ import org.junit.runner.RunWith
 private const val TargetPackage = "com.atharchive"
 private const val Timeout = 5_000L
 
-/** Long enough to matter, short enough that the whole suite finishes in one sitting. */
+/** A short, repeatable gesture sequence for screens without a dedicated duration budget. */
 private const val FlingCount = 3
+
+/** The reader budget in §17 is explicitly defined over ten seconds of scrolling. */
+private const val ReaderScrollDurationMs = 10_000L
+private const val SearchTerm = "الإخلاص"
+private const val SearchLatencyTraceName = "AtharSearchKeystrokeToResults"
 
 /** Few steps means a fast gesture — a fling, not a drag. */
 private const val SwipeSteps = 8
@@ -55,7 +65,8 @@ class StartupBenchmark {
         pressHome()
         startActivityAndWait()
         // Interactive means the catalogue is on screen, not that the window opened.
-        device.wait(Until.hasObject(By.res("books_screen")), Timeout)
+        device.requireObject("books_screen")
+        device.requireFirstBook()
     }
 }
 
@@ -75,12 +86,13 @@ class NavigationBenchmark {
         setupBlock = {
             pressHome()
             startActivityAndWait()
-            device.wait(Until.hasObject(By.res("books_screen")), Timeout)
+            device.requireObject("books_screen")
+            device.requireFirstBook()
         },
     ) {
         listOf("poetry", "search", "audio", "kannashah", "books").forEach { route ->
-            device.findObject(By.res("bottom_$route"))?.click()
-            device.waitForIdle()
+            device.requireObject("bottom_$route").click()
+            device.requireObject("${route}_screen")
         }
     }
 }
@@ -100,7 +112,8 @@ class ListScrollBenchmark {
         setupBlock = {
             pressHome()
             startActivityAndWait()
-            device.wait(Until.hasObject(By.res("books_screen")), Timeout)
+            device.requireObject("books_screen")
+            device.requireFirstBook()
         },
     ) {
         device.flingVertically()
@@ -123,46 +136,52 @@ class ReaderBenchmark {
         setupBlock = {
             pressHome()
             startActivityAndWait()
-            device.wait(Until.hasObject(By.res("books_screen")), Timeout)
+            device.requireObject("books_screen")
             device.openFirstBook()
         },
     ) {
-        device.flingVertically()
+        device.scrollVerticallyFor(ReaderScrollDurationMs)
     }
 }
 
 @RunWith(AndroidJUnit4::class)
+@OptIn(ExperimentalMetricApi::class)
 class SearchBenchmark {
 
     @get:Rule
     val rule = MacrobenchmarkRule()
 
     /**
-     * Typing, not pasting. The search debounces at 120 ms and cancels superseded work, so
-     * a single setText would measure the debounce rather than the interaction.
+     * Typing, not pasting. The max async trace covers a keystroke, debounce, Room query and
+     * the results frame; the frame metric catches input/rendering jank during the same trip.
      */
     @Test
     fun searchTyping() = rule.measureRepeated(
         packageName = TargetPackage,
-        metrics = listOf(FrameTimingMetric()),
+        metrics = listOf(
+            FrameTimingMetric(),
+            TraceSectionMetric(SearchLatencyTraceName, TraceSectionMetric.Mode.Max),
+        ),
         iterations = 5,
         startupMode = StartupMode.WARM,
         setupBlock = {
             pressHome()
             startActivityAndWait()
-            device.wait(Until.hasObject(By.res("books_screen")), Timeout)
-            device.findObject(By.res("bottom_search"))?.click()
-            device.wait(Until.hasObject(By.res("search_screen")), Timeout)
+            device.requireObject("books_screen")
+            device.requireFirstBook()
+            device.requireObject("bottom_search").click()
+            device.requireObject("search_screen")
         },
     ) {
-        val field = device.findObject(By.res("search_search")) ?: return@measureRepeated
+        val field = device.requireObject("search_search")
         field.click()
         device.waitForIdle()
         // A real word, typed one letter at a time.
-        "الإخلاص".forEachIndexed { index, _ ->
-            field.text = "الإخلاص".take(index + 1)
+        SearchTerm.forEachIndexed { index, _ ->
+            field.text = SearchTerm.take(index + 1)
             device.waitForIdle()
         }
+        device.requireObject(searchResultsReadyTag(SearchTerm))
     }
 }
 
@@ -187,8 +206,48 @@ private fun UiDevice.flingVertically() {
     }
 }
 
-/** The catalogue's first row, whatever book it happens to be. */
-private fun UiDevice.openFirstBook() {
-    findObject(By.res(Pattern.compile("book_row_.*")))?.click()
-    wait(Until.hasObject(By.res("reader_screen")), Timeout)
+/**
+ * Keeps the reader producing frames for the full §17 sample window.
+ *
+ * Alternating direction prevents a short fixture from spending most of the measurement
+ * pinned at one end of the list. The final `waitForIdle` keeps inertial frames inside the
+ * measured block.
+ */
+private fun UiDevice.scrollVerticallyFor(durationMs: Long) {
+    require(durationMs > 0)
+    val x = displayWidth / 2
+    val top = displayHeight / 5
+    val bottom = displayHeight * 4 / 5
+    val deadline = SystemClock.elapsedRealtime() + durationMs
+    var down = true
+    do {
+        if (down) swipe(x, bottom, x, top, SwipeSteps)
+        else swipe(x, top, x, bottom, SwipeSteps)
+        down = !down
+    } while (SystemClock.elapsedRealtime() < deadline)
+    waitForIdle()
 }
+
+/** The catalogue's first row, after its asynchronous Room flow has populated the screen. */
+private fun UiDevice.requireFirstBook(): UiObject2 = requireObject(
+    selector = By.res(Pattern.compile("book_row_.*")),
+    description = "first catalogue row",
+)
+
+private fun UiDevice.openFirstBook() {
+    requireFirstBook().click()
+    requireObject("reader_screen")
+}
+
+private fun UiDevice.requireObject(resourceId: String): UiObject2 = requireObject(
+    selector = By.res(resourceId),
+    description = "resource-id $resourceId",
+)
+
+private fun UiDevice.requireObject(selector: BySelector, description: String): UiObject2 =
+    checkNotNull(wait(Until.findObject(selector), Timeout)) {
+        "Timed out after ${Timeout}ms waiting for $description"
+    }
+
+private fun searchResultsReadyTag(query: String): String =
+    "search_results_${(query.hashCode().toLong() and 0xffffffffL).toString(16)}"

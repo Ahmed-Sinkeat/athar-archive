@@ -74,6 +74,13 @@ class ContentSearchTest {
         assertEquals(0, hit.matchStart)
         assertEquals(hit.excerpt.length, hit.matchEnd)
 
+        assertTrue(ContentSearchRepository(database).search(
+            ContentSearchRequest("\"طلب العلم\"", ordinals = 0..80),
+        ).blocks.isEmpty())
+        assertEquals(81, ContentSearchRepository(database).search(
+            ContentSearchRequest("\"طلب العلم\"", ordinals = 81..81),
+        ).blocks.single().ordinal)
+
         database.importDao().evictFrame(database.importDao().evictionCandidates().single())
         assertTrue(
             ContentSearchRepository(database)
@@ -81,6 +88,26 @@ class ContentSearchTest {
                 .blocks
                 .isEmpty(),
         )
+    }
+
+    @Test
+    fun catalogPhrasesRejectReversedSeparatedAndCrossFieldWords() = runBlocking {
+        val entries = listOf(
+            entry(10, id = "exact", title = "طَلَبُ العِلْمِ", author = "صاحب"),
+            entry(10, id = "separated", title = "طلب فضل العلم", author = "صاحب"),
+            entry(10, id = "reversed", title = "العلم طلب", author = "صاحب"),
+            entry(10, id = "split", title = "طلب", author = "العلم"),
+        )
+        ContentImporter(database).applyCatalog(CatalogDocument(2, entries))
+        assertEquals(listOf("exact"), ContentSearchRepository(database).search(ContentSearchRequest("\"طلب العلم\"")).catalog.map { it.entityId })
+    }
+
+    @Test
+    fun catalogLimitCanGrowBeyondTwelveWithoutDroppingMatches() = runBlocking {
+        ContentImporter(database).applyCatalog(CatalogDocument(2, (0..60).map { entry(10, id = "work-$it", title = "طلب العلم $it", author = "صاحب") }))
+        val search = ContentSearchRepository(database)
+        assertEquals(51, search.search(ContentSearchRequest("العلم"), limit = 51).catalog.size)
+        assertEquals(61, search.search(ContentSearchRequest("العلم"), limit = 101).catalog.size)
     }
 
     @Test
