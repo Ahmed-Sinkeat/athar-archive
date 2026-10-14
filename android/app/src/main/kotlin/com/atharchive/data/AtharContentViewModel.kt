@@ -1,5 +1,6 @@
 package com.atharchive.data
 
+import com.atharchive.ui.components.arabicDigits
 import androidx.media3.common.MediaItem
 import androidx.media3.common.MediaMetadata
 import com.atharchive.feature.audio.AudioUi
@@ -288,7 +289,8 @@ class AtharContentViewModel @Inject constructor(
         _searchQuery.debounce(SearchDebounceMs),
         _searchFilters,
         recentSearches,
-        catalogDao.observeCatalog(),
+        // The filter lists are built once per catalog change, not on every keystroke.
+        catalogDao.observeCatalog().map { SearchCatalog(it, it.map(ContentEntity::title), it.mapNotNull(ContentEntity::personName).distinct()) },
     ) { query, filters, recent, catalog ->
         SearchInput(query, filters, recent.map { it.q }, catalog)
     }.combine(_searchLimit) { input, limit -> input to limit }.mapLatest { (input, limit) ->
@@ -299,12 +301,12 @@ class AtharContentViewModel @Inject constructor(
             recentQueries = input.recent,
             directMatches = emptyList(),
             hits = emptyList(),
-            availableSources = input.catalog.map { it.title },
-            availableAuthors = input.catalog.mapNotNull { it.personName }.distinct(),
+            availableSources = input.catalog.sources,
+            availableAuthors = input.catalog.authors,
         )
         if (clean.length < 2) return@mapLatest base
         val sourceIds = input.filters.sources.takeIf { it.isNotEmpty() }?.let { sources ->
-            input.catalog.asSequence().filter { it.title in sources }.mapTo(linkedSetOf()) { it.id }
+            input.catalog.entities.asSequence().filter { it.title in sources }.mapTo(linkedSetOf()) { it.id }
         }
         val result = contentSearch.search(
             ContentSearchRequest(
@@ -391,8 +393,11 @@ class AtharContentViewModel @Inject constructor(
         }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
 
+    /** Transfer state by entity id, built once per change instead of searched per row. */
+    private val textTransfers = textDownloads.map { list -> list.associate { it.id to it.transfer } }
+
     val books: StateFlow<BooksUiState> = combine(
-        catalogDao.observeCollection("book"), pinIds, retainedPins, library, combine(positions, textDownloads) { positions, transfers -> positions to transfers },
+        catalogDao.observeCollection("book"), pinIds, retainedPins, library, combine(positions, textTransfers) { positions, transfers -> positions to transfers },
     ) { entities, pinnedIds, retainedIds, shelves, reading ->
         val (savedPositions, transfers) = reading
         val shelfIds = shelves.mapTo(hashSetOf(), LibraryEntryEntity::entityId)
@@ -407,7 +412,7 @@ class AtharContentViewModel @Inject constructor(
                     saved = it.id in shelfIds,
                     position = positionById[it.id],
                     recentRank = recentRanks[it.id],
-                    transfer = transfers.find { transfer -> transfer.id == it.id }?.transfer,
+                    transfer = transfers[it.id],
                 )
             },
         )
@@ -418,7 +423,7 @@ class AtharContentViewModel @Inject constructor(
     )
 
     val articles: StateFlow<ArticlesUiState> = combine(
-        catalogDao.observeCollection("article"), pinIds, retainedPins, library, textDownloads,
+        catalogDao.observeCollection("article"), pinIds, retainedPins, library, textTransfers,
     ) { entities, pinnedIds, retainedIds, shelves, transfers ->
         val shelfIds = shelves.mapTo(hashSetOf(), LibraryEntryEntity::entityId)
         ArticlesUiState(
@@ -435,7 +440,7 @@ class AtharContentViewModel @Inject constructor(
                         entity.id !in retainedIds &&
                         entity.transferState != ContentTransferState.FAILED,
                     saved = entity.id in shelfIds,
-                    transfer = transfers.find { it.id == entity.id }?.transfer,
+                    transfer = transfers[entity.id],
                     sizeLabel = byteSize(entity.pkgSize),
                 )
             },
@@ -502,7 +507,7 @@ class AtharContentViewModel @Inject constructor(
                 playback.toggle()
                 return@launch
             }
-            val references = catalogDao.allEntities().flatMap { it.audioReferences() }.associateBy { it.id }
+            val references = catalogDao.entitiesWithAudio().flatMap { it.audioReferences() }.associateBy { it.id }
             val items = queue.map { recording ->
                 MediaItem.Builder().setMediaId(recording.id).setCustomCacheKey(recording.id).setUri(content.audioUri(requireNotNull(references[recording.id])))
                     .setMediaMetadata(MediaMetadata.Builder().setTitle(recording.title).setArtist(recording.speaker).build()).build()
@@ -556,7 +561,7 @@ class AtharContentViewModel @Inject constructor(
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
 
     val issues: StateFlow<IssuesUiState> = combine(
-        catalogDao.observeCollection("question"), retainedPins, library, textDownloads,
+        catalogDao.observeCollection("question"), retainedPins, library, textTransfers,
     ) { entities, retainedIds, shelves, transfers ->
         val shelfIds = shelves.mapTo(hashSetOf(), LibraryEntryEntity::entityId)
         IssuesUiState(
@@ -571,14 +576,14 @@ class AtharContentViewModel @Inject constructor(
                     sizeLabel = byteSize(entity.pkgSize),
                     downloaded = entity.id in retainedIds && entity.availability == ContentAvailability.COMPLETE,
                     saved = entity.id in shelfIds,
-                    transfer = transfers.find { it.id == entity.id }?.transfer,
+                    transfer = transfers[entity.id],
                 )
             },
         )
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), IssuesUiState("٠ مسألة", emptyList()))
 
     val poetry: StateFlow<PoetryUiState> = combine(
-        catalogDao.observeCollection("poem"), pinIds, retainedPins, library, textDownloads,
+        catalogDao.observeCollection("poem"), pinIds, retainedPins, library, textTransfers,
     ) { entities, pinnedIds, retainedIds, shelves, transfers ->
         val shelfIds = shelves.mapTo(hashSetOf(), LibraryEntryEntity::entityId)
         PoetryUiState(
@@ -596,7 +601,7 @@ class AtharContentViewModel @Inject constructor(
                         entity.id !in retainedIds &&
                         entity.transferState != ContentTransferState.FAILED,
                     saved = entity.id in shelfIds,
-                    transfer = transfers.find { it.id == entity.id }?.transfer,
+                    transfer = transfers[entity.id],
                     verseCountLabel = entry.verseCount?.takeIf { it > 0 }?.let { arabicCount(it, "", "بيت واحد", "بيتان", "أبيات", "بيتًا") },
                     sizeLabel = byteSize(entity.pkgSize),
                 )
@@ -680,7 +685,6 @@ class AtharContentViewModel @Inject constructor(
     }
 
     fun openReader(entityId: String, targetOrdinal: Int? = null) {
-        android.util.Log.i("AtharOpen", "openReader $entityId target=$targetOrdinal t=${android.os.SystemClock.elapsedRealtime()}")
         viewModelScope.launch(errorHandler) {
             personalLibrary.recordOpened(entityId)
             val saved = userDao.readingPosition(entityId)
@@ -1230,9 +1234,7 @@ internal fun arabicCount(n: Int, zero: String, one: String, two: String, few: St
     }
 }
 
-private fun arabicNumber(value: Any): String = value.toString().map { character ->
-    if (character in '0'..'9') "٠١٢٣٤٥٦٧٨٩"[character - '0'] else character
-}.joinToString("")
+private fun arabicNumber(value: Any): String = arabicDigits(value.toString())
 
 private data class LibraryReading(
     val entries: List<LibraryEntryEntity>,
@@ -1250,8 +1252,10 @@ private data class SearchInput(
     val query: String,
     val filters: SearchFilters,
     val recent: List<String>,
-    val catalog: List<ContentEntity>,
+    val catalog: SearchCatalog,
 )
+
+private data class SearchCatalog(val entities: List<ContentEntity>, val sources: List<String>, val authors: List<String>)
 
 private data class SearchTrace(val query: String, val cookie: Int)
 

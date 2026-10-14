@@ -1,5 +1,6 @@
 package com.atharchive.feature.search
 
+import com.atharchive.ui.components.arabicDigits
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.background
@@ -256,7 +257,7 @@ fun SearchScreen(
             }
             if (state.hasMore) {
                 item(key = "search-more") {
-                    TextButton(onClick = onLoadMore) { Text("عرض المزيد · النتائج الحالية ${arabicNumber(hits.size + directMatches.size)}") }
+                    TextButton(onClick = onLoadMore) { Text("عرض المزيد · النتائج الحالية ${arabicDigits(hits.size + directMatches.size)}") }
                 }
             }
             if (hits.isEmpty() && directMatches.isEmpty()) {
@@ -671,5 +672,3 @@ private fun RemovableChip(label: String, onRemove: () -> Unit) {
     }
 }
 
-private fun arabicNumber(n: Int): String =
-    n.toString().map { "٠١٢٣٤٥٦٧٨٩"[it - '0'] }.joinToString("")

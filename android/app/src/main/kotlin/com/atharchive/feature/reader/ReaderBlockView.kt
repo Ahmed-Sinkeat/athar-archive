@@ -33,6 +33,7 @@ import androidx.compose.ui.text.font.FontWeight
 import com.atharchive.core.data.content.InlineSpan
 import androidx.compose.ui.text.LinkAnnotation
 import androidx.compose.ui.text.TextLinkStyles
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.BaselineShift
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.AnnotatedString
@@ -108,8 +109,8 @@ internal fun BlockView(
     val link = remember { { target: String -> onLinkState(target) } }
     @Composable
     fun marked(text: String, match: IntRange?, saved: List<IntRange>) =
-        remember(text, match, colors, block.spans, saved, settings.showTashkeel) {
-            markedText(text, match, colors, block.spans, saved, settings.showTashkeel, link)
+        remember(text, match, colors, block.spans, saved, settings.showTashkeel, settings.showFootnotes) {
+            markedText(text, match, colors, block.spans, saved, settings.showTashkeel, settings.showFootnotes, link)
         }
 
     when (block) {
@@ -293,10 +294,12 @@ internal fun BlockView(
     }
 }
 
+private val HiddenMarker = SpanStyle(color = Color.Transparent, fontSize = 0.01.sp, letterSpacing = 0.sp)
+
 private fun markedText(
     text: String, match: IntRange?, colors: ReaderColors,
     spans: List<InlineSpan>, highlights: List<IntRange>, showTashkeel: Boolean,
-    onLink: (String) -> Unit,
+    showFootnotes: Boolean, onLink: (String) -> Unit,
 ): AnnotatedString {
     val value = SelectionText(text, showTashkeel)
     return buildAnnotatedString {
@@ -311,7 +314,10 @@ private fun markedText(
             when (span.k) {
                 "strong" -> style(SpanStyle(fontWeight = FontWeight.Bold), span.s, span.e)
                 "emphasis" -> style(SpanStyle(fontStyle = FontStyle.Italic), span.s, span.e)
-                "sup" -> style(SpanStyle(baselineShift = BaselineShift.Superscript, fontSize = 12.sp), span.s, span.e)
+                // A hidden footnote marker keeps its characters, so source offsets (selection,
+                // highlights, copy) are unchanged; it just takes no visible room.
+                "sup" -> style(if (!showFootnotes && span.target != null) HiddenMarker
+                    else SpanStyle(baselineShift = BaselineShift.Superscript, fontSize = 12.sp), span.s, span.e)
             }
             val target = span.target
             if (span.k in listOf("link", "entityRef") && !target.isNullOrBlank()) {

@@ -1,5 +1,6 @@
 package com.atharchive.ui
 
+import com.atharchive.ui.components.arabicDigits
 import com.atharchive.ui.components.AtharAppMenuEntry
 import com.atharchive.ui.components.LocalAtharAppMenu
 import android.Manifest
@@ -707,8 +708,12 @@ fun AtharApp(
                             onMore = { openAudioSource(it) },
                             onSave = { contentViewModel.toggleReadLater("audio:${it.id}") },
                             onDownload = {
-                                contentViewModel.toggleAudioDownload(it.id)
-                                requestNotificationPermission()
+                                // Same rule as text rows: a finished download asks before it is deleted.
+                                if (it.downloaded) pendingRemoval = DownloadRemoval("audio:${it.id}", it.title, it.sizeLabel)
+                                else {
+                                    contentViewModel.toggleAudioDownload(it.id)
+                                    requestNotificationPermission()
+                                }
                             },
                         )
 
@@ -1086,9 +1091,6 @@ private fun SettingsRow(
     }
 }
 
-private fun arabicDigits(value: Int): String = value.toString().map { digit ->
-    if (digit in '0'..'9') ('٠'.code + (digit - '0')).toChar() else digit
-}.joinToString("")
 
 
 private val CacheBudgetOptions = listOf(

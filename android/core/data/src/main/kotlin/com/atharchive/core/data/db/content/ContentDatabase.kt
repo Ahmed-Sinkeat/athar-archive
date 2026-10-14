@@ -177,6 +177,14 @@ abstract class ContentCatalogDao {
     @Query("SELECT EXISTS(SELECT 1 FROM entity)")
     abstract suspend fun hasEntities(): Boolean
 
+    /** Entities that carry recordings; the rest of the catalog is never decoded for audio. */
+    @Query("SELECT * FROM entity WHERE audioJson != '[]'")
+    abstract suspend fun entitiesWithAudio(): List<ContentEntity>
+
+    /** A superset of the entities holding [audioId]; callers match the decoded id exactly. */
+    @Query("SELECT * FROM entity WHERE instr(audioJson, :audioId) > 0")
+    abstract suspend fun entitiesMentioningAudio(audioId: String): List<ContentEntity>
+
     @Query("SELECT * FROM entity ORDER BY titleNorm, id")
     abstract fun observeAllEntities(): Flow<List<ContentEntity>>
 
@@ -401,27 +409,19 @@ abstract class ContentImportDao {
         footnotes: List<FootnoteEntity>,
         now: Long,
     ): FrameImportResult {
-        val t0 = android.os.SystemClock.elapsedRealtime()
-        fun lap(stage: String) = android.util.Log.i("AtharOpen", "dao ${stage} +${android.os.SystemClock.elapsedRealtime() - t0}ms")
         val target = requireNotNull(entity(entityId)) { "catalog entity $entityId is missing" }
         require(blocks.size == frame.blockCount) { "decoded block count differs from frame" }
         require(blocks.zipWithNext().all { (a, b) -> a.ordinal < b.ordinal }) {
             "decoded block ordinals must be strictly increasing"
         }
         deleteBlockRange(entityId, frame.firstBlockOrdinal, frame.firstBlockOrdinal + frame.blockCount - 1)
-        lap("deleted")
         insertBlocks(blocks)
-        lap("blocks-inserted")
         replaceFrame(frame)
         if (chapters.isNotEmpty()) replaceChapters(chapters)
-        lap("chapters ${chapters.size}")
         if (footnotes.isNotEmpty()) replaceFootnotes(footnotes)
-        lap("footnotes ${footnotes.size}")
 
         val importedBlocks = importedBlockCount(entityId)
-        lap("count")
         val bytesOnDisk = importedBytes(entityId)
-        lap("bytes")
         val availability = if (importedBlocks == target.pkgBlocks) {
             ContentAvailability.COMPLETE
         } else {
@@ -430,7 +430,6 @@ abstract class ContentImportDao {
         require(importedBlocks <= target.pkgBlocks) { "imported frames exceed catalog block count" }
         val progress = contiguousProgress(frames(entityId))
         finishImport(entityId, availability, bytesOnDisk, progress, now)
-        lap("finished")
         return FrameImportResult(availability, importedBlocks, bytesOnDisk)
     }
 

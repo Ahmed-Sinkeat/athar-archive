@@ -1,5 +1,6 @@
 package com.atharchive.feature.audio
 
+import com.atharchive.ui.components.arabicDigits
 import com.atharchive.ui.components.AtharMenuItem
 import com.atharchive.ui.components.AtharMenu
 import androidx.compose.foundation.background
@@ -439,7 +440,7 @@ private fun SeekButton(icon: ImageVector, seconds: Int, label: String, onClick: 
             modifier = Modifier.size(30.dp),
         )
         Text(
-            text = seconds.arabicDigits(),
+            text = arabicDigits(seconds),
             modifier = Modifier.padding(top = 5.dp),
             color = MaterialTheme.colorScheme.onSurface,
             fontSize = 9.sp,
@@ -540,7 +541,7 @@ private fun SleepTile(minutes: Int, onSelect: (Int) -> Unit, modifier: Modifier 
     var open by remember { mutableStateOf(false) }
     Box(modifier = modifier) {
         ActionTile(
-            label = if (minutes == 0) "مؤقّت النوم" else "${minutes.arabicDigits()} دقيقة",
+            label = if (minutes == 0) "مؤقّت النوم" else "${arabicDigits(minutes)} دقيقة",
             active = minutes != 0,
             onClick = { open = true },
             tag = "player_sleep",
@@ -551,7 +552,7 @@ private fun SleepTile(minutes: Int, onSelect: (Int) -> Unit, modifier: Modifier 
         AtharMenu(expanded = open, onDismiss = { open = false }, width = 200.dp) {
             SleepOptions.forEach { option ->
                 AtharMenuItem(
-                    label = if (option == 0) "إيقاف" else "${option.arabicDigits()} دقيقة",
+                    label = if (option == 0) "إيقاف" else "${arabicDigits(option)} دقيقة",
                     checked = option == minutes,
                     onClick = { onSelect(option); open = false },
                 )
@@ -666,17 +667,13 @@ private fun Waveform() {
 
 private fun speedLabel(speed: Float): String {
     val text = if (speed % 1f == 0f) "${speed.toInt()}.0" else speed.toString()
-    return "${text.arabicDigits()}×"
+    return "${arabicDigits(text)}×"
 }
 
 /** "٤٢:١٨" from seconds. Latin digits are mapped to Arabic-Indic by code point. */
 private fun formatClock(totalSeconds: Int): String {
     val minutes = totalSeconds / 60
     val seconds = totalSeconds % 60
-    return "${minutes.arabicDigits()}:${seconds.toString().padStart(2, '0').arabicDigits()}"
+    return "${arabicDigits(minutes)}:${arabicDigits(seconds.toString().padStart(2, '0'))}"
 }
 
-private fun Int.arabicDigits(): String = toString().arabicDigits()
-
-private fun String.arabicDigits(): String =
-    map { ch -> if (ch in '0'..'9') '\u0660' + (ch - '0') else ch }.joinToString("")

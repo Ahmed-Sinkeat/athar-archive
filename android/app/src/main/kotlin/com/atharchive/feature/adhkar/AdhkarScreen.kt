@@ -1,5 +1,6 @@
 package com.atharchive.feature.adhkar
 
+import com.atharchive.ui.components.arabicDigits
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable

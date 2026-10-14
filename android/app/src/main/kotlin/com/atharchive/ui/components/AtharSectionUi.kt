@@ -401,7 +401,9 @@ fun AtharFilterMenu(groups: List<AtharFilterGroup>, tagPrefix: String, modifier:
     }
 }
 
-private fun arabicDigits(n: Int) = n.toString().map { if (it.isDigit()) '٠' + (it - '0') else it }.joinToString("")
+/** Western digits to Arabic-Indic; anything else is kept as is. */
+fun arabicDigits(text: String): String = text.map { if (it in '0'..'9') '\u0660' + (it - '0') else it }.joinToString("")
+fun arabicDigits(value: Int): String = arabicDigits(value.toString())
 
 /**
  * Tab and filter rows that get out of the way: hidden while the list scrolls down, back on

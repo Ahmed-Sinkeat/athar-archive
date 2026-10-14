@@ -1,5 +1,6 @@
 package com.atharchive.feature.poemreader
 
+import com.atharchive.ui.components.arabicDigits
 import androidx.compose.ui.graphics.lerp
 import com.atharchive.ui.components.AtharMenuItem
 import com.atharchive.ui.components.AtharMenuColors
@@ -204,7 +205,7 @@ private fun SharhBody(
                         .testTag("poem_sharh_${verse.id}"),
                 ) {
                     Text(
-                        text = "البيت ${arabicNumber(verse.number)}",
+                        text = "البيت ${arabicDigits(verse.number)}",
                         color = colors.accent,
                         style = MaterialTheme.typography.labelSmall,
                         fontWeight = FontWeight.SemiBold,
@@ -249,7 +250,6 @@ private fun SharhBody(
     }
 }
 
-private fun arabicNumber(n: Int): String = arabicDigits(n.toString())
 
 @Composable
 private fun SearchBody(
@@ -622,5 +622,3 @@ private fun clock(totalSeconds: Int): String {
     return "${arabicDigits(m.toString())}:${arabicDigits(s.toString().padStart(2, '0'))}"
 }
 
-private fun arabicDigits(text: String): String =
-    text.map { ch -> if (ch in '0'..'9') '٠' + (ch - '0') else ch }.joinToString("")

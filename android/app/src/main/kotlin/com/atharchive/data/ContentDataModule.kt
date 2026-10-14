@@ -119,7 +119,7 @@ class ContentAccess @Inject constructor(
 
     suspend fun reconcileAudioDownloads() = withContext(Dispatchers.IO) {
         if (_downloadedAudio.value.isEmpty()) return@withContext
-        val references = contentDatabase.catalogDao().allEntities().flatMap { it.toCatalogEntry().audio }.associateBy { it.id }
+        val references = contentDatabase.catalogDao().entitiesWithAudio().flatMap { it.toCatalogEntry().audio }.associateBy { it.id }
         val downloaded = _downloadedAudio.value
         val valid = downloaded.filterTo(hashSetOf()) { id ->
             references[id]?.let { audio -> audioFile(audio).let { it.isFile && it.length() == audio.size } } == true
@@ -137,7 +137,7 @@ class ContentAccess @Inject constructor(
     }
 
     private suspend fun findAudio(audioId: String): AudioReference =
-        contentDatabase.catalogDao().allEntities().asSequence().flatMap { it.toCatalogEntry().audio.asSequence() }
+        contentDatabase.catalogDao().entitiesMentioningAudio(audioId).asSequence().flatMap { it.toCatalogEntry().audio.asSequence() }
             .firstOrNull { it.id == audioId } ?: error("التسجيل غير موجود في الفهرس")
 
     private fun audioFile(audio: AudioReference) = File(context.filesDir, "audio/${audio.hash}.${audio.format}")
@@ -310,14 +310,10 @@ class ContentAccess @Inject constructor(
 
     private suspend fun openLocked(entityId: String, ordinal: Int): ReadThroughResult? {
         val source = repository ?: return null
-        val t0 = android.os.SystemClock.elapsedRealtime()
-        fun lap(stage: String) = android.util.Log.i("AtharOpen", "$entityId@$ordinal $stage +${android.os.SystemClock.elapsedRealtime() - t0}ms")
-        lap("start")
         val frames = contentDatabase.importDao().frames(entityId)
         val cachedFrame = frames.firstOrNull {
             ordinal in it.firstBlockOrdinal until (it.firstBlockOrdinal + it.blockCount)
         }
-        lap("frames-read")
         val readingOrdinal = userDatabase.userDataDao().readingPosition(entityId)?.ordinalHint
         val readingFrame = frames.firstOrNull { readingOrdinal != null && readingOrdinal in it.firstBlockOrdinal until (it.firstBlockOrdinal + it.blockCount) }?.frameOrdinal
         val status = mutationMutex.withLock {
@@ -328,7 +324,6 @@ class ContentAccess @Inject constructor(
             )
         }
         _storageStatus.value = status
-        lap("prepared")
         if (cachedFrame == null && status.lowStorage) {
             throw InsufficientContentStorageException(
                 availableBytes = status.availableBytes,
@@ -337,7 +332,6 @@ class ContentAccess @Inject constructor(
             )
         }
         val result = source.openFrame(entityId, ordinal)
-        lap("openFrame-done")
         mutationMutex.withLock {
             cacheManager.evictToBudget(
                 budgetBytes = _cacheBudgetBytes.value,
@@ -346,7 +340,6 @@ class ContentAccess @Inject constructor(
                 activeFrameOrdinals = setOfNotNull(result.frameNumber, readingFrame),
             )
         }
-        lap("evicted")
         return result
     }
 

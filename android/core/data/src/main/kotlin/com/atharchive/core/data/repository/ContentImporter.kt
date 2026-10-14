@@ -78,16 +78,11 @@ class ContentImporter(
         compressedBytes: ByteArray,
     ): FrameImportResult {
         val dao = database.importDao()
-        val t0 = android.os.SystemClock.elapsedRealtime()
-        fun lap(stage: String) = android.util.Log.i("AtharOpen", "import ${entry.id}#$frameNumber $stage +${android.os.SystemClock.elapsedRealtime() - t0}ms")
         ContentSearchSchema.ensure(database)
-        lap("ensure")
         return try {
             val decoded = FramedPackageDecoder.decodeFrame(compressedBytes, frame, entry)
-            lap("decoded ${decoded.blocks.size} blocks")
             val now = nowMillis()
             val entities = decoded.blocks.map { it.toEntity(entry.id) }
-            lap("mapped")
             database.withWriteTransaction {
                 val local = dao.entity(entry.id)
                 if (local?.localPackageHash != null && local.localPackageHash != entry.pkg.hash) {
@@ -115,15 +110,12 @@ class ContentImporter(
                     },
                     now = now,
                 )
-                lap("rows-inserted")
                 val indexed = dao.blockWindow(
                     entry.id,
                     frame.ord,
                     frame.ord + frame.n - 1,
                 )
-                lap("window-read")
                 ContentSearchSchema.indexBlocks(this, indexed)
-                lap("fts-indexed")
                 result
             }
         } catch (error: Throwable) {

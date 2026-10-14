@@ -56,8 +56,6 @@ data class AdhkarUiState(
 }
 
 /** Arabic-Indic digits by code point. Escapes, never pasted glyphs. */
-fun arabicDigits(value: Int): String =
-    value.toString().map { ch -> if (ch in '0'..'9') '٠' + (ch - '0') else ch }.joinToString("")
 
 private val MorningAdhkar = listOf(
     DhikrUi(

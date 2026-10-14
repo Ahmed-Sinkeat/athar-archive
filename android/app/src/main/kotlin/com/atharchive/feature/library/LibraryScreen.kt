@@ -307,7 +307,6 @@ private fun CreateCollectionDialog(onDismiss: () -> Unit, onCreate: (String) -> 
     )
 }
 
-private fun arabicDigits(value: Int): String = value.toString().map { "٠١٢٣٤٥٦٧٨٩"[it - '0'] }.joinToString("")
 
 /** The shelves a reader picks between. المحمّلة and الأخيرة live on each section's own tabs. */
 private val LibraryTabs = listOf(LibraryShelf.ReadLater, LibraryShelf.Continue, LibraryShelf.Reading, LibraryShelf.Finished)
