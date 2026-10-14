@@ -174,6 +174,7 @@ fun AtharApp(
     val syncState by contentViewModel.syncState.collectAsStateWithLifecycle()
     val nowPlaying = audioState.nowPlaying
     var editingExcerpt by remember { mutableStateOf<ExcerptUi?>(null) }
+    var deletingExcerpt by remember { mutableStateOf<ExcerptUi?>(null) }
     // Each screen collects its own state inside its entry: a flow collected here runs from
     // launch, and every write to `entity` re-reads the whole catalog once per running flow.
     val booksState by contentViewModel.books.collectAsStateWithLifecycle()
@@ -759,6 +760,7 @@ fun AtharApp(
                                 shareText(context, it.shareText())
                             },
                             onMore = { editingExcerpt = it },
+                            onDelete = { deletingExcerpt = it },
                             onOpenSource = {
                                 backStack.add(ReaderRoute(it.entityId, targetOrdinal = it.sourceOrdinal))
                             },
@@ -817,13 +819,7 @@ fun AtharApp(
                     horizontalArrangement = Arrangement.SpaceBetween,
                 ) {
                     TextButton(
-                        onClick = {
-                            scope.launch {
-                                runCatching { contentViewModel.deleteAnnotation(excerpt.id) }
-                                    .onSuccess { editingExcerpt = null; announce("حُذف المقتطف") }
-                                    .onFailure { announce("تعذّر الحفظ؛ بقي التعليق مفتوحًا") }
-                            }
-                        },
+                        onClick = { deletingExcerpt = excerpt },
                         modifier = Modifier.testTag("kannashah_delete_annotation"),
                     ) {
                         Text("حذف")
@@ -843,6 +839,32 @@ fun AtharApp(
                 }
             }
         }
+    }
+
+    // Deleting an excerpt can't be undone, so both ways to it (the menu, the note sheet) ask first.
+    deletingExcerpt?.let { excerpt ->
+        androidx.compose.material3.AlertDialog(
+            onDismissRequest = { deletingExcerpt = null },
+            title = { Text("حذف المقتطف؟") },
+            text = { Text(excerpt.text, maxLines = 3, overflow = TextOverflow.Ellipsis) },
+            confirmButton = {
+                TextButton(
+                    onClick = {
+                        scope.launch {
+                            runCatching { contentViewModel.deleteAnnotation(excerpt.id) }
+                                .onSuccess {
+                                    deletingExcerpt = null
+                                    editingExcerpt = null
+                                    announce("حُذف المقتطف")
+                                }
+                                .onFailure { deletingExcerpt = null; announce("تعذّر حذف المقتطف") }
+                        }
+                    },
+                    modifier = Modifier.testTag("kannashah_confirm_delete"),
+                ) { Text("حذف") }
+            },
+            dismissButton = { TextButton(onClick = { deletingExcerpt = null }) { Text("إلغاء") } },
+        )
     }
 
 }

@@ -31,6 +31,7 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import com.atharchive.ui.components.AtharCollapsible
 import com.atharchive.ui.components.rememberAtharCollapsingHeader
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -73,6 +74,7 @@ fun KannashahScreen(
     onCopy: (ExcerptUi) -> Unit,
     onShare: (ExcerptUi) -> Unit,
     onMore: (ExcerptUi) -> Unit,
+    onDelete: (ExcerptUi) -> Unit,
     onOpenSource: (ExcerptUi) -> Unit,
     modifier: Modifier = Modifier,
     onBack: (() -> Unit)? = null,
@@ -107,6 +109,16 @@ fun KannashahScreen(
             KannashahSort.Oldest -> matching.sortedBy { it.addedOrder }
             KannashahSort.SourceOrder -> matching.sortedBy { it.sourceOrdinal }
         }
+    }
+    // A new excerpt lands above the one the list kept its place on, half under the header.
+    // Seen from the top, show it whole.
+    val newestId = state.excerpts.maxByOrNull { it.addedOrder }?.id
+    var shownNewestId by rememberSaveable { mutableStateOf(newestId) }
+    LaunchedEffect(newestId) {
+        if (newestId != shownNewestId && sort == KannashahSort.Newest && listState.firstVisibleItemIndex <= 1) {
+            listState.scrollToItem(0)
+        }
+        shownNewestId = newestId
     }
     // Grouping is a presentation of the same list, never a different screen or dataset.
     val groups = remember(sorted, view, grouping) {
@@ -247,7 +259,7 @@ fun KannashahScreen(
                     )
                 }
             } else if (view == KannashahView.All) {
-                items(sorted, horizontalPadding, onCopy, onShare, onMore, onOpenSource)
+                items(sorted, horizontalPadding, onCopy, onShare, onMore, onDelete, onOpenSource)
             } else {
                 groups.forEachIndexed { groupIndex, group ->
                     item(key = "group-$groupIndex") {
@@ -256,7 +268,7 @@ fun KannashahScreen(
                             horizontalPadding = horizontalPadding,
                         )
                     }
-                    items(group.items, horizontalPadding, onCopy, onShare, onMore, onOpenSource, "group-$groupIndex:")
+                    items(group.items, horizontalPadding, onCopy, onShare, onMore, onDelete, onOpenSource, "group-$groupIndex:")
                 }
             }
         }
@@ -270,6 +282,7 @@ private fun androidx.compose.foundation.lazy.LazyListScope.items(
     onCopy: (ExcerptUi) -> Unit,
     onShare: (ExcerptUi) -> Unit,
     onMore: (ExcerptUi) -> Unit,
+    onDelete: (ExcerptUi) -> Unit,
     onOpenSource: (ExcerptUi) -> Unit,
     keyPrefix: String = "",
 ) {
@@ -280,6 +293,7 @@ private fun androidx.compose.foundation.lazy.LazyListScope.items(
             onCopy = { onCopy(excerpt) },
             onShare = { onShare(excerpt) },
             onMore = { onMore(excerpt) },
+            onDelete = { onDelete(excerpt) },
             onOpenSource = { onOpenSource(excerpt) },
         )
         if (index != excerpts.lastIndex) {
@@ -347,6 +361,7 @@ private fun ExcerptItem(
     onCopy: () -> Unit,
     onShare: () -> Unit,
     onMore: () -> Unit,
+    onDelete: () -> Unit,
     onOpenSource: () -> Unit,
 ) {
     Row(
@@ -499,6 +514,12 @@ private fun ExcerptItem(
                             icon = AtharIcons.Books,
                             onClick = { menu = false; onOpenSource() },
                             modifier = Modifier.testTag("excerpt_source_${excerpt.id}"),
+                        )
+                        AtharMenuItem(
+                            label = "حذف المقتطف",
+                            icon = AtharIcons.Close,
+                            onClick = { menu = false; onDelete() },
+                            modifier = Modifier.testTag("excerpt_delete_${excerpt.id}"),
                         )
                     }
                 }

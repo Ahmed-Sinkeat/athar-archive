@@ -7,6 +7,19 @@ import org.junit.Test
 
 class SelectionDocumentTest {
     @Test
+    fun aParagraphCutByAPageRunsOnButAFinishedOneKeepsItsBreak() {
+        val doc = SelectionDocument.create(listOf(
+            ReaderBlock.Paragraph("a", "one two", ordinal = 1),
+            ReaderBlock.PageBreak("p1", 9, ordinal = 2),
+            ReaderBlock.Paragraph("b", "three.", ordinal = 3),
+            ReaderBlock.PageBreak("p2", 10, ordinal = 4),
+            ReaderBlock.Paragraph("c", "four", ordinal = 5),
+            ReaderBlock.Paragraph("d", "five", ordinal = 6),
+        ))
+        assertEquals("one two three.\n\nfour\n\nfive", doc.selection(0, doc.text.length)?.quotedText)
+    }
+
+    @Test
     fun aPressOnPunctuationOrPastTheLineEndPicksTheWordBeforeIt() {
         val text = "amma baad: then"
         // Letters group into words; anything else is a one-character "word", like ICU.

@@ -54,12 +54,16 @@ internal data class SelectionDocument(
         val end = endpoint(last, end = true) ?: return null
         val startIndex = segments.indexOfFirst { it.block.id == start.blockId }
         val endIndex = segments.indexOfFirst { it.block.id == end.blockId }
-        val selectedText = segments.subList(startIndex, endIndex + 1).mapIndexed { index, segment ->
-            val from = if (index == 0) start.offset else 0
-            val to = if (index == endIndex - startIndex) end.offset else segment.value.source.length
-            val exact = segment.value.source.substring(from, to)
-            if (segment.block is ReaderBlock.Verse) exact.replace("\n", " … ") else exact
-        }.joinToString("\n\n")
+        val picked = segments.subList(startIndex, endIndex + 1)
+        val selectedText = buildString {
+            picked.forEachIndexed { index, segment ->
+                val from = if (index == 0) start.offset else 0
+                val to = if (index == picked.lastIndex) end.offset else segment.value.source.length
+                val exact = segment.value.source.substring(from, to)
+                if (index > 0) append(if (runsOnAcrossPage(picked[index - 1], segment, this)) " " else "\n\n")
+                append(if (segment.block is ReaderBlock.Verse) exact.replace("\n", " … ") else exact)
+            }
+        }
         if (selectedText.isEmpty()) return null
         return ReaderSelection(start, end, selectedText)
     }
@@ -84,6 +88,18 @@ internal data class SelectionDocument(
         }
     }
 }
+
+/**
+ * A paragraph the page break cut mid-sentence carries on with a space, not a blank line.
+ * ponytail: "ends a sentence" is the last mark only; a closing bracket after a stop reads as mid-sentence.
+ */
+private fun runsOnAcrossPage(previous: SelectionSegment, next: SelectionSegment, sofar: CharSequence): Boolean =
+    next.pageLabel != null &&
+        previous.block is ReaderBlock.Paragraph && next.block is ReaderBlock.Paragraph &&
+        sofar.trimEnd().lastOrNull()?.let { it !in SENTENCE_ENDS } == true
+
+// . ! ? : ; and the Arabic question mark, full stop and semicolon.
+private const val SENTENCE_ENDS = ".!?:;\u061F\u06D4\u061B"
 
 internal fun ReaderBlock.selectionText(): String? = when (this) {
     is ReaderBlock.Heading -> text
