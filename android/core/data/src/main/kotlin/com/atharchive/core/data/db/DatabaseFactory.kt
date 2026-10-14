@@ -29,6 +29,10 @@ object AtharDatabases {
                 override suspend fun migrate(connection: androidx.sqlite.SQLiteConnection) {
                     connection.prepare("ALTER TABLE entity ADD COLUMN verseCount INTEGER").use { it.step() }
                 }
+            }, object : androidx.room3.migration.Migration(2, 3) {
+                override suspend fun migrate(connection: androidx.sqlite.SQLiteConnection) {
+                    connection.prepare("ALTER TABLE entity ADD COLUMN f0Json TEXT").use { it.step() }
+                }
             })
             .addCallback(ContentSearchSchema.callback)
             .fallbackToDestructiveMigration(true)

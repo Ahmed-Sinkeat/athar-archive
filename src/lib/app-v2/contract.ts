@@ -112,6 +112,8 @@ export interface PackageCatalogRef {
   blocks: number;
   chapters: number;
   pages?: PageRange;
+  /** The first frame, so a new book's opening page is fetched without the index first. */
+  f0?: FrameIndexEntry;
 }
 
 export interface AudioCatalogRef {

@@ -139,6 +139,8 @@ describe("app/v2 content generator", () => {
     const first = await generateAppContent(options);
     const poem = first.catalog.entries[0]!;
     expect(poem.verseCount).toBe(2);
+    const index = JSON.parse(readFileSync(path.join(root, "out/app/v2", poem.pkg.idxPath), "utf8"));
+    expect(poem.pkg.f0).toEqual(index.frames[0]);
     const records = gunzipSync(readFileSync(path.join(root, "out/app/v2", poem.pkg.path))).toString().trim().split("\n").map(line => JSON.parse(line));
     expect(records.find(row => row.n === 2).commentary).toEqual([{ sourceLabel: "شرح · المؤلف", text: "تعليق مهم" }]);
     writeFileSync(annotation, readFileSync(annotation, "utf8").replace("v2", "v3"));

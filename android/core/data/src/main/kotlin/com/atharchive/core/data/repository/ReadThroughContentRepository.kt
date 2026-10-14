@@ -2,6 +2,7 @@ package com.atharchive.core.data.repository
 
 import com.atharchive.core.data.content.CatalogEntry
 import com.atharchive.core.data.content.FramedPackageDecoder
+import com.atharchive.core.data.content.FrameIndexEntry
 import com.atharchive.core.data.db.content.AtharContentDatabase
 import com.atharchive.core.data.db.content.ContentAvailability
 import com.atharchive.core.data.db.content.ContentBlockEntity
@@ -147,13 +148,21 @@ class ReadThroughContentRepository(
         // No transfer-state writes on the read-through path: every UPDATE on `entity`
         // re-runs each catalog list query and costs a commit (≈0.3 s each on a Redmi).
         try {
-            val indexBytes = client.fetchPackageIndex(entry)
-            val index = FramedPackageDecoder.decodeIndex(indexBytes, entry)
-            val frameNumber = index.frames.indexOfFirst {
-                targetOrdinal >= it.ord && targetOrdinal < it.ord + it.n
+            // The catalog's signed first frame skips the index round trip for an opening page.
+            val first = entry.pkg.f0?.takeIf { targetOrdinal < it.n }
+            val frameNumber: Int
+            val frame: FrameIndexEntry
+            if (first != null) {
+                frameNumber = 0
+                frame = first
+            } else {
+                val index = FramedPackageDecoder.decodeIndex(client.fetchPackageIndex(entry), entry)
+                frameNumber = index.frames.indexOfFirst {
+                    targetOrdinal >= it.ord && targetOrdinal < it.ord + it.n
+                }
+                require(frameNumber >= 0) { "package index does not cover target ordinal" }
+                frame = index.frames[frameNumber]
             }
-            require(frameNumber >= 0) { "package index does not cover target ordinal" }
-            val frame = index.frames[frameNumber]
             val bytes = client.fetchFrame(entry, frame)
             return mutationMutex.withLock {
                 check(dao.entity(entry.id)?.pkgHash == entry.pkg.hash) { "catalog changed during open; retry" }

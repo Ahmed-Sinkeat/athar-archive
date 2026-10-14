@@ -55,6 +55,23 @@ class FramedPackageDecoderTest {
         }
     }
 
+    @Test
+    fun theCatalogsFirstFrameOpensTheBookWithoutTheIndexAndBadOnesAreRejected() {
+        val index = FramedPackageDecoder.decodeIndex(INDEX.toByteArray(), ARTICLE)
+        val withFirst = ARTICLE.copy(pkg = ARTICLE.pkg.copy(f0 = index.frames.first()))
+        AppContentDocuments.validateEntry(withFirst)
+        val decoded = FramedPackageDecoder.decodeFrame(Base64.getDecoder().decode(PACKAGE_BASE64), withFirst.pkg.f0!!, withFirst)
+        assertEquals(3, decoded.blocks.size)
+        for (bad in listOf(
+            index.frames.first().copy(off = 1),
+            index.frames.first().copy(len = 591),
+            index.frames.first().copy(n = 4),
+            index.frames.first().copy(sha256 = "x"),
+        )) assertThrows(ContentIntegrityException::class.java) {
+            AppContentDocuments.validateEntry(ARTICLE.copy(pkg = ARTICLE.pkg.copy(f0 = bad)))
+        }
+    }
+
     private companion object {
         const val ARTICLE_ID = "byan-kdhb-athr-idha-safr-al-fqr-ila-mkan-ma-qal-al-kfr-khdhny-mak-ala-aby-dhr--v2"
         val ARTICLE = CatalogEntry(

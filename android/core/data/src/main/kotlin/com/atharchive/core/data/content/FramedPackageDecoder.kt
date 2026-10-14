@@ -46,7 +46,7 @@ object AppContentDocuments {
         throw ContentIntegrityException("malformed $label document", error)
     }
 
-    private fun validateEntry(entry: CatalogEntry) {
+    internal fun validateEntry(entry: CatalogEntry) {
         requireCollection(entry.coll)
         requireSegment(entry.id, "catalog entity ID")
         if (entry.v < 1 || !ContentDigests.isSha256(entry.hash) || entry.title.isBlank()) {
@@ -58,6 +58,10 @@ object AppContentDocuments {
             !ContentDigests.isSha256(pkg.hash) || !ContentDigests.isSha256(pkg.idxHash) ||
             pkg.size < 0 || pkg.idxSize < 0 || pkg.uncompressed < 0 || pkg.blocks < 0 || pkg.chapters < 0
         ) fail("malformed package reference for ${entry.coll}/${entry.id}")
+        pkg.f0?.let { f0 ->
+            if (f0.off != 0L || f0.ord != 0 || f0.len <= 0 || f0.n <= 0 || f0.len > pkg.size || f0.n > pkg.blocks ||
+                !ContentDigests.isSha256(f0.sha256)) fail("malformed first frame for ${entry.coll}/${entry.id}")
+        }
         val base = "content/${entry.coll}/${entry.id}"
         if (pkg.path != "$base/${pkg.hash}.athar" || pkg.idxPath != "$base/${pkg.idxHash}.athar.idx") {
             fail("package paths are not content-addressed for ${entry.coll}/${entry.id}")

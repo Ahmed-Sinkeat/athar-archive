@@ -375,6 +375,7 @@ async function generate(options: GenerateAppContentOptions, stagingRoot: string)
       blocks: parsed.blocks.length,
       chapters: parsed.chapters.length,
       ...(parsed.pages ? { pages: parsed.pages } : {}),
+      ...(artifact.index.frames[0] ? { f0: artifact.index.frames[0] } : {}),
     };
     const hash = sha256Hex(jsonBytes({ ...base, ...person, pkg, ...(audio ? { audio } : {}) }));
     catalogEntries.push({ ...base, hash, ...person, pkg, ...(audio ? { audio } : {}) });

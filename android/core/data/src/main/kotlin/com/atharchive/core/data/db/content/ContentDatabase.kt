@@ -66,6 +66,7 @@ data class ContentEntity(
     /** Serialized [com.atharchive.core.data.content.AudioReference] list. */
     val audioJson: String,
     val verseCount: Int? = null,
+    val f0Json: String? = null,
     /** False for a protected local work removed by a signed tombstone. */
     val catalogPresent: Boolean = true,
     val availability: String = ContentAvailability.ABSENT,
@@ -490,7 +491,7 @@ private fun contiguousProgress(frames: List<EntityFrameEntity>): Int {
         ChapterEntity::class,
         FootnoteEntity::class,
     ],
-    version = 2,
+    version = 3,
     exportSchema = true,
 )
 abstract class AtharContentDatabase : RoomDatabase() {

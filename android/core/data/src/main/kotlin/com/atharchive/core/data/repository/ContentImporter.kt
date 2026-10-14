@@ -153,6 +153,7 @@ fun CatalogEntry.toEntity(): ContentEntity = ContentEntity(
     pkgChapters = pkg.chapters,
     audioJson = AppContentJson.encodeToString(audio),
     verseCount = verseCount,
+    f0Json = pkg.f0?.let { AppContentJson.encodeToString(it) },
 )
 
 fun ContentEntity.toCatalogEntry(): CatalogEntry = CatalogEntry(
@@ -182,6 +183,7 @@ fun ContentEntity.toCatalogEntry(): CatalogEntry = CatalogEntry(
         uncompressed = pkgUncompressed,
         blocks = pkgBlocks,
         chapters = pkgChapters,
+        f0 = f0Json?.let { AppContentJson.decodeFromString(it) },
     ),
     audio = AppContentJson.decodeFromString(audioJson),
 )

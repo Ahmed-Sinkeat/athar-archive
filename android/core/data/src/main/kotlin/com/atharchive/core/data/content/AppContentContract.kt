@@ -75,6 +75,8 @@ data class PackageReference(
     val blocks: Int,
     val chapters: Int,
     val pages: PageRange? = null,
+    /** The first frame, signed with the catalog, so a new book opens without fetching the index first. */
+    val f0: FrameIndexEntry? = null,
 )
 
 @Serializable
