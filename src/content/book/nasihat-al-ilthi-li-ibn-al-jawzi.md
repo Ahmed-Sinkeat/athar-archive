@@ -5,7 +5,6 @@ published_at: 2026-07-17
 person: musab-ibn-salah
 kind: متن
 topics: ["al-asma-was-sifat", "al-sunnah-wal-bidah"]
-audio: nasihat-al-ilthi-li-ibn-al-jawzi
 transcript_status: قيد المراجعة
 description: "شرح مفرغ للشيخ مصعب بن صلاح على رسالة الإمام أبي الفضل إسحاق العلثي إلى ابن الجوزي في إنكار ميله إلى التأويل في الصفات"
 ---

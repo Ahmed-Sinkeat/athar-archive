@@ -6,7 +6,6 @@ person: musab-ibn-salah
 sharh_of: lamiyyat-ibn-al-wardi
 kind: متن
 topics: ["al-adab", "tazkiyat-al-nafs"]
-audio: sharh-lamiyyat-ibn-al-wardi-musab
 transcript_status: قيد المراجعة
 description: "شرح مفرغ للشيخ مصعب بن صلاح على لامية ابن الوردي (نصيحة الإخوان ومرشد الخلان)، بيتا بيتا"
 ---
