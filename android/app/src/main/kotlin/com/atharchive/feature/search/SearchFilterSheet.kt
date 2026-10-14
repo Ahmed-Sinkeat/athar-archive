@@ -1,5 +1,7 @@
 package com.atharchive.feature.search
 
+import com.atharchive.ui.theme.AtharCorners
+import com.atharchive.ui.theme.AtharTextSize
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
@@ -57,7 +59,7 @@ fun SearchFilterSheet(
         onDismissRequest = onDismiss,
         containerColor = AtharTheme.colors.canvas,
         scrimColor = AtharTheme.colors.scrim,
-        shape = RoundedCornerShape(topStart = 18.dp, topEnd = 18.dp),
+        shape = RoundedCornerShape(topStart = 14.dp, topEnd = 14.dp),
     ) {
         Column(
             modifier = Modifier
@@ -72,7 +74,7 @@ fun SearchFilterSheet(
                     modifier = Modifier.weight(1f),
                     fontFamily = AtharEditorialFontFamily,
                     fontWeight = FontWeight.Bold,
-                    fontSize = 19.sp,
+                    fontSize = AtharTextSize.Large,
                     lineHeight = 28.sp,
                 )
                 TextButton(onClick = onClear) { Text("مسح") }
@@ -180,7 +182,7 @@ private fun ChipRow(
                 .then(if (options.size > 10) Modifier.fillMaxWidth() else Modifier)
                 .toggleable(value = chosen, role = Role.Checkbox, onValueChange = { onToggle(text) })
                 .testTag("${tagPrefix}_$index"),
-            shape = RoundedCornerShape(8.dp),
+            shape = AtharCorners.Control,
             color = if (chosen) AtharTheme.colors.accentSurface else AtharTheme.colors.raisedSurface,
         ) {
             Row(Modifier.heightIn(min = 48.dp).padding(horizontal = 11.dp, vertical = 7.dp), verticalAlignment = Alignment.CenterVertically) {

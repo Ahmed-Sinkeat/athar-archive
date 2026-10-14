@@ -1,5 +1,7 @@
 package com.atharchive.ui.components
 
+import com.atharchive.ui.theme.AtharCorners
+import com.atharchive.ui.theme.AtharTextSize
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.MutableTransitionState
 import androidx.compose.animation.core.tween
@@ -21,7 +23,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -131,7 +132,7 @@ fun AtharMenu(
             enter = fadeIn(tween(120)) + scaleIn(tween(160), initialScale = 0.9f,
                 transformOrigin = TransformOrigin(0.5f, if (pointer.above) 1f else 0f)),
         ) {
-            val shape = RoundedCornerShape(14.dp)
+            val shape = AtharCorners.Surface
             val edge = colors.ink.copy(alpha = 0.16f)
             val menuWidth = minOf(width, configuration.screenWidthDp.dp - 16.dp)
             CompositionLocalProvider(LocalMenuColors provides colors) {
@@ -200,9 +201,9 @@ fun AtharMenuItem(
             if (checked) Icon(AtharIcons.Check, null, tint = colors.accent, modifier = Modifier.size(16.dp))
         }
         Column(Modifier.weight(1f)) {
-            Text(label, color = tint, fontSize = 15.sp, fontWeight = if (checked == true) FontWeight.SemiBold else FontWeight.Normal,
+            Text(label, color = tint, fontSize = AtharTextSize.Ui, fontWeight = if (checked == true) FontWeight.SemiBold else FontWeight.Normal,
                 maxLines = 1, overflow = TextOverflow.Ellipsis)
-            if (!subtitle.isNullOrBlank()) Text(subtitle, color = colors.secondary, fontSize = 12.sp, maxLines = 1, overflow = TextOverflow.Ellipsis)
+            if (!subtitle.isNullOrBlank()) Text(subtitle, color = colors.secondary, fontSize = AtharTextSize.Small, maxLines = 1, overflow = TextOverflow.Ellipsis)
         }
         if (icon != null) Icon(icon, null, tint = tint, modifier = Modifier.size(19.dp))
     }

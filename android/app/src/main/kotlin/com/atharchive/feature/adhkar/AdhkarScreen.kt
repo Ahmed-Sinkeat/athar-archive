@@ -1,5 +1,7 @@
 package com.atharchive.feature.adhkar
 
+import com.atharchive.ui.theme.AtharCorners
+import com.atharchive.ui.theme.AtharTextSize
 import com.atharchive.ui.components.arabicDigits
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
@@ -20,7 +22,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -252,7 +253,7 @@ private fun AdhkarProgress(
             Text(
                 text = "إعادة",
                 modifier = Modifier
-                    .clip(RoundedCornerShape(6.dp))
+                    .clip(AtharCorners.Control)
                     .clickable(role = Role.Button, onClick = onReset)
                     .padding(horizontal = 6.dp, vertical = 4.dp)
                     .testTag("adhkar_reset"),
@@ -284,7 +285,7 @@ private fun DhikrCard(
         modifier = Modifier
             .fillMaxWidth()
             .padding(start = horizontalPadding, end = horizontalPadding, top = 10.dp)
-            .clip(RoundedCornerShape(12.dp))
+            .clip(AtharCorners.Card)
             .clickable(
                 enabled = !finished,
                 role = Role.Button,
@@ -299,7 +300,7 @@ private fun DhikrCard(
                 }
             }
             .testTag("dhikr_${dhikr.id}"),
-        shape = RoundedCornerShape(12.dp),
+        shape = AtharCorners.Card,
         color = AtharTheme.colors.raisedSurface,
         border = BorderStroke(1.dp, AtharTheme.colors.divider.copy(alpha = 0.4f)),
     ) {
@@ -310,7 +311,7 @@ private fun DhikrCard(
                     color = MaterialTheme.colorScheme.onSurface
                         .copy(alpha = if (finished) 0.45f else 1f),
                     fontFamily = AtharEditorialFontFamily,
-                    fontSize = 17.sp,
+                    fontSize = AtharTextSize.Title,
                     lineHeight = 32.sp,
                 )
                 if (dhikr.source != null) {
@@ -376,7 +377,7 @@ private fun CountBadge(remaining: Int, repeat: Int) {
     Box(
         modifier = Modifier
             .size(30.dp)
-            .clip(RoundedCornerShape(8.dp))
+            .clip(AtharCorners.Control)
             .background(
                 when {
                     finished -> AtharTheme.colors.success.copy(alpha = 0.13f)

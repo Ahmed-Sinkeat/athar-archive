@@ -1,5 +1,6 @@
 package com.atharchive.feature.adhkar
 
+import com.atharchive.ui.theme.AtharTextSize
 import com.atharchive.ui.components.arabicDigits
 import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.background
@@ -194,7 +195,7 @@ private fun BabRow(
             color = MaterialTheme.colorScheme.onSurface,
             fontFamily = AtharEditorialFontFamily,
             fontWeight = FontWeight.Bold,
-            fontSize = 17.sp,
+            fontSize = AtharTextSize.Title,
             lineHeight = 26.sp,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,

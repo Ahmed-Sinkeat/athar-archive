@@ -1,5 +1,7 @@
 package com.atharchive.feature.poemreader
 
+import com.atharchive.ui.theme.AtharCorners
+import com.atharchive.ui.theme.AtharTextSize
 import com.atharchive.ui.components.arabicDigits
 import androidx.compose.ui.graphics.lerp
 import com.atharchive.ui.components.AtharMenuItem
@@ -25,7 +27,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.HorizontalDivider
@@ -214,12 +215,12 @@ private fun SharhBody(
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(top = 6.dp)
-                            .clip(RoundedCornerShape(9.dp))
+                            .clip(AtharCorners.Control)
                             .background(colors.accent.copy(alpha = 0.06f))
                             .padding(10.dp),
                     ) {
-                        Text(verse.sadr, color = colors.text, fontFamily = AtharEditorialFontFamily, fontSize = 14.sp, lineHeight = 26.sp)
-                        Text(verse.ajz, color = colors.text, fontFamily = AtharEditorialFontFamily, fontSize = 14.sp, lineHeight = 26.sp)
+                        Text(verse.sadr, color = colors.text, fontFamily = AtharEditorialFontFamily, fontSize = AtharTextSize.Body, lineHeight = 26.sp)
+                        Text(verse.ajz, color = colors.text, fontFamily = AtharEditorialFontFamily, fontSize = AtharTextSize.Body, lineHeight = 26.sp)
                     }
                     // Every commentator at once: with only one or two per verse a picker
                     // would hide half the content behind a tap.
@@ -273,7 +274,7 @@ private fun SearchBody(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(14.dp)
-                .clip(RoundedCornerShape(9.dp))
+                .clip(AtharCorners.Control)
                 .background(colors.text.copy(alpha = 0.05f))
                 .padding(horizontal = 11.dp, vertical = 9.dp),
         ) {
@@ -281,12 +282,12 @@ private fun SearchBody(
                 value = query,
                 onValueChange = onQuery,
                 singleLine = true,
-                textStyle = TextStyle(color = colors.text, fontSize = 14.sp),
+                textStyle = TextStyle(color = colors.text, fontSize = AtharTextSize.Body),
                 cursorBrush = SolidColor(colors.accent),
                 modifier = Modifier.fillMaxWidth().testTag("poem_panel_search_field"),
                 decorationBox = { inner ->
                     if (query.isEmpty()) {
-                        Text("ابحث في القصيدة…", color = colors.secondary, fontSize = 14.sp)
+                        Text("ابحث في القصيدة…", color = colors.secondary, fontSize = AtharTextSize.Body)
                     }
                     inner()
                 },
@@ -310,7 +311,7 @@ private fun SearchBody(
                             text = verse.sadr,
                             color = colors.text,
                             fontFamily = AtharEditorialFontFamily,
-                            fontSize = 14.sp,
+                            fontSize = AtharTextSize.Body,
                             maxLines = 1,
                             overflow = TextOverflow.Ellipsis,
                         )
@@ -318,7 +319,7 @@ private fun SearchBody(
                             text = verse.ajz,
                             color = colors.secondary,
                             fontFamily = AtharEditorialFontFamily,
-                            fontSize = 13.sp,
+                            fontSize = AtharTextSize.Body,
                             maxLines = 1,
                             overflow = TextOverflow.Ellipsis,
                         )
@@ -337,7 +338,7 @@ private fun SearchBody(
 @Composable
 private fun PanelEmpty(title: String, body: String, colors: ReaderColors) {
     Column(modifier = Modifier.fillMaxWidth().padding(20.dp)) {
-        Text(title, color = colors.text, fontFamily = AtharEditorialFontFamily, fontWeight = FontWeight.Bold, fontSize = 15.sp)
+        Text(title, color = colors.text, fontFamily = AtharEditorialFontFamily, fontWeight = FontWeight.Bold, fontSize = AtharTextSize.Ui)
         Text(body, modifier = Modifier.padding(top = 5.dp), color = colors.secondary, style = MaterialTheme.typography.bodySmall, lineHeight = 22.sp)
     }
 }
@@ -534,7 +535,7 @@ private fun BarPill(
 ) {
     Row(
         modifier = Modifier
-            .clip(RoundedCornerShape(99.dp))
+            .clip(CircleShape)
             .background(colors.text.copy(alpha = 0.05f))
             .clickable(role = Role.Button, onClick = onClick)
             .padding(horizontal = 10.dp, vertical = 5.dp)

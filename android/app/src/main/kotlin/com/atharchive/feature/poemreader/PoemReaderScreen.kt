@@ -1,5 +1,7 @@
 package com.atharchive.feature.poemreader
 
+import com.atharchive.ui.theme.AtharCorners
+import com.atharchive.ui.theme.AtharTextSize
 import androidx.compose.ui.graphics.lerp
 import androidx.compose.ui.platform.LocalContext
 import com.atharchive.ui.components.AtharMenu
@@ -30,7 +32,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -268,7 +269,7 @@ fun PoemReaderScreen(
                         modifier = Modifier
                             .align(Alignment.BottomCenter)
                             .padding(bottom = 14.dp)
-                            .clip(RoundedCornerShape(99.dp))
+                            .clip(CircleShape)
                             .background(colors.accent)
                             .clickable(role = Role.Button) { followScroll = true }
                             .padding(horizontal = 14.dp, vertical = 7.dp)
@@ -305,7 +306,7 @@ fun PoemReaderScreen(
                         modifier = Modifier
                             .align(Alignment.BottomCenter)
                             .padding(bottom = 60.dp)
-                            .clip(RoundedCornerShape(10.dp))
+                            .clip(AtharCorners.Card)
                             .background(colors.text.copy(alpha = 0.92f))
                             .padding(horizontal = 15.dp, vertical = 8.dp)
                             .testTag("poem_toast"),
@@ -625,7 +626,7 @@ private fun WordCallout(
                 color = colors.page,
                 fontFamily = AtharEditorialFontFamily,
                 fontWeight = FontWeight.Bold,
-                fontSize = 15.sp,
+                fontSize = AtharTextSize.Ui,
             )
             Text(
                 text = word.span.meaning,
@@ -645,7 +646,7 @@ private fun VerseOrnament(colors: ReaderColors) {
         modifier = Modifier.fillMaxWidth().padding(vertical = 2.dp),
         textAlign = TextAlign.Center,
         color = colors.accent.copy(alpha = 0.28f),
-        fontSize = 11.sp,
+        fontSize = AtharTextSize.Caption,
     )
 }
 
@@ -678,7 +679,7 @@ private fun PoemTopBar(
                     color = colors.text,
                     fontFamily = AtharEditorialFontFamily,
                     fontWeight = FontWeight.Bold,
-                    fontSize = 17.sp,
+                    fontSize = AtharTextSize.Title,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis,
                 )
@@ -746,7 +747,7 @@ private fun PoemBottomBar(
                 contentAlignment = Alignment.Center,
             ) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    Text("Aa", color = colors.secondary, fontWeight = FontWeight.SemiBold, fontSize = 20.sp)
+                    Text("Aa", color = colors.secondary, fontWeight = FontWeight.SemiBold, fontSize = AtharTextSize.Large)
                     Text("الخط", color = colors.secondary, style = MaterialTheme.typography.labelSmall)
                 }
             }

@@ -1,5 +1,7 @@
 package com.atharchive.feature.reader
 
+import com.atharchive.ui.theme.AtharCorners
+import com.atharchive.ui.theme.AtharTextSize
 import androidx.activity.compose.BackHandler
 import kotlinx.coroutines.CancellationException
 import androidx.compose.animation.AnimatedVisibility
@@ -36,7 +38,6 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.TextButton
 import androidx.compose.foundation.rememberScrollState
@@ -620,7 +621,7 @@ fun ReaderScreen(
                 modifier = Modifier
                     .align(Alignment.BottomCenter)
                     .padding(bottom = 18.dp)
-                    .clip(RoundedCornerShape(10.dp))
+                    .clip(AtharCorners.Card)
                     .background(colors.text.copy(alpha = 0.92f))
                     .padding(horizontal = 16.dp, vertical = 9.dp)
                     .testTag("reader_toast"),
@@ -675,7 +676,7 @@ private fun ReaderTopBar(
                 color = colors.text,
                 fontFamily = AtharEditorialFontFamily,
                 fontWeight = FontWeight.Bold,
-                fontSize = 15.sp,
+                fontSize = AtharTextSize.Ui,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
             )
@@ -833,7 +834,7 @@ private fun AaButton(colors: ReaderColors, modifier: Modifier = Modifier, onClic
             text = "Aa",
             modifier = Modifier.clearAndSetSemantics { contentDescription = "إعدادات مظهر القراءة" },
             color = colors.secondary,
-            fontSize = 20.sp,
+            fontSize = AtharTextSize.Large,
             fontWeight = FontWeight.SemiBold,
         )
     }
@@ -879,9 +880,9 @@ private fun SelectionToolbar(
 ) {
     Row(
         modifier = modifier
-            .clip(RoundedCornerShape(12.dp))
+            .clip(AtharCorners.Card)
             .background(colors.page)
-            .border(0.7.dp, colors.divider, RoundedCornerShape(12.dp))
+            .border(0.7.dp, colors.divider, AtharCorners.Card)
             .padding(horizontal = 2.dp)
             .testTag("reader_selection_toolbar"),
         verticalAlignment = Alignment.CenterVertically,
@@ -1044,7 +1045,7 @@ private fun ReaderAudioStrip(
                         .padding(horizontal = 10.dp),
                     color = colors.text,
                     fontFamily = AtharEditorialFontFamily,
-                    fontSize = 14.sp,
+                    fontSize = AtharTextSize.Body,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis,
                 )

@@ -1,5 +1,6 @@
 package com.atharchive.ui.components
 
+import com.atharchive.ui.theme.AtharTextSize
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 
@@ -111,7 +112,7 @@ fun AtharTopBar(
                 color = MaterialTheme.colorScheme.onBackground,
                 fontFamily = AtharEditorialFontFamily,
                 fontWeight = FontWeight.Bold,
-                fontSize = 19.sp,
+                fontSize = AtharTextSize.Large,
                 lineHeight = 28.sp,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
@@ -200,7 +201,7 @@ private fun LegacyAtharTopBar(
             color = MaterialTheme.colorScheme.onBackground,
             fontFamily = AtharEditorialFontFamily,
             fontWeight = FontWeight.Bold,
-            fontSize = 26.sp,
+            fontSize = AtharTextSize.Hero,
             lineHeight = 36.sp,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,

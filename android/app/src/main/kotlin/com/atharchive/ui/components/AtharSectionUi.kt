@@ -1,5 +1,7 @@
 package com.atharchive.ui.components
 
+import com.atharchive.ui.theme.AtharCorners
+import com.atharchive.ui.theme.AtharTextSize
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -16,7 +18,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.CircularProgressIndicator
@@ -76,7 +77,7 @@ fun AtharSearchField(
         modifier = modifier
             .fillMaxWidth()
             .heightIn(min = 46.dp),
-        shape = RoundedCornerShape(12.dp),
+        shape = AtharCorners.Card,
         // Nearly flush with the page: a search field should read as part of the
         // surface it sits on, not as a card floating above it.
         color = AtharTheme.colors.inputSurface,
@@ -228,7 +229,7 @@ fun AtharEmptyState(
             text = title,
             fontFamily = AtharEditorialFontFamily,
             fontWeight = FontWeight.Bold,
-            fontSize = 18.sp,
+            fontSize = AtharTextSize.Title,
             lineHeight = 26.sp,
         )
         Text(
@@ -262,7 +263,7 @@ fun AtharMenuButton(
     Box(modifier = modifier) {
         Row(
             modifier = Modifier
-                .clip(RoundedCornerShape(6.dp))
+                .clip(AtharCorners.Control)
                 .clickable(role = Role.DropdownList) { expanded = true }
                 .padding(horizontal = 4.dp, vertical = 6.dp)
                 .testTag("${tagPrefix}_menu"),
@@ -329,7 +330,7 @@ fun AtharFilterMenu(groups: List<AtharFilterGroup>, tagPrefix: String, modifier:
     Box(modifier = modifier) {
         Row(
             modifier = Modifier
-                .clip(RoundedCornerShape(6.dp))
+                .clip(AtharCorners.Control)
                 .clickable(role = Role.DropdownList) { open = null; expanded = true }
                 .padding(horizontal = 4.dp, vertical = 6.dp)
                 .testTag("${tagPrefix}_menu"),
@@ -502,7 +503,7 @@ fun AtharDownloadButton(
         modifier = modifier
             .width(56.dp)
             .defaultMinSize(minHeight = 48.dp)
-            .clip(RoundedCornerShape(12.dp))
+            .clip(AtharCorners.Card)
             .clickable(role = Role.Button, onClick = onClick)
             .semantics {
                 contentDescription = description
@@ -562,7 +563,7 @@ fun AtharMetaPill(
     Text(
         text = text,
         modifier = modifier
-            .clip(RoundedCornerShape(5.dp))
+            .clip(AtharCorners.Tag)
             .background(AtharTheme.colors.pressedSurface)
             .padding(horizontal = 7.dp, vertical = 2.dp),
         color = AtharTheme.colors.secondaryText,
@@ -657,6 +658,6 @@ fun AtharSectionHeading(
         color = MaterialTheme.colorScheme.onBackground,
         fontFamily = AtharEditorialFontFamily,
         fontWeight = FontWeight.Bold,
-        fontSize = 16.sp,
+        fontSize = AtharTextSize.Title,
     )
 }

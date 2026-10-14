@@ -76,6 +76,32 @@ val AtharEditorialFontFamily = FontFamily(
     Font(R.font.amiri_bold, FontWeight.Bold),
 )
 
+/** Every corner in the app; pills and dots use CircleShape. */
+object AtharCorners {
+    /** Marks inside text, small badges. */
+    val Tag = androidx.compose.foundation.shape.RoundedCornerShape(4.dp)
+    /** Chips, toggles, small buttons and fields. */
+    val Control = androidx.compose.foundation.shape.RoundedCornerShape(8.dp)
+    /** Rows, cards and panels. */
+    val Card = androidx.compose.foundation.shape.RoundedCornerShape(12.dp)
+    /** Menus, dialogs and sheets. */
+    val Surface = androidx.compose.foundation.shape.RoundedCornerShape(14.dp)
+    /** The player's cover. */
+    val Artwork = androidx.compose.foundation.shape.RoundedCornerShape(24.dp)
+}
+
+/** Text sizes used outside [MaterialTheme.typography]; the reader's text follows its own setting. */
+object AtharTextSize {
+    val Caption = 11.sp
+    val Small = 12.sp
+    val Body = 14.sp
+    val Ui = 15.sp
+    val Title = 17.sp
+    val Large = 20.sp
+    val Headline = 22.sp
+    val Hero = 26.sp
+}
+
 private val AtharTypography = Typography(
     displaySmall = TextStyle(
         fontFamily = AtharEditorialFontFamily,
@@ -313,7 +339,7 @@ fun AtharTheme(
             // Dialogs and sheets use extraLarge (28dp by default); 14dp matches AtharMenu's
             // card so every floating surface has the same corner.
             shapes = androidx.compose.material3.Shapes(
-                extraLarge = androidx.compose.foundation.shape.RoundedCornerShape(14.dp),
+                extraLarge = AtharCorners.Surface,
             ),
             content = content,
         )

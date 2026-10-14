@@ -1,5 +1,7 @@
 package com.atharchive.feature.reader
 
+import com.atharchive.ui.theme.AtharCorners
+import com.atharchive.ui.theme.AtharTextSize
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -40,7 +42,6 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.foundation.text.BasicTextField
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.FocusRequester
@@ -105,7 +106,7 @@ fun ReaderPanel(
                         color = colors.text,
                         fontFamily = AtharEditorialFontFamily,
                         fontWeight = FontWeight.Bold,
-                        fontSize = 17.sp,
+                        fontSize = AtharTextSize.Title,
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis,
                     )
@@ -219,7 +220,7 @@ private fun PanelSearch(
             modifier = Modifier
                 .padding(horizontal = 14.dp, vertical = 10.dp)
                 .fillMaxWidth()
-                .clip(RoundedCornerShape(10.dp))
+                .clip(AtharCorners.Card)
                 .background(colors.divider.copy(alpha = 0.28f))
                 .padding(horizontal = 10.dp, vertical = 9.dp),
             verticalAlignment = Alignment.CenterVertically,
@@ -306,7 +307,7 @@ private fun PanelSearch(
                         modifier = Modifier.padding(top = 3.dp),
                         color = colors.text,
                         fontFamily = AtharEditorialFontFamily,
-                        fontSize = 15.sp,
+                        fontSize = AtharTextSize.Ui,
                         lineHeight = 27.sp,
                         maxLines = 3,
                         overflow = TextOverflow.Ellipsis,
@@ -398,7 +399,7 @@ private fun BenefitsList(state: ReaderUiState, colors: ReaderColors, onJump: (In
                     text = benefit.text,
                     color = colors.text,
                     fontFamily = AtharEditorialFontFamily,
-                    fontSize = 15.sp,
+                    fontSize = AtharTextSize.Ui,
                     lineHeight = 27.sp,
                     maxLines = 3,
                     overflow = TextOverflow.Ellipsis,
@@ -446,7 +447,7 @@ private fun BookmarksList(state: ReaderUiState, colors: ReaderColors, onJump: (I
                         text = bookmark.preview,
                         color = colors.text,
                         fontFamily = AtharEditorialFontFamily,
-                        fontSize = 15.sp,
+                        fontSize = AtharTextSize.Ui,
                         lineHeight = 26.sp,
                         maxLines = 2,
                         overflow = TextOverflow.Ellipsis,
@@ -480,7 +481,7 @@ private fun PanelEmpty(title: String, body: String, colors: ReaderColors) {
             color = colors.text,
             fontFamily = AtharEditorialFontFamily,
             fontWeight = FontWeight.Bold,
-            fontSize = 16.sp,
+            fontSize = AtharTextSize.Title,
         )
         Text(
             text = body,

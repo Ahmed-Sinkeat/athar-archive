@@ -1,5 +1,6 @@
 package com.atharchive.feature.poetry
 
+import com.atharchive.ui.theme.AtharTextSize
 import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -288,7 +289,7 @@ private fun PoemRow(
                         },
                         color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.88f),
                         fontFamily = AtharEditorialFontFamily,
-                        fontSize = 16.sp,
+                        fontSize = AtharTextSize.Title,
                         lineHeight = 32.sp,
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis,

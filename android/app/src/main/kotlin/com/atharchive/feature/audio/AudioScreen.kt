@@ -1,5 +1,7 @@
 package com.atharchive.feature.audio
 
+import com.atharchive.ui.theme.AtharCorners
+import com.atharchive.ui.theme.AtharTextSize
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -19,7 +21,6 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -265,7 +266,7 @@ private fun AudioRow(
                 color = MaterialTheme.colorScheme.onSurface,
                 fontFamily = AtharEditorialFontFamily,
                 fontWeight = FontWeight.Bold,
-                fontSize = 16.sp,
+                fontSize = AtharTextSize.Title,
                 lineHeight = 25.sp,
                 maxLines = 2,
                 overflow = TextOverflow.Ellipsis,
@@ -363,7 +364,7 @@ internal fun DownloadedPill(modifier: Modifier = Modifier) {
     Text(
         text = "محمّل",
         modifier = modifier
-            .clip(RoundedCornerShape(5.dp))
+            .clip(AtharCorners.Tag)
             .background(AtharTheme.colors.success.copy(alpha = 0.11f))
             .padding(horizontal = 6.dp, vertical = 1.dp),
         color = AtharTheme.colors.success,

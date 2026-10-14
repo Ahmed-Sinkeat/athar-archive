@@ -1,5 +1,6 @@
 package com.atharchive.feature.library
 
+import com.atharchive.ui.theme.AtharTextSize
 import androidx.compose.foundation.layout.Spacer
 import com.atharchive.ui.components.AtharTabRow
 import com.atharchive.ui.components.AtharTab
@@ -112,7 +113,7 @@ fun LibraryScreen(
                             modifier = Modifier.weight(1f),
                             fontFamily = AtharEditorialFontFamily,
                             fontWeight = FontWeight.Bold,
-                            fontSize = 18.sp,
+                            fontSize = AtharTextSize.Title,
                         ) else Spacer(Modifier.weight(1f))
                         if (state.collections.isNotEmpty()) {
                             AtharMenuButton(
@@ -217,7 +218,7 @@ private fun LibraryWorkRow(
             text = work.title,
             fontFamily = AtharEditorialFontFamily,
             fontWeight = FontWeight.Bold,
-            fontSize = 18.sp,
+            fontSize = AtharTextSize.Title,
             lineHeight = 27.sp,
             maxLines = 2,
             overflow = TextOverflow.Ellipsis,

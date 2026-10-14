@@ -1,5 +1,7 @@
 package com.atharchive.feature.audio
 
+import com.atharchive.ui.theme.AtharCorners
+import com.atharchive.ui.theme.AtharTextSize
 import com.atharchive.ui.components.arabicDigits
 import com.atharchive.ui.components.AtharMenuItem
 import com.atharchive.ui.components.AtharMenu
@@ -20,7 +22,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.gestures.detectTapGestures
@@ -146,7 +147,7 @@ fun PlayerScreen(
                     color = MaterialTheme.colorScheme.onBackground,
                     fontFamily = AtharEditorialFontFamily,
                     fontWeight = FontWeight.Bold,
-                    fontSize = 16.sp,
+                    fontSize = AtharTextSize.Title,
                 )
                 Box {
                     var moreOpen by remember { mutableStateOf(false) }
@@ -179,7 +180,7 @@ fun PlayerScreen(
                     .padding(top = 8.dp)
                     .align(Alignment.CenterHorizontally)
                     .size(148.dp)
-                    .clip(RoundedCornerShape(24.dp))
+                    .clip(AtharCorners.Artwork)
                     .background(AtharTheme.colors.pressedSurface),
                 contentAlignment = Alignment.Center,
             ) {
@@ -196,7 +197,7 @@ fun PlayerScreen(
                 color = MaterialTheme.colorScheme.onSurface,
                 fontFamily = AtharEditorialFontFamily,
                 fontWeight = FontWeight.Bold,
-                fontSize = 23.sp,
+                fontSize = AtharTextSize.Headline,
                 lineHeight = 34.sp,
                 maxLines = 2,
                 overflow = TextOverflow.Ellipsis,
@@ -300,7 +301,7 @@ fun PlayerScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(start = pad, end = pad, top = 22.dp),
-                shape = RoundedCornerShape(14.dp),
+                shape = AtharCorners.Surface,
                 color = AtharTheme.colors.raisedSurface,
             ) {
                 Column(modifier = Modifier.padding(vertical = 12.dp)) {
@@ -310,7 +311,7 @@ fun PlayerScreen(
                         color = MaterialTheme.colorScheme.onSurface,
                         fontFamily = AtharEditorialFontFamily,
                         fontWeight = FontWeight.Bold,
-                        fontSize = 16.sp,
+                        fontSize = AtharTextSize.Title,
                     )
                     Row(
                         modifier = Modifier
@@ -443,7 +444,7 @@ private fun SeekButton(icon: ImageVector, seconds: Int, label: String, onClick: 
             text = arabicDigits(seconds),
             modifier = Modifier.padding(top = 5.dp),
             color = MaterialTheme.colorScheme.onSurface,
-            fontSize = 9.sp,
+            fontSize = 9.sp, // the digit drawn inside the skip icon; off the text scale on purpose
             fontWeight = FontWeight.SemiBold,
         )
     }
@@ -461,10 +462,10 @@ private fun ActionTile(
     val tint = if (active) AtharTheme.colors.accent else AtharTheme.colors.secondaryText
     Surface(
         modifier = modifier
-            .clip(RoundedCornerShape(11.dp))
+            .clip(AtharCorners.Card)
             .clickable(role = Role.Button, onClick = onClick)
             .testTag(tag),
-        shape = RoundedCornerShape(11.dp),
+        shape = AtharCorners.Card,
         color = if (active) {
             AtharTheme.colors.accentSurface
         } else {
@@ -577,7 +578,7 @@ private fun SpeedTile(speed: Float, onSelect: (Float) -> Unit, modifier: Modifie
                 text = speedLabel(speed),
                 color = tint,
                 fontWeight = FontWeight.SemiBold,
-                fontSize = 15.sp,
+                fontSize = AtharTextSize.Ui,
             )
         }
         AtharMenu(expanded = open, onDismiss = { open = false }, width = 180.dp) {
@@ -606,7 +607,7 @@ private fun QueueRow(item: AudioUi, onPlay: () -> Unit) {
                 color = MaterialTheme.colorScheme.onSurface,
                 fontFamily = AtharEditorialFontFamily,
                 fontWeight = FontWeight.Bold,
-                fontSize = 15.sp,
+                fontSize = AtharTextSize.Ui,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
             )

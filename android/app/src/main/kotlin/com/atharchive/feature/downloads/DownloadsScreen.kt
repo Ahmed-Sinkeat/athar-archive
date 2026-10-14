@@ -1,5 +1,6 @@
 package com.atharchive.feature.downloads
 
+import com.atharchive.ui.theme.AtharCorners
 import com.atharchive.ui.components.AtharMenuItem
 import com.atharchive.ui.components.AtharMenu
 import androidx.compose.foundation.background
@@ -21,7 +22,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -254,7 +254,7 @@ private fun StorageSummary(
             Text(
                 text = "مسح المؤقّت",
                 modifier = Modifier
-                    .clip(RoundedCornerShape(6.dp))
+                    .clip(AtharCorners.Control)
                     .clickable(role = Role.Button, onClick = onClearCache)
                     .padding(horizontal = 6.dp, vertical = 5.dp)
                     .testTag("downloads_clear_cache"),

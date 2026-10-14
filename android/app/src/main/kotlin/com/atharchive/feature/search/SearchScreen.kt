@@ -1,5 +1,7 @@
 package com.atharchive.feature.search
 
+import com.atharchive.ui.theme.AtharCorners
+import com.atharchive.ui.theme.AtharTextSize
 import com.atharchive.ui.components.arabicDigits
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.LocalIndication
@@ -23,7 +25,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -196,7 +197,7 @@ fun SearchScreen(
                                 color = MaterialTheme.colorScheme.onBackground,
                                 fontFamily = AtharEditorialFontFamily,
                                 fontWeight = FontWeight.Bold,
-                                fontSize = 16.sp,
+                                fontSize = AtharTextSize.Title,
                             )
                             TextButton(
                                 onClick = onClearRecent,
@@ -380,7 +381,7 @@ private fun ResultsBar(
         )
         Row(
             modifier = Modifier
-                .clip(RoundedCornerShape(6.dp))
+                .clip(AtharCorners.Control)
                 .clickable(role = Role.Button, onClick = onFilters)
                 .padding(horizontal = 6.dp, vertical = 6.dp)
                 .testTag("search_filters"),
@@ -489,10 +490,10 @@ private fun DirectMatchRow(
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = horizontalPadding, vertical = 4.dp)
-            .clip(RoundedCornerShape(12.dp))
+            .clip(AtharCorners.Card)
             .clickable(role = Role.Button, onClick = onClick)
             .testTag("search_direct_${match.id}"),
-        shape = RoundedCornerShape(12.dp),
+        shape = AtharCorners.Card,
         color = AtharTheme.colors.raisedSurface,
         border = BorderStroke(1.dp, AtharTheme.colors.divider.copy(alpha = 0.4f)),
     ) {
@@ -507,7 +508,7 @@ private fun DirectMatchRow(
                     color = MaterialTheme.colorScheme.onSurface,
                     fontFamily = AtharEditorialFontFamily,
                     fontWeight = FontWeight.Bold,
-                    fontSize = 17.sp,
+                    fontSize = AtharTextSize.Title,
                     lineHeight = 26.sp,
                 )
                 Row(
@@ -567,7 +568,7 @@ private fun HitRow(
                 text = highlighted,
                 color = MaterialTheme.colorScheme.onSurface,
                 fontFamily = AtharEditorialFontFamily,
-                fontSize = 16.sp,
+                fontSize = AtharTextSize.Title,
                 lineHeight = 29.sp,
                 maxLines = 3,
                 overflow = TextOverflow.Ellipsis,
@@ -597,7 +598,7 @@ private fun HitRow(
 @Composable
 private fun TypeChip(label: String) {
     Surface(
-        shape = RoundedCornerShape(5.dp),
+        shape = AtharCorners.Tag,
         color = AtharTheme.colors.raisedSurface,
     ) {
         Text(
@@ -645,7 +646,7 @@ private fun ActiveChips(
 @Composable
 private fun RemovableChip(label: String, onRemove: () -> Unit) {
     Surface(
-        shape = RoundedCornerShape(7.dp),
+        shape = AtharCorners.Control,
         color = AtharTheme.colors.accent.copy(alpha = 0.10f),
     ) {
         Row(

@@ -1,5 +1,7 @@
 package com.atharchive.feature.reader
 
+import com.atharchive.ui.theme.AtharCorners
+import com.atharchive.ui.theme.AtharTextSize
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -9,7 +11,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
@@ -148,7 +149,7 @@ internal fun BlockView(
         is ReaderBlock.Paragraph -> {
             Box(
                 modifier = pressable
-                    .clip(RoundedCornerShape(4.dp))
+                    .clip(AtharCorners.Tag)
                     .background(background)
                     .padding(vertical = 7.dp)
                     .testTag("block_${block.id}"),
@@ -181,7 +182,7 @@ internal fun BlockView(
         is ReaderBlock.Quote -> {
             Row(
                 modifier = pressable
-                    .clip(RoundedCornerShape(4.dp))
+                    .clip(AtharCorners.Tag)
                     .background(background)
                     .padding(vertical = 10.dp)
                     .testTag("block_${block.id}"),
@@ -208,7 +209,7 @@ internal fun BlockView(
         is ReaderBlock.Verse -> {
             Column(
                 modifier = pressable
-                    .clip(RoundedCornerShape(4.dp))
+                    .clip(AtharCorners.Tag)
                     .background(background)
                     .padding(vertical = 12.dp)
                     .testTag("block_${block.id}"),
@@ -317,7 +318,7 @@ private fun markedText(
                 // A hidden footnote marker keeps its characters, so source offsets (selection,
                 // highlights, copy) are unchanged; it just takes no visible room.
                 "sup" -> style(if (!showFootnotes && span.target != null) HiddenMarker
-                    else SpanStyle(baselineShift = BaselineShift.Superscript, fontSize = 12.sp), span.s, span.e)
+                    else SpanStyle(baselineShift = BaselineShift.Superscript, fontSize = AtharTextSize.Small), span.s, span.e)
             }
             val target = span.target
             if (span.k in listOf("link", "entityRef") && !target.isNullOrBlank()) {

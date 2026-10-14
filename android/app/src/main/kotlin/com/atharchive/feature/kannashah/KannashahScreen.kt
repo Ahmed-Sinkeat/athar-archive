@@ -1,5 +1,8 @@
 package com.atharchive.feature.kannashah
 
+import com.atharchive.ui.theme.AtharCorners
+import com.atharchive.ui.theme.AtharTextSize
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -18,7 +21,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -321,7 +323,7 @@ private fun GroupHeading(group: ExcerptGroup, horizontalPadding: Dp) {
                 color = MaterialTheme.colorScheme.onSurface,
                 fontFamily = AtharEditorialFontFamily,
                 fontWeight = FontWeight.Bold,
-                fontSize = 17.sp,
+                fontSize = AtharTextSize.Title,
                 lineHeight = 26.sp,
             )
             if (group.subtitle != null) {
@@ -359,7 +361,7 @@ private fun ExcerptItem(
             Modifier
                 .width(2.dp)
                 .fillMaxHeight()
-                .clip(RoundedCornerShape(1.dp))
+                .clip(CircleShape)
                 .background(AtharTheme.colors.accent.copy(alpha = 0.55f)),
         )
         Column(modifier = Modifier.padding(start = 14.dp)) {
@@ -369,7 +371,7 @@ private fun ExcerptItem(
                 text = excerpt.text,
                 color = MaterialTheme.colorScheme.onSurface,
                 fontFamily = AtharEditorialFontFamily,
-                fontSize = 17.5.sp,
+                fontSize = AtharTextSize.Title,
                 lineHeight = 32.sp,
             )
             // Three ranks in one line: the work in burgundy, then author, then page.
@@ -392,7 +394,7 @@ private fun ExcerptItem(
                 },
                 modifier = Modifier
                     .padding(top = 8.dp)
-                    .clip(RoundedCornerShape(4.dp))
+                    .clip(AtharCorners.Tag)
                     .clickable(role = Role.Button, onClick = onOpenSource)
                     .testTag("excerpt_source_${excerpt.id}"),
                 color = AtharTheme.colors.secondaryText,
@@ -404,7 +406,7 @@ private fun ExcerptItem(
                 Row(
                     modifier = Modifier
                         .padding(top = 10.dp)
-                        .clip(RoundedCornerShape(8.dp))
+                        .clip(AtharCorners.Control)
                         .background(AtharTheme.colors.accent.copy(alpha = 0.06f))
                         .padding(horizontal = 10.dp, vertical = 7.dp),
                     verticalAlignment = Alignment.CenterVertically,
@@ -433,7 +435,7 @@ private fun ExcerptItem(
                         // faint burgundy tint; the rest stay warm neutral.
                         val primary = index == 0
                         Surface(
-                            shape = RoundedCornerShape(6.dp),
+                            shape = AtharCorners.Control,
                             color = if (primary) {
                                 AtharTheme.colors.accent.copy(alpha = 0.08f)
                             } else {

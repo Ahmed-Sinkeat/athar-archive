@@ -1,5 +1,7 @@
 package com.atharchive.ui.settings
 
+import com.atharchive.ui.theme.AtharCorners
+import com.atharchive.ui.theme.AtharTextSize
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -14,7 +16,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
@@ -145,7 +146,7 @@ private fun PagePreview(reader: ReaderSettings, horizontalPadding: Dp) {
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = horizontalPadding, vertical = 6.dp)
-            .clip(RoundedCornerShape(12.dp))
+            .clip(AtharCorners.Card)
             .background(colors.page)
             .padding(horizontal = 14.dp, vertical = 14.dp)
             .testTag("appearance_preview"),
@@ -205,7 +206,7 @@ private fun StepButton(label: String, enabled: Boolean, tag: String, onClick: ()
     Box(
         modifier = Modifier
             .size(44.dp)
-            .clip(RoundedCornerShape(10.dp))
+            .clip(AtharCorners.Card)
             .background(AtharTheme.colors.raisedSurface)
             .clickable(enabled = enabled, role = Role.Button, onClick = onClick)
             .testTag(tag),
@@ -218,7 +219,7 @@ private fun StepButton(label: String, enabled: Boolean, tag: String, onClick: ()
             } else {
                 AtharTheme.colors.secondaryText.copy(alpha = 0.4f)
             },
-            fontSize = 15.sp,
+            fontSize = AtharTextSize.Ui,
             fontWeight = FontWeight.SemiBold,
         )
     }

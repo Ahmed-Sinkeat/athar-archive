@@ -1,5 +1,7 @@
 package com.atharchive.feature.reader
 
+import com.atharchive.ui.theme.AtharCorners
+import com.atharchive.ui.theme.AtharTextSize
 import androidx.compose.foundation.background
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -18,7 +20,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -57,9 +58,9 @@ fun ReaderSettingsPopover(
             modifier = Modifier
                 .width(288.dp)
                 .heightIn(max = 420.dp)
-                .clip(RoundedCornerShape(14.dp))
+                .clip(AtharCorners.Surface)
                 .background(colors.page)
-                .border(1.dp, colors.divider, RoundedCornerShape(14.dp))
+                .border(1.dp, colors.divider, AtharCorners.Surface)
                 .verticalScroll(rememberScrollState())
                 .padding(horizontal = 14.dp, vertical = 12.dp)
                 .testTag("reader_settings_popover"),
@@ -78,7 +79,7 @@ fun ReaderSettingsPopover(
                 Text(
                     text = settings.fontSize.toString().map { '\u0660' + (it - '0') }.joinToString(""),
                     color = colors.text,
-                    fontSize = 15.sp,
+                    fontSize = AtharTextSize.Ui,
                     fontWeight = FontWeight.SemiBold,
                     modifier = Modifier.testTag("reader_font_size"),
                 )
@@ -160,7 +161,7 @@ private fun StepButton(
         Text(
             text = label,
             color = if (enabled) colors.text else colors.secondary.copy(alpha = 0.4f),
-            fontSize = 15.sp,
+            fontSize = AtharTextSize.Ui,
             fontWeight = FontWeight.SemiBold,
         )
     }
@@ -184,7 +185,7 @@ internal fun SegmentRow(
             Box(
                 modifier = Modifier
                     .weight(1f)
-                    .clip(RoundedCornerShape(8.dp))
+                    .clip(AtharCorners.Control)
                     .background(
                         if (isSelected) colors.accent.copy(alpha = 0.13f) else colors.divider.copy(alpha = 0.28f),
                     )

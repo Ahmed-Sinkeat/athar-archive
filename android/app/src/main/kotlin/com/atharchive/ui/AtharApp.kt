@@ -1,5 +1,6 @@
 package com.atharchive.ui
 
+import com.atharchive.ui.theme.AtharTextSize
 import com.atharchive.ui.components.arabicDigits
 import com.atharchive.ui.components.AtharAppMenuEntry
 import com.atharchive.ui.components.LocalAtharAppMenu
@@ -951,7 +952,7 @@ private fun MiniPlayer(
                     color = MaterialTheme.colorScheme.onSurface,
                     fontFamily = AtharEditorialFontFamily,
                     fontWeight = FontWeight.Bold,
-                    fontSize = 14.sp,
+                    fontSize = AtharTextSize.Body,
                     lineHeight = 20.sp,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis,

@@ -1,11 +1,12 @@
 package com.atharchive.ui.components
 
+import com.atharchive.ui.theme.AtharCorners
+import com.atharchive.ui.theme.AtharTextSize
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
@@ -89,7 +90,7 @@ fun ProvideAtharTextToolbar(content: @Composable () -> Unit) {
                 onDismissRequest = { toolbar.hide() },
                 properties = PopupProperties(focusable = false, dismissOnClickOutside = true),
             ) {
-                val shape = RoundedCornerShape(12.dp)
+                val shape = AtharCorners.Card
                 Row(
                     modifier = Modifier
                         .clip(shape)
@@ -108,7 +109,7 @@ fun ProvideAtharTextToolbar(content: @Composable () -> Unit) {
                                 .padding(horizontal = 14.dp, vertical = 12.dp)
                                 .testTag(tag),
                             color = colors.accent,
-                            fontSize = 14.sp,
+                            fontSize = AtharTextSize.Body,
                             fontWeight = FontWeight.SemiBold,
                             style = MaterialTheme.typography.labelLarge,
                         )
