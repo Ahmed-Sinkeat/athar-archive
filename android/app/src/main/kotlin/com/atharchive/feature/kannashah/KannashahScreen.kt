@@ -63,6 +63,9 @@ import com.atharchive.ui.theme.AtharTheme
 
 private data class ExcerptGroup(val title: String, val subtitle: String?, val items: List<ExcerptUi>)
 
+// Lines an excerpt shows before it folds behind «عرض الكل».
+private const val COLLAPSED_LINES = 8
+
 @Composable
 fun KannashahScreen(
     state: KannashahUiState,
@@ -365,15 +368,32 @@ private fun ExcerptItem(
                 .background(AtharTheme.colors.accent.copy(alpha = 0.55f)),
         )
         Column(modifier = Modifier.padding(start = 14.dp)) {
-            // The saved text in full, at reading size. No maxLines: الكناشة is where the
-            // excerpt is read, not a list of links to somewhere it can be read.
+            // The saved text at reading size. A long one folds to its first lines so one
+            // excerpt can't fill the page; «عرض الكل» opens it in place.
+            var expanded by rememberSaveable(excerpt.id) { mutableStateOf(false) }
+            var overflows by remember(excerpt.id, excerpt.text) { mutableStateOf(false) }
             Text(
                 text = excerpt.text,
                 color = MaterialTheme.colorScheme.onSurface,
                 fontFamily = AtharEditorialFontFamily,
                 fontSize = AtharTextSize.Title,
                 lineHeight = 32.sp,
+                maxLines = if (expanded) Int.MAX_VALUE else COLLAPSED_LINES,
+                overflow = TextOverflow.Ellipsis,
+                onTextLayout = { if (!expanded) overflows = it.hasVisualOverflow },
             )
+            if (overflows || expanded) {
+                Text(
+                    text = if (expanded) "عرض أقل" else "عرض الكل",
+                    modifier = Modifier
+                        .clip(AtharCorners.Control)
+                        .clickable(role = Role.Button) { expanded = !expanded }
+                        .padding(vertical = 6.dp)
+                        .testTag("excerpt_expand_${excerpt.id}"),
+                    color = AtharTheme.colors.accent,
+                    style = MaterialTheme.typography.labelLarge,
+                )
+            }
             // Three ranks in one line: the work in burgundy, then author, then page.
             Text(
                 text = buildAnnotatedString {
