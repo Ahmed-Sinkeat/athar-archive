@@ -320,6 +320,9 @@ internal fun BlockView(
 /** Prefix that routes a tapped footnote number to the note dialog instead of [onLink]. */
 private const val NOTE_LINK = "\u0000note:"
 
+/** ﴿ayah﴾, «quote» and ((hadith)). ponytail: length caps keep a stray opener from colouring a page. */
+private val CitationRe = Regex("\uFD3F[^\uFD3E]{1,1500}\uFD3E|\u00AB[^\u00BB]{1,1500}\u00BB|\\(\\([^)]{1,300}\\)\\)")
+
 private val HiddenMarker = SpanStyle(color = Color.Transparent, fontSize = 0.01.sp, letterSpacing = 0.sp)
 
 private fun markedText(
@@ -334,6 +337,10 @@ private fun markedText(
             val from = value.displayOffset(start)
             val to = value.displayOffset(end)
             if (from < to) addStyle(style, from, to)
+        }
+        // Like the site: colour from the punctuation already in the text, no markup needed.
+        CitationRe.findAll(value.text).forEach {
+            addStyle(SpanStyle(color = if (it.value[0] == '\uFD3F') colors.ayah else colors.quote), it.range.first, it.range.last + 1)
         }
         highlights.forEach { style(SpanStyle(background = colors.saved), it.first, if (it.last == Int.MAX_VALUE) Int.MAX_VALUE else it.last + 1) }
         spans.forEach { span ->

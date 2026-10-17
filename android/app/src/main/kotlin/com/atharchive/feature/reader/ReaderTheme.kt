@@ -34,11 +34,18 @@ data class ReaderColors(
      * saved never reads as a selection still in progress.
      */
     val saved: Color,
+    /** ﴿…﴾ and «…» in the text: the site's gold and blue, lighter at night. */
+    val ayah: Color = PaperAyah,
+    val quote: Color = PaperQuote,
 )
 
 // Saved text: amber on paper, a lighter amber at night. Burgundy stays the selection.
 private val PaperSaved = Color(0x66D9A73A)
 private val NightSaved = Color(0x52E3B955)
+private val PaperAyah = Color(0xFF8E6A1C)
+private val NightAyah = Color(0xFFD4A72C)
+private val PaperQuote = Color(0xFF2A4C8C)
+private val NightQuote = Color(0xFF7FA6E8)
 
 @Composable
 fun rememberReaderColors(palette: ReaderPalette): ReaderColors {
@@ -56,4 +63,6 @@ internal fun followedReaderColors(app: AtharExtraColors, text: Color) = ReaderCo
     accent = app.accent, accentFill = app.primaryAction,
     highlight = app.accent.copy(alpha = 0.20f), selection = app.accent.copy(alpha = 0.32f),
     saved = if (app.canvas.luminance() < 0.5f) NightSaved else PaperSaved,
+    ayah = if (app.canvas.luminance() < 0.5f) NightAyah else PaperAyah,
+    quote = if (app.canvas.luminance() < 0.5f) NightQuote else PaperQuote,
 )
