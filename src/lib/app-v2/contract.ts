@@ -67,6 +67,13 @@ export interface ParsedDocument {
   chapters: ChapterRecord[];
   footnotes: FootnoteRecord[];
   pages?: PageRange;
+  /** The book's opening info card (الكتاب / المؤلف / الناشر …), taken out of the reading flow. */
+  card?: CardField[];
+}
+
+export interface CardField {
+  l: string;
+  v: string;
 }
 
 export interface PackageHeader {
@@ -149,6 +156,8 @@ export interface CatalogEntry {
   /** Exact authored verse text, normally the first two lines of a poem. */
   openingVerses?: string[];
   verseCount?: number;
+  /** Shown in the reader's «المصدر» dialog instead of opening the book. */
+  card?: CardField[];
   pkg: PackageCatalogRef;
   audio?: AudioCatalogRef[];
 }

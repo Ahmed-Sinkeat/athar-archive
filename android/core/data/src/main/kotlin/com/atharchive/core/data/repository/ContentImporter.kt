@@ -155,6 +155,7 @@ fun CatalogEntry.toEntity(): ContentEntity = ContentEntity(
     audioJson = AppContentJson.encodeToString(audio),
     verseCount = verseCount,
     f0Json = pkg.f0?.let { AppContentJson.encodeToString(it) },
+    cardJson = card.takeIf { it.isNotEmpty() }?.let { AppContentJson.encodeToString(it) },
 )
 
 fun ContentEntity.toCatalogEntry(): CatalogEntry = CatalogEntry(
@@ -174,6 +175,7 @@ fun ContentEntity.toCatalogEntry(): CatalogEntry = CatalogEntry(
     excerpt = excerpt,
     openingVerses = AppContentJson.decodeFromString(openingVersesJson),
     verseCount = verseCount,
+    card = cardJson?.let { AppContentJson.decodeFromString(it) } ?: emptyList(),
     pkg = com.atharchive.core.data.content.PackageReference(
         path = pkgPath,
         hash = pkgHash,

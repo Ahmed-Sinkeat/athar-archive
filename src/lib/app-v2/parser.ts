@@ -7,6 +7,7 @@ import { slugifyArabic, uniqueSlug } from "../chapters.js";
 import { normalizePageMarkers } from "../read-body.js";
 import {
   APP_CONTENT_SCHEMA,
+  type CardField,
   type DraftBlock,
   type FootnoteRecord,
   type InlineSpan,
@@ -320,6 +321,18 @@ function verseHalves(line: string): { start: number; end: number } | undefined {
   return Math.min(sadr, ajuz) >= 0.6 * Math.max(sadr, ajuz) ? { start, end } : undefined;
 }
 
+/**
+ * Imports sometimes mark running text as a heading: a hadith «…», an isnad, a numbered
+ * «491 - مسألة: …», or a fragment that opens on a colon or a stray diacritic. Those read as
+ * prose (and must not fill the contents list); long «باب …» titles and masa'il headings stay.
+ */
+function proseHeading(text: string): boolean {
+  const title = text.trim();
+  if (/^[:\u064B-\u0652]/.test(title)) return true;
+  return title.length > 120 && (title.startsWith("\u00AB") ||
+    /^[([]?[0-9\u0660-\u0669]+[)\]]?\s*[-\u2013:.]/.test(title) || /حدثنا|أخبرنا|حدثني|أخبرني/.test(title));
+}
+
 function sliceInline(inline: InlineResult, start: number, end: number): InlineResult {
   return {
     text: inline.text.slice(start, end),
@@ -363,10 +376,65 @@ function truncated(node: MarkdownNode, length: number): MarkdownNode {
   return { ...node, children };
 }
 
+const CARD_LABELS = new Set([
+  "الكتاب", "المؤلف", "الناشر", "علم", "عدد الأجزاء", "الطبعة", "المحقق", "عدد الصفحات", "صفحة المؤلف",
+  "تحقيق", "حققه", "دراسة وتحقيق", "رقم الإيداع", "عام النشر", "سنة النشر", "تأليف", "خرج أحاديثه",
+  "راجعه", "قدمه للشاملة", "المترجم", "مصدر الكتاب", "تقديم", "اعتنى به", "الشارح", "ضبطه",
+]);
+/** Already on the reader's title line, or Shamela bookkeeping. */
+const CARD_HIDDEN = new Set(["علم", "صفحة المؤلف", "قدمه للشاملة"]);
+const CARD_FIELD_RE = /^(?:-\s+)?(?:\*\*)?([^:*\n]{2,25}?)\s*(?:\*\*)?\s*:\s*(?:\*\*)?\s*(.*)$/;
+const bareArabic = (text: string) => text.replace(/[\u064B-\u0652]/g, "").trim();
+
+/**
+ * Shamela's opening info card (الكتاب: … المؤلف: … الناشر: …, as plain lines or `**label:**`
+ * bullets, under «المقدمة» or «بطاقة الكتاب») leaves the reading flow; the app shows it under
+ * «المصدر», as the site shows it above the contents. Only the card's own lines go: its title
+ * headings, its fields and bracketed remarks, and «المقدمة» when the card was all it held.
+ */
+export function extractCard(body: string): { body: string; card: CardField[] } {
+  const lines = body.split("\n");
+  const field = (line: string) => {
+    const match = line.trim().match(CARD_FIELD_RE);
+    const label = match && bareArabic(match[1]!);
+    if (!label || !CARD_LABELS.has(label)) return undefined;
+    return { l: label, v: match[2]!.replace(/\*\*/g, "").replace(/\[([^\]]*)\]\([^)]*\)/g, "$1").trim() };
+  };
+  const nextLine = (from: number) => lines.slice(from).find((line) => line.trim()) ?? "";
+  const card: CardField[] = [];
+  let sawField = false;
+  let held = -1;
+  let index = 0;
+  for (; index < lines.length; index++) {
+    const line = lines[index]!.trim();
+    if (!line) continue;
+    const entry = field(line);
+    if (entry) {
+      sawField = true;
+      if (entry.v && !CARD_HIDDEN.has(entry.l) && !card.some((known) => known.l === entry.l)) card.push(entry);
+      continue;
+    }
+    if (sawField && /^\[[^\]]*\]$/.test(line)) continue;
+    const heading = line.match(/^#{1,6}\s+(.*)$/)?.[1];
+    if (heading != null) {
+      const title = bareArabic(heading);
+      if (title.includes("بطاقة الكتاب")) continue;
+      if (title === "المقدمة" && !sawField && held < 0) { held = index; continue; }
+      if (field(nextLine(index + 1))) continue;
+    }
+    break;
+  }
+  if (!sawField) return { body, card: [] };
+  const rest = lines.slice(index);
+  const keepHeld = held >= 0 && !/^#{1,6}\s/.test(rest.find((line) => line.trim())?.trim() ?? "#");
+  return { body: [...(keepHeld ? [lines[held]!] : []), ...rest].join("\n"), card };
+}
+
 export function parseReadableDocument(input: ParseReadableInput): ParsedDocument {
   const parser = unified().use(remarkParse).use(remarkGfm);
   // Same normalization the site applies: plain «الجزء: N - الصفحة: M» lines become real page markers.
-  const body = normalizePageMarkers(input.body);
+  const { body: cardless, card } = input.coll === "book" ? extractCard(input.body) : { body: input.body, card: [] };
+  const body = normalizePageMarkers(cardless);
   // Large books are parsed one section at a time; a whole-book Markdown AST can exceed RAM.
   const chunks = body.length > 1_000_000 ? body.split(/\n(?=#{1,6} |[ \t]*<hr\b)/) : [body];
   const smallTree = chunks.length === 1 ? parser.parse(body) as unknown as MarkdownNode : undefined;
@@ -626,6 +694,10 @@ export function parseReadableDocument(input: ParseReadableInput): ParsedDocument
         if (!depth || depth < 1 || depth > 6) fail(input.sourcePath, node, "invalid heading depth");
         const rendered = trimAnchor(renderInline(node.children ?? [], definitions, input.sourcePath, hooks));
         if (!rendered.inline.text) return;
+        if (proseHeading(rendered.inline.text)) {
+          add({ t: "p", ...inlineFields(rendered.inline) });
+          return;
+        }
         const headingAnchor = uniqueSlug(
           rendered.anchor ?? (slugifyArabic(rendered.inline.text) || `heading-${blocks.length + 1}`),
           seenAnchors,
@@ -753,6 +825,7 @@ export function parseReadableDocument(input: ParseReadableInput): ParsedDocument
     blocks,
     chapters,
     footnotes: footnotes.sort((a, b) => compareText(a.id, b.id)),
+    ...(card.length ? { card } : {}),
     ...(pages.length ? { pages: { from: pages.reduce((a, b) => Math.min(a, b)), to: pages.reduce((a, b) => Math.max(a, b)), vols: Math.max(1, vols.size) } } : {}),
   };
 }

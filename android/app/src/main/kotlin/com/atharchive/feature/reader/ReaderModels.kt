@@ -64,6 +64,13 @@ sealed interface ReaderBlock {
         val footnotes: List<String> = emptyList(),
     ) : ReaderBlock
 
+    /** A scene break («---» in the source): a short centred rule. */
+    data class Divider(
+        override val id: String,
+        override val ordinal: Int? = null,
+        override val spans: List<InlineSpan> = emptyList(),
+    ) : ReaderBlock
+
     /** The notes printed at the foot of one page, just above its «ص N» divider. */
     data class PageNotes(
         override val id: String,
@@ -188,6 +195,8 @@ data class ReaderUiState(
     val highlights: List<ReaderHighlight> = emptyList(),
     val footnotes: Map<String, ReaderBlock.FootnoteBody> = emptyMap(),
     val sourceUrl: String = "",
+    /** The book's info card as "label: value" lines, shown under «المصدر». */
+    val card: List<String> = emptyList(),
 
     /** The automatically restored position; the reader opens here. */
     val readingPositionIndex: Int = 0,

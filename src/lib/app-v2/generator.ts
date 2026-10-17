@@ -243,6 +243,7 @@ function catalogBase(source: SourceEntry, version: number, parsed: ReturnType<ty
     ...(description ? { description } : {}),
     ...(excerpt ? { excerpt } : {}),
     ...(openingVerses?.length ? { openingVerses } : {}),
+    ...(parsed.card?.length ? { card: parsed.card } : {}),
     ...(source.target.coll === "poem" ? { verseCount: parsed.blocks.filter(block => block.t === "verse").length } : {}),
   };
 }

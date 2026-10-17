@@ -115,9 +115,14 @@ data class CatalogEntry(
     val excerpt: String? = null,
     val openingVerses: List<String> = emptyList(),
     val verseCount: Int? = null,
+    /** The book's opening info card (الكتاب / المؤلف / الناشر …), shown under «المصدر». */
+    val card: List<CardField> = emptyList(),
     val pkg: PackageReference,
     val audio: List<AudioReference> = emptyList(),
 )
+
+@Serializable
+data class CardField(val l: String, val v: String)
 
 @Serializable
 data class CatalogDocument(

@@ -297,7 +297,9 @@ fun ReaderScreen(
             title = { Text(if (shownFootnotes == listOf("source")) "المصدر" else "الحواشي") },
             text = {
                 Column(Modifier.verticalScroll(rememberScrollState())) {
-                    if (shownFootnotes == listOf("source")) Text("${state.bookTitle}\n${state.author}\n${state.sourceUrl}")
+                    if (shownFootnotes == listOf("source")) Text(
+                        (listOf(state.bookTitle, state.author) + state.card + state.sourceUrl).filter(String::isNotBlank).joinToString("\n"),
+                    )
                     else shownFootnotes.forEach { id ->
                         val block = state.footnotes[id]
                         if (block == null) Text("الحاشية لم تُحمّل بعد")

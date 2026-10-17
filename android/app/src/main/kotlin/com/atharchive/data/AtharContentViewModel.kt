@@ -1088,6 +1088,7 @@ private fun ContentEntity.toReaderUi(
         blocks = contentBlocks,
         footnotes = byId,
         sourceUrl = "https://athar.arthurarchive.com/${if (coll == "question") "questions" else coll}/$id",
+        card = runCatching { toCatalogEntry().card }.getOrDefault(emptyList()).map { "${it.l}: ${it.v}" },
         toc = chapters.map { TocEntry(it.anchor, it.title, 2, it.firstOrdinal) },
         bookmarks = emptyList(),
         benefits = emptyList(),
@@ -1174,6 +1175,7 @@ private fun ContentBlockEntity.toReaderBlock(): ReaderBlock {
         type == "quote" && attrs.footnotes.isEmpty() -> ReaderBlock.Quote(id, text, ordinal, spans)
         type == "verse" -> ReaderBlock.Verse(id, attrs.s ?: text, attrs.j, ordinal, spans, attrs.footnotes)
         type == "notes" -> ReaderBlock.PageNotes(id, attrs.footnotes, ordinal)
+        type == "break" -> ReaderBlock.Divider(id, ordinal)
         type == "page" -> ReaderBlock.PageBreak(id, printedPage ?: 0, vol, ordinal, footnotes = attrs.footnotes)
         else -> ReaderBlock.Paragraph(id, text, attrs.footnotes, ordinal, spans,
             if (type == "li" && attrs.continuation != true) if (attrs.ordered == true) "${attrs.start ?: 1}." else "•" else null,
@@ -1197,7 +1199,7 @@ private fun ReaderBlock?.readableText(): String? = when (this) {
     is ReaderBlock.Quote -> text
     is ReaderBlock.Verse -> listOfNotNull(sadr, ajuz).joinToString(" … ")
     is ReaderBlock.FootnoteBody -> text
-    is ReaderBlock.PageBreak, is ReaderBlock.PageNotes, null -> null
+    is ReaderBlock.PageBreak, is ReaderBlock.PageNotes, is ReaderBlock.Divider, null -> null
 }
 
 private fun ContentBlockEntity.safeAttributes(): StoredBlockAttributes =

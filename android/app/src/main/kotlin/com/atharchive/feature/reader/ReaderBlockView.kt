@@ -259,6 +259,13 @@ internal fun BlockView(
             }
         }
 
+        is ReaderBlock.Divider -> Box(
+            Modifier.fillMaxWidth().padding(vertical = 18.dp).testTag("block_${block.id}"),
+            contentAlignment = Alignment.Center,
+        ) {
+            Box(Modifier.width(52.dp).height(1.dp).background(colors.divider))
+        }
+
         // Printed-book style: a short rule, then the page's notes in small type.
         is ReaderBlock.PageNotes -> if (settings.showFootnotes && block.notes.isNotEmpty()) {
             Column(

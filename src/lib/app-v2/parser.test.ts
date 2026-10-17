@@ -1,7 +1,7 @@
 import { readFileSync } from "node:fs";
 import matter from "gray-matter";
 import { describe, expect, it } from "vitest";
-import { parseReadableDocument } from "./parser.js";
+import { extractCard, parseReadableDocument } from "./parser.js";
 import type { ReadableCollection } from "./contract.js";
 
 function parseFile(coll: ReadableCollection, id: string) {
@@ -217,4 +217,37 @@ describe("app/v2 semantic parser", () => {
     expect(parsed.blocks[1]?.f).toEqual(["a"]);
   });
 
+});
+
+describe("extractCard", () => {
+  it("lifts the opening info card out of a book and keeps the real text", () => {
+    const bullets = extractCard([
+      "## المقدمة", "# عنوان الكتاب", "- **عَلَم:** فلان", "- **الكتاب:** عنوان الكتاب",
+      "- **المؤلف:** فلان (المتوفى: 241هـ)", "- **الناشر:** دار", "", "## باب الطهارة", "نص",
+    ].join("\n"));
+    expect(bullets.card).toEqual([{ l: "الكتاب", v: "عنوان الكتاب" }, { l: "المؤلف", v: "فلان (المتوفى: 241هـ)" }, { l: "الناشر", v: "دار" }]);
+    expect(bullets.body).toBe("## باب الطهارة\nنص");
+
+    const plain = extractCard([
+      "# بطاقة الكتاب وفهرس الموضوعات", "الكتاب: القناعة", "المؤلف: ابن أبي الدنيا", "[ترقيم الكتاب موافق للمطبوع]",
+      "صفحة المؤلف: []", "## ـ[القناعة]ـ", "المؤلف: مكرر", "بسم الله الرحمن الرحيم",
+    ].join("\n"));
+    expect(plain.card).toEqual([{ l: "الكتاب", v: "القناعة" }, { l: "المؤلف", v: "ابن أبي الدنيا" }]);
+    expect(plain.body).toBe("بسم الله الرحمن الرحيم");
+
+    // «المقدمة» stays when real prose follows the card.
+    expect(extractCard("## المقدمة\n- **الكتاب:** ك\nالحمد لله").body).toBe("## المقدمة\nالحمد لله");
+    expect(extractCard("قال: الكتاب: ليس بطاقة").card).toEqual([]);
+  });
+});
+
+describe("prose marked as headings", () => {
+  it("demotes hadith, isnad, numbered and orphan headings but keeps long titles", () => {
+    const hadith = `«${"من كتم حمى يوم أصابه أخرجه الله من ذنوبه ".repeat(4)}»`;
+    const bab = `باب ${"قول الله تعالى في كتابه العزيز ".repeat(5)}`;
+    const parsed = parseReadableDocument({ coll: "book", id: "heads", sourcePath: "heads.md", body:
+      `## الأول\n\n## ${hadith}\n\n### ${bab}\n\n### ُ: رفع القلم عن ثلاثة\n\nنص` });
+    expect(parsed.blocks.map(block => block.t)).toEqual(["h2", "p", "h3", "p", "p"]);
+    expect(parsed.chapters.map(chapter => chapter.title)).toEqual(["الأول"]);
+  });
 });
