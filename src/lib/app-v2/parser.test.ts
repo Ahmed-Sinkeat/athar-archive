@@ -196,4 +196,25 @@ describe("app/v2 semantic parser", () => {
     expect(trailing.footnotes).toEqual([{ id: "39:c1", n: "١", x: "كذا في الأصل" }]);
   });
 
+  it("turns balanced «صدر ... عجز» lines inside book prose into verses", () => {
+    const parsed = parseReadableDocument({ coll: "book", id: "verse", sourcePath: "verse.md", body: [
+      "قال الشاعر:",
+      "سيأتيك **رزقك** في وقته ... ولو كنت في كبد الشعرى[^a]",
+      "وهذا بيت حسن.",
+      "",
+      "وقد روى غيره عن عبد الرحمن بن عوسجة ... به",
+      "",
+      "[^a]: الشعرى نجم.",
+    ].join("\n") });
+    expect(parsed.blocks.map(block => [block.t, block.x])).toEqual([
+      ["p", "قال الشاعر:"],
+      ["verse", "سيأتيك رزقك في وقته\nولو كنت في كبد الشعرى١"],
+      ["p", "وهذا بيت حسن."],
+      ["p", "وقد روى غيره عن عبد الرحمن بن عوسجة ... به"],
+      ["notes", undefined],
+    ]);
+    expect(parsed.blocks[1]?.sp).toEqual([{ k: "strong", s: 7, e: 11 }, { k: "sup", s: 41, e: 42, target: "a" }]);
+    expect(parsed.blocks[1]?.f).toEqual(["a"]);
+  });
+
 });

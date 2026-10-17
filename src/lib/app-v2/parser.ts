@@ -301,6 +301,48 @@ function inlineFields(inline: InlineResult) {
   };
 }
 
+const VERSE_LINE_RE = /^\s*[^.…\n]{6,70}?\s+(?:\.\.\.|…)\s+[^.…\n]{6,70}$/;
+const HALF_SEPARATOR_RE = /\s+(?:\.\.\.|…)\s+/;
+
+/**
+ * Where a prose line splits into two hemistichs, or undefined when it is not verse.
+ * ponytail: halves within 0.6 of each other's length; across the corpus that keeps ~95k
+ * verses and leaves ~1.2k prose ellipses and quoted half-lines as prose. Tighten if prose slips in.
+ */
+function verseHalves(line: string): { start: number; end: number } | undefined {
+  if (!VERSE_LINE_RE.test(line) || /[﴾﴿]/.test(line)) return undefined;
+  const separator = line.match(HALF_SEPARATOR_RE)!;
+  const start = separator.index!;
+  const end = start + separator[0].length;
+  const size = (half: string) => half.trim().replace(VERSE_NUMBER_RE, "").replace(/[\sً-ٰٟ]/g, "").length;
+  const sadr = size(line.slice(0, start));
+  const ajuz = size(line.slice(end));
+  return Math.min(sadr, ajuz) >= 0.6 * Math.max(sadr, ajuz) ? { start, end } : undefined;
+}
+
+function sliceInline(inline: InlineResult, start: number, end: number): InlineResult {
+  return {
+    text: inline.text.slice(start, end),
+    spans: inline.spans.map(span => ({ ...span, s: Math.max(0, span.s - start), e: Math.min(end - start, span.e - start) }))
+      .filter(span => span.e > span.s),
+    footnotes: inline.footnotes.filter(id => inline.references?.some(ref => ref.id === id && ref.offset >= start && ref.offset <= end)),
+  };
+}
+
+/** One verse line as "sadr\najuz": the app draws the two lines centred, like a poem's verses. */
+function joinHalves(row: InlineResult, halves: { start: number; end: number }): InlineResult {
+  const lead = row.text.length - row.text.trimStart().length;
+  const tail = row.text.trimEnd().length;
+  const text = `${row.text.slice(lead, halves.start)}\n${row.text.slice(halves.end, tail)}`;
+  const at = (offset: number) => Math.min(text.length, Math.max(0,
+    (offset < halves.start ? offset : offset >= halves.end ? offset - (halves.end - halves.start) + 1 : halves.start) - lead));
+  return {
+    text,
+    spans: row.spans.map(span => ({ ...span, s: at(span.s), e: at(span.e) })).filter(span => span.e > span.s),
+    footnotes: row.footnotes,
+  };
+}
+
 function plainText(node: MarkdownNode): string {
   if (node.type === "text") return node.value ?? "";
   if (node.type === "break") return "\n";
@@ -437,10 +479,34 @@ export function parseReadableDocument(input: ParseReadableInput): ParsedDocument
       }
       return;
     }
+    // Books quote poetry as «صدر ... عجز» lines inside prose; each such line becomes a verse.
+    const lines = inline.text.split("\n");
+    if (type !== "li" && lines.some(line => verseHalves(line))) {
+      let start = 0;
+      let prose = -1;
+      const flush = (end: number) => {
+        if (prose < 0) return;
+        const row = sliceInline(inline, prose, end);
+        prose = -1;
+        if (row.text.trim()) add({ t: type, ...inlineFields(row), ...list });
+      };
+      for (const line of lines) {
+        const halves = verseHalves(line);
+        if (!halves) {
+          if (prose < 0) prose = start;
+        } else {
+          flush(start - 1);
+          add({ t: "verse", ...inlineFields(joinHalves(sliceInline(inline, start, start + line.length), halves)) });
+        }
+        start += line.length + 1;
+      }
+      flush(inline.text.length);
+      return;
+    }
     add({ t: type, ...inlineFields(inline), ...list });
   };
 
-  const processList = (node: MarkdownNode, depth = 0, quote = false) => {
+  const processList =(node: MarkdownNode, depth = 0, quote = false) => {
     const ordered = node.ordered === true;
     const start = node.start ?? 1;
     for (const [itemIndex, item] of (node.children ?? []).entries()) {
