@@ -4,6 +4,7 @@ import remarkParse from "remark-parse";
 import rehypeRaw from "rehype-raw";
 import remarkRehype from "remark-rehype";
 import { slugifyArabic, uniqueSlug } from "../chapters.js";
+import { normalizePageMarkers } from "../read-body.js";
 import {
   APP_CONTENT_SCHEMA,
   type DraftBlock,
@@ -35,6 +36,34 @@ interface InlineResult {
   spans: InlineSpan[];
   footnotes: string[];
   references?: { id: string; offset: number }[];
+}
+
+/**
+ * Every footnote format becomes one model here, so the app draws one thing:
+ * an inline superscript whose target is the note id, and a `notes` block that
+ * closes each printed page with that page's notes.
+ *
+ * A page marker ENDS its page (its data-notes describe the text above it; the
+ * Shamela «الجزء: ١ - الصفحة: ٥» footer sits under page 5's text), so a ref is
+ * only resolved when the page it sits on closes. Until then it carries a
+ * placeholder: `?#N` for a printed per-page number (EPUB sup, caret "(^N)"),
+ * `?^id` for a Markdown [^id] ref.
+ */
+interface NoteHooks {
+  /** Per-page display number for a Markdown [^id] ref. */
+  markdownNumber(id: string): string;
+}
+
+const CARET_REF_RE = /\((?:\^([٠-٩0-9]+)|\*)\)/g;
+const CARET_DEF_RE = /^\((?:\^([٠-٩0-9]+)|\*)\)\s+(.*)$/;
+const CARET_CONTINUATION_RE = /^=\s+(\S.*)$/s;
+
+function westernDigits(value: string): string {
+  return value.replace(/[٠-٩]/g, (digit) => String(digit.charCodeAt(0) - 0x0660));
+}
+
+function arabicDigits(value: number): string {
+  return String(value).replace(/\d/g, (digit) => String.fromCharCode(0x0660 + Number(digit)));
 }
 
 function htmlBlocks(value: string, sourcePath: string): MarkdownNode[] {
@@ -122,20 +151,33 @@ function renderInline(
   nodes: MarkdownNode[],
   definitions: Map<string, string>,
   sourcePath: string,
-  printedPage?: number,
-  printedVolume?: number,
+  hooks?: NoteHooks,
 ): InlineResult {
   const output = { text: "", spans: [] as InlineSpan[] };
   const footnotes = new Set<string>();
   const references: { id: string; offset: number }[] = [];
   const note = (id: string, offset = output.text.length) => { footnotes.add(id); references.push({ id, offset }); };
-  const openSup: { start: number; target?: string; footnoteId?: string; node: MarkdownNode }[] = [];
+  const openSup: { start: number; key?: string; node: MarkdownNode }[] = [];
+  const supKey = (fn: string | undefined) => fn ? `?#${westernDigits(fn)}` : undefined;
 
   const walk = (node: MarkdownNode) => {
     switch (node.type) {
-      case "text":
-        addTextWithEntityRefs(node.value ?? "", output);
+      case "text": {
+        // Caret imports keep their marker as literal "(^N)" text.
+        const value = node.value ?? "";
+        let cursor = 0;
+        for (const match of hooks ? value.matchAll(CARET_REF_RE) : []) {
+          addTextWithEntityRefs(value.slice(cursor, match.index), output);
+          const key = `?#${match[1] ? westernDigits(match[1]) : "*"}`;
+          const start = output.text.length;
+          output.text += match[1] ?? "*";
+          output.spans.push({ k: "sup", s: start, e: output.text.length, target: key });
+          note(key, start);
+          cursor = match.index! + match[0].length;
+        }
+        addTextWithEntityRefs(value.slice(cursor), output);
         return;
+      }
       case "inlineCode":
         // shortcut: imported prose keeps its literal code text; add code typography for technical texts.
         output.text += node.value ?? "";
@@ -162,7 +204,11 @@ function renderInline(
       case "footnoteReference": {
         const id = node.identifier ?? "";
         if (!id) fail(sourcePath, node, "missing footnote identifier");
-        note(id);
+        const key = `?^${id}`;
+        const start = output.text.length;
+        output.text += hooks?.markdownNumber(id) ?? "";
+        if (output.text.length > start) output.spans.push({ k: "sup", s: start, e: output.text.length, target: key });
+        note(key, start);
         return;
       }
       case "html": {
@@ -175,21 +221,14 @@ function renderInline(
           const attrs = attributes(`<sup ${complete[1]}>`);
           const start = output.text.length;
           output.text += complete[2]!.replace(/<[^>]+>/g, "");
-          const target = attrs.get("data-fn");
-          if (output.text.length > start) output.spans.push({ k: "sup", s: start, e: output.text.length, ...(target ? { target } : {}) });
-          if (target) note(`${attrs.has("data-sep-page") ? "next:" : ""}${printedVolume != null ? `${printedVolume}:` : ""}${attrs.get("data-sep-page") ?? printedPage ?? ""}:${target}`);
+          // Every imported data-sep-page names the very next marker, so the ref resolves when that page closes.
+          const key = supKey(attrs.get("data-fn"));
+          if (output.text.length > start) output.spans.push({ k: "sup", s: start, e: output.text.length, ...(key ? { target: key } : {}) });
+          if (key) note(key, start);
           return;
         }
         if (/^\s*<sup\b[^>]*>\s*$/i.test(html)) {
-          const attrs = attributes(html);
-          const target = attrs.get("data-fn");
-          const notePage = attrs.get("data-sep-page") ?? printedPage;
-          openSup.push({
-            start: output.text.length,
-            target,
-            ...(target ? { footnoteId: `${attrs.has("data-sep-page") ? "next:" : ""}${printedVolume != null ? `${printedVolume}:` : ""}${notePage ?? ""}:${target}` } : {}),
-            node,
-          });
+          openSup.push({ start: output.text.length, key: supKey(attributes(html).get("data-fn")), node });
           return;
         }
         if (/^\s*<\/sup>\s*$/i.test(html)) {
@@ -200,10 +239,10 @@ function renderInline(
               k: "sup",
               s: opened.start,
               e: output.text.length,
-              ...(opened.target ? { target: opened.target } : {}),
+              ...(opened.key ? { target: opened.key } : {}),
             });
           }
-          if (opened.footnoteId) note(opened.footnoteId, opened.start);
+          if (opened.key) note(opened.key, opened.start);
           return;
         }
         fail(sourcePath, node, html.slice(0, 60));
@@ -262,11 +301,33 @@ function inlineFields(inline: InlineResult) {
   };
 }
 
+function plainText(node: MarkdownNode): string {
+  if (node.type === "text") return node.value ?? "";
+  if (node.type === "break") return "\n";
+  return (node.children ?? []).map(plainText).join("");
+}
+
+/** The paragraph's first `length` characters of plainText; cut at a line break, so only top-level text splits. */
+function truncated(node: MarkdownNode, length: number): MarkdownNode {
+  const children: MarkdownNode[] = [];
+  let used = 0;
+  for (const child of node.children ?? []) {
+    const size = plainText(child).length;
+    if (used + size <= length) children.push(child);
+    else if (child.type === "text") children.push({ ...child, value: child.value!.slice(0, length - used) });
+    used += size;
+    if (used >= length) break;
+  }
+  return { ...node, children };
+}
+
 export function parseReadableDocument(input: ParseReadableInput): ParsedDocument {
   const parser = unified().use(remarkParse).use(remarkGfm);
+  // Same normalization the site applies: plain «الجزء: N - الصفحة: M» lines become real page markers.
+  const body = normalizePageMarkers(input.body);
   // Large books are parsed one section at a time; a whole-book Markdown AST can exceed RAM.
-  const chunks = input.body.length > 1_000_000 ? input.body.split(/\n(?=#{1,6} |[ \t]*<hr\b)/) : [input.body];
-  const smallTree = chunks.length === 1 ? parser.parse(input.body) as unknown as MarkdownNode : undefined;
+  const chunks = body.length > 1_000_000 ? body.split(/\n(?=#{1,6} |[ \t]*<hr\b)/) : [body];
+  const smallTree = chunks.length === 1 ? parser.parse(body) as unknown as MarkdownNode : undefined;
   const definitions = new Map<string, string>();
   const definitionSources = new Map<string, string>();
   for (const chunk of chunks) {
@@ -297,9 +358,20 @@ export function parseReadableDocument(input: ParseReadableInput): ParsedDocument
   const chapters: ParsedDocument["chapters"] = [];
   const footnotes: FootnoteRecord[] = [];
   const markdownNotes = new Map<string, FootnoteRecord>();
-  const noteOwners = new Map<string, DraftBlock | undefined>();
   const pageOccurrences = new Map<string, number>();
-  let pageNoteAliases = new Map<string, string>();
+  const noteNumbers = new Map<string, string>();
+  const placedNotes = new Set<string>();
+  // The page still being read: its Markdown refs, its caret note lines, and where its blocks begin.
+  let markdownOnPage = new Map<string, string>();
+  let caretOnPage: { key: string; n: string; x: string }[] = [];
+  let lastCaretNote: FootnoteRecord | undefined;
+  let pageStart = 0;
+  const hooks: NoteHooks = {
+    markdownNumber(id) {
+      if (!markdownOnPage.has(id)) markdownOnPage.set(id, arabicDigits(markdownOnPage.size + 1));
+      return markdownOnPage.get(id)!;
+    },
+  };
   const seenAnchors = new Set<string>();
   let currentAnchor: string | undefined;
   let currentPage: number | undefined;
@@ -317,9 +389,6 @@ export function parseReadableDocument(input: ParseReadableInput): ParsedDocument
   const add = (block: Omit<DraftBlock, "a" | "p" | "vol"> & { a?: string; p?: number; vol?: number }) => {
     blocks.push({
       ...block,
-      ...(block.f ? { f: block.f.map(id => id.startsWith("next:")
-        ? `next:${pageNoteAliases.get(id.slice(5)) ?? id.slice(5)}`
-        : pageNoteAliases.get(id) ?? id) } : {}),
       a: block.a ?? ensureChapter(),
       ...(block.p ?? currentPage ? { p: block.p ?? currentPage } : {}),
       ...(block.vol ?? currentVol ? { vol: block.vol ?? currentVol } : {}),
@@ -327,7 +396,7 @@ export function parseReadableDocument(input: ParseReadableInput): ParsedDocument
   };
 
   const addParagraph = (node: MarkdownNode, type: "p" | "quote" | "li" = "p", list?: Partial<DraftBlock>) => {
-    const inline = renderInline(node.children ?? [], definitions, input.sourcePath, currentPage, currentVol);
+    const inline = renderInline(node.children ?? [], definitions, input.sourcePath, hooks);
     if (input.coll === "poem" && (type === "p" || (type === "li" && list?.ordered))) {
       const lines = inline.text.split("\n");
       // A long unseparated, unnumbered line is prose (an introduction inside a poem file);
@@ -403,7 +472,7 @@ export function parseReadableDocument(input: ParseReadableInput): ParsedDocument
     const parts: InlineResult[] = [];
     const collect = (child: MarkdownNode, marker = "") => {
       if (child.type === "paragraph") {
-        parts.push(renderInline([{ type: "text", value: marker }, ...(child.children ?? [])], definitions, input.sourcePath, currentPage, currentVol));
+        parts.push(renderInline([{ type: "text", value: marker }, ...(child.children ?? [])], definitions, input.sourcePath, hooks));
       } else if (child.type === "list") {
         for (const [index, item] of (child.children ?? []).entries()) {
           for (const [partIndex, part] of (item.children ?? []).entries()) {
@@ -433,7 +502,50 @@ export function parseReadableDocument(input: ParseReadableInput): ParsedDocument
       footnotes.push(note);
       markdownNotes.set(id, note);
     }
-    noteOwners.set(id, blocks.at(-1));
+  };
+
+  // Closes the page being read: its notes get ids and display numbers, its refs get their
+  // targets, and one `notes` block carries the page's notes right before the marker ending it.
+  const closePage = (marker?: { notes: string[]; base: string; suffix: string }) => {
+    const byKey = new Map<string, string>();
+    const ids: string[] = [];
+    const place = (key: string, id: string, n: string) => {
+      if (!byKey.has(key)) byKey.set(key, id);
+      ids.push(id);
+      if (!noteNumbers.has(id)) noteNumbers.set(id, n);
+    };
+    marker?.notes.forEach((x, index) => {
+      const id = `${marker.base}${index + 1}${marker.suffix}`;
+      footnotes.push({ id, x });
+      place(`?#${index + 1}`, id, arabicDigits(index + 1));
+    });
+    caretOnPage.forEach((caret, index) => {
+      const id = `${marker?.base ?? "end:"}c${caret.key}${marker?.suffix ?? ""}`;
+      const unique = byKey.has(`?#${caret.key}`) ? `${id}-${index}` : id;
+      lastCaretNote = { id: unique, x: caret.x };
+      footnotes.push(lastCaretNote);
+      place(`?#${caret.key}`, unique, caret.n);
+    });
+    for (const [id, n] of markdownOnPage) place(`?^${id}`, id, n);
+    for (const block of blocks.slice(pageStart)) {
+      if (block.f) {
+        const resolved = [...new Set(block.f.flatMap((key) => byKey.get(key) ?? []))];
+        if (resolved.length) block.f = resolved;
+        else delete block.f;
+      }
+      for (const span of block.sp ?? []) {
+        if (!span.target?.startsWith("?")) continue;
+        const id = byKey.get(span.target);
+        if (id) span.target = id;
+        else delete span.target;
+      }
+    }
+    const unique = [...new Set(ids)];
+    if (unique.length) add({ t: "notes", f: unique });
+    unique.forEach((id) => placedNotes.add(id));
+    markdownOnPage = new Map();
+    caretOnPage = [];
+    pageStart = blocks.length;
   };
 
   const process = (node: MarkdownNode, quote = false) => {
@@ -446,7 +558,7 @@ export function parseReadableDocument(input: ParseReadableInput): ParsedDocument
       case "heading": {
         const depth = node.depth;
         if (!depth || depth < 1 || depth > 6) fail(input.sourcePath, node, "invalid heading depth");
-        const rendered = trimAnchor(renderInline(node.children ?? [], definitions, input.sourcePath, currentPage, currentVol));
+        const rendered = trimAnchor(renderInline(node.children ?? [], definitions, input.sourcePath, hooks));
         if (!rendered.inline.text) return;
         const headingAnchor = uniqueSlug(
           rendered.anchor ?? (slugifyArabic(rendered.inline.text) || `heading-${blocks.length + 1}`),
@@ -464,9 +576,29 @@ export function parseReadableDocument(input: ParseReadableInput): ParsedDocument
         });
         return;
       }
-      case "paragraph":
+      case "paragraph": {
+        // Caret imports keep each page's notes as literal "(^N) text" lines.
+        // They can also trail a paragraph that opens with other text (e.g. "[٣٦] إسناده صحيح.").
+        const lines = plainText(node).split("\n");
+        const firstDef = quote ? -1 : lines.findIndex((line) => CARET_DEF_RE.test(line));
+        if (firstDef >= 0) {
+          if (firstDef > 0) addParagraph(truncated(node, lines.slice(0, firstDef).join("\n").length), "p");
+          for (const line of lines.slice(firstDef)) {
+            const def = line.match(CARET_DEF_RE);
+            if (def) caretOnPage.push({ key: def[1] ? westernDigits(def[1]) : "*", n: def[1] ?? "*", x: def[2]!.trim() });
+            else caretOnPage.at(-1)!.x += ` ${line.trim()}`;
+          }
+          return;
+        }
+        // "= text" opening a page continues the previous page's last caret note.
+        const continuation = lines.join("\n").match(CARET_CONTINUATION_RE);
+        if (!quote && continuation && lastCaretNote && caretOnPage.length === 0) {
+          lastCaretNote.x += ` ${continuation[1]!.trim()}`;
+          return;
+        }
         addParagraph(node, quote ? "quote" : "p");
         return;
+      }
       case "list":
         processList(node, 0, quote);
         return;
@@ -484,18 +616,14 @@ export function parseReadableDocument(input: ParseReadableInput): ParsedDocument
           for (const block of htmlBlocks(html, input.sourcePath)) process(block, quote);
           return;
         }
-        currentPage = marker.page;
         currentVol = marker.vol ?? currentVol;
-        const prefix = `${currentVol != null ? `${currentVol}:` : ""}${marker.page}:`;
-        const occurrence = (pageOccurrences.get(prefix) ?? 0) + 1;
-        pageOccurrences.set(prefix, occurrence);
-        pageNoteAliases = new Map(marker.notes.map((_, index) => {
-          const id = `${prefix}${index + 1}`;
-          return [id, occurrence === 1 ? id : `${id}~${occurrence}`];
-        }));
-        const ids = [...pageNoteAliases.values()];
-        add({ t: "page", p: currentPage, f: ids, ...(currentVol ? { vol: currentVol } : {}) });
-        marker.notes.forEach((text, index) => footnotes.push({ id: ids[index]!, x: text }));
+        const base = `${currentVol != null ? `${currentVol}:` : ""}${marker.page}:`;
+        const occurrence = (pageOccurrences.get(base) ?? 0) + 1;
+        pageOccurrences.set(base, occurrence);
+        closePage({ notes: marker.notes, base, suffix: occurrence === 1 ? "" : `~${occurrence}` });
+        currentPage = marker.page;
+        add({ t: "page", p: currentPage, ...(currentVol ? { vol: currentVol } : {}) });
+        pageStart = blocks.length;
         return;
       }
       default:
@@ -515,37 +643,39 @@ export function parseReadableDocument(input: ParseReadableInput): ParsedDocument
     }
     lineOffset += (chunk.match(/\n/g)?.length ?? 0) + 1;
   }
+  // Notes defined but never referenced still reach the reader, at the end.
+  for (const id of markdownNotes.keys()) if (!placedNotes.has(id)) hooks.markdownNumber(id);
+  closePage();
   if (blocks.length === 0) throw new Error(`${input.sourcePath}: readable document has no semantic blocks`);
+
+  // A marker ENDS its page: each block takes the page of the marker after it, and text
+  // after the last marker sits on the page that follows it.
+  const lastMarker = blocks.findLast((block) => block.t === "page");
+  let nextMarker: DraftBlock | undefined;
+  for (let index = blocks.length - 1; index >= 0; index--) {
+    const block = blocks[index]!;
+    if (block.t === "page") { nextMarker = block; continue; }
+    delete block.p;
+    delete block.vol;
+    if (nextMarker) Object.assign(block, { p: nextMarker.p }, nextMarker.vol != null ? { vol: nextMarker.vol } : {});
+    else if (lastMarker) Object.assign(block, { p: lastMarker.p! + 1 }, lastMarker.vol != null ? { vol: lastMarker.vol } : {});
+  }
 
   const noteIds = new Set<string>();
   for (const note of footnotes) {
     if (noteIds.has(note.id)) throw new Error(`${input.sourcePath}: duplicate footnote identifier ${note.id}`);
     noteIds.add(note.id);
+    const n = noteNumbers.get(note.id);
+    if (n) note.n = n;
+    // A ref inside a note body has no page of its own to resolve against.
+    for (const span of note.sp ?? []) if (span.target?.startsWith("?")) delete span.target;
   }
-  const pageNotes = new Map<string, string[]>();
-  let nextPage: DraftBlock | undefined;
-  for (let index = blocks.length - 1; index >= 0; index--) {
-    const block = blocks[index]!;
-    if (block.t === "page") {
-      nextPage = block;
-      pageNotes.set(`${block.vol != null ? `${block.vol}:` : ""}${block.p}:`, block.f ?? []);
-    } else if (block.f) {
-      block.f = [...new Set(block.f.flatMap(id => {
-        if (!id.startsWith("next:")) return noteIds.has(id) ? [id] : [];
-        const original = id.slice(5);
-        const page = original.match(/^(?:\d+:)?(\d+):[^:]+$/)?.[1];
-        if (nextPage && String(nextPage.p) === page) return nextPage.f ?? [];
-        return pageNotes.get(original.slice(0, original.lastIndexOf(":") + 1))
-          ?? (noteIds.has(original) ? [original] : []);
-      }))];
+  for (const block of blocks) {
+    if (block.f) {
+      block.f = block.f.filter((id) => noteIds.has(id));
+      if (block.f.length === 0) delete block.f;
     }
-    if (block.f?.length === 0) delete block.f;
-  }
-  const referencedNotes = new Set(blocks.flatMap(block => block.f ?? []));
-  for (const [id, owner] of noteOwners) {
-    if (referencedNotes.has(id)) continue;
-    const block = owner ?? blocks[0]!;
-    block.f = [...(block.f ?? []), id];
+    for (const span of block.sp ?? []) if (span.k === "sup" && span.target && !noteIds.has(span.target)) delete span.target;
   }
 
   const pages = blocks.map((block) => block.p).filter((page): page is number => page != null);

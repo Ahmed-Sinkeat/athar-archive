@@ -40,7 +40,7 @@ export function sha256Hex(value: string | Buffer): string {
 function identityText(block: DraftBlock): string {
   if (block.x != null) return block.x;
   if (block.s != null) return `${block.s}\u0000${block.j ?? ""}`;
-  if (block.t === "page") return `page\u0000${block.p ?? ""}\u0000${block.vol ?? ""}`;
+  if (block.t === "page" || block.t === "notes") return `${block.t}\u0000${block.p ?? ""}\u0000${block.vol ?? ""}`;
   return block.t;
 }
 

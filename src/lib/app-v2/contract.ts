@@ -25,7 +25,8 @@ export interface PageRange {
 }
 
 export interface DraftBlock {
-  t: `h${1 | 2 | 3 | 4 | 5 | 6}` | "p" | "li" | "quote" | "verse" | "page" | "break";
+  /** "notes" closes a printed page (or the document) and lists that page's notes in `f`. */
+  t: `h${1 | 2 | 3 | 4 | 5 | 6}` | "p" | "li" | "quote" | "verse" | "page" | "break" | "notes";
   a: string;
   p?: number;
   vol?: number;
@@ -52,6 +53,8 @@ export interface PackageBlock extends DraftBlock {
 
 export interface FootnoteRecord {
   id: string;
+  /** Display number, as printed on its page (per-page, not book-wide). */
+  n?: string;
   x: string;
   sp?: InlineSpan[];
 }

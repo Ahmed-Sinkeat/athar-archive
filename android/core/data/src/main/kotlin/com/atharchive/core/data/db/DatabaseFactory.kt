@@ -33,6 +33,10 @@ object AtharDatabases {
                 override suspend fun migrate(connection: androidx.sqlite.SQLiteConnection) {
                     connection.prepare("ALTER TABLE entity ADD COLUMN f0Json TEXT").use { it.step() }
                 }
+            }, object : androidx.room3.migration.Migration(3, 4) {
+                override suspend fun migrate(connection: androidx.sqlite.SQLiteConnection) {
+                    connection.prepare("ALTER TABLE footnote ADD COLUMN marker TEXT").use { it.step() }
+                }
             })
             .addCallback(ContentSearchSchema.callback)
             .fallbackToDestructiveMigration(true)

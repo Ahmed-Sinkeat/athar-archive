@@ -147,6 +147,7 @@ data class FootnoteEntity(
     val fnId: String,
     val text: String,
     val inlineSpans: ByteArray,
+    val marker: String? = null,
 )
 
 data class FrameImportResult(
@@ -493,7 +494,7 @@ private fun contiguousProgress(frames: List<EntityFrameEntity>): Int {
         ChapterEntity::class,
         FootnoteEntity::class,
     ],
-    version = 3,
+    version = 4,
     exportSchema = true,
 )
 abstract class AtharContentDatabase : RoomDatabase() {

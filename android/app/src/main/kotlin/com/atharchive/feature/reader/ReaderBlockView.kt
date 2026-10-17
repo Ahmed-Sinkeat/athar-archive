@@ -11,12 +11,12 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.material3.TextButton
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberUpdatedState
@@ -107,7 +107,12 @@ internal fun BlockView(
     // Remembered with a link handler that never changes identity: a fresh lambda made the text
     // unequal on every recomposition, and Compose laid the whole paragraph out again.
     val onLinkState by rememberUpdatedState(onLink)
-    val link = remember { { target: String -> onLinkState(target) } }
+    val onFootnotesState by rememberUpdatedState(onFootnotes)
+    val link = remember {
+        { target: String ->
+            if (target.startsWith(NOTE_LINK)) onFootnotesState(listOf(target.removePrefix(NOTE_LINK))) else onLinkState(target)
+        }
+    }
     @Composable
     fun marked(text: String, match: IntRange?, saved: List<IntRange>) =
         remember(text, match, colors, block.spans, saved, settings.showTashkeel, settings.showFootnotes) {
@@ -169,11 +174,6 @@ internal fun BlockView(
                     lineHeight = lineHeight,
                     textAlign = TextAlign.Justify,
                 )
-                if (settings.showFootnotes && block.footnotes.isNotEmpty()) {
-                    TextButton(onClick = { onFootnotes(block.footnotes) }) {
-                        Text("الحواشي (${arabic(block.footnotes.size)})", color = colors.accent)
-                    }
-                }
               }
               }
             }
@@ -222,9 +222,6 @@ internal fun BlockView(
                     fontFamily = AtharEditorialFontFamily, fontSize = body,
                     lineHeight = lineHeight, textAlign = TextAlign.Center,
                 )
-                if (settings.showFootnotes && block.footnotes.isNotEmpty()) TextButton(onClick = { onFootnotes(block.footnotes) }) {
-                    Text("الحواشي (${arabic(block.footnotes.size)})", color = colors.accent)
-                }
             }
         }
 
@@ -259,9 +256,34 @@ internal fun BlockView(
                         color = colors.divider,
                     )
                 }
-                if (settings.showFootnotes && block.footnotes.isNotEmpty()) {
-                    TextButton(onClick = { onFootnotes(block.footnotes) }) {
-                        Text("حواشي الصفحة (${arabic(block.footnotes.size)})", color = colors.accent)
+            }
+        }
+
+        // Printed-book style: a short rule, then the page's notes in small type.
+        is ReaderBlock.PageNotes -> if (settings.showFootnotes && block.notes.isNotEmpty()) {
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 14.dp, bottom = 2.dp)
+                    .testTag("block_${block.id}"),
+            ) {
+                HorizontalDivider(Modifier.width(72.dp), thickness = 0.7.dp, color = colors.divider)
+                block.notes.forEach { note ->
+                    key(note.id) {
+                        val text = remember(note, colors, settings.showTashkeel) {
+                            buildAnnotatedString {
+                                withStyle(SpanStyle(color = colors.accent)) { append("(${note.marker}) ") }
+                                append(markedText(note.text, null, colors, note.spans, emptyList(), settings.showTashkeel, true, link))
+                            }
+                        }
+                        Text(
+                            text = text,
+                            modifier = Modifier.padding(top = 6.dp),
+                            color = colors.secondary,
+                            fontFamily = AtharEditorialFontFamily,
+                            fontSize = (settings.fontSize - 4).sp,
+                            lineHeight = ((settings.fontSize - 4) * 1.6f).sp,
+                        )
                     }
                 }
             }
@@ -295,6 +317,9 @@ internal fun BlockView(
     }
 }
 
+/** Prefix that routes a tapped footnote number to the note dialog instead of [onLink]. */
+private const val NOTE_LINK = "\u0000note:"
+
 private val HiddenMarker = SpanStyle(color = Color.Transparent, fontSize = 0.01.sp, letterSpacing = 0.sp)
 
 private fun markedText(
@@ -320,8 +345,8 @@ private fun markedText(
                 "sup" -> style(if (!showFootnotes && span.target != null) HiddenMarker
                     else SpanStyle(baselineShift = BaselineShift.Superscript, fontSize = AtharTextSize.Small), span.s, span.e)
             }
-            val target = span.target
-            if (span.k in listOf("link", "entityRef") && !target.isNullOrBlank()) {
+            val target = span.target?.let { if (span.k == "sup") NOTE_LINK + it else it }
+            if (span.k in listOf("link", "entityRef", "sup") && !target.isNullOrBlank() && (span.k != "sup" || showFootnotes)) {
                 val start = value.displayOffset(span.s)
                 val end = value.displayOffset(span.e)
                 if (start < end) addLink(

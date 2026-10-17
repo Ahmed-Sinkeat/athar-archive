@@ -204,6 +204,8 @@ data class PackageFootnote(
     val id: String,
     val x: String,
     val sp: List<InlineSpan> = emptyList(),
+    /** Display number, restarting per printed page. */
+    val n: String? = null,
 )
 
 data class DecodedFrame(

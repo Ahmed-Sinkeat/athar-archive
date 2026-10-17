@@ -64,6 +64,15 @@ sealed interface ReaderBlock {
         val footnotes: List<String> = emptyList(),
     ) : ReaderBlock
 
+    /** The notes printed at the foot of one page, just above its «ص N» divider. */
+    data class PageNotes(
+        override val id: String,
+        val footnotes: List<String>,
+        override val ordinal: Int? = null,
+        val notes: List<FootnoteBody> = emptyList(),
+        override val spans: List<InlineSpan> = emptyList(),
+    ) : ReaderBlock
+
     data class FootnoteBody(
         override val id: String,
         val marker: String,

@@ -1074,15 +1074,19 @@ private fun ContentEntity.toReaderUi(
     footnotes: List<FootnoteEntity>,
     position: ReadingPositionEntity?,
 ): ReaderUiState {
-    val contentBlocks = blocks.map(ContentBlockEntity::toReaderBlock)
     val footnoteBlocks = footnotes.mapIndexed { index, note ->
-        ReaderBlock.FootnoteBody("fn-${note.fnId}", arabicNumber(index + 1), note.text, spans = note.spans())
+        ReaderBlock.FootnoteBody("fn-${note.fnId}", note.marker ?: arabicNumber(index + 1), note.text, spans = note.spans())
+    }
+    val byId = footnotes.indices.associate { footnotes[it].fnId to footnoteBlocks[it] }
+    val contentBlocks = blocks.map { entity ->
+        val block = entity.toReaderBlock()
+        if (block is ReaderBlock.PageNotes) block.copy(notes = block.footnotes.mapNotNull(byId::get)) else block
     }
     return ReaderUiState(
         bookTitle = title,
         author = personName.orEmpty(),
         blocks = contentBlocks,
-        footnotes = footnotes.mapIndexed { index, note -> note.fnId to footnoteBlocks[index] }.toMap(),
+        footnotes = byId,
         sourceUrl = "https://athar.arthurarchive.com/${if (coll == "question") "questions" else coll}/$id",
         toc = chapters.map { TocEntry(it.anchor, it.title, 2, it.firstOrdinal) },
         bookmarks = emptyList(),
@@ -1169,6 +1173,7 @@ private fun ContentBlockEntity.toReaderBlock(): ReaderBlock {
         )
         type == "quote" && attrs.footnotes.isEmpty() -> ReaderBlock.Quote(id, text, ordinal, spans)
         type == "verse" -> ReaderBlock.Verse(id, attrs.s ?: text, attrs.j, ordinal, spans, attrs.footnotes)
+        type == "notes" -> ReaderBlock.PageNotes(id, attrs.footnotes, ordinal)
         type == "page" -> ReaderBlock.PageBreak(id, printedPage ?: 0, vol, ordinal, footnotes = attrs.footnotes)
         else -> ReaderBlock.Paragraph(id, text, attrs.footnotes, ordinal, spans,
             if (type == "li" && attrs.continuation != true) if (attrs.ordered == true) "${attrs.start ?: 1}." else "•" else null,
@@ -1192,7 +1197,7 @@ private fun ReaderBlock?.readableText(): String? = when (this) {
     is ReaderBlock.Quote -> text
     is ReaderBlock.Verse -> listOfNotNull(sadr, ajuz).joinToString(" … ")
     is ReaderBlock.FootnoteBody -> text
-    is ReaderBlock.PageBreak, null -> null
+    is ReaderBlock.PageBreak, is ReaderBlock.PageNotes, null -> null
 }
 
 private fun ContentBlockEntity.safeAttributes(): StoredBlockAttributes =

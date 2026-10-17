@@ -86,7 +86,7 @@ object AppContentDocuments {
 }
 
 object FramedPackageDecoder {
-    private val BlockTypes = setOf("h1", "h2", "h3", "h4", "h5", "h6", "p", "li", "quote", "verse", "page", "break")
+    private val BlockTypes = setOf("h1", "h2", "h3", "h4", "h5", "h6", "p", "li", "quote", "verse", "page", "notes", "break")
     private val BlockId = Regex("^[0-9a-f]{32}$")
     private val Fingerprint = Regex("^[0-9a-f]{16}$")
 

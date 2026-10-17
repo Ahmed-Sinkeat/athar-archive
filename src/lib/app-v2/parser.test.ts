@@ -34,8 +34,8 @@ describe("app/v2 semantic parser", () => {
     expect(parsed.chapters.map((chapter) => chapter.title)).toEqual(["أول", "ثان"]);
     expect(parsed.blocks.filter((block) => block.x === paragraph.trim())).toHaveLength(1000);
     expect(parsed.blocks.flatMap((block) => block.sp ?? [])).toContainEqual(expect.objectContaining({ target: "https://example.com/source" }));
-    expect(parsed.footnotes).toEqual([{ id: "note", x: "حاشية محفوظة" }]);
-    expect(parsed.blocks.at(-1)?.x).toBe("النهاية");
+    expect(parsed.footnotes).toEqual([{ id: "note", n: "١", x: "حاشية محفوظة" }]);
+    expect(parsed.blocks.filter((block) => block.x).at(-1)?.x).toBe("النهاية");
     const unsupported = body + "\n\n![bad](image.png)";
     expect(() => parseReadableDocument({ coll: "book", id: "large", body: unsupported, sourcePath: "large.md" }))
       .toThrow(`large.md:${unsupported.split("\n").length}: unsupported Markdown node image`);
@@ -88,8 +88,8 @@ describe("app/v2 semantic parser", () => {
     const document = parseReadableDocument({ coll: "book", id: "imported", sourcePath: "imported.md",
       body: '## \n\n- أصل[^note]\n\n  <hr class="page-sep" data-page="3" />\n\n<div><h2>عنوان</h2><p>نص <a href="https://example.org">الرابط</a></p></div>\n\n[^note]: حاشية\n\n    - تفصيل **مهم**\n',
     });
-    expect(document.blocks.map((block) => block.t)).toEqual(["li", "page", "h2", "p"]);
-    expect(document.blocks.at(-1)).toMatchObject({ x: "نص الرابط", p: 3, sp: [{ k: "link", s: 3, e: 9, target: "https://example.org" }] });
+    expect(document.blocks.map((block) => block.t)).toEqual(["li", "notes", "page", "h2", "p"]);
+    expect(document.blocks.at(-1)).toMatchObject({ x: "نص الرابط", p: 4, sp: [{ k: "link", s: 3, e: 9, target: "https://example.org" }] });
     expect(document.footnotes[0]).toMatchObject({ id: "note", x: "حاشية\n\n• تفصيل مهم" });
   });
 
@@ -104,19 +104,22 @@ describe("app/v2 semantic parser", () => {
 
   it("keeps repeated printed-page footnotes separate across volumes", () => {
     const document = parseReadableDocument({ coll: "book", id: "volumes", sourcePath: "volumes.md", body:
-      '<hr class="page-sep" data-page="1" data-vol="1" data-notes="[&quot;الأولى&quot;]" />\n\nنص<sup data-fn="1">١</sup>\n\n<hr class="page-sep" data-page="1" data-vol="2" data-notes="[&quot;الثانية&quot;]" />\n\nآخر<sup data-fn="1">١</sup>',
+      'نص<sup data-fn="1" data-sep-page="1">١</sup>\n\n<hr class="page-sep" data-page="1" data-vol="1" data-notes="[&quot;الأولى&quot;]" />\n\nآخر<sup data-fn="1" data-sep-page="1">١</sup>\n\n<hr class="page-sep" data-page="1" data-vol="2" data-notes="[&quot;الثانية&quot;]" />',
     });
     expect(document.footnotes.map((note) => note.id)).toEqual(["1:1:1", "2:1:1"]);
-    expect(document.blocks.filter((block) => block.t === "p").map((block) => block.f)).toEqual([["1:1:1"], ["2:1:1"]]);
+    const paragraphs = document.blocks.filter((block) => block.t === "p");
+    expect(paragraphs.map((block) => block.f)).toEqual([["1:1:1"], ["2:1:1"]]);
+    expect(paragraphs.map((block) => [block.vol, block.p, block.sp?.[0]?.target])).toEqual([[1, 1, "1:1:1"], [2, 1, "2:1:1"]]);
   });
 
   it("keeps distinct notes on repeated pages within the same volume", () => {
     const document = parseReadableDocument({ coll: "book", id: "repeated-page", sourcePath: "repeated-page.md", body:
       `أول<sup data-fn="1" data-sep-page="33">1</sup>\n\n<hr class="page-sep" data-page="33" data-vol="1" data-notes='["الأولى"]' />\n\nثان<sup data-fn="1" data-sep-page="33">1</sup>\n\n<hr class="page-sep" data-page="33" data-vol="1" data-notes='["الثانية"]' />\n\nضمن<sup data-fn="1">1</sup>`,
     });
-    expect(document.footnotes).toEqual([{ id: "1:33:1", x: "الأولى" }, { id: "1:33:1~2", x: "الثانية" }]);
-    expect(document.blocks.filter(block => block.t === "page").map(block => block.f)).toEqual([["1:33:1"], ["1:33:1~2"]]);
-    expect(document.blocks.filter(block => block.t === "p").map(block => block.f)).toEqual([["1:33:1"], ["1:33:1~2"], ["1:33:1~2"]]);
+    expect(document.footnotes).toEqual([{ id: "1:33:1", n: "١", x: "الأولى" }, { id: "1:33:1~2", n: "١", x: "الثانية" }]);
+    expect(document.blocks.filter(block => block.t === "notes").map(block => block.f)).toEqual([["1:33:1"], ["1:33:1~2"]]);
+    // The last paragraph's ref names no marker after it, so it stays a plain superscript.
+    expect(document.blocks.filter(block => block.t === "p").map(block => block.f)).toEqual([["1:33:1"], ["1:33:1~2"], undefined]);
   });
 
   it("retains reused Markdown note labels and notes without an inline reference", () => {
@@ -124,10 +127,10 @@ describe("app/v2 semantic parser", () => {
       "أول[^same]\n\n[^same]: الأولى\n\nثان[^same]\n\n[^same]: الثانية **محفوظة**\n\n[^unused]: إضافية",
     });
     expect(document.footnotes).toEqual([
-      { id: "same", x: "الأولى\n\nالثانية محفوظة", sp: [{ k: "strong", s: 16, e: 22 }] },
-      { id: "unused", x: "إضافية" },
+      { id: "same", n: "١", x: "الأولى\n\nالثانية محفوظة", sp: [{ k: "strong", s: 16, e: 22 }] },
+      { id: "unused", n: "٢", x: "إضافية" },
     ]);
-    expect(new Set(document.blocks.flatMap(block => block.f ?? []))).toEqual(new Set(["same", "unused"]));
+    expect(document.blocks.at(-1)).toMatchObject({ t: "notes", f: ["same", "unused"] });
   });
 
   it("preserves quoted lists and inline styling inside a verse", () => {
@@ -150,7 +153,7 @@ describe("app/v2 semantic parser", () => {
   it("retains footnote definitions nested in imported lists", () => {
     const result = parseReadableDocument({ coll: "book", id: "list-note", sourcePath: "list-note.md",
       body: "نص[^fn1]\n\n- [^fn1]: حاشية\n- تتمة" });
-    expect(result.footnotes).toEqual([{ id: "fn1", x: "حاشية" }]);
+    expect(result.footnotes).toEqual([{ id: "fn1", n: "١", x: "حاشية" }]);
     expect(result.blocks.some(block => block.x === "تتمة")).toBe(true);
   });
 
@@ -159,11 +162,38 @@ describe("app/v2 semantic parser", () => {
       `<hr class="page-sep" data-page="2" data-vol="1" />\n\nنص<sup data-fn="5" data-sep-page="1">5</sup>\n\n<hr class="page-sep" data-page="1" data-vol="2" data-notes='["أولى","ثانية","ثالثة"]' />\n\nعدد<sup data-fn="1237" data-sep-page="2">1237</sup>\n\n<hr class="page-sep" data-page="2" data-vol="2" />`,
     });
     const paragraphs = document.blocks.filter(block => block.t === "p");
-    expect(paragraphs[0]?.f).toEqual(["2:1:1", "2:1:2", "2:1:3"]);
+    // Ref 5 on a three-note page has nothing to point at; the page's notes still all show.
+    expect(paragraphs[0]?.f).toBeUndefined();
     expect(paragraphs[1]?.x).toBe("عدد1237");
     expect(paragraphs[1]?.f).toBeUndefined();
-    expect(document.blocks.find(block => block.t === "page" && block.vol === 2 && block.p === 1)?.f)
-      .toEqual(["2:1:1", "2:1:2", "2:1:3"]);
+    expect(document.blocks.find(block => block.t === "notes")).toMatchObject({ vol: 2, p: 1, f: ["2:1:1", "2:1:2", "2:1:3"] });
+  });
+
+  it("numbers every footnote format per printed page and closes each page with its notes", () => {
+    const markdown = parseReadableDocument({ coll: "book", id: "md", sourcePath: "md.md", body:
+      "أول[^a] ثان[^b]\n\n[^a]: حاشية أ\n\n[^b]: حاشية ب\n\nالجزء: 1 - الصفحة: 5\n\nثالث[^c]\n\n[^c]: حاشية ج\n\nالجزء: 1 - الصفحة: 6" });
+    expect(markdown.blocks.map(block => [block.t, block.p, block.x ?? block.f])).toEqual([
+      ["p", 5, "أول١ ثان٢"], ["notes", 5, ["a", "b"]], ["page", 5, undefined],
+      ["p", 6, "ثالث١"], ["notes", 6, ["c"]], ["page", 6, undefined],
+    ]);
+    expect(markdown.blocks[0]?.sp).toEqual([{ k: "sup", s: 3, e: 4, target: "a" }, { k: "sup", s: 8, e: 9, target: "b" }]);
+    expect(markdown.footnotes.map(note => [note.id, note.n])).toEqual([["a", "١"], ["b", "٢"], ["c", "١"]]);
+
+    const caret = parseReadableDocument({ coll: "book", id: "caret", sourcePath: "caret.md", body:
+      "نص (^١) وتتمة (^٢)\n\n(^١) أولى\n(^٢) ثانية تبدأ\n\n<hr class=\"page-sep\" data-page=\"9\" />\n\n= وتنتهي\n\nبعد" });
+    expect(caret.blocks.map(block => [block.t, block.p, block.x ?? block.f])).toEqual([
+      ["p", 9, "نص ١ وتتمة ٢"], ["notes", 9, ["9:c1", "9:c2"]], ["page", 9, undefined], ["p", 10, "بعد"],
+    ]);
+    expect(caret.blocks[0]?.sp?.map(span => span.target)).toEqual(["9:c1", "9:c2"]);
+    expect(caret.footnotes).toEqual([{ id: "9:c1", n: "١", x: "أولى" }, { id: "9:c2", n: "٢", x: "ثانية تبدأ وتنتهي" }]);
+
+    const trailing = parseReadableDocument({ coll: "book", id: "trailing", sourcePath: "trailing.md", body:
+      "نص (^١)\n\n[٣٦] إسناده **صحيح**.\n(^١) كذا في الأصل\n\n<hr class=\"page-sep\" data-page=\"39\" />" });
+    expect(trailing.blocks.map(block => [block.t, block.x ?? block.f])).toEqual([
+      ["p", "نص ١"], ["p", "[٣٦] إسناده صحيح."], ["notes", ["39:c1"]], ["page", undefined],
+    ]);
+    expect(trailing.blocks[1]?.sp).toEqual([{ k: "strong", s: 12, e: 16 }]);
+    expect(trailing.footnotes).toEqual([{ id: "39:c1", n: "١", x: "كذا في الأصل" }]);
   });
 
 });

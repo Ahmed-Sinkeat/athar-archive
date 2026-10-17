@@ -106,7 +106,7 @@ internal fun ReaderBlock.selectionText(): String? = when (this) {
     is ReaderBlock.Paragraph -> text
     is ReaderBlock.Quote -> text
     is ReaderBlock.Verse -> listOfNotNull(sadr, ajuz).joinToString("\n")
-    is ReaderBlock.PageBreak -> null
+    is ReaderBlock.PageBreak, is ReaderBlock.PageNotes -> null
     is ReaderBlock.FootnoteBody -> text
 }
 

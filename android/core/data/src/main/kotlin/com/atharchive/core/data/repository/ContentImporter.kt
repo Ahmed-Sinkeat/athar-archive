@@ -106,6 +106,7 @@ class ContentImporter(
                             fnId = it.id,
                             text = it.x,
                             inlineSpans = encodeSpans(it.sp),
+                            marker = it.n,
                         )
                     },
                     now = now,
