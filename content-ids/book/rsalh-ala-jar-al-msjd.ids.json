@@ -1,0 +1,835 @@
+{
+  "schema": 1,
+  "generation": 1,
+  "sourceHash": "a21d75718c4455794fa16ca7455a8f2684a0455fa30be7773e14e4b6600fe044",
+  "ids": [
+    {
+      "ord": 0,
+      "blockId": "ae3cd655b6ac2cc569c6a3dca87d22e7",
+      "fp64": "57e5da6b6ba8a367",
+      "normHash": "e521f489d4ea1b1e344557f70b833a823e82867c277e340c6a9f43cfa42a6fc7",
+      "kind": "h2",
+      "chapter": "المقدمة",
+      "next": "2faeea109072ecd45655335c776d16dff7854c5c40d4f54df97cecc239736a86"
+    },
+    {
+      "ord": 1,
+      "blockId": "b0d4672c3f3e448b9c3d1908a1d51033",
+      "fp64": "bdf5f8179ffc71fe",
+      "normHash": "2faeea109072ecd45655335c776d16dff7854c5c40d4f54df97cecc239736a86",
+      "kind": "p",
+      "chapter": "المقدمة",
+      "prev": "e521f489d4ea1b1e344557f70b833a823e82867c277e340c6a9f43cfa42a6fc7",
+      "next": "b2d691b7c68a062b8dc93a79317a98940437fef97cd675675c8c02402d3f37dc"
+    },
+    {
+      "ord": 2,
+      "blockId": "6347e706599eedb4eb5aacec1d6867d0",
+      "fp64": "f973effa1d73fc77",
+      "normHash": "b2d691b7c68a062b8dc93a79317a98940437fef97cd675675c8c02402d3f37dc",
+      "kind": "h1",
+      "chapter": "المقدمة",
+      "prev": "2faeea109072ecd45655335c776d16dff7854c5c40d4f54df97cecc239736a86",
+      "next": "98cd80918f70d5d2dc813fc118c827de584bb154677df3a568fc70a9fbc8d454"
+    },
+    {
+      "ord": 3,
+      "blockId": "62015c8910d3359c75e89070c4ffe0f3",
+      "fp64": "be2cf4365711794c",
+      "normHash": "98cd80918f70d5d2dc813fc118c827de584bb154677df3a568fc70a9fbc8d454",
+      "kind": "p",
+      "chapter": "المقدمة",
+      "prev": "b2d691b7c68a062b8dc93a79317a98940437fef97cd675675c8c02402d3f37dc",
+      "next": "fee832d2021b0156e0ba299d22288b9aa66658da27ddc03b3dc1ff1f568b79a0"
+    },
+    {
+      "ord": 4,
+      "blockId": "044823d128d858753354786009a9cc2f",
+      "fp64": "21dc73fb7b32246f",
+      "normHash": "fee832d2021b0156e0ba299d22288b9aa66658da27ddc03b3dc1ff1f568b79a0",
+      "kind": "page",
+      "chapter": "المقدمة",
+      "prev": "98cd80918f70d5d2dc813fc118c827de584bb154677df3a568fc70a9fbc8d454",
+      "next": "eabdd838fb5fd7911cd3466cd0ba4764a5976d89d1eea230da734ea619cbd866"
+    },
+    {
+      "ord": 5,
+      "blockId": "514896ed4fa619ea9834d14f436717a7",
+      "fp64": "a62f7774357f47ac",
+      "normHash": "eabdd838fb5fd7911cd3466cd0ba4764a5976d89d1eea230da734ea619cbd866",
+      "kind": "p",
+      "chapter": "المقدمة",
+      "prev": "fee832d2021b0156e0ba299d22288b9aa66658da27ddc03b3dc1ff1f568b79a0",
+      "next": "6fc9c01d0fb832ada6cccf90f4d070fbead6ec6001acb5e98534ee58fbe91615"
+    },
+    {
+      "ord": 6,
+      "blockId": "f43c806ca3beec8b9fa09072fea46d3b",
+      "fp64": "aaef7f7bb76b7fcd",
+      "normHash": "6fc9c01d0fb832ada6cccf90f4d070fbead6ec6001acb5e98534ee58fbe91615",
+      "kind": "h2",
+      "chapter": "من-هو-جار-المسجد",
+      "prev": "eabdd838fb5fd7911cd3466cd0ba4764a5976d89d1eea230da734ea619cbd866",
+      "next": "45b6b21a31bcd6bcdf692134c8958a206903f561be73325867a35530d6d8e0f9"
+    },
+    {
+      "ord": 7,
+      "blockId": "17d0330936196a96a505313c492ca830",
+      "fp64": "aa0b053a37f26bdd",
+      "normHash": "45b6b21a31bcd6bcdf692134c8958a206903f561be73325867a35530d6d8e0f9",
+      "kind": "p",
+      "chapter": "من-هو-جار-المسجد",
+      "prev": "6fc9c01d0fb832ada6cccf90f4d070fbead6ec6001acb5e98534ee58fbe91615",
+      "next": "f2d3b6bdb55e7fbc6d8ab7edec8e25dae2f896f9806c5d5589cfaf4f5e85c4f3"
+    },
+    {
+      "ord": 8,
+      "blockId": "b43580ea700914dd558769f42c4b67ab",
+      "fp64": "a5dd76ff53b0e667",
+      "normHash": "f2d3b6bdb55e7fbc6d8ab7edec8e25dae2f896f9806c5d5589cfaf4f5e85c4f3",
+      "kind": "page",
+      "chapter": "من-هو-جار-المسجد",
+      "prev": "45b6b21a31bcd6bcdf692134c8958a206903f561be73325867a35530d6d8e0f9",
+      "next": "bcfc225eeed56c675593a7b3d5fadfed0365f0a8a6937131c43140b7307f4278"
+    },
+    {
+      "ord": 9,
+      "blockId": "b0dbe0dac4ce5c8e1315adf7be8d4740",
+      "fp64": "e1fbb73c7f1f7e8a",
+      "normHash": "bcfc225eeed56c675593a7b3d5fadfed0365f0a8a6937131c43140b7307f4278",
+      "kind": "h2",
+      "chapter": "أخي-هل-أديت-حق-هذه-المجاورة",
+      "prev": "f2d3b6bdb55e7fbc6d8ab7edec8e25dae2f896f9806c5d5589cfaf4f5e85c4f3",
+      "next": "fb85b0476e1b6327c8dcc7a0f6d8272e87e2a4b5f3319cc84069fd3e3f81a62d"
+    },
+    {
+      "ord": 10,
+      "blockId": "b9a3fec417b5495f861ba74bd7062466",
+      "fp64": "06dab6193f472c0c",
+      "normHash": "fb85b0476e1b6327c8dcc7a0f6d8272e87e2a4b5f3319cc84069fd3e3f81a62d",
+      "kind": "p",
+      "chapter": "أخي-هل-أديت-حق-هذه-المجاورة",
+      "prev": "bcfc225eeed56c675593a7b3d5fadfed0365f0a8a6937131c43140b7307f4278",
+      "next": "880cab1c884b9dcd7b42a1e1d5d6a5104a7877ad914414580bd9c488018f1af8"
+    },
+    {
+      "ord": 11,
+      "blockId": "928121cbd14ae133505f8cd107812408",
+      "fp64": "beefbadb4f7bdbdd",
+      "normHash": "880cab1c884b9dcd7b42a1e1d5d6a5104a7877ad914414580bd9c488018f1af8",
+      "kind": "h2",
+      "chapter": "وجوب-شهود-صلاة-الجماعة-في-المسجد",
+      "prev": "fb85b0476e1b6327c8dcc7a0f6d8272e87e2a4b5f3319cc84069fd3e3f81a62d",
+      "next": "ddd64f4e82949f4db49e7e743341e216097f30f308dbd50321588676c5012c24"
+    },
+    {
+      "ord": 12,
+      "blockId": "5bb05bb9821ad0c16cd355d136e162a5",
+      "fp64": "a1fdc47f87766fec",
+      "normHash": "ddd64f4e82949f4db49e7e743341e216097f30f308dbd50321588676c5012c24",
+      "kind": "p",
+      "chapter": "وجوب-شهود-صلاة-الجماعة-في-المسجد",
+      "prev": "880cab1c884b9dcd7b42a1e1d5d6a5104a7877ad914414580bd9c488018f1af8",
+      "next": "3324e4734c68c68c7c3985a67c3b46763560f2a476518a635a6385fb8fa3b9c3"
+    },
+    {
+      "ord": 13,
+      "blockId": "0efa0440476db8dc3bf9156c610e351d",
+      "fp64": "dec7ddf8d9677de7",
+      "normHash": "3324e4734c68c68c7c3985a67c3b46763560f2a476518a635a6385fb8fa3b9c3",
+      "kind": "h2",
+      "chapter": "الدليل-من-الكتاب-العزيز",
+      "prev": "ddd64f4e82949f4db49e7e743341e216097f30f308dbd50321588676c5012c24",
+      "next": "3c7de61d6133da9d235e373701f5c135a46b2736e36de8a51fa126f01e6441f0"
+    },
+    {
+      "ord": 14,
+      "blockId": "c1c9b35613ffa2e649f061777748db74",
+      "fp64": "ab11ce591f3a693c",
+      "normHash": "3c7de61d6133da9d235e373701f5c135a46b2736e36de8a51fa126f01e6441f0",
+      "kind": "p",
+      "chapter": "الدليل-من-الكتاب-العزيز",
+      "prev": "3324e4734c68c68c7c3985a67c3b46763560f2a476518a635a6385fb8fa3b9c3",
+      "next": "ce386de03df4fffc0f7eb78e45dda22fe013053ff8eb269e8892fa1202a51e73"
+    },
+    {
+      "ord": 15,
+      "blockId": "51c49674f5529c1a5182a7c1e677893c",
+      "fp64": "a5de34fe5b31027b",
+      "normHash": "ce386de03df4fffc0f7eb78e45dda22fe013053ff8eb269e8892fa1202a51e73",
+      "kind": "page",
+      "chapter": "الدليل-من-الكتاب-العزيز",
+      "prev": "3c7de61d6133da9d235e373701f5c135a46b2736e36de8a51fa126f01e6441f0",
+      "next": "f6f3801c1e0c557f2fde3508c80d4213fc8cef78194c7d0dfabb94dae6cda911"
+    },
+    {
+      "ord": 16,
+      "blockId": "0cc9345ab767315751d1d2c3921946c2",
+      "fp64": "19c1b45a8e4a9f5c",
+      "normHash": "f6f3801c1e0c557f2fde3508c80d4213fc8cef78194c7d0dfabb94dae6cda911",
+      "kind": "p",
+      "chapter": "الدليل-من-الكتاب-العزيز",
+      "prev": "ce386de03df4fffc0f7eb78e45dda22fe013053ff8eb269e8892fa1202a51e73",
+      "next": "887535aec56e2dd211a3f96f56551dfbf2562c8beb49fde86e80b1e542ed5826"
+    },
+    {
+      "ord": 17,
+      "blockId": "5ecba2e09b53604023a5a240d027f9ab",
+      "fp64": "c8c664fbd3653da5",
+      "normHash": "887535aec56e2dd211a3f96f56551dfbf2562c8beb49fde86e80b1e542ed5826",
+      "kind": "h2",
+      "chapter": "الدليل-من-السنة",
+      "prev": "f6f3801c1e0c557f2fde3508c80d4213fc8cef78194c7d0dfabb94dae6cda911",
+      "next": "7aeee2ae8ac2be729aacac0d691687838ed0e013f91f4bd07b7cb08cb3e3ecb5"
+    },
+    {
+      "ord": 18,
+      "blockId": "714077ef770c6eecaebb62ea7bb131bb",
+      "fp64": "7650e01917c05678",
+      "normHash": "7aeee2ae8ac2be729aacac0d691687838ed0e013f91f4bd07b7cb08cb3e3ecb5",
+      "kind": "p",
+      "chapter": "الدليل-من-السنة",
+      "prev": "887535aec56e2dd211a3f96f56551dfbf2562c8beb49fde86e80b1e542ed5826",
+      "next": "bcce0d58b808c98b64ffb5d83f077e5d0096566df1640fb88d2d13e8bd2c6d9b"
+    },
+    {
+      "ord": 19,
+      "blockId": "147bba413027e0e8084d0ea6fca46c6d",
+      "fp64": "65fdf2df7232622e",
+      "normHash": "bcce0d58b808c98b64ffb5d83f077e5d0096566df1640fb88d2d13e8bd2c6d9b",
+      "kind": "page",
+      "chapter": "الدليل-من-السنة",
+      "prev": "7aeee2ae8ac2be729aacac0d691687838ed0e013f91f4bd07b7cb08cb3e3ecb5",
+      "next": "5af4eaa0d6376fd54e9b577cdd1193202e7f584f6b3a436261eb137d1455dc63"
+    },
+    {
+      "ord": 20,
+      "blockId": "a9a9f4b7017e958fb6290f20ba221b73",
+      "fp64": "feed607a1eb63de8",
+      "normHash": "5af4eaa0d6376fd54e9b577cdd1193202e7f584f6b3a436261eb137d1455dc63",
+      "kind": "h2",
+      "chapter": "الدليل-من-أقوال-الصحابة-رضي-الله-عنهم",
+      "prev": "bcce0d58b808c98b64ffb5d83f077e5d0096566df1640fb88d2d13e8bd2c6d9b",
+      "next": "d6576d72fda88e5b2a84d555992e1969820c1a219be006d6d29ad7d71a221677"
+    },
+    {
+      "ord": 21,
+      "blockId": "ea730767f526228af2486bd6836cffc7",
+      "fp64": "9cd3e01a77a5547c",
+      "normHash": "d6576d72fda88e5b2a84d555992e1969820c1a219be006d6d29ad7d71a221677",
+      "kind": "p",
+      "chapter": "الدليل-من-أقوال-الصحابة-رضي-الله-عنهم",
+      "prev": "5af4eaa0d6376fd54e9b577cdd1193202e7f584f6b3a436261eb137d1455dc63",
+      "next": "e0eb6951236d8601f2a80e8093a140dc3043e75fb6b79391aa5024eed6cb05cb"
+    },
+    {
+      "ord": 22,
+      "blockId": "afc1d7cde873f5957038f0261364264b",
+      "fp64": "4e53acdd16e2144e",
+      "normHash": "e0eb6951236d8601f2a80e8093a140dc3043e75fb6b79391aa5024eed6cb05cb",
+      "kind": "h2",
+      "chapter": "كلام-أهل-العلم-من-المتقدمين",
+      "prev": "d6576d72fda88e5b2a84d555992e1969820c1a219be006d6d29ad7d71a221677",
+      "next": "59321069b46368d85d5fe4bc0fc397b3d26b1810b7088b380cecd3ea345860c1"
+    },
+    {
+      "ord": 23,
+      "blockId": "5ecb0a896c254113c8da5d41d1ccedf0",
+      "fp64": "0e6a60db83777ddf",
+      "normHash": "59321069b46368d85d5fe4bc0fc397b3d26b1810b7088b380cecd3ea345860c1",
+      "kind": "p",
+      "chapter": "كلام-أهل-العلم-من-المتقدمين",
+      "prev": "e0eb6951236d8601f2a80e8093a140dc3043e75fb6b79391aa5024eed6cb05cb",
+      "next": "3d1c1df63420af9023e9e4eed67cc4f8d07966fc01f069175a8d2c5f79b634b5"
+    },
+    {
+      "ord": 24,
+      "blockId": "7cebc7d226c93a81745fba947e2c0188",
+      "fp64": "21fd74de7332403b",
+      "normHash": "3d1c1df63420af9023e9e4eed67cc4f8d07966fc01f069175a8d2c5f79b634b5",
+      "kind": "page",
+      "chapter": "كلام-أهل-العلم-من-المتقدمين",
+      "prev": "59321069b46368d85d5fe4bc0fc397b3d26b1810b7088b380cecd3ea345860c1",
+      "next": "f9059c6bf2a949b11a435123da863ef36add7033a10e3785e895212c4affdabe"
+    },
+    {
+      "ord": 25,
+      "blockId": "6b9f18510a47ea17ff515a49614da49c",
+      "fp64": "4842145896471e7c",
+      "normHash": "f9059c6bf2a949b11a435123da863ef36add7033a10e3785e895212c4affdabe",
+      "kind": "p",
+      "chapter": "كلام-أهل-العلم-من-المتقدمين",
+      "prev": "3d1c1df63420af9023e9e4eed67cc4f8d07966fc01f069175a8d2c5f79b634b5",
+      "next": "ed6bae99ca54ba55531f9d07198bfdc0a82fba67816b910ff56bf1528e94606c"
+    },
+    {
+      "ord": 26,
+      "blockId": "d58c28ae2228158e0244423e7e696f97",
+      "fp64": "cf6dda7a9fd7ff4d",
+      "normHash": "ed6bae99ca54ba55531f9d07198bfdc0a82fba67816b910ff56bf1528e94606c",
+      "kind": "h2",
+      "chapter": "من-فتاوى-العلماء-المعاصرين",
+      "prev": "f9059c6bf2a949b11a435123da863ef36add7033a10e3785e895212c4affdabe",
+      "next": "9d5f48470d678c5b051d76d917b9965d83bfe492d07ec9fc5d7d961b4d762f90"
+    },
+    {
+      "ord": 27,
+      "blockId": "b5400819c5c038bcf1400a403561a2e5",
+      "fp64": "41bd153de7ff7549",
+      "normHash": "9d5f48470d678c5b051d76d917b9965d83bfe492d07ec9fc5d7d961b4d762f90",
+      "kind": "p",
+      "chapter": "من-فتاوى-العلماء-المعاصرين",
+      "prev": "ed6bae99ca54ba55531f9d07198bfdc0a82fba67816b910ff56bf1528e94606c",
+      "next": "9072c6fb11e7035590d51b925f51113ccc622a0d6feb74e4890707711baabcc3"
+    },
+    {
+      "ord": 28,
+      "blockId": "0a87dafba08591eab9cdffe93d236894",
+      "fp64": "437f6aff7f7cefbf",
+      "normHash": "9072c6fb11e7035590d51b925f51113ccc622a0d6feb74e4890707711baabcc3",
+      "kind": "h2",
+      "chapter": "فتوى-اللجنة-الدائمة-للبحوث-العلمية-والإفتاء",
+      "prev": "9d5f48470d678c5b051d76d917b9965d83bfe492d07ec9fc5d7d961b4d762f90",
+      "next": "799262f18c1727e7adae49ac6020aeff2f6cafefef8ec42d06b07ca9cde3222a"
+    },
+    {
+      "ord": 29,
+      "blockId": "23afb0b1e3f4e542ccd5676113139b51",
+      "fp64": "aa5e66db97775d8d",
+      "normHash": "799262f18c1727e7adae49ac6020aeff2f6cafefef8ec42d06b07ca9cde3222a",
+      "kind": "p",
+      "chapter": "فتوى-اللجنة-الدائمة-للبحوث-العلمية-والإفتاء",
+      "prev": "9072c6fb11e7035590d51b925f51113ccc622a0d6feb74e4890707711baabcc3",
+      "next": "8049bbc6234344a2f41e8851e10cfb75b0ab38518230dd3d978519544daf3183"
+    },
+    {
+      "ord": 30,
+      "blockId": "b5d9f920cd375da0d15561742f1d6c59",
+      "fp64": "a1dc72be53b0446a",
+      "normHash": "8049bbc6234344a2f41e8851e10cfb75b0ab38518230dd3d978519544daf3183",
+      "kind": "page",
+      "chapter": "فتوى-اللجنة-الدائمة-للبحوث-العلمية-والإفتاء",
+      "prev": "799262f18c1727e7adae49ac6020aeff2f6cafefef8ec42d06b07ca9cde3222a",
+      "next": "f3ff32c091ab82502a3a09e9a80541012f6df6d9b709c10394b67134223a772d"
+    },
+    {
+      "ord": 31,
+      "blockId": "dc9632c52f70cddb55d1dfb9d29575ce",
+      "fp64": "1c7fed7b4b5f3e49",
+      "normHash": "f3ff32c091ab82502a3a09e9a80541012f6df6d9b709c10394b67134223a772d",
+      "kind": "p",
+      "chapter": "فتوى-اللجنة-الدائمة-للبحوث-العلمية-والإفتاء",
+      "prev": "8049bbc6234344a2f41e8851e10cfb75b0ab38518230dd3d978519544daf3183",
+      "next": "63360d68c7f70fdc1bf651216c9aa0795376c611f53796f8d55b42c4912e6e81"
+    },
+    {
+      "ord": 32,
+      "blockId": "747edc12c9532b985ae262609a967e2a",
+      "fp64": "471dec97731c1daf",
+      "normHash": "63360d68c7f70fdc1bf651216c9aa0795376c611f53796f8d55b42c4912e6e81",
+      "kind": "p",
+      "chapter": "فتوى-اللجنة-الدائمة-للبحوث-العلمية-والإفتاء",
+      "prev": "f3ff32c091ab82502a3a09e9a80541012f6df6d9b709c10394b67134223a772d",
+      "next": "bc28bb91f544bb822d23c45651ca1f99b18105a95bca90db8ca568ede838c01e"
+    },
+    {
+      "ord": 33,
+      "blockId": "93876318b57eb6f84c09ab182d0f5ac7",
+      "fp64": "775ee05b11467e4d",
+      "normHash": "bc28bb91f544bb822d23c45651ca1f99b18105a95bca90db8ca568ede838c01e",
+      "kind": "p",
+      "chapter": "فتوى-اللجنة-الدائمة-للبحوث-العلمية-والإفتاء",
+      "prev": "63360d68c7f70fdc1bf651216c9aa0795376c611f53796f8d55b42c4912e6e81",
+      "next": "21e2ee559f06ac95c3437aadaa3d80a293285cca9c5581f9eba3e3512487a1a4"
+    },
+    {
+      "ord": 34,
+      "blockId": "8b89d2079249027489e779ffbfabd21b",
+      "fp64": "7ebff6d5f757ed7f",
+      "normHash": "21e2ee559f06ac95c3437aadaa3d80a293285cca9c5581f9eba3e3512487a1a4",
+      "kind": "h2",
+      "chapter": "إلى-العاملين-بالشركات-والمؤسسات",
+      "prev": "bc28bb91f544bb822d23c45651ca1f99b18105a95bca90db8ca568ede838c01e",
+      "next": "11462fd8463fb07172b3455a5dfbb900b2d1ec8dc105b923cddda38b4b5c3e6a"
+    },
+    {
+      "ord": 35,
+      "blockId": "70619d286aa69b49724b854412fa222c",
+      "fp64": "5e4c2c71f3401fad",
+      "normHash": "11462fd8463fb07172b3455a5dfbb900b2d1ec8dc105b923cddda38b4b5c3e6a",
+      "kind": "p",
+      "chapter": "إلى-العاملين-بالشركات-والمؤسسات",
+      "prev": "21e2ee559f06ac95c3437aadaa3d80a293285cca9c5581f9eba3e3512487a1a4",
+      "next": "b5a33f999d9b79ce977301844f0b2b5e9c1a57101869f8b92950f72a5f33b34a"
+    },
+    {
+      "ord": 36,
+      "blockId": "e3280dbf1897f1a228b7f9d105449f52",
+      "fp64": "e1dff3be7233c06f",
+      "normHash": "b5a33f999d9b79ce977301844f0b2b5e9c1a57101869f8b92950f72a5f33b34a",
+      "kind": "page",
+      "chapter": "إلى-العاملين-بالشركات-والمؤسسات",
+      "prev": "11462fd8463fb07172b3455a5dfbb900b2d1ec8dc105b923cddda38b4b5c3e6a",
+      "next": "e13e5023b7567a3e10beb134ec620307ee1269f141a1820d4e5f5e84fea7f677"
+    },
+    {
+      "ord": 37,
+      "blockId": "8521d4700950cdcca7c815099cec3dbb",
+      "fp64": "0e4de05b9f483dcd",
+      "normHash": "e13e5023b7567a3e10beb134ec620307ee1269f141a1820d4e5f5e84fea7f677",
+      "kind": "p",
+      "chapter": "إلى-العاملين-بالشركات-والمؤسسات",
+      "prev": "b5a33f999d9b79ce977301844f0b2b5e9c1a57101869f8b92950f72a5f33b34a",
+      "next": "a946925143e0e3d4763780a5c89ad7aefe82b139b26dafb723a1e95b3e46eb3a"
+    },
+    {
+      "ord": 38,
+      "blockId": "cec8317a0c6f5d340c43c02d9f62a1a2",
+      "fp64": "7baefe57ff5dffe4",
+      "normHash": "a946925143e0e3d4763780a5c89ad7aefe82b139b26dafb723a1e95b3e46eb3a",
+      "kind": "h2",
+      "chapter": "إلى-الآباء",
+      "prev": "e13e5023b7567a3e10beb134ec620307ee1269f141a1820d4e5f5e84fea7f677",
+      "next": "dfc3ab3590c469d6eabc306965a9aa39fb18c26c87c8015ade38dcf3d5de2f07"
+    },
+    {
+      "ord": 39,
+      "blockId": "a00078deb4c479d50c3dfae94f36f891",
+      "fp64": "ab5df625bc76dbd4",
+      "normHash": "dfc3ab3590c469d6eabc306965a9aa39fb18c26c87c8015ade38dcf3d5de2f07",
+      "kind": "p",
+      "chapter": "إلى-الآباء",
+      "prev": "a946925143e0e3d4763780a5c89ad7aefe82b139b26dafb723a1e95b3e46eb3a",
+      "next": "f50fda5149d46c1ae9aff25644372ba923076ef03087e250042e1f92c13a74a0"
+    },
+    {
+      "ord": 40,
+      "blockId": "6558f9ade9fec37396d7caa2a01f54b0",
+      "fp64": "471dec97731c1daf",
+      "normHash": "f50fda5149d46c1ae9aff25644372ba923076ef03087e250042e1f92c13a74a0",
+      "kind": "h2",
+      "chapter": "فتوى-للجنة-الدائمة",
+      "prev": "dfc3ab3590c469d6eabc306965a9aa39fb18c26c87c8015ade38dcf3d5de2f07",
+      "next": "bd96308d0c6e045e05500675d74e1a3c9345d1b6b871959d04cb86367de351e3"
+    },
+    {
+      "ord": 41,
+      "blockId": "1f7e4fc6b2c791d6701276a5bf8947b3",
+      "fp64": "38ec66cbcedb12cd",
+      "normHash": "bd96308d0c6e045e05500675d74e1a3c9345d1b6b871959d04cb86367de351e3",
+      "kind": "p",
+      "chapter": "فتوى-للجنة-الدائمة",
+      "prev": "f50fda5149d46c1ae9aff25644372ba923076ef03087e250042e1f92c13a74a0",
+      "next": "cbf77e48990d7c60a95c02f1cc15f659a5150119bdba10bb2b83fa6a6f1843df"
+    },
+    {
+      "ord": 42,
+      "blockId": "34b9e1092aec1f1702693584c94eb0bd",
+      "fp64": "25ff75df73b0406b",
+      "normHash": "cbf77e48990d7c60a95c02f1cc15f659a5150119bdba10bb2b83fa6a6f1843df",
+      "kind": "page",
+      "chapter": "فتوى-للجنة-الدائمة",
+      "prev": "bd96308d0c6e045e05500675d74e1a3c9345d1b6b871959d04cb86367de351e3",
+      "next": "f26f277afe39332abcd9714696502d3f0acc276dbc838d9da9f0a695b7f5b2ea"
+    },
+    {
+      "ord": 43,
+      "blockId": "2dbeaf367a4a543ab5ba86b331596681",
+      "fp64": "edcea05b1f5476e9",
+      "normHash": "f26f277afe39332abcd9714696502d3f0acc276dbc838d9da9f0a695b7f5b2ea",
+      "kind": "p",
+      "chapter": "فتوى-للجنة-الدائمة",
+      "prev": "cbf77e48990d7c60a95c02f1cc15f659a5150119bdba10bb2b83fa6a6f1843df",
+      "next": "4d2b8c992d6052972c0129cf78fc8598e2fb9e224cc0c8d0a5189f9d38e07351"
+    },
+    {
+      "ord": 44,
+      "blockId": "c687391c0012bfebf67f2cdcd9f975a4",
+      "fp64": "c8bd6776b08a370c",
+      "normHash": "4d2b8c992d6052972c0129cf78fc8598e2fb9e224cc0c8d0a5189f9d38e07351",
+      "kind": "h2",
+      "chapter": "أخي-المؤمن-الصادق-هو-الذي-يعمر-المساجد",
+      "prev": "f26f277afe39332abcd9714696502d3f0acc276dbc838d9da9f0a695b7f5b2ea",
+      "next": "6a5b50d96f422e69c2167617be2e16a927e61aa1523561bc131dadc6087bbfcb"
+    },
+    {
+      "ord": 45,
+      "blockId": "e40730267ee9c1377c5480a89dd50768",
+      "fp64": "f440403c9e23446e",
+      "normHash": "6a5b50d96f422e69c2167617be2e16a927e61aa1523561bc131dadc6087bbfcb",
+      "kind": "p",
+      "chapter": "أخي-المؤمن-الصادق-هو-الذي-يعمر-المساجد",
+      "prev": "4d2b8c992d6052972c0129cf78fc8598e2fb9e224cc0c8d0a5189f9d38e07351",
+      "next": "862ebeb7055911103edb09ffdd1ec37c12ca0b0c341b971b26043331dff0ab2f"
+    },
+    {
+      "ord": 46,
+      "blockId": "4d14b9b8966c53d6a52dfa9c06fe626f",
+      "fp64": "65dcf49e5bb3c23f",
+      "normHash": "862ebeb7055911103edb09ffdd1ec37c12ca0b0c341b971b26043331dff0ab2f",
+      "kind": "page",
+      "chapter": "أخي-المؤمن-الصادق-هو-الذي-يعمر-المساجد",
+      "prev": "6a5b50d96f422e69c2167617be2e16a927e61aa1523561bc131dadc6087bbfcb",
+      "next": "818d7462b5cf9587fe4181307c1d0d699d7cd1c7d48795cf4bd86544720899d9"
+    },
+    {
+      "ord": 47,
+      "blockId": "a47afe04faf0f2f54f4dbf20fb36ac9a",
+      "fp64": "fc5ee054bd64755c",
+      "normHash": "818d7462b5cf9587fe4181307c1d0d699d7cd1c7d48795cf4bd86544720899d9",
+      "kind": "p",
+      "chapter": "أخي-المؤمن-الصادق-هو-الذي-يعمر-المساجد",
+      "prev": "862ebeb7055911103edb09ffdd1ec37c12ca0b0c341b971b26043331dff0ab2f",
+      "next": "fd5ef5b545c60ef45dbc2f742db54f809e1e632e4deb308ecb98d9498462bd58"
+    },
+    {
+      "ord": 48,
+      "blockId": "ed99d0a8eea942ddd3c7063919913ef7",
+      "fp64": "c90ea7e661bb623e",
+      "normHash": "fd5ef5b545c60ef45dbc2f742db54f809e1e632e4deb308ecb98d9498462bd58",
+      "kind": "h2",
+      "chapter": "أخي-احذر-النفاق",
+      "prev": "818d7462b5cf9587fe4181307c1d0d699d7cd1c7d48795cf4bd86544720899d9",
+      "next": "f04a25e6babe1851aa1837e932722527bf3a852d1229b0b2b6f56ac62fe13f4e"
+    },
+    {
+      "ord": 49,
+      "blockId": "5ec5d7ff74f505a87d6576d587a17a5a",
+      "fp64": "139ea45f07095e5c",
+      "normHash": "f04a25e6babe1851aa1837e932722527bf3a852d1229b0b2b6f56ac62fe13f4e",
+      "kind": "p",
+      "chapter": "أخي-احذر-النفاق",
+      "prev": "fd5ef5b545c60ef45dbc2f742db54f809e1e632e4deb308ecb98d9498462bd58",
+      "next": "b8dcf02222c6559396b9d964786da6cc5d31d7ecb2f2f44aee8d771bb6aecabf"
+    },
+    {
+      "ord": 50,
+      "blockId": "82fec3eca6343526e6e848da05c48244",
+      "fp64": "61df34fa53b02627",
+      "normHash": "b8dcf02222c6559396b9d964786da6cc5d31d7ecb2f2f44aee8d771bb6aecabf",
+      "kind": "page",
+      "chapter": "أخي-احذر-النفاق",
+      "prev": "f04a25e6babe1851aa1837e932722527bf3a852d1229b0b2b6f56ac62fe13f4e",
+      "next": "862c764848dc852bf9c213350473153598dc9206da67dd139c745c561a088338"
+    },
+    {
+      "ord": 51,
+      "blockId": "5fa5f41653f0c9c8a1253b9009d56023",
+      "fp64": "fc54aa5a05452a5c",
+      "normHash": "862c764848dc852bf9c213350473153598dc9206da67dd139c745c561a088338",
+      "kind": "p",
+      "chapter": "أخي-احذر-النفاق",
+      "prev": "b8dcf02222c6559396b9d964786da6cc5d31d7ecb2f2f44aee8d771bb6aecabf",
+      "next": "90a66cb5d7d48896ea68efd351ec7140d3654a7c8b4820c6be0eaa52dff561b2"
+    },
+    {
+      "ord": 52,
+      "blockId": "a978eb929af1ddf07430e80afef43813",
+      "fp64": "c5f9357550091b08",
+      "normHash": "90a66cb5d7d48896ea68efd351ec7140d3654a7c8b4820c6be0eaa52dff561b2",
+      "kind": "h2",
+      "chapter": "بشرى-لأهل-المساجد",
+      "prev": "862c764848dc852bf9c213350473153598dc9206da67dd139c745c561a088338",
+      "next": "a8b71aaab3fcc8c6f539bd014f832c4445b16ea266fadb30a24c449256fe297d"
+    },
+    {
+      "ord": 53,
+      "blockId": "6bf298b6ca569ba8fae14b3c480b61ed",
+      "fp64": "f2ff257b1f762b69",
+      "normHash": "a8b71aaab3fcc8c6f539bd014f832c4445b16ea266fadb30a24c449256fe297d",
+      "kind": "p",
+      "chapter": "بشرى-لأهل-المساجد",
+      "prev": "90a66cb5d7d48896ea68efd351ec7140d3654a7c8b4820c6be0eaa52dff561b2",
+      "next": "b76c1f13d4d3e78077a2673d163ee65a5f27d5f3306c54c7b671e0ae0c813114"
+    },
+    {
+      "ord": 54,
+      "blockId": "b04b0f0f5c28c013f11b126b62f1e324",
+      "fp64": "65fef79a73b22066",
+      "normHash": "b76c1f13d4d3e78077a2673d163ee65a5f27d5f3306c54c7b671e0ae0c813114",
+      "kind": "page",
+      "chapter": "بشرى-لأهل-المساجد",
+      "prev": "a8b71aaab3fcc8c6f539bd014f832c4445b16ea266fadb30a24c449256fe297d",
+      "next": "e847b9e443429a801329ab9e73f4d47a50dc58fd8fe292fc5c7a1978fe42853a"
+    },
+    {
+      "ord": 55,
+      "blockId": "2aa52e2184c0b1f0029576cb5565ee77",
+      "fp64": "7c5ee0521770757c",
+      "normHash": "e847b9e443429a801329ab9e73f4d47a50dc58fd8fe292fc5c7a1978fe42853a",
+      "kind": "p",
+      "chapter": "بشرى-لأهل-المساجد",
+      "prev": "b76c1f13d4d3e78077a2673d163ee65a5f27d5f3306c54c7b671e0ae0c813114",
+      "next": "a8a266ac65b3d3ab2cb1282cb9bb61e4c9d9274254eb17b45149ba33bfd89f34"
+    },
+    {
+      "ord": 56,
+      "blockId": "5ebc2e7295bfb5dab10694c4868b2b96",
+      "fp64": "25df729e53b26633",
+      "normHash": "a8a266ac65b3d3ab2cb1282cb9bb61e4c9d9274254eb17b45149ba33bfd89f34",
+      "kind": "page",
+      "chapter": "بشرى-لأهل-المساجد",
+      "prev": "e847b9e443429a801329ab9e73f4d47a50dc58fd8fe292fc5c7a1978fe42853a",
+      "next": "94acc2161a4becba02436f7025abdf4bb3b087d24e6ff45a897bcaaa833ab58f"
+    },
+    {
+      "ord": 57,
+      "blockId": "8c57a050d276a77517e33947b149869a",
+      "fp64": "095514765177166e",
+      "normHash": "94acc2161a4becba02436f7025abdf4bb3b087d24e6ff45a897bcaaa833ab58f",
+      "kind": "p",
+      "chapter": "بشرى-لأهل-المساجد",
+      "prev": "a8a266ac65b3d3ab2cb1282cb9bb61e4c9d9274254eb17b45149ba33bfd89f34",
+      "next": "4d18bc143c3c113d51ea943b4c84fddff06dad24676d74117da33e64a371bb4c"
+    },
+    {
+      "ord": 58,
+      "blockId": "2fe613b7d38940f8be0698a4efd7ca51",
+      "fp64": "a8cc73da035576cd",
+      "normHash": "4d18bc143c3c113d51ea943b4c84fddff06dad24676d74117da33e64a371bb4c",
+      "kind": "h2",
+      "chapter": "فوائد-صلاة-الجمعة-في-المسجد",
+      "prev": "94acc2161a4becba02436f7025abdf4bb3b087d24e6ff45a897bcaaa833ab58f",
+      "next": "baf2957c9797f3b398f7b9cff289d27adb772cab3199cad0498b5991295196b8"
+    },
+    {
+      "ord": 59,
+      "blockId": "39a0547d7b2276ba343a9ca3f9cf892c",
+      "fp64": "6a56197a0557502c",
+      "normHash": "baf2957c9797f3b398f7b9cff289d27adb772cab3199cad0498b5991295196b8",
+      "kind": "p",
+      "chapter": "فوائد-صلاة-الجمعة-في-المسجد",
+      "prev": "4d18bc143c3c113d51ea943b4c84fddff06dad24676d74117da33e64a371bb4c",
+      "next": "35b64b2a8d76bbdd2c12f50b7a36860d52bdf428ac7932ca9948f8af2a51eaff"
+    },
+    {
+      "ord": 60,
+      "blockId": "a257200fdd88c8c054a318e9495e8320",
+      "fp64": "25dd349f5b302267",
+      "normHash": "35b64b2a8d76bbdd2c12f50b7a36860d52bdf428ac7932ca9948f8af2a51eaff",
+      "kind": "page",
+      "chapter": "فوائد-صلاة-الجمعة-في-المسجد",
+      "prev": "baf2957c9797f3b398f7b9cff289d27adb772cab3199cad0498b5991295196b8",
+      "next": "bf3392ddae08765d610ee9c7c80f91fcdea829f979e74379a144f96d3de918e2"
+    },
+    {
+      "ord": 61,
+      "blockId": "4eb1b5f63d1261bb4ee3a9a585f6739c",
+      "fp64": "7c54e0161714707c",
+      "normHash": "bf3392ddae08765d610ee9c7c80f91fcdea829f979e74379a144f96d3de918e2",
+      "kind": "p",
+      "chapter": "فوائد-صلاة-الجمعة-في-المسجد",
+      "prev": "35b64b2a8d76bbdd2c12f50b7a36860d52bdf428ac7932ca9948f8af2a51eaff",
+      "next": "1ed82f6b6795e4b8046883025e28684060431ab34a6acd98e10ed6a17373c7f4"
+    },
+    {
+      "ord": 62,
+      "blockId": "84c9b2edc25815a02fd92d86bda01a72",
+      "fp64": "65dd33da5b31c06e",
+      "normHash": "1ed82f6b6795e4b8046883025e28684060431ab34a6acd98e10ed6a17373c7f4",
+      "kind": "page",
+      "chapter": "فوائد-صلاة-الجمعة-في-المسجد",
+      "prev": "bf3392ddae08765d610ee9c7c80f91fcdea829f979e74379a144f96d3de918e2",
+      "next": "30574415089a5c35ee7dcce389edbf7149cde21665e2ee849fe91a2a8b6c8c4a"
+    },
+    {
+      "ord": 63,
+      "blockId": "838383a080239023846f8eaeef7d39af",
+      "fp64": "cad0665a0d4c55dc",
+      "normHash": "30574415089a5c35ee7dcce389edbf7149cde21665e2ee849fe91a2a8b6c8c4a",
+      "kind": "p",
+      "chapter": "فوائد-صلاة-الجمعة-في-المسجد",
+      "prev": "1ed82f6b6795e4b8046883025e28684060431ab34a6acd98e10ed6a17373c7f4",
+      "next": "7b221dfbbc89c19c6eec9b33865ea40fa1fb0da881cdd54d8c313e91330b5a4c"
+    },
+    {
+      "ord": 64,
+      "blockId": "d08a530e63bcdcd520b63a3e6ab2fec9",
+      "fp64": "e5ffb59e72b10036",
+      "normHash": "7b221dfbbc89c19c6eec9b33865ea40fa1fb0da881cdd54d8c313e91330b5a4c",
+      "kind": "page",
+      "chapter": "فوائد-صلاة-الجمعة-في-المسجد",
+      "prev": "30574415089a5c35ee7dcce389edbf7149cde21665e2ee849fe91a2a8b6c8c4a",
+      "next": "a682e16de19b079f8cfbfc7f6d85c18fb500b89d9ef566d9236135906b5c6b69"
+    },
+    {
+      "ord": 65,
+      "blockId": "5f54b193ae932b97b9ecfb7b0d5cbbd4",
+      "fp64": "091f527a113f078d",
+      "normHash": "a682e16de19b079f8cfbfc7f6d85c18fb500b89d9ef566d9236135906b5c6b69",
+      "kind": "p",
+      "chapter": "فوائد-صلاة-الجمعة-في-المسجد",
+      "prev": "7b221dfbbc89c19c6eec9b33865ea40fa1fb0da881cdd54d8c313e91330b5a4c",
+      "next": "c000805f723ef2a0faa28a01283de0c9979e5d3c46ea65f0096232ae47bd6c15"
+    },
+    {
+      "ord": 66,
+      "blockId": "dd647c3a78752a6f37b480f1afaf6f83",
+      "fp64": "fe3df0f367756e8c",
+      "normHash": "c000805f723ef2a0faa28a01283de0c9979e5d3c46ea65f0096232ae47bd6c15",
+      "kind": "h2",
+      "chapter": "رجال-ماتوا-في-المسجد",
+      "prev": "a682e16de19b079f8cfbfc7f6d85c18fb500b89d9ef566d9236135906b5c6b69",
+      "next": "1e72ef10bb0497cfad1ce27fbbd1b548bcff43f4a78d1153f86902e9fc64ea95"
+    },
+    {
+      "ord": 67,
+      "blockId": "6d2f1a38d16ce10099898d7ca069adfc",
+      "fp64": "fb56b05447545ebc",
+      "normHash": "1e72ef10bb0497cfad1ce27fbbd1b548bcff43f4a78d1153f86902e9fc64ea95",
+      "kind": "p",
+      "chapter": "رجال-ماتوا-في-المسجد",
+      "prev": "c000805f723ef2a0faa28a01283de0c9979e5d3c46ea65f0096232ae47bd6c15",
+      "next": "a3145ea2b486159f89d83c56cf49f810f67f65356c1a13dbfc0a944a0550b07a"
+    },
+    {
+      "ord": 68,
+      "blockId": "f078f3e2441c7b551fd0dabda95278e7",
+      "fp64": "e1deb1da7330c277",
+      "normHash": "a3145ea2b486159f89d83c56cf49f810f67f65356c1a13dbfc0a944a0550b07a",
+      "kind": "page",
+      "chapter": "رجال-ماتوا-في-المسجد",
+      "prev": "1e72ef10bb0497cfad1ce27fbbd1b548bcff43f4a78d1153f86902e9fc64ea95",
+      "next": "2bb69f10f906db1d9d0209b3afa0d9a6f1acd0b4356e60230878b7ba9b139eee"
+    },
+    {
+      "ord": 69,
+      "blockId": "cd36f10cbe3a57881e9f3b2f95d73abc",
+      "fp64": "dec16452d70f7fcd",
+      "normHash": "2bb69f10f906db1d9d0209b3afa0d9a6f1acd0b4356e60230878b7ba9b139eee",
+      "kind": "p",
+      "chapter": "رجال-ماتوا-في-المسجد",
+      "prev": "a3145ea2b486159f89d83c56cf49f810f67f65356c1a13dbfc0a944a0550b07a",
+      "next": "838759c6d9b06573467f331ae19d84b57396800faf9bf959ecf0a8112c1f9337"
+    },
+    {
+      "ord": 70,
+      "blockId": "314359408a15b6320424737cad05825f",
+      "fp64": "1fed3052510e1b1d",
+      "normHash": "838759c6d9b06573467f331ae19d84b57396800faf9bf959ecf0a8112c1f9337",
+      "kind": "h2",
+      "chapter": "حرصهم-على-الجماعة-في-المساجد",
+      "prev": "2bb69f10f906db1d9d0209b3afa0d9a6f1acd0b4356e60230878b7ba9b139eee",
+      "next": "f064369b31568b8d247f5c668ac4c20def2ccec70419b1ebc945dfab3afabd02"
+    },
+    {
+      "ord": 71,
+      "blockId": "b856e4ffbe3198274d86f5c15cfa2a7f",
+      "fp64": "cf5c247601b62f28",
+      "normHash": "f064369b31568b8d247f5c668ac4c20def2ccec70419b1ebc945dfab3afabd02",
+      "kind": "p",
+      "chapter": "حرصهم-على-الجماعة-في-المساجد",
+      "prev": "838759c6d9b06573467f331ae19d84b57396800faf9bf959ecf0a8112c1f9337",
+      "next": "b40541c3fd16ea47af6a9b43a330fbce6ce5b51752f98b3dcd91a440299816e2"
+    },
+    {
+      "ord": 72,
+      "blockId": "e3b9538beaabfb9e332945d29eeec5fc",
+      "fp64": "a1ff779a5232426f",
+      "normHash": "b40541c3fd16ea47af6a9b43a330fbce6ce5b51752f98b3dcd91a440299816e2",
+      "kind": "page",
+      "chapter": "حرصهم-على-الجماعة-في-المساجد",
+      "prev": "f064369b31568b8d247f5c668ac4c20def2ccec70419b1ebc945dfab3afabd02",
+      "next": "15fe055d311fee0bc2423cc121fd1ed8e0eb93a55b63962bb0ac48282e50ef1f"
+    },
+    {
+      "ord": 73,
+      "blockId": "ae7ee5b2d05b30ee844ae91cc034ddc1",
+      "fp64": "8e102056577d324c",
+      "normHash": "15fe055d311fee0bc2423cc121fd1ed8e0eb93a55b63962bb0ac48282e50ef1f",
+      "kind": "p",
+      "chapter": "حرصهم-على-الجماعة-في-المساجد",
+      "prev": "b40541c3fd16ea47af6a9b43a330fbce6ce5b51752f98b3dcd91a440299816e2",
+      "next": "50da4077d8c63b0c6e47b324b09ab15fcd968e0131f9d58fcd0212076de3efca"
+    },
+    {
+      "ord": 74,
+      "blockId": "eb6e415c862e3cb5cc896fe0c57bcaef",
+      "fp64": "21ff32fb5332467a",
+      "normHash": "50da4077d8c63b0c6e47b324b09ab15fcd968e0131f9d58fcd0212076de3efca",
+      "kind": "page",
+      "chapter": "حرصهم-على-الجماعة-في-المساجد",
+      "prev": "15fe055d311fee0bc2423cc121fd1ed8e0eb93a55b63962bb0ac48282e50ef1f",
+      "next": "c20dddc6cfdfacd26851a7941f873d0f23da9c20ca0e5fc2c5e9bf140ae0fae9"
+    },
+    {
+      "ord": 75,
+      "blockId": "348ca672e7882bc7ed01f2fe0441eee5",
+      "fp64": "8cc6317b35574724",
+      "normHash": "c20dddc6cfdfacd26851a7941f873d0f23da9c20ca0e5fc2c5e9bf140ae0fae9",
+      "kind": "p",
+      "chapter": "حرصهم-على-الجماعة-في-المساجد",
+      "prev": "50da4077d8c63b0c6e47b324b09ab15fcd968e0131f9d58fcd0212076de3efca",
+      "next": "382069c0257b875eb88d3a4fb92b04d80f577028fbcb0709132f47ae2c6732b7"
+    },
+    {
+      "ord": 76,
+      "blockId": "0f738ab8ee75ae33531940c5fb9ff697",
+      "fp64": "a1dd35fe5bb34673",
+      "normHash": "382069c0257b875eb88d3a4fb92b04d80f577028fbcb0709132f47ae2c6732b7",
+      "kind": "page",
+      "chapter": "حرصهم-على-الجماعة-في-المساجد",
+      "prev": "c20dddc6cfdfacd26851a7941f873d0f23da9c20ca0e5fc2c5e9bf140ae0fae9",
+      "next": "3a9c4f4ea83eb22ffe57df874522f225032107fadf7e6960ba3b9ee69215ca6d"
+    },
+    {
+      "ord": 77,
+      "blockId": "df6b1656ff1ac646a27186b2d17c0f2a",
+      "fp64": "885fa37e3733656c",
+      "normHash": "3a9c4f4ea83eb22ffe57df874522f225032107fadf7e6960ba3b9ee69215ca6d",
+      "kind": "p",
+      "chapter": "حرصهم-على-الجماعة-في-المساجد",
+      "prev": "382069c0257b875eb88d3a4fb92b04d80f577028fbcb0709132f47ae2c6732b7",
+      "next": "efee7e75fa4523d0330f3b77b6391fd330567f3c0fdd93cd4d5dee8e81e91a13"
+    },
+    {
+      "ord": 78,
+      "blockId": "00c35d4de90dbca38be54c13e3db264d",
+      "fp64": "a5fff1fb7b302462",
+      "normHash": "efee7e75fa4523d0330f3b77b6391fd330567f3c0fdd93cd4d5dee8e81e91a13",
+      "kind": "page",
+      "chapter": "حرصهم-على-الجماعة-في-المساجد",
+      "prev": "3a9c4f4ea83eb22ffe57df874522f225032107fadf7e6960ba3b9ee69215ca6d",
+      "next": "52bcd321eb2c82474a56de32fdb3ca6e88ce82d8d1e5dbab4e769ff5bdb2c522"
+    },
+    {
+      "ord": 79,
+      "blockId": "4cd1624dfc4b623b29723ee70f57083e",
+      "fp64": "6ecf047b31074d15",
+      "normHash": "52bcd321eb2c82474a56de32fdb3ca6e88ce82d8d1e5dbab4e769ff5bdb2c522",
+      "kind": "p",
+      "chapter": "حرصهم-على-الجماعة-في-المساجد",
+      "prev": "efee7e75fa4523d0330f3b77b6391fd330567f3c0fdd93cd4d5dee8e81e91a13",
+      "next": "d1083e0735df6258f3d11fc59ad42b577106553fb12653aca676e30be4982862"
+    },
+    {
+      "ord": 80,
+      "blockId": "4b3655eb41f30c4bfe311067516099b3",
+      "fp64": "25df77df7330a437",
+      "normHash": "d1083e0735df6258f3d11fc59ad42b577106553fb12653aca676e30be4982862",
+      "kind": "page",
+      "chapter": "حرصهم-على-الجماعة-في-المساجد",
+      "prev": "52bcd321eb2c82474a56de32fdb3ca6e88ce82d8d1e5dbab4e769ff5bdb2c522",
+      "next": "d83d56d5cd648340a5bd05b3cf68ee10ffe4e5b57b9e73f6da7db532bb564bf4"
+    },
+    {
+      "ord": 81,
+      "blockId": "2945e66a333db581a6dc9c4c3a83de37",
+      "fp64": "e8cb847c3565ad34",
+      "normHash": "d83d56d5cd648340a5bd05b3cf68ee10ffe4e5b57b9e73f6da7db532bb564bf4",
+      "kind": "p",
+      "chapter": "حرصهم-على-الجماعة-في-المساجد",
+      "prev": "d1083e0735df6258f3d11fc59ad42b577106553fb12653aca676e30be4982862",
+      "next": "56409761960819792386b99750acd7b578bae3d2654208d54fea67f6eb626158"
+    },
+    {
+      "ord": 82,
+      "blockId": "bbb97bab1361424a2b944e1e41f04c98",
+      "fp64": "65fcb49e7232847f",
+      "normHash": "56409761960819792386b99750acd7b578bae3d2654208d54fea67f6eb626158",
+      "kind": "page",
+      "chapter": "حرصهم-على-الجماعة-في-المساجد",
+      "prev": "d83d56d5cd648340a5bd05b3cf68ee10ffe4e5b57b9e73f6da7db532bb564bf4"
+    }
+  ]
+}

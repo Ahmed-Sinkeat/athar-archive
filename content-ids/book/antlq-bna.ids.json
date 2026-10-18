@@ -1,0 +1,1965 @@
+{
+  "schema": 1,
+  "generation": 1,
+  "sourceHash": "c474df86d362fd556203f1dfa0190a6e472a7c914e9130421fc7bf4514925b00",
+  "ids": [
+    {
+      "ord": 0,
+      "blockId": "3259314d8c0aaa00f2195558b73b25e7",
+      "fp64": "f40af7363ea0f121",
+      "normHash": "871ce080b876ec0ba702480e85a9cefbef497073e5014fb9120403e7e244d05f",
+      "kind": "h1",
+      "chapter": "main",
+      "next": "da1b368177f27af792192f1c8e0e5585dc4f1f06c91e4590980e22e1f5df83da"
+    },
+    {
+      "ord": 1,
+      "blockId": "c1c23f55299ce43410791354ca35d63f",
+      "fp64": "49a16a76f7077d42",
+      "normHash": "da1b368177f27af792192f1c8e0e5585dc4f1f06c91e4590980e22e1f5df83da",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "871ce080b876ec0ba702480e85a9cefbef497073e5014fb9120403e7e244d05f",
+      "next": "ff43b98380a8f6df036923e2385807d9da7ac2a412d1658aa6080479cf2fd1dc"
+    },
+    {
+      "ord": 2,
+      "blockId": "bc078a18ba09fad3ed0c5843cc37ad10",
+      "fp64": "a1dfb6fa5330066e",
+      "normHash": "ff43b98380a8f6df036923e2385807d9da7ac2a412d1658aa6080479cf2fd1dc",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "da1b368177f27af792192f1c8e0e5585dc4f1f06c91e4590980e22e1f5df83da",
+      "next": "09712e0fb0a14e519451b1be984da33ae1dc1e7102e00ff549bc37abb43b9d88"
+    },
+    {
+      "ord": 3,
+      "blockId": "a09d389edeaaccd5cd505009fbd36aae",
+      "fp64": "8f011b8ade79d2ea",
+      "normHash": "09712e0fb0a14e519451b1be984da33ae1dc1e7102e00ff549bc37abb43b9d88",
+      "kind": "h2",
+      "chapter": "وقفة",
+      "prev": "ff43b98380a8f6df036923e2385807d9da7ac2a412d1658aa6080479cf2fd1dc",
+      "next": "1d1850a2740826e6ba4d7e5b057c4514293809e58dc6913c748adc04b6a3c7bc"
+    },
+    {
+      "ord": 4,
+      "blockId": "8619ab9fcba64f79f985bdf1f440fc11",
+      "fp64": "be46603613541ed4",
+      "normHash": "1d1850a2740826e6ba4d7e5b057c4514293809e58dc6913c748adc04b6a3c7bc",
+      "kind": "p",
+      "chapter": "وقفة",
+      "prev": "09712e0fb0a14e519451b1be984da33ae1dc1e7102e00ff549bc37abb43b9d88",
+      "next": "5f91f48d6fcbc0ac1da6452fc3c3e0ea0e36d6fd2dfe98be83e2aeebf0da5adb"
+    },
+    {
+      "ord": 5,
+      "blockId": "203e9d588cc8e7946763f76ad88c8be1",
+      "fp64": "e5dff5de7333226b",
+      "normHash": "5f91f48d6fcbc0ac1da6452fc3c3e0ea0e36d6fd2dfe98be83e2aeebf0da5adb",
+      "kind": "page",
+      "chapter": "وقفة",
+      "prev": "1d1850a2740826e6ba4d7e5b057c4514293809e58dc6913c748adc04b6a3c7bc",
+      "next": "b5609be46ed4fa6779a3219fadef41e783197bcbb84a6a3e60fe3a677af68553"
+    },
+    {
+      "ord": 6,
+      "blockId": "449bda77fdd0a92dbf5675c515ea18e8",
+      "fp64": "fefcfbbfdffefbf3",
+      "normHash": "b5609be46ed4fa6779a3219fadef41e783197bcbb84a6a3e60fe3a677af68553",
+      "kind": "h2",
+      "chapter": "الانطلاقة-الأولى",
+      "prev": "5f91f48d6fcbc0ac1da6452fc3c3e0ea0e36d6fd2dfe98be83e2aeebf0da5adb",
+      "next": "7c38cc86d776ac3d05a17b73e5da4f856cc7c23203e2b4aa5fadac92c2b86d8f"
+    },
+    {
+      "ord": 7,
+      "blockId": "87294ad926582143178923d36151286b",
+      "fp64": "ee85c056373c777e",
+      "normHash": "7c38cc86d776ac3d05a17b73e5da4f856cc7c23203e2b4aa5fadac92c2b86d8f",
+      "kind": "p",
+      "chapter": "الانطلاقة-الأولى",
+      "prev": "b5609be46ed4fa6779a3219fadef41e783197bcbb84a6a3e60fe3a677af68553",
+      "next": "6775325ed534b238aade4cfd8d225b302913a42f97f7de4da3e2cbc5fd45166a"
+    },
+    {
+      "ord": 8,
+      "blockId": "4c3338fd0254b3355e35c0f5a40c92a2",
+      "fp64": "a1d474f771b20eeb",
+      "normHash": "6775325ed534b238aade4cfd8d225b302913a42f97f7de4da3e2cbc5fd45166a",
+      "kind": "notes",
+      "chapter": "الانطلاقة-الأولى",
+      "prev": "7c38cc86d776ac3d05a17b73e5da4f856cc7c23203e2b4aa5fadac92c2b86d8f",
+      "next": "fee832d2021b0156e0ba299d22288b9aa66658da27ddc03b3dc1ff1f568b79a0"
+    },
+    {
+      "ord": 9,
+      "blockId": "c0f4f5612a7c66decd175c13881e9675",
+      "fp64": "21dc73fb7b32246f",
+      "normHash": "fee832d2021b0156e0ba299d22288b9aa66658da27ddc03b3dc1ff1f568b79a0",
+      "kind": "page",
+      "chapter": "الانطلاقة-الأولى",
+      "prev": "6775325ed534b238aade4cfd8d225b302913a42f97f7de4da3e2cbc5fd45166a",
+      "next": "b6ca93a0b83f3e0b17e8c464fadef2957181f668c366f51f9da0fa7220026a89"
+    },
+    {
+      "ord": 10,
+      "blockId": "4d07c46008f64d05f51983e82d7fcba3",
+      "fp64": "7f78fefedfbedfb2",
+      "normHash": "b6ca93a0b83f3e0b17e8c464fadef2957181f668c366f51f9da0fa7220026a89",
+      "kind": "h2",
+      "chapter": "الانطلاقة-الثانية",
+      "prev": "fee832d2021b0156e0ba299d22288b9aa66658da27ddc03b3dc1ff1f568b79a0",
+      "next": "8e879b0c8150e4b8c71648535a2057671a7d37b11d0b1757c7f8e4f6f9454107"
+    },
+    {
+      "ord": 11,
+      "blockId": "92b4c200f8d2fc8187fb8183cab8cc1a",
+      "fp64": "c611c4449564347d",
+      "normHash": "8e879b0c8150e4b8c71648535a2057671a7d37b11d0b1757c7f8e4f6f9454107",
+      "kind": "p",
+      "chapter": "الانطلاقة-الثانية",
+      "prev": "b6ca93a0b83f3e0b17e8c464fadef2957181f668c366f51f9da0fa7220026a89",
+      "next": "f2d3b6bdb55e7fbc6d8ab7edec8e25dae2f896f9806c5d5589cfaf4f5e85c4f3"
+    },
+    {
+      "ord": 12,
+      "blockId": "5d0fbb39a494203ed9777a822a960534",
+      "fp64": "a5dd76ff53b0e667",
+      "normHash": "f2d3b6bdb55e7fbc6d8ab7edec8e25dae2f896f9806c5d5589cfaf4f5e85c4f3",
+      "kind": "page",
+      "chapter": "الانطلاقة-الثانية",
+      "prev": "8e879b0c8150e4b8c71648535a2057671a7d37b11d0b1757c7f8e4f6f9454107",
+      "next": "9b20a8ca3c3dd06406e192ad865ea3b1625a4ddfa7ec56ab6be2ac299dc33862"
+    },
+    {
+      "ord": 13,
+      "blockId": "7842c891d30ea028d0834dadc775236f",
+      "fp64": "c2ce240bde677f2f",
+      "normHash": "9b20a8ca3c3dd06406e192ad865ea3b1625a4ddfa7ec56ab6be2ac299dc33862",
+      "kind": "p",
+      "chapter": "الانطلاقة-الثانية",
+      "prev": "f2d3b6bdb55e7fbc6d8ab7edec8e25dae2f896f9806c5d5589cfaf4f5e85c4f3",
+      "next": "ce386de03df4fffc0f7eb78e45dda22fe013053ff8eb269e8892fa1202a51e73"
+    },
+    {
+      "ord": 14,
+      "blockId": "f1ca584129ce01715a5a7b4078d4a74b",
+      "fp64": "a5de34fe5b31027b",
+      "normHash": "ce386de03df4fffc0f7eb78e45dda22fe013053ff8eb269e8892fa1202a51e73",
+      "kind": "page",
+      "chapter": "الانطلاقة-الثانية",
+      "prev": "9b20a8ca3c3dd06406e192ad865ea3b1625a4ddfa7ec56ab6be2ac299dc33862",
+      "next": "76404c029e75a79840e399f63c90d14f75bf012050f3eb4144e8ba183d0495e7"
+    },
+    {
+      "ord": 15,
+      "blockId": "a5c1f72750055f5ce4e6400dc674862d",
+      "fp64": "76f9f91ecdfedfb6",
+      "normHash": "76404c029e75a79840e399f63c90d14f75bf012050f3eb4144e8ba183d0495e7",
+      "kind": "h2",
+      "chapter": "الانطلاقة-الثالثة",
+      "prev": "ce386de03df4fffc0f7eb78e45dda22fe013053ff8eb269e8892fa1202a51e73",
+      "next": "faabff04d6036f5e437307e8d3312eec4061959ce910d7d81573839a8e0caa0f"
+    },
+    {
+      "ord": 16,
+      "blockId": "38b1680fc285afb2a0f4648175c99a54",
+      "fp64": "a64c645b1534677e",
+      "normHash": "faabff04d6036f5e437307e8d3312eec4061959ce910d7d81573839a8e0caa0f",
+      "kind": "p",
+      "chapter": "الانطلاقة-الثالثة",
+      "prev": "76404c029e75a79840e399f63c90d14f75bf012050f3eb4144e8ba183d0495e7",
+      "next": "f605706e4d7bc7755de6bbcbab53120bf14ce722e72f23e37589c8aa10b72177"
+    },
+    {
+      "ord": 17,
+      "blockId": "4bd4f346b813a2317f818fad0cf34b1b",
+      "fp64": "e174d4fd72a2422b",
+      "normHash": "f605706e4d7bc7755de6bbcbab53120bf14ce722e72f23e37589c8aa10b72177",
+      "kind": "notes",
+      "chapter": "الانطلاقة-الثالثة",
+      "prev": "faabff04d6036f5e437307e8d3312eec4061959ce910d7d81573839a8e0caa0f",
+      "next": "bcce0d58b808c98b64ffb5d83f077e5d0096566df1640fb88d2d13e8bd2c6d9b"
+    },
+    {
+      "ord": 18,
+      "blockId": "da89d047b8b153f111afcbb96d6778bf",
+      "fp64": "65fdf2df7232622e",
+      "normHash": "bcce0d58b808c98b64ffb5d83f077e5d0096566df1640fb88d2d13e8bd2c6d9b",
+      "kind": "page",
+      "chapter": "الانطلاقة-الثالثة",
+      "prev": "f605706e4d7bc7755de6bbcbab53120bf14ce722e72f23e37589c8aa10b72177",
+      "next": "4c94eac6e9453cba2688b0c8c83a7cb69c267c44c6b017266f804b1bfefb7a3d"
+    },
+    {
+      "ord": 19,
+      "blockId": "93dd20eb7f9f3dec3dda9fc9226a4526",
+      "fp64": "73f9ea5effbeddf9",
+      "normHash": "4c94eac6e9453cba2688b0c8c83a7cb69c267c44c6b017266f804b1bfefb7a3d",
+      "kind": "h2",
+      "chapter": "الانطلاقة-الرابعة",
+      "prev": "bcce0d58b808c98b64ffb5d83f077e5d0096566df1640fb88d2d13e8bd2c6d9b",
+      "next": "b24f8ad0241a22c6dad378483fd0bde984ca7172fb869cde789d48e0223fd669"
+    },
+    {
+      "ord": 20,
+      "blockId": "e8aba453bd6efb2dbb2a635ad0b306b7",
+      "fp64": "34c4e05b952e437c",
+      "normHash": "b24f8ad0241a22c6dad378483fd0bde984ca7172fb869cde789d48e0223fd669",
+      "kind": "p",
+      "chapter": "الانطلاقة-الرابعة",
+      "prev": "4c94eac6e9453cba2688b0c8c83a7cb69c267c44c6b017266f804b1bfefb7a3d",
+      "next": "27287cd5d7d519c19cbc5440930f7efdced62bacab1f51ca0da12863dcb0976f"
+    },
+    {
+      "ord": 21,
+      "blockId": "6a3c2f2eabc03e8ade8c32a9ec2c7219",
+      "fp64": "a0fc74fe73ba5a2b",
+      "normHash": "27287cd5d7d519c19cbc5440930f7efdced62bacab1f51ca0da12863dcb0976f",
+      "kind": "notes",
+      "chapter": "الانطلاقة-الرابعة",
+      "prev": "b24f8ad0241a22c6dad378483fd0bde984ca7172fb869cde789d48e0223fd669",
+      "next": "3d1c1df63420af9023e9e4eed67cc4f8d07966fc01f069175a8d2c5f79b634b5"
+    },
+    {
+      "ord": 22,
+      "blockId": "999dcdb44b1b4e5323e701a905e88fc1",
+      "fp64": "21fd74de7332403b",
+      "normHash": "3d1c1df63420af9023e9e4eed67cc4f8d07966fc01f069175a8d2c5f79b634b5",
+      "kind": "page",
+      "chapter": "الانطلاقة-الرابعة",
+      "prev": "27287cd5d7d519c19cbc5440930f7efdced62bacab1f51ca0da12863dcb0976f",
+      "next": "a6ebee3e04f113d9e344f17dcf989dc412914b2b0e5ca5034d0f3fc2a5449f64"
+    },
+    {
+      "ord": 23,
+      "blockId": "ff071c46cd288bc870f6188f8c210fe2",
+      "fp64": "f653e0571d647178",
+      "normHash": "a6ebee3e04f113d9e344f17dcf989dc412914b2b0e5ca5034d0f3fc2a5449f64",
+      "kind": "p",
+      "chapter": "الانطلاقة-الرابعة",
+      "prev": "3d1c1df63420af9023e9e4eed67cc4f8d07966fc01f069175a8d2c5f79b634b5",
+      "next": "0ab892a5be8c0c4aa91935f017e37c813651a062a3bae5d60d4a1115406cd27e"
+    },
+    {
+      "ord": 24,
+      "blockId": "e7785e2e7b01675ff8a358ad841ccaa5",
+      "fp64": "a054447671b8466b",
+      "normHash": "0ab892a5be8c0c4aa91935f017e37c813651a062a3bae5d60d4a1115406cd27e",
+      "kind": "notes",
+      "chapter": "الانطلاقة-الرابعة",
+      "prev": "a6ebee3e04f113d9e344f17dcf989dc412914b2b0e5ca5034d0f3fc2a5449f64",
+      "next": "8049bbc6234344a2f41e8851e10cfb75b0ab38518230dd3d978519544daf3183"
+    },
+    {
+      "ord": 25,
+      "blockId": "bafd991bca6b7f15e9638fd961ef9acc",
+      "fp64": "a1dc72be53b0446a",
+      "normHash": "8049bbc6234344a2f41e8851e10cfb75b0ab38518230dd3d978519544daf3183",
+      "kind": "page",
+      "chapter": "الانطلاقة-الرابعة",
+      "prev": "0ab892a5be8c0c4aa91935f017e37c813651a062a3bae5d60d4a1115406cd27e",
+      "next": "2c61dc7eb3a3427ae441adf56df1ec0209e6506a6ee1390c56f7a84dec81ada6"
+    },
+    {
+      "ord": 26,
+      "blockId": "6708ab97044859119045899b83dc2d76",
+      "fp64": "5cdb61339f77514c",
+      "normHash": "2c61dc7eb3a3427ae441adf56df1ec0209e6506a6ee1390c56f7a84dec81ada6",
+      "kind": "p",
+      "chapter": "الانطلاقة-الرابعة",
+      "prev": "8049bbc6234344a2f41e8851e10cfb75b0ab38518230dd3d978519544daf3183",
+      "next": "1ea0d49552a14d1d1d477d0ae7b8fe4c0b5e75a23139396f0ffdab2490e4dccc"
+    },
+    {
+      "ord": 27,
+      "blockId": "4ae2f3e591a02396c5b5abaa235b0029",
+      "fp64": "e054c4fe72abca6b",
+      "normHash": "1ea0d49552a14d1d1d477d0ae7b8fe4c0b5e75a23139396f0ffdab2490e4dccc",
+      "kind": "notes",
+      "chapter": "الانطلاقة-الرابعة",
+      "prev": "2c61dc7eb3a3427ae441adf56df1ec0209e6506a6ee1390c56f7a84dec81ada6",
+      "next": "b5a33f999d9b79ce977301844f0b2b5e9c1a57101869f8b92950f72a5f33b34a"
+    },
+    {
+      "ord": 28,
+      "blockId": "a5482689a530d0d613f378cc00cce4fc",
+      "fp64": "e1dff3be7233c06f",
+      "normHash": "b5a33f999d9b79ce977301844f0b2b5e9c1a57101869f8b92950f72a5f33b34a",
+      "kind": "page",
+      "chapter": "الانطلاقة-الرابعة",
+      "prev": "1ea0d49552a14d1d1d477d0ae7b8fe4c0b5e75a23139396f0ffdab2490e4dccc",
+      "next": "8fe276b7a2f17b216e8283619c11ff5321f2d9fdd2e47c378293ad695c350cfd"
+    },
+    {
+      "ord": 29,
+      "blockId": "37b0a7e0e41ac398d24cb605fb5e8b81",
+      "fp64": "7c01624d0e5ced52",
+      "normHash": "8fe276b7a2f17b216e8283619c11ff5321f2d9fdd2e47c378293ad695c350cfd",
+      "kind": "p",
+      "chapter": "الانطلاقة-الرابعة",
+      "prev": "b5a33f999d9b79ce977301844f0b2b5e9c1a57101869f8b92950f72a5f33b34a",
+      "next": "cbf77e48990d7c60a95c02f1cc15f659a5150119bdba10bb2b83fa6a6f1843df"
+    },
+    {
+      "ord": 30,
+      "blockId": "91671868ef614b15b42a5bb70ef23d1e",
+      "fp64": "25ff75df73b0406b",
+      "normHash": "cbf77e48990d7c60a95c02f1cc15f659a5150119bdba10bb2b83fa6a6f1843df",
+      "kind": "page",
+      "chapter": "الانطلاقة-الرابعة",
+      "prev": "8fe276b7a2f17b216e8283619c11ff5321f2d9fdd2e47c378293ad695c350cfd",
+      "next": "17dfade355d74bea3b7cb877a572d3a6bfcae81f60234961ff65cb6f1b5dcc9b"
+    },
+    {
+      "ord": 31,
+      "blockId": "0694280fad3ddf6a8467b493165ef37b",
+      "fp64": "76f977be5dbefdb9",
+      "normHash": "17dfade355d74bea3b7cb877a572d3a6bfcae81f60234961ff65cb6f1b5dcc9b",
+      "kind": "h2",
+      "chapter": "الانطلاقة-الخامسة",
+      "prev": "cbf77e48990d7c60a95c02f1cc15f659a5150119bdba10bb2b83fa6a6f1843df",
+      "next": "f07c4fbbed53160e1e85d587018bf90f4b75723056043c90bf408092138d348f"
+    },
+    {
+      "ord": 32,
+      "blockId": "2894c97d8c1a352de06f9ad8d1399f9d",
+      "fp64": "8788b4160746085c",
+      "normHash": "f07c4fbbed53160e1e85d587018bf90f4b75723056043c90bf408092138d348f",
+      "kind": "p",
+      "chapter": "الانطلاقة-الخامسة",
+      "prev": "17dfade355d74bea3b7cb877a572d3a6bfcae81f60234961ff65cb6f1b5dcc9b",
+      "next": "862ebeb7055911103edb09ffdd1ec37c12ca0b0c341b971b26043331dff0ab2f"
+    },
+    {
+      "ord": 33,
+      "blockId": "3ca579d065f3042347f08b54b197b1fa",
+      "fp64": "65dcf49e5bb3c23f",
+      "normHash": "862ebeb7055911103edb09ffdd1ec37c12ca0b0c341b971b26043331dff0ab2f",
+      "kind": "page",
+      "chapter": "الانطلاقة-الخامسة",
+      "prev": "f07c4fbbed53160e1e85d587018bf90f4b75723056043c90bf408092138d348f",
+      "next": "ba1aef621988ee7e902bf99193d477e4d01e4f406dc2060920fb05483a853901"
+    },
+    {
+      "ord": 34,
+      "blockId": "0e5a8151991c387d46a0aadca1fee913",
+      "fp64": "124bd8721d27eb4e",
+      "normHash": "ba1aef621988ee7e902bf99193d477e4d01e4f406dc2060920fb05483a853901",
+      "kind": "p",
+      "chapter": "الانطلاقة-الخامسة",
+      "prev": "862ebeb7055911103edb09ffdd1ec37c12ca0b0c341b971b26043331dff0ab2f",
+      "next": "ade4f5a2a3b75779df8cc5d74c33c30d588bfe9c4948bf17167356a2727753fd"
+    },
+    {
+      "ord": 35,
+      "blockId": "98f17a5e981945c38fd393c0d56ea635",
+      "fp64": "e15424f671a806ab",
+      "normHash": "ade4f5a2a3b75779df8cc5d74c33c30d588bfe9c4948bf17167356a2727753fd",
+      "kind": "notes",
+      "chapter": "الانطلاقة-الخامسة",
+      "prev": "ba1aef621988ee7e902bf99193d477e4d01e4f406dc2060920fb05483a853901",
+      "next": "b8dcf02222c6559396b9d964786da6cc5d31d7ecb2f2f44aee8d771bb6aecabf"
+    },
+    {
+      "ord": 36,
+      "blockId": "a6aba8bf4436d81177672103f2fbeb9e",
+      "fp64": "61df34fa53b02627",
+      "normHash": "b8dcf02222c6559396b9d964786da6cc5d31d7ecb2f2f44aee8d771bb6aecabf",
+      "kind": "page",
+      "chapter": "الانطلاقة-الخامسة",
+      "prev": "ade4f5a2a3b75779df8cc5d74c33c30d588bfe9c4948bf17167356a2727753fd",
+      "next": "c985f09aee9c4f49d775aaf0a48b12d3727233dc613c81a082caa464ba42e30c"
+    },
+    {
+      "ord": 37,
+      "blockId": "960ba1f1fbc8883ab92bbdabc8d21e1a",
+      "fp64": "7ffde43efdbeebf1",
+      "normHash": "c985f09aee9c4f49d775aaf0a48b12d3727233dc613c81a082caa464ba42e30c",
+      "kind": "h2",
+      "chapter": "الانطلاقة-السادسة",
+      "prev": "b8dcf02222c6559396b9d964786da6cc5d31d7ecb2f2f44aee8d771bb6aecabf",
+      "next": "ad5fdc5823f28d714f1f96b5ca79f39e1659d1d1dbac23f5e6f62dfd9270ab93"
+    },
+    {
+      "ord": 38,
+      "blockId": "83d8d23b118d77a23230fda52901a71a",
+      "fp64": "6c44c0589575507e",
+      "normHash": "ad5fdc5823f28d714f1f96b5ca79f39e1659d1d1dbac23f5e6f62dfd9270ab93",
+      "kind": "p",
+      "chapter": "الانطلاقة-السادسة",
+      "prev": "c985f09aee9c4f49d775aaf0a48b12d3727233dc613c81a082caa464ba42e30c",
+      "next": "1172e1b02775c30d03bc0ac413f22640234aa285c095b7a14909094e0f83ef2c"
+    },
+    {
+      "ord": 39,
+      "blockId": "df944f4ddd630400d0a3fd412c247a08",
+      "fp64": "e074d4fc71ba0aeb",
+      "normHash": "1172e1b02775c30d03bc0ac413f22640234aa285c095b7a14909094e0f83ef2c",
+      "kind": "notes",
+      "chapter": "الانطلاقة-السادسة",
+      "prev": "ad5fdc5823f28d714f1f96b5ca79f39e1659d1d1dbac23f5e6f62dfd9270ab93",
+      "next": "b76c1f13d4d3e78077a2673d163ee65a5f27d5f3306c54c7b671e0ae0c813114"
+    },
+    {
+      "ord": 40,
+      "blockId": "0ef66e5a2435f3c110d94384055f8b25",
+      "fp64": "65fef79a73b22066",
+      "normHash": "b76c1f13d4d3e78077a2673d163ee65a5f27d5f3306c54c7b671e0ae0c813114",
+      "kind": "page",
+      "chapter": "الانطلاقة-السادسة",
+      "prev": "1172e1b02775c30d03bc0ac413f22640234aa285c095b7a14909094e0f83ef2c",
+      "next": "01003088fd7df130fa1b9a32e4410b9df9595cdfd47202ea779ea9708eb16809"
+    },
+    {
+      "ord": 41,
+      "blockId": "375188ca2128430cf3975d85925b0472",
+      "fp64": "1c16c65a9516bf58",
+      "normHash": "01003088fd7df130fa1b9a32e4410b9df9595cdfd47202ea779ea9708eb16809",
+      "kind": "p",
+      "chapter": "الانطلاقة-السادسة",
+      "prev": "b76c1f13d4d3e78077a2673d163ee65a5f27d5f3306c54c7b671e0ae0c813114",
+      "next": "a8a266ac65b3d3ab2cb1282cb9bb61e4c9d9274254eb17b45149ba33bfd89f34"
+    },
+    {
+      "ord": 42,
+      "blockId": "bc243b287d7d08955c21ba3dc088df24",
+      "fp64": "25df729e53b26633",
+      "normHash": "a8a266ac65b3d3ab2cb1282cb9bb61e4c9d9274254eb17b45149ba33bfd89f34",
+      "kind": "page",
+      "chapter": "الانطلاقة-السادسة",
+      "prev": "01003088fd7df130fa1b9a32e4410b9df9595cdfd47202ea779ea9708eb16809",
+      "next": "9a2c47f4a40015d9c665bf0f6cd72ff1da56ff577f6147d7cec8a03d9b6b1bda"
+    },
+    {
+      "ord": 43,
+      "blockId": "d196c563e51b82caf6c3ca128915647f",
+      "fp64": "7678643f4dbfcdf9",
+      "normHash": "9a2c47f4a40015d9c665bf0f6cd72ff1da56ff577f6147d7cec8a03d9b6b1bda",
+      "kind": "h2",
+      "chapter": "الانطلاقة-السابعة",
+      "prev": "a8a266ac65b3d3ab2cb1282cb9bb61e4c9d9274254eb17b45149ba33bfd89f34",
+      "next": "bfbe4359525e5ab4ba03e62a00612a3da0c1cde512ca2393182e443ac804ed82"
+    },
+    {
+      "ord": 44,
+      "blockId": "c42467d7556496b55613b4f1e7dab1c3",
+      "fp64": "7444e056176455fc",
+      "normHash": "bfbe4359525e5ab4ba03e62a00612a3da0c1cde512ca2393182e443ac804ed82",
+      "kind": "p",
+      "chapter": "الانطلاقة-السابعة",
+      "prev": "9a2c47f4a40015d9c665bf0f6cd72ff1da56ff577f6147d7cec8a03d9b6b1bda",
+      "next": "d00a630894348441880f53950712100baa5330b75f1c53a28348511eabff19df"
+    },
+    {
+      "ord": 45,
+      "blockId": "a08a7b345ec54d3505642a11345669a6",
+      "fp64": "a1dc047573b0026b",
+      "normHash": "d00a630894348441880f53950712100baa5330b75f1c53a28348511eabff19df",
+      "kind": "notes",
+      "chapter": "الانطلاقة-السابعة",
+      "prev": "bfbe4359525e5ab4ba03e62a00612a3da0c1cde512ca2393182e443ac804ed82",
+      "next": "35b64b2a8d76bbdd2c12f50b7a36860d52bdf428ac7932ca9948f8af2a51eaff"
+    },
+    {
+      "ord": 46,
+      "blockId": "32a3e6735e717c921213f32390a290be",
+      "fp64": "25dd349f5b302267",
+      "normHash": "35b64b2a8d76bbdd2c12f50b7a36860d52bdf428ac7932ca9948f8af2a51eaff",
+      "kind": "page",
+      "chapter": "الانطلاقة-السابعة",
+      "prev": "d00a630894348441880f53950712100baa5330b75f1c53a28348511eabff19df",
+      "next": "6b5d3dce907fa905520fd3f1f27657613074326f4dc39dae610a3a5c877a58e4"
+    },
+    {
+      "ord": 47,
+      "blockId": "99d2ecac7473b09bb99c0c06b088b82d",
+      "fp64": "6c52c4160767716a",
+      "normHash": "6b5d3dce907fa905520fd3f1f27657613074326f4dc39dae610a3a5c877a58e4",
+      "kind": "p",
+      "chapter": "الانطلاقة-السابعة",
+      "prev": "35b64b2a8d76bbdd2c12f50b7a36860d52bdf428ac7932ca9948f8af2a51eaff",
+      "next": "35ec9493d51fad64d08f5ee97dacf8f73479d23da192119eee34dc93eab99bf3"
+    },
+    {
+      "ord": 48,
+      "blockId": "8e4511f0b47ee8a6376a2582e7d9de73",
+      "fp64": "e0d404f673b9ca6b",
+      "normHash": "35ec9493d51fad64d08f5ee97dacf8f73479d23da192119eee34dc93eab99bf3",
+      "kind": "notes",
+      "chapter": "الانطلاقة-السابعة",
+      "prev": "6b5d3dce907fa905520fd3f1f27657613074326f4dc39dae610a3a5c877a58e4",
+      "next": "1ed82f6b6795e4b8046883025e28684060431ab34a6acd98e10ed6a17373c7f4"
+    },
+    {
+      "ord": 49,
+      "blockId": "e880edadbdcf197d315fee10378a1cd9",
+      "fp64": "65dd33da5b31c06e",
+      "normHash": "1ed82f6b6795e4b8046883025e28684060431ab34a6acd98e10ed6a17373c7f4",
+      "kind": "page",
+      "chapter": "الانطلاقة-السابعة",
+      "prev": "35ec9493d51fad64d08f5ee97dacf8f73479d23da192119eee34dc93eab99bf3",
+      "next": "6fe15e9db74c03f8299a08fda97266a77e9382dc1b869eb2ba00bb9aa42d0c40"
+    },
+    {
+      "ord": 50,
+      "blockId": "5767abd4631505251f1bb7fd416c5110",
+      "fp64": "f6fff01eedbffdb4",
+      "normHash": "6fe15e9db74c03f8299a08fda97266a77e9382dc1b869eb2ba00bb9aa42d0c40",
+      "kind": "h2",
+      "chapter": "الانطلاقة-الثامنة",
+      "prev": "1ed82f6b6795e4b8046883025e28684060431ab34a6acd98e10ed6a17373c7f4",
+      "next": "8f8650a698bea7b875f0662df5083ff53343e5b48413bc731d29dd964f36d0a9"
+    },
+    {
+      "ord": 51,
+      "blockId": "dece004d8741a15870025ccc31867398",
+      "fp64": "6463e45e1f26695c",
+      "normHash": "8f8650a698bea7b875f0662df5083ff53343e5b48413bc731d29dd964f36d0a9",
+      "kind": "p",
+      "chapter": "الانطلاقة-الثامنة",
+      "prev": "6fe15e9db74c03f8299a08fda97266a77e9382dc1b869eb2ba00bb9aa42d0c40",
+      "next": "1568b99379f448182d8ab0e8d16e6a5930b8395328eaf5e7310e237c87b43ac5"
+    },
+    {
+      "ord": 52,
+      "blockId": "a740573f483273fe15d79d4908011afa",
+      "fp64": "e174b47c72b102ab",
+      "normHash": "1568b99379f448182d8ab0e8d16e6a5930b8395328eaf5e7310e237c87b43ac5",
+      "kind": "notes",
+      "chapter": "الانطلاقة-الثامنة",
+      "prev": "8f8650a698bea7b875f0662df5083ff53343e5b48413bc731d29dd964f36d0a9",
+      "next": "7b221dfbbc89c19c6eec9b33865ea40fa1fb0da881cdd54d8c313e91330b5a4c"
+    },
+    {
+      "ord": 53,
+      "blockId": "f27210c463ad53f2d30b64974c8baef7",
+      "fp64": "e5ffb59e72b10036",
+      "normHash": "7b221dfbbc89c19c6eec9b33865ea40fa1fb0da881cdd54d8c313e91330b5a4c",
+      "kind": "page",
+      "chapter": "الانطلاقة-الثامنة",
+      "prev": "1568b99379f448182d8ab0e8d16e6a5930b8395328eaf5e7310e237c87b43ac5",
+      "next": "b7ff59953721b1f10270e06be3350759bbeb092a09b9374b464adc50bbbd494e"
+    },
+    {
+      "ord": 54,
+      "blockId": "e5f197f38bd0728018ece4bbc5a22f77",
+      "fp64": "fffb627e5ffecbf2",
+      "normHash": "b7ff59953721b1f10270e06be3350759bbeb092a09b9374b464adc50bbbd494e",
+      "kind": "h2",
+      "chapter": "الانطلاقة-التاسعة",
+      "prev": "7b221dfbbc89c19c6eec9b33865ea40fa1fb0da881cdd54d8c313e91330b5a4c",
+      "next": "ac5e96295bcbeea1d9b8950956e1c6d458dd0c546d34665acc1b262f01943246"
+    },
+    {
+      "ord": 55,
+      "blockId": "06cbf2622ba06bc9e83017d73c2f8333",
+      "fp64": "771a60171777711c",
+      "normHash": "ac5e96295bcbeea1d9b8950956e1c6d458dd0c546d34665acc1b262f01943246",
+      "kind": "p",
+      "chapter": "الانطلاقة-التاسعة",
+      "prev": "b7ff59953721b1f10270e06be3350759bbeb092a09b9374b464adc50bbbd494e",
+      "next": "a3145ea2b486159f89d83c56cf49f810f67f65356c1a13dbfc0a944a0550b07a"
+    },
+    {
+      "ord": 56,
+      "blockId": "befa4b11f48631ce2886139d121c5e2e",
+      "fp64": "e1deb1da7330c277",
+      "normHash": "a3145ea2b486159f89d83c56cf49f810f67f65356c1a13dbfc0a944a0550b07a",
+      "kind": "page",
+      "chapter": "الانطلاقة-التاسعة",
+      "prev": "ac5e96295bcbeea1d9b8950956e1c6d458dd0c546d34665acc1b262f01943246",
+      "next": "e5987debeb21ae575d137ffdfbb1d6cf177f26af9542806c587c16437d028e6f"
+    },
+    {
+      "ord": 57,
+      "blockId": "c075fbf5b9af4fc0f42b7457852b5512",
+      "fp64": "ec90e6161e47d07c",
+      "normHash": "e5987debeb21ae575d137ffdfbb1d6cf177f26af9542806c587c16437d028e6f",
+      "kind": "p",
+      "chapter": "الانطلاقة-التاسعة",
+      "prev": "a3145ea2b486159f89d83c56cf49f810f67f65356c1a13dbfc0a944a0550b07a",
+      "next": "b40541c3fd16ea47af6a9b43a330fbce6ce5b51752f98b3dcd91a440299816e2"
+    },
+    {
+      "ord": 58,
+      "blockId": "fa1abe98af2946c39904d3bc17e8b93d",
+      "fp64": "a1ff779a5232426f",
+      "normHash": "b40541c3fd16ea47af6a9b43a330fbce6ce5b51752f98b3dcd91a440299816e2",
+      "kind": "page",
+      "chapter": "الانطلاقة-التاسعة",
+      "prev": "e5987debeb21ae575d137ffdfbb1d6cf177f26af9542806c587c16437d028e6f",
+      "next": "4becd58da50d34518d77b0b8524ee5146fcf37853f5eaab023ecebc1030059ff"
+    },
+    {
+      "ord": 59,
+      "blockId": "0561f9ece97543dcedce9f45c8d612a5",
+      "fp64": "f27d7a1f7dfffffd",
+      "normHash": "4becd58da50d34518d77b0b8524ee5146fcf37853f5eaab023ecebc1030059ff",
+      "kind": "h2",
+      "chapter": "الانطلاقة-العاشرة",
+      "prev": "b40541c3fd16ea47af6a9b43a330fbce6ce5b51752f98b3dcd91a440299816e2",
+      "next": "1347127aae2fcf0fdddbd2b6c785c4fb1adf626c5df1f5e911076e8c69bc927d"
+    },
+    {
+      "ord": 60,
+      "blockId": "1b808e389a6b4c9d213af0006c40956b",
+      "fp64": "6455e73e4777556a",
+      "normHash": "1347127aae2fcf0fdddbd2b6c785c4fb1adf626c5df1f5e911076e8c69bc927d",
+      "kind": "p",
+      "chapter": "الانطلاقة-العاشرة",
+      "prev": "4becd58da50d34518d77b0b8524ee5146fcf37853f5eaab023ecebc1030059ff",
+      "next": "5ec0af79d4a078305f13a9b51cc78a40ef7442f3caa9703e68bb8ce520a98297"
+    },
+    {
+      "ord": 61,
+      "blockId": "80ced6e1cc925b0af986bff57ee604ec",
+      "fp64": "a1f434ff73ba5e6b",
+      "normHash": "5ec0af79d4a078305f13a9b51cc78a40ef7442f3caa9703e68bb8ce520a98297",
+      "kind": "notes",
+      "chapter": "الانطلاقة-العاشرة",
+      "prev": "1347127aae2fcf0fdddbd2b6c785c4fb1adf626c5df1f5e911076e8c69bc927d",
+      "next": "50da4077d8c63b0c6e47b324b09ab15fcd968e0131f9d58fcd0212076de3efca"
+    },
+    {
+      "ord": 62,
+      "blockId": "87222e16b1cd8aa3cf8fcb227d067216",
+      "fp64": "21ff32fb5332467a",
+      "normHash": "50da4077d8c63b0c6e47b324b09ab15fcd968e0131f9d58fcd0212076de3efca",
+      "kind": "page",
+      "chapter": "الانطلاقة-العاشرة",
+      "prev": "5ec0af79d4a078305f13a9b51cc78a40ef7442f3caa9703e68bb8ce520a98297",
+      "next": "776463279a7d68e7ff38d1547f25f145ff0369ab7241192ad925bfd45755dd55"
+    },
+    {
+      "ord": 63,
+      "blockId": "aaa8d44fd4602822bef534cc17df17f9",
+      "fp64": "5268243c41beeb32",
+      "normHash": "776463279a7d68e7ff38d1547f25f145ff0369ab7241192ad925bfd45755dd55",
+      "kind": "h2",
+      "chapter": "الانطلاقة-الحادية-عشر",
+      "prev": "50da4077d8c63b0c6e47b324b09ab15fcd968e0131f9d58fcd0212076de3efca",
+      "next": "8f850cb4332ff2603a3ad89bb0806a1d722f6abfe0b239e78a1f6061cfcce2a6"
+    },
+    {
+      "ord": 64,
+      "blockId": "8302576de8e17f9747462cf2dc1d7502",
+      "fp64": "6cce241717676e6c",
+      "normHash": "8f850cb4332ff2603a3ad89bb0806a1d722f6abfe0b239e78a1f6061cfcce2a6",
+      "kind": "p",
+      "chapter": "الانطلاقة-الحادية-عشر",
+      "prev": "776463279a7d68e7ff38d1547f25f145ff0369ab7241192ad925bfd45755dd55",
+      "next": "2022b0c53b7f31e930c94ff6fd2b585982b5b9926680d979cffcc365a0cf23f4"
+    },
+    {
+      "ord": 65,
+      "blockId": "41d0706b7837e0ccc1042f4ab8b49d16",
+      "fp64": "a0dc247e71a35e6b",
+      "normHash": "2022b0c53b7f31e930c94ff6fd2b585982b5b9926680d979cffcc365a0cf23f4",
+      "kind": "notes",
+      "chapter": "الانطلاقة-الحادية-عشر",
+      "prev": "8f850cb4332ff2603a3ad89bb0806a1d722f6abfe0b239e78a1f6061cfcce2a6",
+      "next": "382069c0257b875eb88d3a4fb92b04d80f577028fbcb0709132f47ae2c6732b7"
+    },
+    {
+      "ord": 66,
+      "blockId": "67b8ac966025a993939e5a9ba14e0843",
+      "fp64": "a1dd35fe5bb34673",
+      "normHash": "382069c0257b875eb88d3a4fb92b04d80f577028fbcb0709132f47ae2c6732b7",
+      "kind": "page",
+      "chapter": "الانطلاقة-الحادية-عشر",
+      "prev": "2022b0c53b7f31e930c94ff6fd2b585982b5b9926680d979cffcc365a0cf23f4",
+      "next": "460142aa09a96f5ce1ce28581b70a3ab35f74ad16e1aee9576df41090fa9a74b"
+    },
+    {
+      "ord": 67,
+      "blockId": "7f5adc7e3dfd2121d2dce95cefacbbcb",
+      "fp64": "54dee41435a3f03d",
+      "normHash": "460142aa09a96f5ce1ce28581b70a3ab35f74ad16e1aee9576df41090fa9a74b",
+      "kind": "p",
+      "chapter": "الانطلاقة-الحادية-عشر",
+      "prev": "382069c0257b875eb88d3a4fb92b04d80f577028fbcb0709132f47ae2c6732b7",
+      "next": "efee7e75fa4523d0330f3b77b6391fd330567f3c0fdd93cd4d5dee8e81e91a13"
+    },
+    {
+      "ord": 68,
+      "blockId": "b1ef70cc80e6ea9cd299b1a9a163ec3b",
+      "fp64": "a5fff1fb7b302462",
+      "normHash": "efee7e75fa4523d0330f3b77b6391fd330567f3c0fdd93cd4d5dee8e81e91a13",
+      "kind": "page",
+      "chapter": "الانطلاقة-الحادية-عشر",
+      "prev": "460142aa09a96f5ce1ce28581b70a3ab35f74ad16e1aee9576df41090fa9a74b",
+      "next": "c8690c585b07bfdff0bc393c3dbfe0fb67f708e9ca1921eebc68dbaef3292953"
+    },
+    {
+      "ord": 69,
+      "blockId": "e3685256863bada32820ff2587068c40",
+      "fp64": "6e8ae873ff67792c",
+      "normHash": "c8690c585b07bfdff0bc393c3dbfe0fb67f708e9ca1921eebc68dbaef3292953",
+      "kind": "p",
+      "chapter": "الانطلاقة-الحادية-عشر",
+      "prev": "efee7e75fa4523d0330f3b77b6391fd330567f3c0fdd93cd4d5dee8e81e91a13",
+      "next": "d1083e0735df6258f3d11fc59ad42b577106553fb12653aca676e30be4982862"
+    },
+    {
+      "ord": 70,
+      "blockId": "321b7a0e2c42f9c870cbabf768948474",
+      "fp64": "25df77df7330a437",
+      "normHash": "d1083e0735df6258f3d11fc59ad42b577106553fb12653aca676e30be4982862",
+      "kind": "page",
+      "chapter": "الانطلاقة-الحادية-عشر",
+      "prev": "c8690c585b07bfdff0bc393c3dbfe0fb67f708e9ca1921eebc68dbaef3292953",
+      "next": "a782253a1980b2f3dd853636553e79b351da26676fe071743b5c1d5a94efc133"
+    },
+    {
+      "ord": 71,
+      "blockId": "4a32a646b90fc9b87bcb4ccfa1031903",
+      "fp64": "5768247c53bccbb2",
+      "normHash": "a782253a1980b2f3dd853636553e79b351da26676fe071743b5c1d5a94efc133",
+      "kind": "h2",
+      "chapter": "الانطلاقة-الثانية-عشر",
+      "prev": "d1083e0735df6258f3d11fc59ad42b577106553fb12653aca676e30be4982862",
+      "next": "14dcd1c256865d6301521e36e21a82233296eb714699b72535d2b92347c7cad3"
+    },
+    {
+      "ord": 72,
+      "blockId": "303e07a01836f01cb1e4e9175438d3f4",
+      "fp64": "9c45835e554a64b8",
+      "normHash": "14dcd1c256865d6301521e36e21a82233296eb714699b72535d2b92347c7cad3",
+      "kind": "p",
+      "chapter": "الانطلاقة-الثانية-عشر",
+      "prev": "a782253a1980b2f3dd853636553e79b351da26676fe071743b5c1d5a94efc133",
+      "next": "25ce2f1cb89053ef70a29c4f378882828120e6965cbfe470112682cdc0d88110"
+    },
+    {
+      "ord": 73,
+      "blockId": "deff8095e5534612cb0aeaaec7a7e0ea",
+      "fp64": "e174a4fc70aa9e6b",
+      "normHash": "25ce2f1cb89053ef70a29c4f378882828120e6965cbfe470112682cdc0d88110",
+      "kind": "notes",
+      "chapter": "الانطلاقة-الثانية-عشر",
+      "prev": "14dcd1c256865d6301521e36e21a82233296eb714699b72535d2b92347c7cad3",
+      "next": "56409761960819792386b99750acd7b578bae3d2654208d54fea67f6eb626158"
+    },
+    {
+      "ord": 74,
+      "blockId": "5c6caa27d275c5e95b9630ba5cffb0c7",
+      "fp64": "65fcb49e7232847f",
+      "normHash": "56409761960819792386b99750acd7b578bae3d2654208d54fea67f6eb626158",
+      "kind": "page",
+      "chapter": "الانطلاقة-الثانية-عشر",
+      "prev": "25ce2f1cb89053ef70a29c4f378882828120e6965cbfe470112682cdc0d88110",
+      "next": "010a0a57838decac711d8b9d43da377c48735bbf2277f84d080b1c39d014e31d"
+    },
+    {
+      "ord": 75,
+      "blockId": "bb0836caeac53d4416d34cb9cb4eeb3b",
+      "fp64": "92a6f615576f568f",
+      "normHash": "010a0a57838decac711d8b9d43da377c48735bbf2277f84d080b1c39d014e31d",
+      "kind": "p",
+      "chapter": "الانطلاقة-الثانية-عشر",
+      "prev": "56409761960819792386b99750acd7b578bae3d2654208d54fea67f6eb626158",
+      "next": "9550de311ed10f80ecf1dad4c2e17987b532abc00ce068882426bb13af7fb893"
+    },
+    {
+      "ord": 76,
+      "blockId": "b8f458caca2bcfd5902d6d4af6b30194",
+      "fp64": "65dd709f5b310667",
+      "normHash": "9550de311ed10f80ecf1dad4c2e17987b532abc00ce068882426bb13af7fb893",
+      "kind": "page",
+      "chapter": "الانطلاقة-الثانية-عشر",
+      "prev": "010a0a57838decac711d8b9d43da377c48735bbf2277f84d080b1c39d014e31d",
+      "next": "3ec2df1d15b4513e7ce90b33bc3bc7a24dcb24519ccd073f24c02308e76b1403"
+    },
+    {
+      "ord": 77,
+      "blockId": "1c0425e4715ab26747cea1702b1b1d42",
+      "fp64": "7668201e41bccb36",
+      "normHash": "3ec2df1d15b4513e7ce90b33bc3bc7a24dcb24519ccd073f24c02308e76b1403",
+      "kind": "h2",
+      "chapter": "الانطلاقة-الثالثة-عشر",
+      "prev": "9550de311ed10f80ecf1dad4c2e17987b532abc00ce068882426bb13af7fb893",
+      "next": "82b770448e36dff349b9f8f5c6db5aa712af040c482024b768439528debb990b"
+    },
+    {
+      "ord": 78,
+      "blockId": "91ca3965bb05fc2b5e1a6a2c46ce9bb6",
+      "fp64": "4ab8201277111e14",
+      "normHash": "82b770448e36dff349b9f8f5c6db5aa712af040c482024b768439528debb990b",
+      "kind": "p",
+      "chapter": "الانطلاقة-الثالثة-عشر",
+      "prev": "3ec2df1d15b4513e7ce90b33bc3bc7a24dcb24519ccd073f24c02308e76b1403",
+      "next": "b241661b90153ac1b1479b26153bef58b06edf14f130a86cee9acace64458f3b"
+    },
+    {
+      "ord": 79,
+      "blockId": "f3b912b793fb2f0825760635c8a5a2ae",
+      "fp64": "e07c14f572b3c26b",
+      "normHash": "b241661b90153ac1b1479b26153bef58b06edf14f130a86cee9acace64458f3b",
+      "kind": "notes",
+      "chapter": "الانطلاقة-الثالثة-عشر",
+      "prev": "82b770448e36dff349b9f8f5c6db5aa712af040c482024b768439528debb990b",
+      "next": "9aa7129bd431ac39ddbced406963fe8248e65b759a3428f65f4597e0800a58a8"
+    },
+    {
+      "ord": 80,
+      "blockId": "967468a314a1e8ff42314f6d50200746",
+      "fp64": "e5fd35df52b3e07b",
+      "normHash": "9aa7129bd431ac39ddbced406963fe8248e65b759a3428f65f4597e0800a58a8",
+      "kind": "page",
+      "chapter": "الانطلاقة-الثالثة-عشر",
+      "prev": "b241661b90153ac1b1479b26153bef58b06edf14f130a86cee9acace64458f3b",
+      "next": "c0f0be38e6ec776d614af4115cd75bc759e4bdc67c467720744d6a5e7d7892e4"
+    },
+    {
+      "ord": 81,
+      "blockId": "8929e926838e60cd631af08ff810088e",
+      "fp64": "e59a21a267f7f874",
+      "normHash": "c0f0be38e6ec776d614af4115cd75bc759e4bdc67c467720744d6a5e7d7892e4",
+      "kind": "p",
+      "chapter": "الانطلاقة-الثالثة-عشر",
+      "prev": "9aa7129bd431ac39ddbced406963fe8248e65b759a3428f65f4597e0800a58a8",
+      "next": "2903280b7dece42b93bb149fa4009d9f9585d2e9272487442e652c446ebf8f98"
+    },
+    {
+      "ord": 82,
+      "blockId": "fc3a00796753a9c170bf6dadceb788d7",
+      "fp64": "a17cc47c72ba122b",
+      "normHash": "2903280b7dece42b93bb149fa4009d9f9585d2e9272487442e652c446ebf8f98",
+      "kind": "notes",
+      "chapter": "الانطلاقة-الثالثة-عشر",
+      "prev": "c0f0be38e6ec776d614af4115cd75bc759e4bdc67c467720744d6a5e7d7892e4",
+      "next": "5c461a0c0c0823d868823de46824b9e6fc8b01afebc74cb456213d2e2247a5c3"
+    },
+    {
+      "ord": 83,
+      "blockId": "f49e907c51d04a935bb03f7461bd3eb7",
+      "fp64": "a1fcf2fe7a320237",
+      "normHash": "5c461a0c0c0823d868823de46824b9e6fc8b01afebc74cb456213d2e2247a5c3",
+      "kind": "page",
+      "chapter": "الانطلاقة-الثالثة-عشر",
+      "prev": "2903280b7dece42b93bb149fa4009d9f9585d2e9272487442e652c446ebf8f98",
+      "next": "46326b9092cd4803b79039e492df7d7c2131672e9e0f14b0de79bc8811553eaf"
+    },
+    {
+      "ord": 84,
+      "blockId": "b0b548662e7de5922b9792609c00017d",
+      "fp64": "5378605c57bec9b0",
+      "normHash": "46326b9092cd4803b79039e492df7d7c2131672e9e0f14b0de79bc8811553eaf",
+      "kind": "h2",
+      "chapter": "الانطلاقة-الرابعة-عشر",
+      "prev": "5c461a0c0c0823d868823de46824b9e6fc8b01afebc74cb456213d2e2247a5c3",
+      "next": "d652ed9fbf7cdabb3e95a61976b2722eda6d415830ee778277ec22ae76ca22aa"
+    },
+    {
+      "ord": 85,
+      "blockId": "fff5732027be5d7d28525349ebb1e17b",
+      "fp64": "be10e45f15225d78",
+      "normHash": "d652ed9fbf7cdabb3e95a61976b2722eda6d415830ee778277ec22ae76ca22aa",
+      "kind": "p",
+      "chapter": "الانطلاقة-الرابعة-عشر",
+      "prev": "46326b9092cd4803b79039e492df7d7c2131672e9e0f14b0de79bc8811553eaf",
+      "next": "23d14f9c466942b6a2860d604130a4f3a42e13022af08e7df64f67fdeaa56f94"
+    },
+    {
+      "ord": 86,
+      "blockId": "7a357b3e99687cb48da98495f687c037",
+      "fp64": "e1dfb59e53304262",
+      "normHash": "23d14f9c466942b6a2860d604130a4f3a42e13022af08e7df64f67fdeaa56f94",
+      "kind": "page",
+      "chapter": "الانطلاقة-الرابعة-عشر",
+      "prev": "d652ed9fbf7cdabb3e95a61976b2722eda6d415830ee778277ec22ae76ca22aa",
+      "next": "a77c039cb915673e86cf488355c5a88ac19347b1bfcfd3615ce07a2132a771fc"
+    },
+    {
+      "ord": 87,
+      "blockId": "7eab265d222be4865f487a24585b21f3",
+      "fp64": "7678643e55bce990",
+      "normHash": "a77c039cb915673e86cf488355c5a88ac19347b1bfcfd3615ce07a2132a771fc",
+      "kind": "h2",
+      "chapter": "الانطلاقة-الخامسة-عشر",
+      "prev": "23d14f9c466942b6a2860d604130a4f3a42e13022af08e7df64f67fdeaa56f94",
+      "next": "644ad60255bb41320d82e1e839779fd80400d611cbb9ea698adaa65059dcbf6f"
+    },
+    {
+      "ord": 88,
+      "blockId": "70b7b6c0aa93c6d72db9625b228c8f44",
+      "fp64": "7f92453e5e435763",
+      "normHash": "644ad60255bb41320d82e1e839779fd80400d611cbb9ea698adaa65059dcbf6f",
+      "kind": "p",
+      "chapter": "الانطلاقة-الخامسة-عشر",
+      "prev": "a77c039cb915673e86cf488355c5a88ac19347b1bfcfd3615ce07a2132a771fc",
+      "next": "ae89f74675735aa23dde1d3f69b730bf0abc5f07aa7185602789fb7bcb57bd00"
+    },
+    {
+      "ord": 89,
+      "blockId": "97b9684cf40714a1ff6d86943b024c7b",
+      "fp64": "e17c14fc70b31eeb",
+      "normHash": "ae89f74675735aa23dde1d3f69b730bf0abc5f07aa7185602789fb7bcb57bd00",
+      "kind": "notes",
+      "chapter": "الانطلاقة-الخامسة-عشر",
+      "prev": "644ad60255bb41320d82e1e839779fd80400d611cbb9ea698adaa65059dcbf6f",
+      "next": "44c8cba042d08a01127dca790d5b20c119ac929acce7a2698e39a94b5281b46e"
+    },
+    {
+      "ord": 90,
+      "blockId": "5cf2a982889e8a49c1b0dabb366d9ccb",
+      "fp64": "61fd33ba7a33066b",
+      "normHash": "44c8cba042d08a01127dca790d5b20c119ac929acce7a2698e39a94b5281b46e",
+      "kind": "page",
+      "chapter": "الانطلاقة-الخامسة-عشر",
+      "prev": "ae89f74675735aa23dde1d3f69b730bf0abc5f07aa7185602789fb7bcb57bd00",
+      "next": "e1aec9d59ed4b6bdf99913ec63b1d4287320fa0d1b3e61c7ee5694a1f44a22ae"
+    },
+    {
+      "ord": 91,
+      "blockId": "66ec69e61643bee47dd0cb03f1aa87f3",
+      "fp64": "5778243e55bceab0",
+      "normHash": "e1aec9d59ed4b6bdf99913ec63b1d4287320fa0d1b3e61c7ee5694a1f44a22ae",
+      "kind": "h2",
+      "chapter": "الانطلاقة-السادسة-عشر",
+      "prev": "44c8cba042d08a01127dca790d5b20c119ac929acce7a2698e39a94b5281b46e",
+      "next": "8d2565304fb98943ec2d38a09a80f634d1428aa71ea695e73a665e9611d87db3"
+    },
+    {
+      "ord": 92,
+      "blockId": "64bb1c5531342f465dd2779fdc965021",
+      "fp64": "0ec5e46b9f38ee8f",
+      "normHash": "8d2565304fb98943ec2d38a09a80f634d1428aa71ea695e73a665e9611d87db3",
+      "kind": "p",
+      "chapter": "الانطلاقة-السادسة-عشر",
+      "prev": "e1aec9d59ed4b6bdf99913ec63b1d4287320fa0d1b3e61c7ee5694a1f44a22ae",
+      "next": "d580e0708295287d431442d757f01a7b43e577dabd0b68bd3166a3b169e23cb4"
+    },
+    {
+      "ord": 93,
+      "blockId": "77ffed968365d577a01b93a1cbc76e3a",
+      "fp64": "a1fd729e5ab08462",
+      "normHash": "d580e0708295287d431442d757f01a7b43e577dabd0b68bd3166a3b169e23cb4",
+      "kind": "page",
+      "chapter": "الانطلاقة-السادسة-عشر",
+      "prev": "8d2565304fb98943ec2d38a09a80f634d1428aa71ea695e73a665e9611d87db3",
+      "next": "ca86733b1c085932d008382d64b4dd42e12ae4b4a39a842a7cc8cce4deec5c68"
+    },
+    {
+      "ord": 94,
+      "blockId": "02ff7f83750c2c93dfd7c3ec20f3b607",
+      "fp64": "0a5564539505696e",
+      "normHash": "ca86733b1c085932d008382d64b4dd42e12ae4b4a39a842a7cc8cce4deec5c68",
+      "kind": "p",
+      "chapter": "الانطلاقة-السادسة-عشر",
+      "prev": "d580e0708295287d431442d757f01a7b43e577dabd0b68bd3166a3b169e23cb4",
+      "next": "c9d0406c43a6e543636c76b5778f6438fd8d381cb46435dd9b94e82026e6fa4f"
+    },
+    {
+      "ord": 95,
+      "blockId": "8e4be2f6c9216ed3b84bb578cf0d3c2a",
+      "fp64": "a05444f473a8d2eb",
+      "normHash": "c9d0406c43a6e543636c76b5778f6438fd8d381cb46435dd9b94e82026e6fa4f",
+      "kind": "notes",
+      "chapter": "الانطلاقة-السادسة-عشر",
+      "prev": "ca86733b1c085932d008382d64b4dd42e12ae4b4a39a842a7cc8cce4deec5c68",
+      "next": "007c547152a15c0c7bc1e1aa577d251484f5b5c77004406be645f5f7473d04cf"
+    },
+    {
+      "ord": 96,
+      "blockId": "7991e1bb8e7c1b08ef4e84c728c2ed44",
+      "fp64": "25df729e53b0e266",
+      "normHash": "007c547152a15c0c7bc1e1aa577d251484f5b5c77004406be645f5f7473d04cf",
+      "kind": "page",
+      "chapter": "الانطلاقة-السادسة-عشر",
+      "prev": "c9d0406c43a6e543636c76b5778f6438fd8d381cb46435dd9b94e82026e6fa4f",
+      "next": "8509508266e91c0a40f4c5a58450a63cd64610af15d18234a36917de52c93527"
+    },
+    {
+      "ord": 97,
+      "blockId": "85992d857117754089faea6cb85c6885",
+      "fp64": "7668643e41bcc930",
+      "normHash": "8509508266e91c0a40f4c5a58450a63cd64610af15d18234a36917de52c93527",
+      "kind": "h2",
+      "chapter": "الانطلاقة-السابعة-عشر",
+      "prev": "007c547152a15c0c7bc1e1aa577d251484f5b5c77004406be645f5f7473d04cf",
+      "next": "c18205eb755a3ed73ce4942219ebedbb03bb820126436aeed864ace9dab8fad3"
+    },
+    {
+      "ord": 98,
+      "blockId": "b877e07e87e766d5a099c8061981241d",
+      "fp64": "a5c0ea4c1014f13c",
+      "normHash": "c18205eb755a3ed73ce4942219ebedbb03bb820126436aeed864ace9dab8fad3",
+      "kind": "p",
+      "chapter": "الانطلاقة-السابعة-عشر",
+      "prev": "8509508266e91c0a40f4c5a58450a63cd64610af15d18234a36917de52c93527",
+      "next": "2a3be0f763405d72ad76c3be73c3a9f680511a02e168d3c0eec06deaa87b5cec"
+    },
+    {
+      "ord": 99,
+      "blockId": "f6df3b62f52c1e839b2a1f722bb69d5b",
+      "fp64": "21fdb6ff5b31e426",
+      "normHash": "2a3be0f763405d72ad76c3be73c3a9f680511a02e168d3c0eec06deaa87b5cec",
+      "kind": "page",
+      "chapter": "الانطلاقة-السابعة-عشر",
+      "prev": "c18205eb755a3ed73ce4942219ebedbb03bb820126436aeed864ace9dab8fad3",
+      "next": "027da50f3dfb00d513d04e91b373f86659b1291bb1603b241d8b2eda67392cf8"
+    },
+    {
+      "ord": 100,
+      "blockId": "4be40420ca0a8fa8ee08a7021a2b3b92",
+      "fp64": "566a601e49bee9b4",
+      "normHash": "027da50f3dfb00d513d04e91b373f86659b1291bb1603b241d8b2eda67392cf8",
+      "kind": "h2",
+      "chapter": "الانطلاقة-الثامنة-عشر",
+      "prev": "2a3be0f763405d72ad76c3be73c3a9f680511a02e168d3c0eec06deaa87b5cec",
+      "next": "a75ad79177123078f983603b46026512c25cc0712c628733b6debcc000657794"
+    },
+    {
+      "ord": 101,
+      "blockId": "286aa9dc26bef02c6cfbd7af13fdb054",
+      "fp64": "74d0a01b5f40dd5c",
+      "normHash": "a75ad79177123078f983603b46026512c25cc0712c628733b6debcc000657794",
+      "kind": "p",
+      "chapter": "الانطلاقة-الثامنة-عشر",
+      "prev": "027da50f3dfb00d513d04e91b373f86659b1291bb1603b241d8b2eda67392cf8",
+      "next": "129d4ed2feac4398ba290c78adbc6be84fe4b2459a6e9db95a0bdd59b5be6cdb"
+    },
+    {
+      "ord": 102,
+      "blockId": "2ecd5fb56b2587e4197780003e295cad",
+      "fp64": "a05c04f472a216ab",
+      "normHash": "129d4ed2feac4398ba290c78adbc6be84fe4b2459a6e9db95a0bdd59b5be6cdb",
+      "kind": "notes",
+      "chapter": "الانطلاقة-الثامنة-عشر",
+      "prev": "a75ad79177123078f983603b46026512c25cc0712c628733b6debcc000657794",
+      "next": "a6c854d634e123e294b0238eb67020ad77006c0640eede139ff374bd21d5fced"
+    },
+    {
+      "ord": 103,
+      "blockId": "f8ec6725c0441c41e77901a8967755bd",
+      "fp64": "21df36fa5a32043f",
+      "normHash": "a6c854d634e123e294b0238eb67020ad77006c0640eede139ff374bd21d5fced",
+      "kind": "page",
+      "chapter": "الانطلاقة-الثامنة-عشر",
+      "prev": "129d4ed2feac4398ba290c78adbc6be84fe4b2459a6e9db95a0bdd59b5be6cdb",
+      "next": "6abe21db7b42bf7a3c937c5eb75d1df57435811a442dfa3c99e3c1d8827a718e"
+    },
+    {
+      "ord": 104,
+      "blockId": "a9b608049346cbd9586f64f0ad54c0c1",
+      "fp64": "3c55c65f5b66509c",
+      "normHash": "6abe21db7b42bf7a3c937c5eb75d1df57435811a442dfa3c99e3c1d8827a718e",
+      "kind": "p",
+      "chapter": "الانطلاقة-الثامنة-عشر",
+      "prev": "a6c854d634e123e294b0238eb67020ad77006c0640eede139ff374bd21d5fced",
+      "next": "cb4771c5e11d0fc3831353a955a20214e4ea28bf59808c9eef16b037818ab62a"
+    },
+    {
+      "ord": 105,
+      "blockId": "26e03751c9ebb0fa3b83e03c09723ee5",
+      "fp64": "e1d4f4fc73a8866b",
+      "normHash": "cb4771c5e11d0fc3831353a955a20214e4ea28bf59808c9eef16b037818ab62a",
+      "kind": "notes",
+      "chapter": "الانطلاقة-الثامنة-عشر",
+      "prev": "6abe21db7b42bf7a3c937c5eb75d1df57435811a442dfa3c99e3c1d8827a718e",
+      "next": "a5fcf934e467bf135b015023f5bd981436847d06f92db3cdf48771ecd0f71e3c"
+    },
+    {
+      "ord": 106,
+      "blockId": "6433ee0b4654caec48b91387f7dfa0ed",
+      "fp64": "e1def1da5330a476",
+      "normHash": "a5fcf934e467bf135b015023f5bd981436847d06f92db3cdf48771ecd0f71e3c",
+      "kind": "page",
+      "chapter": "الانطلاقة-الثامنة-عشر",
+      "prev": "cb4771c5e11d0fc3831353a955a20214e4ea28bf59808c9eef16b037818ab62a",
+      "next": "a76018c2362a0a2586d5a65ccb557c8447a2399b0e363009e981d7689f376e1a"
+    },
+    {
+      "ord": 107,
+      "blockId": "163711b5280521c5b4bf73a0cac9ebb8",
+      "fp64": "60b7b47df697e8d9",
+      "normHash": "a76018c2362a0a2586d5a65ccb557c8447a2399b0e363009e981d7689f376e1a",
+      "kind": "h2",
+      "chapter": "قبل-أن-نعاود-المسير",
+      "prev": "a5fcf934e467bf135b015023f5bd981436847d06f92db3cdf48771ecd0f71e3c",
+      "next": "db06c98bbe94763a8434c3befa4033aef19808453cc705105df316cb0a7d12c8"
+    },
+    {
+      "ord": 108,
+      "blockId": "4af95acdeef094ff7ddbb845c596530e",
+      "fp64": "3dca74109f345f34",
+      "normHash": "db06c98bbe94763a8434c3befa4033aef19808453cc705105df316cb0a7d12c8",
+      "kind": "p",
+      "chapter": "قبل-أن-نعاود-المسير",
+      "prev": "a76018c2362a0a2586d5a65ccb557c8447a2399b0e363009e981d7689f376e1a",
+      "next": "3cf4492448bacd7f0bee1110efc225752e78540b27ce25a6d9a4787a171a351b"
+    },
+    {
+      "ord": 109,
+      "blockId": "a244197ca44467fe91d7bb2a353877ca",
+      "fp64": "a5fdb69b73b1607a",
+      "normHash": "3cf4492448bacd7f0bee1110efc225752e78540b27ce25a6d9a4787a171a351b",
+      "kind": "page",
+      "chapter": "قبل-أن-نعاود-المسير",
+      "prev": "db06c98bbe94763a8434c3befa4033aef19808453cc705105df316cb0a7d12c8",
+      "next": "9572fb9fafa6b2368676da821766b86b6f656b9c7b1c4578cb2e132acef4bf70"
+    },
+    {
+      "ord": 110,
+      "blockId": "09413262f897d276cb8c2e5dd9a796e5",
+      "fp64": "9f5a856649447f21",
+      "normHash": "9572fb9fafa6b2368676da821766b86b6f656b9c7b1c4578cb2e132acef4bf70",
+      "kind": "p",
+      "chapter": "قبل-أن-نعاود-المسير",
+      "prev": "3cf4492448bacd7f0bee1110efc225752e78540b27ce25a6d9a4787a171a351b",
+      "next": "fbb2fa19bcd7d3d5a0b7083de5cd8eb6932f03de48fe3d1f51dd8e6dd39fb6f3"
+    },
+    {
+      "ord": 111,
+      "blockId": "4e4e7675260669e16df0f71eb966bb08",
+      "fp64": "9a44f4740d3780b1",
+      "normHash": "fbb2fa19bcd7d3d5a0b7083de5cd8eb6932f03de48fe3d1f51dd8e6dd39fb6f3",
+      "kind": "p",
+      "chapter": "قبل-أن-نعاود-المسير",
+      "prev": "9572fb9fafa6b2368676da821766b86b6f656b9c7b1c4578cb2e132acef4bf70",
+      "next": "4696b560343f0ee0cfc4205b76a8eef78f44446869af849ad991b86eb05e329d"
+    },
+    {
+      "ord": 112,
+      "blockId": "04c1899bc867e7fbb464068842c22236",
+      "fp64": "25fff3de7231a02e",
+      "normHash": "4696b560343f0ee0cfc4205b76a8eef78f44446869af849ad991b86eb05e329d",
+      "kind": "page",
+      "chapter": "قبل-أن-نعاود-المسير",
+      "prev": "fbb2fa19bcd7d3d5a0b7083de5cd8eb6932f03de48fe3d1f51dd8e6dd39fb6f3",
+      "next": "abb304af226c15c2567a760fa888d2a842338fc6210e9aafb6b3aa6ca836b083"
+    },
+    {
+      "ord": 113,
+      "blockId": "6bf7b4ad70ba0ebf855c5353a3a80fe3",
+      "fp64": "577a207c57beca32",
+      "normHash": "abb304af226c15c2567a760fa888d2a842338fc6210e9aafb6b3aa6ca836b083",
+      "kind": "h2",
+      "chapter": "الانطلاقة-التاسعة-عشر",
+      "prev": "4696b560343f0ee0cfc4205b76a8eef78f44446869af849ad991b86eb05e329d",
+      "next": "e982418ecb0a6404999db363610ce716dbd7c76d35e529fe445299c761d320a8"
+    },
+    {
+      "ord": 114,
+      "blockId": "0b0eb538b0c9dc8f913534c18a54f2a4",
+      "fp64": "3451ec141c70e17e",
+      "normHash": "e982418ecb0a6404999db363610ce716dbd7c76d35e529fe445299c761d320a8",
+      "kind": "p",
+      "chapter": "الانطلاقة-التاسعة-عشر",
+      "prev": "abb304af226c15c2567a760fa888d2a842338fc6210e9aafb6b3aa6ca836b083",
+      "next": "ce03543a40c9866211373b93c97de8e28bfe1e4a2cde4018cb92150f0d999581"
+    },
+    {
+      "ord": 115,
+      "blockId": "32db771817b0ab3483ce4d3dfd69abca",
+      "fp64": "a07404ff73a9922b",
+      "normHash": "ce03543a40c9866211373b93c97de8e28bfe1e4a2cde4018cb92150f0d999581",
+      "kind": "notes",
+      "chapter": "الانطلاقة-التاسعة-عشر",
+      "prev": "e982418ecb0a6404999db363610ce716dbd7c76d35e529fe445299c761d320a8",
+      "next": "608986043328764f9a95f64f24fae816b24432c2cdf6c36a8443be97992338ff"
+    },
+    {
+      "ord": 116,
+      "blockId": "afbe0a2eb465d9b95146886ec1be6d89",
+      "fp64": "a5fe31df53b1802b",
+      "normHash": "608986043328764f9a95f64f24fae816b24432c2cdf6c36a8443be97992338ff",
+      "kind": "page",
+      "chapter": "الانطلاقة-التاسعة-عشر",
+      "prev": "ce03543a40c9866211373b93c97de8e28bfe1e4a2cde4018cb92150f0d999581",
+      "next": "b8c39e0d9b8535db84423038f7ea964f4295912dd8e0203abc620b0ec8c3c36a"
+    },
+    {
+      "ord": 117,
+      "blockId": "a42c014daa2d03ea92a84cb7549e3400",
+      "fp64": "ff7879dfcdfeeff3",
+      "normHash": "b8c39e0d9b8535db84423038f7ea964f4295912dd8e0203abc620b0ec8c3c36a",
+      "kind": "h2",
+      "chapter": "الانطلاقة-العشرون",
+      "prev": "608986043328764f9a95f64f24fae816b24432c2cdf6c36a8443be97992338ff",
+      "next": "6b8420eecd3ba8c7d6953f6ad13c12061f04af1c36f732b1ad1a69154ad73b7c"
+    },
+    {
+      "ord": 118,
+      "blockId": "470527f0e3d0eb1022e43e96907b4f86",
+      "fp64": "9610ea7145344616",
+      "normHash": "6b8420eecd3ba8c7d6953f6ad13c12061f04af1c36f732b1ad1a69154ad73b7c",
+      "kind": "p",
+      "chapter": "الانطلاقة-العشرون",
+      "prev": "b8c39e0d9b8535db84423038f7ea964f4295912dd8e0203abc620b0ec8c3c36a",
+      "next": "daca2cd490725410426effe851a5241aa5c6ed353af207889bec2be81a4551de"
+    },
+    {
+      "ord": 119,
+      "blockId": "cc717b8489e0421b49632d7aca515ed2",
+      "fp64": "a07cd4fe71aa9eeb",
+      "normHash": "daca2cd490725410426effe851a5241aa5c6ed353af207889bec2be81a4551de",
+      "kind": "notes",
+      "chapter": "الانطلاقة-العشرون",
+      "prev": "6b8420eecd3ba8c7d6953f6ad13c12061f04af1c36f732b1ad1a69154ad73b7c",
+      "next": "1ae031ef73060995f9cb124f24bef55efad6849a9424f198c47293e18fd2e6c7"
+    },
+    {
+      "ord": 120,
+      "blockId": "1611e77365371a0aa1e48eed1641e53c",
+      "fp64": "a5fff0de53b28677",
+      "normHash": "1ae031ef73060995f9cb124f24bef55efad6849a9424f198c47293e18fd2e6c7",
+      "kind": "page",
+      "chapter": "الانطلاقة-العشرون",
+      "prev": "daca2cd490725410426effe851a5241aa5c6ed353af207889bec2be81a4551de",
+      "next": "903beefd395da8d77b5a0654a45b3fafdc7f8f11ca43a737e535d375a99a3230"
+    },
+    {
+      "ord": 121,
+      "blockId": "31ed0a62a61648aec08942951fe6a49e",
+      "fp64": "ef48c6fe5975357e",
+      "normHash": "903beefd395da8d77b5a0654a45b3fafdc7f8f11ca43a737e535d375a99a3230",
+      "kind": "p",
+      "chapter": "الانطلاقة-العشرون",
+      "prev": "1ae031ef73060995f9cb124f24bef55efad6849a9424f198c47293e18fd2e6c7",
+      "next": "71d103cae16944f0f1d2efabbee06c422d5ee1a0371db54183c9fefedbcaa999"
+    },
+    {
+      "ord": 122,
+      "blockId": "33bcb5ff5754b4594644b0f20611c3b1",
+      "fp64": "25dcf1da5333803f",
+      "normHash": "71d103cae16944f0f1d2efabbee06c422d5ee1a0371db54183c9fefedbcaa999",
+      "kind": "page",
+      "chapter": "الانطلاقة-العشرون",
+      "prev": "903beefd395da8d77b5a0654a45b3fafdc7f8f11ca43a737e535d375a99a3230",
+      "next": "690afbfc68c9c824c1a768667b7eafb4b693be1accb04267a6316732d6278eb0"
+    },
+    {
+      "ord": 123,
+      "blockId": "3aae3401ae4ef29ee389484a6157642d",
+      "fp64": "1238c03d61a3e3b2",
+      "normHash": "690afbfc68c9c824c1a768667b7eafb4b693be1accb04267a6316732d6278eb0",
+      "kind": "h2",
+      "chapter": "الانطلاقة-الحادية-والعشرون",
+      "prev": "71d103cae16944f0f1d2efabbee06c422d5ee1a0371db54183c9fefedbcaa999",
+      "next": "01f93557dfaf5a013c485e342072ed0e2f405692ee64677d71218118bb6874f9"
+    },
+    {
+      "ord": 124,
+      "blockId": "68d74c93835cbbf091321b166d181669",
+      "fp64": "e642e61f1f72717c",
+      "normHash": "01f93557dfaf5a013c485e342072ed0e2f405692ee64677d71218118bb6874f9",
+      "kind": "p",
+      "chapter": "الانطلاقة-الحادية-والعشرون",
+      "prev": "690afbfc68c9c824c1a768667b7eafb4b693be1accb04267a6316732d6278eb0",
+      "next": "97548cd58520e295b933f6a3c1a33466119771f47a33512a0f88094e47611bf2"
+    },
+    {
+      "ord": 125,
+      "blockId": "9f061b2f18605c183e8f8693ee36625b",
+      "fp64": "a1dc547e70b8466b",
+      "normHash": "97548cd58520e295b933f6a3c1a33466119771f47a33512a0f88094e47611bf2",
+      "kind": "notes",
+      "chapter": "الانطلاقة-الحادية-والعشرون",
+      "prev": "01f93557dfaf5a013c485e342072ed0e2f405692ee64677d71218118bb6874f9",
+      "next": "673a121a4145b4a7df283fa694affabb031d4a90df930af49330be6756e36f06"
+    },
+    {
+      "ord": 126,
+      "blockId": "3bb988513bc0221e2dfd386695fcba1c",
+      "fp64": "a5de769a72304673",
+      "normHash": "673a121a4145b4a7df283fa694affabb031d4a90df930af49330be6756e36f06",
+      "kind": "page",
+      "chapter": "الانطلاقة-الحادية-والعشرون",
+      "prev": "97548cd58520e295b933f6a3c1a33466119771f47a33512a0f88094e47611bf2",
+      "next": "bc41850a00ed16366ca07034385493d9a957f596ca930b25b797c7e4b56939eb"
+    },
+    {
+      "ord": 127,
+      "blockId": "9109ba9c2e84189e214226f15912a6a7",
+      "fp64": "5f38e06c81bacbb2",
+      "normHash": "bc41850a00ed16366ca07034385493d9a957f596ca930b25b797c7e4b56939eb",
+      "kind": "h2",
+      "chapter": "الانطلاقة-الثانية-والعشرون",
+      "prev": "673a121a4145b4a7df283fa694affabb031d4a90df930af49330be6756e36f06",
+      "next": "d18835f0fc53f67e400785c925b177dde763f38ee736d683cbac71029fc2a30b"
+    },
+    {
+      "ord": 128,
+      "blockId": "9891a5a275a3d14333234c63e531dc5c",
+      "fp64": "7d52f053b1647238",
+      "normHash": "d18835f0fc53f67e400785c925b177dde763f38ee736d683cbac71029fc2a30b",
+      "kind": "p",
+      "chapter": "الانطلاقة-الثانية-والعشرون",
+      "prev": "bc41850a00ed16366ca07034385493d9a957f596ca930b25b797c7e4b56939eb",
+      "next": "017405d5bf479c2bd9dbe6362b18ab9346f0e0d01cf2f85bba3b118577ac7a41"
+    },
+    {
+      "ord": 129,
+      "blockId": "ecbd214c809fd8d465af9dcf9edd91cd",
+      "fp64": "a0d4047670b3ca6b",
+      "normHash": "017405d5bf479c2bd9dbe6362b18ab9346f0e0d01cf2f85bba3b118577ac7a41",
+      "kind": "notes",
+      "chapter": "الانطلاقة-الثانية-والعشرون",
+      "prev": "d18835f0fc53f67e400785c925b177dde763f38ee736d683cbac71029fc2a30b",
+      "next": "9abfdd7526393ba99b60d2b68a037c8895f5647c3f31673421932719c5568666"
+    },
+    {
+      "ord": 130,
+      "blockId": "30dd6d93b09e07121a5aa8cc9ef197f3",
+      "fp64": "a1dc34da5a33c266",
+      "normHash": "9abfdd7526393ba99b60d2b68a037c8895f5647c3f31673421932719c5568666",
+      "kind": "page",
+      "chapter": "الانطلاقة-الثانية-والعشرون",
+      "prev": "017405d5bf479c2bd9dbe6362b18ab9346f0e0d01cf2f85bba3b118577ac7a41",
+      "next": "19b7f4492e279dfdc082e3db6ae1ef3d5ff7a1dda0461a48b580138fa2698521"
+    },
+    {
+      "ord": 131,
+      "blockId": "8d1be48feb4ae6b286318b0d29967a65",
+      "fp64": "76b9c11ec1e2cbb2",
+      "normHash": "19b7f4492e279dfdc082e3db6ae1ef3d5ff7a1dda0461a48b580138fa2698521",
+      "kind": "h2",
+      "chapter": "الانطلاقة-الثالثة-والعشرون",
+      "prev": "9abfdd7526393ba99b60d2b68a037c8895f5647c3f31673421932719c5568666",
+      "next": "53544f2f8333d1bfd9269e14903470d2c39fc73a397659a11aef4f0ce6ce1d4d"
+    },
+    {
+      "ord": 132,
+      "blockId": "7e165709dcd37e9c60780011fd4b24b9",
+      "fp64": "2c32e408956179ed",
+      "normHash": "53544f2f8333d1bfd9269e14903470d2c39fc73a397659a11aef4f0ce6ce1d4d",
+      "kind": "p",
+      "chapter": "الانطلاقة-الثالثة-والعشرون",
+      "prev": "19b7f4492e279dfdc082e3db6ae1ef3d5ff7a1dda0461a48b580138fa2698521",
+      "next": "d2628a7156e4d1113d56f9cdadfc43315be6e51e9683af3a32c1a547e27f9794"
+    },
+    {
+      "ord": 133,
+      "blockId": "8e76445a2d0317659bcbb4120634afdb",
+      "fp64": "a0dcd4f473a1ce6b",
+      "normHash": "d2628a7156e4d1113d56f9cdadfc43315be6e51e9683af3a32c1a547e27f9794",
+      "kind": "notes",
+      "chapter": "الانطلاقة-الثالثة-والعشرون",
+      "prev": "53544f2f8333d1bfd9269e14903470d2c39fc73a397659a11aef4f0ce6ce1d4d",
+      "next": "a8747b6af9f249ee8abd221a27d24f22ec29848379c2ebaad3df5807ebedf601"
+    },
+    {
+      "ord": 134,
+      "blockId": "c2078b33849aea35a000bebe3bc5e427",
+      "fp64": "a1def3da7331e673",
+      "normHash": "a8747b6af9f249ee8abd221a27d24f22ec29848379c2ebaad3df5807ebedf601",
+      "kind": "page",
+      "chapter": "الانطلاقة-الثالثة-والعشرون",
+      "prev": "d2628a7156e4d1113d56f9cdadfc43315be6e51e9683af3a32c1a547e27f9794",
+      "next": "c84b675f471228ca72fccac095e2b16441728c6ee68db731d0611d9fde3c4f44"
+    },
+    {
+      "ord": 135,
+      "blockId": "68d6c00c6e3fba95a61ed6a0614bb60e",
+      "fp64": "44fc6077b271099f",
+      "normHash": "c84b675f471228ca72fccac095e2b16441728c6ee68db731d0611d9fde3c4f44",
+      "kind": "p",
+      "chapter": "الانطلاقة-الثالثة-والعشرون",
+      "prev": "a8747b6af9f249ee8abd221a27d24f22ec29848379c2ebaad3df5807ebedf601",
+      "next": "8fa879fa21e42ff2cceade135392ca010516e4dd2436d8d3d2839b0ef43a60ca"
+    },
+    {
+      "ord": 136,
+      "blockId": "d638aa12981b7558ac182b375c82d83b",
+      "fp64": "e15ce47e71a216ab",
+      "normHash": "8fa879fa21e42ff2cceade135392ca010516e4dd2436d8d3d2839b0ef43a60ca",
+      "kind": "notes",
+      "chapter": "الانطلاقة-الثالثة-والعشرون",
+      "prev": "c84b675f471228ca72fccac095e2b16441728c6ee68db731d0611d9fde3c4f44",
+      "next": "cb99d761e2f130a2c0cff4236e4db613f989c56abc88e0d65e5c867f7b20df98"
+    },
+    {
+      "ord": 137,
+      "blockId": "46292461670e5db355a061b6d1ce0601",
+      "fp64": "e5def79a7bb20623",
+      "normHash": "cb99d761e2f130a2c0cff4236e4db613f989c56abc88e0d65e5c867f7b20df98",
+      "kind": "page",
+      "chapter": "الانطلاقة-الثالثة-والعشرون",
+      "prev": "8fa879fa21e42ff2cceade135392ca010516e4dd2436d8d3d2839b0ef43a60ca",
+      "next": "b04fe15325babe0214d73d62bd5ae3c328689267815575773d28e79ed13db7bd"
+    },
+    {
+      "ord": 138,
+      "blockId": "a9a6bf10a53a4bc922335d9d4af7f1fe",
+      "fp64": "df773bfafffff6ea",
+      "normHash": "b04fe15325babe0214d73d62bd5ae3c328689267815575773d28e79ed13db7bd",
+      "kind": "h2",
+      "chapter": "وقفة-محاسبة",
+      "prev": "cb99d761e2f130a2c0cff4236e4db613f989c56abc88e0d65e5c867f7b20df98",
+      "next": "92420b1d63ffa4eb71b3ea0c2b1482b9456c050cf78a59a65d55dea66239079d"
+    },
+    {
+      "ord": 139,
+      "blockId": "0dfcc6c2a931c1257da4602b9d977974",
+      "fp64": "99562456032e577e",
+      "normHash": "92420b1d63ffa4eb71b3ea0c2b1482b9456c050cf78a59a65d55dea66239079d",
+      "kind": "p",
+      "chapter": "وقفة-محاسبة",
+      "prev": "b04fe15325babe0214d73d62bd5ae3c328689267815575773d28e79ed13db7bd",
+      "next": "ae5451efc5b48c1f58612885e8a8b822f6fd2b58b976d1a5e8d37ba9b26241cc"
+    },
+    {
+      "ord": 140,
+      "blockId": "8f53923b8418fff3ee53a362c2108530",
+      "fp64": "25fdf49e7232e427",
+      "normHash": "ae5451efc5b48c1f58612885e8a8b822f6fd2b58b976d1a5e8d37ba9b26241cc",
+      "kind": "page",
+      "chapter": "وقفة-محاسبة",
+      "prev": "92420b1d63ffa4eb71b3ea0c2b1482b9456c050cf78a59a65d55dea66239079d",
+      "next": "367ca8020e0e276926263309bbee8556ed962908518eb24a9a836342788505c2"
+    },
+    {
+      "ord": 141,
+      "blockId": "ac62a083a6c87275c3d422860fca3ee1",
+      "fp64": "43b9c05ce5bec9a0",
+      "normHash": "367ca8020e0e276926263309bbee8556ed962908518eb24a9a836342788505c2",
+      "kind": "h2",
+      "chapter": "الانطلاقة-الرابعة-والعشرون",
+      "prev": "ae5451efc5b48c1f58612885e8a8b822f6fd2b58b976d1a5e8d37ba9b26241cc",
+      "next": "ba3e4451e43074d112d19d3fabb296bba4738b2311535e2153e5a17d90d90277"
+    },
+    {
+      "ord": 142,
+      "blockId": "e8b7945a287a8635efe0b5e0c2d8cf05",
+      "fp64": "34534274476653fc",
+      "normHash": "ba3e4451e43074d112d19d3fabb296bba4738b2311535e2153e5a17d90d90277",
+      "kind": "p",
+      "chapter": "الانطلاقة-الرابعة-والعشرون",
+      "prev": "367ca8020e0e276926263309bbee8556ed962908518eb24a9a836342788505c2",
+      "next": "5839659c018b28553f40078fa8dd7e037a31b2f01cd5a63391dae02f6dec0ef6"
+    },
+    {
+      "ord": 143,
+      "blockId": "11fffd06114050184f1221f83416caae",
+      "fp64": "e17c94f472b04a2b",
+      "normHash": "5839659c018b28553f40078fa8dd7e037a31b2f01cd5a63391dae02f6dec0ef6",
+      "kind": "notes",
+      "chapter": "الانطلاقة-الرابعة-والعشرون",
+      "prev": "ba3e4451e43074d112d19d3fabb296bba4738b2311535e2153e5a17d90d90277",
+      "next": "690ccb4c54d90b212c0a0b2c8ab9e11e4b54682f3e59f6d49a4da1b3ac868030"
+    },
+    {
+      "ord": 144,
+      "blockId": "c175e60eee6625bcd36916f5ffe03af1",
+      "fp64": "61fdb1fa52b04033",
+      "normHash": "690ccb4c54d90b212c0a0b2c8ab9e11e4b54682f3e59f6d49a4da1b3ac868030",
+      "kind": "page",
+      "chapter": "الانطلاقة-الرابعة-والعشرون",
+      "prev": "5839659c018b28553f40078fa8dd7e037a31b2f01cd5a63391dae02f6dec0ef6",
+      "next": "7e975dc5092f4d4d7f35111c2b4eb98ad7d6490a4f7b96593efbb79e752b1fa2"
+    },
+    {
+      "ord": 145,
+      "blockId": "0f2f4c16b7c2d0958e617e93f04d5709",
+      "fp64": "26b1412e05a6e9b0",
+      "normHash": "7e975dc5092f4d4d7f35111c2b4eb98ad7d6490a4f7b96593efbb79e752b1fa2",
+      "kind": "h2",
+      "chapter": "الانطلاقة-الخامسة-والعشرون",
+      "prev": "690ccb4c54d90b212c0a0b2c8ab9e11e4b54682f3e59f6d49a4da1b3ac868030",
+      "next": "640fdf461ae6a413dc3572598efc161e3ed2ccda3b77a9bc07a3ab46916846e5"
+    },
+    {
+      "ord": 146,
+      "blockId": "b88fd5246a11f6a6df664e53071542ce",
+      "fp64": "fd5ce0505964705c",
+      "normHash": "640fdf461ae6a413dc3572598efc161e3ed2ccda3b77a9bc07a3ab46916846e5",
+      "kind": "p",
+      "chapter": "الانطلاقة-الخامسة-والعشرون",
+      "prev": "7e975dc5092f4d4d7f35111c2b4eb98ad7d6490a4f7b96593efbb79e752b1fa2",
+      "next": "00e35fd3b45d037231a4f1374352e1d229f35f58800ffa3b4812e2232620f83d"
+    },
+    {
+      "ord": 147,
+      "blockId": "0fbfea6f6808b37d7ecc19b86569d943",
+      "fp64": "21df37bf5b33003a",
+      "normHash": "00e35fd3b45d037231a4f1374352e1d229f35f58800ffa3b4812e2232620f83d",
+      "kind": "page",
+      "chapter": "الانطلاقة-الخامسة-والعشرون",
+      "prev": "640fdf461ae6a413dc3572598efc161e3ed2ccda3b77a9bc07a3ab46916846e5",
+      "next": "12a526992a45bdb1cfd04dc9e4b3056d9102546e2738b7cd9140f2fa23662cd7"
+    },
+    {
+      "ord": 148,
+      "blockId": "a112df7abf5cfe828185b21d9ea5b480",
+      "fp64": "95dda05e595c174a",
+      "normHash": "12a526992a45bdb1cfd04dc9e4b3056d9102546e2738b7cd9140f2fa23662cd7",
+      "kind": "p",
+      "chapter": "الانطلاقة-الخامسة-والعشرون",
+      "prev": "00e35fd3b45d037231a4f1374352e1d229f35f58800ffa3b4812e2232620f83d",
+      "next": "fb9c15251706ba0723206a721a4b3f45cd7431a0710edca0b13e6913ecfee361"
+    },
+    {
+      "ord": 149,
+      "blockId": "acadcb23447a6115c4996866c38ec336",
+      "fp64": "65df36df5ab2062e",
+      "normHash": "fb9c15251706ba0723206a721a4b3f45cd7431a0710edca0b13e6913ecfee361",
+      "kind": "page",
+      "chapter": "الانطلاقة-الخامسة-والعشرون",
+      "prev": "12a526992a45bdb1cfd04dc9e4b3056d9102546e2738b7cd9140f2fa23662cd7",
+      "next": "536423d0fa7389eac3161fefb179042dd036582b99b3e94564070f80e54f4e55"
+    },
+    {
+      "ord": 150,
+      "blockId": "db96670a2de9da70b19eac84a90004fc",
+      "fp64": "0ffde02ee5a6ebb0",
+      "normHash": "536423d0fa7389eac3161fefb179042dd036582b99b3e94564070f80e54f4e55",
+      "kind": "h2",
+      "chapter": "الانطلاقة-السادسة-والعشرون",
+      "prev": "fb9c15251706ba0723206a721a4b3f45cd7431a0710edca0b13e6913ecfee361",
+      "next": "f0c9faad39d82f045ffdc92fd9701f614db53cf00c00c8abb6b9af0e3e3f32ce"
+    },
+    {
+      "ord": 151,
+      "blockId": "a0a3e2d398a1f670ab42569e74fe7370",
+      "fp64": "6cc5887217767c0e",
+      "normHash": "f0c9faad39d82f045ffdc92fd9701f614db53cf00c00c8abb6b9af0e3e3f32ce",
+      "kind": "p",
+      "chapter": "الانطلاقة-السادسة-والعشرون",
+      "prev": "536423d0fa7389eac3161fefb179042dd036582b99b3e94564070f80e54f4e55",
+      "next": "337e659353dd783c1379d6f62a16633c918dd04fc069eee5ed077d1f0084925e"
+    },
+    {
+      "ord": 152,
+      "blockId": "18ff3d360ddd0b0755a62469ddf0cc64",
+      "fp64": "a0dcf47e71a2462b",
+      "normHash": "337e659353dd783c1379d6f62a16633c918dd04fc069eee5ed077d1f0084925e",
+      "kind": "notes",
+      "chapter": "الانطلاقة-السادسة-والعشرون",
+      "prev": "f0c9faad39d82f045ffdc92fd9701f614db53cf00c00c8abb6b9af0e3e3f32ce",
+      "next": "39d2b78c5ac5f0496a704588318e0497d49bbd14a3016ed6011302c9b55e9e32"
+    },
+    {
+      "ord": 153,
+      "blockId": "3658144b1972e2f51c027b12ac022fa2",
+      "fp64": "21ddf19e5b32643a",
+      "normHash": "39d2b78c5ac5f0496a704588318e0497d49bbd14a3016ed6011302c9b55e9e32",
+      "kind": "page",
+      "chapter": "الانطلاقة-السادسة-والعشرون",
+      "prev": "337e659353dd783c1379d6f62a16633c918dd04fc069eee5ed077d1f0084925e",
+      "next": "c1e0fdc1653e048d3e9fd787a282602b1e21053683a6b5cebe20d29e7bf82a04"
+    },
+    {
+      "ord": 154,
+      "blockId": "e814fa64f60e06f2d3534ed92081c087",
+      "fp64": "2678403f41bbc9b0",
+      "normHash": "c1e0fdc1653e048d3e9fd787a282602b1e21053683a6b5cebe20d29e7bf82a04",
+      "kind": "h2",
+      "chapter": "الانطلاقة-السابعة-والعشرون",
+      "prev": "39d2b78c5ac5f0496a704588318e0497d49bbd14a3016ed6011302c9b55e9e32",
+      "next": "26bdd32007b750ed3a1aab92dc7b7a6b858c770faff99522a3c8dfc03edbc6ab"
+    },
+    {
+      "ord": 155,
+      "blockId": "07b8657204b6a8cc2c590d8b1123960d",
+      "fp64": "5e0c205055457f58",
+      "normHash": "26bdd32007b750ed3a1aab92dc7b7a6b858c770faff99522a3c8dfc03edbc6ab",
+      "kind": "p",
+      "chapter": "الانطلاقة-السابعة-والعشرون",
+      "prev": "c1e0fdc1653e048d3e9fd787a282602b1e21053683a6b5cebe20d29e7bf82a04",
+      "next": "92386f9abc4f9ba74a7af82fab39f69eb2cda9cc5b60d27984e5486c7488c1bb"
+    },
+    {
+      "ord": 156,
+      "blockId": "838c6df07381e862b4d1b4e29b3ddcf5",
+      "fp64": "a0d4747d71aa1a2b",
+      "normHash": "92386f9abc4f9ba74a7af82fab39f69eb2cda9cc5b60d27984e5486c7488c1bb",
+      "kind": "notes",
+      "chapter": "الانطلاقة-السابعة-والعشرون",
+      "prev": "26bdd32007b750ed3a1aab92dc7b7a6b858c770faff99522a3c8dfc03edbc6ab",
+      "next": "0a1590c8d23d5942b236e73a360ffc200fe23d539c7b87bfa0907a83551ba3cd"
+    },
+    {
+      "ord": 157,
+      "blockId": "a39403b24163b415ba4fab8b85e21574",
+      "fp64": "21df769b73320223",
+      "normHash": "0a1590c8d23d5942b236e73a360ffc200fe23d539c7b87bfa0907a83551ba3cd",
+      "kind": "page",
+      "chapter": "الانطلاقة-السابعة-والعشرون",
+      "prev": "92386f9abc4f9ba74a7af82fab39f69eb2cda9cc5b60d27984e5486c7488c1bb",
+      "next": "b66cf4d055b88c91e7d3990ffa75cad887099547701bf425e7f5420be8dfb2ce"
+    },
+    {
+      "ord": 158,
+      "blockId": "cca2be51fbb75bda551bd7b418c3d0df",
+      "fp64": "2cc4ed8a4f42bd7f",
+      "normHash": "b66cf4d055b88c91e7d3990ffa75cad887099547701bf425e7f5420be8dfb2ce",
+      "kind": "p",
+      "chapter": "الانطلاقة-السابعة-والعشرون",
+      "prev": "0a1590c8d23d5942b236e73a360ffc200fe23d539c7b87bfa0907a83551ba3cd",
+      "next": "d10d7543d35272fcbd0f213a15e92b7d1e373109e596be3946e307f7ab511d24"
+    },
+    {
+      "ord": 159,
+      "blockId": "1ec55e065582e90a2db1e0675e896142",
+      "fp64": "a1fff1fa53b0c663",
+      "normHash": "d10d7543d35272fcbd0f213a15e92b7d1e373109e596be3946e307f7ab511d24",
+      "kind": "page",
+      "chapter": "الانطلاقة-السابعة-والعشرون",
+      "prev": "b66cf4d055b88c91e7d3990ffa75cad887099547701bf425e7f5420be8dfb2ce",
+      "next": "13030003937a17d9bc61ce20d550ea1a71062c38617275abaa2838fec8a5b4ec"
+    },
+    {
+      "ord": 160,
+      "blockId": "2b590c82d4f59f7b75a9140108dd75c9",
+      "fp64": "d6b7c01ea9abe9a0",
+      "normHash": "13030003937a17d9bc61ce20d550ea1a71062c38617275abaa2838fec8a5b4ec",
+      "kind": "h2",
+      "chapter": "الانطلاقة-الثامنة-والعشرون",
+      "prev": "d10d7543d35272fcbd0f213a15e92b7d1e373109e596be3946e307f7ab511d24",
+      "next": "1743bd326e10ff5a13dff336a484d4bd997d61c89b6bd1055046be1e41266c27"
+    },
+    {
+      "ord": 161,
+      "blockId": "4b25bfc50d4aa1d72d81f59ce5747cee",
+      "fp64": "c650741715447a5c",
+      "normHash": "1743bd326e10ff5a13dff336a484d4bd997d61c89b6bd1055046be1e41266c27",
+      "kind": "p",
+      "chapter": "الانطلاقة-الثامنة-والعشرون",
+      "prev": "13030003937a17d9bc61ce20d550ea1a71062c38617275abaa2838fec8a5b4ec",
+      "next": "b1b323ef2b1964e3a0a2a79f52c742cf51259255e7b8c0e9d404b0f150d06fb7"
+    },
+    {
+      "ord": 162,
+      "blockId": "f628ce7b66ada3f6871d1c2c24b0ac3b",
+      "fp64": "a07c747571b85a2b",
+      "normHash": "b1b323ef2b1964e3a0a2a79f52c742cf51259255e7b8c0e9d404b0f150d06fb7",
+      "kind": "notes",
+      "chapter": "الانطلاقة-الثامنة-والعشرون",
+      "prev": "1743bd326e10ff5a13dff336a484d4bd997d61c89b6bd1055046be1e41266c27",
+      "next": "a9db04ce58554c28f7a9005b74a832c58c1977dc89187b7ec67cf16af3e3c3e0"
+    },
+    {
+      "ord": 163,
+      "blockId": "9d007c7323c8b116d391f49426a5df3a",
+      "fp64": "a5fe759f53b0402a",
+      "normHash": "a9db04ce58554c28f7a9005b74a832c58c1977dc89187b7ec67cf16af3e3c3e0",
+      "kind": "page",
+      "chapter": "الانطلاقة-الثامنة-والعشرون",
+      "prev": "b1b323ef2b1964e3a0a2a79f52c742cf51259255e7b8c0e9d404b0f150d06fb7",
+      "next": "113c18321c2fa223710b0b47214087442ad0528d6c403ac74f55669660193ca0"
+    },
+    {
+      "ord": 164,
+      "blockId": "bed4d7ca2716c6644cb554de7fb9e5e6",
+      "fp64": "76c9705f45535c7c",
+      "normHash": "113c18321c2fa223710b0b47214087442ad0528d6c403ac74f55669660193ca0",
+      "kind": "p",
+      "chapter": "الانطلاقة-الثامنة-والعشرون",
+      "prev": "a9db04ce58554c28f7a9005b74a832c58c1977dc89187b7ec67cf16af3e3c3e0",
+      "next": "07338fb106536270a08ea40e845cf017b15cbaf277bcd1bbd6a87a538c2a20d6"
+    },
+    {
+      "ord": 165,
+      "blockId": "3d241dc6f6c3fc383f22744248c5d92c",
+      "fp64": "e15c54f671b0ca2b",
+      "normHash": "07338fb106536270a08ea40e845cf017b15cbaf277bcd1bbd6a87a538c2a20d6",
+      "kind": "notes",
+      "chapter": "الانطلاقة-الثامنة-والعشرون",
+      "prev": "113c18321c2fa223710b0b47214087442ad0528d6c403ac74f55669660193ca0",
+      "next": "4320f22fc1276449358cbbe921427c77fd7dc5e9d28889b10b699cdb580f0748"
+    },
+    {
+      "ord": 166,
+      "blockId": "ccdebc8ba52bdfa01d576fd81c5b458c",
+      "fp64": "61dc76be7b30c22f",
+      "normHash": "4320f22fc1276449358cbbe921427c77fd7dc5e9d28889b10b699cdb580f0748",
+      "kind": "page",
+      "chapter": "الانطلاقة-الثامنة-والعشرون",
+      "prev": "07338fb106536270a08ea40e845cf017b15cbaf277bcd1bbd6a87a538c2a20d6",
+      "next": "d404d74996cdce77dc1931a48640525ce742c2fdc6317c846e38e350ddd79950"
+    },
+    {
+      "ord": 167,
+      "blockId": "79fbeb23e63a64e01b244baae6da0dbf",
+      "fp64": "09f6ba48632973a2",
+      "normHash": "d404d74996cdce77dc1931a48640525ce742c2fdc6317c846e38e350ddd79950",
+      "kind": "p",
+      "chapter": "الانطلاقة-الثامنة-والعشرون",
+      "prev": "4320f22fc1276449358cbbe921427c77fd7dc5e9d28889b10b699cdb580f0748",
+      "next": "2412811e860f01235c4601aa10838683c35470ea97d07be753a0769ea4988e3c"
+    },
+    {
+      "ord": 168,
+      "blockId": "6466a2b692d5979e4895c0f2eaed33dc",
+      "fp64": "e5de31fe7b33c222",
+      "normHash": "2412811e860f01235c4601aa10838683c35470ea97d07be753a0769ea4988e3c",
+      "kind": "page",
+      "chapter": "الانطلاقة-الثامنة-والعشرون",
+      "prev": "d404d74996cdce77dc1931a48640525ce742c2fdc6317c846e38e350ddd79950",
+      "next": "29d18bf64a6651db79b35881a9c2efe4a3054f673afcbd07f040d50ba810c30a"
+    },
+    {
+      "ord": 169,
+      "blockId": "cf4183bbfdbaabb5cfa44775aa633b15",
+      "fp64": "9fb3406c45f2cbb2",
+      "normHash": "29d18bf64a6651db79b35881a9c2efe4a3054f673afcbd07f040d50ba810c30a",
+      "kind": "h2",
+      "chapter": "الانطلاقة-التاسعة-والعشرون",
+      "prev": "2412811e860f01235c4601aa10838683c35470ea97d07be753a0769ea4988e3c",
+      "next": "061952b5ac68e3ac9cd5e5cec34cd1033e1481e9cd26c74c9a45a12a14384f18"
+    },
+    {
+      "ord": 170,
+      "blockId": "f1649b08a172fcd362d769e1117306ff",
+      "fp64": "cfc9605f1d56728c",
+      "normHash": "061952b5ac68e3ac9cd5e5cec34cd1033e1481e9cd26c74c9a45a12a14384f18",
+      "kind": "p",
+      "chapter": "الانطلاقة-التاسعة-والعشرون",
+      "prev": "29d18bf64a6651db79b35881a9c2efe4a3054f673afcbd07f040d50ba810c30a",
+      "next": "22fbbb20d7236c98a3b6b7d01369665b95bd7d561375d766dececa81a081278e"
+    },
+    {
+      "ord": 171,
+      "blockId": "2618f59b2a8ee463d48b10db7f7476a4",
+      "fp64": "e05c547673b28a6b",
+      "normHash": "22fbbb20d7236c98a3b6b7d01369665b95bd7d561375d766dececa81a081278e",
+      "kind": "notes",
+      "chapter": "الانطلاقة-التاسعة-والعشرون",
+      "prev": "061952b5ac68e3ac9cd5e5cec34cd1033e1481e9cd26c74c9a45a12a14384f18",
+      "next": "f167e4a8b04f661009cb009c7eb55eef2614774b0e6463f5d11cc9f9771766d6"
+    },
+    {
+      "ord": 172,
+      "blockId": "81d64a3bb36a6104512c40915ecb7024",
+      "fp64": "61dd75da7bb28076",
+      "normHash": "f167e4a8b04f661009cb009c7eb55eef2614774b0e6463f5d11cc9f9771766d6",
+      "kind": "page",
+      "chapter": "الانطلاقة-التاسعة-والعشرون",
+      "prev": "22fbbb20d7236c98a3b6b7d01369665b95bd7d561375d766dececa81a081278e",
+      "next": "4ba0e63d607808d65980953869576dc67b7ff1739df5dc601952423b96725121"
+    },
+    {
+      "ord": 173,
+      "blockId": "55c1a5d4d460787dcae43ca0658809c0",
+      "fp64": "7e7fee1f7ffef9b7",
+      "normHash": "4ba0e63d607808d65980953869576dc67b7ff1739df5dc601952423b96725121",
+      "kind": "h2",
+      "chapter": "الانطلاقة-الثلاثون",
+      "prev": "f167e4a8b04f661009cb009c7eb55eef2614774b0e6463f5d11cc9f9771766d6",
+      "next": "46b97fe236af12087830a99942b4b3fe3f59d62c9de985fb1af979a4a8fa96dd"
+    },
+    {
+      "ord": 174,
+      "blockId": "d1c19e3c8d90f53c9d02001b280fe2c9",
+      "fp64": "72de6046945d7756",
+      "normHash": "46b97fe236af12087830a99942b4b3fe3f59d62c9de985fb1af979a4a8fa96dd",
+      "kind": "p",
+      "chapter": "الانطلاقة-الثلاثون",
+      "prev": "4ba0e63d607808d65980953869576dc67b7ff1739df5dc601952423b96725121",
+      "next": "b336aa33eb64d232bd08f65f3c1ea2d132099ffb2b3fa48dc134159282d448b2"
+    },
+    {
+      "ord": 175,
+      "blockId": "27cd5c4601ec579e411a833712fe939c",
+      "fp64": "e0f444fe70a016eb",
+      "normHash": "b336aa33eb64d232bd08f65f3c1ea2d132099ffb2b3fa48dc134159282d448b2",
+      "kind": "notes",
+      "chapter": "الانطلاقة-الثلاثون",
+      "prev": "46b97fe236af12087830a99942b4b3fe3f59d62c9de985fb1af979a4a8fa96dd",
+      "next": "e1fd585cf0a8d470075ae9b93f5713b1de7db7e75d3bf97587ad05960bc241f8"
+    },
+    {
+      "ord": 176,
+      "blockId": "83d2bf33abd494f781903623d4453297",
+      "fp64": "61fe73de5a30266a",
+      "normHash": "e1fd585cf0a8d470075ae9b93f5713b1de7db7e75d3bf97587ad05960bc241f8",
+      "kind": "page",
+      "chapter": "الانطلاقة-الثلاثون",
+      "prev": "b336aa33eb64d232bd08f65f3c1ea2d132099ffb2b3fa48dc134159282d448b2",
+      "next": "3f7dd6f7758d86199a4f31fe26bec1021ebab8722e98a0bed289581be4c1d073"
+    },
+    {
+      "ord": 177,
+      "blockId": "6aaa0e43336106deb3eee0b151388f85",
+      "fp64": "12680a1f4ca7c9b8",
+      "normHash": "3f7dd6f7758d86199a4f31fe26bec1021ebab8722e98a0bed289581be4c1d073",
+      "kind": "h2",
+      "chapter": "الانطلاقة-الحادية-والثلاثون",
+      "prev": "e1fd585cf0a8d470075ae9b93f5713b1de7db7e75d3bf97587ad05960bc241f8",
+      "next": "8a0dafe07be981672814d95bf398d9261fbe316c0e7485a92c4e3a95753b95c5"
+    },
+    {
+      "ord": 178,
+      "blockId": "1005347190b7d4e697111aa74bb1aaa6",
+      "fp64": "5c58623617496014",
+      "normHash": "8a0dafe07be981672814d95bf398d9261fbe316c0e7485a92c4e3a95753b95c5",
+      "kind": "p",
+      "chapter": "الانطلاقة-الحادية-والثلاثون",
+      "prev": "3f7dd6f7758d86199a4f31fe26bec1021ebab8722e98a0bed289581be4c1d073",
+      "next": "f5d4bd02be24dbab457e4c220402f4d54425f12a9a11e18c1d65078c57362c0e"
+    },
+    {
+      "ord": 179,
+      "blockId": "24a4d6d2ef4ee2fc46641557ead2b548",
+      "fp64": "a1d4547773ab0a6b",
+      "normHash": "f5d4bd02be24dbab457e4c220402f4d54425f12a9a11e18c1d65078c57362c0e",
+      "kind": "notes",
+      "chapter": "الانطلاقة-الحادية-والثلاثون",
+      "prev": "8a0dafe07be981672814d95bf398d9261fbe316c0e7485a92c4e3a95753b95c5",
+      "next": "6c6f6e6e2d5dbabaf13afadb8beff88cc26a5ba9f9feab0fc6ab466f5339fafe"
+    },
+    {
+      "ord": 180,
+      "blockId": "3939ac86cb2683de1ad7139111594cee",
+      "fp64": "21dd70ff5bb30062",
+      "normHash": "6c6f6e6e2d5dbabaf13afadb8beff88cc26a5ba9f9feab0fc6ab466f5339fafe",
+      "kind": "page",
+      "chapter": "الانطلاقة-الحادية-والثلاثون",
+      "prev": "f5d4bd02be24dbab457e4c220402f4d54425f12a9a11e18c1d65078c57362c0e",
+      "next": "1191ee2d2b60f78c7073ea44c5894f79505b9b4ea7bcacf4fdbb2986bb1016fe"
+    },
+    {
+      "ord": 181,
+      "blockId": "4c5a2809e316aebe5e9f362499993532",
+      "fp64": "46a065c1c1cb160f",
+      "normHash": "1191ee2d2b60f78c7073ea44c5894f79505b9b4ea7bcacf4fdbb2986bb1016fe",
+      "kind": "p",
+      "chapter": "الانطلاقة-الحادية-والثلاثون",
+      "prev": "6c6f6e6e2d5dbabaf13afadb8beff88cc26a5ba9f9feab0fc6ab466f5339fafe",
+      "next": "7664cb250bb6ea8fbc82f18bd586775b5814b5791ae8ba54375ccb13f915fd36"
+    },
+    {
+      "ord": 182,
+      "blockId": "f96516bd0e6054291499049d3e498c6c",
+      "fp64": "a07c74ff72b21e2b",
+      "normHash": "7664cb250bb6ea8fbc82f18bd586775b5814b5791ae8ba54375ccb13f915fd36",
+      "kind": "notes",
+      "chapter": "الانطلاقة-الحادية-والثلاثون",
+      "prev": "1191ee2d2b60f78c7073ea44c5894f79505b9b4ea7bcacf4fdbb2986bb1016fe",
+      "next": "541c49165622abdfccb75d1bdd1787a121db3065a6654335d59d5c4b4d0c4533"
+    },
+    {
+      "ord": 183,
+      "blockId": "727a7afd6ca0ee49fa74e09a7f1c69f6",
+      "fp64": "a1fe719b7ab2063e",
+      "normHash": "541c49165622abdfccb75d1bdd1787a121db3065a6654335d59d5c4b4d0c4533",
+      "kind": "page",
+      "chapter": "الانطلاقة-الحادية-والثلاثون",
+      "prev": "7664cb250bb6ea8fbc82f18bd586775b5814b5791ae8ba54375ccb13f915fd36",
+      "next": "659bc54f0114698d0c128781bffb7558a8dcc2b00b616bb12f5ef92e5c6cb5b3"
+    },
+    {
+      "ord": 184,
+      "blockId": "f3c3ee3aaeaeb8496e9d09d04ec0e60e",
+      "fp64": "5b682ace0ebccdb0",
+      "normHash": "659bc54f0114698d0c128781bffb7558a8dcc2b00b616bb12f5ef92e5c6cb5b3",
+      "kind": "h2",
+      "chapter": "الانطلاقة-الثانية-والثلاثون",
+      "prev": "541c49165622abdfccb75d1bdd1787a121db3065a6654335d59d5c4b4d0c4533",
+      "next": "2c5aab00e02d935b3646859f3082bdd201b91612c1b17c31782f2dccdbb5ebe9"
+    },
+    {
+      "ord": 185,
+      "blockId": "7112174132cdb80347b8e8acaf4b0cf4",
+      "fp64": "9ecee056174e6eee",
+      "normHash": "2c5aab00e02d935b3646859f3082bdd201b91612c1b17c31782f2dccdbb5ebe9",
+      "kind": "p",
+      "chapter": "الانطلاقة-الثانية-والثلاثون",
+      "prev": "659bc54f0114698d0c128781bffb7558a8dcc2b00b616bb12f5ef92e5c6cb5b3",
+      "next": "a36673ad53fafd4f44da18fb6890f969947e482a5ce3c46ccd0761146c1ce4cf"
+    },
+    {
+      "ord": 186,
+      "blockId": "8e31f021277532364a48afb35cfe8515",
+      "fp64": "a5fff69a53b2e23b",
+      "normHash": "a36673ad53fafd4f44da18fb6890f969947e482a5ce3c46ccd0761146c1ce4cf",
+      "kind": "page",
+      "chapter": "الانطلاقة-الثانية-والثلاثون",
+      "prev": "2c5aab00e02d935b3646859f3082bdd201b91612c1b17c31782f2dccdbb5ebe9",
+      "next": "b2672f4c11ddfe28d2214386534e409143450d369cc690cc91e3630d63c9205a"
+    },
+    {
+      "ord": 187,
+      "blockId": "9c099a47d705f8152c8102c2c0ef2b24",
+      "fp64": "6cd66a169d15747c",
+      "normHash": "b2672f4c11ddfe28d2214386534e409143450d369cc690cc91e3630d63c9205a",
+      "kind": "p",
+      "chapter": "الانطلاقة-الثانية-والثلاثون",
+      "prev": "a36673ad53fafd4f44da18fb6890f969947e482a5ce3c46ccd0761146c1ce4cf",
+      "next": "33d2eff7dcb2d3c1e620030529a61effaadcf698d092a7dfcbef9afab3c0dd83"
+    },
+    {
+      "ord": 188,
+      "blockId": "2d4cc991568acd1c6e876fa0384012e8",
+      "fp64": "a1fcf19f7ab22072",
+      "normHash": "33d2eff7dcb2d3c1e620030529a61effaadcf698d092a7dfcbef9afab3c0dd83",
+      "kind": "page",
+      "chapter": "الانطلاقة-الثانية-والثلاثون",
+      "prev": "b2672f4c11ddfe28d2214386534e409143450d369cc690cc91e3630d63c9205a",
+      "next": "9e348fb67432155a62239677c63f5d7fcb1dbaaf3dd0ea43f3d214692603d49c"
+    },
+    {
+      "ord": 189,
+      "blockId": "e3d162e272976a2ec4db8d167ccd375c",
+      "fp64": "7069081e4ce4cdb0",
+      "normHash": "9e348fb67432155a62239677c63f5d7fcb1dbaaf3dd0ea43f3d214692603d49c",
+      "kind": "h2",
+      "chapter": "الانطلاقة-الثالثة-والثلاثون",
+      "prev": "33d2eff7dcb2d3c1e620030529a61effaadcf698d092a7dfcbef9afab3c0dd83",
+      "next": "837b473041c82e731cbd59d0d42b3e19d8b4864a389cff5cd40ea99867f803ce"
+    },
+    {
+      "ord": 190,
+      "blockId": "8333b230f7e2b79633adb1471e53200a",
+      "fp64": "6c12d07607224238",
+      "normHash": "837b473041c82e731cbd59d0d42b3e19d8b4864a389cff5cd40ea99867f803ce",
+      "kind": "p",
+      "chapter": "الانطلاقة-الثالثة-والثلاثون",
+      "prev": "9e348fb67432155a62239677c63f5d7fcb1dbaaf3dd0ea43f3d214692603d49c",
+      "next": "5df0f7828559aa25ba271a72e4fea279111717a609936759e806008983d17a62"
+    },
+    {
+      "ord": 191,
+      "blockId": "f0dcc1f2952a3addb05a489e5ee18904",
+      "fp64": "e07ce4f773a09aab",
+      "normHash": "5df0f7828559aa25ba271a72e4fea279111717a609936759e806008983d17a62",
+      "kind": "notes",
+      "chapter": "الانطلاقة-الثالثة-والثلاثون",
+      "prev": "837b473041c82e731cbd59d0d42b3e19d8b4864a389cff5cd40ea99867f803ce",
+      "next": "92f5cb2af2460b6e5ddad4682e62b1ad0782e679f5cc1cbfa354a37805fcec81"
+    },
+    {
+      "ord": 192,
+      "blockId": "d1fdc67f3937e58337b786d2a06a5ad2",
+      "fp64": "65fcf09f7bb0a023",
+      "normHash": "92f5cb2af2460b6e5ddad4682e62b1ad0782e679f5cc1cbfa354a37805fcec81",
+      "kind": "page",
+      "chapter": "الانطلاقة-الثالثة-والثلاثون",
+      "prev": "5df0f7828559aa25ba271a72e4fea279111717a609936759e806008983d17a62",
+      "next": "205a641e6e150f71b3429de110da22d7ed1c453f18151f55ca917abcd2148794"
+    },
+    {
+      "ord": 193,
+      "blockId": "8fd4d949680cb0479939e65d8ca273f8",
+      "fp64": "a2970ce834f4c319",
+      "normHash": "205a641e6e150f71b3429de110da22d7ed1c453f18151f55ca917abcd2148794",
+      "kind": "h2",
+      "chapter": "الخاتمة",
+      "prev": "92f5cb2af2460b6e5ddad4682e62b1ad0782e679f5cc1cbfa354a37805fcec81",
+      "next": "469352b061e7fff4d0f5ca342c4750dbba3977998efa378208780b52fa58b6c5"
+    },
+    {
+      "ord": 194,
+      "blockId": "2a787a132e1c95a76fd1bb74a2b07591",
+      "fp64": "d48126ca330ee63d",
+      "normHash": "469352b061e7fff4d0f5ca342c4750dbba3977998efa378208780b52fa58b6c5",
+      "kind": "p",
+      "chapter": "الخاتمة",
+      "prev": "205a641e6e150f71b3429de110da22d7ed1c453f18151f55ca917abcd2148794",
+      "next": "c823e440273c4191b18f26771e1095485e8d04148f2fb6155747ad1ca3803984"
+    },
+    {
+      "ord": 195,
+      "blockId": "568ad1ebebda34326d0eeb55bc16a923",
+      "fp64": "a1fe77da73b2467a",
+      "normHash": "c823e440273c4191b18f26771e1095485e8d04148f2fb6155747ad1ca3803984",
+      "kind": "page",
+      "chapter": "الخاتمة",
+      "prev": "469352b061e7fff4d0f5ca342c4750dbba3977998efa378208780b52fa58b6c5"
+    }
+  ]
+}

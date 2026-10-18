@@ -1,0 +1,2935 @@
+{
+  "schema": 1,
+  "generation": 1,
+  "sourceHash": "b68dc4bfaef07162a74a474738f6bef1bf97196942d4dce8a85831f8d7fdd102",
+  "ids": [
+    {
+      "ord": 0,
+      "blockId": "b9bf5bdcecff93a2deffefc3162aad5b",
+      "fp64": "fe0e98297903a185",
+      "normHash": "a360c56bad8f8375937f4d69c38f9959f41150f4688b7bccec46d96fb2f56570",
+      "kind": "p",
+      "chapter": "main",
+      "next": "60ce4f1aacb94a36d01b2de9df81e58c2dac4c3b2140ec2f65357f64ff539446"
+    },
+    {
+      "ord": 1,
+      "blockId": "66abf2ca9139466c570034312ddd2159",
+      "fp64": "a418b116a6ecf074",
+      "normHash": "60ce4f1aacb94a36d01b2de9df81e58c2dac4c3b2140ec2f65357f64ff539446",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "a360c56bad8f8375937f4d69c38f9959f41150f4688b7bccec46d96fb2f56570",
+      "next": "7f6122d329c10db3a5a6614d0ad6b50b53b29f2743c5d0520f1c663b792c6f2c"
+    },
+    {
+      "ord": 2,
+      "blockId": "d4c282db73d4a998abb7c5a871a095a7",
+      "fp64": "68f37effa9e27f7f",
+      "normHash": "7f6122d329c10db3a5a6614d0ad6b50b53b29f2743c5d0520f1c663b792c6f2c",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "60ce4f1aacb94a36d01b2de9df81e58c2dac4c3b2140ec2f65357f64ff539446",
+      "next": "8c6991c22951b034372e6474f1a94468e041aaf957bd36ff452c64eb7875eab7"
+    },
+    {
+      "ord": 3,
+      "blockId": "00426e03de2ba000b52dd958d3c0c5be",
+      "fp64": "194b28fd31ef8f72",
+      "normHash": "8c6991c22951b034372e6474f1a94468e041aaf957bd36ff452c64eb7875eab7",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "7f6122d329c10db3a5a6614d0ad6b50b53b29f2743c5d0520f1c663b792c6f2c",
+      "next": "ae049c284f1724f7fe0df86e87d6d43d5c476049662730b0726ea958eee09a63"
+    },
+    {
+      "ord": 4,
+      "blockId": "8e29a64757fa3db9e112c26aef4b119d",
+      "fp64": "59d73adcef9f6eef",
+      "normHash": "ae049c284f1724f7fe0df86e87d6d43d5c476049662730b0726ea958eee09a63",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "8c6991c22951b034372e6474f1a94468e041aaf957bd36ff452c64eb7875eab7",
+      "next": "8625a574850abd632f4e08c787499d5d809821184a6937f0cdb726f37d629d29"
+    },
+    {
+      "ord": 5,
+      "blockId": "c0c33426db625210f298cc9efd520bdf",
+      "fp64": "e63f60d66757607c",
+      "normHash": "8625a574850abd632f4e08c787499d5d809821184a6937f0cdb726f37d629d29",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "ae049c284f1724f7fe0df86e87d6d43d5c476049662730b0726ea958eee09a63",
+      "next": "624acbe93374892db53b42f509e023b4bba07017def69559276ded0ef7beefb1"
+    },
+    {
+      "ord": 6,
+      "blockId": "b6914ddd72363f1670b867698364fc7e",
+      "fp64": "624e6e9a9cfdaf1a",
+      "normHash": "624acbe93374892db53b42f509e023b4bba07017def69559276ded0ef7beefb1",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "8625a574850abd632f4e08c787499d5d809821184a6937f0cdb726f37d629d29",
+      "next": "b6afa2fb4d8b49de101af5c9350f5c28da9c17a6921ffe06889fe621a09ced3a"
+    },
+    {
+      "ord": 7,
+      "blockId": "c67445ad5488e67c700539e089961e3d",
+      "fp64": "de1ff77de7537c65",
+      "normHash": "b6afa2fb4d8b49de101af5c9350f5c28da9c17a6921ffe06889fe621a09ced3a",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "624acbe93374892db53b42f509e023b4bba07017def69559276ded0ef7beefb1",
+      "next": "05a7545b1a8d4e499fe95f01486f229f5377d004eea8df9efe969fb406140f49"
+    },
+    {
+      "ord": 8,
+      "blockId": "222c5fe1726003dca1a0a3160ea4fd9a",
+      "fp64": "df96ff7ddf377e65",
+      "normHash": "05a7545b1a8d4e499fe95f01486f229f5377d004eea8df9efe969fb406140f49",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "b6afa2fb4d8b49de101af5c9350f5c28da9c17a6921ffe06889fe621a09ced3a",
+      "next": "2ea0121c779d88167f576f80ee740b2727ce4db58ec1205b962cba8c90e6ca01"
+    },
+    {
+      "ord": 9,
+      "blockId": "16972614d035773effff82dbbaa960d0",
+      "fp64": "1f4a2cffbb553651",
+      "normHash": "2ea0121c779d88167f576f80ee740b2727ce4db58ec1205b962cba8c90e6ca01",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "05a7545b1a8d4e499fe95f01486f229f5377d004eea8df9efe969fb406140f49",
+      "next": "63c640f27dc4ef65074b58473fc2678dff1eda58baa451cce89e2ebf6972cf6e"
+    },
+    {
+      "ord": 10,
+      "blockId": "afb3145a3d0482685ae60a7d3efd357c",
+      "fp64": "9f5e7c3a31447ff4",
+      "normHash": "63c640f27dc4ef65074b58473fc2678dff1eda58baa451cce89e2ebf6972cf6e",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "2ea0121c779d88167f576f80ee740b2727ce4db58ec1205b962cba8c90e6ca01",
+      "next": "ca5b848e5ab4b9073abcf5258013ada6d67f289e58726f331841043d393fa7c0"
+    },
+    {
+      "ord": 11,
+      "blockId": "38e34569290346f8d8350c28e287c4b9",
+      "fp64": "141b30d317dc6f1a",
+      "normHash": "ca5b848e5ab4b9073abcf5258013ada6d67f289e58726f331841043d393fa7c0",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "63c640f27dc4ef65074b58473fc2678dff1eda58baa451cce89e2ebf6972cf6e",
+      "next": "509fd5189ccd28011c9c0f1455880b0d7a646a14eead2a90bb1cb51404ba1dda"
+    },
+    {
+      "ord": 12,
+      "blockId": "5ebba43af1b47ff95422987fc39d7aa7",
+      "fp64": "545814da34556d1e",
+      "normHash": "509fd5189ccd28011c9c0f1455880b0d7a646a14eead2a90bb1cb51404ba1dda",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "ca5b848e5ab4b9073abcf5258013ada6d67f289e58726f331841043d393fa7c0",
+      "next": "b7eb0183036a5775fb17a3fb79dbc2d8a2fe3423a4ae9296ddcc213066eb33cb"
+    },
+    {
+      "ord": 13,
+      "blockId": "ff37e0691cefc31c51ae35d3a589bd8f",
+      "fp64": "d67b70fa15b5cf1a",
+      "normHash": "b7eb0183036a5775fb17a3fb79dbc2d8a2fe3423a4ae9296ddcc213066eb33cb",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "509fd5189ccd28011c9c0f1455880b0d7a646a14eead2a90bb1cb51404ba1dda",
+      "next": "c6dd19adf656c982db8b0ac2d2cbab4c3fd148bdf97690ae8e7086e98a5d9111"
+    },
+    {
+      "ord": 14,
+      "blockId": "babeeddc6e84bcdf83cc0adcdbbdcb05",
+      "fp64": "5092ccace1736c5f",
+      "normHash": "c6dd19adf656c982db8b0ac2d2cbab4c3fd148bdf97690ae8e7086e98a5d9111",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "b7eb0183036a5775fb17a3fb79dbc2d8a2fe3423a4ae9296ddcc213066eb33cb",
+      "next": "4fc3bf30b95127091f8fcd3940391e70e4b5a6b25ff9c4bd891279666970b6c2"
+    },
+    {
+      "ord": 15,
+      "blockId": "b7ef3955cbfabc1fd0b5793aa37ad748",
+      "fp64": "14848a68a54a4945",
+      "normHash": "4fc3bf30b95127091f8fcd3940391e70e4b5a6b25ff9c4bd891279666970b6c2",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "c6dd19adf656c982db8b0ac2d2cbab4c3fd148bdf97690ae8e7086e98a5d9111",
+      "next": "21f8046c0d8b73ea224be2fa892d10ee54766a7e7a7e6913f39ac7a1ce578baa"
+    },
+    {
+      "ord": 16,
+      "blockId": "9e7f06edfdfaaa436d35b2c8863a9717",
+      "fp64": "ed8e67da9f856308",
+      "normHash": "21f8046c0d8b73ea224be2fa892d10ee54766a7e7a7e6913f39ac7a1ce578baa",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "4fc3bf30b95127091f8fcd3940391e70e4b5a6b25ff9c4bd891279666970b6c2",
+      "next": "1755600b9ce652f0aec99354fbd00dc1a7e373871d30eaf4eb8d6dffd57a9a4c"
+    },
+    {
+      "ord": 17,
+      "blockId": "892ae0b3dba960dde4aa1d717c38dab7",
+      "fp64": "fe7eb96dfbebf385",
+      "normHash": "1755600b9ce652f0aec99354fbd00dc1a7e373871d30eaf4eb8d6dffd57a9a4c",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "21f8046c0d8b73ea224be2fa892d10ee54766a7e7a7e6913f39ac7a1ce578baa",
+      "next": "a5f53a176f7f21ffc7ad009bba2e672141e8353d7247e55266b7eef0086c4652"
+    },
+    {
+      "ord": 18,
+      "blockId": "345741314dbcf346de247a3cab32e2b2",
+      "fp64": "a51a209676f77074",
+      "normHash": "a5f53a176f7f21ffc7ad009bba2e672141e8353d7247e55266b7eef0086c4652",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "1755600b9ce652f0aec99354fbd00dc1a7e373871d30eaf4eb8d6dffd57a9a4c",
+      "next": "450cb515706612e516a9d81f3c96779c1651caf9d67d42298375876ee208096d"
+    },
+    {
+      "ord": 19,
+      "blockId": "c55f39fb3f79c88693003af8d7862750",
+      "fp64": "e41be0161737f374",
+      "normHash": "450cb515706612e516a9d81f3c96779c1651caf9d67d42298375876ee208096d",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "a5f53a176f7f21ffc7ad009bba2e672141e8353d7247e55266b7eef0086c4652",
+      "next": "d3fc5bd9b2f63785248129ea03bccffcaf940956b7d8a0eead4645fbe9ba5066"
+    },
+    {
+      "ord": 20,
+      "blockId": "4bbcb13acfb6f4b5026b421ddce0fca0",
+      "fp64": "f7fff79efaf160b6",
+      "normHash": "d3fc5bd9b2f63785248129ea03bccffcaf940956b7d8a0eead4645fbe9ba5066",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "450cb515706612e516a9d81f3c96779c1651caf9d67d42298375876ee208096d",
+      "next": "805f80ae1ed71086de9f4e9ba95babf9cd45c8619449390e3d52285995efaae9"
+    },
+    {
+      "ord": 21,
+      "blockId": "dc01efa684b4c99c046275c5cdd152d2",
+      "fp64": "648602bf0647f470",
+      "normHash": "805f80ae1ed71086de9f4e9ba95babf9cd45c8619449390e3d52285995efaae9",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "d3fc5bd9b2f63785248129ea03bccffcaf940956b7d8a0eead4645fbe9ba5066",
+      "next": "a181acef972400c92ed3ae51e67ba828b894042089a48611cc161a547d84306a"
+    },
+    {
+      "ord": 22,
+      "blockId": "e9190c37b88a9a5d441ce0a0598f8ebc",
+      "fp64": "2ffff3fbdf3f7f7e",
+      "normHash": "a181acef972400c92ed3ae51e67ba828b894042089a48611cc161a547d84306a",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "805f80ae1ed71086de9f4e9ba95babf9cd45c8619449390e3d52285995efaae9",
+      "next": "9e30e358ab30c6e16dfa17f4891da2bf006aeb91d58c1f1f76dcd601f820bc8c"
+    },
+    {
+      "ord": 23,
+      "blockId": "7967b0b509382f024b4c69d81a0cfd19",
+      "fp64": "f5db601685ff7034",
+      "normHash": "9e30e358ab30c6e16dfa17f4891da2bf006aeb91d58c1f1f76dcd601f820bc8c",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "a181acef972400c92ed3ae51e67ba828b894042089a48611cc161a547d84306a",
+      "next": "b73aa4cdc874f833049801c90b61644752248ba6277e7139cb021ddcc4ca7d5c"
+    },
+    {
+      "ord": 24,
+      "blockId": "efca5375a2668c86995d493f7a8c0e2d",
+      "fp64": "afdff7fe5fb37f77",
+      "normHash": "b73aa4cdc874f833049801c90b61644752248ba6277e7139cb021ddcc4ca7d5c",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "9e30e358ab30c6e16dfa17f4891da2bf006aeb91d58c1f1f76dcd601f820bc8c",
+      "next": "bb901d92f7631d3b67b7e614deee1ebae7dbece1f87fc0c1c1d32dff6aa3bf3a"
+    },
+    {
+      "ord": 25,
+      "blockId": "f2bdcb5b35647236df0217c4fab393c0",
+      "fp64": "df1675ae306be05c",
+      "normHash": "bb901d92f7631d3b67b7e614deee1ebae7dbece1f87fc0c1c1d32dff6aa3bf3a",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "b73aa4cdc874f833049801c90b61644752248ba6277e7139cb021ddcc4ca7d5c",
+      "next": "f57279e5e08f65b9aa33e6f77c59738fd981675b1d001e1bb7fb0ade4dc7b44e"
+    },
+    {
+      "ord": 26,
+      "blockId": "7cbeaf77dd7f134cfcb29fdcdae7de59",
+      "fp64": "bdfff3fb7b7175f6",
+      "normHash": "f57279e5e08f65b9aa33e6f77c59738fd981675b1d001e1bb7fb0ade4dc7b44e",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "bb901d92f7631d3b67b7e614deee1ebae7dbece1f87fc0c1c1d32dff6aa3bf3a",
+      "next": "33d089d2e09919ba1c33901d4da77fa1b7d05629a7422e27096a478d05457986"
+    },
+    {
+      "ord": 27,
+      "blockId": "54b347359908ccd3f148de22cf3d2edc",
+      "fp64": "65b365fe2655e974",
+      "normHash": "33d089d2e09919ba1c33901d4da77fa1b7d05629a7422e27096a478d05457986",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "f57279e5e08f65b9aa33e6f77c59738fd981675b1d001e1bb7fb0ade4dc7b44e",
+      "next": "02797d9a96c787337dfbfeaa077ba9e21567290fcc161c5db8f4b5dfb0f7b2ae"
+    },
+    {
+      "ord": 28,
+      "blockId": "1712ffe3569c00299a4ea6538496aa9c",
+      "fp64": "4cd28c094f75ec3c",
+      "normHash": "02797d9a96c787337dfbfeaa077ba9e21567290fcc161c5db8f4b5dfb0f7b2ae",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "33d089d2e09919ba1c33901d4da77fa1b7d05629a7422e27096a478d05457986",
+      "next": "0db6ec9b70a1a47d3bcb086f16397b257c2e44ee910a999cad034d42bfc1ac3d"
+    },
+    {
+      "ord": 29,
+      "blockId": "9836b549887b97b70bd9c77def219768",
+      "fp64": "65de058e47f7f02c",
+      "normHash": "0db6ec9b70a1a47d3bcb086f16397b257c2e44ee910a999cad034d42bfc1ac3d",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "02797d9a96c787337dfbfeaa077ba9e21567290fcc161c5db8f4b5dfb0f7b2ae",
+      "next": "c08cd48df02782a05d794b9546fe03555da34307f5cc30481c9cbf891f430ea4"
+    },
+    {
+      "ord": 30,
+      "blockId": "434cdc74ecd64ee45b87aaba9c7ea650",
+      "fp64": "2ddff7df7b79e5b7",
+      "normHash": "c08cd48df02782a05d794b9546fe03555da34307f5cc30481c9cbf891f430ea4",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "0db6ec9b70a1a47d3bcb086f16397b257c2e44ee910a999cad034d42bfc1ac3d",
+      "next": "238bc4963fea2983d7d52279a757921fb53fbd2a527bf91820c200fb7fb81613"
+    },
+    {
+      "ord": 31,
+      "blockId": "006e6fca2a0bce2dc3b60207a4a8dd3d",
+      "fp64": "b552349746f6627c",
+      "normHash": "238bc4963fea2983d7d52279a757921fb53fbd2a527bf91820c200fb7fb81613",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "c08cd48df02782a05d794b9546fe03555da34307f5cc30481c9cbf891f430ea4",
+      "next": "14a7d46a3831d70a27b79b0f7689a769b1d4e353c1cf8dd06045b5838c3c265b"
+    },
+    {
+      "ord": 32,
+      "blockId": "845dd9f5f3ae7068e133fe050ef7cfc5",
+      "fp64": "641f409687f9f81c",
+      "normHash": "14a7d46a3831d70a27b79b0f7689a769b1d4e353c1cf8dd06045b5838c3c265b",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "238bc4963fea2983d7d52279a757921fb53fbd2a527bf91820c200fb7fb81613",
+      "next": "6c6402abe8de684f0fd402c16eb8a7da8ab14eddbbe2bb4f08ff818601f39b64"
+    },
+    {
+      "ord": 33,
+      "blockId": "afb6608270fc732afccc57d77b8f042d",
+      "fp64": "76c6247f4e640edd",
+      "normHash": "6c6402abe8de684f0fd402c16eb8a7da8ab14eddbbe2bb4f08ff818601f39b64",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "14a7d46a3831d70a27b79b0f7689a769b1d4e353c1cf8dd06045b5838c3c265b",
+      "next": "0516e251ec96bafda2747e69ea3f55e59a1298a8f0722685ea476a4f2cfc8bea"
+    },
+    {
+      "ord": 34,
+      "blockId": "71e14bb4ad1320ba2073b7e4631cb369",
+      "fp64": "77ffff9efa7bfc7f",
+      "normHash": "0516e251ec96bafda2747e69ea3f55e59a1298a8f0722685ea476a4f2cfc8bea",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "6c6402abe8de684f0fd402c16eb8a7da8ab14eddbbe2bb4f08ff818601f39b64",
+      "next": "23738294b20275696d0a66d690b3b4df7d243d8902c7857424ae6468b79384dd"
+    },
+    {
+      "ord": 35,
+      "blockId": "e2a7e57d8b7f3f681b69f5c0c168204b",
+      "fp64": "eb1e96da42cbe0b6",
+      "normHash": "23738294b20275696d0a66d690b3b4df7d243d8902c7857424ae6468b79384dd",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "0516e251ec96bafda2747e69ea3f55e59a1298a8f0722685ea476a4f2cfc8bea",
+      "next": "1b812f1da0256532b54fe37b737551313292597646cd399cd89855624c1fd078"
+    },
+    {
+      "ord": 36,
+      "blockId": "e04a03573bc04c4c4ee8c9edd6c2aad9",
+      "fp64": "f7ffffdf5eb7e17f",
+      "normHash": "1b812f1da0256532b54fe37b737551313292597646cd399cd89855624c1fd078",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "23738294b20275696d0a66d690b3b4df7d243d8902c7857424ae6468b79384dd",
+      "next": "98b791bae689fd7d38aad0671630b5892b1c7fb8ae63fb0120b3e0f8df5a2507"
+    },
+    {
+      "ord": 37,
+      "blockId": "25067015e29fbda3fa1978a769558513",
+      "fp64": "413996161154fc58",
+      "normHash": "98b791bae689fd7d38aad0671630b5892b1c7fb8ae63fb0120b3e0f8df5a2507",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "1b812f1da0256532b54fe37b737551313292597646cd399cd89855624c1fd078",
+      "next": "21f9c20f4e83572f264bf3be8f944f198e85a4861ab0d298f36d08d44149d424"
+    },
+    {
+      "ord": 38,
+      "blockId": "d7e369d37e9279421ca8c03c990b9deb",
+      "fp64": "ffdfff9edf716b76",
+      "normHash": "21f9c20f4e83572f264bf3be8f944f198e85a4861ab0d298f36d08d44149d424",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "98b791bae689fd7d38aad0671630b5892b1c7fb8ae63fb0120b3e0f8df5a2507",
+      "next": "8fdbd59a5bc929ccb071f8e260fac49a99133c10257cfe3b86bca0b655ba2033"
+    },
+    {
+      "ord": 39,
+      "blockId": "7a8ac79081da63d486f96df4c6399315",
+      "fp64": "a21b60df0777625c",
+      "normHash": "8fdbd59a5bc929ccb071f8e260fac49a99133c10257cfe3b86bca0b655ba2033",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "21f9c20f4e83572f264bf3be8f944f198e85a4861ab0d298f36d08d44149d424",
+      "next": "f82c98aa2ddf352d4ccc35e6a67074142034a781f59e7e899443ce73012c9799"
+    },
+    {
+      "ord": 40,
+      "blockId": "fc39a13bd1c841cab1f1ed55704770e4",
+      "fp64": "f5176314e6fee114",
+      "normHash": "f82c98aa2ddf352d4ccc35e6a67074142034a781f59e7e899443ce73012c9799",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "8fdbd59a5bc929ccb071f8e260fac49a99133c10257cfe3b86bca0b655ba2033",
+      "next": "d74629aeaa24add6bfb07f56dafc5124cd20f139aff02754c8f197ff05519bb8"
+    },
+    {
+      "ord": 41,
+      "blockId": "8813d35d4f17bd496dc6e2629940ce95",
+      "fp64": "35dff3ff5fff6876",
+      "normHash": "d74629aeaa24add6bfb07f56dafc5124cd20f139aff02754c8f197ff05519bb8",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "f82c98aa2ddf352d4ccc35e6a67074142034a781f59e7e899443ce73012c9799",
+      "next": "d8c03b969c9591731708fa9bcbcd38b0ec02e9b61a84cc7f78f1e463d4ea493b"
+    },
+    {
+      "ord": 42,
+      "blockId": "986e0ef02a2be89bf426493ea0d7bd23",
+      "fp64": "e511d6840adbe474",
+      "normHash": "d8c03b969c9591731708fa9bcbcd38b0ec02e9b61a84cc7f78f1e463d4ea493b",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "d74629aeaa24add6bfb07f56dafc5124cd20f139aff02754c8f197ff05519bb8",
+      "next": "7c601327182f65f7f081953fb6675f6367f6196f8400fc786836416279191f82"
+    },
+    {
+      "ord": 43,
+      "blockId": "cb83a5e4e1de40afaf61f6752317289f",
+      "fp64": "6e4e3c937b67ac6c",
+      "normHash": "7c601327182f65f7f081953fb6675f6367f6196f8400fc786836416279191f82",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "d8c03b969c9591731708fa9bcbcd38b0ec02e9b61a84cc7f78f1e463d4ea493b",
+      "next": "c8f9ceffb179d6c2e60f52b88352310d372ef415202f874881bb1434e1a4b6b1"
+    },
+    {
+      "ord": 44,
+      "blockId": "15ef1ed7dd8bbbfb622248ca9628acdd",
+      "fp64": "b5fffb9b7eb77e3e",
+      "normHash": "c8f9ceffb179d6c2e60f52b88352310d372ef415202f874881bb1434e1a4b6b1",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "7c601327182f65f7f081953fb6675f6367f6196f8400fc786836416279191f82",
+      "next": "583f80c27f14753a250ed49107f7e4177f810920ea40f98bceae6d3753b8b0dc"
+    },
+    {
+      "ord": 45,
+      "blockId": "ea9baa741dde93ce74d79b2e0e9b81d0",
+      "fp64": "ff9e84020572771e",
+      "normHash": "583f80c27f14753a250ed49107f7e4177f810920ea40f98bceae6d3753b8b0dc",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "c8f9ceffb179d6c2e60f52b88352310d372ef415202f874881bb1434e1a4b6b1",
+      "next": "48c391d9b1cc3aeac6bdc503e99e0cadc040170da2020066c484ac9630e46fe4"
+    },
+    {
+      "ord": 46,
+      "blockId": "e58c8033b2df51ac066e6d1057b3fbcf",
+      "fp64": "b7ffff9adbbffa3f",
+      "normHash": "48c391d9b1cc3aeac6bdc503e99e0cadc040170da2020066c484ac9630e46fe4",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "583f80c27f14753a250ed49107f7e4177f810920ea40f98bceae6d3753b8b0dc",
+      "next": "d39e06663b70f38b90f0c0419e225b30991a6ef4ee4041b9218811ffa922902b"
+    },
+    {
+      "ord": 47,
+      "blockId": "981def82613bec30e5dc4952c6d63289",
+      "fp64": "6491c00d04534b7c",
+      "normHash": "d39e06663b70f38b90f0c0419e225b30991a6ef4ee4041b9218811ffa922902b",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "48c391d9b1cc3aeac6bdc503e99e0cadc040170da2020066c484ac9630e46fe4",
+      "next": "5ca494aaf1fa05ad4e65f4505d466b31c3d05cee417eb09261c6459ffd40f0ba"
+    },
+    {
+      "ord": 48,
+      "blockId": "816298f2d8684fcf1484dc638f8da4b6",
+      "fp64": "a7ffff9bfab3fa3e",
+      "normHash": "5ca494aaf1fa05ad4e65f4505d466b31c3d05cee417eb09261c6459ffd40f0ba",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "d39e06663b70f38b90f0c0419e225b30991a6ef4ee4041b9218811ffa922902b",
+      "next": "4429ace5e89443eb5fb100211602a3ec998a3a2bc20a69aafabc3be6c72050ff"
+    },
+    {
+      "ord": 49,
+      "blockId": "cca2283a9c3f11f1927a6a37228ab9c6",
+      "fp64": "a41a209ec6d7f874",
+      "normHash": "4429ace5e89443eb5fb100211602a3ec998a3a2bc20a69aafabc3be6c72050ff",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "5ca494aaf1fa05ad4e65f4505d466b31c3d05cee417eb09261c6459ffd40f0ba",
+      "next": "17c07d5ba7db0d1313aa95abc8866c776bfee38b60970e20717e45a59eb048a0"
+    },
+    {
+      "ord": 50,
+      "blockId": "9bf23d27d29993799a0b9fe3316cbb47",
+      "fp64": "ffe72dcfdffe9fa7",
+      "normHash": "17c07d5ba7db0d1313aa95abc8866c776bfee38b60970e20717e45a59eb048a0",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "4429ace5e89443eb5fb100211602a3ec998a3a2bc20a69aafabc3be6c72050ff",
+      "next": "97655181cbfc5e773c340eedfde417b82b4d0dca75ec72cbe9ed676d0f60d21b"
+    },
+    {
+      "ord": 51,
+      "blockId": "caabeab3462d5b1f31d207c5ebf270d0",
+      "fp64": "ec00757d5735aeff",
+      "normHash": "97655181cbfc5e773c340eedfde417b82b4d0dca75ec72cbe9ed676d0f60d21b",
+      "kind": "verse",
+      "chapter": "main",
+      "prev": "17c07d5ba7db0d1313aa95abc8866c776bfee38b60970e20717e45a59eb048a0",
+      "next": "f54dbdbe8c438dcdfbeba4ac7f0e3428c40d7555a08bfc9cf054e38e2eb4c4ab"
+    },
+    {
+      "ord": 52,
+      "blockId": "7de40057fc89d4b72f5665e2186559c6",
+      "fp64": "a59be69677b5f63f",
+      "normHash": "f54dbdbe8c438dcdfbeba4ac7f0e3428c40d7555a08bfc9cf054e38e2eb4c4ab",
+      "kind": "verse",
+      "chapter": "main",
+      "prev": "97655181cbfc5e773c340eedfde417b82b4d0dca75ec72cbe9ed676d0f60d21b",
+      "next": "439ceb2b9f15c41310dbcfe93e1fc4f45524a7f39e518953b695b0b59148d1f9"
+    },
+    {
+      "ord": 53,
+      "blockId": "74cee5453b1824165886fd9fcd88752f",
+      "fp64": "73a6f7bdeb570bfa",
+      "normHash": "439ceb2b9f15c41310dbcfe93e1fc4f45524a7f39e518953b695b0b59148d1f9",
+      "kind": "verse",
+      "chapter": "main",
+      "prev": "f54dbdbe8c438dcdfbeba4ac7f0e3428c40d7555a08bfc9cf054e38e2eb4c4ab",
+      "next": "d162f624198f28c21ae72c8c050dee20a8e188ff3cc3b74df8ffe02c81c252ef"
+    },
+    {
+      "ord": 54,
+      "blockId": "c9a81d5c822c923d3daf5a2005d76ae1",
+      "fp64": "97b3c9fbef7aafcf",
+      "normHash": "d162f624198f28c21ae72c8c050dee20a8e188ff3cc3b74df8ffe02c81c252ef",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "439ceb2b9f15c41310dbcfe93e1fc4f45524a7f39e518953b695b0b59148d1f9",
+      "next": "b161f1296ffda84a4869aef3c992b3917fb7f25694f4d4956596eb23bfb43def"
+    },
+    {
+      "ord": 55,
+      "blockId": "ad1b808800bfec9355ed8941085c1c2a",
+      "fp64": "9fbee2897765bcc0",
+      "normHash": "b161f1296ffda84a4869aef3c992b3917fb7f25694f4d4956596eb23bfb43def",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "d162f624198f28c21ae72c8c050dee20a8e188ff3cc3b74df8ffe02c81c252ef",
+      "next": "410bf22b56b5826832236f81ea1949c397e332bc8c9c3441ae9946c8895ed0cb"
+    },
+    {
+      "ord": 56,
+      "blockId": "ca56e79bca094bc1af9e56de06164e20",
+      "fp64": "85006a59f87145b2",
+      "normHash": "410bf22b56b5826832236f81ea1949c397e332bc8c9c3441ae9946c8895ed0cb",
+      "kind": "verse",
+      "chapter": "main",
+      "prev": "b161f1296ffda84a4869aef3c992b3917fb7f25694f4d4956596eb23bfb43def",
+      "next": "beec7460ec6b084fedb8c91109c7570c408f89df394b487ff1ab64623ac47bdf"
+    },
+    {
+      "ord": 57,
+      "blockId": "78a44614176745b90289509d6a4c99d7",
+      "fp64": "7dc300589f7c949a",
+      "normHash": "beec7460ec6b084fedb8c91109c7570c408f89df394b487ff1ab64623ac47bdf",
+      "kind": "verse",
+      "chapter": "main",
+      "prev": "410bf22b56b5826832236f81ea1949c397e332bc8c9c3441ae9946c8895ed0cb",
+      "next": "8b08a33aac96cca681889655a0685de23f1126f223e2e42afb773df129b36cfb"
+    },
+    {
+      "ord": 58,
+      "blockId": "5b2c5f4c9aed5818ec3e7b729ebcc4ae",
+      "fp64": "7d80f41050141f17",
+      "normHash": "8b08a33aac96cca681889655a0685de23f1126f223e2e42afb773df129b36cfb",
+      "kind": "verse",
+      "chapter": "main",
+      "prev": "beec7460ec6b084fedb8c91109c7570c408f89df394b487ff1ab64623ac47bdf",
+      "next": "8a2355d777f7d9fb4a28a6c65a1b17b6b11616cb08dac6f9126018fb4ab47469"
+    },
+    {
+      "ord": 59,
+      "blockId": "df7bc43f07d2b47f502994fa0f469d0b",
+      "fp64": "2ddffb9ada7578b6",
+      "normHash": "8a2355d777f7d9fb4a28a6c65a1b17b6b11616cb08dac6f9126018fb4ab47469",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "8b08a33aac96cca681889655a0685de23f1126f223e2e42afb773df129b36cfb",
+      "next": "7abd05eff0431a86c6f10c7d91ef8fe29d43a1142b1c329fcbede2e371caf7eb"
+    },
+    {
+      "ord": 60,
+      "blockId": "f4375341202f4bd89cf93926a8e52998",
+      "fp64": "659840144753f234",
+      "normHash": "7abd05eff0431a86c6f10c7d91ef8fe29d43a1142b1c329fcbede2e371caf7eb",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "8a2355d777f7d9fb4a28a6c65a1b17b6b11616cb08dac6f9126018fb4ab47469",
+      "next": "bb5325308b578ba2339247e295e288295284afb8097cb6d7634cf6d56b541623"
+    },
+    {
+      "ord": 61,
+      "blockId": "f6ccff08c7dd5c3bdaf79b007a7e9191",
+      "fp64": "f5ffff9afa3b7aff",
+      "normHash": "bb5325308b578ba2339247e295e288295284afb8097cb6d7634cf6d56b541623",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "7abd05eff0431a86c6f10c7d91ef8fe29d43a1142b1c329fcbede2e371caf7eb",
+      "next": "863f91599b089d0a4af006d33871805df09a69d7f634545cdf0129ce4efe6d17"
+    },
+    {
+      "ord": 62,
+      "blockId": "a6cdeb7d4995a01d7edbbff31226bc55",
+      "fp64": "fd1c341f47441a38",
+      "normHash": "863f91599b089d0a4af006d33871805df09a69d7f634545cdf0129ce4efe6d17",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "bb5325308b578ba2339247e295e288295284afb8097cb6d7634cf6d56b541623",
+      "next": "4712af90d1ead8b2480cae7b9285896f59419dd858ef63564ef7da006df48e72"
+    },
+    {
+      "ord": 63,
+      "blockId": "312177221181b277adc29f3321152f44",
+      "fp64": "2ffffbfadf73627f",
+      "normHash": "4712af90d1ead8b2480cae7b9285896f59419dd858ef63564ef7da006df48e72",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "863f91599b089d0a4af006d33871805df09a69d7f634545cdf0129ce4efe6d17",
+      "next": "fe1a24408f545213f380f48025a6dec1095a6956b603969573cb4c6f445ebb0f"
+    },
+    {
+      "ord": 64,
+      "blockId": "26d10ac3892b3b9a9fa2ab3f98382ad6",
+      "fp64": "ddc32a14706f3bd2",
+      "normHash": "fe1a24408f545213f380f48025a6dec1095a6956b603969573cb4c6f445ebb0f",
+      "kind": "h2",
+      "chapter": "باب-ذم-النفس",
+      "prev": "4712af90d1ead8b2480cae7b9285896f59419dd858ef63564ef7da006df48e72",
+      "next": "170e68dd5e90c32c62fc03cffc4aaccf1be1edb82689694c4de9261698cf348c"
+    },
+    {
+      "ord": 65,
+      "blockId": "c5b323af53a18772409b4ee444e572f4",
+      "fp64": "7d5ee2963ff04014",
+      "normHash": "170e68dd5e90c32c62fc03cffc4aaccf1be1edb82689694c4de9261698cf348c",
+      "kind": "p",
+      "chapter": "باب-ذم-النفس",
+      "prev": "fe1a24408f545213f380f48025a6dec1095a6956b603969573cb4c6f445ebb0f",
+      "next": "7ed6a5e9f5192b2a4a0d8ffed1ea59243a92c4089807980a85d3d845e07e436c"
+    },
+    {
+      "ord": 66,
+      "blockId": "9fb7a646e8b96eb7ec730db6ae8f4afd",
+      "fp64": "6d5e421496d5f014",
+      "normHash": "7ed6a5e9f5192b2a4a0d8ffed1ea59243a92c4089807980a85d3d845e07e436c",
+      "kind": "p",
+      "chapter": "باب-ذم-النفس",
+      "prev": "170e68dd5e90c32c62fc03cffc4aaccf1be1edb82689694c4de9261698cf348c",
+      "next": "9123584a4db56002ce9881ec42848ac955accdd13acd72576617e35486359d2b"
+    },
+    {
+      "ord": 67,
+      "blockId": "a31ff7cdc313c549a32610dffe523f77",
+      "fp64": "e412411687f77074",
+      "normHash": "9123584a4db56002ce9881ec42848ac955accdd13acd72576617e35486359d2b",
+      "kind": "p",
+      "chapter": "باب-ذم-النفس",
+      "prev": "7ed6a5e9f5192b2a4a0d8ffed1ea59243a92c4089807980a85d3d845e07e436c",
+      "next": "cc287e4b6df6a59e93ef640feadb76911cfea3e3712f5b618db6b02777c73da0"
+    },
+    {
+      "ord": 68,
+      "blockId": "ef6bbd6722d940620158c87726afe958",
+      "fp64": "6dda4616ffe1781c",
+      "normHash": "cc287e4b6df6a59e93ef640feadb76911cfea3e3712f5b618db6b02777c73da0",
+      "kind": "p",
+      "chapter": "باب-ذم-النفس",
+      "prev": "9123584a4db56002ce9881ec42848ac955accdd13acd72576617e35486359d2b",
+      "next": "ea50ef4839a8e806e37d52ab863469001a76095bdbccbfe17908a82b161486bb"
+    },
+    {
+      "ord": 69,
+      "blockId": "d449a8efe56fd10195305fbd6bab667a",
+      "fp64": "fdfff39e7a7162b7",
+      "normHash": "ea50ef4839a8e806e37d52ab863469001a76095bdbccbfe17908a82b161486bb",
+      "kind": "page",
+      "chapter": "باب-ذم-النفس",
+      "prev": "cc287e4b6df6a59e93ef640feadb76911cfea3e3712f5b618db6b02777c73da0",
+      "next": "6246a2aacf8ca1fb39ef372667d1d29427480cdbb8b314d76c075b27f73a5687"
+    },
+    {
+      "ord": 70,
+      "blockId": "92f1415f3f908be4d4eb7cf7c89f9e45",
+      "fp64": "701dc01707f2ca1c",
+      "normHash": "6246a2aacf8ca1fb39ef372667d1d29427480cdbb8b314d76c075b27f73a5687",
+      "kind": "p",
+      "chapter": "باب-ذم-النفس",
+      "prev": "ea50ef4839a8e806e37d52ab863469001a76095bdbccbfe17908a82b161486bb",
+      "next": "2e0b82d49fc8386609df672c19e6fad16926afc6dfd1928c27bb3c1c129b50a6"
+    },
+    {
+      "ord": 71,
+      "blockId": "a8f34592e58dcccde66b30e7e06c768c",
+      "fp64": "fddfffffda3f66b6",
+      "normHash": "2e0b82d49fc8386609df672c19e6fad16926afc6dfd1928c27bb3c1c129b50a6",
+      "kind": "page",
+      "chapter": "باب-ذم-النفس",
+      "prev": "6246a2aacf8ca1fb39ef372667d1d29427480cdbb8b314d76c075b27f73a5687",
+      "next": "366a08fd9e31594075982bc31018464e24dbd3eff80a02207432d42df576e004"
+    },
+    {
+      "ord": 72,
+      "blockId": "0b317cf03b2ea06c099d06147e5af858",
+      "fp64": "649e4396a6ff6034",
+      "normHash": "366a08fd9e31594075982bc31018464e24dbd3eff80a02207432d42df576e004",
+      "kind": "p",
+      "chapter": "باب-ذم-النفس",
+      "prev": "2e0b82d49fc8386609df672c19e6fad16926afc6dfd1928c27bb3c1c129b50a6",
+      "next": "c66c7056bde840b0b2e484536517bde3e31043509fbece2e3615a51c1bf9a42f"
+    },
+    {
+      "ord": 73,
+      "blockId": "b2d830ca9e0085cee717f61ecd599cd0",
+      "fp64": "67fff3fedbfb69f7",
+      "normHash": "c66c7056bde840b0b2e484536517bde3e31043509fbece2e3615a51c1bf9a42f",
+      "kind": "page",
+      "chapter": "باب-ذم-النفس",
+      "prev": "366a08fd9e31594075982bc31018464e24dbd3eff80a02207432d42df576e004",
+      "next": "bac532a23d3bf2a8b11d0e79069df8257667ce56c8584dbb95bc14a2a0bb86ad"
+    },
+    {
+      "ord": 74,
+      "blockId": "f2b8488f2a355c529fe22c057047d5c7",
+      "fp64": "789b61b667f3615c",
+      "normHash": "bac532a23d3bf2a8b11d0e79069df8257667ce56c8584dbb95bc14a2a0bb86ad",
+      "kind": "p",
+      "chapter": "باب-ذم-النفس",
+      "prev": "c66c7056bde840b0b2e484536517bde3e31043509fbece2e3615a51c1bf9a42f",
+      "next": "51e982757f95142f4e72397ca09916a3b36b723e9f41d8a65643d44ddefd9e66"
+    },
+    {
+      "ord": 75,
+      "blockId": "7e25e87d6fcd2bb6aae193ab7f031375",
+      "fp64": "641372046763d054",
+      "normHash": "51e982757f95142f4e72397ca09916a3b36b723e9f41d8a65643d44ddefd9e66",
+      "kind": "p",
+      "chapter": "باب-ذم-النفس",
+      "prev": "bac532a23d3bf2a8b11d0e79069df8257667ce56c8584dbb95bc14a2a0bb86ad",
+      "next": "a8e7dc4b3331cd276e94ec3e09c434249c3491dcee4a185f5488552b0f33c4e1"
+    },
+    {
+      "ord": 76,
+      "blockId": "f72f7c04b16e45d8ee8a171555f157c4",
+      "fp64": "c518e21456f3751c",
+      "normHash": "a8e7dc4b3331cd276e94ec3e09c434249c3491dcee4a185f5488552b0f33c4e1",
+      "kind": "p",
+      "chapter": "باب-ذم-النفس",
+      "prev": "51e982757f95142f4e72397ca09916a3b36b723e9f41d8a65643d44ddefd9e66",
+      "next": "4c905a5d89297b7f646a72d95015cf85b35d5b32ba5d9b94112505ddd3eb0cd3"
+    },
+    {
+      "ord": 77,
+      "blockId": "883a8494db2b100fab92a68600e248f5",
+      "fp64": "3dfffffbfefb6ef7",
+      "normHash": "4c905a5d89297b7f646a72d95015cf85b35d5b32ba5d9b94112505ddd3eb0cd3",
+      "kind": "page",
+      "chapter": "باب-ذم-النفس",
+      "prev": "a8e7dc4b3331cd276e94ec3e09c434249c3491dcee4a185f5488552b0f33c4e1",
+      "next": "e4dc0cc21ccd6e7707b4525037cfa20e6a8a59b98f3f530d8ca69f35b3de5a35"
+    },
+    {
+      "ord": 78,
+      "blockId": "fa16fb36ef1c02650835dff1a19e7237",
+      "fp64": "e612309607444c74",
+      "normHash": "e4dc0cc21ccd6e7707b4525037cfa20e6a8a59b98f3f530d8ca69f35b3de5a35",
+      "kind": "p",
+      "chapter": "باب-ذم-النفس",
+      "prev": "4c905a5d89297b7f646a72d95015cf85b35d5b32ba5d9b94112505ddd3eb0cd3",
+      "next": "06efd214e0237e679c05ad12d6a3048660cb8a1981663393cb8859acb2e6da74"
+    },
+    {
+      "ord": 79,
+      "blockId": "fc7065a8e10d8f3d26923227b570f9a5",
+      "fp64": "ad12629d26f3d324",
+      "normHash": "06efd214e0237e679c05ad12d6a3048660cb8a1981663393cb8859acb2e6da74",
+      "kind": "p",
+      "chapter": "باب-ذم-النفس",
+      "prev": "e4dc0cc21ccd6e7707b4525037cfa20e6a8a59b98f3f530d8ca69f35b3de5a35",
+      "next": "73b61c75abb255995549919efaafab82d0f4cc9c527161d13154454544eca971"
+    },
+    {
+      "ord": 80,
+      "blockId": "951fad88f155a1ad1f08f9614ac37255",
+      "fp64": "b7ffffdb5a79eabe",
+      "normHash": "73b61c75abb255995549919efaafab82d0f4cc9c527161d13154454544eca971",
+      "kind": "page",
+      "chapter": "باب-ذم-النفس",
+      "prev": "06efd214e0237e679c05ad12d6a3048660cb8a1981663393cb8859acb2e6da74",
+      "next": "6e9f610e936327012c491692ed312a73d00f1de3c27c47fcac0f300502e0eb63"
+    },
+    {
+      "ord": 81,
+      "blockId": "9eed2eb5680019ab2e6c9379ce9dd762",
+      "fp64": "7096641587c6541c",
+      "normHash": "6e9f610e936327012c491692ed312a73d00f1de3c27c47fcac0f300502e0eb63",
+      "kind": "p",
+      "chapter": "باب-ذم-النفس",
+      "prev": "73b61c75abb255995549919efaafab82d0f4cc9c527161d13154454544eca971",
+      "next": "00130f713d3d4de22a268d0380ec9ddb46ba7dc9fd1199e9b4b0c21d7195ee79"
+    },
+    {
+      "ord": 82,
+      "blockId": "33d6f35113eeb99b33049382540da6e1",
+      "fp64": "a5dff39b7a71fc36",
+      "normHash": "00130f713d3d4de22a268d0380ec9ddb46ba7dc9fd1199e9b4b0c21d7195ee79",
+      "kind": "page",
+      "chapter": "باب-ذم-النفس",
+      "prev": "6e9f610e936327012c491692ed312a73d00f1de3c27c47fcac0f300502e0eb63",
+      "next": "24be5db9ecb7d97aa5b055102afce6a7f2b48ebe80d0f3be1a06455d2d298249"
+    },
+    {
+      "ord": 83,
+      "blockId": "e1f27346a249526d8779be84dd2648bd",
+      "fp64": "e714f51627f7e254",
+      "normHash": "24be5db9ecb7d97aa5b055102afce6a7f2b48ebe80d0f3be1a06455d2d298249",
+      "kind": "p",
+      "chapter": "باب-ذم-النفس",
+      "prev": "00130f713d3d4de22a268d0380ec9ddb46ba7dc9fd1199e9b4b0c21d7195ee79",
+      "next": "0299a005e92bc74764553557eb8e5ec2332002a9bdd64d38f899b1a4875bf512"
+    },
+    {
+      "ord": 84,
+      "blockId": "992a310cfbb1c18957631ad9825bf8a9",
+      "fp64": "c51fe0948667701c",
+      "normHash": "0299a005e92bc74764553557eb8e5ec2332002a9bdd64d38f899b1a4875bf512",
+      "kind": "p",
+      "chapter": "باب-ذم-النفس",
+      "prev": "24be5db9ecb7d97aa5b055102afce6a7f2b48ebe80d0f3be1a06455d2d298249",
+      "next": "2456f00590b7f0ab4932e5b7603dc749ac90304411122011c7003c6f315d4c70"
+    },
+    {
+      "ord": 85,
+      "blockId": "45f2eeb10a8247316eccbe127e42500c",
+      "fp64": "7dffffbe5ebb647e",
+      "normHash": "2456f00590b7f0ab4932e5b7603dc749ac90304411122011c7003c6f315d4c70",
+      "kind": "page",
+      "chapter": "باب-ذم-النفس",
+      "prev": "0299a005e92bc74764553557eb8e5ec2332002a9bdd64d38f899b1a4875bf512",
+      "next": "b065607ca835c38994276a591cbd032f4a6a0878554ed965c16d5426e139bc85"
+    },
+    {
+      "ord": 86,
+      "blockId": "5338d85ba64c4fbf30f2ef096ade561f",
+      "fp64": "698a7155f753b5b0",
+      "normHash": "b065607ca835c38994276a591cbd032f4a6a0878554ed965c16d5426e139bc85",
+      "kind": "p",
+      "chapter": "باب-ذم-النفس",
+      "prev": "2456f00590b7f0ab4932e5b7603dc749ac90304411122011c7003c6f315d4c70",
+      "next": "4203493f39f6e0e45062d29afcd575b9a9f7906841bb1f9cb9fabc2a1bb08b44"
+    },
+    {
+      "ord": 87,
+      "blockId": "1a38541d0c8d83a17ef234d53c8106b7",
+      "fp64": "e7ffffdf5efb7677",
+      "normHash": "4203493f39f6e0e45062d29afcd575b9a9f7906841bb1f9cb9fabc2a1bb08b44",
+      "kind": "page",
+      "chapter": "باب-ذم-النفس",
+      "prev": "b065607ca835c38994276a591cbd032f4a6a0878554ed965c16d5426e139bc85",
+      "next": "fa412f064c5084b19dcfc97a170f0117f7e71b59bae63d72a96991dd06f02684"
+    },
+    {
+      "ord": 88,
+      "blockId": "6f0e6a0344eeab5bae8073cf0fb35e26",
+      "fp64": "e41ae1b647577414",
+      "normHash": "fa412f064c5084b19dcfc97a170f0117f7e71b59bae63d72a96991dd06f02684",
+      "kind": "p",
+      "chapter": "باب-ذم-النفس",
+      "prev": "4203493f39f6e0e45062d29afcd575b9a9f7906841bb1f9cb9fabc2a1bb08b44",
+      "next": "6e64ca14a4d997ee6b3bb63f2409515d78f48667301e75c33b128c7bd70e3f6a"
+    },
+    {
+      "ord": 89,
+      "blockId": "9d9ee4a6da7f7c602b5634b625ac9f38",
+      "fp64": "651fe112d7f47edc",
+      "normHash": "6e64ca14a4d997ee6b3bb63f2409515d78f48667301e75c33b128c7bd70e3f6a",
+      "kind": "p",
+      "chapter": "باب-ذم-النفس",
+      "prev": "fa412f064c5084b19dcfc97a170f0117f7e71b59bae63d72a96991dd06f02684",
+      "next": "d95102fcb90eed9b5afa0ded4e57d57c7f86fa88a6be71c1e1970d3c51389e12"
+    },
+    {
+      "ord": 90,
+      "blockId": "9bff03293267f45e59747d7c2daaf9be",
+      "fp64": "75dff7bf7b376eb6",
+      "normHash": "d95102fcb90eed9b5afa0ded4e57d57c7f86fa88a6be71c1e1970d3c51389e12",
+      "kind": "page",
+      "chapter": "باب-ذم-النفس",
+      "prev": "6e64ca14a4d997ee6b3bb63f2409515d78f48667301e75c33b128c7bd70e3f6a",
+      "next": "a8437a5cd30c8568c6982647906b78549c696e93624cb6394ac2169203a985b1"
+    },
+    {
+      "ord": 91,
+      "blockId": "788b527aaa079eee7140497d186dfb0d",
+      "fp64": "c74e649b8efffc1c",
+      "normHash": "a8437a5cd30c8568c6982647906b78549c696e93624cb6394ac2169203a985b1",
+      "kind": "p",
+      "chapter": "باب-ذم-النفس",
+      "prev": "d95102fcb90eed9b5afa0ded4e57d57c7f86fa88a6be71c1e1970d3c51389e12",
+      "next": "dea9651e6f076f16ba3f37e6533d6375adbf48a6fe40fe08a0a293a9aca761de"
+    },
+    {
+      "ord": 92,
+      "blockId": "e6a09c9cdefa62c985ef743f2993fc8e",
+      "fp64": "675ce4c787bb7a56",
+      "normHash": "dea9651e6f076f16ba3f37e6533d6375adbf48a6fe40fe08a0a293a9aca761de",
+      "kind": "p",
+      "chapter": "باب-ذم-النفس",
+      "prev": "a8437a5cd30c8568c6982647906b78549c696e93624cb6394ac2169203a985b1",
+      "next": "eeac84b867dac44dea4e0b4562aa4dcc153d1b9b6e7a7ed8df40839e6887f83c"
+    },
+    {
+      "ord": 93,
+      "blockId": "506300bda51ac3055e46a08fd88f1c73",
+      "fp64": "4798645c4a671edc",
+      "normHash": "eeac84b867dac44dea4e0b4562aa4dcc153d1b9b6e7a7ed8df40839e6887f83c",
+      "kind": "p",
+      "chapter": "باب-ذم-النفس",
+      "prev": "dea9651e6f076f16ba3f37e6533d6375adbf48a6fe40fe08a0a293a9aca761de",
+      "next": "85e4f73be80f53b16b0bd320a1584afcf1471cc9942246987052f223e45770be"
+    },
+    {
+      "ord": 94,
+      "blockId": "171637388d6f5c733561a13aeb9aab33",
+      "fp64": "77dff39efb75f9bf",
+      "normHash": "85e4f73be80f53b16b0bd320a1584afcf1471cc9942246987052f223e45770be",
+      "kind": "page",
+      "chapter": "باب-ذم-النفس",
+      "prev": "eeac84b867dac44dea4e0b4562aa4dcc153d1b9b6e7a7ed8df40839e6887f83c",
+      "next": "a5d0f30998f1dc9252da45956af587299f7c0cde94a24ba2819f19deef25615d"
+    },
+    {
+      "ord": 95,
+      "blockId": "3465e22fb98f476d72dae8d320e0d3c6",
+      "fp64": "e13364079711077c",
+      "normHash": "a5d0f30998f1dc9252da45956af587299f7c0cde94a24ba2819f19deef25615d",
+      "kind": "p",
+      "chapter": "باب-ذم-النفس",
+      "prev": "85e4f73be80f53b16b0bd320a1584afcf1471cc9942246987052f223e45770be",
+      "next": "b5a584f89d9613dbd7b20b9359f6dde4c818428a6bbdb2b45eb3a22fa88421e0"
+    },
+    {
+      "ord": 96,
+      "blockId": "85ff77db1819907e79931842a51ff75c",
+      "fp64": "45d2021c97676e1d",
+      "normHash": "b5a584f89d9613dbd7b20b9359f6dde4c818428a6bbdb2b45eb3a22fa88421e0",
+      "kind": "p",
+      "chapter": "باب-ذم-النفس",
+      "prev": "a5d0f30998f1dc9252da45956af587299f7c0cde94a24ba2819f19deef25615d",
+      "next": "f84a000837827d80e72ffee053f3ae7155650fe91084dfbb1d130fd0e764da10"
+    },
+    {
+      "ord": 97,
+      "blockId": "f4a973e697ba7e9a241f8b224a4d6043",
+      "fp64": "651262168743e1d4",
+      "normHash": "f84a000837827d80e72ffee053f3ae7155650fe91084dfbb1d130fd0e764da10",
+      "kind": "p",
+      "chapter": "باب-ذم-النفس",
+      "prev": "b5a584f89d9613dbd7b20b9359f6dde4c818428a6bbdb2b45eb3a22fa88421e0",
+      "next": "2b33983b774c6abacf0396e54bc8332dfd4d5505ee16f34de9c1e8be5d4eb08d"
+    },
+    {
+      "ord": 98,
+      "blockId": "d48209e6e8073fa95247f6dcb90a4e29",
+      "fp64": "f5dffffa7f7df4b6",
+      "normHash": "2b33983b774c6abacf0396e54bc8332dfd4d5505ee16f34de9c1e8be5d4eb08d",
+      "kind": "page",
+      "chapter": "باب-ذم-النفس",
+      "prev": "f84a000837827d80e72ffee053f3ae7155650fe91084dfbb1d130fd0e764da10",
+      "next": "afac08b03e959f4c7f45a6a44898f0395101eecb864469545ed4fccabee6e300"
+    },
+    {
+      "ord": 99,
+      "blockId": "7c4a5bf30a82717b3b1e6f505b62d0d9",
+      "fp64": "549662146670820c",
+      "normHash": "afac08b03e959f4c7f45a6a44898f0395101eecb864469545ed4fccabee6e300",
+      "kind": "p",
+      "chapter": "باب-ذم-النفس",
+      "prev": "2b33983b774c6abacf0396e54bc8332dfd4d5505ee16f34de9c1e8be5d4eb08d",
+      "next": "a481796ce0e6f106a16b431b012c6f2334271961900f1b07bbd918e41805facf"
+    },
+    {
+      "ord": 100,
+      "blockId": "c4b9a063f637eb3149f3fb5556978a79",
+      "fp64": "f515d28416eb165e",
+      "normHash": "a481796ce0e6f106a16b431b012c6f2334271961900f1b07bbd918e41805facf",
+      "kind": "p",
+      "chapter": "باب-ذم-النفس",
+      "prev": "afac08b03e959f4c7f45a6a44898f0395101eecb864469545ed4fccabee6e300",
+      "next": "6c6dc16645f9e85291c1c1c981be42c5ce801eca61d67d0d7041b6bab7e0f52f"
+    },
+    {
+      "ord": 101,
+      "blockId": "cbd9473e738fabdc6b79c30fa8991047",
+      "fp64": "655b40d796f77334",
+      "normHash": "6c6dc16645f9e85291c1c1c981be42c5ce801eca61d67d0d7041b6bab7e0f52f",
+      "kind": "p",
+      "chapter": "باب-ذم-النفس",
+      "prev": "a481796ce0e6f106a16b431b012c6f2334271961900f1b07bbd918e41805facf",
+      "next": "353bbfacb5be00a425fd581f5c607ccb1c98f85c105abf2b7b4056117988f76c"
+    },
+    {
+      "ord": 102,
+      "blockId": "614524a33c48bb1e8ee53aa370e3971e",
+      "fp64": "37dffbbafff3f2bf",
+      "normHash": "353bbfacb5be00a425fd581f5c607ccb1c98f85c105abf2b7b4056117988f76c",
+      "kind": "page",
+      "chapter": "باب-ذم-النفس",
+      "prev": "6c6dc16645f9e85291c1c1c981be42c5ce801eca61d67d0d7041b6bab7e0f52f",
+      "next": "6b9e776164632a5d1c1136f3b2e534024310ae71ea14dba7845cc2588bed930f"
+    },
+    {
+      "ord": 103,
+      "blockId": "09af245492962622b846ba455c9ec3fb",
+      "fp64": "f5c7385458975b12",
+      "normHash": "6b9e776164632a5d1c1136f3b2e534024310ae71ea14dba7845cc2588bed930f",
+      "kind": "h2",
+      "chapter": "باب-معاقبة-النفس",
+      "prev": "353bbfacb5be00a425fd581f5c607ccb1c98f85c105abf2b7b4056117988f76c",
+      "next": "da8a54e94958374320444a69ef5c22faefd54ae9a690a666406a9b69ab8f977b"
+    },
+    {
+      "ord": 104,
+      "blockId": "cbb62fd132b88f78ec58de2dacd1a439",
+      "fp64": "407d64170741fe5c",
+      "normHash": "da8a54e94958374320444a69ef5c22faefd54ae9a690a666406a9b69ab8f977b",
+      "kind": "p",
+      "chapter": "باب-معاقبة-النفس",
+      "prev": "6b9e776164632a5d1c1136f3b2e534024310ae71ea14dba7845cc2588bed930f",
+      "next": "14266ecdf7f536852ab50c713777b505babc1f2abacfdc3010887f01f9d3ffd7"
+    },
+    {
+      "ord": 105,
+      "blockId": "7f0b8b1801c698d3826f3ebf9d921c65",
+      "fp64": "bfffffbb7fbdf57f",
+      "normHash": "14266ecdf7f536852ab50c713777b505babc1f2abacfdc3010887f01f9d3ffd7",
+      "kind": "page",
+      "chapter": "باب-معاقبة-النفس",
+      "prev": "da8a54e94958374320444a69ef5c22faefd54ae9a690a666406a9b69ab8f977b",
+      "next": "568af98f132e1c53994ab6f56d72f5d313fcf4125ea2eb9ed0789355d3bbc98e"
+    },
+    {
+      "ord": 106,
+      "blockId": "ec01b3590cbe38893875bc4eb9c6e80f",
+      "fp64": "e4900056c5d15f74",
+      "normHash": "568af98f132e1c53994ab6f56d72f5d313fcf4125ea2eb9ed0789355d3bbc98e",
+      "kind": "p",
+      "chapter": "باب-معاقبة-النفس",
+      "prev": "14266ecdf7f536852ab50c713777b505babc1f2abacfdc3010887f01f9d3ffd7",
+      "next": "878d80c93ecb6aeacd9612e77eae0b1c1d1a85b5872a3abf487f7391e8111b29"
+    },
+    {
+      "ord": 107,
+      "blockId": "f4fdcb42ff852bece3c41f0ee2087fe7",
+      "fp64": "6fdffb9fdf3be53f",
+      "normHash": "878d80c93ecb6aeacd9612e77eae0b1c1d1a85b5872a3abf487f7391e8111b29",
+      "kind": "page",
+      "chapter": "باب-معاقبة-النفس",
+      "prev": "568af98f132e1c53994ab6f56d72f5d313fcf4125ea2eb9ed0789355d3bbc98e",
+      "next": "10317522bb9696d12c1a9367614e71f9a829ea9ed953b493168d9999f52eb813"
+    },
+    {
+      "ord": 108,
+      "blockId": "35e8750da5af36f6f90d085362a7d74b",
+      "fp64": "75ae40962771f05c",
+      "normHash": "10317522bb9696d12c1a9367614e71f9a829ea9ed953b493168d9999f52eb813",
+      "kind": "p",
+      "chapter": "باب-معاقبة-النفس",
+      "prev": "878d80c93ecb6aeacd9612e77eae0b1c1d1a85b5872a3abf487f7391e8111b29",
+      "next": "68ae8d3b5f854194c3173bcd5dd8725d954c686f45463af7354044ba49c82c07"
+    },
+    {
+      "ord": 109,
+      "blockId": "138ac96a7269f292950ec49f39150494",
+      "fp64": "651a6216e6f1f01c",
+      "normHash": "68ae8d3b5f854194c3173bcd5dd8725d954c686f45463af7354044ba49c82c07",
+      "kind": "p",
+      "chapter": "باب-معاقبة-النفس",
+      "prev": "10317522bb9696d12c1a9367614e71f9a829ea9ed953b493168d9999f52eb813",
+      "next": "e9003ce9c6859658bc932f4ef61d18c007bf20f088f936be962ad86653f5babd"
+    },
+    {
+      "ord": 110,
+      "blockId": "52b099c67229d07d60b6703f3938abbb",
+      "fp64": "d5c094945e37f37c",
+      "normHash": "e9003ce9c6859658bc932f4ef61d18c007bf20f088f936be962ad86653f5babd",
+      "kind": "p",
+      "chapter": "باب-معاقبة-النفس",
+      "prev": "68ae8d3b5f854194c3173bcd5dd8725d954c686f45463af7354044ba49c82c07",
+      "next": "eaec2d46a216e05cd696ca0a88b63a8c9bed208f952ea7fef45b7f7357047945"
+    },
+    {
+      "ord": 111,
+      "blockId": "41ba65626d85fe988331b3efc74d8e8a",
+      "fp64": "e51ae216d6fa701c",
+      "normHash": "eaec2d46a216e05cd696ca0a88b63a8c9bed208f952ea7fef45b7f7357047945",
+      "kind": "p",
+      "chapter": "باب-معاقبة-النفس",
+      "prev": "e9003ce9c6859658bc932f4ef61d18c007bf20f088f936be962ad86653f5babd",
+      "next": "f0dffacc78e0c55ddbce8ab86d6c56b9a6af47f4e4ea47f0803fdfaccfd6c6b8"
+    },
+    {
+      "ord": 112,
+      "blockId": "1ea8e1df542940b885d403131cd50172",
+      "fp64": "eddffb9bde7561b6",
+      "normHash": "f0dffacc78e0c55ddbce8ab86d6c56b9a6af47f4e4ea47f0803fdfaccfd6c6b8",
+      "kind": "page",
+      "chapter": "باب-معاقبة-النفس",
+      "prev": "eaec2d46a216e05cd696ca0a88b63a8c9bed208f952ea7fef45b7f7357047945",
+      "next": "1f0cbce84153f59b60b5d829fc8a110b38aa5f8f89f82916313499fcea3d962c"
+    },
+    {
+      "ord": 113,
+      "blockId": "da553270c7b80e37fda4b7fd307b2387",
+      "fp64": "31c2a6ca6b4b3270",
+      "normHash": "1f0cbce84153f59b60b5d829fc8a110b38aa5f8f89f82916313499fcea3d962c",
+      "kind": "p",
+      "chapter": "باب-معاقبة-النفس",
+      "prev": "f0dffacc78e0c55ddbce8ab86d6c56b9a6af47f4e4ea47f0803fdfaccfd6c6b8",
+      "next": "a51537a339101a276e1c26997a23e4a106948636c90b6185721eb4ccabe6883a"
+    },
+    {
+      "ord": 114,
+      "blockId": "e75477abbc923798f3d8a3458171e91e",
+      "fp64": "40bee4142e6dd174",
+      "normHash": "a51537a339101a276e1c26997a23e4a106948636c90b6185721eb4ccabe6883a",
+      "kind": "p",
+      "chapter": "باب-معاقبة-النفس",
+      "prev": "1f0cbce84153f59b60b5d829fc8a110b38aa5f8f89f82916313499fcea3d962c",
+      "next": "15cec37376e7dbc487d1fdcd285d4920a778a681e6dc237e23e85c7d6c386abb"
+    },
+    {
+      "ord": 115,
+      "blockId": "e2ba0b5537e44e96cd14af08705f5ff9",
+      "fp64": "a6b820a6e765f854",
+      "normHash": "15cec37376e7dbc487d1fdcd285d4920a778a681e6dc237e23e85c7d6c386abb",
+      "kind": "p",
+      "chapter": "باب-معاقبة-النفس",
+      "prev": "a51537a339101a276e1c26997a23e4a106948636c90b6185721eb4ccabe6883a",
+      "next": "81a1969c6147ec4c29ddb6556069a9b6dff022ff639de94baee8b7989eecd66b"
+    },
+    {
+      "ord": 116,
+      "blockId": "6bcf93bd4b9edb530d0933baaaa1399e",
+      "fp64": "7dffff9edf31607e",
+      "normHash": "81a1969c6147ec4c29ddb6556069a9b6dff022ff639de94baee8b7989eecd66b",
+      "kind": "page",
+      "chapter": "باب-معاقبة-النفس",
+      "prev": "15cec37376e7dbc487d1fdcd285d4920a778a681e6dc237e23e85c7d6c386abb",
+      "next": "e23dad75be1c513544506ee510738aeaed7a401acaae1499d24e656594906585"
+    },
+    {
+      "ord": 117,
+      "blockId": "f4717828e1f9abb9d4afac450a10d538",
+      "fp64": "0d15e0d49d12515c",
+      "normHash": "e23dad75be1c513544506ee510738aeaed7a401acaae1499d24e656594906585",
+      "kind": "p",
+      "chapter": "باب-معاقبة-النفس",
+      "prev": "81a1969c6147ec4c29ddb6556069a9b6dff022ff639de94baee8b7989eecd66b",
+      "next": "97e8cbc0cc943ea8644ce05a3cd557d0d18481b2129695d0dfd32bf317bcfddc"
+    },
+    {
+      "ord": 118,
+      "blockId": "ee10766557782a0999b623012176b7a9",
+      "fp64": "f52e761e7473e616",
+      "normHash": "97e8cbc0cc943ea8644ce05a3cd557d0d18481b2129695d0dfd32bf317bcfddc",
+      "kind": "p",
+      "chapter": "باب-معاقبة-النفس",
+      "prev": "e23dad75be1c513544506ee510738aeaed7a401acaae1499d24e656594906585",
+      "next": "ba27e7633a8d00a8b8c19a907bf693bcdc664ca44854f59a38bea55279628d19"
+    },
+    {
+      "ord": 119,
+      "blockId": "8755389f73633a3c3fa3a6f9ad0f0f86",
+      "fp64": "4f41305bcd57ee7e",
+      "normHash": "ba27e7633a8d00a8b8c19a907bf693bcdc664ca44854f59a38bea55279628d19",
+      "kind": "p",
+      "chapter": "باب-معاقبة-النفس",
+      "prev": "97e8cbc0cc943ea8644ce05a3cd557d0d18481b2129695d0dfd32bf317bcfddc",
+      "next": "6dc1985994679a3e0875304981da5619c9f0ef5df53b7f8e26409d1b55580df5"
+    },
+    {
+      "ord": 120,
+      "blockId": "2400481e9abd51d2549235668c9c262b",
+      "fp64": "42ba649406d3e860",
+      "normHash": "6dc1985994679a3e0875304981da5619c9f0ef5df53b7f8e26409d1b55580df5",
+      "kind": "p",
+      "chapter": "باب-معاقبة-النفس",
+      "prev": "ba27e7633a8d00a8b8c19a907bf693bcdc664ca44854f59a38bea55279628d19",
+      "next": "78cca1539467c9205b92ff9cd20bce41a76c7dc943f7d8aac502b90782d75ee9"
+    },
+    {
+      "ord": 121,
+      "blockId": "f1bb0158dccc5fdc69dc38256507414c",
+      "fp64": "addfffdbdef5f6f7",
+      "normHash": "78cca1539467c9205b92ff9cd20bce41a76c7dc943f7d8aac502b90782d75ee9",
+      "kind": "page",
+      "chapter": "باب-معاقبة-النفس",
+      "prev": "6dc1985994679a3e0875304981da5619c9f0ef5df53b7f8e26409d1b55580df5",
+      "next": "ddc79e3e20d453b2c0150702b8769a55612a682dc423020b5f79139266473eda"
+    },
+    {
+      "ord": 122,
+      "blockId": "6a99101c75e2fe261df979a49a6142b8",
+      "fp64": "fecb2c53dd677353",
+      "normHash": "ddc79e3e20d453b2c0150702b8769a55612a682dc423020b5f79139266473eda",
+      "kind": "h2",
+      "chapter": "باب-جهاد-النفس-ومنعها-من-شهواتها",
+      "prev": "78cca1539467c9205b92ff9cd20bce41a76c7dc943f7d8aac502b90782d75ee9",
+      "next": "257436ed6b44c6c1bc48a1ad1bdaf7b9a6e22362c76f8d043cf96151b93164d6"
+    },
+    {
+      "ord": 123,
+      "blockId": "a5e1843b33251877c757527d01d324bd",
+      "fp64": "6432e0161f7961fc",
+      "normHash": "257436ed6b44c6c1bc48a1ad1bdaf7b9a6e22362c76f8d043cf96151b93164d6",
+      "kind": "p",
+      "chapter": "باب-جهاد-النفس-ومنعها-من-شهواتها",
+      "prev": "ddc79e3e20d453b2c0150702b8769a55612a682dc423020b5f79139266473eda",
+      "next": "8205d3739be01b9707676510b82e49989e7b191fe9ec7b4851669372b8dca17a"
+    },
+    {
+      "ord": 124,
+      "blockId": "97498f73a777c1aa64ed62ba02d35561",
+      "fp64": "bddfffdadf377a7f",
+      "normHash": "8205d3739be01b9707676510b82e49989e7b191fe9ec7b4851669372b8dca17a",
+      "kind": "page",
+      "chapter": "باب-جهاد-النفس-ومنعها-من-شهواتها",
+      "prev": "257436ed6b44c6c1bc48a1ad1bdaf7b9a6e22362c76f8d043cf96151b93164d6",
+      "next": "c560227744bf742d0bc1b1e77a90cbc2da88798052ed1f4def35a68b9d5513a3"
+    },
+    {
+      "ord": 125,
+      "blockId": "044f66fe8f533d4e14898e898f48e76b",
+      "fp64": "35bec006aefaf854",
+      "normHash": "c560227744bf742d0bc1b1e77a90cbc2da88798052ed1f4def35a68b9d5513a3",
+      "kind": "p",
+      "chapter": "باب-جهاد-النفس-ومنعها-من-شهواتها",
+      "prev": "8205d3739be01b9707676510b82e49989e7b191fe9ec7b4851669372b8dca17a",
+      "next": "21e37573b22f060299622c302cc57c0e6d6b1b51b67002f1bceebbfb2915f0eb"
+    },
+    {
+      "ord": 126,
+      "blockId": "360d2e95accab0e4d5d26a999888c0fc",
+      "fp64": "edfffbbafb35f8f6",
+      "normHash": "21e37573b22f060299622c302cc57c0e6d6b1b51b67002f1bceebbfb2915f0eb",
+      "kind": "page",
+      "chapter": "باب-جهاد-النفس-ومنعها-من-شهواتها",
+      "prev": "c560227744bf742d0bc1b1e77a90cbc2da88798052ed1f4def35a68b9d5513a3",
+      "next": "54b647681a5c7c50e57f35564ed54a421e888ceb8f515fa8e0005a50e495ddbb"
+    },
+    {
+      "ord": 127,
+      "blockId": "3df1ec2709187d08299bb893e8d69ff3",
+      "fp64": "4c92c2cc5743e469",
+      "normHash": "54b647681a5c7c50e57f35564ed54a421e888ceb8f515fa8e0005a50e495ddbb",
+      "kind": "p",
+      "chapter": "باب-جهاد-النفس-ومنعها-من-شهواتها",
+      "prev": "21e37573b22f060299622c302cc57c0e6d6b1b51b67002f1bceebbfb2915f0eb",
+      "next": "51630986a4a8cb3994bbeea828cff336fc71f4c06a73f3d79c42f5a9bf1f018f"
+    },
+    {
+      "ord": 128,
+      "blockId": "4bf2c792d81fd305996bd0d6d8a3a1c9",
+      "fp64": "e55340d79e777076",
+      "normHash": "51630986a4a8cb3994bbeea828cff336fc71f4c06a73f3d79c42f5a9bf1f018f",
+      "kind": "p",
+      "chapter": "باب-جهاد-النفس-ومنعها-من-شهواتها",
+      "prev": "54b647681a5c7c50e57f35564ed54a421e888ceb8f515fa8e0005a50e495ddbb",
+      "next": "ca8b2ce476216e26b0845f16250c2d185c57fa56012b82f627459da9b2016e04"
+    },
+    {
+      "ord": 129,
+      "blockId": "67e25d16c1fe88f1f1c87554bacd4659",
+      "fp64": "27fff7bf7f7fe337",
+      "normHash": "ca8b2ce476216e26b0845f16250c2d185c57fa56012b82f627459da9b2016e04",
+      "kind": "page",
+      "chapter": "باب-جهاد-النفس-ومنعها-من-شهواتها",
+      "prev": "51630986a4a8cb3994bbeea828cff336fc71f4c06a73f3d79c42f5a9bf1f018f",
+      "next": "6edb5895c07a2a3777dc0099acb0253c8046d9000e1f32508812bc8ca170e398"
+    },
+    {
+      "ord": 130,
+      "blockId": "01b9762afbbb4827e133910d52970c26",
+      "fp64": "e71e55ae46f7c714",
+      "normHash": "6edb5895c07a2a3777dc0099acb0253c8046d9000e1f32508812bc8ca170e398",
+      "kind": "p",
+      "chapter": "باب-جهاد-النفس-ومنعها-من-شهواتها",
+      "prev": "ca8b2ce476216e26b0845f16250c2d185c57fa56012b82f627459da9b2016e04",
+      "next": "56b077c1cea89c450ea73c7f0ed3b269ac33c028aa98c53b3d3d36c9638011ca"
+    },
+    {
+      "ord": 131,
+      "blockId": "8033bdab4b4f72476dd71bab09f84085",
+      "fp64": "edcb75966772f016",
+      "normHash": "56b077c1cea89c450ea73c7f0ed3b269ac33c028aa98c53b3d3d36c9638011ca",
+      "kind": "p",
+      "chapter": "باب-جهاد-النفس-ومنعها-من-شهواتها",
+      "prev": "6edb5895c07a2a3777dc0099acb0253c8046d9000e1f32508812bc8ca170e398",
+      "next": "f96e75b80d858c2fb1be06f22e845064cb86de208bae044ff12d00adc19f4b26"
+    },
+    {
+      "ord": 132,
+      "blockId": "3c64beb67e73f03e92e9c2b09bbf13be",
+      "fp64": "5412c61c9676c894",
+      "normHash": "f96e75b80d858c2fb1be06f22e845064cb86de208bae044ff12d00adc19f4b26",
+      "kind": "p",
+      "chapter": "باب-جهاد-النفس-ومنعها-من-شهواتها",
+      "prev": "56b077c1cea89c450ea73c7f0ed3b269ac33c028aa98c53b3d3d36c9638011ca",
+      "next": "4ac11a8eb7302306acede9e9941753f2aeeb336b4aee50fd1bddd047e46436a9"
+    },
+    {
+      "ord": 133,
+      "blockId": "1083ead5a18009acae92b4e631149f02",
+      "fp64": "2dfffbbafe736f77",
+      "normHash": "4ac11a8eb7302306acede9e9941753f2aeeb336b4aee50fd1bddd047e46436a9",
+      "kind": "page",
+      "chapter": "باب-جهاد-النفس-ومنعها-من-شهواتها",
+      "prev": "f96e75b80d858c2fb1be06f22e845064cb86de208bae044ff12d00adc19f4b26",
+      "next": "8d93f251679a24ce7bb32b8ee8109e8779259b8b477e76f9a81bb9db8406bdec"
+    },
+    {
+      "ord": 134,
+      "blockId": "c87f68bd16d7a4c80779ee63f43ffa78",
+      "fp64": "c5da47068473e814",
+      "normHash": "8d93f251679a24ce7bb32b8ee8109e8779259b8b477e76f9a81bb9db8406bdec",
+      "kind": "p",
+      "chapter": "باب-جهاد-النفس-ومنعها-من-شهواتها",
+      "prev": "4ac11a8eb7302306acede9e9941753f2aeeb336b4aee50fd1bddd047e46436a9",
+      "next": "b73a7b025f49cedead6e54d8c45b50ffcec066a67d2419890b8b324ec3ea64d4"
+    },
+    {
+      "ord": 135,
+      "blockId": "1b6e4cc03c765c5094c5dd4bea246734",
+      "fp64": "d45e2001b6c1f434",
+      "normHash": "b73a7b025f49cedead6e54d8c45b50ffcec066a67d2419890b8b324ec3ea64d4",
+      "kind": "p",
+      "chapter": "باب-جهاد-النفس-ومنعها-من-شهواتها",
+      "prev": "8d93f251679a24ce7bb32b8ee8109e8779259b8b477e76f9a81bb9db8406bdec",
+      "next": "5a6410aba32ef6166a8bb9f694b21af5132982b2887dd3d26c8deb2340fda66a"
+    },
+    {
+      "ord": 136,
+      "blockId": "45502e8530aeed26feae57006225e610",
+      "fp64": "c7da469496517154",
+      "normHash": "5a6410aba32ef6166a8bb9f694b21af5132982b2887dd3d26c8deb2340fda66a",
+      "kind": "p",
+      "chapter": "باب-جهاد-النفس-ومنعها-من-شهواتها",
+      "prev": "b73a7b025f49cedead6e54d8c45b50ffcec066a67d2419890b8b324ec3ea64d4",
+      "next": "1a59f4a5db10fcf051300812ec2ad50cf295c5fbd0d09a51e5b9355fcc9d70a8"
+    },
+    {
+      "ord": 137,
+      "blockId": "f80743deface10ae8046efa59adb7542",
+      "fp64": "6dde231627c7f034",
+      "normHash": "1a59f4a5db10fcf051300812ec2ad50cf295c5fbd0d09a51e5b9355fcc9d70a8",
+      "kind": "p",
+      "chapter": "باب-جهاد-النفس-ومنعها-من-شهواتها",
+      "prev": "5a6410aba32ef6166a8bb9f694b21af5132982b2887dd3d26c8deb2340fda66a",
+      "next": "5b093452883d05130c7b6f0fe91f6d23b24a5726fccd7c41a467ebcf2a12dfd0"
+    },
+    {
+      "ord": 138,
+      "blockId": "ccd5260cced1c26465658eaf549f3b21",
+      "fp64": "7dfff3bffbfdf67e",
+      "normHash": "5b093452883d05130c7b6f0fe91f6d23b24a5726fccd7c41a467ebcf2a12dfd0",
+      "kind": "page",
+      "chapter": "باب-جهاد-النفس-ومنعها-من-شهواتها",
+      "prev": "1a59f4a5db10fcf051300812ec2ad50cf295c5fbd0d09a51e5b9355fcc9d70a8",
+      "next": "fbf283d17f52f523e827c4ca81d0e2091abed8b27c66aeb718b83b022e8d3214"
+    },
+    {
+      "ord": 139,
+      "blockId": "2d92451c3c1b20f3dc382a721ea26cb9",
+      "fp64": "945f40848ff0f376",
+      "normHash": "fbf283d17f52f523e827c4ca81d0e2091abed8b27c66aeb718b83b022e8d3214",
+      "kind": "p",
+      "chapter": "باب-جهاد-النفس-ومنعها-من-شهواتها",
+      "prev": "5b093452883d05130c7b6f0fe91f6d23b24a5726fccd7c41a467ebcf2a12dfd0",
+      "next": "be49cfb4cdf2361c330fc3b200d498f1f98e8c432755064869d9e6d4601f9f0a"
+    },
+    {
+      "ord": 140,
+      "blockId": "7f0df2b2f0425c8616455f529b333750",
+      "fp64": "340b601643d3fa06",
+      "normHash": "be49cfb4cdf2361c330fc3b200d498f1f98e8c432755064869d9e6d4601f9f0a",
+      "kind": "p",
+      "chapter": "باب-جهاد-النفس-ومنعها-من-شهواتها",
+      "prev": "fbf283d17f52f523e827c4ca81d0e2091abed8b27c66aeb718b83b022e8d3214",
+      "next": "51a2328f121e7e414fefdd273c5887d4a0acf1e00859edd90c58cc6b21f15ac9"
+    },
+    {
+      "ord": 141,
+      "blockId": "bba89abaebca3920002b3c6a60c0df87",
+      "fp64": "7417e594b4e67458",
+      "normHash": "51a2328f121e7e414fefdd273c5887d4a0acf1e00859edd90c58cc6b21f15ac9",
+      "kind": "p",
+      "chapter": "باب-جهاد-النفس-ومنعها-من-شهواتها",
+      "prev": "be49cfb4cdf2361c330fc3b200d498f1f98e8c432755064869d9e6d4601f9f0a",
+      "next": "d826290db288d127e214bd85445f02351cd015bdcb8f67535b14317d32aeaca7"
+    },
+    {
+      "ord": 142,
+      "blockId": "1d873313d313e3f8ff385390b1d88183",
+      "fp64": "e13a3296255b3414",
+      "normHash": "d826290db288d127e214bd85445f02351cd015bdcb8f67535b14317d32aeaca7",
+      "kind": "p",
+      "chapter": "باب-جهاد-النفس-ومنعها-من-شهواتها",
+      "prev": "51a2328f121e7e414fefdd273c5887d4a0acf1e00859edd90c58cc6b21f15ac9",
+      "next": "a10562080e44f138b8ec3fb71f022662be4e40cc34073285e27dac97d087dc67"
+    },
+    {
+      "ord": 143,
+      "blockId": "ba280063727833579842a4f689c69cdf",
+      "fp64": "57df40fb77e00a5c",
+      "normHash": "a10562080e44f138b8ec3fb71f022662be4e40cc34073285e27dac97d087dc67",
+      "kind": "p",
+      "chapter": "باب-جهاد-النفس-ومنعها-من-شهواتها",
+      "prev": "d826290db288d127e214bd85445f02351cd015bdcb8f67535b14317d32aeaca7",
+      "next": "2c573203fa81f0bae5b17b3e49e64c77b12a2220d77ee575116ce6c1ed37ff3f"
+    },
+    {
+      "ord": 144,
+      "blockId": "85ad33daff5a0fbd08359591688168ef",
+      "fp64": "fff3affcc17c9fff",
+      "normHash": "2c573203fa81f0bae5b17b3e49e64c77b12a2220d77ee575116ce6c1ed37ff3f",
+      "kind": "p",
+      "chapter": "باب-جهاد-النفس-ومنعها-من-شهواتها",
+      "prev": "a10562080e44f138b8ec3fb71f022662be4e40cc34073285e27dac97d087dc67",
+      "next": "0eaf58cab8e3bd4d7ba82648b631aa6d2b10bf0401dd1b916bf29e1089bbb717"
+    },
+    {
+      "ord": 145,
+      "blockId": "4cc6b8210c636e4678c21f57289bc4b3",
+      "fp64": "6ff835da717bd617",
+      "normHash": "0eaf58cab8e3bd4d7ba82648b631aa6d2b10bf0401dd1b916bf29e1089bbb717",
+      "kind": "verse",
+      "chapter": "باب-جهاد-النفس-ومنعها-من-شهواتها",
+      "prev": "2c573203fa81f0bae5b17b3e49e64c77b12a2220d77ee575116ce6c1ed37ff3f",
+      "next": "bd0f51f832ea72f663ebb4c3abe02dff6cfbd8a7c7a4991357e33de536966b24"
+    },
+    {
+      "ord": 146,
+      "blockId": "5fc372d699df941dfd142a9bbc1b8ef0",
+      "fp64": "9ce255f51f336e24",
+      "normHash": "bd0f51f832ea72f663ebb4c3abe02dff6cfbd8a7c7a4991357e33de536966b24",
+      "kind": "verse",
+      "chapter": "باب-جهاد-النفس-ومنعها-من-شهواتها",
+      "prev": "0eaf58cab8e3bd4d7ba82648b631aa6d2b10bf0401dd1b916bf29e1089bbb717",
+      "next": "5174fe2c7f52ebffb9cb9f08456d772c263a53acc350968fe95e9165292c10d1"
+    },
+    {
+      "ord": 147,
+      "blockId": "6ae5927df4a22c31242ed13840017421",
+      "fp64": "fdaa09fd3e3aa210",
+      "normHash": "5174fe2c7f52ebffb9cb9f08456d772c263a53acc350968fe95e9165292c10d1",
+      "kind": "verse",
+      "chapter": "باب-جهاد-النفس-ومنعها-من-شهواتها",
+      "prev": "bd0f51f832ea72f663ebb4c3abe02dff6cfbd8a7c7a4991357e33de536966b24",
+      "next": "58d3d3798d1b1278e906aa947a29441815616656fbaf579b66a60b2a7d5ac86a"
+    },
+    {
+      "ord": 148,
+      "blockId": "6a8aeba3aa8a60ca4e7a30b986e6afc8",
+      "fp64": "75dffbbe7ff97336",
+      "normHash": "58d3d3798d1b1278e906aa947a29441815616656fbaf579b66a60b2a7d5ac86a",
+      "kind": "page",
+      "chapter": "باب-جهاد-النفس-ومنعها-من-شهواتها",
+      "prev": "5174fe2c7f52ebffb9cb9f08456d772c263a53acc350968fe95e9165292c10d1",
+      "next": "0efd6a4c7707e0530dfdd9ff59c06862a13c005c8ab1b2d2b56dcbd9e14cd13a"
+    },
+    {
+      "ord": 149,
+      "blockId": "616a32a01d220854eb0d2f34c4a7e599",
+      "fp64": "987b4341f67656c2",
+      "normHash": "0efd6a4c7707e0530dfdd9ff59c06862a13c005c8ab1b2d2b56dcbd9e14cd13a",
+      "kind": "p",
+      "chapter": "باب-جهاد-النفس-ومنعها-من-شهواتها",
+      "prev": "58d3d3798d1b1278e906aa947a29441815616656fbaf579b66a60b2a7d5ac86a",
+      "next": "c6d3569d074d1c60de8248f2827fb3d1d87e9943ac9cda8b5cec224593bd9b65"
+    },
+    {
+      "ord": 150,
+      "blockId": "4d515e9b8a66a83917609d57c795efa1",
+      "fp64": "e7dfffdf7bb76d7e",
+      "normHash": "c6d3569d074d1c60de8248f2827fb3d1d87e9943ac9cda8b5cec224593bd9b65",
+      "kind": "page",
+      "chapter": "باب-جهاد-النفس-ومنعها-من-شهواتها",
+      "prev": "0efd6a4c7707e0530dfdd9ff59c06862a13c005c8ab1b2d2b56dcbd9e14cd13a",
+      "next": "6ce6f14349387e6e4b31f080b5c0d94b80ff77ad6fd793803638fe5d8f20d64f"
+    },
+    {
+      "ord": 151,
+      "blockId": "29b736bf550e33ed2c3521558f466558",
+      "fp64": "659602d685556034",
+      "normHash": "6ce6f14349387e6e4b31f080b5c0d94b80ff77ad6fd793803638fe5d8f20d64f",
+      "kind": "p",
+      "chapter": "باب-جهاد-النفس-ومنعها-من-شهواتها",
+      "prev": "c6d3569d074d1c60de8248f2827fb3d1d87e9943ac9cda8b5cec224593bd9b65",
+      "next": "d57d9f4c18eb83d28cf1f2a548ade155e7e12e327c8936dea24a55e328e4a63b"
+    },
+    {
+      "ord": 152,
+      "blockId": "951c6524d3f7926b8ed86d38705f65d4",
+      "fp64": "1f94109f56e5741c",
+      "normHash": "d57d9f4c18eb83d28cf1f2a548ade155e7e12e327c8936dea24a55e328e4a63b",
+      "kind": "p",
+      "chapter": "باب-جهاد-النفس-ومنعها-من-شهواتها",
+      "prev": "6ce6f14349387e6e4b31f080b5c0d94b80ff77ad6fd793803638fe5d8f20d64f",
+      "next": "f016d64d8539dcf50c6da0eb71ceeac01da3b44031b6690654531ded9c757dce"
+    },
+    {
+      "ord": 153,
+      "blockId": "680eb0b59003904989f4cb319c2cf2a5",
+      "fp64": "f7dff3fefbf36637",
+      "normHash": "f016d64d8539dcf50c6da0eb71ceeac01da3b44031b6690654531ded9c757dce",
+      "kind": "page",
+      "chapter": "باب-جهاد-النفس-ومنعها-من-شهواتها",
+      "prev": "d57d9f4c18eb83d28cf1f2a548ade155e7e12e327c8936dea24a55e328e4a63b",
+      "next": "d9aa156cf808694980c738d10914d791b317a5512b0b4caf03d9ee5f7b60b44e"
+    },
+    {
+      "ord": 154,
+      "blockId": "625152ae722bd5bc86d9313c6584224b",
+      "fp64": "c55a2395a77d7c34",
+      "normHash": "d9aa156cf808694980c738d10914d791b317a5512b0b4caf03d9ee5f7b60b44e",
+      "kind": "p",
+      "chapter": "باب-جهاد-النفس-ومنعها-من-شهواتها",
+      "prev": "f016d64d8539dcf50c6da0eb71ceeac01da3b44031b6690654531ded9c757dce",
+      "next": "9b32940cd73da80a322b205e549b18bc5dbc0fb0033031e8ad0c76b61e211f88"
+    },
+    {
+      "ord": 155,
+      "blockId": "62ba2a3b9f49619b7a7dc86c97c2e501",
+      "fp64": "271a721dd7d3c054",
+      "normHash": "9b32940cd73da80a322b205e549b18bc5dbc0fb0033031e8ad0c76b61e211f88",
+      "kind": "p",
+      "chapter": "باب-جهاد-النفس-ومنعها-من-شهواتها",
+      "prev": "d9aa156cf808694980c738d10914d791b317a5512b0b4caf03d9ee5f7b60b44e",
+      "next": "a7549728ce6aa193a9e4314c6a7e39a38c9e0435543c3ed987ad928e90cf166f"
+    },
+    {
+      "ord": 156,
+      "blockId": "39e6e01154bffc7689da33d3747d0eea",
+      "fp64": "5d5680947276e23c",
+      "normHash": "a7549728ce6aa193a9e4314c6a7e39a38c9e0435543c3ed987ad928e90cf166f",
+      "kind": "p",
+      "chapter": "باب-جهاد-النفس-ومنعها-من-شهواتها",
+      "prev": "9b32940cd73da80a322b205e549b18bc5dbc0fb0033031e8ad0c76b61e211f88",
+      "next": "a9703616e4a793ec1194814e9bf9fa3e91ef26c3bdab482f1bc149dc13062ba1"
+    },
+    {
+      "ord": 157,
+      "blockId": "17e7ca25b8558a7c48d4fc91bcb80b52",
+      "fp64": "cd1c420b51f32096",
+      "normHash": "a9703616e4a793ec1194814e9bf9fa3e91ef26c3bdab482f1bc149dc13062ba1",
+      "kind": "p",
+      "chapter": "باب-جهاد-النفس-ومنعها-من-شهواتها",
+      "prev": "a7549728ce6aa193a9e4314c6a7e39a38c9e0435543c3ed987ad928e90cf166f",
+      "next": "eb2227656d65aeb49356b0d4767ac09ebe111e6aff54e80c78eea2fad2e780f9"
+    },
+    {
+      "ord": 158,
+      "blockId": "3750aa30f00bb538318644ffffa06766",
+      "fp64": "679b68f62653ea74",
+      "normHash": "eb2227656d65aeb49356b0d4767ac09ebe111e6aff54e80c78eea2fad2e780f9",
+      "kind": "p",
+      "chapter": "باب-جهاد-النفس-ومنعها-من-شهواتها",
+      "prev": "a9703616e4a793ec1194814e9bf9fa3e91ef26c3bdab482f1bc149dc13062ba1",
+      "next": "ba2f299675940d0eceabcd220342c3aa300963929a5b15b17a11095e4b632b9a"
+    },
+    {
+      "ord": 159,
+      "blockId": "51e7c00fdd9a626f1ef33c7530c9bfcc",
+      "fp64": "3fdffbdf7ef377b7",
+      "normHash": "ba2f299675940d0eceabcd220342c3aa300963929a5b15b17a11095e4b632b9a",
+      "kind": "page",
+      "chapter": "باب-جهاد-النفس-ومنعها-من-شهواتها",
+      "prev": "eb2227656d65aeb49356b0d4767ac09ebe111e6aff54e80c78eea2fad2e780f9",
+      "next": "d1cd671f0cbbc9cb82182700468ae4ba083cc18b13a79d51eff7f7fbaff3b507"
+    },
+    {
+      "ord": 160,
+      "blockId": "d76fd8766350619967ada3f2ad2b2296",
+      "fp64": "f459019427f556f5",
+      "normHash": "d1cd671f0cbbc9cb82182700468ae4ba083cc18b13a79d51eff7f7fbaff3b507",
+      "kind": "p",
+      "chapter": "باب-جهاد-النفس-ومنعها-من-شهواتها",
+      "prev": "ba2f299675940d0eceabcd220342c3aa300963929a5b15b17a11095e4b632b9a",
+      "next": "99c8f022f068c255867e483402805695c7d5f6736c2a613df8ff18f2e2ed439a"
+    },
+    {
+      "ord": 161,
+      "blockId": "8fd32a7b0b812f32ef43cf32e89ef237",
+      "fp64": "6592d68e4ee2c07c",
+      "normHash": "99c8f022f068c255867e483402805695c7d5f6736c2a613df8ff18f2e2ed439a",
+      "kind": "p",
+      "chapter": "باب-جهاد-النفس-ومنعها-من-شهواتها",
+      "prev": "d1cd671f0cbbc9cb82182700468ae4ba083cc18b13a79d51eff7f7fbaff3b507",
+      "next": "b2cb74dc350f004d4e15ec1d7db046e969bac55231aa404902261e87a07c35ec"
+    },
+    {
+      "ord": 162,
+      "blockId": "02821869e2ffdb4f664ef35d7b0546fe",
+      "fp64": "f5156f161c447874",
+      "normHash": "b2cb74dc350f004d4e15ec1d7db046e969bac55231aa404902261e87a07c35ec",
+      "kind": "p",
+      "chapter": "باب-جهاد-النفس-ومنعها-من-شهواتها",
+      "prev": "99c8f022f068c255867e483402805695c7d5f6736c2a613df8ff18f2e2ed439a",
+      "next": "3609a93a276426eb7c866edbb708697b845504d02261b0ee164f31a812581e3a"
+    },
+    {
+      "ord": 163,
+      "blockId": "00e9d739177ca71de89504f36b09654f",
+      "fp64": "b7dff7fb7f3bf43f",
+      "normHash": "3609a93a276426eb7c866edbb708697b845504d02261b0ee164f31a812581e3a",
+      "kind": "page",
+      "chapter": "باب-جهاد-النفس-ومنعها-من-شهواتها",
+      "prev": "b2cb74dc350f004d4e15ec1d7db046e969bac55231aa404902261e87a07c35ec",
+      "next": "ee6828dd0e156827c4a8355884e6d80e6ccb5888688ac6d2d059b3ef29623a85"
+    },
+    {
+      "ord": 164,
+      "blockId": "faa669d46e32a64d733cba0d33a24b3a",
+      "fp64": "97411a57e07789c3",
+      "normHash": "ee6828dd0e156827c4a8355884e6d80e6ccb5888688ac6d2d059b3ef29623a85",
+      "kind": "h2",
+      "chapter": "باب-الحذر-على-النفس-مخافة-سوء-المنقلب-والمقت",
+      "prev": "3609a93a276426eb7c866edbb708697b845504d02261b0ee164f31a812581e3a",
+      "next": "7cb4a14ee035ff6056cc526d7a994fbacbb40728cb820f8e3d02819f037857bb"
+    },
+    {
+      "ord": 165,
+      "blockId": "bd70de79d9619f509782cd237bd93174",
+      "fp64": "7574648ec3f7ecd4",
+      "normHash": "7cb4a14ee035ff6056cc526d7a994fbacbb40728cb820f8e3d02819f037857bb",
+      "kind": "p",
+      "chapter": "باب-الحذر-على-النفس-مخافة-سوء-المنقلب-والمقت",
+      "prev": "ee6828dd0e156827c4a8355884e6d80e6ccb5888688ac6d2d059b3ef29623a85",
+      "next": "c99939312e355cc3400733640ccd5036c79533f65e0fa528f3317e2083fda879"
+    },
+    {
+      "ord": 166,
+      "blockId": "cd249176ba87f5e66415e87f47f3e923",
+      "fp64": "6c84140d26731e74",
+      "normHash": "c99939312e355cc3400733640ccd5036c79533f65e0fa528f3317e2083fda879",
+      "kind": "p",
+      "chapter": "باب-الحذر-على-النفس-مخافة-سوء-المنقلب-والمقت",
+      "prev": "7cb4a14ee035ff6056cc526d7a994fbacbb40728cb820f8e3d02819f037857bb",
+      "next": "067470e70c322edbb4ea6912668751ccee46c781d4afaa140e2c642036e6d919"
+    },
+    {
+      "ord": 167,
+      "blockId": "8ada1ce9dfdb3281e8e7c1fd14243726",
+      "fp64": "45581294f6f274d4",
+      "normHash": "067470e70c322edbb4ea6912668751ccee46c781d4afaa140e2c642036e6d919",
+      "kind": "p",
+      "chapter": "باب-الحذر-على-النفس-مخافة-سوء-المنقلب-والمقت",
+      "prev": "c99939312e355cc3400733640ccd5036c79533f65e0fa528f3317e2083fda879",
+      "next": "17c07d5ba7db0d1313aa95abc8866c776bfee38b60970e20717e45a59eb048a0"
+    },
+    {
+      "ord": 168,
+      "blockId": "4504dd040a74ccf4d7e70691cd5bdb74",
+      "fp64": "ffe72dcfdffe9fa7",
+      "normHash": "17c07d5ba7db0d1313aa95abc8866c776bfee38b60970e20717e45a59eb048a0",
+      "kind": "p",
+      "chapter": "باب-الحذر-على-النفس-مخافة-سوء-المنقلب-والمقت",
+      "prev": "067470e70c322edbb4ea6912668751ccee46c781d4afaa140e2c642036e6d919",
+      "next": "aa37c460e6f1c11955c2d79fb7eeb7f9e8c593b7b606149789d6dcbfd4bde39b"
+    },
+    {
+      "ord": 169,
+      "blockId": "d79042e4bbf4d6712c07ceb629169e0a",
+      "fp64": "dcca38f31ff5ffdb",
+      "normHash": "aa37c460e6f1c11955c2d79fb7eeb7f9e8c593b7b606149789d6dcbfd4bde39b",
+      "kind": "verse",
+      "chapter": "باب-الحذر-على-النفس-مخافة-سوء-المنقلب-والمقت",
+      "prev": "17c07d5ba7db0d1313aa95abc8866c776bfee38b60970e20717e45a59eb048a0",
+      "next": "d45dcfbdfd56bf33528630093f07f894d4433d1adcdbc688ed764d5fb86b1abc"
+    },
+    {
+      "ord": 170,
+      "blockId": "5257c68776ddcd0a82c8a820a9e273b8",
+      "fp64": "0840885266782e18",
+      "normHash": "d45dcfbdfd56bf33528630093f07f894d4433d1adcdbc688ed764d5fb86b1abc",
+      "kind": "verse",
+      "chapter": "باب-الحذر-على-النفس-مخافة-سوء-المنقلب-والمقت",
+      "prev": "aa37c460e6f1c11955c2d79fb7eeb7f9e8c593b7b606149789d6dcbfd4bde39b",
+      "next": "797d622aaa68060c5a2bde0440e6394f3a53c25de50db553beead29780e7294f"
+    },
+    {
+      "ord": 171,
+      "blockId": "74555ff2a9ac6bdb37f61b76f85ae045",
+      "fp64": "7a7f53bb6ecb8a7b",
+      "normHash": "797d622aaa68060c5a2bde0440e6394f3a53c25de50db553beead29780e7294f",
+      "kind": "p",
+      "chapter": "باب-الحذر-على-النفس-مخافة-سوء-المنقلب-والمقت",
+      "prev": "d45dcfbdfd56bf33528630093f07f894d4433d1adcdbc688ed764d5fb86b1abc",
+      "next": "ce055a268dba1412752a5828ced42dd7914c952ece095213e5431d1337a0b5a4"
+    },
+    {
+      "ord": 172,
+      "blockId": "765aa08d700402008d178fbaf4e52d81",
+      "fp64": "07be52ce50d112ef",
+      "normHash": "ce055a268dba1412752a5828ced42dd7914c952ece095213e5431d1337a0b5a4",
+      "kind": "verse",
+      "chapter": "باب-الحذر-على-النفس-مخافة-سوء-المنقلب-والمقت",
+      "prev": "797d622aaa68060c5a2bde0440e6394f3a53c25de50db553beead29780e7294f",
+      "next": "95dd13e6ab8a5ae5b854e102da44e50b07d28a91d15f98040b0ed17fddb5a867"
+    },
+    {
+      "ord": 173,
+      "blockId": "0b8afd09312bcc41fb2d826f17dc1b77",
+      "fp64": "a7dff3fbfe3bfbbf",
+      "normHash": "95dd13e6ab8a5ae5b854e102da44e50b07d28a91d15f98040b0ed17fddb5a867",
+      "kind": "page",
+      "chapter": "باب-الحذر-على-النفس-مخافة-سوء-المنقلب-والمقت",
+      "prev": "ce055a268dba1412752a5828ced42dd7914c952ece095213e5431d1337a0b5a4",
+      "next": "16bdb8581702f049d05e663a7df937b4630392ec038e0934f400ed419f4a44f5"
+    },
+    {
+      "ord": 174,
+      "blockId": "384730a5878cef005cc4e6addacc1d41",
+      "fp64": "6dfa65be67f3f864",
+      "normHash": "16bdb8581702f049d05e663a7df937b4630392ec038e0934f400ed419f4a44f5",
+      "kind": "p",
+      "chapter": "باب-الحذر-على-النفس-مخافة-سوء-المنقلب-والمقت",
+      "prev": "95dd13e6ab8a5ae5b854e102da44e50b07d28a91d15f98040b0ed17fddb5a867",
+      "next": "4e82385df3649412b6529baec8f0c23fa66a80a578626da34196ef2d00306246"
+    },
+    {
+      "ord": 175,
+      "blockId": "56f177facd22ed423a63fffe8330ad89",
+      "fp64": "5716e61564421290",
+      "normHash": "4e82385df3649412b6529baec8f0c23fa66a80a578626da34196ef2d00306246",
+      "kind": "p",
+      "chapter": "باب-الحذر-على-النفس-مخافة-سوء-المنقلب-والمقت",
+      "prev": "16bdb8581702f049d05e663a7df937b4630392ec038e0934f400ed419f4a44f5",
+      "next": "7c7742d1171437871af339a70430316ca6135214395f2626af0dbfcd1e761111"
+    },
+    {
+      "ord": 176,
+      "blockId": "786c391f2a61f983db10542865949c6b",
+      "fp64": "5dd0201774525910",
+      "normHash": "7c7742d1171437871af339a70430316ca6135214395f2626af0dbfcd1e761111",
+      "kind": "p",
+      "chapter": "باب-الحذر-على-النفس-مخافة-سوء-المنقلب-والمقت",
+      "prev": "4e82385df3649412b6529baec8f0c23fa66a80a578626da34196ef2d00306246",
+      "next": "c0daff1ac792b0d3f00d832a740cb525cdce1f825fab5deb7e30e89d54ad69d7"
+    },
+    {
+      "ord": 177,
+      "blockId": "8d236c948cbf276d0b8c9e26e679f8dc",
+      "fp64": "6546249e8777f13c",
+      "normHash": "c0daff1ac792b0d3f00d832a740cb525cdce1f825fab5deb7e30e89d54ad69d7",
+      "kind": "p",
+      "chapter": "باب-الحذر-على-النفس-مخافة-سوء-المنقلب-والمقت",
+      "prev": "7c7742d1171437871af339a70430316ca6135214395f2626af0dbfcd1e761111",
+      "next": "24da4aabdec0046b4d6c3170565e67105fddee19c8111b4adcfceafe51a4a1d2"
+    },
+    {
+      "ord": 178,
+      "blockId": "b763f44f7de78ef410407b1ca4cd8a56",
+      "fp64": "7fdff3befab1e0f6",
+      "normHash": "24da4aabdec0046b4d6c3170565e67105fddee19c8111b4adcfceafe51a4a1d2",
+      "kind": "page",
+      "chapter": "باب-الحذر-على-النفس-مخافة-سوء-المنقلب-والمقت",
+      "prev": "c0daff1ac792b0d3f00d832a740cb525cdce1f825fab5deb7e30e89d54ad69d7",
+      "next": "4e35606e90f348d611e1f5d49446dd028879c3d26e1db2cdcb879ae52e91542a"
+    },
+    {
+      "ord": 179,
+      "blockId": "79eecef33b9359906a1eea95bc2bd7ca",
+      "fp64": "69c2e01e06666c5c",
+      "normHash": "4e35606e90f348d611e1f5d49446dd028879c3d26e1db2cdcb879ae52e91542a",
+      "kind": "p",
+      "chapter": "باب-الحذر-على-النفس-مخافة-سوء-المنقلب-والمقت",
+      "prev": "24da4aabdec0046b4d6c3170565e67105fddee19c8111b4adcfceafe51a4a1d2",
+      "next": "c18653ebb9e65cab48958459a6ac809c3fbfddf585181528e2cda94a52edc6db"
+    },
+    {
+      "ord": 180,
+      "blockId": "687cd784cc27c004136986bfee280e7d",
+      "fp64": "eddffbbafa7d75b7",
+      "normHash": "c18653ebb9e65cab48958459a6ac809c3fbfddf585181528e2cda94a52edc6db",
+      "kind": "page",
+      "chapter": "باب-الحذر-على-النفس-مخافة-سوء-المنقلب-والمقت",
+      "prev": "4e35606e90f348d611e1f5d49446dd028879c3d26e1db2cdcb879ae52e91542a",
+      "next": "97713f6ff99751cd57799fba379410bb1211b820ef73ba03dd8d3af2463c8b66"
+    },
+    {
+      "ord": 181,
+      "blockId": "46fe31535d9ce4fe7a1f2569b332c61c",
+      "fp64": "400fc2f64676c336",
+      "normHash": "97713f6ff99751cd57799fba379410bb1211b820ef73ba03dd8d3af2463c8b66",
+      "kind": "p",
+      "chapter": "باب-الحذر-على-النفس-مخافة-سوء-المنقلب-والمقت",
+      "prev": "c18653ebb9e65cab48958459a6ac809c3fbfddf585181528e2cda94a52edc6db",
+      "next": "71a7f47c863d6ede251324ffdb12d57084b60edc8c3db6608f4b08d5b93cd441"
+    },
+    {
+      "ord": 182,
+      "blockId": "d9585cca593fdd005b68dc8eaca565f2",
+      "fp64": "540ec413f7777d08",
+      "normHash": "71a7f47c863d6ede251324ffdb12d57084b60edc8c3db6608f4b08d5b93cd441",
+      "kind": "p",
+      "chapter": "باب-الحذر-على-النفس-مخافة-سوء-المنقلب-والمقت",
+      "prev": "97713f6ff99751cd57799fba379410bb1211b820ef73ba03dd8d3af2463c8b66",
+      "next": "7b2949ddbb66a45784c137e9850a537bd079301c1b77085bf970c312f900d2e4"
+    },
+    {
+      "ord": 183,
+      "blockId": "312846fc9a3b4a647106a195b459e4c2",
+      "fp64": "7519e61e26faf456",
+      "normHash": "7b2949ddbb66a45784c137e9850a537bd079301c1b77085bf970c312f900d2e4",
+      "kind": "p",
+      "chapter": "باب-الحذر-على-النفس-مخافة-سوء-المنقلب-والمقت",
+      "prev": "71a7f47c863d6ede251324ffdb12d57084b60edc8c3db6608f4b08d5b93cd441",
+      "next": "7b07c06e668501c3d55fdeefe49a11402b03fa32c4344b1e671849c8cf4512d6"
+    },
+    {
+      "ord": 184,
+      "blockId": "1bc68d36bfd14ecd48340640d1f9f111",
+      "fp64": "655a609696f77074",
+      "normHash": "7b07c06e668501c3d55fdeefe49a11402b03fa32c4344b1e671849c8cf4512d6",
+      "kind": "p",
+      "chapter": "باب-الحذر-على-النفس-مخافة-سوء-المنقلب-والمقت",
+      "prev": "7b2949ddbb66a45784c137e9850a537bd079301c1b77085bf970c312f900d2e4",
+      "next": "a0c7e99a89d8bb6709b39dad4a3255acde5bd738a6d79ea9e324aa0c5f1d5de8"
+    },
+    {
+      "ord": 185,
+      "blockId": "9d1cbc5fdabe0b1cb5ce38bda7aeae66",
+      "fp64": "ffdf2dfbcf5f9f67",
+      "normHash": "a0c7e99a89d8bb6709b39dad4a3255acde5bd738a6d79ea9e324aa0c5f1d5de8",
+      "kind": "p",
+      "chapter": "باب-الحذر-على-النفس-مخافة-سوء-المنقلب-والمقت",
+      "prev": "7b07c06e668501c3d55fdeefe49a11402b03fa32c4344b1e671849c8cf4512d6",
+      "next": "4e8c6e099048a47f93727504803be065bdad8ebf15e6e35a76f196f1299b39ab"
+    },
+    {
+      "ord": 186,
+      "blockId": "3168375da3bb8583b42bf47c7bab5f31",
+      "fp64": "44a36e1c7a814b20",
+      "normHash": "4e8c6e099048a47f93727504803be065bdad8ebf15e6e35a76f196f1299b39ab",
+      "kind": "verse",
+      "chapter": "باب-الحذر-على-النفس-مخافة-سوء-المنقلب-والمقت",
+      "prev": "a0c7e99a89d8bb6709b39dad4a3255acde5bd738a6d79ea9e324aa0c5f1d5de8",
+      "next": "be693c23bd259bb4e5cfb9660fa08a19f0b9eceaa49542d4b04c7e656efbd208"
+    },
+    {
+      "ord": 187,
+      "blockId": "9626c142f3e19a1ce0407d960782b16d",
+      "fp64": "010e4055bd6c5f6b",
+      "normHash": "be693c23bd259bb4e5cfb9660fa08a19f0b9eceaa49542d4b04c7e656efbd208",
+      "kind": "verse",
+      "chapter": "باب-الحذر-على-النفس-مخافة-سوء-المنقلب-والمقت",
+      "prev": "4e8c6e099048a47f93727504803be065bdad8ebf15e6e35a76f196f1299b39ab",
+      "next": "548a316ad35ec6206e630167c9d4ecb51022276e89cb4bfca86d7106cb97a1ae"
+    },
+    {
+      "ord": 188,
+      "blockId": "5e3dd08f1ee112500b78df4ea79cb84e",
+      "fp64": "36bfd6bfb4fb8a5e",
+      "normHash": "548a316ad35ec6206e630167c9d4ecb51022276e89cb4bfca86d7106cb97a1ae",
+      "kind": "verse",
+      "chapter": "باب-الحذر-على-النفس-مخافة-سوء-المنقلب-والمقت",
+      "prev": "be693c23bd259bb4e5cfb9660fa08a19f0b9eceaa49542d4b04c7e656efbd208",
+      "next": "45447298fe97c5fb37eba1f4ffe3333d221f0d784ad4abe00c1b3ab5671d2098"
+    },
+    {
+      "ord": 189,
+      "blockId": "46d18fd8f2b05e3f7599a68ad921c757",
+      "fp64": "66042421c64b174d",
+      "normHash": "45447298fe97c5fb37eba1f4ffe3333d221f0d784ad4abe00c1b3ab5671d2098",
+      "kind": "p",
+      "chapter": "باب-الحذر-على-النفس-مخافة-سوء-المنقلب-والمقت",
+      "prev": "548a316ad35ec6206e630167c9d4ecb51022276e89cb4bfca86d7106cb97a1ae",
+      "next": "84ade8bbab00701ab159e44dc6632f5dcc8efb5814df53f8866fb34252dc99ad"
+    },
+    {
+      "ord": 190,
+      "blockId": "e0a11b1d031a52ffa6a8177f80dd76ce",
+      "fp64": "37fff7bffabf657e",
+      "normHash": "84ade8bbab00701ab159e44dc6632f5dcc8efb5814df53f8866fb34252dc99ad",
+      "kind": "page",
+      "chapter": "باب-الحذر-على-النفس-مخافة-سوء-المنقلب-والمقت",
+      "prev": "45447298fe97c5fb37eba1f4ffe3333d221f0d784ad4abe00c1b3ab5671d2098",
+      "next": "88a7b6736df68034607df990ce9d4ee3204c610da9f06e83b731ffeb28737bf4"
+    },
+    {
+      "ord": 191,
+      "blockId": "9c36754c2b658bec20d81e227bbddaf3",
+      "fp64": "ff8c905255660a97",
+      "normHash": "88a7b6736df68034607df990ce9d4ee3204c610da9f06e83b731ffeb28737bf4",
+      "kind": "h2",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "84ade8bbab00701ab159e44dc6632f5dcc8efb5814df53f8866fb34252dc99ad",
+      "next": "55d4931aa76b601881ae1d5f83546308d2e6a7e9e3ae0fe3546f48eb7eedadc6"
+    },
+    {
+      "ord": 192,
+      "blockId": "04dd393df087af180163473db49d143f",
+      "fp64": "e4dae65e96777474",
+      "normHash": "55d4931aa76b601881ae1d5f83546308d2e6a7e9e3ae0fe3546f48eb7eedadc6",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "88a7b6736df68034607df990ce9d4ee3204c610da9f06e83b731ffeb28737bf4",
+      "next": "365cc7c0a88ff2dcaeaa8c6f50b5c3289f8f6456bbc1d6ccfbd40e1b12617e3c"
+    },
+    {
+      "ord": 193,
+      "blockId": "6cd9bcd39046e56efba3cfdfce6ae8e1",
+      "fp64": "77dff7fa7fbffab7",
+      "normHash": "365cc7c0a88ff2dcaeaa8c6f50b5c3289f8f6456bbc1d6ccfbd40e1b12617e3c",
+      "kind": "page",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "55d4931aa76b601881ae1d5f83546308d2e6a7e9e3ae0fe3546f48eb7eedadc6",
+      "next": "b9a851fee45a6d5c3cca814c2ae61ed2f366f7d8e1a1b5860575536aa8dbf63e"
+    },
+    {
+      "ord": 194,
+      "blockId": "edbe3761e4f1bc7fdda61cd34fa136cf",
+      "fp64": "e5b3e01626f728f2",
+      "normHash": "b9a851fee45a6d5c3cca814c2ae61ed2f366f7d8e1a1b5860575536aa8dbf63e",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "365cc7c0a88ff2dcaeaa8c6f50b5c3289f8f6456bbc1d6ccfbd40e1b12617e3c",
+      "next": "4143511e62bb8f9ff643b5468b02c2f14ba727589bee0416b382c136644943f6"
+    },
+    {
+      "ord": 195,
+      "blockId": "91e8ecda34e41480408c38eced3e1321",
+      "fp64": "a5ffffffffbf7836",
+      "normHash": "4143511e62bb8f9ff643b5468b02c2f14ba727589bee0416b382c136644943f6",
+      "kind": "page",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "b9a851fee45a6d5c3cca814c2ae61ed2f366f7d8e1a1b5860575536aa8dbf63e",
+      "next": "aee74386c29a9457459490144abc5ab04cd06cc9efd725d306ec8ac08bc90f73"
+    },
+    {
+      "ord": 196,
+      "blockId": "dfa2b35f8e376a857550edd4a16d47ce",
+      "fp64": "e4db75966677f016",
+      "normHash": "aee74386c29a9457459490144abc5ab04cd06cc9efd725d306ec8ac08bc90f73",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "4143511e62bb8f9ff643b5468b02c2f14ba727589bee0416b382c136644943f6",
+      "next": "84cd2363ebd73aea953550f016f315ee66339874cb4c3c3d56b8ced549ef3c0c"
+    },
+    {
+      "ord": 197,
+      "blockId": "a481b53e1ed85bc1799a9442089a30b4",
+      "fp64": "e4ba12542653d254",
+      "normHash": "84cd2363ebd73aea953550f016f315ee66339874cb4c3c3d56b8ced549ef3c0c",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "aee74386c29a9457459490144abc5ab04cd06cc9efd725d306ec8ac08bc90f73",
+      "next": "67c4208c43ad08182052f2f38872f7a5ed6662ab03c565047200531fdf7189cd"
+    },
+    {
+      "ord": 198,
+      "blockId": "30c2b19029300f2d58eb16317ce1f6a7",
+      "fp64": "c514661636f37454",
+      "normHash": "67c4208c43ad08182052f2f38872f7a5ed6662ab03c565047200531fdf7189cd",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "84cd2363ebd73aea953550f016f315ee66339874cb4c3c3d56b8ced549ef3c0c",
+      "next": "83d552c54d7ddbc663cc0d6a30e3f6cf21c962cc587cb431f9e96d94cda6b459"
+    },
+    {
+      "ord": 199,
+      "blockId": "ace04da55d8c5aeec9828352a26ba782",
+      "fp64": "addff79b5bfbfa3e",
+      "normHash": "83d552c54d7ddbc663cc0d6a30e3f6cf21c962cc587cb431f9e96d94cda6b459",
+      "kind": "page",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "67c4208c43ad08182052f2f38872f7a5ed6662ab03c565047200531fdf7189cd",
+      "next": "4f5dcb03aec0da8194fc319b0a1fe2ad27d217b20b3554353de4c80a3dc8e2f5"
+    },
+    {
+      "ord": 200,
+      "blockId": "387d5e8256d983339c1ad15c30925193",
+      "fp64": "659e82b4a67a3214",
+      "normHash": "4f5dcb03aec0da8194fc319b0a1fe2ad27d217b20b3554353de4c80a3dc8e2f5",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "83d552c54d7ddbc663cc0d6a30e3f6cf21c962cc587cb431f9e96d94cda6b459",
+      "next": "6c66ac3043fb8126631aa5d48ef5f4dd71dd55bf99cd13f2d9ac4aefdfb29bbe"
+    },
+    {
+      "ord": 201,
+      "blockId": "44c91f2a7c9b2adfd8f18e9661ffa695",
+      "fp64": "fef36dcbff4dffa7",
+      "normHash": "6c66ac3043fb8126631aa5d48ef5f4dd71dd55bf99cd13f2d9ac4aefdfb29bbe",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "4f5dcb03aec0da8194fc319b0a1fe2ad27d217b20b3554353de4c80a3dc8e2f5",
+      "next": "bb79cf0610a9dfa78483bcfd21166b810ee9e6233edb6ffa451e9e7e6997a0c1"
+    },
+    {
+      "ord": 202,
+      "blockId": "8daf0dafd281a2883e9fd8dcb65eb9b1",
+      "fp64": "7a550e0a114e2c00",
+      "normHash": "bb79cf0610a9dfa78483bcfd21166b810ee9e6233edb6ffa451e9e7e6997a0c1",
+      "kind": "verse",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "6c66ac3043fb8126631aa5d48ef5f4dd71dd55bf99cd13f2d9ac4aefdfb29bbe",
+      "next": "1e3e2d102eb3c0e5cac00b9b6b8300b330975c75b21f8e64fa0231eaf6997ca5"
+    },
+    {
+      "ord": 203,
+      "blockId": "7c69f2da75d4ce5ba467960d61efa52a",
+      "fp64": "a552601d4742d91e",
+      "normHash": "1e3e2d102eb3c0e5cac00b9b6b8300b330975c75b21f8e64fa0231eaf6997ca5",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "bb79cf0610a9dfa78483bcfd21166b810ee9e6233edb6ffa451e9e7e6997a0c1",
+      "next": "dc267ecf3a10ed08b4a66a57bd3b9847014d35c1cab4ba3df148cdf839642964"
+    },
+    {
+      "ord": 204,
+      "blockId": "b075af241347c392a824c5abc6398c36",
+      "fp64": "2dfff39a5a3feabf",
+      "normHash": "dc267ecf3a10ed08b4a66a57bd3b9847014d35c1cab4ba3df148cdf839642964",
+      "kind": "page",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "1e3e2d102eb3c0e5cac00b9b6b8300b330975c75b21f8e64fa0231eaf6997ca5",
+      "next": "5ccf43df568bedbd6509c403a52d9b7715133077c0595ac35b9ff982f3476a3a"
+    },
+    {
+      "ord": 205,
+      "blockId": "304550afd95b233322e0b3ea1bc6f5ca",
+      "fp64": "66ce7056077b7214",
+      "normHash": "5ccf43df568bedbd6509c403a52d9b7715133077c0595ac35b9ff982f3476a3a",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "dc267ecf3a10ed08b4a66a57bd3b9847014d35c1cab4ba3df148cdf839642964",
+      "next": "b8d44e2dc90e63a60c85433ac19b1a86a70a0140f6d867451dcb8e1341b04ad5"
+    },
+    {
+      "ord": 206,
+      "blockId": "99646b3bc25c9bd4809c7b8f361082f9",
+      "fp64": "441ec01797f17054",
+      "normHash": "b8d44e2dc90e63a60c85433ac19b1a86a70a0140f6d867451dcb8e1341b04ad5",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "5ccf43df568bedbd6509c403a52d9b7715133077c0595ac35b9ff982f3476a3a",
+      "next": "f4190be4c416acc20fc2831f294cbd9c2e9088d7124ef6c2e3bfde7772c526f8"
+    },
+    {
+      "ord": 207,
+      "blockId": "314ffb1a38b78e075207a9e70a33c6af",
+      "fp64": "c51632966676d214",
+      "normHash": "f4190be4c416acc20fc2831f294cbd9c2e9088d7124ef6c2e3bfde7772c526f8",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "b8d44e2dc90e63a60c85433ac19b1a86a70a0140f6d867451dcb8e1341b04ad5",
+      "next": "d1c6614b9fc803ba45b190a0c840e3a040abef6dd18ccf605576bc0e1be027eb"
+    },
+    {
+      "ord": 208,
+      "blockId": "0b224f3e30e328035cb29eb08a61a49c",
+      "fp64": "68c4441eaf734814",
+      "normHash": "d1c6614b9fc803ba45b190a0c840e3a040abef6dd18ccf605576bc0e1be027eb",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "f4190be4c416acc20fc2831f294cbd9c2e9088d7124ef6c2e3bfde7772c526f8",
+      "next": "fbf75493a6f38fd3a268484f4bdda2314d456ee16b1db4b1aff009f27ab155d7"
+    },
+    {
+      "ord": 209,
+      "blockId": "d0fcfab92df777a53ebce0470e6e681c",
+      "fp64": "e5ffff9a5b33e03f",
+      "normHash": "fbf75493a6f38fd3a268484f4bdda2314d456ee16b1db4b1aff009f27ab155d7",
+      "kind": "page",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "d1c6614b9fc803ba45b190a0c840e3a040abef6dd18ccf605576bc0e1be027eb",
+      "next": "eaa6ee376ff9ff93ff696dc1ed0f2c6f8dc72e89e758e19cec35657b86598109"
+    },
+    {
+      "ord": 210,
+      "blockId": "215a5fb7909a72596b87a25e8da2e57e",
+      "fp64": "a51ae09646d270f4",
+      "normHash": "eaa6ee376ff9ff93ff696dc1ed0f2c6f8dc72e89e758e19cec35657b86598109",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "fbf75493a6f38fd3a268484f4bdda2314d456ee16b1db4b1aff009f27ab155d7",
+      "next": "0a4f6bca91e77079b0b821d1978d1bd439b68255c2b10225b725a53c0c4a3c55"
+    },
+    {
+      "ord": 211,
+      "blockId": "b9c2d82025751dd904fddab6e13ae61c",
+      "fp64": "670124172273ca7c",
+      "normHash": "0a4f6bca91e77079b0b821d1978d1bd439b68255c2b10225b725a53c0c4a3c55",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "eaa6ee376ff9ff93ff696dc1ed0f2c6f8dc72e89e758e19cec35657b86598109",
+      "next": "462ba3b32e9eccd849ec2721ae586cf2511328aac90f6935cb5577c2e357317d"
+    },
+    {
+      "ord": 212,
+      "blockId": "06795225b9177aaa30ea328fd6ca6be3",
+      "fp64": "659a609fe673b85c",
+      "normHash": "462ba3b32e9eccd849ec2721ae586cf2511328aac90f6935cb5577c2e357317d",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "0a4f6bca91e77079b0b821d1978d1bd439b68255c2b10225b725a53c0c4a3c55",
+      "next": "ceafa6f375953770e1549b253cd2771f7d31a816157cd36cec282ce7dfb5674c"
+    },
+    {
+      "ord": 213,
+      "blockId": "3c6c9a0ec5b8ae3df078c1249ad7a92b",
+      "fp64": "e73ec214055360f6",
+      "normHash": "ceafa6f375953770e1549b253cd2771f7d31a816157cd36cec282ce7dfb5674c",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "462ba3b32e9eccd849ec2721ae586cf2511328aac90f6935cb5577c2e357317d",
+      "next": "de55c6e032768dba471a4bf67d0d3e93de9a7492cd460551e9788129838e3a19"
+    },
+    {
+      "ord": 214,
+      "blockId": "05336d5873efb183ec4bb0a1e49b32ac",
+      "fp64": "f6176614af326c3c",
+      "normHash": "de55c6e032768dba471a4bf67d0d3e93de9a7492cd460551e9788129838e3a19",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "ceafa6f375953770e1549b253cd2771f7d31a816157cd36cec282ce7dfb5674c",
+      "next": "d52f705b3795453578c117df2d12cb57c986f247864466a50ca72beb033ac777"
+    },
+    {
+      "ord": 215,
+      "blockId": "0909c68e6c899d7bfeac0dbc9f7aae89",
+      "fp64": "bdfff3ba5bb565b6",
+      "normHash": "d52f705b3795453578c117df2d12cb57c986f247864466a50ca72beb033ac777",
+      "kind": "page",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "de55c6e032768dba471a4bf67d0d3e93de9a7492cd460551e9788129838e3a19",
+      "next": "ced2f3b44eae236eac4c3eb23d5492ce78c11d927fd76c0d42e20e1a64d3a07f"
+    },
+    {
+      "ord": 216,
+      "blockId": "c4b1cf5b66938061682820449e0416f4",
+      "fp64": "e592548f1273e434",
+      "normHash": "ced2f3b44eae236eac4c3eb23d5492ce78c11d927fd76c0d42e20e1a64d3a07f",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "d52f705b3795453578c117df2d12cb57c986f247864466a50ca72beb033ac777",
+      "next": "6d8308d7991d09682bbb178edb378e3e051e29fea011df830947d1e7b3b3f0ad"
+    },
+    {
+      "ord": 217,
+      "blockId": "7fed874449ee331297bbf35cd4b0e08f",
+      "fp64": "811e86342670061a",
+      "normHash": "6d8308d7991d09682bbb178edb378e3e051e29fea011df830947d1e7b3b3f0ad",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "ced2f3b44eae236eac4c3eb23d5492ce78c11d927fd76c0d42e20e1a64d3a07f",
+      "next": "6c66ac3043fb8126631aa5d48ef5f4dd71dd55bf99cd13f2d9ac4aefdfb29bbe"
+    },
+    {
+      "ord": 218,
+      "blockId": "8f20e9b95aa45591f099d8161709d251",
+      "fp64": "fef36dcbff4dffa7",
+      "normHash": "6c66ac3043fb8126631aa5d48ef5f4dd71dd55bf99cd13f2d9ac4aefdfb29bbe",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "6d8308d7991d09682bbb178edb378e3e051e29fea011df830947d1e7b3b3f0ad",
+      "next": "1fc7a9979d8de7f08e020e6cd31824b4e8712f6112d341f733532409d160f061"
+    },
+    {
+      "ord": 219,
+      "blockId": "3649ea6a57d1eb8ef63a54fb1e721820",
+      "fp64": "dedeef7a59cf3f59",
+      "normHash": "1fc7a9979d8de7f08e020e6cd31824b4e8712f6112d341f733532409d160f061",
+      "kind": "verse",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "6c66ac3043fb8126631aa5d48ef5f4dd71dd55bf99cd13f2d9ac4aefdfb29bbe",
+      "next": "4d3dc4f7744957196e52ce1fa8bd71c8f63ddece6aebe9820ee94ce42f4c7f5f"
+    },
+    {
+      "ord": 220,
+      "blockId": "13662874240e1c878f3daa69b216ae30",
+      "fp64": "efcee4ee77f6f9d9",
+      "normHash": "4d3dc4f7744957196e52ce1fa8bd71c8f63ddece6aebe9820ee94ce42f4c7f5f",
+      "kind": "verse",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "1fc7a9979d8de7f08e020e6cd31824b4e8712f6112d341f733532409d160f061",
+      "next": "7205568bd90eb174c213034a6ab41707904147addd4da3104c9869c02e9504e5"
+    },
+    {
+      "ord": 221,
+      "blockId": "f584a0c0d0f451a4c89ceae2688393da",
+      "fp64": "6d1643942757e21c",
+      "normHash": "7205568bd90eb174c213034a6ab41707904147addd4da3104c9869c02e9504e5",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "4d3dc4f7744957196e52ce1fa8bd71c8f63ddece6aebe9820ee94ce42f4c7f5f",
+      "next": "aabd7a201f1346fe85db2ba0432d1d2947aa79aeda1492bfbeba591905f70212"
+    },
+    {
+      "ord": 222,
+      "blockId": "4d2fa9cf562291755dc2b780f43a9bad",
+      "fp64": "c78273d44746fb14",
+      "normHash": "aabd7a201f1346fe85db2ba0432d1d2947aa79aeda1492bfbeba591905f70212",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "7205568bd90eb174c213034a6ab41707904147addd4da3104c9869c02e9504e5",
+      "next": "b106ffb15446290f97d147ea58ece3c0a1e1651da1386980748b4bd8e2c79d6f"
+    },
+    {
+      "ord": 223,
+      "blockId": "29fc54a1cdb9539df76801e5e518143c",
+      "fp64": "67fff3fb7ff3ee3f",
+      "normHash": "b106ffb15446290f97d147ea58ece3c0a1e1651da1386980748b4bd8e2c79d6f",
+      "kind": "page",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "aabd7a201f1346fe85db2ba0432d1d2947aa79aeda1492bfbeba591905f70212",
+      "next": "86b51d24bbb3f6ea5a76eac2a4cc1643536ed60dd25b8c9557222a79f58c93f3"
+    },
+    {
+      "ord": 224,
+      "blockId": "df73173564a5175671a0089fbec0eb39",
+      "fp64": "7f4a435006537c14",
+      "normHash": "86b51d24bbb3f6ea5a76eac2a4cc1643536ed60dd25b8c9557222a79f58c93f3",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "b106ffb15446290f97d147ea58ece3c0a1e1651da1386980748b4bd8e2c79d6f",
+      "next": "6fef9a69e14bf0b506e0e5473ef51ce2acc70198c40870362d977281b74c2083"
+    },
+    {
+      "ord": 225,
+      "blockId": "0466f24605374627748017acfd0cf0ae",
+      "fp64": "e41e661646536594",
+      "normHash": "6fef9a69e14bf0b506e0e5473ef51ce2acc70198c40870362d977281b74c2083",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "86b51d24bbb3f6ea5a76eac2a4cc1643536ed60dd25b8c9557222a79f58c93f3",
+      "next": "c6e74e377f44e9b85ce04cb913b7aec38fb9e3f52b10df716e8203469bd98fb1"
+    },
+    {
+      "ord": 226,
+      "blockId": "9e715ae34ca71fd13952e2febca2b878",
+      "fp64": "d676425cb75b4108",
+      "normHash": "c6e74e377f44e9b85ce04cb913b7aec38fb9e3f52b10df716e8203469bd98fb1",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "6fef9a69e14bf0b506e0e5473ef51ce2acc70198c40870362d977281b74c2083",
+      "next": "a080c7d62dc3d904bad60d99b2028ef54f776bdcace78db1a0c5120944a24d38"
+    },
+    {
+      "ord": 227,
+      "blockId": "d46ceb56867ad3adec88ac86f30a5999",
+      "fp64": "7dbf621634f2b02c",
+      "normHash": "a080c7d62dc3d904bad60d99b2028ef54f776bdcace78db1a0c5120944a24d38",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "c6e74e377f44e9b85ce04cb913b7aec38fb9e3f52b10df716e8203469bd98fb1",
+      "next": "43d7bb7a46e4d53b999c3975952ea77f0f9680f19eb7cb8448bc42f1e40190e2"
+    },
+    {
+      "ord": 228,
+      "blockId": "cb04f3e87a080d52673f6485aa2ea1c4",
+      "fp64": "e49a6116c6f76054",
+      "normHash": "43d7bb7a46e4d53b999c3975952ea77f0f9680f19eb7cb8448bc42f1e40190e2",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "a080c7d62dc3d904bad60d99b2028ef54f776bdcace78db1a0c5120944a24d38",
+      "next": "96d9a79854c655f1366e0b70e7ed760499d6efc7a2c5674eefad56a982e1ec21"
+    },
+    {
+      "ord": 229,
+      "blockId": "61de4c4265dad96b00cd13f97dfd65c5",
+      "fp64": "7472e09426e971d8",
+      "normHash": "96d9a79854c655f1366e0b70e7ed760499d6efc7a2c5674eefad56a982e1ec21",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "43d7bb7a46e4d53b999c3975952ea77f0f9680f19eb7cb8448bc42f1e40190e2",
+      "next": "181c781c560ccca8067794085d7195af4af220f2fec766b562846056b7b4cfa7"
+    },
+    {
+      "ord": 230,
+      "blockId": "7f5ff3f62e27bd55909f5dd4b192fad9",
+      "fp64": "b7fff3dedab9e677",
+      "normHash": "181c781c560ccca8067794085d7195af4af220f2fec766b562846056b7b4cfa7",
+      "kind": "page",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "96d9a79854c655f1366e0b70e7ed760499d6efc7a2c5674eefad56a982e1ec21",
+      "next": "97e81b01425a56b0765d15d3ef14a67d62f8723b6ff51f116205659c13786c34"
+    },
+    {
+      "ord": 231,
+      "blockId": "248fc26956c00ca75f544eb0ced1e602",
+      "fp64": "6dbae197127760f4",
+      "normHash": "97e81b01425a56b0765d15d3ef14a67d62f8723b6ff51f116205659c13786c34",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "181c781c560ccca8067794085d7195af4af220f2fec766b562846056b7b4cfa7",
+      "next": "2e14cdf459e43db43ef92750c9c0d265708747697a0557c44da2bb4039f4acbe"
+    },
+    {
+      "ord": 232,
+      "blockId": "d45afc4530ba92bc2d309d4d1f00ef38",
+      "fp64": "e4fe44169772799c",
+      "normHash": "2e14cdf459e43db43ef92750c9c0d265708747697a0557c44da2bb4039f4acbe",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "97e81b01425a56b0765d15d3ef14a67d62f8723b6ff51f116205659c13786c34",
+      "next": "2127f0661c9ec97ac8c58d413bac6751d265326c33b3ccc15b799acbfafc6f2d"
+    },
+    {
+      "ord": 233,
+      "blockId": "81bcc25c646f2aa95adabcd9f77bbb27",
+      "fp64": "8d54e13663c1511d",
+      "normHash": "2127f0661c9ec97ac8c58d413bac6751d265326c33b3ccc15b799acbfafc6f2d",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "2e14cdf459e43db43ef92750c9c0d265708747697a0557c44da2bb4039f4acbe",
+      "next": "7e78a28a2b712e2624bff5cd5b2a4462397a7e6b932d6a87cd776cf1c8354a87"
+    },
+    {
+      "ord": 234,
+      "blockId": "a631a935e48e19068db2bb03ea5eff37",
+      "fp64": "671ee01767123256",
+      "normHash": "7e78a28a2b712e2624bff5cd5b2a4462397a7e6b932d6a87cd776cf1c8354a87",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "2127f0661c9ec97ac8c58d413bac6751d265326c33b3ccc15b799acbfafc6f2d",
+      "next": "abb6c715ea839e2aabef7c08b1d42a80e78690a9109ec5d5a435c31cfb4fc892"
+    },
+    {
+      "ord": 235,
+      "blockId": "8f53a1d53ed7c25655713027e68a6d77",
+      "fp64": "fed3bfceeb6f9fef",
+      "normHash": "abb6c715ea839e2aabef7c08b1d42a80e78690a9109ec5d5a435c31cfb4fc892",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "7e78a28a2b712e2624bff5cd5b2a4462397a7e6b932d6a87cd776cf1c8354a87",
+      "next": "6cdc42723141eb0b656b6c24ff66f4da0de0a0b2378436c9aa724b7bc95e087e"
+    },
+    {
+      "ord": 236,
+      "blockId": "7be195fa599ce4eb1720a60c94d255e2",
+      "fp64": "6d1df919937abbab",
+      "normHash": "6cdc42723141eb0b656b6c24ff66f4da0de0a0b2378436c9aa724b7bc95e087e",
+      "kind": "verse",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "abb6c715ea839e2aabef7c08b1d42a80e78690a9109ec5d5a435c31cfb4fc892",
+      "next": "3c08757945ddfeaa8f03b9abaef838c46e18d424f11016250653aae650de973f"
+    },
+    {
+      "ord": 237,
+      "blockId": "25b48d09f0bbc75cd5ef1a9d501d934b",
+      "fp64": "ac34bafebc0f6a7a",
+      "normHash": "3c08757945ddfeaa8f03b9abaef838c46e18d424f11016250653aae650de973f",
+      "kind": "verse",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "6cdc42723141eb0b656b6c24ff66f4da0de0a0b2378436c9aa724b7bc95e087e",
+      "next": "2ec2e994889c34d4ca3f847ed9d60c4e4d2819cf2364a41c0ee226dcea15620a"
+    },
+    {
+      "ord": 238,
+      "blockId": "ef2ef5967148daf138a0bfc47b8433a6",
+      "fp64": "6b89662fd6935de4",
+      "normHash": "2ec2e994889c34d4ca3f847ed9d60c4e4d2819cf2364a41c0ee226dcea15620a",
+      "kind": "verse",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "3c08757945ddfeaa8f03b9abaef838c46e18d424f11016250653aae650de973f",
+      "next": "aea62b13e0d1f515defb6b2339cf00a2554aabad48307f0a75745d68afe74fae"
+    },
+    {
+      "ord": 239,
+      "blockId": "b739d6d439647c60015642ae21ab2f85",
+      "fp64": "9c36d45644e8d3fb",
+      "normHash": "aea62b13e0d1f515defb6b2339cf00a2554aabad48307f0a75745d68afe74fae",
+      "kind": "verse",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "2ec2e994889c34d4ca3f847ed9d60c4e4d2819cf2364a41c0ee226dcea15620a",
+      "next": "5fa8d5a422836d573785b7a389ab998d1a6f3f57e887804e34d943efb1d5e160"
+    },
+    {
+      "ord": 240,
+      "blockId": "a3ba5ccbeeb09c14efa1211912f48b12",
+      "fp64": "e39b0cea19da978f",
+      "normHash": "5fa8d5a422836d573785b7a389ab998d1a6f3f57e887804e34d943efb1d5e160",
+      "kind": "verse",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "aea62b13e0d1f515defb6b2339cf00a2554aabad48307f0a75745d68afe74fae",
+      "next": "e3f6a37bc03ba7401b25bd18f036ab4dcb50a517cd598072f401db72568683c2"
+    },
+    {
+      "ord": 241,
+      "blockId": "5ca6723657b9f0d315438b0cd7cf8784",
+      "fp64": "e18f7febb7fdfbff",
+      "normHash": "e3f6a37bc03ba7401b25bd18f036ab4dcb50a517cd598072f401db72568683c2",
+      "kind": "verse",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "5fa8d5a422836d573785b7a389ab998d1a6f3f57e887804e34d943efb1d5e160",
+      "next": "a7db990f70eb0b7d63b2714a56958e479312de75dfb3fe0f912e4888ffca0ca4"
+    },
+    {
+      "ord": 242,
+      "blockId": "b445a0905798a64986d3d71f4e0db481",
+      "fp64": "e7dfffbb5e796cb6",
+      "normHash": "a7db990f70eb0b7d63b2714a56958e479312de75dfb3fe0f912e4888ffca0ca4",
+      "kind": "page",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "e3f6a37bc03ba7401b25bd18f036ab4dcb50a517cd598072f401db72568683c2",
+      "next": "3085dff3112b8eb61ce68fcc8ddd4f0c0deb56a03a1ebc4c185bf95db756283d"
+    },
+    {
+      "ord": 243,
+      "blockId": "511125ed5310cb5218313c5254b94ccf",
+      "fp64": "7208728736f26bfc",
+      "normHash": "3085dff3112b8eb61ce68fcc8ddd4f0c0deb56a03a1ebc4c185bf95db756283d",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "a7db990f70eb0b7d63b2714a56958e479312de75dfb3fe0f912e4888ffca0ca4",
+      "next": "a0c7e99a89d8bb6709b39dad4a3255acde5bd738a6d79ea9e324aa0c5f1d5de8"
+    },
+    {
+      "ord": 244,
+      "blockId": "0762d4a432a0e55a20b9ac05064d3fcd",
+      "fp64": "ffdf2dfbcf5f9f67",
+      "normHash": "a0c7e99a89d8bb6709b39dad4a3255acde5bd738a6d79ea9e324aa0c5f1d5de8",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "3085dff3112b8eb61ce68fcc8ddd4f0c0deb56a03a1ebc4c185bf95db756283d",
+      "next": "5dd7436148e27b5253ef07333c85e7c822dd3ef660ab0ffd0dc722848439887b"
+    },
+    {
+      "ord": 245,
+      "blockId": "49fdbd453a9463177471e7dc6d16278f",
+      "fp64": "9a8a519e99303ffa",
+      "normHash": "5dd7436148e27b5253ef07333c85e7c822dd3ef660ab0ffd0dc722848439887b",
+      "kind": "verse",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "a0c7e99a89d8bb6709b39dad4a3255acde5bd738a6d79ea9e324aa0c5f1d5de8",
+      "next": "6e3cf96ee2e0bd8af83e7bbcf9464bb16ec916dbae3699b0def9879dc08229cd"
+    },
+    {
+      "ord": 246,
+      "blockId": "11c2a2093123c773a96b8ed3d259fdac",
+      "fp64": "6e9246f6f307c4f9",
+      "normHash": "6e3cf96ee2e0bd8af83e7bbcf9464bb16ec916dbae3699b0def9879dc08229cd",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "5dd7436148e27b5253ef07333c85e7c822dd3ef660ab0ffd0dc722848439887b",
+      "next": "a0c7e99a89d8bb6709b39dad4a3255acde5bd738a6d79ea9e324aa0c5f1d5de8"
+    },
+    {
+      "ord": 247,
+      "blockId": "5436547f0d3ee3fea72641763c2f33de",
+      "fp64": "ffdf2dfbcf5f9f67",
+      "normHash": "a0c7e99a89d8bb6709b39dad4a3255acde5bd738a6d79ea9e324aa0c5f1d5de8",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "6e3cf96ee2e0bd8af83e7bbcf9464bb16ec916dbae3699b0def9879dc08229cd",
+      "next": "1d8f83aba83603cc9c91f49abf0e6fd249b962938b057457e5708d53c39ed498"
+    },
+    {
+      "ord": 248,
+      "blockId": "93fb930bce0eb7dfd616ec79a8b9d529",
+      "fp64": "22722e958d41eb4b",
+      "normHash": "1d8f83aba83603cc9c91f49abf0e6fd249b962938b057457e5708d53c39ed498",
+      "kind": "verse",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "a0c7e99a89d8bb6709b39dad4a3255acde5bd738a6d79ea9e324aa0c5f1d5de8",
+      "next": "781263cdd612a1c099392c7a68e43600966fdea601162e1298b76fcc335cfd0d"
+    },
+    {
+      "ord": 249,
+      "blockId": "c7cf3612ada97270e5b75147f79ca392",
+      "fp64": "84d58d4cbe3670a8",
+      "normHash": "781263cdd612a1c099392c7a68e43600966fdea601162e1298b76fcc335cfd0d",
+      "kind": "verse",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "1d8f83aba83603cc9c91f49abf0e6fd249b962938b057457e5708d53c39ed498",
+      "next": "cd487818ac1dfee8e0c3beb0f7db31bc7eeff3a39535ea21e1e0dc173b69a39a"
+    },
+    {
+      "ord": 250,
+      "blockId": "770e1fed4f64b7de2217be47aaa09f57",
+      "fp64": "a5dff79adfb76737",
+      "normHash": "cd487818ac1dfee8e0c3beb0f7db31bc7eeff3a39535ea21e1e0dc173b69a39a",
+      "kind": "page",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "781263cdd612a1c099392c7a68e43600966fdea601162e1298b76fcc335cfd0d",
+      "next": "0adcca1709bfa7596566601b296f25082a70e97db8dfeac59f9cbad19dddc4f8"
+    },
+    {
+      "ord": 251,
+      "blockId": "2551d2b2b96019b6f9f7ba77aafa8562",
+      "fp64": "054e253363670894",
+      "normHash": "0adcca1709bfa7596566601b296f25082a70e97db8dfeac59f9cbad19dddc4f8",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "cd487818ac1dfee8e0c3beb0f7db31bc7eeff3a39535ea21e1e0dc173b69a39a",
+      "next": "2c573203fa81f0bae5b17b3e49e64c77b12a2220d77ee575116ce6c1ed37ff3f"
+    },
+    {
+      "ord": 252,
+      "blockId": "143d48570558e9e7e0473b9b5f4c2544",
+      "fp64": "fff3affcc17c9fff",
+      "normHash": "2c573203fa81f0bae5b17b3e49e64c77b12a2220d77ee575116ce6c1ed37ff3f",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "0adcca1709bfa7596566601b296f25082a70e97db8dfeac59f9cbad19dddc4f8",
+      "next": "5bab408fb9d0b317b962d6e275b1ed636bfa0ce41571f64f16874a2da92986ec"
+    },
+    {
+      "ord": 253,
+      "blockId": "27938b8e84eebab2990058182a96e609",
+      "fp64": "119763e857e1b436",
+      "normHash": "5bab408fb9d0b317b962d6e275b1ed636bfa0ce41571f64f16874a2da92986ec",
+      "kind": "verse",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "2c573203fa81f0bae5b17b3e49e64c77b12a2220d77ee575116ce6c1ed37ff3f",
+      "next": "0c2aa9be410521f81fdd7f19a876e9e5acc299c372c113335b90523410e11a83"
+    },
+    {
+      "ord": 254,
+      "blockId": "18b92faa90fde8585ee52194a4c37b3c",
+      "fp64": "f852d391d666221c",
+      "normHash": "0c2aa9be410521f81fdd7f19a876e9e5acc299c372c113335b90523410e11a83",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "5bab408fb9d0b317b962d6e275b1ed636bfa0ce41571f64f16874a2da92986ec",
+      "next": "2c573203fa81f0bae5b17b3e49e64c77b12a2220d77ee575116ce6c1ed37ff3f"
+    },
+    {
+      "ord": 255,
+      "blockId": "6eea2f8154a2d5e02910b9d5d15672ec",
+      "fp64": "fff3affcc17c9fff",
+      "normHash": "2c573203fa81f0bae5b17b3e49e64c77b12a2220d77ee575116ce6c1ed37ff3f",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "0c2aa9be410521f81fdd7f19a876e9e5acc299c372c113335b90523410e11a83",
+      "next": "4f64ade2bc5e8451cb8181922e314c3bdd08b27b508d31c5f35d4b4449079f2a"
+    },
+    {
+      "ord": 256,
+      "blockId": "fd6da34aff65e7875d1f76e86e8d67fc",
+      "fp64": "3b5414c913438df2",
+      "normHash": "4f64ade2bc5e8451cb8181922e314c3bdd08b27b508d31c5f35d4b4449079f2a",
+      "kind": "verse",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "2c573203fa81f0bae5b17b3e49e64c77b12a2220d77ee575116ce6c1ed37ff3f",
+      "next": "924976f9948a04cc5dd3d8ffd186ab484e072fd51dab3e1a8509333dbf287aef"
+    },
+    {
+      "ord": 257,
+      "blockId": "6c8a8fb574a785ba32e13f012c5666d9",
+      "fp64": "9e48e20904764e34",
+      "normHash": "924976f9948a04cc5dd3d8ffd186ab484e072fd51dab3e1a8509333dbf287aef",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "4f64ade2bc5e8451cb8181922e314c3bdd08b27b508d31c5f35d4b4449079f2a",
+      "next": "87591ab013c769cdd131c037fcc1a3e5eaa81eace950df374d1479bca2a81b81"
+    },
+    {
+      "ord": 258,
+      "blockId": "7b80b33fd10fc642063315b813a43351",
+      "fp64": "77ffffba5e336677",
+      "normHash": "87591ab013c769cdd131c037fcc1a3e5eaa81eace950df374d1479bca2a81b81",
+      "kind": "page",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "924976f9948a04cc5dd3d8ffd186ab484e072fd51dab3e1a8509333dbf287aef",
+      "next": "e375703b0fb07b06b1dd895a81407519b8690226083bbba64b2552ac05cee5cf"
+    },
+    {
+      "ord": 259,
+      "blockId": "521d942e580d8e1adccfad591feb9b32",
+      "fp64": "741c52575773229c",
+      "normHash": "e375703b0fb07b06b1dd895a81407519b8690226083bbba64b2552ac05cee5cf",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "87591ab013c769cdd131c037fcc1a3e5eaa81eace950df374d1479bca2a81b81",
+      "next": "006485065f8eb3f6b0297838554e08f582f57c66172b28f838d65874ba98cade"
+    },
+    {
+      "ord": 260,
+      "blockId": "4252682c0b499ed81b15e9369912afc2",
+      "fp64": "25dfff9ade7df63e",
+      "normHash": "006485065f8eb3f6b0297838554e08f582f57c66172b28f838d65874ba98cade",
+      "kind": "page",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "e375703b0fb07b06b1dd895a81407519b8690226083bbba64b2552ac05cee5cf",
+      "next": "54b954c9f588a27297af71ec319d156613dddcaa8e0106cc0861205f47be6893"
+    },
+    {
+      "ord": 261,
+      "blockId": "faf9857445d68c5b15f9406bc2855287",
+      "fp64": "758743f41e627070",
+      "normHash": "54b954c9f588a27297af71ec319d156613dddcaa8e0106cc0861205f47be6893",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "006485065f8eb3f6b0297838554e08f582f57c66172b28f838d65874ba98cade",
+      "next": "8a77655ef471a8b7957bf852187eaaff820ed472814cb80a6f13ae0e065ef25b"
+    },
+    {
+      "ord": 262,
+      "blockId": "0d4da9c6d12307a08349a43d02fede27",
+      "fp64": "e41b369427f34094",
+      "normHash": "8a77655ef471a8b7957bf852187eaaff820ed472814cb80a6f13ae0e065ef25b",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "54b954c9f588a27297af71ec319d156613dddcaa8e0106cc0861205f47be6893",
+      "next": "eef207b9a57917021cf020a1f9285ce377c7701b9fa88aeb7ab2a635f7382174"
+    },
+    {
+      "ord": 263,
+      "blockId": "5a1c99f2cd9df536ff8fff06021e04c3",
+      "fp64": "cc9b22d44e77f05c",
+      "normHash": "eef207b9a57917021cf020a1f9285ce377c7701b9fa88aeb7ab2a635f7382174",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "8a77655ef471a8b7957bf852187eaaff820ed472814cb80a6f13ae0e065ef25b",
+      "next": "06adb0b3e5770b6f5b269730d2ba3b069f8cbaa0d1095968f57ccec8770ca893"
+    },
+    {
+      "ord": 264,
+      "blockId": "099079f8c3357a453b738e57208ef71a",
+      "fp64": "147c02144471d458",
+      "normHash": "06adb0b3e5770b6f5b269730d2ba3b069f8cbaa0d1095968f57ccec8770ca893",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "eef207b9a57917021cf020a1f9285ce377c7701b9fa88aeb7ab2a635f7382174",
+      "next": "9b30179963de17074406f431d57a2e9b0200002137e63ac3649f2a7df7295b6f"
+    },
+    {
+      "ord": 265,
+      "blockId": "b248fe0b7c57b61345346691eb48338d",
+      "fp64": "5d1ee27676f7d05d",
+      "normHash": "9b30179963de17074406f431d57a2e9b0200002137e63ac3649f2a7df7295b6f",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "06adb0b3e5770b6f5b269730d2ba3b069f8cbaa0d1095968f57ccec8770ca893",
+      "next": "d283d476f1ed4a8cb48ab29a9155e3470684a66a2d678d13d52740600eab9b40"
+    },
+    {
+      "ord": 266,
+      "blockId": "2cb4eeefc715aa2b8cc337db3b09885d",
+      "fp64": "7ffffbdbffb1eafe",
+      "normHash": "d283d476f1ed4a8cb48ab29a9155e3470684a66a2d678d13d52740600eab9b40",
+      "kind": "page",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "9b30179963de17074406f431d57a2e9b0200002137e63ac3649f2a7df7295b6f",
+      "next": "9fdee54464de00b92c8dc9afa3a53845d955ecb07f9b4e489b47baf17d596f5e"
+    },
+    {
+      "ord": 267,
+      "blockId": "7432da9a41f3b89fb8b8a1db4da88c23",
+      "fp64": "8c8256528f5ff85c",
+      "normHash": "9fdee54464de00b92c8dc9afa3a53845d955ecb07f9b4e489b47baf17d596f5e",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "d283d476f1ed4a8cb48ab29a9155e3470684a66a2d678d13d52740600eab9b40",
+      "next": "aa0c5be4198211121fef2fc708174736c44ab20b445f2ef295901b0a06818c55"
+    },
+    {
+      "ord": 268,
+      "blockId": "b7510441f2abde639d96357f7d52dc4a",
+      "fp64": "e43893164777705c",
+      "normHash": "aa0c5be4198211121fef2fc708174736c44ab20b445f2ef295901b0a06818c55",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "9fdee54464de00b92c8dc9afa3a53845d955ecb07f9b4e489b47baf17d596f5e",
+      "next": "e872f9eb0521f8266bb2bcbe2c3b399813375703a32054cb45815f2413dce3b0"
+    },
+    {
+      "ord": 269,
+      "blockId": "79a5b5eb441bc501e9df83e3e3691a8a",
+      "fp64": "41fee40f9e517494",
+      "normHash": "e872f9eb0521f8266bb2bcbe2c3b399813375703a32054cb45815f2413dce3b0",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "aa0c5be4198211121fef2fc708174736c44ab20b445f2ef295901b0a06818c55",
+      "next": "2c573203fa81f0bae5b17b3e49e64c77b12a2220d77ee575116ce6c1ed37ff3f"
+    },
+    {
+      "ord": 270,
+      "blockId": "39a7883560fd430a28d25c5d0e816ff5",
+      "fp64": "fff3affcc17c9fff",
+      "normHash": "2c573203fa81f0bae5b17b3e49e64c77b12a2220d77ee575116ce6c1ed37ff3f",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "e872f9eb0521f8266bb2bcbe2c3b399813375703a32054cb45815f2413dce3b0",
+      "next": "aa1907bd4dcc2df480eb3dfaa0cc186f4dfe928abbea3cbb6be1c7c44288afce"
+    },
+    {
+      "ord": 271,
+      "blockId": "584ae11196d4c9f58cfab2a4a7574fea",
+      "fp64": "1bd7b49d7aa0eb7f",
+      "normHash": "aa1907bd4dcc2df480eb3dfaa0cc186f4dfe928abbea3cbb6be1c7c44288afce",
+      "kind": "verse",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "2c573203fa81f0bae5b17b3e49e64c77b12a2220d77ee575116ce6c1ed37ff3f",
+      "next": "d5dd941389fd037a708e54b7a1ec14887327554f9abab7a2eea0b7c567f01789"
+    },
+    {
+      "ord": 272,
+      "blockId": "90a2c6a2921630b698e957d86c878cbd",
+      "fp64": "d550609726e57c34",
+      "normHash": "d5dd941389fd037a708e54b7a1ec14887327554f9abab7a2eea0b7c567f01789",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "aa1907bd4dcc2df480eb3dfaa0cc186f4dfe928abbea3cbb6be1c7c44288afce",
+      "next": "ec4c02899775677b52a515df4072c2b77e73b4530884bc34d9e2c9e2e07d6487"
+    },
+    {
+      "ord": 273,
+      "blockId": "d5cc2af2f55e72b19e5e2c56afe3375a",
+      "fp64": "37dff7bbdefff1ff",
+      "normHash": "ec4c02899775677b52a515df4072c2b77e73b4530884bc34d9e2c9e2e07d6487",
+      "kind": "page",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "d5dd941389fd037a708e54b7a1ec14887327554f9abab7a2eea0b7c567f01789",
+      "next": "8d4e2c669a96c09762ee6159afc5812797ae945743c97d236468b0c867473bc7"
+    },
+    {
+      "ord": 274,
+      "blockId": "8f4d3f9fb77d537f9a9de8d97674b30b",
+      "fp64": "f41a200d75f1f7be",
+      "normHash": "8d4e2c669a96c09762ee6159afc5812797ae945743c97d236468b0c867473bc7",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "ec4c02899775677b52a515df4072c2b77e73b4530884bc34d9e2c9e2e07d6487",
+      "next": "95b240e2e6a99dfb93f5a558f27e106fa7c40048ffb752829c42caa6e585bee8"
+    },
+    {
+      "ord": 275,
+      "blockId": "dbdf43d00ab01c5ffe1bf5a79f5f3cfb",
+      "fp64": "a5108436f6f6c074",
+      "normHash": "95b240e2e6a99dfb93f5a558f27e106fa7c40048ffb752829c42caa6e585bee8",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "8d4e2c669a96c09762ee6159afc5812797ae945743c97d236468b0c867473bc7",
+      "next": "0c711dfdadd9a024ee49cca3649fd59fa7c974b08feea2aad08fdac0cc6f7e69"
+    },
+    {
+      "ord": 276,
+      "blockId": "c0a7039cbd2b8383f44a966225bba44d",
+      "fp64": "7541b60f973a6c7c",
+      "normHash": "0c711dfdadd9a024ee49cca3649fd59fa7c974b08feea2aad08fdac0cc6f7e69",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "95b240e2e6a99dfb93f5a558f27e106fa7c40048ffb752829c42caa6e585bee8",
+      "next": "2059d3ad05bdaf0259cc0a85701b9f4c216abfd01e1b8bc127477639c307044d"
+    },
+    {
+      "ord": 277,
+      "blockId": "267082951baf2e8d94faaf7838f29d18",
+      "fp64": "f7fff3be7fb3f4f6",
+      "normHash": "2059d3ad05bdaf0259cc0a85701b9f4c216abfd01e1b8bc127477639c307044d",
+      "kind": "page",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "0c711dfdadd9a024ee49cca3649fd59fa7c974b08feea2aad08fdac0cc6f7e69",
+      "next": "4ae8762a0a4b77a5bcc0ae09818de322140049f7ba0b0f94b5c7965446199078"
+    },
+    {
+      "ord": 278,
+      "blockId": "960ee561bdf10fe366c058b4120d2569",
+      "fp64": "b754309e7fd8fcfe",
+      "normHash": "4ae8762a0a4b77a5bcc0ae09818de322140049f7ba0b0f94b5c7965446199078",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "2059d3ad05bdaf0259cc0a85701b9f4c216abfd01e1b8bc127477639c307044d",
+      "next": "b964e20a1645ff338f98b35779780ebf694916ad60216a6482248884490dc3cf"
+    },
+    {
+      "ord": 279,
+      "blockId": "5468e8376dffb1a6b2e989b664feb997",
+      "fp64": "e55a641c86e2e874",
+      "normHash": "b964e20a1645ff338f98b35779780ebf694916ad60216a6482248884490dc3cf",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "4ae8762a0a4b77a5bcc0ae09818de322140049f7ba0b0f94b5c7965446199078",
+      "next": "ef345d362b3d21b9ecfb787f6af9ab18dc1b28bc11ef953bbaefe0ad82d2172e"
+    },
+    {
+      "ord": 280,
+      "blockId": "f97e6c99a06fef46eaf09fb43136897a",
+      "fp64": "4412621667553254",
+      "normHash": "ef345d362b3d21b9ecfb787f6af9ab18dc1b28bc11ef953bbaefe0ad82d2172e",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "b964e20a1645ff338f98b35779780ebf694916ad60216a6482248884490dc3cf",
+      "next": "60493db16737e8075796f29e89d6807dad29883a72b0453971ab06123362d0a5"
+    },
+    {
+      "ord": 281,
+      "blockId": "60c7d5710e99f6ebe3c85d5d9573a2fc",
+      "fp64": "7d0ae3567ff2f294",
+      "normHash": "60493db16737e8075796f29e89d6807dad29883a72b0453971ab06123362d0a5",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "ef345d362b3d21b9ecfb787f6af9ab18dc1b28bc11ef953bbaefe0ad82d2172e",
+      "next": "1c3ec8a0c53362a77e0389fb9eab046b61de0dfed2ac18d5efe9accfe42826a1"
+    },
+    {
+      "ord": 282,
+      "blockId": "bb437c70abf67fef0e10d915e2cdd503",
+      "fp64": "dfd114160732572c",
+      "normHash": "1c3ec8a0c53362a77e0389fb9eab046b61de0dfed2ac18d5efe9accfe42826a1",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "60493db16737e8075796f29e89d6807dad29883a72b0453971ab06123362d0a5",
+      "next": "5b834d8e0fc67a35b6b4cefed6d7e68b36d269cd4920b433f276bfe10a7e7755"
+    },
+    {
+      "ord": 283,
+      "blockId": "8f61a2e0c078afc5a30f8bbf7baa5d47",
+      "fp64": "0abe29b29974f3f4",
+      "normHash": "5b834d8e0fc67a35b6b4cefed6d7e68b36d269cd4920b433f276bfe10a7e7755",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "1c3ec8a0c53362a77e0389fb9eab046b61de0dfed2ac18d5efe9accfe42826a1",
+      "next": "b6e173eca070cbcc90e60dfcd12f08211eb613da1f670092f83d5d710f3a1830"
+    },
+    {
+      "ord": 284,
+      "blockId": "c1908a16469ba3634c4f1633237c9d93",
+      "fp64": "44833fe6dfb1d325",
+      "normHash": "b6e173eca070cbcc90e60dfcd12f08211eb613da1f670092f83d5d710f3a1830",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "5b834d8e0fc67a35b6b4cefed6d7e68b36d269cd4920b433f276bfe10a7e7755",
+      "next": "e4f89fbfce4ae6edc03d409063d7cfed930517e712d43c772249bd0b7996d0c6"
+    },
+    {
+      "ord": 285,
+      "blockId": "296e8b74c0da6e60b89e0055685af14d",
+      "fp64": "c51a2092f6f5f074",
+      "normHash": "e4f89fbfce4ae6edc03d409063d7cfed930517e712d43c772249bd0b7996d0c6",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "b6e173eca070cbcc90e60dfcd12f08211eb613da1f670092f83d5d710f3a1830",
+      "next": "714c268b7e0165285e7e0593dd67c50d51077580c7d804155575fc82935f0f59"
+    },
+    {
+      "ord": 286,
+      "blockId": "adec7fed645c5eae086fbae472b565ae",
+      "fp64": "3f75ead299aeff7f",
+      "normHash": "714c268b7e0165285e7e0593dd67c50d51077580c7d804155575fc82935f0f59",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "e4f89fbfce4ae6edc03d409063d7cfed930517e712d43c772249bd0b7996d0c6",
+      "next": "6d909403de4be7de5a8d1a99f8a447f1419ec9384e63557952ef6ae84c11e309"
+    },
+    {
+      "ord": 287,
+      "blockId": "079c22fb27b4de4f9cc748113b0a8528",
+      "fp64": "c51a621606e3fc44",
+      "normHash": "6d909403de4be7de5a8d1a99f8a447f1419ec9384e63557952ef6ae84c11e309",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "714c268b7e0165285e7e0593dd67c50d51077580c7d804155575fc82935f0f59",
+      "next": "720bfcf6681767dfae05491d31997dc53d27065487fc4092c97f91c8984ceaf3"
+    },
+    {
+      "ord": 288,
+      "blockId": "9a7b7e811a197287d57a5592b6aef82b",
+      "fp64": "c59a209666f5f074",
+      "normHash": "720bfcf6681767dfae05491d31997dc53d27065487fc4092c97f91c8984ceaf3",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "6d909403de4be7de5a8d1a99f8a447f1419ec9384e63557952ef6ae84c11e309",
+      "next": "4fab7f2ad36c991aba7b1f272ef850c247c48ddb3f7117b2c19e36a670615146"
+    },
+    {
+      "ord": 289,
+      "blockId": "5fb9a8bf6cd3d1deafb202cdfc1eb2b1",
+      "fp64": "8f05abc0d9a47254",
+      "normHash": "4fab7f2ad36c991aba7b1f272ef850c247c48ddb3f7117b2c19e36a670615146",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "720bfcf6681767dfae05491d31997dc53d27065487fc4092c97f91c8984ceaf3",
+      "next": "ccb12e59370480c0d15f4a2ebfcb7d7457fdb2561a18c0021f87d69e66ca358d"
+    },
+    {
+      "ord": 290,
+      "blockId": "2d972d23303012425a12ce62e887cd11",
+      "fp64": "ee1acad2f165fe7c",
+      "normHash": "ccb12e59370480c0d15f4a2ebfcb7d7457fdb2561a18c0021f87d69e66ca358d",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "4fab7f2ad36c991aba7b1f272ef850c247c48ddb3f7117b2c19e36a670615146",
+      "next": "61c25190dbdc27d816e2b5a9f34e795f10f8b268ab08d46572966508989e643e"
+    },
+    {
+      "ord": 291,
+      "blockId": "291a60c8152e87a954dab6d0179a7532",
+      "fp64": "ef74e012910ce92c",
+      "normHash": "61c25190dbdc27d816e2b5a9f34e795f10f8b268ab08d46572966508989e643e",
+      "kind": "p",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "ccb12e59370480c0d15f4a2ebfcb7d7457fdb2561a18c0021f87d69e66ca358d",
+      "next": "4d9fee23054d29faa763588a69ffed14c5677bafec7ca704ccf6cbfed8755c2e"
+    },
+    {
+      "ord": 292,
+      "blockId": "ca4b80aaaa7021bfebe7e6c736bf5b59",
+      "fp64": "b5dff7be5ebf787f",
+      "normHash": "4d9fee23054d29faa763588a69ffed14c5677bafec7ca704ccf6cbfed8755c2e",
+      "kind": "page",
+      "chapter": "باب-إجهاز-النفس-في-الأعمال-طلب-الراحة-يوم-المعاد",
+      "prev": "61c25190dbdc27d816e2b5a9f34e795f10f8b268ab08d46572966508989e643e"
+    }
+  ]
+}

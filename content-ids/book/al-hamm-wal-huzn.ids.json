@@ -1,0 +1,3785 @@
+{
+  "schema": 1,
+  "generation": 1,
+  "sourceHash": "55336e912e4fc290ee4ec9c9c44ff2985a68a34ef561bdb811b6f03b595f4e6e",
+  "ids": [
+    {
+      "ord": 0,
+      "blockId": "ae66d898dd06bc44487575c75a2ea1f2",
+      "fp64": "fe0e98297903a185",
+      "normHash": "a360c56bad8f8375937f4d69c38f9959f41150f4688b7bccec46d96fb2f56570",
+      "kind": "p",
+      "chapter": "main",
+      "next": "60ce4f1aacb94a36d01b2de9df81e58c2dac4c3b2140ec2f65357f64ff539446"
+    },
+    {
+      "ord": 1,
+      "blockId": "d2567ff0c4eac98ac257458004f50b90",
+      "fp64": "a418b116a6ecf074",
+      "normHash": "60ce4f1aacb94a36d01b2de9df81e58c2dac4c3b2140ec2f65357f64ff539446",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "a360c56bad8f8375937f4d69c38f9959f41150f4688b7bccec46d96fb2f56570",
+      "next": "7f6122d329c10db3a5a6614d0ad6b50b53b29f2743c5d0520f1c663b792c6f2c"
+    },
+    {
+      "ord": 2,
+      "blockId": "157a301018bdf94b3cf3023b7dd346e1",
+      "fp64": "68f37effa9e27f7f",
+      "normHash": "7f6122d329c10db3a5a6614d0ad6b50b53b29f2743c5d0520f1c663b792c6f2c",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "60ce4f1aacb94a36d01b2de9df81e58c2dac4c3b2140ec2f65357f64ff539446",
+      "next": "039b3509523f3f32389b14be83f9df23308b062fa06e96de959bd710bd6147d7"
+    },
+    {
+      "ord": 3,
+      "blockId": "b7d823c18cc830f95daf6dccd9069089",
+      "fp64": "bf4b7afdbfffeffb",
+      "normHash": "039b3509523f3f32389b14be83f9df23308b062fa06e96de959bd710bd6147d7",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "7f6122d329c10db3a5a6614d0ad6b50b53b29f2743c5d0520f1c663b792c6f2c",
+      "next": "029ac1b47afd963302bf6425bd3ddedefd752940f1a82059eeeb9aec2de0ea57"
+    },
+    {
+      "ord": 4,
+      "blockId": "1a20cb892058570e404a4bb9c8aad266",
+      "fp64": "fff5fe9ffffc15ab",
+      "normHash": "029ac1b47afd963302bf6425bd3ddedefd752940f1a82059eeeb9aec2de0ea57",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "039b3509523f3f32389b14be83f9df23308b062fa06e96de959bd710bd6147d7",
+      "next": "504405cdc152c82f14b42c2390c25106bf815639c37635813fce92c479520ef9"
+    },
+    {
+      "ord": 5,
+      "blockId": "d7b52e4e959505ab2c1a617c042929de",
+      "fp64": "e6164a8bee7dc29e",
+      "normHash": "504405cdc152c82f14b42c2390c25106bf815639c37635813fce92c479520ef9",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "029ac1b47afd963302bf6425bd3ddedefd752940f1a82059eeeb9aec2de0ea57",
+      "next": "b6afa2fb4d8b49de101af5c9350f5c28da9c17a6921ffe06889fe621a09ced3a"
+    },
+    {
+      "ord": 6,
+      "blockId": "b8302c4ed1f5defc0a4809399b3f09e1",
+      "fp64": "de1ff77de7537c65",
+      "normHash": "b6afa2fb4d8b49de101af5c9350f5c28da9c17a6921ffe06889fe621a09ced3a",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "504405cdc152c82f14b42c2390c25106bf815639c37635813fce92c479520ef9",
+      "next": "64cd1a3648ab144758fc3aeece15b7f1618be30b198b4b0e73c055908bc20bdc"
+    },
+    {
+      "ord": 7,
+      "blockId": "f7e8df5e593ccb9052e253c160587d3f",
+      "fp64": "5693b66d76512e0c",
+      "normHash": "64cd1a3648ab144758fc3aeece15b7f1618be30b198b4b0e73c055908bc20bdc",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "b6afa2fb4d8b49de101af5c9350f5c28da9c17a6921ffe06889fe621a09ced3a",
+      "next": "396a6095621f711086cccf2c457c6a5a4600a74c299eb6b9a526a5abbab0f4c6"
+    },
+    {
+      "ord": 8,
+      "blockId": "d980796969a8feb5227ac81474f50cd4",
+      "fp64": "1f4c38b27955be54",
+      "normHash": "396a6095621f711086cccf2c457c6a5a4600a74c299eb6b9a526a5abbab0f4c6",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "64cd1a3648ab144758fc3aeece15b7f1618be30b198b4b0e73c055908bc20bdc",
+      "next": "b58502b65250261d897df7a3fd109fb6708708f646e6b4d31a5ef0fbab537d29"
+    },
+    {
+      "ord": 9,
+      "blockId": "e9422c877542d4023c5c564d42839a73",
+      "fp64": "1a1da2c35dde3f51",
+      "normHash": "b58502b65250261d897df7a3fd109fb6708708f646e6b4d31a5ef0fbab537d29",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "396a6095621f711086cccf2c457c6a5a4600a74c299eb6b9a526a5abbab0f4c6",
+      "next": "ccd8382c13bdffdd27e4dbb25ba7c8dc021e9ff1672ddb0828cf3fc4ea36bcd6"
+    },
+    {
+      "ord": 10,
+      "blockId": "4a738d8236e096080a990b9b05a6f53c",
+      "fp64": "92c5aaa143857e9b",
+      "normHash": "ccd8382c13bdffdd27e4dbb25ba7c8dc021e9ff1672ddb0828cf3fc4ea36bcd6",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "b58502b65250261d897df7a3fd109fb6708708f646e6b4d31a5ef0fbab537d29",
+      "next": "5f6f04ca0cd230ef195a8de2715ffd70d18e3b115416f338f13cca79dcc365b6"
+    },
+    {
+      "ord": 11,
+      "blockId": "4c9e34c88cfc3e4ecfd7e5b22b8cafdd",
+      "fp64": "565bd7f5e777ff5f",
+      "normHash": "5f6f04ca0cd230ef195a8de2715ffd70d18e3b115416f338f13cca79dcc365b6",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "ccd8382c13bdffdd27e4dbb25ba7c8dc021e9ff1672ddb0828cf3fc4ea36bcd6",
+      "next": "c6dd19adf656c982db8b0ac2d2cbab4c3fd148bdf97690ae8e7086e98a5d9111"
+    },
+    {
+      "ord": 12,
+      "blockId": "472dacc1d54b891ee1099106dad9ebe8",
+      "fp64": "5092ccace1736c5f",
+      "normHash": "c6dd19adf656c982db8b0ac2d2cbab4c3fd148bdf97690ae8e7086e98a5d9111",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "5f6f04ca0cd230ef195a8de2715ffd70d18e3b115416f338f13cca79dcc365b6",
+      "next": "50ae018a303c284a794f073f281624a4b1ecea04d9a8cb09ebf61d3dbc759276"
+    },
+    {
+      "ord": 13,
+      "blockId": "de99edc29a1fe1ef57e60be9b4bf796c",
+      "fp64": "67674a72ef9875c1",
+      "normHash": "50ae018a303c284a794f073f281624a4b1ecea04d9a8cb09ebf61d3dbc759276",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "c6dd19adf656c982db8b0ac2d2cbab4c3fd148bdf97690ae8e7086e98a5d9111",
+      "next": "84fb3419444a0b2a0021137611aa8b52e9c914e880746091d7b86327b7a05ba2"
+    },
+    {
+      "ord": 14,
+      "blockId": "c689c932a158d2b2b400add63d11be04",
+      "fp64": "63084a7c7e59992d",
+      "normHash": "84fb3419444a0b2a0021137611aa8b52e9c914e880746091d7b86327b7a05ba2",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "50ae018a303c284a794f073f281624a4b1ecea04d9a8cb09ebf61d3dbc759276",
+      "next": "c6eb471b3f8fefb3a8131e8573e32e649f6ce90b38e88a4a7f4e111ee0e0e4e8"
+    },
+    {
+      "ord": 15,
+      "blockId": "127e829ac246810998723cdc2c060af1",
+      "fp64": "5a86ec7ccd53bfd1",
+      "normHash": "c6eb471b3f8fefb3a8131e8573e32e649f6ce90b38e88a4a7f4e111ee0e0e4e8",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "84fb3419444a0b2a0021137611aa8b52e9c914e880746091d7b86327b7a05ba2",
+      "next": "320e949b921109e8926dec94f74672a0c8b67391e4538dab964ccf29ee4acea7"
+    },
+    {
+      "ord": 16,
+      "blockId": "f7778f2223af678356e712e5739a1d07",
+      "fp64": "94d3a567d3632f6f",
+      "normHash": "320e949b921109e8926dec94f74672a0c8b67391e4538dab964ccf29ee4acea7",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "c6eb471b3f8fefb3a8131e8573e32e649f6ce90b38e88a4a7f4e111ee0e0e4e8",
+      "next": "3347d55e3af06491e3ca89b006593bc6ff8260e0122c450a399d89bd665b57d7"
+    },
+    {
+      "ord": 17,
+      "blockId": "090338e128f6f9b0d4f0ef253a853a84",
+      "fp64": "5d46345714473acc",
+      "normHash": "3347d55e3af06491e3ca89b006593bc6ff8260e0122c450a399d89bd665b57d7",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "320e949b921109e8926dec94f74672a0c8b67391e4538dab964ccf29ee4acea7",
+      "next": "0484eeda0b6ed1fc6f83f0b08f0e9ec461387ff215d4df300dfefeeb63bff4a7"
+    },
+    {
+      "ord": 18,
+      "blockId": "1480e298be6bda62740eea2b14d3243c",
+      "fp64": "877ba267555c7eff",
+      "normHash": "0484eeda0b6ed1fc6f83f0b08f0e9ec461387ff215d4df300dfefeeb63bff4a7",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "3347d55e3af06491e3ca89b006593bc6ff8260e0122c450a399d89bd665b57d7",
+      "next": "21f8046c0d8b73ea224be2fa892d10ee54766a7e7a7e6913f39ac7a1ce578baa"
+    },
+    {
+      "ord": 19,
+      "blockId": "5b87f3e011be848318bc820b171611a0",
+      "fp64": "ed8e67da9f856308",
+      "normHash": "21f8046c0d8b73ea224be2fa892d10ee54766a7e7a7e6913f39ac7a1ce578baa",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "0484eeda0b6ed1fc6f83f0b08f0e9ec461387ff215d4df300dfefeeb63bff4a7",
+      "next": "1755600b9ce652f0aec99354fbd00dc1a7e373871d30eaf4eb8d6dffd57a9a4c"
+    },
+    {
+      "ord": 20,
+      "blockId": "528e1feb46c9ebb4731384fc1a16b054",
+      "fp64": "fe7eb96dfbebf385",
+      "normHash": "1755600b9ce652f0aec99354fbd00dc1a7e373871d30eaf4eb8d6dffd57a9a4c",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "21f8046c0d8b73ea224be2fa892d10ee54766a7e7a7e6913f39ac7a1ce578baa",
+      "next": "33711bdbcc9724dec9d5ba89d35cacb544de8c464afd2a663c03c81c3104bd73"
+    },
+    {
+      "ord": 21,
+      "blockId": "b4339c31f70e791b24591357e4745f4f",
+      "fp64": "27b48bf273e9bd5f",
+      "normHash": "33711bdbcc9724dec9d5ba89d35cacb544de8c464afd2a663c03c81c3104bd73",
+      "kind": "h2",
+      "chapter": "متواصل-الأحزان-دائم-الفكرة",
+      "prev": "1755600b9ce652f0aec99354fbd00dc1a7e373871d30eaf4eb8d6dffd57a9a4c",
+      "next": "9188f256ba223b9637a6bca1894c8bda769d4a2177a25f5c18dfb50703f508f1"
+    },
+    {
+      "ord": 22,
+      "blockId": "8bd50f937b48e0eebf1e9f29cf951f05",
+      "fp64": "e5fff7ff7bb3e67f",
+      "normHash": "9188f256ba223b9637a6bca1894c8bda769d4a2177a25f5c18dfb50703f508f1",
+      "kind": "page",
+      "chapter": "متواصل-الأحزان-دائم-الفكرة",
+      "prev": "33711bdbcc9724dec9d5ba89d35cacb544de8c464afd2a663c03c81c3104bd73",
+      "next": "76d1aa9e7ea8fbf4f66c5062fbacb58e58534f9d7d8f0d4739dd42bf743ab374"
+    },
+    {
+      "ord": 23,
+      "blockId": "c7e05ba3d0b94a313c22f9e59ee2e2a4",
+      "fp64": "e59ae09676e77054",
+      "normHash": "76d1aa9e7ea8fbf4f66c5062fbacb58e58534f9d7d8f0d4739dd42bf743ab374",
+      "kind": "p",
+      "chapter": "متواصل-الأحزان-دائم-الفكرة",
+      "prev": "9188f256ba223b9637a6bca1894c8bda769d4a2177a25f5c18dfb50703f508f1",
+      "next": "c98034063456162d5893271febcd7b0de206a857ab5f7dfedab153c8b98e314c"
+    },
+    {
+      "ord": 24,
+      "blockId": "08f29ea0f9b88296fed37eea6ccbfe49",
+      "fp64": "247860961771f114",
+      "normHash": "c98034063456162d5893271febcd7b0de206a857ab5f7dfedab153c8b98e314c",
+      "kind": "p",
+      "chapter": "متواصل-الأحزان-دائم-الفكرة",
+      "prev": "76d1aa9e7ea8fbf4f66c5062fbacb58e58534f9d7d8f0d4739dd42bf743ab374",
+      "next": "2ab029640d0d4db368c048d36be6c59a5ae8545d4205df7e2b6173bbc905b96c"
+    },
+    {
+      "ord": 25,
+      "blockId": "929d2da3d331fc8f459575e9b4e49bfc",
+      "fp64": "77dff39fdf716677",
+      "normHash": "2ab029640d0d4db368c048d36be6c59a5ae8545d4205df7e2b6173bbc905b96c",
+      "kind": "page",
+      "chapter": "متواصل-الأحزان-دائم-الفكرة",
+      "prev": "c98034063456162d5893271febcd7b0de206a857ab5f7dfedab153c8b98e314c",
+      "next": "d4e4c451d4247040d67d2befde8c7b6fee97d6f9e102d1a2b1424c12399db51d"
+    },
+    {
+      "ord": 26,
+      "blockId": "ca0940206142cd2bce659087c5727791",
+      "fp64": "b54daf6bdfbabbfe",
+      "normHash": "d4e4c451d4247040d67d2befde8c7b6fee97d6f9e102d1a2b1424c12399db51d",
+      "kind": "h2",
+      "chapter": "هل-يحب-الله-كل-قلب-حزين",
+      "prev": "2ab029640d0d4db368c048d36be6c59a5ae8545d4205df7e2b6173bbc905b96c",
+      "next": "eb050f56c0b6d397bb33df175c0d6c6cbb254b494a7e4d1e273bae58257c67dc"
+    },
+    {
+      "ord": 27,
+      "blockId": "85769d0b80c960d3fdef2a23f1d81bd2",
+      "fp64": "7d06b69aad65c77f",
+      "normHash": "eb050f56c0b6d397bb33df175c0d6c6cbb254b494a7e4d1e273bae58257c67dc",
+      "kind": "p",
+      "chapter": "هل-يحب-الله-كل-قلب-حزين",
+      "prev": "d4e4c451d4247040d67d2befde8c7b6fee97d6f9e102d1a2b1424c12399db51d",
+      "next": "2d6f5a630e3345c80e7cf7b5fa3f4e5d355d4ca5b64d2427b51ab6d0a99c0e94"
+    },
+    {
+      "ord": 28,
+      "blockId": "799117c35fb83f520b033659783ab53a",
+      "fp64": "641ae09f27f97074",
+      "normHash": "2d6f5a630e3345c80e7cf7b5fa3f4e5d355d4ca5b64d2427b51ab6d0a99c0e94",
+      "kind": "p",
+      "chapter": "هل-يحب-الله-كل-قلب-حزين",
+      "prev": "eb050f56c0b6d397bb33df175c0d6c6cbb254b494a7e4d1e273bae58257c67dc",
+      "next": "1b812f1da0256532b54fe37b737551313292597646cd399cd89855624c1fd078"
+    },
+    {
+      "ord": 29,
+      "blockId": "9ab4887f45fb33031c7e59a5a87b8a00",
+      "fp64": "f7ffffdf5eb7e17f",
+      "normHash": "1b812f1da0256532b54fe37b737551313292597646cd399cd89855624c1fd078",
+      "kind": "page",
+      "chapter": "هل-يحب-الله-كل-قلب-حزين",
+      "prev": "2d6f5a630e3345c80e7cf7b5fa3f4e5d355d4ca5b64d2427b51ab6d0a99c0e94",
+      "next": "5ea51b90a5690fbd58bd985588797271964cbe824dccd8c772f063f3f00e67e2"
+    },
+    {
+      "ord": 30,
+      "blockId": "1cc77a836e21aa6ece32ac39b9f51707",
+      "fp64": "f77de2cfb7fd3dab",
+      "normHash": "5ea51b90a5690fbd58bd985588797271964cbe824dccd8c772f063f3f00e67e2",
+      "kind": "h2",
+      "chapter": "الهم-والحزن-يكفران-الذنوب",
+      "prev": "1b812f1da0256532b54fe37b737551313292597646cd399cd89855624c1fd078",
+      "next": "8d0cc89be91dff1c07697504902b73fc7da7e7803751b1aa2e32688aebfd2085"
+    },
+    {
+      "ord": 31,
+      "blockId": "e36e0e035601732b8cf111d3abd62cf9",
+      "fp64": "66566096a77d613c",
+      "normHash": "8d0cc89be91dff1c07697504902b73fc7da7e7803751b1aa2e32688aebfd2085",
+      "kind": "p",
+      "chapter": "الهم-والحزن-يكفران-الذنوب",
+      "prev": "5ea51b90a5690fbd58bd985588797271964cbe824dccd8c772f063f3f00e67e2",
+      "next": "e34c2494ff5cbdc924c6f860aefa5fea954590d966f699776c74c1bbfdda3b6b"
+    },
+    {
+      "ord": 32,
+      "blockId": "f23fe518052398cf0616cbac102ce8bd",
+      "fp64": "b5fff3fefa7b7337",
+      "normHash": "e34c2494ff5cbdc924c6f860aefa5fea954590d966f699776c74c1bbfdda3b6b",
+      "kind": "page",
+      "chapter": "الهم-والحزن-يكفران-الذنوب",
+      "prev": "8d0cc89be91dff1c07697504902b73fc7da7e7803751b1aa2e32688aebfd2085",
+      "next": "f92c177eaf211d22fd0f1527af857473c5f1fe89e37f5edfb922b86ac4365ede"
+    },
+    {
+      "ord": 33,
+      "blockId": "9748f3f89851a11ad873fa4b2cb27236",
+      "fp64": "e77cc697a45d518a",
+      "normHash": "f92c177eaf211d22fd0f1527af857473c5f1fe89e37f5edfb922b86ac4365ede",
+      "kind": "h2",
+      "chapter": "حديث-آدم-عليه-السلام-عن-الهم-والحزن",
+      "prev": "e34c2494ff5cbdc924c6f860aefa5fea954590d966f699776c74c1bbfdda3b6b",
+      "next": "105455cbf5bf33636b2125f72c45e6fd60b219413e7879621465aeec42587bf6"
+    },
+    {
+      "ord": 34,
+      "blockId": "8a34b5c8bdd93808b18e3fe0ecc816a7",
+      "fp64": "741ec614d7554030",
+      "normHash": "105455cbf5bf33636b2125f72c45e6fd60b219413e7879621465aeec42587bf6",
+      "kind": "p",
+      "chapter": "حديث-آدم-عليه-السلام-عن-الهم-والحزن",
+      "prev": "f92c177eaf211d22fd0f1527af857473c5f1fe89e37f5edfb922b86ac4365ede",
+      "next": "6ca5a3ac517661431954a16eb9fae68d7cd3fb3afac37139ac1f0772f59d8eb2"
+    },
+    {
+      "ord": 35,
+      "blockId": "72871589a3d79253f80acd9586a11ed4",
+      "fp64": "7510d21664527114",
+      "normHash": "6ca5a3ac517661431954a16eb9fae68d7cd3fb3afac37139ac1f0772f59d8eb2",
+      "kind": "p",
+      "chapter": "حديث-آدم-عليه-السلام-عن-الهم-والحزن",
+      "prev": "105455cbf5bf33636b2125f72c45e6fd60b219413e7879621465aeec42587bf6",
+      "next": "74c08f2afdb056b913e84609828f3de743fa6c018de1b3bf08a5b2ea09b9182c"
+    },
+    {
+      "ord": 36,
+      "blockId": "aecabeccc8e084516ab3d1185fd61df0",
+      "fp64": "09f29673f4f7bfcf",
+      "normHash": "74c08f2afdb056b913e84609828f3de743fa6c018de1b3bf08a5b2ea09b9182c",
+      "kind": "h2",
+      "chapter": "صور-من-أحزان-يعقوب-على-يوسف-عليهما-السلام",
+      "prev": "6ca5a3ac517661431954a16eb9fae68d7cd3fb3afac37139ac1f0772f59d8eb2",
+      "next": "7e9d8cb6ad5ca7ffa49032833f24a760e1e91abf2476fbc174cd7afceedb1a31"
+    },
+    {
+      "ord": 37,
+      "blockId": "07aabc2986d90145f4eb6adb9edacdf7",
+      "fp64": "249302178d616158",
+      "normHash": "7e9d8cb6ad5ca7ffa49032833f24a760e1e91abf2476fbc174cd7afceedb1a31",
+      "kind": "p",
+      "chapter": "صور-من-أحزان-يعقوب-على-يوسف-عليهما-السلام",
+      "prev": "74c08f2afdb056b913e84609828f3de743fa6c018de1b3bf08a5b2ea09b9182c",
+      "next": "21f9c20f4e83572f264bf3be8f944f198e85a4861ab0d298f36d08d44149d424"
+    },
+    {
+      "ord": 38,
+      "blockId": "be215906578357f124c7e0674601933b",
+      "fp64": "ffdfff9edf716b76",
+      "normHash": "21f9c20f4e83572f264bf3be8f944f198e85a4861ab0d298f36d08d44149d424",
+      "kind": "page",
+      "chapter": "صور-من-أحزان-يعقوب-على-يوسف-عليهما-السلام",
+      "prev": "7e9d8cb6ad5ca7ffa49032833f24a760e1e91abf2476fbc174cd7afceedb1a31",
+      "next": "00862bf8bed4a7c479088fa9106f4a1b3707582c4b2dad0ef3fe663f4555b345"
+    },
+    {
+      "ord": 39,
+      "blockId": "472aecb07465bac3117c7e8d418ee73a",
+      "fp64": "653a6296a7f26250",
+      "normHash": "00862bf8bed4a7c479088fa9106f4a1b3707582c4b2dad0ef3fe663f4555b345",
+      "kind": "p",
+      "chapter": "صور-من-أحزان-يعقوب-على-يوسف-عليهما-السلام",
+      "prev": "21f9c20f4e83572f264bf3be8f944f198e85a4861ab0d298f36d08d44149d424",
+      "next": "a368891ef9a262987f7b742c364d62cb1d7d4e6cde5b779d8435f58d0237e27a"
+    },
+    {
+      "ord": 40,
+      "blockId": "c6e1e9a7eecce1c47021cff7d363d730",
+      "fp64": "7ffffbbafa337eff",
+      "normHash": "a368891ef9a262987f7b742c364d62cb1d7d4e6cde5b779d8435f58d0237e27a",
+      "kind": "page",
+      "chapter": "صور-من-أحزان-يعقوب-على-يوسف-عليهما-السلام",
+      "prev": "00862bf8bed4a7c479088fa9106f4a1b3707582c4b2dad0ef3fe663f4555b345",
+      "next": "67cd3f6bfc5ebb78f857abbdf212b6e7988a9158a5d6cd4029667f9c967bfff8"
+    },
+    {
+      "ord": 41,
+      "blockId": "2fa78469840b674636b0164954598415",
+      "fp64": "660eed6bcd616d4c",
+      "normHash": "67cd3f6bfc5ebb78f857abbdf212b6e7988a9158a5d6cd4029667f9c967bfff8",
+      "kind": "h2",
+      "chapter": "القلب-الخالي-من-الحزن-خراب",
+      "prev": "a368891ef9a262987f7b742c364d62cb1d7d4e6cde5b779d8435f58d0237e27a",
+      "next": "12689361cda13615d9ec5a7c1a26f0081ff494a00cc5986c073930f49a70fdb8"
+    },
+    {
+      "ord": 42,
+      "blockId": "6a63ddf20f634992467fe22172360938",
+      "fp64": "655a719c85c7e074",
+      "normHash": "12689361cda13615d9ec5a7c1a26f0081ff494a00cc5986c073930f49a70fdb8",
+      "kind": "p",
+      "chapter": "القلب-الخالي-من-الحزن-خراب",
+      "prev": "67cd3f6bfc5ebb78f857abbdf212b6e7988a9158a5d6cd4029667f9c967bfff8",
+      "next": "5d9c0fff37998f5ddb65719075e604f0616331b1187fd05c514e9b060f1dcc7b"
+    },
+    {
+      "ord": 43,
+      "blockId": "0dd58c02a83323e801abc3ea8f7342b7",
+      "fp64": "0cc8bb590732ce5e",
+      "normHash": "5d9c0fff37998f5ddb65719075e604f0616331b1187fd05c514e9b060f1dcc7b",
+      "kind": "h2",
+      "chapter": "الدنيا-والآخرة-ضرتان",
+      "prev": "12689361cda13615d9ec5a7c1a26f0081ff494a00cc5986c073930f49a70fdb8",
+      "next": "44431c707af21df4466ffcf349d50a55fc7f0436aab9270c7643313e83a24f2d"
+    },
+    {
+      "ord": 44,
+      "blockId": "92f97dcc6ea57e2e10c64cf60b0b8c8b",
+      "fp64": "6d9276b623e37474",
+      "normHash": "44431c707af21df4466ffcf349d50a55fc7f0436aab9270c7643313e83a24f2d",
+      "kind": "p",
+      "chapter": "الدنيا-والآخرة-ضرتان",
+      "prev": "5d9c0fff37998f5ddb65719075e604f0616331b1187fd05c514e9b060f1dcc7b",
+      "next": "e787f2e0d4f0f35e056dccc815af2de911e7c3c49eeda32cbbf989e9845a9929"
+    },
+    {
+      "ord": 45,
+      "blockId": "45ef0dca8a32dd8db6ebdd5480316175",
+      "fp64": "b5fff39e5abdfcf6",
+      "normHash": "e787f2e0d4f0f35e056dccc815af2de911e7c3c49eeda32cbbf989e9845a9929",
+      "kind": "page",
+      "chapter": "الدنيا-والآخرة-ضرتان",
+      "prev": "44431c707af21df4466ffcf349d50a55fc7f0436aab9270c7643313e83a24f2d",
+      "next": "303bf4d2ff356bec6cf18aa438221a0cfe461498a9984f15a0fed395b579f412"
+    },
+    {
+      "ord": 46,
+      "blockId": "36b153953d54c6744c0502cfc2d3619b",
+      "fp64": "559e4316f7f44038",
+      "normHash": "303bf4d2ff356bec6cf18aa438221a0cfe461498a9984f15a0fed395b579f412",
+      "kind": "p",
+      "chapter": "الدنيا-والآخرة-ضرتان",
+      "prev": "e787f2e0d4f0f35e056dccc815af2de911e7c3c49eeda32cbbf989e9845a9929",
+      "next": "76d2fdd147829d7e05f8b9a4a8a6b854aeacd35bb06fd59c811f80a3d3e19109"
+    },
+    {
+      "ord": 47,
+      "blockId": "51fd340653a6be6aa6869952817ff21f",
+      "fp64": "871162909672785c",
+      "normHash": "76d2fdd147829d7e05f8b9a4a8a6b854aeacd35bb06fd59c811f80a3d3e19109",
+      "kind": "p",
+      "chapter": "الدنيا-والآخرة-ضرتان",
+      "prev": "303bf4d2ff356bec6cf18aa438221a0cfe461498a9984f15a0fed395b579f412",
+      "next": "1f5c95dd181fafab5ad8c3809f93d70ab61f027b931d166084ec5a22acdf12cc"
+    },
+    {
+      "ord": 48,
+      "blockId": "9acdbafbe2016d631ed4df01c882a2ed",
+      "fp64": "35dffb9e5fbdf3f6",
+      "normHash": "1f5c95dd181fafab5ad8c3809f93d70ab61f027b931d166084ec5a22acdf12cc",
+      "kind": "page",
+      "chapter": "الدنيا-والآخرة-ضرتان",
+      "prev": "76d2fdd147829d7e05f8b9a4a8a6b854aeacd35bb06fd59c811f80a3d3e19109",
+      "next": "7c13ebf167a4aa66ad660bf095241ec44bb7f5f1d2b0c5c9e9e1fd62e5f3cf65"
+    },
+    {
+      "ord": 49,
+      "blockId": "e65982fe14110d8e8601937e81820d1e",
+      "fp64": "febdcb7b8bfaed6b",
+      "normHash": "7c13ebf167a4aa66ad660bf095241ec44bb7f5f1d2b0c5c9e9e1fd62e5f3cf65",
+      "kind": "h2",
+      "chapter": "قل-واحزناه-على-الحزن",
+      "prev": "1f5c95dd181fafab5ad8c3809f93d70ab61f027b931d166084ec5a22acdf12cc",
+      "next": "31f82f630a77cf4b510bf4f7ab59759c33b1a59999a74f9a2fb71a031197c0ba"
+    },
+    {
+      "ord": 50,
+      "blockId": "f76db14a06c7edbe5c96a4c49ad77ab9",
+      "fp64": "c618d6399f4a4442",
+      "normHash": "31f82f630a77cf4b510bf4f7ab59759c33b1a59999a74f9a2fb71a031197c0ba",
+      "kind": "p",
+      "chapter": "قل-واحزناه-على-الحزن",
+      "prev": "7c13ebf167a4aa66ad660bf095241ec44bb7f5f1d2b0c5c9e9e1fd62e5f3cf65",
+      "next": "8c4a9acc4e6af4eb2f3bd589aa3321b18d167878c2205f28a2071343c037a205"
+    },
+    {
+      "ord": 51,
+      "blockId": "b3ab9116455e693248976bfab1842512",
+      "fp64": "e51ac017575370fc",
+      "normHash": "8c4a9acc4e6af4eb2f3bd589aa3321b18d167878c2205f28a2071343c037a205",
+      "kind": "p",
+      "chapter": "قل-واحزناه-على-الحزن",
+      "prev": "31f82f630a77cf4b510bf4f7ab59759c33b1a59999a74f9a2fb71a031197c0ba",
+      "next": "efdf736b978a0ff079db8adcbab08ebe15743bc8112d8220b6624282cb999433"
+    },
+    {
+      "ord": 52,
+      "blockId": "4c0d8a6ac6d2114a285c0cb84eebbcf1",
+      "fp64": "750ed2142652629c",
+      "normHash": "efdf736b978a0ff079db8adcbab08ebe15743bc8112d8220b6624282cb999433",
+      "kind": "p",
+      "chapter": "قل-واحزناه-على-الحزن",
+      "prev": "8c4a9acc4e6af4eb2f3bd589aa3321b18d167878c2205f28a2071343c037a205",
+      "next": "57f37e4170198b51df43f9f91c1da5ed25f7173762cf30cc3c502d5a79916044"
+    },
+    {
+      "ord": 53,
+      "blockId": "b70cd97151b3d2a03b9c4f64ff646fe9",
+      "fp64": "35fff7ff5b31e5b6",
+      "normHash": "57f37e4170198b51df43f9f91c1da5ed25f7173762cf30cc3c502d5a79916044",
+      "kind": "page",
+      "chapter": "قل-واحزناه-على-الحزن",
+      "prev": "efdf736b978a0ff079db8adcbab08ebe15743bc8112d8220b6624282cb999433",
+      "next": "ee2f249e4207ee91df8d08e61beeb3a0749a75ad375502656ddfadd145cd71ba"
+    },
+    {
+      "ord": 54,
+      "blockId": "a0c72dc5ae6be5ffcdedd6dd37b26300",
+      "fp64": "2ff413db13151ebd",
+      "normHash": "ee2f249e4207ee91df8d08e61beeb3a0749a75ad375502656ddfadd145cd71ba",
+      "kind": "h2",
+      "chapter": "الأحزان-في-الدنيا-ثلاثة",
+      "prev": "57f37e4170198b51df43f9f91c1da5ed25f7173762cf30cc3c502d5a79916044",
+      "next": "1fd8e10fef322199061675b35e2818af322dbebd3e1db04528811f814f4346e2"
+    },
+    {
+      "ord": 55,
+      "blockId": "5975f712f0b485b7fe5eb1a58d3f1988",
+      "fp64": "a5780096d6f04074",
+      "normHash": "1fd8e10fef322199061675b35e2818af322dbebd3e1db04528811f814f4346e2",
+      "kind": "p",
+      "chapter": "الأحزان-في-الدنيا-ثلاثة",
+      "prev": "ee2f249e4207ee91df8d08e61beeb3a0749a75ad375502656ddfadd145cd71ba",
+      "next": "bec4ebafdfe0d5ab26593d70dcba5501ba184f0b113fb0837cab2b934a4b1b34"
+    },
+    {
+      "ord": 56,
+      "blockId": "4e78b7f01eabf32eca69b1ec73be26ee",
+      "fp64": "e8a1b1380a988ed9",
+      "normHash": "bec4ebafdfe0d5ab26593d70dcba5501ba184f0b113fb0837cab2b934a4b1b34",
+      "kind": "h2",
+      "chapter": "هل-الدعاء-يستجاب-عند-الأحزان",
+      "prev": "1fd8e10fef322199061675b35e2818af322dbebd3e1db04528811f814f4346e2",
+      "next": "eb050f56c0b6d397bb33df175c0d6c6cbb254b494a7e4d1e273bae58257c67dc"
+    },
+    {
+      "ord": 57,
+      "blockId": "1f426e8b36e636851c20f60c5be5ed93",
+      "fp64": "7d06b69aad65c77f",
+      "normHash": "eb050f56c0b6d397bb33df175c0d6c6cbb254b494a7e4d1e273bae58257c67dc",
+      "kind": "p",
+      "chapter": "هل-الدعاء-يستجاب-عند-الأحزان",
+      "prev": "bec4ebafdfe0d5ab26593d70dcba5501ba184f0b113fb0837cab2b934a4b1b34",
+      "next": "d56795599b437250f30807e7c6fd7afff18cc6c15c48339274a02113225c30ec"
+    },
+    {
+      "ord": 58,
+      "blockId": "3ca91b725f9775ff5dce908da07062e4",
+      "fp64": "24120096a77844d4",
+      "normHash": "d56795599b437250f30807e7c6fd7afff18cc6c15c48339274a02113225c30ec",
+      "kind": "p",
+      "chapter": "هل-الدعاء-يستجاب-عند-الأحزان",
+      "prev": "eb050f56c0b6d397bb33df175c0d6c6cbb254b494a7e4d1e273bae58257c67dc",
+      "next": "8bdfd64f297cb4f46a40fb573a4ddedb248ee4a29471671507327f8356aee87e"
+    },
+    {
+      "ord": 59,
+      "blockId": "c610132c9f8b852ffc69ff6722cdf27a",
+      "fp64": "35dff7fa5a3374bf",
+      "normHash": "8bdfd64f297cb4f46a40fb573a4ddedb248ee4a29471671507327f8356aee87e",
+      "kind": "page",
+      "chapter": "هل-الدعاء-يستجاب-عند-الأحزان",
+      "prev": "d56795599b437250f30807e7c6fd7afff18cc6c15c48339274a02113225c30ec",
+      "next": "960cda3c8d9b8763454c89100560b959c8c034a093f3f326a75ed379b363ae47"
+    },
+    {
+      "ord": 60,
+      "blockId": "3ba660a002c928687c1bf1293ef8b2e0",
+      "fp64": "08e883f3c86a1bcb",
+      "normHash": "960cda3c8d9b8763454c89100560b959c8c034a093f3f326a75ed379b363ae47",
+      "kind": "h2",
+      "chapter": "أحزان-على-ضياع-صلاة-الجماعة",
+      "prev": "8bdfd64f297cb4f46a40fb573a4ddedb248ee4a29471671507327f8356aee87e",
+      "next": "85b05961d8cb496f5e19f03ba8ddb1cf6faed6209a8062ed11776841219402fb"
+    },
+    {
+      "ord": 61,
+      "blockId": "91d88083d145d76a1a92e252b755d30d",
+      "fp64": "545b621297d0f014",
+      "normHash": "85b05961d8cb496f5e19f03ba8ddb1cf6faed6209a8062ed11776841219402fb",
+      "kind": "p",
+      "chapter": "أحزان-على-ضياع-صلاة-الجماعة",
+      "prev": "960cda3c8d9b8763454c89100560b959c8c034a093f3f326a75ed379b363ae47",
+      "next": "8b44242f9c9e194581e911082046a2df846dca82e6695456ec96f0a26c09c247"
+    },
+    {
+      "ord": 62,
+      "blockId": "5f36fbb03817e98fdaea2453bfd14608",
+      "fp64": "7d5f40374662f014",
+      "normHash": "8b44242f9c9e194581e911082046a2df846dca82e6695456ec96f0a26c09c247",
+      "kind": "p",
+      "chapter": "أحزان-على-ضياع-صلاة-الجماعة",
+      "prev": "85b05961d8cb496f5e19f03ba8ddb1cf6faed6209a8062ed11776841219402fb",
+      "next": "29eae3e7cbf6af90dd0be6a2d2bc0f2fb87fdf7fc2e7bc1f29cbf98018991151"
+    },
+    {
+      "ord": 63,
+      "blockId": "580d2012b3224d5dbdc9a6689eeb7966",
+      "fp64": "eddff3dadf39e576",
+      "normHash": "29eae3e7cbf6af90dd0be6a2d2bc0f2fb87fdf7fc2e7bc1f29cbf98018991151",
+      "kind": "page",
+      "chapter": "أحزان-على-ضياع-صلاة-الجماعة",
+      "prev": "8b44242f9c9e194581e911082046a2df846dca82e6695456ec96f0a26c09c247",
+      "next": "c6cbde8de403e7d7b60e917e7615e52c7e45fb92d6ffe708d7043c18c925eecd"
+    },
+    {
+      "ord": 64,
+      "blockId": "71963ad97e1749db573ae9859fb531ec",
+      "fp64": "2326e84a1bf08941",
+      "normHash": "c6cbde8de403e7d7b60e917e7615e52c7e45fb92d6ffe708d7043c18c925eecd",
+      "kind": "h2",
+      "chapter": "الحزن-جلاء-القلوب",
+      "prev": "29eae3e7cbf6af90dd0be6a2d2bc0f2fb87fdf7fc2e7bc1f29cbf98018991151",
+      "next": "360032eac3989bb0fb67b27b97f40ebcabdf14c8cd0b6961b91857fe334d08d4"
+    },
+    {
+      "ord": 65,
+      "blockId": "7cd8ebcfc7167b7c889dbe0d167b676c",
+      "fp64": "7596169f46f3c034",
+      "normHash": "360032eac3989bb0fb67b27b97f40ebcabdf14c8cd0b6961b91857fe334d08d4",
+      "kind": "p",
+      "chapter": "الحزن-جلاء-القلوب",
+      "prev": "c6cbde8de403e7d7b60e917e7615e52c7e45fb92d6ffe708d7043c18c925eecd",
+      "next": "51a3bca7a6fe142808586e56ceb89668b169eeef0b0084eb25d87aeccf4a26a8"
+    },
+    {
+      "ord": 66,
+      "blockId": "964450c4ed9e65b1841fb50bbff18c36",
+      "fp64": "624f4a4a8ffa6940",
+      "normHash": "51a3bca7a6fe142808586e56ceb89668b169eeef0b0084eb25d87aeccf4a26a8",
+      "kind": "h2",
+      "chapter": "من-أقوال-الصالحين-عن-الحزن",
+      "prev": "360032eac3989bb0fb67b27b97f40ebcabdf14c8cd0b6961b91857fe334d08d4",
+      "next": "b2fff99defbb5cb3752d32a96e05105d8994f75186d370d3c07322d63865c82a"
+    },
+    {
+      "ord": 67,
+      "blockId": "9c8dd2b2db2a706cd3fca1db73c85e83",
+      "fp64": "b43f6096c7f86d54",
+      "normHash": "b2fff99defbb5cb3752d32a96e05105d8994f75186d370d3c07322d63865c82a",
+      "kind": "p",
+      "chapter": "من-أقوال-الصالحين-عن-الحزن",
+      "prev": "51a3bca7a6fe142808586e56ceb89668b169eeef0b0084eb25d87aeccf4a26a8",
+      "next": "4bbbeca6742f12c299ee9874c27e783f7f3f2b0b40fb7eff785b2d2e7693ddd5"
+    },
+    {
+      "ord": 68,
+      "blockId": "52dc8f88f9a4e3ac99faa65c4c6df563",
+      "fp64": "afffff9b7fb5617e",
+      "normHash": "4bbbeca6742f12c299ee9874c27e783f7f3f2b0b40fb7eff785b2d2e7693ddd5",
+      "kind": "page",
+      "chapter": "من-أقوال-الصالحين-عن-الحزن",
+      "prev": "b2fff99defbb5cb3752d32a96e05105d8994f75186d370d3c07322d63865c82a",
+      "next": "f088b115f8d502c81d91afa677897b9ee76197c3d1cdd71df39d2efa3a8a7dd8"
+    },
+    {
+      "ord": 69,
+      "blockId": "a98fa6171678f30009569a0470522a8f",
+      "fp64": "661b639787716854",
+      "normHash": "f088b115f8d502c81d91afa677897b9ee76197c3d1cdd71df39d2efa3a8a7dd8",
+      "kind": "p",
+      "chapter": "من-أقوال-الصالحين-عن-الحزن",
+      "prev": "4bbbeca6742f12c299ee9874c27e783f7f3f2b0b40fb7eff785b2d2e7693ddd5",
+      "next": "364f749596e12c1181c4f8916bb9b9d8cdd96d9e0515b17c5c9dd455186272f2"
+    },
+    {
+      "ord": 70,
+      "blockId": "005f070418bb77fc4d32edcfbcf48cda",
+      "fp64": "fc97b29e2751463c",
+      "normHash": "364f749596e12c1181c4f8916bb9b9d8cdd96d9e0515b17c5c9dd455186272f2",
+      "kind": "p",
+      "chapter": "من-أقوال-الصالحين-عن-الحزن",
+      "prev": "f088b115f8d502c81d91afa677897b9ee76197c3d1cdd71df39d2efa3a8a7dd8",
+      "next": "c2e5ec499c041da0ca3ab6ab1146db3b1f4719e299d00b7bb5ed6dd8e308dd99"
+    },
+    {
+      "ord": 71,
+      "blockId": "c5608f51c291add2c98153e8927644a6",
+      "fp64": "27fffbde7a31e9be",
+      "normHash": "c2e5ec499c041da0ca3ab6ab1146db3b1f4719e299d00b7bb5ed6dd8e308dd99",
+      "kind": "page",
+      "chapter": "من-أقوال-الصالحين-عن-الحزن",
+      "prev": "364f749596e12c1181c4f8916bb9b9d8cdd96d9e0515b17c5c9dd455186272f2",
+      "next": "cf3d7ddcb222a5db8517a887e11415ee0fcc823d643be86138ed95b6ca5f41b2"
+    },
+    {
+      "ord": 72,
+      "blockId": "e691665a5c8b604ad5773833ade00644",
+      "fp64": "7524ba8cbe943c8a",
+      "normHash": "cf3d7ddcb222a5db8517a887e11415ee0fcc823d643be86138ed95b6ca5f41b2",
+      "kind": "h2",
+      "chapter": "هل-الهم-والحزن-يزيدان-الحسنات",
+      "prev": "c2e5ec499c041da0ca3ab6ab1146db3b1f4719e299d00b7bb5ed6dd8e308dd99",
+      "next": "eb050f56c0b6d397bb33df175c0d6c6cbb254b494a7e4d1e273bae58257c67dc"
+    },
+    {
+      "ord": 73,
+      "blockId": "1a6f47abd0ce03b81469d98baa825a47",
+      "fp64": "7d06b69aad65c77f",
+      "normHash": "eb050f56c0b6d397bb33df175c0d6c6cbb254b494a7e4d1e273bae58257c67dc",
+      "kind": "p",
+      "chapter": "هل-الهم-والحزن-يزيدان-الحسنات",
+      "prev": "cf3d7ddcb222a5db8517a887e11415ee0fcc823d643be86138ed95b6ca5f41b2",
+      "next": "79bd4429c233653a2621b97afff001a4b6725c273ee3596e017602958b13253d"
+    },
+    {
+      "ord": 74,
+      "blockId": "b29e03bd627e41fa7f2fa545f8dd0a77",
+      "fp64": "6d6e92d647f67014",
+      "normHash": "79bd4429c233653a2621b97afff001a4b6725c273ee3596e017602958b13253d",
+      "kind": "p",
+      "chapter": "هل-الهم-والحزن-يزيدان-الحسنات",
+      "prev": "eb050f56c0b6d397bb33df175c0d6c6cbb254b494a7e4d1e273bae58257c67dc",
+      "next": "40fffa0d19f4580ef4d01e3949a9f007f844de05680c920f1ed8195d93ca936b"
+    },
+    {
+      "ord": 75,
+      "blockId": "2d7994e54cb09edc014c56a9563cbfa3",
+      "fp64": "725664d69df6795c",
+      "normHash": "40fffa0d19f4580ef4d01e3949a9f007f844de05680c920f1ed8195d93ca936b",
+      "kind": "p",
+      "chapter": "هل-الهم-والحزن-يزيدان-الحسنات",
+      "prev": "79bd4429c233653a2621b97afff001a4b6725c273ee3596e017602958b13253d",
+      "next": "b271db2d31a291996045e748faf11d4a35ceda2e52fc3e05cc86c6d37ecb262d"
+    },
+    {
+      "ord": 76,
+      "blockId": "2a10f53d350b9d9a1fd7fbe84bb47773",
+      "fp64": "bdfffbdf5bb9f13f",
+      "normHash": "b271db2d31a291996045e748faf11d4a35ceda2e52fc3e05cc86c6d37ecb262d",
+      "kind": "page",
+      "chapter": "هل-الهم-والحزن-يزيدان-الحسنات",
+      "prev": "40fffa0d19f4580ef4d01e3949a9f007f844de05680c920f1ed8195d93ca936b",
+      "next": "0689803ba01639bf88bd0dd47bf35695e2cf38dfc96c7c7d189f7c0531acbde3"
+    },
+    {
+      "ord": 77,
+      "blockId": "47f9935a6f95cedaa66476651f8127c9",
+      "fp64": "e23fcf5e99fae9c6",
+      "normHash": "0689803ba01639bf88bd0dd47bf35695e2cf38dfc96c7c7d189f7c0531acbde3",
+      "kind": "h2",
+      "chapter": "حديث-القرآن-عن-الحزن",
+      "prev": "b271db2d31a291996045e748faf11d4a35ceda2e52fc3e05cc86c6d37ecb262d",
+      "next": "7a7e86d730568c28b3a28d39d8e51bcd727b423acd8d9745df70c006038618d4"
+    },
+    {
+      "ord": 78,
+      "blockId": "461a708e41e8f463c59242ffb0c6cad5",
+      "fp64": "681d40968673e0d4",
+      "normHash": "7a7e86d730568c28b3a28d39d8e51bcd727b423acd8d9745df70c006038618d4",
+      "kind": "p",
+      "chapter": "حديث-القرآن-عن-الحزن",
+      "prev": "0689803ba01639bf88bd0dd47bf35695e2cf38dfc96c7c7d189f7c0531acbde3",
+      "next": "b46e6923a0be5a76f4a246c38e1cdd730d028270f56f2c5716ded45f3af2b500"
+    },
+    {
+      "ord": 79,
+      "blockId": "aa0989c31b9ec65ab5c806179b2f310d",
+      "fp64": "a5fff3dedbfffef7",
+      "normHash": "b46e6923a0be5a76f4a246c38e1cdd730d028270f56f2c5716ded45f3af2b500",
+      "kind": "page",
+      "chapter": "حديث-القرآن-عن-الحزن",
+      "prev": "7a7e86d730568c28b3a28d39d8e51bcd727b423acd8d9745df70c006038618d4",
+      "next": "026cc46ff09893c8d86c6d55c83ac0d0420d3e2f4ba1038ae19d427e0b68430a"
+    },
+    {
+      "ord": 80,
+      "blockId": "acde13ff3be0e64420f1190130da2a22",
+      "fp64": "641743968772e1d4",
+      "normHash": "026cc46ff09893c8d86c6d55c83ac0d0420d3e2f4ba1038ae19d427e0b68430a",
+      "kind": "p",
+      "chapter": "حديث-القرآن-عن-الحزن",
+      "prev": "b46e6923a0be5a76f4a246c38e1cdd730d028270f56f2c5716ded45f3af2b500",
+      "next": "22f654c6b3fb1aacec77c105b93f70961b207a6144200518d57d06f72f325d4a"
+    },
+    {
+      "ord": 81,
+      "blockId": "54d7389994b4c4885ef90f575f578f55",
+      "fp64": "641a639617f7f454",
+      "normHash": "22f654c6b3fb1aacec77c105b93f70961b207a6144200518d57d06f72f325d4a",
+      "kind": "p",
+      "chapter": "حديث-القرآن-عن-الحزن",
+      "prev": "026cc46ff09893c8d86c6d55c83ac0d0420d3e2f4ba1038ae19d427e0b68430a",
+      "next": "f9561102f6f0bb7090974fb237863cb5f8058726d79ee2da8b7b9f3485c54280"
+    },
+    {
+      "ord": 82,
+      "blockId": "2506755c3ec86103a92b3a83a2bcbf1e",
+      "fp64": "2fdffbdadb7ff13f",
+      "normHash": "f9561102f6f0bb7090974fb237863cb5f8058726d79ee2da8b7b9f3485c54280",
+      "kind": "page",
+      "chapter": "حديث-القرآن-عن-الحزن",
+      "prev": "22f654c6b3fb1aacec77c105b93f70961b207a6144200518d57d06f72f325d4a",
+      "next": "571bdb96121cd4b55f134aa7547b046f62b5ed643e5cc6ab99f8c6e4122c00ad"
+    },
+    {
+      "ord": 83,
+      "blockId": "d750e95a698fc3e40320f60678589b84",
+      "fp64": "0bf0922ac1bb9129",
+      "normHash": "571bdb96121cd4b55f134aa7547b046f62b5ed643e5cc6ab99f8c6e4122c00ad",
+      "kind": "h2",
+      "chapter": "حزن-هؤلاء-لا-يبلى-أبدا",
+      "prev": "f9561102f6f0bb7090974fb237863cb5f8058726d79ee2da8b7b9f3485c54280",
+      "next": "9ad46a8009d3db1eeed68cbc15d53213983106b7b3467eeaf6a52304389f8d33"
+    },
+    {
+      "ord": 84,
+      "blockId": "3a532e359c5e616dacdd18495c53363f",
+      "fp64": "7d50d216b69ae23e",
+      "normHash": "9ad46a8009d3db1eeed68cbc15d53213983106b7b3467eeaf6a52304389f8d33",
+      "kind": "p",
+      "chapter": "حزن-هؤلاء-لا-يبلى-أبدا",
+      "prev": "571bdb96121cd4b55f134aa7547b046f62b5ed643e5cc6ab99f8c6e4122c00ad",
+      "next": "eb41f59f1e28ac3d6ab44d6fc21e2230b7627f506dc1398c862b5b1a7ace8a62"
+    },
+    {
+      "ord": 85,
+      "blockId": "08516b40023637d27b0f2e7da06510c3",
+      "fp64": "7d1a1217e71ea33e",
+      "normHash": "eb41f59f1e28ac3d6ab44d6fc21e2230b7627f506dc1398c862b5b1a7ace8a62",
+      "kind": "p",
+      "chapter": "حزن-هؤلاء-لا-يبلى-أبدا",
+      "prev": "9ad46a8009d3db1eeed68cbc15d53213983106b7b3467eeaf6a52304389f8d33",
+      "next": "c54ec27e8c1dc3970495d97258b93549e69663924cb3f90a1eac825faa56f90d"
+    },
+    {
+      "ord": 86,
+      "blockId": "6393dab66084788532c54a00d6226c20",
+      "fp64": "0450001786ef631c",
+      "normHash": "c54ec27e8c1dc3970495d97258b93549e69663924cb3f90a1eac825faa56f90d",
+      "kind": "p",
+      "chapter": "حزن-هؤلاء-لا-يبلى-أبدا",
+      "prev": "eb41f59f1e28ac3d6ab44d6fc21e2230b7627f506dc1398c862b5b1a7ace8a62",
+      "next": "b45714bbeaceb94fe48a62b395281c96fe52365900f57b444a5084c187979246"
+    },
+    {
+      "ord": 87,
+      "blockId": "0ac7b05d68e46cf4a602625f15cd53a8",
+      "fp64": "addff79afe7d6777",
+      "normHash": "b45714bbeaceb94fe48a62b395281c96fe52365900f57b444a5084c187979246",
+      "kind": "page",
+      "chapter": "حزن-هؤلاء-لا-يبلى-أبدا",
+      "prev": "c54ec27e8c1dc3970495d97258b93549e69663924cb3f90a1eac825faa56f90d",
+      "next": "e982ad1657d856479d96d7c4bf4b21fb79eee510961b845d39b7e2a31b88c6d9"
+    },
+    {
+      "ord": 88,
+      "blockId": "44fe556002f7a83a2af3b776eed30be5",
+      "fp64": "a672737bcffc771a",
+      "normHash": "e982ad1657d856479d96d7c4bf4b21fb79eee510961b845d39b7e2a31b88c6d9",
+      "kind": "h2",
+      "chapter": "حزن-لك-وحزن-عليك",
+      "prev": "b45714bbeaceb94fe48a62b395281c96fe52365900f57b444a5084c187979246",
+      "next": "75688beef7042e97457217eb9369843c2066a0eb3b37a9f67d689befaeda86ee"
+    },
+    {
+      "ord": 89,
+      "blockId": "cc59a50bb39863d45e4b1a4abaadc901",
+      "fp64": "65973315a7e65010",
+      "normHash": "75688beef7042e97457217eb9369843c2066a0eb3b37a9f67d689befaeda86ee",
+      "kind": "p",
+      "chapter": "حزن-لك-وحزن-عليك",
+      "prev": "e982ad1657d856479d96d7c4bf4b21fb79eee510961b845d39b7e2a31b88c6d9",
+      "next": "0a51e5798d0e98ea5852734a12e5ecf948d1a1a7e88cdad327239e1b5a3a7428"
+    },
+    {
+      "ord": 90,
+      "blockId": "658de31e649ca1e540882227616cbb5e",
+      "fp64": "e51bf63425f6ca30",
+      "normHash": "0a51e5798d0e98ea5852734a12e5ecf948d1a1a7e88cdad327239e1b5a3a7428",
+      "kind": "p",
+      "chapter": "حزن-لك-وحزن-عليك",
+      "prev": "75688beef7042e97457217eb9369843c2066a0eb3b37a9f67d689befaeda86ee",
+      "next": "d284cc0fd73584653510c35a6a017f8ad937e30f2bef536e7df256f97d22e433"
+    },
+    {
+      "ord": 91,
+      "blockId": "6ad8732924130f7430cf64f6f21a2289",
+      "fp64": "a5dff7da5e73eb76",
+      "normHash": "d284cc0fd73584653510c35a6a017f8ad937e30f2bef536e7df256f97d22e433",
+      "kind": "page",
+      "chapter": "حزن-لك-وحزن-عليك",
+      "prev": "0a51e5798d0e98ea5852734a12e5ecf948d1a1a7e88cdad327239e1b5a3a7428",
+      "next": "b361494d15bd665c5e3d6d0cb933d2c8bf5358202d39d8eed3f63c22ebde8238"
+    },
+    {
+      "ord": 92,
+      "blockId": "cb0b12588692fd155c9627bedcdfc79c",
+      "fp64": "987002bb2215f606",
+      "normHash": "b361494d15bd665c5e3d6d0cb933d2c8bf5358202d39d8eed3f63c22ebde8238",
+      "kind": "h2",
+      "chapter": "حزن-الآخرة-يطرد-فرح-الدنيا",
+      "prev": "d284cc0fd73584653510c35a6a017f8ad937e30f2bef536e7df256f97d22e433",
+      "next": "d38b800ab2fde58fd0acd6a3c31ba2e1f5bf445f33d6c0f24cd4caea6fe61226"
+    },
+    {
+      "ord": 93,
+      "blockId": "aa8e81601ac82051d789b27a3795d8fd",
+      "fp64": "251662060372b25c",
+      "normHash": "d38b800ab2fde58fd0acd6a3c31ba2e1f5bf445f33d6c0f24cd4caea6fe61226",
+      "kind": "p",
+      "chapter": "حزن-الآخرة-يطرد-فرح-الدنيا",
+      "prev": "b361494d15bd665c5e3d6d0cb933d2c8bf5358202d39d8eed3f63c22ebde8238",
+      "next": "fdc5ad19826e44578734c8e7355341f29dd3e7f17a6b0dd1c48395c874b724e0"
+    },
+    {
+      "ord": 94,
+      "blockId": "8f3bf72c274bcddbaaf9af175552a1bc",
+      "fp64": "fec7cb79aafac8d9",
+      "normHash": "fdc5ad19826e44578734c8e7355341f29dd3e7f17a6b0dd1c48395c874b724e0",
+      "kind": "h2",
+      "chapter": "رجل-طويل-الحزن-والكآبة",
+      "prev": "d38b800ab2fde58fd0acd6a3c31ba2e1f5bf445f33d6c0f24cd4caea6fe61226",
+      "next": "cbabf54c95dbb07ff619bc706509de1a00673349c7d105d749beba5ee427baa5"
+    },
+    {
+      "ord": 95,
+      "blockId": "b90e5274f110f3a8dffc67934e36a7f9",
+      "fp64": "6411e19787f7f054",
+      "normHash": "cbabf54c95dbb07ff619bc706509de1a00673349c7d105d749beba5ee427baa5",
+      "kind": "p",
+      "chapter": "رجل-طويل-الحزن-والكآبة",
+      "prev": "fdc5ad19826e44578734c8e7355341f29dd3e7f17a6b0dd1c48395c874b724e0",
+      "next": "c1d50dc79e6c0267e9efbd68795c3df8e2c25e590d0b1bc168c1ccb63b902798"
+    },
+    {
+      "ord": 96,
+      "blockId": "7758fdb87e223587b2dbf1715a67daf6",
+      "fp64": "bddffbdafb75ee77",
+      "normHash": "c1d50dc79e6c0267e9efbd68795c3df8e2c25e590d0b1bc168c1ccb63b902798",
+      "kind": "page",
+      "chapter": "رجل-طويل-الحزن-والكآبة",
+      "prev": "cbabf54c95dbb07ff619bc706509de1a00673349c7d105d749beba5ee427baa5",
+      "next": "38e6df2ad8ea2898565f9dad2d72f329cae1d5bd620ef70dc926689ffe04c9c1"
+    },
+    {
+      "ord": 97,
+      "blockId": "7228e9865c79c15a490f0da8ac3a1f27",
+      "fp64": "0f06380066ddfe9e",
+      "normHash": "38e6df2ad8ea2898565f9dad2d72f329cae1d5bd620ef70dc926689ffe04c9c1",
+      "kind": "h2",
+      "chapter": "الهموم-والأحزان-في-حياة-البصري",
+      "prev": "c1d50dc79e6c0267e9efbd68795c3df8e2c25e590d0b1bc168c1ccb63b902798",
+      "next": "03890b16eff68eda4b46fc70d779b659bca72f46d27b6edf666ef5cf8d41880e"
+    },
+    {
+      "ord": 98,
+      "blockId": "2f24dd6e00d5e774eb0b0454c64550b7",
+      "fp64": "441035947763a51c",
+      "normHash": "03890b16eff68eda4b46fc70d779b659bca72f46d27b6edf666ef5cf8d41880e",
+      "kind": "p",
+      "chapter": "الهموم-والأحزان-في-حياة-البصري",
+      "prev": "38e6df2ad8ea2898565f9dad2d72f329cae1d5bd620ef70dc926689ffe04c9c1",
+      "next": "f30c8a4e1f88620015dabfd340a4b2e0a19bd218e3ca2e4209148dc57fb0c82a"
+    },
+    {
+      "ord": 99,
+      "blockId": "f4b65ab75a9ad6438048f1df3d1e0ba4",
+      "fp64": "df19a2d68f73e01c",
+      "normHash": "f30c8a4e1f88620015dabfd340a4b2e0a19bd218e3ca2e4209148dc57fb0c82a",
+      "kind": "p",
+      "chapter": "الهموم-والأحزان-في-حياة-البصري",
+      "prev": "03890b16eff68eda4b46fc70d779b659bca72f46d27b6edf666ef5cf8d41880e",
+      "next": "47a608900b812e28351277f4ceba154c78be5a19735cb65393561b1fae8e2f7b"
+    },
+    {
+      "ord": 100,
+      "blockId": "b0f04722779a9bc91f7a557c43391775",
+      "fp64": "ffdff79affb777b7",
+      "normHash": "47a608900b812e28351277f4ceba154c78be5a19735cb65393561b1fae8e2f7b",
+      "kind": "page",
+      "chapter": "الهموم-والأحزان-في-حياة-البصري",
+      "prev": "f30c8a4e1f88620015dabfd340a4b2e0a19bd218e3ca2e4209148dc57fb0c82a",
+      "next": "2bc304a0d04bdda17a0c3e188a266bf2805ac3bf0b8e0e230cddd691823824c4"
+    },
+    {
+      "ord": 101,
+      "blockId": "530a932b393c8299c1681d28878f1f40",
+      "fp64": "567b721687716014",
+      "normHash": "2bc304a0d04bdda17a0c3e188a266bf2805ac3bf0b8e0e230cddd691823824c4",
+      "kind": "p",
+      "chapter": "الهموم-والأحزان-في-حياة-البصري",
+      "prev": "47a608900b812e28351277f4ceba154c78be5a19735cb65393561b1fae8e2f7b",
+      "next": "82f298a8997be7a44ca90bd7edb3b215d645b88e2f7f5e581359b26e250ec5b0"
+    },
+    {
+      "ord": 102,
+      "blockId": "eaf3623b6809a04e241fefdbb9fcac3c",
+      "fp64": "6c147114c652369c",
+      "normHash": "82f298a8997be7a44ca90bd7edb3b215d645b88e2f7f5e581359b26e250ec5b0",
+      "kind": "p",
+      "chapter": "الهموم-والأحزان-في-حياة-البصري",
+      "prev": "2bc304a0d04bdda17a0c3e188a266bf2805ac3bf0b8e0e230cddd691823824c4",
+      "next": "89e34329ab90aa190773ce2438a8e1c6bd4a1fdaab455c2d4345beefa0f8a62f"
+    },
+    {
+      "ord": 103,
+      "blockId": "b6dc44fb533d3a12cabaa2c06e9eea1a",
+      "fp64": "37ffff9e7a3ffc37",
+      "normHash": "89e34329ab90aa190773ce2438a8e1c6bd4a1fdaab455c2d4345beefa0f8a62f",
+      "kind": "page",
+      "chapter": "الهموم-والأحزان-في-حياة-البصري",
+      "prev": "82f298a8997be7a44ca90bd7edb3b215d645b88e2f7f5e581359b26e250ec5b0",
+      "next": "87e32e70ed2795e1e31dba45cc3a4b40a491a9fffaa7852a9a8319d45277c0bf"
+    },
+    {
+      "ord": 104,
+      "blockId": "a5a209b58041dfa4b837f4d6973b3baf",
+      "fp64": "753e4296e7436a14",
+      "normHash": "87e32e70ed2795e1e31dba45cc3a4b40a491a9fffaa7852a9a8319d45277c0bf",
+      "kind": "p",
+      "chapter": "الهموم-والأحزان-في-حياة-البصري",
+      "prev": "89e34329ab90aa190773ce2438a8e1c6bd4a1fdaab455c2d4345beefa0f8a62f",
+      "next": "3aba1c8ef2fd947019b0e492cfc1b1e50441d712ec5055ee0e84888dccf5f4d3"
+    },
+    {
+      "ord": 105,
+      "blockId": "88f7711d5cd2d342b1dfb7e0a0c475a4",
+      "fp64": "df25ad3dbf75ddc9",
+      "normHash": "3aba1c8ef2fd947019b0e492cfc1b1e50441d712ec5055ee0e84888dccf5f4d3",
+      "kind": "h2",
+      "chapter": "رفع-منازل-الأبرار-بالحزن",
+      "prev": "87e32e70ed2795e1e31dba45cc3a4b40a491a9fffaa7852a9a8319d45277c0bf",
+      "next": "32d9eeb36c2305ed480c1cb531255ad4c4cd22126acd55fccf72c8e53c588491"
+    },
+    {
+      "ord": 106,
+      "blockId": "c1a242cbb27e3e74ddf48c102cd8a256",
+      "fp64": "7c06f4141f464614",
+      "normHash": "32d9eeb36c2305ed480c1cb531255ad4c4cd22126acd55fccf72c8e53c588491",
+      "kind": "p",
+      "chapter": "رفع-منازل-الأبرار-بالحزن",
+      "prev": "3aba1c8ef2fd947019b0e492cfc1b1e50441d712ec5055ee0e84888dccf5f4d3",
+      "next": "fbe3e8d287e8ee688a1af4f098432b4d5d351d6a8e283e6a697d9744ebedf4f3"
+    },
+    {
+      "ord": 107,
+      "blockId": "447abeb5ab1c28c080764917ca4b7049",
+      "fp64": "7dfff3fa5eb16837",
+      "normHash": "fbe3e8d287e8ee688a1af4f098432b4d5d351d6a8e283e6a697d9744ebedf4f3",
+      "kind": "page",
+      "chapter": "رفع-منازل-الأبرار-بالحزن",
+      "prev": "32d9eeb36c2305ed480c1cb531255ad4c4cd22126acd55fccf72c8e53c588491",
+      "next": "691b03ba90dce8acb554719c822f19025fe0b8d00f73c96dcf4243d7e843874d"
+    },
+    {
+      "ord": 108,
+      "blockId": "097da16cbeb7150b6db76c5a4daa328f",
+      "fp64": "be4ca10b86d05f88",
+      "normHash": "691b03ba90dce8acb554719c822f19025fe0b8d00f73c96dcf4243d7e843874d",
+      "kind": "h2",
+      "chapter": "رجل-كأن-عليه-حزن-الخلائق",
+      "prev": "fbe3e8d287e8ee688a1af4f098432b4d5d351d6a8e283e6a697d9744ebedf4f3",
+      "next": "37fd5bc309592cdc5886e0135cd18898787e9789fe1c1be1ef0ba84d41866de3"
+    },
+    {
+      "ord": 109,
+      "blockId": "952678d43c05c8823f1be4840b3ba4df",
+      "fp64": "e51ac035c652761c",
+      "normHash": "37fd5bc309592cdc5886e0135cd18898787e9789fe1c1be1ef0ba84d41866de3",
+      "kind": "p",
+      "chapter": "رجل-كأن-عليه-حزن-الخلائق",
+      "prev": "691b03ba90dce8acb554719c822f19025fe0b8d00f73c96dcf4243d7e843874d",
+      "next": "f5372a17844c06757060ffe6d991f617054c6b0352d0f4abe14582cec1b043fb"
+    },
+    {
+      "ord": 110,
+      "blockId": "c7f31abf17b3ce54608f4ac8e58e29fd",
+      "fp64": "6cdae296e7f96132",
+      "normHash": "f5372a17844c06757060ffe6d991f617054c6b0352d0f4abe14582cec1b043fb",
+      "kind": "p",
+      "chapter": "رجل-كأن-عليه-حزن-الخلائق",
+      "prev": "37fd5bc309592cdc5886e0135cd18898787e9789fe1c1be1ef0ba84d41866de3",
+      "next": "6b95c88c96ea7a8a46e81c5a4dc2fed4eb6272e14d9bcd67068c76922b2b6a37"
+    },
+    {
+      "ord": 111,
+      "blockId": "2f928c788e0601ed8a2782f1a0843e37",
+      "fp64": "35dfffbfdb3b61be",
+      "normHash": "6b95c88c96ea7a8a46e81c5a4dc2fed4eb6272e14d9bcd67068c76922b2b6a37",
+      "kind": "page",
+      "chapter": "رجل-كأن-عليه-حزن-الخلائق",
+      "prev": "f5372a17844c06757060ffe6d991f617054c6b0352d0f4abe14582cec1b043fb",
+      "next": "56239dac59aea5b117df278377222043911491f8dfc8568b29568b385c87e887"
+    },
+    {
+      "ord": 112,
+      "blockId": "c1f0eb64834439f78c4892b193922cfe",
+      "fp64": "9f1a242a41c53ae4",
+      "normHash": "56239dac59aea5b117df278377222043911491f8dfc8568b29568b385c87e887",
+      "kind": "h2",
+      "chapter": "لما-كان-عمر-بن-عبد-العزيز-مغموما",
+      "prev": "6b95c88c96ea7a8a46e81c5a4dc2fed4eb6272e14d9bcd67068c76922b2b6a37",
+      "next": "eb050f56c0b6d397bb33df175c0d6c6cbb254b494a7e4d1e273bae58257c67dc"
+    },
+    {
+      "ord": 113,
+      "blockId": "de5899dc72014e94f742958b1eb2ad12",
+      "fp64": "7d06b69aad65c77f",
+      "normHash": "eb050f56c0b6d397bb33df175c0d6c6cbb254b494a7e4d1e273bae58257c67dc",
+      "kind": "p",
+      "chapter": "لما-كان-عمر-بن-عبد-العزيز-مغموما",
+      "prev": "56239dac59aea5b117df278377222043911491f8dfc8568b29568b385c87e887",
+      "next": "4ed557951c960253bf86e0a6fa2a59eb5492e29fdcad2062a313cfcab4e948bb"
+    },
+    {
+      "ord": 114,
+      "blockId": "1c0cdd884c6120ce63b18d011c54830c",
+      "fp64": "a511720e87e77874",
+      "normHash": "4ed557951c960253bf86e0a6fa2a59eb5492e29fdcad2062a313cfcab4e948bb",
+      "kind": "p",
+      "chapter": "لما-كان-عمر-بن-عبد-العزيز-مغموما",
+      "prev": "eb050f56c0b6d397bb33df175c0d6c6cbb254b494a7e4d1e273bae58257c67dc",
+      "next": "b39862df52b7e6e6f8a1131ddf8ad70d1c535b53865cab0c7564b50899c2dbb9"
+    },
+    {
+      "ord": 115,
+      "blockId": "592bc0e1bc637309f37ff7acd1c91a04",
+      "fp64": "5610600f87636974",
+      "normHash": "b39862df52b7e6e6f8a1131ddf8ad70d1c535b53865cab0c7564b50899c2dbb9",
+      "kind": "p",
+      "chapter": "لما-كان-عمر-بن-عبد-العزيز-مغموما",
+      "prev": "4ed557951c960253bf86e0a6fa2a59eb5492e29fdcad2062a313cfcab4e948bb",
+      "next": "de9ef4f7e1db6ab833dadb7d1e3f6508f278b746260bec369204ddd9e927b1ff"
+    },
+    {
+      "ord": 116,
+      "blockId": "7786234a4466816042a15f81deffe737",
+      "fp64": "7fdfffdfdafb773e",
+      "normHash": "de9ef4f7e1db6ab833dadb7d1e3f6508f278b746260bec369204ddd9e927b1ff",
+      "kind": "page",
+      "chapter": "لما-كان-عمر-بن-عبد-العزيز-مغموما",
+      "prev": "b39862df52b7e6e6f8a1131ddf8ad70d1c535b53865cab0c7564b50899c2dbb9",
+      "next": "1ad370a7e339cddeb20bb2a04f0032198460918cb1ea3f3a037ef91d4ab2098f"
+    },
+    {
+      "ord": 117,
+      "blockId": "d82b8ce2ad600f234e498423962ec060",
+      "fp64": "b7f7f3a4dfb833dc",
+      "normHash": "1ad370a7e339cddeb20bb2a04f0032198460918cb1ea3f3a037ef91d4ab2098f",
+      "kind": "h2",
+      "chapter": "هل-للمؤمن-راحة-دون-لقاء-الله",
+      "prev": "de9ef4f7e1db6ab833dadb7d1e3f6508f278b746260bec369204ddd9e927b1ff",
+      "next": "eb050f56c0b6d397bb33df175c0d6c6cbb254b494a7e4d1e273bae58257c67dc"
+    },
+    {
+      "ord": 118,
+      "blockId": "75d982ea3b4fb3ab3322f9d99569860f",
+      "fp64": "7d06b69aad65c77f",
+      "normHash": "eb050f56c0b6d397bb33df175c0d6c6cbb254b494a7e4d1e273bae58257c67dc",
+      "kind": "p",
+      "chapter": "هل-للمؤمن-راحة-دون-لقاء-الله",
+      "prev": "1ad370a7e339cddeb20bb2a04f0032198460918cb1ea3f3a037ef91d4ab2098f",
+      "next": "b766f190f263d42460ac60e9140e5b3e82eaf5dd4736e06c813f89c8c37a65a6"
+    },
+    {
+      "ord": 119,
+      "blockId": "b343b84f2c1821af8effb03b1bdeefbf",
+      "fp64": "6656401c1d596914",
+      "normHash": "b766f190f263d42460ac60e9140e5b3e82eaf5dd4736e06c813f89c8c37a65a6",
+      "kind": "p",
+      "chapter": "هل-للمؤمن-راحة-دون-لقاء-الله",
+      "prev": "eb050f56c0b6d397bb33df175c0d6c6cbb254b494a7e4d1e273bae58257c67dc",
+      "next": "252108e97419108adac8fe47300eb87e95f42d923cbff9738067d167170485e8"
+    },
+    {
+      "ord": 120,
+      "blockId": "0d2fc3bb84e11a47f1ef09ada922ff2f",
+      "fp64": "651db2bea7792054",
+      "normHash": "252108e97419108adac8fe47300eb87e95f42d923cbff9738067d167170485e8",
+      "kind": "p",
+      "chapter": "هل-للمؤمن-راحة-دون-لقاء-الله",
+      "prev": "b766f190f263d42460ac60e9140e5b3e82eaf5dd4736e06c813f89c8c37a65a6",
+      "next": "c26d885a06caf66019c3038af1e17a4b6f68756d27e7e8d33e9a9d97804d27fc"
+    },
+    {
+      "ord": 121,
+      "blockId": "c41871c8a67119a60973e2098e7619b3",
+      "fp64": "7aefce5b9cb0cdc4",
+      "normHash": "c26d885a06caf66019c3038af1e17a4b6f68756d27e7e8d33e9a9d97804d27fc",
+      "kind": "h2",
+      "chapter": "من-معاني-الحزن-عند-السلف-الصالح",
+      "prev": "252108e97419108adac8fe47300eb87e95f42d923cbff9738067d167170485e8",
+      "next": "30f6addc79c0d5a808d659f63627804de0e4c06ec5f30f8842e2d9dc5b17fc7c"
+    },
+    {
+      "ord": 122,
+      "blockId": "c763914ea9906b3bc4da966b96cb73c8",
+      "fp64": "743f621687f9f154",
+      "normHash": "30f6addc79c0d5a808d659f63627804de0e4c06ec5f30f8842e2d9dc5b17fc7c",
+      "kind": "p",
+      "chapter": "من-معاني-الحزن-عند-السلف-الصالح",
+      "prev": "c26d885a06caf66019c3038af1e17a4b6f68756d27e7e8d33e9a9d97804d27fc",
+      "next": "453df1d9e9e924310e57b1c19b79598fdb9591468fc803b0fb24026faf7d600c"
+    },
+    {
+      "ord": 123,
+      "blockId": "8226c2404fab6b0302cc38b27643d2c6",
+      "fp64": "35dff39e5b73653e",
+      "normHash": "453df1d9e9e924310e57b1c19b79598fdb9591468fc803b0fb24026faf7d600c",
+      "kind": "page",
+      "chapter": "من-معاني-الحزن-عند-السلف-الصالح",
+      "prev": "30f6addc79c0d5a808d659f63627804de0e4c06ec5f30f8842e2d9dc5b17fc7c",
+      "next": "c74b314525274e8eccc3fe086ca9d49ad718af74d4750636a2c5bc2e09834635"
+    },
+    {
+      "ord": 124,
+      "blockId": "7781b37732dd0138cb1c0d297eaabeb0",
+      "fp64": "7416411787f36014",
+      "normHash": "c74b314525274e8eccc3fe086ca9d49ad718af74d4750636a2c5bc2e09834635",
+      "kind": "p",
+      "chapter": "من-معاني-الحزن-عند-السلف-الصالح",
+      "prev": "453df1d9e9e924310e57b1c19b79598fdb9591468fc803b0fb24026faf7d600c",
+      "next": "362d593ffe32f537fa3788e39b5ed175f00b33bb5724969baf1c8fe3a43f99d1"
+    },
+    {
+      "ord": 125,
+      "blockId": "23e068be120563998b76cba7e9ad5378",
+      "fp64": "b537d6f79dd0c81c",
+      "normHash": "362d593ffe32f537fa3788e39b5ed175f00b33bb5724969baf1c8fe3a43f99d1",
+      "kind": "p",
+      "chapter": "من-معاني-الحزن-عند-السلف-الصالح",
+      "prev": "c74b314525274e8eccc3fe086ca9d49ad718af74d4750636a2c5bc2e09834635",
+      "next": "91a9b68cdc8fb35d932a998e74b3d7d6b479ed1674fb7859332dcffa70c3ed3e"
+    },
+    {
+      "ord": 126,
+      "blockId": "575b8a31059413e7497b95724944cd15",
+      "fp64": "fd30a12c1a7b7e7e",
+      "normHash": "91a9b68cdc8fb35d932a998e74b3d7d6b479ed1674fb7859332dcffa70c3ed3e",
+      "kind": "h2",
+      "chapter": "هل-تعرف-أكبر-هم-المؤمن",
+      "prev": "362d593ffe32f537fa3788e39b5ed175f00b33bb5724969baf1c8fe3a43f99d1",
+      "next": "eb050f56c0b6d397bb33df175c0d6c6cbb254b494a7e4d1e273bae58257c67dc"
+    },
+    {
+      "ord": 127,
+      "blockId": "e2b4d06ea2b68a728265734e3d18b1d0",
+      "fp64": "7d06b69aad65c77f",
+      "normHash": "eb050f56c0b6d397bb33df175c0d6c6cbb254b494a7e4d1e273bae58257c67dc",
+      "kind": "p",
+      "chapter": "هل-تعرف-أكبر-هم-المؤمن",
+      "prev": "91a9b68cdc8fb35d932a998e74b3d7d6b479ed1674fb7859332dcffa70c3ed3e",
+      "next": "6ea304528cc762c640116dd2411cd388fc01bbca948b3032e1c508c14baadae4"
+    },
+    {
+      "ord": 128,
+      "blockId": "6a1c7e9a8fc45f71327e82defa760997",
+      "fp64": "47b2c018167b5e5c",
+      "normHash": "6ea304528cc762c640116dd2411cd388fc01bbca948b3032e1c508c14baadae4",
+      "kind": "p",
+      "chapter": "هل-تعرف-أكبر-هم-المؤمن",
+      "prev": "eb050f56c0b6d397bb33df175c0d6c6cbb254b494a7e4d1e273bae58257c67dc",
+      "next": "e14ff3f17a75e66b072eafa44dd75f26148413762454d9e94b579d8e4e28ae91"
+    },
+    {
+      "ord": 129,
+      "blockId": "9bda84472c3d873b12892957024e32e9",
+      "fp64": "2fdfff9bff7b7b37",
+      "normHash": "e14ff3f17a75e66b072eafa44dd75f26148413762454d9e94b579d8e4e28ae91",
+      "kind": "page",
+      "chapter": "هل-تعرف-أكبر-هم-المؤمن",
+      "prev": "6ea304528cc762c640116dd2411cd388fc01bbca948b3032e1c508c14baadae4",
+      "next": "f8804a89597a1dc24ada10cd2d3e5272c38df7aff00306e32a3ecd064db50736"
+    },
+    {
+      "ord": 130,
+      "blockId": "33361f797bf3c1de8c77fc925693fd49",
+      "fp64": "65386013d7f174d4",
+      "normHash": "f8804a89597a1dc24ada10cd2d3e5272c38df7aff00306e32a3ecd064db50736",
+      "kind": "p",
+      "chapter": "هل-تعرف-أكبر-هم-المؤمن",
+      "prev": "e14ff3f17a75e66b072eafa44dd75f26148413762454d9e94b579d8e4e28ae91",
+      "next": "c277edd49a75d8f11dbb4e901a2437d27e22285ec1f9846887a3d72832b9691a"
+    },
+    {
+      "ord": 131,
+      "blockId": "8a44f19609b9ed9474c260d9bb572958",
+      "fp64": "eb661e797e653d5e",
+      "normHash": "c277edd49a75d8f11dbb4e901a2437d27e22285ec1f9846887a3d72832b9691a",
+      "kind": "h2",
+      "chapter": "من-صور-المحزونين",
+      "prev": "f8804a89597a1dc24ada10cd2d3e5272c38df7aff00306e32a3ecd064db50736",
+      "next": "cf16a95e64c95195a4f0986b7820caffaabac7fcb0226c31d718ebffa3c4a8af"
+    },
+    {
+      "ord": 132,
+      "blockId": "216c49e9316028637757462fda7c676c",
+      "fp64": "c5144614c664785d",
+      "normHash": "cf16a95e64c95195a4f0986b7820caffaabac7fcb0226c31d718ebffa3c4a8af",
+      "kind": "p",
+      "chapter": "من-صور-المحزونين",
+      "prev": "c277edd49a75d8f11dbb4e901a2437d27e22285ec1f9846887a3d72832b9691a",
+      "next": "5e90934513133f3ad765265fc284192da445730bc357d891ae8eb37b58268039"
+    },
+    {
+      "ord": 133,
+      "blockId": "8dec692cf5a070025eb52bd02e538a07",
+      "fp64": "b5fff3fadbf1ef77",
+      "normHash": "5e90934513133f3ad765265fc284192da445730bc357d891ae8eb37b58268039",
+      "kind": "page",
+      "chapter": "من-صور-المحزونين",
+      "prev": "cf16a95e64c95195a4f0986b7820caffaabac7fcb0226c31d718ebffa3c4a8af",
+      "next": "4483ecd834b18a6788debcf4c6521d40f126f018f708f52d495ebb95c9656d59"
+    },
+    {
+      "ord": 134,
+      "blockId": "81db812d6ca1c0c8b326d1d776583519",
+      "fp64": "859c6214d570321e",
+      "normHash": "4483ecd834b18a6788debcf4c6521d40f126f018f708f52d495ebb95c9656d59",
+      "kind": "p",
+      "chapter": "من-صور-المحزونين",
+      "prev": "5e90934513133f3ad765265fc284192da445730bc357d891ae8eb37b58268039",
+      "next": "849b52141db453008a971f3518412a7a58a0d0cf9a0108fff69b8878a4fe3878"
+    },
+    {
+      "ord": 135,
+      "blockId": "9e859cd79f3052d1c878f059a362554a",
+      "fp64": "459e63171676705c",
+      "normHash": "849b52141db453008a971f3518412a7a58a0d0cf9a0108fff69b8878a4fe3878",
+      "kind": "p",
+      "chapter": "من-صور-المحزونين",
+      "prev": "4483ecd834b18a6788debcf4c6521d40f126f018f708f52d495ebb95c9656d59",
+      "next": "fe3618c3d4b90fdeb12bb628bb8ff4fd4e2967e15bddb4c4bd0206b4ecdf6eaa"
+    },
+    {
+      "ord": 136,
+      "blockId": "94753ca70c4b65af955fbac09bc8d52e",
+      "fp64": "65166296377a7074",
+      "normHash": "fe3618c3d4b90fdeb12bb628bb8ff4fd4e2967e15bddb4c4bd0206b4ecdf6eaa",
+      "kind": "p",
+      "chapter": "من-صور-المحزونين",
+      "prev": "849b52141db453008a971f3518412a7a58a0d0cf9a0108fff69b8878a4fe3878",
+      "next": "a9ad33178c390a019d2e437144eba33267a0e9684561211576afdf5b6bb3a701"
+    },
+    {
+      "ord": 137,
+      "blockId": "215c537f793790ec0bab69172c10e8f6",
+      "fp64": "afffff9fdbfd783e",
+      "normHash": "a9ad33178c390a019d2e437144eba33267a0e9684561211576afdf5b6bb3a701",
+      "kind": "page",
+      "chapter": "من-صور-المحزونين",
+      "prev": "fe3618c3d4b90fdeb12bb628bb8ff4fd4e2967e15bddb4c4bd0206b4ecdf6eaa",
+      "next": "f6a47ce32d1e34779f49ebadaf126878a5b5628dddfb94dd36cd184cedb77f32"
+    },
+    {
+      "ord": 138,
+      "blockId": "dc53ed8d1802c6921ca42066ca205c5e",
+      "fp64": "079cc0bf9df95595",
+      "normHash": "f6a47ce32d1e34779f49ebadaf126878a5b5628dddfb94dd36cd184cedb77f32",
+      "kind": "p",
+      "chapter": "من-صور-المحزونين",
+      "prev": "a9ad33178c390a019d2e437144eba33267a0e9684561211576afdf5b6bb3a701",
+      "next": "0550032706fe2cdd00be1b31d45e802ab38e881b35d4992fcdbb5456e46a20f1"
+    },
+    {
+      "ord": 139,
+      "blockId": "8a693d9d7d65be3ffa607d49b655189e",
+      "fp64": "a633020687f05154",
+      "normHash": "0550032706fe2cdd00be1b31d45e802ab38e881b35d4992fcdbb5456e46a20f1",
+      "kind": "p",
+      "chapter": "من-صور-المحزونين",
+      "prev": "f6a47ce32d1e34779f49ebadaf126878a5b5628dddfb94dd36cd184cedb77f32",
+      "next": "0c5c82c7ce81882c3fa0af977a42d1d40b89341e997dc91ecc1ed15f67911075"
+    },
+    {
+      "ord": 140,
+      "blockId": "3c35de58dd7b589d722453ac7436c2ee",
+      "fp64": "75dff7be7f35ea3f",
+      "normHash": "0c5c82c7ce81882c3fa0af977a42d1d40b89341e997dc91ecc1ed15f67911075",
+      "kind": "page",
+      "chapter": "من-صور-المحزونين",
+      "prev": "0550032706fe2cdd00be1b31d45e802ab38e881b35d4992fcdbb5456e46a20f1",
+      "next": "d70352b2e3b46aa4f5cfdc8455a649bd11d2c3528b696cadc778a5c7b5df2eff"
+    },
+    {
+      "ord": 141,
+      "blockId": "f87216d5bbb65a583eaec1d3e44a309b",
+      "fp64": "a287c9fa8ab6cd32",
+      "normHash": "d70352b2e3b46aa4f5cfdc8455a649bd11d2c3528b696cadc778a5c7b5df2eff",
+      "kind": "h2",
+      "chapter": "قدر-الحزن-المطلوب",
+      "prev": "0c5c82c7ce81882c3fa0af977a42d1d40b89341e997dc91ecc1ed15f67911075",
+      "next": "8ddfe40a001c527dcd6b457b970ddf15dc0efe24b555e631b6838b87f0bcfb57"
+    },
+    {
+      "ord": 142,
+      "blockId": "26f2ce9633886cd8c85975ef2008a9b6",
+      "fp64": "6531c2168630781c",
+      "normHash": "8ddfe40a001c527dcd6b457b970ddf15dc0efe24b555e631b6838b87f0bcfb57",
+      "kind": "p",
+      "chapter": "قدر-الحزن-المطلوب",
+      "prev": "d70352b2e3b46aa4f5cfdc8455a649bd11d2c3528b696cadc778a5c7b5df2eff",
+      "next": "23c1ba9e90b9b37cc1b368414b89a5374c79edcab9f9d942a9a5b42547d25456"
+    },
+    {
+      "ord": 143,
+      "blockId": "3d2fdfd3faecb75300e57aaecf593fd3",
+      "fp64": "d416c2299f786c1c",
+      "normHash": "23c1ba9e90b9b37cc1b368414b89a5374c79edcab9f9d942a9a5b42547d25456",
+      "kind": "p",
+      "chapter": "قدر-الحزن-المطلوب",
+      "prev": "8ddfe40a001c527dcd6b457b970ddf15dc0efe24b555e631b6838b87f0bcfb57",
+      "next": "4797beccba13edfae781721431b683b01cf59f6e1f3840e37273c745d549f8ef"
+    },
+    {
+      "ord": 144,
+      "blockId": "3c6ff3a475947de3aeb3285d8a11fd22",
+      "fp64": "e3bf81ff6ff687eb",
+      "normHash": "4797beccba13edfae781721431b683b01cf59f6e1f3840e37273c745d549f8ef",
+      "kind": "h2",
+      "chapter": "فضل-الحزين-يوم-القيامة",
+      "prev": "23c1ba9e90b9b37cc1b368414b89a5374c79edcab9f9d942a9a5b42547d25456",
+      "next": "eb20d2cd204aff26efebbde5118b9a2a47d040092f601d55e9510e54b3c2f81d"
+    },
+    {
+      "ord": 145,
+      "blockId": "bf148605847b3fbacffb85f2a40d3554",
+      "fp64": "c404d000c7622e58",
+      "normHash": "eb20d2cd204aff26efebbde5118b9a2a47d040092f601d55e9510e54b3c2f81d",
+      "kind": "p",
+      "chapter": "فضل-الحزين-يوم-القيامة",
+      "prev": "4797beccba13edfae781721431b683b01cf59f6e1f3840e37273c745d549f8ef",
+      "next": "2baede15b7a04a980f0cea168ba2000d763fd4d7bd2cdce7006fbd303b44260d"
+    },
+    {
+      "ord": 146,
+      "blockId": "7746fc0297bd194d78ef753cbb0f08cd",
+      "fp64": "f5dffbfeff3bf236",
+      "normHash": "2baede15b7a04a980f0cea168ba2000d763fd4d7bd2cdce7006fbd303b44260d",
+      "kind": "page",
+      "chapter": "فضل-الحزين-يوم-القيامة",
+      "prev": "eb20d2cd204aff26efebbde5118b9a2a47d040092f601d55e9510e54b3c2f81d",
+      "next": "2f17ac529ef9138610fcb0f15dc2929af5e46c7386218e6e8325576f7ed08d66"
+    },
+    {
+      "ord": 147,
+      "blockId": "51bae9bc578c08435bbc21dfdd4da63f",
+      "fp64": "67ecd61ffd5dfdee",
+      "normHash": "2f17ac529ef9138610fcb0f15dc2929af5e46c7386218e6e8325576f7ed08d66",
+      "kind": "h2",
+      "chapter": "حديث-داود-عليه-السلام-إلى-ربه",
+      "prev": "2baede15b7a04a980f0cea168ba2000d763fd4d7bd2cdce7006fbd303b44260d",
+      "next": "137c5664543a4f02bda9150f425012c19f1b01840b7fa0e116513e7361401378"
+    },
+    {
+      "ord": 148,
+      "blockId": "e5834ea5e71e871ff0bac2ad0b96c5d7",
+      "fp64": "65166216157a6014",
+      "normHash": "137c5664543a4f02bda9150f425012c19f1b01840b7fa0e116513e7361401378",
+      "kind": "p",
+      "chapter": "حديث-داود-عليه-السلام-إلى-ربه",
+      "prev": "2f17ac529ef9138610fcb0f15dc2929af5e46c7386218e6e8325576f7ed08d66",
+      "next": "2027d65bb84a6f1d1c910cb481602b69486c2b15afff864b4b43a81d4a6da40a"
+    },
+    {
+      "ord": 149,
+      "blockId": "49c322cc170fa1671067ce797e5c8adc",
+      "fp64": "f692602c07f7603c",
+      "normHash": "2027d65bb84a6f1d1c910cb481602b69486c2b15afff864b4b43a81d4a6da40a",
+      "kind": "p",
+      "chapter": "حديث-داود-عليه-السلام-إلى-ربه",
+      "prev": "137c5664543a4f02bda9150f425012c19f1b01840b7fa0e116513e7361401378",
+      "next": "e4b5b8347c19b386c0a59c14dd7c52742344a8ec41061f747343ce9bae742e64"
+    },
+    {
+      "ord": 150,
+      "blockId": "d5c4778e72659ebfb39a8658eee280c1",
+      "fp64": "67dff7daffb7e876",
+      "normHash": "e4b5b8347c19b386c0a59c14dd7c52742344a8ec41061f747343ce9bae742e64",
+      "kind": "page",
+      "chapter": "حديث-داود-عليه-السلام-إلى-ربه",
+      "prev": "2027d65bb84a6f1d1c910cb481602b69486c2b15afff864b4b43a81d4a6da40a",
+      "next": "a0121259a41d2d8db2d1c62bce0051fe106ca752a999689f6a045164e2ef6133"
+    },
+    {
+      "ord": 151,
+      "blockId": "4d3a1630f49921e89198217ef711dde3",
+      "fp64": "e637afff6e9f6b9f",
+      "normHash": "a0121259a41d2d8db2d1c62bce0051fe106ca752a999689f6a045164e2ef6133",
+      "kind": "h2",
+      "chapter": "حال-المؤمن-أناء-الليل-وأطراف-النهار",
+      "prev": "e4b5b8347c19b386c0a59c14dd7c52742344a8ec41061f747343ce9bae742e64",
+      "next": "e10bda88f85b63924ef39235a4806d2f352a421cd16d05ea4d6e759867c5e48f"
+    },
+    {
+      "ord": 152,
+      "blockId": "16b7af79f2a241632641716e32428f1f",
+      "fp64": "74924134af46789c",
+      "normHash": "e10bda88f85b63924ef39235a4806d2f352a421cd16d05ea4d6e759867c5e48f",
+      "kind": "p",
+      "chapter": "حال-المؤمن-أناء-الليل-وأطراف-النهار",
+      "prev": "a0121259a41d2d8db2d1c62bce0051fe106ca752a999689f6a045164e2ef6133",
+      "next": "f362d40dd92d26efd1bb1a1ffd8eb4900c32653f5b46ff18964524200c47f536"
+    },
+    {
+      "ord": 153,
+      "blockId": "a400452e7150301fcda85f663f2668e8",
+      "fp64": "77fff3dede7577fe",
+      "normHash": "f362d40dd92d26efd1bb1a1ffd8eb4900c32653f5b46ff18964524200c47f536",
+      "kind": "page",
+      "chapter": "حال-المؤمن-أناء-الليل-وأطراف-النهار",
+      "prev": "e10bda88f85b63924ef39235a4806d2f352a421cd16d05ea4d6e759867c5e48f",
+      "next": "18855148b080deaf01a1ad60d1e19f342e92eea8bb27e61d0fab9136d49ac5f9"
+    },
+    {
+      "ord": 154,
+      "blockId": "190efd08d3a35af0815c5a7f39bf8632",
+      "fp64": "9e8c364753635f86",
+      "normHash": "18855148b080deaf01a1ad60d1e19f342e92eea8bb27e61d0fab9136d49ac5f9",
+      "kind": "h2",
+      "chapter": "باب-ما-جاء-في-الكمد",
+      "prev": "f362d40dd92d26efd1bb1a1ffd8eb4900c32653f5b46ff18964524200c47f536",
+      "next": "57da29e9d47be7ef41e64b12082451443388f72c579825c3777478942d3e87c0"
+    },
+    {
+      "ord": 155,
+      "blockId": "c04fd18b7bf07540d529adb5e9111eb5",
+      "fp64": "f5086015e76f7014",
+      "normHash": "57da29e9d47be7ef41e64b12082451443388f72c579825c3777478942d3e87c0",
+      "kind": "p",
+      "chapter": "باب-ما-جاء-في-الكمد",
+      "prev": "18855148b080deaf01a1ad60d1e19f342e92eea8bb27e61d0fab9136d49ac5f9",
+      "next": "f6827efd708c6ad7ed8aee4d4f4bba3125689d4f82c9bb859ae5e8165e6c1878"
+    },
+    {
+      "ord": 156,
+      "blockId": "133d222649317cef7d0fd2b37e0b17f7",
+      "fp64": "1d156450455b3d18",
+      "normHash": "f6827efd708c6ad7ed8aee4d4f4bba3125689d4f82c9bb859ae5e8165e6c1878",
+      "kind": "p",
+      "chapter": "باب-ما-جاء-في-الكمد",
+      "prev": "57da29e9d47be7ef41e64b12082451443388f72c579825c3777478942d3e87c0",
+      "next": "f888b964c39ffd5fb066dfcc4685c1c6a75c3297588ec219e5a972db68d3fbe3"
+    },
+    {
+      "ord": 157,
+      "blockId": "5e114ac94dad195d872ff983ddff629c",
+      "fp64": "e622fb300bd64ecc",
+      "normHash": "f888b964c39ffd5fb066dfcc4685c1c6a75c3297588ec219e5a972db68d3fbe3",
+      "kind": "h2",
+      "chapter": "هل-البكاء-مسلاة",
+      "prev": "f6827efd708c6ad7ed8aee4d4f4bba3125689d4f82c9bb859ae5e8165e6c1878",
+      "next": "eb050f56c0b6d397bb33df175c0d6c6cbb254b494a7e4d1e273bae58257c67dc"
+    },
+    {
+      "ord": 158,
+      "blockId": "71ac703977e5ce69984c8720c10b6109",
+      "fp64": "7d06b69aad65c77f",
+      "normHash": "eb050f56c0b6d397bb33df175c0d6c6cbb254b494a7e4d1e273bae58257c67dc",
+      "kind": "p",
+      "chapter": "هل-البكاء-مسلاة",
+      "prev": "f888b964c39ffd5fb066dfcc4685c1c6a75c3297588ec219e5a972db68d3fbe3",
+      "next": "dd7d1bf0810ed29ea9fe2b94e00a21f0ca9f1e5b9607394073f7c981ceff1bea"
+    },
+    {
+      "ord": 159,
+      "blockId": "7c7163b25d5b52dab6624af2424139c2",
+      "fp64": "24d7d434877a4494",
+      "normHash": "dd7d1bf0810ed29ea9fe2b94e00a21f0ca9f1e5b9607394073f7c981ceff1bea",
+      "kind": "p",
+      "chapter": "هل-البكاء-مسلاة",
+      "prev": "eb050f56c0b6d397bb33df175c0d6c6cbb254b494a7e4d1e273bae58257c67dc",
+      "next": "c8f9ceffb179d6c2e60f52b88352310d372ef415202f874881bb1434e1a4b6b1"
+    },
+    {
+      "ord": 160,
+      "blockId": "0c8e455773f462f74bef21ef3508bc26",
+      "fp64": "b5fffb9b7eb77e3e",
+      "normHash": "c8f9ceffb179d6c2e60f52b88352310d372ef415202f874881bb1434e1a4b6b1",
+      "kind": "page",
+      "chapter": "هل-البكاء-مسلاة",
+      "prev": "dd7d1bf0810ed29ea9fe2b94e00a21f0ca9f1e5b9607394073f7c981ceff1bea",
+      "next": "5d5eb855f014118bcc5ff53f5f6d97d86c9317d0ab41cc201c9080718ab6710e"
+    },
+    {
+      "ord": 161,
+      "blockId": "282e8194d7519a967d2f686e4024dfa2",
+      "fp64": "253c44068574f814",
+      "normHash": "5d5eb855f014118bcc5ff53f5f6d97d86c9317d0ab41cc201c9080718ab6710e",
+      "kind": "p",
+      "chapter": "هل-البكاء-مسلاة",
+      "prev": "c8f9ceffb179d6c2e60f52b88352310d372ef415202f874881bb1434e1a4b6b1",
+      "next": "96674f18557879ba815c5b4f3e7a21b0bd9ba04b28b7299eb2306b3e2d4dc0a9"
+    },
+    {
+      "ord": 162,
+      "blockId": "156c1c0e6458f1cc1e446a0b5d12b30d",
+      "fp64": "3435c43dbde04d9c",
+      "normHash": "96674f18557879ba815c5b4f3e7a21b0bd9ba04b28b7299eb2306b3e2d4dc0a9",
+      "kind": "p",
+      "chapter": "هل-البكاء-مسلاة",
+      "prev": "5d5eb855f014118bcc5ff53f5f6d97d86c9317d0ab41cc201c9080718ab6710e",
+      "next": "3d80621ca1039ef6fc1bca0e223c945a5d3173434d89706f2d356713d214fe43"
+    },
+    {
+      "ord": 163,
+      "blockId": "b425e6c07ac22bb329aea93709e8f327",
+      "fp64": "aa47ea4abb7fcdcf",
+      "normHash": "3d80621ca1039ef6fc1bca0e223c945a5d3173434d89706f2d356713d214fe43",
+      "kind": "h2",
+      "chapter": "ما-هي-نهاية-الحزن",
+      "prev": "96674f18557879ba815c5b4f3e7a21b0bd9ba04b28b7299eb2306b3e2d4dc0a9",
+      "next": "eb050f56c0b6d397bb33df175c0d6c6cbb254b494a7e4d1e273bae58257c67dc"
+    },
+    {
+      "ord": 164,
+      "blockId": "8afee35c13ce8e0473979780c58af24c",
+      "fp64": "7d06b69aad65c77f",
+      "normHash": "eb050f56c0b6d397bb33df175c0d6c6cbb254b494a7e4d1e273bae58257c67dc",
+      "kind": "p",
+      "chapter": "ما-هي-نهاية-الحزن",
+      "prev": "3d80621ca1039ef6fc1bca0e223c945a5d3173434d89706f2d356713d214fe43",
+      "next": "eed7ddd0cbf540fcbb6c460af9b5bc7eac891d897255c49084f9ff8ae1b99bad"
+    },
+    {
+      "ord": 165,
+      "blockId": "7d71c1a6dc02fb3629b2a6c415fe7693",
+      "fp64": "659ad635f773c0b0",
+      "normHash": "eed7ddd0cbf540fcbb6c460af9b5bc7eac891d897255c49084f9ff8ae1b99bad",
+      "kind": "p",
+      "chapter": "ما-هي-نهاية-الحزن",
+      "prev": "eb050f56c0b6d397bb33df175c0d6c6cbb254b494a7e4d1e273bae58257c67dc",
+      "next": "3279a1ab39ac18b17847eafcd985c96ab43f7add1075e4ab4e9891a5b457f6c5"
+    },
+    {
+      "ord": 166,
+      "blockId": "bb76df830ccee7c955d1297fb7e3813a",
+      "fp64": "620af431a762c38c",
+      "normHash": "3279a1ab39ac18b17847eafcd985c96ab43f7add1075e4ab4e9891a5b457f6c5",
+      "kind": "p",
+      "chapter": "ما-هي-نهاية-الحزن",
+      "prev": "eed7ddd0cbf540fcbb6c460af9b5bc7eac891d897255c49084f9ff8ae1b99bad",
+      "next": "48c391d9b1cc3aeac6bdc503e99e0cadc040170da2020066c484ac9630e46fe4"
+    },
+    {
+      "ord": 167,
+      "blockId": "b700151bd8ae6f371f067f2eff9033fa",
+      "fp64": "b7ffff9adbbffa3f",
+      "normHash": "48c391d9b1cc3aeac6bdc503e99e0cadc040170da2020066c484ac9630e46fe4",
+      "kind": "page",
+      "chapter": "ما-هي-نهاية-الحزن",
+      "prev": "3279a1ab39ac18b17847eafcd985c96ab43f7add1075e4ab4e9891a5b457f6c5",
+      "next": "9b3d20da0428b62bc8aadef3fce5802259dd8bc0479ae015cc099f649181cb50"
+    },
+    {
+      "ord": 168,
+      "blockId": "b48caea36a8562212829c440200e2808",
+      "fp64": "641e6294f7f9711c",
+      "normHash": "9b3d20da0428b62bc8aadef3fce5802259dd8bc0479ae015cc099f649181cb50",
+      "kind": "p",
+      "chapter": "ما-هي-نهاية-الحزن",
+      "prev": "48c391d9b1cc3aeac6bdc503e99e0cadc040170da2020066c484ac9630e46fe4",
+      "next": "113959b997ff32c7e8e64b7484bc05f70fac7bef4ac1e8e5d6a4c2ee7390edf4"
+    },
+    {
+      "ord": 169,
+      "blockId": "c2610ef06661141bec949c3e8100737e",
+      "fp64": "4ddec014d6d7f01c",
+      "normHash": "113959b997ff32c7e8e64b7484bc05f70fac7bef4ac1e8e5d6a4c2ee7390edf4",
+      "kind": "p",
+      "chapter": "ما-هي-نهاية-الحزن",
+      "prev": "9b3d20da0428b62bc8aadef3fce5802259dd8bc0479ae015cc099f649181cb50",
+      "next": "abb6c715ea839e2aabef7c08b1d42a80e78690a9109ec5d5a435c31cfb4fc892"
+    },
+    {
+      "ord": 170,
+      "blockId": "b812d5f7542317abfe83050af5aec53c",
+      "fp64": "fed3bfceeb6f9fef",
+      "normHash": "abb6c715ea839e2aabef7c08b1d42a80e78690a9109ec5d5a435c31cfb4fc892",
+      "kind": "p",
+      "chapter": "ما-هي-نهاية-الحزن",
+      "prev": "113959b997ff32c7e8e64b7484bc05f70fac7bef4ac1e8e5d6a4c2ee7390edf4",
+      "next": "a8bdb2c38a4efa74427e548a319dc7e8463e7ad525627e0926df4312d64a74df"
+    },
+    {
+      "ord": 171,
+      "blockId": "52da370a1b4c8d5f4a90de892f1a8cd6",
+      "fp64": "9b29a81aaf15e58e",
+      "normHash": "a8bdb2c38a4efa74427e548a319dc7e8463e7ad525627e0926df4312d64a74df",
+      "kind": "p",
+      "chapter": "ما-هي-نهاية-الحزن",
+      "prev": "abb6c715ea839e2aabef7c08b1d42a80e78690a9109ec5d5a435c31cfb4fc892",
+      "next": "526ac6db31d924c067de1e0549700713cbaf3418d9abcdc6f45a38d7d3fc7b3e"
+    },
+    {
+      "ord": 172,
+      "blockId": "08be494ae77426e8d5a8bd0bef62d6e4",
+      "fp64": "7186b42d6ed38f6a",
+      "normHash": "526ac6db31d924c067de1e0549700713cbaf3418d9abcdc6f45a38d7d3fc7b3e",
+      "kind": "p",
+      "chapter": "ما-هي-نهاية-الحزن",
+      "prev": "a8bdb2c38a4efa74427e548a319dc7e8463e7ad525627e0926df4312d64a74df",
+      "next": "df35d924aab6d9285c6c86965a0c7300da7af3db067cd4bb6fbb9335625021bd"
+    },
+    {
+      "ord": 173,
+      "blockId": "b4632d0469a102f21d03229b52ff0a5c",
+      "fp64": "ff421585a98a9b38",
+      "normHash": "df35d924aab6d9285c6c86965a0c7300da7af3db067cd4bb6fbb9335625021bd",
+      "kind": "p",
+      "chapter": "ما-هي-نهاية-الحزن",
+      "prev": "526ac6db31d924c067de1e0549700713cbaf3418d9abcdc6f45a38d7d3fc7b3e",
+      "next": "e3238dd7f9aaf88713c7cb8a326ccce4893705f40b8903c9b22d09682b6c9629"
+    },
+    {
+      "ord": 174,
+      "blockId": "0b1f0aecec5c62bc77fca0fdf94d4037",
+      "fp64": "ccda4460baeb0d6f",
+      "normHash": "e3238dd7f9aaf88713c7cb8a326ccce4893705f40b8903c9b22d09682b6c9629",
+      "kind": "p",
+      "chapter": "ما-هي-نهاية-الحزن",
+      "prev": "df35d924aab6d9285c6c86965a0c7300da7af3db067cd4bb6fbb9335625021bd",
+      "next": "bf0980082aaf0bd2707722f252f5617d5d083cb36a793ffe1db162756ab920b8"
+    },
+    {
+      "ord": 175,
+      "blockId": "24ad415b963fc1f2b2c0d5f998d3cc64",
+      "fp64": "945c720dfe780a97",
+      "normHash": "bf0980082aaf0bd2707722f252f5617d5d083cb36a793ffe1db162756ab920b8",
+      "kind": "p",
+      "chapter": "ما-هي-نهاية-الحزن",
+      "prev": "e3238dd7f9aaf88713c7cb8a326ccce4893705f40b8903c9b22d09682b6c9629",
+      "next": "cdfe6f6112d4d66e83c1fe1a786f77b5d02174557c541f6d96b5680bc34bdb8c"
+    },
+    {
+      "ord": 176,
+      "blockId": "c4eb9e515bd87ed9da98b68bb398ee27",
+      "fp64": "a5fff39f7afb69f6",
+      "normHash": "cdfe6f6112d4d66e83c1fe1a786f77b5d02174557c541f6d96b5680bc34bdb8c",
+      "kind": "page",
+      "chapter": "ما-هي-نهاية-الحزن",
+      "prev": "bf0980082aaf0bd2707722f252f5617d5d083cb36a793ffe1db162756ab920b8",
+      "next": "b8ee1ae6133045c04a9f8f47965f422509112d52f14400e09b8570703d9f9b44"
+    },
+    {
+      "ord": 177,
+      "blockId": "2039c206fbe8bf4ec095c7e62131f48c",
+      "fp64": "e5dae0addf7854f4",
+      "normHash": "b8ee1ae6133045c04a9f8f47965f422509112d52f14400e09b8570703d9f9b44",
+      "kind": "p",
+      "chapter": "ما-هي-نهاية-الحزن",
+      "prev": "cdfe6f6112d4d66e83c1fe1a786f77b5d02174557c541f6d96b5680bc34bdb8c",
+      "next": "61c4e91c76135e04814d3e7ada78d77ecb5e522351e640455ddfc0aef5ff29f5"
+    },
+    {
+      "ord": 178,
+      "blockId": "bd006e2478bf5f3db9c1b529af4afa73",
+      "fp64": "1d34d0378772ea9c",
+      "normHash": "61c4e91c76135e04814d3e7ada78d77ecb5e522351e640455ddfc0aef5ff29f5",
+      "kind": "p",
+      "chapter": "ما-هي-نهاية-الحزن",
+      "prev": "b8ee1ae6133045c04a9f8f47965f422509112d52f14400e09b8570703d9f9b44",
+      "next": "b864399924abec0dde8aaa39b878c293d9959cb764a86db85610fa95dc0c2b9b"
+    },
+    {
+      "ord": 179,
+      "blockId": "245afa2b01645f7b3b4a6854ef7875bc",
+      "fp64": "649e4414a6796074",
+      "normHash": "b864399924abec0dde8aaa39b878c293d9959cb764a86db85610fa95dc0c2b9b",
+      "kind": "p",
+      "chapter": "ما-هي-نهاية-الحزن",
+      "prev": "61c4e91c76135e04814d3e7ada78d77ecb5e522351e640455ddfc0aef5ff29f5",
+      "next": "b6b34bdf7ab36d2ef444a2956dba300a25be834a22fa469fc268eaf8b470a3bb"
+    },
+    {
+      "ord": 180,
+      "blockId": "ae77d806163bb9f90170eaef409859ea",
+      "fp64": "632fcf5e8ffbe9ce",
+      "normHash": "b6b34bdf7ab36d2ef444a2956dba300a25be834a22fa469fc268eaf8b470a3bb",
+      "kind": "h2",
+      "chapter": "حديث-العلماء-عن-الحزن",
+      "prev": "b864399924abec0dde8aaa39b878c293d9959cb764a86db85610fa95dc0c2b9b",
+      "next": "e88f2c16a64e8e82822d0e696c6c830d70a7ae9bb08ac0729e26488cd4cffb7f"
+    },
+    {
+      "ord": 181,
+      "blockId": "e64ba87815ec29504f4b1947c6d7b200",
+      "fp64": "2803d3058760629e",
+      "normHash": "e88f2c16a64e8e82822d0e696c6c830d70a7ae9bb08ac0729e26488cd4cffb7f",
+      "kind": "p",
+      "chapter": "حديث-العلماء-عن-الحزن",
+      "prev": "b6b34bdf7ab36d2ef444a2956dba300a25be834a22fa469fc268eaf8b470a3bb",
+      "next": "ee0eb61c19a655bb470b5da33dd0fd94336a4b582ab83f0c300be60280ffbe39"
+    },
+    {
+      "ord": 182,
+      "blockId": "1f3a226a168de61f4a1dfdf8e56375ae",
+      "fp64": "7dfffb9f7fb1f8b7",
+      "normHash": "ee0eb61c19a655bb470b5da33dd0fd94336a4b582ab83f0c300be60280ffbe39",
+      "kind": "page",
+      "chapter": "حديث-العلماء-عن-الحزن",
+      "prev": "e88f2c16a64e8e82822d0e696c6c830d70a7ae9bb08ac0729e26488cd4cffb7f",
+      "next": "d4be92b00a0814daba7f43652049cd43b9431b93fbde07273e69d74e44bb6f5e"
+    },
+    {
+      "ord": 183,
+      "blockId": "f4a9c526681558c11da042270493d3cf",
+      "fp64": "f512e01437e3d8d4",
+      "normHash": "d4be92b00a0814daba7f43652049cd43b9431b93fbde07273e69d74e44bb6f5e",
+      "kind": "p",
+      "chapter": "حديث-العلماء-عن-الحزن",
+      "prev": "ee0eb61c19a655bb470b5da33dd0fd94336a4b582ab83f0c300be60280ffbe39",
+      "next": "4301785fdc99344da6cf1d366957c801272b03b8745d0cc485557e31be8ca03b"
+    },
+    {
+      "ord": 184,
+      "blockId": "379bc1de91e55acae80d77dbc2932fbb",
+      "fp64": "355ec1277472b83c",
+      "normHash": "4301785fdc99344da6cf1d366957c801272b03b8745d0cc485557e31be8ca03b",
+      "kind": "p",
+      "chapter": "حديث-العلماء-عن-الحزن",
+      "prev": "d4be92b00a0814daba7f43652049cd43b9431b93fbde07273e69d74e44bb6f5e",
+      "next": "2c573203fa81f0bae5b17b3e49e64c77b12a2220d77ee575116ce6c1ed37ff3f"
+    },
+    {
+      "ord": 185,
+      "blockId": "6ee5e0ec782eedf8abb9571650fe0871",
+      "fp64": "fff3affcc17c9fff",
+      "normHash": "2c573203fa81f0bae5b17b3e49e64c77b12a2220d77ee575116ce6c1ed37ff3f",
+      "kind": "p",
+      "chapter": "حديث-العلماء-عن-الحزن",
+      "prev": "4301785fdc99344da6cf1d366957c801272b03b8745d0cc485557e31be8ca03b",
+      "next": "c681126c99d096510263ce788e5c3a6bea52dc05168ff4d1086466f5c78680c4"
+    },
+    {
+      "ord": 186,
+      "blockId": "9cba25b15c41ce807fab14bc87966ec3",
+      "fp64": "223aad0529494eec",
+      "normHash": "c681126c99d096510263ce788e5c3a6bea52dc05168ff4d1086466f5c78680c4",
+      "kind": "verse",
+      "chapter": "حديث-العلماء-عن-الحزن",
+      "prev": "2c573203fa81f0bae5b17b3e49e64c77b12a2220d77ee575116ce6c1ed37ff3f",
+      "next": "aab30c50534064a88cf47de85b0168b7e8e2ad8894f2df668b098daccf741709"
+    },
+    {
+      "ord": 187,
+      "blockId": "5ad74995ed5ae8d50c1be9c96b082164",
+      "fp64": "6f52b7ebeed79e33",
+      "normHash": "aab30c50534064a88cf47de85b0168b7e8e2ad8894f2df668b098daccf741709",
+      "kind": "verse",
+      "chapter": "حديث-العلماء-عن-الحزن",
+      "prev": "c681126c99d096510263ce788e5c3a6bea52dc05168ff4d1086466f5c78680c4",
+      "next": "370ea68c3b94cf3caf4ac962da64ec5ae02b7bcddc8a080dc2e28f8cacbc881c"
+    },
+    {
+      "ord": 188,
+      "blockId": "a673b2cdd1f37b7608278be37fd441be",
+      "fp64": "53d75efbee5ef3fc",
+      "normHash": "370ea68c3b94cf3caf4ac962da64ec5ae02b7bcddc8a080dc2e28f8cacbc881c",
+      "kind": "p",
+      "chapter": "حديث-العلماء-عن-الحزن",
+      "prev": "aab30c50534064a88cf47de85b0168b7e8e2ad8894f2df668b098daccf741709",
+      "next": "e4012dfba21cb5ac94d3506f1fa0285d7148a2e0c8eccb5e955cdf47f5cfe305"
+    },
+    {
+      "ord": 189,
+      "blockId": "afa98dcacc2e62e744d92d925e531c85",
+      "fp64": "c7146c1755355d3d",
+      "normHash": "e4012dfba21cb5ac94d3506f1fa0285d7148a2e0c8eccb5e955cdf47f5cfe305",
+      "kind": "p",
+      "chapter": "حديث-العلماء-عن-الحزن",
+      "prev": "370ea68c3b94cf3caf4ac962da64ec5ae02b7bcddc8a080dc2e28f8cacbc881c",
+      "next": "32f80639a7ddde9931d68ef0d6d0509a865d1478b82ddcdfe68385be1513e393"
+    },
+    {
+      "ord": 190,
+      "blockId": "c5e32bc581d5534fd739ad635856eea1",
+      "fp64": "b7ffffdaffb36efe",
+      "normHash": "32f80639a7ddde9931d68ef0d6d0509a865d1478b82ddcdfe68385be1513e393",
+      "kind": "page",
+      "chapter": "حديث-العلماء-عن-الحزن",
+      "prev": "e4012dfba21cb5ac94d3506f1fa0285d7148a2e0c8eccb5e955cdf47f5cfe305",
+      "next": "182236b6cc0db81c3b1614c8eaa42314d19b48edb9cc6f4475d319812c268a4d"
+    },
+    {
+      "ord": 191,
+      "blockId": "88a110b264f605905ab81160357bd1b3",
+      "fp64": "ab097e4036374f26",
+      "normHash": "182236b6cc0db81c3b1614c8eaa42314d19b48edb9cc6f4475d319812c268a4d",
+      "kind": "h2",
+      "chapter": "لبس-ما-يلبس-العبيد-ليحزن",
+      "prev": "32f80639a7ddde9931d68ef0d6d0509a865d1478b82ddcdfe68385be1513e393",
+      "next": "f9afae726a0185f2109961bdf0856d02d7bf6a8b92501c36380f08782ed047be"
+    },
+    {
+      "ord": 192,
+      "blockId": "b5eac7556a3b621860c51c0b826570d0",
+      "fp64": "c53a42a586e378b4",
+      "normHash": "f9afae726a0185f2109961bdf0856d02d7bf6a8b92501c36380f08782ed047be",
+      "kind": "p",
+      "chapter": "لبس-ما-يلبس-العبيد-ليحزن",
+      "prev": "182236b6cc0db81c3b1614c8eaa42314d19b48edb9cc6f4475d319812c268a4d",
+      "next": "62dd8ed3c564950afead5a51d2f768171dfa41aacc11cbf438eb0b66ccee6d87"
+    },
+    {
+      "ord": 193,
+      "blockId": "494ce5f858ec630b535512edad8b2959",
+      "fp64": "6416649c377f441c",
+      "normHash": "62dd8ed3c564950afead5a51d2f768171dfa41aacc11cbf438eb0b66ccee6d87",
+      "kind": "p",
+      "chapter": "لبس-ما-يلبس-العبيد-ليحزن",
+      "prev": "f9afae726a0185f2109961bdf0856d02d7bf6a8b92501c36380f08782ed047be",
+      "next": "6caf61880f6c007591fcfc77871ef48e850226e30ac39e30e74152f5a20189c7"
+    },
+    {
+      "ord": 194,
+      "blockId": "20fd9d8023972cdaf493a2e9588ee0ce",
+      "fp64": "be57cb5b89f8fb4a",
+      "normHash": "6caf61880f6c007591fcfc77871ef48e850226e30ac39e30e74152f5a20189c7",
+      "kind": "h2",
+      "chapter": "حزن-الحزن",
+      "prev": "62dd8ed3c564950afead5a51d2f768171dfa41aacc11cbf438eb0b66ccee6d87",
+      "next": "bf8ac55a8f3f52a8a0848a1958adf41bbf8360cf55261591b00f7bc46ac9bf56"
+    },
+    {
+      "ord": 195,
+      "blockId": "ba7a7de9be8ffbee962142b29bf0786b",
+      "fp64": "6e14432706f0f151",
+      "normHash": "bf8ac55a8f3f52a8a0848a1958adf41bbf8360cf55261591b00f7bc46ac9bf56",
+      "kind": "p",
+      "chapter": "حزن-الحزن",
+      "prev": "6caf61880f6c007591fcfc77871ef48e850226e30ac39e30e74152f5a20189c7",
+      "next": "5e6cca545d9cd848cc8ff9d4c8736a4cc638ee43a7a03c4823f1ae7e3ed8f316"
+    },
+    {
+      "ord": 196,
+      "blockId": "89be086c90b1e109b3ec8e1753788198",
+      "fp64": "7fdff3da7e71ebb6",
+      "normHash": "5e6cca545d9cd848cc8ff9d4c8736a4cc638ee43a7a03c4823f1ae7e3ed8f316",
+      "kind": "page",
+      "chapter": "حزن-الحزن",
+      "prev": "bf8ac55a8f3f52a8a0848a1958adf41bbf8360cf55261591b00f7bc46ac9bf56",
+      "next": "44a939f6b47e4b4f84823107a16f70862901f5f61256949b922cb6d9c8e22aea"
+    },
+    {
+      "ord": 197,
+      "blockId": "268a2bac7c91e2d295ee8b316adb96d8",
+      "fp64": "5f75ff2cdb5377ff",
+      "normHash": "44a939f6b47e4b4f84823107a16f70862901f5f61256949b922cb6d9c8e22aea",
+      "kind": "h2",
+      "chapter": "هل-حزنت-لضياع-العمر",
+      "prev": "5e6cca545d9cd848cc8ff9d4c8736a4cc638ee43a7a03c4823f1ae7e3ed8f316",
+      "next": "eb050f56c0b6d397bb33df175c0d6c6cbb254b494a7e4d1e273bae58257c67dc"
+    },
+    {
+      "ord": 198,
+      "blockId": "b92743c0ba70f54baaec23e9fcadbe86",
+      "fp64": "7d06b69aad65c77f",
+      "normHash": "eb050f56c0b6d397bb33df175c0d6c6cbb254b494a7e4d1e273bae58257c67dc",
+      "kind": "p",
+      "chapter": "هل-حزنت-لضياع-العمر",
+      "prev": "44a939f6b47e4b4f84823107a16f70862901f5f61256949b922cb6d9c8e22aea",
+      "next": "38c1f6d4ed074a08b009ca5b4bbe8d217438239aa0f4365f0e9bd6d9d7daefba"
+    },
+    {
+      "ord": 199,
+      "blockId": "93d14d3aae0bc165c12e45d3944a92a0",
+      "fp64": "e557c21a97fe707c",
+      "normHash": "38c1f6d4ed074a08b009ca5b4bbe8d217438239aa0f4365f0e9bd6d9d7daefba",
+      "kind": "p",
+      "chapter": "هل-حزنت-لضياع-العمر",
+      "prev": "eb050f56c0b6d397bb33df175c0d6c6cbb254b494a7e4d1e273bae58257c67dc",
+      "next": "990a2907386fc9ab22dc5da496ce7e153d1cfb64e5ff2a05c13dfeb3cf65d304"
+    },
+    {
+      "ord": 200,
+      "blockId": "6418ec273355eab03d9cc11500cef706",
+      "fp64": "653ad22496f05814",
+      "normHash": "990a2907386fc9ab22dc5da496ce7e153d1cfb64e5ff2a05c13dfeb3cf65d304",
+      "kind": "p",
+      "chapter": "هل-حزنت-لضياع-العمر",
+      "prev": "38c1f6d4ed074a08b009ca5b4bbe8d217438239aa0f4365f0e9bd6d9d7daefba",
+      "next": "27bbba3036cc69a73d063347919b360c9fb4e01ba8d8b4d515aeb93af8490cda"
+    },
+    {
+      "ord": 201,
+      "blockId": "2f90a8355b45d80dd24fbd6b90df1912",
+      "fp64": "b7f7e7e6dfb871fc",
+      "normHash": "27bbba3036cc69a73d063347919b360c9fb4e01ba8d8b4d515aeb93af8490cda",
+      "kind": "h2",
+      "chapter": "لا-راحة-للمؤمن-دون-لقاء-الله",
+      "prev": "990a2907386fc9ab22dc5da496ce7e153d1cfb64e5ff2a05c13dfeb3cf65d304",
+      "next": "7b7fdcd4b7a2474661f678129d07b5ea7c2e2ee974ed102910171fd9b16902f7"
+    },
+    {
+      "ord": 202,
+      "blockId": "194ebc26d5fea325b4177ed8c04db4d5",
+      "fp64": "c7ff721290615654",
+      "normHash": "7b7fdcd4b7a2474661f678129d07b5ea7c2e2ee974ed102910171fd9b16902f7",
+      "kind": "p",
+      "chapter": "لا-راحة-للمؤمن-دون-لقاء-الله",
+      "prev": "27bbba3036cc69a73d063347919b360c9fb4e01ba8d8b4d515aeb93af8490cda",
+      "next": "728a981f0261036df210f2411347dbb498cf5ed85759f45a8d7e444b70b1d444"
+    },
+    {
+      "ord": 203,
+      "blockId": "9ceeb72c181dc0ab22d95e27e0c802a1",
+      "fp64": "35dfff9f5bb9ec36",
+      "normHash": "728a981f0261036df210f2411347dbb498cf5ed85759f45a8d7e444b70b1d444",
+      "kind": "page",
+      "chapter": "لا-راحة-للمؤمن-دون-لقاء-الله",
+      "prev": "7b7fdcd4b7a2474661f678129d07b5ea7c2e2ee974ed102910171fd9b16902f7",
+      "next": "c647dd8c90f0cb46c525b17dd4f1b9c2e42b6a1642568e1de5167e9b5e09173a"
+    },
+    {
+      "ord": 204,
+      "blockId": "dddaf4f1bad12b4ee8d60c1e9e9d1b94",
+      "fp64": "46cecff99f3d7f5d",
+      "normHash": "c647dd8c90f0cb46c525b17dd4f1b9c2e42b6a1642568e1de5167e9b5e09173a",
+      "kind": "h2",
+      "chapter": "من-أحاديث-البشارة-للمؤمنين",
+      "prev": "728a981f0261036df210f2411347dbb498cf5ed85759f45a8d7e444b70b1d444",
+      "next": "5a94eaa7450da309fe3716c082f44ea3194eb8074590e4bf873ae8ff55fc86de"
+    },
+    {
+      "ord": 205,
+      "blockId": "0dc031e0d4396f8d6ca68f631bd970db",
+      "fp64": "241aa05685327474",
+      "normHash": "5a94eaa7450da309fe3716c082f44ea3194eb8074590e4bf873ae8ff55fc86de",
+      "kind": "p",
+      "chapter": "من-أحاديث-البشارة-للمؤمنين",
+      "prev": "c647dd8c90f0cb46c525b17dd4f1b9c2e42b6a1642568e1de5167e9b5e09173a",
+      "next": "5ca494aaf1fa05ad4e65f4505d466b31c3d05cee417eb09261c6459ffd40f0ba"
+    },
+    {
+      "ord": 206,
+      "blockId": "90ecb6e12df8eb6148fc1b070e959bcc",
+      "fp64": "a7ffff9bfab3fa3e",
+      "normHash": "5ca494aaf1fa05ad4e65f4505d466b31c3d05cee417eb09261c6459ffd40f0ba",
+      "kind": "page",
+      "chapter": "من-أحاديث-البشارة-للمؤمنين",
+      "prev": "5a94eaa7450da309fe3716c082f44ea3194eb8074590e4bf873ae8ff55fc86de",
+      "next": "6c53671a919f8a5d2d8e15deb253711c6568f6d788331eb84d747456ba179d96"
+    },
+    {
+      "ord": 207,
+      "blockId": "22d90452eb964052d834f1afc9fce0ce",
+      "fp64": "901782202e3d691c",
+      "normHash": "6c53671a919f8a5d2d8e15deb253711c6568f6d788331eb84d747456ba179d96",
+      "kind": "h2",
+      "chapter": "ابكوا-فإن-لم-تبكوا-فتباكوا",
+      "prev": "5ca494aaf1fa05ad4e65f4505d466b31c3d05cee417eb09261c6459ffd40f0ba",
+      "next": "5ad9cce06f8dba5812d1ba693008fe9eb0380295f0512abb75b23b260372620c"
+    },
+    {
+      "ord": 208,
+      "blockId": "48718dd42339eeb95cfc5cc7a126d31c",
+      "fp64": "e514208607b3fc3c",
+      "normHash": "5ad9cce06f8dba5812d1ba693008fe9eb0380295f0512abb75b23b260372620c",
+      "kind": "p",
+      "chapter": "ابكوا-فإن-لم-تبكوا-فتباكوا",
+      "prev": "6c53671a919f8a5d2d8e15deb253711c6568f6d788331eb84d747456ba179d96",
+      "next": "3029f70065219d46a6fbc8d180a3c0e43c20dcc00d50f21e46b3d2beb7bd5802"
+    },
+    {
+      "ord": 209,
+      "blockId": "9062c85a6a19454ef58a331d48f3dee7",
+      "fp64": "a5fff3fffeb1f17f",
+      "normHash": "3029f70065219d46a6fbc8d180a3c0e43c20dcc00d50f21e46b3d2beb7bd5802",
+      "kind": "page",
+      "chapter": "ابكوا-فإن-لم-تبكوا-فتباكوا",
+      "prev": "5ad9cce06f8dba5812d1ba693008fe9eb0380295f0512abb75b23b260372620c",
+      "next": "fc423721cefcf5ce30b3d80bfa58bb3b41d2923b41512b6d864e012d507ef621"
+    },
+    {
+      "ord": 210,
+      "blockId": "47ecb9efe5d0b07ed661d66f1bfaab73",
+      "fp64": "80b1b055059f934b",
+      "normHash": "fc423721cefcf5ce30b3d80bfa58bb3b41d2923b41512b6d864e012d507ef621",
+      "kind": "h2",
+      "chapter": "شدة-كمد-يعقوب-على-يوسف-عليهما-السلام",
+      "prev": "3029f70065219d46a6fbc8d180a3c0e43c20dcc00d50f21e46b3d2beb7bd5802",
+      "next": "45fe44c6e49264aa33a51ca2341881b1861d9bc3d142759f62eadc844e72418c"
+    },
+    {
+      "ord": 211,
+      "blockId": "a62273a5b157aec4282c9fe2cbed6e9c",
+      "fp64": "233f400b85d3f19c",
+      "normHash": "45fe44c6e49264aa33a51ca2341881b1861d9bc3d142759f62eadc844e72418c",
+      "kind": "p",
+      "chapter": "شدة-كمد-يعقوب-على-يوسف-عليهما-السلام",
+      "prev": "fc423721cefcf5ce30b3d80bfa58bb3b41d2923b41512b6d864e012d507ef621",
+      "next": "cce3f2509ed75fe3db550f71c2d9a4444b2c4578c6b94b3fa870524f4b794928"
+    },
+    {
+      "ord": 212,
+      "blockId": "4317e0aecb8f39d0891adef92da3f70b",
+      "fp64": "e53762d60730691c",
+      "normHash": "cce3f2509ed75fe3db550f71c2d9a4444b2c4578c6b94b3fa870524f4b794928",
+      "kind": "p",
+      "chapter": "شدة-كمد-يعقوب-على-يوسف-عليهما-السلام",
+      "prev": "45fe44c6e49264aa33a51ca2341881b1861d9bc3d142759f62eadc844e72418c",
+      "next": "f9cd3603608cee0831faa89c73a25479d8abd19c9f4c03ad147e4540236f485e"
+    },
+    {
+      "ord": 213,
+      "blockId": "0a4a480852b74b960f6b968e6ebc6759",
+      "fp64": "25396297c7db6195",
+      "normHash": "f9cd3603608cee0831faa89c73a25479d8abd19c9f4c03ad147e4540236f485e",
+      "kind": "p",
+      "chapter": "شدة-كمد-يعقوب-على-يوسف-عليهما-السلام",
+      "prev": "cce3f2509ed75fe3db550f71c2d9a4444b2c4578c6b94b3fa870524f4b794928",
+      "next": "8a2355d777f7d9fb4a28a6c65a1b17b6b11616cb08dac6f9126018fb4ab47469"
+    },
+    {
+      "ord": 214,
+      "blockId": "ccd6b7d4e2885176513f7a6d93651124",
+      "fp64": "2ddffb9ada7578b6",
+      "normHash": "8a2355d777f7d9fb4a28a6c65a1b17b6b11616cb08dac6f9126018fb4ab47469",
+      "kind": "page",
+      "chapter": "شدة-كمد-يعقوب-على-يوسف-عليهما-السلام",
+      "prev": "f9cd3603608cee0831faa89c73a25479d8abd19c9f4c03ad147e4540236f485e",
+      "next": "f9552c027793d54c9b58b84941a8724e4859b99fa836f8ff864b11392ec55f90"
+    },
+    {
+      "ord": 215,
+      "blockId": "98380b5755dc0315adc0198086b9bce3",
+      "fp64": "477f180ba2b2e29b",
+      "normHash": "f9552c027793d54c9b58b84941a8724e4859b99fa836f8ff864b11392ec55f90",
+      "kind": "h2",
+      "chapter": "وصف-الأولياء-الأتقياء",
+      "prev": "8a2355d777f7d9fb4a28a6c65a1b17b6b11616cb08dac6f9126018fb4ab47469",
+      "next": "a7ad15579035a9955ef5b65b2abc07c01090f9b984ca4f265994ae54c480b6bc"
+    },
+    {
+      "ord": 216,
+      "blockId": "43c18dc7e70593dae40be900a41cb15b",
+      "fp64": "6cbb24b48ff5ea7e",
+      "normHash": "a7ad15579035a9955ef5b65b2abc07c01090f9b984ca4f265994ae54c480b6bc",
+      "kind": "p",
+      "chapter": "وصف-الأولياء-الأتقياء",
+      "prev": "f9552c027793d54c9b58b84941a8724e4859b99fa836f8ff864b11392ec55f90",
+      "next": "52ef7fa7a5310c399900bc3fbc8b42fbaadd5a8400e0f9be10a2c5f66cd4242d"
+    },
+    {
+      "ord": 217,
+      "blockId": "51ad825ab158c2897064d1e696a19f04",
+      "fp64": "e432021f03f37df4",
+      "normHash": "52ef7fa7a5310c399900bc3fbc8b42fbaadd5a8400e0f9be10a2c5f66cd4242d",
+      "kind": "p",
+      "chapter": "وصف-الأولياء-الأتقياء",
+      "prev": "a7ad15579035a9955ef5b65b2abc07c01090f9b984ca4f265994ae54c480b6bc",
+      "next": "4215da5ce866dc301da454e8541e55a41c3bbd9b6b85472649872bf9b829e62e"
+    },
+    {
+      "ord": 218,
+      "blockId": "7935a85f22b3447d3bda9a481f1c9dda",
+      "fp64": "e0ad04d46755c49d",
+      "normHash": "4215da5ce866dc301da454e8541e55a41c3bbd9b6b85472649872bf9b829e62e",
+      "kind": "h2",
+      "chapter": "الحزين-ينشغل-عن-الدنيا-بالآخرة",
+      "prev": "52ef7fa7a5310c399900bc3fbc8b42fbaadd5a8400e0f9be10a2c5f66cd4242d",
+      "next": "af911632e9500d8b8548d891ee7eda7e632d7e55300f3f76d2258d20d784e97c"
+    },
+    {
+      "ord": 219,
+      "blockId": "abdf0cd7d9193d94c2f5e21d9e0b024c",
+      "fp64": "04504436c7d3713c",
+      "normHash": "af911632e9500d8b8548d891ee7eda7e632d7e55300f3f76d2258d20d784e97c",
+      "kind": "p",
+      "chapter": "الحزين-ينشغل-عن-الدنيا-بالآخرة",
+      "prev": "4215da5ce866dc301da454e8541e55a41c3bbd9b6b85472649872bf9b829e62e",
+      "next": "3725a3f4c5b4eeb74ad26a71e195ef200818c5845c4fa0cac1dc550926ed46af"
+    },
+    {
+      "ord": 220,
+      "blockId": "3d9d39395b32978c4ec0614b5424fc34",
+      "fp64": "bddffffa7ab77cf7",
+      "normHash": "3725a3f4c5b4eeb74ad26a71e195ef200818c5845c4fa0cac1dc550926ed46af",
+      "kind": "page",
+      "chapter": "الحزين-ينشغل-عن-الدنيا-بالآخرة",
+      "prev": "af911632e9500d8b8548d891ee7eda7e632d7e55300f3f76d2258d20d784e97c",
+      "next": "c83a519f35768d33aca85e108af0ccc102dc375766a05aa61b6266a8de23c540"
+    },
+    {
+      "ord": 221,
+      "blockId": "f13cec0c74b4c28deacd60aa3809c05b",
+      "fp64": "cd9e42bc6673f03c",
+      "normHash": "c83a519f35768d33aca85e108af0ccc102dc375766a05aa61b6266a8de23c540",
+      "kind": "p",
+      "chapter": "الحزين-ينشغل-عن-الدنيا-بالآخرة",
+      "prev": "3725a3f4c5b4eeb74ad26a71e195ef200818c5845c4fa0cac1dc550926ed46af",
+      "next": "868c335bf084456d2640945b92dc317b1d0228bdea34c477e93fcbc69fda6849"
+    },
+    {
+      "ord": 222,
+      "blockId": "17dce4d2851628b1354237379ceed940",
+      "fp64": "9d87e5d6e3b20a94",
+      "normHash": "868c335bf084456d2640945b92dc317b1d0228bdea34c477e93fcbc69fda6849",
+      "kind": "h2",
+      "chapter": "أين-الراحة-والفرح",
+      "prev": "c83a519f35768d33aca85e108af0ccc102dc375766a05aa61b6266a8de23c540",
+      "next": "eb050f56c0b6d397bb33df175c0d6c6cbb254b494a7e4d1e273bae58257c67dc"
+    },
+    {
+      "ord": 223,
+      "blockId": "e27c33726f32dae4c0d7bf9c17be71e5",
+      "fp64": "7d06b69aad65c77f",
+      "normHash": "eb050f56c0b6d397bb33df175c0d6c6cbb254b494a7e4d1e273bae58257c67dc",
+      "kind": "p",
+      "chapter": "أين-الراحة-والفرح",
+      "prev": "868c335bf084456d2640945b92dc317b1d0228bdea34c477e93fcbc69fda6849",
+      "next": "cf6046978cf107704d9e21d0c7204e01274669e803756fe5494c429f46d845a6"
+    },
+    {
+      "ord": 224,
+      "blockId": "5f4fe5052e4674063fbee9ad9dc34de1",
+      "fp64": "d516e0f7668568d8",
+      "normHash": "cf6046978cf107704d9e21d0c7204e01274669e803756fe5494c429f46d845a6",
+      "kind": "p",
+      "chapter": "أين-الراحة-والفرح",
+      "prev": "eb050f56c0b6d397bb33df175c0d6c6cbb254b494a7e4d1e273bae58257c67dc",
+      "next": "0ccc29fdc442f2b28d2a4fe086efef1cab455509cc2cd16b0b158ac9e832ade6"
+    },
+    {
+      "ord": 225,
+      "blockId": "cfd65e69f889847314ca0dd87dc9ec82",
+      "fp64": "c53f623d16736414",
+      "normHash": "0ccc29fdc442f2b28d2a4fe086efef1cab455509cc2cd16b0b158ac9e832ade6",
+      "kind": "p",
+      "chapter": "أين-الراحة-والفرح",
+      "prev": "cf6046978cf107704d9e21d0c7204e01274669e803756fe5494c429f46d845a6",
+      "next": "bb5325308b578ba2339247e295e288295284afb8097cb6d7634cf6d56b541623"
+    },
+    {
+      "ord": 226,
+      "blockId": "aaffdb6e860ae603468c6167e8503073",
+      "fp64": "f5ffff9afa3b7aff",
+      "normHash": "bb5325308b578ba2339247e295e288295284afb8097cb6d7634cf6d56b541623",
+      "kind": "page",
+      "chapter": "أين-الراحة-والفرح",
+      "prev": "0ccc29fdc442f2b28d2a4fe086efef1cab455509cc2cd16b0b158ac9e832ade6",
+      "next": "906da4d1f875f639384e4997a141424f49f390da7c13ef6506d39a8a9c9cf49a"
+    },
+    {
+      "ord": 227,
+      "blockId": "16f9f2f288520f77d8ad48781343e544",
+      "fp64": "633566c28f70df51",
+      "normHash": "906da4d1f875f639384e4997a141424f49f390da7c13ef6506d39a8a9c9cf49a",
+      "kind": "h2",
+      "chapter": "العباد-الزهاد-وحديث-عن-الحزن",
+      "prev": "bb5325308b578ba2339247e295e288295284afb8097cb6d7634cf6d56b541623",
+      "next": "84520d9ffd5e4c874402fcbf9b2c92a60e740b54e46df21e1c1d94f3218a9f67"
+    },
+    {
+      "ord": 228,
+      "blockId": "0981c3e9c86177d0db4b845c45efd641",
+      "fp64": "779a641fc675c314",
+      "normHash": "84520d9ffd5e4c874402fcbf9b2c92a60e740b54e46df21e1c1d94f3218a9f67",
+      "kind": "p",
+      "chapter": "العباد-الزهاد-وحديث-عن-الحزن",
+      "prev": "906da4d1f875f639384e4997a141424f49f390da7c13ef6506d39a8a9c9cf49a",
+      "next": "6c35217131be2721c075e49035244885cf1d8a40f32f9b981925a96d27c608e7"
+    },
+    {
+      "ord": 229,
+      "blockId": "16c1a16fe04a44329a821b230a3cf35c",
+      "fp64": "650e5406c773603c",
+      "normHash": "6c35217131be2721c075e49035244885cf1d8a40f32f9b981925a96d27c608e7",
+      "kind": "p",
+      "chapter": "العباد-الزهاد-وحديث-عن-الحزن",
+      "prev": "84520d9ffd5e4c874402fcbf9b2c92a60e740b54e46df21e1c1d94f3218a9f67",
+      "next": "4712af90d1ead8b2480cae7b9285896f59419dd858ef63564ef7da006df48e72"
+    },
+    {
+      "ord": 230,
+      "blockId": "cff5d125dc5d1d32fca048a10d87f50b",
+      "fp64": "2ffffbfadf73627f",
+      "normHash": "4712af90d1ead8b2480cae7b9285896f59419dd858ef63564ef7da006df48e72",
+      "kind": "page",
+      "chapter": "العباد-الزهاد-وحديث-عن-الحزن",
+      "prev": "6c35217131be2721c075e49035244885cf1d8a40f32f9b981925a96d27c608e7",
+      "next": "6bac668491789fe830db1206da90767ec179a8b4a2984df6d4b64afc25849e25"
+    },
+    {
+      "ord": 231,
+      "blockId": "6ebbe2eacc9ba59eaea4a3215b53856b",
+      "fp64": "6416643f8767ad5c",
+      "normHash": "6bac668491789fe830db1206da90767ec179a8b4a2984df6d4b64afc25849e25",
+      "kind": "p",
+      "chapter": "العباد-الزهاد-وحديث-عن-الحزن",
+      "prev": "4712af90d1ead8b2480cae7b9285896f59419dd858ef63564ef7da006df48e72",
+      "next": "31a0a3e204724c64f5b54f12ea966eb7be9b7c55107b87548a57ad57e4870aa9"
+    },
+    {
+      "ord": 232,
+      "blockId": "0dc81b883ca05c654aa8fe30cc156727",
+      "fp64": "6633d234d754f672",
+      "normHash": "31a0a3e204724c64f5b54f12ea966eb7be9b7c55107b87548a57ad57e4870aa9",
+      "kind": "p",
+      "chapter": "العباد-الزهاد-وحديث-عن-الحزن",
+      "prev": "6bac668491789fe830db1206da90767ec179a8b4a2984df6d4b64afc25849e25",
+      "next": "24725a56d2fbe9cd46191d40b2f04b0b25dd8630f5b1901198fb8ee69e71c3b2"
+    },
+    {
+      "ord": 233,
+      "blockId": "8e001a74ea94758b381a22513215a65b",
+      "fp64": "9102683247524f94",
+      "normHash": "24725a56d2fbe9cd46191d40b2f04b0b25dd8630f5b1901198fb8ee69e71c3b2",
+      "kind": "p",
+      "chapter": "العباد-الزهاد-وحديث-عن-الحزن",
+      "prev": "31a0a3e204724c64f5b54f12ea966eb7be9b7c55107b87548a57ad57e4870aa9",
+      "next": "05a3694c2e58fd87cca430ca1adff1ff3f516784a3930f9342651fe1b9492cc7"
+    },
+    {
+      "ord": 234,
+      "blockId": "c651dca83b53d6e7dd8bf17e9517854f",
+      "fp64": "1f04220296d03292",
+      "normHash": "05a3694c2e58fd87cca430ca1adff1ff3f516784a3930f9342651fe1b9492cc7",
+      "kind": "h2",
+      "chapter": "حزن-وبكاء-في-مجلس-الوعظ",
+      "prev": "24725a56d2fbe9cd46191d40b2f04b0b25dd8630f5b1901198fb8ee69e71c3b2",
+      "next": "def85c7d4b3f8c57863bf4bf204776eafe625ab7587cadd38c31d60347e8f7ca"
+    },
+    {
+      "ord": 235,
+      "blockId": "b747590bb34e10d29680ea53908e7590",
+      "fp64": "749bb02c56475658",
+      "normHash": "def85c7d4b3f8c57863bf4bf204776eafe625ab7587cadd38c31d60347e8f7ca",
+      "kind": "p",
+      "chapter": "حزن-وبكاء-في-مجلس-الوعظ",
+      "prev": "05a3694c2e58fd87cca430ca1adff1ff3f516784a3930f9342651fe1b9492cc7",
+      "next": "ea50ef4839a8e806e37d52ab863469001a76095bdbccbfe17908a82b161486bb"
+    },
+    {
+      "ord": 236,
+      "blockId": "e43fa9ffc8a4d61e9fe1b752d52867de",
+      "fp64": "fdfff39e7a7162b7",
+      "normHash": "ea50ef4839a8e806e37d52ab863469001a76095bdbccbfe17908a82b161486bb",
+      "kind": "page",
+      "chapter": "حزن-وبكاء-في-مجلس-الوعظ",
+      "prev": "def85c7d4b3f8c57863bf4bf204776eafe625ab7587cadd38c31d60347e8f7ca",
+      "next": "85e258d35370b54ad8a86cfe02b563bde9eb45452276423f37af09c1870b60dd"
+    },
+    {
+      "ord": 237,
+      "blockId": "91da1ee47f2ae9ebcc25549e9d39ba24",
+      "fp64": "279940169676f014",
+      "normHash": "85e258d35370b54ad8a86cfe02b563bde9eb45452276423f37af09c1870b60dd",
+      "kind": "p",
+      "chapter": "حزن-وبكاء-في-مجلس-الوعظ",
+      "prev": "ea50ef4839a8e806e37d52ab863469001a76095bdbccbfe17908a82b161486bb",
+      "next": "cf203226ba88908607bea2698fac1b5c10d061e8d9dac2fe92d42206ef662b5c"
+    },
+    {
+      "ord": 238,
+      "blockId": "af9d89173c1227a26144b7fe5c46f9f8",
+      "fp64": "6ae6d91b98f7f950",
+      "normHash": "cf203226ba88908607bea2698fac1b5c10d061e8d9dac2fe92d42206ef662b5c",
+      "kind": "h2",
+      "chapter": "هل-الحزن-من-أفضل-العبادة",
+      "prev": "85e258d35370b54ad8a86cfe02b563bde9eb45452276423f37af09c1870b60dd",
+      "next": "eb050f56c0b6d397bb33df175c0d6c6cbb254b494a7e4d1e273bae58257c67dc"
+    },
+    {
+      "ord": 239,
+      "blockId": "a88fc949f47985a5dad6c95e22553d34",
+      "fp64": "7d06b69aad65c77f",
+      "normHash": "eb050f56c0b6d397bb33df175c0d6c6cbb254b494a7e4d1e273bae58257c67dc",
+      "kind": "p",
+      "chapter": "هل-الحزن-من-أفضل-العبادة",
+      "prev": "cf203226ba88908607bea2698fac1b5c10d061e8d9dac2fe92d42206ef662b5c",
+      "next": "d3a9e18426d852a7beabb95c756d56960a3fceaa347c3839f69cb755cc6040eb"
+    },
+    {
+      "ord": 240,
+      "blockId": "fd0dbe79bbeb58434bd540c9e79e6cf5",
+      "fp64": "663f401787717954",
+      "normHash": "d3a9e18426d852a7beabb95c756d56960a3fceaa347c3839f69cb755cc6040eb",
+      "kind": "p",
+      "chapter": "هل-الحزن-من-أفضل-العبادة",
+      "prev": "eb050f56c0b6d397bb33df175c0d6c6cbb254b494a7e4d1e273bae58257c67dc",
+      "next": "2e0b82d49fc8386609df672c19e6fad16926afc6dfd1928c27bb3c1c129b50a6"
+    },
+    {
+      "ord": 241,
+      "blockId": "be0fca3df94842e598ad1368bc0bfe72",
+      "fp64": "fddfffffda3f66b6",
+      "normHash": "2e0b82d49fc8386609df672c19e6fad16926afc6dfd1928c27bb3c1c129b50a6",
+      "kind": "page",
+      "chapter": "هل-الحزن-من-أفضل-العبادة",
+      "prev": "d3a9e18426d852a7beabb95c756d56960a3fceaa347c3839f69cb755cc6040eb",
+      "next": "46c01117cf82ffa6ef8758d607dfac18a525d74f607ee48da75e7d7cf135efc2"
+    },
+    {
+      "ord": 242,
+      "blockId": "f53aa55dcce0e3023c468997496a058f",
+      "fp64": "7452c62de7d8d3bd",
+      "normHash": "46c01117cf82ffa6ef8758d607dfac18a525d74f607ee48da75e7d7cf135efc2",
+      "kind": "p",
+      "chapter": "هل-الحزن-من-أفضل-العبادة",
+      "prev": "2e0b82d49fc8386609df672c19e6fad16926afc6dfd1928c27bb3c1c129b50a6",
+      "next": "124a78554cf1fb35dea04497ee7cd17bdb093e99f22d663d2b5e199cfaf647d2"
+    },
+    {
+      "ord": 243,
+      "blockId": "2e7111b34c889ab853c88009a1ab4d7e",
+      "fp64": "161ed21f56015456",
+      "normHash": "124a78554cf1fb35dea04497ee7cd17bdb093e99f22d663d2b5e199cfaf647d2",
+      "kind": "p",
+      "chapter": "هل-الحزن-من-أفضل-العبادة",
+      "prev": "46c01117cf82ffa6ef8758d607dfac18a525d74f607ee48da75e7d7cf135efc2",
+      "next": "aedb0a47c626421de50de2e3a46fb9e238d1b79d19909b5e38cacf22f0cceef9"
+    },
+    {
+      "ord": 244,
+      "blockId": "df5de502e000260b3b1b5ced106f1c61",
+      "fp64": "653e4016d6f86d74",
+      "normHash": "aedb0a47c626421de50de2e3a46fb9e238d1b79d19909b5e38cacf22f0cceef9",
+      "kind": "p",
+      "chapter": "هل-الحزن-من-أفضل-العبادة",
+      "prev": "124a78554cf1fb35dea04497ee7cd17bdb093e99f22d663d2b5e199cfaf647d2",
+      "next": "d35fb5470daad0f9167a4753f6128dc7b091fa75aab28bbbf54c2491554f362c"
+    },
+    {
+      "ord": 245,
+      "blockId": "46a751dd874d58478c982f7c4c1c034a",
+      "fp64": "25fffbdefe7d62ff",
+      "normHash": "d35fb5470daad0f9167a4753f6128dc7b091fa75aab28bbbf54c2491554f362c",
+      "kind": "page",
+      "chapter": "هل-الحزن-من-أفضل-العبادة",
+      "prev": "aedb0a47c626421de50de2e3a46fb9e238d1b79d19909b5e38cacf22f0cceef9",
+      "next": "4fc540eb57c0ba51a9674eb095cf93e2a14378fd517d552b7579436152c34b2c"
+    },
+    {
+      "ord": 246,
+      "blockId": "2b8bbbd5108fb2a596236fae7dade83d",
+      "fp64": "3e95e23e926a3f0c",
+      "normHash": "4fc540eb57c0ba51a9674eb095cf93e2a14378fd517d552b7579436152c34b2c",
+      "kind": "h2",
+      "chapter": "أشد-الناس-هما-المؤمن-الصادق",
+      "prev": "d35fb5470daad0f9167a4753f6128dc7b091fa75aab28bbbf54c2491554f362c",
+      "next": "9a8b20af20cf34b6b2d2639d0a8869de1450ef9aa264932c5b54876eb50bbeaa"
+    },
+    {
+      "ord": 247,
+      "blockId": "78e2904ee981076dda26dba76f476929",
+      "fp64": "77de62bf06b37ef6",
+      "normHash": "9a8b20af20cf34b6b2d2639d0a8869de1450ef9aa264932c5b54876eb50bbeaa",
+      "kind": "p",
+      "chapter": "أشد-الناس-هما-المؤمن-الصادق",
+      "prev": "4fc540eb57c0ba51a9674eb095cf93e2a14378fd517d552b7579436152c34b2c",
+      "next": "af75cc0d680def7b0c7e67ed7a70c0c0d9a9ad3e51a6384840e471f65b12842b"
+    },
+    {
+      "ord": 248,
+      "blockId": "f252320fa36c48568c3d466577894749",
+      "fp64": "6435629686737134",
+      "normHash": "af75cc0d680def7b0c7e67ed7a70c0c0d9a9ad3e51a6384840e471f65b12842b",
+      "kind": "p",
+      "chapter": "أشد-الناس-هما-المؤمن-الصادق",
+      "prev": "9a8b20af20cf34b6b2d2639d0a8869de1450ef9aa264932c5b54876eb50bbeaa",
+      "next": "c66c7056bde840b0b2e484536517bde3e31043509fbece2e3615a51c1bf9a42f"
+    },
+    {
+      "ord": 249,
+      "blockId": "71337ec777d0f579a249ff145941914d",
+      "fp64": "67fff3fedbfb69f7",
+      "normHash": "c66c7056bde840b0b2e484536517bde3e31043509fbece2e3615a51c1bf9a42f",
+      "kind": "page",
+      "chapter": "أشد-الناس-هما-المؤمن-الصادق",
+      "prev": "af75cc0d680def7b0c7e67ed7a70c0c0d9a9ad3e51a6384840e471f65b12842b",
+      "next": "50a215c32f9aa409e78809ff19d8c508fc6b59a28f3fffb866c4f1a891936cfb"
+    },
+    {
+      "ord": 250,
+      "blockId": "56b73f5a24bc939325026d1eb14f470a",
+      "fp64": "386ae1df5705a4c5",
+      "normHash": "50a215c32f9aa409e78809ff19d8c508fc6b59a28f3fffb866c4f1a891936cfb",
+      "kind": "p",
+      "chapter": "أشد-الناس-هما-المؤمن-الصادق",
+      "prev": "c66c7056bde840b0b2e484536517bde3e31043509fbece2e3615a51c1bf9a42f",
+      "next": "526c153ff9d2e0587aa784a47fc2db3af2de6c3e4672835345635fe4e43d8ab2"
+    },
+    {
+      "ord": 251,
+      "blockId": "c4c07650c82f6b1ce10de9e70e1ebb6e",
+      "fp64": "e5df645eae71cc5c",
+      "normHash": "526c153ff9d2e0587aa784a47fc2db3af2de6c3e4672835345635fe4e43d8ab2",
+      "kind": "p",
+      "chapter": "أشد-الناس-هما-المؤمن-الصادق",
+      "prev": "50a215c32f9aa409e78809ff19d8c508fc6b59a28f3fffb866c4f1a891936cfb",
+      "next": "845381874932c7280311c75390f3c00b06261a90f827f0c6b13808364198de15"
+    },
+    {
+      "ord": 252,
+      "blockId": "a40f4512f5b49fab665f1fe61d0a1502",
+      "fp64": "9e689d6235ab55d8",
+      "normHash": "845381874932c7280311c75390f3c00b06261a90f827f0c6b13808364198de15",
+      "kind": "h2",
+      "chapter": "قلوب-الأبرار-تغلي-بأعمال-البر",
+      "prev": "526c153ff9d2e0587aa784a47fc2db3af2de6c3e4672835345635fe4e43d8ab2",
+      "next": "e60de8f96c9a8b5cfa5cf04cafd221010773bfb9455ef2e2c756c1c300c793cd"
+    },
+    {
+      "ord": 253,
+      "blockId": "adaeb0fcda67e2fc2148c1b614b3fe74",
+      "fp64": "3753bc2c33dae4bc",
+      "normHash": "e60de8f96c9a8b5cfa5cf04cafd221010773bfb9455ef2e2c756c1c300c793cd",
+      "kind": "p",
+      "chapter": "قلوب-الأبرار-تغلي-بأعمال-البر",
+      "prev": "845381874932c7280311c75390f3c00b06261a90f827f0c6b13808364198de15",
+      "next": "4c905a5d89297b7f646a72d95015cf85b35d5b32ba5d9b94112505ddd3eb0cd3"
+    },
+    {
+      "ord": 254,
+      "blockId": "4535be2fb7d6a173f6f81c6b4f38d639",
+      "fp64": "3dfffffbfefb6ef7",
+      "normHash": "4c905a5d89297b7f646a72d95015cf85b35d5b32ba5d9b94112505ddd3eb0cd3",
+      "kind": "page",
+      "chapter": "قلوب-الأبرار-تغلي-بأعمال-البر",
+      "prev": "e60de8f96c9a8b5cfa5cf04cafd221010773bfb9455ef2e2c756c1c300c793cd",
+      "next": "224b0e8352fdbd4ca30a3b88536d4ad4db5e75128894898a01f553850f94c65c"
+    },
+    {
+      "ord": 255,
+      "blockId": "deea816ec96407c0bc8e4239d36f82cc",
+      "fp64": "abf5b8f385f7fb7f",
+      "normHash": "224b0e8352fdbd4ca30a3b88536d4ad4db5e75128894898a01f553850f94c65c",
+      "kind": "h2",
+      "chapter": "أجر-بكاء-يعقوب-على-يوسف-وسببه",
+      "prev": "4c905a5d89297b7f646a72d95015cf85b35d5b32ba5d9b94112505ddd3eb0cd3",
+      "next": "9a43a3665ed7b7202b1effdc7e3f1fed6e234f2d85dadbae0a69c1cdde00a185"
+    },
+    {
+      "ord": 256,
+      "blockId": "64b14ee06851733d3199c6ffbb125f57",
+      "fp64": "6e35d6b687463618",
+      "normHash": "9a43a3665ed7b7202b1effdc7e3f1fed6e234f2d85dadbae0a69c1cdde00a185",
+      "kind": "p",
+      "chapter": "أجر-بكاء-يعقوب-على-يوسف-وسببه",
+      "prev": "224b0e8352fdbd4ca30a3b88536d4ad4db5e75128894898a01f553850f94c65c",
+      "next": "2e1c555bb5b903d2099f38d2abfe84452cc0c5c8bff064273306c6a4de57e0ad"
+    },
+    {
+      "ord": 257,
+      "blockId": "4f2387960d372c43624df83d2d664e3b",
+      "fp64": "7d3ee2349513a29e",
+      "normHash": "2e1c555bb5b903d2099f38d2abfe84452cc0c5c8bff064273306c6a4de57e0ad",
+      "kind": "p",
+      "chapter": "أجر-بكاء-يعقوب-على-يوسف-وسببه",
+      "prev": "9a43a3665ed7b7202b1effdc7e3f1fed6e234f2d85dadbae0a69c1cdde00a185",
+      "next": "73b61c75abb255995549919efaafab82d0f4cc9c527161d13154454544eca971"
+    },
+    {
+      "ord": 258,
+      "blockId": "1fa95ea13919bd703b97d7c54d477849",
+      "fp64": "b7ffffdb5a79eabe",
+      "normHash": "73b61c75abb255995549919efaafab82d0f4cc9c527161d13154454544eca971",
+      "kind": "page",
+      "chapter": "أجر-بكاء-يعقوب-على-يوسف-وسببه",
+      "prev": "2e1c555bb5b903d2099f38d2abfe84452cc0c5c8bff064273306c6a4de57e0ad",
+      "next": "71319b20a3665436ebb018587c3308269dfdf731384fb9cdc3f2ca1a74b3b78b"
+    },
+    {
+      "ord": 259,
+      "blockId": "e93274e9c4f22012d6fc19e687578449",
+      "fp64": "701251150762603c",
+      "normHash": "71319b20a3665436ebb018587c3308269dfdf731384fb9cdc3f2ca1a74b3b78b",
+      "kind": "p",
+      "chapter": "أجر-بكاء-يعقوب-على-يوسف-وسببه",
+      "prev": "73b61c75abb255995549919efaafab82d0f4cc9c527161d13154454544eca971",
+      "next": "b01a0fcaf5e29c59260f53d35be0546418a961da07f6c4634e7dbd3bf5065fb1"
+    },
+    {
+      "ord": 260,
+      "blockId": "469df455a3bdd7520249a81e7d930d87",
+      "fp64": "7f9dfda606db3a23",
+      "normHash": "b01a0fcaf5e29c59260f53d35be0546418a961da07f6c4634e7dbd3bf5065fb1",
+      "kind": "h2",
+      "chapter": "زوجوا-الحور-العين-وأخدموا-الغلمان",
+      "prev": "71319b20a3665436ebb018587c3308269dfdf731384fb9cdc3f2ca1a74b3b78b",
+      "next": "5d8fd1ac1ab36c925fbe238f8fd877d156abc5743cb7a3c8b1c5077def160c6c"
+    },
+    {
+      "ord": 261,
+      "blockId": "f0094804ec5111d2d90d966bc4ca60b4",
+      "fp64": "8d3e27d6077f7c34",
+      "normHash": "5d8fd1ac1ab36c925fbe238f8fd877d156abc5743cb7a3c8b1c5077def160c6c",
+      "kind": "p",
+      "chapter": "زوجوا-الحور-العين-وأخدموا-الغلمان",
+      "prev": "b01a0fcaf5e29c59260f53d35be0546418a961da07f6c4634e7dbd3bf5065fb1",
+      "next": "00130f713d3d4de22a268d0380ec9ddb46ba7dc9fd1199e9b4b0c21d7195ee79"
+    },
+    {
+      "ord": 262,
+      "blockId": "99635da98a26d910f5dd98a84f1704d4",
+      "fp64": "a5dff39b7a71fc36",
+      "normHash": "00130f713d3d4de22a268d0380ec9ddb46ba7dc9fd1199e9b4b0c21d7195ee79",
+      "kind": "page",
+      "chapter": "زوجوا-الحور-العين-وأخدموا-الغلمان",
+      "prev": "5d8fd1ac1ab36c925fbe238f8fd877d156abc5743cb7a3c8b1c5077def160c6c",
+      "next": "7e506f12108841b1d9733e5af57b985888c1de5961a4de66a7117ecbc56dce24"
+    },
+    {
+      "ord": 263,
+      "blockId": "80bdd904e34f49a9fd73f4768fb1958c",
+      "fp64": "a410c00546cb703d",
+      "normHash": "7e506f12108841b1d9733e5af57b985888c1de5961a4de66a7117ecbc56dce24",
+      "kind": "p",
+      "chapter": "زوجوا-الحور-العين-وأخدموا-الغلمان",
+      "prev": "00130f713d3d4de22a268d0380ec9ddb46ba7dc9fd1199e9b4b0c21d7195ee79",
+      "next": "fc566e49028400600f9da960eda628e87c52808c1ab7fcdff883f7c62706229c"
+    },
+    {
+      "ord": 264,
+      "blockId": "eb63e702749e09878e91598dbb37a7cb",
+      "fp64": "6e1046340774e4bc",
+      "normHash": "fc566e49028400600f9da960eda628e87c52808c1ab7fcdff883f7c62706229c",
+      "kind": "p",
+      "chapter": "زوجوا-الحور-العين-وأخدموا-الغلمان",
+      "prev": "7e506f12108841b1d9733e5af57b985888c1de5961a4de66a7117ecbc56dce24",
+      "next": "84c8d2d2982ee55b6a4c3c3b9997acb6952520203bcbbca7ac8a1aa994215bd2"
+    },
+    {
+      "ord": 265,
+      "blockId": "86bc3f71af45e4edf43fb09751eaac52",
+      "fp64": "27dfffbe7ebbe3be",
+      "normHash": "84c8d2d2982ee55b6a4c3c3b9997acb6952520203bcbbca7ac8a1aa994215bd2",
+      "kind": "page",
+      "chapter": "زوجوا-الحور-العين-وأخدموا-الغلمان",
+      "prev": "fc566e49028400600f9da960eda628e87c52808c1ab7fcdff883f7c62706229c",
+      "next": "21866a3d67e500fe6621c37e5a9f43ecc2039b7cbf32a054db7f1178c54cdc00"
+    },
+    {
+      "ord": 266,
+      "blockId": "720f296828150669e807878c5602bfd9",
+      "fp64": "8eb642338771481d",
+      "normHash": "21866a3d67e500fe6621c37e5a9f43ecc2039b7cbf32a054db7f1178c54cdc00",
+      "kind": "p",
+      "chapter": "زوجوا-الحور-العين-وأخدموا-الغلمان",
+      "prev": "84c8d2d2982ee55b6a4c3c3b9997acb6952520203bcbbca7ac8a1aa994215bd2",
+      "next": "5993cd936db38ed9f0c90daedf6449bd04e0ac3add06e0d1eed3726f6c6fae03"
+    },
+    {
+      "ord": 267,
+      "blockId": "865c71467bf8e8eb3051bef789d663c0",
+      "fp64": "ccaa0e7d3b66665c",
+      "normHash": "5993cd936db38ed9f0c90daedf6449bd04e0ac3add06e0d1eed3726f6c6fae03",
+      "kind": "h2",
+      "chapter": "حال-من-ملأت-الآخرة-قلوبهم",
+      "prev": "21866a3d67e500fe6621c37e5a9f43ecc2039b7cbf32a054db7f1178c54cdc00",
+      "next": "6559e163f3496347b5cd4593a0df9b8cb5f10ddc77ec0c68d7d949912986b4ab"
+    },
+    {
+      "ord": 268,
+      "blockId": "f25892b5856ae4ffb095d40ed8022c96",
+      "fp64": "7b0ee77c1f414c34",
+      "normHash": "6559e163f3496347b5cd4593a0df9b8cb5f10ddc77ec0c68d7d949912986b4ab",
+      "kind": "p",
+      "chapter": "حال-من-ملأت-الآخرة-قلوبهم",
+      "prev": "5993cd936db38ed9f0c90daedf6449bd04e0ac3add06e0d1eed3726f6c6fae03",
+      "next": "2456f00590b7f0ab4932e5b7603dc749ac90304411122011c7003c6f315d4c70"
+    },
+    {
+      "ord": 269,
+      "blockId": "b8610135c5ad8cb1eaa9fe3f10ce634b",
+      "fp64": "7dffffbe5ebb647e",
+      "normHash": "2456f00590b7f0ab4932e5b7603dc749ac90304411122011c7003c6f315d4c70",
+      "kind": "page",
+      "chapter": "حال-من-ملأت-الآخرة-قلوبهم",
+      "prev": "6559e163f3496347b5cd4593a0df9b8cb5f10ddc77ec0c68d7d949912986b4ab",
+      "next": "8d29614fcd6b4fe89222d62670e14664a91749d17cc3255365ea80e04f5a3c24"
+    },
+    {
+      "ord": 270,
+      "blockId": "c1bd8da5b61bb699827e84680b54c11b",
+      "fp64": "3e0f21169fb873b8",
+      "normHash": "8d29614fcd6b4fe89222d62670e14664a91749d17cc3255365ea80e04f5a3c24",
+      "kind": "h2",
+      "chapter": "اجعل-الله-همك",
+      "prev": "2456f00590b7f0ab4932e5b7603dc749ac90304411122011c7003c6f315d4c70",
+      "next": "6ce38a3fe3bbfe17db2d127bd4a92fed79acad995c86f8c05af664074e8e8a1e"
+    },
+    {
+      "ord": 271,
+      "blockId": "a1c2565a4dd44449c1ecf8990d1951d6",
+      "fp64": "2f00605f05244a0c",
+      "normHash": "6ce38a3fe3bbfe17db2d127bd4a92fed79acad995c86f8c05af664074e8e8a1e",
+      "kind": "p",
+      "chapter": "اجعل-الله-همك",
+      "prev": "8d29614fcd6b4fe89222d62670e14664a91749d17cc3255365ea80e04f5a3c24",
+      "next": "a5a3a5e7e6d66b7daccbf54c574400acf5102518e74815071653dce062b37781"
+    },
+    {
+      "ord": 272,
+      "blockId": "c5153807bfc1ad226fc9afce1ea5b8dd",
+      "fp64": "17f9a3fc6eed5d9a",
+      "normHash": "a5a3a5e7e6d66b7daccbf54c574400acf5102518e74815071653dce062b37781",
+      "kind": "p",
+      "chapter": "اجعل-الله-همك",
+      "prev": "6ce38a3fe3bbfe17db2d127bd4a92fed79acad995c86f8c05af664074e8e8a1e",
+      "next": "04ff3b0c9ac8bdf05e78394b69e197cd07e41e6f501fbf0cd3da81b8adea4a55"
+    },
+    {
+      "ord": 273,
+      "blockId": "a28a9c6cf48769828abbca5ba4b7cf64",
+      "fp64": "75f7dfa0aed9727e",
+      "normHash": "04ff3b0c9ac8bdf05e78394b69e197cd07e41e6f501fbf0cd3da81b8adea4a55",
+      "kind": "h2",
+      "chapter": "بكاء-العمل-وبكاء-العين",
+      "prev": "a5a3a5e7e6d66b7daccbf54c574400acf5102518e74815071653dce062b37781",
+      "next": "030094d31122615138f8c488f97eb3abc867555fe7d3053f0d871751b9d02cd3"
+    },
+    {
+      "ord": 274,
+      "blockId": "c95b91d546ae93be738f8deaa8414115",
+      "fp64": "64bec2b7a6d16154",
+      "normHash": "030094d31122615138f8c488f97eb3abc867555fe7d3053f0d871751b9d02cd3",
+      "kind": "p",
+      "chapter": "بكاء-العمل-وبكاء-العين",
+      "prev": "04ff3b0c9ac8bdf05e78394b69e197cd07e41e6f501fbf0cd3da81b8adea4a55",
+      "next": "4203493f39f6e0e45062d29afcd575b9a9f7906841bb1f9cb9fabc2a1bb08b44"
+    },
+    {
+      "ord": 275,
+      "blockId": "412753d39bdf4995b7637ccbc3d444c4",
+      "fp64": "e7ffffdf5efb7677",
+      "normHash": "4203493f39f6e0e45062d29afcd575b9a9f7906841bb1f9cb9fabc2a1bb08b44",
+      "kind": "page",
+      "chapter": "بكاء-العمل-وبكاء-العين",
+      "prev": "030094d31122615138f8c488f97eb3abc867555fe7d3053f0d871751b9d02cd3",
+      "next": "559dda1b61cfe9efe96655df3d712f0993d06c474c15404035e0e767996a04d9"
+    },
+    {
+      "ord": 276,
+      "blockId": "517f8d7fc4789e2c09d9ffe8c8f3b2c3",
+      "fp64": "341261150763509c",
+      "normHash": "559dda1b61cfe9efe96655df3d712f0993d06c474c15404035e0e767996a04d9",
+      "kind": "p",
+      "chapter": "بكاء-العمل-وبكاء-العين",
+      "prev": "4203493f39f6e0e45062d29afcd575b9a9f7906841bb1f9cb9fabc2a1bb08b44",
+      "next": "2a45f188fee3f38d55ff7a1c03fe290e68c1fc234158c21b0453578aa2acd752"
+    },
+    {
+      "ord": 277,
+      "blockId": "0e6bde7e9f264c0acb672f3e0a51041d",
+      "fp64": "7d152137477171d4",
+      "normHash": "2a45f188fee3f38d55ff7a1c03fe290e68c1fc234158c21b0453578aa2acd752",
+      "kind": "p",
+      "chapter": "بكاء-العمل-وبكاء-العين",
+      "prev": "559dda1b61cfe9efe96655df3d712f0993d06c474c15404035e0e767996a04d9",
+      "next": "f262542d3d07ba137046c7d24a0f6d9a1e558c1ea26cdedbbd9e2e18df2ca47e"
+    },
+    {
+      "ord": 278,
+      "blockId": "f062559e5ac8dd78ef34ce922de838c7",
+      "fp64": "6bba7faa375a5128",
+      "normHash": "f262542d3d07ba137046c7d24a0f6d9a1e558c1ea26cdedbbd9e2e18df2ca47e",
+      "kind": "h2",
+      "chapter": "شدة-آحزان-عتبة-الغلام",
+      "prev": "2a45f188fee3f38d55ff7a1c03fe290e68c1fc234158c21b0453578aa2acd752",
+      "next": "53968b4fc92ccc38189c3960c4d6a622baf467fabda42a0ba8216b35a196bed3"
+    },
+    {
+      "ord": 279,
+      "blockId": "defce9a510392350b2e6688c5f74492d",
+      "fp64": "649ae4bc9747fc1c",
+      "normHash": "53968b4fc92ccc38189c3960c4d6a622baf467fabda42a0ba8216b35a196bed3",
+      "kind": "p",
+      "chapter": "شدة-آحزان-عتبة-الغلام",
+      "prev": "f262542d3d07ba137046c7d24a0f6d9a1e558c1ea26cdedbbd9e2e18df2ca47e",
+      "next": "194dbf7079efa996b4af33880fed7af4395eb10cd8f635ff661906b660db1c40"
+    },
+    {
+      "ord": 280,
+      "blockId": "df51b606d5cad1dfb7b9d87e6be636b4",
+      "fp64": "f51a6215b7447e1c",
+      "normHash": "194dbf7079efa996b4af33880fed7af4395eb10cd8f635ff661906b660db1c40",
+      "kind": "p",
+      "chapter": "شدة-آحزان-عتبة-الغلام",
+      "prev": "53968b4fc92ccc38189c3960c4d6a622baf467fabda42a0ba8216b35a196bed3",
+      "next": "d95102fcb90eed9b5afa0ded4e57d57c7f86fa88a6be71c1e1970d3c51389e12"
+    },
+    {
+      "ord": 281,
+      "blockId": "f8395716826006a7eebaf0f0683e78dc",
+      "fp64": "75dff7bf7b376eb6",
+      "normHash": "d95102fcb90eed9b5afa0ded4e57d57c7f86fa88a6be71c1e1970d3c51389e12",
+      "kind": "page",
+      "chapter": "شدة-آحزان-عتبة-الغلام",
+      "prev": "194dbf7079efa996b4af33880fed7af4395eb10cd8f635ff661906b660db1c40",
+      "next": "d0a791b938171a8641255226b1bee62ea3eecddbb569f27f9d9ae3309a4275ac"
+    },
+    {
+      "ord": 282,
+      "blockId": "4485f13de8d74f61275677ea9ac1a8de",
+      "fp64": "a778487cccb18858",
+      "normHash": "d0a791b938171a8641255226b1bee62ea3eecddbb569f27f9d9ae3309a4275ac",
+      "kind": "h2",
+      "chapter": "هموم-عطاء-السليمي",
+      "prev": "d95102fcb90eed9b5afa0ded4e57d57c7f86fa88a6be71c1e1970d3c51389e12",
+      "next": "18f8f5ea8eaf8fec3fc674d1fee3b717492b295dd0a7e1d9fb5dbe7ed7dd986e"
+    },
+    {
+      "ord": 283,
+      "blockId": "1ca81039e7d2eeb7c99d6b49dd66519b",
+      "fp64": "c450661c5713d9d4",
+      "normHash": "18f8f5ea8eaf8fec3fc674d1fee3b717492b295dd0a7e1d9fb5dbe7ed7dd986e",
+      "kind": "p",
+      "chapter": "هموم-عطاء-السليمي",
+      "prev": "d0a791b938171a8641255226b1bee62ea3eecddbb569f27f9d9ae3309a4275ac",
+      "next": "7598cb828220733aea2a4bfe3f044467dea95fabdb3a28e2fba5c197843a87de"
+    },
+    {
+      "ord": 284,
+      "blockId": "98a4e1edefbd8d8aed80ab8b0ab8a82e",
+      "fp64": "7e167015d7726094",
+      "normHash": "7598cb828220733aea2a4bfe3f044467dea95fabdb3a28e2fba5c197843a87de",
+      "kind": "p",
+      "chapter": "هموم-عطاء-السليمي",
+      "prev": "18f8f5ea8eaf8fec3fc674d1fee3b717492b295dd0a7e1d9fb5dbe7ed7dd986e",
+      "next": "748a030be7e4b8667df4df37c4956aac81b017f21f48eb4126e573d89178c2be"
+    },
+    {
+      "ord": 285,
+      "blockId": "ab98fc6de411631adf18227d496917b1",
+      "fp64": "b5f633ffefffff9d",
+      "normHash": "748a030be7e4b8667df4df37c4956aac81b017f21f48eb4126e573d89178c2be",
+      "kind": "h2",
+      "chapter": "رجل-يبكي-ويضحك-معا",
+      "prev": "7598cb828220733aea2a4bfe3f044467dea95fabdb3a28e2fba5c197843a87de",
+      "next": "577ae5941c9c636b78f517d48f95acaf058d3da992d34742b64a7dd42dce8ef5"
+    },
+    {
+      "ord": 286,
+      "blockId": "86de50c2780f93771373c21e796fa2c1",
+      "fp64": "c574f226977f707c",
+      "normHash": "577ae5941c9c636b78f517d48f95acaf058d3da992d34742b64a7dd42dce8ef5",
+      "kind": "p",
+      "chapter": "رجل-يبكي-ويضحك-معا",
+      "prev": "748a030be7e4b8667df4df37c4956aac81b017f21f48eb4126e573d89178c2be",
+      "next": "85e4f73be80f53b16b0bd320a1584afcf1471cc9942246987052f223e45770be"
+    },
+    {
+      "ord": 287,
+      "blockId": "3bc23f57abcb47d428bc065dd7eca968",
+      "fp64": "77dff39efb75f9bf",
+      "normHash": "85e4f73be80f53b16b0bd320a1584afcf1471cc9942246987052f223e45770be",
+      "kind": "page",
+      "chapter": "رجل-يبكي-ويضحك-معا",
+      "prev": "577ae5941c9c636b78f517d48f95acaf058d3da992d34742b64a7dd42dce8ef5",
+      "next": "6890efb162de2706e3303421871c62256a98d86d904a35c113e6be193b8d6873"
+    },
+    {
+      "ord": 288,
+      "blockId": "07ecd8eb5b522f97ee53909cca4431b1",
+      "fp64": "7ece6013d713796c",
+      "normHash": "6890efb162de2706e3303421871c62256a98d86d904a35c113e6be193b8d6873",
+      "kind": "h2",
+      "chapter": "من-وحي-الله-إلى-أنبيائه",
+      "prev": "85e4f73be80f53b16b0bd320a1584afcf1471cc9942246987052f223e45770be",
+      "next": "f3e72d45cd99e362ba20a60e73efc06fe47283d173e1d5fda3193903165d5ffc"
+    },
+    {
+      "ord": 289,
+      "blockId": "54b5800bbfd503604d029694d3d54a97",
+      "fp64": "765e619e97f675d4",
+      "normHash": "f3e72d45cd99e362ba20a60e73efc06fe47283d173e1d5fda3193903165d5ffc",
+      "kind": "p",
+      "chapter": "من-وحي-الله-إلى-أنبيائه",
+      "prev": "6890efb162de2706e3303421871c62256a98d86d904a35c113e6be193b8d6873",
+      "next": "ef87f4dd773df4871c0ff32b178979aedc65f957f7b9b449c00c8c0645c030d9"
+    },
+    {
+      "ord": 290,
+      "blockId": "a92b3205406a669eced9385a83b199c7",
+      "fp64": "641cc6979671c19c",
+      "normHash": "ef87f4dd773df4871c0ff32b178979aedc65f957f7b9b449c00c8c0645c030d9",
+      "kind": "p",
+      "chapter": "من-وحي-الله-إلى-أنبيائه",
+      "prev": "f3e72d45cd99e362ba20a60e73efc06fe47283d173e1d5fda3193903165d5ffc",
+      "next": "fcd705baaeea9e2d94b9b4077e5ed3b4012ec237b51fc7a1c2c8f1306af05665"
+    },
+    {
+      "ord": 291,
+      "blockId": "367388ca7ca18b0dee04be59da63b28d",
+      "fp64": "35fff7ba5e33e876",
+      "normHash": "fcd705baaeea9e2d94b9b4077e5ed3b4012ec237b51fc7a1c2c8f1306af05665",
+      "kind": "page",
+      "chapter": "من-وحي-الله-إلى-أنبيائه",
+      "prev": "ef87f4dd773df4871c0ff32b178979aedc65f957f7b9b449c00c8c0645c030d9",
+      "next": "54e9291db36252ac8419bb6c00e4f09ef6a4bd74f834f5918806ce52413916d2"
+    },
+    {
+      "ord": 292,
+      "blockId": "3815e00a47a7505785bcd06d889e4016",
+      "fp64": "a57e601684f07594",
+      "normHash": "54e9291db36252ac8419bb6c00e4f09ef6a4bd74f834f5918806ce52413916d2",
+      "kind": "p",
+      "chapter": "من-وحي-الله-إلى-أنبيائه",
+      "prev": "fcd705baaeea9e2d94b9b4077e5ed3b4012ec237b51fc7a1c2c8f1306af05665",
+      "next": "67971726adb482ad7266456dbb9a54e05a600fcf251d79584d16771d59bec4e4"
+    },
+    {
+      "ord": 293,
+      "blockId": "da0e33acc0acca134e85058657631d80",
+      "fp64": "f4174004a6fc7814",
+      "normHash": "67971726adb482ad7266456dbb9a54e05a600fcf251d79584d16771d59bec4e4",
+      "kind": "p",
+      "chapter": "من-وحي-الله-إلى-أنبيائه",
+      "prev": "54e9291db36252ac8419bb6c00e4f09ef6a4bd74f834f5918806ce52413916d2",
+      "next": "2b33983b774c6abacf0396e54bc8332dfd4d5505ee16f34de9c1e8be5d4eb08d"
+    },
+    {
+      "ord": 294,
+      "blockId": "95d548152c4312cc1000ea7c28248ed4",
+      "fp64": "f5dffffa7f7df4b6",
+      "normHash": "2b33983b774c6abacf0396e54bc8332dfd4d5505ee16f34de9c1e8be5d4eb08d",
+      "kind": "page",
+      "chapter": "من-وحي-الله-إلى-أنبيائه",
+      "prev": "67971726adb482ad7266456dbb9a54e05a600fcf251d79584d16771d59bec4e4",
+      "next": "ff664266dd113db83f0d3d04b8a5a9ac4aee97dc18047c95f88671d8dfd4a8b0"
+    },
+    {
+      "ord": 295,
+      "blockId": "e9bee946a9d7f22e878b149d64d9d3a3",
+      "fp64": "1616c23f4752729c",
+      "normHash": "ff664266dd113db83f0d3d04b8a5a9ac4aee97dc18047c95f88671d8dfd4a8b0",
+      "kind": "p",
+      "chapter": "من-وحي-الله-إلى-أنبيائه",
+      "prev": "2b33983b774c6abacf0396e54bc8332dfd4d5505ee16f34de9c1e8be5d4eb08d",
+      "next": "1e9df6caf5808ed532999de11e3c44731360f387978730a16f2e34f4e6bfb3c0"
+    },
+    {
+      "ord": 296,
+      "blockId": "196f411af0d5ba4bf4ec2f9a4b62ead7",
+      "fp64": "550a141f97545cbc",
+      "normHash": "1e9df6caf5808ed532999de11e3c44731360f387978730a16f2e34f4e6bfb3c0",
+      "kind": "p",
+      "chapter": "من-وحي-الله-إلى-أنبيائه",
+      "prev": "ff664266dd113db83f0d3d04b8a5a9ac4aee97dc18047c95f88671d8dfd4a8b0",
+      "next": "712ba91a08d5c84919f7801a3427dc78e2a748a7c839687a0e46d045b9dca21e"
+    },
+    {
+      "ord": 297,
+      "blockId": "8373bed7b9c080bf8bb146cadaf4a8d9",
+      "fp64": "2f1852950d43480d",
+      "normHash": "712ba91a08d5c84919f7801a3427dc78e2a748a7c839687a0e46d045b9dca21e",
+      "kind": "p",
+      "chapter": "من-وحي-الله-إلى-أنبيائه",
+      "prev": "1e9df6caf5808ed532999de11e3c44731360f387978730a16f2e34f4e6bfb3c0",
+      "next": "f7156bdc167bb0d49255a3d252724e410346db0e9684f411a5285a2843782f70"
+    },
+    {
+      "ord": 298,
+      "blockId": "4680c3a038d34b1bc4310b84825f5643",
+      "fp64": "ffcaccdf9577bfef",
+      "normHash": "f7156bdc167bb0d49255a3d252724e410346db0e9684f411a5285a2843782f70",
+      "kind": "h2",
+      "chapter": "من-آداب-حامل-القرآن",
+      "prev": "712ba91a08d5c84919f7801a3427dc78e2a748a7c839687a0e46d045b9dca21e",
+      "next": "50a414d681e4fddb5a2979acdd2d3d311d0ab8882a601ccb84881ff4a47a7120"
+    },
+    {
+      "ord": 299,
+      "blockId": "a84e937ef3726b73fcf17948c5908f4e",
+      "fp64": "659f619607e36434",
+      "normHash": "50a414d681e4fddb5a2979acdd2d3d311d0ab8882a601ccb84881ff4a47a7120",
+      "kind": "p",
+      "chapter": "من-آداب-حامل-القرآن",
+      "prev": "f7156bdc167bb0d49255a3d252724e410346db0e9684f411a5285a2843782f70",
+      "next": "4db6d6bb521b682b758e1da0f041502a55ecdda2e61314d6edace4bfcc56d5ad"
+    },
+    {
+      "ord": 300,
+      "blockId": "8a95c6d3d8a78995505023bcc17f4c9a",
+      "fp64": "6ffff7ff5abb6c77",
+      "normHash": "4db6d6bb521b682b758e1da0f041502a55ecdda2e61314d6edace4bfcc56d5ad",
+      "kind": "page",
+      "chapter": "من-آداب-حامل-القرآن",
+      "prev": "50a414d681e4fddb5a2979acdd2d3d311d0ab8882a601ccb84881ff4a47a7120",
+      "next": "0601621e73c3d06d4b37d806b23200a6b4d63d28d59a6b1e35d72a3fbb2ee57b"
+    },
+    {
+      "ord": 301,
+      "blockId": "0854d5d080d5251c3f9a279766d4cbf6",
+      "fp64": "ce5c54dc83b24e94",
+      "normHash": "0601621e73c3d06d4b37d806b23200a6b4d63d28d59a6b1e35d72a3fbb2ee57b",
+      "kind": "h2",
+      "chapter": "وصف-أهل-الجنة-في-الدنيا",
+      "prev": "4db6d6bb521b682b758e1da0f041502a55ecdda2e61314d6edace4bfcc56d5ad",
+      "next": "40bfad69f2f8a07357e1158e2970150884c19f7db6669599ad6a61d3194bd91f"
+    },
+    {
+      "ord": 302,
+      "blockId": "ad3dac28469d04a6d8fd630b9c69e87e",
+      "fp64": "e43e5096c7f56014",
+      "normHash": "40bfad69f2f8a07357e1158e2970150884c19f7db6669599ad6a61d3194bd91f",
+      "kind": "p",
+      "chapter": "وصف-أهل-الجنة-في-الدنيا",
+      "prev": "0601621e73c3d06d4b37d806b23200a6b4d63d28d59a6b1e35d72a3fbb2ee57b",
+      "next": "353bbfacb5be00a425fd581f5c607ccb1c98f85c105abf2b7b4056117988f76c"
+    },
+    {
+      "ord": 303,
+      "blockId": "ae4172efdd25e01b80946bea128b2857",
+      "fp64": "37dffbbafff3f2bf",
+      "normHash": "353bbfacb5be00a425fd581f5c607ccb1c98f85c105abf2b7b4056117988f76c",
+      "kind": "page",
+      "chapter": "وصف-أهل-الجنة-في-الدنيا",
+      "prev": "40bfad69f2f8a07357e1158e2970150884c19f7db6669599ad6a61d3194bd91f",
+      "next": "7ff20e885dbd97ed9b19a17a4be75013f3869241134258147040f8c4e86fbf92"
+    },
+    {
+      "ord": 304,
+      "blockId": "157c9a75381a216e24fd54c98e03747a",
+      "fp64": "efb6223b279f313e",
+      "normHash": "7ff20e885dbd97ed9b19a17a4be75013f3869241134258147040f8c4e86fbf92",
+      "kind": "h2",
+      "chapter": "صور-شدة-حزن-عمر-بن-الخطاب-على-أخيه",
+      "prev": "353bbfacb5be00a425fd581f5c607ccb1c98f85c105abf2b7b4056117988f76c",
+      "next": "b7712c2eb098c400281c6afc900f2748000f1ac0d9fe0220c87d89b797da6cae"
+    },
+    {
+      "ord": 305,
+      "blockId": "50ec55da163b970c144f9633b075cfb4",
+      "fp64": "841a609686717834",
+      "normHash": "b7712c2eb098c400281c6afc900f2748000f1ac0d9fe0220c87d89b797da6cae",
+      "kind": "p",
+      "chapter": "صور-شدة-حزن-عمر-بن-الخطاب-على-أخيه",
+      "prev": "7ff20e885dbd97ed9b19a17a4be75013f3869241134258147040f8c4e86fbf92",
+      "next": "9c1a5bc4d1fb74bc9fcbe718e232949ade5049506d1210e26660e5a1c3599574"
+    },
+    {
+      "ord": 306,
+      "blockId": "9ce5cc95345512c5ca0be5936e180af6",
+      "fp64": "c55a633e06b3b014",
+      "normHash": "9c1a5bc4d1fb74bc9fcbe718e232949ade5049506d1210e26660e5a1c3599574",
+      "kind": "p",
+      "chapter": "صور-شدة-حزن-عمر-بن-الخطاب-على-أخيه",
+      "prev": "b7712c2eb098c400281c6afc900f2748000f1ac0d9fe0220c87d89b797da6cae",
+      "next": "6c66ac3043fb8126631aa5d48ef5f4dd71dd55bf99cd13f2d9ac4aefdfb29bbe"
+    },
+    {
+      "ord": 307,
+      "blockId": "276993e24ef4d6217d7724f0f3310f5d",
+      "fp64": "fef36dcbff4dffa7",
+      "normHash": "6c66ac3043fb8126631aa5d48ef5f4dd71dd55bf99cd13f2d9ac4aefdfb29bbe",
+      "kind": "p",
+      "chapter": "صور-شدة-حزن-عمر-بن-الخطاب-على-أخيه",
+      "prev": "9c1a5bc4d1fb74bc9fcbe718e232949ade5049506d1210e26660e5a1c3599574",
+      "next": "3ea78b5cadf76319a35a6872e4053e38b69fb76889f59081d2c2e3f414106832"
+    },
+    {
+      "ord": 308,
+      "blockId": "6c735cb896b78acdb018fd6252ab0c7c",
+      "fp64": "eecc257f5d67fee5",
+      "normHash": "3ea78b5cadf76319a35a6872e4053e38b69fb76889f59081d2c2e3f414106832",
+      "kind": "verse",
+      "chapter": "صور-شدة-حزن-عمر-بن-الخطاب-على-أخيه",
+      "prev": "6c66ac3043fb8126631aa5d48ef5f4dd71dd55bf99cd13f2d9ac4aefdfb29bbe",
+      "next": "1a8b83be1734f5c39d16eb898a693aa0f3b3ee5b5ea5e9c08641a86c64b8764e"
+    },
+    {
+      "ord": 309,
+      "blockId": "45f98d67b0fbfd9b93ec1efdb4a120f2",
+      "fp64": "7237fbcc733a6da4",
+      "normHash": "1a8b83be1734f5c39d16eb898a693aa0f3b3ee5b5ea5e9c08641a86c64b8764e",
+      "kind": "verse",
+      "chapter": "صور-شدة-حزن-عمر-بن-الخطاب-على-أخيه",
+      "prev": "3ea78b5cadf76319a35a6872e4053e38b69fb76889f59081d2c2e3f414106832",
+      "next": "1c1fa04512627c80cad7c5539ed92219c607eb819475844e416b22c8936162f4"
+    },
+    {
+      "ord": 310,
+      "blockId": "3e8644ee597070ae0515edff55010af7",
+      "fp64": "452a4204b773f01c",
+      "normHash": "1c1fa04512627c80cad7c5539ed92219c607eb819475844e416b22c8936162f4",
+      "kind": "p",
+      "chapter": "صور-شدة-حزن-عمر-بن-الخطاب-على-أخيه",
+      "prev": "1a8b83be1734f5c39d16eb898a693aa0f3b3ee5b5ea5e9c08641a86c64b8764e",
+      "next": "28d7d0ff279888310bfed77ba690811e98a854bd03f740a6fa4bf9bac170a608"
+    },
+    {
+      "ord": 311,
+      "blockId": "d4dce4f8afc664aa87a7f59d50275335",
+      "fp64": "a7fffbfbff3bf4bf",
+      "normHash": "28d7d0ff279888310bfed77ba690811e98a854bd03f740a6fa4bf9bac170a608",
+      "kind": "page",
+      "chapter": "صور-شدة-حزن-عمر-بن-الخطاب-على-أخيه",
+      "prev": "1c1fa04512627c80cad7c5539ed92219c607eb819475844e416b22c8936162f4",
+      "next": "61556dd04733e7594f1aba6509f20919ee3095f3d12af25c68be0c380ae48dca"
+    },
+    {
+      "ord": 312,
+      "blockId": "0b6d890ca1d134f12df40058ce35c76e",
+      "fp64": "7516402e25d3e81e",
+      "normHash": "61556dd04733e7594f1aba6509f20919ee3095f3d12af25c68be0c380ae48dca",
+      "kind": "p",
+      "chapter": "صور-شدة-حزن-عمر-بن-الخطاب-على-أخيه",
+      "prev": "28d7d0ff279888310bfed77ba690811e98a854bd03f740a6fa4bf9bac170a608",
+      "next": "b81aded43061859518577c96776b74589294fcf42acdebf9d6f3fe07caab1f05"
+    },
+    {
+      "ord": 313,
+      "blockId": "875812969d6e826af31c66c7ec5a7d72",
+      "fp64": "751e600e86587e96",
+      "normHash": "b81aded43061859518577c96776b74589294fcf42acdebf9d6f3fe07caab1f05",
+      "kind": "p",
+      "chapter": "صور-شدة-حزن-عمر-بن-الخطاب-على-أخيه",
+      "prev": "61556dd04733e7594f1aba6509f20919ee3095f3d12af25c68be0c380ae48dca",
+      "next": "6c66ac3043fb8126631aa5d48ef5f4dd71dd55bf99cd13f2d9ac4aefdfb29bbe"
+    },
+    {
+      "ord": 314,
+      "blockId": "08eab867b07952977bedbbc66a053da7",
+      "fp64": "fef36dcbff4dffa7",
+      "normHash": "6c66ac3043fb8126631aa5d48ef5f4dd71dd55bf99cd13f2d9ac4aefdfb29bbe",
+      "kind": "p",
+      "chapter": "صور-شدة-حزن-عمر-بن-الخطاب-على-أخيه",
+      "prev": "b81aded43061859518577c96776b74589294fcf42acdebf9d6f3fe07caab1f05",
+      "next": "e7f99f7f7d9c77179bb9bac8a52e7bc22de783e9c196873f8405acd97d831fcc"
+    },
+    {
+      "ord": 315,
+      "blockId": "394ce33fad2be2b4afbe4f24678e01c9",
+      "fp64": "f9ffebf65705f5e7",
+      "normHash": "e7f99f7f7d9c77179bb9bac8a52e7bc22de783e9c196873f8405acd97d831fcc",
+      "kind": "p",
+      "chapter": "صور-شدة-حزن-عمر-بن-الخطاب-على-أخيه",
+      "prev": "6c66ac3043fb8126631aa5d48ef5f4dd71dd55bf99cd13f2d9ac4aefdfb29bbe",
+      "next": "60139a6572b3043e76b06044c0bdb181fd25a61ba87f22faf06fac12d6661339"
+    },
+    {
+      "ord": 316,
+      "blockId": "bcde4f4ca0f4ec6c08373a6aabc3c6c1",
+      "fp64": "09bf4af69f1604b7",
+      "normHash": "60139a6572b3043e76b06044c0bdb181fd25a61ba87f22faf06fac12d6661339",
+      "kind": "p",
+      "chapter": "صور-شدة-حزن-عمر-بن-الخطاب-على-أخيه",
+      "prev": "e7f99f7f7d9c77179bb9bac8a52e7bc22de783e9c196873f8405acd97d831fcc",
+      "next": "33825b9daaa40fe96d37349bf9023a626cb8e1388a3fffbfee4baa0f1627b7c1"
+    },
+    {
+      "ord": 317,
+      "blockId": "3639f9b06d224917bda8b5e60095892f",
+      "fp64": "a5dff7bbfabf70ff",
+      "normHash": "33825b9daaa40fe96d37349bf9023a626cb8e1388a3fffbfee4baa0f1627b7c1",
+      "kind": "page",
+      "chapter": "صور-شدة-حزن-عمر-بن-الخطاب-على-أخيه",
+      "prev": "60139a6572b3043e76b06044c0bdb181fd25a61ba87f22faf06fac12d6661339",
+      "next": "a5f6ed2bfd5634a9b42bb6975c99cff739eb6df9a420788278675b481c3af2b1"
+    },
+    {
+      "ord": 318,
+      "blockId": "b1f2ad3319f9b96d40f74fc097d5f7e7",
+      "fp64": "f55b60ae0759733c",
+      "normHash": "a5f6ed2bfd5634a9b42bb6975c99cff739eb6df9a420788278675b481c3af2b1",
+      "kind": "p",
+      "chapter": "صور-شدة-حزن-عمر-بن-الخطاب-على-أخيه",
+      "prev": "33825b9daaa40fe96d37349bf9023a626cb8e1388a3fffbfee4baa0f1627b7c1",
+      "next": "e580e56af52521e3e8b65cd4a2ae2c656c3c8bfbd64cb85096102648b6115b3c"
+    },
+    {
+      "ord": 319,
+      "blockId": "e2bf0b6d3e79dfbe3b826177ce055fd9",
+      "fp64": "7553e29da5f258be",
+      "normHash": "e580e56af52521e3e8b65cd4a2ae2c656c3c8bfbd64cb85096102648b6115b3c",
+      "kind": "p",
+      "chapter": "صور-شدة-حزن-عمر-بن-الخطاب-على-أخيه",
+      "prev": "a5f6ed2bfd5634a9b42bb6975c99cff739eb6df9a420788278675b481c3af2b1",
+      "next": "e6c7a6ab56cc1987d427f493a0e5d8b99d6c8bdef100bce4f974abee936d0780"
+    },
+    {
+      "ord": 320,
+      "blockId": "1dcf7b981fd27e00216fc1eca85827c4",
+      "fp64": "d92ac172371646eb",
+      "normHash": "e6c7a6ab56cc1987d427f493a0e5d8b99d6c8bdef100bce4f974abee936d0780",
+      "kind": "h2",
+      "chapter": "فزع-لذكر-مواقف-يوم-القيامة",
+      "prev": "e580e56af52521e3e8b65cd4a2ae2c656c3c8bfbd64cb85096102648b6115b3c",
+      "next": "f1c0c193dfa52bfc247681ce502e0dde699dda6b4ea985e519c657bfb82b786b"
+    },
+    {
+      "ord": 321,
+      "blockId": "1c4ccb52674261bc0ed4469dd93666ae",
+      "fp64": "e51d609606d0f075",
+      "normHash": "f1c0c193dfa52bfc247681ce502e0dde699dda6b4ea985e519c657bfb82b786b",
+      "kind": "p",
+      "chapter": "فزع-لذكر-مواقف-يوم-القيامة",
+      "prev": "e6c7a6ab56cc1987d427f493a0e5d8b99d6c8bdef100bce4f974abee936d0780",
+      "next": "14266ecdf7f536852ab50c713777b505babc1f2abacfdc3010887f01f9d3ffd7"
+    },
+    {
+      "ord": 322,
+      "blockId": "c29ef66e68c83a80bfffd13b3611a00f",
+      "fp64": "bfffffbb7fbdf57f",
+      "normHash": "14266ecdf7f536852ab50c713777b505babc1f2abacfdc3010887f01f9d3ffd7",
+      "kind": "page",
+      "chapter": "فزع-لذكر-مواقف-يوم-القيامة",
+      "prev": "f1c0c193dfa52bfc247681ce502e0dde699dda6b4ea985e519c657bfb82b786b",
+      "next": "398ce4951c08808d87ee709202c73c6019e055bc167487f8398350c3f8a07c39"
+    },
+    {
+      "ord": 323,
+      "blockId": "e3a7f03caf48abd074a4616d42b278dd",
+      "fp64": "6bde39fdeffdefbf",
+      "normHash": "398ce4951c08808d87ee709202c73c6019e055bc167487f8398350c3f8a07c39",
+      "kind": "h2",
+      "chapter": "داود-الطائي-الحزين-المهموم",
+      "prev": "14266ecdf7f536852ab50c713777b505babc1f2abacfdc3010887f01f9d3ffd7",
+      "next": "2f314fc52154d823e51bfbdb5e49a6ebd32d07c07b9df7918b90b35c39607c4e"
+    },
+    {
+      "ord": 324,
+      "blockId": "7c6a158668560496487de356822b83d6",
+      "fp64": "3d4c23fe73557c1c",
+      "normHash": "2f314fc52154d823e51bfbdb5e49a6ebd32d07c07b9df7918b90b35c39607c4e",
+      "kind": "p",
+      "chapter": "داود-الطائي-الحزين-المهموم",
+      "prev": "398ce4951c08808d87ee709202c73c6019e055bc167487f8398350c3f8a07c39",
+      "next": "07a52c8804e3c4adb64b5cd198e8434b9616e4735f81ce613976322cc44ef0cc"
+    },
+    {
+      "ord": 325,
+      "blockId": "4c65f40c44dd0b564428f9bbc5829d1e",
+      "fp64": "640ec227c563c0be",
+      "normHash": "07a52c8804e3c4adb64b5cd198e8434b9616e4735f81ce613976322cc44ef0cc",
+      "kind": "p",
+      "chapter": "داود-الطائي-الحزين-المهموم",
+      "prev": "2f314fc52154d823e51bfbdb5e49a6ebd32d07c07b9df7918b90b35c39607c4e",
+      "next": "0c19d66cc6831400fe0c82da68cdd20722eddae704612f92dad6a53a9a376116"
+    },
+    {
+      "ord": 326,
+      "blockId": "8e2f65370e2ee3f51040e58f0b1a4cb8",
+      "fp64": "651fc29697f1605c",
+      "normHash": "0c19d66cc6831400fe0c82da68cdd20722eddae704612f92dad6a53a9a376116",
+      "kind": "p",
+      "chapter": "داود-الطائي-الحزين-المهموم",
+      "prev": "07a52c8804e3c4adb64b5cd198e8434b9616e4735f81ce613976322cc44ef0cc",
+      "next": "878d80c93ecb6aeacd9612e77eae0b1c1d1a85b5872a3abf487f7391e8111b29"
+    },
+    {
+      "ord": 327,
+      "blockId": "871e2ceb1832cdbf39ed4f8bd4f4c01f",
+      "fp64": "6fdffb9fdf3be53f",
+      "normHash": "878d80c93ecb6aeacd9612e77eae0b1c1d1a85b5872a3abf487f7391e8111b29",
+      "kind": "page",
+      "chapter": "داود-الطائي-الحزين-المهموم",
+      "prev": "0c19d66cc6831400fe0c82da68cdd20722eddae704612f92dad6a53a9a376116",
+      "next": "0230e9576580395d1d071e1c71e7524dacc4859e6e90ae6b36e4d90c14561c7f"
+    },
+    {
+      "ord": 328,
+      "blockId": "eb219711d30b7054ef45f0678ff5b0b6",
+      "fp64": "459a4a3486737034",
+      "normHash": "0230e9576580395d1d071e1c71e7524dacc4859e6e90ae6b36e4d90c14561c7f",
+      "kind": "p",
+      "chapter": "داود-الطائي-الحزين-المهموم",
+      "prev": "878d80c93ecb6aeacd9612e77eae0b1c1d1a85b5872a3abf487f7391e8111b29",
+      "next": "cdefdec065898c8f52f4f92ac5d84f0a49a5a556fa1a00dfb4a42a08174d6237"
+    },
+    {
+      "ord": 329,
+      "blockId": "2256a3f294fc11df25ed2d22006fc726",
+      "fp64": "66829104a677e838",
+      "normHash": "cdefdec065898c8f52f4f92ac5d84f0a49a5a556fa1a00dfb4a42a08174d6237",
+      "kind": "p",
+      "chapter": "داود-الطائي-الحزين-المهموم",
+      "prev": "0230e9576580395d1d071e1c71e7524dacc4859e6e90ae6b36e4d90c14561c7f",
+      "next": "4359626185d7fe1879b6a00c341fc376911429a49222e0ae05d978163c8a1387"
+    },
+    {
+      "ord": 330,
+      "blockId": "1808c4eae0120f67c1e5277a4b4925bb",
+      "fp64": "d6920802b142b229",
+      "normHash": "4359626185d7fe1879b6a00c341fc376911429a49222e0ae05d978163c8a1387",
+      "kind": "h2",
+      "chapter": "قراء-القرآن-ثلاثة",
+      "prev": "cdefdec065898c8f52f4f92ac5d84f0a49a5a556fa1a00dfb4a42a08174d6237",
+      "next": "2c7d88ae3d3524b10a8ae70ccb484c752145d2f4dfb8b46d4479207a5cc90e38"
+    },
+    {
+      "ord": 331,
+      "blockId": "c3ccdf5773612c15636a8ecf2baf29d1",
+      "fp64": "5cda0716b3566e14",
+      "normHash": "2c7d88ae3d3524b10a8ae70ccb484c752145d2f4dfb8b46d4479207a5cc90e38",
+      "kind": "p",
+      "chapter": "قراء-القرآن-ثلاثة",
+      "prev": "4359626185d7fe1879b6a00c341fc376911429a49222e0ae05d978163c8a1387",
+      "next": "f0dffacc78e0c55ddbce8ab86d6c56b9a6af47f4e4ea47f0803fdfaccfd6c6b8"
+    },
+    {
+      "ord": 332,
+      "blockId": "fd4c46347de8c7f8e292c308b055ae39",
+      "fp64": "eddffb9bde7561b6",
+      "normHash": "f0dffacc78e0c55ddbce8ab86d6c56b9a6af47f4e4ea47f0803fdfaccfd6c6b8",
+      "kind": "page",
+      "chapter": "قراء-القرآن-ثلاثة",
+      "prev": "2c7d88ae3d3524b10a8ae70ccb484c752145d2f4dfb8b46d4479207a5cc90e38",
+      "next": "3a87c2ef2980bef3e35cd9e077ecebc0483cd1592d7ba7a5ca94f20059663bae"
+    },
+    {
+      "ord": 333,
+      "blockId": "ad33fc32909d551d5385d0b039c72bc0",
+      "fp64": "bf11a49e62f266cc",
+      "normHash": "3a87c2ef2980bef3e35cd9e077ecebc0483cd1592d7ba7a5ca94f20059663bae",
+      "kind": "p",
+      "chapter": "قراء-القرآن-ثلاثة",
+      "prev": "f0dffacc78e0c55ddbce8ab86d6c56b9a6af47f4e4ea47f0803fdfaccfd6c6b8",
+      "next": "f9823ceaa3c7b834a267d59e958358ed7eb035c95d493cb0c18021ac446f13d6"
+    },
+    {
+      "ord": 334,
+      "blockId": "acad1adf588099839be5a0b0cd9757f9",
+      "fp64": "c09a5797a653221c",
+      "normHash": "f9823ceaa3c7b834a267d59e958358ed7eb035c95d493cb0c18021ac446f13d6",
+      "kind": "p",
+      "chapter": "قراء-القرآن-ثلاثة",
+      "prev": "3a87c2ef2980bef3e35cd9e077ecebc0483cd1592d7ba7a5ca94f20059663bae",
+      "next": "81a1969c6147ec4c29ddb6556069a9b6dff022ff639de94baee8b7989eecd66b"
+    },
+    {
+      "ord": 335,
+      "blockId": "efe4980a9f6217f0cc57688f7cd405b7",
+      "fp64": "7dffff9edf31607e",
+      "normHash": "81a1969c6147ec4c29ddb6556069a9b6dff022ff639de94baee8b7989eecd66b",
+      "kind": "page",
+      "chapter": "قراء-القرآن-ثلاثة",
+      "prev": "f9823ceaa3c7b834a267d59e958358ed7eb035c95d493cb0c18021ac446f13d6",
+      "next": "5a7bb3909fd87ca992e415ad567fc24ed4cbd481951cc71e9c5c629207363d4a"
+    },
+    {
+      "ord": 336,
+      "blockId": "14198b8b35cb1edad13624e172bc1a0d",
+      "fp64": "2e8a2b588b6b760e",
+      "normHash": "5a7bb3909fd87ca992e415ad567fc24ed4cbd481951cc71e9c5c629207363d4a",
+      "kind": "h2",
+      "chapter": "ما-للمرأة-الحزينة-من-الأجر",
+      "prev": "81a1969c6147ec4c29ddb6556069a9b6dff022ff639de94baee8b7989eecd66b",
+      "next": "86d3a3fddabc90f9dc9440ae1473a3c25dd4158367fbc06d6b0b4ee4ea199d39"
+    },
+    {
+      "ord": 337,
+      "blockId": "27acd594b2a027c166326935aa233830",
+      "fp64": "24d4e0161f7979fc",
+      "normHash": "86d3a3fddabc90f9dc9440ae1473a3c25dd4158367fbc06d6b0b4ee4ea199d39",
+      "kind": "p",
+      "chapter": "ما-للمرأة-الحزينة-من-الأجر",
+      "prev": "5a7bb3909fd87ca992e415ad567fc24ed4cbd481951cc71e9c5c629207363d4a",
+      "next": "be77ca821b4796f0c7f42298028a2a07172f55d4234cab4e5cc2c87caf18182e"
+    },
+    {
+      "ord": 338,
+      "blockId": "5c63182ccb4fd4e3bbeb822654b50730",
+      "fp64": "403a039687f3e314",
+      "normHash": "be77ca821b4796f0c7f42298028a2a07172f55d4234cab4e5cc2c87caf18182e",
+      "kind": "p",
+      "chapter": "ما-للمرأة-الحزينة-من-الأجر",
+      "prev": "86d3a3fddabc90f9dc9440ae1473a3c25dd4158367fbc06d6b0b4ee4ea199d39",
+      "next": "d1fe555b3ce52a193092f51c55bf54829aacdc3c06cba9b9db7dfcce34b17236"
+    },
+    {
+      "ord": 339,
+      "blockId": "392a9dfe389faec55c89f260b94b64f7",
+      "fp64": "7d56d6161f72207c",
+      "normHash": "d1fe555b3ce52a193092f51c55bf54829aacdc3c06cba9b9db7dfcce34b17236",
+      "kind": "p",
+      "chapter": "ما-للمرأة-الحزينة-من-الأجر",
+      "prev": "be77ca821b4796f0c7f42298028a2a07172f55d4234cab4e5cc2c87caf18182e",
+      "next": "78cca1539467c9205b92ff9cd20bce41a76c7dc943f7d8aac502b90782d75ee9"
+    },
+    {
+      "ord": 340,
+      "blockId": "0c13ed6afc1103a61e439387dedf5d07",
+      "fp64": "addfffdbdef5f6f7",
+      "normHash": "78cca1539467c9205b92ff9cd20bce41a76c7dc943f7d8aac502b90782d75ee9",
+      "kind": "page",
+      "chapter": "ما-للمرأة-الحزينة-من-الأجر",
+      "prev": "d1fe555b3ce52a193092f51c55bf54829aacdc3c06cba9b9db7dfcce34b17236",
+      "next": "4fb6c50e0c9cf6d2f5391b72787c11a34d206ec23179b51a589cbcf12e498fb8"
+    },
+    {
+      "ord": 341,
+      "blockId": "c7a48622668f1e9d8cdb0017330f1e59",
+      "fp64": "593d325dd5b29853",
+      "normHash": "4fb6c50e0c9cf6d2f5391b72787c11a34d206ec23179b51a589cbcf12e498fb8",
+      "kind": "p",
+      "chapter": "ما-للمرأة-الحزينة-من-الأجر",
+      "prev": "78cca1539467c9205b92ff9cd20bce41a76c7dc943f7d8aac502b90782d75ee9",
+      "next": "ee379875c0d11275bd1ec87326a2d321254d6cf478a3bab5cc156fe978dc7632"
+    },
+    {
+      "ord": 342,
+      "blockId": "7331112ff58e1228cdcb597aaee79226",
+      "fp64": "a820f37838e47948",
+      "normHash": "ee379875c0d11275bd1ec87326a2d321254d6cf478a3bab5cc156fe978dc7632",
+      "kind": "h2",
+      "chapter": "هل-يسأل-المؤمن-ربه-الحزن",
+      "prev": "4fb6c50e0c9cf6d2f5391b72787c11a34d206ec23179b51a589cbcf12e498fb8",
+      "next": "eb050f56c0b6d397bb33df175c0d6c6cbb254b494a7e4d1e273bae58257c67dc"
+    },
+    {
+      "ord": 343,
+      "blockId": "5f95e6f18fe7c70f5b94d00b71d21cd4",
+      "fp64": "7d06b69aad65c77f",
+      "normHash": "eb050f56c0b6d397bb33df175c0d6c6cbb254b494a7e4d1e273bae58257c67dc",
+      "kind": "p",
+      "chapter": "هل-يسأل-المؤمن-ربه-الحزن",
+      "prev": "ee379875c0d11275bd1ec87326a2d321254d6cf478a3bab5cc156fe978dc7632",
+      "next": "cf6d158452d43cd5c599f12d2bfb2fe1a4313ffe80e431c57c0410cbb2033d02"
+    },
+    {
+      "ord": 344,
+      "blockId": "ff3aaeafe355798107b2e4867793ea32",
+      "fp64": "e416d31427f2e858",
+      "normHash": "cf6d158452d43cd5c599f12d2bfb2fe1a4313ffe80e431c57c0410cbb2033d02",
+      "kind": "p",
+      "chapter": "هل-يسأل-المؤمن-ربه-الحزن",
+      "prev": "eb050f56c0b6d397bb33df175c0d6c6cbb254b494a7e4d1e273bae58257c67dc",
+      "next": "801dafd38c5f715ea6054d9a199263ec2136f8a16fc1d92383f82928b398ed32"
+    },
+    {
+      "ord": 345,
+      "blockId": "fb246718088c6a5a3859e1cb82f32bed",
+      "fp64": "8d12007746437854",
+      "normHash": "801dafd38c5f715ea6054d9a199263ec2136f8a16fc1d92383f82928b398ed32",
+      "kind": "p",
+      "chapter": "هل-يسأل-المؤمن-ربه-الحزن",
+      "prev": "cf6d158452d43cd5c599f12d2bfb2fe1a4313ffe80e431c57c0410cbb2033d02",
+      "next": "f195a650950dd9137439d3ff27aa9c9011fa8dae74f3e498225c55d24013e2fc"
+    },
+    {
+      "ord": 346,
+      "blockId": "c01796dbeb81b6a6c1e18fbd1c15e194",
+      "fp64": "1f88dc129e577e8d",
+      "normHash": "f195a650950dd9137439d3ff27aa9c9011fa8dae74f3e498225c55d24013e2fc",
+      "kind": "h2",
+      "chapter": "هل-في-الجنة-أرفع-من-درجة-العلماء",
+      "prev": "801dafd38c5f715ea6054d9a199263ec2136f8a16fc1d92383f82928b398ed32",
+      "next": "3a51e0feb3cd1fd77bc2b6169ac33e61a0e3c561e41b5cc93fc922f95117ffe9"
+    },
+    {
+      "ord": 347,
+      "blockId": "e0f83b84f3c1e34a0ae4f570c0951f7a",
+      "fp64": "3506f2148742261c",
+      "normHash": "3a51e0feb3cd1fd77bc2b6169ac33e61a0e3c561e41b5cc93fc922f95117ffe9",
+      "kind": "p",
+      "chapter": "هل-في-الجنة-أرفع-من-درجة-العلماء",
+      "prev": "f195a650950dd9137439d3ff27aa9c9011fa8dae74f3e498225c55d24013e2fc",
+      "next": "067866a8e8fcc2912ad8b0d9ddddf39d9de0741bfeaf65eeaee1f305081ee70a"
+    },
+    {
+      "ord": 348,
+      "blockId": "1586d46fa2e5ccc8865b05ca2cb81a5e",
+      "fp64": "75d29777cf62ca35",
+      "normHash": "067866a8e8fcc2912ad8b0d9ddddf39d9de0741bfeaf65eeaee1f305081ee70a",
+      "kind": "p",
+      "chapter": "هل-في-الجنة-أرفع-من-درجة-العلماء",
+      "prev": "3a51e0feb3cd1fd77bc2b6169ac33e61a0e3c561e41b5cc93fc922f95117ffe9",
+      "next": "f7e56b058e027b54c5738d4a73a06ac173c7da513df273aa807517d1fc440211"
+    },
+    {
+      "ord": 349,
+      "blockId": "5013fb34d76d09fb10e63bc182366f19",
+      "fp64": "25fffbdbdbff68bf",
+      "normHash": "f7e56b058e027b54c5738d4a73a06ac173c7da513df273aa807517d1fc440211",
+      "kind": "page",
+      "chapter": "هل-في-الجنة-أرفع-من-درجة-العلماء",
+      "prev": "067866a8e8fcc2912ad8b0d9ddddf39d9de0741bfeaf65eeaee1f305081ee70a",
+      "next": "4d68f6c6ae75e864ba9194020a8fe4d099a614cc0c454f7b937d77109b1c7d77"
+    },
+    {
+      "ord": 350,
+      "blockId": "06cfe11cf35264bf3d43faecb3fc4c92",
+      "fp64": "d400931c65668271",
+      "normHash": "4d68f6c6ae75e864ba9194020a8fe4d099a614cc0c454f7b937d77109b1c7d77",
+      "kind": "p",
+      "chapter": "هل-في-الجنة-أرفع-من-درجة-العلماء",
+      "prev": "f7e56b058e027b54c5738d4a73a06ac173c7da513df273aa807517d1fc440211",
+      "next": "18d7f8b72cb62b094c33cfce25b5fce3e1bf3c8b1fc107affa74de34c34bd664"
+    },
+    {
+      "ord": 351,
+      "blockId": "d35ee5de8251a04f67af1647b67c7a04",
+      "fp64": "7c12533463c2c2b9",
+      "normHash": "18d7f8b72cb62b094c33cfce25b5fce3e1bf3c8b1fc107affa74de34c34bd664",
+      "kind": "p",
+      "chapter": "هل-في-الجنة-أرفع-من-درجة-العلماء",
+      "prev": "4d68f6c6ae75e864ba9194020a8fe4d099a614cc0c454f7b937d77109b1c7d77",
+      "next": "592caa5610b77bb8ba092efaf56cd73405b10358da0138cdfa811af324596ae5"
+    },
+    {
+      "ord": 352,
+      "blockId": "ff1f30aa6a82f4f37749389e1a0d2e44",
+      "fp64": "ab8fab4f8bf28b8b",
+      "normHash": "592caa5610b77bb8ba092efaf56cd73405b10358da0138cdfa811af324596ae5",
+      "kind": "h2",
+      "chapter": "الحزن-والهم-على-ألسنة-الصحابة-والتابعين",
+      "prev": "18d7f8b72cb62b094c33cfce25b5fce3e1bf3c8b1fc107affa74de34c34bd664",
+      "next": "b93ab1f6672be1cb2a56a5de8ba7a7067a906b879a1b8c8fafeddf8fd5e7f491"
+    },
+    {
+      "ord": 353,
+      "blockId": "3cbe779b40b439aec4df34a1ddd14e14",
+      "fp64": "160a945353e202dd",
+      "normHash": "b93ab1f6672be1cb2a56a5de8ba7a7067a906b879a1b8c8fafeddf8fd5e7f491",
+      "kind": "p",
+      "chapter": "الحزن-والهم-على-ألسنة-الصحابة-والتابعين",
+      "prev": "592caa5610b77bb8ba092efaf56cd73405b10358da0138cdfa811af324596ae5",
+      "next": "e40ffcd37c0bfcafeeef5ee7d451334526dc4433a9ea989baf1182a1dd6941bd"
+    },
+    {
+      "ord": 354,
+      "blockId": "aa1d5e5cae7e8f2cb4ec763e12c8ecf5",
+      "fp64": "fd5a2216f777725c",
+      "normHash": "e40ffcd37c0bfcafeeef5ee7d451334526dc4433a9ea989baf1182a1dd6941bd",
+      "kind": "p",
+      "chapter": "الحزن-والهم-على-ألسنة-الصحابة-والتابعين",
+      "prev": "b93ab1f6672be1cb2a56a5de8ba7a7067a906b879a1b8c8fafeddf8fd5e7f491",
+      "next": "0c9daa6c51ff0a157fa769e03098ab72d10d9c3624456bbe814a3abf28109b8c"
+    },
+    {
+      "ord": 355,
+      "blockId": "027167506e16a8b9d16a979e1ae44ba8",
+      "fp64": "651e4284c7f1f014",
+      "normHash": "0c9daa6c51ff0a157fa769e03098ab72d10d9c3624456bbe814a3abf28109b8c",
+      "kind": "p",
+      "chapter": "الحزن-والهم-على-ألسنة-الصحابة-والتابعين",
+      "prev": "e40ffcd37c0bfcafeeef5ee7d451334526dc4433a9ea989baf1182a1dd6941bd",
+      "next": "8205d3739be01b9707676510b82e49989e7b191fe9ec7b4851669372b8dca17a"
+    },
+    {
+      "ord": 356,
+      "blockId": "4a993fc61f9c8a4ba2c3d801094f8586",
+      "fp64": "bddfffdadf377a7f",
+      "normHash": "8205d3739be01b9707676510b82e49989e7b191fe9ec7b4851669372b8dca17a",
+      "kind": "page",
+      "chapter": "الحزن-والهم-على-ألسنة-الصحابة-والتابعين",
+      "prev": "0c9daa6c51ff0a157fa769e03098ab72d10d9c3624456bbe814a3abf28109b8c",
+      "next": "7ab6a74637119fa37c840482edb264feb6c632ddea7c2d9fa2935fae8af874ef"
+    },
+    {
+      "ord": 357,
+      "blockId": "a82e2c5d87bddd1ec42b0e24db01d526",
+      "fp64": "7512d016a460285c",
+      "normHash": "7ab6a74637119fa37c840482edb264feb6c632ddea7c2d9fa2935fae8af874ef",
+      "kind": "p",
+      "chapter": "الحزن-والهم-على-ألسنة-الصحابة-والتابعين",
+      "prev": "8205d3739be01b9707676510b82e49989e7b191fe9ec7b4851669372b8dca17a",
+      "next": "9eebcd0cc94996a7563738ad53c7b5681b16309f344443d5cd62a8b546d2effc"
+    },
+    {
+      "ord": 358,
+      "blockId": "4ac5832108b86b38ade20c4d73373428",
+      "fp64": "5766ed7b9b755b4d",
+      "normHash": "9eebcd0cc94996a7563738ad53c7b5681b16309f344443d5cd62a8b546d2effc",
+      "kind": "h2",
+      "chapter": "ذهاب-الحزن-من-القلوب",
+      "prev": "7ab6a74637119fa37c840482edb264feb6c632ddea7c2d9fa2935fae8af874ef",
+      "next": "97fe16d96ef7fb3f8da669bb835c529915136c7fe62a667e5c3c885fd67ac02a"
+    },
+    {
+      "ord": 359,
+      "blockId": "fd6315826fe08871a4dbc112b8626a9a",
+      "fp64": "6e1ac31767f3408c",
+      "normHash": "97fe16d96ef7fb3f8da669bb835c529915136c7fe62a667e5c3c885fd67ac02a",
+      "kind": "p",
+      "chapter": "ذهاب-الحزن-من-القلوب",
+      "prev": "9eebcd0cc94996a7563738ad53c7b5681b16309f344443d5cd62a8b546d2effc",
+      "next": "950b7862208376fb5c6c473a7680cb605db02d943a085f4136ca7511badc7ea4"
+    },
+    {
+      "ord": 360,
+      "blockId": "2ce96993a541f2324f37085b1110cd58",
+      "fp64": "64027217c7620a94",
+      "normHash": "950b7862208376fb5c6c473a7680cb605db02d943a085f4136ca7511badc7ea4",
+      "kind": "p",
+      "chapter": "ذهاب-الحزن-من-القلوب",
+      "prev": "97fe16d96ef7fb3f8da669bb835c529915136c7fe62a667e5c3c885fd67ac02a",
+      "next": "21e37573b22f060299622c302cc57c0e6d6b1b51b67002f1bceebbfb2915f0eb"
+    },
+    {
+      "ord": 361,
+      "blockId": "fab4c75b19789b7217fa9440580ef6b3",
+      "fp64": "edfffbbafb35f8f6",
+      "normHash": "21e37573b22f060299622c302cc57c0e6d6b1b51b67002f1bceebbfb2915f0eb",
+      "kind": "page",
+      "chapter": "ذهاب-الحزن-من-القلوب",
+      "prev": "950b7862208376fb5c6c473a7680cb605db02d943a085f4136ca7511badc7ea4",
+      "next": "443e86b637347953e7881f616deb1dc331c3d4c7a823bc182684ff7b338f1cea"
+    },
+    {
+      "ord": 362,
+      "blockId": "7df1757ff4016297cbff1e3a18b22156",
+      "fp64": "ded60affb0aaff4e",
+      "normHash": "443e86b637347953e7881f616deb1dc331c3d4c7a823bc182684ff7b338f1cea",
+      "kind": "h2",
+      "chapter": "من-أسباب-حزن-المؤمن",
+      "prev": "21e37573b22f060299622c302cc57c0e6d6b1b51b67002f1bceebbfb2915f0eb",
+      "next": "298437c7097b83058617b4f6c5e153d770f7b5b81653006dbf8768af33f7b395"
+    },
+    {
+      "ord": 363,
+      "blockId": "58798d355b95997ab1e553ba51805843",
+      "fp64": "5e14637c4773594c",
+      "normHash": "298437c7097b83058617b4f6c5e153d770f7b5b81653006dbf8768af33f7b395",
+      "kind": "p",
+      "chapter": "من-أسباب-حزن-المؤمن",
+      "prev": "443e86b637347953e7881f616deb1dc331c3d4c7a823bc182684ff7b338f1cea",
+      "next": "0055e99cad2b38a3cacd39d76693bd1d8e8a38c62d199355862f3142eb8d2ac3"
+    },
+    {
+      "ord": 364,
+      "blockId": "e52e51103ac3fcdcbf218ffe5179e80c",
+      "fp64": "e13e525f46736056",
+      "normHash": "0055e99cad2b38a3cacd39d76693bd1d8e8a38c62d199355862f3142eb8d2ac3",
+      "kind": "p",
+      "chapter": "من-أسباب-حزن-المؤمن",
+      "prev": "298437c7097b83058617b4f6c5e153d770f7b5b81653006dbf8768af33f7b395",
+      "next": "21b7d994a96cfa4540934c83ff396b2451cfa37d570c30517f7c4ffe7bd53045"
+    },
+    {
+      "ord": 365,
+      "blockId": "165880fba2bdb1fe913dd9bb8d1316df",
+      "fp64": "f59a609626f1f0fc",
+      "normHash": "21b7d994a96cfa4540934c83ff396b2451cfa37d570c30517f7c4ffe7bd53045",
+      "kind": "p",
+      "chapter": "من-أسباب-حزن-المؤمن",
+      "prev": "0055e99cad2b38a3cacd39d76693bd1d8e8a38c62d199355862f3142eb8d2ac3",
+      "next": "c56577f53891e1af7aee1dda655a9ae8832513c4d94e85427acfd0b2fdcac145"
+    },
+    {
+      "ord": 366,
+      "blockId": "d0b93e49f04870e9f4390fcda1f82273",
+      "fp64": "25dffb9a7f3dfb3f",
+      "normHash": "c56577f53891e1af7aee1dda655a9ae8832513c4d94e85427acfd0b2fdcac145",
+      "kind": "page",
+      "chapter": "من-أسباب-حزن-المؤمن",
+      "prev": "21b7d994a96cfa4540934c83ff396b2451cfa37d570c30517f7c4ffe7bd53045",
+      "next": "837d6d8753cd670e4104dd4bf783435d20ea23ca3894982f972390aa0f9b4e72"
+    },
+    {
+      "ord": 367,
+      "blockId": "073ea6a44dd9cf293b31fa735bf894da",
+      "fp64": "64c24e6ed67f6934",
+      "normHash": "837d6d8753cd670e4104dd4bf783435d20ea23ca3894982f972390aa0f9b4e72",
+      "kind": "p",
+      "chapter": "من-أسباب-حزن-المؤمن",
+      "prev": "c56577f53891e1af7aee1dda655a9ae8832513c4d94e85427acfd0b2fdcac145",
+      "next": "4cd3995583e1662368ce86b99694fb6b816050b3e93148b6134817e4ebba10f6"
+    },
+    {
+      "ord": 368,
+      "blockId": "c37d67d3f5006d8c805712bfbb33ac34",
+      "fp64": "3f70829714524338",
+      "normHash": "4cd3995583e1662368ce86b99694fb6b816050b3e93148b6134817e4ebba10f6",
+      "kind": "p",
+      "chapter": "من-أسباب-حزن-المؤمن",
+      "prev": "837d6d8753cd670e4104dd4bf783435d20ea23ca3894982f972390aa0f9b4e72",
+      "next": "217c573b5b9f03c58948a18307b1e7dd33bde700c84ef134d13a21e10fda8f4f"
+    },
+    {
+      "ord": 369,
+      "blockId": "4ac9289f6eb3be6da921b550de1c3d88",
+      "fp64": "bfe473f81b571e9e",
+      "normHash": "217c573b5b9f03c58948a18307b1e7dd33bde700c84ef134d13a21e10fda8f4f",
+      "kind": "h2",
+      "chapter": "هل-في-الدنيا-راحة",
+      "prev": "4cd3995583e1662368ce86b99694fb6b816050b3e93148b6134817e4ebba10f6",
+      "next": "eb050f56c0b6d397bb33df175c0d6c6cbb254b494a7e4d1e273bae58257c67dc"
+    },
+    {
+      "ord": 370,
+      "blockId": "627bcc57355e4df976aaa0304162a4c3",
+      "fp64": "7d06b69aad65c77f",
+      "normHash": "eb050f56c0b6d397bb33df175c0d6c6cbb254b494a7e4d1e273bae58257c67dc",
+      "kind": "p",
+      "chapter": "هل-في-الدنيا-راحة",
+      "prev": "217c573b5b9f03c58948a18307b1e7dd33bde700c84ef134d13a21e10fda8f4f",
+      "next": "2333ff78f95556e45d992a0e4b2129dd923f0d5ff32a5d3b0274535deed5c3ac"
+    },
+    {
+      "ord": 371,
+      "blockId": "1217bcec8c2121282be3db6a477ffcaf",
+      "fp64": "66115eaf470326fc",
+      "normHash": "2333ff78f95556e45d992a0e4b2129dd923f0d5ff32a5d3b0274535deed5c3ac",
+      "kind": "p",
+      "chapter": "هل-في-الدنيا-راحة",
+      "prev": "eb050f56c0b6d397bb33df175c0d6c6cbb254b494a7e4d1e273bae58257c67dc",
+      "next": "637489a6dd29d7cc50dd2552053b575b9a0997dd6f3805a118d2250890f5c800"
+    },
+    {
+      "ord": 372,
+      "blockId": "aa02724b8058c64ebdabdb37dd6b27d0",
+      "fp64": "25dfffbb5e317fbe",
+      "normHash": "637489a6dd29d7cc50dd2552053b575b9a0997dd6f3805a118d2250890f5c800",
+      "kind": "page",
+      "chapter": "هل-في-الدنيا-راحة",
+      "prev": "2333ff78f95556e45d992a0e4b2129dd923f0d5ff32a5d3b0274535deed5c3ac",
+      "next": "bd20c20c5f3da6ae4f38c84333176107a9c26f4a6249abfd2eca64dfb7670e99"
+    },
+    {
+      "ord": 373,
+      "blockId": "9d0d7e2d94d83acfd7aa30ada311cd8e",
+      "fp64": "5518b78d57c74a14",
+      "normHash": "bd20c20c5f3da6ae4f38c84333176107a9c26f4a6249abfd2eca64dfb7670e99",
+      "kind": "p",
+      "chapter": "هل-في-الدنيا-راحة",
+      "prev": "637489a6dd29d7cc50dd2552053b575b9a0997dd6f3805a118d2250890f5c800",
+      "next": "601b34532c5a00a5ba5ab2544240b37ef9e2d74787d3463a74bc04603b6611e5"
+    },
+    {
+      "ord": 374,
+      "blockId": "3dde75838351cedd9abf0792d7e89847",
+      "fp64": "6ec6fb6b9ff97d68",
+      "normHash": "601b34532c5a00a5ba5ab2544240b37ef9e2d74787d3463a74bc04603b6611e5",
+      "kind": "h2",
+      "chapter": "رجل-ذهب-عقله-من-شدة-الحزن",
+      "prev": "bd20c20c5f3da6ae4f38c84333176107a9c26f4a6249abfd2eca64dfb7670e99",
+      "next": "26c75cc036d8eaf24d9bd0f10c8be27a575aa71fff11a1051314f8eb8ec319a1"
+    },
+    {
+      "ord": 375,
+      "blockId": "4d9dc89034ea75d74ad764cd58115228",
+      "fp64": "651cc11656724078",
+      "normHash": "26c75cc036d8eaf24d9bd0f10c8be27a575aa71fff11a1051314f8eb8ec319a1",
+      "kind": "p",
+      "chapter": "رجل-ذهب-عقله-من-شدة-الحزن",
+      "prev": "601b34532c5a00a5ba5ab2544240b37ef9e2d74787d3463a74bc04603b6611e5",
+      "next": "318943ab6af2a396ccf4a299b311263aa66f90290cbc73b7a55089c57027baf9"
+    },
+    {
+      "ord": 376,
+      "blockId": "d31cd2a3cb1673d943a7c947d2c8678d",
+      "fp64": "6517e2168762607c",
+      "normHash": "318943ab6af2a396ccf4a299b311263aa66f90290cbc73b7a55089c57027baf9",
+      "kind": "p",
+      "chapter": "رجل-ذهب-عقله-من-شدة-الحزن",
+      "prev": "26c75cc036d8eaf24d9bd0f10c8be27a575aa71fff11a1051314f8eb8ec319a1",
+      "next": "048d13c7906195df4e24fe5e2215f15f3c7f3067cff3363a312659146cea30cf"
+    },
+    {
+      "ord": 377,
+      "blockId": "e22082eeec861636334d58b4859d10cb",
+      "fp64": "75fff3ff7a3777bf",
+      "normHash": "048d13c7906195df4e24fe5e2215f15f3c7f3067cff3363a312659146cea30cf",
+      "kind": "page",
+      "chapter": "رجل-ذهب-عقله-من-شدة-الحزن",
+      "prev": "318943ab6af2a396ccf4a299b311263aa66f90290cbc73b7a55089c57027baf9"
+    }
+  ]
+}
