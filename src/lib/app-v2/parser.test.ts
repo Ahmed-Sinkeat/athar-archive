@@ -108,8 +108,8 @@ describe("app/v2 semantic parser", () => {
     });
     expect(document.footnotes.map((note) => note.id)).toEqual(["1:1:1", "2:1:1"]);
     const paragraphs = document.blocks.filter((block) => block.t === "p");
-    expect(paragraphs.map((block) => block.f)).toEqual([["1:1:1"], ["2:1:1"]]);
-    expect(paragraphs.map((block) => [block.vol, block.p, block.sp?.[0]?.target])).toEqual([[1, 1, "1:1:1"], [2, 1, "2:1:1"]]);
+    // epub-import refs stay plain superscripts: the notes show in each page's footer only.
+    expect(paragraphs.map((block) => [block.vol, block.p, block.f, block.sp?.[0]?.k, block.sp?.[0]?.target])).toEqual([[1, 1, undefined, "sup", undefined], [2, 1, undefined, "sup", undefined]]);
   });
 
   it("keeps distinct notes on repeated pages within the same volume", () => {
@@ -117,9 +117,18 @@ describe("app/v2 semantic parser", () => {
       `أول<sup data-fn="1" data-sep-page="33">1</sup>\n\n<hr class="page-sep" data-page="33" data-vol="1" data-notes='["الأولى"]' />\n\nثان<sup data-fn="1" data-sep-page="33">1</sup>\n\n<hr class="page-sep" data-page="33" data-vol="1" data-notes='["الثانية"]' />\n\nضمن<sup data-fn="1">1</sup>`,
     });
     expect(document.footnotes).toEqual([{ id: "1:33:1", n: "١", x: "الأولى" }, { id: "1:33:1~2", n: "١", x: "الثانية" }]);
-    expect(document.blocks.filter(block => block.t === "notes").map(block => block.f)).toEqual([["1:33:1"], ["1:33:1~2"]]);
-    // The last paragraph's ref names no marker after it, so it stays a plain superscript.
-    expect(document.blocks.filter(block => block.t === "p").map(block => block.f)).toEqual([["1:33:1"], ["1:33:1~2"], undefined]);
+    // One printed page split in two by the source: both notes share its one footer.
+    expect(document.blocks.filter(block => block.t === "notes").map(block => block.f)).toEqual([["1:33:1", "1:33:1~2"]]);
+    expect(document.blocks.filter(block => block.t === "p").map(block => block.f)).toEqual([undefined, undefined, undefined]);
+  });
+
+  it("joins a «=» note running on from the previous page instead of shifting the page's refs", () => {
+    const document = parseReadableDocument({ coll: "book", id: "run-on", sourcePath: "run-on.md", body:
+      `أول<sup data-fn="1" data-sep-page="1">1</sup>\n\n<hr class="page-sep" data-page="1" data-notes='["بداية"]' />\n\nثان<sup data-fn="1" data-sep-page="2">1</sup>\n\n<hr class="page-sep" data-page="2" data-notes='["= تتمة","رواه أبو داود رقم","، وصححه الألباني.","1. الثالثة"]' />`,
+    });
+    // The «(3251)» the importer cut the second note at is gone, but its tail rejoins it.
+    expect(document.footnotes.map(note => [note.id, note.x])).toEqual([["1:1", "بداية تتمة"], ["2:1", "رواه أبو داود رقم ، وصححه الألباني."], ["2:2", "1. الثالثة"]]);
+    expect(document.blocks.filter(block => block.t === "notes").map(block => block.f)).toEqual([["1:1"], ["2:1", "2:2"]]);
   });
 
   it("retains reused Markdown note labels and notes without an inline reference", () => {
@@ -249,5 +258,29 @@ describe("prose marked as headings", () => {
       `## الأول\n\n## ${hadith}\n\n### ${bab}\n\n### ُ: رفع القلم عن ثلاثة\n\nنص` });
     expect(parsed.blocks.map(block => block.t)).toEqual(["h2", "p", "h3", "p", "p"]);
     expect(parsed.chapters.map(chapter => chapter.title)).toEqual(["الأول"]);
+  });
+});
+
+describe("refs on a page-number line", () => {
+  it("keeps the marker a page break and puts the note in that page's footer", () => {
+    const parsed = parseReadableDocument({ coll: "book", id: "lost", sourcePath: "lost.md", body:
+      "نص\n\n[^a] الجزء: 1 - الصفحة: 5\n\nبعد\n\n[^a]: حاشية" });
+    expect(parsed.blocks.map(block => [block.t, block.p, block.x ?? block.f])).toEqual([
+      ["p", 5, "نص"], ["notes", 5, ["a"]], ["page", 5, undefined], ["p", 6, "بعد"],
+    ]);
+    expect(parsed.footnotes).toEqual([{ id: "a", n: "١", x: "حاشية" }]);
+  });
+});
+
+describe("a page marker repeated after each heading", () => {
+  it("keeps one divider per page and one footer with all its notes", () => {
+    const hr = (page: number) => `<hr class="page-sep" data-page="${page}" />`;
+    const parsed = parseReadableDocument({ coll: "book", id: "rep", sourcePath: "rep.md", body:
+      `## باب\n\nأول[^a]\n\n${hr(5)}\n\n## باب آخر\n\nثان[^b]\n\n${hr(5)}\n\nثالث\n\n${hr(6)}\n\n[^a]: حاشية\n\n[^b]: أخرى` });
+    expect(parsed.blocks.map(block => [block.t, block.p, block.x ?? block.f])).toEqual([
+      ["h2", 5, "باب"], ["p", 5, "أول١"], ["h2", 5, "باب آخر"], ["p", 5, "ثان١"],
+      ["notes", 5, ["a", "b"]], ["page", 5, undefined], ["p", 6, "ثالث"], ["page", 6, undefined],
+    ]);
+    expect(parsed.chapters.map(chapter => chapter.block)).toEqual([0, 2]);
   });
 });

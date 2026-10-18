@@ -235,7 +235,9 @@ fun BooksScreen(
                 .testTag("books_screen"),
             contentPadding = PaddingValues(bottom = 28.dp),
         ) {
-            if (visibleBooks.isEmpty()) {
+            if (!state.loaded) {
+                // first catalog read not back yet: show nothing rather than a false "no books"
+            } else if (visibleBooks.isEmpty()) {
                 item(key = "books-empty") {
                     val (emptyTitle, emptyBody) = booksEmptyCopy(
                         selectedTab = selectedTab,

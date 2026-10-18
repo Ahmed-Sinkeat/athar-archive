@@ -159,7 +159,10 @@ function renderInline(
   const references: { id: string; offset: number }[] = [];
   const note = (id: string, offset = output.text.length) => { footnotes.add(id); references.push({ id, offset }); };
   const openSup: { start: number; key?: string; node: MarkdownNode }[] = [];
-  const supKey = (fn: string | undefined) => fn ? `?#${westernDigits(fn)}` : undefined;
+  // ponytail: data-fn refs come only from epub-import.ts, whose notes are often cut and renumbered
+  // (EPUB audit: 1 tap in 4 opened the wrong note). They stay plain superscripts over the printed
+  // footer until those books are re-imported through Athar-Engine, whose [^fn] refs stay tappable.
+  const supKey = (_fn: string | undefined): string | undefined => undefined;
 
   const walk = (node: MarkdownNode) => {
     switch (node.type) {
@@ -434,7 +437,9 @@ export function parseReadableDocument(input: ParseReadableInput): ParsedDocument
   const parser = unified().use(remarkParse).use(remarkGfm);
   // Same normalization the site applies: plain «الجزء: N - الصفحة: M» lines become real page markers.
   const { body: cardless, card } = input.coll === "book" ? extractCard(input.body) : { body: input.body, card: [] };
-  const body = normalizePageMarkers(cardless);
+  // Shamela sometimes puts a note's ref on the page-number line itself ("[^fn419] الجزء: 1 -
+  // الصفحة: 264") with no mark in the text; split it off so the marker stays a block.
+  const body = normalizePageMarkers(cardless).replace(/^((?:\[\^[^\]\s]+\]\s*)+)(<hr class="page-sep")/gm, "$1\n\n$2");
   // Large books are parsed one section at a time; a whole-book Markdown AST can exceed RAM.
   const chunks = body.length > 1_000_000 ? body.split(/\n(?=#{1,6} |[ \t]*<hr\b)/) : [body];
   const smallTree = chunks.length === 1 ? parser.parse(body) as unknown as MarkdownNode : undefined;
@@ -475,6 +480,7 @@ export function parseReadableDocument(input: ParseReadableInput): ParsedDocument
   let markdownOnPage = new Map<string, string>();
   let caretOnPage: { key: string; n: string; x: string }[] = [];
   let lastCaretNote: FootnoteRecord | undefined;
+  let lastMarkerNote: FootnoteRecord | undefined;
   let pageStart = 0;
   const hooks: NoteHooks = {
     markdownNumber(id) {
@@ -648,9 +654,22 @@ export function parseReadableDocument(input: ParseReadableInput): ParsedDocument
       ids.push(id);
       if (!noteNumbers.has(id)) noteNumbers.set(id, n);
     };
-    marker?.notes.forEach((x, index) => {
-      const id = `${marker.base}${index + 1}${marker.suffix}`;
-      footnotes.push({ id, x });
+    // A leading «= …» note is the previous page's last note running on (Shamela's mark):
+    // join it there, or every ref on this page would open the note before its own.
+    const pageNotes = marker?.notes.slice() ?? [];
+    if (lastMarkerNote && pageNotes[0]?.trimStart().startsWith("=")) {
+      lastMarkerNote.x += ` ${pageNotes.shift()!.trimStart().slice(1).trimStart()}`;
+    }
+    // epub-import.ts cut notes at every "(N)" inside them, leaving tails that open with
+    // punctuation; fold each back so the refs after it line up again.
+    // ponytail: the cut-out number itself is lost; re-importing the book restores it.
+    for (let index = pageNotes.length - 1; index > 0; index--) {
+      if (/^\s*[،؛,:)]|^[\s\p{P}]*$/u.test(pageNotes[index]!)) pageNotes.splice(index - 1, 2, `${pageNotes[index - 1]} ${pageNotes[index]!.trim()}`);
+    }
+    pageNotes.forEach((x, index) => {
+      const id = `${marker!.base}${index + 1}${marker!.suffix}`;
+      lastMarkerNote = { id, x };
+      footnotes.push(lastMarkerNote);
       place(`?#${index + 1}`, id, arabicDigits(index + 1));
     });
     caretOnPage.forEach((caret, index) => {
@@ -715,6 +734,12 @@ export function parseReadableDocument(input: ParseReadableInput): ParsedDocument
         return;
       }
       case "paragraph": {
+        // Refs alone (split off a page-number line above): the notes join this page's footer,
+        // like a printed note whose mark was lost; no empty paragraph with a stray number.
+        if ((node.children ?? []).every((child) => child.type === "footnoteReference" || (child.type === "text" && !child.value?.trim()))) {
+          for (const child of node.children ?? []) if (child.type === "footnoteReference") hooks.markdownNumber(child.identifier!);
+          return;
+        }
         // Caret imports keep each page's notes as literal "(^N) text" lines.
         // They can also trail a paragraph that opens with other text (e.g. "[٣٦] إسناده صحيح.").
         const lines = plainText(node).split("\n");
@@ -785,6 +810,41 @@ export function parseReadableDocument(input: ParseReadableInput): ParsedDocument
   for (const id of markdownNotes.keys()) if (!placedNotes.has(id)) hooks.markdownNumber(id);
   closePage();
   if (blocks.length === 0) throw new Error(`${input.sourcePath}: readable document has no semantic blocks`);
+
+  // Shamela repeats a printed page's marker after each heading on it: keep one divider per
+  // page (the last), and gather the dropped segments' notes into that page's one footer.
+  const dropped = new Set<DraftBlock>();
+  const carried = new Map<DraftBlock, string[]>();
+  let previousMarker: number | undefined;
+  blocks.forEach((block, index) => {
+    if (block.t !== "page") return;
+    const prior = previousMarker == null ? undefined : blocks[previousMarker]!;
+    if (prior && prior.p === block.p && prior.vol === block.vol) {
+      dropped.add(prior);
+      const priorNotes = blocks[previousMarker! - 1];
+      if (priorNotes?.t === "notes") dropped.add(priorNotes);
+      const carry = [...(carried.get(prior) ?? []), ...(priorNotes?.t === "notes" ? priorNotes.f! : [])];
+      if (carry.length) carried.set(block, carry);
+    }
+    previousMarker = index;
+  });
+  if (dropped.size) {
+    const kept: DraftBlock[] = [];
+    const moved: number[] = [];
+    blocks.forEach((block, index) => {
+      moved[index] = kept.length;
+      if (dropped.has(block)) return;
+      const carry = carried.get(block);
+      const own = kept.at(-1);
+      if (carry && own?.t === "notes" && blocks[index - 1] === own) own.f = [...carry, ...own.f!];
+      else if (carry) kept.push({ t: "notes", f: carry, a: block.a, ...(block.p != null ? { p: block.p } : {}), ...(block.vol ? { vol: block.vol } : {}) });
+      kept.push(block);
+    });
+    moved[blocks.length] = kept.length;
+    for (const chapter of chapters) chapter.block = moved[chapter.block]!;
+    blocks.length = 0;
+    for (const block of kept) blocks.push(block);
+  }
 
   // A marker ENDS its page: each block takes the page of the marker after it, and text
   // after the last marker sits on the page that follows it.
