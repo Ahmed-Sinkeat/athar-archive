@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Book Formatting Examples</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f7f4ee; --card: #fffdf8; --ink: #22201c; --muted: #6f6a60; --line: #e3ddd0;
+  --accent: #1f6f5c; --accent-soft: #e2f0eb; --bad: #a3402c; --bad-soft: #f8e6e1;
+  --code: #f0ece3; --hl: #fff1b8;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #161513; --card: #1f1d1a; --ink: #ebe6dc; --muted: #a39d91; --line: #34312c;
+    --accent: #6cc4a9; --accent-soft: #1d332c; --bad: #e08a74; --bad-soft: #3a231d;
+    --code: #262420; --hl: #4a3f12;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #161513; --card: #1f1d1a; --ink: #ebe6dc; --muted: #a39d91; --line: #34312c;
+  --accent: #6cc4a9; --accent-soft: #1d332c; --bad: #e08a74; --bad-soft: #3a231d;
+  --code: #262420; --hl: #4a3f12;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.6 Inter, system-ui, sans-serif; }
+main { max-width: 1040px; margin: 0 auto; padding: 32px 16px 80px; }
+h1 { font-size: 28px; margin: 0 0 6px; }
+h2 { font-size: 20px; margin: 48px 0 4px; display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+h2 .n { color: var(--accent); font-variant-numeric: tabular-nums; }
+.lede { color: var(--muted); max-width: 70ch; }
+.why { color: var(--muted); margin: 4px 0 14px; max-width: 75ch; }
+.tag { font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 99px; background: var(--accent-soft); color: var(--accent); }
+.tag.warn { background: var(--bad-soft); color: var(--bad); }
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media (max-width: 760px) { .pair { grid-template-columns: 1fr; } }
+.side { background: var(--card); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.side > .label { font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; padding: 8px 14px; border-bottom: 1px solid var(--line); }
+.before > .label { color: var(--bad); }
+.after > .label { color: var(--accent); }
+.page { direction: rtl; font-family: Amiri, "Kitab", serif; font-size: 20px; line-height: 1.95; padding: 14px 18px; }
+.page p { margin: 0 0 12px; }
+.page h3 { font-size: 23px; margin: 4px 0 10px; color: var(--accent); }
+.page .ayah { color: var(--accent); }
+.page .bullet { padding-right: 18px; position: relative; }
+.page .bullet::before { content: "•"; position: absolute; right: 2px; color: var(--muted); }
+sup.dead { color: var(--muted); font-size: 13px; }
+sup.ref a { color: var(--accent); font-weight: 700; font-size: 13px; text-decoration: none; padding: 0 2px; border-radius: 4px; }
+sup.ref a:hover { background: var(--accent-soft); }
+.plain-num { font-family: Inter, sans-serif; font-size: 15px; }
+.notes { border-top: 1px dashed var(--line); margin: 6px 0 0; padding: 8px 0 0; font-size: 16px; line-height: 1.8; color: var(--muted); list-style: none; }
+.notes li { padding: 2px 6px; border-radius: 6px; }
+.notes li b { color: var(--ink); margin-left: 6px; }
+.notes li:target { background: var(--hl); color: var(--ink); }
+.notes li.wrong { background: var(--bad-soft); color: var(--bad); }
+.pagechip { direction: rtl; text-align: center; font-size: 12px; color: var(--muted); border-top: 1px solid var(--line); margin: 10px -18px 0; padding-top: 6px; font-family: Inter, sans-serif; }
+details { border-top: 1px solid var(--line); }
+summary { cursor: pointer; font-size: 12px; color: var(--muted); padding: 6px 14px; }
+pre { margin: 0; padding: 10px 14px; background: var(--code); font: 12.5px/1.7 ui-monospace, Menlo, monospace; white-space: pre-wrap; word-break: break-word; direction: rtl; text-align: right; }
+pre del { color: var(--bad); }
+pre ins { color: var(--accent); text-decoration: none; font-weight: 700; }
+.note-box { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px 18px; margin-top: 14px; }
+.note-box h3 { margin: 0 0 6px; font-size: 15px; }
+ul.plain { margin: 6px 0 0; padding-left: 20px; }
+ul.plain li { margin: 4px 0; }
+.ar { font-family: Amiri, serif; font-size: 17px; direction: rtl; unicode-bidi: isolate; }
+.callout { border-left: 4px solid var(--accent); background: var(--accent-soft); padding: 10px 14px; border-radius: 8px; margin: 14px 0; }
+.callout.warn { border-color: var(--bad); background: var(--bad-soft); }
+.toc { columns: 2; column-gap: 28px; margin: 18px 0 0; padding-left: 20px; }
+@media (max-width: 600px) { .toc { columns: 1; } }
+.toc a { color: var(--accent); }
+.page .verse { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 28px; text-align: center; margin: 10px 0 14px; }
+.page .verse .num { grid-column: 1 / -1; font: 12px Inter, sans-serif; color: var(--muted); }
+.page blockquote { margin: 0 0 12px; padding: 4px 14px 4px 0; border-right: 3px solid var(--accent); color: var(--ink); background: var(--accent-soft); border-radius: 6px 0 0 6px; }
+.page .menu { font: 13px Inter, sans-serif; direction: rtl; border: 1px solid var(--line); border-radius: 10px; padding: 6px 0; width: 180px; margin: 0 0 10px auto; background: var(--bg); }
+.page .menu div { padding: 4px 14px; }
+.page .menu .on { background: var(--accent-soft); color: var(--accent); font-weight: 700; }
+.arrow { color: var(--bad); font-family: Inter, sans-serif; font-size: 13px; font-weight: 600; }
+</style>
+</head>
+<body>
+<main>
+<h1>Book formatting: what changes, before → after</h1>
+<p class="lede">Every kind of change the formatting pass makes, using real passages from
+<span class="ar">كتاب الإيمان لأبي عبيد</span>, <span class="ar">الأصول الثلاثة</span> and
+<span class="ar">التحفة السنية شرح منظومة ابن أبي داود الحائية</span> (rules 11–15).
+The <b>Before</b> side is the reader today and the <b>After</b> side is the reader after the
+change. In the After panels, tap a green footnote number to see which note it opens.
+“Show markup” shows the raw file change. Anything marked <span class="tag">your call</span>
+has an alternative. Tell me if you want that one instead.</p>
+
+<div class="callout"><b>The one rule:</b> only the <i>markup</i> changes: paragraphs,
+headings, footnote links. Not one letter, number or punctuation mark of the book changes. A
+script (<code>format-verify</code>) compares every edited book against the original and
+refuses the change if any text moved.</div>
+
+<ol class="toc">
+  <li><a href="#r1">Footnote number written as plain text</a></li>
+  <li><a href="#r2">Old superscript that opens nothing</a></li>
+  <li><a href="#r3">Footnote number glued to the next word</a></li>
+  <li><a href="#r4">Note cut in two by the old import</a></li>
+  <li><a href="#r5">One note cited twice</a></li>
+  <li><a href="#r6">Numbers that are not footnotes</a></li>
+  <li><a href="#r7">Numbered athar run together</a></li>
+  <li><a href="#r8">Chapter number on its own line</a></li>
+  <li><a href="#r9">Paragraphs shown as bullet points</a></li>
+  <li><a href="#r10">Import errors: fixed and still open</a></li>
+  <li><a href="#r11">Poem verses inside the commentary</a></li>
+  <li><a href="#r12">Quoted sayings of scholars</a></li>
+  <li><a href="#r13">Bold labels and numbered points</a></li>
+  <li><a href="#r14">Book card behind ⋮</a></li>
+  <li><a href="#r15">Scrambled verses (import fix)</a></li>
+  <li><a href="#never">Never changed</a></li>
+  <li><a href="#later">Not done yet (needs code first)</a></li>
+</ol>
+
+<!-- 1 -->
+<h2 id="r1"><span class="n">1</span> Footnote number written as plain text <span class="tag">done in كتاب الإيمان</span></h2>
+<p class="why">The import left the number as an ordinary digit in the sentence. It can't be tapped, and it reads like part of the text.</p>
+<div class="pair">
+  <div class="side before"><div class="label">Before</div>
+    <div class="page">
+      <p>فَقَالَ ابْنُ مَسْعُودٍ: أَفَلَا وكلتَ الْأُولَى كَمَا وَكَّلْتَ الْأُخْرَى؟ <span class="plain-num">1</span>".</p>
+      <ol class="notes"><li><b>١</b>رجال إسناده ثقات رجال الستة, إلاّ أنّه منقطع بين الحسن, وابن مسعود.</li></ol>
+      <div class="pagechip">ص ٣٥</div>
+    </div>
+  </div>
+  <div class="side after"><div class="label">After</div>
+    <div class="page">
+      <p>فَقَالَ ابْنُ مَسْعُودٍ: أَفَلَا وكلتَ الْأُولَى كَمَا وَكَّلْتَ الْأُخْرَى؟ <sup class="ref"><a href="#n1-1">١</a></sup>".</p>
+      <ol class="notes"><li id="n1-1"><b>١</b>رجال إسناده ثقات رجال الستة, إلاّ أنّه منقطع بين الحسن, وابن مسعود.</li></ol>
+      <div class="pagechip">ص ٣٥</div>
+    </div>
+  </div>
+</div>
+<details><summary>Show markup</summary><pre>… وَكَّلْتَ الْأُخْرَى؟ <del>1</del><ins>(^1)</ins>".</pre></details>
+
+<!-- 2 -->
+<h2 id="r2"><span class="n">2</span> Old superscript that opens nothing <span class="tag">done</span></h2>
+<p class="why">The old EPUB import put a superscript here, but the app ignores it on purpose: those numbers were often wrong. Each one is now checked against the page's notes and turned into a real link.</p>
+<div class="pair">
+  <div class="side before"><div class="label">Before</div>
+    <div class="page">
+      <p>حَدَّثَنَا عَبْدُ الرَّحْمَنِ, عَنْ سُفْيَانَ, عَنْ مُحلّ<sup class="dead">2</sup>بْنِ مُحْرِزٍ قَالَ: قَالَ لي إبراهيم:</p>
+      <ol class="notes"><li><b>١</b>إسناده على شرط الشيخين…</li><li><b>٢</b>هو بضمّ أوله, وكسر ثانيه, وتشديد اللام, وكان الأصل: "مجلي"…</li></ol>
+    </div>
+  </div>
+  <div class="side after"><div class="label">After</div>
+    <div class="page">
+      <p>حَدَّثَنَا عَبْدُ الرَّحْمَنِ, عَنْ سُفْيَانَ, عَنْ مُحلّ <sup class="ref"><a href="#n2-2">٢</a></sup> بْنِ مُحْرِزٍ قَالَ: قَالَ لي إبراهيم:</p>
+      <ol class="notes"><li id="n2-1"><b>١</b>إسناده على شرط الشيخين…</li><li id="n2-2"><b>٢</b>هو بضمّ أوله, وكسر ثانيه, وتشديد اللام, وكان الأصل: "مجلي"…</li></ol>
+    </div>
+  </div>
+</div>
+<details><summary>Show markup</summary><pre>عَنْ <del>مُحلّ&lt;sup data-fn="2" data-sep-page="36"&gt;2&lt;/sup&gt;بْنِ</del> <ins>مُحلّ (^2) بْنِ</ins></pre></details>
+
+<!-- 3 -->
+<h2 id="r3"><span class="n">3</span> Footnote number glued to the next word <span class="tag">done</span></h2>
+<p class="why">On the last page, “2” is stuck to «وَعَلَى» and reads like «2وعلى». It gets a space and becomes a link.</p>
+<div class="pair">
+  <div class="side before"><div class="label">Before</div>
+    <div class="page"><p>وَمِثْلُ ذَلِكَ قَوْلُهُ: "حُرمةُ مالِه كحُرمة دَمِهِ" <span class="plain-num">2</span>وَعَلَى هذا وما أشبه أيضا.</p></div>
+  </div>
+  <div class="side after"><div class="label">After</div>
+    <div class="page"><p>وَمِثْلُ ذَلِكَ قَوْلُهُ: "حُرمةُ مالِه كحُرمة دَمِهِ" <sup class="ref"><a href="#n3-2">٢</a></sup> وَعَلَى هذا وما أشبه أيضا.</p>
+      <ol class="notes"><li id="n3-1"><b>١</b>تقدم تخريجه ص 96.</li><li id="n3-2"><b>٢</b>حديث حسن, وقد مرّ تخريجه ص96.</li></ol></div>
+  </div>
+</div>
+
+<!-- 4 -->
+<h2 id="r4"><span class="n">4</span> Note cut in two by the old import <span class="tag">done on 4 pages</span> <span class="tag warn">this was a real bug</span></h2>
+<p class="why">The old import cut a note wherever it contained a number in brackets. On page 30, note 1 became <i>two</i> notes. That shifted every later note by one, so tapping ٢ opened a scrap of note 1. The fix rejoins the pieces. The wording stays exactly as it was; the number that was cut out of note 1 is lost in the source, so it stays missing.</p>
+<div class="pair">
+  <div class="side before"><div class="label">Before: 4 notes, refs point one note too early</div>
+    <div class="page">
+      <p>"…أَحْسَنُهُمْ خُلُقًا" <span class="plain-num">1</span>. وَكَذَلِكَ<sup class="dead">2</sup>قَوْلُهُ: "لَا يُؤْمِنُ الرَّجُلُ الْإِيمَانَ كُلَّهُ حَتَّى يَدَعَ الْكَذِبَ فِي الْمِزَاحِ، وَالْمِرَاءَ وَإِنْ كَانَ صَادِقًا" <span class="plain-num">3</span>.</p>
+      <ol class="notes">
+        <li><b>١</b>حديث صحيح, وصحّحه جماعة… فراجع تعليقنا عليه رقم:</li>
+        <li class="wrong"><b>٢</b>و20 و120. <span class="arrow">← «وكذلك ٢» would open this</span></li>
+        <li class="wrong"><b>٣</b>الأصل: "وذلك". <span class="arrow">← «صادقا ٣» would open this</span></li>
+        <li><b>٤</b>أخرجه أحمد 2/352… <span class="arrow">← nothing opens this</span></li>
+      </ol>
+    </div>
+  </div>
+  <div class="side after"><div class="label">After: 3 notes, every ref correct</div>
+    <div class="page">
+      <p>"…أَحْسَنُهُمْ خُلُقًا" <sup class="ref"><a href="#n4-1">١</a></sup>. وَكَذَلِكَ <sup class="ref"><a href="#n4-2">٢</a></sup> قَوْلُهُ: "لَا يُؤْمِنُ الرَّجُلُ الْإِيمَانَ كُلَّهُ حَتَّى يَدَعَ الْكَذِبَ فِي الْمِزَاحِ، وَالْمِرَاءَ وَإِنْ كَانَ صَادِقًا" <sup class="ref"><a href="#n4-3">٣</a></sup>.</p>
+      <ol class="notes">
+        <li id="n4-1"><b>١</b>حديث صحيح, وصحّحه جماعة… فراجع تعليقنا عليه رقم: و20 و120.</li>
+        <li id="n4-2"><b>٢</b>الأصل: "وذلك".</li>
+        <li id="n4-3"><b>٣</b>أخرجه أحمد 2/352, 353, 354. من حديث مكحول عن أبي هريرة…</li>
+      </ol>
+    </div>
+  </div>
+</div>
+<details><summary>Show markup</summary><pre>data-notes='["…فراجع تعليقنا عليه <del>رقم:","و20</del><ins>رقم: و20</ins> و120.","الأصل: \"وذلك\".", …]'</pre></details>
+
+<!-- 5 -->
+<h2 id="r5"><span class="n">5</span> One note cited twice <span class="tag">done</span></h2>
+<p class="why">The editor wrote one note («أخرجهما…», “both are narrated by…”) that covers two hadiths. Both numbers open the same note.</p>
+<div class="pair">
+  <div class="side before"><div class="label">Before</div>
+    <div class="page"><p>"مَنْ غَشَّنَا فَلَيْسَ مِنَّا" <span class="plain-num">1</span>. وَكَذَلِكَ قَوْلُهُ: "لَيْسَ مِنَّا مِنْ حَمَلَ السلاحَ عَلَيْنَا" <span class="plain-num">1</span>.</p></div>
+  </div>
+  <div class="side after"><div class="label">After</div>
+    <div class="page"><p>"مَنْ غَشَّنَا فَلَيْسَ مِنَّا" <sup class="ref"><a href="#n5-1">١</a></sup>. وَكَذَلِكَ قَوْلُهُ: "لَيْسَ مِنَّا مِنْ حَمَلَ السلاحَ عَلَيْنَا" <sup class="ref"><a href="#n5-1">١</a></sup>.</p>
+      <ol class="notes"><li id="n5-1"><b>١</b>أخرجهما مسلم من حديث أبي هريرة مرفوعاً…</li></ol></div>
+  </div>
+</div>
+
+<!-- 6 -->
+<h2 id="r6"><span class="n">6</span> Numbers that are not footnotes stay as they are <span class="tag">done</span></h2>
+<p class="why">Verse references, page references, item numbers and dates are left alone. So is a digit that has no note on its page: there is nothing for it to open.</p>
+<div class="pair">
+  <div class="side before"><div class="label">Before</div>
+    <div class="page">
+      <p>﴿وَأَقِيمُواْ الصَّلاَةَ وَآتُواْ الزَّكَاةَ﴾ [البقرة:83 و110] <span class="plain-num">1</span>.</p>
+      <p>بسم الله الرحمن الرحيم توكلت على الله <span class="plain-num">1</span></p>
+    </div>
+  </div>
+  <div class="side after"><div class="label">After</div>
+    <div class="page">
+      <p>﴿وَأَقِيمُواْ الصَّلاَةَ وَآتُواْ الزَّكَاةَ﴾ [البقرة:83 و110] <sup class="ref"><a href="#n6-1">١</a></sup>.</p>
+      <p>بسم الله الرحمن الرحيم توكلت على الله <span class="plain-num">1</span> <span class="arrow">← page 9 has no note, unchanged</span></p>
+      <ol class="notes"><li id="n6-1"><b>١</b>قلت: قد جاءت آيات مكية. ورد فيها ذكر الزكاة…</li></ol>
+    </div>
+  </div>
+</div>
+
+<!-- 7 -->
+<h2 id="r7"><span class="n">7</span> Numbered athar run together <span class="tag">done: items 1–30</span> <span class="tag">your call</span></h2>
+<p class="why">Each numbered narration («٩- قال أبو عبيد…») was run into the one before it, often several in one paragraph. Each one now starts its own paragraph. The numbers stay as the book prints them, including the gap where 27 is missing.<br>
+<b>Alternative:</b> keep them together and only add space. I recommend separate paragraphs, because you can then highlight or share one narration.</p>
+<div class="pair">
+  <div class="side before"><div class="label">Before: one paragraph</div>
+    <div class="page"><p>٩- قَالَ أَبُو عُبَيْدٍ: حَدَّثَنَا يَحْيَى بْنُ سَعِيدٍ عَنْ أَبِي الْأَشْهَبِ عَنِ الْحَسَنِ قَالَ: " قَالَ رَجُلٌ عِنْدَ ابْنِ مَسْعُودٍ: أَنَا مؤمنٌ! … كَمَا وَكَّلْتَ الْأُخْرَى؟ <span class="plain-num">1</span>". ١٠- قَالَ أَبُو عُبَيْدٍ: حَدَّثَنَا عَبْدُ الرَّحْمَنِ بْنُ مَهْدِيٍّ عَنْ سُفْيَانَ بْنِ سَعِيدٍ, عَنِ الْأَعْمَشِ…</p></div>
+  </div>
+  <div class="side after"><div class="label">After: one paragraph per narration</div>
+    <div class="page">
+      <p>٩- قَالَ أَبُو عُبَيْدٍ: حَدَّثَنَا يَحْيَى بْنُ سَعِيدٍ عَنْ أَبِي الْأَشْهَبِ عَنِ الْحَسَنِ قَالَ: " قَالَ رَجُلٌ عِنْدَ ابْنِ مَسْعُودٍ: أَنَا مؤمنٌ! … كَمَا وَكَّلْتَ الْأُخْرَى؟ <sup class="ref"><a href="#n7-1">١</a></sup>".</p>
+      <p>١٠- قَالَ أَبُو عُبَيْدٍ: حَدَّثَنَا عَبْدُ الرَّحْمَنِ بْنُ مَهْدِيٍّ عَنْ سُفْيَانَ بْنِ سَعِيدٍ, عَنِ الْأَعْمَشِ…</p>
+      <ol class="notes"><li id="n7-1"><b>١</b>رجال إسناده ثقات رجال الستة…</li></ol>
+    </div>
+  </div>
+</div>
+
+<!-- 8 -->
+<h2 id="r8"><span class="n">8</span> Chapter number on its own line <span class="tag">done: chapters 4 and 8</span> <span class="tag">your call</span></h2>
+<p class="why">Two chapters had their number stranded on a line of its own above the heading. The number moves into the heading. The other six chapters have no number in the book, so the contents list will show “٤-” and “٨-” on two chapters only.<br>
+<b>Alternative:</b> leave the stray number as a small line above the heading. Text can't be deleted, so it can't simply be removed.</p>
+<div class="pair">
+  <div class="side before"><div class="label">Before</div>
+    <div class="page"><p>٤-</p><h3>بَابُ تَسْمِيَةِ الْإِيمَانِ بِالْقَوْلِ دُونَ الْعَمَلِ:</h3></div>
+  </div>
+  <div class="side after"><div class="label">After</div>
+    <div class="page"><h3>٤- بَابُ تَسْمِيَةِ الْإِيمَانِ بِالْقَوْلِ دُونَ الْعَمَلِ:</h3></div>
+  </div>
+</div>
+
+<!-- 9 -->
+<h2 id="r9"><span class="n">9</span> Paragraphs shown as bullet points <span class="tag">done in الأصول الثلاثة</span></h2>
+<p class="why">The import turned the dash at the start of some paragraphs into a list bullet. Those are ordinary paragraphs, so the bullet goes. A real list, like the manuscripts list, keeps its bullets.</p>
+<div class="pair">
+  <div class="side before"><div class="label">Before</div>
+    <div class="page">
+      <p class="bullet">اعلم - رحمك الله - أنه يجب علينا تعلم أربع مسائل:</p>
+      <p><b>الأولى</b>: العلم، وهو: معرفة الله، ومعرفة نبيه، ومعرفة دين الإسلام بالأدلة.</p>
+      <p class="bullet">نسخة خطية بمركز الملك فيصل - برقم (٥٢٥٨)</p>
+    </div>
+  </div>
+  <div class="side after"><div class="label">After</div>
+    <div class="page">
+      <p>اعلم - رحمك الله - أنه يجب علينا تعلم أربع مسائل:</p>
+      <p><b>الأولى</b>: العلم، وهو: معرفة الله، ومعرفة نبيه، ومعرفة دين الإسلام بالأدلة.</p>
+      <p class="bullet">نسخة خطية بمركز الملك فيصل - برقم (٥٢٥٨) <span class="arrow">← real list, kept (now in the book card, rule 14)</span></p>
+    </div>
+  </div>
+</div>
+
+<!-- 10 -->
+<h2 id="r10"><span class="n">10</span> Import errors: fixed and still open</h2>
+<p class="why">Mistakes made by the import, not by the book. When the fix only <i>moves</i> text or renumbers a page, it is done in a separate step and checked by
+<code>format-verify --import-fix</code>: page numbers may change and text may move, but not one character may be added or lost. Text that is missing needs the original source, so it stays open.</p>
+<div class="note-box">
+  <h3>Fixed</h3>
+  <ul class="plain">
+    <li><b>A page split in two at a new chapter.</b> كتاب الإيمان had pages 35, 44, 49, 59, 62 and 67 twice each. The first marker goes, its notes join the second, and that page's later footnote numbers shift by one (page 67).</li>
+    <li><b>A page with the wrong number.</b> التحفة السنية had pages 7, <b>11</b>, 9, 10, 11; the first “11” is page 8.</li>
+    <li><b>Verses swapped across columns.</b> See rule 15.</li>
+  </ul>
+  <h3 style="margin-top:12px">Still open: needs the original source</h3>
+  <ul class="plain">
+    <li><b>Lost text in كتاب الإيمان, p57→58.</b> About three lines are missing, from <span class="ar">فَأَيُّ شَيْءٍ يُتَّبَعُ بَعْدَ هَذِهِ الْحُجَجِ الْأَرْبَعِ؟</span> to <span class="ar">﴿إِلَّا إِبْلِيسَ اسْتَكْبَرَ…﴾ [ص:73-</span>, so p58 starts with “74] ,”. The note on p57 even comments on words from the lost lines.</li>
+    <li><b>كتاب الإيمان stops early.</b> It ends at p99. The other edition in the library (<span class="ar">الإيمان للقاسم بن سلام - مخرجا</span>) goes on with a final section, <span class="ar">ذِكْرُ الْأَصْنَافِ الْخَمْسَةِ</span>.</li>
+    <li><b>Hadith numbers eaten by the import.</b> In التحفة السنية the old import cut every note at its “(number)” and threw the number away: <span class="ar">أخرجه مسلم برقم ⟨…⟩ من حديث جابر</span>. The pieces are joined again (rule 4), but the numbers are gone.</li>
+    <li><b>A footnote number that was never there.</b> التحفة السنية p43 has a note (<span class="ar">تقدم (ص 41)</span>) but no number in the text. Adding one would add text.</li>
+  </ul>
+</div>
+
+<!-- 11 -->
+<h2 id="r11"><span class="n">11</span> Poem verses inside the commentary <span class="tag">done in التحفة السنية: 85 verses</span></h2>
+<p class="why">A شرح quotes its matn as <span class="ar">(صدر... عجز)</span> in the middle of a paragraph. Each verse moves to its own line and is shown as a verse: two halves side by side. The brackets and the “...” are how the page marks a quotation and the gap between the halves, so the verse layout replaces them. A verse number in the book (10–33) stays.</p>
+<div class="pair">
+  <div class="side before"><div class="label">Before</div>
+    <div class="page"><p>(تمسك بحبل الله واتبع الهدى... ولا تك بدعيًا لعلك تفلح ُ) (ودن بكتاب الله والسنن التي... أتت عن رسول الله تنجو وتربحُ) بدأ الناظم منظومته في الاعتقاد بهذين البيتين العظيمين…</p></div>
+  </div>
+  <div class="side after"><div class="label">After</div>
+    <div class="page">
+      <div class="verse"><span>تمسك بحبل الله واتبع الهدى</span><span>ولا تك بدعيًا لعلك تفلح ُ</span></div>
+      <div class="verse"><span>ودن بكتاب الله والسنن التي</span><span>أتت عن رسول الله تنجو وتربحُ</span></div>
+      <p>بدأ الناظم منظومته في الاعتقاد بهذين البيتين العظيمين…</p>
+      <div class="verse"><span class="num">٢٦</span><span>ولا تكفرن أهل الصلاة وإن عصوا</span><span>فكلهم يعصي وذو العرش يصفح</span></div>
+    </div>
+  </div>
+</div>
+<details><summary>Show markup</summary><pre>(تمسك بحبل الله واتبع الهدى<ins> ...</ins> ولا تك بدعيًا لعلك تفلح ُ)<ins>⏎⏎</ins>(ودن بكتاب الله والسنن التي<ins> ...</ins> أتت عن رسول الله تنجو وتربحُ)<ins>⏎⏎</ins>بدأ الناظم…
+26 (ولا تكفرن أهل الصلاة وإن عصوا)<ins> </ins>... (فكلهم يعصي وذو العرش يصفح)</pre></details>
+
+<!-- 12 -->
+<h2 id="r12"><span class="n">12</span> Quoted sayings of scholars <span class="tag">done: the ترجمة</span> <span class="tag">your call</span></h2>
+<p class="why">A run of sayings, each opened by <span class="ar">ـ قال…</span>, becomes a list of quotes, one per scholar. Short quotes inside a sentence stay inline. The parser already supports quotes; I only mark them where the book itself lists sayings one after another.<br>
+<b>Alternative:</b> mark every long quotation in the commentary as a quote too. That splits many paragraphs.</p>
+<div class="pair">
+  <div class="side before"><div class="label">Before</div>
+    <div class="page"><p>…مكانته العلمية، وثناء العلماء عليه: ـ قال الحافظ أبو محمد الخلال: " كان ابن أبي داود إمام أهل العراق…". ـ وقال الخطيب البغدادي: " كان فقيهاً عالماً حافظاً".2 ـ وقال ابن خلكان: …</p></div>
+  </div>
+  <div class="side after"><div class="label">After</div>
+    <div class="page">
+      <p><b>مكانته العلمية، وثناء العلماء عليه:</b></p>
+      <blockquote>ـ قال الحافظ أبو محمد الخلال: " كان ابن أبي داود إمام أهل العراق…".</blockquote>
+      <blockquote>ـ وقال الخطيب البغدادي: " كان فقيهاً عالماً حافظاً". <sup class="ref"><a href="#n12-2">٢</a></sup></blockquote>
+      <ol class="notes"><li id="n12-2"><b>٢</b>تاريخ بغداد (9 / 464) .</li></ol>
+    </div>
+  </div>
+</div>
+<details><summary>Show markup</summary><pre><ins>**</ins>مكانته العلمية، وثناء العلماء عليه:<ins>**⏎⏎&gt; </ins>ـ قال الحافظ أبو محمد الخلال: …<ins>⏎⏎&gt; </ins>ـ وقال الخطيب البغدادي: …". <del>2</del><ins>(^2)</ins></pre></details>
+
+<!-- 13 -->
+<h2 id="r13"><span class="n">13</span> Bold labels and numbered points <span class="tag">done</span></h2>
+<p class="why">Where the book names a part (<span class="ar">ولادته:</span>, <span class="ar">الأول:</span>, <span class="ar">الأمر الثاني:</span>), the label starts its own paragraph in bold. A numbered point run into a sentence (<span class="ar">1- … 2- …</span>) starts its own line. Bold is used only for labels the book already has, never for emphasis I choose.</p>
+<div class="pair">
+  <div class="side before"><div class="label">Before</div>
+    <div class="page"><p>ترجمة موجزة للناظم ابن أبي داود<sup class="dead">1</sup>اسمه ونسبه وكنيته: هو الإمام العلامة الحافظ شيخ بغداد… ولادته: ولد الإمام أبو بكر بن أبي داود بسجستان…</p>
+    <p>…يطلق على أمرين: 1- التوفيق والإلهام. 2- الدلالة والبيان والإرشاد.</p></div>
+  </div>
+  <div class="side after"><div class="label">After</div>
+    <div class="page">
+      <h3>ترجمة موجزة للناظم ابن أبي داود <sup class="ref"><a href="#n13-1">١</a></sup></h3>
+      <p><b>اسمه ونسبه وكنيته:</b> هو الإمام العلامة الحافظ شيخ بغداد…</p>
+      <p><b>ولادته:</b> ولد الإمام أبو بكر بن أبي داود بسجستان…</p>
+      <p>…يطلق على أمرين:</p><p>1- التوفيق والإلهام.</p><p>2- الدلالة والبيان والإرشاد.</p>
+      <ol class="notes"><li id="n13-1"><b>١</b>يراجع في ترجمته سير أعلام النبلاء (13/221 وما بعدها) .</li></ol>
+    </div>
+  </div>
+</div>
+
+<!-- 14 -->
+<h2 id="r14"><span class="n">14</span> Book card behind ⋮ <span class="tag">done in الأصول الثلاثة</span></h2>
+<p class="why">The title page and the editor's front matter (author line, manuscripts used) are about the edition, not the author's text. They move out of the reading flow into the book card: ⋮ → <b>بطاقة الكتاب</b>, the same dialog that used to be «عن المصدر». The book's page markers stay in the text, so page numbers still match. The website still shows these lines in place.</p>
+<div class="pair">
+  <div class="side before"><div class="label">Before: the first thing you read</div>
+    <div class="page"><h3>الأصول الثلاثة وأدلتها</h3><p>لإمام الدعوة الشيخ</p><p>محمد بن عبد الوهاب بن سليمان التميمي</p><p>رحمه الله (ت ١٢٠٦ هـ)</p><p>النسخ المعتمدة في تحقيق هذا المتن:</p><p class="bullet">نسخة خطية بمركز الملك فيصل - السعودية - برقم (٥٢٥٨)، تاريخ نسخها: ١٣٠٧ هـ.</p><p>…</p><p>بسم الله الرحمن الرحيم</p></div>
+  </div>
+  <div class="side after"><div class="label">After: ⋮ → بطاقة الكتاب</div>
+    <div class="page">
+      <div class="menu"><div class="on">بطاقة الكتاب</div><div>فتح في الموقع</div></div>
+      <p style="font-size:16px;line-height:1.8">ثلاثة الأصول وأدلتها<br>محمد بن عبد الوهاب<br>لإمام الدعوة الشيخ<br>محمد بن عبد الوهاب بن سليمان التميمي<br>رحمه الله (ت ١٢٠٦ هـ)<br>النسخ المعتمدة في تحقيق هذا المتن:<br>نسخة خطية بمركز الملك فيصل - السعودية - برقم (٥٢٥٨)، تاريخ نسخها: ١٣٠٧ هـ.<br>…</p>
+    </div>
+  </div>
+</div>
+<details><summary>Show markup</summary><pre>## الأصول الثلاثة وأدلتها
+<ins>&lt;!-- card --&gt;</ins>
+لإمام الدعوة الشيخ
+…
+&lt;hr class="page-sep" data-page="42" /&gt;
+<ins>&lt;!-- /card --&gt;</ins></pre></details>
+
+<!-- 15 -->
+<h2 id="r15"><span class="n">15</span> Scrambled verses (import fix) <span class="tag">done</span> <span class="tag warn">text moves</span></h2>
+<p class="why">The printed poem is in two columns. The import read verse 2's first half, then all of verse 3, then verse 2's end. The halves go back into place; every letter is still there (checked by <code>--import-fix</code>). The separator “...” between the halves is layout, so one is added where the import lost it.</p>
+<div class="pair">
+  <div class="side before"><div class="label">Before</div>
+    <div class="page"><p>(ودن بكتاب الله والسنن التي (وقل غير مخلوق كلام مليكنا... أتت عن رسول الله تنجو وتربحُ) بذلك دان الأتقياء وأفصحوا)</p></div>
+  </div>
+  <div class="side after"><div class="label">After</div>
+    <div class="page">
+      <div class="verse"><span>ودن بكتاب الله والسنن التي</span><span>أتت عن رسول الله تنجو وتربحُ</span></div>
+      <div class="verse"><span>وقل غير مخلوق كلام مليكنا</span><span>بذلك دان الأتقياء وأفصحوا</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- never -->
+<h2 id="never">Never changed</h2>
+<div class="note-box">
+  <ul class="plain">
+    <li><b>Any letter, number, punctuation mark or diacritic</b>, even an obvious typo. Corrections are the editor's job, and his notes record them («الأصل: …»).</li>
+    <li><b>Note wording.</b> Notes can be rejoined (rule 4), but never reworded or reordered.</li>
+    <li><b>Page markers.</b> Never added, removed, moved or renumbered, except as a checked import fix (rule 10).</li>
+    <li><b>Book details</b> (title, author, <span class="ar">كتاب / متن</span> type, topics).</li>
+    <li><b>New words.</b> A heading can only be made from text already in the book.</li>
+  </ul>
+  <p class="why" style="margin-top:10px">The check script enforces all of this. If any text differs, it says where and refuses the change.</p>
+</div>
+
+<!-- later -->
+<h2 id="later">Not done yet (needs code first)</h2>
+<p class="why">Each of these needs a change to the reader or parser before it can be marked. I'll ask before starting any of them.</p>
+<div class="pair">
+  <div class="side before"><div class="label">Today: page break splits a sentence (الأصول الثلاثة)</div>
+    <div class="page">
+      <p>…والدليل من السنة: حديث جبريل المشهور، عن عمر رضي الله عنه قال: «بينما نحن</p>
+      <div class="pagechip">ص ٦٠</div>
+      <p style="margin-top:12px">عند رسول الله صلى الله عليه وآله وسلم ذات يوم…</p>
+    </div>
+  </div>
+  <div class="side after"><div class="label">Later: “continuous” reading mode</div>
+    <div class="page">
+      <p>…والدليل من السنة: حديث جبريل المشهور، عن عمر رضي الله عنه قال: «بينما نحن <span class="plain-num" style="color:var(--muted)">⟨٦٠⟩</span> عند رسول الله صلى الله عليه وآله وسلم ذات يوم…</p>
+    </div>
+  </div>
+</div>
+<div class="note-box">
+  <ul class="plain">
+    <li><b>Printed page-number lines</b> such as “-46”: removing them deletes text, so the check needs an explicit allowlist first.</li>
+    <li><b>Verse styling on the website.</b> The app shows verses as two halves; the website shows each verse as its own line for now.</li>
+    <li><b>Search aids, links between books, chapter summaries:</b> not designed yet.</li>
+  </ul>
+</div>
+
+<div class="callout warn"><b>Your saved highlights:</b> a highlight stays put when a block only
+changes type (bullet → paragraph). Splitting a paragraph (rules 7, 11–13) gives the new pieces new IDs.
+The app then finds the highlight again by its text. If it can't, it marks the highlight
+“orphaned” and keeps it; nothing is deleted.</div>
+</main>
+</body>
+</html>

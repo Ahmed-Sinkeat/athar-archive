@@ -146,6 +146,22 @@ export function assignStableBlockIds(
     }
   }
 
+  // Same text, new kind (a formatting pass turned li→p or p→h2): keep the ID so highlights survive.
+  // normHash includes the kind, so rehash the current text under each kind the old sidecar used.
+  const oldKinds = [...new Set(old.map((record) => record.kind))];
+  for (const descriptor of descriptors) {
+    if (chosen.has(descriptor.ord)) continue;
+    const identity = normalizedIdentity(descriptor.block);
+    const match = oldKinds
+      .flatMap((kind) => exact.get(`${kind}\u0000${sha256Hex(`${kind}\u0000${identity}`)}`) ?? [])
+      .filter((record) => unused.has(record.blockId))
+      .sort((a, b) => exactScore(descriptor, b) - exactScore(descriptor, a) || a.ord - b.ord)[0];
+    if (match) {
+      chosen.set(descriptor.ord, match);
+      unused.delete(match.blockId);
+    }
+  }
+
   for (const descriptor of descriptors) {
     if (chosen.has(descriptor.ord)) continue;
     const from = Math.max(0, descriptor.ord - 50);

@@ -1000,7 +1000,7 @@ private fun ContentEntity.toReaderUi(
         blocks = contentBlocks,
         footnotes = byId,
         sourceUrl = "https://athar.arthurarchive.com/${if (coll == "question") "questions" else coll}/$id",
-        card = runCatching { toCatalogEntry().card }.getOrDefault(emptyList()).map { "${it.l}: ${it.v}" },
+        card = runCatching { toCatalogEntry().card }.getOrDefault(emptyList()).map { if (it.l.isEmpty()) it.v else "${it.l}: ${it.v}" },
         toc = chapters.map { TocEntry(it.anchor, it.title, 2, it.firstOrdinal) },
         bookmarks = emptyList(),
         benefits = emptyList(),

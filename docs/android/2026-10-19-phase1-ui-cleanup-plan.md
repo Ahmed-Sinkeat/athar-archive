@@ -360,7 +360,7 @@ Run: `cd android && ./gradlew :app:testDebugUnitTest --tests '*FootnoteModeTest*
 - **Model and method:** Sonnet 5.5 does a markup-only pass, one book at a time, over about 200 small books.
   - A script checks that the text is unchanged letter for letter: diacritics-insensitive, with whitespace normalized.
   - Any book that fails the check is rejected and stays as it is.
-- **Storage:** the results go in sidecar files next to the stable-ID sidecars, so the source text is never edited in place.
+- **Storage:** ~~sidecar files~~ changed 2026-10-19: books are edited in place, gated by `scripts/format-verify.ts` against git HEAD. The website benefits too, and git keeps the original. Rules: `docs/book-formatting-rules.md`.
 - **Pilot:** 5 books first, starting with كتاب الإيمان لأبي عبيد (محققًا). The owner reviews them on the phone before the rest run.
 - **What it marks:**
   - headings, poems inside prose, and the exact footnote anchors

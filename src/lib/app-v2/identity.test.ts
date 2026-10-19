@@ -30,6 +30,14 @@ describe("app/v2 stable block identity", () => {
     expect(moved.blocks.slice(1).map((block) => block.id)).toEqual(first.blocks.map((block) => block.id));
   });
 
+  it("keeps IDs when a formatting pass changes only a block's kind", () => {
+    const first = assignStableBlockIds(blocks, sha256Hex("source"));
+    const reformatted = blocks.map((block) => ({ ...block, t: block.t === "p" ? "li" : "p" })) as DraftBlock[];
+    const next = assignStableBlockIds(reformatted, sha256Hex("overlay"), first.sidecar);
+    expect(next.created).toBe(0);
+    expect(next.blocks.map((block) => block.id)).toEqual(first.blocks.map((block) => block.id));
+  });
+
   it("rejects a duplicated persisted identity", () => {
     const first = assignStableBlockIds(blocks, sha256Hex("source"));
     const duplicate = structuredClone(first.sidecar);

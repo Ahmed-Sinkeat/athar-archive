@@ -43,17 +43,17 @@ class SelectionDocumentTest {
 
     @Test
     fun heldHandlesScrollAtBothEdgesAndStopInTheMiddle() {
-        val bottom = selectionEdgeStep(990f, 1000, 48, 12)
-        val top = selectionEdgeStep(10f, 1000, 48, 12)
-        assertTrue(bottom > 0)
-        assertEquals(-bottom, top)
-        assertEquals(0, selectionEdgeStep(500f, 1000, 48, 12))
-        assertEquals(12, selectionEdgeStep(1200f, 1000, 48, 12))
-        assertEquals(-12, selectionEdgeStep(-200f, 1000, 48, 12))
-        assertEquals(0, selectionEdgeStep(Float.NaN, 1000, 48, 12))
-        assertEquals(0, selectionEdgeStep(0f, 0, 48, 12))
-        // Repeated stationary edge ticks continue moving instead of stopping at the last MOVE.
-        assertEquals(bottom * 90, (1..90).sumOf { selectionEdgeStep(990f, 1000, 48, 12) })
+        val bottom = selectionEdgeSpeed(990f, 1000, 48f)
+        val top = selectionEdgeSpeed(10f, 1000, 48f)
+        assertTrue(bottom > 0f)
+        assertEquals(-bottom, top, 0.0001f)
+        assertEquals(0f, selectionEdgeSpeed(500f, 1000, 48f))
+        // Eases in: just inside the band is much slower than deep in it.
+        assertTrue(selectionEdgeSpeed(960f, 1000, 48f) < bottom / 10) // linear would be ~bottom / 5
+        assertEquals(1f, selectionEdgeSpeed(1200f, 1000, 48f))
+        assertEquals(-1f, selectionEdgeSpeed(-200f, 1000, 48f))
+        assertEquals(0f, selectionEdgeSpeed(Float.NaN, 1000, 48f))
+        assertEquals(0f, selectionEdgeSpeed(0f, 0, 48f))
     }
 
     @Test

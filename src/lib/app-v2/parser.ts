@@ -359,6 +359,61 @@ function joinHalves(row: InlineResult, halves: { start: number; end: number }): 
   };
 }
 
+/** «10 (صدر\nعجز)» or «(صدر)\n(عجز)»: a commentary quotes its matn in brackets; the verse layout already sets it apart. */
+function unbracketed(row: InlineResult): InlineResult {
+  const match = row.text.match(/^((?:[0-9\u0660-\u0669]+\s+)?)(?:\([^()]*\)|\([^()\n]*\)\n\([^()\n]*\))$/);
+  if (!match) return row;
+  const gone = row.text.split("").flatMap((char, index) => index >= match[1]!.length && "()".includes(char) ? [index] : []);
+  const text = row.text.split("").filter((_, index) => !gone.includes(index)).join("");
+  const at = (offset: number) => offset - gone.filter((index) => index < offset).length;
+  return { ...row, text, spans: row.spans.map(span => ({ ...span, s: at(span.s), e: at(span.e) })).filter(span => span.e > span.s) };
+}
+
+/**
+ * Continuous reading: a paragraph the printed page cut mid-sentence carries on into the next
+ * page's first paragraph. The page divider and that page's notes move to just after it.
+ * ponytail: "ends a sentence" = last mark after closing quotes/brackets/note digits; a wrong
+ * guess only joins or splits two paragraphs, never changes text.
+ */
+function joinAcrossPages(blocks: DraftBlock[], chapters: { block: number }[]) {
+  const ENDED = /[.!?:;؟۔؛…]$/;
+  const TAIL = /[\s"'»”’)\]٠-٩0-9]+$/;
+  const joinable = (block: DraftBlock | undefined) =>
+    block?.t === "p" && !block.quoted && !block.continuation && !block.commentary && block.x != null;
+  const out: DraftBlock[] = [];
+  const into = new Map<DraftBlock, DraftBlock>();
+  let open: DraftBlock | undefined;
+  let held: DraftBlock[] = [];
+  const flush = () => { out.push(...held); held = []; open = undefined; };
+  for (const block of blocks) {
+    if (open && (block.t === "page" || block.t === "notes")) { held.push(block); continue; }
+    const next = block.x ?? "";
+    // A new item («10- قال») or a bold label at the start of the page stays its own paragraph.
+    const starts = /^\s*[0-9٠-٩]+\s*[-ـ]/.test(next) || block.sp?.some((span) => span.s === 0 && span.k === "strong");
+    if (open && held.some((b) => b.t === "page") && joinable(block) && block.a === open.a && !starts) {
+      const offset = open.x!.length + 1;
+      open.x = `${open.x} ${next}`;
+      if (block.sp?.length) open.sp = [...(open.sp ?? []), ...block.sp.map((span) => ({ ...span, s: span.s + offset, e: span.e + offset }))];
+      if (block.f?.length) open.f = [...new Set([...(open.f ?? []), ...block.f])];
+      into.set(block, open);
+      if (ENDED.test(open.x.replace(TAIL, ""))) flush();
+      continue;
+    }
+    flush();
+    out.push(block);
+    if (joinable(block) && !ENDED.test(block.x!.replace(TAIL, ""))) open = block;
+  }
+  flush();
+  if (out.length === blocks.length) return;
+  const at = new Map(out.map((block, index) => [block, index]));
+  for (const chapter of chapters) {
+    const block = blocks[chapter.block];
+    chapter.block = block ? at.get(into.get(block) ?? block)! : out.length;
+  }
+  blocks.length = 0;
+  for (const block of out) blocks.push(block); // not push(...out): huge books overflow the arg limit
+}
+
 function plainText(node: MarkdownNode): string {
   if (node.type === "text") return node.value ?? "";
   if (node.type === "break") return "\n";
@@ -396,13 +451,22 @@ const bareArabic = (text: string) => text.replace(/[\u064B-\u0652]/g, "").trim()
  * headings, its fields and bracketed remarks, and «المقدمة» when the card was all it held.
  */
 export function extractCard(body: string): { body: string; card: CardField[] } {
-  const lines = body.split("\n");
   const field = (line: string) => {
     const match = line.trim().match(CARD_FIELD_RE);
     const label = match && bareArabic(match[1]!);
     if (!label || !CARD_LABELS.has(label)) return undefined;
     return { l: label, v: match[2]!.replace(/\*\*/g, "").replace(/\[([^\]]*)\]\([^)]*\)/g, "$1").trim() };
   };
+  // A formatter-marked title page or front matter (<!-- card --> … <!-- /card -->) goes to the card whole.
+  const marked = body.match(/<!--\s*card\s*-->([\s\S]*?)<!--\s*\/card\s*-->\n?/);
+  if (marked) {
+    const pages = marked[1]!.match(/<hr\b[^>]*\bpage-sep\b[^>]*>/g) ?? []; // stay in the flow, so page numbers hold
+    const card = marked[1]!.replace(/<[^>]+>/g, "").split("\n")
+      .map((line) => line.replace(/^\s*(?:#{1,6}|[-*+]|>)\s+/, "").replace(/\*\*/g, "").trim())
+      .filter(Boolean).map((line) => field(line) ?? { l: "", v: line });
+    return { body: body.replace(marked[0], pages.join("\n\n") + "\n"), card };
+  }
+  const lines = body.split("\n");
   const nextLine = (from: number) => lines.slice(from).find((line) => line.trim()) ?? "";
   const card: CardField[] = [];
   let sawField = false;
@@ -570,7 +634,7 @@ export function parseReadableDocument(input: ParseReadableInput): ParsedDocument
           if (prose < 0) prose = start;
         } else {
           flush(start - 1);
-          add({ t: "verse", ...inlineFields(joinHalves(sliceInline(inline, start, start + line.length), halves)) });
+          add({ t: "verse", ...inlineFields(unbracketed(joinHalves(sliceInline(inline, start, start + line.length), halves))) });
         }
         start += line.length + 1;
       }
@@ -845,6 +909,8 @@ export function parseReadableDocument(input: ParseReadableInput): ParsedDocument
     blocks.length = 0;
     for (const block of kept) blocks.push(block);
   }
+
+  joinAcrossPages(blocks, chapters);
 
   // A marker ENDS its page: each block takes the page of the marker after it, and text
   // after the last marker sits on the page that follows it.

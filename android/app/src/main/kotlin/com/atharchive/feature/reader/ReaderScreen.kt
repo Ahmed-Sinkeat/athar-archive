@@ -294,7 +294,7 @@ fun ReaderScreen(
         AlertDialog(
             onDismissRequest = { shownFootnotes = emptyList() },
             containerColor = colors.page, textContentColor = colors.text, titleContentColor = colors.text,
-            title = { Text(if (shownFootnotes == listOf("source")) "المصدر" else "الحواشي") },
+            title = { Text(if (shownFootnotes == listOf("source")) "بطاقة الكتاب" else "الحواشي") },
             text = {
                 Column(Modifier.verticalScroll(rememberScrollState())) {
                     if (shownFootnotes == listOf("source")) Text(
@@ -315,20 +315,22 @@ fun ReaderScreen(
     val density = LocalDensity.current
     val haptics = LocalHapticFeedback.current
     val touchSlop = LocalViewConfiguration.current.touchSlop
-    // A held end near the top or bottom edge scrolls the page under it, at a steady pace.
+    // A held end near the top or bottom edge scrolls the page under it, faster the closer it gets.
     LaunchedEffect(selection.dragging) {
         if (!selection.dragging) return@LaunchedEffect
+        val edge = with(density) { 96.dp.toPx() }
+        val maxSpeed = with(density) { 1600.dp.toPx() } // px per second, at or past the edge
         var last = 0L
         while (true) {
             androidx.compose.runtime.withFrameNanos { now ->
                 val point = selection.pointer
                 val height = selection.page?.size?.height ?: 0
-                val edge = with(density) { 56.dp.toPx() }
-                val dt = if (last == 0L) 0f else (now - last) / 1_000_000_000f
+                // Clamp so a dropped frame doesn't become one big jump.
+                val dt = if (last == 0L) 0f else ((now - last) / 1_000_000_000f).coerceAtMost(1f / 30f)
                 last = now
-                val direction = if (point == null) 0 else selectionEdgeStep(point.y, height, edge.roundToInt(), 1)
-                if (direction != 0 && dt > 0f) {
-                    listState.dispatchRawDelta(direction * with(density) { 700.dp.toPx() } * dt)
+                val speed = if (point == null) 0f else selectionEdgeSpeed(point.y, height, edge)
+                if (speed != 0f && dt > 0f) {
+                    listState.dispatchRawDelta(speed * maxSpeed * dt)
                     selection.drag(point!!)
                 }
             }
@@ -704,7 +706,7 @@ private fun ReaderTopBar(
             IconSlot(AtharIcons.More, "المزيد", colors, "reader_more") { menu = true }
             AtharMenu(expanded = menu, onDismiss = { menu = false }, modifier = Modifier.testTag("reader_more_menu")) {
                 AtharMenuItem(
-                    label = "عن المصدر",
+                    label = "بطاقة الكتاب",
                     icon = AtharIcons.Info,
                     onClick = { menu = false; onMore() },
                     modifier = Modifier.testTag("reader_source"),

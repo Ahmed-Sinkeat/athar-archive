@@ -355,13 +355,17 @@ private suspend fun androidx.compose.ui.input.pointer.AwaitPointerEventScope.tra
     }
 }
 
-/** A held handle keeps moving; the opposite endpoint remains untouched. */
-internal fun selectionEdgeStep(y: Float, height: Int, edge: Int, step: Int): Int {
-    if (height <= 0 || edge <= 0 || step <= 0 || !y.isFinite()) return 0
-    val band = minOf(edge, height / 2).coerceAtLeast(1)
-    return when {
-        y < band -> -step
-        y > height - band -> step
-        else -> 0
-    }
+/**
+ * Edge-scroll speed for a held end, -1..1: zero outside the edge bands, easing in with depth
+ * (squared) so the page starts gently instead of jumping to full speed; full past the edge.
+ */
+internal fun selectionEdgeSpeed(y: Float, height: Int, edge: Float): Float {
+    if (height <= 0 || edge <= 0f || !y.isFinite()) return 0f
+    val band = minOf(edge, height / 2f)
+    val depth = when {
+        y < band -> -(band - y) / band
+        y > height - band -> (y - (height - band)) / band
+        else -> return 0f
+    }.coerceIn(-1f, 1f)
+    return depth * kotlin.math.abs(depth)
 }
