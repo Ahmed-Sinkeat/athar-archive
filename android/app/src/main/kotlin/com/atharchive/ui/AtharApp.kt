@@ -589,8 +589,6 @@ fun AtharApp(
                         onThemeModeChange = onThemeModeChange,
                         startPlace = startPlace,
                         onStartPlaceChange = onStartPlaceChange,
-                        reader = readerSettings,
-                        onReaderChange = onReaderSettingsChange,
                         onBack = ::goBack,
                     )
                 }

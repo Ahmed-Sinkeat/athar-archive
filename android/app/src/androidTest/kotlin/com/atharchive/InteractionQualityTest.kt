@@ -65,10 +65,6 @@ class InteractionQualityTest {
         composeRule.onNodeWithTag("section_appearance").assertIsDisplayed()
 
         ThemeModeTags.forEach { composeRule.onNodeWithTag(it).assertIsDisplayed() }
-        composeRule.onNodeWithTag("appearance_palette_0")
-            .assertIsDisplayed()
-            .assertHasClickAction()
-        composeRule.onNodeWithTag("appearance_preview").assertIsDisplayed()
     }
 
     private companion object {

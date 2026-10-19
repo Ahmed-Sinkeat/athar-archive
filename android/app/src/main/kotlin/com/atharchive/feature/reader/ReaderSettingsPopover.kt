@@ -56,8 +56,9 @@ fun ReaderSettingsPopover(
     ) {
         Column(
             modifier = Modifier
-                .width(288.dp)
-                .heightIn(max = 420.dp)
+                .width(320.dp)
+                // Rows fit at normal font scale; the scroll below is only a safety valve for huge fonts.
+                .heightIn(max = 560.dp)
                 .clip(AtharCorners.Surface)
                 .background(colors.page)
                 .border(1.dp, colors.divider, AtharCorners.Surface)
@@ -65,7 +66,7 @@ fun ReaderSettingsPopover(
                 .padding(horizontal = 14.dp, vertical = 12.dp)
                 .testTag("reader_settings_popover"),
         ) {
-            GroupLabel("حجم الخط", colors)
+            LabeledRow("حجم الخط", colors) {
             // A− on the left, A+ on the right, as in every reader: the order is spatial
             // (small → large), not reading direction.
             CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) { Row(
@@ -87,35 +88,31 @@ fun ReaderSettingsPopover(
                     onChange(settings.copy(fontSize = settings.fontSize + 1))
                 }
             } }
+            }
 
-            GroupLabel("تباعد الأسطر", colors)
-            SegmentRow(
+            LabeledRow("تباعد الأسطر", colors) { SegmentRow(
                 options = ReaderSpacing.entries.map { it.label },
                 selected = settings.spacing.label,
                 colors = colors,
                 tagPrefix = "reader_spacing",
             ) { label ->
                 onChange(settings.copy(spacing = ReaderSpacing.entries.first { it.label == label }))
-            }
+            } }
 
-            GroupLabel("الهوامش", colors)
-            SegmentRow(listOf("ضيّقة", "عادية", "واسعة"), when (settings.margin) {
+            LabeledRow("الهوامش", colors) { SegmentRow(listOf("ضيّقة", "عادية", "واسعة"), when (settings.margin) {
                 12 -> "ضيّقة"; 40 -> "واسعة"; else -> "عادية"
             }, colors, "reader_margin") { label ->
                 onChange(settings.copy(margin = when (label) { "ضيّقة" -> 12; "واسعة" -> 40; else -> 22 }))
-            }
-            GroupLabel("التشكيل", colors)
-            SegmentRow(listOf("ظاهر", "مخفي"), if (settings.showTashkeel) "ظاهر" else "مخفي", colors, "reader_tashkeel") {
+            } }
+            LabeledRow("التشكيل", colors) { SegmentRow(listOf("ظاهر", "مخفي"), if (settings.showTashkeel) "ظاهر" else "مخفي", colors, "reader_tashkeel") {
                 onChange(settings.copy(showTashkeel = it == "ظاهر"))
-            }
-            GroupLabel("الحواشي", colors)
-            SegmentRow(FootnoteMode.entries.map { it.label }, settings.footnoteMode.label, colors, "reader_footnotes") { label ->
+            } }
+            LabeledRow("الحواشي", colors) { SegmentRow(FootnoteMode.entries.map { it.label }, settings.footnoteMode.label, colors, "reader_footnotes") { label ->
                 onChange(settings.copy(footnoteMode = FootnoteMode.entries.first { it.label == label }))
-            }
-            GroupLabel("أرقام الصفحات", colors)
-            SegmentRow(listOf("ظاهرة", "مخفية"), if (settings.showPageNumbers) "ظاهرة" else "مخفية", colors, "reader_page_numbers") {
+            } }
+            LabeledRow("أرقام الصفحات", colors) { SegmentRow(listOf("ظاهرة", "مخفية"), if (settings.showPageNumbers) "ظاهرة" else "مخفية", colors, "reader_page_numbers") {
                 onChange(settings.copy(showPageNumbers = it == "ظاهرة"))
-            }
+            } }
 
             GroupLabel("مظهر القراءة", colors)
             SegmentRow(
@@ -127,6 +124,23 @@ fun ReaderSettingsPopover(
                 onChange(settings.copy(palette = ReaderPalette.entries.first { it.label == label }))
             }
         }
+    }
+}
+
+/** Label at the start (about 30%), the control filling the rest — one line per setting. */
+@Composable
+private fun LabeledRow(label: String, colors: ReaderColors, content: @Composable () -> Unit) {
+    Row(
+        modifier = Modifier.fillMaxWidth().padding(vertical = 2.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Text(
+            text = label,
+            modifier = Modifier.weight(0.3f).padding(end = 6.dp),
+            color = colors.secondary,
+            style = MaterialTheme.typography.labelSmall,
+        )
+        Box(Modifier.weight(0.7f)) { content() }
     }
 }
 

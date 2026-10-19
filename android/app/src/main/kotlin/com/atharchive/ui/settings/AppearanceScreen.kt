@@ -49,11 +49,8 @@ import com.atharchive.ui.theme.AtharTheme
 import com.atharchive.ui.theme.ThemeMode
 
 /**
- * One screen for how the app looks and how it reads.
- *
- * These were two dead rows in الإعدادات, and they were two rows because the reader kept a
- * palette the app knew nothing about. Now the page follows the app by default, so the two
- * settings are one subject and belong on one screen.
+ * How the app looks. Font size, line spacing and the reading page live in the reader's «Aa»
+ * panel only — one place per setting.
  */
 @Composable
 fun AppearanceScreen(
@@ -61,8 +58,6 @@ fun AppearanceScreen(
     onThemeModeChange: (ThemeMode) -> Unit,
     startPlace: com.atharchive.data.StartPlace,
     onStartPlaceChange: (com.atharchive.data.StartPlace) -> Unit,
-    reader: ReaderSettings,
-    onReaderChange: (ReaderSettings) -> Unit,
     onBack: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -109,119 +104,8 @@ fun AppearanceScreen(
                     }
                 }
 
-                SectionRule(pad)
-                AtharSectionHeading("صفحة القراءة", pad, top = 18.dp)
-                PagePreview(reader, pad)
-                Box(segmentPad) {
-                    SegmentRow(ReaderPalette.entries.map { it.label }, reader.palette.label, segmentColors, "appearance_palette") { label ->
-                        onReaderChange(reader.copy(palette = ReaderPalette.entries.first { it.label == label }))
-                    }
-                }
-
-                SectionRule(pad)
-                AtharSectionHeading("حجم الخط", pad, top = 18.dp)
-                FontSizeRow(
-                    size = reader.fontSize,
-                    horizontalPadding = pad,
-                    onChange = { onReaderChange(reader.copy(fontSize = it)) },
-                )
-
-                SectionRule(pad)
-                AtharSectionHeading("تباعد الأسطر", pad, top = 18.dp)
-                Box(segmentPad) {
-                    SegmentRow(ReaderSpacing.entries.map { it.label }, reader.spacing.label, segmentColors, "appearance_spacing") { label ->
-                        onReaderChange(reader.copy(spacing = ReaderSpacing.entries.first { it.label == label }))
-                    }
-                }
             }
         }
-    }
-}
-
-/** A line of the real thing, in the real palette, at the real size. */
-@Composable
-private fun PagePreview(reader: ReaderSettings, horizontalPadding: Dp) {
-    val colors = rememberReaderColors(reader.palette)
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = horizontalPadding, vertical = 6.dp)
-            .clip(AtharCorners.Card)
-            .background(colors.page)
-            .padding(horizontal = 14.dp, vertical = 14.dp)
-            .testTag("appearance_preview"),
-    ) {
-        Text(
-            text = "وَالْإِخْلَاصُ أَصْلُ الْعَمَلِ كُلِّهِ",
-            color = colors.text,
-            fontFamily = AtharEditorialFontFamily,
-            fontSize = reader.fontSize.sp,
-            lineHeight = (reader.fontSize * reader.spacing.multiplier).sp,
-        )
-        Text(
-            text = "باب الإخلاص",
-            modifier = Modifier.padding(top = 4.dp),
-            color = colors.accent,
-            fontFamily = AtharEditorialFontFamily,
-            fontWeight = FontWeight.Bold,
-            fontSize = (reader.fontSize - 4).sp,
-        )
-    }
-}
-
-@Composable
-private fun FontSizeRow(size: Int, horizontalPadding: Dp, onChange: (Int) -> Unit) {
-    // Spatial order (small → large), as in the reader's Aa.
-    CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) { Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = horizontalPadding, vertical = 6.dp),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(10.dp),
-    ) {
-        StepButton(
-            label = "A−",
-            enabled = size > ReaderSettings.MIN_SIZE,
-            tag = "appearance_font_minus",
-            onClick = { onChange(size - 1) },
-        )
-        Text(
-            text = size.toString().map { '\u0660' + (it - '0') }.joinToString(""),
-            modifier = Modifier.weight(1f),
-            textAlign = androidx.compose.ui.text.style.TextAlign.Center,
-            color = MaterialTheme.colorScheme.onSurface,
-            style = MaterialTheme.typography.titleMedium,
-        )
-        StepButton(
-            label = "A+",
-            enabled = size < ReaderSettings.MAX_SIZE,
-            tag = "appearance_font_plus",
-            onClick = { onChange(size + 1) },
-        )
-    } }
-}
-
-@Composable
-private fun StepButton(label: String, enabled: Boolean, tag: String, onClick: () -> Unit) {
-    Box(
-        modifier = Modifier
-            .size(44.dp)
-            .clip(AtharCorners.Card)
-            .background(AtharTheme.colors.raisedSurface)
-            .clickable(enabled = enabled, role = Role.Button, onClick = onClick)
-            .testTag(tag),
-        contentAlignment = Alignment.Center,
-    ) {
-        Text(
-            text = label,
-            color = if (enabled) {
-                MaterialTheme.colorScheme.onSurface
-            } else {
-                AtharTheme.colors.secondaryText.copy(alpha = 0.4f)
-            },
-            fontSize = AtharTextSize.Ui,
-            fontWeight = FontWeight.SemiBold,
-        )
     }
 }
 
