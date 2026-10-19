@@ -337,7 +337,7 @@ private fun BookRow(
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 val factColor = AtharTheme.colors.secondaryText.copy(alpha = 0.72f)
-                Text(
+                if (book.discipline.isNotBlank()) Text(
                     text = book.discipline,
                     color = factColor,
                     style = MaterialTheme.typography.labelSmall,

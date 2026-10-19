@@ -42,7 +42,7 @@ import com.atharchive.ui.theme.AtharTheme
 data class AtharAppMenuEntry(val label: String, val icon: ImageVector, val onClick: () -> Unit)
 
 /**
- * The app-wide ⋮ menu — المقالات, المسائل, التنزيلات, الإعدادات. Provided once by
+ * The app-wide ⋮ menu — المقالات, المسائل, الإعدادات. Provided once by
  * the app shell so every root screen shows the same menu without threading it through.
  */
 val LocalAtharAppMenu = androidx.compose.runtime.staticCompositionLocalOf<List<AtharAppMenuEntry>> { emptyList() }

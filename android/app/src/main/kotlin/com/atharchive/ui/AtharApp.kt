@@ -386,7 +386,6 @@ fun AtharApp(
             AtharAppMenuEntry(AtharSection.Articles.label, AtharSection.Articles.icon) { backStack.add(SubSectionRoute(AtharSection.Articles.route)) },
             AtharAppMenuEntry(AtharSection.Issues.label, AtharSection.Issues.icon) { backStack.add(SubSectionRoute(AtharSection.Issues.route)) },
             AtharAppMenuEntry("الأذكار", AtharIcons.Adhkar) { backStack.add(AdhkarRoute) },
-            AtharAppMenuEntry("التنزيلات", AtharIcons.Download) { backStack.add(DownloadsRoute()) },
             AtharAppMenuEntry("الإعدادات", AtharIcons.Settings) { openSettings() },
         )
         androidx.compose.runtime.CompositionLocalProvider(LocalAtharAppMenu provides appMenu) {

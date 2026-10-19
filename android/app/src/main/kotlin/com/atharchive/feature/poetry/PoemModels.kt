@@ -31,7 +31,7 @@ data class PoemUi(
     val recentRank: Int? = null,
     val transfer: com.atharchive.feature.downloads.TransferUi? = null,
     val verseCountLabel: String? = null,
-    val sizeLabel: String = "—",
+    val sizeLabel: String = "",
 )
 
 data class PoetryUiState(

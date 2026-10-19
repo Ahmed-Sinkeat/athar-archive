@@ -87,7 +87,7 @@ fun IssuesScreen(
     val listState = rememberLazyListState()
 
     val topics = remember(state.issues) {
-        listOf(AllTopics) + state.issues.map { it.topic }.distinct()
+        listOf(AllTopics) + state.issues.map { it.topic }.filter(String::isNotBlank).distinct()
     }
     val topic = topicStored.orFirstIn(topics)
     val hasActiveFilters = topic != AllTopics || sort != IssueSort.Newest
@@ -292,7 +292,7 @@ private fun IssueRow(
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 val factColor = AtharTheme.colors.secondaryText
-                Text(
+                if (issue.topic.isNotBlank()) Text(
                     text = issue.topic,
                     color = factColor,
                     style = MaterialTheme.typography.labelSmall,

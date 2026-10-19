@@ -134,7 +134,8 @@ fun ReaderPanel(
             }
 
             Row(modifier = Modifier.fillMaxWidth().padding(horizontal = 8.dp)) {
-                ReaderPanelTab.entries.forEach { entry ->
+                // البحث is reached from the top search icon, not a second tab.
+                ReaderPanelTab.entries.filter { it != ReaderPanelTab.Search }.forEach { entry ->
                     val selected = entry == tab
                     Column(
                         modifier = Modifier

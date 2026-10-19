@@ -510,7 +510,7 @@ class AtharContentViewModel @Inject constructor(
                     question = entity.title,
                     answerExcerpt = entity.excerpt.orEmpty(),
                     scholar = entity.personName.orEmpty(),
-                    topic = topicName(entity.topicsCsv.substringBefore(',')).ifBlank { "—" },
+                    topic = topicName(entity.topicsCsv.substringBefore(',')).ifBlank { "" },
                     sizeLabel = byteSize(entity.pkgSize),
                     downloaded = entity.id in retainedIds && entity.availability == ContentAvailability.COMPLETE,
                     saved = entity.id in shelfIds,
@@ -535,7 +535,7 @@ class AtharContentViewModel @Inject constructor(
                     title = entity.title,
                     poet = entity.personName.orEmpty(),
                     openingVerses = entry.openingVerses,
-                    topic = topicName(entity.topicsCsv.substringBefore(',')).ifBlank { "—" },
+                    topic = topicName(entity.topicsCsv.substringBefore(',')).ifBlank { "" },
                     downloaded = entity.id in retainedIds && entity.availability == ContentAvailability.COMPLETE,
                     downloading = entity.id in pinnedIds &&
                         entity.id !in retainedIds &&
@@ -965,7 +965,7 @@ class AtharContentViewModel @Inject constructor(
             id = id,
             title = title,
             author = personName.orEmpty(),
-            discipline = topicName(topicsCsv.substringBefore(',')).ifBlank { "—" },
+            discipline = topicName(topicsCsv.substringBefore(',')).ifBlank { "" },
             kind = kind ?: "كتاب",
             download = download,
             saved = saved,

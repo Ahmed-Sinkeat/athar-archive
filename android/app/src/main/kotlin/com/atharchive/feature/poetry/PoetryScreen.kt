@@ -90,7 +90,7 @@ fun PoetryScreen(
     val listState = rememberLazyListState()
 
     val topics = remember(state.poems) {
-        listOf(AllTopics) + state.poems.map { it.topic }.distinct()
+        listOf(AllTopics) + state.poems.map { it.topic }.filter(String::isNotBlank).distinct()
     }
     val topic = topicStored.orFirstIn(topics)
     val hasActiveFilters = topic != AllTopics || sort != PoemSort.Newest
@@ -280,9 +280,11 @@ private fun PoemRow(
                     .padding(top = 10.dp)
                     .testTag("poem_opening_${poem.id}"),
             ) {
-                poem.openingVerses.take(2).forEachIndexed { index, verse ->
+                // A first line identical to the title would only repeat it.
+                val shown = poem.openingVerses.filter { it.trim() != poem.title.trim() }.take(2)
+                shown.forEachIndexed { index, verse ->
                     Text(
-                        text = if (index == poem.openingVerses.take(2).lastIndex) {
+                        text = if (index == shown.lastIndex) {
                             "$verse …"
                         } else {
                             verse
