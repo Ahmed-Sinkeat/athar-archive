@@ -48,8 +48,12 @@ git show 15a42301               # الأصول الثلاثة: book card, stray 
    ```
    Lost text, a book that stops early, or cut hadith numbers are **report only**, with proof
    (quote the words on both sides of the gap). Never fill a gap.
+   A note that is only punctuation (`"."`, `"،"`) is folded into the note before it by the parser,
+   so every later `(^N)` on that page must count it as gone. Don't anchor to it; report it as lost.
 5. **Required before you report** (a reviewer reruns both and rejects a report that skipped them):
    rerun the gate(s) **after your last edit**, and print and read the anchor/note pairs from step 3.
+   Then check each claim in your report against the file (`grep` it): a paragraph you say you kept
+   joined must still be joined.
 6. **Stop** with `<BOOK>` in its final state and `stageA.md` = the markup-only stage. If there
    were no import fixes, the two are identical.
 
