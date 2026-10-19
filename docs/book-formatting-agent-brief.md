@@ -48,7 +48,9 @@ git show 15a42301               # الأصول الثلاثة: book card, stray 
    ```
    Lost text, a book that stops early, or cut hadith numbers are **report only**, with proof
    (quote the words on both sides of the gap). Never fill a gap.
-5. **Stop** with `<BOOK>` in its final state and `stageA.md` = the markup-only stage. If there
+5. **Required before you report** (a reviewer reruns both and rejects a report that skipped them):
+   rerun the gate(s) **after your last edit**, and print and read the anchor/note pairs from step 3.
+6. **Stop** with `<BOOK>` in its final state and `stageA.md` = the markup-only stage. If there
    were no import fixes, the two are identical.
 
 ## When to stop early
