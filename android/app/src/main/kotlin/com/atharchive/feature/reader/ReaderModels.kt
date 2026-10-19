@@ -154,14 +154,19 @@ enum class ReaderSpacing(val label: String, val multiplier: Float) {
     Spacious("متباعد", 2.20f),
 }
 
+enum class FootnoteMode(val label: String) {
+    Footer("أسفل الصفحة"),
+    Tap("عند الضغط على الرقم"),
+}
+
 data class ReaderSettings(
     val fontSize: Int = 19,
     val spacing: ReaderSpacing = ReaderSpacing.Normal,
     val palette: ReaderPalette = ReaderPalette.Follow,
     val margin: Int = 22,
     val showTashkeel: Boolean = true,
-    /** «الحواشي» buttons and the footnote bodies. The data stays in the blocks; this only hides it. */
-    val showFootnotes: Boolean = true,
+    /** Footnotes at the foot of the page, or a popup on tapping the number — never both. */
+    val footnoteMode: FootnoteMode = FootnoteMode.Footer,
     /** The page dividers («ص ١٢»). Hidden, the page-break block stays so ordinals never shift. */
     val showPageNumbers: Boolean = true,
 ) {

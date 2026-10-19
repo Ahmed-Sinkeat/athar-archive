@@ -109,8 +109,8 @@ fun ReaderSettingsPopover(
                 onChange(settings.copy(showTashkeel = it == "ظاهر"))
             }
             GroupLabel("الحواشي", colors)
-            SegmentRow(listOf("ظاهرة", "مخفية"), if (settings.showFootnotes) "ظاهرة" else "مخفية", colors, "reader_footnotes") {
-                onChange(settings.copy(showFootnotes = it == "ظاهرة"))
+            SegmentRow(FootnoteMode.entries.map { it.label }, settings.footnoteMode.label, colors, "reader_footnotes") { label ->
+                onChange(settings.copy(footnoteMode = FootnoteMode.entries.first { it.label == label }))
             }
             GroupLabel("أرقام الصفحات", colors)
             SegmentRow(listOf("ظاهرة", "مخفية"), if (settings.showPageNumbers) "ظاهرة" else "مخفية", colors, "reader_page_numbers") {

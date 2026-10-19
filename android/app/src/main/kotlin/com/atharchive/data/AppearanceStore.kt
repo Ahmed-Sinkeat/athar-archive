@@ -2,6 +2,7 @@ package com.atharchive.data
 
 import android.content.Context
 import com.atharchive.feature.reader.ReaderPalette
+import com.atharchive.feature.reader.FootnoteMode
 import com.atharchive.feature.reader.ReaderSettings
 import com.atharchive.ui.theme.ThemeMode
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -53,7 +54,7 @@ class AppearanceStore @Inject constructor(@ApplicationContext context: Context) 
             .putInt(KeyFontSize, settings.fontSize)
             .putInt("reader_margin", settings.margin.coerceIn(12, 40))
             .putBoolean("reader_tashkeel", settings.showTashkeel)
-            .putBoolean("reader_footnotes", settings.showFootnotes)
+            .putString("reader_footnote_mode", settings.footnoteMode.name)
             .putBoolean("reader_page_numbers", settings.showPageNumbers)
             .putString(KeySpacing, settings.spacing.name)
             .putString(KeyPalette, settings.palette.name)
@@ -75,7 +76,10 @@ class AppearanceStore @Inject constructor(@ApplicationContext context: Context) 
             palette = palette,
             margin = prefs.getInt("reader_margin", defaults.margin).coerceIn(12, 40),
             showTashkeel = prefs.getBoolean("reader_tashkeel", true),
-            showFootnotes = prefs.getBoolean("reader_footnotes", true),
+            footnoteMode = footnoteModeOf(
+                prefs.getString("reader_footnote_mode", null),
+                if (prefs.contains("reader_footnotes")) prefs.getBoolean("reader_footnotes", true) else null,
+            ),
             showPageNumbers = prefs.getBoolean("reader_page_numbers", true),
         )
     }
@@ -107,3 +111,8 @@ enum class StartPlace(val label: String, val route: String?) {
     Kannashah("الكناشة", "kannashah"),
     LastRead("آخر ما قرأت", null),
 }
+
+/** The stored name wins; the old "hidden" boolean maps to Tap (hidden no longer exists), anything else to Footer. */
+internal fun footnoteModeOf(stored: String?, legacyShow: Boolean?): FootnoteMode =
+    FootnoteMode.entries.firstOrNull { it.name == stored }
+        ?: if (legacyShow == false) FootnoteMode.Tap else FootnoteMode.Footer

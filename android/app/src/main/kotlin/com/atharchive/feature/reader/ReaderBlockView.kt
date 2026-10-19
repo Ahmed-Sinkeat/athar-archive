@@ -115,8 +115,8 @@ internal fun BlockView(
     }
     @Composable
     fun marked(text: String, match: IntRange?, saved: List<IntRange>) =
-        remember(text, match, colors, block.spans, saved, settings.showTashkeel, settings.showFootnotes) {
-            markedText(text, match, colors, block.spans, saved, settings.showTashkeel, settings.showFootnotes, link)
+        remember(text, match, colors, block.spans, saved, settings.showTashkeel, settings.footnoteMode) {
+            markedText(text, match, colors, block.spans, saved, settings.showTashkeel, settings.footnoteMode == FootnoteMode.Tap, link)
         }
 
     when (block) {
@@ -267,7 +267,7 @@ internal fun BlockView(
         }
 
         // Printed-book style: a short rule, then the page's notes in small type.
-        is ReaderBlock.PageNotes -> if (settings.showFootnotes && block.notes.isNotEmpty()) {
+        is ReaderBlock.PageNotes -> if (settings.footnoteMode == FootnoteMode.Footer && block.notes.isNotEmpty()) {
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -280,7 +280,7 @@ internal fun BlockView(
                         val text = remember(note, colors, settings.showTashkeel) {
                             buildAnnotatedString {
                                 withStyle(SpanStyle(color = colors.accent)) { append("(${note.marker}) ") }
-                                append(markedText(note.text, null, colors, note.spans, emptyList(), settings.showTashkeel, true, link))
+                                append(markedText(note.text, null, colors, note.spans, emptyList(), settings.showTashkeel, false, link))
                             }
                         }
                         Text(
@@ -296,7 +296,7 @@ internal fun BlockView(
             }
         }
 
-        is ReaderBlock.FootnoteBody -> if (settings.showFootnotes) {
+        is ReaderBlock.FootnoteBody -> if (settings.footnoteMode == FootnoteMode.Footer) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -330,12 +330,10 @@ private const val NOTE_LINK = "\u0000note:"
 /** ﴿ayah﴾, «quote» and ((hadith)). ponytail: length caps keep a stray opener from colouring a page. */
 private val CitationRe = Regex("\uFD3F[^\uFD3E]{1,1500}\uFD3E|\u00AB[^\u00BB]{1,1500}\u00BB|\\(\\([^)]{1,300}\\)\\)")
 
-private val HiddenMarker = SpanStyle(color = Color.Transparent, fontSize = 0.01.sp, letterSpacing = 0.sp)
-
 private fun markedText(
     text: String, match: IntRange?, colors: ReaderColors,
     spans: List<InlineSpan>, highlights: List<IntRange>, showTashkeel: Boolean,
-    showFootnotes: Boolean, onLink: (String) -> Unit,
+    tapNotes: Boolean, onLink: (String) -> Unit,
 ): AnnotatedString {
     val value = SelectionText(text, showTashkeel)
     return buildAnnotatedString {
@@ -354,13 +352,11 @@ private fun markedText(
             when (span.k) {
                 "strong" -> style(SpanStyle(fontWeight = FontWeight.Bold), span.s, span.e)
                 "emphasis" -> style(SpanStyle(fontStyle = FontStyle.Italic), span.s, span.e)
-                // A hidden footnote marker keeps its characters, so source offsets (selection,
-                // highlights, copy) are unchanged; it just takes no visible room.
-                "sup" -> style(if (!showFootnotes && span.target != null) HiddenMarker
-                    else SpanStyle(baselineShift = BaselineShift.Superscript, fontSize = AtharTextSize.Small), span.s, span.e)
+                // Numbers are always visible; only Tap mode makes them pressable.
+                "sup" -> style(SpanStyle(baselineShift = BaselineShift.Superscript, fontSize = AtharTextSize.Small), span.s, span.e)
             }
             val target = span.target?.let { if (span.k == "sup") NOTE_LINK + it else it }
-            if (span.k in listOf("link", "entityRef", "sup") && !target.isNullOrBlank() && (span.k != "sup" || showFootnotes)) {
+            if (span.k in listOf("link", "entityRef", "sup") && !target.isNullOrBlank() && (span.k != "sup" || tapNotes)) {
                 val start = value.displayOffset(span.s)
                 val end = value.displayOffset(span.e)
                 if (start < end) addLink(

@@ -448,7 +448,7 @@ fun ReaderScreen(
                             colors = colors,
                             highlighted = false,
                             highlights = state.highlights,
-                            onFootnotes = { shownFootnotes = it },
+                            onFootnotes = { ids -> if (ids.any { it in state.footnotes }) shownFootnotes = ids },
                             onLink = ::openLink,
                             isSearchTarget = searchTarget?.ordinal == block.ordinal,
                             searchMatch = searchTarget?.takeIf { it.ordinal == block.ordinal }?.let {
@@ -466,7 +466,7 @@ fun ReaderScreen(
                         colors = colors,
                         highlighted = false,
                         highlights = state.highlights,
-                        onFootnotes = { shownFootnotes = it },
+                        onFootnotes = { ids -> if (ids.any { it in state.footnotes }) shownFootnotes = ids },
                         onLink = ::openLink,
                         isSearchTarget = query.isNotBlank() && jumpedTo == index,
                         searchMatch = searchTarget?.takeIf { it.ordinal == (block.ordinal ?: index) }?.let {
