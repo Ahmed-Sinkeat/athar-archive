@@ -2,6 +2,7 @@
 // edit of its committed version, and its footnote refs must all open a note.
 //   tsx scripts/format-verify.ts [--import-fix] src/content/book/<id>.md [...]   (compares to git HEAD)
 // --import-fix: page numbers may change and text may move, never change (see verifyFormatting).
+// --from <file>: compare to that file instead of HEAD (import fixes on top of an uncommitted markup stage).
 import { execFileSync } from "node:child_process";
 import { readFileSync } from "node:fs";
 import { verifyFormatting } from "../src/lib/format-verify.js";
@@ -23,9 +24,11 @@ function footnoteReport(file: string, source: string): string {
 
 let failed = 0;
 const importFix = process.argv.includes("--import-fix");
+const fromAt = process.argv.indexOf("--from");
+const from = fromAt > 0 ? process.argv[fromAt + 1] : undefined;
 const pageList = (source: string) => [...source.matchAll(/data-page="([^"]*)"/g)].map((match) => match[1]);
-for (const file of process.argv.slice(2).filter((arg) => arg !== "--import-fix")) {
-  const before = execFileSync("git", ["show", `HEAD:${file}`], { encoding: "utf8", maxBuffer: 1 << 30 });
+for (const file of process.argv.slice(2).filter((arg, i, all) => arg !== "--import-fix" && arg !== "--from" && all[i - 1] !== "--from")) {
+  const before = from ? readFileSync(from, "utf8") : execFileSync("git", ["show", `HEAD:${file}`], { encoding: "utf8", maxBuffer: 1 << 30 });
   const after = readFileSync(file, "utf8");
   const problem = verifyFormatting(before, after, importFix);
   console.log(`${problem ? "REJECT" : "ok    "} ${file}${problem ? `: ${problem}` : ""}`);
