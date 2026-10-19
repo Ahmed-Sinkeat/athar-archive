@@ -27,6 +27,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import com.atharchive.ui.components.AtharFavouriteButton
 import com.atharchive.ui.components.AtharCollapsible
 import com.atharchive.ui.components.rememberAtharCollapsingHeader
 import androidx.compose.runtime.Composable
@@ -50,6 +51,7 @@ import com.atharchive.ui.components.AtharMenuButton
 import com.atharchive.ui.components.AtharSearchField
 import com.atharchive.ui.components.AtharTabRow
 import com.atharchive.ui.components.AtharTopBar
+import com.atharchive.ui.components.AtharFavouriteButton
 import com.atharchive.ui.components.AtharMenu
 import com.atharchive.ui.components.AtharMenuItem
 import com.atharchive.feature.downloads.TransferUi
@@ -307,6 +309,12 @@ private fun AudioRow(
                 }
             }
         }
+        AtharFavouriteButton(
+            saved = audio.saved,
+            onToggle = onSave,
+            itemTitle = audio.title,
+            tag = "audio_save_${audio.id}",
+        )
         Box {
             var menu by remember { mutableStateOf(false) }
             IconButton(
@@ -338,12 +346,6 @@ private fun AudioRow(
                     },
                     onClick = { menu = false; if (!audio.downloaded || transfer != null) onDownload() },
                     modifier = Modifier.testTag("audio_download_${audio.id}"),
-                )
-                AtharMenuItem(
-                    label = if (audio.saved) "إزالة من محفوظاتي" else "حفظ في محفوظاتي",
-                    icon = if (audio.saved) AtharIcons.BookmarkFilled else AtharIcons.Bookmark,
-                    onClick = { menu = false; onSave() },
-                    modifier = Modifier.testTag("audio_save_${audio.id}"),
                 )
                 if (audio.sourceEntityId.isNotBlank()) {
                     AtharMenuItem(

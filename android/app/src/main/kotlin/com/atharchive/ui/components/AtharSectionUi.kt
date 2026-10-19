@@ -576,9 +576,9 @@ fun AtharMetaPill(
     )
 }
 
-/** Save / unsave. Burgundy means saved; there is no second bookmark mark on the row. */
+/** Favourite / unfavourite (المفضّلة). Filled star means saved; the bookmark icon is for reader pages only. */
 @Composable
-fun AtharBookmarkButton(
+fun AtharFavouriteButton(
     saved: Boolean,
     onToggle: () -> Unit,
     itemTitle: String,
@@ -593,11 +593,11 @@ fun AtharBookmarkButton(
     ) {
         Icon(
             // Filled when saved: the state should be legible without relying on colour.
-            imageVector = if (saved) AtharIcons.BookmarkFilled else AtharIcons.Bookmark,
+            imageVector = if (saved) AtharIcons.StarFilled else AtharIcons.Star,
             contentDescription = if (saved) {
-                "إزالة $itemTitle من محفوظاتي"
+                "إزالة $itemTitle من المفضّلة"
             } else {
-                "حفظ $itemTitle في محفوظاتي"
+                "إضافة $itemTitle إلى المفضّلة"
             },
             tint = if (saved) {
                 AtharTheme.colors.accent

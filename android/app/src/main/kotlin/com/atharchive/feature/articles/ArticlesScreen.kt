@@ -43,7 +43,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.atharchive.ui.components.AtharBookmarkButton
+import com.atharchive.ui.components.AtharFavouriteButton
 import com.atharchive.ui.components.AtharDownloadButton
 import com.atharchive.ui.components.AtharEmptyState
 import com.atharchive.ui.components.AtharMenuButton
@@ -289,7 +289,7 @@ private fun ArticleRow(
             onClick = onDownload,
             tag = "article_download_${article.id}",
         )
-        AtharBookmarkButton(
+        AtharFavouriteButton(
             saved = article.saved,
             onToggle = onSave,
             itemTitle = article.title,

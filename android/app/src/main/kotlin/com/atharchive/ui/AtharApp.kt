@@ -86,7 +86,6 @@ import com.atharchive.feature.kannashah.KannashahScreen
 import com.atharchive.feature.reader.ReaderScreen
 import com.atharchive.feature.poemreader.PoemReaderScreen
 import com.atharchive.feature.poetry.PoetryScreen
-import com.atharchive.feature.library.LibraryScreen
 import com.atharchive.feature.reader.ReaderSearchTarget
 import com.atharchive.feature.sections.AtharSection
 import com.atharchive.feature.search.SearchScreen
@@ -117,9 +116,6 @@ private data class SectionRoute(val destination: String) : NavKey
 
 @Serializable
 private data object SettingsRoute : NavKey
-
-@Serializable
-private data object LibraryRoute : NavKey
 
 @Serializable
 private data object PlayerRoute : NavKey
@@ -170,6 +166,12 @@ fun AtharApp(
     val scope = rememberCoroutineScope()
     var booksScrollToTopRequest by rememberSaveable { mutableIntStateOf(0) }
     val audioState by contentViewModel.audio.collectAsStateWithLifecycle()
+    LaunchedEffect(Unit) {
+        // One-time fold: old adhkar prefs ids become favourites, then the key is dropped.
+        val prefs = context.getSharedPreferences("adhkar", Context.MODE_PRIVATE)
+        val old = prefs.getStringSet("saved", null).orEmpty().map { "dhikr:$it" }
+        if (contentViewModel.foldFavourites(old)) prefs.edit().remove("saved").apply()
+    }
     val playbackState by contentViewModel.playback.state.collectAsStateWithLifecycle()
     val syncState by contentViewModel.syncState.collectAsStateWithLifecycle()
     val nowPlaying = audioState.nowPlaying
@@ -381,7 +383,6 @@ fun AtharApp(
         },
     ) { contentPadding ->
         val appMenu = listOf(
-            AtharAppMenuEntry("محفوظاتي", AtharIcons.Bookmark) { backStack.add(LibraryRoute) },
             AtharAppMenuEntry(AtharSection.Articles.label, AtharSection.Articles.icon) { backStack.add(SubSectionRoute(AtharSection.Articles.route)) },
             AtharAppMenuEntry(AtharSection.Issues.label, AtharSection.Issues.icon) { backStack.add(SubSectionRoute(AtharSection.Issues.route)) },
             AtharAppMenuEntry("الأذكار", AtharIcons.Adhkar) { backStack.add(AdhkarRoute) },
@@ -410,34 +411,8 @@ fun AtharApp(
                                 (it.download as? BookDownloadUi.Downloading)?.transfer,
                             )
                         },
-                        onSaveClick = { contentViewModel.toggleReadLater(it.id) },
+                        onSaveClick = { contentViewModel.toggleFavourite(it.id) },
                         scrollToTopRequest = booksScrollToTopRequest,
-                    )
-                }
-                entry<LibraryRoute> {
-                    LibraryScreen(
-                        state = contentViewModel.personalLibraryState.collectAsStateWithLifecycle().value,
-                        onBack = ::goBack,
-                        onOpenWork = { work ->
-                            if (work.collection == "audio") { contentViewModel.playAudio(work.id.removePrefix("audio:")); backStack.add(PlayerRoute) }
-                            else if (work.collection == "poem") {
-                                backStack.add(PoemReaderRoute(work.id))
-                            } else {
-                                backStack.add(ReaderRoute(work.id))
-                            }
-                        },
-                        onStatusChange = { work, shelf ->
-                            contentViewModel.setLibraryStatus(work.id, shelf)
-                        },
-                        onCreateCollection = contentViewModel::createCollection,
-                        onPlayCollection = { contentViewModel.playAudioPlaylist(it.id); backStack.add(PlayerRoute) },
-                        onDeleteCollection = { contentViewModel.deleteCollection(it.id) },
-                        onAddToCollection = { work, collection ->
-                            contentViewModel.addToCollection(collection.id, work.id)
-                        },
-                        onRemoveFromCollection = { work, collection ->
-                            contentViewModel.removeFromCollection(collection.id, work.id)
-                        },
                     )
                 }
                 entry<SettingsRoute> {
@@ -566,12 +541,6 @@ fun AtharApp(
                         PlayerScreen(
                             nowPlaying = playing,
                             queue = playbackState.queueIds.mapNotNull { id -> audioState.recordings.firstOrNull { it.id == id } },
-                            playlists = audioState.playlists,
-                            collections = audioState.collections,
-                            onCreateCollection = {
-                                contentViewModel.createCollectionAndAdd(it, "audio:${playing.audio.id}")
-                                announce("أُضيف إلى «$it»")
-                            },
                             onCollapse = ::goBack,
                             onToggle = contentViewModel.playback::toggle,
                             onSelect = { contentViewModel.playAudio(it.id,
@@ -587,10 +556,7 @@ fun AtharApp(
                             onSleep = contentViewModel.playback::sleep,
                             sleepMinutes = playbackState.sleepMinutes,
                             onMore = { openAudioSource(playing.audio) },
-                            onAddToPlaylist = {
-                                contentViewModel.addToCollection(it.id, "audio:${playing.audio.id}")
-                                announce("أُضيف إلى «${it.name}»")
-                            },
+                            onSave = { contentViewModel.toggleFavourite("audio:${playing.audio.id}") },
                         )
                     }
                 }
@@ -600,7 +566,7 @@ fun AtharApp(
                             state = contentViewModel.articles.collectAsStateWithLifecycle().value,
                             onSettings = ::openSettings,
                             onArticleClick = { backStack.add(ReaderRoute(it.id)) },
-                            onSaveClick = { contentViewModel.toggleReadLater(it.id) },
+                            onSaveClick = { contentViewModel.toggleFavourite(it.id) },
                             onDownloadClick = { onDownloadTap(it.id, it.title, it.sizeLabel, it.downloaded, it.transfer) },
                             onBack = ::goBack,
                         )
@@ -609,7 +575,7 @@ fun AtharApp(
                             state = contentViewModel.issues.collectAsStateWithLifecycle().value,
                             onSettings = ::openSettings,
                             onIssueClick = { backStack.add(ReaderRoute(it.id)) },
-                            onSaveClick = { contentViewModel.toggleReadLater(it.id) },
+                            onSaveClick = { contentViewModel.toggleFavourite(it.id) },
                             onDownloadClick = { onDownloadTap(it.id, it.question, it.sizeLabel, it.downloaded, it.transfer) },
                             onBack = ::goBack,
                         )
@@ -629,12 +595,10 @@ fun AtharApp(
                     )
                 }
                 entry<AdhkarRoute> {
-                    // ponytail: saved أذكار are ids in SharedPreferences; move to Room if they need sync/backup.
-                    val prefs = remember { context.getSharedPreferences("adhkar", Context.MODE_PRIVATE) }
-                    var savedIds by remember { mutableStateOf(prefs.getStringSet("saved", null).orEmpty()) }
-                    val adhkar = remember(savedIds) {
+                    val favourites by contentViewModel.favouriteIds.collectAsStateWithLifecycle()
+                    val adhkar = remember(favourites) {
                         AdhkarContent.copy(entries = AdhkarContent.entries.mapValues { (_, list) ->
-                            list.map { it.copy(saved = it.id in savedIds) }
+                            list.map { it.copy(saved = "dhikr:${it.id}" in favourites) }
                         })
                     }
                     AdhkarScreen(
@@ -642,10 +606,7 @@ fun AtharApp(
                         onSettings = ::openSettings,
                         onOpenBabs = {},
                         onCopy = { copyText(context, it.text); announce("نُسخ الذكر") },
-                        onSave = { dhikr ->
-                            savedIds = if (dhikr.id in savedIds) savedIds - dhikr.id else savedIds + dhikr.id
-                            prefs.edit().putStringSet("saved", savedIds).apply()
-                        },
+                        onSave = { contentViewModel.toggleFavourite("dhikr:${it.id}") },
                         onBack = ::goBack,
                     )
                 }
@@ -696,7 +657,7 @@ fun AtharApp(
                             onSettings = ::openSettings,
                             onPoemClick = { backStack.add(PoemReaderRoute(it.id)) },
                             onDownloadClick = { onDownloadTap(it.id, it.title, it.sizeLabel, it.downloaded, it.transfer) },
-                            onSaveClick = { contentViewModel.toggleReadLater(it.id) },
+                            onSaveClick = { contentViewModel.toggleFavourite(it.id) },
                         )
 
                         AtharDestination.Audio -> AudioScreen(
@@ -704,7 +665,7 @@ fun AtharApp(
                             onSettings = ::openSettings,
                             onPlay = { contentViewModel.playAudio(it.id) },
                             onMore = { openAudioSource(it) },
-                            onSave = { contentViewModel.toggleReadLater("audio:${it.id}") },
+                            onSave = { contentViewModel.toggleFavourite("audio:${it.id}") },
                             onDownload = {
                                 // Same rule as text rows: a finished download asks before it is deleted.
                                 if (it.downloaded) pendingRemoval = DownloadRemoval("audio:${it.id}", it.title, it.sizeLabel)
@@ -1051,7 +1012,7 @@ private fun SettingsScreen(
             SettingsRow(
                 AtharIcons.Share,
                 "تصدير بياناتي",
-                "المقتطفات ومواضع القراءة والرفوف والمجموعات",
+                "المقتطفات ومواضع القراءة والمفضّلة",
                 onClick = onExportUserData,
                 tag = "settings_export_user_data",
             )

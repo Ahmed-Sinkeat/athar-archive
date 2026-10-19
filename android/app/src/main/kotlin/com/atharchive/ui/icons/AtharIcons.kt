@@ -749,6 +749,43 @@ object AtharIcons {
         }
     }
 
+    /** Favourite — the one save mark for books, poems, articles, issues, audio and adhkar. */
+    val Star: ImageVector by lazy {
+        icon("AtharStar") {
+            path(stroke = Stroke, strokeLineWidth = 1.75f) {
+                moveTo(12.00f, 3.40f)
+                lineTo(14.35f, 9.36f)
+                lineTo(20.75f, 9.76f)
+                lineTo(15.80f, 13.84f)
+                lineTo(17.41f, 20.04f)
+                lineTo(12.00f, 16.60f)
+                lineTo(6.59f, 20.04f)
+                lineTo(8.20f, 13.84f)
+                lineTo(3.25f, 9.76f)
+                lineTo(9.65f, 9.36f)
+                close()
+            }
+        }
+    }
+
+    val StarFilled: ImageVector by lazy {
+        icon("AtharStarFilled") {
+            path(fill = Fill) {
+                moveTo(12.00f, 3.40f)
+                lineTo(14.35f, 9.36f)
+                lineTo(20.75f, 9.76f)
+                lineTo(15.80f, 13.84f)
+                lineTo(17.41f, 20.04f)
+                lineTo(12.00f, 16.60f)
+                lineTo(6.59f, 20.04f)
+                lineTo(8.20f, 13.84f)
+                lineTo(3.25f, 9.76f)
+                lineTo(9.65f, 9.36f)
+                close()
+            }
+        }
+    }
+
     /** Pen — marks the reader's own words, never the source's. */
     val Pen: ImageVector by lazy {
         icon("AtharPen") {

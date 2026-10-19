@@ -78,13 +78,6 @@ data class NowPlayingUi(
     val playing: Boolean,
 )
 
-/** A user playlist. Fixture-backed until the data layer lands. */
-data class PlaylistUi(
-    val id: String,
-    val name: String,
-    val countLabel: String,
-)
-
 data class AudioUiState(
     val countLabel: String,
     /**
@@ -93,10 +86,6 @@ data class AudioUiState(
      */
     val nowPlaying: NowPlayingUi?,
     val recordings: List<AudioUi>,
-    /** Collections that already hold recordings — what can be played as a list. */
-    val playlists: List<PlaylistUi>,
-    /** Every collection the user owns, empty ones included — what a recording can be added to. */
-    val collections: List<PlaylistUi> = emptyList(),
 )
 
 val AudioFixture = AudioUiState(
@@ -178,10 +167,5 @@ val AudioFixture = AudioUiState(
             durationSeconds = 312,
             sizeLabel = "1.9 MB",
         ),
-    ),
-    playlists = listOf(
-        PlaylistUi("mylist-tawhid", "دروس التوحيد", "٧ تسجيلات"),
-        PlaylistUi("mylist-nahw", "متون النحو", "٤ تسجيلات"),
-        PlaylistUi("mylist-later", "أستمع لاحقًا", "١٢ تسجيلًا"),
     ),
 )

@@ -7,7 +7,6 @@ import com.atharchive.feature.audio.AudioUi
 import com.atharchive.feature.audio.AudioUiState
 import com.atharchive.feature.audio.AudioSourceKind
 import com.atharchive.feature.audio.NowPlayingUi
-import com.atharchive.feature.audio.PlaylistUi
 import androidx.work.WorkInfo
 import com.atharchive.feature.downloads.DownloadUi
 import com.atharchive.feature.downloads.TransferUi
@@ -39,11 +38,9 @@ import com.atharchive.core.data.db.content.ContentTransferState
 import com.atharchive.core.data.db.content.FootnoteEntity
 import com.atharchive.core.data.db.user.LibraryEntryEntity
 import com.atharchive.core.data.db.user.LibraryStatus
-import com.atharchive.core.data.db.user.CollectionItemEntity
 import com.atharchive.core.data.db.user.PinnedDownloadEntity
 import com.atharchive.core.data.db.user.ReadingHistoryEntity
 import com.atharchive.core.data.db.user.ReadingPositionEntity
-import com.atharchive.core.data.db.user.UserCollectionEntity
 import com.atharchive.core.data.repository.ReaderPrefetchSession
 import com.atharchive.core.data.repository.ContentSearchField
 import com.atharchive.core.data.repository.ContentSearchFilter
@@ -67,10 +64,6 @@ import com.atharchive.feature.poemreader.VerseCue
 import com.atharchive.feature.poemreader.VerseUi
 import com.atharchive.feature.poetry.PoemUi
 import com.atharchive.feature.poetry.PoetryUiState
-import com.atharchive.feature.library.LibraryCollectionUi
-import com.atharchive.feature.library.LibraryShelf
-import com.atharchive.feature.library.LibraryUiState
-import com.atharchive.feature.library.LibraryWorkUi
 import com.atharchive.feature.kannashah.ExcerptUi
 import com.atharchive.feature.kannashah.KannashahUiState
 import com.atharchive.feature.reader.InBookHit
@@ -160,8 +153,6 @@ class AtharContentViewModel @Inject constructor(
     private val annotations = annotationRepository.observe()
     private val userDataArchive = UserDataArchive(content.userDatabase)
     private val contentSearch = ContentSearchRepository(content.contentDatabase)
-    private val userCollections = personalLibrary.observeCollections()
-    private val collectionItems = personalLibrary.observeCollectionItems()
     private val readingHistory = personalLibrary.observeHistory()
     private val recentSearches = personalLibrary.observeRecentSearches()
     private val _searchQuery = MutableStateFlow(savedState.get<String>("searchQuery").orEmpty())
@@ -192,57 +183,8 @@ class AtharContentViewModel @Inject constructor(
     val pinnedCount: StateFlow<Int> = combine(pins, content.requestedAudio) { text, audio -> text.size + audio.size }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), 0)
 
-    private val libraryReading = combine(library, positions, retainedPins) { entries, savedPositions, retained ->
-        LibraryReading(entries, savedPositions, retained)
-    }
-    private val libraryOrganization = combine(userCollections, collectionItems, readingHistory) {
-            collections, items, history ->
-        LibraryOrganization(collections, items, history)
-    }
-
-    val personalLibraryState: StateFlow<LibraryUiState> = combine(
-        catalogDao.observeAllEntities(),
-        libraryReading,
-        libraryOrganization, content.downloadedAudio,
-    ) { entities, reading, organization, downloadedAudio ->
-        val statusById = reading.entries.associateBy(LibraryEntryEntity::entityId)
-        val positionById = reading.positions.associateBy(ReadingPositionEntity::entityId)
-        val recentById = organization.history.groupBy { it.entityId }
-            .mapValues { (_, rows) -> rows.maxOf { it.openedAt } }
-        val collectionIdsByEntity = organization.items.groupBy { it.entityId }
-            .mapValues { (_, rows) -> rows.mapTo(linkedSetOf()) { it.collectionId } }
-        LibraryUiState(
-            works = entities.map { entity ->
-                val position = positionById[entity.id]
-                LibraryWorkUi(
-                    id = entity.id,
-                    title = entity.title,
-                    author = entity.personName.orEmpty(),
-                    collection = entity.coll,
-                    kind = entity.kind.orEmpty(),
-                    status = statusById[entity.id]?.status.toLibraryShelf(),
-                    progress = position?.progressPct?.toFloat()?.coerceIn(0f, 1f),
-                    progressLabel = position?.let { "${arabicNumber((it.progressPct * 100).toInt())}٪" },
-                    downloaded = entity.id in reading.retained && entity.availability == ContentAvailability.COMPLETE,
-                    recentAt = recentById[entity.id] ?: position?.updatedAt,
-                    collectionIds = collectionIdsByEntity[entity.id].orEmpty(),
-                )
-            } + entities.flatMap { entity -> entity.audioReferences().map { ref ->
-                val id = "audio:${ref.id}"
-                LibraryWorkUi(id = id, title = ref.title ?: entity.title, author = entity.personName.orEmpty(),
-                    collection = "audio", kind = "تسجيل", status = statusById[id]?.status.toLibraryShelf(),
-                    progress = null, progressLabel = null, downloaded = ref.id in downloadedAudio,
-                    recentAt = recentById[id], collectionIds = collectionIdsByEntity[id].orEmpty())
-            } },
-            collections = organization.collections.map { collection ->
-                LibraryCollectionUi(
-                    id = collection.id,
-                    title = collection.title,
-                    itemCount = organization.items.count { it.collectionId == collection.id },
-                )
-            },
-        )
-    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), LibraryUiState())
+    val favouriteIds: StateFlow<Set<String>> = personalLibrary.observeFavouriteIds()
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptySet())
 
     val kannashahState: StateFlow<KannashahUiState> = combine(
         annotations,
@@ -449,8 +391,8 @@ class AtharContentViewModel @Inject constructor(
 
     private val recordingCatalog = combine(
         catalogDao.observeAllEntities(), library, content.downloadedAudio,
-        combine(userDao.observeUserCollections(), collectionItems) { collections, items -> collections to items }, combine(content.requestedAudio, content.pausedDownloads, downloadScheduler.workInfos) { requested, paused, jobs -> Triple(requested, paused, jobs) },
-    ) { catalog, shelves, downloaded, collections, transfers ->
+        combine(content.requestedAudio, content.pausedDownloads, downloadScheduler.workInfos) { requested, paused, jobs -> Triple(requested, paused, jobs) },
+    ) { catalog, shelves, downloaded, transfers ->
         val shelfIds = shelves.mapTo(hashSetOf(), LibraryEntryEntity::entityId)
         val recordings = catalog.flatMap { source ->
             source.audioReferences().map { ref ->
@@ -480,14 +422,8 @@ class AtharContentViewModel @Inject constructor(
             countLabel = arabicCount(recordings.size, "الصوتيات", "تسجيل واحد", "تسجيلين", "تسجيلات", "تسجيلًا"),
             nowPlaying = null,
             recordings = recordings,
-            playlists = collections.first.mapNotNull { collection ->
-                val count = collections.second.count { it.collectionId == collection.id && it.entityId.removePrefix("audio:") in recordings.map { row -> row.id } && it.entityId.startsWith("audio:") }
-                if (count == 0) null else PlaylistUi(collection.id, collection.title, arabicCount(count, "", "تسجيل واحد", "تسجيلان", "تسجيلات", "تسجيلًا"))
-            },
-            // A new, still-empty collection must be addable-to: the player's menu lists these.
-            collections = collections.first.map { PlaylistUi(it.id, it.title, "") },
         )
-    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), AudioUiState("٠ تسجيل", null, emptyList(), emptyList()))
+    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), AudioUiState("٠ تسجيل", null, emptyList()))
 
     val audio = combine(recordingCatalog, playback.state) { catalog, player ->
         val current = catalog.recordings.firstOrNull { it.id == player.id }
@@ -495,7 +431,7 @@ class AtharContentViewModel @Inject constructor(
             NowPlayingUi(it, duration((player.positionMs / 1000).toInt()), duration((player.durationMs.takeIf { n -> n > 0 } ?: it.durationSeconds * 1000L).div(1000).toInt()),
                 (player.positionMs.toFloat() / (player.durationMs.takeIf { n -> n > 0 } ?: it.durationSeconds * 1000L).coerceAtLeast(1)).coerceIn(0f, 1f), player.playWhenReady)
         })
-    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), AudioUiState("٠ تسجيل", null, emptyList(), emptyList()))
+    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), AudioUiState("٠ تسجيل", null, emptyList()))
 
     fun playWorkAudio(entityId: String, audioId: String) {
         playAudio(audioId, audio.value.recordings.filter { it.sourceEntityId == entityId })
@@ -513,14 +449,6 @@ class AtharContentViewModel @Inject constructor(
                     .setMediaMetadata(MediaMetadata.Builder().setTitle(recording.title).setArtist(recording.speaker).build()).build()
             }
             playback.play(items, queue.indexOfFirst { it.id == audioId })
-        }
-    }
-
-    fun playAudioPlaylist(collectionId: String) {
-        viewModelScope.launch(errorHandler) {
-            val ids = userDao.collectionItems().filter { it.collectionId == collectionId }.mapTo(hashSetOf()) { it.entityId }
-            val queue = audio.value.recordings.filter { "audio:${it.id}" in ids }
-            queue.firstOrNull()?.let { playAudio(it.id, queue) }
         }
     }
 
@@ -812,43 +740,13 @@ class AtharContentViewModel @Inject constructor(
         return entity.id to entity.coll
     }
 
-    fun toggleReadLater(entityId: String) {
-        viewModelScope.launch(errorHandler) { personalLibrary.toggleReadLater(entityId) }
+    fun toggleFavourite(entityId: String) {
+        viewModelScope.launch(errorHandler) { personalLibrary.toggleFavourite(entityId) }
     }
 
-    fun setLibraryStatus(entityId: String, shelf: LibraryShelf?) {
-        val status = when (shelf) {
-            LibraryShelf.ReadLater -> LibraryStatus.READ_LATER
-            LibraryShelf.Reading -> LibraryStatus.READING
-            LibraryShelf.Finished -> LibraryStatus.FINISHED
-            null -> null
-            else -> return
-        }
-        viewModelScope.launch(errorHandler) { personalLibrary.setStatus(entityId, status) }
-    }
-
-    fun createCollection(title: String) {
-        viewModelScope.launch(errorHandler) { personalLibrary.createCollection(title) }
-    }
-
-    fun deleteCollection(collectionId: String) {
-        viewModelScope.launch(errorHandler) { personalLibrary.deleteCollection(collectionId) }
-    }
-
-    fun createCollectionAndAdd(title: String, entityId: String) {
-        viewModelScope.launch(errorHandler) {
-            val id = personalLibrary.createCollection(title)
-            personalLibrary.addToCollection(id, entityId)
-        }
-    }
-
-    fun addToCollection(collectionId: String, entityId: String) {
-        viewModelScope.launch(errorHandler) { personalLibrary.addToCollection(collectionId, entityId) }
-    }
-
-    fun removeFromCollection(collectionId: String, entityId: String) {
-        viewModelScope.launch(errorHandler) { personalLibrary.removeFromCollection(collectionId, entityId) }
-    }
+    /** One-time fold of the old adhkar prefs ids; returns true once they can be dropped. */
+    suspend fun foldFavourites(extraIds: Collection<String>): Boolean =
+        runCatching { personalLibrary.foldIntoFavourites(extraIds) }.isSuccess
 
     suspend fun saveSelection(entityId: String, selection: ReaderSelection, kind: AnnotationKind = AnnotationKind.Highlight) {
             val first = minOf(selection.start.ordinal, selection.end.ordinal)
@@ -902,6 +800,7 @@ class AtharContentViewModel @Inject constructor(
 
     suspend fun importUserData(input: InputStream): UserDataImportReport {
         val report = kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) { userDataArchive.importFrom(input) }
+        runCatching { personalLibrary.foldIntoFavourites(emptyList()) }
         annotations.first().map(Annotation::entityId).distinct().forEach { entityId ->
             runCatching { annotationRepository.reattachEntity(entityId) }
         }
@@ -1243,18 +1142,6 @@ internal fun arabicCount(n: Int, zero: String, one: String, two: String, few: St
 
 private fun arabicNumber(value: Any): String = arabicDigits(value.toString())
 
-private data class LibraryReading(
-    val entries: List<LibraryEntryEntity>,
-    val positions: List<ReadingPositionEntity>,
-    val retained: Set<String>,
-)
-
-private data class LibraryOrganization(
-    val collections: List<UserCollectionEntity>,
-    val items: List<CollectionItemEntity>,
-    val history: List<ReadingHistoryEntity>,
-)
-
 private data class SearchInput(
     val query: String,
     val filters: SearchFilters,
@@ -1265,13 +1152,6 @@ private data class SearchInput(
 private data class SearchCatalog(val entities: List<ContentEntity>, val sources: List<String>, val authors: List<String>)
 
 private data class SearchTrace(val query: String, val cookie: Int)
-
-private fun String?.toLibraryShelf(): LibraryShelf? = when (this) {
-    LibraryStatus.READ_LATER -> LibraryShelf.ReadLater
-    LibraryStatus.READING -> LibraryShelf.Reading
-    LibraryStatus.FINISHED -> LibraryShelf.Finished
-    else -> null
-}
 
 private fun SearchField.toContentField(): ContentSearchField = when (this) {
     SearchField.FullText -> ContentSearchField.FullText

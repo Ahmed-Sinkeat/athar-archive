@@ -81,9 +81,6 @@ private val SleepOptions = listOf(0, 15, 30, 45, 60)
 fun PlayerScreen(
     nowPlaying: NowPlayingUi,
     queue: List<AudioUi>,
-    playlists: List<PlaylistUi>,
-    collections: List<PlaylistUi> = playlists,
-    onCreateCollection: (String) -> Unit = {},
     onCollapse: () -> Unit,
     onToggle: () -> Unit,
     onSelect: (AudioUi) -> Unit,
@@ -91,7 +88,7 @@ fun PlayerScreen(
     onSkipNext: () -> Unit,
     onSeek: (Int) -> Unit,
     onMore: () -> Unit,
-    onAddToPlaylist: (PlaylistUi) -> Unit,
+    onSave: () -> Unit,
     modifier: Modifier = Modifier,
     speed: Float = 1f,
     repeat: Boolean = false,
@@ -269,12 +266,15 @@ fun PlayerScreen(
                     .padding(start = pad, end = pad, top = 22.dp),
                 horizontalArrangement = Arrangement.spacedBy(9.dp),
             ) {
-                AddToPlaylistTile(
-                    playlists = collections,
-                    onAdd = onAddToPlaylist,
-                    onCreate = onCreateCollection,
+                ActionTile(
+                    label = if (nowPlaying.audio.saved) "في المفضّلة" else "المفضّلة",
+                    active = nowPlaying.audio.saved,
+                    onClick = onSave,
+                    tag = "player_favourite",
                     modifier = Modifier.weight(1f),
-                )
+                ) { tint ->
+                    Icon(if (nowPlaying.audio.saved) AtharIcons.StarFilled else AtharIcons.Star, null, tint = tint, modifier = Modifier.size(21.dp))
+                }
                 SleepTile(
                     minutes = sleepMinutes,
                     onSelect = onSleep,
@@ -313,20 +313,6 @@ fun PlayerScreen(
                         fontWeight = FontWeight.Bold,
                         fontSize = AtharTextSize.Title,
                     )
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(start = 10.dp, end = 10.dp, top = 4.dp),
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.spacedBy(8.dp),
-                    ) {
-                        Spacer(Modifier.weight(1f))
-                        if (playlists.isNotEmpty()) Text(
-                            text = com.atharchive.data.arabicCount(playlists.size, "", "قائمة واحدة", "قائمتان", "قوائم", "قائمة"),
-                            color = AtharTheme.colors.secondaryText,
-                            style = MaterialTheme.typography.labelSmall,
-                        )
-                    }
                     queue.forEachIndexed { index, item ->
                         if (index != 0) {
                             HorizontalDivider(
@@ -485,54 +471,6 @@ private fun ActionTile(
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
             )
-        }
-    }
-}
-
-@Composable
-private fun AddToPlaylistTile(
-    playlists: List<PlaylistUi>,
-    onAdd: (PlaylistUi) -> Unit,
-    onCreate: (String) -> Unit,
-    modifier: Modifier = Modifier,
-) {
-    var open by remember { mutableStateOf(false) }
-    var creating by remember { mutableStateOf(false) }
-    if (creating) {
-        var title by remember { mutableStateOf("") }
-        androidx.compose.material3.AlertDialog(
-            onDismissRequest = { creating = false },
-            title = { Text("مجموعة جديدة") },
-            text = {
-                androidx.compose.material3.OutlinedTextField(
-                    value = title, onValueChange = { title = it.take(80) },
-                    label = { Text("اسم المجموعة") }, singleLine = true,
-                )
-            },
-            confirmButton = {
-                androidx.compose.material3.TextButton(
-                    enabled = title.isNotBlank(),
-                    onClick = { onCreate(title.trim()); creating = false },
-                ) { Text("إنشاء وإضافة") }
-            },
-            dismissButton = { androidx.compose.material3.TextButton(onClick = { creating = false }) { Text("إلغاء") } },
-        )
-    }
-    Box(modifier = modifier) {
-        ActionTile(
-            label = "إضافة إلى مجموعة",
-            active = false,
-            onClick = { open = true },
-            tag = "player_add_playlist",
-            modifier = Modifier.fillMaxWidth(),
-        ) { tint ->
-            Icon(AtharIcons.PlusCircle, null, tint = tint, modifier = Modifier.size(21.dp))
-        }
-        AtharMenu(expanded = open, onDismiss = { open = false }) {
-            playlists.forEach { playlist ->
-                AtharMenuItem(playlist.name, onClick = { onAdd(playlist); open = false })
-            }
-            AtharMenuItem("مجموعة جديدة…", icon = AtharIcons.PlusCircle, onClick = { creating = true; open = false })
         }
     }
 }

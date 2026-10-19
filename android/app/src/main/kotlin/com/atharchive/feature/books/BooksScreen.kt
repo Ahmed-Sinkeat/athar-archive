@@ -78,7 +78,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.atharchive.ui.components.AtharBookmarkButton
+import com.atharchive.ui.components.AtharFavouriteButton
 import com.atharchive.ui.components.AtharDownloadButton
 import com.atharchive.ui.components.AtharEmptyState
 import com.atharchive.ui.components.AtharFilterGroup
@@ -347,7 +347,7 @@ private fun BookRow(
                 ReadingProgress(book)
             }
         }
-        AtharBookmarkButton(
+        AtharFavouriteButton(
             saved = book.saved,
             onToggle = onSave,
             itemTitle = book.title,

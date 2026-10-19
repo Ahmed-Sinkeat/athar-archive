@@ -46,28 +46,10 @@ class BooksNavigationTest {
     }
 
     @Test
-    fun catalogExposesCurrentTabsAndThePersonalLibrary() {
+    fun catalogExposesCurrentTabs() {
         listOf("all", "recent", "downloaded").forEach { tab ->
             composeRule.onNodeWithTag("books_tab_$tab").assertIsDisplayed()
         }
-
-        composeRule.onNodeWithTag("settings_action").performClick()
-        composeRule.onNodeWithText("محفوظاتي").performClick()
-        composeRule.onNodeWithTag("library_screen").assertIsDisplayed()
-        composeRule.onNodeWithTag("athar_page_title").assertTextEquals("محفوظاتي")
-        composeRule.onNodeWithTag("library_empty").assertIsDisplayed()
-    }
-
-    @Test
-    fun libraryOffersCollectionCreation() {
-        composeRule.onNodeWithTag("settings_action").performClick()
-        composeRule.onNodeWithText("محفوظاتي").performClick()
-        composeRule.onNodeWithContentDescription("إنشاء مجموعة").performClick()
-        composeRule.onNodeWithText("مجموعة جديدة").assertIsDisplayed()
-        composeRule.onNodeWithTag("collection_title").performTextInput("بحوث")
-        composeRule.onNodeWithTag("collection_title").assertTextContains("بحوث")
-        composeRule.onNodeWithText("إلغاء").performClick()
-        composeRule.onAllNodesWithText("مجموعة جديدة").assertCountEquals(0)
     }
 
     @Test
