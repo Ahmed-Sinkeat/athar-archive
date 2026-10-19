@@ -26,6 +26,7 @@ import com.atharchive.core.ArNormalize
 import com.atharchive.feature.downloads.TransferUi
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import com.atharchive.ui.components.AtharCollapsible
+import com.atharchive.ui.components.ShowOnChange
 import com.atharchive.ui.components.rememberAtharCollapsingHeader
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -109,25 +110,30 @@ fun ArticlesScreen(
         val compactTitle = maxWidth < 360.dp || LocalDensity.current.fontScale >= 1.3f
 
         Column(modifier = Modifier.fillMaxSize()) {
-            AtharTopBar(
-                title = "المقالات",
-                onSettings = onSettings,
-                showAppIcon = true,
-                onBack = onBack,
-                horizontalPadding = horizontalPadding,
-            )
-        val header = rememberAtharCollapsingHeader()
-        AtharSearchField(
-            query = query,
-            placeholder = "ابحث في ${state.countLabel}…",
-            onQueryChange = { query = it },
-            tagPrefix = "articles",
-            modifier = Modifier.padding(
-                start = horizontalPadding,
-                end = horizontalPadding,
-                top = 4.dp,
-            ),
-        )
+            val header = rememberAtharCollapsingHeader()
+            header.ShowOnChange(listState, selectedTab, query, sort)
+            AtharCollapsible(header) {
+                Column {
+                    AtharTopBar(
+                        title = "المقالات",
+                        onSettings = onSettings,
+                        showAppIcon = true,
+                        onBack = onBack,
+                        horizontalPadding = horizontalPadding,
+                    )
+                AtharSearchField(
+                    query = query,
+                    placeholder = "ابحث في ${state.countLabel}…",
+                    onQueryChange = { query = it },
+                    tagPrefix = "articles",
+                    modifier = Modifier.padding(
+                        start = horizontalPadding,
+                        end = horizontalPadding,
+                        top = 4.dp,
+                    ),
+                )
+                }
+            }
         AtharCollapsible(header) {
             Column {
                 AtharTabRow(

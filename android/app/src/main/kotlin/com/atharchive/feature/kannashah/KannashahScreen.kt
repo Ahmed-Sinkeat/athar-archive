@@ -29,6 +29,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import com.atharchive.ui.components.AtharCollapsible
+import com.atharchive.ui.components.ShowOnChange
 import com.atharchive.ui.components.rememberAtharCollapsingHeader
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -131,36 +132,41 @@ fun KannashahScreen(
         val horizontalPadding = if (maxWidth >= 720.dp) 32.dp else 20.dp
 
         Column(modifier = Modifier.fillMaxSize()) {
-            AtharTopBar(
-                title = "الكناشة",
-                onSettings = onSettings,
-                showAppIcon = true,
-                onBack = onBack,
-                horizontalPadding = horizontalPadding,
-            )
-        val header = rememberAtharCollapsingHeader()
-        if (state.headline.isNotBlank()) {
-            Text(
-                text = state.headline,
-                modifier = Modifier.padding(
-                    start = horizontalPadding,
-                    end = horizontalPadding,
-                    bottom = 6.dp,
-                ),
-                color = AtharTheme.colors.secondaryText,
-                style = MaterialTheme.typography.bodySmall,
-            )
-        }
-        AtharSearchField(
-            query = query,
-            placeholder = "ابحث في كناشتك…",
-            onQueryChange = { query = it },
-            tagPrefix = "kannashah",
-            modifier = Modifier.padding(
-                start = horizontalPadding,
-                end = horizontalPadding,
-            ),
-        )
+            val header = rememberAtharCollapsingHeader()
+            header.ShowOnChange(listState, query, sort, filter)
+            AtharCollapsible(header) {
+                Column {
+                    AtharTopBar(
+                        title = "الكناشة",
+                        onSettings = onSettings,
+                        showAppIcon = true,
+                        onBack = onBack,
+                        horizontalPadding = horizontalPadding,
+                    )
+                if (state.headline.isNotBlank()) {
+                    Text(
+                        text = state.headline,
+                        modifier = Modifier.padding(
+                            start = horizontalPadding,
+                            end = horizontalPadding,
+                            bottom = 6.dp,
+                        ),
+                        color = AtharTheme.colors.secondaryText,
+                        style = MaterialTheme.typography.bodySmall,
+                    )
+                }
+                AtharSearchField(
+                    query = query,
+                    placeholder = "ابحث في كناشتك…",
+                    onQueryChange = { query = it },
+                    tagPrefix = "kannashah",
+                    modifier = Modifier.padding(
+                        start = horizontalPadding,
+                        end = horizontalPadding,
+                    ),
+                )
+                }
+            }
         AtharCollapsible(header) {
             Column {
                 Row(

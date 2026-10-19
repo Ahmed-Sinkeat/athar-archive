@@ -29,6 +29,7 @@ import androidx.compose.material3.Text
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import com.atharchive.ui.components.AtharFavouriteButton
 import com.atharchive.ui.components.AtharCollapsible
+import com.atharchive.ui.components.ShowOnChange
 import com.atharchive.ui.components.rememberAtharCollapsingHeader
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -122,25 +123,30 @@ fun AudioScreen(
         val horizontalPadding = if (maxWidth >= 720.dp) 32.dp else 20.dp
 
         Column(modifier = Modifier.fillMaxSize()) {
-            AtharTopBar(
-                title = "الصوتيات",
-                onSettings = onSettings,
-                showAppIcon = true,
-                onBack = onBack,
-                horizontalPadding = horizontalPadding,
-            )
             val header = rememberAtharCollapsingHeader()
-            AtharSearchField(
-                query = query,
-                placeholder = "ابحث عن درس، سلسلة، شيخ أو موضوع…",
-                onQueryChange = { query = it },
-                tagPrefix = "audio",
-                modifier = Modifier.padding(
-                    start = horizontalPadding,
-                    end = horizontalPadding,
-                    top = 4.dp,
-                ),
-            )
+            header.ShowOnChange(listState, selectedTab, query, type, sort)
+            AtharCollapsible(header) {
+                Column {
+                    AtharTopBar(
+                        title = "الصوتيات",
+                        onSettings = onSettings,
+                        showAppIcon = true,
+                        onBack = onBack,
+                        horizontalPadding = horizontalPadding,
+                    )
+                    AtharSearchField(
+                        query = query,
+                        placeholder = "ابحث عن درس، سلسلة، شيخ أو موضوع…",
+                        onQueryChange = { query = it },
+                        tagPrefix = "audio",
+                        modifier = Modifier.padding(
+                            start = horizontalPadding,
+                            end = horizontalPadding,
+                            top = 4.dp,
+                        ),
+                    )
+                }
+            }
             AtharCollapsible(header) {
                 Column {
                     AtharTabRow(

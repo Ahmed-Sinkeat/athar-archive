@@ -34,6 +34,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -507,6 +508,12 @@ class AtharCollapsingHeader {
         private set
     private var travelled = 0f
 
+    /** Back in view, e.g. after a filter or search shrank the list and left nothing to scroll. */
+    fun show() {
+        visible = true
+        travelled = 0f
+    }
+
     /** A tap, for chrome that also toggles by touch (the reader). */
     fun toggle() {
         visible = !visible
@@ -527,7 +534,16 @@ class AtharCollapsingHeader {
         }
     }
 
-    private companion object { const val Threshold = 36f }
+    private companion object { const val Threshold = 24f }
+}
+
+/** Shows the header whenever [keys] (tab, query, filters, sort) change or the list is at its top. */
+@Composable
+fun AtharCollapsingHeader.ShowOnChange(listState: androidx.compose.foundation.lazy.LazyListState, vararg keys: Any?) {
+    LaunchedEffect(*keys) { show() }
+    LaunchedEffect(listState) {
+        androidx.compose.runtime.snapshotFlow { listState.canScrollBackward }.collect { if (!it) show() }
+    }
 }
 
 @Composable
