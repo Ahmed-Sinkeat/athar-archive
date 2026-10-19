@@ -1,18 +1,5 @@
 package com.atharchive.feature.books
 
-import com.atharchive.ui.components.AtharTab
-
-enum class BooksTab(val key: String, val label: String) {
-    All("all", "الكل"),
-    Recent("recent", "الأخيرة"),
-    Downloaded("downloaded", "المحمّلة"),
-    ;
-
-    companion object {
-        val tabs: List<AtharTab> = entries.map { AtharTab(it.key, it.label) }
-        fun fromKey(key: String): BooksTab = entries.first { it.key == key }
-    }
-}
 
 enum class BookSort(val label: String) {
     Newest("الأحدث"),

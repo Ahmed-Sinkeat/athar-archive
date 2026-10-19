@@ -1,6 +1,5 @@
 package com.atharchive.feature.issues
 
-import com.atharchive.ui.components.AtharTab
 
 /**
  * المسائل — a question and the answer it was given.
@@ -9,17 +8,6 @@ import com.atharchive.ui.components.AtharTab
  * answering scholar is the second fact, because the same مسألة gets different answers
  * from different people and knowing whose you are reading is not optional.
  */
-
-enum class IssuesTab(val key: String, val label: String) {
-    All("all", "الكل"),
-    Downloaded("downloaded", "المحمّلة"),
-    ;
-
-    companion object {
-        val tabs = entries.map { AtharTab(it.key, it.label) }
-        fun fromKey(key: String): IssuesTab = entries.first { it.key == key }
-    }
-}
 
 enum class IssueSort(val label: String) {
     Newest("ترتيب الفهرس"),
@@ -38,6 +26,7 @@ data class IssueUi(
     val sizeLabel: String,
     val downloaded: Boolean = false,
     val saved: Boolean = false,
+    val recentRank: Int? = null,
     val transfer: com.atharchive.feature.downloads.TransferUi? = null,
 )
 

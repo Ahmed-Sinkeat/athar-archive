@@ -1,23 +1,11 @@
 package com.atharchive.feature.poetry
 
-import com.atharchive.ui.components.AtharTab
 
 /**
  * Fixtures are shaped by what `src/content/poem` actually carries (measured 18 Aug 2026):
  * title, person and topics on all 108 poems, `description` holding the مطلع on 102, and
  * `work_type` (قصيدة) on 100. There is no meter or rhyme metadata, so the UI never shows any.
  */
-
-enum class PoetryTab(val key: String, val label: String) {
-    All("all", "الكل"),
-    Downloaded("downloaded", "المحمّلة"),
-    ;
-
-    companion object {
-        val tabs: List<AtharTab> = entries.map { AtharTab(it.key, it.label) }
-        fun fromKey(key: String): PoetryTab = entries.first { it.key == key }
-    }
-}
 
 enum class PoemSort(val label: String) {
     Newest("ترتيب الفهرس"),
@@ -40,6 +28,7 @@ data class PoemUi(
     val downloaded: Boolean = false,
     val downloading: Boolean = false,
     val saved: Boolean = false,
+    val recentRank: Int? = null,
     val transfer: com.atharchive.feature.downloads.TransferUi? = null,
     val verseCountLabel: String? = null,
     val sizeLabel: String = "—",

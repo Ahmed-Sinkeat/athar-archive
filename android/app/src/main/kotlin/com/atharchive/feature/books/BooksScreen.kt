@@ -81,6 +81,8 @@ import androidx.compose.ui.unit.sp
 import com.atharchive.ui.components.AtharFavouriteButton
 import com.atharchive.ui.components.AtharDownloadButton
 import com.atharchive.ui.components.AtharEmptyState
+import com.atharchive.ui.components.SectionTab
+import com.atharchive.ui.components.emptyCopy
 import com.atharchive.ui.components.AtharFilterGroup
 import com.atharchive.ui.components.AtharFilterMenu
 import com.atharchive.ui.components.AtharMenuButton
@@ -106,7 +108,7 @@ fun BooksScreen(
     scrollToTopRequest: Int = 0,
     onBack: (() -> Unit)? = null,
 ) {
-    var selectedTab by rememberSaveable { mutableStateOf(BooksTab.All) }
+    var selectedTab by rememberSaveable { mutableStateOf(SectionTab.All) }
     var query by rememberSaveable { mutableStateOf("") }
     var kind by rememberSaveable { mutableStateOf(AllKinds) }
     var author by rememberSaveable { mutableStateOf("كل المؤلفين") }
@@ -123,11 +125,7 @@ fun BooksScreen(
         state.books
             .asSequence()
             .filter { book ->
-                when (selectedTab) {
-                    BooksTab.All -> true
-                    BooksTab.Recent -> book.recentRank != null
-                    BooksTab.Downloaded -> book.download is BookDownloadUi.Downloaded
-                }
+                selectedTab.matches(book.recentRank != null, book.download is BookDownloadUi.Downloaded, book.saved)
             }
             .filter { book ->
                 val term = ArNormalize.normalize(query.trim())
@@ -140,7 +138,7 @@ fun BooksScreen(
             .filter { century == "كل القرون" || it.died?.let { year -> "القرن ${(year - 1) / 100 + 1}" } == century }
             .sortedWith(
                 when {
-                    selectedTab == BooksTab.Recent -> compareBy { it.recentRank ?: Int.MAX_VALUE }
+                    selectedTab == SectionTab.Recent -> compareBy { it.recentRank ?: Int.MAX_VALUE }
                     sort == BookSort.Title -> compareBy { it.title }
                     sort == BookSort.Author -> compareBy { it.author }
                     else -> compareByDescending { it.publishedAt }
@@ -184,9 +182,9 @@ fun BooksScreen(
         AtharCollapsible(header) {
             Column {
                 AtharTabRow(
-                    tabs = BooksTab.tabs,
+                    tabs = SectionTab.tabs,
                     selectedKey = selectedTab.key,
-                    onSelect = { selectedTab = BooksTab.fromKey(it) },
+                    onSelect = { selectedTab = SectionTab.fromKey(it) },
                     tagPrefix = "books",
                     modifier = Modifier.padding(horizontal = horizontalPadding),
                 )
@@ -206,7 +204,7 @@ fun BooksScreen(
                         ),
                         tagPrefix = "books_filter",
                     )
-                    if (selectedTab != BooksTab.Recent) {
+                    if (selectedTab != SectionTab.Recent) {
                         AtharMenuButton(
                             label = "الترتيب",
                             options = BookSort.entries.map { it.label },
@@ -256,7 +254,7 @@ fun BooksScreen(
                     BookRow(
                         book = book,
                         query = query,
-                        showReadingProgress = selectedTab == BooksTab.Recent,
+                        showReadingProgress = selectedTab == SectionTab.Recent,
                         compactTitle = compactTitles,
                         horizontalPadding = horizontalPadding,
                         onClick = { onBookClick(book) },
@@ -428,15 +426,13 @@ private fun RtlProgressBar(progress: Float, modifier: Modifier = Modifier) {
 }
 
 private fun booksEmptyCopy(
-    selectedTab: BooksTab,
+    selectedTab: SectionTab,
     hasQuery: Boolean,
     hasFilters: Boolean,
 ): Pair<String, String> = when {
     hasQuery -> "لا توجد نتائج" to "جرّب اسم كتاب أو مؤلف أقصر."
     hasFilters -> "لا توجد كتب بهذا النوع" to "اختر «كل الأنواع» لعرض مزيد من الكتب."
-    selectedTab == BooksTab.Recent -> "لا توجد كتب أخيرة" to "ستظهر هنا الكتب التي فتحتها مؤخرًا."
-    selectedTab == BooksTab.Downloaded -> "لا توجد كتب محمّلة" to "نزّل كتابًا لتقرأه دون اتصال."
-    else -> "لا توجد كتب" to "لم تتوفر كتب في هذا القسم بعد."
+    else -> selectedTab.emptyCopy("كتب", "نزّل كتابًا لتقرأه دون اتصال.")
 }
 
 @Preview(name = "Books", widthDp = 393, heightDp = 852, locale = "ar")

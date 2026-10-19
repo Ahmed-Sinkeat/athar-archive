@@ -50,6 +50,8 @@ import androidx.compose.ui.unit.sp
 import com.atharchive.ui.components.AtharFavouriteButton
 import com.atharchive.ui.components.AtharDownloadButton
 import com.atharchive.ui.components.AtharEmptyState
+import com.atharchive.ui.components.SectionTab
+import com.atharchive.ui.components.emptyCopy
 import com.atharchive.ui.components.AtharMenuButton
 import com.atharchive.ui.components.AtharSearchField
 import com.atharchive.ui.components.AtharTabRow
@@ -71,7 +73,7 @@ fun IssuesScreen(
     modifier: Modifier = Modifier,
     onBack: (() -> Unit)? = null,
 ) {
-    var selectedTab by rememberSaveable { mutableStateOf(IssuesTab.All) }
+    var selectedTab by rememberSaveable { mutableStateOf(SectionTab.All) }
     var query by rememberSaveable { mutableStateOf("") }
     var topic by rememberSaveable { mutableStateOf(AllTopics) }
     var sort by rememberSaveable { mutableStateOf(IssueSort.Newest) }
@@ -84,10 +86,7 @@ fun IssuesScreen(
 
     val visible = remember(state.issues, selectedTab, query, topic, sort) {
         state.issues.filter { issue ->
-            val matchesTab = when (selectedTab) {
-                IssuesTab.All -> true
-                IssuesTab.Downloaded -> issue.downloaded
-            }
+            val matchesTab = selectedTab.matches(issue.recentRank != null, issue.downloaded, issue.saved)
             val term = ArNormalize.normalize(query.trim())
             val matchesQuery = term.isBlank() ||
                 ArNormalize.normalize(issue.question).contains(term, ignoreCase = true) ||
@@ -95,7 +94,7 @@ fun IssuesScreen(
                 ArNormalize.normalize(issue.answerExcerpt).contains(term, ignoreCase = true)
             matchesTab && matchesQuery && (topic == AllTopics || issue.topic == topic)
         }.sortedWith(
-            when (sort) {
+            if (selectedTab == SectionTab.Recent) compareBy { it.recentRank ?: Int.MAX_VALUE } else when (sort) {
                 IssueSort.Question -> compareBy { it.question }
                 IssueSort.Scholar -> compareBy { it.scholar }
                 IssueSort.Newest -> compareBy { it.question }
@@ -135,9 +134,9 @@ fun IssuesScreen(
             AtharCollapsible(header) {
                 Column {
                     AtharTabRow(
-                        tabs = IssuesTab.tabs,
+                        tabs = SectionTab.tabs,
                         selectedKey = selectedTab.key,
-                        onSelect = { selectedTab = IssuesTab.fromKey(it) },
+                        onSelect = { selectedTab = SectionTab.fromKey(it) },
                         tagPrefix = "issues",
                         modifier = Modifier.padding(horizontal = horizontalPadding),
                     )
@@ -193,10 +192,7 @@ fun IssuesScreen(
                                 "لا توجد نتائج" to "جرّب كلمة أقصر من نص المسألة أو اسم المجيب."
                             hasActiveFilters ->
                                 "لا توجد مسائل بهذه التصفية" to "اختر «كل المواضيع» لعرض مزيد من المسائل."
-                            selectedTab == IssuesTab.Downloaded ->
-                                "لا توجد مسائل محمّلة" to "نزّل مسألة لتقرأها دون اتصال."
-                            else ->
-                                "لا توجد مسائل" to "لم تتوفر مسائل في هذا القسم بعد."
+                            else -> selectedTab.emptyCopy("مسائل", "نزّل مسألة لتقرأها دون اتصال.")
                         }
                         AtharEmptyState(
                             title = title,

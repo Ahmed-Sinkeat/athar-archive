@@ -46,6 +46,8 @@ import androidx.compose.ui.unit.sp
 import com.atharchive.ui.components.AtharFavouriteButton
 import com.atharchive.ui.components.AtharDownloadButton
 import com.atharchive.ui.components.AtharEmptyState
+import com.atharchive.ui.components.SectionTab
+import com.atharchive.ui.components.emptyCopy
 import com.atharchive.ui.components.AtharMenuButton
 import com.atharchive.ui.components.AtharSearchField
 import com.atharchive.ui.components.AtharTabRow
@@ -65,7 +67,7 @@ fun ArticlesScreen(
     modifier: Modifier = Modifier,
     onBack: (() -> Unit)? = null,
 ) {
-    var selectedTab by rememberSaveable { mutableStateOf(ArticlesTab.All) }
+    var selectedTab by rememberSaveable { mutableStateOf(SectionTab.All) }
     var query by rememberSaveable { mutableStateOf("") }
     var sort by rememberSaveable { mutableStateOf(ArticleSort.Newest) }
     val listState = rememberLazyListState()
@@ -76,17 +78,14 @@ fun ArticlesScreen(
 
     val visibleArticles = remember(state.articles, selectedTab, query, sort) {
         state.articles.filter { article ->
-            val matchesTab = when (selectedTab) {
-                ArticlesTab.All -> true
-                ArticlesTab.Downloaded -> article.downloaded
-            }
+            val matchesTab = selectedTab.matches(article.recentRank != null, article.downloaded, article.saved)
             val term = ArNormalize.normalize(query.trim())
             val matchesQuery = term.isBlank() ||
                 ArNormalize.normalize(article.title).contains(term, ignoreCase = true) ||
                 ArNormalize.normalize(article.author).contains(term, ignoreCase = true)
             matchesTab && matchesQuery
         }.sortedWith(
-            when (sort) {
+            if (selectedTab == SectionTab.Recent) compareBy { it.recentRank ?: Int.MAX_VALUE } else when (sort) {
                 ArticleSort.Title -> compareBy { it.title }
                 ArticleSort.Author -> compareBy { it.author }
                 ArticleSort.Newest -> compareBy { it.title }
@@ -126,9 +125,9 @@ fun ArticlesScreen(
         AtharCollapsible(header) {
             Column {
                 AtharTabRow(
-                    tabs = ArticlesTab.tabs,
+                    tabs = SectionTab.tabs,
                     selectedKey = selectedTab.key,
-                    onSelect = { selectedTab = ArticlesTab.fromKey(it) },
+                    onSelect = { selectedTab = SectionTab.fromKey(it) },
                     tagPrefix = "articles",
                     modifier = Modifier.padding(horizontal = horizontalPadding),
                 )
@@ -169,10 +168,7 @@ fun ArticlesScreen(
                     val (title, body) = when {
                         query.isNotBlank() ->
                             "لا توجد نتائج" to "جرّب عنوانًا أو اسم مؤلف أقصر."
-                        selectedTab == ArticlesTab.Downloaded ->
-                            "لا توجد مقالات محمّلة" to "نزّل مقالًا لتقرأه دون اتصال."
-                        else ->
-                            "لا توجد مقالات" to "لم تتوفر مقالات في هذا القسم بعد."
+                        else -> selectedTab.emptyCopy("مقالات", "نزّل مقالًا لتقرأه دون اتصال.")
                     }
                     AtharEmptyState(
                         title = title,

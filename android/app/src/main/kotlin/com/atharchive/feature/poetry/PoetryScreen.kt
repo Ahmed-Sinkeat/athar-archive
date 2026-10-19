@@ -50,6 +50,8 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.atharchive.ui.components.AtharEmptyState
+import com.atharchive.ui.components.SectionTab
+import com.atharchive.ui.components.emptyCopy
 import com.atharchive.ui.components.AtharFavouriteButton
 import com.atharchive.ui.components.AtharDownloadButton
 import com.atharchive.ui.components.AtharMenuButton
@@ -74,7 +76,7 @@ fun PoetryScreen(
     modifier: Modifier = Modifier,
     onBack: (() -> Unit)? = null,
 ) {
-    var selectedTab by rememberSaveable { mutableStateOf(PoetryTab.All) }
+    var selectedTab by rememberSaveable { mutableStateOf(SectionTab.All) }
     var query by rememberSaveable { mutableStateOf("") }
     var topic by rememberSaveable { mutableStateOf(AllTopics) }
     var sort by rememberSaveable { mutableStateOf(PoemSort.Newest) }
@@ -87,10 +89,7 @@ fun PoetryScreen(
 
     val visiblePoems = remember(state.poems, selectedTab, query, topic, sort) {
         state.poems.filter { poem ->
-            val matchesTab = when (selectedTab) {
-                PoetryTab.All -> true
-                PoetryTab.Downloaded -> poem.downloaded
-            }
+            val matchesTab = selectedTab.matches(poem.recentRank != null, poem.downloaded, poem.saved)
             val term = ArNormalize.normalize(query.trim())
             val matchesQuery = term.isBlank() ||
                 ArNormalize.normalize(poem.title).contains(term, ignoreCase = true) ||
@@ -98,7 +97,7 @@ fun PoetryScreen(
                 poem.openingVerses.any { ArNormalize.normalize(it).contains(term, ignoreCase = true) }
             matchesTab && matchesQuery && (topic == AllTopics || poem.topic == topic)
         }.sortedWith(
-            when (sort) {
+            if (selectedTab == SectionTab.Recent) compareBy { it.recentRank ?: Int.MAX_VALUE } else when (sort) {
                 PoemSort.Title -> compareBy { it.title }
                 PoemSort.Poet -> compareBy { it.poet }
                 PoemSort.Newest -> compareBy { it.title }
@@ -138,9 +137,9 @@ fun PoetryScreen(
         AtharCollapsible(header) {
             Column {
                 AtharTabRow(
-                    tabs = PoetryTab.tabs,
+                    tabs = SectionTab.tabs,
                     selectedKey = selectedTab.key,
-                    onSelect = { selectedTab = PoetryTab.fromKey(it) },
+                    onSelect = { selectedTab = SectionTab.fromKey(it) },
                     tagPrefix = "poetry",
                     modifier = Modifier.padding(horizontal = horizontalPadding),
                 )
@@ -189,10 +188,7 @@ fun PoetryScreen(
                             "لا توجد نتائج" to "جرّب اسم قصيدة أو شاعر أقصر."
                         hasActiveFilters ->
                             "لا توجد قصائد بهذه التصفية" to "امسح بعض المرشحات لعرض مزيد من القصائد."
-                        selectedTab == PoetryTab.Downloaded ->
-                            "لا توجد قصائد محمّلة" to "نزّل قصيدة لتقرأها دون اتصال."
-                        else ->
-                            "لا توجد قصائد" to "لم تتوفر قصائد في هذا القسم بعد."
+                        else -> selectedTab.emptyCopy("قصائد", "نزّل قصيدة لتقرأها دون اتصال.")
                     }
                     AtharEmptyState(
                         title = title,

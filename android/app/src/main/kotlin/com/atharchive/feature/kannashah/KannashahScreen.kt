@@ -62,8 +62,6 @@ import com.atharchive.ui.icons.AtharIcons
 import com.atharchive.ui.theme.AtharEditorialFontFamily
 import com.atharchive.ui.theme.AtharTheme
 
-private data class ExcerptGroup(val title: String, val subtitle: String?, val items: List<ExcerptUi>)
-
 // Lines an excerpt shows before it folds behind «عرض الكل».
 private const val COLLAPSED_LINES = 8
 
@@ -80,8 +78,6 @@ fun KannashahScreen(
     onBack: (() -> Unit)? = null,
 ) {
     var query by rememberSaveable { mutableStateOf("") }
-    var view by rememberSaveable { mutableStateOf(KannashahView.All) }
-    var grouping by rememberSaveable { mutableStateOf(KannashahGrouping.Topic) }
     var sort by rememberSaveable { mutableStateOf(KannashahSort.Newest) }
     var filter by rememberSaveable { mutableStateOf(KannashahFilter.All) }
     val listState = rememberLazyListState()
@@ -120,31 +116,6 @@ fun KannashahScreen(
         }
         shownNewestId = newestId
     }
-    // Grouping is a presentation of the same list, never a different screen or dataset.
-    val groups = remember(sorted, view, grouping) {
-        if (view == KannashahView.All) {
-            emptyList()
-        } else {
-            when (grouping) {
-                KannashahGrouping.Topic ->
-                    sorted.flatMap { e -> e.topics.distinct().ifEmpty { listOf("بلا موضوع") }.map { it to e } }
-                        .groupBy({ it.first }, { it.second })
-                        .map { (topic, items) ->
-                            ExcerptGroup(topic, "${arabicCount(items.size)} مقتطفًا", items)
-                        }
-                KannashahGrouping.Source ->
-                    sorted.groupBy { it.sourceTitle }
-                        .map { (title, items) ->
-                            ExcerptGroup(
-                                title,
-                                "${items.first().sourceAuthor} · ${arabicCount(items.size)} مقتطفًا",
-                                items,
-                            )
-                        }
-            }
-        }
-    }
-
     BoxWithConstraints(
         modifier = modifier
             .fillMaxSize()
@@ -186,13 +157,6 @@ fun KannashahScreen(
         )
         AtharCollapsible(header) {
             Column {
-                AtharTabRow(
-                    tabs = KannashahView.entries.map { AtharTab(it.key, it.label) },
-                    selectedKey = view.key,
-                    onSelect = { key -> view = KannashahView.entries.first { it.key == key } },
-                    tagPrefix = "kannashah_view",
-                    modifier = Modifier.padding(horizontal = horizontalPadding),
-                )
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -210,29 +174,16 @@ fun KannashahScreen(
                         },
                         tagPrefix = "kannashah_filter",
                     )
-                    if (view == KannashahView.Grouped) {
-                        AtharMenuButton(
-                            label = grouping.label,
-                            options = KannashahGrouping.entries.map { it.label },
-                            selected = grouping.label,
-                            defaultOption = KannashahGrouping.Topic.label,
-                            onSelect = { label ->
-                                grouping = KannashahGrouping.entries.first { it.label == label }
-                            },
-                            tagPrefix = "kannashah_grouping",
-                        )
-                    } else {
-                        AtharMenuButton(
-                            label = "الترتيب",
-                            options = KannashahSort.entries.map { it.label },
-                            selected = sort.label,
-                            defaultOption = KannashahSort.Newest.label,
-                            onSelect = { label ->
-                                sort = KannashahSort.entries.first { it.label == label }
-                            },
-                            tagPrefix = "kannashah_sort",
-                        )
-                    }
+                    AtharMenuButton(
+                        label = "الترتيب",
+                        options = KannashahSort.entries.map { it.label },
+                        selected = sort.label,
+                        defaultOption = KannashahSort.Newest.label,
+                        onSelect = { label ->
+                            sort = KannashahSort.entries.first { it.label == label }
+                        },
+                        tagPrefix = "kannashah_sort",
+                    )
                 }
             }
         }
@@ -258,18 +209,8 @@ fun KannashahScreen(
                         horizontalPadding = horizontalPadding,
                     )
                 }
-            } else if (view == KannashahView.All) {
-                items(sorted, horizontalPadding, onCopy, onShare, onMore, onDelete, onOpenSource)
             } else {
-                groups.forEachIndexed { groupIndex, group ->
-                    item(key = "group-$groupIndex") {
-                        GroupHeading(
-                            group = group,
-                            horizontalPadding = horizontalPadding,
-                        )
-                    }
-                    items(group.items, horizontalPadding, onCopy, onShare, onMore, onDelete, onOpenSource, "group-$groupIndex:")
-                }
+                items(sorted, horizontalPadding, onCopy, onShare, onMore, onDelete, onOpenSource)
             }
         }
     }
@@ -316,41 +257,6 @@ private fun androidx.compose.foundation.lazy.LazyListScope.itemsIndexed(
 ) {
     items(count = excerpts.size, key = { "$keyPrefix${excerpts[it].id}" }) { index ->
         content(index, excerpts[index])
-    }
-}
-
-@Composable
-private fun GroupHeading(group: ExcerptGroup, horizontalPadding: Dp) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(start = horizontalPadding, end = horizontalPadding, top = 22.dp, bottom = 6.dp),
-        verticalAlignment = Alignment.Top,
-    ) {
-        Box(
-            Modifier
-                .padding(top = 4.dp, end = 8.dp)
-                .width(2.5.dp)
-                .height(18.dp)
-                .background(AtharTheme.colors.accent),
-        )
-        Column(Modifier.weight(1f)) {
-            Text(
-                text = group.title,
-                color = MaterialTheme.colorScheme.onSurface,
-                fontFamily = AtharEditorialFontFamily,
-                fontWeight = FontWeight.Bold,
-                fontSize = AtharTextSize.Title,
-                lineHeight = 26.sp,
-            )
-            if (group.subtitle != null) {
-                Text(
-                    text = group.subtitle,
-                    color = AtharTheme.colors.secondaryText.copy(alpha = 0.8f),
-                    style = MaterialTheme.typography.labelSmall,
-                )
-            }
-        }
     }
 }
 

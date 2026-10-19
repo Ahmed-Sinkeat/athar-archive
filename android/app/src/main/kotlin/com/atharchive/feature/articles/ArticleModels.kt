@@ -1,6 +1,5 @@
 package com.atharchive.feature.articles
 
-import com.atharchive.ui.components.AtharTab
 
 /**
  * `src/content/article` carries title, status, published_at and person on all 2,363 entries
@@ -10,17 +9,6 @@ import com.atharchive.ui.components.AtharTab
  * the build pipeline must emit a short opening extract per article. Until it does, these
  * fixtures stand in for it. Nothing derives an excerpt on device.
  */
-
-enum class ArticlesTab(val key: String, val label: String) {
-    All("all", "الكل"),
-    Downloaded("downloaded", "المحمّلة"),
-    ;
-
-    companion object {
-        val tabs: List<AtharTab> = entries.map { AtharTab(it.key, it.label) }
-        fun fromKey(key: String): ArticlesTab = entries.first { it.key == key }
-    }
-}
 
 enum class ArticleSort(val label: String) {
     Newest("ترتيب الفهرس"),
@@ -39,6 +27,7 @@ data class ArticleUi(
     val downloaded: Boolean = false,
     val downloading: Boolean = false,
     val saved: Boolean = false,
+    val recentRank: Int? = null,
     val transfer: com.atharchive.feature.downloads.TransferUi? = null,
     val sizeLabel: String = "",
 )

@@ -10,16 +10,6 @@ package com.atharchive.feature.kannashah
  * view, so الكناشة is itself a reading surface rather than a list of doorways.
  */
 
-enum class KannashahView(val key: String, val label: String) {
-    All("all", "الكل"),
-    Grouped("grouped", "مجمّع"),
-}
-
-enum class KannashahGrouping(val key: String, val label: String) {
-    Source("source", "حسب المصدر"),
-    Topic("topic", "حسب الموضوع"),
-}
-
 enum class KannashahSort(val label: String) {
     Newest("الأحدث"),
     Oldest("الأقدم"),

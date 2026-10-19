@@ -47,6 +47,8 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.atharchive.ui.components.AtharEmptyState
+import com.atharchive.ui.components.SectionTab
+import com.atharchive.ui.components.emptyCopy
 import com.atharchive.ui.components.AtharMenuButton
 import com.atharchive.ui.components.AtharSearchField
 import com.atharchive.ui.components.AtharTabRow
@@ -70,7 +72,7 @@ fun AudioScreen(
     modifier: Modifier = Modifier,
     onBack: (() -> Unit)? = null,
 ) {
-    var selectedTab by rememberSaveable { mutableStateOf(AudioTab.All) }
+    var selectedTab by rememberSaveable { mutableStateOf(SectionTab.All) }
     var query by rememberSaveable { mutableStateOf("") }
     var type by rememberSaveable { mutableStateOf(AudioType.All) }
     var sort by rememberSaveable { mutableStateOf(AudioSort.Newest) }
@@ -80,10 +82,7 @@ fun AudioScreen(
 
     val visible = remember(state.recordings, selectedTab, query, type, sort) {
         val filtered = state.recordings.filter { audio ->
-            val matchesTab = when (selectedTab) {
-                AudioTab.All -> true
-                AudioTab.Downloaded -> audio.downloaded
-            }
+            val matchesTab = selectedTab.matches(audio.recentRank != null, audio.downloaded, audio.saved)
             val matchesType = when (type) {
                 AudioType.All -> true
                 AudioType.Books -> audio.sourceKind == AudioSourceKind.Book
@@ -98,7 +97,7 @@ fun AudioScreen(
             matchesTab && matchesType && matchesQuery
         }
         // Newest keeps the authored order — the content has no date field to sort on.
-        when (sort) {
+        if (selectedTab == SectionTab.Recent) filtered.sortedBy { it.recentRank ?: Int.MAX_VALUE } else when (sort) {
             AudioSort.Newest -> filtered
             AudioSort.Longest -> filtered.sortedByDescending { it.durationSeconds }
             AudioSort.Shortest -> filtered.sortedBy { it.durationSeconds }
@@ -138,9 +137,9 @@ fun AudioScreen(
             AtharCollapsible(header) {
                 Column {
                     AtharTabRow(
-                        tabs = AudioTab.tabs,
+                        tabs = SectionTab.tabs,
                         selectedKey = selectedTab.key,
-                        onSelect = { selectedTab = AudioTab.fromKey(it) },
+                        onSelect = { selectedTab = SectionTab.fromKey(it) },
                         tagPrefix = "audio",
                         modifier = Modifier.padding(horizontal = horizontalPadding),
                     )
@@ -195,10 +194,7 @@ fun AudioScreen(
                             hasActiveFilters ->
                                 "لا توجد تسجيلات بهذه التصفية" to
                                     "امسح بعض المرشحات لعرض مزيد من التسجيلات."
-                            selectedTab == AudioTab.Downloaded ->
-                                "لا توجد تسجيلات محمّلة" to "نزّل تسجيلًا لتستمع إليه دون اتصال."
-                            else ->
-                                "لا توجد تسجيلات" to "لم تتوفر تسجيلات في هذا القسم بعد."
+                            else -> selectedTab.emptyCopy("تسجيلات", "نزّل تسجيلًا لتستمع إليه دون اتصال.")
                         }
                         AtharEmptyState(
                             title = title,

@@ -154,6 +154,11 @@ class AtharContentViewModel @Inject constructor(
     private val userDataArchive = UserDataArchive(content.userDatabase)
     private val contentSearch = ContentSearchRepository(content.contentDatabase)
     private val readingHistory = personalLibrary.observeHistory()
+    /** entityId -> 0 for the most recently opened; audio ids are "audio:<id>". */
+    private val recentRanks = readingHistory.map { rows ->
+        rows.groupBy { it.entityId }.mapValues { (_, r) -> r.maxOf { it.openedAt } }
+            .entries.sortedByDescending { it.value }.mapIndexed { i, e -> e.key to i }.toMap()
+    }
     private val recentSearches = personalLibrary.observeRecentSearches()
     private val _searchQuery = MutableStateFlow(savedState.get<String>("searchQuery").orEmpty())
     private val _searchFilters = MutableStateFlow(SearchFilters(
@@ -365,8 +370,9 @@ class AtharContentViewModel @Inject constructor(
     )
 
     val articles: StateFlow<ArticlesUiState> = combine(
-        catalogDao.observeCollection("article"), pinIds, retainedPins, library, textTransfers,
-    ) { entities, pinnedIds, retainedIds, shelves, transfers ->
+        catalogDao.observeCollection("article"), pinIds, retainedPins, library, combine(textTransfers, recentRanks) { t, r -> t to r },
+    ) { entities, pinnedIds, retainedIds, shelves, transferAndRank ->
+        val (transfers, ranks) = transferAndRank
         val shelfIds = shelves.mapTo(hashSetOf(), LibraryEntryEntity::entityId)
         ArticlesUiState(
             countLabel = arabicCount(entities.size, "المقالات", "مقال واحد", "مقالين", "مقالات", "مقالًا"),
@@ -382,6 +388,7 @@ class AtharContentViewModel @Inject constructor(
                         entity.id !in retainedIds &&
                         entity.transferState != ContentTransferState.FAILED,
                     saved = entity.id in shelfIds,
+                    recentRank = ranks[entity.id],
                     transfer = transfers[entity.id],
                     sizeLabel = byteSize(entity.pkgSize),
                 )
@@ -390,9 +397,9 @@ class AtharContentViewModel @Inject constructor(
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), ArticlesUiState("٠ مقال", emptyList()))
 
     private val recordingCatalog = combine(
-        catalogDao.observeAllEntities(), library, content.downloadedAudio,
+        catalogDao.observeAllEntities(), library, content.downloadedAudio, recentRanks,
         combine(content.requestedAudio, content.pausedDownloads, downloadScheduler.workInfos) { requested, paused, jobs -> Triple(requested, paused, jobs) },
-    ) { catalog, shelves, downloaded, transfers ->
+    ) { catalog, shelves, downloaded, ranks, transfers ->
         val shelfIds = shelves.mapTo(hashSetOf(), LibraryEntryEntity::entityId)
         val recordings = catalog.flatMap { source ->
             source.audioReferences().map { ref ->
@@ -402,6 +409,7 @@ class AtharContentViewModel @Inject constructor(
                     durationLabel = duration(ref.seconds), durationSeconds = ref.seconds,
                     sizeLabel = byteSize(ref.size),
                     downloaded = ref.id in downloaded, saved = "audio:${ref.id}" in shelfIds,
+                    recentRank = ranks["audio:${ref.id}"],
                     sourceEntityId = source.id,
                     transfer = if (ref.id !in transfers.first || ref.id in downloaded) null else {
                         val job = transfers.third.firstOrNull { "content:audio:${ref.id}" in it.tags && !it.state.isFinished }
@@ -443,6 +451,7 @@ class AtharContentViewModel @Inject constructor(
                 playback.toggle()
                 return@launch
             }
+            personalLibrary.recordOpened("audio:$audioId")
             val references = catalogDao.entitiesWithAudio().flatMap { it.audioReferences() }.associateBy { it.id }
             val items = queue.map { recording ->
                 MediaItem.Builder().setMediaId(recording.id).setCustomCacheKey(recording.id).setUri(content.audioUri(requireNotNull(references[recording.id])))
@@ -489,8 +498,9 @@ class AtharContentViewModel @Inject constructor(
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
 
     val issues: StateFlow<IssuesUiState> = combine(
-        catalogDao.observeCollection("question"), retainedPins, library, textTransfers,
-    ) { entities, retainedIds, shelves, transfers ->
+        catalogDao.observeCollection("question"), retainedPins, library, combine(textTransfers, recentRanks) { t, r -> t to r },
+    ) { entities, retainedIds, shelves, transferAndRank ->
+        val (transfers, ranks) = transferAndRank
         val shelfIds = shelves.mapTo(hashSetOf(), LibraryEntryEntity::entityId)
         IssuesUiState(
             countLabel = arabicCount(entities.size, "المسائل", "مسألة واحدة", "مسألتين", "مسائل", "مسألة"),
@@ -504,6 +514,7 @@ class AtharContentViewModel @Inject constructor(
                     sizeLabel = byteSize(entity.pkgSize),
                     downloaded = entity.id in retainedIds && entity.availability == ContentAvailability.COMPLETE,
                     saved = entity.id in shelfIds,
+                    recentRank = ranks[entity.id],
                     transfer = transfers[entity.id],
                 )
             },
@@ -511,8 +522,9 @@ class AtharContentViewModel @Inject constructor(
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), IssuesUiState("٠ مسألة", emptyList()))
 
     val poetry: StateFlow<PoetryUiState> = combine(
-        catalogDao.observeCollection("poem"), pinIds, retainedPins, library, textTransfers,
-    ) { entities, pinnedIds, retainedIds, shelves, transfers ->
+        catalogDao.observeCollection("poem"), pinIds, retainedPins, library, combine(textTransfers, recentRanks) { t, r -> t to r },
+    ) { entities, pinnedIds, retainedIds, shelves, transferAndRank ->
+        val (transfers, ranks) = transferAndRank
         val shelfIds = shelves.mapTo(hashSetOf(), LibraryEntryEntity::entityId)
         PoetryUiState(
             countLabel = arabicCount(entities.size, "القصائد", "قصيدة واحدة", "قصيدتين", "قصائد", "قصيدة"),
@@ -529,6 +541,7 @@ class AtharContentViewModel @Inject constructor(
                         entity.id !in retainedIds &&
                         entity.transferState != ContentTransferState.FAILED,
                     saved = entity.id in shelfIds,
+                    recentRank = ranks[entity.id],
                     transfer = transfers[entity.id],
                     verseCountLabel = entry.verseCount?.takeIf { it > 0 }?.let { arabicCount(it, "", "بيت واحد", "بيتان", "أبيات", "بيتًا") },
                     sizeLabel = byteSize(entity.pkgSize),

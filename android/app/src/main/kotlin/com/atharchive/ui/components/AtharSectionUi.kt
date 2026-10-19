@@ -157,7 +157,7 @@ fun AtharTabRow(
             .padding(top = 2.dp),
     ) {
         tabs.forEach { tab ->
-            SectionTab(
+            SectionTabCell(
                 tab = tab,
                 selected = tab.key == selectedKey,
                 largeText = largeText,
@@ -170,7 +170,7 @@ fun AtharTabRow(
 }
 
 @Composable
-private fun SectionTab(
+private fun SectionTabCell(
     tab: AtharTab,
     selected: Boolean,
     largeText: Boolean,
@@ -208,6 +208,35 @@ private fun SectionTab(
                 .background(if (selected) AtharTheme.colors.accent else Color.Transparent),
         )
     }
+}
+
+/** The one tab set every content section shows. */
+enum class SectionTab(val key: String, val label: String) {
+    All("all", "الكل"),
+    Recent("recent", "الأخيرة"),
+    Downloaded("downloaded", "المحمّلة"),
+    Favourites("favourites", "المفضّلة"),
+    ;
+
+    fun matches(recent: Boolean, downloaded: Boolean, saved: Boolean): Boolean = when (this) {
+        All -> true
+        Recent -> recent
+        Downloaded -> downloaded
+        Favourites -> saved
+    }
+
+    companion object {
+        val tabs: List<AtharTab> = entries.map { AtharTab(it.key, it.label) }
+        fun fromKey(key: String): SectionTab = entries.first { it.key == key }
+    }
+}
+
+/** Empty-state copy for the tab-only case; [noun] is the plural, e.g. «كتب»; [downloadHint] is the المحمّلة body. */
+fun SectionTab.emptyCopy(noun: String, downloadHint: String): Pair<String, String> = when (this) {
+    SectionTab.Recent -> "لا توجد $noun أخيرة" to "ستظهر هنا ما فتحته مؤخرًا."
+    SectionTab.Downloaded -> "لا توجد $noun محمّلة" to downloadHint
+    SectionTab.Favourites -> "لا توجد عناصر مفضّلة" to "اضغط النجمة على أي عنصر ليظهر هنا."
+    SectionTab.All -> "لا توجد $noun" to "لم تتوفر $noun في هذا القسم بعد."
 }
 
 @Composable

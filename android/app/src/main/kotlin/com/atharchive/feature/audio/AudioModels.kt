@@ -1,6 +1,5 @@
 package com.atharchive.feature.audio
 
-import com.atharchive.ui.components.AtharTab
 
 /**
  * Shaped by what `src/content/audio` actually carries (measured 18 Aug 2026, 971 files):
@@ -19,17 +18,6 @@ import com.atharchive.ui.components.AtharTab
  * that used to live here (كتب/شعر/مسائل) are an [AudioType] menu instead — they
  * are one axis among several, not navigation.
  */
-enum class AudioTab(val key: String, val label: String) {
-    All("all", "الكل"),
-    Downloaded("downloaded", "المحمّلة"),
-    ;
-
-    companion object {
-        val tabs: List<AtharTab> = entries.map { AtharTab(it.key, it.label) }
-        fun fromKey(key: String): AudioTab = entries.first { it.key == key }
-    }
-}
-
 /** `source_type` splits المسائل 854 · الكتب 103 · الشعر 14. */
 enum class AudioType(val label: String) {
     All("الكل"),
@@ -66,6 +54,7 @@ data class AudioUi(
     val speaker: String? = null,
     val downloaded: Boolean = false,
     val saved: Boolean = false,
+    val recentRank: Int? = null,
     val sourceEntityId: String = "",
     val transfer: com.atharchive.feature.downloads.TransferUi? = null,
 )
