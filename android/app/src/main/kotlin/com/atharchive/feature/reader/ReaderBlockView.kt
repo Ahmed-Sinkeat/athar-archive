@@ -45,6 +45,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.atharchive.ui.theme.AtharEditorialFontFamily
+import com.atharchive.ui.theme.KitabFontFamily
+import com.atharchive.ui.theme.QuranFontFamily
 
 /**
  * One block, rendered by kind. The hierarchy is carried by size, weight and space —
@@ -71,6 +73,8 @@ internal fun BlockView(
     }
     val body = settings.fontSize.sp
     val lineHeight = (settings.fontSize * settings.spacing.multiplier).sp
+    // Turath sets prose at 1.75; the spacing setting still scales it (Normal 1.85 → 1.75).
+    val proseLineHeight = (settings.fontSize * settings.spacing.multiplier * (1.75f / 1.85f)).sp
 
     val background = when {
         highlighted -> colors.highlight
@@ -133,7 +137,7 @@ internal fun BlockView(
                     modifier = selectable,
                     onTextLayout = ::onLayout,
                     color = if (isKitab) colors.text else colors.accent,
-                    fontFamily = AtharEditorialFontFamily,
+                    fontFamily = KitabFontFamily,
                     fontWeight = FontWeight.Bold,
                     fontSize = if (isKitab) (settings.fontSize + 5).sp else (settings.fontSize + 1).sp,
                     lineHeight = if (isKitab) (settings.fontSize + 14).sp else (settings.fontSize + 10).sp,
@@ -169,9 +173,9 @@ internal fun BlockView(
                     modifier = selectable,
                     onTextLayout = ::onLayout,
                     color = colors.text,
-                    fontFamily = AtharEditorialFontFamily,
+                    fontFamily = KitabFontFamily,
                     fontSize = body,
-                    lineHeight = lineHeight,
+                    lineHeight = proseLineHeight,
                     textAlign = TextAlign.Justify,
                 )
               }
@@ -199,9 +203,9 @@ internal fun BlockView(
                     modifier = selectable,
                     onTextLayout = ::onLayout,
                     color = colors.text.copy(alpha = 0.92f),
-                    fontFamily = AtharEditorialFontFamily,
+                    fontFamily = KitabFontFamily,
                     fontSize = (settings.fontSize - 1).sp,
-                    lineHeight = lineHeight,
+                    lineHeight = proseLineHeight,
                 )
             }
         }
@@ -287,7 +291,7 @@ internal fun BlockView(
                             text = text,
                             modifier = Modifier.padding(top = 6.dp),
                             color = colors.secondary,
-                            fontFamily = AtharEditorialFontFamily,
+                            fontFamily = KitabFontFamily,
                             fontSize = (settings.fontSize - 4).sp,
                             lineHeight = ((settings.fontSize - 4) * 1.6f).sp,
                         )
@@ -315,7 +319,7 @@ internal fun BlockView(
                     modifier = selectable,
                     onTextLayout = ::onLayout,
                     color = colors.secondary,
-                    fontFamily = AtharEditorialFontFamily,
+                    fontFamily = KitabFontFamily,
                     fontSize = (settings.fontSize - 4).sp,
                     lineHeight = (settings.fontSize * 1.5f).sp,
                 )
@@ -345,7 +349,12 @@ private fun markedText(
         }
         // Like the site: colour from the punctuation already in the text, no markup needed.
         CitationRe.findAll(value.text).forEach {
-            addStyle(SpanStyle(color = if (it.value[0] == '\uFD3F') colors.ayah else colors.quote), it.range.first, it.range.last + 1)
+            val ayah = it.value[0] == '\uFD3F'
+            // Styling only: offsets, selection and highlights are unchanged.
+            addStyle(
+                if (ayah) SpanStyle(color = colors.ayah, fontFamily = QuranFontFamily) else SpanStyle(color = colors.quote),
+                it.range.first, it.range.last + 1,
+            )
         }
         highlights.forEach { style(SpanStyle(background = colors.saved), it.first, if (it.last == Int.MAX_VALUE) Int.MAX_VALUE else it.last + 1) }
         spans.forEach { span ->

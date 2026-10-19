@@ -76,6 +76,15 @@ val AtharEditorialFontFamily = FontFamily(
     Font(R.font.amiri_bold, FontWeight.Bold),
 )
 
+/** Prose in the book reader — the font Turath uses (SIL OFL). Poems and chrome keep Amiri. */
+val KitabFontFamily = FontFamily(
+    Font(R.font.kitab_regular, FontWeight.Normal),
+    Font(R.font.kitab_bold, FontWeight.Bold),
+)
+
+/** ﴿…﴾ ranges in the reader (SIL OFL, from the Amiri project). */
+val QuranFontFamily = FontFamily(Font(R.font.amiri_quran, FontWeight.Normal))
+
 /** Every corner in the app; pills and dots use CircleShape. */
 object AtharCorners {
     /** Marks inside text, small badges. */
