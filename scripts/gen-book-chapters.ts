@@ -184,18 +184,11 @@ wj.assets = { ...wj.assets, html_handling: "drop-trailing-slash" };
 if (assetMap.size > 0) {
   wj.vars = { ...wj.vars, CHAPTER_ASSETS: JSON.stringify(Object.fromEntries(assetMap)) };
 }
-// Rollout flag for the pages/ → pages-v2/ migration, read by the thin route:
-// "" (default) serves the old uncompressed pages/, "<slug>,<slug>" serves those
-// books from pages-v2/, "*" serves everything from it. The route always falls
-// back to pages/ when a v2 object is missing or unreadable, so this is a
-// canary/kill switch, not a correctness dependency. Set as a CI variable so
-// flipping it needs no code change. Delete once pages/ is gone.
-wj.vars = { ...wj.vars, CHAPTERS_V2: process.env.CHAPTERS_V2 ?? "" };
 fs.writeFileSync(WRANGLER_JSON, JSON.stringify(wj, null, 2), "utf-8");
 
 const gzBytes = pages.reduce((n, { dst }) => n + (fs.existsSync(dst) ? fs.statSync(dst).size : 0), 0);
 console.log(
   `✓ gen-book-chapters: ${moved} chapter page(s) → dist/r2-upload/pages-v2/book as .html.gz ` +
-  `(${(gzBytes / 1024 ** 3).toFixed(2)} GB compressed, ${assetMap.size} asset placeholder(s), ` +
-  `CHAPTERS_V2="${process.env.CHAPTERS_V2 ?? ""}"), ${unbundled} whole-book md dropped from static assets`,
+  `(${(gzBytes / 1024 ** 3).toFixed(2)} GB compressed, ` +
+  `${assetMap.size} asset placeholder(s)), ${unbundled} whole-book md dropped from static assets`,
 );

@@ -18,9 +18,9 @@ interface Bucket {
 /**
  * Read a gzipped page (pages-v2/) and inflate it. DecompressionStream is native
  * — the JS side never touches the compressed bytes — which is what makes
- * storing these gzipped affordable: ~84% off the bucket for a few ms here, paid
- * once per edge-cache miss. Returns null when the object is missing OR corrupt,
- * so a bad v2 object silently falls back to pages/ instead of 500ing.
+ * storing these gzipped affordable: 90% off the bucket (60.2 GB → 5.7 GB) for
+ * ~9ms of CPU here, paid once per edge-cache miss. Returns null when the object
+ * is missing OR corrupt, so a bad object 404s rather than 500ing.
  */
 async function readGzipped(bucket: Bucket | undefined, key: string): Promise<string | null> {
   const obj = await bucket?.get(key);
@@ -43,20 +43,15 @@ export const GET: APIRoute = async ({ params, url }) => {
   }
 
   const { env } = await import("cloudflare:workers");
-  const {
-    BOOK_ASSETS: bucket,
-    CHAPTER_ASSETS: assetsJson,
-    CHAPTERS_V2: v2 = "",
-  } = env as unknown as { BOOK_ASSETS?: Bucket; CHAPTER_ASSETS?: string; CHAPTERS_V2?: string };
+  const { BOOK_ASSETS: bucket, CHAPTER_ASSETS: assetsJson } = env as unknown as {
+    BOOK_ASSETS?: Bucket;
+    CHAPTER_ASSETS?: string;
+  };
 
-  // pages/ → pages-v2/ rollout flag, written into wrangler.json vars by
-  // gen-book-chapters.ts from the CI variable: "" off, "*" everything, or a
-  // comma-separated canary list of book slugs. Falls back to pages/ per object,
-  // so flipping it can never 404 a chapter that only exists in the old prefix.
-  const html =
-    (v2 === "*" || v2.split(",").includes(slug)
-      ? await readGzipped(bucket, `pages-v2/book/${slug}/${chapter}.html.gz`)
-      : null) ?? (await (await bucket?.get(`pages/book/${slug}/${chapter}.html`))?.text() ?? null);
+  // One R2 read. The pages/ → pages-v2/ migration finished 2026-08-20 and the
+  // old prefix was deleted, so the CHAPTERS_V2 flag and the per-object fallback
+  // that guarded the rollout are both gone with it.
+  const html = await readGzipped(bucket, `pages-v2/book/${slug}/${chapter}.html.gz`);
 
   if (html === null) return notFound();
   return new Response(substitute(html, assetsJson, __AA_BUILD__), { headers: HTML });

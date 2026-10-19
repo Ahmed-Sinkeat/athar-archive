@@ -23,17 +23,12 @@ export const BUCKET = "athar-book-assets";
 // must never be touched or pruned by this repo's uploader.
 export const OWNED_PREFIXES = ["pages-v2/"];
 
-// Prefixes still SERVING but no longer generated. pages/ holds the previous,
-// uncompressed chapter bodies: gen-book-chapters.ts now emits only the gzipped
-// pages-v2/, and the thin route falls back to pages/ for anything missing from
-// it, so those objects are live infrastructure — not owned (the uploader would
-// try to prune all ~78k of them), not retired (the cleanup workflow must keep
-// refusing them; its own header promises it "cannot be pointed at pages/").
-// Listed here purely so `pnpm r2:inventory` reports them honestly instead of
-// as "unmanaged". Move to RETIRED_PREFIXES only after CHAPTERS_V2="*" has been
-// live and monitored and the route's fallback is deleted — that is the step
-// that makes them genuinely dead.
-export const LEGACY_PREFIXES = ["pages/"];
+// Prefixes still SERVING but no longer generated — neither owned (the uploader
+// would try to prune them) nor retired (the cleanup workflow must refuse them).
+// Empty: pages/ held the uncompressed chapter bodies through the pages-v2
+// migration and its 128517 objects were deleted 2026-08-20, taking the bucket
+// from 60.2 GB to 5.7 GB. Nothing is awaiting deletion.
+export const LEGACY_PREFIXES = [];
 
 // Prefixes this repo used to own and no longer generates. Reported by
 // `pnpm r2:inventory`, never touched by the uploader — deletion is a reviewed,
