@@ -433,7 +433,11 @@ fun ReaderScreen(
                     count = window.count,
                     key = { index -> window.peek(index)?.id ?: "reader-placeholder-$index" },
                 ) { index ->
-                    val block = window[index]
+                    val raw = window[index]
+                    // The window loads blocks alone; a page footer gets its note bodies here.
+                    val block = remember(raw, state.footnotes) {
+                        if (raw is ReaderBlock.PageNotes) raw.copy(notes = raw.footnotes.mapNotNull(state.footnotes::get)) else raw
+                    }
                     if (block == null) {
                         Box(Modifier.fillMaxWidth().height(80.dp))
                     } else {
