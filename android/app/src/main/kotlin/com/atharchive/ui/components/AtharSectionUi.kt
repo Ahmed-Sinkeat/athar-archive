@@ -8,6 +8,13 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ModalBottomSheet
+import androidx.compose.material3.TextButton
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.defaultMinSize
@@ -27,6 +34,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -36,6 +44,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.ProgressBarRangeInfo
@@ -336,9 +345,9 @@ fun AtharMenuButton(
     }
 }
 
-class AtharFilterGroup(
-    val label: String,
-    /** The first option is the "no filter" default, e.g. «كل المؤلفين». */
+class AtharChipGroup(
+    val title: String,
+    /** The first option is the "no filter" default, e.g. «الكل». */
     val options: List<String>,
     val selected: String,
     val onSelect: (String) -> Unit,
@@ -348,88 +357,138 @@ class AtharFilterGroup(
 }
 
 /**
- * One «تصفية» control for several filters: the menu lists the groups with their current
- * value; tapping one drills into its options (iOS-style) and the top row comes back.
+ * One «تصفية» button per section. It opens one sheet of tap-to-choose chips per group;
+ * taps apply immediately and «مسح» resets every group. The sheet is the only scroll.
  */
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
-fun AtharFilterMenu(groups: List<AtharFilterGroup>, tagPrefix: String, modifier: Modifier = Modifier) {
-    var expanded by remember { mutableStateOf(false) }
-    var open by remember { mutableStateOf<Int?>(null) }
-    val activeCount = groups.count { it.active }
-    Box(modifier = modifier) {
-        Row(
-            modifier = Modifier
-                .clip(AtharCorners.Control)
-                .clickable(role = Role.DropdownList) { open = null; expanded = true }
-                .padding(horizontal = 4.dp, vertical = 6.dp)
-                .testTag("${tagPrefix}_menu"),
-            verticalAlignment = Alignment.CenterVertically,
+fun AtharFilterButton(
+    groups: List<AtharChipGroup>,
+    tagPrefix: String,
+    modifier: Modifier = Modifier,
+    activeCount: Int = groups.count { it.active },
+    onClear: () -> Unit = { groups.forEach { if (it.active) it.onSelect(it.default) } },
+) {
+    if (groups.isEmpty()) return
+    var open by remember { mutableStateOf(false) }
+    Row(
+        modifier = modifier
+            .clip(AtharCorners.Control)
+            .clickable(role = Role.Button) { open = true }
+            .defaultMinSize(minHeight = 48.dp)
+            .padding(horizontal = 4.dp)
+            .testTag("${tagPrefix}_menu"),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Text(
+            text = if (activeCount == 0) "تصفية" else "تصفية · ${arabicDigits(activeCount)}",
+            color = AtharTheme.colors.secondaryText,
+            style = MaterialTheme.typography.bodySmall,
+            fontWeight = if (activeCount == 0) FontWeight.Normal else FontWeight.SemiBold,
+            maxLines = 1,
+        )
+        Icon(
+            imageVector = AtharIcons.ChevronDown,
+            contentDescription = null,
+            tint = AtharTheme.colors.secondaryText,
+            modifier = Modifier.padding(start = 3.dp).size(12.dp),
+        )
+    }
+    if (open) {
+        ModalBottomSheet(
+            onDismissRequest = { open = false },
+            containerColor = AtharTheme.colors.canvas,
+            scrimColor = AtharTheme.colors.scrim,
+            shape = androidx.compose.foundation.shape.RoundedCornerShape(topStart = 14.dp, topEnd = 14.dp),
         ) {
-            Text(
-                text = if (activeCount == 0) "تصفية" else "تصفية · ${arabicDigits(activeCount)}",
-                color = AtharTheme.colors.secondaryText,
-                style = MaterialTheme.typography.bodySmall,
-                fontWeight = if (activeCount == 0) FontWeight.Normal else FontWeight.SemiBold,
-                maxLines = 1,
-            )
-            Icon(
-                imageVector = AtharIcons.ChevronDown,
-                contentDescription = null,
-                tint = AtharTheme.colors.secondaryText,
-                modifier = Modifier.padding(start = 3.dp).size(12.dp),
-            )
-        }
-        AtharMenu(
-            expanded = expanded,
-            onDismiss = { expanded = false },
-            modifier = Modifier.testTag("${tagPrefix}_menu_open"),
-        ) {
-            val group = open?.let(groups::getOrNull)
-            if (group == null) {
-                groups.forEachIndexed { index, g ->
-                    AtharMenuItem(
-                        label = g.label,
-                        subtitle = g.selected,
-                        icon = AtharIcons.Forward,
-                        onClick = { open = index },
-                        modifier = Modifier.testTag("${tagPrefix}_group_$index"),
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .verticalScroll(rememberScrollState())
+                    .padding(start = 20.dp, end = 20.dp, bottom = 20.dp)
+                    .testTag("${tagPrefix}_sheet"),
+            ) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Text(
+                        text = "تصفية",
+                        modifier = Modifier.weight(1f),
+                        fontFamily = AtharEditorialFontFamily,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = AtharTextSize.Large,
                     )
+                    TextButton(onClick = onClear, enabled = activeCount > 0, modifier = Modifier.testTag("${tagPrefix}_clear")) { Text("مسح") }
                 }
-                if (activeCount > 0) {
-                    AtharMenuDivider()
-                    AtharMenuItem(
-                        label = "إزالة التصفية",
-                        destructive = true,
-                        onClick = {
-                            groups.forEach { if (it.active) it.onSelect(it.default) }
-                            expanded = false
-                        },
-                        modifier = Modifier.testTag("${tagPrefix}_clear"),
+                groups.forEachIndexed { g, group ->
+                    Text(
+                        text = group.title,
+                        modifier = Modifier.padding(top = 6.dp),
+                        color = AtharTheme.colors.secondaryText,
+                        style = MaterialTheme.typography.labelMedium,
                     )
-                }
-            } else {
-                AtharMenuItem(
-                    label = group.label,
-                    icon = AtharIcons.Back,
-                    onClick = { open = null },
-                    modifier = Modifier.testTag("${tagPrefix}_back"),
-                )
-                AtharMenuDivider()
-                group.options.forEachIndexed { index, option ->
-                    AtharMenuItem(
-                        label = option,
-                        checked = option == group.selected,
-                        onClick = {
-                            group.onSelect(option)
-                            expanded = false
-                        },
-                        modifier = Modifier.testTag("${tagPrefix}_option_$index"),
-                    )
+                    FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                        group.options.forEachIndexed { index, option ->
+                            AtharChip(
+                                label = option,
+                                selected = option == group.selected,
+                                onClick = { group.onSelect(option) },
+                                modifier = Modifier.testTag("${tagPrefix}_chip_${g}_$index"),
+                            )
+                        }
+                    }
                 }
             }
         }
     }
 }
+
+/** Solid accent when selected (S9); 48 dp touch target around a slimmer pill. */
+@Composable
+fun AtharChip(label: String, selected: Boolean, onClick: () -> Unit, modifier: Modifier = Modifier) {
+    Box(
+        modifier = modifier
+            .defaultMinSize(minHeight = 48.dp)
+            .clickable(role = Role.RadioButton, onClick = onClick)
+            .semantics { this.selected = selected },
+        contentAlignment = Alignment.Center,
+    ) {
+        Text(
+            text = label,
+            modifier = Modifier
+                .clip(AtharCorners.Control)
+                .background(if (selected) AtharTheme.colors.accent else AtharTheme.colors.divider.copy(alpha = 0.28f))
+                .padding(horizontal = 14.dp, vertical = 7.dp),
+            color = if (selected) AtharTheme.colors.onPrimaryAction else AtharTheme.colors.secondaryText,
+            style = MaterialTheme.typography.bodyMedium,
+            fontWeight = if (selected) FontWeight.SemiBold else FontWeight.Normal,
+        )
+    }
+}
+
+/** A String backed by SharedPreferences "list_state": sort/filter choices survive restarts. */
+@Composable
+fun rememberPersisted(key: String, default: String): MutableState<String> {
+    val prefs = LocalContext.current.getSharedPreferences("list_state", android.content.Context.MODE_PRIVATE)
+    return remember(key) { PersistedState(prefs, key, runCatching { prefs.getString(key, null) }.getOrNull() ?: default) }
+}
+
+private class PersistedState(
+    private val prefs: android.content.SharedPreferences,
+    private val key: String,
+    initial: String,
+) : MutableState<String> {
+    private val inner = mutableStateOf(initial)
+    override var value: String
+        get() = inner.value
+        set(v) { inner.value = v; prefs.edit().putString(key, v).apply() }
+    override fun component1() = value
+    override fun component2(): (String) -> Unit = { value = it }
+}
+
+/** A stored enum name that no longer exists (older build) reads as null → caller falls back. */
+inline fun <reified E : Enum<E>> enumValueOrNull(name: String): E? = enumValues<E>().firstOrNull { it.name == name }
+
+/** A stored choice that is no longer among [options] reads as the default (first) option. */
+fun String.orFirstIn(options: List<String>): String = if (this in options) this else options.first()
 
 /** Western digits to Arabic-Indic; anything else is kept as is. */
 fun arabicDigits(text: String): String = text.map { if (it in '0'..'9') '\u0660' + (it - '0') else it }.joinToString("")

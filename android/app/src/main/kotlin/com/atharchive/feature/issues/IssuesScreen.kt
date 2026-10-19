@@ -49,7 +49,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.atharchive.ui.components.AtharFavouriteButton
 import com.atharchive.ui.components.AtharDownloadButton
+import com.atharchive.ui.components.AtharChipGroup
 import com.atharchive.ui.components.AtharEmptyState
+import com.atharchive.ui.components.AtharFilterButton
+import com.atharchive.ui.components.enumValueOrNull
+import com.atharchive.ui.components.orFirstIn
+import com.atharchive.ui.components.rememberPersisted
 import com.atharchive.ui.components.SectionTab
 import com.atharchive.ui.components.emptyCopy
 import com.atharchive.ui.components.AtharMenuButton
@@ -75,13 +80,15 @@ fun IssuesScreen(
 ) {
     var selectedTab by rememberSaveable { mutableStateOf(SectionTab.All) }
     var query by rememberSaveable { mutableStateOf("") }
-    var topic by rememberSaveable { mutableStateOf(AllTopics) }
-    var sort by rememberSaveable { mutableStateOf(IssueSort.Newest) }
+    var topicStored by rememberPersisted("issues.topic", AllTopics)
+    var sortName by rememberPersisted("issues.sort", IssueSort.Newest.name)
+    val sort = enumValueOrNull<IssueSort>(sortName) ?: IssueSort.Newest
     val listState = rememberLazyListState()
 
     val topics = remember(state.issues) {
         listOf(AllTopics) + state.issues.map { it.topic }.distinct()
     }
+    val topic = topicStored.orFirstIn(topics)
     val hasActiveFilters = topic != AllTopics || sort != IssueSort.Newest
 
     val visible = remember(state.issues, selectedTab, query, topic, sort) {
@@ -146,23 +153,12 @@ fun IssuesScreen(
                             .padding(horizontal = horizontalPadding - 4.dp, vertical = 2.dp),
                         horizontalArrangement = Arrangement.spacedBy(10.dp),
                     ) {
-                        AtharMenuButton(
-                            label = "الموضوع",
-                            options = topics,
-                            selected = topic,
-                            defaultOption = AllTopics,
-                            onSelect = { topic = it },
-                            tagPrefix = "issues_topic",
-                        )
-                        AtharMenuButton(
-                            label = "الترتيب",
-                            options = IssueSort.entries.map { it.label },
-                            selected = sort.label,
-                            defaultOption = IssueSort.Newest.label,
-                            onSelect = { label ->
-                                sort = IssueSort.entries.first { it.label == label }
-                            },
-                            tagPrefix = "issues_sort",
+                        AtharFilterButton(
+                            groups = listOfNotNull(
+                                if (selectedTab == SectionTab.Recent) null else AtharChipGroup("الترتيب", IssueSort.entries.map { it.label }, sort.label) { label -> sortName = IssueSort.entries.first { it.label == label }.name },
+                                AtharChipGroup("الموضوع", topics, topic) { topicStored = it },
+                            ),
+                            tagPrefix = "issues_filter",
                         )
                     }
                     HorizontalDivider(

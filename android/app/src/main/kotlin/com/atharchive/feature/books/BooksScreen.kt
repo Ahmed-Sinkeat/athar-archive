@@ -83,8 +83,11 @@ import com.atharchive.ui.components.AtharDownloadButton
 import com.atharchive.ui.components.AtharEmptyState
 import com.atharchive.ui.components.SectionTab
 import com.atharchive.ui.components.emptyCopy
-import com.atharchive.ui.components.AtharFilterGroup
-import com.atharchive.ui.components.AtharFilterMenu
+import com.atharchive.ui.components.AtharChipGroup
+import com.atharchive.ui.components.AtharFilterButton
+import com.atharchive.ui.components.enumValueOrNull
+import com.atharchive.ui.components.orFirstIn
+import com.atharchive.ui.components.rememberPersisted
 import com.atharchive.ui.components.AtharMenuButton
 import com.atharchive.ui.components.AtharSearchField
 import com.atharchive.ui.components.AtharTabRow
@@ -110,18 +113,26 @@ fun BooksScreen(
 ) {
     var selectedTab by rememberSaveable { mutableStateOf(SectionTab.All) }
     var query by rememberSaveable { mutableStateOf("") }
-    var kind by rememberSaveable { mutableStateOf(AllKinds) }
-    var author by rememberSaveable { mutableStateOf("كل المؤلفين") }
-    var topic by rememberSaveable { mutableStateOf("كل الموضوعات") }
-    var century by rememberSaveable { mutableStateOf("كل القرون") }
-    var sort by rememberSaveable { mutableStateOf(BookSort.Newest) }
+    var kindStored by rememberPersisted("books.kind", AllKinds)
+    var topicStored by rememberPersisted("books.topic", "كل الموضوعات")
+    var centuryStored by rememberPersisted("books.century", "كل القرون")
+    var sortName by rememberPersisted("books.sort", BookSort.Newest.name)
+    val sort = enumValueOrNull<BookSort>(sortName) ?: BookSort.Newest
+    val kinds = remember(state.books) { listOf(AllKinds) + state.books.map { it.kind }.distinct() }
+    val topics = remember(state.books) { listOf("كل الموضوعات") + state.books.flatMap { it.topics }.distinct().sorted() }
+    val centuries = remember(state.books) {
+        listOf("كل القرون") + state.books.mapNotNull { it.died?.let { year -> (year - 1) / 100 + 1 } }.distinct().sorted().map { "القرن $it" }
+    }
+    val kind = kindStored.orFirstIn(kinds)
+    val topic = topicStored.orFirstIn(topics)
+    val century = centuryStored.orFirstIn(centuries)
     val listState = rememberLazyListState()
 
     LaunchedEffect(scrollToTopRequest) {
         if (scrollToTopRequest > 0) listState.animateScrollToItem(0)
     }
 
-    val visibleBooks = remember(state.books, selectedTab, query, kind, sort, author, topic, century) {
+    val visibleBooks = remember(state.books, selectedTab, query, kind, sort, topic, century) {
         state.books
             .asSequence()
             .filter { book ->
@@ -133,7 +144,6 @@ fun BooksScreen(
                     ArNormalize.normalize(book.author).contains(term, ignoreCase = true)
             }
             .filter { kind == AllKinds || it.kind == kind }
-            .filter { author == "كل المؤلفين" || it.author == author }
             .filter { topic == "كل الموضوعات" || topic in it.topics }
             .filter { century == "كل القرون" || it.died?.let { year -> "القرن ${(year - 1) / 100 + 1}" } == century }
             .sortedWith(
@@ -146,10 +156,6 @@ fun BooksScreen(
             )
             .toList()
     }
-    val kinds = remember(state.books) {
-        listOf(AllKinds) + state.books.map { it.kind }.distinct()
-    }
-
     BoxWithConstraints(
         modifier = modifier
             .fillMaxSize()
@@ -195,27 +201,18 @@ fun BooksScreen(
                         .padding(horizontal = horizontalPadding - 4.dp, vertical = 2.dp),
                     horizontalArrangement = Arrangement.spacedBy(10.dp),
                 ) {
-                    AtharFilterMenu(
-                        groups = listOf(
-                            AtharFilterGroup("النوع", kinds, kind) { kind = it },
-                            AtharFilterGroup("المؤلف", listOf("كل المؤلفين") + state.books.map { it.author }.filter(String::isNotBlank).distinct().sorted(), author) { author = it },
-                            AtharFilterGroup("الموضوع", listOf("كل الموضوعات") + state.books.flatMap { it.topics }.distinct().sorted(), topic) { topic = it },
-                            AtharFilterGroup("القرن", listOf("كل القرون") + state.books.mapNotNull { it.died?.let { year -> (year - 1) / 100 + 1 } }.distinct().sorted().map { "القرن $it" }, century) { century = it },
+                    AtharFilterButton(
+                        groups = listOfNotNull(
+                            if (selectedTab == SectionTab.Recent) null
+                            else AtharChipGroup("الترتيب", BookSort.entries.map { it.label }, sort.label) { label ->
+                                sortName = BookSort.entries.first { it.label == label }.name
+                            },
+                            AtharChipGroup("النوع", kinds, kind) { kindStored = it },
+                            AtharChipGroup("الموضوع", topics, topic) { topicStored = it },
+                            AtharChipGroup("القرن", centuries, century) { centuryStored = it },
                         ),
                         tagPrefix = "books_filter",
                     )
-                    if (selectedTab != SectionTab.Recent) {
-                        AtharMenuButton(
-                            label = "الترتيب",
-                            options = BookSort.entries.map { it.label },
-                            selected = sort.label,
-                            defaultOption = BookSort.Newest.label,
-                            onSelect = { label ->
-                                sort = BookSort.entries.first { it.label == label }
-                            },
-                            tagPrefix = "books_sort",
-                        )
-                    }
                 }
                 HorizontalDivider(
                     modifier = Modifier.padding(horizontal = horizontalPadding, vertical = 2.dp),
@@ -240,7 +237,7 @@ fun BooksScreen(
                     val (emptyTitle, emptyBody) = booksEmptyCopy(
                         selectedTab = selectedTab,
                         hasQuery = query.isNotBlank(),
-                        hasFilters = kind != AllKinds || author != "كل المؤلفين" || topic != "كل الموضوعات" || century != "كل القرون",
+                        hasFilters = kind != AllKinds || topic != "كل الموضوعات" || century != "كل القرون",
                     )
                     AtharEmptyState(
                         title = emptyTitle,

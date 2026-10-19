@@ -45,7 +45,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.atharchive.ui.components.AtharFavouriteButton
 import com.atharchive.ui.components.AtharDownloadButton
+import com.atharchive.ui.components.AtharChipGroup
 import com.atharchive.ui.components.AtharEmptyState
+import com.atharchive.ui.components.AtharFilterButton
+import com.atharchive.ui.components.enumValueOrNull
+import com.atharchive.ui.components.orFirstIn
+import com.atharchive.ui.components.rememberPersisted
 import com.atharchive.ui.components.SectionTab
 import com.atharchive.ui.components.emptyCopy
 import com.atharchive.ui.components.AtharMenuButton
@@ -69,7 +74,8 @@ fun ArticlesScreen(
 ) {
     var selectedTab by rememberSaveable { mutableStateOf(SectionTab.All) }
     var query by rememberSaveable { mutableStateOf("") }
-    var sort by rememberSaveable { mutableStateOf(ArticleSort.Newest) }
+    var sortName by rememberPersisted("articles.sort", ArticleSort.Newest.name)
+    val sort = enumValueOrNull<ArticleSort>(sortName) ?: ArticleSort.Newest
     val listState = rememberLazyListState()
 
     // No author filter: 2,363 articles carry hundreds of distinct authors, and a flat
@@ -137,15 +143,11 @@ fun ArticlesScreen(
                         .padding(horizontal = horizontalPadding - 4.dp, vertical = 2.dp),
                     horizontalArrangement = Arrangement.spacedBy(10.dp),
                 ) {
-                    AtharMenuButton(
-                        label = "الترتيب",
-                        options = ArticleSort.entries.map { it.label },
-                        selected = sort.label,
-                        defaultOption = ArticleSort.Newest.label,
-                        onSelect = { label ->
-                            sort = ArticleSort.entries.first { it.label == label }
-                        },
-                        tagPrefix = "articles_sort",
+                    AtharFilterButton(
+                        groups = listOfNotNull(
+                            if (selectedTab == SectionTab.Recent) null else AtharChipGroup("الترتيب", ArticleSort.entries.map { it.label }, sort.label) { label -> sortName = ArticleSort.entries.first { it.label == label }.name },
+                        ),
+                        tagPrefix = "articles_filter",
                     )
                 }
                 HorizontalDivider(

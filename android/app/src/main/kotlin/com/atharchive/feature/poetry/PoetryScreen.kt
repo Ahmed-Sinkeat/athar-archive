@@ -49,7 +49,12 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.atharchive.ui.components.AtharChipGroup
 import com.atharchive.ui.components.AtharEmptyState
+import com.atharchive.ui.components.AtharFilterButton
+import com.atharchive.ui.components.enumValueOrNull
+import com.atharchive.ui.components.orFirstIn
+import com.atharchive.ui.components.rememberPersisted
 import com.atharchive.ui.components.SectionTab
 import com.atharchive.ui.components.emptyCopy
 import com.atharchive.ui.components.AtharFavouriteButton
@@ -78,13 +83,15 @@ fun PoetryScreen(
 ) {
     var selectedTab by rememberSaveable { mutableStateOf(SectionTab.All) }
     var query by rememberSaveable { mutableStateOf("") }
-    var topic by rememberSaveable { mutableStateOf(AllTopics) }
-    var sort by rememberSaveable { mutableStateOf(PoemSort.Newest) }
+    var topicStored by rememberPersisted("poetry.topic", AllTopics)
+    var sortName by rememberPersisted("poetry.sort", PoemSort.Newest.name)
+    val sort = enumValueOrNull<PoemSort>(sortName) ?: PoemSort.Newest
     val listState = rememberLazyListState()
 
     val topics = remember(state.poems) {
         listOf(AllTopics) + state.poems.map { it.topic }.distinct()
     }
+    val topic = topicStored.orFirstIn(topics)
     val hasActiveFilters = topic != AllTopics || sort != PoemSort.Newest
 
     val visiblePoems = remember(state.poems, selectedTab, query, topic, sort) {
@@ -149,21 +156,12 @@ fun PoetryScreen(
                         .padding(horizontal = horizontalPadding - 4.dp, vertical = 2.dp),
                     horizontalArrangement = Arrangement.spacedBy(10.dp),
                 ) {
-                    AtharMenuButton(
-                        label = "الموضوع",
-                        options = topics,
-                        selected = topic,
-                        defaultOption = AllTopics,
-                        onSelect = { topic = it },
-                        tagPrefix = "poetry_topic",
-                    )
-                    AtharMenuButton(
-                        label = "الترتيب",
-                        options = PoemSort.entries.map { it.label },
-                        selected = sort.label,
-                        defaultOption = PoemSort.Newest.label,
-                        onSelect = { label -> sort = PoemSort.entries.first { it.label == label } },
-                        tagPrefix = "poetry_sort",
+                    AtharFilterButton(
+                        groups = listOfNotNull(
+                            if (selectedTab == SectionTab.Recent) null else AtharChipGroup("الترتيب", PoemSort.entries.map { it.label }, sort.label) { label -> sortName = PoemSort.entries.first { it.label == label }.name },
+                            AtharChipGroup("الموضوع", topics, topic) { topicStored = it },
+                        ),
+                        tagPrefix = "poetry_filter",
                     )
                 }
                 HorizontalDivider(

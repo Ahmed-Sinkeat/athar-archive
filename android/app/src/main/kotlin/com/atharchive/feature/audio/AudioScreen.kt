@@ -46,7 +46,12 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.atharchive.ui.components.AtharChipGroup
 import com.atharchive.ui.components.AtharEmptyState
+import com.atharchive.ui.components.AtharFilterButton
+import com.atharchive.ui.components.enumValueOrNull
+import com.atharchive.ui.components.orFirstIn
+import com.atharchive.ui.components.rememberPersisted
 import com.atharchive.ui.components.SectionTab
 import com.atharchive.ui.components.emptyCopy
 import com.atharchive.ui.components.AtharMenuButton
@@ -74,8 +79,10 @@ fun AudioScreen(
 ) {
     var selectedTab by rememberSaveable { mutableStateOf(SectionTab.All) }
     var query by rememberSaveable { mutableStateOf("") }
-    var type by rememberSaveable { mutableStateOf(AudioType.All) }
-    var sort by rememberSaveable { mutableStateOf(AudioSort.Newest) }
+    var typeName by rememberPersisted("audio.type", AudioType.All.name)
+    val type = enumValueOrNull<AudioType>(typeName) ?: AudioType.All
+    var sortName by rememberPersisted("audio.sort", AudioSort.Newest.name)
+    val sort = enumValueOrNull<AudioSort>(sortName) ?: AudioSort.Newest
     val listState = rememberLazyListState()
 
     val hasActiveFilters = type != AudioType.All || sort != AudioSort.Newest
@@ -149,25 +156,12 @@ fun AudioScreen(
                             .padding(horizontal = horizontalPadding - 4.dp, vertical = 2.dp),
                         horizontalArrangement = Arrangement.spacedBy(10.dp),
                     ) {
-                        AtharMenuButton(
-                            label = "النوع",
-                            options = AudioType.entries.map { it.label },
-                            selected = type.label,
-                            defaultOption = AudioType.All.label,
-                            onSelect = { label ->
-                                type = AudioType.entries.first { it.label == label }
-                            },
-                            tagPrefix = "audio_type",
-                        )
-                        AtharMenuButton(
-                            label = "الترتيب",
-                            options = AudioSort.entries.map { it.label },
-                            selected = sort.label,
-                            defaultOption = AudioSort.Newest.label,
-                            onSelect = { label ->
-                                sort = AudioSort.entries.first { it.label == label }
-                            },
-                            tagPrefix = "audio_sort",
+                        AtharFilterButton(
+                            groups = listOfNotNull(
+                                AtharChipGroup("النوع", AudioType.entries.map { it.label }, type.label) { label -> typeName = AudioType.entries.first { it.label == label }.name },
+                                if (selectedTab == SectionTab.Recent) null else AtharChipGroup("الترتيب", AudioSort.entries.map { it.label }, sort.label) { label -> sortName = AudioSort.entries.first { it.label == label }.name },
+                            ),
+                            tagPrefix = "audio_filter",
                         )
                     }
                     HorizontalDivider(

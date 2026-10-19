@@ -50,7 +50,11 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.atharchive.ui.components.AtharChipGroup
 import com.atharchive.ui.components.AtharEmptyState
+import com.atharchive.ui.components.AtharFilterButton
+import com.atharchive.ui.components.enumValueOrNull
+import com.atharchive.ui.components.rememberPersisted
 import com.atharchive.ui.components.AtharMenuButton
 import com.atharchive.ui.components.AtharTab
 import com.atharchive.ui.components.AtharTabRow
@@ -78,8 +82,10 @@ fun KannashahScreen(
     onBack: (() -> Unit)? = null,
 ) {
     var query by rememberSaveable { mutableStateOf("") }
-    var sort by rememberSaveable { mutableStateOf(KannashahSort.Newest) }
-    var filter by rememberSaveable { mutableStateOf(KannashahFilter.All) }
+    var sortName by rememberPersisted("kannashah.sort", KannashahSort.Newest.name)
+    val sort = enumValueOrNull<KannashahSort>(sortName) ?: KannashahSort.Newest
+    var filterName by rememberPersisted("kannashah.filter", KannashahFilter.All.name)
+    val filter = enumValueOrNull<KannashahFilter>(filterName) ?: KannashahFilter.All
     val listState = rememberLazyListState()
 
     val matching = remember(state.excerpts, query, filter) {
@@ -164,25 +170,16 @@ fun KannashahScreen(
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.spacedBy(10.dp),
                 ) {
-                    AtharMenuButton(
-                        label = filter.label,
-                        options = KannashahFilter.entries.map { it.label },
-                        selected = filter.label,
-                        defaultOption = KannashahFilter.All.label,
-                        onSelect = { label ->
-                            filter = KannashahFilter.entries.first { it.label == label }
-                        },
+                    AtharFilterButton(
+                        groups = listOf(
+                            AtharChipGroup("الترتيب", KannashahSort.entries.map { it.label }, sort.label) { label ->
+                                sortName = KannashahSort.entries.first { it.label == label }.name
+                            },
+                            AtharChipGroup("النوع", KannashahFilter.entries.map { it.label }, filter.label) { label ->
+                                filterName = KannashahFilter.entries.first { it.label == label }.name
+                            },
+                        ),
                         tagPrefix = "kannashah_filter",
-                    )
-                    AtharMenuButton(
-                        label = "الترتيب",
-                        options = KannashahSort.entries.map { it.label },
-                        selected = sort.label,
-                        defaultOption = KannashahSort.Newest.label,
-                        onSelect = { label ->
-                            sort = KannashahSort.entries.first { it.label == label }
-                        },
-                        tagPrefix = "kannashah_sort",
                     )
                 }
             }
