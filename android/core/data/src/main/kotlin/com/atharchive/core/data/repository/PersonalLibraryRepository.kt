@@ -9,6 +9,7 @@ import com.atharchive.core.data.db.user.RecentSearchEntity
 import com.atharchive.core.data.db.user.UserCollectionEntity
 import java.util.UUID
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 
 class PersonalLibraryRepository(
     private val database: AtharUserDatabase,
@@ -40,6 +41,18 @@ class PersonalLibraryRepository(
                 updatedAt = now,
             ),
         )
+    }
+
+    fun observeFavouriteIds(): Flow<Set<String>> = dao.observeLibraryEntries().map { rows -> rows.mapTo(HashSet()) { it.entityId } }
+
+    suspend fun toggleFavourite(entityId: String) = toggleReadLater(entityId)
+
+    /** One-time, idempotent: collection items + [extraIds] become favourites, then collections are cleared. */
+    suspend fun foldIntoFavourites(extraIds: Collection<String>): Int {
+        val existing = dao.libraryEntries().mapTo(HashSet()) { it.entityId }
+        val rows = favouritesToAdd(existing, dao.collectionItems(), extraIds, nowMillis())
+        dao.foldFavourites(rows)
+        return rows.size
     }
 
     suspend fun toggleReadLater(entityId: String) {
@@ -84,4 +97,20 @@ class PersonalLibraryRepository(
     suspend fun recordOpened(entityId: String) {
         dao.saveReadingHistory(ReadingHistoryEntity(entityId = entityId, openedAt = nowMillis(), secondsRead = 0))
     }
+}
+
+internal fun favouritesToAdd(
+    existing: Set<String>,
+    items: List<CollectionItemEntity>,
+    extraIds: Collection<String>,
+    now: Long,
+): List<LibraryEntryEntity> {
+    val seen = HashSet(existing)
+    val out = ArrayList<LibraryEntryEntity>()
+    fun add(id: String, at: Long) {
+        if (id.isNotBlank() && seen.add(id)) out += LibraryEntryEntity(id, LibraryStatus.READ_LATER, at, at)
+    }
+    items.forEach { add(it.entityId, it.addedAt) }
+    extraIds.forEach { add(it, now) }
+    return out
 }

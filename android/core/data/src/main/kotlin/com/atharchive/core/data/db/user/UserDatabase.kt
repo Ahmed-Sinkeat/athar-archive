@@ -14,6 +14,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.serialization.Serializable
 
 object LibraryStatus {
+    // ponytail: stored value stays "readLater" so old backups round-trip; any row now means favourite.
     const val READ_LATER = "readLater"
     const val READING = "reading"
     const val FINISHED = "finished"
@@ -162,6 +163,22 @@ interface UserDataDao {
 
     @Query("DELETE FROM userCollection WHERE id = :collectionId")
     suspend fun removeUserCollection(collectionId: String)
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertLibraryEntries(rows: List<LibraryEntryEntity>)
+
+    @Query("DELETE FROM collectionItem")
+    suspend fun clearCollectionItems()
+
+    @Query("DELETE FROM userCollection")
+    suspend fun clearUserCollections()
+
+    @Transaction
+    suspend fun foldFavourites(rows: List<LibraryEntryEntity>) {
+        insertLibraryEntries(rows)
+        clearCollectionItems()
+        clearUserCollections()
+    }
 
     @Transaction
     suspend fun removeCollection(collectionId: String) {
