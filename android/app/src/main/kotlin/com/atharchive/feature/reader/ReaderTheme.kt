@@ -27,6 +27,8 @@ data class ReaderColors(
     val accent: Color,
     /** Large filled areas — play discs. Deeper than [accent] in the dark palette. */
     val accentFill: Color,
+    /** Text on [accentFill] — selected segments. White on burgundy is 7.7:1 in every palette. */
+    val onAccent: Color,
     val highlight: Color,
     val selection: Color,
     /**
@@ -60,7 +62,7 @@ fun rememberReaderColors(palette: ReaderPalette): ReaderColors {
 
 internal fun followedReaderColors(app: AtharExtraColors, text: Color) = ReaderColors(
     page = app.canvas, text = text, secondary = app.secondaryText, divider = app.divider,
-    accent = app.accent, accentFill = app.primaryAction,
+    accent = app.accent, accentFill = app.primaryAction, onAccent = app.onPrimaryAction,
     highlight = app.accent.copy(alpha = 0.20f), selection = app.accent.copy(alpha = 0.32f),
     saved = if (app.canvas.luminance() < 0.5f) NightSaved else PaperSaved,
     ayah = if (app.canvas.luminance() < 0.5f) NightAyah else PaperAyah,

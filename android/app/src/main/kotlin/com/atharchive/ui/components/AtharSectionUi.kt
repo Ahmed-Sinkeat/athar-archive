@@ -188,34 +188,30 @@ private fun SectionTabCell(
     tagPrefix: String,
     modifier: Modifier = Modifier,
 ) {
-    Column(
+    Box(
         modifier = modifier
             .testTag("${tagPrefix}_tab_${tab.key}")
-            .defaultMinSize(minHeight = if (largeText) 60.dp else 42.dp)
+            .defaultMinSize(minHeight = if (largeText) 60.dp else 48.dp)
             .clickable(role = Role.Tab, onClick = onClick)
             .semantics {
                 this.selected = selected
                 contentDescription = tab.label
             }
-            .padding(top = 8.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
+            .padding(horizontal = 2.dp, vertical = 5.dp),
+        contentAlignment = Alignment.Center,
     ) {
+        // Solid fill + light text when selected (S9); a tinted background with accent text read as disabled.
         Text(
             text = tab.label,
-            color = if (selected) AtharTheme.colors.accent else AtharTheme.colors.secondaryText,
+            modifier = Modifier
+                .clip(AtharCorners.Control)
+                .background(if (selected) AtharTheme.colors.primaryAction else Color.Transparent)
+                .padding(horizontal = 10.dp, vertical = 6.dp),
+            color = if (selected) AtharTheme.colors.onPrimaryAction else AtharTheme.colors.secondaryText,
             style = MaterialTheme.typography.bodyMedium,
-            fontWeight = if (selected) FontWeight.Bold else FontWeight.Normal,
+            fontWeight = if (selected) FontWeight.SemiBold else FontWeight.Normal,
             maxLines = if (largeText) 2 else 1,
             overflow = TextOverflow.Clip,
-        )
-        // Fixed gap, not weight(1f): weight swallows all the height once the row is in a bounded column.
-        Spacer(Modifier.height(4.dp))
-        Box(
-            Modifier
-                .padding(top = 6.dp)
-                .width(46.dp)
-                .height(1.5.dp)
-                .background(if (selected) AtharTheme.colors.accent else Color.Transparent),
         )
     }
 }
@@ -310,9 +306,11 @@ fun AtharMenuButton(
         ) {
             Text(
                 text = if (isDefault) label else selected,
-                // Weight, not colour, carries "something is applied" — burgundy is
-                // reserved for active navigation and progress.
-                color = AtharTheme.colors.secondaryText,
+                modifier = if (isDefault) Modifier else Modifier
+                    .clip(AtharCorners.Control)
+                    .background(AtharTheme.colors.primaryAction)
+                    .padding(horizontal = 8.dp, vertical = 2.dp),
+                color = if (isDefault) AtharTheme.colors.secondaryText else AtharTheme.colors.onPrimaryAction,
                 style = MaterialTheme.typography.bodySmall,
                 fontWeight = if (isDefault) FontWeight.Normal else FontWeight.SemiBold,
                 maxLines = 1,
@@ -456,7 +454,7 @@ fun AtharChip(label: String, selected: Boolean, onClick: () -> Unit, modifier: M
             text = label,
             modifier = Modifier
                 .clip(AtharCorners.Control)
-                .background(if (selected) AtharTheme.colors.accent else AtharTheme.colors.divider.copy(alpha = 0.28f))
+                .background(if (selected) AtharTheme.colors.primaryAction else AtharTheme.colors.divider.copy(alpha = 0.28f))
                 .padding(horizontal = 14.dp, vertical = 7.dp),
             color = if (selected) AtharTheme.colors.onPrimaryAction else AtharTheme.colors.secondaryText,
             style = MaterialTheme.typography.bodyMedium,

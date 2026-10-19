@@ -201,7 +201,7 @@ internal fun SegmentRow(
                     .weight(1f)
                     .clip(AtharCorners.Control)
                     .background(
-                        if (isSelected) colors.accent.copy(alpha = 0.13f) else colors.divider.copy(alpha = 0.28f),
+                        if (isSelected) colors.accentFill else colors.divider.copy(alpha = 0.28f),
                     )
                     .heightIn(min = 48.dp)
                     .selectable(selected = isSelected, role = Role.RadioButton) { onSelect(option) }
@@ -211,7 +211,7 @@ internal fun SegmentRow(
             ) {
                 Text(
                     text = option,
-                    color = if (isSelected) colors.accent else colors.secondary,
+                    color = if (isSelected) colors.onAccent else colors.secondary,
                     style = MaterialTheme.typography.labelMedium,
                     fontWeight = if (isSelected) FontWeight.SemiBold else FontWeight.Normal,
                 )
