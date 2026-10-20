@@ -90,6 +90,9 @@ in the source (26 → 28) stays a gap.
 - A heading the import put in the middle of a sentence (`… نتحدث عن` / `## مصدر التلقي عندهم،` /
   `فإن …`) goes back into its sentence. If the book's own numbered line for that section sits just
   before it (`3- مصدر التلقِّي عندهم:`), that line becomes the heading. Only `##` and line breaks move.
+- An import `##` left in the middle of a paragraph (`… الفتن (^1) ## أولاً: مفهوم الاعتصام: لا شك …`)
+  is a real heading: put it on its own line with a blank line before and after, ending where the
+  heading's own text ends (`## أولاً: مفهوم الاعتصام:`).
 
 ### 5. Bullets that aren't lists
 
