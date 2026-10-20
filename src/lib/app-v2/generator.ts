@@ -40,6 +40,8 @@ export interface GenerateAppContentOptions {
   targets: readonly ContentTarget[];
   signing?: SigningOptions;
   loadAudio?: (url: string, id: string, format: "opus" | "mp3") => Promise<Buffer>;
+  /** Regenerate only `targets` and keep every other entry of the previous catalog (local phone checks). */
+  keepOthers?: boolean;
 }
 
 export interface GeneratedEntitySummary {
@@ -406,8 +408,11 @@ async function generate(options: GenerateAppContentOptions, stagingRoot: string)
       const document = JSON.parse(bytes.toString("utf8"));
       if (kind === "catalog") {
         for (const entry of (document as CatalogDocument).entries) {
-          if (!unique.has(entry.id)) tombstones.deleted.push({ id: entry.id, coll: entry.coll, at: TOMBSTONE_EPOCH });
+          if (unique.has(entry.id)) continue;
+          if (options.keepOthers) catalogEntries.push(entry);
+          else tombstones.deleted.push({ id: entry.id, coll: entry.coll, at: TOMBSTONE_EPOCH });
         }
+        catalogEntries.sort((a, b) => compareText(a.coll, b.coll) || compareText(a.id, b.id));
       } else tombstones.deleted.push(...(document as TombstoneDocument).deleted.filter((entry) => !unique.has(entry.id)));
     }
     tombstones.deleted = [...new Map(tombstones.deleted.map((entry) => [entry.id, entry])).values()].sort((a, b) => compareText(a.id, b.id));

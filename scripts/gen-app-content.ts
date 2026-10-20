@@ -29,11 +29,17 @@ const signing = signingKeyFile && signingKeyId
   ? { keyId: signingKeyId, privateKey: await readFile(path.resolve(signingKeyFile), "utf8") }
   : undefined;
 
+// --only=coll/id,coll/id: regenerate just those and keep the rest of the previous catalog
+const only = option("--only")?.split(",").map((pair) => {
+  const [coll, id] = pair.split("/");
+  return { coll, id } as ContentTarget;
+});
 const result = await generateAppContent({
   repositoryRoot,
   outputRoot,
   sidecarRoot,
-  targets: slice ? SLICE : await publishedContentTargets(repositoryRoot),
+  targets: only ?? (slice ? SLICE : await publishedContentTargets(repositoryRoot)),
+  keepOthers: only != null,
   signing,
   loadAudio: fetchAppAudio,
 });
