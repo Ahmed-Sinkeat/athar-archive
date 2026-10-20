@@ -150,6 +150,7 @@ before and after.
 | One printed page with two markers (the import split it at a new باب) | drop the first marker, move its notes to the second, shift that page's later `(^N)` |
 | A marker with a wrong number (`7, 11, 9, 10, 11`) | renumber it (`8`) |
 | Verse halves swapped across columns | move the halves back |
+| A `[^fnN]` ref at a paragraph end or on the wrong word, while the book's printed `(N)` for that note is elsewhere on the page | move only the `[^fnN]` to just after that `(N)`; read the note first |
 
 **Report, don't fix** (needs the original source): text the import lost (كتاب الإيمان p57→58
 lost ~3 lines, so p58 opens with `74] ,`), a book that stops early (كتاب الإيمان ends at p99; the
