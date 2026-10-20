@@ -8,6 +8,7 @@ import com.atharchive.core.data.db.content.ContentAvailability
 import com.atharchive.core.data.db.content.ContentBlockEntity
 import com.atharchive.core.data.db.content.ContentEntity
 import com.atharchive.core.data.db.content.ContentTransferState
+import com.atharchive.core.data.db.content.EntityFrameEntity
 import com.atharchive.core.data.db.content.FrameImportResult
 import com.atharchive.core.data.db.user.AtharUserDatabase
 import com.atharchive.core.data.network.AppContentHttpClient
@@ -132,18 +133,22 @@ class ReadThroughContentRepository(
         val cached = dao.frames(entry.id).firstOrNull {
             targetOrdinal >= it.firstBlockOrdinal && targetOrdinal < it.firstBlockOrdinal + it.blockCount
         }
-        if (cached != null) {
+        suspend fun fromCache(frame: EntityFrameEntity): ReadThroughResult {
             val now = nowMillis()
-            dao.touchFrame(entry.id, cached.frameOrdinal, now)
+            dao.touchFrame(entry.id, frame.frameOrdinal, now)
             dao.touchEntity(entry.id, now)
             val entity = requireNotNull(dao.entity(entry.id))
             return ReadThroughResult(
                 fromCache = true,
-                frameNumber = cached.frameOrdinal,
+                frameNumber = frame.frameOrdinal,
                 availability = entity.availability,
                 importedBlocks = dao.importedBlockCount(entry.id),
             )
         }
+        // A frame of an older package (the book was updated since it was read) is only a
+        // fallback: fetching the new frame makes the importer replace the old copy.
+        val stale = dao.entity(entry.id)?.localPackageHash.let { it != null && it != entry.pkg.hash }
+        if (cached != null && !stale) return fromCache(cached)
 
         // No transfer-state writes on the read-through path: every UPDATE on `entity`
         // re-runs each catalog list query and costs a commit (≈0.3 s each on a Redmi).
@@ -169,6 +174,7 @@ class ReadThroughContentRepository(
                 importer.importVerifiedFrame(entry, frameNumber, frame, bytes).toReadThrough(frameNumber)
             }
         } catch (error: Throwable) {
+            if (cached != null && error !is CancellationException) return fromCache(cached) // offline: keep the old text
             runCatching { dao.markTransfer(entry.id, ContentTransferState.FAILED) }
             throw error
         }

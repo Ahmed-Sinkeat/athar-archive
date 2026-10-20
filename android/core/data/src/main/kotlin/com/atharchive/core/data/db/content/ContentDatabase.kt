@@ -247,23 +247,36 @@ abstract class ContentCatalogDao {
         generation: ContentGenerationEntity,
     ) {
         val current = allEntities().associateBy(ContentEntity::id)
+        // Read-through pages carry no package version, so pages cached from an older package
+        // would be served forever; drop them and the reader fetches the new ones. A download
+        // (localVersion set) keeps its copy until the new package replaces it.
+        val stalePages = incoming.filter { fresh ->
+            current[fresh.id]?.let { it.localVersion == null && it.pkgHash != fresh.pkgHash } == true
+        }.mapTo(mutableSetOf()) { it.id }
         val merged = incoming.map { fresh ->
             current[fresh.id]?.let { local ->
                 val contentChanged = local.localVersion != null && local.localPackageHash != fresh.pkgHash
+                val dropPages = fresh.id in stalePages
                 fresh.copy(
                     catalogPresent = true,
-                    availability = local.availability,
+                    availability = if (dropPages) ContentAvailability.ABSENT else local.availability,
                     transferState = ContentTransferState.IDLE,
                     updateAvailable = contentChanged,
                     localVersion = local.localVersion,
                     localPackageHash = local.localPackageHash,
                     lastOpenedAt = local.lastOpenedAt,
-                    bytesOnDisk = local.bytesOnDisk,
-                    importProgress = local.importProgress,
+                    bytesOnDisk = if (dropPages) 0 else local.bytesOnDisk,
+                    importProgress = if (dropPages) 0 else local.importProgress,
                 )
             } ?: fresh
         }
         if (merged.isNotEmpty()) replaceEntities(merged)
+        for (entityId in stalePages) {
+            deleteBlocks(entityId)
+            deleteFrames(entityId)
+            deleteChapters(entityId)
+            deleteFootnotes(entityId)
+        }
 
         for (entityId in tombstonedIds) {
             // Mark first, then let the repository re-snapshot the user DB before purge.
