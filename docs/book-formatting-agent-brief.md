@@ -59,6 +59,15 @@ git show 15a42301               # الأصول الثلاثة: book card, stray 
 6. **Stop** with `<BOOK>` in its final state and `stageA.md` = the markup-only stage. If there
    were no import fixes, the two are identical.
 
+## Mistakes reviewers caught
+
+- Footnote anchors may use Arabic-Indic digits (`(^٣)`): survey for those as well as ASCII.
+- A `- …` line ending in `-.` or ` -` is a dash aside (جملة معترضة) in the text, not a bullet: leave it.
+- Never move a connective (`و`, `ثم`) into a heading; bold the label after it instead (`و**الفرد النسبي:** …`).
+- Two `<!-- card -->` pairs: the second is ignored and stays in the reading flow. Use one.
+- The strict gate rejects any reorder of text, even two swapped verse halves: that is an import
+  fix (`--import-fix`), or report it.
+
 ## When to stop early
 
 Something the rules don't cover: leave it as it is and report it. Don't invent a rule. If a part of

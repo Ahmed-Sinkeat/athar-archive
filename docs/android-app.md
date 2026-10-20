@@ -203,6 +203,23 @@ rather than handed over unbuilt.
 Also needed for release: Play Store developer account ($25 once), privacy policy,
 content rating.
 
+### Phone checks with local content (never R2)
+
+R2 is what every install reads, so unfinished content stays local; upload only on "publish".
+
+```sh
+node scripts/serve-app-content.mjs                    # HTTPS on localhost:8443, answers Range requests
+adb reverse tcp:8443 tcp:8443
+(set -a; . ~/.config/athar/publish.env; set +a; \
+  ./node_modules/.bin/tsx scripts/gen-app-content.ts --only=book/<id>,book/<id>)   # signed; keeps the rest of the catalog
+cd android && (set -a; . ~/.config/athar/android-release.env; set +a; \
+  ATHAR_CONTENT_BASE_URL=https://localhost:8443/app/v2/ ./gradlew :app:assembleBenchmark)
+adb shell am start -n com.atharchive/.MainActivity -e athar_download book:<id>:<blockIndex>   # opens the reader there
+```
+
+A full `gen-app-content` without `--only` also needs `ATHAR_AUDIO_CACHE` (a copy of the previous
+`dist/app-content/app/v2/audio`), or it re-downloads every recording.
+
 ---
 
 ## Settled / open

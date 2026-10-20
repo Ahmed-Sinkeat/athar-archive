@@ -133,9 +133,13 @@ A quote inside a sentence stays inline.
 
 ### 10. Book card
 
-The title page and the editor's front matter (author line, edition, manuscripts used) go between
-`<!-- card -->` and `<!-- /card -->`. The app moves those lines into ⋮ → «بطاقة الكتاب»; page
-markers inside stay in the flow. The website still shows the lines (the comments are invisible).
+The title page and the editor's front matter (author line, edition, the editor's intro, manuscripts
+used) go between `<!-- card -->` and `<!-- /card -->`, closing right after the page marker before
+the matn's own opening. The app takes those lines out of the reading flow and shows them as the
+book's «مقدمة» page (⋮ → «مقدمة»), drawn like the book: `##` lines stay headings, `- ` lines stay
+list items, `label: value` lines get a bold label; `[^x]` refs are dropped there. Page markers inside
+stay in the flow. **One pair per book**: the parser reads only the first. The website still shows the
+lines (the comments are invisible).
 
 ## Import errors
 
