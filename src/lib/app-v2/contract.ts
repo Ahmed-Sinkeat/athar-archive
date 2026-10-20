@@ -74,6 +74,8 @@ export interface ParsedDocument {
 export interface CardField {
   l: string;
   v: string;
+  /** Marked front matter only: "h" a heading, "li" a list item; otherwise a paragraph. */
+  k?: "h" | "li";
 }
 
 export interface PackageHeader {

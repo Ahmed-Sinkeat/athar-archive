@@ -461,9 +461,14 @@ export function extractCard(body: string): { body: string; card: CardField[] } {
   const marked = body.match(/<!--\s*card\s*-->([\s\S]*?)<!--\s*\/card\s*-->\n?/);
   if (marked) {
     const pages = marked[1]!.match(/<hr\b[^>]*\bpage-sep\b[^>]*>/g) ?? []; // stay in the flow, so page numbers hold
-    const card = marked[1]!.replace(/<[^>]+>/g, "").split("\n")
-      .map((line) => line.replace(/^\s*(?:#{1,6}|[-*+]|>)\s+/, "").replace(/\*\*/g, "").trim())
-      .filter(Boolean).map((line) => field(line) ?? { l: "", v: line });
+    // The app shows these lines as the book's «مقدمة» page, so headings and list items keep their kind.
+    const card = marked[1]!.replace(/<[^>]+>/g, "").replace(/\[\^[^\]\s]+\]/g, "").split("\n").flatMap((raw): CardField[] => {
+      const kind = /^\s*#{1,6}\s/.test(raw) ? "h" : /^\s*[-*+]\s/.test(raw) ? "li" : undefined;
+      const line = raw.replace(/^\s*(?:#{1,6}|[-*+]|>)\s+/, "").replace(/\*\*/g, "").trim();
+      if (!line) return [];
+      const entry = (kind !== "h" && field(line)) || { l: "", v: line };
+      return [kind ? { ...entry, k: kind } : entry];
+    });
     return { body: body.replace(marked[0], pages.join("\n\n") + "\n"), card };
   }
   const lines = body.split("\n");

@@ -53,7 +53,7 @@ describe("app/v2 semantic parser", () => {
     expect(book.chapters).toEqual([{ a: "نواقض-الإسلام", title: "نواقض الإسلام", block: 0 }]);
     expect(book.pages).toEqual({ from: 23, to: 28, vols: 1 });
     expect(book.blocks.filter((block) => block.t === "page")).toHaveLength(6);
-    expect(book.blocks.filter((block) => block.t === "li")).toHaveLength(6);
+    expect(book.card).toHaveLength(9); // the editor's list sits in the book card since the 143fc63e formatting
     expect(book.blocks.flatMap((block) => block.sp ?? []).filter((span) => span.k === "strong")).toHaveLength(10);
 
     const question = parseFile("question", "swteat-866");
@@ -251,9 +251,11 @@ describe("extractCard", () => {
 
   it("moves a formatter-marked <!-- card --> region to the card, keeping its page markers in the flow", () => {
     const marked = extractCard([
-      "<!-- card -->", "النسخ المعتمدة:", "- **نسخة** خطية", "تحقيق: فلان", '<hr class="page-sep" data-page="2" />', "<!-- /card -->", "اعلم",
+      "<!-- card -->", "## مقدمة المحقق", "النسخ المعتمدة:[^fn1]", "- **نسخة** خطية", "تحقيق: فلان", '<hr class="page-sep" data-page="2" />', "<!-- /card -->", "اعلم",
     ].join("\n"));
-    expect(marked.card).toEqual([{ l: "", v: "النسخ المعتمدة:" }, { l: "", v: "نسخة خطية" }, { l: "تحقيق", v: "فلان" }]);
+    expect(marked.card).toEqual([
+      { l: "", v: "مقدمة المحقق", k: "h" }, { l: "", v: "النسخ المعتمدة:" }, { l: "", v: "نسخة خطية", k: "li" }, { l: "تحقيق", v: "فلان" },
+    ]);
     expect(marked.body).toBe('<hr class="page-sep" data-page="2" />\nاعلم');
   });
 });
