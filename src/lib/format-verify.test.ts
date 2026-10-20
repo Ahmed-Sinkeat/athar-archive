@@ -40,3 +40,9 @@ test("import-fix mode may merge a page the import split in two, moving its notes
   expect(verifyFormatting(split, merged)).toMatch(/page/);
   expect(verifyFormatting(split, merged.replace("## باب\n", ""), true)).toMatch(/text/);
 });
+
+test("an inline import «##» may become a real heading", () => {
+  const inline = `فتن (^1) ## أولاً: مفهوم: لا شك`;
+  expect(verifyFormatting(inline, `فتن (^1)\n\n## أولاً: مفهوم:\n\nلا شك`)).toBeUndefined();
+  expect(verifyFormatting(inline, `فتن (^1)\n\n## أولاً مفهوم:\n\nلا شك`)).toMatch(/text/);
+});

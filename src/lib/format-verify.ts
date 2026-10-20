@@ -25,6 +25,8 @@ function text(body: string, importFix = false): string {
     .replace(PAGE_MARKS, (tag) => `\u0001${notesText(tag)}\u0001`)
     .replace(/<[^>]+>/g, "")
     .replace(/^[ \t]*(?:#{1,6}[ \t]+|[-*+][ \t]+|>[ \t]?|(?:-{3,}|\*{3,})[ \t]*$)/gm, "")
+    // old imports left «## عنوان» mid-paragraph; that «##» is markup too, so it may move to a line start
+    .replace(/(^|[ \t])#{2,6}[ \t]+/gm, "$1")
     .replace(/\*\*|\{#[\w-]+\}/g, "")
     // ponytail: «...»/«…» is how imports draw the gap between two hemistichs, i.e. layout; a prose
     // ellipsis added or dropped slips through. Count only spaced ones if that ever matters.
