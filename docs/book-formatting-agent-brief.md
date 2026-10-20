@@ -53,7 +53,9 @@ git show 15a42301               # الأصول الثلاثة: book card, stray 
 5. **Required before you report** (a reviewer reruns both and rejects a report that skipped them):
    rerun the gate(s) **after your last edit**, and print and read the anchor/note pairs from step 3.
    Then check each claim in your report against the file (`grep` it): a paragraph you say you kept
-   joined must still be joined.
+   joined must still be joined. A heading line ends its paragraph, so when you rejoin one into its
+   sentence, keep a blank line after the joined line; otherwise the next paragraph (the next hadith)
+   merges into it. Check the gate's block count: it should drop by about one per heading you rejoined.
 6. **Stop** with `<BOOK>` in its final state and `stageA.md` = the markup-only stage. If there
    were no import fixes, the two are identical.
 
