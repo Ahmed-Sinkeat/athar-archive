@@ -34,38 +34,29 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.window.Popup
-import androidx.compose.ui.window.PopupProperties
+import com.atharchive.ui.components.AtharMenu
+import com.atharchive.ui.components.AtharMenuColors
 
 /**
- * A small anchored popover, never a settings page: changes land on the text visible
- * behind it, so the reader judges them in place instead of returning to check.
+ * A small popover over the Aa button, never a settings page: changes land on the text visible
+ * behind it, so the reader judges them in place instead of returning to check. It is the app's
+ * one menu (AtharMenu) in the page's colours — put it in the same Box as the Aa button.
  */
 @Composable
 fun ReaderSettingsPopover(
+    expanded: Boolean,
     settings: ReaderSettings,
     colors: ReaderColors,
     onChange: (ReaderSettings) -> Unit,
     onDismiss: () -> Unit,
 ) {
-    Popup(
-        alignment = Alignment.BottomCenter,
-        offset = androidx.compose.ui.unit.IntOffset(0, -260),
-        onDismissRequest = onDismiss,
-        properties = PopupProperties(focusable = true),
+    AtharMenu(
+        expanded = expanded,
+        onDismiss = onDismiss,
+        width = 300.dp,
+        colors = AtharMenuColors(card = colors.page, ink = colors.text, secondary = colors.secondary, accent = colors.accent),
     ) {
-        Column(
-            modifier = Modifier
-                .width(320.dp)
-                // Rows fit at normal font scale; the scroll below is only a safety valve for huge fonts.
-                .heightIn(max = 560.dp)
-                .clip(AtharCorners.Surface)
-                .background(colors.page)
-                .border(1.dp, colors.divider, AtharCorners.Surface)
-                .verticalScroll(rememberScrollState())
-                .padding(horizontal = 14.dp, vertical = 12.dp)
-                .testTag("reader_settings_popover"),
-        ) {
+        Column(Modifier.padding(horizontal = 12.dp, vertical = 4.dp).testTag("reader_settings_popover")) {
             LabeledRow("حجم الخط", colors) {
             // A− on the left, A+ on the right, as in every reader: the order is spatial
             // (small → large), not reading direction.
@@ -131,7 +122,7 @@ fun ReaderSettingsPopover(
 @Composable
 private fun LabeledRow(label: String, colors: ReaderColors, content: @Composable () -> Unit) {
     Row(
-        modifier = Modifier.fillMaxWidth().padding(vertical = 2.dp),
+        modifier = Modifier.fillMaxWidth().padding(vertical = 3.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Text(
@@ -148,7 +139,7 @@ private fun LabeledRow(label: String, colors: ReaderColors, content: @Composable
 private fun GroupLabel(text: String, colors: ReaderColors) {
     Text(
         text = text,
-        modifier = Modifier.padding(top = 6.dp, bottom = 6.dp),
+        modifier = Modifier.padding(top = 4.dp, bottom = 4.dp),
         color = colors.secondary,
         style = MaterialTheme.typography.labelSmall,
     )
@@ -164,7 +155,7 @@ private fun StepButton(
 ) {
     Box(
         modifier = Modifier
-            .size(48.dp)
+            .size(36.dp)
             .clip(CircleShape)
             .background(colors.divider.copy(alpha = 0.35f))
             .clickable(enabled = enabled, role = Role.Button, onClick = onClick)
@@ -203,9 +194,9 @@ internal fun SegmentRow(
                     .background(
                         if (isSelected) colors.accentFill else colors.divider.copy(alpha = 0.28f),
                     )
-                    .heightIn(min = 48.dp)
+                    .heightIn(min = 34.dp)
                     .selectable(selected = isSelected, role = Role.RadioButton) { onSelect(option) }
-                    .padding(vertical = 8.dp)
+                    .padding(vertical = 6.dp)
                     .testTag("${tagPrefix}_$index"),
                 contentAlignment = Alignment.Center,
             ) {

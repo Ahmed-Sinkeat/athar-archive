@@ -299,7 +299,11 @@ fun AtharApp(
     }
 
     LaunchedEffect(downloadTarget) {
-        if (downloadTarget != null) { backStack.add(DownloadsRoute(downloadTarget)); onDownloadTargetHandled() }
+        // ponytail: "book:<id>[:<ordinal>]" opens the reader, for adb phone checks
+        // (`am start -e athar_download book:<id>:<n>`); a real deep link replaces it if one is ever needed.
+        val book = downloadTarget?.removePrefix("book:")?.takeIf { it != downloadTarget }?.split(":")
+        if (book != null) { backStack.add(ReaderRoute(book[0], targetOrdinal = book.getOrNull(1)?.toIntOrNull())); onDownloadTargetHandled() }
+        else if (downloadTarget != null) { backStack.add(DownloadsRoute(downloadTarget)); onDownloadTargetHandled() }
     }
     val tabState = androidx.compose.runtime.saveable.rememberSaveableStateHolder()
     val inReader = backStack.lastOrNull() is ReaderRoute

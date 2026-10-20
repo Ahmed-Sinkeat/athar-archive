@@ -18,6 +18,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -36,6 +37,8 @@ import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.boundsInWindow
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalDensity
@@ -229,7 +232,7 @@ fun AtharBottomBar(
                         horizontalAlignment = Alignment.CenterHorizontally,
                     ) {
                         Icon(
-                            imageVector = destination.icon,
+                            imageVector = if (selected) destination.selectedIcon else destination.icon,
                             contentDescription = null,
                             tint = tint,
                             modifier = Modifier
@@ -255,4 +258,24 @@ fun AtharBottomBar(
             }
         }
     }
+}
+
+/**
+ * The bar's soap pill for a button that toggles on and off rather than one tab of many (the
+ * reader's contents, audio and bookmark): it springs in under the icon with a little wobble.
+ * Put it in a Box behind the icon.
+ */
+@Composable
+fun SoapPill(active: Boolean, color: Color) {
+    val grow by androidx.compose.animation.core.animateFloatAsState(
+        if (active) 1f else 0f,
+        androidx.compose.animation.core.spring(dampingRatio = 0.5f, stiffness = androidx.compose.animation.core.Spring.StiffnessMediumLow),
+        label = "soap_pill",
+    )
+    Box(
+        Modifier
+            .size(46.dp, 32.dp)
+            .graphicsLayer { scaleX = grow; scaleY = 0.8f + 0.2f * grow; alpha = grow.coerceIn(0f, 1f) }
+            .background(color, CircleShape),
+    )
 }

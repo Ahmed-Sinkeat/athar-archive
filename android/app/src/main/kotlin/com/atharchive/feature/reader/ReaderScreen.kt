@@ -1,11 +1,19 @@
 package com.atharchive.feature.reader
 
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import com.atharchive.ui.components.SoapPill
 import com.atharchive.ui.theme.AtharCorners
 import com.atharchive.ui.theme.AtharTextSize
 import androidx.activity.compose.BackHandler
 import kotlinx.coroutines.CancellationException
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.ui.unit.Velocity
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.runtime.mutableFloatStateOf
+import androidx.compose.animation.core.spring
+import androidx.compose.animation.core.animate
+import androidx.compose.animation.core.Spring
 import androidx.compose.animation.expandVertically
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -39,6 +47,11 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.AlertDialog
+import androidx.compose.foundation.layout.systemBarsPadding
+import androidx.compose.ui.window.Dialog
+import androidx.compose.ui.window.DialogProperties
+import com.atharchive.core.data.content.CardField
+import com.atharchive.core.data.content.InlineSpan
 import androidx.compose.material3.TextButton
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -70,8 +83,10 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.foundation.layout.offset
 import kotlin.math.roundToInt
 import androidx.compose.ui.unit.IntOffset
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
+import androidx.compose.ui.input.nestedscroll.NestedScrollSource
 import androidx.compose.ui.input.nestedscroll.nestedScroll
-import com.atharchive.ui.components.rememberAtharCollapsingHeader
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -116,6 +131,7 @@ fun ReaderScreen(
     onAnchorJump: (suspend (String) -> Int?)? = null,
     onLoadSelectionBlocks: (suspend (IntRange) -> List<ReaderBlock>)? = null,
 ) {
+    var introOpen by remember { mutableStateOf(false) }
     var settingsOpen by remember { mutableStateOf(false) }
     var panelOpen by remember { mutableStateOf(false) }
     var query by remember { mutableStateOf("") }
@@ -148,14 +164,30 @@ fun ReaderScreen(
         }
     }
 
-    // The bars hide when the reader scrolls down and return on the first scroll up. Driven by
-    // the gesture (nested scroll), so the jump to the saved place or a search jump never hides
-    // them; a tap on the page brings them back or hides them.
-    val chrome = rememberAtharCollapsingHeader()
-    val topBarVisible = chrome.visible
+    // Sada's bars (audio-editor CollapsingHeader): they follow the finger, sliding away as the
+    // page scrolls down and back as it scrolls up, and settle open or closed when it lets go.
+    // They float over the page, so the text never moves. Driven by the gesture (nested scroll),
+    // so the jump to the saved place or a search jump never moves them; a tap shows or hides them.
+    var barsHidden by remember { mutableFloatStateOf(0f) } // 0 shown … 1 hidden
+    suspend fun settleBars(target: Float) =
+        animate(barsHidden, target, animationSpec = spring(stiffness = Spring.StiffnessMediumLow)) { value, _ -> barsHidden = value }
+    val density = LocalDensity.current
+    val hideOnScroll = remember(density) {
+        val distance = with(density) { 64.dp.toPx() } // finger travel that fully hides them
+        object : NestedScrollConnection {
+            override fun onPreScroll(available: Offset, source: NestedScrollSource): Offset {
+                barsHidden = (barsHidden - available.y / distance).coerceIn(0f, 1f)
+                return Offset.Zero
+            }
+            override suspend fun onPostFling(consumed: Velocity, available: Velocity): Velocity {
+                settleBars(if (barsHidden > 0.5f) 1f else 0f)
+                return Velocity.Zero
+            }
+        }
+    }
     // A tap on the page dismisses a selection, otherwise toggles the bars.
     fun onPageTap() {
-        if (selection.active) selection.clear() else chrome.toggle()
+        if (selection.active) selection.clear() else scope.launch { settleBars(if (barsHidden < 0.5f) 1f else 0f) }
     }
 
     // Reading position is written continuously. There is no "save position" control,
@@ -290,17 +322,15 @@ fun ReaderScreen(
         else -> ((currentIndex + blockFraction) / (state.blockCount - 1)).coerceIn(0f, 1f)
     }
 
+    if (introOpen) IntroPage(state, settings, colors, onLink = ::openLink, onDismiss = { introOpen = false })
     if (shownFootnotes.isNotEmpty()) {
         AlertDialog(
             onDismissRequest = { shownFootnotes = emptyList() },
             containerColor = colors.page, textContentColor = colors.text, titleContentColor = colors.text,
-            title = { Text(if (shownFootnotes == listOf("source")) "بطاقة الكتاب" else "الحواشي") },
+            title = { Text("الحواشي") },
             text = {
                 Column(Modifier.verticalScroll(rememberScrollState())) {
-                    if (shownFootnotes == listOf("source")) Text(
-                        (listOf(state.bookTitle, state.author) + state.card + state.sourceUrl).filter(String::isNotBlank).joinToString("\n"),
-                    )
-                    else shownFootnotes.forEach { id ->
+                    shownFootnotes.forEach { id ->
                         val block = state.footnotes[id]
                         if (block == null) Text("الحاشية لم تُحمّل بعد")
                         else BlockView(block, settings, colors, highlighted = false,
@@ -312,7 +342,6 @@ fun ReaderScreen(
         )
     }
 
-    val density = LocalDensity.current
     val haptics = LocalHapticFeedback.current
     val touchSlop = LocalViewConfiguration.current.touchSlop
     // A held end near the top or bottom edge scrolls the page under it, faster the closer it gets.
@@ -346,31 +375,14 @@ fun ReaderScreen(
       val wide = maxWidth >= 840.dp
       LaunchedEffect(wide) { if (wide) panelOpen = true }
       val panelWidth = if (wide && panelOpen) 360.dp else 0.dp
-      Column(modifier = Modifier.fillMaxSize()) {
-        // A normal top bar that occupies layout space, not a floating overlay. It is the
-        // only chrome that hides, and only while scrolling down.
-        AnimatedVisibility(
-            visible = topBarVisible,
-            enter = expandVertically() + fadeIn(),
-            exit = shrinkVertically() + fadeOut(),
-        ) {
-            ReaderTopBar(
-                bookTitle = state.bookTitle,
-                chapterTitle = chapterTitle,
-                colors = colors,
-                onBack = onBack,
-                onSearch = {
-                    // A second tap closes it, like the poem reader's panel.
-                    if (panelOpen && panelTab == ReaderPanelTab.Search) panelOpen = false
-                    else { panelTab = ReaderPanelTab.Search; panelOpen = true }
-                },
-                onMore = { shownFootnotes = listOf("source") },
-                sourceUrl = state.sourceUrl,
-                onOpenSite = { openLink(state.sourceUrl) },
-            )
-        }
-
-        Box(modifier = Modifier.fillMaxWidth().weight(1f)) {
+      // A narrow panel sits between the bars, so they stay while it is open.
+      val hidden = if (panelOpen && !wide) 0f else barsHidden
+      val barsShown = hidden < 0.5f
+      // The list's padding never changes, so the text doesn't move when the bars come and go.
+      var topBarHeight by remember { mutableStateOf(0.dp) }
+      var bottomBarHeight by remember { mutableStateOf(0.dp) }
+      var bottomOverlayHeight by remember { mutableStateOf(0.dp) }
+      Box(modifier = Modifier.fillMaxSize()) {
         LazyColumn(
             state = listState,
             modifier = Modifier
@@ -400,14 +412,14 @@ fun ReaderScreen(
                     if (selection.active) drawSelectionHandles(selection, colors.accent,
                         drop = HandleDrop.toPx(), radius = 6.dp.toPx(), stem = 2.dp.toPx())
                 }
-                .nestedScroll(chrome.connection)
+                .nestedScroll(hideOnScroll)
                 // Laid out but invisible until the saved place is restored, so the title page
                 // is never drawn and then scrolled away from.
                 .alpha(if (contentReady) 1f else 0f)
                 .fillMaxSize(),
             contentPadding = PaddingValues(
-                top = 12.dp,
-                bottom = 40.dp,
+                top = 12.dp + topBarHeight,
+                bottom = 40.dp + bottomBarHeight,
                 start = settings.margin.dp,
                 end = settings.margin.dp,
             ),
@@ -497,27 +509,6 @@ fun ReaderScreen(
             )
         }
 
-        // ---- progress, kept subtly visible ----
-        Box(
-            modifier = Modifier
-                .align(Alignment.BottomCenter)
-                .fillMaxWidth()
-                .height(3.dp)
-                .background(colors.divider.copy(alpha = 0.5f)),
-        ) {
-            Box(
-                Modifier
-                    .fillMaxSize()
-                    .drawBehind {
-                        val width = size.width * progress()
-                        val left = if (layoutDirection == androidx.compose.ui.unit.LayoutDirection.Rtl) size.width - width else 0f
-                        drawRect(colors.accent, topLeft = androidx.compose.ui.geometry.Offset(left, 0f),
-                            size = androidx.compose.ui.geometry.Size(width, size.height))
-                    }
-                    .testTag("reader_progress"),
-            )
-        }
-
         if (selection.active && !selection.dragging) {
             fun act(done: String, action: suspend (ReaderSelection) -> Unit) {
                 scope.launch {
@@ -549,11 +540,11 @@ fun ReaderScreen(
             )
         }
 
-        // Rendered inside the content Box so it stops above the bottom bar instead of
-        // covering it — the poem reader's panel behaves this way and it reads better.
+        // Between the bars, and above the audio strip.
         if (panelOpen) {
             ReaderPanel(
-                modifier = if (wide) Modifier.width(360.dp) else Modifier,
+                modifier = (if (wide) Modifier.width(360.dp) else Modifier)
+                    .padding(top = if (barsShown) topBarHeight else 0.dp, bottom = bottomOverlayHeight),
                 docked = wide,
                 state = state,
                 colors = colors,
@@ -578,49 +569,95 @@ fun ReaderScreen(
                 initialTab = panelTab,
             )
         }
-        }
 
-        if (audioOpen && state.audio.isNotEmpty()) {
-            ReaderAudioStrip(
-                audio = state.audio,
+        // ---- the bars float over the page ----
+        Box(
+            Modifier.align(Alignment.TopCenter)
+                .onSizeChanged { topBarHeight = with(density) { it.height.toDp() } }
+                .graphicsLayer { translationY = -hidden * size.height; alpha = 1f - hidden },
+        ) {
+            ReaderTopBar(
+                bookTitle = state.bookTitle,
+                chapterTitle = chapterTitle,
                 colors = colors,
-                onPlay = onPlayAudio,
-                onClose = { audioOpen = false },
-                playingId = playingAudioId,
-                playIntent = audioPlayIntent,
+                onBack = onBack,
+                onSearch = {
+                    // A second tap closes it, like the poem reader's panel.
+                    if (panelOpen && panelTab == ReaderPanelTab.Search) panelOpen = false
+                    else { panelTab = ReaderPanelTab.Search; panelOpen = true }
+                },
+                onMore = { introOpen = true },
+                sourceUrl = state.sourceUrl,
+                onOpenSite = { openLink(state.sourceUrl) },
             )
         }
-
-        // A normal bottom bar, always visible — the same shape as the one outside the
-        // reader, just with the reader's own actions.
-        AnimatedVisibility(
-            visible = topBarVisible,
-            enter = expandVertically() + fadeIn(),
-            exit = shrinkVertically() + fadeOut(),
+        // Progress, the audio strip and the bottom bar; the first two ride down to the page's
+        // foot when the bar hides.
+        Column(
+            Modifier.align(Alignment.BottomCenter).fillMaxWidth()
+                .onSizeChanged { bottomOverlayHeight = with(density) { it.height.toDp() } }
+                .graphicsLayer { translationY = hidden * bottomBarHeight.toPx() },
         ) {
-        ReaderBottomBar(
-            colors = colors,
-            bookmarked = state.bookmarks.any { it.blockIndex == currentIndex },
-            hasAudio = state.audio.isNotEmpty(),
-            audioOpen = audioOpen,
-            contentsOpen = panelOpen && panelTab == ReaderPanelTab.Contents,
-            onContents = {
-                if (panelOpen && panelTab == ReaderPanelTab.Contents) panelOpen = false
-                else { panelTab = ReaderPanelTab.Contents; panelOpen = true }
-            },
-            onAudio = { audioOpen = !audioOpen },
-            onSettings = { settingsOpen = true },
-            onBookmark = {
-                val alreadyBookmarked = state.bookmarks.any { it.blockIndex == currentIndex }
-                scope.launch {
-                    try {
-                        onToggleBookmark(currentIndex)
-                        toast = if (alreadyBookmarked) "أُزيلت العلامة" else "✓ أُضيفت العلامة"
-                    } catch (cancelled: CancellationException) { throw cancelled }
-                    catch (error: Exception) { toast = "تعذّر حفظ العلامة: ${error.message.orEmpty()}" }
-                }
-            },
-        )
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(3.dp)
+                    .background(colors.divider.copy(alpha = 0.5f)),
+            ) {
+                Box(
+                    Modifier
+                        .fillMaxSize()
+                        .drawBehind {
+                            val width = size.width * progress()
+                            val left = if (layoutDirection == androidx.compose.ui.unit.LayoutDirection.Rtl) size.width - width else 0f
+                            drawRect(colors.accent, topLeft = androidx.compose.ui.geometry.Offset(left, 0f),
+                                size = androidx.compose.ui.geometry.Size(width, size.height))
+                        }
+                        .testTag("reader_progress"),
+                )
+            }
+            if (audioOpen && state.audio.isNotEmpty()) {
+                ReaderAudioStrip(
+                    audio = state.audio,
+                    colors = colors,
+                    onPlay = onPlayAudio,
+                    onClose = { audioOpen = false },
+                    playingId = playingAudioId,
+                    playIntent = audioPlayIntent,
+                )
+            }
+            Box(
+                Modifier.onSizeChanged { bottomBarHeight = with(density) { it.height.toDp() } }
+                    .graphicsLayer { alpha = 1f - hidden },
+            ) {
+            ReaderBottomBar(
+                colors = colors,
+                bookmarked = state.bookmarks.any { it.blockIndex == currentIndex },
+                hasAudio = state.audio.isNotEmpty(),
+                audioOpen = audioOpen,
+                contentsOpen = panelOpen && panelTab == ReaderPanelTab.Contents,
+                onContents = {
+                    if (panelOpen && panelTab == ReaderPanelTab.Contents) panelOpen = false
+                    else { panelTab = ReaderPanelTab.Contents; panelOpen = true }
+                },
+                onAudio = { audioOpen = !audioOpen },
+                settingsOpen = settingsOpen,
+                onSettings = { settingsOpen = true },
+                settingsMenu = {
+                    ReaderSettingsPopover(settingsOpen, settings, colors, onSettingsChange, onDismiss = { settingsOpen = false })
+                },
+                onBookmark = {
+                    val alreadyBookmarked = state.bookmarks.any { it.blockIndex == currentIndex }
+                    scope.launch {
+                        try {
+                            onToggleBookmark(currentIndex)
+                            toast = if (alreadyBookmarked) "أُزيلت العلامة" else "✓ أُضيفت العلامة"
+                        } catch (cancelled: CancellationException) { throw cancelled }
+                        catch (error: Exception) { toast = "تعذّر حفظ العلامة: ${error.message.orEmpty()}" }
+                    }
+                },
+            )
+            }
         }
       }
 
@@ -641,15 +678,6 @@ fun ReaderScreen(
                 )
             }
         }
-    }
-
-    if (settingsOpen) {
-        ReaderSettingsPopover(
-            settings = settings,
-            colors = colors,
-            onChange = onSettingsChange,
-            onDismiss = { settingsOpen = false },
-        )
     }
 }
 
@@ -706,7 +734,7 @@ private fun ReaderTopBar(
             IconSlot(AtharIcons.More, "المزيد", colors, "reader_more") { menu = true }
             AtharMenu(expanded = menu, onDismiss = { menu = false }, modifier = Modifier.testTag("reader_more_menu")) {
                 AtharMenuItem(
-                    label = "بطاقة الكتاب",
+                    label = "مقدمة",
                     icon = AtharIcons.Info,
                     onClick = { menu = false; onMore() },
                     modifier = Modifier.testTag("reader_source"),
@@ -756,7 +784,9 @@ private fun ReaderBottomBar(
     contentsOpen: Boolean,
     onContents: () -> Unit,
     onAudio: () -> Unit,
+    settingsOpen: Boolean,
     onSettings: () -> Unit,
+    settingsMenu: @Composable () -> Unit,
     onBookmark: () -> Unit,
 ) {
     Column(
@@ -775,10 +805,10 @@ private fun ReaderBottomBar(
         ) {
             // Bookmark sits in the middle — it is the action taken most often, and with
             // no audio the bar is exactly three items around it.
-            ControlButton(AtharIcons.Sidebar, "المحتويات", colors, contentsOpen, "reader_ctl_contents", Modifier.weight(1f), onContents)
+            ControlButton(if (contentsOpen) AtharIcons.SidebarFilled else AtharIcons.Sidebar, "المحتويات", colors, contentsOpen, "reader_ctl_contents", Modifier.weight(1f), onContents)
             if (hasAudio) {
                 ControlButton(
-                    AtharIcons.Audio,
+                    if (audioOpen) AtharIcons.AudioFilled else AtharIcons.Audio,
                     "صوتيات الكتاب",
                     colors,
                     audioOpen,
@@ -796,7 +826,7 @@ private fun ReaderBottomBar(
                 Modifier.weight(1f),
                 onBookmark,
             )
-            AaButton(colors, Modifier.weight(1f), onSettings)
+            AaButton(colors, settingsOpen, Modifier.weight(1f), onSettings, settingsMenu)
         }
     }
 }
@@ -814,11 +844,12 @@ private fun ControlButton(
     Box(
         modifier = modifier
             .defaultMinSize(minHeight = 52.dp)
-            .clip(CircleShape)
-            .clickable(role = Role.Button, onClick = onClick)
+            // No ripple, as on the app's bottom bar: the pill is the feedback.
+            .clickable(interactionSource = remember { MutableInteractionSource() }, indication = null, role = Role.Button, onClick = onClick)
             .testTag(tag),
         contentAlignment = Alignment.Center,
     ) {
+        SoapPill(active, colors.accent.copy(alpha = 0.14f))
         Icon(
             imageVector = icon,
             contentDescription = description,
@@ -829,22 +860,23 @@ private fun ControlButton(
 }
 
 @Composable
-private fun AaButton(colors: ReaderColors, modifier: Modifier = Modifier, onClick: () -> Unit) {
+private fun AaButton(colors: ReaderColors, active: Boolean, modifier: Modifier = Modifier, onClick: () -> Unit, menu: @Composable () -> Unit) {
     Box(
         modifier = modifier
             .defaultMinSize(minHeight = 52.dp)
-            .clip(CircleShape)
-            .clickable(role = Role.Button, onClick = onClick)
+            .clickable(interactionSource = remember { MutableInteractionSource() }, indication = null, role = Role.Button, onClick = onClick)
             .testTag("reader_ctl_aa"),
         contentAlignment = Alignment.Center,
     ) {
+        SoapPill(active, colors.accent.copy(alpha = 0.14f))
         Text(
             text = "Aa",
             modifier = Modifier.clearAndSetSemantics { contentDescription = "إعدادات مظهر القراءة" },
-            color = colors.secondary,
+            color = if (active) colors.accent else colors.secondary,
             fontSize = AtharTextSize.Large,
             fontWeight = FontWeight.SemiBold,
         )
+        menu()
     }
 }
 
@@ -1065,4 +1097,37 @@ private fun ReaderAudioStrip(
             }
         }
     }
+}
+
+/**
+ * The book's front matter (title page, editor's intro, manuscripts) on its own page, out of the
+ * reading flow. Drawn by the reader's own [BlockView], so it reads like the book.
+ */
+@Composable
+private fun IntroPage(state: ReaderUiState, settings: ReaderSettings, colors: ReaderColors, onLink: (String) -> Unit, onDismiss: () -> Unit) {
+    val blocks = remember(state.card, state.bookTitle, state.author) {
+        listOf(ReaderBlock.Heading("intro_title", 2, state.bookTitle, "")) +
+            listOfNotNull(state.author.takeIf(String::isNotBlank)?.let { ReaderBlock.Paragraph("intro_author", it) }) +
+            state.card.mapIndexed { i, line -> line.toIntroBlock("intro_$i") }
+    }
+    Dialog(onDismissRequest = onDismiss, properties = DialogProperties(usePlatformDefaultWidth = false)) {
+        Column(Modifier.fillMaxSize().background(colors.page).systemBarsPadding().testTag("reader_intro")) {
+            Row(Modifier.fillMaxWidth().padding(horizontal = 8.dp, vertical = 4.dp), verticalAlignment = Alignment.CenterVertically) {
+                Text("مقدمة", color = colors.text, fontSize = AtharTextSize.Large, fontWeight = FontWeight.SemiBold, modifier = Modifier.weight(1f).padding(start = 12.dp))
+                IconSlot(AtharIcons.Close, "إغلاق", colors, "reader_intro_close", onDismiss)
+            }
+            HorizontalDivider(thickness = 0.7.dp, color = colors.divider)
+            LazyColumn(Modifier.fillMaxSize(), contentPadding = PaddingValues(horizontal = 20.dp, vertical = 16.dp)) {
+                items(blocks, key = ReaderBlock::id) { block ->
+                    BlockView(block, settings, colors, highlighted = false, isSearchTarget = false, onLink = onLink)
+                }
+            }
+        }
+    }
+}
+
+private fun CardField.toIntroBlock(id: String): ReaderBlock = when {
+    k == "h" -> ReaderBlock.Heading(id, 3, v, "")
+    l.isNotEmpty() -> ReaderBlock.Paragraph(id, "$l: $v", spans = listOf(InlineSpan("strong", 0, l.length + 1)), listMarker = if (k == "li") "•" else null)
+    else -> ReaderBlock.Paragraph(id, v, listMarker = if (k == "li") "•" else null)
 }

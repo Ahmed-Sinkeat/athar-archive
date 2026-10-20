@@ -7,12 +7,14 @@ enum class AtharDestination(
     val route: String,
     val label: String,
     val icon: ImageVector,
+    /** Shown while the tab is selected. */
+    val selectedIcon: ImageVector,
 ) {
-    Books("books", "الكتب", AtharIcons.Books),
-    Poetry("poetry", "الشعر", AtharIcons.Poetry),
-    Search("search", "البحث", AtharIcons.Search),
-    Audio("audio", "الصوتيات", AtharIcons.Audio),
-    Kannashah("kannashah", "الكناشة", AtharIcons.Kannashah),
+    Books("books", "الكتب", AtharIcons.Books, AtharIcons.BooksFilled),
+    Poetry("poetry", "الشعر", AtharIcons.Poetry, AtharIcons.PoetryFilled),
+    Search("search", "البحث", AtharIcons.Search, AtharIcons.SearchFilled),
+    Audio("audio", "الصوتيات", AtharIcons.Audio, AtharIcons.AudioFilled),
+    Kannashah("kannashah", "الكناشة", AtharIcons.Kannashah, AtharIcons.KannashahFilled),
     ;
 
     companion object {

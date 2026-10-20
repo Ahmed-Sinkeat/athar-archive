@@ -122,7 +122,7 @@ data class CatalogEntry(
 )
 
 @Serializable
-data class CardField(val l: String, val v: String)
+data class CardField(val l: String, val v: String, /** "h" heading, "li" list item, else a paragraph. */ val k: String? = null)
 
 @Serializable
 data class CatalogDocument(

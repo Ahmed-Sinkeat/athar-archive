@@ -76,11 +76,11 @@ fun atharMenuColors() = AtharMenuColors(
 
 private val LocalMenuColors = staticCompositionLocalOf<AtharMenuColors?> { null }
 
-/** Hangs from the anchor's end edge, below when it fits, otherwise above; always on screen. */
+/** Sits on the anchor's end edge, above it when it fits, otherwise below; always on screen. */
 internal fun atharMenuOffset(anchor: IntRect, window: IntSize, direction: LayoutDirection, menu: IntSize, gapPx: Int, marginPx: Int): IntOffset {
     val x = if (direction == LayoutDirection.Ltr) anchor.right - menu.width else anchor.left
-    val below = anchor.bottom + gapPx
-    val y = if (below + menu.height <= window.height - marginPx) below else anchor.top - gapPx - menu.height
+    val above = anchor.top - gapPx - menu.height
+    val y = if (above >= marginPx) above else anchor.bottom + gapPx
     return IntOffset(
         x.coerceIn(marginPx, (window.width - menu.width - marginPx).coerceAtLeast(marginPx)),
         y.coerceIn(marginPx, (window.height - menu.height - marginPx).coerceAtLeast(marginPx)),
@@ -105,7 +105,7 @@ fun AtharMenu(
     expanded: Boolean,
     onDismiss: () -> Unit,
     modifier: Modifier = Modifier,
-    width: Dp = 236.dp,
+    width: Dp = 200.dp,
     colors: AtharMenuColors = atharMenuColors(),
     content: @Composable ColumnScope.() -> Unit,
 ) {
@@ -147,7 +147,7 @@ fun AtharMenu(
                             .background(colors.card)
                             .border(1.dp, edge, shape)
                             .verticalScroll(rememberScrollState())
-                            .padding(vertical = 6.dp),
+                            .padding(vertical = 4.dp),
                         content = content,
                     )
                     if (pointer.above) MenuPointer(pointer, menuWidth, colors.card, edge)
@@ -190,10 +190,10 @@ fun AtharMenuItem(
     Row(
         modifier
             .fillMaxWidth()
-            .heightIn(min = 48.dp)
+            .heightIn(min = 40.dp)
             .then(if (checked != null) Modifier.semantics { selected = checked } else Modifier)
             .clickable(role = if (checked != null) Role.RadioButton else Role.Button, onClick = onClick)
-            .padding(horizontal = 14.dp, vertical = 6.dp),
+            .padding(horizontal = 14.dp, vertical = 4.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(10.dp),
     ) {
@@ -205,7 +205,7 @@ fun AtharMenuItem(
                 maxLines = 1, overflow = TextOverflow.Ellipsis)
             if (!subtitle.isNullOrBlank()) Text(subtitle, color = colors.secondary, fontSize = AtharTextSize.Small, maxLines = 1, overflow = TextOverflow.Ellipsis)
         }
-        if (icon != null) Icon(icon, null, tint = tint, modifier = Modifier.size(19.dp))
+        if (icon != null) Icon(icon, null, tint = tint, modifier = Modifier.size(18.dp))
     }
 }
 
@@ -213,5 +213,5 @@ fun AtharMenuItem(
 @Composable
 fun AtharMenuDivider() {
     val colors = LocalMenuColors.current ?: atharMenuColors()
-    Box(Modifier.fillMaxWidth().padding(vertical = 5.dp).height(1.dp).background(colors.ink.copy(alpha = 0.1f)))
+    Box(Modifier.fillMaxWidth().padding(vertical = 3.dp).height(1.dp).background(colors.ink.copy(alpha = 0.1f)))
 }

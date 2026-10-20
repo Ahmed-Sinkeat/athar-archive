@@ -1,6 +1,7 @@
 package com.atharchive.ui.icons
 
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.StrokeJoin
@@ -802,6 +803,170 @@ object AtharIcons {
                 lineTo(19.5f, 9.1f)
             }
         }
+    }
+
+    /* ── Solid states: the selected or active form of a bar icon, as Sada swaps Outlined for Rounded. ── */
+
+    /** [Books] filled; the spine stays a gap so the two pages still read. */
+    val BooksFilled: ImageVector by lazy {
+        icon("AtharBooksFilled") {
+            solid(1f) {
+                moveTo(11f, 6.75f)
+                curveTo(9f, 5.2f, 6.6f, 4.45f, 3.4f, 4.45f)
+                lineTo(3.4f, 17.6f)
+                curveTo(6.55f, 17.6f, 9f, 18.35f, 11f, 19.85f)
+                close()
+                moveTo(13f, 6.75f)
+                curveTo(15f, 5.2f, 17.4f, 4.45f, 20.6f, 4.45f)
+                lineTo(20.6f, 17.6f)
+                curveTo(17.45f, 17.6f, 15f, 18.35f, 13f, 19.85f)
+                close()
+            }
+        }
+    }
+
+    /** [Poetry] filled; the shaft is cut through the leaf and runs on past it. */
+    val PoetryFilled: ImageVector by lazy {
+        icon("AtharPoetryFilled") {
+            path(stroke = Stroke, strokeLineWidth = 1.75f) {
+                moveTo(20.25f, 3.75f)
+                curveTo(16.15f, 3.2f, 11.15f, 5.25f, 8.3f, 9.4f)
+                curveTo(6.55f, 11.95f, 5.95f, 14.65f, 6.55f, 17.35f)
+                curveTo(9.35f, 17.35f, 12.05f, 16.85f, 14.5f, 15.4f)
+                curveTo(18.7f, 12.9f, 20.65f, 7.95f, 20.25f, 3.75f)
+                close()
+            }
+            // Even-odd: the thin quad along the shaft is a hole in the leaf.
+            path(fill = Fill, pathFillType = PathFillType.EvenOdd) {
+                moveTo(20.25f, 3.75f)
+                curveTo(16.15f, 3.2f, 11.15f, 5.25f, 8.3f, 9.4f)
+                curveTo(6.55f, 11.95f, 5.95f, 14.65f, 6.55f, 17.35f)
+                curveTo(9.35f, 17.35f, 12.05f, 16.85f, 14.5f, 15.4f)
+                curveTo(18.7f, 12.9f, 20.65f, 7.95f, 20.25f, 3.75f)
+                close()
+                moveTo(17.7f, 7.3f)
+                lineTo(16.7f, 6.3f)
+                lineTo(7.1f, 16.1f)
+                lineTo(8.1f, 17.1f)
+                close()
+            }
+            path(stroke = Stroke, strokeLineWidth = 1.75f) {
+                moveTo(7f, 17.26f)
+                lineTo(3.7f, 20.65f)
+            }
+        }
+    }
+
+    val SearchFilled: ImageVector by lazy {
+        icon("AtharSearchFilled") {
+            solid(1.7f) {
+                moveTo(10.4f, 4f)
+                curveTo(13.95f, 4f, 16.8f, 6.85f, 16.8f, 10.4f)
+                curveTo(16.8f, 13.95f, 13.95f, 16.8f, 10.4f, 16.8f)
+                curveTo(6.85f, 16.8f, 4f, 13.95f, 4f, 10.4f)
+                curveTo(4f, 6.85f, 6.85f, 4f, 10.4f, 4f)
+                close()
+            }
+            path(stroke = Stroke, strokeLineWidth = 2.2f) {
+                moveTo(15.1f, 15.1f)
+                lineTo(20.2f, 20.2f)
+            }
+        }
+    }
+
+    /** [Audio] with solid ear cups; the band stays a line. */
+    val AudioFilled: ImageVector by lazy {
+        icon("AtharAudioFilled") {
+            path(stroke = Stroke, strokeLineWidth = 1.7f) {
+                moveTo(4.4f, 13.2f)
+                lineTo(4.4f, 11.2f)
+                curveTo(4.4f, 6.95f, 7.8f, 3.55f, 12f, 3.55f)
+                curveTo(16.2f, 3.55f, 19.6f, 6.95f, 19.6f, 11.2f)
+                lineTo(19.6f, 13.2f)
+            }
+            solid(1.7f) {
+                moveTo(4.4f, 12.4f)
+                lineTo(6.1f, 12.4f)
+                curveTo(6.85f, 12.4f, 7.45f, 13f, 7.45f, 13.75f)
+                lineTo(7.45f, 18.8f)
+                curveTo(7.45f, 19.55f, 6.85f, 20.15f, 6.1f, 20.15f)
+                lineTo(4.4f, 20.15f)
+                close()
+                moveTo(19.6f, 12.4f)
+                lineTo(17.9f, 12.4f)
+                curveTo(17.15f, 12.4f, 16.55f, 13f, 16.55f, 13.75f)
+                lineTo(16.55f, 18.8f)
+                curveTo(16.55f, 19.55f, 17.15f, 20.15f, 17.9f, 20.15f)
+                lineTo(19.6f, 20.15f)
+                close()
+            }
+        }
+    }
+
+    /** [Kannashah] as three solid cards, pulled apart so they don't merge. */
+    val KannashahFilled: ImageVector by lazy {
+        icon("AtharKannashahFilled") {
+            path(fill = Fill) {
+                roundRect(6.4f, 3.9f, 20.2f, 8.8f)
+                roundRect(3.8f, 9.8f, 17.6f, 14.2f)
+                roundRect(6.4f, 15.2f, 20.2f, 20.1f)
+            }
+        }
+    }
+
+    /** [Sidebar] with its panel filled in: the contents panel is open. */
+    val SidebarFilled: ImageVector by lazy {
+        icon("AtharSidebarFilled") {
+            path(stroke = Stroke, strokeLineWidth = 1.75f) {
+                moveTo(6f, 5.2f)
+                lineTo(18f, 5.2f)
+                curveTo(19.4f, 5.2f, 20.6f, 6.4f, 20.6f, 7.8f)
+                lineTo(20.6f, 16.2f)
+                curveTo(20.6f, 17.6f, 19.4f, 18.8f, 18f, 18.8f)
+                lineTo(6f, 18.8f)
+                curveTo(4.6f, 18.8f, 3.4f, 17.6f, 3.4f, 16.2f)
+                lineTo(3.4f, 7.8f)
+                curveTo(3.4f, 6.4f, 4.6f, 5.2f, 6f, 5.2f)
+                close()
+            }
+            solid(1.75f) {
+                moveTo(14.2f, 5.2f)
+                lineTo(18f, 5.2f)
+                curveTo(19.4f, 5.2f, 20.6f, 6.4f, 20.6f, 7.8f)
+                lineTo(20.6f, 16.2f)
+                curveTo(20.6f, 17.6f, 19.4f, 18.8f, 18f, 18.8f)
+                lineTo(14.2f, 18.8f)
+                close()
+            }
+        }
+    }
+
+    private fun ImageVector.Builder.solid(
+        strokeLineWidth: Float,
+        content: androidx.compose.ui.graphics.vector.PathBuilder.() -> Unit,
+    ) {
+        path(
+            fill = Fill,
+            stroke = Stroke,
+            strokeLineWidth = strokeLineWidth,
+            strokeLineCap = StrokeCap.Round,
+            strokeLineJoin = StrokeJoin.Round,
+            pathFillType = PathFillType.EvenOdd,
+            pathBuilder = content,
+        )
+    }
+
+    private fun androidx.compose.ui.graphics.vector.PathBuilder.roundRect(l: Float, t: Float, r: Float, b: Float, radius: Float = 2f) {
+        moveTo(l + radius, t)
+        lineTo(r - radius, t)
+        arcTo(radius, radius, 0f, false, true, r, t + radius)
+        lineTo(r, b - radius)
+        arcTo(radius, radius, 0f, false, true, r - radius, b)
+        lineTo(l + radius, b)
+        arcTo(radius, radius, 0f, false, true, l, b - radius)
+        lineTo(l, t + radius)
+        arcTo(radius, radius, 0f, false, true, l + radius, t)
+        close()
     }
 
     private fun icon(

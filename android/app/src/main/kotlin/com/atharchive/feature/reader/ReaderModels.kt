@@ -1,5 +1,6 @@
 package com.atharchive.feature.reader
 
+import com.atharchive.core.data.content.CardField
 import com.atharchive.core.data.content.InlineSpan
 
 /**
@@ -200,8 +201,8 @@ data class ReaderUiState(
     val highlights: List<ReaderHighlight> = emptyList(),
     val footnotes: Map<String, ReaderBlock.FootnoteBody> = emptyMap(),
     val sourceUrl: String = "",
-    /** The book's info card as "label: value" lines, shown under «المصدر». */
-    val card: List<String> = emptyList(),
+    /** The book's front matter (title page, editor's intro, manuscripts), shown as its «مقدمة» page. */
+    val card: List<CardField> = emptyList(),
 
     /** The automatically restored position; the reader opens here. */
     val readingPositionIndex: Int = 0,

@@ -11,11 +11,14 @@ class AtharMenuTest {
     private val window = IntSize(1080, 2400)
     private val menu = IntSize(600, 500)
 
-    @Test fun rtlHangsBelowFromTheAnchorsStartEdge() =
+    @Test fun rtlFallsBelowNearTheTop() =
         assertEquals(IntOffset(100, 210), atharMenuOffset(IntRect(100, 100, 200, 200), window, LayoutDirection.Rtl, menu, 10, 20))
 
-    @Test fun flipsAboveNearTheBottom() =
+    @Test fun opensAboveItsButton() =
         assertEquals(IntOffset(100, 1690), atharMenuOffset(IntRect(100, 2200, 200, 2300), window, LayoutDirection.Rtl, menu, 10, 20))
+
+    @Test fun midScreenStillOpensAbove() =
+        assertEquals(IntOffset(100, 490), atharMenuOffset(IntRect(100, 1000, 200, 1100), window, LayoutDirection.Rtl, menu, 10, 20))
 
     @Test fun ltrIsClampedOnScreen() =
         assertEquals(IntOffset(20, 210), atharMenuOffset(IntRect(0, 100, 100, 200), window, LayoutDirection.Ltr, menu, 10, 20))

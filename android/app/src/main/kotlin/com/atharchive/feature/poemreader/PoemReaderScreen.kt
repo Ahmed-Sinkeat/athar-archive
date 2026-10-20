@@ -1,5 +1,6 @@
 package com.atharchive.feature.poemreader
 
+import com.atharchive.ui.components.SoapPill
 import com.atharchive.ui.theme.AtharCorners
 import com.atharchive.ui.theme.AtharTextSize
 import androidx.compose.ui.graphics.lerp
@@ -345,18 +346,14 @@ fun PoemReaderScreen(
                         followScroll = true
                     } else audioVisible = !audioVisible
                 },
+                fontOpen = settingsOpen,
                 onFont = { settingsOpen = true },
+                fontMenu = {
+                    ReaderSettingsPopover(settingsOpen, settings, colors, onSettingsChange, onDismiss = { settingsOpen = false })
+                },
             )
         }
 
-        if (settingsOpen) {
-            ReaderSettingsPopover(
-                settings = settings,
-                colors = colors,
-                onChange = onSettingsChange,
-                onDismiss = { settingsOpen = false },
-            )
-        }
     }
 }
 
@@ -728,7 +725,9 @@ private fun PoemBottomBar(
     panelOpen: Boolean,
     onMore: () -> Unit,
     onAudio: () -> Unit,
+    fontOpen: Boolean,
     onFont: () -> Unit,
+    fontMenu: @Composable () -> Unit,
 ) {
     Column(modifier = Modifier.fillMaxWidth().navigationBarsPadding()) {
         HorizontalDivider(thickness = 0.7.dp, color = colors.divider)
@@ -736,20 +735,25 @@ private fun PoemBottomBar(
             modifier = Modifier.fillMaxWidth().padding(vertical = 6.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            ControlSlot(AtharIcons.Sidebar, "المزيد", colors, panelOpen, Modifier.weight(1f), "poem_ctl_more", onMore)
-            if (hasAudio) ControlSlot(AtharIcons.Audio, "الصوت", colors, audioOn, Modifier.weight(1f), "poem_ctl_audio", onAudio)
+            ControlSlot(if (panelOpen) AtharIcons.SidebarFilled else AtharIcons.Sidebar, "المزيد", colors, panelOpen, Modifier.weight(1f), "poem_ctl_more", onMore)
+            if (hasAudio) ControlSlot(if (audioOn) AtharIcons.AudioFilled else AtharIcons.Audio, "الصوت", colors, audioOn, Modifier.weight(1f), "poem_ctl_audio", onAudio)
             Box(
                 modifier = Modifier
                     .weight(1f)
-                    .clickable(role = Role.Button, onClick = onFont)
+                    .clickable(interactionSource = remember { MutableInteractionSource() }, indication = null, role = Role.Button, onClick = onFont)
                     .padding(vertical = 5.dp)
                     .testTag("poem_ctl_font"),
                 contentAlignment = Alignment.Center,
             ) {
+                val tint = if (fontOpen) colors.accent else colors.secondary
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    Text("Aa", color = colors.secondary, fontWeight = FontWeight.SemiBold, fontSize = AtharTextSize.Large)
-                    Text("الخط", color = colors.secondary, style = MaterialTheme.typography.labelSmall)
+                    Box(contentAlignment = Alignment.Center) {
+                        SoapPill(fontOpen, colors.accent.copy(alpha = 0.14f))
+                        Text("Aa", color = tint, fontWeight = FontWeight.SemiBold, fontSize = AtharTextSize.Large)
+                    }
+                    Text("الخط", color = tint, style = MaterialTheme.typography.labelSmall)
                 }
+                fontMenu()
             }
         }
     }
@@ -768,13 +772,16 @@ private fun ControlSlot(
     val tint = if (active) colors.accent else colors.secondary
     Box(
         modifier = modifier
-            .clickable(role = Role.Button, onClick = onClick)
+            .clickable(interactionSource = remember { MutableInteractionSource() }, indication = null, role = Role.Button, onClick = onClick)
             .padding(vertical = 5.dp)
             .testTag(tag),
         contentAlignment = Alignment.Center,
     ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            Icon(icon, null, tint = tint, modifier = Modifier.size(26.dp))
+            Box(contentAlignment = Alignment.Center) {
+                SoapPill(active, colors.accent.copy(alpha = 0.14f))
+                Icon(icon, null, tint = tint, modifier = Modifier.size(26.dp))
+            }
             Text(label, color = tint, style = MaterialTheme.typography.labelSmall)
         }
     }
