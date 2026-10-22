@@ -173,3 +173,4 @@
 | shrh-shrwt-al-slah-warkanha-wwajbatha-lshykh-al-aslam-mhmd-b | committed | card; import headings rejoined/un-headed | none | none |
 | mujabu-al-dawah | committed | card; import headings rejoined/un-headed | none | none |
 | al-kalim-al-tayyib | skipped | nothing to format (no notes) | none | none |
+| qra-al-aynyn-brfa-al-ydyn-fy-al-slaa | committed | card; import headings rejoined/un-headed | none | none |
