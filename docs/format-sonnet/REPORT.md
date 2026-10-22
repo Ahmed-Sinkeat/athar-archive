@@ -216,3 +216,4 @@
 | shrh-al-azhrya | committed | card; heading tails re-joined | none | none |
 | al-aada-walnfs | committed | card; heading tails re-joined | none | none |
 | tadhkirat-al-sam-wal-mutakallim | committed | card; heading tails re-joined | none | none |
+| al-amr-balmarwf-walnhy-an-al-mnkr-llkhlal | committed | card; heading tails re-joined | none | none |
