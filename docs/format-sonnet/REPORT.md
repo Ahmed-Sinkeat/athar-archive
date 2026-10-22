@@ -36,3 +36,4 @@
 | al-brawma-fy-al-nhw | committed | title-page card | none | none |
 | rsala-ay-al-mshdda | committed | title-page card | none | none |
 | ikhtisas-al-quran-bi-awdihi | skipped | nothing to format (no notes; one paragraph per page) | none | none |
+| wujub-tahkim-shariatillah | committed | 1 footnote anchor linked | none | none |
