@@ -86,3 +86,4 @@
 | al-msayl-al-ty-hlf-alyha-ahmd-bn-hnbl | committed | title-page card | none | none |
 | mahiyyat-al-aql | skipped | nothing to format (no notes; headings fine) | none | none |
 | al-nasihah-fi-sifat-al-rabb | skipped | nothing to format (no notes; headings fine) | none | none |
+| al-tahdhir-min-tazim-al-athar | skipped | nothing to format (no notes; headings fine) | none | none |
