@@ -138,3 +138,4 @@
 | al-hamm-wal-huzn | committed | card; headings re-joined with cut '؟' | none | none |
 | muhasabat-al-nafs | committed | card; headings re-joined with cut '؟' | none | none |
 | al-hathth-ala-ittiba-al-sunnah | skipped | nothing to format (no notes) | none | none |
+| tmhyd-al-frsh-fy-al-khsal-al-mwjbh-lzl-al-arsh | committed | card; import headings rejoined into items where they were athar text | none | none |
