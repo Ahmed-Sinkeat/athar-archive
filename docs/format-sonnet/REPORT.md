@@ -58,3 +58,4 @@
 | al-tawakkul-ala-allah | committed | card; 59 import headings (athar text) rejoined into items; verses un-headed | none | none |
 | fadail-ramadan | committed | card | none | none |
 | maany-al-hrwf | committed | card; 5 headings that were cut mid-sentence rejoined | none | heading '## إن' / 'ه لا تكون' left (probable cut word) |
+| hwla-hm-khsmawk-ghda | committed | heading re-joined with its cut '؟' | none | none |
