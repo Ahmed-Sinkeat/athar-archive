@@ -171,3 +171,4 @@
 | al-tawadu-wal-khumul | committed | card; import athar-text headings rejoined where present | none | none |
 | akhlaq-al-ulama | committed | card; import athar-text headings rejoined where present | none | none |
 | shrh-shrwt-al-slah-warkanha-wwajbatha-lshykh-al-aslam-mhmd-b | committed | card; import headings rejoined/un-headed | none | none |
+| mujabu-al-dawah | committed | card; import headings rejoined/un-headed | none | none |
