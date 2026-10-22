@@ -191,3 +191,4 @@
 | al-risalah-al-arshiyyah | skipped | REPORT ONLY: p1 notes [«الكتاب مرتبط بـ», «نسخ مصورة: ط المنيرية …»] are cover/publisher notes with no anchor (also '«الكتاب مرتبط بـ»' looks cut after بـ); nothing else to mark | none | none |
 | tafsir-abu-jaafar-tirmidhi | skipped | nothing to format (notes already linked 2/2) | none | none |
 | akhlaq-ahl-al-quran | skipped | nothing to format (notes already linked 2/2) | none | none |
+| al-add-fy-al-lgha | committed | card; split heading tails re-joined | none | none |
