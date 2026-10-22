@@ -102,3 +102,4 @@
 | fatya-wa-jawabuha-fi-dhikr-al-itiqad | skipped | nothing to format (no notes; headings fine) | none | none |
 | al-anshwta-fy-al-nhw | committed | card | none | none |
 | br-al-waldyn | committed | card | none | none |
+| dhkr-mn-yatmd-qwlh-fy-al-jrh-waltadyl | committed | card | none | none |
