@@ -142,3 +142,4 @@
 | kitab-al-tamyiz | committed | card; import headings rejoined into items where they were athar text | none | none |
 | al-tthkrh-fy-al-fqh-al-shafay-labn-al-mlqn | committed | card; import headings rejoined into items where they were athar text | none | none |
 | al-faraj-bad-al-shiddah-ibn-abi-al-dunya | committed | card; import headings rejoined into items where they were athar text | none | none |
+| husn-al-dhann-billah | committed | card; import headings rejoined into items where they were athar text | none | none |
