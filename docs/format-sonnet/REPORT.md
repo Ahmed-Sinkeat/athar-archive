@@ -151,3 +151,4 @@
 | kifayat-al-mutahaffiz | committed | card; headings re-joined with cut punctuation | none | none |
 | msayl-khlafya-fy-al-nhw | committed | card; headings re-joined with cut punctuation | none | none |
 | maqtal-ali | committed | card; headings re-joined with cut punctuation | none | none |
+| dhamm-al-malahi | committed | card; headings re-joined with cut punctuation | none | none |
