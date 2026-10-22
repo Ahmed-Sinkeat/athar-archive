@@ -213,3 +213,4 @@
 | al-nafaqah-ala-al-iyal | committed | card; heading tails/numbers re-joined | none | none |
 | shrh-ktab-al-frq-byn-abadat-ahl-al-islam-waliyman-wabadat-ahl-al-shrk-walnfaq-labn-tymya-mhmd-hsn-abd-al-ghfar | skipped | nothing to format (no notes) | none | none |
 | al-amaly-fy-athar-al-shaba-labd-al-rzaq-al-snaany | committed | card; heading tails re-joined | none | none |
+| shrh-al-azhrya | committed | card; heading tails re-joined | none | none |
