@@ -62,3 +62,4 @@
 | qatr-al-nada | committed | card | none | none |
 | al-aqeedah-al-sahihah-wa-ma-yudadduha | committed | 1 heading rejoined into its sentence | none | none |
 | nqaa-al-sdyan-fyma-ja-ala-al-falan | committed | title-page card | none | none |
+| al-blwtwth | committed | title-page card | none | none |
