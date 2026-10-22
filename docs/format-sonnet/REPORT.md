@@ -105,3 +105,4 @@
 | dhkr-mn-yatmd-qwlh-fy-al-jrh-waltadyl | committed | card | none | none |
 | makaid-al-shaytan | committed | card | none | none |
 | twjyhat-aslamyh-labd-al-lh-bn-hmyd | committed | card | none | none |
+| klma-al-ikhlas-wthqyq-manaha | skipped | nothing to format (hadith extract, no notes) | none | none |
