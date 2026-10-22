@@ -6,6 +6,7 @@ person: ibn-abi-al-dunya
 topics: ["tazkiyat-al-nafs"]
 authored_year: 281
 ---
+<!-- card -->
 # بطاقة الكتاب وفهرس الموضوعات
 
 الكتاب: الهم والحزن
@@ -65,6 +66,7 @@ authored_year: 281
 [التعريف بالكتاب , نقلا عن موقع جامع الحديث]
 
 صفحة المؤلف: []
+<!-- /card -->
 
 ## متواصل الأحزان دائم الفكرة
 
@@ -76,9 +78,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="27" />
 
-## هل يحب الله كل قلب حزين
-
-؟
+## هل يحب الله كل قلب حزين؟
 
 <hr class="page-sep" data-page="28" />
 
@@ -166,9 +166,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="35" />
 
-## هل الدعاء يستجاب عند الأحزان
-
-؟
+## هل الدعاء يستجاب عند الأحزان؟
 
 <hr class="page-sep" data-page="35" />
 
@@ -212,9 +210,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="38" />
 
-## هل الهم والحزن يزيدان الحسنات
-
-؟
+## هل الهم والحزن يزيدان الحسنات؟
 
 <hr class="page-sep" data-page="39" />
 
@@ -330,9 +326,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="48" />
 
-## لما كان عمر بن عبد العزيز مغموما
-
-؟
+## لما كان عمر بن عبد العزيز مغموما؟
 
 <hr class="page-sep" data-page="49" />
 
@@ -344,9 +338,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="49" />
 
-## هل للمؤمن راحة دون لقاء الله
-
-؟
+## هل للمؤمن راحة دون لقاء الله؟
 
 <hr class="page-sep" data-page="50" />
 
@@ -374,9 +366,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="51" />
 
-## هل تعرف أكبر هم المؤمن
-
-؟
+## هل تعرف أكبر هم المؤمن؟
 
 <hr class="page-sep" data-page="51" />
 
@@ -468,9 +458,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="59" />
 
-## هل البكاء مسلاة
-
-؟
+## هل البكاء مسلاة؟
 
 <hr class="page-sep" data-page="59" />
 
@@ -486,9 +474,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="60" />
 
-## ما هي نهاية الحزن
-
-؟
+## ما هي نهاية الحزن؟
 
 <hr class="page-sep" data-page="60" />
 
@@ -580,9 +566,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="64" />
 
-## هل حزنت لضياع العمر
-
-؟
+## هل حزنت لضياع العمر؟
 
 <hr class="page-sep" data-page="65" />
 
@@ -658,9 +642,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="70" />
 
-## أين الراحة والفرح
-
-؟
+## أين الراحة والفرح؟
 
 <hr class="page-sep" data-page="70" />
 
@@ -708,9 +690,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="73" />
 
-## هل الحزن من أفضل العبادة
-
-؟
+## هل الحزن من أفضل العبادة؟
 
 <hr class="page-sep" data-page="73" />
 
@@ -1020,9 +1000,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="95" />
 
-## هل يسأل المؤمن ربه الحزن
-
-؟
+## هل يسأل المؤمن ربه الحزن؟
 
 <hr class="page-sep" data-page="95" />
 
@@ -1110,9 +1088,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="99" />
 
-## هل في الدنيا راحة
-
-؟
+## هل في الدنيا راحة؟
 
 <hr class="page-sep" data-page="99" />
 
