@@ -6,6 +6,7 @@ person: ibn-abi-al-dunya
 topics: ["tazkiyat-al-nafs"]
 authored_year: 281
 ---
+<!-- card -->
 # بطاقة الكتاب وفهرس الموضوعات
 
 الكتاب: ذم الكذب - من الصمت وآداب اللسان
@@ -35,6 +36,7 @@ authored_year: 281
 فهو جزء من كتاب وليس كتابا مستقلا
 
 <hr class="page-sep" data-page="1" />
+<!-- /card -->
 
 ## ذم الكذب وأهله
 
