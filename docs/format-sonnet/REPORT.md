@@ -43,3 +43,4 @@
 | bzwgh-al-hlal-fy-al-khsal-al-mwjbh-llzlal | committed | title-page card | none | none |
 | hilm-muawiyah | committed | card, 2 split headings rejoined into their sentence | none | none |
 | al-yaqin-ibn-abi-al-dunya | committed | card, 40 import headings (athar text) rejoined into their items | none | none |
+| snh-al-jmah | committed | title-page card | none | none |
