@@ -221,3 +221,4 @@
 | akhsr-al-mkhtsrat | committed | card; heading tails re-joined | none | none |
 | qasr-al-amal | committed | card; heading tails re-joined | none | none |
 | slslh-al-qmm-lahl-al-hmm | committed | card; heading tails re-joined | none | none |
+| al-amr-bil-maruf-al-khallal-sharh-al-khalifi | skipped | nothing to format (no notes) | none | none |
