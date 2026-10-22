@@ -192,3 +192,4 @@
 | tafsir-abu-jaafar-tirmidhi | skipped | nothing to format (notes already linked 2/2) | none | none |
 | akhlaq-ahl-al-quran | skipped | nothing to format (notes already linked 2/2) | none | none |
 | al-add-fy-al-lgha | committed | card; split heading tails re-joined | none | none |
+| sharh-al-sunnah-al-barbahari-adel-bin-azzouz | skipped | nothing to format (no notes) | none | none |
