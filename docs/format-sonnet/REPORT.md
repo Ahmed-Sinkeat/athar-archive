@@ -8,3 +8,4 @@
 | tahqiq-al-ihtijaj-bil-qadar | skipped | nothing to format (no notes; fragmentary hadith extract, one paragraph per page) | none | none |
 | nuktat-al-irab | committed | title-page card | none | none |
 | mana-la-ilh-ila-al-lh-mhmd-bn-abd-al-whab | skipped | nothing to format (no notes; headings already in import form '[ ## h ]' with bracket text protected by gate) | none | none |
+| tahqiq-kalimat-al-ikhlas | skipped | nothing to format (no notes; one paragraph per page) | none | none |
