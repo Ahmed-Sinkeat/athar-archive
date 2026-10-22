@@ -131,3 +131,4 @@
 | hrwf-al-maany-walsfat | committed | card; heading/cut-sentence fixes | none | none |
 | mudarat-al-nas | committed | card; heading/cut-sentence fixes | none | none |
 | wasaya-al-ulama-inda-hudur-al-mawt | committed | card; heading/cut-sentence fixes | none | none |
+| tajrid-al-tawhid-al-mufid | skipped | nothing to format (no notes) | none | none |
