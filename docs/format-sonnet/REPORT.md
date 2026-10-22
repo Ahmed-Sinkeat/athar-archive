@@ -114,3 +114,4 @@
 | fadl-ilm-al-salaf | skipped | nothing to format (no notes) | none | none |
 | mana-la-ilaha-illallah | skipped | nothing to format (no notes) | none | none |
 | taliq-ala-al-qawaid-al-arba-al-khalifi | skipped | nothing to format (lecture transcript, no notes) | none | none |
+| risalah-fi-usul-al-din-ibn-taymiyyah | skipped | nothing to format (no notes) | none | none |
