@@ -118,3 +118,4 @@
 | al-itibar-wa-aqab-al-surur | committed | card; import athar-text headings rejoined; verses un-headed | none | none |
 | man-asha-bad-al-mawt | committed | card; import athar-text headings rejoined; verses un-headed | none | none |
 | al-laly | committed | card; import athar-text headings rejoined; verses un-headed | none | none |
+| sjwd-al-tlawh-maanyh-wahkamh | committed | card; import athar-text headings rejoined; verses un-headed | none | none |
