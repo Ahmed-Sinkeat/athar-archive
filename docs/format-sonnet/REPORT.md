@@ -23,3 +23,4 @@
 | ahthr-sw-al-khatmh | committed | headings: cut punctuation and sentence tails rejoined into headings/sentences | none | none |
 | ayha-al-mthnb-bys-ma-akhtrt | committed | headings: cut punctuation and sentence tails rejoined into headings/sentences | none | none |
 | drh-al-qlwb-al-akhlas | committed | headings: cut punctuation and sentence tails rejoined into headings/sentences | none | none |
+| rsala-fy-asm-al-faal | committed | title-page card | none | none |
