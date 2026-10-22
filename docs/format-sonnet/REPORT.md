@@ -30,3 +30,4 @@
 | usul-al-sunnah-ahmad-ibn-hanbal | skipped | nothing to format (no notes; one paragraph per page) | none | none |
 | risalah-fi-anna-al-quran-ghayr-makhluq | skipped | nothing to format (no notes; one paragraph per page) | none | none |
 | al-muqaddimah-al-zahra-fil-imamah | skipped | nothing to format (no notes; one paragraph per page) | none | none |
+| risalah-fi-hukm-al-sihr-wal-kihanah | skipped | nothing to format (no notes; one paragraph per page) | none | none |
