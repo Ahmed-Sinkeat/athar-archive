@@ -77,3 +77,4 @@
 | qira-al-dayf | committed | card; import headings (athar text) rejoined into items; verses un-headed | none | none |
 | all-al-tthnya | committed | title-page card | none | none |
 | mtn-al-ashmawyh | committed | title-page card | none | none |
+| mtn-al-akhdry-fy-al-abadat-ala-mthhb-al-amam-malk | committed | title-page card | none | none |
