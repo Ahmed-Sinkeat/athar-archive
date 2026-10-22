@@ -110,3 +110,4 @@
 | thqyq-ryad-al-salhyn-llalbany | committed | card; split word re-joined | none | none |
 | al-rida-an-allah-bi-qadaihi | committed | card; split word re-joined | none | none |
 | khlash-al-jwahr-al-zkyh-fy-fqh-al-malkyh | committed | card; split word re-joined | none | none |
+| rsala-al-mbahth-al-mrdya | committed | card; split word re-joined | none | none |
