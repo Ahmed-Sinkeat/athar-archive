@@ -182,3 +182,4 @@
 | lys-alyk-whshh | skipped | nothing to format (notes already linked 3/3) | none | none |
 | sharh-manzumat-al-qawaid-al-fiqhiyyah-saadi | committed | card; import athar-text headings rejoined | none | none |
 | al-iyman-llqasm-bn-slam-mkhrja | committed | card; import athar-text headings rejoined | none | none |
+| sharh-al-aqeedah-al-wasitiyyah-adel-bin-azzouz | skipped | nothing to format (no notes) | none | none |
