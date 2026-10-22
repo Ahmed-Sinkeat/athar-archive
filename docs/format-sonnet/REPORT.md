@@ -161,3 +161,4 @@
 | al-nsyhh-al-kafyh-lmn-khsh-al-lh-balaafyh | committed | card; import athar-text headings rejoined | none | none |
 | al-rd-ala-al-nhaa | committed | card; import athar-text headings rejoined | none | none |
 | tahrim-al-nazar-fi-kutub-al-kalam | skipped | nothing to format (no notes) | none | none |
+| sharh-al-haiyyah-ibn-abi-dawud-adel-bin-azzouz | skipped | nothing to format (no notes) | none | none |
