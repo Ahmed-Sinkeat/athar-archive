@@ -94,3 +94,4 @@
 | al-aql-wa-fadluhu | committed | title-page card | none | none |
 | ghuluw-fi-bad-al-qarabah | skipped | nothing to format. REPORT ONLY: stray '##' literal inside a sentence (p2: «…أبي بكر وعمر رضي الله عنهما ##، يُدعَى ياسر الحبيب»), import artifact; gate protects the characters | none | none |
 | tmyz-al-sdq-mn-al-myn-fy-mhawra-al-rjlyn | skipped | nothing to format (no notes) | none | none |
+| al-mnthwr | committed | card/heading fixes (cut sentences rejoined) | none | none |
