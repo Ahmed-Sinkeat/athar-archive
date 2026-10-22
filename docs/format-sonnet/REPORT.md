@@ -148,3 +148,4 @@
 | mnazl-al-hrwf | committed | card; headings/cut-sentence fixes | none | none |
 | al-ikhwan | committed | card; headings/cut-sentence fixes | none | none |
 | istina-al-maruf | committed | card; headings/cut-sentence fixes | none | none |
+| kifayat-al-mutahaffiz | committed | card; headings re-joined with cut punctuation | none | none |
