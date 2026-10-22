@@ -156,3 +156,4 @@
 | khulasat-tadhim-al-ilm | skipped | nothing to format (no notes) | none | none |
 | al-rd-ala-al-shafay-labn-al-lbad | skipped | nothing to format (no notes) | none | none |
 | al-shukr-ibn-abi-al-dunya | committed | card; import athar-text headings rejoined | none | none |
+| dlyl-al-talbyn-lklam-al-nhwyyn | committed | card; import athar-text headings rejoined | none | none |
