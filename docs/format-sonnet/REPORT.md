@@ -56,3 +56,4 @@
 | dhamm-al-baghy | committed | card; 2 headings re-joined with their cut '؟' | none | none |
 | kalam-al-layali-wal-ayyam | committed | card; 21+30 import headings (athar text) rejoined; verses un-headed | none | none |
 | al-tawakkul-ala-allah | committed | card; 59 import headings (athar text) rejoined into items; verses un-headed | none | none |
+| fadail-ramadan | committed | card | none | none |
