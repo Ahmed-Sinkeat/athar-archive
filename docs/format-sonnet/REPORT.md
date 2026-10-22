@@ -27,3 +27,4 @@
 | sharh-al-sunnah-al-muzani | skipped | nothing to format (already headed per topic, numbered points on own lines, no notes) | none | none |
 | sbb-wda-alm-al-arbya | committed | title-page card | none | none |
 | tadhkirat-fi-ulum-al-hadith | skipped | REPORT ONLY: whole book is glued into one line per page (headings, numbered points and footnotes '(١) - …' run together with no separators, no data-notes); needs re-import. Front matter (index/image captions) also unsplit | none | none |
+| usul-al-sunnah-ahmad-ibn-hanbal | skipped | nothing to format (no notes; one paragraph per page) | none | none |
