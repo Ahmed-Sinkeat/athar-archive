@@ -6,3 +6,4 @@
 | aqwd-al-hmz | committed | card yes; no notes | none | none |
 | al-wrqa-al-nhwya | skipped | nothing to format (no notes; text-only page labels, one-line paragraphs, numbered points already on own lines) | none | none |
 | tahqiq-al-ihtijaj-bil-qadar | skipped | nothing to format (no notes; fragmentary hadith extract, one paragraph per page) | none | none |
+| nuktat-al-irab | committed | title-page card | none | none |
