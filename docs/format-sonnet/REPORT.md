@@ -70,3 +70,4 @@
 | al-umr-wal-shayb | committed | card | none | none |
 | al-wajal-wal-tawathuq-bil-amal | committed | card | none | none |
 | dhamm-al-muskir | committed | card | none | none |
+| al-risalah-al-madaniyyah | committed | heading re-joined with its cut word | none | none |
