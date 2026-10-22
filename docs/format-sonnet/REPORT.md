@@ -88,3 +88,4 @@
 | al-nasihah-fi-sifat-al-rabb | skipped | nothing to format (no notes; headings fine) | none | none |
 | al-tahdhir-min-tazim-al-athar | skipped | nothing to format (no notes; headings fine) | none | none |
 | adab-al-ishrah | skipped | nothing to format (no notes; headings fine) | none | none |
+| lmhat-fy-trbyh-al-bnat | committed | 20 numbered-point headings → bold labels, cut sentences rejoined | none | none |
