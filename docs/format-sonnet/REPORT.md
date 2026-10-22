@@ -96,3 +96,4 @@
 | tmyz-al-sdq-mn-al-myn-fy-mhawra-al-rjlyn | skipped | nothing to format (no notes) | none | none |
 | al-mnthwr | committed | card/heading fixes (cut sentences rejoined) | none | none |
 | risalah-fi-ithbat-al-istiwa | committed | card/heading fixes (cut sentences rejoined) | none | none |
+| mjals-abn-al-qasm-al-ty-sal-anha-malka | committed | card/heading fixes (cut sentences rejoined) | none | none |
