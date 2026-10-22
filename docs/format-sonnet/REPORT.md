@@ -195,3 +195,4 @@
 | sharh-al-sunnah-al-barbahari-adel-bin-azzouz | skipped | nothing to format (no notes) | none | none |
 | sifat-al-nar | committed | card; split heading tails re-joined | none | none |
 | adab-al-alma-walmtalmyn | committed | card; split heading tails re-joined | none | none |
+| akhlaq-ahl-al-quran | skipped | nothing to format (no notes) | none | none |
