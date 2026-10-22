@@ -197,3 +197,4 @@
 | adab-al-alma-walmtalmyn | committed | card; split heading tails re-joined | none | none |
 | akhlaq-ahl-al-quran | skipped | nothing to format (no notes) | none | none |
 | dayf-al-adb-al-mfrd | committed | card; split heading tails re-joined | none | none |
+| zyna-al-arays | committed | card; split heading tails re-joined | none | none |
