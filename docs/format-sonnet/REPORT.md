@@ -150,3 +150,4 @@
 | istina-al-maruf | committed | card; headings/cut-sentence fixes | none | none |
 | kifayat-al-mutahaffiz | committed | card; headings re-joined with cut punctuation | none | none |
 | msayl-khlafya-fy-al-nhw | committed | card; headings re-joined with cut punctuation | none | none |
+| maqtal-ali | committed | card; headings re-joined with cut punctuation | none | none |
