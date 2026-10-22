@@ -180,3 +180,4 @@
 | al-sabr-wal-thawab-alayhi | committed | card; import headings rejoined/un-headed | none | none |
 | tanzih-al-ashab | committed | 1 footnote anchor linked | none | none |
 | lys-alyk-whshh | skipped | nothing to format (notes already linked 3/3) | none | none |
+| sharh-manzumat-al-qawaid-al-fiqhiyyah-saadi | committed | card; import athar-text headings rejoined | none | none |
