@@ -136,3 +136,4 @@
 | ziyarat-al-qubur-wal-istinjad | committed | 1 footnote anchor linked | none | none |
 | mwaaz-abn-al-jwzy-al-yaqwth | committed | card; headings re-joined with cut '؟' | none | none |
 | al-hamm-wal-huzn | committed | card; headings re-joined with cut '؟' | none | none |
+| muhasabat-al-nafs | committed | card; headings re-joined with cut '؟' | none | none |
