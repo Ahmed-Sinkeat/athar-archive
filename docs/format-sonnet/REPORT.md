@@ -120,3 +120,4 @@
 | al-laly | committed | card; import athar-text headings rejoined; verses un-headed | none | none |
 | sjwd-al-tlawh-maanyh-wahkamh | committed | card; import athar-text headings rejoined; verses un-headed | none | none |
 | al-jihad-ibn-abi-asim | committed | card; import athar-text headings rejoined; verses un-headed | none | none |
+| al-mutamannin | committed | card; import athar-text headings rejoined; verses un-headed | none | none |
