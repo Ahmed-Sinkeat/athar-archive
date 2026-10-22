@@ -41,3 +41,4 @@
 | qwasm-al-zhwr-ala-dar-al-ghrwr-al-zhd | committed | headings: cut punctuation/sentence tail rejoined | none | none |
 | aatrad-al-shrt-ala-al-shrt | committed | title-page card | none | none |
 | bzwgh-al-hlal-fy-al-khsal-al-mwjbh-llzlal | committed | title-page card | none | none |
+| hilm-muawiyah | committed | card, 2 split headings rejoined into their sentence | none | none |
