@@ -211,3 +211,4 @@
 | lys-fy-klam-al-arb | committed | card; heading tails/numbers re-joined | none | none |
 | kshf-al-awham-waliltbas-an-tshbyh-bad-al-aghbya-mn-al-nas | skipped | nothing to format (no notes) | none | none |
 | al-nafaqah-ala-al-iyal | committed | card; heading tails/numbers re-joined | none | none |
+| shrh-ktab-al-frq-byn-abadat-ahl-al-islam-waliyman-wabadat-ahl-al-shrk-walnfaq-labn-tymya-mhmd-hsn-abd-al-ghfar | skipped | nothing to format (no notes) | none | none |
