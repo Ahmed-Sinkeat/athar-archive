@@ -134,3 +134,4 @@
 | tajrid-al-tawhid-al-mufid | skipped | nothing to format (no notes) | none | none |
 | shrh-al-aswl-al-sta | skipped | nothing to format (no notes) | none | none |
 | ziyarat-al-qubur-wal-istinjad | committed | 1 footnote anchor linked | none | none |
+| mwaaz-abn-al-jwzy-al-yaqwth | committed | card; headings re-joined with cut '؟' | none | none |
