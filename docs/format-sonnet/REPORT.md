@@ -144,3 +144,4 @@
 | al-faraj-bad-al-shiddah-ibn-abi-al-dunya | committed | card; import headings rejoined into items where they were athar text | none | none |
 | husn-al-dhann-billah | committed | card; import headings rejoined into items where they were athar text | none | none |
 | al-asnam | skipped | nothing to format (no notes) | none | none |
+| al-matar-wal-rad-wal-barq | committed | card; headings/cut-sentence fixes | none | none |
