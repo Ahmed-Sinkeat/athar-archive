@@ -215,3 +215,4 @@
 | al-amaly-fy-athar-al-shaba-labd-al-rzaq-al-snaany | committed | card; heading tails re-joined | none | none |
 | shrh-al-azhrya | committed | card; heading tails re-joined | none | none |
 | al-aada-walnfs | committed | card; heading tails re-joined | none | none |
+| tadhkirat-al-sam-wal-mutakallim | committed | card; heading tails re-joined | none | none |
