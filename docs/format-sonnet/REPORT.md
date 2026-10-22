@@ -98,3 +98,4 @@
 | risalah-fi-ithbat-al-istiwa | committed | card/heading fixes (cut sentences rejoined) | none | none |
 | mjals-abn-al-qasm-al-ty-sal-anha-malka | committed | card/heading fixes (cut sentences rejoined) | none | none |
 | usul-al-fiqh-osamah-sulayman | committed | card/heading fixes (cut sentences rejoined) | none | none |
+| al-hilm-ibn-abi-al-dunya | committed | card/heading fixes (cut sentences rejoined) | none | none |
