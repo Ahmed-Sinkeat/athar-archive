@@ -204,3 +204,4 @@
 | al-lamat | committed | card; heading tails/numbers re-joined | none | none |
 | al-mqdmh-al-hdrmyh | committed | card; heading tails/numbers re-joined | none | none |
 | al-mqdma-al-jzwlya-fy-al-nhw | committed | card; heading tails/numbers re-joined | none | none |
+| al-ju | committed | card; heading tails/numbers re-joined | none | none |
