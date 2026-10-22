@@ -53,3 +53,4 @@
 | asbab-al-mghfrh | committed | front-matter card | none | none |
 | rsala-al-hdwd | committed | front-matter card | none | none |
 | al-aql-walhwa | committed | front-matter card | none | none |
+| dhamm-al-baghy | committed | card; 2 headings re-joined with their cut '؟' | none | none |
