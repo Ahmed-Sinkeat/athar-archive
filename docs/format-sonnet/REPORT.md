@@ -200,3 +200,4 @@
 | zyna-al-arays | committed | card; split heading tails re-joined | none | none |
 | al-qubur | committed | card; split heading tails re-joined | none | none |
 | trq-hdyth-mn-kdhb-aly-mtamda-lltbrany | committed | card; split heading tails re-joined | none | none |
+| muthakkirat-usul-al-fiqh-jamiah-islamiyyah | committed | card; split heading tails re-joined | none | none |
