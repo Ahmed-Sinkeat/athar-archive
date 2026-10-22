@@ -49,3 +49,4 @@
 | masail-al-jahiliyyah | skipped | nothing to format (already one heading per مسألة) | none | none |
 | nasihat-al-ilthi-li-ibn-al-jawzi | skipped | nothing to format (lecture transcript, no notes) | none | none |
 | ktab-mtn-al-akhdry-fy-al-abadat-ala-mdhhb-al-imam-malk | committed | front-matter card (index + title page) | none | none |
+| ktab-mtn-al-ashmawya | committed | front-matter card | none | none |
