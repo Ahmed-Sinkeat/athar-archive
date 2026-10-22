@@ -38,3 +38,4 @@
 | ikhtisas-al-quran-bi-awdihi | skipped | nothing to format (no notes; one paragraph per page) | none | none |
 | wujub-tahkim-shariatillah | committed | 1 footnote anchor linked | none | none |
 | tryaq-al-ahzan-wrahh-al-abdan-al-sbr | committed | headings: cut punctuation/sentence tail rejoined | none | none |
+| qwasm-al-zhwr-ala-dar-al-ghrwr-al-zhd | committed | headings: cut punctuation/sentence tail rejoined | none | none |
