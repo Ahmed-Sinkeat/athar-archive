@@ -50,3 +50,4 @@
 | nasihat-al-ilthi-li-ibn-al-jawzi | skipped | nothing to format (lecture transcript, no notes) | none | none |
 | ktab-mtn-al-akhdry-fy-al-abadat-ala-mdhhb-al-imam-malk | committed | front-matter card (index + title page) | none | none |
 | ktab-mtn-al-ashmawya | committed | front-matter card | none | none |
+| asbab-al-mghfrh | committed | front-matter card | none | none |
