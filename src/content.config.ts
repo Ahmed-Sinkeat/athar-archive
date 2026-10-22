@@ -125,6 +125,7 @@ const book = defineCollection({
     authored_year: z.number().int().optional(), // hijri سنة التصنيف — default browse sort
     description: z.string().optional(),
     edition: z.string().optional(),
+    edition_of: slug.optional(),
     cover: z.string().optional(),        // cover image (R2)
     attachments: attachmentsField,       // print editions / PDFs (R2)
   }),
@@ -139,6 +140,8 @@ const poem = defineCollection({
     person: slug,           // → Person (author)
     topics: topicsField,
     work_type: workTypeField,
+    edition: z.string().optional(),
+    edition_of: slug.optional(),
     authored_year: z.number().int().optional(), // hijri سنة النظم — default browse sort
     // verse_count / opening_verse are DERIVED from the body (FR-C-06), never
     // hand-stored — see analyzePoem() in src/lib/chunk.ts.

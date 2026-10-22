@@ -12,6 +12,13 @@ function parseFile(coll: ReadableCollection, id: string) {
 }
 
 describe("app/v2 semantic parser", () => {
+  it("keeps explicit poem editor front matter in its card and retains the author's opening verse", () => {
+    const parsed = parseReadableDocument({ coll: "poem", id: "card-poem", sourcePath: "card-poem.md", body: '<!-- card -->\n## Editor\n\nEditor preface\n\n<hr class="page-sep" data-page="1" />\n<!-- /card -->\n\n1. Opening … Verse\n\n## Chapter\n\n2. Next … Verse' });
+    expect(parsed.card?.some(field => field.v === "Editor preface")).toBe(true);
+    expect(parsed.blocks.filter(block => block.t === "verse").map(block => block.s)).toEqual(["Opening", "Next"]);
+    expect(parsed.blocks.filter(block => block.t.startsWith("h")).map(block => block.x)).toEqual(["Chapter"]);
+    expect(parsed.blocks.some(block => block.t === "page")).toBe(false);
+  });
   it("keeps each authored poem line as its own verse", () => {
     const poem = parseReadableDocument({ coll: "poem", id: "lines", sourcePath: "lines.md",
       body: "صدر أول --- عجز أول\nصدر ثان --- عجز ثان" });
@@ -50,9 +57,9 @@ describe("app/v2 semantic parser", () => {
     expect(article.blocks.every((block) => block.t === "p")).toBe(true);
 
     const book = parseFile("book", "nawaqid-al-islam");
-    expect(book.chapters).toEqual([{ a: "نواقض-الإسلام", title: "نواقض الإسلام", block: 0 }]);
-    expect(book.pages).toEqual({ from: 23, to: 28, vols: 1 });
-    expect(book.blocks.filter((block) => block.t === "page")).toHaveLength(6);
+    expect(book.chapters).toEqual([{ a: "نواقض-الإسلام", title: "نواقض الإسلام", block: 0, p: 25 }]);
+    expect(book.pages).toEqual({ from: 25, to: 28, vols: 1 }); // pages 23–24 are the card (the editor's front matter)
+    expect(book.blocks.filter((block) => block.t === "page")).toHaveLength(4);
     expect(book.card).toHaveLength(9); // the editor's list sits in the book card since the 143fc63e formatting
     expect(book.blocks.flatMap((block) => block.sp ?? []).filter((span) => span.k === "strong")).toHaveLength(10);
 
@@ -229,6 +236,38 @@ describe("app/v2 semantic parser", () => {
 });
 
 describe("extractCard", () => {
+  it("keeps an author's opening merged onto the author-credit line in the book", () => {
+    const body = "## الإيمان\n\nتأليف: ابن تيمية بسم الله الرحمن الرحيم الحمد لله، اعلم أن الإيمان والإسلام يجتمع فيهما الدين كله.\n\n<hr class=\"page-sep\" data-page=\"7\" />\n\nوالفرق مذكور";
+    expect(extractCard(body)).toEqual({ body, card: [] });
+  });
+
+  it("keeps a metadata title page and its publisher notes in the card, preserving the author's introduction", () => {
+    const parsed = parseReadableDocument({ coll: "book", id: "title-page", sourcePath: "title-page.md", body: '## الكتاب\n\nالمؤلف: فلان\n\n<hr class="page-sep" data-page="1" data-notes=\'["ملاحظة الناشر"]\' />\n\n## مقدمة المؤلف\n\nكلام المؤلف\n\n<hr class="page-sep" data-page="3" />' });
+    expect(parsed.card).toContainEqual({ l: "", v: "ملاحظة الناشر" });
+    expect(parsed.blocks[0]).toMatchObject({ t: "h2", x: "مقدمة المؤلف" });
+    expect(parsed.blocks.some(block => block.x === "كلام المؤلف")).toBe(true);
+    expect(parsed.blocks.filter(block => block.t === "page").map(block => block.p)).toEqual([3]);
+    expect(parsed.footnotes).toEqual([]);
+  });
+
+  it("lifts editor credits, the «جامع الحديث» description and the title page, keeping the text", () => {
+    const credits = extractCard([
+      "### بطاقة الكتاب وفهرس الموضوعات", "الكتاب: آداب العشرة", "عني بتحقيقه: فلان", "خرجه وعلق عليه: علان",
+      "الناشر: مجمع", "[ترقيم الكتاب موافق للمطبوع]", "صفحة المؤلف: []", "(المؤلف)", "فلان الغزي", "(وصف الكتاب ومنهجه)", "وصف",
+      "[التعريف بالكتاب , نقلا عن موقع جامع الحديث]", "صفحة المؤلف: []", "", "## بسم الله الرحمن الرحيم", "الحمد لله",
+    ].join("\n"));
+    expect(credits.card.map((field) => field.l || field.v)).toEqual(["الكتاب", "عني بتحقيقه", "خرجه وعلق عليه", "الناشر", "المؤلف", "فلان الغزي", "وصف الكتاب ومنهجه", "وصف"]);
+    expect(credits.body).toBe("## بسم الله الرحمن الرحيم\nالحمد لله");
+
+    const title = extractCard(["الكتاب: أحكام النساء", "الناشر: دار", "النص الصحيح لكتاب أحكام النساء", "تحقيق ودراسة",
+      '<hr class="page-sep" data-page="1" />', "## مقدمة المحقق", "نص"].join("\n"));
+    expect(title.card.map((field) => field.v)).toContain("تحقيق ودراسة");
+    expect(title.body).toBe("## مقدمة المحقق\nنص");
+    // Dictionary lines («الجواد: الرجل السخي.») are text, never a title page.
+    const text = ["الكتاب: كفاية", "الجواد: الرجل السخي.", '<hr class="page-sep" data-page="2" />', "نص"].join("\n");
+    expect(extractCard(text).body.startsWith("الجواد")).toBe(true);
+  });
+
   it("lifts the opening info card out of a book and keeps the real text", () => {
     const bullets = extractCard([
       "## المقدمة", "# عنوان الكتاب", "- **عَلَم:** فلان", "- **الكتاب:** عنوان الكتاب",
@@ -249,14 +288,15 @@ describe("extractCard", () => {
     expect(extractCard("قال: الكتاب: ليس بطاقة").card).toEqual([]);
   });
 
-  it("moves a formatter-marked <!-- card --> region to the card, keeping its page markers in the flow", () => {
+  it("moves a formatter-marked <!-- card --> region to the card, its page markers with it", () => {
     const marked = extractCard([
-      "<!-- card -->", "## مقدمة المحقق", "النسخ المعتمدة:[^fn1]", "- **نسخة** خطية", "تحقيق: فلان", '<hr class="page-sep" data-page="2" />', "<!-- /card -->", "اعلم",
+      "<!-- card -->", "## مقدمة المحقق", "النسخ المعتمدة:[^fn1]", "- **نسخة** خطية", "تحقيق: فلان", `<hr class="page-sep" data-page="2" data-notes='["(١) انظر النسخة"]' />`, "<!-- /card -->", "اعلم",
     ].join("\n"));
     expect(marked.card).toEqual([
       { l: "", v: "مقدمة المحقق", k: "h" }, { l: "", v: "النسخ المعتمدة:" }, { l: "", v: "نسخة خطية", k: "li" }, { l: "تحقيق", v: "فلان" },
+      { l: "", v: "(١) انظر النسخة" },
     ]);
-    expect(marked.body).toBe('<hr class="page-sep" data-page="2" />\nاعلم');
+    expect(marked.body).toBe("اعلم");
   });
 });
 
@@ -278,7 +318,7 @@ describe("prose marked as headings", () => {
     const parsed = parseReadableDocument({ coll: "book", id: "heads", sourcePath: "heads.md", body:
       `## الأول\n\n## ${hadith}\n\n### ${bab}\n\n### ُ: رفع القلم عن ثلاثة\n\nنص` });
     expect(parsed.blocks.map(block => block.t)).toEqual(["h2", "p", "h3", "p", "p"]);
-    expect(parsed.chapters.map(chapter => chapter.title)).toEqual(["الأول"]);
+    expect(parsed.chapters.map(chapter => chapter.title)).toEqual(["الأول", bab.trim()]); // the kept long باب is listed under its كتاب
   });
 });
 
@@ -304,26 +344,35 @@ describe("a page marker repeated after each heading", () => {
     ]);
     expect(parsed.chapters.map(chapter => chapter.block)).toEqual([0, 2]);
   });
+
+  it("reads a two-series import in page order: bare markers start a page, a stepped-back marker folds in", () => {
+    const v = (page: number, notes = "[]") => `<hr class="page-sep" data-page="${page}" data-vol="1" data-notes='${notes}' />`;
+    const bare = (page: number) => `<hr class="page-sep" data-page="${page}" />`;
+    // As in اعتلال القلوب: record ends (vol) interleaved with printed breaks (bare).
+    const parsed = parseReadableDocument({ coll: "book", id: "two", sourcePath: "two.md", body: [
+      "أ", v(30), "ب", bare(31), "ج (^1)", v(30, '["حاشية"]'), "د", v(31), "هـ", bare(32), "و", v(31),
+      "ز", bare(33), "ح (^1)", v(31, '["متأخرة"]'), "ط", v(32),
+    ].join("\n\n") });
+    expect(parsed.blocks.filter(block => block.t === "page").map(block => block.p)).toEqual([30, 31, 32]);
+    expect(parsed.blocks.filter(block => block.t === "p").map(block => [block.x, block.p])).toEqual([
+      ["أ", 30], ["ب", 30], ["ج 1", 30], ["د", 31], ["هـ", 31], ["و", 31], ["ز", 32], ["ح 1", 32], ["ط", 32],
+    ]);
+    // The stepped-back marker's note is not lost: it moves to the next page's footer.
+    expect(parsed.blocks.filter(block => block.t === "notes").map(block => [block.p, block.f!.map(id => parsed.footnotes.find(n => n.id === id)!.x)]))
+      .toEqual([[30, ["حاشية"]], [32, ["متأخرة"]]]);
+  });
 });
 
-describe("continuous reading", () => {
-  it("joins a sentence the page cut, then shows that page's notes and divider after it", () => {
+describe("printed pages", () => {
+  it("keeps a sentence the page cut as printed; the app joins it in its continuous view", () => {
     const hr = (page: number, notes: string) => `<hr class="page-sep" data-page="${page}" data-notes='${notes}' />`;
     const parsed = parseReadableDocument({ coll: "book", id: "join", sourcePath: "join.md", body: [
-      "تم الكلام.", "وقال الشيخ (^1) إن", hr(5, '["أولى"]'), "العلم **نور** (^1) يهدي", hr(6, '["ثانية"]'),
-      "به.", hr(7, "[]"), "10- قال آخر", hr(8, "[]"), "**الأول:** لا يجتمع", "## باب", "بعده",
+      "وقال الشيخ (^1) إن", hr(5, '["أولى"]'), "العلم **نور** (^1) يهدي", hr(6, '["ثانية"]'), "به.", hr(7, "[]"),
     ].join("\n\n") });
     expect(parsed.blocks.map(block => [block.t, block.p, block.x ?? block.f])).toEqual([
-      ["p", 5, "تم الكلام."],
-      ["p", 5, "وقال الشيخ 1 إن العلم نور 1 يهدي به."],
-      ["notes", 5, ["5:1"]], ["page", 5, undefined], ["notes", 6, ["6:1"]], ["page", 6, undefined], ["page", 7, undefined],
-      // A numbered item, a bold label and a heading after the break each stay their own block.
-      ["p", 8, "10- قال آخر"], ["page", 8, undefined], ["p", 9, "الأول: لا يجتمع"], ["h2", 9, "باب"], ["p", 9, "بعده"],
+      ["p", 5, "وقال الشيخ 1 إن"], ["notes", 5, ["5:1"]], ["page", 5, undefined],
+      ["p", 6, "العلم نور 1 يهدي"], ["notes", 6, ["6:1"]], ["page", 6, undefined],
+      ["p", 7, "به."], ["page", 7, undefined],
     ]);
-    // The second page's anchor and bold span move with its text; notes still link.
-    expect(parsed.blocks[1]?.sp?.map(span => [span.k, parsed.blocks[1]!.x!.slice(span.s, span.e), span.target])).toEqual([
-      ["sup", "1", "5:1"], ["strong", "نور", undefined], ["sup", "1", "6:1"],
-    ]);
-    expect(parsed.chapters.at(-1)?.block).toBe(10);
   });
 });

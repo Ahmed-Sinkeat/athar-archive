@@ -1,3 +1,5 @@
+import { spawnSync } from "node:child_process";
+import { fileURLToPath } from "node:url";
 import { gunzipSync } from "node:zlib";
 import { generateKeyPairSync } from "node:crypto";
 import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
@@ -42,6 +44,64 @@ afterEach(() => {
 });
 
 describe("app/v2 content generator", () => {
+  it("emits published people, including those without works, and keeps biographies", async () => {
+    const root = fixtureRoot();
+    writeFileSync(path.join(root, "src/content/person/empty.md"), "---\ntitle: Empty\nstatus: published\nbio: Biography\n---\nBody");
+    writeFileSync(path.join(root, "src/content/person/draft.md"), "---\ntitle: Hidden\nstatus: draft\n---\n");
+    const result = await generateAppContent({ repositoryRoot: root, outputRoot: path.join(root, "out"), sidecarRoot: path.join(root, "ids"), targets: [{ coll: "book", id: "fixture" }] });
+    expect(result.catalog.persons).toEqual([
+      { id: "author", name: "المؤلف", died: 123, works: ["fixture"] },
+      { id: "empty", name: "Empty", bio: "Biography\n\nBody", works: [] },
+    ]);
+  });
+
+  it("groups editions without dropping their downloadable text and rejects missing defaults", async () => {
+    const root = fixtureRoot();
+    writeFileSync(path.join(root, "src/content/book/other.md"), "---\ntitle: Other\nstatus: published\nedition_of: fixture\nedition: Edited\n---\nOther text");
+    const options = { repositoryRoot: root, outputRoot: path.join(root, "out"), sidecarRoot: path.join(root, "ids"), targets: await publishedContentTargets(root) };
+    const result = await generateAppContent(options);
+    expect(result.catalog.entries).toHaveLength(2);
+    expect(result.catalog.entries.find(e => e.id === "fixture")?.editions).toEqual(["other"]);
+    expect(result.catalog.entries.find(e => e.id === "other")?.editionOf).toBe("fixture");
+    expect(result.catalog.persons?.[0]?.works).toEqual(["fixture"]);
+    // An --only run keeps fixture from the previous catalog: its editions must not go stale.
+    writeFileSync(path.join(root, "src/content/book/other.md"), "---\ntitle: Other\nstatus: published\n---\nOther text");
+    const only = await generateAppContent({ ...options, targets: [{ coll: "book", id: "other" }], keepOthers: true });
+    expect(only.catalog.entries.find(e => e.id === "fixture")?.editions).toBeUndefined();
+    writeFileSync(path.join(root, "src/content/book/other.md"), "---\ntitle: Other\nstatus: published\nedition_of: missing\n---\nText");
+    await expect(generateAppContent(options)).rejects.toThrow("invalid edition_of");
+  });
+
+  it("skips opening formulas in article previews while preserving substantive prose", async () => {
+    const root = fixtureRoot();
+    mkdirSync(path.join(root, "src/content/article"));
+    writeFileSync(path.join(root, "src/content/article/article.md"), "---\ntitle: Article\nstatus: published\n---\nالحمد لله والصلاة والسلام على رسول الله وعلى آله وصحبه ومن والاه\nأما بعد :\n\nSubstantive opening");
+    const result = await generateAppContent({ repositoryRoot: root, outputRoot: path.join(root, "out"), sidecarRoot: path.join(root, "ids"), targets: [{ coll: "article", id: "article" }] });
+    expect(result.catalog.entries[0]?.excerpt).toBe("Substantive opening");
+    writeFileSync(path.join(root, "src/content/article/article.md"), "---\ntitle: Article\nstatus: published\n---\nأما بعد :\n\nفمن العبارات السيارة");
+    const alone = await generateAppContent({ repositoryRoot: root, outputRoot: path.join(root, "out"), sidecarRoot: path.join(root, "ids"), targets: [{ coll: "article", id: "article" }] });
+    expect(alone.catalog.entries[0]?.excerpt).toBe("فمن العبارات السيارة");
+  });
+
+  it("the standalone release verifier rejects a corrupted generated package", async () => {
+    const root = fixtureRoot();
+    const book = path.join(root, "src/content/book/fixture.md");
+    writeFileSync(book, readFileSync(book, "utf8") + '\nReferenced[^note] and plain superscript<sup>2</sup>\n\n<hr class="page-sep" data-page="1" />\n\n<hr class="page-sep" data-page="2" />\n\n[^note]: Preserved footnote\n');
+    const keys = generateKeyPairSync("rsa", { modulusLength: 3072 });
+    const keyFile = path.join(root, "key.pem");
+    writeFileSync(keyFile, keys.privateKey.export({ type: "pkcs8", format: "pem" }));
+    const result = await generateAppContent({ repositoryRoot: root, outputRoot: path.join(root, "out"), sidecarRoot: path.join(root, "ids"), targets: [{ coll: "book", id: "fixture" }], signing: { keyId: "test", privateKey: keys.privateKey } });
+    const script = fileURLToPath(new URL("../../../scripts/verify-app-content.ts", import.meta.url));
+    const run = () => spawnSync(process.execPath, ["--import", "tsx", script, result.outputDirectory], { encoding: "utf8", env: { ...process.env, ATHAR_CONTENT_SIGNING_KEY_FILE: keyFile, ATHAR_CONTENT_SIGNING_KEY_ID: "test" } });
+    const verified = run();
+    expect(verified.status, verified.stderr).toBe(0);
+    expect(verified.stdout).toContain("verified 1 texts");
+    expect(verified.stdout).toContain("1 adjacent dividers");
+    const packageFile = path.join(result.outputDirectory, result.catalog.entries[0]!.pkg.path);
+    writeFileSync(packageFile, Buffer.concat([readFileSync(packageFile), Buffer.from("corrupt")]));
+    expect(run().status).not.toBe(0);
+  });
+
   it("discovers published sources including large books and rejects ambiguous IDs", async () => {
     const root = fixtureRoot();
     mkdirSync(path.join(root, "src/content/book-lg"), { recursive: true });

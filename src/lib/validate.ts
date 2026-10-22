@@ -100,6 +100,14 @@ export function validate(entries: ContentEntry[]): BuildError[] {
       }
     }
 
+    if ((collection === "book" || collection === "poem") && data.edition_of) {
+      const primaryId = str(data.edition_of);
+      const primary = get(map, collection, primaryId);
+      if (!primary) fail(collection, id, "ref-resolution", `edition_of '${primaryId}' not found in ${collection}`);
+      else if (primaryId === id || primary.data.edition_of) fail(collection, id, "invalid-edition", `edition_of '${primaryId}' must point directly to the default edition`);
+      else if (isPublished && primary.status === "draft") fail(collection, id, "draft-ref-guard", `published '${collection}/${id}' references a draft default edition`);
+    }
+
     // --- Book → sharh_of (optional; must resolve to a real book or poem) ---
     if (collection === "book" && data.sharh_of) {
       const parentId = str(data.sharh_of);

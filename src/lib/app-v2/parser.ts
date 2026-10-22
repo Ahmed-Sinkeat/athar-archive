@@ -369,51 +369,6 @@ function unbracketed(row: InlineResult): InlineResult {
   return { ...row, text, spans: row.spans.map(span => ({ ...span, s: at(span.s), e: at(span.e) })).filter(span => span.e > span.s) };
 }
 
-/**
- * Continuous reading: a paragraph the printed page cut mid-sentence carries on into the next
- * page's first paragraph. The page divider and that page's notes move to just after it.
- * ponytail: "ends a sentence" = last mark after closing quotes/brackets/note digits; a wrong
- * guess only joins or splits two paragraphs, never changes text.
- */
-function joinAcrossPages(blocks: DraftBlock[], chapters: { block: number }[]) {
-  const ENDED = /[.!?:;؟۔؛…]$/;
-  const TAIL = /[\s"'»”’)\]٠-٩0-9]+$/;
-  const joinable = (block: DraftBlock | undefined) =>
-    block?.t === "p" && !block.quoted && !block.continuation && !block.commentary && block.x != null;
-  const out: DraftBlock[] = [];
-  const into = new Map<DraftBlock, DraftBlock>();
-  let open: DraftBlock | undefined;
-  let held: DraftBlock[] = [];
-  const flush = () => { out.push(...held); held = []; open = undefined; };
-  for (const block of blocks) {
-    if (open && (block.t === "page" || block.t === "notes")) { held.push(block); continue; }
-    const next = block.x ?? "";
-    // A new item («10- قال») or a bold label at the start of the page stays its own paragraph.
-    const starts = /^\s*[0-9٠-٩]+\s*[-ـ]/.test(next) || block.sp?.some((span) => span.s === 0 && span.k === "strong");
-    if (open && held.some((b) => b.t === "page") && joinable(block) && block.a === open.a && !starts) {
-      const offset = open.x!.length + 1;
-      open.x = `${open.x} ${next}`;
-      if (block.sp?.length) open.sp = [...(open.sp ?? []), ...block.sp.map((span) => ({ ...span, s: span.s + offset, e: span.e + offset }))];
-      if (block.f?.length) open.f = [...new Set([...(open.f ?? []), ...block.f])];
-      into.set(block, open);
-      if (ENDED.test(open.x.replace(TAIL, ""))) flush();
-      continue;
-    }
-    flush();
-    out.push(block);
-    if (joinable(block) && !ENDED.test(block.x!.replace(TAIL, ""))) open = block;
-  }
-  flush();
-  if (out.length === blocks.length) return;
-  const at = new Map(out.map((block, index) => [block, index]));
-  for (const chapter of chapters) {
-    const block = blocks[chapter.block];
-    chapter.block = block ? at.get(into.get(block) ?? block)! : out.length;
-  }
-  blocks.length = 0;
-  for (const block of out) blocks.push(block); // not push(...out): huge books overflow the arg limit
-}
-
 function plainText(node: MarkdownNode): string {
   if (node.type === "text") return node.value ?? "";
   if (node.type === "break") return "\n";
@@ -438,9 +393,14 @@ const CARD_LABELS = new Set([
   "الكتاب", "المؤلف", "الناشر", "علم", "عدد الأجزاء", "الطبعة", "المحقق", "عدد الصفحات", "صفحة المؤلف",
   "تحقيق", "حققه", "دراسة وتحقيق", "رقم الإيداع", "عام النشر", "سنة النشر", "تأليف", "خرج أحاديثه",
   "راجعه", "قدمه للشاملة", "المترجم", "مصدر الكتاب", "تقديم", "اعتنى به", "الشارح", "ضبطه",
+  "عني بتحقيقه", "رواية", "دار النشر", "مؤلف الأصل", "أعده للشاملة", "أهداه للشاملة", "إعداد", "جمع", "ترتيب", "الجزء",
 ]);
+/** Editor credits come in many combinations («حققه وعلق عليه وخرج أحاديثه»): known by their first word. */
+const CARD_CREDITS = new Set(["حققه", "حققها", "تحقيق", "خرجه", "خرج", "علق", "اعتنى", "قدم", "راجعه", "ضبطه", "دراسة"]);
 /** Already on the reader's title line, or Shamela bookkeeping. */
-const CARD_HIDDEN = new Set(["علم", "صفحة المؤلف", "قدمه للشاملة"]);
+const CARD_HIDDEN = new Set(["علم", "صفحة المؤلف", "قدمه للشاملة", "أعده للشاملة", "أهداه للشاملة", "الجزء"]);
+/** The «جامع الحديث» description some imports carry after the card: «(المؤلف)» … up to this line. */
+const CARD_ABOUT_END = "[التعريف بالكتاب";
 const CARD_FIELD_RE = /^(?:-\s+)?(?:\*\*)?([^:*\n]{2,25}?)\s*(?:\*\*)?\s*:\s*(?:\*\*)?\s*(.*)$/;
 const bareArabic = (text: string) => text.replace(/[\u064B-\u0652]/g, "").trim();
 
@@ -454,22 +414,27 @@ export function extractCard(body: string): { body: string; card: CardField[] } {
   const field = (line: string) => {
     const match = line.trim().match(CARD_FIELD_RE);
     const label = match && bareArabic(match[1]!);
-    if (!label || !CARD_LABELS.has(label)) return undefined;
+    if (!label || !(CARD_LABELS.has(label) || CARD_CREDITS.has(label.split(" ")[0]!))) return undefined;
     return { l: label, v: match[2]!.replace(/\*\*/g, "").replace(/\[([^\]]*)\]\([^)]*\)/g, "$1").trim() };
   };
   // A formatter-marked title page or front matter (<!-- card --> … <!-- /card -->) goes to the card whole.
   const marked = body.match(/<!--\s*card\s*-->([\s\S]*?)<!--\s*\/card\s*-->\n?/);
   if (marked) {
-    const pages = marked[1]!.match(/<hr\b[^>]*\bpage-sep\b[^>]*>/g) ?? []; // stay in the flow, so page numbers hold
     // The app shows these lines as the book's «مقدمة» page, so headings and list items keep their kind.
-    const card = marked[1]!.replace(/<[^>]+>/g, "").replace(/\[\^[^\]\s]+\]/g, "").split("\n").flatMap((raw): CardField[] => {
+    const card = marked[1]!.split("\n").flatMap((tagged): CardField[] => {
+      // A page marker's notes are the editor's notes on that card page: keep them under it.
+      const marker = PAGE_TAG_RE.test(tagged) ? pageMarker(tagged.trim()) : undefined;
+      if (marker) return marker.notes.map((v) => ({ l: "", v: v.trim() })).filter((note) => note.v);
+      const raw = tagged.replace(/<[^>]+>/g, "").replace(/\[\^[^\]\s]+\]:?/g, "");
       const kind = /^\s*#{1,6}\s/.test(raw) ? "h" : /^\s*[-*+]\s/.test(raw) ? "li" : undefined;
       const line = raw.replace(/^\s*(?:#{1,6}|[-*+]|>)\s+/, "").replace(/\*\*/g, "").trim();
       if (!line) return [];
       const entry = (kind !== "h" && field(line)) || { l: "", v: line };
       return [kind ? { ...entry, k: kind } : entry];
     });
-    return { body: body.replace(marked[0], pages.join("\n\n") + "\n"), card };
+    // Its page markers go too: each ends a page wholly inside the card, so in the flow they
+    // only stacked up as empty pages before the text (Zad opened on 14).
+    return { body: body.replace(marked[0], ""), card };
   }
   const lines = body.split("\n");
   const nextLine = (from: number) => lines.slice(from).find((line) => line.trim()) ?? "";
@@ -482,6 +447,8 @@ export function extractCard(body: string): { body: string; card: CardField[] } {
     if (!line) continue;
     const entry = field(line);
     if (entry) {
+      // Some imports merge the author credit and the author's opening into one paragraph.
+      if ((entry.l === "تأليف" || entry.l === "المؤلف") && bareArabic(entry.v).includes("بسم الله")) break;
       sawField = true;
       if (entry.v && !CARD_HIDDEN.has(entry.l) && !card.some((known) => known.l === entry.l)) card.push(entry);
       continue;
@@ -497,21 +464,70 @@ export function extractCard(body: string): { body: string; card: CardField[] } {
     break;
   }
   if (!sawField) return { body, card: [] };
+  // The «جامع الحديث» description (author, editions, attribution, method) is the card's too.
+  const aboutEnd = lines.findIndex((line, at) => at >= index && line.trim().startsWith(CARD_ABOUT_END));
+  if (lines[index]?.trim() === "(المؤلف)" && aboutEnd > 0 && !lines.slice(index, aboutEnd).some((line) => PAGE_TAG_RE.test(line))) {
+    for (const line of lines.slice(index, aboutEnd).map((line) => line.trim()).filter(Boolean)) {
+      const heading = line.match(/^\((.+)\)$/)?.[1];
+      card.push(heading ? { l: "", v: heading, k: "h" } : { l: "", v: line });
+    }
+    index = aboutEnd + 1;
+    // Its «صفحة المؤلف: []» line is Shamela bookkeeping.
+    while (index < lines.length && (!lines[index]!.trim() || field(lines[index]!)?.l === "صفحة المؤلف")) index++;
+  }
   const rest = lines.slice(index);
+  // The printed title page left after the fields (a few short lines closing page 1) is the card's too.
+  const pageEnd = rest.findIndex((line) => PAGE_TAG_RE.test(line));
+  const titleLines = pageEnd > 0 ? rest.slice(0, pageEnd).map((line) => line.trim()).filter(Boolean) : [];
+  if (titleLines.length && titleLines.length <= 8 && titleLines.every((line) => field(line) || (line.length <= 80 && !/^#|^\*\*|\[\^|\.\.\.|…|:|\.$/.test(line)))) {
+    card.push(...titleLines.map((v) => ({ l: "", v })));
+    rest.splice(0, pageEnd);
+  }
+  const titlePage = /^<hr\b[^>]*>\s*$/.test(rest[0] ?? "") ? pageMarker(rest[0]!) : undefined;
+  if (titlePage) {
+    card.push(...titlePage.notes.map(v => ({ l: "", v })));
+    rest.shift();
+  }
   const keepHeld = held >= 0 && !/^#{1,6}\s/.test(rest.find((line) => line.trim())?.trim() ?? "#");
   return { body: [...(keepHeld ? [lines[held]!] : []), ...rest].join("\n"), card };
+}
+
+/**
+ * Some Shamela imports carry two marker series: `data-vol` markers END each record (labelled
+ * with the page the record starts on), and bare markers are the printed page breaks, labelled
+ * with the page that STARTS there. Read as one series they jump back and forth (31, 30, 31…).
+ * True when reading bare marker N as "end of page N-1" leaves fewer backward steps.
+ */
+function bareMarkersStartPages(body: string): boolean {
+  const seq: { page: number; vol?: string; bare: boolean }[] = [];
+  let vol: string | undefined;
+  for (const match of body.matchAll(/<hr\b[^>]*\bpage-sep\b[^>]*>/g)) {
+    const page = Number(match[0].match(/data-page="(\d+)"/)?.[1]);
+    if (!page) continue;
+    const own = match[0].match(/data-(?:vol|juz)="(\d+)"/)?.[1];
+    vol = own ?? vol;
+    seq.push({ page, vol, bare: own == null });
+  }
+  if (!seq.some((m) => m.bare) || seq.every((m) => m.bare)) return false;
+  const backward = (shift: number) => seq.reduce((count, m, i) => {
+    const prev = seq[i - 1];
+    if (!prev || prev.vol !== m.vol) return count;
+    return count + ((m.bare ? m.page - shift : m.page) < (prev.bare ? prev.page - shift : prev.page) ? 1 : 0);
+  }, 0);
+  return backward(1) < backward(0);
 }
 
 export function parseReadableDocument(input: ParseReadableInput): ParsedDocument {
   const parser = unified().use(remarkParse).use(remarkGfm);
   // Same normalization the site applies: plain «الجزء: N - الصفحة: M» lines become real page markers.
-  const { body: cardless, card } = input.coll === "book" ? extractCard(input.body) : { body: input.body, card: [] };
+  const { body: cardless, card } = (input.coll === "book" || (input.coll === "poem" && input.body.includes("<!-- card -->"))) ? extractCard(input.body) : { body: input.body, card: [] };
   // Shamela sometimes puts a note's ref on the page-number line itself ("[^fn419] الجزء: 1 -
   // الصفحة: 264") with no mark in the text; split it off so the marker stays a block.
   const body = normalizePageMarkers(cardless).replace(/^((?:\[\^[^\]\s]+\]\s*)+)(<hr class="page-sep")/gm, "$1\n\n$2");
   // Large books are parsed one section at a time; a whole-book Markdown AST can exceed RAM.
   const chunks = body.length > 1_000_000 ? body.split(/\n(?=#{1,6} |[ \t]*<hr\b)/) : [body];
   const smallTree = chunks.length === 1 ? parser.parse(body) as unknown as MarkdownNode : undefined;
+  const twoSeries = bareMarkersStartPages(body);
   const definitions = new Map<string, string>();
   const definitionSources = new Map<string, string>();
   for (const chunk of chunks) {
@@ -793,6 +809,9 @@ export function parseReadableDocument(input: ParseReadableInput): ParsedDocument
         if (depth === 2) {
           currentAnchor = headingAnchor;
           chapters.push({ a: currentAnchor, title: rendered.inline.text, block: blocks.length });
+        } else if (depth === 3) {
+          ensureChapter();
+          chapters.push({ a: headingAnchor, title: rendered.inline.text, block: blocks.length, lv: 3 });
         }
         add({
           t: `h${depth as 1 | 2 | 3 | 4 | 5 | 6}`,
@@ -849,6 +868,7 @@ export function parseReadableDocument(input: ParseReadableInput): ParsedDocument
           return;
         }
         currentVol = marker.vol ?? currentVol;
+        if (twoSeries && marker.vol == null) marker.page = Math.max(1, marker.page - 1);
         const base = `${currentVol != null ? `${currentVol}:` : ""}${marker.page}:`;
         const occurrence = (pageOccurrences.get(base) ?? 0) + 1;
         pageOccurrences.set(base, occurrence);
@@ -881,41 +901,42 @@ export function parseReadableDocument(input: ParseReadableInput): ParsedDocument
   if (blocks.length === 0) throw new Error(`${input.sourcePath}: readable document has no semantic blocks`);
 
   // Shamela repeats a printed page's marker after each heading on it: keep one divider per
-  // page (the last), and gather the dropped segments' notes into that page's one footer.
+  // page (the last). In a two-series book a marker that still steps back is a record end
+  // inside a page already closed: drop it too. A dropped marker's notes go to the next kept one.
   const dropped = new Set<DraftBlock>();
-  const carried = new Map<DraftBlock, string[]>();
-  let previousMarker: number | undefined;
-  blocks.forEach((block, index) => {
-    if (block.t !== "page") return;
-    const prior = previousMarker == null ? undefined : blocks[previousMarker]!;
-    if (prior && prior.p === block.p && prior.vol === block.vol) {
-      dropped.add(prior);
-      const priorNotes = blocks[previousMarker! - 1];
-      if (priorNotes?.t === "notes") dropped.add(priorNotes);
-      const carry = [...(carried.get(prior) ?? []), ...(priorNotes?.t === "notes" ? priorNotes.f! : [])];
-      if (carry.length) carried.set(block, carry);
+  let previousMarker: DraftBlock | undefined;
+  for (const block of blocks) {
+    if (block.t !== "page") continue;
+    if (previousMarker && previousMarker.vol === block.vol) {
+      if (twoSeries && block.p! < previousMarker.p!) { dropped.add(block); continue; }
+      if (previousMarker.p === block.p) dropped.add(previousMarker);
     }
-    previousMarker = index;
-  });
+    previousMarker = block;
+  }
   if (dropped.size) {
     const kept: DraftBlock[] = [];
     const moved: number[] = [];
+    let carry: string[] = [];
     blocks.forEach((block, index) => {
       moved[index] = kept.length;
+      const next = blocks[index + 1];
       if (dropped.has(block)) return;
-      const carry = carried.get(block);
-      const own = kept.at(-1);
-      if (carry && own?.t === "notes" && blocks[index - 1] === own) own.f = [...carry, ...own.f!];
-      else if (carry) kept.push({ t: "notes", f: carry, a: block.a, ...(block.p != null ? { p: block.p } : {}), ...(block.vol ? { vol: block.vol } : {}) });
+      if (block.t === "notes" && next && dropped.has(next)) { carry.push(...block.f!); return; }
+      if (block.t === "page" && carry.length) {
+        const own = kept.at(-1);
+        if (own?.t === "notes" && blocks[index - 1] === own) own.f = [...carry, ...own.f!];
+        else kept.push({ t: "notes", f: carry, a: block.a, ...(block.p != null ? { p: block.p } : {}), ...(block.vol ? { vol: block.vol } : {}) });
+        carry = [];
+      }
       kept.push(block);
     });
+    if (carry.length) kept.push({ t: "notes", f: carry });
     moved[blocks.length] = kept.length;
     for (const chapter of chapters) chapter.block = moved[chapter.block]!;
     blocks.length = 0;
     for (const block of kept) blocks.push(block);
   }
 
-  joinAcrossPages(blocks, chapters);
 
   // A marker ENDS its page: each block takes the page of the marker after it, and text
   // after the last marker sits on the page that follows it.
@@ -928,6 +949,11 @@ export function parseReadableDocument(input: ParseReadableInput): ParsedDocument
     delete block.vol;
     if (nextMarker) Object.assign(block, { p: nextMarker.p }, nextMarker.vol != null ? { vol: nextMarker.vol } : {});
     else if (lastMarker) Object.assign(block, { p: lastMarker.p! + 1 }, lastMarker.vol != null ? { vol: lastMarker.vol } : {});
+  }
+
+  for (const chapter of chapters) {
+    const head = blocks[chapter.block];
+    if (head?.p != null) Object.assign(chapter, { p: head.p }, head.vol != null ? { vol: head.vol } : {});
   }
 
   const noteIds = new Set<string>();

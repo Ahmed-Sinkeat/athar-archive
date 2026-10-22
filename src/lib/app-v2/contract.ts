@@ -16,6 +16,11 @@ export interface ChapterRecord {
   a: string;
   title: string;
   block: number;
+  /** 3 for a باب (h3) inside the كتاب before it; absent for a كتاب (h2). Blocks belong to kitabs only. */
+  lv?: 3;
+  /** The printed page (and volume) the heading sits on. */
+  p?: number;
+  vol?: number;
 }
 
 export interface PageRange {
@@ -145,6 +150,9 @@ export interface CatalogEntry {
   v: number;
   hash: string;
   title: string;
+  editionOf?: string;
+  edition?: string;
+  editions?: string[];
   person?: string;
   personName?: string;
   died?: number;
@@ -164,9 +172,18 @@ export interface CatalogEntry {
   audio?: AudioCatalogRef[];
 }
 
+export interface CatalogPerson {
+  id: string;
+  name: string;
+  died?: number;
+  bio?: string;
+  works: string[];
+}
+
 export interface CatalogDocument {
   schema: typeof APP_CONTENT_SCHEMA;
   entries: CatalogEntry[];
+  persons?: CatalogPerson[];
 }
 
 export interface TombstoneDocument {

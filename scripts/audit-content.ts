@@ -29,7 +29,7 @@ for (const [coll, dirs] of [["book", ["book", "book-lg"]], ["poem", ["poem"]], [
     for (const f of fs.readdirSync(dir)) {
       if (!f.endsWith(".md")) continue;
       const p = path.join(dir, f);
-      if (fm(p, "status") !== "published") continue;
+      if (fm(p, "status") !== "published" || fm(p, "edition_of")) continue;
       const title = fm(p, "title");
       if (!title) continue;
       // صوتيات share generic titles («تتمة الجواب») across DIFFERENT recordings —

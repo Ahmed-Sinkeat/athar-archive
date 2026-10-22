@@ -7,6 +7,7 @@ import {
   type AudioCatalogRef,
   type CatalogDocument,
   type CatalogEntry,
+  type CatalogPerson,
   type ReadableCollection,
   type RootPayload,
   type SignedEnvelope,
@@ -116,12 +117,12 @@ async function writeAtomic(filePath: string, bytes: Buffer | string) {
   await rename(temporary, filePath);
 }
 
-async function personMetadata(root: string, id: string | undefined) {
+async function personMetadata(root: string, id: string | undefined): Promise<Pick<CatalogEntry, "person" | "personName" | "died">> {
   if (!id) return {};
   const filePath = path.join(root, "src/content/person", `${id}.md`);
   const parsed = matter(await readFile(filePath, "utf8"), {}).data as Record<string, unknown>;
   const diedText = String(parsed.died ?? "");
-  const western = diedText.replace(/[٠-٩۰-۹]/g, (digit) => {
+  const western = diedText.replace(/[\u0660-\u0669\u06f0-\u06f9]/g, (digit) => {
     const arabic = "٠١٢٣٤٥٦٧٨٩".indexOf(digit);
     if (arabic !== -1) return String(arabic);
     return String("۰۱۲۳۴۵۶۷۸۹".indexOf(digit));
@@ -223,7 +224,10 @@ function catalogBase(source: SourceEntry, version: number, parsed: ReturnType<ty
   const kind = source.target.coll === "book"
     ? String(source.data.kind ?? "كتاب")
     : source.target.coll === "poem" ? String(source.data.work_type ?? "قصيدة") : undefined;
-  const firstParagraph = parsed.blocks.find((block) => block.t === "p" && block.x?.trim())?.x;
+  const openingFormula = /^(?:(?:\u0628\u0633\u0645 \u0627\u0644\u0644\u0647 \u0627\u0644\u0631\u062d\u0645\u0646 \u0627\u0644\u0631\u062d\u064a\u0645|\u0627\u0644\u062d\u0645\u062f \u0644\u0644\u0647 \u0648\u0627\u0644\u0635\u0644\u0627\u0629 \u0648\u0627\u0644\u0633\u0644\u0627\u0645 \u0639\u0644\u0649 \u0631\u0633\u0648\u0644 \u0627\u0644\u0644\u0647 \u0648\u0639\u0644\u0649 \u0622\u0644\u0647 \u0648\u0635\u062d\u0628\u0647 \u0648\u0645\u0646 \u0648\u0627\u0644\u0627\u0647|\u0623\u0645\u0627 \u0628\u0639\u062f)[\s:.\u060c]*)+/u;
+  const firstParagraph = parsed.blocks.filter(block => block.t === "p").map(block =>
+    source.target.coll === "article" ? block.x?.replace(openingFormula, "").trim() : block.x,
+  ).find(text => text?.trim());
   const excerpt = (source.target.coll === "article" || source.target.coll === "question") && firstParagraph
     ? shortOpening(firstParagraph)
     : undefined;
@@ -235,6 +239,8 @@ function catalogBase(source: SourceEntry, version: number, parsed: ReturnType<ty
     : undefined;
   return {
     id: source.target.id,
+    ...(typeof source.data.edition_of === "string" ? { editionOf: source.data.edition_of } : {}),
+    ...(typeof source.data.edition === "string" ? { edition: source.data.edition } : {}),
     coll: source.target.coll,
     v: version,
     title: String(source.data.title),
@@ -417,6 +423,30 @@ async function generate(options: GenerateAppContentOptions, stagingRoot: string)
     }
     tombstones.deleted = [...new Map(tombstones.deleted.map((entry) => [entry.id, entry])).values()].sort((a, b) => compareText(a.id, b.id));
   }
+  // Rebuilt from scratch: an --only run keeps old entries, whose editions may since have moved.
+  for (const entry of catalogEntries) delete entry.editions;
+  for (const entry of catalogEntries) {
+    if (!entry.editionOf) continue;
+    const primary = catalogEntries.find(candidate => candidate.id === entry.editionOf);
+    if (!primary || primary.id === entry.id || primary.editionOf || primary.coll !== entry.coll) throw new Error(`${entry.id}: invalid edition_of ${entry.editionOf}`);
+    primary.editions = [...new Set([...(primary.editions ?? []), entry.id])].sort();
+  }
+  for (const entry of catalogEntries) {
+    const { hash: _, ...metadata } = entry;
+    entry.hash = sha256Hex(jsonBytes(metadata));
+  }
+  const personRoot = path.join(options.repositoryRoot, "src/content/person");
+  const persons: CatalogPerson[] = [];
+  if (await exists(personRoot)) for (const filename of (await readdir(personRoot)).filter(name => name.endsWith(".md")).sort()) {
+    const id = filename.slice(0, -3);
+    const source = matter(await readFile(path.join(personRoot, filename), "utf8"));
+    if (source.data.status !== "published") continue;
+    const metadata = await personMetadata(options.repositoryRoot, id);
+    const bio = [source.data.bio, source.content.trim()].filter(Boolean).join("\n\n");
+    persons.push({ id, name: String(source.data.title), ...(metadata.died ? { died: metadata.died } : {}),
+      ...(bio ? { bio } : {}), works: catalogEntries.filter(entry => entry.person === id && !entry.editionOf).map(entry => entry.id) });
+  }
+  catalog.persons = persons;
   const catalogBytes = jsonBytes(catalog);
   const tombstoneBytes = jsonBytes(tombstones);
   const catalogHash = sha256Hex(catalogBytes);

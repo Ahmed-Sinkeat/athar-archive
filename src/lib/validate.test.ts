@@ -309,3 +309,17 @@ describe("valid corpus", () => {
   });
 });
 
+
+
+describe("edition_of", () => {
+  it("requires a published default in the same collection and rejects self references and chains", () => {
+    const primary = entry("book", "primary", { title: "Primary" });
+    const alternate = entry("book", "alternate", { title: "Alternate", edition_of: "primary" });
+    expect(validate([primary, alternate])).toEqual([]);
+    expect(validate([alternate]).some(error => error.rule === "ref-resolution")).toBe(true);
+    expect(validate([draft("book", "primary", {}), alternate]).some(error => error.rule === "draft-ref-guard")).toBe(true);
+    expect(validate([entry("book", "self", { edition_of: "self" })]).some(error => error.rule === "invalid-edition")).toBe(true);
+    expect(validate([primary, alternate, entry("book", "third", { edition_of: "alternate" })]).some(error => error.rule === "invalid-edition")).toBe(true);
+    expect(validate([entry("article", "primary", {}), alternate]).some(error => error.rule === "ref-resolution")).toBe(true);
+  });
+});
