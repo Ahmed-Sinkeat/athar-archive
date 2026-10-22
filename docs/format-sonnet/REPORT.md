@@ -46,3 +46,4 @@
 | snh-al-jmah | committed | title-page card | none | none |
 | al-blgha-fy-al-frq-byn-al-mdhkr-walmwnth | committed | title-page card | none | none |
 | usul-al-iman-ibn-baz | committed | 3 split headings rejoined into their sentences | none | none |
+| masail-al-jahiliyyah | skipped | nothing to format (already one heading per مسألة) | none | none |
