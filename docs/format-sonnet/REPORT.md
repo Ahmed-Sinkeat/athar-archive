@@ -15,3 +15,4 @@
 | tas-abd-al-shhwat | committed | headings: cut punctuation back into 11 headings, 1 heading rejoined into its sentence | none | none |
 | al-alfaz-al-mhmwza | committed | title-page card | none | none |
 | ahthr-aaqbh-al-thnwb | committed | headings: cut punctuation/sentence tail rejoined into headings and opening sentence | none | none |
+| tthkr-rqabh-al-lh-taala | skipped | nothing to format (headings already correct) | none | none |
