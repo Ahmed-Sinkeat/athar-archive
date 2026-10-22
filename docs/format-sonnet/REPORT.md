@@ -52,3 +52,4 @@
 | ktab-mtn-al-ashmawya | committed | front-matter card | none | none |
 | asbab-al-mghfrh | committed | front-matter card | none | none |
 | rsala-al-hdwd | committed | front-matter card | none | none |
+| al-aql-walhwa | committed | front-matter card | none | none |
