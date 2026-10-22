@@ -107,3 +107,4 @@
 | twjyhat-aslamyh-labd-al-lh-bn-hmyd | committed | card | none | none |
 | klma-al-ikhlas-wthqyq-manaha | skipped | nothing to format (hadith extract, no notes) | none | none |
 | mtn-shdhwr-al-dhhb | committed | card; split word re-joined | none | none |
+| thqyq-ryad-al-salhyn-llalbany | committed | card; split word re-joined | none | none |
