@@ -103,3 +103,4 @@
 | al-anshwta-fy-al-nhw | committed | card | none | none |
 | br-al-waldyn | committed | card | none | none |
 | dhkr-mn-yatmd-qwlh-fy-al-jrh-waltadyl | committed | card | none | none |
+| makaid-al-shaytan | committed | card | none | none |
