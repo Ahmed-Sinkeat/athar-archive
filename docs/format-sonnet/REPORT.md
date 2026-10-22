@@ -183,3 +183,4 @@
 | sharh-manzumat-al-qawaid-al-fiqhiyyah-saadi | committed | card; import athar-text headings rejoined | none | none |
 | al-iyman-llqasm-bn-slam-mkhrja | committed | card; import athar-text headings rejoined | none | none |
 | sharh-al-aqeedah-al-wasitiyyah-adel-bin-azzouz | skipped | nothing to format (no notes) | none | none |
+| aqeedat-ahl-al-sunnah-fil-mahdi | skipped | nothing to format (no notes) | none | none |
