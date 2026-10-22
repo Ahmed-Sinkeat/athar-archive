@@ -17,3 +17,6 @@
 | ahthr-aaqbh-al-thnwb | committed | headings: cut punctuation/sentence tail rejoined into headings and opening sentence | none | none |
 | tthkr-rqabh-al-lh-taala | skipped | nothing to format (headings already correct) | none | none |
 | hl-shkrt-al-lh-ala-namh | skipped | nothing to format | none | none |
+| ahthr-atbaa-al-hwa | committed (inside commit 383050b8) | headings: cut punctuation/sentence tail rejoined | none | none |
+| tthkr-mnzlk-bad-al-mwt | committed (inside commit 383050b8) | headings rejoined | none | none |
+| la-ykhdank-al-shytan | committed (inside commit 383050b8) | headings rejoined | none | none |
