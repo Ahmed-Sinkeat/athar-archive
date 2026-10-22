@@ -176,3 +176,4 @@
 | qra-al-aynyn-brfa-al-ydyn-fy-al-slaa | committed | card; import headings rejoined/un-headed | none | none |
 | hlya-talb-al-alm | committed | card; import headings rejoined/un-headed | none | none |
 | mutammimat-al-ajurrumiyyah | skipped | nothing to format (no notes) | none | none |
+| al-risalah-al-akmaliyyah | skipped | nothing to format (no notes) | none | none |
