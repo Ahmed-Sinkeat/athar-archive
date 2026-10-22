@@ -7,3 +7,4 @@
 | al-wrqa-al-nhwya | skipped | nothing to format (no notes; text-only page labels, one-line paragraphs, numbered points already on own lines) | none | none |
 | tahqiq-al-ihtijaj-bil-qadar | skipped | nothing to format (no notes; fragmentary hadith extract, one paragraph per page) | none | none |
 | nuktat-al-irab | committed | title-page card | none | none |
+| mana-la-ilh-ila-al-lh-mhmd-bn-abd-al-whab | skipped | nothing to format (no notes; headings already in import form '[ ## h ]' with bracket text protected by gate) | none | none |
