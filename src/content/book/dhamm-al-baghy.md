@@ -6,6 +6,7 @@ person: ibn-abi-al-dunya
 topics: ["tazkiyat-al-nafs"]
 authored_year: 281
 ---
+<!-- card -->
 # بطاقة الكتاب وفهرس الموضوعات
 
 الكتاب: ذم البغى لابن أبي الدنيا
@@ -61,6 +62,7 @@ authored_year: 281
 [التعريف بالكتاب , نقلا عن موقع جامع الحديث]
 
 صفحة المؤلف: []
+<!-- /card -->
 
 ## عقوبة قاطع الرحم والبغي
 
@@ -70,9 +72,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="45" />
 
-## ما هو داء الأمم
-
-؟
+## ما هو داء الأمم؟
 
 <hr class="page-sep" data-page="49" />
 
@@ -158,9 +158,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="57" />
 
-## من الباغي الأول
-
-؟
+## من الباغي الأول؟
 
 <hr class="page-sep" data-page="58" />
 
