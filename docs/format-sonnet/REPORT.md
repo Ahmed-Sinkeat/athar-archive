@@ -158,3 +158,4 @@
 | al-shukr-ibn-abi-al-dunya | committed | card; import athar-text headings rejoined | none | none |
 | dlyl-al-talbyn-lklam-al-nhwyyn | committed | card; import athar-text headings rejoined | none | none |
 | al-amr-bil-maruf-al-khallal | committed | card; import athar-text headings rejoined | none | none |
+| al-nsyhh-al-kafyh-lmn-khsh-al-lh-balaafyh | committed | card; import athar-text headings rejoined | none | none |
