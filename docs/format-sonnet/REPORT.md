@@ -69,3 +69,4 @@
 | tahqiq-al-iman-ibn-taymiyyah | committed | title-page card | none | none |
 | al-umr-wal-shayb | committed | card | none | none |
 | al-wajal-wal-tawathuq-bil-amal | committed | card | none | none |
+| dhamm-al-muskir | committed | card | none | none |
