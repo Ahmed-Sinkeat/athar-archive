@@ -154,3 +154,4 @@
 | dhamm-al-malahi | committed | card; headings re-joined with cut punctuation | none | none |
 | qaidah-jamiah-fi-tawhidillah | skipped | nothing to format (no notes) | none | none |
 | khulasat-tadhim-al-ilm | skipped | nothing to format (no notes) | none | none |
+| al-rd-ala-al-shafay-labn-al-lbad | skipped | nothing to format (no notes) | none | none |
