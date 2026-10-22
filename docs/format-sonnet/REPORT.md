@@ -51,3 +51,4 @@
 | ktab-mtn-al-akhdry-fy-al-abadat-ala-mdhhb-al-imam-malk | committed | front-matter card (index + title page) | none | none |
 | ktab-mtn-al-ashmawya | committed | front-matter card | none | none |
 | asbab-al-mghfrh | committed | front-matter card | none | none |
+| rsala-al-hdwd | committed | front-matter card | none | none |
