@@ -125,3 +125,4 @@
 | dhamm-al-ghibah-wal-namimah | committed | card; import athar-text headings rejoined; verses un-headed | none | none |
 | qada-al-hawaij | committed | card; import athar-text headings rejoined; verses un-headed | none | none |
 | dqayq-al-mnhaj | committed | card; import athar-text headings rejoined; verses un-headed | none | none |
+| iarab-lamya-al-shnfra | committed | card; import athar-text headings rejoined; verses un-headed | none | none |
