@@ -71,3 +71,4 @@
 | al-wajal-wal-tawathuq-bil-amal | committed | card | none | none |
 | dhamm-al-muskir | committed | card | none | none |
 | al-risalah-al-madaniyyah | committed | heading re-joined with its cut word | none | none |
+| mn-aml-salha-flnfsh | skipped | nothing to format (notes already linked 4/4, headings fine) | none | none |
