@@ -225,3 +225,4 @@
 | al-radd-ala-al-rifai-wal-buti | skipped | nothing to format (no notes) | none | none |
 | al-hawadith-wal-bida | skipped | nothing to format (no notes) | none | none |
 | tarykh-darya-labd-al-jbar-al-khwlany | committed | card | none | none |
+| al-ubudiyyah | skipped | nothing to format (no notes) | none | none |
