@@ -218,3 +218,4 @@
 | tadhkirat-al-sam-wal-mutakallim | committed | card; heading tails re-joined | none | none |
 | al-amr-balmarwf-walnhy-an-al-mnkr-llkhlal | committed | card; heading tails re-joined | none | none |
 | ashrat-al-saah-al-kbra-al-mghamsy | committed | card; heading tails re-joined | none | none |
+| akhsr-al-mkhtsrat | committed | card; heading tails re-joined | none | none |
