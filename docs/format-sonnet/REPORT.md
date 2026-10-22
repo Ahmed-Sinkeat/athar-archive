@@ -170,3 +170,4 @@
 | fadl-ahl-al-bayt | skipped | nothing to format (no notes) | none | none |
 | al-tawadu-wal-khumul | committed | card; import athar-text headings rejoined where present | none | none |
 | akhlaq-al-ulama | committed | card; import athar-text headings rejoined where present | none | none |
+| shrh-shrwt-al-slah-warkanha-wwajbatha-lshykh-al-aslam-mhmd-b | committed | card; import headings rejoined/un-headed | none | none |
