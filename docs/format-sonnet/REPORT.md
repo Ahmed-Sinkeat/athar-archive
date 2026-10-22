@@ -137,3 +137,4 @@
 | mwaaz-abn-al-jwzy-al-yaqwth | committed | card; headings re-joined with cut '؟' | none | none |
 | al-hamm-wal-huzn | committed | card; headings re-joined with cut '؟' | none | none |
 | muhasabat-al-nafs | committed | card; headings re-joined with cut '؟' | none | none |
+| al-hathth-ala-ittiba-al-sunnah | skipped | nothing to format (no notes) | none | none |
