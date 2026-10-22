@@ -45,3 +45,4 @@
 | al-yaqin-ibn-abi-al-dunya | committed | card, 40 import headings (athar text) rejoined into their items | none | none |
 | snh-al-jmah | committed | title-page card | none | none |
 | al-blgha-fy-al-frq-byn-al-mdhkr-walmwnth | committed | title-page card | none | none |
+| usul-al-iman-ibn-baz | committed | 3 split headings rejoined into their sentences | none | none |
