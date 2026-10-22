@@ -29,3 +29,4 @@
 | tadhkirat-fi-ulum-al-hadith | skipped | REPORT ONLY: whole book is glued into one line per page (headings, numbered points and footnotes '(١) - …' run together with no separators, no data-notes); needs re-import. Front matter (index/image captions) also unsplit | none | none |
 | usul-al-sunnah-ahmad-ibn-hanbal | skipped | nothing to format (no notes; one paragraph per page) | none | none |
 | risalah-fi-anna-al-quran-ghayr-makhluq | skipped | nothing to format (no notes; one paragraph per page) | none | none |
+| al-muqaddimah-al-zahra-fil-imamah | skipped | nothing to format (no notes; one paragraph per page) | none | none |
