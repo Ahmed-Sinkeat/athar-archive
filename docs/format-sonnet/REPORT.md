@@ -64,3 +64,4 @@
 | nqaa-al-sdyan-fyma-ja-ala-al-falan | committed | title-page card | none | none |
 | al-blwtwth | committed | title-page card | none | none |
 | akhy-kyf-halk-ma-al-qran | committed | 3 headings re-joined with their cut tails | none | none |
+| atha-ardt-an-ykwn-daawk-mstjaba | skipped | nothing to format (headings already correct) | none | none |
