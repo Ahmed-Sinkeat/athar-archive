@@ -117,3 +117,4 @@
 | risalah-fi-usul-al-din-ibn-taymiyyah | skipped | nothing to format (no notes) | none | none |
 | al-itibar-wa-aqab-al-surur | committed | card; import athar-text headings rejoined; verses un-headed | none | none |
 | man-asha-bad-al-mawt | committed | card; import athar-text headings rejoined; verses un-headed | none | none |
+| al-laly | committed | card; import athar-text headings rejoined; verses un-headed | none | none |
