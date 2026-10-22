@@ -227,3 +227,4 @@
 | tarykh-darya-labd-al-jbar-al-khwlany | committed | card | none | none |
 | al-ubudiyyah | skipped | nothing to format (no notes) | none | none |
 | sifat-al-jannah | committed | card | none | none |
+| mkarm-al-akhlaq-lltbrany | committed | card | none | none |
