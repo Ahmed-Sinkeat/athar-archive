@@ -147,3 +147,4 @@
 | al-matar-wal-rad-wal-barq | committed | card; headings/cut-sentence fixes | none | none |
 | mnazl-al-hrwf | committed | card; headings/cut-sentence fixes | none | none |
 | al-ikhwan | committed | card; headings/cut-sentence fixes | none | none |
+| istina-al-maruf | committed | card; headings/cut-sentence fixes | none | none |
