@@ -100,3 +100,4 @@
 | usul-al-fiqh-osamah-sulayman | committed | card/heading fixes (cut sentences rejoined) | none | none |
 | al-hilm-ibn-abi-al-dunya | committed | card/heading fixes (cut sentences rejoined) | none | none |
 | fatya-wa-jawabuha-fi-dhikr-al-itiqad | skipped | nothing to format (no notes; headings fine) | none | none |
+| al-anshwta-fy-al-nhw | committed | card | none | none |
