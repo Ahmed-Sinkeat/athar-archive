@@ -220,3 +220,4 @@
 | ashrat-al-saah-al-kbra-al-mghamsy | committed | card; heading tails re-joined | none | none |
 | akhsr-al-mkhtsrat | committed | card; heading tails re-joined | none | none |
 | qasr-al-amal | committed | card; heading tails re-joined | none | none |
+| slslh-al-qmm-lahl-al-hmm | committed | card; heading tails re-joined | none | none |
