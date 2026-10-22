@@ -7,7 +7,9 @@ internal class SelectionText(val source: String, showTashkeel: Boolean) {
         source.forEachIndexed { index, char ->
             if (showTashkeel || (char !in '\u064B'..'\u0652' && char != '\u0670')) {
                 sourceOffsets[length] = index
-                append(char)
+                // A «[الأعراف: 43]» reference must not break after the colon; display only, offsets stay 1:1.
+                val joined = char == ' ' && index > 0 && source[index - 1] == ':' && source.getOrNull(index + 1)?.isDigit() == true
+                append(if (joined) '\u00A0' else char)
             }
         }
         sourceOffsets[length] = source.length

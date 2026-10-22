@@ -1,123 +1,77 @@
 package com.atharchive.ui.components
 
-import com.atharchive.ui.theme.AtharCorners
-import com.atharchive.ui.theme.AtharTextSize
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.foundation.MutatorMutex
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.text.contextmenu.data.TextContextMenuItem
+import androidx.compose.foundation.text.contextmenu.data.TextContextMenuKeys
+import androidx.compose.foundation.text.contextmenu.data.TextContextMenuSession
+import androidx.compose.foundation.text.contextmenu.provider.LocalTextContextMenuDropdownProvider
+import androidx.compose.foundation.text.contextmenu.provider.LocalTextContextMenuToolbarProvider
+import androidx.compose.foundation.text.contextmenu.provider.TextContextMenuDataProvider
+import androidx.compose.foundation.text.contextmenu.provider.TextContextMenuProvider
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.geometry.Rect
-import androidx.compose.ui.platform.LocalDensity
-import androidx.compose.ui.platform.TextToolbar
-import androidx.compose.ui.platform.TextToolbarStatus
-import androidx.compose.ui.platform.LocalTextToolbar
+import androidx.compose.ui.layout.LayoutCoordinates
+import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.layout.positionOnScreen
 import androidx.compose.ui.platform.testTag
-import androidx.compose.ui.semantics.Role
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.IntOffset
-import androidx.compose.ui.unit.IntRect
-import androidx.compose.ui.unit.IntSize
-import androidx.compose.ui.unit.LayoutDirection
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import androidx.compose.ui.window.Popup
-import androidx.compose.ui.window.PopupPositionProvider
-import androidx.compose.ui.window.PopupProperties
-import androidx.compose.material3.MaterialTheme
-import com.atharchive.ui.theme.AtharTheme
+import kotlinx.coroutines.CompletableDeferred
 
-/**
- * Replaces Android's floating «Copy | Paste» bar everywhere a Compose text is selected
- * (poem reader, search fields, notes) with the app's own card, in the app's own words.
- */
-private class AtharTextToolbarState : TextToolbar {
-    var rect by mutableStateOf<Rect?>(null)
-    var onCopy: (() -> Unit)? = null
-    var onPaste: (() -> Unit)? = null
-    var onCut: (() -> Unit)? = null
-    var onSelectAll: (() -> Unit)? = null
+internal class AtharTextMenuState : TextContextMenuProvider {
+    private val mutex = MutatorMutex()
+    var session by mutableStateOf<Session?>(null)
+        private set
 
-    override val status: TextToolbarStatus
-        get() = if (rect != null) TextToolbarStatus.Shown else TextToolbarStatus.Hidden
-
-    override fun showMenu(
-        rect: Rect,
-        onCopyRequested: (() -> Unit)?,
-        onPasteRequested: (() -> Unit)?,
-        onCutRequested: (() -> Unit)?,
-        onSelectAllRequested: (() -> Unit)?,
-    ) {
-        onCopy = onCopyRequested; onPaste = onPasteRequested; onCut = onCutRequested; onSelectAll = onSelectAllRequested
-        this.rect = rect
+    override suspend fun showTextContextMenu(dataProvider: TextContextMenuDataProvider) {
+        mutex.mutate {
+            val current = Session(dataProvider)
+            session = current
+            try { current.closed.await() }
+            finally { if (session === current) session = null }
+        }
     }
 
-    override fun hide() { rect = null }
+    class Session(val provider: TextContextMenuDataProvider) : TextContextMenuSession {
+        val closed = CompletableDeferred<Unit>()
+        override fun close() { closed.complete(Unit) }
+    }
 }
 
+/** Compose's current text-menu providers cover touch selection and mouse context menus. */
 @Composable
 fun ProvideAtharTextToolbar(content: @Composable () -> Unit) {
-    val toolbar = remember { AtharTextToolbarState() }
-    CompositionLocalProvider(LocalTextToolbar provides toolbar) {
-        content()
-        val anchor = toolbar.rect
-        if (anchor != null) {
-            val density = LocalDensity.current
-            val gap = with(density) { 10.dp.roundToPx() }
-            val colors = atharMenuColors()
-            Popup(
-                popupPositionProvider = object : PopupPositionProvider {
-                    override fun calculatePosition(
-                        anchorBounds: IntRect, windowSize: IntSize, layoutDirection: LayoutDirection, popupContentSize: IntSize,
-                    ): IntOffset {
-                        // Centred above the selection; below it when there is no room above.
-                        val x = (anchor.center.x.toInt() - popupContentSize.width / 2)
-                            .coerceIn(gap, (windowSize.width - popupContentSize.width - gap).coerceAtLeast(gap))
-                        val above = anchor.top.toInt() - popupContentSize.height - gap
-                        val y = if (above >= gap) above else anchor.bottom.toInt() + gap * 3
-                        return IntOffset(x, y)
-                    }
-                },
-                onDismissRequest = { toolbar.hide() },
-                properties = PopupProperties(focusable = false, dismissOnClickOutside = true),
-            ) {
-                val shape = AtharCorners.Card
-                Row(
-                    modifier = Modifier
-                        .clip(shape)
-                        .background(colors.card)
-                        .border(0.7.dp, AtharTheme.colors.divider, shape)
-                        .padding(horizontal = 4.dp)
-                        .testTag("athar_text_toolbar"),
+    val state = remember { AtharTextMenuState() }
+    var coordinates by remember { mutableStateOf<LayoutCoordinates?>(null) }
+    DisposableEffect(state) { onDispose { state.session?.close() } }
+    CompositionLocalProvider(
+        LocalTextContextMenuToolbarProvider provides state,
+        LocalTextContextMenuDropdownProvider provides state,
+    ) {
+        Box(Modifier.onGloballyPositioned { coordinates = it }, propagateMinConstraints = true) {
+            content()
+            val session = state.session
+            val layout = coordinates
+            if (session != null && layout?.isAttached == true) {
+                val items = session.provider.data().components.filterIsInstance<TextContextMenuItem>()
+                if (items.isEmpty()) LaunchedEffect(session) { session.close() }
+                else AtharMenu(
+                    expanded = true,
+                    anchor = session.provider.contentBounds(layout).translate(layout.positionOnScreen()),
+                    focusable = false,
+                    onDismiss = session::close,
+                    modifier = Modifier.testTag("athar_text_toolbar"),
                 ) {
-                    @Composable
-                    fun action(label: String, tag: String, run: (() -> Unit)?) {
-                        if (run == null) return
-                        Text(
-                            text = label,
-                            modifier = Modifier
-                                .clickable(role = Role.Button) { run(); toolbar.hide() }
-                                .padding(horizontal = 14.dp, vertical = 12.dp)
-                                .testTag(tag),
-                            color = colors.accent,
-                            fontSize = AtharTextSize.Body,
-                            fontWeight = FontWeight.SemiBold,
-                            style = MaterialTheme.typography.labelLarge,
-                        )
+                    items.forEach { item ->
+                        val (label, tag) = when (item.key) {
+                            TextContextMenuKeys.CutKey -> "قص" to "text_cut"
+                            TextContextMenuKeys.CopyKey -> "نسخ" to "text_copy"
+                            TextContextMenuKeys.PasteKey -> "لصق" to "text_paste"
+                            TextContextMenuKeys.SelectAllKey -> "تحديد الكل" to "text_select_all"
+                            TextContextMenuKeys.AutofillKey -> "الملء التلقائي" to "text_autofill"
+                            else -> item.label to "text_action"
+                        }
+                        AtharMenuItem(label, onClick = { item.onClick(session); session.close() }, modifier = Modifier.testTag(tag))
                     }
-                    action("قص", "text_cut", toolbar.onCut)
-                    action("نسخ", "text_copy", toolbar.onCopy)
-                    action("لصق", "text_paste", toolbar.onPaste)
-                    action("تحديد الكل", "text_select_all", toolbar.onSelectAll)
                 }
             }
         }

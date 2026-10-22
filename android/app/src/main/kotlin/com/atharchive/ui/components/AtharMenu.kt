@@ -26,6 +26,11 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
+import androidx.compose.ui.layout.positionOnScreen
+import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.geometry.Rect
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
@@ -74,6 +79,8 @@ fun atharMenuColors() = AtharMenuColors(
     accent = AtharTheme.colors.accent,
 )
 
+val LocalAtharActionAnchor = staticCompositionLocalOf<MutableState<Rect>?> { null }
+
 private val LocalMenuColors = staticCompositionLocalOf<AtharMenuColors?> { null }
 
 /** Sits on the anchor's end edge, above it when it fits, otherwise below; always on screen. */
@@ -107,26 +114,30 @@ fun AtharMenu(
     modifier: Modifier = Modifier,
     width: Dp = 200.dp,
     colors: AtharMenuColors = atharMenuColors(),
+    anchor: Rect? = null,
+    focusable: Boolean = true,
     content: @Composable ColumnScope.() -> Unit,
 ) {
     if (!expanded) return
     val density = LocalDensity.current
     val configuration = LocalConfiguration.current
     val pointer = remember { Pointer() }
-    val position = remember(density) {
+    val position = remember(density, anchor) {
         val gap = with(density) { 2.dp.roundToPx() }
         val margin = with(density) { 8.dp.roundToPx() }
         object : PopupPositionProvider {
             override fun calculatePosition(anchorBounds: IntRect, windowSize: IntSize, layoutDirection: LayoutDirection, popupContentSize: IntSize): IntOffset {
-                val offset = atharMenuOffset(anchorBounds, windowSize, layoutDirection, popupContentSize, gap, margin)
-                pointer.above = offset.y + popupContentSize.height <= anchorBounds.top + gap
-                pointer.x = anchorBounds.center.x - offset.x
+                val bounds = anchor?.let { IntRect(it.left.toInt(), it.top.toInt(), it.right.toInt(), it.bottom.toInt()) } ?: anchorBounds
+                val offset = atharMenuOffset(bounds, windowSize, layoutDirection, popupContentSize, gap, margin)
+                pointer.above = offset.y + popupContentSize.height <= bounds.top + gap
+                pointer.x = bounds.center.x - offset.x
                 return offset
             }
         }
     }
     val visible = remember { MutableTransitionState(false).apply { targetState = true } }
-    Popup(popupPositionProvider = position, onDismissRequest = onDismiss, properties = PopupProperties(focusable = true)) {
+    Popup(popupPositionProvider = position, onDismissRequest = onDismiss, properties = PopupProperties(focusable = focusable)) {
+        ProvideAtharTextToolbar {
         AnimatedVisibility(
             visibleState = visible,
             enter = fadeIn(tween(120)) + scaleIn(tween(160), initialScale = 0.9f,
@@ -153,6 +164,7 @@ fun AtharMenu(
                     if (pointer.above) MenuPointer(pointer, menuWidth, colors.card, edge)
                 }
             }
+        }
         }
     }
 }
@@ -186,13 +198,16 @@ fun AtharMenuItem(
     destructive: Boolean = false,
 ) {
     val colors = LocalMenuColors.current ?: atharMenuColors()
+    val actionAnchor = LocalAtharActionAnchor.current
+    var bounds by remember { mutableStateOf(Rect.Zero) }
     val tint = if (destructive) Color(0xFFD9534F) else colors.ink
     Row(
         modifier
             .fillMaxWidth()
             .heightIn(min = 40.dp)
             .then(if (checked != null) Modifier.semantics { selected = checked } else Modifier)
-            .clickable(role = if (checked != null) Role.RadioButton else Role.Button, onClick = onClick)
+            .onGloballyPositioned { bounds = Rect(it.positionOnScreen(), Size(it.size.width.toFloat(), it.size.height.toFloat())) }
+            .clickable(role = if (checked != null) Role.RadioButton else Role.Button) { actionAnchor?.value = bounds; onClick() }
             .padding(horizontal = 14.dp, vertical = 4.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(10.dp),

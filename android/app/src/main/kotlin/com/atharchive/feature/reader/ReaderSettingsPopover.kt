@@ -1,5 +1,12 @@
 package com.atharchive.feature.reader
 
+import androidx.compose.ui.graphics.Color
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.tween
+import androidx.compose.runtime.getValue
+import com.atharchive.ui.components.SoapLayer
+import com.atharchive.ui.components.rememberSoapTargets
+import com.atharchive.ui.components.soapTarget
 import com.atharchive.ui.theme.AtharCorners
 import com.atharchive.ui.theme.AtharTextSize
 import androidx.compose.foundation.background
@@ -49,6 +56,7 @@ fun ReaderSettingsPopover(
     colors: ReaderColors,
     onChange: (ReaderSettings) -> Unit,
     onDismiss: () -> Unit,
+    forPoem: Boolean = false,
 ) {
     AtharMenu(
         expanded = expanded,
@@ -98,11 +106,19 @@ fun ReaderSettingsPopover(
             LabeledRow("التشكيل", colors) { SegmentRow(listOf("ظاهر", "مخفي"), if (settings.showTashkeel) "ظاهر" else "مخفي", colors, "reader_tashkeel") {
                 onChange(settings.copy(showTashkeel = it == "ظاهر"))
             } }
-            LabeledRow("الحواشي", colors) { SegmentRow(FootnoteMode.entries.map { it.label }, settings.footnoteMode.label, colors, "reader_footnotes") { label ->
-                onChange(settings.copy(footnoteMode = FootnoteMode.entries.first { it.label == label }))
+            if (forPoem) {
+                LabeledRow("أرقام الأبيات", colors) { SegmentRow(listOf("ظاهرة", "مخفية"), if (settings.verseNumbers) "ظاهرة" else "مخفية", colors, "poem_numbers") {
+                    onChange(settings.copy(verseNumbers = it == "ظاهرة"))
+                } }
+                LabeledRow("العرض", colors) { SegmentRow(listOf("أبيات", "متصل"), if (settings.poemProse) "متصل" else "أبيات", colors, "poem_layout") {
+                    onChange(settings.copy(poemProse = it == "متصل"))
+                } }
+            } else LabeledRow("العرض", colors) { SegmentRow(listOf("صفحات", "متصل"), if (settings.continuous) "متصل" else "صفحات", colors, "reader_layout") {
+                onChange(settings.copy(continuous = it == "متصل"))
             } }
-            LabeledRow("أرقام الصفحات", colors) { SegmentRow(listOf("ظاهرة", "مخفية"), if (settings.showPageNumbers) "ظاهرة" else "مخفية", colors, "reader_page_numbers") {
-                onChange(settings.copy(showPageNumbers = it == "ظاهرة"))
+            // متصل has no page foot, so notes open from their number only.
+            if (!forPoem && !settings.continuous) LabeledRow("الحواشي", colors) { SegmentRow(FootnoteMode.entries.map { it.label }, settings.footnoteMode.label, colors, "reader_footnotes") { label ->
+                onChange(settings.copy(footnoteMode = FootnoteMode.entries.first { it.label == label }))
             } }
 
             GroupLabel("مظهر القراءة", colors)
@@ -181,31 +197,38 @@ internal fun SegmentRow(
     tagPrefix: String,
     onSelect: (String) -> Unit,
 ) {
-    Row(
-        modifier = Modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.spacedBy(6.dp),
-    ) {
-        options.forEachIndexed { index, option ->
-            val isSelected = option == selected
-            Box(
-                modifier = Modifier
-                    .weight(1f)
-                    .clip(AtharCorners.Control)
-                    .background(
-                        if (isSelected) colors.accentFill else colors.divider.copy(alpha = 0.28f),
+    val soap = rememberSoapTargets()
+    Box(Modifier.fillMaxWidth()) {
+        // The selected fill is the soap pill; the others keep their light track tint.
+        SoapLayer(soap, options.indexOf(selected), colors.accentFill, Modifier.matchParentSize())
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(6.dp),
+        ) {
+            options.forEachIndexed { index, option ->
+                val isSelected = option == selected
+                val textColor by animateColorAsState(if (isSelected) colors.onAccent else colors.secondary, tween(160), label = "segment_text")
+                Box(
+                    modifier = Modifier
+                        .weight(1f)
+                        .soapTarget(soap, index)
+                        .clip(AtharCorners.Control)
+                        .background(
+                            if (isSelected) Color.Transparent else colors.divider.copy(alpha = 0.28f),
+                        )
+                        .heightIn(min = 34.dp)
+                        .selectable(selected = isSelected, role = Role.RadioButton) { onSelect(option) }
+                        .padding(vertical = 6.dp)
+                        .testTag("${tagPrefix}_$index"),
+                    contentAlignment = Alignment.Center,
+                ) {
+                    Text(
+                        text = option,
+                        color = textColor,
+                        style = MaterialTheme.typography.labelMedium,
+                        fontWeight = if (isSelected) FontWeight.SemiBold else FontWeight.Normal,
                     )
-                    .heightIn(min = 34.dp)
-                    .selectable(selected = isSelected, role = Role.RadioButton) { onSelect(option) }
-                    .padding(vertical = 6.dp)
-                    .testTag("${tagPrefix}_$index"),
-                contentAlignment = Alignment.Center,
-            ) {
-                Text(
-                    text = option,
-                    color = if (isSelected) colors.onAccent else colors.secondary,
-                    style = MaterialTheme.typography.labelMedium,
-                    fontWeight = if (isSelected) FontWeight.SemiBold else FontWeight.Normal,
-                )
+                }
             }
         }
     }

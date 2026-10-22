@@ -23,6 +23,14 @@ import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.text.TextLayoutResult
+import com.atharchive.ui.components.AtharTailPopover
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.ui.layout.onPlaced
+import androidx.compose.ui.layout.LayoutCoordinates
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.onLongClick
 import androidx.compose.ui.Alignment
@@ -65,7 +73,8 @@ internal fun BlockView(
     selection: PageSelection? = null,
     highlights: List<ReaderHighlight> = emptyList(),
     onLink: (String) -> Unit = {},
-    onFootnotes: (List<String>) -> Unit = {},
+    /** A tapped note number: its note ids and the number's rect in window coordinates. */
+    onFootnotes: (List<String>, Rect) -> Unit = { _, _ -> },
 ) {
     val ranges = highlights.filter { block.ordinal in it.startOrdinal..it.endOrdinal }.map {
         (if (block.ordinal == it.startOrdinal) it.startOffset else 0) until
@@ -97,7 +106,8 @@ internal fun BlockView(
         selection.geometry[ordinal] =TextGeometry(block, ordinal, layout, value, coords)
     }
     fun onLayout(layout: TextLayoutResult) { textLayout = layout; register() }
-    val selectable = if (selection == null || ordinal == null || value == null || value.text.isBlank()) Modifier else Modifier
+    // Without selection the text still records where it sits, so a note number can anchor its popover.
+    val selectable = if (selection == null || ordinal == null || value == null || value.text.isBlank()) Modifier.onPlaced { placed[0] = it } else Modifier
         .onGloballyPositioned { placed[0] = it; register() }
         .semantics {
             onLongClick(label = "تحديد النص") { selection.geometry[ordinal]?.let(selection::beginFirstWord) ?: false }
@@ -112,15 +122,22 @@ internal fun BlockView(
     // unequal on every recomposition, and Compose laid the whole paragraph out again.
     val onLinkState by rememberUpdatedState(onLink)
     val onFootnotesState by rememberUpdatedState(onFootnotes)
-    val link = remember {
+    val blockState by rememberUpdatedState(block)
+    val valueState by rememberUpdatedState(value)
+    val link = remember(block.id) {
         { target: String ->
-            if (target.startsWith(NOTE_LINK)) onFootnotesState(listOf(target.removePrefix(NOTE_LINK))) else onLinkState(target)
+            if (!target.startsWith(NOTE_LINK)) onLinkState(target) else {
+                val id = target.removePrefix(NOTE_LINK)
+                // ponytail: a ref inside a page note has no main text here; its popover opens at the top.
+                val rect = noteRect(textLayout, placed[0], valueState, blockState.spans.firstOrNull { it.k == "sup" && it.target == id })
+                onFootnotesState(listOf(id), rect)
+            }
         }
     }
     @Composable
     fun marked(text: String, match: IntRange?, saved: List<IntRange>) =
         remember(text, match, colors, block.spans, saved, settings.showTashkeel, settings.footnoteMode) {
-            markedText(text, match, colors, block.spans, saved, settings.showTashkeel, settings.footnoteMode == FootnoteMode.Tap, link)
+            markedText(text, match, colors, block.spans, saved, settings.showTashkeel, link)
         }
 
     when (block) {
@@ -231,7 +248,7 @@ internal fun BlockView(
 
         is ReaderBlock.PageBreak -> {
             Column {
-                if (settings.showPageNumbers) Row(
+                if (!settings.continuous) Row(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(vertical = 16.dp)
@@ -271,7 +288,7 @@ internal fun BlockView(
         }
 
         // Printed-book style: a short rule, then the page's notes in small type.
-        is ReaderBlock.PageNotes -> if (settings.footnoteMode == FootnoteMode.Footer && block.notes.isNotEmpty()) {
+        is ReaderBlock.PageNotes -> if (!settings.continuous && settings.footnoteMode == FootnoteMode.Footer && block.notes.isNotEmpty()) {
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -283,8 +300,8 @@ internal fun BlockView(
                     key(note.id) {
                         val text = remember(note, colors, settings.showTashkeel) {
                             buildAnnotatedString {
-                                withStyle(SpanStyle(color = colors.accent)) { append("(${note.marker}) ") }
-                                append(markedText(note.text, null, colors, note.spans, emptyList(), settings.showTashkeel, false, link))
+                                withStyle(SpanStyle(color = colors.accent)) { append("(${note.marker.arabicDigits()}) ") }
+                                append(markedText(note.text, null, colors, note.spans, emptyList(), settings.showTashkeel, link))
                             }
                         }
                         Text(
@@ -300,7 +317,7 @@ internal fun BlockView(
             }
         }
 
-        is ReaderBlock.FootnoteBody -> if (settings.footnoteMode == FootnoteMode.Footer) {
+        is ReaderBlock.FootnoteBody -> if (!settings.continuous && settings.footnoteMode == FootnoteMode.Footer) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -309,7 +326,7 @@ internal fun BlockView(
                 verticalAlignment = Alignment.Top,
             ) {
                 Text(
-                    text = "(${block.marker})",
+                    text = "(${block.marker.arabicDigits()})",
                     color = colors.accent,
                     style = MaterialTheme.typography.labelSmall,
                     modifier = Modifier.padding(end = 6.dp, top = 2.dp),
@@ -328,7 +345,7 @@ internal fun BlockView(
     }
 }
 
-/** Prefix that routes a tapped footnote number to the note dialog instead of [onLink]. */
+/** Prefix that routes a tapped footnote number to the note popover instead of [onLink]. */
 private const val NOTE_LINK = "\u0000note:"
 
 /** ﴿ayah﴾, «quote» and ((hadith)). ponytail: length caps keep a stray opener from colouring a page. */
@@ -337,11 +354,18 @@ private val CitationRe = Regex("\uFD3F[^\uFD3E]{1,1500}\uFD3E|\u00AB[^\u00BB]{1,
 private fun markedText(
     text: String, match: IntRange?, colors: ReaderColors,
     spans: List<InlineSpan>, highlights: List<IntRange>, showTashkeel: Boolean,
-    tapNotes: Boolean, onLink: (String) -> Unit,
+    onLink: (String) -> Unit,
 ): AnnotatedString {
     val value = SelectionText(text, showTashkeel)
+    // Note numbers in Arabic-Indic digits, one char for one, so every offset still holds.
+    val shown = value.text.toCharArray()
+    spans.filter { it.k == "sup" }.forEach { span ->
+        for (i in value.displayOffset(span.s) until value.displayOffset(span.e).coerceAtMost(shown.size)) {
+            if (shown[i] in '0'..'9') shown[i] = '\u0660' + (shown[i] - '0')
+        }
+    }
     return buildAnnotatedString {
-        append(value.text)
+        append(String(shown))
         fun style(style: SpanStyle, start: Int, end: Int) {
             val from = value.displayOffset(start)
             val to = value.displayOffset(end)
@@ -361,11 +385,11 @@ private fun markedText(
             when (span.k) {
                 "strong" -> style(SpanStyle(fontWeight = FontWeight.Bold), span.s, span.e)
                 "emphasis" -> style(SpanStyle(fontStyle = FontStyle.Italic), span.s, span.e)
-                // Numbers are always visible; only Tap mode makes them pressable.
+                // Numbers are pressable in every mode: a tap opens the note above the number.
                 "sup" -> style(SpanStyle(baselineShift = BaselineShift.Superscript, fontSize = AtharTextSize.Small), span.s, span.e)
             }
             val target = span.target?.let { if (span.k == "sup") NOTE_LINK + it else it }
-            if (span.k in listOf("link", "entityRef", "sup") && !target.isNullOrBlank() && (span.k != "sup" || tapNotes)) {
+            if (span.k in listOf("link", "entityRef", "sup") && !target.isNullOrBlank()) {
                 val start = value.displayOffset(span.s)
                 val end = value.displayOffset(span.e)
                 if (start < end) addLink(
@@ -375,5 +399,56 @@ private fun markedText(
             }
         }
         match?.let { style(SpanStyle(background = colors.accent.copy(alpha = 0.24f), fontWeight = FontWeight.Bold), it.first, it.last + 1) }
+    }
+}
+
+private fun String.arabicDigits() = map { if (it in '0'..'9') '\u0660' + (it - '0') else it }.joinToString("")
+
+/** The window rect of a note number, from its text's layout; [Rect.Zero] when it isn't laid out. */
+private fun noteRect(layout: TextLayoutResult?, coords: LayoutCoordinates?, value: SelectionText?, span: InlineSpan?): Rect {
+    if (layout == null || coords == null || !coords.isAttached || value == null || span == null) return Rect.Zero
+    val start = value.displayOffset(span.s).coerceIn(0, (layout.layoutInput.text.length - 1).coerceAtLeast(0))
+    val end = (value.displayOffset(span.e) - 1).coerceIn(start, (layout.layoutInput.text.length - 1).coerceAtLeast(start))
+    val a = layout.getBoundingBox(start)
+    val b = layout.getBoundingBox(end)
+    // RTL: the first digit can sit to the right of the last, so take the min/max.
+    val topLeft = coords.localToWindow(Offset(minOf(a.left, b.left), minOf(a.top, b.top)))
+    val bottomRight = coords.localToWindow(Offset(maxOf(a.right, b.right), maxOf(a.bottom, b.bottom)))
+    return Rect(topLeft, bottomRight)
+}
+
+/** The tapped notes, in a small callout above the number (see [AtharTailPopover]). */
+@Composable
+internal fun FootnoteCallout(
+    ids: List<String>,
+    at: Rect,
+    footnotes: Map<String, ReaderBlock.FootnoteBody>,
+    settings: ReaderSettings,
+    colors: ReaderColors,
+    onLink: (String) -> Unit,
+    onDismiss: () -> Unit,
+) {
+    AtharTailPopover(
+        anchor = { at },
+        ground = colors.text.copy(alpha = 0.94f),
+        onDismiss = onDismiss,
+        maxWidth = 320.dp,
+        modifier = Modifier.testTag("footnote_popover"),
+    ) {
+        Column(Modifier.heightIn(max = 320.dp).verticalScroll(rememberScrollState())) {
+            ids.forEach { id ->
+                val note = footnotes[id]
+                Text(
+                    text = if (note == null) AnnotatedString("الحاشية لم تُحمّل بعد") else buildAnnotatedString {
+                        append("(${note.marker.arabicDigits()}) ")
+                        append(markedText(note.text, null, colors, note.spans, emptyList(), settings.showTashkeel, onLink))
+                    },
+                    color = colors.page,
+                    fontFamily = KitabFontFamily,
+                    fontSize = (settings.fontSize - 3).sp,
+                    lineHeight = ((settings.fontSize - 3) * 1.6f).sp,
+                )
+            }
+        }
     }
 }

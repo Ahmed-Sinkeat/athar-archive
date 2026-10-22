@@ -1,7 +1,9 @@
 package com.atharchive.feature.reader
 
+import com.atharchive.ui.components.SoapTravelIndicator
+import androidx.compose.foundation.interaction.collectIsPressedAsState
+import androidx.compose.ui.layout.positionInParent
 import androidx.compose.foundation.interaction.MutableInteractionSource
-import com.atharchive.ui.components.SoapPill
 import com.atharchive.ui.theme.AtharCorners
 import com.atharchive.ui.theme.AtharTextSize
 import androidx.activity.compose.BackHandler
@@ -46,13 +48,9 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material3.AlertDialog
 import androidx.compose.foundation.layout.systemBarsPadding
-import androidx.compose.ui.window.Dialog
-import androidx.compose.ui.window.DialogProperties
 import com.atharchive.core.data.content.CardField
 import com.atharchive.core.data.content.InlineSpan
-import androidx.compose.material3.TextButton
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.ui.platform.LocalUriHandler
@@ -82,6 +80,11 @@ import androidx.compose.ui.semantics.customActions
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.foundation.layout.offset
 import kotlin.math.roundToInt
+import androidx.compose.foundation.gestures.detectHorizontalDragGestures
+import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.ui.semantics.setProgress
+import androidx.compose.ui.semantics.progressBarRangeInfo
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
@@ -143,7 +146,7 @@ fun ReaderScreen(
     var searchTarget by remember(initialSearchTarget) { mutableStateOf(initialSearchTarget) }
     var toolbarHeight by remember { mutableIntStateOf(0) }
 
-    var shownFootnotes by remember { mutableStateOf(emptyList<String>()) }
+    var shownFootnotes by remember { mutableStateOf<Pair<List<String>, androidx.compose.ui.geometry.Rect>?>(null) }
     val uriHandler = LocalUriHandler.current
     val colors = rememberReaderColors(settings.palette)
     // Index 0 belongs to the title item. A partial cache can start at any semantic
@@ -197,6 +200,13 @@ fun ReaderScreen(
     }
     val currentIndex = if (window != null) currentDisplayIndex else
         state.blocks.getOrNull(currentDisplayIndex)?.ordinal ?: currentDisplayIndex
+    // A bookmark marks text: past a page divider or notes footer at the top, to the block after it.
+    val bookmarkIndex = (currentDisplayIndex..currentDisplayIndex + com.atharchive.data.BookmarkLookahead).firstNotNullOfOrNull { index ->
+        val block = if (window != null) window.peek(index) else state.blocks.getOrNull(index)
+        val text = block is ReaderBlock.Heading || block is ReaderBlock.Paragraph || block is ReaderBlock.Quote || block is ReaderBlock.Verse
+        if (!text) null else if (window != null) index else block!!.ordinal ?: index
+    } ?: currentIndex
+    val bookmarkedHere = state.bookmarks.any { it.blockIndex == bookmarkIndex }
     LaunchedEffect(restored) {
         if (!restored) return@LaunchedEffect
         if (initialOrdinal == null && state.readingOffset > 0) {
@@ -304,7 +314,7 @@ fun ReaderScreen(
     }
 
     val chapterTitle = remember(state.toc, currentIndex) {
-        state.toc.lastOrNull { it.blockIndex <= currentIndex }?.title.orEmpty()
+        state.toc.lastOrNull { it.level == 2 && it.blockIndex <= currentIndex }?.title.orEmpty()
     }
     // Fractional within the top block (long paragraphs used to freeze the bar), and full at
     // the true end — the first visible block never reaches the last one.
@@ -316,30 +326,20 @@ fun ReaderScreen(
     }
     // Read only while drawing the bar: computed in the body, it recomposed the whole reader
     // on every scroll frame.
+    var scrub by remember { mutableStateOf<Float?>(null) }
     fun progress(): Float = when {
         state.blockCount <= 1 -> 0f
         restored && !listState.canScrollForward -> 1f
         else -> ((currentIndex + blockFraction) / (state.blockCount - 1)).coerceIn(0f, 1f)
     }
 
-    if (introOpen) IntroPage(state, settings, colors, onLink = ::openLink, onDismiss = { introOpen = false })
-    if (shownFootnotes.isNotEmpty()) {
-        AlertDialog(
-            onDismissRequest = { shownFootnotes = emptyList() },
-            containerColor = colors.page, textContentColor = colors.text, titleContentColor = colors.text,
-            title = { Text("الحواشي") },
-            text = {
-                Column(Modifier.verticalScroll(rememberScrollState())) {
-                    shownFootnotes.forEach { id ->
-                        val block = state.footnotes[id]
-                        if (block == null) Text("الحاشية لم تُحمّل بعد")
-                        else BlockView(block, settings, colors, highlighted = false,
-                            isSearchTarget = false, onLink = ::openLink)
-                    }
-                }
-            },
-            confirmButton = { TextButton(onClick = { shownFootnotes = emptyList() }) { Text("إغلاق") } },
-        )
+    if (introOpen) {
+        androidx.activity.compose.BackHandler { introOpen = false }
+        IntroPage(state.card, state.bookTitle, state.author, settings, colors, onLink = ::openLink, onDismiss = { introOpen = false })
+        return
+    }
+    shownFootnotes?.let { (ids, at) ->
+        FootnoteCallout(ids, at, state.footnotes, settings, colors, onLink = ::openLink, onDismiss = { shownFootnotes = null })
     }
 
     val haptics = LocalHapticFeedback.current
@@ -462,7 +462,7 @@ fun ReaderScreen(
                             colors = colors,
                             highlighted = false,
                             highlights = state.highlights,
-                            onFootnotes = { ids -> if (ids.any { it in state.footnotes }) shownFootnotes = ids },
+                            onFootnotes = { ids, at -> if (ids.any { it in state.footnotes }) shownFootnotes = ids to at },
                             onLink = ::openLink,
                             isSearchTarget = searchTarget?.ordinal == block.ordinal,
                             searchMatch = searchTarget?.takeIf { it.ordinal == block.ordinal }?.let {
@@ -480,7 +480,7 @@ fun ReaderScreen(
                         colors = colors,
                         highlighted = false,
                         highlights = state.highlights,
-                        onFootnotes = { ids -> if (ids.any { it in state.footnotes }) shownFootnotes = ids },
+                        onFootnotes = { ids, at -> if (ids.any { it in state.footnotes }) shownFootnotes = ids to at },
                         onLink = ::openLink,
                         isSearchTarget = query.isNotBlank() && jumpedTo == index,
                         searchMatch = searchTarget?.takeIf { it.ordinal == (block.ordinal ?: index) }?.let {
@@ -587,6 +587,9 @@ fun ReaderScreen(
                     else { panelTab = ReaderPanelTab.Search; panelOpen = true }
                 },
                 onMore = { introOpen = true },
+                hasIntro = state.card.isNotEmpty(),
+                editions = state.editions,
+                onEdition = onOpenEntity,
                 sourceUrl = state.sourceUrl,
                 onOpenSite = { openLink(state.sourceUrl) },
             )
@@ -598,23 +601,64 @@ fun ReaderScreen(
                 .onSizeChanged { bottomOverlayHeight = with(density) { it.height.toDp() } }
                 .graphicsLayer { translationY = hidden * bottomBarHeight.toPx() },
         ) {
+            // Hold and slide to pick a place: the bubble names the chapter under the thumb, release jumps.
+            // The strip is taller than the 3dp line so a thumb can catch it.
+            val rtl = androidx.compose.ui.platform.LocalLayoutDirection.current == androidx.compose.ui.unit.LayoutDirection.Rtl
+            fun scrubIndex(fraction: Float) = (fraction * (state.blockCount - 1)).roundToInt().coerceAtLeast(0)
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(3.dp)
-                    .background(colors.divider.copy(alpha = 0.5f)),
+                    .height(18.dp)
+                    .pointerInput(state.blockCount, rtl) {
+                        fun at(x: Float) = (if (rtl) 1f - x / size.width else x / size.width).coerceIn(0f, 1f)
+                        detectHorizontalDragGestures(
+                            onDragStart = { scrub = at(it.x); haptics.performHapticFeedback(androidx.compose.ui.hapticfeedback.HapticFeedbackType.LongPress) },
+                            onDragEnd = { scrub?.let { jumpTo(scrubIndex(it)) }; scrub = null },
+                            onDragCancel = { scrub = null },
+                        ) { change, _ -> change.consume(); scrub = at(change.position.x) }
+                    }
+                    .semantics {
+                        progressBarRangeInfo = androidx.compose.ui.semantics.ProgressBarRangeInfo(progress(), 0f..1f)
+                        setProgress("الانتقال في الكتاب") { jumpTo(scrubIndex(it.coerceIn(0f, 1f))); true }
+                    }
+                    .drawBehind {
+                        val line = (if (scrub != null) 6.dp else 3.dp).toPx()
+                        val top = size.height - line
+                        drawRect(colors.divider.copy(alpha = 0.5f), topLeft = androidx.compose.ui.geometry.Offset(0f, top), size = androidx.compose.ui.geometry.Size(size.width, line))
+                        val width = size.width * (scrub ?: progress())
+                        val left = if (rtl) size.width - width else 0f
+                        drawRect(colors.accent, topLeft = androidx.compose.ui.geometry.Offset(left, top),
+                            size = androidx.compose.ui.geometry.Size(width, line))
+                    }
+                    .testTag("reader_progress"),
             ) {
-                Box(
-                    Modifier
-                        .fillMaxSize()
-                        .drawBehind {
-                            val width = size.width * progress()
-                            val left = if (layoutDirection == androidx.compose.ui.unit.LayoutDirection.Rtl) size.width - width else 0f
-                            drawRect(colors.accent, topLeft = androidx.compose.ui.geometry.Offset(left, 0f),
-                                size = androidx.compose.ui.geometry.Size(width, size.height))
-                        }
-                        .testTag("reader_progress"),
-                )
+                scrub?.let { fraction ->
+                    val index = scrubIndex(fraction)
+                    val kitabs = state.toc.filter { it.level == 2 && it.title.isNotBlank() }
+                    val at = kitabs.indexOfLast { it.blockIndex <= index }
+                    val bab = state.toc.lastOrNull { it.blockIndex <= index }?.takeIf { it.level > 2 }
+                    Column(
+                        Modifier.align(Alignment.BottomCenter)
+                            .wrapContentHeight(Alignment.Bottom, unbounded = true)
+                            .padding(start = 24.dp, end = 24.dp, bottom = 26.dp)
+                            .clip(com.atharchive.ui.theme.AtharCorners.Card)
+                            .background(colors.page)
+                            .border(0.7.dp, colors.divider, com.atharchive.ui.theme.AtharCorners.Card)
+                            .padding(horizontal = 14.dp, vertical = 8.dp)
+                            .testTag("reader_scrub_bubble"),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                    ) {
+                        val percent = "${com.atharchive.ui.components.arabicDigits((fraction * 100).roundToInt())}٪"
+                        Text(
+                            if (at >= 0) "${com.atharchive.ui.components.arabicDigits(at + 1)} / ${com.atharchive.ui.components.arabicDigits(kitabs.size)} · ${kitabs[at].title}" else percent,
+                            color = colors.text, fontWeight = FontWeight.Bold, maxLines = 1, overflow = TextOverflow.Ellipsis,
+                        )
+                        Text(
+                            listOfNotNull(bab?.title, percent.takeIf { at >= 0 }).joinToString(" · "),
+                            color = colors.secondary, style = MaterialTheme.typography.labelMedium, maxLines = 1, overflow = TextOverflow.Ellipsis,
+                        )
+                    }
+                }
             }
             if (audioOpen && state.audio.isNotEmpty()) {
                 ReaderAudioStrip(
@@ -632,7 +676,7 @@ fun ReaderScreen(
             ) {
             ReaderBottomBar(
                 colors = colors,
-                bookmarked = state.bookmarks.any { it.blockIndex == currentIndex },
+                bookmarked = bookmarkedHere,
                 hasAudio = state.audio.isNotEmpty(),
                 audioOpen = audioOpen,
                 contentsOpen = panelOpen && panelTab == ReaderPanelTab.Contents,
@@ -647,10 +691,10 @@ fun ReaderScreen(
                     ReaderSettingsPopover(settingsOpen, settings, colors, onSettingsChange, onDismiss = { settingsOpen = false })
                 },
                 onBookmark = {
-                    val alreadyBookmarked = state.bookmarks.any { it.blockIndex == currentIndex }
+                    val alreadyBookmarked = bookmarkedHere
                     scope.launch {
                         try {
-                            onToggleBookmark(currentIndex)
+                            onToggleBookmark(bookmarkIndex)
                             toast = if (alreadyBookmarked) "أُزيلت العلامة" else "✓ أُضيفت العلامة"
                         } catch (cancelled: CancellationException) { throw cancelled }
                         catch (error: Exception) { toast = "تعذّر حفظ العلامة: ${error.message.orEmpty()}" }
@@ -665,7 +709,8 @@ fun ReaderScreen(
             Box(
                 modifier = Modifier
                     .align(Alignment.BottomCenter)
-                    .padding(bottom = 18.dp)
+                    // Above the bar: the toast answers a bar button and must not cover it.
+                    .padding(bottom = bottomBarHeight * (1f - hidden) + 12.dp)
                     .clip(AtharCorners.Card)
                     .background(colors.text.copy(alpha = 0.92f))
                     .padding(horizontal = 16.dp, vertical = 9.dp)
@@ -684,6 +729,9 @@ fun ReaderScreen(
 @Composable
 private fun ReaderTopBar(
     bookTitle: String,
+    hasIntro: Boolean,
+    editions: List<ReaderEdition>,
+    onEdition: (String) -> Unit,
     chapterTitle: String,
     colors: ReaderColors,
     onBack: () -> Unit,
@@ -731,20 +779,25 @@ private fun ReaderTopBar(
         IconSlot(AtharIcons.Search, "البحث في الكتاب", colors, "reader_search", onSearch)
         Box {
             var menu by remember { mutableStateOf(false) }
+            var editionsOpen by remember { mutableStateOf(false) }
             IconSlot(AtharIcons.More, "المزيد", colors, "reader_more") { menu = true }
-            AtharMenu(expanded = menu, onDismiss = { menu = false }, modifier = Modifier.testTag("reader_more_menu")) {
-                AtharMenuItem(
-                    label = "مقدمة",
+            AtharMenu(expanded = menu, onDismiss = { menu = false }, colors = com.atharchive.ui.components.AtharMenuColors(colors.page, colors.text, colors.secondary, colors.accent), modifier = Modifier.testTag("reader_more_menu")) {
+                if (hasIntro) AtharMenuItem(
+                    label = "مقدمة المحقق ومعلومات عن الكتاب",
                     icon = AtharIcons.Info,
                     onClick = { menu = false; onMore() },
                     modifier = Modifier.testTag("reader_source"),
                 )
+                if (editions.isNotEmpty()) AtharMenuItem("الطبعات", onClick = { menu = false; editionsOpen = true })
                 if (sourceUrl.isNotBlank()) AtharMenuItem(
                     label = "فتح في الموقع",
                     icon = AtharIcons.Share,
                     onClick = { menu = false; onOpenSite() },
                     modifier = Modifier.testTag("reader_open_site"),
                 )
+            }
+            AtharMenu(expanded = editionsOpen, onDismiss = { editionsOpen = false }, colors = com.atharchive.ui.components.AtharMenuColors(colors.page, colors.text, colors.secondary, colors.accent)) {
+                editions.forEach { edition -> AtharMenuItem(edition.label, onClick = { editionsOpen = false; onEdition(edition.id) }) }
             }
         }
     }
@@ -776,7 +829,7 @@ private fun IconSlot(
 }
 
 @Composable
-private fun ReaderBottomBar(
+internal fun ReaderBottomBar(
     colors: ReaderColors,
     bookmarked: Boolean,
     hasAudio: Boolean,
@@ -789,6 +842,10 @@ private fun ReaderBottomBar(
     settingsMenu: @Composable () -> Unit,
     onBookmark: () -> Unit,
 ) {
+    var lastControl by remember { mutableIntStateOf(-1) }
+    val centres = remember(hasAudio) { androidx.compose.runtime.mutableStateListOf(*Array(if (hasAudio) 4 else 3) { Offset.Zero }) }
+    val active = listOf(contentsOpen) + (if (hasAudio) listOf(audioOpen) else emptyList()) + listOf(bookmarked, settingsOpen)
+    val selected = lastControl.takeIf { active.getOrNull(it) == true } ?: active.indexOfFirst { it }
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -797,6 +854,8 @@ private fun ReaderBottomBar(
             .testTag("reader_controls"),
     ) {
         HorizontalDivider(thickness = 0.7.dp, color = colors.divider)
+        Box {
+        SoapTravelIndicator(selected, centres, colors.accent.copy(alpha = 0.14f), Modifier.matchParentSize())
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -805,7 +864,7 @@ private fun ReaderBottomBar(
         ) {
             // Bookmark sits in the middle — it is the action taken most often, and with
             // no audio the bar is exactly three items around it.
-            ControlButton(if (contentsOpen) AtharIcons.SidebarFilled else AtharIcons.Sidebar, "المحتويات", colors, contentsOpen, "reader_ctl_contents", Modifier.weight(1f), onContents)
+            ControlButton(if (contentsOpen) AtharIcons.SidebarFilled else AtharIcons.Sidebar, "المحتويات", colors, contentsOpen, "reader_ctl_contents", Modifier.weight(1.0f).onGloballyPositioned { centres[0] = it.positionInParent() + Offset(it.size.width / 2f, it.size.height / 2f) }, { lastControl = 0; onContents() })
             if (hasAudio) {
                 ControlButton(
                     if (audioOpen) AtharIcons.AudioFilled else AtharIcons.Audio,
@@ -813,8 +872,8 @@ private fun ReaderBottomBar(
                     colors,
                     audioOpen,
                     "reader_ctl_audio",
-                    Modifier.weight(1f),
-                    onAudio,
+                    Modifier.weight(1.0f).onGloballyPositioned { centres[1] = it.positionInParent() + Offset(it.size.width / 2f, it.size.height / 2f) },
+                    { lastControl = 1; onAudio() },
                 )
             }
             ControlButton(
@@ -823,11 +882,12 @@ private fun ReaderBottomBar(
                 colors,
                 bookmarked,
                 "reader_ctl_bookmark",
-                Modifier.weight(1f),
-                onBookmark,
+                Modifier.weight(1.0f).onGloballyPositioned { centres[if (hasAudio) 2 else 1] = it.positionInParent() + Offset(it.size.width / 2f, it.size.height / 2f) },
+                { lastControl = if (hasAudio) 2 else 1; onBookmark() },
             )
-            AaButton(colors, settingsOpen, Modifier.weight(1f), onSettings, settingsMenu)
+            AaButton(colors, settingsOpen, Modifier.weight(1.0f).onGloballyPositioned { centres[if (hasAudio) 3 else 2] = it.positionInParent() + Offset(it.size.width / 2f, it.size.height / 2f) }, { lastControl = if (hasAudio) 3 else 2; onSettings() }, settingsMenu)
         }
+    }
     }
 }
 
@@ -841,15 +901,16 @@ private fun ControlButton(
     modifier: Modifier = Modifier,
     onClick: () -> Unit,
 ) {
+    val interaction = remember { MutableInteractionSource() }
+    val pressed by interaction.collectIsPressedAsState()
     Box(
         modifier = modifier
             .defaultMinSize(minHeight = 52.dp)
             // No ripple, as on the app's bottom bar: the pill is the feedback.
-            .clickable(interactionSource = remember { MutableInteractionSource() }, indication = null, role = Role.Button, onClick = onClick)
+            .clickable(interactionSource = interaction, indication = null, role = Role.Button, onClick = onClick)
             .testTag(tag),
         contentAlignment = Alignment.Center,
     ) {
-        SoapPill(active, colors.accent.copy(alpha = 0.14f))
         Icon(
             imageVector = icon,
             contentDescription = description,
@@ -861,14 +922,15 @@ private fun ControlButton(
 
 @Composable
 private fun AaButton(colors: ReaderColors, active: Boolean, modifier: Modifier = Modifier, onClick: () -> Unit, menu: @Composable () -> Unit) {
+    val interaction = remember { MutableInteractionSource() }
+    val pressed by interaction.collectIsPressedAsState()
     Box(
         modifier = modifier
             .defaultMinSize(minHeight = 52.dp)
-            .clickable(interactionSource = remember { MutableInteractionSource() }, indication = null, role = Role.Button, onClick = onClick)
+            .clickable(interactionSource = interaction, indication = null, role = Role.Button, onClick = onClick)
             .testTag("reader_ctl_aa"),
         contentAlignment = Alignment.Center,
     ) {
-        SoapPill(active, colors.accent.copy(alpha = 0.14f))
         Text(
             text = "Aa",
             modifier = Modifier.clearAndSetSemantics { contentDescription = "إعدادات مظهر القراءة" },
@@ -1104,16 +1166,15 @@ private fun ReaderAudioStrip(
  * reading flow. Drawn by the reader's own [BlockView], so it reads like the book.
  */
 @Composable
-private fun IntroPage(state: ReaderUiState, settings: ReaderSettings, colors: ReaderColors, onLink: (String) -> Unit, onDismiss: () -> Unit) {
-    val blocks = remember(state.card, state.bookTitle, state.author) {
-        listOf(ReaderBlock.Heading("intro_title", 2, state.bookTitle, "")) +
-            listOfNotNull(state.author.takeIf(String::isNotBlank)?.let { ReaderBlock.Paragraph("intro_author", it) }) +
-            state.card.mapIndexed { i, line -> line.toIntroBlock("intro_$i") }
+internal fun IntroPage(card: List<CardField>, title: String, author: String, settings: ReaderSettings, colors: ReaderColors, onLink: (String) -> Unit = {}, onDismiss: () -> Unit) {
+    val blocks = remember(card, title, author) {
+        listOf(ReaderBlock.Heading("intro_title", 2, title, "")) +
+            listOfNotNull(author.takeIf(String::isNotBlank)?.let { ReaderBlock.Paragraph("intro_author", it) }) +
+            card.mapIndexed { i, line -> line.toIntroBlock("intro_$i") }
     }
-    Dialog(onDismissRequest = onDismiss, properties = DialogProperties(usePlatformDefaultWidth = false)) {
         Column(Modifier.fillMaxSize().background(colors.page).systemBarsPadding().testTag("reader_intro")) {
             Row(Modifier.fillMaxWidth().padding(horizontal = 8.dp, vertical = 4.dp), verticalAlignment = Alignment.CenterVertically) {
-                Text("مقدمة", color = colors.text, fontSize = AtharTextSize.Large, fontWeight = FontWeight.SemiBold, modifier = Modifier.weight(1f).padding(start = 12.dp))
+                Text("مقدمة المحقق ومعلومات عن الكتاب", color = colors.text, fontSize = AtharTextSize.Large, fontWeight = FontWeight.SemiBold, modifier = Modifier.weight(1f).padding(start = 12.dp))
                 IconSlot(AtharIcons.Close, "إغلاق", colors, "reader_intro_close", onDismiss)
             }
             HorizontalDivider(thickness = 0.7.dp, color = colors.divider)
@@ -1123,7 +1184,6 @@ private fun IntroPage(state: ReaderUiState, settings: ReaderSettings, colors: Re
                 }
             }
         }
-    }
 }
 
 private fun CardField.toIntroBlock(id: String): ReaderBlock = when {

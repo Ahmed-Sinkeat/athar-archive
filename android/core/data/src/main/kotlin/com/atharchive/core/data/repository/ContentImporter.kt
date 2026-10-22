@@ -33,6 +33,7 @@ class ContentImporter(
             catalogHash = "0".repeat(64),
             tombstonesHash = "0".repeat(64),
             appliedAt = nowMillis(),
+            personsJson = AppContentJson.encodeToString(catalog.persons),
         )
         ContentSearchSchema.ensure(database)
         database.withWriteTransaction {
@@ -65,58 +66,50 @@ class ContentImporter(
                     catalogHash = catalogHash,
                     tombstonesHash = tombstonesHash,
                     appliedAt = nowMillis(),
+                    personsJson = AppContentJson.encodeToString(catalog.persons),
                 ),
             )
             ContentSearchSchema.replaceCatalog(this, database.catalogDao().allEntities())
         }
     }
 
+    /** Imports a verified frame; with [into] set to a staging id the frame is written beside the readable copy. */
     suspend fun importVerifiedFrame(
         entry: CatalogEntry,
         frameNumber: Int,
         frame: FrameIndexEntry,
         compressedBytes: ByteArray,
+        into: String = entry.id,
     ): FrameImportResult {
         val dao = database.importDao()
         ContentSearchSchema.ensure(database)
         return try {
             val decoded = FramedPackageDecoder.decodeFrame(compressedBytes, frame, entry)
             val now = nowMillis()
-            val entities = decoded.blocks.map { it.toEntity(entry.id) }
+            val entities = decoded.blocks.map { it.toEntity(into) }
+            val frameEntity = EntityFrameEntity(
+                entityId = into,
+                frameOrdinal = frameNumber,
+                firstBlockOrdinal = frame.ord,
+                blockCount = frame.n,
+                compressedBytes = compressedBytes.size.toLong(),
+                lastOpenedAt = now,
+            )
+            val chapters = decoded.chapterEntities(into)
+            val footnotes = decoded.footnotes.map {
+                FootnoteEntity(entityId = into, fnId = it.id, text = it.x, inlineSpans = encodeSpans(it.sp), marker = it.n)
+            }
             database.withWriteTransaction {
-                val local = dao.entity(entry.id)
-                if (local?.localPackageHash != null && local.localPackageHash != entry.pkg.hash) {
-                    dao.clearImportedContent(entry.id)
+                val result = if (into != entry.id) {
+                    dao.stageFrame(frameEntity, entities, chapters, footnotes)
+                } else {
+                    val local = dao.entity(entry.id)
+                    if (local?.localPackageHash != null && local.localPackageHash != entry.pkg.hash) {
+                        dao.clearImportedContent(entry.id)
+                    }
+                    dao.importFrame(entry.id, frameEntity, entities, chapters, footnotes, now)
                 }
-                val result = dao.importFrame(
-                    entityId = entry.id,
-                    frame = EntityFrameEntity(
-                        entityId = entry.id,
-                        frameOrdinal = frameNumber,
-                        firstBlockOrdinal = frame.ord,
-                        blockCount = frame.n,
-                        compressedBytes = compressedBytes.size.toLong(),
-                        lastOpenedAt = now,
-                    ),
-                    blocks = entities,
-                    chapters = decoded.chapterEntities(entry.id),
-                    footnotes = decoded.footnotes.map {
-                        FootnoteEntity(
-                            entityId = entry.id,
-                            fnId = it.id,
-                            text = it.x,
-                            inlineSpans = encodeSpans(it.sp),
-                            marker = it.n,
-                        )
-                    },
-                    now = now,
-                )
-                val indexed = dao.blockWindow(
-                    entry.id,
-                    frame.ord,
-                    frame.ord + frame.n - 1,
-                )
-                ContentSearchSchema.indexBlocks(this, indexed)
+                ContentSearchSchema.indexBlocks(this, dao.blockWindow(into, frame.ord, frame.ord + frame.n - 1))
                 result
             }
         } catch (error: Throwable) {
@@ -133,6 +126,9 @@ fun CatalogEntry.toEntity(): ContentEntity = ContentEntity(
     hash = hash,
     title = title,
     titleNorm = ArNormalize.normalize(title),
+    editionOf = editionOf,
+    edition = edition,
+    editionsJson = AppContentJson.encodeToString(editions),
     person = person,
     personName = personName,
     died = died,
@@ -164,6 +160,9 @@ fun ContentEntity.toCatalogEntry(): CatalogEntry = CatalogEntry(
     v = v,
     hash = hash,
     title = title,
+    editionOf = editionOf,
+    edition = edition,
+    editions = editionsJson?.let { AppContentJson.decodeFromString<List<String>>(it) }.orEmpty(),
     person = person,
     personName = personName,
     died = died,
@@ -198,6 +197,9 @@ private fun DecodedFrame.chapterEntities(entityId: String): List<ChapterEntity> 
             anchor = it.a,
             title = it.title,
             firstOrdinal = it.block,
+            level = it.lv,
+            page = it.p,
+            vol = it.vol,
         )
     }.orEmpty()
 
@@ -264,3 +266,6 @@ fun ContentBlockEntity.spans(): List<InlineSpan> =
 
 fun FootnoteEntity.spans(): List<InlineSpan> =
     AppContentJson.decodeFromString(inlineSpans.toString(Charsets.UTF_8))
+
+fun ContentGenerationEntity.persons(): List<com.atharchive.core.data.content.CatalogPerson> =
+    personsJson?.let { AppContentJson.decodeFromString<List<com.atharchive.core.data.content.CatalogPerson>>(it) }.orEmpty()

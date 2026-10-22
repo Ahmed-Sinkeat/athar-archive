@@ -26,7 +26,7 @@ import androidx.compose.material3.Text
 import com.atharchive.core.ArNormalize
 import com.atharchive.feature.downloads.TransferUi
 import androidx.compose.ui.input.nestedscroll.nestedScroll
-import com.atharchive.ui.components.AtharCollapsible
+import com.atharchive.ui.components.AtharFloatingHeader
 import com.atharchive.ui.components.ShowOnChange
 import com.atharchive.ui.components.rememberAtharCollapsingHeader
 import androidx.compose.runtime.Composable
@@ -37,6 +37,8 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clipToBounds
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.testTag
@@ -82,8 +84,8 @@ fun IssuesScreen(
     var selectedTab by rememberSaveable { mutableStateOf(SectionTab.All) }
     var query by rememberSaveable { mutableStateOf("") }
     var topicStored by rememberPersisted("issues.topic", AllTopics)
-    var sortName by rememberPersisted("issues.sort", IssueSort.Newest.name)
-    val sort = enumValueOrNull<IssueSort>(sortName) ?: IssueSort.Newest
+    var sortName by rememberPersisted("issues.order", IssueSort.Question.name)
+    val sort = enumValueOrNull<IssueSort>(sortName) ?: IssueSort.Question
     val listState = rememberLazyListState()
 
     val topics = remember(state.issues) {
@@ -103,8 +105,8 @@ fun IssuesScreen(
             matchesTab && matchesQuery && (topic == AllTopics || issue.topic == topic)
         }.sortedWith(
             if (selectedTab == SectionTab.Recent) compareBy { it.recentRank ?: Int.MAX_VALUE } else when (sort) {
-                IssueSort.Question -> compareBy { it.question }
-                IssueSort.Scholar -> compareBy { it.scholar }
+                IssueSort.Question -> compareBy { ArNormalize.normalize(it.question) }
+                IssueSort.Scholar -> compareBy { ArNormalize.normalize(it.scholar) }
                 IssueSort.Newest -> compareBy { it.question }
             },
         )
@@ -119,10 +121,10 @@ fun IssuesScreen(
         val horizontalPadding = if (maxWidth >= 720.dp) 32.dp else 20.dp
         val compactTitle = maxWidth < 360.dp || LocalDensity.current.fontScale >= 1.3f
 
-        Column(modifier = Modifier.fillMaxSize()) {
+        Box(modifier = Modifier.fillMaxSize().clipToBounds()) {
             val header = rememberAtharCollapsingHeader()
             header.ShowOnChange(listState, selectedTab, query, topic, sort)
-            AtharCollapsible(header) {
+            AtharFloatingHeader(header) {
                 Column {
                     AtharTopBar(
                         title = "المسائل",
@@ -143,8 +145,8 @@ fun IssuesScreen(
                         ),
                     )
                 }
-            }
-            AtharCollapsible(header) {
+            
+            
                 Column {
                     AtharTabRow(
                         tabs = SectionTab.tabs,
@@ -181,10 +183,10 @@ fun IssuesScreen(
                 state = listState,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .weight(1f)
+                    .fillMaxHeight()
                     .nestedScroll(header.connection)
                 .testTag("issues_screen"),
-                contentPadding = PaddingValues(bottom = 28.dp),
+                contentPadding = PaddingValues(top = header.height, bottom = 28.dp),
             ) {
 
                 if (visible.isEmpty()) {
@@ -275,7 +277,7 @@ private fun IssueRow(
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
             )
-            Text(
+            if (issue.answerExcerpt.trim().removeSurrounding("[", "]").trim() != issue.question.trim().removeSurrounding("[", "]").trim()) Text(
                 text = issue.answerExcerpt,
                 modifier = Modifier
                     .padding(top = 5.dp)
@@ -300,14 +302,6 @@ private fun IssueRow(
                 )
             }
         }
-        // Save, then download — the order Books and الشعر use. المقالات has them the
-        // other way round; that row is the one that should move.
-        AtharFavouriteButton(
-            saved = issue.saved,
-            onToggle = onSave,
-            itemTitle = issue.question,
-            tag = "issue_save_${issue.id}",
-        )
         AtharDownloadButton(
             title = issue.question,
             sizeLabel = issue.sizeLabel,
@@ -315,6 +309,12 @@ private fun IssueRow(
             transfer = issue.transfer,
             onClick = onDownload,
             tag = "issue_download_${issue.id}",
+        )
+        AtharFavouriteButton(
+            saved = issue.saved,
+            onToggle = onSave,
+            itemTitle = issue.question,
+            tag = "issue_save_${issue.id}",
         )
     }
 }

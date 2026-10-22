@@ -1,5 +1,6 @@
 package com.atharchive.core.data.db.content
 
+import androidx.room3.ColumnInfo
 import androidx.room3.Dao
 import androidx.room3.Database
 import androidx.room3.Entity
@@ -65,6 +66,9 @@ data class ContentEntity(
     val pkgChapters: Int,
     /** Serialized [com.atharchive.core.data.content.AudioReference] list. */
     val audioJson: String,
+    val editionOf: String? = null,
+    val edition: String? = null,
+    val editionsJson: String? = null,
     val verseCount: Int? = null,
     val f0Json: String? = null,
     /** Serialized [com.atharchive.core.data.content.CardField] list; null when the book has none. */
@@ -88,6 +92,7 @@ data class ContentGenerationEntity(
     val catalogHash: String,
     val tombstonesHash: String,
     val appliedAt: Long,
+    val personsJson: String? = null,
 )
 
 @Entity(
@@ -138,6 +143,9 @@ data class ChapterEntity(
     val anchor: String,
     val title: String,
     val firstOrdinal: Int,
+    @ColumnInfo(defaultValue = "2") val level: Int = 2,
+    val page: Int? = null,
+    val vol: Int? = null,
 )
 
 @Entity(
@@ -173,6 +181,15 @@ data class CacheEvictionResult(
     val bytesRemoved: Long,
 )
 
+data class OrdinalSpan(val lo: Int?, val hi: Int?)
+
+/** Staging id for an update of [entityId] to [pkgHash]; `#` never occurs in catalog ids. */
+fun stagingId(entityId: String, pkgHash: String) = "$entityId#${pkgHash.take(16)}"
+
+fun oldCopyId(entityId: String) = "$entityId#old"
+
+private const val DeleteSlice = 500
+
 @Dao
 abstract class ContentCatalogDao {
     @Query("SELECT * FROM entity")
@@ -185,6 +202,9 @@ abstract class ContentCatalogDao {
     @Query("SELECT * FROM entity WHERE audioJson != '[]'")
     abstract suspend fun entitiesWithAudio(): List<ContentEntity>
 
+    @Query("SELECT * FROM entity WHERE audioJson != '[]'")
+    abstract fun observeEntitiesWithAudio(): Flow<List<ContentEntity>>
+
     /** A superset of the entities holding [audioId]; callers match the decoded id exactly. */
     @Query("SELECT * FROM entity WHERE instr(audioJson, :audioId) > 0")
     abstract suspend fun entitiesMentioningAudio(audioId: String): List<ContentEntity>
@@ -195,8 +215,11 @@ abstract class ContentCatalogDao {
     @Query("SELECT * FROM entity WHERE catalogPresent = 1 ORDER BY titleNorm, id")
     abstract fun observeCatalog(): Flow<List<ContentEntity>>
 
-    @Query("SELECT * FROM entity WHERE coll = :coll AND catalogPresent = 1 ORDER BY titleNorm, id")
+    @Query("SELECT * FROM entity WHERE coll = :coll AND catalogPresent = 1 AND editionOf IS NULL ORDER BY titleNorm, id")
     abstract fun observeCollection(coll: String): Flow<List<ContentEntity>>
+
+    @Query("SELECT * FROM entity WHERE catalogPresent = 1 AND (id = :primaryId OR editionOf = :primaryId) ORDER BY id")
+    abstract suspend fun editionsFor(primaryId: String): List<ContentEntity>
 
     @Query("SELECT * FROM entity WHERE id = :entityId")
     abstract suspend fun entity(entityId: String): ContentEntity?
@@ -216,8 +239,20 @@ abstract class ContentCatalogDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     protected abstract suspend fun replaceGeneration(generation: ContentGenerationEntity)
 
-    @Query("DELETE FROM block WHERE entityId = :entityId")
-    protected abstract suspend fun deleteBlocks(entityId: String)
+    @Query("DELETE FROM block WHERE entityId = :entityId AND ordinal BETWEEN :first AND :last")
+    protected abstract suspend fun deleteBlockSlice(entityId: String, first: Int, last: Int)
+
+    @Query("SELECT MIN(ordinal) AS lo, MAX(ordinal) AS hi FROM block WHERE entityId = :entityId")
+    protected abstract suspend fun blockOrdinalSpan(entityId: String): OrdinalSpan
+
+    // One DELETE over a whole book inside a transaction keeps an undo copy of every page it
+    // touches, and the bundled SQLite holds temp files in RAM (TEMP_STORE=3): a big book took
+    // native memory past 1.8 GB and killed the app on every launch. Slices keep each copy small.
+    protected suspend fun deleteBlocks(entityId: String) {
+        val span = blockOrdinalSpan(entityId)
+        val lo = span.lo ?: return
+        for (start in lo..span.hi!! step DeleteSlice) deleteBlockSlice(entityId, start, start + DeleteSlice - 1)
+    }
 
     @Query("DELETE FROM entityFrame WHERE entityId = :entityId")
     protected abstract suspend fun deleteFrames(entityId: String)
@@ -475,6 +510,80 @@ abstract class ContentImportDao {
         return CacheEvictionResult(candidate.entityId, candidate.frameOrdinal, candidate.compressedBytes)
     }
 
+    @Query("SELECT MIN(ordinal) AS lo, MAX(ordinal) AS hi FROM block WHERE entityId = :entityId")
+    protected abstract suspend fun blockSpan(entityId: String): OrdinalSpan
+
+    @Query("UPDATE block SET entityId = :to WHERE entityId = :from AND ordinal BETWEEN :lo AND :hi")
+    protected abstract suspend fun moveBlockSlice(from: String, to: String, lo: Int, hi: Int)
+
+    @Query("UPDATE entityFrame SET entityId = :to WHERE entityId = :from")
+    protected abstract suspend fun moveFrames(from: String, to: String)
+
+    @Query("UPDATE chapter SET entityId = :to WHERE entityId = :from")
+    protected abstract suspend fun moveChapters(from: String, to: String)
+
+    @Query("UPDATE footnote SET entityId = :to WHERE entityId = :from")
+    protected abstract suspend fun moveFootnotes(from: String, to: String)
+
+    @Query("DELETE FROM entityFrame WHERE entityId = :entityId")
+    protected abstract suspend fun deleteEntityFrames(entityId: String)
+
+    @Query("SELECT DISTINCT entityId FROM entityFrame WHERE substr(entityId, 1, length(:prefix)) = :prefix")
+    protected abstract suspend fun idsWithPrefix(prefix: String): List<String>
+
+    /** Writes one frame of an update under [EntityFrameEntity.entityId] = a staging id; the reader never sees it. */
+    @Transaction
+    open suspend fun stageFrame(
+        frame: EntityFrameEntity,
+        blocks: List<ContentBlockEntity>,
+        chapters: List<ChapterEntity>,
+        footnotes: List<FootnoteEntity>,
+    ): FrameImportResult {
+        require(blocks.size == frame.blockCount) { "decoded block count differs from frame" }
+        deleteBlockRange(frame.entityId, frame.firstBlockOrdinal, frame.firstBlockOrdinal + frame.blockCount - 1)
+        insertBlocks(blocks)
+        replaceFrame(frame)
+        if (chapters.isNotEmpty()) replaceChapters(chapters)
+        if (footnotes.isNotEmpty()) replaceFootnotes(footnotes)
+        return FrameImportResult(ContentAvailability.PARTIAL, blocks.size, frame.compressedBytes)
+    }
+
+    /**
+     * Swaps a fully staged update in: renames only (no search-index work), sliced so no single
+     * statement journals a whole book. The old copy goes to `<id>#old` for [purgeCopies].
+     */
+    @Transaction
+    open suspend fun promoteStaged(entityId: String, stagingId: String, now: Long) {
+        val target = requireNotNull(entity(entityId)) { "catalog entity $entityId is missing" }
+        moveAll(entityId, oldCopyId(entityId))
+        moveAll(stagingId, entityId)
+        val importedBlocks = importedBlockCount(entityId)
+        check(importedBlocks == target.pkgBlocks) { "staged update is incomplete ($importedBlocks of ${target.pkgBlocks})" }
+        finishImport(entityId, ContentAvailability.COMPLETE, importedBytes(entityId), contiguousProgress(frames(entityId)), now)
+    }
+
+    /** Deletes staged or replaced copies of [entityId] except [keep]; each slice commits on its own. */
+    suspend fun purgeCopies(entityId: String, keep: String? = null) {
+        for (id in idsWithPrefix("$entityId#")) {
+            if (id == keep) continue
+            val span = blockSpan(id)
+            val lo = span.lo
+            if (lo != null) for (start in lo..span.hi!! step DeleteSlice) deleteBlockRange(id, start, start + DeleteSlice - 1)
+            deleteEntityChapters(id)
+            deleteEntityFootnotes(id)
+            deleteEntityFrames(id) // last: it is how a leftover copy is found again after a crash
+        }
+    }
+
+    private suspend fun moveAll(from: String, to: String) {
+        val span = blockSpan(from)
+        val lo = span.lo
+        if (lo != null) for (start in lo..span.hi!! step DeleteSlice) moveBlockSlice(from, to, start, start + DeleteSlice - 1)
+        moveFrames(from, to)
+        moveChapters(from, to)
+        moveFootnotes(from, to)
+    }
+
     @Transaction
     open suspend fun clearImportedContent(entityId: String) {
         val candidates = frames(entityId).map {
@@ -509,7 +618,7 @@ private fun contiguousProgress(frames: List<EntityFrameEntity>): Int {
         ChapterEntity::class,
         FootnoteEntity::class,
     ],
-    version = 5,
+    version = 8,
     exportSchema = true,
 )
 abstract class AtharContentDatabase : RoomDatabase() {

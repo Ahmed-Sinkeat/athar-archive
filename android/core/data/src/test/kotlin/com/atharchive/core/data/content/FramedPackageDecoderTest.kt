@@ -72,6 +72,19 @@ class FramedPackageDecoderTest {
         }
     }
 
+    @Test
+    fun catalogPeopleMustReferToExistingWorksAndHaveUniqueIds() {
+        fun decode(persons: List<CatalogPerson>): CatalogDocument {
+            val bytes = AppContentJson.encodeToString(CatalogDocument.serializer(), CatalogDocument(2, listOf(ARTICLE), persons)).toByteArray()
+            return AppContentDocuments.decodeCatalog(bytes, ArtifactReference("catalog/test.json", ContentDigests.sha256Hex(bytes), bytes.size.toLong()))
+        }
+        val person = CatalogPerson("author", "Author", works = listOf(ARTICLE_ID))
+        assertEquals(listOf(person), decode(listOf(person)).persons)
+        assertThrows(ContentIntegrityException::class.java) { decode(listOf(person.copy(works = listOf("missing")))) }
+        assertThrows(ContentIntegrityException::class.java) { decode(listOf(person, person)) }
+        assertThrows(ContentIntegrityException::class.java) { decode(listOf(person.copy(works = listOf(ARTICLE_ID, ARTICLE_ID)))) }
+    }
+
     private companion object {
         const val ARTICLE_ID = "byan-kdhb-athr-idha-safr-al-fqr-ila-mkan-ma-qal-al-kfr-khdhny-mak-ala-aby-dhr--v2"
         val ARTICLE = CatalogEntry(

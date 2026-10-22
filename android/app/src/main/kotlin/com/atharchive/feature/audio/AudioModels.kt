@@ -13,26 +13,6 @@ package com.atharchive.feature.audio
  * `source_type` splits المسائل 854 · الكتب 103 · الشعر 14, which is exactly the tab set.
  */
 
-/**
- * Tabs are *state* filters, matching Poetry and Articles. The content categories
- * that used to live here (كتب/شعر/مسائل) are an [AudioType] menu instead — they
- * are one axis among several, not navigation.
- */
-/** `source_type` splits المسائل 854 · الكتب 103 · الشعر 14. */
-enum class AudioType(val label: String) {
-    All("الكل"),
-    Books("الكتب"),
-    Poetry("الشعر"),
-    Issues("المسائل"),
-}
-
-enum class AudioSort(val label: String) {
-    Newest("الأحدث"),
-    Longest("الأطول"),
-    Shortest("الأقصر"),
-    Title("العنوان أ–ي"),
-}
-
 enum class AudioSourceKind(val key: String, val label: String) {
     Book("book", "كتاب"),
     Question("question", "مسألة"),

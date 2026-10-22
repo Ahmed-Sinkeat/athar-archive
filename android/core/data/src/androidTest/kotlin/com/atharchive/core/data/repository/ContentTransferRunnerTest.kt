@@ -12,6 +12,8 @@ import com.atharchive.core.data.content.FrameIndexEntry
 import com.atharchive.core.data.content.PackageReference
 import com.atharchive.core.data.db.content.AtharContentDatabase
 import com.atharchive.core.data.db.content.ContentAvailability
+import com.atharchive.core.data.db.content.oldCopyId
+import com.atharchive.core.data.db.content.stagingId
 import com.atharchive.core.data.db.user.AtharUserDatabase
 import com.atharchive.core.data.network.AppContentHttpClient
 import java.io.ByteArrayOutputStream
@@ -69,7 +71,7 @@ class ContentTransferRunnerTest {
     }
 
     @Test
-    fun malformedReplacementRollsBackAllFramesAndKeepsOldReadableText() = runBlocking {
+    fun malformedReplacementKeepsOldReadableText() = runBlocking {
         val oldBytes = gzip(
             """{"t":"header","schema":2,"coll":"book","id":"offline-book","v":1,"blocks":1,"chapters":[{"a":"main","title":"المقدمة","block":0}],"footnotes":0}""",
             """{"t":"p","a":"main","i":0,"id":"00000000000000000000000000000001","fp":"0000000000000001","x":"النص القديم المحفوظ"}""",
@@ -107,8 +109,51 @@ class ContentTransferRunnerTest {
         assertEquals(replacement.pkg.hash, user.userDataDao().pinnedDownload(oldEntry.id)?.pkgHash)
     }
 
+    // An update is staged beside the old copy frame by frame and renamed in at the end.
+    @Test
+    fun validReplacementSwapsInAndLeavesNoStagedCopy() = runBlocking {
+        val oldBytes = gzip(
+            """{"t":"header","schema":2,"coll":"book","id":"offline-book","v":1,"blocks":1,"chapters":[{"a":"main","title":"المقدمة","block":0}],"footnotes":0}""",
+            """{"t":"p","a":"main","i":0,"id":"00000000000000000000000000000001","fp":"0000000000000001","x":"النص القديم"}""",
+        )
+        val oldHash = ContentDigests.sha256Hex(oldBytes)
+        val oldIndex = index(oldBytes, oldHash)
+        val oldEntry = entry(oldBytes, oldHash, oldIndex, ContentDigests.sha256Hex(oldIndex))
+        val importer = ContentImporter(content)
+        importer.applyCatalog(CatalogDocument(2, listOf(oldEntry)))
+        importer.importVerifiedFrame(oldEntry, 0, FrameIndexEntry(0, oldBytes.size, 0, 1, oldHash), oldBytes)
+
+        val first = gzip(
+            """{"t":"header","schema":2,"coll":"book","id":"offline-book","v":1,"blocks":2,"chapters":[{"a":"main","title":"المقدمة","block":0}],"footnotes":0}""",
+            """{"t":"p","a":"main","i":0,"id":"00000000000000000000000000000001","fp":"0000000000000001","x":"النص الجديد"}""",
+        )
+        val second = gzip("""{"t":"p","a":"main","i":1,"id":"00000000000000000000000000000002","fp":"0000000000000002","x":"تتمة"}""")
+        val bytes = first + second
+        val frames = listOf(FrameIndexEntry(0, first.size, 0, 1, ContentDigests.sha256Hex(first)),
+            FrameIndexEntry(first.size.toLong(), second.size, 1, 1, ContentDigests.sha256Hex(second)))
+        val idx = twoFrameIndex(frames)
+        val replacement = entry(bytes, ContentDigests.sha256Hex(bytes), idx, ContentDigests.sha256Hex(idx), blocks = 2)
+        importer.applyCatalog(CatalogDocument(2, listOf(replacement)))
+        val transfers = File(root, "transfers").apply { mkdirs() }
+        File(transfers, "book__${replacement.id}.${replacement.pkg.hash}.part").writeBytes(bytes)
+        File(transfers, "book__${replacement.id}.${replacement.pkg.idxHash}.idx").writeBytes(idx)
+        val runner = ContentTransferRunner(content, user,
+            AppContentHttpClient("https://example.invalid/app/v2/".toHttpUrl(), OkHttpClient()), importer,
+            RetainedPackageStore(File(root, "content")), transfers,
+            ContentStoragePolicy(root, ContentCacheManager(content, user)) { Long.MAX_VALUE })
+        runner.requestPin(replacement.id)
+        runner.downloadPinned(replacement.id)
+        assertEquals(listOf("النص الجديد", "تتمة"), content.importDao().blocks(oldEntry.id).map { it.text })
+        val local = content.importDao().entity(oldEntry.id)
+        assertEquals(replacement.pkg.hash, local?.localPackageHash)
+        assertEquals(ContentAvailability.COMPLETE, local?.availability)
+        assertEquals(listOf(0, 1), content.importDao().frames(oldEntry.id).map { it.frameOrdinal })
+        assertTrue("no staged or old copy left", content.importDao().blocks(oldCopyId(oldEntry.id)).isEmpty() &&
+            content.importDao().blocks(stagingId(oldEntry.id, replacement.pkg.hash)).isEmpty())
+    }
+
     // A first download commits frame by frame (so reads are never frozen for the whole
-    // import) and keeps what it has; only a replacement is all-or-nothing, above.
+    // import) and keeps what it has.
     @Test
     fun failedFirstDownloadKeepsStoredFramesForResume() = runBlocking {
         val first = gzip(

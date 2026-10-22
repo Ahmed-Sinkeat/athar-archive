@@ -11,8 +11,8 @@ package com.atharchive.feature.articles
  */
 
 enum class ArticleSort(val label: String) {
-    Newest("ترتيب الفهرس"),
     Title("العنوان أ–ي"),
+    Newest("ترتيب الفهرس"),
     Author("المؤلف"),
 }
 

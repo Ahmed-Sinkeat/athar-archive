@@ -28,7 +28,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.ui.input.nestedscroll.nestedScroll
-import com.atharchive.ui.components.AtharCollapsible
+import com.atharchive.ui.components.AtharFloatingHeader
 import com.atharchive.ui.components.ShowOnChange
 import com.atharchive.ui.components.rememberAtharCollapsingHeader
 import androidx.compose.runtime.Composable
@@ -40,6 +40,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.Role
@@ -131,10 +132,10 @@ fun KannashahScreen(
     ) {
         val horizontalPadding = if (maxWidth >= 720.dp) 32.dp else 20.dp
 
-        Column(modifier = Modifier.fillMaxSize()) {
+        Box(modifier = Modifier.fillMaxSize().clipToBounds()) {
             val header = rememberAtharCollapsingHeader()
             header.ShowOnChange(listState, query, sort, filter)
-            AtharCollapsible(header) {
+            AtharFloatingHeader(header) {
                 Column {
                     AtharTopBar(
                         title = "الكناشة",
@@ -166,8 +167,8 @@ fun KannashahScreen(
                     ),
                 )
                 }
-            }
-        AtharCollapsible(header) {
+            
+        
             Column {
                 Row(
                     modifier = Modifier
@@ -194,10 +195,10 @@ fun KannashahScreen(
             state = listState,
             modifier = Modifier
                 .fillMaxWidth()
-                .weight(1f)
+                .fillMaxHeight()
                 .nestedScroll(header.connection)
                 .testTag("kannashah_screen"),
-            contentPadding = PaddingValues(bottom = 28.dp),
+            contentPadding = PaddingValues(top = header.height, bottom = 28.dp),
         ) {
             if (sorted.isEmpty()) {
                 item(key = "k-empty") {

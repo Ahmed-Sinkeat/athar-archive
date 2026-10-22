@@ -79,7 +79,6 @@ fun SearchScreen(
     val query = inputQuery
     val filters = state.filters
     val searching = state.searching || inputQuery != state.query
-    var filtersVisible by rememberSaveable { mutableStateOf(false) }
     var scopedSource by rememberSaveable { mutableStateOf(state.scopedToSource) }
     val listState = rememberLazyListState()
 
@@ -240,15 +239,14 @@ fun SearchScreen(
                 }
             }
 
+            item(key = "filter-menus") {
+                SearchFilterMenus(filters, state.availableSources, state.availableAuthors, ::changeFilters)
+            }
             item(key = "results-bar") {
                 ResultsBar(
                     count = hits.size + directMatches.size,
                     readyTag = searchResultsReadyTag(state.query),
-                    filtersActive = filters.isActive,
-                    sort = filters.sort,
                     horizontalPadding = horizontalPadding,
-                    onFilters = { filtersVisible = true },
-                    onSortChange = { changeFilters(filters.copy(sort = it)) },
                 )
             }
 
@@ -325,16 +323,7 @@ fun SearchScreen(
     }
     }
 
-    if (filtersVisible) {
-        SearchFilterSheet(
-            filters = filters,
-            sources = state.availableSources,
-            authors = state.availableAuthors,
-            onChange = ::changeFilters,
-            onClear = { changeFilters(SearchFilters()) },
-            onDismiss = { filtersVisible = false },
-        )
-    }
+
 }
 
 @Composable
@@ -357,11 +346,7 @@ private fun ResultsHeading(text: String, horizontalPadding: Dp) {
 private fun ResultsBar(
     count: Int,
     readyTag: String,
-    filtersActive: Boolean,
-    sort: SearchSort,
     horizontalPadding: Dp,
-    onFilters: () -> Unit,
-    onSortChange: (SearchSort) -> Unit,
 ) {
     Row(
         modifier = Modifier
@@ -379,36 +364,7 @@ private fun ResultsBar(
             color = AtharTheme.colors.secondaryText,
             style = MaterialTheme.typography.bodySmall,
         )
-        Row(
-            modifier = Modifier
-                .clip(AtharCorners.Control)
-                .clickable(role = Role.Button, onClick = onFilters)
-                .padding(horizontal = 6.dp, vertical = 6.dp)
-                .testTag("search_filters"),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            Icon(
-                imageVector = AtharIcons.Filter,
-                contentDescription = null,
-                tint = if (filtersActive) AtharTheme.colors.accent else AtharTheme.colors.secondaryText,
-                modifier = Modifier.size(15.dp),
-            )
-            Text(
-                text = "تصفية",
-                modifier = Modifier.padding(start = 5.dp),
-                color = if (filtersActive) AtharTheme.colors.accent else AtharTheme.colors.secondaryText,
-                style = MaterialTheme.typography.bodySmall,
-                fontWeight = if (filtersActive) FontWeight.SemiBold else FontWeight.Normal,
-            )
-        }
-        AtharMenuButton(
-            label = SearchSort.Relevance.label,
-            options = SearchSort.entries.map { it.label },
-            selected = sort.label,
-            defaultOption = SearchSort.Relevance.label,
-            onSelect = { label -> onSortChange(SearchSort.entries.first { it.label == label }) },
-            tagPrefix = "search_sort",
-        )
+
     }
 }
 

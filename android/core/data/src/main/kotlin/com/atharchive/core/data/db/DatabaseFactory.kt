@@ -41,6 +41,22 @@ object AtharDatabases {
                 override suspend fun migrate(connection: androidx.sqlite.SQLiteConnection) {
                     connection.prepare("ALTER TABLE entity ADD COLUMN cardJson TEXT").use { it.step() }
                 }
+            }, object : androidx.room3.migration.Migration(5, 6) {
+                override suspend fun migrate(connection: androidx.sqlite.SQLiteConnection) {
+                    connection.prepare("ALTER TABLE contentGeneration ADD COLUMN personsJson TEXT").use { it.step() }
+                }
+            }, object : androidx.room3.migration.Migration(6, 7) {
+                override suspend fun migrate(connection: androidx.sqlite.SQLiteConnection) {
+                    for (column in listOf("editionOf", "edition", "editionsJson")) {
+                        connection.prepare("ALTER TABLE entity ADD COLUMN $column TEXT").use { it.step() }
+                    }
+                }
+            }, object : androidx.room3.migration.Migration(7, 8) {
+                override suspend fun migrate(connection: androidx.sqlite.SQLiteConnection) {
+                    for (column in listOf("level INTEGER NOT NULL DEFAULT 2", "page INTEGER", "vol INTEGER")) {
+                        connection.prepare("ALTER TABLE chapter ADD COLUMN $column").use { it.step() }
+                    }
+                }
             })
             .addCallback(ContentSearchSchema.callback)
             .fallbackToDestructiveMigration(true)

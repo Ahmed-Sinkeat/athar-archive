@@ -1,5 +1,8 @@
 package com.atharchive.feature.poemreader
 
+import com.atharchive.ui.components.SoapLayer
+import com.atharchive.ui.components.rememberSoapTargets
+import com.atharchive.ui.components.soapTarget
 import com.atharchive.ui.theme.AtharCorners
 import com.atharchive.ui.theme.AtharTextSize
 import com.atharchive.ui.components.arabicDigits
@@ -60,8 +63,17 @@ import com.atharchive.ui.theme.AtharEditorialFontFamily
  * under RTL — with the poem still visible behind it, so the reader never loses their
  * place. Explanation is never inserted between verses.
  */
+/** The tabs this poem has: المحتويات and الشرح only when there is something in them. */
+internal fun PoemReaderUiState.panelTabs(): List<PanelMode> = listOfNotNull(
+    PanelMode.Contents.takeIf { verses.any { it.heading != null } },
+    PanelMode.Sharh.takeIf { verses.any { it.commentary.isNotEmpty() } },
+    PanelMode.Benefits,
+    PanelMode.Bookmarks,
+)
+
 @Composable
 internal fun PoemSidePanel(
+    tabs: List<PanelMode>,
     mode: PanelMode,
     onMode: (PanelMode) -> Unit,
     colors: ReaderColors,
@@ -81,31 +93,30 @@ internal fun PoemSidePanel(
                 .background(colors.page)
                 .testTag("poem_panel"),
         ) {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 14.dp, end = 6.dp, top = 12.dp),
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
-                PanelTab(PanelMode.Sharh, mode, colors, onMode)
-                Spacer(Modifier.width(16.dp))
-                PanelTab(PanelMode.Search, mode, colors, onMode)
-                Spacer(Modifier.weight(1f))
-                Box(
+            val soap = rememberSoapTargets()
+            Box(Modifier.fillMaxWidth()) {
+                SoapLayer(soap, tabs.indexOf(mode), colors.accent, Modifier.matchParentSize(), corner = 1.dp)
+                Row(
                     modifier = Modifier
-                        .size(48.dp)
-                        .clip(CircleShape)
-                        .clickable(role = Role.Button, onClick = onDismiss)
-                        .testTag("poem_panel_close"),
-                    contentAlignment = Alignment.Center,
+                        .fillMaxWidth()
+                        .padding(start = 14.dp, end = 6.dp, top = 12.dp),
+                    verticalAlignment = Alignment.CenterVertically,
                 ) {
-                    Icon(AtharIcons.Close, "إغلاق", tint = colors.secondary, modifier = Modifier.size(22.dp))
+                    tabs.forEachIndexed { index, tab ->
+                        PanelTab(tab, mode, colors, onMode, Modifier.soapTarget(soap, index))
+                        Spacer(Modifier.width(16.dp))
+                    }
                 }
             }
             HorizontalDivider(thickness = 0.7.dp, color = colors.divider)
 
             when (mode) {
+                PanelMode.Contents -> ContentsBody(state, onJump, colors)
                 PanelMode.Sharh -> SharhBody(state, selectedVerseId, onSelectVerse, onJump, colors)
+                PanelMode.Benefits -> SavedBody(state.verses.withIndex().filter { it.value.ordinal in state.saved }, onJump, colors,
+                    "لا شيء في الكناشة", "اضغط هامش البيت ثم «حفظ في الكناشة».")
+                PanelMode.Bookmarks -> SavedBody(state.verses.withIndex().filter { it.value.ordinal in state.bookmarks }, onJump, colors,
+                    "لا علامات", "زر العلامة يعلّم البيت الظاهر أعلى الشاشة.")
                 PanelMode.Search -> SearchBody(state, query, onQuery, onJump, colors)
             }
         }
@@ -130,6 +141,7 @@ private fun PanelTab(
     selected: PanelMode,
     colors: ReaderColors,
     onSelect: (PanelMode) -> Unit,
+    underline: Modifier,
 ) {
     val active = tab == selected
     Column(
@@ -149,12 +161,7 @@ private fun PanelTab(
             style = MaterialTheme.typography.bodyMedium,
         )
         Spacer(Modifier.height(5.dp))
-        Box(
-            Modifier
-                .width(26.dp)
-                .height(2.dp)
-                .background(if (active) colors.accent else androidx.compose.ui.graphics.Color.Transparent),
-        )
+        Box(Modifier.width(26.dp).height(2.dp).then(underline)) // the soap underline lands here
     }
 }
 
@@ -298,39 +305,72 @@ private fun SearchBody(
         } else if (hits.isEmpty()) {
             PanelEmpty("لا نتائج", "جرّب كلمة أقصر، أو بلا تشكيل.", colors)
         } else {
-            LazyColumn(Modifier.fillMaxSize()) {
-                items(hits, key = { it.value.id }) { (index, verse) ->
-                    Column(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .clickable(role = Role.Button) { onJump(index) }
-                            .padding(horizontal = 14.dp, vertical = 9.dp)
-                            .testTag("poem_hit_${verse.id}"),
-                    ) {
-                        Text(
-                            text = verse.sadr,
-                            color = colors.text,
-                            fontFamily = AtharEditorialFontFamily,
-                            fontSize = AtharTextSize.Body,
-                            maxLines = 1,
-                            overflow = TextOverflow.Ellipsis,
-                        )
-                        Text(
-                            text = verse.ajz,
-                            color = colors.secondary,
-                            fontFamily = AtharEditorialFontFamily,
-                            fontSize = AtharTextSize.Body,
-                            maxLines = 1,
-                            overflow = TextOverflow.Ellipsis,
-                        )
-                    }
-                    HorizontalDivider(
-                        modifier = Modifier.padding(horizontal = 14.dp),
-                        thickness = 0.7.dp,
-                        color = colors.divider.copy(alpha = 0.5f),
-                    )
-                }
+            VerseList(hits, onJump, colors)
+        }
+    }
+}
+
+/** المحتويات: the poem's باب headings; a tap moves the poem to the verse under it. */
+@Composable
+private fun ContentsBody(state: PoemReaderUiState, onJump: (Int) -> Unit, colors: ReaderColors) {
+    val headings = remember(state.verses) { state.verses.withIndex().filter { it.value.heading != null } }
+    LazyColumn(Modifier.fillMaxSize()) {
+        items(headings, key = { it.value.id }) { (index, verse) ->
+            Text(
+                text = verse.heading.orEmpty(),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clickable(role = Role.Button) { onJump(index) }
+                    .padding(horizontal = 14.dp, vertical = 11.dp)
+                    .testTag("poem_heading_${verse.id}"),
+                color = colors.text,
+                fontFamily = AtharEditorialFontFamily,
+                fontSize = AtharTextSize.Body,
+            )
+            HorizontalDivider(modifier = Modifier.padding(horizontal = 14.dp), thickness = 0.7.dp, color = colors.divider.copy(alpha = 0.5f))
+        }
+    }
+}
+
+@Composable
+private fun SavedBody(verses: List<IndexedValue<VerseUi>>, onJump: (Int) -> Unit, colors: ReaderColors, emptyTitle: String, emptyBody: String) {
+    if (verses.isEmpty()) PanelEmpty(emptyTitle, emptyBody, colors) else VerseList(verses, onJump, colors)
+}
+
+/** Verses as two short lines each; a tap moves the poem to that verse. */
+@Composable
+private fun VerseList(verses: List<IndexedValue<VerseUi>>, onJump: (Int) -> Unit, colors: ReaderColors) {
+    LazyColumn(Modifier.fillMaxSize()) {
+        items(verses, key = { it.value.id }) { (index, verse) ->
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clickable(role = Role.Button) { onJump(index) }
+                    .padding(horizontal = 14.dp, vertical = 9.dp)
+                    .testTag("poem_hit_${verse.id}"),
+            ) {
+                Text(
+                    text = verse.sadr,
+                    color = colors.text,
+                    fontFamily = AtharEditorialFontFamily,
+                    fontSize = AtharTextSize.Body,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                )
+                Text(
+                    text = verse.ajz,
+                    color = colors.secondary,
+                    fontFamily = AtharEditorialFontFamily,
+                    fontSize = AtharTextSize.Body,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                )
             }
+            HorizontalDivider(
+                modifier = Modifier.padding(horizontal = 14.dp),
+                thickness = 0.7.dp,
+                color = colors.divider.copy(alpha = 0.5f),
+            )
         }
     }
 }

@@ -8,8 +8,8 @@ package com.atharchive.feature.poetry
  */
 
 enum class PoemSort(val label: String) {
-    Newest("ترتيب الفهرس"),
     Title("العنوان أ–ي"),
+    Newest("ترتيب الفهرس"),
     Poet("الشاعر"),
 }
 

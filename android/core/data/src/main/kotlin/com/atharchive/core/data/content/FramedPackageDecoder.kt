@@ -21,7 +21,21 @@ object AppContentDocuments {
         val identities = HashSet<String>()
         catalog.entries.forEach { entry ->
             validateEntry(entry)
-            if (!identities.add("${entry.coll}/${entry.id}")) fail("catalog contains a duplicate ${entry.coll}/${entry.id}")
+            if (!identities.add(entry.id)) fail("catalog contains a duplicate ${entry.coll}/${entry.id}")
+        }
+        val byId = catalog.entries.associateBy { it.id }
+        catalog.entries.forEach { entry ->
+            entry.editionOf?.let { primaryId ->
+                val primary = byId[primaryId] ?: fail("missing default edition")
+                if (primaryId == entry.id || primary.coll != entry.coll || primary.editionOf != null || entry.id !in primary.editions) fail("invalid edition group")
+            }
+            if (entry.editions.distinct().size != entry.editions.size || entry.editions.any { byId[it]?.editionOf != entry.id }) fail("invalid editions")
+        }
+        val personIds = HashSet<String>()
+        val workIds = catalog.entries.mapTo(HashSet()) { it.id }
+        catalog.persons.forEach { person ->
+            requireSegment(person.id, "person ID")
+            if (!personIds.add(person.id) || person.name.isBlank() || person.works.distinct().size != person.works.size || person.works.any { it !in workIds }) fail("malformed catalog person")
         }
         return catalog
     }

@@ -14,8 +14,10 @@ package com.atharchive.feature.poemreader
  *    that. There are no word timestamps, so no word is ever highlighted.
  */
 
-/** The side panel's two modes. Explanation and search share one surface. */
-internal enum class PanelMode(val label: String) { Sharh("الشرح"), Search("البحث") }
+/** The side panel's tabs, as in the book panel. البحث is opened from the top icon, never a tab. */
+internal enum class PanelMode(val label: String) {
+    Contents("المحتويات"), Sharh("الشرح"), Benefits("الكناشة"), Bookmarks("العلامات"), Search("البحث"),
+}
 
 data class VerseUi(
     val id: String,
@@ -27,6 +29,8 @@ data class VerseUi(
     /** Absent for most verses; its presence is what draws the margin indicator. */
     val commentary: List<CommentaryUi> = emptyList(),
     val ordinal: Int = number - 1,
+    /** The باب heading printed just before this verse, if any. */
+    val heading: String? = null,
 )
 
 /** One commentator's explanation. Several may exist for the same verse. */
@@ -56,6 +60,7 @@ data class PoemAudioUi(
 data class VerseCue(val verseNumber: Int, val atSeconds: Double)
 
 data class PoemReaderUiState(
+    val card: List<com.atharchive.core.data.content.CardField> = emptyList(),
     val title: String,
     val poet: String,
     val verses: List<VerseUi>,
@@ -63,8 +68,18 @@ data class PoemReaderUiState(
     /** Keyed by word with the harakat removed; see [meaningOf]. */
     val glossary: Map<String, String> = emptyMap(),
     val readingOrdinal: Int = 0,
+    val readingPositionReady: Boolean = true,
     val bodyLoaded: Boolean = true,
+    /** Ordinals of the verses bookmarked / saved to الكناشة. */
+    val bookmarks: List<Int> = emptyList(),
+    val saved: List<Int> = emptyList(),
 ) {
+    internal fun restoreIndex(ordinal: Int): Int? {
+        if (!readingPositionReady || verses.isEmpty()) return null
+        return verses.indexOfFirst { it.ordinal >= ordinal }.takeIf { it >= 0 }
+            ?: verses.lastIndex.takeIf { bodyLoaded }
+    }
+
     /** null → the word is not tappable. No popover ever opens empty. */
     fun meaningOf(word: String): String? = glossary[stripHarakat(word)]
 }

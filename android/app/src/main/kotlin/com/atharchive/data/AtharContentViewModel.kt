@@ -1,5 +1,6 @@
 package com.atharchive.data
 
+import com.atharchive.core.data.repository.persons
 import com.atharchive.ui.components.arabicDigits
 import androidx.media3.common.MediaItem
 import androidx.media3.common.MediaMetadata
@@ -91,6 +92,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
@@ -138,8 +140,10 @@ class AtharContentViewModel @Inject constructor(
     private val catalogDao = content.contentDatabase.catalogDao()
     private val importDao = content.contentDatabase.importDao()
     private val pins = userDao.observePinnedDownloads()
-    private val pinIds = pins.map { downloads ->
-        downloads.mapTo(hashSetOf(), PinnedDownloadEntity::entityId)
+    // A tap shows at once: saving the pin waits behind any book update being installed (minutes for a large one).
+    private val requested = MutableStateFlow<Set<String>>(emptySet())
+    private val pinIds = combine(pins, requested) { downloads, tapped ->
+        downloads.mapTo(hashSetOf(), PinnedDownloadEntity::entityId) + tapped
     }
     private val retainedPins = combine(pins, content.retainedEntityIds) { downloads, retained ->
         downloads.asSequence()
@@ -203,6 +207,7 @@ class AtharContentViewModel @Inject constructor(
                 ExcerptUi(
                     id = annotation.id,
                     entityId = annotation.entityId,
+                    sourceColl = source?.coll ?: "book",
                     text = annotation.quotedText,
                     sourceTitle = source?.title ?: annotation.entityId,
                     sourceAuthor = source?.personName.orEmpty(),
@@ -331,9 +336,6 @@ class AtharContentViewModel @Inject constructor(
                     entity.id in pausedIds -> TransferUi.Paused(progress, label)
                     job?.state == WorkInfo.State.FAILED || (job == null && entity.transferState == ContentTransferState.FAILED) ->
                         TransferUi.Failed(job?.outputData?.getString("error") ?: "تعذّر التنزيل", progress)
-                    // Bytes are all here but verification and import follow; "100%" is not done.
-                    entity.transferState == ContentTransferState.VERIFYING ||
-                        entity.transferState == ContentTransferState.IMPORTING -> TransferUi.Running(1f, "جارٍ الإنهاء…")
                     else -> TransferUi.Running(progress, if (job?.state == WorkInfo.State.ENQUEUED) "في الانتظار · $label" else label)
                 },
             )
@@ -342,6 +344,13 @@ class AtharContentViewModel @Inject constructor(
 
     /** Transfer state by entity id, built once per change instead of searched per row. */
     private val textTransfers = textDownloads.map { list -> list.associate { it.id to it.transfer } }
+
+    val persons = catalogDao.observeGeneration().map { generation ->
+        generation?.persons().orEmpty()
+    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
+
+    val personWorks = catalogDao.observeCatalog().map { entities -> entities.associateBy { it.id } }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyMap())
 
     val books: StateFlow<BooksUiState> = combine(
         catalogDao.observeCollection("book"), pinIds, retainedPins, library, combine(positions, textTransfers) { positions, transfers -> positions to transfers },
@@ -396,13 +405,15 @@ class AtharContentViewModel @Inject constructor(
         )
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), ArticlesUiState("٠ مقال", emptyList()))
 
+    // Only works with recordings are decoded, and only when the catalog changes, not on every download tick.
+    private val audioSources = catalogDao.observeEntitiesWithAudio().map { list -> list.map { it to it.audioReferences() } }
     private val recordingCatalog = combine(
-        catalogDao.observeAllEntities(), library, content.downloadedAudio, recentRanks,
+        audioSources, library, content.downloadedAudio, recentRanks,
         combine(content.requestedAudio, content.pausedDownloads, downloadScheduler.workInfos) { requested, paused, jobs -> Triple(requested, paused, jobs) },
     ) { catalog, shelves, downloaded, ranks, transfers ->
         val shelfIds = shelves.mapTo(hashSetOf(), LibraryEntryEntity::entityId)
-        val recordings = catalog.flatMap { source ->
-            source.audioReferences().map { ref ->
+        val recordings = catalog.flatMap { (source, refs) ->
+            refs.map { ref ->
                 AudioUi(
                     id = ref.id, title = ref.title ?: source.title, sourceTitle = source.title,
                     sourceKind = when (source.coll) { "poem" -> AudioSourceKind.Poem; "question" -> AudioSourceKind.Question; else -> AudioSourceKind.Book },
@@ -592,7 +603,11 @@ class AtharContentViewModel @Inject constructor(
                 importDao.observeFootnotes(entityId),
                 userDao.observeReadingPosition(entityId),
             ) { entity, blocks, chapters, footnotes, position ->
-                entity?.toReaderUi(blocks, chapters, footnotes, position)
+                entity?.toReaderUi(blocks, chapters, footnotes, position)?.copy(
+                    editions = catalogDao.editionsFor(entity.editionOf ?: entity.id).takeIf { it.size > 1 }.orEmpty().map {
+                        com.atharchive.feature.reader.ReaderEdition(it.id, it.edition?.takeIf(String::isNotBlank) ?: it.title)
+                    },
+                )
             },
             annotationRepository.observe(AnnotationFilter(entityId = entityId)),
         ) { state, saved ->
@@ -619,9 +634,23 @@ class AtharContentViewModel @Inject constructor(
     suspend fun selectionBlocks(entityId: String, range: IntRange): List<ReaderBlock> =
         content.blockRange(entityId, range).map(ContentBlockEntity::toReaderBlock)
 
+    suspend fun savedPoemOrdinal(entityId: String, annotationId: String): Int {
+        visitTextFrames(entityId) { false }
+        return annotationRepository.reattach(annotationId).start.ordinalHint
+    }
+
     fun poemReaderState(entityId: String): Flow<PoemReaderUiState?> = poemFlows.getOrPut(entityId) {
-        combine(catalogDao.observeEntity(entityId), importDao.observeBlocks(entityId), userDao.observeReadingPosition(entityId)) { entity, blocks, position ->
-            entity?.toPoemReaderUi(blocks)?.copy(readingOrdinal = position?.ordinalHint ?: 0)
+        combine(catalogDao.observeEntity(entityId), importDao.observeBlocks(entityId), userDao.observeReadingPosition(entityId),
+            annotationRepository.observe(AnnotationFilter(entityId = entityId))) { entity, blocks, position, saved ->
+            val (marks, benefits) = saved.partition { it.kind == AnnotationKind.Bookmark }
+            val ordinals = blocks.associate { AnnotationBlockId(it.blockIdHi, it.blockIdLo) to it.ordinal }
+            val reading = position?.let { ordinals[AnnotationBlockId(it.blockIdHi, it.blockIdLo)] }
+            entity?.toPoemReaderUi(blocks)?.copy(
+                readingOrdinal = reading ?: position?.ordinalHint ?: 0,
+                readingPositionReady = position == null || reading != null || blocks.size >= entity.pkgBlocks,
+                bookmarks = marks.mapNotNull { ordinals[it.start.blockId] },
+                saved = benefits.mapNotNull { ordinals[it.start.blockId] },
+            )
         }
     }
 
@@ -630,11 +659,16 @@ class AtharContentViewModel @Inject constructor(
             personalLibrary.recordOpened(entityId)
             val saved = userDao.readingPosition(entityId)
             val stable = saved?.let { importDao.blockByStableId(entityId, it.blockIdHi, it.blockIdLo) }
-            val position = targetOrdinal ?: stable?.ordinal ?: saved?.ordinalHint ?: 0
-            if (targetOrdinal == null && saved != null && stable != null && stable.ordinal != saved.ordinalHint) {
-                userDao.saveReadingPosition(saved.copy(ordinalHint = stable.ordinal, chapterAnchor = stable.chapterAnchor))
+            val entity = catalogDao.entity(entityId) ?: return@launch
+            val position = (targetOrdinal ?: stable?.ordinal ?: saved?.ordinalHint ?: 0)
+                .coerceIn(0, (entity.pkgBlocks - 1).coerceAtLeast(0))
+            if (targetOrdinal == null && saved != null && position != saved.ordinalHint) {
+                userDao.saveReadingPosition(saved.copy(ordinalHint = position, chapterAnchor = stable?.chapterAnchor ?: saved.chapterAnchor))
             }
-            try { content.open(entityId, position) }
+            try {
+                content.open(entityId, position)
+                if (entity.coll == "poem") visitTextFrames(entityId) { false }
+            }
             catch (cancelled: kotlinx.coroutines.CancellationException) { throw cancelled }
             catch (error: Exception) { _errors.tryEmit(error.message ?: "تعذّر تحميل النص") }
             runCatching { annotationRepository.reattachEntity(entityId) }
@@ -784,17 +818,31 @@ class AtharContentViewModel @Inject constructor(
             annotationRepository.save(entityId, kind, capture)
     }
 
+    /** A whole block into الكناشة: a poem saves a verse at a time, not a dragged selection. */
+    suspend fun saveBlock(entityId: String, ordinal: Int) {
+        val block = requireNotNull(importDao.blockAt(entityId, ordinal)) { "النص لم يُحمّل بعد" }
+        val id = AnnotationBlockId(block.blockIdHi, block.blockIdLo)
+        annotationRepository.save(entityId, AnnotationKind.Highlight, AnnotationText.capture(
+            blocks = listOf(block.toAnnotationTextBlock()),
+            start = AnnotationEndpoint(id, block.ordinal, 0),
+            end = AnnotationEndpoint(id, block.ordinal, block.text.length),
+        ))
+    }
+
     suspend fun toggleBookmark(entityId: String, ordinal: Int) {
+        // The top of the screen can be a page divider or a page's notes: mark the text after it.
+        val block = importDao.blockWindow(entityId, ordinal, ordinal + BookmarkLookahead).firstOrNull { it.text.isNotBlank() }
+            ?: requireNotNull(importDao.blockAt(entityId, ordinal)) { "النص لم يُحمّل بعد" }
+        val blockId = AnnotationBlockId(block.blockIdHi, block.blockIdLo)
         val existing = annotationRepository.observe(
             AnnotationFilter(entityId = entityId, kind = AnnotationKind.Bookmark),
-        ).first().find { it.start.ordinalHint == ordinal }
+        ).first().find { it.start.blockId == blockId || (it.state != AttachmentState.Exact && it.start.ordinalHint == block.ordinal) }
         if (existing != null) {
             annotationRepository.delete(existing.id)
             return
         }
-        val block = requireNotNull(importDao.blockAt(entityId, ordinal)) { "النص لم يُحمّل بعد" }
         val endpoint = AnnotationEndpoint(
-            blockId = AnnotationBlockId(block.blockIdHi, block.blockIdLo),
+            blockId = blockId,
             ordinalHint = block.ordinal,
             offset = 0,
         )
@@ -866,10 +914,12 @@ class AtharContentViewModel @Inject constructor(
             if (content.isPinned(entityId) && entityId !in content.retainedEntityIds.value) {
                 pauseResumeDownload(entityId)
             } else if (content.isPinned(entityId)) {
+                requested.update { it - entityId }
                 downloadScheduler.cancel(entityId, entity.coll)
                 content.unpin(entityId)
             } else {
-                content.requestDownload(entityId)
+                requested.update { it + entityId }
+                try { content.requestDownload(entityId) } catch (error: Throwable) { requested.update { it - entityId }; throw error }
                 downloadScheduler.enqueue(entityId, entity.coll)
             }
         }
@@ -905,6 +955,7 @@ class AtharContentViewModel @Inject constructor(
     }
 
     fun removeDownload(entityId: String) {
+        requested.update { it - entityId }
         if (entityId.startsWith("audio:")) {
             val id = entityId.removePrefix("audio:")
             viewModelScope.launch(errorHandler) { downloadScheduler.cancel(id, "audio"); content.removeAudioDownload(id) }
@@ -973,7 +1024,8 @@ class AtharContentViewModel @Inject constructor(
             died = died,
             publishedAt = publishedAt.orEmpty(),
             recentRank = recentRank,
-            readingPosition = position?.let { "${it.chapterAnchor} · ${arabicNumber(it.ordinalHint + 1)}" },
+            // ponytail: chapterAnchor is a slug, not a title; the title lives in the content DB per book. Show the place only.
+            readingPosition = position?.let { "الموضع ${arabicNumber(it.ordinalHint + 1)}" },
             readingProgress = progress,
             readingProgressLabel = progress?.let { "${arabicNumber((it * 100).toInt())}٪" },
         )
@@ -1001,7 +1053,13 @@ private fun ContentEntity.toReaderUi(
         footnotes = byId,
         sourceUrl = "https://athar.arthurarchive.com/${if (coll == "question") "questions" else coll}/$id",
         card = runCatching { toCatalogEntry().card }.getOrDefault(emptyList()),
-        toc = chapters.map { TocEntry(it.anchor, it.title, 2, it.firstOrdinal) },
+        toc = chapters.multiVolume().let { vols ->
+            chapters.map { chapter ->
+                val page = chapter.page?.let { "ص ${com.atharchive.ui.components.arabicDigits(it)}" }.orEmpty()
+                val label = chapter.vol?.takeIf { vols && page.isNotEmpty() }?.let { "ج${com.atharchive.ui.components.arabicDigits(it)} · $page" } ?: page
+                TocEntry(chapter.anchor, chapter.title, chapter.level, chapter.firstOrdinal, label)
+            }
+        },
         bookmarks = emptyList(),
         benefits = emptyList(),
         readingPositionIndex = position?.ordinalHint ?: 0,
@@ -1039,22 +1097,33 @@ private fun ReaderUiState.withAnnotations(annotations: List<Annotation>, preview
     return copy(bookmarks = bookmarks, benefits = benefits, highlights = highlights)
 }
 
-private fun ContentEntity.toPoemReaderUi(blocks: List<ContentBlockEntity>): PoemReaderUiState =
-    PoemReaderUiState(
+private fun ContentEntity.toPoemReaderUi(blocks: List<ContentBlockEntity>): PoemReaderUiState {
+    val prose = blocks.none { it.type == "verse" }
+    // A باب heading rides on the verse after it, so the list stays one row per verse
+    // (indices are what the panel and audio jump to).
+    var heading: String? = null
+    val verses = mutableListOf<VerseUi>()
+    blocks.forEach { block ->
+        if (block.type.startsWith('h')) { heading = listOfNotNull(heading, block.text).joinToString(" — "); return@forEach }
+        if (block.type != "verse" && !(prose && block.type == "p")) return@forEach
+        val attrs = block.safeAttributes()
+        verses += VerseUi(
+            id = block.stableId(),
+            number = attrs.n ?: verses.size + 1,
+            sadr = attrs.s ?: block.text,
+            ajz = attrs.j.orEmpty(),
+            ordinal = block.ordinal,
+            commentary = attrs.commentary.map { com.atharchive.feature.poemreader.CommentaryUi(it.sourceLabel, it.text) },
+            heading = heading,
+        )
+        heading = null
+    }
+    return PoemReaderUiState(
+        card = toCatalogEntry().card,
         title = title,
         poet = personName.orEmpty(),
-        bodyLoaded = blocks.isNotEmpty(),
-        verses = blocks.filter { it.type == "verse" || (it.type == "p" && blocks.none { b -> b.type == "verse" }) }.mapIndexed { index, block ->
-            val attrs = block.safeAttributes()
-            VerseUi(
-                id = block.stableId(),
-                number = attrs.n ?: index + 1,
-                sadr = attrs.s ?: block.text,
-                ajz = attrs.j.orEmpty(),
-                ordinal = block.ordinal,
-                commentary = attrs.commentary.map { com.atharchive.feature.poemreader.CommentaryUi(it.sourceLabel, it.text) },
-            )
-        },
+        bodyLoaded = blocks.size >= pkgBlocks,
+        verses = verses,
         recordings = audioReferences().map { audio ->
             PoemAudioUi(
                 id = audio.id,
@@ -1067,6 +1136,7 @@ private fun ContentEntity.toPoemReaderUi(blocks: List<ContentBlockEntity>): Poem
             )
         },
     )
+}
 
 private fun ContentEntity.audioReferences(): List<AudioReference> =
     runCatching { toCatalogEntry().audio }.getOrDefault(emptyList())
@@ -1130,7 +1200,7 @@ internal fun byteSize(bytes: Long): String {
         bytes >= 1L shl 30 -> bytes / (1L shl 30).toDouble() to "غ.ب"
         bytes >= 1L shl 20 -> bytes / (1L shl 20).toDouble() to "م.ب"
         bytes >= 1L shl 10 -> bytes / (1L shl 10).toDouble() to "ك.ب"
-        else -> return "${arabicNumerals(bytes.toString())} ب"
+        else -> return "${arabicNumerals(bytes.toString())} بايت"
     }
     return "${arabicNumerals("%.1f".format(java.util.Locale.ROOT, value).replace('.', '\u066B'))} $unit"
 }
@@ -1198,3 +1268,8 @@ private val AnnotationKind.storageValue: String
 
 private val AttachmentState.storageValue: String
     get() = name.lowercase()
+
+/** Blocks looked past for a bookmark's text: a divider and a notes footer, with room to spare. */
+internal const val BookmarkLookahead = 4
+
+private fun List<ChapterEntity>.multiVolume() = mapNotNull { it.vol }.distinct().size > 1

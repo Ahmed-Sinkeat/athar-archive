@@ -25,7 +25,7 @@ import androidx.compose.material3.Text
 import com.atharchive.core.ArNormalize
 import com.atharchive.feature.downloads.TransferUi
 import androidx.compose.ui.input.nestedscroll.nestedScroll
-import com.atharchive.ui.components.AtharCollapsible
+import com.atharchive.ui.components.AtharFloatingHeader
 import com.atharchive.ui.components.ShowOnChange
 import com.atharchive.ui.components.rememberAtharCollapsingHeader
 import androidx.compose.runtime.Composable
@@ -36,6 +36,9 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clipToBounds
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.Box
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.Role
@@ -75,8 +78,8 @@ fun ArticlesScreen(
 ) {
     var selectedTab by rememberSaveable { mutableStateOf(SectionTab.All) }
     var query by rememberSaveable { mutableStateOf("") }
-    var sortName by rememberPersisted("articles.sort", ArticleSort.Newest.name)
-    val sort = enumValueOrNull<ArticleSort>(sortName) ?: ArticleSort.Newest
+    var sortName by rememberPersisted("articles.order", ArticleSort.Title.name)
+    val sort = enumValueOrNull<ArticleSort>(sortName) ?: ArticleSort.Title
     val listState = rememberLazyListState()
 
     // No author filter: 2,363 articles carry hundreds of distinct authors, and a flat
@@ -93,8 +96,8 @@ fun ArticlesScreen(
             matchesTab && matchesQuery
         }.sortedWith(
             if (selectedTab == SectionTab.Recent) compareBy { it.recentRank ?: Int.MAX_VALUE } else when (sort) {
-                ArticleSort.Title -> compareBy { it.title }
-                ArticleSort.Author -> compareBy { it.author }
+                ArticleSort.Title -> compareBy { ArNormalize.normalize(it.title) }
+                ArticleSort.Author -> compareBy { ArNormalize.normalize(it.author) }
                 ArticleSort.Newest -> compareBy { it.title }
             },
         )
@@ -109,10 +112,10 @@ fun ArticlesScreen(
         val horizontalPadding = if (maxWidth >= 720.dp) 32.dp else 20.dp
         val compactTitle = maxWidth < 360.dp || LocalDensity.current.fontScale >= 1.3f
 
-        Column(modifier = Modifier.fillMaxSize()) {
+        Box(modifier = Modifier.fillMaxSize().clipToBounds()) {
             val header = rememberAtharCollapsingHeader()
             header.ShowOnChange(listState, selectedTab, query, sort)
-            AtharCollapsible(header) {
+            AtharFloatingHeader(header) {
                 Column {
                     AtharTopBar(
                         title = "المقالات",
@@ -133,8 +136,8 @@ fun ArticlesScreen(
                     ),
                 )
                 }
-            }
-        AtharCollapsible(header) {
+            
+        
             Column {
                 AtharTabRow(
                     tabs = SectionTab.tabs,
@@ -166,10 +169,10 @@ fun ArticlesScreen(
             state = listState,
             modifier = Modifier
                 .fillMaxWidth()
-                .weight(1f)
+                .fillMaxHeight()
                 .nestedScroll(header.connection)
                 .testTag("articles_screen"),
-            contentPadding = PaddingValues(bottom = 28.dp),
+            contentPadding = PaddingValues(top = header.height, bottom = 28.dp),
         ) {
             if (visibleArticles.isEmpty()) {
                 item(key = "articles-empty") {

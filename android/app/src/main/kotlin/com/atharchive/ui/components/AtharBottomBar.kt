@@ -41,6 +41,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.boundsInWindow
 import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.layout.onPlaced
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.Role
@@ -91,7 +92,7 @@ private val PillHeight = 32.dp
 
 @Composable
 fun AtharBottomBar(
-    selectedDestination: AtharDestination,
+    selectedDestination: AtharDestination?,
     onDestinationClick: (AtharDestination) -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -169,7 +170,7 @@ fun AtharBottomBar(
             // Drawn first so it sits behind the icons. Reading the Animatables
             // inside the draw lambda repaints per frame without recomposing.
             Canvas(Modifier.matchParentSize()) {
-                if (!placed) return@Canvas
+                if (!placed || selectedDestination == null) return@Canvas
                 val restW = PillWidth.toPx()
                 val restH = PillHeight.toPx()
                 var width = rightEdge.value - leftEdge.value
@@ -261,21 +262,104 @@ fun AtharBottomBar(
 }
 
 /**
- * The bar's soap pill for a button that toggles on and off rather than one tab of many (the
- * reader's contents, audio and bookmark): it springs in under the icon with a little wobble.
- * Put it in a Box behind the icon.
+ * The reader bar's soap: one soft pill for the whole bar. It grows in under the first control that opens,
+ * travels (the bottom bar's two-spring stretch) when another control takes over, and shrinks
+ * away when the last one closes, so every change moves.
  */
 @Composable
-fun SoapPill(active: Boolean, color: Color) {
-    val grow by androidx.compose.animation.core.animateFloatAsState(
-        if (active) 1f else 0f,
-        androidx.compose.animation.core.spring(dampingRatio = 0.5f, stiffness = androidx.compose.animation.core.Spring.StiffnessMediumLow),
-        label = "soap_pill",
-    )
-    Box(
-        Modifier
-            .size(46.dp, 32.dp)
-            .graphicsLayer { scaleX = grow; scaleY = 0.8f + 0.2f * grow; alpha = grow.coerceIn(0f, 1f) }
-            .background(color, CircleShape),
-    )
+internal fun SoapTravelIndicator(selected: Int, centres: List<Offset>, color: Color, modifier: Modifier) {
+    val half = with(LocalDensity.current) { PillWidth.toPx() / 2 }
+    val left = remember { Animatable(0f) }
+    val right = remember { Animatable(0f) }
+    val grow = remember { Animatable(0f) }
+    var centreY by remember { mutableFloatStateOf(0f) }
+    val target = centres.getOrNull(selected)?.takeIf { it != Offset.Zero }
+    LaunchedEffect(target) {
+        if (target == null) {
+            grow.animateTo(0f, spring(dampingRatio = 0.9f, stiffness = 900f))
+            return@LaunchedEffect
+        }
+        centreY = target.y
+        if (grow.value < 0.2f) {
+            left.snapTo(target.x - half)
+            right.snapTo(target.x + half)
+            grow.animateTo(1f, spring(dampingRatio = 0.5f, stiffness = androidx.compose.animation.core.Spring.StiffnessMediumLow))
+            return@LaunchedEffect
+        }
+        val movingRight = target.x > (left.value + right.value) / 2
+        launch { grow.animateTo(1f, spring(dampingRatio = 0.6f, stiffness = 700f)) }
+        launch { left.animateTo(target.x - half, if (movingRight) spring(DAMPING_TRAIL, STIFFNESS_TRAIL) else spring(DAMPING_LEAD, STIFFNESS_LEAD)) }
+        launch { right.animateTo(target.x + half, if (movingRight) spring(DAMPING_LEAD, STIFFNESS_LEAD) else spring(DAMPING_TRAIL, STIFFNESS_TRAIL)) }
+    }
+    Canvas(modifier) {
+        val g = grow.value
+        if (g <= 0.01f) return@Canvas
+        val rest = PillWidth.toPx()
+        val travel = (right.value - left.value).coerceIn(1f, rest * MAX_STRETCH)
+        val width = travel * g
+        val height = PillHeight.toPx() * max(MIN_SQUASH, 1 - SQUASH * (travel / rest - 1)) * (0.8f + 0.2f * g)
+        drawRoundRect(
+            color.copy(alpha = color.alpha * g.coerceIn(0f, 1f)),
+            Offset((left.value + right.value - width) / 2, centreY - height / 2),
+            Size(width, height),
+            CornerRadius(height * 0.42f),
+        )
+    }
+}
+
+/** Where each choice of a soap row sits, measured in the row's own box. */
+class SoapTargets {
+    internal var box: androidx.compose.ui.layout.LayoutCoordinates? = null
+    internal val rects = androidx.compose.runtime.mutableStateMapOf<Int, Rect>()
+}
+
+@Composable
+fun rememberSoapTargets() = remember { SoapTargets() }
+
+/** Marks choice [index] as a place the pill can land; the pill takes this element's bounds. */
+fun Modifier.soapTarget(targets: SoapTargets, index: Int): Modifier = onGloballyPositioned { coords ->
+    val box = targets.box?.takeIf { it.isAttached } ?: return@onGloballyPositioned
+    val rect = box.localBoundingBoxOf(coords, clipBounds = false)
+    if (targets.rects[index] != rect) targets.rects[index] = rect
+}
+
+/**
+ * The bottom bar's soap for any row of choices (tabs, segments): one pill behind the row whose
+ * two edges are separate springs, so it stretches toward the new choice, thins on the way and
+ * lands with a squeeze. Put it first in a Box around the row, sized with Modifier.matchParentSize().
+ */
+@Composable
+fun SoapLayer(targets: SoapTargets, selected: Int, color: Color, modifier: Modifier = Modifier, corner: androidx.compose.ui.unit.Dp = 8.dp) {
+    val left = remember { Animatable(0f) }
+    val right = remember { Animatable(0f) }
+    val top = remember { Animatable(0f) }
+    val bottom = remember { Animatable(0f) }
+    var placed by remember { mutableStateOf(false) }
+    val target = targets.rects[selected]
+    LaunchedEffect(target) {
+        if (target == null) {
+            placed = false
+            return@LaunchedEffect
+        }
+        if (!placed) {
+            left.snapTo(target.left); right.snapTo(target.right); top.snapTo(target.top); bottom.snapTo(target.bottom)
+            placed = true
+            return@LaunchedEffect
+        }
+        val movingRight = target.center.x > (left.value + right.value) / 2
+        val lead = spring(DAMPING_LEAD, STIFFNESS_LEAD, EDGE_EPSILON)
+        val trail = spring(DAMPING_TRAIL, STIFFNESS_TRAIL, EDGE_EPSILON)
+        launch { left.animateTo(target.left, if (movingRight) trail else lead) }
+        launch { right.animateTo(target.right, if (movingRight) lead else trail) }
+        launch { top.animateTo(target.top, lead) }
+        launch { bottom.animateTo(target.bottom, lead) }
+    }
+    Canvas(modifier.onPlaced { targets.box = it }) {
+        if (!placed || target == null) return@Canvas
+        val width = right.value - left.value
+        val stretch = (width / target.width.coerceAtLeast(1f) - 1f).coerceIn(0f, MAX_STRETCH)
+        val height = (bottom.value - top.value) * max(MIN_SQUASH, 1 - SQUASH * stretch)
+        val centreY = (top.value + bottom.value) / 2
+        drawRoundRect(color, Offset(left.value, centreY - height / 2), Size(width, height), CornerRadius(corner.toPx().coerceAtMost(height / 2)))
+    }
 }

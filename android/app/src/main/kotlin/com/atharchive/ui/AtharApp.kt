@@ -33,7 +33,6 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
@@ -74,7 +73,6 @@ import com.atharchive.feature.adhkar.AdhkarScreen
 import com.atharchive.feature.downloads.StorageUi
 import com.atharchive.feature.downloads.DownloadsUiState
 import com.atharchive.feature.issues.IssuesScreen
-import com.atharchive.feature.audio.AudioScreen
 import com.atharchive.feature.audio.AudioProgressBar
 import com.atharchive.feature.audio.AudioUi
 import com.atharchive.feature.audio.NowPlayingUi
@@ -89,6 +87,14 @@ import com.atharchive.feature.poetry.PoetryScreen
 import com.atharchive.feature.reader.ReaderSearchTarget
 import com.atharchive.feature.sections.AtharSection
 import com.atharchive.feature.search.SearchScreen
+import com.atharchive.ui.components.AtharMenu
+import com.atharchive.ui.components.AtharMenuItem
+import com.atharchive.ui.components.AtharTailPopover
+import com.atharchive.ui.components.LocalAtharActionAnchor
+import androidx.compose.ui.geometry.Rect
+import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.layout.positionOnScreen
 import com.atharchive.ui.components.AtharBottomBar
 import com.atharchive.ui.components.AtharTopBar
 import com.atharchive.ui.icons.AtharIcons
@@ -141,6 +147,9 @@ private data class DownloadsRoute(val targetId: String? = null) : NavKey
 private data object AdhkarRoute : NavKey
 
 @Serializable
+private data class PersonsRoute(val personId: String? = null) : NavKey
+
+@Serializable
 private data object AppearanceRoute : NavKey
 
 @Composable
@@ -156,6 +165,7 @@ fun AtharApp(
     onReaderSettingsChange: (ReaderSettings) -> Unit,
     contentViewModel: AtharContentViewModel = hiltViewModel(),
 ) {
+    com.atharchive.ui.components.ProvideAtharTextToolbar {
     val context = LocalContext.current
     // Only the first composition matters: later changes of the setting apply at next launch.
     val backStack = rememberNavBackStack(
@@ -175,6 +185,8 @@ fun AtharApp(
     val playbackState by contentViewModel.playback.state.collectAsStateWithLifecycle()
     val syncState by contentViewModel.syncState.collectAsStateWithLifecycle()
     val nowPlaying = audioState.nowPlaying
+    val actionAnchor = remember { mutableStateOf(Rect.Zero) }
+    var editorAnchor by remember { mutableStateOf(Rect.Zero) }
     var editingExcerpt by remember { mutableStateOf<ExcerptUi?>(null) }
     var deletingExcerpt by remember { mutableStateOf<ExcerptUi?>(null) }
     // Each screen collects its own state inside its entry: a flow collected here runs from
@@ -256,34 +268,24 @@ fun AtharApp(
     }
 
     // One path for every row. A finished download asks first (it deletes the offline copy);
-    // anything else starts, pauses or resumes, and only a fresh start asks for notifications.
+    // a running one cancels (a second tap on the same button); a paused/failed one resumes; only a fresh start asks for notifications.
     var pendingRemoval by remember { mutableStateOf<DownloadRemoval?>(null) }
     fun onDownloadTap(id: String, title: String, sizeLabel: String, downloaded: Boolean, transfer: com.atharchive.feature.downloads.TransferUi?) {
         if (downloaded) {
             pendingRemoval = DownloadRemoval(id, title, sizeLabel)
             return
         }
+        if (transfer is com.atharchive.feature.downloads.TransferUi.Running) return contentViewModel.removeDownload(id)
         contentViewModel.toggleDownload(id)
         if (transfer == null) requestNotificationPermission()
     }
     pendingRemoval?.let { removal ->
-        androidx.compose.material3.AlertDialog(
-            onDismissRequest = { pendingRemoval = null },
-            title = { Text("إزالة التنزيل؟") },
-            text = {
-                Text(
-                    "«${removal.title}» يبقى في الأرشيف ويمكنك تنزيله مجددًا." +
-                        if (removal.sizeLabel.isBlank()) "" else " يُحرَّر ${removal.sizeLabel}.",
-                )
-            },
-            confirmButton = {
-                TextButton(onClick = {
-                    contentViewModel.removeDownload(removal.id)
-                    pendingRemoval = null
-                }) { Text("إزالة") }
-            },
-            dismissButton = { TextButton(onClick = { pendingRemoval = null }) { Text("إلغاء") } },
-        )
+        AtharMenu(expanded = true, anchor = actionAnchor.value, onDismiss = { pendingRemoval = null }) {
+            Text("إزالة التنزيل؟", Modifier.padding(14.dp))
+            Text("«${removal.title}» يمكن تنزيله مجددًا. ${removal.sizeLabel}", Modifier.padding(horizontal = 14.dp), style = MaterialTheme.typography.bodySmall)
+            AtharMenuItem("إزالة", destructive = true, onClick = { contentViewModel.removeDownload(removal.id); pendingRemoval = null })
+            AtharMenuItem("إلغاء", onClick = { pendingRemoval = null })
+        }
     }
 
     // «آخر ما قرأت»: once per launch (the flag survives recreation), reopen the work read last.
@@ -303,6 +305,11 @@ fun AtharApp(
         // (`am start -e athar_download book:<id>:<n>`); a real deep link replaces it if one is ever needed.
         val book = downloadTarget?.removePrefix("book:")?.takeIf { it != downloadTarget }?.split(":")
         if (book != null) { backStack.add(ReaderRoute(book[0], targetOrdinal = book.getOrNull(1)?.toIntOrNull())); onDownloadTargetHandled() }
+        else if (downloadTarget?.startsWith("poem:") == true) {
+            val poem = downloadTarget.removePrefix("poem:").split(":")
+            backStack.add(PoemReaderRoute(poem[0], poem.getOrNull(1)?.toIntOrNull()))
+            onDownloadTargetHandled()
+        }
         else if (downloadTarget != null) { backStack.add(DownloadsRoute(downloadTarget)); onDownloadTargetHandled() }
     }
     val tabState = androidx.compose.runtime.saveable.rememberSaveableStateHolder()
@@ -311,9 +318,10 @@ fun AtharApp(
     val inPlayer = backStack.lastOrNull() is PlayerRoute
     // Poetry reads full-screen too: the poem is the only thing on it.
     val inPoemReader = backStack.lastOrNull() is PoemReaderRoute
-    val currentDestination = when (val current = backStack.lastOrNull { it is SectionRoute || it == BooksCatalogRoute }) {
+    val currentDestination = when (val current = backStack.lastOrNull()) {
         is SectionRoute -> AtharDestination.fromRoute(current.destination)
-        else -> AtharDestination.Books
+        BooksCatalogRoute -> AtharDestination.Books
+        else -> null
     }
 
     // A recited poem opens in the poem reader, never as prose.
@@ -387,13 +395,12 @@ fun AtharApp(
         },
     ) { contentPadding ->
         val appMenu = listOf(
-            AtharAppMenuEntry(AtharSection.Articles.label, AtharSection.Articles.icon) { backStack.add(SubSectionRoute(AtharSection.Articles.route)) },
             AtharAppMenuEntry(AtharSection.Issues.label, AtharSection.Issues.icon) { backStack.add(SubSectionRoute(AtharSection.Issues.route)) },
             AtharAppMenuEntry("الأذكار", AtharIcons.Adhkar) { backStack.add(AdhkarRoute) },
+            AtharAppMenuEntry("الأعلام", AtharIcons.People) { backStack.add(PersonsRoute()) },
             AtharAppMenuEntry("الإعدادات", AtharIcons.Settings) { openSettings() },
         )
-        androidx.compose.runtime.CompositionLocalProvider(LocalAtharAppMenu provides appMenu) {
-        com.atharchive.ui.components.ProvideAtharTextToolbar {
+        androidx.compose.runtime.CompositionLocalProvider(LocalAtharAppMenu provides appMenu, LocalAtharActionAnchor provides actionAnchor) {
         NavDisplay(
             backStack = backStack,
             onBack = { backStack.removeLastOrNull() },
@@ -453,12 +460,12 @@ fun AtharApp(
                     // "Not emitted yet" is loading, not missing: the flow's first value can wait
                     // behind a write, and «غير متاح» used to flash on every slow open.
                     if (readerEmitted == null) Column(Modifier.fillMaxSize()) {
-                        TextButton(onClick = ::goBack) { Text("رجوع") }
+                        IconButton(onClick = ::goBack) { Icon(AtharIcons.Back, "رجوع") }
                         com.atharchive.ui.components.AtharLoading(
                             "جارٍ تحميل النص…", Modifier.padding(top = 120.dp), tag = "reader_loading",
                         )
                     } else if (readerState == null) Column(Modifier.fillMaxSize()) {
-                        TextButton(onClick = ::goBack) { Text("رجوع") }
+                        IconButton(onClick = ::goBack) { Icon(AtharIcons.Back, "رجوع") }
                         com.atharchive.ui.components.AtharEmptyState(
                             "المصدر غير متاح بعد", "جارٍ تحميل الفهرس؛ إن استمر ذلك فتحقّق من الاتصال وحدّث المحتوى.",
                             "reader_source_unavailable", 24.dp,
@@ -519,7 +526,7 @@ fun AtharApp(
                         onDispose { contentViewModel.closeReader(route.poemId) }
                     }
                     if (poemEmitted == null) Column(Modifier.fillMaxSize()) {
-                        TextButton(onClick = ::goBack) { Text("رجوع") }
+                        IconButton(onClick = ::goBack) { Icon(AtharIcons.Back, "رجوع") }
                         com.atharchive.ui.components.AtharLoading("جارٍ تحميل القصيدة…", Modifier.padding(top = 120.dp), tag = "poem_loading")
                     } else if (poemState == null) UnavailableRoute("القصيدة غير متاحة بعد", ::goBack) { contentViewModel.sync(); contentViewModel.openReader(route.poemId, route.targetOrdinal) }
                     poemState?.let { state -> PoemReaderScreen(
@@ -532,7 +539,8 @@ fun AtharApp(
                             onToggleAudio = contentViewModel.playback::toggle,
                             onSpeed = contentViewModel.playback::speed,
                             onRepeat = contentViewModel.playback::repeat,
-                            onOpenReader = { backStack.add(ReaderRoute(route.poemId)) },
+                            onToggleBookmark = { contentViewModel.toggleBookmark(route.poemId, it) },
+                            onSaveVerse = { contentViewModel.saveBlock(route.poemId, it) },
                             initialOrdinal = route.targetOrdinal,
                             onPositionChange = { contentViewModel.onReaderPosition(route.poemId, it) },
                             onRetry = { contentViewModel.openReader(route.poemId, route.targetOrdinal) },
@@ -585,6 +593,16 @@ fun AtharApp(
 
 
                     }
+                }
+                entry<PersonsRoute> { route ->
+                    val persons by contentViewModel.persons.collectAsStateWithLifecycle()
+                    val works by contentViewModel.personWorks.collectAsStateWithLifecycle()
+                    val person = persons.firstOrNull { it.id == route.personId }
+                    if (route.personId == null) com.atharchive.feature.persons.PersonsScreen(persons, { backStack.add(PersonsRoute(it.id)) }, ::openSettings, ::goBack)
+                    else if (person != null) com.atharchive.feature.persons.PersonScreen(person, works, { work ->
+                        backStack.add(if (work.coll == "poem") PoemReaderRoute(work.id) else ReaderRoute(work.id))
+                    }, ::openSettings, ::goBack)
+                    else UnavailableRoute("العَلَم غير متاح", ::goBack) { contentViewModel.sync() }
                 }
                 entry<AppearanceRoute> {
                     AppearanceScreen(
@@ -661,20 +679,12 @@ fun AtharApp(
                             onSaveClick = { contentViewModel.toggleFavourite(it.id) },
                         )
 
-                        AtharDestination.Audio -> AudioScreen(
-                            state = audioState,
+                        AtharDestination.Articles -> ArticlesScreen(
+                            state = contentViewModel.articles.collectAsStateWithLifecycle().value,
                             onSettings = ::openSettings,
-                            onPlay = { contentViewModel.playAudio(it.id) },
-                            onMore = { openAudioSource(it) },
-                            onSave = { contentViewModel.toggleFavourite("audio:${it.id}") },
-                            onDownload = {
-                                // Same rule as text rows: a finished download asks before it is deleted.
-                                if (it.downloaded) pendingRemoval = DownloadRemoval("audio:${it.id}", it.title, it.sizeLabel)
-                                else {
-                                    contentViewModel.toggleAudioDownload(it.id)
-                                    requestNotificationPermission()
-                                }
-                            },
+                            onArticleClick = { backStack.add(ReaderRoute(it.id)) },
+                            onSaveClick = { contentViewModel.toggleFavourite(it.id) },
+                            onDownloadClick = { onDownloadTap(it.id, it.title, it.sizeLabel, it.downloaded, it.transfer) },
                         )
 
                         AtharDestination.Search -> SearchScreen(
@@ -721,10 +731,16 @@ fun AtharApp(
                             onShare = {
                                 shareText(context, it.shareText())
                             },
-                            onMore = { editingExcerpt = it },
+                            onMore = { editorAnchor = actionAnchor.value; editingExcerpt = it },
                             onDelete = { deletingExcerpt = it },
-                            onOpenSource = {
-                                backStack.add(ReaderRoute(it.entityId, targetOrdinal = it.sourceOrdinal))
+                            onOpenSource = { excerpt ->
+                                if (excerpt.sourceColl == "poem") scope.launch {
+                                    try {
+                                        val ordinal = contentViewModel.savedPoemOrdinal(excerpt.entityId, excerpt.id)
+                                        backStack.add(PoemReaderRoute(excerpt.entityId, ordinal))
+                                    } catch (cancelled: kotlinx.coroutines.CancellationException) { throw cancelled }
+                                    catch (_: Exception) { announce("تعذّر فتح مصدر البيت") }
+                                } else backStack.add(ReaderRoute(excerpt.entityId, targetOrdinal = excerpt.sourceOrdinal))
                             },
                         )
 
@@ -736,15 +752,13 @@ fun AtharApp(
             },
         )
         }
-        }
     }
 
     editingExcerpt?.let { excerpt ->
         var note by rememberSaveable(excerpt.id) { mutableStateOf(excerpt.comment.orEmpty()) }
-        ModalBottomSheet(
-            onDismissRequest = { editingExcerpt = null },
-            containerColor = AtharTheme.colors.canvas,
-        ) {
+        var deleteBounds by remember { mutableStateOf(Rect.Zero) }
+        AtharTailPopover(anchor = { editorAnchor }, ground = AtharTheme.colors.raisedSurface,
+            onDismiss = { editingExcerpt = null }, maxWidth = 320.dp) {
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -773,6 +787,7 @@ fun AtharApp(
                         .testTag("kannashah_note_editor"),
                     label = { Text("تعليقي") },
                     minLines = 3,
+                    maxLines = 5,
                 )
                 Row(
                     modifier = Modifier
@@ -781,8 +796,8 @@ fun AtharApp(
                     horizontalArrangement = Arrangement.SpaceBetween,
                 ) {
                     TextButton(
-                        onClick = { deletingExcerpt = excerpt },
-                        modifier = Modifier.testTag("kannashah_delete_annotation"),
+                        onClick = { actionAnchor.value = deleteBounds; deletingExcerpt = excerpt },
+                        modifier = Modifier.onGloballyPositioned { deleteBounds = Rect(it.positionOnScreen(), Size(it.size.width.toFloat(), it.size.height.toFloat())) }.testTag("kannashah_delete_annotation"),
                     ) {
                         Text("حذف")
                     }
@@ -803,32 +818,23 @@ fun AtharApp(
         }
     }
 
-    // Deleting an excerpt can't be undone, so both ways to it (the menu, the note sheet) ask first.
+    // Deleting an excerpt can't be undone, so both ways to it (the menu, the note editor) ask first.
     deletingExcerpt?.let { excerpt ->
-        androidx.compose.material3.AlertDialog(
-            onDismissRequest = { deletingExcerpt = null },
-            title = { Text("حذف المقتطف؟") },
-            text = { Text(excerpt.text, maxLines = 3, overflow = TextOverflow.Ellipsis) },
-            confirmButton = {
-                TextButton(
-                    onClick = {
-                        scope.launch {
-                            runCatching { contentViewModel.deleteAnnotation(excerpt.id) }
-                                .onSuccess {
-                                    deletingExcerpt = null
-                                    editingExcerpt = null
-                                    announce("حُذف المقتطف")
-                                }
-                                .onFailure { deletingExcerpt = null; announce("تعذّر حذف المقتطف") }
-                        }
-                    },
-                    modifier = Modifier.testTag("kannashah_confirm_delete"),
-                ) { Text("حذف") }
-            },
-            dismissButton = { TextButton(onClick = { deletingExcerpt = null }) { Text("إلغاء") } },
-        )
+        AtharMenu(expanded = true, anchor = actionAnchor.value, onDismiss = { deletingExcerpt = null }) {
+            Text("حذف المقتطف؟", Modifier.padding(14.dp))
+            Text(excerpt.text, Modifier.padding(horizontal = 14.dp), maxLines = 3, overflow = TextOverflow.Ellipsis)
+            AtharMenuItem("حذف", destructive = true, modifier = Modifier.testTag("kannashah_confirm_delete"), onClick = {
+                scope.launch {
+                    runCatching { contentViewModel.deleteAnnotation(excerpt.id) }
+                        .onSuccess { deletingExcerpt = null; editingExcerpt = null; announce("حُذف المقتطف") }
+                        .onFailure { deletingExcerpt = null; announce("تعذّر حذف المقتطف") }
+                }
+            })
+            AtharMenuItem("إلغاء", onClick = { deletingExcerpt = null })
+        }
     }
 
+    }
 }
 
 private data class DownloadRemoval(val id: String, val title: String, val sizeLabel: String)
@@ -845,7 +851,7 @@ private fun <T> collectEmitted(key: Any, flow: () -> kotlinx.coroutines.flow.Flo
 @Composable
 private fun UnavailableRoute(title: String, onBack: () -> Unit, onRetry: () -> Unit) {
     Column(Modifier.fillMaxSize().padding(24.dp)) {
-        TextButton(onClick = onBack) { Text("رجوع") }
+        IconButton(onClick = onBack) { Icon(AtharIcons.Back, "رجوع") }
         Text(title)
         TextButton(onClick = onRetry) { Text("إعادة المحاولة") }
     }

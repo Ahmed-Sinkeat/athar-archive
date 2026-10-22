@@ -146,9 +146,10 @@ class ReadThroughContentRepository(
             )
         }
         // A frame of an older package (the book was updated since it was read) is only a
-        // fallback: fetching the new frame makes the importer replace the old copy.
+        // fallback: fetching the new frame makes the importer replace the old copy. A downloaded
+        // book keeps its own copy until the download worker swaps the whole update in.
         val stale = dao.entity(entry.id)?.localPackageHash.let { it != null && it != entry.pkg.hash }
-        if (cached != null && !stale) return fromCache(cached)
+        if (cached != null && (!stale || userDatabase.userDataDao().pinnedDownload(entry.id) != null)) return fromCache(cached)
 
         // No transfer-state writes on the read-through path: every UPDATE on `entity`
         // re-runs each catalog list query and costs a commit (≈0.3 s each on a Redmi).

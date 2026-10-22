@@ -40,12 +40,11 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.ui.input.nestedscroll.nestedScroll
-import com.atharchive.ui.components.AtharCollapsible
+import com.atharchive.ui.components.AtharFloatingHeader
 import com.atharchive.ui.components.ShowOnChange
 import com.atharchive.ui.components.rememberAtharCollapsingHeader
 import androidx.compose.runtime.Composable
@@ -57,6 +56,8 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clipToBounds
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
@@ -117,8 +118,8 @@ fun BooksScreen(
     var kindStored by rememberPersisted("books.kind", AllKinds)
     var topicStored by rememberPersisted("books.topic", "كل الموضوعات")
     var centuryStored by rememberPersisted("books.century", "كل القرون")
-    var sortName by rememberPersisted("books.sort", BookSort.Newest.name)
-    val sort = enumValueOrNull<BookSort>(sortName) ?: BookSort.Newest
+    var sortName by rememberPersisted("books.order", BookSort.Title.name)
+    val sort = enumValueOrNull<BookSort>(sortName) ?: BookSort.Title
     val kinds = remember(state.books) { listOf(AllKinds) + state.books.map { it.kind }.distinct() }
     val topics = remember(state.books) { listOf("كل الموضوعات") + state.books.flatMap { it.topics }.distinct().sorted() }
     val centuries = remember(state.books) {
@@ -133,16 +134,20 @@ fun BooksScreen(
         if (scrollToTopRequest > 0) listState.animateScrollToItem(0)
     }
 
+    // Normalized once per catalog change, not per filter pass or per sort comparison.
+    val normalized = remember(state.books) {
+        state.books.associate { it.id to (ArNormalize.normalize(it.title) to ArNormalize.normalize(it.author)) }
+    }
     val visibleBooks = remember(state.books, selectedTab, query, kind, sort, topic, century) {
+        val term = ArNormalize.normalize(query.trim())
         state.books
             .asSequence()
             .filter { book ->
                 selectedTab.matches(book.recentRank != null, book.download is BookDownloadUi.Downloaded, book.saved)
             }
             .filter { book ->
-                val term = ArNormalize.normalize(query.trim())
-                term.isBlank() || ArNormalize.normalize(book.title).contains(term, ignoreCase = true) ||
-                    ArNormalize.normalize(book.author).contains(term, ignoreCase = true)
+                val (title, author) = normalized.getValue(book.id)
+                term.isBlank() || title.contains(term, ignoreCase = true) || author.contains(term, ignoreCase = true)
             }
             .filter { kind == AllKinds || it.kind == kind }
             .filter { topic == "كل الموضوعات" || topic in it.topics }
@@ -150,8 +155,8 @@ fun BooksScreen(
             .sortedWith(
                 when {
                     selectedTab == SectionTab.Recent -> compareBy { it.recentRank ?: Int.MAX_VALUE }
-                    sort == BookSort.Title -> compareBy { it.title }
-                    sort == BookSort.Author -> compareBy { it.author }
+                    sort == BookSort.Title -> compareBy { normalized.getValue(it.id).first }
+                    sort == BookSort.Author -> compareBy { normalized.getValue(it.id).second }
                     else -> compareByDescending { it.publishedAt }
                 },
             )
@@ -166,10 +171,10 @@ fun BooksScreen(
         val horizontalPadding = if (maxWidth >= 720.dp) 32.dp else 20.dp
         val compactTitles = maxWidth < 360.dp || LocalDensity.current.fontScale >= 1.3f
 
-        Column(modifier = Modifier.fillMaxSize()) {
+        Box(modifier = Modifier.fillMaxSize().clipToBounds()) {
             val header = rememberAtharCollapsingHeader()
             header.ShowOnChange(listState, selectedTab, query, kind, topic, century, sort)
-            AtharCollapsible(header) {
+            AtharFloatingHeader(header) {
                 Column {
                     AtharTopBar(
                         title = "الكتب",
@@ -190,8 +195,8 @@ fun BooksScreen(
                     ),
                 )
                 }
-            }
-        AtharCollapsible(header) {
+            
+        
             Column {
                 AtharTabRow(
                     tabs = SectionTab.tabs,
@@ -203,7 +208,6 @@ fun BooksScreen(
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .horizontalScroll(rememberScrollState())
                         .padding(horizontal = horizontalPadding - 4.dp, vertical = 2.dp),
                     horizontalArrangement = Arrangement.spacedBy(10.dp),
                 ) {
@@ -231,10 +235,10 @@ fun BooksScreen(
             state = listState,
             modifier = Modifier
                 .fillMaxWidth()
-                .weight(1f)
+                .fillMaxHeight()
                 .nestedScroll(header.connection)
                 .testTag("books_screen"),
-            contentPadding = PaddingValues(bottom = 28.dp),
+            contentPadding = PaddingValues(top = header.height, bottom = 28.dp),
         ) {
             if (!state.loaded) {
                 // first catalog read not back yet: show nothing rather than a false "no books"
@@ -348,12 +352,6 @@ private fun BookRow(
                 ReadingProgress(book)
             }
         }
-        AtharFavouriteButton(
-            saved = book.saved,
-            onToggle = onSave,
-            itemTitle = book.title,
-            tag = "book_save_${book.id}",
-        )
         AtharDownloadButton(
             title = book.title,
             sizeLabel = book.download.sizeLabel,
@@ -361,6 +359,12 @@ private fun BookRow(
             transfer = (book.download as? BookDownloadUi.Downloading)?.transfer,
             onClick = onDownload,
             tag = "book_download_${book.id}",
+        )
+        AtharFavouriteButton(
+            saved = book.saved,
+            onToggle = onSave,
+            itemTitle = book.title,
+            tag = "book_save_${book.id}",
         )
     }
 }

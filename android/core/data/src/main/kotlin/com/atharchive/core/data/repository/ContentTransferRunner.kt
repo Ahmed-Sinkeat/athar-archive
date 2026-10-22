@@ -1,6 +1,6 @@
 package com.atharchive.core.data.repository
 
-import androidx.room3.withWriteTransaction
+import com.atharchive.core.data.db.content.stagingId
 
 import com.atharchive.core.data.content.CatalogEntry
 import com.atharchive.core.data.content.ContentDigests
@@ -59,6 +59,8 @@ class ContentTransferRunner(
             }
         }
         contentDatabase.importDao().markTransfer(entityId, ContentTransferState.IDLE)
+    }.also {
+        contentDatabase.importDao().purgeCopies(entityId) // a half-staged update is useless once unpinned
     } }
 
     suspend fun downloadPinned(
@@ -91,7 +93,12 @@ class ContentTransferRunner(
             val verifiedIndexBytes = loadOrFetchIndex(entry)
             val index = FramedPackageDecoder.decodeIndex(verifiedIndexBytes, entry)
             val partFile = partFile(entry)
-            val download = client.downloadPackage(entry, partFile, onProgress)
+            // One honest bar for the whole wait: bytes fill the first half, frames written into the
+            // database the second (over a fast link the import is most of the wait).
+            // ponytail: fixed 50/50 split; weight by measured phase times if one side always dominates.
+            val size = entry.pkg.size
+            val download = client.downloadPackage(entry, partFile) { done, of -> onProgress(done, 2 * of) }
+            val onFrame = { done: Int, of: Int -> onProgress(size + size * done / of.coerceAtLeast(1), 2 * size) }
             dao.markTransfer(entityId, ContentTransferState.VERIFYING)
             ensureStillPinned(entry)
 
@@ -100,20 +107,25 @@ class ContentTransferRunner(
                 it.updateAvailable || (it.localPackageHash != null && it.localPackageHash != entry.pkg.hash)
             } == true
             if (replacing) {
-                // A replacement must be all-or-nothing: a malformed new package may never
-                // cost the reader the old text, so it stays in one transaction.
-                // ponytail: this holds the mutex and the single connection for the whole
-                // package; stage replacement frames beside the old ones if updates get large.
+                // The new copy is written beside the old one, a frame per commit, then renamed in
+                // one short transaction: the reader keeps the old text until the swap, and nothing
+                // waits on (or holds memory for) the whole package. One transaction per package
+                // held ~2 GB of SQLite temp memory on a big book and killed the app on every launch.
+                val staging = stagingId(entityId, entry.pkg.hash)
+                dao.purgeCopies(entityId, keep = staging)
                 mutationMutex.withLock {
                     ensureStillPinned(entry)
                     check(dao.entity(entityId)?.pkgHash == entry.pkg.hash) { "catalog changed during download; retry" }
-                    contentDatabase.withWriteTransaction {
-                        dao.clearImportedContent(entityId)
-                        dao.markTransfer(entityId, ContentTransferState.IMPORTING)
-                        importedFrames = importFrames(entry, index, partFile, frameLock = null)
-                    }
+                    dao.markTransfer(entityId, ContentTransferState.IMPORTING)
+                }
+                importedFrames = importFrames(entry, index, partFile, frameLock = mutationMutex, onFrame = onFrame, into = staging)
+                mutationMutex.withLock {
+                    ensureStillPinned(entry)
+                    check(dao.entity(entityId)?.pkgHash == entry.pkg.hash) { "catalog changed during download; retry" }
+                    dao.promoteStaged(entityId, staging, nowMillis())
                     finishImport(entry, partFile, verifiedIndexBytes)
                 }
+                dao.purgeCopies(entityId)
             } else {
                 // First download or resume: every frame commits on its own and a resumed
                 // import skips frames already stored, so nothing is lost on a crash. The
@@ -124,7 +136,7 @@ class ContentTransferRunner(
                     check(dao.entity(entityId)?.pkgHash == entry.pkg.hash) { "catalog changed during download; retry" }
                     dao.markTransfer(entityId, ContentTransferState.IMPORTING)
                 }
-                importedFrames = importFrames(entry, index, partFile, frameLock = mutationMutex)
+                importedFrames = importFrames(entry, index, partFile, frameLock = mutationMutex, onFrame = onFrame)
                 mutationMutex.withLock { finishImport(entry, partFile, verifiedIndexBytes) }
             }
             ContentTransferResult(
@@ -149,9 +161,11 @@ class ContentTransferRunner(
         index: com.atharchive.core.data.content.PackageIndex,
         partFile: File,
         frameLock: Mutex?,
+        onFrame: (done: Int, of: Int) -> Unit = { _, _ -> },
+        into: String = entry.id,
     ): Int {
         val dao = contentDatabase.importDao()
-        val stored = dao.frames(entry.id).mapTo(hashSetOf()) { it.frameOrdinal }
+        val stored = dao.frames(into).mapTo(hashSetOf()) { it.frameOrdinal }
         var imported = 0
         RandomAccessFile(partFile, "r").use { packageInput ->
             for ((frameNumber, frame) in index.frames.withIndex()) {
@@ -161,11 +175,12 @@ class ContentTransferRunner(
                 packageInput.readFully(bytes)
                 suspend fun import() {
                     ensureStillPinned(entry)
-                    importer.importVerifiedFrame(entry, frameNumber, frame, bytes)
+                    importer.importVerifiedFrame(entry, frameNumber, frame, bytes, into)
                     dao.markTransfer(entry.id, ContentTransferState.IMPORTING)
                 }
                 if (frameLock == null) import() else frameLock.withLock { import() }
                 imported++
+                onFrame(frameNumber + 1, index.frames.size)
             }
         }
         return imported

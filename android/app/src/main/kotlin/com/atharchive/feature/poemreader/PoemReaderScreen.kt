@@ -1,13 +1,12 @@
 package com.atharchive.feature.poemreader
 
-import com.atharchive.ui.components.SoapPill
+import com.atharchive.ui.components.arabicDigits
 import com.atharchive.ui.theme.AtharCorners
 import com.atharchive.ui.theme.AtharTextSize
 import androidx.compose.ui.graphics.lerp
 import androidx.compose.ui.platform.LocalContext
 import com.atharchive.ui.components.AtharMenu
 import com.atharchive.ui.components.AtharMenuColors
-import com.atharchive.ui.components.AtharMenuDivider
 import com.atharchive.ui.components.AtharMenuItem
 import com.atharchive.data.AudioPlaybackState
 
@@ -17,7 +16,6 @@ import androidx.compose.foundation.interaction.DragInteraction
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -28,7 +26,6 @@ import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -41,7 +38,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -50,12 +46,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.drawBehind
-import androidx.compose.ui.geometry.CornerRadius
-import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
-import androidx.compose.ui.geometry.Size
-import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.testTag
@@ -69,15 +60,9 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.unit.IntRect
-import androidx.compose.ui.unit.IntSize
-import androidx.compose.ui.unit.LayoutDirection
-import androidx.compose.ui.window.Popup
-import androidx.compose.ui.window.PopupPositionProvider
-import androidx.compose.ui.window.PopupProperties
+import com.atharchive.ui.components.AtharTailPopover
 import com.atharchive.feature.reader.ReaderColors
 import com.atharchive.feature.reader.ReaderSettings
 import com.atharchive.feature.reader.ReaderSettingsPopover
@@ -112,7 +97,8 @@ fun PoemReaderScreen(
     onToggleAudio: () -> Unit = {},
     onSpeed: (Float) -> Unit = {},
     onRepeat: (Boolean) -> Unit = {},
-    onOpenReader: () -> Unit = {},
+    onToggleBookmark: suspend (Int) -> Unit = {},
+    onSaveVerse: suspend (Int) -> Unit = {},
     initialOrdinal: Int? = null,
     onPositionChange: (Int) -> Unit = {},
     onRetry: () -> Unit = {},
@@ -127,6 +113,12 @@ fun PoemReaderScreen(
     var query by remember { mutableStateOf("") }
     var toast by remember { mutableStateOf<String?>(null) }
     var moreOpen by remember { mutableStateOf(false) }
+    var introOpen by remember { mutableStateOf(false) }
+    if (introOpen) {
+        androidx.activity.compose.BackHandler { introOpen = false }
+        com.atharchive.feature.reader.IntroPage(state.card, state.title, state.poet, settings, colors, onDismiss = { introOpen = false })
+        return
+    }
 
     val track = state.recordings.firstOrNull { it.id == playback.id }
     val playing = track != null && playback.playWhenReady
@@ -134,7 +126,7 @@ fun PoemReaderScreen(
     val speed = playback.speed
     val repeat = playback.repeat
     var audioVisible by remember { mutableStateOf(true) }
-    var followScroll by remember { mutableStateOf(true) }
+    var followScroll by remember { mutableStateOf(initialOrdinal == null) }
     LaunchedEffect(toast) {
         if (toast != null) { delay(1700); toast = null }
     }
@@ -161,10 +153,8 @@ fun PoemReaderScreen(
         settingsOpen = false
     }
     var restored by remember { mutableStateOf(false) }
-    LaunchedEffect(state.verses) {
-        if (!restored && state.verses.isNotEmpty()) {
-            val ordinal = initialOrdinal ?: state.readingOrdinal
-            val index = state.verses.indexOfFirst { it.ordinal >= ordinal }.coerceAtLeast(0)
+    LaunchedEffect(state.verses, state.readingPositionReady, state.bodyLoaded) {
+        if (!restored) state.restoreIndex(initialOrdinal ?: state.readingOrdinal)?.let { index ->
             listState.scrollToItem(index)
             restored = true
         }
@@ -176,6 +166,19 @@ fun PoemReaderScreen(
     fun openSharh(verse: VerseUi) {
         sharhVerse = verse
         panelMode = PanelMode.Sharh
+    }
+    val tabs = remember(state.verses) { state.panelTabs() }
+    val context = LocalContext.current
+    fun act(done: String, block: suspend () -> Unit) {
+        scope.launch {
+            toast = try { block(); done }
+            catch (cancelled: kotlinx.coroutines.CancellationException) { throw cancelled }
+            catch (error: Exception) { "تعذّر الحفظ: ${error.message.orEmpty()}" }
+        }
+    }
+    fun copy(text: String) {
+        context.getSystemService(android.content.ClipboardManager::class.java)
+            .setPrimaryClip(android.content.ClipData.newPlainText("أثر", text))
     }
 
     Box(
@@ -193,9 +196,7 @@ fun PoemReaderScreen(
                 onSearch = { panelMode = PanelMode.Search },
                 onMore = { moreOpen = true },
                 menu = {
-                    // Used to jump straight into the book reader, which lays a poem out as prose.
-                    // That view stays one row away; copy and share are what ⋮ is expected to hold.
-                    val context = LocalContext.current
+                    // The prose view is Aa «العرض: متصل», not a second screen.
                     val poemText = { buildString {
                         append(state.title)
                         if (state.poet.isNotBlank()) append(" — ").append(state.poet)
@@ -208,10 +209,10 @@ fun PoemReaderScreen(
                             secondary = colors.secondary, accent = colors.accent),
                         modifier = Modifier.testTag("poem_more_menu"),
                     ) {
+                        if (state.card.isNotEmpty()) AtharMenuItem("مقدمة المحقق ومعلومات عن الكتاب", icon = AtharIcons.Info, onClick = { moreOpen = false; introOpen = true })
                         AtharMenuItem("نسخ القصيدة", icon = AtharIcons.Copy, onClick = {
                             moreOpen = false
-                            context.getSystemService(android.content.ClipboardManager::class.java)
-                                .setPrimaryClip(android.content.ClipData.newPlainText("أثر", poemText()))
+                            copy(poemText())
                             toast = "نُسخت القصيدة"
                         })
                         AtharMenuItem("مشاركة القصيدة", icon = AtharIcons.Share, onClick = {
@@ -221,9 +222,6 @@ fun PoemReaderScreen(
                                     .setType("text/plain").putExtra(android.content.Intent.EXTRA_TEXT, poemText()),
                                 "مشاركة القصيدة"))
                         })
-                        AtharMenuDivider()
-                        AtharMenuItem("النص المتصل", subtitle = "كما في الكتاب، بلا ترتيب الأبيات", icon = AtharIcons.Books,
-                            onClick = { moreOpen = false; onOpenReader() })
                     }
                 },
             )
@@ -243,12 +241,12 @@ fun PoemReaderScreen(
                                     com.atharchive.ui.components.AtharLoading("جارٍ تحميل القصيدة…", Modifier.align(Alignment.Center))
                                 }
                             } else Column(Modifier.padding(24.dp)) {
-                                Text("لا توجد أبيات؛ افتح النص الكامل", color = colors.text)
+                                Text("لا توجد أبيات", color = colors.text)
                                 androidx.compose.material3.TextButton(onClick = onRetry) { Text("إعادة المحاولة") }
-                                androidx.compose.material3.TextButton(onClick = onOpenReader) { Text("النص الكامل") }
                             }
                         }
                         itemsIndexed(state.verses, key = { _, v -> v.id }) { index, verse ->
+                            verse.heading?.let { PoemHeading(it, colors, settings) }
                             VerseRow(
                                 verse = verse,
                                 colors = colors,
@@ -256,9 +254,16 @@ fun PoemReaderScreen(
                                 state = state,
                                 isCurrent = verse.number == currentVerse,
                                 onSharh = { openSharh(verse) },
+                                onSave = { act("حُفظ في الكناشة") { onSaveVerse(verse.ordinal) } },
+                                onCopy = { copy(verse.sadr + "\n" + verse.ajz); toast = "نُسخ البيت" },
                             )
-                            if (index != state.verses.lastIndex) {
+                            if (!settings.poemProse && index != state.verses.lastIndex) {
                                 VerseOrnament(colors)
+                            }
+                        }
+                        if (state.verses.isNotEmpty() && !state.bodyLoaded) item {
+                            androidx.compose.material3.TextButton(onClick = onRetry, modifier = Modifier.fillMaxWidth()) {
+                                Text("تحميل بقية القصيدة", color = colors.accent)
                             }
                         }
                     }
@@ -287,6 +292,7 @@ fun PoemReaderScreen(
 
                 panelMode?.let { mode ->
                     PoemSidePanel(
+                        tabs = tabs,
                         mode = mode,
                         onMode = { panelMode = it },
                         colors = colors,
@@ -296,6 +302,7 @@ fun PoemReaderScreen(
                         query = query,
                         onQuery = { query = it },
                         onJump = { index ->
+                            followScroll = false
                             scope.launch { listState.animateScrollToItem(index) }
                         },
                         onDismiss = { panelMode = null },
@@ -333,12 +340,19 @@ fun PoemReaderScreen(
                 )
             }
 
-            PoemBottomBar(
+            // The book reader's own bar: one set of controls for every text.
+            val topVerse = state.verses.getOrNull(listState.firstVisibleItemIndex)
+            val bookmarked = topVerse != null && topVerse.ordinal in state.bookmarks
+            com.atharchive.feature.reader.ReaderBottomBar(
                 colors = colors,
-                audioOn = track != null && audioVisible,
+                bookmarked = bookmarked,
                 hasAudio = state.recordings.isNotEmpty(),
-                panelOpen = panelMode != null,
-                onMore = { panelMode = if (panelMode != null) null else PanelMode.Sharh },
+                audioOpen = track != null && audioVisible,
+                contentsOpen = panelMode != null,
+                onContents = { panelMode = if (panelMode != null) null else tabs.first() },
+                onBookmark = {
+                    topVerse?.let { verse -> act(if (bookmarked) "أُزيلت العلامة" else "✓ أُضيفت العلامة") { onToggleBookmark(verse.ordinal) } }
+                },
                 onAudio = {
                     if (track == null) {
                         state.recordings.firstOrNull()?.let(onPlayAudio)
@@ -346,10 +360,10 @@ fun PoemReaderScreen(
                         followScroll = true
                     } else audioVisible = !audioVisible
                 },
-                fontOpen = settingsOpen,
-                onFont = { settingsOpen = true },
-                fontMenu = {
-                    ReaderSettingsPopover(settingsOpen, settings, colors, onSettingsChange, onDismiss = { settingsOpen = false })
+                settingsOpen = settingsOpen,
+                onSettings = { settingsOpen = true },
+                settingsMenu = {
+                    ReaderSettingsPopover(settingsOpen, settings, colors, onSettingsChange, onDismiss = { settingsOpen = false }, forPoem = true)
                 },
             )
         }
@@ -392,7 +406,10 @@ private fun VerseRow(
     state: PoemReaderUiState,
     isCurrent: Boolean,
     onSharh: () -> Unit,
+    onSave: () -> Unit,
+    onCopy: () -> Unit,
 ) {
+    var menuOpen by remember { mutableStateOf(false) }
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -404,22 +421,22 @@ private fun VerseRow(
             .testTag("verse_${verse.id}"),
         verticalAlignment = Alignment.Top,
     ) {
-        // Outer edge (right, under RTL). The only mark a verse ever carries, and the
-        // fastest way into its commentary.
+        // Outer edge (right, under RTL): the verse number when shown, else a dot when it has
+        // شرح. A tap opens what can be done with the verse.
         Box(
             modifier = Modifier
-                .size(width = 22.dp, height = 40.dp)
-                .then(
-                    if (verse.commentary.isNotEmpty()) {
-                        Modifier.clickable(role = Role.Button, onClick = onSharh)
-                    } else {
-                        Modifier
-                    },
-                )
+                .size(width = 28.dp, height = 40.dp)
+                .clickable(role = Role.Button) { menuOpen = true }
                 .testTag("verse_indicator_${verse.id}"),
             contentAlignment = Alignment.Center,
         ) {
-            if (verse.commentary.isNotEmpty()) {
+            if (settings.verseNumbers) {
+                Text(
+                    text = arabicDigits(verse.number),
+                    color = if (verse.commentary.isNotEmpty()) colors.accent else colors.secondary,
+                    style = MaterialTheme.typography.labelSmall,
+                )
+            } else if (verse.commentary.isNotEmpty()) {
                 Box(
                     Modifier
                         .size(7.dp)
@@ -427,12 +444,28 @@ private fun VerseRow(
                         .background(colors.accent),
                 )
             }
+            AtharMenu(
+                expanded = menuOpen,
+                onDismiss = { menuOpen = false },
+                colors = AtharMenuColors(card = lerp(colors.page, colors.text, 0.07f), ink = colors.text,
+                    secondary = colors.secondary, accent = colors.accent),
+                modifier = Modifier.testTag("verse_menu"),
+            ) {
+                if (verse.commentary.isNotEmpty()) AtharMenuItem("شرح البيت", icon = AtharIcons.Sidebar, onClick = { menuOpen = false; onSharh() })
+                AtharMenuItem("حفظ في الكناشة", icon = AtharIcons.Kannashah, onClick = { menuOpen = false; onSave() })
+                AtharMenuItem("نسخ البيت", icon = AtharIcons.Copy, onClick = { menuOpen = false; onCopy() })
+            }
         }
 
         Column(modifier = Modifier.weight(1f)) {
-            Hemistich(verse.sadr, state, colors, settings, TextAlign.Start)
-            Spacer(Modifier.height(2.dp))
-            Hemistich(verse.ajz, state, colors, settings, TextAlign.End)
+            if (settings.poemProse) {
+                // متصل: one running line per verse, as a book prints a quoted verse.
+                Hemistich(if (verse.ajz.isBlank()) verse.sadr else "${verse.sadr} \u2026 ${verse.ajz}", state, colors, settings, TextAlign.Start)
+            } else {
+                Hemistich(verse.sadr, state, colors, settings, TextAlign.Start)
+                Spacer(Modifier.height(2.dp))
+                Hemistich(verse.ajz, state, colors, settings, TextAlign.End)
+            }
         }
     }
 }
@@ -519,15 +552,8 @@ private fun Hemistich(
     }
 }
 
-private val TailWidth = 14.dp
-private val TailHeight = 7.dp
-
 /**
- * The meaning, as a callout pinned to the word itself.
- *
- * It sits above the word so the finger that opened it is not covering it, and drops
- * below only when there is no room above. The tail is what gives it a place: without
- * it the card floated somewhere near the line and belonged to nothing.
+ * The meaning, as a callout pinned to the word itself (see [AtharTailPopover]).
  *
  * Inverted ground, like the reader's own toast — a tooltip reads as ephemeral, and an
  * inverted pill needs no border to separate itself from the page in any palette.
@@ -538,102 +564,41 @@ private fun WordCallout(
     colors: ReaderColors,
     onDismiss: () -> Unit,
 ) {
-    val density = LocalDensity.current
-    val tailH = with(density) { TailHeight.roundToPx() }
-    val margin = with(density) { 12.dp.roundToPx() }
-
-    // ponytail: the provider owns the x, and the tail has to point back at the word
-    // from wherever that landed — so it writes the offset back for the content to read.
-    // No cycle: the tail never changes the pill's size, so this settles in one frame.
-    val tailCentre = remember { mutableFloatStateOf(Float.NaN) }
-    var below by remember { mutableStateOf(false) }
-
-    val provider = remember(word, tailH, margin) {
-        object : PopupPositionProvider {
-            override fun calculatePosition(
-                anchorBounds: IntRect,
-                windowSize: IntSize,
-                layoutDirection: LayoutDirection,
-                popupContentSize: IntSize,
-            ): IntOffset {
-                val wordCentreX = anchorBounds.left + word.bounds.center.x
-                val maxX = (windowSize.width - popupContentSize.width - margin)
-                    .coerceAtLeast(margin)
-                val x = (wordCentreX - popupContentSize.width / 2f).toInt().coerceIn(margin, maxX)
-                val above = anchorBounds.top + word.bounds.top.toInt() - popupContentSize.height
-                val fitsAbove = above >= margin
-                below = !fitsAbove
-                tailCentre.floatValue = wordCentreX - x
-                val y = if (fitsAbove) above else anchorBounds.top + word.bounds.bottom.toInt()
-                return IntOffset(x, y)
-            }
-        }
-    }
-
-    val ground = colors.text.copy(alpha = 0.94f)
-    val radiusPx = with(density) { 10.dp.toPx() }
-    val tailWpx = with(density) { TailWidth.toPx() }
-    val tailHpx = with(density) { TailHeight.toPx() }
-
-    Popup(
-        popupPositionProvider = provider,
-        onDismissRequest = onDismiss,
-        // focusable, or an outside tap never reaches onDismissRequest and it sticks open
-        properties = PopupProperties(focusable = true),
+    AtharTailPopover(
+        anchor = { bounds -> word.bounds.translate(bounds.left.toFloat(), bounds.top.toFloat()) },
+        ground = colors.text.copy(alpha = 0.94f),
+        onDismiss = onDismiss,
+        modifier = Modifier.testTag("word_popover"),
     ) {
-        Column(
-            modifier = Modifier
-                .widthIn(max = 268.dp)
-                .width(IntrinsicSize.Max)
-                .drawBehind {
-                    val bodyTop = if (below) tailHpx else 0f
-                    val bodyBottom = if (below) size.height else size.height - tailHpx
-                    drawRoundRect(
-                        color = ground,
-                        topLeft = Offset(0f, bodyTop),
-                        size = Size(size.width, bodyBottom - bodyTop),
-                        cornerRadius = CornerRadius(radiusPx, radiusPx),
-                    )
-                    val centre = tailCentre.floatValue
-                    if (centre.isNaN()) return@drawBehind
-                    val cx = centre.coerceIn(radiusPx + tailWpx / 2f, size.width - radiusPx - tailWpx / 2f)
-                    val path = Path().apply {
-                        if (below) {
-                            moveTo(cx - tailWpx / 2f, bodyTop)
-                            lineTo(cx, 0f)
-                            lineTo(cx + tailWpx / 2f, bodyTop)
-                        } else {
-                            moveTo(cx - tailWpx / 2f, bodyBottom)
-                            lineTo(cx, size.height)
-                            lineTo(cx + tailWpx / 2f, bodyBottom)
-                        }
-                        close()
-                    }
-                    drawPath(path, ground)
-                }
-                .padding(
-                    top = if (below) TailHeight else 0.dp,
-                    bottom = if (below) 0.dp else TailHeight,
-                )
-                .padding(horizontal = 12.dp, vertical = 8.dp)
-                .testTag("word_popover"),
-        ) {
-            Text(
-                text = word.span.word,
-                color = colors.page,
-                fontFamily = AtharEditorialFontFamily,
-                fontWeight = FontWeight.Bold,
-                fontSize = AtharTextSize.Ui,
-            )
-            Text(
-                text = word.span.meaning,
-                modifier = Modifier.padding(top = 2.dp),
-                color = colors.page.copy(alpha = 0.82f),
-                style = MaterialTheme.typography.bodySmall,
-                lineHeight = 20.sp,
-            )
-        }
+        Text(
+            text = word.span.word,
+            color = colors.page,
+            fontFamily = AtharEditorialFontFamily,
+            fontWeight = FontWeight.Bold,
+            fontSize = AtharTextSize.Ui,
+        )
+        Text(
+            text = word.span.meaning,
+            modifier = Modifier.padding(top = 2.dp),
+            color = colors.page.copy(alpha = 0.82f),
+            style = MaterialTheme.typography.bodySmall,
+            lineHeight = 20.sp,
+        )
     }
+}
+
+/** A باب heading, in the flow where the poem prints it. */
+@Composable
+private fun PoemHeading(text: String, colors: ReaderColors, settings: ReaderSettings) {
+    Text(
+        text = text,
+        modifier = Modifier.fillMaxWidth().padding(horizontal = settings.margin.dp).padding(top = 18.dp, bottom = 6.dp),
+        textAlign = TextAlign.Center,
+        color = colors.accent,
+        fontFamily = AtharEditorialFontFamily,
+        fontWeight = FontWeight.Bold,
+        fontSize = (settings.fontSize + 1).sp,
+    )
 }
 
 @Composable
@@ -714,75 +679,5 @@ private fun BarIcon(
         contentAlignment = Alignment.Center,
     ) {
         Icon(icon, contentDescription = label, tint = colors.secondary, modifier = Modifier.size(24.dp))
-    }
-}
-
-@Composable
-private fun PoemBottomBar(
-    colors: ReaderColors,
-    audioOn: Boolean,
-    hasAudio: Boolean,
-    panelOpen: Boolean,
-    onMore: () -> Unit,
-    onAudio: () -> Unit,
-    fontOpen: Boolean,
-    onFont: () -> Unit,
-    fontMenu: @Composable () -> Unit,
-) {
-    Column(modifier = Modifier.fillMaxWidth().navigationBarsPadding()) {
-        HorizontalDivider(thickness = 0.7.dp, color = colors.divider)
-        Row(
-            modifier = Modifier.fillMaxWidth().padding(vertical = 6.dp),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            ControlSlot(if (panelOpen) AtharIcons.SidebarFilled else AtharIcons.Sidebar, "المزيد", colors, panelOpen, Modifier.weight(1f), "poem_ctl_more", onMore)
-            if (hasAudio) ControlSlot(if (audioOn) AtharIcons.AudioFilled else AtharIcons.Audio, "الصوت", colors, audioOn, Modifier.weight(1f), "poem_ctl_audio", onAudio)
-            Box(
-                modifier = Modifier
-                    .weight(1f)
-                    .clickable(interactionSource = remember { MutableInteractionSource() }, indication = null, role = Role.Button, onClick = onFont)
-                    .padding(vertical = 5.dp)
-                    .testTag("poem_ctl_font"),
-                contentAlignment = Alignment.Center,
-            ) {
-                val tint = if (fontOpen) colors.accent else colors.secondary
-                Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    Box(contentAlignment = Alignment.Center) {
-                        SoapPill(fontOpen, colors.accent.copy(alpha = 0.14f))
-                        Text("Aa", color = tint, fontWeight = FontWeight.SemiBold, fontSize = AtharTextSize.Large)
-                    }
-                    Text("الخط", color = tint, style = MaterialTheme.typography.labelSmall)
-                }
-                fontMenu()
-            }
-        }
-    }
-}
-
-@Composable
-private fun ControlSlot(
-    icon: ImageVector,
-    label: String,
-    colors: ReaderColors,
-    active: Boolean,
-    modifier: Modifier,
-    tag: String,
-    onClick: () -> Unit,
-) {
-    val tint = if (active) colors.accent else colors.secondary
-    Box(
-        modifier = modifier
-            .clickable(interactionSource = remember { MutableInteractionSource() }, indication = null, role = Role.Button, onClick = onClick)
-            .padding(vertical = 5.dp)
-            .testTag(tag),
-        contentAlignment = Alignment.Center,
-    ) {
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            Box(contentAlignment = Alignment.Center) {
-                SoapPill(active, colors.accent.copy(alpha = 0.14f))
-                Icon(icon, null, tint = tint, modifier = Modifier.size(26.dp))
-            }
-            Text(label, color = tint, style = MaterialTheme.typography.labelSmall)
-        }
     }
 }

@@ -2,8 +2,8 @@ package com.atharchive.feature.books
 
 
 enum class BookSort(val label: String) {
-    Newest("الأحدث"),
     Title("العنوان أ–ي"),
+    Newest("الأحدث"),
     Author("المؤلف"),
 }
 

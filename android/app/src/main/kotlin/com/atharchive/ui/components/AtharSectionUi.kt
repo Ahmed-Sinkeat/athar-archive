@@ -2,6 +2,12 @@ package com.atharchive.ui.components
 
 import com.atharchive.ui.theme.AtharCorners
 import com.atharchive.ui.theme.AtharTextSize
+import androidx.compose.ui.layout.boundsInWindow
+import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.geometry.Rect
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.horizontalScroll
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -9,11 +15,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
-import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.TextButton
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -33,6 +35,8 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
@@ -47,6 +51,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.layout.onSizeChanged
+import androidx.compose.ui.zIndex
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.ProgressBarRangeInfo
 import androidx.compose.ui.semantics.Role
@@ -161,20 +168,21 @@ fun AtharTabRow(
     modifier: Modifier = Modifier,
 ) {
     val largeText = LocalDensity.current.fontScale >= 1.5f
-    Row(
-        modifier = modifier
-            .fillMaxWidth()
-            .padding(top = 2.dp),
-    ) {
-        tabs.forEach { tab ->
-            SectionTabCell(
-                tab = tab,
-                selected = tab.key == selectedKey,
-                largeText = largeText,
-                onClick = { onSelect(tab.key) },
-                tagPrefix = tagPrefix,
-                modifier = Modifier.weight(1f),
-            )
+    val soap = rememberSoapTargets()
+    Box(modifier.fillMaxWidth().padding(top = 2.dp)) {
+        SoapLayer(soap, tabs.indexOfFirst { it.key == selectedKey }, AtharTheme.colors.primaryAction, Modifier.matchParentSize())
+        Row(Modifier.fillMaxWidth()) {
+            tabs.forEachIndexed { index, tab ->
+                SectionTabCell(
+                    tab = tab,
+                    selected = tab.key == selectedKey,
+                    largeText = largeText,
+                    onClick = { onSelect(tab.key) },
+                    tagPrefix = tagPrefix,
+                    modifier = Modifier.weight(1f),
+                    textModifier = Modifier.soapTarget(soap, index),
+                )
+            }
         }
     }
 }
@@ -187,7 +195,11 @@ private fun SectionTabCell(
     onClick: () -> Unit,
     tagPrefix: String,
     modifier: Modifier = Modifier,
+    textModifier: Modifier = Modifier,
 ) {
+    val textColor by animateColorAsState(
+        if (selected) AtharTheme.colors.onPrimaryAction else AtharTheme.colors.secondaryText, tween(160), label = "tab_text",
+    )
     Box(
         modifier = modifier
             .testTag("${tagPrefix}_tab_${tab.key}")
@@ -200,14 +212,11 @@ private fun SectionTabCell(
             .padding(horizontal = 2.dp, vertical = 5.dp),
         contentAlignment = Alignment.Center,
     ) {
-        // Solid fill + light text when selected (S9); a tinted background with accent text read as disabled.
+        // Solid fill + light text when selected (S9); the fill is the row's soap pill, which travels here.
         Text(
             text = tab.label,
-            modifier = Modifier
-                .clip(AtharCorners.Control)
-                .background(if (selected) AtharTheme.colors.primaryAction else Color.Transparent)
-                .padding(horizontal = 10.dp, vertical = 6.dp),
-            color = if (selected) AtharTheme.colors.onPrimaryAction else AtharTheme.colors.secondaryText,
+            modifier = textModifier.padding(horizontal = 10.dp, vertical = 6.dp),
+            color = textColor,
             style = MaterialTheme.typography.bodyMedium,
             fontWeight = if (selected) FontWeight.SemiBold else FontWeight.Normal,
             maxLines = if (largeText) 2 else 1,
@@ -219,9 +228,9 @@ private fun SectionTabCell(
 /** The one tab set every content section shows. */
 enum class SectionTab(val key: String, val label: String) {
     All("all", "الكل"),
-    Recent("recent", "الأخيرة"),
-    Downloaded("downloaded", "المحمّلة"),
     Favourites("favourites", "المفضّلة"),
+    Downloaded("downloaded", "المحمّلة"),
+    Recent("recent", "الأخيرة"),
     ;
 
     fun matches(recent: Boolean, downloaded: Boolean, saved: Boolean): Boolean = when (this) {
@@ -355,11 +364,7 @@ class AtharChipGroup(
     val active get() = selected != default
 }
 
-/**
- * One «تصفية» button per section. It opens one sheet of tap-to-choose chips per group;
- * taps apply immediately and «مسح» resets every group. The sheet is the only scroll.
- */
-@OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
+/** Each facet has one anchored menu. */
 @Composable
 fun AtharFilterButton(
     groups: List<AtharChipGroup>,
@@ -368,74 +373,34 @@ fun AtharFilterButton(
     activeCount: Int = groups.count { it.active },
     onClear: () -> Unit = { groups.forEach { if (it.active) it.onSelect(it.default) } },
 ) {
-    if (groups.isEmpty()) return
-    var open by remember { mutableStateOf(false) }
-    Row(
-        modifier = modifier
-            .clip(AtharCorners.Control)
-            .clickable(role = Role.Button) { open = true }
-            .defaultMinSize(minHeight = 48.dp)
-            .padding(horizontal = 4.dp)
-            .testTag("${tagPrefix}_menu"),
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        Text(
-            text = if (activeCount == 0) "تصفية" else "تصفية · ${arabicDigits(activeCount)}",
-            color = AtharTheme.colors.secondaryText,
-            style = MaterialTheme.typography.bodySmall,
-            fontWeight = if (activeCount == 0) FontWeight.Normal else FontWeight.SemiBold,
-            maxLines = 1,
-        )
-        Icon(
-            imageVector = AtharIcons.ChevronDown,
-            contentDescription = null,
-            tint = AtharTheme.colors.secondaryText,
-            modifier = Modifier.padding(start = 3.dp).size(12.dp),
-        )
+    Row(modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+        groups.filter { it.options.isNotEmpty() }.forEachIndexed { index, group ->
+            AtharFilterMenu(group.title, group.options, setOf(group.selected), "${tagPrefix}_$index", group.onSelect)
+        }
+        if (activeCount > 0) TextButton(onClick = onClear) { Text("مسح") }
     }
-    if (open) {
-        ModalBottomSheet(
-            onDismissRequest = { open = false },
-            containerColor = AtharTheme.colors.canvas,
-            scrimColor = AtharTheme.colors.scrim,
-            shape = androidx.compose.foundation.shape.RoundedCornerShape(topStart = 14.dp, topEnd = 14.dp),
-        ) {
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .verticalScroll(rememberScrollState())
-                    .padding(start = 20.dp, end = 20.dp, bottom = 20.dp)
-                    .testTag("${tagPrefix}_sheet"),
-            ) {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text(
-                        text = "تصفية",
-                        modifier = Modifier.weight(1f),
-                        fontFamily = AtharEditorialFontFamily,
-                        fontWeight = FontWeight.Bold,
-                        fontSize = AtharTextSize.Large,
-                    )
-                    TextButton(onClick = onClear, enabled = activeCount > 0, modifier = Modifier.testTag("${tagPrefix}_clear")) { Text("مسح") }
-                }
-                groups.forEachIndexed { g, group ->
-                    Text(
-                        text = group.title,
-                        modifier = Modifier.padding(top = 6.dp),
-                        color = AtharTheme.colors.secondaryText,
-                        style = MaterialTheme.typography.labelMedium,
-                    )
-                    FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                        group.options.forEachIndexed { index, option ->
-                            AtharChip(
-                                label = option,
-                                selected = option == group.selected,
-                                onClick = { group.onSelect(option) },
-                                modifier = Modifier.testTag("${tagPrefix}_chip_${g}_$index"),
-                            )
-                        }
-                    }
-                }
+}
+
+@Composable
+fun AtharFilterMenu(title: String, options: List<String>, selected: Set<String>, tag: String, onSelect: (String) -> Unit) {
+    var open by remember { mutableStateOf(false) }
+    var query by remember { mutableStateOf("") }
+    Box {
+        TextButton(onClick = { open = true }, modifier = Modifier.testTag("${tag}_menu")) {
+            Text("$title ▾", color = AtharTheme.colors.secondaryText)
+        }
+        AtharMenu(expanded = open, onDismiss = { open = false }) {
+            if (options.size > 10) OutlinedTextField(query, { query = it }, label = { Text("ابحث في الخيارات") }, singleLine = true, modifier = Modifier.fillMaxWidth().testTag("${tag}_query"))
+            val term = com.atharchive.core.ArNormalize.normalize(query)
+            val matching = options.distinct().filter { com.atharchive.core.ArNormalize.normalize(it).contains(term) }
+            if (matching.isEmpty()) Text("لا توجد نتائج", Modifier.padding(14.dp), color = AtharTheme.colors.secondaryText)
+            @Composable fun option(value: String) {
+                AtharMenuItem(value, checked = value in selected, onClick = { onSelect(value); open = false }, modifier = Modifier.testTag("${tag}_${options.indexOf(value)}"))
             }
+            if (options.size > 10) LazyColumn(Modifier.fillMaxWidth().height(240.dp)) {
+                items(matching.size) { option(matching[it]) }
+            } else matching.forEach { option(it) }
+
         }
     }
 }
@@ -494,66 +459,90 @@ fun arabicDigits(text: String): String = text.map { if (it in '0'..'9') '\u0660'
 fun arabicDigits(value: Int): String = arabicDigits(value.toString())
 
 /**
- * Tab and filter rows that get out of the way: hidden while the list scrolls down, back on
- * the first scroll up. The page title and the search field stay outside it, pinned.
+ * A section's header (title, search, tabs, filters), moved like the reader's bars: it floats
+ * over the list and travels with it 1:1 (its own height of scroll hides it, so it never outruns
+ * the finger), and settles open or closed with the same spring when the finger lets go.
  *
- * Driven by nested-scroll deltas (the user's gesture), not by the list position, so the
- * list re-clamping when the header collapses can never flip it back and forth.
+ * Driven by nested-scroll deltas (the user's gesture), not by the list position.
  */
 @androidx.compose.runtime.Stable
-class AtharCollapsingHeader {
-    var visible by mutableStateOf(true)
+class AtharCollapsingHeader(private val minDistance: Float) {
+    /** 0 shown … 1 hidden. */
+    var hidden by androidx.compose.runtime.mutableFloatStateOf(0f)
         private set
-    private var travelled = 0f
+    /** Measured by [AtharFloatingHeader]; the list's top padding. */
+    var height by mutableStateOf(0.dp)
+        internal set
+    /** [height] in px: the scroll that hides it. */
+    internal var heightPx = 0f
+    /** How far the list is from its top; the header never hides further, so no blank band opens above the first row. */
+    internal var scrolled: () -> Float = { Float.MAX_VALUE }
+    private fun maxHidden() = (scrolled() / maxOf(heightPx, minDistance)).coerceIn(0f, 1f)
+
+    suspend fun settle(target: Float) = androidx.compose.animation.core.animate(
+        hidden, target,
+        animationSpec = androidx.compose.animation.core.spring(stiffness = androidx.compose.animation.core.Spring.StiffnessMediumLow),
+    ) { value, _ -> hidden = value }
 
     /** Back in view, e.g. after a filter or search shrank the list and left nothing to scroll. */
-    fun show() {
-        visible = true
-        travelled = 0f
-    }
-
-    /** A tap, for chrome that also toggles by touch (the reader). */
-    fun toggle() {
-        visible = !visible
-        travelled = 0f
-    }
+    suspend fun show() = settle(0f)
 
     val connection = object : androidx.compose.ui.input.nestedscroll.NestedScrollConnection {
         override fun onPreScroll(
             available: androidx.compose.ui.geometry.Offset,
             source: androidx.compose.ui.input.nestedscroll.NestedScrollSource,
         ): androidx.compose.ui.geometry.Offset {
-            val dy = available.y
-            // A reversal restarts the count, so a small wobble never toggles the header.
-            if (dy != 0f && (dy > 0f) != (travelled > 0f)) travelled = 0f
-            travelled += dy
-            if (travelled < -Threshold) visible = false else if (travelled > Threshold) visible = true
+            hidden = (hidden - available.y / maxOf(heightPx, minDistance)).coerceIn(0f, maxHidden())
             return androidx.compose.ui.geometry.Offset.Zero
         }
-    }
 
-    private companion object { const val Threshold = 24f }
+        override suspend fun onPostFling(
+            consumed: androidx.compose.ui.unit.Velocity,
+            available: androidx.compose.ui.unit.Velocity,
+        ): androidx.compose.ui.unit.Velocity {
+            settle(if (hidden > 0.5f && maxHidden() >= 1f) 1f else 0f)
+            return androidx.compose.ui.unit.Velocity.Zero
+        }
+    }
 }
 
 /** Shows the header whenever [keys] (tab, query, filters, sort) change or the list is at its top. */
 @Composable
 fun AtharCollapsingHeader.ShowOnChange(listState: androidx.compose.foundation.lazy.LazyListState, vararg keys: Any?) {
     LaunchedEffect(*keys) { show() }
+    // Row 0's own offset: the index alone moves on once a row slides under the header's padding.
+    scrolled = {
+        val first = listState.layoutInfo.visibleItemsInfo.firstOrNull()
+        when {
+            first == null -> 0f
+            first.index == 0 -> -first.offset.toFloat()
+            else -> Float.MAX_VALUE
+        }
+    }
     LaunchedEffect(listState) {
         androidx.compose.runtime.snapshotFlow { listState.canScrollBackward }.collect { if (!it) show() }
     }
 }
 
 @Composable
-fun rememberAtharCollapsingHeader(): AtharCollapsingHeader = remember { AtharCollapsingHeader() }
+fun rememberAtharCollapsingHeader(): AtharCollapsingHeader {
+    val density = LocalDensity.current
+    return remember(density) { AtharCollapsingHeader(with(density) { 64.dp.toPx() }) }
+}
 
+/** The header itself: put it in a Box with the list, which takes [AtharCollapsingHeader.height] as its top padding. */
 @Composable
-fun AtharCollapsible(header: AtharCollapsingHeader, content: @Composable () -> Unit) {
-    androidx.compose.animation.AnimatedVisibility(
-        visible = header.visible,
-        enter = androidx.compose.animation.expandVertically() + androidx.compose.animation.fadeIn(),
-        exit = androidx.compose.animation.shrinkVertically() + androidx.compose.animation.fadeOut(),
-    ) { content() }
+fun AtharFloatingHeader(header: AtharCollapsingHeader, content: @Composable androidx.compose.foundation.layout.ColumnScope.() -> Unit) {
+    val density = LocalDensity.current
+    Column(
+        modifier = Modifier
+            .zIndex(1f)
+            .fillMaxWidth()
+            .onSizeChanged { header.height = with(density) { it.height.toDp() }; header.heightPx = it.height.toFloat() }
+            .graphicsLayer { translationY = -header.hidden * size.height }
+            .background(AtharTheme.colors.canvas),
+        content = content,
+    )
 }
 
 /**
@@ -571,6 +560,8 @@ fun AtharDownloadButton(
     tag: String,
     modifier: Modifier = Modifier,
 ) {
+    val actionAnchor = LocalAtharActionAnchor.current
+    var bounds by remember { mutableStateOf(Rect.Zero) }
     val colors = AtharTheme.colors
     val progress = when (transfer) {
         is TransferUi.Running -> transfer.progress
@@ -591,7 +582,7 @@ fun AtharDownloadButton(
         transfer is TransferUi.Failed -> "إعادة تنزيل $title"
         transfer is TransferUi.Paused -> "استئناف تنزيل $title، $label"
         finishing -> "جارٍ إنهاء تنزيل $title"
-        transfer is TransferUi.Running -> "إيقاف تنزيل $title مؤقتًا، $label"
+        transfer is TransferUi.Running -> "إلغاء تنزيل $title، $label"
         downloaded -> "$title محمّل، الحجم $sizeLabel. اضغط للإزالة"
         else -> "تنزيل $title، الحجم $sizeLabel"
     }
@@ -606,7 +597,8 @@ fun AtharDownloadButton(
             .width(56.dp)
             .defaultMinSize(minHeight = 48.dp)
             .clip(AtharCorners.Card)
-            .clickable(role = Role.Button, onClick = onClick)
+            .onGloballyPositioned { bounds = it.boundsInWindow() }
+            .clickable(role = Role.Button) { actionAnchor?.value = bounds; onClick() }
             .semantics {
                 contentDescription = description
                 if (transfer is TransferUi.Running && !finishing) {
@@ -628,7 +620,7 @@ fun AtharDownloadButton(
                     trackColor = colors.divider, strokeWidth = 2.5.dp,
                 )
                 if (!finishing) Icon(
-                    imageVector = if (transfer is TransferUi.Paused) AtharIcons.Play else AtharIcons.Pause,
+                    imageVector = if (transfer is TransferUi.Paused) AtharIcons.Play else AtharIcons.Close,
                     contentDescription = null, tint = tint, modifier = Modifier.size(11.dp),
                 )
             } else Icon(

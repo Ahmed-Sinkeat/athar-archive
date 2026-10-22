@@ -21,7 +21,8 @@ import com.atharchive.core.data.repository.ContentImporter
 import com.atharchive.core.data.repository.ContentCacheManager
 import com.atharchive.core.data.repository.ContentStoragePolicy
 import com.atharchive.core.data.repository.OfflineContentRebuilder
-import com.atharchive.core.data.repository.PersonalLibraryRepository
+import com.atharchive.core.data.db.user.UserCollectionEntity
+import com.atharchive.core.data.db.user.CollectionItemEntity
 import com.atharchive.core.data.repository.RetainedPackageStore
 import com.atharchive.core.data.db.content.ContentGenerationEntity
 import com.atharchive.core.data.archive.UserDataArchive
@@ -30,6 +31,10 @@ import java.io.ByteArrayInputStream
 import java.io.File
 import java.io.ByteArrayOutputStream
 import java.util.zip.GZIPOutputStream
+import kotlinx.coroutines.flow.first
+import com.atharchive.core.data.repository.toCatalogEntry
+import com.atharchive.core.data.repository.persons
+import com.atharchive.core.data.content.CatalogPerson
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import org.junit.After
@@ -64,6 +69,19 @@ class ContentDatabaseImportTest {
     fun tearDown() {
         content.close()
         user.close()
+    }
+
+    @Test
+    fun catalogPeopleAndEditionsSurviveStorageWhileAlternateEditionsStayOutOfLists() = runBlocking {
+        val primary = entry(1).copy(editions = listOf("alternate"))
+        val alternate = primary.copy(id = "alternate", editionOf = primary.id, edition = "Edited", editions = emptyList())
+        val person = CatalogPerson("author", "Author", 123, "Biography", listOf(primary.id))
+        ContentImporter(content).applyCatalog(CatalogDocument(2, listOf(primary, alternate), listOf(person)))
+        val dao = content.catalogDao()
+        assertEquals(listOf(primary.id), dao.observeCollection(primary.coll).first().map { it.id })
+        assertEquals(2, dao.editionsFor(primary.id).size)
+        assertEquals(alternate, dao.entity("alternate")!!.toCatalogEntry())
+        assertEquals(listOf(person), dao.generation()!!.persons())
     }
 
     @Test
@@ -257,22 +275,24 @@ class ContentDatabaseImportTest {
 
     @Test
     fun shelvesAndCollectionsSurviveContentRebuildAndCollectionRemovalOwnsNoContent() = runBlocking {
-        val library = PersonalLibraryRepository(user, nowMillis = { 42L }, newId = { "research" })
+        val dao = user.userDataDao()
         val entry = entry(100, "library-book")
         ContentImporter(content).applyCatalog(CatalogDocument(2, listOf(entry)))
         user.userDataDao().savePinnedDownload(PinnedDownloadEntity(entry.id, 1L, entry.pkg.hash))
-        library.setStatus(entry.id, LibraryStatus.READING)
-        val collectionId = library.createCollection("بحوث العقيدة")
-        library.addToCollection(collectionId, entry.id)
+        dao.saveLibraryEntry(LibraryEntryEntity(entry.id, LibraryStatus.READING, 42L, 42L))
+        val collectionId = "research"
+        dao.saveUserCollection(UserCollectionEntity(collectionId, "بحوث العقيدة", 42L, 42L))
+        dao.addCollectionItem(CollectionItemEntity(collectionId, entry.id, 42L))
 
-        library.deleteCollection(collectionId)
+        dao.removeCollection(collectionId)
 
         assertNotNull(content.catalogDao().entity(entry.id))
         assertEquals(LibraryStatus.READING, user.userDataDao().libraryEntries().single().status)
         assertNotNull(user.userDataDao().pinnedDownload(entry.id))
 
-        val rebuiltCollectionId = library.createCollection("بحوث العقيدة")
-        library.addToCollection(rebuiltCollectionId, entry.id)
+        val rebuiltCollectionId = "research"
+        dao.saveUserCollection(UserCollectionEntity(rebuiltCollectionId, "بحوث العقيدة", 42L, 42L))
+        dao.addCollectionItem(CollectionItemEntity(rebuiltCollectionId, entry.id, 42L))
 
         // Replace the disposable database object, rather than merely clearing its Room
         // tables, to model the destructive content-DB rebuild used after schema changes.
@@ -291,7 +311,7 @@ class ContentDatabaseImportTest {
         assertEquals("بحوث العقيدة", user.userDataDao().userCollections().single().title)
         assertEquals(entry.id, user.userDataDao().collectionItems().single().entityId)
 
-        library.deleteCollection(rebuiltCollectionId)
+        dao.removeCollection(rebuiltCollectionId)
 
         assertTrue(user.userDataDao().userCollections().isEmpty())
         assertTrue(user.userDataDao().collectionItems().isEmpty())

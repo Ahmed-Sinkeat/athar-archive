@@ -62,7 +62,7 @@ object ContentSearchSchema {
         connection.usePrepared(
             "INSERT INTO catalog_fts(titleNorm, personNorm, topicsNorm, id) VALUES (?, ?, ?, ?)",
         ) { insert ->
-            entities.asSequence().filter(ContentEntity::catalogPresent).forEach { entity ->
+            entities.asSequence().filter { it.catalogPresent && it.editionOf == null }.forEach { entity ->
                 insert.bindText(1, entity.titleNorm)
                 insert.bindText(2, ArNormalize.normalize(entity.personName.orEmpty()))
                 insert.bindText(3, ArNormalize.normalize(entity.topicsCsv.replace(',', ' ')))

@@ -1,5 +1,8 @@
 package com.atharchive.feature.reader
 
+import com.atharchive.ui.components.SoapLayer
+import com.atharchive.ui.components.rememberSoapTargets
+import com.atharchive.ui.components.soapTarget
 import com.atharchive.ui.theme.AtharCorners
 import com.atharchive.ui.theme.AtharTextSize
 import androidx.compose.foundation.background
@@ -47,6 +50,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.SolidColor
+import androidx.compose.ui.graphics.graphicsLayer
 import com.atharchive.ui.components.highlightMatches
 import com.atharchive.ui.icons.AtharIcons
 import com.atharchive.ui.theme.AtharEditorialFontFamily
@@ -94,70 +98,32 @@ fun ReaderPanel(
                 .background(colors.page)
                 .testTag("reader_panel"),
         ) {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 14.dp, end = 14.dp, top = 14.dp, bottom = 6.dp),
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
-                Column(Modifier.weight(1f)) {
-                    Text(
-                        text = state.bookTitle,
-                        color = colors.text,
-                        fontFamily = AtharEditorialFontFamily,
-                        fontWeight = FontWeight.Bold,
-                        fontSize = AtharTextSize.Title,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis,
-                    )
-                    Text(
-                        text = state.author,
-                        color = colors.secondary,
-                        style = MaterialTheme.typography.bodySmall,
-                        maxLines = 1,
-                    )
-                }
-                Box(
-                    modifier = Modifier
-                        .size(48.dp)
-                        .clickable(role = Role.Button, onClick = onDismiss)
-                        .testTag("reader_panel_close"),
-                    contentAlignment = Alignment.Center,
-                ) {
-                    Icon(
-                        imageVector = AtharIcons.Close,
-                        contentDescription = "إغلاق",
-                        tint = colors.secondary,
-                        modifier = Modifier.size(24.dp),
-                    )
-                }
-            }
-
-            Row(modifier = Modifier.fillMaxWidth().padding(horizontal = 8.dp)) {
-                // البحث is reached from the top search icon, not a second tab.
-                ReaderPanelTab.entries.filter { it != ReaderPanelTab.Search }.forEach { entry ->
-                    val selected = entry == tab
-                    Column(
-                        modifier = Modifier
-                            .weight(1f)
-                            .clickable(role = Role.Tab) { tab = entry }
-                            .padding(top = 8.dp)
-                            .testTag("reader_panel_tab_${entry.name.lowercase()}"),
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                    ) {
-                        Text(
-                            text = entry.label,
-                            color = if (selected) colors.accent else colors.secondary,
-                            style = MaterialTheme.typography.bodySmall,
-                            fontWeight = if (selected) FontWeight.Bold else FontWeight.Normal,
-                        )
-                        Spacer(Modifier.height(6.dp))
-                        Box(
-                            Modifier
-                                .width(38.dp)
-                                .height(1.5.dp)
-                                .background(if (selected) colors.accent else Color.Transparent),
-                        )
+            // No header and no ✕: the panel sits under the top bar, and the scrim or back closes it.
+            val tabs = ReaderPanelTab.entries.filter { it != ReaderPanelTab.Search }
+            val soap = rememberSoapTargets()
+            Box(Modifier.fillMaxWidth()) {
+                SoapLayer(soap, tabs.indexOf(tab), colors.accent, Modifier.matchParentSize(), corner = 1.dp)
+                Row(modifier = Modifier.fillMaxWidth().padding(horizontal = 8.dp)) {
+                    // البحث is reached from the top search icon, not a second tab.
+                    tabs.forEachIndexed { index, entry ->
+                        val selected = entry == tab
+                        Column(
+                            modifier = Modifier
+                                .weight(1f)
+                                .clickable(role = Role.Tab) { tab = entry }
+                                .padding(top = 12.dp)
+                                .testTag("reader_panel_tab_${entry.name.lowercase()}"),
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                        ) {
+                            Text(
+                                text = entry.label,
+                                color = if (selected) colors.accent else colors.secondary,
+                                style = MaterialTheme.typography.bodySmall,
+                                fontWeight = if (selected) FontWeight.Bold else FontWeight.Normal,
+                            )
+                            Spacer(Modifier.height(6.dp))
+                            Box(Modifier.width(38.dp).height(1.5.dp).soapTarget(soap, index)) // the soap underline lands here
+                        }
                     }
                 }
             }
@@ -331,52 +297,78 @@ private fun ContentsList(
     currentBlockIndex: Int,
     onJump: (Int) -> Unit,
 ) {
-    // "Current" is the last heading at or before the reading position, so a bab deep in a
-    // kitab still marks its own row rather than the kitab above it.
-    val activeAnchor = remember(state.toc, currentBlockIndex) {
-        state.toc.lastOrNull { it.blockIndex <= currentBlockIndex }?.anchor
-    }
+    val groups = remember(state.toc) { tocGroups(state.toc) }
+    // "Current" is the last entry at or before the reading position; its كتاب starts unfolded.
+    val active = remember(state.toc, currentBlockIndex) { state.toc.lastOrNull { it.blockIndex <= currentBlockIndex }?.anchor }
+    val activeGroup = groups.indexOfLast { g -> g.kitab?.anchor == active || g.abwab.any { it.anchor == active } }
+    var open by remember(groups) { mutableStateOf(setOfNotNull(groups.getOrNull(activeGroup)?.kitab?.anchor)) }
     LazyColumn(modifier = Modifier.fillMaxSize()) {
-        items(state.toc, key = { it.anchor }) { entry ->
-            val active = entry.anchor == activeAnchor
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .defaultMinSize(minHeight = 46.dp)
-                    .clickable(role = Role.Button) { onJump(entry.blockIndex) }
-                    .padding(
-                        start = 14.dp,
-                        end = if (entry.level >= 3) 30.dp else 14.dp,
-                        top = 10.dp,
-                        bottom = 10.dp,
-                    )
-                    .testTag("reader_toc_${entry.anchor}"),
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
-                if (active) {
-                    Box(
-                        Modifier
-                            .padding(end = 8.dp)
-                            .width(2.5.dp)
-                            .height(16.dp)
-                            .background(colors.accent),
-                    )
-                }
-                Text(
-                    text = entry.title,
-                    color = if (active) colors.accent else colors.text,
-                    fontFamily = AtharEditorialFontFamily,
-                    fontWeight = if (entry.level <= 2) FontWeight.Bold else FontWeight.Normal,
-                    fontSize = if (entry.level <= 2) 16.sp else 15.sp,
-                    lineHeight = 25.sp,
+        groups.forEachIndexed { index, group ->
+            val kitab = group.kitab
+            val unfolded = kitab == null || kitab.anchor in open
+            if (kitab != null) item(key = kitab.anchor) {
+                TocRow(
+                    entry = kitab,
+                    // A folded كتاب carries the mark for the باب hidden inside it.
+                    active = kitab.anchor == active || (!unfolded && index == activeGroup),
+                    colors = colors,
+                    onJump = onJump,
+                    fold = if (group.abwab.isEmpty()) null else unfolded,
+                    onFold = { open = if (unfolded) open - kitab.anchor else open + kitab.anchor },
                 )
             }
-            HorizontalDivider(
-                modifier = Modifier.padding(horizontal = 14.dp),
-                thickness = 0.7.dp,
-                color = colors.divider.copy(alpha = 0.6f),
-            )
+            if (unfolded) items(group.abwab, key = { it.anchor }) { bab ->
+                TocRow(bab, bab.anchor == active, colors, onJump, indent = kitab != null)
+            }
         }
+    }
+}
+
+@Composable
+private fun TocRow(
+    entry: TocEntry,
+    active: Boolean,
+    colors: ReaderColors,
+    onJump: (Int) -> Unit,
+    indent: Boolean = false,
+    fold: Boolean? = null,
+    onFold: () -> Unit = {},
+) {
+    val kitab = entry.level <= 2
+    Column {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .defaultMinSize(minHeight = 46.dp)
+                .clickable(role = Role.Button) { onJump(entry.blockIndex) }
+                .padding(start = if (indent) 30.dp else 14.dp, end = if (fold == null) 14.dp else 4.dp, top = 10.dp, bottom = 10.dp)
+                .testTag("reader_toc_${entry.anchor}"),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            if (active) Box(Modifier.padding(end = 8.dp).width(2.5.dp).height(16.dp).background(colors.accent))
+            Text(
+                text = entry.title,
+                modifier = Modifier.weight(1f),
+                color = if (active) colors.accent else colors.text,
+                fontFamily = AtharEditorialFontFamily,
+                fontWeight = if (kitab) FontWeight.Bold else FontWeight.Normal,
+                fontSize = if (kitab) 16.sp else 15.sp,
+                lineHeight = 25.sp,
+            )
+            if (entry.page.isNotEmpty()) Text(entry.page, Modifier.padding(start = 10.dp), color = colors.secondary, style = MaterialTheme.typography.labelMedium, maxLines = 1)
+            if (fold != null) Box(
+                Modifier.size(40.dp).clip(AtharCorners.Control).clickable(role = Role.Button, onClickLabel = if (fold) "طيّ الأبواب" else "عرض الأبواب", onClick = onFold),
+                contentAlignment = Alignment.Center,
+            ) {
+                Icon(
+                    AtharIcons.ChevronDown,
+                    contentDescription = if (fold) "طيّ الأبواب" else "عرض الأبواب",
+                    tint = colors.secondary,
+                    modifier = Modifier.size(18.dp).graphicsLayer { rotationZ = if (fold) 180f else 0f },
+                )
+            }
+        }
+        HorizontalDivider(modifier = Modifier.padding(start = if (indent) 30.dp else 14.dp, end = 14.dp), thickness = 0.7.dp, color = colors.divider.copy(alpha = 0.6f))
     }
 }
 

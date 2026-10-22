@@ -41,6 +41,7 @@ data class ExcerptUi(
     val kind: String = "highlight",
     val attachmentState: String = "exact",
     val sourceUrl: String = "",
+    val sourceColl: String = "book",
 )
 
 data class KannashahUiState(

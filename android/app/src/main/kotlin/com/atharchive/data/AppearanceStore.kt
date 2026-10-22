@@ -55,7 +55,9 @@ class AppearanceStore @Inject constructor(@ApplicationContext context: Context) 
             .putInt("reader_margin", settings.margin.coerceIn(12, 40))
             .putBoolean("reader_tashkeel", settings.showTashkeel)
             .putString("reader_footnote_mode", settings.footnoteMode.name)
-            .putBoolean("reader_page_numbers", settings.showPageNumbers)
+            .putBoolean("reader_page_numbers", !settings.continuous) // the old «أرقام الصفحات» key: hidden numbers = متصل
+            .putBoolean("poem_verse_numbers", settings.verseNumbers)
+            .putBoolean("poem_prose", settings.poemProse)
             .putString(KeySpacing, settings.spacing.name)
             .putString(KeyPalette, settings.palette.name)
             .apply()
@@ -80,7 +82,9 @@ class AppearanceStore @Inject constructor(@ApplicationContext context: Context) 
                 prefs.getString("reader_footnote_mode", null),
                 if (prefs.contains("reader_footnotes")) prefs.getBoolean("reader_footnotes", true) else null,
             ),
-            showPageNumbers = prefs.getBoolean("reader_page_numbers", true),
+            continuous = !prefs.getBoolean("reader_page_numbers", true),
+            verseNumbers = prefs.getBoolean("poem_verse_numbers", false),
+            poemProse = prefs.getBoolean("poem_prose", false),
         )
     }
 
@@ -107,7 +111,7 @@ enum class StartPlace(val label: String, val route: String?) {
     Books("الكتب", "books"),
     Poetry("الشعر", "poetry"),
     Search("البحث", "search"),
-    Audio("الصوتيات", "audio"),
+    Articles("المقالات", "articles"),
     Kannashah("الكناشة", "kannashah"),
     LastRead("آخر ما قرأت", null),
 }

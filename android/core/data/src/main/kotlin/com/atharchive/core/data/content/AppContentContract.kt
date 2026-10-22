@@ -61,6 +61,10 @@ data class ChapterRecord(
     val a: String,
     val title: String,
     val block: Int,
+    /** 3 = a باب listed under the preceding كتاب; blocks still belong to the كتاب. */
+    val lv: Int = 2,
+    val p: Int? = null,
+    val vol: Int? = null,
 )
 
 @Serializable
@@ -104,6 +108,9 @@ data class CatalogEntry(
     val v: Int,
     val hash: String,
     val title: String,
+    val editionOf: String? = null,
+    val edition: String? = null,
+    val editions: List<String> = emptyList(),
     val person: String? = null,
     val personName: String? = null,
     val died: Int? = null,
@@ -125,9 +132,13 @@ data class CatalogEntry(
 data class CardField(val l: String, val v: String, /** "h" heading, "li" list item, else a paragraph. */ val k: String? = null)
 
 @Serializable
+data class CatalogPerson(val id: String, val name: String, val died: Int? = null, val bio: String? = null, val works: List<String> = emptyList())
+
+@Serializable
 data class CatalogDocument(
     val schema: Int,
     val entries: List<CatalogEntry>,
+    val persons: List<CatalogPerson> = emptyList(),
 )
 
 @Serializable

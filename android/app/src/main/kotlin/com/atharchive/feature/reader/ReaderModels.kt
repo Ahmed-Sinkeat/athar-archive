@@ -95,7 +95,23 @@ data class TocEntry(
     val title: String,
     val level: Int,
     val blockIndex: Int,
+    /** Printed page the entry starts on, ready to show: «ص ٧٨», or «ج٢ · ص ٧٨» in a multi-volume book. */
+    val page: String = "",
 )
+
+/** A كتاب row with the أبواب under it. A blank-titled كتاب (the book's untitled opening) has no row: its أبواب stand alone. */
+data class TocGroup(val kitab: TocEntry?, val abwab: List<TocEntry>)
+
+fun tocGroups(toc: List<TocEntry>): List<TocGroup> {
+    val groups = mutableListOf<TocGroup>()
+    for (entry in toc) {
+        val last = groups.lastOrNull()
+        if (entry.level > 2 && last != null) groups[groups.lastIndex] = last.copy(abwab = last.abwab + entry)
+        else if (entry.level > 2) groups += TocGroup(null, listOf(entry))
+        else groups += TocGroup(entry.takeIf { it.title.isNotBlank() }, emptyList())
+    }
+    return groups.filter { it.kitab != null || it.abwab.isNotEmpty() }
+}
 
 data class ReaderBookmark(
     val id: String,
@@ -157,7 +173,7 @@ enum class ReaderSpacing(val label: String, val multiplier: Float) {
 
 enum class FootnoteMode(val label: String) {
     Footer("أسفل الصفحة"),
-    Tap("عند الضغط على الرقم"),
+    Tap("عند الضغط"),
 }
 
 data class ReaderSettings(
@@ -168,8 +184,13 @@ data class ReaderSettings(
     val showTashkeel: Boolean = true,
     /** Footnotes at the foot of the page, or a popup on tapping the number — never both. */
     val footnoteMode: FootnoteMode = FootnoteMode.Footer,
-    /** The page dividers («ص ١٢»). Hidden, the page-break block stays so ordinals never shift. */
-    val showPageNumbers: Boolean = true,
+    /** «متصل»: one long page, no page dividers or page-end notes (a number still opens its note).
+     *  The blocks stay as printed, so ordinals, highlights and selection never shift. */
+    val continuous: Boolean = false,
+    /** Poems: the verse number in the margin. */
+    val verseNumbers: Boolean = false,
+    /** Poems: each verse as one running line instead of two hemistichs. */
+    val poemProse: Boolean = false,
 ) {
     companion object {
         const val MIN_SIZE = 14
@@ -190,7 +211,10 @@ data class ReaderHighlight(
     val endOffset: Int,
 )
 
+data class ReaderEdition(val id: String, val label: String)
+
 data class ReaderUiState(
+    val editions: List<ReaderEdition> = emptyList(),
     val bookTitle: String,
     val author: String,
     val blocks: List<ReaderBlock>,
@@ -201,7 +225,7 @@ data class ReaderUiState(
     val highlights: List<ReaderHighlight> = emptyList(),
     val footnotes: Map<String, ReaderBlock.FootnoteBody> = emptyMap(),
     val sourceUrl: String = "",
-    /** The book's front matter (title page, editor's intro, manuscripts), shown as its «مقدمة» page. */
+    /** The book's front matter (title page, editor's intro, manuscripts), shown as its «مقدمة المحقق» page. */
     val card: List<CardField> = emptyList(),
 
     /** The automatically restored position; the reader opens here. */

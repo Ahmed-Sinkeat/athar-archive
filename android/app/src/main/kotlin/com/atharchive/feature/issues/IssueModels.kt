@@ -10,8 +10,8 @@ package com.atharchive.feature.issues
  */
 
 enum class IssueSort(val label: String) {
-    Newest("ترتيب الفهرس"),
     Question("المسألة"),
+    Newest("ترتيب الفهرس"),
     Scholar("المجيب"),
 }
 

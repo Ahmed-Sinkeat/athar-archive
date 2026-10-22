@@ -857,6 +857,39 @@ object AtharIcons {
         }
     }
 
+    /** [Articles] filled; the three text lines and the folded corner are cut out of the page. */
+    val ArticlesFilled: ImageVector by lazy {
+        icon("AtharArticlesFilled") {
+            path(stroke = Stroke, strokeLineWidth = 1.75f) {
+                moveTo(6f, 3.5f)
+                lineTo(15.1f, 3.5f)
+                lineTo(19.2f, 7.6f)
+                lineTo(19.2f, 20.5f)
+                lineTo(6f, 20.5f)
+                close()
+            }
+            path(fill = Fill, pathFillType = PathFillType.EvenOdd) {
+                moveTo(6f, 3.5f)
+                lineTo(15.1f, 3.5f)
+                lineTo(19.2f, 7.6f)
+                lineTo(19.2f, 20.5f)
+                lineTo(6f, 20.5f)
+                close()
+                roundRect(8.2f, 10.2f, 17f, 11.8f, 0.8f)
+                roundRect(8.2f, 13.7f, 17f, 15.3f, 0.8f)
+                roundRect(8.2f, 17.2f, 14.5f, 18.8f, 0.8f)
+                // The fold: a sliver along the corner's diagonal.
+                moveTo(14.3f, 3.5f)
+                lineTo(14.3f, 8.4f)
+                lineTo(19.2f, 8.4f)
+                lineTo(19.2f, 7.6f)
+                lineTo(15.1f, 7.6f)
+                lineTo(15.1f, 3.5f)
+                close()
+            }
+        }
+    }
+
     val SearchFilled: ImageVector by lazy {
         icon("AtharSearchFilled") {
             solid(1.7f) {

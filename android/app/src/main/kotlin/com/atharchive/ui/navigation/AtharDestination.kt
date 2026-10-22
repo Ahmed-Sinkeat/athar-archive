@@ -13,11 +13,11 @@ enum class AtharDestination(
     Books("books", "الكتب", AtharIcons.Books, AtharIcons.BooksFilled),
     Poetry("poetry", "الشعر", AtharIcons.Poetry, AtharIcons.PoetryFilled),
     Search("search", "البحث", AtharIcons.Search, AtharIcons.SearchFilled),
-    Audio("audio", "الصوتيات", AtharIcons.Audio, AtharIcons.AudioFilled),
+    Articles("articles", "المقالات", AtharIcons.Articles, AtharIcons.ArticlesFilled),
     Kannashah("kannashah", "الكناشة", AtharIcons.Kannashah, AtharIcons.KannashahFilled),
     ;
 
     companion object {
-        fun fromRoute(route: String): AtharDestination = entries.first { it.route == route }
+        fun fromRoute(route: String): AtharDestination = entries.firstOrNull { it.route == if (route == "audio") "articles" else route } ?: Books
     }
 }
