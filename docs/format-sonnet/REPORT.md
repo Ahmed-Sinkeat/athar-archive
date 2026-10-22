@@ -178,3 +178,4 @@
 | mutammimat-al-ajurrumiyyah | skipped | nothing to format (no notes) | none | none |
 | al-risalah-al-akmaliyyah | skipped | nothing to format (no notes) | none | none |
 | al-sabr-wal-thawab-alayhi | committed | card; import headings rejoined/un-headed | none | none |
+| tanzih-al-ashab | committed | 1 footnote anchor linked | none | none |
