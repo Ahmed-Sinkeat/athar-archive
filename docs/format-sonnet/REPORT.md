@@ -189,3 +189,4 @@
 | hukm-al-islam-fiman-zaama-anna-al-quran-mutanaqid | skipped | nothing to format (no notes) | none | none |
 | al-marad-wal-kaffarat | committed | card; import athar-text headings rejoined | none | none |
 | al-risalah-al-arshiyyah | skipped | REPORT ONLY: p1 notes [«الكتاب مرتبط بـ», «نسخ مصورة: ط المنيرية …»] are cover/publisher notes with no anchor (also '«الكتاب مرتبط بـ»' looks cut after بـ); nothing else to mark | none | none |
+| tafsir-abu-jaafar-tirmidhi | skipped | nothing to format (notes already linked 2/2) | none | none |
