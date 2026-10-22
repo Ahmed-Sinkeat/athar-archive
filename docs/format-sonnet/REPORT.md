@@ -206,3 +206,4 @@
 | al-mqdma-al-jzwlya-fy-al-nhw | committed | card; heading tails/numbers re-joined | none | none |
 | al-ju | committed | card; heading tails/numbers re-joined | none | none |
 | al-ahwal | committed | card; heading tails/numbers re-joined | none | none |
+| al-hawatif | committed | card; heading tails/numbers re-joined | none | none |
