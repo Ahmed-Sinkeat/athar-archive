@@ -130,3 +130,4 @@
 | al-qanaah-wal-taaffuf | committed | card; heading/cut-sentence fixes | none | none |
 | hrwf-al-maany-walsfat | committed | card; heading/cut-sentence fixes | none | none |
 | mudarat-al-nas | committed | card; heading/cut-sentence fixes | none | none |
+| wasaya-al-ulama-inda-hudur-al-mawt | committed | card; heading/cut-sentence fixes | none | none |
