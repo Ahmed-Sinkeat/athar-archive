@@ -10,3 +10,4 @@
 | mana-la-ilh-ila-al-lh-mhmd-bn-abd-al-whab | skipped | nothing to format (no notes; headings already in import form '[ ## h ]' with bracket text protected by gate) | none | none |
 | tahqiq-kalimat-al-ikhlas | skipped | nothing to format (no notes; one paragraph per page) | none | none |
 | ftyyan-ttalqan-btkfyr-al-jhmya | skipped | nothing to format (no notes; one paragraph per page) | none | none |
+| masalah-al-mahabbah-fil-abd | skipped | nothing to format (no notes; bracket-heading import form protected by gate) | none | none |
