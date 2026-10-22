@@ -32,3 +32,4 @@
 | al-muqaddimah-al-zahra-fil-imamah | skipped | nothing to format (no notes; one paragraph per page) | none | none |
 | risalah-fi-hukm-al-sihr-wal-kihanah | skipped | nothing to format (no notes; one paragraph per page) | none | none |
 | al-risalah-al-latifah-fi-usul-al-fiqh | skipped | nothing to format (no notes; one paragraph per page) | none | none |
+| al-ikhlas-wal-niyyah | committed | card, 51 import headings (athar text) rejoined into their items | none | none |
