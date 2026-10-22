@@ -186,3 +186,4 @@
 | aqeedat-ahl-al-sunnah-fil-mahdi | skipped | nothing to format (no notes) | none | none |
 | al-msayl-al-askryat-fy-al-nhw-al-arby | skipped | nothing to format (no notes) | none | none |
 | athaf-al-fadl-balfal-al-mbny-lghyr-al-faal | committed | card; import athar-text headings rejoined | none | none |
+| hukm-al-islam-fiman-zaama-anna-al-quran-mutanaqid | skipped | nothing to format (no notes) | none | none |
