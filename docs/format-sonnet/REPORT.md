@@ -39,3 +39,4 @@
 | wujub-tahkim-shariatillah | committed | 1 footnote anchor linked | none | none |
 | tryaq-al-ahzan-wrahh-al-abdan-al-sbr | committed | headings: cut punctuation/sentence tail rejoined | none | none |
 | qwasm-al-zhwr-ala-dar-al-ghrwr-al-zhd | committed | headings: cut punctuation/sentence tail rejoined | none | none |
+| aatrad-al-shrt-ala-al-shrt | committed | title-page card | none | none |
