@@ -165,3 +165,4 @@
 | al-wara | committed | card; import athar-text headings rejoined where present | none | none |
 | al-antkhab-lkshf-al-abyat-al-mshkla-al-iarab | committed | card; import athar-text headings rejoined where present | none | none |
 | al-tawbah-ibn-abi-al-dunya | committed | card; import athar-text headings rejoined where present | none | none |
+| al-amr-bil-maruf-ibn-taymiyyah | committed | card; import athar-text headings rejoined where present | none | none |
