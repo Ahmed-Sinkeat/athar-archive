@@ -167,3 +167,4 @@
 | al-tawbah-ibn-abi-al-dunya | committed | card; import athar-text headings rejoined where present | none | none |
 | al-amr-bil-maruf-ibn-taymiyyah | committed | card; import athar-text headings rejoined where present | none | none |
 | al-awliya-ibn-abi-al-dunya | committed | card; import athar-text headings rejoined where present | none | none |
+| fadl-ahl-al-bayt | skipped | nothing to format (no notes) | none | none |
