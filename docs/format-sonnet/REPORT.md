@@ -12,3 +12,4 @@
 | ftyyan-ttalqan-btkfyr-al-jhmya | skipped | nothing to format (no notes; one paragraph per page) | none | none |
 | masalah-al-mahabbah-fil-abd | skipped | nothing to format (no notes; bracket-heading import form protected by gate) | none | none |
 | fwayt-ktab-sybwyh | skipped | nothing to format (no notes; no editor front matter; page labels are text) | none | none |
+| tas-abd-al-shhwat | committed | headings: cut punctuation back into 11 headings, 1 heading rejoined into its sentence | none | none |
