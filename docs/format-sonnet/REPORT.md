@@ -126,3 +126,4 @@
 | qada-al-hawaij | committed | card; import athar-text headings rejoined; verses un-headed | none | none |
 | dqayq-al-mnhaj | committed | card; import athar-text headings rejoined; verses un-headed | none | none |
 | iarab-lamya-al-shnfra | committed | card; import athar-text headings rejoined; verses un-headed | none | none |
+| hl-mn-mshmr | skipped | nothing to format (no notes) | none | none |
