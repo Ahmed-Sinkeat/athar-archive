@@ -87,3 +87,4 @@
 | mahiyyat-al-aql | skipped | nothing to format (no notes; headings fine) | none | none |
 | al-nasihah-fi-sifat-al-rabb | skipped | nothing to format (no notes; headings fine) | none | none |
 | al-tahdhir-min-tazim-al-athar | skipped | nothing to format (no notes; headings fine) | none | none |
+| adab-al-ishrah | skipped | nothing to format (no notes; headings fine) | none | none |
