@@ -81,3 +81,4 @@
 | sharh-lamiyyat-ibn-al-wardi-musab | skipped | nothing to format (lecture transcript, no notes) | none | none |
 | al-aqeedah-riwayat-al-khallal | skipped | nothing to format (headings already correct) | none | none |
 | al-radd-ala-al-rafidah | committed | 1 footnote anchor linked | none | none |
+| al-wasitah-bayn-al-haqq-wal-khalq | skipped | REPORT ONLY: p16 note «هذا العنوان والعناوين فيما سيأتي وضعها المحقق» has no anchor in the text (the printed anchor is missing); nothing else to mark | none | none |
