@@ -112,3 +112,4 @@
 | khlash-al-jwahr-al-zkyh-fy-fqh-al-malkyh | committed | card; split word re-joined | none | none |
 | rsala-al-mbahth-al-mrdya | committed | card; split word re-joined | none | none |
 | fadl-ilm-al-salaf | skipped | nothing to format (no notes) | none | none |
+| mana-la-ilaha-illallah | skipped | nothing to format (no notes) | none | none |
