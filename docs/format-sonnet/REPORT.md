@@ -153,3 +153,4 @@
 | maqtal-ali | committed | card; headings re-joined with cut punctuation | none | none |
 | dhamm-al-malahi | committed | card; headings re-joined with cut punctuation | none | none |
 | qaidah-jamiah-fi-tawhidillah | skipped | nothing to format (no notes) | none | none |
+| khulasat-tadhim-al-ilm | skipped | nothing to format (no notes) | none | none |
