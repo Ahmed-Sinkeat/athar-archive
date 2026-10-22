@@ -185,3 +185,4 @@
 | sharh-al-aqeedah-al-wasitiyyah-adel-bin-azzouz | skipped | nothing to format (no notes) | none | none |
 | aqeedat-ahl-al-sunnah-fil-mahdi | skipped | nothing to format (no notes) | none | none |
 | al-msayl-al-askryat-fy-al-nhw-al-arby | skipped | nothing to format (no notes) | none | none |
+| athaf-al-fadl-balfal-al-mbny-lghyr-al-faal | committed | card; import athar-text headings rejoined | none | none |
