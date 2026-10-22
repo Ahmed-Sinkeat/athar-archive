@@ -16,3 +16,4 @@
 | al-alfaz-al-mhmwza | committed | title-page card | none | none |
 | ahthr-aaqbh-al-thnwb | committed | headings: cut punctuation/sentence tail rejoined into headings and opening sentence | none | none |
 | tthkr-rqabh-al-lh-taala | skipped | nothing to format (headings already correct) | none | none |
+| hl-shkrt-al-lh-ala-namh | skipped | nothing to format | none | none |
