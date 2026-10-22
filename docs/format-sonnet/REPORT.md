@@ -210,3 +210,4 @@
 | al-ltayf | committed | card; heading tails/numbers re-joined | none | none |
 | lys-fy-klam-al-arb | committed | card; heading tails/numbers re-joined | none | none |
 | kshf-al-awham-waliltbas-an-tshbyh-bad-al-aghbya-mn-al-nas | skipped | nothing to format (no notes) | none | none |
+| al-nafaqah-ala-al-iyal | committed | card; heading tails/numbers re-joined | none | none |
