@@ -78,3 +78,4 @@
 | all-al-tthnya | committed | title-page card | none | none |
 | mtn-al-ashmawyh | committed | title-page card | none | none |
 | mtn-al-akhdry-fy-al-abadat-ala-mthhb-al-amam-malk | committed | title-page card | none | none |
+| sharh-lamiyyat-ibn-al-wardi-musab | skipped | nothing to format (lecture transcript, no notes) | none | none |
