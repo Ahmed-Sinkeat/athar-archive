@@ -5,6 +5,7 @@ published_at: 2026-07-16
 person: abd-al-azyz-bn-mhmd-al-abd-al-ltyf
 topics: ["al-firaq-war-rudud"]
 edition: "الأولى، 1412 هـ"
+kind: كتاب
 ---
 <!-- card -->
 الإباضِيَّة..وهل هم خوارج؟ فضيلة الشيخ الدكتور عبد العزيز بن محمد آل عبد اللطيف

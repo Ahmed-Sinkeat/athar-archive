@@ -7,6 +7,7 @@ authored_year: 728
 topics: ["al-aqeedah-al-aamah", "al-asma-was-sifat", "al-qadr"]
 edition: "السادسة 1421هـ / 2000م"
 description: "بتحقيق د. محمد بن عودة السعوي"
+kind: كتاب
 ---
 ## [التدمرية: تحقيق الإثبات للأسماء والصفات وحقيقة الجمع بين القدر والشرع]ـ
 

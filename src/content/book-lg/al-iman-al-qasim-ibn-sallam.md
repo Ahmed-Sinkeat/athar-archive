@@ -1,5 +1,5 @@
 ---
-title: "الإيمان للقاسم بن سلام - محققا"
+title: "الإيمان للقاسم بن سلام"
 status: published
 published_at: 2026-07-03
 person: al-qasim-ibn-sallam
@@ -7,6 +7,7 @@ authored_year: 224
 topics: ["al-iman"]
 edition: "الأولى، 1421هـ -2000م"
 description: "بتحقيق محمد نصر الدين الألباني"
+kind: كتاب
 ---
 بسم الله الرحمن الرحيم توكلت على الله 1
 

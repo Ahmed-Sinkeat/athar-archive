@@ -1,5 +1,6 @@
 ---
 title: "المقدمة الآجرومية"
+edition: "طبعة المخطوطات"
 status: published
 published_at: 2026-07-06
 person: ibn-ajurrum

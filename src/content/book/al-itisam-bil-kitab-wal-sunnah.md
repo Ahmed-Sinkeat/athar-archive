@@ -5,12 +5,12 @@ published_at: 2026-07-04
 person: said-ibn-wahf-al-qahtani
 authored_year: 1440
 topics: ["al-samiyyat", "al-sunnah-wal-bidah"]
+kind: كتاب
 ---
 <!-- card -->
 رسائل سعيد بن علي بن وهف القحطاني الاعتصام بالكتاب والسنة أصل السعادة في الدنيا والآخرة ونجاة من مضلات الفتن تأليف الفقير إلى الله تعالى د. سعيد بن علي بن وهف القحطاني
-<!-- /card -->
-
 <hr class="page-sep" data-page="1" />
+<!-- /card -->
 
 بسم الله الرحمن الرحيم
 

@@ -1,6 +1,6 @@
 ---
 title: "ألفية ابن مالك"
-status: "published"
+status: draft
 published_at: "2026-07-22"
 person: "ibn-malik"
 topics: ["al-nahw"]

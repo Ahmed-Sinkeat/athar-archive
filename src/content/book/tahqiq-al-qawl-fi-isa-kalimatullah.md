@@ -7,6 +7,7 @@ authored_year: 728
 topics: ["al-aqeedah-al-aamah"]
 edition: "الأولى 1412هـ / 1992م"
 description: "بتحقيق قسم التحقيق بدار النشر"
+kind: كتاب
 ---
 ## رسالة في كلمة الله عيسى بن مريم وخلق القرآن
 
