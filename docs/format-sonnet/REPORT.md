@@ -60,3 +60,4 @@
 | maany-al-hrwf | committed | card; 5 headings that were cut mid-sentence rejoined | none | heading '## إن' / 'ه لا تكون' left (probable cut word) |
 | hwla-hm-khsmawk-ghda | committed | heading re-joined with its cut '؟' | none | none |
 | qatr-al-nada | committed | card | none | none |
+| al-aqeedah-al-sahihah-wa-ma-yudadduha | committed | 1 heading rejoined into its sentence | none | none |
