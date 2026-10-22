@@ -124,3 +124,4 @@
 | al-amr-bil-maruf-ibn-abi-al-dunya | committed | card; import athar-text headings rejoined; verses un-headed | none | none |
 | dhamm-al-ghibah-wal-namimah | committed | card; import athar-text headings rejoined; verses un-headed | none | none |
 | qada-al-hawaij | committed | card; import athar-text headings rejoined; verses un-headed | none | none |
+| dqayq-al-mnhaj | committed | card; import athar-text headings rejoined; verses un-headed | none | none |
