@@ -136,9 +136,11 @@ A quote inside a sentence stays inline.
 The title page and the editor's front matter (author line, edition, the editor's intro, manuscripts
 used) go between `<!-- card -->` and `<!-- /card -->`, closing right after the page marker before
 the matn's own opening. The app takes those lines out of the reading flow and shows them as the
-book's «مقدمة» page (⋮ → «مقدمة»), drawn like the book: `##` lines stay headings, `- ` lines stay
+book's «مقدمة المحقق» page (⋮ → «مقدمة المحقق»), drawn like the book: `##` lines stay headings, `- ` lines stay
 list items, `label: value` lines get a bold label; `[^x]` refs are dropped there. Page markers inside
-stay in the flow. **One pair per book**: the parser reads only the first. The website still shows the
+leave the flow with the card (each ends a page wholly inside it), so the text opens on its first
+page. Cut **only the editor's** front matter: the author's own مقدمة is part of the book and stays
+in the flow. **One pair per book**: the parser reads only the first. The website still shows the
 lines (the comments are invisible).
 
 ## Import errors
@@ -172,10 +174,7 @@ a gap from a different edition without asking.
 
 ## Not supported yet (needs code first)
 
-- **Joining a sentence split by a page break** is done by the app parser, not by editing the book:
-  a paragraph that doesn't end a sentence carries on into the next page's first paragraph
-  (`joinAcrossPages` in `src/lib/app-v2/parser.ts`). Leave page markers where they are. The website
-  still breaks there.
+- **Continuous reading** hides page dividers and page-end notes in the app. Paragraphs stay as printed; the parser never joins across pages.
 - **Removing printed page-number lines** (`-46`). That removes text, so the gate rejects it
   until it has an explicit allowlist.
 - **Verse styling on the website.** The site shows each verse as its own paragraph, brackets

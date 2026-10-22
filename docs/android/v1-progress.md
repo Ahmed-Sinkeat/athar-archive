@@ -101,3 +101,12 @@ Owner instruction: do not publish the app or upload new app content until explic
   [`2026-10-14-backlog.md`](2026-10-14-backlog.md). None of it is implemented yet.
 - Caveat: `android/app/build.gradle.kts` was reconstructed after an accidental revert — see the
   backlog §G.
+
+
+## 2026-10-21 — before-publish continuation (uncommitted, unpublished)
+
+Approved W1–W11 implementation is in the working tree; detailed states and remaining owner decisions are in [beforepublish.md](../beforepublish.md). The final signed local generation is `4a453251810def09`: 4,238 texts, 593 people and all 117 published recordings. Full artifact verification passes over 22,413 frames and 4,751,870 blocks. Both motion-preview benchmark APKs build and contain the exact verified catalog snapshot. TypeScript: 185 tests + type-check; Android: 26 app + 43 core JVM tests pass.
+
+The phone was disconnected before the final walk. Preliminary footnote/continuous/poem/menu flows were walked; refreshed people, editions, cards and full poem loading still need device checks. Room instrumentation remains blocked by Xiaomi’s test-APK installation restriction. Android 26/low-memory and tablet certification remain unrun.
+
+Release is **not certified**: the source audit reports 290 findings, and the explicit page-order census records 11,378 backward marker pairs in 146 imports. No printed pages were automatically renumbered. Three edition defaults, library-wide kind exceptions, the motion choice and publication itself still need the owner. Nothing was committed or uploaded.
