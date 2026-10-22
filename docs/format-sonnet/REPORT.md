@@ -67,3 +67,4 @@
 | atha-ardt-an-ykwn-daawk-mstjaba | skipped | nothing to format (headings already correct) | none | none |
 | ittiba-al-sunan-wa-ijtinab-al-bida | skipped | nothing to format (باب headings present; no notes) | none | none |
 | tahqiq-al-iman-ibn-taymiyyah | committed | title-page card | none | none |
+| al-umr-wal-shayb | committed | card | none | none |
