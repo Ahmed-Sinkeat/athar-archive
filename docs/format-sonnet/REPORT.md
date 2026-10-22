@@ -73,3 +73,4 @@
 | al-risalah-al-madaniyyah | committed | heading re-joined with its cut word | none | none |
 | mn-aml-salha-flnfsh | skipped | nothing to format (notes already linked 4/4, headings fine) | none | none |
 | jz-fy-msayl-an-aby-abd-al-lh-ahmd-bn-hnbl | committed | card; 14 headings that were hadith text rejoined into their numbered items | none | none |
+| jz-fy-msayl-an-aby-abd-al-lh-ahmd-bn-hnbl | committed | last split heading rejoined | none | none |
