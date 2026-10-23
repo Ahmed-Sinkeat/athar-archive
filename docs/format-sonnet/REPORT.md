@@ -303,3 +303,4 @@
 | slwh-al-ahzan-llajtnab-an-mjalsh-al-ahdath-walnswan | committed | card/heading fixes | none | none |
 | al-hasanah-wal-sayyiah | skipped | nothing to format (no notes) | none | none |
 | al-baith-ala-inkar-al-bida | skipped | nothing to format (no notes) | none | none |
+| ktab-amda-al-talb-lnyl-al-marb | skipped | nothing to format (no notes) | none | none |
