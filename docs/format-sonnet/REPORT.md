@@ -344,3 +344,4 @@
 | al-tlqyn-fy-al-fqh-al-malky | committed | card/heading fixes | none | none |
 | al-slah-wahkam-tarkha | skipped | nothing to format (notes already linked) | none | none |
 | iyjaz-al-taryf-fy-alm-al-tsryf | skipped | nothing to format (notes already linked) | none | none |
+| qtf-al-jny-al-dany-shrh-mqdma-rsala-abn-aby-zyd-al-qyrwany | committed | 10 footnote anchors linked | none | p48 note 3 has no anchor |
