@@ -448,3 +448,4 @@
 | kshf-ghyahb-al-zlam-an-awham-jla-al-awham | skipped | nothing to format (no notes) | none | none |
 | al-dar-al-akhrh-mhmd-hsan | committed | card/heading fixes | none | none |
 | al-wabil-al-sayyib | committed | card/heading fixes | none | none |
+| al-tfsyr-mn-snn-sayd-bn-mnswr-mkhrja | committed | card/heading fixes | none | none |
