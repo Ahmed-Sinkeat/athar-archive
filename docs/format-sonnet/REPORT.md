@@ -294,3 +294,4 @@
 | al-manhaj-al-qawim | skipped | nothing to format (no notes) | none | none |
 | taliq-ala-thalathat-al-usul-al-khalifi | skipped | nothing to format (no notes) | none | none |
 | ktab-akhsr-al-mkhtsrat-t-rkayz | committed | card/heading fixes (cut sentences & hadith-text headings rejoined) | none | none |
+| shrh-mkhtsr-al-sarm-al-mslwl-mhmd-hsn-abd-al-ghfar | committed | card/heading fixes (cut sentences & hadith-text headings rejoined) | none | none |
