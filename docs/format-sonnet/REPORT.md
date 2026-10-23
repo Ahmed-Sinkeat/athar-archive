@@ -363,3 +363,4 @@
 | al-qdr-llfryaby-mkhrja | committed | card/heading fixes | none | none |
 | ktab-dlyl-al-talb-lnyl-al-mtalb | skipped | nothing to format (no notes) | none | none |
 | msayl-hrb-al-krmany-ktab-al-tharh-t-aamr-bhjt | skipped | nothing to format (no notes) | none | none |
+| dlyl-al-talb-lnyl-al-mtalb | skipped | nothing to format (notes already linked) | none | none |
