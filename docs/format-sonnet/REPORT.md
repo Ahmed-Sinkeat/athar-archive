@@ -374,3 +374,5 @@
 | al-jama-labn-whb-t-mstfa-abw-al-khyr | committed | card/heading fixes | none | none |
 | al-mntqa-mn-ktab-mkarm-al-akhlaq-wmaalyha | committed | card/heading fixes | none | none |
 | al-intisar-li-ahl-al-sunnah-wal-hadith | committed | 11 footnote anchors linked | none | none |
+| hdhh-mfahymna | committed (partial) | anchors 51 | none | TODO 3 notes unlinked: pp 32,65(?),177,208,210 (anchors<notes) |
+| al-swaaq-al-mrsla-al-shhabya-ala-al-shbh-al-dahda-al-shamya | committed (partial) | anchors 229 | none | TODO 109 notes unlinked, 21 dead sups: pages 27,63,81,159,163,174(carried),181(carried),221,232,244,248,255,256 ... |
