@@ -456,3 +456,4 @@
 | al-astlam-fy-al-khlaf-byn-al-amamyn-al-shafay-waby-hnyfh | committed | card/heading fixes | none | none |
 | msayl-al-amam-ahmd-rwayh-aby-dawd-al-sjstany | committed | card/heading fixes | none | none |
 | all-al-nhw | committed | card/heading fixes | none | none |
+| aml-al-ywm-wallyla-labn-al-sny | committed | card/heading fixes | none | none |
