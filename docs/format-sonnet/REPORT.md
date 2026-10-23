@@ -345,3 +345,4 @@
 | al-slah-wahkam-tarkha | skipped | nothing to format (notes already linked) | none | none |
 | iyjaz-al-taryf-fy-alm-al-tsryf | skipped | nothing to format (notes already linked) | none | none |
 | qtf-al-jny-al-dany-shrh-mqdma-rsala-abn-aby-zyd-al-qyrwany | committed | 10 footnote anchors linked | none | p48 note 3 has no anchor |
+| al-majm-al-kbyr-lltbrany-mn-j | skipped | nothing to format (notes linked 597/603; 4 dead refs/6 unlinked are import-format [^x] items, REPORT ONLY) | none | none |
