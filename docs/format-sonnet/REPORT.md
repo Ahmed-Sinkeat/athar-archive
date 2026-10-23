@@ -265,3 +265,4 @@
 | al-uqubat | committed | card; hadith-text headings rejoined; glued headings split | none | none |
 | al-radd-ala-man-kadhdhaba-bil-ahadith-al-mahdi | skipped | nothing to format (no notes) | none | none |
 | al-br-walsla-llhsyn-bn-hrb | committed | card; hadith-text headings rejoined; glued headings split | none | none |
+| al-bda-labn-wdah | committed | card; hadith-text headings rejoined; glued headings split | none | none |
