@@ -383,3 +383,4 @@
 | sfa-al-jna-laby-naym-al-asbhany | committed | card/heading fixes | none | none |
 | sharh-sunan-ibn-majah-ahmad-al-bakri | skipped | nothing to format (no notes) | none | none |
 | al-msayl-al-hlbyat | skipped | nothing to format (notes already linked) | none | none |
+| akhyr-al-mdkhrat-shrh-akhsr-al-mkhtsrat | skipped | nothing to format (notes already linked) | none | none |
