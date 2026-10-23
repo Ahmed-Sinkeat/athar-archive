@@ -243,3 +243,4 @@
 | ktab-al-shmayl-al-mhmdya-lltrmdhy-t-al-jlymy | skipped | nothing to format (no notes) | none | none |
 | al-qraa-khlf-al-imam-llbkhary | committed | card; heading tails re-joined | none | none |
 | al-iydah-al-addy | skipped | nothing to format (no notes) | none | none |
+| al-iydah-al-addy | committed | 1 heading re-joined with its cut tanwin | none | none |
