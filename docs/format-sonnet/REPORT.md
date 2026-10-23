@@ -340,3 +340,4 @@
 | ahadyth-ismaayl-bn-jafr | committed | card/heading fixes | none | none |
 | al-thwr-llqasm-bn-slam | committed | card/heading fixes | none | none |
 | aqd-al-durar | skipped | nothing to format (no notes) | none | none |
+| al-amthal-al-qasim-ibn-sallam | committed | card/heading fixes | none | none |
