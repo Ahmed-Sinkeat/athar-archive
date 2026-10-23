@@ -255,3 +255,4 @@
 | shrh-al-taryf-bdrwry-al-tsryf | committed | card; hadith-text headings rejoined/un-headed; cut words re-joined | none | none |
 | shrh-al-ajrwmya-mhmd-hsn-abd-al-ghfar | committed | card; hadith-text headings rejoined/un-headed; cut words re-joined | none | none |
 | umdat-al-fiqh-sharh-al-khalifi-taharah | skipped | nothing to format (no notes) | none | none |
+| iynas-al-nas-btfaha-aby-jafr-al-nhas | skipped | nothing to format (note already linked 1/1) | none | none |
