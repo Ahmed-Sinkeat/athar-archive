@@ -402,3 +402,4 @@
 | msayl-khalf-fyha-rswl-al-lh-ahl-al-jahlya | committed | card/heading fixes (cut sentence rejoined) | none | none |
 | al-gharib-al-musannaf-al-qasim-ibn-sallam | skipped | nothing to format (no notes) | none | none |
 | fadail-al-quran-al-qasim-ibn-sallam | committed | card/heading fixes (cut sentence rejoined) | none | none |
+| aswl-al-nhw-jamaa-al-mdyna-2 | committed | card/heading fixes (cut sentence rejoined) | none | none |
