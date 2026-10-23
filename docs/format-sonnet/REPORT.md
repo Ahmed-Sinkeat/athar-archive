@@ -307,3 +307,4 @@
 | marham-al-ilal-al-mudilah | skipped | nothing to format (no notes) | none | none |
 | qaidah-azimah-fil-farq-bayn-ibadat | committed | anchors 274 (110 pages) | none | none |
 | al-amda-fy-iarab-al-brda-qsyda-al-bwsyry | skipped | nothing to format (notes already linked 670/670) | none | none |
+| al-brahyn-al-islamya-fy-rd-al-shbha-al-farsya | committed (partial) | anchors 220, cut notes merged 31 | none | TODO pages 44,46,50,56,59,69,72,75,78,83,88,94,103,107: notes>anchors, cut not decidable; 35 dead sups + 50 unlinked notes left |
