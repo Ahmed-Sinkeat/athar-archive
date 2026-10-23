@@ -445,3 +445,4 @@
 | taysir-latif-mannan | committed | card/heading fixes | none | none |
 | taliq-ala-al-ibanah-al-sughra | skipped | nothing to format (no notes) | none | none |
 | akam-al-marjan | skipped | nothing to format (no notes) | none | none |
+| kshf-ghyahb-al-zlam-an-awham-jla-al-awham | skipped | nothing to format (no notes) | none | none |
