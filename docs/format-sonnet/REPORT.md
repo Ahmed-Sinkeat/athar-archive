@@ -399,3 +399,4 @@
 | tafsir-mawdui-1-madinah-univ | committed | card/heading fixes (cut sentence rejoined) | none | none |
 | talqih-al-afham-al-aliyyah | skipped | nothing to format (notes already linked) | none | none |
 | amda-al-ktab-laby-jafr-al-nhas | committed | card/heading fixes (cut sentence rejoined) | none | none |
+| msayl-khalf-fyha-rswl-al-lh-ahl-al-jahlya | committed | card/heading fixes (cut sentence rejoined) | none | none |
