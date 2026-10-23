@@ -284,3 +284,4 @@
 | shrh-mdhahb-ahl-al-sna-labn-shahyn | skipped | nothing to format (no notes) | none | none |
 | shrh-thlatha-al-aswl-lkhald-al-mslh | skipped | nothing to format (no notes) | none | none |
 | al-ishraf-fi-manazil-al-ashraf | skipped | nothing to format (no notes) | none | none |
+| makarim-al-akhlaq-ibn-abi-al-dunya | skipped | nothing to format (no notes) | none | none |
