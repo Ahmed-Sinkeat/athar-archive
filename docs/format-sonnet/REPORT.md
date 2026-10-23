@@ -239,3 +239,4 @@
 | al-riqqah-wal-buka | committed | card; heading tails re-joined | none | none |
 | mwsl-al-tlab-ila-qwaad-al-iarab | committed | card; heading tails re-joined | none | none |
 | shrh-al-mnzwma-al-hayya-labn-aby-dawd | skipped | nothing to format (no notes) | none | none |
+| shrh-lamya-shykh-al-islam | skipped | nothing to format (no notes) | none | none |
