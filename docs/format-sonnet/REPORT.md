@@ -280,3 +280,4 @@
 | al-jml-fy-al-nhw | committed | card; hadith-text headings rejoined; glued heading split | none | none |
 | shrh-kshf-al-shbhat-lkhald-al-mslh | skipped | nothing to format (no notes) | none | none |
 | usul-al-iman-ibn-abdul-wahhab | committed | anchors 33, cut notes merged 17 | none | UNSURE p58 split of notes 1-7/8-9 |
+| al-furqan-bayn-awliya-al-rahman | skipped | nothing to format (no notes) | none | none |
