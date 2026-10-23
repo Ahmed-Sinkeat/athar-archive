@@ -351,3 +351,4 @@
 | al-mrasyl-laby-dawd | committed | card/heading fixes | none | none |
 | al-sna-llmrwzy | committed | card/heading fixes | none | none |
 | shrh-nzm-aqyda-al-sfaryny | skipped | nothing to format (no notes) | none | none |
+| al-tbyyn-an-mdhahb-al-nhwyyn | committed | card/heading fixes | none | none |
