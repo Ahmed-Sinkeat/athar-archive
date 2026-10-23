@@ -6,6 +6,7 @@ person: ibn-abi-al-dunya
 topics: ["al-samiyyat"]
 authored_year: 281
 ---
+<!-- card -->
 # بطاقة الكتاب وفهرس الموضوعات
 
 الكتاب: المنامات
@@ -93,6 +94,7 @@ authored_year: 281
 [التعريف بالكتاب , نقلا عن موقع جامع الحديث]
 
 صفحة المؤلف: []
+<!-- /card -->
 
 ## عرض أعمال الأحياء على الأموات
 
@@ -162,9 +164,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="16" />
 
-## هل يعرف الميت ثناء الناس عليه
-
-؟
+## هل يعرف الميت ثناء الناس عليه؟
 
 <hr class="page-sep" data-page="17" />
 
@@ -268,9 +268,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="30" />
 
-## كيف وجدت طعم الموت
-
-؟
+## كيف وجدت طعم الموت؟
 
 <hr class="page-sep" data-page="31" />
 
@@ -1248,9 +1246,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="98" />
 
-## هل تعرف العيناء
-
-؟
+## هل تعرف العيناء؟
 
 <hr class="page-sep" data-page="98" />
 
@@ -2004,9 +2000,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="140" />
 
-## هل رأى أحد منكم رؤيا
-
-؟
+## هل رأى أحد منكم رؤيا؟
 
 <hr class="page-sep" data-page="140" />
 
