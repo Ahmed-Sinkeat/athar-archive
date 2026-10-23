@@ -417,3 +417,4 @@
 | mnhaj-al-talbyn-wamdh-al-mftyn-fy-al-fqh | skipped | nothing to format (notes already linked) | none | none |
 | tafsir-ayat-ibn-abd-al-wahhab | skipped | nothing to format (notes already linked) | none | none |
 | tajyl-al-nda-bshrh-qtr-al-nda | skipped | nothing to format (notes already linked) | none | none |
+| mthkrh-al-qwl-al-rajh-ma-al-dlyl-al-slah | skipped | nothing to format (notes already linked) | none | none |
