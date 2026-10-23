@@ -37,6 +37,7 @@ data class AudioUi(
     val recentRank: Int? = null,
     val sourceEntityId: String = "",
     val transfer: com.atharchive.feature.downloads.TransferUi? = null,
+    val bytes: Long = 0,
 )
 
 data class NowPlayingUi(

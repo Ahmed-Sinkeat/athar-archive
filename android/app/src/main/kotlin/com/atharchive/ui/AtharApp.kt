@@ -656,11 +656,13 @@ fun AtharApp(
                 entry<DownloadsRoute> { route ->
                     LaunchedEffect(Unit) { contentViewModel.refreshCacheBytes() }
                     val downloadItems by contentViewModel.downloads.collectAsStateWithLifecycle()
+                    val bulkRows by contentViewModel.bulkDownloads.collectAsStateWithLifecycle()
                     DownloadsScreen(
                         targetId = route.targetId,
                         state = DownloadsUiState(
                             transfers = downloadItems.filter { it.transfer != null },
                             downloaded = downloadItems.filter { it.transfer == null },
+                            bulk = bulkRows,
                             storage = StorageUi(
                                 pinnedCountLabel = com.atharchive.data.arabicCount(pinnedCount, "لا عناصر", "عنصر واحد", "عنصران", "عناصر", "عنصرًا"),
                                 cacheLabel = com.atharchive.data.byteSize(cacheBytes),
@@ -690,6 +692,8 @@ fun AtharApp(
                             if (it.transfer == null) pendingRemoval = DownloadRemoval(it.id, it.title, it.sizeLabel)
                             else contentViewModel.removeDownload(it.id)
                         },
+                        onDownloadAll = { contentViewModel.downloadAll(it.items) },
+                        onRemoveMany = { items -> items.forEach { contentViewModel.removeDownload(it.id) } },
                     )
                 }
                 entry<SectionRoute> { route ->

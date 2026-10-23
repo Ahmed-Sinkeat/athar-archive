@@ -46,6 +46,8 @@ data class DownloadUi(
     val sizeLabel: String,
     /** null once the package is verified and imported. */
     val transfer: TransferUi? = null,
+    /** What removing it frees; summed for «حذف (n)». */
+    val bytes: Long = 0,
 )
 
 /**
@@ -69,6 +71,7 @@ data class DownloadsUiState(
     val storage: StorageUi,
     val transfers: List<DownloadUi>,
     val downloaded: List<DownloadUi>,
+    val bulk: List<BulkRowUi> = emptyList(),
 )
 
 val DownloadsFixture = DownloadsUiState(
@@ -159,4 +162,30 @@ fun downloadsUiState(
         }
     }
     return DownloadsUiState(storage = storage, transfers = transfers, downloaded = downloaded)
+}
+
+/** One not-yet-downloaded thing «تنزيل الكل» can fetch: a work's text package or one recording. */
+data class BulkCandidate(val coll: String, val audio: Boolean, val id: String, val bytes: Long)
+
+data class BulkRowUi(val label: String, val items: List<BulkCandidate>) {
+    val bytes: Long = items.sumOf { it.bytes }
+}
+
+private val BulkSections = listOf("book" to "الكتب", "poem" to "القصائد", "article" to "المقالات")
+
+/**
+ * The whole library, then each section, split into نصوص / صوت. Callers pass only what is not
+ * downloaded yet, so a finished row simply disappears. Adhkar ship inside the app: no row.
+ */
+fun bulkRows(candidates: List<BulkCandidate>): List<BulkRowUi> = buildList {
+    fun group(name: String, all: List<BulkCandidate>, combined: Boolean) {
+        // A recording shared by two works is still one file.
+        val items = all.distinctBy { it.audio to it.id }
+        val (audio, text) = items.partition { it.audio }
+        if (combined && text.isNotEmpty() && audio.isNotEmpty()) add(BulkRowUi(name, items))
+        if (text.isNotEmpty()) add(BulkRowUi("$name · نصوص", text))
+        if (audio.isNotEmpty()) add(BulkRowUi("$name · صوت", audio))
+    }
+    group("المكتبة كاملة", candidates, combined = true)
+    BulkSections.forEach { (coll, name) -> group(name, candidates.filter { it.coll == coll }, combined = false) }
 }
