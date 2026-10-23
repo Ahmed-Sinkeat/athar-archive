@@ -254,3 +254,4 @@
 | al-shafya-fy-alm-al-tsryf-walwafya-nzm-al-shafya | committed | card; hadith-text headings rejoined/un-headed; cut words re-joined | none | none |
 | shrh-al-taryf-bdrwry-al-tsryf | committed | card; hadith-text headings rejoined/un-headed; cut words re-joined | none | none |
 | shrh-al-ajrwmya-mhmd-hsn-abd-al-ghfar | committed | card; hadith-text headings rejoined/un-headed; cut words re-joined | none | none |
+| umdat-al-fiqh-sharh-al-khalifi-taharah | skipped | nothing to format (no notes) | none | none |
