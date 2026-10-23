@@ -309,3 +309,4 @@
 | al-amda-fy-iarab-al-brda-qsyda-al-bwsyry | skipped | nothing to format (notes already linked 670/670) | none | none |
 | al-brahyn-al-islamya-fy-rd-al-shbha-al-farsya | committed (partial) | anchors 220, cut notes merged 31 | none | TODO pages 44,46,50,56,59,69,72,75,78,83,88,94,103,107: notes>anchors, cut not decidable; 35 dead sups + 50 unlinked notes left |
 | tafsir-juz-amma-abd-al-malik | skipped | nothing to format (notes already linked) | none | none |
+| maalm-trbwyh-ltalby-asna-al-wlayat-al-shrayh | skipped | nothing to format (notes already linked) | none | none |
