@@ -269,3 +269,4 @@
 | dhamm-al-dunya | skipped | nothing to format (no notes) | none | none |
 | fatawa-muhimmah-li-umum-al-ummah | committed | card; hadith-text headings rejoined; glued headings split | none | none |
 | lughat-al-quran | skipped | nothing to format (notes already linked) | none | none |
+| mkhtsr-al-khrqa | skipped | nothing to format (notes already linked) | none | none |
