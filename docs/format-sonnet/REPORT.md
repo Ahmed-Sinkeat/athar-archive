@@ -367,3 +367,4 @@
 | arshad-al-salk-ala-ashrf-al-msalk-fy-fqh-al-amam-malk | skipped | nothing to format (notes linked 218/233; 15 notes without anchor: REPORT ONLY) | none | none |
 | majm-asamy-shywkh-aby-bkr-al-ismaayly | committed | card/heading fixes | none | none |
 | tadhkirat-al-arib-ibn-al-jawzi | committed | card/heading fixes | none | none |
+| fdayl-al-awqat-llbyhqy | committed | card/heading fixes | none | none |
