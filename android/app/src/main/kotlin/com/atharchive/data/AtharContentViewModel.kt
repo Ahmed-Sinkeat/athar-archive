@@ -495,7 +495,7 @@ class AtharContentViewModel @Inject constructor(
             }
             personalLibrary.recordOpened("audio:$audioId")
             // The decoded catalog is already in memory while anything audio is on screen.
-            val references = (audioSources.first()).flatMap { it.second }.associateBy { it.id }
+            val references = audioSources.first().flatMap { (_, refs) -> refs.map { it.first } }.associateBy { it.id }
             val items = queue.map { recording ->
                 MediaItem.Builder().setMediaId(recording.id).setCustomCacheKey(recording.id).setUri(content.audioUri(requireNotNull(references[recording.id])))
                     .setMediaMetadata(MediaMetadata.Builder().setTitle(recording.title).setArtist(recording.speaker).build()).build()
@@ -564,7 +564,7 @@ class AtharContentViewModel @Inject constructor(
                     job.partial(),
                 )
             } + sources.flatMap { (source, refs) ->
-                refs.map { ref ->
+                refs.map { (ref, _) ->
                     val job = jobs["content:audio:${ref.id}"]
                     BulkCandidate(
                         source.coll, audio = true, ref.id, ref.size,
