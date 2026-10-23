@@ -304,3 +304,4 @@
 | al-hasanah-wal-sayyiah | skipped | nothing to format (no notes) | none | none |
 | al-baith-ala-inkar-al-bida | skipped | nothing to format (no notes) | none | none |
 | ktab-amda-al-talb-lnyl-al-marb | skipped | nothing to format (no notes) | none | none |
+| marham-al-ilal-al-mudilah | skipped | nothing to format (no notes) | none | none |
