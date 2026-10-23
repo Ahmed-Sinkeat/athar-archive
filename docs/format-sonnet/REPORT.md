@@ -234,3 +234,4 @@
 | al-aqtrah-fy-aswl-al-nhw-t-al-qlm | skipped | nothing to format (notes already linked 2/2) | none | none |
 | al-thfa-al-snya-shrh-mnzwma-abn-aby-dawd-al-hayya | skipped | model book, already formatted | none | none |
 | al-rsalh-llqyrwany | committed | card; heading tails re-joined | none | none |
+| al-adab-al-nafah-balalfaz-al-mkhtarh-al-jamah | committed | card; heading tails re-joined | none | none |
