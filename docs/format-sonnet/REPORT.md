@@ -358,3 +358,4 @@
 | shrh-qtr-al-nda-wbl-al-sda | committed | card/heading fixes | none | none |
 | al-antsar-lsybwyh-ala-al-mbrd | skipped | nothing to format (no notes) | none | none |
 | kyf-tsbh-aalma | committed | card/heading fixes | none | none |
+| al-tanbih-wal-radd-ala-ahl-al-ahwa | skipped | nothing to format (no notes) | none | none |
