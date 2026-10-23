@@ -281,3 +281,4 @@
 | shrh-kshf-al-shbhat-lkhald-al-mslh | skipped | nothing to format (no notes) | none | none |
 | usul-al-iman-ibn-abdul-wahhab | committed | anchors 33, cut notes merged 17 | none | UNSURE p58 split of notes 1-7/8-9 |
 | al-furqan-bayn-awliya-al-rahman | skipped | nothing to format (no notes) | none | none |
+| shrh-mdhahb-ahl-al-sna-labn-shahyn | skipped | nothing to format (no notes) | none | none |
