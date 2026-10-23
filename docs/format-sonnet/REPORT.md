@@ -449,3 +449,4 @@
 | al-dar-al-akhrh-mhmd-hsan | committed | card/heading fixes | none | none |
 | al-wabil-al-sayyib | committed | card/heading fixes | none | none |
 | al-tfsyr-mn-snn-sayd-bn-mnswr-mkhrja | committed | card/heading fixes | none | none |
+| msayl-hrb-al-krmany-mn-awl-ktab-al-slah-t-al-ghamdy | skipped | nothing to format (notes already linked 2082/2096) | none | none |
