@@ -332,3 +332,4 @@
 | tthbyt-al-imama-wtrtyb-al-khlafa-laby-naym-al-asbhany | committed | card/heading fixes | none | none |
 | shrh-al-dr-al-ndyd-fy-ikhlas-klma-al-twhyd | skipped | nothing to format (no notes) | none | none |
 | shrh-al-aqyda-al-wastya-abd-al-krym-al-khdyr | skipped | nothing to format (no notes) | none | none |
+| mn-ajayb-al-daa-al-jz-al-thany | skipped | nothing to format (notes already linked) | none | none |
