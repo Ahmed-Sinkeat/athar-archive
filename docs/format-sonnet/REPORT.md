@@ -315,3 +315,4 @@
 | khbaya-al-zwaya | committed | card/heading fixes (cut sentences rejoined) | none | none |
 | amaly-abn-smawn-al-waaz | committed | card/heading fixes (cut sentences rejoined) | none | none |
 | al-intisar-lil-sahabah-al-akhyar | skipped | nothing to format (no notes) | none | none |
+| tashil-al-fawaid | committed | card/heading fixes (cut sentences rejoined) | none | none |
