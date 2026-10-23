@@ -370,3 +370,4 @@
 | fdayl-al-awqat-llbyhqy | committed | card/heading fixes | none | none |
 | al-qawaid-al-fiqhiyyah-bayn-al-asalah-wal-tawjih | committed | card/heading fixes | none | none |
 | al-zhd-laby-dawd | committed | card/heading fixes | none | none |
+| rwya-al-lh-lldarqtny | committed | card/heading fixes | none | none |
