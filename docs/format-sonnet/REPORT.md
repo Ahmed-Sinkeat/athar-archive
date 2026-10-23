@@ -453,3 +453,4 @@
 | shrh-zad-al-mstqna-llshnqyty-ktab-al-tharh | skipped | nothing to format (notes already linked 2082/2096) | none | none |
 | al-snn-al-warda-fy-al-ftn-lldany | committed | card/heading fixes | none | none |
 | shrh-zad-al-mstqna-llshnqyty-ktab-al-tharh | skipped | nothing to format (notes already linked) | none | none |
+| al-astlam-fy-al-khlaf-byn-al-amamyn-al-shafay-waby-hnyfh | committed | card/heading fixes | none | none |
