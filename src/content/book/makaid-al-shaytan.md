@@ -6,6 +6,7 @@ person: ibn-abi-al-dunya
 topics: ["tazkiyat-al-nafs"]
 authored_year: 281
 ---
+<!-- card -->
 # بطاقة الكتاب وفهرس الموضوعات
 
 الكتاب: مكائد الشيطان
@@ -17,6 +18,7 @@ authored_year: 281
 عدد الصفحات: ٩٧
 
 صفحة المؤلف: []
+<!-- /card -->
 
 مكائد الشيطان
 
@@ -92,9 +94,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="28" />
 
-## العاصم من مكائد الشيطان
-
-.
+## العاصم من مكائد الشيطان.
 
 <hr class="page-sep" data-page="29" />
 
@@ -130,9 +130,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="29" />
 
-## ماذا تفعل عند رؤية الغيلان
-
-.
+## ماذا تفعل عند رؤية الغيلان.
 
 <hr class="page-sep" data-page="30" />
 
@@ -148,9 +146,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="31" />
 
-## آية الكرسي تعصم من الشيطان
-
-.
+## آية الكرسي تعصم من الشيطان.
 
 <hr class="page-sep" data-page="31" />
 
@@ -316,9 +312,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="45" />
 
-## هل للزلزال صلة بالشيطان
-
-؟
+## هل للزلزال صلة بالشيطان؟
 
 <hr class="page-sep" data-page="46" />
 
@@ -500,9 +494,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="60" />
 
-## هل الشيطان يجري من ابن آدم مجرى الدم
-
-؟
+## هل الشيطان يجري من ابن آدم مجرى الدم؟
 
 <hr class="page-sep" data-page="60" />
 
@@ -916,9 +908,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="91" />
 
-## هل كان إبليس من أشراف الملائكة
-
-؟
+## هل كان إبليس من أشراف الملائكة؟
 
 <hr class="page-sep" data-page="91" />
 
@@ -960,9 +950,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="95" />
 
-## ملائكة الرحمن تحفظ المؤمن من الجان
-
-.
+## ملائكة الرحمن تحفظ المؤمن من الجان.
 
 <hr class="page-sep" data-page="96" />
 

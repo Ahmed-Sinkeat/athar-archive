@@ -6,6 +6,7 @@ person: ibn-abi-al-dunya
 topics: ["tazkiyat-al-nafs"]
 authored_year: 281
 ---
+<!-- card -->
 # بطاقة الكتاب وفهرس الموضوعات
 
 الكتاب: الإخوان
@@ -85,6 +86,7 @@ authored_year: 281
 [التعريف بالكتاب , نقلا عن موقع جامع الحديث]
 
 صفحة المؤلف: []
+<!-- /card -->
 
 ١ -
 
@@ -184,9 +186,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="70" />
 
-## باب الرغبة في الإخوان والحث عليهم
-
-.
+## باب الرغبة في الإخوان والحث عليهم.
 
 <hr class="page-sep" data-page="71" />
 
@@ -382,9 +382,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="114" />
 
-## باب إعلام الرجل أخاه بشدة مودته إياه
-
-.
+## باب إعلام الرجل أخاه بشدة مودته إياه.
 
 <hr class="page-sep" data-page="115" />
 
@@ -580,9 +578,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="155" />
 
-## باب في إغباب الزيارة
-
-.
+## باب في إغباب الزيارة.
 
 <hr class="page-sep" data-page="156" />
 
@@ -648,9 +644,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="162" />
 
-## باب في ذكر مصافحة أهل المودة
-
-.
+## باب في ذكر مصافحة أهل المودة.
 
 <hr class="page-sep" data-page="163" />
 
@@ -682,9 +676,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="171" />
 
-## باب مصافحة أهل المودة
-
-.
+## باب مصافحة أهل المودة.
 
 <hr class="page-sep" data-page="172" />
 
@@ -712,9 +704,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="177" />
 
-## باب في معانقة الإخوان
-
-.
+## باب في معانقة الإخوان.
 
 <hr class="page-sep" data-page="179" />
 
@@ -798,9 +788,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="193" />
 
-## باب في تقبيل الإخوان
-
-.
+## باب في تقبيل الإخوان.
 
 <hr class="page-sep" data-page="195" />
 
@@ -856,9 +844,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="200" />
 
-## باب في سخاء النفس بالبذل للإخوان
-
-.
+## باب في سخاء النفس بالبذل للإخوان.
 
 <hr class="page-sep" data-page="201" />
 

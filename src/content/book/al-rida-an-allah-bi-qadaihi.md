@@ -6,6 +6,7 @@ person: ibn-abi-al-dunya
 topics: ["tazkiyat-al-nafs"]
 authored_year: 281
 ---
+<!-- card -->
 # بطاقة الكتاب وفهرس الموضوعات
 
 الكتاب: الرضا عن الله بقضائه
@@ -67,6 +68,7 @@ authored_year: 281
 [التعريف بالكتاب , نقلا عن موقع جامع الحديث]
 
 صفحة المؤلف: []
+<!-- /card -->
 
 ## حال المؤمن كله خير
 
@@ -182,9 +184,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="54" />
 
-## متى يصل العبد إلى الرضا
-
-؟
+## متى يصل العبد إلى الرضا؟
 
 <hr class="page-sep" data-page="54" />
 
@@ -208,9 +208,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="58" />
 
-## من الراضي عن الله
-
-؟
+## من الراضي عن الله؟
 
 <hr class="page-sep" data-page="58" />
 
@@ -282,9 +280,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="68" />
 
-## هل أنت من أهل الصبر أو الرضا
-
-؟
+## هل أنت من أهل الصبر أو الرضا؟
 
 <hr class="page-sep" data-page="68" />
 
@@ -324,9 +320,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="72" />
 
-## من جلساء الرحمن يوم القيامة
-
-؟
+## من جلساء الرحمن يوم القيامة؟
 
 <hr class="page-sep" data-page="72" />
 
@@ -334,9 +328,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="72" />
 
-## أي الخلق أعظم ذنبا
-
-؟
+## أي الخلق أعظم ذنبا؟
 
 <hr class="page-sep" data-page="72" />
 
@@ -364,9 +356,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="76" />
 
-## أي العمل أفضل
-
-؟
+## أي العمل أفضل؟
 
 <hr class="page-sep" data-page="76" />
 
@@ -378,9 +368,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="78" />
 
-## من الأمة المرحومة
-
-؟
+## من الأمة المرحومة؟
 
 <hr class="page-sep" data-page="78" />
 
@@ -456,9 +444,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="88" />
 
-## كيف أصبحت
-
-؟
+## كيف أصبحت؟
 
 <hr class="page-sep" data-page="88" />
 

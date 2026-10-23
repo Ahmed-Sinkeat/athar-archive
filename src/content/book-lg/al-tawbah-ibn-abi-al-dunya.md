@@ -6,6 +6,7 @@ person: ibn-abi-al-dunya
 topics: ["tazkiyat-al-nafs"]
 authored_year: 281
 ---
+<!-- card -->
 # بطاقة الكتاب وفهرس الموضوعات
 
 اسم الكتاب: كتاب التوبة.
@@ -59,6 +60,7 @@ authored_year: 281
 [التعريف بالكتاب , نقلا عن موقع جامع الحديث]
 
 صفحة المؤلف: []
+<!-- /card -->
 
 ## الشيطان داع إلى المعصية
 
@@ -102,9 +104,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="33" />
 
-## هل الندم توبة
-
-؟
+## هل الندم توبة؟
 
 <hr class="page-sep" data-page="34" />
 
@@ -244,9 +244,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="44" />
 
-## كيف يهون عليك الموت
-
-؟
+## كيف يهون عليك الموت؟
 
 <hr class="page-sep" data-page="45" />
 
@@ -504,9 +502,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="66" />
 
-## كيف تكرم نفسك
-
-؟
+## كيف تكرم نفسك؟
 
 <hr class="page-sep" data-page="66" />
 
@@ -772,9 +768,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="83" />
 
-## كيف تصل إلى مغفرة ذنبك
-
-؟
+## كيف تصل إلى مغفرة ذنبك؟
 
 <hr class="page-sep" data-page="84" />
 
@@ -994,9 +988,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="98" />
 
-## هل في الذنوب مكفرات
-
-؟
+## هل في الذنوب مكفرات؟
 
 <hr class="page-sep" data-page="98" />
 
@@ -1068,9 +1060,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="102" />
 
-## متى يعصم العبد من الذنوب
-
-؟
+## متى يعصم العبد من الذنوب؟
 
 <hr class="page-sep" data-page="103" />
 
@@ -1240,9 +1230,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="114" />
 
-## من هو الأواب الحفيظ
-
-؟
+## من هو الأواب الحفيظ؟
 
 <hr class="page-sep" data-page="114" />
 
@@ -1330,9 +1318,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="121" />
 
-## هل تتوب في اليوم مائة مرة
-
-؟
+## هل تتوب في اليوم مائة مرة؟
 
 <hr class="page-sep" data-page="122" />
 
@@ -1344,9 +1330,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="122" />
 
-## متى ترد عليك أعمالك
-
-؟
+## متى ترد عليك أعمالك؟
 
 <hr class="page-sep" data-page="123" />
 
@@ -1386,9 +1370,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="124" />
 
-## متى تنزل المغفرة
-
-؟
+## متى تنزل المغفرة؟
 
 <hr class="page-sep" data-page="125" />
 
@@ -1408,9 +1390,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="125" />
 
-## علام الغرور وهذا شأنك
-
-؟
+## علام الغرور وهذا شأنك؟
 
 <hr class="page-sep" data-page="126" />
 
@@ -1462,9 +1442,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="130" />
 
-## إذا كثرت ذنوبك ماذا تفعل
-
-؟
+## إذا كثرت ذنوبك ماذا تفعل؟
 
 <hr class="page-sep" data-page="130" />
 
@@ -1504,9 +1482,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="133" />
 
-## أين أنت من الاستغفار
-
-؟
+## أين أنت من الاستغفار؟
 
 <hr class="page-sep" data-page="134" />
 
@@ -1514,9 +1490,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="134" />
 
-## كيف تحسر الشيطان
-
-؟
+## كيف تحسر الشيطان؟
 
 <hr class="page-sep" data-page="134" />
 
@@ -1544,9 +1518,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="135" />
 
-## كيف تداوي ذنوبك
-
-؟
+## كيف تداوي ذنوبك؟
 
 <hr class="page-sep" data-page="136" />
 

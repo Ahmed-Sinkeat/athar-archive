@@ -6,6 +6,7 @@ person: ibn-abi-al-dunya
 topics: ["tazkiyat-al-nafs"]
 authored_year: 281
 ---
+<!-- card -->
 # بطاقة الكتاب وفهرس الموضوعات
 
 الكتاب: العقل وفضله
@@ -57,6 +58,7 @@ authored_year: 281
 [التعريف بالكتاب , نقلا عن موقع جامع الحديث]
 
 صفحة المؤلف: []
+<!-- /card -->
 
 كتاب العقل وفضله
 
@@ -154,9 +156,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="25" />
 
-## هل إسلام المرء يتوقف على عقله
-
-؟
+## هل إسلام المرء يتوقف على عقله؟
 
 <hr class="page-sep" data-page="26" />
 
@@ -164,9 +164,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="26" />
 
-## كيف عقله
-
-؟
+## كيف عقله؟
 
 <hr class="page-sep" data-page="27" />
 
@@ -198,9 +196,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="29" />
 
-## هل الجزاء يوم القيامة بقدر العقل
-
-؟
+## هل الجزاء يوم القيامة بقدر العقل؟
 
 <hr class="page-sep" data-page="30" />
 
@@ -540,9 +536,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="53" />
 
-## هل للعقل راحة
-
-؟
+## هل للعقل راحة؟
 
 <hr class="page-sep" data-page="53" />
 

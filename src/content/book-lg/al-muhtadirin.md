@@ -6,6 +6,7 @@ person: ibn-abi-al-dunya
 topics: ["tazkiyat-al-nafs"]
 authored_year: 281
 ---
+<!-- card -->
 # بطاقة الكتاب وفهرس الموضوعات
 
 الكتاب: المحتضرين
@@ -69,6 +70,7 @@ authored_year: 281
 [التعريف بالكتاب , نقلا عن موقع جامع الحديث]
 
 صفحة المؤلف: []
+<!-- /card -->
 
 ١ -
 
