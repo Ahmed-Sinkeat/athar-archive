@@ -244,3 +244,4 @@
 | al-qraa-khlf-al-imam-llbkhary | committed | card; heading tails re-joined | none | none |
 | al-iydah-al-addy | skipped | nothing to format (no notes) | none | none |
 | al-iydah-al-addy | committed | 1 heading re-joined with its cut tanwin | none | none |
+| al-manamat | committed | card; hadith-text headings rejoined/un-headed; cut words re-joined | none | none |
