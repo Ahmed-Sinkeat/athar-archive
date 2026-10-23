@@ -331,3 +331,4 @@
 | khlq-afaal-al-abad-llbkhary | committed | card/heading fixes | none | none |
 | tthbyt-al-imama-wtrtyb-al-khlafa-laby-naym-al-asbhany | committed | card/heading fixes | none | none |
 | shrh-al-dr-al-ndyd-fy-ikhlas-klma-al-twhyd | skipped | nothing to format (no notes) | none | none |
+| shrh-al-aqyda-al-wastya-abd-al-krym-al-khdyr | skipped | nothing to format (no notes) | none | none |
