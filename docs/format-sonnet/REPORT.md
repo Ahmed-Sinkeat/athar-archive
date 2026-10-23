@@ -465,3 +465,4 @@
 | al-aatqad-llbyhqy | committed | card/heading fixes | none | none |
 | al-dakhil-fi-al-tafsir | committed | card/heading fixes | none | none |
 | tafsir-mawdui-2-madinah-univ | committed | card/heading fixes | none | none |
+| al-khlash-al-fqhyh-ala-mthhb-al-sadh-al-malkyh | committed | card/heading fixes | none | none |
