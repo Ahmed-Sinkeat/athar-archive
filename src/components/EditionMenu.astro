@@ -1,0 +1,35 @@
+---
+// «الطبعات»: one book, several printings (edition_of). The open one is checked and says so.
+// ponytail: native <details> popup, no JS; closes on navigation, which every choice is.
+interface Props { editions: { href: string; label: string; current: boolean; primary: boolean }[] }
+const { editions } = Astro.props;
+const current = editions.find((e) => e.current);
+---
+{editions.length > 1 && (
+  <details class="edition-menu">
+    <summary>الطبعة: <strong>{current?.label}</strong> <span class="edition-count">({editions.length} طبعات)</span></summary>
+    <ul role="list">
+      {editions.map((e) => (
+        <li>
+          {e.current
+            ? <span class="edition-item is-current" aria-current="page"><span class="edition-check" aria-hidden="true">✓</span>{e.label}<small>المفتوحة الآن{e.primary ? " · الافتراضية" : ""}</small></span>
+            : <a class="edition-item" href={e.href}><span class="edition-check" aria-hidden="true"></span>{e.label}{e.primary && <small>الافتراضية</small>}</a>}
+        </li>
+      ))}
+    </ul>
+  </details>
+)}
+
+<style>
+  .edition-menu { position: relative; display: inline-block; margin-top: 10px; font-family: var(--font-ui); font-size: 13.5px; }
+  .edition-menu summary { cursor: pointer; list-style: none; color: var(--ink-soft); padding: 4px 12px; border: 1px solid var(--rule); border-radius: var(--radius); }
+  .edition-menu summary::-webkit-details-marker { display: none; }
+  .edition-menu summary strong { color: var(--ink); }
+  .edition-count { color: var(--ink-faint); }
+  .edition-menu ul { position: absolute; inset-inline-start: 0; top: calc(100% + 6px); z-index: 20; min-width: 260px; margin: 0; padding: 6px; list-style: none; background: var(--surface); border: 1px solid var(--rule-strong); border-radius: var(--radius-lg); box-shadow: 0 8px 24px rgb(0 0 0 / 0.12); text-align: start; }
+  .edition-item { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 8px; padding: 6px 10px; border-radius: var(--radius); color: var(--ink); text-decoration: none; }
+  a.edition-item:hover, a.edition-item:focus-visible { background: var(--line); }
+  .edition-item.is-current { font-weight: 600; }
+  .edition-check { width: 1em; color: var(--accent); }
+  .edition-item small { flex-basis: 100%; padding-inline-start: calc(1em + 8px); color: var(--ink-faint); font-weight: 400; }
+</style>

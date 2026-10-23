@@ -6,7 +6,8 @@ import { readBody } from "../lib/read-body";
 import { websiteLd } from "../lib/structured-data";
 import { loadGraph, personEraMap } from "../lib/site";
 
-const pub = (c: any[]) => c.filter((e) => e.data.status === "published");
+// a non-default edition (edition_of) counts as its default: one book for readers
+const pub = (c: any[]) => c.filter((e) => e.data.status === "published" && !e.data.edition_of);
 
 const [people, books, poems, articles, announcements, highlights, questions, subjects] = await Promise.all([
   getCollection("person"),

@@ -83,12 +83,14 @@ export function buildGraph(entries: ContentEntry[]): Graph {
 
     // topic index (any material carrying topics[])
     const topics = Array.isArray(e.data.topics) ? (e.data.topics as string[]) : [];
-    if (materialSet.has(e.collection)) {
+    // a non-default edition is the same work: topic and author pages list its default only
+    const listed = materialSet.has(e.collection) && !e.data.edition_of;
+    if (listed) {
       for (const t of topics) push(topicIndex, t, e);
     }
 
     // person index (material collections with a person field)
-    if (materialSet.has(e.collection) && e.data.person) {
+    if (listed && e.data.person) {
       push(personIndex, str(e.data.person), e);
     }
 

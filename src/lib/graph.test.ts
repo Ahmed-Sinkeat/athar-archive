@@ -84,3 +84,12 @@ describe("backlinks (ما يشير إلى هذا)", () => {
   });
 });
 
+
+describe("editions", () => {
+  it("lists a book's non-default edition nowhere but its own page", () => {
+    const g = buildGraph([...smallCorpus(), e("book", "bk1-shakir", { title: "كتاب التوحيد ت شاكر", person: "p1", topics: ["t1"], edition_of: "bk1" })]);
+    expect(g.materialsByTopic("t1").map((x) => x.id)).not.toContain("bk1-shakir");
+    expect(g.materialsByPerson("p1").map((x) => x.id)).not.toContain("bk1-shakir");
+    expect(g.all.find((x) => x.id === "bk1-shakir")).toBeDefined();
+  });
+});

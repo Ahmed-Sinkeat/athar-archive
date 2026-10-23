@@ -10,6 +10,7 @@ import AudioPlayer from "../../components/AudioPlayer.astro";
 import InlineSearch from "../../components/InlineSearch.astro";
 import RelatedStrip from "../../components/RelatedStrip.astro";
 import Relations from "../../components/Relations.astro";
+import EditionMenu from "../../components/EditionMenu.astro";
 import { markdownToSafeHtml } from "../../lib/sanitize";
 import { isPub, loadGraph, personNameMap, notesByAnchor, relatedTo, backlinksList, originOf } from "../../lib/site";
 import { analyzeBook, deriveVolumes } from "../../lib/chunk";
@@ -59,12 +60,17 @@ export async function getStaticPaths() {
     // until the entire build finishes, so carrying each non-chunked book's
     // text here meant the whole corpus live in one heap at once (the CI OOM
     // of 2026-07-29); the page frontmatter re-reads its own body instead.
-    paths.push({ params: { slug: entry.id }, props: { entry, chunked: a.chunked, toc: a.chapters.map((c, i) => ({ title: c.title, slug: c.slug, parent: c.parent, parentTitle: c.parentTitle, firstPage: firstPageOf(c), juz: firstJuzOf(c, i) })), volumes, byAnchor, audios, commentaries, author: entry.data.person ? names.get(entry.data.person) : undefined, topicLabel: labelFor("book", entry.data), origin: originOf(entry.data, graph), related: relatedTo(entry, graph, names), backlinks: backlinksList(entry, graph, names) } });
+    const primaryId = (entry.data.edition_of as string | undefined) ?? entry.id;
+    const editions = books
+      .filter((b) => b.id === primaryId || b.data.edition_of === primaryId)
+      .sort((x, y) => Number(!!x.data.edition_of) - Number(!!y.data.edition_of))
+      .map((b) => ({ href: hrefFor("book", b.id), label: (b.data.edition as string | undefined) || b.data.title, current: b.id === entry.id, primary: !b.data.edition_of }));
+    paths.push({ params: { slug: entry.id }, props: { entry, editions, chunked: a.chunked, toc: a.chapters.map((c, i) => ({ title: c.title, slug: c.slug, parent: c.parent, parentTitle: c.parentTitle, firstPage: firstPageOf(c), juz: firstJuzOf(c, i) })), volumes, byAnchor, audios, commentaries, author: entry.data.person ? names.get(entry.data.person) : undefined, topicLabel: labelFor("book", entry.data), origin: originOf(entry.data, graph), related: relatedTo(entry, graph, names), backlinks: backlinksList(entry, graph, names) } });
   }
   return paths;
 }
 
-const { entry, chunked, toc, volumes, byAnchor, audios, commentaries, author, topicLabel, origin, related, backlinks } = Astro.props;
+const { entry, editions, chunked, toc, volumes, byAnchor, audios, commentaries, author, topicLabel, origin, related, backlinks } = Astro.props;
 // body/tocNested are re-derived here per page instead of riding in props
 // (see the note in getStaticPaths) — chunked books skip it entirely, same
 // as before: their text lives on the chapter pages.
@@ -126,6 +132,7 @@ const jsonLd = bookLd({
         <div class="ornament" aria-hidden="true">۞</div>
         <h1 class="reader-title ue7e55f7" >{entry.data.title}</h1>
         <div class="reader-byline">{entry.data.person ? <a href={hrefFor("person", entry.data.person)}>{author}</a> : author}</div>
+<EditionMenu editions={editions} />
         <button type="button" class="toggle-btn" style="margin-top: 12px;" data-action="download:toggle" data-dl-kind="book" data-dl-id={entry.id} data-dl-title={entry.data.title} aria-pressed="false">
           <span class="toggle-dot"></span><span data-dl-label>تنزيل للقراءة دون اتصال</span>
         </button>
@@ -182,6 +189,7 @@ const jsonLd = bookLd({
           <div class="ornament" aria-hidden="true">۞</div>
           <h1 class="reader-title ue7e55f7" >{entry.data.title}</h1>
           <div class="reader-byline">{entry.data.person ? <a href={hrefFor("person", entry.data.person)}>{author}</a> : author}</div>
+<EditionMenu editions={editions} />
           <button type="button" class="toggle-btn" style="margin-top: 12px;" data-action="download:toggle" data-dl-kind="book" data-dl-id={entry.id} data-dl-title={entry.data.title} aria-pressed="false">
             <span class="toggle-dot"></span><span data-dl-label>تنزيل للقراءة دون اتصال</span>
           </button>

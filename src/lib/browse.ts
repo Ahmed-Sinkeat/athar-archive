@@ -6,7 +6,8 @@
 import type { Graph } from "./graph";
 import type { ContentEntry } from "./types";
 
-const isPub = (e: { data: { status?: unknown } }) => e.data.status === "published";
+// a non-default edition (edition_of) is the same book: it opens from its default's «الطبعات» menu
+const isPub = (e: { data: { status?: unknown; edition_of?: unknown } }) => e.data.status === "published" && !e.data.edition_of;
 const ar = (a: string, b: string) => a.localeCompare(b, "ar");
 
 // Default item order: by سنة التصنيف ascending (undated entries last), then title.
