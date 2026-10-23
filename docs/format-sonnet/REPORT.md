@@ -415,3 +415,4 @@
 | risalat-al-sijzi | committed (partial) | anchors 555, cut notes merged 21 | none | TODO 602 notes unlinked, 220 dead sups: pp 17,42,66,67,79,85,86,91,113,117,119-125 ... (cut notes / numbering gaps); p357 note 3 starts «127)» (cut number) |
 | ntayj-al-fkr-fy-al-nhw | skipped | nothing to format (notes already linked) | none | none |
 | mnhaj-al-talbyn-wamdh-al-mftyn-fy-al-fqh | skipped | nothing to format (notes already linked) | none | none |
+| tafsir-ayat-ibn-abd-al-wahhab | skipped | nothing to format (notes already linked) | none | none |
