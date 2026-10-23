@@ -320,3 +320,4 @@
 | al-faraj-bad-al-shiddah-al-tanukhi | committed | card/heading fixes (cut sentences rejoined) | none | none |
 | amthal-al-hdyth-laby-al-shykh-al-asbhany | committed | card/heading fixes (cut sentences rejoined) | none | none |
 | akhbar-aby-al-qasm-al-zjajy | committed | card/heading fixes (cut sentences rejoined) | none | none |
+| mthkrh-al-qwl-al-rajh-ma-al-dlyl-al-tharh | skipped | nothing to format (notes already linked) | none | none |
