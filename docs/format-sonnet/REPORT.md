@@ -379,3 +379,4 @@
 | shrh-shdhwr-al-dhhb-labn-hsham | committed | card/heading fixes | none | none |
 | shrh-mtn-aby-shjaa-mhmd-hsn-abd-al-ghfar | committed | card/heading fixes | none | none |
 | rawdat-al-uqala | committed | card/heading fixes | none | none |
+| kn-shabya | committed | card/heading fixes | none | none |
