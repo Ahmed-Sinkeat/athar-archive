@@ -458,3 +458,4 @@
 | all-al-nhw | committed | card/heading fixes | none | none |
 | aml-al-ywm-wallyla-labn-al-sny | committed | card/heading fixes | none | none |
 | al-bath-walnshwr-llbyhqy | committed | card/heading fixes | none | none |
+| msnd-al-farwq-labn-kthyr | committed | card/heading fixes | none | none |
