@@ -293,3 +293,4 @@
 | al-imamah-wal-radd-ala-al-rafidah | committed | card/heading fixes (cut sentences & hadith-text headings rejoined) | none | none |
 | al-manhaj-al-qawim | skipped | nothing to format (no notes) | none | none |
 | taliq-ala-thalathat-al-usul-al-khalifi | skipped | nothing to format (no notes) | none | none |
+| ktab-akhsr-al-mkhtsrat-t-rkayz | committed | card/heading fixes (cut sentences & hadith-text headings rejoined) | none | none |
