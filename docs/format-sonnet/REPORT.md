@@ -288,3 +288,4 @@
 | al-jml-fy-al-nhw | skipped | nothing to format (no notes) | none | none |
 | shrh-kshf-al-shbhat-lkhald-al-mslh | skipped | nothing to format (no notes) | none | none |
 | tanzih-al-anbiya | skipped | nothing to format (no notes) | none | none |
+| al-jhad-labn-aby-aasm | committed | card/heading fixes (cut sentences & hadith-text headings rejoined) | none | none |
