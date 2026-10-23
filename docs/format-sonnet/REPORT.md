@@ -349,3 +349,4 @@
 | shrh-hlya-talb-al-alm-llshthry | skipped | no change made (notes linked 388/388) | none | none |
 | qda-al-arb-fy-asylh-hlb | skipped | nothing to format (no notes) | none | none |
 | al-mrasyl-laby-dawd | committed | card/heading fixes | none | none |
+| al-sna-llmrwzy | committed | card/heading fixes | none | none |
