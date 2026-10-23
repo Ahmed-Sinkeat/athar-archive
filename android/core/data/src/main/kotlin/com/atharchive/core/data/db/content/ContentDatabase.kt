@@ -189,6 +189,7 @@ fun stagingId(entityId: String, pkgHash: String) = "$entityId#${pkgHash.take(16)
 fun oldCopyId(entityId: String) = "$entityId#old"
 
 private const val DeleteSlice = 500
+private const val CatalogSlice = 250
 
 @Dao
 abstract class ContentCatalogDao {
@@ -269,18 +270,35 @@ abstract class ContentCatalogDao {
     @Query("UPDATE entity SET catalogPresent = 0, transferState = 'idle' WHERE id = :entityId")
     protected abstract suspend fun retainTombstonedEntity(entityId: String)
 
+    @Query("SELECT * FROM entity WHERE id IN (:ids)")
+    protected abstract suspend fun entitiesById(ids: List<String>): List<ContentEntity>
+
+    @Query("UPDATE entity SET availability = :absent, bytesOnDisk = 0, importProgress = 0 WHERE id = :entityId")
+    protected abstract suspend fun markPagesAbsent(entityId: String, absent: String = ContentAvailability.ABSENT)
+
     /**
-     * Applies one authenticated generation atomically inside the disposable content DB.
-     * Protected IDs are snapshotted from the user DB before this transaction; a caller
-     * performs one reconciliation pass afterwards to close cross-database races.
+     * Applies one authenticated generation inside the disposable content DB. Protected IDs are
+     * snapshotted from the user DB beforehand; a caller performs one reconciliation pass
+     * afterwards to close cross-database races.
      */
-    @Transaction
     open suspend fun applyGeneration(
         incoming: List<ContentEntity>,
         tombstonedIds: Set<String>,
         protectedIds: Set<String>,
         generation: ContentGenerationEntity,
     ) {
+        applyCatalogSlices(incoming)
+        finishGeneration(tombstonedIds, generation)
+    }
+
+    /**
+     * Writes the catalog rows of a generation in many small commits. One transaction over the
+     * whole catalog (~4k rows) got slower with every row and took native memory to ~200 MB
+     * for 45 s on the phone. Crash-safe order: stale pages go first (their row still holds the
+     * old package hash, so an interrupted apply finds them again), and the generation row is
+     * written last by [finishGeneration], so the next sync re-applies an unfinished generation.
+     */
+    suspend fun applyCatalogSlices(incoming: List<ContentEntity>) {
         val current = allEntities().associateBy(ContentEntity::id)
         // Read-through pages carry no package version, so pages cached from an older package
         // would be served forever; drop them and the reader fetches the new ones. A download
@@ -288,10 +306,24 @@ abstract class ContentCatalogDao {
         val stalePages = incoming.filter { fresh ->
             current[fresh.id]?.let { it.localVersion == null && it.pkgHash != fresh.pkgHash } == true
         }.mapTo(mutableSetOf()) { it.id }
+        for (entityId in stalePages) {
+            markPagesAbsent(entityId)
+            deleteBlocks(entityId)
+            deleteFrames(entityId)
+            deleteChapters(entityId)
+            deleteFootnotes(entityId)
+        }
+        for (slice in incoming.chunked(CatalogSlice)) applyCatalogSlice(slice, stalePages)
+    }
+
+    /** Re-reads its rows inside the slice's transaction, so a download finishing between slices keeps its state. */
+    @Transaction
+    protected open suspend fun applyCatalogSlice(incoming: List<ContentEntity>, stalePages: Set<String>) {
+        val current = entitiesById(incoming.map(ContentEntity::id)).associateBy(ContentEntity::id)
         val merged = incoming.map { fresh ->
             current[fresh.id]?.let { local ->
                 val contentChanged = local.localVersion != null && local.localPackageHash != fresh.pkgHash
-                val dropPages = fresh.id in stalePages
+                val dropPages = fresh.id in stalePages && local.localVersion == null
                 fresh.copy(
                     catalogPresent = true,
                     availability = if (dropPages) ContentAvailability.ABSENT else local.availability,
@@ -305,21 +337,14 @@ abstract class ContentCatalogDao {
                 )
             } ?: fresh
         }
-        if (merged.isNotEmpty()) replaceEntities(merged)
-        for (entityId in stalePages) {
-            deleteBlocks(entityId)
-            deleteFrames(entityId)
-            deleteChapters(entityId)
-            deleteFootnotes(entityId)
-        }
+        replaceEntities(merged)
+    }
 
-        for (entityId in tombstonedIds) {
-            // Mark first, then let the repository re-snapshot the user DB before purge.
-            // This closes the cross-database race without pretending both files share a
-            // transaction. The protected snapshot argument documents the ordering and is
-            // also useful to callers auditing the apply operation.
-            if (current.containsKey(entityId)) retainTombstonedEntity(entityId)
-        }
+    @Transaction
+    open suspend fun finishGeneration(tombstonedIds: Set<String>, generation: ContentGenerationEntity) {
+        // Mark first, then let the repository re-snapshot the user DB before purge. This closes
+        // the cross-database race without pretending both files share a transaction.
+        for (entityId in tombstonedIds) retainTombstonedEntity(entityId)
         replaceGeneration(generation)
     }
 

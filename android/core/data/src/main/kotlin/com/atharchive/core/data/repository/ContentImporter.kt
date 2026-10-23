@@ -35,16 +35,7 @@ class ContentImporter(
             appliedAt = nowMillis(),
             personsJson = AppContentJson.encodeToString(catalog.persons),
         )
-        ContentSearchSchema.ensure(database)
-        database.withWriteTransaction {
-            database.catalogDao().applyGeneration(
-                incoming = catalog.entries.map(CatalogEntry::toEntity),
-                tombstonedIds = emptySet(),
-                protectedIds = emptySet(),
-                generation = synthetic,
-            )
-            ContentSearchSchema.replaceCatalog(this, database.catalogDao().allEntities())
-        }
+        apply(catalog, emptySet(), synthetic)
     }
 
     suspend fun applyGeneration(
@@ -55,21 +46,28 @@ class ContentImporter(
         tombstonedIds: Set<String>,
         protectedIds: Set<String>,
     ) {
+        apply(
+            catalog,
+            tombstonedIds,
+            ContentGenerationEntity(
+                generationId = generationId,
+                catalogHash = catalogHash,
+                tombstonesHash = tombstonesHash,
+                appliedAt = nowMillis(),
+                personsJson = AppContentJson.encodeToString(catalog.persons),
+            ),
+        )
+    }
+
+    // Catalog rows commit slice by slice; only the search index and the generation row (written
+    // last, so an interrupted apply runs again) share one small transaction.
+    private suspend fun apply(catalog: CatalogDocument, tombstonedIds: Set<String>, generation: ContentGenerationEntity) {
         ContentSearchSchema.ensure(database)
+        val dao = database.catalogDao()
+        dao.applyCatalogSlices(catalog.entries.map(CatalogEntry::toEntity))
         database.withWriteTransaction {
-            database.catalogDao().applyGeneration(
-                incoming = catalog.entries.map(CatalogEntry::toEntity),
-                tombstonedIds = tombstonedIds,
-                protectedIds = protectedIds,
-                generation = ContentGenerationEntity(
-                    generationId = generationId,
-                    catalogHash = catalogHash,
-                    tombstonesHash = tombstonesHash,
-                    appliedAt = nowMillis(),
-                    personsJson = AppContentJson.encodeToString(catalog.persons),
-                ),
-            )
-            ContentSearchSchema.replaceCatalog(this, database.catalogDao().allEntities())
+            dao.finishGeneration(tombstonedIds, generation)
+            ContentSearchSchema.replaceCatalog(this, dao.allEntities())
         }
     }
 
