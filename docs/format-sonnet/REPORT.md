@@ -267,3 +267,4 @@
 | al-br-walsla-llhsyn-bn-hrb | committed | card; hadith-text headings rejoined; glued headings split | none | none |
 | al-bda-labn-wdah | committed | card; hadith-text headings rejoined; glued headings split | none | none |
 | dhamm-al-dunya | skipped | nothing to format (no notes) | none | none |
+| fatawa-muhimmah-li-umum-al-ummah | committed | card; hadith-text headings rejoined; glued headings split | none | none |
