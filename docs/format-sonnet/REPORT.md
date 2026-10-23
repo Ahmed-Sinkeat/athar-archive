@@ -391,3 +391,4 @@
 | shrh-ktab-al-fwayd | committed | card/heading fixes | none | none |
 | tkhlys-al-shwahd-wtlkhys-al-fwayd | committed | card/heading fixes | none | none |
 | al-trghyb-fy-fdayl-al-aamal-wthwab-dhlk-labn-shahyn | committed | card/heading fixes | none | none |
+| al-jna-al-dany-fy-hrwf-al-maany | committed | card/heading fixes | none | none |
