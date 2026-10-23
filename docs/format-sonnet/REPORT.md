@@ -356,3 +356,4 @@
 | al-wqwf-waltrjl-mn-msayl-al-amam-ahmd | skipped | nothing to format (notes already linked) | none | none |
 | shrh-ktab-adab-al-mshy-ala-al-slah-aw-al-abadat-alslah-al-zk | skipped | nothing to format (notes already linked) | none | none |
 | shrh-qtr-al-nda-wbl-al-sda | committed | card/heading fixes | none | none |
+| al-antsar-lsybwyh-ala-al-mbrd | skipped | nothing to format (no notes) | none | none |
