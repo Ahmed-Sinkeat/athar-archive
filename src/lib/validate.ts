@@ -155,6 +155,9 @@ export function validate(entries: ContentEntry[]): BuildError[] {
           }
         }
       }
+      for (const reciter of Array.isArray(data.reciters) ? data.reciters.map(str) : []) {
+        if (!get(map, "person", reciter)) fail(collection, id, "ref-resolution", `person '${reciter}' not found (reciter of 'audio/${id}')`);
+      }
     }
 
     // --- Annotation: required target + anchor ---

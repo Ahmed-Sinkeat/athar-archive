@@ -200,6 +200,7 @@ async function audioReference(
     format,
     seconds: durationSeconds(audio.duration),
     size: bytes.byteLength,
+    ...(Array.isArray(audio.reciters) && audio.reciters.length ? { reciters: audio.reciters.map(String) } : {}),
     ...(cues ? { cues } : {}),
   });
   }

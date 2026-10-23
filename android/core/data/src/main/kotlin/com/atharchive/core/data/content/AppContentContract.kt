@@ -98,6 +98,8 @@ data class AudioReference(
     val format: String,
     val seconds: Int,
     val size: Long,
+    /** Person ids of who reads/sings this recording; names come from [CatalogPerson]. */
+    val reciters: List<String> = emptyList(),
     val cues: List<AudioCue> = emptyList(),
 )
 

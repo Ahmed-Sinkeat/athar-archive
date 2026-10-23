@@ -32,6 +32,8 @@ data class AudioUi(
     val sizeLabel: String,
     /** Absent for all but a handful of recordings today; the row hides the line when null. */
     val speaker: String? = null,
+    /** Resolved reciter names (إلقاء), in authored order; unknown ids are dropped. */
+    val reciters: List<String> = emptyList(),
     val downloaded: Boolean = false,
     val saved: Boolean = false,
     val recentRank: Int? = null,
