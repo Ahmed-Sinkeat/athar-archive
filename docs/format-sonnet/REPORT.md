@@ -328,3 +328,4 @@
 | al-fswl-al-mfyda-fy-al-waw-al-mzyda | committed | card/heading fixes | none | none |
 | sharh-al-mutamad-fi-usul-al-fiqh | committed | card/heading fixes | none | none |
 | kramat-al-awlya-llalkayy-mn-shrh-aswl-aatqad-ahl-al-sna-waljmaaa-llalkayy | committed | card/heading fixes | none | none |
+| khlq-afaal-al-abad-llbkhary | committed | card/heading fixes | none | none |
