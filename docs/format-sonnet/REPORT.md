@@ -271,3 +271,4 @@
 | lughat-al-quran | skipped | nothing to format (notes already linked) | none | none |
 | mkhtsr-al-khrqa | skipped | nothing to format (notes already linked) | none | none |
 | amdh-al-fqh | skipped | nothing to format (notes already linked) | none | none |
+| umdat-al-fiqh-ibn-qudamah | skipped | nothing to format (notes already linked) | none | none |
