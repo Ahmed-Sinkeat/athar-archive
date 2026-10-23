@@ -28,6 +28,8 @@ function text(body: string, importFix = false): string {
     // old imports left «## عنوان» mid-paragraph; that «##» is markup too, so it may move to a line start
     .replace(/(^|[ \t])#{2,6}[ \t]+/gm, "$1")
     .replace(/\*\*|\{#[\w-]+\}/g, "")
+    // «= كتاب الطهارة =» is how some imports drew a heading; the «=» pair is markup, not the book's
+    .replace(/^[ \t]*=[ \t]+(.+?)[ \t]+=[ \t]*$/gm, "$1")
     // ponytail: «...»/«…» is how imports draw the gap between two hemistichs, i.e. layout; a prose
     // ellipsis added or dropped slips through. Count only spaced ones if that ever matters.
     .replace(/\.\.\.|…/g, "")

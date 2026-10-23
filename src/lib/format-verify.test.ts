@@ -46,3 +46,12 @@ test("an inline import «##» may become a real heading", () => {
   expect(verifyFormatting(inline, `فتن (^1)\n\n## أولاً: مفهوم:\n\nلا شك`)).toBeUndefined();
   expect(verifyFormatting(inline, `فتن (^1)\n\n## أولاً مفهوم:\n\nلا شك`)).toMatch(/text/);
 });
+
+test("an import's «= heading =» line may become a markdown heading, nothing more", () => {
+  const before = "---\nt: 1\n---\n= كتاب الطهارة =\nنص\n";
+  expect(verifyFormatting(before, "---\nt: 1\n---\n## كتاب الطهارة\n\nنص\n")).toBeUndefined();
+  expect(verifyFormatting(before, "---\nt: 1\n---\n## كتاب الصلاة\n\nنص\n")).toBeDefined();
+  // a lone «= text» continuing a caret note is text, not a heading
+  expect(verifyFormatting("---\nt: 1\n---\n= وتتمتها\n", "---\nt: 1\n---\nوتتمتها\n")).toBeDefined();
+});
+
