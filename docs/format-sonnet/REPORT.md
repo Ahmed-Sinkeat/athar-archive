@@ -238,3 +238,4 @@
 | al-lma-fy-al-arbya-labn-jny | committed | card; heading tails re-joined | none | none |
 | al-riqqah-wal-buka | committed | card; heading tails re-joined | none | none |
 | mwsl-al-tlab-ila-qwaad-al-iarab | committed | card; heading tails re-joined | none | none |
+| shrh-al-mnzwma-al-hayya-labn-aby-dawd | skipped | nothing to format (no notes) | none | none |
