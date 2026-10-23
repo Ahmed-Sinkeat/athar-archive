@@ -335,3 +335,4 @@
 | mn-ajayb-al-daa-al-jz-al-thany | skipped | nothing to format (notes already linked) | none | none |
 | fth-al-qryb-al-mjyb-fy-shrh-alfaz-al-tqryb-al-qwl-al-mkhtar | skipped | nothing to format (notes already linked) | none | none |
 | athar-al-ikhtilaf-fi-al-qawaid-al-usuliyyah | committed | card/heading fixes | none | none |
+| ithbat-adhab-al-qbr-llbyhqy | committed | card/heading fixes | none | none |
