@@ -440,3 +440,5 @@
 | shyh-al-adb-al-mfrd | skipped | nothing to format (notes already linked) | none | none |
 | al-mdkhl-ila-al-snn-al-kbra-llbyhqy | committed | card/heading fixes; hadith-text headings rejoined | none | none |
 | aml-al-ywm-wallyla-llnsayy | committed | card/heading fixes; hadith-text headings rejoined | none | none |
+| al-shykh-abd-al-rhmn-bn-sady-wjhwdh-fy-tw-dyh-al-aqyda | committed (partial) | anchors 1081 | none | TODO 120 notes unlinked + 11 dead sups: pp 13,21,23,55,91,104,120,122,123,142,145,150,231,245,255,277,282 |
+| tdhkra-al-mwtsy-shrh-aqyda-al-hafz-abd-al-ghny-al-mqdsy | committed (partial) | anchors 306 | none | REPORT ONLY: 754 notes unlinked (171 pages carry more notes than printed anchors), 4 dead sups |
