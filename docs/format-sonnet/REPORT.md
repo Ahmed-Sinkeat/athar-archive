@@ -390,3 +390,4 @@
 | thfh-al-mwdwd-bahkam-al-mwlwd | committed | card/heading fixes | none | none |
 | shrh-ktab-al-fwayd | committed | card/heading fixes | none | none |
 | tkhlys-al-shwahd-wtlkhys-al-fwayd | committed | card/heading fixes | none | none |
+| al-trghyb-fy-fdayl-al-aamal-wthwab-dhlk-labn-shahyn | committed | card/heading fixes | none | none |
