@@ -463,3 +463,4 @@
 | al-adb-al-mfrd-baltalyqat | skipped | nothing to format (notes already linked) | none | none |
 | mnyh-al-sajd-bshrh-bdayh-al-aabd-wkfayh-al-zahd | skipped | nothing to format (notes linked 28/33; 5 notes without anchor: REPORT ONLY) | none | none |
 | al-aatqad-llbyhqy | committed | card/heading fixes | none | none |
+| al-dakhil-fi-al-tafsir | committed | card/heading fixes | none | none |
