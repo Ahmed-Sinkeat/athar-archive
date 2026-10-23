@@ -372,3 +372,4 @@
 | al-zhd-laby-dawd | committed | card/heading fixes | none | none |
 | rwya-al-lh-lldarqtny | committed | card/heading fixes | none | none |
 | al-jama-labn-whb-t-mstfa-abw-al-khyr | committed | card/heading fixes | none | none |
+| al-mntqa-mn-ktab-mkarm-al-akhlaq-wmaalyha | committed | card/heading fixes | none | none |
