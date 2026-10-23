@@ -361,3 +361,4 @@
 | al-tanbih-wal-radd-ala-ahl-al-ahwa | skipped | nothing to format (no notes) | none | none |
 | al-rd-ala-al-jhmya-lldarmy | committed | card/heading fixes | none | none |
 | al-qdr-llfryaby-mkhrja | committed | card/heading fixes | none | none |
+| ktab-dlyl-al-talb-lnyl-al-mtalb | skipped | nothing to format (no notes) | none | none |
