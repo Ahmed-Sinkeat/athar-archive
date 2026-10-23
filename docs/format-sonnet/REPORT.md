@@ -333,3 +333,4 @@
 | shrh-al-dr-al-ndyd-fy-ikhlas-klma-al-twhyd | skipped | nothing to format (no notes) | none | none |
 | shrh-al-aqyda-al-wastya-abd-al-krym-al-khdyr | skipped | nothing to format (no notes) | none | none |
 | mn-ajayb-al-daa-al-jz-al-thany | skipped | nothing to format (notes already linked) | none | none |
+| fth-al-qryb-al-mjyb-fy-shrh-alfaz-al-tqryb-al-qwl-al-mkhtar | skipped | nothing to format (notes already linked) | none | none |
