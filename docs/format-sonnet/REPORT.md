@@ -296,3 +296,4 @@
 | ktab-akhsr-al-mkhtsrat-t-rkayz | committed | card/heading fixes (cut sentences & hadith-text headings rejoined) | none | none |
 | shrh-mkhtsr-al-sarm-al-mslwl-mhmd-hsn-abd-al-ghfar | committed | card/heading fixes (cut sentences & hadith-text headings rejoined) | none | none |
 | majm-aby-yala-al-mwsly | committed | card/heading fixes (cut sentences & hadith-text headings rejoined) | none | none |
+| sfat-al-lh-watharha-fa-iyman-al-abd | skipped | nothing to format (no notes) | none | none |
