@@ -273,3 +273,4 @@
 | amdh-al-fqh | skipped | nothing to format (notes already linked) | none | none |
 | umdat-al-fiqh-ibn-qudamah | skipped | nothing to format (notes already linked) | none | none |
 | al-furqan-bayn-awliya-al-rahman | skipped | nothing to format (no notes) | none | none |
+| shrh-mdhahb-ahl-al-sna-labn-shahyn | committed | card; hadith-text headings rejoined; glued heading split | none | none |
