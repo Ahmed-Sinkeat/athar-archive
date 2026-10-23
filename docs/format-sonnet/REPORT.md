@@ -257,3 +257,4 @@
 | umdat-al-fiqh-sharh-al-khalifi-taharah | skipped | nothing to format (no notes) | none | none |
 | iynas-al-nas-btfaha-aby-jafr-al-nhas | skipped | nothing to format (note already linked 1/1) | none | none |
 | al-qwl-al-sdyd-shrh-ktab-al-twhyd-t-al-wzara | committed | 1 footnote anchor linked | none | none |
+| shrh-al-ajrwmya-llasmry | skipped | nothing to format (notes already linked 7/7) | none | none |
