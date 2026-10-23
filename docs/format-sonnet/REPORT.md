@@ -324,3 +324,4 @@
 | dayf-mward-al-zman-ila-zwayd-abn-hban | skipped | nothing to format (notes already linked) | none | none |
 | amdh-al-talb-lnyl-al-marb | skipped | nothing to format (notes already linked) | none | none |
 | al-radd-ala-al-jahmiyyah-wal-zanadiqah | committed (partial) | anchors 138, cut notes merged 11 | none | REPORT ONLY: 84 notes unlinked: pages whose first note starts with «=» (carried over from the previous page, no printed anchor) e.g. 7,16,59,60,63,66,69-71,81,84,85,91,97,98,100,113; and undecidable cuts 21,73,74,111 |
+| al-iqtisad-fil-itiqad | committed (partial) | anchors 211, cut notes merged 20 | none | REPORT ONLY: 317 notes unlinked, 101 dead sups: pages 10, 25, 64, 79-98 etc. (sup numbers with gaps / chains of cut notes) |
