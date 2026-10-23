@@ -259,3 +259,4 @@
 | al-qwl-al-sdyd-shrh-ktab-al-twhyd-t-al-wzara | committed | 1 footnote anchor linked | none | none |
 | shrh-al-ajrwmya-llasmry | skipped | nothing to format (notes already linked 7/7) | none | none |
 | al-byan-al-mbdy-lshnaaa-al-qwl-al-mjdy | skipped | nothing to format (no notes) | none | none |
+| hazz-al-ghalasim | skipped | nothing to format (no notes) | none | none |
