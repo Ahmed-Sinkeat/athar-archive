@@ -229,3 +229,4 @@
 | sifat-al-jannah | committed | card | none | none |
 | mkarm-al-akhlaq-lltbrany | committed | card | none | none |
 | al-muhtadirin | committed | card | none | none |
+| islah-al-mal | committed | card | none | none |
