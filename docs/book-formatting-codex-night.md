@@ -1,5 +1,20 @@
 # Codex overnight prompt: format the remaining books
 
+## Latest stop report — 2026-10-23
+
+Stopped at the user's request. This continuation has **26 finished and verified books**, plus **1 partial book**, all committed on `format/codex-night`. The earlier 33-book night is separate (59 finished across both runs; one earlier skipped book).
+
+- First 18 continuation books: existing batch commit `77261e7e`.
+- Remaining eight finished books and the partial book: separate book commits from `55af3034` through `56f00404`, with import repairs in separate commits.
+- Partial: `nur-al-tawhid-wa-zulumat-al-shirk` (`3c62b7ab`). Text/markup checks pass, but a parser issue with notes beginning `)` leaves 157 references unresolved on 40 pages. Excluded from the finished count; parser unchanged.
+- Next: `src/content/book-lg/huquq-aal-al-bayt.md`. Reviewed, unchanged, not counted as finished. Do not resume until requested.
+- Fresh strict/import gates, exact source/diacritic checks, parser checks and whitespace checks passed for all nine newly committed books. Known limitations and source gaps remain documented; no guessed reconstruction.
+- Full per-book reports, commit table and source issues: `/home/sinkeat/Projects/athar-format-work/NIGHT.md`. Supporting files are saved in `<book-id>/` folders there; some scripts retain `/tmp` paths that need updating after temporary files are cleared.
+- No build or GUI checks, merge or push. The existing untracked `node_modules` symlink was left alone.
+
+The original overnight instructions below are retained for a future run. This status section records the completed stop; it does not request more work.
+
+
 Codex works alone in its own worktree and branch, one book per commit, so the morning review can
 keep or drop each book separately. Run the setup yourself, then launch Codex and paste everything
 below the line.
