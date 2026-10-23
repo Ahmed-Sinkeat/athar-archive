@@ -397,3 +397,4 @@
 | al-twhyd-labn-mndh | committed | card/heading fixes (cut sentence rejoined) | none | none |
 | mshykha-qady-al-marstan | skipped | nothing to format (notes already linked) | none | none |
 | tafsir-mawdui-1-madinah-univ | committed | card/heading fixes (cut sentence rejoined) | none | none |
+| talqih-al-afham-al-aliyyah | skipped | nothing to format (notes already linked) | none | none |
