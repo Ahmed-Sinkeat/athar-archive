@@ -338,3 +338,4 @@
 | ithbat-adhab-al-qbr-llbyhqy | committed | card/heading fixes | none | none |
 | tthqyf-al-lsan-wtlqyh-al-jnan | committed | card/heading fixes | none | none |
 | ahadyth-ismaayl-bn-jafr | committed | card/heading fixes | none | none |
+| al-thwr-llqasm-bn-slam | committed | card/heading fixes | none | none |
