@@ -2,7 +2,7 @@
 
 Generated 2026-10-23 from main. 1238 book files.
 
-**Progress:** 412 done (33%) · 146 skipped (already clean or need a decision) · 680 remaining.
+**Progress:** 414 done (33%) · 146 skipped (already clean or need a decision) · 678 remaining.
 
 Done = formatted in place and passed the format-verify gate (no text lost). Skipped = checked, nothing to change or needs an owner decision. Remaining = not formatted yet.
 
@@ -10,9 +10,9 @@ Done = formatted in place and passed the format-verify gate (no text lost). Skip
 
 | Status | Group | Books | Size |
 |---|---|---:|---:|
-| ✅ done | Sonnet cloud | 282 | 83.2 MB |
+| ✅ done | Sonnet cloud | 283 | 83.6 MB |
 | ✅ done | earlier runs | 68 | 11.4 MB |
-| ✅ done | Codex nights | 58 | 5.4 MB |
+| ✅ done | Codex nights | 59 | 5.5 MB |
 | ✅ done | fixed 2026-10-23 | 4 | 411 KB |
 | ⏭️ skipped | nothing to format | 145 | 47.4 MB |
 | ⏭️ skipped | duplicate of ahkam-al-nisa-al-khallal (98% same text): owner to retire one | 1 | 70 KB |
@@ -20,13 +20,11 @@ Done = formatted in place and passed the format-verify gate (no text lost). Skip
 | ⏳ remaining | small, on Sonnet exclusion list | 133 | 52.5 MB |
 | ⏳ remaining | small, never picked up | 83 | 15.1 MB |
 | ⏳ remaining | partial: Codex stopped mid-book, redo | 1 | 122 KB |
-| ⏳ remaining | pass committed, but 1 «= heading =» lines still unformatted | 1 | 134 KB |
-| ⏳ remaining | pass committed, but 34 «= heading =» lines still unformatted | 1 | 373 KB |
-| **✅ done** | **total** | **412** | **100.3 MB** |
+| **✅ done** | **total** | **414** | **100.8 MB** |
 | **⏭️ skipped** | **total** | **146** | **47.5 MB** |
-| **⏳ remaining** | **total** | **680** | **3265.5 MB** |
+| **⏳ remaining** | **total** | **678** | **3265.0 MB** |
 
-## ✅ done (412)
+## ✅ done (414)
 
 | # | Title | Author | Slug | Size | Note |
 |---:|---|---|---|---:|---|
@@ -88,360 +86,362 @@ Done = formatted in place and passed the format-verify gate (no text lost). Skip
 | 56 | رسم الأهداف | عبد القادر المحمدي | `rsm-al-ahdaf` | 132 KB | Codex nights |
 | 57 | قاعدة في الانغماس في العدو وهل يباح | ابن تيمية | `qaadh-fy-al-anghmas-fy-al-adw-whl-ybah` | 133 KB | Codex nights |
 | 58 | الشافية في علمي التصريف والخط | ابن الحاجب | `al-shafya-fy-almy-al-tsryf-walkht` | 133 KB | Codex nights |
-| 59 | عقود الهمز | ابن جني | `aqwd-al-hmz` | 6 KB | Sonnet cloud |
-| 60 | نكتة الإعراب | ابن هشام | `nuktat-al-irab` | 10 KB | Sonnet cloud |
-| 61 | تعس عبد الشهوات | أزهري أحمد محمود | `tas-abd-al-shhwat` | 17 KB | Sonnet cloud |
-| 62 | الألفاظ المهموزة | ابن جني | `al-alfaz-al-mhmwza` | 17 KB | Sonnet cloud |
-| 63 | احذر عاقبة الذنوب | أزهري أحمد محمود | `ahthr-aaqbh-al-thnwb` | 17 KB | Sonnet cloud |
-| 64 | احذر سوء الخاتمة | أزهري أحمد محمود | `ahthr-sw-al-khatmh` | 19 KB | Sonnet cloud |
-| 65 | رسالة في اسم الفاعل | العبادي | `rsala-fy-asm-al-faal` | 19 KB | Sonnet cloud |
-| 66 | أيها المذنب بئس ما اخترت | أزهري أحمد محمود | `ayha-al-mthnb-bys-ma-akhtrt` | 20 KB | Sonnet cloud |
-| 67 | درة القلوب الإخلاص | أزهري أحمد محمود | `drh-al-qlwb-al-akhlas` | 22 KB | Sonnet cloud |
-| 68 | سبب وضع علم العربية | الجلال السيوطي | `sbb-wda-alm-al-arbya` | 22 KB | Sonnet cloud |
-| 69 | الإخلاص والنية | ابن أبي الدنيا | `al-ikhlas-wal-niyyah` | 25 KB | Sonnet cloud |
-| 70 | البرعومة في النحو | حازم خنفر | `al-brawma-fy-al-nhw` | 27 KB | Sonnet cloud |
-| 71 | وجوب تحكيم شرع الله ونبذ ما خالفه | ابن باز | `wujub-tahkim-shariatillah` | 28 KB | Sonnet cloud |
-| 72 | رسالة أي المشددة | ابن قائد | `rsala-ay-al-mshdda` | 29 KB | Sonnet cloud |
-| 73 | ترياق الأحزان وراحة الأبدان الصبر | أزهري أحمد محمود | `tryaq-al-ahzan-wrahh-al-abdan-al-sbr` | 29 KB | Sonnet cloud |
-| 74 | حلم معاوية | ابن أبي الدنيا | `hilm-muawiyah` | 30 KB | Sonnet cloud |
-| 75 | اعتراض الشرط على الشرط | جمال الدين ابن هشام | `aatrad-al-shrt-ala-al-shrt` | 30 KB | Sonnet cloud |
-| 76 | بزوغ الهلال في الخصال الموجبة للظلال | الجلال السيوطي | `bzwgh-al-hlal-fy-al-khsal-al-mwjbh-llzlal` | 30 KB | Sonnet cloud |
-| 77 | اليقين | ابن أبي الدنيا | `al-yaqin-ibn-abi-al-dunya` | 31 KB | Sonnet cloud |
-| 78 | قواصم الظهور على دار الغرور الزهد | أزهري أحمد محمود | `qwasm-al-zhwr-ala-dar-al-ghrwr-al-zhd` | 31 KB | Sonnet cloud |
-| 79 | سنة الجمعة | ابن تيمية | `snh-al-jmah` | 31 KB | Sonnet cloud |
-| 80 | أصول الإيمان لابن باز | ابن باز | `usul-al-iman-ibn-baz` | 33 KB | Sonnet cloud |
-| 81 | البلغة في الفرق بين المذكر والمؤنث | أبو البركات الأنباري | `al-blgha-fy-al-frq-byn-al-mdhkr-walmwnth` | 33 KB | Sonnet cloud |
-| 82 | كتاب متن الأخضري في العبادات على مذهب الإمام مالك | الأخضري | `ktab-mtn-al-akhdry-fy-al-abadat-ala-mdhhb-al-imam-malk` | 33 KB | Sonnet cloud |
-| 83 | كتاب متن العشماوية | عبد الباري العشماوي | `ktab-mtn-al-ashmawya` | 34 KB | Sonnet cloud |
-| 84 | أسباب المغفرة | ابن رجب الحنبلي | `asbab-al-mghfrh` | 34 KB | Sonnet cloud |
-| 85 | رسالة الحدود | أبو الحسن الرماني | `rsala-al-hdwd` | 38 KB | Sonnet cloud |
-| 86 | ذم البغي | ابن أبي الدنيا | `dhamm-al-baghy` | 38 KB | Sonnet cloud |
-| 87 | العقل والهوى | الترمذي، الحكيم | `al-aql-walhwa` | 39 KB | Sonnet cloud |
-| 88 | متن قطر الندى وبل الصدى | ابن هشام | `qatr-al-nada` | 40 KB | Sonnet cloud |
-| 89 | كلام الليالي والأيام | ابن أبي الدنيا | `kalam-al-layali-wal-ayyam` | 40 KB | Sonnet cloud |
-| 90 | العقيدة الصحيحة وما يضادها | ابن باز | `al-aqeedah-al-sahihah-wa-ma-yudadduha` | 41 KB | Sonnet cloud |
-| 91 | معاني الحروف | أبو الحسن الرماني | `maany-al-hrwf` | 41 KB | Sonnet cloud |
-| 92 | هؤلاء هم خصماؤك غدا | عبد الملك بن قاسم | `hwla-hm-khsmawk-ghda` | 41 KB | Sonnet cloud |
-| 93 | التوكل على الله | ابن أبي الدنيا | `al-tawakkul-ala-allah` | 41 KB | Sonnet cloud |
-| 94 | فضائل رمضان | ابن أبي الدنيا | `fadail-ramadan` | 42 KB | Sonnet cloud |
-| 95 | تحقيق الإيمان لابن تيمية | ابن تيمية | `tahqiq-al-iman-ibn-taymiyyah` | 43 KB | Sonnet cloud |
-| 96 | أخي كيف حالك مع القرآن | أزهري أحمد محمود | `akhy-kyf-halk-ma-al-qran` | 44 KB | Sonnet cloud |
-| 97 | نقعة الصديان فيما جاء على الفعلان | الصغاني | `nqaa-al-sdyan-fyma-ja-ala-al-falan` | 44 KB | Sonnet cloud |
-| 98 | البلوتوث | د_ عادل العبد الجبار | `al-blwtwth` | 45 KB | Sonnet cloud |
-| 99 | العمر والشيب | ابن أبي الدنيا | `al-umr-wal-shayb` | 48 KB | Sonnet cloud |
-| 100 | جزء في مسائل عن أبي عبد الله أحمد بن حنبل | البغوي ، أبو القاسم | `jz-fy-msayl-an-aby-abd-al-lh-ahmd-bn-hnbl` | 49 KB | Sonnet cloud |
-| 101 | الوجل والتوثق بالعمل | ابن أبي الدنيا | `al-wajal-wal-tawathuq-bil-amal` | 50 KB | Sonnet cloud |
-| 102 | الرسالة المدنية في تحقيق المجاز والحقيقة في صفات الله (مطبوع ضمن الفتوى الحموية الكبرى) | ابن تيمية | `al-risalah-al-madaniyyah` | 50 KB | Sonnet cloud |
-| 103 | ذم المسكر | ابن أبي الدنيا | `dhamm-al-muskir` | 51 KB | Sonnet cloud |
-| 104 | المسائل التي حلف عليها أحمد بن حنبل | ابن أبي يعلى | `al-msayl-al-ty-hlf-alyha-ahmd-bn-hnbl` | 52 KB | Sonnet cloud |
-| 105 | علل التثنية | ابن جني | `all-al-tthnya` | 54 KB | Sonnet cloud |
-| 106 | قرى الضيف | ابن أبي الدنيا | `qira-al-dayf` | 55 KB | Sonnet cloud |
-| 107 | الرد على الرافضة أو القضاب المشتهر على رقاب ابن المطهر | الفيروزآبادي | `al-radd-ala-al-rafidah` | 57 KB | Sonnet cloud |
-| 108 | ذم الكذب (من الصمت وآداب اللسان) | ابن أبي الدنيا | `dhamm-al-kadhib-min-al-samt-wa-adab-al-lisan` | 58 KB | Sonnet cloud |
-| 109 | متن العشماوية | عبد الباري العشماوي | `mtn-al-ashmawyh` | 58 KB | Sonnet cloud |
-| 110 | متن الأخضري في العبادات على مذهب الإمام مالك | الأخضري | `mtn-al-akhdry-fy-al-abadat-ala-mthhb-al-amam-malk` | 58 KB | Sonnet cloud |
-| 111 | الذكر الثمين | ابن عثيمين | `al-thkr-al-thmyn` | 60 KB | Sonnet cloud |
-| 112 | بيان فضل علم السلف على علم الخلف | ابن رجب الحنبلي | `byan-fdl-alm-al-slf-ala-alm-al-khlf` | 60 KB | Sonnet cloud |
-| 113 | لمحات في تربية البنات | عبد الملك بن قاسم | `lmhat-fy-trbyh-al-bnat` | 62 KB | Sonnet cloud |
-| 114 | العقل وفضله | ابن أبي الدنيا | `al-aql-wa-fadluhu` | 62 KB | Sonnet cloud |
-| 115 | رسالة في إثبات الاستواء والفوقية ومسألة الحرف والصوت في القرآن المجيد | أبو محمد الجويني | `risalah-fi-ithbat-al-istiwa` | 62 KB | Sonnet cloud |
-| 116 | مجالس ابن القاسم التي سأل عنها مالكا | ابن القاسم | `mjals-abn-al-qasm-al-ty-sal-anha-malka` | 63 KB | Sonnet cloud |
-| 117 | المنثور | ابن الجوزي | `al-mnthwr` | 64 KB | Sonnet cloud |
-| 118 | أصول الفقه |  | `usul-al-fiqh-osamah-sulayman` | 65 KB | Sonnet cloud |
-| 119 | الحلم | ابن أبي الدنيا | `al-hilm-ibn-abi-al-dunya` | 65 KB | Sonnet cloud |
-| 120 | توجيهات إسلامية لعبد الله بن حميد | عبد الله بن حميد | `twjyhat-aslamyh-labd-al-lh-bn-hmyd` | 65 KB | Sonnet cloud |
-| 121 | مكائد الشيطان | ابن أبي الدنيا | `makaid-al-shaytan` | 65 KB | Sonnet cloud |
-| 122 | الأنشوطة في النحو | حازم خنفر | `al-anshwta-fy-al-nhw` | 66 KB | Sonnet cloud |
-| 123 | ذكر من يعتمد قوله في الجرح والتعديل | الذهبي، شمس الدين | `dhkr-mn-yatmd-qwlh-fy-al-jrh-waltadyl` | 67 KB | Sonnet cloud |
-| 124 | بر الوالدين | ابن الجوزي | `br-al-waldyn` | 68 KB | Sonnet cloud |
-| 125 | تحقيق رياض الصالحين للألباني | النووي | `thqyq-ryad-al-salhyn-llalbany` | 71 KB | Sonnet cloud |
-| 126 | رسالة المباحث المرضية | جمال الدين ابن هشام | `rsala-al-mbahth-al-mrdya` | 72 KB | Sonnet cloud |
-| 127 | الرضا عن الله بقضائه | ابن أبي الدنيا | `al-rida-an-allah-bi-qadaihi` | 74 KB | Sonnet cloud |
-| 128 | متن شذور الذهب | جمال الدين ابن هشام | `mtn-shdhwr-al-dhhb` | 76 KB | Sonnet cloud |
-| 129 | خلاصة الجواهر الزكية في فقه المالكية | أحمد بن تركي المالكي | `khlash-al-jwahr-al-zkyh-fy-fqh-al-malkyh` | 77 KB | Sonnet cloud |
-| 130 | اللآلي | ابن الجوزي | `al-laly` | 81 KB | Sonnet cloud |
-| 131 | من عاش بعد الموت | ابن أبي الدنيا | `man-asha-bad-al-mawt` | 82 KB | Sonnet cloud |
-| 132 | سجود التلاوة معانيه وأحكامه | ابن تيمية | `sjwd-al-tlawh-maanyh-wahkamh` | 83 KB | Sonnet cloud |
-| 133 | الجهاد | ابن أبي عاصم | `al-jihad-ibn-abi-asim` | 83 KB | Sonnet cloud |
-| 134 | الاعتبار وأعقاب السرور | ابن أبي الدنيا | `al-itibar-wa-aqab-al-surur` | 83 KB | Sonnet cloud |
-| 135 | المتمنين | ابن أبي الدنيا | `al-mutamannin` | 84 KB | Sonnet cloud |
-| 136 | ذم الغيبة والنميمة | ابن أبي الدنيا | `dhamm-al-ghibah-wal-namimah` | 85 KB | Sonnet cloud |
-| 137 | قضاء الحوائج | ابن أبي الدنيا | `qada-al-hawaij` | 86 KB | Sonnet cloud |
-| 138 | الأمر بالمعروف والنهي عن المنكر | ابن أبي الدنيا | `al-amr-bil-maruf-ibn-abi-al-dunya` | 88 KB | Sonnet cloud |
-| 139 | دقائق المنهاج | النووي | `dqayq-al-mnhaj` | 88 KB | Sonnet cloud |
-| 140 | إعراب لامية الشنفرى | العكبري، أبو البقاء | `iarab-lamya-al-shnfra` | 88 KB | Sonnet cloud |
-| 141 | حروف المعاني والصفات | الزجاجي | `hrwf-al-maany-walsfat` | 92 KB | Sonnet cloud |
-| 142 | زيارة القبور والاستنجاد بالمقبور | ابن تيمية | `ziyarat-al-qubur-wal-istinjad` | 92 KB | Sonnet cloud |
-| 143 | القناعة والتعفف | ابن أبي الدنيا | `al-qanaah-wal-taaffuf` | 92 KB | Sonnet cloud |
-| 144 | مداراة الناس | ابن أبي الدنيا | `mudarat-al-nas` | 93 KB | Sonnet cloud |
-| 145 | وصايا العلماء عند حضور الموت | ابن زبر الربعي | `wasaya-al-ulama-inda-hudur-al-mawt` | 93 KB | Sonnet cloud |
-| 146 | مواعظ ابن الجوزي - الياقوتة | ابن الجوزي | `mwaaz-abn-al-jwzy-al-yaqwth` | 94 KB | Sonnet cloud |
-| 147 | الهم والحزن | ابن أبي الدنيا | `al-hamm-wal-huzn` | 94 KB | Sonnet cloud |
-| 148 | الفرج بعد الشدة | ابن أبي الدنيا | `al-faraj-bad-al-shiddah-ibn-abi-al-dunya` | 96 KB | Sonnet cloud |
-| 149 | محاسبة النفس | ابن أبي الدنيا | `muhasabat-al-nafs` | 96 KB | Sonnet cloud |
-| 150 | تمهيد الفرش في الخصال الموجبة لظل العرش | الجلال السيوطي | `tmhyd-al-frsh-fy-al-khsal-al-mwjbh-lzl-al-arsh` | 97 KB | Sonnet cloud |
-| 151 | كتاب التمييز | مسلم بن الحجاج | `kitab-al-tamyiz` | 97 KB | Sonnet cloud |
-| 152 | التذكرة في الفقه الشافعي لابن الملقن | ابن الملقن | `al-tthkrh-fy-al-fqh-al-shafay-labn-al-mlqn` | 98 KB | Sonnet cloud |
-| 153 | حسن الظن بالله | ابن أبي الدنيا | `husn-al-dhann-billah` | 99 KB | Sonnet cloud |
-| 154 | المطر والرعد والبرق | ابن أبي الدنيا | `al-matar-wal-rad-wal-barq` | 102 KB | Sonnet cloud |
-| 155 | منازل الحروف | أبو الحسن الرماني | `mnazl-al-hrwf` | 102 KB | Sonnet cloud |
-| 156 | الإخوان | ابن أبي الدنيا | `al-ikhwan` | 105 KB | Sonnet cloud |
-| 157 | اصطناع المعروف | ابن أبي الدنيا | `istina-al-maruf` | 106 KB | Sonnet cloud |
-| 158 | كفاية المتحفظ ونهاية المتلفظ في اللغة العربية | ابن الأجدابي | `kifayat-al-mutahaffiz` | 108 KB | Sonnet cloud |
-| 159 | مسائل خلافية في النحو | العكبري، أبو البقاء | `msayl-khlafya-fy-al-nhw` | 108 KB | Sonnet cloud |
-| 160 | مقتل علي | ابن أبي الدنيا | `maqtal-ali` | 109 KB | Sonnet cloud |
-| 161 | ذم الملاهي | ابن أبي الدنيا | `dhamm-al-malahi` | 110 KB | Sonnet cloud |
-| 162 | الشكر | ابن أبي الدنيا | `al-shukr-ibn-abi-al-dunya` | 111 KB | Sonnet cloud |
-| 163 | دليل الطالبين لكلام النحويين | مرعي الكرمي | `dlyl-al-talbyn-lklam-al-nhwyyn` | 112 KB | Sonnet cloud |
-| 164 | الأمر بالمعروف والنهي عن المنكر | أبو بكر الخلال | `al-amr-bil-maruf-al-khallal` | 113 KB | Sonnet cloud |
-| 165 | النصيحة الكافية لمن خصه الله بالعافية | زروق | `al-nsyhh-al-kafyh-lmn-khsh-al-lh-balaafyh` | 113 KB | Sonnet cloud |
-| 166 | الرد على النحاة | ابن مضاء | `al-rd-ala-al-nhaa` | 115 KB | Sonnet cloud |
-| 167 | الورع | ابن أبي الدنيا | `al-wara` | 116 KB | Sonnet cloud |
-| 168 | الانتخاب لكشف الأبيات المشكلة الإعراب | علي بن عدلان | `al-antkhab-lkshf-al-abyat-al-mshkla-al-iarab` | 117 KB | Sonnet cloud |
-| 169 | التوبة | ابن أبي الدنيا | `al-tawbah-ibn-abi-al-dunya` | 117 KB | Sonnet cloud |
-| 170 | الأمر بالمعروف والنهي عن المنكر | ابن تيمية | `al-amr-bil-maruf-ibn-taymiyyah` | 119 KB | Sonnet cloud |
-| 171 | الأولياء | ابن أبي الدنيا | `al-awliya-ibn-abi-al-dunya` | 119 KB | Sonnet cloud |
-| 172 | التواضع والخمول | ابن أبي الدنيا | `al-tawadu-wal-khumul` | 121 KB | Sonnet cloud |
-| 173 | أخلاق العلماء | أبو بكر الآجري | `akhlaq-al-ulama` | 122 KB | Sonnet cloud |
-| 174 | شرح شروط الصلاة وأركانها وواجباتها لشيخ الإسلام محمد بن عبد الوهاب | عبد المحسن العباد | `shrh-shrwt-al-slah-warkanha-wwajbatha-lshykh-al-aslam-mhmd-b` | 123 KB | Sonnet cloud |
-| 175 | قرة العينين برفع اليدين في الصلاة | البخاري | `qra-al-aynyn-brfa-al-ydyn-fy-al-slaa` | 123 KB | Sonnet cloud |
-| 176 | مجابو الدعوة | ابن أبي الدنيا | `mujabu-al-dawah` | 124 KB | Sonnet cloud |
-| 177 | حلية طالب العلم | بكر بن عبد الله أبو زيد | `hlya-talb-al-alm` | 124 KB | Sonnet cloud |
-| 178 | تنزيه الأصحاب عن تنقص أبي تراب | حمود بن عبد الله التويجري | `tanzih-al-ashab` | 127 KB | Sonnet cloud |
-| 179 | الصبر والثواب عليه | ابن أبي الدنيا | `al-sabr-wal-thawab-alayhi` | 131 KB | Sonnet cloud |
-| 180 | شرح منظومة القواعد الفقهية للسعدي |  | `sharh-manzumat-al-qawaid-al-fiqhiyyah-saadi` | 132 KB | Sonnet cloud |
-| 181 | الإيمان للقاسم بن سلام - مخرجا | أبو عبيد القاسم بن سلام | `al-iyman-llqasm-bn-slam-mkhrja` | 134 KB | Sonnet cloud |
-| 182 | اتحاف الفاضل بالفعل المبني لغير الفاعل | ابن علان | `athaf-al-fadl-balfal-al-mbny-lghyr-al-faal` | 144 KB | Sonnet cloud |
-| 183 | المرض والكفارات | ابن أبي الدنيا | `al-marad-wal-kaffarat` | 150 KB | Sonnet cloud |
-| 184 | العدد في اللغة | ابن سيده | `al-add-fy-al-lgha` | 152 KB | Sonnet cloud |
-| 185 | صفة النار | ابن أبي الدنيا | `sifat-al-nar` | 157 KB | Sonnet cloud |
-| 186 | آداب العلماء والمتعلمين | الحسين بن المنصور اليمني | `adab-al-alma-walmtalmyn` | 158 KB | Sonnet cloud |
-| 187 | ضعيف الأدب المفرد | البخاري | `dayf-al-adb-al-mfrd` | 160 KB | Sonnet cloud |
-| 188 | زينة العرائس | ابن المبرد | `zyna-al-arays` | 162 KB | Sonnet cloud |
-| 189 | القبور | ابن أبي الدنيا | `al-qubur` | 170 KB | Sonnet cloud |
-| 190 | طرق حديث من كذب علي متعمدا للطبراني | الطبراني | `trq-hdyth-mn-kdhb-aly-mtamda-lltbrany` | 171 KB | Sonnet cloud |
-| 191 | مذكرة أصول الفقه |  | `muthakkirat-usul-al-fiqh-jamiah-islamiyyah` | 172 KB | Sonnet cloud |
-| 192 | اللامات | الزجاجي | `al-lamat` | 173 KB | Sonnet cloud |
-| 193 | المقدمة الحضرمية | بافضل الحضرمي | `al-mqdmh-al-hdrmyh` | 173 KB | Sonnet cloud |
-| 194 | المقدمة الجزولية في النحو | الجزولي، أبو موسى | `al-mqdma-al-jzwlya-fy-al-nhw` | 173 KB | Sonnet cloud |
-| 195 | الجوع | ابن أبي الدنيا | `al-ju` | 177 KB | Sonnet cloud |
-| 196 | الأهوال | ابن أبي الدنيا | `al-ahwal` | 180 KB | Sonnet cloud |
-| 197 | الهواتف | ابن أبي الدنيا | `al-hawatif` | 184 KB | Sonnet cloud |
-| 198 | اللطائف | ابن الجوزي | `al-ltayf` | 185 KB | Sonnet cloud |
-| 199 | ليس في كلام العرب | ابن خالويه | `lys-fy-klam-al-arb` | 186 KB | Sonnet cloud |
-| 200 | النفقة على العيال | ابن أبي الدنيا | `al-nafaqah-ala-al-iyal` | 189 KB | Sonnet cloud |
-| 201 | الأمالي في آثار الصحابة لعبد الرزاق الصنعاني | عبد الرزاق الصنعاني | `al-amaly-fy-athar-al-shaba-labd-al-rzaq-al-snaany` | 192 KB | Sonnet cloud |
-| 202 | شرح الأزهرية | خالد الأزهري | `shrh-al-azhrya` | 193 KB | Sonnet cloud |
-| 203 | الأعضاء والنفس | الترمذي، الحكيم | `al-aada-walnfs` | 193 KB | Sonnet cloud |
-| 204 | تذكرة السامع والمتكلم في أدب العالم والمتعلم | بدر الدين ابن جماعة | `tadhkirat-al-sam-wal-mutakallim` | 195 KB | Sonnet cloud |
-| 205 | الأمر بالمعروف والنهي عن المنكر للخلال | أبو بكر الخلال | `al-amr-balmarwf-walnhy-an-al-mnkr-llkhlal` | 196 KB | Sonnet cloud |
-| 206 | أشراط الساعة الكبرى - المغامسي | صالح المغامسي | `ashrat-al-saah-al-kbra-al-mghamsy` | 199 KB | Sonnet cloud |
-| 207 | قصر الأمل | ابن أبي الدنيا | `qasr-al-amal` | 211 KB | Sonnet cloud |
-| 208 | سلسلة القمم لأهل الهمم | عائض القرني | `slslh-al-qmm-lahl-al-hmm` | 216 KB | Sonnet cloud |
-| 209 | تاريخ داريا لعبد الجبار الخولاني | عبد الجبار الخولاني | `tarykh-darya-labd-al-jbar-al-khwlany` | 219 KB | Sonnet cloud |
-| 210 | صفة الجنة | ابن أبي الدنيا | `sifat-al-jannah` | 229 KB | Sonnet cloud |
-| 211 | مكارم الأخلاق للطبراني | الطبراني | `mkarm-al-akhlaq-lltbrany` | 231 KB | Sonnet cloud |
-| 212 | المحتضرين | ابن أبي الدنيا | `al-muhtadirin` | 232 KB | Sonnet cloud |
-| 213 | إصلاح المال | ابن أبي الدنيا | `islah-al-mal` | 233 KB | Sonnet cloud |
-| 214 | مجالس رمضان - أحمد فريد | أحمد فريد | `mjals-rmdan-ahmd-fryd` | 235 KB | Sonnet cloud |
-| 215 | الرسالة للقيرواني | ابن أبي زيد القيرواني | `al-rsalh-llqyrwany` | 235 KB | Sonnet cloud |
-| 216 | الآداب النافعة بالألفاظ المختارة الجامعة | ابن شمس الخلافة | `al-adab-al-nafah-balalfaz-al-mkhtarh-al-jamah` | 237 KB | Sonnet cloud |
-| 217 | اللمع في العربية لابن جني | ابن جني | `al-lma-fy-al-arbya-labn-jny` | 239 KB | Sonnet cloud |
-| 218 | الرقة والبكاء | ابن أبي الدنيا | `al-riqqah-wal-buka` | 243 KB | Sonnet cloud |
-| 219 | موصل الطلاب إلى قواعد الإعراب | خالد الأزهري | `mwsl-al-tlab-ila-qwaad-al-iarab` | 243 KB | Sonnet cloud |
-| 220 | القراءة خلف الإمام للبخاري | البخاري | `al-qraa-khlf-al-imam-llbkhary` | 245 KB | Sonnet cloud |
-| 221 | الإيضاح العضدي | أبو علي الفارسي | `al-iydah-al-addy` | 245 KB | Sonnet cloud |
-| 222 | المنامات | ابن أبي الدنيا | `al-manamat` | 251 KB | Sonnet cloud |
-| 223 | الأدب لابن أبي شيبة | أبو بكر بن أبي شيبة | `al-adb-labn-aby-shyba` | 253 KB | Sonnet cloud |
-| 224 | مختصر الشمائل | الترمذي، محمد بن عيسى | `mkhtsr-al-shmayl` | 253 KB | Sonnet cloud |
-| 225 | الآثار لمحمد بن الحسن | محمد بن الحسن الشيباني | `al-athar-lmhmd-bn-al-hsn` | 255 KB | Sonnet cloud |
-| 226 | من حديث خيثمة بن سليمان | خيثمة بن سليمان الأطرابلسي | `mn-hdyth-khythma-bn-slyman` | 255 KB | Sonnet cloud |
-| 227 | الطهور | أبو عبيد القاسم بن سلام | `al-tuhur-al-qasim-ibn-sallam` | 260 KB | Sonnet cloud |
-| 228 | فوائد أبي محمد الفاكهي | الفاكهي، أبو محمد | `fwayd-aby-mhmd-al-fakhy` | 264 KB | Sonnet cloud |
-| 229 | الشافية في علم التصريف والوافية نظم الشافية | ابن الحاجب | `al-shafya-fy-alm-al-tsryf-walwafya-nzm-al-shafya` | 266 KB | Sonnet cloud |
-| 230 | شرح التعريف بضروري التصريف | ابن إياز النحوي | `shrh-al-taryf-bdrwry-al-tsryf` | 267 KB | Sonnet cloud |
-| 231 | شرح الآجرومية - محمد حسن عبد الغفار | محمد حسن عبد الغفار | `shrh-al-ajrwmya-mhmd-hsn-abd-al-ghfar` | 268 KB | Sonnet cloud |
-| 232 | جزء الألف دينار للقطيعي | القطيعي | `jz-al-alf-dynar-llqtyay` | 275 KB | Sonnet cloud |
-| 233 | تقييد العلم | الخطيب البغدادي | `taqyid-al-ilm` | 277 KB | Sonnet cloud |
-| 234 | العقوبات | ابن أبي الدنيا | `al-uqubat` | 281 KB | Sonnet cloud |
-| 235 | البر والصلة للحسين بن حرب | الحسين بن حرب | `al-br-walsla-llhsyn-bn-hrb` | 285 KB | Sonnet cloud |
-| 236 | البدع لابن وضاح | القرطبي، ابن وضاح | `al-bda-labn-wdah` | 286 KB | Sonnet cloud |
-| 237 | القول السديد شرح كتاب التوحيد ط الوزارة | عبد الرحمن السعدي | `al-qwl-al-sdyd-shrh-ktab-al-twhyd-t-al-wzara` | 288 KB | Sonnet cloud |
-| 238 | فتاوى مهمة لعموم الأمة | ابن باز | `fatawa-muhimmah-li-umum-al-ummah` | 294 KB | Sonnet cloud |
-| 239 | شرح مذاهب أهل السنة لابن شاهين | ابن شاهين | `shrh-mdhahb-ahl-al-sna-labn-shahyn` | 299 KB | Sonnet cloud |
-| 240 | أصول الإيمان لمحمد بن عبد الوهاب - ت الجوابرة | محمد بن عبد الوهاب | `usul-al-iman-ibn-abdul-wahhab` | 303 KB | Sonnet cloud |
-| 241 | الإشراف في منازل الأشراف | ابن أبي الدنيا | `al-ishraf-fi-manazil-al-ashraf` | 307 KB | Sonnet cloud |
-| 242 | مكارم الأخلاق | ابن أبي الدنيا | `makarim-al-akhlaq-ibn-abi-al-dunya` | 313 KB | Sonnet cloud |
-| 243 | الجمل في النحو | الخليل بن أحمد الفراهيدي | `al-jml-fy-al-nhw` | 316 KB | Sonnet cloud |
-| 244 | الجهاد لابن أبي عاصم | ابن أبي عاصم | `al-jhad-labn-aby-aasm` | 319 KB | Sonnet cloud |
-| 245 | الإمامة والرد على الرافضة | أبو نعيم الأصبهاني | `al-imamah-wal-radd-ala-al-rafidah` | 321 KB | Sonnet cloud |
-| 246 | كتاب أخصر المختصرات - ط ركائز | ابن بلبان الحنبلي | `ktab-akhsr-al-mkhtsrat-t-rkayz` | 333 KB | Sonnet cloud |
-| 247 | شرح مختصر الصارم المسلول - محمد حسن عبد الغفار | محمد حسن عبد الغفار | `shrh-mkhtsr-al-sarm-al-mslwl-mhmd-hsn-abd-al-ghfar` | 336 KB | Sonnet cloud |
-| 248 | معجم أبي يعلى الموصلي | أبو يعلى الموصلي | `majm-aby-yala-al-mwsly` | 336 KB | Sonnet cloud |
-| 249 | قاعدة عظيمة في الفرق بين عبادات أهل الإسلام والإيمان وعبادات أهل الشرك والنفاق | ابن تيمية | `qaidah-azimah-fil-farq-bayn-ibadat` | 341 KB | Sonnet cloud |
-| 250 | الصمت وآداب اللسان | ابن أبي الدنيا | `al-samt-wa-adab-al-lisan` | 347 KB | Sonnet cloud |
-| 251 | الإقناع للماوردي | الماوردي | `al-aqnaa-llmawrdy` | 349 KB | Sonnet cloud |
-| 252 | سلوة الأحزان للاجتناب عن مجالسة الأحداث والنسوان | المشتولي | `slwh-al-ahzan-llajtnab-an-mjalsh-al-ahdath-walnswan` | 349 KB | Sonnet cloud |
-| 253 | شذا العرف في فن الصرف | أحمد الحملاوي | `shada-al-arf` | 369 KB | Sonnet cloud |
-| 254 | فضائل الخلفاء الراشدين لأبي نعيم الأصبهاني | أبو نعيم الأصبهاني | `fdayl-al-khlfa-al-rashdyn-laby-naym-al-asbhany` | 370 KB | Sonnet cloud |
-| 255 | أمالي ابن سمعون الواعظ | ابن سمعون الواعظ | `amaly-abn-smawn-al-waaz` | 373 KB | Sonnet cloud |
-| 256 | الزهد | ابن أبي الدنيا | `al-zuhd-ibn-abi-al-dunya` | 378 KB | Sonnet cloud |
-| 257 | تسهيل الفوائد وتكميل المقاصد | ابن مالك الأندلسي | `tashil-al-fawaid` | 380 KB | Sonnet cloud |
-| 258 | الفرج بعد الشدة | التنوخي | `al-faraj-bad-al-shiddah-al-tanukhi` | 385 KB | Sonnet cloud |
-| 259 | أمثال الحديث لأبي الشيخ الأصبهاني | أبو الشيخ الأصبهاني | `amthal-al-hdyth-laby-al-shykh-al-asbhany` | 387 KB | Sonnet cloud |
-| 260 | أخبار أبي القاسم الزجاجي | الزجاجي | `akhbar-aby-al-qasm-al-zjajy` | 398 KB | Sonnet cloud |
-| 261 | الفصول المفيدة في الواو المزيدة | صلاح الدين العلائي | `al-fswl-al-mfyda-fy-al-waw-al-mzyda` | 403 KB | Sonnet cloud |
-| 262 | شرح المعتمد في أصول الفقه |  | `sharh-al-mutamad-fi-usul-al-fiqh` | 404 KB | Sonnet cloud |
-| 263 | كرامات الأولياء للالكائي - من شرح أصول اعتقاد أهل السنة والجماعة للالكائي | اللالكائي | `kramat-al-awlya-llalkayy-mn-shrh-aswl-aatqad-ahl-al-sna-waljmaaa-llalkayy` | 408 KB | Sonnet cloud |
-| 264 | خلق أفعال العباد للبخاري | البخاري | `khlq-afaal-al-abad-llbkhary` | 408 KB | Sonnet cloud |
-| 265 | تثبيت الإمامة وترتيب الخلافة لأبي نعيم الأصبهاني | أبو نعيم الأصبهاني | `tthbyt-al-imama-wtrtyb-al-khlafa-laby-naym-al-asbhany` | 410 KB | Sonnet cloud |
-| 266 | أثر الاختلاف في القواعد الأصولية في اختلاف الفقهاء |  | `athar-al-ikhtilaf-fi-al-qawaid-al-usuliyyah` | 418 KB | Sonnet cloud |
-| 267 | إثبات عذاب القبر للبيهقي | أبو بكر البيهقي | `ithbat-adhab-al-qbr-llbyhqy` | 418 KB | Sonnet cloud |
-| 268 | تثقيف اللسان وتلقيح الجنان | ابن مكي | `tthqyf-al-lsan-wtlqyh-al-jnan` | 419 KB | Sonnet cloud |
-| 269 | أحاديث إسماعيل بن جعفر | إسماعيل بن جعفر | `ahadyth-ismaayl-bn-jafr` | 429 KB | Sonnet cloud |
-| 270 | الطهور للقاسم بن سلام | أبو عبيد القاسم بن سلام | `al-thwr-llqasm-bn-slam` | 436 KB | Sonnet cloud |
-| 271 | الأمثال | أبو عبيد القاسم بن سلام | `al-amthal-al-qasim-ibn-sallam` | 439 KB | Sonnet cloud |
-| 272 | التلقين في الفقة المالكي | القاضي عبد الوهاب | `al-tlqyn-fy-al-fqh-al-malky` | 440 KB | Sonnet cloud |
-| 273 | المراسيل لأبي داود | السجستاني، أبو داود | `al-mrasyl-laby-dawd` | 451 KB | Sonnet cloud |
-| 274 | السنة للمروزي | محمد بن نصر المروزي | `al-sna-llmrwzy` | 458 KB | Sonnet cloud |
-| 275 | التبيين عن مذاهب النحويين | العكبري، أبو البقاء | `al-tbyyn-an-mdhahb-al-nhwyyn` | 470 KB | Sonnet cloud |
-| 276 | قطف الجني الداني شرح مقدمة رسالة ابن أبي زيد القيرواني | عبد المحسن العباد | `qtf-al-jny-al-dany-shrh-mqdma-rsala-abn-aby-zyd-al-qyrwany` | 479 KB | Sonnet cloud |
-| 277 | شرح قطر الندى وبل الصدى | جمال الدين ابن هشام | `shrh-qtr-al-nda-wbl-al-sda` | 483 KB | Sonnet cloud |
-| 278 | كيف تصبح عالما | راغب السرجاني | `kyf-tsbh-aalma` | 493 KB | Sonnet cloud |
-| 279 | الرد على الجهمية للدارمي | الدارمي، أبو سعيد | `al-rd-ala-al-jhmya-lldarmy` | 501 KB | Sonnet cloud |
-| 280 | القدر للفريابي مخرجا | الفريابي | `al-qdr-llfryaby-mkhrja` | 502 KB | Sonnet cloud |
-| 281 | معجم أسامي شيوخ أبي بكر الإسماعيلي | أبو بكر الإسماعيلي | `majm-asamy-shywkh-aby-bkr-al-ismaayly` | 519 KB | Sonnet cloud |
-| 282 | تذكرة الأريب في تفسير الغريب | ابن الجوزي | `tadhkirat-al-arib-ibn-al-jawzi` | 521 KB | Sonnet cloud |
-| 283 | فضائل الأوقات للبيهقي | أبو بكر البيهقي | `fdayl-al-awqat-llbyhqy` | 523 KB | Sonnet cloud |
-| 284 | القواعد الفقهية بين الأصالة والتوجيه |  | `al-qawaid-al-fiqhiyyah-bayn-al-asalah-wal-tawjih` | 527 KB | Sonnet cloud |
-| 285 | الزهد لأبي داود | السجستاني، أبو داود | `al-zhd-laby-dawd` | 530 KB | Sonnet cloud |
-| 286 | رؤية الله للدارقطني | الدارقطني | `rwya-al-lh-lldarqtny` | 531 KB | Sonnet cloud |
-| 287 | الجامع لابن وهب ت مصطفى أبو الخير | ابن وهب | `al-jama-labn-whb-t-mstfa-abw-al-khyr` | 542 KB | Sonnet cloud |
-| 288 | المنتقى من كتاب مكارم الأخلاق ومعاليها | الخرائطي | `al-mntqa-mn-ktab-mkarm-al-akhlaq-wmaalyha` | 551 KB | Sonnet cloud |
-| 289 | الانتصار لأهل السنة والحديث في رد أباطيل حسن المالكي | عبد المحسن العباد | `al-intisar-li-ahl-al-sunnah-wal-hadith` | 556 KB | Sonnet cloud |
-| 290 | شرح شذور الذهب لابن هشام | جمال الدين ابن هشام | `shrh-shdhwr-al-dhhb-labn-hsham` | 579 KB | Sonnet cloud |
-| 291 | شرح متن أبي شجاع - محمد حسن عبد الغفار | محمد حسن عبد الغفار | `shrh-mtn-aby-shjaa-mhmd-hsn-abd-al-ghfar` | 580 KB | Sonnet cloud |
-| 292 | روضة العقلاء ونزهة الفضلاء | ابن حبان | `rawdat-al-uqala` | 602 KB | Sonnet cloud |
-| 293 | كن صحابيا | راغب السرجاني | `kn-shabya` | 610 KB | Sonnet cloud |
-| 294 | صفة الجنة لأبي نعيم الأصبهاني | أبو نعيم الأصبهاني | `sfa-al-jna-laby-naym-al-asbhany` | 613 KB | Sonnet cloud |
-| 295 | تيسير أصول الفقه للمبتدئين |  | `tayseer-usul-al-fiqh-lilmubtadiin` | 630 KB | Sonnet cloud |
-| 296 | الطب النبوي لأبي نعيم الأصفهاني | أبو نعيم الأصبهاني | `al-tb-al-nbwy-laby-naym-al-asfhany` | 633 KB | Sonnet cloud |
-| 297 | تحفة المودود بأحكام المولود | ابن القيم | `thfh-al-mwdwd-bahkam-al-mwlwd` | 633 KB | Sonnet cloud |
-| 298 | شرح كتاب الفوائد | عمر عبد الكافي | `shrh-ktab-al-fwayd` | 639 KB | Sonnet cloud |
-| 299 | تخليص الشواهد وتلخيص الفوائد | جمال الدين ابن هشام | `tkhlys-al-shwahd-wtlkhys-al-fwayd` | 643 KB | Sonnet cloud |
-| 300 | الترغيب في فضائل الأعمال وثواب ذلك لابن شاهين | ابن شاهين | `al-trghyb-fy-fdayl-al-aamal-wthwab-dhlk-labn-shahyn` | 643 KB | Sonnet cloud |
-| 301 | الجنى الداني في حروف المعاني | ابن أم قاسم المرادي | `al-jna-al-dany-fy-hrwf-al-maany` | 648 KB | Sonnet cloud |
-| 302 | السنن المأثورة للشافعي | المزني | `al-snn-al-mathwra-llshafay` | 656 KB | Sonnet cloud |
-| 303 | التوحيد لابن منده | ابن منده محمد بن إسحاق | `al-twhyd-labn-mndh` | 668 KB | Sonnet cloud |
-| 304 | التفسير الموضوعي 1 | جامعة المدينة العالمية | `tafsir-mawdui-1-madinah-univ` | 676 KB | Sonnet cloud |
-| 305 | عمدة الكتاب لأبي جعفر النحاس | أبو جعفر النحاس | `amda-al-ktab-laby-jafr-al-nhas` | 678 KB | Sonnet cloud |
-| 306 | مسائل خالف فيها رسول الله أهل الجاهلية | محمد حسن عبد الغفار | `msayl-khalf-fyha-rswl-al-lh-ahl-al-jahlya` | 681 KB | Sonnet cloud |
-| 307 | فضائل القرآن | أبو عبيد القاسم بن سلام | `fadail-al-quran-al-qasim-ibn-sallam` | 687 KB | Sonnet cloud |
-| 308 | أصول النحو 2 - جامعة المدينة | جامعة المدينة العالمية | `aswl-al-nhw-jamaa-al-mdyna-2` | 694 KB | Sonnet cloud |
-| 309 | أصول النحو 1 - جامعة المدينة | جامعة المدينة العالمية | `aswl-al-nhw-jamaa-al-mdyna` | 698 KB | Sonnet cloud |
-| 310 | لماذا نصلي - المقدم | محمد إسماعيل المقدم | `lmatha-nsly-al-mqdm` | 727 KB | Sonnet cloud |
-| 311 | جامع بيان العلم وفضله | ابن عبد البر | `jami-bayan-al-ilm` | 736 KB | Sonnet cloud |
-| 312 | الآثار لأبي يوسف | أبو يوسف القاضي | `al-athar-laby-ywsf` | 737 KB | Sonnet cloud |
-| 313 | شرح الآجرومية لحسن حفظي | حسن حفظي | `shrh-al-ajrwmya-lhsn-hfzy` | 739 KB | Sonnet cloud |
-| 314 | برنامج التجيبي | القاسم بن يوسف التجيبي | `brnamj-al-tjyby` | 742 KB | Sonnet cloud |
-| 315 | تخريج الأحاديث المرفوعة المسندة في كتاب التاريخ الكبير للبخاري | البخاري | `tkhryj-al-ahadyth-al-mrfwaa-al-msnda-fy-ktab-al-tarykh-al-kbyr-llbkhary` | 756 KB | Sonnet cloud |
-| 316 | مساوئ الأخلاق للخرائطي | الخرائطي | `msawy-al-akhlaq-llkhrayty` | 768 KB | Sonnet cloud |
-| 317 | حديث أبي الفضل الزهري | أبو الفضل الزهري | `hdyth-aby-al-fdl-al-zhry` | 788 KB | Sonnet cloud |
-| 318 | التفريع في فقه الإمام مالك بن أنس | ابن الجلاب | `al-tfrya-fy-fqh-al-amam-malk-bn-ans` | 826 KB | Sonnet cloud |
-| 319 | أمالي ابن بشران - الجزء الثاني | ابن بشران، أبو القاسم | `amaly-abn-bshran-al-jz-al-thany` | 841 KB | Sonnet cloud |
-| 320 | مسائل الإمام أحمد رواية ابنه أبي الفضل صالح | أحمد بن حنبل | `msayl-al-amam-ahmd-rwayh-abnh-aby-al-fdl-salh` | 846 KB | Sonnet cloud |
-| 321 | مسائل الإمام أحمد رواية ابنه عبد الله | أحمد بن حنبل | `msayl-al-amam-ahmd-rwayh-abnh-abd-al-lh` | 848 KB | Sonnet cloud |
-| 322 | المدخل إلى السنن الكبرى للبيهقي | أبو بكر البيهقي | `al-mdkhl-ila-al-snn-al-kbra-llbyhqy` | 891 KB | Sonnet cloud |
-| 323 | عمل اليوم والليلة للنسائي | النسائي | `aml-al-ywm-wallyla-llnsayy` | 893 KB | Sonnet cloud |
-| 324 | تيسير اللطيف المنان في خلاصة تفسير القرآن | عبد الرحمن السعدي | `taysir-latif-mannan` | 898 KB | Sonnet cloud |
-| 325 | الدار الآخرة - محمد حسان | محمد حسان | `al-dar-al-akhrh-mhmd-hsan` | 930 KB | Sonnet cloud |
-| 326 | الوابل الصيب من الكلم الطيب | ابن القيم | `al-wabil-al-sayyib` | 937 KB | Sonnet cloud |
-| 327 | التفسير من سنن سعيد بن منصور - مخرجا | سعيد بن منصور | `al-tfsyr-mn-snn-sayd-bn-mnswr-mkhrja` | 940 KB | Sonnet cloud |
-| 328 | السنن الواردة في الفتن للداني | أبو عمرو الداني | `al-snn-al-warda-fy-al-ftn-lldany` | 966 KB | Sonnet cloud |
-| 329 | الاصطلام في الخلاف بين الإمامين الشافعي وأبي حنيفة | السمعاني، أبو المظفر | `al-astlam-fy-al-khlaf-byn-al-amamyn-al-shafay-waby-hnyfh` | 985 KB | Sonnet cloud |
-| 330 | مسائل الإمام أحمد رواية أبي داود السجستاني | أحمد بن حنبل | `msayl-al-amam-ahmd-rwayh-aby-dawd-al-sjstany` | 993 KB | Sonnet cloud |
-| 331 | علل النحو | ابن الوراق | `all-al-nhw` | 997 KB | Sonnet cloud |
-| 332 | عمل اليوم والليلة لابن السني | ابن السني | `aml-al-ywm-wallyla-labn-al-sny` | 999 KB | Sonnet cloud |
-| 333 | البعث والنشور للبيهقي | أبو بكر البيهقي | `al-bath-walnshwr-llbyhqy` | 1.0 MB | Sonnet cloud |
-| 334 | مسند الفاروق لابن كثير | ابن كثير | `msnd-al-farwq-labn-kthyr` | 1.0 MB | Sonnet cloud |
-| 335 | القضاء والقدر للبيهقي | أبو بكر البيهقي | `al-qda-walqdr-llbyhqy` | 1.0 MB | Sonnet cloud |
-| 336 | الاعتقاد للبيهقي | أبو بكر البيهقي | `al-aatqad-llbyhqy` | 1.0 MB | Sonnet cloud |
-| 337 | الدخيل في التفسير | جامعة المدينة العالمية | `al-dakhil-fi-al-tafsir` | 1.0 MB | Sonnet cloud |
-| 338 | التفسير الموضوعي 2 | جامعة المدينة العالمية | `tafsir-mawdui-2-madinah-univ` | 1.0 MB | Sonnet cloud |
-| 339 | الخلاصة الفقهية على مذهب السادة المالكية | محمد العربي القروي المالكي | `al-khlash-al-fqhyh-ala-mthhb-al-sadh-al-malkyh` | 1.0 MB | Sonnet cloud |
-| 340 | القصص القرآني - ياسر برهامي | ياسر برهامي | `al-qss-al-qrany-yasr-brhamy` | 1.0 MB | Sonnet cloud |
-| 341 | نواقض الإسلام | محمد بن عبد الوهاب | `nawaqid-al-islam` | 4 KB | earlier runs |
-| 342 | القواعد الأربع | محمد بن عبد الوهاب | `al-qawaid-al-arba` | 8 KB | earlier runs |
-| 343 | التعقبات المفيدة على كتاب كلمات القرآن تفسير وبيان لمخلوف | محمد بن عبد الرحمن الخميس | `al-taaqqubat-al-mufidah-makhluf` | 17 KB | earlier runs |
-| 344 | شروط الصلاة وأركانها وواجباتها | محمد بن عبد الوهاب | `shurut-al-salah` | 18 KB | earlier runs |
-| 345 | إغلاق الأبواب لمنع الحب والإعجاب | محمد العماري | `aghlaq-al-abwab-lmna-al-hb-walaajab` | 19 KB | earlier runs |
-| 346 | الإباضية وهل هم خوارج | عبد العزيز بن محمد آل عبد اللطيف | `al-ibadya-whl-hm-khwarj` | 20 KB | earlier runs |
-| 347 | الورقات | الجويني | `al-waraqat` | 21 KB | earlier runs |
-| 348 | نخبة الفكر في مصطلح أهل الأثر | ابن حجر العسقلاني | `nukhbat-al-fikar` | 23 KB | earlier runs |
-| 349 | ثلاثة الأصول وأدلتها | محمد بن عبد الوهاب | `al-usul-al-thalathah` | 23 KB | earlier runs |
-| 350 | المقدمة الآجرومية | ابن آجروم | `al-ajurrumiyyah` | 23 KB | earlier runs |
-| 351 | الآجرومية | ابن آجروم | `al-ajrwmya` | 24 KB | earlier runs |
-| 352 | العقيدة الطحاوية (بيان عقيدة أهل السنة والجماعة) | الطحاوي | `al-aqeedah-al-tahawiyyah` | 27 KB | earlier runs |
-| 353 | بهجة النظر في آداب السفر | أزهري أحمد محمود | `bhjh-al-nzr-fy-adab-al-sfr` | 29 KB | earlier runs |
-| 354 | ظاهرة التقاص في النحو العربي | دردير محمد أبو السعود | `zahra-al-tqas-fy-al-nhw-al-arby` | 33 KB | earlier runs |
-| 355 | الغيبة | عبد الملك بن قاسم | `al-ghybh` | 33 KB | earlier runs |
-| 356 | رسالة في القضاء والقدر | محمد بن صالح العثيمين | `risalah-fil-qada-wal-qadar-uthaymeen` | 33 KB | earlier runs |
-| 357 | جواب في الحلف بغير الله والصلاة إلى القبور، ويليه: فصل في الاستغاثة | ابن تيمية | `jawab-fi-al-half-bighayrillah` | 33 KB | earlier runs |
-| 358 | الكذب | عبد الملك بن قاسم | `al-kthb` | 35 KB | earlier runs |
-| 359 | الإبداع في بيان كمال الشرع وخطر الابتداع | محمد بن صالح العثيمين | `al-ibda-fi-bayan-kamal-al-shar` | 35 KB | earlier runs |
-| 360 | تأملات وأحكام في قوله تعالى ولا تباشروهن وأنتم عاكفون في المساجد | عبد العزيز بن صالح العبيد | `taammulat-wa-ahkam-la-tubashiruhunna` | 37 KB | earlier runs |
-| 361 | المغني في تصريف الأفعال | محمد عبد الخالق عضيمة | `al-mghny-fy-tsryf-al-afaal` | 38 KB | earlier runs |
-| 362 | الأربعون النووية | النووي | `al-arbaeen-al-nawawiyyah` | 38 KB | earlier runs |
-| 363 | الأربعون المدنية | محمد العماري | `al-aryawn-al-mdnyh` | 39 KB | earlier runs |
-| 364 | حتى لا نخسر رمضان | مجدي الهلالي | `hta-la-nkhsr-rmdan` | 39 KB | earlier runs |
-| 365 | اعتقاد أئمة الحديث | أبو بكر الإسماعيلي | `itiqad-aimmat-al-hadith` | 41 KB | earlier runs |
-| 366 | كتاب مختصر الأذكار والآداب | عبد المحسن القاسم | `ktab-mkhtsr-al-adhkar-waladab--v2` | 42 KB | earlier runs |
-| 367 | صبرا آل ياسر | مجدي الهلالي | `sbra-al-yasr` | 42 KB | earlier runs |
-| 368 | رسالة إلى أخي في الله | مجدي الهلالي | `rsalh-ala-akhy-fy-al-lh` | 43 KB | earlier runs |
-| 369 | عشر من الخصال للباحثات عن الجمال | محمد العماري | `ashr-mn-al-khsal-llbahthat-an-al-jmal` | 43 KB | earlier runs |
-| 370 | تسلية نفوس النساء والرجال عند فقد الأطفال | ابن رجب الحنبلي | `tslyh-nfws-al-nsa-walrjal-and-fqd-al-atfal` | 44 KB | earlier runs |
-| 371 | تحقيق القول في مسألة: عيسى كلمة الله والقرآن كلام الله | ابن تيمية | `tahqiq-al-qawl-fi-isa-kalimatullah` | 45 KB | earlier runs |
-| 372 | أنوار الهلالين في التعقبات على الجلالين | محمد بن عبد الرحمن الخميس | `anwar-al-hilalayn` | 47 KB | earlier runs |
-| 373 | غيث القلوب ذكر الله تعالى | أزهري أحمد محمود | `ghyth-al-qlwb-thkr-al-lh-taala` | 48 KB | earlier runs |
-| 374 | طريقك إلى الدعاء المستجاب | أزهري أحمد محمود | `tryqk-ala-al-daa-al-mstjab` | 50 KB | earlier runs |
-| 375 | المنتخب من صحيح السنة النبوية | ماهر الفحل | `al-mntkhb-mn-shyh-al-snh-al-nbwyh` | 51 KB | earlier runs |
-| 376 | العقيدة الواسطية | ابن تيمية | `al-aqeedah-al-wasitiyyah` | 53 KB | earlier runs |
-| 377 | الاعتصام بالكتاب والسنة أصل السعادة في الدنيا والآخرة ونجاة من مضلات الفتن | سعيد بن وهف القحطاني | `al-itisam-bil-kitab-wal-sunnah` | 53 KB | earlier runs |
-| 378 | ملحة الإعراب | أبو محمد الحريري | `mlha-al-iarab` | 55 KB | earlier runs |
-| 379 | لمعة الاعتقاد | موفق الدين ابن قدامة | `lumat-al-itiqad` | 57 KB | earlier runs |
-| 380 | آداب المشي إلى الصلاة ط الوزارة | محمد بن عبد الوهاب | `adab-al-mshy-ala-al-slah-t-al-wzarh` | 57 KB | earlier runs |
-| 381 | آداب المشي إلى الصلاة | محمد بن عبد الوهاب | `adab-al-mashy-ila-al-salah` | 58 KB | earlier runs |
-| 382 | السلاح | أبو عبيد القاسم بن سلام | `kitab-al-silah-al-qasim-ibn-sallam` | 58 KB | earlier runs |
-| 383 | كشف الشبهات | محمد بن عبد الوهاب | `kashf-al-shubuhat` | 60 KB | earlier runs |
-| 384 | وأحسن كما أحسن الله إليك | عبد الملك بن قاسم | `wahsn-kma-ahsn-al-lh-alyk` | 61 KB | earlier runs |
-| 385 | ثلاثة الأصول وشروط الصلاة والقواعد الأربع | محمد بن عبد الوهاب | `thalathat-al-usul-wa-shurut-al-salah` | 80 KB | earlier runs |
-| 386 | متن أبي شجاع المسمى الغاية والتقريب | أبو شجاع | `mtn-aby-shjaa-al-msma-al-ghayh-waltqryb` | 86 KB | earlier runs |
-| 387 | مقدمة في أصول التفسير | ابن تيمية | `muqaddimah-fi-usul-al-tafsir` | 91 KB | earlier runs |
-| 388 | كتاب العلم | أبو خيثمة زهير بن حرب | `kitab-al-ilm-abi-khaythama` | 93 KB | earlier runs |
-| 389 | كتاب التوحيد الذي هو حق الله على العبيد | محمد بن عبد الوهاب | `kitab-at-tawhid` | 100 KB | earlier runs |
-| 390 | الإيمان للقاسم بن سلام | أبو عبيد القاسم بن سلام | `al-iman-al-qasim-ibn-sallam` | 153 KB | earlier runs |
-| 391 | العمدة في الأحكام | عبد الغني بن عبد الواحد المقدسي | `umdat-al-ahkam` | 227 KB | earlier runs |
-| 392 | التحفة السنية شرح منظومة ابن أبي داود الحائية | عبد الرزاق بن عبد المحسن البدر | `al-thfa-al-snya-shrh-mnzwma-abn-aby-dawd-al-hayya` | 239 KB | earlier runs |
-| 393 | الفتوى الحموية الكبرى | ابن تيمية | `al-fatwa-al-hamawiyyah-al-kubra` | 262 KB | earlier runs |
-| 394 | التدمرية: تحقيق الإثبات للأسماء والصفات وحقيقة الجمع بين القدر والشرع | ابن تيمية | `al-tadmuriyyah` | 296 KB | earlier runs |
-| 395 | زاد المستقنع في اختصار المقنع | الحجاوي | `zad-al-mustaqni` | 322 KB | earlier runs |
-| 396 | زاد المستقنع في اختصار المقنع | الحجاوي | `zad-al-mstqna-fy-akhtsar-al-mqna` | 337 KB | earlier runs |
-| 397 | مقالة التعطيل والجعد بن درهم | محمد بن خليفة التميمي | `mqala-al-tatyl-waljad-bn-drhm` | 340 KB | earlier runs |
-| 398 | البراهين الإسلامية في رد الشبهة الفارسية | عبد اللطيف آل الشيخ | `al-brahyn-al-islamya-fy-rd-al-shbha-al-farsya` | 352 KB | earlier runs |
-| 399 | الاقتصاد في الاعتقاد للمقدسي | عبد الغني بن عبد الواحد المقدسي | `al-iqtisad-fil-itiqad` | 400 KB | earlier runs |
-| 400 | الرد على الجهمية والزنادقة | أحمد بن حنبل | `al-radd-ala-al-jahmiyyah-wal-zanadiqah` | 404 KB | earlier runs |
-| 401 | هذه مفاهيمنا | صالح آل الشيخ | `hdhh-mfahymna` | 550 KB | earlier runs |
-| 402 | بلوغ المرام من أدلة الأحكام | ابن حجر العسقلاني | `bulugh-al-maram` | 560 KB | earlier runs |
-| 403 | الصواعق المرسلة الشهابية على الشبه الداحضة الشامية | سليمان بن سحمان | `al-swaaq-al-mrsla-al-shhabya-ala-al-shbh-al-dahda-al-shamya` | 614 KB | earlier runs |
-| 404 | رسالة السجزي إلى أهل زبيد في الرد على من أنكر الحرف والصوت | عبيد الله السجزي | `risalat-al-sijzi` | 708 KB | earlier runs |
-| 405 | المحرر في أحاديث الأحكام | ابن عبد الهادي | `al-muharrar` | 745 KB | earlier runs |
-| 406 | كتاب التوحيد وقرة عيون الموحدين في تحقيق دعوة الأنبياء والمرسلين | عبد الرحمن بن حسن آل الشيخ | `ktab-al-twhyd-wqra-aywn-al-mwhdyn-fy-thqyq-dawa-al-anbya-walmrslyn` | 889 KB | earlier runs |
-| 407 | الشيخ عبد الرحمن بن سعدي وجهوده في تو ضيح العقيدة | عبد الرزاق بن عبد المحسن البدر | `al-shykh-abd-al-rhmn-bn-sady-wjhwdh-fy-tw-dyh-al-aqyda` | 894 KB | earlier runs |
-| 408 | تذكرة المؤتسي شرح عقيدة الحافظ عبد الغني المقدسي | عبد الرزاق بن عبد المحسن البدر | `tdhkra-al-mwtsy-shrh-aqyda-al-hafz-abd-al-ghny-al-mqdsy` | 927 KB | earlier runs |
-| 409 | كتاب التذكرة في علوم الحديث لابن الملقن | ابن الملقن | `tadhkirat-fi-ulum-al-hadith` | 20 KB | fixed 2026-10-23 |
-| 410 | الواسطة بين الحق والخلق | ابن تيمية | `al-wasitah-bayn-al-haqq-wal-khalq` | 51 KB | fixed 2026-10-23 |
-| 411 | الرسالة العرشية | ابن تيمية | `al-risalah-al-arshiyyah` | 135 KB | fixed 2026-10-23 |
-| 412 | أخصر المختصرات | ابن بلبان، محمد بن بدر الدين | `akhsr-al-mkhtsrat` | 203 KB | fixed 2026-10-23 |
+| 59 | نكت الإعراب (قواعد الإعراب ونزهة الطلاب) | ابن هشام | `nukat-al-irab` | 134 KB | Codex nights |
+| 60 | عقود الهمز | ابن جني | `aqwd-al-hmz` | 6 KB | Sonnet cloud |
+| 61 | نكتة الإعراب | ابن هشام | `nuktat-al-irab` | 10 KB | Sonnet cloud |
+| 62 | تعس عبد الشهوات | أزهري أحمد محمود | `tas-abd-al-shhwat` | 17 KB | Sonnet cloud |
+| 63 | الألفاظ المهموزة | ابن جني | `al-alfaz-al-mhmwza` | 17 KB | Sonnet cloud |
+| 64 | احذر عاقبة الذنوب | أزهري أحمد محمود | `ahthr-aaqbh-al-thnwb` | 17 KB | Sonnet cloud |
+| 65 | احذر سوء الخاتمة | أزهري أحمد محمود | `ahthr-sw-al-khatmh` | 19 KB | Sonnet cloud |
+| 66 | رسالة في اسم الفاعل | العبادي | `rsala-fy-asm-al-faal` | 19 KB | Sonnet cloud |
+| 67 | أيها المذنب بئس ما اخترت | أزهري أحمد محمود | `ayha-al-mthnb-bys-ma-akhtrt` | 20 KB | Sonnet cloud |
+| 68 | درة القلوب الإخلاص | أزهري أحمد محمود | `drh-al-qlwb-al-akhlas` | 22 KB | Sonnet cloud |
+| 69 | سبب وضع علم العربية | الجلال السيوطي | `sbb-wda-alm-al-arbya` | 22 KB | Sonnet cloud |
+| 70 | الإخلاص والنية | ابن أبي الدنيا | `al-ikhlas-wal-niyyah` | 25 KB | Sonnet cloud |
+| 71 | البرعومة في النحو | حازم خنفر | `al-brawma-fy-al-nhw` | 27 KB | Sonnet cloud |
+| 72 | وجوب تحكيم شرع الله ونبذ ما خالفه | ابن باز | `wujub-tahkim-shariatillah` | 28 KB | Sonnet cloud |
+| 73 | رسالة أي المشددة | ابن قائد | `rsala-ay-al-mshdda` | 29 KB | Sonnet cloud |
+| 74 | ترياق الأحزان وراحة الأبدان الصبر | أزهري أحمد محمود | `tryaq-al-ahzan-wrahh-al-abdan-al-sbr` | 29 KB | Sonnet cloud |
+| 75 | حلم معاوية | ابن أبي الدنيا | `hilm-muawiyah` | 30 KB | Sonnet cloud |
+| 76 | اعتراض الشرط على الشرط | جمال الدين ابن هشام | `aatrad-al-shrt-ala-al-shrt` | 30 KB | Sonnet cloud |
+| 77 | بزوغ الهلال في الخصال الموجبة للظلال | الجلال السيوطي | `bzwgh-al-hlal-fy-al-khsal-al-mwjbh-llzlal` | 30 KB | Sonnet cloud |
+| 78 | اليقين | ابن أبي الدنيا | `al-yaqin-ibn-abi-al-dunya` | 31 KB | Sonnet cloud |
+| 79 | قواصم الظهور على دار الغرور الزهد | أزهري أحمد محمود | `qwasm-al-zhwr-ala-dar-al-ghrwr-al-zhd` | 31 KB | Sonnet cloud |
+| 80 | سنة الجمعة | ابن تيمية | `snh-al-jmah` | 31 KB | Sonnet cloud |
+| 81 | أصول الإيمان لابن باز | ابن باز | `usul-al-iman-ibn-baz` | 33 KB | Sonnet cloud |
+| 82 | البلغة في الفرق بين المذكر والمؤنث | أبو البركات الأنباري | `al-blgha-fy-al-frq-byn-al-mdhkr-walmwnth` | 33 KB | Sonnet cloud |
+| 83 | كتاب متن الأخضري في العبادات على مذهب الإمام مالك | الأخضري | `ktab-mtn-al-akhdry-fy-al-abadat-ala-mdhhb-al-imam-malk` | 33 KB | Sonnet cloud |
+| 84 | كتاب متن العشماوية | عبد الباري العشماوي | `ktab-mtn-al-ashmawya` | 34 KB | Sonnet cloud |
+| 85 | أسباب المغفرة | ابن رجب الحنبلي | `asbab-al-mghfrh` | 34 KB | Sonnet cloud |
+| 86 | رسالة الحدود | أبو الحسن الرماني | `rsala-al-hdwd` | 38 KB | Sonnet cloud |
+| 87 | ذم البغي | ابن أبي الدنيا | `dhamm-al-baghy` | 38 KB | Sonnet cloud |
+| 88 | العقل والهوى | الترمذي، الحكيم | `al-aql-walhwa` | 39 KB | Sonnet cloud |
+| 89 | متن قطر الندى وبل الصدى | ابن هشام | `qatr-al-nada` | 40 KB | Sonnet cloud |
+| 90 | كلام الليالي والأيام | ابن أبي الدنيا | `kalam-al-layali-wal-ayyam` | 40 KB | Sonnet cloud |
+| 91 | العقيدة الصحيحة وما يضادها | ابن باز | `al-aqeedah-al-sahihah-wa-ma-yudadduha` | 41 KB | Sonnet cloud |
+| 92 | معاني الحروف | أبو الحسن الرماني | `maany-al-hrwf` | 41 KB | Sonnet cloud |
+| 93 | هؤلاء هم خصماؤك غدا | عبد الملك بن قاسم | `hwla-hm-khsmawk-ghda` | 41 KB | Sonnet cloud |
+| 94 | التوكل على الله | ابن أبي الدنيا | `al-tawakkul-ala-allah` | 41 KB | Sonnet cloud |
+| 95 | فضائل رمضان | ابن أبي الدنيا | `fadail-ramadan` | 42 KB | Sonnet cloud |
+| 96 | تحقيق الإيمان لابن تيمية | ابن تيمية | `tahqiq-al-iman-ibn-taymiyyah` | 43 KB | Sonnet cloud |
+| 97 | أخي كيف حالك مع القرآن | أزهري أحمد محمود | `akhy-kyf-halk-ma-al-qran` | 44 KB | Sonnet cloud |
+| 98 | نقعة الصديان فيما جاء على الفعلان | الصغاني | `nqaa-al-sdyan-fyma-ja-ala-al-falan` | 44 KB | Sonnet cloud |
+| 99 | البلوتوث | د_ عادل العبد الجبار | `al-blwtwth` | 45 KB | Sonnet cloud |
+| 100 | العمر والشيب | ابن أبي الدنيا | `al-umr-wal-shayb` | 48 KB | Sonnet cloud |
+| 101 | جزء في مسائل عن أبي عبد الله أحمد بن حنبل | البغوي ، أبو القاسم | `jz-fy-msayl-an-aby-abd-al-lh-ahmd-bn-hnbl` | 49 KB | Sonnet cloud |
+| 102 | الوجل والتوثق بالعمل | ابن أبي الدنيا | `al-wajal-wal-tawathuq-bil-amal` | 50 KB | Sonnet cloud |
+| 103 | الرسالة المدنية في تحقيق المجاز والحقيقة في صفات الله (مطبوع ضمن الفتوى الحموية الكبرى) | ابن تيمية | `al-risalah-al-madaniyyah` | 50 KB | Sonnet cloud |
+| 104 | ذم المسكر | ابن أبي الدنيا | `dhamm-al-muskir` | 51 KB | Sonnet cloud |
+| 105 | المسائل التي حلف عليها أحمد بن حنبل | ابن أبي يعلى | `al-msayl-al-ty-hlf-alyha-ahmd-bn-hnbl` | 52 KB | Sonnet cloud |
+| 106 | علل التثنية | ابن جني | `all-al-tthnya` | 54 KB | Sonnet cloud |
+| 107 | قرى الضيف | ابن أبي الدنيا | `qira-al-dayf` | 55 KB | Sonnet cloud |
+| 108 | الرد على الرافضة أو القضاب المشتهر على رقاب ابن المطهر | الفيروزآبادي | `al-radd-ala-al-rafidah` | 57 KB | Sonnet cloud |
+| 109 | ذم الكذب (من الصمت وآداب اللسان) | ابن أبي الدنيا | `dhamm-al-kadhib-min-al-samt-wa-adab-al-lisan` | 58 KB | Sonnet cloud |
+| 110 | متن العشماوية | عبد الباري العشماوي | `mtn-al-ashmawyh` | 58 KB | Sonnet cloud |
+| 111 | متن الأخضري في العبادات على مذهب الإمام مالك | الأخضري | `mtn-al-akhdry-fy-al-abadat-ala-mthhb-al-amam-malk` | 58 KB | Sonnet cloud |
+| 112 | الذكر الثمين | ابن عثيمين | `al-thkr-al-thmyn` | 60 KB | Sonnet cloud |
+| 113 | بيان فضل علم السلف على علم الخلف | ابن رجب الحنبلي | `byan-fdl-alm-al-slf-ala-alm-al-khlf` | 60 KB | Sonnet cloud |
+| 114 | لمحات في تربية البنات | عبد الملك بن قاسم | `lmhat-fy-trbyh-al-bnat` | 62 KB | Sonnet cloud |
+| 115 | العقل وفضله | ابن أبي الدنيا | `al-aql-wa-fadluhu` | 62 KB | Sonnet cloud |
+| 116 | رسالة في إثبات الاستواء والفوقية ومسألة الحرف والصوت في القرآن المجيد | أبو محمد الجويني | `risalah-fi-ithbat-al-istiwa` | 62 KB | Sonnet cloud |
+| 117 | مجالس ابن القاسم التي سأل عنها مالكا | ابن القاسم | `mjals-abn-al-qasm-al-ty-sal-anha-malka` | 63 KB | Sonnet cloud |
+| 118 | المنثور | ابن الجوزي | `al-mnthwr` | 64 KB | Sonnet cloud |
+| 119 | أصول الفقه |  | `usul-al-fiqh-osamah-sulayman` | 65 KB | Sonnet cloud |
+| 120 | الحلم | ابن أبي الدنيا | `al-hilm-ibn-abi-al-dunya` | 65 KB | Sonnet cloud |
+| 121 | توجيهات إسلامية لعبد الله بن حميد | عبد الله بن حميد | `twjyhat-aslamyh-labd-al-lh-bn-hmyd` | 65 KB | Sonnet cloud |
+| 122 | مكائد الشيطان | ابن أبي الدنيا | `makaid-al-shaytan` | 65 KB | Sonnet cloud |
+| 123 | الأنشوطة في النحو | حازم خنفر | `al-anshwta-fy-al-nhw` | 66 KB | Sonnet cloud |
+| 124 | ذكر من يعتمد قوله في الجرح والتعديل | الذهبي، شمس الدين | `dhkr-mn-yatmd-qwlh-fy-al-jrh-waltadyl` | 67 KB | Sonnet cloud |
+| 125 | بر الوالدين | ابن الجوزي | `br-al-waldyn` | 68 KB | Sonnet cloud |
+| 126 | تحقيق رياض الصالحين للألباني | النووي | `thqyq-ryad-al-salhyn-llalbany` | 71 KB | Sonnet cloud |
+| 127 | رسالة المباحث المرضية | جمال الدين ابن هشام | `rsala-al-mbahth-al-mrdya` | 72 KB | Sonnet cloud |
+| 128 | الرضا عن الله بقضائه | ابن أبي الدنيا | `al-rida-an-allah-bi-qadaihi` | 74 KB | Sonnet cloud |
+| 129 | متن شذور الذهب | جمال الدين ابن هشام | `mtn-shdhwr-al-dhhb` | 76 KB | Sonnet cloud |
+| 130 | خلاصة الجواهر الزكية في فقه المالكية | أحمد بن تركي المالكي | `khlash-al-jwahr-al-zkyh-fy-fqh-al-malkyh` | 77 KB | Sonnet cloud |
+| 131 | اللآلي | ابن الجوزي | `al-laly` | 81 KB | Sonnet cloud |
+| 132 | من عاش بعد الموت | ابن أبي الدنيا | `man-asha-bad-al-mawt` | 82 KB | Sonnet cloud |
+| 133 | سجود التلاوة معانيه وأحكامه | ابن تيمية | `sjwd-al-tlawh-maanyh-wahkamh` | 83 KB | Sonnet cloud |
+| 134 | الجهاد | ابن أبي عاصم | `al-jihad-ibn-abi-asim` | 83 KB | Sonnet cloud |
+| 135 | الاعتبار وأعقاب السرور | ابن أبي الدنيا | `al-itibar-wa-aqab-al-surur` | 83 KB | Sonnet cloud |
+| 136 | المتمنين | ابن أبي الدنيا | `al-mutamannin` | 84 KB | Sonnet cloud |
+| 137 | ذم الغيبة والنميمة | ابن أبي الدنيا | `dhamm-al-ghibah-wal-namimah` | 85 KB | Sonnet cloud |
+| 138 | قضاء الحوائج | ابن أبي الدنيا | `qada-al-hawaij` | 86 KB | Sonnet cloud |
+| 139 | الأمر بالمعروف والنهي عن المنكر | ابن أبي الدنيا | `al-amr-bil-maruf-ibn-abi-al-dunya` | 88 KB | Sonnet cloud |
+| 140 | دقائق المنهاج | النووي | `dqayq-al-mnhaj` | 88 KB | Sonnet cloud |
+| 141 | إعراب لامية الشنفرى | العكبري، أبو البقاء | `iarab-lamya-al-shnfra` | 88 KB | Sonnet cloud |
+| 142 | حروف المعاني والصفات | الزجاجي | `hrwf-al-maany-walsfat` | 92 KB | Sonnet cloud |
+| 143 | زيارة القبور والاستنجاد بالمقبور | ابن تيمية | `ziyarat-al-qubur-wal-istinjad` | 92 KB | Sonnet cloud |
+| 144 | القناعة والتعفف | ابن أبي الدنيا | `al-qanaah-wal-taaffuf` | 92 KB | Sonnet cloud |
+| 145 | مداراة الناس | ابن أبي الدنيا | `mudarat-al-nas` | 93 KB | Sonnet cloud |
+| 146 | وصايا العلماء عند حضور الموت | ابن زبر الربعي | `wasaya-al-ulama-inda-hudur-al-mawt` | 93 KB | Sonnet cloud |
+| 147 | مواعظ ابن الجوزي - الياقوتة | ابن الجوزي | `mwaaz-abn-al-jwzy-al-yaqwth` | 94 KB | Sonnet cloud |
+| 148 | الهم والحزن | ابن أبي الدنيا | `al-hamm-wal-huzn` | 94 KB | Sonnet cloud |
+| 149 | الفرج بعد الشدة | ابن أبي الدنيا | `al-faraj-bad-al-shiddah-ibn-abi-al-dunya` | 96 KB | Sonnet cloud |
+| 150 | محاسبة النفس | ابن أبي الدنيا | `muhasabat-al-nafs` | 96 KB | Sonnet cloud |
+| 151 | تمهيد الفرش في الخصال الموجبة لظل العرش | الجلال السيوطي | `tmhyd-al-frsh-fy-al-khsal-al-mwjbh-lzl-al-arsh` | 97 KB | Sonnet cloud |
+| 152 | كتاب التمييز | مسلم بن الحجاج | `kitab-al-tamyiz` | 97 KB | Sonnet cloud |
+| 153 | التذكرة في الفقه الشافعي لابن الملقن | ابن الملقن | `al-tthkrh-fy-al-fqh-al-shafay-labn-al-mlqn` | 98 KB | Sonnet cloud |
+| 154 | حسن الظن بالله | ابن أبي الدنيا | `husn-al-dhann-billah` | 99 KB | Sonnet cloud |
+| 155 | المطر والرعد والبرق | ابن أبي الدنيا | `al-matar-wal-rad-wal-barq` | 102 KB | Sonnet cloud |
+| 156 | منازل الحروف | أبو الحسن الرماني | `mnazl-al-hrwf` | 102 KB | Sonnet cloud |
+| 157 | الإخوان | ابن أبي الدنيا | `al-ikhwan` | 105 KB | Sonnet cloud |
+| 158 | اصطناع المعروف | ابن أبي الدنيا | `istina-al-maruf` | 106 KB | Sonnet cloud |
+| 159 | كفاية المتحفظ ونهاية المتلفظ في اللغة العربية | ابن الأجدابي | `kifayat-al-mutahaffiz` | 108 KB | Sonnet cloud |
+| 160 | مسائل خلافية في النحو | العكبري، أبو البقاء | `msayl-khlafya-fy-al-nhw` | 108 KB | Sonnet cloud |
+| 161 | مقتل علي | ابن أبي الدنيا | `maqtal-ali` | 109 KB | Sonnet cloud |
+| 162 | ذم الملاهي | ابن أبي الدنيا | `dhamm-al-malahi` | 110 KB | Sonnet cloud |
+| 163 | الشكر | ابن أبي الدنيا | `al-shukr-ibn-abi-al-dunya` | 111 KB | Sonnet cloud |
+| 164 | دليل الطالبين لكلام النحويين | مرعي الكرمي | `dlyl-al-talbyn-lklam-al-nhwyyn` | 112 KB | Sonnet cloud |
+| 165 | الأمر بالمعروف والنهي عن المنكر | أبو بكر الخلال | `al-amr-bil-maruf-al-khallal` | 113 KB | Sonnet cloud |
+| 166 | النصيحة الكافية لمن خصه الله بالعافية | زروق | `al-nsyhh-al-kafyh-lmn-khsh-al-lh-balaafyh` | 113 KB | Sonnet cloud |
+| 167 | الرد على النحاة | ابن مضاء | `al-rd-ala-al-nhaa` | 115 KB | Sonnet cloud |
+| 168 | الورع | ابن أبي الدنيا | `al-wara` | 116 KB | Sonnet cloud |
+| 169 | الانتخاب لكشف الأبيات المشكلة الإعراب | علي بن عدلان | `al-antkhab-lkshf-al-abyat-al-mshkla-al-iarab` | 117 KB | Sonnet cloud |
+| 170 | التوبة | ابن أبي الدنيا | `al-tawbah-ibn-abi-al-dunya` | 117 KB | Sonnet cloud |
+| 171 | الأمر بالمعروف والنهي عن المنكر | ابن تيمية | `al-amr-bil-maruf-ibn-taymiyyah` | 119 KB | Sonnet cloud |
+| 172 | الأولياء | ابن أبي الدنيا | `al-awliya-ibn-abi-al-dunya` | 119 KB | Sonnet cloud |
+| 173 | التواضع والخمول | ابن أبي الدنيا | `al-tawadu-wal-khumul` | 121 KB | Sonnet cloud |
+| 174 | أخلاق العلماء | أبو بكر الآجري | `akhlaq-al-ulama` | 122 KB | Sonnet cloud |
+| 175 | شرح شروط الصلاة وأركانها وواجباتها لشيخ الإسلام محمد بن عبد الوهاب | عبد المحسن العباد | `shrh-shrwt-al-slah-warkanha-wwajbatha-lshykh-al-aslam-mhmd-b` | 123 KB | Sonnet cloud |
+| 176 | قرة العينين برفع اليدين في الصلاة | البخاري | `qra-al-aynyn-brfa-al-ydyn-fy-al-slaa` | 123 KB | Sonnet cloud |
+| 177 | مجابو الدعوة | ابن أبي الدنيا | `mujabu-al-dawah` | 124 KB | Sonnet cloud |
+| 178 | حلية طالب العلم | بكر بن عبد الله أبو زيد | `hlya-talb-al-alm` | 124 KB | Sonnet cloud |
+| 179 | تنزيه الأصحاب عن تنقص أبي تراب | حمود بن عبد الله التويجري | `tanzih-al-ashab` | 127 KB | Sonnet cloud |
+| 180 | الصبر والثواب عليه | ابن أبي الدنيا | `al-sabr-wal-thawab-alayhi` | 131 KB | Sonnet cloud |
+| 181 | شرح منظومة القواعد الفقهية للسعدي |  | `sharh-manzumat-al-qawaid-al-fiqhiyyah-saadi` | 132 KB | Sonnet cloud |
+| 182 | الإيمان للقاسم بن سلام - مخرجا | أبو عبيد القاسم بن سلام | `al-iyman-llqasm-bn-slam-mkhrja` | 134 KB | Sonnet cloud |
+| 183 | اتحاف الفاضل بالفعل المبني لغير الفاعل | ابن علان | `athaf-al-fadl-balfal-al-mbny-lghyr-al-faal` | 144 KB | Sonnet cloud |
+| 184 | المرض والكفارات | ابن أبي الدنيا | `al-marad-wal-kaffarat` | 150 KB | Sonnet cloud |
+| 185 | العدد في اللغة | ابن سيده | `al-add-fy-al-lgha` | 152 KB | Sonnet cloud |
+| 186 | صفة النار | ابن أبي الدنيا | `sifat-al-nar` | 157 KB | Sonnet cloud |
+| 187 | آداب العلماء والمتعلمين | الحسين بن المنصور اليمني | `adab-al-alma-walmtalmyn` | 158 KB | Sonnet cloud |
+| 188 | ضعيف الأدب المفرد | البخاري | `dayf-al-adb-al-mfrd` | 160 KB | Sonnet cloud |
+| 189 | زينة العرائس | ابن المبرد | `zyna-al-arays` | 162 KB | Sonnet cloud |
+| 190 | القبور | ابن أبي الدنيا | `al-qubur` | 170 KB | Sonnet cloud |
+| 191 | طرق حديث من كذب علي متعمدا للطبراني | الطبراني | `trq-hdyth-mn-kdhb-aly-mtamda-lltbrany` | 171 KB | Sonnet cloud |
+| 192 | مذكرة أصول الفقه |  | `muthakkirat-usul-al-fiqh-jamiah-islamiyyah` | 172 KB | Sonnet cloud |
+| 193 | اللامات | الزجاجي | `al-lamat` | 173 KB | Sonnet cloud |
+| 194 | المقدمة الحضرمية | بافضل الحضرمي | `al-mqdmh-al-hdrmyh` | 173 KB | Sonnet cloud |
+| 195 | المقدمة الجزولية في النحو | الجزولي، أبو موسى | `al-mqdma-al-jzwlya-fy-al-nhw` | 173 KB | Sonnet cloud |
+| 196 | الجوع | ابن أبي الدنيا | `al-ju` | 177 KB | Sonnet cloud |
+| 197 | الأهوال | ابن أبي الدنيا | `al-ahwal` | 180 KB | Sonnet cloud |
+| 198 | الهواتف | ابن أبي الدنيا | `al-hawatif` | 184 KB | Sonnet cloud |
+| 199 | اللطائف | ابن الجوزي | `al-ltayf` | 185 KB | Sonnet cloud |
+| 200 | ليس في كلام العرب | ابن خالويه | `lys-fy-klam-al-arb` | 186 KB | Sonnet cloud |
+| 201 | النفقة على العيال | ابن أبي الدنيا | `al-nafaqah-ala-al-iyal` | 189 KB | Sonnet cloud |
+| 202 | الأمالي في آثار الصحابة لعبد الرزاق الصنعاني | عبد الرزاق الصنعاني | `al-amaly-fy-athar-al-shaba-labd-al-rzaq-al-snaany` | 192 KB | Sonnet cloud |
+| 203 | شرح الأزهرية | خالد الأزهري | `shrh-al-azhrya` | 193 KB | Sonnet cloud |
+| 204 | الأعضاء والنفس | الترمذي، الحكيم | `al-aada-walnfs` | 193 KB | Sonnet cloud |
+| 205 | تذكرة السامع والمتكلم في أدب العالم والمتعلم | بدر الدين ابن جماعة | `tadhkirat-al-sam-wal-mutakallim` | 195 KB | Sonnet cloud |
+| 206 | الأمر بالمعروف والنهي عن المنكر للخلال | أبو بكر الخلال | `al-amr-balmarwf-walnhy-an-al-mnkr-llkhlal` | 196 KB | Sonnet cloud |
+| 207 | أشراط الساعة الكبرى - المغامسي | صالح المغامسي | `ashrat-al-saah-al-kbra-al-mghamsy` | 199 KB | Sonnet cloud |
+| 208 | قصر الأمل | ابن أبي الدنيا | `qasr-al-amal` | 211 KB | Sonnet cloud |
+| 209 | سلسلة القمم لأهل الهمم | عائض القرني | `slslh-al-qmm-lahl-al-hmm` | 216 KB | Sonnet cloud |
+| 210 | تاريخ داريا لعبد الجبار الخولاني | عبد الجبار الخولاني | `tarykh-darya-labd-al-jbar-al-khwlany` | 219 KB | Sonnet cloud |
+| 211 | صفة الجنة | ابن أبي الدنيا | `sifat-al-jannah` | 229 KB | Sonnet cloud |
+| 212 | مكارم الأخلاق للطبراني | الطبراني | `mkarm-al-akhlaq-lltbrany` | 231 KB | Sonnet cloud |
+| 213 | المحتضرين | ابن أبي الدنيا | `al-muhtadirin` | 232 KB | Sonnet cloud |
+| 214 | إصلاح المال | ابن أبي الدنيا | `islah-al-mal` | 233 KB | Sonnet cloud |
+| 215 | مجالس رمضان - أحمد فريد | أحمد فريد | `mjals-rmdan-ahmd-fryd` | 235 KB | Sonnet cloud |
+| 216 | الرسالة للقيرواني | ابن أبي زيد القيرواني | `al-rsalh-llqyrwany` | 235 KB | Sonnet cloud |
+| 217 | الآداب النافعة بالألفاظ المختارة الجامعة | ابن شمس الخلافة | `al-adab-al-nafah-balalfaz-al-mkhtarh-al-jamah` | 237 KB | Sonnet cloud |
+| 218 | اللمع في العربية لابن جني | ابن جني | `al-lma-fy-al-arbya-labn-jny` | 239 KB | Sonnet cloud |
+| 219 | الرقة والبكاء | ابن أبي الدنيا | `al-riqqah-wal-buka` | 243 KB | Sonnet cloud |
+| 220 | موصل الطلاب إلى قواعد الإعراب | خالد الأزهري | `mwsl-al-tlab-ila-qwaad-al-iarab` | 243 KB | Sonnet cloud |
+| 221 | القراءة خلف الإمام للبخاري | البخاري | `al-qraa-khlf-al-imam-llbkhary` | 245 KB | Sonnet cloud |
+| 222 | الإيضاح العضدي | أبو علي الفارسي | `al-iydah-al-addy` | 245 KB | Sonnet cloud |
+| 223 | المنامات | ابن أبي الدنيا | `al-manamat` | 251 KB | Sonnet cloud |
+| 224 | الأدب لابن أبي شيبة | أبو بكر بن أبي شيبة | `al-adb-labn-aby-shyba` | 253 KB | Sonnet cloud |
+| 225 | مختصر الشمائل | الترمذي، محمد بن عيسى | `mkhtsr-al-shmayl` | 253 KB | Sonnet cloud |
+| 226 | الآثار لمحمد بن الحسن | محمد بن الحسن الشيباني | `al-athar-lmhmd-bn-al-hsn` | 255 KB | Sonnet cloud |
+| 227 | من حديث خيثمة بن سليمان | خيثمة بن سليمان الأطرابلسي | `mn-hdyth-khythma-bn-slyman` | 255 KB | Sonnet cloud |
+| 228 | الطهور | أبو عبيد القاسم بن سلام | `al-tuhur-al-qasim-ibn-sallam` | 260 KB | Sonnet cloud |
+| 229 | فوائد أبي محمد الفاكهي | الفاكهي، أبو محمد | `fwayd-aby-mhmd-al-fakhy` | 264 KB | Sonnet cloud |
+| 230 | الشافية في علم التصريف والوافية نظم الشافية | ابن الحاجب | `al-shafya-fy-alm-al-tsryf-walwafya-nzm-al-shafya` | 266 KB | Sonnet cloud |
+| 231 | شرح التعريف بضروري التصريف | ابن إياز النحوي | `shrh-al-taryf-bdrwry-al-tsryf` | 267 KB | Sonnet cloud |
+| 232 | شرح الآجرومية - محمد حسن عبد الغفار | محمد حسن عبد الغفار | `shrh-al-ajrwmya-mhmd-hsn-abd-al-ghfar` | 268 KB | Sonnet cloud |
+| 233 | جزء الألف دينار للقطيعي | القطيعي | `jz-al-alf-dynar-llqtyay` | 275 KB | Sonnet cloud |
+| 234 | تقييد العلم | الخطيب البغدادي | `taqyid-al-ilm` | 277 KB | Sonnet cloud |
+| 235 | العقوبات | ابن أبي الدنيا | `al-uqubat` | 281 KB | Sonnet cloud |
+| 236 | البر والصلة للحسين بن حرب | الحسين بن حرب | `al-br-walsla-llhsyn-bn-hrb` | 285 KB | Sonnet cloud |
+| 237 | البدع لابن وضاح | القرطبي، ابن وضاح | `al-bda-labn-wdah` | 286 KB | Sonnet cloud |
+| 238 | القول السديد شرح كتاب التوحيد ط الوزارة | عبد الرحمن السعدي | `al-qwl-al-sdyd-shrh-ktab-al-twhyd-t-al-wzara` | 288 KB | Sonnet cloud |
+| 239 | فتاوى مهمة لعموم الأمة | ابن باز | `fatawa-muhimmah-li-umum-al-ummah` | 294 KB | Sonnet cloud |
+| 240 | شرح مذاهب أهل السنة لابن شاهين | ابن شاهين | `shrh-mdhahb-ahl-al-sna-labn-shahyn` | 299 KB | Sonnet cloud |
+| 241 | أصول الإيمان لمحمد بن عبد الوهاب - ت الجوابرة | محمد بن عبد الوهاب | `usul-al-iman-ibn-abdul-wahhab` | 303 KB | Sonnet cloud |
+| 242 | الإشراف في منازل الأشراف | ابن أبي الدنيا | `al-ishraf-fi-manazil-al-ashraf` | 307 KB | Sonnet cloud |
+| 243 | مكارم الأخلاق | ابن أبي الدنيا | `makarim-al-akhlaq-ibn-abi-al-dunya` | 313 KB | Sonnet cloud |
+| 244 | الجمل في النحو | الخليل بن أحمد الفراهيدي | `al-jml-fy-al-nhw` | 316 KB | Sonnet cloud |
+| 245 | الجهاد لابن أبي عاصم | ابن أبي عاصم | `al-jhad-labn-aby-aasm` | 319 KB | Sonnet cloud |
+| 246 | الإمامة والرد على الرافضة | أبو نعيم الأصبهاني | `al-imamah-wal-radd-ala-al-rafidah` | 321 KB | Sonnet cloud |
+| 247 | كتاب أخصر المختصرات - ط ركائز | ابن بلبان الحنبلي | `ktab-akhsr-al-mkhtsrat-t-rkayz` | 333 KB | Sonnet cloud |
+| 248 | شرح مختصر الصارم المسلول - محمد حسن عبد الغفار | محمد حسن عبد الغفار | `shrh-mkhtsr-al-sarm-al-mslwl-mhmd-hsn-abd-al-ghfar` | 336 KB | Sonnet cloud |
+| 249 | معجم أبي يعلى الموصلي | أبو يعلى الموصلي | `majm-aby-yala-al-mwsly` | 336 KB | Sonnet cloud |
+| 250 | قاعدة عظيمة في الفرق بين عبادات أهل الإسلام والإيمان وعبادات أهل الشرك والنفاق | ابن تيمية | `qaidah-azimah-fil-farq-bayn-ibadat` | 341 KB | Sonnet cloud |
+| 251 | الصمت وآداب اللسان | ابن أبي الدنيا | `al-samt-wa-adab-al-lisan` | 347 KB | Sonnet cloud |
+| 252 | الإقناع للماوردي | الماوردي | `al-aqnaa-llmawrdy` | 349 KB | Sonnet cloud |
+| 253 | سلوة الأحزان للاجتناب عن مجالسة الأحداث والنسوان | المشتولي | `slwh-al-ahzan-llajtnab-an-mjalsh-al-ahdath-walnswan` | 349 KB | Sonnet cloud |
+| 254 | شذا العرف في فن الصرف | أحمد الحملاوي | `shada-al-arf` | 369 KB | Sonnet cloud |
+| 255 | فضائل الخلفاء الراشدين لأبي نعيم الأصبهاني | أبو نعيم الأصبهاني | `fdayl-al-khlfa-al-rashdyn-laby-naym-al-asbhany` | 370 KB | Sonnet cloud |
+| 256 | خبايا الزوايا | الزركشي، بدر الدين | `khbaya-al-zwaya` | 372 KB | Sonnet cloud |
+| 257 | أمالي ابن سمعون الواعظ | ابن سمعون الواعظ | `amaly-abn-smawn-al-waaz` | 373 KB | Sonnet cloud |
+| 258 | الزهد | ابن أبي الدنيا | `al-zuhd-ibn-abi-al-dunya` | 378 KB | Sonnet cloud |
+| 259 | تسهيل الفوائد وتكميل المقاصد | ابن مالك الأندلسي | `tashil-al-fawaid` | 380 KB | Sonnet cloud |
+| 260 | الفرج بعد الشدة | التنوخي | `al-faraj-bad-al-shiddah-al-tanukhi` | 385 KB | Sonnet cloud |
+| 261 | أمثال الحديث لأبي الشيخ الأصبهاني | أبو الشيخ الأصبهاني | `amthal-al-hdyth-laby-al-shykh-al-asbhany` | 387 KB | Sonnet cloud |
+| 262 | أخبار أبي القاسم الزجاجي | الزجاجي | `akhbar-aby-al-qasm-al-zjajy` | 398 KB | Sonnet cloud |
+| 263 | الفصول المفيدة في الواو المزيدة | صلاح الدين العلائي | `al-fswl-al-mfyda-fy-al-waw-al-mzyda` | 403 KB | Sonnet cloud |
+| 264 | شرح المعتمد في أصول الفقه |  | `sharh-al-mutamad-fi-usul-al-fiqh` | 404 KB | Sonnet cloud |
+| 265 | كرامات الأولياء للالكائي - من شرح أصول اعتقاد أهل السنة والجماعة للالكائي | اللالكائي | `kramat-al-awlya-llalkayy-mn-shrh-aswl-aatqad-ahl-al-sna-waljmaaa-llalkayy` | 408 KB | Sonnet cloud |
+| 266 | خلق أفعال العباد للبخاري | البخاري | `khlq-afaal-al-abad-llbkhary` | 408 KB | Sonnet cloud |
+| 267 | تثبيت الإمامة وترتيب الخلافة لأبي نعيم الأصبهاني | أبو نعيم الأصبهاني | `tthbyt-al-imama-wtrtyb-al-khlafa-laby-naym-al-asbhany` | 410 KB | Sonnet cloud |
+| 268 | أثر الاختلاف في القواعد الأصولية في اختلاف الفقهاء |  | `athar-al-ikhtilaf-fi-al-qawaid-al-usuliyyah` | 418 KB | Sonnet cloud |
+| 269 | إثبات عذاب القبر للبيهقي | أبو بكر البيهقي | `ithbat-adhab-al-qbr-llbyhqy` | 418 KB | Sonnet cloud |
+| 270 | تثقيف اللسان وتلقيح الجنان | ابن مكي | `tthqyf-al-lsan-wtlqyh-al-jnan` | 419 KB | Sonnet cloud |
+| 271 | أحاديث إسماعيل بن جعفر | إسماعيل بن جعفر | `ahadyth-ismaayl-bn-jafr` | 429 KB | Sonnet cloud |
+| 272 | الطهور للقاسم بن سلام | أبو عبيد القاسم بن سلام | `al-thwr-llqasm-bn-slam` | 436 KB | Sonnet cloud |
+| 273 | الأمثال | أبو عبيد القاسم بن سلام | `al-amthal-al-qasim-ibn-sallam` | 439 KB | Sonnet cloud |
+| 274 | التلقين في الفقة المالكي | القاضي عبد الوهاب | `al-tlqyn-fy-al-fqh-al-malky` | 440 KB | Sonnet cloud |
+| 275 | المراسيل لأبي داود | السجستاني، أبو داود | `al-mrasyl-laby-dawd` | 451 KB | Sonnet cloud |
+| 276 | السنة للمروزي | محمد بن نصر المروزي | `al-sna-llmrwzy` | 458 KB | Sonnet cloud |
+| 277 | التبيين عن مذاهب النحويين | العكبري، أبو البقاء | `al-tbyyn-an-mdhahb-al-nhwyyn` | 470 KB | Sonnet cloud |
+| 278 | قطف الجني الداني شرح مقدمة رسالة ابن أبي زيد القيرواني | عبد المحسن العباد | `qtf-al-jny-al-dany-shrh-mqdma-rsala-abn-aby-zyd-al-qyrwany` | 479 KB | Sonnet cloud |
+| 279 | شرح قطر الندى وبل الصدى | جمال الدين ابن هشام | `shrh-qtr-al-nda-wbl-al-sda` | 483 KB | Sonnet cloud |
+| 280 | كيف تصبح عالما | راغب السرجاني | `kyf-tsbh-aalma` | 493 KB | Sonnet cloud |
+| 281 | الرد على الجهمية للدارمي | الدارمي، أبو سعيد | `al-rd-ala-al-jhmya-lldarmy` | 501 KB | Sonnet cloud |
+| 282 | القدر للفريابي مخرجا | الفريابي | `al-qdr-llfryaby-mkhrja` | 502 KB | Sonnet cloud |
+| 283 | معجم أسامي شيوخ أبي بكر الإسماعيلي | أبو بكر الإسماعيلي | `majm-asamy-shywkh-aby-bkr-al-ismaayly` | 519 KB | Sonnet cloud |
+| 284 | تذكرة الأريب في تفسير الغريب | ابن الجوزي | `tadhkirat-al-arib-ibn-al-jawzi` | 521 KB | Sonnet cloud |
+| 285 | فضائل الأوقات للبيهقي | أبو بكر البيهقي | `fdayl-al-awqat-llbyhqy` | 523 KB | Sonnet cloud |
+| 286 | القواعد الفقهية بين الأصالة والتوجيه |  | `al-qawaid-al-fiqhiyyah-bayn-al-asalah-wal-tawjih` | 527 KB | Sonnet cloud |
+| 287 | الزهد لأبي داود | السجستاني، أبو داود | `al-zhd-laby-dawd` | 530 KB | Sonnet cloud |
+| 288 | رؤية الله للدارقطني | الدارقطني | `rwya-al-lh-lldarqtny` | 531 KB | Sonnet cloud |
+| 289 | الجامع لابن وهب ت مصطفى أبو الخير | ابن وهب | `al-jama-labn-whb-t-mstfa-abw-al-khyr` | 542 KB | Sonnet cloud |
+| 290 | المنتقى من كتاب مكارم الأخلاق ومعاليها | الخرائطي | `al-mntqa-mn-ktab-mkarm-al-akhlaq-wmaalyha` | 551 KB | Sonnet cloud |
+| 291 | الانتصار لأهل السنة والحديث في رد أباطيل حسن المالكي | عبد المحسن العباد | `al-intisar-li-ahl-al-sunnah-wal-hadith` | 556 KB | Sonnet cloud |
+| 292 | شرح شذور الذهب لابن هشام | جمال الدين ابن هشام | `shrh-shdhwr-al-dhhb-labn-hsham` | 579 KB | Sonnet cloud |
+| 293 | شرح متن أبي شجاع - محمد حسن عبد الغفار | محمد حسن عبد الغفار | `shrh-mtn-aby-shjaa-mhmd-hsn-abd-al-ghfar` | 580 KB | Sonnet cloud |
+| 294 | روضة العقلاء ونزهة الفضلاء | ابن حبان | `rawdat-al-uqala` | 602 KB | Sonnet cloud |
+| 295 | كن صحابيا | راغب السرجاني | `kn-shabya` | 610 KB | Sonnet cloud |
+| 296 | صفة الجنة لأبي نعيم الأصبهاني | أبو نعيم الأصبهاني | `sfa-al-jna-laby-naym-al-asbhany` | 613 KB | Sonnet cloud |
+| 297 | تيسير أصول الفقه للمبتدئين |  | `tayseer-usul-al-fiqh-lilmubtadiin` | 630 KB | Sonnet cloud |
+| 298 | الطب النبوي لأبي نعيم الأصفهاني | أبو نعيم الأصبهاني | `al-tb-al-nbwy-laby-naym-al-asfhany` | 633 KB | Sonnet cloud |
+| 299 | تحفة المودود بأحكام المولود | ابن القيم | `thfh-al-mwdwd-bahkam-al-mwlwd` | 634 KB | Sonnet cloud |
+| 300 | شرح كتاب الفوائد | عمر عبد الكافي | `shrh-ktab-al-fwayd` | 639 KB | Sonnet cloud |
+| 301 | تخليص الشواهد وتلخيص الفوائد | جمال الدين ابن هشام | `tkhlys-al-shwahd-wtlkhys-al-fwayd` | 643 KB | Sonnet cloud |
+| 302 | الترغيب في فضائل الأعمال وثواب ذلك لابن شاهين | ابن شاهين | `al-trghyb-fy-fdayl-al-aamal-wthwab-dhlk-labn-shahyn` | 643 KB | Sonnet cloud |
+| 303 | الجنى الداني في حروف المعاني | ابن أم قاسم المرادي | `al-jna-al-dany-fy-hrwf-al-maany` | 648 KB | Sonnet cloud |
+| 304 | السنن المأثورة للشافعي | المزني | `al-snn-al-mathwra-llshafay` | 656 KB | Sonnet cloud |
+| 305 | التوحيد لابن منده | ابن منده محمد بن إسحاق | `al-twhyd-labn-mndh` | 668 KB | Sonnet cloud |
+| 306 | التفسير الموضوعي 1 | جامعة المدينة العالمية | `tafsir-mawdui-1-madinah-univ` | 676 KB | Sonnet cloud |
+| 307 | عمدة الكتاب لأبي جعفر النحاس | أبو جعفر النحاس | `amda-al-ktab-laby-jafr-al-nhas` | 678 KB | Sonnet cloud |
+| 308 | مسائل خالف فيها رسول الله أهل الجاهلية | محمد حسن عبد الغفار | `msayl-khalf-fyha-rswl-al-lh-ahl-al-jahlya` | 681 KB | Sonnet cloud |
+| 309 | فضائل القرآن | أبو عبيد القاسم بن سلام | `fadail-al-quran-al-qasim-ibn-sallam` | 687 KB | Sonnet cloud |
+| 310 | أصول النحو 2 - جامعة المدينة | جامعة المدينة العالمية | `aswl-al-nhw-jamaa-al-mdyna-2` | 694 KB | Sonnet cloud |
+| 311 | أصول النحو 1 - جامعة المدينة | جامعة المدينة العالمية | `aswl-al-nhw-jamaa-al-mdyna` | 698 KB | Sonnet cloud |
+| 312 | لماذا نصلي - المقدم | محمد إسماعيل المقدم | `lmatha-nsly-al-mqdm` | 727 KB | Sonnet cloud |
+| 313 | جامع بيان العلم وفضله | ابن عبد البر | `jami-bayan-al-ilm` | 736 KB | Sonnet cloud |
+| 314 | الآثار لأبي يوسف | أبو يوسف القاضي | `al-athar-laby-ywsf` | 737 KB | Sonnet cloud |
+| 315 | شرح الآجرومية لحسن حفظي | حسن حفظي | `shrh-al-ajrwmya-lhsn-hfzy` | 739 KB | Sonnet cloud |
+| 316 | برنامج التجيبي | القاسم بن يوسف التجيبي | `brnamj-al-tjyby` | 742 KB | Sonnet cloud |
+| 317 | تخريج الأحاديث المرفوعة المسندة في كتاب التاريخ الكبير للبخاري | البخاري | `tkhryj-al-ahadyth-al-mrfwaa-al-msnda-fy-ktab-al-tarykh-al-kbyr-llbkhary` | 756 KB | Sonnet cloud |
+| 318 | مساوئ الأخلاق للخرائطي | الخرائطي | `msawy-al-akhlaq-llkhrayty` | 768 KB | Sonnet cloud |
+| 319 | حديث أبي الفضل الزهري | أبو الفضل الزهري | `hdyth-aby-al-fdl-al-zhry` | 788 KB | Sonnet cloud |
+| 320 | التفريع في فقه الإمام مالك بن أنس | ابن الجلاب | `al-tfrya-fy-fqh-al-amam-malk-bn-ans` | 826 KB | Sonnet cloud |
+| 321 | أمالي ابن بشران - الجزء الثاني | ابن بشران، أبو القاسم | `amaly-abn-bshran-al-jz-al-thany` | 841 KB | Sonnet cloud |
+| 322 | مسائل الإمام أحمد رواية ابنه أبي الفضل صالح | أحمد بن حنبل | `msayl-al-amam-ahmd-rwayh-abnh-aby-al-fdl-salh` | 846 KB | Sonnet cloud |
+| 323 | مسائل الإمام أحمد رواية ابنه عبد الله | أحمد بن حنبل | `msayl-al-amam-ahmd-rwayh-abnh-abd-al-lh` | 848 KB | Sonnet cloud |
+| 324 | المدخل إلى السنن الكبرى للبيهقي | أبو بكر البيهقي | `al-mdkhl-ila-al-snn-al-kbra-llbyhqy` | 891 KB | Sonnet cloud |
+| 325 | عمل اليوم والليلة للنسائي | النسائي | `aml-al-ywm-wallyla-llnsayy` | 893 KB | Sonnet cloud |
+| 326 | تيسير اللطيف المنان في خلاصة تفسير القرآن | عبد الرحمن السعدي | `taysir-latif-mannan` | 898 KB | Sonnet cloud |
+| 327 | الدار الآخرة - محمد حسان | محمد حسان | `al-dar-al-akhrh-mhmd-hsan` | 930 KB | Sonnet cloud |
+| 328 | الوابل الصيب من الكلم الطيب | ابن القيم | `al-wabil-al-sayyib` | 937 KB | Sonnet cloud |
+| 329 | التفسير من سنن سعيد بن منصور - مخرجا | سعيد بن منصور | `al-tfsyr-mn-snn-sayd-bn-mnswr-mkhrja` | 940 KB | Sonnet cloud |
+| 330 | السنن الواردة في الفتن للداني | أبو عمرو الداني | `al-snn-al-warda-fy-al-ftn-lldany` | 966 KB | Sonnet cloud |
+| 331 | الاصطلام في الخلاف بين الإمامين الشافعي وأبي حنيفة | السمعاني، أبو المظفر | `al-astlam-fy-al-khlaf-byn-al-amamyn-al-shafay-waby-hnyfh` | 985 KB | Sonnet cloud |
+| 332 | مسائل الإمام أحمد رواية أبي داود السجستاني | أحمد بن حنبل | `msayl-al-amam-ahmd-rwayh-aby-dawd-al-sjstany` | 993 KB | Sonnet cloud |
+| 333 | علل النحو | ابن الوراق | `all-al-nhw` | 997 KB | Sonnet cloud |
+| 334 | عمل اليوم والليلة لابن السني | ابن السني | `aml-al-ywm-wallyla-labn-al-sny` | 999 KB | Sonnet cloud |
+| 335 | البعث والنشور للبيهقي | أبو بكر البيهقي | `al-bath-walnshwr-llbyhqy` | 1.0 MB | Sonnet cloud |
+| 336 | مسند الفاروق لابن كثير | ابن كثير | `msnd-al-farwq-labn-kthyr` | 1.0 MB | Sonnet cloud |
+| 337 | القضاء والقدر للبيهقي | أبو بكر البيهقي | `al-qda-walqdr-llbyhqy` | 1.0 MB | Sonnet cloud |
+| 338 | الاعتقاد للبيهقي | أبو بكر البيهقي | `al-aatqad-llbyhqy` | 1.0 MB | Sonnet cloud |
+| 339 | الدخيل في التفسير | جامعة المدينة العالمية | `al-dakhil-fi-al-tafsir` | 1.0 MB | Sonnet cloud |
+| 340 | التفسير الموضوعي 2 | جامعة المدينة العالمية | `tafsir-mawdui-2-madinah-univ` | 1.0 MB | Sonnet cloud |
+| 341 | الخلاصة الفقهية على مذهب السادة المالكية | محمد العربي القروي المالكي | `al-khlash-al-fqhyh-ala-mthhb-al-sadh-al-malkyh` | 1.0 MB | Sonnet cloud |
+| 342 | القصص القرآني - ياسر برهامي | ياسر برهامي | `al-qss-al-qrany-yasr-brhamy` | 1.0 MB | Sonnet cloud |
+| 343 | نواقض الإسلام | محمد بن عبد الوهاب | `nawaqid-al-islam` | 4 KB | earlier runs |
+| 344 | القواعد الأربع | محمد بن عبد الوهاب | `al-qawaid-al-arba` | 8 KB | earlier runs |
+| 345 | التعقبات المفيدة على كتاب كلمات القرآن تفسير وبيان لمخلوف | محمد بن عبد الرحمن الخميس | `al-taaqqubat-al-mufidah-makhluf` | 17 KB | earlier runs |
+| 346 | شروط الصلاة وأركانها وواجباتها | محمد بن عبد الوهاب | `shurut-al-salah` | 18 KB | earlier runs |
+| 347 | إغلاق الأبواب لمنع الحب والإعجاب | محمد العماري | `aghlaq-al-abwab-lmna-al-hb-walaajab` | 19 KB | earlier runs |
+| 348 | الإباضية وهل هم خوارج | عبد العزيز بن محمد آل عبد اللطيف | `al-ibadya-whl-hm-khwarj` | 20 KB | earlier runs |
+| 349 | الورقات | الجويني | `al-waraqat` | 21 KB | earlier runs |
+| 350 | نخبة الفكر في مصطلح أهل الأثر | ابن حجر العسقلاني | `nukhbat-al-fikar` | 23 KB | earlier runs |
+| 351 | ثلاثة الأصول وأدلتها | محمد بن عبد الوهاب | `al-usul-al-thalathah` | 23 KB | earlier runs |
+| 352 | المقدمة الآجرومية | ابن آجروم | `al-ajurrumiyyah` | 23 KB | earlier runs |
+| 353 | الآجرومية | ابن آجروم | `al-ajrwmya` | 24 KB | earlier runs |
+| 354 | العقيدة الطحاوية (بيان عقيدة أهل السنة والجماعة) | الطحاوي | `al-aqeedah-al-tahawiyyah` | 27 KB | earlier runs |
+| 355 | بهجة النظر في آداب السفر | أزهري أحمد محمود | `bhjh-al-nzr-fy-adab-al-sfr` | 29 KB | earlier runs |
+| 356 | ظاهرة التقاص في النحو العربي | دردير محمد أبو السعود | `zahra-al-tqas-fy-al-nhw-al-arby` | 33 KB | earlier runs |
+| 357 | الغيبة | عبد الملك بن قاسم | `al-ghybh` | 33 KB | earlier runs |
+| 358 | رسالة في القضاء والقدر | محمد بن صالح العثيمين | `risalah-fil-qada-wal-qadar-uthaymeen` | 33 KB | earlier runs |
+| 359 | جواب في الحلف بغير الله والصلاة إلى القبور، ويليه: فصل في الاستغاثة | ابن تيمية | `jawab-fi-al-half-bighayrillah` | 33 KB | earlier runs |
+| 360 | الكذب | عبد الملك بن قاسم | `al-kthb` | 35 KB | earlier runs |
+| 361 | الإبداع في بيان كمال الشرع وخطر الابتداع | محمد بن صالح العثيمين | `al-ibda-fi-bayan-kamal-al-shar` | 35 KB | earlier runs |
+| 362 | تأملات وأحكام في قوله تعالى ولا تباشروهن وأنتم عاكفون في المساجد | عبد العزيز بن صالح العبيد | `taammulat-wa-ahkam-la-tubashiruhunna` | 37 KB | earlier runs |
+| 363 | المغني في تصريف الأفعال | محمد عبد الخالق عضيمة | `al-mghny-fy-tsryf-al-afaal` | 38 KB | earlier runs |
+| 364 | الأربعون النووية | النووي | `al-arbaeen-al-nawawiyyah` | 38 KB | earlier runs |
+| 365 | الأربعون المدنية | محمد العماري | `al-aryawn-al-mdnyh` | 39 KB | earlier runs |
+| 366 | حتى لا نخسر رمضان | مجدي الهلالي | `hta-la-nkhsr-rmdan` | 39 KB | earlier runs |
+| 367 | اعتقاد أئمة الحديث | أبو بكر الإسماعيلي | `itiqad-aimmat-al-hadith` | 41 KB | earlier runs |
+| 368 | كتاب مختصر الأذكار والآداب | عبد المحسن القاسم | `ktab-mkhtsr-al-adhkar-waladab--v2` | 42 KB | earlier runs |
+| 369 | صبرا آل ياسر | مجدي الهلالي | `sbra-al-yasr` | 42 KB | earlier runs |
+| 370 | رسالة إلى أخي في الله | مجدي الهلالي | `rsalh-ala-akhy-fy-al-lh` | 43 KB | earlier runs |
+| 371 | عشر من الخصال للباحثات عن الجمال | محمد العماري | `ashr-mn-al-khsal-llbahthat-an-al-jmal` | 43 KB | earlier runs |
+| 372 | تسلية نفوس النساء والرجال عند فقد الأطفال | ابن رجب الحنبلي | `tslyh-nfws-al-nsa-walrjal-and-fqd-al-atfal` | 44 KB | earlier runs |
+| 373 | تحقيق القول في مسألة: عيسى كلمة الله والقرآن كلام الله | ابن تيمية | `tahqiq-al-qawl-fi-isa-kalimatullah` | 45 KB | earlier runs |
+| 374 | أنوار الهلالين في التعقبات على الجلالين | محمد بن عبد الرحمن الخميس | `anwar-al-hilalayn` | 47 KB | earlier runs |
+| 375 | غيث القلوب ذكر الله تعالى | أزهري أحمد محمود | `ghyth-al-qlwb-thkr-al-lh-taala` | 48 KB | earlier runs |
+| 376 | طريقك إلى الدعاء المستجاب | أزهري أحمد محمود | `tryqk-ala-al-daa-al-mstjab` | 50 KB | earlier runs |
+| 377 | المنتخب من صحيح السنة النبوية | ماهر الفحل | `al-mntkhb-mn-shyh-al-snh-al-nbwyh` | 51 KB | earlier runs |
+| 378 | العقيدة الواسطية | ابن تيمية | `al-aqeedah-al-wasitiyyah` | 53 KB | earlier runs |
+| 379 | الاعتصام بالكتاب والسنة أصل السعادة في الدنيا والآخرة ونجاة من مضلات الفتن | سعيد بن وهف القحطاني | `al-itisam-bil-kitab-wal-sunnah` | 53 KB | earlier runs |
+| 380 | ملحة الإعراب | أبو محمد الحريري | `mlha-al-iarab` | 55 KB | earlier runs |
+| 381 | لمعة الاعتقاد | موفق الدين ابن قدامة | `lumat-al-itiqad` | 57 KB | earlier runs |
+| 382 | آداب المشي إلى الصلاة ط الوزارة | محمد بن عبد الوهاب | `adab-al-mshy-ala-al-slah-t-al-wzarh` | 57 KB | earlier runs |
+| 383 | آداب المشي إلى الصلاة | محمد بن عبد الوهاب | `adab-al-mashy-ila-al-salah` | 58 KB | earlier runs |
+| 384 | السلاح | أبو عبيد القاسم بن سلام | `kitab-al-silah-al-qasim-ibn-sallam` | 58 KB | earlier runs |
+| 385 | كشف الشبهات | محمد بن عبد الوهاب | `kashf-al-shubuhat` | 60 KB | earlier runs |
+| 386 | وأحسن كما أحسن الله إليك | عبد الملك بن قاسم | `wahsn-kma-ahsn-al-lh-alyk` | 61 KB | earlier runs |
+| 387 | ثلاثة الأصول وشروط الصلاة والقواعد الأربع | محمد بن عبد الوهاب | `thalathat-al-usul-wa-shurut-al-salah` | 80 KB | earlier runs |
+| 388 | متن أبي شجاع المسمى الغاية والتقريب | أبو شجاع | `mtn-aby-shjaa-al-msma-al-ghayh-waltqryb` | 86 KB | earlier runs |
+| 389 | مقدمة في أصول التفسير | ابن تيمية | `muqaddimah-fi-usul-al-tafsir` | 91 KB | earlier runs |
+| 390 | كتاب العلم | أبو خيثمة زهير بن حرب | `kitab-al-ilm-abi-khaythama` | 93 KB | earlier runs |
+| 391 | كتاب التوحيد الذي هو حق الله على العبيد | محمد بن عبد الوهاب | `kitab-at-tawhid` | 100 KB | earlier runs |
+| 392 | الإيمان للقاسم بن سلام | أبو عبيد القاسم بن سلام | `al-iman-al-qasim-ibn-sallam` | 153 KB | earlier runs |
+| 393 | العمدة في الأحكام | عبد الغني بن عبد الواحد المقدسي | `umdat-al-ahkam` | 227 KB | earlier runs |
+| 394 | التحفة السنية شرح منظومة ابن أبي داود الحائية | عبد الرزاق بن عبد المحسن البدر | `al-thfa-al-snya-shrh-mnzwma-abn-aby-dawd-al-hayya` | 239 KB | earlier runs |
+| 395 | الفتوى الحموية الكبرى | ابن تيمية | `al-fatwa-al-hamawiyyah-al-kubra` | 262 KB | earlier runs |
+| 396 | التدمرية: تحقيق الإثبات للأسماء والصفات وحقيقة الجمع بين القدر والشرع | ابن تيمية | `al-tadmuriyyah` | 296 KB | earlier runs |
+| 397 | زاد المستقنع في اختصار المقنع | الحجاوي | `zad-al-mustaqni` | 322 KB | earlier runs |
+| 398 | زاد المستقنع في اختصار المقنع | الحجاوي | `zad-al-mstqna-fy-akhtsar-al-mqna` | 337 KB | earlier runs |
+| 399 | مقالة التعطيل والجعد بن درهم | محمد بن خليفة التميمي | `mqala-al-tatyl-waljad-bn-drhm` | 340 KB | earlier runs |
+| 400 | البراهين الإسلامية في رد الشبهة الفارسية | عبد اللطيف آل الشيخ | `al-brahyn-al-islamya-fy-rd-al-shbha-al-farsya` | 352 KB | earlier runs |
+| 401 | الاقتصاد في الاعتقاد للمقدسي | عبد الغني بن عبد الواحد المقدسي | `al-iqtisad-fil-itiqad` | 400 KB | earlier runs |
+| 402 | الرد على الجهمية والزنادقة | أحمد بن حنبل | `al-radd-ala-al-jahmiyyah-wal-zanadiqah` | 404 KB | earlier runs |
+| 403 | هذه مفاهيمنا | صالح آل الشيخ | `hdhh-mfahymna` | 550 KB | earlier runs |
+| 404 | بلوغ المرام من أدلة الأحكام | ابن حجر العسقلاني | `bulugh-al-maram` | 560 KB | earlier runs |
+| 405 | الصواعق المرسلة الشهابية على الشبه الداحضة الشامية | سليمان بن سحمان | `al-swaaq-al-mrsla-al-shhabya-ala-al-shbh-al-dahda-al-shamya` | 614 KB | earlier runs |
+| 406 | رسالة السجزي إلى أهل زبيد في الرد على من أنكر الحرف والصوت | عبيد الله السجزي | `risalat-al-sijzi` | 708 KB | earlier runs |
+| 407 | المحرر في أحاديث الأحكام | ابن عبد الهادي | `al-muharrar` | 745 KB | earlier runs |
+| 408 | كتاب التوحيد وقرة عيون الموحدين في تحقيق دعوة الأنبياء والمرسلين | عبد الرحمن بن حسن آل الشيخ | `ktab-al-twhyd-wqra-aywn-al-mwhdyn-fy-thqyq-dawa-al-anbya-walmrslyn` | 889 KB | earlier runs |
+| 409 | الشيخ عبد الرحمن بن سعدي وجهوده في تو ضيح العقيدة | عبد الرزاق بن عبد المحسن البدر | `al-shykh-abd-al-rhmn-bn-sady-wjhwdh-fy-tw-dyh-al-aqyda` | 894 KB | earlier runs |
+| 410 | تذكرة المؤتسي شرح عقيدة الحافظ عبد الغني المقدسي | عبد الرزاق بن عبد المحسن البدر | `tdhkra-al-mwtsy-shrh-aqyda-al-hafz-abd-al-ghny-al-mqdsy` | 927 KB | earlier runs |
+| 411 | كتاب التذكرة في علوم الحديث لابن الملقن | ابن الملقن | `tadhkirat-fi-ulum-al-hadith` | 20 KB | fixed 2026-10-23 |
+| 412 | الواسطة بين الحق والخلق | ابن تيمية | `al-wasitah-bayn-al-haqq-wal-khalq` | 51 KB | fixed 2026-10-23 |
+| 413 | الرسالة العرشية | ابن تيمية | `al-risalah-al-arshiyyah` | 135 KB | fixed 2026-10-23 |
+| 414 | أخصر المختصرات | ابن بلبان، محمد بن بدر الدين | `akhsr-al-mkhtsrat` | 203 KB | fixed 2026-10-23 |
 
 ## ⏭️ skipped (146)
 
@@ -594,7 +594,7 @@ Done = formatted in place and passed the format-verify gate (no text lost). Skip
 | 145 | شرح كفاية المتحفظ (تحرير الرواية في تقرير الكفاية) | ابن الطيب الشرقي | `sharh-kifayat-al-mutahaffiz` | 1.0 MB | nothing to format |
 | 146 | منية الساجد بشرح بداية العابد وكفاية الزاهد | أنس بن عادل اليتامى | `mnyh-al-sajd-bshrh-bdayh-al-aabd-wkfayh-al-zahd` | 1.0 MB | nothing to format |
 
-## ⏳ remaining (680)
+## ⏳ remaining (678)
 
 | # | Title | Author | Slug | Size | Note |
 |---:|---|---|---|---:|---|
@@ -1060,221 +1060,219 @@ Done = formatted in place and passed the format-verify gate (no text lost). Skip
 | 460 | تحفة المحتاج في شرح المنهاج وحواشي الشرواني والعبادي | ابن حجر الهيتمي | `thfh-al-mhtaj-fy-shrh-al-mnhaj-whwashy-al-shrwany-walabady` | 66.9 MB | large (>1 MB) |
 | 461 | المسند الموضوعي الجامع للكتب العشرة | صهيب عبد الجبار | `al-msnd-al-mwdway-al-jama-llktb-al-ashra` | 86.0 MB | large (>1 MB) |
 | 462 | نور التوحيد وظلمات الشرك في ضوء الكتاب والسنة | سعيد بن وهف القحطاني | `nur-al-tawhid-wa-zulumat-al-shirk` | 122 KB | partial: Codex stopped mid-book, redo |
-| 463 | نكت الإعراب (قواعد الإعراب ونزهة الطلاب) | ابن هشام | `nukat-al-irab` | 134 KB | pass committed, but 1 «= heading =» lines still unformatted |
-| 464 | خبايا الزوايا | الزركشي، بدر الدين | `khbaya-al-zwaya` | 373 KB | pass committed, but 34 «= heading =» lines still unformatted |
-| 465 | احذر اتباع الهوى | أزهري أحمد محمود | `ahthr-atbaa-al-hwa` | 18 KB | small, never picked up |
-| 466 | تذكر منزلك بعد الموت | أزهري أحمد محمود | `tthkr-mnzlk-bad-al-mwt` | 18 KB | small, never picked up |
-| 467 | لا يخدعنك الشيطان | أزهري أحمد محمود | `la-ykhdank-al-shytan` | 18 KB | small, never picked up |
-| 468 | المنهل المأهول بالبناء للمجهول لأبي الخير محمد بن ظهيرة تحقيق ودراسة | ابن ظهيرة، أبو الخير | `al-mnhl-al-mahwl-balbna-llmjhwl-laby-al-khyr-mhmd-bn-zhyra-thqyq-wdrasa` | 60 KB | small, never picked up |
-| 469 | أولئك الأخيار | عبد الملك بن قاسم | `awlyk-al-akhyar` | 69 KB | small, never picked up |
-| 470 | عقيدة السلف - مقدمة أبي زيد القيرواني لكتابه الرسالة | ابن أبي زيد القيرواني | `aqeedat-al-salaf-muqaddimat-al-risalah` | 86 KB | small, never picked up |
-| 471 | تفسير سورة الفاتحة لابن رجب | ابن رجب الحنبلي | `tafsir-surat-al-fatiha-ibn-rajab` | 87 KB | small, never picked up |
-| 472 | مكارم الأخلاق لمن أراد الخلاق | أنور بن أهل الله | `mkarm-al-akhlaq-lmn-arad-al-khlaq` | 90 KB | small, never picked up |
-| 473 | حركة حروف المضارعة | عبد الله القرني | `hrka-hrwf-al-mdaraa` | 91 KB | small, never picked up |
-| 474 | الأنفاس الأخيرة | عبد الملك بن قاسم | `al-anfas-al-akhyrh` | 91 KB | small, never picked up |
-| 475 | من تواضع لله رفعه | عبد الملك بن قاسم | `mn-twada-llh-rfah` | 91 KB | small, never picked up |
-| 476 | بيان عقيدة أهل السنة والجماعة ولزوم اتباعها في ضوء الكتاب والسنة | سعيد بن وهف القحطاني | `bayan-aqeedat-ahl-al-sunnah` | 92 KB | small, never picked up |
-| 477 | الوقت أنفاس لا تعود | عبد الملك بن قاسم | `al-wqt-anfas-la-tawd` | 94 KB | small, never picked up |
-| 478 | حقوق آل البيت | ابن تيمية | `huquq-aal-al-bayt` | 137 KB | small, never picked up |
-| 479 | الاعتقاد القادري | أبو طاهر الكرجي | `al-itiqad-al-qadiri` | 138 KB | small, never picked up |
-| 480 | الصفات الإلهية تعريفها، أقسامها | محمد بن خليفة التميمي | `al-sfat-al-ilhya-taryfha-aqsamha` | 140 KB | small, never picked up |
-| 481 | مسألة في الكنائس | ابن تيمية | `masalah-fil-kanais` | 141 KB | small, never picked up |
-| 482 | نحو مير = مبادئ قواعد اللغة العربية | الجرجاني، الشريف | `nhw-myr-mbady-qwaad-al-lgha-al-arbya` | 143 KB | small, never picked up |
-| 483 | مسألة فى المرابطة بالثغور أفضل أم المجاورة بمكة شرفها الله تعالى | ابن تيمية | `msalh-fa-al-mrabth-balthghwr-afdl-am-al-mjawrh-bmkh-shrfha-a` | 143 KB | small, never picked up |
-| 484 | أين المخرج فالصخرة أغلقت الغار | مجدي الهلالي | `ayn-al-mkhrj-falskhrh-aghlqt-al-ghar` | 144 KB | small, never picked up |
-| 485 | الجواهر المضية | محمد بن عبد الوهاب | `al-jawahir-al-mudiyyah` | 146 KB | small, never picked up |
-| 486 | الدنيا ظل زائل | عبد الملك بن قاسم | `al-dnya-zl-zayl` | 148 KB | small, never picked up |
-| 487 | مجيء (أبو) في موضع نصب أو جر على الحكاية | إبراهيم بن عبد الله المديهش | `mjy-abw-fy-mwda-nsb-aw-jr-ala-al-hkaya` | 150 KB | small, never picked up |
-| 488 | بيان التوحيد الذي بعث الله به الرسل جميعا وبعث به خاتمهم محمدا عليه السلام | ابن باز | `bayan-al-tawhid-alladhi-baathallahu-bihi-al-rusul` | 151 KB | small, never picked up |
-| 489 | المنتخب من وصايا الآباء للأبناء | وائل حافظ خلف | `al-mntkhb-mn-wsaya-al-aba-llabna` | 151 KB | small, never picked up |
-| 490 | الرقية الشرعية | خالد الجريسي | `al-rqyh-al-shrayh` | 153 KB | small, never picked up |
-| 491 | الآثار المروية في صفة المعية | محمد بن خليفة التميمي | `al-athar-al-mrwya-fy-sfa-al-maya` | 153 KB | small, never picked up |
-| 492 | أحصاه الله ونسوه | عبد الملك بن قاسم | `ahsah-al-lh-wnswh` | 154 KB | small, never picked up |
-| 493 | الإبانة عن أسباب الإعانة على صلاة الفجر وقيام الليل | رقية المحارب | `al-abanh-an-asbab-al-aaanh-ala-slah-al-fjr-wqyam-al-lyl` | 157 KB | small, never picked up |
-| 494 | أياما معدودات | مجدي الهلالي | `ayama-madwdat` | 157 KB | small, never picked up |
-| 495 | مناظرات ابن تيمية لأهل الملل والنحل | عبد العزيز بن محمد آل عبد اللطيف | `mnazrat-abn-tymya-lahl-al-mll-walnhl` | 158 KB | small, never picked up |
-| 496 | المنصوب على نزع الخافض في القرآن | إبراهيم بن سليمان البعيمي | `al-mnswb-ala-nza-al-khafd-fy-al-qran` | 159 KB | small, never picked up |
-| 497 | هيا بنا نؤمن ساعة - مجدي الهلالي | مجدي الهلالي | `hya-bna-nwmn-saah-mjdy-al-hlaly` | 159 KB | small, never picked up |
-| 498 | اصبر واحتسب | عبد الملك بن قاسم | `asbr-wahtsb` | 161 KB | small, never picked up |
-| 499 | التمسك بالسنن والتحذير من البدع | شمس الدين الذهبي | `al-tamassuk-bil-sunan` | 162 KB | small, never picked up |
-| 500 | التوحيد للناشئة والمبتدئين | عبد العزيز بن محمد آل عبد اللطيف | `al-twhyd-llnashya-walmbtdyyn` | 163 KB | small, never picked up |
-| 501 | الرسالة التبوكية (زاد المهاجر إلى ربه) | ابن القيم | `al-risalah-al-tabukiyyah` | 166 KB | small, never picked up |
-| 502 | حقيقة شهادة أن محمدا رسول الله صلى الله عليه وسلم | عبد العزيز بن عبد الله آل الشيخ | `hqyqa-shhada-an-mhmda-rswl-al-lh-sla-al-lh-alyh-wslm` | 171 KB | small, never picked up |
-| 503 | عودة الروح ويقظة الإيمان | مجدي الهلالي | `awdh-al-rwh-wyqzh-al-ayman` | 171 KB | small, never picked up |
-| 504 | بحث في صيغة أفعل بين النحويين واللغويين واستعمالاتها في العربية | مصطفى أحمد النماس | `bhth-fy-sygha-afal-byn-al-nhwyyn-wallghwyyn-wastamalatha-fy-al-arbya` | 172 KB | small, never picked up |
-| 505 | تنبيه ذوي الألباب السليمة عن والوقوع في الألفاظ المبتدعة الوخيمة | سليمان بن سحمان | `tnbyh-dhwy-al-albab-al-slyma-an-walwqwa-fy-al-alfaz-al-mbtdaa-al-wkhyma` | 182 KB | small, never picked up |
-| 506 | المعجزات والغيبيات بين بصائر التنزيل ودياجير الإنكار والتأويل | عبد الفتاح إبراهيم سلامة | `al-mujizat-wal-ghaybiyyat` | 188 KB | small, never picked up |
-| 507 | حمد الله ذاته الكريمة في آيات كتابه الحكيمة | عماد بن زهير حافظ | `hamd-allah-dhatahu-al-karimah` | 190 KB | small, never picked up |
-| 508 | حقيقة العبودية | مجدي الهلالي | `hqyqh-al-abwdyh` | 191 KB | small, never picked up |
-| 509 | أحاديث في الفتن والحوادث ط القاسم | محمد بن عبد الوهاب | `ahadith-fil-fitan-wal-hawadith` | 196 KB | small, never picked up |
-| 510 | حرمة المسلم على المسلم | ماهر الفحل | `hrmh-al-mslm-ala-al-mslm` | 198 KB | small, never picked up |
-| 511 | التوحيد لابن عبد الوهاب | محمد بن عبد الوهاب | `kitab-al-tawhid` | 199 KB | small, never picked up |
-| 512 | التنبيهات اللطيفة على ما احتوت عليه العقيدة الواسطية من المباحث المنيفة | عبد الرحمن السعدي | `al-tnbyhat-al-ltyfa-ala-ma-ahtwt-alyh-al-aqyda-al-wastya-mn-al-mbahth-al-mnyfa` | 201 KB | small, never picked up |
-| 513 | بيان المحجة في الرد على اللجة (مطبوع ضمن الرسائل والمسائل النجدية، الجزء الرابع، القسم الأول) | عبد الرحمن بن حسن آل الشيخ | `byan-al-mhja-fy-al-rd-ala-al-lja-mtbwa-dmn-al-rsayl-walmsayl-al-njdya-al-jz-al-raba-al-qsm-al-awl` | 203 KB | small, never picked up |
-| 514 | معتقد أهل السنة والجماعة في توحيد الأسماء والصفات | محمد بن خليفة التميمي | `matqd-ahl-al-sna-waljmaaa-fy-twhyd-al-asma-walsfat` | 203 KB | small, never picked up |
-| 515 | الفوائد المرضية بشرح الدرة المضية في علم القواعد الفرضية | البعلي، عبد الرحمن بن عبد الله | `al-fwayd-al-mrdyh-bshrh-al-drh-al-mdyh-fy-alm-al-qwaad-al-fr` | 205 KB | small, never picked up |
-| 516 | رؤية النبي صلى الله عليه وسلم لربه | محمد بن خليفة التميمي | `rwya-al-nby-sla-al-lh-alyh-wslm-lrbh` | 207 KB | small, never picked up |
-| 517 | القواعد المثلى في صفات الله وأسمائه الحسنى | محمد بن صالح العثيمين | `al-qawaid-al-muthla` | 211 KB | small, never picked up |
-| 518 | مختصر مغني اللبيب عن كتاب الأعاريب | ابن عثيمين | `mkhtsr-mghny-al-lbyb-an-ktab-al-aaaryb` | 213 KB | small, never picked up |
-| 519 | النظرات الماتعة في سورة الفاتحة | مرزوق بن هياس الزهراني | `al-nadharat-al-mutiah-fatihah` | 218 KB | small, never picked up |
-| 520 | نور السنة وظلمات البدعة في ضوء الكتاب والسنة | سعيد بن وهف القحطاني | `nur-al-sunnah-wa-zulumat-al-bidah` | 218 KB | small, never picked up |
-| 521 | الحدود في علم النحو | الشهاب الأبذي | `al-hdwd-fy-alm-al-nhw` | 218 KB | small, never picked up |
-| 522 | بداية العابد وكفاية الزهد ط الركائز | البعلي، عبد الرحمن بن عبد الله | `bdayh-al-aabd-wkfayh-al-zhd-t-al-rkayz` | 219 KB | small, never picked up |
-| 523 | كيف نغير ما بأنفسنا | مجدي الهلالي | `kyf-nghyr-ma-banfsna` | 222 KB | small, never picked up |
-| 524 | بداية العابد وكفاية الزهد | عبد الرحمن بن عبد الله البعلي | `bidayat-al-abid` | 222 KB | small, never picked up |
-| 525 | التوازن التربوي وأهميته لكل مسلم | مجدي الهلالي | `al-twazn-al-trbwy-wahmyth-lkl-mslm` | 223 KB | small, never picked up |
-| 526 | العزلة والانفراد | ابن أبي الدنيا | `al-uzlah-wal-infirad` | 226 KB | small, never picked up |
-| 527 | مذكرة التوحيد | عبد الرزاق عفيفي | `mdhkra-al-twhyd` | 227 KB | small, never picked up |
-| 528 | عقيدة الحافظ تقي الدين عبد الغني بن عبد الواحد المقدسي | عبد الغني بن عبد الواحد المقدسي | `aqeedat-al-hafiz-abd-al-ghani` | 228 KB | small, never picked up |
-| 529 | كشف الشبهتين | سليمان بن سحمان | `kshf-al-shbhtyn` | 232 KB | small, never picked up |
-| 530 | ذكر الأقران لأبي الشيخ | أبو الشيخ الأصبهاني | `dhkr-al-aqran-laby-al-shykh` | 237 KB | small, never picked up |
-| 531 | المفتاح في الصرف | الجرجاني، عبد القاهر | `al-mftah-fy-al-srf` | 238 KB | small, never picked up |
-| 532 | ورثة الأنبياء | عبد الملك بن قاسم | `wrthh-al-anbya` | 246 KB | small, never picked up |
-| 533 | منهاج أهل الحق والاتباع في مخالفة أهل الجهل والابتداع | سليمان بن سحمان | `mnhaj-ahl-al-hq-walatbaa-fy-mkhalfa-ahl-al-jhl-walabtdaa` | 249 KB | small, never picked up |
-| 534 | حاشية الآجرومية | عبد الرحمن بن قاسم | `hashya-al-ajrwmya` | 255 KB | small, never picked up |
-| 535 | مسألة في توحيد الفلاسفة | ابن تيمية | `masalah-fi-tawhid-al-falasifah` | 257 KB | small, never picked up |
-| 536 | مواقف الطوائف من توحيد الأسماء والصفات | محمد بن خليفة التميمي | `mwaqf-al-twayf-mn-twhyd-al-asma-walsfat` | 259 KB | small, never picked up |
-| 537 | البكاء في الكتاب والسنة | رقية المحارب | `al-bka-fy-al-ktab-walsnh` | 260 KB | small, never picked up |
-| 538 | المنهاج المختصر في علمي النحو والصرف | عبد الله الجديع | `al-mnhaj-al-mkhtsr-fy-almy-al-nhw-walsrf` | 263 KB | small, never picked up |
-| 539 | اختلاف أقوال مالك وأصحابه | ابن عبد البر | `akhtlaf-aqwal-malk-washabh` | 267 KB | small, never picked up |
-| 540 | الأثر المشهور عن الإمام مالك رحمه الله في صفة الاستواء | عبد الرزاق بن عبد المحسن البدر | `al-athr-al-mshhwr-an-al-imam-malk-rhmh-al-lh-fy-sfa-al-astwa` | 270 KB | small, never picked up |
-| 541 | الحيدة والاعتذار في الرد على من قال بخلق القرآن | أبو الحسن الكناني | `al-haydah-wal-itidhar` | 271 KB | small, never picked up |
-| 542 | تحفة الطالب والجليس في كشف شبه داود بن جرجيس | عبد اللطيف آل الشيخ | `thfa-al-talb-waljlys-fy-kshf-shbh-dawd-bn-jrjys` | 274 KB | small, never picked up |
-| 543 | الأفعال الناسخة | حمدي كوكب | `al-afaal-al-naskha` | 278 KB | small, never picked up |
-| 544 | القول السديد في الرد على من أنكر تقسيم التوحيد | عبد الرزاق بن عبد المحسن البدر | `al-qwl-al-sdyd-fy-al-rd-ala-mn-ankr-tqsym-al-twhyd` | 283 KB | small, never picked up |
-| 545 | الجامع لابن وهب ت رفعت فوزي عبد المطلب | ابن وهب | `al-jama-labn-whb-t-rfat-fwzy-abd-al-mtlb` | 288 KB | small, never picked up |
-| 546 | قضية التكفير بين أهل السنة وفرق الضلال في ضوء الكتاب والسنة | سعيد بن وهف القحطاني | `qadiyyat-al-takfir` | 298 KB | small, never picked up |
-| 547 | شرح كشف الشبهات لمحمد بن إبراهيم آل الشيخ | محمد بن إبراهيم آل الشيخ | `shrh-kshf-al-shbhat-lmhmd-bn-ibrahym-al-al-shykh` | 298 KB | small, never picked up |
-| 548 | الرسالة المفيدة | محمد بن عبد الوهاب | `al-risalah-al-mufidah` | 14 KB | small, on Sonnet exclusion list |
-| 549 | أخلص العمل فإن الناقد بصير | أزهري أحمد محمود | `akhls-al-aml-fan-al-naqd-bsyr` | 17 KB | small, on Sonnet exclusion list |
-| 550 | أبناؤنا والصلاة | عبد الملك بن قاسم | `abnawna-walslah` | 17 KB | small, on Sonnet exclusion list |
-| 551 | هل جاهدت نفسك | أزهري أحمد محمود | `hl-jahdt-nfsk` | 17 KB | small, on Sonnet exclusion list |
-| 552 | هل أنت من المراقبين لله تعالى | أزهري أحمد محمود | `hl-ant-mn-al-mraqbyn-llh-taala` | 18 KB | small, on Sonnet exclusion list |
-| 553 | هل تفقدت قلبك | أزهري أحمد محمود | `hl-tfqdt-qlbk` | 19 KB | small, on Sonnet exclusion list |
-| 554 | أين تكون إذا نودي للصلاة | أزهري أحمد محمود | `ayn-tkwn-atha-nwdy-llslah` | 19 KB | small, on Sonnet exclusion list |
-| 555 | هل أنت من المتوكلين على الله تعالى | أزهري أحمد محمود | `hl-ant-mn-al-mtwklyn-ala-al-lh-taala` | 19 KB | small, on Sonnet exclusion list |
-| 556 | هل أنت من أهل الغفلة | أزهري أحمد محمود | `hl-ant-mn-ahl-al-ghflh` | 20 KB | small, on Sonnet exclusion list |
-| 557 | العبادة |  | `al-abadh` | 20 KB | small, on Sonnet exclusion list |
-| 558 | هل أنت من المسارعين إلى الخيرات | أزهري أحمد محمود | `hl-ant-mn-al-msarayn-ala-al-khyrat` | 21 KB | small, on Sonnet exclusion list |
-| 559 | بر الوالدين | أزهري أحمد محمود | `br-al-waldyn-al-azhry` | 21 KB | small, on Sonnet exclusion list |
-| 560 | الزهر الفياح قوت القلوب وغذاء الأرواح محبة الله جل وعز وعلاماتها | أزهري أحمد محمود | `al-zhr-al-fyah-qwt-al-qlwb-wghtha-al-arwah-mhbh-al-lh-jl-waz` | 22 KB | small, on Sonnet exclusion list |
-| 561 | حلية المتقين وثوب الصالحين الورع | أزهري أحمد محمود | `hlyh-al-mtqyn-wthwb-al-salhyn-al-wra` | 23 KB | small, on Sonnet exclusion list |
-| 562 | داء النفوس وسموم القلوب المعاصي | أزهري أحمد محمود | `da-al-nfws-wsmwm-al-qlwb-al-maasy` | 23 KB | small, on Sonnet exclusion list |
-| 563 | السعادة |  | `al-saadh` | 23 KB | small, on Sonnet exclusion list |
-| 564 | غاية الغايات وطريق السعادات حسن الخاتمة | أزهري أحمد محمود | `ghayh-al-ghayat-wtryq-al-saadat-hsn-al-khatmh` | 24 KB | small, on Sonnet exclusion list |
-| 565 | دواء القلوب وسرطان الذنوب التوبة | أزهري أحمد محمود | `dwa-al-qlwb-wsrtan-al-thnwb-al-twbh` | 24 KB | small, on Sonnet exclusion list |
-| 566 | أطواق الحمامة في حمل الصحابة على السلامة | المؤيد العلوي | `atwaq-al-hamamah` | 25 KB | small, on Sonnet exclusion list |
-| 567 | عقيدة أهل السنة في الصحابة لعبد المحسن العباد | عبد المحسن العباد | `aqeedat-ahl-al-sunnah-fil-sahabah-al-abbad` | 29 KB | small, on Sonnet exclusion list |
-| 568 | منازل الأحزان وعبرة اليقظان النار | أزهري أحمد محمود | `mnazl-al-ahzan-wabrh-al-yqzan-al-nar` | 29 KB | small, on Sonnet exclusion list |
-| 569 | ماذا أعددت للموت | أزهري أحمد محمود | `matha-aaddt-llmwt` | 29 KB | small, on Sonnet exclusion list |
-| 570 | قاطع الأفراح ومزهق الأرواح الموت | أزهري أحمد محمود | `qata-al-afrah-wmzhq-al-arwah-al-mwt` | 29 KB | small, on Sonnet exclusion list |
-| 571 | القرآن وعودة المجد | مجدي الهلالي | `al-qran-wawdh-al-mjd` | 31 KB | small, on Sonnet exclusion list |
-| 572 | لغات القبائل الواردة في القرآن الكريم | أبو عبيد القاسم بن سلام | `lughat-al-qabail-al-qasim-ibn-sallam` | 31 KB | small, on Sonnet exclusion list |
-| 573 | منازل السرور ودار الحبور الجنة | أزهري أحمد محمود | `mnazl-al-srwr-wdar-al-hbwr-al-jnh` | 33 KB | small, on Sonnet exclusion list |
-| 574 | هذه هي الصلاة | أزهري أحمد محمود | `hthh-hy-al-slah` | 33 KB | small, on Sonnet exclusion list |
-| 575 | رسالة إلى جار المسجد | أزهري أحمد محمود | `rsalh-ala-jar-al-msjd` | 34 KB | small, on Sonnet exclusion list |
-| 576 | الابتلاء وكيف تستفيد منه الدعوات | مجدي الهلالي | `al-abtla-wkyf-tstfyd-mnh-al-dawat` | 37 KB | small, on Sonnet exclusion list |
-| 577 | مقاصد الشريعة الإسلامية |  | `maqasid-al-shariah-al-islamiyyah` | 40 KB | small, on Sonnet exclusion list |
-| 578 | وأصلحنا له زوجه | عبد الملك بن قاسم | `waslhna-lh-zwjh` | 41 KB | small, on Sonnet exclusion list |
-| 579 | الأخلاق في الإسلام |  | `al-akhlaq-fy-al-aslam` | 42 KB | small, on Sonnet exclusion list |
-| 580 | كيف تسبق | خالد الحسينان | `kyf-tsbq` | 49 KB | small, on Sonnet exclusion list |
-| 581 | الآداب الإسلامية |  | `al-adab-al-aslamyh` | 53 KB | small, on Sonnet exclusion list |
-| 582 | الفقه والشريعة |  | `al-fiqh-wal-shariah` | 58 KB | small, on Sonnet exclusion list |
-| 583 | الله لطيف بعباده | عبد الملك بن قاسم | `al-lh-ltyf-babadh` | 59 KB | small, on Sonnet exclusion list |
-| 584 | التوبة التوبة قبل الحسرات | أزهري أحمد محمود | `al-twbh-al-twbh-qbl-al-hsrat` | 60 KB | small, on Sonnet exclusion list |
-| 585 | كونوا على الخير أعوانا | محمد صالح المنجد | `kwnwa-ala-al-khyr-aawana` | 64 KB | small, on Sonnet exclusion list |
-| 586 | شرح السنة للبربهاري | البربهاري | `sharh-al-sunnah-al-barbahari` | 73 KB | small, on Sonnet exclusion list |
-| 587 | ماذا نريد من رمضان | مجدي الهلالي | `matha-nryd-mn-rmdan` | 74 KB | small, on Sonnet exclusion list |
-| 588 | إغاثة اللهفان في حكم طلاق الغضبان | ابن القيم | `aghathh-al-lhfan-fy-hkm-tlaq-al-ghdban` | 82 KB | small, on Sonnet exclusion list |
-| 589 | كيف نحيي قلوبنا في رمضان | مجدي الهلالي | `kyf-nhyy-qlwbna-fy-rmdan` | 82 KB | small, on Sonnet exclusion list |
-| 590 | شرح كتاب الصيام من عمدة الفقه - عبد الكريم الخضير | عبد الكريم الخضير | `shrh-ktab-al-syam-mn-amdh-al-fqh-abd-al-krym-al-khdyr` | 85 KB | small, on Sonnet exclusion list |
-| 591 | التحفة الوسيمة شرح على الدرة اليتيمة | محمد باي بلعالم | `al-thfa-al-wsyma-shrh-ala-al-dra-al-ytyma` | 106 KB | small, on Sonnet exclusion list |
-| 592 | السماع والقياس | أحمد تيمور باشا | `al-smaa-walqyas` | 121 KB | small, on Sonnet exclusion list |
-| 593 | القيم الإسلامية |  | `al-qym-al-aslamyh` | 122 KB | small, on Sonnet exclusion list |
-| 594 | الألغاز النحوية = الطراز في الألغاز | الجلال السيوطي | `al-alghaz-al-nhwya-al-traz-fy-al-alghaz` | 134 KB | small, on Sonnet exclusion list |
-| 595 | متممة الأجرومية | الرعيني، الحطاب | `mtmma-al-ajrwmya` | 135 KB | small, on Sonnet exclusion list |
-| 596 | حجية القياس والرد على المخالفين |  | `hujjiyyat-al-qiyas-war-radd-ala-al-mukhalifin` | 152 KB | small, on Sonnet exclusion list |
-| 597 | الإيضاح في علل النحو | الزجاجي | `al-iydah-fy-all-al-nhw` | 191 KB | small, on Sonnet exclusion list |
-| 598 | هكذا كان الصالحون | خالد الحسينان | `hktha-kan-al-salhwn` | 219 KB | small, on Sonnet exclusion list |
-| 599 | شرح العمدة لابن تيمية - صفة الصلاة | ابن تيمية | `shrh-al-amdh-labn-tymyh-sfh-al-slah` | 220 KB | small, on Sonnet exclusion list |
-| 600 | الاقتراح في أصول النحو ط البيروتي | الجلال السيوطي | `al-aqtrah-fy-aswl-al-nhw-t-al-byrwty` | 239 KB | small, on Sonnet exclusion list |
-| 601 | دروس تربوية من الأحاديث النبوية | خالد الحسينان | `drws-trbwyh-mn-al-ahadyth-al-nbwyh` | 243 KB | small, on Sonnet exclusion list |
-| 602 | شرح كتاب الحدود في النحو | عبد الله بن أحمد الفاكهي | `shrh-ktab-al-hdwd-fy-al-nhw` | 253 KB | small, on Sonnet exclusion list |
-| 603 | رسالة الملائكة | أبو العلاء المعري | `rsala-al-mlayka` | 262 KB | small, on Sonnet exclusion list |
-| 604 | الضرورة الشعرية ومفهومها لدى النحويين دراسة على ألفية بن مالك | إبراهيم بن صالح الحندود | `al-drwra-al-sharya-wmfhwmha-lda-al-nhwyyn-drasa-ala-alfya-bn-malk` | 304 KB | small, on Sonnet exclusion list |
-| 605 | العروة الوثقى في ضوء الكتاب والسنة | سعيد بن وهف القحطاني | `al-urwah-al-wuthqa-qahtani` | 306 KB | small, on Sonnet exclusion list |
-| 606 | كيف نحب الله ونشتاق إليه | مجدي الهلالي | `kyf-nhb-al-lh-wnshtaq-alyh` | 312 KB | small, on Sonnet exclusion list |
-| 607 | إنه القرآن سر نهضتنا - كيف يمكن للقرآن أن ينهض بالأمة؟ | مجدي الهلالي | `anh-al-qran-sr-nhdtna-kyf-ymkn-llqran-an-ynhd-balamh` | 328 KB | small, on Sonnet exclusion list |
-| 608 | فتح المتعال على القصيدة المسماة بلامية الأفعال | حمد بن محمد الصعيدي | `fth-al-mtaal-ala-al-qsyda-al-msmaa-blamya-al-afaal` | 333 KB | small, on Sonnet exclusion list |
-| 609 | أبنية الأسماء والأفعال والمصادر | ابن القطاع الصقلي | `abnya-al-asma-walafaal-walmsadr` | 333 KB | small, on Sonnet exclusion list |
-| 610 | تفسير سفيان الثوري | سفيان الثوري | `tafsir-sufyan-thawri` | 352 KB | small, on Sonnet exclusion list |
-| 611 | أطيب النشر في تفسير الوصايا العشر | مرزوق بن هياس الزهراني | `atyab-al-nashr-al-wasaya-al-ashr` | 354 KB | small, on Sonnet exclusion list |
-| 612 | إعراب ما يشكل من ألفاظ الحديث | العكبري، أبو البقاء | `iarab-ma-yshkl-mn-alfaz-al-hdyth` | 368 KB | small, on Sonnet exclusion list |
-| 613 | الفتوحات الربانية بشرح الدرة المضية في علم القواعد الفرضية | عبد العزيز العيدان | `al-ftwhat-al-rbanyh-bshrh-al-drh-al-mdyh-fy-alm-al-qwaad-al` | 379 KB | small, on Sonnet exclusion list |
-| 614 | فتح الأقفال وحل الإشكال بشرح لامية الأفعال المشهور بالشرح الكبير | بحرق اليمني | `fth-al-aqfal-whl-al-ishkal-bshrh-lamya-al-afaal-al-mshhwr-balshrh-al-kbyr` | 382 KB | small, on Sonnet exclusion list |
-| 615 | التوسط بين مالك وابن القاسم في المسائل التي اختلفا فيها من مسائل المدونة | الجبيري | `al-twst-byn-malk-wabn-al-qasm-fy-al-msayl-al-ty-akhtlfa-fyha` | 399 KB | small, on Sonnet exclusion list |
-| 616 | شرح التصريف للثمانيني | الثمانيني | `shrh-al-tsryf-llthmanyny` | 401 KB | small, on Sonnet exclusion list |
-| 617 | من تاريخ النحو العربي | سعيد الأفغاني | `mn-tarykh-al-nhw-al-arby` | 408 KB | small, on Sonnet exclusion list |
-| 618 | تحقيق المطالب بشرح دليل الطالب | أبو المنذر المنياوي | `thqyq-al-mtalb-bshrh-dlyl-al-talb` | 411 KB | small, on Sonnet exclusion list |
-| 619 | رسائل وفتاوى عبد العزيز آل الشيخ | عبد العزيز بن عبد الله آل الشيخ | `rsayl-wftawa-abd-al-azyz-al-al-shykh` | 413 KB | small, on Sonnet exclusion list |
-| 620 | شرح المنظومة الميمية في الآداب الشرعية | عبد الكريم الخضير | `shrh-al-mnzwmh-al-mymyh-fy-al-adab-al-shrayh` | 417 KB | small, on Sonnet exclusion list |
-| 621 | نظرات في التربية الإيمانية | مجدي الهلالي | `nzrat-fy-al-trbyh-al-aymanyh` | 435 KB | small, on Sonnet exclusion list |
-| 622 | تحقيق الوصال بين القلب والقرآن | مجدي الهلالي | `thqyq-al-wsal-byn-al-qlb-walqran` | 439 KB | small, on Sonnet exclusion list |
-| 623 | شرح قواعد الإعراب | شيخ زاده | `shrh-qwaad-al-iarab` | 442 KB | small, on Sonnet exclusion list |
-| 624 | فقه الصيام والحج من دليل الطالب | حمد الحمد | `fqh-al-syam-walhj-mn-dlyl-al-talb` | 446 KB | small, on Sonnet exclusion list |
-| 625 | الحلل في شرح أبيات الجمل | ابن السيد البطليوسي | `al-hll-fy-shrh-abyat-al-jml` | 448 KB | small, on Sonnet exclusion list |
-| 626 | تفسير ابن أبي العز جمعا ودراسة | ابن أبي العز | `tafsir-ibn-abi-al-izz` | 448 KB | small, on Sonnet exclusion list |
-| 627 | أخصر المختصرات ط الركائز | ابن بلبان، محمد بن بدر الدين | `akhsr-al-mkhtsrat-t-al-rkayz` | 450 KB | small, on Sonnet exclusion list |
-| 628 | عمدة السالك وعدة الناسك | ابن النقيب | `amdh-al-salk-wadh-al-nask` | 478 KB | small, on Sonnet exclusion list |
-| 629 | المفصل في صنعة الإعراب | الزمخشري | `al-mfsl-fy-snaa-al-iarab` | 506 KB | small, on Sonnet exclusion list |
-| 630 | العودة إلى القرآن لماذا وكيف | مجدي الهلالي | `al-awdh-ala-al-qran-lmatha-wkyf` | 514 KB | small, on Sonnet exclusion list |
-| 631 | أدوات الإعراب | ظاهر شوكت البياتي | `adwat-al-iarab` | 514 KB | small, on Sonnet exclusion list |
-| 632 | السيف المسلول على من سب الرسول | تقي الدين السبكي | `al-sayf-al-maslul` | 531 KB | small, on Sonnet exclusion list |
-| 633 | فتاوى ورسائل سماحة الشيخ عبد الرزاق عفيفي - قسم العقيدة | عبد الرزاق عفيفي | `ftawa-wrsayl-smaha-al-shykh-abd-al-rzaq-afyfy-qsm-al-aqyda` | 533 KB | small, on Sonnet exclusion list |
-| 634 | شرح حديث النزول | ابن تيمية | `sharh-hadith-al-nuzul` | 548 KB | small, on Sonnet exclusion list |
-| 635 | منهج الطلاب في فقه الإمام الشافعي رضي الله عنه | زكريا الأنصاري | `mnhj-al-tlab-fy-fqh-al-amam-al-shafay-rdy-al-lh-anh` | 559 KB | small, on Sonnet exclusion list |
-| 636 | تفسير القرآن من الجامع لابن وهب | ابن وهب | `tafsir-ibn-wahb` | 583 KB | small, on Sonnet exclusion list |
-| 637 | شرح الآجرومية - عبد الكريم الخضير | عبد الكريم الخضير | `shrh-al-ajrwmya-abd-al-krym-al-khdyr` | 584 KB | small, on Sonnet exclusion list |
-| 638 | صحيح كنوز السنة النبوية | بارع عرفان توفيق | `shyh-knwz-al-snh-al-nbwyh` | 586 KB | small, on Sonnet exclusion list |
-| 639 | شرح المقدمة المحسبة | ابن بابشاذ | `shrh-al-mqdma-al-mhsba` | 590 KB | small, on Sonnet exclusion list |
-| 640 | المسائل النحوية في كتاب التوضيح لشرح الجامع الصحيح | داود بن سليمان الهويمل | `al-msayl-al-nhwya-fy-ktab-al-twdyh-lshrh-al-jama-al-shyh` | 608 KB | small, on Sonnet exclusion list |
-| 641 | تفسير جزء عم للشيخ مساعد الطيار | مساعد بن سليمان الطيار | `tafsir-juz-amma-musaid-tayyar` | 628 KB | small, on Sonnet exclusion list |
-| 642 | صفة المفتي والمستفتي ت أبي جنة | ابن حمدان | `sfh-al-mfty-walmstfty-t-aby-jnh` | 635 KB | small, on Sonnet exclusion list |
-| 643 | معتقد أهل السنة والجماعة في أسماء الله الحسنى | محمد بن خليفة التميمي | `matqd-ahl-al-sna-waljmaaa-fy-asma-al-lh-al-hsna` | 642 KB | small, on Sonnet exclusion list |
-| 644 | شرح كتاب العلم لأبي خيثمة - عبد الكريم الخضير | عبد الكريم الخضير | `shrh-ktab-al-alm-laby-khythmh-abd-al-krym-al-khdyr` | 647 KB | small, on Sonnet exclusion list |
-| 645 | الذب عن مذهب الإمام مالك | ابن أبي زيد القيرواني | `al-thb-an-mthhb-al-amam-malk` | 665 KB | small, on Sonnet exclusion list |
-| 646 | التذكرة في الفقه لابن عقيل | أبو الوفاء ابن عقيل | `al-tthkrh-fy-al-fqh-labn-aqyl` | 674 KB | small, on Sonnet exclusion list |
-| 647 | رفقا بالقوارير - نصائح للأزواج | أمة الله بنت عبد المطلب | `rfqa-balqwaryr-nsayh-llazwaj` | 683 KB | small, on Sonnet exclusion list |
-| 648 | القدر للفريابي محققا | الفريابي | `al-qadar-al-firyabi` | 690 KB | small, on Sonnet exclusion list |
-| 649 | الشرح المختصر على نظم المقصود | أحمد بن عمر الحازمي | `al-shrh-al-mkhtsr-ala-nzm-al-mqswd` | 696 KB | small, on Sonnet exclusion list |
-| 650 | تحفة الراكع والساجد بأحكام المساجد | الجراعي | `thfh-al-raka-walsajd-bahkam-al-msajd` | 698 KB | small, on Sonnet exclusion list |
-| 651 | المرتجل في شرح الجمل لابن الخشاب | ابن الخشاب | `al-mrtjl-fy-shrh-al-jml-labn-al-khshab` | 703 KB | small, on Sonnet exclusion list |
-| 652 | التطبيق النحوي | عبده الراجحي | `al-ttbyq-al-nhwy` | 714 KB | small, on Sonnet exclusion list |
-| 653 | مسند أبي حنيفة رواية أبي نعيم | أبو نعيم الأصبهاني | `msnd-aby-hnyfa-rwaya-aby-naym` | 718 KB | small, on Sonnet exclusion list |
-| 654 | التحرير شرح الدليل - كتاب الطهارة | أبو المنذر المنياوي | `al-thryr-shrh-al-dlyl-ktab-al-tharh` | 724 KB | small, on Sonnet exclusion list |
-| 655 | الموجز في قواعد اللغة العربية | سعيد الأفغاني | `al-mwjz-fy-qwaad-al-lgha-al-arbya` | 730 KB | small, on Sonnet exclusion list |
-| 656 | معلمة الفقه المالكي | عبد العزيز بن عبد الله | `malmh-al-fqh-al-malky` | 734 KB | small, on Sonnet exclusion list |
-| 657 | القواعد التطبيقية في اللغة العربية | نديم حسين دعكور | `al-qwaad-al-ttbyqya-fy-al-lgha-al-arbya` | 736 KB | small, on Sonnet exclusion list |
-| 658 | إتحاف الحثيث بإعراب ما يشكل من ألفاظ الحديث | العكبري، أبو البقاء | `ithaf-al-hthyth-biarab-ma-yshkl-mn-alfaz-al-hdyth` | 759 KB | small, on Sonnet exclusion list |
-| 659 | التنبيه في الفقه الشافعي | الشيرازي، أبو إسحاق | `al-tnbyh-fy-al-fqh-al-shafay` | 769 KB | small, on Sonnet exclusion list |
-| 660 | شرح العقيدة الأصفهانية | ابن تيمية | `sharh-al-aqeedah-al-isfahaniyyah` | 774 KB | small, on Sonnet exclusion list |
-| 661 | مصرع التصوف = تنبيه الغبي إلى تكفير ابن عربي وتحذير العباد من أهل العناد ببدعة الاتحاد | برهان الدين البقاعي | `masra-al-tasawwuf` | 778 KB | small, on Sonnet exclusion list |
-| 662 | اللباب في الفقه الشافعي | ابن المحاملي | `al-lbab-fy-al-fqh-al-shafay` | 790 KB | small, on Sonnet exclusion list |
-| 663 | الشرح المختصر على نظم الآجرومية | أحمد بن عمر الحازمي | `al-shrh-al-mkhtsr-ala-nzm-al-ajrwmya` | 795 KB | small, on Sonnet exclusion list |
-| 664 | الصحيح المسند من آثار الصحابة في الزهد والرقائق والأخلاق والأدب | عبد الله الخليفي | `al-shyh-al-msnd-mn-athar-al-shabh-fy-al-zhd-walrqayq-walakhl` | 807 KB | small, on Sonnet exclusion list |
-| 665 | رسالة الملائكة ت الجندي | أبو العلاء المعري | `rsala-al-mlayka-t-al-jndy` | 810 KB | small, on Sonnet exclusion list |
-| 666 | المطلب الحميد في بيان مقاصد التوحيد | عبد الرحمن بن حسن آل الشيخ | `al-mtlb-al-hmyd-fy-byan-mqasd-al-twhyd` | 842 KB | small, on Sonnet exclusion list |
-| 667 | منهاج التأسيس والتقديس في كشف شبهات داود بن جرجيس | عبد اللطيف آل الشيخ | `mnhaj-al-tasys-waltqdys-fy-kshf-shbhat-dawd-bn-jrjys` | 875 KB | small, on Sonnet exclusion list |
-| 668 | كشف ما ألقاه إبليس من البهرج والتلبيس على قلب داود بن جرجيس | عبد الرحمن بن حسن آل الشيخ | `kshf-ma-alqah-iblys-mn-al-bhrj-waltlbys-ala-qlb-dawd-bn-jrjys` | 877 KB | small, on Sonnet exclusion list |
-| 669 | كلمات السداد على متن الزاد | فيصل المبارك | `klmat-al-sdad-ala-mtn-al-zad` | 883 KB | small, on Sonnet exclusion list |
-| 670 | مسائل حرب الكرماني من كتاب النكاح إلى نهاية الكتاب - ت فايز حابس | الكرماني، حرب بن إسماعيل | `msayl-hrb-al-krmany-mn-ktab-al-nkah-ala-nhayh-al-ktab-t-fayz` | 907 KB | small, on Sonnet exclusion list |
-| 671 | سلسلة القصص - المنجد | محمد صالح المنجد | `slslh-al-qss-al-mnjd` | 915 KB | small, on Sonnet exclusion list |
-| 672 | شرح العمدة لابن تيمية - كتاب الصلاة | ابن تيمية | `shrh-al-amdh-labn-tymyh-ktab-al-slah` | 927 KB | small, on Sonnet exclusion list |
-| 673 | اللباب في تفسير الاستعاذة والبسملة وفاتحة الكتاب | سليمان بن إبراهيم اللاحم | `al-lubab-istiadhah-basmalah-fatihah` | 938 KB | small, on Sonnet exclusion list |
-| 674 | سفر السعادة وسفير الإفادة | السخاوي ، علم الدين | `sfr-al-saada-wsfyr-al-ifada` | 954 KB | small, on Sonnet exclusion list |
-| 675 | القطوف الدانية فيما انفرد به الدارمي عن الثمانية | مرزوق بن هياس الزهراني | `al-qtwf-al-danya-fyma-anfrd-bh-al-darmy-an-al-thmanya` | 962 KB | small, on Sonnet exclusion list |
-| 676 | شرح العمدة لابن تيمية - كتاب الصيام | ابن تيمية | `shrh-al-amdh-labn-tymyh-ktab-al-syam` | 963 KB | small, on Sonnet exclusion list |
-| 677 | الدعوات الكبير | أبو بكر البيهقي | `al-dawat-al-kbyr` | 974 KB | small, on Sonnet exclusion list |
-| 678 | المنصف لابن جني، شرح كتاب التصريف لأبي عثمان المازني | ابن جني | `al-mnsf-labn-jny-shrh-ktab-al-tsryf-laby-athman-al-mazny` | 983 KB | small, on Sonnet exclusion list |
-| 679 | شرح كتاب سيبويه للرماني | أبو الحسن الرماني | `shrh-ktab-sybwyh-llrmany` | 983 KB | small, on Sonnet exclusion list |
-| 680 | قاعدة جليلة في التوسل والوسيلة | ابن تيمية | `qaidah-jalilah-fil-tawassul` | 997 KB | small, on Sonnet exclusion list |
+| 463 | احذر اتباع الهوى | أزهري أحمد محمود | `ahthr-atbaa-al-hwa` | 18 KB | small, never picked up |
+| 464 | تذكر منزلك بعد الموت | أزهري أحمد محمود | `tthkr-mnzlk-bad-al-mwt` | 18 KB | small, never picked up |
+| 465 | لا يخدعنك الشيطان | أزهري أحمد محمود | `la-ykhdank-al-shytan` | 18 KB | small, never picked up |
+| 466 | المنهل المأهول بالبناء للمجهول لأبي الخير محمد بن ظهيرة تحقيق ودراسة | ابن ظهيرة، أبو الخير | `al-mnhl-al-mahwl-balbna-llmjhwl-laby-al-khyr-mhmd-bn-zhyra-thqyq-wdrasa` | 60 KB | small, never picked up |
+| 467 | أولئك الأخيار | عبد الملك بن قاسم | `awlyk-al-akhyar` | 69 KB | small, never picked up |
+| 468 | عقيدة السلف - مقدمة أبي زيد القيرواني لكتابه الرسالة | ابن أبي زيد القيرواني | `aqeedat-al-salaf-muqaddimat-al-risalah` | 86 KB | small, never picked up |
+| 469 | تفسير سورة الفاتحة لابن رجب | ابن رجب الحنبلي | `tafsir-surat-al-fatiha-ibn-rajab` | 87 KB | small, never picked up |
+| 470 | مكارم الأخلاق لمن أراد الخلاق | أنور بن أهل الله | `mkarm-al-akhlaq-lmn-arad-al-khlaq` | 90 KB | small, never picked up |
+| 471 | حركة حروف المضارعة | عبد الله القرني | `hrka-hrwf-al-mdaraa` | 91 KB | small, never picked up |
+| 472 | الأنفاس الأخيرة | عبد الملك بن قاسم | `al-anfas-al-akhyrh` | 91 KB | small, never picked up |
+| 473 | من تواضع لله رفعه | عبد الملك بن قاسم | `mn-twada-llh-rfah` | 91 KB | small, never picked up |
+| 474 | بيان عقيدة أهل السنة والجماعة ولزوم اتباعها في ضوء الكتاب والسنة | سعيد بن وهف القحطاني | `bayan-aqeedat-ahl-al-sunnah` | 92 KB | small, never picked up |
+| 475 | الوقت أنفاس لا تعود | عبد الملك بن قاسم | `al-wqt-anfas-la-tawd` | 94 KB | small, never picked up |
+| 476 | حقوق آل البيت | ابن تيمية | `huquq-aal-al-bayt` | 137 KB | small, never picked up |
+| 477 | الاعتقاد القادري | أبو طاهر الكرجي | `al-itiqad-al-qadiri` | 138 KB | small, never picked up |
+| 478 | الصفات الإلهية تعريفها، أقسامها | محمد بن خليفة التميمي | `al-sfat-al-ilhya-taryfha-aqsamha` | 140 KB | small, never picked up |
+| 479 | مسألة في الكنائس | ابن تيمية | `masalah-fil-kanais` | 141 KB | small, never picked up |
+| 480 | نحو مير = مبادئ قواعد اللغة العربية | الجرجاني، الشريف | `nhw-myr-mbady-qwaad-al-lgha-al-arbya` | 143 KB | small, never picked up |
+| 481 | مسألة فى المرابطة بالثغور أفضل أم المجاورة بمكة شرفها الله تعالى | ابن تيمية | `msalh-fa-al-mrabth-balthghwr-afdl-am-al-mjawrh-bmkh-shrfha-a` | 143 KB | small, never picked up |
+| 482 | أين المخرج فالصخرة أغلقت الغار | مجدي الهلالي | `ayn-al-mkhrj-falskhrh-aghlqt-al-ghar` | 144 KB | small, never picked up |
+| 483 | الجواهر المضية | محمد بن عبد الوهاب | `al-jawahir-al-mudiyyah` | 146 KB | small, never picked up |
+| 484 | الدنيا ظل زائل | عبد الملك بن قاسم | `al-dnya-zl-zayl` | 148 KB | small, never picked up |
+| 485 | مجيء (أبو) في موضع نصب أو جر على الحكاية | إبراهيم بن عبد الله المديهش | `mjy-abw-fy-mwda-nsb-aw-jr-ala-al-hkaya` | 150 KB | small, never picked up |
+| 486 | بيان التوحيد الذي بعث الله به الرسل جميعا وبعث به خاتمهم محمدا عليه السلام | ابن باز | `bayan-al-tawhid-alladhi-baathallahu-bihi-al-rusul` | 151 KB | small, never picked up |
+| 487 | المنتخب من وصايا الآباء للأبناء | وائل حافظ خلف | `al-mntkhb-mn-wsaya-al-aba-llabna` | 151 KB | small, never picked up |
+| 488 | الرقية الشرعية | خالد الجريسي | `al-rqyh-al-shrayh` | 153 KB | small, never picked up |
+| 489 | الآثار المروية في صفة المعية | محمد بن خليفة التميمي | `al-athar-al-mrwya-fy-sfa-al-maya` | 153 KB | small, never picked up |
+| 490 | أحصاه الله ونسوه | عبد الملك بن قاسم | `ahsah-al-lh-wnswh` | 154 KB | small, never picked up |
+| 491 | الإبانة عن أسباب الإعانة على صلاة الفجر وقيام الليل | رقية المحارب | `al-abanh-an-asbab-al-aaanh-ala-slah-al-fjr-wqyam-al-lyl` | 157 KB | small, never picked up |
+| 492 | أياما معدودات | مجدي الهلالي | `ayama-madwdat` | 157 KB | small, never picked up |
+| 493 | مناظرات ابن تيمية لأهل الملل والنحل | عبد العزيز بن محمد آل عبد اللطيف | `mnazrat-abn-tymya-lahl-al-mll-walnhl` | 158 KB | small, never picked up |
+| 494 | المنصوب على نزع الخافض في القرآن | إبراهيم بن سليمان البعيمي | `al-mnswb-ala-nza-al-khafd-fy-al-qran` | 159 KB | small, never picked up |
+| 495 | هيا بنا نؤمن ساعة - مجدي الهلالي | مجدي الهلالي | `hya-bna-nwmn-saah-mjdy-al-hlaly` | 159 KB | small, never picked up |
+| 496 | اصبر واحتسب | عبد الملك بن قاسم | `asbr-wahtsb` | 161 KB | small, never picked up |
+| 497 | التمسك بالسنن والتحذير من البدع | شمس الدين الذهبي | `al-tamassuk-bil-sunan` | 162 KB | small, never picked up |
+| 498 | التوحيد للناشئة والمبتدئين | عبد العزيز بن محمد آل عبد اللطيف | `al-twhyd-llnashya-walmbtdyyn` | 163 KB | small, never picked up |
+| 499 | الرسالة التبوكية (زاد المهاجر إلى ربه) | ابن القيم | `al-risalah-al-tabukiyyah` | 166 KB | small, never picked up |
+| 500 | حقيقة شهادة أن محمدا رسول الله صلى الله عليه وسلم | عبد العزيز بن عبد الله آل الشيخ | `hqyqa-shhada-an-mhmda-rswl-al-lh-sla-al-lh-alyh-wslm` | 171 KB | small, never picked up |
+| 501 | عودة الروح ويقظة الإيمان | مجدي الهلالي | `awdh-al-rwh-wyqzh-al-ayman` | 171 KB | small, never picked up |
+| 502 | بحث في صيغة أفعل بين النحويين واللغويين واستعمالاتها في العربية | مصطفى أحمد النماس | `bhth-fy-sygha-afal-byn-al-nhwyyn-wallghwyyn-wastamalatha-fy-al-arbya` | 172 KB | small, never picked up |
+| 503 | تنبيه ذوي الألباب السليمة عن والوقوع في الألفاظ المبتدعة الوخيمة | سليمان بن سحمان | `tnbyh-dhwy-al-albab-al-slyma-an-walwqwa-fy-al-alfaz-al-mbtdaa-al-wkhyma` | 182 KB | small, never picked up |
+| 504 | المعجزات والغيبيات بين بصائر التنزيل ودياجير الإنكار والتأويل | عبد الفتاح إبراهيم سلامة | `al-mujizat-wal-ghaybiyyat` | 188 KB | small, never picked up |
+| 505 | حمد الله ذاته الكريمة في آيات كتابه الحكيمة | عماد بن زهير حافظ | `hamd-allah-dhatahu-al-karimah` | 190 KB | small, never picked up |
+| 506 | حقيقة العبودية | مجدي الهلالي | `hqyqh-al-abwdyh` | 191 KB | small, never picked up |
+| 507 | أحاديث في الفتن والحوادث ط القاسم | محمد بن عبد الوهاب | `ahadith-fil-fitan-wal-hawadith` | 196 KB | small, never picked up |
+| 508 | حرمة المسلم على المسلم | ماهر الفحل | `hrmh-al-mslm-ala-al-mslm` | 198 KB | small, never picked up |
+| 509 | التوحيد لابن عبد الوهاب | محمد بن عبد الوهاب | `kitab-al-tawhid` | 199 KB | small, never picked up |
+| 510 | التنبيهات اللطيفة على ما احتوت عليه العقيدة الواسطية من المباحث المنيفة | عبد الرحمن السعدي | `al-tnbyhat-al-ltyfa-ala-ma-ahtwt-alyh-al-aqyda-al-wastya-mn-al-mbahth-al-mnyfa` | 201 KB | small, never picked up |
+| 511 | بيان المحجة في الرد على اللجة (مطبوع ضمن الرسائل والمسائل النجدية، الجزء الرابع، القسم الأول) | عبد الرحمن بن حسن آل الشيخ | `byan-al-mhja-fy-al-rd-ala-al-lja-mtbwa-dmn-al-rsayl-walmsayl-al-njdya-al-jz-al-raba-al-qsm-al-awl` | 203 KB | small, never picked up |
+| 512 | معتقد أهل السنة والجماعة في توحيد الأسماء والصفات | محمد بن خليفة التميمي | `matqd-ahl-al-sna-waljmaaa-fy-twhyd-al-asma-walsfat` | 203 KB | small, never picked up |
+| 513 | الفوائد المرضية بشرح الدرة المضية في علم القواعد الفرضية | البعلي، عبد الرحمن بن عبد الله | `al-fwayd-al-mrdyh-bshrh-al-drh-al-mdyh-fy-alm-al-qwaad-al-fr` | 205 KB | small, never picked up |
+| 514 | رؤية النبي صلى الله عليه وسلم لربه | محمد بن خليفة التميمي | `rwya-al-nby-sla-al-lh-alyh-wslm-lrbh` | 207 KB | small, never picked up |
+| 515 | القواعد المثلى في صفات الله وأسمائه الحسنى | محمد بن صالح العثيمين | `al-qawaid-al-muthla` | 211 KB | small, never picked up |
+| 516 | مختصر مغني اللبيب عن كتاب الأعاريب | ابن عثيمين | `mkhtsr-mghny-al-lbyb-an-ktab-al-aaaryb` | 213 KB | small, never picked up |
+| 517 | النظرات الماتعة في سورة الفاتحة | مرزوق بن هياس الزهراني | `al-nadharat-al-mutiah-fatihah` | 218 KB | small, never picked up |
+| 518 | نور السنة وظلمات البدعة في ضوء الكتاب والسنة | سعيد بن وهف القحطاني | `nur-al-sunnah-wa-zulumat-al-bidah` | 218 KB | small, never picked up |
+| 519 | الحدود في علم النحو | الشهاب الأبذي | `al-hdwd-fy-alm-al-nhw` | 218 KB | small, never picked up |
+| 520 | بداية العابد وكفاية الزهد ط الركائز | البعلي، عبد الرحمن بن عبد الله | `bdayh-al-aabd-wkfayh-al-zhd-t-al-rkayz` | 219 KB | small, never picked up |
+| 521 | كيف نغير ما بأنفسنا | مجدي الهلالي | `kyf-nghyr-ma-banfsna` | 222 KB | small, never picked up |
+| 522 | بداية العابد وكفاية الزهد | عبد الرحمن بن عبد الله البعلي | `bidayat-al-abid` | 222 KB | small, never picked up |
+| 523 | التوازن التربوي وأهميته لكل مسلم | مجدي الهلالي | `al-twazn-al-trbwy-wahmyth-lkl-mslm` | 223 KB | small, never picked up |
+| 524 | العزلة والانفراد | ابن أبي الدنيا | `al-uzlah-wal-infirad` | 226 KB | small, never picked up |
+| 525 | مذكرة التوحيد | عبد الرزاق عفيفي | `mdhkra-al-twhyd` | 227 KB | small, never picked up |
+| 526 | عقيدة الحافظ تقي الدين عبد الغني بن عبد الواحد المقدسي | عبد الغني بن عبد الواحد المقدسي | `aqeedat-al-hafiz-abd-al-ghani` | 228 KB | small, never picked up |
+| 527 | كشف الشبهتين | سليمان بن سحمان | `kshf-al-shbhtyn` | 232 KB | small, never picked up |
+| 528 | ذكر الأقران لأبي الشيخ | أبو الشيخ الأصبهاني | `dhkr-al-aqran-laby-al-shykh` | 237 KB | small, never picked up |
+| 529 | المفتاح في الصرف | الجرجاني، عبد القاهر | `al-mftah-fy-al-srf` | 238 KB | small, never picked up |
+| 530 | ورثة الأنبياء | عبد الملك بن قاسم | `wrthh-al-anbya` | 246 KB | small, never picked up |
+| 531 | منهاج أهل الحق والاتباع في مخالفة أهل الجهل والابتداع | سليمان بن سحمان | `mnhaj-ahl-al-hq-walatbaa-fy-mkhalfa-ahl-al-jhl-walabtdaa` | 249 KB | small, never picked up |
+| 532 | حاشية الآجرومية | عبد الرحمن بن قاسم | `hashya-al-ajrwmya` | 255 KB | small, never picked up |
+| 533 | مسألة في توحيد الفلاسفة | ابن تيمية | `masalah-fi-tawhid-al-falasifah` | 257 KB | small, never picked up |
+| 534 | مواقف الطوائف من توحيد الأسماء والصفات | محمد بن خليفة التميمي | `mwaqf-al-twayf-mn-twhyd-al-asma-walsfat` | 259 KB | small, never picked up |
+| 535 | البكاء في الكتاب والسنة | رقية المحارب | `al-bka-fy-al-ktab-walsnh` | 260 KB | small, never picked up |
+| 536 | المنهاج المختصر في علمي النحو والصرف | عبد الله الجديع | `al-mnhaj-al-mkhtsr-fy-almy-al-nhw-walsrf` | 263 KB | small, never picked up |
+| 537 | اختلاف أقوال مالك وأصحابه | ابن عبد البر | `akhtlaf-aqwal-malk-washabh` | 267 KB | small, never picked up |
+| 538 | الأثر المشهور عن الإمام مالك رحمه الله في صفة الاستواء | عبد الرزاق بن عبد المحسن البدر | `al-athr-al-mshhwr-an-al-imam-malk-rhmh-al-lh-fy-sfa-al-astwa` | 270 KB | small, never picked up |
+| 539 | الحيدة والاعتذار في الرد على من قال بخلق القرآن | أبو الحسن الكناني | `al-haydah-wal-itidhar` | 271 KB | small, never picked up |
+| 540 | تحفة الطالب والجليس في كشف شبه داود بن جرجيس | عبد اللطيف آل الشيخ | `thfa-al-talb-waljlys-fy-kshf-shbh-dawd-bn-jrjys` | 274 KB | small, never picked up |
+| 541 | الأفعال الناسخة | حمدي كوكب | `al-afaal-al-naskha` | 278 KB | small, never picked up |
+| 542 | القول السديد في الرد على من أنكر تقسيم التوحيد | عبد الرزاق بن عبد المحسن البدر | `al-qwl-al-sdyd-fy-al-rd-ala-mn-ankr-tqsym-al-twhyd` | 283 KB | small, never picked up |
+| 543 | الجامع لابن وهب ت رفعت فوزي عبد المطلب | ابن وهب | `al-jama-labn-whb-t-rfat-fwzy-abd-al-mtlb` | 288 KB | small, never picked up |
+| 544 | قضية التكفير بين أهل السنة وفرق الضلال في ضوء الكتاب والسنة | سعيد بن وهف القحطاني | `qadiyyat-al-takfir` | 298 KB | small, never picked up |
+| 545 | شرح كشف الشبهات لمحمد بن إبراهيم آل الشيخ | محمد بن إبراهيم آل الشيخ | `shrh-kshf-al-shbhat-lmhmd-bn-ibrahym-al-al-shykh` | 298 KB | small, never picked up |
+| 546 | الرسالة المفيدة | محمد بن عبد الوهاب | `al-risalah-al-mufidah` | 14 KB | small, on Sonnet exclusion list |
+| 547 | أخلص العمل فإن الناقد بصير | أزهري أحمد محمود | `akhls-al-aml-fan-al-naqd-bsyr` | 17 KB | small, on Sonnet exclusion list |
+| 548 | أبناؤنا والصلاة | عبد الملك بن قاسم | `abnawna-walslah` | 17 KB | small, on Sonnet exclusion list |
+| 549 | هل جاهدت نفسك | أزهري أحمد محمود | `hl-jahdt-nfsk` | 17 KB | small, on Sonnet exclusion list |
+| 550 | هل أنت من المراقبين لله تعالى | أزهري أحمد محمود | `hl-ant-mn-al-mraqbyn-llh-taala` | 18 KB | small, on Sonnet exclusion list |
+| 551 | هل تفقدت قلبك | أزهري أحمد محمود | `hl-tfqdt-qlbk` | 19 KB | small, on Sonnet exclusion list |
+| 552 | أين تكون إذا نودي للصلاة | أزهري أحمد محمود | `ayn-tkwn-atha-nwdy-llslah` | 19 KB | small, on Sonnet exclusion list |
+| 553 | هل أنت من المتوكلين على الله تعالى | أزهري أحمد محمود | `hl-ant-mn-al-mtwklyn-ala-al-lh-taala` | 19 KB | small, on Sonnet exclusion list |
+| 554 | هل أنت من أهل الغفلة | أزهري أحمد محمود | `hl-ant-mn-ahl-al-ghflh` | 20 KB | small, on Sonnet exclusion list |
+| 555 | العبادة |  | `al-abadh` | 20 KB | small, on Sonnet exclusion list |
+| 556 | هل أنت من المسارعين إلى الخيرات | أزهري أحمد محمود | `hl-ant-mn-al-msarayn-ala-al-khyrat` | 21 KB | small, on Sonnet exclusion list |
+| 557 | بر الوالدين | أزهري أحمد محمود | `br-al-waldyn-al-azhry` | 21 KB | small, on Sonnet exclusion list |
+| 558 | الزهر الفياح قوت القلوب وغذاء الأرواح محبة الله جل وعز وعلاماتها | أزهري أحمد محمود | `al-zhr-al-fyah-qwt-al-qlwb-wghtha-al-arwah-mhbh-al-lh-jl-waz` | 22 KB | small, on Sonnet exclusion list |
+| 559 | حلية المتقين وثوب الصالحين الورع | أزهري أحمد محمود | `hlyh-al-mtqyn-wthwb-al-salhyn-al-wra` | 23 KB | small, on Sonnet exclusion list |
+| 560 | داء النفوس وسموم القلوب المعاصي | أزهري أحمد محمود | `da-al-nfws-wsmwm-al-qlwb-al-maasy` | 23 KB | small, on Sonnet exclusion list |
+| 561 | السعادة |  | `al-saadh` | 23 KB | small, on Sonnet exclusion list |
+| 562 | غاية الغايات وطريق السعادات حسن الخاتمة | أزهري أحمد محمود | `ghayh-al-ghayat-wtryq-al-saadat-hsn-al-khatmh` | 24 KB | small, on Sonnet exclusion list |
+| 563 | دواء القلوب وسرطان الذنوب التوبة | أزهري أحمد محمود | `dwa-al-qlwb-wsrtan-al-thnwb-al-twbh` | 24 KB | small, on Sonnet exclusion list |
+| 564 | أطواق الحمامة في حمل الصحابة على السلامة | المؤيد العلوي | `atwaq-al-hamamah` | 25 KB | small, on Sonnet exclusion list |
+| 565 | عقيدة أهل السنة في الصحابة لعبد المحسن العباد | عبد المحسن العباد | `aqeedat-ahl-al-sunnah-fil-sahabah-al-abbad` | 29 KB | small, on Sonnet exclusion list |
+| 566 | منازل الأحزان وعبرة اليقظان النار | أزهري أحمد محمود | `mnazl-al-ahzan-wabrh-al-yqzan-al-nar` | 29 KB | small, on Sonnet exclusion list |
+| 567 | ماذا أعددت للموت | أزهري أحمد محمود | `matha-aaddt-llmwt` | 29 KB | small, on Sonnet exclusion list |
+| 568 | قاطع الأفراح ومزهق الأرواح الموت | أزهري أحمد محمود | `qata-al-afrah-wmzhq-al-arwah-al-mwt` | 29 KB | small, on Sonnet exclusion list |
+| 569 | القرآن وعودة المجد | مجدي الهلالي | `al-qran-wawdh-al-mjd` | 31 KB | small, on Sonnet exclusion list |
+| 570 | لغات القبائل الواردة في القرآن الكريم | أبو عبيد القاسم بن سلام | `lughat-al-qabail-al-qasim-ibn-sallam` | 31 KB | small, on Sonnet exclusion list |
+| 571 | منازل السرور ودار الحبور الجنة | أزهري أحمد محمود | `mnazl-al-srwr-wdar-al-hbwr-al-jnh` | 33 KB | small, on Sonnet exclusion list |
+| 572 | هذه هي الصلاة | أزهري أحمد محمود | `hthh-hy-al-slah` | 33 KB | small, on Sonnet exclusion list |
+| 573 | رسالة إلى جار المسجد | أزهري أحمد محمود | `rsalh-ala-jar-al-msjd` | 34 KB | small, on Sonnet exclusion list |
+| 574 | الابتلاء وكيف تستفيد منه الدعوات | مجدي الهلالي | `al-abtla-wkyf-tstfyd-mnh-al-dawat` | 37 KB | small, on Sonnet exclusion list |
+| 575 | مقاصد الشريعة الإسلامية |  | `maqasid-al-shariah-al-islamiyyah` | 40 KB | small, on Sonnet exclusion list |
+| 576 | وأصلحنا له زوجه | عبد الملك بن قاسم | `waslhna-lh-zwjh` | 41 KB | small, on Sonnet exclusion list |
+| 577 | الأخلاق في الإسلام |  | `al-akhlaq-fy-al-aslam` | 42 KB | small, on Sonnet exclusion list |
+| 578 | كيف تسبق | خالد الحسينان | `kyf-tsbq` | 49 KB | small, on Sonnet exclusion list |
+| 579 | الآداب الإسلامية |  | `al-adab-al-aslamyh` | 53 KB | small, on Sonnet exclusion list |
+| 580 | الفقه والشريعة |  | `al-fiqh-wal-shariah` | 58 KB | small, on Sonnet exclusion list |
+| 581 | الله لطيف بعباده | عبد الملك بن قاسم | `al-lh-ltyf-babadh` | 59 KB | small, on Sonnet exclusion list |
+| 582 | التوبة التوبة قبل الحسرات | أزهري أحمد محمود | `al-twbh-al-twbh-qbl-al-hsrat` | 60 KB | small, on Sonnet exclusion list |
+| 583 | كونوا على الخير أعوانا | محمد صالح المنجد | `kwnwa-ala-al-khyr-aawana` | 64 KB | small, on Sonnet exclusion list |
+| 584 | شرح السنة للبربهاري | البربهاري | `sharh-al-sunnah-al-barbahari` | 73 KB | small, on Sonnet exclusion list |
+| 585 | ماذا نريد من رمضان | مجدي الهلالي | `matha-nryd-mn-rmdan` | 74 KB | small, on Sonnet exclusion list |
+| 586 | إغاثة اللهفان في حكم طلاق الغضبان | ابن القيم | `aghathh-al-lhfan-fy-hkm-tlaq-al-ghdban` | 82 KB | small, on Sonnet exclusion list |
+| 587 | كيف نحيي قلوبنا في رمضان | مجدي الهلالي | `kyf-nhyy-qlwbna-fy-rmdan` | 82 KB | small, on Sonnet exclusion list |
+| 588 | شرح كتاب الصيام من عمدة الفقه - عبد الكريم الخضير | عبد الكريم الخضير | `shrh-ktab-al-syam-mn-amdh-al-fqh-abd-al-krym-al-khdyr` | 85 KB | small, on Sonnet exclusion list |
+| 589 | التحفة الوسيمة شرح على الدرة اليتيمة | محمد باي بلعالم | `al-thfa-al-wsyma-shrh-ala-al-dra-al-ytyma` | 106 KB | small, on Sonnet exclusion list |
+| 590 | السماع والقياس | أحمد تيمور باشا | `al-smaa-walqyas` | 121 KB | small, on Sonnet exclusion list |
+| 591 | القيم الإسلامية |  | `al-qym-al-aslamyh` | 122 KB | small, on Sonnet exclusion list |
+| 592 | الألغاز النحوية = الطراز في الألغاز | الجلال السيوطي | `al-alghaz-al-nhwya-al-traz-fy-al-alghaz` | 134 KB | small, on Sonnet exclusion list |
+| 593 | متممة الأجرومية | الرعيني، الحطاب | `mtmma-al-ajrwmya` | 135 KB | small, on Sonnet exclusion list |
+| 594 | حجية القياس والرد على المخالفين |  | `hujjiyyat-al-qiyas-war-radd-ala-al-mukhalifin` | 152 KB | small, on Sonnet exclusion list |
+| 595 | الإيضاح في علل النحو | الزجاجي | `al-iydah-fy-all-al-nhw` | 191 KB | small, on Sonnet exclusion list |
+| 596 | هكذا كان الصالحون | خالد الحسينان | `hktha-kan-al-salhwn` | 219 KB | small, on Sonnet exclusion list |
+| 597 | شرح العمدة لابن تيمية - صفة الصلاة | ابن تيمية | `shrh-al-amdh-labn-tymyh-sfh-al-slah` | 220 KB | small, on Sonnet exclusion list |
+| 598 | الاقتراح في أصول النحو ط البيروتي | الجلال السيوطي | `al-aqtrah-fy-aswl-al-nhw-t-al-byrwty` | 239 KB | small, on Sonnet exclusion list |
+| 599 | دروس تربوية من الأحاديث النبوية | خالد الحسينان | `drws-trbwyh-mn-al-ahadyth-al-nbwyh` | 243 KB | small, on Sonnet exclusion list |
+| 600 | شرح كتاب الحدود في النحو | عبد الله بن أحمد الفاكهي | `shrh-ktab-al-hdwd-fy-al-nhw` | 253 KB | small, on Sonnet exclusion list |
+| 601 | رسالة الملائكة | أبو العلاء المعري | `rsala-al-mlayka` | 262 KB | small, on Sonnet exclusion list |
+| 602 | الضرورة الشعرية ومفهومها لدى النحويين دراسة على ألفية بن مالك | إبراهيم بن صالح الحندود | `al-drwra-al-sharya-wmfhwmha-lda-al-nhwyyn-drasa-ala-alfya-bn-malk` | 304 KB | small, on Sonnet exclusion list |
+| 603 | العروة الوثقى في ضوء الكتاب والسنة | سعيد بن وهف القحطاني | `al-urwah-al-wuthqa-qahtani` | 306 KB | small, on Sonnet exclusion list |
+| 604 | كيف نحب الله ونشتاق إليه | مجدي الهلالي | `kyf-nhb-al-lh-wnshtaq-alyh` | 312 KB | small, on Sonnet exclusion list |
+| 605 | إنه القرآن سر نهضتنا - كيف يمكن للقرآن أن ينهض بالأمة؟ | مجدي الهلالي | `anh-al-qran-sr-nhdtna-kyf-ymkn-llqran-an-ynhd-balamh` | 328 KB | small, on Sonnet exclusion list |
+| 606 | فتح المتعال على القصيدة المسماة بلامية الأفعال | حمد بن محمد الصعيدي | `fth-al-mtaal-ala-al-qsyda-al-msmaa-blamya-al-afaal` | 333 KB | small, on Sonnet exclusion list |
+| 607 | أبنية الأسماء والأفعال والمصادر | ابن القطاع الصقلي | `abnya-al-asma-walafaal-walmsadr` | 333 KB | small, on Sonnet exclusion list |
+| 608 | تفسير سفيان الثوري | سفيان الثوري | `tafsir-sufyan-thawri` | 352 KB | small, on Sonnet exclusion list |
+| 609 | أطيب النشر في تفسير الوصايا العشر | مرزوق بن هياس الزهراني | `atyab-al-nashr-al-wasaya-al-ashr` | 354 KB | small, on Sonnet exclusion list |
+| 610 | إعراب ما يشكل من ألفاظ الحديث | العكبري، أبو البقاء | `iarab-ma-yshkl-mn-alfaz-al-hdyth` | 368 KB | small, on Sonnet exclusion list |
+| 611 | الفتوحات الربانية بشرح الدرة المضية في علم القواعد الفرضية | عبد العزيز العيدان | `al-ftwhat-al-rbanyh-bshrh-al-drh-al-mdyh-fy-alm-al-qwaad-al` | 379 KB | small, on Sonnet exclusion list |
+| 612 | فتح الأقفال وحل الإشكال بشرح لامية الأفعال المشهور بالشرح الكبير | بحرق اليمني | `fth-al-aqfal-whl-al-ishkal-bshrh-lamya-al-afaal-al-mshhwr-balshrh-al-kbyr` | 382 KB | small, on Sonnet exclusion list |
+| 613 | التوسط بين مالك وابن القاسم في المسائل التي اختلفا فيها من مسائل المدونة | الجبيري | `al-twst-byn-malk-wabn-al-qasm-fy-al-msayl-al-ty-akhtlfa-fyha` | 399 KB | small, on Sonnet exclusion list |
+| 614 | شرح التصريف للثمانيني | الثمانيني | `shrh-al-tsryf-llthmanyny` | 401 KB | small, on Sonnet exclusion list |
+| 615 | من تاريخ النحو العربي | سعيد الأفغاني | `mn-tarykh-al-nhw-al-arby` | 408 KB | small, on Sonnet exclusion list |
+| 616 | تحقيق المطالب بشرح دليل الطالب | أبو المنذر المنياوي | `thqyq-al-mtalb-bshrh-dlyl-al-talb` | 411 KB | small, on Sonnet exclusion list |
+| 617 | رسائل وفتاوى عبد العزيز آل الشيخ | عبد العزيز بن عبد الله آل الشيخ | `rsayl-wftawa-abd-al-azyz-al-al-shykh` | 413 KB | small, on Sonnet exclusion list |
+| 618 | شرح المنظومة الميمية في الآداب الشرعية | عبد الكريم الخضير | `shrh-al-mnzwmh-al-mymyh-fy-al-adab-al-shrayh` | 417 KB | small, on Sonnet exclusion list |
+| 619 | نظرات في التربية الإيمانية | مجدي الهلالي | `nzrat-fy-al-trbyh-al-aymanyh` | 435 KB | small, on Sonnet exclusion list |
+| 620 | تحقيق الوصال بين القلب والقرآن | مجدي الهلالي | `thqyq-al-wsal-byn-al-qlb-walqran` | 439 KB | small, on Sonnet exclusion list |
+| 621 | شرح قواعد الإعراب | شيخ زاده | `shrh-qwaad-al-iarab` | 442 KB | small, on Sonnet exclusion list |
+| 622 | فقه الصيام والحج من دليل الطالب | حمد الحمد | `fqh-al-syam-walhj-mn-dlyl-al-talb` | 446 KB | small, on Sonnet exclusion list |
+| 623 | الحلل في شرح أبيات الجمل | ابن السيد البطليوسي | `al-hll-fy-shrh-abyat-al-jml` | 448 KB | small, on Sonnet exclusion list |
+| 624 | تفسير ابن أبي العز جمعا ودراسة | ابن أبي العز | `tafsir-ibn-abi-al-izz` | 448 KB | small, on Sonnet exclusion list |
+| 625 | أخصر المختصرات ط الركائز | ابن بلبان، محمد بن بدر الدين | `akhsr-al-mkhtsrat-t-al-rkayz` | 450 KB | small, on Sonnet exclusion list |
+| 626 | عمدة السالك وعدة الناسك | ابن النقيب | `amdh-al-salk-wadh-al-nask` | 478 KB | small, on Sonnet exclusion list |
+| 627 | المفصل في صنعة الإعراب | الزمخشري | `al-mfsl-fy-snaa-al-iarab` | 506 KB | small, on Sonnet exclusion list |
+| 628 | العودة إلى القرآن لماذا وكيف | مجدي الهلالي | `al-awdh-ala-al-qran-lmatha-wkyf` | 514 KB | small, on Sonnet exclusion list |
+| 629 | أدوات الإعراب | ظاهر شوكت البياتي | `adwat-al-iarab` | 514 KB | small, on Sonnet exclusion list |
+| 630 | السيف المسلول على من سب الرسول | تقي الدين السبكي | `al-sayf-al-maslul` | 531 KB | small, on Sonnet exclusion list |
+| 631 | فتاوى ورسائل سماحة الشيخ عبد الرزاق عفيفي - قسم العقيدة | عبد الرزاق عفيفي | `ftawa-wrsayl-smaha-al-shykh-abd-al-rzaq-afyfy-qsm-al-aqyda` | 533 KB | small, on Sonnet exclusion list |
+| 632 | شرح حديث النزول | ابن تيمية | `sharh-hadith-al-nuzul` | 548 KB | small, on Sonnet exclusion list |
+| 633 | منهج الطلاب في فقه الإمام الشافعي رضي الله عنه | زكريا الأنصاري | `mnhj-al-tlab-fy-fqh-al-amam-al-shafay-rdy-al-lh-anh` | 559 KB | small, on Sonnet exclusion list |
+| 634 | تفسير القرآن من الجامع لابن وهب | ابن وهب | `tafsir-ibn-wahb` | 583 KB | small, on Sonnet exclusion list |
+| 635 | شرح الآجرومية - عبد الكريم الخضير | عبد الكريم الخضير | `shrh-al-ajrwmya-abd-al-krym-al-khdyr` | 584 KB | small, on Sonnet exclusion list |
+| 636 | صحيح كنوز السنة النبوية | بارع عرفان توفيق | `shyh-knwz-al-snh-al-nbwyh` | 586 KB | small, on Sonnet exclusion list |
+| 637 | شرح المقدمة المحسبة | ابن بابشاذ | `shrh-al-mqdma-al-mhsba` | 590 KB | small, on Sonnet exclusion list |
+| 638 | المسائل النحوية في كتاب التوضيح لشرح الجامع الصحيح | داود بن سليمان الهويمل | `al-msayl-al-nhwya-fy-ktab-al-twdyh-lshrh-al-jama-al-shyh` | 608 KB | small, on Sonnet exclusion list |
+| 639 | تفسير جزء عم للشيخ مساعد الطيار | مساعد بن سليمان الطيار | `tafsir-juz-amma-musaid-tayyar` | 628 KB | small, on Sonnet exclusion list |
+| 640 | صفة المفتي والمستفتي ت أبي جنة | ابن حمدان | `sfh-al-mfty-walmstfty-t-aby-jnh` | 635 KB | small, on Sonnet exclusion list |
+| 641 | معتقد أهل السنة والجماعة في أسماء الله الحسنى | محمد بن خليفة التميمي | `matqd-ahl-al-sna-waljmaaa-fy-asma-al-lh-al-hsna` | 642 KB | small, on Sonnet exclusion list |
+| 642 | شرح كتاب العلم لأبي خيثمة - عبد الكريم الخضير | عبد الكريم الخضير | `shrh-ktab-al-alm-laby-khythmh-abd-al-krym-al-khdyr` | 647 KB | small, on Sonnet exclusion list |
+| 643 | الذب عن مذهب الإمام مالك | ابن أبي زيد القيرواني | `al-thb-an-mthhb-al-amam-malk` | 665 KB | small, on Sonnet exclusion list |
+| 644 | التذكرة في الفقه لابن عقيل | أبو الوفاء ابن عقيل | `al-tthkrh-fy-al-fqh-labn-aqyl` | 674 KB | small, on Sonnet exclusion list |
+| 645 | رفقا بالقوارير - نصائح للأزواج | أمة الله بنت عبد المطلب | `rfqa-balqwaryr-nsayh-llazwaj` | 683 KB | small, on Sonnet exclusion list |
+| 646 | القدر للفريابي محققا | الفريابي | `al-qadar-al-firyabi` | 690 KB | small, on Sonnet exclusion list |
+| 647 | الشرح المختصر على نظم المقصود | أحمد بن عمر الحازمي | `al-shrh-al-mkhtsr-ala-nzm-al-mqswd` | 696 KB | small, on Sonnet exclusion list |
+| 648 | تحفة الراكع والساجد بأحكام المساجد | الجراعي | `thfh-al-raka-walsajd-bahkam-al-msajd` | 698 KB | small, on Sonnet exclusion list |
+| 649 | المرتجل في شرح الجمل لابن الخشاب | ابن الخشاب | `al-mrtjl-fy-shrh-al-jml-labn-al-khshab` | 703 KB | small, on Sonnet exclusion list |
+| 650 | التطبيق النحوي | عبده الراجحي | `al-ttbyq-al-nhwy` | 714 KB | small, on Sonnet exclusion list |
+| 651 | مسند أبي حنيفة رواية أبي نعيم | أبو نعيم الأصبهاني | `msnd-aby-hnyfa-rwaya-aby-naym` | 718 KB | small, on Sonnet exclusion list |
+| 652 | التحرير شرح الدليل - كتاب الطهارة | أبو المنذر المنياوي | `al-thryr-shrh-al-dlyl-ktab-al-tharh` | 724 KB | small, on Sonnet exclusion list |
+| 653 | الموجز في قواعد اللغة العربية | سعيد الأفغاني | `al-mwjz-fy-qwaad-al-lgha-al-arbya` | 730 KB | small, on Sonnet exclusion list |
+| 654 | معلمة الفقه المالكي | عبد العزيز بن عبد الله | `malmh-al-fqh-al-malky` | 734 KB | small, on Sonnet exclusion list |
+| 655 | القواعد التطبيقية في اللغة العربية | نديم حسين دعكور | `al-qwaad-al-ttbyqya-fy-al-lgha-al-arbya` | 736 KB | small, on Sonnet exclusion list |
+| 656 | إتحاف الحثيث بإعراب ما يشكل من ألفاظ الحديث | العكبري، أبو البقاء | `ithaf-al-hthyth-biarab-ma-yshkl-mn-alfaz-al-hdyth` | 759 KB | small, on Sonnet exclusion list |
+| 657 | التنبيه في الفقه الشافعي | الشيرازي، أبو إسحاق | `al-tnbyh-fy-al-fqh-al-shafay` | 769 KB | small, on Sonnet exclusion list |
+| 658 | شرح العقيدة الأصفهانية | ابن تيمية | `sharh-al-aqeedah-al-isfahaniyyah` | 774 KB | small, on Sonnet exclusion list |
+| 659 | مصرع التصوف = تنبيه الغبي إلى تكفير ابن عربي وتحذير العباد من أهل العناد ببدعة الاتحاد | برهان الدين البقاعي | `masra-al-tasawwuf` | 778 KB | small, on Sonnet exclusion list |
+| 660 | اللباب في الفقه الشافعي | ابن المحاملي | `al-lbab-fy-al-fqh-al-shafay` | 790 KB | small, on Sonnet exclusion list |
+| 661 | الشرح المختصر على نظم الآجرومية | أحمد بن عمر الحازمي | `al-shrh-al-mkhtsr-ala-nzm-al-ajrwmya` | 795 KB | small, on Sonnet exclusion list |
+| 662 | الصحيح المسند من آثار الصحابة في الزهد والرقائق والأخلاق والأدب | عبد الله الخليفي | `al-shyh-al-msnd-mn-athar-al-shabh-fy-al-zhd-walrqayq-walakhl` | 807 KB | small, on Sonnet exclusion list |
+| 663 | رسالة الملائكة ت الجندي | أبو العلاء المعري | `rsala-al-mlayka-t-al-jndy` | 810 KB | small, on Sonnet exclusion list |
+| 664 | المطلب الحميد في بيان مقاصد التوحيد | عبد الرحمن بن حسن آل الشيخ | `al-mtlb-al-hmyd-fy-byan-mqasd-al-twhyd` | 842 KB | small, on Sonnet exclusion list |
+| 665 | منهاج التأسيس والتقديس في كشف شبهات داود بن جرجيس | عبد اللطيف آل الشيخ | `mnhaj-al-tasys-waltqdys-fy-kshf-shbhat-dawd-bn-jrjys` | 875 KB | small, on Sonnet exclusion list |
+| 666 | كشف ما ألقاه إبليس من البهرج والتلبيس على قلب داود بن جرجيس | عبد الرحمن بن حسن آل الشيخ | `kshf-ma-alqah-iblys-mn-al-bhrj-waltlbys-ala-qlb-dawd-bn-jrjys` | 877 KB | small, on Sonnet exclusion list |
+| 667 | كلمات السداد على متن الزاد | فيصل المبارك | `klmat-al-sdad-ala-mtn-al-zad` | 883 KB | small, on Sonnet exclusion list |
+| 668 | مسائل حرب الكرماني من كتاب النكاح إلى نهاية الكتاب - ت فايز حابس | الكرماني، حرب بن إسماعيل | `msayl-hrb-al-krmany-mn-ktab-al-nkah-ala-nhayh-al-ktab-t-fayz` | 907 KB | small, on Sonnet exclusion list |
+| 669 | سلسلة القصص - المنجد | محمد صالح المنجد | `slslh-al-qss-al-mnjd` | 915 KB | small, on Sonnet exclusion list |
+| 670 | شرح العمدة لابن تيمية - كتاب الصلاة | ابن تيمية | `shrh-al-amdh-labn-tymyh-ktab-al-slah` | 927 KB | small, on Sonnet exclusion list |
+| 671 | اللباب في تفسير الاستعاذة والبسملة وفاتحة الكتاب | سليمان بن إبراهيم اللاحم | `al-lubab-istiadhah-basmalah-fatihah` | 938 KB | small, on Sonnet exclusion list |
+| 672 | سفر السعادة وسفير الإفادة | السخاوي ، علم الدين | `sfr-al-saada-wsfyr-al-ifada` | 954 KB | small, on Sonnet exclusion list |
+| 673 | القطوف الدانية فيما انفرد به الدارمي عن الثمانية | مرزوق بن هياس الزهراني | `al-qtwf-al-danya-fyma-anfrd-bh-al-darmy-an-al-thmanya` | 962 KB | small, on Sonnet exclusion list |
+| 674 | شرح العمدة لابن تيمية - كتاب الصيام | ابن تيمية | `shrh-al-amdh-labn-tymyh-ktab-al-syam` | 963 KB | small, on Sonnet exclusion list |
+| 675 | الدعوات الكبير | أبو بكر البيهقي | `al-dawat-al-kbyr` | 974 KB | small, on Sonnet exclusion list |
+| 676 | المنصف لابن جني، شرح كتاب التصريف لأبي عثمان المازني | ابن جني | `al-mnsf-labn-jny-shrh-ktab-al-tsryf-laby-athman-al-mazny` | 983 KB | small, on Sonnet exclusion list |
+| 677 | شرح كتاب سيبويه للرماني | أبو الحسن الرماني | `shrh-ktab-sybwyh-llrmany` | 983 KB | small, on Sonnet exclusion list |
+| 678 | قاعدة جليلة في التوسل والوسيلة | ابن تيمية | `qaidah-jalilah-fil-tawassul` | 997 KB | small, on Sonnet exclusion list |
