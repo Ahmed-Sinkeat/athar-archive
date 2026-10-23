@@ -348,3 +348,4 @@
 | al-majm-al-kbyr-lltbrany-mn-j | skipped | nothing to format (notes linked 597/603; 4 dead refs/6 unlinked are import-format [^x] items, REPORT ONLY) | none | none |
 | shrh-hlya-talb-al-alm-llshthry | skipped | no change made (notes linked 388/388) | none | none |
 | qda-al-arb-fy-asylh-hlb | skipped | nothing to format (no notes) | none | none |
+| al-mrasyl-laby-dawd | committed | card/heading fixes | none | none |
