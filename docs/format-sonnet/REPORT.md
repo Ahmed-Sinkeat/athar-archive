@@ -231,3 +231,4 @@
 | al-muhtadirin | committed | card | none | none |
 | islah-al-mal | committed | card | none | none |
 | mjals-rmdan-ahmd-fryd | committed | card | none | none |
+| al-aqtrah-fy-aswl-al-nhw-t-al-qlm | skipped | nothing to format (notes already linked 2/2) | none | none |
