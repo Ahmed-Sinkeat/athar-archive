@@ -711,9 +711,13 @@ class AtharContentViewModel @Inject constructor(
                 userDao.observeReadingPosition(entityId),
             ) { entity, blocks, chapters, footnotes, position ->
                 entity?.toReaderUi(blocks, chapters, footnotes, position)?.copy(
-                    editions = catalogDao.editionsFor(entity.editionOf ?: entity.id).takeIf { it.size > 1 }.orEmpty().map {
-                        com.atharchive.feature.reader.ReaderEdition(it.id, it.edition?.takeIf(String::isNotBlank) ?: it.title)
-                    },
+                    editions = catalogDao.editionsFor(entity.editionOf ?: entity.id).takeIf { it.size > 1 }.orEmpty()
+                        .sortedBy { it.editionOf != null }.map {
+                            com.atharchive.feature.reader.ReaderEdition(
+                                it.id, it.edition?.takeIf(String::isNotBlank) ?: it.title,
+                                current = it.id == entity.id, primary = it.editionOf == null,
+                            )
+                        },
                 )
             },
             annotationRepository.observe(AnnotationFilter(entityId = entityId)),

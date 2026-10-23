@@ -213,7 +213,8 @@ data class ReaderHighlight(
     val endOffset: Int,
 )
 
-data class ReaderEdition(val id: String, val label: String)
+/** [current] is the one open now; [primary] is the default the library opens. */
+data class ReaderEdition(val id: String, val label: String, val current: Boolean = false, val primary: Boolean = false)
 
 data class ReaderUiState(
     val editions: List<ReaderEdition> = emptyList(),

@@ -797,7 +797,14 @@ private fun ReaderTopBar(
                 )
             }
             AtharMenu(expanded = editionsOpen, onDismiss = { editionsOpen = false }, colors = com.atharchive.ui.components.AtharMenuColors(colors.page, colors.text, colors.secondary, colors.accent)) {
-                editions.forEach { edition -> AtharMenuItem(edition.label, onClick = { editionsOpen = false; onEdition(edition.id) }) }
+                editions.forEach { edition ->
+                    AtharMenuItem(
+                        edition.label,
+                        onClick = { editionsOpen = false; if (!edition.current) onEdition(edition.id) },
+                        checked = edition.current,
+                        subtitle = listOfNotNull("المفتوحة الآن".takeIf { edition.current }, "الافتراضية".takeIf { edition.primary }).joinToString(" · "),
+                    )
+                }
             }
         }
     }
