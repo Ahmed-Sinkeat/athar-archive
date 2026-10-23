@@ -369,3 +369,4 @@
 | tadhkirat-al-arib-ibn-al-jawzi | committed | card/heading fixes | none | none |
 | fdayl-al-awqat-llbyhqy | committed | card/heading fixes | none | none |
 | al-qawaid-al-fiqhiyyah-bayn-al-asalah-wal-tawjih | committed | card/heading fixes | none | none |
+| al-zhd-laby-dawd | committed | card/heading fixes | none | none |
