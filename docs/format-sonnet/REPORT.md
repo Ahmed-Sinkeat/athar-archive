@@ -246,3 +246,4 @@
 | al-iydah-al-addy | committed | 1 heading re-joined with its cut tanwin | none | none |
 | al-manamat | committed | card; hadith-text headings rejoined/un-headed; cut words re-joined | none | none |
 | al-adb-labn-aby-shyba | committed | card; hadith-text headings rejoined/un-headed; cut words re-joined | none | none |
+| mkhtsr-al-shmayl | committed | card; hadith-text headings rejoined/un-headed; cut words re-joined | none | none |
