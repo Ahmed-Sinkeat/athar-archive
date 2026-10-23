@@ -406,3 +406,4 @@
 | al-uluww-lil-aliyy-al-ghaffar | skipped | nothing to format (no notes) | none | none |
 | aswl-al-nhw-jamaa-al-mdyna | committed | card/heading fixes | none | none |
 | shrh-lmaa-al-aatqad-lkhald-al-mslh | skipped | nothing to format (no notes) | none | none |
+| shrh-al-ftwa-al-hmwya | skipped | nothing to format (no notes) | none | none |
