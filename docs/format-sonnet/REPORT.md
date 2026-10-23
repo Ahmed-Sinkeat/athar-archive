@@ -373,3 +373,4 @@
 | rwya-al-lh-lldarqtny | committed | card/heading fixes | none | none |
 | al-jama-labn-whb-t-mstfa-abw-al-khyr | committed | card/heading fixes | none | none |
 | al-mntqa-mn-ktab-mkarm-al-akhlaq-wmaalyha | committed | card/heading fixes | none | none |
+| al-intisar-li-ahl-al-sunnah-wal-hadith | committed | 11 footnote anchors linked | none | none |
