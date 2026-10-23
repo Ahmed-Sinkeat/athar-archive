@@ -437,3 +437,4 @@
 | amaly-abn-bshran-al-jz-al-thany | committed | card/heading fixes; hadith-text headings rejoined | none | none |
 | msayl-al-amam-ahmd-rwayh-abnh-aby-al-fdl-salh | committed | card/heading fixes; hadith-text headings rejoined | none | none |
 | msayl-al-amam-ahmd-rwayh-abnh-abd-al-lh | committed | card/heading fixes; hadith-text headings rejoined | none | none |
+| shyh-al-adb-al-mfrd | skipped | nothing to format (notes already linked) | none | none |
