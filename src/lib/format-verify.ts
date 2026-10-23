@@ -21,7 +21,10 @@ function notesText(tag: string): string {
 
 function text(body: string, importFix = false): string {
   // import-fix: merging a split page renumbers its anchors; the anchor digits are not the author's text
-  const unmarked = (importFix ? body.replace(/\(\^[0-9]+\)/g, "") : body)
+  // and neither is a Shamela note label «(١٢) - », which becomes the note's place in data-notes.
+  // ponytail: this also leaves any parenthesised number in import-fix unchecked; the mode is a
+  // character-multiset check anyway.
+  const unmarked = (importFix ? body.replace(/\((?:\^)?[0-9\u0660-\u0669]+\)(?: - )?/g, "") : body)
     .replace(PAGE_MARKS, (tag) => `\u0001${notesText(tag)}\u0001`)
     .replace(/<[^>]+>/g, "")
     .replace(/^[ \t]*(?:#{1,6}[ \t]+|[-*+][ \t]+|>[ \t]?|(?:-{3,}|\*{3,})[ \t]*$)/gm, "")

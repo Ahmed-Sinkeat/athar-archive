@@ -55,3 +55,10 @@ test("an import's «= heading =» line may become a markdown heading, nothing mo
   expect(verifyFormatting("---\nt: 1\n---\n= وتتمتها\n", "---\nt: 1\n---\nوتتمتها\n")).toBeDefined();
 });
 
+
+test("import-fix mode may turn a page's «(N) - note» tail into linked data-notes", () => {
+  const before = `---\nt: 1\n---\nقال (١٢) كذا.(١٢) - أي هذا.\n\n<hr class="page-sep" data-page="1" />\n`;
+  const after = `---\nt: 1\n---\nقال (^1) كذا.\n\n<hr class="page-sep" data-page="1" data-notes='["أي هذا."]' />\n`;
+  expect(verifyFormatting(before, after, true)).toBeUndefined();
+  expect(verifyFormatting(before, after.replace("أي هذا", "أي ذاك"), true)).toBeDefined();
+});
