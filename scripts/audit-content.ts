@@ -77,6 +77,15 @@ for (const f of fs.readdirSync(bookDir)) {
   if (leakedFooter > 0) findings.push(`LEAKED-PAGE-FOOTER book: ${f} (${leakedFooter} literal «الجزء: … الصفحة: N» lines — import didn't strip the source footer)`);
 }
 
+// --- counts: readers see works (a book's editions are one); we also keep the real file count ---
+{
+  const books = ["book", "book-lg"].map((d) => path.join(ROOT, d)).filter(fs.existsSync)
+    .flatMap((dir) => fs.readdirSync(dir).filter((f) => f.endsWith(".md")).map((f) => path.join(dir, f)))
+    .filter((p) => fm(p, "status") === "published");
+  const editions = books.filter((p) => fm(p, "edition_of")).length;
+  console.log(`books: ${books.length - editions} works (public count) · ${books.length} files, ${editions} of them extra editions`);
+}
+
 if (findings.length) {
   console.log(`${findings.length} finding(s):\n`);
   for (const x of findings.sort()) console.log("  " + x);
