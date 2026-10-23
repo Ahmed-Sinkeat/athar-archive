@@ -444,3 +444,4 @@
 | tdhkra-al-mwtsy-shrh-aqyda-al-hafz-abd-al-ghny-al-mqdsy | committed (partial) | anchors 306 | none | REPORT ONLY: 754 notes unlinked (171 pages carry more notes than printed anchors), 4 dead sups |
 | taysir-latif-mannan | committed | card/heading fixes | none | none |
 | taliq-ala-al-ibanah-al-sughra | skipped | nothing to format (no notes) | none | none |
+| akam-al-marjan | skipped | nothing to format (no notes) | none | none |
