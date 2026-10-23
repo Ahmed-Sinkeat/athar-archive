@@ -418,3 +418,4 @@
 | tafsir-ayat-ibn-abd-al-wahhab | skipped | nothing to format (notes already linked) | none | none |
 | tajyl-al-nda-bshrh-qtr-al-nda | skipped | nothing to format (notes already linked) | none | none |
 | mthkrh-al-qwl-al-rajh-ma-al-dlyl-al-slah | skipped | nothing to format (notes already linked) | none | none |
+| jami-bayan-al-ilm | committed | card; hadith-text headings rejoined/un-headed | none | none |
