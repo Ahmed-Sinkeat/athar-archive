@@ -354,3 +354,4 @@
 | al-tbyyn-an-mdhahb-al-nhwyyn | committed | card/heading fixes | none | none |
 | shrh-hlya-talb-al-alm-llshthry | skipped | nothing to format (no notes) | none | none |
 | al-wqwf-waltrjl-mn-msayl-al-amam-ahmd | skipped | nothing to format (notes already linked) | none | none |
+| shrh-ktab-adab-al-mshy-ala-al-slah-aw-al-abadat-alslah-al-zk | skipped | nothing to format (notes already linked) | none | none |
