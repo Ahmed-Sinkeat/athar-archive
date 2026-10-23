@@ -251,3 +251,4 @@
 | mn-hdyth-khythma-bn-slyman | committed | card; hadith-text headings rejoined/un-headed; cut words re-joined | none | none |
 | al-tuhur-al-qasim-ibn-sallam | committed | card; hadith-text headings rejoined/un-headed; cut words re-joined | none | none |
 | fwayd-aby-mhmd-al-fakhy | committed | card; hadith-text headings rejoined/un-headed; cut words re-joined | none | none |
+| al-shafya-fy-alm-al-tsryf-walwafya-nzm-al-shafya | committed | card; hadith-text headings rejoined/un-headed; cut words re-joined | none | none |
