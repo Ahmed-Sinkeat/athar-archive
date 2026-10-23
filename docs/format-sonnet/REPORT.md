@@ -420,3 +420,4 @@
 | mthkrh-al-qwl-al-rajh-ma-al-dlyl-al-slah | skipped | nothing to format (notes already linked) | none | none |
 | jami-bayan-al-ilm | committed | card; hadith-text headings rejoined/un-headed | none | none |
 | al-athar-laby-ywsf | committed | card; hadith-text headings rejoined/un-headed | none | none |
+| shrh-al-ajrwmya-lhsn-hfzy | committed | card; hadith-text headings rejoined/un-headed | none | none |
