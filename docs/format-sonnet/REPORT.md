@@ -278,3 +278,4 @@
 | al-ishraf-fi-manazil-al-ashraf | committed | card; hadith-text headings rejoined; glued heading split | none | none |
 | makarim-al-akhlaq-ibn-abi-al-dunya | committed | card; hadith-text headings rejoined; glued heading split | none | none |
 | al-jml-fy-al-nhw | committed | card; hadith-text headings rejoined; glued heading split | none | none |
+| shrh-kshf-al-shbhat-lkhald-al-mslh | skipped | nothing to format (no notes) | none | none |
