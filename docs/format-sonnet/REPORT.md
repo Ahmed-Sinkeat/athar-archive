@@ -386,3 +386,4 @@
 | akhyr-al-mdkhrat-shrh-akhsr-al-mkhtsrat | skipped | nothing to format (notes already linked) | none | none |
 | al-tthhyb-fy-adlh-mtn-al-ghayh-waltqryb | skipped | nothing to format (notes already linked) | none | none |
 | tayseer-usul-al-fiqh-lilmubtadiin | committed | card/heading fixes | none | none |
+| al-tb-al-nbwy-laby-naym-al-asfhany | committed | card/heading fixes | none | none |
