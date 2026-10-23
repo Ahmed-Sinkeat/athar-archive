@@ -164,27 +164,55 @@ fun downloadsUiState(
     return DownloadsUiState(storage = storage, transfers = transfers, downloaded = downloaded)
 }
 
-/** One not-yet-downloaded thing «تنزيل الكل» can fetch: a work's text package or one recording. */
-data class BulkCandidate(val coll: String, val audio: Boolean, val id: String, val bytes: Long)
+enum class BulkState { Idle, Active, Paused, Failed, Done }
 
-data class BulkRowUi(val label: String, val items: List<BulkCandidate>) {
-    val bytes: Long = items.sumOf { it.bytes }
+/** One downloadable thing in a «تنزيل الكل» row: a work's text package or one recording. */
+data class BulkCandidate(
+    val coll: String,
+    val audio: Boolean,
+    val id: String,
+    val bytes: Long,
+    val state: BulkState = BulkState.Idle,
+    /** Verified bytes of a transfer still in flight. */
+    val partialBytes: Long = 0,
+) {
+    /** The key pause state is stored under. */
+    val pauseKey: String get() = if (audio) "audio:$id" else id
 }
 
-private val BulkSections = listOf("book" to "الكتب", "poem" to "القصائد", "article" to "المقالات")
+/** A type row: everything of one kind, downloaded or not, so it can show how far along it is. */
+data class BulkRowUi(
+    val label: String,
+    val items: List<BulkCandidate>,
+    /** The reader started this row: only it shows progress, not every row its items also belong to. */
+    val tracked: Boolean = false,
+) {
+    val bytes: Long = items.sumOf { it.bytes }
+    val done: Int = items.count { it.state == BulkState.Done }
+    val doneBytes: Long = items.sumOf { if (it.state == BulkState.Done) it.bytes else it.partialBytes }
+    val idle: List<BulkCandidate> get() = items.filter { it.state == BulkState.Idle }
+    val running: List<BulkCandidate> get() = items.filter { it.state == BulkState.Active }
+    val stopped: List<BulkCandidate> get() = items.filter { it.state == BulkState.Paused || it.state == BulkState.Failed }
+    val busy: Boolean = items.any { it.state == BulkState.Active || it.state == BulkState.Paused || it.state == BulkState.Failed }
+    val complete: Boolean = done == items.size
+    val progress: Float = if (bytes > 0) (doneBytes.toFloat() / bytes).coerceIn(0f, 1f) else 1f
+}
+
+private val BulkSections = listOf("book" to "الكتب", "poem" to "القصائد", "article" to "المقالات", "question" to "المسائل")
 
 /**
- * The whole library, then each section, split into نصوص / صوت. Callers pass only what is not
- * downloaded yet, so a finished row simply disappears. Adhkar ship inside the app: no row.
+ * The whole library, then each section, split into نصوص / صوت. Rows hold everything, done or
+ * not, so a finished row stays and says so. Adhkar ship inside the app: no row.
  */
-fun bulkRows(candidates: List<BulkCandidate>): List<BulkRowUi> = buildList {
+fun bulkRows(candidates: List<BulkCandidate>, tracked: Set<String> = emptySet()): List<BulkRowUi> = buildList {
     fun group(name: String, all: List<BulkCandidate>, combined: Boolean) {
         // A recording shared by two works is still one file.
         val items = all.distinctBy { it.audio to it.id }
         val (audio, text) = items.partition { it.audio }
-        if (combined && text.isNotEmpty() && audio.isNotEmpty()) add(BulkRowUi(name, items))
-        if (text.isNotEmpty()) add(BulkRowUi("$name · نصوص", text))
-        if (audio.isNotEmpty()) add(BulkRowUi("$name · صوت", audio))
+        fun row(label: String, rowItems: List<BulkCandidate>) = add(BulkRowUi(label, rowItems, label in tracked))
+        if (combined && text.isNotEmpty() && audio.isNotEmpty()) row(name, items)
+        if (text.isNotEmpty()) row("$name · نصوص", text)
+        if (audio.isNotEmpty()) row("$name · صوت", audio)
     }
     group("المكتبة كاملة", candidates, combined = true)
     BulkSections.forEach { (coll, name) -> group(name, candidates.filter { it.coll == coll }, combined = false) }

@@ -12,6 +12,8 @@ import androidx.work.WorkInfo
 import com.atharchive.feature.downloads.DownloadUi
 import com.atharchive.feature.downloads.TransferUi
 import com.atharchive.feature.downloads.BulkCandidate
+import com.atharchive.feature.downloads.BulkState
+import com.atharchive.feature.downloads.BulkRowUi
 import com.atharchive.feature.downloads.bulkRows
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -99,6 +101,8 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.debounce
+import kotlinx.coroutines.flow.sample
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.mapLatest
 import kotlinx.coroutines.flow.map
@@ -318,13 +322,29 @@ class AtharContentViewModel @Inject constructor(
         ),
     )
 
+    /**
+     * Each job's tag → the job that matters for it (unfinished first, else failed), built once per
+     * tick. Sampled: a bulk download runs many workers, each reporting progress several times a
+     * second, and every list below used to rescan all jobs for every row on each report.
+     */
+    private val jobIndex: StateFlow<Map<String, WorkInfo>> = downloadScheduler.workInfos.sample(500).map { jobs ->
+        val index = HashMap<String, WorkInfo>()
+        for (job in jobs) {
+            if (job.state.isFinished && job.state != WorkInfo.State.FAILED) continue
+            for (tag in job.tags) {
+                if (!tag.startsWith("content:")) continue
+                val current = index[tag]
+                if (current == null || (current.state.isFinished && !job.state.isFinished)) index[tag] = job
+            }
+        }
+        index as Map<String, WorkInfo>
+    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyMap())
+
     private val textDownloads: StateFlow<List<DownloadUi>> = combine(
-        catalogDao.observeAllEntities(), pinIds, retainedPins, downloadScheduler.workInfos, content.pausedDownloads,
+        catalogDao.observeAllEntities(), pinIds, retainedPins, jobIndex, content.pausedDownloads,
     ) { entities, pinnedIds, retainedIds, jobs, pausedIds ->
         entities.filter { it.id in pinnedIds }.map { entity ->
-            val identity = "content:${entity.coll}:${entity.id}"
-            val related = jobs.filter { identity in it.tags }
-            val job = related.firstOrNull { !it.state.isFinished } ?: related.firstOrNull { it.state == WorkInfo.State.FAILED }
+            val job = jobs["content:${entity.coll}:${entity.id}"]
             val downloaded = job?.progress?.getLong("downloaded_bytes", 0) ?: 0
             val total = job?.progress?.getLong("total_bytes", entity.pkgSize) ?: entity.pkgSize
             val progress = if (total > 0) (downloaded.toFloat() / total).coerceIn(0f, 1f) else 0f
@@ -345,8 +365,13 @@ class AtharContentViewModel @Inject constructor(
         }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
 
-    /** Transfer state by entity id, built once per change instead of searched per row. */
-    private val textTransfers = textDownloads.map { list -> list.associate { it.id to it.transfer } }
+    /**
+     * Transfer state by entity id for one kind, built once per change instead of searched per row,
+     * and quiet while that kind has nothing moving: a poem's progress no longer rebuilds the books.
+     */
+    private fun transfersOf(kind: String) = textDownloads
+        .map { list -> list.filter { it.kindLabel == kind }.associate { it.id to it.transfer } }
+        .distinctUntilChanged()
 
     val persons = catalogDao.observeGeneration().map { generation ->
         generation?.persons().orEmpty()
@@ -356,7 +381,7 @@ class AtharContentViewModel @Inject constructor(
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyMap())
 
     val books: StateFlow<BooksUiState> = combine(
-        catalogDao.observeCollection("book"), pinIds, retainedPins, library, combine(positions, textTransfers) { positions, transfers -> positions to transfers },
+        catalogDao.observeCollection("book"), pinIds, retainedPins, library, combine(positions, transfersOf("كتاب")) { positions, transfers -> positions to transfers },
     ) { entities, pinnedIds, retainedIds, shelves, reading ->
         val (savedPositions, transfers) = reading
         val shelfIds = shelves.mapTo(hashSetOf(), LibraryEntryEntity::entityId)
@@ -382,7 +407,7 @@ class AtharContentViewModel @Inject constructor(
     )
 
     val articles: StateFlow<ArticlesUiState> = combine(
-        catalogDao.observeCollection("article"), pinIds, retainedPins, library, combine(textTransfers, recentRanks) { t, r -> t to r },
+        catalogDao.observeCollection("article"), pinIds, retainedPins, library, combine(transfersOf("مقال"), recentRanks) { t, r -> t to r },
     ) { entities, pinnedIds, retainedIds, shelves, transferAndRank ->
         val (transfers, ranks) = transferAndRank
         val shelfIds = shelves.mapTo(hashSetOf(), LibraryEntryEntity::entityId)
@@ -412,7 +437,7 @@ class AtharContentViewModel @Inject constructor(
     private val audioSources = catalogDao.observeEntitiesWithAudio().map { list -> list.map { it to it.audioReferences() } }
     private val recordingCatalog = combine(
         audioSources, library, content.downloadedAudio, recentRanks,
-        combine(content.requestedAudio, content.pausedDownloads, downloadScheduler.workInfos) { requested, paused, jobs -> Triple(requested, paused, jobs) },
+        combine(content.requestedAudio, content.pausedDownloads, jobIndex) { requested, paused, jobs -> Triple(requested, paused, jobs) },
     ) { catalog, shelves, downloaded, ranks, transfers ->
         val shelfIds = shelves.mapTo(hashSetOf(), LibraryEntryEntity::entityId)
         val recordings = catalog.flatMap { (source, refs) ->
@@ -426,8 +451,7 @@ class AtharContentViewModel @Inject constructor(
                     recentRank = ranks["audio:${ref.id}"],
                     sourceEntityId = source.id,
                     transfer = if (ref.id !in transfers.first || ref.id in downloaded) null else {
-                        val job = transfers.third.firstOrNull { "content:audio:${ref.id}" in it.tags && !it.state.isFinished }
-                            ?: transfers.third.firstOrNull { "content:audio:${ref.id}" in it.tags && it.state == WorkInfo.State.FAILED }
+                        val job = transfers.third["content:audio:${ref.id}"]
                         val bytes = job?.progress?.getLong("downloaded_bytes", 0) ?: 0L
                         val progress = (bytes.toFloat() / ref.size.coerceAtLeast(1)).coerceIn(0f, 1f)
                         val label = "${arabicNumber((progress * 100).toInt())}٪"
@@ -466,7 +490,8 @@ class AtharContentViewModel @Inject constructor(
                 return@launch
             }
             personalLibrary.recordOpened("audio:$audioId")
-            val references = catalogDao.entitiesWithAudio().flatMap { it.audioReferences() }.associateBy { it.id }
+            // The decoded catalog is already in memory while anything audio is on screen.
+            val references = (audioSources.first()).flatMap { it.second }.associateBy { it.id }
             val items = queue.map { recording ->
                 MediaItem.Builder().setMediaId(recording.id).setCustomCacheKey(recording.id).setUri(content.audioUri(requireNotNull(references[recording.id])))
                     .setMediaMetadata(MediaMetadata.Builder().setTitle(recording.title).setArtist(recording.speaker).build()).build()
@@ -489,13 +514,12 @@ class AtharContentViewModel @Inject constructor(
         }
     }
 
+    // The catalog, not `audio`: that one ticks with the playback position.
     private val audioDownloads = combine(
-        audio, content.requestedAudio, content.downloadedAudio, downloadScheduler.workInfos, content.pausedDownloads,
+        recordingCatalog, content.requestedAudio, content.downloadedAudio, jobIndex, content.pausedDownloads,
     ) { state, requested, downloaded, jobs, paused ->
         state.recordings.filter { it.id in requested }.map { item ->
-            val identity = "content:audio:${item.id}"
-            val related = jobs.filter { identity in it.tags }
-            val job = related.firstOrNull { !it.state.isFinished } ?: related.firstOrNull { it.state == WorkInfo.State.FAILED }
+            val job = jobs["content:audio:${item.id}"]
             val bytes = job?.progress?.getLong("downloaded_bytes", 0) ?: 0
             val total = job?.progress?.getLong("total_bytes", 0) ?: 0
             val progress = if (total > 0) (bytes.toFloat() / total).coerceIn(0f, 1f) else 0f
@@ -511,31 +535,83 @@ class AtharContentViewModel @Inject constructor(
     val downloads = combine(textDownloads, audioDownloads) { text, audio -> text + audio }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
 
-    /** «تنزيل الكل»: everything in the catalog not already pinned or requested, grouped with summed sizes. */
-    val bulkDownloads = combine(catalogDao.observeCatalog(), pinIds, audioSources, content.requestedAudio) { entities, pinned, sources, requestedAudio ->
+    /** «تنزيل الكل»: every type row with what is done, in flight and left, grouped with summed sizes. */
+    val bulkDownloads = combine(
+        catalogDao.observeCatalog(),
+        combine(pinIds, retainedPins, content.pausedDownloads) { pinned, retained, paused -> Triple(pinned, retained, paused) },
+        audioSources,
+        combine(content.requestedAudio, content.downloadedAudio, content.batches) { requested, downloaded, batches -> Triple(requested, downloaded, batches) },
+        jobIndex,
+    ) { entities, (pinned, retained, paused), sources, (requestedAudio, downloadedAudio, batches), jobs ->
+        fun state(requested: Boolean, done: Boolean, pauseKey: String, job: WorkInfo?, failed: Boolean) = when {
+            done -> BulkState.Done
+            !requested -> BulkState.Idle
+            pauseKey in paused -> BulkState.Paused
+            failed || job?.state == WorkInfo.State.FAILED -> BulkState.Failed
+            else -> BulkState.Active
+        }
+        fun WorkInfo?.partial() = this?.progress?.getLong("downloaded_bytes", 0) ?: 0L
         bulkRows(
-            entities.filter { it.editionOf == null && it.id !in pinned }.map { BulkCandidate(it.coll, audio = false, it.id, it.pkgSize) } +
-                sources.flatMap { (source, refs) ->
-                    refs.filter { it.id !in requestedAudio }.map { BulkCandidate(source.coll, audio = true, it.id, it.size) }
-                },
-        )
+            entities.filter { it.editionOf == null }.map { entity ->
+                val job = jobs["content:${entity.coll}:${entity.id}"]
+                BulkCandidate(
+                    entity.coll, audio = false, entity.id, entity.pkgSize,
+                    state(entity.id in pinned, entity.id in retained, entity.id, job, job == null && entity.transferState == ContentTransferState.FAILED),
+                    job.partial(),
+                )
+            } + sources.flatMap { (source, refs) ->
+                refs.map { ref ->
+                    val job = jobs["content:audio:${ref.id}"]
+                    BulkCandidate(
+                        source.coll, audio = true, ref.id, ref.size,
+                        state(ref.id in requestedAudio, ref.id in downloadedAudio, "audio:${ref.id}", job, failed = false),
+                        job.partial(),
+                    )
+                }
+            },
+            tracked = batches.mapTo(hashSetOf()) { it.label },
+        ).also { rows ->
+            // A started row that has nothing left moving (finished, or its items cancelled) stops tracking.
+            content.clearBatches(rows.filter { it.tracked && !it.busy }.mapTo(hashSetOf()) { it.label })
+        }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
 
     // ponytail: one unique work per item; WorkManager's scheduler limit (20 by default) caps how many run at once.
+    /** «تنزيل المتبقي»: starts what never started and resumes what stopped, tracked under the row. */
+    fun downloadRemaining(row: BulkRowUi) {
+        content.startBatch(row.label, (row.idle + row.stopped).map(BulkCandidate::pauseKey))
+        downloadAll(row.idle)
+        pauseResumeMany(row.stopped, pause = false)
+    }
+
     fun downloadAll(items: List<BulkCandidate>) {
+        if (items.isEmpty()) return
         val (audio, text) = items.partition { it.audio }
-        requested.update { it + text.map(BulkCandidate::id) }
+        val textIds = text.map(BulkCandidate::id)
+        requested.update { it + textIds }
         viewModelScope.launch(errorHandler) {
-            audio.forEach { content.requestAudioDownload(it.id); downloadScheduler.enqueue(it.id, "audio") }
-            text.forEach { item ->
-                try { content.requestDownload(item.id) } catch (error: Throwable) { requested.update { it - item.id }; throw error }
-                downloadScheduler.enqueue(item.id, item.coll)
+            // One write per kind, not one per item: each write re-ran every download list.
+            if (audio.isNotEmpty()) content.requestAudioDownloads(audio.map(BulkCandidate::id))
+            audio.forEach { downloadScheduler.enqueue(it.id, "audio") }
+            if (text.isNotEmpty()) {
+                try { content.requestDownloads(textIds) } catch (error: Throwable) { requested.update { it - textIds.toSet() }; throw error }
             }
+            text.forEach { downloadScheduler.enqueue(it.id, it.coll) }
+        }
+    }
+
+    /** «إيقاف الكل» / «استئناف الكل» over a whole row, written once. */
+    fun pauseResumeMany(items: List<BulkCandidate>, pause: Boolean) {
+        if (items.isEmpty()) return
+        content.setDownloadsPaused(items.map(BulkCandidate::pauseKey), pause)
+        items.forEach {
+            val coll = if (it.audio) "audio" else it.coll
+            if (pause) downloadScheduler.cancelQuietly(it.id, coll) else downloadScheduler.enqueue(it.id, coll, replace = true)
         }
     }
 
     val issues: StateFlow<IssuesUiState> = combine(
-        catalogDao.observeCollection("question"), retainedPins, library, combine(textTransfers, recentRanks) { t, r -> t to r },
+        catalogDao.observeCollection("question"), retainedPins, library, combine(transfersOf("مسألة"), recentRanks) { t, r -> t to r },
     ) { entities, retainedIds, shelves, transferAndRank ->
         val (transfers, ranks) = transferAndRank
         val shelfIds = shelves.mapTo(hashSetOf(), LibraryEntryEntity::entityId)
@@ -559,14 +635,15 @@ class AtharContentViewModel @Inject constructor(
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), IssuesUiState("٠ مسألة", emptyList()))
 
     val poetry: StateFlow<PoetryUiState> = combine(
-        catalogDao.observeCollection("poem"), pinIds, retainedPins, library, combine(textTransfers, recentRanks) { t, r -> t to r },
-    ) { entities, pinnedIds, retainedIds, shelves, transferAndRank ->
+        // Decoded once per catalog change, not on every pin, shelf or progress change.
+        catalogDao.observeCollection("poem").map { list -> list.map { it to it.toCatalogEntry() } },
+        pinIds, retainedPins, library, combine(transfersOf("قصيدة"), recentRanks) { t, r -> t to r },
+    ) { decoded, pinnedIds, retainedIds, shelves, transferAndRank ->
         val (transfers, ranks) = transferAndRank
         val shelfIds = shelves.mapTo(hashSetOf(), LibraryEntryEntity::entityId)
         PoetryUiState(
-            countLabel = arabicCount(entities.size, "القصائد", "قصيدة واحدة", "قصيدتين", "قصائد", "قصيدة"),
-            poems = entities.map { entity ->
-                val entry = entity.toCatalogEntry()
+            countLabel = arabicCount(decoded.size, "القصائد", "قصيدة واحدة", "قصيدتين", "قصائد", "قصيدة"),
+            poems = decoded.map { (entity, entry) ->
                 PoemUi(
                     id = entity.id,
                     title = entity.title,
@@ -991,6 +1068,20 @@ class AtharContentViewModel @Inject constructor(
                 content.setDownloadPaused(entityId, true)
                 downloadScheduler.cancel(entityId, entity.coll)
             }
+        }
+    }
+
+    /** «حذف (n)»: one write per kind, so the lists update once instead of once per item. */
+    fun removeDownloads(ids: List<String>) {
+        val (audio, text) = ids.partition { it.startsWith("audio:") }
+        requested.update { it - text.toSet() }
+        viewModelScope.launch(errorHandler) {
+            val audioIds = audio.map { it.removePrefix("audio:") }
+            audioIds.forEach { downloadScheduler.cancelQuietly(it, "audio") }
+            content.removeAudioDownloads(audioIds)
+            val entities = text.mapNotNull { catalogDao.entity(it) }
+            entities.forEach { downloadScheduler.cancelQuietly(it.id, it.coll) }
+            content.unpinAll(entities.map { it.id })
         }
     }
 

@@ -23,6 +23,7 @@ import androidx.work.WorkerParameters
 import androidx.work.workDataOf
 import com.atharchive.MainActivity
 import com.atharchive.R
+import com.atharchive.ui.components.arabicDigits
 import com.atharchive.core.data.content.ContentIntegrityException
 import com.atharchive.core.data.network.ContentTransportException
 import com.atharchive.core.data.repository.InsufficientContentStorageException
@@ -53,17 +54,34 @@ class ContentDownloadWorker(
 ) : CoroutineWorker(appContext, parameters) {
     override suspend fun getForegroundInfo(): ForegroundInfo = foregroundInfo(-1)
 
+    private val batches get() = EntryPoints.get(applicationContext, ContentWorkerEntryPoint::class.java).contentAccess().batches.value
+
+    /**
+     * Every worker shares one notification id, so parallel transfers show as one line. During a
+     * bulk download it counts the type («الكتب · نصوص: ١٢ من ٣٤٠»), not each item's bytes.
+     */
     private fun foregroundInfo(percent: Int): ForegroundInfo {
         ContentDownloadNotifications.createChannel(applicationContext)
         val openApp = PendingIntent.getActivity(applicationContext, 0, Intent(applicationContext, MainActivity::class.java),
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
-        val notification = Notification.Builder(applicationContext, "content_downloads")
-            .setSmallIcon(R.drawable.ic_notification).setContentTitle("جارٍ تنزيل المحتوى")
-            .setContentText("يمكنك إيقاف التنزيل أو إلغاؤه من صفحة التنزيلات")
+        val batches = batches
+        val done = batches.sumOf { it.done }
+        val total = batches.sumOf { it.total }
+        val builder = Notification.Builder(applicationContext, "content_downloads")
+            .setSmallIcon(R.drawable.ic_notification)
             .setContentIntent(openApp).setOngoing(true).setOnlyAlertOnce(true)
-            .setProgress(100, percent.coerceAtLeast(0), percent < 0).build()
-        return if (Build.VERSION.SDK_INT >= 29) ForegroundInfo(id.hashCode(), notification, ServiceInfo.FOREGROUND_SERVICE_TYPE_DATA_SYNC)
-        else ForegroundInfo(id.hashCode(), notification)
+        if (total > 0) {
+            builder.setContentTitle("جارٍ تنزيل ${batches.joinToString("، ") { it.label }}")
+                .setContentText("${arabicDigits(done)} من ${arabicDigits(total)}")
+                .setProgress(total, done, false)
+        } else {
+            builder.setContentTitle("جارٍ تنزيل المحتوى")
+                .setContentText("يمكنك إيقاف التنزيل أو إلغاؤه من صفحة التنزيلات")
+                .setProgress(100, percent.coerceAtLeast(0), percent < 0)
+        }
+        val notification = builder.build()
+        return if (Build.VERSION.SDK_INT >= 29) ForegroundInfo(ContentDownloadNotifications.OngoingId, notification, ServiceInfo.FOREGROUND_SERVICE_TYPE_DATA_SYNC)
+        else ForegroundInfo(ContentDownloadNotifications.OngoingId, notification)
     }
 
     override suspend fun doWork(): Result {
@@ -94,15 +112,20 @@ class ContentDownloadWorker(
                 if (percent != lastProgressPercent) {
                     lastProgressPercent = percent
                     setProgressAsync(workDataOf(DownloadedBytesKey to downloaded, TotalBytesKey to total))
-                    runCatching { setForegroundAsync(foregroundInfo(percent)) }
+                    // A batch counts items, which only change when one finishes.
+                    if (batches.isEmpty()) runCatching { setForegroundAsync(foregroundInfo(percent)) }
                 }
             }
             if (isAudio) content.runAudioDownload(entityId, progress) else content.runDownload(entityId, progress)
-            ContentDownloadNotifications.completed(
-                applicationContext,
-                if (isAudio) "audio:$entityId" else entityId,
-                content.entityTitle(entityId),
-            )
+            val batches = content.finishBatchItem(pauseKey)
+            if (batches.isEmpty()) {
+                ContentDownloadNotifications.completed(applicationContext, pauseKey, content.entityTitle(entityId))
+            } else {
+                // Part of a bulk download: one notice when its whole type is done, none per item.
+                batches.filter { it.left.isEmpty() }.forEach {
+                    ContentDownloadNotifications.batchCompleted(applicationContext, it.label, it.total)
+                }
+            }
             Result.success()
         } catch (error: CancellationException) {
             throw error
@@ -151,6 +174,11 @@ class ContentDownloadScheduler @Inject constructor(
         workManager.enqueueUniqueWork(identity, if (replace) ExistingWorkPolicy.REPLACE else ExistingWorkPolicy.KEEP, request)
     }
 
+    /** For bulk pause: fire the cancel without waiting on each one in turn. */
+    fun cancelQuietly(entityId: String, collection: String) {
+        workManager.cancelUniqueWork("content:$collection:$entityId")
+    }
+
     suspend fun cancel(entityId: String, collection: String) {
         kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) {
             workManager.cancelUniqueWork("content:$collection:$entityId").result.get()
@@ -162,6 +190,7 @@ object ContentDownloadNotifications {
     private const val ChannelId = "content_downloads"
     private const val GroupKey = "athar_content_downloads"
     private const val SummaryId = 0x415448
+    const val OngoingId = 0x415449
 
     fun createChannel(context: Context) {
         val manager = context.getSystemService(NotificationManager::class.java)
@@ -173,6 +202,27 @@ object ContentDownloadNotifications {
             ).apply {
                 description = "اكتمال تنزيل الكتب والمقالات والقصائد"
             },
+        )
+    }
+
+    fun batchCompleted(context: Context, label: String, count: Int) {
+        if (
+            Build.VERSION.SDK_INT >= 33 &&
+            ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) !=
+            PackageManager.PERMISSION_GRANTED
+        ) return
+        createChannel(context)
+        val openApp = PendingIntent.getActivity(context, label.hashCode(), Intent(context, MainActivity::class.java),
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
+        context.getSystemService(NotificationManager::class.java).notify(
+            "batch:$label".hashCode(),
+            Notification.Builder(context, ChannelId)
+                .setSmallIcon(R.drawable.ic_notification)
+                .setContentTitle("اكتمل تنزيل $label")
+                .setContentText("${arabicDigits(count)} عنصر")
+                .setContentIntent(openApp)
+                .setAutoCancel(true)
+                .build(),
         )
     }
 

@@ -51,6 +51,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
@@ -70,6 +71,7 @@ import androidx.navigation3.ui.NavDisplay
 import com.atharchive.feature.articles.ArticlesScreen
 import com.atharchive.feature.downloads.CacheBudget
 import com.atharchive.feature.downloads.DownloadsScreen
+import com.atharchive.feature.downloads.DownloadsListScreen
 import com.atharchive.feature.adhkar.AdhkarContent
 import com.atharchive.feature.adhkar.AdhkarScreen
 import com.atharchive.feature.downloads.StorageUi
@@ -143,7 +145,9 @@ private data class ReaderRoute(
 private data class SubSectionRoute(val section: String) : NavKey
 
 @Serializable
-private data class DownloadsRoute(val targetId: String? = null) : NavKey
+private data object DownloadsRoute : NavKey
+@Serializable
+private data class DownloadsListRoute(val targetId: String? = null) : NavKey
 
 @Serializable
 private data object AdhkarRoute : NavKey
@@ -186,9 +190,15 @@ fun AtharApp(
     }
     val playbackState by contentViewModel.playback.state.collectAsStateWithLifecycle()
     val syncState by contentViewModel.syncState.collectAsStateWithLifecycle()
-    val nowPlaying = audioState.nowPlaying
-    LaunchedEffect(audioState.recordings.isNotEmpty()) {
-        if (audioState.recordings.isNotEmpty()) contentViewModel.foldAudioFavourites(audioState.recordings)
+    // Playback ticks twice a second: these are read where they are drawn, or through derived
+    // states that change only when the value does, so the whole app no longer recomposes per tick.
+    val nowPlaying by remember { derivedStateOf { audioState.nowPlaying } }
+    val hasRecordings by remember { derivedStateOf { audioState.recordings.isNotEmpty() } }
+    val playbackError by remember { derivedStateOf { playbackState.error } }
+    val playingAudioId by remember { derivedStateOf { playbackState.id } }
+    val audioPlayIntent by remember { derivedStateOf { playbackState.playWhenReady } }
+    LaunchedEffect(hasRecordings) {
+        if (hasRecordings) contentViewModel.foldAudioFavourites(audioState.recordings)
     }
     val actionAnchor = remember { mutableStateOf(Rect.Zero) }
     var editorAnchor by remember { mutableStateOf(Rect.Zero) }
@@ -200,7 +210,7 @@ fun AtharApp(
     LaunchedEffect(contentViewModel) {
         contentViewModel.errors.collect { snackbarHostState.showSnackbar(it) }
     }
-    LaunchedEffect(playbackState.error) { playbackState.error?.let { snackbarHostState.showSnackbar(it) } }
+    LaunchedEffect(playbackError) { playbackError?.let { snackbarHostState.showSnackbar(it) } }
     LaunchedEffect(syncState) {
         if (syncState is com.atharchive.data.ContentSyncUiState.Failed &&
             snackbarHostState.showSnackbar("تعذّر تحديث المحتوى؛ النصوص المحفوظة متاحة", "إعادة المحاولة", withDismissAction = true) == androidx.compose.material3.SnackbarResult.ActionPerformed) {
@@ -315,7 +325,7 @@ fun AtharApp(
             backStack.add(PoemReaderRoute(poem[0], poem.getOrNull(1)?.toIntOrNull()))
             onDownloadTargetHandled()
         }
-        else if (downloadTarget != null) { backStack.add(DownloadsRoute(downloadTarget)); onDownloadTargetHandled() }
+        else if (downloadTarget != null) { backStack.add(DownloadsListRoute(downloadTarget)); onDownloadTargetHandled() }
     }
     val tabState = androidx.compose.runtime.saveable.rememberSaveableStateHolder()
     val inReader = backStack.lastOrNull() is ReaderRoute
@@ -456,7 +466,7 @@ fun AtharApp(
                         pinnedCount = pinnedCount,
                         themeModeLabel = themeMode.label,
                         onAppearance = { backStack.add(AppearanceRoute) },
-                        onDownloads = { backStack.add(DownloadsRoute()) },
+                        onDownloads = { backStack.add(DownloadsRoute) },
                         onSync = contentViewModel::sync,
                         syncLabel = when (syncState) {
                             com.atharchive.data.ContentSyncUiState.Checking -> "جارٍ التحديث…"
@@ -506,8 +516,8 @@ fun AtharApp(
                             onAnchorJump = { contentViewModel.findHeadingAnchor(route.bookId, it) },
                             onLoadSelectionBlocks = { contentViewModel.selectionBlocks(route.bookId, it) },
                             onPlayAudio = { contentViewModel.playWorkAudio(route.bookId, it.id) },
-                            playingAudioId = playbackState.id,
-                            audioPlayIntent = playbackState.playWhenReady,
+                            playingAudioId = playingAudioId,
+                            audioPlayIntent = audioPlayIntent,
                             onOpenEntity = { backStack.add(ReaderRoute(it)) },
                             onBack = ::goBack,
                             onCopySelection = { selection ->
@@ -572,14 +582,16 @@ fun AtharApp(
                 }
                 entry<PlayerRoute> {
                     if (nowPlaying == null) UnavailableRoute("لا يوجد تسجيل متاح في المشغّل", ::goBack) { contentViewModel.sync() }
+                    val recordings = audioState.recordings
+                    val byId = remember(recordings) { recordings.associateBy { it.id } }
+                    val queue = remember(playbackState.queueIds, byId) { playbackState.queueIds.mapNotNull(byId::get) }
                     nowPlaying?.let { playing ->
                         PlayerScreen(
                             nowPlaying = playing,
-                            queue = playbackState.queueIds.mapNotNull { id -> audioState.recordings.firstOrNull { it.id == id } },
+                            queue = queue,
                             onCollapse = ::goBack,
                             onToggle = contentViewModel.playback::toggle,
-                            onSelect = { contentViewModel.playAudio(it.id,
-                                playbackState.queueIds.mapNotNull { id -> audioState.recordings.firstOrNull { it.id == id } }) },
+                            onSelect = { contentViewModel.playAudio(it.id, queue) },
                             onSkipPrevious = contentViewModel.playback::previous,
                             onSkipNext = contentViewModel.playback::next,
                             onSeek = contentViewModel.playback::seekBy,
@@ -653,12 +665,11 @@ fun AtharApp(
                         onBack = ::goBack,
                     )
                 }
-                entry<DownloadsRoute> { route ->
+                entry<DownloadsRoute> {
                     LaunchedEffect(Unit) { contentViewModel.refreshCacheBytes() }
                     val downloadItems by contentViewModel.downloads.collectAsStateWithLifecycle()
                     val bulkRows by contentViewModel.bulkDownloads.collectAsStateWithLifecycle()
                     DownloadsScreen(
-                        targetId = route.targetId,
                         state = DownloadsUiState(
                             transfers = downloadItems.filter { it.transfer != null },
                             downloaded = downloadItems.filter { it.transfer == null },
@@ -685,6 +696,24 @@ fun AtharApp(
                                     .onFailure { announce("تعذّر مسح المؤقّت") }
                             }
                         },
+                        onDownloadAll = { contentViewModel.downloadRemaining(it) },
+                        onPauseAll = { contentViewModel.pauseResumeMany(it.running, pause = true) },
+                        onManage = { backStack.add(DownloadsListRoute()) },
+                    )
+                }
+                entry<DownloadsListRoute> { route ->
+                    val downloadItems by contentViewModel.downloads.collectAsStateWithLifecycle()
+                    val state = remember(downloadItems) {
+                        DownloadsUiState(
+                            transfers = downloadItems.filter { it.transfer != null },
+                            downloaded = downloadItems.filter { it.transfer == null },
+                            storage = StorageUi("", "", CacheBudget.Gb2, 0f),
+                        )
+                    }
+                    DownloadsListScreen(
+                        targetId = route.targetId,
+                        state = state,
+                        onBack = ::goBack,
                         onPauseResume = { contentViewModel.pauseResumeDownload(it.id) },
                         onCancel = { contentViewModel.removeDownload(it.id) },
                         onRemove = {
@@ -692,8 +721,7 @@ fun AtharApp(
                             if (it.transfer == null) pendingRemoval = DownloadRemoval(it.id, it.title, it.sizeLabel)
                             else contentViewModel.removeDownload(it.id)
                         },
-                        onDownloadAll = { contentViewModel.downloadAll(it.items) },
-                        onRemoveMany = { items -> items.forEach { contentViewModel.removeDownload(it.id) } },
+                        onRemoveMany = { items -> contentViewModel.removeDownloads(items.map { it.id }) },
                     )
                 }
                 entry<SectionRoute> { route ->

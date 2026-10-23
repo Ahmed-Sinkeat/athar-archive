@@ -57,121 +57,152 @@ import com.atharchive.ui.components.AtharTopBar
 import com.atharchive.ui.icons.AtharIcons
 import com.atharchive.ui.theme.AtharTheme
 
+/** The overview: storage, then one row per type with its progress. Single items live in [DownloadsListScreen]. */
 @Composable
 fun DownloadsScreen(
     state: DownloadsUiState,
     onBack: () -> Unit,
     onBudgetChange: (CacheBudget) -> Unit,
     onClearCache: () -> Unit,
+    onDownloadAll: (BulkRowUi) -> Unit,
+    onPauseAll: (BulkRowUi) -> Unit,
+    onManage: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    DownloadsFrame("التنزيلات", onBack, modifier) { horizontalPadding ->
+        LazyColumn(
+            modifier = Modifier.fillMaxSize().testTag("downloads_screen"),
+            contentPadding = PaddingValues(bottom = 28.dp),
+        ) {
+            item(key = "storage") {
+                StorageSummary(
+                    storage = state.storage,
+                    horizontalPadding = horizontalPadding,
+                    onBudgetChange = onBudgetChange,
+                    onClearCache = onClearCache,
+                )
+            }
+            item(key = "manage") {
+                ManageRow(state.transfers.size, state.downloaded.size, horizontalPadding, onManage)
+            }
+            if (state.bulk.isNotEmpty()) {
+                item(key = "bulk-heading") {
+                    AtharSectionHeading("تنزيل الكل", horizontalPadding, top = 22.dp)
+                }
+                itemsIndexed(state.bulk, key = { _, row -> "bulk-${row.label}" }) { index, row ->
+                    BulkRow(
+                        row, horizontalPadding,
+                        onDownload = { onDownloadAll(row) },
+                        onPause = { onPauseAll(row) },
+                    )
+                    if (index != state.bulk.lastIndex) RowDivider(horizontalPadding)
+                }
+            }
+        }
+    }
+}
+
+private val KindFilters = listOf("الكل", "كتاب", "قصيدة", "مقال", "مسألة", "تسجيل")
+
+/** Every single item, split جارٍ / المحمّلة, with a kind filter. */
+@Composable
+fun DownloadsListScreen(
+    state: DownloadsUiState,
+    onBack: () -> Unit,
     onPauseResume: (DownloadUi) -> Unit,
     onCancel: (DownloadUi) -> Unit,
     onRemove: (DownloadUi) -> Unit,
-    onDownloadAll: (BulkRowUi) -> Unit,
     onRemoveMany: (List<DownloadUi>) -> Unit,
     modifier: Modifier = Modifier,
     targetId: String? = null,
 ) {
     val listState = rememberLazyListState()
+    var tab by androidx.compose.runtime.saveable.rememberSaveable {
+        mutableStateOf(if (state.downloaded.any { it.id == targetId } || (targetId == null && state.transfers.isEmpty())) "done" else "running")
+    }
+    var kind by androidx.compose.runtime.saveable.rememberSaveable { mutableStateOf(KindFilters.first()) }
     // Long-press starts selecting; emptying the selection ends it.
     var selected by remember { mutableStateOf(emptySet<String>()) }
     BackHandler(enabled = selected.isNotEmpty()) { selected = emptySet() }
-    var focused by androidx.compose.runtime.remember(targetId) { androidx.compose.runtime.mutableStateOf(false) }
-    androidx.compose.runtime.LaunchedEffect(targetId, state.transfers, state.downloaded) {
+    val source = if (tab == "running") state.transfers else state.downloaded
+    val items = remember(source, kind) {
+        // Book rows carry their own kind (كتاب، متن…); anything that is not one of the others is a book.
+        val others = KindFilters.drop(2)
+        when (kind) {
+            KindFilters[0] -> source
+            KindFilters[1] -> source.filter { it.kindLabel !in others }
+            else -> source.filter { it.kindLabel == kind }
+        }
+    }
+    var focused by remember(targetId) { mutableStateOf(false) }
+    androidx.compose.runtime.LaunchedEffect(targetId, items) {
         if (focused || targetId == null) return@LaunchedEffect
-        val transfer = state.transfers.indexOfFirst { it.id == targetId }
-        val downloaded = state.downloaded.indexOfFirst { it.id == targetId }
-        val bulk = if (state.bulk.isEmpty()) 0 else state.bulk.size + 1
-        val index = bulk + if (transfer >= 0) transfer + 2 else if (downloaded >= 0) downloaded + 2 + if (state.transfers.isEmpty()) 0 else state.transfers.size + 1 else return@LaunchedEffect
-        listState.scrollToItem(index)
+        val index = items.indexOfFirst { it.id == targetId }.takeIf { it >= 0 } ?: return@LaunchedEffect
+        listState.scrollToItem(index + 1)
         focused = true
     }
 
-    BoxWithConstraints(
-        modifier = modifier
-            .fillMaxSize()
-            .testTag("section_downloads")
-            .background(AtharTheme.colors.canvas),
-    ) {
-        val horizontalPadding = if (maxWidth >= 720.dp) 32.dp else 20.dp
-
-        Column(modifier = Modifier.fillMaxSize()) {
-            AtharTopBar(
-                title = "التنزيلات",
-                onSettings = {},
-                showAppIcon = true,
-                onBack = onBack,
-                horizontalPadding = horizontalPadding,
+    DownloadsFrame("إدارة التنزيلات", onBack, modifier) { horizontalPadding ->
+        Column(Modifier.fillMaxSize()) {
+            com.atharchive.ui.components.AtharTabRow(
+                tabs = listOf(
+                    com.atharchive.ui.components.AtharTab("running", "جارٍ (${arabicDigits(state.transfers.size)})"),
+                    com.atharchive.ui.components.AtharTab("done", "المحمّلة (${arabicDigits(state.downloaded.size)})"),
+                ),
+                selectedKey = tab,
+                onSelect = { tab = it; selected = emptySet() },
+                tagPrefix = "downloads_tab",
+                modifier = Modifier.padding(horizontal = horizontalPadding),
             )
             LazyColumn(
                 state = listState,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .weight(1f)
-                    .testTag("downloads_screen"),
+                modifier = Modifier.fillMaxWidth().weight(1f).testTag("downloads_list"),
                 contentPadding = PaddingValues(bottom = 28.dp),
             ) {
-                item(key = "storage") {
-                    StorageSummary(
-                        storage = state.storage,
-                        horizontalPadding = horizontalPadding,
-                        onBudgetChange = onBudgetChange,
-                        onClearCache = onClearCache,
-                    )
+                item(key = "filter") {
+                    Row(
+                        Modifier.fillMaxWidth().padding(horizontal = horizontalPadding - 6.dp, vertical = 4.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
+                        AtharMenuButton(
+                            label = KindFilters.first(),
+                            options = KindFilters,
+                            selected = kind,
+                            defaultOption = KindFilters.first(),
+                            onSelect = { kind = it; selected = emptySet() },
+                            tagPrefix = "downloads_kind",
+                        )
+                        Spacer(Modifier.weight(1f))
+                        if (tab == "done" && selected.isNotEmpty()) {
+                            SelectionBar(
+                                chosen = items.filter { it.id in selected },
+                                allSelected = items.all { it.id in selected },
+                                onSelectAll = { selected = items.mapTo(hashSetOf()) { it.id } },
+                                onClear = { selected = emptySet() },
+                                onDelete = { onRemoveMany(it); selected = emptySet() },
+                            )
+                        }
+                    }
                 }
-
-                if (state.bulk.isNotEmpty()) {
-                    item(key = "bulk-heading") {
-                        AtharSectionHeading("تنزيل الكل", horizontalPadding, top = 22.dp)
-                    }
-                    itemsIndexed(state.bulk, key = { _, row -> "bulk-${row.label}" }) { index, row ->
-                        BulkRow(row, horizontalPadding, onConfirm = { onDownloadAll(row) })
-                        if (index != state.bulk.lastIndex) RowDivider(horizontalPadding)
+                if (items.isEmpty()) {
+                    item(key = "downloads-empty") {
+                        AtharEmptyState(
+                            title = if (tab == "running") "لا تنزيلات جارية" else "لا توجد تنزيلات",
+                            body = "نزّل كتابًا أو تسجيلًا ليبقى معك دون اتصال.",
+                            tag = "downloads_empty_state",
+                            horizontalPadding = horizontalPadding,
+                        )
                     }
                 }
-
-                if (state.transfers.isNotEmpty()) {
-                    item(key = "transfers-heading") {
-                        TransfersHeading(state.transfers, horizontalPadding, onPauseResume)
-                    }
-                    itemsIndexed(state.transfers, key = { _, d -> d.id }) { index, item ->
+                itemsIndexed(items, key = { _, d -> d.id }) { index, item ->
+                    if (tab == "running") {
                         TransferRow(
                             item = item,
                             horizontalPadding = horizontalPadding,
                             onPauseResume = { onPauseResume(item) },
                             onCancel = { onCancel(item) },
                         )
-                        if (index != state.transfers.lastIndex) RowDivider(horizontalPadding)
-                    }
-                }
-
-                item(key = "downloaded-heading") {
-                    AtharSectionHeading(
-                        text = "المحمّلة",
-                        horizontalPadding = horizontalPadding,
-                        top = if (state.transfers.isEmpty()) 22.dp else 26.dp,
-                    )
-                    if (selected.isNotEmpty()) {
-                        SelectionBar(
-                            chosen = state.downloaded.filter { it.id in selected },
-                            allSelected = state.downloaded.all { it.id in selected },
-                            horizontalPadding = horizontalPadding,
-                            onSelectAll = { selected = state.downloaded.mapTo(hashSetOf()) { it.id } },
-                            onClear = { selected = emptySet() },
-                            onDelete = { onRemoveMany(it); selected = emptySet() },
-                        )
-                    }
-                }
-                if (state.downloaded.isEmpty()) {
-                    item(key = "downloads-empty") {
-                        AtharEmptyState(
-                            title = "لا توجد تنزيلات",
-                            body = "نزّل كتابًا أو تسجيلًا ليبقى معك دون اتصال.",
-                            tag = "downloads_empty_state",
-                            horizontalPadding = horizontalPadding,
-                        )
-                    }
-                } else {
-                    itemsIndexed(state.downloaded, key = { _, d -> d.id }) { index, item ->
+                    } else {
                         DownloadedRow(
                             item = item,
                             horizontalPadding = horizontalPadding,
@@ -179,11 +210,60 @@ fun DownloadsScreen(
                             selected = if (selected.isEmpty()) null else item.id in selected,
                             onToggle = { selected = if (item.id in selected) selected - item.id else selected + item.id },
                         )
-                        if (index != state.downloaded.lastIndex) RowDivider(horizontalPadding)
                     }
+                    if (index != items.lastIndex) RowDivider(horizontalPadding)
                 }
             }
         }
+    }
+}
+
+@Composable
+private fun DownloadsFrame(title: String, onBack: () -> Unit, modifier: Modifier, content: @Composable (Dp) -> Unit) {
+    BoxWithConstraints(
+        modifier = modifier
+            .fillMaxSize()
+            .testTag("section_downloads")
+            .background(AtharTheme.colors.canvas),
+    ) {
+        val horizontalPadding = if (maxWidth >= 720.dp) 32.dp else 20.dp
+        Column(modifier = Modifier.fillMaxSize()) {
+            AtharTopBar(
+                title = title,
+                onSettings = {},
+                showAppIcon = true,
+                onBack = onBack,
+                horizontalPadding = horizontalPadding,
+            )
+            Box(Modifier.weight(1f)) { content(horizontalPadding) }
+        }
+    }
+}
+
+@Composable
+private fun ManageRow(running: Int, done: Int, horizontalPadding: Dp, onClick: () -> Unit) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 14.dp)
+            .clickable(role = Role.Button, onClick = onClick)
+            .padding(horizontal = horizontalPadding, vertical = 13.dp)
+            .testTag("downloads_manage"),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(10.dp),
+    ) {
+        Column(Modifier.weight(1f)) {
+            Text("إدارة التنزيلات", color = MaterialTheme.colorScheme.onSurface, style = MaterialTheme.typography.titleSmall)
+            Text(
+                listOfNotNull(
+                    if (running > 0) "${arabicDigits(running)} جارٍ" else null,
+                    "${arabicDigits(done)} محمّلة",
+                ).joinToString(" · "),
+                color = AtharTheme.colors.secondaryText,
+                style = MaterialTheme.typography.labelSmall,
+            )
+        }
+        Icon(AtharIcons.Forward, null, tint = AtharTheme.colors.secondaryText, modifier = Modifier.size(17.dp))
     }
 }
 
@@ -410,73 +490,73 @@ private fun TransferRow(
     }
 }
 
-/** A whole section in one tap; the popup is the confirmation, since it may be gigabytes. */
+/** A whole type in one tap; the popup is the confirmation, since it may be gigabytes. Progress shows under it. */
 @Composable
-private fun BulkRow(row: BulkRowUi, horizontalPadding: Dp, onConfirm: () -> Unit) {
+private fun BulkRow(row: BulkRowUi, horizontalPadding: Dp, onDownload: () -> Unit, onPause: () -> Unit) {
     var menuOpen by remember { mutableStateOf(false) }
-    val size = byteSize(row.bytes)
+    // Never started and stopped part-way are the same to the reader: both are «المتبقي».
+    val remaining = row.idle + row.stopped
+    // Only the row the reader started shows motion; the rows its items also belong to just count.
+    val running = row.tracked && row.running.isNotEmpty()
+    val paused = row.tracked && !running && row.stopped.isNotEmpty()
+    val factColor = AtharTheme.colors.secondaryText
     Box {
-        Row(
+        Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .clickable(role = Role.Button) { menuOpen = true }
-                .padding(horizontal = horizontalPadding, vertical = 13.dp)
+                .clickable(role = Role.Button, enabled = !row.complete) { menuOpen = true }
+                .padding(horizontal = horizontalPadding, vertical = 12.dp)
                 .testTag("bulk_${row.label}"),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(10.dp),
         ) {
+            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                Text(
+                    text = row.label,
+                    modifier = Modifier.weight(1f),
+                    color = MaterialTheme.colorScheme.onSurface,
+                    style = MaterialTheme.typography.titleSmall,
+                )
+                Icon(
+                    imageVector = when {
+                        row.complete -> AtharIcons.Check
+                        running -> AtharIcons.Pause
+                        else -> AtharIcons.Download
+                    },
+                    contentDescription = null,
+                    tint = if (row.complete) AtharTheme.colors.success else factColor,
+                    modifier = Modifier.size(17.dp),
+                )
+            }
             Text(
-                text = row.label,
-                modifier = Modifier.weight(1f),
-                color = MaterialTheme.colorScheme.onSurface,
-                style = MaterialTheme.typography.titleSmall,
+                text = "${arabicDigits(row.done)} من ${arabicDigits(row.items.size)} · ${byteSize(row.doneBytes)} من ${byteSize(row.bytes)}" +
+                    when {
+                        row.complete -> " · مكتمل"
+                        running -> " · ${arabicDigits((row.progress * 100).toInt())}٪"
+                        paused -> " · متوقّف"
+                        else -> ""
+                    },
+                modifier = Modifier.padding(top = 2.dp),
+                color = if (running) AtharTheme.colors.accent else factColor,
+                style = MaterialTheme.typography.labelSmall,
+                fontWeight = if (running) FontWeight.SemiBold else null,
             )
-            Text(size, color = AtharTheme.colors.secondaryText, style = MaterialTheme.typography.labelSmall)
-            Icon(
-                imageVector = AtharIcons.Download,
-                contentDescription = null,
-                tint = AtharTheme.colors.secondaryText,
-                modifier = Modifier.size(17.dp),
-            )
+            if (row.tracked && row.busy) {
+                AtharProgressBar(progress = row.progress, modifier = Modifier.padding(top = 7.dp), height = 3.dp)
+            }
         }
         AtharMenu(expanded = menuOpen, onDismiss = { menuOpen = false }, width = 240.dp) {
-            AtharMenuItem(
-                "تنزيل $size",
-                subtitle = "يُتخطّى ما نُزّل من قبل",
-                icon = AtharIcons.Download,
-                onClick = { onConfirm(); menuOpen = false },
-                modifier = Modifier.testTag("bulk_confirm_${row.label}"),
-            )
-        }
-    }
-}
-
-@Composable
-private fun TransfersHeading(
-    transfers: List<DownloadUi>,
-    horizontalPadding: Dp,
-    onPauseResume: (DownloadUi) -> Unit,
-) {
-    var menuOpen by remember { mutableStateOf(false) }
-    val (running, stopped) = transfers.partition { it.transfer is TransferUi.Running }
-    Row(Modifier.fillMaxWidth().padding(end = horizontalPadding - 12.dp), verticalAlignment = Alignment.Bottom) {
-        AtharSectionHeading("جارٍ التنزيل", horizontalPadding, Modifier.weight(1f), top = 22.dp)
-        Box {
-            IconButton(onClick = { menuOpen = true }, modifier = Modifier.size(48.dp).testTag("transfers_more")) {
-                Icon(AtharIcons.More, "خيارات التنزيلات", tint = AtharTheme.colors.secondaryText, modifier = Modifier.size(18.dp))
+            if (row.running.isNotEmpty()) {
+                AtharMenuItem("إيقاف التنزيل", icon = AtharIcons.Pause,
+                    onClick = { onPause(); menuOpen = false },
+                    modifier = Modifier.testTag("bulk_pause_${row.label}"))
             }
-            // The per-row toggle already pauses or resumes by state; «الكل» is that toggle over each row.
-            AtharMenu(expanded = menuOpen, onDismiss = { menuOpen = false }, width = 200.dp) {
-                if (running.isNotEmpty()) {
-                    AtharMenuItem("إيقاف الكل", icon = AtharIcons.Pause,
-                        onClick = { running.forEach(onPauseResume); menuOpen = false },
-                        modifier = Modifier.testTag("transfers_pause_all"))
-                }
-                if (stopped.isNotEmpty()) {
-                    AtharMenuItem("استئناف الكل", icon = AtharIcons.Play,
-                        onClick = { stopped.forEach(onPauseResume); menuOpen = false },
-                        modifier = Modifier.testTag("transfers_resume_all"))
-                }
+            if (remaining.isNotEmpty()) {
+                AtharMenuItem(
+                    if (row.done > 0 || row.busy) "تنزيل المتبقي" else "تنزيل الكل",
+                    subtitle = "${arabicDigits(remaining.size)} عنصر · ${byteSize(remaining.sumOf { it.bytes - it.partialBytes })}",
+                    icon = AtharIcons.Download,
+                    onClick = { onDownload(); menuOpen = false },
+                    modifier = Modifier.testTag("bulk_confirm_${row.label}"),
+                )
             }
         }
     }
@@ -486,18 +566,13 @@ private fun TransfersHeading(
 private fun SelectionBar(
     chosen: List<DownloadUi>,
     allSelected: Boolean,
-    horizontalPadding: Dp,
     onSelectAll: () -> Unit,
     onClear: () -> Unit,
     onDelete: (List<DownloadUi>) -> Unit,
 ) {
     var menuOpen by remember { mutableStateOf(false) }
-    Row(
-        modifier = Modifier.fillMaxWidth().padding(horizontal = horizontalPadding - 6.dp),
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
+    Row(verticalAlignment = Alignment.CenterVertically) {
         BarAction(if (allSelected) "إلغاء التحديد" else "تحديد الكل", if (allSelected) onClear else onSelectAll, "downloads_select_all")
-        Spacer(Modifier.weight(1f))
         Box {
             BarAction("حذف (${arabicDigits(chosen.size)})", { menuOpen = true }, "downloads_delete_selected")
             AtharMenu(expanded = menuOpen, onDismiss = { menuOpen = false }, width = 240.dp) {

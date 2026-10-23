@@ -198,8 +198,15 @@ interface UserDataDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun savePinnedDownload(download: PinnedDownloadEntity)
 
+    /** One write for a bulk download: one invalidation instead of one per book. */
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun savePinnedDownloads(downloads: List<PinnedDownloadEntity>)
+
     @Query("DELETE FROM pinnedDownload WHERE entityId = :entityId")
     suspend fun removePinnedDownload(entityId: String)
+
+    @Query("DELETE FROM pinnedDownload WHERE entityId IN (:entityIds)")
+    suspend fun removePinnedDownloads(entityIds: List<String>)
 
     @Query("SELECT * FROM pinnedDownload WHERE entityId = :entityId")
     suspend fun pinnedDownload(entityId: String): PinnedDownloadEntity?

@@ -160,6 +160,11 @@ class ContentAccess @Inject constructor(
         } else requireNotNull(appContentClient).artifactUrl(audio.path)
     }
 
+    fun requestAudioDownloads(audioIds: Collection<String>) = synchronized(storagePreferences) {
+        _requestedAudio.value += audioIds
+        storagePreferences.edit { putStringSet("requested_audio", _requestedAudio.value) }
+    }
+
     fun requestAudioDownload(audioId: String) = synchronized(storagePreferences) {
         _requestedAudio.value += audioId
         storagePreferences.edit { putStringSet("requested_audio", _requestedAudio.value) }
@@ -187,6 +192,75 @@ class ContentAccess @Inject constructor(
         markAudioDownloaded(audioId, true)
     }
 
+    /** Many at once: files one by one, the stored sets once. */
+    suspend fun removeAudioDownloads(audioIds: List<String>) = withContext(Dispatchers.IO) {
+        if (audioIds.isEmpty()) return@withContext
+        val references = contentDatabase.catalogDao().entitiesWithAudio().flatMap { it.toCatalogEntry().audio }.associateBy { it.id }
+        audioIds.forEach { id ->
+            val audio = references[id] ?: return@forEach
+            val file = audioFile(audio)
+            check(!file.exists() || file.delete()) { "تعذّر حذف التسجيل" }
+            verifiedAudio -= audio.hash
+            File(file.parentFile, "${audio.hash}.part").delete()
+        }
+        val ids = audioIds.toSet()
+        synchronized(storagePreferences) {
+            _downloadedAudio.value -= ids
+            _requestedAudio.value -= ids
+            storagePreferences.edit {
+                putStringSet("downloaded_audio", _downloadedAudio.value)
+                putStringSet("requested_audio", _requestedAudio.value)
+            }
+        }
+        setDownloadsPaused(ids.map { "audio:$it" }, false)
+    }
+
+    /**
+     * Bulk downloads in flight, by type-row label: the pause keys still to finish and how many the
+     * batch holds. It gives the notification one line per type and tells the screen which row to
+     * show progress under — only the one the reader started.
+     */
+    data class DownloadBatch(val label: String, val total: Int, val left: Set<String>) {
+        val done: Int get() = total - left.size
+    }
+
+    private val _batches = MutableStateFlow(readBatches())
+    val batches: StateFlow<List<DownloadBatch>> = _batches
+
+    private fun readBatches() = storagePreferences.getStringSet("batches", emptySet()).orEmpty().map { label ->
+        DownloadBatch(label, storagePreferences.getInt("batch_total:$label", 0), storagePreferences.getStringSet("batch_left:$label", emptySet()).orEmpty().toSet())
+    }
+
+    private fun writeBatches(batches: List<DownloadBatch>) {
+        val gone = _batches.value.map { it.label } - batches.map { it.label }.toSet()
+        _batches.value = batches
+        storagePreferences.edit {
+            putStringSet("batches", batches.mapTo(hashSetOf()) { it.label })
+            gone.forEach { remove("batch_total:$it"); remove("batch_left:$it") }
+            batches.forEach { putInt("batch_total:${it.label}", it.total); putStringSet("batch_left:${it.label}", it.left) }
+        }
+    }
+
+    fun startBatch(label: String, keys: Collection<String>) = synchronized(storagePreferences) {
+        if (keys.isEmpty()) return@synchronized
+        val current = _batches.value.firstOrNull { it.label == label }
+        val left = current?.left.orEmpty() + keys
+        writeBatches(_batches.value.filter { it.label != label } + DownloadBatch(label, (current?.done ?: 0) + left.size, left))
+    }
+
+    /** One item finished: returns the batches it was part of, after the update (empty if none). */
+    fun finishBatchItem(key: String): List<DownloadBatch> = synchronized(storagePreferences) {
+        val touched = _batches.value.filter { key in it.left }.map { it.copy(left = it.left - key) }
+        if (touched.isEmpty()) return@synchronized emptyList()
+        val labels = touched.mapTo(hashSetOf()) { it.label }
+        writeBatches(_batches.value.filter { it.label !in labels } + touched.filter { it.left.isNotEmpty() })
+        touched
+    }
+
+    fun clearBatches(labels: Set<String>) = synchronized(storagePreferences) {
+        if (_batches.value.any { it.label in labels }) writeBatches(_batches.value.filter { it.label !in labels })
+    }
+
     suspend fun removeAudioDownload(audioId: String) = withContext(Dispatchers.IO) {
         val audio = findAudio(audioId)
         val file = audioFile(audio)
@@ -200,6 +274,11 @@ class ContentAccess @Inject constructor(
             storagePreferences.edit { putStringSet("requested_audio", _requestedAudio.value) }
         }
         setDownloadPaused("audio:$audioId", false)
+    }
+
+    fun setDownloadsPaused(ids: Collection<String>, paused: Boolean) = synchronized(storagePreferences) {
+        _pausedDownloads.value = if (paused) _pausedDownloads.value + ids else _pausedDownloads.value - ids.toSet()
+        storagePreferences.edit { putStringSet("paused_downloads", _pausedDownloads.value) }
     }
 
     fun setDownloadPaused(entityId: String, paused: Boolean) = synchronized(storagePreferences) {
@@ -347,6 +426,10 @@ class ContentAccess @Inject constructor(
         requireNotNull(transferRunner) { "app-content origin is not configured" }.requestPin(entityId)
     }
 
+    suspend fun requestDownloads(entityIds: Collection<String>) {
+        requireNotNull(transferRunner) { "app-content origin is not configured" }.requestPins(entityIds)
+    }
+
     suspend fun runDownload(
         entityId: String,
         onProgress: (downloadedBytes: Long, totalBytes: Long) -> Unit = { _, _ -> },
@@ -365,6 +448,15 @@ class ContentAccess @Inject constructor(
         }
         _retainedEntityIds.value += entityId
         return result
+    }
+
+    suspend fun unpinAll(entityIds: List<String>) {
+        if (entityIds.isEmpty()) return
+        setDownloadsPaused(entityIds, false)
+        val runner = requireNotNull(transferRunner) { "app-content origin is not configured" }
+        runner.removePins(entityIds)
+        entityIds.forEach { runner.unpin(it) }
+        _retainedEntityIds.value -= entityIds.toSet()
     }
 
     suspend fun unpin(entityId: String) {

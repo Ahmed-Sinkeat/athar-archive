@@ -47,6 +47,19 @@ class ContentTransferRunner(
         )
     }
 
+    suspend fun requestPins(entityIds: Collection<String>) = mutationMutex.withLock {
+        val dao = contentDatabase.catalogDao()
+        val now = nowMillis()
+        userDatabase.userDataDao().savePinnedDownloads(
+            entityIds.mapNotNull { id -> dao.entity(id)?.toCatalogEntry()?.let { PinnedDownloadEntity(entityId = id, pinnedAt = now, pkgHash = it.pkg.hash) } },
+        )
+    }
+
+    /** Drops every pin in one write, so lists update once; [unpin] then clears each one's files. */
+    suspend fun removePins(entityIds: List<String>) = mutationMutex.withLock {
+        entityIds.chunked(500).forEach { userDatabase.userDataDao().removePinnedDownloads(it) }
+    }
+
     suspend fun unpin(entityId: String) = transferLocks.getOrPut(entityId) { Mutex() }.withLock { mutationMutex.withLock {
         val entity = contentDatabase.catalogDao().entity(entityId)
         userDatabase.userDataDao().removePinnedDownload(entityId)
