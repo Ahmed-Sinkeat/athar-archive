@@ -327,3 +327,4 @@
 | al-iqtisad-fil-itiqad | committed (partial) | anchors 211, cut notes merged 20 | none | REPORT ONLY: 317 notes unlinked, 101 dead sups: pages 10, 25, 64, 79-98 etc. (sup numbers with gaps / chains of cut notes) |
 | al-fswl-al-mfyda-fy-al-waw-al-mzyda | committed | card/heading fixes | none | none |
 | sharh-al-mutamad-fi-usul-al-fiqh | committed | card/heading fixes | none | none |
+| kramat-al-awlya-llalkayy-mn-shrh-aswl-aatqad-ahl-al-sna-waljmaaa-llalkayy | committed | card/heading fixes | none | none |
