@@ -11,6 +11,8 @@ import com.atharchive.feature.audio.NowPlayingUi
 import androidx.work.WorkInfo
 import com.atharchive.feature.downloads.DownloadUi
 import com.atharchive.feature.downloads.TransferUi
+import com.atharchive.feature.downloads.BulkCandidate
+import com.atharchive.feature.downloads.bulkRows
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.tracing.Trace
@@ -331,6 +333,7 @@ class AtharContentViewModel @Inject constructor(
                 id = entity.id, title = entity.title,
                 kindLabel = when (entity.coll) { "question" -> "مسألة"; "poem" -> "قصيدة"; "article" -> "مقال"; else -> "كتاب" },
                 sizeLabel = byteSize(entity.pkgSize),
+                bytes = entity.pkgSize,
                 transfer = when {
                     entity.id in retainedIds -> null
                     entity.id in pausedIds -> TransferUi.Paused(progress, label)
@@ -418,7 +421,7 @@ class AtharContentViewModel @Inject constructor(
                     id = ref.id, title = ref.title ?: source.title, sourceTitle = source.title,
                     sourceKind = when (source.coll) { "poem" -> AudioSourceKind.Poem; "question" -> AudioSourceKind.Question; else -> AudioSourceKind.Book },
                     durationLabel = duration(ref.seconds), durationSeconds = ref.seconds,
-                    sizeLabel = byteSize(ref.size),
+                    sizeLabel = byteSize(ref.size), bytes = ref.size,
                     downloaded = ref.id in downloaded, saved = "audio:${ref.id}" in shelfIds,
                     recentRank = ranks["audio:${ref.id}"],
                     sourceEntityId = source.id,
@@ -502,11 +505,34 @@ class AtharContentViewModel @Inject constructor(
                 "audio:${item.id}" in paused -> TransferUi.Paused(progress, label)
                 job?.state == WorkInfo.State.FAILED -> TransferUi.Failed(job.outputData.getString("error") ?: "تعذّر التنزيل", progress)
                 else -> TransferUi.Running(progress, label)
-            })
+            }, bytes = item.bytes)
         }
     }
     val downloads = combine(textDownloads, audioDownloads) { text, audio -> text + audio }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
+
+    /** «تنزيل الكل»: everything in the catalog not already pinned or requested, grouped with summed sizes. */
+    val bulkDownloads = combine(catalogDao.observeCatalog(), pinIds, audioSources, content.requestedAudio) { entities, pinned, sources, requestedAudio ->
+        bulkRows(
+            entities.filter { it.editionOf == null && it.id !in pinned }.map { BulkCandidate(it.coll, audio = false, it.id, it.pkgSize) } +
+                sources.flatMap { (source, refs) ->
+                    refs.filter { it.id !in requestedAudio }.map { BulkCandidate(source.coll, audio = true, it.id, it.size) }
+                },
+        )
+    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
+
+    // ponytail: one unique work per item; WorkManager's scheduler limit (20 by default) caps how many run at once.
+    fun downloadAll(items: List<BulkCandidate>) {
+        val (audio, text) = items.partition { it.audio }
+        requested.update { it + text.map(BulkCandidate::id) }
+        viewModelScope.launch(errorHandler) {
+            audio.forEach { content.requestAudioDownload(it.id); downloadScheduler.enqueue(it.id, "audio") }
+            text.forEach { item ->
+                try { content.requestDownload(item.id) } catch (error: Throwable) { requested.update { it - item.id }; throw error }
+                downloadScheduler.enqueue(item.id, item.coll)
+            }
+        }
+    }
 
     val issues: StateFlow<IssuesUiState> = combine(
         catalogDao.observeCollection("question"), retainedPins, library, combine(textTransfers, recentRanks) { t, r -> t to r },
