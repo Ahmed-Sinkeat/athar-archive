@@ -1,5 +1,41 @@
 # Format-sonnet report
 
+**Run finished: the list is empty (457 books of src/content/book{,-lg}, outside the queue, the exclusion list and the 1 MB cut).**
+Every row below is a book: 298 rows `committed` (markup commit, gate `ok` strict), 169 rows `skipped` (nothing to format, or REPORT ONLY below). Branch: `format/sonnet-cloud`.
+
+## What was done (all gate-checked; text never changed)
+- **Book card** `<!-- card -->…<!-- /card -->` on the Shamela title/metadata lists and «بطاقة الكتاب» blocks (one pair per book).
+- **Import headings put back**: `## …` that was a cut sentence or the hadith/athar text itself rejoined into its item (≈40 books of ابن أبي الدنيا, البيهقي, الخرائطي …); cut punctuation/diacritics (`؟`, `!`, `ً`) put back on the heading; verses un-headed.
+- **Footnote anchors** (`<sup>`/bare digit → `(^N)`) and cut notes merged, where the page's anchors and notes could be matched in order: see the per-book rows.
+- Books with no notes and a good structure got no commit (rows `skipped … nothing to format`).
+
+## UNSURE
+- First books (aqwd-al-hmz, nuktat-al-irab …): card closes without a page marker because the first page is unmarked.
+- usul-al-iman-ibn-abdul-wahhab p58: note fragments split 7+2 (the second begins with the tail «(برقم: 261) .» of the first).
+- Heading de-marking (`## …` → plain paragraph) in hadith books when the heading was the matn text, not a title.
+
+## REPORT ONLY (needs the original source / a decision), grouped by book
+- **tadhkirat-fi-ulum-al-hadith**: whole book glued into one line per page (headings, numbered points, footnotes «(١) - …» without separators), no data-notes → needs re-import.
+- **al-wasitah-bayn-al-haqq-wal-khalq**: p16 note «هذا العنوان والعناوين فيما سيأتي وضعها المحقق» has no anchor.
+- **ghuluw-fi-bad-al-qarabah**: stray literal «##» inside a sentence (p2, «…عنهما ##، يُدعَى ياسر الحبيب»).
+- **al-risalah-al-arshiyyah**: p1 cover notes without anchor; «الكتاب مرتبط بـ» looks cut.
+- **al-qanaah-wal-taaffuf, al-ikhlas-wal-niyyah …** (ابن أبي الدنيا series): the `## …` import headings were rejoined into the numbered items; a few counts differ by 1 where a number appears inside a card line (checked).
+- **Partial footnote linking** (pages where anchors ≠ notes because the import cut notes at inner numbers or carried a note over with a leading «=»; not guessed, left unlinked):
+  - mqala-al-tatyl-waljad-bn-drhm: 78 pages (5,16,22,24,27,35,36,39,42,44-47,61,70,74,76,77,79-85,87,92,94,96,105-107,110,114 …)
+  - al-brahyn-al-islamya-fy-rd-al-shbha-al-farsya: pp 44,46,50,56,59,69,72,75,78,83,88,94,103,107; 35 dead sups, 50 notes
+  - al-radd-ala-al-jahmiyyah-wal-zanadiqah: 84 notes (pages whose first note starts with «=»: 7,16,59,60,63,66,69-71,81,84,85,91,97,98,100,113; cuts 21,73,74,111)
+  - al-iqtisad-fil-itiqad: 317 notes / 101 dead sups (pp 10,25,64,79-98 …)
+  - hdhh-mfahymna: 3 notes (pp 32,65,177,208,210)
+  - al-swaaq-al-mrsla-al-shhabya-ala-al-shbh-al-dahda-al-shamya: 109 notes / 21 dead sups (pp 27,63,81,159,163,174,181,221,232,244,248,255,256 …)
+  - risalat-al-sijzi: 602 notes / 220 dead sups (pp 17,42,66,67,79,85,86,91,113,117,119-125 …); p357 note 3 starts «127)» (cut number)
+  - ktab-al-twhyd-wqra-aywn-al-mwhdyn…: 1190 notes unlinked (far more notes than printed anchors), 37 dead sups
+  - al-shykh-abd-al-rhmn-bn-sady-wjhwdh-fy-tw-dyh-al-aqyda: 120 notes / 11 dead sups (pp 13,21,23,55,91,104,120,122,123,142,145,150,231,245,255,277,282)
+  - tdhkra-al-mwtsy-shrh-aqyda-al-hafz-abd-al-ghny-al-mqdsy: 754 notes (171 pages with more notes than anchors), 4 dead sups
+  - al-gharib-al-musannaf-al-qasim-ibn-sallam (not worked, too large): 190 notes unlinked, 15 dead sups
+  - al-majm-al-kbyr-lltbrany-mn-j: 4 dead refs / 6 unlinked notes; arshad-al-salk-ala-ashrf-al-msalk…: 15 notes without anchor; mnyh-al-sajd-bshrh-bdayh…: 5 notes without anchor; qtf-al-jny…: p48 note 3 without anchor; al-wabil-al-sayyib: 2 dead sups
+- Anchors linked by sequence (bare digits) were sampled, not all read, in the very large books (mqala, qaidah-azimah, al-swaaq, risalat-al-sijzi, sady, tdhkra-al-mwtsy, ktab-al-twhyd…); the strict gate guarantees the printed numbers did not change.
+
+## Rows
 | book | status | done | import fixes | report only |
 |---|---|---|---|---|
 | manhaj-ahl-al-sunnah-fil-sam-wal-taah | skipped | nothing to format (no notes; only import '[ ## heading ]' brackets, which are text the gate protects) | none | none |
