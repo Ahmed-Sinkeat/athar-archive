@@ -425,3 +425,4 @@
 | tkhryj-al-ahadyth-al-mrfwaa-al-msnda-fy-ktab-al-tarykh-al-kbyr-llbkhary | committed | card; hadith-text headings rejoined/un-headed | none | none |
 | tajyl-al-nda-bshrh-qtr-al-nda | skipped | nothing to format (notes already linked) | none | none |
 | msawy-al-akhlaq-llkhrayty | committed | card; hadith-text headings rejoined/un-headed | none | none |
+| shrh-al-thawya-lkhald-al-mslh | skipped | nothing to format (no notes) | none | none |
