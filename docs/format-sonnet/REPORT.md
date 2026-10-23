@@ -468,3 +468,4 @@
 | al-khlash-al-fqhyh-ala-mthhb-al-sadh-al-malkyh | committed | card/heading fixes | none | none |
 | al-adb-al-mfrd-baltalyqat | skipped | nothing to format (notes already linked) | none | none |
 | sharh-kifayat-al-mutahaffiz | skipped | nothing to format (no notes) | none | none |
+| al-qss-al-qrany-yasr-brhamy | committed | card/heading fixes | none | none |
