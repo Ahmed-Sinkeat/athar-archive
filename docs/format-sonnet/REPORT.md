@@ -262,3 +262,4 @@
 | hazz-al-ghalasim | skipped | nothing to format (no notes) | none | none |
 | jz-al-alf-dynar-llqtyay | committed | card; hadith-text headings rejoined; glued headings split | none | none |
 | taqyid-al-ilm | committed | card; hadith-text headings rejoined; glued headings split | none | none |
+| al-uqubat | committed | card; hadith-text headings rejoined; glued headings split | none | none |
