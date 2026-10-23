@@ -252,3 +252,4 @@
 | al-tuhur-al-qasim-ibn-sallam | committed | card; hadith-text headings rejoined/un-headed; cut words re-joined | none | none |
 | fwayd-aby-mhmd-al-fakhy | committed | card; hadith-text headings rejoined/un-headed; cut words re-joined | none | none |
 | al-shafya-fy-alm-al-tsryf-walwafya-nzm-al-shafya | committed | card; hadith-text headings rejoined/un-headed; cut words re-joined | none | none |
+| shrh-al-taryf-bdrwry-al-tsryf | committed | card; hadith-text headings rejoined/un-headed; cut words re-joined | none | none |
