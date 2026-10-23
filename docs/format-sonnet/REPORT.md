@@ -342,3 +342,4 @@
 | aqd-al-durar | skipped | nothing to format (no notes) | none | none |
 | al-amthal-al-qasim-ibn-sallam | committed | card/heading fixes | none | none |
 | al-tlqyn-fy-al-fqh-al-malky | committed | card/heading fixes | none | none |
+| al-slah-wahkam-tarkha | skipped | nothing to format (notes already linked) | none | none |
