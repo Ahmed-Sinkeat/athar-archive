@@ -387,3 +387,4 @@
 | al-tthhyb-fy-adlh-mtn-al-ghayh-waltqryb | skipped | nothing to format (notes already linked) | none | none |
 | tayseer-usul-al-fiqh-lilmubtadiin | committed | card/heading fixes | none | none |
 | al-tb-al-nbwy-laby-naym-al-asfhany | committed | card/heading fixes | none | none |
+| thfh-al-mwdwd-bahkam-al-mwlwd | committed | card/heading fixes | none | none |
