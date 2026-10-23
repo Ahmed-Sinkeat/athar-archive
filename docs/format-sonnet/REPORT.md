@@ -429,3 +429,4 @@
 | hdyth-aby-al-fdl-al-zhry | committed | card; hadith-text headings rejoined/un-headed | none | none |
 | mthkrh-al-qwl-al-rajh-ma-al-dlyl-al-slah | skipped | nothing to format (notes already linked) | none | none |
 | mkhtsr-khlyl | skipped | nothing to format (notes already linked) | none | none |
+| shyh-al-adb-al-mfrd | skipped | nothing to format (notes already linked) | none | none |
