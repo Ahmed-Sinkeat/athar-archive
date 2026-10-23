@@ -435,3 +435,4 @@
 | al-tfrya-fy-fqh-al-amam-malk-bn-ans | committed | card/heading fixes; hadith-text headings rejoined | none | none |
 | shrh-al-aqyda-al-wastya-lkhald-al-mslh | skipped | nothing to format (no notes) | none | none |
 | amaly-abn-bshran-al-jz-al-thany | committed | card/heading fixes; hadith-text headings rejoined | none | none |
+| msayl-al-amam-ahmd-rwayh-abnh-aby-al-fdl-salh | committed | card/heading fixes; hadith-text headings rejoined | none | none |
