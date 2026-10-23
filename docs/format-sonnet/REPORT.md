@@ -432,3 +432,4 @@
 | shyh-al-adb-al-mfrd | skipped | nothing to format (notes already linked) | none | none |
 | ktab-al-twhyd-wqra-aywn-al-mwhdyn-fy-thqyq-dawa-al-anbya-walmrslyn | committed (partial) | anchors 195 | none | REPORT ONLY: 1190 notes unlinked (pages carry far more notes than printed anchors), 37 dead sups |
 | mkhtsr-khlyl | skipped | nothing to format (notes already linked) | none | none |
+| al-tfrya-fy-fqh-al-amam-malk-bn-ans | committed | card/heading fixes; hadith-text headings rejoined | none | none |
