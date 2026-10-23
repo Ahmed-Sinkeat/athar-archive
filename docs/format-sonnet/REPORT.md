@@ -457,3 +457,4 @@
 | msayl-al-amam-ahmd-rwayh-aby-dawd-al-sjstany | committed | card/heading fixes | none | none |
 | all-al-nhw | committed | card/heading fixes | none | none |
 | aml-al-ywm-wallyla-labn-al-sny | committed | card/heading fixes | none | none |
+| al-bath-walnshwr-llbyhqy | committed | card/heading fixes | none | none |
