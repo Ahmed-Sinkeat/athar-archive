@@ -228,3 +228,4 @@
 | al-ubudiyyah | skipped | nothing to format (no notes) | none | none |
 | sifat-al-jannah | committed | card | none | none |
 | mkarm-al-akhlaq-lltbrany | committed | card | none | none |
+| al-muhtadirin | committed | card | none | none |
