@@ -409,3 +409,4 @@
 | shrh-al-ftwa-al-hmwya | skipped | nothing to format (no notes) | none | none |
 | ntayj-al-fkr-fy-al-nhw | skipped | nothing to format (notes already linked) | none | none |
 | shrh-lmaa-al-aatqad-mhmd-hsn-abd-al-ghfar | skipped | nothing to format (no notes) | none | none |
+| lmatha-nsly-al-mqdm | committed | card/heading fixes | none | none |
