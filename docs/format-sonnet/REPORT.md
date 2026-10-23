@@ -311,3 +311,4 @@
 | tafsir-juz-amma-abd-al-malik | skipped | nothing to format (notes already linked) | none | none |
 | maalm-trbwyh-ltalby-asna-al-wlayat-al-shrayh | skipped | nothing to format (notes already linked) | none | none |
 | shada-al-arf | committed | card/heading fixes (cut sentences rejoined) | none | none |
+| fdayl-al-khlfa-al-rashdyn-laby-naym-al-asbhany | committed | card/heading fixes (cut sentences rejoined) | none | none |
