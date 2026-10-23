@@ -318,3 +318,4 @@
 | tashil-al-fawaid | committed | card/heading fixes (cut sentences rejoined) | none | none |
 | al-zuhd-ibn-abi-al-dunya | committed | card/heading fixes (cut sentences rejoined) | none | none |
 | al-faraj-bad-al-shiddah-al-tanukhi | committed | card/heading fixes (cut sentences rejoined) | none | none |
+| amthal-al-hdyth-laby-al-shykh-al-asbhany | committed | card/heading fixes (cut sentences rejoined) | none | none |
