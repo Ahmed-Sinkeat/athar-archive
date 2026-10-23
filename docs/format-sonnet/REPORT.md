@@ -460,3 +460,4 @@
 | al-bath-walnshwr-llbyhqy | committed | card/heading fixes | none | none |
 | msnd-al-farwq-labn-kthyr | committed | card/heading fixes | none | none |
 | al-qda-walqdr-llbyhqy | committed | card/heading fixes | none | none |
+| al-adb-al-mfrd-baltalyqat | skipped | nothing to format (notes already linked) | none | none |
