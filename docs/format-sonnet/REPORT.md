@@ -276,3 +276,4 @@
 | shrh-mdhahb-ahl-al-sna-labn-shahyn | committed | card; hadith-text headings rejoined; glued heading split | none | none |
 | shrh-thlatha-al-aswl-lkhald-al-mslh | skipped | nothing to format (no notes) | none | none |
 | al-ishraf-fi-manazil-al-ashraf | committed | card; hadith-text headings rejoined; glued heading split | none | none |
+| makarim-al-akhlaq-ibn-abi-al-dunya | committed | card; hadith-text headings rejoined; glued heading split | none | none |
