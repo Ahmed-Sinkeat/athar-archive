@@ -260,3 +260,4 @@
 | shrh-al-ajrwmya-llasmry | skipped | nothing to format (notes already linked 7/7) | none | none |
 | al-byan-al-mbdy-lshnaaa-al-qwl-al-mjdy | skipped | nothing to format (no notes) | none | none |
 | hazz-al-ghalasim | skipped | nothing to format (no notes) | none | none |
+| jz-al-alf-dynar-llqtyay | committed | card; hadith-text headings rejoined; glued headings split | none | none |
