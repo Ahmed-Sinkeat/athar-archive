@@ -317,3 +317,4 @@
 | al-intisar-lil-sahabah-al-akhyar | skipped | nothing to format (no notes) | none | none |
 | tashil-al-fawaid | committed | card/heading fixes (cut sentences rejoined) | none | none |
 | al-zuhd-ibn-abi-al-dunya | committed | card/heading fixes (cut sentences rejoined) | none | none |
+| al-faraj-bad-al-shiddah-al-tanukhi | committed | card/heading fixes (cut sentences rejoined) | none | none |
