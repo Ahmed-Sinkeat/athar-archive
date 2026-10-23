@@ -58,6 +58,7 @@ class AppearanceStore @Inject constructor(@ApplicationContext context: Context) 
             .putBoolean("reader_page_numbers", !settings.continuous) // the old «أرقام الصفحات» key: hidden numbers = متصل
             .putBoolean("poem_verse_numbers", settings.verseNumbers)
             .putBoolean("poem_prose", settings.poemProse)
+            .putBoolean("poem_follow", settings.poemFollow)
             .putString(KeySpacing, settings.spacing.name)
             .putString(KeyPalette, settings.palette.name)
             .apply()
@@ -85,6 +86,7 @@ class AppearanceStore @Inject constructor(@ApplicationContext context: Context) 
             continuous = !prefs.getBoolean("reader_page_numbers", true),
             verseNumbers = prefs.getBoolean("poem_verse_numbers", false),
             poemProse = prefs.getBoolean("poem_prose", false),
+            poemFollow = prefs.getBoolean("poem_follow", true),
         )
     }
 

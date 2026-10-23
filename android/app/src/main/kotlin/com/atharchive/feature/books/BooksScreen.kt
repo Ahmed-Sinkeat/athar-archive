@@ -1,5 +1,6 @@
 package com.atharchive.feature.books
 
+import kotlinx.coroutines.launch
 import com.atharchive.core.ArNormalize
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.rememberScrollState
@@ -129,6 +130,7 @@ fun BooksScreen(
     val topic = topicStored.orFirstIn(topics)
     val century = centuryStored.orFirstIn(centuries)
     val listState = rememberLazyListState()
+    val reselectScope = androidx.compose.runtime.rememberCoroutineScope()
 
     LaunchedEffect(scrollToTopRequest) {
         if (scrollToTopRequest > 0) listState.animateScrollToItem(0)
@@ -203,6 +205,7 @@ fun BooksScreen(
                     selectedKey = selectedTab.key,
                     onSelect = { selectedTab = SectionTab.fromKey(it) },
                     tagPrefix = "books",
+                    onReselect = { reselectScope.launch { listState.animateScrollToItem(0) } },
                     modifier = Modifier.padding(horizontal = horizontalPadding),
                 )
                 Row(

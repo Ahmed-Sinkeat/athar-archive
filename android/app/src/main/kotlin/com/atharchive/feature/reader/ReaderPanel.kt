@@ -110,7 +110,7 @@ fun ReaderPanel(
                         Column(
                             modifier = Modifier
                                 .weight(1f)
-                                .clickable(role = Role.Tab) { tab = entry }
+                                .clickable(interactionSource = null, indication = null, role = Role.Tab) { if (selected) soap.reselect() else tab = entry }
                                 .padding(top = 12.dp)
                                 .testTag("reader_panel_tab_${entry.name.lowercase()}"),
                             horizontalAlignment = Alignment.CenterHorizontally,

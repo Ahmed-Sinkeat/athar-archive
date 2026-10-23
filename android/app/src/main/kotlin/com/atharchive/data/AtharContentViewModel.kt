@@ -419,7 +419,7 @@ class AtharContentViewModel @Inject constructor(
                     sourceKind = when (source.coll) { "poem" -> AudioSourceKind.Poem; "question" -> AudioSourceKind.Question; else -> AudioSourceKind.Book },
                     durationLabel = duration(ref.seconds), durationSeconds = ref.seconds,
                     sizeLabel = byteSize(ref.size),
-                    downloaded = ref.id in downloaded, saved = "audio:${ref.id}" in shelfIds,
+                    downloaded = ref.id in downloaded, saved = source.id in shelfIds,
                     recentRank = ranks["audio:${ref.id}"],
                     sourceEntityId = source.id,
                     transfer = if (ref.id !in transfers.first || ref.id in downloaded) null else {
@@ -789,6 +789,20 @@ class AtharContentViewModel @Inject constructor(
 
     fun toggleFavourite(entityId: String) {
         viewModelScope.launch(errorHandler) { personalLibrary.toggleFavourite(entityId) }
+    }
+
+    /**
+     * A recording is saved by saving its poem or book (one way to save a work; it then shows
+     * under that section's المفضّلة). Moves any old "audio:<id>" favourites across.
+     */
+    fun foldAudioFavourites(recordings: List<com.atharchive.feature.audio.AudioUi>) {
+        viewModelScope.launch(errorHandler) {
+            val bySource = recordings.associate { "audio:${it.id}" to it.sourceEntityId }
+            val old = personalLibrary.observeFavouriteIds().first().filter { it in bySource }
+            if (old.isEmpty()) return@launch
+            personalLibrary.foldIntoFavourites(old.mapNotNull(bySource::get))
+            old.forEach { personalLibrary.toggleFavourite(it) }
+        }
     }
 
     /** One-time fold of the old adhkar prefs ids; returns true once they can be dropped. */

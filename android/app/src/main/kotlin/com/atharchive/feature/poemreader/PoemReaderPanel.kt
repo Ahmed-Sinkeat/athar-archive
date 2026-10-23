@@ -103,7 +103,7 @@ internal fun PoemSidePanel(
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
                     tabs.forEachIndexed { index, tab ->
-                        PanelTab(tab, mode, colors, onMode, Modifier.soapTarget(soap, index))
+                        PanelTab(tab, mode, colors, { if (it == mode) soap.reselect() else onMode(it) }, Modifier.soapTarget(soap, index))
                         Spacer(Modifier.width(16.dp))
                     }
                 }
@@ -411,6 +411,7 @@ internal fun PoemAudioBar(
     onSelect: (PoemAudioUi) -> Unit,
     onSpeed: (Float) -> Unit,
     onRepeat: () -> Unit,
+    onSeek: (Float) -> Unit,
 ) {
     var listOpen by remember { mutableStateOf(false) }
     var speedOpen by remember { mutableStateOf(false) }
@@ -514,39 +515,13 @@ internal fun PoemAudioBar(
             }
             Spacer(Modifier.width(6.dp))
             Text(clock(position), color = colors.secondary, style = MaterialTheme.typography.labelSmall)
-            Box(
-                modifier = Modifier
-                    .weight(1f)
-                    .padding(horizontal = 8.dp)
-                    .height(14.dp),
-                contentAlignment = Alignment.CenterStart,
-            ) {
-                Box(
-                    Modifier
-                        .fillMaxWidth()
-                        .height(3.dp)
-                        .clip(CircleShape)
-                        .background(colors.divider),
-                )
-                Box(
-                    modifier = Modifier.fillMaxWidth(progress),
-                    contentAlignment = Alignment.CenterEnd,
-                ) {
-                    Box(
-                        Modifier
-                            .fillMaxWidth()
-                            .height(3.dp)
-                            .clip(CircleShape)
-                            .background(colors.accent),
-                    )
-                    Box(
-                        Modifier
-                            .size(9.dp)
-                            .clip(CircleShape)
-                            .background(colors.accent),
-                    )
-                }
-            }
+            com.atharchive.feature.audio.SeekBar(
+                progress = progress,
+                modifier = Modifier.weight(1f).padding(horizontal = 8.dp),
+                accent = colors.accent,
+                track = colors.divider,
+                onSeek = onSeek,
+            )
             Text(track.durationLabel, color = colors.secondary, style = MaterialTheme.typography.labelSmall)
         }
     }

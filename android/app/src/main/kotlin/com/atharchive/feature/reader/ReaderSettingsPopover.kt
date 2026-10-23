@@ -113,6 +113,9 @@ fun ReaderSettingsPopover(
                 LabeledRow("العرض", colors) { SegmentRow(listOf("أبيات", "متصل"), if (settings.poemProse) "متصل" else "أبيات", colors, "poem_layout") {
                     onChange(settings.copy(poemProse = it == "متصل"))
                 } }
+                LabeledRow("متابعة البيت", colors) { SegmentRow(listOf("تتبّع", "ثابت"), if (settings.poemFollow) "تتبّع" else "ثابت", colors, "poem_follow") {
+                    onChange(settings.copy(poemFollow = it == "تتبّع"))
+                } }
             } else LabeledRow("العرض", colors) { SegmentRow(listOf("صفحات", "متصل"), if (settings.continuous) "متصل" else "صفحات", colors, "reader_layout") {
                 onChange(settings.copy(continuous = it == "متصل"))
             } }
@@ -217,7 +220,9 @@ internal fun SegmentRow(
                             if (isSelected) Color.Transparent else colors.divider.copy(alpha = 0.28f),
                         )
                         .heightIn(min = 34.dp)
-                        .selectable(selected = isSelected, role = Role.RadioButton) { onSelect(option) }
+                        .selectable(selected = isSelected, interactionSource = null, indication = null, role = Role.RadioButton) {
+                            if (isSelected) soap.reselect() else onSelect(option)
+                        }
                         .padding(vertical = 6.dp)
                         .testTag("${tagPrefix}_$index"),
                     contentAlignment = Alignment.Center,

@@ -166,6 +166,7 @@ fun AtharTabRow(
     onSelect: (String) -> Unit,
     tagPrefix: String,
     modifier: Modifier = Modifier,
+    onReselect: () -> Unit = {},
 ) {
     val largeText = LocalDensity.current.fontScale >= 1.5f
     val soap = rememberSoapTargets()
@@ -177,7 +178,9 @@ fun AtharTabRow(
                     tab = tab,
                     selected = tab.key == selectedKey,
                     largeText = largeText,
-                    onClick = { onSelect(tab.key) },
+                    onClick = {
+                        if (tab.key == selectedKey) { soap.reselect(); onReselect() } else onSelect(tab.key)
+                    },
                     tagPrefix = tagPrefix,
                     modifier = Modifier.weight(1f),
                     textModifier = Modifier.soapTarget(soap, index),
@@ -204,7 +207,8 @@ private fun SectionTabCell(
         modifier = modifier
             .testTag("${tagPrefix}_tab_${tab.key}")
             .defaultMinSize(minHeight = if (largeText) 60.dp else 48.dp)
-            .clickable(role = Role.Tab, onClick = onClick)
+            // The soap pill is the feedback; a squish on the label alone would slide off it.
+            .clickable(interactionSource = null, indication = null, role = Role.Tab, onClick = onClick)
             .semantics {
                 this.selected = selected
                 contentDescription = tab.label

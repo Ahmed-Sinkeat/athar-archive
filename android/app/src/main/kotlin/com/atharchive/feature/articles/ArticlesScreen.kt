@@ -1,5 +1,6 @@
 package com.atharchive.feature.articles
 
+import kotlinx.coroutines.launch
 import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -74,6 +75,7 @@ fun ArticlesScreen(
     onSaveClick: (ArticleUi) -> Unit,
     onDownloadClick: (ArticleUi) -> Unit,
     modifier: Modifier = Modifier,
+    scrollToTopRequest: Int = 0,
     onBack: (() -> Unit)? = null,
 ) {
     var selectedTab by rememberSaveable { mutableStateOf(SectionTab.All) }
@@ -81,6 +83,10 @@ fun ArticlesScreen(
     var sortName by rememberPersisted("articles.order", ArticleSort.Title.name)
     val sort = enumValueOrNull<ArticleSort>(sortName) ?: ArticleSort.Title
     val listState = rememberLazyListState()
+    val reselectScope = androidx.compose.runtime.rememberCoroutineScope()
+    androidx.compose.runtime.LaunchedEffect(scrollToTopRequest) {
+        if (scrollToTopRequest > 0) listState.animateScrollToItem(0)
+    }
 
     // No author filter: 2,363 articles carry hundreds of distinct authors, and a flat
     // radio list does not scale to that. Sorting by author covers the same intent.
@@ -144,6 +150,7 @@ fun ArticlesScreen(
                     selectedKey = selectedTab.key,
                     onSelect = { selectedTab = SectionTab.fromKey(it) },
                     tagPrefix = "articles",
+                    onReselect = { reselectScope.launch { listState.animateScrollToItem(0) } },
                     modifier = Modifier.padding(horizontal = horizontalPadding),
                 )
                 Row(

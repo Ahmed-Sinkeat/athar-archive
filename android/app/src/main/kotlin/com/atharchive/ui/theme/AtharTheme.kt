@@ -1,6 +1,8 @@
 package com.atharchive.ui.theme
 
 import androidx.compose.ui.unit.dp
+import kotlinx.coroutines.launch
+import androidx.compose.ui.graphics.drawscope.scale
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
@@ -350,7 +352,53 @@ fun AtharTheme(
             shapes = androidx.compose.material3.Shapes(
                 extraLarge = AtharCorners.Surface,
             ),
-            content = content,
-        )
+        ) {
+            // No ripple anywhere: the dark translucent slab read as a smudge on the cream.
+            // A press is a small squish instead; selectors keep their soap pill.
+            androidx.compose.runtime.CompositionLocalProvider(
+                androidx.compose.foundation.LocalIndication provides PressSquish,
+                androidx.compose.material3.LocalRippleConfiguration provides null,
+                content = content,
+            )
+        }
+    }
+}
+
+/** Scales the pressed element to 0.97 and springs it back; draws nothing over it. */
+private object PressSquish : androidx.compose.foundation.IndicationNodeFactory {
+    override fun create(interactionSource: androidx.compose.foundation.interaction.InteractionSource): androidx.compose.ui.node.DelegatableNode =
+        PressSquishNode(interactionSource)
+    override fun equals(other: Any?) = other === this
+    override fun hashCode() = 7
+}
+
+private class PressSquishNode(
+    private val source: androidx.compose.foundation.interaction.InteractionSource,
+) : androidx.compose.ui.Modifier.Node(), androidx.compose.ui.node.DrawModifierNode {
+    private val squish = androidx.compose.animation.core.Animatable(1f)
+
+    override fun onAttach() {
+        coroutineScope.launch {
+            var pressed = 0
+            source.interactions.collect {
+                when (it) {
+                    is androidx.compose.foundation.interaction.PressInteraction.Press -> pressed++
+                    is androidx.compose.foundation.interaction.PressInteraction.Release,
+                    is androidx.compose.foundation.interaction.PressInteraction.Cancel -> pressed--
+                    else -> return@collect
+                }
+                launch {
+                    squish.animateTo(
+                        if (pressed > 0) 0.97f else 1f,
+                        androidx.compose.animation.core.spring(dampingRatio = 0.6f, stiffness = 700f),
+                    )
+                }
+            }
+        }
+    }
+
+    override fun androidx.compose.ui.graphics.drawscope.ContentDrawScope.draw() {
+        val k = squish.value
+        scale(k) { this@draw.drawContent() }
     }
 }

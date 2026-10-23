@@ -1,5 +1,6 @@
 package com.atharchive.feature.issues
 
+import kotlinx.coroutines.launch
 import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -87,6 +88,7 @@ fun IssuesScreen(
     var sortName by rememberPersisted("issues.order", IssueSort.Question.name)
     val sort = enumValueOrNull<IssueSort>(sortName) ?: IssueSort.Question
     val listState = rememberLazyListState()
+    val reselectScope = androidx.compose.runtime.rememberCoroutineScope()
 
     val topics = remember(state.issues) {
         listOf(AllTopics) + state.issues.map { it.topic }.filter(String::isNotBlank).distinct()
@@ -153,6 +155,7 @@ fun IssuesScreen(
                         selectedKey = selectedTab.key,
                         onSelect = { selectedTab = SectionTab.fromKey(it) },
                         tagPrefix = "issues",
+                        onReselect = { reselectScope.launch { listState.animateScrollToItem(0) } },
                         modifier = Modifier.padding(horizontal = horizontalPadding),
                     )
                     Row(

@@ -1,5 +1,6 @@
 package com.atharchive.feature.adhkar
 
+import kotlinx.coroutines.launch
 import com.atharchive.ui.theme.AtharCorners
 import com.atharchive.ui.theme.AtharTextSize
 import com.atharchive.ui.components.arabicDigits
@@ -80,6 +81,7 @@ fun AdhkarScreen(
     // lose because the phone turned.
     val remaining = rememberSaveable(saver = RemainingSaver) { mutableStateMapOf<String, Int>() }
     val listState = rememberLazyListState()
+    val reselectScope = androidx.compose.runtime.rememberCoroutineScope()
 
     val entries = when {
         bab != null -> state.of(bab.id)
@@ -158,6 +160,7 @@ fun AdhkarScreen(
                             selectedKey = selectedTab.key,
                             onSelect = { selectedTab = AdhkarTab.fromKey(it) },
                             tagPrefix = "adhkar",
+                            onReselect = { reselectScope.launch { listState.animateScrollToItem(0) } },
                             modifier = Modifier.padding(horizontal = horizontalPadding),
                         )
                     }

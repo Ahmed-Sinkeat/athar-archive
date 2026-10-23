@@ -191,6 +191,8 @@ data class ReaderSettings(
     val verseNumbers: Boolean = false,
     /** Poems: each verse as one running line instead of two hemistichs. */
     val poemProse: Boolean = false,
+    /** Poems: keep the recited verse centred while audio plays. */
+    val poemFollow: Boolean = true,
 ) {
     companion object {
         const val MIN_SIZE = 14

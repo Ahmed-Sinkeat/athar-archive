@@ -1,5 +1,6 @@
 package com.atharchive.feature.poemreader
 
+import androidx.compose.foundation.gestures.animateScrollBy
 import com.atharchive.ui.components.arabicDigits
 import com.atharchive.ui.theme.AtharCorners
 import com.atharchive.ui.theme.AtharTextSize
@@ -97,6 +98,7 @@ fun PoemReaderScreen(
     onToggleAudio: () -> Unit = {},
     onSpeed: (Float) -> Unit = {},
     onRepeat: (Boolean) -> Unit = {},
+    onSeekMs: (Long) -> Unit = {},
     onToggleBookmark: suspend (Int) -> Unit = {},
     onSaveVerse: suspend (Int) -> Unit = {},
     initialOrdinal: Int? = null,
@@ -140,11 +142,12 @@ fun PoemReaderScreen(
             if (interaction is DragInteraction.Start) followScroll = false
         }
     }
-    LaunchedEffect(currentVerse, followScroll) {
+    val following = followScroll && settings.poemFollow
+    LaunchedEffect(currentVerse, following) {
         val verse = currentVerse
-        if (verse != null && followScroll) {
+        if (verse != null && following) {
             val index = state.verses.indexOfFirst { it.number == verse }
-            if (index >= 0) listState.animateScrollToItem(index)
+            if (index >= 0) listState.centreOn(index)
         }
     }
 
@@ -227,8 +230,25 @@ fun PoemReaderScreen(
             )
 
             Box(modifier = Modifier.fillMaxWidth().weight(1f)) {
-                // Ordinary selection: press and hold drags a normal selection across
-                // the poem, with the platform's own copy toolbar.
+                // Ordinary selection: press and hold drags a normal selection across the poem,
+                // with the book reader's own bar (نسخ · مشاركة · إلى الكناشة).
+                com.atharchive.feature.reader.ProvideReaderSelectionBar(
+                    colors = colors,
+                    onCopied = { toast = "نُسخ النص" },
+                    onShare = { text ->
+                        context.startActivity(android.content.Intent.createChooser(
+                            android.content.Intent(android.content.Intent.ACTION_SEND)
+                                .setType("text/plain").putExtra(android.content.Intent.EXTRA_TEXT, text),
+                            "مشاركة النص"))
+                    },
+                    onSave = { top ->
+                        // The verse the selection starts in; poems save whole verses to الكناشة.
+                        val info = listState.layoutInfo
+                        val y = top.toInt() - info.beforeContentPadding
+                        val key = info.visibleItemsInfo.firstOrNull { y >= it.offset && y < it.offset + it.size }?.key
+                        state.verses.firstOrNull { it.id == key }?.let { verse -> act("حُفظ في الكناشة") { onSaveVerse(verse.ordinal) } }
+                    },
+                ) {
                 SelectionContainer {
                     LazyColumn(
                         state = listState,
@@ -268,9 +288,10 @@ fun PoemReaderScreen(
                         }
                     }
                 }
+                }
 
                 // Return-to-position: only while following is off and audio is running.
-                if (track != null && playing && !followScroll) {
+                if (track != null && playing && settings.poemFollow && !followScroll) {
                     Box(
                         modifier = Modifier
                             .align(Alignment.BottomCenter)
@@ -337,6 +358,7 @@ fun PoemReaderScreen(
                     onSelect = { onPlayAudio(it); followScroll = true },
                     onSpeed = onSpeed,
                     onRepeat = { onRepeat(!repeat) },
+                    onSeek = { onSeekMs((it * current.durationSeconds * 1000).toLong()) },
                 )
             }
 
@@ -680,4 +702,22 @@ private fun BarIcon(
     ) {
         Icon(icon, contentDescription = label, tint = colors.secondary, modifier = Modifier.size(24.dp))
     }
+}
+
+/**
+ * Glides [index] to the middle of the list, so the recited verse sits clear of both bars.
+ * One eased scroll by the exact distance when the verse is on screen (it already is, verse
+ * after verse), instead of animateScrollToItem's snap-to-top that jumped on every cue.
+ */
+private suspend fun androidx.compose.foundation.lazy.LazyListState.centreOn(index: Int) {
+    fun offsetToCentre(): Float? {
+        val info = layoutInfo
+        val item = info.visibleItemsInfo.firstOrNull { it.index == index } ?: return null
+        val viewport = info.viewportEndOffset - info.viewportStartOffset - info.beforeContentPadding - info.afterContentPadding
+        return item.offset - (viewport - item.size) / 2f // offsets start after the top padding
+    }
+    if (offsetToCentre() == null) scrollToItem(index) // far away: land first, then glide
+    val delta = offsetToCentre() ?: return
+    if (kotlin.math.abs(delta) < 4f) return
+    animateScrollBy(delta, androidx.compose.animation.core.tween(durationMillis = 650, easing = androidx.compose.animation.core.FastOutSlowInEasing))
 }

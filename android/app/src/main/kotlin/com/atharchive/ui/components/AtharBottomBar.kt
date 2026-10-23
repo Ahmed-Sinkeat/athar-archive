@@ -86,6 +86,7 @@ private const val DAMPING_TRAIL = 0.90f
 private const val MAX_STRETCH = 3.4f        // a long jump travels; it must not smear
 private const val SQUASH = 0.30f            // height given up per unit of width gained
 private const val MIN_SQUASH = 0.80f
+private const val JELLY = 0.14f             // how far a re-tap squashes the pill
 private const val EDGE_EPSILON = 0.5f       // half a pixel — invisible, and ends the tail
 private val PillWidth = 46.dp
 private val PillHeight = 32.dp
@@ -111,6 +112,8 @@ fun AtharBottomBar(
     val rightEdge = remember { Animatable(0f, EDGE_EPSILON) }
     var placed by remember { mutableStateOf(false) }
     var movingRight by remember { mutableStateOf(true) }
+    val jelly = remember { Animatable(0f) }
+    val scope = androidx.compose.runtime.rememberCoroutineScope()
 
     val selectedIndex = destinations.indexOf(selectedDestination)
     val targetCentre = iconCentreX.getOrElse(selectedIndex) { 0f }
@@ -182,7 +185,11 @@ fun AtharBottomBar(
                 // Volume roughly conserved: what it gains in length it gives up
                 // in height, which is what makes it read as soap and not rubber.
                 val stretch = width / restW
-                val height = restH * max(MIN_SQUASH, 1f - SQUASH * (stretch - 1f))
+                var height = restH * max(MIN_SQUASH, 1f - SQUASH * (stretch - 1f))
+                val j = jelly.value
+                x -= width * JELLY * j / 2f
+                width *= 1f + JELLY * j
+                height *= 1f - JELLY * j
                 val top = (iconCentreY - barBounds.top) - height / 2f
                 drawRoundRect(
                     color = pillColor,
@@ -223,7 +230,10 @@ fun AtharBottomBar(
                                 // 56dp ripple slab fights the soft pill underneath it.
                                 indication = null,
                                 role = Role.Tab,
-                                onClick = { onDestinationClick(destination) },
+                                onClick = {
+                                    if (selected) scope.launch { jelly.jelly() }
+                                    onDestinationClick(destination)
+                                },
                             )
                             .semantics {
                                 this.selected = selected
@@ -311,6 +321,17 @@ internal fun SoapTravelIndicator(selected: Int, centres: List<Offset>, color: Co
 class SoapTargets {
     internal var box: androidx.compose.ui.layout.LayoutCoordinates? = null
     internal val rects = androidx.compose.runtime.mutableStateMapOf<Int, Rect>()
+    internal var pulse by androidx.compose.runtime.mutableIntStateOf(0)
+    internal val jelly = Animatable(0f)
+
+    /** The current choice was tapped again: the pill wobbles in place instead of travelling. */
+    fun reselect() { pulse++ }
+}
+
+/** Squashes wide and flat, then springs back past rest and settles: soap poked, not moved. */
+internal suspend fun Animatable<Float, androidx.compose.animation.core.AnimationVector1D>.jelly() {
+    animateTo(1f, tween(70))
+    animateTo(0f, spring(dampingRatio = 0.35f, stiffness = 500f))
 }
 
 @Composable
@@ -336,6 +357,7 @@ fun SoapLayer(targets: SoapTargets, selected: Int, color: Color, modifier: Modif
     val bottom = remember { Animatable(0f) }
     var placed by remember { mutableStateOf(false) }
     val target = targets.rects[selected]
+    LaunchedEffect(targets.pulse) { if (targets.pulse > 0) targets.jelly.jelly() }
     LaunchedEffect(target) {
         if (target == null) {
             placed = false
@@ -356,10 +378,13 @@ fun SoapLayer(targets: SoapTargets, selected: Int, color: Color, modifier: Modif
     }
     Canvas(modifier.onPlaced { targets.box = it }) {
         if (!placed || target == null) return@Canvas
-        val width = right.value - left.value
-        val stretch = (width / target.width.coerceAtLeast(1f) - 1f).coerceIn(0f, MAX_STRETCH)
-        val height = (bottom.value - top.value) * max(MIN_SQUASH, 1 - SQUASH * stretch)
+        val j = targets.jelly.value
+        val rawWidth = right.value - left.value
+        val stretch = (rawWidth / target.width.coerceAtLeast(1f) - 1f).coerceIn(0f, MAX_STRETCH)
+        val width = rawWidth * (1 + JELLY * j)
+        val height = (bottom.value - top.value) * max(MIN_SQUASH, 1 - SQUASH * stretch) * (1 - JELLY * j)
         val centreY = (top.value + bottom.value) / 2
-        drawRoundRect(color, Offset(left.value, centreY - height / 2), Size(width, height), CornerRadius(corner.toPx().coerceAtMost(height / 2)))
+        val x = left.value - rawWidth * JELLY * j / 2
+        drawRoundRect(color, Offset(x, centreY - height / 2), Size(width, height), CornerRadius(corner.toPx().coerceAtMost(height / 2)))
     }
 }

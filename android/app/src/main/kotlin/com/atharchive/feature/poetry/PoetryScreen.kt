@@ -1,5 +1,6 @@
 package com.atharchive.feature.poetry
 
+import kotlinx.coroutines.launch
 import com.atharchive.ui.theme.AtharTextSize
 import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.background
@@ -82,6 +83,7 @@ fun PoetryScreen(
     onSaveClick: (PoemUi) -> Unit,
     onDownloadClick: (PoemUi) -> Unit,
     modifier: Modifier = Modifier,
+    scrollToTopRequest: Int = 0,
     onBack: (() -> Unit)? = null,
 ) {
     var selectedTab by rememberSaveable { mutableStateOf(SectionTab.All) }
@@ -90,6 +92,10 @@ fun PoetryScreen(
     var sortName by rememberPersisted("poetry.order", PoemSort.Title.name)
     val sort = enumValueOrNull<PoemSort>(sortName) ?: PoemSort.Title
     val listState = rememberLazyListState()
+    val reselectScope = androidx.compose.runtime.rememberCoroutineScope()
+    androidx.compose.runtime.LaunchedEffect(scrollToTopRequest) {
+        if (scrollToTopRequest > 0) listState.animateScrollToItem(0)
+    }
 
     val topics = remember(state.poems) {
         listOf(AllTopics) + state.poems.map { it.topic }.filter(String::isNotBlank).distinct()
@@ -156,6 +162,7 @@ fun PoetryScreen(
                     selectedKey = selectedTab.key,
                     onSelect = { selectedTab = SectionTab.fromKey(it) },
                     tagPrefix = "poetry",
+                    onReselect = { reselectScope.launch { listState.animateScrollToItem(0) } },
                     modifier = Modifier.padding(horizontal = horizontalPadding),
                 )
                 Row(

@@ -343,12 +343,19 @@ private fun TimeLabel(text: String) {
  * right and travels left. The thumb rides the end of the filled span.
  */
 @Composable
-private fun SeekBar(progress: Float, modifier: Modifier = Modifier, onSeek: (Float) -> Unit) {
+internal fun SeekBar(
+    progress: Float,
+    modifier: Modifier = Modifier,
+    accent: androidx.compose.ui.graphics.Color = AtharTheme.colors.accent,
+    track: androidx.compose.ui.graphics.Color = AtharTheme.colors.divider,
+    onSeek: (Float) -> Unit,
+) {
     // The same thin bar as the mini player and reader, with a small dot; tap or drag.
     // Fills from the start edge, so under RTL playback travels right → left.
     val rtl = LocalLayoutDirection.current == LayoutDirection.Rtl
-    val accent = AtharTheme.colors.accent
-    val track = AtharTheme.colors.divider
+    // The gesture blocks are keyed on rtl only, so they must read the latest onSeek: the first
+    // one closes over durationMs = 0 and every seek landed on 0:00.
+    val seek by androidx.compose.runtime.rememberUpdatedState(onSeek)
     var drag by remember { mutableStateOf<Float?>(null) }
     val shown = (drag ?: progress).coerceIn(0f, 1f)
     fun fraction(x: Float, width: Int) = (x / width).coerceIn(0f, 1f).let { if (rtl) 1f - it else it }
@@ -358,12 +365,12 @@ private fun SeekBar(progress: Float, modifier: Modifier = Modifier, onSeek: (Flo
             .testTag("player_seek_bar")
             .semantics { progressBarRangeInfo = ProgressBarRangeInfo(shown, 0f..1f) }
             .pointerInput(rtl) {
-                detectTapGestures { onSeek(fraction(it.x, size.width)) }
+                detectTapGestures { seek(fraction(it.x, size.width)) }
             }
             .pointerInput(rtl) {
                 detectHorizontalDragGestures(
                     onDragStart = { drag = fraction(it.x, size.width) },
-                    onDragEnd = { drag?.let(onSeek); drag = null },
+                    onDragEnd = { drag?.let(seek); drag = null },
                     onDragCancel = { drag = null },
                 ) { change, _ -> drag = fraction(change.position.x, size.width) }
             },

@@ -20,6 +20,8 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.navigationBars
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -174,7 +176,7 @@ fun AtharApp(
     )
     val snackbarHostState = remember { SnackbarHostState() }
     val scope = rememberCoroutineScope()
-    var booksScrollToTopRequest by rememberSaveable { mutableIntStateOf(0) }
+    var scrollToTopRequest by rememberSaveable { mutableIntStateOf(0) }
     val audioState by contentViewModel.audio.collectAsStateWithLifecycle()
     LaunchedEffect(Unit) {
         // One-time fold: old adhkar prefs ids become favourites, then the key is dropped.
@@ -185,6 +187,9 @@ fun AtharApp(
     val playbackState by contentViewModel.playback.state.collectAsStateWithLifecycle()
     val syncState by contentViewModel.syncState.collectAsStateWithLifecycle()
     val nowPlaying = audioState.nowPlaying
+    LaunchedEffect(audioState.recordings.isNotEmpty()) {
+        if (audioState.recordings.isNotEmpty()) contentViewModel.foldAudioFavourites(audioState.recordings)
+    }
     val actionAnchor = remember { mutableStateOf(Rect.Zero) }
     var editorAnchor by remember { mutableStateOf(Rect.Zero) }
     var editingExcerpt by remember { mutableStateOf<ExcerptUi?>(null) }
@@ -345,10 +350,11 @@ fun AtharApp(
     }
 
     fun navigateTo(destination: AtharDestination) {
-        if (destination == AtharDestination.Books) {
-            val booksAlreadySelected = currentDestination == AtharDestination.Books
+        // Tapping the section you're on scrolls it to the top (the pill wobbles) instead of rebuilding it.
+        if (destination == currentDestination) {
+            scrollToTopRequest++
+        } else if (destination == AtharDestination.Books) {
             navigateToBooksRoot()
-            if (booksAlreadySelected) booksScrollToTopRequest++
         } else {
             navigateToBooksRoot()
             backStack.add(SectionRoute(destination.route))
@@ -373,7 +379,24 @@ fun AtharApp(
         ),
         snackbarHost = { SnackbarHost(snackbarHostState) },
         bottomBar = {
-            if (inReader || inPlayer || inPoemReader) return@Scaffold
+            if (inPlayer || inPoemReader) return@Scaffold
+            if (inReader) {
+                // A book has its own strip for its own audio; anything else still playing
+                // (a poem, another book's lesson) keeps its mini player here, without the tabs.
+                val reading = (backStack.lastOrNull() as? ReaderRoute)?.bookId
+                nowPlaying?.takeIf { it.audio.sourceEntityId != reading }?.let { playing ->
+                    MiniPlayer(
+                        audio = playing.audio,
+                        playing = playing.playing,
+                        progress = playing.progress,
+                        onToggle = contentViewModel.playback::toggle,
+                        onOpen = { backStack.add(PlayerRoute) },
+                        onClose = contentViewModel.playback::stop,
+                        modifier = Modifier.windowInsetsPadding(WindowInsets.navigationBars),
+                    )
+                }
+                return@Scaffold
+            }
             Column {
                 // The mini player sits above the bar and below everything else: it must
                 // survive navigation, so it lives here rather than inside الصوتيات.
@@ -422,7 +445,7 @@ fun AtharApp(
                             )
                         },
                         onSaveClick = { contentViewModel.toggleFavourite(it.id) },
-                        scrollToTopRequest = booksScrollToTopRequest,
+                        scrollToTopRequest = scrollToTopRequest,
                     )
                 }
                 entry<SettingsRoute> {
@@ -539,6 +562,7 @@ fun AtharApp(
                             onToggleAudio = contentViewModel.playback::toggle,
                             onSpeed = contentViewModel.playback::speed,
                             onRepeat = contentViewModel.playback::repeat,
+                            onSeekMs = contentViewModel.playback::seekTo,
                             onToggleBookmark = { contentViewModel.toggleBookmark(route.poemId, it) },
                             onSaveVerse = { contentViewModel.saveBlock(route.poemId, it) },
                             initialOrdinal = route.targetOrdinal,
@@ -567,7 +591,7 @@ fun AtharApp(
                             onSleep = contentViewModel.playback::sleep,
                             sleepMinutes = playbackState.sleepMinutes,
                             onMore = { openAudioSource(playing.audio) },
-                            onSave = { contentViewModel.toggleFavourite("audio:${playing.audio.id}") },
+                            onSave = { contentViewModel.toggleFavourite(playing.audio.sourceEntityId) },
                         )
                     }
                 }
@@ -677,6 +701,7 @@ fun AtharApp(
                             onPoemClick = { backStack.add(PoemReaderRoute(it.id)) },
                             onDownloadClick = { onDownloadTap(it.id, it.title, it.sizeLabel, it.downloaded, it.transfer) },
                             onSaveClick = { contentViewModel.toggleFavourite(it.id) },
+                            scrollToTopRequest = scrollToTopRequest,
                         )
 
                         AtharDestination.Articles -> ArticlesScreen(
@@ -685,6 +710,7 @@ fun AtharApp(
                             onArticleClick = { backStack.add(ReaderRoute(it.id)) },
                             onSaveClick = { contentViewModel.toggleFavourite(it.id) },
                             onDownloadClick = { onDownloadTap(it.id, it.title, it.sizeLabel, it.downloaded, it.transfer) },
+                            scrollToTopRequest = scrollToTopRequest,
                         )
 
                         AtharDestination.Search -> SearchScreen(
@@ -902,9 +928,10 @@ private fun MiniPlayer(
     onToggle: () -> Unit,
     onOpen: () -> Unit,
     onClose: () -> Unit,
+    modifier: Modifier = Modifier,
 ) {
     Column(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             // Same ground as the page: the top divider and the progress line are
             // what separate it, not a slab of a different colour.

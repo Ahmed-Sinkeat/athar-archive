@@ -972,6 +972,68 @@ private suspend fun resolveSelection(
 }
 
 /** Copy, share, highlight. Nothing else — this toolbar is not a menu. */
+/**
+ * The book reader's selection bar for screens built on an ordinary SelectionContainer (the
+ * poem reader): same look, same three actions, driven by Compose's own text menu instead
+ * of the platform popup. [onSave] gets the selection's top in this box.
+ */
+@Composable
+internal fun ProvideReaderSelectionBar(
+    colors: ReaderColors,
+    onCopied: () -> Unit,
+    onShare: (String) -> Unit,
+    onSave: (Float) -> Unit,
+    content: @Composable () -> Unit,
+) {
+    val state = remember { com.atharchive.ui.components.AtharTextMenuState() }
+    var coordinates by remember { mutableStateOf<androidx.compose.ui.layout.LayoutCoordinates?>(null) }
+    var barHeight by remember { mutableIntStateOf(0) }
+    val context = androidx.compose.ui.platform.LocalContext.current
+    val scope = androidx.compose.runtime.rememberCoroutineScope()
+    androidx.compose.runtime.DisposableEffect(state) { onDispose { state.session?.close() } }
+    androidx.compose.runtime.CompositionLocalProvider(
+        androidx.compose.foundation.text.contextmenu.provider.LocalTextContextMenuToolbarProvider provides state,
+        androidx.compose.foundation.text.contextmenu.provider.LocalTextContextMenuDropdownProvider provides state,
+    ) {
+        Box(Modifier.onGloballyPositioned { coordinates = it }, propagateMinConstraints = true) {
+            content()
+            val session = state.session
+            val layout = coordinates
+            if (session != null && layout?.isAttached == true) {
+                val copy = session.provider.data().components
+                    .filterIsInstance<androidx.compose.foundation.text.contextmenu.data.TextContextMenuItem>()
+                    .firstOrNull { it.key == androidx.compose.foundation.text.contextmenu.data.TextContextMenuKeys.CopyKey }
+                if (copy == null) LaunchedEffect(session) { session.close() }
+                else Box(Modifier.fillMaxSize()) {
+                    val bounds = session.provider.contentBounds(layout)
+                    SelectionToolbar(
+                        colors = colors,
+                        modifier = Modifier.align(Alignment.TopCenter).offset {
+                            val above = bounds.top - barHeight - 10.dp.toPx()
+                            val y = if (above >= 0) above else bounds.bottom + 28.dp.toPx()
+                            IntOffset(0, y.coerceIn(0f, (layout.size.height - barHeight).coerceAtLeast(0).toFloat()).roundToInt())
+                        }.onSizeChanged { barHeight = it.height },
+                        onCopy = { copy.onClick(session); session.close(); onCopied() },
+                        onShare = {
+                            // ponytail: Compose gives no read of the selected text, so share goes through
+                            // the copy it just made; a private selection state if that ever races.
+                            copy.onClick(session)
+                            session.close()
+                            scope.launch {
+                                kotlinx.coroutines.delay(120)
+                                val clip = context.getSystemService(android.content.ClipboardManager::class.java)?.primaryClip
+                                clip?.takeIf { it.itemCount > 0 }?.getItemAt(0)?.coerceToText(context)?.toString()
+                                    ?.takeIf { it.isNotBlank() }?.let(onShare)
+                            }
+                        },
+                        onHighlight = { onSave(bounds.top); session.close() },
+                    )
+                }
+            }
+        }
+    }
+}
+
 @Composable
 private fun SelectionToolbar(
     colors: ReaderColors,
