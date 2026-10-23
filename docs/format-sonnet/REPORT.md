@@ -394,3 +394,4 @@
 | al-jna-al-dany-fy-hrwf-al-maany | committed | card/heading fixes | none | none |
 | al-gharib-al-musannaf-al-qasim-ibn-sallam | skipped | REPORT ONLY / too large: 3243 notes, 3196 linked; 15 dead sups + 190 unlinked notes left (not worked) | none | none |
 | al-snn-al-mathwra-llshafay | committed | card/heading fixes (cut sentence rejoined) | none | none |
+| al-twhyd-labn-mndh | committed | card/heading fixes (cut sentence rejoined) | none | none |
