@@ -426,3 +426,4 @@
 | tajyl-al-nda-bshrh-qtr-al-nda | skipped | nothing to format (notes already linked) | none | none |
 | msawy-al-akhlaq-llkhrayty | committed | card; hadith-text headings rejoined/un-headed | none | none |
 | shrh-al-thawya-lkhald-al-mslh | skipped | nothing to format (no notes) | none | none |
+| hdyth-aby-al-fdl-al-zhry | committed | card; hadith-text headings rejoined/un-headed | none | none |
