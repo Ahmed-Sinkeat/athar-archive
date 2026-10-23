@@ -378,3 +378,4 @@
 | al-swaaq-al-mrsla-al-shhabya-ala-al-shbh-al-dahda-al-shamya | committed (partial) | anchors 229 | none | TODO 109 notes unlinked, 21 dead sups: pages 27,63,81,159,163,174(carried),181(carried),221,232,244,248,255,256 ... |
 | shrh-shdhwr-al-dhhb-labn-hsham | committed | card/heading fixes | none | none |
 | shrh-mtn-aby-shjaa-mhmd-hsn-abd-al-ghfar | committed | card/heading fixes | none | none |
+| rawdat-al-uqala | committed | card/heading fixes | none | none |
