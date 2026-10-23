@@ -299,3 +299,4 @@
 | sfat-al-lh-watharha-fa-iyman-al-abd | skipped | nothing to format (no notes) | none | none |
 | al-samt-wa-adab-al-lisan | committed | card/heading fixes (cut sentences & hadith-text headings rejoined) | none | none |
 | mqala-al-tatyl-waljad-bn-drhm | committed (partial) | anchors 189 on 70 pages | none | REPORT ONLY/TODO: 78 pages (5,16,22,24,27,35,36,39,42,44-47,61,70,74,76,77,79-85,87,92,94,96,105-107,110,114,...) have cut notes (anchors < notes); left unlinked |
+| al-aqnaa-llmawrdy | committed | card/heading fixes | none | none |
