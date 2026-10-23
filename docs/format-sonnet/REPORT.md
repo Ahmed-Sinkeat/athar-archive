@@ -323,3 +323,4 @@
 | mthkrh-al-qwl-al-rajh-ma-al-dlyl-al-tharh | skipped | nothing to format (notes already linked) | none | none |
 | dayf-mward-al-zman-ila-zwayd-abn-hban | skipped | nothing to format (notes already linked) | none | none |
 | amdh-al-talb-lnyl-al-marb | skipped | nothing to format (notes already linked) | none | none |
+| al-radd-ala-al-jahmiyyah-wal-zanadiqah | committed (partial) | anchors 138, cut notes merged 11 | none | REPORT ONLY: 84 notes unlinked: pages whose first note starts with «=» (carried over from the previous page, no printed anchor) e.g. 7,16,59,60,63,66,69-71,81,84,85,91,97,98,100,113; and undecidable cuts 21,73,74,111 |
