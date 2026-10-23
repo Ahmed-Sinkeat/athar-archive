@@ -1,5 +1,7 @@
 ---
 title: "الاقتراح في أصول النحو ط البيروتي"
+edition_of: al-aqtrah-fy-aswl-al-nhw-t-al-qlm
+edition: "دار البيروتي"
 status: published
 published_at: 2026-07-22
 person: al-jlal-al-sywty

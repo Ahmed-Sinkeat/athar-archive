@@ -1,5 +1,6 @@
 ---
 title: "الشرح الكبير على المقنع ت التركي"
+edition: "تحقيق التركي"
 status: published
 published_at: 2026-07-20
 person: abn-aby-amr

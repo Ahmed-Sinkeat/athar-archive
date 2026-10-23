@@ -1,5 +1,7 @@
 ---
 title: "سنن أبي داود"
+edition_of: sunan-abi-dawud
+edition: "تحقيق محيي الدين عبد الحميد"
 status: published
 published_at: 2026-07-28
 person: abu-dawud-al-sijistani

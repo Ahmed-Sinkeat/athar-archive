@@ -1,5 +1,6 @@
 ---
 title: "موطأ مالك ت الأعظمي"
+edition: "تحقيق الأعظمي"
 status: published
 published_at: 2026-07-27
 person: malik-ibn-anas

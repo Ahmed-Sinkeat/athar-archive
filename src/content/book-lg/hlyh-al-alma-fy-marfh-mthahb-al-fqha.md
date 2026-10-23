@@ -1,5 +1,7 @@
 ---
 title: "حلية العلماء في معرفة مذاهب الفقهاء"
+edition_of: hlyh-al-alma-fy-marfh-mthahb-al-fqha-t-al-rsalh-al-hdythh
+edition: "تحقيق ياسين درادكة"
 status: published
 published_at: 2026-07-19
 person: al-shashy-abw-bkr

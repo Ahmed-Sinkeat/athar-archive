@@ -1,5 +1,6 @@
 ---
 title: "سنن الترمذي ت بشار"
+edition: "تحقيق بشار عواد معروف"
 status: published
 published_at: 2026-07-27
 person: al-tirmidhi

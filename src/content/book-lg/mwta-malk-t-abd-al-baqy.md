@@ -1,5 +1,7 @@
 ---
 title: "موطأ مالك ت عبد الباقي"
+edition_of: mowatta-malik
+edition: "تحقيق محمد فؤاد عبد الباقي"
 status: published
 published_at: 2026-07-28
 person: malik-ibn-anas

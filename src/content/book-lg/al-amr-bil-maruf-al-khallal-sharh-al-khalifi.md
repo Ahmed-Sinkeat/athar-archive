@@ -8,7 +8,7 @@ topics: ["al-siyasah-al-shariyyah"]
 work_type: شرح
 transcript_status: قيد المراجعة
 description: "تفريغ دروس شرح كتاب الأمر بالمعروف والنهي عن المنكر لأبي بكر الخلال"
-sharh_of: "al-amr-bil-maruf-al-khallal"
+sharh_of: "al-amr-balmarwf-walnhy-an-al-mnkr-llkhlal"
 ---
 ## المجلس الأول
 

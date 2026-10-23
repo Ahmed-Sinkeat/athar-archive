@@ -1,5 +1,7 @@
 ---
 title: "الإيمان للقاسم بن سلام - مخرجا"
+edition_of: al-iman-al-qasim-ibn-sallam
+edition: "تحقيق الألباني"
 status: published
 published_at: 2026-07-28
 person: al-qasim-ibn-sallam

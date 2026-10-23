@@ -1,5 +1,7 @@
 ---
 title: "البعث والنشور للبيهقي"
+edition_of: al-bath-walnshwr-llbyhqy-t-al-shwamy
+edition: "تحقيق عامر أحمد حيدر"
 status: published
 published_at: 2026-07-28
 person: abw-bkr-al-byhqy

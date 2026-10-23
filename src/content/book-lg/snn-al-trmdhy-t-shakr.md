@@ -1,5 +1,7 @@
 ---
 title: "سنن الترمذي ت شاكر"
+edition_of: sunan-al-tirmidhi
+edition: "تحقيق أحمد شاكر"
 status: published
 published_at: 2026-07-28
 person: al-tirmidhi

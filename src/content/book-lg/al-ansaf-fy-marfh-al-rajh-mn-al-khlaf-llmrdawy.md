@@ -1,5 +1,7 @@
 ---
 title: "الإنصاف في معرفة الراجح من الخلاف للمرداوي"
+edition_of: al-ansaf-fy-marfh-al-rajh-mn-al-khlaf-t-al-trky
+edition: "دار إحياء التراث العربي"
 status: published
 published_at: 2026-07-20
 person: al-mrdawy-ala-al-dyn

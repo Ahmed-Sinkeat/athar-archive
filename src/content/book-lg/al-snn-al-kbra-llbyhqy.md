@@ -1,5 +1,7 @@
 ---
 title: "السنن الكبرى للبيهقي"
+edition_of: al-snn-al-kbra-llbyhqy-t-al-trky
+edition: "تحقيق محمد عبد القادر عطا"
 status: published
 published_at: 2026-07-29
 person: abw-bkr-al-byhqy

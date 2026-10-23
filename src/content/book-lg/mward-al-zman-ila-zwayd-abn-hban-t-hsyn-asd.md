@@ -1,5 +1,6 @@
 ---
 title: "موارد الظمآن إلى زوائد ابن حبان ت حسين أسد"
+edition: "تحقيق حسين سليم أسد"
 status: published
 published_at: 2026-07-28
 person: nwr-al-dyn-al-hythmy

@@ -1,5 +1,6 @@
 ---
 title: "الإنصاف في معرفة الراجح من الخلاف ت التركي"
+edition: "تحقيق التركي"
 status: published
 published_at: 2026-07-20
 person: al-mrdawy-ala-al-dyn

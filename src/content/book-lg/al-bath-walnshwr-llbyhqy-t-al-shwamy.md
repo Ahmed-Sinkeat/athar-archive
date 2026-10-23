@@ -1,5 +1,6 @@
 ---
 title: "البعث والنشور للبيهقي ت الشوامي"
+edition: "تحقيق الشوامي"
 status: published
 published_at: 2026-07-28
 person: abw-bkr-al-byhqy

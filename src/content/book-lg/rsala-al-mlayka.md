@@ -1,5 +1,7 @@
 ---
 title: "رسالة الملائكة"
+edition_of: rsala-al-mlayka-t-al-jndy
+edition: "تحقيق عبد العزيز الميمني"
 status: published
 published_at: 2026-07-22
 person: abw-al-ala-al-mary

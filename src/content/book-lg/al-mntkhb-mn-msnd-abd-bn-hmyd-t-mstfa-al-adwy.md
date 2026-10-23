@@ -1,5 +1,6 @@
 ---
 title: "المنتخب من مسند عبد بن حميد ت مصطفى العدوي"
+edition: "تحقيق مصطفى العدوي"
 status: published
 published_at: 2026-07-28
 person: abd-bn-hmyd

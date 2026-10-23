@@ -1,5 +1,6 @@
 ---
 title: "مسند أحمد ط الرسالة"
+edition: "تحقيق الأرنؤوط، مؤسسة الرسالة"
 status: published
 published_at: 2026-07-28
 person: ahmad-ibn-hanbal

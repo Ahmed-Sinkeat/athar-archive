@@ -1,5 +1,6 @@
 ---
 title: "سنن ابن ماجه ت الأرنؤوط"
+edition: "تحقيق الأرنؤوط"
 status: published
 published_at: 2026-07-27
 person: ibn-majah

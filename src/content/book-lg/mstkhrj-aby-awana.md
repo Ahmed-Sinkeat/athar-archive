@@ -1,5 +1,7 @@
 ---
 title: "مستخرج أبي عوانة"
+edition_of: mstkhrj-aby-awana-t-al-jamaa-al-islamya
+edition: "تحقيق أيمن الدمشقي"
 status: published
 published_at: 2026-07-28
 person: abw-awana

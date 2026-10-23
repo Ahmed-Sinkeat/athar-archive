@@ -1,5 +1,7 @@
 ---
 title: "الشرح الكبير على متن المقنع"
+edition_of: al-shrh-al-kbyr-ala-al-mqna-t-al-trky
+edition: "دار الكتاب العربي"
 status: published
 published_at: 2026-07-20
 person: abn-aby-amr

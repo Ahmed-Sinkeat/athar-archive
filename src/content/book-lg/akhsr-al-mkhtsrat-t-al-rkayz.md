@@ -1,5 +1,6 @@
 ---
 title: "أخصر المختصرات ط الركائز"
+edition: "تحقيق عبد العزيز العيدان"
 status: published
 published_at: 2026-07-20
 person: abn-blban-mhmd-bn-bdr-al-dyn

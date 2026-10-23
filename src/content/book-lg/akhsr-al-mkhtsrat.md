@@ -1,5 +1,7 @@
 ---
 title: "أخصر المختصرات"
+edition_of: akhsr-al-mkhtsrat-t-al-rkayz
+edition: "تحقيق محمد بن ناصر العجمي"
 status: published
 published_at: 2026-07-20
 person: abn-blban-mhmd-bn-bdr-al-dyn

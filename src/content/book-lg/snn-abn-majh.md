@@ -1,5 +1,7 @@
 ---
 title: "سنن ابن ماجه"
+edition_of: sunan-ibn-majah
+edition: "تحقيق محمد فؤاد عبد الباقي"
 status: published
 published_at: 2026-07-28
 person: ibn-majah

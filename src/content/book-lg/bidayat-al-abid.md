@@ -1,5 +1,6 @@
 ---
 title: "بداية العابد وكفاية الزهد"
+edition: "تحقيق أنس اليتامى"
 status: published
 published_at: 2026-07-06
 person: al-baali

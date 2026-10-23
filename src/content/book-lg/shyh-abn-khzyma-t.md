@@ -1,5 +1,6 @@
 ---
 title: "صحيح ابن خزيمة ط 3"
+edition: "تحقيق الأعظمي، الطبعة الثالثة"
 status: published
 published_at: 2026-07-28
 person: abn-khzyma

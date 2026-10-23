@@ -1,5 +1,7 @@
 ---
 title: "صحيح ابن خزيمة"
+edition_of: shyh-abn-khzyma-t
+edition: "تحقيق الأعظمي"
 status: published
 published_at: 2026-07-28
 person: abn-khzyma

@@ -1,5 +1,7 @@
 ---
 title: "مسند أحمد ت شاكر"
+edition_of: musnad-ahmad
+edition: "تحقيق أحمد شاكر"
 status: published
 published_at: 2026-07-28
 person: ahmad-ibn-hanbal

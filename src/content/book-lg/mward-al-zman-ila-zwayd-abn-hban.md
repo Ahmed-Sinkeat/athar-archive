@@ -1,5 +1,7 @@
 ---
 title: "موارد الظمآن إلى زوائد ابن حبان"
+edition_of: mward-al-zman-ila-zwayd-abn-hban-t-hsyn-asd
+edition: "تحقيق محمد عبد الرزاق حمزة"
 status: published
 published_at: 2026-07-28
 person: nwr-al-dyn-al-hythmy

@@ -1,5 +1,6 @@
 ---
 title: "السنن الكبرى للبيهقي ت التركي"
+edition: "تحقيق التركي"
 status: published
 published_at: 2026-07-29
 person: abw-bkr-al-byhqy

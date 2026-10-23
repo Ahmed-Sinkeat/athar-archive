@@ -1,5 +1,6 @@
 ---
 title: "مستخرج أبي عوانة ط الجامعة الإسلامية"
+edition: "الجامعة الإسلامية"
 status: published
 published_at: 2026-07-29
 person: abw-awana

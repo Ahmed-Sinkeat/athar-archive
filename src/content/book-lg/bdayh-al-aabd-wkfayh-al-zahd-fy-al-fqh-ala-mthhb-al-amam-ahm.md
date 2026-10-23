@@ -1,5 +1,7 @@
 ---
 title: "بداية العابد وكفاية الزاهد في الفقه على مذهب الإمام أحمد بن حنبل"
+edition_of: bidayat-al-abid
+edition: "تحقيق محمد بن ناصر العجمي"
 status: published
 published_at: 2026-07-20
 person: al-baly-abd-al-rhmn-bn-abd-al-lh

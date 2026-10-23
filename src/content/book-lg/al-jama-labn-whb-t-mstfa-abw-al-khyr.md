@@ -1,5 +1,6 @@
 ---
 title: "الجامع لابن وهب ت مصطفى أبو الخير"
+edition: "تحقيق مصطفى أبو الخير"
 status: published
 published_at: 2026-07-28
 person: ibn-wahb

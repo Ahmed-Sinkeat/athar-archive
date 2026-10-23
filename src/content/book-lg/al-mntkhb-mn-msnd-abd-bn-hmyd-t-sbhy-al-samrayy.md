@@ -1,5 +1,7 @@
 ---
 title: "المنتخب من مسند عبد بن حميد ت صبحي السامرائي"
+edition_of: al-mntkhb-mn-msnd-abd-bn-hmyd-t-mstfa-al-adwy
+edition: "تحقيق صبحي السامرائي"
 status: published
 published_at: 2026-07-28
 person: abd-bn-hmyd

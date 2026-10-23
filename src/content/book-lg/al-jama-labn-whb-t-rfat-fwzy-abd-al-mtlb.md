@@ -1,5 +1,7 @@
 ---
 title: "الجامع لابن وهب ت رفعت فوزي عبد المطلب"
+edition_of: al-jama-labn-whb-t-mstfa-abw-al-khyr
+edition: "تحقيق رفعت فوزي عبد المطلب"
 status: published
 published_at: 2026-07-28
 person: ibn-wahb
