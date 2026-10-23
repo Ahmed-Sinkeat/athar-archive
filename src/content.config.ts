@@ -194,6 +194,7 @@ const audio = defineCollection({
     format: z.enum(["opus", "mp3"]).default("opus"),
     duration: z.string().optional(),
     size_bytes: z.number().int().positive().optional(),
+    reciters: z.array(slug).optional(),                          // → Person (reader/singer, not the author)
   }),
 });
 

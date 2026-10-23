@@ -141,6 +141,8 @@ export interface AudioCatalogRef {
   format: "opus" | "mp3";
   seconds: number;
   size: number;
+  /** Person ids of who reads/sings this recording; names resolve via `persons`. */
+  reciters?: string[];
   cues?: { v: number; t: number }[];
 }
 

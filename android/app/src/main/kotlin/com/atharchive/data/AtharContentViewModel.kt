@@ -406,14 +406,17 @@ class AtharContentViewModel @Inject constructor(
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), ArticlesUiState("٠ مقال", emptyList()))
 
     // Only works with recordings are decoded, and only when the catalog changes, not on every download tick.
-    private val audioSources = catalogDao.observeEntitiesWithAudio().map { list -> list.map { it to it.audioReferences() } }
+    private val audioSources = combine(catalogDao.observeEntitiesWithAudio(), persons) { list, people ->
+        val names = people.associate { it.id to it.name }
+        list.map { entity -> entity to entity.audioReferences().map { it to it.reciters.mapNotNull(names::get) } }
+    }
     private val recordingCatalog = combine(
         audioSources, library, content.downloadedAudio, recentRanks,
         combine(content.requestedAudio, content.pausedDownloads, downloadScheduler.workInfos) { requested, paused, jobs -> Triple(requested, paused, jobs) },
     ) { catalog, shelves, downloaded, ranks, transfers ->
         val shelfIds = shelves.mapTo(hashSetOf(), LibraryEntryEntity::entityId)
         val recordings = catalog.flatMap { (source, refs) ->
-            refs.map { ref ->
+            refs.map { (ref, reciterNames) ->
                 AudioUi(
                     id = ref.id, title = ref.title ?: source.title, sourceTitle = source.title,
                     sourceKind = when (source.coll) { "poem" -> AudioSourceKind.Poem; "question" -> AudioSourceKind.Question; else -> AudioSourceKind.Book },
@@ -422,6 +425,7 @@ class AtharContentViewModel @Inject constructor(
                     downloaded = ref.id in downloaded, saved = "audio:${ref.id}" in shelfIds,
                     recentRank = ranks["audio:${ref.id}"],
                     sourceEntityId = source.id,
+                    reciters = reciterNames,
                     transfer = if (ref.id !in transfers.first || ref.id in downloaded) null else {
                         val job = transfers.third.firstOrNull { "content:audio:${ref.id}" in it.tags && !it.state.isFinished }
                             ?: transfers.third.firstOrNull { "content:audio:${ref.id}" in it.tags && it.state == WorkInfo.State.FAILED }

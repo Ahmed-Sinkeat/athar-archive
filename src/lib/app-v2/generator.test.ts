@@ -120,11 +120,12 @@ describe("app/v2 content generator", () => {
     mkdirSync(path.join(root, "src/content/audio"), { recursive: true });
     const bytes = Buffer.from("verified audio bytes");
     for (const id of ["lesson-one", "lesson-two"]) {
-      writeFileSync(path.join(root, `src/content/audio/${id}.md`), `---\ntitle: ${id}\nstatus: published\nsource_type: book\nsource_id: fixture\nurl: https://example.com/${id}.opus\nduration: '1:00'\nsize_bytes: ${bytes.length}\n---\n`);
+      writeFileSync(path.join(root, `src/content/audio/${id}.md`), `---\ntitle: ${id}\n${id === "lesson-one" ? "reciters: [reader-a, reader-b]\n" : ""}status: published\nsource_type: book\nsource_id: fixture\nurl: https://example.com/${id}.opus\nduration: '1:00'\nsize_bytes: ${bytes.length}\n---\n`);
     }
     const result = await generateAppContent({ repositoryRoot: root, outputRoot: path.join(root, "out"),
       sidecarRoot: path.join(root, "ids"), targets: [{ coll: "book", id: "fixture" }], loadAudio: async () => bytes });
     expect(result.catalog.entries[0]?.audio?.map((audio) => audio.title)).toEqual(["lesson-one", "lesson-two"]);
+    expect(result.catalog.entries[0]?.audio?.map((audio) => audio.reciters)).toEqual([["reader-a", "reader-b"], undefined]);
   });
 
   it("keeps published text while omitting its draft recording", async () => {
