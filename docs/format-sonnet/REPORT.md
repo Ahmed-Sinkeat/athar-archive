@@ -248,3 +248,4 @@
 | al-adb-labn-aby-shyba | committed | card; hadith-text headings rejoined/un-headed; cut words re-joined | none | none |
 | mkhtsr-al-shmayl | committed | card; hadith-text headings rejoined/un-headed; cut words re-joined | none | none |
 | al-athar-lmhmd-bn-al-hsn | committed | card; hadith-text headings rejoined/un-headed; cut words re-joined | none | none |
+| mn-hdyth-khythma-bn-slyman | committed | card; hadith-text headings rejoined/un-headed; cut words re-joined | none | none |
