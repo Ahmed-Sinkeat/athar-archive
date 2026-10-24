@@ -1,4 +1,5 @@
 import { normalizeArabic } from "./ar-normalize.js";
+import { normalizePageMarkers } from "./read-body.js";
 
 // Phase 2 formatting pass: a book may only gain or lose markup. Text and punctuation must stay
 // in the same order (diacritics and whitespace ignored), frontmatter byte-identical, page markers
@@ -27,7 +28,8 @@ function text(body: string, importFix = false): string {
   const unmarked = (importFix ? body.replace(/\((?:\^)?[0-9\u0660-\u0669]+\)(?: - )?/g, "") : body)
     .replace(PAGE_MARKS, (tag) => `\u0001${notesText(tag)}\u0001`)
     .replace(/<[^>]+>/g, "")
-    .replace(/^[ \t]*(?:#{1,6}[ \t]+|[-*+][ \t]+|>[ \t]?|(?:-{3,}|\*{3,})[ \t]*$)/gm, "")
+    // a bare «#» line is an empty heading: markup too
+    .replace(/^[ \t]*(?:#{1,6}(?:[ \t]+|$)|[-*+][ \t]+|>[ \t]?|(?:-{3,}|\*{3,})[ \t]*$)/gm, "")
     // old imports left «## عنوان» mid-paragraph; that «##» is markup too, so it may move to a line start
     .replace(/(^|[ \t])#{2,6}[ \t]+/gm, "$1")
     .replace(/\*\*|\{#[\w-]+\}/g, "")
@@ -53,12 +55,16 @@ function pages(body: string): string {
 export function verifyFormatting(before: string, after: string, importFix = false): string | undefined {
   const [a, b] = [split(before), split(after)];
   if (a.front !== b.front) return "frontmatter changed";
+  // A plain «الجزء: N - الصفحة: M» line is a page marker to the reader and the parser alike.
+  [a.body, b.body] = [normalizePageMarkers(a.body), normalizePageMarkers(b.body)];
   // import-fix: numbers may change, and of two consecutive markers with one number (a page the import
   // split at a heading) the first may go.
   const unnumbered = (body: string) => !importFix ? pages(body) : pages(body).split("\n")
     .filter((tag, index, all) => tag.match(/data-page="[^"]*"/)?.[0] !== all[index + 1]?.match(/data-page="[^"]*"/)?.[0])
     .map((tag) => tag.replace(/\sdata-page="[^"]*"/, "")).join("\n");
-  if (unnumbered(a.body) !== unnumbered(b.body)) return "page markers differ";
+  // import-fix also takes every marker kept, one for one, with only its number changed.
+  const renumbered = (body: string) => pages(body).replace(/\sdata-page="[^"]*"/g, "");
+  if (unnumbered(a.body) !== unnumbered(b.body) && !(importFix && renumbered(a.body) === renumbered(b.body))) return "page markers differ";
   const sorted = (body: string) => importFix ? [...text(body, true).replaceAll("\u0001", "")].sort().join("") : text(body);
   const [ta, tb] = [sorted(a.body), sorted(b.body)];
   if (ta === tb) return undefined;

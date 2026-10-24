@@ -62,3 +62,14 @@ test("import-fix mode may turn a page's «(N) - note» tail into linked data-not
   expect(verifyFormatting(before, after, true)).toBeUndefined();
   expect(verifyFormatting(before, after.replace("أي هذا", "أي ذاك"), true)).toBeDefined();
 });
+
+test("import-fix may renumber any page marker, plain footer lines included, but not drop one", () => {
+  const before = `---\nt: 1\n---\nنص أول.\n\nالجزء: 1 - الصفحة: 5\n\nنص ثان.\n\n<hr class="page-sep" data-page="79" />\n\nنص ثالث.\n\n<hr class="page-sep" data-page="6" />\n`;
+  expect(verifyFormatting(before, before.replace('"79"', '"6"'), true)).toBeUndefined(); // stray 79 between 5 and 6
+  expect(verifyFormatting(before, before.replace("الصفحة: 5", "الصفحة: 4"), true)).toBeUndefined();
+  expect(verifyFormatting(before, before.replace('<hr class="page-sep" data-page="79" />\n', ""), true)).toBeDefined();
+  expect(verifyFormatting(before, before.replace("الجزء: 1 - الصفحة: 5\n", ""), true)).toBeDefined();
+  expect(verifyFormatting(before, before.replace("ثالث", "ثلث"), true)).toBeDefined();
+  // a bare «#» line is an empty heading: markup, so it may go
+  expect(verifyFormatting("---\nt: 1\n---\nأ\n#\nب\n", "---\nt: 1\n---\nأ\n\nب\n")).toBeUndefined();
+});

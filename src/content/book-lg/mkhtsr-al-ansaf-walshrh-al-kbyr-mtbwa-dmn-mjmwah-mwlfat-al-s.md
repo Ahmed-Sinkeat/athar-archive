@@ -801,7 +801,7 @@ description: "مختصر الإنصاف والشرح الكبير (مطبوع ض
 [^fn139]: سورة النساء آية: 29.
 
 [^fn140]: سورة النساء آية: 29.
-<hr class="page-sep" data-page="56" data-vol="1" />
+<hr class="page-sep" data-page="76" data-vol="1" />
 
 ### باب إزالة النجاسة
 

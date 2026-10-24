@@ -8625,7 +8625,7 @@ topics: ["al-nahw"]
 [^fn2572]: في الأصل: سمى. وما أبثتناه من "ق"، "هـ".
 
 [^fn2573]: في "ق"، "هـ": بألف.
-<hr class="page-sep" data-page="217" data-vol="1" />
+<hr class="page-sep" data-page="523" data-vol="1" />
 
 ### الوقف:
 
@@ -21611,7 +21611,7 @@ topics: ["al-nahw"]
 - عثول 576.
 عجز عجز 456.
 - عجائز 456، 777، 778.
-<hr class="page-sep" data-page="110" data-vol="2" />
+<hr class="page-sep" data-page="1141" data-vol="2" />
 
 ### ثاني عشر: فهرس مصادر البحث ومراجعه:
 

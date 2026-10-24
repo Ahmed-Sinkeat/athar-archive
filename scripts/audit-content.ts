@@ -6,6 +6,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { normalizeArabic } from "../src/lib/ar-normalize.js";
+import { normalizePageMarkers } from "../src/lib/read-body.js";
 
 const ROOT = path.resolve("src/content");
 const findings: string[] = [];
@@ -68,7 +69,9 @@ for (const f of fs.readdirSync(bookDir)) {
   // and the stripping silently no-ops, leaving the footer as a literal body
   // line. (Literal "(^N) note text" footnotes are NOT flagged here — that's
   // now a supported convention, see extractCaretNotesByPage in chapters.ts.)
-  const leakedFooter = lines.filter((l) => /^الجزء:\s*\S.*[-¦]\s*الصفحة:\s*[٠-٩0-9]+\s*$/.test(l.trim())).length;
+  // Plain footer lines are a supported source form: the site and the app parser both run
+  // normalizePageMarkers, which turns them into page markers. Only what survives it leaked.
+  const leakedFooter = normalizePageMarkers(lines.join("\n")).split("\n").filter((l) => /^الجزء:\s*\S.*[-¦]\s*الصفحة:\s*[٠-٩0-9]+\s*$/.test(l.trim())).length;
   if (content.length < 10) findings.push(`EMPTY book: ${f} (${content.length} lines)`);
   if (h2 <= 1 && content.length > 300) findings.push(`UNDIVIDED book: ${f} (${content.length} lines, ${h2} chapter headings)`);
   if (h1Bold > 0) findings.push(`H1-BOLD-HEADINGS book: ${f} (${h1Bold} «# **…**» lines — broken chapter split)`);

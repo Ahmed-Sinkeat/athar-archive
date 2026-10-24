@@ -40,7 +40,6 @@ edition: "السنة الثالثة والثلاثون، العدد الحادي
 
 <hr class="page-sep" data-page="20" data-juz="1" />
 
-## 
 
 ## تمهيد
 

@@ -17519,7 +17519,7 @@ topics: ["al-nahw"]
 [^fn4942]: أضفت "الواو" لتوضيح المعنى.
 
 [^fn4943]: انظر: تصريف المازني 2/ 244.
-<hr class="page-sep" data-page="166" data-vol="3" />
+<hr class="page-sep" data-page="377" data-vol="3" />
 
 القسمُ الثالث
 
