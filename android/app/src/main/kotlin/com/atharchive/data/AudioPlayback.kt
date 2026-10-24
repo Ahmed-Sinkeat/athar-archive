@@ -35,7 +35,7 @@ class AudioPlayback @Inject constructor(@ApplicationContext context: Context) {
                 player.addListener(object : Player.Listener {
                     override fun onEvents(player: Player, events: Player.Events) { publish() }
                     override fun onPlayerError(error: androidx.media3.common.PlaybackException) {
-                        _state.value = _state.value.copy(error = "تعذّر تشغيل التسجيل: ${error.errorCodeName}")
+                        _state.value = _state.value.copy(error = playbackMessage(error))
                     }
                 })
                 handler.post(object : Runnable {
@@ -86,7 +86,7 @@ class AudioPlayback @Inject constructor(@ApplicationContext context: Context) {
         val player = controller ?: return
         _state.value = AudioPlaybackState(player.currentMediaItem?.mediaId, player.currentPosition.coerceAtLeast(0),
             player.duration.takeIf { it > 0 } ?: 0, player.isPlaying, player.playbackParameters.speed,
-            player.repeatMode == Player.REPEAT_MODE_ONE, player.playerError?.let { "تعذّر تشغيل التسجيل: ${it.errorCodeName}" },
+            player.repeatMode == Player.REPEAT_MODE_ONE, player.playerError?.let(::playbackMessage),
             (0 until player.mediaItemCount).map { player.getMediaItemAt(it).mediaId }, player.playWhenReady, player.playbackState == Player.STATE_BUFFERING,
             if (sleepEndsAt == 0L) 0 else ((sleepEndsAt - android.os.SystemClock.elapsedRealtime()).coerceAtLeast(0) + 59_999).div(60_000).toInt())
     }
@@ -101,3 +101,12 @@ data class AudioPlaybackState(
     val buffering: Boolean = false,
     val sleepMinutes: Int = 0,
 )
+
+/** What a reader can act on, not the player's error constant. */
+private fun playbackMessage(error: androidx.media3.common.PlaybackException): String = when (error.errorCode) {
+    androidx.media3.common.PlaybackException.ERROR_CODE_IO_NETWORK_CONNECTION_FAILED,
+    androidx.media3.common.PlaybackException.ERROR_CODE_IO_NETWORK_CONNECTION_TIMEOUT -> "تعذّر تشغيل التسجيل: لا يوجد اتصال بالإنترنت"
+    androidx.media3.common.PlaybackException.ERROR_CODE_IO_BAD_HTTP_STATUS,
+    androidx.media3.common.PlaybackException.ERROR_CODE_IO_FILE_NOT_FOUND -> "تعذّر تشغيل التسجيل: الملف غير متاح"
+    else -> "تعذّر تشغيل التسجيل"
+}

@@ -18,10 +18,12 @@ import androidx.compose.ui.input.pointer.PointerEventPass
 import androidx.compose.ui.input.pointer.PointerInputChange
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.LayoutCoordinates
+import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.layout.positionInRoot
 import androidx.compose.ui.text.TextLayoutResult
 import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.style.ResolvedTextDirection
+import androidx.compose.ui.unit.dp
 
 // Amiri's typo ascent/descent (1124/-634 per 1000). The band is drawn to the glyphs, not
 // the airy line box, and handles hang from the glyph bottom.
@@ -113,6 +115,16 @@ internal class PageSelection {
         val g = best ?: return null
         val y = bestLocal.y.coerceIn(0f, (g.layout.size.height - 1).coerceAtLeast(0).toFloat())
         return Hit(g, g.layout.getOffsetForPosition(Offset(bestLocal.x, y)))
+    }
+
+    /** The ordinal and source offset of the text exactly under [point]; null in a gap. */
+    fun sourceAt(point: Offset): Pair<Int, Int>? {
+        val page = page?.takeIf { it.isAttached } ?: return null
+        val g = geometry.values.firstOrNull { g ->
+            g.coords.isAttached && g.coords.localPositionOf(page, point).y in 0f..g.coords.size.height.toFloat()
+        } ?: return null
+        val local = g.coords.localPositionOf(page, point)
+        return g.ordinal to g.value.sourceOffset(g.layout.getOffsetForPosition(local))
     }
 
     private fun endpoint(g: TextGeometry, display: Int) =
@@ -309,7 +321,7 @@ internal fun Modifier.pageSelectionGestures(
     handleRadius: Float,
     handleDrop: Float,
     haptics: HapticFeedback,
-    onTap: () -> Unit,
+    onTap: (Offset) -> Unit,
 ): Modifier = pointerInput(selection) {
     awaitEachGesture {
         val down = awaitFirstDown(requireUnconsumed = false, pass = PointerEventPass.Initial)
@@ -332,7 +344,7 @@ internal fun Modifier.pageSelectionGestures(
                 }
             }
         }
-        if (outcome == 1) { onTap(); return@awaitEachGesture }
+        if (outcome == 1) { onTap(down.position); return@awaitEachGesture }
         if (outcome == 2 || held != null) return@awaitEachGesture
         if (!selection.beginWord(currentEvent.changes.firstOrNull { it.id == down.id }?.position ?: down.position)) return@awaitEachGesture
         haptics.performHapticFeedback(HapticFeedbackType.LongPress)
@@ -368,4 +380,42 @@ internal fun selectionEdgeSpeed(y: Float, height: Int, edge: Float): Float {
         else -> return 0f
     }.coerceIn(-1f, 1f)
     return depth * kotlin.math.abs(depth)
+}
+
+/**
+ * The same edge scroll for Compose's own SelectionContainer (poems): a finger held past a
+ * long press, or dragging while the list itself isn't scrolling, is a handle being dragged,
+ * so near the top or bottom edge the list scrolls under it like the book page does.
+ */
+@androidx.compose.runtime.Composable
+internal fun Modifier.selectionEdgeScroll(list: androidx.compose.foundation.lazy.LazyListState): Modifier {
+    val density = androidx.compose.ui.platform.LocalDensity.current
+    var held by androidx.compose.runtime.remember { mutableStateOf<Offset?>(null) }
+    var height by androidx.compose.runtime.remember { androidx.compose.runtime.mutableIntStateOf(0) }
+    androidx.compose.runtime.LaunchedEffect(held != null) {
+        if (held == null) return@LaunchedEffect
+        val edge = with(density) { 96.dp.toPx() }
+        val maxSpeed = with(density) { 1600.dp.toPx() }
+        var last = 0L
+        while (true) androidx.compose.runtime.withFrameNanos { now ->
+            val dt = if (last == 0L) 0f else ((now - last) / 1_000_000_000f).coerceAtMost(1f / 30f)
+            last = now
+            val speed = held?.let { selectionEdgeSpeed(it.y, height, edge) } ?: 0f
+            if (speed != 0f && dt > 0f) list.dispatchRawDelta(speed * maxSpeed * dt)
+        }
+    }
+    return onSizeChanged { height = it.height }.pointerInput(list) {
+        awaitEachGesture {
+            val down = awaitFirstDown(requireUnconsumed = false, pass = PointerEventPass.Initial)
+            val longPressAt = down.uptimeMillis + viewConfiguration.longPressTimeoutMillis
+            var dragged = false
+            while (true) {
+                val change = awaitPointerEvent(PointerEventPass.Initial).changes.firstOrNull { it.id == down.id } ?: break
+                if (!change.pressed) break
+                dragged = dragged || (change.position - down.position).getDistance() > viewConfiguration.touchSlop
+                held = change.position.takeIf { (dragged || change.uptimeMillis >= longPressAt) && !list.isScrollInProgress }
+            }
+            held = null
+        }
+    }
 }

@@ -206,7 +206,8 @@ class AtharContentViewModel @Inject constructor(
         catalogDao.observeAllEntities(),
     ) { saved, catalog ->
         val sourceById = catalog.associateBy(ContentEntity::id)
-        val excerpts = saved.asSequence()
+        // A list, not a sequence: a poem's verse number is read from its block (a suspend call).
+        val excerpts = saved
             .filter { it.kind != AnnotationKind.Bookmark }
             .map { annotation ->
                 val source = sourceById[annotation.entityId]
@@ -224,6 +225,8 @@ class AtharContentViewModel @Inject constructor(
                             "قرب ص ${arabicNumber(it)}"
                         } ?: "موضع تقريبي"
                         AttachmentState.Exact -> annotation.printedPage?.let { "ص ${arabicNumber(it)}" }
+                            ?: if (source?.coll != "poem") null else importDao.blockAt(annotation.entityId, annotation.start.ordinalHint)
+                                ?.safeAttributes()?.n?.let { "البيت ${arabicNumber(it)}" }
                     },
                     topics = source?.topicsCsv?.split(',')?.filter(String::isNotBlank)?.map(::topicName).orEmpty(),
                     comment = annotation.noteText,
@@ -233,7 +236,6 @@ class AtharContentViewModel @Inject constructor(
                     attachmentState = annotation.state.storageValue,
                 )
             }
-            .toList()
         KannashahUiState(
             headline = if (excerpts.isEmpty()) "" else
                 "${arabicCount(excerpts.size, "", "مقتطف واحد", "مقتطفان", "مقتطفات", "مقتطفًا")} من " +
@@ -954,6 +956,15 @@ class AtharContentViewModel @Inject constructor(
         ))
     }
 
+    /** Takes a verse out of الكناشة: every highlight that starts in it. */
+    suspend fun removeSavedBlock(entityId: String, ordinal: Int) {
+        val block = requireNotNull(importDao.blockAt(entityId, ordinal)) { "النص لم يُحمّل بعد" }
+        val blockId = AnnotationBlockId(block.blockIdHi, block.blockIdLo)
+        annotationRepository.observe(AnnotationFilter(entityId = entityId)).first()
+            .filter { it.kind != AnnotationKind.Bookmark && it.start.blockId == blockId }
+            .forEach { annotationRepository.delete(it.id) }
+    }
+
     suspend fun toggleBookmark(entityId: String, ordinal: Int) {
         // The top of the screen can be a page divider or a page's notes: mark the text after it.
         val block = importDao.blockWindow(entityId, ordinal, ordinal + BookmarkLookahead).firstOrNull { it.text.isNotBlank() }
@@ -1232,7 +1243,7 @@ private fun ReaderUiState.withAnnotations(annotations: List<Annotation>, preview
         )
     }
     val highlights = annotations.filter { it.kind != AnnotationKind.Bookmark && it.state == AttachmentState.Exact }
-        .map { ReaderHighlight(it.start.ordinalHint, it.end.ordinalHint, it.start.offset, it.end.offset) }
+        .map { ReaderHighlight(it.start.ordinalHint, it.end.ordinalHint, it.start.offset, it.end.offset, it.id) }
     return copy(bookmarks = bookmarks, benefits = benefits, highlights = highlights)
 }
 

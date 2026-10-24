@@ -7,16 +7,10 @@ import androidx.compose.ui.graphics.luminance
 import androidx.compose.material3.MaterialTheme
 import com.atharchive.ui.theme.AtharTheme
 import com.atharchive.ui.theme.AtharExtraColors
-import com.atharchive.ui.theme.CreamInk
-import com.atharchive.ui.theme.DarkExtraColors
-import com.atharchive.ui.theme.LightExtraColors
-import com.atharchive.ui.theme.LightInk
-import com.atharchive.ui.theme.NightInk
-import com.atharchive.ui.theme.WarmExtraColors
 
 /**
- * Reading follows the app exactly. Explicit page palettes remain available for readers
- * who choose a different page appearance.
+ * Reading follows the app exactly: the reader's «المظهر» row sets the app's own theme, so
+ * there is one theme, not two that can drift.
  */
 @Immutable
 data class ReaderColors(
@@ -50,15 +44,8 @@ private val PaperQuote = Color(0xFF2A4C8C)
 private val NightQuote = Color(0xFF7FA6E8)
 
 @Composable
-fun rememberReaderColors(palette: ReaderPalette): ReaderColors {
-    return when (palette) {
-        ReaderPalette.Follow -> followedReaderColors(AtharTheme.colors, MaterialTheme.colorScheme.onBackground)
-        // The same palettes the app uses, so a fixed reader page and the app can never drift.
-        ReaderPalette.White -> followedReaderColors(LightExtraColors, LightInk)
-        ReaderPalette.Warm -> followedReaderColors(WarmExtraColors, CreamInk)
-        ReaderPalette.Dark -> followedReaderColors(DarkExtraColors, NightInk)
-    }
-}
+fun rememberReaderColors(): ReaderColors =
+    followedReaderColors(AtharTheme.colors, MaterialTheme.colorScheme.onBackground)
 
 internal fun followedReaderColors(app: AtharExtraColors, text: Color) = ReaderColors(
     page = app.canvas, text = text, secondary = app.secondaryText, divider = app.divider,

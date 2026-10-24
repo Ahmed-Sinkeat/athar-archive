@@ -103,19 +103,26 @@ fun PoetryScreen(
     val topic = topicStored.orFirstIn(topics)
     val hasActiveFilters = topic != AllTopics || sort != PoemSort.Newest
 
+    // Normalized once per catalog change, not per filter pass or per sort comparison.
+    val normalized = remember(state.poems) {
+        state.poems.associate { poem ->
+            poem.id to Triple(ArNormalize.normalize(poem.title), ArNormalize.normalize(poem.poet), poem.openingVerses.map(ArNormalize::normalize))
+        }
+    }
     val visiblePoems = remember(state.poems, selectedTab, query, topic, sort) {
+        val term = ArNormalize.normalize(query.trim())
         state.poems.filter { poem ->
             val matchesTab = selectedTab.matches(poem.recentRank != null, poem.downloaded, poem.saved)
-            val term = ArNormalize.normalize(query.trim())
+            val (title, poet, opening) = normalized.getValue(poem.id)
             val matchesQuery = term.isBlank() ||
-                ArNormalize.normalize(poem.title).contains(term, ignoreCase = true) ||
-                ArNormalize.normalize(poem.poet).contains(term, ignoreCase = true) ||
-                poem.openingVerses.any { ArNormalize.normalize(it).contains(term, ignoreCase = true) }
+                title.contains(term, ignoreCase = true) ||
+                poet.contains(term, ignoreCase = true) ||
+                opening.any { it.contains(term, ignoreCase = true) }
             matchesTab && matchesQuery && (topic == AllTopics || poem.topic == topic)
         }.sortedWith(
             if (selectedTab == SectionTab.Recent) compareBy { it.recentRank ?: Int.MAX_VALUE } else when (sort) {
-                PoemSort.Title -> compareBy { ArNormalize.normalize(it.title) }
-                PoemSort.Poet -> compareBy { ArNormalize.normalize(it.poet) }
+                PoemSort.Title -> compareBy { normalized.getValue(it.id).first }
+                PoemSort.Poet -> compareBy { normalized.getValue(it.id).second }
                 PoemSort.Newest -> compareBy { it.title }
             },
         )

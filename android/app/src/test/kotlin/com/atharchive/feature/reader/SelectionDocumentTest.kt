@@ -57,7 +57,7 @@ class SelectionDocumentTest {
     }
 
     @Test
-    fun followUsesExactAppTokensAndMigratesOnlyTheLegacyPalette() {
+    fun followUsesExactAppTokens() {
         for (app in listOf(com.atharchive.ui.theme.LightExtraColors, com.atharchive.ui.theme.DarkExtraColors)) {
             val text = androidx.compose.ui.graphics.Color(0xFF123456)
             val reader = followedReaderColors(app, text)
@@ -66,10 +66,6 @@ class SelectionDocumentTest {
             assertEquals(app.secondaryText, reader.secondary)
             assertEquals(app.accent, reader.accent)
         }
-        assertEquals(ReaderPalette.Follow, com.atharchive.data.savedReaderPalette("Dark", false))
-        assertEquals(ReaderPalette.Follow, com.atharchive.data.savedReaderPalette(null, true))
-        assertEquals(ReaderPalette.Follow, com.atharchive.data.savedReaderPalette("invalid", true))
-        assertEquals(ReaderPalette.Warm, com.atharchive.data.savedReaderPalette("Warm", true))
     }
 
     private fun blocks(first: Int, last: Int) = (first..last).map {

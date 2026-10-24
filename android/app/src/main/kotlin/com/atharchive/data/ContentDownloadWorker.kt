@@ -67,7 +67,7 @@ class ContentDownloadWorker(
         val batches = batches
         val done = batches.sumOf { it.done }
         val total = batches.sumOf { it.total }
-        val builder = Notification.Builder(applicationContext, "content_downloads")
+        val builder = Notification.Builder(applicationContext, ContentDownloadNotifications.ProgressChannelId)
             .setSmallIcon(R.drawable.ic_notification)
             .setContentIntent(openApp).setOngoing(true).setOnlyAlertOnce(true)
         if (total > 0) {
@@ -188,6 +188,8 @@ class ContentDownloadScheduler @Inject constructor(
 
 object ContentDownloadNotifications {
     private const val ChannelId = "content_downloads"
+    /** Silent: every worker re-posts the progress line, and on an alerting channel each one rang. */
+    const val ProgressChannelId = "content_download_progress"
     private const val GroupKey = "athar_content_downloads"
     private const val SummaryId = 0x415448
     const val OngoingId = 0x415449
@@ -202,6 +204,9 @@ object ContentDownloadNotifications {
             ).apply {
                 description = "اكتمال تنزيل الكتب والمقالات والقصائد"
             },
+        )
+        manager.createNotificationChannel(
+            NotificationChannel(ProgressChannelId, "تقدّم التنزيل", NotificationManager.IMPORTANCE_LOW),
         )
     }
 
@@ -252,6 +257,7 @@ object ContentDownloadNotifications {
             .setContentIntent(pendingIntent)
             .setAutoCancel(true)
             .setGroup(GroupKey)
+            .setGroupAlertBehavior(Notification.GROUP_ALERT_SUMMARY)
             .build()
         val summary = Notification.Builder(context, ChannelId)
             .setSmallIcon(R.drawable.ic_notification)
@@ -259,6 +265,7 @@ object ContentDownloadNotifications {
             .setContentText("اكتملت تنزيلات المحتوى")
             .setGroup(GroupKey)
             .setGroupSummary(true)
+            .setOnlyAlertOnce(true)
             .build()
         manager.notify(entityId.hashCode(), item)
         manager.notify(SummaryId, summary)

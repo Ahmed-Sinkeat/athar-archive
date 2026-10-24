@@ -213,7 +213,9 @@ fun AtharApp(
     LaunchedEffect(playbackError) { playbackError?.let { snackbarHostState.showSnackbar(it) } }
     LaunchedEffect(syncState) {
         if (syncState is com.atharchive.data.ContentSyncUiState.Failed &&
-            snackbarHostState.showSnackbar("تعذّر تحديث المحتوى؛ النصوص المحفوظة متاحة", "إعادة المحاولة", withDismissAction = true) == androidx.compose.material3.SnackbarResult.ActionPerformed) {
+            snackbarHostState.showSnackbar("تعذّر تحديث المحتوى؛ النصوص المحفوظة متاحة", "إعادة المحاولة", withDismissAction = true,
+                // With an action it would stay until dismissed, over the readers' bottom bars.
+                duration = androidx.compose.material3.SnackbarDuration.Long) == androidx.compose.material3.SnackbarResult.ActionPerformed) {
             contentViewModel.sync()
         }
     }
@@ -515,6 +517,7 @@ fun AtharApp(
                             onPageJump = { page, volume -> contentViewModel.findPrintedPage(route.bookId, page, volume) },
                             onAnchorJump = { contentViewModel.findHeadingAnchor(route.bookId, it) },
                             onLoadSelectionBlocks = { contentViewModel.selectionBlocks(route.bookId, it) },
+                            onRemoveHighlight = contentViewModel::deleteAnnotation,
                             onPlayAudio = { contentViewModel.playWorkAudio(route.bookId, it.id) },
                             playingAudioId = playingAudioId,
                             audioPlayIntent = audioPlayIntent,
@@ -540,6 +543,8 @@ fun AtharApp(
                             onPositionWithOffset = { ordinal, offset -> contentViewModel.onReaderPosition(route.bookId, ordinal, offset) },
                             settings = readerSettings,
                             onSettingsChange = onReaderSettingsChange,
+                            themeMode = themeMode,
+                            onThemeModeChange = onThemeModeChange,
                             initialSearchTarget = if (
                                 route.targetOrdinal != null && route.matchStart != null && route.matchEnd != null
                             ) {
@@ -567,6 +572,8 @@ fun AtharApp(
                             onBack = ::goBack,
                             settings = readerSettings,
                             onSettingsChange = onReaderSettingsChange,
+                            themeMode = themeMode,
+                            onThemeModeChange = onThemeModeChange,
                             playback = playbackState,
                             onPlayAudio = { contentViewModel.playWorkAudio(route.poemId, it.id) },
                             onToggleAudio = contentViewModel.playback::toggle,
@@ -575,6 +582,7 @@ fun AtharApp(
                             onSeekMs = contentViewModel.playback::seekTo,
                             onToggleBookmark = { contentViewModel.toggleBookmark(route.poemId, it) },
                             onSaveVerse = { contentViewModel.saveBlock(route.poemId, it) },
+                            onRemoveVerse = { contentViewModel.removeSavedBlock(route.poemId, it) },
                             initialOrdinal = route.targetOrdinal,
                             onPositionChange = { contentViewModel.onReaderPosition(route.poemId, it) },
                             onRetry = { contentViewModel.openReader(route.poemId, route.targetOrdinal) },

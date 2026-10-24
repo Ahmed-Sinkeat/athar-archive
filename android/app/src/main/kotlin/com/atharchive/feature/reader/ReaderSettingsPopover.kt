@@ -56,6 +56,8 @@ fun ReaderSettingsPopover(
     colors: ReaderColors,
     onChange: (ReaderSettings) -> Unit,
     onDismiss: () -> Unit,
+    themeMode: com.atharchive.ui.theme.ThemeMode,
+    onThemeModeChange: (com.atharchive.ui.theme.ThemeMode) -> Unit,
     forPoem: Boolean = false,
 ) {
     AtharMenu(
@@ -124,15 +126,15 @@ fun ReaderSettingsPopover(
                 onChange(settings.copy(footnoteMode = FootnoteMode.entries.first { it.label == label }))
             } }
 
-            GroupLabel("مظهر القراءة", colors)
+            // The app's own theme, the same control as الإعدادات › المظهر: one theme everywhere.
+            GroupLabel("المظهر", colors)
+            val modes = com.atharchive.ui.theme.ThemeMode.entries
             SegmentRow(
-                options = ReaderPalette.entries.map { it.label },
-                selected = settings.palette.label,
+                options = modes.map { it.label },
+                selected = themeMode.label,
                 colors = colors,
                 tagPrefix = "reader_palette",
-            ) { label ->
-                onChange(settings.copy(palette = ReaderPalette.entries.first { it.label == label }))
-            }
+            ) { label -> onThemeModeChange(modes.first { it.label == label }) }
         }
     }
 }

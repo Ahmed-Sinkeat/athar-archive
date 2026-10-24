@@ -37,7 +37,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.atharchive.feature.reader.ReaderPalette
 import com.atharchive.feature.reader.ReaderSettings
 import com.atharchive.feature.reader.ReaderSpacing
 import com.atharchive.feature.reader.rememberReaderColors
@@ -68,7 +67,7 @@ fun AppearanceScreen(
             .background(AtharTheme.colors.canvas),
     ) {
         val pad = if (maxWidth >= 720.dp) 32.dp else 20.dp
-        val segmentColors = rememberReaderColors(ReaderPalette.Follow)
+        val segmentColors = rememberReaderColors()
         val segmentPad = Modifier.padding(horizontal = pad, vertical = 6.dp)
 
         Column(modifier = Modifier.fillMaxSize()) {

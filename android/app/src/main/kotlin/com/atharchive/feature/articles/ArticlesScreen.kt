@@ -92,18 +92,23 @@ fun ArticlesScreen(
     // radio list does not scale to that. Sorting by author covers the same intent.
     val hasActiveFilters = sort != ArticleSort.Newest
 
+    // Normalized once per catalog change, not per filter pass or per sort comparison.
+    val normalized = remember(state.articles) {
+        state.articles.associate { it.id to (ArNormalize.normalize(it.title) to ArNormalize.normalize(it.author)) }
+    }
     val visibleArticles = remember(state.articles, selectedTab, query, sort) {
+        val term = ArNormalize.normalize(query.trim())
         state.articles.filter { article ->
             val matchesTab = selectedTab.matches(article.recentRank != null, article.downloaded, article.saved)
-            val term = ArNormalize.normalize(query.trim())
+            val (title, author) = normalized.getValue(article.id)
             val matchesQuery = term.isBlank() ||
-                ArNormalize.normalize(article.title).contains(term, ignoreCase = true) ||
-                ArNormalize.normalize(article.author).contains(term, ignoreCase = true)
+                title.contains(term, ignoreCase = true) ||
+                author.contains(term, ignoreCase = true)
             matchesTab && matchesQuery
         }.sortedWith(
             if (selectedTab == SectionTab.Recent) compareBy { it.recentRank ?: Int.MAX_VALUE } else when (sort) {
-                ArticleSort.Title -> compareBy { ArNormalize.normalize(it.title) }
-                ArticleSort.Author -> compareBy { ArNormalize.normalize(it.author) }
+                ArticleSort.Title -> compareBy { normalized.getValue(it.id).first }
+                ArticleSort.Author -> compareBy { normalized.getValue(it.id).second }
                 ArticleSort.Newest -> compareBy { it.title }
             },
         )

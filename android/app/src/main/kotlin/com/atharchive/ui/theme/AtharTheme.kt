@@ -20,8 +20,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import com.atharchive.R
 
-// One palette set, shared by the app and the reader (the reader's fixed palettes are built
-// from these same values): فاتح is the reader's white page, دافئ its cream page, داكن its night.
+// One palette set, shared by the app and the reader: the reader always paints the app's theme.
 private val Paper = Color(0xFFFFFFFF)
 private val PaperRaised = Color(0xFFF6F4F1)
 private val PaperPressed = Color(0xFFEEEAE5)
@@ -207,8 +206,8 @@ enum class ThemeMode(val label: String) {
 /**
  * The app's resolved theme, for surfaces that paint their own colours.
  *
- * The reader keeps a palette of its own, and it has to be able to ask what the app
- * settled on without asking the system a second question and disagreeing with it.
+ * Surfaces that paint their own colours ask this rather than the system, so they never
+ * disagree with the app's choice.
  */
 val LocalAtharDarkTheme = staticCompositionLocalOf { false }
 

@@ -1,7 +1,6 @@
 package com.atharchive.data
 
 import android.content.Context
-import com.atharchive.feature.reader.ReaderPalette
 import com.atharchive.feature.reader.FootnoteMode
 import com.atharchive.feature.reader.ReaderSettings
 import com.atharchive.ui.theme.ThemeMode
@@ -60,7 +59,6 @@ class AppearanceStore @Inject constructor(@ApplicationContext context: Context) 
             .putBoolean("poem_prose", settings.poemProse)
             .putBoolean("poem_follow", settings.poemFollow)
             .putString(KeySpacing, settings.spacing.name)
-            .putString(KeyPalette, settings.palette.name)
             .apply()
     }
 
@@ -69,14 +67,10 @@ class AppearanceStore @Inject constructor(@ApplicationContext context: Context) 
 
     private fun readReaderSettings(): ReaderSettings {
         val defaults = ReaderSettings()
-        val migrated = prefs.getBoolean("reader_app_theme_migrated", false)
-        val palette = savedReaderPalette(prefs.getString(KeyPalette, null), migrated)
-        if (!migrated) prefs.edit().putString(KeyPalette, palette.name).putBoolean("reader_app_theme_migrated", true).apply()
         return ReaderSettings(
             fontSize = prefs.getInt(KeyFontSize, defaults.fontSize)
                 .coerceIn(ReaderSettings.MIN_SIZE, ReaderSettings.MAX_SIZE),
             spacing = enumOrDefault(prefs.getString(KeySpacing, null), defaults.spacing),
-            palette = palette,
             margin = prefs.getInt("reader_margin", defaults.margin).coerceIn(12, 40),
             showTashkeel = prefs.getBoolean("reader_tashkeel", true),
             footnoteMode = footnoteModeOf(
@@ -100,13 +94,8 @@ class AppearanceStore @Inject constructor(@ApplicationContext context: Context) 
         const val KeyStartPlace = "start_place"
         const val KeyFontSize = "reader_font_size"
         const val KeySpacing = "reader_spacing"
-        const val KeyPalette = "reader_palette"
     }
 }
-
-// Migrate the old independent page preference once; later explicit page choices persist.
-internal fun savedReaderPalette(name: String?, migrated: Boolean): ReaderPalette =
-    if (!migrated) ReaderPalette.Follow else ReaderPalette.entries.find { it.name == name } ?: ReaderPalette.Follow
 
 /** Where the app opens. [route] is the bottom-bar destination, null for the last-read work. */
 enum class StartPlace(val label: String, val route: String?) {

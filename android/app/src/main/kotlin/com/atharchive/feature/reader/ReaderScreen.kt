@@ -122,6 +122,8 @@ fun ReaderScreen(
     onPositionWithOffset: ((Int, Int) -> Unit)? = null,
     settings: ReaderSettings,
     onSettingsChange: (ReaderSettings) -> Unit,
+    themeMode: com.atharchive.ui.theme.ThemeMode,
+    onThemeModeChange: (com.atharchive.ui.theme.ThemeMode) -> Unit,
     modifier: Modifier = Modifier,
     initialSearchTarget: ReaderSearchTarget? = null,
     initialOrdinal: Int? = null,
@@ -133,6 +135,7 @@ fun ReaderScreen(
     onOpenEntity: (String) -> Unit = {},
     onAnchorJump: (suspend (String) -> Int?)? = null,
     onLoadSelectionBlocks: (suspend (IntRange) -> List<ReaderBlock>)? = null,
+    onRemoveHighlight: suspend (String) -> Unit = {},
 ) {
     var introOpen by remember { mutableStateOf(false) }
     var settingsOpen by remember { mutableStateOf(false) }
@@ -148,7 +151,7 @@ fun ReaderScreen(
 
     var shownFootnotes by remember { mutableStateOf<Pair<List<String>, androidx.compose.ui.geometry.Rect>?>(null) }
     val uriHandler = LocalUriHandler.current
-    val colors = rememberReaderColors(settings.palette)
+    val colors = rememberReaderColors()
     // Index 0 belongs to the title item. A partial cache can start at any semantic
     // ordinal, so translate the durable ordinal to its position in the local window.
     val initialDisplayIndex = if (window != null) initialOrdinal ?: state.readingPositionIndex
@@ -171,26 +174,21 @@ fun ReaderScreen(
     // page scrolls down and back as it scrolls up, and settle open or closed when it lets go.
     // They float over the page, so the text never moves. Driven by the gesture (nested scroll),
     // so the jump to the saved place or a search jump never moves them; a tap shows or hides them.
-    var barsHidden by remember { mutableFloatStateOf(0f) } // 0 shown … 1 hidden
-    suspend fun settleBars(target: Float) =
-        animate(barsHidden, target, animationSpec = spring(stiffness = Spring.StiffnessMediumLow)) { value, _ -> barsHidden = value }
+    val bars = rememberCollapsingBars()
     val density = LocalDensity.current
-    val hideOnScroll = remember(density) {
-        val distance = with(density) { 64.dp.toPx() } // finger travel that fully hides them
-        object : NestedScrollConnection {
-            override fun onPreScroll(available: Offset, source: NestedScrollSource): Offset {
-                barsHidden = (barsHidden - available.y / distance).coerceIn(0f, 1f)
-                return Offset.Zero
-            }
-            override suspend fun onPostFling(consumed: Velocity, available: Velocity): Velocity {
-                settleBars(if (barsHidden > 0.5f) 1f else 0f)
-                return Velocity.Zero
-            }
+    // A tap on the page dismisses a selection, offers to remove a highlight under it,
+    // otherwise toggles the bars.
+    var tappedHighlight by remember { mutableStateOf<Pair<String, androidx.compose.ui.geometry.Rect>?>(null) }
+    fun onPageTap(point: Offset) {
+        if (selection.active) { selection.clear(); return }
+        val hit = selection.sourceAt(point)?.let { (ordinal, offset) ->
+            state.highlights.firstOrNull { it.id.isNotEmpty() && it.contains(ordinal, offset) }
         }
-    }
-    // A tap on the page dismisses a selection, otherwise toggles the bars.
-    fun onPageTap() {
-        if (selection.active) selection.clear() else scope.launch { settleBars(if (barsHidden < 0.5f) 1f else 0f) }
+        val page = selection.page
+        if (hit != null && page?.isAttached == true) {
+            val at = page.localToRoot(point)
+            tappedHighlight = hit.id to androidx.compose.ui.geometry.Rect(at, androidx.compose.ui.geometry.Size(1f, 1f))
+        } else scope.launch { bars.toggle() }
     }
 
     // Reading position is written continuously. There is no "save position" control,
@@ -326,7 +324,6 @@ fun ReaderScreen(
     }
     // Read only while drawing the bar: computed in the body, it recomposed the whole reader
     // on every scroll frame.
-    var scrub by remember { mutableStateOf<Float?>(null) }
     fun progress(): Float = when {
         state.blockCount <= 1 -> 0f
         restored && !listState.canScrollForward -> 1f
@@ -376,7 +373,7 @@ fun ReaderScreen(
       LaunchedEffect(wide) { if (wide) panelOpen = true }
       val panelWidth = if (wide && panelOpen) 360.dp else 0.dp
       // A narrow panel sits between the bars, so they stay while it is open.
-      val hidden = if (panelOpen && !wide) 0f else barsHidden
+      val hidden = if (panelOpen && !wide) 0f else bars.hidden
       val barsShown = hidden < 0.5f
       // The list's padding never changes, so the text doesn't move when the bars come and go.
       var topBarHeight by remember { mutableStateOf(0.dp) }
@@ -412,7 +409,7 @@ fun ReaderScreen(
                     if (selection.active) drawSelectionHandles(selection, colors.accent,
                         drop = HandleDrop.toPx(), radius = 6.dp.toPx(), stem = 2.dp.toPx())
                 }
-                .nestedScroll(hideOnScroll)
+                .nestedScroll(bars.connection)
                 // Laid out but invisible until the saved place is restored, so the title page
                 // is never drawn and then scrolled away from.
                 .alpha(if (contentReady) 1f else 0f)
@@ -540,6 +537,25 @@ fun ReaderScreen(
             )
         }
 
+        tappedHighlight?.let { (id, at) ->
+            AtharMenu(
+                expanded = true,
+                onDismiss = { tappedHighlight = null },
+                anchor = at,
+                colors = com.atharchive.ui.components.AtharMenuColors(colors.page, colors.text, colors.secondary, colors.accent),
+                modifier = Modifier.testTag("reader_highlight_menu"),
+            ) {
+                AtharMenuItem("إزالة التظليل من الكناشة", icon = AtharIcons.Close, destructive = true, onClick = {
+                    tappedHighlight = null
+                    scope.launch {
+                        toast = try { onRemoveHighlight(id); "أُزيل التظليل" }
+                        catch (cancelled: CancellationException) { throw cancelled }
+                        catch (_: Exception) { "تعذّرت إزالة التظليل" }
+                    }
+                })
+            }
+        }
+
         // Between the bars, and above the audio strip.
         if (panelOpen) {
             ReaderPanel(
@@ -601,64 +617,18 @@ fun ReaderScreen(
                 .onSizeChanged { bottomOverlayHeight = with(density) { it.height.toDp() } }
                 .graphicsLayer { translationY = hidden * bottomBarHeight.toPx() },
         ) {
-            // Hold and slide to pick a place: the bubble names the chapter under the thumb, release jumps.
-            // The strip is taller than the 3dp line so a thumb can catch it.
-            val rtl = androidx.compose.ui.platform.LocalLayoutDirection.current == androidx.compose.ui.unit.LayoutDirection.Rtl
-            fun scrubIndex(fraction: Float) = (fraction * (state.blockCount - 1)).roundToInt().coerceAtLeast(0)
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(18.dp)
-                    .pointerInput(state.blockCount, rtl) {
-                        fun at(x: Float) = (if (rtl) 1f - x / size.width else x / size.width).coerceIn(0f, 1f)
-                        detectHorizontalDragGestures(
-                            onDragStart = { scrub = at(it.x); haptics.performHapticFeedback(androidx.compose.ui.hapticfeedback.HapticFeedbackType.LongPress) },
-                            onDragEnd = { scrub?.let { jumpTo(scrubIndex(it)) }; scrub = null },
-                            onDragCancel = { scrub = null },
-                        ) { change, _ -> change.consume(); scrub = at(change.position.x) }
-                    }
-                    .semantics {
-                        progressBarRangeInfo = androidx.compose.ui.semantics.ProgressBarRangeInfo(progress(), 0f..1f)
-                        setProgress("الانتقال في الكتاب") { jumpTo(scrubIndex(it.coerceIn(0f, 1f))); true }
-                    }
-                    .drawBehind {
-                        val line = (if (scrub != null) 6.dp else 3.dp).toPx()
-                        val top = size.height - line
-                        drawRect(colors.divider.copy(alpha = 0.5f), topLeft = androidx.compose.ui.geometry.Offset(0f, top), size = androidx.compose.ui.geometry.Size(size.width, line))
-                        val width = size.width * (scrub ?: progress())
-                        val left = if (rtl) size.width - width else 0f
-                        drawRect(colors.accent, topLeft = androidx.compose.ui.geometry.Offset(left, top),
-                            size = androidx.compose.ui.geometry.Size(width, line))
-                    }
-                    .testTag("reader_progress"),
-            ) {
-                scrub?.let { fraction ->
-                    val index = scrubIndex(fraction)
-                    val kitabs = state.toc.filter { it.level == 2 && it.title.isNotBlank() }
-                    val at = kitabs.indexOfLast { it.blockIndex <= index }
-                    val bab = state.toc.lastOrNull { it.blockIndex <= index }?.takeIf { it.level > 2 }
-                    Column(
-                        Modifier.align(Alignment.BottomCenter)
-                            .wrapContentHeight(Alignment.Bottom, unbounded = true)
-                            .padding(start = 24.dp, end = 24.dp, bottom = 26.dp)
-                            .clip(com.atharchive.ui.theme.AtharCorners.Card)
-                            .background(colors.page)
-                            .border(0.7.dp, colors.divider, com.atharchive.ui.theme.AtharCorners.Card)
-                            .padding(horizontal = 14.dp, vertical = 8.dp)
-                            .testTag("reader_scrub_bubble"),
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                    ) {
-                        val percent = "${com.atharchive.ui.components.arabicDigits((fraction * 100).roundToInt())}٪"
-                        Text(
-                            if (at >= 0) "${com.atharchive.ui.components.arabicDigits(at + 1)} / ${com.atharchive.ui.components.arabicDigits(kitabs.size)} · ${kitabs[at].title}" else percent,
-                            color = colors.text, fontWeight = FontWeight.Bold, maxLines = 1, overflow = TextOverflow.Ellipsis,
-                        )
-                        Text(
-                            listOfNotNull(bab?.title, percent.takeIf { at >= 0 }).joinToString(" · "),
-                            color = colors.secondary, style = MaterialTheme.typography.labelMedium, maxLines = 1, overflow = TextOverflow.Ellipsis,
-                        )
-                    }
-                }
+            ReaderProgressStrip(
+                count = state.blockCount,
+                colors = colors,
+                progress = ::progress,
+                jumpLabel = "الانتقال في الكتاب",
+                onJump = ::jumpTo,
+            ) { index, percent ->
+                val kitabs = state.toc.filter { it.level == 2 && it.title.isNotBlank() }
+                val at = kitabs.indexOfLast { it.blockIndex <= index }
+                val bab = state.toc.lastOrNull { it.blockIndex <= index }?.takeIf { it.level > 2 }
+                (if (at >= 0) "${com.atharchive.ui.components.arabicDigits(at + 1)} / ${com.atharchive.ui.components.arabicDigits(kitabs.size)} · ${kitabs[at].title}" else percent) to
+                    listOfNotNull(bab?.title, percent.takeIf { at >= 0 }).joinToString(" · ")
             }
             if (audioOpen && state.audio.isNotEmpty()) {
                 ReaderAudioStrip(
@@ -688,7 +658,7 @@ fun ReaderScreen(
                 settingsOpen = settingsOpen,
                 onSettings = { settingsOpen = true },
                 settingsMenu = {
-                    ReaderSettingsPopover(settingsOpen, settings, colors, onSettingsChange, onDismiss = { settingsOpen = false })
+                    ReaderSettingsPopover(settingsOpen, settings, colors, onSettingsChange, onDismiss = { settingsOpen = false }, themeMode, onThemeModeChange)
                 },
                 onBookmark = {
                     val alreadyBookmarked = bookmarkedHere
@@ -978,18 +948,113 @@ private suspend fun resolveSelection(
     return document.selection(document.offset(start) ?: return null, document.offset(end) ?: return null)
 }
 
+/** The bars' slide-away state: shared by every reader so they all hide and return alike. */
+@androidx.compose.runtime.Stable
+internal class CollapsingBars(private val distance: Float) {
+    var hidden by mutableFloatStateOf(0f) // 0 shown … 1 hidden
+        private set
+    suspend fun settle(target: Float) =
+        animate(hidden, target, animationSpec = spring(stiffness = Spring.StiffnessMediumLow)) { value, _ -> hidden = value }
+    suspend fun toggle() = settle(if (hidden < 0.5f) 1f else 0f)
+    val connection = object : NestedScrollConnection {
+        override fun onPreScroll(available: Offset, source: NestedScrollSource): Offset {
+            hidden = (hidden - available.y / distance).coerceIn(0f, 1f)
+            return Offset.Zero
+        }
+        override suspend fun onPostFling(consumed: Velocity, available: Velocity): Velocity {
+            settle(if (hidden > 0.5f) 1f else 0f)
+            return Velocity.Zero
+        }
+    }
+}
+
+/** 64dp of finger travel fully hides the bars. */
+@Composable
+internal fun rememberCollapsingBars(): CollapsingBars {
+    val density = LocalDensity.current
+    return remember(density) { CollapsingBars(with(density) { 64.dp.toPx() }) }
+}
+
+/**
+ * The reading progress line; hold and slide to pick a place, release jumps. The bubble shows
+ * [label]'s two lines for the item under the thumb. Taller than the 3dp line so a thumb can catch it.
+ * [progress] is read only while drawing, so scrolling never recomposes the caller.
+ */
+@Composable
+internal fun ReaderProgressStrip(
+    count: Int,
+    colors: ReaderColors,
+    progress: () -> Float,
+    jumpLabel: String,
+    onJump: (Int) -> Unit,
+    label: (index: Int, percent: String) -> Pair<String, String>,
+) {
+    var scrub by remember { mutableStateOf<Float?>(null) }
+    val haptics = LocalHapticFeedback.current
+    val rtl = androidx.compose.ui.platform.LocalLayoutDirection.current == androidx.compose.ui.unit.LayoutDirection.Rtl
+    fun scrubIndex(fraction: Float) = (fraction * (count - 1)).roundToInt().coerceAtLeast(0)
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(18.dp)
+            .pointerInput(count, rtl) {
+                fun at(x: Float) = (if (rtl) 1f - x / size.width else x / size.width).coerceIn(0f, 1f)
+                detectHorizontalDragGestures(
+                    onDragStart = { scrub = at(it.x); haptics.performHapticFeedback(androidx.compose.ui.hapticfeedback.HapticFeedbackType.LongPress) },
+                    onDragEnd = { scrub?.let { onJump(scrubIndex(it)) }; scrub = null },
+                    onDragCancel = { scrub = null },
+                ) { change, _ -> change.consume(); scrub = at(change.position.x) }
+            }
+            .semantics {
+                progressBarRangeInfo = androidx.compose.ui.semantics.ProgressBarRangeInfo(progress(), 0f..1f)
+                setProgress(jumpLabel) { onJump(scrubIndex(it.coerceIn(0f, 1f))); true }
+            }
+            .drawBehind {
+                val line = (if (scrub != null) 6.dp else 3.dp).toPx()
+                val top = size.height - line
+                drawRect(colors.divider.copy(alpha = 0.5f), topLeft = androidx.compose.ui.geometry.Offset(0f, top), size = androidx.compose.ui.geometry.Size(size.width, line))
+                val width = size.width * (scrub ?: progress())
+                val left = if (rtl) size.width - width else 0f
+                drawRect(colors.accent, topLeft = androidx.compose.ui.geometry.Offset(left, top),
+                    size = androidx.compose.ui.geometry.Size(width, line))
+            }
+            .testTag("reader_progress"),
+    ) {
+        scrub?.let { fraction ->
+            val (title, subtitle) = label(scrubIndex(fraction), "${com.atharchive.ui.components.arabicDigits((fraction * 100).roundToInt())}٪")
+            Column(
+                Modifier.align(Alignment.BottomCenter)
+                    .wrapContentHeight(Alignment.Bottom, unbounded = true)
+                    .padding(start = 24.dp, end = 24.dp, bottom = 26.dp)
+                    .clip(com.atharchive.ui.theme.AtharCorners.Card)
+                    .background(colors.page)
+                    .border(0.7.dp, colors.divider, com.atharchive.ui.theme.AtharCorners.Card)
+                    .padding(horizontal = 14.dp, vertical = 8.dp)
+                    .testTag("reader_scrub_bubble"),
+                horizontalAlignment = Alignment.CenterHorizontally,
+            ) {
+                Text(title, color = colors.text, fontWeight = FontWeight.Bold, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                if (subtitle.isNotBlank()) Text(
+                    subtitle,
+                    color = colors.secondary, style = MaterialTheme.typography.labelMedium, maxLines = 1, overflow = TextOverflow.Ellipsis,
+                )
+            }
+        }
+    }
+}
+
 /** Copy, share, highlight. Nothing else — this toolbar is not a menu. */
 /**
  * The book reader's selection bar for screens built on an ordinary SelectionContainer (the
  * poem reader): same look, same three actions, driven by Compose's own text menu instead
- * of the platform popup. [onSave] gets the selection's top in this box.
+ * of the platform popup. [onSave] gets the selection's top and bottom in this box.
  */
 @Composable
 internal fun ProvideReaderSelectionBar(
     colors: ReaderColors,
     onCopied: () -> Unit,
     onShare: (String) -> Unit,
-    onSave: (Float) -> Unit,
+    onSave: (top: Float, bottom: Float) -> Unit,
     content: @Composable () -> Unit,
 ) {
     val state = remember { com.atharchive.ui.components.AtharTextMenuState() }
@@ -1033,7 +1098,7 @@ internal fun ProvideReaderSelectionBar(
                                     ?.takeIf { it.isNotBlank() }?.let(onShare)
                             }
                         },
-                        onHighlight = { onSave(bounds.top); session.close() },
+                        onHighlight = { onSave(bounds.top, bounds.bottom); session.close() },
                     )
                 }
             }

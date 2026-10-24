@@ -182,6 +182,8 @@ fun DownloadsListScreen(
                                 onDelete = { onRemoveMany(it); selected = emptySet() },
                             )
                         }
+                        // The kind filter narrows it, so «a bunch» is one type and «all» is الكل.
+                        if (tab == "running" && items.isNotEmpty()) CancelAll(items, onRemoveMany)
                     }
                 }
                 if (items.isEmpty()) {
@@ -584,6 +586,23 @@ private fun SelectionBar(
                     modifier = Modifier.testTag("downloads_delete_confirm"),
                 )
             }
+        }
+    }
+}
+
+@Composable
+private fun CancelAll(items: List<DownloadUi>, onCancel: (List<DownloadUi>) -> Unit) {
+    var menuOpen by remember { mutableStateOf(false) }
+    Box {
+        BarAction("إلغاء الكل (${arabicDigits(items.size)})", { menuOpen = true }, "downloads_cancel_all")
+        AtharMenu(expanded = menuOpen, onDismiss = { menuOpen = false }, width = 240.dp) {
+            AtharMenuItem(
+                "إلغاء ${arabicDigits(items.size)} تنزيلات",
+                icon = AtharIcons.Close,
+                destructive = true,
+                onClick = { onCancel(items); menuOpen = false },
+                modifier = Modifier.testTag("downloads_cancel_confirm"),
+            )
         }
     }
 }

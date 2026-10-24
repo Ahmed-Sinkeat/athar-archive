@@ -52,6 +52,12 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.layout.onSizeChanged
+import androidx.compose.ui.graphics.graphicsLayer
+import com.atharchive.feature.reader.rememberCollapsingBars
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.ui.input.pointer.pointerInput
@@ -68,6 +74,7 @@ import com.atharchive.feature.reader.ReaderColors
 import com.atharchive.feature.reader.ReaderSettings
 import com.atharchive.feature.reader.ReaderSettingsPopover
 import com.atharchive.feature.reader.rememberReaderColors
+import com.atharchive.feature.reader.selectionEdgeScroll
 import com.atharchive.ui.icons.AtharIcons
 import com.atharchive.ui.theme.AtharEditorialFontFamily
 import kotlinx.coroutines.delay
@@ -92,6 +99,8 @@ fun PoemReaderScreen(
     onBack: () -> Unit,
     settings: ReaderSettings,
     onSettingsChange: (ReaderSettings) -> Unit,
+    themeMode: com.atharchive.ui.theme.ThemeMode,
+    onThemeModeChange: (com.atharchive.ui.theme.ThemeMode) -> Unit,
     modifier: Modifier = Modifier,
     playback: AudioPlaybackState = AudioPlaybackState(),
     onPlayAudio: (PoemAudioUi) -> Unit = {},
@@ -101,12 +110,13 @@ fun PoemReaderScreen(
     onSeekMs: (Long) -> Unit = {},
     onToggleBookmark: suspend (Int) -> Unit = {},
     onSaveVerse: suspend (Int) -> Unit = {},
+    onRemoveVerse: suspend (Int) -> Unit = {},
     initialOrdinal: Int? = null,
     onPositionChange: (Int) -> Unit = {},
     onRetry: () -> Unit = {},
 ) {
     var settingsOpen by remember { mutableStateOf(false) }
-    val colors = rememberReaderColors(settings.palette)
+    val colors = rememberReaderColors()
     val listState = rememberLazyListState()
     val scope = rememberCoroutineScope()
 
@@ -184,19 +194,184 @@ fun PoemReaderScreen(
             .setPrimaryClip(android.content.ClipData.newPlainText("أثر", text))
     }
 
+    // The book reader's bars: they slide away as the poem scrolls and come back on the way up
+    // or with a tap on the text. They float over the list, so the verses never move.
+    val bars = rememberCollapsingBars()
+    val density = LocalDensity.current
+    var topBarHeight by remember { mutableStateOf(0.dp) }
+    var bottomBarHeight by remember { mutableStateOf(0.dp) }
+    var bottomOverlayHeight by remember { mutableStateOf(0.dp) }
+    val hidden = if (panelMode != null) 0f else bars.hidden
+    val toggleBars: () -> Unit = { scope.launch { bars.toggle() } }
+    // Compose offers no call to clear a SelectionContainer; a new one after a save drops it.
+    var selectionEpoch by remember { mutableIntStateOf(0) }
+    // Read through derived state: the first visible index changes verse by verse, and reading
+    // it in the body recomposed the whole screen each time.
+    val topVerse by remember { derivedStateOf { state.verses.getOrNull(listState.firstVisibleItemIndex) } }
+    val saved = remember(state.saved) { state.saved.toHashSet() }
+    val bookmarks = remember(state.bookmarks) { state.bookmarks.toHashSet() }
+    fun progress(): Float = when {
+        state.verses.size <= 1 -> 0f
+        !listState.canScrollForward -> 1f
+        else -> {
+            val size = listState.layoutInfo.visibleItemsInfo.firstOrNull()?.size ?: 0
+            val within = if (size <= 0) 0f else (listState.firstVisibleItemScrollOffset.toFloat() / size).coerceIn(0f, 1f)
+            ((listState.firstVisibleItemIndex + within) / (state.verses.size - 1)).coerceIn(0f, 1f)
+        }
+    }
+
     Box(
         modifier = modifier
             .fillMaxSize()
             .background(colors.page)
             .testTag("poem_reader_screen"),
     ) {
-        Column(modifier = Modifier.fillMaxSize()) {
+            Box(modifier = Modifier.fillMaxSize()) {
+                // Ordinary selection: press and hold drags a normal selection across the poem,
+                // with the book reader's own bar (نسخ · مشاركة · إلى الكناشة).
+                com.atharchive.feature.reader.ProvideReaderSelectionBar(
+                    colors = colors,
+                    onCopied = { toast = "نُسخ النص" },
+                    onShare = { text ->
+                        context.startActivity(android.content.Intent.createChooser(
+                            android.content.Intent(android.content.Intent.ACTION_SEND)
+                                .setType("text/plain").putExtra(android.content.Intent.EXTRA_TEXT, text),
+                            "مشاركة النص"))
+                    },
+                    onSave = { top, bottom ->
+                        // Poems save whole verses to الكناشة: every verse the selection touches.
+                        // ponytail: only verses on screen; a selection dragged past the viewport keeps its visible part.
+                        val info = listState.layoutInfo
+                        val from = top.toInt() - info.beforeContentPadding
+                        val to = bottom.toInt() - info.beforeContentPadding
+                        val keys = info.visibleItemsInfo.filter { it.offset < to && it.offset + it.size > from }.map { it.key }.toSet()
+                        val chosen = state.verses.filter { it.id in keys }
+                        if (chosen.isEmpty()) toast = "تعذّر تحديد البيت"
+                        else act(if (chosen.size == 1) "حُفظ في الكناشة" else "حُفظت ${arabicDigits(chosen.size)} أبيات في الكناشة") {
+                            chosen.filter { it.ordinal !in saved }.forEach { onSaveVerse(it.ordinal) }
+                        }
+                        selectionEpoch++
+                    },
+                ) {
+                androidx.compose.runtime.key(selectionEpoch) {
+                SelectionContainer(Modifier.selectionEdgeScroll(listState)) {
+                    LazyColumn(
+                        state = listState,
+                        modifier = Modifier.fillMaxSize().nestedScroll(bars.connection),
+                        contentPadding = PaddingValues(top = 10.dp + topBarHeight, bottom = 30.dp + bottomBarHeight),
+                    ) {
+                        if (state.verses.isEmpty()) item {
+                            if (!state.bodyLoaded) {
+                                androidx.compose.foundation.layout.Box(Modifier.fillMaxWidth().padding(top = 96.dp)) {
+                                    com.atharchive.ui.components.AtharLoading("جارٍ تحميل القصيدة…", Modifier.align(Alignment.Center))
+                                }
+                            } else Column(Modifier.padding(24.dp)) {
+                                Text("لا توجد أبيات", color = colors.text)
+                                androidx.compose.material3.TextButton(onClick = onRetry) { Text("إعادة المحاولة") }
+                            }
+                        }
+                        itemsIndexed(state.verses, key = { _, v -> v.id }) { index, verse ->
+                            verse.heading?.let { PoemHeading(it, colors, settings) }
+                            val isSaved = verse.ordinal in saved
+                            VerseRow(
+                                verse = verse,
+                                colors = colors,
+                                settings = settings,
+                                glossary = state.glossary,
+                                isCurrent = verse.number == currentVerse,
+                                saved = isSaved,
+                                bookmarked = verse.ordinal in bookmarks,
+                                onTapText = toggleBars,
+                                onSharh = { openSharh(verse) },
+                                onSave = {
+                                    if (isSaved) act("أُزيل من الكناشة") { onRemoveVerse(verse.ordinal) }
+                                    else act("حُفظ في الكناشة") { onSaveVerse(verse.ordinal) }
+                                },
+                                onCopy = { copy(verse.sadr + "\n" + verse.ajz); toast = "نُسخ البيت" },
+                            )
+                            if (!settings.poemProse && index != state.verses.lastIndex) {
+                                VerseOrnament(colors)
+                            }
+                        }
+                        if (state.verses.isNotEmpty() && !state.bodyLoaded) item {
+                            androidx.compose.material3.TextButton(onClick = onRetry, modifier = Modifier.fillMaxWidth()) {
+                                Text("تحميل بقية القصيدة", color = colors.accent)
+                            }
+                        }
+                    }
+                }
+                }
+                }
+
+                // Return-to-position: only while following is off and audio is running.
+                if (track != null && playing && settings.poemFollow && !followScroll) {
+                    Box(
+                        modifier = Modifier
+                            .align(Alignment.BottomCenter)
+                            .padding(bottom = bottomOverlayHeight + 14.dp)
+                            .clip(CircleShape)
+                            .background(colors.accent)
+                            .clickable(role = Role.Button) { followScroll = true }
+                            .padding(horizontal = 14.dp, vertical = 7.dp)
+                            .testTag("poem_return_to_position"),
+                    ) {
+                        Text(
+                            text = "العودة إلى موضع الاستماع",
+                            color = colors.page,
+                            style = MaterialTheme.typography.labelSmall,
+                            fontWeight = FontWeight.SemiBold,
+                        )
+                    }
+                }
+
+                panelMode?.let { mode ->
+                    Box(Modifier.fillMaxSize().padding(top = topBarHeight, bottom = bottomOverlayHeight)) {
+                    PoemSidePanel(
+                        tabs = tabs,
+                        mode = mode,
+                        onMode = { panelMode = it },
+                        colors = colors,
+                        state = state,
+                        selectedVerseId = sharhVerse?.id,
+                        onSelectVerse = { sharhVerse = it },
+                        query = query,
+                        onQuery = { query = it },
+                        onJump = { index ->
+                            followScroll = false
+                            scope.launch { listState.animateScrollToItem(index) }
+                        },
+                        onDismiss = { panelMode = null },
+                    )
+                    }
+                }
+
+                toast?.let { message ->
+                    Box(
+                        modifier = Modifier
+                            .align(Alignment.BottomCenter)
+                            .padding(bottom = bottomOverlayHeight + 16.dp)
+                            .clip(AtharCorners.Card)
+                            .background(colors.text.copy(alpha = 0.92f))
+                            .padding(horizontal = 15.dp, vertical = 8.dp)
+                            .testTag("poem_toast"),
+                    ) {
+                        Text(message, color = colors.page, style = MaterialTheme.typography.bodySmall)
+                    }
+                }
+            }
+
+            Box(
+                Modifier.align(Alignment.TopCenter)
+                    .background(colors.page)
+                    .onSizeChanged { topBarHeight = with(density) { it.height.toDp() } }
+                    .graphicsLayer { translationY = -hidden * size.height; alpha = 1f - hidden },
+            ) {
             PoemTopBar(
                 title = state.title,
                 poet = state.poet,
                 colors = colors,
                 onBack = onBack,
-                onSearch = { panelMode = PanelMode.Search },
+                onSearch = { panelMode = if (panelMode == PanelMode.Search) null else PanelMode.Search },
                 onMore = { moreOpen = true },
                 menu = {
                     // The prose view is Aa «العرض: متصل», not a second screen.
@@ -228,121 +403,26 @@ fun PoemReaderScreen(
                     }
                 },
             )
+            }
 
-            Box(modifier = Modifier.fillMaxWidth().weight(1f)) {
-                // Ordinary selection: press and hold drags a normal selection across the poem,
-                // with the book reader's own bar (نسخ · مشاركة · إلى الكناشة).
-                com.atharchive.feature.reader.ProvideReaderSelectionBar(
-                    colors = colors,
-                    onCopied = { toast = "نُسخ النص" },
-                    onShare = { text ->
-                        context.startActivity(android.content.Intent.createChooser(
-                            android.content.Intent(android.content.Intent.ACTION_SEND)
-                                .setType("text/plain").putExtra(android.content.Intent.EXTRA_TEXT, text),
-                            "مشاركة النص"))
-                    },
-                    onSave = { top ->
-                        // The verse the selection starts in; poems save whole verses to الكناشة.
-                        val info = listState.layoutInfo
-                        val y = top.toInt() - info.beforeContentPadding
-                        val key = info.visibleItemsInfo.firstOrNull { y >= it.offset && y < it.offset + it.size }?.key
-                        state.verses.firstOrNull { it.id == key }?.let { verse -> act("حُفظ في الكناشة") { onSaveVerse(verse.ordinal) } }
-                    },
-                ) {
-                SelectionContainer {
-                    LazyColumn(
-                        state = listState,
-                        modifier = Modifier.fillMaxSize(),
-                        contentPadding = PaddingValues(top = 10.dp, bottom = 30.dp),
-                    ) {
-                        if (state.verses.isEmpty()) item {
-                            if (!state.bodyLoaded) {
-                                androidx.compose.foundation.layout.Box(Modifier.fillMaxWidth().padding(top = 96.dp)) {
-                                    com.atharchive.ui.components.AtharLoading("جارٍ تحميل القصيدة…", Modifier.align(Alignment.Center))
-                                }
-                            } else Column(Modifier.padding(24.dp)) {
-                                Text("لا توجد أبيات", color = colors.text)
-                                androidx.compose.material3.TextButton(onClick = onRetry) { Text("إعادة المحاولة") }
-                            }
-                        }
-                        itemsIndexed(state.verses, key = { _, v -> v.id }) { index, verse ->
-                            verse.heading?.let { PoemHeading(it, colors, settings) }
-                            VerseRow(
-                                verse = verse,
-                                colors = colors,
-                                settings = settings,
-                                state = state,
-                                isCurrent = verse.number == currentVerse,
-                                onSharh = { openSharh(verse) },
-                                onSave = { act("حُفظ في الكناشة") { onSaveVerse(verse.ordinal) } },
-                                onCopy = { copy(verse.sadr + "\n" + verse.ajz); toast = "نُسخ البيت" },
-                            )
-                            if (!settings.poemProse && index != state.verses.lastIndex) {
-                                VerseOrnament(colors)
-                            }
-                        }
-                        if (state.verses.isNotEmpty() && !state.bodyLoaded) item {
-                            androidx.compose.material3.TextButton(onClick = onRetry, modifier = Modifier.fillMaxWidth()) {
-                                Text("تحميل بقية القصيدة", color = colors.accent)
-                            }
-                        }
-                    }
-                }
-                }
-
-                // Return-to-position: only while following is off and audio is running.
-                if (track != null && playing && settings.poemFollow && !followScroll) {
-                    Box(
-                        modifier = Modifier
-                            .align(Alignment.BottomCenter)
-                            .padding(bottom = 14.dp)
-                            .clip(CircleShape)
-                            .background(colors.accent)
-                            .clickable(role = Role.Button) { followScroll = true }
-                            .padding(horizontal = 14.dp, vertical = 7.dp)
-                            .testTag("poem_return_to_position"),
-                    ) {
-                        Text(
-                            text = "العودة إلى موضع الاستماع",
-                            color = colors.page,
-                            style = MaterialTheme.typography.labelSmall,
-                            fontWeight = FontWeight.SemiBold,
-                        )
-                    }
-                }
-
-                panelMode?.let { mode ->
-                    PoemSidePanel(
-                        tabs = tabs,
-                        mode = mode,
-                        onMode = { panelMode = it },
-                        colors = colors,
-                        state = state,
-                        selectedVerseId = sharhVerse?.id,
-                        onSelectVerse = { sharhVerse = it },
-                        query = query,
-                        onQuery = { query = it },
-                        onJump = { index ->
-                            followScroll = false
-                            scope.launch { listState.animateScrollToItem(index) }
-                        },
-                        onDismiss = { panelMode = null },
-                    )
-                }
-
-                toast?.let { message ->
-                    Box(
-                        modifier = Modifier
-                            .align(Alignment.BottomCenter)
-                            .padding(bottom = 60.dp)
-                            .clip(AtharCorners.Card)
-                            .background(colors.text.copy(alpha = 0.92f))
-                            .padding(horizontal = 15.dp, vertical = 8.dp)
-                            .testTag("poem_toast"),
-                    ) {
-                        Text(message, color = colors.page, style = MaterialTheme.typography.bodySmall)
-                    }
-                }
+            // Progress, the audio strip and the bottom bar; the first two ride down to the
+            // screen's foot when the bar hides — as in the book reader.
+            Column(
+                Modifier.align(Alignment.BottomCenter).fillMaxWidth()
+                    .onSizeChanged { bottomOverlayHeight = with(density) { it.height.toDp() } }
+                    .graphicsLayer { translationY = hidden * bottomBarHeight.toPx() },
+            ) {
+            com.atharchive.feature.reader.ReaderProgressStrip(
+                count = state.verses.size,
+                colors = colors,
+                progress = ::progress,
+                jumpLabel = "الانتقال في القصيدة",
+                onJump = { index -> followScroll = false; scope.launch { listState.scrollToItem(index) } },
+            ) { index, percent ->
+                val verse = state.verses.getOrNull(index)
+                val heading = state.verses.subList(0, (index + 1).coerceAtMost(state.verses.size)).lastOrNull { it.heading != null }?.heading
+                (if (verse == null) percent else "البيت ${arabicDigits(verse.number)} / ${arabicDigits(state.verses.last().number)}") to
+                    listOfNotNull(heading, percent.takeIf { verse != null }).joinToString(" · ")
             }
 
             track?.takeIf { audioVisible }?.let { current ->
@@ -363,8 +443,11 @@ fun PoemReaderScreen(
             }
 
             // The book reader's own bar: one set of controls for every text.
-            val topVerse = state.verses.getOrNull(listState.firstVisibleItemIndex)
-            val bookmarked = topVerse != null && topVerse.ordinal in state.bookmarks
+            val bookmarked = topVerse?.let { it.ordinal in bookmarks } == true
+            Box(
+                Modifier.onSizeChanged { bottomBarHeight = with(density) { it.height.toDp() } }
+                    .graphicsLayer { alpha = 1f - hidden },
+            ) {
             com.atharchive.feature.reader.ReaderBottomBar(
                 colors = colors,
                 bookmarked = bookmarked,
@@ -385,10 +468,11 @@ fun PoemReaderScreen(
                 settingsOpen = settingsOpen,
                 onSettings = { settingsOpen = true },
                 settingsMenu = {
-                    ReaderSettingsPopover(settingsOpen, settings, colors, onSettingsChange, onDismiss = { settingsOpen = false }, forPoem = true)
+                    ReaderSettingsPopover(settingsOpen, settings, colors, onSettingsChange, onDismiss = { settingsOpen = false }, themeMode, onThemeModeChange, forPoem = true)
                 },
             )
-        }
+            }
+            }
 
     }
 }
@@ -425,32 +509,43 @@ private fun VerseRow(
     verse: VerseUi,
     colors: ReaderColors,
     settings: ReaderSettings,
-    state: PoemReaderUiState,
+    glossary: Map<String, String>,
     isCurrent: Boolean,
+    saved: Boolean,
+    bookmarked: Boolean,
+    onTapText: () -> Unit,
     onSharh: () -> Unit,
     onSave: () -> Unit,
     onCopy: () -> Unit,
 ) {
     var menuOpen by remember { mutableStateOf(false) }
+    // A saved verse answers a tap with its menu (إزالة من الكناشة), as a highlight does in a book.
+    val tapText = if (saved) ({ menuOpen = true }) else onTapText
+    Box(modifier = Modifier.fillMaxWidth()) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .background(
-                if (isCurrent) colors.accent.copy(alpha = 0.10f)
-                else androidx.compose.ui.graphics.Color.Transparent,
+                when {
+                    isCurrent -> colors.accent.copy(alpha = 0.10f)
+                    saved -> colors.saved
+                    else -> androidx.compose.ui.graphics.Color.Transparent
+                },
             )
             .padding(horizontal = settings.margin.dp, vertical = 10.dp)
             .testTag("verse_${verse.id}"),
         verticalAlignment = Alignment.Top,
     ) {
-        // Outer edge (right, under RTL): the verse number when shown, else a dot when it has
-        // شرح. A tap opens what can be done with the verse.
-        Box(
+        // Outer edge (right, under RTL): the number when shown, a dot for شرح, a mark for a
+        // bookmark. Nothing to show takes no room, so the verse sits on the margin.
+        if (settings.verseNumbers || verse.commentary.isNotEmpty() || bookmarked) Column(
             modifier = Modifier
-                .size(width = 28.dp, height = 40.dp)
-                .clickable(role = Role.Button) { menuOpen = true }
+                .size(width = if (settings.verseNumbers) 28.dp else 16.dp, height = 40.dp)
+                .clickable(role = Role.Button, onClickLabel = "خيارات البيت") { menuOpen = true }
+                .semantics { contentDescription = "البيت ${arabicDigits(verse.number)}" }
                 .testTag("verse_indicator_${verse.id}"),
-            contentAlignment = Alignment.Center,
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = androidx.compose.foundation.layout.Arrangement.Center,
         ) {
             if (settings.verseNumbers) {
                 Text(
@@ -466,28 +561,32 @@ private fun VerseRow(
                         .background(colors.accent),
                 )
             }
-            AtharMenu(
-                expanded = menuOpen,
-                onDismiss = { menuOpen = false },
-                colors = AtharMenuColors(card = lerp(colors.page, colors.text, 0.07f), ink = colors.text,
-                    secondary = colors.secondary, accent = colors.accent),
-                modifier = Modifier.testTag("verse_menu"),
-            ) {
-                if (verse.commentary.isNotEmpty()) AtharMenuItem("شرح البيت", icon = AtharIcons.Sidebar, onClick = { menuOpen = false; onSharh() })
-                AtharMenuItem("حفظ في الكناشة", icon = AtharIcons.Kannashah, onClick = { menuOpen = false; onSave() })
-                AtharMenuItem("نسخ البيت", icon = AtharIcons.Copy, onClick = { menuOpen = false; onCopy() })
-            }
+            if (bookmarked) Icon(AtharIcons.BookmarkFilled, contentDescription = "عليه علامة", tint = colors.accent,
+                modifier = Modifier.padding(top = 2.dp).size(12.dp))
         }
 
         Column(modifier = Modifier.weight(1f)) {
             if (settings.poemProse) {
                 // متصل: one running line per verse, as a book prints a quoted verse.
-                Hemistich(if (verse.ajz.isBlank()) verse.sadr else "${verse.sadr} \u2026 ${verse.ajz}", state, colors, settings, TextAlign.Start)
+                Hemistich(if (verse.ajz.isBlank()) verse.sadr else "${verse.sadr} \u2026 ${verse.ajz}", glossary, colors, settings, TextAlign.Start, tapText)
             } else {
-                Hemistich(verse.sadr, state, colors, settings, TextAlign.Start)
+                Hemistich(verse.sadr, glossary, colors, settings, TextAlign.Start, tapText)
                 Spacer(Modifier.height(2.dp))
-                Hemistich(verse.ajz, state, colors, settings, TextAlign.End)
+                Hemistich(verse.ajz, glossary, colors, settings, TextAlign.End, tapText)
             }
+        }
+    }
+        AtharMenu(
+            expanded = menuOpen,
+            onDismiss = { menuOpen = false },
+            colors = AtharMenuColors(card = lerp(colors.page, colors.text, 0.07f), ink = colors.text,
+                secondary = colors.secondary, accent = colors.accent),
+            modifier = Modifier.testTag("verse_menu"),
+        ) {
+            if (verse.commentary.isNotEmpty()) AtharMenuItem("شرح البيت", icon = AtharIcons.Sidebar, onClick = { menuOpen = false; onSharh() })
+            if (saved) AtharMenuItem("إزالة من الكناشة", icon = AtharIcons.Close, destructive = true, onClick = { menuOpen = false; onSave() })
+            else AtharMenuItem("حفظ في الكناشة", icon = AtharIcons.Kannashah, onClick = { menuOpen = false; onSave() })
+            AtharMenuItem("نسخ البيت", icon = AtharIcons.Copy, onClick = { menuOpen = false; onCopy() })
         }
     }
 }
@@ -503,18 +602,21 @@ private fun VerseRow(
 @Composable
 private fun Hemistich(
     sourceLine: String,
-    state: PoemReaderUiState,
+    glossary: Map<String, String>,
     colors: ReaderColors,
     settings: ReaderSettings,
     align: TextAlign,
+    onTapText: () -> Unit,
 ) {
+    val tapText by androidx.compose.runtime.rememberUpdatedState(onTapText)
     val line = if (settings.showTashkeel) sourceLine else com.atharchive.feature.reader.SelectionText(sourceLine, false).text
-    val spans = remember(line, state) {
+    // Keyed on the glossary, not the whole state: comparing the state compared every verse.
+    val spans = remember(line, glossary) {
         val out = mutableListOf<WordSpan>()
         var index = 0
         line.split(' ').forEach { word ->
             if (word.isNotBlank()) {
-                val meaning = state.meaningOf(word)
+                val meaning = glossary[stripHarakat(word)]
                 if (meaning != null) out += WordSpan(index, index + word.length, word, meaning)
             }
             index += word.length + 1
@@ -557,7 +659,7 @@ private fun Hemistich(
                         val result = layout ?: return@detectTapGestures
                         val offset = result.getOffsetForPosition(pos)
                         val hit = spans.firstOrNull { offset >= it.start && offset < it.end }
-                        open = hit?.let { OpenWord(it, result.boundsOf(it)) }
+                        if (hit == null) tapText() else open = OpenWord(hit, result.boundsOf(hit))
                     }
                 },
             onTextLayout = { layout = it },

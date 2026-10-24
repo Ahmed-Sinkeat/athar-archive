@@ -154,17 +154,6 @@ data class InBookHit(
     val sourceMatchEnd: Int = matchEnd,
 )
 
-// ---- reading appearance, independent of the app's light/dark theme ----
-
-enum class ReaderPalette(val label: String) {
-    /** Follows the app's own light/dark choice. The default: a cream page dropped on a
-     *  reader at night was the worst moment in the app. */
-    Follow("مثل التطبيق"),
-    White("أبيض"),
-    Warm("دافئ"),
-    Dark("داكن"),
-}
-
 enum class ReaderSpacing(val label: String, val multiplier: Float) {
     Tight("متقارب", 1.55f),
     Normal("عادي", 1.85f),
@@ -179,7 +168,6 @@ enum class FootnoteMode(val label: String) {
 data class ReaderSettings(
     val fontSize: Int = 19,
     val spacing: ReaderSpacing = ReaderSpacing.Normal,
-    val palette: ReaderPalette = ReaderPalette.Follow,
     val margin: Int = 22,
     val showTashkeel: Boolean = true,
     /** Footnotes at the foot of the page, or a popup on tapping the number — never both. */
@@ -211,7 +199,14 @@ data class ReaderHighlight(
     val endOrdinal: Int,
     val startOffset: Int,
     val endOffset: Int,
-)
+    /** The annotation it draws, so a tap on it can remove it. */
+    val id: String = "",
+) {
+    /** Whether the source offset [offset] of block [ordinal] lies inside this highlight. */
+    fun contains(ordinal: Int, offset: Int): Boolean =
+        ordinal in startOrdinal..endOrdinal &&
+            (ordinal != startOrdinal || offset >= startOffset) && (ordinal != endOrdinal || offset < endOffset)
+}
 
 /** [current] is the one open now; [primary] is the default the library opens. */
 data class ReaderEdition(val id: String, val label: String, val current: Boolean = false, val primary: Boolean = false)
