@@ -1,5 +1,15 @@
 # Book formatting status
 
+## Current review update — 2026-10-25
+
+The previously heading-only cohort has **10 surviving books structurally reviewed**, with body-formatting work now recorded for all ten; the eleventh book was explicitly deleted. The latest pass updated nine books: **4,330 body labels, 119 split/malformed headings and 141 poetry lines**. All ten passed the formatting gate and independent source/parser checks. This is **not a completed line-by-line editorial review**.
+
+See [the per-book review, commits, remaining work and skipped checks](book-formatting-review-2026-10-25.md). Remaining work includes full semantic/footnote review, further inline labels and poetry, preserved source ambiguities and unsupported verse lines. New books remain outside the current review scope.
+
+## Historical archive census — 2026-10-23
+
+**The counts and tables below are a historical snapshot, not current totals.** They have not been reconciled with subsequent formatting, deletions or additions. “Done” below uses the older gate-passed definition and does not establish a full editorial review. Do not add the ten reviewed books to these totals without checking overlap.
+
 Generated 2026-10-23 from main. 1220 book files.
 
 **Progress:** 405 done (33%) · 141 skipped (already clean or need a decision) · 674 remaining.
