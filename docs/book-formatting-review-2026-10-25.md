@@ -1,5 +1,7 @@
 # Review of previously heading-only books — 2026-10-25
 
+This report covers only the ten-book review subset. For all runs, totals and remaining/skipped books, see [project-wide formatting status](format-status.md).
+
 Branch: `format/bold-headings`. Scope follows the user’s instruction to review books already touched and not start new ones.
 
 History identifies **11 original heading-only books: ten surviving books reviewed, one explicitly deleted**. This latest pass changed nine books in separate commits; أبنية الأسماء والأفعال والمصادر needed no further changes in this pass. All ten already have body-formatting changes from earlier review passes.
@@ -63,7 +65,7 @@ Heading repairs include rejoining diacritics to their existing words, restoring 
 | البيان في مذهب الإمام الشافعي | Malformed source prefixes, including 2,176 lines beginning `]:`, remain; detached `7 -` before volume 7 p. 502 is ambiguous. More inline labels and poetry remain outside the completed label pass. |
 | البيان والتحصيل | Seven detached number/dash lines and ambiguous commentary/quotation boundaries remain unchanged. |
 | أدوات الإعراب / أبنية الأسماء | Source spelling, truncated wording and missing list numbers were not reconstructed. |
-| Archive-wide status | The 2026-10-23 census below the current notice in format-status.md has not been regenerated or reconciled with later formatting, deletions and additions. Do not quote its totals as current. |
+| Archive-wide status | Superseded by the project-wide reconciliation in [format-status.md](format-status.md) and its full TSV inventory. Counts distinguish committed work on a separate branch from current-branch content. |
 
 ## Deleted and deliberately skipped
 
