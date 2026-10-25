@@ -1,6 +1,6 @@
 # Book formatting status
 
-Updated **2026-10-25** for the **whole book-formatting project**, including earlier runs and work committed on the separate overnight branch. The ten-book heading-only review is one subset, not the project total.
+Updated **2026-10-26** (everything now lives on `main`; the overnight branch was merged and all other branches were deleted — see "State on 2026-10-26" below). Previously updated 2026-10-25 for the **whole book-formatting project**, including earlier runs and work committed on the separate overnight branch. The ten-book heading-only review is one subset, not the project total.
 
 ## Current totals
 
@@ -8,14 +8,14 @@ Counting unit: **book Markdown files / editions**, not unique printed works or c
 
 | Status | Books | Meaning |
 |---|---:|---|
-| Formatting pass recorded | **483** | 405 in the earlier reconciled census, 46 later passes in the current branch, and 32 finished passes on the overnight branch. This is a work-history count, not a guarantee that every source/editorial problem is resolved. |
+| Formatting pass recorded | **484** | 405 in the earlier reconciled census, 46 later passes in the current branch, and 32 finished passes on the overnight branch. This is a work-history count, not a guarantee that every source/editorial problem is resolved. |
 | Structural review; full review incomplete | **10** | Previously heading-only books now have body-formatting passes, but still need complete line-by-line/semantic review. |
-| Partially formatted | **3** | Known unresolved source/footnote problems; excluded from the 483 above. |
-| Skipped / deferred | **121** | 111 surviving earlier skips plus ten later source-dependent deferrals after the first30 fresh reviews. Includes already-clean books and books needing a source or decision; not all are blockers. |
+| Partially formatted | **4** | Known unresolved source/footnote problems; excluded from the 483 above. |
+| Skipped / deferred | **119** | 111 surviving earlier skips plus ten later source-dependent deferrals after the first30 fresh reviews. Includes already-clean books and books needing a source or decision; not all are blockers. |
 | Remaining; no recorded formatting pass | **602** | No completed book-formatting pass or explicit skip in the reconciled ledgers. Some may have isolated page-marker repairs; that does not count as a book pass. |
 | **Total surviving book files** | **1,219** | Each file appears in exactly one status. |
 
-**496 books have formatting work recorded** (483 passes + 10 incomplete reviews + 3 partials). **121 remain skipped/deferred; 602 remain without a recorded pass.** These totals cover all runs, not just the latest session.
+**498 books have formatting work recorded** (484 passes + 10 incomplete reviews + 4 partials). **119 remain skipped/deferred; 602 remain without a recorded pass.** These totals cover all runs, not just the latest session.
 
 Full title, path, status, integration state, evidence and remaining-work note for **every file**: [book-formatting-status.tsv](book-formatting-status.tsv).
 
@@ -23,7 +23,7 @@ Full title, path, status, integration state, evidence and remaining-work note fo
 
 - Earlier reconciled census: **405** recorded passes — 275 Sonnet cloud, 67 earlier runs, 59 Codex nights, and four fixes recorded on 2026-10-23. These are historical ledger classifications; their gates have not all been rerun for this documentation update.
 - Later current-branch work: **46** further recorded passes, plus the **10** body-review books and **three** partial books (أحاديث في الفتن والحوادث, فتييان تتعلقان بتكفير الجهمية and المنهل المأهول). نور التوحيد now has a finished pass after the parser repair.
-- Overnight work on `format/codex-night-2026-10-24`: **32** finished passes, including the newly completed حقوق آل البيت. These **32 books are not integrated into the current branch**; they are included in project progress and explicitly flagged in the TSV.
+- Overnight work on `format/codex-night-2026-10-24`: **32** finished passes, including the newly completed حقوق آل البيت. These 32 books were merged into `main` on 2026-10-26 (merge `0f267366`).
 - Typical work includes title/editor cards, chapter hierarchy, interrupted prose, numbered entries, existing body labels, verses/quotes, footnote anchors and separately committed import repairs. Coverage differs by book; a heading-only or structural pass is not treated as a full review.
 - Latest ten-book subset: 4,330 additional body labels, 119 split/malformed heading repairs and 141 poetry lines separated/spaced. See the [per-book review and commit table](book-formatting-review-2026-10-25.md). These numbers must not be added as new books.
 
@@ -86,7 +86,7 @@ All30 passed the strict markup gate, exact letters/digits/punctuation/diacritics
 | Current authorized review | The ten unfinished reviews plus all 151 originally skipped/deferred books; see the fresh 161-target ledger below. |
 | 602 remaining files | Outside the current review queue; no new formatting pass has been started on them. |
 | Earlier formatted books | Follow up on known source gaps and unresolved notes. A recorded pass does not clear the issues in the [Sonnet report](format-sonnet/REPORT.md), [earlier Codex stop report](book-formatting-codex-night.md), or individual commit messages. |
-| Separate overnight branch | Review/integrate 32 committed books separately when authorized. This documentation update did not merge, cherry-pick or copy their content into the current branch. |
+| Separate overnight branch | Done 2026-10-26: merged into `main` (`0f267366`); all 32 pass `format-verify`. |
 
 ## Skipped and deliberately deferred
 
@@ -114,6 +114,13 @@ The current **121-book** skipped/deferred list is in the main TSV; the original 
 
 Baseline: the 2026-10-23 status at `9efb034f` (405 recorded passes, 141 skips, 674 remaining; 1,220 files). Reconciled against current book paths, subsequent per-book commits on the current branch, the 2026-10-24/25 completion/skip ledgers and commit ancestry on `format/codex-night-2026-10-24`. The older Sonnet/Codex branches have no book commits absent from the current branch; the newer overnight branch does. Subsequent continuation finished نور التوحيد (`fdeda136`) and حقوق آل البيت (`b6102fff`), moving two partials into recorded passes without changing the total file count.
 
-The old overall figure of 405 is therefore superseded by this project-wide reconciliation. The current source tree still excludes the 32 overnight book passes until integration; the TSV preserves that distinction. Local reports under `/home/sinkeat/Projects/athar-format-work/` supplied details, but the current inventory and outstanding-work notes are now committed here so the overview does not depend on temporary files.
+The old overall figure of 405 is therefore superseded by this project-wide reconciliation. The 32 overnight book passes were integrated on 2026-10-26; every TSV row is now at location `main`. Local reports under `/home/sinkeat/Projects/athar-format-work/` supplied details, but the current inventory and outstanding-work notes are now committed here so the overview does not depend on temporary files.
 
 Checks: exactly 1,219 unique existing paths; status counts sum to 1,219; no duplicate slugs; deleted book excluded; every referenced commit exists; all 32 unintegrated book commits verified on the named overnight branch.
+
+## State on 2026-10-26
+
+- **One branch.** All formatting work (earlier Sonnet/Codex nights, the `format/bold-headings` line and the 32-book `format/codex-night-2026-10-24` branch) is on `main`. The old feature/redesign branches are preserved as `archive/*` tags, not branches.
+- **Since the 2026-10-25 ledger:** تميز الصدق finished (`4dc0dd05`) and فتيا وجوابها formatted but kept partial (`befe00fc`) — the TSV was updated for both. `git log --grep '^format(book)'` touches 498 distinct book files, matching 484 + 10 + 4.
+- **Android content on R2** (`app/v2/`, generation `20fceaeb`) was generated from this state, so it includes all of the above.
+- **Not covered by these numbers:** 602 books have no pass, 119 are skipped/deferred, and a recorded pass is not a guarantee the source text is complete.

@@ -19,6 +19,26 @@ A static, RTL Arabic knowledge archive. **The content is the origin; the technol
 - **Cloudflare Workers + Static Assets** (hosting, `pnpm deploy`) · **Cloudflare R2** (book chapter bodies, audio, attachments — pushed on every CI deploy via `pnpm r2:upload`; `pnpm r2:inventory` reports what is stored there, read-only)
 - Content renders **fully without JavaScript** for the reading path; JS enhances (search, audio, reading prefs).
 
+## Android app
+
+A native Kotlin + Jetpack Compose reader lives in [`android/`](android/) (minSdk 26, offline-first). It does not use the website at runtime: it reads a signed, content-addressed catalog from Cloudflare R2 (`app/v2/`) and downloads books on demand.
+
+```bash
+pnpm app:gen        # build + sign app content → dist/app-content/app/v2 (needs publish.env; see docs/android-app.md)
+pnpm app:publish    # verify + upload to the app R2 bucket (signed root index.json goes last)
+cd android && ./gradlew :app:assembleRelease :app:bundleRelease   # needs ATHAR_* env: base URL, signing key id/public key, keystore
+```
+
+Plan and decisions: [`docs/main-plan.md`](docs/main-plan.md), build/test notes: [`docs/android-app.md`](docs/android-app.md).
+
+## Book formatting
+
+Imported books are cleaned up by hand per book (title cards, headings, paragraphs, verses, footnote links) and gated by `scripts/format-verify.ts`, which fails if any text is lost or a footnote loses its link. Status of all ~1,200 books: [`docs/format-status.md`](docs/format-status.md) (per-book ledger: [`book-formatting-status.tsv`](docs/book-formatting-status.tsv)); rules: [`docs/book-formatting-rules.md`](docs/book-formatting-rules.md).
+
+## Branches and deploys
+
+`main` is the only branch. **A push to `main` runs CI and deploys the site to Cloudflare** (chapter pages to R2 + Worker). To push without deploying, put `[skip ci]` in the head commit message. Old experiments are kept as `archive/*` tags.
+
 ## Quick start
 
 ```bash
@@ -58,6 +78,7 @@ Polymorphic links (`source_type`/`target_type`) have no DB foreign keys — **Zo
 | [`docs/structure.md`](docs/structure.md) | Current repository layout |
 | [`docs/technology-stack.md`](docs/technology-stack.md) | Why each piece of the stack was chosen |
 | [`docs/android-app.md`](docs/android-app.md) | Native Android app |
+| [`docs/format-status.md`](docs/format-status.md) | Book-formatting progress, per-book ledger and rules |
 | [`docs/import-epub-guide.md`](docs/import-epub-guide.md) | Bulk-importing books from EPUB |
 | [`docs/asbuild.md`](docs/asbuild.md) | Phase-by-phase as-built record vs the build plan |
 | [`docs/issue.md`](docs/issue.md) | Ranked issue / watch register |
