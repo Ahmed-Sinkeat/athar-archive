@@ -8,32 +8,37 @@ Counting unit: **book Markdown files / editions**, not unique printed works or c
 
 | Status | Books | Meaning |
 |---|---:|---|
-| Formatting pass recorded | **453** | 405 in the earlier reconciled census, 17 later passes in the current branch, and 31 finished passes on the overnight branch. This is a work-history count, not a guarantee that every source/editorial problem is resolved. |
+| Formatting pass recorded | **455** | 405 in the earlier reconciled census, 18 later passes in the current branch, and 32 finished passes on the overnight branch. This is a work-history count, not a guarantee that every source/editorial problem is resolved. |
 | Structural review; full review incomplete | **10** | Previously heading-only books now have body-formatting passes, but still need complete line-by-line/semantic review. |
-| Partially formatted | **3** | Known unresolved footnote/parser problems; excluded from the 453 above. |
+| Partially formatted | **1** | Known unresolved footnote/apparatus problems; excluded from the 455 above. |
 | Skipped / deferred | **151** | 140 surviving earlier skips plus 11 later source-dependent deferrals. Includes already-clean books and books needing a source or decision; not all are blockers. |
 | Remaining; no recorded formatting pass | **602** | No completed book-formatting pass or explicit skip in the reconciled ledgers. Some may have isolated page-marker repairs; that does not count as a book pass. |
 | **Total surviving book files** | **1,219** | Each file appears in exactly one status. |
 
-**466 books have formatting work recorded** (453 passes + 10 incomplete reviews + 3 partials). **151 were skipped/deferred; 602 remain without a recorded pass.** These totals cover all runs, not just the latest session.
+**466 books have formatting work recorded** (455 passes + 10 incomplete reviews + 1 partial). **151 were skipped/deferred; 602 remain without a recorded pass.** These totals cover all runs, not just the latest session.
 
 Full title, path, status, integration state, evidence and remaining-work note for **every file**: [book-formatting-status.tsv](book-formatting-status.tsv).
 
 ## Work completed across the project
 
 - Earlier reconciled census: **405** recorded passes — 275 Sonnet cloud, 67 earlier runs, 59 Codex nights, and four fixes recorded on 2026-10-23. These are historical ledger classifications; their gates have not all been rerun for this documentation update.
-- Later current-branch work: **17** further recorded passes, plus the **10** body-review books and **one** additional partial book (أحاديث في الفتن والحوادث). The earlier partial نور التوحيد is tracked separately.
-- Overnight work on `format/codex-night-2026-10-24`: **31** finished passes and **one** partial (حقوق آل البيت). These **32 books are not integrated into the current branch**; they are included in project progress and explicitly flagged in the TSV.
+- Later current-branch work: **18** further recorded passes, plus the **10** body-review books and **one** additional partial book (أحاديث في الفتن والحوادث). نور التوحيد now has a finished pass after the parser repair.
+- Overnight work on `format/codex-night-2026-10-24`: **32** finished passes, including the newly completed حقوق آل البيت. These **32 books are not integrated into the current branch**; they are included in project progress and explicitly flagged in the TSV.
 - Typical work includes title/editor cards, chapter hierarchy, interrupted prose, numbered entries, existing body labels, verses/quotes, footnote anchors and separately committed import repairs. Coverage differs by book; a heading-only or structural pass is not treated as a full review.
 - Latest ten-book subset: 4,330 additional body labels, 119 split/malformed heading repairs and 141 poetry lines separated/spaced. See the [per-book review and commit table](book-formatting-review-2026-10-25.md). These numbers must not be added as new books.
+
+## Continuation on the 13 flagged books
+
+- Finished نور التوحيد: all **162** notes link after a reader bug fix (`e39a5cae`) and markup restoration (`fdeda136`). The closing-parenthesis labels had been mistaken for cut-note tails; 45 focused tests pass. Readback fixes (`3d72c015`, `5578b16c`) keep outline/compound labels together.
+- Finished حقوق آل البيت on the overnight branch (`b6102fff`): all **145** notes link after three existing bare labels were converted in a strict markup pass.
+- Advanced أحاديث في الفتن والحوادث (`93b0e1eb`): five verified links added; 12 dead references and 28 unused notes remain. A scanned copy of pp. 50–55 is still needed.
+- Advanced seven of the ten structural-review books: **2,273** body/definition labels, **139** poetry lines spaced/separated (138 newly render as verse blocks), and **three** numbered-point breaks. Source/parser checks passed across all ten; full editorial review remains open for all ten.
 
 ## Remaining work and known partials
 
 | Book / group | Remaining work |
 |---|---|
-| [نور التوحيد وظلمات الشرك في ضوء الكتاب والسنة](../src/content/book-lg/nur-al-tawhid-wa-zulumat-al-shirk.md) | 157 unresolved references on 40 pages; parser folds notes beginning with a closing parenthesis. Partial pass, not finished. |
-| [حقوق آل البيت](../src/content/book-lg/huquq-aal-al-bayt.md) | Three bare anchors on pp. 30–31 remain unlinked after import repair; partial pass. Missing manuscript images and source citation gaps also retained. |
-| [أحاديث في الفتن والحوادث ط القاسم](../src/content/book-lg/ahadith-fil-fitan-wal-hawadith.md) | Pages 50–55 need source/apparatus review: 12 dead original refs and 33 unreferenced notes remain; other 458 references checked. Partial pass. |
+| [أحاديث في الفتن والحوادث ط القاسم](../src/content/book-lg/ahadith-fil-fitan-wal-hawadith.md) | Pages 50–55 need source/apparatus review: 12 dead original refs and 28 unreferenced notes remain; 463 references now link. Five clear page-50 citations were linked; the mismatched labels still need printed-source review. Partial pass. |
 | Ten structural-review books | Finish line-by-line review, semantic anchor-to-note matching and remaining inline labels/poetry. Preserved source fragments and unsupported verse lines are listed in the linked review. |
 | 602 remaining files | Work through the unformatted queue when authorized; the current instruction is to review already-worked books, not start new ones. |
 | Earlier formatted books | Follow up on known source gaps and unresolved notes. A recorded pass does not clear the issues in the [Sonnet report](format-sonnet/REPORT.md), [earlier Codex stop report](book-formatting-codex-night.md), or individual commit messages. |
@@ -59,12 +64,12 @@ The full **151-book** skipped/deferred list is in the TSV. The following **11 la
 
 - The earlier 141 skipped files now contribute **140 surviving files**: `al-amda-fy-iarab-al-brda-qsyda-al-bwsyry.md` was explicitly deleted (`086e7f73`). It is excluded from all current totals, not counted as a remaining book.
 - No guessed missing text, punctuation, hadith numbers, note boundaries or speculative anchor reconstruction.
-- This documentation update did not format books or rerun gates across all 1,219 files. It checked ledger totals, current paths, commit existence and branch ancestry.
+- Whole-archive validation checks ledger totals, current paths, commit existence and branch ancestry. Formatting gates were run for the targeted books; they were not rerun across all 1,219 files.
 - No app build, GUI/screenshot tests, bundle/cache regeneration, merge, push or deployment. Generated bundles may still contain stale content, including the deleted book.
 
 ## How these totals were reconciled
 
-Baseline: the 2026-10-23 status at `9efb034f` (405 recorded passes, 141 skips, 674 remaining; 1,220 files). Reconciled against current book paths, subsequent per-book commits on the current branch, the 2026-10-24/25 completion/skip ledgers and commit ancestry on `format/codex-night-2026-10-24`. The older Sonnet/Codex branches have no book commits absent from the current branch; the newer overnight branch does.
+Baseline: the 2026-10-23 status at `9efb034f` (405 recorded passes, 141 skips, 674 remaining; 1,220 files). Reconciled against current book paths, subsequent per-book commits on the current branch, the 2026-10-24/25 completion/skip ledgers and commit ancestry on `format/codex-night-2026-10-24`. The older Sonnet/Codex branches have no book commits absent from the current branch; the newer overnight branch does. Subsequent continuation finished نور التوحيد (`fdeda136`) and حقوق آل البيت (`b6102fff`), moving two partials into recorded passes without changing the total file count.
 
 The old overall figure of 405 is therefore superseded by this project-wide reconciliation. The current source tree still excludes the 32 overnight book passes until integration; the TSV preserves that distinction. Local reports under `/home/sinkeat/Projects/athar-format-work/` supplied details, but the current inventory and outstanding-work notes are now committed here so the overview does not depend on temporary files.
 

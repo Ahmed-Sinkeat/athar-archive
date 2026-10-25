@@ -25,7 +25,7 @@ History identifies **11 original heading-only books: ten surviving books reviewe
 
 These are earlier-pass counts, not additions from the latest pass. Do not add paragraph counts across passes: later repairs can split or rejoin the same material.
 
-## Latest verified pass
+## Earlier verified pass
 
 **4,330 additional body labels; 119 split/malformed heading repairs; 141 poetry lines separated/spaced.** Of those poetry lines, 139 now render as verse blocks and two remain prose under the current detector.
 
@@ -79,3 +79,40 @@ Heading repairs include rejoining diacritics to their existing words, restoring 
 Committed book diffs and commit messages are the durable evidence. Detailed latest checks and backups currently live at `/tmp/athar-heading-review/` and can disappear when temporary files are cleared. Earlier per-book reports live under `/home/sinkeat/Projects/athar-format-work/`; these local paths are not portable repository artifacts.
 
 Continue with the remaining review of these ten existing books. Keep source-dependent repairs separate from markup-only commits, and preserve ambiguous text until the original source can resolve it. The earlier overnight-run report is historical and is not an instruction to start new books.
+
+## Continuation on the 13 flagged books
+
+The two fixable partials are now finished as formatting passes; the ten-book editorial review is still incomplete. Do not mark all thirteen done.
+
+| Partial book | Result | Commit |
+|---|---|---|
+| نور التوحيد وظلمات الشرك | Restored missing formatting in the current source; 32 note fragments merged, all 162 notes and anchors link after the closing-label parser fix. Exact source/diacritics, all 51 page markers and concatenated per-page note text preserved. | `fdeda136`; parser `e39a5cae`; readback `3d72c015`, `5578b16c` |
+| حقوق آل البيت | All 145 notes now link after three existing labels were converted in a separate strict markup pass. All 63 markers and note bodies preserved. Work stays on the overnight branch. | `b6102fff` |
+| أحاديث في الفتن والحوادث | Five matching Muslim citation anchors linked on p. 50; 463 links now work, 12 original dead refs and 28 unused notes remain. Still partial. | `93b0e1eb` |
+
+The [same-edition electronic transcription](https://www.arabic-keyboard.info/books/ar/read-book/أحاديث-في-الفتن-والحوادث-ط-القاسم) repeats the conflicting apparatus labels on pp. 50–55. It cannot establish a safe correction. The printed 1416هـ/1995م first-edition pages are needed; no missing citation text or speculative targets were supplied.
+
+Further work on the ten review books:
+
+| Book | New body/definition labels | Numbered breaks | Poetry lines spaced/separated | Commit |
+|---|---:|---:|---:|---|
+| أبنية الأسماء والأفعال والمصادر | 0 | 0 | 0 | No new edit in this pass |
+| أدوات الإعراب | 948 | 2 | 0 | `f57a9a23` |
+| العدة شرح العمدة | 9 | 0 | 0 | `8a5b605f` |
+| الأم للشافعي | 0 | 0 | 0 | No new edit in this pass |
+| الإنصاف في معرفة الراجح من الخلاف للمرداوي | 7 | 1 | 0 | `10b05994` |
+| الإشراف على نكت مسائل الخلاف | 0 | 0 | 0 | No new edit in this pass |
+| العزيز شرح الوجيز المعروف بالشرح الكبير ط العلمية | 60 | 0 | 24 | `c7853d13` |
+| البيان في مذهب الإمام الشافعي | 1244 | 0 | 114 | `20d19ff0` |
+| البيان والتحصيل | 0 | 0 | 1 | `676d81bf` |
+| الفواكه الدواني على رسالة ابن أبي زيد القيرواني | 5 | 0 | 0 | `7a304a32` |
+
+The 139 source poetry lines yield 138 new verse blocks. The short line وتكلمت عن أوجه تبلى ... وعن صور سبت remains prose under the current balance detector; punctuation/text were retained. The two previously reported الإنصاف lines and the four-dot الإشراف verse also remain unsupported.
+
+New source issue: العزيز retains embedded editorial apparatus in its body at volume 1 p. 70 (after the discussion of cat saliva) and volume 8 p. 172 (after the interrupted quotation before a تنبيه). No note boundaries or missing text were guessed. This is why zero dead references does not establish that the imported apparatus is complete.
+
+Verification: all ten strict gates and independent exact source/punctuation/diacritic/order, frontmatter, marker and note-definition comparisons passed. Rendered reading text, all note objects and reference-target order remained unchanged; العزيز still has all 14,430 linked notes. The final أدوات الإعراب checks were rerun after its extra 947 dictionary-analysis/example labels. All 45 focused parser/package/format-verifier tests pass. No GUI/build/bundle checks or branch integration.
+
+Scratch evidence: `/home/sinkeat/Projects/athar-format-work/finish-thirteen-2026-10-25/`. Existing unrelated changes to حمد الله ذاته الكريمة in the overnight worktree were left untouched.
+
+The user deferred supplying the printed أحاديث scan until later. Its uncertain apparatus remains partial; this does not pause the ten other reviews. Readback of نور التوحيد caught a reused-script defect that had separated ordinal labels from their nouns; 13 outline labels and 13 further compound labels were corrected, then the gate and independent source/note checks were repeated. Trailing whitespace from that correction was removed in a follow-up commit.
