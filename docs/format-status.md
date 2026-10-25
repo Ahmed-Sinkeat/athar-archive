@@ -8,21 +8,21 @@ Counting unit: **book Markdown files / editions**, not unique printed works or c
 
 | Status | Books | Meaning |
 |---|---:|---|
-| Formatting pass recorded | **480** | 405 in the earlier reconciled census, 43 later passes in the current branch, and 32 finished passes on the overnight branch. This is a work-history count, not a guarantee that every source/editorial problem is resolved. |
+| Formatting pass recorded | **483** | 405 in the earlier reconciled census, 46 later passes in the current branch, and 32 finished passes on the overnight branch. This is a work-history count, not a guarantee that every source/editorial problem is resolved. |
 | Structural review; full review incomplete | **10** | Previously heading-only books now have body-formatting passes, but still need complete line-by-line/semantic review. |
-| Partially formatted | **2** | Known unresolved source/footnote problems; excluded from the 480 above. |
-| Skipped / deferred | **125** | 114 surviving earlier skips plus 11 later source-dependent deferrals after the first 26 fresh reviews. Includes already-clean books and books needing a source or decision; not all are blockers. |
+| Partially formatted | **3** | Known unresolved source/footnote problems; excluded from the 483 above. |
+| Skipped / deferred | **121** | 111 surviving earlier skips plus ten later source-dependent deferrals after the first30 fresh reviews. Includes already-clean books and books needing a source or decision; not all are blockers. |
 | Remaining; no recorded formatting pass | **602** | No completed book-formatting pass or explicit skip in the reconciled ledgers. Some may have isolated page-marker repairs; that does not count as a book pass. |
 | **Total surviving book files** | **1,219** | Each file appears in exactly one status. |
 
-**492 books have formatting work recorded** (480 passes + 10 incomplete reviews + 2 partials). **125 remain skipped/deferred; 602 remain without a recorded pass.** These totals cover all runs, not just the latest session.
+**496 books have formatting work recorded** (483 passes + 10 incomplete reviews + 3 partials). **121 remain skipped/deferred; 602 remain without a recorded pass.** These totals cover all runs, not just the latest session.
 
 Full title, path, status, integration state, evidence and remaining-work note for **every file**: [book-formatting-status.tsv](book-formatting-status.tsv).
 
 ## Work completed across the project
 
 - Earlier reconciled census: **405** recorded passes — 275 Sonnet cloud, 67 earlier runs, 59 Codex nights, and four fixes recorded on 2026-10-23. These are historical ledger classifications; their gates have not all been rerun for this documentation update.
-- Later current-branch work: **43** further recorded passes, plus the **10** body-review books and **two** partial books (أحاديث في الفتن والحوادث and فتييان تتعلقان بتكفير الجهمية). نور التوحيد now has a finished pass after the parser repair.
+- Later current-branch work: **46** further recorded passes, plus the **10** body-review books and **three** partial books (أحاديث في الفتن والحوادث, فتييان تتعلقان بتكفير الجهمية and المنهل المأهول). نور التوحيد now has a finished pass after the parser repair.
 - Overnight work on `format/codex-night-2026-10-24`: **32** finished passes, including the newly completed حقوق آل البيت. These **32 books are not integrated into the current branch**; they are included in project progress and explicitly flagged in the TSV.
 - Typical work includes title/editor cards, chapter hierarchy, interrupted prose, numbered entries, existing body labels, verses/quotes, footnote anchors and separately committed import repairs. Coverage differs by book; a heading-only or structural pass is not treated as a full review.
 - Latest ten-book subset: 4,330 additional body labels, 119 split/malformed heading repairs and 141 poetry lines separated/spaced. See the [per-book review and commit table](book-formatting-review-2026-10-25.md). These numbers must not be added as new books.
@@ -36,9 +36,9 @@ Full title, path, status, integration state, evidence and remaining-work note fo
 
 ## Fresh review of all 151 previously skipped books
 
-The user expanded the scope to **all 151 previously skipped/deferred books plus the ten unfinished reviews**. Every one of these **161 files** has received a fresh parser audit: **zero parse failures; 15 files with dead references and/or unused notes**. These counts identify work; they do not establish a complete source review.
+The user expanded the scope to **all 151 previously skipped/deferred books plus the ten unfinished reviews**. Every one of these **161 files** has received a fresh parser audit: **zero parse failures; 15 files with dead references and/or unused notes**. After the verified المنهل repairs,14 files still have parser-reported dead or unused notes. These counts identify work; they do not establish a complete source review.
 
-The [161-book review ledger](book-formatting-rereview.tsv) records each source hash, parser counts, review state, commit and source issue. **26 supplied files have been read fully: 25 fixed and one with an open coverage issue. Another 135 full reviews remain queued**, including the ten larger books. The initial “nothing to format” labels are not accepted as fresh review evidence.
+The [161-book review ledger](book-formatting-rereview.tsv) records each source hash, parser counts, review state, commit and source issue. **30 supplied files have been read fully: 28 fixed and two with open source issues. Another 131 full reviews remain queued**, including the ten larger books. The initial “nothing to format” labels are not accepted as fresh review evidence.
 
 | Newly reviewed book | Result | Commit |
 |---|---|---|
@@ -68,8 +68,12 @@ The [161-book review ledger](book-formatting-rereview.tsv) records each source h
 | ماهية العقل ومعناه واختلاف الناس فيه | Complete supplied text reviewed; body formatting and source-preservation checks pass. See per-book ledger for retained source issues. | `4c463ffa` |
 | النصيحة في صفات الرب جل وعلا | Complete supplied text reviewed; body formatting and source-preservation checks pass. See per-book ledger for retained source issues. | `b21d7b12` |
 | شرح لامية ابن الوردي | Complete supplied text reviewed; body formatting and source-preservation checks pass. See per-book ledger for retained source issues. | `eea93f58` |
+| آداب العشرة وذكر الصحبة والأخوة | Complete supplied text read; body formatting and source-preservation checks pass. See ledger for details. | `c87c30ec` |
+| التحذير من تعظيم الآثار غير المشروعة | Complete supplied text read; body formatting and source-preservation checks pass. See ledger for details. | `f6b0fe77` |
+| أغلو في بعض القرابة وجفاء في الأنبياء والصحابة | Complete supplied text read; body formatting and source-preservation checks pass. See ledger for details. | `a5c34ec7` |
+| المنهل المأهول بالبناء للمجهول لأبي الخير محمد بن ظهيرة تحقيق ودراسة | Surviving study and bibliography read/formatted; missing matn and ambiguous apparatus remain partial. Three verified note anchors relocated. | `ea151b03` |
 
-All 26 passed the strict markup gate, exact letters/digits/punctuation/diacritics/order, frontmatter/marker and rendered reading-text checks. The three page-marker repairs passed their separate import gates and exact expected marker-list checks. Four notes in من عمل صالحا فلنفسه were read against their citations and all four remain linked; the other 25 files have no imported notes. Sparse source references and incomplete source quotations were retained. No GUI/build checks, source reconstruction or new push in this continuation.
+All30 passed the strict markup gate, exact letters/digits/punctuation/diacritics/order, frontmatter/marker and rendered reading-text checks. The three page-marker repairs passed their separate import gates and exact expected marker-list checks. All62 note texts in the two note-bearing files were read: four references remain linked in من عمل صالحا فلنفسه, and المنهل now has58 linked references after three verified relocations. Its remaining source/anchor corruption is unresolved despite zero dead or unused references; the other28 files have no imported notes. The relocation check preserves reader prose and note texts while allowing only the verified superscript moves/renumbering. Sparse source references and incomplete source quotations were retained. No GUI/build checks, source reconstruction or new push in this continuation.
 
 ## Remaining work and known partials
 
@@ -77,6 +81,7 @@ All 26 passed the strict markup gate, exact letters/digits/punctuation/diacritic
 |---|---|
 | [أحاديث في الفتن والحوادث ط القاسم](../src/content/book-lg/ahadith-fil-fitan-wal-hawadith.md) | Pages 50–55 need source/apparatus review: 12 dead original refs and 28 unreferenced notes remain; 463 references now link. Five clear page-50 citations were linked; the mismatched labels still need printed-source review. Partial pass. |
 | [فتييان تتعلقان بتكفير الجهمية](../src/content/book/ftyyan-ttalqan-btkfyr-al-jhmya.md) | The supplied pages155–161 contain only the first named question despite the two-fatwa title. Formatting passes; verify original-source coverage before calling the book complete. |
+| [المنهل المأهول](../src/content/book/al-mnhl-al-mahwl-balbna-llmjhwl-laby-al-khyr-mhmd-bn-zhyra-thqyq-wdrasa.md) | Surviving text formatted; source stops mid-study408, then empty matn headings/No pages placeholders, resumes bibliography501. Missing409–500 and ambiguous fn43–46 apparatus need original. Three verified anchors fixed;58 references link. Repeated400 markers retained after merge changed printed-note labels. |
 | Ten structural-review books | Finish line-by-line review, semantic anchor-to-note matching and remaining inline labels/poetry. Preserved source fragments and unsupported verse lines are listed in the linked review. |
 | Current authorized review | The ten unfinished reviews plus all 151 originally skipped/deferred books; see the fresh 161-target ledger below. |
 | 602 remaining files | Outside the current review queue; no new formatting pass has been started on them. |
@@ -85,12 +90,11 @@ All 26 passed the strict markup gate, exact letters/digits/punctuation/diacritic
 
 ## Skipped and deliberately deferred
 
-The current **125-book** skipped/deferred list is in the main TSV; the original 151 targets remain in the fresh review ledger, including 26 now reviewed. The following **11 later deferrals** need original-source or apparatus decisions; their wording is preserved in the TSV notes.
+The current **121-book** skipped/deferred list is in the main TSV; the original 151 targets remain in the fresh review ledger, including30 now reviewed. The following **ten remaining later deferrals** need original-source or apparatus decisions; their wording is preserved in the TSV notes.
 
 | Book | Why deferred |
 |---|---|
 | [الآثار المروية في صفة المعية](../src/content/book-lg/al-athar-al-mrwya-fy-sfa-al-maya.md) | Skipped unchanged: page 52 interleaves the body poem and next scholar entry inside data-notes, splits المع / ايب across body/note, and mixes the next entry with citation 1; uncertain repair boundaries |
-| [المنهل المأهول بالبناء للمجهول لأبي الخير محمد بن ظهيرة تحقيق ودراسة](../src/content/book/al-mnhl-al-mahwl-balbna-llmjhwl-laby-al-khyr-mhmd-bn-zhyra-thqyq-wdrasa.md) | missing matn and displaced references |
 | [المعجزات والغيبيات بين بصائر التنزيل ودياجير الإنكار والتأويل](../src/content/book-lg/al-mujizat-wal-ghaybiyyat.md) | Malformed duplicate definitions fn36/page176 and fn52/page182 precede entire main-text paragraphs, swallowing prose into apparatus; the later real definitions reuse those IDs |
 | [التمسك بالسنن والتحذير من البدع](../src/content/book-lg/al-tamassuk-bil-sunan.md) | Extensive body/apparatus interleaving: page125 starts continuation of note2, followed by literal notes3–7 in body;126 interrupts matn at ومثبتة الصفات with notes1–7, while127 resumes القرآنية لا الخبرية |
 | [بحث في صيغة أفعل بين النحويين واللغويين واستعمالاتها في العربية](../src/content/book-lg/bhth-fy-sygha-afal-byn-al-nhwyyn-wallghwyyn-wastamalatha-fy-al-arbya.md) | Third instalment mixes plain page markers, missing apparatus and note prose into matn: page279 has literal 1حكاية عن الكسائي انظر، إصلاح المنطق.. |
@@ -101,7 +105,7 @@ The current **125-book** skipped/deferred list is in the main TSV; the original 
 | [مناظرات ابن تيمية لأهل الملل والنحل](../src/content/book-lg/mnazrat-abn-tymya-lahl-al-mll-walnhl.md) | Page29 superscript1 after قائلاً precedes an apparently missing citation; first surviving note explains the الحديث في العقل marked2 |
 | [نحو مير = مبادئ قواعد اللغة العربية](../src/content/book-lg/nhw-myr-mbady-qwaad-al-lgha-al-arbya.md) | Widespread shifted Markdown refs and split/interleaved fn103/104 apparatus; whole source read, unchanged. |
 
-- The earlier 141 skipped files had **140 surviving files** before this fresh review (114 still skipped,25 now formatted and one partial): `al-amda-fy-iarab-al-brda-qsyda-al-bwsyry.md` was explicitly deleted (`086e7f73`). It is excluded from all current totals, not counted as a remaining book.
+- The earlier 141 skipped files had **140 surviving files** before this fresh review (111 still skipped,28 now formatted and one partial): `al-amda-fy-iarab-al-brda-qsyda-al-bwsyry.md` was explicitly deleted (`086e7f73`). It is excluded from all current totals, not counted as a remaining book.
 - No guessed missing text, punctuation, hadith numbers, note boundaries or speculative anchor reconstruction.
 - Whole-archive validation checks ledger totals, current paths, commit existence and branch ancestry. Formatting gates were run for the targeted books; they were not rerun across all 1,219 files.
 - No app build, GUI/screenshot tests, bundle/cache regeneration, merge, push or deployment. Generated bundles may still contain stale content, including the deleted book.
