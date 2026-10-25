@@ -139,11 +139,12 @@ dependencies {
 // with the owner's key. Fail loudly instead of shipping either.
 val verifyReleaseConfiguration by tasks.registering {
     val configuredContent = listOf(contentBaseUrl.orNull, contentSigningKeyId.orNull, contentPublicKey.orNull).all { !it.isNullOrBlank() }
+    val signed = releaseSigningConfigured // local copy: doLast must not capture the script object (configuration cache)
     doLast {
         require(configuredContent) {
             "Release requires ATHAR_CONTENT_BASE_URL, ATHAR_CONTENT_SIGNING_KEY_ID and ATHAR_CONTENT_PUBLIC_KEY_DER_BASE64 (or their athar.* Gradle properties)."
         }
-        require(releaseSigningConfigured) {
+        require(signed) {
             "Release requires ATHAR_ANDROID_KEYSTORE, ATHAR_ANDROID_STORE_PASSWORD, ATHAR_ANDROID_KEY_ALIAS and ATHAR_ANDROID_KEY_PASSWORD."
         }
     }

@@ -354,7 +354,8 @@ fun AtharApp(
     }
 
     fun goBack() {
-        backStack.removeLastOrNull()
+        // NavDisplay throws on an empty stack; a double-tap on a back arrow pops twice before recomposition.
+        if (backStack.size > 1) backStack.removeLastOrNull()
     }
 
     fun navigateToBooksRoot() {
@@ -438,7 +439,7 @@ fun AtharApp(
         androidx.compose.runtime.CompositionLocalProvider(LocalAtharAppMenu provides appMenu, LocalAtharActionAnchor provides actionAnchor) {
         NavDisplay(
             backStack = backStack,
-            onBack = { backStack.removeLastOrNull() },
+            onBack = { if (backStack.size > 1) backStack.removeLastOrNull() },
             modifier = Modifier
                 .fillMaxSize()
                 .padding(contentPadding),
