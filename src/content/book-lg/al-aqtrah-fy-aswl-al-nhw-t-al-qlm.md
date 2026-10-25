@@ -1,5 +1,5 @@
 ---
-title: "الاقتراح في أصول النحو ط القلم"
+title: "الاقتراح في أصول النحو"
 edition: "دار القلم"
 status: published
 published_at: 2026-07-22

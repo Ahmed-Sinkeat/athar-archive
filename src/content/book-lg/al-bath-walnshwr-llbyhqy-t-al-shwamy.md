@@ -1,5 +1,5 @@
 ---
-title: "البعث والنشور للبيهقي ت الشوامي"
+title: "البعث والنشور للبيهقي"
 edition: "تحقيق الشوامي"
 status: published
 published_at: 2026-07-28

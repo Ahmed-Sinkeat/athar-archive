@@ -1,5 +1,5 @@
 ---
-title: "سنن الترمذي ت شاكر"
+title: "سنن الترمذي"
 edition_of: sunan-al-tirmidhi
 edition: "تحقيق أحمد شاكر"
 status: published

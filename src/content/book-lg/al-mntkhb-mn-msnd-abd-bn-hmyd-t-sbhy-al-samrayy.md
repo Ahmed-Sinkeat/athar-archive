@@ -1,5 +1,5 @@
 ---
-title: "المنتخب من مسند عبد بن حميد ت صبحي السامرائي"
+title: "المنتخب من مسند عبد بن حميد"
 edition_of: al-mntkhb-mn-msnd-abd-bn-hmyd-t-mstfa-al-adwy
 edition: "تحقيق صبحي السامرائي"
 status: published

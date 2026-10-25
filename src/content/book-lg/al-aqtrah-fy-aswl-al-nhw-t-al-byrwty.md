@@ -1,5 +1,5 @@
 ---
-title: "الاقتراح في أصول النحو ط البيروتي"
+title: "الاقتراح في أصول النحو"
 edition_of: al-aqtrah-fy-aswl-al-nhw-t-al-qlm
 edition: "دار البيروتي"
 status: published

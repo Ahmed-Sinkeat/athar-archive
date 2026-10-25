@@ -1,5 +1,5 @@
 ---
-title: "سنن الترمذي ت بشار"
+title: "سنن الترمذي"
 edition: "تحقيق بشار عواد معروف"
 status: published
 published_at: 2026-07-27

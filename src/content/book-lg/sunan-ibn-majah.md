@@ -1,5 +1,5 @@
 ---
-title: "سنن ابن ماجه ت الأرنؤوط"
+title: "سنن ابن ماجه"
 edition: "تحقيق الأرنؤوط"
 status: published
 published_at: 2026-07-27

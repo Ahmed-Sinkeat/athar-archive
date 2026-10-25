@@ -1,5 +1,5 @@
 ---
-title: "صحيح ابن خزيمة ط 3"
+title: "صحيح ابن خزيمة"
 edition: "تحقيق الأعظمي، الطبعة الثالثة"
 status: published
 published_at: 2026-07-28

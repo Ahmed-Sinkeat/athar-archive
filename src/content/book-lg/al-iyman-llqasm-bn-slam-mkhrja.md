@@ -1,5 +1,5 @@
 ---
-title: "الإيمان للقاسم بن سلام - مخرجا"
+title: "الإيمان للقاسم بن سلام"
 edition_of: al-iman-al-qasim-ibn-sallam
 edition: "تحقيق الألباني"
 status: published

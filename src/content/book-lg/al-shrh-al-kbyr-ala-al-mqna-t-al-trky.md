@@ -1,5 +1,5 @@
 ---
-title: "الشرح الكبير على المقنع ت التركي"
+title: "الشرح الكبير على المقنع"
 edition: "تحقيق التركي"
 status: published
 published_at: 2026-07-20

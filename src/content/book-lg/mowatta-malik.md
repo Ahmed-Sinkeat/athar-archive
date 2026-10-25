@@ -1,5 +1,5 @@
 ---
-title: "موطأ مالك ت الأعظمي"
+title: "موطأ مالك"
 edition: "تحقيق الأعظمي"
 status: published
 published_at: 2026-07-27

@@ -1,5 +1,5 @@
 ---
-title: "سنن أبي داود ت الأرنؤوط"
+title: "سنن أبي داود"
 edition: "تحقيق الأرنؤوط"
 status: published
 published_at: 2026-07-27

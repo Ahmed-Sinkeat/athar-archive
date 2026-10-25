@@ -1,5 +1,5 @@
 ---
-title: "مسند أحمد ط الرسالة"
+title: "مسند أحمد"
 edition: "تحقيق الأرنؤوط، مؤسسة الرسالة"
 status: published
 published_at: 2026-07-28

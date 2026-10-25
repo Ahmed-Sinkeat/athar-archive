@@ -1,5 +1,5 @@
 ---
-title: "الجامع لابن وهب ت رفعت فوزي عبد المطلب"
+title: "الجامع لابن وهب"
 edition_of: al-jama-labn-whb-t-mstfa-abw-al-khyr
 edition: "تحقيق رفعت فوزي عبد المطلب"
 status: published

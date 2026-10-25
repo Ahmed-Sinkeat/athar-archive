@@ -1,6 +1,6 @@
 ---
-title: "رسالة الملائكة ت الجندي"
-edition: "دار صادر"
+title: "رسالة الملائكة"
+edition: "تحقيق الجندي، دار صادر"
 status: published
 published_at: 2026-07-22
 person: abw-al-ala-al-mary

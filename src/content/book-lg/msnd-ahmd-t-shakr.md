@@ -1,5 +1,5 @@
 ---
-title: "مسند أحمد ت شاكر"
+title: "مسند أحمد"
 edition_of: musnad-ahmad
 edition: "تحقيق أحمد شاكر"
 status: published

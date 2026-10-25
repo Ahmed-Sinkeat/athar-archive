@@ -1,5 +1,5 @@
 ---
-title: "موطأ مالك ت عبد الباقي"
+title: "موطأ مالك"
 edition_of: mowatta-malik
 edition: "تحقيق محمد فؤاد عبد الباقي"
 status: published

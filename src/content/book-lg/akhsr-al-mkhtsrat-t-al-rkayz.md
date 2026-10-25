@@ -1,6 +1,6 @@
 ---
-title: "أخصر المختصرات ط الركائز"
-edition: "تحقيق عبد العزيز العيدان"
+title: "أخصر المختصرات"
+edition: "تحقيق عبد العزيز العيدان، دار الركائز"
 status: published
 published_at: 2026-07-20
 person: abn-blban-mhmd-bn-bdr-al-dyn

@@ -1,5 +1,5 @@
 ---
-title: "السنن الكبرى للبيهقي ت التركي"
+title: "السنن الكبرى للبيهقي"
 edition: "تحقيق التركي"
 status: published
 published_at: 2026-07-29
