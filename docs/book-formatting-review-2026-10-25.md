@@ -116,3 +116,9 @@ Verification: all ten strict gates and independent exact source/punctuation/diac
 Scratch evidence: `/home/sinkeat/Projects/athar-format-work/finish-thirteen-2026-10-25/`. Existing unrelated changes to حمد الله ذاته الكريمة in the overnight worktree were left untouched.
 
 The user deferred supplying the printed أحاديث scan until later. Its uncertain apparatus remains partial; this does not pause the ten other reviews. Readback of نور التوحيد caught a reused-script defect that had separated ordinal labels from their nouns; 13 outline labels and 13 further compound labels were corrected, then the gate and independent source/note checks were repeated. Trailing whitespace from that correction was removed in a follow-up commit.
+
+### Further أبنية continuation
+
+`b47fc864` restores 88 formula-entry paragraphs, 127 pattern labels and six existing lexeme glosses, plus the quoted source headings مصادر الثلاثي المجرد / مصادر الثلاثي المزيد / مصادر الرباعي السالم والمزيد. Examples, short verse citations and malformed source parentheses were preserved.
+
+Strict gate: 2,088 → 2,174 blocks; contents 20 → 23; all 28 verse blocks and 295 page markers retained; no imported notes. Independent exact source/diacritic/order and rendered reading-text checks pass, including all 133 new strong spans. The first readback exposed literal bold delimiters beside two leading conjunctions; spacing corrected them and all checks were rerun. This advances the review; it does not close the full-book review status. Evidence: `/home/sinkeat/Projects/athar-format-work/abnya-continuation-2026-10-25/`.

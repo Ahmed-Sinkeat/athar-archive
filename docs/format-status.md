@@ -32,7 +32,7 @@ Full title, path, status, integration state, evidence and remaining-work note fo
 - Finished نور التوحيد: all **162** notes link after a reader bug fix (`e39a5cae`) and markup restoration (`fdeda136`). The closing-parenthesis labels had been mistaken for cut-note tails; 45 focused tests pass. Readback fixes (`3d72c015`, `5578b16c`) keep outline/compound labels together.
 - Finished حقوق آل البيت on the overnight branch (`b6102fff`): all **145** notes link after three existing bare labels were converted in a strict markup pass.
 - Advanced أحاديث في الفتن والحوادث (`93b0e1eb`): five verified links added; 12 dead references and 28 unused notes remain. A scanned copy of pp. 50–55 is still needed.
-- Advanced seven of the ten structural-review books: **2,273** body/definition labels, **139** poetry lines spaced/separated (138 newly render as verse blocks), and **three** numbered-point breaks. Source/parser checks passed across all ten; full editorial review remains open for all ten.
+- Advanced eight of the ten structural-review books: **2,406** body/definition labels, **139** poetry lines spaced/separated (138 newly render as verse blocks), **three** numbered-point breaks, and **three** existing source-section titles restored. Source/parser checks passed across all ten; full editorial review remains open for all ten.
 
 ## Remaining work and known partials
 
