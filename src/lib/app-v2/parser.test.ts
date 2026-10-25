@@ -185,6 +185,17 @@ describe("app/v2 semantic parser", () => {
     expect(document.blocks.find(block => block.t === "notes")).toMatchObject({ vol: 2, p: 1, f: ["2:1:1", "2:1:2", "2:1:3"] });
   });
 
+  it("keeps closing-parenthesis note labels separate while still merging cut punctuation tails", () => {
+    const parse = (notes: string[]) => parseReadableDocument({ coll: "book", id: "closing-labels", sourcePath: "closing-labels.md",
+      body: `أول (^1) وثان (^2)\n\n<hr class="page-sep" data-page="6" data-notes='${JSON.stringify(notes)}' />` });
+    const labeled = parse([") سورة البقرة، الآية: 163.", ") انظر: القول السديد.", "."]);
+    expect(labeled.footnotes.map(note => note.x)).toEqual([") سورة البقرة، الآية: 163.", ") انظر: القول السديد. ."]);
+    expect(labeled.blocks.flatMap(block => block.sp ?? []).filter(span => span.k === "sup").map(span => span.target))
+      .toEqual(labeled.footnotes.map(note => note.id));
+    expect(parse(["انظر: المصدر (", ") تتمة الحاشية.", "، جزء آخر."]).footnotes.map(note => note.x))
+      .toEqual(["انظر: المصدر ( ) تتمة الحاشية. ، جزء آخر."]);
+  });
+
   it("numbers every footnote format per printed page and closes each page with its notes", () => {
     const markdown = parseReadableDocument({ coll: "book", id: "md", sourcePath: "md.md", body:
       "أول[^a] ثان[^b].\n\n[^a]: حاشية أ\n\n[^b]: حاشية ب\n\nالجزء: 1 - الصفحة: 5\n\nثالث[^c]\n\n[^c]: حاشية ج\n\nالجزء: 1 - الصفحة: 6" });

@@ -748,8 +748,12 @@ export function parseReadableDocument(input: ParseReadableInput): ParsedDocument
     // epub-import.ts cut notes at every "(N)" inside them, leaving tails that open with
     // punctuation; fold each back so the refs after it line up again.
     // ponytail: the cut-out number itself is lost; re-importing the book restores it.
+    // Some imports retain a closing parenthesis as every note's label, including the first.
+    const cutTail = /^\s*\)\s*[\p{L}\p{N}]/u.test(pageNotes[0] ?? "")
+      ? /^\s*[،؛,:]|^[\s\p{P}]*$/u
+      : /^\s*[،؛,:)]|^[\s\p{P}]*$/u;
     for (let index = pageNotes.length - 1; index > 0; index--) {
-      if (/^\s*[،؛,:)]|^[\s\p{P}]*$/u.test(pageNotes[index]!)) pageNotes.splice(index - 1, 2, `${pageNotes[index - 1]} ${pageNotes[index]!.trim()}`);
+      if (cutTail.test(pageNotes[index]!)) pageNotes.splice(index - 1, 2, `${pageNotes[index - 1]} ${pageNotes[index]!.trim()}`);
     }
     pageNotes.forEach((x, index) => {
       const id = `${marker!.base}${index + 1}${marker!.suffix}`;
