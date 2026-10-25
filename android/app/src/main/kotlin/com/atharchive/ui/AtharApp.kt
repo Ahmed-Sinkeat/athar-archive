@@ -358,6 +358,12 @@ fun AtharApp(
         if (backStack.size > 1) backStack.removeLastOrNull()
     }
 
+    /** Swaps [current] for [next] where it sits, so back leaves the book instead of stepping through editions. */
+    fun replaceRoute(current: NavKey, next: NavKey) {
+        val index = backStack.lastIndexOf(current)
+        if (index >= 0) backStack[index] = next else backStack.add(next)
+    }
+
     fun navigateToBooksRoot() {
         while (backStack.size > 1) backStack.removeLastOrNull()
     }
@@ -488,7 +494,10 @@ fun AtharApp(
                     val readerState = readerEmitted?.value
                     val readerWindow = remember(route.bookId) { contentViewModel.readerWindow(route.bookId) }
                     LaunchedEffect(route.bookId, route.targetOrdinal) {
-                        contentViewModel.openReader(route.bookId, route.targetOrdinal)
+                        // A work opens in the edition last chosen for it; a jump to a place opens as asked.
+                        val edition = if (route.targetOrdinal == null) contentViewModel.editionToOpen(route.bookId) else route.bookId
+                        if (edition != route.bookId) replaceRoute(route, ReaderRoute(edition))
+                        else contentViewModel.openReader(route.bookId, route.targetOrdinal)
                     }
                     DisposableEffect(route.bookId) {
                         onDispose { contentViewModel.closeReader(route.bookId) }
@@ -523,6 +532,10 @@ fun AtharApp(
                             playingAudioId = playingAudioId,
                             audioPlayIntent = audioPlayIntent,
                             onOpenEntity = { backStack.add(ReaderRoute(it)) },
+                            onEdition = { id ->
+                                state.editions.firstOrNull { it.primary }?.let { contentViewModel.chooseEdition(it.id, id) }
+                                replaceRoute(route, ReaderRoute(id))
+                            },
                             onBack = ::goBack,
                             onCopySelection = { selection ->
                                 copyText(context, selection.quotedText)

@@ -54,13 +54,16 @@ class ContentDownloadWorker(
 ) : CoroutineWorker(appContext, parameters) {
     override suspend fun getForegroundInfo(): ForegroundInfo = foregroundInfo(-1)
 
+    /** What this worker is fetching, for the notification; null until doWork has looked it up. */
+    private var itemTitle: String? = null
+
     private val batches get() = EntryPoints.get(applicationContext, ContentWorkerEntryPoint::class.java).contentAccess().batches.value
 
     /**
      * Every worker shares one notification id, so parallel transfers show as one line. During a
      * bulk download it counts the type («الكتب · نصوص: ١٢ من ٣٤٠»), not each item's bytes.
      */
-    private fun foregroundInfo(percent: Int): ForegroundInfo {
+    private fun foregroundInfo(percent: Int, detail: String? = null): ForegroundInfo {
         ContentDownloadNotifications.createChannel(applicationContext)
         val openApp = PendingIntent.getActivity(applicationContext, 0, Intent(applicationContext, MainActivity::class.java),
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
@@ -75,8 +78,16 @@ class ContentDownloadWorker(
                 .setContentText("${arabicDigits(done)} من ${arabicDigits(total)}")
                 .setProgress(total, done, false)
         } else {
-            builder.setContentTitle("جارٍ تنزيل المحتوى")
-                .setContentText("يمكنك إيقاف التنزيل أو إلغاؤه من صفحة التنزيلات")
+            // One item: say which, how far, and what it is doing (fetching bytes, then preparing
+            // the text for reading and search), not a bare «جارٍ تنزيل المحتوى».
+            val title = itemTitle
+            builder.setContentTitle(if (title != null) "جارٍ تنزيل «$title»" else "جارٍ تنزيل المحتوى")
+                .setContentText(
+                    listOfNotNull(
+                        percent.takeIf { it >= 0 }?.let { "${arabicDigits(it)}٪" },
+                        detail ?: "يمكنك إيقافه أو إلغاؤه من صفحة التنزيلات",
+                    ).joinToString(" · "),
+                )
                 .setProgress(100, percent.coerceAtLeast(0), percent < 0)
         }
         val notification = builder.build()
@@ -96,6 +107,8 @@ class ContentDownloadWorker(
         if (isAudio) {
             if (entityId !in content.requestedAudio.value) return Result.success()
         } else if (!content.isPinned(entityId)) return Result.success()
+        // Audio ids are not catalog entities; their line keeps the generic title.
+        if (!isAudio) itemTitle = runCatching { content.entityTitle(entityId) }.getOrNull()
 
         return try {
             // The notification is a courtesy, never a gate: with the permission denied, or the
@@ -112,8 +125,15 @@ class ContentDownloadWorker(
                 if (percent != lastProgressPercent) {
                     lastProgressPercent = percent
                     setProgressAsync(workDataOf(DownloadedBytesKey to downloaded, TotalBytesKey to total))
-                    // A batch counts items, which only change when one finishes.
-                    if (batches.isEmpty()) runCatching { setForegroundAsync(foregroundInfo(percent)) }
+                    // A batch counts items, which only change when one finishes. A text package
+                    // reports its bytes as the first half and its import as the second.
+                    val half = total / 2
+                    val detail = when {
+                        isAudio || total <= 0 -> if (total > 0) "${byteSize(downloaded)} من ${byteSize(total)}" else null
+                        downloaded < half -> "${byteSize(downloaded)} من ${byteSize(half)}"
+                        else -> "تجهيز النص للقراءة والبحث"
+                    }
+                    if (batches.isEmpty()) runCatching { setForegroundAsync(foregroundInfo(percent, detail)) }
                 }
             }
             if (isAudio) content.runAudioDownload(entityId, progress) else content.runDownload(entityId, progress)

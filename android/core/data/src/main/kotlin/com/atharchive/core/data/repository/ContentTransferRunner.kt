@@ -60,21 +60,35 @@ class ContentTransferRunner(
         entityIds.chunked(500).forEach { userDatabase.userDataDao().removePinnedDownloads(it) }
     }
 
-    suspend fun unpin(entityId: String) = transferLocks.getOrPut(entityId) { Mutex() }.withLock { mutationMutex.withLock {
-        val entity = contentDatabase.catalogDao().entity(entityId)
-        userDatabase.userDataDao().removePinnedDownload(entityId)
-        if (entity == null) {
-            removeTransferFiles(entityId)
-        } else {
-            entity.toCatalogEntry().let {
-                retainedStore.remove(it)
-                removeTransferFiles(it)
+    suspend fun unpin(entityId: String) {
+        // The pin goes first and on its own: lists drop the row at once, and a running transfer
+        // stops at its next frame (ensureStillPinned). The files wait for the transfer lock, which
+        // that transfer holds until it stops; taking the lock first left a cancelled download
+        // looking alive until it finished on its own.
+        mutationMutex.withLock { userDatabase.userDataDao().removePinnedDownload(entityId) }
+        removeUnpinnedFiles(entityId)
+    }
+
+    private suspend fun removeUnpinnedFiles(entityId: String) {
+        transferLocks.getOrPut(entityId) { Mutex() }.withLock {
+            val removed = mutationMutex.withLock {
+                // Pinned again while this waited: the new download owns the files now.
+                if (userDatabase.userDataDao().pinnedDownload(entityId) != null) return@withLock false
+                val entity = contentDatabase.catalogDao().entity(entityId)
+                if (entity == null) {
+                    removeTransferFiles(entityId)
+                } else {
+                    entity.toCatalogEntry().let {
+                        retainedStore.remove(it)
+                        removeTransferFiles(it)
+                    }
+                }
+                contentDatabase.importDao().markTransfer(entityId, ContentTransferState.IDLE)
+                true
             }
+            if (removed) contentDatabase.importDao().purgeCopies(entityId) // a half-staged update is useless once unpinned
         }
-        contentDatabase.importDao().markTransfer(entityId, ContentTransferState.IDLE)
-    }.also {
-        contentDatabase.importDao().purgeCopies(entityId) // a half-staged update is useless once unpinned
-    } }
+    }
 
     suspend fun downloadPinned(
         entityId: String,

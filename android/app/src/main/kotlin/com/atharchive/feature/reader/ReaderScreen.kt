@@ -133,6 +133,8 @@ fun ReaderScreen(
     playingAudioId: String? = null,
     audioPlayIntent: Boolean = false,
     onOpenEntity: (String) -> Unit = {},
+    /** Switches to another edition of this work in place: it replaces this reader, never stacks on it. */
+    onEdition: (String) -> Unit = onOpenEntity,
     onAnchorJump: (suspend (String) -> Int?)? = null,
     onLoadSelectionBlocks: (suspend (IntRange) -> List<ReaderBlock>)? = null,
     onRemoveHighlight: suspend (String) -> Unit = {},
@@ -605,7 +607,7 @@ fun ReaderScreen(
                 onMore = { introOpen = true },
                 hasIntro = state.card.isNotEmpty(),
                 editions = state.editions,
-                onEdition = onOpenEntity,
+                onEdition = onEdition,
                 sourceUrl = state.sourceUrl,
                 onOpenSite = { openLink(state.sourceUrl) },
             )
@@ -735,10 +737,15 @@ private fun ReaderTopBar(
                 overflow = TextOverflow.Ellipsis,
             )
             // A single-chapter work names its one chapter after itself; printing it
-            // twice, six points apart, reads as a rendering fault.
-            if (chapterTitle.isNotBlank() && chapterTitle != bookTitle) {
+            // twice, six points apart, reads as a rendering fault. A work with several
+            // editions always says which one is open.
+            val subtitle = listOfNotNull(
+                editions.firstOrNull { it.current }?.label,
+                chapterTitle.takeIf { it.isNotBlank() && it != bookTitle },
+            ).joinToString(" · ")
+            if (subtitle.isNotBlank()) {
                 Text(
-                    text = chapterTitle,
+                    text = subtitle,
                     color = colors.secondary,
                     style = MaterialTheme.typography.labelSmall,
                     maxLines = 1,

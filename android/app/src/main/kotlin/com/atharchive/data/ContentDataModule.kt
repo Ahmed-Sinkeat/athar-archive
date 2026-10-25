@@ -285,6 +285,13 @@ class ContentAccess @Inject constructor(
         _pausedDownloads.value = if (paused) _pausedDownloads.value + entityId else _pausedDownloads.value - entityId
         storagePreferences.edit { putStringSet("paused_downloads", _pausedDownloads.value) }
     }
+
+    /** The edition last chosen from «الطبعات» for a work (keyed by its default edition), or null for the default. */
+    fun preferredEdition(primaryId: String): String? = storagePreferences.getString("edition:$primaryId", null)
+
+    fun setPreferredEdition(primaryId: String, editionId: String) = storagePreferences.edit {
+        if (editionId == primaryId) remove("edition:$primaryId") else putString("edition:$primaryId", editionId)
+    }
     private val storagePolicy by lazy {
         ContentStoragePolicy(
             storageRoot = context.filesDir,

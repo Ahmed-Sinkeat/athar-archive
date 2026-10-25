@@ -1035,6 +1035,25 @@ class AtharContentViewModel @Inject constructor(
         }
     }
 
+    /**
+     * The edition to open for [entityId]. A work opened by its default edition opens the edition
+     * last chosen in «الطبعات», so a reader who switched never has to switch again; a link to a
+     * specific edition (a search hit, a non-default id) opens as given.
+     */
+    suspend fun editionToOpen(entityId: String): String {
+        val entity = catalogDao.entity(entityId) ?: return entityId
+        if (entity.editionOf != null) return entityId
+        val preferred = content.preferredEdition(entityId) ?: return entityId
+        val edition = catalogDao.entity(preferred)
+        return if (edition != null && edition.catalogPresent && edition.editionOf == entityId) preferred else entityId
+    }
+
+    /**
+     * Remembers [editionId] as the edition the work [primaryId] opens with from now on. Synchronous
+     * on purpose: the reader that replaces this one asks [editionToOpen] straight away.
+     */
+    fun chooseEdition(primaryId: String, editionId: String) = content.setPreferredEdition(primaryId, editionId)
+
     fun closeReader(entityId: String) {
         prefetchSessions.remove(entityId)?.close()
         prefetchedFrames.remove(entityId)
