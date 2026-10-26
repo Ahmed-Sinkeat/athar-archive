@@ -8,14 +8,14 @@ Counting unit: **book Markdown files / editions**, not unique printed works or c
 
 | Status | Books | Meaning |
 |---|---:|---|
-| Formatting pass recorded | **484** | 405 in the earlier reconciled census, 46 later passes in the current branch, and 32 finished passes on the overnight branch. This is a work-history count, not a guarantee that every source/editorial problem is resolved. |
+| Formatting pass recorded | **596** | 405 in the earlier reconciled census, 46 later passes in the current branch, and 32 finished passes on the overnight branch. This is a work-history count, not a guarantee that every source/editorial problem is resolved. |
 | Structural review; full review incomplete | **10** | Previously heading-only books now have body-formatting passes, but still need complete line-by-line/semantic review. |
-| Partially formatted | **4** | Known unresolved source/footnote problems; excluded from the 483 above. |
+| Partially formatted | **41** | Known unresolved source/footnote problems; excluded from the 483 above. |
 | Skipped / deferred | **119** | 111 surviving earlier skips plus ten later source-dependent deferrals after the first30 fresh reviews. Includes already-clean books and books needing a source or decision; not all are blockers. |
-| Remaining; no recorded formatting pass | **602** | No completed book-formatting pass or explicit skip in the reconciled ledgers. Some may have isolated page-marker repairs; that does not count as a book pass. |
+| Remaining; no recorded formatting pass | **453** | No completed book-formatting pass or explicit skip in the reconciled ledgers. Some may have isolated page-marker repairs; that does not count as a book pass. |
 | **Total surviving book files** | **1,219** | Each file appears in exactly one status. |
 
-**498 books have formatting work recorded** (484 passes + 10 incomplete reviews + 4 partials). **119 remain skipped/deferred; 602 remain without a recorded pass.** These totals cover all runs, not just the latest session.
+**647 books have formatting work recorded** (596 passes + 10 incomplete reviews + 41 partials). **119 remain skipped/deferred; 453 remain without a recorded pass.** These totals cover all runs, not just the latest session.
 
 Full title, path, status, integration state, evidence and remaining-work note for **every file**: [book-formatting-status.tsv](book-formatting-status.tsv).
 
@@ -124,3 +124,12 @@ Checks: exactly 1,219 unique existing paths; status counts sum to 1,219; no dupl
 - **Since the 2026-10-25 ledger:** تميز الصدق finished (`4dc0dd05`) and فتيا وجوابها formatted but kept partial (`befe00fc`) — the TSV was updated for both. `git log --grep '^format(book)'` touches 498 distinct book files, matching 484 + 10 + 4.
 - **Android content on R2** (`app/v2/`, generation `20fceaeb`) was generated from this state, so it includes all of the above.
 - **Not covered by these numbers:** 602 books have no pass, 119 are skipped/deferred, and a recorded pass is not a guarantee the source text is complete.
+
+## Session of 2026-10-26 (markers + 149 mechanical passes)
+
+- **Invisible structure markers** (`<!-- verse -->`, `hadith`, `athar`, `riwayah`, `ayah`): spec in [`book-markup-spec.md`](book-markup-spec.md), checked by `src/lib/markers.ts` inside `scripts/format-verify.ts`. They are HTML comments, so nothing new shows on the site or in the app, and a later style change can read them. `scripts/wrap-verses.ts` wrapped **3,043 verse blocks in 180 already-formatted books**.
+- **149 of the 151 small/medium books (under 1 MB) got a mechanical pass** (one commit each): paragraph breaks between source lines, heading levels (a lone `#` becomes `##`; import headings that were really sentences became paragraphs), hemistich spacing, verse blocks, standalone-ayah blocks, and `<sup data-fn>` anchors converted to `(^N)`. Every file passes `format-verify` against its pre-session version, and linked-ref/dead-ref counts never got worse (`audit` over all 149).
+- **This is not the line-by-line review of the earlier passes.** Not done in these 149: reading every anchor/note pair, bare-digit anchors (37 books keep notes without a ref; these are `partial` in the ledger), cut-note merges, bold labels, numbered-entry breaks, book cards, and any `hadith`/`athar`/`riwayah` marking (attribution is a judgment call and nothing was guessed).
+- **Two books left unformatted** because the strict gate cannot prove them safe: `malmh-al-fqh-al-malky` (literal `<<…>>` in the text) and `masra-al-tasawwuf` (a `##` glued mid-line). They need a manual pass.
+- `zahra-al-tqard-fy-al-nhw-al-arby` moved to `src/content/book-lg/` (the markers pushed it over the 100 KB CMS limit); its slug and URL are unchanged.
+- **Not covered:** the app/site were not rebuilt and no content was regenerated or published; the Android app was not built (no SDK in this environment).
