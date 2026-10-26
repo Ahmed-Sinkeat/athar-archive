@@ -794,9 +794,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="81" />
 
-١٢٢ -
-
-## بكاء العمل، وبكاء العين
+## ١٢٢ - بكاء العمل، وبكاء العين
 
 <hr class="page-sep" data-page="81" />
 

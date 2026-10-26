@@ -120,9 +120,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="51" />
 
-٦ -
-
-## شدة حرمة الخمر
+## ٦ - شدة حرمة الخمر
 
 <hr class="page-sep" data-page="52" />
 

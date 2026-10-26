@@ -72,9 +72,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="19" />
 
-٤ -
-
-## طلب العلم والصبر عليه
+## ٤ - طلب العلم والصبر عليه
 
 <hr class="page-sep" data-page="20" />
 
@@ -320,9 +318,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="40" />
 
-٤١ -
-
-## أشعر الناس
+## ٤١ - أشعر الناس
 
 <hr class="page-sep" data-page="40" />
 
