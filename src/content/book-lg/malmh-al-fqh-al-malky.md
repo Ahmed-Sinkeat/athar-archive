@@ -486,9 +486,7 @@ J. Caille - Organisation judiciaire et procedure marocaineslibr. gen. de droit e
 
 و
 
-## الاسطرلاب
-
-).
+الاسطرلاب).
 
 الفرائض:
 
