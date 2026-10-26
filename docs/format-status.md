@@ -187,3 +187,12 @@ All 241 small books (`src/content/book/`) not yet reviewed were swept with an au
 ### Ten small books read line by line (2026-10-26)
 
 `mlha-al-iarab`, `al-arbaeen-al-nawawiyyah`, `ktab-mkhtsr-al-adhkar-waladab--v2`, `al-hilm-ibn-abi-al-dunya`, `al-umr-wal-shayb`, `adab-al-ishrah`, `dhamm-al-muskir`, `aghlaq-al-abwab-lmna-al-hb-walaajab`, `atha-ardt-an-ykwn-daawk-mstjaba`, `kalam-al-layali-wal-ayyam`. Main findings: hadith blocks covered only the first paragraph of multi-paragraph narrations (now whole), most numbered hadith/athar in the collections were unmarked (about 280 narrations now wrapped, classified hadith / athar / riwayah by the narrator), split or stray bayt lines (one corrupted bayt in `mlha-al-iarab` noted, not changed), and one missing chapter heading. Narrations that contain a verse block were left unmarked, since markers cannot nest.
+
+### The remaining 231 small books (2026-10-26)
+
+Not read line by line. Two automatic passes, both gated by `format-verify`:
+
+- **Narration markers:** isnad narrations (numbered «N - حدثنا…» items and «أخبرنا أحمد» units) in 46 books were wrapped whole and classified by heuristic: hadith when the Prophet is named in the matn, riwayah for «كان يقال / قال لقمان / مكتوب في الحكمة / بلغني», athar when a named Companion or Successor is the speaker. Checked against the 4 books classified by hand, the heuristic agreed on about 75 of 119 narrations; the rest differ on the hadith/athar/riwayah boundary or were left unmarked by hand. Treat these markers as provisional until a scholar reviews them. Narrations containing a verse block are left unmarked, and unclear speakers are left unmarked.
+- **Chapter hierarchy:** باب / فصل / مبحث / مطلب headings were nested in 14 books.
+
+185 books had no isnad narrations and received no marker change. None of the 231 had its poems, hadith or footnotes individually checked.
