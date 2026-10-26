@@ -27,6 +27,11 @@ function text(body: string, importFix = false): string {
   // character-multiset check anyway.
   const unmarked = (importFix ? body.replace(/\((?:\^)?[0-9\u0660-\u0669]+\)(?: - )?/g, "") : body)
     .replace(PAGE_MARKS, (tag) => `\u0001${notesText(tag)}\u0001`)
+    // HTML comments (card and structure markers) are markup; strip them first so the `>` of one can
+    // never close a stray `<` in the book's own text and swallow words
+    .replace(/<!--[\s\S]*?-->/g, "")
+    // an import left «##» glued right after a footnote anchor («<sup>1</sup>## عنوان»): markup too
+    .replace(/(<\/sup>)#{2,6}[ \t]+/g, "$1")
     .replace(/<[^>]+>/g, "")
     // a bare «#» line is an empty heading: markup too
     .replace(/^[ \t]*(?:#{1,6}(?:[ \t]+|$)|[-*+][ \t]+|>[ \t]?|(?:-{3,}|\*{3,})[ \t]*$)/gm, "")

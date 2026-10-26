@@ -73,3 +73,13 @@ test("import-fix may renumber any page marker, plain footer lines included, but 
   // a bare «#» line is an empty heading: markup, so it may go
   expect(verifyFormatting("---\nt: 1\n---\nأ\n#\nب\n", "---\nt: 1\n---\nأ\n\nب\n")).toBeUndefined();
 });
+
+test("a marker comment cannot close a stray < in the book's own text", () => {
+  const before = `---\ntitle: "x"\n---\nسفرجل<سفرج ثم شمردل\n\nنص آخر`;
+  expect(verifyFormatting(before, `---\ntitle: "x"\n---\nسفرجل<سفرج ثم شمردل\n\n<!-- verse -->\n\nنص آخر\n\n<!-- /verse -->`)).toBeUndefined();
+  expect(verifyFormatting(before, `---\ntitle: "x"\n---\nسفرجل<سفرج شمردل\n\nنص آخر`)).toMatch(/text/);
+});
+
+test("a ## glued after a footnote anchor is markup", () => {
+  expect(verifyFormatting(`---\ntitle: "x"\n---\nكلام<sup data-fn="1">1</sup>## عنوان\n\nنص`, `---\ntitle: "x"\n---\nكلام (^1)\n\n## عنوان\n\nنص`)).toBeUndefined();
+});
