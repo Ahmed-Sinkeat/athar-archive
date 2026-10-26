@@ -18,7 +18,7 @@ Found: 70. Missing: 14.
 | مسائل الجاهلية | `src/content/book/masail-al-jahiliyyah.md` | 26 KB | structural scan: reviewed, no change needed |
 | العقيدة الواسطية | `src/content/book/al-aqeedah-al-wasitiyyah.md` | 51 KB | **read in full**: reviewed, no change needed |
 | العقيدة الواسطية بتعليق ابن مانع | `src/content/book/al-aqyda-al-wastya-btalyq-abn-mana.md` | 82 KB | structural scan: reviewed, no change needed |
-| الفتوى الحموية الكبرى | `src/content/book-lg/al-fatwa-al-hamawiyyah-al-kubra.md` | 256 KB | structural scan: reviewed, no change needed |
+| الفتوى الحموية الكبرى | `src/content/book-lg/al-fatwa-al-hamawiyyah-al-kubra.md` | 256 KB | audited: chapter structure, paragraph lengths; sampled, not read in full |
 | التدمرية | `src/content/book-lg/al-tadmuriyyah.md` | 289 KB | structural scan: 5 headings split across two lines joined |
 | العقيدة الطحاوية | `src/content/book/al-aqeedah-al-tahawiyyah.md` | 26 KB | **read in full**: reviewed, no change needed |
 | لمعة الاعتقاد | `src/content/book/lumat-al-itiqad.md` | 56 KB | structural scan: reviewed, no change needed |
@@ -32,7 +32,7 @@ Found: 70. Missing: 14.
 | سلم الوصول (حافظ حكمي) | `src/content/poem/sullam-al-wusul-ila-ilm-al-usul.md` | 43 KB | audited: verse numbering, pairing, rhyme/qafiya checked; opening read |
 | نونية القحطاني | `src/content/poem/nuniyyat-al-qahtani.md` | 106 KB | audited: verse numbering, pairing, rhyme/qafiya checked; opening read |
 | التائية في القدر | `src/content/poem/al-qasidah-al-taiyyah-fil-qadar.md` | 14 KB | audited: verse numbering, pairing, rhyme/qafiya checked; opening read |
-| الكافية الشافية (نونية ابن القيم) | `src/content/poem/al-kafiyah-al-shafiyah.md` | 547 KB | structural scan: reviewed, no change needed |
+| الكافية الشافية (نونية ابن القيم) | `src/content/poem/al-kafiyah-al-shafiyah.md` | 547 KB | audited: chapter structure, paragraph lengths, qafiya 100% consistent (5821 bayts); sampled, not read in full |
 
 ## الفقه
 
@@ -41,18 +41,18 @@ Found: 70. Missing: 14.
 | شروط الصلاة وأركانها وواجباتها | `src/content/book/shurut-al-salah.md` | 17 KB | structural scan: reviewed, no change needed |
 | آداب المشي إلى الصلاة | `src/content/book/adab-al-mashy-ila-al-salah.md` | 56 KB | structural scan: line breaks normalised |
 | عمدة الفقه | `src/content/book-lg/umdat-al-fiqh-ibn-qudamah.md` | 310 KB | structural scan: line breaks normalised |
-| زاد المستقنع | `src/content/book-lg/zad-al-mustaqni.md` | 314 KB | structural scan: reviewed, no change needed |
+| زاد المستقنع | `src/content/book-lg/zad-al-mustaqni.md` | 314 KB | audited: chapter structure, paragraph lengths; sampled, not read in full |
 | دليل الطالب | `src/content/book-lg/dlyl-al-talb-lnyl-al-mtalb.md` | 513 KB | structural scan: line breaks inside paragraphs normalised |
 | أخصر المختصرات | `src/content/book-lg/akhsr-al-mkhtsrat.md` | 199 KB | structural scan: page-line breaks joined |
 | منهج السالكين | — | — | **missing** |
-| عمدة السالك | `src/content/book-lg/amdh-al-salk-wadh-al-nask.md` | 469 KB | structural scan: reviewed, no change needed |
+| عمدة السالك | `src/content/book-lg/amdh-al-salk-wadh-al-nask.md` | 469 KB | audited: chapter structure, paragraph lengths; sampled, not read in full |
 | متن أبي شجاع | `src/content/book/mtn-aby-shjaa-al-msma-al-ghayh-waltqryb.md` | 84 KB | structural scan: reviewed, no change needed |
 | المقدمة الحضرمية | `src/content/book-lg/al-mqdmh-al-hdrmyh.md` | 169 KB | structural scan: page-line breaks joined |
 | الزبد | `src/content/poem/al-zbd-fy-al-fqh-al-shafay.md` | 136 KB | structural scan: reviewed, no change needed |
 | متن الأخضري | `src/content/book/mtn-al-akhdry-fy-al-abadat-ala-mthhb-al-amam-malk.md` | 56 KB | structural scan: line breaks normalised |
 | الكوكب الزهري نظم الأخضري | `src/content/poem/al-kwkb-al-zhry-nzm-mkhtsr-al-akhdry.md` | 35 KB | structural scan: reviewed, no change needed |
 | متن العشماوية | `src/content/book/mtn-al-ashmawyh.md` | 56 KB | **read in full**: line-joined walls split into paragraphs; باب headings restored |
-| الرسالة لابن أبي زيد | `src/content/book-lg/al-rsalh-llqyrwany.md` | 230 KB | structural scan: reviewed, no change needed |
+| الرسالة لابن أبي زيد | `src/content/book-lg/al-rsalh-llqyrwany.md` | 230 KB | audited: chapter structure, paragraph lengths; sampled, not read in full |
 | مختصر خليل | `src/content/book-lg/mkhtsr-khlyl.md` | 801 KB | structural scan: reviewed; fasls are unpunctuated continuous text in this edition, left as printed |
 | نور الإيضاح | — | — | **missing** |
 | مختصر القدوري | — | — | **missing** |
@@ -138,3 +138,13 @@ Known limits:
 - مختصر خليل has no punctuation in this edition; each fasl stays one long paragraph.
 - Sentences cut by a page marker stay split as printed (the app shows the page divider there).
 - The 14 missing texts above still need a source.
+
+## Known limits found in the latest pass
+
+- `mkhtsr-khlyl`: 60 paragraphs over 2,000 characters. Khalil's matn runs on without sentence punctuation, so clause breaks would be guesses. Left as is.
+- `alfiyyah-al-suyuti`, `lamiyyat-al-afal`, `al-muharrar`: the source edition prints a `• • •` ornament at page ends. The gate counts it as text and removing it is rejected, so it stays visible.
+- `hadya-awly-al-fhm-fy-nzm-hlya-talb-al-alm`, verse 64: a stray `_` around one word stops the hemistich split, so it shows as a single line. The underscore is in the source text; removing it is rejected by the gate.
+- `shurut-al-salah`: a line that starts with `-` renders as a one-item list. Escaping it changes the text, so it stays.
+- `al-aqeedah-al-saffariniyyah`, verse 100: the source has `ك ملحد` (a split word). Left as is.
+- `al-aqyda-al-wastya-btalyq-abn-mana` and `lumat-al-itiqad`: Qur'an verses are in plain parentheses, not ornate brackets, so they get no verse styling.
+
