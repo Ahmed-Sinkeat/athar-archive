@@ -160,3 +160,18 @@ The same mechanical pass (plus `<sup data-fn>` to `(^N)` where the book has them
 - `book-lg/taliq-ala-al-tafsir-min-kutub-ibn-abi-al-dunya.md`
 - `book-lg/tariq-al-hijratayn.md`
 - `book-lg/tfsyr-mqatl-bn-slyman.md`
+
+### Review pass over 100 books (2026-10-26)
+
+A real review of the first 100 books of the review list (smallest to largest by size):
+
+- Books 1–37 (small, `src/content/book/`) were read paragraph by paragraph. Fixes: sentence fragments that had become `##` headings, address headings, lone ordinals above headings, mis-paired or page-split hemistichs in verse, narrations cut by page markers, run-together `[N]` points; hadith/athar/riwayah markers added only around whole standalone narrations (athar = Companions/Successors/early imams).
+- Books 38–100 (large, `src/content/book-lg/`) were reviewed from their outline and structure only, not read in full: heading hierarchy (باب/فصل/مبحث/مطلب), joined heading fragments, demoted sentence-style and numbered-point headings.
+- Every change passed `format-verify` (letters, digits and punctuation unchanged).
+
+Known leftovers:
+
+- Unformatted because the formatted output does not parse or fails the gate: `taliq-ala-al-tafsir…`, `al-mnhaj-al-mkhtsr-fy-almy-al-nhw-walsrf`, `al-ftwhat-al-rbanyh-bshrh-al-drh-al-mdyh-fy-alm-al-qwaad-al` (autofix reverted), plus the other stuck large books listed above.
+- Poem pairing not repaired in `al-hll-fy-shrh-abyat-al-jml` and `shrh-al-mnzwmh-al-mymyh-fy-al-adab-al-shrayh` (several adjacent lone hemistichs).
+- About 147 partial books still have unlinked footnotes (bare-digit anchors, empty-definition notes); these need source-level repair, not a mechanical pass.
+- Nothing was rebuilt or published (`pnpm app:gen` / `app:publish` not run); the Android changes are uncompiled.
