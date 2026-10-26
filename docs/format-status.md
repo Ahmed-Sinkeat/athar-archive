@@ -8,14 +8,14 @@ Counting unit: **book Markdown files / editions**, not unique printed works or c
 
 | Status | Books | Meaning |
 |---|---:|---|
-| Formatting pass recorded | **596** | 405 in the earlier reconciled census, 46 later passes in the current branch, and 32 finished passes on the overnight branch. This is a work-history count, not a guarantee that every source/editorial problem is resolved. |
+| Formatting pass recorded | **933** | 405 in the earlier reconciled census, 46 later passes in the current branch, and 32 finished passes on the overnight branch. This is a work-history count, not a guarantee that every source/editorial problem is resolved. |
 | Structural review; full review incomplete | **10** | Previously heading-only books now have body-formatting passes, but still need complete line-by-line/semantic review. |
-| Partially formatted | **41** | Known unresolved source/footnote problems; excluded from the 483 above. |
+| Partially formatted | **137** | Known unresolved source/footnote problems; excluded from the 483 above. |
 | Skipped / deferred | **119** | 111 surviving earlier skips plus ten later source-dependent deferrals after the first30 fresh reviews. Includes already-clean books and books needing a source or decision; not all are blockers. |
-| Remaining; no recorded formatting pass | **453** | No completed book-formatting pass or explicit skip in the reconciled ledgers. Some may have isolated page-marker repairs; that does not count as a book pass. |
+| Remaining; no recorded formatting pass | **20** | No completed book-formatting pass or explicit skip in the reconciled ledgers. Some may have isolated page-marker repairs; that does not count as a book pass. |
 | **Total surviving book files** | **1,219** | Each file appears in exactly one status. |
 
-**647 books have formatting work recorded** (596 passes + 10 incomplete reviews + 41 partials). **119 remain skipped/deferred; 453 remain without a recorded pass.** These totals cover all runs, not just the latest session.
+**1,080 books have formatting work recorded** (933 passes + 10 incomplete reviews + 137 partials). **119 remain skipped/deferred; 20 remain without a recorded pass.** These totals cover all runs, not just the latest session.
 
 Full title, path, status, integration state, evidence and remaining-work note for **every file**: [book-formatting-status.tsv](book-formatting-status.tsv).
 
@@ -133,3 +133,30 @@ Checks: exactly 1,219 unique existing paths; status counts sum to 1,219; no dupl
 - **Two books left unformatted** because the strict gate cannot prove them safe: `malmh-al-fqh-al-malky` (literal `<<…>>` in the text) and `masra-al-tasawwuf` (a `##` glued mid-line). They need a manual pass.
 - `zahra-al-tqard-fy-al-nhw-al-arby` moved to `src/content/book-lg/` (the markers pushed it over the 100 KB CMS limit); its slug and URL are unchanged.
 - **Not covered:** the app/site were not rebuilt and no content was regenerated or published; the Android app was not built (no SDK in this environment).
+
+### Second half of the session: the other 433 books
+
+The same mechanical pass (plus `<sup data-fn>` to `(^N)` where the book has them) was run over the 448 files that exist among the 453 remaining books, and **433 passed** (one commit each, all against their pre-session version, with linked/dead-ref counts never worse). 96 of them are `partial` because notes without a ref remain. Fixes made on the way: `format-verify` now ignores comment markers and a `##` glued after an anchor, so a stray `<` in a book's text cannot swallow words; multi-volume books keep their level-1 `# الجزء …` headings (notes depend on them).
+
+**20 books still without a pass.** 15 failed because the pass made the footnote result slightly worse (a few extra dead refs) or the text cannot be proved unchanged, and 5 listed paths are not in the repo:
+
+- `book-lg/al-bidayah-wal-nihayah.md`
+- `book-lg/al-jama-al-shyh-llsnn-walmsanyd.md`
+- `book-lg/al-majm-al-kbyr-lltbrany-j.md`
+- `book-lg/al-mjalsa-wjwahr-al-alm.md`
+- `book-lg/al-mkhlsyat.md`
+- `book-lg/al-msnd-al-mwdway-al-jama-llktb-al-ashra.md`
+- `book-lg/al-rawd-al-basim.md`
+- `book-lg/al-tfsyr-mn-snn-sayd-bn-mnswr-mhqqa.md`
+- `book-lg/dayf-aby-dawd-al-am.md`
+- `book-lg/iqtida-al-sirat-al-mustaqim.md`
+- `book-lg/majmu-al-fatawa.md`
+- `book-lg/mkhtsr-shyh-al-imam-al-bkhary.md`
+- `book-lg/msbah-al-zlam-fy-al-rd-ala-mn-kdhb-al-shykh-al-imam-wnsbh-ila-tkfyr-ahl-al-iyman-walislam.md`
+- `book-lg/mward-al-zman-ila-zwayd-abn-hban-t-hsyn-asd.md`
+- `book-lg/tafsir-ibn-kathir.md`
+- `book-lg/tafsir-muyassar.md`
+- `book-lg/tafsir-tabari.md`
+- `book-lg/taliq-ala-al-tafsir-min-kutub-ibn-abi-al-dunya.md`
+- `book-lg/tariq-al-hijratayn.md`
+- `book-lg/tfsyr-mqatl-bn-slyman.md`
