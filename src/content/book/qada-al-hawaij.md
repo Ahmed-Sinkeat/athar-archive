@@ -248,7 +248,7 @@ authored_year: 281
 
 <hr class="page-sep" data-page="35" />
 
-### باب: في قضاء الحوائج
+## باب: في قضاء الحوائج
 
 <hr class="page-sep" data-page="35" />
 
