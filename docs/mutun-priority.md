@@ -148,3 +148,9 @@ Known limits:
 - `al-aqeedah-al-saffariniyyah`, verse 100: the source has `ك ملحد` (a split word). Left as is.
 - `al-aqyda-al-wastya-btalyq-abn-mana` and `lumat-al-itiqad`: Qur'an verses are in plain parentheses, not ornate brackets, so they get no verse styling.
 
+## Scope decision (latest)
+
+The user asked to skip the big books (the `book-lg` collection and the 100 KB+ poems). They stay at "audited / sampled" and are not being read in full for now. The small texts (everything in `book` and the short poems) went through block-by-block reading or the anomaly scan (unbalanced quotes and brackets, split words, stray verses, tiny fragments). The scan found nothing left to fix except the limits listed above.
+
+Note on the scan: in the `book` collection a verse is stored as one block with the two hemistichs on two lines, so the "single-verse" flag is a false alarm there. In the `poem` collection it is real: `al-kwkb-al-zhry` (108) and `alfya-abn-malk` (77) have bayts written on one line with no separator.
+
