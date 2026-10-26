@@ -27,11 +27,11 @@ Found: 70. Missing: 14.
 | شرح السنة للمزني | `src/content/book/sharh-al-sunnah-al-muzani.md` | 18 KB | **read in full**: reviewed, no change needed |
 | عقيدة السلف أصحاب الحديث (الصابوني) | — | — | **missing** |
 | مقدمة رسالة ابن أبي زيد (عقيدة السلف) | `src/content/book/aqeedat-al-salaf-muqaddimat-al-risalah.md` | 85 KB | structural scan: glued heading words spaced |
-| العقيدة السفارينية | `src/content/poem/al-aqeedah-al-saffariniyyah.md` | 25 KB | structural scan: reviewed, no change needed |
+| العقيدة السفارينية | `src/content/poem/al-aqeedah-al-saffariniyyah.md` | 25 KB | audited: verse numbering, pairing, rhyme/qafiya checked; opening read |
 | الحائية لابن أبي داود | `src/content/poem/al-qasidah-al-haiyyah-ibn-abi-dawud.md` | 7 KB | structural scan: reviewed, no change needed |
-| سلم الوصول (حافظ حكمي) | `src/content/poem/sullam-al-wusul-ila-ilm-al-usul.md` | 43 KB | structural scan: reviewed, no change needed |
-| نونية القحطاني | `src/content/poem/nuniyyat-al-qahtani.md` | 106 KB | structural scan: reviewed, no change needed |
-| التائية في القدر | `src/content/poem/al-qasidah-al-taiyyah-fil-qadar.md` | 14 KB | structural scan: reviewed, no change needed |
+| سلم الوصول (حافظ حكمي) | `src/content/poem/sullam-al-wusul-ila-ilm-al-usul.md` | 43 KB | audited: verse numbering, pairing, rhyme/qafiya checked; opening read |
+| نونية القحطاني | `src/content/poem/nuniyyat-al-qahtani.md` | 106 KB | audited: verse numbering, pairing, rhyme/qafiya checked; opening read |
+| التائية في القدر | `src/content/poem/al-qasidah-al-taiyyah-fil-qadar.md` | 14 KB | audited: verse numbering, pairing, rhyme/qafiya checked; opening read |
 | الكافية الشافية (نونية ابن القيم) | `src/content/poem/al-kafiyah-al-shafiyah.md` | 547 KB | structural scan: reviewed, no change needed |
 
 ## الفقه
@@ -56,7 +56,7 @@ Found: 70. Missing: 14.
 | مختصر خليل | `src/content/book-lg/mkhtsr-khlyl.md` | 801 KB | structural scan: reviewed; fasls are unpunctuated continuous text in this edition, left as printed |
 | نور الإيضاح | — | — | **missing** |
 | مختصر القدوري | — | — | **missing** |
-| الرحبية | `src/content/poem/al-rahabiyyah.md` | 23 KB | structural scan: reviewed, no change needed |
+| الرحبية | `src/content/poem/al-rahabiyyah.md` | 23 KB | audited: verse numbering, pairing, rhyme/qafiya checked; opening read |
 | الدرة السنية في الفرائض | `src/content/poem/al-drh-al-snyh-mnzwmh-fy-alm-al-frayd.md` | 14 KB | structural scan: reviewed, no change needed |
 
 ## الحديث والمصطلح
@@ -69,10 +69,10 @@ Found: 70. Missing: 14.
 | المحرر في أحاديث الأحكام | `src/content/book-lg/al-muharrar.md` | 728 KB | structural scan: 1,301 numbered entries wrapped (1,258 hadith, 43 athar) |
 | رياض الصالحين | — | — | **missing** |
 | المنظومة البيقونية | `src/content/poem/al-manzumah-al-bayquniyyah.md` | 5 KB | **read in full**: reviewed, no change needed |
-| نخبة الفكر | `src/content/book/nukhbat-al-fikar.md` | 22 KB | structural scan: reviewed, no change needed |
+| نخبة الفكر | `src/content/book/nukhbat-al-fikar.md` | 22 KB | **read in full** |
 | الموقظة | — | — | **missing** |
-| ألفية العراقي | `src/content/poem/alfiyyah-al-iraqi.md` | 118 KB | structural scan: reviewed, no change needed |
-| ألفية السيوطي | `src/content/poem/alfiyyah-al-suyuti.md` | 115 KB | structural scan: reviewed, no change needed |
+| ألفية العراقي | `src/content/poem/alfiyyah-al-iraqi.md` | 118 KB | audited: verse numbering, pairing, rhyme/qafiya checked; opening read |
+| ألفية السيوطي | `src/content/poem/alfiyyah-al-suyuti.md` | 115 KB | audited: verse numbering, pairing, rhyme/qafiya checked; opening read |
 
 ## أصول الفقه
 
@@ -89,7 +89,7 @@ Found: 70. Missing: 14.
 |---|---|---:|---|
 | مقدمة في أصول التفسير | `src/content/book/muqaddimah-fi-usul-al-tafsir.md` | 89 KB | structural scan: reviewed, no change needed |
 | تحفة الأطفال | `src/content/poem/tuhfat-al-atfal.md` | 8 KB | structural scan: reviewed, no change needed |
-| المقدمة الجزرية | `src/content/poem/al-jazariyyah.md` | 18 KB | structural scan: reviewed, no change needed |
+| المقدمة الجزرية | `src/content/poem/al-jazariyyah.md` | 18 KB | audited: verse numbering, pairing, rhyme/qafiya checked; opening read |
 | الشاطبية | — | — | **missing** |
 | منظومة الزمزمي | — | — | **missing** |
 
@@ -99,8 +99,8 @@ Found: 70. Missing: 14.
 |---|---|---:|---|
 | الآجرومية | `src/content/book/al-ajrwmya.md` | 24 KB | structural scan: line breaks normalised |
 | المقدمة الآجرومية | `src/content/book/al-ajurrumiyyah.md` | 23 KB | structural scan: reviewed, no change needed |
-| الدرة البهية نظم الآجرومية | `src/content/poem/al-dra-al-bhya-nzm-al-ajrwmya.md` | 41 KB | structural scan: reviewed, no change needed |
-| نظم الآجرومية | `src/content/poem/nzm-al-ajrwmya-abn-ab.md` | 24 KB | structural scan: reviewed, no change needed |
+| الدرة البهية نظم الآجرومية | `src/content/poem/al-dra-al-bhya-nzm-al-ajrwmya.md` | 41 KB | audited: verse numbering, pairing, rhyme/qafiya checked; opening read |
+| نظم الآجرومية | `src/content/poem/nzm-al-ajrwmya-abn-ab.md` | 24 KB | audited: verse numbering, pairing, rhyme/qafiya checked; opening read |
 | اللؤلؤ المنظوم نظم الآجرومية | `src/content/poem/al-lwlw-al-mnzwm-fy-nzm-mnthwr-abn-ajrwm.md` | 20 KB | structural scan: reviewed, no change needed |
 | متممة الآجرومية | `src/content/book-lg/mtmma-al-ajrwmya.md` | 132 KB | structural scan: reviewed, no change needed |
 | ملحة الإعراب | `src/content/book/mlha-al-iarab.md` | 58 KB | **read in full**: (earlier today) split verse blocks merged |
@@ -116,11 +116,11 @@ Found: 70. Missing: 14.
 |---|---|---:|---|
 | حلية طالب العلم | `src/content/book-lg/hlya-talb-al-alm.md` | 121 KB | structural scan: doubled «... ...» verse separators fixed |
 | مختصر الأذكار والآداب | `src/content/book/ktab-mkhtsr-al-adhkar-waladab--v2.md` | 45 KB | **read in full**: (earlier today) every hadith wrapped |
-| المنظومة الميمية | `src/content/poem/al-manzumah-al-mimiyyah-hakami.md` | 44 KB | structural scan: reviewed, no change needed |
+| المنظومة الميمية | `src/content/poem/al-manzumah-al-mimiyyah-hakami.md` | 44 KB | audited: verse numbering, pairing, rhyme/qafiya checked; opening read |
 | عنوان الحكم | `src/content/poem/unwan-al-hikam.md` | 9 KB | structural scan: reviewed, no change needed |
-| تائية الإلبيري | `src/content/poem/manzumat-al-ilbiri.md` | 12 KB | structural scan: reviewed, no change needed |
-| لامية ابن الوردي | `src/content/poem/lamiyyat-ibn-al-wardi.md` | 12 KB | structural scan: reviewed, no change needed |
-| حادية أولي الفهم (نظم الحلية) | `src/content/poem/hadya-awly-al-fhm-fy-nzm-hlya-talb-al-alm.md` | 13 KB | structural scan: reviewed, no change needed |
+| تائية الإلبيري | `src/content/poem/manzumat-al-ilbiri.md` | 12 KB | audited: verse numbering, pairing, rhyme/qafiya checked; opening read |
+| لامية ابن الوردي | `src/content/poem/lamiyyat-ibn-al-wardi.md` | 12 KB | audited: verse numbering, pairing, rhyme/qafiya checked; opening read |
+| حادية أولي الفهم (نظم الحلية) | `src/content/poem/hadya-awly-al-fhm-fy-nzm-hlya-talb-al-alm.md` | 13 KB | audited: verse numbering, pairing, rhyme/qafiya checked; opening read |
 | منظومة الآداب لابن عبد القوي | — | — | **missing** |
 
 ## How the review was done (2026-10-26)
