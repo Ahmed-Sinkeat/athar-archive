@@ -179,3 +179,7 @@ Known leftovers:
 ### Books under 1 MB: review state (2026-10-26)
 
 About 750 books are under 1 MB. After this session every one of the 112 that had only the mechanical pass has been looked at: 36 small books (`src/content/book/`) were read paragraph by paragraph, and the large ones (100 KB to 1 MB) were reviewed from their outline (headings, hierarchy, fragments, Q/A labels) only. The ledger notes now say which kind of review each of the 107 reviewed books received. The other ~640 small books keep their earlier hand or mechanical pass and have not been read line by line.
+
+### Sweep of the other small books (2026-10-26)
+
+All 241 small books (`src/content/book/`) not yet reviewed were swept with an automatic check for the usual Shamela import defects (fragment headings, lone closing quotes, lone opening brackets before a bracketed section title, sentence-style headings, unmarked verse). 95 books were changed (88 fragment/quote fixes, 7 bracketed section titles turned into headings, plus `nqd-mratb-al-ajmaa` sentence headings demoted); `bayan-aqeedat-ahl-al-sunnah` was reverted because the fix broke the gate. The other ~146 raised no flags. This is a defect sweep, not a line-by-line read: poems, hadith and athar markers in these books were not individually checked.
