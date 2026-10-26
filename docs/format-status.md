@@ -175,3 +175,7 @@ Known leftovers:
 - Poem pairing not repaired in `al-hll-fy-shrh-abyat-al-jml` and `shrh-al-mnzwmh-al-mymyh-fy-al-adab-al-shrayh` (several adjacent lone hemistichs).
 - About 147 partial books still have unlinked footnotes (bare-digit anchors, empty-definition notes); these need source-level repair, not a mechanical pass.
 - Nothing was rebuilt or published (`pnpm app:gen` / `app:publish` not run); the Android changes are uncompiled.
+
+### Books under 1 MB: review state (2026-10-26)
+
+About 750 books are under 1 MB. After this session every one of the 112 that had only the mechanical pass has been looked at: 36 small books (`src/content/book/`) were read paragraph by paragraph, and the large ones (100 KB to 1 MB) were reviewed from their outline (headings, hierarchy, fragments, Q/A labels) only. The ledger notes now say which kind of review each of the 107 reviewed books received. The other ~640 small books keep their earlier hand or mechanical pass and have not been read line by line.
