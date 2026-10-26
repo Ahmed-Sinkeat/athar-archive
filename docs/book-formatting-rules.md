@@ -143,6 +143,13 @@ page. Cut **only the editor's** front matter: the author's own مقدمة is par
 in the flow. **One pair per book**: the parser reads only the first. The website still shows the
 lines (the comments are invisible).
 
+### 11. Structure markers
+
+Invisible `<!-- verse -->` / `<!-- hadith -->` / `<!-- athar -->` / `<!-- riwayah -->` / `<!-- ayah -->`
+blocks say what a passage is; see `docs/book-markup-spec.md`. Verse paragraphs are always wrapped
+(`./node_modules/.bin/tsx scripts/wrap-verses.ts <book>` after rule 7). The rest only for whole
+standalone entries; `riwayah` when the attribution is unclear. They add nothing visible.
+
 ## Import errors
 
 Mistakes made by the import, not the book. Fix them in a separate commit after the markup

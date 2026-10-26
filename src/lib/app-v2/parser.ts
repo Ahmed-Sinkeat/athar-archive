@@ -313,7 +313,7 @@ const HALF_SEPARATOR_RE = /\s+(?:\.\.\.|…)\s+/;
  * ponytail: halves within 0.6 of each other's length; across the corpus that keeps ~95k
  * verses and leaves ~1.2k prose ellipses and quoted half-lines as prose. Tighten if prose slips in.
  */
-function verseHalves(line: string): { start: number; end: number } | undefined {
+export function verseHalves(line: string): { start: number; end: number } | undefined {
   if (!VERSE_LINE_RE.test(line) || /[﴾﴿]/.test(line)) return undefined;
   const separator = line.match(HALF_SEPARATOR_RE)!;
   const start = separator.index!;

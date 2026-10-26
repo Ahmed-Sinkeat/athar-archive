@@ -7,6 +7,7 @@ import { execFileSync } from "node:child_process";
 import { readFileSync } from "node:fs";
 import { verifyFormatting } from "../src/lib/format-verify.js";
 import { parseReadableDocument } from "../src/lib/app-v2/parser.js";
+import { checkMarkers } from "../src/lib/markers.js";
 
 function footnoteReport(file: string, source: string): string {
   const body = source.replace(/^---\n[\s\S]*?\n---\n/, "");
@@ -30,7 +31,8 @@ const pageList = (source: string) => [...source.matchAll(/data-page="([^"]*)"/g)
 for (const file of process.argv.slice(2).filter((arg, i, all) => arg !== "--import-fix" && arg !== "--from" && all[i - 1] !== "--from")) {
   const before = from ? readFileSync(from, "utf8") : execFileSync("git", ["show", `HEAD:${file}`], { encoding: "utf8", maxBuffer: 1 << 30 });
   const after = readFileSync(file, "utf8");
-  const problem = verifyFormatting(before, after, importFix);
+  const markerProblems = checkMarkers(after.replace(/^---\n[\s\S]*?\n---\n/, ""));
+  const problem = verifyFormatting(before, after, importFix) ?? (markerProblems.length ? `markers: ${markerProblems.slice(0, 5).join("; ")}` : undefined);
   console.log(`${problem ? "REJECT" : "ok    "} ${file}${problem ? `: ${problem}` : ""}`);
   if (problem) failed++;
   else console.log(`       before: ${footnoteReport(file, before)}\n       after:  ${footnoteReport(file, after)}`);

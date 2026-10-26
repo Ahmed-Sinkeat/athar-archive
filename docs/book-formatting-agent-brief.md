@@ -33,7 +33,7 @@ git show 15a42301               # الأصول الثلاثة: book card, stray 
 1. **Survey.** Use a script to list each page's note count (from `data-notes`) next to the anchors
    in its text, and which markup the book already has (`[^x]`, `(^N)`, `<sup>`, headings, bullets).
    If the book's notes are already `[^x]` or `(^N)` and linked, there is less to do. Check them, don't redo them.
-2. **Markup.** Apply rules 1–10. Then run the strict gate until it says `ok`:
+2. **Markup.** Apply rules 1–11 (rule 11: run `scripts/wrap-verses.ts` after verses are separated; mark whole standalone hadith/athar/ayah entries per `docs/book-markup-spec.md`, `riwayah` when unsure). Then run the strict gate until it says `ok`:
    ```bash
    ./node_modules/.bin/tsx scripts/format-verify.ts <BOOK>
    ```
