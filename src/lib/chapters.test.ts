@@ -126,6 +126,11 @@ describe("parsePoem", () => {
     expect(poem.openingVerse).toBe("صدر أول");
   });
 
+  it("does not count \"(^N) note\" footnote-definition lines as verses", () => {
+    const poem = parsePoem("## باب\n\nصدر أول --- عجز أول (^١)\n\n(^١) في المطبوعة: كذا.\n\nصدر ثان --- عجز ثان");
+    expect(poem.verseCount).toBe(2);
+  });
+
   it("skips a lone structure-marker comment line", () => {
     const poem = parsePoem("## باب\n\n<!-- verse -->\nصدر --- عجز\n<!-- /verse -->");
     expect(poem.verseCount).toBe(1);

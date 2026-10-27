@@ -197,6 +197,7 @@ function isContentLine(line: string): boolean {
   if (/^-{3,}$/.test(t)) return false; // horizontal rule (dash form)
   if (/^<hr\b/i.test(t)) return false; // horizontal rule / page-sep marker (HTML form)
   if (/^<!--.*-->$/.test(t)) return false; // structure markers (<!-- card -->, <!-- verse -->…): never a verse
+  if (/^\(\^[0-9٠-٩]+\)/.test(t)) return false; // "(^N) note text": a footnote definition, never a verse
   if (t === "*" || /^\*\s*\*\s*\*$/.test(t)) return false; // "*" / "* * *" ornament dividers
   if (/^\*\*.+\*\*$/.test(t)) return false; // bold-wrapped sub-heading line, e.g. "**[في الوقف]**"
   if (/^\[.+\]$/.test(t)) return false; // bracket-wrapped metadata/labels, e.g. "[عدد الأبيات: ١٠٠]", "[خاتمة]"
