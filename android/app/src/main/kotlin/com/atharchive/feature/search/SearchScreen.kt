@@ -75,11 +75,11 @@ fun SearchScreen(
     onLoadMore: () -> Unit = {},
     modifier: Modifier = Modifier,
     onBack: (() -> Unit)? = null,
+    loadPassage: suspend (String) -> String? = { null },
 ) {
     val query = inputQuery
     val filters = state.filters
     val searching = state.searching || inputQuery != state.query
-    var scopedSource by rememberSaveable { mutableStateOf(state.scopedToSource) }
     val listState = rememberLazyListState()
 
     fun changeFilters(next: SearchFilters) {
@@ -88,18 +88,9 @@ fun SearchScreen(
 
     val term = query.trim()
     val hasQuery = term.isNotBlank()
-
-    val hits = remember(state.hits, term, scopedSource) {
-        if (!hasQuery || searching) {
-            emptyList()
-        } else {
-            state.hits
-                .filter { hit ->
-                    scopedSource == null || hit.sourceTitle == scopedSource
-                }
-        }
-    }
-    val directMatches = if (hasQuery && !searching && scopedSource == null) state.directMatches else emptyList()
+    val hits = if (!hasQuery || searching) emptyList() else state.hits
+    val directMatches = if (hasQuery) state.directMatches else emptyList()
+    var allTitles by rememberSaveable(state.query) { mutableStateOf(false) }
 
     LaunchedEffect(state.query, state.directMatches, state.hits) {
         if (state.query.trim().length >= 2) {
@@ -137,7 +128,7 @@ fun SearchScreen(
             item(key = "search-field") {
                 AtharSearchField(
                     query = query,
-                    placeholder = "ابحث في أهل الأثر…",
+                    placeholder = "ابحث في نصوص المكتبة…",
                     onQueryChange = {
                         onQueryChange(it)
                     },
@@ -150,29 +141,12 @@ fun SearchScreen(
                 )
             }
 
-            // Scope and filter chips: shown only when something is actually narrowing
-            // the search. An empty chip row is furniture.
-            if (scopedSource != null || filters.isActive) {
-                item(key = "search-chips") {
-                    ActiveChips(
-                        scopedSource = scopedSource,
-                        filters = filters,
-                        horizontalPadding = horizontalPadding,
-                        onClearScope = { scopedSource = null },
-                        onClearType = { changeFilters(filters.copy(types = filters.types - it)) },
-                        onClearSource = { changeFilters(filters.copy(sources = filters.sources - it)) },
-                        onClearAuthor = { changeFilters(filters.copy(authors = filters.authors - it)) },
-                        onResetField = { changeFilters(filters.copy(field = SearchField.FullText)) },
-                    )
-                }
-            }
-
             if (!hasQuery) {
                 if (state.recentQueries.isEmpty()) {
                     item(key = "search-hint") {
                         AtharEmptyState(
                             title = "ابحث في المكتبة",
-                            body = "اكتب كلمة من عنوان أو مؤلف أو نص. تظهر العناوين من الفهرس كله، والنصوص مما هو محفوظ على جهازك.",
+                            body = "اكتب كلمة أو عبارة. مع الاتصال يُبحث في نصوص المكتبة كلها، ودونه فيما نزّلته على جهازك.",
                             tag = "search_hint",
                             horizontalPadding = horizontalPadding,
                         )
@@ -233,39 +207,52 @@ fun SearchScreen(
                 return@LazyColumn
             }
 
-            if (state.fullTextLocalOnly) {
-                item(key = "offline-note") {
-                    OfflineNote(horizontalPadding = horizontalPadding)
+            item(key = "filter-menus") {
+                SearchFilterMenus(filters, state.availableAuthors, ::changeFilters, Modifier.padding(horizontal = horizontalPadding - 4.dp))
+            }
+            item(key = "scope") {
+                ScopeLine(state, searching, searchResultsReadyTag(state.query), horizontalPadding)
+            }
+            if (!searching && state.topAuthors.size > 1) item(key = "top-authors") {
+                TopAuthors(state.topAuthors, filters.authors, horizontalPadding) { name ->
+                    changeFilters(filters.copy(authors = if (name in filters.authors) filters.authors - name else filters.authors + name))
                 }
             }
 
-            item(key = "filter-menus") {
-                SearchFilterMenus(filters, state.availableSources, state.availableAuthors, ::changeFilters)
-            }
-            item(key = "results-bar") {
-                ResultsBar(
-                    count = hits.size + directMatches.size,
-                    readyTag = searchResultsReadyTag(state.query),
-                    horizontalPadding = horizontalPadding,
-                )
+            if (directMatches.isNotEmpty()) {
+                item(key = "direct-heading") {
+                    ResultsHeading("في العناوين", horizontalPadding)
+                }
+                val shown = if (allTitles) directMatches else directMatches.take(3)
+                items(shown, key = { "direct-${it.id}" }) { match ->
+                    DirectMatchRow(
+                        match = match,
+                        horizontalPadding = horizontalPadding,
+                        onClick = { onOpenDirectMatch(match) },
+                    )
+                }
+                if (directMatches.size > shown.size) item(key = "direct-all") {
+                    TextButton(onClick = { allTitles = true }, Modifier.padding(horizontal = horizontalPadding - 8.dp)) {
+                        Text("كل العناوين (${arabicDigits(directMatches.size)})", color = AtharTheme.colors.accent)
+                    }
+                }
             }
 
             if (searching) {
-                item(key = "search-loading") { Text("جارٍ البحث…", Modifier.padding(horizontalPadding)) }
+                item(key = "search-loading") {
+                    Text("جارٍ البحث في النصوص…", Modifier.padding(horizontal = horizontalPadding, vertical = 16.dp), color = AtharTheme.colors.secondaryText)
+                }
                 return@LazyColumn
             }
-            if (state.hasMore) {
-                item(key = "search-more") {
-                    TextButton(onClick = onLoadMore) { Text("عرض المزيد · النتائج الحالية ${arabicDigits(hits.size + directMatches.size)}") }
-                }
-            }
-            if (hits.isEmpty() && directMatches.isEmpty()) {
-                item(key = "search-empty") {
-                    // Offline "no results" must not claim the archive is empty — it only
-                    // ever saw what is on the device.
+            if (hits.isEmpty()) {
+                if (directMatches.isEmpty()) item(key = "search-empty") {
                     AtharEmptyState(
                         title = "لا توجد نتائج",
-                        body = "جرّب كلمة أقصر، أو امسح بعض المرشحات. البحث النصي يشمل المحتوى الموجود على الجهاز.",
+                        body = when (state.scope) {
+                            SearchScope.Online -> "جرّب «بعض الكلمات» في الدقة، أو كلمة أقصر، أو امسح بعض المرشحات."
+                            // Offline "no results" must not claim the archive is empty: it only saw the phone.
+                            else -> "البحث الآن فيما نزّلته فقط. اتصل بالإنترنت للبحث في المكتبة كلها."
+                        },
                         tag = searchResultsReadyTag(state.query),
                         horizontalPadding = horizontalPadding,
                     )
@@ -273,50 +260,29 @@ fun SearchScreen(
                 return@LazyColumn
             }
 
-            if (directMatches.isNotEmpty()) {
-                item(key = "direct-heading") {
-                    ResultsHeading("مطابقات مباشرة", horizontalPadding)
-                }
-                items(directMatches, key = { "direct-${it.id}" }) { match ->
-                    DirectMatchRow(
-                        match = match,
-                        horizontalPadding = horizontalPadding,
-                        onClick = { onOpenDirectMatch(match) },
+            item(key = "hits-heading") {
+                ResultsHeading("في النصوص", horizontalPadding)
+            }
+            itemsIndexed(hits, key = { _, hit -> hit.id }) { index, hit ->
+                HitRow(
+                    hit = hit,
+                    horizontalPadding = horizontalPadding,
+                    onClick = { onOpenResult(hit) },
+                    loadPassage = loadPassage,
+                )
+                if (index != hits.lastIndex) {
+                    HorizontalDivider(
+                        modifier = Modifier.padding(horizontal = horizontalPadding),
+                        thickness = 0.7.dp,
+                        color = AtharTheme.colors.divider.copy(alpha = 0.42f),
                     )
                 }
             }
-
-            if (hits.isNotEmpty()) {
-                item(key = "hits-heading") {
-                    ResultsHeading("أفضل النتائج", horizontalPadding)
-                }
-                itemsIndexed(hits, key = { _, hit -> hit.id }) { index, hit ->
-                    HitRow(
-                        hit = hit,
-                        horizontalPadding = horizontalPadding,
-                        onClick = { onOpenResult(hit) },
-                    )
-                    if (index != hits.lastIndex) {
-                        HorizontalDivider(
-                            modifier = Modifier.padding(horizontal = horizontalPadding),
-                            thickness = 0.7.dp,
-                            color = AtharTheme.colors.divider.copy(alpha = 0.42f),
-                        )
+            if (state.hasMore) {
+                item(key = "search-more") {
+                    TextButton(onClick = onLoadMore, Modifier.fillMaxWidth().padding(horizontal = horizontalPadding)) {
+                        Text("المزيد من النتائج", color = AtharTheme.colors.accent)
                     }
-                }
-            }
-
-            if (state.fullTextLocalOnly) {
-                item(key = "offline-footer") {
-                    Text(
-                        text = "نزّل أعمالًا أخرى لإضافتها إلى البحث النصي المحلي.",
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(horizontal = horizontalPadding, vertical = 20.dp)
-                            .testTag("search_offline_footer"),
-                        color = AtharTheme.colors.secondaryText,
-                        style = MaterialTheme.typography.bodySmall,
-                    )
                 }
             }
         }
@@ -342,63 +308,64 @@ private fun ResultsHeading(text: String, horizontalPadding: Dp) {
     )
 }
 
+/** Says where the passages came from: the whole library online, or only what is on the phone. */
 @Composable
-private fun ResultsBar(
-    count: Int,
-    readyTag: String,
-    horizontalPadding: Dp,
-) {
+private fun ScopeLine(state: SearchUiState, searching: Boolean, readyTag: String, horizontalPadding: Dp) {
+    val online = state.scope == SearchScope.Online
+    val text = when (state.scope) {
+        SearchScope.Online -> "في كل المكتبة" + (state.total?.takeIf { !searching && it > 0 }?.let {
+            " · " + (if (state.totalCapped) "أكثر من " else "") +
+                com.atharchive.data.arabicCount(it, "", "موضع واحد", "موضعان", "مواضع", "موضعًا")
+        } ?: "")
+        SearchScope.Offline -> "دون اتصال · في المحمّلة فقط"
+        SearchScope.Downloaded -> "في المحمّلة فقط"
+    }
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(start = horizontalPadding - 4.dp, end = horizontalPadding - 4.dp, top = 10.dp)
+            .padding(start = horizontalPadding, end = horizontalPadding, top = 6.dp)
             .testTag(readyTag),
         verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(7.dp),
     ) {
+        Box(Modifier.size(7.dp).clip(androidx.compose.foundation.shape.CircleShape)
+            .background(if (online) AtharTheme.colors.accent else AtharTheme.colors.secondaryText.copy(alpha = 0.5f)))
         Text(
-            text = com.atharchive.data.arabicCount(count, "لا نتائج", "نتيجة واحدة", "نتيجتان", "نتائج", "نتيجة"),
-            modifier = Modifier
-                .padding(start = 4.dp)
-                .weight(1f)
-                .testTag("search_result_count"),
+            text = text,
+            modifier = Modifier.testTag("search_scope"),
             color = AtharTheme.colors.secondaryText,
             style = MaterialTheme.typography.bodySmall,
         )
-
     }
 }
 
 private fun searchResultsReadyTag(query: String): String =
     "search_results_${(query.hashCode().toLong() and 0xffffffffL).toString(16)}"
 
+/** Who talks about this most: a tap narrows to that author (and shows as a chip in the filters). */
+@OptIn(androidx.compose.foundation.layout.ExperimentalLayoutApi::class)
 @Composable
-private fun OfflineNote(horizontalPadding: Dp) {
-    // Informational, never alarming: no red, no banner, no retry button.
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(start = horizontalPadding, end = horizontalPadding, top = 10.dp)
-            .testTag("search_offline_note"),
-        verticalAlignment = Alignment.CenterVertically,
+private fun TopAuthors(authors: List<AuthorCountUi>, selected: Set<String>, horizontalPadding: Dp, onToggle: (String) -> Unit) {
+    androidx.compose.foundation.layout.FlowRow(
+        Modifier.fillMaxWidth().padding(start = horizontalPadding, end = horizontalPadding, top = 10.dp),
         horizontalArrangement = Arrangement.spacedBy(6.dp),
+        verticalArrangement = Arrangement.spacedBy(6.dp),
     ) {
-        Icon(
-            imageVector = AtharIcons.Info,
-            contentDescription = null,
-            tint = AtharTheme.colors.secondaryText.copy(alpha = 0.7f),
-            modifier = Modifier.size(14.dp),
-        )
-        Text(
-            text = "فهرس العناوين كامل، والبحث النصي في المحتوى الموجود على الجهاز",
-            modifier = Modifier.weight(1f),
-            color = AtharTheme.colors.secondaryText,
-            style = MaterialTheme.typography.bodySmall,
-        )
-        Text(
-            text = "محلي",
-            color = AtharTheme.colors.secondaryText.copy(alpha = 0.7f),
-            style = MaterialTheme.typography.labelSmall,
-        )
+        Text("الأكثر ذكرًا له:", Modifier.padding(vertical = 6.dp), color = AtharTheme.colors.secondaryText, style = MaterialTheme.typography.bodySmall)
+        authors.forEach { author ->
+            val on = author.name in selected
+            Text(
+                "${author.name} · ${arabicDigits(author.count)}",
+                Modifier
+                    .clip(AtharCorners.Control)
+                    .background(if (on) AtharTheme.colors.accent.copy(alpha = 0.18f) else AtharTheme.colors.divider.copy(alpha = 0.28f))
+                    .clickable(role = Role.Button) { onToggle(author.name) }
+                    .padding(horizontal = 10.dp, vertical = 6.dp),
+                color = if (on) AtharTheme.colors.accent else MaterialTheme.colorScheme.onSurface,
+                style = MaterialTheme.typography.bodySmall,
+                maxLines = 1,
+            )
+        }
     }
 }
 
@@ -489,23 +456,29 @@ private fun HitRow(
     hit: SearchHitUi,
     horizontalPadding: Dp,
     onClick: () -> Unit,
+    loadPassage: suspend (String) -> String?,
 ) {
-    // The excerpt is the result. Source, location and type support it, in that order,
-    // and each is a clear step quieter than the one above.
+    // The source first (which book, whose, where), then the passage with every match marked.
     val accent = AtharTheme.colors.accent
-    val highlighted = remember(hit, accent) {
-        val start = hit.matchStart.coerceIn(0, hit.excerpt.length)
-        val end = hit.matchEnd.coerceIn(start, hit.excerpt.length)
+    var expanded by rememberSaveable(hit.id) { mutableStateOf(false) }
+    var passage by remember(hit.id) { mutableStateOf<String?>(null) }
+    LaunchedEffect(expanded) {
+        if (expanded && passage == null && hit.url != null) passage = loadPassage(hit.url)?.let { around(it, hit) }
+    }
+    val text = passage ?: hit.excerpt
+    val highlighted = remember(text, hit, accent) {
+        val ranges = if (passage == null) hit.matches else wordRanges(text, hit)
         buildAnnotatedString {
-            append(hit.excerpt.substring(0, start))
-            withStyle(SpanStyle(background = accent.copy(alpha = 0.18f), fontWeight = FontWeight.Bold)) {
-                append(hit.excerpt.substring(start, end))
+            append(text)
+            ranges.forEach { r ->
+                if (r.first >= 0 && r.last < text.length && r.first <= r.last)
+                    addStyle(SpanStyle(background = accent.copy(alpha = 0.18f), fontWeight = FontWeight.Bold), r.first, r.last + 1)
             }
-            append(hit.excerpt.substring(end))
         }
     }
+    val clipboard = androidx.compose.ui.platform.LocalClipboardManager.current
 
-    Row(
+    Column(
         modifier = Modifier
             .fillMaxWidth()
             .clickable(
@@ -514,42 +487,73 @@ private fun HitRow(
                 role = Role.Button,
                 onClick = onClick,
             )
-            .padding(horizontal = horizontalPadding, vertical = 12.dp)
+            .padding(start = horizontalPadding, end = horizontalPadding, top = 12.dp, bottom = 2.dp)
             .testTag("search_hit_${hit.id}"),
-        verticalAlignment = Alignment.Top,
-        horizontalArrangement = Arrangement.spacedBy(10.dp),
     ) {
-        Column(Modifier.weight(1f)) {
+        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             Text(
-                text = highlighted,
+                text = hit.sourceTitle,
+                modifier = Modifier.weight(1f),
                 color = MaterialTheme.colorScheme.onSurface,
                 fontFamily = AtharEditorialFontFamily,
-                fontSize = AtharTextSize.Title,
-                lineHeight = 29.sp,
-                maxLines = 3,
-                overflow = TextOverflow.Ellipsis,
-            )
-            Text(
-                text = "${hit.sourceTitle} · ${hit.sourceAuthor}",
-                modifier = Modifier.padding(top = 4.dp),
-                color = AtharTheme.colors.secondaryText,
-                style = MaterialTheme.typography.bodySmall,
+                fontWeight = FontWeight.Bold,
+                fontSize = AtharTextSize.Ui,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
             )
-            if (hit.locationLabel != null) {
-                Text(
-                    text = hit.locationLabel,
-                    modifier = Modifier.padding(top = 1.dp),
-                    color = AtharTheme.colors.secondaryText.copy(alpha = 0.72f),
-                    style = MaterialTheme.typography.labelSmall,
-                    maxLines = 1,
-                )
+            TypeChip(hit.type.label)
+        }
+        Text(
+            text = listOfNotNull(
+                hit.sourceAuthor.ifBlank { null }?.let { name -> hit.died?.let { "$name (ت ${arabicDigits(it)}هـ)" } ?: name },
+                hit.locationLabel,
+            ).joinToString(" · "),
+            modifier = Modifier.padding(top = 1.dp),
+            color = AtharTheme.colors.secondaryText,
+            style = MaterialTheme.typography.bodySmall,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+        )
+        Text(
+            text = highlighted,
+            modifier = Modifier.padding(top = 6.dp),
+            color = MaterialTheme.colorScheme.onSurface,
+            fontFamily = AtharEditorialFontFamily,
+            fontSize = AtharTextSize.Title,
+            lineHeight = 29.sp,
+            maxLines = if (expanded) Int.MAX_VALUE else 4,
+            overflow = TextOverflow.Ellipsis,
+        )
+        Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End, verticalAlignment = Alignment.CenterVertically) {
+            if (hit.url != null) TextButton(onClick = { expanded = !expanded }) {
+                Text(if (expanded) "أقل" else "المزيد", color = AtharTheme.colors.accent, style = MaterialTheme.typography.labelMedium)
+            }
+            IconButton(onClick = {
+                clipboard.setText(androidx.compose.ui.text.AnnotatedString(
+                    "«${text.trim('…', ' ')}»\n— ${hit.sourceTitle}" + (hit.sourceAuthor.ifBlank { null }?.let { "، $it" } ?: ""),
+                ))
+            }) {
+                Icon(AtharIcons.Copy, contentDescription = "نسخ النص مع مصدره", tint = AtharTheme.colors.secondaryText, modifier = Modifier.size(18.dp))
             }
         }
-        TypeChip(hit.type.label)
     }
 }
+
+/** About 900 characters of [full] around the hit's first marked word. */
+private fun around(full: String, hit: SearchHitUi): String {
+    val word = hit.matches.firstOrNull()?.let { hit.excerpt.substring(it.first, it.last + 1) }
+    val at = word?.let { full.indexOf(it) }?.takeIf { it >= 0 } ?: 0
+    val start = (at - 400).coerceAtLeast(0)
+    val end = (at + 500).coerceAtMost(full.length)
+    return (if (start > 0) "…" else "") + full.substring(start, end) + (if (end < full.length) "…" else "")
+}
+
+/** Every occurrence, in [text], of the words the snippet marked. */
+private fun wordRanges(text: String, hit: SearchHitUi): List<IntRange> =
+    hit.matches.map { hit.excerpt.substring(it.first, it.last + 1) }.filter { it.length >= 2 }.distinct().flatMap { word ->
+        generateSequence(text.indexOf(word).takeIf { it >= 0 }) { from -> text.indexOf(word, from + word.length).takeIf { it >= 0 } }
+            .map { it until it + word.length }.toList()
+    }
 
 @Composable
 private fun TypeChip(label: String) {
@@ -566,66 +570,3 @@ private fun TypeChip(label: String) {
         )
     }
 }
-
-@Composable
-private fun ActiveChips(
-    scopedSource: String?,
-    filters: SearchFilters,
-    horizontalPadding: Dp,
-    onClearScope: () -> Unit,
-    onClearType: (SearchResultType) -> Unit,
-    onClearSource: (String) -> Unit,
-    onClearAuthor: (String) -> Unit,
-    onResetField: () -> Unit,
-) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            // Scope plus two sources plus an author is an ordinary state, and it used
-            // to run past the edge: filters applied that could not be seen or removed.
-            .horizontalScroll(rememberScrollState())
-            .padding(start = horizontalPadding, end = horizontalPadding, top = 8.dp)
-            .testTag("search_active_chips"),
-        horizontalArrangement = Arrangement.spacedBy(6.dp),
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        if (scopedSource != null) RemovableChip(scopedSource, onClearScope)
-        filters.types.forEach { RemovableChip(it.label) { onClearType(it) } }
-        filters.sources.forEach { RemovableChip(it) { onClearSource(it) } }
-        filters.authors.forEach { RemovableChip(it) { onClearAuthor(it) } }
-        if (filters.field != SearchField.FullText) {
-            RemovableChip(filters.field.label, onResetField)
-        }
-    }
-}
-
-@Composable
-private fun RemovableChip(label: String, onRemove: () -> Unit) {
-    Surface(
-        shape = AtharCorners.Control,
-        color = AtharTheme.colors.accent.copy(alpha = 0.10f),
-    ) {
-        Row(
-            modifier = Modifier
-                .clickable(role = Role.Button, onClick = onRemove)
-                .padding(start = 9.dp, end = 5.dp, top = 4.dp, bottom = 4.dp),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            Text(
-                text = label,
-                color = AtharTheme.colors.accent,
-                style = MaterialTheme.typography.labelMedium,
-                maxLines = 1,
-            )
-            Icon(
-                imageVector = AtharIcons.Close,
-                contentDescription = "إزالة $label",
-                tint = AtharTheme.colors.accent,
-                modifier = Modifier
-                    .padding(start = 3.dp)
-                    .size(12.dp),
-            )
-        }
-    }
-}
-

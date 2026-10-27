@@ -775,9 +775,17 @@ fun AtharApp(
                             inputQuery = contentViewModel.searchQuery.collectAsStateWithLifecycle().value,
                             onLoadMore = contentViewModel::loadMoreSearch,
                             onFiltersChange = contentViewModel::setSearchFilters,
+                            loadPassage = contentViewModel::onlinePassage,
                             onOpenResult = { hit ->
                                 contentViewModel.rememberCurrentSearch()
-                                if (hit.type == com.atharchive.feature.search.SearchResultType.Poem) {
+                                if (hit.url != null) scope.launch {
+                                    // An online hit has no ordinal yet: find its chapter, then the match inside it.
+                                    val (ordinal, start, end) = contentViewModel.locateOnlineHit(hit, contentViewModel.searchQuery.value.trim())
+                                    backStack.add(
+                                        if (hit.type == com.atharchive.feature.search.SearchResultType.Poem) PoemReaderRoute(hit.entityId, ordinal)
+                                        else ReaderRoute(hit.entityId, ordinal, start.takeIf { ordinal != null && end > start }, end.takeIf { ordinal != null && end > start }),
+                                    )
+                                } else if (hit.type == com.atharchive.feature.search.SearchResultType.Poem) {
                                     backStack.add(PoemReaderRoute(hit.entityId, hit.ordinal))
                                 } else {
                                     backStack.add(

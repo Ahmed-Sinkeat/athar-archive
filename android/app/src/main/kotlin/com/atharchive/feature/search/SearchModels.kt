@@ -31,7 +31,14 @@ enum class SearchField(val label: String) {
 
 enum class SearchSort(val label: String) {
     Relevance("الأكثر صلة"),
-    Newest("الأحدث"),
+    Died("وفاة المؤلف"),
+}
+
+/** How the words of the query must appear. */
+enum class SearchMode(val label: String, val api: String) {
+    All("كل الكلمات", "all"),
+    Any("بعض الكلمات", "any"),
+    Phrase("عبارة متتالية", "phrase"),
 }
 
 /**
@@ -65,45 +72,47 @@ data class SearchHitUi(
     val sourceAuthor: String,
     val locationLabel: String?,
     val type: SearchResultType,
+    /** Every highlighted range in [excerpt] (online snippets mark each word). */
+    val matches: List<IntRange> = listOf(matchStart until matchEnd),
+    val died: Int? = null,
+    /** Set for an online hit: the site's url for the passage (its chapter), used to locate it and for «المزيد». */
+    val url: String? = null,
 )
 
 data class SearchFilters(
     val types: Set<SearchResultType> = emptySet(),
     val field: SearchField = SearchField.FullText,
-    val sources: Set<String> = emptySet(),
     val authors: Set<String> = emptySet(),
     val sort: SearchSort = SearchSort.Relevance,
-) {
-    val isActive: Boolean
-        // `this.` is required: a bare `field` inside a getter is the backing field.
-        get() = types.isNotEmpty() || sources.isNotEmpty() || authors.isNotEmpty() ||
-            this.field != SearchField.FullText || sort != SearchSort.Relevance
-}
+    val mode: SearchMode = SearchMode.All,
+    /** Search only what is on the phone, even when online. */
+    val downloadedOnly: Boolean = false,
+)
+
+/** Where the passages came from, said above the results. */
+enum class SearchScope { Online, Offline, Downloaded }
+
+/** «Who talks about this most»: an author and how many passages of theirs match. */
+data class AuthorCountUi(val name: String, val count: Int)
 
 data class SearchUiState(
     val query: String = "",
     val filters: SearchFilters = SearchFilters(),
     val recentQueries: List<String>,
-    /** Full text is local in v1; catalog metadata still covers every catalogued work. */
-    val fullTextLocalOnly: Boolean = true,
+    val scope: SearchScope = SearchScope.Offline,
+    /** Matching passages in the whole library (online only; null until the count arrives). */
+    val total: Int? = null,
+    val totalCapped: Boolean = false,
+    val topAuthors: List<AuthorCountUi> = emptyList(),
     val searching: Boolean = false,
     val hasMore: Boolean = false,
     val directMatches: List<DirectMatchUi>,
     val hits: List<SearchHitUi>,
-    val availableSources: List<String>,
     val availableAuthors: List<String>,
-    /** Set when search was opened from inside one work: "الاستقامة ×". */
-    val scopedToSource: String? = null,
 )
 
 val SearchFixture = SearchUiState(
     recentQueries = listOf("الإخلاص", "ابن تيمية", "طلب العلم", "العقيدة الطحاوية", "مكارم الأخلاق"),
-    availableSources = listOf(
-        "الاستقامة",
-        "جامع بيان العلم وفضله",
-        "شرح حلية طالب العلم",
-        "مدارج السالكين",
-    ),
     availableAuthors = listOf(
         "ابن تيمية",
         "ابن عبد البر",

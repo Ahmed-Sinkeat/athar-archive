@@ -1,33 +1,39 @@
 package com.atharchive.feature.search
 
-import androidx.compose.foundation.horizontalScroll
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.layout.Row
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.atharchive.ui.components.AtharFilterMenu
+import com.atharchive.ui.components.AtharChipGroup
+import com.atharchive.ui.components.AtharFacet
+import com.atharchive.ui.components.AtharFilterButton
 
+private const val Everywhere = "كل المكتبة"
+private const val Downloaded = "المحمّلة فقط"
+
+/** The library's own filter row: single choices as menus, authors and types as ticked facets with chips. */
 @Composable
-fun SearchFilterMenus(filters: SearchFilters, sources: List<String>, authors: List<String>, onChange: (SearchFilters) -> Unit) {
-    Row(Modifier.horizontalScroll(rememberScrollState())) {
-        AtharFilterMenu("النوع", SearchResultType.entries.map { it.label }, filters.types.map { it.label }.toSet(), "filter_type") { label ->
-            val type = SearchResultType.entries.first { it.label == label }
-            onChange(filters.copy(types = if (type in filters.types) filters.types - type else filters.types + type))
-        }
-        AtharFilterMenu("المجال", SearchField.entries.map { it.label }, setOf(filters.field.label), "filter_field") { label ->
-            onChange(filters.copy(field = SearchField.entries.first { it.label == label }))
-        }
-        if (sources.isNotEmpty()) AtharFilterMenu("المصدر", sources, filters.sources, "filter_source") { value ->
-            onChange(filters.copy(sources = if (value in filters.sources) filters.sources - value else filters.sources + value))
-        }
-        if (authors.isNotEmpty()) AtharFilterMenu("المؤلف", authors, filters.authors, "filter_author") { value ->
-            onChange(filters.copy(authors = if (value in filters.authors) filters.authors - value else filters.authors + value))
-        }
-        AtharFilterMenu("الترتيب", SearchSort.entries.map { it.label }, setOf(filters.sort.label), "search_sort") { label ->
-            onChange(filters.copy(sort = SearchSort.entries.first { it.label == label }))
-        }
-        if (filters.isActive) TextButton(onClick = { onChange(SearchFilters()) }) { Text("مسح") }
-    }
+fun SearchFilterMenus(filters: SearchFilters, authors: List<String>, onChange: (SearchFilters) -> Unit, modifier: Modifier = Modifier) {
+    AtharFilterButton(
+        groups = listOf(
+            AtharChipGroup("الترتيب", SearchSort.entries.map { it.label }, filters.sort.label) { label ->
+                onChange(filters.copy(sort = SearchSort.entries.first { it.label == label }))
+            },
+            AtharChipGroup("الدقة", SearchMode.entries.map { it.label }, filters.mode.label) { label ->
+                onChange(filters.copy(mode = SearchMode.entries.first { it.label == label }))
+            },
+            AtharChipGroup("المجال", SearchField.entries.map { it.label }, filters.field.label) { label ->
+                onChange(filters.copy(field = SearchField.entries.first { it.label == label }))
+            },
+            AtharChipGroup("النطاق", listOf(Everywhere, Downloaded), if (filters.downloadedOnly) Downloaded else Everywhere) {
+                onChange(filters.copy(downloadedOnly = it == Downloaded))
+            },
+        ),
+        tagPrefix = "search_filter",
+        modifier = modifier,
+        facets = listOf(
+            AtharFacet("المؤلف", authors, filters.authors, { onChange(filters.copy(authors = it)) }),
+            AtharFacet("النوع", SearchResultType.entries.map { it.label }, filters.types.mapTo(linkedSetOf()) { it.label }, { labels ->
+                onChange(filters.copy(types = SearchResultType.entries.filterTo(linkedSetOf()) { it.label in labels }))
+            }),
+        ),
+    )
 }

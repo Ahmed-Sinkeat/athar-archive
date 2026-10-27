@@ -107,6 +107,12 @@ import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.mapLatest
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.first
+import com.atharchive.feature.search.AuthorCountUi
+import com.atharchive.feature.search.SearchScope
+import com.atharchive.feature.search.SearchMode
+import com.atharchive.core.ArNormalize
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.transformLatest
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.SupervisorJob
@@ -118,6 +124,8 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.flow.drop
 
 private const val SearchDebounceMs = 60L
+private const val OnlineSearchPauseMs = 250L
+private const val SearchPageSize = 40
 private const val SearchLatencyTraceName = "AtharSearchKeystrokeToResults"
 
 sealed interface ContentSyncUiState {
@@ -174,12 +182,15 @@ class AtharContentViewModel @Inject constructor(
     private val _searchFilters = MutableStateFlow(SearchFilters(
         types = savedState.get<ArrayList<String>>("searchTypes").orEmpty().mapNotNull { key -> SearchResultType.entries.find { it.name == key } }.toSet(),
         field = SearchField.entries.find { it.name == savedState.get<String>("searchField") } ?: SearchField.FullText,
-        sources = savedState.get<ArrayList<String>>("searchSources").orEmpty().toSet(),
         authors = savedState.get<ArrayList<String>>("searchAuthors").orEmpty().toSet(),
         sort = SearchSort.entries.find { it.name == savedState.get<String>("searchSort") } ?: SearchSort.Relevance,
+        mode = SearchMode.entries.find { it.name == savedState.get<String>("searchMode") } ?: SearchMode.All,
+        downloadedOnly = savedState.get<Boolean>("searchDownloadedOnly") ?: false,
     ))
     val searchQuery: StateFlow<String> = _searchQuery
-    private val _searchLimit = MutableStateFlow(50)
+    private val _searchLimit = MutableStateFlow(SearchPageSize)
+    private val onlineSearch = OnlineSearch(content.httpClient)
+    private var lastFacets: Pair<OnlineSearch.Query, OnlineSearch.Facets>? = null
     private val readerFlows = ConcurrentHashMap<String, Flow<ReaderUiState?>>()
     private val readerJobs = ConcurrentHashMap<String, Job>()
     private val readerWindows = ConcurrentHashMap<String, com.atharchive.feature.reader.ReaderWindow>()
@@ -250,10 +261,10 @@ class AtharContentViewModel @Inject constructor(
         _searchFilters,
         recentSearches,
         // The filter lists are built once per catalog change, not on every keystroke.
-        catalogDao.observeCatalog().map { SearchCatalog(it, it.map(ContentEntity::title), it.mapNotNull(ContentEntity::personName).distinct()) },
+        catalogDao.observeCatalog().map { SearchCatalog(it) },
     ) { query, filters, recent, catalog ->
         SearchInput(query, filters, recent.map { it.q }, catalog)
-    }.combine(_searchLimit) { input, limit -> input to limit }.mapLatest { (input, limit) ->
+    }.combine(_searchLimit) { input, limit -> input to limit }.transformLatest { (input, limit) ->
         val clean = input.query.trim()
         val base = SearchUiState(
             query = input.query,
@@ -261,57 +272,97 @@ class AtharContentViewModel @Inject constructor(
             recentQueries = input.recent,
             directMatches = emptyList(),
             hits = emptyList(),
-            availableSources = input.catalog.sources,
             availableAuthors = input.catalog.authors,
+            scope = if (input.filters.downloadedOnly) SearchScope.Downloaded else SearchScope.Online,
         )
-        if (clean.length < 2) return@mapLatest base
-        val sourceIds = input.filters.sources.takeIf { it.isNotEmpty() }?.let { sources ->
-            input.catalog.entities.asSequence().filter { it.title in sources }.mapTo(linkedSetOf()) { it.id }
-        }
-        val result = contentSearch.search(
+        if (clean.length < 2) return@transformLatest emit(base)
+        val catalog = input.catalog
+        val filters = input.filters
+        // Titles and authors always come from the catalog on the phone: complete, instant.
+        val local = contentSearch.search(
             ContentSearchRequest(
                 query = clean,
-                field = input.filters.field.toContentField(),
-                sort = input.filters.sort.toContentSort(),
+                field = filters.field.toContentField(),
                 filter = ContentSearchFilter(
-                    collections = input.filters.types.mapTo(linkedSetOf()) { it.contentCollection },
-                    entityIds = sourceIds,
-                    authors = input.filters.authors,
+                    collections = filters.types.mapTo(linkedSetOf()) { it.contentCollection },
+                    authors = filters.authors,
                 ),
             ),
             limit = limit + 1,
         )
-        base.copy(
-            hasMore = result.catalog.size > limit || result.blocks.size > limit,
-            directMatches = result.catalog.take(limit).map { hit ->
-                DirectMatchUi(
-                    id = hit.entityId,
-                    title = hit.title,
-                    kindLabel = hit.kind.ifBlank { hit.collection.toResultType().label },
-                    contextLabel = hit.personName,
-                    type = hit.collection.toResultType(),
-                )
-            },
-            hits = result.blocks.take(limit).map { hit ->
-                SearchHitUi(
-                    id = "${hit.entityId}:${hit.rowid}",
-                    entityId = hit.entityId,
-                    ordinal = hit.ordinal,
-                    excerpt = hit.excerpt,
-                    matchStart = hit.matchStart,
-                    matchEnd = hit.matchEnd,
-                    sourceMatchStart = hit.sourceMatchStart,
-                    sourceMatchEnd = hit.sourceMatchEnd,
-                    sourceTitle = hit.sourceTitle,
-                    sourceAuthor = hit.sourceAuthor,
-                    locationLabel = listOfNotNull(
-                        hit.chapterTitle.ifBlank { null },
-                        hit.printedPage?.let { "ص ${arabicNumber(it)}" },
-                    ).joinToString(" · ").ifBlank { null },
-                    type = hit.collection.toResultType(),
-                )
-            },
+        val direct = local.catalog.take(limit).map { hit ->
+            DirectMatchUi(
+                id = hit.entityId,
+                title = hit.title,
+                kindLabel = hit.kind.ifBlank { hit.collection.toResultType().label },
+                contextLabel = hit.personName,
+                type = hit.collection.toResultType(),
+            )
+        }
+        fun localState(scope: SearchScope) = base.copy(
+            scope = scope,
+            hasMore = local.catalog.size > limit || local.blocks.size > limit,
+            directMatches = direct,
+            hits = local.blocks.take(limit)
+                .let { hits -> if (filters.sort == SearchSort.Died) hits.sortedWith(compareBy(nullsLast()) { catalog.byId[it.entityId]?.died }) else hits }
+                .map { hit ->
+                    SearchHitUi(
+                        id = "${hit.entityId}:${hit.rowid}",
+                        entityId = hit.entityId,
+                        ordinal = hit.ordinal,
+                        excerpt = hit.excerpt,
+                        matchStart = hit.matchStart,
+                        matchEnd = hit.matchEnd,
+                        sourceMatchStart = hit.sourceMatchStart,
+                        sourceMatchEnd = hit.sourceMatchEnd,
+                        sourceTitle = hit.sourceTitle,
+                        sourceAuthor = hit.sourceAuthor,
+                        locationLabel = listOfNotNull(
+                            hit.chapterTitle.ifBlank { null },
+                            hit.printedPage?.let { "ص ${arabicNumber(it)}" },
+                        ).joinToString(" · ").ifBlank { null },
+                        type = hit.collection.toResultType(),
+                        died = catalog.byId[hit.entityId]?.died,
+                    )
+                },
         )
+        if (filters.downloadedOnly || filters.field != SearchField.FullText) // Titles/authors/topics: the catalog on the phone already covers the whole library.
+            return@transformLatest emit(localState(if (filters.downloadedOnly) SearchScope.Downloaded else SearchScope.Online))
+        emit(base.copy(directMatches = direct, searching = true))
+        // ponytail: a fixed pause before the network call; cancelled by the next keystroke
+        delay(OnlineSearchPauseMs)
+        val query = OnlineSearch.Query(
+            q = clean,
+            mode = filters.mode.api,
+            field = "all",
+            types = (filters.types.ifEmpty { SearchResultType.entries.toSet() }).mapTo(linkedSetOf()) { it.contentCollection },
+            persons = filters.authors.mapNotNullTo(linkedSetOf()) { catalog.slugByName[it] },
+            sort = if (filters.sort == SearchSort.Died) "death" else "relevance",
+        )
+        val online = try {
+            onlineSearch.hits(query, limit)
+        } catch (cancelled: kotlinx.coroutines.CancellationException) { throw cancelled
+        } catch (offline: Exception) { null }
+        if (online == null) return@transformLatest emit(localState(SearchScope.Offline))
+        val (hits, more) = online
+        val state = base.copy(
+            scope = SearchScope.Online,
+            directMatches = direct,
+            hasMore = more,
+            // A work the site has and this app's catalog doesn't can't be opened: leave it out.
+            hits = hits.mapIndexedNotNull { index, hit -> hit.toHitUi(index, catalog) },
+        )
+        emit(state)
+        // Same query, more pages: the counts don't change, so don't ask again.
+        val facets = lastFacets?.takeIf { it.first == query }?.second
+            ?: runCatching { onlineSearch.facets(query) }.getOrNull()?.also { lastFacets = query to it }
+        if (facets != null) {
+            emit(state.copy(
+                total = facets.total,
+                totalCapped = facets.capped,
+                topAuthors = facets.persons.mapNotNull { p -> catalog.nameBySlug[p.slug]?.let { AuthorCountUi(it, p.count) } }.take(8),
+            ))
+        }
     }.stateIn(
         viewModelScope,
         SharingStarted.WhileSubscribed(5_000),
@@ -319,10 +370,58 @@ class AtharContentViewModel @Inject constructor(
             recentQueries = emptyList(),
             directMatches = emptyList(),
             hits = emptyList(),
-            availableSources = emptyList(),
             availableAuthors = emptyList(),
         ),
     )
+
+    private fun OnlineSearch.Hit.toHitUi(index: Int, catalog: SearchCatalog): SearchHitUi? {
+        val id = if (type == "book") book else android.net.Uri.decode(url.trimEnd('/').substringAfterLast('/'))
+        val entity = catalog.byId[id] ?: return null
+        val (text, marks) = unmark(snippet)
+        val first = marks.firstOrNull() ?: 0..-1
+        return SearchHitUi(
+            id = "online:$index:$url",
+            entityId = id,
+            ordinal = -1,
+            excerpt = text,
+            matchStart = first.first,
+            matchEnd = first.last + 1,
+            sourceTitle = entity.title,
+            sourceAuthor = entity.personName.orEmpty(),
+            locationLabel = title.substringAfter(" — ", "").ifBlank { null },
+            type = entity.coll.toResultType(),
+            matches = marks,
+            died = entity.died,
+            url = url,
+        )
+    }
+
+    /** The whole passage behind an online hit (normalized index text), for «المزيد». */
+    suspend fun onlinePassage(url: String): String? = runCatching { onlineSearch.fullText(url) }.getOrNull()?.ifBlank { null }
+
+    /**
+     * Where an online hit sits in the app's own text: its chapter (the url's slug is the chapter
+     * anchor), then the first match of [query] in that chapter's loaded frame. Null ordinal: open the book as usual.
+     */
+    suspend fun locateOnlineHit(hit: SearchHitUi, query: String): Triple<Int?, Int, Int> {
+        val slug = hit.url?.substringAfter("/${hit.entityId}/", "")?.let(android.net.Uri::decode).orEmpty()
+        if (slug.isEmpty()) return Triple(null, 0, 0)
+        return runCatching {
+            content.open(hit.entityId, 0) // the first frame carries the chapter list
+            val chapters = importDao.observeChapters(hit.entityId).first()
+            val index = chapters.indexOfFirst { it.anchor == slug.substringBefore("--pages-") }
+            if (index < 0) return@runCatching Triple(null, 0, 0)
+            val from = chapters[index].firstOrdinal
+            val to = chapters.getOrNull(index + 1)?.firstOrdinal?.minus(1) ?: Int.MAX_VALUE
+            content.open(hit.entityId, from)
+            val match = contentSearch.search(
+                ContentSearchRequest(query = query, sort = ContentSearchSort.BookOrder,
+                    filter = ContentSearchFilter(entityIds = setOf(hit.entityId)), ordinals = from..to),
+                limit = 1,
+            ).blocks.firstOrNull()
+            if (match == null) Triple(from, 0, 0) else Triple(match.ordinal, match.sourceMatchStart, match.sourceMatchEnd)
+        }.getOrElse { if (it is kotlinx.coroutines.CancellationException) throw it else Triple(null, 0, 0) }
+    }
 
     /**
      * Each job's tag → the job that matters for it (unfinished first, else failed), built once per
@@ -843,7 +942,7 @@ class AtharContentViewModel @Inject constructor(
         return found
     }
 
-    fun loadMoreSearch() { _searchLimit.value += 50 }
+    fun loadMoreSearch() { _searchLimit.value += SearchPageSize }
 
     fun setSearchQuery(query: String) {
         val clipped = query.take(10_000)
@@ -855,7 +954,7 @@ class AtharContentViewModel @Inject constructor(
             activeSearchTrace = trace
         }
         savedState["searchQuery"] = clipped
-        _searchLimit.value = 50
+        _searchLimit.value = SearchPageSize
         _searchQuery.value = clipped
     }
 
@@ -867,10 +966,11 @@ class AtharContentViewModel @Inject constructor(
     fun setSearchFilters(filters: SearchFilters) {
         savedState["searchTypes"] = ArrayList(filters.types.map { it.name })
         savedState["searchField"] = filters.field.name
-        savedState["searchSources"] = ArrayList(filters.sources)
+        savedState["searchMode"] = filters.mode.name
+        savedState["searchDownloadedOnly"] = filters.downloadedOnly
         savedState["searchAuthors"] = ArrayList(filters.authors)
         savedState["searchSort"] = filters.sort.name
-        _searchLimit.value = 50
+        _searchLimit.value = SearchPageSize
         _searchFilters.value = filters
     }
 
@@ -1403,7 +1503,12 @@ private data class SearchInput(
     val catalog: SearchCatalog,
 )
 
-private data class SearchCatalog(val entities: List<ContentEntity>, val sources: List<String>, val authors: List<String>)
+private class SearchCatalog(entities: List<ContentEntity>) {
+    val byId = entities.associateBy { it.id }
+    val slugByName = entities.filter { it.person != null && it.personName != null }.associate { it.personName!! to it.person!! }
+    val nameBySlug = slugByName.entries.associate { (name, slug) -> slug to name }
+    val authors = slugByName.keys.sortedBy(ArNormalize::normalize)
+}
 
 private data class SearchTrace(val query: String, val cookie: Int)
 
@@ -1414,10 +1519,6 @@ private fun SearchField.toContentField(): ContentSearchField = when (this) {
     SearchField.Topic -> ContentSearchField.Topic
 }
 
-private fun SearchSort.toContentSort(): ContentSearchSort = when (this) {
-    SearchSort.Relevance -> ContentSearchSort.Relevance
-    SearchSort.Newest -> ContentSearchSort.Newest
-}
 
 private val SearchResultType.contentCollection: String
     get() = when (this) {

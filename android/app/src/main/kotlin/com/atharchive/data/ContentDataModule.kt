@@ -94,7 +94,8 @@ class ContentAccess @Inject constructor(
     val contentDatabase: AtharContentDatabase,
     val userDatabase: AtharUserDatabase,
     private val importer: ContentImporter,
-    private val okHttpClient: OkHttpClient,
+    /** Also used by online search: one connection pool. */
+    val httpClient: OkHttpClient,
 ) {
     companion object {
         private const val StoragePreferences = "content_storage"
@@ -326,7 +327,7 @@ class ContentAccess @Inject constructor(
 
     private val appContentClient: AppContentHttpClient? by lazy {
         configuration?.let { config ->
-            AppContentHttpClient(config.baseUrl.toHttpUrl(), okHttpClient)
+            AppContentHttpClient(config.baseUrl.toHttpUrl(), httpClient)
         }
     }
 
