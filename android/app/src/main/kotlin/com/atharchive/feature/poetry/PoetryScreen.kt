@@ -201,7 +201,9 @@ fun PoetryScreen(
                 .testTag("poetry_screen"),
             contentPadding = PaddingValues(top = header.height, bottom = 28.dp),
         ) {
-            if (visiblePoems.isEmpty()) {
+            if (!state.loaded) {
+                // first catalog read not back yet: show nothing rather than a false "no poems"
+            } else if (visiblePoems.isEmpty()) {
                 item(key = "poetry-empty") {
                     val (title, body) = when {
                         query.isNotBlank() ->

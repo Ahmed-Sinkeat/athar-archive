@@ -192,7 +192,9 @@ fun IssuesScreen(
                 contentPadding = PaddingValues(top = header.height, bottom = 28.dp),
             ) {
 
-                if (visible.isEmpty()) {
+                if (!state.loaded) {
+                    // first catalog read not back yet: show nothing rather than a false "no issues"
+                } else if (visible.isEmpty()) {
                     item(key = "issues-empty") {
                         val (title, body) = when {
                             query.isNotBlank() ->

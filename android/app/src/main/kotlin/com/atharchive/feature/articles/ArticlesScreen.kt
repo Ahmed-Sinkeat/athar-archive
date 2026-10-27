@@ -186,7 +186,9 @@ fun ArticlesScreen(
                 .testTag("articles_screen"),
             contentPadding = PaddingValues(top = header.height, bottom = 28.dp),
         ) {
-            if (visibleArticles.isEmpty()) {
+            if (!state.loaded) {
+                // first catalog read not back yet: show nothing rather than a false "no articles"
+            } else if (visibleArticles.isEmpty()) {
                 item(key = "articles-empty") {
                     val (title, body) = when {
                         query.isNotBlank() ->

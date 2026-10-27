@@ -35,6 +35,8 @@ data class ArticleUi(
 data class ArticlesUiState(
     val countLabel: String,
     val articles: List<ArticleUi>,
+    /** False until the first catalog read: the screen shows nothing rather than a false "no articles". */
+    val loaded: Boolean = true,
 )
 
 val ArticlesFixture = ArticlesUiState(

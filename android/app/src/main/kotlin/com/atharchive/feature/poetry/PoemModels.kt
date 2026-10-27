@@ -37,6 +37,8 @@ data class PoemUi(
 data class PoetryUiState(
     val countLabel: String,
     val poems: List<PoemUi>,
+    /** False until the first catalog read: the screen shows nothing rather than a false "no poems". */
+    val loaded: Boolean = true,
 )
 
 val PoetryFixture = PoetryUiState(

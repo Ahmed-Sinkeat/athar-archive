@@ -433,7 +433,7 @@ class AtharContentViewModel @Inject constructor(
                 )
             },
         )
-    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), ArticlesUiState("٠ مقال", emptyList()))
+    }.stateIn(viewModelScope, SharingStarted.Eagerly, ArticlesUiState("٠ مقال", emptyList(), loaded = false)) // ponytail: hot from app start so the tab opens filled; costs one recompute per download tick while hidden
 
     // Only works with recordings are decoded, and only when the catalog changes, not on every download tick.
     private val audioSources = combine(catalogDao.observeEntitiesWithAudio(), persons) { list, people ->
@@ -638,7 +638,7 @@ class AtharContentViewModel @Inject constructor(
                 )
             },
         )
-    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), IssuesUiState("٠ مسألة", emptyList()))
+    }.stateIn(viewModelScope, SharingStarted.Eagerly, IssuesUiState("٠ مسألة", emptyList(), loaded = false)) // ponytail: hot from app start so the tab opens filled; costs one recompute per download tick while hidden
 
     val poetry: StateFlow<PoetryUiState> = combine(
         // Decoded once per catalog change, not on every pin, shelf or progress change.
@@ -668,7 +668,7 @@ class AtharContentViewModel @Inject constructor(
                 )
             },
         )
-    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), PoetryUiState("٠ قصيدة", emptyList()))
+    }.stateIn(viewModelScope, SharingStarted.Eagerly, PoetryUiState("٠ قصيدة", emptyList(), loaded = false)) // ponytail: hot from app start so the tab opens filled; costs one recompute per download tick while hidden
 
     init {
         viewModelScope.launch(errorHandler) {

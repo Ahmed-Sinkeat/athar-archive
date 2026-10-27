@@ -33,6 +33,8 @@ data class IssueUi(
 data class IssuesUiState(
     val countLabel: String,
     val issues: List<IssueUi>,
+    /** False until the first catalog read: the screen shows nothing rather than a false "no issues". */
+    val loaded: Boolean = true,
 )
 
 val IssuesFixture = IssuesUiState(
