@@ -17,7 +17,7 @@ Found: 70. Missing: 14.
 | فضل الإسلام | — | — | **missing** |
 | مسائل الجاهلية | `src/content/book/masail-al-jahiliyyah.md` | 26 KB | **read in full** (2026-10-27): bold labels for all items in place; 3 source-repeated labels retained; no change needed |
 | العقيدة الواسطية | `src/content/book/al-aqeedah-al-wasitiyyah.md` | 51 KB | **read in full**: reviewed, no change needed |
-| العقيدة الواسطية بتعليق ابن مانع | `src/content/book/al-aqyda-al-wastya-btalyq-abn-mana.md` | 82 KB | structural scan: reviewed, no change needed |
+| العقيدة الواسطية بتعليق ابن مانع | `src/content/book/al-aqyda-al-wastya-btalyq-abn-mana.md` | 82 KB | **structure checked** (2026-10-27): linked as edition of الواسطية (بتعليق ابن مانع); 51 notes all linked, 0 dead refs; no change needed; not every line read |
 | الفتوى الحموية الكبرى | `src/content/book-lg/al-fatwa-al-hamawiyyah-al-kubra.md` | 256 KB | audited: chapter structure, paragraph lengths; sampled, not read in full |
 | التدمرية | `src/content/book-lg/al-tadmuriyyah.md` | 289 KB | structural scan: 5 headings split across two lines joined |
 | العقيدة الطحاوية | `src/content/book/al-aqeedah-al-tahawiyyah.md` | 26 KB | **read in full**: reviewed, no change needed |
@@ -26,11 +26,11 @@ Found: 70. Missing: 14.
 | شرح السنة للبربهاري | `src/content/book/sharh-al-sunnah-al-barbahari.md` | 72 KB | **read in full**: reviewed, no change needed |
 | شرح السنة للمزني | `src/content/book/sharh-al-sunnah-al-muzani.md` | 18 KB | **read in full**: reviewed, no change needed |
 | عقيدة السلف أصحاب الحديث (الصابوني) | — | — | **missing** |
-| مقدمة رسالة ابن أبي زيد (عقيدة السلف) | `src/content/book/aqeedat-al-salaf-muqaddimat-al-risalah.md` | 85 KB | structural scan: glued heading words spaced |
+| مقدمة رسالة ابن أبي زيد (عقيدة السلف) | `src/content/book/aqeedat-al-salaf-muqaddimat-al-risalah.md` | 85 KB | **structure checked** (2026-10-27): notes sit inside the editor's card; headings ok; no change needed; not every line read |
 | العقيدة السفارينية | `src/content/poem/al-aqeedah-al-saffariniyyah.md` | 25 KB | **read in full** (2026-10-27): 206 verses, 32 headings, no change needed |
 | الحائية لابن أبي داود | `src/content/poem/al-qasidah-al-haiyyah-ibn-abi-dawud.md` | 7 KB | **read in full** (2026-10-27): 40 verses numbered, rhyme consistent, no change needed |
 | سلم الوصول (حافظ حكمي) | `src/content/poem/sullam-al-wusul-ila-ilm-al-usul.md` | 43 KB | **read** (2026-10-27): 290 verses, 15 chapter headings, rhyme ok, no change needed |
-| نونية القحطاني | `src/content/poem/nuniyyat-al-qahtani.md` | 106 KB | audited: verse numbering, pairing, rhyme/qafiya checked; opening read |
+| نونية القحطاني | `src/content/poem/nuniyyat-al-qahtani.md` | 106 KB | **read (opening/closing, rhyme)** (2026-10-27): 689 verses, rhyme ن throughout the main poem; no change needed |
 | التائية في القدر | `src/content/poem/al-qasidah-al-taiyyah-fil-qadar.md` | 14 KB | **read in full** (2026-10-27): 133 verses, rhyme consistent, no change needed |
 | الكافية الشافية (نونية ابن القيم) | `src/content/poem/al-kafiyah-al-shafiyah.md` | 547 KB | audited: chapter structure, paragraph lengths, qafiya 100% consistent (5821 bayts); sampled, not read in full |
 
@@ -46,7 +46,7 @@ Found: 70. Missing: 14.
 | أخصر المختصرات | `src/content/book-lg/akhsr-al-mkhtsrat.md` | 199 KB | structural scan: page-line breaks joined |
 | منهج السالكين | — | — | **missing** |
 | عمدة السالك | `src/content/book-lg/amdh-al-salk-wadh-al-nask.md` | 469 KB | audited: chapter structure, paragraph lengths; sampled, not read in full |
-| متن أبي شجاع | `src/content/book/mtn-aby-shjaa-al-msma-al-ghayh-waltqryb.md` | 84 KB | structural scan: reviewed, no change needed |
+| متن أبي شجاع | `src/content/book/mtn-aby-shjaa-al-msma-al-ghayh-waltqryb.md` | 84 KB | **structure checked** (2026-10-27): 129 headings, no joined paragraphs, card ok; no change needed; not every line read |
 | المقدمة الحضرمية | `src/content/book-lg/al-mqdmh-al-hdrmyh.md` | 169 KB | structural scan: page-line breaks joined |
 | الزبد | `src/content/poem/al-zbd-fy-al-fqh-al-shafay.md` | 136 KB | structural scan: reviewed, no change needed |
 | متن الأخضري | `src/content/book/mtn-al-akhdry-fy-al-abadat-ala-mthhb-al-amam-malk.md` | 56 KB | **structure checked** (2026-10-27): 18 paragraph breaks restored after sentence-final lines (67 -> 85 blocks); not every line read |
@@ -71,8 +71,8 @@ Found: 70. Missing: 14.
 | المنظومة البيقونية | `src/content/poem/al-manzumah-al-bayquniyyah.md` | 5 KB | **read in full**: reviewed, no change needed |
 | نخبة الفكر | `src/content/book/nukhbat-al-fikar.md` | 22 KB | **read in full** |
 | الموقظة | — | — | **missing** |
-| ألفية العراقي | `src/content/poem/alfiyyah-al-iraqi.md` | 118 KB | audited: verse numbering, pairing, rhyme/qafiya checked; opening read |
-| ألفية السيوطي | `src/content/poem/alfiyyah-al-suyuti.md` | 115 KB | audited: verse numbering, pairing, rhyme/qafiya checked; opening read |
+| ألفية العراقي | `src/content/poem/alfiyyah-al-iraqi.md` | 118 KB | **structure checked** (2026-10-27): 1002 verses numbered with no gaps, 103 headings, card ok; no change needed |
+| ألفية السيوطي | `src/content/poem/alfiyyah-al-suyuti.md` | 115 KB | **structure checked** (2026-10-27): 995 verses numbered with no gaps, 76 headings, card ok; no change needed |
 
 ## أصول الفقه
 
@@ -87,7 +87,7 @@ Found: 70. Missing: 14.
 
 | Text | File | Size | Status |
 |---|---|---:|---|
-| مقدمة في أصول التفسير | `src/content/book/muqaddimah-fi-usul-al-tafsir.md` | 89 KB | structural scan: reviewed, no change needed |
+| مقدمة في أصول التفسير | `src/content/book/muqaddimah-fi-usul-al-tafsir.md` | 89 KB | **structure checked** (2026-10-27): headings, bold labels, card ok; no change needed; not every line read |
 | تحفة الأطفال | `src/content/poem/tuhfat-al-atfal.md` | 8 KB | **read in full** (2026-10-27): front matter put in the book card; 61 verses numbered, no gaps |
 | المقدمة الجزرية | `src/content/poem/al-jazariyyah.md` | 18 KB | **read in full** (2026-10-27): 107 verses numbered, 17 chapter headings, card ok, no change needed |
 | الشاطبية | — | — | **missing** |
@@ -106,15 +106,15 @@ Found: 70. Missing: 14.
 | ملحة الإعراب | `src/content/book/mlha-al-iarab.md` | 58 KB | **read in full**: (earlier today) split verse blocks merged |
 | قطر الندى | `src/content/book/qatr-al-nada.md` | 39 KB | **structure checked** (2026-10-27): headings, page-boundary breaks, anchors scanned; no change needed; not every line read |
 | شذور الذهب | `src/content/book/mtn-shdhwr-al-dhhb.md` | 74 KB | **structure checked** (2026-10-27): 58 paragraph breaks restored after sentence-final lines (120 -> 178 blocks); not every line read |
-| ألفية ابن مالك (الخلاصة) | `src/content/poem/alfiyyah-ibn-malik.md` | 120 KB | structural scan: reviewed, no change needed |
-| ألفية ابن مالك | `src/content/poem/alfya-abn-malk.md` | 114 KB | structural scan: reviewed, no change needed |
+| ألفية ابن مالك (الخلاصة) | `src/content/poem/alfiyyah-ibn-malik.md` | 120 KB | **structure checked** (2026-10-27): 1002 verses numbered with no gaps, card ok; no change needed; default edition (ت القاسم) |
+| ألفية ابن مالك | `src/content/poem/alfya-abn-malk.md` | 114 KB | **structure checked** (2026-10-27): editor's biography and front matter put in the book card; linked as edition (دار التعاون) of ألفية ابن مالك |
 | لامية الأفعال | `src/content/poem/lamiyyat-al-afal.md` | 22 KB | **read in full** (2026-10-27): 114 verses numbered, rhyme ok, card ok, no change needed |
 
 ## الآداب والسلوك
 
 | Text | File | Size | Status |
 |---|---|---:|---|
-| حلية طالب العلم | `src/content/book-lg/hlya-talb-al-alm.md` | 121 KB | structural scan: doubled «... ...» verse separators fixed |
+| حلية طالب العلم | `src/content/book-lg/hlya-talb-al-alm.md` | 121 KB | **structure checked** (2026-10-27): 62 paragraph breaks restored (733 -> 795 blocks); not every line read |
 | مختصر الأذكار والآداب | `src/content/book/ktab-mkhtsr-al-adhkar-waladab--v2.md` | 45 KB | **read in full**: (earlier today) every hadith wrapped |
 | المنظومة الميمية | `src/content/poem/al-manzumah-al-mimiyyah-hakami.md` | 44 KB | **read** (2026-10-27): 271 verses numbered 1-271 with no gaps, rhyme 271/271, no change needed |
 | عنوان الحكم | `src/content/poem/unwan-al-hikam.md` | 9 KB | **read in full** (2026-10-27): 59 verses numbered, rhyme consistent, card ok, no change needed |
