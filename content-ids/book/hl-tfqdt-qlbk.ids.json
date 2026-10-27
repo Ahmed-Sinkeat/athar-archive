@@ -1,7 +1,7 @@
 {
   "schema": 1,
-  "generation": 2,
-  "sourceHash": "54e609c80e1349b1baeeda6b8aaeb767b30782c7d30c4bc53f1605adc427fcf0",
+  "generation": 3,
+  "sourceHash": "834e24845ced7a9c28bfff388762c921e2022d9db29c1eccb9902a63b7eedcac",
   "ids": [
     {
       "ord": 0,
@@ -10,90 +10,350 @@
       "normHash": "e521f489d4ea1b1e344557f70b833a823e82867c277e340c6a9f43cfa42a6fc7",
       "kind": "h2",
       "chapter": "المقدمة",
-      "next": "8b60a2b0983a161343b73093b50a81b2cedb3a82900453e58ace70ebc67541b8"
+      "next": "2faeea109072ecd45655335c776d16dff7854c5c40d4f54df97cecc239736a86"
     },
     {
       "ord": 1,
-      "blockId": "1f93c7543c07fadc26db4e48034ab9ca",
-      "fp64": "61c7fe3b0762ecff",
-      "normHash": "8b60a2b0983a161343b73093b50a81b2cedb3a82900453e58ace70ebc67541b8",
+      "blockId": "b7d1d675142e5803fe39096bc79cf6ac",
+      "fp64": "bdf5f8179ffc71fe",
+      "normHash": "2faeea109072ecd45655335c776d16dff7854c5c40d4f54df97cecc239736a86",
       "kind": "p",
       "chapter": "المقدمة",
       "prev": "e521f489d4ea1b1e344557f70b833a823e82867c277e340c6a9f43cfa42a6fc7",
-      "next": "fee832d2021b0156e0ba299d22288b9aa66658da27ddc03b3dc1ff1f568b79a0"
+      "next": "ae40501a40c496e8dbd48cf6bc3ec8d7a0abe8793c3e4141ff131f5b9b7cf192"
     },
     {
       "ord": 2,
+      "blockId": "2d89db4a490f2fac849329693d17c78b",
+      "fp64": "f9677a7e711ca519",
+      "normHash": "ae40501a40c496e8dbd48cf6bc3ec8d7a0abe8793c3e4141ff131f5b9b7cf192",
+      "kind": "p",
+      "chapter": "المقدمة",
+      "prev": "2faeea109072ecd45655335c776d16dff7854c5c40d4f54df97cecc239736a86",
+      "next": "8b24334d02b596445398336891c37f69dfe5d8dbfa355d05916ccff9291ceeb1"
+    },
+    {
+      "ord": 3,
+      "blockId": "9040f3a7e7da224e121455c4f2913ef1",
+      "fp64": "8b972716096bfba9",
+      "normHash": "8b24334d02b596445398336891c37f69dfe5d8dbfa355d05916ccff9291ceeb1",
+      "kind": "p",
+      "chapter": "المقدمة",
+      "prev": "ae40501a40c496e8dbd48cf6bc3ec8d7a0abe8793c3e4141ff131f5b9b7cf192",
+      "next": "d9763be569c6f442f48016e8daf5c0e442268d9b405753b97bfbb95eee7ffcea"
+    },
+    {
+      "ord": 4,
+      "blockId": "2c8fc3d19c8f550f7c168c0437a4df28",
+      "fp64": "6d795a9fd67bffee",
+      "normHash": "d9763be569c6f442f48016e8daf5c0e442268d9b405753b97bfbb95eee7ffcea",
+      "kind": "p",
+      "chapter": "المقدمة",
+      "prev": "8b24334d02b596445398336891c37f69dfe5d8dbfa355d05916ccff9291ceeb1",
+      "next": "a58b8cc32c72370d0459d351751908228f86d16b7685b52df0a09beda2ddb310"
+    },
+    {
+      "ord": 5,
+      "blockId": "2ca33f1862c8294a6d194181c17a47c6",
+      "fp64": "64f7fe73d2655c59",
+      "normHash": "a58b8cc32c72370d0459d351751908228f86d16b7685b52df0a09beda2ddb310",
+      "kind": "p",
+      "chapter": "المقدمة",
+      "prev": "d9763be569c6f442f48016e8daf5c0e442268d9b405753b97bfbb95eee7ffcea",
+      "next": "607a76baf8c18e1c73a7441288ab1be43766e5dbcb88981d1c7b2cf3cb929430"
+    },
+    {
+      "ord": 6,
+      "blockId": "a1a200f46c1af0bcf1fc580597949553",
+      "fp64": "e083b5e1044885fc",
+      "normHash": "607a76baf8c18e1c73a7441288ab1be43766e5dbcb88981d1c7b2cf3cb929430",
+      "kind": "p",
+      "chapter": "المقدمة",
+      "prev": "a58b8cc32c72370d0459d351751908228f86d16b7685b52df0a09beda2ddb310",
+      "next": "085472f1498388afb219216a1c4ba742f68bdcedab946d3bc6ddce2ea6447fb8"
+    },
+    {
+      "ord": 7,
+      "blockId": "4900d4b1de984dabec51d1f9ba7ccae4",
+      "fp64": "4b57ec9ad5675d2f",
+      "normHash": "085472f1498388afb219216a1c4ba742f68bdcedab946d3bc6ddce2ea6447fb8",
+      "kind": "p",
+      "chapter": "المقدمة",
+      "prev": "607a76baf8c18e1c73a7441288ab1be43766e5dbcb88981d1c7b2cf3cb929430",
+      "next": "c399b07837e97dfafb7829c6c9f5edac06ac0cb8e85e7f94b19882220dcf32f0"
+    },
+    {
+      "ord": 8,
+      "blockId": "51d2f0ac49546227e4886a9c46e0fa17",
+      "fp64": "adc886301db3e022",
+      "normHash": "c399b07837e97dfafb7829c6c9f5edac06ac0cb8e85e7f94b19882220dcf32f0",
+      "kind": "p",
+      "chapter": "المقدمة",
+      "prev": "085472f1498388afb219216a1c4ba742f68bdcedab946d3bc6ddce2ea6447fb8",
+      "next": "460588641c855d071d0acf9e6a020a8fbfc72aa265e8d5532082ca60f73289c3"
+    },
+    {
+      "ord": 9,
+      "blockId": "d0e35251bde4d15cea07b1a2aaec07b5",
+      "fp64": "dfb4af3a1ec7beeb",
+      "normHash": "460588641c855d071d0acf9e6a020a8fbfc72aa265e8d5532082ca60f73289c3",
+      "kind": "p",
+      "chapter": "المقدمة",
+      "prev": "c399b07837e97dfafb7829c6c9f5edac06ac0cb8e85e7f94b19882220dcf32f0",
+      "next": "1b68d2ff44cda6e89f5725c17277fdb4957dd02967586d1f279c8a3adafc5e77"
+    },
+    {
+      "ord": 10,
+      "blockId": "ce27ea914a5a62f53996487c189ba980",
+      "fp64": "627656680e63e4fe",
+      "normHash": "1b68d2ff44cda6e89f5725c17277fdb4957dd02967586d1f279c8a3adafc5e77",
+      "kind": "p",
+      "chapter": "المقدمة",
+      "prev": "460588641c855d071d0acf9e6a020a8fbfc72aa265e8d5532082ca60f73289c3",
+      "next": "a8672b8cbb8d94875c5adaf1f3c6c17497827a0afd3da1b29cbbcb52293f5033"
+    },
+    {
+      "ord": 11,
+      "blockId": "bb3d94e1fab70f6b9127b5833d1c0d99",
+      "fp64": "6cfff773d04bcd79",
+      "normHash": "a8672b8cbb8d94875c5adaf1f3c6c17497827a0afd3da1b29cbbcb52293f5033",
+      "kind": "p",
+      "chapter": "المقدمة",
+      "prev": "1b68d2ff44cda6e89f5725c17277fdb4957dd02967586d1f279c8a3adafc5e77",
+      "next": "1b4764249fad943db65e721bed5c2e882d6f31b97633e7213c5919db2f913c3a"
+    },
+    {
+      "ord": 12,
+      "blockId": "51ababc634e5f62e974bdf07ff662fe9",
+      "fp64": "9204ba55670658d7",
+      "normHash": "1b4764249fad943db65e721bed5c2e882d6f31b97633e7213c5919db2f913c3a",
+      "kind": "p",
+      "chapter": "المقدمة",
+      "prev": "a8672b8cbb8d94875c5adaf1f3c6c17497827a0afd3da1b29cbbcb52293f5033",
+      "next": "2865461c9caa4bbe85bc4b7ce5b74590cb7789f519d5e8d4046c5a11592603c6"
+    },
+    {
+      "ord": 13,
+      "blockId": "127ae5d3154af19e50d68e95c989660a",
+      "fp64": "38e2de3de7628eba",
+      "normHash": "2865461c9caa4bbe85bc4b7ce5b74590cb7789f519d5e8d4046c5a11592603c6",
+      "kind": "p",
+      "chapter": "المقدمة",
+      "prev": "1b4764249fad943db65e721bed5c2e882d6f31b97633e7213c5919db2f913c3a",
+      "next": "203021938850c385a2c79f520412df01efde705338d2268330ff53f3a5512866"
+    },
+    {
+      "ord": 14,
+      "blockId": "8321ff7481c7f4fb6f173048e37ca770",
+      "fp64": "46c87c3ddb668ee5",
+      "normHash": "203021938850c385a2c79f520412df01efde705338d2268330ff53f3a5512866",
+      "kind": "verse",
+      "chapter": "المقدمة",
+      "prev": "2865461c9caa4bbe85bc4b7ce5b74590cb7789f519d5e8d4046c5a11592603c6",
+      "next": "fee832d2021b0156e0ba299d22288b9aa66658da27ddc03b3dc1ff1f568b79a0"
+    },
+    {
+      "ord": 15,
       "blockId": "3204d6f0acc0e15c5f6766420d679fb2",
       "fp64": "21dc73fb7b32246f",
       "normHash": "fee832d2021b0156e0ba299d22288b9aa66658da27ddc03b3dc1ff1f568b79a0",
       "kind": "page",
       "chapter": "المقدمة",
-      "prev": "8b60a2b0983a161343b73093b50a81b2cedb3a82900453e58ace70ebc67541b8",
-      "next": "e3746d869aba9ac512598460c1ff5886aa87a45ea3c34a0484456bfd7a2ed312"
+      "prev": "203021938850c385a2c79f520412df01efde705338d2268330ff53f3a5512866",
+      "next": "a7146206909ed1c4d951726e0817b2c35850bfd962ece595605991833857f638"
     },
     {
-      "ord": 3,
-      "blockId": "1555fe8843f54cfd0289ec7b3a78f4e2",
-      "fp64": "f446e05e35704778",
-      "normHash": "e3746d869aba9ac512598460c1ff5886aa87a45ea3c34a0484456bfd7a2ed312",
+      "ord": 16,
+      "blockId": "ca3fed8b99952183537a2712aced373c",
+      "fp64": "ff44e01e073075f0",
+      "normHash": "a7146206909ed1c4d951726e0817b2c35850bfd962ece595605991833857f638",
       "kind": "p",
       "chapter": "المقدمة",
       "prev": "fee832d2021b0156e0ba299d22288b9aa66658da27ddc03b3dc1ff1f568b79a0",
-      "next": "da71fc193e49c846bd65af7b6b913242efb57543cf17c5eca6f1b517685d7465"
+      "next": "af3f24c1a7d5d1d97243c5a5fb1955e7ae7a63118d3e90a8956efebf39df67a7"
     },
     {
-      "ord": 4,
-      "blockId": "ec8fb07a3223b8b0c8d9d3c71aa0034e",
-      "fp64": "5ec1e6fd3f4b3705",
-      "normHash": "da71fc193e49c846bd65af7b6b913242efb57543cf17c5eca6f1b517685d7465",
-      "kind": "h1",
-      "chapter": "المقدمة",
-      "prev": "e3746d869aba9ac512598460c1ff5886aa87a45ea3c34a0484456bfd7a2ed312",
-      "next": "bf8971a25e87ab91b782001ab9f5336bfa898c2de1b9685353023182ead4d437"
-    },
-    {
-      "ord": 5,
-      "blockId": "1d418e3e5180f9d1d78e00d2d2a0dde6",
-      "fp64": "7e56a8703d68a6ea",
-      "normHash": "bf8971a25e87ab91b782001ab9f5336bfa898c2de1b9685353023182ead4d437",
+      "ord": 17,
+      "blockId": "520177e246905666fb8289fa0b7fbada",
+      "fp64": "ff75c176bd6a7738",
+      "normHash": "af3f24c1a7d5d1d97243c5a5fb1955e7ae7a63118d3e90a8956efebf39df67a7",
       "kind": "p",
       "chapter": "المقدمة",
-      "prev": "da71fc193e49c846bd65af7b6b913242efb57543cf17c5eca6f1b517685d7465",
+      "prev": "a7146206909ed1c4d951726e0817b2c35850bfd962ece595605991833857f638",
+      "next": "42f6393ea1081f148eebf6b4de3f8019b6885b3eed91425b832b99c3135d6836"
+    },
+    {
+      "ord": 18,
+      "blockId": "8154d08c07262e665d9bea14af8eb21e",
+      "fp64": "f6706cd27d7c4736",
+      "normHash": "42f6393ea1081f148eebf6b4de3f8019b6885b3eed91425b832b99c3135d6836",
+      "kind": "p",
+      "chapter": "المقدمة",
+      "prev": "af3f24c1a7d5d1d97243c5a5fb1955e7ae7a63118d3e90a8956efebf39df67a7",
+      "next": "fd222db8d6f7d128e405b8947b5eb7f3d54b7e99978593678b7e5200ec6244e5"
+    },
+    {
+      "ord": 19,
+      "blockId": "0cdb033330df1b51164cad52a60420f9",
+      "fp64": "5c9ff4062d57c678",
+      "normHash": "fd222db8d6f7d128e405b8947b5eb7f3d54b7e99978593678b7e5200ec6244e5",
+      "kind": "p",
+      "chapter": "المقدمة",
+      "prev": "42f6393ea1081f148eebf6b4de3f8019b6885b3eed91425b832b99c3135d6836",
+      "next": "ef7aabf86b16d4492613a7d9762a84e3bf9f124c5b943599aa260336324edd21"
+    },
+    {
+      "ord": 20,
+      "blockId": "103a2f84f5e83fc5cf50fa9525ed67b0",
+      "fp64": "43cafc4ebe51ed49",
+      "normHash": "ef7aabf86b16d4492613a7d9762a84e3bf9f124c5b943599aa260336324edd21",
+      "kind": "p",
+      "chapter": "المقدمة",
+      "prev": "fd222db8d6f7d128e405b8947b5eb7f3d54b7e99978593678b7e5200ec6244e5",
+      "next": "0d4158d42364175235ed663f0031b852efa61f785d903f25623fd7257080967d"
+    },
+    {
+      "ord": 21,
+      "blockId": "e7cd2e8a5df84971737a9a4c27aad374",
+      "fp64": "44a7ba96e7516b7f",
+      "normHash": "0d4158d42364175235ed663f0031b852efa61f785d903f25623fd7257080967d",
+      "kind": "p",
+      "chapter": "المقدمة",
+      "prev": "ef7aabf86b16d4492613a7d9762a84e3bf9f124c5b943599aa260336324edd21",
+      "next": "fe3806174a58adb29ef739a0dcb253d219176ae8fa45f06b8d6d00643196035e"
+    },
+    {
+      "ord": 22,
+      "blockId": "be1bcfb3d1d2eb882e4ba5813fea6dde",
+      "fp64": "71751f7fef2b2c60",
+      "normHash": "fe3806174a58adb29ef739a0dcb253d219176ae8fa45f06b8d6d00643196035e",
+      "kind": "p",
+      "chapter": "المقدمة",
+      "prev": "0d4158d42364175235ed663f0031b852efa61f785d903f25623fd7257080967d",
+      "next": "61ef6ec36b2c3dc76942e6609c5ab21572d4ac6146356d88bbc46079ae88876d"
+    },
+    {
+      "ord": 23,
+      "blockId": "ec8fb07a3223b8b0c8d9d3c71aa0034e",
+      "fp64": "5ec1e6fd3f4b3705",
+      "normHash": "61ef6ec36b2c3dc76942e6609c5ab21572d4ac6146356d88bbc46079ae88876d",
+      "kind": "h2",
+      "chapter": "أين-قلبك-من-الإيمان-الصادق",
+      "prev": "fe3806174a58adb29ef739a0dcb253d219176ae8fa45f06b8d6d00643196035e",
+      "next": "7c10980ddbe30b20bbd675a6d3e28932e2a9ecded59fa01f1e198594e2cfd932"
+    },
+    {
+      "ord": 24,
+      "blockId": "8681b0b8201a300a67620c823632f971",
+      "fp64": "37966a50377cc6ce",
+      "normHash": "7c10980ddbe30b20bbd675a6d3e28932e2a9ecded59fa01f1e198594e2cfd932",
+      "kind": "p",
+      "chapter": "أين-قلبك-من-الإيمان-الصادق",
+      "prev": "61ef6ec36b2c3dc76942e6609c5ab21572d4ac6146356d88bbc46079ae88876d",
+      "next": "3bc07ef6d1782fe5cb8e31e92f386d82223cab2edccdbf157440037a71244918"
+    },
+    {
+      "ord": 25,
+      "blockId": "22779f7aeb293277f63aa5c3f482f0f9",
+      "fp64": "7c57b030696897d3",
+      "normHash": "3bc07ef6d1782fe5cb8e31e92f386d82223cab2edccdbf157440037a71244918",
+      "kind": "p",
+      "chapter": "أين-قلبك-من-الإيمان-الصادق",
+      "prev": "7c10980ddbe30b20bbd675a6d3e28932e2a9ecded59fa01f1e198594e2cfd932",
+      "next": "8c511a1bfa02dc2b7ef1639971f6ca3c8b32efe285fb4553e0a75ad3419c97b7"
+    },
+    {
+      "ord": 26,
+      "blockId": "b39105e2f1cfa5d1c631c4fb875358e0",
+      "fp64": "fe07ac623d7ca428",
+      "normHash": "8c511a1bfa02dc2b7ef1639971f6ca3c8b32efe285fb4553e0a75ad3419c97b7",
+      "kind": "p",
+      "chapter": "أين-قلبك-من-الإيمان-الصادق",
+      "prev": "3bc07ef6d1782fe5cb8e31e92f386d82223cab2edccdbf157440037a71244918",
       "next": "f2d3b6bdb55e7fbc6d8ab7edec8e25dae2f896f9806c5d5589cfaf4f5e85c4f3"
     },
     {
-      "ord": 6,
+      "ord": 27,
       "blockId": "5f2baec50ffa6cd30404ae6de3c04002",
       "fp64": "a5dd76ff53b0e667",
       "normHash": "f2d3b6bdb55e7fbc6d8ab7edec8e25dae2f896f9806c5d5589cfaf4f5e85c4f3",
       "kind": "page",
-      "chapter": "المقدمة",
-      "prev": "bf8971a25e87ab91b782001ab9f5336bfa898c2de1b9685353023182ead4d437",
-      "next": "7b6c74efed831f39e9fbebe76a60a3d4267eb87beb924b3ea859a33db231d3c1"
+      "chapter": "أين-قلبك-من-الإيمان-الصادق",
+      "prev": "8c511a1bfa02dc2b7ef1639971f6ca3c8b32efe285fb4553e0a75ad3419c97b7",
+      "next": "6849f2394907a4158edbde7e781512328a8711a2d0557d37ab03b1b40ef4000b"
     },
     {
-      "ord": 7,
-      "blockId": "79e55d701efb44b438e91b2b386ea90a",
-      "fp64": "fc5660581a1e5ff8",
-      "normHash": "7b6c74efed831f39e9fbebe76a60a3d4267eb87beb924b3ea859a33db231d3c1",
+      "ord": 28,
+      "blockId": "6e6fcd7d391edd9ccf45ab3d5191a326",
+      "fp64": "ec16285b1d0a71fc",
+      "normHash": "6849f2394907a4158edbde7e781512328a8711a2d0557d37ab03b1b40ef4000b",
       "kind": "p",
-      "chapter": "المقدمة",
+      "chapter": "أين-قلبك-من-الإيمان-الصادق",
       "prev": "f2d3b6bdb55e7fbc6d8ab7edec8e25dae2f896f9806c5d5589cfaf4f5e85c4f3",
+      "next": "6eebacc13211e079aff233c008f4ad6a24edfbd4819e373b55f088ce3250ae85"
+    },
+    {
+      "ord": 29,
+      "blockId": "219f224a3a8fde16279be298cbf91523",
+      "fp64": "ec406859125e5478",
+      "normHash": "6eebacc13211e079aff233c008f4ad6a24edfbd4819e373b55f088ce3250ae85",
+      "kind": "p",
+      "chapter": "أين-قلبك-من-الإيمان-الصادق",
+      "prev": "6849f2394907a4158edbde7e781512328a8711a2d0557d37ab03b1b40ef4000b",
+      "next": "f294aee867ccb2329f687004ab9f6ee609ca725dd50e862b57478837e64e5b70"
+    },
+    {
+      "ord": 30,
+      "blockId": "846c351d990eb0334bd7d10c1f49db9d",
+      "fp64": "b450c5591b7cddf8",
+      "normHash": "f294aee867ccb2329f687004ab9f6ee609ca725dd50e862b57478837e64e5b70",
+      "kind": "p",
+      "chapter": "أين-قلبك-من-الإيمان-الصادق",
+      "prev": "6eebacc13211e079aff233c008f4ad6a24edfbd4819e373b55f088ce3250ae85",
+      "next": "1f02e29bc98d674af2228464b7b3b35e4deb47a27b19b21f499d7ad34690bf1d"
+    },
+    {
+      "ord": 31,
+      "blockId": "394c1ca2ae15d08b332ce11d4c58fdcb",
+      "fp64": "b4ffffdcc0b85f9f",
+      "normHash": "1f02e29bc98d674af2228464b7b3b35e4deb47a27b19b21f499d7ad34690bf1d",
+      "kind": "p",
+      "chapter": "أين-قلبك-من-الإيمان-الصادق",
+      "prev": "f294aee867ccb2329f687004ab9f6ee609ca725dd50e862b57478837e64e5b70",
+      "next": "c2836efdcbc1373acf0656fd2a2476f7262d39440345698b9cab7f03d8999082"
+    },
+    {
+      "ord": 32,
+      "blockId": "d6167b8b23f7bc53eb0106925be18b56",
+      "fp64": "7f36a16e90af0f7e",
+      "normHash": "c2836efdcbc1373acf0656fd2a2476f7262d39440345698b9cab7f03d8999082",
+      "kind": "p",
+      "chapter": "أين-قلبك-من-الإيمان-الصادق",
+      "prev": "1f02e29bc98d674af2228464b7b3b35e4deb47a27b19b21f499d7ad34690bf1d",
+      "next": "401e0847d2e37badfd877664239ddb6941ce80ba86d2ccfae190e46361bac7b0"
+    },
+    {
+      "ord": 33,
+      "blockId": "2739c9950175f8c2389a7fc08c0c0914",
+      "fp64": "7a4660142d57ff7e",
+      "normHash": "401e0847d2e37badfd877664239ddb6941ce80ba86d2ccfae190e46361bac7b0",
+      "kind": "p",
+      "chapter": "أين-قلبك-من-الإيمان-الصادق",
+      "prev": "c2836efdcbc1373acf0656fd2a2476f7262d39440345698b9cab7f03d8999082",
       "next": "56b7e8b4b9a62c6605ac1478129de158699f762d597b3fb729714a8c67f44ae3"
     },
     {
-      "ord": 8,
+      "ord": 34,
       "blockId": "d0c0a04357760f77ec642b1564d2e15f",
       "fp64": "9e9c2036357f9606",
       "normHash": "56b7e8b4b9a62c6605ac1478129de158699f762d597b3fb729714a8c67f44ae3",
       "kind": "h2",
       "chapter": "وهل-تفقدت-الخير-في-قلبك",
-      "prev": "7b6c74efed831f39e9fbebe76a60a3d4267eb87beb924b3ea859a33db231d3c1",
+      "prev": "401e0847d2e37badfd877664239ddb6941ce80ba86d2ccfae190e46361bac7b0",
       "next": "a8ac77d42366607fb9bba5e5560d989f1c89a457f452e7721ec38d75c6a2d5fb"
     },
     {
-      "ord": 9,
+      "ord": 35,
       "blockId": "94f0008a9b7bc52372333b93c1d1185e",
       "fp64": "25933d6eed673fec",
       "normHash": "a8ac77d42366607fb9bba5e5560d989f1c89a457f452e7721ec38d75c6a2d5fb",
@@ -103,77 +363,137 @@
       "next": "ce386de03df4fffc0f7eb78e45dda22fe013053ff8eb269e8892fa1202a51e73"
     },
     {
-      "ord": 10,
+      "ord": 36,
       "blockId": "837bc91629bb4b82f15378a386831d90",
       "fp64": "a5de34fe5b31027b",
       "normHash": "ce386de03df4fffc0f7eb78e45dda22fe013053ff8eb269e8892fa1202a51e73",
       "kind": "page",
       "chapter": "وهل-تفقدت-الخير-في-قلبك",
       "prev": "a8ac77d42366607fb9bba5e5560d989f1c89a457f452e7721ec38d75c6a2d5fb",
-      "next": "fe23a3c4a64cbe187662dbb0558371f5196d4a5a064691b186d264adfeab25d0"
+      "next": "8c687661e1f29056a6a93ec275699c3b6a80420923e4b9690eea196b120eadf5"
     },
     {
-      "ord": 11,
-      "blockId": "2cd1a5fbd2cc874a04c813e0b95a75bd",
-      "fp64": "2456c07a1f72745c",
-      "normHash": "fe23a3c4a64cbe187662dbb0558371f5196d4a5a064691b186d264adfeab25d0",
+      "ord": 37,
+      "blockId": "cd6e7aad5827f289f86fc8d8187ac986",
+      "fp64": "ddd1ec2fdfad2dc4",
+      "normHash": "8c687661e1f29056a6a93ec275699c3b6a80420923e4b9690eea196b120eadf5",
       "kind": "p",
       "chapter": "وهل-تفقدت-الخير-في-قلبك",
       "prev": "ce386de03df4fffc0f7eb78e45dda22fe013053ff8eb269e8892fa1202a51e73",
+      "next": "5347bc530c0f7361c0f2362fc6c8b2b2ba3643b16c2434acc6f50ecb55ad6f5c"
+    },
+    {
+      "ord": 38,
+      "blockId": "177607f5adda650f540ae69bfb2c61e0",
+      "fp64": "7e07d43e7b5244dc",
+      "normHash": "5347bc530c0f7361c0f2362fc6c8b2b2ba3643b16c2434acc6f50ecb55ad6f5c",
+      "kind": "p",
+      "chapter": "وهل-تفقدت-الخير-في-قلبك",
+      "prev": "8c687661e1f29056a6a93ec275699c3b6a80420923e4b9690eea196b120eadf5",
+      "next": "6a40a265bb990a8f2e03022ab7dc3d494d171d02f5ac2a84a7b2f83a6a9e60ed"
+    },
+    {
+      "ord": 39,
+      "blockId": "73e27a3a7734e34bf3d70dff1e8ff2cc",
+      "fp64": "8f72e0da157479f4",
+      "normHash": "6a40a265bb990a8f2e03022ab7dc3d494d171d02f5ac2a84a7b2f83a6a9e60ed",
+      "kind": "p",
+      "chapter": "وهل-تفقدت-الخير-في-قلبك",
+      "prev": "5347bc530c0f7361c0f2362fc6c8b2b2ba3643b16c2434acc6f50ecb55ad6f5c",
+      "next": "46cd525006e1ffa49106f1efb711bd467543695c50340ffdf292ebf32860e37a"
+    },
+    {
+      "ord": 40,
+      "blockId": "9d70b19c54b54c0e0ed6d0fd0d55335f",
+      "fp64": "26d688fe0e733d3e",
+      "normHash": "46cd525006e1ffa49106f1efb711bd467543695c50340ffdf292ebf32860e37a",
+      "kind": "p",
+      "chapter": "وهل-تفقدت-الخير-في-قلبك",
+      "prev": "6a40a265bb990a8f2e03022ab7dc3d494d171d02f5ac2a84a7b2f83a6a9e60ed",
       "next": "6751b65ce993c417a71b7c0c45ade6fe1e2ca493c643b6a4c0586790318cf583"
     },
     {
-      "ord": 12,
+      "ord": 41,
       "blockId": "3385199f3d92ca65df5c332be5221066",
       "fp64": "f6df73ad3ffff627",
       "normHash": "6751b65ce993c417a71b7c0c45ade6fe1e2ca493c643b6a4c0586790318cf583",
       "kind": "h2",
       "chapter": "وهل-قلبك-قلب-شاكر",
-      "prev": "fe23a3c4a64cbe187662dbb0558371f5196d4a5a064691b186d264adfeab25d0",
-      "next": "9c8a5afc6a88f6cf786918f97a3da9220f95c5b763330001febf480c8862e84a"
+      "prev": "46cd525006e1ffa49106f1efb711bd467543695c50340ffdf292ebf32860e37a",
+      "next": "8e21002f2b3cdd9312388e5d010aaa0bed950bc8ffe45a3f2a49dec87c08e25c"
     },
     {
-      "ord": 13,
-      "blockId": "900eaf80f2243bfa96fdb0b4495233e1",
-      "fp64": "7f50e05103675e10",
-      "normHash": "9c8a5afc6a88f6cf786918f97a3da9220f95c5b763330001febf480c8862e84a",
+      "ord": 42,
+      "blockId": "d49d6df91ee46996e26e21b363fa4a5d",
+      "fp64": "4fe0347ae74ffe18",
+      "normHash": "8e21002f2b3cdd9312388e5d010aaa0bed950bc8ffe45a3f2a49dec87c08e25c",
       "kind": "p",
       "chapter": "وهل-قلبك-قلب-شاكر",
       "prev": "6751b65ce993c417a71b7c0c45ade6fe1e2ca493c643b6a4c0586790318cf583",
+      "next": "2ec910fd88f2c062784f3221be85d3b9206bdeca3652bb139065da5b5c246c94"
+    },
+    {
+      "ord": 43,
+      "blockId": "900eaf80f2243bfa96fdb0b4495233e1",
+      "fp64": "7f15e0510be65e34",
+      "normHash": "2ec910fd88f2c062784f3221be85d3b9206bdeca3652bb139065da5b5c246c94",
+      "kind": "p",
+      "chapter": "وهل-قلبك-قلب-شاكر",
+      "prev": "8e21002f2b3cdd9312388e5d010aaa0bed950bc8ffe45a3f2a49dec87c08e25c",
       "next": "a797c4847b5334f31290ed8a1d431fa011a22a85537df868315fa06e1d507242"
     },
     {
-      "ord": 14,
+      "ord": 44,
       "blockId": "00baf29487d9ac333b235b90cb65c02e",
       "fp64": "ccca8d7b8761bd6c",
       "normHash": "a797c4847b5334f31290ed8a1d431fa011a22a85537df868315fa06e1d507242",
       "kind": "h2",
       "chapter": "وأين-أنت-من-خشوع-القلب",
-      "prev": "9c8a5afc6a88f6cf786918f97a3da9220f95c5b763330001febf480c8862e84a",
-      "next": "3b2482cbe6327e13a167607efb1a33188f8c7edf7c7cc989a1567fc0f3eb2780"
+      "prev": "2ec910fd88f2c062784f3221be85d3b9206bdeca3652bb139065da5b5c246c94",
+      "next": "fc0c2985343678886eb90d48ff10abf1536eb70ef844259862ef46871cc86840"
     },
     {
-      "ord": 15,
-      "blockId": "b2984b81c163214c0be60319fc63e7e3",
-      "fp64": "68c6e250f565555c",
-      "normHash": "3b2482cbe6327e13a167607efb1a33188f8c7edf7c7cc989a1567fc0f3eb2780",
+      "ord": 45,
+      "blockId": "6fc23916dd263577a8a0e443abde7413",
+      "fp64": "a0c36e61bf6f158c",
+      "normHash": "fc0c2985343678886eb90d48ff10abf1536eb70ef844259862ef46871cc86840",
       "kind": "p",
       "chapter": "وأين-أنت-من-خشوع-القلب",
       "prev": "a797c4847b5334f31290ed8a1d431fa011a22a85537df868315fa06e1d507242",
+      "next": "f616d4ff87b44e0457623a2d2a9d9c45eee234809bfb704b4788eb61dfb3093d"
+    },
+    {
+      "ord": 46,
+      "blockId": "dfe6576275eb7cf24e319c3c7519498e",
+      "fp64": "6e62e055d721614c",
+      "normHash": "f616d4ff87b44e0457623a2d2a9d9c45eee234809bfb704b4788eb61dfb3093d",
+      "kind": "p",
+      "chapter": "وأين-أنت-من-خشوع-القلب",
+      "prev": "fc0c2985343678886eb90d48ff10abf1536eb70ef844259862ef46871cc86840",
+      "next": "b95fe9cf22251b14a734a25ae45956bd115bf2343aac8070477c20e3c0ebeb17"
+    },
+    {
+      "ord": 47,
+      "blockId": "265c1c23a4b24872849edbd9442a3cb1",
+      "fp64": "6896e71cc565553d",
+      "normHash": "b95fe9cf22251b14a734a25ae45956bd115bf2343aac8070477c20e3c0ebeb17",
+      "kind": "p",
+      "chapter": "وأين-أنت-من-خشوع-القلب",
+      "prev": "f616d4ff87b44e0457623a2d2a9d9c45eee234809bfb704b4788eb61dfb3093d",
       "next": "bcce0d58b808c98b64ffb5d83f077e5d0096566df1640fb88d2d13e8bd2c6d9b"
     },
     {
-      "ord": 16,
+      "ord": 48,
       "blockId": "91637e0af3043dce0b15396d9fbf5c67",
       "fp64": "65fdf2df7232622e",
       "normHash": "bcce0d58b808c98b64ffb5d83f077e5d0096566df1640fb88d2d13e8bd2c6d9b",
       "kind": "page",
       "chapter": "وأين-أنت-من-خشوع-القلب",
-      "prev": "3b2482cbe6327e13a167607efb1a33188f8c7edf7c7cc989a1567fc0f3eb2780",
+      "prev": "b95fe9cf22251b14a734a25ae45956bd115bf2343aac8070477c20e3c0ebeb17",
       "next": "3e251ce113d4f60c58113c37b297112b6157cb44a8328c1fa836edce963adf25"
     },
     {
-      "ord": 17,
+      "ord": 49,
       "blockId": "eeb9df777db05cd16838b8972bf8d28a",
       "fp64": "72cf6e6e3f79a69d",
       "normHash": "3e251ce113d4f60c58113c37b297112b6157cb44a8328c1fa836edce963adf25",
@@ -183,173 +503,543 @@
       "next": "cc8ef1265003234c85650e230083da3b58e40f7906b8708005a6345c6aed43b8"
     },
     {
-      "ord": 18,
+      "ord": 50,
       "blockId": "86215a53e45d6ea9c148156aa7122dbe",
       "fp64": "2ec39c7979712e14",
       "normHash": "cc8ef1265003234c85650e230083da3b58e40f7906b8708005a6345c6aed43b8",
       "kind": "h2",
       "chapter": "وأيضا-أين-أنت-من-لين-القلب-ورقته",
       "prev": "3e251ce113d4f60c58113c37b297112b6157cb44a8328c1fa836edce963adf25",
-      "next": "e926f8a3fe94ac10ab4974f915c1234d3009136686150a9fb02857811fea5d9f"
+      "next": "179d26664d54a0598c147f146c859435e9c810ac9cee8fe23ac42534ab8cf36d"
     },
     {
-      "ord": 19,
-      "blockId": "b9b316520d35690414a2ef0bc23d53c0",
-      "fp64": "7c55e0341f72445c",
-      "normHash": "e926f8a3fe94ac10ab4974f915c1234d3009136686150a9fb02857811fea5d9f",
+      "ord": 51,
+      "blockId": "a84fe8fed49d92e40649b3b5f99d2629",
+      "fp64": "ce89a2603062ac64",
+      "normHash": "179d26664d54a0598c147f146c859435e9c810ac9cee8fe23ac42534ab8cf36d",
       "kind": "p",
       "chapter": "وأيضا-أين-أنت-من-لين-القلب-ورقته",
       "prev": "cc8ef1265003234c85650e230083da3b58e40f7906b8708005a6345c6aed43b8",
+      "next": "169deaff4b412d468acb84697fadeb163ba84bb6fbecb48d3bdab895cbec02d2"
+    },
+    {
+      "ord": 52,
+      "blockId": "e736f4725f5d27ae1a0b2090b8ddd907",
+      "fp64": "8e11c03e9f30755e",
+      "normHash": "169deaff4b412d468acb84697fadeb163ba84bb6fbecb48d3bdab895cbec02d2",
+      "kind": "p",
+      "chapter": "وأيضا-أين-أنت-من-لين-القلب-ورقته",
+      "prev": "179d26664d54a0598c147f146c859435e9c810ac9cee8fe23ac42534ab8cf36d",
+      "next": "d9f6ad24c37e746f63359a5d4eb91210eb8b3e18b13a60422b1c9a4f1fec17db"
+    },
+    {
+      "ord": 53,
+      "blockId": "910a7a33275321fa48399a6abfba321d",
+      "fp64": "bd576f6c3fabe73e",
+      "normHash": "d9f6ad24c37e746f63359a5d4eb91210eb8b3e18b13a60422b1c9a4f1fec17db",
+      "kind": "p",
+      "chapter": "وأيضا-أين-أنت-من-لين-القلب-ورقته",
+      "prev": "169deaff4b412d468acb84697fadeb163ba84bb6fbecb48d3bdab895cbec02d2",
+      "next": "911b8a2fe3915d6d27e4844c0fc646eeab14bd7d78b3cf4315c7404f64b18836"
+    },
+    {
+      "ord": 54,
+      "blockId": "6e23cae246ac4011fecdb9a9210e2092",
+      "fp64": "3f1d2252577707de",
+      "normHash": "911b8a2fe3915d6d27e4844c0fc646eeab14bd7d78b3cf4315c7404f64b18836",
+      "kind": "p",
+      "chapter": "وأيضا-أين-أنت-من-لين-القلب-ورقته",
+      "prev": "d9f6ad24c37e746f63359a5d4eb91210eb8b3e18b13a60422b1c9a4f1fec17db",
+      "next": "37af0083d9ac78d742e7cfed168eaf8bcc8e238a85a3adec3dcd84b345fbeec0"
+    },
+    {
+      "ord": 55,
+      "blockId": "3c4652ffb34156652a7b21da87da3250",
+      "fp64": "7c47f125ef5246d8",
+      "normHash": "37af0083d9ac78d742e7cfed168eaf8bcc8e238a85a3adec3dcd84b345fbeec0",
+      "kind": "p",
+      "chapter": "وأيضا-أين-أنت-من-لين-القلب-ورقته",
+      "prev": "911b8a2fe3915d6d27e4844c0fc646eeab14bd7d78b3cf4315c7404f64b18836",
       "next": "4079a38257864cd750e83361ac45f5f466b03d8a11ef8db5cb461dc07f57845c"
     },
     {
-      "ord": 20,
+      "ord": 56,
       "blockId": "a69cff236e719c0876d5b090dfc1d4e8",
       "fp64": "fecfeebf9ffd7ded",
       "normHash": "4079a38257864cd750e83361ac45f5f466b03d8a11ef8db5cb461dc07f57845c",
       "kind": "h2",
       "chapter": "وأين-قلبك-من-الوجل-والخوف-من-الله-تعالى",
-      "prev": "e926f8a3fe94ac10ab4974f915c1234d3009136686150a9fb02857811fea5d9f",
-      "next": "093af5bd94a9a2d0802ac71ef85a9539757aea28a40785272579f31efdf4b494"
+      "prev": "37af0083d9ac78d742e7cfed168eaf8bcc8e238a85a3adec3dcd84b345fbeec0",
+      "next": "39cc7bd36e485454499cc48534d0eeff197ea4f70061805b79403e73bda5ebfb"
     },
     {
-      "ord": 21,
-      "blockId": "14c9b00320acb8cb1714d3c64c739c07",
-      "fp64": "b657ec589dfb6d7c",
-      "normHash": "093af5bd94a9a2d0802ac71ef85a9539757aea28a40785272579f31efdf4b494",
+      "ord": 57,
+      "blockId": "221f6bc932115355d5c1de428ae66d18",
+      "fp64": "3056ea33bdea3fc4",
+      "normHash": "39cc7bd36e485454499cc48534d0eeff197ea4f70061805b79403e73bda5ebfb",
       "kind": "p",
       "chapter": "وأين-قلبك-من-الوجل-والخوف-من-الله-تعالى",
       "prev": "4079a38257864cd750e83361ac45f5f466b03d8a11ef8db5cb461dc07f57845c",
+      "next": "15c703a1d6ef39bcdf20888f59acabeb5e40b523223ab07f8c0defab8812d4e5"
+    },
+    {
+      "ord": 58,
+      "blockId": "14c9b00320acb8cb1714d3c64c739c07",
+      "fp64": "a655e4588fdb697e",
+      "normHash": "15c703a1d6ef39bcdf20888f59acabeb5e40b523223ab07f8c0defab8812d4e5",
+      "kind": "p",
+      "chapter": "وأين-قلبك-من-الوجل-والخوف-من-الله-تعالى",
+      "prev": "39cc7bd36e485454499cc48534d0eeff197ea4f70061805b79403e73bda5ebfb",
       "next": "3d1c1df63420af9023e9e4eed67cc4f8d07966fc01f069175a8d2c5f79b634b5"
     },
     {
-      "ord": 22,
+      "ord": 59,
       "blockId": "0b39d95e8981f68f10b3dbcdbf33adb6",
       "fp64": "21fd74de7332403b",
       "normHash": "3d1c1df63420af9023e9e4eed67cc4f8d07966fc01f069175a8d2c5f79b634b5",
       "kind": "page",
       "chapter": "وأين-قلبك-من-الوجل-والخوف-من-الله-تعالى",
-      "prev": "093af5bd94a9a2d0802ac71ef85a9539757aea28a40785272579f31efdf4b494",
-      "next": "c40591ad7b38fc7bf25053e8c8084f1a919300dfed8192651095832ce30aedf8"
+      "prev": "15c703a1d6ef39bcdf20888f59acabeb5e40b523223ab07f8c0defab8812d4e5",
+      "next": "463cac8b5132ea9004492371fac01e16c73b2ca712e25223d69dde527f4c8691"
     },
     {
-      "ord": 23,
-      "blockId": "a9d7ffd2631495cf41c821ee537a6b01",
-      "fp64": "3c14e03e17bbc4fc",
-      "normHash": "c40591ad7b38fc7bf25053e8c8084f1a919300dfed8192651095832ce30aedf8",
+      "ord": 60,
+      "blockId": "61daec25734d5bb9faaf1f11c4956045",
+      "fp64": "9d10e81c9eb46ced",
+      "normHash": "463cac8b5132ea9004492371fac01e16c73b2ca712e25223d69dde527f4c8691",
       "kind": "p",
       "chapter": "وأين-قلبك-من-الوجل-والخوف-من-الله-تعالى",
       "prev": "3d1c1df63420af9023e9e4eed67cc4f8d07966fc01f069175a8d2c5f79b634b5",
+      "next": "d5064689c067aed1ac439db06a060877038d92696b1d47b2a406162fcca32cb0"
+    },
+    {
+      "ord": 61,
+      "blockId": "466fe02a14bc6b978e4af486f0290493",
+      "fp64": "bd185e3c3f5bd3be",
+      "normHash": "d5064689c067aed1ac439db06a060877038d92696b1d47b2a406162fcca32cb0",
+      "kind": "p",
+      "chapter": "وأين-قلبك-من-الوجل-والخوف-من-الله-تعالى",
+      "prev": "463cac8b5132ea9004492371fac01e16c73b2ca712e25223d69dde527f4c8691",
+      "next": "497f0f92b5f2d4785d5c0fa9860b941f23c0b3d4eefd1a63673fe727cfcdbfbf"
+    },
+    {
+      "ord": 62,
+      "blockId": "48d7879653efbd3c0ebc9cd4356bd4c6",
+      "fp64": "385c8212779b62d8",
+      "normHash": "497f0f92b5f2d4785d5c0fa9860b941f23c0b3d4eefd1a63673fe727cfcdbfbf",
+      "kind": "p",
+      "chapter": "وأين-قلبك-من-الوجل-والخوف-من-الله-تعالى",
+      "prev": "d5064689c067aed1ac439db06a060877038d92696b1d47b2a406162fcca32cb0",
+      "next": "c4ba109186b5fa2e1eb4bccce53de64f82b12932f2b5506586bed349055e780b"
+    },
+    {
+      "ord": 63,
+      "blockId": "39a30dd275ad128ce9c2b96605777e44",
+      "fp64": "3836b226bfabe17a",
+      "normHash": "c4ba109186b5fa2e1eb4bccce53de64f82b12932f2b5506586bed349055e780b",
+      "kind": "p",
+      "chapter": "وأين-قلبك-من-الوجل-والخوف-من-الله-تعالى",
+      "prev": "497f0f92b5f2d4785d5c0fa9860b941f23c0b3d4eefd1a63673fe727cfcdbfbf",
+      "next": "ac855d3156e17f10e7cabb90f434d9a3f207311db08326bfea61af6cacaaa81a"
+    },
+    {
+      "ord": 64,
+      "blockId": "1d867ab25537836fc37c1c0062e8b7ac",
+      "fp64": "9e61f41c5395457c",
+      "normHash": "ac855d3156e17f10e7cabb90f434d9a3f207311db08326bfea61af6cacaaa81a",
+      "kind": "p",
+      "chapter": "وأين-قلبك-من-الوجل-والخوف-من-الله-تعالى",
+      "prev": "c4ba109186b5fa2e1eb4bccce53de64f82b12932f2b5506586bed349055e780b",
+      "next": "572fd135a01bd277f9253bb4bee54496a952a59007d86cc3dfd297a0ec4fc763"
+    },
+    {
+      "ord": 65,
+      "blockId": "197ea83baa453c10255b707aae4e62ed",
+      "fp64": "bcd4f45edbbbeffe",
+      "normHash": "572fd135a01bd277f9253bb4bee54496a952a59007d86cc3dfd297a0ec4fc763",
+      "kind": "p",
+      "chapter": "وأين-قلبك-من-الوجل-والخوف-من-الله-تعالى",
+      "prev": "ac855d3156e17f10e7cabb90f434d9a3f207311db08326bfea61af6cacaaa81a",
+      "next": "1de0443be6842789ea21039fe4d40e1d268526d4a9ae1cee88fc3f88944ce45b"
+    },
+    {
+      "ord": 66,
+      "blockId": "bb056400ac0cf7333ba5e2516f4960c5",
+      "fp64": "8f846de03a5b966c",
+      "normHash": "1de0443be6842789ea21039fe4d40e1d268526d4a9ae1cee88fc3f88944ce45b",
+      "kind": "p",
+      "chapter": "وأين-قلبك-من-الوجل-والخوف-من-الله-تعالى",
+      "prev": "572fd135a01bd277f9253bb4bee54496a952a59007d86cc3dfd297a0ec4fc763",
+      "next": "b92c575abd28c000e280f752216123c44e175a93b8e8abe4ad9d33b7597edc65"
+    },
+    {
+      "ord": 67,
+      "blockId": "09975463f679bf6784cce7b3c06c1983",
+      "fp64": "3a54e0971672d47c",
+      "normHash": "b92c575abd28c000e280f752216123c44e175a93b8e8abe4ad9d33b7597edc65",
+      "kind": "p",
+      "chapter": "وأين-قلبك-من-الوجل-والخوف-من-الله-تعالى",
+      "prev": "1de0443be6842789ea21039fe4d40e1d268526d4a9ae1cee88fc3f88944ce45b",
       "next": "8049bbc6234344a2f41e8851e10cfb75b0ab38518230dd3d978519544daf3183"
     },
     {
-      "ord": 24,
+      "ord": 68,
       "blockId": "3c5a94f8b9b23e9251534b6311547564",
       "fp64": "a1dc72be53b0446a",
       "normHash": "8049bbc6234344a2f41e8851e10cfb75b0ab38518230dd3d978519544daf3183",
       "kind": "page",
       "chapter": "وأين-قلبك-من-الوجل-والخوف-من-الله-تعالى",
-      "prev": "c40591ad7b38fc7bf25053e8c8084f1a919300dfed8192651095832ce30aedf8",
-      "next": "236ea4c3c10c0ca50f7b146f5147d4ef93ae92388e174a4d71e6a9a5f8cf1a56"
+      "prev": "b92c575abd28c000e280f752216123c44e175a93b8e8abe4ad9d33b7597edc65",
+      "next": "541e6e98e29907076d1afb9b142a843f6fbf24ec33dafec166bee7795c1721f7"
     },
     {
-      "ord": 25,
-      "blockId": "6846c05fc2dac1b6dcf0254a21365438",
-      "fp64": "9a55e6683337886d",
-      "normHash": "236ea4c3c10c0ca50f7b146f5147d4ef93ae92388e174a4d71e6a9a5f8cf1a56",
+      "ord": 69,
+      "blockId": "834ffc6c9cc81d9c6354ccf588bf3600",
+      "fp64": "8117af6aa17fb9cf",
+      "normHash": "541e6e98e29907076d1afb9b142a843f6fbf24ec33dafec166bee7795c1721f7",
       "kind": "p",
       "chapter": "وأين-قلبك-من-الوجل-والخوف-من-الله-تعالى",
       "prev": "8049bbc6234344a2f41e8851e10cfb75b0ab38518230dd3d978519544daf3183",
+      "next": "883263540a67a1f495118ac4678e95e822d88ba91a36a1939c1aad3f073b45b4"
+    },
+    {
+      "ord": 70,
+      "blockId": "bea44a558d0fb29f66cac3cf1bf7fead",
+      "fp64": "fef5e218372b7c6c",
+      "normHash": "883263540a67a1f495118ac4678e95e822d88ba91a36a1939c1aad3f073b45b4",
+      "kind": "p",
+      "chapter": "وأين-قلبك-من-الوجل-والخوف-من-الله-تعالى",
+      "prev": "541e6e98e29907076d1afb9b142a843f6fbf24ec33dafec166bee7795c1721f7",
+      "next": "bd8ef3eb62ae287210bc0924bc7d0a3497dd101a10588cf35d4a3ba11f1d8c90"
+    },
+    {
+      "ord": 71,
+      "blockId": "8f08833315f02487bf65c7b9386ba111",
+      "fp64": "fed4e77e5f9700fd",
+      "normHash": "bd8ef3eb62ae287210bc0924bc7d0a3497dd101a10588cf35d4a3ba11f1d8c90",
+      "kind": "p",
+      "chapter": "وأين-قلبك-من-الوجل-والخوف-من-الله-تعالى",
+      "prev": "883263540a67a1f495118ac4678e95e822d88ba91a36a1939c1aad3f073b45b4",
       "next": "cf06b597d51af9d3abdae31a3ade1d5e06b7390f97e8587b8b605321ee86c028"
     },
     {
-      "ord": 26,
+      "ord": 72,
       "blockId": "e23bd99990ae9c65b6f80b02646473e2",
       "fp64": "66cf7d3ffff58db7",
       "normHash": "cf06b597d51af9d3abdae31a3ade1d5e06b7390f97e8587b8b605321ee86c028",
       "kind": "h2",
       "chapter": "وهل-أنت-سليم-القلب",
-      "prev": "236ea4c3c10c0ca50f7b146f5147d4ef93ae92388e174a4d71e6a9a5f8cf1a56",
-      "next": "b1110182d93e1519850b351561e1bb8b9f26b1322722e368e97d939475f75746"
+      "prev": "bd8ef3eb62ae287210bc0924bc7d0a3497dd101a10588cf35d4a3ba11f1d8c90",
+      "next": "3a7e1a625dfddb23665eaa45781624dbe6f99fbfe51256e445542c2395b1c27b"
     },
     {
-      "ord": 27,
-      "blockId": "49e6ea69cb643b7a1cf58f04ab70ab46",
-      "fp64": "3c96e17697bb358c",
-      "normHash": "b1110182d93e1519850b351561e1bb8b9f26b1322722e368e97d939475f75746",
+      "ord": 73,
+      "blockId": "94005430a6371961b5faccc539e1aa01",
+      "fp64": "7fa7f175a73f1ce6",
+      "normHash": "3a7e1a625dfddb23665eaa45781624dbe6f99fbfe51256e445542c2395b1c27b",
       "kind": "p",
       "chapter": "وهل-أنت-سليم-القلب",
       "prev": "cf06b597d51af9d3abdae31a3ade1d5e06b7390f97e8587b8b605321ee86c028",
+      "next": "727e4da59ea80b89dcb755b07ecce04b5d9a05bab06ecb4792af92ab40f0639d"
+    },
+    {
+      "ord": 74,
+      "blockId": "0243491626be76b9d55c4a4762cdccef",
+      "fp64": "9ccb451eddf13ec5",
+      "normHash": "727e4da59ea80b89dcb755b07ecce04b5d9a05bab06ecb4792af92ab40f0639d",
+      "kind": "p",
+      "chapter": "وهل-أنت-سليم-القلب",
+      "prev": "3a7e1a625dfddb23665eaa45781624dbe6f99fbfe51256e445542c2395b1c27b",
+      "next": "9c9c0139a56078051df0db1126fbffa59d4d447a16825a5bec0c75c5549b100e"
+    },
+    {
+      "ord": 75,
+      "blockId": "7fee7bb8f28bb4f322891cff471284fa",
+      "fp64": "8852823eb7f605bf",
+      "normHash": "9c9c0139a56078051df0db1126fbffa59d4d447a16825a5bec0c75c5549b100e",
+      "kind": "p",
+      "chapter": "وهل-أنت-سليم-القلب",
+      "prev": "727e4da59ea80b89dcb755b07ecce04b5d9a05bab06ecb4792af92ab40f0639d",
+      "next": "6c160256f4f97e60f35ebf4637486b6dc055f66e37317acca41b92f41c1f62d0"
+    },
+    {
+      "ord": 76,
+      "blockId": "944642978b79944703d85740da09c96b",
+      "fp64": "bc96237417e210dc",
+      "normHash": "6c160256f4f97e60f35ebf4637486b6dc055f66e37317acca41b92f41c1f62d0",
+      "kind": "p",
+      "chapter": "وهل-أنت-سليم-القلب",
+      "prev": "9c9c0139a56078051df0db1126fbffa59d4d447a16825a5bec0c75c5549b100e",
+      "next": "d92f815dead231e56ae735deab41d9f2f8fee212735718df337528439d311c7a"
+    },
+    {
+      "ord": 77,
+      "blockId": "46c1db9902e0bb7210dfe17dca881775",
+      "fp64": "febff6d6d7b9b7be",
+      "normHash": "d92f815dead231e56ae735deab41d9f2f8fee212735718df337528439d311c7a",
+      "kind": "p",
+      "chapter": "وهل-أنت-سليم-القلب",
+      "prev": "6c160256f4f97e60f35ebf4637486b6dc055f66e37317acca41b92f41c1f62d0",
+      "next": "08269824345479d6ad16a869eb41e7220f8a5a6b1001203cd2335ae06268e084"
+    },
+    {
+      "ord": 78,
+      "blockId": "c66640e92e419eb7da758d74c9aa928b",
+      "fp64": "b4f7e79cffbb7cff",
+      "normHash": "08269824345479d6ad16a869eb41e7220f8a5a6b1001203cd2335ae06268e084",
+      "kind": "p",
+      "chapter": "وهل-أنت-سليم-القلب",
+      "prev": "d92f815dead231e56ae735deab41d9f2f8fee212735718df337528439d311c7a",
+      "next": "92bdaa7d60bb18e06a06fac601c7f5dc26f11f1561e2547e71479eb919f5629b"
+    },
+    {
+      "ord": 79,
+      "blockId": "83a20c94489247211e049fce868252a9",
+      "fp64": "1aebdc03747b778b",
+      "normHash": "92bdaa7d60bb18e06a06fac601c7f5dc26f11f1561e2547e71479eb919f5629b",
+      "kind": "p",
+      "chapter": "وهل-أنت-سليم-القلب",
+      "prev": "08269824345479d6ad16a869eb41e7220f8a5a6b1001203cd2335ae06268e084",
       "next": "b5a33f999d9b79ce977301844f0b2b5e9c1a57101869f8b92950f72a5f33b34a"
     },
     {
-      "ord": 28,
+      "ord": 80,
       "blockId": "f5a163b6220e444add59af1f018ff5a3",
       "fp64": "e1dff3be7233c06f",
       "normHash": "b5a33f999d9b79ce977301844f0b2b5e9c1a57101869f8b92950f72a5f33b34a",
       "kind": "page",
       "chapter": "وهل-أنت-سليم-القلب",
-      "prev": "b1110182d93e1519850b351561e1bb8b9f26b1322722e368e97d939475f75746",
-      "next": "f01b7d877d75adba4f4f0c21d20a711031d71c3e92accb33d26f4104cec5e1e2"
+      "prev": "92bdaa7d60bb18e06a06fac601c7f5dc26f11f1561e2547e71479eb919f5629b",
+      "next": "5c3c97e14d93eb978943195e6fdab22ac9d4742360f8d05fb54aafe16fbbafaf"
     },
     {
-      "ord": 29,
-      "blockId": "1fbd56e091ec29c1fec1608924dde14f",
-      "fp64": "7767601af3712f4d",
-      "normHash": "f01b7d877d75adba4f4f0c21d20a711031d71c3e92accb33d26f4104cec5e1e2",
+      "ord": 81,
+      "blockId": "936657896bcd323d83dd9fef7b810ecf",
+      "fp64": "b763f311bffeeb6f",
+      "normHash": "5c3c97e14d93eb978943195e6fdab22ac9d4742360f8d05fb54aafe16fbbafaf",
       "kind": "p",
       "chapter": "وهل-أنت-سليم-القلب",
       "prev": "b5a33f999d9b79ce977301844f0b2b5e9c1a57101869f8b92950f72a5f33b34a",
+      "next": "cf22a241b7bdc2338acd42e01e6f79e4d0170d06d61efc8dd7869441d858d67e"
+    },
+    {
+      "ord": 82,
+      "blockId": "52cbcfb07b900ebe52f1e76fa70fc516",
+      "fp64": "6fcfac72f92f2e3c",
+      "normHash": "cf22a241b7bdc2338acd42e01e6f79e4d0170d06d61efc8dd7869441d858d67e",
+      "kind": "p",
+      "chapter": "وهل-أنت-سليم-القلب",
+      "prev": "5c3c97e14d93eb978943195e6fdab22ac9d4742360f8d05fb54aafe16fbbafaf",
+      "next": "44e83c06fc472c84f00190f062ac47175711dd3a81520ecb7fb11d2aba513313"
+    },
+    {
+      "ord": 83,
+      "blockId": "6cedf19df7dd41253441395620677085",
+      "fp64": "feca487bfb772f4d",
+      "normHash": "44e83c06fc472c84f00190f062ac47175711dd3a81520ecb7fb11d2aba513313",
+      "kind": "p",
+      "chapter": "وهل-أنت-سليم-القلب",
+      "prev": "cf22a241b7bdc2338acd42e01e6f79e4d0170d06d61efc8dd7869441d858d67e",
+      "next": "8a1c0bce8b02c18fd4046bcd16c22ae15a1063fbb760761f00837b4cd819e5d6"
+    },
+    {
+      "ord": 84,
+      "blockId": "da8ad60b979b8ba72e844f55c4a5c906",
+      "fp64": "7fe27e8ff1d3ccdd",
+      "normHash": "8a1c0bce8b02c18fd4046bcd16c22ae15a1063fbb760761f00837b4cd819e5d6",
+      "kind": "p",
+      "chapter": "وهل-أنت-سليم-القلب",
+      "prev": "44e83c06fc472c84f00190f062ac47175711dd3a81520ecb7fb11d2aba513313",
+      "next": "ccab4955824f861ffcb22fc8f5a5d4155ffa4101350ce7d07aac7fd4bff6efe6"
+    },
+    {
+      "ord": 85,
+      "blockId": "56c1bb31d28bd09180e18345d5f52ab7",
+      "fp64": "35cfa25e9f5c2014",
+      "normHash": "ccab4955824f861ffcb22fc8f5a5d4155ffa4101350ce7d07aac7fd4bff6efe6",
+      "kind": "p",
+      "chapter": "وهل-أنت-سليم-القلب",
+      "prev": "8a1c0bce8b02c18fd4046bcd16c22ae15a1063fbb760761f00837b4cd819e5d6",
+      "next": "e921e91ab767414103cd74f435995e6502108eaf298b86ec071ecffaa9365d76"
+    },
+    {
+      "ord": 86,
+      "blockId": "89ee6ef7542865ffff309b776327fac5",
+      "fp64": "73be2258f1710f0b",
+      "normHash": "e921e91ab767414103cd74f435995e6502108eaf298b86ec071ecffaa9365d76",
+      "kind": "p",
+      "chapter": "وهل-أنت-سليم-القلب",
+      "prev": "ccab4955824f861ffcb22fc8f5a5d4155ffa4101350ce7d07aac7fd4bff6efe6",
+      "next": "8721e5230b042279ce51cda19a62073e5e2b5b4975934867ca649ba5db6e2866"
+    },
+    {
+      "ord": 87,
+      "blockId": "d301e9db07595d3e203b8ad389bc180d",
+      "fp64": "716dfd31ca41bc9e",
+      "normHash": "8721e5230b042279ce51cda19a62073e5e2b5b4975934867ca649ba5db6e2866",
+      "kind": "p",
+      "chapter": "وهل-أنت-سليم-القلب",
+      "prev": "e921e91ab767414103cd74f435995e6502108eaf298b86ec071ecffaa9365d76",
+      "next": "8ebe1afb3ff03638f241637312b05482a6a807c2606b479ddc6ac317861d313d"
+    },
+    {
+      "ord": 88,
+      "blockId": "ef5259a7a0ac95289047d23e65346d92",
+      "fp64": "fffb2138fa2def6f",
+      "normHash": "8ebe1afb3ff03638f241637312b05482a6a807c2606b479ddc6ac317861d313d",
+      "kind": "p",
+      "chapter": "وهل-أنت-سليم-القلب",
+      "prev": "8721e5230b042279ce51cda19a62073e5e2b5b4975934867ca649ba5db6e2866",
+      "next": "7690cfa65e4a0dca303ee831b9d609987ca5cd0cc7fe2741cb9bf7169088f979"
+    },
+    {
+      "ord": 89,
+      "blockId": "b359935fe87be7de1495ed90eae6fd41",
+      "fp64": "7915a07e3f6ba87a",
+      "normHash": "7690cfa65e4a0dca303ee831b9d609987ca5cd0cc7fe2741cb9bf7169088f979",
+      "kind": "p",
+      "chapter": "وهل-أنت-سليم-القلب",
+      "prev": "8ebe1afb3ff03638f241637312b05482a6a807c2606b479ddc6ac317861d313d",
+      "next": "f5213e88de3a82e9cb97bbf14d26631c322b60dec31edead0367d85340e319dc"
+    },
+    {
+      "ord": 90,
+      "blockId": "e17ea75cc507edf1965c9ca95c8e7b99",
+      "fp64": "373662134674637d",
+      "normHash": "f5213e88de3a82e9cb97bbf14d26631c322b60dec31edead0367d85340e319dc",
+      "kind": "p",
+      "chapter": "وهل-أنت-سليم-القلب",
+      "prev": "7690cfa65e4a0dca303ee831b9d609987ca5cd0cc7fe2741cb9bf7169088f979",
       "next": "cbf77e48990d7c60a95c02f1cc15f659a5150119bdba10bb2b83fa6a6f1843df"
     },
     {
-      "ord": 30,
+      "ord": 91,
       "blockId": "7269e83f72516b3611282ddcacc7bcac",
       "fp64": "25ff75df73b0406b",
       "normHash": "cbf77e48990d7c60a95c02f1cc15f659a5150119bdba10bb2b83fa6a6f1843df",
       "kind": "page",
       "chapter": "وهل-أنت-سليم-القلب",
-      "prev": "f01b7d877d75adba4f4f0c21d20a711031d71c3e92accb33d26f4104cec5e1e2",
-      "next": "a2613c8947892d3ea0d3048a42529e61fab4c497bbe33b58d3cb43478c239ced"
+      "prev": "f5213e88de3a82e9cb97bbf14d26631c322b60dec31edead0367d85340e319dc",
+      "next": "40b6e204b4e718c919212b3d8716bcdb23474a32bfd841a5c5be51640a35bf59"
     },
     {
-      "ord": 31,
-      "blockId": "cd2902bc6fb573ecc609f4945e42479e",
-      "fp64": "cc24e05f47236743",
-      "normHash": "a2613c8947892d3ea0d3048a42529e61fab4c497bbe33b58d3cb43478c239ced",
+      "ord": 92,
+      "blockId": "505f5844ebd9a84b293b12a95f757927",
+      "fp64": "5a64e25a5fb1734b",
+      "normHash": "40b6e204b4e718c919212b3d8716bcdb23474a32bfd841a5c5be51640a35bf59",
       "kind": "p",
       "chapter": "وهل-أنت-سليم-القلب",
       "prev": "cbf77e48990d7c60a95c02f1cc15f659a5150119bdba10bb2b83fa6a6f1843df",
+      "next": "4bf2569841a3905e6b126d31865ad98c977597dc90f60ef76a1786596fcf3216"
+    },
+    {
+      "ord": 93,
+      "blockId": "963d75a5b532b6047185dba06c1e1578",
+      "fp64": "8d01285f272b6f46",
+      "normHash": "4bf2569841a3905e6b126d31865ad98c977597dc90f60ef76a1786596fcf3216",
+      "kind": "p",
+      "chapter": "وهل-أنت-سليم-القلب",
+      "prev": "40b6e204b4e718c919212b3d8716bcdb23474a32bfd841a5c5be51640a35bf59",
       "next": "f6d14d485aee87ce615cf3a135e68fbdc832b2e62dfcc1a38a0b0e6fb9968714"
     },
     {
-      "ord": 32,
+      "ord": 94,
       "blockId": "1a70eba3655e6f04e139b7853290142e",
       "fp64": "9bffffe17f3ebef4",
       "normHash": "f6d14d485aee87ce615cf3a135e68fbdc832b2e62dfcc1a38a0b0e6fb9968714",
       "kind": "h2",
       "chapter": "واحذر-المعاصي",
-      "prev": "a2613c8947892d3ea0d3048a42529e61fab4c497bbe33b58d3cb43478c239ced",
-      "next": "ec810e320497ecd5c9507e39956508f0770511024c00032d184c50010b50e2ab"
+      "prev": "4bf2569841a3905e6b126d31865ad98c977597dc90f60ef76a1786596fcf3216",
+      "next": "3b25ed767973e4e2dfaa7df4a0f285b522c0ab8d530429bb106d1efa552a9fef"
     },
     {
-      "ord": 33,
-      "blockId": "dedc5009e938e75f82a2b90cfc3a9587",
-      "fp64": "2337a15c35202f6d",
-      "normHash": "ec810e320497ecd5c9507e39956508f0770511024c00032d184c50010b50e2ab",
+      "ord": 95,
+      "blockId": "8f5988467a04ff9fd985a8e82969bb8c",
+      "fp64": "5343b5c87f39affd",
+      "normHash": "3b25ed767973e4e2dfaa7df4a0f285b522c0ab8d530429bb106d1efa552a9fef",
       "kind": "p",
       "chapter": "واحذر-المعاصي",
       "prev": "f6d14d485aee87ce615cf3a135e68fbdc832b2e62dfcc1a38a0b0e6fb9968714",
+      "next": "fda2dbadf3271432b398514156885427c261ea63633daf0c42ca425f36b189da"
+    },
+    {
+      "ord": 96,
+      "blockId": "1cd365ad798f5183588ff53e03dc6038",
+      "fp64": "767fe961bd7e2e6c",
+      "normHash": "fda2dbadf3271432b398514156885427c261ea63633daf0c42ca425f36b189da",
+      "kind": "p",
+      "chapter": "واحذر-المعاصي",
+      "prev": "3b25ed767973e4e2dfaa7df4a0f285b522c0ab8d530429bb106d1efa552a9fef",
+      "next": "acac39c043d35fe303205ac1ac2b728239b0fc1a14d984866c650e5b3cf3d6fb"
+    },
+    {
+      "ord": 97,
+      "blockId": "873f7b9c5c86d09b2bd6a766047aafbe",
+      "fp64": "6ba61d55e7437f37",
+      "normHash": "acac39c043d35fe303205ac1ac2b728239b0fc1a14d984866c650e5b3cf3d6fb",
+      "kind": "p",
+      "chapter": "واحذر-المعاصي",
+      "prev": "fda2dbadf3271432b398514156885427c261ea63633daf0c42ca425f36b189da",
+      "next": "912b07b9e961fcb2b566ffabf6811c8eee4514c52c27d141d9da22c6e038a742"
+    },
+    {
+      "ord": 98,
+      "blockId": "ecb1a220685d820b0c2c1b1cc10b3eb1",
+      "fp64": "b79a093e3658ea15",
+      "normHash": "912b07b9e961fcb2b566ffabf6811c8eee4514c52c27d141d9da22c6e038a742",
+      "kind": "p",
+      "chapter": "واحذر-المعاصي",
+      "prev": "acac39c043d35fe303205ac1ac2b728239b0fc1a14d984866c650e5b3cf3d6fb",
+      "next": "fed4d943b1829094f086e887e877b14abf64af4390925da4aa99af8e38ea6378"
+    },
+    {
+      "ord": 99,
+      "blockId": "0e79e7b3227fd70f75fd3f7015668a8c",
+      "fp64": "cf6e2699f7216c25",
+      "normHash": "fed4d943b1829094f086e887e877b14abf64af4390925da4aa99af8e38ea6378",
+      "kind": "p",
+      "chapter": "واحذر-المعاصي",
+      "prev": "912b07b9e961fcb2b566ffabf6811c8eee4514c52c27d141d9da22c6e038a742",
+      "next": "6e286f607bf25d9c0e59c125bf235ab73958707653c705f40f7642f4b4904075"
+    },
+    {
+      "ord": 100,
+      "blockId": "ad2b8736cd96dcc0cc65b3ad3d94b51c",
+      "fp64": "0a2da0dc11241b6b",
+      "normHash": "6e286f607bf25d9c0e59c125bf235ab73958707653c705f40f7642f4b4904075",
+      "kind": "p",
+      "chapter": "واحذر-المعاصي",
+      "prev": "fed4d943b1829094f086e887e877b14abf64af4390925da4aa99af8e38ea6378",
+      "next": "29600ef6121ad05dd7ff52d1d0644acdad700c7d3e2b23386b396369fb4ee0fd"
+    },
+    {
+      "ord": 101,
+      "blockId": "f2cc4bb26ef1cf9b8daf4e4d0a621b81",
+      "fp64": "6595b06d3d31a853",
+      "normHash": "29600ef6121ad05dd7ff52d1d0644acdad700c7d3e2b23386b396369fb4ee0fd",
+      "kind": "p",
+      "chapter": "واحذر-المعاصي",
+      "prev": "6e286f607bf25d9c0e59c125bf235ab73958707653c705f40f7642f4b4904075",
+      "next": "64b33e6a044c73fcf8d93cf1447a6fac132dbe221e6fadcbd459dfca65a3d1ac"
+    },
+    {
+      "ord": 102,
+      "blockId": "c38608de17a9c5fc02ce26e25efb0959",
+      "fp64": "bb07eb5e293ea94c",
+      "normHash": "64b33e6a044c73fcf8d93cf1447a6fac132dbe221e6fadcbd459dfca65a3d1ac",
+      "kind": "p",
+      "chapter": "واحذر-المعاصي",
+      "prev": "29600ef6121ad05dd7ff52d1d0644acdad700c7d3e2b23386b396369fb4ee0fd",
       "next": "862ebeb7055911103edb09ffdd1ec37c12ca0b0c341b971b26043331dff0ab2f"
     },
     {
-      "ord": 34,
+      "ord": 103,
       "blockId": "bc4d997eafc8f564f8dad14b6305e8fd",
       "fp64": "65dcf49e5bb3c23f",
       "normHash": "862ebeb7055911103edb09ffdd1ec37c12ca0b0c341b971b26043331dff0ab2f",
       "kind": "page",
       "chapter": "واحذر-المعاصي",
-      "prev": "ec810e320497ecd5c9507e39956508f0770511024c00032d184c50010b50e2ab"
+      "prev": "64b33e6a044c73fcf8d93cf1447a6fac132dbe221e6fadcbd459dfca65a3d1ac"
     }
   ]
 }
