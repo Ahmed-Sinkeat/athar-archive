@@ -1,5 +1,6 @@
 package com.atharchive.feature.issues
 
+import com.atharchive.feature.search.sectionTextHits
 import kotlinx.coroutines.launch
 import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.background
@@ -83,9 +84,11 @@ fun IssuesScreen(
     onDownloadClick: (IssueUi) -> Unit,
     modifier: Modifier = Modifier,
     onBack: (() -> Unit)? = null,
+    textSearch: com.atharchive.feature.search.SectionTextSearch? = null,
 ) {
     var selectedTab by rememberSaveable { mutableStateOf(SectionTab.All) }
     var query by rememberSaveable { mutableStateOf("") }
+    val textHits = com.atharchive.feature.search.rememberSectionTextHits(query, textSearch)
     var topicStored by rememberPersisted("issues.topics", "")
     var sortName by rememberPersisted("issues.order", IssueSort.Question.name)
     val sort = enumValueOrNull<IssueSort>(sortName) ?: IssueSort.Question
@@ -196,7 +199,7 @@ fun IssuesScreen(
 
                 if (!state.loaded) {
                     // first catalog read not back yet: show nothing rather than a false "no issues"
-                } else if (visible.isEmpty()) {
+                } else if (visible.isEmpty() && textHits.isEmpty()) {
                     item(key = "issues-empty") {
                         val (title, body) = when {
                             query.isNotBlank() ->
@@ -232,6 +235,7 @@ fun IssuesScreen(
                         }
                     }
                 }
+                sectionTextHits(textHits, query, textSearch, horizontalPadding)
             }
         }
     }

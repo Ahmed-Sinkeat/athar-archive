@@ -264,7 +264,7 @@ fun SearchScreen(
                 ResultsHeading("في النصوص", horizontalPadding)
             }
             itemsIndexed(hits, key = { _, hit -> hit.id }) { index, hit ->
-                HitRow(
+                SearchHitCard(
                     hit = hit,
                     horizontalPadding = horizontalPadding,
                     onClick = { onOpenResult(hit) },
@@ -293,7 +293,7 @@ fun SearchScreen(
 }
 
 @Composable
-private fun ResultsHeading(text: String, horizontalPadding: Dp) {
+fun ResultsHeading(text: String, horizontalPadding: Dp) {
     Text(
         text = text,
         modifier = Modifier.padding(
@@ -452,7 +452,7 @@ private fun DirectMatchRow(
 }
 
 @Composable
-private fun HitRow(
+fun SearchHitCard(
     hit: SearchHitUi,
     horizontalPadding: Dp,
     onClick: () -> Unit,
@@ -568,5 +568,32 @@ private fun TypeChip(label: String) {
             style = MaterialTheme.typography.labelSmall,
             maxLines = 1,
         )
+    }
+}
+
+/** A section's own full-text search: passages shown under its title matches. */
+class SectionTextSearch(
+    val search: suspend (String) -> List<SearchHitUi>,
+    val loadPassage: suspend (String) -> String?,
+    /** The hit and the query that found it (to mark the match in the reader). */
+    val onOpen: (SearchHitUi, String) -> Unit,
+)
+
+@Composable
+fun rememberSectionTextHits(query: String, textSearch: SectionTextSearch?): List<SearchHitUi> {
+    val term = query.trim()
+    return androidx.compose.runtime.produceState(emptyList<SearchHitUi>(), term, textSearch) {
+        value = emptyList()
+        if (textSearch == null || term.length < 2) return@produceState
+        kotlinx.coroutines.delay(300) // typing pause; the next keystroke restarts this
+        value = runCatching { textSearch.search(term) }.getOrDefault(emptyList())
+    }.value
+}
+
+fun androidx.compose.foundation.lazy.LazyListScope.sectionTextHits(hits: List<SearchHitUi>, query: String, textSearch: SectionTextSearch?, horizontalPadding: Dp) {
+    if (hits.isEmpty() || textSearch == null) return
+    item(key = "text-hits-heading") { ResultsHeading("في النصوص", horizontalPadding) }
+    items(hits, key = { "text-${it.id}" }) { hit ->
+        SearchHitCard(hit, horizontalPadding, onClick = { textSearch.onOpen(hit, query.trim()) }, loadPassage = textSearch.loadPassage)
     }
 }

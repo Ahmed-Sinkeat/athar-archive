@@ -1,5 +1,6 @@
 package com.atharchive.feature.poetry
 
+import com.atharchive.feature.search.sectionTextHits
 import kotlinx.coroutines.launch
 import com.atharchive.ui.theme.AtharTextSize
 import androidx.compose.foundation.LocalIndication
@@ -87,9 +88,11 @@ fun PoetryScreen(
     modifier: Modifier = Modifier,
     scrollToTopRequest: Int = 0,
     onBack: (() -> Unit)? = null,
+    textSearch: com.atharchive.feature.search.SectionTextSearch? = null,
 ) {
     var selectedTab by rememberSaveable { mutableStateOf(SectionTab.All) }
     var query by rememberSaveable { mutableStateOf("") }
+    val textHits = com.atharchive.feature.search.rememberSectionTextHits(query, textSearch)
     var topicStored by rememberPersisted("poetry.topics", "")
     var sortName by rememberPersisted("poetry.order", PoemSort.Title.name)
     val sort = enumValueOrNull<PoemSort>(sortName) ?: PoemSort.Title
@@ -205,7 +208,7 @@ fun PoetryScreen(
         ) {
             if (!state.loaded) {
                 // first catalog read not back yet: show nothing rather than a false "no poems"
-            } else if (visiblePoems.isEmpty()) {
+            } else if (visiblePoems.isEmpty() && textHits.isEmpty()) {
                 item(key = "poetry-empty") {
                     val (title, body) = when {
                         query.isNotBlank() ->
@@ -240,6 +243,7 @@ fun PoetryScreen(
                     }
                 }
             }
+            sectionTextHits(textHits, query, textSearch, horizontalPadding)
         }
     }
     }

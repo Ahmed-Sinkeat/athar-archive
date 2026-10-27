@@ -305,26 +305,7 @@ class AtharContentViewModel @Inject constructor(
             directMatches = direct,
             hits = local.blocks.take(limit)
                 .let { hits -> if (filters.sort == SearchSort.Died) hits.sortedWith(compareBy(nullsLast()) { catalog.byId[it.entityId]?.died }) else hits }
-                .map { hit ->
-                    SearchHitUi(
-                        id = "${hit.entityId}:${hit.rowid}",
-                        entityId = hit.entityId,
-                        ordinal = hit.ordinal,
-                        excerpt = hit.excerpt,
-                        matchStart = hit.matchStart,
-                        matchEnd = hit.matchEnd,
-                        sourceMatchStart = hit.sourceMatchStart,
-                        sourceMatchEnd = hit.sourceMatchEnd,
-                        sourceTitle = hit.sourceTitle,
-                        sourceAuthor = hit.sourceAuthor,
-                        locationLabel = listOfNotNull(
-                            hit.chapterTitle.ifBlank { null },
-                            hit.printedPage?.let { "ص ${arabicNumber(it)}" },
-                        ).joinToString(" · ").ifBlank { null },
-                        type = hit.collection.toResultType(),
-                        died = catalog.byId[hit.entityId]?.died,
-                    )
-                },
+                .map { it.toHitUi(catalog) },
         )
         if (filters.downloadedOnly || filters.field != SearchField.FullText) // Titles/authors/topics: the catalog on the phone already covers the whole library.
             return@transformLatest emit(localState(if (filters.downloadedOnly) SearchScope.Downloaded else SearchScope.Online))
@@ -374,6 +355,42 @@ class AtharContentViewModel @Inject constructor(
         ),
     )
 
+    private fun BlockSearchHit.toHitUi(catalog: SearchCatalog) = SearchHitUi(
+        id = "$entityId:$rowid",
+        entityId = entityId,
+        ordinal = ordinal,
+        excerpt = excerpt,
+        matchStart = matchStart,
+        matchEnd = matchEnd,
+        sourceMatchStart = sourceMatchStart,
+        sourceMatchEnd = sourceMatchEnd,
+        sourceTitle = sourceTitle,
+        sourceAuthor = sourceAuthor,
+        locationLabel = listOfNotNull(
+            chapterTitle.ifBlank { null },
+            printedPage?.let { "ص ${arabicNumber(it)}" },
+        ).joinToString(" · ").ifBlank { null },
+        type = collection.toResultType(),
+        died = catalog.byId[entityId]?.died,
+    )
+
+    /**
+     * Passages inside one section (articles, poems, مسائل), for that section's own search box:
+     * the whole library online, what is on the phone otherwise.
+     */
+    suspend fun searchSection(type: SearchResultType, query: String): List<SearchHitUi> {
+        val catalog = SearchCatalog(catalogDao.observeCollection(type.contentCollection).first())
+        val online = try {
+            onlineSearch.hits(OnlineSearch.Query(query, "all", "text", setOf(type.contentCollection), emptySet(), "relevance"), 20).first
+        } catch (cancelled: kotlinx.coroutines.CancellationException) { throw cancelled
+        } catch (offline: Exception) { null }
+        if (online != null) return online.mapIndexedNotNull { index, hit -> hit.toHitUi(index, catalog) }
+        return contentSearch.search(
+            ContentSearchRequest(query = query, filter = ContentSearchFilter(collections = setOf(type.contentCollection))),
+            limit = 20,
+        ).blocks.map { it.toHitUi(catalog) }
+    }
+
     private fun OnlineSearch.Hit.toHitUi(index: Int, catalog: SearchCatalog): SearchHitUi? {
         val id = if (type == "book") book else android.net.Uri.decode(url.trimEnd('/').substringAfterLast('/'))
         val entity = catalog.byId[id] ?: return null
@@ -400,18 +417,19 @@ class AtharContentViewModel @Inject constructor(
     suspend fun onlinePassage(url: String): String? = runCatching { onlineSearch.fullText(url) }.getOrNull()?.ifBlank { null }
 
     /**
-     * Where an online hit sits in the app's own text: its chapter (the url's slug is the chapter
-     * anchor), then the first match of [query] in that chapter's loaded frame. Null ordinal: open the book as usual.
+     * Where an online hit sits in the app's own text: its chapter (a book url's slug is the chapter
+     * anchor), then the first match of [query] in that chapter's loaded frame; an article, poem or
+     * مسألة is searched from its start. Null ordinal: open it as usual.
      */
     suspend fun locateOnlineHit(hit: SearchHitUi, query: String): Triple<Int?, Int, Int> {
         val slug = hit.url?.substringAfter("/${hit.entityId}/", "")?.let(android.net.Uri::decode).orEmpty()
-        if (slug.isEmpty()) return Triple(null, 0, 0)
+        if (query.length < 2) return Triple(null, 0, 0)
         return runCatching {
             content.open(hit.entityId, 0) // the first frame carries the chapter list
-            val chapters = importDao.observeChapters(hit.entityId).first()
+            val chapters = if (slug.isEmpty()) emptyList() else importDao.observeChapters(hit.entityId).first()
             val index = chapters.indexOfFirst { it.anchor == slug.substringBefore("--pages-") }
-            if (index < 0) return@runCatching Triple(null, 0, 0)
-            val from = chapters[index].firstOrdinal
+            if (slug.isNotEmpty() && index < 0) return@runCatching Triple(null, 0, 0)
+            val from = chapters.getOrNull(index)?.firstOrdinal ?: 0
             val to = chapters.getOrNull(index + 1)?.firstOrdinal?.minus(1) ?: Int.MAX_VALUE
             content.open(hit.entityId, from)
             val match = contentSearch.search(

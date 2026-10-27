@@ -358,6 +358,26 @@ fun AtharApp(
         if (backStack.size > 1) backStack.removeLastOrNull()
     }
 
+    /** Opens a passage from any search: local hits know their paragraph, online ones are located first. */
+    fun openHit(hit: com.atharchive.feature.search.SearchHitUi, query: String) {
+        val poem = hit.type == com.atharchive.feature.search.SearchResultType.Poem
+        if (hit.url != null) scope.launch {
+            val (ordinal, start, end) = contentViewModel.locateOnlineHit(hit, query)
+            val found = ordinal != null && end > start
+            backStack.add(if (poem) PoemReaderRoute(hit.entityId, ordinal) else ReaderRoute(hit.entityId, ordinal, start.takeIf { found }, end.takeIf { found }))
+        } else if (poem) {
+            backStack.add(PoemReaderRoute(hit.entityId, hit.ordinal))
+        } else {
+            backStack.add(ReaderRoute(hit.entityId, hit.ordinal, hit.sourceMatchStart, hit.sourceMatchEnd))
+        }
+    }
+
+    fun sectionSearch(type: com.atharchive.feature.search.SearchResultType) = com.atharchive.feature.search.SectionTextSearch(
+        search = { contentViewModel.searchSection(type, it) },
+        loadPassage = contentViewModel::onlinePassage,
+        onOpen = ::openHit,
+    )
+
     /** Swaps [current] for [next] where it sits, so back leaves the book instead of stepping through editions. */
     fun replaceRoute(current: NavKey, next: NavKey) {
         val index = backStack.lastIndexOf(current)
@@ -635,6 +655,7 @@ fun AtharApp(
                             state = contentViewModel.articles.collectAsStateWithLifecycle().value,
                             onSettings = ::openSettings,
                             onArticleClick = { backStack.add(ReaderRoute(it.id)) },
+                            textSearch = remember { sectionSearch(com.atharchive.feature.search.SearchResultType.Article) },
                             onSaveClick = { contentViewModel.toggleFavourite(it.id) },
                             onDownloadClick = { onDownloadTap(it.id, it.title, it.sizeLabel, it.downloaded, it.transfer) },
                             onBack = ::goBack,
@@ -644,6 +665,7 @@ fun AtharApp(
                             state = contentViewModel.issues.collectAsStateWithLifecycle().value,
                             onSettings = ::openSettings,
                             onIssueClick = { backStack.add(ReaderRoute(it.id)) },
+                            textSearch = remember { sectionSearch(com.atharchive.feature.search.SearchResultType.Issue) },
                             onSaveClick = { contentViewModel.toggleFavourite(it.id) },
                             onDownloadClick = { onDownloadTap(it.id, it.question, it.sizeLabel, it.downloaded, it.transfer) },
                             onBack = ::goBack,
@@ -753,6 +775,7 @@ fun AtharApp(
                             state = contentViewModel.poetry.collectAsStateWithLifecycle().value,
                             onSettings = ::openSettings,
                             onPoemClick = { backStack.add(PoemReaderRoute(it.id)) },
+                            textSearch = remember { sectionSearch(com.atharchive.feature.search.SearchResultType.Poem) },
                             onDownloadClick = { onDownloadTap(it.id, it.title, it.sizeLabel, it.downloaded, it.transfer) },
                             onSaveClick = { contentViewModel.toggleFavourite(it.id) },
                             scrollToTopRequest = scrollToTopRequest,
@@ -778,25 +801,7 @@ fun AtharApp(
                             loadPassage = contentViewModel::onlinePassage,
                             onOpenResult = { hit ->
                                 contentViewModel.rememberCurrentSearch()
-                                if (hit.url != null) scope.launch {
-                                    // An online hit has no ordinal yet: find its chapter, then the match inside it.
-                                    val (ordinal, start, end) = contentViewModel.locateOnlineHit(hit, contentViewModel.searchQuery.value.trim())
-                                    backStack.add(
-                                        if (hit.type == com.atharchive.feature.search.SearchResultType.Poem) PoemReaderRoute(hit.entityId, ordinal)
-                                        else ReaderRoute(hit.entityId, ordinal, start.takeIf { ordinal != null && end > start }, end.takeIf { ordinal != null && end > start }),
-                                    )
-                                } else if (hit.type == com.atharchive.feature.search.SearchResultType.Poem) {
-                                    backStack.add(PoemReaderRoute(hit.entityId, hit.ordinal))
-                                } else {
-                                    backStack.add(
-                                        ReaderRoute(
-                                            bookId = hit.entityId,
-                                            targetOrdinal = hit.ordinal,
-                                            matchStart = hit.sourceMatchStart,
-                                            matchEnd = hit.sourceMatchEnd,
-                                        ),
-                                    )
-                                }
+                                openHit(hit, contentViewModel.searchQuery.value.trim())
                             },
                             onOpenDirectMatch = { match ->
                                 contentViewModel.rememberCurrentSearch()

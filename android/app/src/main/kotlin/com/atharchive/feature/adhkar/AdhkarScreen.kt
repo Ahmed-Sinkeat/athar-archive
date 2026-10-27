@@ -88,9 +88,12 @@ fun AdhkarScreen(
         selectedTab == AdhkarTab.Saved -> state.saved
         else -> state.of(selectedTab.key)
     }
-    val visible = remember(entries, query) {
-        val term = query.trim()
-        if (term.isBlank()) entries else entries.filter { it.text.contains(term) }
+    // A search looks in every tab (not just the open one) and ignores tashkeel and letter forms.
+    val visible = remember(entries, query, state) {
+        val term = com.atharchive.core.ArNormalize.normalize(query.trim())
+        if (term.isBlank()) entries
+        else (if (bab != null) entries else state.entries.values.flatten().distinctBy { it.id })
+            .filter { com.atharchive.core.ArNormalize.normalize(it.text).contains(term) }
     }
 
     fun left(dhikr: DhikrUi) = remaining[dhikr.id] ?: dhikr.repeat

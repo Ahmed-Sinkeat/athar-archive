@@ -1,5 +1,6 @@
 package com.atharchive.feature.articles
 
+import com.atharchive.feature.search.sectionTextHits
 import kotlinx.coroutines.launch
 import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.background
@@ -77,9 +78,11 @@ fun ArticlesScreen(
     modifier: Modifier = Modifier,
     scrollToTopRequest: Int = 0,
     onBack: (() -> Unit)? = null,
+    textSearch: com.atharchive.feature.search.SectionTextSearch? = null,
 ) {
     var selectedTab by rememberSaveable { mutableStateOf(SectionTab.All) }
     var query by rememberSaveable { mutableStateOf("") }
+    val textHits = com.atharchive.feature.search.rememberSectionTextHits(query, textSearch)
     var sortName by rememberPersisted("articles.order", ArticleSort.Title.name)
     val sort = enumValueOrNull<ArticleSort>(sortName) ?: ArticleSort.Title
     val listState = rememberLazyListState()
@@ -188,7 +191,7 @@ fun ArticlesScreen(
         ) {
             if (!state.loaded) {
                 // first catalog read not back yet: show nothing rather than a false "no articles"
-            } else if (visibleArticles.isEmpty()) {
+            } else if (visibleArticles.isEmpty() && textHits.isEmpty()) {
                 item(key = "articles-empty") {
                     val (title, body) = when {
                         query.isNotBlank() ->
@@ -221,6 +224,7 @@ fun ArticlesScreen(
                     }
                 }
             }
+            sectionTextHits(textHits, query, textSearch, horizontalPadding)
         }
     }
     }
