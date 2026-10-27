@@ -15,7 +15,7 @@ Found: 70. Missing: 14.
 | كشف الشبهات | `src/content/book/kashf-al-shubuhat.md` | 59 KB | structural scan: page-long paragraphs split at dialogue turns (فإن قال / فقل) |
 | كتاب التوحيد | `src/content/book/kitab-at-tawhid.md` | 100 KB | **read in full**: every narration wrapped whole (98 hadith/athar blocks); split bayt joined |
 | فضل الإسلام | — | — | **missing** |
-| مسائل الجاهلية | `src/content/book/masail-al-jahiliyyah.md` | 26 KB | structural scan: reviewed, no change needed |
+| مسائل الجاهلية | `src/content/book/masail-al-jahiliyyah.md` | 26 KB | **read in full** (2026-10-27): bold labels for all items in place; 3 source-repeated labels retained; no change needed |
 | العقيدة الواسطية | `src/content/book/al-aqeedah-al-wasitiyyah.md` | 51 KB | **read in full**: reviewed, no change needed |
 | العقيدة الواسطية بتعليق ابن مانع | `src/content/book/al-aqyda-al-wastya-btalyq-abn-mana.md` | 82 KB | structural scan: reviewed, no change needed |
 | الفتوى الحموية الكبرى | `src/content/book-lg/al-fatwa-al-hamawiyyah-al-kubra.md` | 256 KB | audited: chapter structure, paragraph lengths; sampled, not read in full |
@@ -27,7 +27,7 @@ Found: 70. Missing: 14.
 | شرح السنة للمزني | `src/content/book/sharh-al-sunnah-al-muzani.md` | 18 KB | **read in full**: reviewed, no change needed |
 | عقيدة السلف أصحاب الحديث (الصابوني) | — | — | **missing** |
 | مقدمة رسالة ابن أبي زيد (عقيدة السلف) | `src/content/book/aqeedat-al-salaf-muqaddimat-al-risalah.md` | 85 KB | structural scan: glued heading words spaced |
-| العقيدة السفارينية | `src/content/poem/al-aqeedah-al-saffariniyyah.md` | 25 KB | audited: verse numbering, pairing, rhyme/qafiya checked; opening read |
+| العقيدة السفارينية | `src/content/poem/al-aqeedah-al-saffariniyyah.md` | 25 KB | **read in full** (2026-10-27): 206 verses, 32 headings, no change needed |
 | الحائية لابن أبي داود | `src/content/poem/al-qasidah-al-haiyyah-ibn-abi-dawud.md` | 7 KB | **read in full** (2026-10-27): 40 verses numbered, rhyme consistent, no change needed |
 | سلم الوصول (حافظ حكمي) | `src/content/poem/sullam-al-wusul-ila-ilm-al-usul.md` | 43 KB | audited: verse numbering, pairing, rhyme/qafiya checked; opening read |
 | نونية القحطاني | `src/content/poem/nuniyyat-al-qahtani.md` | 106 KB | audited: verse numbering, pairing, rhyme/qafiya checked; opening read |
@@ -50,13 +50,13 @@ Found: 70. Missing: 14.
 | المقدمة الحضرمية | `src/content/book-lg/al-mqdmh-al-hdrmyh.md` | 169 KB | structural scan: page-line breaks joined |
 | الزبد | `src/content/poem/al-zbd-fy-al-fqh-al-shafay.md` | 136 KB | structural scan: reviewed, no change needed |
 | متن الأخضري | `src/content/book/mtn-al-akhdry-fy-al-abadat-ala-mthhb-al-amam-malk.md` | 56 KB | structural scan: line breaks normalised |
-| الكوكب الزهري نظم الأخضري | `src/content/poem/al-kwkb-al-zhry-nzm-mkhtsr-al-akhdry.md` | 35 KB | structural scan: reviewed, no change needed |
+| الكوكب الزهري نظم الأخضري | `src/content/poem/al-kwkb-al-zhry-nzm-mkhtsr-al-akhdry.md` | 35 KB | **read in full** (2026-10-27): card title-block lines separated; 275 verses, 19 headings |
 | متن العشماوية | `src/content/book/mtn-al-ashmawyh.md` | 56 KB | **read in full**: line-joined walls split into paragraphs; باب headings restored |
 | الرسالة لابن أبي زيد | `src/content/book-lg/al-rsalh-llqyrwany.md` | 230 KB | audited: chapter structure, paragraph lengths; sampled, not read in full |
 | مختصر خليل | `src/content/book-lg/mkhtsr-khlyl.md` | 801 KB | structural scan: reviewed; fasls are unpunctuated continuous text in this edition, left as printed |
 | نور الإيضاح | — | — | **missing** |
 | مختصر القدوري | — | — | **missing** |
-| الرحبية | `src/content/poem/al-rahabiyyah.md` | 23 KB | audited: verse numbering, pairing, rhyme/qafiya checked; opening read |
+| الرحبية | `src/content/poem/al-rahabiyyah.md` | 23 KB | **read in full** (2026-10-27): no change; the source numbers 176 verses and 11 closing verses carry no number (left as printed) |
 | الدرة السنية في الفرائض | `src/content/poem/al-drh-al-snyh-mnzwmh-fy-alm-al-frayd.md` | 14 KB | **read in full** (2026-10-27): card title-block lines separated; 136 verses, headings ok |
 
 ## الحديث والمصطلح
@@ -78,7 +78,7 @@ Found: 70. Missing: 14.
 
 | Text | File | Size | Status |
 |---|---|---:|---|
-| الورقات | `src/content/book/al-waraqat.md` | 21 KB | structural scan: reviewed, no change needed |
+| الورقات | `src/content/book/al-waraqat.md` | 21 KB | **read in full** (2026-10-27): already structured (card, فصل headings), no change needed |
 | الأصول من علم الأصول | — | — | **missing** |
 | مراقي السعود | — | — | **missing** |
 | الكوكب الساطع | — | — | **missing** |
@@ -97,18 +97,18 @@ Found: 70. Missing: 14.
 
 | Text | File | Size | Status |
 |---|---|---:|---|
-| الآجرومية | `src/content/book/al-ajrwmya.md` | 24 KB | structural scan: line breaks normalised |
-| المقدمة الآجرومية | `src/content/book/al-ajurrumiyyah.md` | 23 KB | structural scan: reviewed, no change needed |
+| الآجرومية | `src/content/book/al-ajrwmya.md` | 24 KB | **read in full** (2026-10-27): already structured; edition of al-ajurrumiyyah (دار الصميعي) |
+| المقدمة الآجرومية | `src/content/book/al-ajurrumiyyah.md` | 23 KB | **read in full** (2026-10-27): already structured (باب headings, card), no change needed; linked edition: الصميعي |
 | الدرة البهية نظم الآجرومية | `src/content/poem/al-dra-al-bhya-nzm-al-ajrwmya.md` | 41 KB | audited: verse numbering, pairing, rhyme/qafiya checked; opening read |
-| نظم الآجرومية | `src/content/poem/nzm-al-ajrwmya-abn-ab.md` | 24 KB | audited: verse numbering, pairing, rhyme/qafiya checked; opening read |
-| اللؤلؤ المنظوم نظم الآجرومية | `src/content/poem/al-lwlw-al-mnzwm-fy-nzm-mnthwr-abn-ajrwm.md` | 20 KB | structural scan: reviewed, no change needed |
+| نظم الآجرومية | `src/content/poem/nzm-al-ajrwmya-abn-ab.md` | 24 KB | **read in full** (2026-10-27): 154 verses, 37 headings, no change needed |
+| اللؤلؤ المنظوم نظم الآجرومية | `src/content/poem/al-lwlw-al-mnzwm-fy-nzm-mnthwr-abn-ajrwm.md` | 20 KB | **read in full** (2026-10-27): card title-block lines separated; 202 verses, 25 headings |
 | متممة الآجرومية | `src/content/book-lg/mtmma-al-ajrwmya.md` | 132 KB | structural scan: reviewed, no change needed |
 | ملحة الإعراب | `src/content/book/mlha-al-iarab.md` | 58 KB | **read in full**: (earlier today) split verse blocks merged |
 | قطر الندى | `src/content/book/qatr-al-nada.md` | 39 KB | structural scan: reviewed, no change needed |
 | شذور الذهب | `src/content/book/mtn-shdhwr-al-dhhb.md` | 74 KB | structural scan: line breaks normalised |
 | ألفية ابن مالك (الخلاصة) | `src/content/poem/alfiyyah-ibn-malik.md` | 120 KB | structural scan: reviewed, no change needed |
 | ألفية ابن مالك | `src/content/poem/alfya-abn-malk.md` | 114 KB | structural scan: reviewed, no change needed |
-| لامية الأفعال | `src/content/poem/lamiyyat-al-afal.md` | 22 KB | structural scan: reviewed, no change needed |
+| لامية الأفعال | `src/content/poem/lamiyyat-al-afal.md` | 22 KB | **read in full** (2026-10-27): 114 verses numbered, rhyme ok, card ok, no change needed |
 
 ## الآداب والسلوك
 
