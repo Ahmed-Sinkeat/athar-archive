@@ -49,19 +49,17 @@ fun PersonsScreen(persons: List<CatalogPerson>, onPerson: (CatalogPerson) -> Uni
         header.ShowOnChange(listState, query, selectedCentury)
         AtharFloatingHeader(header) {
             AtharTopBar(title = "الأعلام", onSettings = onSettings, showAppIcon = true, onBack = onBack)
+            val filterGroups = emptyList<com.atharchive.ui.components.AtharChipGroup>()
+            val filterFacets = listOf(AtharFacet("القرن", centuries, selectedCentury, { selectedCentury = it }))
             AtharSearchField(
                 query = query,
                 onQueryChange = { query = it },
                 placeholder = "ابحث في ${arabicDigits(persons.size)} علمًا…",
                 tagPrefix = "persons",
+                trailing = { AtharFilterIcon(filterGroups, filterFacets, "persons_filter") },
                 modifier = Modifier.padding(start = Gutter, end = Gutter, top = 4.dp),
             )
-            AtharFilterButton(
-                emptyList(),
-                "persons_filter",
-                Modifier.padding(horizontal = Gutter - 4.dp, vertical = 2.dp),
-                facets = listOf(AtharFacet("القرن", centuries, selectedCentury, { selectedCentury = it })),
-            )
+            AtharActiveFilters(filterGroups, filterFacets, "persons_filter", Modifier.padding(horizontal = Gutter))
             HorizontalDivider(Modifier.padding(horizontal = Gutter, vertical = 2.dp), 0.7.dp, AtharTheme.colors.divider.copy(alpha = 0.5f))
         }
         LazyColumn(

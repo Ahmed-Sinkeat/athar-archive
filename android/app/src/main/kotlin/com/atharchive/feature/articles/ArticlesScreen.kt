@@ -56,7 +56,8 @@ import com.atharchive.ui.components.AtharFavouriteButton
 import com.atharchive.ui.components.AtharDownloadButton
 import com.atharchive.ui.components.AtharChipGroup
 import com.atharchive.ui.components.AtharEmptyState
-import com.atharchive.ui.components.AtharFilterButton
+import com.atharchive.ui.components.AtharFilterIcon
+import com.atharchive.ui.components.AtharActiveFilters
 import com.atharchive.ui.components.enumValueOrNull
 import com.atharchive.ui.components.orFirstIn
 import com.atharchive.ui.components.rememberPersisted
@@ -143,17 +144,24 @@ fun ArticlesScreen(
                         onBack = onBack,
                         horizontalPadding = horizontalPadding,
                     )
+                val filterGroups = listOfNotNull(
+                            if (selectedTab == SectionTab.Recent) null else AtharChipGroup("الترتيب", ArticleSort.entries.map { it.label }, sort.label) { label -> sortName = ArticleSort.entries.first { it.label == label }.name },
+                            if (selectedTab == SectionTab.Recent) null else AtharDirectionGroup(descending) { descendingStored = if (it) "1" else "" },
+                        )
+                val filterFacets = emptyList<com.atharchive.ui.components.AtharFacet>()
                 AtharSearchField(
                     query = query,
                     placeholder = "ابحث في ${state.countLabel}…",
                     onQueryChange = { query = it },
                     tagPrefix = "articles",
+                    trailing = { AtharFilterIcon(filterGroups, filterFacets, "articles_filter") },
                     modifier = Modifier.padding(
                         start = horizontalPadding,
                         end = horizontalPadding,
                         top = 4.dp,
                     ),
                 )
+                AtharActiveFilters(filterGroups, filterFacets, "articles_filter", Modifier.padding(horizontal = horizontalPadding))
                 }
             
         
@@ -166,20 +174,6 @@ fun ArticlesScreen(
                     onReselect = { reselectScope.launch { listState.animateScrollToItem(0) } },
                     modifier = Modifier.padding(horizontal = horizontalPadding),
                 )
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = horizontalPadding - 4.dp, vertical = 2.dp),
-                    horizontalArrangement = Arrangement.spacedBy(10.dp),
-                ) {
-                    AtharFilterButton(
-                        groups = listOfNotNull(
-                            if (selectedTab == SectionTab.Recent) null else AtharChipGroup("الترتيب", ArticleSort.entries.map { it.label }, sort.label) { label -> sortName = ArticleSort.entries.first { it.label == label }.name },
-                            if (selectedTab == SectionTab.Recent) null else AtharDirectionGroup(descending) { descendingStored = if (it) "1" else "" },
-                        ),
-                        tagPrefix = "articles_filter",
-                    )
-                }
                 HorizontalDivider(
                     modifier = Modifier.padding(horizontal = horizontalPadding),
                     color = AtharTheme.colors.divider.copy(alpha = 0.72f),

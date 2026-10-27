@@ -54,7 +54,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.atharchive.ui.components.AtharChipGroup
 import com.atharchive.ui.components.AtharEmptyState
-import com.atharchive.ui.components.AtharFilterButton
+import com.atharchive.ui.components.AtharFilterIcon
+import com.atharchive.ui.components.AtharActiveFilters
 import com.atharchive.ui.components.enumValueOrNull
 import com.atharchive.ui.components.rememberPersisted
 import com.atharchive.ui.components.AtharMenuButton
@@ -156,39 +157,31 @@ fun KannashahScreen(
                         style = MaterialTheme.typography.bodySmall,
                     )
                 }
-                AtharSearchField(
-                    query = query,
-                    placeholder = "ابحث في كناشتك…",
-                    onQueryChange = { query = it },
-                    tagPrefix = "kannashah",
-                    modifier = Modifier.padding(
-                        start = horizontalPadding,
-                        end = horizontalPadding,
-                    ),
-                )
-                }
-            
-        
-            Column {
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = horizontalPadding - 4.dp, vertical = 2.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(10.dp),
-                ) {
-                    AtharFilterButton(
-                        groups = listOf(
+                val filterGroups = listOf(
                             AtharChipGroup("الترتيب", KannashahSort.entries.map { it.label }, sort.label) { label ->
                                 sortName = KannashahSort.entries.first { it.label == label }.name
                             },
                             AtharChipGroup("النوع", KannashahFilter.entries.map { it.label }, filter.label) { label ->
                                 filterName = KannashahFilter.entries.first { it.label == label }.name
                             },
-                        ),
-                        tagPrefix = "kannashah_filter",
-                    )
+                        )
+                val filterFacets = emptyList<com.atharchive.ui.components.AtharFacet>()
+                AtharSearchField(
+                    query = query,
+                    placeholder = "ابحث في كناشتك…",
+                    onQueryChange = { query = it },
+                    tagPrefix = "kannashah",
+                    trailing = { AtharFilterIcon(filterGroups, filterFacets, "kannashah_filter") },
+                    modifier = Modifier.padding(
+                        start = horizontalPadding,
+                        end = horizontalPadding,
+                    ),
+                )
+                AtharActiveFilters(filterGroups, filterFacets, "kannashah_filter", Modifier.padding(horizontal = horizontalPadding))
                 }
+            
+        
+            Column {
             }
         }
         LazyColumn(

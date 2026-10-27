@@ -59,7 +59,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.atharchive.ui.components.AtharChipGroup
 import com.atharchive.ui.components.AtharEmptyState
-import com.atharchive.ui.components.AtharFilterButton
+import com.atharchive.ui.components.AtharFilterIcon
+import com.atharchive.ui.components.AtharActiveFilters
 import com.atharchive.ui.components.AtharFacet
 import com.atharchive.ui.components.asChoiceSet
 import com.atharchive.ui.components.asStoredChoices
@@ -159,17 +160,24 @@ fun PoetryScreen(
                         onBack = onBack,
                         horizontalPadding = horizontalPadding,
                     )
+                val filterGroups = listOfNotNull(
+                            if (selectedTab == SectionTab.Recent) null else AtharChipGroup("الترتيب", PoemSort.entries.map { it.label }, sort.label) { label -> sortName = PoemSort.entries.first { it.label == label }.name },
+                            if (selectedTab == SectionTab.Recent) null else AtharDirectionGroup(descending) { descendingStored = if (it) "1" else "" },
+                        )
+                val filterFacets = listOf(AtharFacet("الموضوع", topics, topic, { topicStored = it.asStoredChoices() }))
                 AtharSearchField(
                     query = query,
                     placeholder = "ابحث عن قصيدة، بيت أو شاعر…",
                     onQueryChange = { query = it },
                     tagPrefix = "poetry",
+                    trailing = { AtharFilterIcon(filterGroups, filterFacets, "poetry_filter") },
                     modifier = Modifier.padding(
                         start = horizontalPadding,
                         end = horizontalPadding,
                         top = 4.dp,
                     ),
                 )
+                AtharActiveFilters(filterGroups, filterFacets, "poetry_filter", Modifier.padding(horizontal = horizontalPadding))
                 }
             
         
@@ -182,21 +190,6 @@ fun PoetryScreen(
                     onReselect = { reselectScope.launch { listState.animateScrollToItem(0) } },
                     modifier = Modifier.padding(horizontal = horizontalPadding),
                 )
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = horizontalPadding - 4.dp, vertical = 2.dp),
-                    horizontalArrangement = Arrangement.spacedBy(10.dp),
-                ) {
-                    AtharFilterButton(
-                        groups = listOfNotNull(
-                            if (selectedTab == SectionTab.Recent) null else AtharChipGroup("الترتيب", PoemSort.entries.map { it.label }, sort.label) { label -> sortName = PoemSort.entries.first { it.label == label }.name },
-                            if (selectedTab == SectionTab.Recent) null else AtharDirectionGroup(descending) { descendingStored = if (it) "1" else "" },
-                        ),
-                        facets = listOf(AtharFacet("الموضوع", topics, topic, { topicStored = it.asStoredChoices() })),
-                        tagPrefix = "poetry_filter",
-                    )
-                }
                 HorizontalDivider(
                     modifier = Modifier.padding(horizontal = horizontalPadding),
                     color = AtharTheme.colors.divider.copy(alpha = 0.72f),

@@ -266,7 +266,7 @@ class ContentSearchRepository(private val database: AtharContentDatabase) {
         } else {
             "bm25(catalog_fts, 0.25, 0.6, 1.0), e.id"
         }
-        val sql = "SELECT e.id, e.title, e.personName, e.coll, e.kind " +
+        val sql = "SELECT e.id, e.title, e.personName, e.coll, e.kind, e.titleNorm " +
             "FROM catalog_fts JOIN entity e ON e.id = catalog_fts.id " +
             "WHERE catalog_fts MATCH ? AND e.catalogPresent = 1${filter.sql} " +
             "ORDER BY $order LIMIT ?"
@@ -274,9 +274,14 @@ class ContentSearchRepository(private val database: AtharContentDatabase) {
             var bind = 1
             query.bindText(bind++, scopedMatch)
             bind = query.bindAll(bind, filter.values)
-            query.bindLong(bind, limit.toLong())
+            // A few more than shown, so the work named exactly comes first: «زاد المستقنع» is the
+            // متن before الروض المربع شرح زاد المستقنع, however often a شرح repeats the name.
+            query.bindLong(bind, if (request.sort == ContentSearchSort.Relevance) maxOf(limit * 4, 40).toLong() else limit.toLong())
+            val typed = ArNormalize.normalize(request.query.replace("\"", " ")).trim()
+            val titles = HashMap<String, String>()
             buildList {
                 while (query.step()) {
+                    titles[query.getText(0)] = query.getText(5)
                     add(
                         CatalogSearchHit(
                             entityId = query.getText(0),
@@ -287,6 +292,9 @@ class ContentSearchRepository(private val database: AtharContentDatabase) {
                         ),
                     )
                 }
+            }.let { hits ->
+                if (request.sort != ContentSearchSort.Relevance) hits
+                else hits.sortedBy { titles[it.entityId].orEmpty().let { t -> if (t == typed) 0 else if (t.startsWith(typed)) 1 else 2 } }.take(limit)
             }
         }
     }
@@ -312,9 +320,15 @@ class ContentSearchRepository(private val database: AtharContentDatabase) {
             "LEFT JOIN chapter c ON c.entityId = b.entityId AND c.anchor = b.chapterAnchor " +
             "WHERE block_fts MATCH ? AND e.catalogPresent = 1${filter.sql}${if (range == null) "" else " AND b.ordinal BETWEEN ? AND ?"} " +
             "ORDER BY $order LIMIT ? OFFSET ?"
+        // Relevance reads a few pages of candidates and reorders them as the site does: the exact
+        // phrase, then every word whole, then words that only start the same; the typed spelling
+        // (إنما over انما) first within each.
+        val tiers = if (request.sort == ContentSearchSort.Relevance) MatchTiers(request.query) else null
+        val want = if (tiers != null) maxOf(limit * 4, CandidateBatchSize) else limit
         val result = mutableListOf<BlockSearchHit>()
+        val scores = HashMap<Long, Int>()
         var offset = 0
-        while (result.size < limit) {
+        while (result.size < want) {
             currentCoroutineContext().ensureActive()
             var candidates = 0
             connection.usePrepared(sql) { query ->
@@ -326,14 +340,17 @@ class ContentSearchRepository(private val database: AtharContentDatabase) {
                 query.bindLong(bind, offset.toLong())
                 while (query.step()) {
                     candidates++
-                    query.toBlockHit(plan)?.let(result::add)
-                    if (result.size == limit) break
+                    query.toBlockHit(plan)?.let { hit ->
+                        result += hit
+                        if (tiers != null) scores[hit.rowid] = tiers.score(query.getText(7))
+                    }
+                    if (result.size == want) break
                 }
             }
-            if (candidates < CandidateBatchSize || result.size == limit) break
+            if (candidates < CandidateBatchSize || result.size == want) break
             offset += CandidateBatchSize
         }
-        return result
+        return if (tiers == null) result else result.sortedBy { scores[it.rowid] ?: 0 }.take(limit)
     }
 }
 
@@ -439,3 +456,41 @@ private fun String.safeUtf16Start(index: Int): Int =
 
 private fun String.safeUtf16End(index: Int): Int =
     if (index in 1 until length && this[index - 1].isHighSurrogate()) index + 1 else index
+
+/** The site's tiers (src/lib/search-rank.ts) for a passage on the phone: lower is better. */
+internal class MatchTiers(query: String) {
+    private val words = ArNormalize.normalize(query.replace("\"", " ")).split(' ').filter { it.isNotBlank() }
+    private val phrase = words.joinToString(" ")
+    private val typed = query.replace("\"", " ").trim().split(Regex("\\s+")).filter { it.isNotBlank() }.map(::stripMarks)
+    // the hamza/ة/ى as typed, when they say more than the folded words
+    private val spelling = typed.takeIf { it.joinToString(" ") != phrase }
+
+    fun score(source: String): Int {
+        val text = ArNormalize.normalize(source)
+        val tier = when {
+            words.isEmpty() -> 0
+            hasWord(text, phrase) -> 0
+            words.all { hasWord(text, it) } -> 1
+            else -> 2
+        }
+        val written = spelling?.let { s -> stripMarks(source).let { plain -> s.all { plain.contains(it) } } } ?: true
+        return tier * 2 + if (written) 0 else 1
+    }
+
+    private fun hasWord(text: String, word: String): Boolean {
+        var at = text.indexOf(word)
+        while (at >= 0) {
+            val before = at == 0 || !text[at - 1].isLetter()
+            val after = at + word.length >= text.length || !text[at + word.length].isLetter()
+            if (before && after) return true
+            at = text.indexOf(word, at + 1)
+        }
+        return false
+    }
+
+    // tashkeel and tatweel only (the letters stay as written); the same ranges ArNormalize drops
+    private fun stripMarks(s: String) = s.filterNot { c ->
+        val code = c.code
+        code in 0x610..0x61a || code in 0x64b..0x65f || code == 0x670 || code in 0x6d6..0x6ed || code == 0x640
+    }
+}

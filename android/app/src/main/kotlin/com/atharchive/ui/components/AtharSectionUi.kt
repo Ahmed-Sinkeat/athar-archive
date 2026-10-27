@@ -384,90 +384,132 @@ class AtharFacet(
     val subtitle: (String) -> String? = { null },
 )
 
-/** The sort and other single choices as menu buttons, then the facets, then the ticked values as chips. */
+/**
+ * Every filter behind one icon at the end of the search field (as the main search): one popup, a
+ * line per setting with its label beside the choices, and a badge counting what is set. A facet
+ * of a dozen values or fewer is chips; a long one (authors, topics) is typed, five matches shown.
+ */
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-fun AtharFilterButton(
-    groups: List<AtharChipGroup>,
-    tagPrefix: String,
-    modifier: Modifier = Modifier,
-    facets: List<AtharFacet> = emptyList(),
-) {
-    Column(modifier) {
-        Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-            groups.filter { it.options.isNotEmpty() }.forEachIndexed { index, group ->
-                AtharMenuButton(group.title, group.options, group.selected, group.default, group.onSelect, "${tagPrefix}_$index")
+fun AtharFilterIcon(groups: List<AtharChipGroup>, facets: List<AtharFacet>, tagPrefix: String) {
+    var open by remember { mutableStateOf(false) }
+    val count = groups.count { it.active } + facets.sumOf { it.selected.size }
+    Box {
+        IconButton(onClick = { open = true }, modifier = Modifier.size(48.dp).testTag("${tagPrefix}_button")) {
+            Box {
+                Icon(AtharIcons.Filter, "المرشحات", tint = if (count > 0) AtharTheme.colors.accent else AtharTheme.colors.secondaryText, modifier = Modifier.size(21.dp))
+                if (count > 0) Text(
+                    arabicDigits(count),
+                    Modifier.align(Alignment.TopEnd).padding(start = 14.dp).size(15.dp).clip(androidx.compose.foundation.shape.CircleShape).background(AtharTheme.colors.accent),
+                    color = AtharTheme.colors.onPrimaryAction,
+                    style = MaterialTheme.typography.labelSmall,
+                    textAlign = androidx.compose.ui.text.style.TextAlign.Center,
+                )
             }
-            facets.filter { it.options.isNotEmpty() }.forEachIndexed { index, facet -> FacetMenu(facet, "${tagPrefix}_f$index") }
         }
-        val chips = facets.flatMap { facet -> facet.selected.map { facet to it } }
-        if (chips.isNotEmpty()) androidx.compose.foundation.layout.FlowRow(
-            Modifier.padding(horizontal = 4.dp, vertical = 4.dp),
-            horizontalArrangement = Arrangement.spacedBy(6.dp),
-            verticalArrangement = Arrangement.spacedBy(6.dp),
-        ) {
-            chips.forEach { (facet, value) -> RemovableChip(value) { facet.onChange(facet.selected - value) } }
-            if (chips.size >= 2) Text(
-                "مسح الكل",
-                Modifier
-                    .clip(AtharCorners.Control)
-                    .clickable(role = Role.Button) { facets.forEach { if (it.selected.isNotEmpty()) it.onChange(emptySet()) } }
-                    .padding(horizontal = 10.dp, vertical = 6.dp)
-                    .testTag("${tagPrefix}_clear"),
-                color = AtharTheme.colors.accent,
-                style = MaterialTheme.typography.bodySmall,
-                fontWeight = FontWeight.SemiBold,
-            )
+        AtharMenu(expanded = open, onDismiss = { open = false }, width = 330.dp, maxHeight = 560.dp, modifier = Modifier.testTag("${tagPrefix}_popup")) {
+            AtharFilterPopupContent(groups, facets, tagPrefix)
         }
     }
 }
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
-private fun FacetMenu(facet: AtharFacet, tag: String) {
-    var open by remember { mutableStateOf(false) }
+fun AtharFilterPopupContent(groups: List<AtharChipGroup>, facets: List<AtharFacet>, tagPrefix: String) {
+    Column(Modifier.padding(horizontal = 12.dp, vertical = 2.dp)) {
+        var first = true
+        @Composable fun divider() { if (!first) AtharMenuDivider(); first = false }
+        groups.filter { it.options.isNotEmpty() }.forEach { group ->
+            divider()
+            AtharFilterRow(group.title) { group.options.forEach { AtharFilterChip(it, it == group.selected) { group.onSelect(it) } } }
+        }
+        facets.filter { it.options.isNotEmpty() }.forEachIndexed { index, facet ->
+            divider()
+            if (facet.options.size <= 12) AtharFilterRow(facet.title) {
+                facet.options.forEach { value ->
+                    val ticked = value in facet.selected
+                    AtharFilterChip(value, ticked) { facet.onChange(if (ticked) facet.selected - value else facet.selected + value) }
+                }
+            } else AtharFilterPicker(facet.title, facet.options, facet.selected, facet.subtitle, "${tagPrefix}_f$index") {
+                facet.onChange(if (it in facet.selected) facet.selected - it else facet.selected + it)
+            }
+        }
+    }
+}
+
+/** One popup line: the setting's name, then its choices. */
+@OptIn(ExperimentalLayoutApi::class)
+@Composable
+fun AtharFilterRow(title: String, choices: @Composable () -> Unit) {
+    Row(Modifier.fillMaxWidth().padding(vertical = 7.dp), verticalAlignment = Alignment.CenterVertically) {
+        Text(title, Modifier.width(64.dp), color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.72f),
+            fontSize = AtharTextSize.Ui, fontWeight = FontWeight.SemiBold)
+        androidx.compose.foundation.layout.FlowRow(Modifier.weight(1f), horizontalArrangement = Arrangement.spacedBy(6.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+            choices()
+        }
+    }
+}
+
+/** A choice pill sized for the popup: solid accent when on, plain readable text when off. */
+@Composable
+fun AtharFilterChip(label: String, selected: Boolean, onClick: () -> Unit) {
+    Text(
+        label,
+        Modifier
+            .heightIn(min = 34.dp)
+            .clip(AtharCorners.Control)
+            .background(if (selected) AtharTheme.colors.primaryAction else AtharTheme.colors.divider.copy(alpha = 0.32f))
+            .clickable(role = Role.RadioButton, onClick = onClick)
+            .semantics { this.selected = selected }
+            .padding(horizontal = 12.dp, vertical = 7.dp),
+        color = if (selected) AtharTheme.colors.onPrimaryAction else MaterialTheme.colorScheme.onSurface,
+        fontSize = AtharTextSize.Ui,
+        fontWeight = if (selected) FontWeight.SemiBold else FontWeight.Normal,
+    )
+}
+
+/** A long list (hundreds of authors) typed, not listed: no list of its own to scroll in the popup. */
+@Composable
+fun AtharFilterPicker(title: String, options: List<String>, selected: Set<String>, subtitle: (String) -> String?, tag: String, onToggle: (String) -> Unit) {
     var query by remember { mutableStateOf("") }
-    // Ticked values float to the top when the menu opens, not while ticking (rows would jump).
-    var pinned by remember { mutableStateOf(emptySet<String>()) }
-    val active = facet.selected.isNotEmpty()
-    Box {
-        Row(
+    Row(Modifier.fillMaxWidth().padding(vertical = 6.dp), verticalAlignment = Alignment.CenterVertically) {
+        Text(title, Modifier.width(64.dp), color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.72f),
+            fontSize = AtharTextSize.Ui, fontWeight = FontWeight.SemiBold)
+        OutlinedTextField(query, { query = it }, placeholder = { Text("اكتب للبحث…", fontSize = AtharTextSize.Ui) }, singleLine = true,
+            textStyle = MaterialTheme.typography.bodyMedium, modifier = Modifier.weight(1f).testTag("${tag}_query"))
+    }
+    val term = com.atharchive.core.ArNormalize.normalize(query.trim())
+    // ponytail: first 5 matches; a longer name narrows it. Empty: what is ticked, to untick.
+    val matches = if (term.isEmpty()) selected.toList() else options.filter { normKey(it).contains(term) }.take(5)
+    matches.forEach { name ->
+        AtharMenuItem(name, checked = name in selected, subtitle = subtitle(name), onClick = { onToggle(name) })
+    }
+}
+
+/** What is set, under the field, each removable; «مسح الكل» once there are two. */
+@OptIn(ExperimentalLayoutApi::class)
+@Composable
+fun AtharActiveFilters(groups: List<AtharChipGroup>, facets: List<AtharFacet>, tagPrefix: String, modifier: Modifier = Modifier) {
+    val chips = groups.filter { it.active }.map { g -> "${g.title}: ${g.selected}" to { g.onSelect(g.default) } } +
+        facets.flatMap { facet -> facet.selected.map { value -> value to { facet.onChange(facet.selected - value) } } }
+    if (chips.isEmpty()) return
+    androidx.compose.foundation.layout.FlowRow(
+        modifier.padding(vertical = 4.dp),
+        horizontalArrangement = Arrangement.spacedBy(6.dp),
+        verticalArrangement = Arrangement.spacedBy(6.dp),
+    ) {
+        chips.forEach { (label, remove) -> RemovableChip(label, remove) }
+        if (chips.size >= 2) Text(
+            "مسح الكل",
             Modifier
                 .clip(AtharCorners.Control)
-                .clickable(role = Role.DropdownList) { pinned = facet.selected; open = true }
-                .padding(horizontal = 4.dp, vertical = 6.dp)
-                .testTag("${tag}_menu"),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            Text(
-                if (active) "${facet.title} · ${arabicDigits(facet.selected.size)}" else facet.title,
-                color = if (active) AtharTheme.colors.accent else AtharTheme.colors.secondaryText,
-                style = MaterialTheme.typography.bodySmall,
-                fontWeight = if (active) FontWeight.SemiBold else FontWeight.Normal,
-                maxLines = 1,
-            )
-            Icon(AtharIcons.ChevronDown, null, tint = AtharTheme.colors.secondaryText, modifier = Modifier.padding(start = 3.dp).size(12.dp))
-        }
-        AtharMenu(expanded = open, onDismiss = { open = false; query = "" }, width = 280.dp) {
-            val long = facet.options.size > 10
-            if (long) OutlinedTextField(query, { query = it }, label = { Text("ابحث في ${facet.title}") }, singleLine = true,
-                modifier = Modifier.fillMaxWidth().padding(horizontal = 8.dp).testTag("${tag}_query"))
-            val normalized = remember(facet.options) { facet.options.associateWith { com.atharchive.core.ArNormalize.normalize(it) } }
-            val term = com.atharchive.core.ArNormalize.normalize(query)
-            val matching = remember(facet.options, pinned, term) {
-                facet.options.filter { normalized.getValue(it).contains(term) }.sortedByDescending { it in pinned }
-            }
-            if (matching.isEmpty()) Text("لا توجد نتائج", Modifier.padding(14.dp), color = AtharTheme.colors.secondaryText)
-            @Composable fun option(value: String) {
-                val ticked = value in facet.selected
-                AtharMenuItem(value, checked = ticked, subtitle = facet.subtitle(value),
-                    onClick = { facet.onChange(if (ticked) facet.selected - value else facet.selected + value) },
-                    modifier = Modifier.testTag("${tag}_${facet.options.indexOf(value)}"))
-            }
-            // ponytail: fixed-height list inside the menu so hundreds of authors stay lazy
-            if (long) LazyColumn(Modifier.fillMaxWidth().height(280.dp)) {
-                items(matching.size, key = { matching[it] }) { option(matching[it]) }
-            } else matching.forEach { option(it) }
-        }
+                .clickable(role = Role.Button) { chips.forEach { it.second() } }
+                .padding(horizontal = 10.dp, vertical = 8.dp)
+                .testTag("${tagPrefix}_clear"),
+            color = AtharTheme.colors.accent,
+            style = MaterialTheme.typography.bodySmall,
+            fontWeight = FontWeight.SemiBold,
+        )
     }
 }
 
@@ -494,30 +536,6 @@ private const val SetSeparator = '\u001F'
 /** A persisted multi-choice ([rememberPersisted] keeps strings). */
 fun String.asChoiceSet(): Set<String> = if (isEmpty()) emptySet() else split(SetSeparator).toSet()
 fun Set<String>.asStoredChoices(): String = joinToString(SetSeparator.toString())
-
-@Composable
-fun AtharFilterMenu(title: String, options: List<String>, selected: Set<String>, tag: String, onSelect: (String) -> Unit) {
-    var open by remember { mutableStateOf(false) }
-    var query by remember { mutableStateOf("") }
-    Box {
-        TextButton(onClick = { open = true }, modifier = Modifier.testTag("${tag}_menu")) {
-            Text("$title ▾", color = AtharTheme.colors.secondaryText)
-        }
-        AtharMenu(expanded = open, onDismiss = { open = false }) {
-            if (options.size > 10) OutlinedTextField(query, { query = it }, label = { Text("ابحث في الخيارات") }, singleLine = true, modifier = Modifier.fillMaxWidth().testTag("${tag}_query"))
-            val term = com.atharchive.core.ArNormalize.normalize(query)
-            val matching = options.distinct().filter { com.atharchive.core.ArNormalize.normalize(it).contains(term) }
-            if (matching.isEmpty()) Text("لا توجد نتائج", Modifier.padding(14.dp), color = AtharTheme.colors.secondaryText)
-            @Composable fun option(value: String) {
-                AtharMenuItem(value, checked = value in selected, onClick = { onSelect(value); open = false }, modifier = Modifier.testTag("${tag}_${options.indexOf(value)}"))
-            }
-            if (options.size > 10) LazyColumn(Modifier.fillMaxWidth().height(240.dp)) {
-                items(matching.size) { option(matching[it]) }
-            } else matching.forEach { option(it) }
-
-        }
-    }
-}
 
 /** Solid accent when selected (S9); 48 dp touch target around a slimmer pill. */
 @Composable

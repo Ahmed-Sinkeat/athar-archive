@@ -18,7 +18,7 @@ import kotlin.coroutines.resumeWithException
  * what is on the phone. Any failure throws [IOException]; the caller falls back to local search.
  */
 internal class OnlineSearch(private val http: OkHttpClient) {
-    data class Hit(val type: String, val url: String, val title: String, val book: String, val snippet: String)
+    data class Hit(val type: String, val url: String, val title: String, val book: String, val snippet: String, val row: Long = 0)
     data class Person(val slug: String, val count: Int)
     data class Facets(val total: Int, val capped: Boolean, val persons: List<Person>)
     data class Query(
@@ -41,7 +41,7 @@ internal class OnlineSearch(private val http: OkHttpClient) {
             val body = get(url(query).addQueryParameter("offset", hits.size.toString()).addQueryParameter("snip", "48").build())
             val page = body.getJSONArray("hits")
             for (i in 0 until page.length()) page.getJSONObject(i).run {
-                hits += Hit(optString("type"), optString("url"), optString("title"), optString("book"), optString("snippet"))
+                hits += Hit(optString("type"), optString("url"), optString("title"), optString("book"), optString("snippet"), optLong("row"))
             }
             more = body.optBoolean("hasMore") && page.length() > 0
         }
@@ -59,9 +59,9 @@ internal class OnlineSearch(private val http: OkHttpClient) {
         )
     }
 
-    /** The whole indexed passage behind a hit, for «المزيد». */
-    suspend fun fullText(url: String): String =
-        get(Base.newBuilder().addQueryParameter("url", url).build()).optString("text")
+    /** The whole passage behind a hit, as written, for «المزيد»: by its row (instant), else by url. */
+    suspend fun fullText(url: String, row: Long): String =
+        get(Base.newBuilder().apply { if (row > 0) addQueryParameter("row", row.toString()) else addQueryParameter("url", url) }.build()).optString("text")
 
     private fun url(query: Query) = Base.newBuilder()
         .addQueryParameter("q", query.q)

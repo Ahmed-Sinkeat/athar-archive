@@ -77,6 +77,8 @@ data class SearchHitUi(
     val died: Int? = null,
     /** Set for an online hit: the site's url for the passage (its chapter), used to locate it and for «المزيد». */
     val url: String? = null,
+    /** The online index row behind it, for fetching the whole passage. */
+    val row: Long = 0,
 )
 
 data class SearchFilters(

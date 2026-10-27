@@ -1,5 +1,7 @@
 package com.atharchive.feature.search
 
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.draw.drawBehind
 import com.atharchive.ui.theme.AtharCorners
 import com.atharchive.ui.theme.AtharTextSize
 import com.atharchive.ui.components.arabicDigits
@@ -76,7 +78,7 @@ fun SearchScreen(
     onLoadMore: () -> Unit = {},
     modifier: Modifier = Modifier,
     onBack: (() -> Unit)? = null,
-    loadPassage: suspend (String) -> String? = { null },
+    loadPassage: suspend (SearchHitUi) -> String? = { null },
 ) {
     val query = inputQuery
     val filters = state.filters
@@ -93,7 +95,8 @@ fun SearchScreen(
     val directMatches = if (hasQuery) state.directMatches else emptyList()
     var allTitles by rememberSaveable(state.query) { mutableStateOf(false) }
     // groupBy keeps first-seen order, so each book sits where its best passage ranked.
-    val bookGroups = remember(hits) { hits.groupBy { it.entityId }.values.toList() }
+    // The same passage twice (an index row left over by an update) shows once.
+    val bookGroups = remember(hits) { hits.distinctBy { it.entityId to it.excerpt }.groupBy { it.entityId }.values.toList() }
     var openBooks by remember(state.query) { mutableStateOf(emptySet<String>()) }
 
     LaunchedEffect(state.query, state.directMatches, state.hits) {
@@ -289,13 +292,6 @@ fun SearchScreen(
                         style = MaterialTheme.typography.labelLarge,
                     )
                 }
-                if (index != bookGroups.lastIndex) {
-                    HorizontalDivider(
-                        modifier = Modifier.padding(horizontal = horizontalPadding),
-                        thickness = 0.7.dp,
-                        color = AtharTheme.colors.divider.copy(alpha = 0.42f),
-                    )
-                }
             }
             if (state.hasMore) {
                 item(key = "search-more") {
@@ -458,7 +454,7 @@ private fun DirectMatchRow(
                     horizontalArrangement = Arrangement.spacedBy(6.dp),
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
-                    TypeChip(match.kindLabel)
+                    TypeChip(match.kindLabel, match.type.tint())
                     Text(
                         text = match.contextLabel,
                         color = AtharTheme.colors.secondaryText,
@@ -475,14 +471,14 @@ fun SearchHitCard(
     hit: SearchHitUi,
     horizontalPadding: Dp,
     onClick: () -> Unit,
-    loadPassage: suspend (String) -> String?,
+    loadPassage: suspend (SearchHitUi) -> String?,
 ) {
     // The source first (which book, whose, where), then the passage with every match marked.
     val accent = AtharTheme.colors.accent
     var expanded by rememberSaveable(hit.id) { mutableStateOf(false) }
     var passage by remember(hit.id) { mutableStateOf<String?>(null) }
     LaunchedEffect(expanded) {
-        if (expanded && passage == null && hit.url != null) passage = loadPassage(hit.url)?.let { around(it, hit) }
+        if (expanded && passage == null && hit.url != null) passage = loadPassage(hit)?.let { around(it, hit) }
     }
     val text = passage ?: hit.excerpt
     val highlighted = remember(text, hit, accent) {
@@ -491,22 +487,33 @@ fun SearchHitCard(
             append(text)
             ranges.forEach { r ->
                 if (r.first >= 0 && r.last < text.length && r.first <= r.last)
-                    addStyle(SpanStyle(background = accent.copy(alpha = 0.18f), fontWeight = FontWeight.Bold), r.first, r.last + 1)
+                    addStyle(SpanStyle(background = accent.copy(alpha = 0.22f), color = accent, fontWeight = FontWeight.Bold), r.first, r.last + 1)
             }
         }
     }
     val clipboard = androidx.compose.ui.platform.LocalClipboardManager.current
+    val context = androidx.compose.ui.platform.LocalContext.current
 
+    val tint = hit.type.tint()
     Column(
         modifier = Modifier
             .fillMaxWidth()
+            .padding(horizontal = horizontalPadding, vertical = 5.dp)
+            .clip(AtharCorners.Card)
+            .background(AtharTheme.colors.raisedSurface)
+            // the type's colour down the card's leading edge
+            .drawBehind {
+                val bar = 3.5.dp.toPx()
+                drawRect(tint, topLeft = androidx.compose.ui.geometry.Offset(if (layoutDirection == androidx.compose.ui.unit.LayoutDirection.Rtl) size.width - bar else 0f, 0f),
+                    size = androidx.compose.ui.geometry.Size(bar, size.height))
+            }
             .clickable(
                 interactionSource = remember { MutableInteractionSource() },
                 indication = LocalIndication.current,
                 role = Role.Button,
                 onClick = onClick,
             )
-            .padding(start = horizontalPadding, end = horizontalPadding, top = 12.dp, bottom = 2.dp)
+            .padding(start = 16.dp, end = 14.dp, top = 12.dp, bottom = 2.dp)
             .testTag("search_hit_${hit.id}"),
     ) {
         Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -520,7 +527,7 @@ fun SearchHitCard(
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
             )
-            TypeChip(hit.type.label)
+            TypeChip(hit.type.label, tint)
         }
         Text(
             text = listOfNotNull(
@@ -551,6 +558,7 @@ fun SearchHitCard(
                 clipboard.setText(androidx.compose.ui.text.AnnotatedString(
                     "«${text.trim('…', ' ')}»\n— ${hit.sourceTitle}" + (hit.sourceAuthor.ifBlank { null }?.let { "، $it" } ?: ""),
                 ))
+                android.widget.Toast.makeText(context, "نُسخ النص مع مصدره", android.widget.Toast.LENGTH_SHORT).show()
             }) {
                 Icon(AtharIcons.Copy, contentDescription = "نسخ النص مع مصدره", tint = AtharTheme.colors.secondaryText, modifier = Modifier.size(18.dp))
             }
@@ -558,10 +566,15 @@ fun SearchHitCard(
     }
 }
 
-/** About 900 characters of [full] around the hit's first marked word. */
-private fun around(full: String, hit: SearchHitUi): String {
+/**
+ * About 900 characters of [full] around this hit: where its own snippet sits in the passage (not
+ * the first time its word appears, which every hit in the chapter shares), else its first word.
+ */
+internal fun around(full: String, hit: SearchHitUi): String {
+    val snippet = hit.excerpt.trim('…', ' ')
     val word = hit.matches.firstOrNull()?.let { hit.excerpt.substring(it.first, it.last + 1) }
-    val at = word?.let { full.indexOf(it) }?.takeIf { it >= 0 } ?: 0
+    val at = full.indexOf(snippet).takeIf { it >= 0 && snippet.isNotEmpty() }?.let { it + snippet.length / 2 }
+        ?: word?.let { full.indexOf(it) }?.takeIf { it >= 0 } ?: 0
     val start = (at - 400).coerceAtLeast(0)
     val end = (at + 500).coerceAtMost(full.length)
     return (if (start > 0) "…" else "") + full.substring(start, end) + (if (end < full.length) "…" else "")
@@ -574,16 +587,26 @@ private fun wordRanges(text: String, hit: SearchHitUi): List<IntRange> =
             .map { it until it + word.length }.toList()
     }
 
+/** One colour per kind of source, readable on paper and on the dark theme alike. */
 @Composable
-private fun TypeChip(label: String) {
+private fun SearchResultType.tint(): Color = when (this) {
+    SearchResultType.Book -> AtharTheme.colors.accent
+    SearchResultType.Poem -> Color(0xFF2E8B74)
+    SearchResultType.Article -> Color(0xFFB7832B)
+    SearchResultType.Issue -> Color(0xFF4A7DB5)
+}
+
+@Composable
+private fun TypeChip(label: String, tint: Color = AtharTheme.colors.secondaryText) {
     Surface(
         shape = AtharCorners.Tag,
-        color = AtharTheme.colors.raisedSurface,
+        color = tint.copy(alpha = 0.14f),
     ) {
         Text(
             text = label,
-            modifier = Modifier.padding(horizontal = 7.dp, vertical = 2.dp),
-            color = AtharTheme.colors.secondaryText.copy(alpha = 0.8f),
+            modifier = Modifier.padding(horizontal = 8.dp, vertical = 2.dp),
+            color = tint,
+            fontWeight = FontWeight.SemiBold,
             style = MaterialTheme.typography.labelSmall,
             maxLines = 1,
         )
@@ -593,7 +616,7 @@ private fun TypeChip(label: String) {
 /** A section's own full-text search: passages shown under its title matches. */
 class SectionTextSearch(
     val search: suspend (String) -> List<SearchHitUi>,
-    val loadPassage: suspend (String) -> String?,
+    val loadPassage: suspend (SearchHitUi) -> String?,
     /** The hit and the query that found it (to mark the match in the reader). */
     val onOpen: (SearchHitUi, String) -> Unit,
 )

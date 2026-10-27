@@ -415,11 +415,13 @@ class AtharContentViewModel @Inject constructor(
             matches = marks,
             died = entity.died,
             url = url,
+            row = row,
         )
     }
 
-    /** The whole passage behind an online hit (normalized index text), for «المزيد». */
-    suspend fun onlinePassage(url: String): String? = runCatching { onlineSearch.fullText(url) }.getOrNull()?.ifBlank { null }
+    /** The whole passage behind an online hit, as written, for «المزيد». */
+    suspend fun onlinePassage(hit: SearchHitUi): String? =
+        hit.url?.let { url -> runCatching { onlineSearch.fullText(url, hit.row) }.getOrNull()?.ifBlank { null } }
 
     /**
      * Where an online hit sits in the app's own text: its chapter (a book url's slug is the chapter

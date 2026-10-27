@@ -59,7 +59,8 @@ import com.atharchive.ui.components.AtharFavouriteButton
 import com.atharchive.ui.components.AtharDownloadButton
 import com.atharchive.ui.components.AtharChipGroup
 import com.atharchive.ui.components.AtharEmptyState
-import com.atharchive.ui.components.AtharFilterButton
+import com.atharchive.ui.components.AtharFilterIcon
+import com.atharchive.ui.components.AtharActiveFilters
 import com.atharchive.ui.components.AtharFacet
 import com.atharchive.ui.components.asChoiceSet
 import com.atharchive.ui.components.asStoredChoices
@@ -145,17 +146,24 @@ fun IssuesScreen(
                         onBack = onBack,
                         horizontalPadding = horizontalPadding,
                     )
+                    val filterGroups = listOfNotNull(
+                                if (selectedTab == SectionTab.Recent) null else AtharChipGroup("الترتيب", IssueSort.entries.map { it.label }, sort.label) { label -> sortName = IssueSort.entries.first { it.label == label }.name },
+                            if (selectedTab == SectionTab.Recent) null else AtharDirectionGroup(descending) { descendingStored = if (it) "1" else "" },
+                            )
+                    val filterFacets = listOf(AtharFacet("الموضوع", topics, topic, { topicStored = it.asStoredChoices() }))
                     AtharSearchField(
                         query = query,
                         placeholder = "ابحث في ${state.countLabel}…",
                         onQueryChange = { query = it },
                         tagPrefix = "issues",
+                        trailing = { AtharFilterIcon(filterGroups, filterFacets, "issues_filter") },
                         modifier = Modifier.padding(
                             start = horizontalPadding,
                             end = horizontalPadding,
                             top = 4.dp,
                         ),
                     )
+                    AtharActiveFilters(filterGroups, filterFacets, "issues_filter", Modifier.padding(horizontal = horizontalPadding))
                 }
             
             
@@ -168,21 +176,6 @@ fun IssuesScreen(
                         onReselect = { reselectScope.launch { listState.animateScrollToItem(0) } },
                         modifier = Modifier.padding(horizontal = horizontalPadding),
                     )
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(horizontal = horizontalPadding - 4.dp, vertical = 2.dp),
-                        horizontalArrangement = Arrangement.spacedBy(10.dp),
-                    ) {
-                        AtharFilterButton(
-                            groups = listOfNotNull(
-                                if (selectedTab == SectionTab.Recent) null else AtharChipGroup("الترتيب", IssueSort.entries.map { it.label }, sort.label) { label -> sortName = IssueSort.entries.first { it.label == label }.name },
-                            if (selectedTab == SectionTab.Recent) null else AtharDirectionGroup(descending) { descendingStored = if (it) "1" else "" },
-                            ),
-                            facets = listOf(AtharFacet("الموضوع", topics, topic, { topicStored = it.asStoredChoices() })),
-                            tagPrefix = "issues_filter",
-                        )
-                    }
                     HorizontalDivider(
                         modifier = Modifier.padding(
                             horizontal = horizontalPadding,

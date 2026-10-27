@@ -31,10 +31,12 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.atharchive.ui.components.AtharMenu
-import com.atharchive.ui.components.AtharMenuItem
+import com.atharchive.ui.components.AtharMenuDivider
+import com.atharchive.ui.components.AtharFilterChip
+import com.atharchive.ui.components.AtharFilterPicker
+import com.atharchive.ui.components.AtharFilterRow
 import com.atharchive.ui.components.RemovableChip
 import com.atharchive.ui.components.arabicDigits
-import com.atharchive.ui.components.normKey
 import com.atharchive.ui.icons.AtharIcons
 import com.atharchive.ui.theme.AtharCorners
 import com.atharchive.ui.theme.AtharTheme
@@ -71,55 +73,36 @@ fun SearchFilterButton(filters: SearchFilters, authors: List<String>, onChange: 
                 )
             }
         }
-        AtharMenu(expanded = open, onDismiss = { open = false }, width = 340.dp, maxHeight = 600.dp, modifier = Modifier.testTag("search_filter_popup")) {
-            Column(Modifier.padding(horizontal = 12.dp, vertical = 4.dp)) {
-                // Label beside its choices, one line per setting (as the reader's Aa popover), so the
-                // whole popup fits on screen without scrolling.
-                @Composable fun <T> group(title: String, options: List<T>, label: (T) -> String, isOn: (T) -> Boolean, onTap: (T) -> Unit) {
-                    Row(Modifier.fillMaxWidth().padding(vertical = 4.dp), verticalAlignment = Alignment.CenterVertically) {
-                        Text(title, Modifier.weight(0.22f), color = AtharTheme.colors.secondaryText, style = MaterialTheme.typography.labelSmall)
-                        FlowRow(Modifier.weight(0.78f), horizontalArrangement = Arrangement.spacedBy(5.dp), verticalArrangement = Arrangement.spacedBy(5.dp)) {
-                            options.forEach { option -> SmallChip(label(option), isOn(option)) { onTap(option) } }
+        AtharMenu(expanded = open, onDismiss = { open = false }, width = 330.dp, maxHeight = 560.dp, modifier = Modifier.testTag("search_filter_popup")) {
+            Column(Modifier.padding(horizontal = 12.dp, vertical = 2.dp)) {
+                AtharFilterRow("الترتيب") { SearchSort.entries.forEach { AtharFilterChip(it.label, it == filters.sort) { onChange(filters.copy(sort = it)) } } }
+                // Relevance has one direction; the death year has two.
+                if (filters.sort == SearchSort.Died) AtharFilterRow("الاتجاه") {
+                    listOf(false, true).forEach { AtharFilterChip(if (it) "الأحدث وفاة" else "الأقدم وفاة", it == filters.descending) { onChange(filters.copy(descending = it)) } }
+                }
+                AtharMenuDivider()
+                AtharFilterRow("الدقة") { SearchMode.entries.forEach { AtharFilterChip(it.label, it == filters.mode) { onChange(filters.copy(mode = it)) } } }
+                AtharMenuDivider()
+                AtharFilterRow("المجال") { SearchField.entries.forEach { AtharFilterChip(it.label, it == filters.field) { onChange(filters.copy(field = it)) } } }
+                AtharMenuDivider()
+                AtharFilterRow("النطاق") {
+                    listOf(false, true).forEach { AtharFilterChip(if (it) "المحمّلة فقط" else "كل المكتبة", it == filters.downloadedOnly) { onChange(filters.copy(downloadedOnly = it)) } }
+                }
+                AtharMenuDivider()
+                // Several types at once; none ticked means all of them.
+                AtharFilterRow("النوع") {
+                    SearchResultType.entries.forEach { type ->
+                        AtharFilterChip(type.label, type in filters.types) {
+                            onChange(filters.copy(types = if (type in filters.types) filters.types - type else filters.types + type))
                         }
                     }
                 }
-                group("الترتيب", SearchSort.entries, { it.label }, { it == filters.sort }) { onChange(filters.copy(sort = it)) }
-                // Relevance has one direction; the death year has two.
-                if (filters.sort == SearchSort.Died) group("الاتجاه", listOf(false, true), { if (it) "الأحدث وفاة" else "الأقدم وفاة" }, { it == filters.descending }) {
-                    onChange(filters.copy(descending = it))
+                AtharMenuDivider()
+                AtharFilterPicker("المؤلف", authors, filters.authors, { null }, "search_filter_author") { name ->
+                    onChange(filters.copy(authors = if (name in filters.authors) filters.authors - name else filters.authors + name))
                 }
-                group("الدقة", SearchMode.entries, { it.label }, { it == filters.mode }) { onChange(filters.copy(mode = it)) }
-                group("المجال", SearchField.entries, { it.label }, { it == filters.field }) { onChange(filters.copy(field = it)) }
-                group("النطاق", listOf(false, true), { if (it) "المحمّلة فقط" else "كل المكتبة" }, { it == filters.downloadedOnly }) {
-                    onChange(filters.copy(downloadedOnly = it))
-                }
-                // Several types at once; none ticked means all of them.
-                group("النوع", SearchResultType.entries, { it.label }, { it in filters.types }) {
-                    onChange(filters.copy(types = if (it in filters.types) filters.types - it else filters.types + it))
-                }
-                AuthorPicker(filters, authors, onChange)
             }
         }
-    }
-}
-
-/** Authors are hundreds: typed, not listed, so the popup needs no list of its own to scroll. */
-@Composable
-private fun AuthorPicker(filters: SearchFilters, authors: List<String>, onChange: (SearchFilters) -> Unit) {
-    var query by remember { mutableStateOf("") }
-    Row(Modifier.fillMaxWidth().padding(vertical = 4.dp), verticalAlignment = Alignment.CenterVertically) {
-        Text("المؤلف", Modifier.weight(0.22f), color = AtharTheme.colors.secondaryText, style = MaterialTheme.typography.labelSmall)
-        OutlinedTextField(query, { query = it }, placeholder = { Text("اكتب اسمًا…") }, singleLine = true,
-            modifier = Modifier.weight(0.78f).testTag("search_filter_author_query"))
-    }
-    val term = com.atharchive.core.ArNormalize.normalize(query.trim())
-    // ponytail: first 5 matches; a longer name narrows it
-    val matches = if (term.isEmpty()) filters.authors.toList() else authors.filter { normKey(it).contains(term) }.take(5)
-    matches.forEach { name ->
-        val ticked = name in filters.authors
-        AtharMenuItem(name, checked = ticked, onClick = {
-            onChange(filters.copy(authors = if (ticked) filters.authors - name else filters.authors + name))
-        })
     }
 }
 
@@ -147,21 +130,4 @@ fun SearchActiveFilters(filters: SearchFilters, onChange: (SearchFilters) -> Uni
             fontWeight = FontWeight.SemiBold,
         )
     }
-}
-
-/** A compact choice pill: solid accent when on, like [com.atharchive.ui.components.AtharChip] but sized for a popup. */
-@Composable
-private fun SmallChip(label: String, selected: Boolean, onClick: () -> Unit) {
-    Text(
-        label,
-        Modifier
-            .heightIn(min = 36.dp)
-            .clip(AtharCorners.Control)
-            .background(if (selected) AtharTheme.colors.primaryAction else AtharTheme.colors.divider.copy(alpha = 0.28f))
-            .clickable(role = Role.RadioButton, onClick = onClick)
-            .padding(horizontal = 12.dp, vertical = 8.dp),
-        color = if (selected) AtharTheme.colors.onPrimaryAction else AtharTheme.colors.secondaryText,
-        style = MaterialTheme.typography.bodySmall,
-        fontWeight = if (selected) FontWeight.SemiBold else FontWeight.Normal,
-    )
 }

@@ -90,7 +90,8 @@ import com.atharchive.ui.components.AtharEmptyState
 import com.atharchive.ui.components.SectionTab
 import com.atharchive.ui.components.emptyCopy
 import com.atharchive.ui.components.AtharChipGroup
-import com.atharchive.ui.components.AtharFilterButton
+import com.atharchive.ui.components.AtharFilterIcon
+import com.atharchive.ui.components.AtharActiveFilters
 import com.atharchive.ui.components.enumValueOrNull
 import com.atharchive.ui.components.AtharFacet
 import com.atharchive.ui.components.arabicDigits
@@ -215,17 +216,35 @@ fun BooksScreen(
                         onBack = onBack,
                         horizontalPadding = horizontalPadding,
                     )
+                val filterGroups = listOfNotNull(
+                            if (selectedTab == SectionTab.Recent) null
+                            else AtharChipGroup("الترتيب", BookSort.entries.map { it.label }, sort.label) { label ->
+                                sortName = BookSort.entries.first { it.label == label }.name
+                            },
+                            if (selectedTab == SectionTab.Recent) null else AtharDirectionGroup(descending) { descendingStored = if (it) "1" else "" },
+                        )
+                val filterFacets = listOf(
+                            AtharFacet("المؤلف", authors, author, { authorStored = it.asStoredChoices() }) { name ->
+                                val (died, count) = authorFacts.getValue(name)
+                                listOfNotNull(died?.let(::diedLabel), com.atharchive.data.arabicCount(count, "", "كتاب واحد", "كتابان", "كتب", "كتابًا")).joinToString(" · ")
+                            },
+                            AtharFacet("الموضوع", topics, topic, { topicStored = it.asStoredChoices() }),
+                            AtharFacet("القرن", centuries, century, { centuryStored = it.asStoredChoices() }),
+                            AtharFacet("النوع", kinds, kind, { kindStored = it.asStoredChoices() }),
+                        )
                 AtharSearchField(
                     query = query,
                     placeholder = "ابحث في ${state.archiveCountLabel}…",
                     onQueryChange = { query = it },
                     tagPrefix = "books",
+                    trailing = { AtharFilterIcon(filterGroups, filterFacets, "books_filter") },
                     modifier = Modifier.padding(
                         start = horizontalPadding,
                         end = horizontalPadding,
                         top = 4.dp,
                     ),
                 )
+                AtharActiveFilters(filterGroups, filterFacets, "books_filter", Modifier.padding(horizontal = horizontalPadding))
                 }
             
         
@@ -238,32 +257,6 @@ fun BooksScreen(
                     onReselect = { reselectScope.launch { listState.animateScrollToItem(0) } },
                     modifier = Modifier.padding(horizontal = horizontalPadding),
                 )
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = horizontalPadding - 4.dp, vertical = 2.dp),
-                    horizontalArrangement = Arrangement.spacedBy(10.dp),
-                ) {
-                    AtharFilterButton(
-                        groups = listOfNotNull(
-                            if (selectedTab == SectionTab.Recent) null
-                            else AtharChipGroup("الترتيب", BookSort.entries.map { it.label }, sort.label) { label ->
-                                sortName = BookSort.entries.first { it.label == label }.name
-                            },
-                            if (selectedTab == SectionTab.Recent) null else AtharDirectionGroup(descending) { descendingStored = if (it) "1" else "" },
-                        ),
-                        facets = listOf(
-                            AtharFacet("المؤلف", authors, author, { authorStored = it.asStoredChoices() }) { name ->
-                                val (died, count) = authorFacts.getValue(name)
-                                listOfNotNull(died?.let(::diedLabel), com.atharchive.data.arabicCount(count, "", "كتاب واحد", "كتابان", "كتب", "كتابًا")).joinToString(" · ")
-                            },
-                            AtharFacet("الموضوع", topics, topic, { topicStored = it.asStoredChoices() }),
-                            AtharFacet("القرن", centuries, century, { centuryStored = it.asStoredChoices() }),
-                            AtharFacet("النوع", kinds, kind, { kindStored = it.asStoredChoices() }),
-                        ),
-                        tagPrefix = "books_filter",
-                    )
-                }
                 HorizontalDivider(
                     modifier = Modifier.padding(horizontal = horizontalPadding, vertical = 2.dp),
                     thickness = 0.7.dp,
