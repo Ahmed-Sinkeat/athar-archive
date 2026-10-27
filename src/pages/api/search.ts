@@ -108,8 +108,11 @@ export const GET: APIRoute = async ({ url }) => {
   }
 
   const offset = Math.max(0, Math.min(2000, parseInt(url.searchParams.get("offset") ?? "0", 10) || 0));
-  const sort = url.searchParams.get("sort") === "death" ? "death" : "relevance";
-  const orderBy = sort === "death" ? "(pm.death_year IS NULL), pm.death_year ASC" : "rank";
+  const sortParam = url.searchParams.get("sort");
+  const sort = sortParam === "death" || sortParam === "death_desc" ? "death" : "relevance";
+  // Unknown death years stay last in both directions.
+  const deathOrder = `(pm.death_year IS NULL), pm.death_year ${sortParam === "death_desc" ? "DESC" : "ASC"}`;
+  const orderBy = sort === "death" ? deathOrder : "rank";
 
   // fetch one extra row to know whether a next page exists, without a COUNT(*)
   const limitBind = binds.length + 1;
@@ -145,7 +148,7 @@ export const GET: APIRoute = async ({ url }) => {
                FROM docs WHERE ${conds.join(" AND ")} ORDER BY rank LIMIT ${TITLE_SCAN_CAP}) d
          LEFT JOIN person_meta pm ON pm.slug = d.person
          GROUP BY COALESCE(NULLIF(d.book, ''), d.url)
-         ORDER BY ${sort === "death" ? "(pm.death_year IS NULL), pm.death_year ASC" : "min(d.r)"}
+         ORDER BY ${sort === "death" ? deathOrder : "min(d.r)"}
          LIMIT ?${limitBind} OFFSET ?${offsetBind}`
     : `SELECT docs.type, docs.url, docs.display_title AS title, docs.book,
                 ${snippet} AS snippet,
