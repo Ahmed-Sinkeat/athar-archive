@@ -3477,9 +3477,9 @@ description: "مسند ابن أبي شيبة، تأليف أبو بكر بن أ
 
 <hr class="page-sep" data-page="98" data-vol="2" />
 
-ابْن
+ابْنُ
 
-ُ الْأَدْرَعِ الْأَسْلَمِيُّ
+الْأَدْرَعِ الْأَسْلَمِيُّ
 
 <hr class="page-sep" data-page="100" data-vol="2" />
 

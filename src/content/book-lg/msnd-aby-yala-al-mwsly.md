@@ -13059,9 +13059,9 @@ description: "مسند أبي يعلى الموصلي، تأليف أبو يعل
 
 <hr class="page-sep" data-page="164" data-vol="3" />
 
-مُسْنَدُ سَفِينَة
+مُسْنَدُ سَفِينَةَ
 
-َ رَجُلٌ
+رَجُلٌ
 
 <hr class="page-sep" data-page="165" data-vol="3" />
 

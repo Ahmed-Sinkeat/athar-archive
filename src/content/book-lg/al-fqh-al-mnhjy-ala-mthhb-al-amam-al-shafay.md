@@ -15631,9 +15631,9 @@ description: "الفقه المنهجي على مذهب الإمام الشاف�
 
 <hr class="page-sep" data-page="218" data-vol="4" />
 
-سَابعًا: أَحْكَام
+سَابعًا: أَحْكَامُ
 
-ُ اللّقِيط
+اللّقِيط
 
 <hr class="page-sep" data-page="219" data-vol="4" />
 
