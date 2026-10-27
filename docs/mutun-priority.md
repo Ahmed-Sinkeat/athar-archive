@@ -18,8 +18,8 @@ Found: 70. Missing: 14.
 | مسائل الجاهلية | `src/content/book/masail-al-jahiliyyah.md` | 26 KB | **read in full** (2026-10-27): bold labels for all items in place; 3 source-repeated labels retained; no change needed |
 | العقيدة الواسطية | `src/content/book/al-aqeedah-al-wasitiyyah.md` | 51 KB | **read in full**: reviewed, no change needed |
 | العقيدة الواسطية بتعليق ابن مانع | `src/content/book/al-aqyda-al-wastya-btalyq-abn-mana.md` | 82 KB | **structure checked** (2026-10-27): linked as edition of الواسطية (بتعليق ابن مانع); 51 notes all linked, 0 dead refs; no change needed; not every line read |
-| الفتوى الحموية الكبرى | `src/content/book-lg/al-fatwa-al-hamawiyyah-al-kubra.md` | 256 KB | audited: chapter structure, paragraph lengths; sampled, not read in full |
-| التدمرية | `src/content/book-lg/al-tadmuriyyah.md` | 289 KB | structural scan: 5 headings split across two lines joined |
+| الفتوى الحموية الكبرى | `src/content/book-lg/al-fatwa-al-hamawiyyah-al-kubra.md` | 256 KB | **structure checked** (2026-10-27): no change needed; one editor note (p.547, a dropped paragraph) has no anchor in the text, reported not fixed; not every line read |
+| التدمرية | `src/content/book-lg/al-tadmuriyyah.md` | 289 KB | **structure checked** (2026-10-27): no change needed (153 headings, card ok); inline • separators are in the source; not every line read |
 | العقيدة الطحاوية | `src/content/book/al-aqeedah-al-tahawiyyah.md` | 26 KB | **read in full**: reviewed, no change needed |
 | لمعة الاعتقاد | `src/content/book/lumat-al-itiqad.md` | 56 KB | **structure checked** (2026-10-27): title and basmala put on their own lines; 52 notes all linked; not every line read |
 | أصول السنة لأحمد | `src/content/book/usul-al-sunnah-ahmad-ibn-hanbal.md` | 22 KB | **read in full**: reviewed, no change needed |
@@ -40,19 +40,19 @@ Found: 70. Missing: 14.
 |---|---|---:|---|
 | شروط الصلاة وأركانها وواجباتها | `src/content/book/shurut-al-salah.md` | 17 KB | **read in full** (2026-10-27): bold labels for الشرط الأول/الثاني/الثالث/التاسع, stray bullet removed |
 | آداب المشي إلى الصلاة | `src/content/book/adab-al-mashy-ila-al-salah.md` | 56 KB | **structure checked** (2026-10-27): linked edition (طبعة الوزارة); headings and footnotes ok; no change needed; not every line read |
-| عمدة الفقه | `src/content/book-lg/umdat-al-fiqh-ibn-qudamah.md` | 310 KB | structural scan: line breaks normalised |
-| زاد المستقنع | `src/content/book-lg/zad-al-mustaqni.md` | 314 KB | audited: chapter structure, paragraph lengths; sampled, not read in full |
+| عمدة الفقه | `src/content/book-lg/umdat-al-fiqh-ibn-qudamah.md` | 310 KB | **structure checked** (2026-10-27): metadata block put in the book card; 232 notes all linked; not every line read |
+| زاد المستقنع | `src/content/book-lg/zad-al-mustaqni.md` | 314 KB | **structure checked** (2026-10-27): 2 broken-parenthetical list markers removed; 256 sub-headings; linked edition (العسكر); not every line read |
 | دليل الطالب | `src/content/book-lg/dlyl-al-talb-lnyl-al-mtalb.md` | 513 KB | structural scan: line breaks inside paragraphs normalised |
-| أخصر المختصرات | `src/content/book-lg/akhsr-al-mkhtsrat.md` | 199 KB | structural scan: page-line breaks joined |
+| أخصر المختصرات | `src/content/book-lg/akhsr-al-mkhtsrat.md` | 199 KB | **structure checked** (2026-10-27): 3 import-artifact list markers removed; linked edition (العجمي); not every line read |
 | منهج السالكين | — | — | **missing** |
-| عمدة السالك | `src/content/book-lg/amdh-al-salk-wadh-al-nask.md` | 469 KB | audited: chapter structure, paragraph lengths; sampled, not read in full |
+| عمدة السالك | `src/content/book-lg/amdh-al-salk-wadh-al-nask.md` | 469 KB | **structure checked** (2026-10-27): metadata block put in the book card; 4 real sub-case bullets kept; not every line read |
 | متن أبي شجاع | `src/content/book/mtn-aby-shjaa-al-msma-al-ghayh-waltqryb.md` | 84 KB | **structure checked** (2026-10-27): 129 headings, no joined paragraphs, card ok; no change needed; not every line read |
-| المقدمة الحضرمية | `src/content/book-lg/al-mqdmh-al-hdrmyh.md` | 169 KB | structural scan: page-line breaks joined |
-| الزبد | `src/content/poem/al-zbd-fy-al-fqh-al-shafay.md` | 136 KB | structural scan: reviewed, no change needed |
+| المقدمة الحضرمية | `src/content/book-lg/al-mqdmh-al-hdrmyh.md` | 169 KB | **structure checked** (2026-10-27): 14 import-artifact list markers removed; 99 باب headings; not every line read |
+| الزبد | `src/content/poem/al-zbd-fy-al-fqh-al-shafay.md` | 136 KB | **structure checked** (2026-10-27): metadata block put in the book card; 96 headings, 344 page markers; not every line read |
 | متن الأخضري | `src/content/book/mtn-al-akhdry-fy-al-abadat-ala-mthhb-al-amam-malk.md` | 56 KB | **structure checked** (2026-10-27): 18 paragraph breaks restored after sentence-final lines (67 -> 85 blocks); not every line read |
-| الكوكب الزهري نظم الأخضري | `src/content/poem/al-kwkb-al-zhry-nzm-mkhtsr-al-akhdry.md` | 35 KB | **read in full** (2026-10-27): card title-block lines separated; 275 verses, 19 headings |
+| الكوكب الزهري نظم الأخضري | `src/content/poem/al-kwkb-al-zhry-nzm-mkhtsr-al-akhdry.md` | 35 KB | **read** (2026-10-27): card title-block separated; 108 lost hemistich separators restored (383 verses, each split checked by rhyme and sense) |
 | متن العشماوية | `src/content/book/mtn-al-ashmawyh.md` | 56 KB | **read in full**: line-joined walls split into paragraphs; باب headings restored |
-| الرسالة لابن أبي زيد | `src/content/book-lg/al-rsalh-llqyrwany.md` | 230 KB | audited: chapter structure, paragraph lengths; sampled, not read in full |
+| الرسالة لابن أبي زيد | `src/content/book-lg/al-rsalh-llqyrwany.md` | 230 KB | **structure checked** (2026-10-27): no change needed (45 headings, card ok, no joined paragraphs); not every line read |
 | مختصر خليل | `src/content/book-lg/mkhtsr-khlyl.md` | 801 KB | structural scan: reviewed; fasls are unpunctuated continuous text in this edition, left as printed |
 | نور الإيضاح | — | — | **missing** |
 | مختصر القدوري | — | — | **missing** |
@@ -102,7 +102,7 @@ Found: 70. Missing: 14.
 | الدرة البهية نظم الآجرومية | `src/content/poem/al-dra-al-bhya-nzm-al-ajrwmya.md` | 41 KB | **read** (2026-10-27): editor's metadata put in the book card; 254 verses, rhyme ok |
 | نظم الآجرومية | `src/content/poem/nzm-al-ajrwmya-abn-ab.md` | 24 KB | **read in full** (2026-10-27): 154 verses, 37 headings, no change needed |
 | اللؤلؤ المنظوم نظم الآجرومية | `src/content/poem/al-lwlw-al-mnzwm-fy-nzm-mnthwr-abn-ajrwm.md` | 20 KB | **read in full** (2026-10-27): card title-block lines separated; 202 verses, 25 headings |
-| متممة الآجرومية | `src/content/book-lg/mtmma-al-ajrwmya.md` | 132 KB | structural scan: reviewed, no change needed |
+| متممة الآجرومية | `src/content/book-lg/mtmma-al-ajrwmya.md` | 132 KB | **structure checked** (2026-10-27): editor's title block and notes put in the book card; headings ok; not every line read |
 | ملحة الإعراب | `src/content/book/mlha-al-iarab.md` | 58 KB | **read in full**: (earlier today) split verse blocks merged |
 | قطر الندى | `src/content/book/qatr-al-nada.md` | 39 KB | **structure checked** (2026-10-27): headings, page-boundary breaks, anchors scanned; no change needed; not every line read |
 | شذور الذهب | `src/content/book/mtn-shdhwr-al-dhhb.md` | 74 KB | **structure checked** (2026-10-27): 58 paragraph breaks restored after sentence-final lines (120 -> 178 blocks); not every line read |
