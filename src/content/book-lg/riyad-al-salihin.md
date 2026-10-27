@@ -1,6 +1,6 @@
 ---
 title: "رياض الصالحين"
-status: draft
+status: published
 published_at: 2026-10-27
 person: al-nawawi
 kind: متن

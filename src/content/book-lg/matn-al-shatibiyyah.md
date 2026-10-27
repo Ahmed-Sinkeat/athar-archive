@@ -1,6 +1,6 @@
 ---
 title: "متن الشاطبية (حرز الأماني ووجه التهاني)"
-status: draft
+status: published
 published_at: 2026-10-27
 person: al-qasim-al-shatibi
 kind: متن

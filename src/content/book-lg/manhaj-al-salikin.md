@@ -1,6 +1,6 @@
 ---
 title: "منهج السالكين وتوضيح الفقه في الدين"
-status: draft
+status: published
 published_at: 2026-10-27
 person: al-saadi
 kind: متن

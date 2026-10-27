@@ -1,6 +1,6 @@
 ---
 title: "منظومة الزمزمي في علوم القرآن"
-status: draft
+status: published
 published_at: 2026-10-27
 person: al-zamzami
 work_type: منظومة

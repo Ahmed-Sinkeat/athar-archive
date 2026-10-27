@@ -2,7 +2,7 @@
 title: "عمدة الأحكام"
 edition_of: umdat-al-ahkam
 edition: "تحقيق محمود الأرناؤوط"
-status: draft
+status: published
 published_at: 2026-10-27
 person: abd-al-ghani-al-maqdisi
 kind: متن

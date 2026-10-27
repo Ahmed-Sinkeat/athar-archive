@@ -1,6 +1,6 @@
 ---
 title: "الموقظة في علم مصطلح الحديث"
-status: draft
+status: published
 published_at: 2026-10-27
 person: al-dhahabi
 kind: متن

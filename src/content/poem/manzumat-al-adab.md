@@ -1,7 +1,7 @@
 ---
 title: "منظومة الآداب (الألفية في الآداب الشرعية)"
 edition: "تحقيق محمد بن ناصر العجمي"
-status: draft
+status: published
 published_at: 2026-10-27
 person: ibn-abd-al-qawi
 work_type: منظومة
