@@ -116,6 +116,7 @@ fun AtharMenu(
     colors: AtharMenuColors = atharMenuColors(),
     anchor: Rect? = null,
     focusable: Boolean = true,
+    maxHeight: Dp = 360.dp,
     content: @Composable ColumnScope.() -> Unit,
 ) {
     if (!expanded) return
@@ -152,7 +153,7 @@ fun AtharMenu(
                     Column(
                         modifier
                             .width(menuWidth)
-                            .heightIn(max = 360.dp)
+                            .heightIn(max = maxHeight)
                             .shadow(16.dp, shape, ambientColor = Color.Black.copy(alpha = 0.4f), spotColor = Color.Black.copy(alpha = 0.4f))
                             .clip(shape)
                             .background(colors.card)

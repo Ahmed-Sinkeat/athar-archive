@@ -89,6 +89,8 @@ fun AtharSearchField(
     onQueryChange: (String) -> Unit,
     tagPrefix: String,
     modifier: Modifier = Modifier,
+    /** Sits at the end of the field, after ×: the search screen's filter button. */
+    trailing: (@Composable () -> Unit)? = null,
 ) {
     Surface(
         modifier = modifier
@@ -155,6 +157,7 @@ fun AtharSearchField(
                     )
                 }
             }
+            trailing?.invoke()
         }
     }
 }
@@ -469,7 +472,7 @@ private fun FacetMenu(facet: AtharFacet, tag: String) {
 }
 
 @Composable
-private fun RemovableChip(label: String, onRemove: () -> Unit) {
+fun RemovableChip(label: String, onRemove: () -> Unit) {
     Row(
         Modifier
             .heightIn(min = 36.dp)

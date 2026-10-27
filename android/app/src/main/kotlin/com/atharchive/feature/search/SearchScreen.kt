@@ -142,7 +142,9 @@ fun SearchScreen(
                         end = horizontalPadding,
                         top = 4.dp,
                     ),
+                    trailing = { SearchFilterButton(filters, state.availableAuthors, ::changeFilters) },
                 )
+                SearchActiveFilters(filters, ::changeFilters, Modifier.padding(horizontal = horizontalPadding))
             }
 
             if (!hasQuery) {
@@ -211,9 +213,6 @@ fun SearchScreen(
                 return@LazyColumn
             }
 
-            item(key = "filter-menus") {
-                SearchFilterMenus(filters, state.availableAuthors, ::changeFilters, Modifier.padding(horizontal = horizontalPadding - 4.dp))
-            }
             item(key = "scope") {
                 ScopeLine(state, searching, searchResultsReadyTag(state.query), horizontalPadding)
             }
