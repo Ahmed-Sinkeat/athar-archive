@@ -934,7 +934,7 @@ export function parseReadableDocument(input: ParseReadableInput): ParsedDocument
       }
       kept.push(block);
     });
-    if (carry.length) kept.push({ t: "notes", f: carry });
+    if (carry.length) kept.push({ t: "notes", f: carry, a: kept.at(-1)?.a ?? "" });
     moved[blocks.length] = kept.length;
     for (const chapter of chapters) chapter.block = moved[chapter.block]!;
     blocks.length = 0;
