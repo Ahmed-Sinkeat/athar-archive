@@ -58,6 +58,7 @@ class AppearanceStore @Inject constructor(@ApplicationContext context: Context) 
             .putBoolean("poem_verse_numbers", settings.verseNumbers)
             .putBoolean("poem_prose", settings.poemProse)
             .putBoolean("poem_follow", settings.poemFollow)
+            .putBoolean("reader_highlight_line", settings.underlineHighlights)
             .putString(KeySpacing, settings.spacing.name)
             .apply()
     }
@@ -81,6 +82,7 @@ class AppearanceStore @Inject constructor(@ApplicationContext context: Context) 
             verseNumbers = prefs.getBoolean("poem_verse_numbers", false),
             poemProse = prefs.getBoolean("poem_prose", false),
             poemFollow = prefs.getBoolean("poem_follow", true),
+            underlineHighlights = prefs.getBoolean("reader_highlight_line", false),
         )
     }
 

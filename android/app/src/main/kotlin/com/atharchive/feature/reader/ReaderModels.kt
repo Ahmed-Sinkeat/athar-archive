@@ -181,6 +181,8 @@ data class ReaderSettings(
     val poemProse: Boolean = false,
     /** Poems: keep the recited verse centred while audio plays. */
     val poemFollow: Boolean = true,
+    /** «خط»: saved highlights as a line under the text instead of a colour behind it. */
+    val underlineHighlights: Boolean = false,
 ) {
     companion object {
         const val MIN_SIZE = 14

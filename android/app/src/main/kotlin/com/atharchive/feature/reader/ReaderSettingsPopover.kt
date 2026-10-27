@@ -105,6 +105,9 @@ fun ReaderSettingsPopover(
             }, colors, "reader_margin") { label ->
                 onChange(settings.copy(margin = when (label) { "ضيّقة" -> 12; "واسعة" -> 40; else -> 22 }))
             } }
+            LabeledRow("التظليل", colors) { SegmentRow(listOf("لون", "خط"), if (settings.underlineHighlights) "خط" else "لون", colors, "reader_highlight_style") {
+                onChange(settings.copy(underlineHighlights = it == "خط"))
+            } }
             LabeledRow("التشكيل", colors) { SegmentRow(listOf("ظاهر", "مخفي"), if (settings.showTashkeel) "ظاهر" else "مخفي", colors, "reader_tashkeel") {
                 onChange(settings.copy(showTashkeel = it == "ظاهر"))
             } }

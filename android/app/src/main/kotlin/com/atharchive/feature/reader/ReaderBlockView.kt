@@ -106,8 +106,13 @@ internal fun BlockView(
         selection.geometry[ordinal] =TextGeometry(block, ordinal, layout, value, coords)
     }
     fun onLayout(layout: TextLayoutResult) { textLayout = layout; register() }
+    // «خط» highlights: a rounded line under each highlighted line of text, below the kasra and descenders.
+    val underline = if (!settings.underlineHighlights || ranges.isEmpty() || value == null) Modifier else Modifier.drawBehind {
+        val layout = textLayout ?: return@drawBehind
+        ranges.forEach { drawHighlightLine(layout, value.displayOffset(it.first), value.displayOffset(if (it.last == Int.MAX_VALUE) Int.MAX_VALUE else it.last + 1), colors.accent.copy(alpha = 0.8f)) }
+    }
     // Without selection the text still records where it sits, so a note number can anchor its popover.
-    val selectable = if (selection == null || ordinal == null || value == null || value.text.isBlank()) Modifier.onPlaced { placed[0] = it } else Modifier
+    val selectable = underline.then(if (selection == null || ordinal == null || value == null || value.text.isBlank()) Modifier.onPlaced { placed[0] = it } else Modifier
         .onGloballyPositioned { placed[0] = it; register() }
         .semantics {
             onLongClick(label = "تحديد النص") { selection.geometry[ordinal]?.let(selection::beginFirstWord) ?: false }
@@ -116,7 +121,7 @@ internal fun BlockView(
             val range = selection.rangeIn(ordinal, value.source.length) ?: return@drawBehind
             val geometry = selection.geometry[ordinal] ?: return@drawBehind
             drawSelectionBand(geometry, range, colors.selection)
-        }
+        })
     val pressable = Modifier.fillMaxWidth()
     // Remembered with a link handler that never changes identity: a fresh lambda made the text
     // unequal on every recomposition, and Compose laid the whole paragraph out again.
@@ -136,8 +141,8 @@ internal fun BlockView(
     }
     @Composable
     fun marked(text: String, match: IntRange?, saved: List<IntRange>) =
-        remember(text, match, colors, block.spans, saved, settings.showTashkeel, settings.footnoteMode) {
-            markedText(text, match, colors, block.spans, saved, settings.showTashkeel, link)
+        remember(text, match, colors, block.spans, saved, settings.showTashkeel, settings.footnoteMode, settings.underlineHighlights) {
+            markedText(text, match, colors, block.spans, if (settings.underlineHighlights) emptyList() else saved, settings.showTashkeel, link)
         }
 
     when (block) {
@@ -342,6 +347,21 @@ internal fun BlockView(
                 )
             }
         }
+    }
+}
+
+/** One rounded stroke per line of [start, end) (display offsets), just above the line's bottom. */
+private fun androidx.compose.ui.graphics.drawscope.DrawScope.drawHighlightLine(layout: TextLayoutResult, start: Int, end: Int, color: Color) {
+    val to = end.coerceAtMost(layout.layoutInput.text.length)
+    if (start >= to) return
+    for (line in layout.getLineForOffset(start)..layout.getLineForOffset(to - 1)) {
+        val from = maxOf(start, layout.getLineStart(line))
+        val until = minOf(to, layout.getLineEnd(line, visibleEnd = true))
+        if (from >= until) continue
+        // The path's bounds, not two caret positions: right for RTL and for a line that ends mid-run.
+        val box = layout.getPathForRange(from, until).getBounds()
+        val y = layout.getLineBottom(line) - 2.dp.toPx()
+        drawLine(color, Offset(box.left, y), Offset(box.right, y), strokeWidth = 2.5.dp.toPx(), cap = androidx.compose.ui.graphics.StrokeCap.Round)
     }
 }
 
