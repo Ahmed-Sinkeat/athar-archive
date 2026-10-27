@@ -1192,6 +1192,8 @@ class AtharContentViewModel @Inject constructor(
             topics = topicsCsv.split(',').filter(String::isNotBlank).map(::topicName),
             died = died,
             publishedAt = publishedAt.orEmpty(),
+            pages = pageTo,
+            volumes = volumes,
             recentRank = recentRank,
             // ponytail: chapterAnchor is a slug, not a title; the title lives in the content DB per book. Show the place only.
             readingPosition = position?.let { "الموضع ${arabicNumber(it.ordinalHint + 1)}" },

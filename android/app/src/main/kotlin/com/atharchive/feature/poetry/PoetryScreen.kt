@@ -56,6 +56,9 @@ import androidx.compose.ui.unit.sp
 import com.atharchive.ui.components.AtharChipGroup
 import com.atharchive.ui.components.AtharEmptyState
 import com.atharchive.ui.components.AtharFilterButton
+import com.atharchive.ui.components.AtharFacet
+import com.atharchive.ui.components.asChoiceSet
+import com.atharchive.ui.components.asStoredChoices
 import com.atharchive.ui.components.enumValueOrNull
 import com.atharchive.ui.components.orFirstIn
 import com.atharchive.ui.components.rememberPersisted
@@ -73,7 +76,6 @@ import com.atharchive.ui.icons.AtharIcons
 import com.atharchive.ui.theme.AtharEditorialFontFamily
 import com.atharchive.ui.theme.AtharTheme
 
-private const val AllTopics = "كل المواضيع"
 
 @Composable
 fun PoetryScreen(
@@ -88,7 +90,7 @@ fun PoetryScreen(
 ) {
     var selectedTab by rememberSaveable { mutableStateOf(SectionTab.All) }
     var query by rememberSaveable { mutableStateOf("") }
-    var topicStored by rememberPersisted("poetry.topic", AllTopics)
+    var topicStored by rememberPersisted("poetry.topics", "")
     var sortName by rememberPersisted("poetry.order", PoemSort.Title.name)
     val sort = enumValueOrNull<PoemSort>(sortName) ?: PoemSort.Title
     val listState = rememberLazyListState()
@@ -98,10 +100,10 @@ fun PoetryScreen(
     }
 
     val topics = remember(state.poems) {
-        listOf(AllTopics) + state.poems.map { it.topic }.filter(String::isNotBlank).distinct()
+        state.poems.map { it.topic }.filter(String::isNotBlank).distinct()
     }
-    val topic = topicStored.orFirstIn(topics)
-    val hasActiveFilters = topic != AllTopics || sort != PoemSort.Newest
+    val topic = topicStored.asChoiceSet() intersect topics.toSet()
+    val hasActiveFilters = topic.isNotEmpty() || sort != PoemSort.Newest
 
     // Normalized once per catalog change, not per filter pass or per sort comparison.
     val normalized = remember(state.poems) {
@@ -118,7 +120,7 @@ fun PoetryScreen(
                 title.contains(term, ignoreCase = true) ||
                 poet.contains(term, ignoreCase = true) ||
                 opening.any { it.contains(term, ignoreCase = true) }
-            matchesTab && matchesQuery && (topic == AllTopics || poem.topic == topic)
+            matchesTab && matchesQuery && (topic.isEmpty() || poem.topic in topic)
         }.sortedWith(
             if (selectedTab == SectionTab.Recent) compareBy { it.recentRank ?: Int.MAX_VALUE } else when (sort) {
                 PoemSort.Title -> compareBy { normalized.getValue(it.id).first }
@@ -181,8 +183,8 @@ fun PoetryScreen(
                     AtharFilterButton(
                         groups = listOfNotNull(
                             if (selectedTab == SectionTab.Recent) null else AtharChipGroup("الترتيب", PoemSort.entries.map { it.label }, sort.label) { label -> sortName = PoemSort.entries.first { it.label == label }.name },
-                            AtharChipGroup("الموضوع", topics, topic) { topicStored = it },
                         ),
+                        facets = listOf(AtharFacet("الموضوع", topics, topic, { topicStored = it.asStoredChoices() })),
                         tagPrefix = "poetry_filter",
                     )
                 }

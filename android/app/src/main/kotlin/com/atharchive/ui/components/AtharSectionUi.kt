@@ -368,22 +368,129 @@ class AtharChipGroup(
     val active get() = selected != default
 }
 
-/** Each facet has one anchored menu. */
+/**
+ * A multi-select filter: its menu stays open while values are ticked, and every ticked value
+ * shows under the filter row as a chip with ×.
+ */
+class AtharFacet(
+    val title: String,
+    val options: List<String>,
+    val selected: Set<String>,
+    val onChange: (Set<String>) -> Unit,
+    /** A quieter second line per option, e.g. «ت ٧٢٨ · ٥ كتب». */
+    val subtitle: (String) -> String? = { null },
+)
+
+/** The sort and other single choices as menu buttons, then the facets, then the ticked values as chips. */
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun AtharFilterButton(
     groups: List<AtharChipGroup>,
     tagPrefix: String,
     modifier: Modifier = Modifier,
-    activeCount: Int = groups.count { it.active },
-    onClear: () -> Unit = { groups.forEach { if (it.active) it.onSelect(it.default) } },
+    facets: List<AtharFacet> = emptyList(),
 ) {
-    Row(modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-        groups.filter { it.options.isNotEmpty() }.forEachIndexed { index, group ->
-            AtharFilterMenu(group.title, group.options, setOf(group.selected), "${tagPrefix}_$index", group.onSelect)
+    Column(modifier) {
+        Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+            groups.filter { it.options.isNotEmpty() }.forEachIndexed { index, group ->
+                AtharMenuButton(group.title, group.options, group.selected, group.default, group.onSelect, "${tagPrefix}_$index")
+            }
+            facets.filter { it.options.isNotEmpty() }.forEachIndexed { index, facet -> FacetMenu(facet, "${tagPrefix}_f$index") }
         }
-        if (activeCount > 0) TextButton(onClick = onClear) { Text("مسح") }
+        val chips = facets.flatMap { facet -> facet.selected.map { facet to it } }
+        if (chips.isNotEmpty()) androidx.compose.foundation.layout.FlowRow(
+            Modifier.padding(horizontal = 4.dp, vertical = 4.dp),
+            horizontalArrangement = Arrangement.spacedBy(6.dp),
+            verticalArrangement = Arrangement.spacedBy(6.dp),
+        ) {
+            chips.forEach { (facet, value) -> RemovableChip(value) { facet.onChange(facet.selected - value) } }
+            if (chips.size >= 2) Text(
+                "مسح الكل",
+                Modifier
+                    .clip(AtharCorners.Control)
+                    .clickable(role = Role.Button) { facets.forEach { if (it.selected.isNotEmpty()) it.onChange(emptySet()) } }
+                    .padding(horizontal = 10.dp, vertical = 6.dp)
+                    .testTag("${tagPrefix}_clear"),
+                color = AtharTheme.colors.accent,
+                style = MaterialTheme.typography.bodySmall,
+                fontWeight = FontWeight.SemiBold,
+            )
+        }
     }
 }
+
+@Composable
+private fun FacetMenu(facet: AtharFacet, tag: String) {
+    var open by remember { mutableStateOf(false) }
+    var query by remember { mutableStateOf("") }
+    // Ticked values float to the top when the menu opens, not while ticking (rows would jump).
+    var pinned by remember { mutableStateOf(emptySet<String>()) }
+    val active = facet.selected.isNotEmpty()
+    Box {
+        Row(
+            Modifier
+                .clip(AtharCorners.Control)
+                .clickable(role = Role.DropdownList) { pinned = facet.selected; open = true }
+                .padding(horizontal = 4.dp, vertical = 6.dp)
+                .testTag("${tag}_menu"),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Text(
+                if (active) "${facet.title} · ${arabicDigits(facet.selected.size)}" else facet.title,
+                color = if (active) AtharTheme.colors.accent else AtharTheme.colors.secondaryText,
+                style = MaterialTheme.typography.bodySmall,
+                fontWeight = if (active) FontWeight.SemiBold else FontWeight.Normal,
+                maxLines = 1,
+            )
+            Icon(AtharIcons.ChevronDown, null, tint = AtharTheme.colors.secondaryText, modifier = Modifier.padding(start = 3.dp).size(12.dp))
+        }
+        AtharMenu(expanded = open, onDismiss = { open = false; query = "" }, width = 280.dp) {
+            val long = facet.options.size > 10
+            if (long) OutlinedTextField(query, { query = it }, label = { Text("ابحث في ${facet.title}") }, singleLine = true,
+                modifier = Modifier.fillMaxWidth().padding(horizontal = 8.dp).testTag("${tag}_query"))
+            val normalized = remember(facet.options) { facet.options.associateWith { com.atharchive.core.ArNormalize.normalize(it) } }
+            val term = com.atharchive.core.ArNormalize.normalize(query)
+            val matching = remember(facet.options, pinned, term) {
+                facet.options.filter { normalized.getValue(it).contains(term) }.sortedByDescending { it in pinned }
+            }
+            if (matching.isEmpty()) Text("لا توجد نتائج", Modifier.padding(14.dp), color = AtharTheme.colors.secondaryText)
+            @Composable fun option(value: String) {
+                val ticked = value in facet.selected
+                AtharMenuItem(value, checked = ticked, subtitle = facet.subtitle(value),
+                    onClick = { facet.onChange(if (ticked) facet.selected - value else facet.selected + value) },
+                    modifier = Modifier.testTag("${tag}_${facet.options.indexOf(value)}"))
+            }
+            // ponytail: fixed-height list inside the menu so hundreds of authors stay lazy
+            if (long) LazyColumn(Modifier.fillMaxWidth().height(280.dp)) {
+                items(matching.size, key = { matching[it] }) { option(matching[it]) }
+            } else matching.forEach { option(it) }
+        }
+    }
+}
+
+@Composable
+private fun RemovableChip(label: String, onRemove: () -> Unit) {
+    Row(
+        Modifier
+            .heightIn(min = 36.dp)
+            .clip(AtharCorners.Control)
+            .background(AtharTheme.colors.accent.copy(alpha = 0.13f))
+            .clickable(role = Role.Button, onClick = onRemove)
+            .semantics { contentDescription = "إزالة $label" }
+            .padding(start = 12.dp, end = 8.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(4.dp),
+    ) {
+        Text(label, color = MaterialTheme.colorScheme.onSurface, style = MaterialTheme.typography.bodySmall, maxLines = 1, overflow = TextOverflow.Ellipsis)
+        Icon(AtharIcons.Close, null, tint = AtharTheme.colors.secondaryText, modifier = Modifier.size(14.dp))
+    }
+}
+
+private const val SetSeparator = '\u001F'
+
+/** A persisted multi-choice ([rememberPersisted] keeps strings). */
+fun String.asChoiceSet(): Set<String> = if (isEmpty()) emptySet() else split(SetSeparator).toSet()
+fun Set<String>.asStoredChoices(): String = joinToString(SetSeparator.toString())
 
 @Composable
 fun AtharFilterMenu(title: String, options: List<String>, selected: Set<String>, tag: String, onSelect: (String) -> Unit) {

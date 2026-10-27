@@ -89,7 +89,10 @@ import com.atharchive.ui.components.emptyCopy
 import com.atharchive.ui.components.AtharChipGroup
 import com.atharchive.ui.components.AtharFilterButton
 import com.atharchive.ui.components.enumValueOrNull
-import com.atharchive.ui.components.orFirstIn
+import com.atharchive.ui.components.AtharFacet
+import com.atharchive.ui.components.arabicDigits
+import com.atharchive.ui.components.asChoiceSet
+import com.atharchive.ui.components.asStoredChoices
 import com.atharchive.ui.components.rememberPersisted
 import com.atharchive.ui.components.AtharMenuButton
 import com.atharchive.ui.components.AtharSearchField
@@ -100,7 +103,17 @@ import com.atharchive.ui.icons.AtharIcons
 import com.atharchive.ui.theme.AtharEditorialFontFamily
 import com.atharchive.ui.theme.AtharTheme
 
-private const val AllKinds = "كل الأنواع"
+private fun centuryOf(died: Int) = "القرن ${arabicDigits((died - 1) / 100 + 1)}"
+
+/** «ت ٧٢٨هـ» */
+internal fun diedLabel(died: Int) = "ت ${arabicDigits(died)}هـ"
+
+/** «٤٤٣ ص», or «٤ مج» for a work in several volumes. */
+internal fun BookUi.sizeLabel(): String? = when {
+    (volumes ?: 1) > 1 -> "${arabicDigits(volumes!!)} مج"
+    pages != null -> "${arabicDigits(pages)} ص"
+    else -> null
+}
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
@@ -116,19 +129,27 @@ fun BooksScreen(
 ) {
     var selectedTab by rememberSaveable { mutableStateOf(SectionTab.All) }
     var query by rememberSaveable { mutableStateOf("") }
-    var kindStored by rememberPersisted("books.kind", AllKinds)
-    var topicStored by rememberPersisted("books.topic", "كل الموضوعات")
-    var centuryStored by rememberPersisted("books.century", "كل القرون")
+    var kindStored by rememberPersisted("books.kinds", "")
+    var topicStored by rememberPersisted("books.topics", "")
+    var centuryStored by rememberPersisted("books.centuries", "")
+    var authorStored by rememberPersisted("books.authors", "")
     var sortName by rememberPersisted("books.order", BookSort.Title.name)
     val sort = enumValueOrNull<BookSort>(sortName) ?: BookSort.Title
-    val kinds = remember(state.books) { listOf(AllKinds) + state.books.map { it.kind }.distinct() }
-    val topics = remember(state.books) { listOf("كل الموضوعات") + state.books.flatMap { it.topics }.distinct().sorted() }
+    val kinds = remember(state.books) { state.books.map { it.kind }.distinct() }
+    val topics = remember(state.books) { state.books.flatMap { it.topics }.distinct().sorted() }
     val centuries = remember(state.books) {
-        listOf("كل القرون") + state.books.mapNotNull { it.died?.let { year -> (year - 1) / 100 + 1 } }.distinct().sorted().map { "القرن $it" }
+        state.books.mapNotNull { it.died }.distinct().sorted().map(::centuryOf).distinct()
     }
-    val kind = kindStored.orFirstIn(kinds)
-    val topic = topicStored.orFirstIn(topics)
-    val century = centuryStored.orFirstIn(centuries)
+    // Author → (death year, book count), for the author filter's second line.
+    val authorFacts = remember(state.books) {
+        state.books.filter { it.author.isNotBlank() }.groupBy { it.author }.mapValues { (_, books) -> books.firstNotNullOfOrNull { it.died } to books.size }
+    }
+    val authors = remember(authorFacts) { authorFacts.keys.sortedBy { ArNormalize.normalize(it) } }
+    // Values that no longer exist (catalog changed) drop out instead of hiding every book.
+    val kind = kindStored.asChoiceSet() intersect kinds.toSet()
+    val topic = topicStored.asChoiceSet() intersect topics.toSet()
+    val century = centuryStored.asChoiceSet() intersect centuries.toSet()
+    val author = authorStored.asChoiceSet() intersect authorFacts.keys
     val listState = rememberLazyListState()
     val reselectScope = androidx.compose.runtime.rememberCoroutineScope()
 
@@ -140,7 +161,7 @@ fun BooksScreen(
     val normalized = remember(state.books) {
         state.books.associate { it.id to (ArNormalize.normalize(it.title) to ArNormalize.normalize(it.author)) }
     }
-    val visibleBooks = remember(state.books, selectedTab, query, kind, sort, topic, century) {
+    val visibleBooks = remember(state.books, selectedTab, query, kind, sort, topic, century, author) {
         val term = ArNormalize.normalize(query.trim())
         state.books
             .asSequence()
@@ -151,14 +172,17 @@ fun BooksScreen(
                 val (title, author) = normalized.getValue(book.id)
                 term.isBlank() || title.contains(term, ignoreCase = true) || author.contains(term, ignoreCase = true)
             }
-            .filter { kind == AllKinds || it.kind == kind }
-            .filter { topic == "كل الموضوعات" || topic in it.topics }
-            .filter { century == "كل القرون" || it.died?.let { year -> "القرن ${(year - 1) / 100 + 1}" } == century }
+            .filter { kind.isEmpty() || it.kind in kind }
+            .filter { topic.isEmpty() || it.topics.any(topic::contains) }
+            .filter { century.isEmpty() || it.died?.let(::centuryOf) in century }
+            .filter { author.isEmpty() || it.author in author }
             .sortedWith(
                 when {
                     selectedTab == SectionTab.Recent -> compareBy { it.recentRank ?: Int.MAX_VALUE }
                     sort == BookSort.Title -> compareBy { normalized.getValue(it.id).first }
                     sort == BookSort.Author -> compareBy { normalized.getValue(it.id).second }
+                    sort == BookSort.Died -> compareBy(nullsLast()) { it.died }
+                    sort == BookSort.Pages -> compareBy<BookUi, Int?>(nullsLast()) { it.volumes?.takeIf { v -> v > 1 }?.let { v -> 100_000 * v } ?: it.pages }
                     else -> compareByDescending { it.publishedAt }
                 },
             )
@@ -175,7 +199,7 @@ fun BooksScreen(
 
         Box(modifier = Modifier.fillMaxSize().clipToBounds()) {
             val header = rememberAtharCollapsingHeader()
-            header.ShowOnChange(listState, selectedTab, query, kind, topic, century, sort)
+            header.ShowOnChange(listState, selectedTab, query, kind, topic, century, author, sort)
             AtharFloatingHeader(header) {
                 Column {
                     AtharTopBar(
@@ -220,9 +244,15 @@ fun BooksScreen(
                             else AtharChipGroup("الترتيب", BookSort.entries.map { it.label }, sort.label) { label ->
                                 sortName = BookSort.entries.first { it.label == label }.name
                             },
-                            AtharChipGroup("النوع", kinds, kind) { kindStored = it },
-                            AtharChipGroup("الموضوع", topics, topic) { topicStored = it },
-                            AtharChipGroup("القرن", centuries, century) { centuryStored = it },
+                        ),
+                        facets = listOf(
+                            AtharFacet("المؤلف", authors, author, { authorStored = it.asStoredChoices() }) { name ->
+                                val (died, count) = authorFacts.getValue(name)
+                                listOfNotNull(died?.let(::diedLabel), com.atharchive.data.arabicCount(count, "", "كتاب واحد", "كتابان", "كتب", "كتابًا")).joinToString(" · ")
+                            },
+                            AtharFacet("الموضوع", topics, topic, { topicStored = it.asStoredChoices() }),
+                            AtharFacet("القرن", centuries, century, { centuryStored = it.asStoredChoices() }),
+                            AtharFacet("النوع", kinds, kind, { kindStored = it.asStoredChoices() }),
                         ),
                         tagPrefix = "books_filter",
                     )
@@ -250,7 +280,7 @@ fun BooksScreen(
                     val (emptyTitle, emptyBody) = booksEmptyCopy(
                         selectedTab = selectedTab,
                         hasQuery = query.isNotBlank(),
-                        hasFilters = kind != AllKinds || topic != "كل الموضوعات" || century != "كل القرون",
+                        hasFilters = (kind + topic + century + author).isNotEmpty(),
                     )
                     AtharEmptyState(
                         title = emptyTitle,
@@ -331,7 +361,7 @@ private fun BookRow(
                 )
             }
             Text(
-                text = highlightMatches(book.author, query, hl),
+                text = highlightMatches(book.author + (book.died?.let { " (${diedLabel(it)})" } ?: ""), query, hl),
                 modifier = Modifier.padding(top = 2.dp),
                 color = AtharTheme.colors.secondaryText,
                 style = MaterialTheme.typography.bodySmall,
@@ -344,8 +374,9 @@ private fun BookRow(
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 val factColor = AtharTheme.colors.secondaryText.copy(alpha = 0.72f)
-                if (book.discipline.isNotBlank()) Text(
-                    text = book.discipline,
+                val facts = listOfNotNull(book.discipline.takeIf(String::isNotBlank), book.sizeLabel())
+                if (facts.isNotEmpty()) Text(
+                    text = facts.joinToString(" · "),
                     color = factColor,
                     style = MaterialTheme.typography.labelSmall,
                     maxLines = 1,
@@ -441,7 +472,7 @@ private fun booksEmptyCopy(
     hasFilters: Boolean,
 ): Pair<String, String> = when {
     hasQuery -> "لا توجد نتائج" to "جرّب اسم كتاب أو مؤلف أقصر."
-    hasFilters -> "لا توجد كتب بهذا النوع" to "اختر «كل الأنواع» لعرض مزيد من الكتب."
+    hasFilters -> "لا توجد كتب بهذه الاختيارات" to "أزل بعض الاختيارات لعرض مزيد من الكتب."
     else -> selectedTab.emptyCopy("كتب", "نزّل كتابًا لتقرأه دون اتصال.")
 }
 

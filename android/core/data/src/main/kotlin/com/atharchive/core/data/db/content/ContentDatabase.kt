@@ -70,6 +70,10 @@ data class ContentEntity(
     val edition: String? = null,
     val editionsJson: String? = null,
     val verseCount: Int? = null,
+    /** The printed page range ([com.atharchive.core.data.content.PageRange]); null when the catalog has none. */
+    val pageFrom: Int? = null,
+    val pageTo: Int? = null,
+    val volumes: Int? = null,
     val f0Json: String? = null,
     /** Serialized [com.atharchive.core.data.content.CardField] list; null when the book has none. */
     val cardJson: String? = null,
@@ -643,7 +647,7 @@ private fun contiguousProgress(frames: List<EntityFrameEntity>): Int {
         ChapterEntity::class,
         FootnoteEntity::class,
     ],
-    version = 8,
+    version = 9,
     exportSchema = true,
 )
 abstract class AtharContentDatabase : RoomDatabase() {

@@ -148,6 +148,9 @@ fun CatalogEntry.toEntity(): ContentEntity = ContentEntity(
     pkgChapters = pkg.chapters,
     audioJson = AppContentJson.encodeToString(audio),
     verseCount = verseCount,
+    pageFrom = pkg.pages?.from,
+    pageTo = pkg.pages?.to,
+    volumes = pkg.pages?.vols,
     f0Json = pkg.f0?.let { AppContentJson.encodeToString(it) },
     cardJson = card.takeIf { it.isNotEmpty() }?.let { AppContentJson.encodeToString(it) },
 )
@@ -183,6 +186,7 @@ fun ContentEntity.toCatalogEntry(): CatalogEntry = CatalogEntry(
         uncompressed = pkgUncompressed,
         blocks = pkgBlocks,
         chapters = pkgChapters,
+        pages = if (pageFrom != null && pageTo != null && volumes != null) com.atharchive.core.data.content.PageRange(pageFrom, pageTo, volumes) else null,
         f0 = f0Json?.let { AppContentJson.decodeFromString(it) },
     ),
     audio = AppContentJson.decodeFromString(audioJson),

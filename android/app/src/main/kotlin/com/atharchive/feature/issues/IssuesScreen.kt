@@ -56,6 +56,9 @@ import com.atharchive.ui.components.AtharDownloadButton
 import com.atharchive.ui.components.AtharChipGroup
 import com.atharchive.ui.components.AtharEmptyState
 import com.atharchive.ui.components.AtharFilterButton
+import com.atharchive.ui.components.AtharFacet
+import com.atharchive.ui.components.asChoiceSet
+import com.atharchive.ui.components.asStoredChoices
 import com.atharchive.ui.components.enumValueOrNull
 import com.atharchive.ui.components.orFirstIn
 import com.atharchive.ui.components.rememberPersisted
@@ -70,7 +73,6 @@ import com.atharchive.ui.icons.AtharIcons
 import com.atharchive.ui.theme.AtharEditorialFontFamily
 import com.atharchive.ui.theme.AtharTheme
 
-private const val AllTopics = "كل المواضيع"
 
 @Composable
 fun IssuesScreen(
@@ -84,17 +86,17 @@ fun IssuesScreen(
 ) {
     var selectedTab by rememberSaveable { mutableStateOf(SectionTab.All) }
     var query by rememberSaveable { mutableStateOf("") }
-    var topicStored by rememberPersisted("issues.topic", AllTopics)
+    var topicStored by rememberPersisted("issues.topics", "")
     var sortName by rememberPersisted("issues.order", IssueSort.Question.name)
     val sort = enumValueOrNull<IssueSort>(sortName) ?: IssueSort.Question
     val listState = rememberLazyListState()
     val reselectScope = androidx.compose.runtime.rememberCoroutineScope()
 
     val topics = remember(state.issues) {
-        listOf(AllTopics) + state.issues.map { it.topic }.filter(String::isNotBlank).distinct()
+        state.issues.map { it.topic }.filter(String::isNotBlank).distinct()
     }
-    val topic = topicStored.orFirstIn(topics)
-    val hasActiveFilters = topic != AllTopics || sort != IssueSort.Newest
+    val topic = topicStored.asChoiceSet() intersect topics.toSet()
+    val hasActiveFilters = topic.isNotEmpty() || sort != IssueSort.Newest
 
     val visible = remember(state.issues, selectedTab, query, topic, sort) {
         state.issues.filter { issue ->
@@ -104,7 +106,7 @@ fun IssuesScreen(
                 ArNormalize.normalize(issue.question).contains(term, ignoreCase = true) ||
                 ArNormalize.normalize(issue.scholar).contains(term, ignoreCase = true) ||
                 ArNormalize.normalize(issue.answerExcerpt).contains(term, ignoreCase = true)
-            matchesTab && matchesQuery && (topic == AllTopics || issue.topic == topic)
+            matchesTab && matchesQuery && (topic.isEmpty() || issue.topic in topic)
         }.sortedWith(
             if (selectedTab == SectionTab.Recent) compareBy { it.recentRank ?: Int.MAX_VALUE } else when (sort) {
                 IssueSort.Question -> compareBy { ArNormalize.normalize(it.question) }
@@ -167,8 +169,8 @@ fun IssuesScreen(
                         AtharFilterButton(
                             groups = listOfNotNull(
                                 if (selectedTab == SectionTab.Recent) null else AtharChipGroup("الترتيب", IssueSort.entries.map { it.label }, sort.label) { label -> sortName = IssueSort.entries.first { it.label == label }.name },
-                                AtharChipGroup("الموضوع", topics, topic) { topicStored = it },
                             ),
+                            facets = listOf(AtharFacet("الموضوع", topics, topic, { topicStored = it.asStoredChoices() })),
                             tagPrefix = "issues_filter",
                         )
                     }

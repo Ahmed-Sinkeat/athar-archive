@@ -57,6 +57,14 @@ object AtharDatabases {
                         connection.prepare("ALTER TABLE chapter ADD COLUMN $column").use { it.step() }
                     }
                 }
+            }, object : androidx.room3.migration.Migration(8, 9) {
+                override suspend fun migrate(connection: androidx.sqlite.SQLiteConnection) {
+                    for (column in listOf("pageFrom", "pageTo", "volumes")) {
+                        connection.prepare("ALTER TABLE entity ADD COLUMN $column INTEGER").use { it.step() }
+                    }
+                    // The next sync re-applies the catalog so the new columns fill in (the row stays: deleting it would re-seed).
+                    connection.prepare("UPDATE contentGeneration SET generationId = ''").use { it.step() }
+                }
             })
             .addCallback(ContentSearchSchema.callback)
             .fallbackToDestructiveMigration(true)

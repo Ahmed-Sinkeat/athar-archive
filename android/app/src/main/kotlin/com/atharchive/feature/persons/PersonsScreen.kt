@@ -26,7 +26,6 @@ import com.atharchive.ui.components.*
 import com.atharchive.ui.theme.AtharEditorialFontFamily
 import com.atharchive.ui.theme.AtharTheme
 
-private const val AllCenturies = "كل القرون"
 private val Gutter = 20.dp
 
 private fun century(died: Int?) = died?.let { "القرن ${arabicDigits((it - 1) / 100 + 1)}" }
@@ -34,13 +33,13 @@ private fun century(died: Int?) = died?.let { "القرن ${arabicDigits((it - 1
 @Composable
 fun PersonsScreen(persons: List<CatalogPerson>, onPerson: (CatalogPerson) -> Unit, onSettings: () -> Unit, onBack: () -> Unit) {
     var query by rememberSaveable { mutableStateOf("") }
-    var selectedCentury by rememberSaveable { mutableStateOf(AllCenturies) }
+    var selectedCentury by rememberSaveable { mutableStateOf(emptySet<String>()) }
     val centuries = remember(persons) { persons.mapNotNull { it.died }.sorted().mapNotNull(::century).distinct() }
     val visible = remember(persons, query, selectedCentury) {
         val term = ArNormalize.normalize(query.trim())
         persons.filter {
             (term.isBlank() || ArNormalize.normalize(it.name).contains(term)) &&
-                (selectedCentury == AllCenturies || century(it.died) == selectedCentury)
+                (selectedCentury.isEmpty() || century(it.died) in selectedCentury)
         }.sortedBy { ArNormalize.normalize(it.name) }
     }
     val listState = rememberLazyListState()
@@ -57,9 +56,10 @@ fun PersonsScreen(persons: List<CatalogPerson>, onPerson: (CatalogPerson) -> Uni
                 modifier = Modifier.padding(start = Gutter, end = Gutter, top = 4.dp),
             )
             AtharFilterButton(
-                listOf(AtharChipGroup("القرن", listOf(AllCenturies) + centuries, selectedCentury) { selectedCentury = it }),
+                emptyList(),
                 "persons_filter",
                 Modifier.padding(horizontal = Gutter - 4.dp, vertical = 2.dp),
+                facets = listOf(AtharFacet("القرن", centuries, selectedCentury, { selectedCentury = it })),
             )
             HorizontalDivider(Modifier.padding(horizontal = Gutter, vertical = 2.dp), 0.7.dp, AtharTheme.colors.divider.copy(alpha = 0.5f))
         }
@@ -72,7 +72,7 @@ fun PersonsScreen(persons: List<CatalogPerson>, onPerson: (CatalogPerson) -> Uni
                 val (title, body) = when {
                     persons.isEmpty() -> "لا أعلام بعد" to "تظهر الأعلام بعد تحديث الفهرس من الإنترنت."
                     query.isNotBlank() -> "لا توجد نتائج" to "جرّب جزءًا من الاسم."
-                    else -> "لا أعلام في $selectedCentury" to "اختر «$AllCenturies» لعرض الجميع."
+                    else -> "لا أعلام في هذه القرون" to "أزل بعض القرون لعرض الجميع."
                 }
                 AtharEmptyState(title, body, "persons_empty_state", Gutter)
             }
