@@ -36,7 +36,9 @@ export function fmLoader(base: string | string[]): Loader {
         const { data } = matter(raw);
         const id = file.replace(/\.md$/, "");
         const digest = generateDigest(JSON.stringify(data));
-        if (store.has(id) && store.get(id)?.digest === digest) continue;
+        // The path too: a book moved book/ → book-lg/ keeps its frontmatter, and a stale path made readBody fail.
+        const cached = store.get(id);
+        if (cached?.digest === digest && cached.filePath === filePath) continue;
         store.set({ id, data: await parseData({ id, data }), filePath, digest });
       }
     },
