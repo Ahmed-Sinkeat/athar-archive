@@ -3,6 +3,7 @@ title: "كتاب التوحيد الذي هو حق الله على العبيد"
 status: published
 published_at: 2026-07-06
 person: ibn-abdul-wahhab
+edition: "المتن مجردًا من الحواشي"
 kind: متن
 
 topics: ["tahwid-al-ibada"]

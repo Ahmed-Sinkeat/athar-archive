@@ -5,7 +5,8 @@ published_at: 2026-07-04
 person: ibn-abdul-wahhab
 authored_year: 1206
 topics: ["tahwid-al-ibada"]
-edition: "-"
+edition_of: kitab-at-tawhid
+edition: "بتحقيق عبد العزيز السعيد وغيره، مع الحواشي"
 description: "بتحقيق عبد العزيز بن عبد الرحمن السعيد وغيره"
 ---
 ## كتاب التوحيد
