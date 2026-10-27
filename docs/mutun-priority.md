@@ -154,3 +154,21 @@ The user asked to skip the big books (the `book-lg` collection and the 100 KB+ p
 
 Note on the scan: in the `book` collection a verse is stored as one block with the two hemistichs on two lines, so the "single-verse" flag is a false alarm there. In the `poem` collection it is real: `al-kwkb-al-zhry` (108) and `alfya-abn-malk` (77) have bayts written on one line with no separator.
 
+
+## Added 2026-10-27 (from the epub library via Athar-Engine; all `status: draft`)
+
+| Text | File | Formatting (2026-10-27) |
+|---|---|---|
+| مختصر القدوري | `src/content/book-lg/mukhtasar-al-quduri.md` | book card; no other change needed |
+| منهج السالكين | `src/content/book-lg/manhaj-al-salikin.md` | book card; 586 paragraph breaks; 54 repeated page markers dropped (import fix); 259 page-bottom notes are still loose paragraphs (not linked) |
+| نور الإيضاح | `src/content/book-lg/nur-al-idah.md` | book card; 47 repeated page markers dropped (import fix) |
+| فضل الإسلام | `src/content/book/fadl-al-islam.md` | book card; 59 paragraph breaks; 22 page-bottom notes still loose |
+| رياض الصالحين | `src/content/book-lg/riyad-al-salihin.md` | book card; 355 chapter numbers merged into their headings; 319 repeated page markers dropped (import fix) |
+| الموقظة | `src/content/book/al-mawqidhah.md` | book card; 27 paragraph breaks; 39 page-bottom notes still loose |
+| الأصول من علم الأصول | `src/content/book-lg/al-usul-min-ilm-al-usul.md` | book card; 90 paragraph breaks; 43 page-bottom notes still loose |
+| متن الشاطبية | `src/content/book-lg/matn-al-shatibiyyah.md` | book card; no other change needed |
+| منظومة الآداب لابن عبد القوي | `src/content/poem/manzumat-al-adab.md` | book card; 12 paragraph breaks; parser now reads 947 verses |
+| منظومة الزمزمي | `src/content/poem/manzumat-al-zamzami.md` | no change needed (158 verses, 9 chapter headings) |
+| عمدة الأحكام ت الأرناؤوط (edition of `umdat-al-ahkam`) | `src/content/book-lg/umdat-al-ahkam-t-al-arnaut.md` | book card; 258 repeated page markers dropped (import fix) |
+
+Open item: the loose page-bottom notes above (about 360) need their anchors linked (`(^N)` + `data-notes`); an automatic pass was tried and rejected as unreliable (it mistook numbered list items for notes).
