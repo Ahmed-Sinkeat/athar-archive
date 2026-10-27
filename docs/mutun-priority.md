@@ -32,7 +32,7 @@ Found: 70. Missing: 14.
 | سلم الوصول (حافظ حكمي) | `src/content/poem/sullam-al-wusul-ila-ilm-al-usul.md` | 43 KB | **read** (2026-10-27): 290 verses, 15 chapter headings, rhyme ok, no change needed |
 | نونية القحطاني | `src/content/poem/nuniyyat-al-qahtani.md` | 106 KB | **read (opening/closing, rhyme)** (2026-10-27): 689 verses, rhyme ن throughout the main poem; no change needed |
 | التائية في القدر | `src/content/poem/al-qasidah-al-taiyyah-fil-qadar.md` | 14 KB | **read in full** (2026-10-27): 133 verses, rhyme consistent, no change needed |
-| الكافية الشافية (نونية ابن القيم) | `src/content/poem/al-kafiyah-al-shafiyah.md` | 547 KB | audited: chapter structure, paragraph lengths, qafiya 100% consistent (5821 bayts); sampled, not read in full |
+| الكافية الشافية (نونية ابن القيم) | `src/content/poem/al-kafiyah-al-shafiyah.md` | 547 KB | **structure checked** (2026-10-27): 5,821 verses read by the app as verse blocks, 97 chapter headings, rhyme ن throughout; no change needed; not every line read |
 
 ## الفقه
 
@@ -42,7 +42,7 @@ Found: 70. Missing: 14.
 | آداب المشي إلى الصلاة | `src/content/book/adab-al-mashy-ila-al-salah.md` | 56 KB | **structure checked** (2026-10-27): linked edition (طبعة الوزارة); headings and footnotes ok; no change needed; not every line read |
 | عمدة الفقه | `src/content/book-lg/umdat-al-fiqh-ibn-qudamah.md` | 310 KB | **structure checked** (2026-10-27): metadata block put in the book card; 232 notes all linked; not every line read |
 | زاد المستقنع | `src/content/book-lg/zad-al-mustaqni.md` | 314 KB | **structure checked** (2026-10-27): 2 broken-parenthetical list markers removed; 256 sub-headings; linked edition (العسكر); not every line read |
-| دليل الطالب | `src/content/book-lg/dlyl-al-talb-lnyl-al-mtalb.md` | 513 KB | structural scan: line breaks inside paragraphs normalised |
+| دليل الطالب | `src/content/book-lg/dlyl-al-talb-lnyl-al-mtalb.md` | 513 KB | **structure checked** (2026-10-27): metadata block put in the book card; 72 paragraph breaks restored; 1365 notes all linked; not every line read |
 | أخصر المختصرات | `src/content/book-lg/akhsr-al-mkhtsrat.md` | 199 KB | **structure checked** (2026-10-27): 3 import-artifact list markers removed; linked edition (العجمي); not every line read |
 | منهج السالكين | — | — | **missing** |
 | عمدة السالك | `src/content/book-lg/amdh-al-salk-wadh-al-nask.md` | 469 KB | **structure checked** (2026-10-27): metadata block put in the book card; 4 real sub-case bullets kept; not every line read |
@@ -53,7 +53,7 @@ Found: 70. Missing: 14.
 | الكوكب الزهري نظم الأخضري | `src/content/poem/al-kwkb-al-zhry-nzm-mkhtsr-al-akhdry.md` | 35 KB | **read** (2026-10-27): card title-block separated; 108 lost hemistich separators restored (383 verses, each split checked by rhyme and sense) |
 | متن العشماوية | `src/content/book/mtn-al-ashmawyh.md` | 56 KB | **read in full**: line-joined walls split into paragraphs; باب headings restored |
 | الرسالة لابن أبي زيد | `src/content/book-lg/al-rsalh-llqyrwany.md` | 230 KB | **structure checked** (2026-10-27): no change needed (45 headings, card ok, no joined paragraphs); not every line read |
-| مختصر خليل | `src/content/book-lg/mkhtsr-khlyl.md` | 801 KB | structural scan: reviewed; fasls are unpunctuated continuous text in this edition, left as printed |
+| مختصر خليل | `src/content/book-lg/mkhtsr-khlyl.md` | 801 KB | **structure checked** (2026-10-27): metadata block put in the book card; 207 paragraph breaks restored; the text is unpunctuated in this edition (left as printed); not every line read |
 | نور الإيضاح | — | — | **missing** |
 | مختصر القدوري | — | — | **missing** |
 | الرحبية | `src/content/poem/al-rahabiyyah.md` | 23 KB | **read in full** (2026-10-27): no change; the source numbers 176 verses and 11 closing verses carry no number (left as printed) |
@@ -65,8 +65,8 @@ Found: 70. Missing: 14.
 |---|---|---:|---|
 | الأربعون النووية | `src/content/book/al-arbaeen-al-nawawiyyah.md` | 39 KB | **read in full**: (earlier today) hadith blocks extended over whole narrations |
 | عمدة الأحكام | — | — | **missing** |
-| بلوغ المرام | `src/content/book-lg/bulugh-al-maram.md` | 547 KB | structural scan: 1,351 numbered entries wrapped (1,295 hadith, 56 athar) |
-| المحرر في أحاديث الأحكام | `src/content/book-lg/al-muharrar.md` | 728 KB | structural scan: 1,301 numbered entries wrapped (1,258 hadith, 43 athar) |
+| بلوغ المرام | `src/content/book-lg/bulugh-al-maram.md` | 547 KB | **structure checked** (2026-10-27): entries numbered 1-1351 with no gaps, card ok; no change needed; not every line read |
+| المحرر في أحاديث الأحكام | `src/content/book-lg/al-muharrar.md` | 728 KB | **structure checked** (2026-10-27): entries numbered 1-1301 with no gaps, card ok; no change needed; not every line read |
 | رياض الصالحين | — | — | **missing** |
 | المنظومة البيقونية | `src/content/poem/al-manzumah-al-bayquniyyah.md` | 5 KB | **read in full**: reviewed, no change needed |
 | نخبة الفكر | `src/content/book/nukhbat-al-fikar.md` | 22 KB | **read in full** |
