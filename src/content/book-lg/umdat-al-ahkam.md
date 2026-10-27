@@ -1,5 +1,6 @@
 ---
-title: "العمدة في الأحكام"
+title: "عمدة الأحكام"
+edition: "تحقيق عبد المحسن القاسم"
 status: published
 published_at: 2026-07-06
 person: abd-al-ghani-al-maqdisi
