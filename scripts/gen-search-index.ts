@@ -17,11 +17,12 @@
 import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
+import { execSync } from "node:child_process";
 import { loadContentMetaFromDisk } from "../src/lib/load.js";
 import { readBody } from "../src/lib/read-body.js";
 import { analyzeBook } from "../src/lib/chunk.js";
 import { normalizeArabic } from "../src/lib/ar-normalize.js";
-import { stripMd as strip } from "../src/lib/strip-md.js";
+import { stripMdRaw as strip } from "../src/lib/strip-md.js";
 
 interface Doc {
   type: string;
@@ -30,7 +31,7 @@ interface Doc {
   url: string;
   displayTitle: string;
   title: string;  // normalized, searchable
-  text: string;   // normalized, searchable
+  text: string;   // as written; normalized into the searchable column per row, kept as-is in `raw`
 }
 
 async function main() {
@@ -61,7 +62,7 @@ async function main() {
     for (const r of rows) if (r?.url && r?.hash) remoteHashes[r.url] = r.hash;
     snapshotOk = true;
   } catch { /* handled immediately below */ }
-  if (!snapshotOk && !allowFullRebuild) {
+  if (!snapshotOk && !allowFullRebuild && process.env.SEARCH_REBUILD_NEXT !== "1") {
     throw new Error(
       `refusing to run: ${hashesPath} is missing or unreadable, so the remote doc_hash state is UNKNOWN.\n` +
       `Continuing would emit a FULL REBUILD (DROP TABLE docs) and take search offline — usually over a\n` +
@@ -70,7 +71,8 @@ async function main() {
       `  • or, deliberately:  SEARCH_ALLOW_FULL_REBUILD=1 pnpm search:gen`,
     );
   }
-  const incremental = Object.keys(remoteHashes).length > 0;
+  const rebuildNext = process.env.SEARCH_REBUILD_NEXT === "1";
+  const incremental = !rebuildNext && Object.keys(remoteHashes).length > 0;
   if (!incremental) {
     console.log(
       snapshotOk
@@ -94,17 +96,25 @@ async function main() {
 
   const hashOf = (d: Doc) => crypto.createHash("sha256").update([d.title, d.text, d.displayTitle, d.type, d.book, d.person].join("\0")).digest("hex");
   const q = (s: string) => `'${s.replace(/'/g, "''").replace(/[\u0000-\u001f]/g, " ")}'`;
-  const row = (d: Doc) => `(${q(normalizeArabic(d.title))},${q(d.text)},${q(d.type)},${q(d.book)},${q(d.person)},${q(d.url)},${q(d.displayTitle)})`;
+  // `raw` is the passage as written (letters + tashkeel): results show it and rank the typed spelling first.
+  // An incremental run writes into the live table, which only has `raw` after the full reindex
+  // (SEARCH_REBUILD_NEXT) is swapped in; inserting it before then would fail every file.
+  const withRaw = !incremental || liveHasRaw();
+  const row = (d: Doc) => `(${q(normalizeArabic(d.title))},${q(normalizeArabic(d.text))},${q(d.type)},${q(d.book)},${q(d.person)},${q(d.url)},${q(d.displayTitle)}${withRaw ? "," + q(d.text.normalize("NFC")) : ""})`;
 
   const outDir = path.resolve("dist/search-index");
   fs.rmSync(outDir, { recursive: true, force: true });
   fs.mkdirSync(outDir, { recursive: true });
 
-  const HASH_TABLE = "CREATE TABLE IF NOT EXISTS doc_hash (url TEXT PRIMARY KEY, hash TEXT);\n";
+  // SEARCH_REBUILD_NEXT=1: build the whole index into docs_next/doc_hash_next while the live
+  // tables keep serving; dist/search-index-swap.sql then swaps them in (run by hand, after a check).
+  const DOCS = rebuildNext ? "docs_next" : "docs";
+  const HASHES = rebuildNext ? "doc_hash_next" : "doc_hash";
+  const SCHEMA = `USING fts5(title, text, type UNINDEXED, book UNINDEXED, person UNINDEXED, url UNINDEXED, display_title UNINDEXED, raw UNINDEXED, tokenize='unicode61 remove_diacritics 2')`;
+  const HASH_TABLE = `CREATE TABLE IF NOT EXISTS ${HASHES} (url TEXT PRIMARY KEY, hash TEXT);\n`;
   const HEADER = incremental
-    ? "CREATE VIRTUAL TABLE IF NOT EXISTS docs USING fts5(title, text, type UNINDEXED, book UNINDEXED, person UNINDEXED, url UNINDEXED, display_title UNINDEXED, tokenize='unicode61 remove_diacritics 2');\n" + HASH_TABLE
-    : "DROP TABLE IF EXISTS docs;\nDROP TABLE IF EXISTS doc_hash;\n" +
-      "CREATE VIRTUAL TABLE docs USING fts5(title, text, type UNINDEXED, book UNINDEXED, person UNINDEXED, url UNINDEXED, display_title UNINDEXED, tokenize='unicode61 remove_diacritics 2');\n" + HASH_TABLE;
+    ? `CREATE VIRTUAL TABLE IF NOT EXISTS docs ${SCHEMA};\n` + HASH_TABLE
+    : `DROP TABLE IF EXISTS ${DOCS};\nDROP TABLE IF EXISTS ${HASHES};\nCREATE VIRTUAL TABLE ${DOCS} ${SCHEMA};\n` + HASH_TABLE;
   const STMT_MAX = 80_000; // BYTES — D1 caps a single SQL statement at 100 KB
   // Real incident: a 53.6 MB single-file incremental batch (109-book import)
   // sat in remote `wrangler d1 execute` for ~14 min then failed with a blank
@@ -125,7 +135,7 @@ async function main() {
   let stmtBytes = 0;
   const flushStmt = () => {
     if (!stmt) return;
-    const line = `INSERT INTO docs (title,text,type,book,person,url,display_title) VALUES ${stmt};\n`;
+    const line = `INSERT INTO ${DOCS} (title,text,type,book,person,url,display_title${withRaw ? ",raw" : ""}) VALUES ${stmt};\n`;
     buf += line; bufBytes += blen(line);
     stmt = ""; stmtBytes = 0;
   };
@@ -201,7 +211,7 @@ async function main() {
       stmt += hadStmt ? `,\n${r}` : r;
       stmtBytes += rBytes + (hadStmt ? 2 : 0); // +2 for ",\n"
     }
-    if (hash !== null) write(`INSERT OR REPLACE INTO doc_hash (url, hash) VALUES (${q(url)}, ${q(hash)});\n`);
+    if (hash !== null) write(`INSERT OR REPLACE INTO ${HASHES} (url, hash) VALUES (${q(url)}, ${q(hash)});\n`);
     spent += cost;
     emitted += rows.length;
     done++;
@@ -308,7 +318,23 @@ async function main() {
         `Raise SEARCH_ROW_BUDGET (currently ${ROW_BUDGET}) only if the D1 plan allows more than 100k row writes/day.`,
     );
   }
+  if (rebuildNext) {
+    fs.writeFileSync(path.resolve("dist/search-index-swap.sql"),
+      "DROP TABLE IF EXISTS docs;\nALTER TABLE docs_next RENAME TO docs;\nDROP TABLE IF EXISTS doc_hash;\nALTER TABLE doc_hash_next RENAME TO doc_hash;\n");
+    console.log("swap: dist/search-index-swap.sql (run it once every file above is loaded and checked)");
+  }
   if (!incremental && emitted === 0) throw new Error("search index came out empty — refusing to write a DROP-only script");
 }
 
 await main();
+
+/** Whether the live docs table has the `raw` column; false when it can't be told (rows without it still work). */
+function liveHasRaw(): boolean {
+  try {
+    const out = execSync(`wrangler d1 execute athar-search --remote --json --command "SELECT name FROM pragma_table_info('docs') WHERE name = 'raw'"`,
+      { encoding: "utf-8", stdio: ["ignore", "pipe", "ignore"] });
+    return JSON.parse(out)[0].results.length > 0;
+  } catch {
+    return false;
+  }
+}

@@ -11,6 +11,7 @@
 // reads the whole match set, ~1.5 s on a common word, so it never delays hits).
 import type { APIRoute } from "astro";
 import { normalizeArabic } from "../../lib/ar-normalize.js";
+import { exactSnippet, hasTypedSpelling, type Mode, tierExprs, titleStartExpr, typedSpelling, widestExpr } from "../../lib/search-rank.js";
 
 export const prerender = false;
 
@@ -35,145 +36,142 @@ const json = (body: unknown, status = 200) =>
     headers: { "content-type": "application/json; charset=utf-8", "cache-control": status === 200 ? CACHE : "no-store" },
   });
 
-// mode=all (default): implicit AND across tokens, matching the current behavior.
-// mode=any: OR across tokens — broader recall.
-// mode=phrase: tokens must appear consecutively, in order.
-// Every token is quoted (neutralizes FTS5 query operators) AND prefix-matched
-// (trailing *) — not just the last one, so a typo/incomplete word ANYWHERE in
-// a multi-word query ("هذا وأما" typed as "هذا وام") doesn't kill the whole
-// AND match on its own; phrase mode keeps the old last-token-only prefix,
-// since prefixing every word inside a quoted phrase isn't meaningful FTS5 syntax.
-// Tokens shorter than this stay an exact match instead — Arabic's short
-// grammatical particles (يا، في، من، لا، ما، هل...) are almost all ≤2 letters,
-// and prefix-expanding one turns it into a wildcard that also matches any
-// unrelated word merely starting with it ("يا" → "ياجوج", "ياسمين"...).
-const MIN_PREFIX_LEN = 3;
-function buildMatch(tokens: string[], mode: string): string {
-  const clean = tokens.map((t) => t.replaceAll('"', ""));
-  const withPrefix = (t: string) => (t.length >= MIN_PREFIX_LEN ? `${t}*` : t);
-  if (mode === "phrase") {
-    const words = clean.map((t, i) => (i === clean.length - 1 ? withPrefix(t) : t));
-    return `"${words.join(" ")}"`;
-  }
-  // the *, unlike phrase mode's, must sit OUTSIDE the closing quote here —
-  // FTS5 only treats it as a wildcard there; inside the quotes it's literal.
-  const quoted = clean.map((t) => (t.length >= MIN_PREFIX_LEN ? `"${t}"*` : `"${t}"`));
-  return quoted.join(mode === "any" ? " OR " : " ");
-}
+// Ranking lives in src/lib/search-rank.ts: a title that starts with the words, then the exact
+// phrase, every exact word, words that only start the same (and in any mode, single words).
+// Each tier is its own query, run only while the page still needs rows, and excludes the
+// tiers before it, so a passage never shows twice and a common phrase usually costs one query.
+const TITLE_SCAN_CAP = 5000;
+// Works shown first because their title starts with the words (the متن before its شروح).
+const TITLE_TIER_MAX = 3;
+
+type Row = { row: number; type: string; url: string; title: string; book: string; raw: string | null; snippet: string; person_name: string | null; death_year: number | null };
+
+// ponytail: the passage as written (docs.raw) arrives with a full reindex, which takes days on
+// D1's free write quota; until then the folded text is shown. Checked once per isolate.
+let hasRaw: boolean | undefined;
 
 export const GET: APIRoute = async ({ url }) => {
   const { env } = await import("cloudflare:workers");
   const db = (env as unknown as { SEARCH?: D1Like }).SEARCH;
   if (!db) return json({ hits: [], hasMore: false, error: "search unavailable" }, 503);
+  hasRaw ??= (await db.prepare(`SELECT name FROM pragma_table_info('docs') WHERE name = 'raw'`).bind().all()).results.length > 0;
+  const rawCol = hasRaw ? "docs.raw" : "NULL";
 
-  // full-text lookup for one result (بحث page's "عرض الكل"/copy) — the main
-  // query below only returns a short snippet() to keep result lists light;
-  // fetching the whole paragraph is a separate, on-demand call by url (the
-  // doc's unique key), not baked into every search response.
+  // One passage in full, as written, for «المزيد» and copy: by row (instant), or by url from
+  // older clients (a scan of the whole table, ~1.5 s).
+  const wantRow = Number(url.searchParams.get("row"));
   const wantUrl = url.searchParams.get("url");
-  if (wantUrl) {
+  if (wantRow > 0 || wantUrl) {
     try {
-      const { results } = await db.prepare(`SELECT text FROM docs WHERE url = ?1 LIMIT 1`).bind(wantUrl).all();
-      return json({ text: (results[0] as { text?: string } | undefined)?.text ?? "" });
+      const { results } = wantRow > 0
+        ? await db.prepare(`SELECT ${rawCol} AS raw, text FROM docs WHERE rowid = ?1`).bind(wantRow).all()
+        : await db.prepare(`SELECT ${rawCol} AS raw, text FROM docs WHERE url = ?1 LIMIT 1`).bind(wantUrl!).all();
+      const r = results[0] as { raw?: string | null; text?: string } | undefined;
+      return json({ text: r?.raw || r?.text || "" });
     } catch {
       return json({ text: "" });
     }
   }
 
-  const raw = (url.searchParams.get("q") ?? "").slice(0, 200);
-  const tokens = normalizeArabic(raw).split(/\s+/).filter(Boolean).slice(0, 12);
+  const query = (url.searchParams.get("q") ?? "").slice(0, 200);
+  const tokens = normalizeArabic(query).replaceAll('"', " ").split(/\s+/).filter(Boolean).slice(0, 12);
   if (tokens.length === 0) return json({ hits: [], hasMore: false });
 
-  const mode = ["any", "all", "phrase"].includes(url.searchParams.get("mode") ?? "") ? url.searchParams.get("mode")! : "all";
-  // field=title restricts matching to the title column only (skips a book's
-  // whole text) — e.g. searching for an author or work by name without
-  // pulling in every unrelated paragraph that happens to mention the word.
-  // field=text is the opposite: body text only, titles excluded. FTS5's
-  // `column: (expr)` syntax scopes an already-built match expression to one
-  // column without changing how buildMatch() itself works.
+  const modeParam = url.searchParams.get("mode");
+  const mode: Mode = modeParam === "any" || modeParam === "phrase" ? modeParam : "all";
+  // field=title: titles only, one row per work (a chunked book has a row per chapter, all with
+  // its title). field=text: body text only.
   const field = ["title", "text"].includes(url.searchParams.get("field") ?? "") ? url.searchParams.get("field")! : "all";
-  const scoped = (expr: string) => (field === "all" ? expr : `${field}: (${expr})`);
-  const match = scoped(buildMatch(tokens, mode));
+  const scoped = (expr: string) => (field === "all" ? expr : `${field} : (${expr})`);
 
-  const conds: string[] = ["docs MATCH ?1"];
-  const binds: (string | number)[] = [match];
+  // ?1 is always the match expression; the scope filters follow it.
+  const filterBinds: string[] = [];
+  let filters = "";
   for (const col of ["type", "book", "person"] as const) {
     const vals = (url.searchParams.get(col) ?? "")
       .split(",").map((s) => s.trim()).filter(Boolean)
       .filter((v) => (col === "type" ? TYPES.has(v) : SLUG_OK.test(v)));
     if (vals.length) {
-      const placeholders = vals.map((v) => { binds.push(v); return `?${binds.length}`; }).join(",");
-      conds.push(`${col} IN (${placeholders})`);
+      filters += ` AND docs.${col} IN (${vals.map((v) => { filterBinds.push(v); return `?${filterBinds.length + 1}`; }).join(",")})`;
     }
   }
+  const work = "COALESCE(NULLIF(docs.book, ''), docs.url)";
 
   const offset = Math.max(0, Math.min(2000, parseInt(url.searchParams.get("offset") ?? "0", 10) || 0));
   const sortParam = url.searchParams.get("sort");
-  const sort = sortParam === "death" || sortParam === "death_desc" ? "death" : "relevance";
+  const byDeath = sortParam === "death" || sortParam === "death_desc";
   // Unknown death years stay last in both directions.
   const deathOrder = `(pm.death_year IS NULL), pm.death_year ${sortParam === "death_desc" ? "DESC" : "ASC"}`;
-  const orderBy = sort === "death" ? deathOrder : "rank";
 
-  // fetch one extra row to know whether a next page exists, without a COUNT(*)
-  const limitBind = binds.length + 1;
-  const offsetBind = binds.length + 2;
-
-  // snippet() takes a column INDEX, not a name (0=title, 1=text — see the
-  // fts5(title, text, ...) column order in gen-search-index.ts) — a
-  // title-only search should quote the title back, not an unrelated body
-  // snippet that happens to share no words with what was actually matched.
-  const snippetCol = field === "title" ? 0 : 1;
-  // Title mode returns a clean ONE-ROW-PER-WORK list: a chunked book stores one
-  // index row per chapter, all carrying the same title, so a raw title match
-  // floods the results with duplicates of the same book. Collapse by owning
-  // book (COALESCE → the doc's own url for non-book types, which are already
-  // one row each). rank is aggregated in the OUTER query as min() over a plain
-  // column computed inside the subquery — FTS5's rank/snippet aux functions
-  // can't be used directly under GROUP BY, so they're evaluated in the subquery
-  // where the FTS cursor context is valid. Text mode keeps every passage row.
+  // snippet() takes a column INDEX: 0 = title, 1 = text (gen-search-index.ts column order).
   const snip = Math.max(16, Math.min(64, parseInt(url.searchParams.get("snip") ?? "16", 10) || 16));
-  const snippet = `snippet(docs, ${snippetCol}, '<mark>', '</mark>', '…', ${snip})`;
-  // Bound the inner materialisation. A common word can match tens of thousands
-  // of titles, and every one of them had snippet() computed and buffered before
-  // the outer GROUP BY threw nearly all of it away. FTS5 still has to score the
-  // whole match set to order by rank (there's no index on rank), so this caps
-  // CPU and memory rather than rows read — the read saving comes from the cache
-  // above and the retry gate below. Deep pagination past the cap degrades to
-  // fewer groups, which is why it comfortably clears the 2000 offset ceiling.
-  const TITLE_SCAN_CAP = 5000;
-  const sql = field === "title"
-    ? `SELECT d.type, d.url, d.title, d.book, d.snippet, pm.name AS person_name, pm.death_year AS death_year
-         FROM (SELECT docs.type AS type, docs.url AS url, docs.display_title AS title, docs.book AS book,
-                      docs.person AS person, ${snippet} AS snippet, rank AS r
-               FROM docs WHERE ${conds.join(" AND ")} ORDER BY rank LIMIT ${TITLE_SCAN_CAP}) d
-         LEFT JOIN person_meta pm ON pm.slug = d.person
-         GROUP BY COALESCE(NULLIF(d.book, ''), d.url)
-         ORDER BY ${sort === "death" ? deathOrder : "min(d.r)"}
-         LIMIT ?${limitBind} OFFSET ?${offsetBind}`
-    : `SELECT docs.type, docs.url, docs.display_title AS title, docs.book,
-                ${snippet} AS snippet,
-                pm.name AS person_name, pm.death_year AS death_year
-         FROM docs LEFT JOIN person_meta pm ON pm.slug = docs.person
-         WHERE ${conds.join(" AND ")}
-         ORDER BY ${orderBy}
-         LIMIT ?${limitBind} OFFSET ?${offsetBind}`;
-  // The OR retry is the single most expensive query this endpoint can make —
-  // it matches the UNION of every token's prefix expansion instead of the
-  // intersection — and it only fires on searches that already found nothing.
-  // Worth it for a typo in a short query, not worth it otherwise:
-  //  - offset > 0: the user is paging through results, so page 1 wasn't empty;
-  //    a retry here can only be for a page past the end.
-  //  - many tokens: ORing five prefix-expanded words scans an enormous slice
-  //    of the index, and a five-word query that matches nothing is usually
-  //    genuinely absent rather than one typo away from a hit.
-  const RETRY_MAX_TOKENS = 4;
-  const mayRetry = mode === "all" && offset === 0 && tokens.length <= RETRY_MAX_TOKENS;
+  const rowSelect = `docs.rowid AS row, docs.type AS type, docs.url AS url, docs.display_title AS title, docs.book AS book, ${rawCol} AS raw,
+    snippet(docs, ${field === "title" ? 0 : 1}, '<mark>', '</mark>', '…', ${snip}) AS snippet,
+    pm.name AS person_name, pm.death_year AS death_year`;
+  const fromJoin = "FROM docs LEFT JOIN person_meta pm ON pm.slug = docs.person";
 
-  // Facets read the whole match set once more, without snippet(): cheap next to the page itself,
-  // and only on the first page. Capped so a stop-word query can't scan the whole index.
+  // Row ids of one tier, best first; grouped = one per work (its first row).
+  const pick = async (expr: string, grouped: boolean, limit: number, exclude: { rows: number[]; works: string[] }) => {
+    const binds: (string | number)[] = [expr, ...filterBinds];
+    let not = exclude.rows.length ? ` AND docs.rowid NOT IN (${exclude.rows.join(",")})` : "";
+    if (exclude.works.length) not += ` AND ${work} NOT IN (${exclude.works.map((w) => { binds.push(w); return `?${binds.length}`; }).join(",")})`;
+    const sql = grouped
+      ? `SELECT min(r) AS row, w AS work FROM (SELECT docs.rowid AS r, ${work} AS w, rank AS k FROM docs WHERE docs MATCH ?1${filters}${not}
+           ORDER BY rank LIMIT ${TITLE_SCAN_CAP}) GROUP BY w ORDER BY min(k) LIMIT ${limit}`
+      : `SELECT docs.rowid AS row, ${work} AS work FROM docs WHERE docs MATCH ?1${filters}${not} ORDER BY rank LIMIT ${limit}`;
+    return (await db.prepare(sql).bind(...binds).all()).results as { row: number; work: string }[];
+  };
+  // The rows themselves; the snippet marks what [expr] matched.
+  const details = async (expr: string, rows: number[]) =>
+    rows.length
+      ? ((await db.prepare(`SELECT ${rowSelect} ${fromJoin} WHERE docs MATCH ?1 AND docs.rowid IN (${rows.join(",")})`).bind(expr).all()).results as Row[])
+      : [];
+
+  // Every tier in turn until the page (plus one row, to know there is a next) is full.
+  const ranked = async (m: Mode) => {
+    const tiers = tierExprs(tokens, m).map((e) => ({ expr: scoped(e), grouped: field === "title", title: false }));
+    if (field !== "text") tiers.unshift({ expr: titleStartExpr(tokens), grouped: true, title: true });
+    const need = PAGE_SIZE + 1;
+    let skip = offset;
+    const exclude = { rows: [] as number[], works: [] as string[] };
+    const pages: { expr: string; rows: number[] }[] = [];
+    let count = 0;
+    for (const tier of tiers) {
+      if (count >= need) break;
+      const got = await pick(tier.expr, tier.grouped, tier.title ? TITLE_TIER_MAX : skip + need - count, exclude);
+      if (tier.title) {
+        exclude.rows = got.map((r) => r.row);
+        if (field === "title") exclude.works = got.map((r) => r.work);
+      }
+      if (got.length <= skip) { skip -= got.length; continue; }
+      const rows = got.slice(skip, skip + need - count).map((r) => r.row);
+      skip = 0;
+      count += rows.length;
+      // the title tier's rows also carry the passage's own words marked
+      pages.push({ expr: tier.title ? `(${tier.expr}) OR (${scoped(widestExpr(tokens, m))})` : tier.expr, rows });
+    }
+    // the look-ahead row only says there is a next page: it must not be sorted into this one
+    const more = count > PAGE_SIZE;
+    if (more) pages.at(-1)!.rows.pop();
+    const spelling = typedSpelling(query, tokens);
+    const out: Row[] = [];
+    for (const page of pages) {
+      const byRow = new Map((await details(page.expr, page.rows)).map((r) => [r.row, r]));
+      const rows = page.rows.map((id) => byRow.get(id)).filter((r): r is Row => !!r);
+      for (const r of rows) r.snippet = exactSnippet(r.snippet, r.raw);
+      // within a tier, the spelling as typed first (stable: rank order otherwise)
+      if (spelling) rows.sort((a, b) => Number(hasTypedSpelling(b.snippet, spelling)) - Number(hasTypedSpelling(a.snippet, spelling)));
+      out.push(...rows);
+    }
+    return { rows: out, more };
+  };
+
+  const widest = scoped(widestExpr(tokens, mode));
+  // Facets read the whole match set once more, without snippet(): only for the app's count and
+  // author chips, on their own call. Capped so a stop-word query can't scan the whole index.
   const FACET_CAP = 20000;
   const facetSql = `SELECT d.type AS type, d.person AS person, pm.name AS person_name, pm.death_year AS death_year, count(*) AS n
-       FROM (SELECT docs.type AS type, docs.person AS person FROM docs WHERE ${conds.join(" AND ")} LIMIT ${FACET_CAP}) d
+       FROM (SELECT docs.type AS type, docs.person AS person FROM docs WHERE docs MATCH ?1${filters} LIMIT ${FACET_CAP}) d
        LEFT JOIN person_meta pm ON pm.slug = d.person
        GROUP BY d.type, d.person`;
   type FacetRow = { type: string; person: string; person_name: string | null; death_year: number | null; n: number };
@@ -194,29 +192,40 @@ export const GET: APIRoute = async ({ url }) => {
 
   try {
     if (url.searchParams.get("facets") === "1") {
-      const { results: rows } = await db.prepare(facetSql).bind(...binds).all();
+      const { results: rows } = await db.prepare(facetSql).bind(widest, ...filterBinds).all();
       return json({ facets: facetsOf(rows as FacetRow[]) });
     }
-    let { results } = await db.prepare(sql).bind(...binds, PAGE_SIZE + 1, offset).all();
-    // strict "all words" found nothing — a single mistyped/missing word
-    // shouldn't dead-end the search; retry loosened to "any word" and say so,
-    // rather than silently switching modes or just showing "no results"
+    let results: Row[];
     let approximate = false;
-    if (results.length === 0 && mayRetry) {
-      const orBinds = [scoped(buildMatch(tokens, "any")), ...binds.slice(1)];
-      ({ results } = await db.prepare(sql).bind(...orBinds, PAGE_SIZE + 1, offset).all());
-      approximate = results.length > 0;
+    let more = false;
+    if (byDeath) {
+      // the death-year order replaces relevance, so there are no tiers to walk
+      const sql = field === "title"
+        ? `SELECT ${rowSelect} ${fromJoin} WHERE docs.rowid IN (SELECT min(r) FROM (SELECT docs.rowid AS r, ${work} AS w FROM docs
+             WHERE docs MATCH ?1${filters} ORDER BY rank LIMIT ${TITLE_SCAN_CAP}) GROUP BY w) AND docs MATCH ?1
+           ORDER BY ${deathOrder} LIMIT ${PAGE_SIZE + 1} OFFSET ${offset}`
+        : `SELECT ${rowSelect} ${fromJoin} WHERE docs MATCH ?1${filters} ORDER BY ${deathOrder} LIMIT ${PAGE_SIZE + 1} OFFSET ${offset}`;
+      results = (await db.prepare(sql).bind(widest, ...filterBinds).all()).results as Row[];
+      for (const r of results) r.snippet = exactSnippet(r.snippet, r.raw);
+      more = results.length > PAGE_SIZE;
+    } else {
+      ({ rows: results, more } = await ranked(mode));
+      // Every word found nothing: one mistyped word shouldn't dead-end the search. Retry as
+      // «بعض الكلمات» and say so. Only for a first page of a short query (a long OR scan is costly).
+      if (results.length === 0 && mode === "all" && offset === 0 && tokens.length > 1 && tokens.length <= 4) {
+        ({ rows: results, more } = await ranked("any"));
+        approximate = results.length > 0;
+      }
     }
-    const hasMore = results.length > PAGE_SIZE;
-    return json({ hits: results.slice(0, PAGE_SIZE), hasMore, approximate });
+    // ponytail: a passage indexed twice (left over by an interrupted index update) shows once
+    const seen = new Set<string>();
+    const hits = results.slice(0, PAGE_SIZE)
+      .filter((r) => !seen.has(r.url + r.snippet) && seen.add(r.url + r.snippet))
+      .map(({ raw: _raw, ...hit }) => hit);
+    return json({ hits, hasMore: more, approximate });
   } catch (err) {
-    // This used to return 200 with an empty hit list, which made a BROKEN
-    // search indistinguishable from an honestly empty one. D1's free plan
-    // refuses reads once the daily allowance is spent, so the whole site's
-    // search would quietly answer «لا نتائج» for the rest of the day and
-    // nothing anywhere would say so. Fail loudly instead: search.astro already
-    // renders «تعذَّر البحث الآن» for a non-ok response, and the Worker log
-    // gets the reason (observability is on in wrangler.toml).
+    // A broken search must not look like an empty one: the site shows «تعذَّر البحث الآن» for a
+    // non-ok answer, and the Worker log gets the reason.
     console.error("search query failed", { message: String(err), tokens: tokens.length, field, mode });
     return json({ hits: [], hasMore: false, error: "search unavailable" }, 503);
   }

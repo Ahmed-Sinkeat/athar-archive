@@ -5,13 +5,18 @@
 import { normalizeArabic } from "./ar-normalize.js";
 
 export function stripMd(md: string): string {
-  return normalizeArabic(
-    md
-      .replace(/<[^>]+>/g, " ")
-      .replace(/\{#[^}]*\}/g, " ")
-      .replace(/\[\[([^\]|]*\|)?([^\]]*)\]\]/g, "$2")
-      .replace(/[#>*_`[\]()|]/g, " ")
-      .replace(/\s+/g, " ")
-      .trim(),
-  );
+  return normalizeArabic(stripMdRaw(md));
+}
+
+/** The same plain text with its letters and tashkeel as written: what search results show. */
+export function stripMdRaw(md: string): string {
+  return md
+    .replace(/<[^>]+>/g, " ")
+    // footnote markers (^fn12, ^3, ^٣): noise in a search result
+    .replace(/\^(?:fn)?[0-9\u0660-\u0669]+/g, " ")
+    .replace(/\{#[^}]*\}/g, " ")
+    .replace(/\[\[([^\]|]*\|)?([^\]]*)\]\]/g, "$2")
+    .replace(/[#>*_`[\]()|]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
 }
