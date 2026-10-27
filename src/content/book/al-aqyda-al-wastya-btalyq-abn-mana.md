@@ -1,5 +1,7 @@
 ---
 title: "العقيدة الواسطية بتعليق ابن مانع"
+edition_of: al-aqeedah-al-wasitiyyah
+edition: "بتعليق ابن مانع"
 status: published
 published_at: 2026-07-16
 person: ibn-taymiyyah

@@ -1,5 +1,7 @@
 ---
 title: "ألفية ابن مالك"
+edition_of: alfiyyah-ibn-malik
+edition: "دار التعاون"
 status: draft
 published_at: "2026-07-22"
 person: "ibn-malik"

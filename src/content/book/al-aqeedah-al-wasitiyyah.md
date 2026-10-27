@@ -1,5 +1,6 @@
 ---
 title: "العقيدة الواسطية"
+edition: "المتن محققًا على النسخ الخطية"
 status: published
 published_at: 2026-07-06
 person: ibn-taymiyyah

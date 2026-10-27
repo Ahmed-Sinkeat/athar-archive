@@ -1,5 +1,6 @@
 ---
 title: "الخلاصة في النحو (ألفية ابن مالك)"
+edition: "تحقيق عبد المحسن القاسم"
 status: published
 published_at: 2026-07-06
 person: ibn-malik
