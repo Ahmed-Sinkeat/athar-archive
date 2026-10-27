@@ -12,7 +12,7 @@ Found: 70. Missing: 14.
 | القواعد الأربع | `src/content/book/al-qawaid-al-arba.md` | 8 KB | **read in full**: reviewed, no change needed |
 | ثلاثة الأصول وأدلتها | `src/content/book/al-usul-al-thalathah.md` | 23 KB | **read in full**: reviewed, no change needed |
 | ثلاثة الأصول وشروط الصلاة والقواعد الأربع | `src/content/book/thalathat-al-usul-wa-shurut-al-salah.md` | 78 KB | **structure checked** (2026-10-27): bold labels, nested headings and card already in place; no change needed; not every line read |
-| كشف الشبهات | `src/content/book/kashf-al-shubuhat.md` | 59 KB | **structure checked** (2026-10-27): basmala on its own line; each chapter title still runs into its first sentence (boundary ambiguous, left as is); not every line read |
+| كشف الشبهات | `src/content/book/kashf-al-shubuhat.md` | 59 KB | **structure checked** (2026-10-27): basmala on its own line; basmala on its own line; the 16 chapter titles split from their first sentence (boundaries read against epub 30850); not every line read |
 | كتاب التوحيد | `src/content/book/kitab-at-tawhid.md` | 100 KB | **read in full**: every narration wrapped whole (98 hadith/athar blocks); split bayt joined |
 | فضل الإسلام | — | — | **missing** |
 | مسائل الجاهلية | `src/content/book/masail-al-jahiliyyah.md` | 26 KB | **read in full** (2026-10-27): bold labels for all items in place; 3 source-repeated labels retained; no change needed |
@@ -160,15 +160,15 @@ Note on the scan: in the `book` collection a verse is stored as one block with t
 | Text | File | Formatting (2026-10-27) |
 |---|---|---|
 | مختصر القدوري | `src/content/book-lg/mukhtasar-al-quduri.md` | book card; no other change needed |
-| منهج السالكين | `src/content/book-lg/manhaj-al-salikin.md` | book card; 586 paragraph breaks; 54 repeated page markers dropped (import fix); 259 page-bottom notes are still loose paragraphs (not linked) |
+| منهج السالكين | `src/content/book-lg/manhaj-al-salikin.md` | book card; 586 paragraph breaks; 54 repeated page markers dropped (import fix); 754 page-bottom notes linked as `(^N)` caret notes (every anchor reviewed); 46 page markers kept where the epub chunk has its own notes, so only 8 of the 54 repeated markers were dropped |
 | نور الإيضاح | `src/content/book-lg/nur-al-idah.md` | book card; 47 repeated page markers dropped (import fix) |
-| فضل الإسلام | `src/content/book/fadl-al-islam.md` | book card; 59 paragraph breaks; 22 page-bottom notes still loose |
+| فضل الإسلام | `src/content/book/fadl-al-islam.md` | book card; 59 paragraph breaks; 81 page-bottom notes linked as `(^N)` (every anchor reviewed) |
 | رياض الصالحين | `src/content/book-lg/riyad-al-salihin.md` | book card; 355 chapter numbers merged into their headings; 319 repeated page markers dropped (import fix) |
-| الموقظة | `src/content/book/al-mawqidhah.md` | book card; 27 paragraph breaks; 39 page-bottom notes still loose |
-| الأصول من علم الأصول | `src/content/book-lg/al-usul-min-ilm-al-usul.md` | book card; 90 paragraph breaks; 43 page-bottom notes still loose |
+| الموقظة | `src/content/book/al-mawqidhah.md` | book card; 27 paragraph breaks; 70 page-bottom notes linked as `(^N)` (every anchor reviewed) |
+| الأصول من علم الأصول | `src/content/book-lg/al-usul-min-ilm-al-usul.md` | book card; 90 paragraph breaks; 67 page-bottom notes linked as `(^N)` (every anchor reviewed) |
 | متن الشاطبية | `src/content/book-lg/matn-al-shatibiyyah.md` | book card; no other change needed |
 | منظومة الآداب لابن عبد القوي | `src/content/poem/manzumat-al-adab.md` | book card; 12 paragraph breaks; parser now reads 947 verses |
 | منظومة الزمزمي | `src/content/poem/manzumat-al-zamzami.md` | no change needed (158 verses, 9 chapter headings) |
 | عمدة الأحكام ت الأرناؤوط (edition of `umdat-al-ahkam`) | `src/content/book-lg/umdat-al-ahkam-t-al-arnaut.md` | book card; 258 repeated page markers dropped (import fix) |
 
-Open item: the loose page-bottom notes above (about 360) need their anchors linked (`(^N)` + `data-notes`); an automatic pass was tried and rejected as unreliable (it mistook numbered list items for notes).
+Open items: page 29 note 3 and the duplicated note 1 on page 134 of منهج السالكين have no anchor in the source (kept as notes); the page-547 note of الحموية has no anchor either (adding one would add a digit the source lacks).
