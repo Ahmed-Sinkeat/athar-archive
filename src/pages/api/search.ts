@@ -5,7 +5,10 @@
 // ALTER TABLE ADD COLUMN (would force a full ~22k-doc reindex).
 // Query params: q (required), mode (any|all|phrase), field (all|title|text),
 // type/book/person (comma-separated, optional scope filters), sort
-// (relevance|death), offset.
+// (relevance|death), offset, snip (16–64 snippet tokens; the app asks for ~3
+// lines), facets=1 (a separate call answering ONLY total match count + top authors
+// and types, for the app's «في كل المكتبة · N» line and author chips — it
+// reads the whole match set, ~1.5 s on a common word, so it never delays hits).
 import type { APIRoute } from "astro";
 import { normalizeArabic } from "../../lib/ar-normalize.js";
 
@@ -125,7 +128,8 @@ export const GET: APIRoute = async ({ url }) => {
   // column computed inside the subquery — FTS5's rank/snippet aux functions
   // can't be used directly under GROUP BY, so they're evaluated in the subquery
   // where the FTS cursor context is valid. Text mode keeps every passage row.
-  const snippet = `snippet(docs, ${snippetCol}, '<mark>', '</mark>', '…', 16)`;
+  const snip = Math.max(16, Math.min(64, parseInt(url.searchParams.get("snip") ?? "16", 10) || 16));
+  const snippet = `snippet(docs, ${snippetCol}, '<mark>', '</mark>', '…', ${snip})`;
   // Bound the inner materialisation. A common word can match tens of thousands
   // of titles, and every one of them had snippet() computed and buffered before
   // the outer GROUP BY threw nearly all of it away. FTS5 still has to score the
@@ -162,7 +166,34 @@ export const GET: APIRoute = async ({ url }) => {
   const RETRY_MAX_TOKENS = 4;
   const mayRetry = mode === "all" && offset === 0 && tokens.length <= RETRY_MAX_TOKENS;
 
+  // Facets read the whole match set once more, without snippet(): cheap next to the page itself,
+  // and only on the first page. Capped so a stop-word query can't scan the whole index.
+  const FACET_CAP = 20000;
+  const facetSql = `SELECT d.type AS type, d.person AS person, pm.name AS person_name, pm.death_year AS death_year, count(*) AS n
+       FROM (SELECT docs.type AS type, docs.person AS person FROM docs WHERE ${conds.join(" AND ")} LIMIT ${FACET_CAP}) d
+       LEFT JOIN person_meta pm ON pm.slug = d.person
+       GROUP BY d.type, d.person`;
+  type FacetRow = { type: string; person: string; person_name: string | null; death_year: number | null; n: number };
+  const facetsOf = (rows: FacetRow[]) => {
+    const persons = new Map<string, { slug: string; name: string | null; death_year: number | null; n: number }>();
+    const types: Record<string, number> = {};
+    let total = 0;
+    for (const r of rows) {
+      total += r.n;
+      types[r.type] = (types[r.type] ?? 0) + r.n;
+      if (!r.person) continue;
+      const p = persons.get(r.person) ?? { slug: r.person, name: r.person_name, death_year: r.death_year, n: 0 };
+      p.n += r.n;
+      persons.set(r.person, p);
+    }
+    return { total, capped: total >= FACET_CAP, types, persons: [...persons.values()].sort((a, b) => b.n - a.n).slice(0, 12) };
+  };
+
   try {
+    if (url.searchParams.get("facets") === "1") {
+      const { results: rows } = await db.prepare(facetSql).bind(...binds).all();
+      return json({ facets: facetsOf(rows as FacetRow[]) });
+    }
     let { results } = await db.prepare(sql).bind(...binds, PAGE_SIZE + 1, offset).all();
     // strict "all words" found nothing — a single mistyped/missing word
     // shouldn't dead-end the search; retry loosened to "any word" and say so,
