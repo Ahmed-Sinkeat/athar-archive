@@ -196,6 +196,7 @@ function isContentLine(line: string): boolean {
   if (t.startsWith("#")) return false; // sub-headings inside a chapter
   if (/^-{3,}$/.test(t)) return false; // horizontal rule (dash form)
   if (/^<hr\b/i.test(t)) return false; // horizontal rule / page-sep marker (HTML form)
+  if (/^<!--.*-->$/.test(t)) return false; // structure markers (<!-- card -->, <!-- verse -->…): never a verse
   if (t === "*" || /^\*\s*\*\s*\*$/.test(t)) return false; // "*" / "* * *" ornament dividers
   if (/^\*\*.+\*\*$/.test(t)) return false; // bold-wrapped sub-heading line, e.g. "**[في الوقف]**"
   if (/^\[.+\]$/.test(t)) return false; // bracket-wrapped metadata/labels, e.g. "[عدد الأبيات: ١٠٠]", "[خاتمة]"
@@ -232,10 +233,18 @@ export function parsePoem(body: string): ParsedPoem {
   const verses: Verse[] = [];
   let counter = 0;
 
+  // The editor's book card (<!-- card -->…<!-- /card -->: metadata, biography, manuscript
+  // list) is front matter, never verses — even when it sits under a "## المقدمة" heading
+  // or holds quoted verse lines. The flag carries across collect() calls: a card never
+  // spans a verse, so it always closes before the poem's own lines.
+  let inCard = false;
   const collect = (content: string): Verse[] => {
     const out: Verse[] = [];
     for (const line of content.split("\n")) {
-      if (!isContentLine(line)) continue;
+      const marker = line.trim();
+      if (/^<!--\s*card\s*-->$/.test(marker)) { inCard = true; continue; }
+      if (/^<!--\s*\/card\s*-->$/.test(marker)) { inCard = false; continue; }
+      if (inCard || !isContentLine(line)) continue;
       counter += 1;
       const v = lineToVerse(line, counter);
       out.push(v);

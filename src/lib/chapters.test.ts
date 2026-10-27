@@ -105,6 +105,32 @@ describe("parsePoem", () => {
     expect(poem.verses[0].ajz).toBeUndefined();
   });
 
+  it("does not count the book card (metadata, quoted verses, comment markers) as verses", () => {
+    const body = [
+      "## المقدمة",
+      "",
+      "<!-- card -->",
+      "# عنوان المنظومة",
+      "",
+      "- **المؤلف:** فلان",
+      "",
+      "قال الشاعر ... في مدح الناظم",
+      "<!-- /card -->",
+      "",
+      "صدر أول --- عجز أول",
+      "",
+      "صدر ثان --- عجز ثان",
+    ].join("\n");
+    const poem = parsePoem(body);
+    expect(poem.verseCount).toBe(2);
+    expect(poem.openingVerse).toBe("صدر أول");
+  });
+
+  it("skips a lone structure-marker comment line", () => {
+    const poem = parsePoem("## باب\n\n<!-- verse -->\nصدر --- عجز\n<!-- /verse -->");
+    expect(poem.verseCount).toBe(1);
+  });
+
   it("handles a single-hemistich verse (no separator)", () => {
     const poem = parsePoem("بيت بلا عجز");
     expect(poem.verses[0]).toMatchObject({ sadr: "بيت بلا عجز", anchor: "v1" });
