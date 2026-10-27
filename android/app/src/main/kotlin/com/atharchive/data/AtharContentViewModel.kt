@@ -92,6 +92,8 @@ import java.util.concurrent.atomic.AtomicInteger
 import java.io.InputStream
 import java.io.OutputStream
 import javax.inject.Inject
+import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
@@ -184,6 +186,7 @@ class AtharContentViewModel @Inject constructor(
         field = SearchField.entries.find { it.name == savedState.get<String>("searchField") } ?: SearchField.FullText,
         authors = savedState.get<ArrayList<String>>("searchAuthors").orEmpty().toSet(),
         sort = SearchSort.entries.find { it.name == savedState.get<String>("searchSort") } ?: SearchSort.Relevance,
+        descending = savedState.get<Boolean>("searchDescending") ?: false,
         mode = SearchMode.entries.find { it.name == savedState.get<String>("searchMode") } ?: SearchMode.All,
         downloadedOnly = savedState.get<Boolean>("searchDownloadedOnly") ?: false,
     ))
@@ -281,7 +284,9 @@ class AtharContentViewModel @Inject constructor(
         // Titles and authors always come from the catalog on the phone: complete, instant.
         val local = contentSearch.search(
             ContentSearchRequest(
-                query = clean,
+                // الدقة offline: a phrase is the query quoted (verified for adjacency), «بعض الكلمات» joins with OR.
+                query = if (filters.mode == SearchMode.Phrase) "\"${clean.replace("\"", "")}\"" else clean,
+                anyWord = filters.mode == SearchMode.Any,
                 field = filters.field.toContentField(),
                 filter = ContentSearchFilter(
                     collections = filters.types.mapTo(linkedSetOf()) { it.contentCollection },
@@ -304,7 +309,7 @@ class AtharContentViewModel @Inject constructor(
             hasMore = local.catalog.size > limit || local.blocks.size > limit,
             directMatches = direct,
             hits = local.blocks.take(limit)
-                .let { hits -> if (filters.sort == SearchSort.Died) hits.sortedWith(compareBy(nullsLast()) { catalog.byId[it.entityId]?.died }) else hits }
+                .let { hits -> if (filters.sort == SearchSort.Died) hits.sortedWith(compareBy(nullsLast(if (filters.descending) reverseOrder() else naturalOrder())) { catalog.byId[it.entityId]?.died }) else hits }
                 .map { it.toHitUi(catalog) },
         )
         if (filters.downloadedOnly || filters.field != SearchField.FullText) // Titles/authors/topics: the catalog on the phone already covers the whole library.
@@ -318,7 +323,7 @@ class AtharContentViewModel @Inject constructor(
             field = "all",
             types = (filters.types.ifEmpty { SearchResultType.entries.toSet() }).mapTo(linkedSetOf()) { it.contentCollection },
             persons = filters.authors.mapNotNullTo(linkedSetOf()) { catalog.slugByName[it] },
-            sort = if (filters.sort == SearchSort.Died) "death" else "relevance",
+            sort = if (filters.sort != SearchSort.Died) "relevance" else if (filters.descending) "death_desc" else "death",
         )
         val online = try {
             onlineSearch.hits(query, limit)
@@ -519,7 +524,7 @@ class AtharContentViewModel @Inject constructor(
                 )
             },
         )
-    }.stateIn(
+    }.flowOn(Dispatchers.Default).stateIn(
         viewModelScope,
         SharingStarted.WhileSubscribed(5_000),
         BooksUiState("٠ كتاب", emptyList(), loaded = false),
@@ -550,7 +555,7 @@ class AtharContentViewModel @Inject constructor(
                 )
             },
         )
-    }.stateIn(viewModelScope, SharingStarted.Eagerly, ArticlesUiState("٠ مقال", emptyList(), loaded = false)) // ponytail: hot from app start so the tab opens filled; costs one recompute per download tick while hidden
+    }.flowOn(Dispatchers.Default).stateIn(viewModelScope, SharingStarted.Eagerly, ArticlesUiState("٠ مقال", emptyList(), loaded = false)) // ponytail: hot from app start so the tab opens filled; costs one recompute per download tick while hidden
 
     // Only works with recordings are decoded, and only when the catalog changes, not on every download tick.
     private val audioSources = combine(catalogDao.observeEntitiesWithAudio(), persons) { list, people ->
@@ -755,7 +760,7 @@ class AtharContentViewModel @Inject constructor(
                 )
             },
         )
-    }.stateIn(viewModelScope, SharingStarted.Eagerly, IssuesUiState("٠ مسألة", emptyList(), loaded = false)) // ponytail: hot from app start so the tab opens filled; costs one recompute per download tick while hidden
+    }.flowOn(Dispatchers.Default).stateIn(viewModelScope, SharingStarted.Eagerly, IssuesUiState("٠ مسألة", emptyList(), loaded = false)) // ponytail: hot from app start so the tab opens filled; costs one recompute per download tick while hidden
 
     val poetry: StateFlow<PoetryUiState> = combine(
         // Decoded once per catalog change, not on every pin, shelf or progress change.
@@ -785,7 +790,7 @@ class AtharContentViewModel @Inject constructor(
                 )
             },
         )
-    }.stateIn(viewModelScope, SharingStarted.Eagerly, PoetryUiState("٠ قصيدة", emptyList(), loaded = false)) // ponytail: hot from app start so the tab opens filled; costs one recompute per download tick while hidden
+    }.flowOn(Dispatchers.Default).stateIn(viewModelScope, SharingStarted.Eagerly, PoetryUiState("٠ قصيدة", emptyList(), loaded = false)) // ponytail: hot from app start so the tab opens filled; costs one recompute per download tick while hidden
 
     init {
         viewModelScope.launch(errorHandler) {
@@ -988,6 +993,7 @@ class AtharContentViewModel @Inject constructor(
         savedState["searchDownloadedOnly"] = filters.downloadedOnly
         savedState["searchAuthors"] = ArrayList(filters.authors)
         savedState["searchSort"] = filters.sort.name
+        savedState["searchDescending"] = filters.descending
         _searchLimit.value = SearchPageSize
         _searchFilters.value = filters
     }

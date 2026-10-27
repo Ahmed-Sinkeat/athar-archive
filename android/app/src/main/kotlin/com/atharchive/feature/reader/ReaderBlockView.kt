@@ -351,7 +351,7 @@ internal fun BlockView(
 }
 
 /** One rounded stroke per line of [start, end) (display offsets), just above the line's bottom. */
-private fun androidx.compose.ui.graphics.drawscope.DrawScope.drawHighlightLine(layout: TextLayoutResult, start: Int, end: Int, color: Color) {
+internal fun androidx.compose.ui.graphics.drawscope.DrawScope.drawHighlightLine(layout: TextLayoutResult, start: Int, end: Int, color: Color) {
     val to = end.coerceAtMost(layout.layoutInput.text.length)
     if (start >= to) return
     for (line in layout.getLineForOffset(start)..layout.getLineForOffset(to - 1)) {

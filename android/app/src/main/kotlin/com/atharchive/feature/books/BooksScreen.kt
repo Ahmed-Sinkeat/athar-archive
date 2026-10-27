@@ -1,5 +1,8 @@
 package com.atharchive.feature.books
 
+import com.atharchive.ui.components.directed
+import com.atharchive.ui.components.AtharDirectionGroup
+import com.atharchive.ui.components.normKey
 import kotlinx.coroutines.launch
 import com.atharchive.core.ArNormalize
 import androidx.compose.foundation.horizontalScroll
@@ -135,6 +138,8 @@ fun BooksScreen(
     var authorStored by rememberPersisted("books.authors", "")
     var sortName by rememberPersisted("books.order", BookSort.Title.name)
     val sort = enumValueOrNull<BookSort>(sortName) ?: BookSort.Title
+    var descendingStored by rememberPersisted("books.order.desc", "")
+    val descending = descendingStored.isNotEmpty()
     val kinds = remember(state.books) { state.books.map { it.kind }.distinct() }
     val topics = remember(state.books) { state.books.flatMap { it.topics }.distinct().sorted() }
     val centuries = remember(state.books) {
@@ -144,7 +149,7 @@ fun BooksScreen(
     val authorFacts = remember(state.books) {
         state.books.filter { it.author.isNotBlank() }.groupBy { it.author }.mapValues { (_, books) -> books.firstNotNullOfOrNull { it.died } to books.size }
     }
-    val authors = remember(authorFacts) { authorFacts.keys.sortedBy { ArNormalize.normalize(it) } }
+    val authors = remember(authorFacts) { authorFacts.keys.sortedBy { normKey(it) } }
     // Values that no longer exist (catalog changed) drop out instead of hiding every book.
     val kind = kindStored.asChoiceSet() intersect kinds.toSet()
     val topic = topicStored.asChoiceSet() intersect topics.toSet()
@@ -159,9 +164,9 @@ fun BooksScreen(
 
     // Normalized once per catalog change, not per filter pass or per sort comparison.
     val normalized = remember(state.books) {
-        state.books.associate { it.id to (ArNormalize.normalize(it.title) to ArNormalize.normalize(it.author)) }
+        state.books.associate { it.id to (normKey(it.title) to normKey(it.author)) }
     }
-    val visibleBooks = remember(state.books, selectedTab, query, kind, sort, topic, century, author) {
+    val visibleBooks = remember(state.books, selectedTab, query, kind, sort, descending, topic, century, author) {
         val term = ArNormalize.normalize(query.trim())
         state.books
             .asSequence()
@@ -179,11 +184,12 @@ fun BooksScreen(
             .sortedWith(
                 when {
                     selectedTab == SectionTab.Recent -> compareBy { it.recentRank ?: Int.MAX_VALUE }
-                    sort == BookSort.Title -> compareBy { normalized.getValue(it.id).first }
-                    sort == BookSort.Author -> compareBy { normalized.getValue(it.id).second }
-                    sort == BookSort.Died -> compareBy(nullsLast()) { it.died }
-                    sort == BookSort.Pages -> compareBy<BookUi, Int?>(nullsLast()) { it.volumes?.takeIf { v -> v > 1 }?.let { v -> 100_000 * v } ?: it.pages }
-                    else -> compareByDescending { it.publishedAt }
+                    sort == BookSort.Title -> compareBy<BookUi> { normalized.getValue(it.id).first }.directed(descending)
+                    sort == BookSort.Author -> compareBy<BookUi> { normalized.getValue(it.id).second }.directed(descending)
+                    // Unknown years and sizes stay last in both directions.
+                    sort == BookSort.Died -> compareBy(nullsLast(if (descending) reverseOrder() else naturalOrder())) { it.died }
+                    sort == BookSort.Pages -> compareBy<BookUi, Int?>(nullsLast(if (descending) reverseOrder() else naturalOrder())) { it.volumes?.takeIf { v -> v > 1 }?.let { v -> 100_000 * v } ?: it.pages }
+                    else -> compareByDescending<BookUi> { it.publishedAt }.directed(descending)
                 },
             )
             .toList()
@@ -244,6 +250,7 @@ fun BooksScreen(
                             else AtharChipGroup("الترتيب", BookSort.entries.map { it.label }, sort.label) { label ->
                                 sortName = BookSort.entries.first { it.label == label }.name
                             },
+                            if (selectedTab == SectionTab.Recent) null else AtharDirectionGroup(descending) { descendingStored = if (it) "1" else "" },
                         ),
                         facets = listOf(
                             AtharFacet("المؤلف", authors, author, { authorStored = it.asStoredChoices() }) { name ->

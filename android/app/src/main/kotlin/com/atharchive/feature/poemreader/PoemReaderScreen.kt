@@ -1,5 +1,7 @@
 package com.atharchive.feature.poemreader
 
+import com.atharchive.feature.reader.drawHighlightLine
+import androidx.compose.ui.draw.drawBehind
 import androidx.compose.foundation.gestures.animateScrollBy
 import com.atharchive.ui.components.arabicDigits
 import com.atharchive.ui.theme.AtharCorners
@@ -521,6 +523,8 @@ private fun VerseRow(
     var menuOpen by remember { mutableStateOf(false) }
     // A saved verse answers a tap with its menu (إزالة من الكناشة), as a highlight does in a book.
     val tapText = if (saved) ({ menuOpen = true }) else onTapText
+    // «التظليل: خط» draws a saved verse as a line under its words instead of a tinted row.
+    val underline = saved && settings.underlineHighlights
     Box(modifier = Modifier.fillMaxWidth()) {
     Row(
         modifier = Modifier
@@ -528,7 +532,7 @@ private fun VerseRow(
             .background(
                 when {
                     isCurrent -> colors.accent.copy(alpha = 0.10f)
-                    saved -> colors.saved
+                    saved && !settings.underlineHighlights -> colors.saved
                     else -> androidx.compose.ui.graphics.Color.Transparent
                 },
             )
@@ -568,11 +572,11 @@ private fun VerseRow(
         Column(modifier = Modifier.weight(1f)) {
             if (settings.poemProse) {
                 // متصل: one running line per verse, as a book prints a quoted verse.
-                Hemistich(if (verse.ajz.isBlank()) verse.sadr else "${verse.sadr} \u2026 ${verse.ajz}", glossary, colors, settings, TextAlign.Start, tapText)
+                Hemistich(if (verse.ajz.isBlank()) verse.sadr else "${verse.sadr} \u2026 ${verse.ajz}", glossary, colors, settings, TextAlign.Start, tapText, underline)
             } else {
-                Hemistich(verse.sadr, glossary, colors, settings, TextAlign.Start, tapText)
+                Hemistich(verse.sadr, glossary, colors, settings, TextAlign.Start, tapText, underline)
                 Spacer(Modifier.height(2.dp))
-                Hemistich(verse.ajz, glossary, colors, settings, TextAlign.End, tapText)
+                Hemistich(verse.ajz, glossary, colors, settings, TextAlign.End, tapText, underline)
             }
         }
     }
@@ -607,6 +611,7 @@ private fun Hemistich(
     settings: ReaderSettings,
     align: TextAlign,
     onTapText: () -> Unit,
+    underline: Boolean = false,
 ) {
     val tapText by androidx.compose.runtime.rememberUpdatedState(onTapText)
     val line = if (settings.showTashkeel) sourceLine else com.atharchive.feature.reader.SelectionText(sourceLine, false).text
@@ -652,6 +657,9 @@ private fun Hemistich(
             text = annotated,
             modifier = Modifier
                 .fillMaxWidth()
+                .then(if (!underline) Modifier else Modifier.drawBehind {
+                    layout?.let { drawHighlightLine(it, 0, it.layoutInput.text.length, colors.accent.copy(alpha = 0.8f)) }
+                })
                 // Tap only. Long-press is deliberately left alone so the surrounding
                 // SelectionContainer can start an ordinary text selection.
                 .pointerInput(annotated) {

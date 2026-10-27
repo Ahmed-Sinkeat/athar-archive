@@ -12,7 +12,8 @@ object FtsQueryBuilder {
     private const val MAX_TOKENS = 64
     private val tokenRegex = Regex("[\\p{L}\\p{N}]+")
 
-    fun build(raw: String): String? = build(raw, compactCandidates = false)
+    /** [anyWord]: a row matches with any one of the words instead of all of them. */
+    fun build(raw: String, anyWord: Boolean = false): String? = build(raw, compactCandidates = false, anyWord = anyWord)
 
     /**
      * Candidate query for FTS5 detail=none indexes. Phrase positions are not
@@ -27,7 +28,7 @@ object FtsQueryBuilder {
      * positions. [highlightTerms] contains normalized recall alternatives in query order,
      * so callers can map a real source range without trying to parse generated MATCH SQL.
      */
-    fun compactPlan(raw: String): CompactFtsPlan? {
+    fun compactPlan(raw: String, anyWord: Boolean = false): CompactFtsPlan? {
         val parsed = parseParts(raw.take(MAX_INPUT_CHARS))
         if (parsed.isEmpty()) return null
         var budget = MAX_TOKENS
@@ -36,7 +37,7 @@ object FtsQueryBuilder {
             budget -= tokens.size
             tokens.takeIf { it.isNotEmpty() }?.let { Part(it, part.closedPhrase) }
         }
-        val match = build(raw, compactCandidates = true) ?: return null
+        val match = build(raw, compactCandidates = true, anyWord = anyWord) ?: return null
         val phrases = parts.asSequence()
             .filter(Part::closedPhrase)
             .map { it.tokens.joinToString(" ") }
@@ -53,10 +54,12 @@ object FtsQueryBuilder {
                 if (first == "عبد") add(first + second)
             }
         }.distinct()
-        return CompactFtsPlan(match, phrases, highlights)
+        // ponytail: with anyWord a quoted phrase is only a candidate term, not verified for adjacency;
+        // the screen's «عبارة متتالية» sends one quoted phrase with anyWord off, which is verified.
+        return CompactFtsPlan(match, if (anyWord) emptyList() else phrases, highlights)
     }
 
-    private fun build(raw: String, compactCandidates: Boolean): String? {
+    private fun build(raw: String, compactCandidates: Boolean, anyWord: Boolean = false): String? {
         if (raw.isBlank()) return null
         val input = raw.take(MAX_INPUT_CHARS)
         val parts = parseParts(input)
@@ -97,7 +100,8 @@ object FtsQueryBuilder {
             }
         }
 
-        return rendered.takeIf { it.isNotEmpty() }?.joinToString(" AND ")
+        // FTS5 binds AND tighter than OR, so a phrase's own AND chain stays one alternative.
+        return rendered.takeIf { it.isNotEmpty() }?.joinToString(if (anyWord) " OR " else " AND ")
     }
 
     private fun renderToken(token: String, prefix: Boolean): String {

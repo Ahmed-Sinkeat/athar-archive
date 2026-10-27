@@ -1,5 +1,6 @@
 package com.atharchive.feature.persons
 
+import com.atharchive.ui.components.normKey
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -38,9 +39,9 @@ fun PersonsScreen(persons: List<CatalogPerson>, onPerson: (CatalogPerson) -> Uni
     val visible = remember(persons, query, selectedCentury) {
         val term = ArNormalize.normalize(query.trim())
         persons.filter {
-            (term.isBlank() || ArNormalize.normalize(it.name).contains(term)) &&
+            (term.isBlank() || normKey(it.name).contains(term)) &&
                 (selectedCentury.isEmpty() || century(it.died) in selectedCentury)
-        }.sortedBy { ArNormalize.normalize(it.name) }
+        }.sortedBy { normKey(it.name) }
     }
     val listState = rememberLazyListState()
     Box(Modifier.fillMaxSize().background(AtharTheme.colors.canvas).clipToBounds()) {

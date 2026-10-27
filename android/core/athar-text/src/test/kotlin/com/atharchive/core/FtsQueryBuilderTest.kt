@@ -25,6 +25,12 @@ class FtsQueryBuilderTest {
     }
 
     @Test
+    fun anyWordJoinsWordsWithOr() {
+        assertEquals("\"احمد\" OR \"ايمان\"*", FtsQueryBuilder.build("أَحْمَد إيمان", anyWord = true))
+        assertEquals("\"احمد\" OR \"ايمان\"*", FtsQueryBuilder.compactPlan("أَحْمَد إيمان", anyWord = true)!!.matchExpression)
+    }
+
+    @Test
     fun keepsAClosedPhraseClosedAndUnprefixed() {
         assertEquals("\"طلب العلم\"", FtsQueryBuilder.build("\"طلب العلم\""))
     }

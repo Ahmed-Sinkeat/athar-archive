@@ -790,21 +790,24 @@ fun AtharFavouriteButton(
     tag: String,
     modifier: Modifier = Modifier,
 ) {
+    // Flips on the tap itself: the stored state arrives after a database round trip and a
+    // rebuild of the whole section list, which is a visible pause on a 1000-book library.
+    var shown by remember(saved) { mutableStateOf(saved) }
     IconButton(
-        onClick = onToggle,
+        onClick = { shown = !shown; onToggle() },
         modifier = modifier
             .size(48.dp)
             .testTag(tag),
     ) {
         Icon(
             // Filled when saved: the state should be legible without relying on colour.
-            imageVector = if (saved) AtharIcons.StarFilled else AtharIcons.Star,
-            contentDescription = if (saved) {
+            imageVector = if (shown) AtharIcons.StarFilled else AtharIcons.Star,
+            contentDescription = if (shown) {
                 "إزالة $itemTitle من المفضّلة"
             } else {
                 "إضافة $itemTitle إلى المفضّلة"
             },
-            tint = if (saved) {
+            tint = if (shown) {
                 AtharTheme.colors.accent
             } else {
                 AtharTheme.colors.secondaryText
@@ -866,3 +869,19 @@ fun AtharSectionHeading(
         fontSize = AtharTextSize.Title,
     )
 }
+
+private val normKeys = java.util.concurrent.ConcurrentHashMap<String, String>()
+
+/**
+ * [com.atharchive.core.ArNormalize.normalize] remembered per string, for catalog fields that list
+ * screens filter and sort on: a list re-emits on every ★, download tick or reading position, and
+ * renormalising a thousand titles each time was a visible pause.
+ */
+// ponytail: unbounded, but keys are catalog strings (a few thousand); swap for an LRU if free text lands here.
+fun normKey(text: String): String = normKeys.getOrPut(text) { com.atharchive.core.ArNormalize.normalize(text) }
+
+/** «الاتجاه» beside «الترتيب», the same menu in every section. */
+fun AtharDirectionGroup(descending: Boolean, onChange: (Boolean) -> Unit) =
+    AtharChipGroup("الاتجاه", listOf("تصاعدي", "تنازلي"), if (descending) "تنازلي" else "تصاعدي") { onChange(it == "تنازلي") }
+
+fun <T> Comparator<T>.directed(descending: Boolean): Comparator<T> = if (descending) reversed() else this

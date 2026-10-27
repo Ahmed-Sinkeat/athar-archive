@@ -3,6 +3,7 @@ package com.atharchive.feature.search
 import com.atharchive.ui.theme.AtharCorners
 import com.atharchive.ui.theme.AtharTextSize
 import com.atharchive.ui.components.arabicDigits
+import com.atharchive.data.arabicCount
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.background
@@ -91,6 +92,9 @@ fun SearchScreen(
     val hits = if (!hasQuery || searching) emptyList() else state.hits
     val directMatches = if (hasQuery) state.directMatches else emptyList()
     var allTitles by rememberSaveable(state.query) { mutableStateOf(false) }
+    // groupBy keeps first-seen order, so each book sits where its best passage ranked.
+    val bookGroups = remember(hits) { hits.groupBy { it.entityId }.values.toList() }
+    var openBooks by remember(state.query) { mutableStateOf(emptySet<String>()) }
 
     LaunchedEffect(state.query, state.directMatches, state.hits) {
         if (state.query.trim().length >= 2) {
@@ -263,14 +267,30 @@ fun SearchScreen(
             item(key = "hits-heading") {
                 ResultsHeading("في النصوص", horizontalPadding)
             }
-            itemsIndexed(hits, key = { _, hit -> hit.id }) { index, hit ->
-                SearchHitCard(
-                    hit = hit,
-                    horizontalPadding = horizontalPadding,
-                    onClick = { onOpenResult(hit) },
-                    loadPassage = loadPassage,
-                )
-                if (index != hits.lastIndex) {
+            // One card per book at its best hit's rank; the book's other passages open under it.
+            itemsIndexed(bookGroups, key = { _, group -> group.first().id }) { index, group ->
+                val entityId = group.first().entityId
+                val open = entityId in openBooks
+                (if (open) group else group.take(1)).forEach { hit ->
+                    SearchHitCard(
+                        hit = hit,
+                        horizontalPadding = horizontalPadding,
+                        onClick = { onOpenResult(hit) },
+                        loadPassage = loadPassage,
+                    )
+                }
+                if (group.size > 1) TextButton(
+                    onClick = { openBooks = if (open) openBooks - entityId else openBooks + entityId },
+                    modifier = Modifier.padding(horizontal = horizontalPadding - 12.dp).testTag("search_more_in_book"),
+                ) {
+                    Text(
+                        if (open) "إخفاء المواضع الأخرى"
+                        else arabicCount(group.size - 1, "", "موضع آخر", "موضعان آخران", "مواضع أخرى", "موضعًا آخر") + " في هذا الكتاب",
+                        color = AtharTheme.colors.accent,
+                        style = MaterialTheme.typography.labelLarge,
+                    )
+                }
+                if (index != bookGroups.lastIndex) {
                     HorizontalDivider(
                         modifier = Modifier.padding(horizontal = horizontalPadding),
                         thickness = 0.7.dp,

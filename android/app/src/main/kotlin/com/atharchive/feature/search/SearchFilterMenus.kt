@@ -3,6 +3,7 @@ package com.atharchive.feature.search
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.atharchive.ui.components.AtharChipGroup
+import com.atharchive.ui.components.AtharDirectionGroup
 import com.atharchive.ui.components.AtharFacet
 import com.atharchive.ui.components.AtharFilterButton
 
@@ -13,10 +14,12 @@ private const val Downloaded = "المحمّلة فقط"
 @Composable
 fun SearchFilterMenus(filters: SearchFilters, authors: List<String>, onChange: (SearchFilters) -> Unit, modifier: Modifier = Modifier) {
     AtharFilterButton(
-        groups = listOf(
+        groups = listOfNotNull(
             AtharChipGroup("الترتيب", SearchSort.entries.map { it.label }, filters.sort.label) { label ->
                 onChange(filters.copy(sort = SearchSort.entries.first { it.label == label }))
             },
+            // Relevance has one direction; the death year has two.
+            if (filters.sort == SearchSort.Died) AtharDirectionGroup(filters.descending) { onChange(filters.copy(descending = it)) } else null,
             AtharChipGroup("الدقة", SearchMode.entries.map { it.label }, filters.mode.label) { label ->
                 onChange(filters.copy(mode = SearchMode.entries.first { it.label == label }))
             },

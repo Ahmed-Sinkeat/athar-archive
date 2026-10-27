@@ -1,5 +1,8 @@
 package com.atharchive.feature.poetry
 
+import com.atharchive.ui.components.directed
+import com.atharchive.ui.components.AtharDirectionGroup
+import com.atharchive.ui.components.normKey
 import com.atharchive.feature.search.sectionTextHits
 import kotlinx.coroutines.launch
 import com.atharchive.ui.theme.AtharTextSize
@@ -95,6 +98,8 @@ fun PoetryScreen(
     val textHits = com.atharchive.feature.search.rememberSectionTextHits(query, textSearch)
     var topicStored by rememberPersisted("poetry.topics", "")
     var sortName by rememberPersisted("poetry.order", PoemSort.Title.name)
+    var descendingStored by rememberPersisted("poetry.order.desc", "")
+    val descending = descendingStored.isNotEmpty()
     val sort = enumValueOrNull<PoemSort>(sortName) ?: PoemSort.Title
     val listState = rememberLazyListState()
     val reselectScope = androidx.compose.runtime.rememberCoroutineScope()
@@ -111,10 +116,10 @@ fun PoetryScreen(
     // Normalized once per catalog change, not per filter pass or per sort comparison.
     val normalized = remember(state.poems) {
         state.poems.associate { poem ->
-            poem.id to Triple(ArNormalize.normalize(poem.title), ArNormalize.normalize(poem.poet), poem.openingVerses.map(ArNormalize::normalize))
+            poem.id to Triple(normKey(poem.title), normKey(poem.poet), poem.openingVerses.map(::normKey))
         }
     }
-    val visiblePoems = remember(state.poems, selectedTab, query, topic, sort) {
+    val visiblePoems = remember(state.poems, selectedTab, query, topic, sort, descending) {
         val term = ArNormalize.normalize(query.trim())
         state.poems.filter { poem ->
             val matchesTab = selectedTab.matches(poem.recentRank != null, poem.downloaded, poem.saved)
@@ -125,11 +130,11 @@ fun PoetryScreen(
                 opening.any { it.contains(term, ignoreCase = true) }
             matchesTab && matchesQuery && (topic.isEmpty() || poem.topic in topic)
         }.sortedWith(
-            if (selectedTab == SectionTab.Recent) compareBy { it.recentRank ?: Int.MAX_VALUE } else when (sort) {
-                PoemSort.Title -> compareBy { normalized.getValue(it.id).first }
-                PoemSort.Poet -> compareBy { normalized.getValue(it.id).second }
-                PoemSort.Newest -> compareBy { it.title }
-            },
+            if (selectedTab == SectionTab.Recent) compareBy { it.recentRank ?: Int.MAX_VALUE } else (when (sort) {
+                PoemSort.Title -> compareBy<PoemUi> { normalized.getValue(it.id).first }
+                PoemSort.Poet -> compareBy<PoemUi> { normalized.getValue(it.id).second }
+                PoemSort.Newest -> compareBy<PoemUi> { it.title }
+            }).directed(descending),
         )
     }
 
@@ -186,6 +191,7 @@ fun PoetryScreen(
                     AtharFilterButton(
                         groups = listOfNotNull(
                             if (selectedTab == SectionTab.Recent) null else AtharChipGroup("الترتيب", PoemSort.entries.map { it.label }, sort.label) { label -> sortName = PoemSort.entries.first { it.label == label }.name },
+                            if (selectedTab == SectionTab.Recent) null else AtharDirectionGroup(descending) { descendingStored = if (it) "1" else "" },
                         ),
                         facets = listOf(AtharFacet("الموضوع", topics, topic, { topicStored = it.asStoredChoices() })),
                         tagPrefix = "poetry_filter",

@@ -196,6 +196,8 @@ data class ContentSearchRequest(
     val sort: ContentSearchSort = ContentSearchSort.Relevance,
     val filter: ContentSearchFilter = ContentSearchFilter(),
     val ordinals: IntRange? = null,
+    /** Match any of the words rather than all of them (the search screen's «بعض الكلمات»). */
+    val anyWord: Boolean = false,
 )
 
 data class CatalogSearchHit(
@@ -232,7 +234,7 @@ data class ContentSearchResult(
 class ContentSearchRepository(private val database: AtharContentDatabase) {
     suspend fun search(request: ContentSearchRequest, limit: Int = 50): ContentSearchResult {
         require(limit >= 1)
-        val plan = FtsQueryBuilder.compactPlan(request.query) ?: return ContentSearchResult(emptyList(), emptyList())
+        val plan = FtsQueryBuilder.compactPlan(request.query, request.anyWord) ?: return ContentSearchResult(emptyList(), emptyList())
         ContentSearchSchema.ensure(database)
         return database.useReaderConnection { connection ->
             val catalog = searchCatalog(connection, request, plan, limit)
@@ -252,7 +254,7 @@ class ContentSearchRepository(private val database: AtharContentDatabase) {
         limit: Int,
     ): List<CatalogSearchHit> {
         val filter = structuredFilter(request.filter, "e")
-        val catalogMatch = requireNotNull(FtsQueryBuilder.build(request.query))
+        val catalogMatch = requireNotNull(FtsQueryBuilder.build(request.query, request.anyWord))
         val scopedMatch = when (request.field) {
             ContentSearchField.FullText -> catalogMatch
             ContentSearchField.Title -> "titleNorm : (${catalogMatch})"

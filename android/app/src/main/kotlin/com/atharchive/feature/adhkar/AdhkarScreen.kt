@@ -1,5 +1,6 @@
 package com.atharchive.feature.adhkar
 
+import com.atharchive.ui.components.normKey
 import kotlinx.coroutines.launch
 import com.atharchive.ui.theme.AtharCorners
 import com.atharchive.ui.theme.AtharTextSize
@@ -93,7 +94,7 @@ fun AdhkarScreen(
         val term = com.atharchive.core.ArNormalize.normalize(query.trim())
         if (term.isBlank()) entries
         else (if (bab != null) entries else state.entries.values.flatten().distinctBy { it.id })
-            .filter { com.atharchive.core.ArNormalize.normalize(it.text).contains(term) }
+            .filter { normKey(it.text).contains(term) }
     }
 
     fun left(dhikr: DhikrUi) = remaining[dhikr.id] ?: dhikr.repeat

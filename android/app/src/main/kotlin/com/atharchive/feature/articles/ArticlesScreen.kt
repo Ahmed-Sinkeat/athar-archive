@@ -1,5 +1,8 @@
 package com.atharchive.feature.articles
 
+import com.atharchive.ui.components.directed
+import com.atharchive.ui.components.AtharDirectionGroup
+import com.atharchive.ui.components.normKey
 import com.atharchive.feature.search.sectionTextHits
 import kotlinx.coroutines.launch
 import androidx.compose.foundation.LocalIndication
@@ -84,6 +87,8 @@ fun ArticlesScreen(
     var query by rememberSaveable { mutableStateOf("") }
     val textHits = com.atharchive.feature.search.rememberSectionTextHits(query, textSearch)
     var sortName by rememberPersisted("articles.order", ArticleSort.Title.name)
+    var descendingStored by rememberPersisted("articles.order.desc", "")
+    val descending = descendingStored.isNotEmpty()
     val sort = enumValueOrNull<ArticleSort>(sortName) ?: ArticleSort.Title
     val listState = rememberLazyListState()
     val reselectScope = androidx.compose.runtime.rememberCoroutineScope()
@@ -97,9 +102,9 @@ fun ArticlesScreen(
 
     // Normalized once per catalog change, not per filter pass or per sort comparison.
     val normalized = remember(state.articles) {
-        state.articles.associate { it.id to (ArNormalize.normalize(it.title) to ArNormalize.normalize(it.author)) }
+        state.articles.associate { it.id to (normKey(it.title) to normKey(it.author)) }
     }
-    val visibleArticles = remember(state.articles, selectedTab, query, sort) {
+    val visibleArticles = remember(state.articles, selectedTab, query, sort, descending) {
         val term = ArNormalize.normalize(query.trim())
         state.articles.filter { article ->
             val matchesTab = selectedTab.matches(article.recentRank != null, article.downloaded, article.saved)
@@ -109,11 +114,11 @@ fun ArticlesScreen(
                 author.contains(term, ignoreCase = true)
             matchesTab && matchesQuery
         }.sortedWith(
-            if (selectedTab == SectionTab.Recent) compareBy { it.recentRank ?: Int.MAX_VALUE } else when (sort) {
-                ArticleSort.Title -> compareBy { normalized.getValue(it.id).first }
-                ArticleSort.Author -> compareBy { normalized.getValue(it.id).second }
-                ArticleSort.Newest -> compareBy { it.title }
-            },
+            if (selectedTab == SectionTab.Recent) compareBy { it.recentRank ?: Int.MAX_VALUE } else (when (sort) {
+                ArticleSort.Title -> compareBy<ArticleUi> { normalized.getValue(it.id).first }
+                ArticleSort.Author -> compareBy<ArticleUi> { normalized.getValue(it.id).second }
+                ArticleSort.Newest -> compareBy<ArticleUi> { it.title }
+            }).directed(descending),
         )
     }
 
@@ -170,6 +175,7 @@ fun ArticlesScreen(
                     AtharFilterButton(
                         groups = listOfNotNull(
                             if (selectedTab == SectionTab.Recent) null else AtharChipGroup("الترتيب", ArticleSort.entries.map { it.label }, sort.label) { label -> sortName = ArticleSort.entries.first { it.label == label }.name },
+                            if (selectedTab == SectionTab.Recent) null else AtharDirectionGroup(descending) { descendingStored = if (it) "1" else "" },
                         ),
                         tagPrefix = "articles_filter",
                     )

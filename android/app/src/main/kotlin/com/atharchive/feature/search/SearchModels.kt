@@ -5,9 +5,9 @@ package com.atharchive.feature.search
  *
  * Three rules shape this model:
  *
- * 1. **One relevance-ranked stream.** Results are never grouped by source or type by
- *    default, and the unit of ranking is the *passage*, not the book — four strong hits
- *    from one book outrank one weak hit from four books, and all four are shown.
+ * 1. **One relevance-ranked stream.** The unit of ranking is the *passage*: a book sits
+ *    where its best passage ranked, with its other passages one tap away under it, so one
+ *    book cannot fill the page and none of its hits is hidden for good.
  * 2. **Filters are not navigation.** There are no permanent content-type tabs; the user
  *    must never choose where to search before seeing results.
  * 3. **Local full text is a scope, not an error.** The catalog remains complete while
@@ -84,6 +84,8 @@ data class SearchFilters(
     val field: SearchField = SearchField.FullText,
     val authors: Set<String> = emptySet(),
     val sort: SearchSort = SearchSort.Relevance,
+    /** For [SearchSort.Died]: latest death first. */
+    val descending: Boolean = false,
     val mode: SearchMode = SearchMode.All,
     /** Search only what is on the phone, even when online. */
     val downloadedOnly: Boolean = false,
@@ -128,8 +130,7 @@ val SearchFixture = SearchUiState(
             type = SearchResultType.Book,
         ),
     ),
-    // Note results 1 and 2: same book, different passages, both kept and independently
-    // ranked. Collapsing them into "الاستقامة — نتيجتان" would hide the second-best hit.
+    // Results 1 and 2: same book, different passages; the screen shows the second under the first.
     hits = listOf(
         SearchHitUi(
             id = "hit-istiqama-74",

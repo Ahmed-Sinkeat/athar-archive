@@ -1,5 +1,8 @@
 package com.atharchive.feature.issues
 
+import com.atharchive.ui.components.directed
+import com.atharchive.ui.components.AtharDirectionGroup
+import com.atharchive.ui.components.normKey
 import com.atharchive.feature.search.sectionTextHits
 import kotlinx.coroutines.launch
 import androidx.compose.foundation.LocalIndication
@@ -91,6 +94,8 @@ fun IssuesScreen(
     val textHits = com.atharchive.feature.search.rememberSectionTextHits(query, textSearch)
     var topicStored by rememberPersisted("issues.topics", "")
     var sortName by rememberPersisted("issues.order", IssueSort.Question.name)
+    var descendingStored by rememberPersisted("issues.order.desc", "")
+    val descending = descendingStored.isNotEmpty()
     val sort = enumValueOrNull<IssueSort>(sortName) ?: IssueSort.Question
     val listState = rememberLazyListState()
     val reselectScope = androidx.compose.runtime.rememberCoroutineScope()
@@ -101,21 +106,21 @@ fun IssuesScreen(
     val topic = topicStored.asChoiceSet() intersect topics.toSet()
     val hasActiveFilters = topic.isNotEmpty() || sort != IssueSort.Newest
 
-    val visible = remember(state.issues, selectedTab, query, topic, sort) {
+    val visible = remember(state.issues, selectedTab, query, topic, sort, descending) {
+        val term = ArNormalize.normalize(query.trim())
         state.issues.filter { issue ->
             val matchesTab = selectedTab.matches(issue.recentRank != null, issue.downloaded, issue.saved)
-            val term = ArNormalize.normalize(query.trim())
             val matchesQuery = term.isBlank() ||
-                ArNormalize.normalize(issue.question).contains(term, ignoreCase = true) ||
-                ArNormalize.normalize(issue.scholar).contains(term, ignoreCase = true) ||
-                ArNormalize.normalize(issue.answerExcerpt).contains(term, ignoreCase = true)
+                normKey(issue.question).contains(term, ignoreCase = true) ||
+                normKey(issue.scholar).contains(term, ignoreCase = true) ||
+                normKey(issue.answerExcerpt).contains(term, ignoreCase = true)
             matchesTab && matchesQuery && (topic.isEmpty() || issue.topic in topic)
         }.sortedWith(
-            if (selectedTab == SectionTab.Recent) compareBy { it.recentRank ?: Int.MAX_VALUE } else when (sort) {
-                IssueSort.Question -> compareBy { ArNormalize.normalize(it.question) }
-                IssueSort.Scholar -> compareBy { ArNormalize.normalize(it.scholar) }
-                IssueSort.Newest -> compareBy { it.question }
-            },
+            if (selectedTab == SectionTab.Recent) compareBy { it.recentRank ?: Int.MAX_VALUE } else (when (sort) {
+                IssueSort.Question -> compareBy<IssueUi> { normKey(it.question) }
+                IssueSort.Scholar -> compareBy<IssueUi> { normKey(it.scholar) }
+                IssueSort.Newest -> compareBy<IssueUi> { it.question }
+            }).directed(descending),
         )
     }
 
@@ -172,6 +177,7 @@ fun IssuesScreen(
                         AtharFilterButton(
                             groups = listOfNotNull(
                                 if (selectedTab == SectionTab.Recent) null else AtharChipGroup("الترتيب", IssueSort.entries.map { it.label }, sort.label) { label -> sortName = IssueSort.entries.first { it.label == label }.name },
+                            if (selectedTab == SectionTab.Recent) null else AtharDirectionGroup(descending) { descendingStored = if (it) "1" else "" },
                             ),
                             facets = listOf(AtharFacet("الموضوع", topics, topic, { topicStored = it.asStoredChoices() })),
                             tagPrefix = "issues_filter",
