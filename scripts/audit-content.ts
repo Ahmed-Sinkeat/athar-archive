@@ -7,6 +7,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { normalizeArabic } from "../src/lib/ar-normalize.js";
 import { normalizePageMarkers } from "../src/lib/read-body.js";
+import { parseReadableDocument } from "../src/lib/app-v2/parser.js";
 
 const ROOT = path.resolve("src/content");
 const findings: string[] = [];
@@ -78,6 +79,17 @@ for (const f of fs.readdirSync(bookDir)) {
   if (orphanHash > 0) findings.push(`ORPHAN-HASH book: ${f} (${orphanHash} bare # lines)`);
   if (boldHead >= 5) findings.push(`BOLD-ONLY-HEADINGS book: ${f} (${boldHead} bold-only lines)`);
   if (leakedFooter > 0) findings.push(`LEAKED-PAGE-FOOTER book: ${f} (${leakedFooter} literal «الجزء: … الصفحة: N» lines — import didn't strip the source footer)`);
+}
+
+// --- 6. poem verse with no hemistich separator: the app shows it as one half and a blank ---
+const poemDir = path.join(ROOT, "poem");
+if (fs.existsSync(poemDir)) for (const f of fs.readdirSync(poemDir)) {
+  const p = path.join(poemDir, f);
+  if (!f.endsWith(".md") || fm(p, "status") !== "published") continue;
+  const doc = parseReadableDocument({ coll: "poem", id: f, body: body(p), sourcePath: p });
+  // the app splits a one-line verse (x) on the same separators the parser uses
+  const whole = doc.blocks.filter((b: any) => b.t === "verse" && b.s === undefined && !/---|\.\.\.|…/.test(b.x ?? ""));
+  if (whole.length) findings.push(`UNSPLIT-VERSE poem: ${f} (${whole.length}: ${whole.map((b: any) => (b.x ?? "").slice(0, 30)).join(" | ")})`);
 }
 
 // --- counts: readers see works (a book's editions are one); we also keep the real file count ---

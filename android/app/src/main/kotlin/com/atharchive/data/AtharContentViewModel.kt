@@ -412,7 +412,9 @@ class AtharContentViewModel @Inject constructor(
             matchEnd = first.last + 1,
             sourceTitle = entity.title,
             sourceAuthor = entity.personName.orEmpty(),
-            locationLabel = title.substringAfter(" — ", "").ifBlank { null },
+            // The site's «صفحات 17-40» in Western digits reads 40-17 in an RTL line; the app's digits read in order.
+            locationLabel = title.substringAfter(" — ", "").ifBlank { null }
+                ?.let { arabicDigits(it.replace(Regex("""(\d)-(\d)"""), "$1–$2")) },
             type = entity.coll.toResultType(),
             matches = marks,
             died = entity.died,
@@ -1397,6 +1399,9 @@ private fun ReaderUiState.withAnnotations(annotations: List<Annotation>, preview
     return copy(bookmarks = bookmarks, benefits = benefits, highlights = highlights)
 }
 
+/** The parser's «…» / «...» / «---» between a verse's halves (src/lib/app-v2/parser.ts HEMISTICH_RE). */
+private val HemistichSeparator = Regex("""\s*(?:---|\.\.\.|…)\s*""")
+
 private fun ContentEntity.toPoemReaderUi(blocks: List<ContentBlockEntity>): PoemReaderUiState {
     val prose = blocks.none { it.type == "verse" }
     // A باب heading rides on the verse after it, so the list stays one row per verse
@@ -1407,11 +1412,13 @@ private fun ContentEntity.toPoemReaderUi(blocks: List<ContentBlockEntity>): Poem
         if (block.type.startsWith('h')) { heading = listOfNotNull(heading, block.text).joinToString(" — "); return@forEach }
         if (block.type != "verse" && !(prose && block.type == "p")) return@forEach
         val attrs = block.safeAttributes()
+        // A verse carrying a footnote mark or emphasis comes as one line (x), separator and all.
+        val halves = if (attrs.s == null && block.type == "verse") block.text.split(HemistichSeparator, limit = 2) else null
         verses += VerseUi(
             id = block.stableId(),
             number = attrs.n ?: verses.size + 1,
-            sadr = attrs.s ?: block.text,
-            ajz = attrs.j.orEmpty(),
+            sadr = attrs.s ?: halves?.first() ?: block.text,
+            ajz = attrs.j ?: halves?.getOrNull(1).orEmpty(),
             ordinal = block.ordinal,
             commentary = attrs.commentary.map { com.atharchive.feature.poemreader.CommentaryUi(it.sourceLabel, it.text) },
             heading = heading,
