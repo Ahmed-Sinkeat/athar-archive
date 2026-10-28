@@ -26,7 +26,7 @@ export const GET: APIRoute = async () => {
 
   const body =
     `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel>\n` +
-    `<title>أهل الأثر</title>\n<link>${origin}</link>\n` +
+    `<title>أثر</title>\n<link>${origin}</link>\n` +
     `<description>أحدث الإضافات في الأرشيف العلمي: متونٌ ومنظوماتٌ ودروسٌ وفوائدُ ومقالات.</description>\n` +
     `<language>ar</language>\n` +
     latest

@@ -44,7 +44,7 @@ const tocNested = parseToc(body ?? "");
 const path = `/article/${entry.id}`;
 // fallback only when an article has no real description at all — never overrides one
 const pageDescription = (entry.data.description as string | undefined) ||
-  `${entry.data.title}${author ? ` — ${author}` : ""}، النص الكامل على أهل الأثر.`;
+  `${entry.data.title}${author ? ` — ${author}` : ""}، النص الكامل على أثر.`;
 const jsonLd = articleLd({
   title: entry.data.title, authorId: entry.data.person, authorName: author,
   description: pageDescription, audioUrl: audio?.url,

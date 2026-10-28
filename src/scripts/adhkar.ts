@@ -177,7 +177,7 @@ function init() {
   }
 
   function share() {
-    const title = `أهل الأثر — ${period === "morning" ? "أذكار الصباح" : "أذكار المساء"}`;
+    const title = `أثر — ${period === "morning" ? "أذكار الصباح" : "أذكار المساء"}`;
     const url = location.href;
     if (navigator.share) {
       navigator.share({ title, url }).catch(() => {});
@@ -219,7 +219,7 @@ function init() {
     const body = items
       .map((btn) => formatItem(btn.dataset.text || "", Number(btn.dataset.count || "1"), btn.dataset.source || ""))
       .join("\n────────────────\n");
-    const footer = `أهل الأثر — ${location.origin}/adhkar`;
+    const footer = `أثر — ${location.origin}/adhkar`;
     navigator.clipboard?.writeText(`${header}\n\n${body}\n\n${footer}`).then(() => toast("تم نسخ كل الأذكار"));
   }
 

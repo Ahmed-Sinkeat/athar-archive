@@ -168,7 +168,7 @@ export function websiteLd() {
     {
       "@type": "WebSite",
       url: ORIGIN,
-      name: "أهل الأثر",
+      name: "أثر",
       inLanguage: "ar",
       publisher: { "@id": absUrl("/#organization") },
       potentialAction: {
@@ -181,7 +181,7 @@ export function websiteLd() {
       "@type": "Organization",
       "@id": absUrl("/#organization"),
       url: ORIGIN,
-      name: "أهل الأثر",
+      name: "أثر",
       logo: absUrl("/favicon.svg"),
       description: "الأرشيف العلمي للمتون والمنظومات الإسلامية",
     }

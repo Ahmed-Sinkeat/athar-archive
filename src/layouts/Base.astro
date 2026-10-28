@@ -76,7 +76,7 @@ const filterPersons = (await getCollection("person"))
   .map((p) => ({ id: p.id, name: p.data.title as string }))
   .sort((a, b) => a.name.localeCompare(b.name, "ar"));
 
-const fullTitle = title.includes("أهل الأثر") ? title : `${title} · أهل الأثر`;
+const fullTitle = title.startsWith("أثر |") ? title : `${title} · أثر`;
 
 // Mobile reading-page compact header (design 1c): back to the section hub +
 // the work's title, with the chapter (if any) as a subtitle. Chapter pages
@@ -97,7 +97,7 @@ const [readerSub, readerMain] = title.includes(" · ") ? title.split(" · ") : [
     {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
 
     <!-- Open Graph / Twitter -->
-    <meta property="og:site_name" content="أهل الأثر" />
+    <meta property="og:site_name" content="أثر" />
     <meta property="og:locale" content="ar_AR" />
     <meta property="og:type" content={ogType} />
     <meta property="og:title" content={title} />
@@ -212,8 +212,8 @@ const [readerSub, readerMain] = title.includes(" · ") ? title.split(" · ") : [
           <span aria-hidden="true">☰</span> <span class="hamburger-label">القائمة</span>
         </button>
 
-        <a href="/" class="brand" aria-label="أهل الأثر — الصفحة الرئيسية">
-          <span class="brand-name">أهل الأثر</span>
+        <a href="/" class="brand" aria-label="أثر — الصفحة الرئيسية">
+          <span class="brand-name">أثر</span>
           <span class="brand-sub">الأرشيف العلمي</span>
         </a>
 
@@ -376,7 +376,7 @@ const [readerSub, readerMain] = title.includes(" · ") ? title.split(" · ") : [
       <div class="wrap-mid">
         <div class="footer-grid">
           <div class="footer-brand">
-            <div class="brand-name">أهل الأثر</div>
+            <div class="brand-name">أثر</div>
             <p class="footer-blurb">متونٌ ومنظوماتٌ وتراجمٌ وأسانيدُ — في تجربةِ قراءةٍ هادئة.</p>
           </div>
           <nav class="footer-col" aria-label="التصفّح">
@@ -403,7 +403,7 @@ const [readerSub, readerMain] = title.includes(" · ") ? title.split(" · ") : [
         </div>
         <div class="footer-strip">
           <span class="footer-orn" aria-hidden="true">۞</span>
-          <span>أهل الأثر · ١٤٤٧هـ</span>
+          <span>أثر · ١٤٤٧هـ</span>
           <!-- عدد الزوار — off via config.visitorCounter. When on, filled by the
                visits script below, which leaves it hidden if the counter is
                unreachable so a D1 hiccup shows nothing rather than «٠ زائر» -->
