@@ -1,3 +1,4 @@
+import java.net.URI
 // Production shell. Holds no domain logic (docs/main-plan.md §3) — Application,
 // Activity, navigation host, DI wiring, and the manifest that carries the backup
 // rules R6 verifies. Real screens arrive with :feature:* at M3.
@@ -140,7 +141,18 @@ dependencies {
 val verifyReleaseConfiguration by tasks.registering {
     val configuredContent = listOf(contentBaseUrl.orNull, contentSigningKeyId.orNull, contentPublicKey.orNull).all { !it.isNullOrBlank() }
     val signed = releaseSigningConfigured // local copy: doLast must not capture the script object (configuration cache)
+    val baseUrl = contentBaseUrl.orNull.orEmpty()
+    val bundledIndex = file("src/main/assets/app-content/index.json")
     doLast {
+        // The bundled catalog must be the generation the origin serves: an unpublished one points
+        // at packages that 404, and every book in the shipped app fails to open.
+        // ponytail: needs the network at release time; that is when the origin matters anyway.
+        if (baseUrl.isNotBlank()) {
+            val live = URI(baseUrl + "index.json").toURL().readBytes()
+            require(bundledIndex.isFile && bundledIndex.readBytes().contentEquals(live)) {
+                "Bundled app-content/index.json is not the published generation; run `pnpm app:bundle-catalog` (after `pnpm app:publish` if it is new)."
+            }
+        }
         require(configuredContent) {
             "Release requires ATHAR_CONTENT_BASE_URL, ATHAR_CONTENT_SIGNING_KEY_ID and ATHAR_CONTENT_PUBLIC_KEY_DER_BASE64 (or their athar.* Gradle properties)."
         }
