@@ -85,7 +85,7 @@ internal class OnlineSearch(private val http: OkHttpClient) {
     }
 
     private companion object {
-        val Base = "https://athar.arthurarchive.com/api/search".toHttpUrl()
+        val Base = "https://search.arthurarchive.com/api/search".toHttpUrl()
     }
 }
 

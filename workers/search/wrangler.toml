@@ -1,0 +1,12 @@
+name = "athar-search-api"
+main = "index.ts"
+compatibility_date = "2025-01-01"
+routes = [{ pattern = "search.arthurarchive.com", custom_domain = true }]
+
+[observability]
+enabled = true
+
+[[d1_databases]]
+binding = "SEARCH"
+database_name = "athar-search"
+database_id = "e504e022-1bc1-4d05-a482-e1f815c31004"

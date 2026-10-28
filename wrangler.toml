@@ -23,3 +23,8 @@ database_id = "e504e022-1bc1-4d05-a482-e1f815c31004"
 binding = "BOOK_ASSETS"
 bucket_name = "athar-book-assets"
 remote = true
+
+# /api/search forwards to the search Worker (workers/search), deployed on its own.
+[[services]]
+binding = "SEARCH_API"
+service = "athar-search-api"

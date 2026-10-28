@@ -1,0 +1,28 @@
+# Deploys the search API Worker (workers/search → search.arthurarchive.com) on its own, in
+# seconds, whenever search code changes; the site's /api/search forwards to it.
+name: Search Worker
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - workers/search/**
+      - src/lib/search-handler.ts
+      - src/lib/search-rank.ts
+      - src/lib/ar-normalize.ts
+      - .github/workflows/search-worker.yml
+  workflow_dispatch:
+
+concurrency: search-worker
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          wranglerVersion: "4.104.0"
+          command: deploy -c workers/search/wrangler.toml
