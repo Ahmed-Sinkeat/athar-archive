@@ -207,6 +207,7 @@ class AtharContentViewModel @Inject constructor(
     private val _cacheBytes = MutableStateFlow(0L)
     val syncState: StateFlow<ContentSyncUiState> = _syncState
     val storageStatus = content.storageStatus
+    val openProgress = content.openProgress
     val cacheBytes: StateFlow<Long> = _cacheBytes
     val cacheBudgetBytes: StateFlow<Long> = content.cacheBudgetBytes
     val pinnedCount: StateFlow<Int> = combine(pins, content.requestedAudio) { text, audio -> text.size + audio.size }

@@ -120,14 +120,18 @@ class ReadThroughContentRepository(
         database.catalogDao().allEntities().map { it.toCatalogEntry() },
     )
 
-    suspend fun openFrame(entityId: String, targetOrdinal: Int): ReadThroughResult {
+    suspend fun openFrame(entityId: String, targetOrdinal: Int, onProgress: (Float) -> Unit = {}): ReadThroughResult {
         val entity = requireNotNull(database.catalogDao().entity(entityId)) {
             "catalog entity $entityId is missing"
         }
-        return openFrame(entity.toCatalogEntry(), targetOrdinal)
+        return openFrame(entity.toCatalogEntry(), targetOrdinal, onProgress)
     }
 
-    suspend fun openFrame(entry: CatalogEntry, targetOrdinal: Int): ReadThroughResult {
+    /**
+     * [onProgress] runs 0..1 while a frame is fetched: bytes received (the index, when needed,
+     * is the first 15%), then 1 once the frame is imported. A cached frame reports nothing.
+     */
+    suspend fun openFrame(entry: CatalogEntry, targetOrdinal: Int, onProgress: (Float) -> Unit = {}): ReadThroughResult {
         require(targetOrdinal in 0 until entry.pkg.blocks) { "target ordinal is outside the package" }
         val dao = database.importDao()
         val cached = dao.frames(entry.id).firstOrNull {
@@ -162,18 +166,20 @@ class ReadThroughContentRepository(
                 frameNumber = 0
                 frame = first
             } else {
-                val index = FramedPackageDecoder.decodeIndex(client.fetchPackageIndex(entry), entry)
+                val idxSize = entry.pkg.idxSize.coerceAtLeast(1)
+                val index = FramedPackageDecoder.decodeIndex(client.fetchPackageIndex(entry) { onProgress(0.15f * it / idxSize) }, entry)
                 frameNumber = index.frames.indexOfFirst {
                     targetOrdinal >= it.ord && targetOrdinal < it.ord + it.n
                 }
                 require(frameNumber >= 0) { "package index does not cover target ordinal" }
                 frame = index.frames[frameNumber]
             }
-            val bytes = client.fetchFrame(entry, frame)
+            val from = if (first != null) 0f else 0.15f
+            val bytes = client.fetchFrame(entry, frame) { onProgress(from + (0.95f - from) * it / frame.len.coerceAtLeast(1)) }
             return mutationMutex.withLock {
                 check(dao.entity(entry.id)?.pkgHash == entry.pkg.hash) { "catalog changed during open; retry" }
                 importer.importVerifiedFrame(entry, frameNumber, frame, bytes).toReadThrough(frameNumber)
-            }
+            }.also { onProgress(1f) }
         } catch (error: Throwable) {
             if (cached != null && error !is CancellationException) return fromCache(cached) // offline: keep the old text
             runCatching { dao.markTransfer(entry.id, ContentTransferState.FAILED) }

@@ -302,6 +302,9 @@ class ContentAccess @Inject constructor(
     }
     private val _storageStatus = MutableStateFlow<ContentStorageStatus?>(null)
     val storageStatus: StateFlow<ContentStorageStatus?> = _storageStatus
+    private val _openProgress = MutableStateFlow<Pair<String, Float>?>(null)
+    /** The entity whose text is being fetched and how far along (0..1); null when nothing is. */
+    val openProgress: StateFlow<Pair<String, Float>?> = _openProgress
     private val _retainedEntityIds = MutableStateFlow<Set<String>>(emptySet())
     val retainedEntityIds: StateFlow<Set<String>> = _retainedEntityIds
 
@@ -418,7 +421,11 @@ class ContentAccess @Inject constructor(
                 cacheBytesRemoved = status.cacheBytesRemoved,
             )
         }
-        val result = source.openFrame(entityId, ordinal)
+        val result = try {
+            source.openFrame(entityId, ordinal) { _openProgress.value = entityId to it }
+        } finally {
+            _openProgress.value = null
+        }
         mutationMutex.withLock {
             cacheManager.evictToBudget(
                 budgetBytes = _cacheBudgetBytes.value,

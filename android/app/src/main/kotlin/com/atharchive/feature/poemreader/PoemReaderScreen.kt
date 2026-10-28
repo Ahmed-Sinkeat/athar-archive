@@ -61,8 +61,12 @@ import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.graphics.graphicsLayer
 import com.atharchive.feature.reader.rememberCollapsingBars
 import androidx.compose.foundation.gestures.detectTapGestures
-import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.input.pointer.PointerEventPass
+import androidx.compose.foundation.gestures.awaitEachGesture
+import androidx.compose.foundation.gestures.awaitFirstDown
+import androidx.compose.foundation.layout.offset
+import kotlinx.coroutines.withTimeoutOrNull
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextLayoutResult
 import androidx.compose.ui.text.buildAnnotatedString
@@ -76,7 +80,6 @@ import com.atharchive.feature.reader.ReaderColors
 import com.atharchive.feature.reader.ReaderSettings
 import com.atharchive.feature.reader.ReaderSettingsPopover
 import com.atharchive.feature.reader.rememberReaderColors
-import com.atharchive.feature.reader.selectionEdgeScroll
 import com.atharchive.ui.icons.AtharIcons
 import com.atharchive.ui.theme.AtharEditorialFontFamily
 import kotlinx.coroutines.delay
@@ -98,6 +101,8 @@ import kotlinx.coroutines.launch
 @Composable
 fun PoemReaderScreen(
     state: PoemReaderUiState,
+    /** How far the text being fetched has come (0..1); null when nothing is in flight. */
+    loadProgress: Float? = null,
     onBack: () -> Unit,
     settings: ReaderSettings,
     onSettingsChange: (ReaderSettings) -> Unit,
@@ -205,8 +210,30 @@ fun PoemReaderScreen(
     var bottomOverlayHeight by remember { mutableStateOf(0.dp) }
     val hidden = if (panelMode != null) 0f else bars.hidden
     val toggleBars: () -> Unit = { scope.launch { bars.toggle() } }
-    // Compose offers no call to clear a SelectionContainer; a new one after a save drops it.
-    var selectionEpoch by remember { mutableIntStateOf(0) }
+    // Whole-verse selection: hold a verse, drag across others. Compose's SelectionContainer over
+    // this LazyColumn crashed when a dragged handle passed verses the list had disposed; verse
+    // indices survive that.
+    var selAnchor by remember(state.verses) { mutableStateOf<Int?>(null) }
+    var selEnd by remember(state.verses) { mutableStateOf<Int?>(null) }
+    var selPointer by remember { mutableStateOf<androidx.compose.ui.geometry.Offset?>(null) }
+    val selRange = selAnchor?.let { a -> selEnd?.let { e -> minOf(a, e)..maxOf(a, e) } }
+    fun clearSelection() { selAnchor = null; selEnd = null }
+    androidx.activity.compose.BackHandler(selRange != null) { clearSelection() }
+    var listHeight by remember { mutableIntStateOf(0) }
+    LaunchedEffect(selPointer != null) {
+        if (selPointer == null) return@LaunchedEffect
+        val edge = with(density) { 96.dp.toPx() }
+        val maxSpeed = with(density) { 1600.dp.toPx() }
+        var last = 0L
+        while (true) androidx.compose.runtime.withFrameNanos { now ->
+            val dt = if (last == 0L) 0f else ((now - last) / 1_000_000_000f).coerceAtMost(1f / 30f)
+            last = now
+            val point = selPointer ?: return@withFrameNanos
+            val speed = com.atharchive.feature.reader.selectionEdgeSpeed(point.y, listHeight, edge)
+            if (speed != 0f && dt > 0f) listState.dispatchRawDelta(speed * maxSpeed * dt)
+            listState.verseAt(point.y, state.verses.lastIndex)?.let { selEnd = it }
+        }
+    }
     // Read through derived state: the first visible index changes verse by verse, and reading
     // it in the body recomposed the whole screen each time.
     val topVerse by remember { derivedStateOf { state.verses.getOrNull(listState.firstVisibleItemIndex) } }
@@ -229,43 +256,28 @@ fun PoemReaderScreen(
             .testTag("poem_reader_screen"),
     ) {
             Box(modifier = Modifier.fillMaxSize()) {
-                // Ordinary selection: press and hold drags a normal selection across the poem,
-                // with the book reader's own bar (نسخ · مشاركة · إلى الكناشة).
-                com.atharchive.feature.reader.ProvideReaderSelectionBar(
-                    colors = colors,
-                    onCopied = { toast = "نُسخ النص" },
-                    onShare = { text ->
-                        context.startActivity(android.content.Intent.createChooser(
-                            android.content.Intent(android.content.Intent.ACTION_SEND)
-                                .setType("text/plain").putExtra(android.content.Intent.EXTRA_TEXT, text),
-                            "مشاركة النص"))
-                    },
-                    onSave = { top, bottom ->
-                        // Poems save whole verses to الكناشة: every verse the selection touches.
-                        // ponytail: only verses on screen; a selection dragged past the viewport keeps its visible part.
-                        val info = listState.layoutInfo
-                        val from = top.toInt() - info.beforeContentPadding
-                        val to = bottom.toInt() - info.beforeContentPadding
-                        val keys = info.visibleItemsInfo.filter { it.offset < to && it.offset + it.size > from }.map { it.key }.toSet()
-                        val chosen = state.verses.filter { it.id in keys }
-                        if (chosen.isEmpty()) toast = "تعذّر تحديد البيت"
-                        else act(if (chosen.size == 1) "حُفظ في الكناشة" else "حُفظت ${arabicDigits(chosen.size)} أبيات في الكناشة") {
-                            chosen.filter { it.ordinal !in saved }.forEach { onSaveVerse(it.ordinal) }
-                        }
-                        selectionEpoch++
-                    },
-                ) {
-                androidx.compose.runtime.key(selectionEpoch) {
-                SelectionContainer(Modifier.selectionEdgeScroll(listState)) {
+                    val haptics = androidx.compose.ui.platform.LocalHapticFeedback.current
                     LazyColumn(
                         state = listState,
-                        modifier = Modifier.fillMaxSize().nestedScroll(bars.connection),
+                        modifier = Modifier.fillMaxSize().nestedScroll(bars.connection)
+                            .onSizeChanged { listHeight = it.height }
+                            .verseSelectionGestures(
+                                active = selRange != null,
+                                onClear = ::clearSelection,
+                                onHold = { y ->
+                                    listState.verseAt(y, state.verses.lastIndex)?.let {
+                                        selAnchor = it; selEnd = it
+                                        haptics.performHapticFeedback(androidx.compose.ui.hapticfeedback.HapticFeedbackType.LongPress)
+                                    } != null
+                                },
+                                onDrag = { selPointer = it },
+                            ),
                         contentPadding = PaddingValues(top = 10.dp + topBarHeight, bottom = 30.dp + bottomBarHeight),
                     ) {
                         if (state.verses.isEmpty()) item {
                             if (!state.bodyLoaded) {
                                 androidx.compose.foundation.layout.Box(Modifier.fillMaxWidth().padding(top = 96.dp)) {
-                                    com.atharchive.ui.components.AtharLoading("جارٍ تحميل القصيدة…", Modifier.align(Alignment.Center))
+                                    com.atharchive.ui.components.AtharLoading("جارٍ تحميل القصيدة…", Modifier.align(Alignment.Center), progress = loadProgress)
                                 }
                             } else Column(Modifier.padding(24.dp)) {
                                 Text("لا توجد أبيات", color = colors.text)
@@ -281,6 +293,7 @@ fun PoemReaderScreen(
                                 settings = settings,
                                 glossary = state.glossary,
                                 isCurrent = verse.number == currentVerse,
+                                selected = selRange?.contains(index) == true,
                                 saved = isSaved,
                                 bookmarked = verse.ordinal in bookmarks,
                                 onTapText = toggleBars,
@@ -301,8 +314,40 @@ fun PoemReaderScreen(
                             }
                         }
                     }
-                }
-                }
+
+                // The book reader's bar (نسخ · مشاركة · إلى الكناشة), above the first selected
+                // verse when it is on screen, else under the top bar.
+                if (selRange != null && selPointer == null) {
+                    val chosen = { state.verses.slice(selRange.first..minOf(selRange.last, state.verses.lastIndex)) }
+                    val text = { chosen().joinToString("\n\n") { it.sadr + "\n" + it.ajz } }
+                    var barHeight by remember { mutableIntStateOf(0) }
+                    com.atharchive.feature.reader.SelectionToolbar(
+                        colors = colors,
+                        modifier = Modifier.align(Alignment.TopCenter)
+                            .onSizeChanged { barHeight = it.height }
+                            .offset {
+                                val info = listState.layoutInfo
+                                val minY = topBarHeight.toPx() * (1f - hidden)
+                                val top = info.visibleItemsInfo.firstOrNull { it.index in selRange }
+                                    ?.let { it.offset - info.viewportStartOffset - barHeight - 8.dp.toPx() }
+                                androidx.compose.ui.unit.IntOffset(0, maxOf(minY, top ?: minY).toInt())
+                            },
+                        onCopy = { copy(text()); toast = "نُسخ النص"; clearSelection() },
+                        onShare = {
+                            context.startActivity(android.content.Intent.createChooser(
+                                android.content.Intent(android.content.Intent.ACTION_SEND)
+                                    .setType("text/plain").putExtra(android.content.Intent.EXTRA_TEXT, text()),
+                                "مشاركة النص"))
+                            clearSelection()
+                        },
+                        onHighlight = {
+                            val verses = chosen()
+                            act(if (verses.size == 1) "حُفظ في الكناشة" else "حُفظت ${arabicDigits(verses.size)} أبيات في الكناشة") {
+                                verses.filter { it.ordinal !in saved }.forEach { onSaveVerse(it.ordinal) }
+                            }
+                            clearSelection()
+                        },
+                    )
                 }
 
                 // Return-to-position: only while following is off and audio is running.
@@ -513,6 +558,7 @@ private fun VerseRow(
     settings: ReaderSettings,
     glossary: Map<String, String>,
     isCurrent: Boolean,
+    selected: Boolean,
     saved: Boolean,
     bookmarked: Boolean,
     onTapText: () -> Unit,
@@ -531,6 +577,7 @@ private fun VerseRow(
             .fillMaxWidth()
             .background(
                 when {
+                    selected -> colors.accent.copy(alpha = 0.18f)
                     isCurrent -> colors.accent.copy(alpha = 0.10f)
                     saved && !settings.underlineHighlights -> colors.saved
                     else -> androidx.compose.ui.graphics.Color.Transparent
@@ -660,8 +707,7 @@ private fun Hemistich(
                 .then(if (!underline) Modifier else Modifier.drawBehind {
                     layout?.let { drawHighlightLine(it, 0, it.layoutInput.text.length, colors.accent.copy(alpha = 0.8f)) }
                 })
-                // Tap only. Long-press is deliberately left alone so the surrounding
-                // SelectionContainer can start an ordinary text selection.
+                // Tap only. Long-press belongs to the list's verse selection.
                 .pointerInput(annotated) {
                     detectTapGestures { pos ->
                         val result = layout ?: return@detectTapGestures
@@ -830,4 +876,60 @@ private suspend fun androidx.compose.foundation.lazy.LazyListState.centreOn(inde
     val delta = offsetToCentre() ?: return
     if (kotlin.math.abs(delta) < 4f) return
     animateScrollBy(delta, androidx.compose.animation.core.tween(durationMillis = 650, easing = androidx.compose.animation.core.FastOutSlowInEasing))
+}
+
+/** The verse index under [y] (list-box pixels); the nearest visible one in a gap or padding. */
+private fun androidx.compose.foundation.lazy.LazyListState.verseAt(y: Float, lastVerse: Int): Int? {
+    if (lastVerse < 0) return null
+    val info = layoutInfo
+    val items = info.visibleItemsInfo.ifEmpty { return null }
+    val at = y + info.viewportStartOffset
+    val item = items.firstOrNull { at < it.offset + it.size } ?: items.last()
+    return item.index.coerceAtMost(lastVerse)
+}
+
+/**
+ * Hold still for a long press to start a verse selection; drag to extend it ([onDrag] gets
+ * the finger, null when it lifts). The list keeps every scroll and tap; a tap while a
+ * selection is up only clears it.
+ */
+@Composable
+private fun Modifier.verseSelectionGestures(
+    active: Boolean,
+    onClear: () -> Unit,
+    onHold: (y: Float) -> Boolean,
+    onDrag: (androidx.compose.ui.geometry.Offset?) -> Unit,
+): Modifier {
+    // Read live: re-keying the detector on these would cancel the drag the hold just started.
+    val selecting by androidx.compose.runtime.rememberUpdatedState(active)
+    val clear by androidx.compose.runtime.rememberUpdatedState(onClear)
+    val hold by androidx.compose.runtime.rememberUpdatedState(onHold)
+    val drag by androidx.compose.runtime.rememberUpdatedState(onDrag)
+    return pointerInput(Unit) { awaitEachGesture {
+        val down = awaitFirstDown(requireUnconsumed = false, pass = PointerEventPass.Initial)
+        val decided = withTimeoutOrNull(viewConfiguration.longPressTimeoutMillis) {
+            while (true) {
+                val change = awaitPointerEvent(PointerEventPass.Initial).changes.firstOrNull { it.id == down.id } ?: return@withTimeoutOrNull
+                if (!change.pressed) {
+                    if (selecting) { change.consume(); clear() }
+                    return@withTimeoutOrNull
+                }
+                if ((change.position - down.position).getDistance() > viewConfiguration.touchSlop) return@withTimeoutOrNull
+            }
+        }
+        if (decided != null) return@awaitEachGesture
+        val at = currentEvent.changes.firstOrNull { it.id == down.id }?.position ?: down.position
+        if (!hold(at.y)) return@awaitEachGesture
+        drag(at)
+        try {
+            while (true) {
+                val change = awaitPointerEvent(PointerEventPass.Initial).changes.firstOrNull { it.id == down.id } ?: break
+                change.consume()
+                if (!change.pressed) break
+                drag(change.position)
+            }
+        } finally {
+            drag(null)
+        }
+    } }
 }

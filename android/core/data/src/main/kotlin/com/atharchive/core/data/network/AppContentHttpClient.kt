@@ -69,13 +69,14 @@ class AppContentHttpClient(
         return fetchGeneration(fetchRoot(trustedKeys).root)
     }
 
-    suspend fun fetchPackageIndex(entry: CatalogEntry): ByteArray = withContext(Dispatchers.IO) {
-        val bytes = get(entry.pkg.idxPath, entry.pkg.idxSize.checkedSize("package index"))
+    /** [onBytes] gets the bytes received so far, as they arrive. */
+    suspend fun fetchPackageIndex(entry: CatalogEntry, onBytes: (Int) -> Unit = {}): ByteArray = withContext(Dispatchers.IO) {
+        val bytes = get(entry.pkg.idxPath, entry.pkg.idxSize.checkedSize("package index"), onBytes)
         ContentDigests.verify(bytes, entry.pkg.idxHash, entry.pkg.idxSize, "package index")
         bytes
     }
 
-    suspend fun fetchFrame(entry: CatalogEntry, frame: FrameIndexEntry): ByteArray = withContext(Dispatchers.IO) {
+    suspend fun fetchFrame(entry: CatalogEntry, frame: FrameIndexEntry, onBytes: (Int) -> Unit = {}): ByteArray = withContext(Dispatchers.IO) {
         val first = frame.off
         val last = first + frame.len - 1
         val request = Request.Builder()
@@ -90,7 +91,7 @@ class AppContentHttpClient(
                 throw ContentTransportException("frame response has an unexpected Content-Range")
             }
             requireIdentity(response)
-            val bytes = readBounded(response, frame.len)
+            val bytes = readBounded(response, frame.len, onBytes)
             ContentDigests.verify(bytes, frame.sha256, frame.len.toLong(), "package frame ${frame.ord}")
             bytes
         }
@@ -182,7 +183,7 @@ class AppContentHttpClient(
         PackageDownloadResult(resumedFrom, size - resumedFrom)
     }
 
-    private suspend fun get(relativePath: String, maximumBytes: Int): ByteArray {
+    private suspend fun get(relativePath: String, maximumBytes: Int, onBytes: (Int) -> Unit = {}): ByteArray {
         val request = Request.Builder()
             .url(resolve(relativePath))
             .header("Accept-Encoding", "identity")
@@ -190,7 +191,7 @@ class AppContentHttpClient(
         return withResponse(request) { response ->
             if (!response.isSuccessful) throw ContentTransportException("$relativePath returned HTTP ${response.code}")
             requireIdentity(response)
-            readBounded(response, maximumBytes)
+            readBounded(response, maximumBytes, onBytes)
         }
     }
 
@@ -234,14 +235,14 @@ class AppContentHttpClient(
         }
     }
 
-    private fun readBounded(response: Response, maximumBytes: Int): ByteArray {
+    private fun readBounded(response: Response, maximumBytes: Int, onBytes: (Int) -> Unit = {}): ByteArray {
         val body = response.body ?: throw ContentTransportException("app-content response has no body")
         if (body.contentLength() > maximumBytes) throw ContentTransportException("app-content response exceeds its declared limit")
-        return body.byteStream().readAtMost(maximumBytes)
+        return body.byteStream().readAtMost(maximumBytes, onBytes)
     }
 }
 
-private fun InputStream.readAtMost(maximumBytes: Int): ByteArray {
+private fun InputStream.readAtMost(maximumBytes: Int, onBytes: (Int) -> Unit = {}): ByteArray {
     val output = ByteArrayOutputStream(minOf(maximumBytes, 64 * 1024))
     val buffer = ByteArray(16 * 1024)
     var total = 0
@@ -251,6 +252,7 @@ private fun InputStream.readAtMost(maximumBytes: Int): ByteArray {
         total += read
         if (total > maximumBytes) throw ContentTransportException("app-content response exceeds its declared limit")
         output.write(buffer, 0, read)
+        onBytes(total)
     }
     return output.toByteArray()
 }

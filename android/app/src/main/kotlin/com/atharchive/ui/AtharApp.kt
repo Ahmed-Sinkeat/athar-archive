@@ -513,6 +513,8 @@ fun AtharApp(
                     val readerEmitted = collectEmitted(route.bookId) { contentViewModel.readerState(route.bookId) }
                     val readerState = readerEmitted?.value
                     val readerWindow = remember(route.bookId) { contentViewModel.readerWindow(route.bookId) }
+                    val openProgress by contentViewModel.openProgress.collectAsStateWithLifecycle()
+                    val loadProgress = openProgress?.takeIf { it.first == route.bookId }?.second
                     LaunchedEffect(route.bookId, route.targetOrdinal) {
                         // A work opens in the edition last chosen for it; a jump to a place opens as asked.
                         val edition = if (route.targetOrdinal == null) contentViewModel.editionToOpen(route.bookId) else route.bookId
@@ -527,7 +529,7 @@ fun AtharApp(
                     if (readerEmitted == null) Column(Modifier.fillMaxSize()) {
                         IconButton(onClick = ::goBack) { Icon(AtharIcons.Back, "رجوع") }
                         com.atharchive.ui.components.AtharLoading(
-                            "جارٍ تحميل النص…", Modifier.padding(top = 120.dp), tag = "reader_loading",
+                            "جارٍ تحميل النص…", Modifier.padding(top = 120.dp), tag = "reader_loading", progress = loadProgress,
                         )
                     } else if (readerState == null) Column(Modifier.fillMaxSize()) {
                         IconButton(onClick = ::goBack) { Icon(AtharIcons.Back, "رجوع") }
@@ -542,6 +544,7 @@ fun AtharApp(
                         ReaderScreen(
                             state = state,
                             window = readerWindow,
+                            loadProgress = loadProgress,
                             initialOrdinal = route.targetOrdinal,
                             onSearch = { contentViewModel.searchInBook(route.bookId, it) },
                             onPageJump = { page, volume -> contentViewModel.findPrintedPage(route.bookId, page, volume) },
@@ -592,6 +595,8 @@ fun AtharApp(
                 }
                 entry<PoemReaderRoute> { route ->
                     val poemEmitted = collectEmitted(route.poemId) { contentViewModel.poemReaderState(route.poemId) }
+                    val openProgress by contentViewModel.openProgress.collectAsStateWithLifecycle()
+                    val loadProgress = openProgress?.takeIf { it.first == route.poemId }?.second
                     val poemState = poemEmitted?.value
                     LaunchedEffect(route.poemId) { contentViewModel.openReader(route.poemId, route.targetOrdinal) }
                     DisposableEffect(route.poemId) {
@@ -599,10 +604,11 @@ fun AtharApp(
                     }
                     if (poemEmitted == null) Column(Modifier.fillMaxSize()) {
                         IconButton(onClick = ::goBack) { Icon(AtharIcons.Back, "رجوع") }
-                        com.atharchive.ui.components.AtharLoading("جارٍ تحميل القصيدة…", Modifier.padding(top = 120.dp), tag = "poem_loading")
+                        com.atharchive.ui.components.AtharLoading("جارٍ تحميل القصيدة…", Modifier.padding(top = 120.dp), tag = "poem_loading", progress = loadProgress)
                     } else if (poemState == null) UnavailableRoute("القصيدة غير متاحة بعد", ::goBack) { contentViewModel.sync(); contentViewModel.openReader(route.poemId, route.targetOrdinal) }
                     poemState?.let { state -> PoemReaderScreen(
                             state = state,
+                            loadProgress = loadProgress,
                             onBack = ::goBack,
                             settings = readerSettings,
                             onSettingsChange = onReaderSettingsChange,
