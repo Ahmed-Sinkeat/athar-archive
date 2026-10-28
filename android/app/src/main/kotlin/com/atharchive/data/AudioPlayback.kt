@@ -53,6 +53,7 @@ class AudioPlayback @Inject constructor(@ApplicationContext context: Context) {
             return
         }
         if (items.isEmpty() || index !in items.indices) return
+        Analytics.hit("audio", items[index].mediaId)
         val sameItem = player.currentMediaItem?.mediaId == items[index].mediaId
         val sameQueue = (0 until player.mediaItemCount).map { player.getMediaItemAt(it) } == items
         if (sameItem && sameQueue && player.playerError == null) {

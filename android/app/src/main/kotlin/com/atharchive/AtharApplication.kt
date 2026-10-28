@@ -16,5 +16,6 @@ class AtharApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         ContentDownloadNotifications.createChannel(this)
+        com.atharchive.data.Analytics.init(this)
     }
 }

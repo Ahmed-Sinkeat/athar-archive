@@ -22,6 +22,8 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.LayoutDirection
@@ -103,6 +105,20 @@ fun AppearanceScreen(
                     }
                 }
 
+                SectionRule(pad)
+                AtharSectionHeading("إحصاءات مجهولة", pad, top = 18.dp)
+                val analyticsOn by com.atharchive.data.Analytics.enabled.collectAsState()
+                Box(segmentPad) {
+                    SegmentRow(listOf("تشغيل", "إيقاف"), if (analyticsOn) "تشغيل" else "إيقاف", segmentColors, "appearance_analytics") { label ->
+                        com.atharchive.data.Analytics.setEnabled(label == "تشغيل")
+                    }
+                }
+                Text(
+                    "عدد مرات الفتح والقراءة والبحث، بلا اسم ولا معرّف ولا كلمات بحث.",
+                    modifier = Modifier.padding(horizontal = pad, vertical = 4.dp),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = AtharTheme.colors.secondaryText,
+                )
             }
         }
     }

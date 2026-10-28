@@ -137,6 +137,7 @@ class ContentDownloadWorker(
                 }
             }
             if (isAudio) content.runAudioDownload(entityId, progress) else content.runDownload(entityId, progress)
+            Analytics.hit("download", pauseKey)
             val batches = content.finishBatchItem(pauseKey)
             if (batches.isEmpty()) {
                 ContentDownloadNotifications.completed(applicationContext, pauseKey, content.entityTitle(entityId))

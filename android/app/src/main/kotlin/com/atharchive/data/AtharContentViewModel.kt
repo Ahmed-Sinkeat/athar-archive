@@ -329,8 +329,9 @@ class AtharContentViewModel @Inject constructor(
             onlineSearch.hits(query, limit)
         } catch (cancelled: kotlinx.coroutines.CancellationException) { throw cancelled
         } catch (offline: Exception) { null }
-        if (online == null) return@transformLatest emit(localState(SearchScope.Offline))
+        if (online == null) { Analytics.hit("search", "offline"); return@transformLatest emit(localState(SearchScope.Offline)) }
         val (hits, more) = online
+        Analytics.hit("search", if (hits.isEmpty()) "none" else "online")
         val state = base.copy(
             scope = SearchScope.Online,
             directMatches = direct,
@@ -897,6 +898,7 @@ class AtharContentViewModel @Inject constructor(
             val saved = userDao.readingPosition(entityId)
             val stable = saved?.let { importDao.blockByStableId(entityId, it.blockIdHi, it.blockIdLo) }
             val entity = catalogDao.entity(entityId) ?: return@launch
+            Analytics.hit("book", entityId)
             val position = (targetOrdinal ?: stable?.ordinal ?: saved?.ordinalHint ?: 0)
                 .coerceIn(0, (entity.pkgBlocks - 1).coerceAtLeast(0))
             if (targetOrdinal == null && saved != null && position != saved.ordinalHint) {

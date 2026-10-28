@@ -38,6 +38,7 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        if (savedInstanceState == null) com.atharchive.data.Analytics.hit("open")
         enableEdgeToEdge()
         downloadTarget.value = intent.getStringExtra("athar_download")
         setContent {
