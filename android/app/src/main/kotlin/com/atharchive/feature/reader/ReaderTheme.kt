@@ -33,7 +33,27 @@ data class ReaderColors(
     /** ﴿…﴾ and «…» in the text: the site's gold and blue, lighter at night. */
     val ayah: Color = PaperAyah,
     val quote: Color = PaperQuote,
+    /** Every heading, كتاب and باب alike. */
+    val heading: Color = accent,
+    val poetry: Color = text,
 )
+
+/** A colour a text role can take; [Theme] follows «اللون», [Ink] is the body text's own. */
+enum class TextHue(val label: String, val day: Color, val night: Color) {
+    Gold("ذهبي", PaperAyah, NightAyah),
+    Blue("أزرق", PaperQuote, NightQuote),
+    Green("أخضر", Color(0xFF2E6B45), Color(0xFF7CC49A)),
+    Red("أحمر", Color(0xFFA1352F), Color(0xFFE07B72)),
+    Theme("السمة", Color.Unspecified, Color.Unspecified),
+    Ink("النص", Color.Unspecified, Color.Unspecified),
+    ;
+
+    fun resolve(colors: ReaderColors, dark: Boolean): Color = when (this) {
+        Theme -> colors.accent
+        Ink -> colors.text
+        else -> if (dark) night else day
+    }
+}
 
 // Saved text: amber on paper, a lighter amber at night. Burgundy stays the selection.
 private val PaperSaved = Color(0x66D9A73A)
@@ -44,8 +64,17 @@ private val PaperQuote = Color(0xFF2A4C8C)
 private val NightQuote = Color(0xFF7FA6E8)
 
 @Composable
-fun rememberReaderColors(): ReaderColors =
-    followedReaderColors(AtharTheme.colors, MaterialTheme.colorScheme.onBackground)
+fun rememberReaderColors(settings: ReaderSettings? = null): ReaderColors {
+    val base = followedReaderColors(AtharTheme.colors, MaterialTheme.colorScheme.onBackground)
+    if (settings == null) return base
+    val dark = AtharTheme.colors.canvas.luminance() < 0.5f
+    return base.copy(
+        ayah = settings.quranHue.resolve(base, dark),
+        quote = settings.hadithHue.resolve(base, dark),
+        heading = settings.headingHue.resolve(base, dark),
+        poetry = settings.poetryHue.resolve(base, dark),
+    )
+}
 
 internal fun followedReaderColors(app: AtharExtraColors, text: Color) = ReaderColors(
     page = app.canvas, text = text, secondary = app.secondaryText, divider = app.divider,

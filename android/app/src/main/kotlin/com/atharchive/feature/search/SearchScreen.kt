@@ -1,5 +1,6 @@
 package com.atharchive.feature.search
 
+import com.atharchive.ui.components.atharControl
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.draw.drawBehind
 import com.atharchive.ui.theme.AtharCorners
@@ -46,6 +47,7 @@ import androidx.compose.runtime.withFrameNanos
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.SpanStyle
@@ -91,7 +93,8 @@ fun SearchScreen(
 
     val term = query.trim()
     val hasQuery = term.isNotBlank()
-    val hits = if (!hasQuery || searching) emptyList() else state.hits
+    // The last results stay up while the next ones load: nothing blanks between keystrokes.
+    val hits = if (!hasQuery) emptyList() else state.hits
     val directMatches = if (hasQuery) state.directMatches else emptyList()
     var allTitles by rememberSaveable(state.query) { mutableStateOf(false) }
     // groupBy keeps first-seen order, so each book sits where its best passage ranked.
@@ -148,6 +151,7 @@ fun SearchScreen(
                     trailing = { SearchFilterButton(filters, state.availableAuthors, ::changeFilters) },
                 )
                 SearchActiveFilters(filters, ::changeFilters, Modifier.padding(horizontal = horizontalPadding))
+                if (hasQuery) SearchTypeTabs(filters, ::changeFilters, Modifier.padding(horizontal = horizontalPadding - 8.dp))
             }
 
             if (!hasQuery) {
@@ -193,7 +197,7 @@ fun SearchScreen(
                             }
                         }
                     }
-                    itemsIndexed(state.recentQueries, key = { _, q -> "recent-$q" }) { index, recent ->
+                    itemsIndexed(state.recentQueries, key = { _, q -> "recent-$q"  }) { index, recent -> com.atharchive.ui.components.AtharRowItem {
                         RecentRow(
                             query = recent,
                             horizontalPadding = horizontalPadding,
@@ -202,7 +206,7 @@ fun SearchScreen(
                             },
                         )
                         if (index != state.recentQueries.lastIndex) {
-                            HorizontalDivider(
+                            com.atharchive.ui.components.AtharRowDivider(
                                 modifier = Modifier.padding(
                                     start = horizontalPadding + 34.dp,
                                     end = horizontalPadding,
@@ -211,7 +215,7 @@ fun SearchScreen(
                                 color = AtharTheme.colors.divider.copy(alpha = 0.42f),
                             )
                         }
-                    }
+                    }}
                 }
                 return@LazyColumn
             }
@@ -244,7 +248,7 @@ fun SearchScreen(
                 }
             }
 
-            if (searching) {
+            if (searching && hits.isEmpty()) {
                 item(key = "search-loading") {
                     Text("جارٍ البحث في النصوص…", Modifier.padding(horizontal = horizontalPadding, vertical = 16.dp), color = AtharTheme.colors.secondaryText)
                 }
@@ -267,7 +271,7 @@ fun SearchScreen(
             }
 
             item(key = "hits-heading") {
-                ResultsHeading("في النصوص", horizontalPadding)
+                ResultsHeading(if (searching) "في النصوص · جارٍ البحث في المكتبة كلها…" else "في النصوص", horizontalPadding)
             }
             // One card per book at its best hit's rank; the book's other passages open under it.
             itemsIndexed(bookGroups, key = { _, group -> group.first().id }) { index, group ->
@@ -305,6 +309,18 @@ fun SearchScreen(
     }
 
 
+}
+
+/** الكل · كتب · شعر · مقالات · مسائل — one tap narrows the results to one kind. */
+@Composable
+private fun SearchTypeTabs(filters: SearchFilters, onChange: (SearchFilters) -> Unit, modifier: Modifier = Modifier) {
+    val tabs = listOf(com.atharchive.ui.components.AtharTab("all", "الكل")) +
+        SearchResultType.entries.map { com.atharchive.ui.components.AtharTab(it.key, it.plural) }
+    // Several kinds picked in the filter menu: no single tab is the selection.
+    val selected = when (filters.types.size) { 0 -> "all"; 1 -> filters.types.first().key; else -> "" }
+    com.atharchive.ui.components.AtharTabRow(tabs, selected, { key ->
+        onChange(filters.copy(types = SearchResultType.entries.filter { it.key == key }.toSet()))
+    }, tagPrefix = "search_type", modifier = modifier)
 }
 
 @Composable
@@ -373,7 +389,7 @@ private fun TopAuthors(authors: List<AuthorCountUi>, selected: Set<String>, hori
                 "${author.name} · ${arabicDigits(author.count)}",
                 Modifier
                     .clip(AtharCorners.Control)
-                    .background(if (on) AtharTheme.colors.accent.copy(alpha = 0.18f) else AtharTheme.colors.divider.copy(alpha = 0.28f))
+                    .then(if (on) Modifier.background(AtharTheme.colors.accent.copy(alpha = 0.18f)) else Modifier.atharControl(AtharTheme.colors.divider.copy(alpha = 0.28f), AtharCorners.Control))
                     .clickable(role = Role.Button) { onToggle(author.name) }
                     .padding(horizontal = 10.dp, vertical = 6.dp),
                 color = if (on) AtharTheme.colors.accent else MaterialTheme.colorScheme.onSurface,
@@ -436,7 +452,7 @@ private fun DirectMatchRow(
         border = BorderStroke(1.dp, AtharTheme.colors.divider.copy(alpha = 0.4f)),
     ) {
         Row(
-            modifier = Modifier.padding(horizontal = 14.dp, vertical = 12.dp),
+            modifier = Modifier.padding(horizontal = 14.dp, vertical = 9.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(10.dp),
         ) {
@@ -446,8 +462,10 @@ private fun DirectMatchRow(
                     color = MaterialTheme.colorScheme.onSurface,
                     fontFamily = AtharEditorialFontFamily,
                     fontWeight = FontWeight.Bold,
-                    fontSize = AtharTextSize.Title,
-                    lineHeight = 26.sp,
+                    fontSize = AtharTextSize.Ui,
+                    lineHeight = 23.sp,
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis,
                 )
                 Row(
                     modifier = Modifier.padding(top = 3.dp),
@@ -480,7 +498,8 @@ fun SearchHitCard(
     LaunchedEffect(expanded) {
         if (expanded && passage == null && hit.url != null) passage = loadPassage(hit)?.let { around(it, hit) }
     }
-    val text = passage ?: hit.excerpt
+    val poem = hit.type == SearchResultType.Poem
+    val text = (passage ?: hit.excerpt).let { if (poem) verseLines(it) else it }
     val highlighted = remember(text, hit, accent) {
         val ranges = if (passage == null) hit.matches else wordRanges(text, hit)
         buildAnnotatedString {
@@ -513,10 +532,11 @@ fun SearchHitCard(
                 role = Role.Button,
                 onClick = onClick,
             )
-            .padding(start = 16.dp, end = 14.dp, top = 12.dp, bottom = 2.dp)
+            .padding(start = 16.dp, end = 6.dp, top = 8.dp, bottom = 10.dp)
             .testTag("search_hit_${hit.id}"),
     ) {
-        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+        // Title, then what it is (كتاب · author · place) right under it, then two lines of the passage.
+        Row(verticalAlignment = Alignment.CenterVertically) {
             Text(
                 text = hit.sourceTitle,
                 modifier = Modifier.weight(1f),
@@ -527,44 +547,54 @@ fun SearchHitCard(
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
             )
-            TypeChip(hit.type.label, tint)
-        }
-        Text(
-            text = listOfNotNull(
-                hit.sourceAuthor.ifBlank { null }?.let { name -> hit.died?.let { "$name (ت ${arabicDigits(it)}هـ)" } ?: name },
-                hit.locationLabel,
-            ).joinToString(" · "),
-            modifier = Modifier.padding(top = 1.dp),
-            color = AtharTheme.colors.secondaryText,
-            style = MaterialTheme.typography.bodySmall,
-            maxLines = 1,
-            overflow = TextOverflow.Ellipsis,
-        )
-        Text(
-            text = highlighted,
-            modifier = Modifier.padding(top = 6.dp),
-            color = MaterialTheme.colorScheme.onSurface,
-            fontFamily = AtharEditorialFontFamily,
-            fontSize = AtharTextSize.Title,
-            lineHeight = 29.sp,
-            maxLines = if (expanded) Int.MAX_VALUE else 4,
-            overflow = TextOverflow.Ellipsis,
-        )
-        Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End, verticalAlignment = Alignment.CenterVertically) {
-            if (hit.url != null) TextButton(onClick = { expanded = !expanded }) {
-                Text(if (expanded) "أقل" else "المزيد", color = AtharTheme.colors.accent, style = MaterialTheme.typography.labelMedium)
+            if (hit.url != null) IconButton(onClick = { expanded = !expanded }, Modifier.size(36.dp)) {
+                Icon(AtharIcons.ChevronDown, contentDescription = if (expanded) "أقل" else "المزيد", tint = AtharTheme.colors.secondaryText,
+                    modifier = Modifier.size(16.dp).graphicsLayer { rotationZ = if (expanded) 180f else 0f })
             }
             IconButton(onClick = {
                 clipboard.setText(androidx.compose.ui.text.AnnotatedString(
                     "«${text.trim('…', ' ')}»\n— ${hit.sourceTitle}" + (hit.sourceAuthor.ifBlank { null }?.let { "، $it" } ?: ""),
                 ))
                 android.widget.Toast.makeText(context, "نُسخ النص مع مصدره", android.widget.Toast.LENGTH_SHORT).show()
-            }) {
-                Icon(AtharIcons.Copy, contentDescription = "نسخ النص مع مصدره", tint = AtharTheme.colors.secondaryText, modifier = Modifier.size(18.dp))
+            }, Modifier.size(36.dp)) {
+                Icon(AtharIcons.Copy, contentDescription = "نسخ النص مع مصدره", tint = AtharTheme.colors.secondaryText, modifier = Modifier.size(16.dp))
             }
         }
+        Row(Modifier.padding(end = 8.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+            TypeChip(hit.type.label, tint)
+            Text(
+                text = listOfNotNull(
+                    hit.sourceAuthor.ifBlank { null }?.let { name -> hit.died?.let { "$name (ت ${arabicDigits(it)}هـ)" } ?: name },
+                    hit.locationLabel,
+                ).joinToString(" · "),
+                color = AtharTheme.colors.secondaryText,
+                style = MaterialTheme.typography.bodySmall,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+            )
+        }
+        Text(
+            text = highlighted,
+            modifier = Modifier.padding(top = 5.dp, end = 8.dp),
+            color = MaterialTheme.colorScheme.onSurface,
+            fontFamily = AtharEditorialFontFamily,
+            fontSize = AtharTextSize.Ui,
+            lineHeight = 25.sp,
+            maxLines = if (expanded) Int.MAX_VALUE else if (poem) 4 else 2,
+            overflow = TextOverflow.Ellipsis,
+            textAlign = if (poem) androidx.compose.ui.text.style.TextAlign.Center else null,
+        )
     }
 }
+
+// Verse numbers are Arabic-Indic digits, written as escapes: never Arabic characters in a class.
+private val VerseStart = Regex(" (?=[\u0660-\u0669]+ - )")
+
+/**
+ * A poem's passage («١ - صدر … عجز ٢ - …») as one hemistich to a line. Same length as [text],
+ * so the match offsets still fall on the right words.
+ */
+internal fun verseLines(text: String) = text.replace(" … ", " \n ").replace(VerseStart, "\n")
 
 /**
  * About 900 characters of [full] around this hit: where its own snippet sits in the passage (not

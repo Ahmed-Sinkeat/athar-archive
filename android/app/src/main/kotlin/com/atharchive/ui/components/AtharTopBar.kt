@@ -32,6 +32,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import kotlinx.coroutines.launch
 import com.atharchive.R
 import com.atharchive.ui.icons.AtharIcons
 import com.atharchive.ui.icons.AtharMark
@@ -91,13 +92,18 @@ fun AtharTopBar(
                 )
             }
         } else {
-            // Branding only. It used to open الأقسام, which hid articles and fatwas behind an
-            // unmarked logo; they now sit in the ⋮ menu.
+            // Branding: a tap only plays the mark's writing-in again. It used to open الأقسام, which
+            // hid articles and fatwas behind an unmarked logo; they now sit in the ⋮ menu.
+            val reveal = androidx.compose.runtime.remember { androidx.compose.animation.core.Animatable(1f) }
+            val scope = androidx.compose.runtime.rememberCoroutineScope()
             Box(
-                modifier = Modifier.size(48.dp).testTag("athar_app_icon"),
+                modifier = Modifier.size(48.dp).testTag("athar_app_icon")
+                    .clickable(interactionSource = null, indication = null) {
+                        scope.launch { reveal.snapTo(0f); reveal.animateTo(1f, com.atharchive.ui.icons.AtharMarkMotion) }
+                    },
                 contentAlignment = Alignment.Center,
             ) {
-                AtharMark(modifier = Modifier.size(30.dp), contentDescription = null)
+                AtharMark(modifier = Modifier.size(30.dp), contentDescription = null, reveal = { reveal.value })
             }
         }
         Box(

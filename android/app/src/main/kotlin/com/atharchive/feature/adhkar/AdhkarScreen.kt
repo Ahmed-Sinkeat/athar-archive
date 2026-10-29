@@ -5,7 +5,6 @@ import kotlinx.coroutines.launch
 import com.atharchive.ui.theme.AtharCorners
 import com.atharchive.ui.theme.AtharTextSize
 import com.atharchive.ui.components.arabicDigits
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -28,20 +27,20 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.saveable.listSaver
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
-import androidx.compose.runtime.snapshots.SnapshotStateMap
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.draw.drawBehind
+import androidx.compose.animation.animateContentSize
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.contentDescription
@@ -75,12 +74,21 @@ fun AdhkarScreen(
     modifier: Modifier = Modifier,
     bab: AdhkarBabUi? = null,
     onBack: (() -> Unit)? = null,
+    /** The reader's font, size and text colours, so a dhikr reads like the books. */
+    readerSettings: com.atharchive.feature.reader.ReaderSettings = com.atharchive.feature.reader.ReaderSettings(),
 ) {
-    var selectedTab by rememberSaveable { mutableStateOf(AdhkarTab.Morning) }
+    // ponytail: المساء from 15:00 until 04:00, near enough to العصر and الفجر without prayer times; real times when the app has them.
+    var selectedTab by rememberSaveable {
+        mutableStateOf(java.time.LocalTime.now().hour.let { if (it >= 15 || it < 4) AdhkarTab.Evening else AdhkarTab.Morning })
+    }
     var query by rememberSaveable { mutableStateOf("") }
-    // Counts survive rotation. A dhikr you are 60 repetitions into is not something to
-    // lose because the phone turned.
-    val remaining = rememberSaveable(saver = RemainingSaver) { mutableStateMapOf<String, Int>() }
+    // Counts last the day: closing the app mid-way keeps your place; a new day starts clean.
+    val context = androidx.compose.ui.platform.LocalContext.current
+    val counts = remember { DayCounts(context) }
+    val remaining = counts.remaining
+    val haptics = androidx.compose.ui.platform.LocalHapticFeedback.current
+    val readerColors = com.atharchive.feature.reader.rememberReaderColors(readerSettings)
+    var advancedAt by remember { mutableStateOf(0L) }
     val listState = rememberLazyListState()
     val reselectScope = androidx.compose.runtime.rememberCoroutineScope()
 
@@ -175,7 +183,7 @@ fun AdhkarScreen(
                             done = done,
                             total = entries.size,
                             horizontalPadding = horizontalPadding,
-                            onReset = { entries.forEach { remaining.remove(it.id) } },
+                            onReset = { counts.reset(entries.map { it.id }) },
                         )
                     }
                 }
@@ -209,14 +217,30 @@ fun AdhkarScreen(
                         )
                     }
                 } else {
+                    // Items above the first card, to scroll to the next one when a dhikr is finished.
+                    val above = (if (bab == null) 2 else 0) + 1 + (if (counting && entries.isNotEmpty()) 1 else 0) + 1
                     items(visible, key = { it.id }) { dhikr ->
                         DhikrCard(
                             dhikr = dhikr,
                             remaining = left(dhikr),
                             horizontalPadding = horizontalPadding,
+                            settings = readerSettings,
+                            readerColors = readerColors,
                             onCount = {
                                 val now = left(dhikr)
-                                if (now > 0) remaining[dhikr.id] = now - 1
+                                // A tap landing just as the list moves on belongs to the dhikr that left, not the one arriving.
+                                if (now > 0 && android.os.SystemClock.uptimeMillis() - advancedAt > 450) {
+                                    counts.set(dhikr.id, now - 1)
+                                    haptics.performHapticFeedback(
+                                        if (now == 1) androidx.compose.ui.hapticfeedback.HapticFeedbackType.Confirm
+                                        else androidx.compose.ui.hapticfeedback.HapticFeedbackType.TextHandleMove,
+                                    )
+                                    // Done: bring the next one still to say up under the bar.
+                                    if (now == 1) visible.drop(visible.indexOf(dhikr) + 1).firstOrNull { left(it) > 0 }?.let { next ->
+                                        advancedAt = android.os.SystemClock.uptimeMillis()
+                                        reselectScope.launch { listState.animateScrollToItem(above + visible.indexOf(next)) }
+                                    }
+                                }
                             },
                             onCopy = { onCopy(dhikr) },
                             onSave = { onSave(dhikr) },
@@ -243,9 +267,10 @@ private fun AdhkarProgress(
         horizontalArrangement = Arrangement.spacedBy(12.dp),
     ) {
         Text(
-            text = "${arabicDigits(done)} من ${arabicDigits(total)}",
-            color = AtharTheme.colors.secondaryText,
-            style = MaterialTheme.typography.labelSmall,
+            text = if (done == total) "تمّت ✓" else "${arabicDigits(done)} من ${arabicDigits(total)}",
+            color = if (done == total) AtharTheme.colors.success else MaterialTheme.colorScheme.onBackground,
+            style = MaterialTheme.typography.titleSmall,
+            fontWeight = FontWeight.SemiBold,
             modifier = Modifier.testTag("adhkar_progress_label"),
         )
         AtharProgressBar(
@@ -258,7 +283,7 @@ private fun AdhkarProgress(
         // again tomorrow, not reset by accident today.
         if (done > 0) {
             Text(
-                text = "إعادة",
+                text = "ابدأ من جديد",
                 modifier = Modifier
                     .clip(AtharCorners.Control)
                     .clickable(role = Role.Button, onClick = onReset)
@@ -273,151 +298,147 @@ private fun AdhkarProgress(
 }
 
 /**
- * The dhikr, its التخريج, and a narrow rail carrying the two things you do to it.
- *
- * Tapping anywhere on the card spends one repetition — the counter is the point of the
- * screen, so it gets the whole surface rather than a small button.
+ * One dhikr, set like the books (the reader's font, size, ﴿﴾ and «» colours) across the
+ * whole card. The card is the counter: a tap anywhere spends one repetition. Once said it
+ * folds to a single line with a check; a tap opens it again to read.
  */
 @Composable
 private fun DhikrCard(
     dhikr: DhikrUi,
     remaining: Int,
     horizontalPadding: Dp,
+    settings: com.atharchive.feature.reader.ReaderSettings,
+    readerColors: com.atharchive.feature.reader.ReaderColors,
     onCount: () -> Unit,
     onCopy: () -> Unit,
     onSave: () -> Unit,
 ) {
     val finished = remaining == 0
-    Surface(
+    var reopened by remember(dhikr.id) { mutableStateOf(false) }
+    var showSource by remember(dhikr.id) { mutableStateOf(false) }
+    val folded = finished && !reopened
+    val text = remember(dhikr.text, readerColors) { marked(dhikr.text, readerColors) }
+    com.atharchive.ui.components.AtharRowItem {
+    Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(start = horizontalPadding, end = horizontalPadding, top = 10.dp)
+            .padding(start = horizontalPadding - 10.dp, end = horizontalPadding - 10.dp)
             .clip(AtharCorners.Card)
             .clickable(
-                enabled = !finished,
                 role = Role.Button,
-                onClickLabel = "عدّ مرة",
-                onClick = onCount,
+                onClickLabel = if (finished) "عرض الذكر" else "عدّ مرة",
+                onClick = { if (finished) reopened = !reopened else onCount() },
             )
             .semantics {
-                contentDescription = if (finished) {
-                    "اكتمل الذكر"
-                } else {
-                    "بقي ${arabicDigits(remaining)} من ${arabicDigits(dhikr.repeat)}"
-                }
+                contentDescription = if (finished) "اكتمل الذكر" else "بقي ${arabicDigits(remaining)} من ${arabicDigits(dhikr.repeat)}"
             }
+            .animateContentSize()
+            .padding(horizontal = 14.dp, vertical = if (folded) 10.dp else 14.dp)
             .testTag("dhikr_${dhikr.id}"),
-        shape = AtharCorners.Card,
-        color = AtharTheme.colors.raisedSurface,
-        border = BorderStroke(1.dp, AtharTheme.colors.divider.copy(alpha = 0.4f)),
     ) {
-        Row(modifier = Modifier.padding(start = 6.dp, end = 14.dp, top = 12.dp, bottom = 12.dp)) {
-            Column(Modifier.weight(1f)) {
+        if (folded) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Icon(AtharIcons.Check, contentDescription = null, tint = AtharTheme.colors.success, modifier = Modifier.size(18.dp))
+                Spacer(Modifier.width(10.dp))
                 Text(
                     text = dhikr.text,
-                    color = MaterialTheme.colorScheme.onSurface
-                        .copy(alpha = if (finished) 0.45f else 1f),
-                    fontFamily = AtharEditorialFontFamily,
-                    fontSize = AtharTextSize.Title,
-                    lineHeight = 32.sp,
+                    color = AtharTheme.colors.secondaryText,
+                    fontFamily = com.atharchive.ui.theme.LocalReaderFont.current,
+                    fontSize = AtharTextSize.Ui,
+                    maxLines = 1,
+                    overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis,
                 )
-                if (dhikr.source != null) {
-                    Text(
-                        text = dhikr.source,
-                        modifier = Modifier.padding(top = 8.dp),
-                        color = AtharTheme.colors.secondaryText
-                            .copy(alpha = if (finished) 0.5f else 0.8f),
-                        style = MaterialTheme.typography.labelSmall,
-                        lineHeight = 18.sp,
-                    )
-                }
             }
-            Spacer(Modifier.width(8.dp))
-            Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                IconButton(
-                    onClick = onCopy,
-                    modifier = Modifier
-                        .size(34.dp)
-                        .testTag("dhikr_copy_${dhikr.id}"),
-                ) {
-                    Icon(
-                        imageVector = AtharIcons.Copy,
-                        contentDescription = "نسخ الذكر",
-                        tint = AtharTheme.colors.secondaryText,
-                        modifier = Modifier.size(17.dp),
-                    )
-                }
-                Spacer(Modifier.height(4.dp))
-                CountBadge(remaining = remaining, repeat = dhikr.repeat)
-                Spacer(Modifier.height(4.dp))
-                IconButton(
-                    onClick = onSave,
-                    modifier = Modifier
-                        .size(34.dp)
-                        .testTag("dhikr_save_${dhikr.id}"),
-                ) {
-                    Icon(
-                        imageVector = if (dhikr.saved) {
-                            AtharIcons.BookmarkFilled
-                        } else {
-                            AtharIcons.Bookmark
-                        },
-                        contentDescription = if (dhikr.saved) "إزالة من المفضّلة" else "حفظ في المفضّلة",
-                        tint = if (dhikr.saved) {
-                            AtharTheme.colors.accent
-                        } else {
-                            AtharTheme.colors.secondaryText.copy(alpha = 0.75f)
-                        },
-                        modifier = Modifier.size(17.dp),
-                    )
-                }
-            }
+            return@Column
         }
+        Text(
+            text = text,
+            color = MaterialTheme.colorScheme.onSurface.copy(alpha = if (finished) 0.55f else 1f),
+            fontFamily = com.atharchive.ui.theme.LocalReaderFont.current,
+            fontSize = (settings.fontSize + 1).sp,
+            lineHeight = ((settings.fontSize + 1) * settings.spacing.multiplier).sp,
+        )
+        if (showSource && dhikr.source != null) Text(
+            text = dhikr.source,
+            modifier = Modifier.padding(top = 10.dp),
+            color = AtharTheme.colors.secondaryText,
+            style = MaterialTheme.typography.bodySmall,
+            lineHeight = 20.sp,
+        )
+        // A quiet foot: what you do to it on one side, the count on the other.
+        Row(Modifier.fillMaxWidth().padding(top = 10.dp), verticalAlignment = Alignment.CenterVertically) {
+            IconButton(onClick = onCopy, modifier = Modifier.size(36.dp).testTag("dhikr_copy_${dhikr.id}")) {
+                Icon(AtharIcons.Copy, contentDescription = "نسخ الذكر", tint = AtharTheme.colors.secondaryText, modifier = Modifier.size(17.dp))
+            }
+            IconButton(onClick = onSave, modifier = Modifier.size(36.dp).testTag("dhikr_save_${dhikr.id}")) {
+                Icon(
+                    if (dhikr.saved) AtharIcons.BookmarkFilled else AtharIcons.Bookmark,
+                    contentDescription = if (dhikr.saved) "إزالة من المفضّلة" else "حفظ في المفضّلة",
+                    tint = if (dhikr.saved) AtharTheme.colors.accent else AtharTheme.colors.secondaryText,
+                    modifier = Modifier.size(17.dp),
+                )
+            }
+            if (dhikr.source != null) Text(
+                text = if (showSource) "إخفاء التخريج" else "التخريج",
+                modifier = Modifier.clip(AtharCorners.Control).clickable(role = Role.Button) { showSource = !showSource }
+                    .padding(horizontal = 8.dp, vertical = 6.dp),
+                color = AtharTheme.colors.secondaryText,
+                style = MaterialTheme.typography.labelMedium,
+            )
+            Spacer(Modifier.weight(1f))
+            CountRing(remaining = remaining, repeat = dhikr.repeat)
+        }
+    }
     }
 }
 
-/** How many are left. A check, not a zero, when there are none. */
+/** How many are left, inside a ring that fills as they are said; a check when none are. */
 @Composable
-private fun CountBadge(remaining: Int, repeat: Int) {
+private fun CountRing(remaining: Int, repeat: Int) {
+    val said by androidx.compose.animation.core.animateFloatAsState(
+        if (repeat == 0) 1f else (repeat - remaining).toFloat() / repeat, label = "dhikr_ring",
+    )
+    val accent = AtharTheme.colors.accent
+    val track = AtharTheme.colors.divider
     val finished = remaining == 0
-    val started = remaining < repeat
     Box(
-        modifier = Modifier
-            .size(30.dp)
-            .clip(AtharCorners.Control)
-            .background(
-                when {
-                    finished -> AtharTheme.colors.success.copy(alpha = 0.13f)
-                    started -> AtharTheme.colors.accentSurface
-                    else -> AtharTheme.colors.pressedSurface
-                },
-            ),
+        Modifier.size(46.dp).drawBehind {
+            val stroke = 3.dp.toPx()
+            drawCircle(track, style = androidx.compose.ui.graphics.drawscope.Stroke(stroke), radius = size.minDimension / 2 - stroke)
+            drawArc(if (finished) Color(0xFF5E8B4F) else accent, -90f, 360f * said, false,
+                topLeft = androidx.compose.ui.geometry.Offset(stroke, stroke),
+                size = androidx.compose.ui.geometry.Size(size.width - 2 * stroke, size.height - 2 * stroke),
+                style = androidx.compose.ui.graphics.drawscope.Stroke(stroke, cap = androidx.compose.ui.graphics.StrokeCap.Round))
+        },
         contentAlignment = Alignment.Center,
     ) {
-        if (finished) {
-            Icon(
-                imageVector = AtharIcons.Check,
-                contentDescription = null,
-                tint = AtharTheme.colors.success,
-                modifier = Modifier.size(16.dp),
-            )
-        } else {
-            Text(
-                text = arabicDigits(remaining),
-                color = if (started) AtharTheme.colors.accent else AtharTheme.colors.secondaryText,
-                style = MaterialTheme.typography.labelMedium,
-                fontWeight = FontWeight.SemiBold,
-            )
+        if (finished) Icon(AtharIcons.Check, contentDescription = null, tint = AtharTheme.colors.success, modifier = Modifier.size(18.dp))
+        else Text(arabicDigits(remaining), color = accent, style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.SemiBold)
+    }
+}
+
+/** ﴿…﴾ in the Quran colour and «…» in the hadith colour, as in the reader. */
+private fun marked(text: String, colors: com.atharchive.feature.reader.ReaderColors) = androidx.compose.ui.text.buildAnnotatedString {
+    append(text)
+    for ((open, close, color) in listOf(Triple('\uFD3F', '\uFD3E', colors.ayah), Triple('\u00AB', '\u00BB', colors.quote))) {
+        var from = 0
+        while (true) {
+            val a = text.indexOf(open, from).takeIf { it >= 0 } ?: break
+            val b = text.indexOf(close, a + 1).takeIf { it >= 0 } ?: break
+            addStyle(androidx.compose.ui.text.SpanStyle(color = color), a, b + 1)
+            from = b + 1
         }
     }
 }
 
-/** id=remaining pairs; dhikr ids never contain '='. */
-private val RemainingSaver = listSaver<SnapshotStateMap<String, Int>, String>(
-    save = { map -> map.entries.map { "${it.key}=${it.value}" } },
-    restore = { saved ->
-        mutableStateMapOf<String, Int>().apply {
-            saved.forEach { put(it.substringBefore('='), it.substringAfter('=').toInt()) }
-        }
-    },
-)
+/** Today's counts, kept on the phone: id → how many are left. Yesterday's are dropped on first read. */
+private class DayCounts(context: android.content.Context) {
+    private val prefs = context.getSharedPreferences("adhkar_counts", android.content.Context.MODE_PRIVATE)
+    private val today = java.time.LocalDate.now().toString()
+    val remaining = mutableStateMapOf<String, Int>().apply {
+        if (prefs.getString("day", null) == today) prefs.all.forEach { (k, v) -> if (k != "day" && v is Int) put(k, v) }
+        else prefs.edit().clear().putString("day", today).apply()
+    }
+    fun set(id: String, left: Int) { remaining[id] = left; prefs.edit().putString("day", today).putInt(id, left).apply() }
+    fun reset(ids: List<String>) { ids.forEach(remaining::remove); prefs.edit().apply { ids.forEach(::remove) }.apply() }
+}

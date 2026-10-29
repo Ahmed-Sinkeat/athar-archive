@@ -115,6 +115,7 @@ fun AtharBottomBar(
     val jelly = remember { Animatable(0f) }
     val scope = androidx.compose.runtime.rememberCoroutineScope()
 
+    val still = com.atharchive.ui.theme.LocalAtharStyle.current == com.atharchive.ui.theme.AtharStyle.Ink
     val selectedIndex = destinations.indexOf(selectedDestination)
     val targetCentre = iconCentreX.getOrElse(selectedIndex) { 0f }
         .let { if (it == 0f || barBounds == Rect.Zero) Float.NaN else it - barBounds.left }
@@ -123,7 +124,7 @@ fun AtharBottomBar(
         if (targetCentre.isNaN()) return@LaunchedEffect
         val toLeft = targetCentre - halfPill
         val toRight = targetCentre + halfPill
-        if (!placed) {
+        if (!placed || still) {
             leftEdge.snapTo(toLeft)
             rightEdge.snapTo(toRight)
             placed = true
@@ -154,13 +155,16 @@ fun AtharBottomBar(
         }
     }
 
+    // «بارز»: the bar leaves the edge and floats as a card over the toned ground.
+    val floating = com.atharchive.ui.theme.LocalAtharStyle.current.floats
     Column(
         modifier = modifier
             .fillMaxWidth()
-            .background(AtharTheme.colors.canvas)
-            .navigationBarsPadding(),
+            .then(if (floating) Modifier.navigationBarsPadding().padding(start = 14.dp, end = 14.dp, bottom = 8.dp)
+                .atharChrome(AtharTheme.colors.canvas, com.atharchive.ui.theme.AtharCorners.Surface)
+            else Modifier.atharChrome(AtharTheme.colors.canvas).navigationBarsPadding()),
     ) {
-        HorizontalDivider(
+        if (!floating) HorizontalDivider(
             thickness = 0.7.dp,
             color = AtharTheme.colors.divider.copy(alpha = 0.42f),
         )
@@ -284,7 +288,13 @@ internal fun SoapTravelIndicator(selected: Int, centres: List<Offset>, color: Co
     val grow = remember { Animatable(0f) }
     var centreY by remember { mutableFloatStateOf(0f) }
     val target = centres.getOrNull(selected)?.takeIf { it != Offset.Zero }
+    val still = com.atharchive.ui.theme.LocalAtharStyle.current == com.atharchive.ui.theme.AtharStyle.Ink
     LaunchedEffect(target) {
+        if (still) {
+            target?.let { centreY = it.y; left.snapTo(it.x - half); right.snapTo(it.x + half) }
+            grow.snapTo(if (target == null) 0f else 1f)
+            return@LaunchedEffect
+        }
         if (target == null) {
             grow.animateTo(0f, spring(dampingRatio = 0.9f, stiffness = 900f))
             return@LaunchedEffect
@@ -357,13 +367,14 @@ fun SoapLayer(targets: SoapTargets, selected: Int, color: Color, modifier: Modif
     val bottom = remember { Animatable(0f) }
     var placed by remember { mutableStateOf(false) }
     val target = targets.rects[selected]
-    LaunchedEffect(targets.pulse) { if (targets.pulse > 0) targets.jelly.jelly() }
+    val still = com.atharchive.ui.theme.LocalAtharStyle.current == com.atharchive.ui.theme.AtharStyle.Ink
+    LaunchedEffect(targets.pulse) { if (targets.pulse > 0 && !still) targets.jelly.jelly() }
     LaunchedEffect(target) {
         if (target == null) {
             placed = false
             return@LaunchedEffect
         }
-        if (!placed) {
+        if (!placed || still) {
             left.snapTo(target.left); right.snapTo(target.right); top.snapTo(target.top); bottom.snapTo(target.bottom)
             placed = true
             return@LaunchedEffect

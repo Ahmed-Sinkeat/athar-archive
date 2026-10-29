@@ -27,6 +27,9 @@ export interface PageRange {
   from: number;
   to: number;
   vols: number;
+  /** What the «volume» number counts when it is not a printed volume: Shamela's transcribed
+   * lessons («رقم الجزء هو رقم الدرس») or a periodical's issues. Absent for real volumes. */
+  unit?: "lesson" | "issue";
 }
 
 export interface DraftBlock {

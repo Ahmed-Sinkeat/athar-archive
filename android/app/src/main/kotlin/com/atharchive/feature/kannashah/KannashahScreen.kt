@@ -29,6 +29,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import com.atharchive.ui.components.AtharFloatingHeader
+import com.atharchive.ui.components.atharBackdrop
 import com.atharchive.ui.components.ShowOnChange
 import com.atharchive.ui.components.rememberAtharCollapsingHeader
 import androidx.compose.runtime.Composable
@@ -189,7 +190,7 @@ fun KannashahScreen(
             modifier = Modifier
                 .fillMaxWidth()
                 .fillMaxHeight()
-                .nestedScroll(header.connection)
+                .nestedScroll(header.connection).atharBackdrop(header.haze)
                 .testTag("kannashah_screen"),
             contentPadding = PaddingValues(top = header.height, bottom = 28.dp),
         ) {
@@ -224,7 +225,7 @@ private fun androidx.compose.foundation.lazy.LazyListScope.items(
     onOpenSource: (ExcerptUi) -> Unit,
     keyPrefix: String = "",
 ) {
-    itemsIndexed(excerpts, keyPrefix) { index, excerpt ->
+    itemsIndexed(excerpts, keyPrefix) { index, excerpt -> com.atharchive.ui.components.AtharRowItem {
         ExcerptItem(
             excerpt = excerpt,
             horizontalPadding = horizontalPadding,
@@ -235,7 +236,7 @@ private fun androidx.compose.foundation.lazy.LazyListScope.items(
             onOpenSource = { onOpenSource(excerpt) },
         )
         if (index != excerpts.lastIndex) {
-            HorizontalDivider(
+            com.atharchive.ui.components.AtharRowDivider(
                 modifier = Modifier.padding(
                     start = horizontalPadding + 16.dp,
                     end = horizontalPadding,
@@ -244,7 +245,7 @@ private fun androidx.compose.foundation.lazy.LazyListScope.items(
                 color = AtharTheme.colors.divider.copy(alpha = 0.2f),
             )
         }
-    }
+    }}
 }
 
 private fun androidx.compose.foundation.lazy.LazyListScope.itemsIndexed(

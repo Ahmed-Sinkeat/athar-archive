@@ -7,7 +7,6 @@ import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.geometry.Rect
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.horizontalScroll
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -407,7 +406,7 @@ fun AtharFilterIcon(groups: List<AtharChipGroup>, facets: List<AtharFacet>, tagP
                 )
             }
         }
-        AtharMenu(expanded = open, onDismiss = { open = false }, width = 330.dp, maxHeight = 560.dp, modifier = Modifier.testTag("${tagPrefix}_popup")) {
+        AtharMenu(expanded = open, onDismiss = { open = false }, width = 310.dp, modifier = Modifier.testTag("${tagPrefix}_popup")) {
             AtharFilterPopupContent(groups, facets, tagPrefix)
         }
     }
@@ -441,9 +440,9 @@ fun AtharFilterPopupContent(groups: List<AtharChipGroup>, facets: List<AtharFace
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun AtharFilterRow(title: String, choices: @Composable () -> Unit) {
-    Row(Modifier.fillMaxWidth().padding(vertical = 7.dp), verticalAlignment = Alignment.CenterVertically) {
-        Text(title, Modifier.width(64.dp), color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.72f),
-            fontSize = AtharTextSize.Ui, fontWeight = FontWeight.SemiBold)
+    Row(Modifier.fillMaxWidth().padding(vertical = 4.dp), verticalAlignment = Alignment.CenterVertically) {
+        Text(title, Modifier.width(58.dp), color = AtharTheme.colors.secondaryText,
+            fontSize = AtharTextSize.Small, fontWeight = FontWeight.SemiBold)
         androidx.compose.foundation.layout.FlowRow(Modifier.weight(1f), horizontalArrangement = Arrangement.spacedBy(6.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
             choices()
         }
@@ -456,14 +455,16 @@ fun AtharFilterChip(label: String, selected: Boolean, onClick: () -> Unit) {
     Text(
         label,
         Modifier
-            .heightIn(min = 34.dp)
-            .clip(AtharCorners.Control)
-            .background(if (selected) AtharTheme.colors.primaryAction else AtharTheme.colors.divider.copy(alpha = 0.32f))
+            .heightIn(min = 26.dp)
+            .then(
+                if (selected) Modifier.clip(AtharCorners.Control).background(AtharTheme.colors.primaryAction)
+                else Modifier.atharControl(AtharTheme.colors.divider.copy(alpha = 0.32f), AtharCorners.Control),
+            )
             .clickable(role = Role.RadioButton, onClick = onClick)
             .semantics { this.selected = selected }
-            .padding(horizontal = 12.dp, vertical = 7.dp),
+            .padding(horizontal = 9.dp, vertical = 3.dp),
         color = if (selected) AtharTheme.colors.onPrimaryAction else MaterialTheme.colorScheme.onSurface,
-        fontSize = AtharTextSize.Ui,
+        fontSize = AtharTextSize.Body,
         fontWeight = if (selected) FontWeight.SemiBold else FontWeight.Normal,
     )
 }
@@ -472,15 +473,31 @@ fun AtharFilterChip(label: String, selected: Boolean, onClick: () -> Unit) {
 @Composable
 fun AtharFilterPicker(title: String, options: List<String>, selected: Set<String>, subtitle: (String) -> String?, tag: String, onToggle: (String) -> Unit) {
     var query by remember { mutableStateOf("") }
-    Row(Modifier.fillMaxWidth().padding(vertical = 6.dp), verticalAlignment = Alignment.CenterVertically) {
-        Text(title, Modifier.width(64.dp), color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.72f),
-            fontSize = AtharTextSize.Ui, fontWeight = FontWeight.SemiBold)
-        OutlinedTextField(query, { query = it }, placeholder = { Text("اكتب للبحث…", fontSize = AtharTextSize.Ui) }, singleLine = true,
-            textStyle = MaterialTheme.typography.bodyMedium, modifier = Modifier.weight(1f).testTag("${tag}_query"))
+    Row(Modifier.fillMaxWidth().padding(vertical = 4.dp), verticalAlignment = Alignment.CenterVertically) {
+        Text(title, Modifier.width(58.dp), color = AtharTheme.colors.secondaryText,
+            fontSize = AtharTextSize.Small, fontWeight = FontWeight.SemiBold)
+        // A slim line like the chips beside it, not a boxed form field.
+        androidx.compose.foundation.text.BasicTextField(
+            query, { query = it },
+            Modifier.weight(1f).heightIn(min = 28.dp)
+                .atharControl(AtharTheme.colors.divider.copy(alpha = 0.32f), AtharCorners.Control)
+                .padding(horizontal = 10.dp, vertical = 5.dp)
+                .testTag("${tag}_query"),
+            singleLine = true,
+            textStyle = MaterialTheme.typography.bodyMedium.copy(color = MaterialTheme.colorScheme.onSurface),
+            cursorBrush = androidx.compose.ui.graphics.SolidColor(AtharTheme.colors.accent),
+            decorationBox = { inner ->
+                Box(contentAlignment = Alignment.CenterStart) {
+                    if (query.isEmpty()) Text("اكتب للبحث…", color = AtharTheme.colors.placeholderText, fontSize = AtharTextSize.Body, maxLines = 1)
+                    inner()
+                }
+            },
+        )
     }
     val term = com.atharchive.core.ArNormalize.normalize(query.trim())
-    // ponytail: first 5 matches; a longer name narrows it. Empty: what is ticked, to untick.
-    val matches = if (term.isEmpty()) selected.toList() else options.filter { normKey(it).contains(term) }.take(5)
+    // ponytail: first 5 matches; a longer name narrows it. Empty: the first 5 ticked, to untick
+    // (every ticked one is also a chip under the field). Five keeps the popup free of scrolling.
+    val matches = (if (term.isEmpty()) selected.toList() else options.filter { normKey(it).contains(term) }).take(5)
     matches.forEach { name ->
         AtharMenuItem(name, checked = name in selected, subtitle = subtitle(name), onClick = { onToggle(name) })
     }
@@ -550,8 +567,10 @@ fun AtharChip(label: String, selected: Boolean, onClick: () -> Unit, modifier: M
         Text(
             text = label,
             modifier = Modifier
-                .clip(AtharCorners.Control)
-                .background(if (selected) AtharTheme.colors.primaryAction else AtharTheme.colors.divider.copy(alpha = 0.28f))
+                .then(
+                    if (selected) Modifier.clip(AtharCorners.Control).background(AtharTheme.colors.primaryAction)
+                    else Modifier.atharControl(AtharTheme.colors.divider.copy(alpha = 0.28f), AtharCorners.Control),
+                )
                 .padding(horizontal = 14.dp, vertical = 7.dp),
             color = if (selected) AtharTheme.colors.onPrimaryAction else AtharTheme.colors.secondaryText,
             style = MaterialTheme.typography.bodyMedium,
@@ -599,6 +618,8 @@ fun arabicDigits(value: Int): String = arabicDigits(value.toString())
  */
 @androidx.compose.runtime.Stable
 class AtharCollapsingHeader(private val minDistance: Float) {
+    /** The list under the header, for «زجاج»: the header blurs what scrolls beneath it. */
+    val haze = dev.chrisbanes.haze.HazeState()
     /** 0 shown … 1 hidden. */
     var hidden by androidx.compose.runtime.mutableFloatStateOf(0f)
         private set
@@ -672,7 +693,7 @@ fun AtharFloatingHeader(header: AtharCollapsingHeader, content: @Composable andr
             .fillMaxWidth()
             .onSizeChanged { header.height = with(density) { it.height.toDp() }; header.heightPx = it.height.toFloat() }
             .graphicsLayer { translationY = -header.hidden * size.height }
-            .background(AtharTheme.colors.canvas),
+            .atharChrome(AtharTheme.colors.canvas, haze = header.haze),
         content = content,
     )
 }

@@ -73,7 +73,7 @@ fun SearchFilterButton(filters: SearchFilters, authors: List<String>, onChange: 
                 )
             }
         }
-        AtharMenu(expanded = open, onDismiss = { open = false }, width = 330.dp, maxHeight = 560.dp, modifier = Modifier.testTag("search_filter_popup")) {
+        AtharMenu(expanded = open, onDismiss = { open = false }, width = 310.dp, modifier = Modifier.testTag("search_filter_popup")) {
             Column(Modifier.padding(horizontal = 12.dp, vertical = 2.dp)) {
                 AtharFilterRow("الترتيب") { SearchSort.entries.forEach { AtharFilterChip(it.label, it == filters.sort) { onChange(filters.copy(sort = it)) } } }
                 // Relevance has one direction; the death year has two.
@@ -88,15 +88,7 @@ fun SearchFilterButton(filters: SearchFilters, authors: List<String>, onChange: 
                 AtharFilterRow("النطاق") {
                     listOf(false, true).forEach { AtharFilterChip(if (it) "المحمّلة فقط" else "كل المكتبة", it == filters.downloadedOnly) { onChange(filters.copy(downloadedOnly = it)) } }
                 }
-                AtharMenuDivider()
-                // Several types at once; none ticked means all of them.
-                AtharFilterRow("النوع") {
-                    SearchResultType.entries.forEach { type ->
-                        AtharFilterChip(type.label, type in filters.types) {
-                            onChange(filters.copy(types = if (type in filters.types) filters.types - type else filters.types + type))
-                        }
-                    }
-                }
+                // The kind of result is the tab row under the field, not a row here.
                 AtharMenuDivider()
                 AtharFilterPicker("المؤلف", authors, filters.authors, { null }, "search_filter_author") { name ->
                     onChange(filters.copy(authors = if (name in filters.authors) filters.authors - name else filters.authors + name))

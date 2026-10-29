@@ -1,10 +1,10 @@
 package com.atharchive.feature.reader
 
-import androidx.compose.ui.graphics.Color
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.runtime.getValue
 import com.atharchive.ui.components.SoapLayer
+import com.atharchive.ui.components.atharControl
 import com.atharchive.ui.components.rememberSoapTargets
 import com.atharchive.ui.components.soapTarget
 import com.atharchive.ui.theme.AtharCorners
@@ -146,7 +146,7 @@ fun ReaderSettingsPopover(
 @Composable
 private fun LabeledRow(label: String, colors: ReaderColors, content: @Composable () -> Unit) {
     Row(
-        modifier = Modifier.fillMaxWidth().padding(vertical = 3.dp),
+        modifier = Modifier.fillMaxWidth().padding(vertical = 2.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Text(
@@ -179,9 +179,9 @@ private fun StepButton(
 ) {
     Box(
         modifier = Modifier
-            .size(36.dp)
+            .size(30.dp)
             .clip(CircleShape)
-            .background(colors.divider.copy(alpha = 0.35f))
+            .atharControl(colors.divider.copy(alpha = 0.35f), CircleShape)
             .clickable(enabled = enabled, role = Role.Button, onClick = onClick)
             .semantics { contentDescription = if (label == "A−") "تصغير الخط" else "تكبير الخط" }
             .testTag(tag),
@@ -203,16 +203,15 @@ internal fun SegmentRow(
     selected: String,
     colors: ReaderColors,
     tagPrefix: String,
+    /** A colour dot before each label, for «اللون». */
+    dots: List<androidx.compose.ui.graphics.Color>? = null,
     onSelect: (String) -> Unit,
 ) {
     val soap = rememberSoapTargets()
-    Box(Modifier.fillMaxWidth()) {
-        // The selected fill is the soap pill; the others keep their light track tint.
-        SoapLayer(soap, options.indexOf(selected), colors.accentFill, Modifier.matchParentSize())
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.spacedBy(6.dp),
-        ) {
+    // One thin track with the soap pill sliding inside it, an iOS segmented control.
+    Box(Modifier.fillMaxWidth().clip(AtharCorners.Control).atharControl(colors.divider.copy(alpha = 0.28f), AtharCorners.Control).padding(2.dp)) {
+        SoapLayer(soap, options.indexOf(selected), colors.accentFill, Modifier.matchParentSize(), corner = 6.dp)
+        Row(Modifier.fillMaxWidth()) {
             options.forEachIndexed { index, option ->
                 val isSelected = option == selected
                 val textColor by animateColorAsState(if (isSelected) colors.onAccent else colors.secondary, tween(160), label = "segment_text")
@@ -220,25 +219,26 @@ internal fun SegmentRow(
                     modifier = Modifier
                         .weight(1f)
                         .soapTarget(soap, index)
-                        .clip(AtharCorners.Control)
-                        .background(
-                            if (isSelected) Color.Transparent else colors.divider.copy(alpha = 0.28f),
-                        )
-                        .heightIn(min = 34.dp)
+                        .heightIn(min = 28.dp)
                         .selectable(selected = isSelected, interactionSource = null, indication = null, role = Role.RadioButton) {
                             if (isSelected) soap.reselect() else onSelect(option)
                         }
-                        .padding(vertical = 6.dp)
+                        .padding(vertical = 4.dp)
                         .testTag("${tagPrefix}_$index"),
                     contentAlignment = Alignment.Center,
-                ) {
+                ) { Row(verticalAlignment = Alignment.CenterVertically) {
+                    dots?.getOrNull(index)?.let { dot ->
+                        Box(Modifier.padding(end = 5.dp).size(10.dp).clip(CircleShape).background(dot)
+                            .border(1.dp, if (isSelected) colors.onAccent else androidx.compose.ui.graphics.Color.Transparent, CircleShape))
+                    }
                     Text(
                         text = option,
                         color = textColor,
                         style = MaterialTheme.typography.labelMedium,
                         fontWeight = if (isSelected) FontWeight.SemiBold else FontWeight.Normal,
+                        maxLines = 1,
                     )
-                }
+                } }
             }
         }
     }

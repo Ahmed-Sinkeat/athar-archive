@@ -46,6 +46,8 @@ data class PageRange(
     val from: Int,
     val to: Int,
     val vols: Int,
+    /** "lesson" or "issue" when the volume number counts those (Shamela's «رقم الجزء هو رقم الدرس»). */
+    val unit: String? = null,
 )
 
 @Serializable

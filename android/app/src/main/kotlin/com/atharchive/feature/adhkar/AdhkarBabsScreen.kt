@@ -150,7 +150,7 @@ private fun androidx.compose.foundation.lazy.LazyListScope.babRows(
     horizontalPadding: Dp,
     onOpenBab: (AdhkarBabUi) -> Unit,
 ) {
-    itemsIndexed(babs, key = { _, bab -> bab.id }) { index, bab ->
+    itemsIndexed(babs, key = { _, bab -> bab.id  }) { index, bab -> com.atharchive.ui.components.AtharRowItem {
         BabRow(
             bab = bab,
             count = state.count(bab.id),
@@ -158,13 +158,13 @@ private fun androidx.compose.foundation.lazy.LazyListScope.babRows(
             onClick = { onOpenBab(bab) },
         )
         if (index != babs.lastIndex) {
-            HorizontalDivider(
+            com.atharchive.ui.components.AtharRowDivider(
                 modifier = Modifier.padding(horizontal = horizontalPadding),
                 thickness = 0.7.dp,
                 color = AtharTheme.colors.divider.copy(alpha = 0.42f),
             )
         }
-    }
+    }}
 }
 
 @Composable

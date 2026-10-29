@@ -53,8 +53,8 @@ android {
     defaultConfig {
         applicationId = "com.atharchive"
         testApplicationId = "com.atharchive.instrumentation"
-        versionCode = 2
-        versionName = "1.0"
+        versionCode = 4
+        versionName = "1.1"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField("String", "ATHAR_CONTENT_BASE_URL", "".asBuildConfigString())
         buildConfigField("String", "ATHAR_CONTENT_SIGNING_KEY_ID", "".asBuildConfigString())
@@ -119,6 +119,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.hilt.android)
     implementation(libs.hilt.navigation.compose)
+    implementation(libs.haze)
     implementation(libs.okhttp)
     implementation(libs.media3.exoplayer)
     implementation(libs.media3.session)

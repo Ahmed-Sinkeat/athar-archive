@@ -12,6 +12,7 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.ui.unit.Velocity
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.animate
@@ -38,7 +39,11 @@ import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.navigationBarsPadding
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.exclude
+import androidx.compose.foundation.layout.ime
+import androidx.compose.foundation.layout.navigationBars
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
@@ -61,10 +66,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
+import androidx.compose.animation.core.tween
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import com.atharchive.ui.components.atharBackdrop
+import com.atharchive.ui.components.atharChrome
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
@@ -74,6 +82,12 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.platform.LocalViewConfiguration
 import androidx.compose.ui.draw.drawWithContent
+import androidx.compose.ui.graphics.drawscope.clipRect
+import androidx.compose.ui.graphics.lerp
+import androidx.compose.ui.graphics.luminance
+import androidx.compose.ui.graphics.drawscope.translate
+import androidx.compose.ui.graphics.layer.drawLayer
+import kotlinx.coroutines.async
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.semantics.CustomAccessibilityAction
 import androidx.compose.ui.semantics.customActions
@@ -92,6 +106,7 @@ import androidx.compose.ui.input.nestedscroll.NestedScrollSource
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.testTag
@@ -107,6 +122,8 @@ import com.atharchive.ui.components.AtharMenu
 import com.atharchive.ui.components.AtharMenuItem
 import com.atharchive.ui.icons.AtharIcons
 import com.atharchive.ui.theme.AtharEditorialFontFamily
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
 @Composable
@@ -117,7 +134,7 @@ fun ReaderScreen(
     loadProgress: Float? = null,
 
     onCopySelection: (ReaderSelection) -> Unit,
-    onShareSelection: (ReaderSelection) -> Unit,
+    onShareSelection: suspend (ReaderSelection) -> Unit,
     onSaveSelection: suspend (ReaderSelection) -> Unit,
     onToggleBookmark: suspend (Int) -> Unit,
     onPositionChange: (Int) -> Unit,
@@ -140,6 +157,10 @@ fun ReaderScreen(
     onAnchorJump: (suspend (String) -> Int?)? = null,
     onLoadSelectionBlocks: (suspend (IntRange) -> List<ReaderBlock>)? = null,
     onRemoveHighlight: suspend (String) -> Unit = {},
+    /** Opens the comment editor for a saved highlight (the الكناشة one). */
+    onEditHighlightNote: ((String) -> Unit)? = null,
+    /** «نسخ مع التذييل»: the text with its source line (book, author, volume, page) and link. */
+    onCopyCited: (suspend (ReaderSelection) -> Unit)? = null,
 ) {
     var introOpen by remember { mutableStateOf(false) }
     var settingsOpen by remember { mutableStateOf(false) }
@@ -155,7 +176,7 @@ fun ReaderScreen(
 
     var shownFootnotes by remember { mutableStateOf<Pair<List<String>, androidx.compose.ui.geometry.Rect>?>(null) }
     val uriHandler = LocalUriHandler.current
-    val colors = rememberReaderColors()
+    val colors = rememberReaderColors(settings)
     // Index 0 belongs to the title item. A partial cache can start at any semantic
     // ordinal, so translate the durable ordinal to its position in the local window.
     val initialDisplayIndex = if (window != null) initialOrdinal ?: state.readingPositionIndex
@@ -182,18 +203,25 @@ fun ReaderScreen(
     val density = LocalDensity.current
     // A tap on the page dismisses a selection, offers to remove a highlight under it,
     // otherwise toggles the bars.
-    var tappedHighlight by remember { mutableStateOf<Pair<String, androidx.compose.ui.geometry.Rect>?>(null) }
+    // The tapped highlight and the tap's y on the page, where its bar sits.
+    var tappedHighlight by remember { mutableStateOf<Pair<String, Float>?>(null) }
+    // Read through a state, not captured: the compiler memoises the function reference below, so a
+    // highlight made after opening the book was drawn but never tappable.
+    val highlights by androidx.compose.runtime.rememberUpdatedState(state.highlights)
     fun onPageTap(point: Offset) {
         if (selection.active) { selection.clear(); return }
-        val hit = selection.sourceAt(point)?.let { (ordinal, offset) ->
-            state.highlights.firstOrNull { it.id.isNotEmpty() && it.contains(ordinal, offset) }
+        if (tappedHighlight != null) { tappedHighlight = null; return }
+        val hit = selection.sourcesAt(point).firstNotNullOfOrNull { (ordinal, offset) ->
+            highlights.firstOrNull { it.id.isNotEmpty() && it.contains(ordinal, offset) }
         }
         val page = selection.page
         if (hit != null && page?.isAttached == true) {
-            val at = page.localToRoot(point)
-            tappedHighlight = hit.id to androidx.compose.ui.geometry.Rect(at, androidx.compose.ui.geometry.Size(1f, 1f))
+            tappedHighlight = hit.id to point.y
         } else scope.launch { bars.toggle() }
     }
+    // The page's gesture detector is built once; through this it always sees the current
+    // highlights — captured directly, it kept the first frame's (none) and a tap never offered the menu.
+    val pageTap = androidx.compose.runtime.rememberUpdatedState<(Offset) -> Unit>(::onPageTap)
 
     // Reading position is written continuously. There is no "save position" control,
     // and this is not a bookmark.
@@ -249,9 +277,11 @@ fun ReaderScreen(
     // An empty book has nothing to restore; otherwise wait for the saved place.
     val contentReady = positionReady ||
         (window != null && window.ready && window.count == 0)
-    BackHandler(selection.active || panelOpen) {
+    BackHandler(selection.active || panelOpen || tappedHighlight != null || settingsOpen) {
         selection.clear()
         panelOpen = false
+        tappedHighlight = null
+        settingsOpen = false
     }
     var hits by remember { mutableStateOf(emptyList<InBookHit>()) }
     var searchStatus by remember { mutableStateOf<String?>(null) }
@@ -367,6 +397,9 @@ fun ReaderScreen(
         }
     }
 
+    // «زجاج»: the bars blur the page that scrolls under them.
+    val haze = remember { dev.chrisbanes.haze.HazeState() }
+    androidx.compose.runtime.CompositionLocalProvider(com.atharchive.ui.components.LocalAtharHaze provides haze) {
     BoxWithConstraints(
         modifier = modifier
             .fillMaxSize()
@@ -383,6 +416,15 @@ fun ReaderScreen(
       var topBarHeight by remember { mutableStateOf(0.dp) }
       var bottomBarHeight by remember { mutableStateOf(0.dp) }
       var bottomOverlayHeight by remember { mutableStateOf(0.dp) }
+      // Item 0 is the title; block i is item i + 1.
+      fun blockAtItem(item: Int): ReaderBlock? = if (item < 1) null else window?.peek(item - 1) ?: state.blocks.getOrNull(item - 1)
+      fun isBreak(item: Int) = blockAtItem(item) is ReaderBlock.PageBreak
+      // ponytail: scans back at most 2000 blocks for the page's marker; a longer unmarked run is one "page".
+      fun pageStartAtOrBefore(item: Int): Int? = (item downTo maxOf(1, item - 2000)).firstOrNull(::isBreak)
+      // The printed page in view: the marker at or before the top line.
+      val folio by remember(window, state.blocks) {
+          derivedStateOf { pageStartAtOrBefore(listState.firstVisibleItemIndex)?.let { blockAtItem(it) as? ReaderBlock.PageBreak } }
+      }
       Box(modifier = Modifier.fillMaxSize()) {
         LazyColumn(
             state = listState,
@@ -396,7 +438,7 @@ fun ReaderScreen(
                     handleRadius = with(density) { 24.dp.toPx() },
                     handleDrop = with(density) { HandleDrop.toPx() },
                     haptics = haptics,
-                    onTap = ::onPageTap,
+                    onTap = { pageTap.value(it) },
                 )
                 .semantics {
                     if (selection.active) customActions = listOf(true to -1, true to 1, false to -1, false to 1).map { (isStart, direction) ->
@@ -414,6 +456,7 @@ fun ReaderScreen(
                         drop = HandleDrop.toPx(), radius = 6.dp.toPx(), stem = 2.dp.toPx())
                 }
                 .nestedScroll(bars.connection)
+                .atharBackdrop(haze)
                 // Laid out but invisible until the saved place is restored, so the title page
                 // is never drawn and then scrolled away from.
                 .alpha(if (contentReady) 1f else 0f)
@@ -463,6 +506,7 @@ fun ReaderScreen(
                             colors = colors,
                             highlighted = false,
                             highlights = state.highlights,
+                            volumeUnit = state.volumeUnit,
                             onFootnotes = { ids, at -> if (ids.any { it in state.footnotes }) shownFootnotes = ids to at },
                             onLink = ::openLink,
                             isSearchTarget = searchTarget?.ordinal == block.ordinal,
@@ -481,6 +525,7 @@ fun ReaderScreen(
                         colors = colors,
                         highlighted = false,
                         highlights = state.highlights,
+                        volumeUnit = state.volumeUnit,
                         onFootnotes = { ids, at -> if (ids.any { it in state.footnotes }) shownFootnotes = ids to at },
                         onLink = ::openLink,
                         isSearchTarget = query.isNotBlank() && jumpedTo == index,
@@ -498,6 +543,17 @@ fun ReaderScreen(
                 Modifier.align(Alignment.Center),
                 tag = "reader_loading",
                 progress = loadProgress,
+            )
+        }
+
+        // The folio: the printed page in view, at the foot of the page as in a printed book.
+        folio?.let { page ->
+            Text(
+                text = arabic(page.page),
+                modifier = Modifier.align(Alignment.BottomCenter).navigationBarsPadding().padding(bottom = 6.dp)
+                    .graphicsLayer { alpha = hidden },
+                color = colors.secondary.copy(alpha = 0.8f),
+                style = MaterialTheme.typography.labelMedium,
             )
         }
 
@@ -537,27 +593,43 @@ fun ReaderScreen(
                     IntOffset(0, y.coerceIn(0f, (boxHeight - toolbarHeight).coerceAtLeast(0).toFloat()).roundToInt())
                 }.onSizeChanged { toolbarHeight = it.height },
                 onCopy = { act("نُسخ النص") { onCopySelection(it) } },
+                onCopyCited = onCopyCited?.let { copy -> { act("نُسخ مع التذييل") { copy(it) } } },
                 onShare = { act("مشاركة النص") { onShareSelection(it) } },
                 onHighlight = { act("حُفظ في الكناشة") { onSaveSelection(it) } },
             )
         }
 
-        tappedHighlight?.let { (id, at) ->
-            AtharMenu(
-                expanded = true,
-                onDismiss = { tappedHighlight = null },
-                anchor = at,
-                colors = com.atharchive.ui.components.AtharMenuColors(colors.page, colors.text, colors.secondary, colors.accent),
-                modifier = Modifier.testTag("reader_highlight_menu"),
+        tappedHighlight?.let { (id, tapY) ->
+            // The selection bar's look, just above the tapped line (below it near the top); a tap or scroll closes it.
+            LaunchedEffect(id) { snapshotFlow { listState.isScrollInProgress }.first { it }; tappedHighlight = null }
+            var barHeight by remember { mutableIntStateOf(0) }
+            Row(
+                modifier = Modifier.align(Alignment.TopCenter)
+                    .offset {
+                        val above = tapY - barHeight - 28.dp.toPx()
+                        IntOffset(0, (if (above >= 0) above else tapY + 28.dp.toPx()).roundToInt())
+                    }
+                    .onSizeChanged { barHeight = it.height }
+                    .atharChrome(colors.page, AtharCorners.Card, edge = colors.divider)
+                    .padding(horizontal = 2.dp)
+                    .testTag("reader_highlight_menu"),
+                verticalAlignment = Alignment.CenterVertically,
             ) {
-                AtharMenuItem("إزالة التظليل من الكناشة", icon = AtharIcons.Close, destructive = true, onClick = {
+                if (onEditHighlightNote != null) {
+                    SelectionAction(AtharIcons.Pen, "تعليق", colors, false, "reader_hl_note") {
+                        tappedHighlight = null
+                        onEditHighlightNote(id)
+                    }
+                    ToolbarSeparator(colors)
+                }
+                SelectionAction(AtharIcons.Close, "إزالة من الكناشة", colors, true, "reader_hl_remove") {
                     tappedHighlight = null
                     scope.launch {
                         toast = try { onRemoveHighlight(id); "أُزيل التظليل" }
                         catch (cancelled: CancellationException) { throw cancelled }
                         catch (_: Exception) { "تعذّرت إزالة التظليل" }
                     }
-                })
+                }
             }
         }
 
@@ -613,6 +685,25 @@ fun ReaderScreen(
                 onEdition = onEdition,
                 sourceUrl = state.sourceUrl,
                 onOpenSite = { openLink(state.sourceUrl) },
+                // ponytail: loads the whole text; fine for articles and مسائل, never offered in books.
+                onCopyAll = if (state.isBook) null else ({
+                    scope.launch {
+                        toast = try {
+                            val all = onLoadSelectionBlocks?.invoke(0 until state.blockCount) ?: state.blocks
+                            val texts = all.filter { it.ordinal != null && it.selectionText() != null }
+                            val first = texts.first()
+                            val last = texts.last()
+                            selection.select(
+                                ReaderSelectionEndpoint(first.id, first.ordinal!!, 0),
+                                ReaderSelectionEndpoint(last.id, last.ordinal!!, last.selectionText()!!.length),
+                            )
+                            val chosen = resolveSelection(selection, window, state.blocks, settings.showTashkeel, onLoadSelectionBlocks)
+                            selection.clear()
+                            if (chosen == null) "تعذّر نسخ النص" else { onCopySelection(chosen); "نُسخ النص كله" }
+                        } catch (cancelled: CancellationException) { throw cancelled }
+                        catch (_: Exception) { selection.clear(); "تعذّر نسخ النص" }
+                    }
+                }),
             )
         }
         // Progress, the audio strip and the bottom bar; the first two ride down to the page's
@@ -699,6 +790,7 @@ fun ReaderScreen(
             }
         }
     }
+    }
 }
 
 @Composable
@@ -714,11 +806,13 @@ private fun ReaderTopBar(
     onMore: () -> Unit,
     sourceUrl: String = "",
     onOpenSite: () -> Unit = {},
+    /** «نسخ الكل»; null in books. */
+    onCopyAll: (() -> Unit)? = null,
 ) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .background(colors.page)
+            .atharChrome(colors.page)
             .padding(horizontal = 8.dp, vertical = 4.dp)
             .testTag("reader_top_bar"),
         verticalAlignment = Alignment.CenterVertically,
@@ -761,13 +855,14 @@ private fun ReaderTopBar(
             var menu by remember { mutableStateOf(false) }
             var editionsOpen by remember { mutableStateOf(false) }
             IconSlot(AtharIcons.More, "المزيد", colors, "reader_more") { menu = true }
-            AtharMenu(expanded = menu, onDismiss = { menu = false }, colors = com.atharchive.ui.components.AtharMenuColors(colors.page, colors.text, colors.secondary, colors.accent), modifier = Modifier.testTag("reader_more_menu")) {
+            AtharMenu(expanded = menu, onDismiss = { menu = false }, width = 260.dp, colors = com.atharchive.ui.components.AtharMenuColors(colors.page, colors.text, colors.secondary, colors.accent), modifier = Modifier.testTag("reader_more_menu")) {
                 if (hasIntro) AtharMenuItem(
                     label = "مقدمة المحقق ومعلومات عن الكتاب",
                     icon = AtharIcons.Info,
                     onClick = { menu = false; onMore() },
                     modifier = Modifier.testTag("reader_source"),
                 )
+                if (onCopyAll != null) AtharMenuItem("نسخ الكل", icon = AtharIcons.Copy, onClick = { menu = false; onCopyAll() })
                 if (editions.isNotEmpty()) AtharMenuItem("الطبعات", onClick = { menu = false; editionsOpen = true })
                 if (sourceUrl.isNotBlank()) AtharMenuItem(
                     label = "فتح في الموقع",
@@ -836,8 +931,10 @@ internal fun ReaderBottomBar(
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .background(colors.page)
-            .navigationBarsPadding()
+            .atharChrome(colors.page)
+            // The app is already lifted by the keyboard, which covers the navigation bar: adding
+            // that bar's height again left an empty band above the keyboard.
+            .windowInsetsPadding(WindowInsets.navigationBars.exclude(WindowInsets.ime))
             .testTag("reader_controls"),
     ) {
         HorizontalDivider(thickness = 0.7.dp, color = colors.divider)
@@ -1036,9 +1133,7 @@ internal fun ReaderProgressStrip(
                 Modifier.align(Alignment.BottomCenter)
                     .wrapContentHeight(Alignment.Bottom, unbounded = true)
                     .padding(start = 24.dp, end = 24.dp, bottom = 26.dp)
-                    .clip(com.atharchive.ui.theme.AtharCorners.Card)
-                    .background(colors.page)
-                    .border(0.7.dp, colors.divider, com.atharchive.ui.theme.AtharCorners.Card)
+                    .atharChrome(colors.page, com.atharchive.ui.theme.AtharCorners.Card, edge = colors.divider)
                     .padding(horizontal = 14.dp, vertical = 8.dp)
                     .testTag("reader_scrub_bubble"),
                 horizontalAlignment = Alignment.CenterHorizontally,
@@ -1059,20 +1154,24 @@ internal fun SelectionToolbar(
     colors: ReaderColors,
     modifier: Modifier = Modifier,
     onCopy: () -> Unit,
+    /** «نسخ مع التذييل», beside نسخ; null where there is no source line to add. */
+    onCopyCited: (() -> Unit)? = null,
     onShare: () -> Unit,
     onHighlight: () -> Unit,
 ) {
     Row(
         modifier = modifier
-            .clip(AtharCorners.Card)
-            .background(colors.page)
-            .border(0.7.dp, colors.divider, AtharCorners.Card)
+            .atharChrome(colors.page, AtharCorners.Card, edge = colors.divider)
             .padding(horizontal = 2.dp)
             .testTag("reader_selection_toolbar"),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         SelectionAction(AtharIcons.Copy, "نسخ", colors, false, "reader_sel_copy", onCopy)
         ToolbarSeparator(colors)
+        if (onCopyCited != null) {
+            SelectionAction(AtharIcons.Copy, "نسخ مع التذييل", colors, false, "reader_sel_copy_cited", onCopyCited)
+            ToolbarSeparator(colors)
+        }
         SelectionAction(AtharIcons.Share, "مشاركة", colors, false, "reader_sel_share", onShare)
         ToolbarSeparator(colors)
         SelectionAction(AtharIcons.Kannashah, "إلى الكناشة", colors, true, "reader_sel_highlight", onHighlight)
@@ -1103,7 +1202,7 @@ private fun SelectionAction(
         modifier = Modifier
             .defaultMinSize(minHeight = 44.dp)
             .clickable(role = Role.Button, onClick = onClick)
-            .padding(horizontal = 14.dp)
+            .padding(horizontal = 10.dp)
             .testTag(tag),
         verticalAlignment = Alignment.CenterVertically,
     ) {
@@ -1167,7 +1266,7 @@ private fun ReaderAudioStrip(
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .background(colors.page)
+            .atharChrome(colors.page)
             .testTag("reader_audio_strip"),
     ) {
         HorizontalDivider(thickness = 0.7.dp, color = colors.divider)
@@ -1273,3 +1372,4 @@ private fun CardField.toIntroBlock(id: String): ReaderBlock = when {
     l.isNotEmpty() -> ReaderBlock.Paragraph(id, "$l: $v", spans = listOf(InlineSpan("strong", 0, l.length + 1)), listMarker = if (k == "li") "•" else null)
     else -> ReaderBlock.Paragraph(id, v, listMarker = if (k == "li") "•" else null)
 }
+

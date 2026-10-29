@@ -34,7 +34,7 @@ internal class OnlineSearch(private val http: OkHttpClient) {
     )
 
     /** Pages of 20 until [limit] hits or the end; each page is edge-cached for 30 minutes. */
-    suspend fun hits(query: Query, limit: Int): Pair<List<Hit>, Boolean> {
+    suspend fun hits(query: Query, limit: Int, onPage: suspend (List<Hit>, Boolean) -> Unit = { _, _ -> }): Pair<List<Hit>, Boolean> {
         val hits = mutableListOf<Hit>()
         var more = true
         while (more && hits.size < limit) {
@@ -44,6 +44,8 @@ internal class OnlineSearch(private val http: OkHttpClient) {
                 hits += Hit(optString("type"), optString("url"), optString("title"), optString("book"), optString("snippet"), optLong("row"))
             }
             more = body.optBoolean("hasMore") && page.length() > 0
+            // Each page shows as it lands: the server takes ~1.4 s a page, so waiting for all of them doubled the wait.
+            if (more && hits.size < limit) onPage(hits.toList(), true)
         }
         return hits to more
     }

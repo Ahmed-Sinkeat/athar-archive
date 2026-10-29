@@ -979,6 +979,9 @@ export function parseReadableDocument(input: ParseReadableInput): ParsedDocument
 
   const pages = blocks.map((block) => block.p).filter((page): page is number => page != null);
   const vols = new Set(blocks.map((block) => block.vol).filter((vol): vol is number => vol != null));
+  // Shamela says so in the book's header when its «الجزء» is a lesson or an issue, not a volume.
+  const numbering = input.body.slice(0, 20_000).match(/رقم الجزء هو رقم (الدرس|العدد)/)?.[1];
+  const unit = numbering === "الدرس" ? "lesson" as const : numbering === "العدد" ? "issue" as const : undefined;
   return {
     schema: APP_CONTENT_SCHEMA,
     coll: input.coll,
@@ -987,6 +990,6 @@ export function parseReadableDocument(input: ParseReadableInput): ParsedDocument
     chapters,
     footnotes: footnotes.sort((a, b) => compareText(a.id, b.id)),
     ...(card.length ? { card } : {}),
-    ...(pages.length ? { pages: { from: pages.reduce((a, b) => Math.min(a, b)), to: pages.reduce((a, b) => Math.max(a, b)), vols: Math.max(1, vols.size) } } : {}),
+    ...(pages.length ? { pages: { from: pages.reduce((a, b) => Math.min(a, b)), to: pages.reduce((a, b) => Math.max(a, b)), vols: Math.max(1, vols.size), ...(unit && vols.size > 1 ? { unit } : {}) } } : {}),
   };
 }

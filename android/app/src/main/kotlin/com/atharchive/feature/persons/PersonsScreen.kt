@@ -64,7 +64,7 @@ fun PersonsScreen(persons: List<CatalogPerson>, onPerson: (CatalogPerson) -> Uni
         }
         LazyColumn(
             state = listState,
-            modifier = Modifier.fillMaxSize().nestedScroll(header.connection),
+            modifier = Modifier.fillMaxSize().nestedScroll(header.connection).atharBackdrop(header.haze),
             contentPadding = PaddingValues(top = header.height, bottom = 28.dp),
         ) {
             if (visible.isEmpty()) item(key = "persons-empty") {
@@ -75,7 +75,7 @@ fun PersonsScreen(persons: List<CatalogPerson>, onPerson: (CatalogPerson) -> Uni
                 }
                 AtharEmptyState(title, body, "persons_empty_state", Gutter)
             }
-            itemsIndexed(visible, key = { _, person -> person.id }) { index, person ->
+            itemsIndexed(visible, key = { _, person -> person.id  }) { index, person -> com.atharchive.ui.components.AtharRowItem {
                 PersonRow(
                     title = person.name,
                     detail = listOfNotNull(
@@ -86,7 +86,7 @@ fun PersonsScreen(persons: List<CatalogPerson>, onPerson: (CatalogPerson) -> Uni
                     onClick = { onPerson(person) },
                 )
                 if (index != visible.lastIndex) RowDivider()
-            }
+            }}
         }
     }
 }
@@ -105,10 +105,10 @@ fun PersonScreen(person: CatalogPerson, works: Map<String, ContentEntity>, onWor
             }
             item { AtharSectionHeading("المؤلفات", Gutter) }
             if (available.isEmpty()) item { AtharEmptyState("لا مؤلفات له هنا بعد", "لم تُضف أعماله إلى الأرشيف.", "person_works_empty", Gutter) }
-            itemsIndexed(available, key = { _, work -> work.id }) { index, work ->
+            itemsIndexed(available, key = { _, work -> work.id  }) { index, work -> com.atharchive.ui.components.AtharRowItem {
                 PersonRow(title = work.title, detail = "", query = "", onClick = { onWork(work) })
                 if (index != available.lastIndex) RowDivider()
-            }
+            }}
         }
     }
 }
@@ -140,4 +140,4 @@ private fun PersonRow(title: String, detail: String, query: String, onClick: () 
 }
 
 @Composable
-private fun RowDivider() = HorizontalDivider(Modifier.padding(horizontal = Gutter), 0.7.dp, AtharTheme.colors.divider.copy(alpha = 0.42f))
+private fun RowDivider() = com.atharchive.ui.components.AtharRowDivider(Modifier.padding(horizontal = Gutter), 0.7.dp, AtharTheme.colors.divider.copy(alpha = 0.42f))

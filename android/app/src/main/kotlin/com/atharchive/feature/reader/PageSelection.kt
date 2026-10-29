@@ -20,6 +20,7 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.LayoutCoordinates
 import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.layout.positionInRoot
+import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.text.TextLayoutResult
 import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.style.ResolvedTextDirection
@@ -114,17 +115,16 @@ internal class PageSelection {
         }
         val g = best ?: return null
         val y = bestLocal.y.coerceIn(0f, (g.layout.size.height - 1).coerceAtLeast(0).toFloat())
-        return Hit(g, g.layout.getOffsetForPosition(Offset(bestLocal.x, y)))
+        return Hit(g, g.layout.offsetAt(Offset(bestLocal.x, y)))
     }
 
-    /** The ordinal and source offset of the text exactly under [point]; null in a gap. */
-    fun sourceAt(point: Offset): Pair<Int, Int>? {
-        val page = page?.takeIf { it.isAttached } ?: return null
-        val g = geometry.values.firstOrNull { g ->
+    /** The ordinal and source offset of the text exactly under [point], for every placed block there; empty in a gap. */
+    // ponytail: every match, not the first — a block scrolled off can keep stale coordinates over the tapped one.
+    fun sourcesAt(point: Offset): List<Pair<Int, Int>> {
+        val page = page?.takeIf { it.isAttached } ?: return emptyList()
+        return geometry.values.filter { g ->
             g.coords.isAttached && g.coords.localPositionOf(page, point).y in 0f..g.coords.size.height.toFloat()
-        } ?: return null
-        val local = g.coords.localPositionOf(page, point)
-        return g.ordinal to g.value.sourceOffset(g.layout.getOffsetForPosition(local))
+        }.map { g -> g.ordinal to g.value.sourceOffset(g.layout.offsetAt(g.coords.localPositionOf(page, point))) }
     }
 
     private fun endpoint(g: TextGeometry, display: Int) =
@@ -203,14 +203,14 @@ internal class PageSelection {
         val g = geometry[e.ordinal]?.takeIf { it.coords.isAttached } ?: return false
         val display = g.value.displayOffset(e.offset)
         val line = g.layout.getLineForOffset(display) + direction
-        val x = g.layout.getHorizontalPosition(display, usePrimaryDirection = true)
+        val x = g.layout.boxAt(display.coerceIn(0, (g.layout.layoutInput.text.length - 1).coerceAtLeast(0))).center.x
         val target = when {
             line < 0 -> geometry[g.ordinal - 1]?.takeIf { it.coords.isAttached }?.let { it to it.layout.lineCount - 1 }
             line >= g.layout.lineCount -> geometry[g.ordinal + 1]?.takeIf { it.coords.isAttached }?.let { it to 0 }
             else -> g to line
         } ?: return false
         val (tg, tl) = target
-        val offset = tg.layout.getOffsetForPosition(Offset(x, (tg.layout.getLineTop(tl) + tg.layout.getLineBottom(tl)) / 2f))
+        val offset = tg.layout.offsetAt(Offset(x, (tg.layout.getLineTop(tl) + tg.layout.getLineBottom(tl)) / 2f))
         val next = endpoint(tg, offset)
         val s = start ?: return false
         val en = end ?: return false
@@ -240,7 +240,7 @@ internal class PageSelection {
         val g = geometry[e.ordinal]?.takeIf { it.coords.isAttached } ?: return null
         if (g.layout.layoutInput.text.isEmpty()) return null
         val char = edgeChar(g, e, isStart)
-        val box = g.layout.getBoundingBox(char)
+        val box = g.layout.boxAt(char)
         val rtl = g.layout.getBidiRunDirection(char) == ResolvedTextDirection.Rtl
         val x = if (isStart == rtl) box.right else box.left
         return page.localPositionOf(g.coords, Offset(x, g.glyphBottom(g.layout.getLineForOffset(char))))
@@ -291,10 +291,43 @@ internal fun DrawScope.drawSelectionBand(g: TextGeometry, range: IntRange, color
     val from = g.value.displayOffset(range.first).coerceIn(0, length)
     val to = g.value.displayOffset(range.last + 1).coerceIn(0, length)
     if (to <= from) return
-    val path: Path = g.layout.getPathForRange(from, to)
-    for (line in g.layout.getLineForOffset(from)..g.layout.getLineForOffset((to - 1).coerceAtLeast(from))) {
-        clipRect(0f, g.glyphTop(line), size.width, g.glyphBottom(line)) { drawPath(path, color) }
+    val first = g.layout.getLineForOffset(from)
+    val last = g.layout.getLineForOffset((to - 1).coerceAtLeast(from))
+    for (line in first..last) {
+        val (left, right) = selectionBandSpan(g.layout, line, from, to, first, last, size.width)
+        if (right > left) drawRect(color, Offset(left, g.glyphTop(line)), androidx.compose.ui.geometry.Size(right - left, g.glyphBottom(line) - g.glyphTop(line)))
     }
+}
+
+/**
+ * One line's band, measured from the glyphs (see [boxAt]); not getPathForRange, which on a
+ * justified line stopped a word short of the first line's end (أشرف، آله).
+ * ponytail: one span per line, so a Latin run inside an Arabic end line is covered whole.
+ */
+internal fun selectionBandSpan(layout: androidx.compose.ui.text.TextLayoutResult, line: Int, from: Int, to: Int, first: Int, last: Int, width: Float): Pair<Float, Float> {
+    val lineStart = layout.getLineStart(line)
+    val lineEnd = layout.getLineEnd(line, visibleEnd = true)
+    val rtl = layout.getParagraphDirection(lineStart) == ResolvedTextDirection.Rtl
+    // The reading-start edge and reading-end edge of the selected part of this line.
+    val begin = if (line == first) edgeOf(layout, from, start = true, rtl) else if (rtl) width else 0f
+    val finish = when {
+        line != last -> if (rtl) 0f else width          // the selection runs on past this line
+        to >= lineEnd -> lineEdge(layout, line, rtl)    // ends with the line: its last glyph
+        else -> edgeOf(layout, to, start = false, rtl)
+    }
+    return minOf(begin, finish) to maxOf(begin, finish)
+}
+
+private fun edgeOf(layout: androidx.compose.ui.text.TextLayoutResult, offset: Int, start: Boolean, rtl: Boolean): Float {
+    val box = layout.boxAt(if (start) offset else offset - 1)
+    return if (start == rtl) box.right else box.left
+}
+
+/** Where the line's glyphs end in reading order, justification included. */
+private fun lineEdge(layout: androidx.compose.ui.text.TextLayoutResult, line: Int, rtl: Boolean): Float {
+    val end = layout.getLineEnd(line, visibleEnd = true)
+    if (end <= layout.getLineStart(line)) return if (rtl) layout.getLineRight(line) else layout.getLineLeft(line)
+    return edgeOf(layout, end, start = false, rtl)
 }
 
 /** Both handles: a 2dp stem from the glyph bottom and a small disc. */
@@ -380,4 +413,59 @@ internal fun selectionEdgeSpeed(y: Float, height: Int, edge: Float): Float {
         else -> return 0f
     }.coerceIn(-1f, 1f)
     return depth * kotlin.math.abs(depth)
+}
+
+/**
+ * A justified line's stretch. Android draws such a line spread to the full width, but reports
+ * positions (getBoundingBox, getHorizontalPosition, getOffsetForPosition) at the natural spacing —
+ * measured on Android 15 (Redmi 12): off by ~65 px at the end of an Arabic line, so a press on
+ * its last word took the one before. Every inner space is wider by the same [extra].
+ */
+private class Stretch(val start: Int, val end: Int, val extra: Float, val rtl: Boolean, val text: String) {
+    fun before(offset: Int) = (start until offset).count { text[it] == ' ' } * extra
+}
+
+private fun TextLayoutResult.stretch(line: Int): Stretch? {
+    if (layoutInput.style.textAlign != androidx.compose.ui.text.style.TextAlign.Justify) return null
+    val text = layoutInput.text.text
+    val start = getLineStart(line)
+    val end = getLineEnd(line, visibleEnd = true)
+    // A paragraph's last line is never stretched.
+    if (end <= start || line == lineCount - 1 || text.getOrNull(getLineEnd(line) - 1) == '\n') return null
+    val spaces = (start until end).count { text[it] == ' ' }
+    if (spaces == 0) return null
+    val rtl = getParagraphDirection(start) == ResolvedTextDirection.Rtl
+    val first = getBoundingBox(start)
+    val last = getBoundingBox(end - 1)
+    val natural = if (rtl) first.right - last.left else last.right - first.left
+    val extra = (size.width - natural) / spaces
+    // A platform that already reports stretched positions leaves nothing to add.
+    return if (extra > 0.5f) Stretch(start, end, extra, rtl, text) else null
+}
+
+/** [offset]'s glyph box where it is actually drawn, a justified line's stretch included. */
+internal fun TextLayoutResult.boxAt(offset: Int): Rect {
+    val box = getBoundingBox(offset)
+    val st = stretch(getLineForOffset(offset))?.takeIf { offset in it.start until it.end } ?: return box
+    val shift = st.before(offset)
+    val widen = if (st.text[offset] == ' ') st.extra else 0f
+    return if (st.rtl) Rect(box.left - shift - widen, box.top, box.right - shift, box.bottom)
+    else Rect(box.left + shift, box.top, box.right + shift + widen, box.bottom)
+}
+
+/** The text offset at [point], by the drawn (stretched) glyphs. */
+internal fun TextLayoutResult.offsetAt(point: Offset): Int {
+    val line = getLineForVerticalPosition(point.y)
+    val st = stretch(line) ?: return getOffsetForPosition(point)
+    // ponytail: a scan of the line's ~60 characters per touch; cache per line if it ever shows in a trace.
+    var best = st.start
+    var bestDistance = Float.MAX_VALUE
+    for (i in st.start until st.end) {
+        val b = boxAt(i)
+        val d = if (point.x < b.left) b.left - point.x else if (point.x > b.right) point.x - b.right else 0f
+        // Past a glyph's middle in reading order means the offset after it.
+        if (d < bestDistance) { bestDistance = d; best = if ((point.x < b.center.x) == st.rtl) i + 1 else i }
+        if (d == 0f) break
+    }
+    return best
 }

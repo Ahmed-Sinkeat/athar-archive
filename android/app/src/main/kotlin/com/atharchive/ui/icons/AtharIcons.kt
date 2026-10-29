@@ -500,6 +500,20 @@ object AtharIcons {
         }
     }
 
+    /** Four corner brackets around two lines of text: «تحديد الكل». */
+    val SelectAll: ImageVector by lazy {
+        icon("AtharSelectAll") {
+            path(stroke = Stroke, strokeLineWidth = 1.75f) {
+                moveTo(4f, 8f); lineTo(4f, 4f); lineTo(8f, 4f)
+                moveTo(16f, 4f); lineTo(20f, 4f); lineTo(20f, 8f)
+                moveTo(20f, 16f); lineTo(20f, 20f); lineTo(16f, 20f)
+                moveTo(8f, 20f); lineTo(4f, 20f); lineTo(4f, 16f)
+                moveTo(8f, 10f); lineTo(16f, 10f)
+                moveTo(8f, 14f); lineTo(14f, 14f)
+            }
+        }
+    }
+
     val Copy: ImageVector by lazy {
         icon("AtharCopy") {
             path(stroke = Stroke, strokeLineWidth = 1.75f) {

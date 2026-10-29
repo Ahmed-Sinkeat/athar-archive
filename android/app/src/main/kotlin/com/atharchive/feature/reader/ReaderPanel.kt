@@ -1,5 +1,6 @@
 package com.atharchive.feature.reader
 
+import com.atharchive.ui.components.atharControl
 import com.atharchive.ui.components.SoapLayer
 import com.atharchive.ui.components.rememberSoapTargets
 import com.atharchive.ui.components.soapTarget
@@ -24,8 +25,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.TextButton
-import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -45,6 +44,13 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
+import com.atharchive.ui.components.AtharMenu
+import androidx.compose.foundation.selection.selectable
+import com.atharchive.ui.components.arabicDigits
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.FocusRequester
@@ -131,28 +137,13 @@ fun ReaderPanel(
 
             // ponytail: scans the loaded blocks; fine while a book's blocks are all in memory.
             val pageBreaks = remember(state.blocks) { state.blocks.filterIsInstance<ReaderBlock.PageBreak>() }
-            val multiVolume = remember(pageBreaks) { pageBreaks.mapNotNull { it.volume }.distinct().size > 1 }
-            if (tab == ReaderPanelTab.Contents && pageBreaks.isNotEmpty()) {
-                var page by remember { mutableStateOf("") }
-                var volume by remember { mutableStateOf("") }
-                Row(Modifier.fillMaxWidth().padding(8.dp), verticalAlignment = Alignment.CenterVertically) {
-                    OutlinedTextField(page, { page = it.take(6) }, Modifier.weight(1f), label = { Text("الصفحة") }, singleLine = true, colors = OutlinedTextFieldDefaults.colors(
-                        focusedTextColor = colors.text, unfocusedTextColor = colors.text,
-                        focusedContainerColor = colors.page, unfocusedContainerColor = colors.page,
-                        focusedLabelColor = colors.accent, unfocusedLabelColor = colors.secondary,
-                        cursorColor = colors.accent, focusedBorderColor = colors.accent, unfocusedBorderColor = colors.divider))
-                    if (multiVolume) OutlinedTextField(volume, { volume = it.take(4) }, Modifier.weight(1f), label = { Text("الجزء") }, singleLine = true, colors = OutlinedTextFieldDefaults.colors(
-                        focusedTextColor = colors.text, unfocusedTextColor = colors.text,
-                        focusedContainerColor = colors.page, unfocusedContainerColor = colors.page,
-                        focusedLabelColor = colors.accent, unfocusedLabelColor = colors.secondary,
-                        cursorColor = colors.accent, focusedBorderColor = colors.accent, unfocusedBorderColor = colors.divider))
-                    TextButton(onClick = { page.toIntOrNull()?.let { onPageJump(it, volume.toIntOrNull()) } },
-                        colors = ButtonDefaults.textButtonColors(contentColor = colors.accent, disabledContentColor = colors.secondary),
-                        enabled = (page.toIntOrNull() ?: 0) > 0 && (volume.isBlank() || (volume.toIntOrNull() ?: 0) > 0)) { Text("انتقل", fontWeight = FontWeight.SemiBold) }
-                }
-            }
             when (tab) {
-                ReaderPanelTab.Contents -> ContentsList(state, colors, currentBlockIndex, onJump)
+                ReaderPanelTab.Contents -> {
+                    Box(Modifier.weight(1f)) { ContentsList(state, colors, currentBlockIndex, onJump) }
+                    if (pageBreaks.isNotEmpty() || state.pageRange != null || state.volumeStarts.isNotEmpty()) {
+                        PageJumpRow(state, colors, currentBlockIndex, onPageJump)
+                    }
+                }
                 ReaderPanelTab.Search -> PanelSearch(query, hits, colors, onQueryChange, onJump, searchStatus)
                 ReaderPanelTab.Benefits -> BenefitsList(state, colors, onJump)
                 ReaderPanelTab.Bookmarks -> BookmarksList(state, colors, onJump)
@@ -167,6 +158,114 @@ fun ReaderPanel(
                 .clickable(role = Role.Button, onClick = onDismiss)
                 .testTag("reader_panel_scrim"),
         )
+    }
+}
+
+/** Menus never scroll, so up to this many volumes are a grid of numbers; more are typed. */
+private const val VolumeGridMax = 60
+
+/** The volume as a small menu, then the printed page; the keyboard's Go jumps too. */
+@Composable
+private fun PageJumpRow(state: ReaderUiState, colors: ReaderColors, currentBlockIndex: Int, onPageJump: (Int, Int?) -> Unit) {
+    val volumes = state.volumeStarts
+    val here = volumes.lastOrNull { it.second <= currentBlockIndex }?.first ?: volumes.firstOrNull()?.first
+    var volume by remember(here) { mutableStateOf(here) }
+    // Hundreds of lessons or issues: the number is typed, «الدرس [١٢]», and must be one the book has.
+    val typedVolume = volumes.size > VolumeGridMax
+    var volumeText by remember(here) { mutableStateOf(here?.let(::arabicDigits).orEmpty()) }
+    val chosen = if (typedVolume) volumeText.toIntOrNull()?.takeIf { v -> volumes.any { it.first == v } } else volume
+    var page by remember { mutableStateOf("") }
+    var menu by remember { mutableStateOf(false) }
+    val number = page.toIntOrNull()?.takeIf { it > 0 }
+    val ready = number != null && (here == null || chosen != null)
+    val go: () -> Unit = { if (ready) number?.let { onPageJump(it, chosen) } }
+    HorizontalDivider(thickness = 0.7.dp, color = colors.divider)
+    // A tinted strip edge to edge, the joined volume + page field on the page colour inside it.
+    Row(
+        Modifier.fillMaxWidth().then(if (com.atharchive.ui.theme.LocalAtharStyle.current == com.atharchive.ui.theme.AtharStyle.Ink) Modifier else Modifier.background(colors.divider.copy(alpha = 0.35f))).padding(horizontal = 10.dp, vertical = 8.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Row(
+            Modifier.weight(1f).height(40.dp).clip(AtharCorners.Card).background(colors.page),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            if (here != null && typedVolume) {
+                Text(when (state.volumeUnit) { "lesson" -> "الدرس"; "issue" -> "العدد"; else -> "الجزء" },
+                    Modifier.padding(start = 12.dp), color = colors.secondary, style = MaterialTheme.typography.bodyMedium)
+                BasicTextField(
+                    value = volumeText,
+                    onValueChange = { typed -> volumeText = typed.filter(Char::isDigit).take(4) },
+                    modifier = Modifier.width(56.dp).padding(horizontal = 8.dp).testTag("reader_panel_volume"),
+                    singleLine = true,
+                    textStyle = MaterialTheme.typography.bodyMedium.copy(color = colors.text),
+                    cursorBrush = SolidColor(colors.accent),
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number, imeAction = ImeAction.Next),
+                )
+            } else if (volume != null) Box(Modifier.fillMaxHeight()) {
+                // The whole height of the bar is the button: sized to its text, taps just above or below missed.
+                Row(
+                    Modifier
+                        .fillMaxHeight()
+                        .clickable(role = Role.DropdownList) { menu = true }
+                        .padding(horizontal = 12.dp)
+                        .testTag("reader_panel_volume"),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Text(volumeLabel(volume!!, state.volumeUnit), color = colors.text, style = MaterialTheme.typography.bodyMedium)
+                    Icon(AtharIcons.ChevronDown, null, tint = colors.secondary, modifier = Modifier.padding(start = 4.dp).size(14.dp))
+                }
+                AtharMenu(expanded = menu, onDismiss = { menu = false }, width = 232.dp,
+                    colors = com.atharchive.ui.components.AtharMenuColors(colors.page, colors.text, colors.secondary, colors.accent)) {
+                    // The numbers six to a row: sixty fit with nothing to scroll.
+                    volumes.chunked(6).forEach { row ->
+                        Row(Modifier.padding(horizontal = 8.dp)) {
+                            row.forEach { (vol, _) ->
+                                val on = vol == volume
+                                Box(
+                                    Modifier
+                                        .size(36.dp)
+                                        .clip(AtharCorners.Control)
+                                        .background(if (on) colors.accentFill else Color.Transparent)
+                                        .selectable(selected = on, role = Role.RadioButton) { volume = vol; menu = false }
+                                        .testTag("reader_panel_volume_$vol"),
+                                    contentAlignment = Alignment.Center,
+                                ) {
+                                    Text(arabicDigits(vol), color = if (on) colors.onAccent else colors.text, style = MaterialTheme.typography.bodyMedium,
+                                        fontWeight = if (on) FontWeight.SemiBold else FontWeight.Normal)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            if (here != null) Box(Modifier.width(0.7.dp).height(22.dp).background(colors.divider))
+            BasicTextField(
+                value = page,
+                onValueChange = { typed -> page = typed.filter(Char::isDigit).take(5) },
+                modifier = Modifier
+                    .weight(1f)
+                    .padding(horizontal = 12.dp)
+                    .testTag("reader_panel_page"),
+                singleLine = true,
+                textStyle = MaterialTheme.typography.bodyMedium.copy(color = colors.text),
+                cursorBrush = SolidColor(colors.accent),
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number, imeAction = ImeAction.Go),
+                keyboardActions = KeyboardActions(onGo = { go() }),
+                decorationBox = { inner ->
+                    Box(contentAlignment = Alignment.CenterStart) {
+                        if (page.isEmpty()) Text(
+                            state.pageRange?.let { "الصفحة ${arabicDigits(it.first)}–${arabicDigits(it.last)}" } ?: "رقم الصفحة",
+                            color = colors.secondary, style = MaterialTheme.typography.bodyMedium, maxLines = 1,
+                        )
+                        inner()
+                    }
+                },
+            )
+        }
+        TextButton(onClick = { go() }, enabled = ready,
+            colors = ButtonDefaults.textButtonColors(contentColor = colors.accent, disabledContentColor = colors.secondary)) {
+            Text("انتقل", fontWeight = FontWeight.SemiBold)
+        }
     }
 }
 
@@ -188,7 +287,7 @@ private fun PanelSearch(
                 .padding(horizontal = 14.dp, vertical = 10.dp)
                 .fillMaxWidth()
                 .clip(AtharCorners.Card)
-                .background(colors.divider.copy(alpha = 0.28f))
+                .atharControl(colors.divider.copy(alpha = 0.28f), AtharCorners.Card)
                 .padding(horizontal = 10.dp, vertical = 9.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
@@ -324,6 +423,11 @@ private fun ContentsList(
     }
 }
 
+/**
+ * One contents line. A كتاب is a heading of its own: bold, with a rule over it that separates the
+ * groups. A باب under it hangs off a thin tree line, smaller and with no rule, so the two levels
+ * never read alike. The current line wears a soft accent pill.
+ */
 @Composable
 private fun TocRow(
     entry: TocEntry,
@@ -334,41 +438,53 @@ private fun TocRow(
     fold: Boolean? = null,
     onFold: () -> Unit = {},
 ) {
-    val kitab = entry.level <= 2
+    val kitab = !indent && entry.level <= 2
     Column {
+        if (kitab) HorizontalDivider(Modifier.padding(horizontal = 14.dp), thickness = 0.7.dp, color = colors.divider)
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .defaultMinSize(minHeight = 46.dp)
-                .clickable(role = Role.Button) { onJump(entry.blockIndex) }
-                .padding(start = if (indent) 30.dp else 14.dp, end = if (fold == null) 14.dp else 4.dp, top = 10.dp, bottom = 10.dp)
-                .testTag("reader_toc_${entry.anchor}"),
+                .height(androidx.compose.foundation.layout.IntrinsicSize.Min)
+                .padding(start = if (indent) 22.dp else 8.dp, end = 8.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            if (active) Box(Modifier.padding(end = 8.dp).width(2.5.dp).height(16.dp).background(colors.accent))
-            Text(
-                text = entry.title,
-                modifier = Modifier.weight(1f),
-                color = if (active) colors.accent else colors.text,
-                fontFamily = AtharEditorialFontFamily,
-                fontWeight = if (kitab) FontWeight.Bold else FontWeight.Normal,
-                fontSize = if (kitab) 16.sp else 15.sp,
-                lineHeight = 25.sp,
-            )
-            if (entry.page.isNotEmpty()) Text(entry.page, Modifier.padding(start = 10.dp), color = colors.secondary, style = MaterialTheme.typography.labelMedium, maxLines = 1)
-            if (fold != null) Box(
-                Modifier.size(40.dp).clip(AtharCorners.Control).clickable(role = Role.Button, onClickLabel = if (fold) "طيّ الأبواب" else "عرض الأبواب", onClick = onFold),
-                contentAlignment = Alignment.Center,
+            // The tree line: the أبواب hang off it.
+            if (indent) Box(Modifier.fillMaxHeight().width(1.dp).background(colors.divider))
+            Row(
+                modifier = Modifier
+                    .weight(1f)
+                    .padding(start = if (indent) 6.dp else 0.dp, top = 2.dp, bottom = 2.dp)
+                    .clip(AtharCorners.Control)
+                    .background(if (active) colors.accent.copy(alpha = 0.12f) else Color.Transparent)
+                    .clickable(role = Role.Button) { onJump(entry.blockIndex) }
+                    .defaultMinSize(minHeight = if (kitab) 46.dp else 38.dp)
+                    .padding(start = 8.dp, end = if (fold == null) 8.dp else 0.dp, top = if (kitab) 9.dp else 6.dp, bottom = if (kitab) 9.dp else 6.dp)
+                    .testTag("reader_toc_${entry.anchor}"),
+                verticalAlignment = Alignment.CenterVertically,
             ) {
-                Icon(
-                    AtharIcons.ChevronDown,
-                    contentDescription = if (fold) "طيّ الأبواب" else "عرض الأبواب",
-                    tint = colors.secondary,
-                    modifier = Modifier.size(18.dp).graphicsLayer { rotationZ = if (fold) 180f else 0f },
+                Text(
+                    text = entry.title,
+                    modifier = Modifier.weight(1f),
+                    color = when { active -> colors.accent; kitab -> colors.text; else -> colors.text.copy(alpha = 0.82f) },
+                    fontFamily = AtharEditorialFontFamily,
+                    fontWeight = if (kitab) FontWeight.Bold else FontWeight.Normal,
+                    fontSize = if (kitab) 16.sp else 14.5.sp,
+                    lineHeight = if (kitab) 25.sp else 22.sp,
                 )
+                if (entry.page.isNotEmpty()) Text(entry.page, Modifier.padding(start = 10.dp), color = colors.secondary, style = MaterialTheme.typography.labelSmall, maxLines = 1)
+                if (fold != null) Box(
+                    Modifier.size(36.dp).clip(AtharCorners.Control).clickable(role = Role.Button, onClickLabel = if (fold) "طيّ الأبواب" else "عرض الأبواب", onClick = onFold),
+                    contentAlignment = Alignment.Center,
+                ) {
+                    Icon(
+                        AtharIcons.ChevronDown,
+                        contentDescription = if (fold) "طيّ الأبواب" else "عرض الأبواب",
+                        tint = colors.secondary,
+                        modifier = Modifier.size(18.dp).graphicsLayer { rotationZ = if (fold) 180f else 0f },
+                    )
+                }
             }
         }
-        HorizontalDivider(modifier = Modifier.padding(start = if (indent) 30.dp else 14.dp, end = 14.dp), thickness = 0.7.dp, color = colors.divider.copy(alpha = 0.6f))
     }
 }
 

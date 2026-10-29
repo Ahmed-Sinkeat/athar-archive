@@ -1,9 +1,11 @@
 package com.atharchive
 
+import com.atharchive.ui.theme.family
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.runtime.setValue
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -30,6 +32,11 @@ class MainActivity : ComponentActivity() {
 
     private val downloadTarget = kotlinx.coroutines.flow.MutableStateFlow<String?>(null)
 
+    override fun onStop() {
+        super.onStop()
+        if (!isChangingConfigurations) appearance.syncLauncherIcon()
+    }
+
     override fun onNewIntent(intent: android.content.Intent) {
         super.onNewIntent(intent)
         setIntent(intent)
@@ -41,9 +48,15 @@ class MainActivity : ComponentActivity() {
         if (savedInstanceState == null) com.atharchive.data.Analytics.hit("open")
         enableEdgeToEdge()
         downloadTarget.value = intent.getStringExtra("athar_download")
+        // Only a fresh start from the launcher, and never with system animations off.
+        val intro = savedInstanceState == null && intent.action == android.content.Intent.ACTION_MAIN && downloadTarget.value == null &&
+            android.provider.Settings.Global.getFloat(contentResolver, android.provider.Settings.Global.ANIMATOR_DURATION_SCALE, 1f) > 0f
         setContent {
+            var showIntro by androidx.compose.runtime.saveable.rememberSaveable { androidx.compose.runtime.mutableStateOf(intro) }
             val target by downloadTarget.collectAsStateWithLifecycle()
             val themeMode by appearance.themeMode.collectAsStateWithLifecycle()
+            val style by appearance.style.collectAsStateWithLifecycle()
+            val accent by appearance.accent.collectAsStateWithLifecycle()
             val readerSettings by appearance.reader.collectAsStateWithLifecycle()
             val startPlace by appearance.startPlace.collectAsStateWithLifecycle()
             val dark = themeMode.resolve()
@@ -60,8 +73,11 @@ class MainActivity : ComponentActivity() {
                 )
                 onDispose {}
             }
-            AtharTheme(darkTheme = dark, warm = themeMode == com.atharchive.ui.theme.ThemeMode.Warm) {
-                CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Rtl) {
+            AtharTheme(darkTheme = dark, warm = themeMode == com.atharchive.ui.theme.ThemeMode.Warm, style = style, accent = accent) {
+                CompositionLocalProvider(
+                    LocalLayoutDirection provides LayoutDirection.Rtl,
+                    com.atharchive.ui.theme.LocalReaderFont provides readerSettings.font.family(readerSettings.fontStamp),
+                ) {
                     // Macrobenchmarks drive the app through UiAutomator, which can only
                     // see resource-ids. This publishes every testTag as one; it changes
                     // nothing a user sees and costs one semantics flag.
@@ -75,11 +91,16 @@ class MainActivity : ComponentActivity() {
                         onDownloadTargetHandled = { downloadTarget.value = null },
                         themeMode = themeMode,
                         onThemeModeChange = appearance::setThemeMode,
+                        style = style,
+                        onStyleChange = appearance::setStyle,
+                        accent = accent,
+                        onAccentChange = appearance::setAccent,
                         startPlace = startPlace,
                         onStartPlaceChange = appearance::setStartPlace,
                         readerSettings = readerSettings,
                         onReaderSettingsChange = appearance::setReaderSettings,
                     )
+                    if (showIntro) com.atharchive.ui.icons.AtharLaunchIntro { showIntro = false }
                     }
                 }
             }

@@ -24,6 +24,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
@@ -44,6 +45,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import com.atharchive.ui.components.atharBackdrop
+import com.atharchive.ui.components.atharChrome
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
@@ -123,7 +126,7 @@ fun PoemReaderScreen(
     onRetry: () -> Unit = {},
 ) {
     var settingsOpen by remember { mutableStateOf(false) }
-    val colors = rememberReaderColors()
+    val colors = rememberReaderColors(settings)
     val listState = rememberLazyListState()
     val scope = rememberCoroutineScope()
 
@@ -249,6 +252,9 @@ fun PoemReaderScreen(
         }
     }
 
+    // «زجاج»: the bars blur the verses that scroll under them.
+    val haze = remember { dev.chrisbanes.haze.HazeState() }
+    androidx.compose.runtime.CompositionLocalProvider(com.atharchive.ui.components.LocalAtharHaze provides haze) {
     Box(
         modifier = modifier
             .fillMaxSize()
@@ -259,7 +265,7 @@ fun PoemReaderScreen(
                     val haptics = androidx.compose.ui.platform.LocalHapticFeedback.current
                     LazyColumn(
                         state = listState,
-                        modifier = Modifier.fillMaxSize().nestedScroll(bars.connection)
+                        modifier = Modifier.fillMaxSize().nestedScroll(bars.connection).atharBackdrop(haze)
                             .onSizeChanged { listHeight = it.height }
                             .verseSelectionGestures(
                                 active = selRange != null,
@@ -302,7 +308,6 @@ fun PoemReaderScreen(
                                     if (isSaved) act("أُزيل من الكناشة") { onRemoveVerse(verse.ordinal) }
                                     else act("حُفظ في الكناشة") { onSaveVerse(verse.ordinal) }
                                 },
-                                onCopy = { copy(verse.sadr + "\n" + verse.ajz); toast = "نُسخ البيت" },
                             )
                             if (!settings.poemProse && index != state.verses.lastIndex) {
                                 VerseOrnament(colors)
@@ -333,6 +338,12 @@ fun PoemReaderScreen(
                                 androidx.compose.ui.unit.IntOffset(0, maxOf(minY, top ?: minY).toInt())
                             },
                         onCopy = { copy(text()); toast = "نُسخ النص"; clearSelection() },
+                        onCopyCited = {
+                            val verses = chosen()
+                            copy(com.atharchive.ui.citedText(text(), state.title, state.poet, null, null, state.sourceUrl,
+                                verses = verses.first().number..verses.last().number))
+                            toast = "نُسخ مع التذييل"; clearSelection()
+                        },
                         onShare = {
                             context.startActivity(android.content.Intent.createChooser(
                                 android.content.Intent(android.content.Intent.ACTION_SEND)
@@ -408,10 +419,11 @@ fun PoemReaderScreen(
             }
 
             Box(
+                // The ground rides inside the layer, as in the book reader: hidden bars leave no band.
                 Modifier.align(Alignment.TopCenter)
-                    .background(colors.page)
                     .onSizeChanged { topBarHeight = with(density) { it.height.toDp() } }
-                    .graphicsLayer { translationY = -hidden * size.height; alpha = 1f - hidden },
+                    .graphicsLayer { translationY = -hidden * size.height; alpha = 1f - hidden }
+                    .atharChrome(colors.page),
             ) {
             PoemTopBar(
                 title = state.title,
@@ -430,6 +442,7 @@ fun PoemReaderScreen(
                     AtharMenu(
                         expanded = moreOpen,
                         onDismiss = { moreOpen = false },
+                        width = 260.dp,
                         colors = AtharMenuColors(card = lerp(colors.page, colors.text, 0.07f), ink = colors.text,
                             secondary = colors.secondary, accent = colors.accent),
                         modifier = Modifier.testTag("poem_more_menu"),
@@ -522,6 +535,7 @@ fun PoemReaderScreen(
             }
 
     }
+    }
 }
 
 /* ── verse ─────────────────────────────────────────────────────────────── */
@@ -564,7 +578,6 @@ private fun VerseRow(
     onTapText: () -> Unit,
     onSharh: () -> Unit,
     onSave: () -> Unit,
-    onCopy: () -> Unit,
 ) {
     var menuOpen by remember { mutableStateOf(false) }
     // A saved verse answers a tap with its menu (إزالة من الكناشة), as a highlight does in a book.
@@ -587,34 +600,14 @@ private fun VerseRow(
             .testTag("verse_${verse.id}"),
         verticalAlignment = Alignment.Top,
     ) {
-        // Outer edge (right, under RTL): the number when shown, a dot for شرح, a mark for a
-        // bookmark. Nothing to show takes no room, so the verse sits on the margin.
-        if (settings.verseNumbers || verse.commentary.isNotEmpty() || bookmarked) Column(
-            modifier = Modifier
-                .size(width = if (settings.verseNumbers) 28.dp else 16.dp, height = 40.dp)
-                .clickable(role = Role.Button, onClickLabel = "خيارات البيت") { menuOpen = true }
-                .semantics { contentDescription = "البيت ${arabicDigits(verse.number)}" }
-                .testTag("verse_indicator_${verse.id}"),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = androidx.compose.foundation.layout.Arrangement.Center,
-        ) {
-            if (settings.verseNumbers) {
-                Text(
-                    text = arabicDigits(verse.number),
-                    color = if (verse.commentary.isNotEmpty()) colors.accent else colors.secondary,
-                    style = MaterialTheme.typography.labelSmall,
-                )
-            } else if (verse.commentary.isNotEmpty()) {
-                Box(
-                    Modifier
-                        .size(7.dp)
-                        .clip(CircleShape)
-                        .background(colors.accent),
-                )
-            }
-            if (bookmarked) Icon(AtharIcons.BookmarkFilled, contentDescription = "عليه علامة", tint = colors.accent,
-                modifier = Modifier.padding(top = 2.dp).size(12.dp))
-        }
+        // Verse numbers, when shown, sit in a column every verse has, so no verse shifts.
+        if (settings.verseNumbers) Text(
+            text = arabicDigits(verse.number),
+            modifier = Modifier.width(28.dp).padding(top = 8.dp),
+            color = if (verse.commentary.isNotEmpty()) colors.accent else colors.secondary,
+            style = MaterialTheme.typography.labelSmall,
+            textAlign = TextAlign.Center,
+        )
 
         Column(modifier = Modifier.weight(1f)) {
             if (settings.poemProse) {
@@ -627,6 +620,29 @@ private fun VerseRow(
             }
         }
     }
+        // The outer margin carries the marks — a short rule for شرح, the bookmark — in space the
+        // margin already has, so a verse with commentary lines up with one without. A tap on
+        // the rule opens the شرح; copy and save are the long-press selection bar's.
+        if (verse.commentary.isNotEmpty() || bookmarked) Row(Modifier.matchParentSize()) {
+            Column(
+                Modifier
+                    .width(settings.margin.dp.coerceAtLeast(14.dp))
+                    .fillMaxHeight()
+                    .then(if (verse.commentary.isEmpty()) Modifier else Modifier
+                        .clickable(role = Role.Button, onClickLabel = "شرح البيت", onClick = onSharh)
+                        .semantics { contentDescription = "للبيت ${arabicDigits(verse.number)} شرح" })
+                    .testTag("verse_indicator_${verse.id}"),
+                horizontalAlignment = Alignment.CenterHorizontally,
+            ) {
+                if (verse.commentary.isNotEmpty()) Box(
+                    Modifier.padding(top = 18.dp).size(width = 2.5.dp, height = 18.dp)
+                        .clip(CircleShape).background(colors.accent.copy(alpha = 0.75f)),
+                )
+                if (bookmarked) Icon(AtharIcons.BookmarkFilled, contentDescription = "عليه علامة", tint = colors.accent,
+                    modifier = Modifier.padding(top = if (verse.commentary.isEmpty()) 16.dp else 4.dp).size(11.dp))
+            }
+        }
+        // A saved verse's tap: remove it, or read its شرح.
         AtharMenu(
             expanded = menuOpen,
             onDismiss = { menuOpen = false },
@@ -635,9 +651,7 @@ private fun VerseRow(
             modifier = Modifier.testTag("verse_menu"),
         ) {
             if (verse.commentary.isNotEmpty()) AtharMenuItem("شرح البيت", icon = AtharIcons.Sidebar, onClick = { menuOpen = false; onSharh() })
-            if (saved) AtharMenuItem("إزالة من الكناشة", icon = AtharIcons.Close, destructive = true, onClick = { menuOpen = false; onSave() })
-            else AtharMenuItem("حفظ في الكناشة", icon = AtharIcons.Kannashah, onClick = { menuOpen = false; onSave() })
-            AtharMenuItem("نسخ البيت", icon = AtharIcons.Copy, onClick = { menuOpen = false; onCopy() })
+            AtharMenuItem("إزالة من الكناشة", icon = AtharIcons.Close, destructive = true, onClick = { menuOpen = false; onSave() })
         }
     }
 }
@@ -717,8 +731,9 @@ private fun Hemistich(
                     }
                 },
             onTextLayout = { layout = it },
-            color = colors.text,
-            fontFamily = AtharEditorialFontFamily,
+            color = colors.poetry,
+            // Amiri until the reader picks another face in «خطّ القراءة».
+            fontFamily = if (settings.font == com.atharchive.ui.theme.ReaderFont.Kitab) AtharEditorialFontFamily else com.atharchive.ui.theme.LocalReaderFont.current,
             // Verses run a shade larger than prose, and take the reader's own spacing.
             fontSize = (settings.fontSize + 1).sp,
             lineHeight = ((settings.fontSize + 1) * settings.spacing.multiplier).sp,
@@ -772,7 +787,7 @@ private fun PoemHeading(text: String, colors: ReaderColors, settings: ReaderSett
         text = text,
         modifier = Modifier.fillMaxWidth().padding(horizontal = settings.margin.dp).padding(top = 18.dp, bottom = 6.dp),
         textAlign = TextAlign.Center,
-        color = colors.accent,
+        color = colors.heading,
         fontFamily = AtharEditorialFontFamily,
         fontWeight = FontWeight.Bold,
         fontSize = (settings.fontSize + 1).sp,

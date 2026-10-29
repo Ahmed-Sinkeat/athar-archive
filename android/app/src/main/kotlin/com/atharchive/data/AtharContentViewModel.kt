@@ -126,7 +126,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.flow.drop
 
 private const val SearchDebounceMs = 60L
-private const val OnlineSearchPauseMs = 250L
+private const val OnlineSearchPauseMs = 150L
 private const val SearchPageSize = 40
 private const val SearchLatencyTraceName = "AtharSearchKeystrokeToResults"
 
@@ -315,7 +315,8 @@ class AtharContentViewModel @Inject constructor(
         )
         if (filters.downloadedOnly || filters.field != SearchField.FullText) // Titles/authors/topics: the catalog on the phone already covers the whole library.
             return@transformLatest emit(localState(if (filters.downloadedOnly) SearchScope.Downloaded else SearchScope.Online))
-        emit(base.copy(directMatches = direct, searching = true))
+        // Passages in downloaded texts show at once; the whole library's replace them when they arrive.
+        emit(localState(SearchScope.Online).copy(searching = true, hasMore = false))
         // ponytail: a fixed pause before the network call; cancelled by the next keystroke
         delay(OnlineSearchPauseMs)
         val query = OnlineSearch.Query(
@@ -327,7 +328,11 @@ class AtharContentViewModel @Inject constructor(
             sort = if (filters.sort != SearchSort.Died) "relevance" else if (filters.descending) "death_desc" else "death",
         )
         val online = try {
-            onlineSearch.hits(query, limit)
+            onlineSearch.hits(query, limit) { partial, more ->
+                // «المزيد» refetches from the top; showing its first page would shrink the list.
+                if (limit == SearchPageSize) emit(base.copy(scope = SearchScope.Online, directMatches = direct, hasMore = more, searching = true,
+                    hits = partial.mapIndexedNotNull { index, hit -> hit.toHitUi(index, catalog) }))
+            }
         } catch (cancelled: kotlinx.coroutines.CancellationException) { throw cancelled
         } catch (offline: Exception) { null }
         if (online == null) { Analytics.hit("search", "offline"); return@transformLatest emit(localState(SearchScope.Offline)) }
@@ -962,6 +967,10 @@ class AtharContentViewModel @Inject constructor(
         return found
     }
 
+    /** (volume, printed page) of a block, for «نسخ مع التذييل». */
+    suspend fun printedPlace(entityId: String, ordinal: Int): Pair<Int?, Int?> =
+        importDao.blockAt(entityId, ordinal).let { it?.vol to it?.printedPage }
+
     suspend fun findHeadingAnchor(entityId: String, anchor: String): Int? {
         importDao.headingAnchorOrdinal(entityId, anchor)?.let { return it }
         var found: Int? = null
@@ -1325,6 +1334,7 @@ class AtharContentViewModel @Inject constructor(
             publishedAt = publishedAt.orEmpty(),
             pages = pageTo,
             volumes = volumes,
+            volumeUnit = volumeUnit,
             recentRank = recentRank,
             // ponytail: chapterAnchor is a slug, not a title; the title lives in the content DB per book. Show the place only.
             readingPosition = position?.let { "الموضع ${arabicNumber(it.ordinalHint + 1)}" },
@@ -1350,6 +1360,7 @@ private fun ContentEntity.toReaderUi(
     }
     return ReaderUiState(
         bookTitle = title,
+        isBook = coll == "book",
         author = personName.orEmpty(),
         blocks = contentBlocks,
         footnotes = byId,
@@ -1358,7 +1369,7 @@ private fun ContentEntity.toReaderUi(
         toc = chapters.multiVolume().let { vols ->
             chapters.map { chapter ->
                 val page = chapter.page?.let { "ص ${com.atharchive.ui.components.arabicDigits(it)}" }.orEmpty()
-                val label = chapter.vol?.takeIf { vols && page.isNotEmpty() }?.let { "ج${com.atharchive.ui.components.arabicDigits(it)} · $page" } ?: page
+                val label = chapter.vol?.takeIf { vols && page.isNotEmpty() }?.let { "${com.atharchive.feature.reader.volumeLabel(it, volumeUnit)} · $page" } ?: page
                 TocEntry(chapter.anchor, chapter.title, chapter.level, chapter.firstOrdinal, label)
             }
         },
@@ -1368,6 +1379,11 @@ private fun ContentEntity.toReaderUi(
         readingOffset = position?.offsetInBlock ?: 0,
         audio = audioReferences().map { BookAudioUi(it.id, it.title ?: title, duration(it.seconds)) },
         blockCount = pkgBlocks,
+        // ponytail: volumes come from the contents' chapters; a book whose chapters carry no vol shows no volume menu.
+        volumeStarts = chapters.filter { it.vol != null }.groupBy { it.vol!! }
+            .map { (vol, list) -> vol to list.minOf { it.firstOrdinal } }.sortedBy { it.first }.takeIf { it.size > 1 }.orEmpty(),
+        volumeUnit = volumeUnit,
+        pageRange = if (chapters.multiVolume() || (volumes ?: 1) > 1) null else pageTo?.let { (pageFrom ?: 1)..it },
     )
 }
 
@@ -1429,6 +1445,7 @@ private fun ContentEntity.toPoemReaderUi(blocks: List<ContentBlockEntity>): Poem
         card = toCatalogEntry().card,
         title = title,
         poet = personName.orEmpty(),
+        sourceUrl = "https://athar.arthurarchive.com/$coll/$id",
         bodyLoaded = blocks.size >= pkgBlocks,
         verses = verses,
         recordings = audioReferences().map { audio ->

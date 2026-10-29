@@ -65,6 +65,11 @@ object AtharDatabases {
                     // The next sync re-applies the catalog so the new columns fill in (the row stays: deleting it would re-seed).
                     connection.prepare("UPDATE contentGeneration SET generationId = ''").use { it.step() }
                 }
+            }, object : androidx.room3.migration.Migration(9, 10) {
+                override suspend fun migrate(connection: androidx.sqlite.SQLiteConnection) {
+                    connection.prepare("ALTER TABLE entity ADD COLUMN volumeUnit TEXT").use { it.step() }
+                    connection.prepare("UPDATE contentGeneration SET generationId = ''").use { it.step() }
+                }
             })
             .addCallback(ContentSearchSchema.callback)
             .fallbackToDestructiveMigration(true)

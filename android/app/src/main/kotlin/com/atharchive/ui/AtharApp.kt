@@ -165,6 +165,10 @@ fun AtharApp(
     onDownloadTargetHandled: () -> Unit = {},
     themeMode: ThemeMode,
     onThemeModeChange: (ThemeMode) -> Unit,
+    style: com.atharchive.ui.theme.AtharStyle = com.atharchive.ui.theme.AtharStyle.Paper,
+    onStyleChange: (com.atharchive.ui.theme.AtharStyle) -> Unit = {},
+    accent: com.atharchive.ui.theme.AtharAccent = com.atharchive.ui.theme.AtharAccent.Burgundy,
+    onAccentChange: (com.atharchive.ui.theme.AtharAccent) -> Unit = {},
     startPlace: com.atharchive.data.StartPlace = com.atharchive.data.StartPlace.Books,
     onStartPlaceChange: (com.atharchive.data.StartPlace) -> Unit = {},
     readerSettings: ReaderSettings,
@@ -551,6 +555,15 @@ fun AtharApp(
                             onAnchorJump = { contentViewModel.findHeadingAnchor(route.bookId, it) },
                             onLoadSelectionBlocks = { contentViewModel.selectionBlocks(route.bookId, it) },
                             onRemoveHighlight = contentViewModel::deleteAnnotation,
+                            onEditHighlightNote = { id ->
+                                contentViewModel.kannashahState.value.excerpts.firstOrNull { it.id == id }
+                                    ?.let { editorAnchor = actionAnchor.value; editingExcerpt = it }
+                            },
+                            onCopyCited = { selection ->
+                                val (vol, page) = contentViewModel.printedPlace(route.bookId, minOf(selection.start.ordinal, selection.end.ordinal))
+                                copyText(context, citedText(selection.quotedText, state.bookTitle, state.author,
+                                    vol.takeIf { state.volumeStarts.isNotEmpty() }, page, state.sourceUrl, state.volumeUnit))
+                            },
                             onPlayAudio = { contentViewModel.playWorkAudio(route.bookId, it.id) },
                             playingAudioId = playingAudioId,
                             audioPlayIntent = audioPlayIntent,
@@ -564,11 +577,10 @@ fun AtharApp(
                                 copyText(context, selection.quotedText)
                             },
                             onShareSelection = { selection ->
-                                shareText(
-                                    context,
-                                    selection.quotedText + "\n\n— ${state.bookTitle}، ${state.author}\n" +
-                                        state.sourceUrl,
-                                )
+                                // Same source line as «نسخ مع التذييل»: the volume and page say where in the book it is.
+                                val (vol, page) = contentViewModel.printedPlace(route.bookId, minOf(selection.start.ordinal, selection.end.ordinal))
+                                shareText(context, citedText(selection.quotedText, state.bookTitle, state.author,
+                                    vol.takeIf { state.volumeStarts.isNotEmpty() }, page, state.sourceUrl, state.volumeUnit))
                             },
                             onSaveSelection = { selection ->
                                 contentViewModel.saveSelection(route.bookId, selection)
@@ -694,6 +706,12 @@ fun AtharApp(
                     AppearanceScreen(
                         themeMode = themeMode,
                         onThemeModeChange = onThemeModeChange,
+                        style = style,
+                        onStyleChange = onStyleChange,
+                        accent = accent,
+                        onAccentChange = onAccentChange,
+                        readerSettings = readerSettings,
+                        onReaderSettingsChange = onReaderSettingsChange,
                         startPlace = startPlace,
                         onStartPlaceChange = onStartPlaceChange,
                         onBack = ::goBack,
@@ -713,6 +731,7 @@ fun AtharApp(
                         onCopy = { copyText(context, it.text); announce("نُسخ الذكر") },
                         onSave = { contentViewModel.toggleFavourite("dhikr:${it.id}") },
                         onBack = ::goBack,
+                        readerSettings = readerSettings,
                     )
                 }
                 entry<DownloadsRoute> {
@@ -1151,6 +1170,8 @@ private fun SettingsRow(
             .then(if (tag == null) Modifier else Modifier.testTag(tag))
             .then(if (onClick == null) Modifier else Modifier.clickable(onClick = onClick)),
         color = AtharTheme.colors.canvas,
+        // canvas is not a scheme colour, so without this the content falls back to black (unreadable in dark).
+        contentColor = MaterialTheme.colorScheme.onBackground,
     ) {
         Row(
             modifier = Modifier.padding(vertical = 15.dp, horizontal = 2.dp),
@@ -1191,6 +1212,25 @@ private val CacheBudgetOptions = listOf(
 
 private fun cacheBudgetLabel(bytes: Long): String =
     if (bytes == Long.MAX_VALUE) "بلا حد" else com.atharchive.data.byteSize(bytes)
+
+/** «النص» then «— الكتاب، المؤلف، ج٢، ص٧٨» and the link: what «نسخ مع التذييل» copies. */
+internal fun citedText(
+    text: String, title: String, author: String, volume: Int?, page: Int?, url: String,
+    volumeUnit: String? = null,
+    /** A poem's verse numbers: «البيت ١٢», «الأبيات ١٢–١٥». */
+    verses: IntRange? = null,
+): String {
+    val digits = { n: Int -> com.atharchive.ui.components.arabicDigits(n) }
+    val source = listOfNotNull(
+        title.ifBlank { null }, author.ifBlank { null },
+        volume?.let { com.atharchive.feature.reader.volumeLabel(it, volumeUnit) },
+        page?.let { "ص${digits(it)}" },
+        verses?.let { if (it.first == it.last) "البيت ${digits(it.first)}" else "الأبيات ${digits(it.first)}–${digits(it.last)}" },
+    ).joinToString("، ")
+    // a blank line between the passage and its source, as in مشاركة
+    val tail = listOfNotNull(source.ifBlank { null }?.let { "— $it" }, url.ifBlank { null }).joinToString("\n")
+    return if (tail.isEmpty()) text else "$text\n\n$tail"
+}
 
 private fun copyText(context: Context, text: String) {
     val clipboard = context.getSystemService(ClipboardManager::class.java)

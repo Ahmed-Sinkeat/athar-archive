@@ -33,6 +33,7 @@ import com.atharchive.core.ArNormalize
 import com.atharchive.feature.downloads.TransferUi
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import com.atharchive.ui.components.AtharFloatingHeader
+import com.atharchive.ui.components.atharBackdrop
 import com.atharchive.ui.components.ShowOnChange
 import com.atharchive.ui.components.rememberAtharCollapsingHeader
 import androidx.compose.runtime.Composable
@@ -138,6 +139,11 @@ fun PoetryScreen(
             }).directed(descending),
         )
     }
+    // The list keeps its place by the top item's key, so a just-opened text moving to the top of
+    // «الأخيرة» landed above the screen and looked dropped. The newest is always shown first.
+    androidx.compose.runtime.LaunchedEffect(selectedTab, visiblePoems.firstOrNull()?.id) {
+        if (selectedTab == com.atharchive.ui.components.SectionTab.Recent) listState.scrollToItem(0)
+    }
 
     BoxWithConstraints(
         modifier = modifier
@@ -201,7 +207,7 @@ fun PoetryScreen(
             modifier = Modifier
                 .fillMaxWidth()
                 .fillMaxHeight()
-                .nestedScroll(header.connection)
+                .nestedScroll(header.connection).atharBackdrop(header.haze)
                 .testTag("poetry_screen"),
             contentPadding = PaddingValues(top = header.height, bottom = 28.dp),
         ) {
@@ -224,7 +230,7 @@ fun PoetryScreen(
                     )
                 }
             } else {
-                itemsIndexed(visiblePoems, key = { _, poem -> poem.id }) { index, poem ->
+                itemsIndexed(visiblePoems, key = { _, poem -> poem.id  }) { index, poem -> com.atharchive.ui.components.AtharRowItem {
                     PoemRow(
                         poem = poem,
                         query = query,
@@ -235,12 +241,12 @@ fun PoetryScreen(
                         onDownload = { onDownloadClick(poem) },
                     )
                     if (index != visiblePoems.lastIndex) {
-                        HorizontalDivider(
+                        com.atharchive.ui.components.AtharRowDivider(
                             modifier = Modifier.padding(horizontal = horizontalPadding),
                             color = AtharTheme.colors.divider.copy(alpha = 0.64f),
                         )
                     }
-                }
+                }}
             }
             sectionTextHits(textHits, query, textSearch, horizontalPadding)
         }

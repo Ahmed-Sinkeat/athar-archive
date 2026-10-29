@@ -31,6 +31,7 @@ import com.atharchive.core.ArNormalize
 import com.atharchive.feature.downloads.TransferUi
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import com.atharchive.ui.components.AtharFloatingHeader
+import com.atharchive.ui.components.atharBackdrop
 import com.atharchive.ui.components.ShowOnChange
 import com.atharchive.ui.components.rememberAtharCollapsingHeader
 import androidx.compose.runtime.Composable
@@ -122,6 +123,11 @@ fun ArticlesScreen(
             }).directed(descending),
         )
     }
+    // The list keeps its place by the top item's key, so a just-opened text moving to the top of
+    // «الأخيرة» landed above the screen and looked dropped. The newest is always shown first.
+    androidx.compose.runtime.LaunchedEffect(selectedTab, visibleArticles.firstOrNull()?.id) {
+        if (selectedTab == com.atharchive.ui.components.SectionTab.Recent) listState.scrollToItem(0)
+    }
 
     BoxWithConstraints(
         modifier = modifier
@@ -185,7 +191,7 @@ fun ArticlesScreen(
             modifier = Modifier
                 .fillMaxWidth()
                 .fillMaxHeight()
-                .nestedScroll(header.connection)
+                .nestedScroll(header.connection).atharBackdrop(header.haze)
                 .testTag("articles_screen"),
             contentPadding = PaddingValues(top = header.height, bottom = 28.dp),
         ) {
@@ -206,7 +212,7 @@ fun ArticlesScreen(
                     )
                 }
             } else {
-                itemsIndexed(visibleArticles, key = { _, a -> a.id }) { index, article ->
+                itemsIndexed(visibleArticles, key = { _, a -> a.id  }) { index, article -> com.atharchive.ui.components.AtharRowItem {
                     ArticleRow(
                         article = article,
                         query = query,
@@ -217,12 +223,12 @@ fun ArticlesScreen(
                         onDownload = { onDownloadClick(article) },
                     )
                     if (index != visibleArticles.lastIndex) {
-                        HorizontalDivider(
+                        com.atharchive.ui.components.AtharRowDivider(
                             modifier = Modifier.padding(horizontal = horizontalPadding),
                             color = AtharTheme.colors.divider.copy(alpha = 0.64f),
                         )
                     }
-                }
+                }}
             }
             sectionTextHits(textHits, query, textSearch, horizontalPadding)
         }

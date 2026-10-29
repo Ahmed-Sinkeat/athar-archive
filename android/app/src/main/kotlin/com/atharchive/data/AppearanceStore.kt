@@ -3,6 +3,8 @@ package com.atharchive.data
 import android.content.Context
 import com.atharchive.feature.reader.FootnoteMode
 import com.atharchive.feature.reader.ReaderSettings
+import com.atharchive.ui.theme.AtharAccent
+import com.atharchive.ui.theme.AtharStyle
 import com.atharchive.ui.theme.ThemeMode
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -22,12 +24,53 @@ import javax.inject.Singleton
  * written on a tap. `ContentAccess` already keeps the cache budget this way.
  */
 @Singleton
-class AppearanceStore @Inject constructor(@ApplicationContext context: Context) {
+class AppearanceStore @Inject constructor(@ApplicationContext private val context: Context) {
 
     private val prefs = context.getSharedPreferences(Preferences, Context.MODE_PRIVATE)
 
     private val _themeMode = MutableStateFlow(readThemeMode())
     val themeMode: StateFlow<ThemeMode> = _themeMode
+
+    private val _style = MutableStateFlow(enumOrDefault(prefs.getString(KeyStyle, null), AtharStyle.Paper))
+    /** «النمط»: how the app's surfaces are built. */
+    val style: StateFlow<AtharStyle> = _style
+
+    fun setStyle(style: AtharStyle) {
+        _style.value = style
+        prefs.edit().putString(KeyStyle, style.name).apply()
+    }
+
+    private val _accent = MutableStateFlow(enumOrDefault(prefs.getString(KeyAccent, null), AtharAccent.Burgundy))
+    /** «اللون»: the accent across the app, and the launcher icon's colour. */
+    val accent: StateFlow<AtharAccent> = _accent
+
+    fun setAccent(accent: AtharAccent) {
+        _accent.value = accent
+        prefs.edit().putString(KeyAccent, accent.name).apply()
+    }
+
+    /**
+     * Gives the launcher icon the chosen colour: one launcher alias per colour (AndroidManifest),
+     * only the chosen one enabled. Disabling the alias that started the running task closes it,
+     * so this runs only when the app leaves the screen. The launcher may drop a home-screen
+     * shortcut of the old icon: that is the platform's price.
+     */
+    fun syncLauncherIcon() {
+        val pm = context.packageManager
+        AtharAccent.entries.forEach {
+            val component = android.content.ComponentName(context, "com.atharchive.Launcher${it.name}")
+            val on = it == _accent.value
+            val now = pm.getComponentEnabledSetting(component)
+            val enabled = now == android.content.pm.PackageManager.COMPONENT_ENABLED_STATE_ENABLED ||
+                (now == android.content.pm.PackageManager.COMPONENT_ENABLED_STATE_DEFAULT && it == AtharAccent.Burgundy)
+            if (on != enabled) pm.setComponentEnabledSetting(
+                component,
+                if (on) android.content.pm.PackageManager.COMPONENT_ENABLED_STATE_ENABLED
+                else android.content.pm.PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+                android.content.pm.PackageManager.DONT_KILL_APP,
+            )
+        }
+    }
 
     private val _reader = MutableStateFlow(readReaderSettings())
     val reader: StateFlow<ReaderSettings> = _reader
@@ -60,6 +103,12 @@ class AppearanceStore @Inject constructor(@ApplicationContext context: Context) 
             .putBoolean("poem_follow", settings.poemFollow)
             .putBoolean("reader_highlight_line", settings.underlineHighlights)
             .putString(KeySpacing, settings.spacing.name)
+            .putString("text_hue_quran", settings.quranHue.name)
+            .putString("text_hue_hadith", settings.hadithHue.name)
+            .putString("text_hue_heading", settings.headingHue.name)
+            .putString("text_hue_poetry", settings.poetryHue.name)
+            .putString("reader_font", settings.font.name)
+            .putLong("reader_font_stamp", settings.fontStamp)
             .apply()
     }
 
@@ -83,6 +132,12 @@ class AppearanceStore @Inject constructor(@ApplicationContext context: Context) 
             poemProse = prefs.getBoolean("poem_prose", false),
             poemFollow = prefs.getBoolean("poem_follow", true),
             underlineHighlights = prefs.getBoolean("reader_highlight_line", false),
+            quranHue = enumOrDefault(prefs.getString("text_hue_quran", null), defaults.quranHue),
+            hadithHue = enumOrDefault(prefs.getString("text_hue_hadith", null), defaults.hadithHue),
+            headingHue = enumOrDefault(prefs.getString("text_hue_heading", null), defaults.headingHue),
+            poetryHue = enumOrDefault(prefs.getString("text_hue_poetry", null), defaults.poetryHue),
+            font = enumOrDefault(prefs.getString("reader_font", null), defaults.font),
+            fontStamp = prefs.getLong("reader_font_stamp", 0),
         )
     }
 
@@ -93,6 +148,8 @@ class AppearanceStore @Inject constructor(@ApplicationContext context: Context) 
     private companion object {
         const val Preferences = "athar_appearance"
         const val KeyThemeMode = "theme_mode"
+        const val KeyStyle = "ui_style"
+        const val KeyAccent = "ui_accent"
         const val KeyStartPlace = "start_place"
         const val KeyFontSize = "reader_font_size"
         const val KeySpacing = "reader_spacing"

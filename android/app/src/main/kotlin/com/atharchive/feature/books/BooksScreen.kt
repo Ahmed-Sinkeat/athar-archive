@@ -49,6 +49,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import com.atharchive.ui.components.AtharFloatingHeader
+import com.atharchive.ui.components.atharBackdrop
 import com.atharchive.ui.components.ShowOnChange
 import com.atharchive.ui.components.rememberAtharCollapsingHeader
 import androidx.compose.runtime.Composable
@@ -112,9 +113,9 @@ private fun centuryOf(died: Int) = "القرن ${arabicDigits((died - 1) / 100 +
 /** «ت ٧٢٨هـ» */
 internal fun diedLabel(died: Int) = "ت ${arabicDigits(died)}هـ"
 
-/** «٤٤٣ ص», or «٤ مج» for a work in several volumes. */
+/** «٤٤٣ ص», or «٤ مج» for a work in several volumes («٤١٧ درس» when they are lessons). */
 internal fun BookUi.sizeLabel(): String? = when {
-    (volumes ?: 1) > 1 -> "${arabicDigits(volumes!!)} مج"
+    (volumes ?: 1) > 1 -> "${arabicDigits(volumes!!)} ${when (volumeUnit) { "lesson" -> "درس"; "issue" -> "عدد"; else -> "مج" }}"
     pages != null -> "${arabicDigits(pages)} ص"
     else -> null
 }
@@ -195,6 +196,11 @@ fun BooksScreen(
             )
             .toList()
     }
+    // The list keeps its place by the top item's key, so a just-opened text moving to the top of
+    // «الأخيرة» landed above the screen and looked dropped. The newest is always shown first.
+    androidx.compose.runtime.LaunchedEffect(selectedTab, visibleBooks.firstOrNull()?.id) {
+        if (selectedTab == com.atharchive.ui.components.SectionTab.Recent) listState.scrollToItem(0)
+    }
     BoxWithConstraints(
         modifier = modifier
             .fillMaxSize()
@@ -269,7 +275,7 @@ fun BooksScreen(
             modifier = Modifier
                 .fillMaxWidth()
                 .fillMaxHeight()
-                .nestedScroll(header.connection)
+                .nestedScroll(header.connection).atharBackdrop(header.haze)
                 .testTag("books_screen"),
             contentPadding = PaddingValues(top = header.height, bottom = 28.dp),
         ) {
@@ -290,7 +296,7 @@ fun BooksScreen(
                     )
                 }
             } else {
-                itemsIndexed(visibleBooks, key = { _, book -> book.id }) { index, book ->
+                itemsIndexed(visibleBooks, key = { _, book -> book.id  }) { index, book -> com.atharchive.ui.components.AtharRowItem {
                     BookRow(
                         book = book,
                         query = query,
@@ -304,13 +310,13 @@ fun BooksScreen(
                     if (index != visibleBooks.lastIndex) {
                         // Hairline, and inset past the title margin: enough to separate
                         // two books, not enough to draw a table.
-                        HorizontalDivider(
+                        com.atharchive.ui.components.AtharRowDivider(
                             modifier = Modifier.padding(start = horizontalPadding + 44.dp, end = horizontalPadding),
                             thickness = 0.7.dp,
                             color = AtharTheme.colors.divider.copy(alpha = 0.42f),
                         )
                     }
-                }
+                }}
             }
         }
     }

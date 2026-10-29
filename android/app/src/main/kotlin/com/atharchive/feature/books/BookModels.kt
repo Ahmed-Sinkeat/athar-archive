@@ -41,6 +41,8 @@ data class BookUi(
     /** Last printed page; with [volumes] > 1 the count is shown as volumes instead. */
     val pages: Int? = null,
     val volumes: Int? = null,
+    /** "lesson"/"issue": [volumes] counts lessons or issues, not printed volumes. */
+    val volumeUnit: String? = null,
 )
 
 data class BooksUiState(

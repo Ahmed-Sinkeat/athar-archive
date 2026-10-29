@@ -14,11 +14,11 @@ package com.atharchive.feature.search
  *    passage hits come from readable blocks already indexed on this device.
  */
 
-enum class SearchResultType(val key: String, val label: String) {
-    Book("book", "كتاب"),
-    Poem("poem", "قصيدة"),
-    Article("article", "مقال"),
-    Issue("issue", "مسألة"),
+enum class SearchResultType(val key: String, val label: String, val plural: String) {
+    Book("book", "كتاب", "كتب"),
+    Poem("poem", "قصيدة", "شعر"),
+    Article("article", "مقال", "مقالات"),
+    Issue("issue", "مسألة", "مسائل"),
 }
 
 /** Which part of a document the query is matched against. */

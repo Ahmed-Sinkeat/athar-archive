@@ -22,8 +22,6 @@ import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.ui.layout.positionOnScreen
@@ -94,18 +92,16 @@ internal fun atharMenuOffset(anchor: IntRect, window: IntSize, direction: Layout
     )
 }
 
+/** Whether the menu opened above its button: it grows from that edge. */
 private class Pointer {
-    var x by mutableIntStateOf(-1)
     var above by mutableStateOf(false)
 }
 
-private val PointerWidth = 14.dp
-private val PointerHeight = 7.dp
-
 /**
  * A small card that opens beside the button it sits with — put it in the same Box as that
- * button. Tap outside or back closes it. Rounded, shadowed, a pointer at its button, rows with
- * the icon at the end: the iOS context menu, as in Sada.
+ * button. Tap outside or back closes it. Rounded, softly shadowed, rows with
+ * the icon at the end: the iOS context menu, as in Sada. Nothing scrolls inside it: a menu
+ * holds what fits, and a long list is a grid or a typed number instead.
  */
 @Composable
 fun AtharMenu(
@@ -116,7 +112,6 @@ fun AtharMenu(
     colors: AtharMenuColors = atharMenuColors(),
     anchor: Rect? = null,
     focusable: Boolean = true,
-    maxHeight: Dp = 360.dp,
     content: @Composable ColumnScope.() -> Unit,
 ) {
     if (!expanded) return
@@ -131,7 +126,6 @@ fun AtharMenu(
                 val bounds = anchor?.let { IntRect(it.left.toInt(), it.top.toInt(), it.right.toInt(), it.bottom.toInt()) } ?: anchorBounds
                 val offset = atharMenuOffset(bounds, windowSize, layoutDirection, popupContentSize, gap, margin)
                 pointer.above = offset.y + popupContentSize.height <= bounds.top + gap
-                pointer.x = bounds.center.x - offset.x
                 return offset
             }
         }
@@ -141,46 +135,28 @@ fun AtharMenu(
         ProvideAtharTextToolbar {
         AnimatedVisibility(
             visibleState = visible,
-            enter = fadeIn(tween(120)) + scaleIn(tween(160), initialScale = 0.9f,
+            enter = if (com.atharchive.ui.theme.LocalAtharStyle.current == com.atharchive.ui.theme.AtharStyle.Ink) androidx.compose.animation.EnterTransition.None
+            else fadeIn(tween(120)) + scaleIn(tween(160), initialScale = 0.9f,
                 transformOrigin = TransformOrigin(0.5f, if (pointer.above) 1f else 0f)),
         ) {
             val shape = AtharCorners.Surface
-            val edge = colors.ink.copy(alpha = 0.16f)
+            // A hairline only where a soft shadow can't separate the card from a dark page.
+            val edge = colors.ink.copy(alpha = 0.08f)
             val menuWidth = minOf(width, configuration.screenWidthDp.dp - 16.dp)
             CompositionLocalProvider(LocalMenuColors provides colors) {
-                Column {
-                    if (!pointer.above) MenuPointer(pointer, menuWidth, colors.card, edge)
+                // Room around the card for its shadow; no pointer: the menu opens at its button.
+                Box(Modifier.padding(6.dp)) {
                     Column(
                         modifier
                             .width(menuWidth)
-                            .heightIn(max = maxHeight)
-                            .shadow(16.dp, shape, ambientColor = Color.Black.copy(alpha = 0.4f), spotColor = Color.Black.copy(alpha = 0.4f))
-                            .clip(shape)
-                            .background(colors.card)
-                            .border(1.dp, edge, shape)
-                            .verticalScroll(rememberScrollState())
-                            .padding(vertical = 4.dp),
+                            .atharChrome(colors.card, shape, elevation = 8.dp, edge = edge, haze = null)
+                            .padding(vertical = 3.dp),
                         content = content,
                     )
-                    if (pointer.above) MenuPointer(pointer, menuWidth, colors.card, edge)
                 }
             }
         }
         }
-    }
-}
-
-@Composable
-private fun MenuPointer(pointer: Pointer, menuWidth: Dp, fill: Color, line: Color) {
-    Canvas(Modifier.width(menuWidth).height(PointerHeight)) {
-        if (pointer.x < 0) return@Canvas
-        val w = PointerWidth.toPx()
-        val cx = pointer.x.toFloat().coerceIn(w, size.width - w)
-        val tipY = if (pointer.above) size.height else 0f
-        val baseY = if (pointer.above) 0f else size.height
-        drawPath(Path().apply { moveTo(cx - w / 2, baseY); lineTo(cx, tipY); lineTo(cx + w / 2, baseY); close() }, fill)
-        drawLine(line, Offset(cx - w / 2, baseY), Offset(cx, tipY), 1.dp.toPx())
-        drawLine(line, Offset(cx, tipY), Offset(cx + w / 2, baseY), 1.dp.toPx())
     }
 }
 
@@ -205,29 +181,29 @@ fun AtharMenuItem(
     Row(
         modifier
             .fillMaxWidth()
-            .heightIn(min = 40.dp)
+            .heightIn(min = 38.dp)
             .then(if (checked != null) Modifier.semantics { selected = checked } else Modifier)
             .onGloballyPositioned { bounds = Rect(it.positionOnScreen(), Size(it.size.width.toFloat(), it.size.height.toFloat())) }
             .clickable(role = if (checked != null) Role.RadioButton else Role.Button) { actionAnchor?.value = bounds; onClick() }
-            .padding(horizontal = 14.dp, vertical = 4.dp),
+            .padding(horizontal = 12.dp, vertical = 3.dp),
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(10.dp),
+        horizontalArrangement = Arrangement.spacedBy(9.dp),
     ) {
         if (checked != null) Box(Modifier.size(16.dp)) {
             if (checked) Icon(AtharIcons.Check, null, tint = colors.accent, modifier = Modifier.size(16.dp))
         }
         Column(Modifier.weight(1f)) {
-            Text(label, color = tint, fontSize = AtharTextSize.Ui, fontWeight = if (checked == true) FontWeight.SemiBold else FontWeight.Normal,
+            Text(label, color = tint, fontSize = AtharTextSize.Body, fontWeight = if (checked == true) FontWeight.SemiBold else FontWeight.Normal,
                 maxLines = 1, overflow = TextOverflow.Ellipsis)
             if (!subtitle.isNullOrBlank()) Text(subtitle, color = colors.secondary, fontSize = AtharTextSize.Small, maxLines = 1, overflow = TextOverflow.Ellipsis)
         }
-        if (icon != null) Icon(icon, null, tint = tint, modifier = Modifier.size(18.dp))
+        if (icon != null) Icon(icon, null, tint = colors.secondary.takeUnless { destructive } ?: tint, modifier = Modifier.size(16.dp))
     }
 }
 
-/** A hairline between menu groups. */
+/** Between menu groups: a hairline, not a band. */
 @Composable
 fun AtharMenuDivider() {
     val colors = LocalMenuColors.current ?: atharMenuColors()
-    Box(Modifier.fillMaxWidth().padding(vertical = 3.dp).height(1.dp).background(colors.ink.copy(alpha = 0.1f)))
+    Box(Modifier.fillMaxWidth().padding(vertical = 4.dp).height(0.5.dp).background(colors.ink.copy(alpha = 0.14f)))
 }

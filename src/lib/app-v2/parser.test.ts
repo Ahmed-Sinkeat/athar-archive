@@ -119,6 +119,14 @@ describe("app/v2 semantic parser", () => {
     expect(paragraphs.map((block) => [block.vol, block.p, block.f, block.sp?.[0]?.k, block.sp?.[0]?.target])).toEqual([[1, 1, undefined, "sup", undefined], [2, 1, undefined, "sup", undefined]]);
   });
 
+  it("marks a book whose «الجزء» is the lesson number, and leaves real volumes alone", () => {
+    const body = (header: string) => `${header}\n\nأول\n\n<hr class="page-sep" data-page="1" data-vol="1" />\n\nثان\n\n<hr class="page-sep" data-page="1" data-vol="2" />`;
+    const lessons = parseReadableDocument({ coll: "book", id: "lessons", sourcePath: "lessons.md", body: body("[الكتاب مرقم آليا، ورقم الجزء هو رقم الدرس - 2 درسا]") });
+    expect(lessons.pages).toEqual({ from: 1, to: 1, vols: 2, unit: "lesson" });
+    const volumes = parseReadableDocument({ coll: "book", id: "volumes2", sourcePath: "volumes2.md", body: body("مقدمة الكتاب") });
+    expect(volumes.pages).toEqual({ from: 1, to: 1, vols: 2 });
+  });
+
   it("keeps distinct notes on repeated pages within the same volume", () => {
     const document = parseReadableDocument({ coll: "book", id: "repeated-page", sourcePath: "repeated-page.md", body:
       `أول.<sup data-fn="1" data-sep-page="33">1</sup>\n\n<hr class="page-sep" data-page="33" data-vol="1" data-notes='["الأولى"]' />\n\nثان.<sup data-fn="1" data-sep-page="33">1</sup>\n\n<hr class="page-sep" data-page="33" data-vol="1" data-notes='["الثانية"]' />\n\nضمن<sup data-fn="1">1</sup>`,

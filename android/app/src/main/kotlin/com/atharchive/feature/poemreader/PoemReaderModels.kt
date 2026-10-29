@@ -63,6 +63,8 @@ data class PoemReaderUiState(
     val card: List<com.atharchive.core.data.content.CardField> = emptyList(),
     val title: String,
     val poet: String,
+    /** The poem's page on the site, for «نسخ مع التذييل». */
+    val sourceUrl: String = "",
     val verses: List<VerseUi>,
     val recordings: List<PoemAudioUi>,
     /** Keyed by word with the harakat removed; see [meaningOf]. */

@@ -183,6 +183,14 @@ data class ReaderSettings(
     val poemFollow: Boolean = true,
     /** «خط»: saved highlights as a line under the text instead of a colour behind it. */
     val underlineHighlights: Boolean = false,
+    /** «ألوان النص»: ﴿القرآن﴾، «الحديث والآثار»، العناوين، الشعر. */
+    val quranHue: TextHue = TextHue.Gold,
+    val hadithHue: TextHue = TextHue.Blue,
+    val headingHue: TextHue = TextHue.Theme,
+    val poetryHue: TextHue = TextHue.Ink,
+    val font: com.atharchive.ui.theme.ReaderFont = com.atharchive.ui.theme.ReaderFont.Kitab,
+    /** When the user font was last imported; see [com.atharchive.ui.theme.family]. */
+    val fontStamp: Long = 0,
 ) {
     companion object {
         const val MIN_SIZE = 14
@@ -216,6 +224,8 @@ data class ReaderEdition(val id: String, val label: String, val current: Boolean
 data class ReaderUiState(
     val editions: List<ReaderEdition> = emptyList(),
     val bookTitle: String,
+    /** Articles, issues and other short texts offer «تحديد الكل»; a book never does. */
+    val isBook: Boolean = true,
     val author: String,
     val blocks: List<ReaderBlock>,
     val toc: List<TocEntry>,
@@ -235,6 +245,12 @@ data class ReaderUiState(
     val audio: List<BookAudioUi> = emptyList(),
     /** Catalog total; real readers page blocks and therefore do not infer this from [blocks]. */
     val blockCount: Int = blocks.size,
+    /** (volume, first block) of each volume, from the contents; empty in a one-volume book. */
+    val volumeStarts: List<Pair<Int, Int>> = emptyList(),
+    /** "lesson"/"issue" when the volume number counts those; see [volumeLabel]. */
+    val volumeUnit: String? = null,
+    /** Printed pages of a one-volume book, for the page box's hint. */
+    val pageRange: IntRange? = null,
 )
 
 /** One local-search landing point; offsets are UTF-16 and [matchEnd] is exclusive. */
@@ -316,4 +332,9 @@ val ReaderFixture: ReaderUiState = run {
             ),
         ),
     )
+}
+
+/** «ج٢» for a printed volume; a lesson or an issue by name: «الدرس ١٢», «العدد ٣». */
+fun volumeLabel(vol: Int, unit: String?): String = com.atharchive.ui.components.arabicDigits(vol).let {
+    when (unit) { "lesson" -> "الدرس $it"; "issue" -> "العدد $it"; else -> "ج$it" }
 }
