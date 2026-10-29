@@ -3,6 +3,11 @@ main = "index.ts"
 compatibility_date = "2025-01-01"
 routes = [{ pattern = "search.arthurarchive.com", custom_domain = true }]
 
+# Run next to the D1 primary: one search is several sequential queries (one per rank tier plus
+# snippets), each ~19 ms in D1 but a full edge→D1 round trip when the Worker runs near the user.
+[placement]
+mode = "smart"
+
 [observability]
 enabled = true
 

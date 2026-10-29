@@ -7,7 +7,7 @@ const EVENTS = new Set(["open", "book", "search", "download", "audio"]);
 const ok = (s: string | null) => s !== null && s.length <= 100;
 
 export default {
-  fetch(request: Request, env: Env): Promise<Response> | Response {
+  async fetch(request: Request, env: Env, ctx: { waitUntil(p: Promise<unknown>): void }): Promise<Response> {
     const url = new URL(request.url);
     if (request.method === "POST" && url.pathname === "/api/hit") {
       const [e, d, v] = ["e", "d", "v"].map((k) => url.searchParams.get(k) ?? "");
@@ -16,6 +16,13 @@ export default {
       return new Response(null, { status: 204 });
     }
     if (request.method !== "GET") return new Response(null, { status: 405 });
-    return searchResponse(url);
+    // Worker responses skip Cloudflare's cache unless put there: a repeat query (same URL) is
+    // answered from this data center's cache, honouring the handler's cache-control (30 min).
+    const cache = (caches as unknown as { default: Cache }).default;
+    const hit = await cache.match(request);
+    if (hit) return hit;
+    const res = await searchResponse(url);
+    if (res.status === 200) ctx.waitUntil(cache.put(request, res.clone()));
+    return res;
   },
 };
