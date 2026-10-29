@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال الاشتقاق "
-status: draft
+status: published
 published_at: 2021-09-11
 source_type: question
 source_id: asyla-al-bwt--v168

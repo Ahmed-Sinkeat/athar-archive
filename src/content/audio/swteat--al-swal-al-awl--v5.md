@@ -1,6 +1,6 @@
 ---
 title: "الحلقة 12 س 1"
-status: draft
+status: published
 published_at: 2020-07-09
 source_type: question
 source_id: al-swal-al-awl--v5

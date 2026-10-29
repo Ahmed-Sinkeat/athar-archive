@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال داخلية الفضة "
-status: draft
+status: published
 published_at: 2021-08-18
 source_type: question
 source_id: jwab-swal-dakhlya-al-fda

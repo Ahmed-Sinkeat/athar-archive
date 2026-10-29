@@ -1,6 +1,6 @@
 ---
 title: "التسليمة"
-status: draft
+status: published
 published_at: 2020-02-21
 source_type: question
 source_id: al-tslyma-al-wahda

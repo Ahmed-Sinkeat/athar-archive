@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال الوديعة والبقشيش "
-status: draft
+status: published
 published_at: 2021-11-21
 source_type: question
 source_id: swteat-1032

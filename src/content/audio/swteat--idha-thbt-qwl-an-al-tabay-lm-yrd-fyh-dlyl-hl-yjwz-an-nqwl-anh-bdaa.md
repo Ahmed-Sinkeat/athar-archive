@@ -1,6 +1,6 @@
 ---
 title: "اللقاء السابع 7"
-status: draft
+status: published
 published_at: 2020-05-23
 source_type: question
 source_id: idha-thbt-qwl-an-al-tabay-lm-yrd-fyh-dlyl-hl-yjwz-an-nqwl-anh-bdaa

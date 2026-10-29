@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال الأنعام "
-status: draft
+status: published
 published_at: 2021-09-11
 source_type: question
 source_id: jwab-swal-al-anaam

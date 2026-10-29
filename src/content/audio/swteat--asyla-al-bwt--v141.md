@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال ابن حزم والقضاء وطوق الحمامة "
-status: draft
+status: published
 published_at: 2021-08-16
 source_type: question
 source_id: asyla-al-bwt--v141

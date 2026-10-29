@@ -1,6 +1,6 @@
 ---
 title: "طهارة الخمر"
-status: draft
+status: published
 published_at: 2020-04-01
 source_type: question
 source_id: njasa-al-khmr--v2

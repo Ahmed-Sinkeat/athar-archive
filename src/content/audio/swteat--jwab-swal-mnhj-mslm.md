@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال منهج مسلم "
-status: draft
+status: published
 published_at: 2021-09-09
 source_type: question
 source_id: jwab-swal-mnhj-mslm

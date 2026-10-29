@@ -1,6 +1,6 @@
 ---
 title: "النصيحة"
-status: draft
+status: published
 published_at: 2020-04-02
 source_type: question
 source_id: mahy-al-nsyha-al-ty-qylt-lk-wnfak-al-lh-bha

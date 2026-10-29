@@ -1,6 +1,6 @@
 ---
 title: "وثنية"
-status: draft
+status: published
 published_at: 2020-04-04
 source_type: question
 source_id: msala-wjwd-mmarsat-wthnya-fy-al-dyn-al-islamy

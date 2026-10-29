@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال شبهات الجهمية في العلو "
-status: draft
+status: published
 published_at: 2021-08-17
 source_type: question
 source_id: asyla-al-bwt--v150

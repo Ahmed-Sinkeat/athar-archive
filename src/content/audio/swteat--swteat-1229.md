@@ -1,6 +1,6 @@
 ---
 title: "مسألة رقم 1229"
-status: draft
+status: published
 published_at: 2026-02-04
 source_type: question
 source_id: swteat-1229

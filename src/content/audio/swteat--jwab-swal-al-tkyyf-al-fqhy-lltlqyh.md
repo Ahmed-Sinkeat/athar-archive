@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال التكييف الفقهي للتلقيح "
-status: draft
+status: published
 published_at: 2021-09-26
 source_type: question
 source_id: jwab-swal-al-tkyyf-al-fqhy-lltlqyh

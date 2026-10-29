@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال الألعاب الالكترونية "
-status: draft
+status: published
 published_at: 2021-07-27
 source_type: question
 source_id: asyla-al-bwt--v104

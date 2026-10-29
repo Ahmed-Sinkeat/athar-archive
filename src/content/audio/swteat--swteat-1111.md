@@ -1,6 +1,6 @@
 ---
 title: "مسألة رقم 1111"
-status: draft
+status: published
 published_at: 2022-02-21
 source_type: question
 source_id: swteat-1111

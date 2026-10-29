@@ -1,6 +1,6 @@
 ---
 title: "[ المجلس التاسع عشر ]\n\n استطراد حول تعلم الحديث وظهور منكري السنة والرفض في السو"
-status: draft
+status: published
 published_at: 2021-07-07
 source_type: question
 source_id: al-mjls-al-tasa-ashr--v3

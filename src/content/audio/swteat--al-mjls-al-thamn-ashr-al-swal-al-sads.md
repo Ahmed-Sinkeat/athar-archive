@@ -1,6 +1,6 @@
 ---
 title: "[ المجلس الثامن عشر ] السؤال السادس [ 6 ] \n\n\nأفضل الكتب في مسألة التحسين والتقبي"
-status: draft
+status: published
 published_at: 2021-07-06
 source_type: question
 source_id: al-mjls-al-thamn-ashr-al-swal-al-sads

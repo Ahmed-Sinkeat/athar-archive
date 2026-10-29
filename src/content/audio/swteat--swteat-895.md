@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال مغلطاي وابن تيمية "
-status: draft
+status: published
 published_at: 2021-10-24
 source_type: question
 source_id: swteat-895

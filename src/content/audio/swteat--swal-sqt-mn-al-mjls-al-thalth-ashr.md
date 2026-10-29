@@ -1,6 +1,6 @@
 ---
 title: "جواب من طلبت زوجته احضار تلفاز "
-status: draft
+status: published
 published_at: 2021-07-06
 source_type: question
 source_id: swal-sqt-mn-al-mjls-al-thalth-ashr

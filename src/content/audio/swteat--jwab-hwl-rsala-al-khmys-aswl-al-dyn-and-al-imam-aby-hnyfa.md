@@ -1,6 +1,6 @@
 ---
 title: "جواب حول رسالة الخميس أصول الدين عند الإمام أبي حنيفة "
-status: draft
+status: published
 published_at: 2021-08-24
 source_type: question
 source_id: jwab-hwl-rsala-al-khmys-aswl-al-dyn-and-al-imam-aby-hnyfa

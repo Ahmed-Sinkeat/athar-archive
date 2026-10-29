@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال ( لست لك بأم ) "
-status: draft
+status: published
 published_at: 2022-01-31
 source_type: question
 source_id: swteat-1088

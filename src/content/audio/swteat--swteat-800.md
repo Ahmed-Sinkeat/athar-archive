@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال قطع الأصبع الزائد "
-status: draft
+status: published
 published_at: 2021-10-05
 source_type: question
 source_id: swteat-800

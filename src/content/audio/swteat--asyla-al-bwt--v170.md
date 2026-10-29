@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال الفتاة المبتلاة "
-status: draft
+status: published
 published_at: 2021-09-15
 source_type: question
 source_id: asyla-al-bwt--v170

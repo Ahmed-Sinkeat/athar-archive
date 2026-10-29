@@ -1,6 +1,6 @@
 ---
 title: "اللغة"
-status: draft
+status: published
 published_at: 2020-04-03
 source_type: question
 source_id: lmadha-latshrh-alwm-al-lgha

@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال الاب الذي يسب الدين "
-status: draft
+status: published
 published_at: 2021-11-07
 source_type: question
 source_id: swteat-1011

@@ -1,6 +1,6 @@
 ---
 title: "توثيق عطية"
-status: draft
+status: published
 published_at: 2020-02-12
 source_type: question
 source_id: hl-wrd-twthyq-matbr-latya-abn-qys

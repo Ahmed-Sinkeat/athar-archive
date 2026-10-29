@@ -1,6 +1,6 @@
 ---
 title: "[ المجلس العشرون ]\n\nالسؤال : هل ابن القيم رحمه الله صوفي ؟ أم متأثر بالصوفية ؟\nك"
-status: draft
+status: published
 published_at: 2021-07-08
 source_type: question
 source_id: al-mjls-al-ashrwn--v8

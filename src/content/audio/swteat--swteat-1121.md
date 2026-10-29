@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال الزوج المفقود "
-status: draft
+status: published
 published_at: 2022-06-07
 source_type: question
 source_id: swteat-1121

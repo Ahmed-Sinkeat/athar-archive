@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال الفراغ العاطفي "
-status: draft
+status: published
 published_at: 2021-11-12
 source_type: question
 source_id: swteat-1020

@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال الأهل المتأثرين بالغرب "
-status: draft
+status: published
 published_at: 2021-09-11
 source_type: question
 source_id: asyla-al-bwt--v169

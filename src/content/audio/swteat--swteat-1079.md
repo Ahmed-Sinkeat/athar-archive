@@ -1,6 +1,6 @@
 ---
 title: "جواب طالب العلم المدخن "
-status: draft
+status: published
 published_at: 2022-01-20
 source_type: question
 source_id: swteat-1079

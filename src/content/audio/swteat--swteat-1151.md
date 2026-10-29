@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال قراءة الحائض للقرآن "
-status: draft
+status: published
 published_at: 2024-02-15
 source_type: question
 source_id: swteat-1151

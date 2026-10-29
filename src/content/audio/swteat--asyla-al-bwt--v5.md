@@ -1,6 +1,6 @@
 ---
 title: "جواب السؤال الثامن عن كلمة المجدد في الاقناع والمنتهى "
-status: draft
+status: published
 published_at: 2021-07-09
 source_type: question
 source_id: asyla-al-bwt--v5

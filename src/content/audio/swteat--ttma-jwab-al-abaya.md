@@ -1,6 +1,6 @@
 ---
 title: "تتمة جواب العباية "
-status: draft
+status: published
 published_at: 2021-09-21
 source_type: question
 source_id: ttma-jwab-al-abaya

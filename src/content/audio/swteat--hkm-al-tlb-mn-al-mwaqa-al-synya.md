@@ -1,6 +1,6 @@
 ---
 title: "برنامج [أسئلة عامة مع الشيخ عبدالله الخليفي ] الحلقة السابعة عشر"
-status: draft
+status: published
 published_at: 2021-04-04
 source_type: question
 source_id: hkm-al-tlb-mn-al-mwaqa-al-synya

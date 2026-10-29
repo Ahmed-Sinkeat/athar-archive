@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال الهاتف والمنكرات "
-status: draft
+status: published
 published_at: 2021-10-02
 source_type: question
 source_id: swteat-775

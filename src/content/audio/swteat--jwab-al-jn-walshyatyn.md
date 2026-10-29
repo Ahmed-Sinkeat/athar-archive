@@ -1,6 +1,6 @@
 ---
 title: "جواب الجن والشياطين "
-status: draft
+status: published
 published_at: 2021-08-17
 source_type: question
 source_id: jwab-al-jn-walshyatyn

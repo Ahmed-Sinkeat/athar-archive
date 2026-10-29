@@ -1,6 +1,6 @@
 ---
 title: "جواب تعليم اللغة الانجليزية "
-status: draft
+status: published
 published_at: 2021-07-12
 source_type: question
 source_id: asyla-al-bwt--v31

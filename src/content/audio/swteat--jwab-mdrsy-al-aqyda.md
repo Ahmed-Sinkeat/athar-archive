@@ -1,6 +1,6 @@
 ---
 title: "جواب مدرسي العقيدة "
-status: draft
+status: published
 published_at: 2021-09-18
 source_type: question
 source_id: jwab-mdrsy-al-aqyda

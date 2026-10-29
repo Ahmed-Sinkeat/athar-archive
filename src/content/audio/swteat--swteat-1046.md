@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال حكم النسويات "
-status: draft
+status: published
 published_at: 2021-12-28
 source_type: question
 source_id: swteat-1046

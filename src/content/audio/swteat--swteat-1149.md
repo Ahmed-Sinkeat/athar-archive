@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال الصيام في شعبان "
-status: draft
+status: published
 published_at: 2024-02-12
 source_type: question
 source_id: swteat-1149

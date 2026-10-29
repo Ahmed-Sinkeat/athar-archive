@@ -1,6 +1,6 @@
 ---
 title: "إباحة المعازف"
-status: draft
+status: published
 published_at: 2020-03-02
 source_type: question
 source_id: hl-mbyh-al-maazf-ykfr

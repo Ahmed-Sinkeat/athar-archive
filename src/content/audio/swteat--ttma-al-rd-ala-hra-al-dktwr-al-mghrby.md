@@ -1,6 +1,6 @@
 ---
 title: "تتمة الرد على هراء الدكتور المغربي "
-status: draft
+status: published
 published_at: 2021-07-24
 source_type: question
 source_id: ttma-al-rd-ala-hra-al-dktwr-al-mghrby

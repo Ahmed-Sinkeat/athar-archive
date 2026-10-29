@@ -1,6 +1,6 @@
 ---
 title: "جواب التعزير بالمال "
-status: draft
+status: published
 published_at: 2021-10-30
 source_type: question
 source_id: swteat-903

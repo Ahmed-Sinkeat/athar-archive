@@ -1,6 +1,6 @@
 ---
 title: "اللقاء الخامس 5"
-status: draft
+status: published
 published_at: 2020-04-28
 source_type: question
 source_id: malhl-ma-mn-ythawn-fy-al-slaa

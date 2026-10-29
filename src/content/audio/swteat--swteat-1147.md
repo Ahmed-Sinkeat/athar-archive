@@ -1,6 +1,6 @@
 ---
 title: "أخذ المديون من الزكاة … "
-status: draft
+status: published
 published_at: 2024-02-10
 source_type: question
 source_id: swteat-1147

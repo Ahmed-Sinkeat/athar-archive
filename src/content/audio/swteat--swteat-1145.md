@@ -1,6 +1,6 @@
 ---
 title: "سؤال التداوي بلحم الضفدع "
-status: draft
+status: published
 published_at: 2024-02-08
 source_type: question
 source_id: swteat-1145

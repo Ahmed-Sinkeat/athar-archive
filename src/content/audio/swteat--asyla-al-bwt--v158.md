@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال الكفر "
-status: draft
+status: published
 published_at: 2021-08-18
 source_type: question
 source_id: asyla-al-bwt--v158

@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال كتاب علوم الحديث وكتاب الفقه "
-status: draft
+status: published
 published_at: 2021-09-18
 source_type: question
 source_id: jwab-swal-ktab-alwm-al-hdyth-wktab-al-fqh

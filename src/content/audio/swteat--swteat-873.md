@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال المثنى بن حارثة "
-status: draft
+status: published
 published_at: 2021-10-18
 source_type: question
 source_id: swteat-873

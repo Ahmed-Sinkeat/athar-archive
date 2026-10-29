@@ -1,6 +1,6 @@
 ---
 title: "جواب السؤال الرابع عن سبيل الرشاد"
-status: draft
+status: published
 published_at: 2020-11-01
 source_type: question
 source_id: marayk-bktab-sbyl-al-rshad-ltqy-al-dyn-al-hlaly

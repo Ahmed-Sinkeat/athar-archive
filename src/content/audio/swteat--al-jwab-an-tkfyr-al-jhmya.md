@@ -1,6 +1,6 @@
 ---
 title: "اللقاء السادس 1"
-status: draft
+status: published
 published_at: 2020-05-07
 source_type: question
 source_id: al-jwab-an-tkfyr-al-jhmya

@@ -1,6 +1,6 @@
 ---
 title: "جواب في اسم الله الجواد …"
-status: draft
+status: published
 published_at: 2024-07-22
 source_type: question
 source_id: swteat-1167

@@ -1,6 +1,6 @@
 ---
 title: "السؤال الثاني:\nمالضابط في الحكم باسلام المرء ؟\n( مسألة الحكم على الناس )."
-status: draft
+status: published
 published_at: 2020-06-28
 source_type: question
 source_id: al-swal-al-thany--v3

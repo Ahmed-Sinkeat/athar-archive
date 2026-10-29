@@ -1,6 +1,6 @@
 ---
 title: "اللقاء الخامس1"
-status: draft
+status: published
 published_at: 2020-04-28
 source_type: question
 source_id: hl-ywjd-shrh-laqyda-al-razyyn-ghyr-shrh-al-tryfy-whl-shrh-al-tryfy-jyd

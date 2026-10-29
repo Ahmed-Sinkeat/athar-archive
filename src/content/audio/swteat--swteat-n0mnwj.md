@@ -1,6 +1,6 @@
 ---
 title: "سؤال الدروب شوبينغ "
-status: draft
+status: published
 published_at: 2021-07-08
 source_type: question
 source_id: swteat-n0mnwj

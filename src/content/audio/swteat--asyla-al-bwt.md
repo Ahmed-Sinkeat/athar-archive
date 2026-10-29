@@ -1,6 +1,6 @@
 ---
 title: "جواب السؤال الثالث والرابع حول هيئة الأرض والشمس والقمر "
-status: draft
+status: published
 published_at: 2021-07-08
 source_type: question
 source_id: asyla-al-bwt

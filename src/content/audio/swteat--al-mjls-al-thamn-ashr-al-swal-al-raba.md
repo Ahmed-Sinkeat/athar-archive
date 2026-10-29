@@ -1,6 +1,6 @@
 ---
 title: "[ المجلس الثامن عشر ] السؤال الرابع [ 4 ]\n\n\nذكرت مرة أن اسم الغزالي [ محمد الغزا"
-status: draft
+status: published
 published_at: 2021-07-06
 source_type: question
 source_id: al-mjls-al-thamn-ashr-al-swal-al-raba

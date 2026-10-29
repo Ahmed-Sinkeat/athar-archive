@@ -1,6 +1,6 @@
 ---
 title: "اللقاء السابع 6"
-status: draft
+status: published
 published_at: 2020-05-23
 source_type: question
 source_id: hl-qwl-al-shaby-idha-lm-yshthr-byn-al-shaba-hja

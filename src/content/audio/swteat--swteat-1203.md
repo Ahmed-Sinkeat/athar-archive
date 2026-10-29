@@ -1,6 +1,6 @@
 ---
 title: "مسألة رقم 1203"
-status: draft
+status: published
 published_at: 2025-01-14
 source_type: question
 source_id: swteat-1203

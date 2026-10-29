@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال الأسماء والصفات والألوهية"
-status: draft
+status: published
 published_at: 2021-09-09
 source_type: question
 source_id: jwab-swal-al-asma-walsfat-walalwhya

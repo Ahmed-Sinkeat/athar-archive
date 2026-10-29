@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال عن الذي لا يغار "
-status: draft
+status: published
 published_at: 2021-09-09
 source_type: question
 source_id: asyla-al-bwt--v166

@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال اجتماع يوم عرفة والسبت "
-status: draft
+status: published
 published_at: 2024-06-14
 source_type: question
 source_id: swteat-1165

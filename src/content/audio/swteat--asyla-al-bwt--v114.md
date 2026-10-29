@@ -1,6 +1,6 @@
 ---
 title: "جواب حول أسباب خطأ المذكورين في المناصحات "
-status: draft
+status: published
 published_at: 2021-08-05
 source_type: question
 source_id: asyla-al-bwt--v114

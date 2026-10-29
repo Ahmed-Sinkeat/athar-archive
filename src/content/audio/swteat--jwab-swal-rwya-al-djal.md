@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال رؤية الدجال "
-status: draft
+status: published
 published_at: 2021-08-24
 source_type: question
 source_id: jwab-swal-rwya-al-djal

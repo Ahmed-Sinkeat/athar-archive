@@ -1,6 +1,6 @@
 ---
 title: "الحلقة 16 س3"
-status: draft
+status: published
 published_at: 2020-10-13
 source_type: question
 source_id: al-swal-al-thalth--v6

@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال البنطال تحت الملابس "
-status: draft
+status: published
 published_at: 2022-01-20
 source_type: question
 source_id: swteat-1078

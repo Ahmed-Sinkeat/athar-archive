@@ -1,6 +1,6 @@
 ---
 title: "[ المجلس العشرون ]\n\nالسؤال : هل الله عزوجل يضل ويغوي ؟\nهل نثبتها لله مطلقا ؟ \nأم"
-status: draft
+status: published
 published_at: 2021-07-08
 source_type: question
 source_id: al-mjls-al-ashrwn--v5

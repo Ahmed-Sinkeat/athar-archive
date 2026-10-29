@@ -1,6 +1,6 @@
 ---
 title: "جواب القانطة بسبب الغيبة "
-status: draft
+status: published
 published_at: 2021-10-30
 source_type: question
 source_id: swteat-902

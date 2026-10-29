@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال ترك الوظيفة للزواج "
-status: draft
+status: published
 published_at: 2022-05-05
 source_type: question
 source_id: swteat-1117

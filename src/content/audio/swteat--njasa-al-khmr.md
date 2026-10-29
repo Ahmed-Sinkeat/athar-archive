@@ -1,6 +1,6 @@
 ---
 title: "الخمر"
-status: draft
+status: published
 published_at: 2020-02-21
 source_type: question
 source_id: njasa-al-khmr

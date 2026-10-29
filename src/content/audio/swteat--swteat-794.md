@@ -1,6 +1,6 @@
 ---
 title: "جواب رواية ضال مضل "
-status: draft
+status: published
 published_at: 2021-10-05
 source_type: question
 source_id: swteat-794

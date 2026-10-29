@@ -1,6 +1,6 @@
 ---
 title: "جواب السؤال السابع عشر عن تقويم المعاصرين "
-status: draft
+status: published
 published_at: 2021-07-10
 source_type: question
 source_id: asyla-al-bwt--v14

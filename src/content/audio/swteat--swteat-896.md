@@ -1,6 +1,6 @@
 ---
 title: "جواب التكبير بعد الصلاة "
-status: draft
+status: published
 published_at: 2021-10-24
 source_type: question
 source_id: swteat-896

@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال إنشاد الضالة والسؤال في المسجد "
-status: draft
+status: published
 published_at: 2021-09-26
 source_type: question
 source_id: jwab-swal-inshad-al-dala-walswal-fy-al-msjd

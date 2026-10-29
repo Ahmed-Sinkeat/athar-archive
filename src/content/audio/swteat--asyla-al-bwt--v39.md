@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال سماع الأموات ومعرفة احوال أهلهم "
-status: draft
+status: published
 published_at: 2021-07-13
 source_type: question
 source_id: asyla-al-bwt--v39

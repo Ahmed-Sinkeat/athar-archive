@@ -1,6 +1,6 @@
 ---
 title: "جواب دعوى رجوع ابن خزيمة "
-status: draft
+status: published
 published_at: 2021-11-02
 source_type: question
 source_id: swteat-984

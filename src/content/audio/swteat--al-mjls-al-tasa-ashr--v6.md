@@ -1,6 +1,6 @@
 ---
 title: "[ المجلس التاسع عشر ] \n\nالسؤال : قول الأئمة عن مالك أنه لا يروي إلا عن ثقة هل هذ"
-status: draft
+status: published
 published_at: 2021-07-07
 source_type: question
 source_id: al-mjls-al-tasa-ashr--v6

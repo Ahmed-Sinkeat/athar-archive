@@ -1,6 +1,6 @@
 ---
 title: "اللقاء السادس 4"
-status: draft
+status: published
 published_at: 2020-05-07
 source_type: question
 source_id: hl-al-khlaf-byn-al-ashaara-walmatrydya-fy-al-aswl-kthyr

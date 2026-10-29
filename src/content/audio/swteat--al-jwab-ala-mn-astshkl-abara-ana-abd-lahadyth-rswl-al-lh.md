@@ -1,6 +1,6 @@
 ---
 title: "العبودية"
-status: draft
+status: published
 published_at: 2020-03-17
 source_type: question
 source_id: al-jwab-ala-mn-astshkl-abara-ana-abd-lahadyth-rswl-al-lh

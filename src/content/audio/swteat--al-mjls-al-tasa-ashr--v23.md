@@ -1,6 +1,6 @@
 ---
 title: "[ المجلس التاسع عشر ]\n\nأفضل كتاب أصولي خالي أو شبه خالي من إدخالات المتكلمين ؟\n\n"
-status: draft
+status: published
 published_at: 2021-07-07
 source_type: question
 source_id: al-mjls-al-tasa-ashr--v23

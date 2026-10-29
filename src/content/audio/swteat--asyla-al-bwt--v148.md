@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال بسام جرار ومسير ومخير "
-status: draft
+status: published
 published_at: 2021-08-16
 source_type: question
 source_id: asyla-al-bwt--v148

@@ -1,6 +1,6 @@
 ---
 title: "[ أسئلة البوت @alkulifyQ_bot ]\n\n\nالسؤال :\nإن كان يوجد قدر مشترك في المعنى بين صف"
-status: draft
+status: published
 published_at: 2021-07-18
 source_type: question
 source_id: asyla-al-bwt--v65

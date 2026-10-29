@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال معتمد المذهب "
-status: draft
+status: published
 published_at: 2021-12-25
 source_type: question
 source_id: swteat-1038

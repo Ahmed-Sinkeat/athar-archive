@@ -1,6 +1,6 @@
 ---
 title: "اللقاء الخامس 10"
-status: draft
+status: published
 published_at: 2020-04-28
 source_type: question
 source_id: hl-ykhalf-al-shykh-al-imam-ahmd-fy-bad-al-msayl-al-fqhya

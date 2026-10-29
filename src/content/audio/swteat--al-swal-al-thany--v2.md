@@ -1,6 +1,6 @@
 ---
 title: "العاشر -2"
-status: draft
+status: published
 published_at: 2020-06-14
 source_type: question
 source_id: al-swal-al-thany--v2

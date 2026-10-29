@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال الطبيب "
-status: draft
+status: published
 published_at: 2022-09-20
 source_type: question
 source_id: swteat-1133

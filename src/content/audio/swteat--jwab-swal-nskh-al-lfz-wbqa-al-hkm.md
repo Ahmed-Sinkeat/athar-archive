@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال نسخ اللفظ وبقاء الحكم "
-status: draft
+status: published
 published_at: 2021-08-17
 source_type: question
 source_id: jwab-swal-nskh-al-lfz-wbqa-al-hkm

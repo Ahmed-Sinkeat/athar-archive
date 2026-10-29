@@ -1,6 +1,6 @@
 ---
 title: "تارك الصلاة"
-status: draft
+status: published
 published_at: 2020-02-11
 source_type: question
 source_id: hl-al-kfr-btrk-al-slaa-ykwn-btrkha-klya

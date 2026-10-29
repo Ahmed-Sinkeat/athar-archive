@@ -1,6 +1,6 @@
 ---
 title: "الخوارج"
-status: draft
+status: published
 published_at: 2020-02-13
 source_type: question
 source_id: masbb-ijaza-al-khwarj-limama-al-mraa

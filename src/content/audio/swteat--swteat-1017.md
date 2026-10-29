@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال تعظيم سيد قطب "
-status: draft
+status: published
 published_at: 2021-11-10
 source_type: question
 source_id: swteat-1017

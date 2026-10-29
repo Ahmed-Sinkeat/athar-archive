@@ -1,6 +1,6 @@
 ---
 title: "تتمة الجواب "
-status: draft
+status: published
 published_at: 2021-09-09
 source_type: question
 source_id: ttma-al-jwab--v2

@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال لجنة تصحيح الأحاديث "
-status: draft
+status: published
 published_at: 2021-09-21
 source_type: question
 source_id: jwab-swal-ljna-tshyh-al-ahadyth

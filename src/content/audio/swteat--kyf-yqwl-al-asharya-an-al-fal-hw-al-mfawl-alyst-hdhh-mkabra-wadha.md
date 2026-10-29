@@ -1,6 +1,6 @@
 ---
 title: "الفعل"
-status: draft
+status: published
 published_at: 2020-03-02
 source_type: question
 source_id: kyf-yqwl-al-asharya-an-al-fal-hw-al-mfawl-alyst-hdhh-mkabra-wadha

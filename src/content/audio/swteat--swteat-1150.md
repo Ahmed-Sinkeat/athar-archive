@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال أثر عن عمر أورده المطوع "
-status: draft
+status: published
 published_at: 2024-02-13
 source_type: question
 source_id: swteat-1150

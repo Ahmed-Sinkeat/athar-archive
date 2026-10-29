@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال ابي حنيفة وابن تيمية "
-status: draft
+status: published
 published_at: 2021-07-24
 source_type: question
 source_id: jwab-swty-fyh-ttma-wtnbyhat

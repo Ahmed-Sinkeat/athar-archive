@@ -1,6 +1,6 @@
 ---
 title: "سؤال 1"
-status: draft
+status: published
 published_at: 2021-04-02
 source_type: question
 source_id: lmadha-nbda-aba-thwr-wlanbda-abn-khzyma

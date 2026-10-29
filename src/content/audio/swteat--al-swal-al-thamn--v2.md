@@ -1,6 +1,6 @@
 ---
 title: "السؤال ٨ علم الكلام والفلسفة"
-status: draft
+status: published
 published_at: 2020-08-20
 source_type: question
 source_id: al-swal-al-thamn--v2

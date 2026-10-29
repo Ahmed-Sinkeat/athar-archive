@@ -1,6 +1,6 @@
 ---
 title: "[ المجلس العشرون ]\n\nالسؤال : ما السبيل للحافظ على اليقين عند الدعاء بدفع شر عظيم"
-status: draft
+status: published
 published_at: 2021-07-08
 source_type: question
 source_id: al-mjls-al-ashrwn--v3

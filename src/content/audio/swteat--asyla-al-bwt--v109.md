@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال ابن تيمية والأشعرية "
-status: draft
+status: published
 published_at: 2021-07-29
 source_type: question
 source_id: asyla-al-bwt--v109

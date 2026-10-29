@@ -1,6 +1,6 @@
 ---
 title: "مسألة رقم 1222"
-status: draft
+status: published
 published_at: 2025-07-16
 source_type: question
 source_id: swteat-1222

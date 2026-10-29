@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال تصوير الأشياء "
-status: draft
+status: published
 published_at: 2021-09-21
 source_type: question
 source_id: jwab-swal-tswyr-al-ashya

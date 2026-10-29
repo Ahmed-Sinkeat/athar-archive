@@ -1,6 +1,6 @@
 ---
 title: "جواب السؤال التاسع والعشرون عن اعتزال طلبة العلم "
-status: draft
+status: published
 published_at: 2021-07-10
 source_type: question
 source_id: asyla-al-bwt--v26

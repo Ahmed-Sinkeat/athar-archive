@@ -1,6 +1,6 @@
 ---
 title: "جواب السؤال الثالث عن أمر القتال"
-status: draft
+status: published
 published_at: 2020-10-27
 source_type: question
 source_id: hl-ykfr-mn-qatl-ma-al-kfar-dd-al-mslmyn-lghrd-dnywy

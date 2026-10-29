@@ -1,6 +1,6 @@
 ---
 title: "جواب أثر عمر في المنزلة عند الناس "
-status: draft
+status: published
 published_at: 2021-09-18
 source_type: question
 source_id: jwab-athr-amr-fy-al-mnzla-and-al-nas

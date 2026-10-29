@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال اضطراب الشخصية الحدية "
-status: draft
+status: published
 published_at: 2022-01-01
 source_type: question
 source_id: swteat-1062

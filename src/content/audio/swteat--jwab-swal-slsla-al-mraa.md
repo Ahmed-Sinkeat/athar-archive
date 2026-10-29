@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال سلسلة المرأة "
-status: draft
+status: published
 published_at: 2021-09-26
 source_type: question
 source_id: jwab-swal-slsla-al-mraa

@@ -1,6 +1,6 @@
 ---
 title: "الأشاعرة"
-status: draft
+status: published
 published_at: 2020-02-11
 source_type: question
 source_id: mahy-afdl-al-abhath-al-maasra-fy-kshf-hqyqa-al-asharya

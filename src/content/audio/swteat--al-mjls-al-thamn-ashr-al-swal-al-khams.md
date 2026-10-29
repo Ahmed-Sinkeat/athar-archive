@@ -1,6 +1,6 @@
 ---
 title: "[ المجلس الثامن عشر ] السؤال الخامس [ 5 ] \n\n\nسؤال عن لفظة الحدوث في قول الله تعا"
-status: draft
+status: published
 published_at: 2021-07-06
 source_type: question
 source_id: al-mjls-al-thamn-ashr-al-swal-al-khams

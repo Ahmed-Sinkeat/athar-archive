@@ -1,6 +1,6 @@
 ---
 title: "جواب شبهة التحريري …"
-status: draft
+status: published
 published_at: 2024-03-02
 source_type: question
 source_id: swteat-1159

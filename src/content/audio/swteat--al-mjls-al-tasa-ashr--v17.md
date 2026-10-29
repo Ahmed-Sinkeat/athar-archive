@@ -1,6 +1,6 @@
 ---
 title: "[ المجلس التاسع عشر ] \n\n\nالسؤال : هل معظم الأحناف مرجئة ؟\nولم سكت أئمة الدعوة عن"
-status: draft
+status: published
 published_at: 2021-07-07
 source_type: question
 source_id: al-mjls-al-tasa-ashr--v17

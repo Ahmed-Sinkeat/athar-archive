@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال آثار السلف في التفسير "
-status: draft
+status: published
 published_at: 2021-09-09
 source_type: question
 source_id: jwab-swal-athar-al-slf-fy-al-tfsyr

@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال الفوائت وقول الجمهور "
-status: draft
+status: published
 published_at: 2021-09-11
 source_type: question
 source_id: jwab-swal-al-fwayt-wqwl-al-jmhwr

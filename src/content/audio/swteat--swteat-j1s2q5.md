@@ -1,6 +1,6 @@
 ---
 title: "التاسع-9"
-status: draft
+status: published
 published_at: 2020-06-24
 source_type: question
 source_id: swteat-j1s2q5

@@ -1,6 +1,6 @@
 ---
 title: "السؤال الثاني عن الروض المربع "
-status: draft
+status: published
 published_at: 2021-07-08
 source_type: question
 source_id: swteat-t3d42z

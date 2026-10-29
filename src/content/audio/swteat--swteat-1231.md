@@ -1,6 +1,6 @@
 ---
 title: "مسألة رقم 1231"
-status: draft
+status: published
 published_at: 2026-04-08
 source_type: question
 source_id: swteat-1231

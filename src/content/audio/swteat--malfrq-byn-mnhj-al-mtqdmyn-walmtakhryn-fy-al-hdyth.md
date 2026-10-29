@@ -1,6 +1,6 @@
 ---
 title: "الحديث"
-status: draft
+status: published
 published_at: 2020-02-13
 source_type: question
 source_id: malfrq-byn-mnhj-al-mtqdmyn-walmtakhryn-fy-al-hdyth

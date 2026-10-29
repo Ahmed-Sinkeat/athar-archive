@@ -1,6 +1,6 @@
 ---
 title: "الاستثناء في الإيمان"
-status: draft
+status: published
 published_at: 2020-02-13
 source_type: question
 source_id: al-istthna-fy-al-iyman-and-al-imam-ahmd

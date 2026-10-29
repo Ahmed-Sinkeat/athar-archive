@@ -1,6 +1,6 @@
 ---
 title: "جواب تحميل كتب الجامعة من النت "
-status: draft
+status: published
 published_at: 2022-01-31
 source_type: question
 source_id: swteat-1091

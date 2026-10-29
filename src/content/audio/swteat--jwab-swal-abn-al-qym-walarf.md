@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال ابن القيم والعرف "
-status: draft
+status: published
 published_at: 2021-08-17
 source_type: question
 source_id: jwab-swal-abn-al-qym-walarf

@@ -1,6 +1,6 @@
 ---
 title: "كتاب التوحيد"
-status: draft
+status: published
 published_at: 2020-03-17
 source_type: question
 source_id: mahw-al-shrh-al-dhy-ykhtarh-al-shykh-lktab-al-twhyd-lykwn-shrha-matmda

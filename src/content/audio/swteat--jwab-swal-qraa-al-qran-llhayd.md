@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال قراءة القرآن للحائض"
-status: draft
+status: published
 published_at: 2021-08-23
 source_type: question
 source_id: jwab-swal-qraa-al-qran-llhayd

@@ -1,6 +1,6 @@
 ---
 title: "مسألة رقم 1221"
-status: draft
+status: published
 published_at: 2025-05-22
 source_type: question
 source_id: swteat-1221

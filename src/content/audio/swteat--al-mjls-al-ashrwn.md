@@ -1,6 +1,6 @@
 ---
 title: "[ المجلس العشرون ]\n\n- مقدمة المجلس\n\n - السؤال :  نتمنى من الشيخ يوشح لنا قضية ال"
-status: draft
+status: published
 published_at: 2021-07-08
 source_type: question
 source_id: al-mjls-al-ashrwn

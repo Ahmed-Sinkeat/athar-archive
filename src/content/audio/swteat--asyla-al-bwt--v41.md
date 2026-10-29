@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال حقوق الله "
-status: draft
+status: published
 published_at: 2021-07-14
 source_type: question
 source_id: asyla-al-bwt--v41

@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال الأب المتأثر بتكافؤ الأدلة "
-status: draft
+status: published
 published_at: 2024-02-01
 source_type: question
 source_id: swteat-1142

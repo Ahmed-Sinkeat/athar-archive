@@ -1,6 +1,6 @@
 ---
 title: "عودة البوت وسؤال عن كتابة في تكفير الجيوش "
-status: draft
+status: published
 published_at: 2024-01-25
 source_type: question
 source_id: swteat-1137

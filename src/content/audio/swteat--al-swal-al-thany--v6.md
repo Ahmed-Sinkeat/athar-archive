@@ -1,6 +1,6 @@
 ---
 title: "الخامس عشر السؤال ٢"
-status: draft
+status: published
 published_at: 2020-08-19
 source_type: question
 source_id: al-swal-al-thany--v6

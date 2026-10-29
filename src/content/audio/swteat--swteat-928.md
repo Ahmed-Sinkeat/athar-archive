@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال نشر المحادثات السرية "
-status: draft
+status: published
 published_at: 2021-11-01
 source_type: question
 source_id: swteat-928

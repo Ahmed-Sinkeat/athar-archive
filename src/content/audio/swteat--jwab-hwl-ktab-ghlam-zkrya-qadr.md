@@ -1,6 +1,6 @@
 ---
 title: "جواب حول كتاب غلام زكريا قادر "
-status: draft
+status: published
 published_at: 2021-09-09
 source_type: question
 source_id: jwab-hwl-ktab-ghlam-zkrya-qadr

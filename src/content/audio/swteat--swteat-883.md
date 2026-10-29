@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال الالباني والوجه والكفين "
-status: draft
+status: published
 published_at: 2021-10-21
 source_type: question
 source_id: swteat-883

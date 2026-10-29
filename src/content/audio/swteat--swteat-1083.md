@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال إشكال في العلو "
-status: draft
+status: published
 published_at: 2022-01-24
 source_type: question
 source_id: swteat-1083

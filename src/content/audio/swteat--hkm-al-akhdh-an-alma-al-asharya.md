@@ -1,6 +1,6 @@
 ---
 title: "علماء الأشعرية"
-status: draft
+status: published
 published_at: 2020-02-11
 source_type: question
 source_id: hkm-al-akhdh-an-alma-al-asharya

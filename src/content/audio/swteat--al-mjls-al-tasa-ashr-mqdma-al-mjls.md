@@ -1,6 +1,6 @@
 ---
 title: "[ المجلس التاسع عشر ] مقدمة المجلس 👇"
-status: draft
+status: published
 published_at: 2021-07-07
 source_type: question
 source_id: al-mjls-al-tasa-ashr-mqdma-al-mjls

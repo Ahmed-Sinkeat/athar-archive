@@ -1,6 +1,6 @@
 ---
 title: "مسألة رقم 1175"
-status: draft
+status: published
 published_at: 2024-12-15
 source_type: question
 source_id: swteat-1175

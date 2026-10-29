@@ -1,6 +1,6 @@
 ---
 title: "كيف أطلب الفقه"
-status: draft
+status: published
 published_at: 2020-02-11
 source_type: question
 source_id: kyf-atlb-al-fqh

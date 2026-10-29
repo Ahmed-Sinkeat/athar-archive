@@ -1,6 +1,6 @@
 ---
 title: "العاذر"
-status: draft
+status: published
 published_at: 2020-02-11
 source_type: question
 source_id: mn-lm-ykfr-al-mshrkyn

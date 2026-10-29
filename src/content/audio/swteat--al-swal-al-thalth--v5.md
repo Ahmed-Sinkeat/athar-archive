@@ -1,6 +1,6 @@
 ---
 title: "الحلقة ١٥ السؤال ٣"
-status: draft
+status: published
 published_at: 2020-08-19
 source_type: question
 source_id: al-swal-al-thalth--v5

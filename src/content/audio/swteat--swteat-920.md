@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال وسوسة الشيطان في النظر "
-status: draft
+status: published
 published_at: 2021-11-01
 source_type: question
 source_id: swteat-920

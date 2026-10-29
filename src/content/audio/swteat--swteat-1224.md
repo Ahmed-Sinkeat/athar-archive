@@ -1,6 +1,6 @@
 ---
 title: "مسألة رقم 1224"
-status: draft
+status: published
 published_at: 2025-08-06
 source_type: question
 source_id: swteat-1224

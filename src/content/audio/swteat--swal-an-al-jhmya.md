@@ -1,6 +1,6 @@
 ---
 title: "اللقاء السابع 1"
-status: draft
+status: published
 published_at: 2020-05-14
 source_type: question
 source_id: swal-an-al-jhmya

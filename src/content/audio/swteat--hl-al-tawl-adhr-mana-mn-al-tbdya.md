@@ -1,6 +1,6 @@
 ---
 title: "جواب السؤال السادس عن التبديع"
-status: draft
+status: published
 published_at: 2020-11-01
 source_type: question
 source_id: hl-al-tawl-adhr-mana-mn-al-tbdya

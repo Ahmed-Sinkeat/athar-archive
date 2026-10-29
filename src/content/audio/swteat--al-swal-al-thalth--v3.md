@@ -1,6 +1,6 @@
 ---
 title: "السؤال الثالث:\nهل طاعة الزوجة لزوجها واجبة ؟"
-status: draft
+status: published
 published_at: 2020-06-28
 source_type: question
 source_id: al-swal-al-thalth--v3

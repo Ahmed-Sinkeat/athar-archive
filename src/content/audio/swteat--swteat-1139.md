@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال حديث ( أفيكم وجرة ) "
-status: draft
+status: published
 published_at: 2024-01-28
 source_type: question
 source_id: swteat-1139

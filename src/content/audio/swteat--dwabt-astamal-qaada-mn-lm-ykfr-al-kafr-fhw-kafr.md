@@ -1,6 +1,6 @@
 ---
 title: "حدود استعمال"
-status: draft
+status: published
 published_at: 2020-02-16
 source_type: question
 source_id: dwabt-astamal-qaada-mn-lm-ykfr-al-kafr-fhw-kafr

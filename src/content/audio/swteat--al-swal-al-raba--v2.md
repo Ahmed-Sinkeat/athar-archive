@@ -1,6 +1,6 @@
 ---
 title: "العاشر-4"
-status: draft
+status: published
 published_at: 2020-06-19
 source_type: question
 source_id: al-swal-al-raba--v2

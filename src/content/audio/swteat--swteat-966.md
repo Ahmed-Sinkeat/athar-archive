@@ -1,6 +1,6 @@
 ---
 title: "جواب رواية لقاء الخضر بعمر بن عبد العزيز "
-status: draft
+status: published
 published_at: 2021-11-02
 source_type: question
 source_id: swteat-966

@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال الرياضة في المسجد "
-status: draft
+status: published
 published_at: 2024-02-05
 source_type: question
 source_id: swteat-1143

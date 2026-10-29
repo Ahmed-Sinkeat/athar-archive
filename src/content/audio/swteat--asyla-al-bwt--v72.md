@@ -1,6 +1,6 @@
 ---
 title: "جواب فوائد البنوك "
-status: draft
+status: published
 published_at: 2021-07-23
 source_type: question
 source_id: asyla-al-bwt--v72

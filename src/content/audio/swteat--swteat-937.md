@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال الخوف من الزواج "
-status: draft
+status: published
 published_at: 2021-11-01
 source_type: question
 source_id: swteat-937

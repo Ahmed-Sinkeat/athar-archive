@@ -1,6 +1,6 @@
 ---
 title: "الحلقة ١٥ س ٤"
-status: draft
+status: published
 published_at: 2020-08-19
 source_type: question
 source_id: al-swal-al-raba--v4

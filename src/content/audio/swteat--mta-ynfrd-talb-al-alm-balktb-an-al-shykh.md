@@ -1,6 +1,6 @@
 ---
 title: "طالب العلم"
-status: draft
+status: published
 published_at: 2020-02-12
 source_type: question
 source_id: mta-ynfrd-talb-al-alm-balktb-an-al-shykh

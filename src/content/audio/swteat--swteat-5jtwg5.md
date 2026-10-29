@@ -1,6 +1,6 @@
 ---
 title: "جواب السؤال الثلاثون عن عودة الأمة للدين "
-status: draft
+status: published
 published_at: 2021-07-08
 source_type: question
 source_id: swteat-5jtwg5

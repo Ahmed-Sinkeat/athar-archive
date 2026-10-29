@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال تعدد الألفاظ في الحديث"
-status: draft
+status: published
 published_at: 2021-09-09
 source_type: question
 source_id: jwab-swal-tadd-al-alfaz-fy-al-hdyth

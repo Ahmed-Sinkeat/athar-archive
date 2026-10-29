@@ -1,6 +1,6 @@
 ---
 title: "جواب السؤال الخامس عن التلذذ بالعبادة"
-status: draft
+status: published
 published_at: 2020-11-01
 source_type: question
 source_id: kyf-nsl-ila-mrhla-al-tdbr-waltldhdh-athna-qraa-al-qran

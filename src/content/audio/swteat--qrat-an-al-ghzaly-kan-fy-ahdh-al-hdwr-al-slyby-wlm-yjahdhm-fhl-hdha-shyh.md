@@ -1,6 +1,6 @@
 ---
 title: "الغزالي"
-status: draft
+status: published
 published_at: 2020-04-28
 source_type: question
 source_id: qrat-an-al-ghzaly-kan-fy-ahdh-al-hdwr-al-slyby-wlm-yjahdhm-fhl-hdha-shyh

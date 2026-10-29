@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال الذي يريد أن يقتل والده "
-status: draft
+status: published
 published_at: 2021-11-07
 source_type: question
 source_id: swteat-1006

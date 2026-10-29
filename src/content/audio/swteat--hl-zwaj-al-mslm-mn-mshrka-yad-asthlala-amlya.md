@@ -1,6 +1,6 @@
 ---
 title: "الزواج من مشركة"
-status: draft
+status: published
 published_at: 2020-03-27
 source_type: question
 source_id: hl-zwaj-al-mslm-mn-mshrka-yad-asthlala-amlya

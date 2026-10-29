@@ -1,6 +1,6 @@
 ---
 title: "الصوفية"
-status: draft
+status: published
 published_at: 2020-03-02
 source_type: question
 source_id: hl-ntlb-al-alm-and-al-swfya

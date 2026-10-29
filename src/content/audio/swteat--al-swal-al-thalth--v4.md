@@ -1,6 +1,6 @@
 ---
 title: "الحلقة 12 سؤال 3 تام"
-status: draft
+status: published
 published_at: 2020-07-09
 source_type: question
 source_id: al-swal-al-thalth--v4

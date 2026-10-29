@@ -1,6 +1,6 @@
 ---
 title: "حرقوني"
-status: draft
+status: published
 published_at: 2020-04-01
 source_type: question
 source_id: maltwjyh-fy-hdyth-al-dhy-qal-lahlh-hrqwny

@@ -1,6 +1,6 @@
 ---
 title: "مسألة رقم 1174"
-status: draft
+status: published
 published_at: 2024-11-29
 source_type: question
 source_id: swteat-1174

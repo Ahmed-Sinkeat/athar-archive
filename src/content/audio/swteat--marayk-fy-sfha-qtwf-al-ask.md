@@ -1,6 +1,6 @@
 ---
 title: "قطوف"
-status: draft
+status: published
 published_at: 2020-04-02
 source_type: question
 source_id: marayk-fy-sfha-qtwf-al-ask

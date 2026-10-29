@@ -1,6 +1,6 @@
 ---
 title: "اللقاء ١٣ سؤال ١"
-status: draft
+status: published
 published_at: 2020-08-19
 source_type: question
 source_id: al-swal-al-awl--v7

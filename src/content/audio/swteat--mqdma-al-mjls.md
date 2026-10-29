@@ -1,6 +1,6 @@
 ---
 title: "مقدمة المجلس 👇"
-status: draft
+status: published
 published_at: 2021-07-06
 source_type: question
 source_id: mqdma-al-mjls

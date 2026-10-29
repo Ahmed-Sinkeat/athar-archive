@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال التفسير زيادة على السلف "
-status: draft
+status: published
 published_at: 2021-07-24
 source_type: question
 source_id: asyla-al-bwt--v96

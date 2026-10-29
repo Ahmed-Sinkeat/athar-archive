@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال سماع الأصمعي من الثوري"
-status: draft
+status: published
 published_at: 2021-10-09
 source_type: question
 source_id: swteat-822

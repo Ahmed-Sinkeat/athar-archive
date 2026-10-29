@@ -1,6 +1,6 @@
 ---
 title: "حلقة 16س1"
-status: draft
+status: published
 published_at: 2020-10-08
 source_type: question
 source_id: al-swal-al-awl--v8

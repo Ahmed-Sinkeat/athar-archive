@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال المسح على الجورب "
-status: draft
+status: published
 published_at: 2021-09-21
 source_type: question
 source_id: asyla-al-bwt--v174

@@ -1,6 +1,6 @@
 ---
 title: "العقيقة"
-status: draft
+status: published
 published_at: 2020-04-04
 source_type: question
 source_id: lmadha-aqyqa-al-bnt-shaa-walwld-shatyn

@@ -1,6 +1,6 @@
 ---
 title: "المال"
-status: draft
+status: published
 published_at: 2020-03-27
 source_type: question
 source_id: zkaa-al-mal

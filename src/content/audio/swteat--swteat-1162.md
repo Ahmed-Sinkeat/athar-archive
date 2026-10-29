@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال أثر عطاء في فضل السجدة وتبارك "
-status: draft
+status: published
 published_at: 2024-03-05
 source_type: question
 source_id: swteat-1162

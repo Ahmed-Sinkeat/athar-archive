@@ -1,6 +1,6 @@
 ---
 title: "وقفة مع نص إزالة الوحشة …"
-status: draft
+status: published
 published_at: 2024-07-20
 source_type: question
 source_id: swteat-1166

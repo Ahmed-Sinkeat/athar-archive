@@ -1,6 +1,6 @@
 ---
 title: "لقاء [ أسئلة عامة مع الشيخ عبدالله الخليفي ] تتمة للحلقة الثالثة…"
-status: draft
+status: published
 published_at: 2020-08-15
 source_type: question
 source_id: ttma-llhlqa

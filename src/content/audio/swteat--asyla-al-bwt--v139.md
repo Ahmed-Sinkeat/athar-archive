@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال عقيدة الصنعاني والشوكاني "
-status: draft
+status: published
 published_at: 2021-08-16
 source_type: question
 source_id: asyla-al-bwt--v139

@@ -1,6 +1,6 @@
 ---
 title: "اللقاء السادس 2"
-status: draft
+status: published
 published_at: 2020-05-07
 source_type: question
 source_id: hkm-al-aada-al-srya

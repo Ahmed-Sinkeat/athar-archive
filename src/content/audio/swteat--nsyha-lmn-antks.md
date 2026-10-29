@@ -1,6 +1,6 @@
 ---
 title: "الانتكاس"
-status: draft
+status: published
 published_at: 2020-04-02
 source_type: question
 source_id: nsyha-lmn-antks

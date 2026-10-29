@@ -1,6 +1,6 @@
 ---
 title: "اللقاء السابع 3"
-status: draft
+status: published
 published_at: 2020-05-14
 source_type: question
 source_id: twdyh-aqyda-abn-abdalbr-fy-al-shaba

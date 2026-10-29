@@ -1,6 +1,6 @@
 ---
 title: "جواب كيف يستحضر الطبيب النية "
-status: draft
+status: published
 published_at: 2021-11-01
 source_type: question
 source_id: swteat-941

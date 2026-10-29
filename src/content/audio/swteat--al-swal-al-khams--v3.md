@@ -1,6 +1,6 @@
 ---
 title: "الحلقة الثانية عشرة __5"
-status: draft
+status: published
 published_at: 2020-07-09
 source_type: question
 source_id: al-swal-al-khams--v3

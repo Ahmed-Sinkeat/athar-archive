@@ -1,6 +1,6 @@
 ---
 title: "[ المجلس العشرون ]\n\nالسؤال : هل صفة الجلوس ثابتة لله عزوجل ؟\n\nالجواب 👇"
-status: draft
+status: published
 published_at: 2021-07-08
 source_type: question
 source_id: al-mjls-al-ashrwn--v12

@@ -1,6 +1,6 @@
 ---
 title: "اللقاء السادس 7"
-status: draft
+status: published
 published_at: 2020-05-07
 source_type: question
 source_id: hl-hnak-ktb-tnshwn-bha-fy-al-hakmya-wnwaqd-al-islam

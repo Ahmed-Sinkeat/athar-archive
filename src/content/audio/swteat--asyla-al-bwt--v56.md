@@ -1,6 +1,6 @@
 ---
 title: "سؤال الأصدقاء الضالين"
-status: draft
+status: published
 published_at: 2021-07-18
 source_type: question
 source_id: asyla-al-bwt--v56

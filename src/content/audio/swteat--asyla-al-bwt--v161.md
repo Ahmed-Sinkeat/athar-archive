@@ -1,6 +1,6 @@
 ---
 title: "جواب المتخوف من الزواج في هذا الزمن "
-status: draft
+status: published
 published_at: 2021-08-25
 source_type: question
 source_id: asyla-al-bwt--v161

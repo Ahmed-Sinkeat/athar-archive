@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال كتاب ذم الكلام "
-status: draft
+status: published
 published_at: 2021-10-09
 source_type: question
 source_id: swteat-827

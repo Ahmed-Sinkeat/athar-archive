@@ -1,6 +1,6 @@
 ---
 title: "المسانيد"
-status: draft
+status: published
 published_at: 2020-03-02
 source_type: question
 source_id: maldhy-nstfydh-mn-asanyd-al-tfasyr-al-dayfa-kalawfyyn-walsdy-al-kbyr-walsghyr

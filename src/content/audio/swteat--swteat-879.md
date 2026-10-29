@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال كتب اشراط الساعة "
-status: draft
+status: published
 published_at: 2021-10-21
 source_type: question
 source_id: swteat-879

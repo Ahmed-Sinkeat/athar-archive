@@ -1,6 +1,6 @@
 ---
 title: "اللقاء السابع 2"
-status: draft
+status: published
 published_at: 2020-05-14
 source_type: question
 source_id: marayk-bktab-al-shykh-trky-blhmr

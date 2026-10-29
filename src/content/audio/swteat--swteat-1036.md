@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال مذهب ابن أبي ليلى في القرآن "
-status: draft
+status: published
 published_at: 2021-12-25
 source_type: question
 source_id: swteat-1036

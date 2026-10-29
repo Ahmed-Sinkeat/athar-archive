@@ -1,6 +1,6 @@
 ---
 title: "زكاة الراتب الشهري"
-status: draft
+status: published
 published_at: 2020-02-10
 source_type: question
 source_id: zkaa-al-mal-al-mstfad-al-ratb-al-shhry

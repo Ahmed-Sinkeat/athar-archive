@@ -1,6 +1,6 @@
 ---
 title: "اللقاء الخامس 9"
-status: draft
+status: published
 published_at: 2020-04-28
 source_type: question
 source_id: hl-aya-laikrah-fy-al-dyn

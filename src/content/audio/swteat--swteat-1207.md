@@ -1,6 +1,6 @@
 ---
 title: "مسألة رقم 1207"
-status: draft
+status: published
 published_at: 2025-01-17
 source_type: question
 source_id: swteat-1207

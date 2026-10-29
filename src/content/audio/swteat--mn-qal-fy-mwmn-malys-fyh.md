@@ -1,6 +1,6 @@
 ---
 title: "٣٠"
-status: draft
+status: published
 published_at: 2020-02-13
 source_type: question
 source_id: mn-qal-fy-mwmn-malys-fyh

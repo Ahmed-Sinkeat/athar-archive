@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال الرسومية والطلب "
-status: draft
+status: published
 published_at: 2022-01-16
 source_type: question
 source_id: swteat-1067

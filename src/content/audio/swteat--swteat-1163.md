@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال أثر ( هذا نعل نعلو به ) "
-status: draft
+status: published
 published_at: 2024-03-08
 source_type: question
 source_id: swteat-1163

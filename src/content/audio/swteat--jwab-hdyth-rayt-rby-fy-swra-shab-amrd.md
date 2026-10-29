@@ -1,6 +1,6 @@
 ---
 title: "جواب السؤال الأول في حديث الصورة"
-status: draft
+status: published
 published_at: 2020-10-27
 source_type: question
 source_id: jwab-hdyth-rayt-rby-fy-swra-shab-amrd

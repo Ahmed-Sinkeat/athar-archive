@@ -1,6 +1,6 @@
 ---
 title: "جواب أسئلة التغذية "
-status: draft
+status: published
 published_at: 2022-05-13
 source_type: question
 source_id: swteat-1120

@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال الأهل الذين فيهم عسورة "
-status: draft
+status: published
 published_at: 2022-02-06
 source_type: question
 source_id: swteat-1096

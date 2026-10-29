@@ -1,6 +1,6 @@
 ---
 title: "المسح على الجوربين"
-status: draft
+status: published
 published_at: 2020-02-10
 source_type: question
 source_id: al-swal-al-awl

@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال الذي يريد قتل زوج اخته "
-status: draft
+status: published
 published_at: 2021-08-17
 source_type: question
 source_id: jwab-swal-al-dhy-yryd-qtl-zwj-akhth

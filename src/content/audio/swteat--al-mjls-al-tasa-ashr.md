@@ -1,6 +1,6 @@
 ---
 title: "[ المجلس التاسع عشر ] \n\nالسؤال :  بعض الأشاعرة يستدل بحديث [ لتفتحن القسطنطينة ف"
-status: draft
+status: published
 published_at: 2021-07-07
 source_type: question
 source_id: al-mjls-al-tasa-ashr

@@ -1,6 +1,6 @@
 ---
 title: "الخمر ٢"
-status: draft
+status: published
 published_at: 2020-02-22
 source_type: question
 source_id: al-khmr-2

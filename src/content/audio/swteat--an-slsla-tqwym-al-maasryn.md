@@ -1,6 +1,6 @@
 ---
 title: "المعاصرين"
-status: draft
+status: published
 published_at: 2020-02-16
 source_type: question
 source_id: an-slsla-tqwym-al-maasryn

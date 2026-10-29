@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال المرأة عن الزواج الثاني"
-status: draft
+status: published
 published_at: 2021-09-09
 source_type: question
 source_id: asyla-al-bwt--v162

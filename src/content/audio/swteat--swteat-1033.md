@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال الحسن البخاري "
-status: draft
+status: published
 published_at: 2021-11-21
 source_type: question
 source_id: swteat-1033

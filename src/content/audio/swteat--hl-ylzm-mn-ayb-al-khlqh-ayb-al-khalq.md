@@ -1,6 +1,6 @@
 ---
 title: "خلق الله"
-status: draft
+status: published
 published_at: 2020-04-01
 source_type: question
 source_id: hl-ylzm-mn-ayb-al-khlqh-ayb-al-khalq

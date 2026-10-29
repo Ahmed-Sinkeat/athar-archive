@@ -1,6 +1,6 @@
 ---
 title: "تتمة جواب حقوق الله "
-status: draft
+status: published
 published_at: 2021-07-14
 source_type: question
 source_id: ttma-jwab-hqwq-al-lh

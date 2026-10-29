@@ -1,6 +1,6 @@
 ---
 title: "جواب السؤال العشرون عن كتاب قواعد "
-status: draft
+status: published
 published_at: 2021-07-10
 source_type: question
 source_id: asyla-al-bwt--v17

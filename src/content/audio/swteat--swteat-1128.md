@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال تقنيات السياحة "
-status: draft
+status: published
 published_at: 2022-07-06
 source_type: question
 source_id: swteat-1128

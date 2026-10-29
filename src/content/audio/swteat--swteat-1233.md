@@ -1,6 +1,6 @@
 ---
 title: "مسألة رقم 1233"
-status: draft
+status: published
 published_at: 2026-06-22
 source_type: question
 source_id: swteat-1233

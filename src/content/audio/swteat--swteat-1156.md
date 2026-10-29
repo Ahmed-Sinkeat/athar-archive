@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال التسبيحة في شعبان "
-status: draft
+status: published
 published_at: 2024-02-25
 source_type: question
 source_id: swteat-1156

@@ -1,6 +1,6 @@
 ---
 title: "سلس البول"
-status: draft
+status: published
 published_at: 2020-02-11
 source_type: question
 source_id: aaany-mn-sls-al-bwl

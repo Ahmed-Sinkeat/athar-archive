@@ -1,6 +1,6 @@
 ---
 title: "البوطي"
-status: draft
+status: published
 published_at: 2020-03-27
 source_type: question
 source_id: twdyh-laqyda-al-shykh-al-bwty

@@ -1,6 +1,6 @@
 ---
 title: "جواب كتاب العقيدة "
-status: draft
+status: published
 published_at: 2021-08-10
 source_type: question
 source_id: asyla-al-bwt--v134

@@ -1,6 +1,6 @@
 ---
 title: "الحلقة ١٥ السؤال ٧"
-status: draft
+status: published
 published_at: 2020-08-20
 source_type: question
 source_id: al-swal-al-saba--v3

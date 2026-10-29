@@ -1,6 +1,6 @@
 ---
 title: "الفتن"
-status: draft
+status: published
 published_at: 2020-03-02
 source_type: question
 source_id: ktab-al-ftn-lnaym-bn-hmad

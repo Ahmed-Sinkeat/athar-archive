@@ -1,6 +1,6 @@
 ---
 title: "النظر"
-status: draft
+status: published
 published_at: 2020-02-22
 source_type: question
 source_id: mahw-alaj-al-nzr-al-mhrm

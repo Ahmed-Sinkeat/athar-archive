@@ -1,6 +1,6 @@
 ---
 title: "[ المجلس العشرون ]\n\nسؤال : ليبرالي أو أشعري ينتسب لهم ولا يعرف معتقداتهم ما حكمه"
-status: draft
+status: published
 published_at: 2021-07-08
 source_type: question
 source_id: al-mjls-al-ashrwn--v11

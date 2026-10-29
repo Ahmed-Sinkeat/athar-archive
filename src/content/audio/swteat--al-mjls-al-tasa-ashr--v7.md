@@ -1,6 +1,6 @@
 ---
 title: "[ المجلس التاسع عشر ]\n\nالسؤال : بماذا تنصح من أراد أن يتعلم علم الفرائض ؟\n\n\nالجو"
-status: draft
+status: published
 published_at: 2021-07-07
 source_type: question
 source_id: al-mjls-al-tasa-ashr--v7

@@ -1,6 +1,6 @@
 ---
 title: "اللقاء السادس 3"
-status: draft
+status: published
 published_at: 2020-05-07
 source_type: question
 source_id: hl-lltbry-abara-an-al-lh-laykhlw-mnh-mkan-whl-tsh-hdhh-al-abara

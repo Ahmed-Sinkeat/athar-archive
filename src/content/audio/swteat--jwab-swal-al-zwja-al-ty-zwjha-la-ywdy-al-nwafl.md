@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال الزوجة التي زوجها لا يؤدي النوافل "
-status: draft
+status: published
 published_at: 2021-09-17
 source_type: question
 source_id: jwab-swal-al-zwja-al-ty-zwjha-la-ywdy-al-nwafl

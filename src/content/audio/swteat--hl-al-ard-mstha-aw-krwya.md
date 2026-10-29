@@ -1,6 +1,6 @@
 ---
 title: "اللقاء السابع 4"
-status: draft
+status: published
 published_at: 2020-05-23
 source_type: question
 source_id: hl-al-ard-mstha-aw-krwya

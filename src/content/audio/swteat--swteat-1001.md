@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال التشجيع على النقاب "
-status: draft
+status: published
 published_at: 2021-11-03
 source_type: question
 source_id: swteat-1001

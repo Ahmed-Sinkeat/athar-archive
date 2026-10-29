@@ -1,6 +1,6 @@
 ---
 title: "التسليمة ٢"
-status: draft
+status: published
 published_at: 2020-03-17
 source_type: question
 source_id: msala-al-tslyma-al-wahda

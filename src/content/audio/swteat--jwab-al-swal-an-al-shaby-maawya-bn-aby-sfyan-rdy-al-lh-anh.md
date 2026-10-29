@@ -1,6 +1,6 @@
 ---
 title: "جواب السؤال عن معاوية بن أبي سفيان"
-status: draft
+status: published
 published_at: 2020-10-27
 source_type: question
 source_id: jwab-al-swal-an-al-shaby-maawya-bn-aby-sfyan-rdy-al-lh-anh

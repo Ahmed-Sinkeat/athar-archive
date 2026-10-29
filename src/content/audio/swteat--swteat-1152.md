@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال عن حديث  أخذنا فألك من فيك … "
-status: draft
+status: published
 published_at: 2024-02-17
 source_type: question
 source_id: swteat-1152

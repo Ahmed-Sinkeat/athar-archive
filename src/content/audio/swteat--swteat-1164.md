@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال الاعتكاف والمدرسة "
-status: draft
+status: published
 published_at: 2024-03-29
 source_type: question
 source_id: swteat-1164

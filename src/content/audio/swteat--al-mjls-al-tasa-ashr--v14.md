@@ -1,6 +1,6 @@
 ---
 title: "[ المجلس التاسع عشر ] \n\n\nماهي مصادر السنة النبوية وطريقة إثباتها \n\n\nالجواب 👇"
-status: draft
+status: published
 published_at: 2021-07-07
 source_type: question
 source_id: al-mjls-al-tasa-ashr--v14

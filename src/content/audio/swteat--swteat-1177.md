@@ -1,6 +1,6 @@
 ---
 title: "مسألة رقم 1177"
-status: draft
+status: published
 published_at: 2025-01-05
 source_type: question
 source_id: swteat-1177

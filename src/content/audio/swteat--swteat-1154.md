@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال وهم الكمال "
-status: draft
+status: published
 published_at: 2024-02-23
 source_type: question
 source_id: swteat-1154

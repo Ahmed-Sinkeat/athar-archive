@@ -1,6 +1,6 @@
 ---
 title: "تعليق على كلام الذهبي الذي نقله شرقاوي "
-status: draft
+status: published
 published_at: 2024-02-11
 source_type: question
 source_id: swteat-1148

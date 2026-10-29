@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال الجمع في الضباب "
-status: draft
+status: published
 published_at: 2021-09-19
 source_type: question
 source_id: jwab-swal-al-jma-fy-al-dbab

@@ -1,6 +1,6 @@
 ---
 title: "[ المجلس الثامن عشر ] السؤال الثاني [ 2 ] \n\nمن كان متمكناً ومتأصلاً في عقيدة أهل"
-status: draft
+status: published
 published_at: 2021-07-06
 source_type: question
 source_id: al-mjls-al-thamn-ashr-al-swal-al-thany

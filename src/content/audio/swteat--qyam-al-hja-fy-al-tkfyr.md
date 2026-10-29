@@ -1,6 +1,6 @@
 ---
 title: "اللقاء السابع 5"
-status: draft
+status: published
 published_at: 2020-05-23
 source_type: question
 source_id: qyam-al-hja-fy-al-tkfyr

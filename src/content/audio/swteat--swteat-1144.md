@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال أذكار الوضوء "
-status: draft
+status: published
 published_at: 2024-02-07
 source_type: question
 source_id: swteat-1144

@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال داعية الاخوان وغير الداعية "
-status: draft
+status: published
 published_at: 2021-09-18
 source_type: question
 source_id: jwab-swal-daaya-al-akhwan-wghyr-al-daaya

@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال اختيار الزوج "
-status: draft
+status: published
 published_at: 2021-11-13
 source_type: question
 source_id: swteat-1022

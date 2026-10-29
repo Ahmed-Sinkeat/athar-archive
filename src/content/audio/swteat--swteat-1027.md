@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال دعوة المعرض "
-status: draft
+status: published
 published_at: 2021-11-18
 source_type: question
 source_id: swteat-1027

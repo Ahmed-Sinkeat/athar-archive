@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال ثريد الرافضي "
-status: draft
+status: published
 published_at: 2021-07-26
 source_type: question
 source_id: asyla-al-bwt--v98

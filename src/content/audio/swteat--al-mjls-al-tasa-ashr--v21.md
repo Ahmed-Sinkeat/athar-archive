@@ -1,6 +1,6 @@
 ---
 title: "[ المجلس التاسع عشر ]\n\nاستطراد حول المقال عن أسانيد التفسير ونقاش مع تلميذ المرد"
-status: draft
+status: published
 published_at: 2021-07-07
 source_type: question
 source_id: al-mjls-al-tasa-ashr--v21

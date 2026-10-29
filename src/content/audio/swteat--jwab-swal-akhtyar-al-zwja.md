@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال اختيار الزوجة "
-status: draft
+status: published
 published_at: 2021-09-18
 source_type: question
 source_id: jwab-swal-akhtyar-al-zwja

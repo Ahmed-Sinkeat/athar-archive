@@ -1,6 +1,6 @@
 ---
 title: "[ المجلس الثامن عشر ] السؤال الأول [ 1 ] \n\nقال الإمام أبو داود في رسالته لأهل مك"
-status: draft
+status: published
 published_at: 2021-07-06
 source_type: question
 source_id: al-mjls-al-thamn-ashr-al-swal-al-awl

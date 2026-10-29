@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال الاستطلاق والدية"
-status: draft
+status: published
 published_at: 2022-02-07
 source_type: question
 source_id: swteat-1106

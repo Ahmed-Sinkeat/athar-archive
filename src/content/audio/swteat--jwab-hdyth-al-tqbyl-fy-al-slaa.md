@@ -1,6 +1,6 @@
 ---
 title: "جواب حديث التقبيل في الصلاة "
-status: draft
+status: published
 published_at: 2021-08-24
 source_type: question
 source_id: jwab-hdyth-al-tqbyl-fy-al-slaa

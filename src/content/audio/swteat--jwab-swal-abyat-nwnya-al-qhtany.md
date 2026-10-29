@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال أبيات نونية القحطاني "
-status: draft
+status: published
 published_at: 2021-09-18
 source_type: question
 source_id: jwab-swal-abyat-nwnya-al-qhtany
