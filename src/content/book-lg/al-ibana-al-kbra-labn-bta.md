@@ -1,9 +1,11 @@
 ---
 title: "الإبانة الكبرى لابن بطة"
+edition: "طبعة أخرى"
+edition_of: al-ibana-al-kubra-ibn-batta-hamdan
 status: published
 published_at: 2026-07-28
 person: al-akbry-abn-bta
-kind: متن
+kind: كتاب
 authored_year: 387
 description: "الإبانة الكبرى لابن بطة، تأليف العكبري، ابن بطة (ت 0387هـ)"
 ---

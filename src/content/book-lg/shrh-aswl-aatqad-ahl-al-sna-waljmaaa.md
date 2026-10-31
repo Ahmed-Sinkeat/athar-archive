@@ -1,9 +1,11 @@
 ---
 title: "شرح أصول اعتقاد أهل السنة والجماعة"
+edition: "طبعة أخرى"
+edition_of: sharh-usul-itiqad-ahl-al-sunnah-lalakai-hamdan
 status: published
 published_at: 2026-07-28
 person: al-lalkayy
-kind: متن
+kind: كتاب
 authored_year: 418
 description: "شرح أصول اعتقاد أهل السنة والجماعة، تأليف اللالكائي (ت 0418هـ)"
 ---

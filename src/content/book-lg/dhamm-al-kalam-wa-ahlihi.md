@@ -6,6 +6,7 @@ person: al-harawi
 authored_year: 481
 topics: ["al-sunnah-wal-bidah"]
 edition: "الأولى، 1418هـ -1998م"
+edition_of: dhamm-al-kalam-wa-ahlihi-hamdan
 description: "بتحقيق عبد الرحمن عبد العزيز الشبل"
 ---
 ## مُقَدّمَة الْمُؤلف

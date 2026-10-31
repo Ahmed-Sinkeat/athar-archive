@@ -1,5 +1,7 @@
 ---
 title: "شرح السنة للبربهاري"
+edition: "طبعة أخرى"
+edition_of: sharh-al-sunnah-al-barbahari-hamdan
 status: published
 published_at: 2026-07-03
 person: al-barbahari

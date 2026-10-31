@@ -1,5 +1,7 @@
 ---
 title: "أخلاق العلماء"
+edition_of: akhlaq-al-ulama-ajurri
+edition: "تحقيق إسماعيل الأنصاري"
 status: published
 published_at: 2026-07-06
 person: al-ajurri

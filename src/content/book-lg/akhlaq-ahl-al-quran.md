@@ -1,5 +1,7 @@
 ---
 title: "أخلاق أهل القرآن"
+edition_of: akhlaq-hamalat-al-quran-ajurri
+edition: "تحقيق محمد عمرو عبد اللطيف"
 status: published
 published_at: 2026-07-06
 person: al-ajurri

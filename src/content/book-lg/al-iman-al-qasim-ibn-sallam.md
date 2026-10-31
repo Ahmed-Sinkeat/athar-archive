@@ -6,6 +6,7 @@ person: al-qasim-ibn-sallam
 authored_year: 224
 topics: ["al-iman"]
 edition: "الأولى، 1421هـ -2000م"
+edition_of: al-iman-abu-ubayd-hamdan
 description: "بتحقيق محمد نصر الدين الألباني"
 kind: كتاب
 ---

@@ -1,11 +1,11 @@
 ---
 title: "الإيمان للقاسم بن سلام"
-edition_of: al-iman-al-qasim-ibn-sallam
 edition: "تحقيق الألباني"
+edition_of: al-iman-abu-ubayd-hamdan
 status: published
 published_at: 2026-07-28
 person: al-qasim-ibn-sallam
-kind: متن
+kind: كتاب
 authored_year: 224
 description: "الإيمان للقاسم بن سلام - مخرجا، تأليف أبو عبيد القاسم بن سلام (ت 0224هـ)"
 ---
