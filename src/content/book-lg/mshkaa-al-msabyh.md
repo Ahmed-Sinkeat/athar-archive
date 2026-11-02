@@ -3,7 +3,7 @@ title: "مشكاة المصابيح"
 status: published
 published_at: 2026-07-28
 person: al-tbryzy-abw-abd-al-lh
-kind: متن
+kind: كتاب
 authored_year: 741
 description: "مشكاة المصابيح، تأليف التبريزي، أبو عبد الله (ت 0741هـ)"
 ---

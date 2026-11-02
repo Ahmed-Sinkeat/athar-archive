@@ -3,7 +3,7 @@ title: "رسالة إلى جار المسجد"
 status: published
 published_at: 2026-07-20
 person: azhry-ahmd-mhmwd
-kind: مرجع
+kind: كتاب
 topics: ["al-riqaq-wal-adhkar"]
 description: "رسالة إلى جار المسجد"
 ---

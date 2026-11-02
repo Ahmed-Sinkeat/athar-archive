@@ -3,7 +3,7 @@ title: "السراج الوهاج"
 status: published
 published_at: 2026-07-19
 person: mhmd-al-ghmrawy
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-shafii"]
 description: "السراج الوهاج"
 ---

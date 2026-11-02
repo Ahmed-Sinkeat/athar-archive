@@ -3,7 +3,7 @@ title: "سلسلة الآداب - المنجد"
 status: published
 published_at: 2026-07-20
 person: mhmd-salh-al-mnjd
-kind: مرجع
+kind: كتاب
 topics: ["al-riqaq-wal-adhkar"]
 description: "سلسلة الآداب - المنجد"
 ---

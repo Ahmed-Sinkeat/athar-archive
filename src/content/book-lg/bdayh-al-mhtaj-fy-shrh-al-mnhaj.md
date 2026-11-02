@@ -3,7 +3,7 @@ title: "بداية المحتاج في شرح المنهاج"
 status: published
 published_at: 2026-07-19
 person: bdr-al-dyn-abn-qady-shhbh
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-shafii"]
 description: "بداية المحتاج في شرح المنهاج"
 ---

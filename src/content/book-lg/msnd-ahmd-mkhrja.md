@@ -3,7 +3,7 @@ title: "مسند أحمد مخرجا"
 status: published
 published_at: 2026-07-29
 person: ahmad-ibn-hanbal
-kind: متن
+kind: كتاب
 authored_year: 241
 description: "مسند أحمد مخرجا، تأليف أحمد بن حنبل (ت 0241هـ)"
 ---

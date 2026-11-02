@@ -3,7 +3,7 @@ title: "فتح الوهاب بشرح منهج الطلاب"
 status: published
 published_at: 2026-07-19
 person: zkrya-al-ansary
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-shafii"]
 description: "فتح الوهاب بشرح منهج الطلاب"
 ---

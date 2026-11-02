@@ -3,7 +3,7 @@ title: "كونوا على الخير أعوانا"
 status: published
 published_at: 2026-07-20
 person: mhmd-salh-al-mnjd
-kind: مرجع
+kind: كتاب
 topics: ["al-riqaq-wal-adhkar"]
 description: "كونوا على الخير أعوانا"
 ---

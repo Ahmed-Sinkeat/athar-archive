@@ -3,7 +3,7 @@ title: "الخلاصة الفقهية على مذهب السادة المالك�
 status: published
 published_at: 2026-07-19
 person: mhmd-al-arby-al-qrwy-al-malky
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-maliki"]
 description: "الخلاصة الفقهية على مذهب السادة المالكية"
 ---

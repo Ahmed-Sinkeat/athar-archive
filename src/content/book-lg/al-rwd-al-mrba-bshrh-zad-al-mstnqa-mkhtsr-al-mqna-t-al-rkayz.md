@@ -3,7 +3,7 @@ title: "الروض المربع بشرح زاد المستنقع مختصر ال
 status: published
 published_at: 2026-07-20
 person: al-bhwty
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "الروض المربع بشرح زاد المستنقع مختصر المقنع ط الركائز"
 ---

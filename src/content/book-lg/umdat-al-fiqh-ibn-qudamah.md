@@ -3,7 +3,7 @@ title: "عمدة الفقه"
 status: published
 published_at: 2026-07-06
 person: ibn-qudamah
-kind: كتاب
+kind: متن
 topics: ["fiqh-hanbali"]
 authored_year: 620
 volumes: 1

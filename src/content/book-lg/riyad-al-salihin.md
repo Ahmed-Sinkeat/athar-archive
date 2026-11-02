@@ -3,7 +3,7 @@ title: "رياض الصالحين"
 status: published
 published_at: 2026-10-27
 person: al-nawawi
-kind: متن
+kind: كتاب
 topics: ["al-riqaq-wal-adhkar"]
 authored_year: 676
 description: "رياض الصالحين من كلام سيد المرسلين للنووي"

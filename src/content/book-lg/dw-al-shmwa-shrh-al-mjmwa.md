@@ -3,7 +3,7 @@ title: "ضوء الشموع شرح المجموع"
 status: published
 published_at: 2026-07-19
 person: mhmd-al-amyr-al-malky
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-maliki"]
 description: "ضوء الشموع شرح المجموع"
 ---

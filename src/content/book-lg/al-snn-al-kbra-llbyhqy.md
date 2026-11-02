@@ -5,7 +5,7 @@ edition: "تحقيق محمد عبد القادر عطا"
 status: published
 published_at: 2026-07-29
 person: abw-bkr-al-byhqy
-kind: متن
+kind: كتاب
 authored_year: 458
 description: "السنن الكبرى للبيهقي، تأليف أبو بكر البيهقي (ت 0458هـ)"
 ---

@@ -3,7 +3,7 @@ title: "ضعيف سنن الترمذي"
 status: published
 published_at: 2026-07-28
 person: nasr-al-dyn-al-albany
-kind: متن
+kind: كتاب
 authored_year: 1420
 description: "ضعيف سنن الترمذي، تأليف ناصر الدين الألباني (ت 1420هـ)"
 ---

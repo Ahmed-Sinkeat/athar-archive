@@ -3,7 +3,7 @@ title: "صحيح البخاري"
 status: published
 published_at: 2026-07-27
 person: al-bukhari
-kind: متن
+kind: كتاب
 authored_year: 256
 description: "صحيح البخاري، تأليف البخاري (ت 256هـ)"
 ---

@@ -3,7 +3,7 @@ title: "الأسئلة والأجوبة الفقهية"
 status: published
 published_at: 2026-07-20
 person: abd-al-azyz-al-slman
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "الأسئلة والأجوبة الفقهية"
 ---

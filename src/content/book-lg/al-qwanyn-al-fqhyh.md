@@ -3,7 +3,7 @@ title: "القوانين الفقهية"
 status: published
 published_at: 2026-07-19
 person: abn-jzy-al-klby
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-maliki"]
 description: "القوانين الفقهية"
 ---

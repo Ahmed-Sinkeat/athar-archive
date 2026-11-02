@@ -2,7 +2,7 @@
 title: "مذكرة أصول الفقه"
 status: published
 published_at: 2026-07-19
-kind: مرجع
+kind: كتاب
 topics: ["usul-al-fiqh"]
 description: "مذكرة تعليمية في أصول الفقه صادرة عن الجامعة الإسلامية بالمدينة المنورة"
 ---

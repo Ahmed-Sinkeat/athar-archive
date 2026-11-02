@@ -4,7 +4,7 @@ edition: "تحقيق مصطفى أبو الخير"
 status: published
 published_at: 2026-07-28
 person: ibn-wahb
-kind: متن
+kind: كتاب
 authored_year: 197
 description: "الجامع لابن وهب ت مصطفى أبو الخير، تأليف ابن وهب (ت 0197هـ)"
 ---

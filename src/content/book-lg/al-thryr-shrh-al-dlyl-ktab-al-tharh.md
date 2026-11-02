@@ -3,7 +3,7 @@ title: "التحرير شرح الدليل - كتاب الطهارة"
 status: published
 published_at: 2026-07-20
 person: abw-al-mnthr-al-mnyawy
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "التحرير شرح الدليل - كتاب الطهارة"
 ---

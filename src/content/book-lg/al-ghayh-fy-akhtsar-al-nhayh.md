@@ -3,7 +3,7 @@ title: "الغاية في اختصار النهاية"
 status: published
 published_at: 2026-07-19
 person: az-al-dyn-bn-abd-al-slam
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-shafii"]
 description: "الغاية في اختصار النهاية"
 ---

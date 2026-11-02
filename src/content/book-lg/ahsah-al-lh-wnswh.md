@@ -3,7 +3,7 @@ title: "أحصاه الله ونسوه"
 status: published
 published_at: 2026-07-20
 person: abd-al-mlk-bn-qasm
-kind: مرجع
+kind: كتاب
 topics: ["al-riqaq-wal-adhkar"]
 description: "أحصاه الله ونسوه"
 ---

@@ -3,7 +3,7 @@ title: "الشامل في فقه الإمام مالك"
 status: published
 published_at: 2026-07-19
 person: bhram-al-dmyry
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-maliki"]
 description: "الشامل في فقه الإمام مالك"
 ---

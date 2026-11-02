@@ -4,7 +4,7 @@ edition: "تحقيق الأرنؤوط"
 status: published
 published_at: 2026-07-27
 person: abu-dawud-al-sijistani
-kind: متن
+kind: كتاب
 authored_year: 275
 description: "سنن أبي داود ت الأرنؤوط، تأليف السجستاني، أبو داود (ت 0275هـ)"
 ---

@@ -3,7 +3,7 @@ title: "جزء في مسائل عن أبي عبد الله أحمد بن حنب�
 status: published
 published_at: 2026-07-19
 person: al-bghwy-abw-al-qasm
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "جزء في مسائل عن أبي عبد الله أحمد بن حنبل"
 ---

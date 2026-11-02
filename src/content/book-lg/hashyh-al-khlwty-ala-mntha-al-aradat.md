@@ -3,7 +3,7 @@ title: "حاشية الخلوتي على منتهى الإرادات"
 status: published
 published_at: 2026-07-20
 person: al-khlwty
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "حاشية الخلوتي على منتهى الإرادات"
 ---

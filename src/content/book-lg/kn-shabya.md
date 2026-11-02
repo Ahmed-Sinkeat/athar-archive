@@ -3,7 +3,7 @@ title: "كن صحابيا"
 status: published
 published_at: 2026-07-20
 person: raghb-al-srjany
-kind: مرجع
+kind: كتاب
 topics: ["al-riqaq-wal-adhkar"]
 description: "كن صحابيا"
 ---

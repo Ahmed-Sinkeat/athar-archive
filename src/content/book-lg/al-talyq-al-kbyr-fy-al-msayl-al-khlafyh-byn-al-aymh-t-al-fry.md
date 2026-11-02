@@ -3,7 +3,7 @@ title: "التعليق الكبير في المسائل الخلافية بين 
 status: published
 published_at: 2026-07-19
 person: abw-yala-abn-al-fra
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "التعليق الكبير في المسائل الخلافية بين الأئمة ت الفريح"
 ---

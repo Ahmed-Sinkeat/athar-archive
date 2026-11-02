@@ -3,7 +3,7 @@ title: "من عجائب الدعاء - الجزء الثاني"
 status: published
 published_at: 2026-07-20
 person: al-rbay-khald
-kind: مرجع
+kind: كتاب
 topics: ["al-riqaq-wal-adhkar"]
 description: "من عجائب الدعاء - الجزء الثاني"
 ---

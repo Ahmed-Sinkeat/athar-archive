@@ -3,7 +3,7 @@ title: "تفسير جزء عم للشيخ مساعد الطيار"
 status: draft
 published_at: 2026-07-18
 person: musaid-al-tayyar
-kind: مرجع
+kind: كتاب
 topics: ["tafsir-al-quran"]
 ---
 ## المقدمة

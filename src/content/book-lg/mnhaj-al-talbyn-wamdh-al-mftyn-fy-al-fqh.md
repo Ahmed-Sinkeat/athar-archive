@@ -3,7 +3,7 @@ title: "منهاج الطالبين وعمدة المفتين في الفقه"
 status: published
 published_at: 2026-07-19
 person: al-nawawi
-kind: مرجع
+kind: متن
 topics: ["fiqh-shafii"]
 description: "منهاج الطالبين وعمدة المفتين في الفقه"
 ---

@@ -3,7 +3,7 @@ title: "النكت والفوائد السنية على مشكل المحرر"
 status: published
 published_at: 2026-07-20
 person: abn-mflh-brhan-al-dyn
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "النكت والفوائد السنية على مشكل المحرر"
 ---

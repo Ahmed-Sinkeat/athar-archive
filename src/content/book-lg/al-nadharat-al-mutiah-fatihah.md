@@ -3,7 +3,7 @@ title: "النظرات الماتعة في سورة الفاتحة"
 status: draft
 published_at: 2026-07-18
 person: marzouq-al-zahrani
-kind: مرجع
+kind: كتاب
 topics: ["tafsir-al-quran"]
 ---
 <!-- card -->

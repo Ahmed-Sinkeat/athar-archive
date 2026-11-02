@@ -3,7 +3,7 @@ title: "كتاب فيه لغات القرآن"
 status: published
 published_at: 2026-07-16
 person: al-farra
-kind: مرجع
+kind: كتاب
 topics: ["ulum-al-quran"]
 authored_year: 207
 description: "كتاب في بيان اللغات واللهجات العربية التي نزل بها القرآن الكريم، لأبي زكريا يحيى بن زياد الفراء"

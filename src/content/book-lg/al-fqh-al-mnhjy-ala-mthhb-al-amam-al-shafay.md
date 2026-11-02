@@ -3,7 +3,7 @@ title: "الفقه المنهجي على مذهب الإمام الشافعي"
 status: published
 published_at: 2026-07-19
 person: majmuah-min-al-muallifin
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-shafii"]
 description: "الفقه المنهجي على مذهب الإمام الشافعي"
 ---

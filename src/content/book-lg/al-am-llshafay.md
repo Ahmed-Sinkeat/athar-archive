@@ -3,7 +3,7 @@ title: "الأم للشافعي"
 status: published
 published_at: 2026-07-19
 person: al-shafay
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-shafii"]
 description: "الأم للشافعي"
 ---

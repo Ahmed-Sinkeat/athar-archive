@@ -3,7 +3,7 @@ title: "مختصر الخرقى"
 status: published
 published_at: 2026-07-19
 person: al-khrqy
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "مختصر الخرقى"
 ---

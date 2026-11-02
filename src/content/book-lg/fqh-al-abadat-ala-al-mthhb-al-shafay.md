@@ -3,7 +3,7 @@ title: "فقه العبادات على المذهب الشافعي"
 status: published
 published_at: 2026-07-19
 person: dryh-al-ayth
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-shafii"]
 description: "فقه العبادات على المذهب الشافعي"
 ---

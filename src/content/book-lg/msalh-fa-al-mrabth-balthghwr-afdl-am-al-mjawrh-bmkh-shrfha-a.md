@@ -3,7 +3,7 @@ title: "مسألة فى المرابطة بالثغور أفضل أم المجا
 status: published
 published_at: 2026-07-20
 person: ibn-taymiyyah
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "مسألة فى المرابطة بالثغور أفضل أم المجاورة بمكة شرفها الله تعالى"
 ---

@@ -2,7 +2,7 @@
 title: "مقاصد الشريعة الإسلامية"
 status: published
 published_at: 2026-07-19
-kind: مرجع
+kind: كتاب
 topics: ["usul-al-fiqh"]
 description: "دراسة في مقاصد الشريعة الإسلامية"
 ---

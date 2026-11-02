@@ -3,7 +3,7 @@ title: "إغاثة اللهفان في حكم طلاق الغضبان"
 status: published
 published_at: 2026-07-20
 person: ibn-al-qayyim
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "إغاثة اللهفان في حكم طلاق الغضبان"
 ---

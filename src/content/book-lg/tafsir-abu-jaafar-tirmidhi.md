@@ -3,7 +3,7 @@ title: "جزء فيه تفسير القرآن برواية أبي جعفر ال�
 status: published
 published_at: 2026-07-18
 person: abu-jaafar-tirmidhi
-kind: مرجع
+kind: كتاب
 topics: ["tafsir-al-quran"]
 ---
 ## المقدمة

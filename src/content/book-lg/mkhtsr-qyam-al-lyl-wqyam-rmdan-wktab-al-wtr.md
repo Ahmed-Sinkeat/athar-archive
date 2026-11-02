@@ -3,7 +3,7 @@ title: "مختصر قيام الليل وقيام رمضان وكتاب الوت
 status: published
 published_at: 2026-07-28
 person: mhmd-bn-nsr-al-mrwzy
-kind: متن
+kind: كتاب
 authored_year: 294
 description: "مختصر قيام الليل وقيام رمضان وكتاب الوتر، تأليف محمد بن نصر المروزي (ت 0294هـ)"
 ---

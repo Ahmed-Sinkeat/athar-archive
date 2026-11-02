@@ -3,7 +3,7 @@ title: "تدارك بقية العمر في تدبر سورة النصر"
 status: review
 published_at: 2026-07-18
 person: sulayman-al-lahim
-kind: مرجع
+kind: كتاب
 topics: ["tafsir-al-quran"]
 ---
 <!-- card -->

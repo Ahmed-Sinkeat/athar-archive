@@ -3,7 +3,7 @@ title: "مسند الروياني"
 status: published
 published_at: 2026-07-28
 person: al-rwyany-mhmd-bn-harwn
-kind: متن
+kind: كتاب
 authored_year: 307
 description: "مسند الروياني، تأليف الروياني، محمد بن هارون (ت 0307هـ)"
 ---

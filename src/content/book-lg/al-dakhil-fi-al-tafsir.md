@@ -3,7 +3,7 @@ title: "الدخيل في التفسير"
 status: review
 published_at: 2026-07-18
 person: madinah-international-university
-kind: مرجع
+kind: كتاب
 topics: ["ulum-al-quran"]
 ---
 <!-- card -->

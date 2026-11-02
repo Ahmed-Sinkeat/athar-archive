@@ -3,7 +3,7 @@ title: "تفسير سفيان الثوري"
 status: review
 published_at: 2026-07-18
 person: sufyan-al-thawri
-kind: مرجع
+kind: كتاب
 topics: ["tafsir-al-quran"]
 ---
 ## المقدمة

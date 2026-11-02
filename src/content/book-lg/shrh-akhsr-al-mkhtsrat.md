@@ -3,7 +3,7 @@ title: "شرح أخصر المختصرات"
 status: published
 published_at: 2026-07-20
 person: abn-jbryn
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "شرح أخصر المختصرات"
 ---

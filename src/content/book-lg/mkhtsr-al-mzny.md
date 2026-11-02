@@ -3,7 +3,7 @@ title: "مختصر المزني"
 status: published
 published_at: 2026-07-19
 person: al-muzani
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-shafii"]
 description: "مختصر المزني"
 ---

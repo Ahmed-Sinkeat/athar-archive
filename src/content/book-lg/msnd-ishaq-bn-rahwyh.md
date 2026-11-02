@@ -3,7 +3,7 @@ title: "مسند إسحاق بن راهويه"
 status: published
 published_at: 2026-07-28
 person: ishaq-bn-rahwyh
-kind: متن
+kind: كتاب
 authored_year: 238
 description: "مسند إسحاق بن راهويه، تأليف إسحاق بن راهويه (ت 0238هـ)"
 ---

@@ -3,7 +3,7 @@ title: "المنور في راجح المحرر"
 status: published
 published_at: 2026-07-20
 person: tqy-al-dyn-al-admy
-kind: مرجع
+kind: متن
 topics: ["fiqh-hanbali"]
 description: "المنور في راجح المحرر"
 ---

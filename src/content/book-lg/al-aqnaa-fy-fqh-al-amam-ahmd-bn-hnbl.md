@@ -3,7 +3,7 @@ title: "الإقناع في فقه الإمام أحمد بن حنبل"
 status: published
 published_at: 2026-07-20
 person: al-hajjawi
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "الإقناع في فقه الإمام أحمد بن حنبل"
 ---

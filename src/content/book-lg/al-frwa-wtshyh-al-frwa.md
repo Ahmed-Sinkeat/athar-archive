@@ -3,7 +3,7 @@ title: "الفروع وتصحيح الفروع"
 status: published
 published_at: 2026-07-20
 person: abn-mflh-shms-al-dyn
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "الفروع وتصحيح الفروع"
 ---

@@ -3,7 +3,7 @@ title: "مسند الحارث = بغية الباحث عن زوائد مسند �
 status: published
 published_at: 2026-07-28
 person: al-harth-bn-aby-asama
-kind: متن
+kind: كتاب
 authored_year: 282
 description: "مسند الحارث = بغية الباحث عن زوائد مسند الحارث، تأليف الحارث بن أبي أسامة (ت 0282هـ)"
 ---

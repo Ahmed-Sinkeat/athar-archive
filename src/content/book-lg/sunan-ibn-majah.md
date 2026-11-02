@@ -4,7 +4,7 @@ edition: "تحقيق الأرنؤوط"
 status: published
 published_at: 2026-07-27
 person: ibn-majah
-kind: متن
+kind: كتاب
 authored_year: 273
 description: "سنن ابن ماجه ت الأرنؤوط، تأليف ابن ماجه (ت 0273هـ)"
 ---

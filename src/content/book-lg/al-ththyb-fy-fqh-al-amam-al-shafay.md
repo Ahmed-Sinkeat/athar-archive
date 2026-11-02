@@ -3,7 +3,7 @@ title: "التهذيب في فقه الإمام الشافعي"
 status: published
 published_at: 2026-07-19
 person: al-bghwy-abw-mhmd
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-shafii"]
 description: "التهذيب في فقه الإمام الشافعي"
 ---

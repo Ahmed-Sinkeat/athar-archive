@@ -3,7 +3,7 @@ title: "ديوان الأحكام الكبرى أو الإعلام بنوازل 
 status: published
 published_at: 2026-07-19
 person: abw-al-asbgh
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-maliki"]
 description: "ديوان الأحكام الكبرى أو الإعلام بنوازل الأحكام وقطر من سير الحكام"
 ---

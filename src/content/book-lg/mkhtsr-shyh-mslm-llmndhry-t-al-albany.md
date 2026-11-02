@@ -3,7 +3,7 @@ title: "مختصر صحيح مسلم للمنذري ت الألباني"
 status: published
 published_at: 2026-07-28
 person: abd-al-azym-al-mndhry
-kind: متن
+kind: كتاب
 authored_year: 656
 description: "مختصر صحيح مسلم للمنذري ت الألباني، تأليف عبد العظيم المنذري (ت 0656هـ)"
 ---

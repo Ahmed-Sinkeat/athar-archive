@@ -5,7 +5,7 @@ edition: "تحقيق محمد بن ناصر العجمي"
 status: published
 published_at: 2026-07-20
 person: abn-blban-mhmd-bn-bdr-al-dyn
-kind: مرجع
+kind: متن
 topics: ["fiqh-hanbali"]
 description: "أخصر المختصرات"
 ---

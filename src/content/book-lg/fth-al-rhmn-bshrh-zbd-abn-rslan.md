@@ -3,7 +3,7 @@ title: "فتح الرحمن بشرح زبد ابن رسلان"
 status: published
 published_at: 2026-07-19
 person: shhab-al-dyn-al-rmly
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-shafii"]
 description: "فتح الرحمن بشرح زبد ابن رسلان"
 ---

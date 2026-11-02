@@ -3,7 +3,7 @@ title: "مختصر الإفادات في ربع العبادات والآداب 
 status: published
 published_at: 2026-07-20
 person: abn-blban-mhmd-bn-bdr-al-dyn
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "مختصر الإفادات في ربع العبادات والآداب وزيادات"
 ---

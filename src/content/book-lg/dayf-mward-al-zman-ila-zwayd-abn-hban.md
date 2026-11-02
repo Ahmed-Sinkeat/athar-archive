@@ -3,7 +3,7 @@ title: "ضعيف موارد الظمآن إلى زوائد ابن حبان"
 status: published
 published_at: 2026-07-28
 person: nasr-al-dyn-al-albany
-kind: متن
+kind: كتاب
 authored_year: 1420
 description: "ضعيف موارد الظمآن إلى زوائد ابن حبان، تأليف ناصر الدين الألباني (ت 1420هـ)"
 ---

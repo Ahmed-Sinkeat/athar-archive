@@ -3,7 +3,7 @@ title: "خلاصة الجواهر الزكية في فقه المالكية"
 status: published
 published_at: 2026-07-19
 person: ahmd-bn-trky-al-malky
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-maliki"]
 description: "خلاصة الجواهر الزكية في فقه المالكية"
 ---

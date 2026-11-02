@@ -3,7 +3,7 @@ title: "مصنف ابن أبي شيبة"
 status: published
 published_at: 2026-07-29
 person: abw-bkr-bn-aby-shyba
-kind: متن
+kind: كتاب
 authored_year: 235
 description: "مصنف ابن أبي شيبة، تأليف أبو بكر بن أبي شيبة (ت 0235هـ)"
 ---

@@ -3,7 +3,7 @@ title: "التبصرة للخمي"
 status: published
 published_at: 2026-07-19
 person: al-lkhmy-abw-al-hsn
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-maliki"]
 description: "التبصرة للخمي"
 ---

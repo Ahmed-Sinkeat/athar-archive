@@ -2,7 +2,7 @@
 title: "أثر الاختلاف في القواعد الأصولية في اختلاف الفقهاء"
 status: published
 published_at: 2026-07-19
-kind: مرجع
+kind: كتاب
 topics: ["usul-al-fiqh", "al-qawaid-al-fiqhiyyah"]
 description: "دراسة في أثر الاختلاف في القواعد الأصولية على اختلاف الفقهاء"
 ---

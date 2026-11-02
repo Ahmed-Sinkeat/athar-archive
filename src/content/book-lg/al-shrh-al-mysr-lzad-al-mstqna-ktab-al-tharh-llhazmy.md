@@ -3,7 +3,7 @@ title: "الشرح الميسر لزاد المستقنع - كتاب الطها�
 status: published
 published_at: 2026-07-20
 person: ahmad-al-hazimi
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "الشرح الميسر لزاد المستقنع - كتاب الطهارة للحازمي"
 ---

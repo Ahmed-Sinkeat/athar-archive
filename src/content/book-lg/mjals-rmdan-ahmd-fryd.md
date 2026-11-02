@@ -3,7 +3,7 @@ title: "مجالس رمضان - أحمد فريد"
 status: published
 published_at: 2026-07-20
 person: ahmd-fryd
-kind: مرجع
+kind: كتاب
 topics: ["al-riqaq-wal-adhkar"]
 description: "مجالس رمضان - أحمد فريد"
 ---

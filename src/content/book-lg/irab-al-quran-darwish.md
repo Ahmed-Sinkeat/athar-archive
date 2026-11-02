@@ -3,7 +3,7 @@ title: "إعراب القرآن وبيانه"
 status: review
 published_at: 2026-07-18
 person: muhyi-al-din-darwish
-kind: مرجع
+kind: كتاب
 topics: ["ulum-al-quran"]
 ---
 ## المقدمة

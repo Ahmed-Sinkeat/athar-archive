@@ -3,7 +3,7 @@ title: "حديث أبي الفضل الزهري"
 status: published
 published_at: 2026-07-28
 person: abw-al-fdl-al-zhry
-kind: متن
+kind: كتاب
 authored_year: 381
 description: "حديث أبي الفضل الزهري، تأليف أبو الفضل الزهري (ت 0381هـ)"
 ---

@@ -3,7 +3,7 @@ title: "حجة الوداع لابن حزم"
 status: published
 published_at: 2026-07-28
 person: abn-hzm
-kind: متن
+kind: كتاب
 authored_year: 456
 description: "حجة الوداع لابن حزم، تأليف ابن حزم (ت 0456هـ)"
 ---

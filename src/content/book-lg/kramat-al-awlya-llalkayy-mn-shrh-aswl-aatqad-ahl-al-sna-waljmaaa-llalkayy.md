@@ -3,7 +3,7 @@ title: "كرامات الأولياء للالكائي - من شرح أصول ا
 status: published
 published_at: 2026-07-28
 person: al-lalkayy
-kind: متن
+kind: كتاب
 authored_year: 418
 description: "كرامات الأولياء للالكائي - من شرح أصول اعتقاد أهل السنة والجماعة للالكائي، تأليف اللالكائي (ت 0418هـ)"
 ---

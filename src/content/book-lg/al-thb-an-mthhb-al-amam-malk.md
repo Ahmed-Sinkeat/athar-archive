@@ -3,7 +3,7 @@ title: "الذب عن مذهب الإمام مالك"
 status: published
 published_at: 2026-07-19
 person: ibn-abi-zayd-al-qayrawani
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-maliki"]
 description: "الذب عن مذهب الإمام مالك"
 ---

@@ -3,7 +3,7 @@ title: "الفواكه الدواني على رسالة ابن أبي زيد ا�
 status: published
 published_at: 2026-07-19
 person: al-nfrawy
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-maliki"]
 description: "الفواكه الدواني على رسالة ابن أبي زيد القيرواني"
 ---

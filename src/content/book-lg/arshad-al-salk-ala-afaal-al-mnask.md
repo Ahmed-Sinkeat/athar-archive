@@ -3,7 +3,7 @@ title: "إرشاد السالك إلى أفعال المناسك"
 status: published
 published_at: 2026-07-19
 person: abn-frhwn
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-maliki"]
 description: "إرشاد السالك إلى أفعال المناسك"
 ---

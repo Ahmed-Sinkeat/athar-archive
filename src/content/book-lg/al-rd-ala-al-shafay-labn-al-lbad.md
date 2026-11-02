@@ -3,7 +3,7 @@ title: "الرد على الشافعي لابن اللباد"
 status: published
 published_at: 2026-07-19
 person: abw-bkr-abn-al-lbad
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-maliki"]
 description: "الرد على الشافعي لابن اللباد"
 ---

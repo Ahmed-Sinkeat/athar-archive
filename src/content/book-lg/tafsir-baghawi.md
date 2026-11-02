@@ -3,7 +3,7 @@ title: "تفسير البغوي"
 status: draft
 published_at: 2026-07-18
 person: al-baghawi
-kind: مرجع
+kind: كتاب
 topics: ["tafsir-al-quran"]
 ---
 ## المقدمة

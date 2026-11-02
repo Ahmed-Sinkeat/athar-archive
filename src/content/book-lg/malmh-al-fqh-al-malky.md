@@ -3,7 +3,7 @@ title: "معلمة الفقه المالكي"
 status: published
 published_at: 2026-07-19
 person: abd-al-azyz-bn-abd-al-lh
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-maliki"]
 description: "معلمة الفقه المالكي"
 ---

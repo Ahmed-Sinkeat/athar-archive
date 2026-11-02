@@ -3,7 +3,7 @@ title: "صفة المفتي والمستفتي ت أبي جنة"
 status: published
 published_at: 2026-07-20
 person: abn-hmdan
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "صفة المفتي والمستفتي ت أبي جنة"
 ---

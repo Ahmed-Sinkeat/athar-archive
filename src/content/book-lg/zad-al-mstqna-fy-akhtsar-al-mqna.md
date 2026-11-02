@@ -5,7 +5,7 @@ edition: "تحقيق عبد الرحمن العسكر"
 status: published
 published_at: 2026-07-20
 person: al-hjawy
-kind: كتاب
+kind: متن
 topics: ["fiqh-hanbali"]
 description: "زاد المستقنع في اختصار المقنع"
 ---

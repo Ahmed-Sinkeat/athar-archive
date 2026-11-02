@@ -3,7 +3,7 @@ title: "الهداية على مذهب الإمام أحمد"
 status: published
 published_at: 2026-07-19
 person: abw-al-khtab-al-klwthany
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "الهداية على مذهب الإمام أحمد"
 ---

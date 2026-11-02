@@ -3,7 +3,7 @@ title: "معجم ابن المقرئ"
 status: published
 published_at: 2026-07-28
 person: abn-al-mqry
-kind: متن
+kind: كتاب
 authored_year: 381
 description: "معجم ابن المقرئ، تأليف ابن المقرئ (ت 0381هـ)"
 ---

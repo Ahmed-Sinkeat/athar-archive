@@ -3,7 +3,7 @@ title: "ذكر الأقران لأبي الشيخ"
 status: published
 published_at: 2026-07-28
 person: abw-al-shykh-al-asbhany
-kind: متن
+kind: كتاب
 authored_year: 369
 description: "ذكر الأقران لأبي الشيخ، تأليف أبو الشيخ الأصبهاني (ت 0369هـ)"
 ---

@@ -2,7 +2,7 @@
 title: "شرح المعتمد في أصول الفقه"
 status: published
 published_at: 2026-07-19
-kind: مرجع
+kind: كتاب
 topics: ["usul-al-fiqh"]
 description: "شرح لكتاب المعتمد في أصول الفقه"
 ---

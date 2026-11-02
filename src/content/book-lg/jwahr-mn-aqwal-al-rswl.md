@@ -3,7 +3,7 @@ title: "جواهر من أقوال الرسول"
 status: published
 published_at: 2026-07-20
 person: yasr-al-hmdany
-kind: مرجع
+kind: كتاب
 topics: ["al-riqaq-wal-adhkar"]
 description: "جواهر من أقوال الرسول"
 ---

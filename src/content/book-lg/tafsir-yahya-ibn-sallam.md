@@ -3,7 +3,7 @@ title: "تفسير يحيى بن سلام"
 status: review
 published_at: 2026-07-18
 person: yahya-ibn-sallam
-kind: مرجع
+kind: كتاب
 topics: ["tafsir-al-quran"]
 ---
 ## المقدمة

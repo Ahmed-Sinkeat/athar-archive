@@ -3,7 +3,7 @@ title: "البلوتوث"
 status: published
 published_at: 2026-07-20
 person: d-aadl-al-abd-al-jbar
-kind: مرجع
+kind: كتاب
 topics: ["al-riqaq-wal-adhkar"]
 description: "البلوتوث"
 ---

@@ -3,7 +3,7 @@ title: "الرسالة للقيرواني"
 status: published
 published_at: 2026-07-19
 person: ibn-abi-zayd-al-qayrawani
-kind: مرجع
+kind: متن
 topics: ["fiqh-maliki"]
 description: "الرسالة للقيرواني"
 ---

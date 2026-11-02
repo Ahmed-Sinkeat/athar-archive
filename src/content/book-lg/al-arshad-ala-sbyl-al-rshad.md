@@ -3,7 +3,7 @@ title: "الإرشاد إلى سبيل الرشاد"
 status: published
 published_at: 2026-07-19
 person: abw-aly-bn-aby-mwsa-al-hashmy
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "الإرشاد إلى سبيل الرشاد"
 ---

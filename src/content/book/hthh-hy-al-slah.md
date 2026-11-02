@@ -3,7 +3,7 @@ title: "هذه هي الصلاة"
 status: published
 published_at: 2026-07-20
 person: azhry-ahmd-mhmwd
-kind: مرجع
+kind: كتاب
 topics: ["al-riqaq-wal-adhkar"]
 description: "هذه هي الصلاة"
 ---

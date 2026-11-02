@@ -3,7 +3,7 @@ title: "المسند للشاشي"
 status: published
 published_at: 2026-07-28
 person: al-shashy-al-hythm-bn-klyb
-kind: متن
+kind: كتاب
 authored_year: 335
 description: "المسند للشاشي، تأليف الشاشي، الهيثم بن كليب (ت 0335هـ)"
 ---

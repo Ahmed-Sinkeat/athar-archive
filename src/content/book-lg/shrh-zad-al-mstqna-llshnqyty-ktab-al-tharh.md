@@ -3,7 +3,7 @@ title: "شرح زاد المستقنع للشنقيطي - كتاب الطهار�
 status: published
 published_at: 2026-07-20
 person: mhmd-bn-mhmd-al-mkhtar-al-shnqyty
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "شرح زاد المستقنع للشنقيطي - كتاب الطهارة"
 ---

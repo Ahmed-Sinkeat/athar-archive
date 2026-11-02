@@ -3,7 +3,7 @@ title: "شرح الزرقاني على مختصر خليل وحاشية البن
 status: published
 published_at: 2026-07-19
 person: al-zrqany-abd-al-baqy
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-maliki"]
 description: "شرح الزرقاني على مختصر خليل وحاشية البناني"
 ---

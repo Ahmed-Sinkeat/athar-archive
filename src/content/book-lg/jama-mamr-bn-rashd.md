@@ -3,7 +3,7 @@ title: "جامع معمر بن راشد"
 status: published
 published_at: 2026-07-28
 person: mamr-bn-rashd
-kind: متن
+kind: كتاب
 authored_year: 153
 description: "جامع معمر بن راشد، تأليف معمر بن راشد (ت 0153هـ)"
 ---

@@ -3,7 +3,7 @@ title: "تمهيد الفرش في الخصال الموجبة لظل العرش
 status: published
 published_at: 2026-07-20
 person: al-jlal-al-sywty
-kind: مرجع
+kind: كتاب
 topics: ["al-riqaq-wal-adhkar"]
 description: "تمهيد الفرش في الخصال الموجبة لظل العرش"
 ---

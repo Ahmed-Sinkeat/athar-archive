@@ -3,7 +3,7 @@ title: "المطلع على دقائق زاد المستقنع «فقه الأس
 status: published
 published_at: 2026-07-20
 person: abd-al-krym-al-lahm
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "المطلع على دقائق زاد المستقنع «فقه الأسرة»"
 ---

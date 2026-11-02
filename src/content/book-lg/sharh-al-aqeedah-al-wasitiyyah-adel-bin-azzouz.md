@@ -3,7 +3,7 @@ title: "شرح العقيدة الواسطية (شرح عادل بن عزوز)"
 status: "published"
 published_at: "2026-07-22"
 person: "adel-bin-azzouz"
-kind: "مرجع"
+kind: كتاب
 work_type: "شرح"
 transcript_status: "قيد المراجعة"
 topics: ["al-aqeedah-al-aamah"]

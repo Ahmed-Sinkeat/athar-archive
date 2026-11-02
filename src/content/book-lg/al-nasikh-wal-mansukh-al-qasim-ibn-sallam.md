@@ -3,7 +3,7 @@ title: "الناسخ والمنسوخ"
 status: published
 published_at: 2026-07-07
 person: al-qasim-ibn-sallam
-kind: مرجع
+kind: كتاب
 topics: ["ulum-al-quran"]
 authored_year: 224
 description: "الناسخ والمنسوخ في القرآن لأبي عبيد القاسم بن سلام"

@@ -3,7 +3,7 @@ title: "الخلافيات بين الإمامين الشافعي وأبي حن�
 status: published
 published_at: 2026-07-28
 person: abw-bkr-al-byhqy
-kind: متن
+kind: كتاب
 authored_year: 458
 description: "الخلافيات بين الإمامين الشافعي وأبي حنيفة وأصحابه ت النحال، تأليف أبو بكر البيهقي (ت 0458هـ)"
 ---

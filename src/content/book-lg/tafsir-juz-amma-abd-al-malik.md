@@ -3,7 +3,7 @@ title: "تفسير القرآن العظيم - جزء عم"
 status: review
 published_at: 2026-07-18
 person: abd-al-malik-al-qasim
-kind: مرجع
+kind: كتاب
 topics: ["tafsir-al-quran"]
 ---
 ## المقدمة

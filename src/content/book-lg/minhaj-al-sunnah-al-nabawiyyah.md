@@ -3,7 +3,7 @@ title: "منهاج السنة النبوية"
 status: published
 published_at: 2026-07-16
 person: ibn-taymiyyah
-kind: مرجع
+kind: كتاب
 topics: ["al-firaq-war-rudud", "al-imamah-was-sahabah"]
 authored_year: 728
 description: "منهاج السنة النبوية في نقض كلام الشيعة والقدرية لابن تيمية، أكبر ردود أهل السنة على الرافضة"

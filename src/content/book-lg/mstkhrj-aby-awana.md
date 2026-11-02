@@ -5,7 +5,7 @@ edition: "تحقيق أيمن الدمشقي"
 status: published
 published_at: 2026-07-28
 person: abw-awana
-kind: متن
+kind: كتاب
 authored_year: 316
 description: "مستخرج أبي عوانة، تأليف أبو عوانة (ت 0316هـ)"
 ---

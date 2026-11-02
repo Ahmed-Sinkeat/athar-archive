@@ -3,7 +3,7 @@ title: "عمدة الطالب لنيل المآرب"
 status: published
 published_at: 2026-07-20
 person: al-bhwty
-kind: مرجع
+kind: متن
 topics: ["fiqh-hanbali"]
 description: "عمدة الطالب لنيل المآرب"
 ---

@@ -3,7 +3,7 @@ title: "معالم تربوية لطالبي أسنى الولايات الشر�
 status: published
 published_at: 2026-07-20
 person: mhmd-bn-mhmd-al-mkhtar-al-shnqyty
-kind: مرجع
+kind: كتاب
 topics: ["al-riqaq-wal-adhkar"]
 description: "معالم تربوية لطالبي أسنى الولايات الشرعية"
 ---

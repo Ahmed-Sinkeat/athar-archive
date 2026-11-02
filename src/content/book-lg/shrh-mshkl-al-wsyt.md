@@ -3,7 +3,7 @@ title: "شرح مشكل الوسيط"
 status: published
 published_at: 2026-07-19
 person: abn-al-slah
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-shafii"]
 description: "شرح مشكل الوسيط"
 ---

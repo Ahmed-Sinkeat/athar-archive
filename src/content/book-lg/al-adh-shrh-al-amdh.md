@@ -3,7 +3,7 @@ title: "العدة شرح العمدة"
 status: published
 published_at: 2026-07-19
 person: al-mqdsy-bha-al-dyn
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "العدة شرح العمدة"
 ---

@@ -3,7 +3,7 @@ title: "سلوة الأحزان للاجتناب عن مجالسة الأحدا�
 status: published
 published_at: 2026-07-20
 person: al-mshtwly
-kind: مرجع
+kind: كتاب
 topics: ["al-riqaq-wal-adhkar"]
 description: "سلوة الأحزان للاجتناب عن مجالسة الأحداث والنسوان"
 ---

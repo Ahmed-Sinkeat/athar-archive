@@ -3,7 +3,7 @@ title: "كشاف القناع عن متن الإقناع"
 status: published
 published_at: 2026-07-20
 person: al-bhwty
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "كشاف القناع عن متن الإقناع"
 ---

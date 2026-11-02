@@ -2,7 +2,7 @@
 title: "تلقيح الأفهام العلية بشرح القواعد الفقهية"
 status: published
 published_at: 2026-07-19
-kind: مرجع
+kind: كتاب
 topics: ["al-qawaid-al-fiqhiyyah"]
 description: "شرح القواعد الفقهية للشيخ وليد السعيدان"
 ---

@@ -3,7 +3,7 @@ title: "مختصر الشمائل"
 status: published
 published_at: 2026-07-28
 person: al-tirmidhi
-kind: متن
+kind: كتاب
 authored_year: 279
 description: "مختصر الشمائل، تأليف الترمذي، محمد بن عيسى (ت 0279هـ)"
 ---

@@ -3,7 +3,7 @@ title: "التفسير الموضوعي 2"
 status: review
 published_at: 2026-07-18
 person: madinah-international-university
-kind: مرجع
+kind: كتاب
 topics: ["tafsir-al-quran"]
 ---
 <!-- card -->

@@ -3,7 +3,7 @@ title: "السنة للمروزي"
 status: published
 published_at: 2026-07-28
 person: mhmd-bn-nsr-al-mrwzy
-kind: متن
+kind: كتاب
 authored_year: 294
 description: "السنة للمروزي، تأليف محمد بن نصر المروزي (ت 0294هـ)"
 ---

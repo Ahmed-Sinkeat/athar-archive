@@ -3,7 +3,7 @@ title: "تفسير ابن المنذر"
 status: review
 published_at: 2026-07-18
 person: ibn-al-mundhir
-kind: مرجع
+kind: كتاب
 topics: ["tafsir-al-quran"]
 ---
 ## المقدمة

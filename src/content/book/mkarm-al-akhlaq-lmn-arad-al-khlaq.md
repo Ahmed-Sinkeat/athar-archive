@@ -3,7 +3,7 @@ title: "مكارم الأخلاق لمن أراد الخلاق"
 status: published
 published_at: 2026-07-20
 person: anwr-bn-ahl-al-lh
-kind: مرجع
+kind: كتاب
 topics: ["al-riqaq-wal-adhkar"]
 description: "مكارم الأخلاق لمن أراد الخلاق"
 ---

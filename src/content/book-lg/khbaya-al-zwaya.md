@@ -3,7 +3,7 @@ title: "خبايا الزوايا"
 status: published
 published_at: 2026-07-19
 person: al-zrkshy-bdr-al-dyn
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-shafii"]
 description: "خبايا الزوايا"
 ---

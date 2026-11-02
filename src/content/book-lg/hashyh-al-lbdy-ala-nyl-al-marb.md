@@ -3,7 +3,7 @@ title: "حاشية اللبدي على نيل المآرب"
 status: published
 published_at: 2026-07-20
 person: abd-al-ghny-al-lbdy
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "حاشية اللبدي على نيل المآرب"
 ---

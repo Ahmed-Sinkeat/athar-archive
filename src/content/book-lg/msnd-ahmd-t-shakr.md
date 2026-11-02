@@ -5,7 +5,7 @@ edition: "تحقيق أحمد شاكر"
 status: published
 published_at: 2026-07-28
 person: ahmad-ibn-hanbal
-kind: متن
+kind: كتاب
 authored_year: 241
 description: "مسند أحمد ت شاكر، تأليف أحمد بن حنبل (ت 0241هـ)"
 ---

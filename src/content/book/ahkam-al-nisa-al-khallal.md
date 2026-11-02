@@ -3,7 +3,7 @@ title: "أحكام النساء"
 status: published
 published_at: 2026-07-07
 person: al-khallal
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 authored_year: 311
 description: "كتاب أحكام النساء من «الجامع» لأبي بكر الخلال"

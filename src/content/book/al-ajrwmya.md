@@ -5,7 +5,7 @@ edition: "دار الصميعي"
 status: published
 published_at: 2026-07-22
 person: ibn-ajurrum
-kind: كتاب
+kind: متن
 topics: ["al-nahw"]
 ---
 <!-- card -->

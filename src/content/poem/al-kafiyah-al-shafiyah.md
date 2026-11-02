@@ -1,5 +1,6 @@
 ---
 title: "نونية ابن القيم = الكافية الشافية"
+work_type: منظومة
 status: published
 published_at: 2026-07-03
 person: ibn-al-qayyim

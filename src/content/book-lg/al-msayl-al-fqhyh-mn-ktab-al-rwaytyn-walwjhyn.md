@@ -3,7 +3,7 @@ title: "المسائل الفقهية من كتاب الروايتين والو�
 status: published
 published_at: 2026-07-19
 person: abw-yala-abn-al-fra
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "المسائل الفقهية من كتاب الروايتين والوجهين"
 ---

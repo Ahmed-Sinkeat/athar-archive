@@ -3,7 +3,7 @@ title: "منهج الطلاب في فقه الإمام الشافعي رضي ا�
 status: published
 published_at: 2026-07-19
 person: zkrya-al-ansary
-kind: مرجع
+kind: متن
 topics: ["fiqh-shafii"]
 description: "منهج الطلاب في فقه الإمام الشافعي رضي الله عنه"
 ---

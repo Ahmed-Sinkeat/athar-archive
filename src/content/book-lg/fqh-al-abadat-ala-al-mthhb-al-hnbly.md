@@ -3,7 +3,7 @@ title: "فقه العبادات على المذهب الحنبلي"
 status: published
 published_at: 2026-07-20
 person: saad-zrzwr
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "فقه العبادات على المذهب الحنبلي"
 ---

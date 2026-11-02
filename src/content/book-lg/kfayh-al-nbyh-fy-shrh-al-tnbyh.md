@@ -3,7 +3,7 @@ title: "كفاية النبيه في شرح التنبيه"
 status: published
 published_at: 2026-07-19
 person: abn-al-rfah
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-shafii"]
 description: "كفاية النبيه في شرح التنبيه"
 ---

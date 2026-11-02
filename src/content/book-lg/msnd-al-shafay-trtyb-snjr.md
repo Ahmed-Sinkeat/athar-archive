@@ -3,7 +3,7 @@ title: "مسند الشافعي - ترتيب سنجر"
 status: published
 published_at: 2026-07-28
 person: al-shafay
-kind: متن
+kind: كتاب
 authored_year: 204
 description: "مسند الشافعي - ترتيب سنجر، تأليف الشافعي (ت 0204هـ)"
 ---

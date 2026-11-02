@@ -3,7 +3,7 @@ title: "شرح منتهى الإرادات = دقائق أولي النهى لش
 status: published
 published_at: 2026-07-20
 person: al-bhwty
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "شرح منتهى الإرادات = دقائق أولي النهى لشرح المنتهى"
 ---

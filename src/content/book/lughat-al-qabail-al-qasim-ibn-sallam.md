@@ -3,7 +3,7 @@ title: "لغات القبائل الواردة في القرآن الكريم"
 status: published
 published_at: 2026-07-07
 person: al-qasim-ibn-sallam
-kind: مرجع
+kind: كتاب
 topics: ["al-mufradat"]
 authored_year: 224
 description: "لغات القبائل الواردة في القرآن الكريم لأبي عبيد القاسم بن سلام"

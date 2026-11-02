@@ -3,7 +3,7 @@ title: "التلقين في الفقة المالكي"
 status: published
 published_at: 2026-07-19
 person: al-qady-abd-al-whab
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-maliki"]
 description: "التلقين في الفقة المالكي"
 ---

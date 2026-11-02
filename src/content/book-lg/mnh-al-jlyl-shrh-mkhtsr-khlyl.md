@@ -3,7 +3,7 @@ title: "منح الجليل شرح مختصر خليل"
 status: published
 published_at: 2026-07-19
 person: mhmd-bn-ahmd-alysh
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-maliki"]
 description: "منح الجليل شرح مختصر خليل"
 ---

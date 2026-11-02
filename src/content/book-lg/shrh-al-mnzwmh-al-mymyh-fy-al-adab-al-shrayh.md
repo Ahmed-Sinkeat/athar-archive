@@ -3,7 +3,7 @@ title: "شرح المنظومة الميمية في الآداب الشرعية"
 status: published
 published_at: 2026-07-20
 person: abd-al-krym-al-khdyr
-kind: مرجع
+kind: كتاب
 topics: ["al-riqaq-wal-adhkar"]
 description: "شرح المنظومة الميمية في الآداب الشرعية"
 ---

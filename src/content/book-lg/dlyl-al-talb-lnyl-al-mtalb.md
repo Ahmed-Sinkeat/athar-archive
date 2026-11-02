@@ -3,7 +3,7 @@ title: "دليل الطالب لنيل المطالب"
 status: published
 published_at: 2026-07-20
 person: mray-al-krmy
-kind: مرجع
+kind: متن
 topics: ["fiqh-hanbali"]
 description: "دليل الطالب لنيل المطالب"
 ---

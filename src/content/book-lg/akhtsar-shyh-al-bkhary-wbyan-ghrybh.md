@@ -3,7 +3,7 @@ title: "اختصار صحيح البخاري وبيان غريبه"
 status: published
 published_at: 2026-07-28
 person: abw-al-abas-al-qrtby
-kind: متن
+kind: كتاب
 authored_year: 656
 description: "اختصار صحيح البخاري وبيان غريبه، تأليف أبو العباس القرطبي (ت 0656هـ)"
 ---

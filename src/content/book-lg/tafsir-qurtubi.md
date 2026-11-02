@@ -3,7 +3,7 @@ title: "تفسير القرطبي"
 status: review
 published_at: 2026-07-18
 person: shams-al-din-al-qurtubi
-kind: مرجع
+kind: كتاب
 topics: ["tafsir-al-quran"]
 ---
 ## المقدمة

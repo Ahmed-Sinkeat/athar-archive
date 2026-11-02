@@ -3,7 +3,7 @@ title: "الزهر الفياح قوت القلوب وغذاء الأرواح م
 status: published
 published_at: 2026-07-20
 person: azhry-ahmd-mhmwd
-kind: مرجع
+kind: كتاب
 topics: ["al-riqaq-wal-adhkar"]
 description: "الزهر الفياح قوت القلوب وغذاء الأرواح محبة الله جل وعز وعلاماتها"
 ---

@@ -3,7 +3,7 @@ title: "روضة الطالبين وعمدة المفتين"
 status: published
 published_at: 2026-07-19
 person: al-nawawi
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-shafii"]
 description: "روضة الطالبين وعمدة المفتين"
 ---

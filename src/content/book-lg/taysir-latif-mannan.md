@@ -3,7 +3,7 @@ title: "تيسير اللطيف المنان في خلاصة تفسير القر
 person: "al-saadi"
 status: "published"
 published_at: "2026-06-27"
-kind: "مرجع"
+kind: كتاب
 work_type: "تفسير"
 topics: ["tafsir-al-quran"]
 authored_year: 1376

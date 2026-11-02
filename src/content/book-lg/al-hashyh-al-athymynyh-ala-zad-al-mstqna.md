@@ -3,7 +3,7 @@ title: "الحاشية العثيمينية على زاد المستقنع"
 status: published
 published_at: 2026-07-20
 person: hazm-khnfr
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "الحاشية العثيمينية على زاد المستقنع"
 ---

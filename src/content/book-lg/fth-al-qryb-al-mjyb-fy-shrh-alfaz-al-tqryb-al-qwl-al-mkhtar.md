@@ -3,7 +3,7 @@ title: "فتح القريب المجيب في شرح ألفاظ التقريب =
 status: published
 published_at: 2026-07-19
 person: mhmd-bn-qasm-al-ghzy
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-shafii"]
 description: "فتح القريب المجيب في شرح ألفاظ التقريب = القول المختار في شرح غاية الاختصار"
 ---

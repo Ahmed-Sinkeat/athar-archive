@@ -3,7 +3,7 @@ title: "الرقية الشرعية"
 status: published
 published_at: 2026-07-20
 person: khald-al-jrysy
-kind: مرجع
+kind: كتاب
 topics: ["al-riqaq-wal-adhkar"]
 description: "الرقية الشرعية"
 ---

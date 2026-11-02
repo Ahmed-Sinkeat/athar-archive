@@ -3,7 +3,7 @@ title: "تحرير الكلام في مسائل الإلتزام"
 status: published
 published_at: 2026-07-19
 person: al-rayny-al-htab
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-maliki"]
 description: "تحرير الكلام في مسائل الإلتزام"
 ---

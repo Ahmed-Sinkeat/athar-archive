@@ -3,7 +3,7 @@ title: "المسند الموضوعي الجامع للكتب العشرة"
 status: published
 published_at: 2026-07-29
 person: shyb-abd-al-jbar
-kind: متن
+kind: كتاب
 authored_year: 1442
 description: "المسند الموضوعي الجامع للكتب العشرة، تأليف صهيب عبد الجبار (ت 1442هـ)"
 ---

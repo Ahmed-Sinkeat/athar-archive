@@ -3,7 +3,7 @@ title: "المنح الشافيات بشرح مفردات الإمام أحمد"
 status: published
 published_at: 2026-07-20
 person: al-bhwty
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "المنح الشافيات بشرح مفردات الإمام أحمد"
 ---

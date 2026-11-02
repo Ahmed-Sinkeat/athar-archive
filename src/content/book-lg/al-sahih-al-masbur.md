@@ -3,7 +3,7 @@ title: "الصحيح المسبور من التفسير بالمأثور"
 status: review
 published_at: 2026-07-18
 person: hikmat-bishir-yasin
-kind: مرجع
+kind: كتاب
 topics: ["tafsir-al-quran"]
 ---
 ## المقدمة

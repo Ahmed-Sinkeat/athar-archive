@@ -3,7 +3,7 @@ title: "بداية المجتهد ونهاية المقتصد"
 status: published
 published_at: 2026-07-19
 person: abn-rshd-al-hfyd
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-maliki"]
 description: "بداية المجتهد ونهاية المقتصد"
 ---

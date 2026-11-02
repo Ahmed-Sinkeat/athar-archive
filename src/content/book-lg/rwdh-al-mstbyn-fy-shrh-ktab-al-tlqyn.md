@@ -3,7 +3,7 @@ title: "روضة المستبين في شرح كتاب التلقين"
 status: published
 published_at: 2026-07-19
 person: abn-bzyzh
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-maliki"]
 description: "روضة المستبين في شرح كتاب التلقين"
 ---

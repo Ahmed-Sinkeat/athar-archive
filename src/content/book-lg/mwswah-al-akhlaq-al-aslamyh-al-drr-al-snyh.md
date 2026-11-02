@@ -3,7 +3,7 @@ title: "موسوعة الأخلاق الإسلامية - الدرر السنية
 status: published
 published_at: 2026-07-20
 person: majmuah-min-al-muallifin
-kind: مرجع
+kind: كتاب
 topics: ["al-riqaq-wal-adhkar"]
 description: "موسوعة الأخلاق الإسلامية - الدرر السنية"
 ---

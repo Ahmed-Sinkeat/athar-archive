@@ -3,7 +3,7 @@ title: "التدريب في الفقه الشافعي"
 status: published
 published_at: 2026-07-19
 person: sraj-al-dyn-al-blqyny
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-shafii"]
 description: "التدريب في الفقه الشافعي"
 ---

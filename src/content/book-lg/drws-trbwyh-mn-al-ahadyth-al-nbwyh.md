@@ -3,7 +3,7 @@ title: "دروس تربوية من الأحاديث النبوية"
 status: published
 published_at: 2026-07-20
 person: khald-al-hsynan
-kind: مرجع
+kind: كتاب
 topics: ["al-riqaq-wal-adhkar"]
 description: "دروس تربوية من الأحاديث النبوية"
 ---

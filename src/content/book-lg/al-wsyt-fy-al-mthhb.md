@@ -3,7 +3,7 @@ title: "الوسيط في المذهب"
 status: published
 published_at: 2026-07-19
 person: abw-hamd-al-ghzaly
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-shafii"]
 description: "الوسيط في المذهب"
 ---

@@ -3,7 +3,7 @@ title: "مسائل الإمام أحمد رواية أبي داود السجست
 status: published
 published_at: 2026-07-19
 person: ahmad-ibn-hanbal
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "مسائل الإمام أحمد رواية أبي داود السجستاني"
 ---

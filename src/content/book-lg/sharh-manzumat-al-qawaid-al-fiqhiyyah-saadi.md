@@ -2,7 +2,7 @@
 title: "شرح منظومة القواعد الفقهية للسعدي"
 status: published
 published_at: 2026-07-19
-kind: مرجع
+kind: كتاب
 topics: ["al-qawaid-al-fiqhiyyah"]
 description: "شرح لمنظومة القواعد الفقهية للشيخ عبد الرحمن السعدي"
 ---

@@ -3,7 +3,7 @@ title: "رحلة إيمانية مع رجال ونساء أسلموا"
 status: published
 published_at: 2026-07-20
 person: abd-al-rhmn-mhmwd
-kind: مرجع
+kind: كتاب
 topics: ["al-riqaq-wal-adhkar"]
 description: "رحلة إيمانية مع رجال ونساء أسلموا"
 ---

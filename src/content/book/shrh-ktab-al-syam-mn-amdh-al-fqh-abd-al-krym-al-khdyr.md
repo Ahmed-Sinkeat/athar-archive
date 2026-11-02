@@ -3,7 +3,7 @@ title: "شرح كتاب الصيام من عمدة الفقه - عبد الكر�
 status: published
 published_at: 2026-07-20
 person: abd-al-krym-al-khdyr
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "شرح كتاب الصيام من عمدة الفقه - عبد الكريم الخضير"
 ---

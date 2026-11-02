@@ -3,7 +3,7 @@ title: "البكاء في الكتاب والسنة"
 status: published
 published_at: 2026-07-20
 person: rqyh-al-mharb
-kind: مرجع
+kind: كتاب
 topics: ["al-riqaq-wal-adhkar"]
 description: "البكاء في الكتاب والسنة"
 ---

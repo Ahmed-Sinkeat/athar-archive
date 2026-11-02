@@ -3,7 +3,7 @@ title: "القرآن حجة لك أو عليك"
 status: published
 published_at: 2026-07-20
 person: mhmd-al-amary
-kind: مرجع
+kind: كتاب
 topics: ["al-riqaq-wal-adhkar"]
 description: "القرآن حجة لك أو عليك"
 ---

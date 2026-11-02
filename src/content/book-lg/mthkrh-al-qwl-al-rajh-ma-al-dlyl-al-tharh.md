@@ -3,7 +3,7 @@ title: "مذكرة القول الراجح مع الدليل - الطهارة"
 status: published
 published_at: 2026-07-20
 person: khald-bn-abrahym-al-sqaby
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "مذكرة القول الراجح مع الدليل - الطهارة"
 ---

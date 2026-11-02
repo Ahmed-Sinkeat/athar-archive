@@ -3,7 +3,7 @@ title: "الفتن لنعيم بن حماد"
 status: published
 published_at: 2026-07-28
 person: naym-bn-hmad-al-mrwzy
-kind: متن
+kind: كتاب
 authored_year: 228
 description: "الفتن لنعيم بن حماد، تأليف نعيم بن حماد المروزي (ت 0228هـ)"
 ---

@@ -3,7 +3,7 @@ title: "التنبيه في الفقه الشافعي"
 status: published
 published_at: 2026-07-19
 person: al-shyrazy-abw-ashaq
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-shafii"]
 description: "التنبيه في الفقه الشافعي"
 ---

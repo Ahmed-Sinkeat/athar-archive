@@ -3,7 +3,7 @@ title: "اعتلال القلوب للخرائطي"
 status: published
 published_at: 2026-07-28
 person: al-khrayty
-kind: متن
+kind: كتاب
 authored_year: 327
 description: "اعتلال القلوب للخرائطي، تأليف الخرائطي (ت 0327هـ)"
 ---

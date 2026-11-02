@@ -3,7 +3,7 @@ title: "التعليق على نصيحة العلثي لابن الجوزي"
 status: published
 published_at: 2026-07-17
 person: musab-ibn-salah
-kind: متن
+kind: كتاب
 topics: ["al-asma-was-sifat", "al-sunnah-wal-bidah"]
 transcript_status: قيد المراجعة
 description: "شرح مفرغ للشيخ مصعب بن صلاح على رسالة الإمام أبي الفضل إسحاق العلثي إلى ابن الجوزي في إنكار ميله إلى التأويل في الصفات"

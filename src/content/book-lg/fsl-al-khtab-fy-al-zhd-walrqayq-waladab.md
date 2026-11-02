@@ -3,7 +3,7 @@ title: "فصل الخطاب في الزهد والرقائق والآداب"
 status: published
 published_at: 2026-07-20
 person: mhmd-nsr-al-dyn-mhmd-awydh
-kind: مرجع
+kind: كتاب
 topics: ["al-riqaq-wal-adhkar"]
 description: "فصل الخطاب في الزهد والرقائق والآداب"
 ---

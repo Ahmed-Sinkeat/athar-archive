@@ -3,7 +3,7 @@ title: "الثمر الداني شرح رسالة ابن أبي زيد القي�
 status: published
 published_at: 2026-07-19
 person: salh-bn-abd-al-smya-al-azhry
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-maliki"]
 description: "الثمر الداني شرح رسالة ابن أبي زيد القيرواني"
 ---

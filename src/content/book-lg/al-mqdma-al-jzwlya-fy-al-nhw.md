@@ -3,7 +3,7 @@ title: "المقدمة الجزولية في النحو"
 status: published
 published_at: 2026-07-22
 person: al-jzwly-abw-mwsa
-kind: كتاب
+kind: متن
 topics: ["al-nahw"]
 ---
 <!-- card -->

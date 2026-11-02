@@ -3,7 +3,7 @@ title: "الأمثال"
 status: published
 published_at: 2026-07-07
 person: al-qasim-ibn-sallam
-kind: مرجع
+kind: كتاب
 topics: ["al-adab"]
 authored_year: 224
 description: "كتاب الأمثال لأبي عبيد القاسم بن سلام"

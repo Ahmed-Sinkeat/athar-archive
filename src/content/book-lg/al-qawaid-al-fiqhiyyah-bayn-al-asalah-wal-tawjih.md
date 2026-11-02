@@ -2,7 +2,7 @@
 title: "القواعد الفقهية بين الأصالة والتوجيه"
 status: published
 published_at: 2026-07-19
-kind: مرجع
+kind: كتاب
 topics: ["al-qawaid-al-fiqhiyyah"]
 description: "دراسة في القواعد الفقهية بين الأصالة والتوجيه"
 ---

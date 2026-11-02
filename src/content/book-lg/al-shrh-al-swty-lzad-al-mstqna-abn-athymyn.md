@@ -3,7 +3,7 @@ title: "الشرح الصوتي لزاد المستقنع - ابن عثيمين"
 status: published
 published_at: 2026-07-20
 person: abn-athymyn
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "الشرح الصوتي لزاد المستقنع - ابن عثيمين"
 ---

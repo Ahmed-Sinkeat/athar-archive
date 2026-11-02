@@ -3,7 +3,6 @@ title: "الجامع في أحكام وآداب الصبيان (كتاب الع�
 status: published
 published_at: 2026-10-31
 person: adel-al-hamdan
-authored_year: مجموع
 kind: مجموع
 ---
 <!-- card -->

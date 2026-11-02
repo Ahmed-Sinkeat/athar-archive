@@ -3,7 +3,7 @@ title: "متن العشماوية"
 status: published
 published_at: 2026-07-19
 person: abd-al-bary-al-ashmawy
-kind: مرجع
+kind: متن
 topics: ["fiqh-maliki"]
 description: "متن العشماوية"
 ---

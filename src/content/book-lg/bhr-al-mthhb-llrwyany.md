@@ -3,7 +3,7 @@ title: "بحر المذهب للروياني"
 status: published
 published_at: 2026-07-19
 person: al-rwyany-abd-al-wahd
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-shafii"]
 description: "بحر المذهب للروياني"
 ---

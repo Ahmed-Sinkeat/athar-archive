@@ -3,7 +3,7 @@ title: "حاشية الصاوي على الشرح الصغير = بلغة الس
 status: published
 published_at: 2026-07-19
 person: ahmd-al-sawy
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-maliki"]
 description: "حاشية الصاوي على الشرح الصغير = بلغة السالك لأقرب المسالك"
 ---

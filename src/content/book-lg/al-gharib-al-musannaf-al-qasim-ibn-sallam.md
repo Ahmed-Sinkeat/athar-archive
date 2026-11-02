@@ -3,7 +3,7 @@ title: "الغريب المصنف"
 status: published
 published_at: 2026-07-07
 person: al-qasim-ibn-sallam
-kind: مرجع
+kind: كتاب
 topics: ["al-mufradat"]
 authored_year: 224
 description: "الغريب المصنف لأبي عبيد القاسم بن سلام، معجم لغوي مبوَّب"

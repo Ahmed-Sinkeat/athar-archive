@@ -2,7 +2,7 @@
 title: "الآداب الإسلامية"
 status: published
 published_at: 2026-07-20
-kind: مرجع
+kind: كتاب
 topics: ["al-riqaq-wal-adhkar"]
 description: "الآداب الإسلامية"
 ---

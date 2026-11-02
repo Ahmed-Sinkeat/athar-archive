@@ -3,7 +3,7 @@ title: "التاج والإكليل لمختصر خليل"
 status: published
 published_at: 2026-07-19
 person: mhmd-bn-ywsf-al-mwaq
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-maliki"]
 description: "التاج والإكليل لمختصر خليل"
 ---

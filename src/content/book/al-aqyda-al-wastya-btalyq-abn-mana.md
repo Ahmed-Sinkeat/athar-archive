@@ -5,7 +5,7 @@ edition: "بتعليق ابن مانع"
 status: published
 published_at: 2026-07-16
 person: ibn-taymiyyah
-kind: متن
+kind: كتاب
 topics: ["al-aqeedah-al-aamah"]
 ---
 <!-- card -->

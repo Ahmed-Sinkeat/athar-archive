@@ -3,7 +3,7 @@ title: "اللآلي"
 status: published
 published_at: 2026-07-20
 person: ibn-al-jawzi
-kind: مرجع
+kind: كتاب
 topics: ["al-riqaq-wal-adhkar"]
 description: "اللآلي"
 ---

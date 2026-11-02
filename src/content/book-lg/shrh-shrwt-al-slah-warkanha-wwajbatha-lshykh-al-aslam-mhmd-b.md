@@ -3,7 +3,7 @@ title: "شرح شروط الصلاة وأركانها وواجباتها لشي�
 status: published
 published_at: 2026-07-20
 person: abd-al-muhsin-al-abbad
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "شرح شروط الصلاة وأركانها وواجباتها لشيخ الإسلام محمد بن عبد الوهاب"
 ---

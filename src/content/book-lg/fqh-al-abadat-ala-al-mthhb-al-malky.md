@@ -3,7 +3,7 @@ title: "فقه العبادات على المذهب المالكي"
 status: published
 published_at: 2026-07-19
 person: kwkb-abyd
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-maliki"]
 description: "فقه العبادات على المذهب المالكي"
 ---

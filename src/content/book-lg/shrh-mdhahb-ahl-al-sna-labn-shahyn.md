@@ -3,7 +3,7 @@ title: "شرح مذاهب أهل السنة لابن شاهين"
 status: published
 published_at: 2026-07-28
 person: abn-shahyn
-kind: متن
+kind: كتاب
 authored_year: 385
 description: "شرح مذاهب أهل السنة لابن شاهين، تأليف ابن شاهين (ت 0385هـ)"
 ---

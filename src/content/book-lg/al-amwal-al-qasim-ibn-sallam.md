@@ -3,7 +3,7 @@ title: "الأموال"
 status: published
 published_at: 2026-07-07
 person: al-qasim-ibn-sallam
-kind: مرجع
+kind: كتاب
 topics: ["al-siyasah-al-shariyyah"]
 authored_year: 224
 description: "كتاب الأموال لأبي عبيد القاسم بن سلام في أحكام الزكاة والفيء وبيت المال"

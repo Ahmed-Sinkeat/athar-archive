@@ -3,7 +3,7 @@ title: "القصص القرآني - ياسر برهامي"
 status: published
 published_at: 2026-07-20
 person: yasr-brhamy
-kind: مرجع
+kind: كتاب
 topics: ["al-riqaq-wal-adhkar"]
 description: "القصص القرآني - ياسر برهامي"
 ---

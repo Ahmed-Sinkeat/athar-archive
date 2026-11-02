@@ -3,7 +3,7 @@ title: "المقدمة الحضرمية"
 status: published
 published_at: 2026-07-19
 person: bafdl-al-hdrmy
-kind: مرجع
+kind: متن
 topics: ["fiqh-shafii"]
 description: "المقدمة الحضرمية"
 ---

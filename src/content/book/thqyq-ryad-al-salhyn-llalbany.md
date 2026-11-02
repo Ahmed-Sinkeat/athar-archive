@@ -3,7 +3,7 @@ title: "تحقيق رياض الصالحين للألباني"
 status: published
 published_at: 2026-07-28
 person: al-nawawi
-kind: متن
+kind: كتاب
 authored_year: 676
 description: "تحقيق رياض الصالحين للألباني، تأليف النووي (ت 0676هـ)"
 ---

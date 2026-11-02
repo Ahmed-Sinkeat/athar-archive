@@ -3,7 +3,7 @@ title: "المنتخب من وصايا الآباء للأبناء"
 status: published
 published_at: 2026-07-20
 person: wayl-hafz-khlf
-kind: مرجع
+kind: كتاب
 topics: ["al-riqaq-wal-adhkar"]
 description: "المنتخب من وصايا الآباء للأبناء"
 ---

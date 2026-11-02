@@ -3,7 +3,7 @@ title: "المبدع في شرح المقنع"
 status: published
 published_at: 2026-07-20
 person: abn-mflh-brhan-al-dyn
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "المبدع في شرح المقنع"
 ---

@@ -3,7 +3,7 @@ title: "شرح زاد المستقنع للخليل"
 status: published
 published_at: 2026-07-20
 person: ahmd-al-khlyl
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "شرح زاد المستقنع للخليل"
 ---

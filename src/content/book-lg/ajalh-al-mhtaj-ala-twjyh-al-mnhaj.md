@@ -3,7 +3,7 @@ title: "عجالة المحتاج إلى توجيه المنهاج"
 status: published
 published_at: 2026-07-19
 person: ibn-al-mulaqqin
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-shafii"]
 description: "عجالة المحتاج إلى توجيه المنهاج"
 ---

@@ -4,7 +4,7 @@ status: published
 published_at: 2026-07-17
 person: musab-ibn-salah
 sharh_of: lamiyyat-ibn-al-wardi
-kind: متن
+kind: كتاب
 topics: ["al-adab", "tazkiyat-al-nafs"]
 transcript_status: قيد المراجعة
 description: "شرح مفرغ للشيخ مصعب بن صلاح على لامية ابن الوردي (نصيحة الإخوان ومرشد الخلان)، بيتا بيتا"

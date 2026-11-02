@@ -3,7 +3,7 @@ title: "العذب النمير من مجالس الشنقيطي في التفس
 status: draft
 published_at: 2026-07-18
 person: al-shanqiti
-kind: مرجع
+kind: كتاب
 topics: ["tafsir-al-quran"]
 ---
 ## المقدمة

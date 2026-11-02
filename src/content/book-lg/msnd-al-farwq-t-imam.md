@@ -3,7 +3,7 @@ title: "مسند الفاروق ت إمام"
 status: published
 published_at: 2026-07-28
 person: ibn-kathir
-kind: متن
+kind: كتاب
 authored_year: 774
 description: "مسند الفاروق ت إمام، تأليف ابن كثير (ت 0774هـ)"
 ---

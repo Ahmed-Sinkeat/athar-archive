@@ -3,7 +3,7 @@ title: "موطأ مالك رواية محمد بن الحسن الشيباني"
 status: published
 published_at: 2026-07-28
 person: malik-ibn-anas
-kind: متن
+kind: كتاب
 authored_year: 179
 description: "موطأ مالك رواية محمد بن الحسن الشيباني، تأليف مالك بن أنس (ت 0179هـ)"
 ---

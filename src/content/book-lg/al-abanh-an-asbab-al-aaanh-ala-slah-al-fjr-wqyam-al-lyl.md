@@ -3,7 +3,7 @@ title: "الإبانة عن أسباب الإعانة على صلاة الفجر
 status: published
 published_at: 2026-07-20
 person: rqyh-al-mharb
-kind: مرجع
+kind: كتاب
 topics: ["al-riqaq-wal-adhkar"]
 description: "الإبانة عن أسباب الإعانة على صلاة الفجر وقيام الليل"
 ---

@@ -5,7 +5,7 @@ edition: "تحقيق رفعت فوزي عبد المطلب"
 status: published
 published_at: 2026-07-28
 person: ibn-wahb
-kind: متن
+kind: كتاب
 authored_year: 197
 description: "الجامع لابن وهب ت رفعت فوزي عبد المطلب، تأليف ابن وهب (ت 0197هـ)"
 ---

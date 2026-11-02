@@ -5,7 +5,7 @@ edition: "تحقيق صبحي السامرائي"
 status: published
 published_at: 2026-07-28
 person: abd-bn-hmyd
-kind: متن
+kind: كتاب
 authored_year: 249
 description: "المنتخب من مسند عبد بن حميد ت صبحي السامرائي، تأليف عبد بن حميد (ت 0249هـ)"
 ---

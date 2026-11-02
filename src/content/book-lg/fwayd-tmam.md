@@ -3,7 +3,7 @@ title: "فوائد تمام"
 status: published
 published_at: 2026-07-28
 person: tmam-bn-mhmd-al-dmshqy
-kind: متن
+kind: كتاب
 authored_year: 414
 description: "فوائد تمام، تأليف تمام بن محمد الدمشقي (ت 0414هـ)"
 ---

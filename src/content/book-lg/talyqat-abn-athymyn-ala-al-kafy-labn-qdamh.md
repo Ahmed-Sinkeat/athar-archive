@@ -3,7 +3,7 @@ title: "تعليقات ابن عثيمين على الكافي لابن قدام
 status: published
 published_at: 2026-07-20
 person: abn-athymyn
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "تعليقات ابن عثيمين على الكافي لابن قدامة"
 ---

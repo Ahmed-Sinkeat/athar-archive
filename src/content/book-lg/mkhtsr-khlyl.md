@@ -3,7 +3,7 @@ title: "مختصر خليل"
 status: published
 published_at: 2026-07-19
 person: khlyl-bn-ashaq-al-jndy
-kind: مرجع
+kind: متن
 topics: ["fiqh-maliki"]
 description: "مختصر خليل"
 ---

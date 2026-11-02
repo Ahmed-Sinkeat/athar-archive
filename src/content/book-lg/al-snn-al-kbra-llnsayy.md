@@ -3,7 +3,7 @@ title: "السنن الكبرى للنسائي"
 status: published
 published_at: 2026-07-29
 person: al-nasai
-kind: متن
+kind: كتاب
 authored_year: 303
 description: "السنن الكبرى للنسائي، تأليف النسائي (ت 0303هـ)"
 ---

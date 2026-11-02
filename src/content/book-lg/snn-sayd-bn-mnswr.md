@@ -3,7 +3,7 @@ title: "سنن سعيد بن منصور"
 status: published
 published_at: 2026-07-28
 person: sayd-bn-mnswr
-kind: متن
+kind: كتاب
 authored_year: 227
 description: "سنن سعيد بن منصور، تأليف سعيد بن منصور (ت 0227هـ)"
 ---

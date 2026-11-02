@@ -3,7 +3,7 @@ title: "أخي كيف حالك مع القرآن"
 status: published
 published_at: 2026-07-20
 person: azhry-ahmd-mhmwd
-kind: مرجع
+kind: كتاب
 topics: ["al-riqaq-wal-adhkar"]
 description: "أخي كيف حالك مع القرآن"
 ---

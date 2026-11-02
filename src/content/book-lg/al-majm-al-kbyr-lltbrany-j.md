@@ -3,7 +3,7 @@ title: "المعجم الكبير للطبراني ج 13، 14"
 status: published
 published_at: 2026-07-28
 person: al-tbrany
-kind: متن
+kind: كتاب
 authored_year: 360
 description: "المعجم الكبير للطبراني ج 13، 14، تأليف الطبراني (ت 0360هـ)"
 ---

@@ -3,7 +3,7 @@ title: "مصنف عبد الرزاق الصنعاني"
 status: published
 published_at: 2026-07-29
 person: abd-al-razzaq-al-sanani
-kind: متن
+kind: كتاب
 authored_year: 211
 description: "مصنف عبد الرزاق الصنعاني، تأليف عبد الرزاق الصنعاني (ت 0211هـ)"
 ---

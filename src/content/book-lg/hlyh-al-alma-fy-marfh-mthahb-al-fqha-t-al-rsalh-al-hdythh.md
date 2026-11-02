@@ -4,7 +4,7 @@ edition: "مكتبة الرسالة الحديثة"
 status: published
 published_at: 2026-07-19
 person: al-shashy-abw-bkr
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-shafii"]
 description: "حلية العلماء في معرفة مذاهب الفقهاء ط الرسالة الحديثة"
 ---

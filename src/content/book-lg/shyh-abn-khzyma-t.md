@@ -4,7 +4,7 @@ edition: "تحقيق الأعظمي، الطبعة الثالثة"
 status: published
 published_at: 2026-07-28
 person: abn-khzyma
-kind: متن
+kind: كتاب
 authored_year: 311
 description: "صحيح ابن خزيمة ط 3، تأليف ابن خزيمة (ت 0311هـ)"
 ---

@@ -3,7 +3,7 @@ title: "دقائق المنهاج"
 status: published
 published_at: 2026-07-19
 person: al-nawawi
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-shafii"]
 description: "دقائق المنهاج"
 ---

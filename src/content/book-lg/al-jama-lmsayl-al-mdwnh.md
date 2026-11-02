@@ -3,7 +3,7 @@ title: "الجامع لمسائل المدونة"
 status: published
 published_at: 2026-07-19
 person: abn-ywns-al-sqly
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-maliki"]
 description: "الجامع لمسائل المدونة"
 ---

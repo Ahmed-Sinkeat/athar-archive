@@ -3,7 +3,7 @@ title: "نهاية المحتاج إلى شرح المنهاج"
 status: published
 published_at: 2026-07-19
 person: al-rmly-shms-al-dyn
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-shafii"]
 description: "نهاية المحتاج إلى شرح المنهاج"
 ---

@@ -3,7 +3,7 @@ title: "الهداية إلى أوهام الكفاية"
 status: published
 published_at: 2026-07-19
 person: al-asnwy
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-shafii"]
 description: "الهداية إلى أوهام الكفاية"
 ---

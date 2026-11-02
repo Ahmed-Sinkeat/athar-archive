@@ -3,7 +3,7 @@ title: "كيف تخشعين في الصلاة"
 status: published
 published_at: 2026-07-20
 person: rqyh-al-mharb
-kind: مرجع
+kind: كتاب
 topics: ["al-riqaq-wal-adhkar"]
 description: "كيف تخشعين في الصلاة"
 ---

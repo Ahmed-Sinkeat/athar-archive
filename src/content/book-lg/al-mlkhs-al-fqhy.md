@@ -3,7 +3,7 @@ title: "الملخص الفقهي"
 status: published
 published_at: 2026-07-20
 person: salh-al-fwzan
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "الملخص الفقهي"
 ---

@@ -3,7 +3,7 @@ title: "الدار الآخرة - عمر عبد الكافي"
 status: published
 published_at: 2026-07-20
 person: amr-abd-al-kafy
-kind: مرجع
+kind: كتاب
 topics: ["al-riqaq-wal-adhkar"]
 description: "الدار الآخرة - عمر عبد الكافي"
 ---

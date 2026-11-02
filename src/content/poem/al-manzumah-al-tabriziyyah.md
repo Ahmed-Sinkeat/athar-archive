@@ -1,5 +1,6 @@
 ---
 title: "المنظومة التبريزية في العقيدة الصحيحة السنية"
+work_type: منظومة
 status: published
 published_at: 2026-07-03
 person: abd-al-qahir-al-tabrizi

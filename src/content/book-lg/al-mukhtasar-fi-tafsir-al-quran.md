@@ -3,7 +3,7 @@ title: "المختصر في تفسير القرآن الكريم"
 status: review
 published_at: 2026-07-18
 person: majmuah-min-al-muallifin
-kind: مرجع
+kind: كتاب
 topics: ["tafsir-al-quran"]
 ---
 ## المقدمة

@@ -3,7 +3,7 @@ title: "شرح التلقين"
 status: published
 published_at: 2026-07-19
 person: al-mazry
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-maliki"]
 description: "شرح التلقين"
 ---

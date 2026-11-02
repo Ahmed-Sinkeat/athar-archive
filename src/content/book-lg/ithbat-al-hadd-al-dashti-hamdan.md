@@ -4,7 +4,6 @@ edition: "تحقيق عادل آل حمدان"
 status: published
 published_at: 2026-10-31
 person: al-dashti
-authored_year: تحقيق عادل آل حمدان
 topics: ["al-asma-was-sifat"]
 ---
 <!-- card -->

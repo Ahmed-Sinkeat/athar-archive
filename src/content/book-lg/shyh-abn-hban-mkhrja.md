@@ -3,7 +3,7 @@ title: "صحيح ابن حبان - مخرجا"
 status: published
 published_at: 2026-07-29
 person: ibn-hibban
-kind: متن
+kind: كتاب
 authored_year: 354
 description: "صحيح ابن حبان - مخرجا، تأليف ابن حبان (ت 0354هـ)"
 ---

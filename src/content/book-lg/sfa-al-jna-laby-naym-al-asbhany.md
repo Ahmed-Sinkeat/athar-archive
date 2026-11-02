@@ -3,7 +3,7 @@ title: "صفة الجنة لأبي نعيم الأصبهاني"
 status: published
 published_at: 2026-07-28
 person: abu-nuaym-al-asbahani
-kind: متن
+kind: كتاب
 authored_year: 430
 description: "صفة الجنة لأبي نعيم الأصبهاني، تأليف أبو نعيم الأصبهاني (ت 0430هـ)"
 ---

@@ -3,7 +3,7 @@ title: "قاعدة تتضمن ذكر ملابس النبي وسلاحه ودوا
 status: published
 published_at: 2026-07-20
 person: ibn-taymiyyah
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "قاعدة تتضمن ذكر ملابس النبي وسلاحه ودوابه - القرمانية - جواب فتيا في لبس النبي"
 ---

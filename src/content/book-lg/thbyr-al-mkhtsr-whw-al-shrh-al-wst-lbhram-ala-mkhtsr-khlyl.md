@@ -3,7 +3,7 @@ title: "تحبير المختصر وهو الشرح الوسط لبهرام عل
 status: published
 published_at: 2026-07-19
 person: bhram-al-dmyry
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-maliki"]
 description: "تحبير المختصر وهو الشرح الوسط لبهرام على مختصر خليل"
 ---

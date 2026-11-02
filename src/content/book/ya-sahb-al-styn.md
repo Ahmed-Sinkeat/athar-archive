@@ -3,7 +3,7 @@ title: "يا صاحب الستين"
 status: published
 published_at: 2026-07-20
 person: aly-bn-dajm
-kind: مرجع
+kind: كتاب
 topics: ["al-riqaq-wal-adhkar"]
 description: "يا صاحب الستين"
 ---

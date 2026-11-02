@@ -3,7 +3,7 @@ title: "شرح معاني الآثار"
 status: published
 published_at: 2026-07-28
 person: al-tahawi
-kind: متن
+kind: كتاب
 authored_year: 321
 description: "شرح معاني الآثار، تأليف الطحاوي (ت 0321هـ)"
 ---

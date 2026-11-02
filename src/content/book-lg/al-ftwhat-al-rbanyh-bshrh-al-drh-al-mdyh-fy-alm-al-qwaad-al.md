@@ -3,7 +3,7 @@ title: "الفتوحات الربانية بشرح الدرة المضية في 
 status: published
 published_at: 2026-07-20
 person: abd-al-azyz-al-aydan
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "الفتوحات الربانية بشرح الدرة المضية في علم القواعد الفرضية"
 ---

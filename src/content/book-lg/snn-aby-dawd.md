@@ -5,7 +5,7 @@ edition: "تحقيق محيي الدين عبد الحميد"
 status: published
 published_at: 2026-07-28
 person: abu-dawud-al-sijistani
-kind: متن
+kind: كتاب
 authored_year: 275
 description: "سنن أبي داود، تأليف السجستاني، أبو داود (ت 0275هـ)"
 ---

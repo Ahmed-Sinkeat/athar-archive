@@ -3,7 +3,7 @@ title: "متن أبي شجاع المسمى الغاية والتقريب"
 status: published
 published_at: 2026-07-19
 person: abw-shjaa
-kind: كتاب
+kind: متن
 topics: ["fiqh-shafii"]
 description: "متن أبي شجاع المسمى الغاية والتقريب"
 ---

@@ -3,7 +3,7 @@ title: "التوضيح في شرح مختصر ابن الحاجب"
 status: published
 published_at: 2026-07-19
 person: khlyl-bn-ashaq-al-jndy
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-maliki"]
 description: "التوضيح في شرح مختصر ابن الحاجب"
 ---

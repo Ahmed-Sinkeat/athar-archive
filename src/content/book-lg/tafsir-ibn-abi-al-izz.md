@@ -3,7 +3,7 @@ title: "تفسير ابن أبي العز جمعا ودراسة"
 status: draft
 published_at: 2026-07-18
 person: ibn-abi-al-izz
-kind: مرجع
+kind: كتاب
 topics: ["tafsir-al-quran"]
 ---
 ## المقدمة

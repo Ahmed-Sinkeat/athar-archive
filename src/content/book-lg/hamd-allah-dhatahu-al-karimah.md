@@ -3,7 +3,7 @@ title: "حمد الله ذاته الكريمة في آيات كتابه الح�
 status: review
 published_at: 2026-07-18
 person: imad-zuhayr-hafidh
-kind: مرجع
+kind: كتاب
 topics: ["tafsir-al-quran"]
 ---
 <!-- card -->

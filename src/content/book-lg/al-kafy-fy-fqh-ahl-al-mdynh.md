@@ -3,7 +3,7 @@ title: "الكافي في فقه أهل المدينة"
 status: published
 published_at: 2026-07-19
 person: ibn-abd-al-barr
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-maliki"]
 description: "الكافي في فقه أهل المدينة"
 ---

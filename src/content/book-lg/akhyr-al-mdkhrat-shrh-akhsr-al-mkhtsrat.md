@@ -3,7 +3,7 @@ title: "أخير المدخرات شرح أخصر المختصرات"
 status: published
 published_at: 2026-07-20
 person: hazm-khnfr
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "أخير المدخرات شرح أخصر المختصرات"
 ---

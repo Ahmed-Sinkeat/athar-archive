@@ -3,7 +3,7 @@ title: "مغني المحتاج إلى معرفة معاني ألفاظ المن
 status: published
 published_at: 2026-07-19
 person: al-khtyb-al-shrbyny
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-shafii"]
 description: "مغني المحتاج إلى معرفة معاني ألفاظ المنهاج"
 ---

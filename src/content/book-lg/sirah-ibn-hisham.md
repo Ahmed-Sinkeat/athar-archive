@@ -3,7 +3,7 @@ title: "السيرة النبوية لابن هشام"
 status: published
 published_at: 2026-07-07
 person: ibn-hisham
-kind: مرجع
+kind: كتاب
 topics: ["al-sirah-al-nabawiyyah"]
 authored_year: 218
 ---

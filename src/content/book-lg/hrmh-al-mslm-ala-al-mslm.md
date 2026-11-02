@@ -3,7 +3,7 @@ title: "حرمة المسلم على المسلم"
 status: published
 published_at: 2026-07-20
 person: mahr-al-fhl
-kind: مرجع
+kind: كتاب
 topics: ["al-riqaq-wal-adhkar"]
 description: "حرمة المسلم على المسلم"
 ---

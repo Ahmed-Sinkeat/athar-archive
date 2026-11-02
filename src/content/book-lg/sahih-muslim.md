@@ -3,7 +3,7 @@ title: "صحيح مسلم"
 status: published
 published_at: 2026-07-27
 person: muslim-ibn-al-hajjaj
-kind: متن
+kind: كتاب
 authored_year: 261
 description: "صحيح مسلم، تأليف مسلم (ت 0261هـ)"
 ---

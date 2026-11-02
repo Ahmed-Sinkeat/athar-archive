@@ -3,7 +3,7 @@ title: "تفسير ابن أبي حاتم"
 status: review
 published_at: 2026-07-18
 person: ibn-abi-hatim
-kind: مرجع
+kind: كتاب
 topics: ["tafsir-al-quran"]
 ---
 ## المقدمة

@@ -4,7 +4,7 @@ edition: "تحقيق عبد المحسن القاسم"
 status: published
 published_at: 2026-07-06
 person: abd-al-ghani-al-maqdisi
-kind: كتاب
+kind: متن
 topics: ["mutoon-al-hadith"]
 authored_year: 600
 description: "عمدة الأحكام عن سيد الأنام للحافظ عبد الغني بن عبد الواحد المقدسي"

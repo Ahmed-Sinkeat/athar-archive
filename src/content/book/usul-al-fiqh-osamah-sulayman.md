@@ -2,7 +2,7 @@
 title: "أصول الفقه"
 status: published
 published_at: 2026-07-19
-kind: مرجع
+kind: كتاب
 topics: ["usul-al-fiqh"]
 description: "مذكرة في أصول الفقه للشيخ أسامة سليمان"
 ---

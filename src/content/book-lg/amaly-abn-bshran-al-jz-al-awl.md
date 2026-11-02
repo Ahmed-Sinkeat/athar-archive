@@ -3,7 +3,7 @@ title: "أمالي ابن بشران - الجزء الأول"
 status: published
 published_at: 2026-07-28
 person: abn-bshran-abw-al-qasm
-kind: متن
+kind: كتاب
 authored_year: 430
 description: "أمالي ابن بشران - الجزء الأول، تأليف ابن بشران، أبو القاسم (ت 0430هـ)"
 ---

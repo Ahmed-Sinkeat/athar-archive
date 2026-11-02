@@ -3,7 +3,7 @@ title: "شرح سنن ابن ماجه (شرح أحمد البكري)"
 status: "published"
 published_at: "2026-07-22"
 person: "ahmad-al-bakri"
-kind: "مرجع"
+kind: كتاب
 work_type: "شرح"
 transcript_status: "قيد المراجعة"
 topics: ["aam-hadith"]

@@ -3,7 +3,7 @@ title: "المسند المستخرج على صحيح مسلم لأبي نعيم
 status: published
 published_at: 2026-07-28
 person: abu-nuaym-al-asbahani
-kind: متن
+kind: كتاب
 authored_year: 430
 description: "المسند المستخرج على صحيح مسلم لأبي نعيم، تأليف أبو نعيم الأصبهاني (ت 0430هـ)"
 ---

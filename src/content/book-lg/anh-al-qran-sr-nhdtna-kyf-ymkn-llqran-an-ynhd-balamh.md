@@ -3,7 +3,7 @@ title: "إنه القرآن سر نهضتنا - كيف يمكن للقرآن أ�
 status: published
 published_at: 2026-07-20
 person: mjdy-al-hlaly
-kind: مرجع
+kind: كتاب
 topics: ["al-riqaq-wal-adhkar"]
 description: "إنه القرآن سر نهضتنا - كيف يمكن للقرآن أن ينهض بالأمة؟"
 ---

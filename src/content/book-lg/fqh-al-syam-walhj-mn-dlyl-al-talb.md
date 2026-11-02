@@ -3,7 +3,7 @@ title: "فقه الصيام والحج من دليل الطالب"
 status: published
 published_at: 2026-07-20
 person: hamd-al-hamd
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "فقه الصيام والحج من دليل الطالب"
 ---

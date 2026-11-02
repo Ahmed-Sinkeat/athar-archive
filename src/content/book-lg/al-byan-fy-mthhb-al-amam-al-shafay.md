@@ -3,7 +3,7 @@ title: "البيان في مذهب الإمام الشافعي"
 status: published
 published_at: 2026-07-19
 person: al-umrani
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-shafii"]
 description: "البيان في مذهب الإمام الشافعي"
 ---

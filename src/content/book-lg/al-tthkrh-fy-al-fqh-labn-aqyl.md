@@ -3,7 +3,7 @@ title: "التذكرة في الفقه لابن عقيل"
 status: published
 published_at: 2026-07-19
 person: abw-al-wfa-abn-aqyl
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "التذكرة في الفقه لابن عقيل"
 ---

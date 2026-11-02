@@ -3,7 +3,7 @@ title: "أضواء البيان في إيضاح القرآن بالقرآن"
 status: review
 published_at: 2026-07-18
 person: al-shanqiti
-kind: مرجع
+kind: كتاب
 topics: ["tafsir-al-quran"]
 ---
 ## المقدمة

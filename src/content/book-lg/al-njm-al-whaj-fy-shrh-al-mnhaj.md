@@ -3,7 +3,7 @@ title: "النجم الوهاج في شرح المنهاج"
 status: published
 published_at: 2026-07-19
 person: al-dmyry
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-shafii"]
 description: "النجم الوهاج في شرح المنهاج"
 ---

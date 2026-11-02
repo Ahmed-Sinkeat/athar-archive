@@ -3,7 +3,7 @@ title: "شرح المقدمة الحضرمية المسمى بشرى الكري�
 status: published
 published_at: 2026-07-19
 person: sayd-baashn
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-shafii"]
 description: "شرح المقدمة الحضرمية المسمى بشرى الكريم بشرح مسائل التعليم"
 ---

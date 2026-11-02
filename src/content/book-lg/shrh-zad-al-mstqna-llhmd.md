@@ -3,7 +3,7 @@ title: "شرح زاد المستقنع للحمد"
 status: published
 published_at: 2026-07-20
 person: hmd-bn-abd-al-lh-al-hmd
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "شرح زاد المستقنع للحمد"
 ---

@@ -3,7 +3,7 @@ title: "تاريخ داريا لعبد الجبار الخولاني"
 status: published
 published_at: 2026-07-28
 person: abd-al-jbar-al-khwlany
-kind: متن
+kind: كتاب
 authored_year: 370
 description: "تاريخ داريا لعبد الجبار الخولاني، تأليف عبد الجبار الخولاني (ت 0370هـ)"
 ---

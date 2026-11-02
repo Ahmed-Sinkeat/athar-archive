@@ -3,7 +3,7 @@ title: "مسائل أبي الوليد ابن رشد"
 status: published
 published_at: 2026-07-19
 person: abn-rshd-al-jd
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-maliki"]
 description: "مسائل أبي الوليد ابن رشد"
 ---

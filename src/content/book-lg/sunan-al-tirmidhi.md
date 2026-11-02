@@ -4,7 +4,7 @@ edition: "تحقيق بشار عواد معروف"
 status: published
 published_at: 2026-07-27
 person: al-tirmidhi
-kind: متن
+kind: كتاب
 authored_year: 279
 description: "سنن الترمذي ت بشار، تأليف الترمذي، محمد بن عيسى (ت 0279هـ)"
 ---

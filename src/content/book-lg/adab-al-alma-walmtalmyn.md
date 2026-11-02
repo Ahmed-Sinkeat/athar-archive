@@ -3,7 +3,7 @@ title: "آداب العلماء والمتعلمين"
 status: published
 published_at: 2026-07-20
 person: al-hsyn-bn-al-mnswr-al-ymny
-kind: مرجع
+kind: كتاب
 topics: ["al-riqaq-wal-adhkar"]
 description: "آداب العلماء والمتعلمين"
 ---

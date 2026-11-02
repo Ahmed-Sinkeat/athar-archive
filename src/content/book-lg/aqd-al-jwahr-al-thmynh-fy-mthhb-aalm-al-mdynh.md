@@ -3,7 +3,7 @@ title: "عقد الجواهر الثمينة في مذهب عالم المدين
 status: published
 published_at: 2026-07-19
 person: abn-shas
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-maliki"]
 description: "عقد الجواهر الثمينة في مذهب عالم المدينة"
 ---

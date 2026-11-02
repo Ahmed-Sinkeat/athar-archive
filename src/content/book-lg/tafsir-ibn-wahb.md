@@ -3,7 +3,7 @@ title: "تفسير القرآن من الجامع لابن وهب"
 status: draft
 published_at: 2026-07-18
 person: ibn-wahb
-kind: مرجع
+kind: كتاب
 topics: ["tafsir-al-quran"]
 ---
 ## المقدمة

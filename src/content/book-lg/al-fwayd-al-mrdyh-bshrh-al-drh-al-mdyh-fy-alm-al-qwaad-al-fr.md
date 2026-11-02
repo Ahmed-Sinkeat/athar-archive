@@ -3,7 +3,7 @@ title: "الفوائد المرضية بشرح الدرة المضية في عل
 status: published
 published_at: 2026-07-20
 person: al-baly-abd-al-rhmn-bn-abd-al-lh
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "الفوائد المرضية بشرح الدرة المضية في علم القواعد الفرضية"
 ---

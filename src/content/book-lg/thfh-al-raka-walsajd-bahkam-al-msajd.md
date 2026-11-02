@@ -3,7 +3,7 @@ title: "تحفة الراكع والساجد بأحكام المساجد"
 status: published
 published_at: 2026-07-20
 person: al-jraay
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "تحفة الراكع والساجد بأحكام المساجد"
 ---

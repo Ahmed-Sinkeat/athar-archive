@@ -3,7 +3,7 @@ title: "مسند الشهاب القضاعي"
 status: published
 published_at: 2026-07-28
 person: al-qdaay
-kind: متن
+kind: كتاب
 authored_year: 454
 description: "مسند الشهاب القضاعي، تأليف القضاعي (ت 0454هـ)"
 ---

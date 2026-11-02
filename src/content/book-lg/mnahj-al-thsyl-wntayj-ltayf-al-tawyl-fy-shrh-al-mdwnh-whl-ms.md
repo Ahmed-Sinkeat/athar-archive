@@ -3,7 +3,7 @@ title: "مناهج التحصيل ونتائج لطائف التأويل في ش
 status: published
 published_at: 2026-07-19
 person: al-rjrajy-aly-bn-sayd
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-maliki"]
 description: "مناهج التحصيل ونتائج لطائف التأويل في شرح المدونة وحل مشكلاتها"
 ---

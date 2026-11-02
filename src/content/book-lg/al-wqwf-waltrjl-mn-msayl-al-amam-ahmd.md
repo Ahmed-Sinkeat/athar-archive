@@ -3,7 +3,7 @@ title: "الوقوف والترجل من مسائل الإمام أحمد"
 status: published
 published_at: 2026-07-19
 person: al-khallal
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "الوقوف والترجل من مسائل الإمام أحمد"
 ---

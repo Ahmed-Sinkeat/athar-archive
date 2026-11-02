@@ -3,7 +3,7 @@ title: "مسند البزار = البحر الزخار"
 status: published
 published_at: 2026-07-28
 person: al-bzar-abw-bkr
-kind: متن
+kind: كتاب
 authored_year: 292
 description: "مسند البزار = البحر الزخار، تأليف البزار، أبو بكر (ت 0292هـ)"
 ---

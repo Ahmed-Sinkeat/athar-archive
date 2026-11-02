@@ -3,7 +3,7 @@ title: "من حديث خيثمة بن سليمان"
 status: published
 published_at: 2026-07-28
 person: khythma-bn-slyman-al-atrablsy
-kind: متن
+kind: كتاب
 authored_year: 343
 description: "من حديث خيثمة بن سليمان، تأليف خيثمة بن سليمان الأطرابلسي (ت 0343هـ)"
 ---

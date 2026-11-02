@@ -3,7 +3,7 @@ title: "الأدب المفرد مخرجا"
 status: published
 published_at: 2026-07-28
 person: al-bukhari
-kind: متن
+kind: كتاب
 authored_year: 256
 description: "الأدب المفرد مخرجا، تأليف البخاري (ت 0256هـ)"
 ---

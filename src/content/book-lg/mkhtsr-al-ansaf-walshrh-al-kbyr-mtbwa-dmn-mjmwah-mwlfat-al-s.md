@@ -3,7 +3,7 @@ title: "مختصر الإنصاف والشرح الكبير (مطبوع ضمن �
 status: published
 published_at: 2026-07-20
 person: ibn-abdul-wahhab
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "مختصر الإنصاف والشرح الكبير (مطبوع ضمن مجموعة مؤلفات الشيخ محمد بن عبد الوهاب، الجزء الثاني)"
 ---

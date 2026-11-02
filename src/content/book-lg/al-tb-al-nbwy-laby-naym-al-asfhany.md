@@ -3,7 +3,7 @@ title: "الطب النبوي لأبي نعيم الأصفهاني"
 status: published
 published_at: 2026-07-28
 person: abu-nuaym-al-asbahani
-kind: متن
+kind: كتاب
 authored_year: 430
 description: "الطب النبوي لأبي نعيم الأصفهاني، تأليف أبو نعيم الأصبهاني (ت 0430هـ)"
 ---

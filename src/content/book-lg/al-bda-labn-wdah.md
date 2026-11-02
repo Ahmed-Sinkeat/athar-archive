@@ -3,7 +3,7 @@ title: "البدع لابن وضاح"
 status: published
 published_at: 2026-07-28
 person: al-qrtby-abn-wdah
-kind: متن
+kind: كتاب
 authored_year: 286
 description: "البدع لابن وضاح، تأليف القرطبي، ابن وضاح (ت 0286هـ)"
 ---

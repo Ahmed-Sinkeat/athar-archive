@@ -3,7 +3,7 @@ title: "الطهور للقاسم بن سلام"
 status: published
 published_at: 2026-07-28
 person: al-qasim-ibn-sallam
-kind: متن
+kind: كتاب
 authored_year: 224
 description: "الطهور للقاسم بن سلام، تأليف أبو عبيد القاسم بن سلام (ت 0224هـ)"
 ---

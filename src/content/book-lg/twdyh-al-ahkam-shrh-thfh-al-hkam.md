@@ -3,7 +3,7 @@ title: "توضيح الأحكام شرح تحفة الحكام"
 status: published
 published_at: 2026-07-19
 person: al-twzry
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-maliki"]
 description: "توضيح الأحكام شرح تحفة الحكام"
 ---

@@ -3,7 +3,7 @@ title: "حاشية البجيرمي على الخطيب = تحفة الحبيب 
 status: published
 published_at: 2026-07-19
 person: al-bjyrmy
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-shafii"]
 description: "حاشية البجيرمي على الخطيب = تحفة الحبيب على شرح الخطيب"
 ---

@@ -3,7 +3,7 @@ title: "إرشاد السالك إلى أشرف المسالك في فقه ال�
 status: published
 published_at: 2026-07-19
 person: abn-askr
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-maliki"]
 description: "إرشاد السالك إلى أشرف المسالك في فقه الإمام مالك"
 ---

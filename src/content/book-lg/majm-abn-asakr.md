@@ -3,7 +3,7 @@ title: "معجم ابن عساكر"
 status: published
 published_at: 2026-07-28
 person: abn-asakr-abw-al-qasm
-kind: متن
+kind: كتاب
 authored_year: 571
 description: "معجم ابن عساكر، تأليف ابن عساكر، أبو القاسم (ت 0571هـ)"
 ---

@@ -3,7 +3,7 @@ title: "نيل المارب بشرح دليل الطالب"
 status: published
 published_at: 2026-07-20
 person: abn-aby-tghlb
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "نيل المارب بشرح دليل الطالب"
 ---

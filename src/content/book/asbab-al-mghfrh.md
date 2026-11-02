@@ -3,7 +3,7 @@ title: "أسباب المغفرة"
 status: published
 published_at: 2026-07-20
 person: ibn-rajab
-kind: مرجع
+kind: كتاب
 topics: ["al-riqaq-wal-adhkar"]
 description: "أسباب المغفرة"
 ---

@@ -3,7 +3,7 @@ title: "تحرير الفتاوى"
 status: published
 published_at: 2026-07-19
 person: wly-al-dyn-bn-al-araqy
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-shafii"]
 description: "تحرير الفتاوى"
 ---

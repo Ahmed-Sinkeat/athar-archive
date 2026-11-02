@@ -3,7 +3,7 @@ title: "سنن النسائي"
 status: published
 published_at: 2026-07-27
 person: al-nasai
-kind: متن
+kind: كتاب
 authored_year: 303
 description: "سنن النسائي، تأليف النسائي (ت 0303هـ)"
 ---

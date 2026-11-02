@@ -3,7 +3,7 @@ title: "تحقيق الوصال بين القلب والقرآن"
 status: published
 published_at: 2026-07-20
 person: mjdy-al-hlaly
-kind: مرجع
+kind: كتاب
 topics: ["al-riqaq-wal-adhkar"]
 description: "تحقيق الوصال بين القلب والقرآن"
 ---

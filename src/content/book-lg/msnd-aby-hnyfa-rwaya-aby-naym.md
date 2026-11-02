@@ -3,7 +3,7 @@ title: "مسند أبي حنيفة رواية أبي نعيم"
 status: published
 published_at: 2026-07-28
 person: abu-nuaym-al-asbahani
-kind: متن
+kind: كتاب
 authored_year: 430
 description: "مسند أبي حنيفة رواية أبي نعيم، تأليف أبو نعيم الأصبهاني (ت 0430هـ)"
 ---

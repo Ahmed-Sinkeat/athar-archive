@@ -3,7 +3,7 @@ title: "كتاب العلم"
 status: published
 published_at: 2026-07-24
 person: abu-khaythama-zuhayr-ibn-harb
-kind: متن
+kind: كتاب
 topics: ["adab-talab-al-ilm"]
 authored_year: 234
 description: "كتاب العلم للحافظ أبي خيثمة زهير بن حرب، في فضل العلم وآداب طلبه"

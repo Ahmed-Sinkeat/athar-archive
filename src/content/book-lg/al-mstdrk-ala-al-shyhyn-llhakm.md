@@ -3,7 +3,7 @@ title: "المستدرك على الصحيحين للحاكم"
 status: published
 published_at: 2026-07-29
 person: al-hakm-abw-abd-al-lh
-kind: متن
+kind: كتاب
 authored_year: 405
 description: "المستدرك على الصحيحين للحاكم، تأليف الحاكم، أبو عبد الله (ت 0405هـ)"
 ---

@@ -3,7 +3,7 @@ title: "المنهاج القويم شرح المقدمة الحضرمية"
 status: published
 published_at: 2026-07-19
 person: abn-hjr-al-hytmy
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-shafii"]
 description: "المنهاج القويم شرح المقدمة الحضرمية"
 ---

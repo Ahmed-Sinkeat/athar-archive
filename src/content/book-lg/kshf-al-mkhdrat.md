@@ -3,7 +3,7 @@ title: "كشف المخدرات"
 status: published
 published_at: 2026-07-20
 person: al-baly-abd-al-rhmn-bn-abd-al-lh
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "كشف المخدرات"
 ---

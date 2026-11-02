@@ -3,7 +3,7 @@ title: "شفاء الغليل في حل مقفل خليل"
 status: published
 published_at: 2026-07-19
 person: al-mknasy-abn-ghazy
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-maliki"]
 description: "شفاء الغليل في حل مقفل خليل"
 ---

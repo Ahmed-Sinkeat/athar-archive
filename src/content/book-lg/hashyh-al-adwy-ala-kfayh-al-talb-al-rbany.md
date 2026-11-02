@@ -3,7 +3,7 @@ title: "حاشية العدوي على كفاية الطالب الرباني"
 status: published
 published_at: 2026-07-19
 person: aly-al-saydy-al-adwy
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-maliki"]
 description: "حاشية العدوي على كفاية الطالب الرباني"
 ---

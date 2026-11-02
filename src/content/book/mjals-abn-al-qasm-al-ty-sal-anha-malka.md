@@ -3,7 +3,7 @@ title: "مجالس ابن القاسم التي سأل عنها مالكا"
 status: published
 published_at: 2026-07-19
 person: abn-al-qasm
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-maliki"]
 description: "مجالس ابن القاسم التي سأل عنها مالكا"
 ---

@@ -5,7 +5,7 @@ edition: "دار إحياء التراث العربي"
 status: published
 published_at: 2026-07-20
 person: al-mrdawy-ala-al-dyn
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "الإنصاف في معرفة الراجح من الخلاف للمرداوي"
 ---

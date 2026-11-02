@@ -3,7 +3,7 @@ title: "التهذيب في اختصار المدونة"
 status: published
 published_at: 2026-07-19
 person: abw-sayd-abn-al-brathay
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-maliki"]
 description: "التهذيب في اختصار المدونة"
 ---

@@ -3,7 +3,7 @@ title: "عمل اليوم والليلة للنسائي"
 status: published
 published_at: 2026-07-28
 person: al-nasai
-kind: متن
+kind: كتاب
 authored_year: 303
 description: "عمل اليوم والليلة للنسائي، تأليف النسائي (ت 0303هـ)"
 ---

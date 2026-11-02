@@ -3,7 +3,7 @@ title: "التوازن التربوي وأهميته لكل مسلم"
 status: published
 published_at: 2026-07-20
 person: mjdy-al-hlaly
-kind: مرجع
+kind: كتاب
 topics: ["al-riqaq-wal-adhkar"]
 description: "التوازن التربوي وأهميته لكل مسلم"
 ---

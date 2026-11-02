@@ -3,7 +3,7 @@ title: "الجامع لعلوم الإمام أحمد - الفقه"
 status: published
 published_at: 2026-07-19
 person: ahmad-ibn-hanbal
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "الجامع لعلوم الإمام أحمد - الفقه"
 ---

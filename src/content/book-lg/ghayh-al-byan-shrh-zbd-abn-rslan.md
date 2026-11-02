@@ -3,7 +3,7 @@ title: "غاية البيان شرح زبد ابن رسلان"
 status: published
 published_at: 2026-07-19
 person: al-rmly-shms-al-dyn
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-shafii"]
 description: "غاية البيان شرح زبد ابن رسلان"
 ---

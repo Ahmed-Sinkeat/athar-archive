@@ -3,7 +3,7 @@ title: "صحيح الأدب المفرد"
 status: published
 published_at: 2026-07-28
 person: al-bukhari
-kind: متن
+kind: كتاب
 authored_year: 256
 description: "صحيح الأدب المفرد، تأليف البخاري (ت 0256هـ)"
 ---

@@ -3,7 +3,7 @@ title: "شرح مختصر الخرقي - عبد الكريم الخضير"
 status: published
 published_at: 2026-07-20
 person: abd-al-krym-al-khdyr
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "شرح مختصر الخرقي - عبد الكريم الخضير"
 ---

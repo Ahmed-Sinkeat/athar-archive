@@ -3,7 +3,7 @@ title: "حاشية الروض المربع"
 status: published
 published_at: 2026-07-20
 person: abd-al-rhmn-bn-qasm
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "حاشية الروض المربع"
 ---

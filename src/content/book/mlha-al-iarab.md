@@ -3,7 +3,7 @@ title: "ملحة الإعراب"
 status: published
 published_at: 2026-07-22
 person: al-hariri
-kind: كتاب
+kind: متن
 topics: ["al-nahw"]
 ---
 ## المقدمة

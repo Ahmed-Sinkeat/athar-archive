@@ -3,7 +3,7 @@ title: "كيف تصبح عالما"
 status: published
 published_at: 2026-07-20
 person: raghb-al-srjany
-kind: مرجع
+kind: كتاب
 topics: ["al-riqaq-wal-adhkar"]
 description: "كيف تصبح عالما"
 ---

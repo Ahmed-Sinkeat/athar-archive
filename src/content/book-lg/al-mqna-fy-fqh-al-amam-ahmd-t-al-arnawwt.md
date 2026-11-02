@@ -3,7 +3,7 @@ title: "المقنع في فقه الإمام أحمد ت الأرناؤوط"
 status: published
 published_at: 2026-07-19
 person: ibn-qudamah
-kind: مرجع
+kind: متن
 topics: ["fiqh-hanbali"]
 description: "المقنع في فقه الإمام أحمد ت الأرناؤوط"
 ---

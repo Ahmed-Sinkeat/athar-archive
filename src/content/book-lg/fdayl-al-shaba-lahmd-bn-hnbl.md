@@ -3,7 +3,7 @@ title: "فضائل الصحابة لأحمد بن حنبل"
 status: published
 published_at: 2026-07-28
 person: ahmad-ibn-hanbal
-kind: متن
+kind: كتاب
 authored_year: 241
 description: "فضائل الصحابة لأحمد بن حنبل، تأليف أحمد بن حنبل (ت 0241هـ)"
 ---

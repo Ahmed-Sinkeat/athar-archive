@@ -3,7 +3,7 @@ title: "حاشية ابن قائد على منتهى الإرادات"
 status: published
 published_at: 2026-07-20
 person: abn-qayd
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "حاشية ابن قائد على منتهى الإرادات"
 ---

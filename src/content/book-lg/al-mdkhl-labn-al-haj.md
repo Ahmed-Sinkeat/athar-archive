@@ -3,7 +3,7 @@ title: "المدخل لابن الحاج"
 status: published
 published_at: 2026-07-19
 person: abn-al-haj
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-maliki"]
 description: "المدخل لابن الحاج"
 ---

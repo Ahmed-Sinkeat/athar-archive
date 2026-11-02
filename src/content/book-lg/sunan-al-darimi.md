@@ -3,7 +3,7 @@ title: "سنن الدارمي"
 status: published
 published_at: 2026-07-27
 person: al-darimi-abu-muhammad
-kind: متن
+kind: كتاب
 authored_year: 255
 description: "سنن الدارمي، تأليف الدارمي، أبو محمد (ت 0255هـ)"
 ---

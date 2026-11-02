@@ -3,7 +3,7 @@ title: "توجيهات إسلامية لعبد الله بن حميد"
 status: published
 published_at: 2026-07-20
 person: abd-al-lh-bn-hmyd
-kind: مرجع
+kind: كتاب
 topics: ["al-riqaq-wal-adhkar"]
 description: "توجيهات إسلامية لعبد الله بن حميد"
 ---

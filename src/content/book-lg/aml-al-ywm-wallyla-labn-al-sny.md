@@ -3,7 +3,7 @@ title: "عمل اليوم والليلة لابن السني"
 status: published
 published_at: 2026-07-28
 person: abn-al-sny
-kind: متن
+kind: كتاب
 authored_year: 364
 description: "عمل اليوم والليلة لابن السني، تأليف ابن السني (ت 0364هـ)"
 ---

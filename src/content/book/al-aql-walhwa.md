@@ -3,7 +3,7 @@ title: "العقل والهوى"
 status: published
 published_at: 2026-07-20
 person: al-trmthy-al-hkym
-kind: مرجع
+kind: كتاب
 topics: ["al-riqaq-wal-adhkar"]
 description: "العقل والهوى"
 ---

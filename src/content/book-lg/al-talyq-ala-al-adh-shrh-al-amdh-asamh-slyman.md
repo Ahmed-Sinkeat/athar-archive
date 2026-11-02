@@ -3,7 +3,7 @@ title: "التعليق على العدة شرح العمدة - أسامة سلي
 status: published
 published_at: 2026-07-20
 person: osamah-sulayman
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "التعليق على العدة شرح العمدة - أسامة سليمان"
 ---

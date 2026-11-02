@@ -3,7 +3,7 @@ title: "العظمة لأبي الشيخ الأصبهاني"
 status: published
 published_at: 2026-07-28
 person: abw-al-shykh-al-asbhany
-kind: متن
+kind: كتاب
 authored_year: 369
 description: "العظمة لأبي الشيخ الأصبهاني، تأليف أبو الشيخ الأصبهاني (ت 0369هـ)"
 ---

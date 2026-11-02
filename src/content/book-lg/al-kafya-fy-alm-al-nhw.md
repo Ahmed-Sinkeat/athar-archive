@@ -3,7 +3,7 @@ title: "الكافية في علم النحو"
 status: published
 published_at: 2026-07-22
 person: abn-al-hajb
-kind: كتاب
+kind: متن
 topics: ["al-nahw"]
 ---
 <!-- card -->

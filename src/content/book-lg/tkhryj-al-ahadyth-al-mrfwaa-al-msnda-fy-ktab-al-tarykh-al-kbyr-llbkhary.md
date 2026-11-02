@@ -3,7 +3,7 @@ title: "تخريج الأحاديث المرفوعة المسندة في كتا�
 status: published
 published_at: 2026-07-28
 person: al-bukhari
-kind: متن
+kind: كتاب
 authored_year: 256
 description: "تخريج الأحاديث المرفوعة المسندة في كتاب التاريخ الكبير للبخاري، تأليف البخاري (ت 0256هـ)"
 ---

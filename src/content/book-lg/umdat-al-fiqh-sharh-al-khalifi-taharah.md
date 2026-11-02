@@ -3,7 +3,7 @@ title: "عمدة الفقه — كتاب الطهارة (شرح أبي جعفر 
 status: published
 published_at: 2026-07-04
 person: abu-jafar-al-khalifi
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 work_type: شرح
 transcript_status: قيد المراجعة

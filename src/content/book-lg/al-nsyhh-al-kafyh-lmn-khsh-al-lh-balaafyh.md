@@ -3,7 +3,7 @@ title: "النصيحة الكافية لمن خصه الله بالعافية"
 status: published
 published_at: 2026-07-20
 person: zrwq
-kind: مرجع
+kind: كتاب
 topics: ["al-riqaq-wal-adhkar"]
 description: "النصيحة الكافية لمن خصه الله بالعافية"
 ---

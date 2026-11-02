@@ -3,7 +3,7 @@ title: "منتهى الإرادات"
 status: published
 published_at: 2026-07-20
 person: abn-al-njar-tqy-al-dyn
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "منتهى الإرادات"
 ---

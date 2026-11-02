@@ -3,7 +3,7 @@ title: "التعليقة الكبيرة في مسائل الخلاف علي مذ
 status: published
 published_at: 2026-07-19
 person: abw-yala-abn-al-fra
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "التعليقة الكبيرة في مسائل الخلاف علي مذهب أحمد"
 ---

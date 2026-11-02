@@ -3,7 +3,7 @@ title: "معجم ابن الأعرابي"
 status: published
 published_at: 2026-07-28
 person: abn-al-aaraby-ahmd-bn-bshr
-kind: متن
+kind: كتاب
 authored_year: 340
 description: "معجم ابن الأعرابي، تأليف ابن الأعرابي، أحمد بن بشر (ت 0340هـ)"
 ---

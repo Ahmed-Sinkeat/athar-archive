@@ -5,7 +5,7 @@ edition: "تحقيق محمد فؤاد عبد الباقي"
 status: published
 published_at: 2026-07-28
 person: ibn-majah
-kind: متن
+kind: كتاب
 authored_year: 273
 description: "سنن ابن ماجه، تأليف ابن ماجه (ت 0273هـ)"
 ---

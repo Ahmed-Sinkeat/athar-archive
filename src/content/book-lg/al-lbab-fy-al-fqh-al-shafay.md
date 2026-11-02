@@ -3,7 +3,7 @@ title: "اللباب في الفقه الشافعي"
 status: published
 published_at: 2026-07-19
 person: abn-al-mhamly
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-shafii"]
 description: "اللباب في الفقه الشافعي"
 ---

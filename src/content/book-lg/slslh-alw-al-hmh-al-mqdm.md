@@ -3,7 +3,7 @@ title: "سلسلة علو الهمة - المقدم"
 status: published
 published_at: 2026-07-20
 person: mhmd-asmaayl-al-mqdm
-kind: مرجع
+kind: كتاب
 topics: ["al-riqaq-wal-adhkar"]
 description: "سلسلة علو الهمة - المقدم"
 ---

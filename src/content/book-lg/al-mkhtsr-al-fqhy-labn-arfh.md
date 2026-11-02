@@ -3,7 +3,7 @@ title: "المختصر الفقهي لابن عرفة"
 status: published
 published_at: 2026-07-19
 person: abn-arfh
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-maliki"]
 description: "المختصر الفقهي لابن عرفة"
 ---

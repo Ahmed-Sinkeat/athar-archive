@@ -3,7 +3,7 @@ title: "فتاوى ابن الصلاح"
 status: published
 published_at: 2026-07-19
 person: abn-al-slah
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-shafii"]
 description: "فتاوى ابن الصلاح"
 ---

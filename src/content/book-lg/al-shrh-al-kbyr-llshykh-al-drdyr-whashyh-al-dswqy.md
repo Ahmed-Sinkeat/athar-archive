@@ -3,7 +3,7 @@ title: "الشرح الكبير للشيخ الدردير وحاشية الدس�
 status: published
 published_at: 2026-07-19
 person: mhmd-bn-ahmd-al-dswqy
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-maliki"]
 description: "الشرح الكبير للشيخ الدردير وحاشية الدسوقي"
 ---

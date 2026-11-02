@@ -3,7 +3,7 @@ title: "العزيز شرح الوجيز المعروف بالشرح الكبي�
 status: published
 published_at: 2026-07-19
 person: al-rafay-abd-al-krym
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-shafii"]
 description: "العزيز شرح الوجيز المعروف بالشرح الكبير ط العلمية"
 ---

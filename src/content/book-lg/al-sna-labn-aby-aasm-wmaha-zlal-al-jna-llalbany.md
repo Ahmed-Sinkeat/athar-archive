@@ -3,7 +3,7 @@ title: "السنة لابن أبي عاصم ومعها ظلال الجنة لل�
 status: published
 published_at: 2026-07-28
 person: ibn-abi-asim
-kind: متن
+kind: كتاب
 authored_year: 287
 description: "السنة لابن أبي عاصم ومعها ظلال الجنة للألباني، تأليف ابن أبي عاصم (ت 0287هـ)"
 ---

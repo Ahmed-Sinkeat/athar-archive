@@ -3,7 +3,7 @@ title: "التفسير من سنن سعيد بن منصور - مخرجا"
 status: published
 published_at: 2026-07-28
 person: sayd-bn-mnswr
-kind: متن
+kind: كتاب
 authored_year: 227
 description: "التفسير من سنن سعيد بن منصور - مخرجا، تأليف سعيد بن منصور (ت 0227هـ)"
 ---

@@ -3,7 +3,7 @@ title: "مواهب الجليل في شرح مختصر خليل"
 status: published
 published_at: 2026-07-19
 person: al-rayny-al-htab
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-maliki"]
 description: "مواهب الجليل في شرح مختصر خليل"
 ---

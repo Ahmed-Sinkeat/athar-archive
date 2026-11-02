@@ -3,7 +3,7 @@ title: "مطالب أولي النهى في شرح غاية المنتهى"
 status: published
 published_at: 2026-07-20
 person: al-rhybany
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "مطالب أولي النهى في شرح غاية المنتهى"
 ---

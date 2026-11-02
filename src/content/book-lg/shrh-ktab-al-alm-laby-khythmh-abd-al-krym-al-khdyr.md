@@ -3,7 +3,7 @@ title: "شرح كتاب العلم لأبي خيثمة - عبد الكريم ا�
 status: published
 published_at: 2026-07-20
 person: abd-al-krym-al-khdyr
-kind: مرجع
+kind: كتاب
 topics: ["al-riqaq-wal-adhkar"]
 description: "شرح كتاب العلم لأبي خيثمة - عبد الكريم الخضير"
 ---

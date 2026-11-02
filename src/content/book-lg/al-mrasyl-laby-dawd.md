@@ -3,7 +3,7 @@ title: "المراسيل لأبي داود"
 status: published
 published_at: 2026-07-28
 person: abu-dawud-al-sijistani
-kind: متن
+kind: كتاب
 authored_year: 275
 description: "المراسيل لأبي داود، تأليف السجستاني، أبو داود (ت 0275هـ)"
 ---

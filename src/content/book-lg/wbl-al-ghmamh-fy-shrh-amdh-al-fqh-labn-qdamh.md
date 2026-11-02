@@ -3,7 +3,7 @@ title: "وبل الغمامة في شرح عمدة الفقه لابن قدام�
 status: published
 published_at: 2026-07-20
 person: abd-al-lh-al-tyar
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "وبل الغمامة في شرح عمدة الفقه لابن قدامة"
 ---

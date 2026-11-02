@@ -4,7 +4,7 @@ edition: "تحقيق التركي"
 status: published
 published_at: 2026-07-29
 person: abw-bkr-al-byhqy
-kind: متن
+kind: كتاب
 authored_year: 458
 description: "السنن الكبرى للبيهقي ت التركي، تأليف أبو بكر البيهقي (ت 0458هـ)"
 ---

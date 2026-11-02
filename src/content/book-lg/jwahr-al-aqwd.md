@@ -3,7 +3,7 @@ title: "جواهر العقود"
 status: published
 published_at: 2026-07-19
 person: al-mnhajy-al-asywty
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-shafii"]
 description: "جواهر العقود"
 ---

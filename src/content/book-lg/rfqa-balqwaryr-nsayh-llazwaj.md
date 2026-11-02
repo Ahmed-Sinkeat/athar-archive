@@ -3,7 +3,7 @@ title: "رفقا بالقوارير - نصائح للأزواج"
 status: published
 published_at: 2026-07-20
 person: amh-al-lh-bnt-abd-al-mtlb
-kind: مرجع
+kind: كتاب
 topics: ["al-riqaq-wal-adhkar"]
 description: "رفقا بالقوارير - نصائح للأزواج"
 ---

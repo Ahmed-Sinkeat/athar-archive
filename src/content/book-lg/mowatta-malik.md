@@ -4,7 +4,7 @@ edition: "تحقيق الأعظمي"
 status: published
 published_at: 2026-07-27
 person: malik-ibn-anas
-kind: متن
+kind: كتاب
 authored_year: 179
 description: "موطأ مالك ت الأعظمي، تأليف مالك بن أنس (ت 0179هـ)"
 ---

@@ -3,7 +3,7 @@ title: "النوادر والزيادات على ما في المدونة من �
 status: published
 published_at: 2026-07-19
 person: ibn-abi-zayd-al-qayrawani
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-maliki"]
 description: "النوادر والزيادات على ما في المدونة من غيرها من الأمهات"
 ---

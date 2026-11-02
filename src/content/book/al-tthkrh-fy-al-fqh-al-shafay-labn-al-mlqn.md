@@ -3,7 +3,7 @@ title: "التذكرة في الفقه الشافعي لابن الملقن"
 status: published
 published_at: 2026-07-19
 person: ibn-al-mulaqqin
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-shafii"]
 description: "التذكرة في الفقه الشافعي لابن الملقن"
 ---

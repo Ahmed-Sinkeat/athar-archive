@@ -3,7 +3,7 @@ title: "شرح كتاب آداب المشي إلى الصلاة أو العبا�
 status: published
 published_at: 2026-07-20
 person: mhmd-bn-ibrahym-al-al-shykh
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "شرح كتاب آداب المشي إلى الصلاة أو العبادات (الصلاة، الزكاة، الصيام)"
 ---

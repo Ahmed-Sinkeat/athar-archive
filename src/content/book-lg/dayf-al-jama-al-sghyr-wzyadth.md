@@ -3,7 +3,7 @@ title: "ضعيف الجامع الصغير وزيادته"
 status: published
 published_at: 2026-07-28
 person: nasr-al-dyn-al-albany
-kind: متن
+kind: كتاب
 authored_year: 1420
 description: "ضعيف الجامع الصغير وزيادته، تأليف ناصر الدين الألباني (ت 1420هـ)"
 ---

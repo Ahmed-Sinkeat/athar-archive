@@ -3,7 +3,7 @@ title: "الروض الندي شرح كافي المبتدي"
 status: published
 published_at: 2026-07-20
 person: al-baly-shhab-al-dyn
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "الروض الندي شرح كافي المبتدي"
 ---

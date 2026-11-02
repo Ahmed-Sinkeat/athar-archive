@@ -3,7 +3,7 @@ title: "عمدة الحازم في الزوائد على مختصر أبي ال�
 status: published
 published_at: 2026-07-19
 person: ibn-qudamah
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "عمدة الحازم في الزوائد على مختصر أبي القاسم"
 ---

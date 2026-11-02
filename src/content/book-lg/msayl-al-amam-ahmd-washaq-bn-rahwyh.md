@@ -3,7 +3,7 @@ title: "مسائل الإمام أحمد وإسحاق بن راهويه"
 status: published
 published_at: 2026-07-19
 person: ashaq-al-kwsj
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "مسائل الإمام أحمد وإسحاق بن راهويه"
 ---

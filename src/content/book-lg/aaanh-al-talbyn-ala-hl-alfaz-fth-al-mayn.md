@@ -3,7 +3,7 @@ title: "إعانة الطالبين على حل ألفاظ فتح المعين"
 status: published
 published_at: 2026-07-19
 person: al-bkry-al-dmyaty
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-shafii"]
 description: "إعانة الطالبين على حل ألفاظ فتح المعين"
 ---

@@ -3,7 +3,7 @@ title: "المهمات في شرح الروضة والرافعي"
 status: published
 published_at: 2026-07-19
 person: al-asnwy
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-shafii"]
 description: "المهمات في شرح الروضة والرافعي"
 ---

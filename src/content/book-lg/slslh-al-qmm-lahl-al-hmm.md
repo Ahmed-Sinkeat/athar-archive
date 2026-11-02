@@ -3,7 +3,7 @@ title: "سلسلة القمم لأهل الهمم"
 status: published
 published_at: 2026-07-20
 person: aayd-al-qrny
-kind: مرجع
+kind: كتاب
 topics: ["al-riqaq-wal-adhkar"]
 description: "سلسلة القمم لأهل الهمم"
 ---

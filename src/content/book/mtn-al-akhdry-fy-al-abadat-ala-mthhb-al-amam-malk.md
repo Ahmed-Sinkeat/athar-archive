@@ -3,7 +3,7 @@ title: "متن الأخضري في العبادات على مذهب الإمام
 status: published
 published_at: 2026-07-19
 person: al-akhdry
-kind: مرجع
+kind: متن
 topics: ["fiqh-maliki"]
 description: "متن الأخضري في العبادات على مذهب الإمام مالك"
 ---

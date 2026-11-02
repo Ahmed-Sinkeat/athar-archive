@@ -4,7 +4,7 @@ edition: "الجامعة الإسلامية"
 status: published
 published_at: 2026-07-29
 person: abw-awana
-kind: متن
+kind: كتاب
 authored_year: 316
 description: "مستخرج أبي عوانة ط الجامعة الإسلامية، تأليف أبو عوانة (ت 0316هـ)"
 ---

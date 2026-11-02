@@ -3,7 +3,7 @@ title: "غاية المنتهى في جمع الإقناع والمنتهى"
 status: published
 published_at: 2026-07-20
 person: mray-al-krmy
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "غاية المنتهى في جمع الإقناع والمنتهى"
 ---

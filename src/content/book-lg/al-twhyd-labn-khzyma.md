@@ -3,7 +3,7 @@ title: "التوحيد لابن خزيمة"
 status: published
 published_at: 2026-07-28
 person: abn-khzyma
-kind: متن
+kind: كتاب
 authored_year: 311
 description: "التوحيد لابن خزيمة، تأليف ابن خزيمة (ت 0311هـ)"
 ---

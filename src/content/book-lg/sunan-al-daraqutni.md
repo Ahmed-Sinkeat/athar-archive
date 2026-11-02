@@ -3,7 +3,7 @@ title: "سنن الدارقطني"
 status: published
 published_at: 2026-07-27
 person: al-daraqutni
-kind: متن
+kind: كتاب
 authored_year: 385
 description: "سنن الدارقطني، تأليف الدارقطني (ت 0385هـ)"
 ---

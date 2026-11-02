@@ -2,7 +2,7 @@
 title: "تيسير أصول الفقه للمبتدئين"
 status: published
 published_at: 2026-07-19
-kind: مرجع
+kind: كتاب
 topics: ["usul-al-fiqh"]
 description: "مدخل ميسر لأصول الفقه للمبتدئين"
 ---

@@ -3,7 +3,7 @@ title: "كفاية الأخيار في حل غاية الاختصار"
 status: published
 published_at: 2026-07-19
 person: tqy-al-dyn-al-hsny
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-shafii"]
 description: "كفاية الأخيار في حل غاية الاختصار"
 ---

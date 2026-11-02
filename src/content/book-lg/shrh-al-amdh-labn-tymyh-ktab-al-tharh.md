@@ -3,7 +3,7 @@ title: "شرح العمدة لابن تيمية - كتاب الطهارة"
 status: published
 published_at: 2026-07-20
 person: ibn-taymiyyah
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "شرح العمدة لابن تيمية - كتاب الطهارة"
 ---

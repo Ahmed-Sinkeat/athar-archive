@@ -3,7 +3,7 @@ title: "المحرر في الفقه على مذهب الإمام أحمد بن 
 status: published
 published_at: 2026-07-19
 person: mjd-al-dyn-bn-tymyh
-kind: مرجع
+kind: متن
 topics: ["fiqh-hanbali"]
 description: "المحرر في الفقه على مذهب الإمام أحمد بن حنبل"
 ---

@@ -3,7 +3,7 @@ title: "برنامج التجيبي"
 status: published
 published_at: 2026-07-28
 person: al-qasm-bn-ywsf-al-tjyby
-kind: متن
+kind: كتاب
 authored_year: 730
 description: "برنامج التجيبي، تأليف القاسم بن يوسف التجيبي (ت 0730هـ)"
 ---

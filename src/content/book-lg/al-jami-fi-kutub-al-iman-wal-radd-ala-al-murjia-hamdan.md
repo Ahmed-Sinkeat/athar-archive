@@ -3,7 +3,6 @@ title: "الجامع في كتب الإيمان والرد على المرجئة
 status: published
 published_at: 2026-10-31
 person: adel-al-hamdan
-authored_year: مجموع
 kind: مجموع
 ---
 <!-- card -->

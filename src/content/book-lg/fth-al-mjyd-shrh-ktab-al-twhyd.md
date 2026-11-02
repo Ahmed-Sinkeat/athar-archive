@@ -3,7 +3,7 @@ title: "فتح المجيد شرح كتاب التوحيد"
 status: published
 published_at: 2026-07-16
 person: abd-al-rhmn-bn-hsn-al-al-shykh
-kind: مرجع
+kind: كتاب
 topics: ["tahwid-al-ibada"]
 authored_year: 1285
 description: "شرح عبد الرحمن بن حسن آل الشيخ على كتاب التوحيد"

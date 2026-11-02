@@ -3,7 +3,7 @@ title: "متن شذور الذهب"
 status: published
 published_at: 2026-07-22
 person: jmal-al-dyn-abn-hsham
-kind: كتاب
+kind: متن
 topics: ["al-nahw"]
 ---
 <!-- card -->

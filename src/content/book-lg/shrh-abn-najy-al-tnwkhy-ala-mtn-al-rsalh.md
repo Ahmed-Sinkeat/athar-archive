@@ -3,7 +3,7 @@ title: "شرح ابن ناجي التنوخي على متن الرسالة"
 status: published
 published_at: 2026-07-19
 person: al-tnwkhy-abn-najy
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-maliki"]
 description: "شرح ابن ناجي التنوخي على متن الرسالة"
 ---

@@ -3,7 +3,7 @@ title: "كيف تسبق"
 status: published
 published_at: 2026-07-20
 person: khald-al-hsynan
-kind: مرجع
+kind: كتاب
 topics: ["al-riqaq-wal-adhkar"]
 description: "كيف تسبق"
 ---

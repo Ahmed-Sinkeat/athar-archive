@@ -3,7 +3,7 @@ title: "الأمالي في آثار الصحابة لعبد الرزاق الص
 status: published
 published_at: 2026-07-28
 person: abd-al-razzaq-al-sanani
-kind: متن
+kind: كتاب
 authored_year: 211
 description: "الأمالي في آثار الصحابة لعبد الرزاق الصنعاني، تأليف عبد الرزاق الصنعاني (ت 0211هـ)"
 ---

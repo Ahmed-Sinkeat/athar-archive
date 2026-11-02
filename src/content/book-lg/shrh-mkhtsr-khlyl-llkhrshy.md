@@ -3,7 +3,7 @@ title: "شرح مختصر خليل للخرشي"
 status: published
 published_at: 2026-07-19
 person: mhmd-bn-abd-al-lh-al-khrshy
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-maliki"]
 description: "شرح مختصر خليل للخرشي"
 ---

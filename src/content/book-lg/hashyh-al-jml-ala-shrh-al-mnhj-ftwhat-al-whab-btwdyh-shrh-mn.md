@@ -3,7 +3,7 @@ title: "حاشية الجمل على شرح المنهج = فتوحات الوه
 status: published
 published_at: 2026-07-19
 person: al-jml
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-shafii"]
 description: "حاشية الجمل على شرح المنهج = فتوحات الوهاب بتوضيح شرح منهج الطلاب"
 ---

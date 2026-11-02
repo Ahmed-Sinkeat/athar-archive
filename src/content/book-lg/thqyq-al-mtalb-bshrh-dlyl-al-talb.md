@@ -3,7 +3,7 @@ title: "تحقيق المطالب بشرح دليل الطالب"
 status: published
 published_at: 2026-07-20
 person: abw-al-mnthr-al-mnyawy
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "تحقيق المطالب بشرح دليل الطالب"
 ---

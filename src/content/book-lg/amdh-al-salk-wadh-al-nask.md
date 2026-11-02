@@ -3,7 +3,7 @@ title: "عمدة السالك وعدة الناسك"
 status: published
 published_at: 2026-07-19
 person: abn-al-nqyb
-kind: مرجع
+kind: متن
 topics: ["fiqh-shafii"]
 description: "عمدة السالك وعدة الناسك"
 ---

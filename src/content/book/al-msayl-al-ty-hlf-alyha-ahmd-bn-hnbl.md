@@ -3,7 +3,7 @@ title: "المسائل التي حلف عليها أحمد بن حنبل"
 status: published
 published_at: 2026-07-19
 person: ibn-abi-yala
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "المسائل التي حلف عليها أحمد بن حنبل"
 ---

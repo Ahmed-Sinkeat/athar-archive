@@ -3,7 +3,7 @@ title: "نظرات في التربية الإيمانية"
 status: published
 published_at: 2026-07-20
 person: mjdy-al-hlaly
-kind: مرجع
+kind: كتاب
 topics: ["al-riqaq-wal-adhkar"]
 description: "نظرات في التربية الإيمانية"
 ---

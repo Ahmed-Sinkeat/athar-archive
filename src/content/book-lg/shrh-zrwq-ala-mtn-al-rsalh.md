@@ -3,7 +3,7 @@ title: "شرح زروق على متن الرسالة"
 status: published
 published_at: 2026-07-19
 person: zrwq
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-maliki"]
 description: "شرح زروق على متن الرسالة"
 ---

@@ -3,7 +3,7 @@ title: "المعجم الصغير للطبراني"
 status: published
 published_at: 2026-07-28
 person: al-tbrany
-kind: متن
+kind: كتاب
 authored_year: 360
 description: "المعجم الصغير للطبراني، تأليف الطبراني (ت 0360هـ)"
 ---

@@ -3,7 +3,7 @@ title: "الغرر البهية في شرح البهجة الوردية"
 status: published
 published_at: 2026-07-19
 person: zkrya-al-ansary
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-shafii"]
 description: "الغرر البهية في شرح البهجة الوردية"
 ---

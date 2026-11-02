@@ -3,7 +3,7 @@ title: "درء تعارض العقل والنقل"
 status: published
 published_at: 2026-07-16
 person: ibn-taymiyyah
-kind: مرجع
+kind: كتاب
 topics: ["al-aqeedah-al-aamah"]
 authored_year: 728
 description: "درء تعارض العقل والنقل لابن تيمية، في تقرير أن صريح المعقول لا يعارض صحيح المنقول، ورد شبه أهل الكلام"

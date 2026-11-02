@@ -3,7 +3,7 @@ title: "منار السبيل في شرح الدليل"
 status: published
 published_at: 2026-07-20
 person: abn-dwyan
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "منار السبيل في شرح الدليل"
 ---

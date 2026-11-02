@@ -3,7 +3,7 @@ title: "الدر المصون في علوم الكتاب المكنون"
 status: draft
 published_at: 2026-07-18
 person: al-samin-al-halabi
-kind: مرجع
+kind: كتاب
 topics: ["ulum-al-quran"]
 ---
 ## المقدمة

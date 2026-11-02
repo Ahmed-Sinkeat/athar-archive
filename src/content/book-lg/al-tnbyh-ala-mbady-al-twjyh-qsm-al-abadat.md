@@ -3,7 +3,7 @@ title: "التنبيه على مبادئ التوجيه - قسم العبادا�
 status: published
 published_at: 2026-07-19
 person: abw-al-tahr-abn-bshyr
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-maliki"]
 description: "التنبيه على مبادئ التوجيه - قسم العبادات"
 ---

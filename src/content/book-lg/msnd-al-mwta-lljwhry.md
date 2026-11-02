@@ -3,7 +3,7 @@ title: "مسند الموطأ للجوهري"
 status: published
 published_at: 2026-07-28
 person: al-jwhry-abw-al-qasm
-kind: متن
+kind: كتاب
 authored_year: 381
 description: "مسند الموطأ للجوهري، تأليف الجوهري، أبو القاسم (ت 0381هـ)"
 ---

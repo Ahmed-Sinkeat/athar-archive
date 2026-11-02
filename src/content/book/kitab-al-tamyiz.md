@@ -3,7 +3,7 @@ title: "كتاب التمييز"
 status: published
 published_at: 2026-07-24
 person: muslim-ibn-al-hajjaj
-kind: متن
+kind: كتاب
 topics: ["mustalah-al-hadith"]
 authored_year: 261
 description: "كتاب التمييز للإمام مسلم بن الحجاج، في بيان علل الحديث وتمييز خطأ الرواة من صوابهم"

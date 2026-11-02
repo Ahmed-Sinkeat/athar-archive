@@ -3,7 +3,7 @@ title: "فتح المعين بشرح قرة العين بمهمات الدين"
 status: published
 published_at: 2026-07-19
 person: zyn-al-dyn-al-mabry
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-shafii"]
 description: "فتح المعين بشرح قرة العين بمهمات الدين"
 ---

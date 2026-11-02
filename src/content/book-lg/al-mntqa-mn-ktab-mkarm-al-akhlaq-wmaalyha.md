@@ -3,7 +3,7 @@ title: "المنتقى من كتاب مكارم الأخلاق ومعاليها"
 status: published
 published_at: 2026-07-28
 person: al-khrayty
-kind: متن
+kind: كتاب
 authored_year: 327
 description: "المنتقى من كتاب مكارم الأخلاق ومعاليها، تأليف الخرائطي (ت 0327هـ)"
 ---

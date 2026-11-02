@@ -5,7 +5,7 @@ edition: "دار الكتاب العربي"
 status: published
 published_at: 2026-07-20
 person: abn-aby-amr
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "الشرح الكبير على متن المقنع"
 ---

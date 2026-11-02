@@ -3,7 +3,7 @@ title: "الطيوريات"
 status: published
 published_at: 2026-07-28
 person: abu-tahir-al-silafi
-kind: متن
+kind: كتاب
 authored_year: 576
 description: "الطيوريات، تأليف أبو طاهر السلفي (ت 0576هـ)"
 ---

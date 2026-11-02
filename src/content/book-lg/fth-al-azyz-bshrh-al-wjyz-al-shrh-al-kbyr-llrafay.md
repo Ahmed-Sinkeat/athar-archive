@@ -3,7 +3,7 @@ title: "فتح العزيز بشرح الوجيز = الشرح الكبير لل
 status: published
 published_at: 2026-07-19
 person: al-rafay-abd-al-krym
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-shafii"]
 description: "فتح العزيز بشرح الوجيز = الشرح الكبير للرافعي"
 ---

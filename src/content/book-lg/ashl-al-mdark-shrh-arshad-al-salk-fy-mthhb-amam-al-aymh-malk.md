@@ -3,7 +3,7 @@ title: "أسهل المدارك «شرح إرشاد السالك في مذهب �
 status: published
 published_at: 2026-07-19
 person: al-kshnawy-abw-bkr
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-maliki"]
 description: "أسهل المدارك «شرح إرشاد السالك في مذهب إمام الأئمة مالك»"
 ---

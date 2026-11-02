@@ -3,7 +3,7 @@ title: "الإيمان لابن منده"
 status: published
 published_at: 2026-07-28
 person: ibn-mandah
-kind: متن
+kind: كتاب
 authored_year: 395
 description: "الإيمان لابن منده، تأليف ابن منده محمد بن إسحاق (ت 0395هـ)"
 ---

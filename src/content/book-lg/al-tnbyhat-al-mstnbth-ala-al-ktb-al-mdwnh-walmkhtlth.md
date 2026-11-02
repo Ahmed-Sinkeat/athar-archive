@@ -3,7 +3,7 @@ title: "التنبيهات المستنبطة على الكتب المدونة �
 status: published
 published_at: 2026-07-19
 person: al-qady-ayad
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-maliki"]
 description: "التنبيهات المستنبطة على الكتب المدونة والمختلطة"
 ---

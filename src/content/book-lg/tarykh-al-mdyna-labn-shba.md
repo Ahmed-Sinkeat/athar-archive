@@ -3,7 +3,7 @@ title: "تاريخ المدينة لابن شبة"
 status: published
 published_at: 2026-07-28
 person: abn-shba
-kind: متن
+kind: كتاب
 authored_year: 262
 description: "تاريخ المدينة لابن شبة، تأليف ابن شبة (ت 0262هـ)"
 ---

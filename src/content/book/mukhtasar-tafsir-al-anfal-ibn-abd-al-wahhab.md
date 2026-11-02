@@ -3,7 +3,7 @@ title: "مختصر تفسير سورة الأنفال لمحمد بن عبد ا�
 status: review
 published_at: 2026-07-18
 person: ibn-abdul-wahhab
-kind: مرجع
+kind: كتاب
 topics: ["tafsir-al-quran"]
 ---
 <!-- card -->

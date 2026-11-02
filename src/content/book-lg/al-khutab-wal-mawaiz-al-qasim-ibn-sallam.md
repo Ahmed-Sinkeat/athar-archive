@@ -3,7 +3,7 @@ title: "الخطب والمواعظ"
 status: published
 published_at: 2026-07-07
 person: al-qasim-ibn-sallam
-kind: مرجع
+kind: كتاب
 topics: ["tazkiyat-al-nafs"]
 authored_year: 224
 description: "الخطب والمواعظ لأبي عبيد القاسم بن سلام"

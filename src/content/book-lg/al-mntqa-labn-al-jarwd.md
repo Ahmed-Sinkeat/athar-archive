@@ -3,7 +3,7 @@ title: "المنتقى لابن الجارود"
 status: published
 published_at: 2026-07-28
 person: abn-al-jarwd
-kind: متن
+kind: كتاب
 authored_year: 307
 description: "المنتقى لابن الجارود، تأليف ابن الجارود (ت 0307هـ)"
 ---

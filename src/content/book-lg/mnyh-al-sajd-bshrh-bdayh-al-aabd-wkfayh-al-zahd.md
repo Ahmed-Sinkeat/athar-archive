@@ -3,7 +3,7 @@ title: "منية الساجد بشرح بداية العابد وكفاية ال
 status: published
 published_at: 2026-07-20
 person: ans-bn-aadl-al-ytama
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "منية الساجد بشرح بداية العابد وكفاية الزاهد"
 ---

@@ -3,7 +3,7 @@ title: "الذكر الثمين"
 status: published
 published_at: 2026-07-20
 person: abn-athymyn
-kind: مرجع
+kind: كتاب
 topics: ["al-riqaq-wal-adhkar"]
 description: "الذكر الثمين"
 ---

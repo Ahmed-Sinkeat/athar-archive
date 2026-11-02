@@ -3,7 +3,7 @@ title: "الآحاد والمثاني لابن أبي عاصم"
 status: published
 published_at: 2026-07-28
 person: ibn-abi-asim
-kind: متن
+kind: كتاب
 authored_year: 287
 description: "الآحاد والمثاني لابن أبي عاصم، تأليف ابن أبي عاصم (ت 0287هـ)"
 ---

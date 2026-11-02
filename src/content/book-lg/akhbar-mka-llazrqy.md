@@ -3,7 +3,7 @@ title: "أخبار مكة للأزرقي"
 status: published
 published_at: 2026-07-28
 person: al-azrqy
-kind: متن
+kind: كتاب
 authored_year: 250
 description: "أخبار مكة للأزرقي، تأليف الأزرقي (ت 0250هـ)"
 ---

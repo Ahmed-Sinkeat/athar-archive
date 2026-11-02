@@ -3,7 +3,7 @@ title: "نهاية الزين"
 status: published
 published_at: 2026-07-19
 person: nwwy-al-jawy
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-shafii"]
 description: "نهاية الزين"
 ---

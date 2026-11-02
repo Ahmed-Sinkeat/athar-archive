@@ -3,7 +3,7 @@ title: "شرح المنهج المنتخب إلى قواعد المذهب"
 status: published
 published_at: 2026-07-19
 person: ahmd-al-mnjwr
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-maliki"]
 description: "شرح المنهج المنتخب إلى قواعد المذهب"
 ---

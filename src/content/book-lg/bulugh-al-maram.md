@@ -3,7 +3,7 @@ title: "بلوغ المرام من أدلة الأحكام"
 status: published
 published_at: 2026-07-06
 person: ibn-hajar
-kind: كتاب
+kind: متن
 topics: ["mutoon-al-hadith"]
 authored_year: 852
 description: "بلوغ المرام من أدلة الأحكام للحافظ ابن حجر العسقلاني"

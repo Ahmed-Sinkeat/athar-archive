@@ -3,7 +3,7 @@ title: "شرح متن أبي شجاع - محمد حسن عبد الغفار"
 status: published
 published_at: 2026-07-19
 person: mhmd-hsn-abd-al-ghfar
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-shafii"]
 description: "شرح متن أبي شجاع - محمد حسن عبد الغفار"
 ---

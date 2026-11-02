@@ -3,7 +3,7 @@ title: "الممتع في شرح المقنع ت ابن دهيش ط 3"
 status: published
 published_at: 2026-07-20
 person: abn-al-mnja-abw-al-brkat
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "الممتع في شرح المقنع ت ابن دهيش ط 3"
 ---

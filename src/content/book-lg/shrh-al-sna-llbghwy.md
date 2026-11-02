@@ -3,7 +3,7 @@ title: "شرح السنة للبغوي"
 status: published
 published_at: 2026-07-28
 person: al-bghwy-abw-mhmd
-kind: متن
+kind: كتاب
 authored_year: 516
 description: "شرح السنة للبغوي، تأليف البغوي ، أبو محمد (ت 0516هـ)"
 ---

@@ -3,7 +3,7 @@ title: "الإقناع في حل ألفاظ أبي شجاع"
 status: published
 published_at: 2026-07-19
 person: al-khtyb-al-shrbyny
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-shafii"]
 description: "الإقناع في حل ألفاظ أبي شجاع"
 ---

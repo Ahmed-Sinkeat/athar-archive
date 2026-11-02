@@ -3,7 +3,7 @@ title: "الدلائل والإشارات على أخصر المختصرات"
 status: published
 published_at: 2026-07-20
 person: abd-al-azyz-al-aydan
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "الدلائل والإشارات على أخصر المختصرات"
 ---

@@ -3,7 +3,7 @@ title: "موسوعة الرقائق والأدب - ياسر الحمداني"
 status: published
 published_at: 2026-07-20
 person: yasr-al-hmdany
-kind: مرجع
+kind: كتاب
 topics: ["al-riqaq-wal-adhkar"]
 description: "موسوعة الرقائق والأدب - ياسر الحمداني"
 ---

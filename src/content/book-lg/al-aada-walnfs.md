@@ -3,7 +3,7 @@ title: "الأعضاء والنفس"
 status: published
 published_at: 2026-07-20
 person: al-trmthy-al-hkym
-kind: مرجع
+kind: كتاب
 topics: ["al-riqaq-wal-adhkar"]
 description: "الأعضاء والنفس"
 ---

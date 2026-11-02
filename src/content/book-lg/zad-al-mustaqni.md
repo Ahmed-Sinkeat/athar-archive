@@ -4,7 +4,7 @@ edition: "تحقيق عبد المحسن القاسم"
 status: published
 published_at: 2026-07-06
 person: al-hajjawi
-kind: كتاب
+kind: متن
 topics: ["fiqh-hanbali"]
 authored_year: 968
 description: "زاد المستقنع في اختصار المقنع للإمام شرف الدين الحجاوي"

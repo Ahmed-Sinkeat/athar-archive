@@ -3,7 +3,7 @@ title: "شرح الورقات في أصول الفقه"
 status: published
 published_at: 2026-07-19
 person: abd-al-krym-al-khdyr
-kind: مرجع
+kind: كتاب
 topics: ["usul-al-fiqh"]
 description: "شرح لكتاب الورقات لإمام الحرمين الجويني في أصول الفقه، دروس مفرغة للشيخ عبد الكريم الخضير"
 ---

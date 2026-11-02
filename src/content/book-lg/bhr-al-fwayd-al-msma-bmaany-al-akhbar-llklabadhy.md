@@ -3,7 +3,7 @@ title: "بحر الفوائد المسمى بمعاني الأخبار للكل�
 status: published
 published_at: 2026-07-28
 person: abw-bkr-al-klabadhy
-kind: متن
+kind: كتاب
 authored_year: 380
 description: "بحر الفوائد المسمى بمعاني الأخبار للكلاباذي، تأليف أبو بكر الكلاباذي (ت 0380هـ)"
 ---

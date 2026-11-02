@@ -3,7 +3,7 @@ title: "أحاديث إسماعيل بن جعفر"
 status: published
 published_at: 2026-07-28
 person: ismaayl-bn-jafr
-kind: متن
+kind: كتاب
 authored_year: 180
 description: "أحاديث إسماعيل بن جعفر، تأليف إسماعيل بن جعفر (ت 0180هـ)"
 ---

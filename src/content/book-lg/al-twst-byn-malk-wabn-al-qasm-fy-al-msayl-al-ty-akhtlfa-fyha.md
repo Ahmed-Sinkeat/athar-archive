@@ -3,7 +3,7 @@ title: "التوسط بين مالك وابن القاسم في المسائل �
 status: published
 published_at: 2026-07-19
 person: al-jbyry
-kind: مرجع
+kind: كتاب
 topics: ["fiqh-maliki"]
 description: "التوسط بين مالك وابن القاسم في المسائل التي اختلفا فيها من مسائل المدونة"
 ---

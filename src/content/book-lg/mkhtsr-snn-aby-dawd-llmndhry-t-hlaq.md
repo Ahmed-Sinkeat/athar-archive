@@ -3,7 +3,7 @@ title: "مختصر سنن أبي داود للمنذري ت حلاق"
 status: published
 published_at: 2026-07-28
 person: abd-al-azym-al-mndhry
-kind: متن
+kind: كتاب
 authored_year: 656
 description: "مختصر سنن أبي داود للمنذري ت حلاق، تأليف عبد العظيم المنذري (ت 0656هـ)"
 ---

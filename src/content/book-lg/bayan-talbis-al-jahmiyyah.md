@@ -3,7 +3,7 @@ title: "بيان تلبيس الجهمية في تأسيس بدعهم الكلا
 status: published
 published_at: 2026-07-16
 person: ibn-taymiyyah
-kind: مرجع
+kind: كتاب
 topics: ["al-firaq-war-rudud", "al-asma-was-sifat"]
 authored_year: 728
 description: "رد ابن تيمية على كتاب تأسيس التقديس للرازي، في تقرير مذهب أهل السنة في الأسماء والصفات ورد شبه الجهمية"
