@@ -99,6 +99,9 @@ fun ReaderPanel(
     docked: Boolean = false,
     recentQueries: List<String> = emptyList(),
     onHit: (InBookHit) -> Unit = { onJump(it.blockIndex) },
+    /** How the words must appear, as on the search screen; null hides the row (readers searching their open text only). */
+    searchMode: com.atharchive.feature.search.SearchMode? = null,
+    onSearchMode: (com.atharchive.feature.search.SearchMode) -> Unit = {},
 ) {
     var tab by remember(initialTab) { mutableStateOf(initialTab) }
 
@@ -150,7 +153,7 @@ fun ReaderPanel(
                         PageJumpRow(state, colors, currentBlockIndex, onPageJump)
                     }
                 }
-                ReaderPanelTab.Search -> PanelSearch(query, hits, colors, onQueryChange, onHit, searchStatus, partialSearch, downloadAsked, onDownloadForSearch, recentQueries)
+                ReaderPanelTab.Search -> PanelSearch(query, hits, colors, onQueryChange, onHit, searchStatus, partialSearch, downloadAsked, onDownloadForSearch, recentQueries, searchMode, onSearchMode)
                 ReaderPanelTab.Benefits -> BenefitsList(state, colors, onJump)
                 ReaderPanelTab.Bookmarks -> BookmarksList(state, colors, onJump)
             }
@@ -287,6 +290,8 @@ private fun PanelSearch(
     downloadAsked: Boolean = false,
     onDownloadForSearch: (() -> Unit)? = null,
     recentQueries: List<String> = emptyList(),
+    searchMode: com.atharchive.feature.search.SearchMode? = null,
+    onSearchMode: (com.atharchive.feature.search.SearchMode) -> Unit = {},
 ) {
     val focusRequester = remember { FocusRequester() }
     LaunchedEffect(Unit) { focusRequester.requestFocus() }
@@ -350,6 +355,18 @@ private fun PanelSearch(
             }
         }
 
+        if (searchMode != null) {
+            val modes = listOf(
+                com.atharchive.feature.search.SearchMode.All, com.atharchive.feature.search.SearchMode.Any,
+                com.atharchive.feature.search.SearchMode.Phrase, com.atharchive.feature.search.SearchMode.Exact,
+            )
+            Box(Modifier.padding(start = 14.dp, end = 14.dp, bottom = 8.dp)) {
+                SegmentRow(modes.map { it.label }, searchMode.label, colors, "reader_search_mode") { label ->
+                    onSearchMode(modes.first { it.label == label })
+                }
+            }
+        }
+
         if (query.isNotBlank()) {
             Text(
                 text = status ?: if (hits.isEmpty()) {
@@ -406,7 +423,7 @@ private fun PanelSearch(
                         .testTag("reader_panel_hit_${hit.id}"),
                 ) {
                     Text(
-                        text = hit.chapterTitle,
+                        text = listOfNotNull(hit.chapterTitle.ifBlank { null }, hit.pageLabel).joinToString(" · "),
                         color = colors.secondary,
                         style = MaterialTheme.typography.labelSmall,
                     )

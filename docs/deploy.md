@@ -194,6 +194,17 @@ than merely delaying it.
 - **Size ceiling:** D1 caps a database at 10 GB (Paid). `athar-search` was 6.85 GB
   on 2026-11-03 with ~2 GB of SQL (the 639-book import) still deferred; DB growth
   measured 1.15–1.43× the SQL size. Check `size_after` before a large load.
+- **Where the bytes go** (25 SQL parts, 3,047 docs → 176 MB, measured locally 2026-11-04):
+  stored columns (`docs_content`: `text` + the `raw` copy) 123 MB = 70%; the FTS index
+  50 MB, of which the `prefix='3 4'` indexes are 28 MB (16% of the DB). So `raw` is the
+  biggest single lever (~35%: 38M chars against 31M of `text`), prefix indexes the next (~16%).
+  `SEARCH_NO_RAW=1 pnpm search:gen` leaves `raw` out of the pending load (those books' search
+  snippets then show without tashkeel). Removing `raw`/prefix from the rows already live needs
+  the full `SEARCH_REBUILD_NEXT` reindex + swap; not done, decide after seeing real use.
+- **Per-book publish for the phone:** `pnpm publish:books` (dry run: builds only the books
+  changed since git tag `app-published`), `--go` uploads to R2 and moves the tag, `--go --search`
+  also refreshes their D1 rows. `pnpm app:prune` lists app/v2 objects the live generation no
+  longer references (dry run; `--confirm` deletes; run it a day after publishing).
 - Phone-only releases skip CI: deploy the search worker and load D1 from a local
   machine, push with `[skip ci]`, and run the CI workflow by hand (Actions → Run
   workflow) when the site should deploy.

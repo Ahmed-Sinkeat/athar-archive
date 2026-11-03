@@ -1014,13 +1014,18 @@ class AtharContentViewModel @Inject constructor(
      * مصنف ابن أبي شيبة on a slow link. A partly saved book says so, and the reader offers a
      * whole-book download (one stream) instead.
      */
-    suspend fun searchInBook(entityId: String, query: String): InBookSearch {
+    suspend fun searchInBook(entityId: String, query: String, mode: com.atharchive.feature.search.SearchMode = com.atharchive.feature.search.SearchMode.All): InBookSearch {
         if (query.trim().length < 2) return InBookSearch(emptyList())
         val total = catalogDao.entity(entityId)?.pkgBlocks ?: 0
         val saved = importDao.frames(entityId).sumOf { it.blockCount }
         // ponytail: first 200 source-order hits; paginate if more results are needed.
         val hits = contentSearch.search(
-            ContentSearchRequest(query = query, sort = ContentSearchSort.BookOrder,
+            ContentSearchRequest(
+                // As on the search screen: a phrase is the query quoted, «بعض الكلمات» joins with OR.
+                query = if (mode == com.atharchive.feature.search.SearchMode.Phrase || mode == com.atharchive.feature.search.SearchMode.Exact) "\"${query.trim().replace("\"", "")}\"" else query,
+                sort = ContentSearchSort.BookOrder,
+                anyWord = mode == com.atharchive.feature.search.SearchMode.Any,
+                exact = mode == com.atharchive.feature.search.SearchMode.Exact,
                 filter = ContentSearchFilter(entityIds = setOf(entityId))),
             limit = 200,
         ).blocks.map { hit ->
@@ -1033,13 +1038,13 @@ class AtharContentViewModel @Inject constructor(
             )
         }
         val complete = total == 0 || saved >= total
-        if (!complete) onlineInBook(entityId, query)?.let { return InBookSearch(it) }
+        if (!complete) onlineInBook(entityId, query, mode)?.let { return InBookSearch(it) }
         return InBookSearch(hits, complete, if (complete) 100 else (saved * 100 / total).coerceIn(0, 99))
     }
 
     /** The site's index for one book (every chapter that matches); null offline. A hit is located on tap. */
-    private suspend fun onlineInBook(entityId: String, query: String): List<InBookHit>? = try {
-        onlineSearch.hits(OnlineSearch.Query(query, "all", "text", emptySet(), emptySet(), "relevance", books = setOf(entityId)), 100).first
+    private suspend fun onlineInBook(entityId: String, query: String, mode: com.atharchive.feature.search.SearchMode): List<InBookHit>? = try {
+        onlineSearch.hits(OnlineSearch.Query(query, mode.api, "text", emptySet(), emptySet(), "relevance", books = setOf(entityId)), 100).first
             .mapIndexed { index, hit ->
                 val (text, marks) = unmark(hit.snippet)
                 val first = marks.firstOrNull() ?: 0..-1

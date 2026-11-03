@@ -661,7 +661,7 @@ fun AtharApp(
                             window = readerWindow,
                             loadProgress = loadProgress,
                             initialOrdinal = route.targetOrdinal,
-                            onSearch = { contentViewModel.searchInBook(route.bookId, it) },
+                            onSearch = { query, mode -> contentViewModel.searchInBook(route.bookId, query, mode) },
                             bookSaved = route.bookId in retainedIds,
                             onDownloadForSearch = { contentViewModel.downloadForSearch(route.bookId) },
                             onOpenAuthor = authorId?.let { id -> { backStack.add(PersonsRoute(id)) } },

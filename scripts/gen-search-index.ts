@@ -118,7 +118,8 @@ async function main() {
   // `raw` is the passage as written (letters + tashkeel): results show it and rank the typed spelling first.
   // An incremental run writes into the live table, which only has `raw` after the full reindex
   // (SEARCH_REBUILD_NEXT) is swapped in; inserting it before then would fail every file.
-  const withRaw = !incremental || liveHasRaw();
+  // SEARCH_NO_RAW=1: leave `raw` out (measured ~35% of the DB); snippets then show without tashkeel for those rows.
+  const withRaw = process.env.SEARCH_NO_RAW !== "1" && (!incremental || liveHasRaw());
   const row = (d: Doc) => `(${q(normalizeArabic(d.title))},${q(normalizeArabic(d.text))},${q(d.type)},${q(d.book)},${q(d.person)},${q(d.url)},${q(d.displayTitle)}${withRaw ? "," + q(d.text.normalize("NFC")) : ""})`;
 
   const outDir = path.resolve("dist/search-index");

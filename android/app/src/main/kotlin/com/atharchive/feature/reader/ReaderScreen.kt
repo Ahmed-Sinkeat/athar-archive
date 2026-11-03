@@ -147,7 +147,7 @@ fun ReaderScreen(
     modifier: Modifier = Modifier,
     initialSearchTarget: ReaderSearchTarget? = null,
     initialOrdinal: Int? = null,
-    onSearch: (suspend (String) -> InBookSearch)? = null,
+    onSearch: (suspend (String, com.atharchive.feature.search.SearchMode) -> InBookSearch)? = null,
     /** Whole book on the phone: in-book search then covers all of it. Changes re-run the search. */
     bookSaved: Boolean = true,
     onDownloadForSearch: (() -> Unit)? = null,
@@ -309,7 +309,8 @@ fun ReaderScreen(
     // Set while part of the book is not on the phone: the search covered only the saved part.
     var partialSearch by remember { mutableStateOf<Int?>(null) }
     var downloadAsked by remember { mutableStateOf(false) }
-    LaunchedEffect(query, bookSaved) {
+    var searchMode by remember { mutableStateOf(com.atharchive.feature.search.SearchMode.All) }
+    LaunchedEffect(query, bookSaved, searchMode) {
         hits = emptyList()
         searchStatus = null
         partialSearch = null
@@ -317,7 +318,7 @@ fun ReaderScreen(
             kotlinx.coroutines.delay(150)
             searchStatus = "جارٍ البحث…"
             try {
-                val result = onSearch?.invoke(query) ?: InBookSearch(findHits(state, query))
+                val result = onSearch?.invoke(query, searchMode) ?: InBookSearch(findHits(state, query))
                 hits = result.hits
                 partialSearch = result.savedPercent.takeUnless { result.complete }
                 searchStatus = if (hits.size == 200) "أول ٢٠٠ نتيجة؛ حدّد البحث لنتائج أدق" else null
@@ -702,6 +703,8 @@ fun ReaderScreen(
                 hits = hits,
                 searchStatus = searchStatus,
                 partialSearch = partialSearch,
+                searchMode = searchMode.takeIf { onSearch != null },
+                onSearchMode = { searchMode = it },
                 downloadAsked = downloadAsked,
                 onDownloadForSearch = onDownloadForSearch?.let { download -> { downloadAsked = true; download() } },
                 onPageJump = { page, volume ->
