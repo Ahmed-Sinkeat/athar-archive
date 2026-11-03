@@ -32,6 +32,8 @@ enum class SearchField(val label: String) {
 enum class SearchSort(val label: String) {
     Relevance("الأكثر صلة"),
     Died("وفاة المؤلف"),
+    /** Passages in the order they come in their book (with a book chosen, the book read through). */
+    Book("ترتيب الكتاب"),
 }
 
 /** How the words of the query must appear. */
@@ -39,6 +41,10 @@ enum class SearchMode(val label: String, val api: String) {
     All("كل الكلمات", "all"),
     Any("بعض الكلمات", "any"),
     Phrase("عبارة متتالية", "phrase"),
+    /** Every form of the word's root (كتب → كاتب، مكتوب، كتابة…), from the lexicons on the phone; online only. */
+    Root("بالجذر", "root"),
+    /** The phrase with its letters as typed: hamza, ة and ى count, and any tashkeel typed must be there too. */
+    Exact("مطابق تمامًا", "phrase"),
 }
 
 /**
@@ -91,7 +97,18 @@ data class SearchFilters(
     val mode: SearchMode = SearchMode.All,
     /** Search only what is on the phone, even when online. */
     val downloadedOnly: Boolean = false,
+    /** Book titles (every edition of a title counts). */
+    val books: Set<String> = emptySet(),
+    /** «القرن ٨» labels of the author's death. */
+    val centuries: Set<String> = emptySet(),
+    /** Library sections («الحديث», «الفقه»…), as on the library screen. */
+    val sections: Set<String> = emptySet(),
+    /** «إخفاء التشكيل»: passages shown without harakat (display only, the search is unchanged). */
+    val plain: Boolean = false,
 )
+
+/** «الخيارات المثبتة»: a set of filters saved under a name, applied in one tap. */
+data class SearchPreset(val name: String, val filters: SearchFilters)
 
 /** Where the passages came from, said above the results. */
 enum class SearchScope { Online, Offline, Downloaded }
@@ -107,12 +124,15 @@ data class SearchUiState(
     /** Matching passages in the whole library (online only; null until the count arrives). */
     val total: Int? = null,
     val totalCapped: Boolean = false,
+    /** «بالجذر»: the roots searched; empty when the word's root couldn't be found (or the lexicons aren't downloaded). */
+    val roots: List<String>? = null,
     val topAuthors: List<AuthorCountUi> = emptyList(),
     val searching: Boolean = false,
     val hasMore: Boolean = false,
     val directMatches: List<DirectMatchUi>,
     val hits: List<SearchHitUi>,
     val availableAuthors: List<String>,
+    val availableBooks: List<String> = emptyList(),
 )
 
 val SearchFixture = SearchUiState(

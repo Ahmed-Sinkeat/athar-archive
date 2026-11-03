@@ -1,0 +1,1855 @@
+{
+  "schema": 1,
+  "generation": 1,
+  "sourceHash": "3a33049cb3453cbec92f60207d8543e0b8b33ca7dff9d8f5a2737b3a6e176b17",
+  "ids": [
+    {
+      "ord": 0,
+      "blockId": "db5a6636c20324ecc728a0c503933d31",
+      "fp64": "df88b1df47e6b4fa",
+      "normHash": "24f4f4a57663486233d2d50756ef29d0c592076523491d9098893d9c387c1f5e",
+      "kind": "p",
+      "chapter": "main",
+      "next": "b752c95c07f2c93ef2ee425848037646d06f5607f93307ff04e2aa2cde5680da"
+    },
+    {
+      "ord": 1,
+      "blockId": "7bd76c820180a25cd47f7627d232f206",
+      "fp64": "bab44c39a16f4f89",
+      "normHash": "b752c95c07f2c93ef2ee425848037646d06f5607f93307ff04e2aa2cde5680da",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "24f4f4a57663486233d2d50756ef29d0c592076523491d9098893d9c387c1f5e",
+      "next": "1b0f6cad72c7f7f75f8bc793c509b31b8cddb02e3d491ce9d0c539b456eff5ec"
+    },
+    {
+      "ord": 2,
+      "blockId": "7e702445a1a787e6698104edf68f23fd",
+      "fp64": "ece6fbf5f356bef7",
+      "normHash": "1b0f6cad72c7f7f75f8bc793c509b31b8cddb02e3d491ce9d0c539b456eff5ec",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "b752c95c07f2c93ef2ee425848037646d06f5607f93307ff04e2aa2cde5680da",
+      "next": "bb26ebfc1b8fa04e61b3aabd45618f3b09aeef232c161b41e718837688e98f5c"
+    },
+    {
+      "ord": 3,
+      "blockId": "998be96e15356f19c1ba4b7ca99d0e64",
+      "fp64": "75582e05d5d740a3",
+      "normHash": "bb26ebfc1b8fa04e61b3aabd45618f3b09aeef232c161b41e718837688e98f5c",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "1b0f6cad72c7f7f75f8bc793c509b31b8cddb02e3d491ce9d0c539b456eff5ec",
+      "next": "d72b8a39e19e276ebe8eb2bd132d4f039c728e572913727d9e46637136b23219"
+    },
+    {
+      "ord": 4,
+      "blockId": "5a53020932681dae2aaf589bea2f278f",
+      "fp64": "97cefb07f5fb9047",
+      "normHash": "d72b8a39e19e276ebe8eb2bd132d4f039c728e572913727d9e46637136b23219",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "bb26ebfc1b8fa04e61b3aabd45618f3b09aeef232c161b41e718837688e98f5c",
+      "next": "f5c92b51cfc0ef5c80e7d3bcb7a7399f213e3abf468e7f06a2551f6be5d7e5f3"
+    },
+    {
+      "ord": 5,
+      "blockId": "f9d167705f738146bb3371234a26c534",
+      "fp64": "d9f7fd7fd3e7fc77",
+      "normHash": "f5c92b51cfc0ef5c80e7d3bcb7a7399f213e3abf468e7f06a2551f6be5d7e5f3",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "d72b8a39e19e276ebe8eb2bd132d4f039c728e572913727d9e46637136b23219",
+      "next": "1755600b9ce652f0aec99354fbd00dc1a7e373871d30eaf4eb8d6dffd57a9a4c"
+    },
+    {
+      "ord": 6,
+      "blockId": "e51dc6dacd21ad112d305d09492c7170",
+      "fp64": "fe7eb96dfbebf385",
+      "normHash": "1755600b9ce652f0aec99354fbd00dc1a7e373871d30eaf4eb8d6dffd57a9a4c",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "f5c92b51cfc0ef5c80e7d3bcb7a7399f213e3abf468e7f06a2551f6be5d7e5f3",
+      "next": "da0dc98fffd91fd5cfc7d4477636c502d939a922cc2547eda24ded4993dd86bc"
+    },
+    {
+      "ord": 7,
+      "blockId": "0349076ceedb1b4ff14d377d7697cf44",
+      "fp64": "caa91eebcb3b538d",
+      "normHash": "da0dc98fffd91fd5cfc7d4477636c502d939a922cc2547eda24ded4993dd86bc",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "1755600b9ce652f0aec99354fbd00dc1a7e373871d30eaf4eb8d6dffd57a9a4c",
+      "next": "0df7576c3f0dceba264a13add17905643b55f11447084266587d5db6df3e9432"
+    },
+    {
+      "ord": 8,
+      "blockId": "1b2d19548bc9b8920e5b48efcbb53fb5",
+      "fp64": "6e6ee556195c797c",
+      "normHash": "0df7576c3f0dceba264a13add17905643b55f11447084266587d5db6df3e9432",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "da0dc98fffd91fd5cfc7d4477636c502d939a922cc2547eda24ded4993dd86bc",
+      "next": "92da4572727aaab4a48db3e65785109426b642826698251599f6f56b5bd1d3b7"
+    },
+    {
+      "ord": 9,
+      "blockId": "855e6a8420c483f6e984f2e2c2203e85",
+      "fp64": "ad5db2ff747d537e",
+      "normHash": "92da4572727aaab4a48db3e65785109426b642826698251599f6f56b5bd1d3b7",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "0df7576c3f0dceba264a13add17905643b55f11447084266587d5db6df3e9432",
+      "next": "7b8154b2cf56cc71731646f420781124eb22a728365aede369f97a0e445cd142"
+    },
+    {
+      "ord": 10,
+      "blockId": "5b09fb664ef6a1d709240e2c0afd7a2e",
+      "fp64": "a00b005a2716c81f",
+      "normHash": "7b8154b2cf56cc71731646f420781124eb22a728365aede369f97a0e445cd142",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "92da4572727aaab4a48db3e65785109426b642826698251599f6f56b5bd1d3b7",
+      "next": "317ea396f4a1ceef3c7b71495e5bd3aafc99718d42bfb134b39d5a430ac4683c"
+    },
+    {
+      "ord": 11,
+      "blockId": "554cfa1856bc3c8fdbc74707b8d3230f",
+      "fp64": "251820001536b640",
+      "normHash": "317ea396f4a1ceef3c7b71495e5bd3aafc99718d42bfb134b39d5a430ac4683c",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "7b8154b2cf56cc71731646f420781124eb22a728365aede369f97a0e445cd142",
+      "next": "2c7ff3978c31044cc4a8833bcfb237ae2b55f9ccc74f3f0438aef6134d516eca"
+    },
+    {
+      "ord": 12,
+      "blockId": "e1da7e1cc8a33b30413c08a834544cc1",
+      "fp64": "29b1d01658b33d51",
+      "normHash": "2c7ff3978c31044cc4a8833bcfb237ae2b55f9ccc74f3f0438aef6134d516eca",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "317ea396f4a1ceef3c7b71495e5bd3aafc99718d42bfb134b39d5a430ac4683c",
+      "next": "11dc104e2fed65ebd3e49472d003bd65391fb4cd189d637ae0f59f50e4e6afa3"
+    },
+    {
+      "ord": 13,
+      "blockId": "6264aa5be707fb8d640b187f56b0b17e",
+      "fp64": "060210e3e6e1e1e6",
+      "normHash": "11dc104e2fed65ebd3e49472d003bd65391fb4cd189d637ae0f59f50e4e6afa3",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "2c7ff3978c31044cc4a8833bcfb237ae2b55f9ccc74f3f0438aef6134d516eca",
+      "next": "ad38d200a4f416dbd1bc576faefa582f38da652bbfed370fa2b7e4db90e786a2"
+    },
+    {
+      "ord": 14,
+      "blockId": "9bec4576f3776f243bd0e782e3ca1567",
+      "fp64": "186c7ec6c30b45cc",
+      "normHash": "ad38d200a4f416dbd1bc576faefa582f38da652bbfed370fa2b7e4db90e786a2",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "11dc104e2fed65ebd3e49472d003bd65391fb4cd189d637ae0f59f50e4e6afa3",
+      "next": "d1400e11279730de680822c1bc8c5ffaf4d41dcf0115bec0478ce35e71ffb05f"
+    },
+    {
+      "ord": 15,
+      "blockId": "e8d75af494224ebf440522b818ec0e7a",
+      "fp64": "af1dac33dc7243b1",
+      "normHash": "d1400e11279730de680822c1bc8c5ffaf4d41dcf0115bec0478ce35e71ffb05f",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "ad38d200a4f416dbd1bc576faefa582f38da652bbfed370fa2b7e4db90e786a2",
+      "next": "27ecbe751097cf831a242e25e32027fde1f01abd73825adad6674591c66bedf7"
+    },
+    {
+      "ord": 16,
+      "blockId": "f0952eb74ff4487ae94ba2401fe6f201",
+      "fp64": "ad532314beeae076",
+      "normHash": "27ecbe751097cf831a242e25e32027fde1f01abd73825adad6674591c66bedf7",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "d1400e11279730de680822c1bc8c5ffaf4d41dcf0115bec0478ce35e71ffb05f",
+      "next": "d237797eb0cd0be4e5f5ded9b8e34102f4e0499911e76213c5524f29483a3a2f"
+    },
+    {
+      "ord": 17,
+      "blockId": "ff7b7c0ffcb5a57f0d6bf17cad0100f0",
+      "fp64": "b989a39c25d5b6d8",
+      "normHash": "d237797eb0cd0be4e5f5ded9b8e34102f4e0499911e76213c5524f29483a3a2f",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "27ecbe751097cf831a242e25e32027fde1f01abd73825adad6674591c66bedf7",
+      "next": "caa7ccfc1c3e206ba6a2d885306628910eb17ad9191dea5529b2ade720203f52"
+    },
+    {
+      "ord": 18,
+      "blockId": "3541d490b28e16a1e64d168f1a267303",
+      "fp64": "1988b1dc4262b03a",
+      "normHash": "caa7ccfc1c3e206ba6a2d885306628910eb17ad9191dea5529b2ade720203f52",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "d237797eb0cd0be4e5f5ded9b8e34102f4e0499911e76213c5524f29483a3a2f",
+      "next": "0a0fb3ce40cfa2ea19421dc0d9eb742268003ec5d993696d41415e20254fc000"
+    },
+    {
+      "ord": 19,
+      "blockId": "91871f391ce1a2340ad872adc3daaf81",
+      "fp64": "fbbf5efbef6fefa9",
+      "normHash": "0a0fb3ce40cfa2ea19421dc0d9eb742268003ec5d993696d41415e20254fc000",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "caa7ccfc1c3e206ba6a2d885306628910eb17ad9191dea5529b2ade720203f52",
+      "next": "9188f256ba223b9637a6bca1894c8bda769d4a2177a25f5c18dfb50703f508f1"
+    },
+    {
+      "ord": 20,
+      "blockId": "8122851ea4973de2852a374ec8637a17",
+      "fp64": "e5fff7ff7bb3e67f",
+      "normHash": "9188f256ba223b9637a6bca1894c8bda769d4a2177a25f5c18dfb50703f508f1",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "0a0fb3ce40cfa2ea19421dc0d9eb742268003ec5d993696d41415e20254fc000",
+      "next": "2faeea109072ecd45655335c776d16dff7854c5c40d4f54df97cecc239736a86"
+    },
+    {
+      "ord": 21,
+      "blockId": "f810fb654932770e69c6ef9371b00058",
+      "fp64": "bdf5f8179ffc71fe",
+      "normHash": "2faeea109072ecd45655335c776d16dff7854c5c40d4f54df97cecc239736a86",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "9188f256ba223b9637a6bca1894c8bda769d4a2177a25f5c18dfb50703f508f1",
+      "next": "99343c834c0061caf11252e7ec0645c8c8953c614590f616f012a6e024fc44a5"
+    },
+    {
+      "ord": 22,
+      "blockId": "30db6066b05b015bd032734b10946a63",
+      "fp64": "a575e8d2939f7b6c",
+      "normHash": "99343c834c0061caf11252e7ec0645c8c8953c614590f616f012a6e024fc44a5",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "2faeea109072ecd45655335c776d16dff7854c5c40d4f54df97cecc239736a86",
+      "next": "5484992877d28abdfa59f43d25d8680343c24d4ad1f0d27b6a5c8cbbeb8db0b6"
+    },
+    {
+      "ord": 23,
+      "blockId": "ad6015ac9cbcf0140389cbd4d38a887b",
+      "fp64": "fd5ea01617f67454",
+      "normHash": "5484992877d28abdfa59f43d25d8680343c24d4ad1f0d27b6a5c8cbbeb8db0b6",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "99343c834c0061caf11252e7ec0645c8c8953c614590f616f012a6e024fc44a5",
+      "next": "945423c53d1a0ae5a45882c45a079c7b648d3febd101d487807f98a489badddf"
+    },
+    {
+      "ord": 24,
+      "blockId": "b3773940b5df6fbeae7d4d8f8651b374",
+      "fp64": "387504d2db777314",
+      "normHash": "945423c53d1a0ae5a45882c45a079c7b648d3febd101d487807f98a489badddf",
+      "kind": "h2",
+      "chapter": "ذكر-الأحاديث-التي-رويت-عن-رسول-الله-في-صلاة-التسبيح",
+      "prev": "5484992877d28abdfa59f43d25d8680343c24d4ad1f0d27b6a5c8cbbeb8db0b6",
+      "next": "440f835a91d83947bdf003ff511220daa74a4046026e35240633f1f5f1048510"
+    },
+    {
+      "ord": 25,
+      "blockId": "fc46e6debb6edc2fe7cef3829eb678d6",
+      "fp64": "7fad2fdadecacf3c",
+      "normHash": "440f835a91d83947bdf003ff511220daa74a4046026e35240633f1f5f1048510",
+      "kind": "p",
+      "chapter": "ذكر-الأحاديث-التي-رويت-عن-رسول-الله-في-صلاة-التسبيح",
+      "prev": "945423c53d1a0ae5a45882c45a079c7b648d3febd101d487807f98a489badddf",
+      "next": "d284cc0fd73584653510c35a6a017f8ad937e30f2bef536e7df256f97d22e433"
+    },
+    {
+      "ord": 26,
+      "blockId": "6e5e2d219997486e82307bbe33aea7d2",
+      "fp64": "a5dff7da5e73eb76",
+      "normHash": "d284cc0fd73584653510c35a6a017f8ad937e30f2bef536e7df256f97d22e433",
+      "kind": "page",
+      "chapter": "ذكر-الأحاديث-التي-رويت-عن-رسول-الله-في-صلاة-التسبيح",
+      "prev": "440f835a91d83947bdf003ff511220daa74a4046026e35240633f1f5f1048510",
+      "next": "b3dcdc499c6dd406c5ff255e63d83eced5b5f28d7026182af8e2d68f612724a4"
+    },
+    {
+      "ord": 27,
+      "blockId": "3c3cddd7c0f5ca400f08b51314795c6d",
+      "fp64": "f57740da875cf37c",
+      "normHash": "b3dcdc499c6dd406c5ff255e63d83eced5b5f28d7026182af8e2d68f612724a4",
+      "kind": "h2",
+      "chapter": "الرواية-عن-أمير-المؤمنين-علي-بن-أبي-طالب-رضي-الله-عنه-ذلك-عن-النبي-تسليما",
+      "prev": "d284cc0fd73584653510c35a6a017f8ad937e30f2bef536e7df256f97d22e433",
+      "next": "76096240404282cb479818c5dc0d4d4f826d93b67a5ada356bb0bd8521c18df3"
+    },
+    {
+      "ord": 28,
+      "blockId": "91345df11b384a7654958d50ce4c70ae",
+      "fp64": "653b60964775e15c",
+      "normHash": "76096240404282cb479818c5dc0d4d4f826d93b67a5ada356bb0bd8521c18df3",
+      "kind": "p",
+      "chapter": "الرواية-عن-أمير-المؤمنين-علي-بن-أبي-طالب-رضي-الله-عنه-ذلك-عن-النبي-تسليما",
+      "prev": "b3dcdc499c6dd406c5ff255e63d83eced5b5f28d7026182af8e2d68f612724a4",
+      "next": "e1542836e29928e3a9a2cc1ad5a9d8517634d9e04d5e5b1bb28cce7a173ad1ee"
+    },
+    {
+      "ord": 29,
+      "blockId": "8578c5a64c1d4a583ae8db1a52eb21c3",
+      "fp64": "7446c4dbd13253bc",
+      "normHash": "e1542836e29928e3a9a2cc1ad5a9d8517634d9e04d5e5b1bb28cce7a173ad1ee",
+      "kind": "p",
+      "chapter": "الرواية-عن-أمير-المؤمنين-علي-بن-أبي-طالب-رضي-الله-عنه-ذلك-عن-النبي-تسليما",
+      "prev": "76096240404282cb479818c5dc0d4d4f826d93b67a5ada356bb0bd8521c18df3",
+      "next": "30a61453702df1447156dd675dab819b129029b0cef7579509311f5e9a61dfdd"
+    },
+    {
+      "ord": 30,
+      "blockId": "205bddb6460e65d3ef9fc6a0a8ba6c94",
+      "fp64": "e60ca332e7579117",
+      "normHash": "30a61453702df1447156dd675dab819b129029b0cef7579509311f5e9a61dfdd",
+      "kind": "p",
+      "chapter": "الرواية-عن-أمير-المؤمنين-علي-بن-أبي-طالب-رضي-الله-عنه-ذلك-عن-النبي-تسليما",
+      "prev": "e1542836e29928e3a9a2cc1ad5a9d8517634d9e04d5e5b1bb28cce7a173ad1ee",
+      "next": "c1d50dc79e6c0267e9efbd68795c3df8e2c25e590d0b1bc168c1ccb63b902798"
+    },
+    {
+      "ord": 31,
+      "blockId": "f40e55f36b31aefb508cd25e762085de",
+      "fp64": "bddffbdafb75ee77",
+      "normHash": "c1d50dc79e6c0267e9efbd68795c3df8e2c25e590d0b1bc168c1ccb63b902798",
+      "kind": "page",
+      "chapter": "الرواية-عن-أمير-المؤمنين-علي-بن-أبي-طالب-رضي-الله-عنه-ذلك-عن-النبي-تسليما",
+      "prev": "30a61453702df1447156dd675dab819b129029b0cef7579509311f5e9a61dfdd",
+      "next": "86f887850b5c274dd89714af91d5f5cb80e12431b46d620cfcc7d324c4796561"
+    },
+    {
+      "ord": 32,
+      "blockId": "fbe65c567dc9c770f7da5b6214c5f8bf",
+      "fp64": "a51e20960777f074",
+      "normHash": "86f887850b5c274dd89714af91d5f5cb80e12431b46d620cfcc7d324c4796561",
+      "kind": "p",
+      "chapter": "الرواية-عن-أمير-المؤمنين-علي-بن-أبي-طالب-رضي-الله-عنه-ذلك-عن-النبي-تسليما",
+      "prev": "c1d50dc79e6c0267e9efbd68795c3df8e2c25e590d0b1bc168c1ccb63b902798",
+      "next": "1cfcd7203207b804827022cc608c999268febe7b8e7dcbef2146375763993730"
+    },
+    {
+      "ord": 33,
+      "blockId": "502b34e96ccc358a78b04468f8bb89fa",
+      "fp64": "9656b03ae432027e",
+      "normHash": "1cfcd7203207b804827022cc608c999268febe7b8e7dcbef2146375763993730",
+      "kind": "p",
+      "chapter": "الرواية-عن-أمير-المؤمنين-علي-بن-أبي-طالب-رضي-الله-عنه-ذلك-عن-النبي-تسليما",
+      "prev": "86f887850b5c274dd89714af91d5f5cb80e12431b46d620cfcc7d324c4796561",
+      "next": "89e34329ab90aa190773ce2438a8e1c6bd4a1fdaab455c2d4345beefa0f8a62f"
+    },
+    {
+      "ord": 34,
+      "blockId": "301d4aa2c7fdcbb84435995cd6b2938b",
+      "fp64": "37ffff9e7a3ffc37",
+      "normHash": "89e34329ab90aa190773ce2438a8e1c6bd4a1fdaab455c2d4345beefa0f8a62f",
+      "kind": "page",
+      "chapter": "الرواية-عن-أمير-المؤمنين-علي-بن-أبي-طالب-رضي-الله-عنه-ذلك-عن-النبي-تسليما",
+      "prev": "1cfcd7203207b804827022cc608c999268febe7b8e7dcbef2146375763993730",
+      "next": "10b964c3ff425a582bbf795eaa45c99c095de9407c45a73530cd636c9e9538dd"
+    },
+    {
+      "ord": 35,
+      "blockId": "8302606cc6add87a9badf26942d405b7",
+      "fp64": "f77f48d68714f17c",
+      "normHash": "10b964c3ff425a582bbf795eaa45c99c095de9407c45a73530cd636c9e9538dd",
+      "kind": "h2",
+      "chapter": "ذكر-الرواية-عن-جعفر-بن-أبي-طالب-رضي-الله-عنه-ذلك-عن-النبي",
+      "prev": "89e34329ab90aa190773ce2438a8e1c6bd4a1fdaab455c2d4345beefa0f8a62f",
+      "next": "a5fb383ee51df2593566f257eb3a9744e24d9df4807f97b61df304594d4b8e68"
+    },
+    {
+      "ord": 36,
+      "blockId": "c8b623a080b4c84f9fe18c9c5e70a280",
+      "fp64": "e51a6096c7fcf074",
+      "normHash": "a5fb383ee51df2593566f257eb3a9744e24d9df4807f97b61df304594d4b8e68",
+      "kind": "p",
+      "chapter": "ذكر-الرواية-عن-جعفر-بن-أبي-طالب-رضي-الله-عنه-ذلك-عن-النبي",
+      "prev": "10b964c3ff425a582bbf795eaa45c99c095de9407c45a73530cd636c9e9538dd",
+      "next": "e87cdb0e5e4dcf46db6cad48d6718655986de0c461632729af448abc79d8ee33"
+    },
+    {
+      "ord": 37,
+      "blockId": "f64f3528b52117e582724a94c74f9c98",
+      "fp64": "f452f016bf70f17e",
+      "normHash": "e87cdb0e5e4dcf46db6cad48d6718655986de0c461632729af448abc79d8ee33",
+      "kind": "p",
+      "chapter": "ذكر-الرواية-عن-جعفر-بن-أبي-طالب-رضي-الله-عنه-ذلك-عن-النبي",
+      "prev": "a5fb383ee51df2593566f257eb3a9744e24d9df4807f97b61df304594d4b8e68",
+      "next": "ee8c732581e6007396b52360db0d825b6a94fcdb36885fc22c7f903f44b1960d"
+    },
+    {
+      "ord": 38,
+      "blockId": "80d51d9f321932142de0bad000f15796",
+      "fp64": "fee93bfbdf7dd294",
+      "normHash": "ee8c732581e6007396b52360db0d825b6a94fcdb36885fc22c7f903f44b1960d",
+      "kind": "p",
+      "chapter": "ذكر-الرواية-عن-جعفر-بن-أبي-طالب-رضي-الله-عنه-ذلك-عن-النبي",
+      "prev": "e87cdb0e5e4dcf46db6cad48d6718655986de0c461632729af448abc79d8ee33",
+      "next": "de9ef4f7e1db6ab833dadb7d1e3f6508f278b746260bec369204ddd9e927b1ff"
+    },
+    {
+      "ord": 39,
+      "blockId": "baa98180058bc60ce04e83a0bf95ca09",
+      "fp64": "7fdfffdfdafb773e",
+      "normHash": "de9ef4f7e1db6ab833dadb7d1e3f6508f278b746260bec369204ddd9e927b1ff",
+      "kind": "page",
+      "chapter": "ذكر-الرواية-عن-جعفر-بن-أبي-طالب-رضي-الله-عنه-ذلك-عن-النبي",
+      "prev": "ee8c732581e6007396b52360db0d825b6a94fcdb36885fc22c7f903f44b1960d",
+      "next": "cdc216ee665199814d5fb0bfdb97937f90752c8a1599c6f411de32e22aa5669e"
+    },
+    {
+      "ord": 40,
+      "blockId": "38d2e2cd9ef932b30e01fcf1afbb8e65",
+      "fp64": "e777c8fa9774737d",
+      "normHash": "cdc216ee665199814d5fb0bfdb97937f90752c8a1599c6f411de32e22aa5669e",
+      "kind": "h2",
+      "chapter": "ذكر-الرواية-عن-العباس-بن-عبد-المطلب-رضي-الله-عنه-ذلك-عن-النبي",
+      "prev": "de9ef4f7e1db6ab833dadb7d1e3f6508f278b746260bec369204ddd9e927b1ff",
+      "next": "bb1aa316bcb5493a56bb37713f39435396440fd316d96f4ec67012d2b1e8a8cb"
+    },
+    {
+      "ord": 41,
+      "blockId": "6b135c8e3e50596464815ca1743285d6",
+      "fp64": "651a609667f6f05c",
+      "normHash": "bb1aa316bcb5493a56bb37713f39435396440fd316d96f4ec67012d2b1e8a8cb",
+      "kind": "p",
+      "chapter": "ذكر-الرواية-عن-العباس-بن-عبد-المطلب-رضي-الله-عنه-ذلك-عن-النبي",
+      "prev": "cdc216ee665199814d5fb0bfdb97937f90752c8a1599c6f411de32e22aa5669e",
+      "next": "d681913dfd0064080467e8557db92d3e454db544e251905cc5c248eeb1bb6149"
+    },
+    {
+      "ord": 42,
+      "blockId": "d918efcb81c85023d3082f420f961d33",
+      "fp64": "c440595f55559a5f",
+      "normHash": "d681913dfd0064080467e8557db92d3e454db544e251905cc5c248eeb1bb6149",
+      "kind": "p",
+      "chapter": "ذكر-الرواية-عن-العباس-بن-عبد-المطلب-رضي-الله-عنه-ذلك-عن-النبي",
+      "prev": "bb1aa316bcb5493a56bb37713f39435396440fd316d96f4ec67012d2b1e8a8cb",
+      "next": "2f03ddb2fdcd2077f7a93c5df9847e0d0ce4a2e72f8589a868fa2e1afff47193"
+    },
+    {
+      "ord": 43,
+      "blockId": "70cd00a38a0d6bb18a87862afddb58b4",
+      "fp64": "50f6236c5f30d8bb",
+      "normHash": "2f03ddb2fdcd2077f7a93c5df9847e0d0ce4a2e72f8589a868fa2e1afff47193",
+      "kind": "p",
+      "chapter": "ذكر-الرواية-عن-العباس-بن-عبد-المطلب-رضي-الله-عنه-ذلك-عن-النبي",
+      "prev": "d681913dfd0064080467e8557db92d3e454db544e251905cc5c248eeb1bb6149",
+      "next": "04b304c2e193550cfda2d9af2e83f1ac68b9086ca7c1d7f9fc37361e8bafb66c"
+    },
+    {
+      "ord": 44,
+      "blockId": "83bb20d9dc1c73d8b2118f4b54d470f6",
+      "fp64": "5f5764ecca98d21a",
+      "normHash": "04b304c2e193550cfda2d9af2e83f1ac68b9086ca7c1d7f9fc37361e8bafb66c",
+      "kind": "p",
+      "chapter": "ذكر-الرواية-عن-العباس-بن-عبد-المطلب-رضي-الله-عنه-ذلك-عن-النبي",
+      "prev": "2f03ddb2fdcd2077f7a93c5df9847e0d0ce4a2e72f8589a868fa2e1afff47193",
+      "next": "cd1cf572f6c05128c1571a95a57e9bcb00820cdb2e463af302d93364c8cee734"
+    },
+    {
+      "ord": 45,
+      "blockId": "ad9db738448193b3fa9cc8066c0ee999",
+      "fp64": "567eff3be762436e",
+      "normHash": "cd1cf572f6c05128c1571a95a57e9bcb00820cdb2e463af302d93364c8cee734",
+      "kind": "p",
+      "chapter": "ذكر-الرواية-عن-العباس-بن-عبد-المطلب-رضي-الله-عنه-ذلك-عن-النبي",
+      "prev": "04b304c2e193550cfda2d9af2e83f1ac68b9086ca7c1d7f9fc37361e8bafb66c",
+      "next": "e14ff3f17a75e66b072eafa44dd75f26148413762454d9e94b579d8e4e28ae91"
+    },
+    {
+      "ord": 46,
+      "blockId": "f8a4e4bc62f05be5780d16206fca254c",
+      "fp64": "2fdfff9bff7b7b37",
+      "normHash": "e14ff3f17a75e66b072eafa44dd75f26148413762454d9e94b579d8e4e28ae91",
+      "kind": "page",
+      "chapter": "ذكر-الرواية-عن-العباس-بن-عبد-المطلب-رضي-الله-عنه-ذلك-عن-النبي",
+      "prev": "cd1cf572f6c05128c1571a95a57e9bcb00820cdb2e463af302d93364c8cee734",
+      "next": "2a6197b98d189440bb0676d5b1ed0b7168a5d14dfffabd2bb579381deaf25c9a"
+    },
+    {
+      "ord": 47,
+      "blockId": "598760399902a495bd4bf72b4c18343a",
+      "fp64": "e59f229666f9f03c",
+      "normHash": "2a6197b98d189440bb0676d5b1ed0b7168a5d14dfffabd2bb579381deaf25c9a",
+      "kind": "p",
+      "chapter": "ذكر-الرواية-عن-العباس-بن-عبد-المطلب-رضي-الله-عنه-ذلك-عن-النبي",
+      "prev": "e14ff3f17a75e66b072eafa44dd75f26148413762454d9e94b579d8e4e28ae91",
+      "next": "48c9ce991a189d2e0bea0e91d4b27204fa13a97dfa0ba38960c01b94b21becee"
+    },
+    {
+      "ord": 48,
+      "blockId": "31ca4a42fce22bfb69b1627ad8da3669",
+      "fp64": "b644b01a517016f6",
+      "normHash": "48c9ce991a189d2e0bea0e91d4b27204fa13a97dfa0ba38960c01b94b21becee",
+      "kind": "p",
+      "chapter": "ذكر-الرواية-عن-العباس-بن-عبد-المطلب-رضي-الله-عنه-ذلك-عن-النبي",
+      "prev": "2a6197b98d189440bb0676d5b1ed0b7168a5d14dfffabd2bb579381deaf25c9a",
+      "next": "c311b5cb13537189fc1f9f74518b11fbe37a6176ef866d767145ea3571260a04"
+    },
+    {
+      "ord": 49,
+      "blockId": "337b355cd079f614940414dd363e3963",
+      "fp64": "195c36bfc4049d5e",
+      "normHash": "c311b5cb13537189fc1f9f74518b11fbe37a6176ef866d767145ea3571260a04",
+      "kind": "p",
+      "chapter": "ذكر-الرواية-عن-العباس-بن-عبد-المطلب-رضي-الله-عنه-ذلك-عن-النبي",
+      "prev": "48c9ce991a189d2e0bea0e91d4b27204fa13a97dfa0ba38960c01b94b21becee",
+      "next": "a9ad33178c390a019d2e437144eba33267a0e9684561211576afdf5b6bb3a701"
+    },
+    {
+      "ord": 50,
+      "blockId": "511eae2a3226ac29a8929cd81f081596",
+      "fp64": "afffff9fdbfd783e",
+      "normHash": "a9ad33178c390a019d2e437144eba33267a0e9684561211576afdf5b6bb3a701",
+      "kind": "page",
+      "chapter": "ذكر-الرواية-عن-العباس-بن-عبد-المطلب-رضي-الله-عنه-ذلك-عن-النبي",
+      "prev": "c311b5cb13537189fc1f9f74518b11fbe37a6176ef866d767145ea3571260a04",
+      "next": "bae09526270c9c37abc1aa5cecae42cc23f6d4dbdae63141825408f485d65672"
+    },
+    {
+      "ord": 51,
+      "blockId": "d0529b578faafb86146e4c7aa4561fb2",
+      "fp64": "e7f748d696f4f175",
+      "normHash": "bae09526270c9c37abc1aa5cecae42cc23f6d4dbdae63141825408f485d65672",
+      "kind": "h2",
+      "chapter": "ذكر-الرواية-عن-الفضل-بن-العباس-بن-عبد-المطلب-رضي-الله-عنهما-ذلك-عن-النبي",
+      "prev": "a9ad33178c390a019d2e437144eba33267a0e9684561211576afdf5b6bb3a701",
+      "next": "a22a79dd66303fc567a449ade68d10dc393515b5a774be5328c0cc71239cbe70"
+    },
+    {
+      "ord": 52,
+      "blockId": "379958e5e352fad63d21fe09990f461c",
+      "fp64": "653a209656f2f03c",
+      "normHash": "a22a79dd66303fc567a449ade68d10dc393515b5a774be5328c0cc71239cbe70",
+      "kind": "p",
+      "chapter": "ذكر-الرواية-عن-الفضل-بن-العباس-بن-عبد-المطلب-رضي-الله-عنهما-ذلك-عن-النبي",
+      "prev": "bae09526270c9c37abc1aa5cecae42cc23f6d4dbdae63141825408f485d65672",
+      "next": "780f2fc011f946903b0b43546fb65e1d9c8f2199f23f2b762fb459904109b3cd"
+    },
+    {
+      "ord": 53,
+      "blockId": "6c5c444e7b483e5cf752b5032d343c13",
+      "fp64": "f8477498c1701efe",
+      "normHash": "780f2fc011f946903b0b43546fb65e1d9c8f2199f23f2b762fb459904109b3cd",
+      "kind": "p",
+      "chapter": "ذكر-الرواية-عن-الفضل-بن-العباس-بن-عبد-المطلب-رضي-الله-عنهما-ذلك-عن-النبي",
+      "prev": "a22a79dd66303fc567a449ade68d10dc393515b5a774be5328c0cc71239cbe70",
+      "next": "2baede15b7a04a980f0cea168ba2000d763fd4d7bd2cdce7006fbd303b44260d"
+    },
+    {
+      "ord": 54,
+      "blockId": "1f13e5d0d7349a122b4adaf0fd70fd8e",
+      "fp64": "f5dffbfeff3bf236",
+      "normHash": "2baede15b7a04a980f0cea168ba2000d763fd4d7bd2cdce7006fbd303b44260d",
+      "kind": "page",
+      "chapter": "ذكر-الرواية-عن-الفضل-بن-العباس-بن-عبد-المطلب-رضي-الله-عنهما-ذلك-عن-النبي",
+      "prev": "780f2fc011f946903b0b43546fb65e1d9c8f2199f23f2b762fb459904109b3cd",
+      "next": "0eb3e4ac1af418f31c66dfc381a693549c31db917bbda3568599abca50ea4deb"
+    },
+    {
+      "ord": 55,
+      "blockId": "6106dc91a740a0a55763ba45a95b1ecb",
+      "fp64": "e51a609666f5f054",
+      "normHash": "0eb3e4ac1af418f31c66dfc381a693549c31db917bbda3568599abca50ea4deb",
+      "kind": "p",
+      "chapter": "ذكر-الرواية-عن-الفضل-بن-العباس-بن-عبد-المطلب-رضي-الله-عنهما-ذلك-عن-النبي",
+      "prev": "2baede15b7a04a980f0cea168ba2000d763fd4d7bd2cdce7006fbd303b44260d",
+      "next": "5c707ebb7dfdc2fcdef92157534f08a8181910b34e8fce81fe6ba7f795035deb"
+    },
+    {
+      "ord": 56,
+      "blockId": "0b07a6959b4eb4ef2f67ccad486ebc71",
+      "fp64": "f442ec5fc7760174",
+      "normHash": "5c707ebb7dfdc2fcdef92157534f08a8181910b34e8fce81fe6ba7f795035deb",
+      "kind": "p",
+      "chapter": "ذكر-الرواية-عن-الفضل-بن-العباس-بن-عبد-المطلب-رضي-الله-عنهما-ذلك-عن-النبي",
+      "prev": "0eb3e4ac1af418f31c66dfc381a693549c31db917bbda3568599abca50ea4deb",
+      "next": "e4b5b8347c19b386c0a59c14dd7c52742344a8ec41061f747343ce9bae742e64"
+    },
+    {
+      "ord": 57,
+      "blockId": "3c6d66a88ffb4266042f057648549e29",
+      "fp64": "67dff7daffb7e876",
+      "normHash": "e4b5b8347c19b386c0a59c14dd7c52742344a8ec41061f747343ce9bae742e64",
+      "kind": "page",
+      "chapter": "ذكر-الرواية-عن-الفضل-بن-العباس-بن-عبد-المطلب-رضي-الله-عنهما-ذلك-عن-النبي",
+      "prev": "5c707ebb7dfdc2fcdef92157534f08a8181910b34e8fce81fe6ba7f795035deb",
+      "next": "46458c8fec2ec58e80f402a63f18eadf047807b836281293e2a91d82b12ced30"
+    },
+    {
+      "ord": 58,
+      "blockId": "4749f1cd023f9a3b5133bf3e9460e310",
+      "fp64": "e577c0d696f47174",
+      "normHash": "46458c8fec2ec58e80f402a63f18eadf047807b836281293e2a91d82b12ced30",
+      "kind": "h2",
+      "chapter": "ذكر-الرواية-عن-عبد-الله-بن-العباس-بن-عبد-المطلب-رضي-الله-عنهما-ذلك-عن-النبي",
+      "prev": "e4b5b8347c19b386c0a59c14dd7c52742344a8ec41061f747343ce9bae742e64",
+      "next": "421383a5a1c0a7899345fdd6ebd40502ab91365b57f9efd29bb07fb18641c971"
+    },
+    {
+      "ord": 59,
+      "blockId": "b5eb77f3192cb56ad3e627e9cd896c81",
+      "fp64": "c59a219676f3f054",
+      "normHash": "421383a5a1c0a7899345fdd6ebd40502ab91365b57f9efd29bb07fb18641c971",
+      "kind": "p",
+      "chapter": "ذكر-الرواية-عن-عبد-الله-بن-العباس-بن-عبد-المطلب-رضي-الله-عنهما-ذلك-عن-النبي",
+      "prev": "46458c8fec2ec58e80f402a63f18eadf047807b836281293e2a91d82b12ced30",
+      "next": "005a17e81b34a262313f054781cac6feffa28f5309ddf0e51935e16a217bf86a"
+    },
+    {
+      "ord": 60,
+      "blockId": "4d212964deb152dcbb53c67b1013a1df",
+      "fp64": "055e21bf4879f126",
+      "normHash": "005a17e81b34a262313f054781cac6feffa28f5309ddf0e51935e16a217bf86a",
+      "kind": "p",
+      "chapter": "ذكر-الرواية-عن-عبد-الله-بن-العباس-بن-عبد-المطلب-رضي-الله-عنهما-ذلك-عن-النبي",
+      "prev": "421383a5a1c0a7899345fdd6ebd40502ab91365b57f9efd29bb07fb18641c971",
+      "next": "988b046108c397a1a09c9f0ad464b69e569118c8d616b5e035db31f81b403458"
+    },
+    {
+      "ord": 61,
+      "blockId": "69658d8768a08bae6fe15e7a593ebf0c",
+      "fp64": "e59a01d667f7f074",
+      "normHash": "988b046108c397a1a09c9f0ad464b69e569118c8d616b5e035db31f81b403458",
+      "kind": "p",
+      "chapter": "ذكر-الرواية-عن-عبد-الله-بن-العباس-بن-عبد-المطلب-رضي-الله-عنهما-ذلك-عن-النبي",
+      "prev": "005a17e81b34a262313f054781cac6feffa28f5309ddf0e51935e16a217bf86a",
+      "next": "ec48b942b322944557921246b8ff033ac32326937904ffa4efd472f73203485e"
+    },
+    {
+      "ord": 62,
+      "blockId": "f9b990abb247e129a9b38dc9eefdfe0c",
+      "fp64": "05d8a09f4cf5fc75",
+      "normHash": "ec48b942b322944557921246b8ff033ac32326937904ffa4efd472f73203485e",
+      "kind": "p",
+      "chapter": "ذكر-الرواية-عن-عبد-الله-بن-العباس-بن-عبد-المطلب-رضي-الله-عنهما-ذلك-عن-النبي",
+      "prev": "988b046108c397a1a09c9f0ad464b69e569118c8d616b5e035db31f81b403458",
+      "next": "8b27ab4c495fb57d3c00a7fdbdda9a7c6380182cae8acfbe6353b5cc03ffe0cd"
+    },
+    {
+      "ord": 63,
+      "blockId": "ebd3cada6353cdd8b224f1ce0f498bbb",
+      "fp64": "851aa09656f6f074",
+      "normHash": "8b27ab4c495fb57d3c00a7fdbdda9a7c6380182cae8acfbe6353b5cc03ffe0cd",
+      "kind": "p",
+      "chapter": "ذكر-الرواية-عن-عبد-الله-بن-العباس-بن-عبد-المطلب-رضي-الله-عنهما-ذلك-عن-النبي",
+      "prev": "ec48b942b322944557921246b8ff033ac32326937904ffa4efd472f73203485e",
+      "next": "2f675dd1fb44cd3f14ffc50b5d17ce67ad94a63d41d53965a813c86f829b86e1"
+    },
+    {
+      "ord": 64,
+      "blockId": "33cfa3047632875b7f995634c471cbef",
+      "fp64": "653b401e945058d6",
+      "normHash": "2f675dd1fb44cd3f14ffc50b5d17ce67ad94a63d41d53965a813c86f829b86e1",
+      "kind": "p",
+      "chapter": "ذكر-الرواية-عن-عبد-الله-بن-العباس-بن-عبد-المطلب-رضي-الله-عنهما-ذلك-عن-النبي",
+      "prev": "8b27ab4c495fb57d3c00a7fdbdda9a7c6380182cae8acfbe6353b5cc03ffe0cd",
+      "next": "dce30f7a0419df1de4771c4398806f88c8bc49cf56aac2dabbc9aac7831db93d"
+    },
+    {
+      "ord": 65,
+      "blockId": "25d88623472988802b90b1a8f0bf0b93",
+      "fp64": "e410e01e1164787c",
+      "normHash": "dce30f7a0419df1de4771c4398806f88c8bc49cf56aac2dabbc9aac7831db93d",
+      "kind": "p",
+      "chapter": "ذكر-الرواية-عن-عبد-الله-بن-العباس-بن-عبد-المطلب-رضي-الله-عنهما-ذلك-عن-النبي",
+      "prev": "2f675dd1fb44cd3f14ffc50b5d17ce67ad94a63d41d53965a813c86f829b86e1",
+      "next": "cd351c224a2383d3109e0b0bb4a0e8155f74081a2d1f074b9eec9b1b61748060"
+    },
+    {
+      "ord": 66,
+      "blockId": "8ec0970d7c52216a40951e692cde0978",
+      "fp64": "5556f4dec5305e7e",
+      "normHash": "cd351c224a2383d3109e0b0bb4a0e8155f74081a2d1f074b9eec9b1b61748060",
+      "kind": "p",
+      "chapter": "ذكر-الرواية-عن-عبد-الله-بن-العباس-بن-عبد-المطلب-رضي-الله-عنهما-ذلك-عن-النبي",
+      "prev": "dce30f7a0419df1de4771c4398806f88c8bc49cf56aac2dabbc9aac7831db93d",
+      "next": "46e44ad659ef6e1b650f5699b292c846240d1b2c59f95a9f8fb4cb05fed08b96"
+    },
+    {
+      "ord": 67,
+      "blockId": "8094c8b8c86ec115710717e95394526d",
+      "fp64": "958bef737dbed539",
+      "normHash": "46e44ad659ef6e1b650f5699b292c846240d1b2c59f95a9f8fb4cb05fed08b96",
+      "kind": "p",
+      "chapter": "ذكر-الرواية-عن-عبد-الله-بن-العباس-بن-عبد-المطلب-رضي-الله-عنهما-ذلك-عن-النبي",
+      "prev": "cd351c224a2383d3109e0b0bb4a0e8155f74081a2d1f074b9eec9b1b61748060",
+      "next": "946665166a2b630355cae3b03991111ccc02e14cb54e5bc0bf79f5937f81e11a"
+    },
+    {
+      "ord": 68,
+      "blockId": "d37ab4d4196c78736b6f59c68ff95e19",
+      "fp64": "275e8096167c7174",
+      "normHash": "946665166a2b630355cae3b03991111ccc02e14cb54e5bc0bf79f5937f81e11a",
+      "kind": "p",
+      "chapter": "ذكر-الرواية-عن-عبد-الله-بن-العباس-بن-عبد-المطلب-رضي-الله-عنهما-ذلك-عن-النبي",
+      "prev": "46e44ad659ef6e1b650f5699b292c846240d1b2c59f95a9f8fb4cb05fed08b96",
+      "next": "773b8608af591a4d97d8be3757aa061b4b106edb36d734747d3132b8ddb44f26"
+    },
+    {
+      "ord": 69,
+      "blockId": "a93ae5972a5e8ce92495a50d4a4bce7e",
+      "fp64": "2077c2969ef5717c",
+      "normHash": "773b8608af591a4d97d8be3757aa061b4b106edb36d734747d3132b8ddb44f26",
+      "kind": "p",
+      "chapter": "ذكر-الرواية-عن-عبد-الله-بن-العباس-بن-عبد-المطلب-رضي-الله-عنهما-ذلك-عن-النبي",
+      "prev": "946665166a2b630355cae3b03991111ccc02e14cb54e5bc0bf79f5937f81e11a",
+      "next": "4b94d8f3bc2b1019700e1465b4a971cecd4c0c85991526b359227dbb72361dbe"
+    },
+    {
+      "ord": 70,
+      "blockId": "458dfa351238c3d9902c9d8c21bf5bfa",
+      "fp64": "e51ec096ce7c7174",
+      "normHash": "4b94d8f3bc2b1019700e1465b4a971cecd4c0c85991526b359227dbb72361dbe",
+      "kind": "p",
+      "chapter": "ذكر-الرواية-عن-عبد-الله-بن-العباس-بن-عبد-المطلب-رضي-الله-عنهما-ذلك-عن-النبي",
+      "prev": "773b8608af591a4d97d8be3757aa061b4b106edb36d734747d3132b8ddb44f26",
+      "next": "ea4bf4f68437bbc31484dda46ad13e3beccdeb40151693562362f78b71129bfa"
+    },
+    {
+      "ord": 71,
+      "blockId": "79898d13c8a41a5b954ff53a5806ec82",
+      "fp64": "e75be012a6f9f0d4",
+      "normHash": "ea4bf4f68437bbc31484dda46ad13e3beccdeb40151693562362f78b71129bfa",
+      "kind": "p",
+      "chapter": "ذكر-الرواية-عن-عبد-الله-بن-العباس-بن-عبد-المطلب-رضي-الله-عنهما-ذلك-عن-النبي",
+      "prev": "4b94d8f3bc2b1019700e1465b4a971cecd4c0c85991526b359227dbb72361dbe",
+      "next": "0ec1335953ee4034a1ee09c6c08c4ab3a79385021e6519e493defc88fc2a57bb"
+    },
+    {
+      "ord": 72,
+      "blockId": "8ee2c00778c95b3a30228d263a1a0bbe",
+      "fp64": "1e4b29c97e2d122d",
+      "normHash": "0ec1335953ee4034a1ee09c6c08c4ab3a79385021e6519e493defc88fc2a57bb",
+      "kind": "p",
+      "chapter": "ذكر-الرواية-عن-عبد-الله-بن-العباس-بن-عبد-المطلب-رضي-الله-عنهما-ذلك-عن-النبي",
+      "prev": "ea4bf4f68437bbc31484dda46ad13e3beccdeb40151693562362f78b71129bfa",
+      "next": "81c8cfa03f4bc00806c01731a0c6720f94fb3ab49bcb7302afb3f9556b1c2292"
+    },
+    {
+      "ord": 73,
+      "blockId": "35b9bbcdd987e9656b86cd505d6c5c6b",
+      "fp64": "9f480793f3df06a0",
+      "normHash": "81c8cfa03f4bc00806c01731a0c6720f94fb3ab49bcb7302afb3f9556b1c2292",
+      "kind": "p",
+      "chapter": "ذكر-الرواية-عن-عبد-الله-بن-العباس-بن-عبد-المطلب-رضي-الله-عنهما-ذلك-عن-النبي",
+      "prev": "0ec1335953ee4034a1ee09c6c08c4ab3a79385021e6519e493defc88fc2a57bb",
+      "next": "d74629aeaa24add6bfb07f56dafc5124cd20f139aff02754c8f197ff05519bb8"
+    },
+    {
+      "ord": 74,
+      "blockId": "fabef78f1c278eb4dcddd7dbf22d09f4",
+      "fp64": "35dff3ff5fff6876",
+      "normHash": "d74629aeaa24add6bfb07f56dafc5124cd20f139aff02754c8f197ff05519bb8",
+      "kind": "page",
+      "chapter": "ذكر-الرواية-عن-عبد-الله-بن-العباس-بن-عبد-المطلب-رضي-الله-عنهما-ذلك-عن-النبي",
+      "prev": "81c8cfa03f4bc00806c01731a0c6720f94fb3ab49bcb7302afb3f9556b1c2292",
+      "next": "e85fd9d9858d408c3b7eb5a7f8bb4d5cf90c6d1db02cbf60d92e509d6c93c018"
+    },
+    {
+      "ord": 75,
+      "blockId": "dac26b14d2e907b46609e09747b67416",
+      "fp64": "673e209686d3d154",
+      "normHash": "e85fd9d9858d408c3b7eb5a7f8bb4d5cf90c6d1db02cbf60d92e509d6c93c018",
+      "kind": "h2",
+      "chapter": "فأما-حديث-إبراهيم-بن-الحكم-بن-أبان-عن-أبيه-الذي-رواه-عن-عكرمة-عن-النبي-مرسلا",
+      "prev": "d74629aeaa24add6bfb07f56dafc5124cd20f139aff02754c8f197ff05519bb8",
+      "next": "d098d119b8da9ca964be226c822900bbec98f624ab2fc04283faae0aeb675963"
+    },
+    {
+      "ord": 76,
+      "blockId": "f04ab7ceef621ed4efdad47254130317",
+      "fp64": "651a6096d7555054",
+      "normHash": "d098d119b8da9ca964be226c822900bbec98f624ab2fc04283faae0aeb675963",
+      "kind": "p",
+      "chapter": "فأما-حديث-إبراهيم-بن-الحكم-بن-أبان-عن-أبيه-الذي-رواه-عن-عكرمة-عن-النبي-مرسلا",
+      "prev": "e85fd9d9858d408c3b7eb5a7f8bb4d5cf90c6d1db02cbf60d92e509d6c93c018",
+      "next": "abdfe434c405e1873b4278133ca53c507317f3f56537531eaaefbf947d22ddd1"
+    },
+    {
+      "ord": 77,
+      "blockId": "ccc29d33c7a2233744d8a1403fe9b19e",
+      "fp64": "f45564781f7064fe",
+      "normHash": "abdfe434c405e1873b4278133ca53c507317f3f56537531eaaefbf947d22ddd1",
+      "kind": "p",
+      "chapter": "فأما-حديث-إبراهيم-بن-الحكم-بن-أبان-عن-أبيه-الذي-رواه-عن-عكرمة-عن-النبي-مرسلا",
+      "prev": "d098d119b8da9ca964be226c822900bbec98f624ab2fc04283faae0aeb675963",
+      "next": "4647e81db657f3d273e6f076ad8c1792d5534c64c83f662ee79418e108590f3d"
+    },
+    {
+      "ord": 78,
+      "blockId": "42ddbd057b8314f21b58841fece85383",
+      "fp64": "ba522e9f4082eaba",
+      "normHash": "4647e81db657f3d273e6f076ad8c1792d5534c64c83f662ee79418e108590f3d",
+      "kind": "p",
+      "chapter": "فأما-حديث-إبراهيم-بن-الحكم-بن-أبان-عن-أبيه-الذي-رواه-عن-عكرمة-عن-النبي-مرسلا",
+      "prev": "abdfe434c405e1873b4278133ca53c507317f3f56537531eaaefbf947d22ddd1",
+      "next": "5918c402cfe0756d62424fb2dd87c80aa29ad20db96e9a2a551a0241e66b104c"
+    },
+    {
+      "ord": 79,
+      "blockId": "addaead1a2a4bad660dc1a27960dd5e4",
+      "fp64": "9c4e9db3e7676976",
+      "normHash": "5918c402cfe0756d62424fb2dd87c80aa29ad20db96e9a2a551a0241e66b104c",
+      "kind": "p",
+      "chapter": "فأما-حديث-إبراهيم-بن-الحكم-بن-أبان-عن-أبيه-الذي-رواه-عن-عكرمة-عن-النبي-مرسلا",
+      "prev": "4647e81db657f3d273e6f076ad8c1792d5534c64c83f662ee79418e108590f3d",
+      "next": "32f80639a7ddde9931d68ef0d6d0509a865d1478b82ddcdfe68385be1513e393"
+    },
+    {
+      "ord": 80,
+      "blockId": "0c4067a8be0feac7411852e0e5bef9d8",
+      "fp64": "b7ffffdaffb36efe",
+      "normHash": "32f80639a7ddde9931d68ef0d6d0509a865d1478b82ddcdfe68385be1513e393",
+      "kind": "page",
+      "chapter": "فأما-حديث-إبراهيم-بن-الحكم-بن-أبان-عن-أبيه-الذي-رواه-عن-عكرمة-عن-النبي-مرسلا",
+      "prev": "5918c402cfe0756d62424fb2dd87c80aa29ad20db96e9a2a551a0241e66b104c",
+      "next": "becb6333fac4b06dd94b07da179c97b70f3f78f17ed5e0022b14af741ffa94ee"
+    },
+    {
+      "ord": 81,
+      "blockId": "988c0f7fa15f56e12dd3d2013942c1d7",
+      "fp64": "e33f4402c6774924",
+      "normHash": "becb6333fac4b06dd94b07da179c97b70f3f78f17ed5e0022b14af741ffa94ee",
+      "kind": "h2",
+      "chapter": "وأما-حديث-عبد-القدوس-بن-حبيب-عن-مجاهد-عن-ابن-عباس",
+      "prev": "32f80639a7ddde9931d68ef0d6d0509a865d1478b82ddcdfe68385be1513e393",
+      "next": "27f81e8d404886bc5f117b3c909efd90dfc6b258f41cd1d0287594edc446ede7"
+    },
+    {
+      "ord": 82,
+      "blockId": "1deb1573bac681fa66621a98a2ebe978",
+      "fp64": "641a609756f5f07c",
+      "normHash": "27f81e8d404886bc5f117b3c909efd90dfc6b258f41cd1d0287594edc446ede7",
+      "kind": "p",
+      "chapter": "وأما-حديث-عبد-القدوس-بن-حبيب-عن-مجاهد-عن-ابن-عباس",
+      "prev": "becb6333fac4b06dd94b07da179c97b70f3f78f17ed5e0022b14af741ffa94ee",
+      "next": "38992aa9d168a79c3c54d7c75b5c26d039e22f56a0327b473421acdc0a42fc4d"
+    },
+    {
+      "ord": 83,
+      "blockId": "c12c36ca8c6eb26ff73a78f1fcb49a37",
+      "fp64": "d2d6e05cd2700e5e",
+      "normHash": "38992aa9d168a79c3c54d7c75b5c26d039e22f56a0327b473421acdc0a42fc4d",
+      "kind": "p",
+      "chapter": "وأما-حديث-عبد-القدوس-بن-حبيب-عن-مجاهد-عن-ابن-عباس",
+      "prev": "27f81e8d404886bc5f117b3c909efd90dfc6b258f41cd1d0287594edc446ede7",
+      "next": "728a981f0261036df210f2411347dbb498cf5ed85759f45a8d7e444b70b1d444"
+    },
+    {
+      "ord": 84,
+      "blockId": "f835713d2eb862461dae0c0b1efb92d5",
+      "fp64": "35dfff9f5bb9ec36",
+      "normHash": "728a981f0261036df210f2411347dbb498cf5ed85759f45a8d7e444b70b1d444",
+      "kind": "page",
+      "chapter": "وأما-حديث-عبد-القدوس-بن-حبيب-عن-مجاهد-عن-ابن-عباس",
+      "prev": "38992aa9d168a79c3c54d7c75b5c26d039e22f56a0327b473421acdc0a42fc4d",
+      "next": "fa2f435845212b2ad02ec071a6565eea9cee0991bc839479e418dd46aafc87f6"
+    },
+    {
+      "ord": 85,
+      "blockId": "c63572659b1a04524c2378a29d8b588e",
+      "fp64": "63ff6e12c7f93106",
+      "normHash": "fa2f435845212b2ad02ec071a6565eea9cee0991bc839479e418dd46aafc87f6",
+      "kind": "h2",
+      "chapter": "وأما-حديث-محمد-بن-جحادة-عن-أبي-الجوزاء-عن-ابن-عباس-المرفوع",
+      "prev": "728a981f0261036df210f2411347dbb498cf5ed85759f45a8d7e444b70b1d444",
+      "next": "7a7160bca3a5a9997baf1a8abc8fb7ab4b34f5095dcc60e559705e733c1fd6c9"
+    },
+    {
+      "ord": 86,
+      "blockId": "29af7e5636f2b2000dabff65f7d3da03",
+      "fp64": "651a619665f5f854",
+      "normHash": "7a7160bca3a5a9997baf1a8abc8fb7ab4b34f5095dcc60e559705e733c1fd6c9",
+      "kind": "p",
+      "chapter": "وأما-حديث-محمد-بن-جحادة-عن-أبي-الجوزاء-عن-ابن-عباس-المرفوع",
+      "prev": "fa2f435845212b2ad02ec071a6565eea9cee0991bc839479e418dd46aafc87f6",
+      "next": "43d7ffca7f8eae2f519a08a9758b239e58470ec2388939a18a37198383cac876"
+    },
+    {
+      "ord": 87,
+      "blockId": "46e53a0946eca6265358f2e92c745b63",
+      "fp64": "f452c41ad1321efe",
+      "normHash": "43d7ffca7f8eae2f519a08a9758b239e58470ec2388939a18a37198383cac876",
+      "kind": "p",
+      "chapter": "وأما-حديث-محمد-بن-جحادة-عن-أبي-الجوزاء-عن-ابن-عباس-المرفوع",
+      "prev": "7a7160bca3a5a9997baf1a8abc8fb7ab4b34f5095dcc60e559705e733c1fd6c9",
+      "next": "8a2355d777f7d9fb4a28a6c65a1b17b6b11616cb08dac6f9126018fb4ab47469"
+    },
+    {
+      "ord": 88,
+      "blockId": "37259275a68655a9bded4ed7df1edcaa",
+      "fp64": "2ddffb9ada7578b6",
+      "normHash": "8a2355d777f7d9fb4a28a6c65a1b17b6b11616cb08dac6f9126018fb4ab47469",
+      "kind": "page",
+      "chapter": "وأما-حديث-محمد-بن-جحادة-عن-أبي-الجوزاء-عن-ابن-عباس-المرفوع",
+      "prev": "43d7ffca7f8eae2f519a08a9758b239e58470ec2388939a18a37198383cac876",
+      "next": "207021cf0e300e27202cc7aa3016ceb785bb52eedc24e273d64660c0e5743c09"
+    },
+    {
+      "ord": 89,
+      "blockId": "db0a3f1a826c7fce6e942f228245971f",
+      "fp64": "eddff515eefb902e",
+      "normHash": "207021cf0e300e27202cc7aa3016ceb785bb52eedc24e273d64660c0e5743c09",
+      "kind": "h2",
+      "chapter": "وأما-حديث-محمد-بن-جحادة-الموقوف",
+      "prev": "8a2355d777f7d9fb4a28a6c65a1b17b6b11616cb08dac6f9126018fb4ab47469",
+      "next": "aed33c1d073d52ba7d5845d122f1a0cf4c2a5de335360e149605f83a8c72a4cb"
+    },
+    {
+      "ord": 90,
+      "blockId": "a3fd91f41b8c6da95d7fccdec32d364e",
+      "fp64": "459a209636ebf07c",
+      "normHash": "aed33c1d073d52ba7d5845d122f1a0cf4c2a5de335360e149605f83a8c72a4cb",
+      "kind": "p",
+      "chapter": "وأما-حديث-محمد-بن-جحادة-الموقوف",
+      "prev": "207021cf0e300e27202cc7aa3016ceb785bb52eedc24e273d64660c0e5743c09",
+      "next": "d41ac1426a1d2db976cdccf4dd6ed432bc64630987d964ec15d15e52506b0ce4"
+    },
+    {
+      "ord": 91,
+      "blockId": "a704e619108e420f1fc6108968479c48",
+      "fp64": "a59a209666f7f454",
+      "normHash": "d41ac1426a1d2db976cdccf4dd6ed432bc64630987d964ec15d15e52506b0ce4",
+      "kind": "p",
+      "chapter": "وأما-حديث-محمد-بن-جحادة-الموقوف",
+      "prev": "aed33c1d073d52ba7d5845d122f1a0cf4c2a5de335360e149605f83a8c72a4cb",
+      "next": "dfdf134dd8c4513b19eeaa213a4d52517e868d664e307c58eb481ebae7a4bb57"
+    },
+    {
+      "ord": 92,
+      "blockId": "5d426939813c7889821fbc5cf2a834a3",
+      "fp64": "353f21be4ffff45d",
+      "normHash": "dfdf134dd8c4513b19eeaa213a4d52517e868d664e307c58eb481ebae7a4bb57",
+      "kind": "p",
+      "chapter": "وأما-حديث-محمد-بن-جحادة-الموقوف",
+      "prev": "d41ac1426a1d2db976cdccf4dd6ed432bc64630987d964ec15d15e52506b0ce4",
+      "next": "50422e3f9db494fa3cd656d5a86cecff906a9dbdabc4ebb87f2e0bd4663413df"
+    },
+    {
+      "ord": 93,
+      "blockId": "65beb31ece8a0a6d40d8ddc7a3d7d5f3",
+      "fp64": "b652641e5714d68e",
+      "normHash": "50422e3f9db494fa3cd656d5a86cecff906a9dbdabc4ebb87f2e0bd4663413df",
+      "kind": "p",
+      "chapter": "وأما-حديث-محمد-بن-جحادة-الموقوف",
+      "prev": "dfdf134dd8c4513b19eeaa213a4d52517e868d664e307c58eb481ebae7a4bb57",
+      "next": "bb5325308b578ba2339247e295e288295284afb8097cb6d7634cf6d56b541623"
+    },
+    {
+      "ord": 94,
+      "blockId": "bedbfa11f3114efe24650dd2b6a848f3",
+      "fp64": "f5ffff9afa3b7aff",
+      "normHash": "bb5325308b578ba2339247e295e288295284afb8097cb6d7634cf6d56b541623",
+      "kind": "page",
+      "chapter": "وأما-حديث-محمد-بن-جحادة-الموقوف",
+      "prev": "50422e3f9db494fa3cd656d5a86cecff906a9dbdabc4ebb87f2e0bd4663413df",
+      "next": "826b4b15c841ea35a6e602ec4adf58830a7f885c70ac3e59c15113ac0fb68d45"
+    },
+    {
+      "ord": 95,
+      "blockId": "0e549fb81ad76351b2925f3ea0fd4746",
+      "fp64": "633f68fea7ff7876",
+      "normHash": "826b4b15c841ea35a6e602ec4adf58830a7f885c70ac3e59c15113ac0fb68d45",
+      "kind": "h2",
+      "chapter": "وأما-حديث-عمرو-بن-مالك-النكري-عن-أبي-الجوزاء-عن-ابن-عباس",
+      "prev": "bb5325308b578ba2339247e295e288295284afb8097cb6d7634cf6d56b541623",
+      "next": "ca0ebf4eb0a77e843be38d7b7a83cb92709c5312d0f80a0c665897636eb2f16b"
+    },
+    {
+      "ord": 96,
+      "blockId": "baf2ec120692d05a76e9ebd6f0fc9229",
+      "fp64": "e59ae11666cff854",
+      "normHash": "ca0ebf4eb0a77e843be38d7b7a83cb92709c5312d0f80a0c665897636eb2f16b",
+      "kind": "p",
+      "chapter": "وأما-حديث-عمرو-بن-مالك-النكري-عن-أبي-الجوزاء-عن-ابن-عباس",
+      "prev": "826b4b15c841ea35a6e602ec4adf58830a7f885c70ac3e59c15113ac0fb68d45",
+      "next": "9f97217e1ba25733377739840265b5f24d374292da90e09d0685d26aa8933c28"
+    },
+    {
+      "ord": 97,
+      "blockId": "a1f0a7131c5ef090778c3d3da61e7c97",
+      "fp64": "50d7a09a5512166a",
+      "normHash": "9f97217e1ba25733377739840265b5f24d374292da90e09d0685d26aa8933c28",
+      "kind": "p",
+      "chapter": "وأما-حديث-عمرو-بن-مالك-النكري-عن-أبي-الجوزاء-عن-ابن-عباس",
+      "prev": "ca0ebf4eb0a77e843be38d7b7a83cb92709c5312d0f80a0c665897636eb2f16b",
+      "next": "ea50ef4839a8e806e37d52ab863469001a76095bdbccbfe17908a82b161486bb"
+    },
+    {
+      "ord": 98,
+      "blockId": "aac7ffeaab629cfa51aaa9727f8ced06",
+      "fp64": "fdfff39e7a7162b7",
+      "normHash": "ea50ef4839a8e806e37d52ab863469001a76095bdbccbfe17908a82b161486bb",
+      "kind": "page",
+      "chapter": "وأما-حديث-عمرو-بن-مالك-النكري-عن-أبي-الجوزاء-عن-ابن-عباس",
+      "prev": "9f97217e1ba25733377739840265b5f24d374292da90e09d0685d26aa8933c28",
+      "next": "4573304d6aebee17a3d1bc445db81530fec0038ed67b26ca575f850f2486d98c"
+    },
+    {
+      "ord": 99,
+      "blockId": "a0ebc7821f4ecdc2e9898c7e01db72f2",
+      "fp64": "e59f203606fdf074",
+      "normHash": "4573304d6aebee17a3d1bc445db81530fec0038ed67b26ca575f850f2486d98c",
+      "kind": "p",
+      "chapter": "وأما-حديث-عمرو-بن-مالك-النكري-عن-أبي-الجوزاء-عن-ابن-عباس",
+      "prev": "ea50ef4839a8e806e37d52ab863469001a76095bdbccbfe17908a82b161486bb",
+      "next": "2e0b82d49fc8386609df672c19e6fad16926afc6dfd1928c27bb3c1c129b50a6"
+    },
+    {
+      "ord": 100,
+      "blockId": "15d278204312569493c157a532d0d34a",
+      "fp64": "fddfffffda3f66b6",
+      "normHash": "2e0b82d49fc8386609df672c19e6fad16926afc6dfd1928c27bb3c1c129b50a6",
+      "kind": "page",
+      "chapter": "وأما-حديث-عمرو-بن-مالك-النكري-عن-أبي-الجوزاء-عن-ابن-عباس",
+      "prev": "4573304d6aebee17a3d1bc445db81530fec0038ed67b26ca575f850f2486d98c",
+      "next": "dee404d29dcfdac68f670ebae239d9a8df558f6d1b4be96d03c3c06bd1c33f1f"
+    },
+    {
+      "ord": 101,
+      "blockId": "70d7ba195f5e7f10d007ae26e47483d5",
+      "fp64": "623f4e36871819c2",
+      "normHash": "dee404d29dcfdac68f670ebae239d9a8df558f6d1b4be96d03c3c06bd1c33f1f",
+      "kind": "h2",
+      "chapter": "وأما-حديث-يحيى-بن-سعيد-عن-أبي-الجوزاء-عن-ابن-عباس",
+      "prev": "2e0b82d49fc8386609df672c19e6fad16926afc6dfd1928c27bb3c1c129b50a6",
+      "next": "3f0946f6360638ad02543fdffd5938ca7a17914a1d6e1a20c2b0d49fed97de57"
+    },
+    {
+      "ord": 102,
+      "blockId": "618cfa490dde3693a44d6794a33e0b3b",
+      "fp64": "659a609626fdf454",
+      "normHash": "3f0946f6360638ad02543fdffd5938ca7a17914a1d6e1a20c2b0d49fed97de57",
+      "kind": "p",
+      "chapter": "وأما-حديث-يحيى-بن-سعيد-عن-أبي-الجوزاء-عن-ابن-عباس",
+      "prev": "dee404d29dcfdac68f670ebae239d9a8df558f6d1b4be96d03c3c06bd1c33f1f",
+      "next": "d305f0d37c40b57e20a4bb079c3d82b94a67dee771f22e6667151099421f3b4a"
+    },
+    {
+      "ord": 103,
+      "blockId": "961001c331d5c8e877f7932431b943d8",
+      "fp64": "d476576957761243",
+      "normHash": "d305f0d37c40b57e20a4bb079c3d82b94a67dee771f22e6667151099421f3b4a",
+      "kind": "p",
+      "chapter": "وأما-حديث-يحيى-بن-سعيد-عن-أبي-الجوزاء-عن-ابن-عباس",
+      "prev": "3f0946f6360638ad02543fdffd5938ca7a17914a1d6e1a20c2b0d49fed97de57",
+      "next": "c66c7056bde840b0b2e484536517bde3e31043509fbece2e3615a51c1bf9a42f"
+    },
+    {
+      "ord": 104,
+      "blockId": "a2cda9827eb98617d1a91c9263d49480",
+      "fp64": "67fff3fedbfb69f7",
+      "normHash": "c66c7056bde840b0b2e484536517bde3e31043509fbece2e3615a51c1bf9a42f",
+      "kind": "page",
+      "chapter": "وأما-حديث-يحيى-بن-سعيد-عن-أبي-الجوزاء-عن-ابن-عباس",
+      "prev": "d305f0d37c40b57e20a4bb079c3d82b94a67dee771f22e6667151099421f3b4a",
+      "next": "f9edda80e6cd69704358bc01efcdbdced78bc1a0bcec41f475546b0de2b94f3e"
+    },
+    {
+      "ord": 105,
+      "blockId": "991dbf8869219162b13eaf1d68ce73f5",
+      "fp64": "637f482aa55839c6",
+      "normHash": "f9edda80e6cd69704358bc01efcdbdced78bc1a0bcec41f475546b0de2b94f3e",
+      "kind": "h2",
+      "chapter": "وأما-حديث-أبي-مالك-العقيلي-عن-أبي-الجوزاء-عن-ابن-عباس",
+      "prev": "c66c7056bde840b0b2e484536517bde3e31043509fbece2e3615a51c1bf9a42f",
+      "next": "a1519224fbd37303d3690e26f529616dcb7984690926d9b66d498310aed487a3"
+    },
+    {
+      "ord": 106,
+      "blockId": "b73932d4f491f59ada58fbab22392c49",
+      "fp64": "659a6096f6fcf074",
+      "normHash": "a1519224fbd37303d3690e26f529616dcb7984690926d9b66d498310aed487a3",
+      "kind": "p",
+      "chapter": "وأما-حديث-أبي-مالك-العقيلي-عن-أبي-الجوزاء-عن-ابن-عباس",
+      "prev": "f9edda80e6cd69704358bc01efcdbdced78bc1a0bcec41f475546b0de2b94f3e",
+      "next": "564a67f28510ae5dfe7a0725f1c1eeb0697320fd770610693dc44c93e9e8bdc5"
+    },
+    {
+      "ord": 107,
+      "blockId": "9331c11e90994311f1831b0da52a0ca9",
+      "fp64": "91c0660d63069e0f",
+      "normHash": "564a67f28510ae5dfe7a0725f1c1eeb0697320fd770610693dc44c93e9e8bdc5",
+      "kind": "p",
+      "chapter": "وأما-حديث-أبي-مالك-العقيلي-عن-أبي-الجوزاء-عن-ابن-عباس",
+      "prev": "a1519224fbd37303d3690e26f529616dcb7984690926d9b66d498310aed487a3",
+      "next": "931d9c0fe2cac7046e45b8de1e7c93bfb1f076c0cec2df57046413a6798aac1e"
+    },
+    {
+      "ord": 108,
+      "blockId": "b9d153fd29663e85b96ef0d91ce23acd",
+      "fp64": "f013445c57768a7b",
+      "normHash": "931d9c0fe2cac7046e45b8de1e7c93bfb1f076c0cec2df57046413a6798aac1e",
+      "kind": "p",
+      "chapter": "وأما-حديث-أبي-مالك-العقيلي-عن-أبي-الجوزاء-عن-ابن-عباس",
+      "prev": "564a67f28510ae5dfe7a0725f1c1eeb0697320fd770610693dc44c93e9e8bdc5",
+      "next": "ce3340b974ac25e428b0545276133f61e823e7cc82caff6bf2f1db3432e8acf9"
+    },
+    {
+      "ord": 109,
+      "blockId": "5b64ea14cb4d1aa9661ed735b2a3a6fa",
+      "fp64": "d04520aa51309c7e",
+      "normHash": "ce3340b974ac25e428b0545276133f61e823e7cc82caff6bf2f1db3432e8acf9",
+      "kind": "p",
+      "chapter": "وأما-حديث-أبي-مالك-العقيلي-عن-أبي-الجوزاء-عن-ابن-عباس",
+      "prev": "931d9c0fe2cac7046e45b8de1e7c93bfb1f076c0cec2df57046413a6798aac1e",
+      "next": "73b61c75abb255995549919efaafab82d0f4cc9c527161d13154454544eca971"
+    },
+    {
+      "ord": 110,
+      "blockId": "3d8cd14b9473ae2498d5abcc004f2c49",
+      "fp64": "b7ffffdb5a79eabe",
+      "normHash": "73b61c75abb255995549919efaafab82d0f4cc9c527161d13154454544eca971",
+      "kind": "page",
+      "chapter": "وأما-حديث-أبي-مالك-العقيلي-عن-أبي-الجوزاء-عن-ابن-عباس",
+      "prev": "ce3340b974ac25e428b0545276133f61e823e7cc82caff6bf2f1db3432e8acf9",
+      "next": "f2d4b04e1bf4697607e8092f7a470257f481be432f04fa04ad5ae6aeaff98fc5"
+    },
+    {
+      "ord": 111,
+      "blockId": "741c08c90f2a3c05445f36a2ab227a67",
+      "fp64": "e577489687947174",
+      "normHash": "f2d4b04e1bf4697607e8092f7a470257f481be432f04fa04ad5ae6aeaff98fc5",
+      "kind": "h2",
+      "chapter": "ذكر-الرواية-عن-عبد-الله-بن-جعفر-بن-أبي-طالب-رضي-الله-عنهما-ذلك-عن-النبي",
+      "prev": "73b61c75abb255995549919efaafab82d0f4cc9c527161d13154454544eca971",
+      "next": "f77f26367dbf0e8d38596338f232cc1ad570938a03016753dfbf7a844397aa93"
+    },
+    {
+      "ord": 112,
+      "blockId": "27e0e2d63b59dd580bde6ab9005c1b1c",
+      "fp64": "65be6096e4fdf454",
+      "normHash": "f77f26367dbf0e8d38596338f232cc1ad570938a03016753dfbf7a844397aa93",
+      "kind": "p",
+      "chapter": "ذكر-الرواية-عن-عبد-الله-بن-جعفر-بن-أبي-طالب-رضي-الله-عنهما-ذلك-عن-النبي",
+      "prev": "f2d4b04e1bf4697607e8092f7a470257f481be432f04fa04ad5ae6aeaff98fc5",
+      "next": "3566755a5fc1c6bc1dde16dacb9d36141510d2beea8c6d10d8e6fc759f95a35b"
+    },
+    {
+      "ord": 113,
+      "blockId": "1ec0f09c830264dcfe073e303e17baaa",
+      "fp64": "e440c01ec5145874",
+      "normHash": "3566755a5fc1c6bc1dde16dacb9d36141510d2beea8c6d10d8e6fc759f95a35b",
+      "kind": "p",
+      "chapter": "ذكر-الرواية-عن-عبد-الله-بن-جعفر-بن-أبي-طالب-رضي-الله-عنهما-ذلك-عن-النبي",
+      "prev": "f77f26367dbf0e8d38596338f232cc1ad570938a03016753dfbf7a844397aa93",
+      "next": "84c8d2d2982ee55b6a4c3c3b9997acb6952520203bcbbca7ac8a1aa994215bd2"
+    },
+    {
+      "ord": 114,
+      "blockId": "116e48cb17071cf7481e27e8b80fd765",
+      "fp64": "27dfffbe7ebbe3be",
+      "normHash": "84c8d2d2982ee55b6a4c3c3b9997acb6952520203bcbbca7ac8a1aa994215bd2",
+      "kind": "page",
+      "chapter": "ذكر-الرواية-عن-عبد-الله-بن-جعفر-بن-أبي-طالب-رضي-الله-عنهما-ذلك-عن-النبي",
+      "prev": "3566755a5fc1c6bc1dde16dacb9d36141510d2beea8c6d10d8e6fc759f95a35b",
+      "next": "db2413c1a69a44bd44fe1dc3f593182e5b244c92c3c7e83da85395d629a30c23"
+    },
+    {
+      "ord": 115,
+      "blockId": "d1a7a0f99881ff179db9589a2b549a23",
+      "fp64": "e5d748de8ff4717e",
+      "normHash": "db2413c1a69a44bd44fe1dc3f593182e5b244c92c3c7e83da85395d629a30c23",
+      "kind": "h2",
+      "chapter": "ذكر-الرواية-عن-عبد-الله-بن-عمرو-بن-العاص-رضي-الله-عنهما-ذلك-عن-النبي",
+      "prev": "84c8d2d2982ee55b6a4c3c3b9997acb6952520203bcbbca7ac8a1aa994215bd2",
+      "next": "550067a0d32ca84d188cbc91cd01358e9989d71228e2e2f37a55c89d362d30e1"
+    },
+    {
+      "ord": 116,
+      "blockId": "17ac754d82131158cc9b0ac5c544f715",
+      "fp64": "e59a61b677776874",
+      "normHash": "550067a0d32ca84d188cbc91cd01358e9989d71228e2e2f37a55c89d362d30e1",
+      "kind": "p",
+      "chapter": "ذكر-الرواية-عن-عبد-الله-بن-عمرو-بن-العاص-رضي-الله-عنهما-ذلك-عن-النبي",
+      "prev": "db2413c1a69a44bd44fe1dc3f593182e5b244c92c3c7e83da85395d629a30c23",
+      "next": "fc57b26512697344a21316a2ed1c9d016ea17152820e305c0ec9919dd0681495"
+    },
+    {
+      "ord": 117,
+      "blockId": "0652b30ed54c8bb6ce9d65d87faf0ed5",
+      "fp64": "de51e19ef9554c7f",
+      "normHash": "fc57b26512697344a21316a2ed1c9d016ea17152820e305c0ec9919dd0681495",
+      "kind": "p",
+      "chapter": "ذكر-الرواية-عن-عبد-الله-بن-عمرو-بن-العاص-رضي-الله-عنهما-ذلك-عن-النبي",
+      "prev": "550067a0d32ca84d188cbc91cd01358e9989d71228e2e2f37a55c89d362d30e1",
+      "next": "2456f00590b7f0ab4932e5b7603dc749ac90304411122011c7003c6f315d4c70"
+    },
+    {
+      "ord": 118,
+      "blockId": "8f8dbe7c6b94e6c02df0c15bca1298d7",
+      "fp64": "7dffffbe5ebb647e",
+      "normHash": "2456f00590b7f0ab4932e5b7603dc749ac90304411122011c7003c6f315d4c70",
+      "kind": "page",
+      "chapter": "ذكر-الرواية-عن-عبد-الله-بن-عمرو-بن-العاص-رضي-الله-عنهما-ذلك-عن-النبي",
+      "prev": "fc57b26512697344a21316a2ed1c9d016ea17152820e305c0ec9919dd0681495",
+      "next": "43fe8fac77980ed192ae4450f833e4f239e64723cc13b4cdce1973dd4af2b89d"
+    },
+    {
+      "ord": 119,
+      "blockId": "c8157a9907f85016be85bc18e223b8c9",
+      "fp64": "643ec1d687786174",
+      "normHash": "43fe8fac77980ed192ae4450f833e4f239e64723cc13b4cdce1973dd4af2b89d",
+      "kind": "p",
+      "chapter": "ذكر-الرواية-عن-عبد-الله-بن-عمرو-بن-العاص-رضي-الله-عنهما-ذلك-عن-النبي",
+      "prev": "2456f00590b7f0ab4932e5b7603dc749ac90304411122011c7003c6f315d4c70",
+      "next": "d049d323d8e15339cf9388e568bc22db3e066ddaa37d2934516aa2aa29611993"
+    },
+    {
+      "ord": 120,
+      "blockId": "e379f00d33e5a5b86e86c8afda6d45c3",
+      "fp64": "bb35e7ad2f274b4f",
+      "normHash": "d049d323d8e15339cf9388e568bc22db3e066ddaa37d2934516aa2aa29611993",
+      "kind": "p",
+      "chapter": "ذكر-الرواية-عن-عبد-الله-بن-عمرو-بن-العاص-رضي-الله-عنهما-ذلك-عن-النبي",
+      "prev": "43fe8fac77980ed192ae4450f833e4f239e64723cc13b4cdce1973dd4af2b89d",
+      "next": "2435a8f0912fb0ffad0489c1c6ccee2a57e6d5c1c6e4fc2499f8d218672146a8"
+    },
+    {
+      "ord": 121,
+      "blockId": "a846a4d6a549210a3229fc1e82a03393",
+      "fp64": "643a4214c63871d4",
+      "normHash": "2435a8f0912fb0ffad0489c1c6ccee2a57e6d5c1c6e4fc2499f8d218672146a8",
+      "kind": "p",
+      "chapter": "ذكر-الرواية-عن-عبد-الله-بن-عمرو-بن-العاص-رضي-الله-عنهما-ذلك-عن-النبي",
+      "prev": "d049d323d8e15339cf9388e568bc22db3e066ddaa37d2934516aa2aa29611993",
+      "next": "8ddeab5f05969fd51b41aa6d3bd699b876cb1a41b2e84e0e976058fbd4017972"
+    },
+    {
+      "ord": 122,
+      "blockId": "261eac6da92e27fe70c70df871fac2cb",
+      "fp64": "643a60f687e9e074",
+      "normHash": "8ddeab5f05969fd51b41aa6d3bd699b876cb1a41b2e84e0e976058fbd4017972",
+      "kind": "p",
+      "chapter": "ذكر-الرواية-عن-عبد-الله-بن-عمرو-بن-العاص-رضي-الله-عنهما-ذلك-عن-النبي",
+      "prev": "2435a8f0912fb0ffad0489c1c6ccee2a57e6d5c1c6e4fc2499f8d218672146a8",
+      "next": "4203493f39f6e0e45062d29afcd575b9a9f7906841bb1f9cb9fabc2a1bb08b44"
+    },
+    {
+      "ord": 123,
+      "blockId": "a50142a225392460964ec1a21770a69b",
+      "fp64": "e7ffffdf5efb7677",
+      "normHash": "4203493f39f6e0e45062d29afcd575b9a9f7906841bb1f9cb9fabc2a1bb08b44",
+      "kind": "page",
+      "chapter": "ذكر-الرواية-عن-عبد-الله-بن-عمرو-بن-العاص-رضي-الله-عنهما-ذلك-عن-النبي",
+      "prev": "8ddeab5f05969fd51b41aa6d3bd699b876cb1a41b2e84e0e976058fbd4017972",
+      "next": "bad8330cca835845f73a85e843ecead370274631e74f1d205a2f91650b6040fa"
+    },
+    {
+      "ord": 124,
+      "blockId": "d6fefa1a5ab7af5ff3e0a2afb351454d",
+      "fp64": "b7ffef1ec3795f6c",
+      "normHash": "bad8330cca835845f73a85e843ecead370274631e74f1d205a2f91650b6040fa",
+      "kind": "h2",
+      "chapter": "أما-حديث-أبان-المرفوع",
+      "prev": "4203493f39f6e0e45062d29afcd575b9a9f7906841bb1f9cb9fabc2a1bb08b44",
+      "next": "9e2a31b2b0a6285a35c373c7547813d2c84e9fc1603af6942397ee755d65bcab"
+    },
+    {
+      "ord": 125,
+      "blockId": "6472b0aaa3e865a928ef451ed036b1b1",
+      "fp64": "a53a6096c7fdf054",
+      "normHash": "9e2a31b2b0a6285a35c373c7547813d2c84e9fc1603af6942397ee755d65bcab",
+      "kind": "p",
+      "chapter": "أما-حديث-أبان-المرفوع",
+      "prev": "bad8330cca835845f73a85e843ecead370274631e74f1d205a2f91650b6040fa",
+      "next": "61a2dad033dfc9f77fdfb8202b5d3f6a8fca5ec8edacad8686851132378ad770"
+    },
+    {
+      "ord": 126,
+      "blockId": "7c6c36fb48cfc6b4c43ae67f83dcf8d8",
+      "fp64": "f440c91d5714707c",
+      "normHash": "61a2dad033dfc9f77fdfb8202b5d3f6a8fca5ec8edacad8686851132378ad770",
+      "kind": "p",
+      "chapter": "أما-حديث-أبان-المرفوع",
+      "prev": "9e2a31b2b0a6285a35c373c7547813d2c84e9fc1603af6942397ee755d65bcab",
+      "next": "5d6989813a8b0ca064dd1f989e497595c00eb459d03f4e10273efeac57081510"
+    },
+    {
+      "ord": 127,
+      "blockId": "bc88863513d691ec1f0e7debe44fc6bc",
+      "fp64": "b211ecddd4b256fe",
+      "normHash": "5d6989813a8b0ca064dd1f989e497595c00eb459d03f4e10273efeac57081510",
+      "kind": "p",
+      "chapter": "أما-حديث-أبان-المرفوع",
+      "prev": "61a2dad033dfc9f77fdfb8202b5d3f6a8fca5ec8edacad8686851132378ad770",
+      "next": "d95102fcb90eed9b5afa0ded4e57d57c7f86fa88a6be71c1e1970d3c51389e12"
+    },
+    {
+      "ord": 128,
+      "blockId": "5d71fef7d10c46348a2c0369ccd04b76",
+      "fp64": "75dff7bf7b376eb6",
+      "normHash": "d95102fcb90eed9b5afa0ded4e57d57c7f86fa88a6be71c1e1970d3c51389e12",
+      "kind": "page",
+      "chapter": "أما-حديث-أبان-المرفوع",
+      "prev": "5d6989813a8b0ca064dd1f989e497595c00eb459d03f4e10273efeac57081510",
+      "next": "b22af30fec318a5829f2d06db389c3d81cf19c6db69c2ba6932429c888a93542"
+    },
+    {
+      "ord": 129,
+      "blockId": "d5dfb8c478f045aeef2488cd8568ca98",
+      "fp64": "e7bf4c6dfe5893ee",
+      "normHash": "b22af30fec318a5829f2d06db389c3d81cf19c6db69c2ba6932429c888a93542",
+      "kind": "h2",
+      "chapter": "وأما-حديث-أبي-جناب-نحو-ذلك",
+      "prev": "d95102fcb90eed9b5afa0ded4e57d57c7f86fa88a6be71c1e1970d3c51389e12",
+      "next": "a0d3721b7af8971a325e0a806fee6915965fef87dc74e65fb83e3dc86c959d19"
+    },
+    {
+      "ord": 130,
+      "blockId": "d9fc9bf8a09a649b745d46732dcd6257",
+      "fp64": "e59a619666fff054",
+      "normHash": "a0d3721b7af8971a325e0a806fee6915965fef87dc74e65fb83e3dc86c959d19",
+      "kind": "p",
+      "chapter": "وأما-حديث-أبي-جناب-نحو-ذلك",
+      "prev": "b22af30fec318a5829f2d06db389c3d81cf19c6db69c2ba6932429c888a93542",
+      "next": "ce8e9e88355f1d1b21f18ebf781dfe20822f89c6b9e7fe2e59211113328b474d"
+    },
+    {
+      "ord": 131,
+      "blockId": "a2741f454552bc045f2301659916ea80",
+      "fp64": "643ec256875871dc",
+      "normHash": "ce8e9e88355f1d1b21f18ebf781dfe20822f89c6b9e7fe2e59211113328b474d",
+      "kind": "p",
+      "chapter": "وأما-حديث-أبي-جناب-نحو-ذلك",
+      "prev": "a0d3721b7af8971a325e0a806fee6915965fef87dc74e65fb83e3dc86c959d19",
+      "next": "5a682ce2c4034f8e57b9599f605acabe891ed7413727eb29493bb357b014554a"
+    },
+    {
+      "ord": 132,
+      "blockId": "1462c5a71cca16e02a41e12cc6c55149",
+      "fp64": "f655ec9ed1b41cfe",
+      "normHash": "5a682ce2c4034f8e57b9599f605acabe891ed7413727eb29493bb357b014554a",
+      "kind": "p",
+      "chapter": "وأما-حديث-أبي-جناب-نحو-ذلك",
+      "prev": "ce8e9e88355f1d1b21f18ebf781dfe20822f89c6b9e7fe2e59211113328b474d",
+      "next": "daa6f1578f603fbe7057cfd0a86c3a3ac70ccd5ae87f0f62af6a9ccb1e1cf43e"
+    },
+    {
+      "ord": 133,
+      "blockId": "d28ad1ea130fde1afc48de4aa487c802",
+      "fp64": "174e604155741eca",
+      "normHash": "daa6f1578f603fbe7057cfd0a86c3a3ac70ccd5ae87f0f62af6a9ccb1e1cf43e",
+      "kind": "p",
+      "chapter": "وأما-حديث-أبي-جناب-نحو-ذلك",
+      "prev": "5a682ce2c4034f8e57b9599f605acabe891ed7413727eb29493bb357b014554a",
+      "next": "fcd705baaeea9e2d94b9b4077e5ed3b4012ec237b51fc7a1c2c8f1306af05665"
+    },
+    {
+      "ord": 134,
+      "blockId": "4f3f59d20e4b51639e2b27635941fa9c",
+      "fp64": "35fff7ba5e33e876",
+      "normHash": "fcd705baaeea9e2d94b9b4077e5ed3b4012ec237b51fc7a1c2c8f1306af05665",
+      "kind": "page",
+      "chapter": "وأما-حديث-أبي-جناب-نحو-ذلك",
+      "prev": "daa6f1578f603fbe7057cfd0a86c3a3ac70ccd5ae87f0f62af6a9ccb1e1cf43e",
+      "next": "c41165c10a26968e7ee8a60484d189ed98d4ec80d28d3f5fa41df8dbb1711aa1"
+    },
+    {
+      "ord": 135,
+      "blockId": "9d6777ff0b889dbf233f2f1a45460704",
+      "fp64": "ed8ffd9febfff87e",
+      "normHash": "c41165c10a26968e7ee8a60484d189ed98d4ec80d28d3f5fa41df8dbb1711aa1",
+      "kind": "h2",
+      "chapter": "وأما-حديث-عمرو-بن-مالك-الموقوف",
+      "prev": "fcd705baaeea9e2d94b9b4077e5ed3b4012ec237b51fc7a1c2c8f1306af05665",
+      "next": "364d83a1a25463bf6aab23f42511f32e2b68aa20cce6f3461cacbb17875cb279"
+    },
+    {
+      "ord": 136,
+      "blockId": "e766c3da5e0489c61c984ea95badcfe5",
+      "fp64": "c59a2196e6fff054",
+      "normHash": "364d83a1a25463bf6aab23f42511f32e2b68aa20cce6f3461cacbb17875cb279",
+      "kind": "p",
+      "chapter": "وأما-حديث-عمرو-بن-مالك-الموقوف",
+      "prev": "c41165c10a26968e7ee8a60484d189ed98d4ec80d28d3f5fa41df8dbb1711aa1",
+      "next": "f7a2e20277c50d9bef39a0e5709d89788e3861d4c56a0a105ee3b33745d185cd"
+    },
+    {
+      "ord": 137,
+      "blockId": "3c08af50c5729df76a155a1d3609b6b7",
+      "fp64": "651a609e47f1f014",
+      "normHash": "f7a2e20277c50d9bef39a0e5709d89788e3861d4c56a0a105ee3b33745d185cd",
+      "kind": "p",
+      "chapter": "وأما-حديث-عمرو-بن-مالك-الموقوف",
+      "prev": "364d83a1a25463bf6aab23f42511f32e2b68aa20cce6f3461cacbb17875cb279",
+      "next": "d8ded4d1491dead6cd315f35f9658fad83ed84a2fc4e53aaec681efcd63d3497"
+    },
+    {
+      "ord": 138,
+      "blockId": "baa5e33e5a3a94d5085a9ef46aca7bce",
+      "fp64": "6db3dfbefe4f678b",
+      "normHash": "d8ded4d1491dead6cd315f35f9658fad83ed84a2fc4e53aaec681efcd63d3497",
+      "kind": "p",
+      "chapter": "وأما-حديث-عمرو-بن-مالك-الموقوف",
+      "prev": "f7a2e20277c50d9bef39a0e5709d89788e3861d4c56a0a105ee3b33745d185cd",
+      "next": "3533bf84c345bc032dea084eb87a78e34e4530deede32c6e1a9362fbc71bb2d4"
+    },
+    {
+      "ord": 139,
+      "blockId": "eb2884db4b6b74c974b4a02438d0bd97",
+      "fp64": "5e169cb46f30ba9b",
+      "normHash": "3533bf84c345bc032dea084eb87a78e34e4530deede32c6e1a9362fbc71bb2d4",
+      "kind": "p",
+      "chapter": "وأما-حديث-عمرو-بن-مالك-الموقوف",
+      "prev": "d8ded4d1491dead6cd315f35f9658fad83ed84a2fc4e53aaec681efcd63d3497",
+      "next": "b12204137bcd95e3a190a14f7ebbf77e59289ab00d544a35d54f65ba9966b8d6"
+    },
+    {
+      "ord": 140,
+      "blockId": "82028f7794957e90821103067b4eda3a",
+      "fp64": "651e62b687c8e0f6",
+      "normHash": "b12204137bcd95e3a190a14f7ebbf77e59289ab00d544a35d54f65ba9966b8d6",
+      "kind": "p",
+      "chapter": "وأما-حديث-عمرو-بن-مالك-الموقوف",
+      "prev": "3533bf84c345bc032dea084eb87a78e34e4530deede32c6e1a9362fbc71bb2d4",
+      "next": "9dccf3ffdac0151730339e7e2b3553935ba2af4820321b3ebfb3c8a2b7313e77"
+    },
+    {
+      "ord": 141,
+      "blockId": "53c6ed235569591d70b10924f27079eb",
+      "fp64": "609a20d686ffe074",
+      "normHash": "9dccf3ffdac0151730339e7e2b3553935ba2af4820321b3ebfb3c8a2b7313e77",
+      "kind": "p",
+      "chapter": "وأما-حديث-عمرو-بن-مالك-الموقوف",
+      "prev": "b12204137bcd95e3a190a14f7ebbf77e59289ab00d544a35d54f65ba9966b8d6",
+      "next": "4db6d6bb521b682b758e1da0f041502a55ecdda2e61314d6edace4bfcc56d5ad"
+    },
+    {
+      "ord": 142,
+      "blockId": "28465ed8c25cffb6a5059064cef0a18a",
+      "fp64": "6ffff7ff5abb6c77",
+      "normHash": "4db6d6bb521b682b758e1da0f041502a55ecdda2e61314d6edace4bfcc56d5ad",
+      "kind": "page",
+      "chapter": "وأما-حديث-عمرو-بن-مالك-الموقوف",
+      "prev": "9dccf3ffdac0151730339e7e2b3553935ba2af4820321b3ebfb3c8a2b7313e77",
+      "next": "bae83f36e1109df2e72e99d71aed09e9b0de3b78b31a2bbf8ff5a128281d75fa"
+    },
+    {
+      "ord": 143,
+      "blockId": "0f7c76c967adf3fb5716e651d9f01246",
+      "fp64": "6676c3d69758613c",
+      "normHash": "bae83f36e1109df2e72e99d71aed09e9b0de3b78b31a2bbf8ff5a128281d75fa",
+      "kind": "p",
+      "chapter": "وأما-حديث-عمرو-بن-مالك-الموقوف",
+      "prev": "4db6d6bb521b682b758e1da0f041502a55ecdda2e61314d6edace4bfcc56d5ad",
+      "next": "0e6b54be9045bab27f5b72ac39baccffcc8cf146bcc7a05efdcea9ce660b602e"
+    },
+    {
+      "ord": 144,
+      "blockId": "d72cb3f263aabee7241f1f9fef03855d",
+      "fp64": "7c44e05f967a4ffe",
+      "normHash": "0e6b54be9045bab27f5b72ac39baccffcc8cf146bcc7a05efdcea9ce660b602e",
+      "kind": "p",
+      "chapter": "وأما-حديث-عمرو-بن-مالك-الموقوف",
+      "prev": "bae83f36e1109df2e72e99d71aed09e9b0de3b78b31a2bbf8ff5a128281d75fa",
+      "next": "3876f958ea2d9ca4a6b5da4355e4eb87229dc15aac457e8d374daf4343240f01"
+    },
+    {
+      "ord": 145,
+      "blockId": "6d32f6906e283203e1de18b261acd80b",
+      "fp64": "e58b69b68a7e707e",
+      "normHash": "3876f958ea2d9ca4a6b5da4355e4eb87229dc15aac457e8d374daf4343240f01",
+      "kind": "h2",
+      "chapter": "وأما-حديث-عمرو-بن-شعيب",
+      "prev": "0e6b54be9045bab27f5b72ac39baccffcc8cf146bcc7a05efdcea9ce660b602e",
+      "next": "91da3a6a521eda2be8a842687a3f12ada6054fade7c36f3043a63d9416dd0fe8"
+    },
+    {
+      "ord": 146,
+      "blockId": "20a392e3f36a1e555fb9d0478b895a9b",
+      "fp64": "851a209fd7fdf174",
+      "normHash": "91da3a6a521eda2be8a842687a3f12ada6054fade7c36f3043a63d9416dd0fe8",
+      "kind": "p",
+      "chapter": "وأما-حديث-عمرو-بن-شعيب",
+      "prev": "3876f958ea2d9ca4a6b5da4355e4eb87229dc15aac457e8d374daf4343240f01",
+      "next": "63ae9c44ef753f36c7e95b3af5f2c287ed2fbdda8a9422a27c86f3e8666e3b67"
+    },
+    {
+      "ord": 147,
+      "blockId": "c2109c6f03b8f74531721871c5b2df7f",
+      "fp64": "e53d20360697fb76",
+      "normHash": "63ae9c44ef753f36c7e95b3af5f2c287ed2fbdda8a9422a27c86f3e8666e3b67",
+      "kind": "p",
+      "chapter": "وأما-حديث-عمرو-بن-شعيب",
+      "prev": "91da3a6a521eda2be8a842687a3f12ada6054fade7c36f3043a63d9416dd0fe8",
+      "next": "203950ff8c53f508f66c3157a6bcb6a8de3add7b6d648342b3fce9b0bc81bb1e"
+    },
+    {
+      "ord": 148,
+      "blockId": "a84e012b8c87179c8caedd4da66f9e6e",
+      "fp64": "647f60968779711c",
+      "normHash": "203950ff8c53f508f66c3157a6bcb6a8de3add7b6d648342b3fce9b0bc81bb1e",
+      "kind": "p",
+      "chapter": "وأما-حديث-عمرو-بن-شعيب",
+      "prev": "63ae9c44ef753f36c7e95b3af5f2c287ed2fbdda8a9422a27c86f3e8666e3b67",
+      "next": "17481c4ed95201a5d7bb1d50ee0cdc4a3b74234554b1b1e6cceba0a3b99e8dad"
+    },
+    {
+      "ord": 149,
+      "blockId": "73aa3f11ba746f177b228867985e38b6",
+      "fp64": "b4403c55557096f6",
+      "normHash": "17481c4ed95201a5d7bb1d50ee0cdc4a3b74234554b1b1e6cceba0a3b99e8dad",
+      "kind": "p",
+      "chapter": "وأما-حديث-عمرو-بن-شعيب",
+      "prev": "203950ff8c53f508f66c3157a6bcb6a8de3add7b6d648342b3fce9b0bc81bb1e",
+      "next": "33825b9daaa40fe96d37349bf9023a626cb8e1388a3fffbfee4baa0f1627b7c1"
+    },
+    {
+      "ord": 150,
+      "blockId": "bd4c322837752a65fd4fb55f46c3bd9d",
+      "fp64": "a5dff7bbfabf70ff",
+      "normHash": "33825b9daaa40fe96d37349bf9023a626cb8e1388a3fffbfee4baa0f1627b7c1",
+      "kind": "page",
+      "chapter": "وأما-حديث-عمرو-بن-شعيب",
+      "prev": "17481c4ed95201a5d7bb1d50ee0cdc4a3b74234554b1b1e6cceba0a3b99e8dad",
+      "next": "a5bce5e45eccbe9001f73d799f3a765d89b0cf62e7def45891ad272d2de2b41e"
+    },
+    {
+      "ord": 151,
+      "blockId": "bf22f2eddcd7ef87626d14945e15f9ae",
+      "fp64": "ed0d24bbce7e0146",
+      "normHash": "a5bce5e45eccbe9001f73d799f3a765d89b0cf62e7def45891ad272d2de2b41e",
+      "kind": "h2",
+      "chapter": "وأما-حديث-عروة-بن-رويم",
+      "prev": "33825b9daaa40fe96d37349bf9023a626cb8e1388a3fffbfee4baa0f1627b7c1",
+      "next": "381b19ab2ee5c9eb5c56fce0173df95631de6b57838843a76d5570a17fb363ed"
+    },
+    {
+      "ord": 152,
+      "blockId": "2afb7d09a7c8bc8bba07e7060300b23a",
+      "fp64": "35156096177ef03c",
+      "normHash": "381b19ab2ee5c9eb5c56fce0173df95631de6b57838843a76d5570a17fb363ed",
+      "kind": "p",
+      "chapter": "وأما-حديث-عروة-بن-رويم",
+      "prev": "a5bce5e45eccbe9001f73d799f3a765d89b0cf62e7def45891ad272d2de2b41e",
+      "next": "878d80c93ecb6aeacd9612e77eae0b1c1d1a85b5872a3abf487f7391e8111b29"
+    },
+    {
+      "ord": 153,
+      "blockId": "7999ff03caaf70ff29b2e21979506ab8",
+      "fp64": "6fdffb9fdf3be53f",
+      "normHash": "878d80c93ecb6aeacd9612e77eae0b1c1d1a85b5872a3abf487f7391e8111b29",
+      "kind": "page",
+      "chapter": "وأما-حديث-عروة-بن-رويم",
+      "prev": "381b19ab2ee5c9eb5c56fce0173df95631de6b57838843a76d5570a17fb363ed",
+      "next": "d60f54901c54c15ea674d8bb7c055a8c1bfd10587ebae88f99b1f4263a4caefb"
+    },
+    {
+      "ord": 154,
+      "blockId": "c0e69e5dbab5873f8c9d58e0e6455537",
+      "fp64": "61734ad08f117335",
+      "normHash": "d60f54901c54c15ea674d8bb7c055a8c1bfd10587ebae88f99b1f4263a4caefb",
+      "kind": "h2",
+      "chapter": "ذكر-الرواية-عن-أبي-رافع-مولى-رسول-الله-ورضي-عنه-ذلك-عن-النبي-تسليما",
+      "prev": "878d80c93ecb6aeacd9612e77eae0b1c1d1a85b5872a3abf487f7391e8111b29",
+      "next": "d9204acf5e19103b7009ee2063d2e62efe1fe0ae72de4aa89d3eae8da2b61d7b"
+    },
+    {
+      "ord": 155,
+      "blockId": "ff454c7a8e3cca93b8f945af7462a11f",
+      "fp64": "759be0b637f9f07c",
+      "normHash": "d9204acf5e19103b7009ee2063d2e62efe1fe0ae72de4aa89d3eae8da2b61d7b",
+      "kind": "p",
+      "chapter": "ذكر-الرواية-عن-أبي-رافع-مولى-رسول-الله-ورضي-عنه-ذلك-عن-النبي-تسليما",
+      "prev": "d60f54901c54c15ea674d8bb7c055a8c1bfd10587ebae88f99b1f4263a4caefb",
+      "next": "bcb5072f0dcfd6af1a7364fa24ed4197064f1ecdd9ede716190f20728877312a"
+    },
+    {
+      "ord": 156,
+      "blockId": "873059d7e165f85a313eabceb567c81c",
+      "fp64": "251aa10e0478f254",
+      "normHash": "bcb5072f0dcfd6af1a7364fa24ed4197064f1ecdd9ede716190f20728877312a",
+      "kind": "p",
+      "chapter": "ذكر-الرواية-عن-أبي-رافع-مولى-رسول-الله-ورضي-عنه-ذلك-عن-النبي-تسليما",
+      "prev": "d9204acf5e19103b7009ee2063d2e62efe1fe0ae72de4aa89d3eae8da2b61d7b",
+      "next": "1f50026cb6d66f35be2a026562a7feff96fcbd1c65fc615714ff9531f878fb4d"
+    },
+    {
+      "ord": 157,
+      "blockId": "beed9cd0c4c9bf5229844f26289d835e",
+      "fp64": "a59a209666f7f854",
+      "normHash": "1f50026cb6d66f35be2a026562a7feff96fcbd1c65fc615714ff9531f878fb4d",
+      "kind": "p",
+      "chapter": "ذكر-الرواية-عن-أبي-رافع-مولى-رسول-الله-ورضي-عنه-ذلك-عن-النبي-تسليما",
+      "prev": "bcb5072f0dcfd6af1a7364fa24ed4197064f1ecdd9ede716190f20728877312a",
+      "next": "18ff6d1d95a99750eb8b26e7b1f65c841ef052a428f263af45e2d3ad03e5a7b8"
+    },
+    {
+      "ord": 158,
+      "blockId": "5dca256256efcbaf23bc4bfbf14c3c24",
+      "fp64": "6512e11686947274",
+      "normHash": "18ff6d1d95a99750eb8b26e7b1f65c841ef052a428f263af45e2d3ad03e5a7b8",
+      "kind": "p",
+      "chapter": "ذكر-الرواية-عن-أبي-رافع-مولى-رسول-الله-ورضي-عنه-ذلك-عن-النبي-تسليما",
+      "prev": "1f50026cb6d66f35be2a026562a7feff96fcbd1c65fc615714ff9531f878fb4d",
+      "next": "c16b679cae173463b5083a43e31d3fdc5ad2803ba98a6491777fca69e27195b3"
+    },
+    {
+      "ord": 159,
+      "blockId": "1120c0aad5f7d62593457d36a5bd29d9",
+      "fp64": "7656a89f5612ba7a",
+      "normHash": "c16b679cae173463b5083a43e31d3fdc5ad2803ba98a6491777fca69e27195b3",
+      "kind": "p",
+      "chapter": "ذكر-الرواية-عن-أبي-رافع-مولى-رسول-الله-ورضي-عنه-ذلك-عن-النبي-تسليما",
+      "prev": "18ff6d1d95a99750eb8b26e7b1f65c841ef052a428f263af45e2d3ad03e5a7b8",
+      "next": "da096edaa8ced1d20c1a493de6939b8c29a9b3ba7147a1b20a7be9e0e79c644a"
+    },
+    {
+      "ord": 160,
+      "blockId": "5cc1d406dcfc95f4c15d3ec213f0732e",
+      "fp64": "1652b2566670e890",
+      "normHash": "da096edaa8ced1d20c1a493de6939b8c29a9b3ba7147a1b20a7be9e0e79c644a",
+      "kind": "p",
+      "chapter": "ذكر-الرواية-عن-أبي-رافع-مولى-رسول-الله-ورضي-عنه-ذلك-عن-النبي-تسليما",
+      "prev": "c16b679cae173463b5083a43e31d3fdc5ad2803ba98a6491777fca69e27195b3",
+      "next": "cbdf4a6c8fc949534d157e704f4f9d176e54aba0d766d0850f7cae4fa80ee603"
+    },
+    {
+      "ord": 161,
+      "blockId": "c0be6ed91959fc51adda22937ca2c785",
+      "fp64": "46ca52443945dc1c",
+      "normHash": "cbdf4a6c8fc949534d157e704f4f9d176e54aba0d766d0850f7cae4fa80ee603",
+      "kind": "p",
+      "chapter": "ذكر-الرواية-عن-أبي-رافع-مولى-رسول-الله-ورضي-عنه-ذلك-عن-النبي-تسليما",
+      "prev": "da096edaa8ced1d20c1a493de6939b8c29a9b3ba7147a1b20a7be9e0e79c644a",
+      "next": "81a1969c6147ec4c29ddb6556069a9b6dff022ff639de94baee8b7989eecd66b"
+    },
+    {
+      "ord": 162,
+      "blockId": "6fec581031a9ea2d7f2cb0a644c86a95",
+      "fp64": "7dffff9edf31607e",
+      "normHash": "81a1969c6147ec4c29ddb6556069a9b6dff022ff639de94baee8b7989eecd66b",
+      "kind": "page",
+      "chapter": "ذكر-الرواية-عن-أبي-رافع-مولى-رسول-الله-ورضي-عنه-ذلك-عن-النبي-تسليما",
+      "prev": "cbdf4a6c8fc949534d157e704f4f9d176e54aba0d766d0850f7cae4fa80ee603",
+      "next": "4963c9e580fff313cb5d7416f37aafe160e970e024775c958b39cffbc49715a7"
+    },
+    {
+      "ord": 163,
+      "blockId": "f7fe0bb3e41ba74d2abbf9186ef9c6ac",
+      "fp64": "607548448750f11d",
+      "normHash": "4963c9e580fff313cb5d7416f37aafe160e970e024775c958b39cffbc49715a7",
+      "kind": "h2",
+      "chapter": "ذكر-الرواية-عن-أم-المؤمنين-أم-سلمة-بنت-أبي-أمية-رضي-الله-عنها-ذلك-عن-النبي",
+      "prev": "81a1969c6147ec4c29ddb6556069a9b6dff022ff639de94baee8b7989eecd66b",
+      "next": "75117a2d13141fd108dda8d409ab6e198d7a6f3cdf26ca358e0641383d2a94ca"
+    },
+    {
+      "ord": 164,
+      "blockId": "f86f108d3cb2fd504a9a7794e3f2a784",
+      "fp64": "659e219626f7f074",
+      "normHash": "75117a2d13141fd108dda8d409ab6e198d7a6f3cdf26ca358e0641383d2a94ca",
+      "kind": "p",
+      "chapter": "ذكر-الرواية-عن-أم-المؤمنين-أم-سلمة-بنت-أبي-أمية-رضي-الله-عنها-ذلك-عن-النبي",
+      "prev": "4963c9e580fff313cb5d7416f37aafe160e970e024775c958b39cffbc49715a7",
+      "next": "3f41752d7b39d6b5ebea666944c7f793f9657bf82ada3d427f4c27e47dc46663"
+    },
+    {
+      "ord": 165,
+      "blockId": "0ea71ab97562fc081aa6f106ce4f5311",
+      "fp64": "b440e016575353dc",
+      "normHash": "3f41752d7b39d6b5ebea666944c7f793f9657bf82ada3d427f4c27e47dc46663",
+      "kind": "p",
+      "chapter": "ذكر-الرواية-عن-أم-المؤمنين-أم-سلمة-بنت-أبي-أمية-رضي-الله-عنها-ذلك-عن-النبي",
+      "prev": "75117a2d13141fd108dda8d409ab6e198d7a6f3cdf26ca358e0641383d2a94ca",
+      "next": "1bddb3e8d45df54ee59912bf298b05926d48898cbbf27b5495c4d21676387c0e"
+    },
+    {
+      "ord": 166,
+      "blockId": "ba33142c74e195791da048a8e5e3791d",
+      "fp64": "e4c6f88ebf73d16f",
+      "normHash": "1bddb3e8d45df54ee59912bf298b05926d48898cbbf27b5495c4d21676387c0e",
+      "kind": "p",
+      "chapter": "ذكر-الرواية-عن-أم-المؤمنين-أم-سلمة-بنت-أبي-أمية-رضي-الله-عنها-ذلك-عن-النبي",
+      "prev": "3f41752d7b39d6b5ebea666944c7f793f9657bf82ada3d427f4c27e47dc46663",
+      "next": "b7f17733b97d047ad5d7ce344d01a563da3980f560f159ba1f8da054acb199c3"
+    },
+    {
+      "ord": 167,
+      "blockId": "a53e6fc6b0484914f269cbffd0ede70d",
+      "fp64": "6c3e0ac6f612fcbb",
+      "normHash": "b7f17733b97d047ad5d7ce344d01a563da3980f560f159ba1f8da054acb199c3",
+      "kind": "p",
+      "chapter": "ذكر-الرواية-عن-أم-المؤمنين-أم-سلمة-بنت-أبي-أمية-رضي-الله-عنها-ذلك-عن-النبي",
+      "prev": "1bddb3e8d45df54ee59912bf298b05926d48898cbbf27b5495c4d21676387c0e",
+      "next": "1e9ac62393a4ba951ce0cf854adbc0b31d68f78118b8ede47612c9915fddd531"
+    },
+    {
+      "ord": 168,
+      "blockId": "61b664a4c23d40ad772c607ca03c5176",
+      "fp64": "7c041173e752aa90",
+      "normHash": "1e9ac62393a4ba951ce0cf854adbc0b31d68f78118b8ede47612c9915fddd531",
+      "kind": "p",
+      "chapter": "ذكر-الرواية-عن-أم-المؤمنين-أم-سلمة-بنت-أبي-أمية-رضي-الله-عنها-ذلك-عن-النبي",
+      "prev": "b7f17733b97d047ad5d7ce344d01a563da3980f560f159ba1f8da054acb199c3",
+      "next": "8205d3739be01b9707676510b82e49989e7b191fe9ec7b4851669372b8dca17a"
+    },
+    {
+      "ord": 169,
+      "blockId": "732829c1fab8718b8bf0ad83cc8b17a1",
+      "fp64": "bddfffdadf377a7f",
+      "normHash": "8205d3739be01b9707676510b82e49989e7b191fe9ec7b4851669372b8dca17a",
+      "kind": "page",
+      "chapter": "ذكر-الرواية-عن-أم-المؤمنين-أم-سلمة-بنت-أبي-أمية-رضي-الله-عنها-ذلك-عن-النبي",
+      "prev": "1e9ac62393a4ba951ce0cf854adbc0b31d68f78118b8ede47612c9915fddd531",
+      "next": "67cbf9e8e9a0b3cd17eb8883f3499658cfcdac2daec2e998e6794fce336c202c"
+    },
+    {
+      "ord": 170,
+      "blockId": "75b74c94e18216f33c91302f209b02ad",
+      "fp64": "e79b219617f7e07d",
+      "normHash": "67cbf9e8e9a0b3cd17eb8883f3499658cfcdac2daec2e998e6794fce336c202c",
+      "kind": "p",
+      "chapter": "ذكر-الرواية-عن-أم-المؤمنين-أم-سلمة-بنت-أبي-أمية-رضي-الله-عنها-ذلك-عن-النبي",
+      "prev": "8205d3739be01b9707676510b82e49989e7b191fe9ec7b4851669372b8dca17a",
+      "next": "6d51ee90f4e1293a6fe956c659888d477b4b4f2afc7ea624b54958b54b939312"
+    },
+    {
+      "ord": 171,
+      "blockId": "6c1459ddc543b5888dcc78d755f0a9d4",
+      "fp64": "35403a1ef424db66",
+      "normHash": "6d51ee90f4e1293a6fe956c659888d477b4b4f2afc7ea624b54958b54b939312",
+      "kind": "p",
+      "chapter": "ذكر-الرواية-عن-أم-المؤمنين-أم-سلمة-بنت-أبي-أمية-رضي-الله-عنها-ذلك-عن-النبي",
+      "prev": "67cbf9e8e9a0b3cd17eb8883f3499658cfcdac2daec2e998e6794fce336c202c",
+      "next": "637489a6dd29d7cc50dd2552053b575b9a0997dd6f3805a118d2250890f5c800"
+    },
+    {
+      "ord": 172,
+      "blockId": "6ee677293c54a27f639ed89c55fed582",
+      "fp64": "25dfffbb5e317fbe",
+      "normHash": "637489a6dd29d7cc50dd2552053b575b9a0997dd6f3805a118d2250890f5c800",
+      "kind": "page",
+      "chapter": "ذكر-الرواية-عن-أم-المؤمنين-أم-سلمة-بنت-أبي-أمية-رضي-الله-عنها-ذلك-عن-النبي",
+      "prev": "6d51ee90f4e1293a6fe956c659888d477b4b4f2afc7ea624b54958b54b939312",
+      "next": "58b911b31e57b541519c56fb4406a639b82b27f70be36a0cc76b685701610365"
+    },
+    {
+      "ord": 173,
+      "blockId": "95a8c7d79b8faa527f5e7ec563b33e85",
+      "fp64": "47cb0af89d3f732d",
+      "normHash": "58b911b31e57b541519c56fb4406a639b82b27f70be36a0cc76b685701610365",
+      "kind": "h2",
+      "chapter": "ذكر-من-روي-عنه-هذا-الحديث-من-التابعين-عن-النبي-مرسلا",
+      "prev": "637489a6dd29d7cc50dd2552053b575b9a0997dd6f3805a118d2250890f5c800",
+      "next": "a66b6dd418a7e880da9abed9484ec3b5f51928482878250cb8e3e10c36516463"
+    },
+    {
+      "ord": 174,
+      "blockId": "055a5c7623fc6583333c0d6125397c56",
+      "fp64": "741664964657f87e",
+      "normHash": "a66b6dd418a7e880da9abed9484ec3b5f51928482878250cb8e3e10c36516463",
+      "kind": "p",
+      "chapter": "ذكر-من-روي-عنه-هذا-الحديث-من-التابعين-عن-النبي-مرسلا",
+      "prev": "58b911b31e57b541519c56fb4406a639b82b27f70be36a0cc76b685701610365",
+      "next": "0e2f623d34b09592deb7846c1e3a5261030884c60793000b5e71f6ad3134431b"
+    },
+    {
+      "ord": 175,
+      "blockId": "2bde58ad227adc0ab65aaa5bf524e02f",
+      "fp64": "d646b172e678eb76",
+      "normHash": "0e2f623d34b09592deb7846c1e3a5261030884c60793000b5e71f6ad3134431b",
+      "kind": "p",
+      "chapter": "ذكر-من-روي-عنه-هذا-الحديث-من-التابعين-عن-النبي-مرسلا",
+      "prev": "a66b6dd418a7e880da9abed9484ec3b5f51928482878250cb8e3e10c36516463",
+      "next": "5e6d5940952185a03272b0aedef7d1fa3cc1c52b3338cdd186f012180dc98a76"
+    },
+    {
+      "ord": 176,
+      "blockId": "89d5a883a0d8ce4b702015ddc3711f8d",
+      "fp64": "8e6e6f73d7e53ece",
+      "normHash": "5e6d5940952185a03272b0aedef7d1fa3cc1c52b3338cdd186f012180dc98a76",
+      "kind": "p",
+      "chapter": "ذكر-من-روي-عنه-هذا-الحديث-من-التابعين-عن-النبي-مرسلا",
+      "prev": "0e2f623d34b09592deb7846c1e3a5261030884c60793000b5e71f6ad3134431b",
+      "next": "048d13c7906195df4e24fe5e2215f15f3c7f3067cff3363a312659146cea30cf"
+    },
+    {
+      "ord": 177,
+      "blockId": "0f21b69cf941c4dc729c9644ead891b5",
+      "fp64": "75fff3ff7a3777bf",
+      "normHash": "048d13c7906195df4e24fe5e2215f15f3c7f3067cff3363a312659146cea30cf",
+      "kind": "page",
+      "chapter": "ذكر-من-روي-عنه-هذا-الحديث-من-التابعين-عن-النبي-مرسلا",
+      "prev": "5e6d5940952185a03272b0aedef7d1fa3cc1c52b3338cdd186f012180dc98a76",
+      "next": "62e46c33a3d9b332cc5d4a99b25347f16ad598f94f3cfd3c3775e44e4c44e296"
+    },
+    {
+      "ord": 178,
+      "blockId": "f461de77a7fad8a0aabf048d14fb0a73",
+      "fp64": "251e6096267db05c",
+      "normHash": "62e46c33a3d9b332cc5d4a99b25347f16ad598f94f3cfd3c3775e44e4c44e296",
+      "kind": "p",
+      "chapter": "ذكر-من-روي-عنه-هذا-الحديث-من-التابعين-عن-النبي-مرسلا",
+      "prev": "048d13c7906195df4e24fe5e2215f15f3c7f3067cff3363a312659146cea30cf",
+      "next": "378f0abc5e2125270b1fb86b53f96f1e6af56e23a4b216776fda8db21fbbe5c7"
+    },
+    {
+      "ord": 179,
+      "blockId": "7e069cfcca1eb8ba9906b7c5de89e5c5",
+      "fp64": "6ef9bbaaf7f7ffda",
+      "normHash": "378f0abc5e2125270b1fb86b53f96f1e6af56e23a4b216776fda8db21fbbe5c7",
+      "kind": "p",
+      "chapter": "ذكر-من-روي-عنه-هذا-الحديث-من-التابعين-عن-النبي-مرسلا",
+      "prev": "62e46c33a3d9b332cc5d4a99b25347f16ad598f94f3cfd3c3775e44e4c44e296",
+      "next": "ca8b2ce476216e26b0845f16250c2d185c57fa56012b82f627459da9b2016e04"
+    },
+    {
+      "ord": 180,
+      "blockId": "d6aeffc3a107647e70f1f21be03184a3",
+      "fp64": "27fff7bf7f7fe337",
+      "normHash": "ca8b2ce476216e26b0845f16250c2d185c57fa56012b82f627459da9b2016e04",
+      "kind": "page",
+      "chapter": "ذكر-من-روي-عنه-هذا-الحديث-من-التابعين-عن-النبي-مرسلا",
+      "prev": "378f0abc5e2125270b1fb86b53f96f1e6af56e23a4b216776fda8db21fbbe5c7",
+      "next": "efeac63772b3dccbcb54dbdde6f74f4f408d97088ab3057756a7b60567c5fd06"
+    },
+    {
+      "ord": 181,
+      "blockId": "6b44f5714055e940bc6d283b29625e11",
+      "fp64": "fb36fbd1907cfc3d",
+      "normHash": "efeac63772b3dccbcb54dbdde6f74f4f408d97088ab3057756a7b60567c5fd06",
+      "kind": "p",
+      "chapter": "ذكر-من-روي-عنه-هذا-الحديث-من-التابعين-عن-النبي-مرسلا",
+      "prev": "ca8b2ce476216e26b0845f16250c2d185c57fa56012b82f627459da9b2016e04",
+      "next": "a0f4d44b569b5b4cfca38ee0ce7b5c0a3a8c8d4ad43e04cd5f70e7471a734a0e"
+    },
+    {
+      "ord": 182,
+      "blockId": "d68a5ec85cddb7871f6b4175bffd4d6f",
+      "fp64": "118ccef8aa5cb4fc",
+      "normHash": "a0f4d44b569b5b4cfca38ee0ce7b5c0a3a8c8d4ad43e04cd5f70e7471a734a0e",
+      "kind": "p",
+      "chapter": "ذكر-من-روي-عنه-هذا-الحديث-من-التابعين-عن-النبي-مرسلا",
+      "prev": "efeac63772b3dccbcb54dbdde6f74f4f408d97088ab3057756a7b60567c5fd06",
+      "next": "2fb5c4d22556fe76295ce6af39ffbcde6431bbbec273a1fc5da7a390a279ad9e"
+    },
+    {
+      "ord": 183,
+      "blockId": "590c588f99938cd38287f4a0f8b27175",
+      "fp64": "c5982010e6f4f074",
+      "normHash": "2fb5c4d22556fe76295ce6af39ffbcde6431bbbec273a1fc5da7a390a279ad9e",
+      "kind": "p",
+      "chapter": "ذكر-من-روي-عنه-هذا-الحديث-من-التابعين-عن-النبي-مرسلا",
+      "prev": "a0f4d44b569b5b4cfca38ee0ce7b5c0a3a8c8d4ad43e04cd5f70e7471a734a0e",
+      "next": "4ac11a8eb7302306acede9e9941753f2aeeb336b4aee50fd1bddd047e46436a9"
+    },
+    {
+      "ord": 184,
+      "blockId": "ef9cfebcccb5d7801cd90e8501e5b88b",
+      "fp64": "2dfffbbafe736f77",
+      "normHash": "4ac11a8eb7302306acede9e9941753f2aeeb336b4aee50fd1bddd047e46436a9",
+      "kind": "page",
+      "chapter": "ذكر-من-روي-عنه-هذا-الحديث-من-التابعين-عن-النبي-مرسلا",
+      "prev": "2fb5c4d22556fe76295ce6af39ffbcde6431bbbec273a1fc5da7a390a279ad9e"
+    }
+  ]
+}

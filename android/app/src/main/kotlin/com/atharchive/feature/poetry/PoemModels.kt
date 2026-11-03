@@ -8,6 +8,7 @@ package com.atharchive.feature.poetry
  */
 
 enum class PoemSort(val label: String) {
+    Died("وفاة الشاعر"),
     Title("العنوان أ–ي"),
     Newest("ترتيب الفهرس"),
     Poet("الشاعر"),
@@ -32,6 +33,9 @@ data class PoemUi(
     val transfer: com.atharchive.feature.downloads.TransferUi? = null,
     val verseCountLabel: String? = null,
     val sizeLabel: String = "",
+    val topics: List<String> = emptyList(),
+    val died: Int? = null,
+    val hasAudio: Boolean = false,
 )
 
 data class PoetryUiState(

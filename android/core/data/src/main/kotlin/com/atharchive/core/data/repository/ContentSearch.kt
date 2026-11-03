@@ -19,6 +19,7 @@ import kotlinx.coroutines.ensureActive
 
 private const val SearchSchemaVersion = 1L
 private const val CandidateBatchSize = 80
+private const val RankCap = 20_000
 
 /** Raw DDL selected by M0/R2b. Room deliberately does not model these virtual tables. */
 object ContentSearchSchema {
@@ -198,6 +199,8 @@ data class ContentSearchRequest(
     val ordinals: IntRange? = null,
     /** Match any of the words rather than all of them (the search screen's «بعض الكلمات»). */
     val anyWord: Boolean = false,
+    /** «مطابق تمامًا»: the letters as typed (hamza, ة, ى count); only tashkeel is ignored. */
+    val exact: Boolean = false,
 )
 
 data class CatalogSearchHit(
@@ -308,23 +311,47 @@ class ContentSearchRepository(private val database: AtharContentDatabase) {
         val filter = structuredFilter(request.filter, "e")
         val range = request.ordinals
         require(range == null || (range.first >= 0 && !range.isEmpty())) { "invalid search block range" }
+        // One book (in-book search, locating a hit): FTS5 skips straight to that book's rowids
+        // instead of matching the whole library and filtering — «قال» in a book went 384→79 ms.
+        val bookRowids = request.filter.entityIds?.singleOrNull()?.let { id ->
+            connection.usePrepared("SELECT min(rowid), max(rowid) FROM block WHERE entityId = ?") { query ->
+                query.bindText(1, id)
+                if (query.step() && !query.isNull(0)) query.getLong(0)..query.getLong(1) else null
+            } ?: return emptyList()
+        }
+        val ranked = request.sort == ContentSearchSort.Relevance
         val order = when (request.sort) {
             ContentSearchSort.Newest -> "e.publishedAt DESC, e.authoredYear DESC, b.rowid"
             ContentSearchSort.BookOrder -> "b.entityId, b.ordinal"
-            ContentSearchSort.Relevance -> "bm25(block_fts), b.rowid"
+            ContentSearchSort.Relevance -> "f.score, b.rowid"
         }
-        val sql = "SELECT b.rowid, b.entityId, b.ordinal, b.chapterAnchor, c.title, b.printedPage, " +
-            "b.type, b.text, e.title, e.personName, e.coll " +
-            "FROM block_fts JOIN block b ON b.rowid = block_fts.rowid " +
-            "JOIN entity e ON e.id = b.entityId " +
-            "LEFT JOIN chapter c ON c.entityId = b.entityId AND c.anchor = b.chapterAnchor " +
-            "WHERE block_fts MATCH ? AND e.catalogPresent = 1${filter.sql}${if (range == null) "" else " AND b.ordinal BETWEEN ? AND ?"} " +
-            "ORDER BY $order LIMIT ? OFFSET ?"
+        val where = "WHERE block_fts MATCH ?${if (bookRowids == null) "" else " AND block_fts.rowid BETWEEN ? AND ?"} " +
+            "AND e.catalogPresent = 1${filter.sql}${if (range == null) "" else " AND b.ordinal BETWEEN ? AND ?"}"
+        val columns = "b.rowid, b.entityId, b.ordinal, b.chapterAnchor, c.title, b.printedPage, " +
+            "b.type, b.text, e.title, e.personName, e.coll "
+        val joins = "JOIN entity e ON e.id = b.entityId " +
+            "LEFT JOIN chapter c ON c.entityId = b.entityId AND c.anchor = b.chapterAnchor "
+        val sql = if (ranked) {
+            // ponytail: bm25 ranks the first RankCap matches in index order only, as the site does
+            // (src/lib/search-handler.ts RANK_CAP). Ranking and sorting all 260k «الله» blocks took
+            // 3.5 s on a desktop CPU (≈10+ s on a phone); capped it is 0.3 s. Raise the cap if a
+            // common word misses passages that matter.
+            "SELECT $columns FROM (SELECT b.rowid AS rowid, bm25(block_fts) AS score " +
+                "FROM block_fts JOIN block b ON b.rowid = block_fts.rowid $joins$where LIMIT $RankCap) f " +
+                "JOIN block b ON b.rowid = f.rowid $joins" +
+                "ORDER BY $order LIMIT ? OFFSET ?"
+        } else {
+            "SELECT $columns FROM block_fts JOIN block b ON b.rowid = block_fts.rowid $joins$where " +
+                "ORDER BY $order LIMIT ? OFFSET ?"
+        }
         // Relevance reads a few pages of candidates and reorders them as the site does: the exact
         // phrase, then every word whole, then words that only start the same; the typed spelling
         // (إنما over انما) first within each.
+        val exact = if (request.exact) request.query.replace("\"", "").trim().ifBlank { null } else null
         val tiers = if (request.sort == ContentSearchSort.Relevance) MatchTiers(request.query) else null
         val want = if (tiers != null) maxOf(limit * 4, CandidateBatchSize) else limit
+        // Ranked candidates come in one read: each OFFSET page would rank the capped set again.
+        val batch = if (ranked) want else CandidateBatchSize
         val result = mutableListOf<BlockSearchHit>()
         val scores = HashMap<Long, Int>()
         var offset = 0
@@ -334,21 +361,22 @@ class ContentSearchRepository(private val database: AtharContentDatabase) {
             connection.usePrepared(sql) { query ->
                 var bind = 1
                 query.bindText(bind++, plan.matchExpression)
+                if (bookRowids != null) { query.bindLong(bind++, bookRowids.first); query.bindLong(bind++, bookRowids.last) }
                 bind = query.bindAll(bind, filter.values)
                 if (range != null) { query.bindLong(bind++, range.first.toLong()); query.bindLong(bind++, range.last.toLong()) }
-                query.bindLong(bind++, CandidateBatchSize.toLong())
+                query.bindLong(bind++, batch.toLong())
                 query.bindLong(bind, offset.toLong())
                 while (query.step()) {
                     candidates++
-                    query.toBlockHit(plan)?.let { hit ->
+                    query.toBlockHit(plan, exact)?.let { hit ->
                         result += hit
                         if (tiers != null) scores[hit.rowid] = tiers.score(query.getText(7))
                     }
                     if (result.size == want) break
                 }
             }
-            if (candidates < CandidateBatchSize || result.size == want) break
-            offset += CandidateBatchSize
+            if (candidates < batch || result.size == want) break
+            offset += batch
         }
         return if (tiers == null) result else result.sortedBy { scores[it.rowid] ?: 0 }.take(limit)
     }
@@ -399,12 +427,49 @@ private fun structuredFilter(filter: ContentSearchFilter, alias: String): SqlFil
     )
 }
 
-private fun SQLiteStatement.toBlockHit(plan: CompactFtsPlan): BlockSearchHit? {
+/** Text without tashkeel, letters unfolded. Folding maps one letter to one, so an index here is an index in the normalized text. */
+fun exactLetters(text: String): String =
+    java.text.Normalizer.normalize(text, java.text.Normalizer.Form.NFC).filterNot(::isTashkeel)
+
+/**
+ * Where [query] sits in [text] letter for letter, as a range in [exactLetters] of [text] (so it maps like
+ * any normalized offset). Tashkeel the reader typed must be on that letter too; a bare letter takes any:
+ * «عِلم» finds «عِلْم» and not «عَلَم».
+ */
+fun exactMatch(text: String, query: String): IntRange? {
+    val t = lettersWithMarks(text)
+    val q = lettersWithMarks(query)
+    if (q.isEmpty()) return null
+    val letters = String(CharArray(t.size) { t[it].first })
+    val word = String(CharArray(q.size) { q[it].first })
+    var at = letters.indexOf(word)
+    while (at >= 0) {
+        if (q.indices.all { t[at + it].second.containsAll(q[it].second) }) return at until at + q.size
+        at = letters.indexOf(word, at + 1)
+    }
+    return null
+}
+
+private fun lettersWithMarks(text: String): List<Pair<Char, Set<Char>>> {
+    val out = ArrayList<Pair<Char, MutableSet<Char>>>()
+    for (c in java.text.Normalizer.normalize(text, java.text.Normalizer.Form.NFC)) {
+        if (!isTashkeel(c)) out += c to HashSet() else if (c.code != 0x0640) out.lastOrNull()?.second?.add(c)
+    }
+    return out
+}
+
+/** Harakat, tanween, shadda, sukun, dagger alif, Quranic marks and tatweel. */
+fun isTashkeel(c: Char): Boolean =
+    c.code in 0x0610..0x061A || c.code == 0x0640 || c.code in 0x064B..0x065F || c.code == 0x0670 || c.code in 0x06D6..0x06ED
+
+private fun SQLiteStatement.toBlockHit(plan: CompactFtsPlan, exact: String? = null): BlockSearchHit? {
     val source = getText(7)
     val mapped = ArNormalize.normalizeWithMap(source)
     if (plan.exactPhrases.any { !mapped.text.contains(it) }) return null
     val terms = if (plan.exactPhrases.isNotEmpty()) plan.exactPhrases else plan.highlightTerms
-    val match = terms.firstNotNullOfOrNull { term ->
+    val match = if (exact != null) {
+        exactMatch(source, exact) ?: return null
+    } else terms.firstNotNullOfOrNull { term ->
         mapped.text.indexOf(term).takeIf { it >= 0 }?.let { at -> at until at + term.length }
     } ?: return null
     val sourceRange = mapped.sourceRange(match.first, match.last + 1)

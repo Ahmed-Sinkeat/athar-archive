@@ -104,6 +104,20 @@ class AppContentHttpClientTest {
     }
 
     @Test
+    fun wholeDocumentsAcceptGzipAndVerifyTheDecodedBytes() = runBlocking {
+        val bytes = "package index ".repeat(20).encodeToByteArray()
+        val gzipped = Buffer().also { sink ->
+            java.util.zip.GZIPOutputStream(sink.outputStream()).use { it.write(bytes) }
+        }
+        val base = entry(packageSize = 1)
+        val entry = base.copy(pkg = base.pkg.copy(idxHash = ContentDigests.sha256Hex(bytes), idxSize = bytes.size.toLong()))
+        server.enqueue(MockResponse().setHeader("Content-Encoding", "gzip").setBody(gzipped))
+
+        assertArrayEquals(bytes, client.fetchPackageIndex(entry))
+        assertEquals("gzip", server.takeRequest().getHeader("Accept-Encoding"))
+    }
+
+    @Test
     fun rejectsASilentPartialRangeResponse() {
         val expected = "complete".encodeToByteArray()
         val frame = FrameIndexEntry(0, expected.size, 0, 1, ContentDigests.sha256Hex(expected))

@@ -91,8 +91,14 @@ fun ReaderPanel(
     modifier: Modifier = Modifier,
     initialTab: ReaderPanelTab = ReaderPanelTab.Contents,
     searchStatus: String? = null,
+    /** Percent of the book on the phone when the search could not cover all of it. */
+    partialSearch: Int? = null,
+    downloadAsked: Boolean = false,
+    onDownloadForSearch: (() -> Unit)? = null,
     onPageJump: (Int, Int?) -> Unit = { _, _ -> },
     docked: Boolean = false,
+    recentQueries: List<String> = emptyList(),
+    onHit: (InBookHit) -> Unit = { onJump(it.blockIndex) },
 ) {
     var tab by remember(initialTab) { mutableStateOf(initialTab) }
 
@@ -144,7 +150,7 @@ fun ReaderPanel(
                         PageJumpRow(state, colors, currentBlockIndex, onPageJump)
                     }
                 }
-                ReaderPanelTab.Search -> PanelSearch(query, hits, colors, onQueryChange, onJump, searchStatus)
+                ReaderPanelTab.Search -> PanelSearch(query, hits, colors, onQueryChange, onHit, searchStatus, partialSearch, downloadAsked, onDownloadForSearch, recentQueries)
                 ReaderPanelTab.Benefits -> BenefitsList(state, colors, onJump)
                 ReaderPanelTab.Bookmarks -> BookmarksList(state, colors, onJump)
             }
@@ -275,8 +281,12 @@ private fun PanelSearch(
     hits: List<InBookHit>,
     colors: ReaderColors,
     onQueryChange: (String) -> Unit,
-    onJump: (Int) -> Unit,
+    onHit: (InBookHit) -> Unit,
     status: String?,
+    partialSearch: Int? = null,
+    downloadAsked: Boolean = false,
+    onDownloadForSearch: (() -> Unit)? = null,
+    recentQueries: List<String> = emptyList(),
 ) {
     val focusRequester = remember { FocusRequester() }
     LaunchedEffect(Unit) { focusRequester.requestFocus() }
@@ -351,14 +361,47 @@ private fun PanelSearch(
                 color = colors.secondary,
                 style = MaterialTheme.typography.labelSmall,
             )
+            partialSearch?.let { percent ->
+                Row(
+                    modifier = Modifier.fillMaxWidth().padding(start = 14.dp, end = 6.dp, bottom = 6.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Text(
+                        text = if (downloadAsked) "جارٍ تحميل الكتاب؛ تكتمل النتائج بعده تلقائيًا"
+                            else "بُحث في المحفوظ فقط (${com.atharchive.ui.components.arabicDigits(percent)}٪ من الكتاب)",
+                        modifier = Modifier.weight(1f),
+                        color = colors.secondary,
+                        style = MaterialTheme.typography.labelSmall,
+                    )
+                    if (onDownloadForSearch != null && !downloadAsked) {
+                        androidx.compose.material3.TextButton(
+                            onClick = onDownloadForSearch,
+                            modifier = Modifier.testTag("reader_panel_search_download"),
+                        ) { Text("تحميل الكتاب كاملًا", color = colors.accent, style = MaterialTheme.typography.labelMedium) }
+                    }
+                }
+            }
         }
 
         LazyColumn(modifier = Modifier.fillMaxSize()) {
+            if (query.isBlank()) items(recentQueries, key = { "recent-$it" }) { recent ->
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable(role = Role.Button) { onQueryChange(recent) }
+                        .padding(horizontal = 14.dp, vertical = 11.dp)
+                        .testTag("reader_panel_recent_$recent"),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Icon(AtharIcons.Repeat, contentDescription = null, tint = colors.secondary, modifier = Modifier.size(16.dp))
+                    Text(recent, modifier = Modifier.padding(start = 10.dp), color = colors.text, style = MaterialTheme.typography.bodyMedium, maxLines = 1)
+                }
+            }
             items(hits, key = { it.id }) { hit ->
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .clickable(role = Role.Button) { onJump(hit.blockIndex) }
+                        .clickable(role = Role.Button) { onHit(hit) }
                         .padding(horizontal = 14.dp, vertical = 11.dp)
                         .testTag("reader_panel_hit_${hit.id}"),
                 ) {

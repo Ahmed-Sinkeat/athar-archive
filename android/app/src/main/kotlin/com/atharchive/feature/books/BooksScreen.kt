@@ -1,5 +1,6 @@
 package com.atharchive.feature.books
 
+import com.atharchive.ui.components.AtharFastScroller
 import com.atharchive.ui.components.directed
 import com.atharchive.ui.components.AtharDirectionGroup
 import com.atharchive.ui.components.normKey
@@ -108,8 +109,6 @@ import com.atharchive.ui.icons.AtharIcons
 import com.atharchive.ui.theme.AtharEditorialFontFamily
 import com.atharchive.ui.theme.AtharTheme
 
-private fun centuryOf(died: Int) = "القرن ${arabicDigits((died - 1) / 100 + 1)}"
-
 /** «ت ٧٢٨هـ» */
 internal fun diedLabel(died: Int) = "ت ${arabicDigits(died)}هـ"
 
@@ -138,15 +137,18 @@ fun BooksScreen(
     var topicStored by rememberPersisted("books.topics", "")
     var centuryStored by rememberPersisted("books.centuries", "")
     var authorStored by rememberPersisted("books.authors", "")
-    var sortName by rememberPersisted("books.order", BookSort.Title.name)
-    val sort = enumValueOrNull<BookSort>(sortName) ?: BookSort.Title
+    var audioStored by rememberPersisted("books.audio", "")
+    var section by rememberPersisted("books.section", com.atharchive.ui.components.SectionAll)
+    var sortName by rememberPersisted("books.sort", BookSort.Died.name)
+    val sort = enumValueOrNull<BookSort>(sortName) ?: BookSort.Died
     var descendingStored by rememberPersisted("books.order.desc", "")
     val descending = descendingStored.isNotEmpty()
     val kinds = remember(state.books) { state.books.map { it.kind }.distinct() }
-    val topics = remember(state.books) { state.books.flatMap { it.topics }.distinct().sorted() }
-    val centuries = remember(state.books) {
-        state.books.mapNotNull { it.died }.distinct().sorted().map(::centuryOf).distinct()
+    // Inside a section, only its own topics are offered.
+    val topics = remember(state.books, section) {
+        state.books.flatMap { it.topics }.distinct().filter { com.atharchive.ui.components.inSection(section, listOf(it)) }.sorted()
     }
+    val centuries = com.atharchive.data.AllCenturies
     // Author → (death year, book count), for the author filter's second line.
     val authorFacts = remember(state.books) {
         state.books.filter { it.author.isNotBlank() }.groupBy { it.author }.mapValues { (_, books) -> books.firstNotNullOfOrNull { it.died } to books.size }
@@ -157,6 +159,7 @@ fun BooksScreen(
     val topic = topicStored.asChoiceSet() intersect topics.toSet()
     val century = centuryStored.asChoiceSet() intersect centuries.toSet()
     val author = authorStored.asChoiceSet() intersect authorFacts.keys
+    val audio = audioStored.asChoiceSet() intersect setOf(com.atharchive.ui.components.HasAudioChoice)
     val listState = rememberLazyListState()
     val reselectScope = androidx.compose.runtime.rememberCoroutineScope()
 
@@ -168,7 +171,7 @@ fun BooksScreen(
     val normalized = remember(state.books) {
         state.books.associate { it.id to (normKey(it.title) to normKey(it.author)) }
     }
-    val visibleBooks = remember(state.books, selectedTab, query, kind, sort, descending, topic, century, author) {
+    val visibleBooks = remember(state.books, selectedTab, query, kind, sort, descending, topic, century, author, section, audio) {
         val term = ArNormalize.normalize(query.trim())
         state.books
             .asSequence()
@@ -181,7 +184,9 @@ fun BooksScreen(
             }
             .filter { kind.isEmpty() || it.kind in kind }
             .filter { topic.isEmpty() || it.topics.any(topic::contains) }
-            .filter { century.isEmpty() || it.died?.let(::centuryOf) in century }
+            .filter { century.isEmpty() || it.died?.let { d -> com.atharchive.data.centuryOf(d) } in century }
+            .filter { com.atharchive.ui.components.inSection(section, it.topics) }
+            .filter { audio.isEmpty() || it.hasAudio }
             .filter { author.isEmpty() || it.author in author }
             .sortedWith(
                 when {
@@ -189,7 +194,7 @@ fun BooksScreen(
                     sort == BookSort.Title -> compareBy<BookUi> { normalized.getValue(it.id).first }.directed(descending)
                     sort == BookSort.Author -> compareBy<BookUi> { normalized.getValue(it.id).second }.directed(descending)
                     // Unknown years and sizes stay last in both directions.
-                    sort == BookSort.Died -> compareBy(nullsLast(if (descending) reverseOrder() else naturalOrder())) { it.died }
+                    sort == BookSort.Died -> compareBy<BookUi, Int?>(nullsLast(if (descending) reverseOrder() else naturalOrder())) { it.died }.thenBy { normalized.getValue(it.id).first }
                     sort == BookSort.Pages -> compareBy<BookUi, Int?>(nullsLast(if (descending) reverseOrder() else naturalOrder())) { it.volumes?.takeIf { v -> v > 1 }?.let { v -> 100_000 * v } ?: it.pages }
                     else -> compareByDescending<BookUi> { it.publishedAt }.directed(descending)
                 },
@@ -212,7 +217,7 @@ fun BooksScreen(
 
         Box(modifier = Modifier.fillMaxSize().clipToBounds()) {
             val header = rememberAtharCollapsingHeader()
-            header.ShowOnChange(listState, selectedTab, query, kind, topic, century, author, sort)
+            header.ShowOnChange(listState, selectedTab, query, kind, topic, century, author, sort, section)
             AtharFloatingHeader(header) {
                 Column {
                     AtharTopBar(
@@ -230,20 +235,24 @@ fun BooksScreen(
                             if (selectedTab == SectionTab.Recent) null else AtharDirectionGroup(descending) { descendingStored = if (it) "1" else "" },
                         )
                 val filterFacets = listOf(
-                            AtharFacet("المؤلف", authors, author, { authorStored = it.asStoredChoices() }) { name ->
+                            AtharFacet("المؤلف", authors, author, { authorStored = it.asStoredChoices() }, subtitle = { name ->
                                 val (died, count) = authorFacts.getValue(name)
                                 listOfNotNull(died?.let(::diedLabel), com.atharchive.data.arabicCount(count, "", "كتاب واحد", "كتابان", "كتب", "كتابًا")).joinToString(" · ")
-                            },
+                            }),
                             AtharFacet("الموضوع", topics, topic, { topicStored = it.asStoredChoices() }),
-                            AtharFacet("القرن", centuries, century, { centuryStored = it.asStoredChoices() }),
+                            com.atharchive.ui.components.centuryFacet(century) { centuryStored = it.asStoredChoices() },
                             AtharFacet("النوع", kinds, kind, { kindStored = it.asStoredChoices() }),
+                            AtharFacet("الصوت", listOf(com.atharchive.ui.components.HasAudioChoice), audio, { audioStored = it.asStoredChoices() }),
                         )
                 AtharSearchField(
                     query = query,
                     placeholder = "ابحث في ${state.archiveCountLabel}…",
                     onQueryChange = { query = it },
                     tagPrefix = "books",
-                    trailing = { AtharFilterIcon(filterGroups, filterFacets, "books_filter") },
+                    trailing = {
+                        com.atharchive.ui.components.AtharSectionButton(section, { section = it }, remember(state.books) { com.atharchive.ui.components.sectionCounts(state.books) { it.topics } }, "books_sections")
+                        AtharFilterIcon(filterGroups, filterFacets, "books_filter")
+                    },
                     modifier = Modifier.padding(
                         start = horizontalPadding,
                         end = horizontalPadding,
@@ -286,7 +295,7 @@ fun BooksScreen(
                     val (emptyTitle, emptyBody) = booksEmptyCopy(
                         selectedTab = selectedTab,
                         hasQuery = query.isNotBlank(),
-                        hasFilters = (kind + topic + century + author).isNotEmpty(),
+                        hasFilters = (kind + topic + century + author + audio).isNotEmpty() || section != com.atharchive.ui.components.SectionAll,
                     )
                     AtharEmptyState(
                         title = emptyTitle,
@@ -319,6 +328,7 @@ fun BooksScreen(
                 }}
             }
         }
+        AtharFastScroller(listState, top = header.height)
     }
     }
 

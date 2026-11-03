@@ -1,0 +1,1825 @@
+{
+  "schema": 1,
+  "generation": 1,
+  "sourceHash": "c35f0375081b0f9a19e8310507f4b6d91bf1bdd7c02a0b7099501b0896f87509",
+  "ids": [
+    {
+      "ord": 0,
+      "blockId": "41b47855b1b98b19c5747eff729e2d49",
+      "fp64": "fdb2afdc3f6ffff3",
+      "normHash": "d5e5b8fa27f55e1a938734a901f1538c9763a41ea144cadf9275e146760c3213",
+      "kind": "h1",
+      "chapter": "main",
+      "next": "c85ae3fafae512a8ff694e0f535d6a7cfbbec98a0b24a2f8e225f5623ae477d4"
+    },
+    {
+      "ord": 1,
+      "blockId": "1755e8796392e71d9b914a60ad226145",
+      "fp64": "a567d7339f49f57e",
+      "normHash": "c85ae3fafae512a8ff694e0f535d6a7cfbbec98a0b24a2f8e225f5623ae477d4",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "d5e5b8fa27f55e1a938734a901f1538c9763a41ea144cadf9275e146760c3213",
+      "next": "2f2e4133d6588097e8d6747a86194aa38bfb7683b5c256b84c9d826b94a27a45"
+    },
+    {
+      "ord": 2,
+      "blockId": "e4f4cea4a885986da8fa49429d8086d9",
+      "fp64": "78e42b765333a96d",
+      "normHash": "2f2e4133d6588097e8d6747a86194aa38bfb7683b5c256b84c9d826b94a27a45",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "c85ae3fafae512a8ff694e0f535d6a7cfbbec98a0b24a2f8e225f5623ae477d4",
+      "next": "75298beab5f86adf4801beb447b890967c8e26f3bcfd389fe9d3c172411fbc96"
+    },
+    {
+      "ord": 3,
+      "blockId": "07162aa8f60337c513e5b05370607c85",
+      "fp64": "ff4a605f1f7eef5c",
+      "normHash": "75298beab5f86adf4801beb447b890967c8e26f3bcfd389fe9d3c172411fbc96",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "2f2e4133d6588097e8d6747a86194aa38bfb7683b5c256b84c9d826b94a27a45",
+      "next": "4e69f1fe679aed73a4f2002d7955a7415fb3e959647a1fb7d8b8e8215f935244"
+    },
+    {
+      "ord": 4,
+      "blockId": "86c6ba0c2d2caea458505d26ff9f7812",
+      "fp64": "77fff3df7a73623e",
+      "normHash": "4e69f1fe679aed73a4f2002d7955a7415fb3e959647a1fb7d8b8e8215f935244",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "75298beab5f86adf4801beb447b890967c8e26f3bcfd389fe9d3c172411fbc96",
+      "next": "9b536c6d75d7288a3ee52d5c091ce93f9a50914e6afc94035d97a8bd34c56898"
+    },
+    {
+      "ord": 5,
+      "blockId": "a0fa1a9f9c80185621d33008ad0e0d26",
+      "fp64": "19b011d552248495",
+      "normHash": "9b536c6d75d7288a3ee52d5c091ce93f9a50914e6afc94035d97a8bd34c56898",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "4e69f1fe679aed73a4f2002d7955a7415fb3e959647a1fb7d8b8e8215f935244",
+      "next": "6de5a74c6e89950d73c823b3e749bc2b85d2604694b773ec233ad7e4f5cd6b4e"
+    },
+    {
+      "ord": 6,
+      "blockId": "3200096098dc944d790b12446d834fac",
+      "fp64": "9244045b03568cb2",
+      "normHash": "6de5a74c6e89950d73c823b3e749bc2b85d2604694b773ec233ad7e4f5cd6b4e",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "9b536c6d75d7288a3ee52d5c091ce93f9a50914e6afc94035d97a8bd34c56898",
+      "next": "275a0f1139375285b2fc030273cb0b91e7ef22828f6c7be65c5f38c9ddb6146e"
+    },
+    {
+      "ord": 7,
+      "blockId": "2a9bb4feb8eb92ff0f09dff6cf06c2f5",
+      "fp64": "976c5c5bd3565df6",
+      "normHash": "275a0f1139375285b2fc030273cb0b91e7ef22828f6c7be65c5f38c9ddb6146e",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "6de5a74c6e89950d73c823b3e749bc2b85d2604694b773ec233ad7e4f5cd6b4e",
+      "next": "fe150be8995764fb9222c74a2e8f48710a6c0e04b0832c95ac9ae993299ca637"
+    },
+    {
+      "ord": 8,
+      "blockId": "9a8fce8af262b70d743bd8edec3e3efe",
+      "fp64": "25ffffde7f3f783f",
+      "normHash": "fe150be8995764fb9222c74a2e8f48710a6c0e04b0832c95ac9ae993299ca637",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "275a0f1139375285b2fc030273cb0b91e7ef22828f6c7be65c5f38c9ddb6146e",
+      "next": "643b01a38ea754079d865e7fb80a1bdc306d96a8cc3924aa93dc8067ae10369d"
+    },
+    {
+      "ord": 9,
+      "blockId": "c51c15bcb17c192a591ec7774abe80aa",
+      "fp64": "7a09605cd7feefcd",
+      "normHash": "643b01a38ea754079d865e7fb80a1bdc306d96a8cc3924aa93dc8067ae10369d",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "fe150be8995764fb9222c74a2e8f48710a6c0e04b0832c95ac9ae993299ca637",
+      "next": "bd257a878667efad24541ac5e76c3516f31d08db49c538429572dd9662a28894"
+    },
+    {
+      "ord": 10,
+      "blockId": "01cc8c04da7a8c4c2fd98b89731044e0",
+      "fp64": "df91ac1281272029",
+      "normHash": "bd257a878667efad24541ac5e76c3516f31d08db49c538429572dd9662a28894",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "643b01a38ea754079d865e7fb80a1bdc306d96a8cc3924aa93dc8067ae10369d",
+      "next": "02b37c227a3bd500254b8a59f3418cdb72d135c70b82a8093c8b5018b64b6c7e"
+    },
+    {
+      "ord": 11,
+      "blockId": "67036d0889b189e8a29b8693cee76139",
+      "fp64": "0748f2351a36bcda",
+      "normHash": "02b37c227a3bd500254b8a59f3418cdb72d135c70b82a8093c8b5018b64b6c7e",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "bd257a878667efad24541ac5e76c3516f31d08db49c538429572dd9662a28894",
+      "next": "f7d4b3d316e3c3dac21493f3c9cae81d92615d0a53016b84d3a09d2bb6402e8a"
+    },
+    {
+      "ord": 12,
+      "blockId": "72699fedb0406aae62cfe3d8d09a2474",
+      "fp64": "1f6db25b34840f1b",
+      "normHash": "f7d4b3d316e3c3dac21493f3c9cae81d92615d0a53016b84d3a09d2bb6402e8a",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "02b37c227a3bd500254b8a59f3418cdb72d135c70b82a8093c8b5018b64b6c7e",
+      "next": "c25f4d9130203c2eeb2c8049c9ec30416aabe4f0481fac5f409bf18d074b2b14"
+    },
+    {
+      "ord": 13,
+      "blockId": "361eacca6fd048386ca3d48274129677",
+      "fp64": "6687c00baf63dde2",
+      "normHash": "c25f4d9130203c2eeb2c8049c9ec30416aabe4f0481fac5f409bf18d074b2b14",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "f7d4b3d316e3c3dac21493f3c9cae81d92615d0a53016b84d3a09d2bb6402e8a",
+      "next": "3ac3fae37d9c27a37c8eda6b5620e12928e9e38c82616303a0543fa19a9fc15e"
+    },
+    {
+      "ord": 14,
+      "blockId": "57017544b1444e8cbda45c95387e3abf",
+      "fp64": "addff3be5ffd647e",
+      "normHash": "3ac3fae37d9c27a37c8eda6b5620e12928e9e38c82616303a0543fa19a9fc15e",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "c25f4d9130203c2eeb2c8049c9ec30416aabe4f0481fac5f409bf18d074b2b14",
+      "next": "08364c11d7eafe286e6cde9aa3bb90b6854d6aaa4efdd359ca63b83308d1e373"
+    },
+    {
+      "ord": 15,
+      "blockId": "504b027376316c0ed96ca8aa24786fc6",
+      "fp64": "1d56b01219381dd6",
+      "normHash": "08364c11d7eafe286e6cde9aa3bb90b6854d6aaa4efdd359ca63b83308d1e373",
+      "kind": "h3",
+      "chapter": "main",
+      "prev": "3ac3fae37d9c27a37c8eda6b5620e12928e9e38c82616303a0543fa19a9fc15e",
+      "next": "c32a1462304bb0a77367f42a282ea8de9bf4b7d902725783bc9cf8a3d6378a99"
+    },
+    {
+      "ord": 16,
+      "blockId": "0a231b33cc696a7d2cff9dc6a423c6bc",
+      "fp64": "5600d86cbe67a8dc",
+      "normHash": "c32a1462304bb0a77367f42a282ea8de9bf4b7d902725783bc9cf8a3d6378a99",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "08364c11d7eafe286e6cde9aa3bb90b6854d6aaa4efdd359ca63b83308d1e373",
+      "next": "8d752d941bfcbdfc3b3b016c14546e0117512391c18e7271f396b0f381ef81df"
+    },
+    {
+      "ord": 17,
+      "blockId": "78dba27d8a841fababaf55553c5f29a9",
+      "fp64": "bc75c0569f78717e",
+      "normHash": "8d752d941bfcbdfc3b3b016c14546e0117512391c18e7271f396b0f381ef81df",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "c32a1462304bb0a77367f42a282ea8de9bf4b7d902725783bc9cf8a3d6378a99",
+      "next": "25baa0186bedc89a7c424acf77afe42a7d0e2d6fc897c3be5c1ca42c27d15e87"
+    },
+    {
+      "ord": 18,
+      "blockId": "68bed78803b712a27fc3c5c8458af5f6",
+      "fp64": "4840c4529f29cdec",
+      "normHash": "25baa0186bedc89a7c424acf77afe42a7d0e2d6fc897c3be5c1ca42c27d15e87",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "8d752d941bfcbdfc3b3b016c14546e0117512391c18e7271f396b0f381ef81df",
+      "next": "1f979fdb5e1b6a7cad47ba056f60c35004e2392f1b2b79c2aaad31110ed44e5a"
+    },
+    {
+      "ord": 19,
+      "blockId": "19ede14190ec1aee76619973bbed0b3f",
+      "fp64": "2c20c0473e77ebda",
+      "normHash": "1f979fdb5e1b6a7cad47ba056f60c35004e2392f1b2b79c2aaad31110ed44e5a",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "25baa0186bedc89a7c424acf77afe42a7d0e2d6fc897c3be5c1ca42c27d15e87",
+      "next": "4581d04ab7938e775963f37eee16e60c2f3000bc0c978bbdf46ccb9c9cb67ee5"
+    },
+    {
+      "ord": 20,
+      "blockId": "7169e42fc3276e61ca487fdd92927658",
+      "fp64": "f7dffbbe7e3be87f",
+      "normHash": "4581d04ab7938e775963f37eee16e60c2f3000bc0c978bbdf46ccb9c9cb67ee5",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "1f979fdb5e1b6a7cad47ba056f60c35004e2392f1b2b79c2aaad31110ed44e5a",
+      "next": "84eafeacc98f39e0e9cf8e06dc7144f5e3b01d7cf299633c0e29e5b0d9866754"
+    },
+    {
+      "ord": 21,
+      "blockId": "345a53fde826e85cd2bfef7febd25d95",
+      "fp64": "d602244817134bd8",
+      "normHash": "84eafeacc98f39e0e9cf8e06dc7144f5e3b01d7cf299633c0e29e5b0d9866754",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "4581d04ab7938e775963f37eee16e60c2f3000bc0c978bbdf46ccb9c9cb67ee5",
+      "next": "37aab0d9fe080deb60182957ebf7aff15c3a097d2bb2c1f018637b35cfa09eb5"
+    },
+    {
+      "ord": 22,
+      "blockId": "5b412aeb170961d7895f5d6ebfe8770e",
+      "fp64": "6140440d45421a36",
+      "normHash": "37aab0d9fe080deb60182957ebf7aff15c3a097d2bb2c1f018637b35cfa09eb5",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "84eafeacc98f39e0e9cf8e06dc7144f5e3b01d7cf299633c0e29e5b0d9866754",
+      "next": "e5b0927ac6fbd7b43a3d3a27b287cf13c6902d415a651b612b87486d50f79fa4"
+    },
+    {
+      "ord": 23,
+      "blockId": "9ab8e04c1666a5cf03a0770eebef6498",
+      "fp64": "35ffffdf7bf5717f",
+      "normHash": "e5b0927ac6fbd7b43a3d3a27b287cf13c6902d415a651b612b87486d50f79fa4",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "37aab0d9fe080deb60182957ebf7aff15c3a097d2bb2c1f018637b35cfa09eb5",
+      "next": "73a68ebeeddf1bfadc933972b7a1cf37a54949c7d2976f0f5add55cb55d206ca"
+    },
+    {
+      "ord": 24,
+      "blockId": "15071751a2eb01a8af91c13d3ed44260",
+      "fp64": "6450d2cb11a5521c",
+      "normHash": "73a68ebeeddf1bfadc933972b7a1cf37a54949c7d2976f0f5add55cb55d206ca",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "e5b0927ac6fbd7b43a3d3a27b287cf13c6902d415a651b612b87486d50f79fa4",
+      "next": "c342548e0c43f27839668e3f3522b6780ed07cedd4eb76f820a149618f49d9b4"
+    },
+    {
+      "ord": 25,
+      "blockId": "6b918e757d9bc30f18b9701a71bbc5a5",
+      "fp64": "1679244d976a610c",
+      "normHash": "c342548e0c43f27839668e3f3522b6780ed07cedd4eb76f820a149618f49d9b4",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "73a68ebeeddf1bfadc933972b7a1cf37a54949c7d2976f0f5add55cb55d206ca",
+      "next": "6ed3cd39f0f2078f7d767a0f09f5ae35c0f08d98e8ac9aad98968b00f59fb829"
+    },
+    {
+      "ord": 26,
+      "blockId": "ccfaff718d3667478476f932f4bf3742",
+      "fp64": "a59a239677f3f074",
+      "normHash": "6ed3cd39f0f2078f7d767a0f09f5ae35c0f08d98e8ac9aad98968b00f59fb829",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "c342548e0c43f27839668e3f3522b6780ed07cedd4eb76f820a149618f49d9b4",
+      "next": "f55481b69318e1c851e57306a7f55661daf11dd52e307451f386b3d8d15d48b2"
+    },
+    {
+      "ord": 27,
+      "blockId": "8a703354911a9b8c92d16e5f6847c32f",
+      "fp64": "67dfff9e5fb3fb3f",
+      "normHash": "f55481b69318e1c851e57306a7f55661daf11dd52e307451f386b3d8d15d48b2",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "6ed3cd39f0f2078f7d767a0f09f5ae35c0f08d98e8ac9aad98968b00f59fb829",
+      "next": "a97746ac481bc0c5bd172cef02cb0392332a8475b3d0448a10bfb4e44de519c0"
+    },
+    {
+      "ord": 28,
+      "blockId": "ce1e00ea3a0c7199810b300170b101bc",
+      "fp64": "44dec052c27f797c",
+      "normHash": "a97746ac481bc0c5bd172cef02cb0392332a8475b3d0448a10bfb4e44de519c0",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "f55481b69318e1c851e57306a7f55661daf11dd52e307451f386b3d8d15d48b2",
+      "next": "bef7f056eb2b5a20ba989c0dbb993884f7e86e05029be21222d462b493b28875"
+    },
+    {
+      "ord": 29,
+      "blockId": "6573acdffa8841e90ab2265be3758473",
+      "fp64": "1dd23150b603f438",
+      "normHash": "bef7f056eb2b5a20ba989c0dbb993884f7e86e05029be21222d462b493b28875",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "a97746ac481bc0c5bd172cef02cb0392332a8475b3d0448a10bfb4e44de519c0",
+      "next": "cf82f37a0d9fa7db967582d57875f1098daf08f4fb5688263e59d6c97d092c67"
+    },
+    {
+      "ord": 30,
+      "blockId": "b8106b948797d4e9fd936d5379d9df91",
+      "fp64": "6ddff7fadbb967b7",
+      "normHash": "cf82f37a0d9fa7db967582d57875f1098daf08f4fb5688263e59d6c97d092c67",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "bef7f056eb2b5a20ba989c0dbb993884f7e86e05029be21222d462b493b28875",
+      "next": "51e9bc85dc17f7c1354aa028307e60467471272a78421d78f2eb7c4ff8e27267"
+    },
+    {
+      "ord": 31,
+      "blockId": "512987fb1504ccdc60b3ee9d5fcb2e4a",
+      "fp64": "1c022448bd727c14",
+      "normHash": "51e9bc85dc17f7c1354aa028307e60467471272a78421d78f2eb7c4ff8e27267",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "cf82f37a0d9fa7db967582d57875f1098daf08f4fb5688263e59d6c97d092c67",
+      "next": "9da403adc6f7f743d1c743c8c84d8aed2f84904be7b6a5259cf89154e0840dbb"
+    },
+    {
+      "ord": 32,
+      "blockId": "c2f130970251cd6aaac16cee70e1a36d",
+      "fp64": "77fff79a7ffb69f6",
+      "normHash": "9da403adc6f7f743d1c743c8c84d8aed2f84904be7b6a5259cf89154e0840dbb",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "51e9bc85dc17f7c1354aa028307e60467471272a78421d78f2eb7c4ff8e27267",
+      "next": "bd1588b4eddedf992e76193d39c5e95c7f0590be50658f3a032e99f1d6d9ce61"
+    },
+    {
+      "ord": 33,
+      "blockId": "4ec446afe5c93c52908b2a9e77810690",
+      "fp64": "cc9b416ff7e3d864",
+      "normHash": "bd1588b4eddedf992e76193d39c5e95c7f0590be50658f3a032e99f1d6d9ce61",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "9da403adc6f7f743d1c743c8c84d8aed2f84904be7b6a5259cf89154e0840dbb",
+      "next": "afdb7313e5b92484c76c5195be2959c3631cc9c844a90c8fa37d3edfc9b28110"
+    },
+    {
+      "ord": 34,
+      "blockId": "3e91b30094ec00315a1f3b5fecf8f699",
+      "fp64": "3fdffb9edbf77eb7",
+      "normHash": "afdb7313e5b92484c76c5195be2959c3631cc9c844a90c8fa37d3edfc9b28110",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "bd1588b4eddedf992e76193d39c5e95c7f0590be50658f3a032e99f1d6d9ce61",
+      "next": "7595813ac513f7b39176cab6ec10eacdc14624fdf1cfefc964b8e08e9041c617"
+    },
+    {
+      "ord": 35,
+      "blockId": "f00d08adcfb79e8b1bb4b250d6472c62",
+      "fp64": "6c9978738f7a75ce",
+      "normHash": "7595813ac513f7b39176cab6ec10eacdc14624fdf1cfefc964b8e08e9041c617",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "afdb7313e5b92484c76c5195be2959c3631cc9c844a90c8fa37d3edfc9b28110",
+      "next": "f9835b40833138da5aa5227c4d9683cb00591c134cf586f1d3388b70c940bc1d"
+    },
+    {
+      "ord": 36,
+      "blockId": "da85ae0cb2951aaaee5c2c73d3191e53",
+      "fp64": "1547e05617e6f17c",
+      "normHash": "f9835b40833138da5aa5227c4d9683cb00591c134cf586f1d3388b70c940bc1d",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "7595813ac513f7b39176cab6ec10eacdc14624fdf1cfefc964b8e08e9041c617",
+      "next": "c9d963f038c204cdec8da768bce98e69d1bf414d903aae3bc061b11205939f2a"
+    },
+    {
+      "ord": 37,
+      "blockId": "a52648f79c20fe60caefdfc2f68df584",
+      "fp64": "37dff79f5f756377",
+      "normHash": "c9d963f038c204cdec8da768bce98e69d1bf414d903aae3bc061b11205939f2a",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "f9835b40833138da5aa5227c4d9683cb00591c134cf586f1d3388b70c940bc1d",
+      "next": "57477ef5cff423af363d33ceaac3fd4d30d98af68d9fe6938436cae398ffb191"
+    },
+    {
+      "ord": 38,
+      "blockId": "d15978c491f1b51dd7daa560b38d75c6",
+      "fp64": "3741c45a99668ddc",
+      "normHash": "57477ef5cff423af363d33ceaac3fd4d30d98af68d9fe6938436cae398ffb191",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "c9d963f038c204cdec8da768bce98e69d1bf414d903aae3bc061b11205939f2a",
+      "next": "2d94f500a3a2f974d51389a26d54f5f902aca8801eb787e5bce5f369236fa4f1"
+    },
+    {
+      "ord": 39,
+      "blockId": "64f7e98874072b210561a26be986a037",
+      "fp64": "3817244e9f3c35bc",
+      "normHash": "2d94f500a3a2f974d51389a26d54f5f902aca8801eb787e5bce5f369236fa4f1",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "57477ef5cff423af363d33ceaac3fd4d30d98af68d9fe6938436cae398ffb191",
+      "next": "149300eaedcb1b74180909753a8276f56399b5bab81c3f51d861140a1b757c30"
+    },
+    {
+      "ord": 40,
+      "blockId": "b9f307a83a75b9b68fb20a7ef4be490d",
+      "fp64": "b5da21b657f5f074",
+      "normHash": "149300eaedcb1b74180909753a8276f56399b5bab81c3f51d861140a1b757c30",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "2d94f500a3a2f974d51389a26d54f5f902aca8801eb787e5bce5f369236fa4f1",
+      "next": "fd7450c1f92d52b91075220c636129ef702e8e7c29edc73d8f2e81df8a091618"
+    },
+    {
+      "ord": 41,
+      "blockId": "6ad6e53f153fe7c0751331523cee85bb",
+      "fp64": "77dff3dadf79e97e",
+      "normHash": "fd7450c1f92d52b91075220c636129ef702e8e7c29edc73d8f2e81df8a091618",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "149300eaedcb1b74180909753a8276f56399b5bab81c3f51d861140a1b757c30",
+      "next": "1b601a2b20239daed5dee5c8d0102899460b22ad137cb48889a32c7c62f47c81"
+    },
+    {
+      "ord": 42,
+      "blockId": "9f639672704f2e1b41a56377f3b34abc",
+      "fp64": "f51b30bea77ad0d4",
+      "normHash": "1b601a2b20239daed5dee5c8d0102899460b22ad137cb48889a32c7c62f47c81",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "fd7450c1f92d52b91075220c636129ef702e8e7c29edc73d8f2e81df8a091618",
+      "next": "311918660dbe9e585f1e182446371ec030a1c81dc4c6e592a7e17ab132cf78c2"
+    },
+    {
+      "ord": 43,
+      "blockId": "fad00b32190c6f5baf294588e5a6d074",
+      "fp64": "2640e013df703444",
+      "normHash": "311918660dbe9e585f1e182446371ec030a1c81dc4c6e592a7e17ab132cf78c2",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "1b601a2b20239daed5dee5c8d0102899460b22ad137cb48889a32c7c62f47c81",
+      "next": "d3fc5bd9b2f63785248129ea03bccffcaf940956b7d8a0eead4645fbe9ba5066"
+    },
+    {
+      "ord": 44,
+      "blockId": "ec4d50f6a7d602755898f77fa53c8f53",
+      "fp64": "f7fff79efaf160b6",
+      "normHash": "d3fc5bd9b2f63785248129ea03bccffcaf940956b7d8a0eead4645fbe9ba5066",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "311918660dbe9e585f1e182446371ec030a1c81dc4c6e592a7e17ab132cf78c2",
+      "next": "6290d4576368102a5d9712be961a4ce685b8ee65ccd3dbaed2fb8c9ce23f8c74"
+    },
+    {
+      "ord": 45,
+      "blockId": "bed64b458d2e6501f5f889f6f9b86de3",
+      "fp64": "9a54ddf4f727e753",
+      "normHash": "6290d4576368102a5d9712be961a4ce685b8ee65ccd3dbaed2fb8c9ce23f8c74",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "d3fc5bd9b2f63785248129ea03bccffcaf940956b7d8a0eead4645fbe9ba5066",
+      "next": "61780aed021f00ce47c2c6f10bbe580e66a17628ccb19540d4eff40d88c756b5"
+    },
+    {
+      "ord": 46,
+      "blockId": "dae55e319fc86f48cff82242b9e6193d",
+      "fp64": "779a60967e77f47c",
+      "normHash": "61780aed021f00ce47c2c6f10bbe580e66a17628ccb19540d4eff40d88c756b5",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "6290d4576368102a5d9712be961a4ce685b8ee65ccd3dbaed2fb8c9ce23f8c74",
+      "next": "70d9a94bd52fc353c0f65f0804c910ddce56b8210038a37208e30150f05ec5bc"
+    },
+    {
+      "ord": 47,
+      "blockId": "d572d4c689a5ca4309030da647826876",
+      "fp64": "c0d6e4fc02ca3e6c",
+      "normHash": "70d9a94bd52fc353c0f65f0804c910ddce56b8210038a37208e30150f05ec5bc",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "61780aed021f00ce47c2c6f10bbe580e66a17628ccb19540d4eff40d88c756b5",
+      "next": "9c95b805ed1f33fb290d71bde0a32cd808cb355866d5f5b4bef7dc23d548de79"
+    },
+    {
+      "ord": 48,
+      "blockId": "014f9603f8db9c1e51a94545485a0456",
+      "fp64": "1056577c53b2e010",
+      "normHash": "9c95b805ed1f33fb290d71bde0a32cd808cb355866d5f5b4bef7dc23d548de79",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "70d9a94bd52fc353c0f65f0804c910ddce56b8210038a37208e30150f05ec5bc",
+      "next": "f7572d575a17f27fb2559b117801625ebe09fb2ab54192f6b1a48294f823f26e"
+    },
+    {
+      "ord": 49,
+      "blockId": "a47cec2b21648902d4a5913945bb99e9",
+      "fp64": "e6535e855773f254",
+      "normHash": "f7572d575a17f27fb2559b117801625ebe09fb2ab54192f6b1a48294f823f26e",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "9c95b805ed1f33fb290d71bde0a32cd808cb355866d5f5b4bef7dc23d548de79",
+      "next": "68f3727261046665f498c65a90fa7e68e048dc53941446d1ded55914c30c2e89"
+    },
+    {
+      "ord": 50,
+      "blockId": "ef309565ecc6044ac50873adba11449b",
+      "fp64": "efdff3daff39eaf7",
+      "normHash": "68f3727261046665f498c65a90fa7e68e048dc53941446d1ded55914c30c2e89",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "f7572d575a17f27fb2559b117801625ebe09fb2ab54192f6b1a48294f823f26e",
+      "next": "f359d3f03696213ba68491bd228413361183881c45cf4833a0e54dfbe8f8643e"
+    },
+    {
+      "ord": 51,
+      "blockId": "e64ab32a86ec157ad79b82266b1db275",
+      "fp64": "869929dc2c83f871",
+      "normHash": "f359d3f03696213ba68491bd228413361183881c45cf4833a0e54dfbe8f8643e",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "68f3727261046665f498c65a90fa7e68e048dc53941446d1ded55914c30c2e89",
+      "next": "ecd2c1c9fa9e177afbc257d9194156ab641b2da3ae5a68ffe06bd13a8c17d836"
+    },
+    {
+      "ord": 52,
+      "blockId": "5963e57bc0bf3e5dc1b8be842e819628",
+      "fp64": "7fdce4e263d665f6",
+      "normHash": "ecd2c1c9fa9e177afbc257d9194156ab641b2da3ae5a68ffe06bd13a8c17d836",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "f359d3f03696213ba68491bd228413361183881c45cf4833a0e54dfbe8f8643e",
+      "next": "3786189b3ee87396dcf7fdf48f0fac0b73cb0a6d0f0a92a1e498a2a9066df608"
+    },
+    {
+      "ord": 53,
+      "blockId": "3b0446c563538e9cfa4aaef2c8728fdc",
+      "fp64": "4014f8127e0a7b5c",
+      "normHash": "3786189b3ee87396dcf7fdf48f0fac0b73cb0a6d0f0a92a1e498a2a9066df608",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "ecd2c1c9fa9e177afbc257d9194156ab641b2da3ae5a68ffe06bd13a8c17d836",
+      "next": "d0a49026b29ebb4c1486219f017a0c98dbe8f9a5097f8cbb9c7b2b6aebe4408b"
+    },
+    {
+      "ord": 54,
+      "blockId": "78fb40e4ca247acdc470005df451cce3",
+      "fp64": "a49a7f144f977f4f",
+      "normHash": "d0a49026b29ebb4c1486219f017a0c98dbe8f9a5097f8cbb9c7b2b6aebe4408b",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "3786189b3ee87396dcf7fdf48f0fac0b73cb0a6d0f0a92a1e498a2a9066df608",
+      "next": "e35782e89ff502772368948f513852b8d806f70055f48e90bd3659e16222f660"
+    },
+    {
+      "ord": 55,
+      "blockId": "7e959b669c594eee77985c24a775ea31",
+      "fp64": "3c6ce656870269e6",
+      "normHash": "e35782e89ff502772368948f513852b8d806f70055f48e90bd3659e16222f660",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "d0a49026b29ebb4c1486219f017a0c98dbe8f9a5097f8cbb9c7b2b6aebe4408b",
+      "next": "acec524bbdc830c7a8ac6cd938ab1eb105958b3692e30de42572d44a06c7b321"
+    },
+    {
+      "ord": 56,
+      "blockId": "c1822a673dbbf0f8198b4e77c3828dca",
+      "fp64": "6551c49c7770429c",
+      "normHash": "acec524bbdc830c7a8ac6cd938ab1eb105958b3692e30de42572d44a06c7b321",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "e35782e89ff502772368948f513852b8d806f70055f48e90bd3659e16222f660",
+      "next": "10d76e1879a1ef6f2fe39e5c5b89e33e22083ebb14a869c0d2495f87dc134686"
+    },
+    {
+      "ord": 57,
+      "blockId": "3d82792257abc6d5915946123d714f7d",
+      "fp64": "a5ffff9a5a776b7f",
+      "normHash": "10d76e1879a1ef6f2fe39e5c5b89e33e22083ebb14a869c0d2495f87dc134686",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "acec524bbdc830c7a8ac6cd938ab1eb105958b3692e30de42572d44a06c7b321",
+      "next": "d5a9dada11e8a4cdbe689c3c9b5fb089127862a8e86401cb8a3761f5a7365bd6"
+    },
+    {
+      "ord": 58,
+      "blockId": "89cd00a185e0879019e60b7e470155a8",
+      "fp64": "9639f8f5cfae74de",
+      "normHash": "d5a9dada11e8a4cdbe689c3c9b5fb089127862a8e86401cb8a3761f5a7365bd6",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "10d76e1879a1ef6f2fe39e5c5b89e33e22083ebb14a869c0d2495f87dc134686",
+      "next": "189c478500cebcbe427d9f82bea2939963646b1c348e16e5b1d7ca27439c2018"
+    },
+    {
+      "ord": 59,
+      "blockId": "264fd99a8fefbd4d84a799cad76f82e8",
+      "fp64": "d401c0449f7bc218",
+      "normHash": "189c478500cebcbe427d9f82bea2939963646b1c348e16e5b1d7ca27439c2018",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "d5a9dada11e8a4cdbe689c3c9b5fb089127862a8e86401cb8a3761f5a7365bd6",
+      "next": "66d8b27d4cfc46cf748797384cb2808953ad70792a384df4a1460f00424153c1"
+    },
+    {
+      "ord": 60,
+      "blockId": "35fd0fa92cd6d3f5c8236126d5dc16bd",
+      "fp64": "8d1b219276f1f07c",
+      "normHash": "66d8b27d4cfc46cf748797384cb2808953ad70792a384df4a1460f00424153c1",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "189c478500cebcbe427d9f82bea2939963646b1c348e16e5b1d7ca27439c2018",
+      "next": "a181acef972400c92ed3ae51e67ba828b894042089a48611cc161a547d84306a"
+    },
+    {
+      "ord": 61,
+      "blockId": "0dea53f8a8db82b2156de25a62c5bbcd",
+      "fp64": "2ffff3fbdf3f7f7e",
+      "normHash": "a181acef972400c92ed3ae51e67ba828b894042089a48611cc161a547d84306a",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "66d8b27d4cfc46cf748797384cb2808953ad70792a384df4a1460f00424153c1",
+      "next": "681fe9086e65f87a5f999235e71d28f853a0164a7288dcb5423dfd5fbdfcd3d6"
+    },
+    {
+      "ord": 62,
+      "blockId": "abec7a1faf1feb877f7ba962de4a3bfa",
+      "fp64": "64c6e00c0bc1de7c",
+      "normHash": "681fe9086e65f87a5f999235e71d28f853a0164a7288dcb5423dfd5fbdfcd3d6",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "a181acef972400c92ed3ae51e67ba828b894042089a48611cc161a547d84306a",
+      "next": "3f4597a21ea47da00e47efe377516f6a127acbce8c134a8b902002f71dee53fc"
+    },
+    {
+      "ord": 63,
+      "blockId": "6d9611108ec2be70966145e0ec3614f6",
+      "fp64": "e455c0441c7571fc",
+      "normHash": "3f4597a21ea47da00e47efe377516f6a127acbce8c134a8b902002f71dee53fc",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "681fe9086e65f87a5f999235e71d28f853a0164a7288dcb5423dfd5fbdfcd3d6",
+      "next": "9423ff40189fdfbb752421f6e29c24ee883bcc78ba480efa761b76724c849d58"
+    },
+    {
+      "ord": 64,
+      "blockId": "0e59c81dfdd03d8c01604018e84b9631",
+      "fp64": "5ceb10c9a7a39edd",
+      "normHash": "9423ff40189fdfbb752421f6e29c24ee883bcc78ba480efa761b76724c849d58",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "3f4597a21ea47da00e47efe377516f6a127acbce8c134a8b902002f71dee53fc",
+      "next": "b73aa4cdc874f833049801c90b61644752248ba6277e7139cb021ddcc4ca7d5c"
+    },
+    {
+      "ord": 65,
+      "blockId": "dfe4e349e440e81e07c8ad4613d52b7e",
+      "fp64": "afdff7fe5fb37f77",
+      "normHash": "b73aa4cdc874f833049801c90b61644752248ba6277e7139cb021ddcc4ca7d5c",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "9423ff40189fdfbb752421f6e29c24ee883bcc78ba480efa761b76724c849d58",
+      "next": "036e251627a3b26fb79bc1cff79b8daac911bc7b5b9cbd4e3abac01c82f8c28e"
+    },
+    {
+      "ord": 66,
+      "blockId": "355841aa4209b39259e7a21f669301ae",
+      "fp64": "6c12f68d23536f9d",
+      "normHash": "036e251627a3b26fb79bc1cff79b8daac911bc7b5b9cbd4e3abac01c82f8c28e",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "b73aa4cdc874f833049801c90b61644752248ba6277e7139cb021ddcc4ca7d5c",
+      "next": "00bf10a21087a809cfb075c59bf3121689624da292b3febc8cb4fdc406e8708d"
+    },
+    {
+      "ord": 67,
+      "blockId": "fcfede79a4fed4c56f7b2b45d374a19b",
+      "fp64": "e64247cf93724f9f",
+      "normHash": "00bf10a21087a809cfb075c59bf3121689624da292b3febc8cb4fdc406e8708d",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "036e251627a3b26fb79bc1cff79b8daac911bc7b5b9cbd4e3abac01c82f8c28e",
+      "next": "9b709ebd3e1c87b1730738bbb3c8a31e05226da1402188e05bd37c20a131c913"
+    },
+    {
+      "ord": 68,
+      "blockId": "d333603e054e60e90c9321b8dee38a0e",
+      "fp64": "8510a31677e6d074",
+      "normHash": "9b709ebd3e1c87b1730738bbb3c8a31e05226da1402188e05bd37c20a131c913",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "00bf10a21087a809cfb075c59bf3121689624da292b3febc8cb4fdc406e8708d",
+      "next": "f57279e5e08f65b9aa33e6f77c59738fd981675b1d001e1bb7fb0ade4dc7b44e"
+    },
+    {
+      "ord": 69,
+      "blockId": "501943e2b638bc2fde979befcb7fa31d",
+      "fp64": "bdfff3fb7b7175f6",
+      "normHash": "f57279e5e08f65b9aa33e6f77c59738fd981675b1d001e1bb7fb0ade4dc7b44e",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "9b709ebd3e1c87b1730738bbb3c8a31e05226da1402188e05bd37c20a131c913",
+      "next": "4072430cf9e164c76e53c2b0d879179c0de23d4ceeefa671151074a224e418d0"
+    },
+    {
+      "ord": 70,
+      "blockId": "bbdf37dfbd8aa95c02ad1182e8eccd6f",
+      "fp64": "1e54ae7a51fa1394",
+      "normHash": "4072430cf9e164c76e53c2b0d879179c0de23d4ceeefa671151074a224e418d0",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "f57279e5e08f65b9aa33e6f77c59738fd981675b1d001e1bb7fb0ade4dc7b44e",
+      "next": "e60f412a80c68ace7fa67b02d227c55cecd899afc29d919a6a6ba41c731d3e38"
+    },
+    {
+      "ord": 71,
+      "blockId": "02de46ec1d704c84a6aba8d35f3e854b",
+      "fp64": "6f7f63cb8173755c",
+      "normHash": "e60f412a80c68ace7fa67b02d227c55cecd899afc29d919a6a6ba41c731d3e38",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "4072430cf9e164c76e53c2b0d879179c0de23d4ceeefa671151074a224e418d0",
+      "next": "b925a03328e43a10a52a1b42832b551e9f3fa6cab1a6ab3f2091252d6cbfdb19"
+    },
+    {
+      "ord": 72,
+      "blockId": "74f8b91ac1495583710a81ac2ee6a145",
+      "fp64": "6410c507ceb07cb0",
+      "normHash": "b925a03328e43a10a52a1b42832b551e9f3fa6cab1a6ab3f2091252d6cbfdb19",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "e60f412a80c68ace7fa67b02d227c55cecd899afc29d919a6a6ba41c731d3e38",
+      "next": "c08cd48df02782a05d794b9546fe03555da34307f5cc30481c9cbf891f430ea4"
+    },
+    {
+      "ord": 73,
+      "blockId": "e5f56b491a21c8e7c328e657377c5db3",
+      "fp64": "2ddff7df7b79e5b7",
+      "normHash": "c08cd48df02782a05d794b9546fe03555da34307f5cc30481c9cbf891f430ea4",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "b925a03328e43a10a52a1b42832b551e9f3fa6cab1a6ab3f2091252d6cbfdb19",
+      "next": "309028b8a3632a8ffa794a97b2f6b03cac31d17a7ab25bbed7beacc166e920c8"
+    },
+    {
+      "ord": 74,
+      "blockId": "3f7709be6fd2b46163bd47d7b009adfd",
+      "fp64": "6490e0459f63fdf8",
+      "normHash": "309028b8a3632a8ffa794a97b2f6b03cac31d17a7ab25bbed7beacc166e920c8",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "c08cd48df02782a05d794b9546fe03555da34307f5cc30481c9cbf891f430ea4",
+      "next": "635751f8a66fc1aac262d155d2178fd3ee24a78adf1d83c4863d1d0e65f937fe"
+    },
+    {
+      "ord": 75,
+      "blockId": "ca289aa215e03280c8af41d3d4b17cb8",
+      "fp64": "3c541423df735598",
+      "normHash": "635751f8a66fc1aac262d155d2178fd3ee24a78adf1d83c4863d1d0e65f937fe",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "309028b8a3632a8ffa794a97b2f6b03cac31d17a7ab25bbed7beacc166e920c8",
+      "next": "3147c41f22c81b8541a44c0d6a78ed356ac6e0bd8bb2aa2a38875d93f42e1aef"
+    },
+    {
+      "ord": 76,
+      "blockId": "ea0b8334ae5117b517e155292bbb1e1b",
+      "fp64": "7e86f4fdf7a79ca9",
+      "normHash": "3147c41f22c81b8541a44c0d6a78ed356ac6e0bd8bb2aa2a38875d93f42e1aef",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "635751f8a66fc1aac262d155d2178fd3ee24a78adf1d83c4863d1d0e65f937fe",
+      "next": "028a18a09020ba6bff2b0bb28513085d89ced890fcb027892301b68e64f54652"
+    },
+    {
+      "ord": 77,
+      "blockId": "cf5aae03352c499aee51b968c57d5c00",
+      "fp64": "2c55c88bd638ffce",
+      "normHash": "028a18a09020ba6bff2b0bb28513085d89ced890fcb027892301b68e64f54652",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "3147c41f22c81b8541a44c0d6a78ed356ac6e0bd8bb2aa2a38875d93f42e1aef",
+      "next": "04142be2d5a38482d56701e5d86d5c08bafd5001df191019c6a8bcd8f816303e"
+    },
+    {
+      "ord": 78,
+      "blockId": "613c7e53eec2f600c0f280026aa9f791",
+      "fp64": "1604d4729d66597d",
+      "normHash": "04142be2d5a38482d56701e5d86d5c08bafd5001df191019c6a8bcd8f816303e",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "028a18a09020ba6bff2b0bb28513085d89ced890fcb027892301b68e64f54652",
+      "next": "a8cbc59ca3c6605d7af7de54757000521d42f6425ff21e841d7980cd2ba0a979"
+    },
+    {
+      "ord": 79,
+      "blockId": "b29e2649a2c1c0dace170051913b372f",
+      "fp64": "66eb66b6db326f07",
+      "normHash": "a8cbc59ca3c6605d7af7de54757000521d42f6425ff21e841d7980cd2ba0a979",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "04142be2d5a38482d56701e5d86d5c08bafd5001df191019c6a8bcd8f816303e",
+      "next": "0516e251ec96bafda2747e69ea3f55e59a1298a8f0722685ea476a4f2cfc8bea"
+    },
+    {
+      "ord": 80,
+      "blockId": "a72ba574dadeb403eaecb116766b4770",
+      "fp64": "77ffff9efa7bfc7f",
+      "normHash": "0516e251ec96bafda2747e69ea3f55e59a1298a8f0722685ea476a4f2cfc8bea",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "a8cbc59ca3c6605d7af7de54757000521d42f6425ff21e841d7980cd2ba0a979",
+      "next": "dbf9fa95cbd057af795bb5635ad52df4a7d9aa476c592d19500c55e909b4c6f6"
+    },
+    {
+      "ord": 81,
+      "blockId": "6818dc9beb0425bba5d4ae78ed3782b2",
+      "fp64": "5e7a887b1f445df8",
+      "normHash": "dbf9fa95cbd057af795bb5635ad52df4a7d9aa476c592d19500c55e909b4c6f6",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "0516e251ec96bafda2747e69ea3f55e59a1298a8f0722685ea476a4f2cfc8bea",
+      "next": "2ab029640d0d4db368c048d36be6c59a5ae8545d4205df7e2b6173bbc905b96c"
+    },
+    {
+      "ord": 82,
+      "blockId": "09a79d3ed5e378090c828e5651c1d3ed",
+      "fp64": "77dff39fdf716677",
+      "normHash": "2ab029640d0d4db368c048d36be6c59a5ae8545d4205df7e2b6173bbc905b96c",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "dbf9fa95cbd057af795bb5635ad52df4a7d9aa476c592d19500c55e909b4c6f6",
+      "next": "28edc9b6814023db31315da6ebe6f632e7ca2a66889ee70952b359570bbebda7"
+    },
+    {
+      "ord": 83,
+      "blockId": "6f8dd53c71f3d06eb17abb12dd33194e",
+      "fp64": "2b494a7289661976",
+      "normHash": "28edc9b6814023db31315da6ebe6f632e7ca2a66889ee70952b359570bbebda7",
+      "kind": "h2",
+      "chapter": "الباب-الثاني-في-بيان-وجوب-اتباعهم-والحث-على-لزوم-مذهبهم-وسلوك-سبيلهم-وبيان-ذلك-م",
+      "prev": "2ab029640d0d4db368c048d36be6c59a5ae8545d4205df7e2b6173bbc905b96c",
+      "next": "a8e76b11ee71b1798111868b8c789064ca2d72cb321084f27561ac45753b6bcc"
+    },
+    {
+      "ord": 84,
+      "blockId": "9263de31536835999828349e98a6bdba",
+      "fp64": "6d00e0df97e6bd6c",
+      "normHash": "a8e76b11ee71b1798111868b8c789064ca2d72cb321084f27561ac45753b6bcc",
+      "kind": "p",
+      "chapter": "الباب-الثاني-في-بيان-وجوب-اتباعهم-والحث-على-لزوم-مذهبهم-وسلوك-سبيلهم-وبيان-ذلك-م",
+      "prev": "28edc9b6814023db31315da6ebe6f632e7ca2a66889ee70952b359570bbebda7",
+      "next": "39bc38ace726a18a17b217112c343bb0dca4e3cd00bd31c1503b8eacba91dc09"
+    },
+    {
+      "ord": 85,
+      "blockId": "e98899de23418d0b150bd96ce6e95716",
+      "fp64": "f4c6812e8d6ee779",
+      "normHash": "39bc38ace726a18a17b217112c343bb0dca4e3cd00bd31c1503b8eacba91dc09",
+      "kind": "p",
+      "chapter": "الباب-الثاني-في-بيان-وجوب-اتباعهم-والحث-على-لزوم-مذهبهم-وسلوك-سبيلهم-وبيان-ذلك-م",
+      "prev": "a8e76b11ee71b1798111868b8c789064ca2d72cb321084f27561ac45753b6bcc",
+      "next": "082c38b478c34eb7fe072b756c129a3014d32e6aa15f411315bf9047977f637f"
+    },
+    {
+      "ord": 86,
+      "blockId": "7718b8054b09a34536e737a1f1cef81e",
+      "fp64": "b2d6a4449d67517c",
+      "normHash": "082c38b478c34eb7fe072b756c129a3014d32e6aa15f411315bf9047977f637f",
+      "kind": "p",
+      "chapter": "الباب-الثاني-في-بيان-وجوب-اتباعهم-والحث-على-لزوم-مذهبهم-وسلوك-سبيلهم-وبيان-ذلك-م",
+      "prev": "39bc38ace726a18a17b217112c343bb0dca4e3cd00bd31c1503b8eacba91dc09",
+      "next": "1b812f1da0256532b54fe37b737551313292597646cd399cd89855624c1fd078"
+    },
+    {
+      "ord": 87,
+      "blockId": "b7d3e0626a7f6890602946c8c6619748",
+      "fp64": "f7ffffdf5eb7e17f",
+      "normHash": "1b812f1da0256532b54fe37b737551313292597646cd399cd89855624c1fd078",
+      "kind": "page",
+      "chapter": "الباب-الثاني-في-بيان-وجوب-اتباعهم-والحث-على-لزوم-مذهبهم-وسلوك-سبيلهم-وبيان-ذلك-م",
+      "prev": "082c38b478c34eb7fe072b756c129a3014d32e6aa15f411315bf9047977f637f",
+      "next": "e80a5adba9ff8c7dec5861152002f464da0877358c0ec46ada87babecd2a643e"
+    },
+    {
+      "ord": 88,
+      "blockId": "9aa2f4f310693a11615590948ed5c66f",
+      "fp64": "6410645787243dce",
+      "normHash": "e80a5adba9ff8c7dec5861152002f464da0877358c0ec46ada87babecd2a643e",
+      "kind": "p",
+      "chapter": "الباب-الثاني-في-بيان-وجوب-اتباعهم-والحث-على-لزوم-مذهبهم-وسلوك-سبيلهم-وبيان-ذلك-م",
+      "prev": "1b812f1da0256532b54fe37b737551313292597646cd399cd89855624c1fd078",
+      "next": "8b61b7e446523144124f8d83e618e60247fb7d4d00f95cd1548b8a9d51a13c50"
+    },
+    {
+      "ord": 89,
+      "blockId": "66b3f8261681846895672db7eb715c75",
+      "fp64": "7f4ee056d5567d7c",
+      "normHash": "8b61b7e446523144124f8d83e618e60247fb7d4d00f95cd1548b8a9d51a13c50",
+      "kind": "p",
+      "chapter": "الباب-الثاني-في-بيان-وجوب-اتباعهم-والحث-على-لزوم-مذهبهم-وسلوك-سبيلهم-وبيان-ذلك-م",
+      "prev": "e80a5adba9ff8c7dec5861152002f464da0877358c0ec46ada87babecd2a643e",
+      "next": "e34c2494ff5cbdc924c6f860aefa5fea954590d966f699776c74c1bbfdda3b6b"
+    },
+    {
+      "ord": 90,
+      "blockId": "a877aeaebff14f6ea7aa3cc792b03ebd",
+      "fp64": "b5fff3fefa7b7337",
+      "normHash": "e34c2494ff5cbdc924c6f860aefa5fea954590d966f699776c74c1bbfdda3b6b",
+      "kind": "page",
+      "chapter": "الباب-الثاني-في-بيان-وجوب-اتباعهم-والحث-على-لزوم-مذهبهم-وسلوك-سبيلهم-وبيان-ذلك-م",
+      "prev": "8b61b7e446523144124f8d83e618e60247fb7d4d00f95cd1548b8a9d51a13c50",
+      "next": "3603456c43ba18412d252f68eeefeda065c7bd1513322b47a204defd07ca498c"
+    },
+    {
+      "ord": 91,
+      "blockId": "87d71916ca4d0c6c10675580c87d3d58",
+      "fp64": "a545c0568f3c71fc",
+      "normHash": "3603456c43ba18412d252f68eeefeda065c7bd1513322b47a204defd07ca498c",
+      "kind": "p",
+      "chapter": "الباب-الثاني-في-بيان-وجوب-اتباعهم-والحث-على-لزوم-مذهبهم-وسلوك-سبيلهم-وبيان-ذلك-م",
+      "prev": "e34c2494ff5cbdc924c6f860aefa5fea954590d966f699776c74c1bbfdda3b6b",
+      "next": "87f95fbfff24dc7631ebe445aa95e962a608df7decd3e0422f1f72be714ceed1"
+    },
+    {
+      "ord": 92,
+      "blockId": "ceeb81d43782b2360f89d1bc901a615c",
+      "fp64": "3e44ea531f6c73f4",
+      "normHash": "87f95fbfff24dc7631ebe445aa95e962a608df7decd3e0422f1f72be714ceed1",
+      "kind": "p",
+      "chapter": "الباب-الثاني-في-بيان-وجوب-اتباعهم-والحث-على-لزوم-مذهبهم-وسلوك-سبيلهم-وبيان-ذلك-م",
+      "prev": "3603456c43ba18412d252f68eeefeda065c7bd1513322b47a204defd07ca498c",
+      "next": "6f7edc517626f122032ed5218fd9e483b3a1ba7391fa9251b7da41dda6b353e4"
+    },
+    {
+      "ord": 93,
+      "blockId": "d67c6f7b9ef459929b153c712749418a",
+      "fp64": "f490c03e8755b176",
+      "normHash": "6f7edc517626f122032ed5218fd9e483b3a1ba7391fa9251b7da41dda6b353e4",
+      "kind": "p",
+      "chapter": "الباب-الثاني-في-بيان-وجوب-اتباعهم-والحث-على-لزوم-مذهبهم-وسلوك-سبيلهم-وبيان-ذلك-م",
+      "prev": "87f95fbfff24dc7631ebe445aa95e962a608df7decd3e0422f1f72be714ceed1",
+      "next": "c1dfbde875533651cb943672e85be45afedcf5c643bae2c8c2de5daae77e0cc9"
+    },
+    {
+      "ord": 94,
+      "blockId": "027c35b15ecbd15f986106d460ce4145",
+      "fp64": "6410c09612e4d47c",
+      "normHash": "c1dfbde875533651cb943672e85be45afedcf5c643bae2c8c2de5daae77e0cc9",
+      "kind": "p",
+      "chapter": "الباب-الثاني-في-بيان-وجوب-اتباعهم-والحث-على-لزوم-مذهبهم-وسلوك-سبيلهم-وبيان-ذلك-م",
+      "prev": "6f7edc517626f122032ed5218fd9e483b3a1ba7391fa9251b7da41dda6b353e4",
+      "next": "21f9c20f4e83572f264bf3be8f944f198e85a4861ab0d298f36d08d44149d424"
+    },
+    {
+      "ord": 95,
+      "blockId": "34754b529d7408bf7899f214155f8715",
+      "fp64": "ffdfff9edf716b76",
+      "normHash": "21f9c20f4e83572f264bf3be8f944f198e85a4861ab0d298f36d08d44149d424",
+      "kind": "page",
+      "chapter": "الباب-الثاني-في-بيان-وجوب-اتباعهم-والحث-على-لزوم-مذهبهم-وسلوك-سبيلهم-وبيان-ذلك-م",
+      "prev": "c1dfbde875533651cb943672e85be45afedcf5c643bae2c8c2de5daae77e0cc9",
+      "next": "c3643f7c8b5d9897732a450bb0504282c744e801ea009707ae845c22835f4f1e"
+    },
+    {
+      "ord": 96,
+      "blockId": "374ecb374fe0fa19d57fb6d23dbc7a9f",
+      "fp64": "f4b186fcfca45cbf",
+      "normHash": "c3643f7c8b5d9897732a450bb0504282c744e801ea009707ae845c22835f4f1e",
+      "kind": "p",
+      "chapter": "الباب-الثاني-في-بيان-وجوب-اتباعهم-والحث-على-لزوم-مذهبهم-وسلوك-سبيلهم-وبيان-ذلك-م",
+      "prev": "21f9c20f4e83572f264bf3be8f944f198e85a4861ab0d298f36d08d44149d424",
+      "next": "41ae3c84c3db78a3dea128fd2ae5333f3874fdf2bb8ad3b6ceff5830a14c882f"
+    },
+    {
+      "ord": 97,
+      "blockId": "f79c47ee17542dd6ab131c5a2f1384ea",
+      "fp64": "e79356fcb76b2ade",
+      "normHash": "41ae3c84c3db78a3dea128fd2ae5333f3874fdf2bb8ad3b6ceff5830a14c882f",
+      "kind": "p",
+      "chapter": "الباب-الثاني-في-بيان-وجوب-اتباعهم-والحث-على-لزوم-مذهبهم-وسلوك-سبيلهم-وبيان-ذلك-م",
+      "prev": "c3643f7c8b5d9897732a450bb0504282c744e801ea009707ae845c22835f4f1e",
+      "next": "e96879150f7bdb41ca0d7ae12ab52a51dfd75c180c92fa6d52ccaa925019a55a"
+    },
+    {
+      "ord": 98,
+      "blockId": "8058503f50d58a657c3041a1c319acaa",
+      "fp64": "f8f4e0169c80ddf8",
+      "normHash": "e96879150f7bdb41ca0d7ae12ab52a51dfd75c180c92fa6d52ccaa925019a55a",
+      "kind": "p",
+      "chapter": "الباب-الثاني-في-بيان-وجوب-اتباعهم-والحث-على-لزوم-مذهبهم-وسلوك-سبيلهم-وبيان-ذلك-م",
+      "prev": "41ae3c84c3db78a3dea128fd2ae5333f3874fdf2bb8ad3b6ceff5830a14c882f",
+      "next": "93ac6ff20ad2e30f4768bbdbf3ed4c0e7de66560585808b22134ca8356f4568c"
+    },
+    {
+      "ord": 99,
+      "blockId": "4410d425d2d4fa1ef97601b500769a89",
+      "fp64": "edcb4477867738df",
+      "normHash": "93ac6ff20ad2e30f4768bbdbf3ed4c0e7de66560585808b22134ca8356f4568c",
+      "kind": "p",
+      "chapter": "الباب-الثاني-في-بيان-وجوب-اتباعهم-والحث-على-لزوم-مذهبهم-وسلوك-سبيلهم-وبيان-ذلك-م",
+      "prev": "e96879150f7bdb41ca0d7ae12ab52a51dfd75c180c92fa6d52ccaa925019a55a",
+      "next": "a368891ef9a262987f7b742c364d62cb1d7d4e6cde5b779d8435f58d0237e27a"
+    },
+    {
+      "ord": 100,
+      "blockId": "26955430c848ecea3ded8130815e1358",
+      "fp64": "7ffffbbafa337eff",
+      "normHash": "a368891ef9a262987f7b742c364d62cb1d7d4e6cde5b779d8435f58d0237e27a",
+      "kind": "page",
+      "chapter": "الباب-الثاني-في-بيان-وجوب-اتباعهم-والحث-على-لزوم-مذهبهم-وسلوك-سبيلهم-وبيان-ذلك-م",
+      "prev": "93ac6ff20ad2e30f4768bbdbf3ed4c0e7de66560585808b22134ca8356f4568c",
+      "next": "69f91218bd3492da6c13a61d94bccf63f46ba95082d88d403a7a8fc1a15fd4f8"
+    },
+    {
+      "ord": 101,
+      "blockId": "c6ff1824daecb16a18d8b2ff989f592b",
+      "fp64": "b775805195b47cbe",
+      "normHash": "69f91218bd3492da6c13a61d94bccf63f46ba95082d88d403a7a8fc1a15fd4f8",
+      "kind": "p",
+      "chapter": "الباب-الثاني-في-بيان-وجوب-اتباعهم-والحث-على-لزوم-مذهبهم-وسلوك-سبيلهم-وبيان-ذلك-م",
+      "prev": "a368891ef9a262987f7b742c364d62cb1d7d4e6cde5b779d8435f58d0237e27a",
+      "next": "38cbac384c85a8d99c1e346f78d6f7556780b0e1c6391254f31e625c78b92b3f"
+    },
+    {
+      "ord": 102,
+      "blockId": "6d07edc4ee92017f377336ba61119a4a",
+      "fp64": "b5778056b33e71fe",
+      "normHash": "38cbac384c85a8d99c1e346f78d6f7556780b0e1c6391254f31e625c78b92b3f",
+      "kind": "p",
+      "chapter": "الباب-الثاني-في-بيان-وجوب-اتباعهم-والحث-على-لزوم-مذهبهم-وسلوك-سبيلهم-وبيان-ذلك-م",
+      "prev": "69f91218bd3492da6c13a61d94bccf63f46ba95082d88d403a7a8fc1a15fd4f8",
+      "next": "2a454e7c4e4d9b7b27cc75e062b80f4b6143455cfe9d54649429da35006ab234"
+    },
+    {
+      "ord": 103,
+      "blockId": "e400e07ab454e503ee49389053edbdd9",
+      "fp64": "3fafc47cac4d560a",
+      "normHash": "2a454e7c4e4d9b7b27cc75e062b80f4b6143455cfe9d54649429da35006ab234",
+      "kind": "p",
+      "chapter": "الباب-الثاني-في-بيان-وجوب-اتباعهم-والحث-على-لزوم-مذهبهم-وسلوك-سبيلهم-وبيان-ذلك-م",
+      "prev": "38cbac384c85a8d99c1e346f78d6f7556780b0e1c6391254f31e625c78b92b3f",
+      "next": "ac7e367587d2dadc1429e81fdd3e8a17d96593243c341e53d3b9a683fbe30890"
+    },
+    {
+      "ord": 104,
+      "blockId": "468ebb0d1f39665dc1b32c640350cff8",
+      "fp64": "8796c9f8d64b77fd",
+      "normHash": "ac7e367587d2dadc1429e81fdd3e8a17d96593243c341e53d3b9a683fbe30890",
+      "kind": "p",
+      "chapter": "الباب-الثاني-في-بيان-وجوب-اتباعهم-والحث-على-لزوم-مذهبهم-وسلوك-سبيلهم-وبيان-ذلك-م",
+      "prev": "2a454e7c4e4d9b7b27cc75e062b80f4b6143455cfe9d54649429da35006ab234",
+      "next": "6821830eef89cf5b53de34eba9776f9e97ae53ce0bd5d5d70a513d9a8714c497"
+    },
+    {
+      "ord": 105,
+      "blockId": "aadeeb0a83e1633c9a63d9a38d2135ba",
+      "fp64": "f8546351cba645d0",
+      "normHash": "6821830eef89cf5b53de34eba9776f9e97ae53ce0bd5d5d70a513d9a8714c497",
+      "kind": "p",
+      "chapter": "الباب-الثاني-في-بيان-وجوب-اتباعهم-والحث-على-لزوم-مذهبهم-وسلوك-سبيلهم-وبيان-ذلك-م",
+      "prev": "ac7e367587d2dadc1429e81fdd3e8a17d96593243c341e53d3b9a683fbe30890",
+      "next": "e787f2e0d4f0f35e056dccc815af2de911e7c3c49eeda32cbbf989e9845a9929"
+    },
+    {
+      "ord": 106,
+      "blockId": "1d27b66791af75bf341610cd4118648d",
+      "fp64": "b5fff39e5abdfcf6",
+      "normHash": "e787f2e0d4f0f35e056dccc815af2de911e7c3c49eeda32cbbf989e9845a9929",
+      "kind": "page",
+      "chapter": "الباب-الثاني-في-بيان-وجوب-اتباعهم-والحث-على-لزوم-مذهبهم-وسلوك-سبيلهم-وبيان-ذلك-م",
+      "prev": "6821830eef89cf5b53de34eba9776f9e97ae53ce0bd5d5d70a513d9a8714c497",
+      "next": "f17b0244efbefa74fa957ff7c79a440711fb15772904ffc1b9a36795db0a6c57"
+    },
+    {
+      "ord": 107,
+      "blockId": "1188ae795929411b0c34d63d1318e714",
+      "fp64": "24d8985d96461765",
+      "normHash": "f17b0244efbefa74fa957ff7c79a440711fb15772904ffc1b9a36795db0a6c57",
+      "kind": "p",
+      "chapter": "الباب-الثاني-في-بيان-وجوب-اتباعهم-والحث-على-لزوم-مذهبهم-وسلوك-سبيلهم-وبيان-ذلك-م",
+      "prev": "e787f2e0d4f0f35e056dccc815af2de911e7c3c49eeda32cbbf989e9845a9929",
+      "next": "7697d1eddf8ba3f01dae2b0e99c576ca0c9e8e64bd543c7931428aaf4859bb83"
+    },
+    {
+      "ord": 108,
+      "blockId": "3088625669dbecee6c639d86e1f425d9",
+      "fp64": "85f0e01cc774b474",
+      "normHash": "7697d1eddf8ba3f01dae2b0e99c576ca0c9e8e64bd543c7931428aaf4859bb83",
+      "kind": "p",
+      "chapter": "الباب-الثاني-في-بيان-وجوب-اتباعهم-والحث-على-لزوم-مذهبهم-وسلوك-سبيلهم-وبيان-ذلك-م",
+      "prev": "f17b0244efbefa74fa957ff7c79a440711fb15772904ffc1b9a36795db0a6c57",
+      "next": "1f5c95dd181fafab5ad8c3809f93d70ab61f027b931d166084ec5a22acdf12cc"
+    },
+    {
+      "ord": 109,
+      "blockId": "3a25f1ad7858a5bbac2a078ccef4f091",
+      "fp64": "35dffb9e5fbdf3f6",
+      "normHash": "1f5c95dd181fafab5ad8c3809f93d70ab61f027b931d166084ec5a22acdf12cc",
+      "kind": "page",
+      "chapter": "الباب-الثاني-في-بيان-وجوب-اتباعهم-والحث-على-لزوم-مذهبهم-وسلوك-سبيلهم-وبيان-ذلك-م",
+      "prev": "7697d1eddf8ba3f01dae2b0e99c576ca0c9e8e64bd543c7931428aaf4859bb83",
+      "next": "69af4353ef8c32c67b2b6d137f7bb44e3c78d2d6e09343d601098bfe56109c8f"
+    },
+    {
+      "ord": 110,
+      "blockId": "5c33a70627c8c05583be85da6bc00a2a",
+      "fp64": "859804ba57f3f875",
+      "normHash": "69af4353ef8c32c67b2b6d137f7bb44e3c78d2d6e09343d601098bfe56109c8f",
+      "kind": "p",
+      "chapter": "الباب-الثاني-في-بيان-وجوب-اتباعهم-والحث-على-لزوم-مذهبهم-وسلوك-سبيلهم-وبيان-ذلك-م",
+      "prev": "1f5c95dd181fafab5ad8c3809f93d70ab61f027b931d166084ec5a22acdf12cc",
+      "next": "8815332cd9aad5c86bc49b606de1119f2293a9cf111da4db6de7121bf1fa3cac"
+    },
+    {
+      "ord": 111,
+      "blockId": "4b442f2f6feb66b3d3a4fe7b45f19c55",
+      "fp64": "95b3743bcf501f7e",
+      "normHash": "8815332cd9aad5c86bc49b606de1119f2293a9cf111da4db6de7121bf1fa3cac",
+      "kind": "p",
+      "chapter": "الباب-الثاني-في-بيان-وجوب-اتباعهم-والحث-على-لزوم-مذهبهم-وسلوك-سبيلهم-وبيان-ذلك-م",
+      "prev": "69af4353ef8c32c67b2b6d137f7bb44e3c78d2d6e09343d601098bfe56109c8f",
+      "next": "12f809e111e594937645bd292d179f0ca06628f38c7efcd4ce697fa0e1dbe55d"
+    },
+    {
+      "ord": 112,
+      "blockId": "307f5326fde3f41898b283b12f505d5b",
+      "fp64": "3c44c49f322d132e",
+      "normHash": "12f809e111e594937645bd292d179f0ca06628f38c7efcd4ce697fa0e1dbe55d",
+      "kind": "p",
+      "chapter": "الباب-الثاني-في-بيان-وجوب-اتباعهم-والحث-على-لزوم-مذهبهم-وسلوك-سبيلهم-وبيان-ذلك-م",
+      "prev": "8815332cd9aad5c86bc49b606de1119f2293a9cf111da4db6de7121bf1fa3cac",
+      "next": "9e1cd78dc6a88ffd4316454e5ce990e606148e9ba10a8434d12b9bdca1c62f11"
+    },
+    {
+      "ord": 113,
+      "blockId": "248a2ac8255248fa28d31dba695230f1",
+      "fp64": "747ea55f8f6f77fd",
+      "normHash": "9e1cd78dc6a88ffd4316454e5ce990e606148e9ba10a8434d12b9bdca1c62f11",
+      "kind": "p",
+      "chapter": "الباب-الثاني-في-بيان-وجوب-اتباعهم-والحث-على-لزوم-مذهبهم-وسلوك-سبيلهم-وبيان-ذلك-م",
+      "prev": "12f809e111e594937645bd292d179f0ca06628f38c7efcd4ce697fa0e1dbe55d",
+      "next": "09bf9f04dc06962ec13915a1ea92c93b18d477414280dac024b8e81ec88e99a6"
+    },
+    {
+      "ord": 114,
+      "blockId": "acb63b570f08429a035046c38d2323d0",
+      "fp64": "7d93c0d02642db7f",
+      "normHash": "09bf9f04dc06962ec13915a1ea92c93b18d477414280dac024b8e81ec88e99a6",
+      "kind": "p",
+      "chapter": "الباب-الثاني-في-بيان-وجوب-اتباعهم-والحث-على-لزوم-مذهبهم-وسلوك-سبيلهم-وبيان-ذلك-م",
+      "prev": "9e1cd78dc6a88ffd4316454e5ce990e606148e9ba10a8434d12b9bdca1c62f11",
+      "next": "57f37e4170198b51df43f9f91c1da5ed25f7173762cf30cc3c502d5a79916044"
+    },
+    {
+      "ord": 115,
+      "blockId": "ed842f8c379b4329e0272f6607d72a13",
+      "fp64": "35fff7ff5b31e5b6",
+      "normHash": "57f37e4170198b51df43f9f91c1da5ed25f7173762cf30cc3c502d5a79916044",
+      "kind": "page",
+      "chapter": "الباب-الثاني-في-بيان-وجوب-اتباعهم-والحث-على-لزوم-مذهبهم-وسلوك-سبيلهم-وبيان-ذلك-م",
+      "prev": "09bf9f04dc06962ec13915a1ea92c93b18d477414280dac024b8e81ec88e99a6",
+      "next": "746b1b2d7bd6c58f316c466f6ddee2488f2afd381edb740ff458daec6fca3f7f"
+    },
+    {
+      "ord": 116,
+      "blockId": "385abb7b8073881cf7a96f5b8d23955f",
+      "fp64": "fa76a4409e3a4911",
+      "normHash": "746b1b2d7bd6c58f316c466f6ddee2488f2afd381edb740ff458daec6fca3f7f",
+      "kind": "p",
+      "chapter": "الباب-الثاني-في-بيان-وجوب-اتباعهم-والحث-على-لزوم-مذهبهم-وسلوك-سبيلهم-وبيان-ذلك-م",
+      "prev": "57f37e4170198b51df43f9f91c1da5ed25f7173762cf30cc3c502d5a79916044",
+      "next": "0b778384b12fac84f3d90c71dca9746181fa4eb5b89dae32d6cb8da7512e8049"
+    },
+    {
+      "ord": 117,
+      "blockId": "4284474ca880ed5b0264fe9cb7fc15ee",
+      "fp64": "765080429f127df8",
+      "normHash": "0b778384b12fac84f3d90c71dca9746181fa4eb5b89dae32d6cb8da7512e8049",
+      "kind": "p",
+      "chapter": "الباب-الثاني-في-بيان-وجوب-اتباعهم-والحث-على-لزوم-مذهبهم-وسلوك-سبيلهم-وبيان-ذلك-م",
+      "prev": "746b1b2d7bd6c58f316c466f6ddee2488f2afd381edb740ff458daec6fca3f7f",
+      "next": "8bdfd64f297cb4f46a40fb573a4ddedb248ee4a29471671507327f8356aee87e"
+    },
+    {
+      "ord": 118,
+      "blockId": "354782af21ad2eb892863131c1c527fe",
+      "fp64": "35dff7fa5a3374bf",
+      "normHash": "8bdfd64f297cb4f46a40fb573a4ddedb248ee4a29471671507327f8356aee87e",
+      "kind": "page",
+      "chapter": "الباب-الثاني-في-بيان-وجوب-اتباعهم-والحث-على-لزوم-مذهبهم-وسلوك-سبيلهم-وبيان-ذلك-م",
+      "prev": "0b778384b12fac84f3d90c71dca9746181fa4eb5b89dae32d6cb8da7512e8049",
+      "next": "5ca1a10aece3926b063245eb7482b4ba9baf56ffd94c43c2c657035a6b9c30f8"
+    },
+    {
+      "ord": 119,
+      "blockId": "381199f6461f63f432bc7acc16017b54",
+      "fp64": "e40dc546623c7fb9",
+      "normHash": "5ca1a10aece3926b063245eb7482b4ba9baf56ffd94c43c2c657035a6b9c30f8",
+      "kind": "p",
+      "chapter": "الباب-الثاني-في-بيان-وجوب-اتباعهم-والحث-على-لزوم-مذهبهم-وسلوك-سبيلهم-وبيان-ذلك-م",
+      "prev": "8bdfd64f297cb4f46a40fb573a4ddedb248ee4a29471671507327f8356aee87e",
+      "next": "29eae3e7cbf6af90dd0be6a2d2bc0f2fb87fdf7fc2e7bc1f29cbf98018991151"
+    },
+    {
+      "ord": 120,
+      "blockId": "d2f61121d259060601971e612435e478",
+      "fp64": "eddff3dadf39e576",
+      "normHash": "29eae3e7cbf6af90dd0be6a2d2bc0f2fb87fdf7fc2e7bc1f29cbf98018991151",
+      "kind": "page",
+      "chapter": "الباب-الثاني-في-بيان-وجوب-اتباعهم-والحث-على-لزوم-مذهبهم-وسلوك-سبيلهم-وبيان-ذلك-م",
+      "prev": "5ca1a10aece3926b063245eb7482b4ba9baf56ffd94c43c2c657035a6b9c30f8",
+      "next": "a890e0427afe6a0217eb43676fd626fb826f2cefebe97352a60b962714c962c7"
+    },
+    {
+      "ord": 121,
+      "blockId": "2dfd53ac1a0bd76500325644807b1e02",
+      "fp64": "6295c975df303eff",
+      "normHash": "a890e0427afe6a0217eb43676fd626fb826f2cefebe97352a60b962714c962c7",
+      "kind": "h2",
+      "chapter": "الباب-الثالث-في-بيان-أن-الصواب-ما-ذهب-إليه-السلف-رحمة-الله-عليهم-بالأدلة-الجلية",
+      "prev": "29eae3e7cbf6af90dd0be6a2d2bc0f2fb87fdf7fc2e7bc1f29cbf98018991151",
+      "next": "a27466991fa9d18ff1534d685f81fc84b7f5d58b25caf35d07c98489f3d2782d"
+    },
+    {
+      "ord": 122,
+      "blockId": "19bd3838d4e65a95fbc458d259d04cbc",
+      "fp64": "9d55741a91777656",
+      "normHash": "a27466991fa9d18ff1534d685f81fc84b7f5d58b25caf35d07c98489f3d2782d",
+      "kind": "p",
+      "chapter": "الباب-الثالث-في-بيان-أن-الصواب-ما-ذهب-إليه-السلف-رحمة-الله-عليهم-بالأدلة-الجلية",
+      "prev": "a890e0427afe6a0217eb43676fd626fb826f2cefebe97352a60b962714c962c7",
+      "next": "c7bd6e6857f8d129a76344fa6212f0a7f62f79ddb148154ac4e953ed0e888899"
+    },
+    {
+      "ord": 123,
+      "blockId": "0ec9f87a9d5c93738bb8b47ce4fa1402",
+      "fp64": "f36220841f623dee",
+      "normHash": "c7bd6e6857f8d129a76344fa6212f0a7f62f79ddb148154ac4e953ed0e888899",
+      "kind": "p",
+      "chapter": "الباب-الثالث-في-بيان-أن-الصواب-ما-ذهب-إليه-السلف-رحمة-الله-عليهم-بالأدلة-الجلية",
+      "prev": "a27466991fa9d18ff1534d685f81fc84b7f5d58b25caf35d07c98489f3d2782d",
+      "next": "6ac48c153eb697439492613633c667c30833b33dad8defcc2b294220e6325c75"
+    },
+    {
+      "ord": 124,
+      "blockId": "cbd3c50c12abdc7632a7f23eec671e6c",
+      "fp64": "ae6e6013137c553c",
+      "normHash": "6ac48c153eb697439492613633c667c30833b33dad8defcc2b294220e6325c75",
+      "kind": "p",
+      "chapter": "الباب-الثالث-في-بيان-أن-الصواب-ما-ذهب-إليه-السلف-رحمة-الله-عليهم-بالأدلة-الجلية",
+      "prev": "c7bd6e6857f8d129a76344fa6212f0a7f62f79ddb148154ac4e953ed0e888899",
+      "next": "4bbbeca6742f12c299ee9874c27e783f7f3f2b0b40fb7eff785b2d2e7693ddd5"
+    },
+    {
+      "ord": 125,
+      "blockId": "ed1a4f33270f06d2bf0f95eb66016e51",
+      "fp64": "afffff9b7fb5617e",
+      "normHash": "4bbbeca6742f12c299ee9874c27e783f7f3f2b0b40fb7eff785b2d2e7693ddd5",
+      "kind": "page",
+      "chapter": "الباب-الثالث-في-بيان-أن-الصواب-ما-ذهب-إليه-السلف-رحمة-الله-عليهم-بالأدلة-الجلية",
+      "prev": "6ac48c153eb697439492613633c667c30833b33dad8defcc2b294220e6325c75",
+      "next": "0251a77a46ebef305b173d258cff8c8d4330b7fc9670d06077d95ec72a711e96"
+    },
+    {
+      "ord": 126,
+      "blockId": "59197a9cbbb7e2c4f95710d82c701e11",
+      "fp64": "3bce6fff73f77294",
+      "normHash": "0251a77a46ebef305b173d258cff8c8d4330b7fc9670d06077d95ec72a711e96",
+      "kind": "p",
+      "chapter": "الباب-الثالث-في-بيان-أن-الصواب-ما-ذهب-إليه-السلف-رحمة-الله-عليهم-بالأدلة-الجلية",
+      "prev": "4bbbeca6742f12c299ee9874c27e783f7f3f2b0b40fb7eff785b2d2e7693ddd5",
+      "next": "47262daba0e8357c7b83c27d777204a6fd28a1b33e0bc8e379b9fe11e1c32dbc"
+    },
+    {
+      "ord": 127,
+      "blockId": "0d62be87b2d80265fbea3124ebf8913c",
+      "fp64": "ddca345187465e78",
+      "normHash": "47262daba0e8357c7b83c27d777204a6fd28a1b33e0bc8e379b9fe11e1c32dbc",
+      "kind": "p",
+      "chapter": "الباب-الثالث-في-بيان-أن-الصواب-ما-ذهب-إليه-السلف-رحمة-الله-عليهم-بالأدلة-الجلية",
+      "prev": "0251a77a46ebef305b173d258cff8c8d4330b7fc9670d06077d95ec72a711e96",
+      "next": "954e20309dd82624afd98d608b455b442d4f3d27c147e9e8b634f319734c258c"
+    },
+    {
+      "ord": 128,
+      "blockId": "0b28867426660de62ce95e3951f329cb",
+      "fp64": "e46efc51df601e1c",
+      "normHash": "954e20309dd82624afd98d608b455b442d4f3d27c147e9e8b634f319734c258c",
+      "kind": "p",
+      "chapter": "الباب-الثالث-في-بيان-أن-الصواب-ما-ذهب-إليه-السلف-رحمة-الله-عليهم-بالأدلة-الجلية",
+      "prev": "47262daba0e8357c7b83c27d777204a6fd28a1b33e0bc8e379b9fe11e1c32dbc",
+      "next": "7ad336df115a99f38effaeef6df23138b88fed2a026165a8cfcadb04bedff5ca"
+    },
+    {
+      "ord": 129,
+      "blockId": "42860aa1c906e1dce5b00b19c9a0f24c",
+      "fp64": "ca4eec5dd76c6d4d",
+      "normHash": "7ad336df115a99f38effaeef6df23138b88fed2a026165a8cfcadb04bedff5ca",
+      "kind": "p",
+      "chapter": "الباب-الثالث-في-بيان-أن-الصواب-ما-ذهب-إليه-السلف-رحمة-الله-عليهم-بالأدلة-الجلية",
+      "prev": "954e20309dd82624afd98d608b455b442d4f3d27c147e9e8b634f319734c258c",
+      "next": "45739b9099a99861921ff1270095ff516045317f96c63da142f2868dc8676e17"
+    },
+    {
+      "ord": 130,
+      "blockId": "fb6fb20c1f25c67a4daa915e8543302e",
+      "fp64": "ffce4048974f5d7c",
+      "normHash": "45739b9099a99861921ff1270095ff516045317f96c63da142f2868dc8676e17",
+      "kind": "p",
+      "chapter": "الباب-الثالث-في-بيان-أن-الصواب-ما-ذهب-إليه-السلف-رحمة-الله-عليهم-بالأدلة-الجلية",
+      "prev": "7ad336df115a99f38effaeef6df23138b88fed2a026165a8cfcadb04bedff5ca",
+      "next": "59b777ba4cdf4bf01bdc651f2fe6877c5dede0434c2586806546a8e0b10ee113"
+    },
+    {
+      "ord": 131,
+      "blockId": "65cf8897a8a4f2e0ac853f58bc58af61",
+      "fp64": "4046541a1f51354c",
+      "normHash": "59b777ba4cdf4bf01bdc651f2fe6877c5dede0434c2586806546a8e0b10ee113",
+      "kind": "p",
+      "chapter": "الباب-الثالث-في-بيان-أن-الصواب-ما-ذهب-إليه-السلف-رحمة-الله-عليهم-بالأدلة-الجلية",
+      "prev": "45739b9099a99861921ff1270095ff516045317f96c63da142f2868dc8676e17",
+      "next": "c2e5ec499c041da0ca3ab6ab1146db3b1f4719e299d00b7bb5ed6dd8e308dd99"
+    },
+    {
+      "ord": 132,
+      "blockId": "776b563d8ee327ce6623d54d6ae00f4b",
+      "fp64": "27fffbde7a31e9be",
+      "normHash": "c2e5ec499c041da0ca3ab6ab1146db3b1f4719e299d00b7bb5ed6dd8e308dd99",
+      "kind": "page",
+      "chapter": "الباب-الثالث-في-بيان-أن-الصواب-ما-ذهب-إليه-السلف-رحمة-الله-عليهم-بالأدلة-الجلية",
+      "prev": "59b777ba4cdf4bf01bdc651f2fe6877c5dede0434c2586806546a8e0b10ee113",
+      "next": "f5c6e54e724b95cb245cb71b8237d7283ebba63977927f3b385029b644079ed7"
+    },
+    {
+      "ord": 133,
+      "blockId": "d53cdf20f154d4fbf1d78578fee401b2",
+      "fp64": "176e61507c5e3d47",
+      "normHash": "f5c6e54e724b95cb245cb71b8237d7283ebba63977927f3b385029b644079ed7",
+      "kind": "p",
+      "chapter": "الباب-الثالث-في-بيان-أن-الصواب-ما-ذهب-إليه-السلف-رحمة-الله-عليهم-بالأدلة-الجلية",
+      "prev": "c2e5ec499c041da0ca3ab6ab1146db3b1f4719e299d00b7bb5ed6dd8e308dd99",
+      "next": "bd5881a37eaa2153363e68177e432c1f1b199478f1e322c60943306829d95205"
+    },
+    {
+      "ord": 134,
+      "blockId": "c1e5e93e88b8c407380c8a2f10eac43a",
+      "fp64": "2544ed431d57af4c",
+      "normHash": "bd5881a37eaa2153363e68177e432c1f1b199478f1e322c60943306829d95205",
+      "kind": "p",
+      "chapter": "الباب-الثالث-في-بيان-أن-الصواب-ما-ذهب-إليه-السلف-رحمة-الله-عليهم-بالأدلة-الجلية",
+      "prev": "f5c6e54e724b95cb245cb71b8237d7283ebba63977927f3b385029b644079ed7",
+      "next": "4059232012e7303f9bb9ca265cf30914246692e15def1edca32fd6a13c966dc9"
+    },
+    {
+      "ord": 135,
+      "blockId": "4f75377bb55ec4633a35e733f4eaf0b1",
+      "fp64": "e8eebd83734e13a2",
+      "normHash": "4059232012e7303f9bb9ca265cf30914246692e15def1edca32fd6a13c966dc9",
+      "kind": "p",
+      "chapter": "الباب-الثالث-في-بيان-أن-الصواب-ما-ذهب-إليه-السلف-رحمة-الله-عليهم-بالأدلة-الجلية",
+      "prev": "bd5881a37eaa2153363e68177e432c1f1b199478f1e322c60943306829d95205",
+      "next": "7f84ef2e540598b4500916153f2a09b6676e0dd4d79b906399f03be883c447c9"
+    },
+    {
+      "ord": 136,
+      "blockId": "d4cc5b32d6a98a4a116aa323ea2d5265",
+      "fp64": "3fea40471556579e",
+      "normHash": "7f84ef2e540598b4500916153f2a09b6676e0dd4d79b906399f03be883c447c9",
+      "kind": "p",
+      "chapter": "الباب-الثالث-في-بيان-أن-الصواب-ما-ذهب-إليه-السلف-رحمة-الله-عليهم-بالأدلة-الجلية",
+      "prev": "4059232012e7303f9bb9ca265cf30914246692e15def1edca32fd6a13c966dc9",
+      "next": "b271db2d31a291996045e748faf11d4a35ceda2e52fc3e05cc86c6d37ecb262d"
+    },
+    {
+      "ord": 137,
+      "blockId": "acd2f1ea4a9c9a5af5e37fc66f3d0357",
+      "fp64": "bdfffbdf5bb9f13f",
+      "normHash": "b271db2d31a291996045e748faf11d4a35ceda2e52fc3e05cc86c6d37ecb262d",
+      "kind": "page",
+      "chapter": "الباب-الثالث-في-بيان-أن-الصواب-ما-ذهب-إليه-السلف-رحمة-الله-عليهم-بالأدلة-الجلية",
+      "prev": "7f84ef2e540598b4500916153f2a09b6676e0dd4d79b906399f03be883c447c9",
+      "next": "8eaf1e2fe20960dba7e64ba942ea0291d0dac7cf9bfa84db2d6e73b9d9c4039a"
+    },
+    {
+      "ord": 138,
+      "blockId": "612ca882b6cca474de95f5cd08330733",
+      "fp64": "b655e0461e1f71ec",
+      "normHash": "8eaf1e2fe20960dba7e64ba942ea0291d0dac7cf9bfa84db2d6e73b9d9c4039a",
+      "kind": "p",
+      "chapter": "الباب-الثالث-في-بيان-أن-الصواب-ما-ذهب-إليه-السلف-رحمة-الله-عليهم-بالأدلة-الجلية",
+      "prev": "b271db2d31a291996045e748faf11d4a35ceda2e52fc3e05cc86c6d37ecb262d",
+      "next": "fb5f5676db55e3b8072fdbc2b102735ff9f4c434b034c08c88bbb3b564fa6126"
+    },
+    {
+      "ord": 139,
+      "blockId": "6dc34354fc32b2f1e4c0c6b8bbb0d672",
+      "fp64": "74677ddebe1a36a2",
+      "normHash": "fb5f5676db55e3b8072fdbc2b102735ff9f4c434b034c08c88bbb3b564fa6126",
+      "kind": "p",
+      "chapter": "الباب-الثالث-في-بيان-أن-الصواب-ما-ذهب-إليه-السلف-رحمة-الله-عليهم-بالأدلة-الجلية",
+      "prev": "8eaf1e2fe20960dba7e64ba942ea0291d0dac7cf9bfa84db2d6e73b9d9c4039a",
+      "next": "5147bc247a8eef36dab320df509fc23e6b5af31c2750efadf3729932019a5476"
+    },
+    {
+      "ord": 140,
+      "blockId": "ac0807a64175ab038ea1e5d357f8da7a",
+      "fp64": "6efcc0470f3ced3b",
+      "normHash": "5147bc247a8eef36dab320df509fc23e6b5af31c2750efadf3729932019a5476",
+      "kind": "p",
+      "chapter": "الباب-الثالث-في-بيان-أن-الصواب-ما-ذهب-إليه-السلف-رحمة-الله-عليهم-بالأدلة-الجلية",
+      "prev": "fb5f5676db55e3b8072fdbc2b102735ff9f4c434b034c08c88bbb3b564fa6126",
+      "next": "b46e6923a0be5a76f4a246c38e1cdd730d028270f56f2c5716ded45f3af2b500"
+    },
+    {
+      "ord": 141,
+      "blockId": "1b399c86f52b0e2dc4ab76c6df0d4705",
+      "fp64": "a5fff3dedbfffef7",
+      "normHash": "b46e6923a0be5a76f4a246c38e1cdd730d028270f56f2c5716ded45f3af2b500",
+      "kind": "page",
+      "chapter": "الباب-الثالث-في-بيان-أن-الصواب-ما-ذهب-إليه-السلف-رحمة-الله-عليهم-بالأدلة-الجلية",
+      "prev": "5147bc247a8eef36dab320df509fc23e6b5af31c2750efadf3729932019a5476",
+      "next": "6243c5f19967c23ecc1bc8ae1709f51c7a9c4f7d763b2f2b3082129426448433"
+    },
+    {
+      "ord": 142,
+      "blockId": "33413a4ed77b83a0e4895073fd6443b5",
+      "fp64": "2446fd9c2d7efc68",
+      "normHash": "6243c5f19967c23ecc1bc8ae1709f51c7a9c4f7d763b2f2b3082129426448433",
+      "kind": "p",
+      "chapter": "الباب-الثالث-في-بيان-أن-الصواب-ما-ذهب-إليه-السلف-رحمة-الله-عليهم-بالأدلة-الجلية",
+      "prev": "b46e6923a0be5a76f4a246c38e1cdd730d028270f56f2c5716ded45f3af2b500",
+      "next": "7cefbd9551cbf64c44e3b7f02bce05904fd5e663658a637c84715ac33200ecda"
+    },
+    {
+      "ord": 143,
+      "blockId": "0cac17d01872adb30b5c14b95e1bdfec",
+      "fp64": "34c0e45a1d569efc",
+      "normHash": "7cefbd9551cbf64c44e3b7f02bce05904fd5e663658a637c84715ac33200ecda",
+      "kind": "p",
+      "chapter": "الباب-الثالث-في-بيان-أن-الصواب-ما-ذهب-إليه-السلف-رحمة-الله-عليهم-بالأدلة-الجلية",
+      "prev": "6243c5f19967c23ecc1bc8ae1709f51c7a9c4f7d763b2f2b3082129426448433",
+      "next": "677deccf4edde2da34ce12441ed7d4d67ab8f9fcf2e2a8eac9d5a31226590cb9"
+    },
+    {
+      "ord": 144,
+      "blockId": "e13b78d11015e27838af6a30e5ec3b14",
+      "fp64": "84944d4c8f27a45e",
+      "normHash": "677deccf4edde2da34ce12441ed7d4d67ab8f9fcf2e2a8eac9d5a31226590cb9",
+      "kind": "p",
+      "chapter": "الباب-الثالث-في-بيان-أن-الصواب-ما-ذهب-إليه-السلف-رحمة-الله-عليهم-بالأدلة-الجلية",
+      "prev": "7cefbd9551cbf64c44e3b7f02bce05904fd5e663658a637c84715ac33200ecda",
+      "next": "f9561102f6f0bb7090974fb237863cb5f8058726d79ee2da8b7b9f3485c54280"
+    },
+    {
+      "ord": 145,
+      "blockId": "d1c93c6bae00e6918995cd65b1825f57",
+      "fp64": "2fdffbdadb7ff13f",
+      "normHash": "f9561102f6f0bb7090974fb237863cb5f8058726d79ee2da8b7b9f3485c54280",
+      "kind": "page",
+      "chapter": "الباب-الثالث-في-بيان-أن-الصواب-ما-ذهب-إليه-السلف-رحمة-الله-عليهم-بالأدلة-الجلية",
+      "prev": "677deccf4edde2da34ce12441ed7d4d67ab8f9fcf2e2a8eac9d5a31226590cb9",
+      "next": "e89c9e68bd4bc167c3d040c2ce35ce709f6438f072867ea95ed92180febb3f3d"
+    },
+    {
+      "ord": 146,
+      "blockId": "91f4befbf6cb0fb519d94d6484b06324",
+      "fp64": "ba40ee1a9b22ff4e",
+      "normHash": "e89c9e68bd4bc167c3d040c2ce35ce709f6438f072867ea95ed92180febb3f3d",
+      "kind": "p",
+      "chapter": "الباب-الثالث-في-بيان-أن-الصواب-ما-ذهب-إليه-السلف-رحمة-الله-عليهم-بالأدلة-الجلية",
+      "prev": "f9561102f6f0bb7090974fb237863cb5f8058726d79ee2da8b7b9f3485c54280",
+      "next": "4fa688475aef06aded53999b9bd35778bfeaad76ed164669eb64a125c00e6965"
+    },
+    {
+      "ord": 147,
+      "blockId": "c7f5d701471bc4a88947f714c8855a3e",
+      "fp64": "7854c056df6b794e",
+      "normHash": "4fa688475aef06aded53999b9bd35778bfeaad76ed164669eb64a125c00e6965",
+      "kind": "p",
+      "chapter": "الباب-الثالث-في-بيان-أن-الصواب-ما-ذهب-إليه-السلف-رحمة-الله-عليهم-بالأدلة-الجلية",
+      "prev": "e89c9e68bd4bc167c3d040c2ce35ce709f6438f072867ea95ed92180febb3f3d",
+      "next": "fadc0ae35257034f006e628b8d5b2c8037c62760f2c6284d833eb164e6d47a2d"
+    },
+    {
+      "ord": 148,
+      "blockId": "9c953e707742726e5cd6c5f60c365e64",
+      "fp64": "b726e1901d56f59f",
+      "normHash": "fadc0ae35257034f006e628b8d5b2c8037c62760f2c6284d833eb164e6d47a2d",
+      "kind": "p",
+      "chapter": "الباب-الثالث-في-بيان-أن-الصواب-ما-ذهب-إليه-السلف-رحمة-الله-عليهم-بالأدلة-الجلية",
+      "prev": "4fa688475aef06aded53999b9bd35778bfeaad76ed164669eb64a125c00e6965",
+      "next": "251c8269ef151246be130ce2af1afa06687c86478942bd752bdc19464d7a440a"
+    },
+    {
+      "ord": 149,
+      "blockId": "a766c432206b7c806cb7d06388bf1c29",
+      "fp64": "5e9c8c5ebd639bab",
+      "normHash": "251c8269ef151246be130ce2af1afa06687c86478942bd752bdc19464d7a440a",
+      "kind": "p",
+      "chapter": "الباب-الثالث-في-بيان-أن-الصواب-ما-ذهب-إليه-السلف-رحمة-الله-عليهم-بالأدلة-الجلية",
+      "prev": "fadc0ae35257034f006e628b8d5b2c8037c62760f2c6284d833eb164e6d47a2d",
+      "next": "aa8da232f73eb4d47dea925fcd48136ba86d986b02d5f9a06a4c34f1871dfb88"
+    },
+    {
+      "ord": 150,
+      "blockId": "b1d936c940f62df0f823799c09939ca2",
+      "fp64": "a194e6420f425b0f",
+      "normHash": "aa8da232f73eb4d47dea925fcd48136ba86d986b02d5f9a06a4c34f1871dfb88",
+      "kind": "p",
+      "chapter": "الباب-الثالث-في-بيان-أن-الصواب-ما-ذهب-إليه-السلف-رحمة-الله-عليهم-بالأدلة-الجلية",
+      "prev": "251c8269ef151246be130ce2af1afa06687c86478942bd752bdc19464d7a440a",
+      "next": "13ec2227f202273fa9455c371d65b2491ab59cd8ce037c8e646b2417036b2616"
+    },
+    {
+      "ord": 151,
+      "blockId": "743b00694f1d6749eb81ac6481bf0c17",
+      "fp64": "4ae59729f673b020",
+      "normHash": "13ec2227f202273fa9455c371d65b2491ab59cd8ce037c8e646b2417036b2616",
+      "kind": "p",
+      "chapter": "الباب-الثالث-في-بيان-أن-الصواب-ما-ذهب-إليه-السلف-رحمة-الله-عليهم-بالأدلة-الجلية",
+      "prev": "aa8da232f73eb4d47dea925fcd48136ba86d986b02d5f9a06a4c34f1871dfb88",
+      "next": "b45714bbeaceb94fe48a62b395281c96fe52365900f57b444a5084c187979246"
+    },
+    {
+      "ord": 152,
+      "blockId": "de5eb6b94e765dac3c563168f6afcc38",
+      "fp64": "addff79afe7d6777",
+      "normHash": "b45714bbeaceb94fe48a62b395281c96fe52365900f57b444a5084c187979246",
+      "kind": "page",
+      "chapter": "الباب-الثالث-في-بيان-أن-الصواب-ما-ذهب-إليه-السلف-رحمة-الله-عليهم-بالأدلة-الجلية",
+      "prev": "13ec2227f202273fa9455c371d65b2491ab59cd8ce037c8e646b2417036b2616",
+      "next": "c6acd51a0e60b1256aecb282661e8955bce47cbf78b4dae48ccf1e2abd9d0b0d"
+    },
+    {
+      "ord": 153,
+      "blockId": "4ca3292507a3e78efd1ee3104e8b1cef",
+      "fp64": "7e42d65cfe93d97a",
+      "normHash": "c6acd51a0e60b1256aecb282661e8955bce47cbf78b4dae48ccf1e2abd9d0b0d",
+      "kind": "p",
+      "chapter": "الباب-الثالث-في-بيان-أن-الصواب-ما-ذهب-إليه-السلف-رحمة-الله-عليهم-بالأدلة-الجلية",
+      "prev": "b45714bbeaceb94fe48a62b395281c96fe52365900f57b444a5084c187979246",
+      "next": "298ba4cd6439d06a5a87a84aa0daeed09e386427306f68eb285d23daae4e97b5"
+    },
+    {
+      "ord": 154,
+      "blockId": "bd6d92f62eab6df52e62d18e6bfd76b6",
+      "fp64": "506a6d1adf467bca",
+      "normHash": "298ba4cd6439d06a5a87a84aa0daeed09e386427306f68eb285d23daae4e97b5",
+      "kind": "p",
+      "chapter": "الباب-الثالث-في-بيان-أن-الصواب-ما-ذهب-إليه-السلف-رحمة-الله-عليهم-بالأدلة-الجلية",
+      "prev": "c6acd51a0e60b1256aecb282661e8955bce47cbf78b4dae48ccf1e2abd9d0b0d",
+      "next": "7be9486c796c4ae1085b5d38e0bdada23a014c8640d18623a9467d6a5fdc412e"
+    },
+    {
+      "ord": 155,
+      "blockId": "fd3a787f09d81012716e4db4afb4315d",
+      "fp64": "bb41e63e8bea7d5f",
+      "normHash": "7be9486c796c4ae1085b5d38e0bdada23a014c8640d18623a9467d6a5fdc412e",
+      "kind": "p",
+      "chapter": "الباب-الثالث-في-بيان-أن-الصواب-ما-ذهب-إليه-السلف-رحمة-الله-عليهم-بالأدلة-الجلية",
+      "prev": "298ba4cd6439d06a5a87a84aa0daeed09e386427306f68eb285d23daae4e97b5",
+      "next": "5643574f126a9a00a9daf5c7496b3678ae7b39e51d9493d04ce8493e37844bc2"
+    },
+    {
+      "ord": 156,
+      "blockId": "f3ef39e429f02ebd6afc5de7e09a8838",
+      "fp64": "98803c68c3178d2a",
+      "normHash": "5643574f126a9a00a9daf5c7496b3678ae7b39e51d9493d04ce8493e37844bc2",
+      "kind": "p",
+      "chapter": "الباب-الثالث-في-بيان-أن-الصواب-ما-ذهب-إليه-السلف-رحمة-الله-عليهم-بالأدلة-الجلية",
+      "prev": "7be9486c796c4ae1085b5d38e0bdada23a014c8640d18623a9467d6a5fdc412e",
+      "next": "02bb3d81af06a528a5f9fcbfa8f77b50ee8a2ddbd2fa2659299363c7e2bdfe56"
+    },
+    {
+      "ord": 157,
+      "blockId": "75d4296d58dc898cfd2094c4ff632732",
+      "fp64": "8d53f45e199a8a7b",
+      "normHash": "02bb3d81af06a528a5f9fcbfa8f77b50ee8a2ddbd2fa2659299363c7e2bdfe56",
+      "kind": "p",
+      "chapter": "الباب-الثالث-في-بيان-أن-الصواب-ما-ذهب-إليه-السلف-رحمة-الله-عليهم-بالأدلة-الجلية",
+      "prev": "5643574f126a9a00a9daf5c7496b3678ae7b39e51d9493d04ce8493e37844bc2",
+      "next": "d284cc0fd73584653510c35a6a017f8ad937e30f2bef536e7df256f97d22e433"
+    },
+    {
+      "ord": 158,
+      "blockId": "6d5746a9e72356f08606bccb55afc7ad",
+      "fp64": "a5dff7da5e73eb76",
+      "normHash": "d284cc0fd73584653510c35a6a017f8ad937e30f2bef536e7df256f97d22e433",
+      "kind": "page",
+      "chapter": "الباب-الثالث-في-بيان-أن-الصواب-ما-ذهب-إليه-السلف-رحمة-الله-عليهم-بالأدلة-الجلية",
+      "prev": "02bb3d81af06a528a5f9fcbfa8f77b50ee8a2ddbd2fa2659299363c7e2bdfe56",
+      "next": "de541e6711a8d2eec2a1a9aefe1ec78ee5f9f4b12961a4ad1ad0711bb843bf89"
+    },
+    {
+      "ord": 159,
+      "blockId": "010e871fb495997885cdfe7723edbe9d",
+      "fp64": "6c7fe056937b71fc",
+      "normHash": "de541e6711a8d2eec2a1a9aefe1ec78ee5f9f4b12961a4ad1ad0711bb843bf89",
+      "kind": "p",
+      "chapter": "الباب-الثالث-في-بيان-أن-الصواب-ما-ذهب-إليه-السلف-رحمة-الله-عليهم-بالأدلة-الجلية",
+      "prev": "d284cc0fd73584653510c35a6a017f8ad937e30f2bef536e7df256f97d22e433",
+      "next": "87f6940b3cd2e401fd999feba8c1484bd82290a6684da7ba3788800338e2fb96"
+    },
+    {
+      "ord": 160,
+      "blockId": "003d42f8b0d0ca8b3cb0f447625f7bca",
+      "fp64": "92d5ed54cdafe91e",
+      "normHash": "87f6940b3cd2e401fd999feba8c1484bd82290a6684da7ba3788800338e2fb96",
+      "kind": "p",
+      "chapter": "الباب-الثالث-في-بيان-أن-الصواب-ما-ذهب-إليه-السلف-رحمة-الله-عليهم-بالأدلة-الجلية",
+      "prev": "de541e6711a8d2eec2a1a9aefe1ec78ee5f9f4b12961a4ad1ad0711bb843bf89",
+      "next": "9b2a5311515c3101c516ad1060245d307717ed5114c43714de06c9195421cced"
+    },
+    {
+      "ord": 161,
+      "blockId": "bac43148096480680a494bfd7eae26e5",
+      "fp64": "2841a05e0f52695c",
+      "normHash": "9b2a5311515c3101c516ad1060245d307717ed5114c43714de06c9195421cced",
+      "kind": "p",
+      "chapter": "الباب-الثالث-في-بيان-أن-الصواب-ما-ذهب-إليه-السلف-رحمة-الله-عليهم-بالأدلة-الجلية",
+      "prev": "87f6940b3cd2e401fd999feba8c1484bd82290a6684da7ba3788800338e2fb96",
+      "next": "8bd10b2f28941dfa52d5626f6194fe670115204df9475e665c268359264d3ceb"
+    },
+    {
+      "ord": 162,
+      "blockId": "92a5369eb0911db4c846e91fea184d85",
+      "fp64": "b6f3a466be3e51a4",
+      "normHash": "8bd10b2f28941dfa52d5626f6194fe670115204df9475e665c268359264d3ceb",
+      "kind": "p",
+      "chapter": "الباب-الثالث-في-بيان-أن-الصواب-ما-ذهب-إليه-السلف-رحمة-الله-عليهم-بالأدلة-الجلية",
+      "prev": "9b2a5311515c3101c516ad1060245d307717ed5114c43714de06c9195421cced",
+      "next": "c1d50dc79e6c0267e9efbd68795c3df8e2c25e590d0b1bc168c1ccb63b902798"
+    },
+    {
+      "ord": 163,
+      "blockId": "be659a61f9d37cbbdf9895e57d2b1008",
+      "fp64": "bddffbdafb75ee77",
+      "normHash": "c1d50dc79e6c0267e9efbd68795c3df8e2c25e590d0b1bc168c1ccb63b902798",
+      "kind": "page",
+      "chapter": "الباب-الثالث-في-بيان-أن-الصواب-ما-ذهب-إليه-السلف-رحمة-الله-عليهم-بالأدلة-الجلية",
+      "prev": "8bd10b2f28941dfa52d5626f6194fe670115204df9475e665c268359264d3ceb",
+      "next": "5df7c2b4879c27dc3550e19022b3eb294fefe83511dfa9e165b6a458a94303ef"
+    },
+    {
+      "ord": 164,
+      "blockId": "d7dd78283f597148ab498ea03596b481",
+      "fp64": "1ec3a6ec077b3f15",
+      "normHash": "5df7c2b4879c27dc3550e19022b3eb294fefe83511dfa9e165b6a458a94303ef",
+      "kind": "p",
+      "chapter": "الباب-الثالث-في-بيان-أن-الصواب-ما-ذهب-إليه-السلف-رحمة-الله-عليهم-بالأدلة-الجلية",
+      "prev": "c1d50dc79e6c0267e9efbd68795c3df8e2c25e590d0b1bc168c1ccb63b902798",
+      "next": "64aa86e6abe53c2a82a1b01d48f662350f1f673cf019512549a0aedd11ded804"
+    },
+    {
+      "ord": 165,
+      "blockId": "12548ee3105c45deaeceb095bbd955c6",
+      "fp64": "20fe1f506d5aa105",
+      "normHash": "64aa86e6abe53c2a82a1b01d48f662350f1f673cf019512549a0aedd11ded804",
+      "kind": "p",
+      "chapter": "الباب-الثالث-في-بيان-أن-الصواب-ما-ذهب-إليه-السلف-رحمة-الله-عليهم-بالأدلة-الجلية",
+      "prev": "5df7c2b4879c27dc3550e19022b3eb294fefe83511dfa9e165b6a458a94303ef",
+      "next": "4eab9b8bc4a7e015299731e505b45c60c603de4e4724cb39cf2511bf64a482b7"
+    },
+    {
+      "ord": 166,
+      "blockId": "747256b88c2ebed6faef402a8591d142",
+      "fp64": "912274019d232984",
+      "normHash": "4eab9b8bc4a7e015299731e505b45c60c603de4e4724cb39cf2511bf64a482b7",
+      "kind": "p",
+      "chapter": "الباب-الثالث-في-بيان-أن-الصواب-ما-ذهب-إليه-السلف-رحمة-الله-عليهم-بالأدلة-الجلية",
+      "prev": "64aa86e6abe53c2a82a1b01d48f662350f1f673cf019512549a0aedd11ded804",
+      "next": "7952da4245d425dd944221a30e2b54e299d0499d07a041f9a814c4c5c5a26bcd"
+    },
+    {
+      "ord": 167,
+      "blockId": "2926c44a1b6ca8c9571dea37a5b785ea",
+      "fp64": "855f664ca738e8f4",
+      "normHash": "7952da4245d425dd944221a30e2b54e299d0499d07a041f9a814c4c5c5a26bcd",
+      "kind": "p",
+      "chapter": "الباب-الثالث-في-بيان-أن-الصواب-ما-ذهب-إليه-السلف-رحمة-الله-عليهم-بالأدلة-الجلية",
+      "prev": "4eab9b8bc4a7e015299731e505b45c60c603de4e4724cb39cf2511bf64a482b7",
+      "next": "3b012c981616305ab7f59667daf0811b380bff0e8f50a6f3e6a2950847924069"
+    },
+    {
+      "ord": 168,
+      "blockId": "c8d66c731e77b17e9061a1cfa4e70ec0",
+      "fp64": "12cba64f1d565de6",
+      "normHash": "3b012c981616305ab7f59667daf0811b380bff0e8f50a6f3e6a2950847924069",
+      "kind": "p",
+      "chapter": "الباب-الثالث-في-بيان-أن-الصواب-ما-ذهب-إليه-السلف-رحمة-الله-عليهم-بالأدلة-الجلية",
+      "prev": "7952da4245d425dd944221a30e2b54e299d0499d07a041f9a814c4c5c5a26bcd",
+      "next": "47a608900b812e28351277f4ceba154c78be5a19735cb65393561b1fae8e2f7b"
+    },
+    {
+      "ord": 169,
+      "blockId": "468fa8b0d875b5a12bcba55b70b4fa80",
+      "fp64": "ffdff79affb777b7",
+      "normHash": "47a608900b812e28351277f4ceba154c78be5a19735cb65393561b1fae8e2f7b",
+      "kind": "page",
+      "chapter": "الباب-الثالث-في-بيان-أن-الصواب-ما-ذهب-إليه-السلف-رحمة-الله-عليهم-بالأدلة-الجلية",
+      "prev": "3b012c981616305ab7f59667daf0811b380bff0e8f50a6f3e6a2950847924069",
+      "next": "b468ccc7b4f6d1e5f4e81f5b76c92246462dde827e223e607ceb500f3602d891"
+    },
+    {
+      "ord": 170,
+      "blockId": "164f838acac4177285a5d4a331100ebe",
+      "fp64": "3854e056111643fa",
+      "normHash": "b468ccc7b4f6d1e5f4e81f5b76c92246462dde827e223e607ceb500f3602d891",
+      "kind": "p",
+      "chapter": "الباب-الثالث-في-بيان-أن-الصواب-ما-ذهب-إليه-السلف-رحمة-الله-عليهم-بالأدلة-الجلية",
+      "prev": "47a608900b812e28351277f4ceba154c78be5a19735cb65393561b1fae8e2f7b",
+      "next": "3fff02f724c86b337e05907a0682e5142742bda9093c1fceefb562a4ca9497e9"
+    },
+    {
+      "ord": 171,
+      "blockId": "aa53b93628f03de03ea7352f716a19ac",
+      "fp64": "4e3c9a7c00376fe2",
+      "normHash": "3fff02f724c86b337e05907a0682e5142742bda9093c1fceefb562a4ca9497e9",
+      "kind": "p",
+      "chapter": "الباب-الثالث-في-بيان-أن-الصواب-ما-ذهب-إليه-السلف-رحمة-الله-عليهم-بالأدلة-الجلية",
+      "prev": "b468ccc7b4f6d1e5f4e81f5b76c92246462dde827e223e607ceb500f3602d891",
+      "next": "e9d4bbe3dc7758596d30f73c325bc1e434c07b78b2a1b5fcafd3f0652cc35a7c"
+    },
+    {
+      "ord": 172,
+      "blockId": "70588e08391624c594ace787b6a4fe9e",
+      "fp64": "3086e066bf5bf0ea",
+      "normHash": "e9d4bbe3dc7758596d30f73c325bc1e434c07b78b2a1b5fcafd3f0652cc35a7c",
+      "kind": "p",
+      "chapter": "الباب-الثالث-في-بيان-أن-الصواب-ما-ذهب-إليه-السلف-رحمة-الله-عليهم-بالأدلة-الجلية",
+      "prev": "3fff02f724c86b337e05907a0682e5142742bda9093c1fceefb562a4ca9497e9",
+      "next": "89e34329ab90aa190773ce2438a8e1c6bd4a1fdaab455c2d4345beefa0f8a62f"
+    },
+    {
+      "ord": 173,
+      "blockId": "672cf1f2f043ac389b138ee1ed30150f",
+      "fp64": "37ffff9e7a3ffc37",
+      "normHash": "89e34329ab90aa190773ce2438a8e1c6bd4a1fdaab455c2d4345beefa0f8a62f",
+      "kind": "page",
+      "chapter": "الباب-الثالث-في-بيان-أن-الصواب-ما-ذهب-إليه-السلف-رحمة-الله-عليهم-بالأدلة-الجلية",
+      "prev": "e9d4bbe3dc7758596d30f73c325bc1e434c07b78b2a1b5fcafd3f0652cc35a7c",
+      "next": "f664a9bb22ab199156db77c0b637be186904a11bd9b971b97a905c8179ea33a4"
+    },
+    {
+      "ord": 174,
+      "blockId": "82aa78196163ddcc0bd998e5b61cea83",
+      "fp64": "0483fe2f3e6362cc",
+      "normHash": "f664a9bb22ab199156db77c0b637be186904a11bd9b971b97a905c8179ea33a4",
+      "kind": "h3",
+      "chapter": "الباب-الثالث-في-بيان-أن-الصواب-ما-ذهب-إليه-السلف-رحمة-الله-عليهم-بالأدلة-الجلية",
+      "prev": "89e34329ab90aa190773ce2438a8e1c6bd4a1fdaab455c2d4345beefa0f8a62f",
+      "next": "f0b5ffdf288eb38ae73e2f7050e4ed60e0c7fda7e94a14c63c1ff1687e86fcda"
+    },
+    {
+      "ord": 175,
+      "blockId": "46ff5e3eab95d4b9c5016a3991ec21fa",
+      "fp64": "fdb5bd41ff979b78",
+      "normHash": "f0b5ffdf288eb38ae73e2f7050e4ed60e0c7fda7e94a14c63c1ff1687e86fcda",
+      "kind": "p",
+      "chapter": "الباب-الثالث-في-بيان-أن-الصواب-ما-ذهب-إليه-السلف-رحمة-الله-عليهم-بالأدلة-الجلية",
+      "prev": "f664a9bb22ab199156db77c0b637be186904a11bd9b971b97a905c8179ea33a4",
+      "next": "84fa38c6eb03d47a83e1730426a70087580c5ed26ab43f34c9cf701ca787e767"
+    },
+    {
+      "ord": 176,
+      "blockId": "19a6c46a21a01ac4d757f9066f259716",
+      "fp64": "44c5c04f8e725f5c",
+      "normHash": "84fa38c6eb03d47a83e1730426a70087580c5ed26ab43f34c9cf701ca787e767",
+      "kind": "p",
+      "chapter": "الباب-الثالث-في-بيان-أن-الصواب-ما-ذهب-إليه-السلف-رحمة-الله-عليهم-بالأدلة-الجلية",
+      "prev": "f0b5ffdf288eb38ae73e2f7050e4ed60e0c7fda7e94a14c63c1ff1687e86fcda",
+      "next": "fbe3e8d287e8ee688a1af4f098432b4d5d351d6a8e283e6a697d9744ebedf4f3"
+    },
+    {
+      "ord": 177,
+      "blockId": "c0621cf97ff6ce0519882e85471c0ee6",
+      "fp64": "7dfff3fa5eb16837",
+      "normHash": "fbe3e8d287e8ee688a1af4f098432b4d5d351d6a8e283e6a697d9744ebedf4f3",
+      "kind": "page",
+      "chapter": "الباب-الثالث-في-بيان-أن-الصواب-ما-ذهب-إليه-السلف-رحمة-الله-عليهم-بالأدلة-الجلية",
+      "prev": "84fa38c6eb03d47a83e1730426a70087580c5ed26ab43f34c9cf701ca787e767",
+      "next": "d3257a7bb7951d2730a445e30ac3caa34d08451f88efe09c25411bd7b4e673e0"
+    },
+    {
+      "ord": 178,
+      "blockId": "6792b0ec6191a8660007eeb81dab57d1",
+      "fp64": "2ad89ecdfe95fd68",
+      "normHash": "d3257a7bb7951d2730a445e30ac3caa34d08451f88efe09c25411bd7b4e673e0",
+      "kind": "p",
+      "chapter": "الباب-الثالث-في-بيان-أن-الصواب-ما-ذهب-إليه-السلف-رحمة-الله-عليهم-بالأدلة-الجلية",
+      "prev": "fbe3e8d287e8ee688a1af4f098432b4d5d351d6a8e283e6a697d9744ebedf4f3",
+      "next": "c6a84ce2d9af349b315d36cfba2af359dd407485732b3dc3bfb59fe2ba445b26"
+    },
+    {
+      "ord": 179,
+      "blockId": "0e8a45014295669d395a07d67627c98f",
+      "fp64": "5bf6f7fd3f16e941",
+      "normHash": "c6a84ce2d9af349b315d36cfba2af359dd407485732b3dc3bfb59fe2ba445b26",
+      "kind": "p",
+      "chapter": "الباب-الثالث-في-بيان-أن-الصواب-ما-ذهب-إليه-السلف-رحمة-الله-عليهم-بالأدلة-الجلية",
+      "prev": "d3257a7bb7951d2730a445e30ac3caa34d08451f88efe09c25411bd7b4e673e0",
+      "next": "9acfdc00556f7593557216a61ca981e08fe96fc6b512db7e7086653ea6367377"
+    },
+    {
+      "ord": 180,
+      "blockId": "30e92647ba63822a2f64ea92e7c3c974",
+      "fp64": "fe56c87a3d6de7ee",
+      "normHash": "9acfdc00556f7593557216a61ca981e08fe96fc6b512db7e7086653ea6367377",
+      "kind": "p",
+      "chapter": "الباب-الثالث-في-بيان-أن-الصواب-ما-ذهب-إليه-السلف-رحمة-الله-عليهم-بالأدلة-الجلية",
+      "prev": "c6a84ce2d9af349b315d36cfba2af359dd407485732b3dc3bfb59fe2ba445b26",
+      "next": "6b95c88c96ea7a8a46e81c5a4dc2fed4eb6272e14d9bcd67068c76922b2b6a37"
+    },
+    {
+      "ord": 181,
+      "blockId": "6fde9e4e5eba753faf293db8d3100d19",
+      "fp64": "35dfffbfdb3b61be",
+      "normHash": "6b95c88c96ea7a8a46e81c5a4dc2fed4eb6272e14d9bcd67068c76922b2b6a37",
+      "kind": "page",
+      "chapter": "الباب-الثالث-في-بيان-أن-الصواب-ما-ذهب-إليه-السلف-رحمة-الله-عليهم-بالأدلة-الجلية",
+      "prev": "9acfdc00556f7593557216a61ca981e08fe96fc6b512db7e7086653ea6367377"
+    }
+  ]
+}

@@ -2,10 +2,10 @@ package com.atharchive.feature.books
 
 
 enum class BookSort(val label: String) {
+    Died("وفاة المؤلف"),
     Title("العنوان أ–ي"),
     Newest("الأحدث إضافة"),
     Author("المؤلف"),
-    Died("وفاة المؤلف"),
     Pages("عدد الصفحات"),
 }
 
@@ -37,6 +37,7 @@ data class BookUi(
     val readingProgressLabel: String? = null,
     val topics: List<String> = listOf(discipline),
     val died: Int? = null,
+    val hasAudio: Boolean = false,
     val publishedAt: String = "",
     /** Last printed page; with [volumes] > 1 the count is shown as volumes instead. */
     val pages: Int? = null,

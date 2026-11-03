@@ -50,3 +50,12 @@ describe("typed spelling", () => {
     expect(hasTypedSpelling("«<mark>انما الاعمال</mark>»", words)).toBe(false);
   });
 });
+
+describe("root mode", () => {
+  it("matches any form, exact first then prefix", () => {
+    expect(tierExprs(["كتب", "كاتب", "في"], "root")).toEqual([
+      '"كتب" OR "كاتب" OR "في"',
+      '("كتب"* OR "كاتب"* OR "في") NOT ("كتب" OR "كاتب" OR "في")',
+    ]);
+  });
+});

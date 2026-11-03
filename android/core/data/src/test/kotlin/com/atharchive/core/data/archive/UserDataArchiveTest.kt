@@ -59,6 +59,17 @@ class UserDataArchiveTest {
             .importFrom(ByteArrayInputStream(bytes.toByteArray())))
     }
 
+    @Test
+    fun appExtrasRoundTripBesideDatabaseRows() = runBlocking {
+        val blob = "{\"items\":[{\"text\":\"سبحان الله\\nوبحمده\"}]}"
+        val bytes = ByteArrayOutputStream()
+        UserDataArchive(MemoryUserDataArchiveAccess(annotationRows = mutableListOf(annotation("one"))))
+            .exportTo(bytes, mapOf("adhkar" to blob))
+        assertEquals(UserDataImportReport(2, 0, mapOf("adhkar" to blob)), UserDataArchive(MemoryUserDataArchiveAccess())
+            .importFrom(ByteArrayInputStream(bytes.toByteArray())))
+        assertRejected(bytes.toString("UTF-8").replace("\"app.adhkar\"", "\"app.\""))
+    }
+
     private suspend fun assertRejected(archive: String) {
         val target = MemoryUserDataArchiveAccess()
         var rejected = false

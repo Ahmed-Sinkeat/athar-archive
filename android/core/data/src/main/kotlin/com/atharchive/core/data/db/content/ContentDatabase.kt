@@ -505,16 +505,24 @@ abstract class ContentImportDao {
         if (chapters.isNotEmpty()) replaceChapters(chapters)
         if (footnotes.isNotEmpty()) replaceFootnotes(footnotes)
 
-        val importedBlocks = importedBlockCount(entityId)
-        val bytesOnDisk = importedBytes(entityId)
+        // From the frame rows, not COUNT(*) over block: that re-counted the whole book on every
+        // frame (quadratic on big books). Each frame's blocks were just replaced to its blockCount.
+        val stored = frames(entityId)
+        val importedBlocks = stored.sumOf(EntityFrameEntity::blockCount)
+        val bytesOnDisk = stored.sumOf(EntityFrameEntity::compressedBytes)
         val availability = if (importedBlocks == target.pkgBlocks) {
             ContentAvailability.COMPLETE
         } else {
             ContentAvailability.PARTIAL
         }
         require(importedBlocks <= target.pkgBlocks) { "imported frames exceed catalog block count" }
-        val progress = contiguousProgress(frames(entityId))
-        finishImport(entityId, availability, bytesOnDisk, progress, now)
+        // Every entity write re-runs every query watching `entity` (the whole catalog behind the
+        // library, search and downloads): once a frame that was ~850 catalog reloads for مسند أحمد,
+        // the import's main cost and the library's stutter during a download. Write on a change of
+        // state (first frame, last frame) and every 32nd frame for the size on disk.
+        if (availability != target.availability || target.localPackageHash != target.pkgHash || frame.frameOrdinal % 32 == 0) {
+            finishImport(entityId, availability, bytesOnDisk, contiguousProgress(stored), now)
+        }
         return FrameImportResult(availability, importedBlocks, bytesOnDisk)
     }
 

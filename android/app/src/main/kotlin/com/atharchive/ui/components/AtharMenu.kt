@@ -9,6 +9,7 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.scaleIn
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -173,6 +174,8 @@ fun AtharMenuItem(
     checked: Boolean? = null,
     subtitle: String? = null,
     destructive: Boolean = false,
+    /** A colour swatch at the row's end, for colour choices. */
+    dot: Color? = null,
 ) {
     val colors = LocalMenuColors.current ?: atharMenuColors()
     val actionAnchor = LocalAtharActionAnchor.current
@@ -198,6 +201,7 @@ fun AtharMenuItem(
             if (!subtitle.isNullOrBlank()) Text(subtitle, color = colors.secondary, fontSize = AtharTextSize.Small, maxLines = 1, overflow = TextOverflow.Ellipsis)
         }
         if (icon != null) Icon(icon, null, tint = colors.secondary.takeUnless { destructive } ?: tint, modifier = Modifier.size(16.dp))
+        if (dot != null) Box(Modifier.size(14.dp).clip(CircleShape).background(dot))
     }
 }
 

@@ -77,6 +77,11 @@ object ContentDataModule {
         .followRedirects(false)
         .followSslRedirects(false)
         .retryOnConnectionFailure(true)
+        // Sudanese carriers blackhole some Cloudflare IPs: fall back to ours, and give up on a dead one fast.
+        .dns(com.atharchive.core.data.network.FallbackDns())
+        .connectTimeout(6, java.util.concurrent.TimeUnit.SECONDS)
+        // Default 10 s read timeout drops a slow mobile link mid-catalog; a stall this long is a real outage.
+        .readTimeout(30, java.util.concurrent.TimeUnit.SECONDS)
         .build()
 
     @Provides
@@ -440,6 +445,12 @@ class ContentAccess @Inject constructor(
     suspend fun requestDownload(entityId: String) {
         requireNotNull(transferRunner) { "app-content origin is not configured" }.requestPin(entityId)
     }
+
+    suspend fun exportShared(entityIds: Collection<String>, output: java.io.OutputStream): Int =
+        requireNotNull(transferRunner) { "app-content origin is not configured" }.exportShared(entityIds, output)
+
+    suspend fun importShared(input: java.io.InputStream): List<ContentDownloadTarget> =
+        requireNotNull(transferRunner) { "app-content origin is not configured" }.importShared(input).map { ContentDownloadTarget(it.id, it.coll) }
 
     suspend fun requestDownloads(entityIds: Collection<String>) {
         requireNotNull(transferRunner) { "app-content origin is not configured" }.requestPins(entityIds)

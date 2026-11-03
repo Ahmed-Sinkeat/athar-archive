@@ -152,12 +152,24 @@ data class InBookHit(
     val pageLabel: String?,
     val sourceMatchStart: Int = matchStart,
     val sourceMatchEnd: Int = matchEnd,
+    /** An online hit (blockIndex -1): located in the book's text when tapped. */
+    val url: String? = null,
 )
+
+/** In-book search over what is on the phone; [complete] once every block of the book is saved. */
+data class InBookSearch(val hits: List<InBookHit>, val complete: Boolean = true, val savedPercent: Int = 100)
 
 enum class ReaderSpacing(val label: String, val multiplier: Float) {
     Tight("متقارب", 1.55f),
     Normal("عادي", 1.85f),
     Spacious("متباعد", 2.20f),
+}
+
+/** What frames a printed page's «ص N» between pages; the number itself always shows. */
+enum class PageMark(val label: String) {
+    Line("خط"),
+    Ornament("زخرفة"),
+    Plain("بسيط"),
 }
 
 enum class FootnoteMode(val label: String) {
@@ -175,6 +187,7 @@ data class ReaderSettings(
     /** «متصل»: one long page, no page dividers or page-end notes (a number still opens its note).
      *  The blocks stay as printed, so ordinals, highlights and selection never shift. */
     val continuous: Boolean = false,
+    val pageMark: PageMark = PageMark.Line,
     /** Poems: the verse number in the margin. */
     val verseNumbers: Boolean = false,
     /** Poems: each verse as one running line instead of two hemistichs. */
@@ -184,11 +197,21 @@ data class ReaderSettings(
     /** «خط»: saved highlights as a line under the text instead of a colour behind it. */
     val underlineHighlights: Boolean = false,
     /** «ألوان النص»: ﴿القرآن﴾، «الحديث والآثار»، العناوين، الشعر. */
-    val quranHue: TextHue = TextHue.Gold,
+    val quranHue: TextHue = TextHue.Red,
     val hadithHue: TextHue = TextHue.Blue,
     val headingHue: TextHue = TextHue.Theme,
     val poetryHue: TextHue = TextHue.Ink,
+    /** «مخصّص» colours (ARGB, 0 = none yet), one per line above. */
+    val quranColor: Int = 0,
+    val hadithColor: Int = 0,
+    val headingColor: Int = 0,
+    val poetryColor: Int = 0,
     val font: com.atharchive.ui.theme.ReaderFont = com.atharchive.ui.theme.ReaderFont.Kitab,
+    /** «خطوط النص»: the face of ﴿القرآن﴾ ([com.atharchive.ui.theme.ReaderFont.quranRoles]) and of verses ([com.atharchive.ui.theme.ReaderFont.roles]). */
+    val quranFont: com.atharchive.ui.theme.ReaderFont = com.atharchive.ui.theme.ReaderFont.Mushaf,
+    val poetryFont: com.atharchive.ui.theme.ReaderFont = com.atharchive.ui.theme.ReaderFont.Same,
+    /** «أزرار الصوت»: the volume keys turn the page in every reader. */
+    val volumeKeys: Boolean = false,
     /** When the user font was last imported; see [com.atharchive.ui.theme.family]. */
     val fontStamp: Long = 0,
 ) {
@@ -198,11 +221,8 @@ data class ReaderSettings(
     }
 }
 
-data class BookAudioUi(
-    val id: String,
-    val title: String,
-    val durationLabel: String,
-)
+/** A book's or question's recordings play in the poem reader's bar: one player for every text. */
+typealias BookAudioUi = com.atharchive.feature.poemreader.PoemAudioUi
 
 data class ReaderHighlight(
     val startOrdinal: Int,
@@ -311,9 +331,9 @@ val ReaderFixture: ReaderUiState = run {
         toc = toc,
         readingPositionIndex = 8,
         audio = listOf(
-            BookAudioUi("a1", "الدرس الأول: مقدمة في العقيدة", "٤٢:١٨"),
-            BookAudioUi("a2", "الدرس الثاني: توحيد الربوبية", "٣٨:٠٤"),
-            BookAudioUi("a3", "الدرس الثالث: الإيمان بالقدر", "٥١:٢٧"),
+            BookAudioUi("a1", "الدرس الأول: مقدمة في العقيدة", "", "", "٤٢:١٨", 2538),
+            BookAudioUi("a2", "الدرس الثاني: توحيد الربوبية", "", "", "٣٨:٠٤", 2284),
+            BookAudioUi("a3", "الدرس الثالث: الإيمان بالقدر", "", "", "٥١:٢٧", 3087),
         ),
         bookmarks = listOf(
             ReaderBookmark("bm1", 4, "كتاب التوحيد", "لا تَبلُغُهُ الأوهامُ، ولا تُدرِكُهُ الأفهامُ", "ص ١٣١"),

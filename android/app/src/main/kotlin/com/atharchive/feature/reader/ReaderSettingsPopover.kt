@@ -124,9 +124,16 @@ fun ReaderSettingsPopover(
             } else LabeledRow("العرض", colors) { SegmentRow(listOf("صفحات", "متصل"), if (settings.continuous) "متصل" else "صفحات", colors, "reader_layout") {
                 onChange(settings.copy(continuous = it == "متصل"))
             } }
+            if (!forPoem && !settings.continuous) LabeledRow("فاصل الصفحات", colors) { SegmentRow(PageMark.entries.map { it.label }, settings.pageMark.label, colors, "reader_page_mark") { label ->
+                onChange(settings.copy(pageMark = PageMark.entries.first { it.label == label }))
+            } }
             // متصل has no page foot, so notes open from their number only.
             if (!forPoem && !settings.continuous) LabeledRow("الحواشي", colors) { SegmentRow(FootnoteMode.entries.map { it.label }, settings.footnoteMode.label, colors, "reader_footnotes") { label ->
                 onChange(settings.copy(footnoteMode = FootnoteMode.entries.first { it.label == label }))
+            } }
+
+            LabeledRow("أزرار الصوت", colors) { SegmentRow(listOf("للصوت", "تقلب الصفحة"), if (settings.volumeKeys) "تقلب الصفحة" else "للصوت", colors, "reader_volume_keys") {
+                onChange(settings.copy(volumeKeys = it == "تقلب الصفحة"))
             } }
 
             // The app's own theme, the same control as الإعدادات › المظهر: one theme everywhere.

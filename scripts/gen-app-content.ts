@@ -2,6 +2,7 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { fetchAppAudio } from "../src/lib/app-v2/audio.js";
 import { generateAppContent, publishedContentTargets, type ContentTarget } from "../src/lib/app-v2/generator.js";
+import { DICTS } from "./gen-app-dict.js";
 
 const SLICE: ContentTarget[] = [
   { coll: "article", id: "byan-kdhb-athr-idha-safr-al-fqr-ila-mkan-ma-qal-al-kfr-khdhny-mak-ala-aby-dhr--v2" },
@@ -32,13 +33,16 @@ const signing = signingKeyFile && signingKeyId
 // --only=coll/id,coll/id: regenerate just those and keep the rest of the previous catalog
 const only = option("--only")?.split(",").map((pair) => {
   const [coll, id] = pair.split("/");
+  // The app rejects other collections (a `person/…` target once blocked every phone's sync).
+  if (!["article", "book", "question", "poem"].includes(coll) || !id) throw new Error(`--only: unsupported target ${pair}`);
   return { coll, id } as ContentTarget;
 });
 const result = await generateAppContent({
   repositoryRoot,
   outputRoot,
   sidecarRoot,
-  targets: only ?? (slice ? SLICE : await publishedContentTargets(repositoryRoot)),
+  // The dictionaries ship as dict.zip (pnpm app:dict), not as books: تاج العروس alone is over the package cap.
+  targets: only ?? (slice ? SLICE : (await publishedContentTargets(repositoryRoot)).filter((t) => !DICTS.some((d) => d.id === t.id))),
   keepOthers: only != null,
   signing,
   loadAudio: fetchAppAudio,

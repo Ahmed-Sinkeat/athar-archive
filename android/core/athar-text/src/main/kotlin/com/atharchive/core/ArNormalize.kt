@@ -14,19 +14,26 @@ import java.text.Normalizer
  * classes silently (reproduced twice while writing this file).
  */
 object ArNormalize {
-    // harakat, quranic annotation marks, superscript alef, tatweel
-    private val TASHKEEL =
-        Regex("[\u0610-\u061A\u0640\u064B-\u065F\u0670\u06D6-\u06ED]")
-
-    // alef with madda/hamza above/hamza below/wasla → bare alef
-    private val ALEF_VARIANTS = Regex("[\u0622\u0623\u0625\u0671]")
-
-    fun normalize(s: String): String =
-        Normalizer.normalize(s, Normalizer.Form.NFC)
-            .replace(TASHKEEL, "")
-            .replace(ALEF_VARIANTS, "\u0627")
-            .replace('\u0649', '\u064A') // alef maqsura -> ya
-            .replace('\u0629', '\u0647') // ta marbuta -> ha
+    // One pass, no regex: it runs on every paragraph a download imports (two regex replaces were
+    // most of the import's search-indexing time on a phone). Same steps as the TS pipeline:
+    // NFC, drop harakat/quranic marks/superscript alef/tatweel (isDeleted), alef variants to
+    // bare alef, alef maqsura to ya, ta marbuta to ha.
+    fun normalize(s: String): String {
+        val nfc = Normalizer.normalize(s, Normalizer.Form.NFC)
+        val out = StringBuilder(nfc.length)
+        for (c in nfc) {
+            if (isDeleted(c.code)) continue
+            out.append(
+                when (c) {
+                    '\u0622', '\u0623', '\u0625', '\u0671' -> '\u0627'
+                    '\u0649' -> '\u064A'
+                    '\u0629' -> '\u0647'
+                    else -> c
+                },
+            )
+        }
+        return out.toString()
+    }
 
     /**
      * Normalizes for search while retaining a UTF-16 range back to [source].

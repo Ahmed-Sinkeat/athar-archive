@@ -74,8 +74,15 @@ internal class PageSelection {
     private var anchor: Pair<ReaderSelectionEndpoint, ReaderSelectionEndpoint>? = null
     private var movingStart: Boolean? = null
     private var grab = Offset.Zero
-    var pointer: Offset? = null
+    var pointer: Offset? by mutableStateOf(null)
         private set
+
+    /** What the loupe magnifies while a handle moves: the text at that end. */
+    fun loupeSource(): Offset {
+        val moving = movingStart ?: return Offset.Unspecified
+        if (!dragging) return Offset.Unspecified
+        return handlePoint(moving)?.let { it - Offset(0f, glyphHeightAt(moving) / 2f) } ?: Offset.Unspecified
+    }
 
     fun clear() { start = null; end = null; dragging = false; anchor = null; movingStart = null }
 
@@ -156,11 +163,11 @@ internal class PageSelection {
         return true
     }
 
-    /** The handle under [point], if any: true = start, false = end. */
+    /** The handle under [point], if any: true = start, false = end. The whole stem and disc count, padded by [radius]. */
     fun handleAt(point: Offset, radius: Float, drop: Float): Boolean? {
         if (!active) return null
         val candidates = listOf(true, false).mapNotNull { isStart ->
-            handlePoint(isStart)?.let { isStart to (it + Offset(0f, drop) - point).getDistance() }
+            handlePoint(isStart)?.let { isStart to (Offset(it.x, point.y.coerceIn(it.y, it.y + drop)) - point).getDistance() }
         }.filter { it.second <= radius }
         return candidates.minByOrNull { it.second }?.first
     }
@@ -244,6 +251,16 @@ internal class PageSelection {
         val rtl = g.layout.getBidiRunDirection(char) == ResolvedTextDirection.Rtl
         val x = if (isStart == rtl) box.right else box.left
         return page.localPositionOf(g.coords, Offset(x, g.glyphBottom(g.layout.getLineForOffset(char))))
+    }
+
+    /** The selection when it is one word inside one laid-out block; «معنى» shows only then. */
+    fun singleWord(): String? {
+        val s = start ?: return null
+        val e = end ?: return null
+        if (s.ordinal != e.ordinal) return null
+        val source = geometry[s.ordinal]?.value?.source ?: return null
+        if (s.offset < 0 || e.offset > source.length || s.offset >= e.offset) return null
+        return source.substring(s.offset, e.offset).trim().takeIf { w -> w.isNotEmpty() && w.none(Char::isWhitespace) }
     }
 
     /** Glyph top of the first selected line and glyph bottom of the last, in page coordinates. */
@@ -362,7 +379,7 @@ internal fun Modifier.pageSelectionGestures(
         if (handle != null) {
             down.consume()
             selection.beginHandle(handle, down.position)
-            trackDrag(selection, down.id.value)
+            trackDrag(selection, down.id.value, haptics)
             return@awaitEachGesture
         }
         var outcome = 0 // 0 = still deciding, 1 = tap, 2 = scroll or consumed by a child
@@ -381,19 +398,24 @@ internal fun Modifier.pageSelectionGestures(
         if (outcome == 2 || held != null) return@awaitEachGesture
         if (!selection.beginWord(currentEvent.changes.firstOrNull { it.id == down.id }?.position ?: down.position)) return@awaitEachGesture
         haptics.performHapticFeedback(HapticFeedbackType.LongPress)
-        trackDrag(selection, down.id.value)
+        trackDrag(selection, down.id.value, haptics)
     }
 }
 
 /** Takes every move from the list (Initial pass) until the finger lifts. */
-private suspend fun androidx.compose.ui.input.pointer.AwaitPointerEventScope.trackDrag(selection: PageSelection, id: Long) {
+private suspend fun androidx.compose.ui.input.pointer.AwaitPointerEventScope.trackDrag(selection: PageSelection, id: Long, haptics: HapticFeedback) {
     try {
         while (true) {
             val event = awaitPointerEvent(PointerEventPass.Initial)
             val change: PointerInputChange = event.changes.firstOrNull { it.id.value == id } ?: break
             change.consume()
             if (!change.pressed) break
-            if (change.position != change.previousPosition) selection.drag(change.position)
+            if (change.position != change.previousPosition) {
+                val before = selection.start to selection.end
+                selection.drag(change.position)
+                // A light tick each time an end steps to the next word.
+                if (before != (selection.start to selection.end)) haptics.performHapticFeedback(HapticFeedbackType.TextHandleMove)
+            }
         }
     } finally {
         selection.endDrag()

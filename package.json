@@ -31,6 +31,7 @@
     "search:index:local": "SEARCH_ALLOW_FULL_REBUILD=1 pnpm search:gen && for f in dist/search-index/*.sql; do wrangler d1 execute athar-search --local -y --file \"$f\" || exit 1; done",
     "app:vectors": "tsx scripts/gen-ar-vectors.ts",
     "app:gen": "tsx scripts/gen-app-content.ts",
+    "app:dict": "tsx scripts/gen-app-dict.ts",
     "app:gen:slice": "tsx scripts/gen-app-content.ts --slice",
     "app:publish": "node scripts/upload-app-content.mjs",
     "app:bundle-catalog": "node scripts/bundle-app-catalog.mjs",

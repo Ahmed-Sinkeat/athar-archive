@@ -1,5 +1,14 @@
 package com.atharchive.ui
 
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.ui.focus.focusRequester
+import com.atharchive.ui.theme.AtharCorners
+import androidx.compose.foundation.layout.Spacer
+import kotlinx.coroutines.flow.first
 import com.atharchive.ui.theme.AtharTextSize
 import com.atharchive.ui.components.arabicDigits
 import com.atharchive.ui.components.AtharAppMenuEntry
@@ -131,7 +140,7 @@ private data object SettingsRoute : NavKey
 private data object PlayerRoute : NavKey
 
 @Serializable
-private data class PoemReaderRoute(val poemId: String, val targetOrdinal: Int? = null) : NavKey
+private data class PoemReaderRoute(val poemId: String, val targetOrdinal: Int? = null, val match: String? = null) : NavKey
 
 @Serializable
 private data class ReaderRoute(
@@ -167,8 +176,8 @@ fun AtharApp(
     onThemeModeChange: (ThemeMode) -> Unit,
     style: com.atharchive.ui.theme.AtharStyle = com.atharchive.ui.theme.AtharStyle.Paper,
     onStyleChange: (com.atharchive.ui.theme.AtharStyle) -> Unit = {},
-    accent: com.atharchive.ui.theme.AtharAccent = com.atharchive.ui.theme.AtharAccent.Burgundy,
-    onAccentChange: (com.atharchive.ui.theme.AtharAccent) -> Unit = {},
+    accent: com.atharchive.ui.theme.AccentChoice = com.atharchive.ui.theme.AccentChoice(),
+    onAccentChange: (com.atharchive.ui.theme.AccentChoice) -> Unit = {},
     startPlace: com.atharchive.data.StartPlace = com.atharchive.data.StartPlace.Books,
     onStartPlaceChange: (com.atharchive.data.StartPlace) -> Unit = {},
     readerSettings: ReaderSettings,
@@ -199,14 +208,26 @@ fun AtharApp(
     val nowPlaying by remember { derivedStateOf { audioState.nowPlaying } }
     val hasRecordings by remember { derivedStateOf { audioState.recordings.isNotEmpty() } }
     val playbackError by remember { derivedStateOf { playbackState.error } }
-    val playingAudioId by remember { derivedStateOf { playbackState.id } }
-    val audioPlayIntent by remember { derivedStateOf { playbackState.playWhenReady } }
     LaunchedEffect(hasRecordings) {
         if (hasRecordings) contentViewModel.foldAudioFavourites(audioState.recordings)
     }
     val actionAnchor = remember { mutableStateOf(Rect.Zero) }
     var editorAnchor by remember { mutableStateOf(Rect.Zero) }
     var editingExcerpt by remember { mutableStateOf<ExcerptUi?>(null) }
+    // An excerpt for الكناشة to scroll to once it opens (from a note's «في الكناشة»).
+    var kannashahFocus by remember { mutableStateOf<String?>(null) }
+    // One's own dhikr being added or edited (from الأذكار, or from a selection in a reader).
+    val userAdhkar = remember { com.atharchive.data.UserAdhkarStore.get(context) }
+    var adhkarReminders by remember { mutableStateOf(com.atharchive.data.AdhkarReminders.all(context)) }
+    var adhkarOpen by remember { mutableStateOf<String?>(null) }
+    val userAdhkarState by userAdhkar.state.collectAsStateWithLifecycle()
+    var editingDhikr by remember { mutableStateOf<com.atharchive.data.UserDhikr?>(null) }
+    val windowSize = androidx.compose.ui.platform.LocalWindowInfo.current.containerSize
+    // From a selection there is no tapped control to point at: the popover sits high in the middle.
+    fun addDhikr(text: String, source: String, lists: Set<String> = emptySet(), anchor: Rect? = null) {
+        editorAnchor = anchor ?: Rect(androidx.compose.ui.geometry.Offset(windowSize.width / 2f, windowSize.height * 0.22f), Size(1f, 1f))
+        editingDhikr = com.atharchive.data.UserDhikr(com.atharchive.data.UserAdhkarStore.newId(), text, 1, source.ifBlank { null }, lists)
+    }
     var deletingExcerpt by remember { mutableStateOf<ExcerptUi?>(null) }
     // Each screen collects its own state inside its entry: a flow collected here runs from
     // launch, and every write to `entity` re-reads the whole catalog once per running flow.
@@ -216,14 +237,18 @@ fun AtharApp(
     }
     LaunchedEffect(playbackError) { playbackError?.let { snackbarHostState.showSnackbar(it) } }
     LaunchedEffect(syncState) {
-        if (syncState is com.atharchive.data.ContentSyncUiState.Failed &&
-            snackbarHostState.showSnackbar("تعذّر تحديث المحتوى؛ النصوص المحفوظة متاحة", "إعادة المحاولة", withDismissAction = true,
+        // Launch checks fail quietly (Settings shows the state); only a check the reader asked for speaks up.
+        val failed = syncState as? com.atharchive.data.ContentSyncUiState.Failed
+        if (failed?.manual == true &&
+            snackbarHostState.showSnackbar("تعذّر تحديث المحتوى: ${failed.message}", "إعادة المحاولة", withDismissAction = true,
                 // With an action it would stay until dismissed, over the readers' bottom bars.
                 duration = androidx.compose.material3.SnackbarDuration.Long) == androidx.compose.material3.SnackbarResult.ActionPerformed) {
-            contentViewModel.sync()
+            contentViewModel.sync(manual = true)
         }
     }
     val storageStatus by contentViewModel.storageStatus.collectAsStateWithLifecycle()
+    val retainedIds by contentViewModel.retainedEntityIds.collectAsStateWithLifecycle()
+    val recentQueries by contentViewModel.recentQueries.collectAsStateWithLifecycle()
     val cacheBytes by contentViewModel.cacheBytes.collectAsStateWithLifecycle()
     val cacheBudgetBytes by contentViewModel.cacheBudgetBytes.collectAsStateWithLifecycle()
     val pinnedCount by contentViewModel.pinnedCount.collectAsStateWithLifecycle()
@@ -235,9 +260,38 @@ fun AtharApp(
         }
     }
 
+    // The كناشة list only runs while something watches it (it was empty in the readers, so the
+    // note tap did nothing): wait briefly for this excerpt to arrive.
+    fun openExcerptNote(id: String?) {
+        val anchor = actionAnchor.value
+        scope.launch {
+            val excerpt = id?.let {
+                kotlinx.coroutines.withTimeoutOrNull(3_000) {
+                    contentViewModel.kannashahState.first { s -> s.excerpts.any { it.id == id } }
+                }?.excerpts?.firstOrNull { it.id == id }
+            }
+            if (excerpt == null) announce("تعذّر فتح التعليق") else { editorAnchor = anchor; editingExcerpt = excerpt }
+        }
+    }
+
     // StartupTimingMetric can only measure "interactive library" when Compose tells the
     // platform that the asynchronous Room-backed catalogue has reached the screen.
     ReportDrawnWhen { booksState.loaded }
+    // Once, on first opening; the same words stay in الإعدادات › حقوق النشر (main settings).
+    var copyrightSeen by com.atharchive.ui.components.rememberPersisted("copyright.notice.seen", "")
+    if (copyrightSeen.isEmpty()) {
+        val context = androidx.compose.ui.platform.LocalContext.current
+        androidx.compose.material3.AlertDialog(
+            onDismissRequest = { copyrightSeen = "1" },
+            title = { Text("حقوق النشر") },
+            text = { Text(com.atharchive.data.CopyrightNotice + "\n\n" + com.atharchive.data.CopyrightEmail) },
+            confirmButton = { androidx.compose.material3.TextButton(onClick = { copyrightSeen = "1" }) { Text("حسنًا") } },
+            dismissButton = {
+                androidx.compose.material3.TextButton(onClick = { copyrightSeen = "1"; com.atharchive.data.emailCopyright(context) }) { Text("مراسلة") }
+            },
+            modifier = Modifier.testTag("copyright_notice"),
+        )
+    }
     val notificationPermission = rememberLauncherForActivityResult(
         ActivityResultContracts.RequestPermission(),
     ) { }
@@ -248,7 +302,7 @@ fun AtharApp(
         scope.launch {
             runCatching {
                 requireNotNull(context.contentResolver.openOutputStream(uri, "wt")).use { output ->
-                    contentViewModel.exportUserData(output)
+                    contentViewModel.exportUserData(output, mapOf("adhkar" to userAdhkar.exportJson()))
                 }
             }.onSuccess {
                 announce("اكتمل تصدير بياناتك")
@@ -266,10 +320,55 @@ fun AtharApp(
                 requireNotNull(context.contentResolver.openInputStream(uri)).use { input ->
                     contentViewModel.importUserData(input)
                 }
-            }.onSuccess { report ->
-                announce("استُورد ${arabicDigits(report.imported)} سجلًا")
+            }.mapCatching { report ->
+                report.imported + (report.extras["adhkar"]?.let(userAdhkar::merge) ?: 0)
+            }.onSuccess { imported ->
+                announce("استُورد ${arabicDigits(imported)} سجلًا")
             }.onFailure {
                 announce("الملف ليس تصديرًا صالحًا من أثر")
+            }
+        }
+    }
+
+    // Saved books to another phone with no internet: one file through the share sheet
+    // (Quick Share, Bluetooth). The receiver checks every book against its own signed catalog.
+    fun sendBooks(ids: List<String>) {
+        scope.launch {
+            runCatching {
+                val dir = java.io.File(context.cacheDir, "shared").apply { deleteRecursively(); mkdirs() }
+                val file = java.io.File(dir, "athar-books.zip")
+                val count = file.outputStream().use { contentViewModel.exportSharedBooks(ids, it) }
+                if (count == 0) { file.delete(); return@runCatching false }
+                val uri = androidx.core.content.FileProvider.getUriForFile(context, "${context.packageName}.files", file)
+                context.startActivity(
+                    Intent.createChooser(
+                        Intent(Intent.ACTION_SEND).apply {
+                            type = "application/zip"
+                            putExtra(Intent.EXTRA_STREAM, uri)
+                            addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                        },
+                        "إرسال ${arabicDigits(count)} من المحفوظ",
+                    ),
+                )
+                true
+            }.onSuccess { sent ->
+                if (!sent) announce("التسجيلات لا تُرسل؛ اختر كتبًا أو قصائد أو مقالات محفوظة")
+            }.onFailure {
+                announce("تعذّر تجهيز الملف للإرسال")
+            }
+        }
+    }
+    val receiveBooks = rememberLauncherForActivityResult(
+        ActivityResultContracts.OpenDocument(),
+    ) { uri ->
+        uri ?: return@rememberLauncherForActivityResult
+        scope.launch {
+            runCatching {
+                requireNotNull(context.contentResolver.openInputStream(uri)).use { contentViewModel.importSharedBooks(it) }
+            }.onSuccess { count ->
+                announce(if (count == 0) "لا شيء في الملف يطابق نسخ أثر على هذا الجهاز" else "يُستورد ${arabicDigits(count)} من المحفوظ")
+            }.onFailure {
+                announce("الملف ليس ملف كتب من أثر")
             }
         }
     }
@@ -331,6 +430,11 @@ fun AtharApp(
             backStack.add(PoemReaderRoute(poem[0], poem.getOrNull(1)?.toIntOrNull()))
             onDownloadTargetHandled()
         }
+        else if (downloadTarget?.startsWith("adhkar:") == true) {
+            adhkarOpen = downloadTarget.removePrefix("adhkar:")
+            if (backStack.lastOrNull() != AdhkarRoute) backStack.add(AdhkarRoute)
+            onDownloadTargetHandled()
+        }
         else if (downloadTarget != null) { backStack.add(DownloadsListRoute(downloadTarget)); onDownloadTargetHandled() }
     }
     val tabState = androidx.compose.runtime.saveable.rememberSaveableStateHolder()
@@ -368,9 +472,9 @@ fun AtharApp(
         if (hit.url != null) scope.launch {
             val (ordinal, start, end) = contentViewModel.locateOnlineHit(hit, query)
             val found = ordinal != null && end > start
-            backStack.add(if (poem) PoemReaderRoute(hit.entityId, ordinal) else ReaderRoute(hit.entityId, ordinal, start.takeIf { found }, end.takeIf { found }))
+            backStack.add(if (poem) PoemReaderRoute(hit.entityId, ordinal, query) else ReaderRoute(hit.entityId, ordinal, start.takeIf { found }, end.takeIf { found }))
         } else if (poem) {
-            backStack.add(PoemReaderRoute(hit.entityId, hit.ordinal))
+            backStack.add(PoemReaderRoute(hit.entityId, hit.ordinal, query))
         } else {
             backStack.add(ReaderRoute(hit.entityId, hit.ordinal, hit.sourceMatchStart, hit.sourceMatchEnd))
         }
@@ -466,7 +570,10 @@ fun AtharApp(
             AtharAppMenuEntry("الأعلام", AtharIcons.People) { backStack.add(PersonsRoute()) },
             AtharAppMenuEntry("الإعدادات", AtharIcons.Settings) { openSettings() },
         )
-        androidx.compose.runtime.CompositionLocalProvider(LocalAtharAppMenu provides appMenu, LocalAtharActionAnchor provides actionAnchor) {
+        androidx.compose.runtime.CompositionLocalProvider(LocalAtharAppMenu provides appMenu, LocalAtharActionAnchor provides actionAnchor,
+            com.atharchive.feature.reader.LocalAddToAdhkar provides { text, source -> addDhikr(text, source) },
+            com.atharchive.feature.reader.LocalDictionary provides contentViewModel.dictionary,
+            com.atharchive.feature.reader.LocalOpenBookAt provides { id, ordinal -> backStack.add(ReaderRoute(id, targetOrdinal = ordinal)) }) {
         NavDisplay(
             backStack = backStack,
             onBack = { if (backStack.size > 1) backStack.removeLastOrNull() },
@@ -500,15 +607,16 @@ fun AtharApp(
                         themeModeLabel = themeMode.label,
                         onAppearance = { backStack.add(AppearanceRoute) },
                         onDownloads = { backStack.add(DownloadsRoute) },
-                        onSync = contentViewModel::sync,
-                        syncLabel = when (syncState) {
+                        onSync = { contentViewModel.sync(manual = true) },
+                        syncLabel = when (val sync = syncState) {
                             com.atharchive.data.ContentSyncUiState.Checking -> "جارٍ التحديث…"
                             com.atharchive.data.ContentSyncUiState.UpToDate -> "المحتوى محدّث"
-                            is com.atharchive.data.ContentSyncUiState.Failed -> "تعذّر التحديث؛ أعد المحاولة"
+                            is com.atharchive.data.ContentSyncUiState.Failed -> "${sync.message}؛ اضغط لإعادة المحاولة"
                             else -> "تحقّق من المحتوى الجديد"
                         },
                         onExportUserData = { exportUserData.launch("athar-user-data.jsonl") },
                         onImportUserData = { importUserData.launch(arrayOf("application/json", "text/plain")) },
+                        onReceiveBooks = { receiveBooks.launch(arrayOf("application/zip", "application/octet-stream")) },
                         onBack = ::goBack,
                     )
                 }
@@ -520,6 +628,8 @@ fun AtharApp(
                     val openProgress by contentViewModel.openProgress.collectAsStateWithLifecycle()
                     val loadProgress = openProgress?.takeIf { it.first == route.bookId }?.second
                     LaunchedEffect(route.bookId, route.targetOrdinal) {
+                        // Any path that opens a poem as a book (links, meanings, lists) lands in the poem reader instead.
+                        if (contentViewModel.isPoem(route.bookId)) return@LaunchedEffect replaceRoute(route, PoemReaderRoute(route.bookId, route.targetOrdinal))
                         // A work opens in the edition last chosen for it; a jump to a place opens as asked.
                         val edition = if (route.targetOrdinal == null) contentViewModel.editionToOpen(route.bookId) else route.bookId
                         if (edition != route.bookId) replaceRoute(route, ReaderRoute(edition))
@@ -543,6 +653,7 @@ fun AtharApp(
                         )
                         TextButton(onClick = { contentViewModel.sync(); contentViewModel.openReader(route.bookId, route.targetOrdinal) }) { Text("إعادة المحاولة") }
                     }
+                    val authorId by androidx.compose.runtime.produceState<String?>(null, route.bookId) { value = contentViewModel.authorOf(route.bookId) }
                     readerState?.let { state ->
                       androidx.compose.foundation.layout.Box(Modifier.fillMaxSize()) {
                         ReaderScreen(
@@ -551,22 +662,30 @@ fun AtharApp(
                             loadProgress = loadProgress,
                             initialOrdinal = route.targetOrdinal,
                             onSearch = { contentViewModel.searchInBook(route.bookId, it) },
+                            bookSaved = route.bookId in retainedIds,
+                            onDownloadForSearch = { contentViewModel.downloadForSearch(route.bookId) },
+                            onOpenAuthor = authorId?.let { id -> { backStack.add(PersonsRoute(id)) } },
+                            onShareBook = { shareText(context, listOf(state.bookTitle, state.author, state.sourceUrl).filter(String::isNotBlank).joinToString("\n")) },
+                            onLocateOnline = { url, q -> contentViewModel.locateOnline(route.bookId, url, q) },
+                            recentQueries = recentQueries,
+                            onRememberSearch = contentViewModel::rememberSearch,
                             onPageJump = { page, volume -> contentViewModel.findPrintedPage(route.bookId, page, volume) },
                             onAnchorJump = { contentViewModel.findHeadingAnchor(route.bookId, it) },
                             onLoadSelectionBlocks = { contentViewModel.selectionBlocks(route.bookId, it) },
                             onRemoveHighlight = contentViewModel::deleteAnnotation,
-                            onEditHighlightNote = { id ->
-                                contentViewModel.kannashahState.value.excerpts.firstOrNull { it.id == id }
-                                    ?.let { editorAnchor = actionAnchor.value; editingExcerpt = it }
-                            },
+                            onEditHighlightNote = { openExcerptNote(it) },
+                            onOpenInKannashah = { kannashahFocus = it; navigateTo(AtharDestination.Kannashah) },
                             onCopyCited = { selection ->
                                 val (vol, page) = contentViewModel.printedPlace(route.bookId, minOf(selection.start.ordinal, selection.end.ordinal))
                                 copyText(context, citedText(selection.quotedText, state.bookTitle, state.author,
                                     vol.takeIf { state.volumeStarts.isNotEmpty() }, page, state.sourceUrl, state.volumeUnit))
                             },
                             onPlayAudio = { contentViewModel.playWorkAudio(route.bookId, it.id) },
-                            playingAudioId = playingAudioId,
-                            audioPlayIntent = audioPlayIntent,
+                            playback = { playbackState },
+                            onToggleAudio = contentViewModel.playback::toggle,
+                            onSpeed = contentViewModel.playback::speed,
+                            onRepeat = contentViewModel.playback::repeat,
+                            onSeekMs = contentViewModel.playback::seekTo,
                             onOpenEntity = { backStack.add(ReaderRoute(it)) },
                             onEdition = { id ->
                                 state.editions.firstOrNull { it.primary }?.let { contentViewModel.chooseEdition(it.id, id) }
@@ -618,10 +737,13 @@ fun AtharApp(
                         IconButton(onClick = ::goBack) { Icon(AtharIcons.Back, "رجوع") }
                         com.atharchive.ui.components.AtharLoading("جارٍ تحميل القصيدة…", Modifier.padding(top = 120.dp), tag = "poem_loading", progress = loadProgress)
                     } else if (poemState == null) UnavailableRoute("القصيدة غير متاحة بعد", ::goBack) { contentViewModel.sync(); contentViewModel.openReader(route.poemId, route.targetOrdinal) }
+                    val poetId by androidx.compose.runtime.produceState<String?>(null, route.poemId) { value = contentViewModel.authorOf(route.poemId) }
                     poemState?.let { state -> PoemReaderScreen(
                             state = state,
                             loadProgress = loadProgress,
                             onBack = ::goBack,
+                            onOpenAuthor = poetId?.let { id -> { backStack.add(PersonsRoute(id)) } },
+                            onDownload = { contentViewModel.downloadForSearch(route.poemId) }.takeUnless { route.poemId in retainedIds },
                             settings = readerSettings,
                             onSettingsChange = onReaderSettingsChange,
                             themeMode = themeMode,
@@ -635,7 +757,12 @@ fun AtharApp(
                             onToggleBookmark = { contentViewModel.toggleBookmark(route.poemId, it) },
                             onSaveVerse = { contentViewModel.saveBlock(route.poemId, it) },
                             onRemoveVerse = { contentViewModel.removeSavedBlock(route.poemId, it) },
+                            onVerseNote = { scope.launch { openExcerptNote(contentViewModel.savedBlockId(route.poemId, it)) } },
+                            onVerseInKannashah = { scope.launch {
+                                contentViewModel.savedBlockId(route.poemId, it)?.let { id -> kannashahFocus = id; navigateTo(AtharDestination.Kannashah) }
+                            } },
                             initialOrdinal = route.targetOrdinal,
+                            match = route.match,
                             onPositionChange = { contentViewModel.onReaderPosition(route.poemId, it) },
                             onRetry = { contentViewModel.openReader(route.poemId, route.targetOrdinal) },
                         ) }
@@ -696,7 +823,7 @@ fun AtharApp(
                     val persons by contentViewModel.persons.collectAsStateWithLifecycle()
                     val works by contentViewModel.personWorks.collectAsStateWithLifecycle()
                     val person = persons.firstOrNull { it.id == route.personId }
-                    if (route.personId == null) com.atharchive.feature.persons.PersonsScreen(persons, { backStack.add(PersonsRoute(it.id)) }, ::openSettings, ::goBack)
+                    if (route.personId == null) com.atharchive.feature.persons.PersonsScreen(persons, works, { backStack.add(PersonsRoute(it.id)) }, ::openSettings, ::goBack)
                     else if (person != null) com.atharchive.feature.persons.PersonScreen(person, works, { work ->
                         backStack.add(if (work.coll == "poem") PoemReaderRoute(work.id) else ReaderRoute(work.id))
                     }, ::openSettings, ::goBack)
@@ -719,15 +846,39 @@ fun AtharApp(
                 }
                 entry<AdhkarRoute> {
                     val favourites by contentViewModel.favouriteIds.collectAsStateWithLifecycle()
-                    val adhkar = remember(favourites) {
-                        AdhkarContent.copy(entries = AdhkarContent.entries.mapValues { (_, list) ->
-                            list.map { it.copy(saved = "dhikr:${it.id}" in favourites) }
-                        })
+                    val adhkar = remember(favourites, userAdhkarState) {
+                        val own = userAdhkarState.items.map { com.atharchive.feature.adhkar.DhikrUi(it.id, it.text, it.repeat, it.source, custom = true) }
+                        val inList = { list: String -> userAdhkarState.items.zip(own).filter { list in it.first.lists }.map { it.second } }
+                        AdhkarContent.copy(
+                            babs = AdhkarContent.babs + userAdhkarState.lists.map { com.atharchive.feature.adhkar.AdhkarBabUi(it.id, it.label) },
+                            entries = (AdhkarContent.entries.mapValues { (bab, list) -> list + inList(bab) } +
+                                userAdhkarState.lists.associate { it.id to inList(it.id) })
+                                .mapValues { (_, list) -> list.map { it.copy(saved = "dhikr:${it.id}" in favourites) } },
+                        )
                     }
                     AdhkarScreen(
                         state = adhkar,
                         onSettings = ::openSettings,
                         onOpenBabs = {},
+                        onAdd = { list -> addDhikr("", "", setOf(list), actionAnchor.value) },
+                        onEdit = { dhikr -> userAdhkarState.items.firstOrNull { it.id == dhikr.id }?.let { editorAnchor = actionAnchor.value; editingDhikr = it } },
+                        onDeleteList = { id ->
+                            com.atharchive.data.AdhkarReminders.set(context, id, "", null)
+                            adhkarReminders = com.atharchive.data.AdhkarReminders.all(context)
+                            userAdhkar.deleteList(id)
+                        },
+                        reminders = adhkarReminders,
+                        onReminder = { id, label, minutes ->
+                            if (minutes != null && android.os.Build.VERSION.SDK_INT >= 33 &&
+                                androidx.core.content.ContextCompat.checkSelfPermission(context, android.Manifest.permission.POST_NOTIFICATIONS) !=
+                                android.content.pm.PackageManager.PERMISSION_GRANTED
+                            ) notificationPermission.launch(android.Manifest.permission.POST_NOTIFICATIONS)
+                            com.atharchive.data.AdhkarReminders.set(context, id, label, minutes)
+                            adhkarReminders = com.atharchive.data.AdhkarReminders.all(context)
+                            announce(if (minutes == null) "أُوقف التذكير" else "سيُذكّرك كل يوم")
+                        },
+                        openList = adhkarOpen,
+                        onOpened = { adhkarOpen = null },
                         onCopy = { copyText(context, it.text); announce("نُسخ الذكر") },
                         onSave = { contentViewModel.toggleFavourite("dhikr:${it.id}") },
                         onBack = ::goBack,
@@ -791,6 +942,7 @@ fun AtharApp(
                             else contentViewModel.removeDownload(it.id)
                         },
                         onRemoveMany = { items -> contentViewModel.removeDownloads(items.map { it.id }) },
+                        onSend = { items -> sendBooks(items.map { it.id }) },
                     )
                 }
                 entry<SectionRoute> { route ->
@@ -813,6 +965,7 @@ fun AtharApp(
                             onSaveClick = { contentViewModel.toggleFavourite(it.id) },
                             onDownloadClick = { onDownloadTap(it.id, it.title, it.sizeLabel, it.downloaded, it.transfer) },
                             scrollToTopRequest = scrollToTopRequest,
+                            textSearch = remember { sectionSearch(com.atharchive.feature.search.SearchResultType.Article) },
                         )
 
                         AtharDestination.Search -> SearchScreen(
@@ -837,6 +990,9 @@ fun AtharApp(
                                 }
                             },
                             onClearRecent = contentViewModel::clearRecentSearches,
+                            presets = contentViewModel.searchPresets.collectAsStateWithLifecycle().value,
+                            onSavePreset = contentViewModel::saveSearchPreset,
+                            onDeletePreset = contentViewModel::deleteSearchPreset,
                         )
 
                         AtharDestination.Kannashah -> KannashahScreen(
@@ -851,6 +1007,8 @@ fun AtharApp(
                             },
                             onMore = { editorAnchor = actionAnchor.value; editingExcerpt = it },
                             onDelete = { deletingExcerpt = it },
+                            focusId = kannashahFocus,
+                            onFocused = { kannashahFocus = null },
                             onOpenSource = { excerpt ->
                                 if (excerpt.sourceColl == "poem") scope.launch {
                                     try {
@@ -875,58 +1033,87 @@ fun AtharApp(
     editingExcerpt?.let { excerpt ->
         var note by rememberSaveable(excerpt.id) { mutableStateOf(excerpt.comment.orEmpty()) }
         var deleteBounds by remember { mutableStateOf(Rect.Zero) }
+        val focus = remember { androidx.compose.ui.focus.FocusRequester() }
+        // A new note opens ready to type; an existing one waits for a tap so it can be read first.
+        if (excerpt.comment.isNullOrBlank()) LaunchedEffect(excerpt.id) { runCatching { focus.requestFocus() } }
+        fun save() = scope.launch {
+            runCatching { contentViewModel.editAnnotation(excerpt.id, note) }
+                .onSuccess { editingExcerpt = null; announce("حُفظ التعليق") }
+                .onFailure { announce("تعذّر الحفظ؛ بقي التعليق مفتوحًا") }
+        }
         AtharTailPopover(anchor = { editorAnchor }, ground = AtharTheme.colors.raisedSurface,
-            onDismiss = { editingExcerpt = null }, maxWidth = 320.dp) {
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 20.dp, vertical = 12.dp),
-            ) {
-                Text(
-                    text = "تعليق على المقتطف",
-                    fontFamily = AtharEditorialFontFamily,
-                    fontWeight = FontWeight.Bold,
-                    style = MaterialTheme.typography.titleMedium,
-                )
-                Text(
-                    text = excerpt.text,
-                    modifier = Modifier.padding(top = 8.dp),
-                    color = AtharTheme.colors.secondaryText,
-                    maxLines = 3,
-                    overflow = TextOverflow.Ellipsis,
-                    style = MaterialTheme.typography.bodyMedium,
-                )
-                OutlinedTextField(
+            onDismiss = { editingExcerpt = null }, maxWidth = 340.dp) {
+            Column(Modifier.fillMaxWidth().padding(horizontal = 18.dp, vertical = 14.dp)) {
+                // The excerpt, as a quotation: an accent rule, the reader's type, and where it is from.
+                Row(Modifier.fillMaxWidth().height(androidx.compose.foundation.layout.IntrinsicSize.Min)) {
+                    Box(Modifier.width(3.dp).fillMaxHeight().background(AtharTheme.colors.accent, AtharCorners.Tag))
+                    Column(Modifier.padding(start = 12.dp)) {
+                        Text(
+                            text = excerpt.text,
+                            fontFamily = AtharEditorialFontFamily,
+                            maxLines = 4,
+                            overflow = TextOverflow.Ellipsis,
+                            style = MaterialTheme.typography.bodyLarge,
+                        )
+                        Text(
+                            text = listOfNotNull(excerpt.sourceTitle, excerpt.locationLabel).joinToString(" · "),
+                            modifier = Modifier.padding(top = 4.dp),
+                            color = AtharTheme.colors.secondaryText,
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis,
+                            style = MaterialTheme.typography.labelMedium,
+                        )
+                    }
+                }
+                // The writing area: a quiet page, no box-in-a-box outline.
+                androidx.compose.foundation.text.BasicTextField(
                     value = note,
                     onValueChange = { note = it.take(2_000) },
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(top = 14.dp)
+                        .heightIn(min = 112.dp, max = 220.dp)
+                        .background(AtharTheme.colors.inputSurface, AtharCorners.Card)
+                        .focusRequester(focus)
                         .testTag("kannashah_note_editor"),
-                    label = { Text("تعليقي") },
-                    minLines = 3,
-                    maxLines = 5,
+                    textStyle = MaterialTheme.typography.bodyLarge.copy(color = MaterialTheme.colorScheme.onSurface, fontFamily = AtharEditorialFontFamily),
+                    cursorBrush = androidx.compose.ui.graphics.SolidColor(AtharTheme.colors.accent),
+                    decorationBox = { field ->
+                        Box(Modifier.padding(horizontal = 14.dp, vertical = 12.dp)) {
+                            if (note.isEmpty()) Text("اكتب تعليقك…", color = AtharTheme.colors.placeholderText, style = MaterialTheme.typography.bodyLarge)
+                            field()
+                        }
+                    },
+                )
+                if (note.length > 1_800) Text(
+                    "${arabicDigits(note.length)} / ${arabicDigits(2_000)}",
+                    Modifier.align(Alignment.End).padding(top = 4.dp),
+                    color = AtharTheme.colors.secondaryText, style = MaterialTheme.typography.labelSmall,
                 )
                 Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(vertical = 10.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween,
+                    modifier = Modifier.fillMaxWidth().padding(top = 12.dp),
+                    verticalAlignment = Alignment.CenterVertically,
                 ) {
                     TextButton(
                         onClick = { actionAnchor.value = deleteBounds; deletingExcerpt = excerpt },
                         modifier = Modifier.onGloballyPositioned { deleteBounds = Rect(it.positionOnScreen(), Size(it.size.width.toFloat(), it.size.height.toFloat())) }.testTag("kannashah_delete_annotation"),
                     ) {
-                        Text("حذف")
+                        Text("حذف", color = MaterialTheme.colorScheme.error)
                     }
-                    TextButton(
-                        onClick = {
-                            scope.launch {
-                                runCatching { contentViewModel.editAnnotation(excerpt.id, note) }
-                                    .onSuccess { editingExcerpt = null; announce("حُفظ التعليق") }
-                                    .onFailure { announce("تعذّر الحفظ؛ بقي التعليق مفتوحًا") }
-                            }
-                        },
+                    if (currentDestination != AtharDestination.Kannashah) TextButton(
+                        onClick = { editingExcerpt = null; kannashahFocus = excerpt.id; navigateTo(AtharDestination.Kannashah) },
+                        modifier = Modifier.testTag("kannashah_go_to_excerpt"),
+                    ) {
+                        Text("ذهاب إلى الكناشة", color = AtharTheme.colors.accent)
+                    }
+                    Spacer(Modifier.weight(1f))
+                    androidx.compose.material3.Button(
+                        onClick = { save() },
+                        enabled = note.trim() != excerpt.comment.orEmpty().trim(),
+                        shape = AtharCorners.Control,
+                        colors = androidx.compose.material3.ButtonDefaults.buttonColors(
+                            containerColor = AtharTheme.colors.primaryAction, contentColor = AtharTheme.colors.onPrimaryAction,
+                        ),
                         modifier = Modifier.testTag("kannashah_save_note"),
                     ) {
                         Text("حفظ")
@@ -934,6 +1121,23 @@ fun AtharApp(
                 }
             }
         }
+    }
+
+    editingDhikr?.let { draft ->
+        val editing = userAdhkarState.items.any { it.id == draft.id }
+        com.atharchive.feature.adhkar.DhikrEditorPopover(
+            draft = draft,
+            editing = editing,
+            lists = com.atharchive.feature.adhkar.BuiltInAdhkarLists + userAdhkarState.lists,
+            anchor = { editorAnchor },
+            onSave = { dhikr, newList ->
+                val lists = dhikr.lists + listOfNotNull(newList?.let(userAdhkar::addList))
+                if (userAdhkar.save(dhikr.copy(lists = lists))) { editingDhikr = null; announce(if (editing) "حُفظ الذكر" else "أُضيف إلى الأذكار") }
+                else announce("اكتب الذكر واختر قائمة")
+            },
+            onDelete = { userAdhkar.delete(draft.id); editingDhikr = null; announce("حُذف الذكر") },
+            onDismiss = { editingDhikr = null },
+        )
     }
 
     // Deleting an excerpt can't be undone, so both ways to it (the menu, the note editor) ask first.
@@ -1101,6 +1305,7 @@ private fun SettingsScreen(
     syncLabel: String,
     onExportUserData: () -> Unit,
     onImportUserData: () -> Unit,
+    onReceiveBooks: () -> Unit,
     onBack: () -> Unit,
 ) {
     Column(
@@ -1143,7 +1348,7 @@ private fun SettingsScreen(
                 tag = "settings_export_user_data",
             )
             HorizontalDivider(color = AtharTheme.colors.divider)
-            SettingsRow(AtharIcons.Download, "تحديث المحتوى", syncLabel, onClick = onSync, tag = "settings_sync_content")
+            SettingsRow(AtharIcons.Repeat, "تحديث المحتوى", syncLabel, onClick = onSync, tag = "settings_sync_content")
             HorizontalDivider(color = AtharTheme.colors.divider)
             SettingsRow(
                 AtharIcons.Download,
@@ -1151,6 +1356,24 @@ private fun SettingsScreen(
                 "يدمج الملف ويحافظ على التعديلات المحلية الأحدث",
                 onClick = onImportUserData,
                 tag = "settings_import_user_data",
+            )
+            HorizontalDivider(color = AtharTheme.colors.divider)
+            SettingsRow(
+                AtharIcons.Download,
+                "استقبال كتب",
+                "من ملف أرسله جهاز آخر (مشاركة سريعة أو بلوتوث)، بلا إنترنت",
+                onClick = onReceiveBooks,
+                tag = "settings_receive_books",
+            )
+            HorizontalDivider(color = AtharTheme.colors.divider)
+            // Legal contact is an app-wide matter, not a reading preference.
+            val context = androidx.compose.ui.platform.LocalContext.current
+            SettingsRow(
+                AtharIcons.Info,
+                "حقوق النشر",
+                com.atharchive.data.CopyrightNotice + "\n" + com.atharchive.data.CopyrightEmail,
+                onClick = { com.atharchive.data.emailCopyright(context) },
+                tag = "settings_copyright",
             )
         }
     }

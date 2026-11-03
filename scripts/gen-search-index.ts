@@ -23,6 +23,7 @@ import { readBody } from "../src/lib/read-body.js";
 import { analyzeBook } from "../src/lib/chunk.js";
 import { normalizeArabic } from "../src/lib/ar-normalize.js";
 import { stripMdRaw as strip } from "../src/lib/strip-md.js";
+import { DICTS } from "./gen-app-dict.js";
 
 interface Doc {
   type: string;
@@ -73,6 +74,10 @@ async function main() {
   }
   const rebuildNext = process.env.SEARCH_REBUILD_NEXT === "1";
   const incremental = !rebuildNext && Object.keys(remoteHashes).length > 0;
+  // The ranked format (2500-char passages, doc_meta.prior) needs a fresh index: it changes every
+  // row, ~1.8M writes, weeks on D1's free quota. Until that build (SEARCH_FORMAT=v2 or
+  // SEARCH_REBUILD_NEXT), incremental runs keep the live format: 15k-char rows, no prior.
+  const v2 = rebuildNext || process.env.SEARCH_FORMAT === "v2";
   if (!incremental) {
     console.log(
       snapshotOk
@@ -89,12 +94,26 @@ async function main() {
   // Astro getStaticPaths props fix). Now each entry's text exists only for
   // the moment it's hashed and (if changed) written to a SQL file; nothing
   // beyond that survives past its own iteration.
-  const metaEntries = loadContentMetaFromDisk().filter((e) => e.data.status === "published");
+  // The lexicons answer «معنى» in the app (gen-app-dict.ts); in search their every root would bury
+  // the books that use the word, and لسان العرب + تاج العروس alone would eat much of D1's 10 GB.
+  const dicts = new Set(DICTS.map((d) => d.id));
+  const metaEntries = loadContentMetaFromDisk().filter((e) => e.data.status === "published" && !(e.collection === "book" && dicts.has(e.id)));
+  // Source priority (doc_meta.prior, multiplies bm25 in search-handler.ts): an early author and a
+  // متن rank above the later works that quote them — بالنيات found صحيح البخاري at #161 without it.
+  // ponytail: two hand-set weights; tune them (and re-run) if results lean too old or too متن.
+  const deathOf = new Map(metaEntries.filter((e) => e.collection === "person")
+    .map((e) => [e.id, Number(String(e.data.died ?? "").match(/\d+/)?.[0] ?? NaN)]));
+  const kindOf = new Map(metaEntries.filter((e) => e.collection === "book").map((e) => [e.id, String(e.data.kind ?? "")]));
+  const priorOf = (d: Doc) => {
+    const died = deathOf.get(d.person);
+    const age = died && died > 0 ? Math.min(1, Math.max(0, (1450 - died) / 1200)) : 0;
+    return Math.round((1 + 0.5 * age + (kindOf.get(d.book) === "متن" ? 0.3 : 0)) * 100) / 100;
+  };
   const personName = new Map(
     metaEntries.filter((e) => e.collection === "person").map((e) => [e.id, String(e.data.title ?? "")]),
   );
 
-  const hashOf = (d: Doc) => crypto.createHash("sha256").update([d.title, d.text, d.displayTitle, d.type, d.book, d.person].join("\0")).digest("hex");
+  const hashOf = (d: Doc) => crypto.createHash("sha256").update([d.title, d.text, d.displayTitle, d.type, d.book, d.person, ...(v2 ? [priorOf(d)] : [])].join("\0")).digest("hex");
   const q = (s: string) => `'${s.replace(/'/g, "''").replace(/[\u0000-\u001f]/g, " ")}'`;
   // `raw` is the passage as written (letters + tashkeel): results show it and rank the typed spelling first.
   // An incremental run writes into the live table, which only has `raw` after the full reindex
@@ -110,11 +129,16 @@ async function main() {
   // tables keep serving; dist/search-index-swap.sql then swaps them in (run by hand, after a check).
   const DOCS = rebuildNext ? "docs_next" : "docs";
   const HASHES = rebuildNext ? "doc_hash_next" : "doc_hash";
-  const SCHEMA = `USING fts5(title, text, type UNINDEXED, book UNINDEXED, person UNINDEXED, url UNINDEXED, display_title UNINDEXED, raw UNINDEXED, tokenize='unicode61 remove_diacritics 2')`;
-  const HASH_TABLE = `CREATE TABLE IF NOT EXISTS ${HASHES} (url TEXT PRIMARY KEY, hash TEXT);\n`;
+  // type/book/person/url per rowid, so search filters never read the (huge) docs rows — see search-handler.ts.
+  const META = rebuildNext ? "doc_meta_next" : "doc_meta";
+  const syncMeta = (prior: number) => `INSERT INTO ${META} (rowid, type, book, person, url${v2 ? ", prior" : ""}) SELECT rowid, type, book, person, url${v2 ? `, ${prior}` : ""} FROM ${DOCS} WHERE rowid > (SELECT coalesce(max(rowid), 0) FROM ${META});\n`;
+  const SCHEMA = `USING fts5(title, text, type UNINDEXED, book UNINDEXED, person UNINDEXED, url UNINDEXED, display_title UNINDEXED, raw UNINDEXED, tokenize='unicode61 remove_diacritics 2', prefix='3 4')`;
+  const HASH_TABLE = `CREATE TABLE IF NOT EXISTS ${HASHES} (url TEXT PRIMARY KEY, hash TEXT);\n` +
+    `CREATE TABLE IF NOT EXISTS ${META} (rowid INTEGER PRIMARY KEY, type TEXT, book TEXT, person TEXT, url TEXT, prior REAL NOT NULL DEFAULT 1);\n` +
+    `CREATE INDEX IF NOT EXISTS ${META}_url ON ${META}(url);\n`;
   const HEADER = incremental
     ? `CREATE VIRTUAL TABLE IF NOT EXISTS docs ${SCHEMA};\n` + HASH_TABLE
-    : `DROP TABLE IF EXISTS ${DOCS};\nDROP TABLE IF EXISTS ${HASHES};\nCREATE VIRTUAL TABLE ${DOCS} ${SCHEMA};\n` + HASH_TABLE;
+    : `DROP TABLE IF EXISTS ${DOCS};\nDROP TABLE IF EXISTS ${HASHES};\nDROP TABLE IF EXISTS ${META};\nCREATE VIRTUAL TABLE ${DOCS} ${SCHEMA};\n` + HASH_TABLE;
   const STMT_MAX = 80_000; // BYTES — D1 caps a single SQL statement at 100 KB
   // Real incident: a 53.6 MB single-file incremental batch (109-book import)
   // sat in remote `wrangler d1 execute` for ~14 min then failed with a blank
@@ -178,31 +202,23 @@ async function main() {
   // lands nearly the same number of urls per day, in half the runtime.
   const ROW_BUDGET = Number(process.env.SEARCH_ROW_BUDGET ?? 40_000);
 
-  // Split one doc's text into ~15k-char rows sharing its url (keeps every
-  // INSERT under D1's 100 KB statement cap; Arabic ≈ 2 bytes/char).
-  const CHUNK = 15_000;
-  const splitDoc = (d: Doc): Doc[] => {
-    if (d.text.length <= CHUNK) return [d];
-    const parts: Doc[] = [];
-    let rest = d.text;
-    while (rest.length > 0) {
-      let cut = rest.length <= CHUNK ? rest.length : rest.lastIndexOf(" ", CHUNK);
-      if (cut <= 0) cut = CHUNK;
-      parts.push({ ...d, text: rest.slice(0, cut) });
-      rest = rest.slice(cut + 1);
-    }
-    return parts;
-  };
+  // Split one doc's text into passages of about PASSAGE chars sharing its url, cut at a sentence end
+  // where there is one. bm25 favours short rows, so rows of one size let a hadith's source compete
+  // with a two-line fatwa quoting it (15k-char chunks ranked صحيح البخاري #161 for بالنيات). Also
+  // keeps every INSERT under D1's 100 KB statement cap (Arabic ≈ 2 bytes/char).
+  const splitDoc = (d: Doc): Doc[] => (v2 ? passages(d.text) : chunks(d.text, 15_000)).map((text) => ({ ...d, text }));
 
   let spent = 0;
   let emitted = 0;
   let candidates = 0; // urls whose hash actually differs (or is new) — would-be emits
   let done = 0;
   const emitUnit = (url: string, rows: Doc[], hash: string | null): boolean => {
-    const cost = incremental ? rows.length * 2 + 2 : rows.length + 1;
+    const cost = incremental ? rows.length * 4 + 2 : rows.length * 2 + 1; // doc_meta mirrors every docs row
     if (spent + cost > ROW_BUDGET) return false; // the rest keep their old hash → next run
     if (bufBytes + stmtBytes > FILE_MAX) flushFile(); // file boundaries only BETWEEN units, never inside one
-    if (incremental) write(`DELETE FROM docs WHERE url = ${q(url)};\nDELETE FROM doc_hash WHERE url = ${q(url)};\n`);
+    // docs.url is UNINDEXED: `WHERE url =` scans the whole FTS table (6.7 GB → D1 CPU reset, 7429). doc_meta
+    // mirrors every docs rowid with an index on url, so delete by rowid through it.
+    if (incremental) write(`DELETE FROM docs WHERE rowid IN (SELECT rowid FROM doc_meta WHERE url = ${q(url)});\nDELETE FROM doc_hash WHERE url = ${q(url)};\nDELETE FROM doc_meta WHERE url = ${q(url)};\n`);
     for (const d of rows) {
       const r = row(d);
       const rBytes = blen(r);
@@ -211,6 +227,7 @@ async function main() {
       stmt += hadStmt ? `,\n${r}` : r;
       stmtBytes += rBytes + (hadStmt ? 2 : 0); // +2 for ",\n"
     }
+    if (rows.length) write(syncMeta(priorOf(rows[0]))); // the unit's rows are flushed by this write, before it
     if (hash !== null) write(`INSERT OR REPLACE INTO ${HASHES} (url, hash) VALUES (${q(url)}, ${q(hash)});\n`);
     spent += cost;
     emitted += rows.length;
@@ -268,7 +285,7 @@ async function main() {
           type: e.collection, book: e.collection === "poem" ? e.id : "", person,
           url: `/${urls[e.collection]}/${e.id}`,
           displayTitle: title, title: searchTitle,
-          text: strip([e.data.description ?? "", e.data.definition ?? "", body].join(" ")),
+          text: strip([e.data.description ?? "", e.data.definition ?? "", e.collection === "poem" ? numberedVerses(body) : body].join(" ")),
         });
         break;
       }
@@ -320,13 +337,59 @@ async function main() {
   }
   if (rebuildNext) {
     fs.writeFileSync(path.resolve("dist/search-index-swap.sql"),
-      "DROP TABLE IF EXISTS docs;\nALTER TABLE docs_next RENAME TO docs;\nDROP TABLE IF EXISTS doc_hash;\nALTER TABLE doc_hash_next RENAME TO doc_hash;\n");
+      "DROP TABLE IF EXISTS docs;\nALTER TABLE docs_next RENAME TO docs;\nDROP TABLE IF EXISTS doc_hash;\nALTER TABLE doc_hash_next RENAME TO doc_hash;\nDROP TABLE IF EXISTS doc_meta;\nALTER TABLE doc_meta_next RENAME TO doc_meta;\n");
     console.log("swap: dist/search-index-swap.sql (run it once every file above is loaded and checked)");
   }
   if (!incremental && emitted === 0) throw new Error("search index came out empty — refusing to write a DROP-only script");
 }
 
-await main();
+
+/** The live format: ~[size]-char rows cut at a space. */
+function chunks(text: string, size: number): string[] {
+  const out: string[] = [];
+  let rest = text;
+  while (rest.length > 0) {
+    let cut = rest.length <= size ? rest.length : rest.lastIndexOf(" ", size);
+    if (cut <= 0) cut = size;
+    out.push(rest.slice(0, cut));
+    rest = rest.slice(cut + 1);
+  }
+  return out.length ? out : [text];
+}
+
+const PASSAGE = 2500;
+/** [text] cut into pieces of at most ~1.4×PASSAGE chars: at the last sentence end past 0.6×PASSAGE, else a space. */
+export function passages(text: string): string[] {
+  const max = Math.round(PASSAGE * 1.4);
+  const out: string[] = [];
+  let rest = text;
+  while (rest.length > max) {
+    const window = rest.slice(0, max);
+    let cut = -1;
+    for (const m of window.matchAll(/[.؟!:»]["»”)]?\s/g)) if (m.index! + m[0].length > PASSAGE * 0.6) cut = m.index! + m[0].length - 1;
+    if (cut < 0) cut = window.lastIndexOf(" ", PASSAGE);
+    if (cut <= 0) cut = PASSAGE;
+    out.push(rest.slice(0, cut).trim());
+    rest = rest.slice(cut).trim();
+  }
+  // a short tail joins the passage before it: a few words alone would outrank whole passages
+  if (rest && out.length && rest.length < PASSAGE * 0.3) out[out.length - 1] += " " + rest;
+  else if (rest) out.push(rest);
+  return out;
+}
+
+/**
+ * A poem as «١ - صدر … عجز ٢ - …»: stripping folds its line breaks away, and the app's result
+ * card (verseLines in SearchScreen.kt) lays verses out by these numbers and hemistichs by « … ».
+ */
+export function numberedVerses(body: string): string {
+  let n = 0;
+  return body.split("\n").map((line) => {
+    if (!line.includes(" --- ")) return line;
+    const num = String(++n).replace(/\d/g, (d) => String.fromCharCode(0x0660 + Number(d)));
+    return `${num} - ${line.trim().replace(" --- ", " … ")}`;
+  }).join("\n");
+}
 
 /** Whether the live docs table has the `raw` column; false when it can't be told (rows without it still work). */
 function liveHasRaw(): boolean {
@@ -338,3 +401,5 @@ function liveHasRaw(): boolean {
     return false;
   }
 }
+
+await main();

@@ -85,6 +85,16 @@ class FramedPackageDecoderTest {
         assertThrows(ContentIntegrityException::class.java) { decode(listOf(person.copy(works = listOf(ARTICLE_ID, ARTICLE_ID)))) }
     }
 
+    @Test
+    fun unknownCollectionsAreSkippedNotFatal() {
+        val page = ARTICLE.copy(id = "adel-al-hamdan", coll = "person")
+        val catalog = CatalogDocument(2, listOf(ARTICLE, page), listOf(CatalogPerson("author", "Author", works = listOf(ARTICLE_ID, page.id))))
+        val bytes = AppContentJson.encodeToString(CatalogDocument.serializer(), catalog).toByteArray()
+        val decoded = AppContentDocuments.decodeCatalog(bytes, ArtifactReference("catalog/test.json", ContentDigests.sha256Hex(bytes), bytes.size.toLong()))
+        assertEquals(listOf(ARTICLE_ID), decoded.entries.map { it.id })
+        assertEquals(listOf(ARTICLE_ID), decoded.persons.single().works)
+    }
+
     private companion object {
         const val ARTICLE_ID = "byan-kdhb-athr-idha-safr-al-fqr-ila-mkan-ma-qal-al-kfr-khdhny-mak-ala-aby-dhr--v2"
         val ARTICLE = CatalogEntry(

@@ -43,6 +43,14 @@ class MainActivity : ComponentActivity() {
         downloadTarget.value = intent.getStringExtra("athar_download")
     }
 
+    override fun dispatchKeyEvent(event: android.view.KeyEvent): Boolean {
+        val turn = com.atharchive.feature.reader.VolumePaging.turn
+        val code = event.keyCode
+        if (turn == null || (code != android.view.KeyEvent.KEYCODE_VOLUME_DOWN && code != android.view.KeyEvent.KEYCODE_VOLUME_UP)) return super.dispatchKeyEvent(event)
+        if (event.action == android.view.KeyEvent.ACTION_DOWN) turn(code == android.view.KeyEvent.KEYCODE_VOLUME_DOWN)
+        return true
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (savedInstanceState == null) com.atharchive.data.Analytics.hit("open")
@@ -73,7 +81,7 @@ class MainActivity : ComponentActivity() {
                 )
                 onDispose {}
             }
-            AtharTheme(darkTheme = dark, warm = themeMode == com.atharchive.ui.theme.ThemeMode.Warm, style = style, accent = accent) {
+            AtharTheme(darkTheme = dark, warm = themeMode == com.atharchive.ui.theme.ThemeMode.Warm, eink = themeMode == com.atharchive.ui.theme.ThemeMode.Eink, style = style, choice = accent) {
                 CompositionLocalProvider(
                     LocalLayoutDirection provides LayoutDirection.Rtl,
                     com.atharchive.ui.theme.LocalReaderFont provides readerSettings.font.family(readerSettings.fontStamp),

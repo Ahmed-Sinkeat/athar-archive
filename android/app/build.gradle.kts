@@ -27,12 +27,13 @@ val releaseKeyAlias = providers.environmentVariable("ATHAR_ANDROID_KEY_ALIAS").o
 val releaseKeyPassword = providers.environmentVariable("ATHAR_ANDROID_KEY_PASSWORD").orNull
 val releaseSigningConfigured = listOf(releaseKeystore, releaseStorePassword, releaseKeyAlias, releaseKeyPassword).all { !it.isNullOrBlank() }
 
-// Public, debug-only trust material for the M5 staging generation. The private key is not
+// Public trust material for the live generation, the debug default. The live root is signed
+// only by this key; the old M5 staging key made every debug sync fail. The private key is not
 // stored in the repository. Release/benchmark builds remain unconfigured unless CI supplies
 // all three ATHAR_CONTENT_* values.
 val stagingContentBaseUrl = "https://app-content.arthurarchive.com/app/v2/"
-val stagingContentSigningKeyId = "athar-m5-staging-2026-08-20"
-val stagingContentPublicKey = "MIIBojANBgkqhkiG9w0BAQEFAAOCAY8AMIIBigKCAYEAxI88ZL60naTm77afIZv6Tt/KALpIz6ZZ/7qHkxl+bKWTVWubLNZQlqGur7d+EBMpOQcSEI6PPApDbQDg8aSr6nk1yVKXSUut/zo5OEbPmjAxOjiwtFpPpOLKvEENhHNI3Vwv2iIiQ8rwfMnECWjNsYswE+F5pZR8AjhodiNB6sSWWXza6xcPBo7Sz3g0LpvrB8jmZRitWN1lru8rpqKcrGqoxslKoTY+WwjrNcKtfTMB7wQYOCOXzFK40BSQyQUuK3EJmWrPW5tdhmCABHiCnR2MtQIcDFLR5uRv6kM9gWw/qMcrLzG+Zg3V4ix+p5sk6RiXWaCKiKyg57PWt28FH0sOyrDXGvu1Sh+w2Aiu4G6Pzq2wfouTqXV5F4WXFaXPj3jsivI7b6rPBWI5HDsDAGt0XhtfpHkRQT4IOqRs1oGAUCJud1NFr6VtBZdXqitVwii6knUYqRua0hf7SW8baUohy6ChQU5GJ1HrFDLU+uAKSGPPsP5vMXzK1g4dCqLjAgMBAAE="
+val stagingContentSigningKeyId = "athar-content-rsa-2026-10"
+val stagingContentPublicKey = "MIIBojANBgkqhkiG9w0BAQEFAAOCAY8AMIIBigKCAYEArqqKIRH9Plvum7YYqQSqckmeuJHdD+pzgXEyObZuvToNSu5ChHOahVGwnFcPPuAMruU5SwLSNP2BOnpNZyrpPWn8nfXINfkmLIS1QnBLs0KZRegkjCyL/Cg3MA0UeivoGGYJmrPyFQgEoaDROADO+QPA23Ql+Mo4NdswA+4w4y/hbdgP6CdvgjlRAZ0aM4Du8iPDlGKb13F+XZ/CAJVY47kNshVb379nPgYhQ8GFFIt3Ios9SDgMSpvPiSrwj0opZI6jiKu8Ie4g6iyy3ZPHtC++FmMpEV62ARAoNRMyO1OQodIFgrbUk1qnULFD1XnOb62Ew0ipgD4sTDJTWctRdx07biOhQ1i2j1D05UeJ5Zx2jwtSt0m5S620e3fiGjcU5tdbzMTv09DBS5QPuWrkUIlspiFcZOZWUDIocILfbxeoWdHVulKbkzrbd75JTTBfIcciyDpZHq3lr2QuwaPUoOCu/ZWeNdj4l0xUeCrtQKeNzqUWyQR59kdlqdAaILWFAgMBAAE="
 
 fun validateContentConfiguration(variant: String, baseUrl: String, keyId: String, publicKey: String) {
     val configured = listOf(baseUrl, keyId, publicKey).count(String::isNotBlank)
@@ -53,7 +54,7 @@ android {
     defaultConfig {
         applicationId = "com.atharchive"
         testApplicationId = "com.atharchive.instrumentation"
-        versionCode = 4
+        versionCode = 5
         versionName = "1.1"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField("String", "ATHAR_CONTENT_BASE_URL", "".asBuildConfigString())
@@ -63,6 +64,7 @@ android {
 
     buildFeatures {
         buildConfig = true
+        resValues = true
     }
 
     if (releaseSigningConfigured) {
@@ -96,6 +98,14 @@ android {
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+        }
+        // A release build that installs beside the real app (old test phones): own id and name.
+        create("preview") {
+            initWith(getByName("release"))
+            signingConfig = signingConfigs.getByName("debug")
+            matchingFallbacks += listOf("release")
+            applicationIdSuffix = ".preview"
+            resValue("string", "app_name", "أثر تجريبي")
         }
         // Benchmarks need a release-like build that is still installable locally.
         create("benchmark") {
@@ -135,6 +145,8 @@ dependencies {
     androidTestImplementation(libs.compose.ui.test.junit4)
     debugImplementation(libs.compose.ui.test.manifest)
     testImplementation(libs.junit4)
+    // The real org.json for JVM tests (android.jar ships stubs): UserAdhkarStore round-trip.
+    testImplementation("org.json:json:20231013")
 }
 
 // A release with no origin is an app with no library; one with no keystore cannot be signed

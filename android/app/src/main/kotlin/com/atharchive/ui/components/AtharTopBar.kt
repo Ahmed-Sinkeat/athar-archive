@@ -1,5 +1,6 @@
 package com.atharchive.ui.components
 
+import androidx.compose.foundation.layout.widthIn
 import com.atharchive.ui.theme.AtharTextSize
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
@@ -39,6 +40,9 @@ import com.atharchive.ui.icons.AtharMark
 import com.atharchive.ui.theme.AtharEditorialFontFamily
 import com.atharchive.ui.theme.AtharTheme
 
+/** The section popup's «no section» choice. */
+const val SectionAll = "كل الأقسام"
+
 /** One row of the app's ⋮ menu. */
 data class AtharAppMenuEntry(val label: String, val icon: ImageVector, val onClick: () -> Unit)
 
@@ -59,6 +63,10 @@ fun AtharTopBar(
     actionIcon: ImageVector? = null,
     actionLabel: String? = null,
     onAction: (() -> Unit)? = null,
+    /** «الأقسام»: set (to «الكل» or a section), the title opens a popup of sections. */
+    section: String? = null,
+    onSection: (String) -> Unit = {},
+    sectionCounts: Map<String, Int> = emptyMap(),
 ) {
     if (!showAppIcon) {
         LegacyAtharTopBar(
@@ -110,19 +118,51 @@ fun AtharTopBar(
             modifier = Modifier.weight(1f),
             contentAlignment = Alignment.Center,
         ) {
-            Text(
-                text = title,
-                modifier = Modifier
-                    .testTag("athar_page_title")
-                    .semantics { heading() },
-                color = MaterialTheme.colorScheme.onBackground,
-                fontFamily = AtharEditorialFontFamily,
-                fontWeight = FontWeight.Bold,
-                fontSize = AtharTextSize.Large,
-                lineHeight = 28.sp,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis,
-            )
+            var sectionsOpen by androidx.compose.runtime.remember { androidx.compose.runtime.mutableStateOf(false) }
+            Row(
+                modifier = if (section == null) Modifier else Modifier
+                    .clip(CircleShape)
+                    .clickable(role = Role.DropdownList, onClickLabel = "الأقسام") { sectionsOpen = true }
+                    .padding(horizontal = 10.dp, vertical = 4.dp)
+                    .testTag("athar_section_title"),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Text(
+                    text = androidx.compose.ui.text.buildAnnotatedString {
+                        append(title)
+                        if (section != null && section != SectionAll) {
+                            append(" · ")
+                            pushStyle(androidx.compose.ui.text.SpanStyle(color = AtharTheme.colors.accent))
+                            append(section)
+                            pop()
+                        }
+                    },
+                    modifier = Modifier
+                        .weight(1f, fill = false)
+                        .testTag("athar_page_title")
+                        .semantics { heading() },
+                    color = MaterialTheme.colorScheme.onBackground,
+                    fontFamily = AtharEditorialFontFamily,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = AtharTextSize.Large,
+                    lineHeight = 28.sp,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                )
+                if (section != null) Icon(
+                    AtharIcons.ChevronDown, null,
+                    Modifier.padding(start = 4.dp).size(16.dp),
+                    tint = AtharTheme.colors.secondaryText,
+                )
+            }
+            if (section != null) AtharMenu(expanded = sectionsOpen, onDismiss = { sectionsOpen = false }, width = 200.dp, modifier = Modifier.testTag("section_menu")) {
+                (listOf(SectionAll) + com.atharchive.data.SubjectOrder).forEachIndexed { index, option ->
+                    if (index == 1) AtharMenuDivider()
+                    AtharMenuItem(
+                        if (sectionCounts.isEmpty()) option else "$option  ${arabicDigits(sectionCounts[option] ?: 0)}",
+                        checked = option == section, onClick = { sectionsOpen = false; onSection(option) })
+                }
+            }
         }
         // A screen-specific action sits inboard of الإعدادات, the way the readers
         // put البحث inboard of المزيد.
@@ -222,6 +262,44 @@ private fun LegacyAtharTopBar(
                 modifier = Modifier.size(22.dp),
                 tint = MaterialTheme.colorScheme.onBackground,
             )
+        }
+    }
+}
+
+/**
+ * «الأقسام» beside the filter icon in a section's search field: the section's name when one is
+ * set, and the same small popup of sections, each with how many it holds.
+ */
+@Composable
+fun AtharSectionButton(section: String, onSection: (String) -> Unit, counts: Map<String, Int>, tag: String) {
+    var open by androidx.compose.runtime.remember { androidx.compose.runtime.mutableStateOf(false) }
+    val set = section != SectionAll && section in com.atharchive.data.SubjectOrder
+    Box {
+        Row(
+            Modifier.clip(CircleShape)
+                .clickable(role = Role.DropdownList, onClickLabel = "الأقسام") { open = true }
+                .padding(horizontal = 8.dp, vertical = 6.dp)
+                .testTag(tag),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Text(
+                if (set) section else "الأقسام",
+                Modifier.widthIn(max = 110.dp),
+                color = if (set) AtharTheme.colors.accent else AtharTheme.colors.secondaryText,
+                fontSize = AtharTextSize.Small,
+                fontWeight = if (set) FontWeight.SemiBold else FontWeight.Normal,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+            )
+            Icon(AtharIcons.ChevronDown, null, Modifier.padding(start = 2.dp).size(14.dp), tint = AtharTheme.colors.secondaryText)
+        }
+        AtharMenu(expanded = open, onDismiss = { open = false }, width = 200.dp, modifier = Modifier.testTag("section_menu")) {
+            (listOf(SectionAll) + com.atharchive.data.SubjectOrder).forEachIndexed { index, option ->
+                if (index == 1) AtharMenuDivider()
+                AtharMenuItem(
+                    if (counts.isEmpty()) option else "$option  ${arabicDigits(counts[option] ?: 0)}",
+                    checked = option == section || (option == SectionAll && !set), onClick = { open = false; onSection(option) })
+            }
         }
     }
 }

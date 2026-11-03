@@ -41,6 +41,8 @@ data class DhikrUi(
     /** التخريج — where it comes from. Absent for a few. */
     val source: String? = null,
     val saved: Boolean = false,
+    /** One's own (UserAdhkarStore): editable and deletable. */
+    val custom: Boolean = false,
 )
 
 data class AdhkarUiState(

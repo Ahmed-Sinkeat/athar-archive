@@ -77,6 +77,12 @@ function htmlBlocks(value: string, sourcePath: string): MarkdownNode[] {
     const children = (node.children ?? []).flatMap(convert);
     const tag = node.tagName;
     if (!tag || tag === "div" || tag === "span") return children;
+    // ponytail: the app has no image or table block; images are dropped (the site keeps them) and each row reads as one line.
+    if (tag === "img") return [];
+    if (tag === "table" || tag === "thead" || tag === "tbody") return children.filter((child) => child.type === "paragraph");
+    if (tag === "tr") return [{ type: "paragraph", children: children.flatMap((cell, i) => (i ? [{ type: "text", value: " · " }, cell] : [cell])) }];
+    if (tag === "th") return [{ type: "strong", children }];
+    if (tag === "td") return children;
     if (tag === "br") return [{ type: "break" }];
     if (tag === "hr") return [{ type: "thematicBreak" }];
     if (/^s\d+$/.test(tag)) return children;
@@ -220,6 +226,8 @@ function renderInline(
         if (COMMENT_RE.test(html)) return;
         // Imported source-position markers contain no readable text.
         if (/^\s*<m\s+s\s*=\s*\d+\s*>\s*$/i.test(html)) return;
+        // Images and stray table tags inside a paragraph carry no text (see htmlBlocks).
+        if (/^\s*(?:<img\b[^>]*>|<\/?(?:table|thead|tbody|tr|td|th)\b[^>]*>)\s*$/i.test(html)) return;
         const complete = html.match(/^\s*<sup\b([^>]*)>([\s\S]*?)<\/sup>\s*$/i);
         if (complete) {
           const attrs = attributes(`<sup ${complete[1]}>`);

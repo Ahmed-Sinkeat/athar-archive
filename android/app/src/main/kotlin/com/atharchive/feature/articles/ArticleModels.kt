@@ -11,6 +11,7 @@ package com.atharchive.feature.articles
  */
 
 enum class ArticleSort(val label: String) {
+    Died("وفاة المؤلف"),
     Title("العنوان أ–ي"),
     Newest("ترتيب الفهرس"),
     Author("المؤلف"),
@@ -30,6 +31,9 @@ data class ArticleUi(
     val recentRank: Int? = null,
     val transfer: com.atharchive.feature.downloads.TransferUi? = null,
     val sizeLabel: String = "",
+    val topics: List<String> = emptyList(),
+    val died: Int? = null,
+    val hasAudio: Boolean = false,
 )
 
 data class ArticlesUiState(

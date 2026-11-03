@@ -1,0 +1,805 @@
+{
+  "schema": 1,
+  "generation": 1,
+  "sourceHash": "10f77c071382040abcf9bd9819d67d3963be2497bfe9d3e5a3097b4c44ad4467",
+  "ids": [
+    {
+      "ord": 0,
+      "blockId": "ef90879c75a54becc0d1cf9ef223a6ec",
+      "fp64": "ef56d1fdd139dcf6",
+      "normHash": "6f0b250afd80497272f9c7539bca81ccae39b858290568be9ab8e760e7f9201f",
+      "kind": "h1",
+      "chapter": "main",
+      "next": "c3cdf67c1c014c014c4e6c46bcff4d48cdb5d26cad0cef2c90b5db73a9812273"
+    },
+    {
+      "ord": 1,
+      "blockId": "eb66588b7112e9b17af67bb3748dcd9a",
+      "fp64": "a08b48cb75f6685d",
+      "normHash": "c3cdf67c1c014c014c4e6c46bcff4d48cdb5d26cad0cef2c90b5db73a9812273",
+      "kind": "h2",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "6f0b250afd80497272f9c7539bca81ccae39b858290568be9ab8e760e7f9201f",
+      "next": "fd2f2562af6a9a209055adff5dc43c4d0932ec42c1109ebe3574df5396e730e5"
+    },
+    {
+      "ord": 2,
+      "blockId": "82332f7e27c8daad7613410a757d4568",
+      "fp64": "9f05e45693be7cba",
+      "normHash": "fd2f2562af6a9a209055adff5dc43c4d0932ec42c1109ebe3574df5396e730e5",
+      "kind": "p",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "c3cdf67c1c014c014c4e6c46bcff4d48cdb5d26cad0cef2c90b5db73a9812273",
+      "next": "73d73406bc46cc7186ec804fdfa1a05041b9f7d03ceeca214755823ab8479412"
+    },
+    {
+      "ord": 3,
+      "blockId": "f0c72b5a03c5fc66fe7417801f898404",
+      "fp64": "2fdffbfb7f336dff",
+      "normHash": "73d73406bc46cc7186ec804fdfa1a05041b9f7d03ceeca214755823ab8479412",
+      "kind": "page",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "fd2f2562af6a9a209055adff5dc43c4d0932ec42c1109ebe3574df5396e730e5",
+      "next": "45f1ec8332fe4495cf9da6b01758c4ce4d983b7e539a090a719a0f62fdf24198"
+    },
+    {
+      "ord": 4,
+      "blockId": "9f6a8cd95364c7b5f2861f42c5ce52ac",
+      "fp64": "14f5e2560d1d3e48",
+      "normHash": "45f1ec8332fe4495cf9da6b01758c4ce4d983b7e539a090a719a0f62fdf24198",
+      "kind": "p",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "73d73406bc46cc7186ec804fdfa1a05041b9f7d03ceeca214755823ab8479412",
+      "next": "1632460a0c0d9f19dee3f0dcb0b9362ae30cb5cf1fd8e559214d24e2bf07ca2e"
+    },
+    {
+      "ord": 5,
+      "blockId": "e62bdd34c45f99e0a88f7925b9eb22d1",
+      "fp64": "c4c4647c81278f5c",
+      "normHash": "1632460a0c0d9f19dee3f0dcb0b9362ae30cb5cf1fd8e559214d24e2bf07ca2e",
+      "kind": "p",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "45f1ec8332fe4495cf9da6b01758c4ce4d983b7e539a090a719a0f62fdf24198",
+      "next": "b64d47bb52ce2df883d5e65a897cdbda8fb31df41781ec406a8f4c6d951ae1b5"
+    },
+    {
+      "ord": 6,
+      "blockId": "61c5e9372001a0c385614bd3e9e83655",
+      "fp64": "b7dfffff5bf1f6f7",
+      "normHash": "b64d47bb52ce2df883d5e65a897cdbda8fb31df41781ec406a8f4c6d951ae1b5",
+      "kind": "page",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "1632460a0c0d9f19dee3f0dcb0b9362ae30cb5cf1fd8e559214d24e2bf07ca2e",
+      "next": "ac74721f979f01741f2f8e98ff26d3610ed4a4355d7e38fcd08b0a99a1c6c00c"
+    },
+    {
+      "ord": 7,
+      "blockId": "9ff74f7edf0b17ebd55994226e8ca9be",
+      "fp64": "80d7244f04541f02",
+      "normHash": "ac74721f979f01741f2f8e98ff26d3610ed4a4355d7e38fcd08b0a99a1c6c00c",
+      "kind": "p",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "b64d47bb52ce2df883d5e65a897cdbda8fb31df41781ec406a8f4c6d951ae1b5",
+      "next": "d98e983299257f8d763411aa40e6722ea8f9ea11ee731da6c697d8ba5dba4b74"
+    },
+    {
+      "ord": 8,
+      "blockId": "2db60dd702ed23918beeaa644aceb45b",
+      "fp64": "dddcaaaefed3e955",
+      "normHash": "d98e983299257f8d763411aa40e6722ea8f9ea11ee731da6c697d8ba5dba4b74",
+      "kind": "verse",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "ac74721f979f01741f2f8e98ff26d3610ed4a4355d7e38fcd08b0a99a1c6c00c",
+      "next": "92f6bc04e9f01485ac2e73458e6a4899f2450518aa16d24f24f7d75c33bf4cbc"
+    },
+    {
+      "ord": 9,
+      "blockId": "c4afb8873a5d95300d298fb2f116b926",
+      "fp64": "ac47e052b5267d2e",
+      "normHash": "92f6bc04e9f01485ac2e73458e6a4899f2450518aa16d24f24f7d75c33bf4cbc",
+      "kind": "p",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "d98e983299257f8d763411aa40e6722ea8f9ea11ee731da6c697d8ba5dba4b74",
+      "next": "fa6f2f2d2ec70b9fd6cba78ecf50308b0b0c23a51f49f40d301067bd8d109e52"
+    },
+    {
+      "ord": 10,
+      "blockId": "2e8d8bfcfdaea407ded28aad89d72bac",
+      "fp64": "afdffffedb79627f",
+      "normHash": "fa6f2f2d2ec70b9fd6cba78ecf50308b0b0c23a51f49f40d301067bd8d109e52",
+      "kind": "page",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "92f6bc04e9f01485ac2e73458e6a4899f2450518aa16d24f24f7d75c33bf4cbc",
+      "next": "ce3f27c2cf541aa1b0bbf9923ea45c8b2360e053a3bcb43f1d4fcd4f814aaafb"
+    },
+    {
+      "ord": 11,
+      "blockId": "fe15797e55a057c009144698b65febcf",
+      "fp64": "97efb450457a1a96",
+      "normHash": "ce3f27c2cf541aa1b0bbf9923ea45c8b2360e053a3bcb43f1d4fcd4f814aaafb",
+      "kind": "p",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "fa6f2f2d2ec70b9fd6cba78ecf50308b0b0c23a51f49f40d301067bd8d109e52",
+      "next": "48109942de1b9b85e487b2a4d0eeef23d5dbc5fe3481343741ecc7127ccdda11"
+    },
+    {
+      "ord": 12,
+      "blockId": "9c1d1d0b4585e2de47ad420138e99dea",
+      "fp64": "60e0b76ff957bdf9",
+      "normHash": "48109942de1b9b85e487b2a4d0eeef23d5dbc5fe3481343741ecc7127ccdda11",
+      "kind": "verse",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "ce3f27c2cf541aa1b0bbf9923ea45c8b2360e053a3bcb43f1d4fcd4f814aaafb",
+      "next": "77808d6e69cbcb3658c8cc6ef33f7ec9c3812818c7283c0c2041abc5202a7e73"
+    },
+    {
+      "ord": 13,
+      "blockId": "a37c0d44ec3aa314b6359b6702f9c6c8",
+      "fp64": "e6e5d95e1e75ddff",
+      "normHash": "77808d6e69cbcb3658c8cc6ef33f7ec9c3812818c7283c0c2041abc5202a7e73",
+      "kind": "p",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "48109942de1b9b85e487b2a4d0eeef23d5dbc5fe3481343741ecc7127ccdda11",
+      "next": "28c3ac36e056724e343dda7f49d7180f49402e763c0a5e366e4d916e4fcb05e4"
+    },
+    {
+      "ord": 14,
+      "blockId": "c5590a707124b306b0cfb0a69b547811",
+      "fp64": "46bde212bac9b60c",
+      "normHash": "28c3ac36e056724e343dda7f49d7180f49402e763c0a5e366e4d916e4fcb05e4",
+      "kind": "p",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "77808d6e69cbcb3658c8cc6ef33f7ec9c3812818c7283c0c2041abc5202a7e73",
+      "next": "d240cbe7370fca2a1498ecf2d1b5953acc0221945124a6bea66ab8cb42c93f96"
+    },
+    {
+      "ord": 15,
+      "blockId": "3984f155297dfaf8f9fe3c946315c127",
+      "fp64": "e682dd4ef7bd4b67",
+      "normHash": "d240cbe7370fca2a1498ecf2d1b5953acc0221945124a6bea66ab8cb42c93f96",
+      "kind": "verse",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "28c3ac36e056724e343dda7f49d7180f49402e763c0a5e366e4d916e4fcb05e4",
+      "next": "12c064ec974d6cecefbebd35c92b46ca9b6074e41d56740919006517aa4150fb"
+    },
+    {
+      "ord": 16,
+      "blockId": "bb9c71f1a3808b86dcf7b055f93e41ba",
+      "fp64": "d562a4521b067a7d",
+      "normHash": "12c064ec974d6cecefbebd35c92b46ca9b6074e41d56740919006517aa4150fb",
+      "kind": "p",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "d240cbe7370fca2a1498ecf2d1b5953acc0221945124a6bea66ab8cb42c93f96",
+      "next": "4e69f1fe679aed73a4f2002d7955a7415fb3e959647a1fb7d8b8e8215f935244"
+    },
+    {
+      "ord": 17,
+      "blockId": "09e009fe6080ad33223f0f42e45c0c40",
+      "fp64": "77fff3df7a73623e",
+      "normHash": "4e69f1fe679aed73a4f2002d7955a7415fb3e959647a1fb7d8b8e8215f935244",
+      "kind": "page",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "12c064ec974d6cecefbebd35c92b46ca9b6074e41d56740919006517aa4150fb",
+      "next": "4bd191afb79e6851cc1ee630d27f0c9a0ce144d0d8b8c2f696859cf3e2ccf9c2"
+    },
+    {
+      "ord": 18,
+      "blockId": "d7e9062326e94345279405e4167fed5a",
+      "fp64": "cacf0a5a9f0ebbb6",
+      "normHash": "4bd191afb79e6851cc1ee630d27f0c9a0ce144d0d8b8c2f696859cf3e2ccf9c2",
+      "kind": "p",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "4e69f1fe679aed73a4f2002d7955a7415fb3e959647a1fb7d8b8e8215f935244",
+      "next": "d6b35021119d35c3e1eb01c062ed146eb217ca2ac61600610f5770072cbe4f99"
+    },
+    {
+      "ord": 19,
+      "blockId": "e6cb0e8091fff329b18b948eec377175",
+      "fp64": "57980d575f663b3d",
+      "normHash": "d6b35021119d35c3e1eb01c062ed146eb217ca2ac61600610f5770072cbe4f99",
+      "kind": "p",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "4bd191afb79e6851cc1ee630d27f0c9a0ce144d0d8b8c2f696859cf3e2ccf9c2",
+      "next": "fe150be8995764fb9222c74a2e8f48710a6c0e04b0832c95ac9ae993299ca637"
+    },
+    {
+      "ord": 20,
+      "blockId": "ce1e0e3baad02ca4bead8a3e2b938f29",
+      "fp64": "25ffffde7f3f783f",
+      "normHash": "fe150be8995764fb9222c74a2e8f48710a6c0e04b0832c95ac9ae993299ca637",
+      "kind": "page",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "d6b35021119d35c3e1eb01c062ed146eb217ca2ac61600610f5770072cbe4f99",
+      "next": "2aa128d8aa4fcbd545d6e1d0bb0b4c79db8d4eeb61da8ed8682f120b3521c9c5"
+    },
+    {
+      "ord": 21,
+      "blockId": "cca8a53f56c3f2b901834a7807f8f241",
+      "fp64": "eedc9dbcfa4d767f",
+      "normHash": "2aa128d8aa4fcbd545d6e1d0bb0b4c79db8d4eeb61da8ed8682f120b3521c9c5",
+      "kind": "p",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "fe150be8995764fb9222c74a2e8f48710a6c0e04b0832c95ac9ae993299ca637",
+      "next": "47c697813e27f51109d00d71c8f93cee73df4b3bcba721ade121b68fea84138b"
+    },
+    {
+      "ord": 22,
+      "blockId": "11d270811b932954f5d604d8394783df",
+      "fp64": "054d4068bff7f76e",
+      "normHash": "47c697813e27f51109d00d71c8f93cee73df4b3bcba721ade121b68fea84138b",
+      "kind": "p",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "2aa128d8aa4fcbd545d6e1d0bb0b4c79db8d4eeb61da8ed8682f120b3521c9c5",
+      "next": "3ac3fae37d9c27a37c8eda6b5620e12928e9e38c82616303a0543fa19a9fc15e"
+    },
+    {
+      "ord": 23,
+      "blockId": "3103524ed84abc2d2f7c21cc3345ae26",
+      "fp64": "addff3be5ffd647e",
+      "normHash": "3ac3fae37d9c27a37c8eda6b5620e12928e9e38c82616303a0543fa19a9fc15e",
+      "kind": "page",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "47c697813e27f51109d00d71c8f93cee73df4b3bcba721ade121b68fea84138b",
+      "next": "daabd484980342af1a77c0e6d1995382acc5a9d0006f1855bb22f7c64839c75e"
+    },
+    {
+      "ord": 24,
+      "blockId": "0b6712666a4eab41e826f0790846642b",
+      "fp64": "264f646a0f50316c",
+      "normHash": "daabd484980342af1a77c0e6d1995382acc5a9d0006f1855bb22f7c64839c75e",
+      "kind": "p",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "3ac3fae37d9c27a37c8eda6b5620e12928e9e38c82616303a0543fa19a9fc15e",
+      "next": "4581d04ab7938e775963f37eee16e60c2f3000bc0c978bbdf46ccb9c9cb67ee5"
+    },
+    {
+      "ord": 25,
+      "blockId": "8c17331bb0f5504455df055fd1cc9b91",
+      "fp64": "f7dffbbe7e3be87f",
+      "normHash": "4581d04ab7938e775963f37eee16e60c2f3000bc0c978bbdf46ccb9c9cb67ee5",
+      "kind": "page",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "daabd484980342af1a77c0e6d1995382acc5a9d0006f1855bb22f7c64839c75e",
+      "next": "bbbad318dc78461838c9632979455e436d32d6378c29a1e8e83b74bef51cb7a2"
+    },
+    {
+      "ord": 26,
+      "blockId": "77c3cad043ebe32e0b1383532b847686",
+      "fp64": "f6395fd357ffb07f",
+      "normHash": "bbbad318dc78461838c9632979455e436d32d6378c29a1e8e83b74bef51cb7a2",
+      "kind": "p",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "4581d04ab7938e775963f37eee16e60c2f3000bc0c978bbdf46ccb9c9cb67ee5",
+      "next": "24f1bb69af1fd98d3c5de381fc7c059bcd14f797a9b2a9799e399af4f656659d"
+    },
+    {
+      "ord": 27,
+      "blockId": "b35c8fbe16ca359ca608fc0545c2f3a8",
+      "fp64": "c6c1c452ba670839",
+      "normHash": "24f1bb69af1fd98d3c5de381fc7c059bcd14f797a9b2a9799e399af4f656659d",
+      "kind": "p",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "bbbad318dc78461838c9632979455e436d32d6378c29a1e8e83b74bef51cb7a2",
+      "next": "e5b0927ac6fbd7b43a3d3a27b287cf13c6902d415a651b612b87486d50f79fa4"
+    },
+    {
+      "ord": 28,
+      "blockId": "f0f04b2e66061fa75cae061c59ecfaf9",
+      "fp64": "35ffffdf7bf5717f",
+      "normHash": "e5b0927ac6fbd7b43a3d3a27b287cf13c6902d415a651b612b87486d50f79fa4",
+      "kind": "page",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "24f1bb69af1fd98d3c5de381fc7c059bcd14f797a9b2a9799e399af4f656659d",
+      "next": "718b4dff87d04d8271d4e56eb6f45986aee9d9af9c3203eef46837f05be45885"
+    },
+    {
+      "ord": 29,
+      "blockId": "f0b40c8f7dca4c9875e575ca269ed976",
+      "fp64": "a5fb627a8f7c3dcd",
+      "normHash": "718b4dff87d04d8271d4e56eb6f45986aee9d9af9c3203eef46837f05be45885",
+      "kind": "p",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "e5b0927ac6fbd7b43a3d3a27b287cf13c6902d415a651b612b87486d50f79fa4",
+      "next": "f55481b69318e1c851e57306a7f55661daf11dd52e307451f386b3d8d15d48b2"
+    },
+    {
+      "ord": 30,
+      "blockId": "0b276fa6827739ee8bde6df1cb7f3a05",
+      "fp64": "67dfff9e5fb3fb3f",
+      "normHash": "f55481b69318e1c851e57306a7f55661daf11dd52e307451f386b3d8d15d48b2",
+      "kind": "page",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "718b4dff87d04d8271d4e56eb6f45986aee9d9af9c3203eef46837f05be45885",
+      "next": "5555afcb9ed78592fbf9ba75188ecb59aa9050bb5d32216da7e3bf33de990fd6"
+    },
+    {
+      "ord": 31,
+      "blockId": "fa15df30bff3a5798d4508bd703a0d85",
+      "fp64": "5d88555f99d57dc7",
+      "normHash": "5555afcb9ed78592fbf9ba75188ecb59aa9050bb5d32216da7e3bf33de990fd6",
+      "kind": "p",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "f55481b69318e1c851e57306a7f55661daf11dd52e307451f386b3d8d15d48b2",
+      "next": "cf82f37a0d9fa7db967582d57875f1098daf08f4fb5688263e59d6c97d092c67"
+    },
+    {
+      "ord": 32,
+      "blockId": "e0fe7175a5cf27a5eb257db7fef1e312",
+      "fp64": "6ddff7fadbb967b7",
+      "normHash": "cf82f37a0d9fa7db967582d57875f1098daf08f4fb5688263e59d6c97d092c67",
+      "kind": "page",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "5555afcb9ed78592fbf9ba75188ecb59aa9050bb5d32216da7e3bf33de990fd6",
+      "next": "5dcad71a95b04f0c01ebd82a613faf7e1619e9edc38a8efdeffc341bf3b5bd0e"
+    },
+    {
+      "ord": 33,
+      "blockId": "b781f466ee52b912ac3baf476234cb79",
+      "fp64": "7dcff15e7da1aa28",
+      "normHash": "5dcad71a95b04f0c01ebd82a613faf7e1619e9edc38a8efdeffc341bf3b5bd0e",
+      "kind": "p",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "cf82f37a0d9fa7db967582d57875f1098daf08f4fb5688263e59d6c97d092c67",
+      "next": "9da403adc6f7f743d1c743c8c84d8aed2f84904be7b6a5259cf89154e0840dbb"
+    },
+    {
+      "ord": 34,
+      "blockId": "86e245d60f7c59ffa38badbdaaa08ce2",
+      "fp64": "77fff79a7ffb69f6",
+      "normHash": "9da403adc6f7f743d1c743c8c84d8aed2f84904be7b6a5259cf89154e0840dbb",
+      "kind": "page",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "5dcad71a95b04f0c01ebd82a613faf7e1619e9edc38a8efdeffc341bf3b5bd0e",
+      "next": "298f165e5664f212527a77770c39cafdce6a576068824128dcab97a8caed1a06"
+    },
+    {
+      "ord": 35,
+      "blockId": "fcd635e3bc9752dced1fa2bc501dfc78",
+      "fp64": "de52e455daf4c27d",
+      "normHash": "298f165e5664f212527a77770c39cafdce6a576068824128dcab97a8caed1a06",
+      "kind": "p",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "9da403adc6f7f743d1c743c8c84d8aed2f84904be7b6a5259cf89154e0840dbb",
+      "next": "7584db8583100f35d7e6159cbb032bd8995e2bb143f45053d2a80ce9d89bc005"
+    },
+    {
+      "ord": 36,
+      "blockId": "3397b75133a3662b4330c974254c74b3",
+      "fp64": "2ec25c5d6fc4dff3",
+      "normHash": "7584db8583100f35d7e6159cbb032bd8995e2bb143f45053d2a80ce9d89bc005",
+      "kind": "p",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "298f165e5664f212527a77770c39cafdce6a576068824128dcab97a8caed1a06",
+      "next": "afdb7313e5b92484c76c5195be2959c3631cc9c844a90c8fa37d3edfc9b28110"
+    },
+    {
+      "ord": 37,
+      "blockId": "c03d2ea2d1861d357ab51487bee2797c",
+      "fp64": "3fdffb9edbf77eb7",
+      "normHash": "afdb7313e5b92484c76c5195be2959c3631cc9c844a90c8fa37d3edfc9b28110",
+      "kind": "page",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "7584db8583100f35d7e6159cbb032bd8995e2bb143f45053d2a80ce9d89bc005",
+      "next": "876ea6b4fa278899286f4cc8dbaa602f98ba179a86e95bc12af162bba75a589e"
+    },
+    {
+      "ord": 38,
+      "blockId": "6eeee6f8c0c647dc9cdcb82d8f487034",
+      "fp64": "ecad9d425eadb299",
+      "normHash": "876ea6b4fa278899286f4cc8dbaa602f98ba179a86e95bc12af162bba75a589e",
+      "kind": "p",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "afdb7313e5b92484c76c5195be2959c3631cc9c844a90c8fa37d3edfc9b28110",
+      "next": "74eacd7c020ec772a6a67d400efc1cc688ff05830c60c64e6703491e082258ed"
+    },
+    {
+      "ord": 39,
+      "blockId": "58f0989f6f9518956e842f08f2374137",
+      "fp64": "5cab347103174026",
+      "normHash": "74eacd7c020ec772a6a67d400efc1cc688ff05830c60c64e6703491e082258ed",
+      "kind": "p",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "876ea6b4fa278899286f4cc8dbaa602f98ba179a86e95bc12af162bba75a589e",
+      "next": "06ecbf60fb17e7d0d46f6c00d255ec33a7491d10eed9eb596068540220791f21"
+    },
+    {
+      "ord": 40,
+      "blockId": "27120a979144ea86b30edcdcbda10c40",
+      "fp64": "95c874dba28c929b",
+      "normHash": "06ecbf60fb17e7d0d46f6c00d255ec33a7491d10eed9eb596068540220791f21",
+      "kind": "p",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "74eacd7c020ec772a6a67d400efc1cc688ff05830c60c64e6703491e082258ed",
+      "next": "c9d963f038c204cdec8da768bce98e69d1bf414d903aae3bc061b11205939f2a"
+    },
+    {
+      "ord": 41,
+      "blockId": "b8a0104a9f58b0e9c736abf110f66d3a",
+      "fp64": "37dff79f5f756377",
+      "normHash": "c9d963f038c204cdec8da768bce98e69d1bf414d903aae3bc061b11205939f2a",
+      "kind": "page",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "06ecbf60fb17e7d0d46f6c00d255ec33a7491d10eed9eb596068540220791f21",
+      "next": "33f6551dad6dbf6acb0210604449cccc3383df88afba2b6e7fd111c429685b12"
+    },
+    {
+      "ord": 42,
+      "blockId": "71cec041b41e6fd873c6715b49a532d3",
+      "fp64": "cc99903eb7638c99",
+      "normHash": "33f6551dad6dbf6acb0210604449cccc3383df88afba2b6e7fd111c429685b12",
+      "kind": "p",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "c9d963f038c204cdec8da768bce98e69d1bf414d903aae3bc061b11205939f2a",
+      "next": "df93cfb291e3a41ef21d7f371eac705db7147a86d536d52cb670005683889bb5"
+    },
+    {
+      "ord": 43,
+      "blockId": "3bffa18abd012c5ffbc2851a5229a9cd",
+      "fp64": "f314b471c5362dc8",
+      "normHash": "df93cfb291e3a41ef21d7f371eac705db7147a86d536d52cb670005683889bb5",
+      "kind": "p",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "33f6551dad6dbf6acb0210604449cccc3383df88afba2b6e7fd111c429685b12",
+      "next": "058e38c3e03c151893852e5f7eddcff52108152e2d58277d9484d1e473f240d1"
+    },
+    {
+      "ord": 44,
+      "blockId": "df9a5b26bb2d8543574aaea42907c930",
+      "fp64": "4add84fd97cf5dcd",
+      "normHash": "058e38c3e03c151893852e5f7eddcff52108152e2d58277d9484d1e473f240d1",
+      "kind": "p",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "df93cfb291e3a41ef21d7f371eac705db7147a86d536d52cb670005683889bb5",
+      "next": "fd7450c1f92d52b91075220c636129ef702e8e7c29edc73d8f2e81df8a091618"
+    },
+    {
+      "ord": 45,
+      "blockId": "0ec085474cbf3e3cee85bb72731e4fc8",
+      "fp64": "77dff3dadf79e97e",
+      "normHash": "fd7450c1f92d52b91075220c636129ef702e8e7c29edc73d8f2e81df8a091618",
+      "kind": "page",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "058e38c3e03c151893852e5f7eddcff52108152e2d58277d9484d1e473f240d1",
+      "next": "cd806b0aaff24d9ed6d8a895ca6eacf86e24d2c4cae49e6c218b152ffd24f008"
+    },
+    {
+      "ord": 46,
+      "blockId": "f485c0c7e031d81ca1801dca3920eb81",
+      "fp64": "365ce844971a415c",
+      "normHash": "cd806b0aaff24d9ed6d8a895ca6eacf86e24d2c4cae49e6c218b152ffd24f008",
+      "kind": "p",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "fd7450c1f92d52b91075220c636129ef702e8e7c29edc73d8f2e81df8a091618",
+      "next": "03d867012d0fc9a277a039bba98c6607b41e757b8712556ef117c51d25646616"
+    },
+    {
+      "ord": 47,
+      "blockId": "6b14f1892c7e61f262c8d5ccb5e77a0e",
+      "fp64": "4f888e515c10ff3e",
+      "normHash": "03d867012d0fc9a277a039bba98c6607b41e757b8712556ef117c51d25646616",
+      "kind": "p",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "cd806b0aaff24d9ed6d8a895ca6eacf86e24d2c4cae49e6c218b152ffd24f008",
+      "next": "d3fc5bd9b2f63785248129ea03bccffcaf940956b7d8a0eead4645fbe9ba5066"
+    },
+    {
+      "ord": 48,
+      "blockId": "6da21c099c2d2791cee31263a59f3a90",
+      "fp64": "f7fff79efaf160b6",
+      "normHash": "d3fc5bd9b2f63785248129ea03bccffcaf940956b7d8a0eead4645fbe9ba5066",
+      "kind": "page",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "03d867012d0fc9a277a039bba98c6607b41e757b8712556ef117c51d25646616",
+      "next": "816bcce47d4a0c67729993bcee1c11de33d8c544692088b30d517e26bcca30ca"
+    },
+    {
+      "ord": 49,
+      "blockId": "85864be3d2b3c35d99a72758c304dbd4",
+      "fp64": "5eca7c49df777c0d",
+      "normHash": "816bcce47d4a0c67729993bcee1c11de33d8c544692088b30d517e26bcca30ca",
+      "kind": "p",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "d3fc5bd9b2f63785248129ea03bccffcaf940956b7d8a0eead4645fbe9ba5066",
+      "next": "68f3727261046665f498c65a90fa7e68e048dc53941446d1ded55914c30c2e89"
+    },
+    {
+      "ord": 50,
+      "blockId": "9baf8c008056bf0ee8d9c2bbd490c49f",
+      "fp64": "efdff3daff39eaf7",
+      "normHash": "68f3727261046665f498c65a90fa7e68e048dc53941446d1ded55914c30c2e89",
+      "kind": "page",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "816bcce47d4a0c67729993bcee1c11de33d8c544692088b30d517e26bcca30ca",
+      "next": "2907b68e3f951dc59a7468fc5539d32b90f48aebce63d2870ade16e0da6bb79f"
+    },
+    {
+      "ord": 51,
+      "blockId": "d8e174e65d8e495b803b52c5c5bbbf89",
+      "fp64": "4791d86a3273999b",
+      "normHash": "2907b68e3f951dc59a7468fc5539d32b90f48aebce63d2870ade16e0da6bb79f",
+      "kind": "p",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "68f3727261046665f498c65a90fa7e68e048dc53941446d1ded55914c30c2e89",
+      "next": "79db4e37818fbf63ddb302778a7f808f7d4c295adc862976ff25c9c5991b7a7c"
+    },
+    {
+      "ord": 52,
+      "blockId": "c2c98e4b1a83420a43a5e785212a7117",
+      "fp64": "74c23442537f1838",
+      "normHash": "79db4e37818fbf63ddb302778a7f808f7d4c295adc862976ff25c9c5991b7a7c",
+      "kind": "p",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "2907b68e3f951dc59a7468fc5539d32b90f48aebce63d2870ade16e0da6bb79f",
+      "next": "10d76e1879a1ef6f2fe39e5c5b89e33e22083ebb14a869c0d2495f87dc134686"
+    },
+    {
+      "ord": 53,
+      "blockId": "d702cb5db88de04fd2692d89beabbde2",
+      "fp64": "a5ffff9a5a776b7f",
+      "normHash": "10d76e1879a1ef6f2fe39e5c5b89e33e22083ebb14a869c0d2495f87dc134686",
+      "kind": "page",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "79db4e37818fbf63ddb302778a7f808f7d4c295adc862976ff25c9c5991b7a7c",
+      "next": "4a15e9f66935f08c86a7ccbc5cda09fc788b61f2cbcc597e6646995c73cc8ace"
+    },
+    {
+      "ord": 54,
+      "blockId": "4a80cc278930f470a133ea1af9f5a29c",
+      "fp64": "e70c2e79535f5b28",
+      "normHash": "4a15e9f66935f08c86a7ccbc5cda09fc788b61f2cbcc597e6646995c73cc8ace",
+      "kind": "p",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "10d76e1879a1ef6f2fe39e5c5b89e33e22083ebb14a869c0d2495f87dc134686",
+      "next": "a181acef972400c92ed3ae51e67ba828b894042089a48611cc161a547d84306a"
+    },
+    {
+      "ord": 55,
+      "blockId": "cb3d0a0b449e38a39a9fcb79bff69eb6",
+      "fp64": "2ffff3fbdf3f7f7e",
+      "normHash": "a181acef972400c92ed3ae51e67ba828b894042089a48611cc161a547d84306a",
+      "kind": "page",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "4a15e9f66935f08c86a7ccbc5cda09fc788b61f2cbcc597e6646995c73cc8ace",
+      "next": "d7b7d11f506dff5efd709e95c44c9627258d1e981307854db617d9c60b993b32"
+    },
+    {
+      "ord": 56,
+      "blockId": "b1cf69d478cc6870843967f69dd7f5e4",
+      "fp64": "9611805696722d1a",
+      "normHash": "d7b7d11f506dff5efd709e95c44c9627258d1e981307854db617d9c60b993b32",
+      "kind": "p",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "a181acef972400c92ed3ae51e67ba828b894042089a48611cc161a547d84306a",
+      "next": "b73aa4cdc874f833049801c90b61644752248ba6277e7139cb021ddcc4ca7d5c"
+    },
+    {
+      "ord": 57,
+      "blockId": "aa1d135488f3a8643c8d56681fc74dec",
+      "fp64": "afdff7fe5fb37f77",
+      "normHash": "b73aa4cdc874f833049801c90b61644752248ba6277e7139cb021ddcc4ca7d5c",
+      "kind": "page",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "d7b7d11f506dff5efd709e95c44c9627258d1e981307854db617d9c60b993b32",
+      "next": "b6170bcee8ce08b41a7ecd79c47db5160acae89050abd0a77719408ed6adbd3f"
+    },
+    {
+      "ord": 58,
+      "blockId": "f672a7716829f460cb78396251b5b010",
+      "fp64": "5bc78cffd7d67c18",
+      "normHash": "b6170bcee8ce08b41a7ecd79c47db5160acae89050abd0a77719408ed6adbd3f",
+      "kind": "p",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "b73aa4cdc874f833049801c90b61644752248ba6277e7139cb021ddcc4ca7d5c",
+      "next": "f57279e5e08f65b9aa33e6f77c59738fd981675b1d001e1bb7fb0ade4dc7b44e"
+    },
+    {
+      "ord": 59,
+      "blockId": "bbf5984d8c01976365866a2497fffbc0",
+      "fp64": "bdfff3fb7b7175f6",
+      "normHash": "f57279e5e08f65b9aa33e6f77c59738fd981675b1d001e1bb7fb0ade4dc7b44e",
+      "kind": "page",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "b6170bcee8ce08b41a7ecd79c47db5160acae89050abd0a77719408ed6adbd3f",
+      "next": "ec411e1736b2972f79fada064620896a6f9564538663c555f91d09a09fcb614c"
+    },
+    {
+      "ord": 60,
+      "blockId": "1aeea4bbff0a991310357f112fc0351d",
+      "fp64": "7bdf5e56c511ff22",
+      "normHash": "ec411e1736b2972f79fada064620896a6f9564538663c555f91d09a09fcb614c",
+      "kind": "p",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "f57279e5e08f65b9aa33e6f77c59738fd981675b1d001e1bb7fb0ade4dc7b44e",
+      "next": "a65b49640ab1cd11017c20afc1bbe908cf28956988d573c8d1d0b8ee643341ff"
+    },
+    {
+      "ord": 61,
+      "blockId": "5da52b7778e17a76f1f9aa55da301c9e",
+      "fp64": "d7ea8c7a1955fe7c",
+      "normHash": "a65b49640ab1cd11017c20afc1bbe908cf28956988d573c8d1d0b8ee643341ff",
+      "kind": "p",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "ec411e1736b2972f79fada064620896a6f9564538663c555f91d09a09fcb614c",
+      "next": "9bde387290c60dc32465b71a74cb6b431812ef2cdf17d86d25a5a76c61d3d582"
+    },
+    {
+      "ord": 62,
+      "blockId": "9f69986ac61b1cd3e8b90f5812324952",
+      "fp64": "97b0644a04443bf7",
+      "normHash": "9bde387290c60dc32465b71a74cb6b431812ef2cdf17d86d25a5a76c61d3d582",
+      "kind": "p",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "a65b49640ab1cd11017c20afc1bbe908cf28956988d573c8d1d0b8ee643341ff",
+      "next": "5e2cfecc4b28b7f95b8ea4b6690bb0dc473d3169e4431fc9b7b4dfc8da5d7900"
+    },
+    {
+      "ord": 63,
+      "blockId": "28a30602f9267f60c1ae24e256da4088",
+      "fp64": "51c344fa8617eb2c",
+      "normHash": "5e2cfecc4b28b7f95b8ea4b6690bb0dc473d3169e4431fc9b7b4dfc8da5d7900",
+      "kind": "p",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "9bde387290c60dc32465b71a74cb6b431812ef2cdf17d86d25a5a76c61d3d582",
+      "next": "c08cd48df02782a05d794b9546fe03555da34307f5cc30481c9cbf891f430ea4"
+    },
+    {
+      "ord": 64,
+      "blockId": "d41791d5b195af9e95560209e46c640b",
+      "fp64": "2ddff7df7b79e5b7",
+      "normHash": "c08cd48df02782a05d794b9546fe03555da34307f5cc30481c9cbf891f430ea4",
+      "kind": "page",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "5e2cfecc4b28b7f95b8ea4b6690bb0dc473d3169e4431fc9b7b4dfc8da5d7900",
+      "next": "fc2e7db478f9295fd69181e973f5e8a9ea38ba4885f244cf284a6504d39267d2"
+    },
+    {
+      "ord": 65,
+      "blockId": "867b1583bd5f24c99268336d108bfc90",
+      "fp64": "59cc5458d57cfd4d",
+      "normHash": "fc2e7db478f9295fd69181e973f5e8a9ea38ba4885f244cf284a6504d39267d2",
+      "kind": "p",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "c08cd48df02782a05d794b9546fe03555da34307f5cc30481c9cbf891f430ea4",
+      "next": "0516e251ec96bafda2747e69ea3f55e59a1298a8f0722685ea476a4f2cfc8bea"
+    },
+    {
+      "ord": 66,
+      "blockId": "51b68e65c1b5b21be523e68927812e34",
+      "fp64": "77ffff9efa7bfc7f",
+      "normHash": "0516e251ec96bafda2747e69ea3f55e59a1298a8f0722685ea476a4f2cfc8bea",
+      "kind": "page",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "fc2e7db478f9295fd69181e973f5e8a9ea38ba4885f244cf284a6504d39267d2",
+      "next": "6dbbfe25f27904678f604a0c4d32f9404aabf6bdf3cb7dac5c8eab9bbf017b58"
+    },
+    {
+      "ord": 67,
+      "blockId": "6a5be9ec11e811830efe9b115c5f8716",
+      "fp64": "56d30c789f673c8d",
+      "normHash": "6dbbfe25f27904678f604a0c4d32f9404aabf6bdf3cb7dac5c8eab9bbf017b58",
+      "kind": "p",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "0516e251ec96bafda2747e69ea3f55e59a1298a8f0722685ea476a4f2cfc8bea",
+      "next": "3cdee979cbf4d8b549112fafa7ed4a94c2324e4843346e2a39a4a15d673b878a"
+    },
+    {
+      "ord": 68,
+      "blockId": "2ee80b1bb4e5b796e242eebdc494083e",
+      "fp64": "de5560721364337c",
+      "normHash": "3cdee979cbf4d8b549112fafa7ed4a94c2324e4843346e2a39a4a15d673b878a",
+      "kind": "p",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "6dbbfe25f27904678f604a0c4d32f9404aabf6bdf3cb7dac5c8eab9bbf017b58",
+      "next": "2ab029640d0d4db368c048d36be6c59a5ae8545d4205df7e2b6173bbc905b96c"
+    },
+    {
+      "ord": 69,
+      "blockId": "f874cdd6edeef25f0e42684f3762b9c7",
+      "fp64": "77dff39fdf716677",
+      "normHash": "2ab029640d0d4db368c048d36be6c59a5ae8545d4205df7e2b6173bbc905b96c",
+      "kind": "page",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "3cdee979cbf4d8b549112fafa7ed4a94c2324e4843346e2a39a4a15d673b878a",
+      "next": "dabe262ddb7c3afc89deb34c0fb9182a4da53f6e595aef8bad561e8f5f22192a"
+    },
+    {
+      "ord": 70,
+      "blockId": "07b4eab377b03cf732c5f16830407e56",
+      "fp64": "2a8454498777fcea",
+      "normHash": "dabe262ddb7c3afc89deb34c0fb9182a4da53f6e595aef8bad561e8f5f22192a",
+      "kind": "p",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "2ab029640d0d4db368c048d36be6c59a5ae8545d4205df7e2b6173bbc905b96c",
+      "next": "1b812f1da0256532b54fe37b737551313292597646cd399cd89855624c1fd078"
+    },
+    {
+      "ord": 71,
+      "blockId": "8504b0880b624dc281071db47deb3dd3",
+      "fp64": "f7ffffdf5eb7e17f",
+      "normHash": "1b812f1da0256532b54fe37b737551313292597646cd399cd89855624c1fd078",
+      "kind": "page",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "dabe262ddb7c3afc89deb34c0fb9182a4da53f6e595aef8bad561e8f5f22192a",
+      "next": "439acab5f6a63cfd108992a079ed66d9f68dccfc0004759cf87802120bec90f2"
+    },
+    {
+      "ord": 72,
+      "blockId": "cd5c749add6b898ed247b34455a48041",
+      "fp64": "1a82cc7b1f67f87d",
+      "normHash": "439acab5f6a63cfd108992a079ed66d9f68dccfc0004759cf87802120bec90f2",
+      "kind": "p",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "1b812f1da0256532b54fe37b737551313292597646cd399cd89855624c1fd078",
+      "next": "e4be88b6db2aa43306908ee765821a98c06e695d97902273f66f16bc6b1af3ab"
+    },
+    {
+      "ord": 73,
+      "blockId": "e3c8c45adb43d97778bb5c2accd6edf0",
+      "fp64": "07cf4d7adf277d4d",
+      "normHash": "e4be88b6db2aa43306908ee765821a98c06e695d97902273f66f16bc6b1af3ab",
+      "kind": "p",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "439acab5f6a63cfd108992a079ed66d9f68dccfc0004759cf87802120bec90f2",
+      "next": "e34c2494ff5cbdc924c6f860aefa5fea954590d966f699776c74c1bbfdda3b6b"
+    },
+    {
+      "ord": 74,
+      "blockId": "35ae3f29e98c3f5c4fbf9d47236c85b2",
+      "fp64": "b5fff3fefa7b7337",
+      "normHash": "e34c2494ff5cbdc924c6f860aefa5fea954590d966f699776c74c1bbfdda3b6b",
+      "kind": "page",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "e4be88b6db2aa43306908ee765821a98c06e695d97902273f66f16bc6b1af3ab",
+      "next": "cd62eb14d37b20033f4e62e570591858664654ce6bb317c04d3fe30b773f2a98"
+    },
+    {
+      "ord": 75,
+      "blockId": "1cde1cb5114bb9ad4594970c1354a1e9",
+      "fp64": "ee46e45f956169dd",
+      "normHash": "cd62eb14d37b20033f4e62e570591858664654ce6bb317c04d3fe30b773f2a98",
+      "kind": "p",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "e34c2494ff5cbdc924c6f860aefa5fea954590d966f699776c74c1bbfdda3b6b",
+      "next": "ab72b89aca97640319bc30b155627267cecaa4e13bf343a2a3458e23a08ec6f0"
+    },
+    {
+      "ord": 76,
+      "blockId": "4b42326c623b9ad431057f134549ee7d",
+      "fp64": "7956f25f877f7cde",
+      "normHash": "ab72b89aca97640319bc30b155627267cecaa4e13bf343a2a3458e23a08ec6f0",
+      "kind": "p",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "cd62eb14d37b20033f4e62e570591858664654ce6bb317c04d3fe30b773f2a98",
+      "next": "21f9c20f4e83572f264bf3be8f944f198e85a4861ab0d298f36d08d44149d424"
+    },
+    {
+      "ord": 77,
+      "blockId": "44867f9fcabfe8a8ead328acf5d04c75",
+      "fp64": "ffdfff9edf716b76",
+      "normHash": "21f9c20f4e83572f264bf3be8f944f198e85a4861ab0d298f36d08d44149d424",
+      "kind": "page",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "ab72b89aca97640319bc30b155627267cecaa4e13bf343a2a3458e23a08ec6f0",
+      "next": "0ca475d08d7a2e01cc43c3e670e3339d6f3cbcbc2c5bac5aa2592a1a85e147f5"
+    },
+    {
+      "ord": 78,
+      "blockId": "38193f276f2b444f3ee688d09726a4b4",
+      "fp64": "fe4ce054153466fc",
+      "normHash": "0ca475d08d7a2e01cc43c3e670e3339d6f3cbcbc2c5bac5aa2592a1a85e147f5",
+      "kind": "p",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "21f9c20f4e83572f264bf3be8f944f198e85a4861ab0d298f36d08d44149d424",
+      "next": "a368891ef9a262987f7b742c364d62cb1d7d4e6cde5b779d8435f58d0237e27a"
+    },
+    {
+      "ord": 79,
+      "blockId": "a4570b88df5fe04e27d648acc5e39df4",
+      "fp64": "7ffffbbafa337eff",
+      "normHash": "a368891ef9a262987f7b742c364d62cb1d7d4e6cde5b779d8435f58d0237e27a",
+      "kind": "page",
+      "chapter": "تأليف-أحمد-بن-عبد-الحليم-ابن-تيمية-الحراني",
+      "prev": "0ca475d08d7a2e01cc43c3e670e3339d6f3cbcbc2c5bac5aa2592a1a85e147f5"
+    }
+  ]
+}

@@ -42,6 +42,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.animation.animateContentSize
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.layout.boundsInWindow
+import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
@@ -72,15 +74,44 @@ fun AdhkarScreen(
     onCopy: (DhikrUi) -> Unit,
     onSave: (DhikrUi) -> Unit,
     modifier: Modifier = Modifier,
+    /** «+»: a new dhikr of one's own, starting in this list. */
+    onAdd: (listId: String) -> Unit = {},
+    onEdit: (DhikrUi) -> Unit = {},
+    onDeleteList: (listId: String) -> Unit = {},
     bab: AdhkarBabUi? = null,
     onBack: (() -> Unit)? = null,
+    /** Daily reminders by list id, minutes after midnight; [onReminder] with null turns one off. */
+    reminders: Map<String, Int> = emptyMap(),
+    onReminder: (listId: String, label: String, minutes: Int?) -> Unit = { _, _, _ -> },
+    /** A list to open (a reminder was tapped); [onOpened] once it is showing. */
+    openList: String? = null,
+    onOpened: () -> Unit = {},
     /** The reader's font, size and text colours, so a dhikr reads like the books. */
     readerSettings: com.atharchive.feature.reader.ReaderSettings = com.atharchive.feature.reader.ReaderSettings(),
 ) {
     // ponytail: المساء from 15:00 until 04:00, near enough to العصر and الفجر without prayer times; real times when the app has them.
-    var selectedTab by rememberSaveable {
-        mutableStateOf(java.time.LocalTime.now().hour.let { if (it >= 15 || it < 4) AdhkarTab.Evening else AdhkarTab.Morning })
+    var storedKey by rememberSaveable {
+        mutableStateOf(java.time.LocalTime.now().hour.let { if (it >= 15 || it < 4) AdhkarTab.Evening else AdhkarTab.Morning }.key)
     }
+    // One's own lists share one tab, «قوائمي», with the open list picked from its first line.
+    val ownLists = state.babs.filter { it.id != AdhkarTab.Morning.key && it.id != AdhkarTab.Evening.key }
+    var ownKey by rememberSaveable { mutableStateOf<String?>(null) }
+    val ownList = ownLists.firstOrNull { it.id == ownKey } ?: ownLists.firstOrNull()
+    val tabs = listOf(AdhkarTab.Morning, AdhkarTab.Evening).map { com.atharchive.ui.components.AtharTab(it.key, it.label) } +
+        listOfNotNull(com.atharchive.ui.components.AtharTab(MineKey, "قوائمي").takeIf { ownList != null }) +
+        com.atharchive.ui.components.AtharTab(AdhkarTab.Saved.key, AdhkarTab.Saved.label)
+    // A deleted list's tab falls back to الصباح.
+    val selectedKey = storedKey.takeIf { key -> tabs.any { it.key == key } } ?: AdhkarTab.Morning.key
+    val mine = bab == null && selectedKey == MineKey
+    androidx.compose.runtime.LaunchedEffect(openList) {
+        openList ?: return@LaunchedEffect
+        if (openList == AdhkarTab.Morning.key || openList == AdhkarTab.Evening.key) storedKey = openList
+        else if (ownLists.any { it.id == openList }) { storedKey = MineKey; ownKey = openList }
+        onOpened()
+    }
+    // The list open now, for its reminder (المفضّلة has none).
+    val reminderList = bab ?: if (mine) ownList else state.babs.firstOrNull { it.id == selectedKey }
+    var reminderAt by remember { mutableStateOf<androidx.compose.ui.geometry.Rect?>(null) }
     var query by rememberSaveable { mutableStateOf("") }
     // Counts last the day: closing the app mid-way keeps your place; a new day starts clean.
     val context = androidx.compose.ui.platform.LocalContext.current
@@ -90,13 +121,16 @@ fun AdhkarScreen(
     val readerColors = com.atharchive.feature.reader.rememberReaderColors(readerSettings)
     var advancedAt by remember { mutableStateOf(0L) }
     val listState = rememberLazyListState()
+    com.atharchive.feature.reader.VolumeKeyPaging(listState, readerSettings.volumeKeys)
     val reselectScope = androidx.compose.runtime.rememberCoroutineScope()
 
     val entries = when {
         bab != null -> state.of(bab.id)
-        selectedTab == AdhkarTab.Saved -> state.saved
-        else -> state.of(selectedTab.key)
+        selectedKey == AdhkarTab.Saved.key -> state.saved
+        mine -> ownList?.let { state.of(it.id) }.orEmpty()
+        else -> state.of(selectedKey)
     }
+    val addTo = bab?.id ?: if (mine) ownList?.id ?: AdhkarTab.Morning.key else selectedKey.takeIf { it != AdhkarTab.Saved.key } ?: AdhkarTab.Morning.key
     // A search looks in every tab (not just the open one) and ignores tashkeel and letter forms.
     val visible = remember(entries, query, state) {
         val term = com.atharchive.core.ArNormalize.normalize(query.trim())
@@ -109,7 +143,7 @@ fun AdhkarScreen(
     val done = entries.count { left(it) == 0 }
     // المفضّلة is a shelf, not a session: counting through it would be counting the same
     // dhikr twice, so it shows no progress bar.
-    val counting = bab != null || selectedTab != AdhkarTab.Saved
+    val counting = bab != null || selectedKey != AdhkarTab.Saved.key
 
     BoxWithConstraints(
         modifier = modifier
@@ -126,9 +160,9 @@ fun AdhkarScreen(
                 showAppIcon = true,
                 onBack = onBack,
                 horizontalPadding = horizontalPadding,
-                actionIcon = if (bab == null && state.babs.size > 2) AtharIcons.Sidebar else null,
-                actionLabel = "أبواب الأذكار",
-                onAction = if (bab == null && state.babs.size > 2) onOpenBabs else null,
+                actionIcon = AtharIcons.PlusCircle,
+                actionLabel = "إضافة ذكر",
+                onAction = { onAdd(addTo) },
             )
             LazyColumn(
                 state = listState,
@@ -168,13 +202,18 @@ fun AdhkarScreen(
                 if (bab == null) {
                     item(key = "adhkar-tabs") {
                         AtharTabRow(
-                            tabs = AdhkarTab.tabs,
-                            selectedKey = selectedTab.key,
-                            onSelect = { selectedTab = AdhkarTab.fromKey(it) },
+                            tabs = tabs,
+                            selectedKey = selectedKey,
+                            onSelect = { storedKey = it },
                             tagPrefix = "adhkar",
                             onReselect = { reselectScope.launch { listState.animateScrollToItem(0) } },
                             modifier = Modifier.padding(horizontal = horizontalPadding),
                         )
+                    }
+                }
+                if (mine && ownList != null) {
+                    item(key = "adhkar-own-list") {
+                        OwnListPicker(ownLists, ownList, horizontalPadding, onPick = { ownKey = it }, onDelete = { onDeleteList(ownList.id); ownKey = null })
                     }
                 }
                 if (counting && entries.isNotEmpty()) {
@@ -184,6 +223,8 @@ fun AdhkarScreen(
                             total = entries.size,
                             horizontalPadding = horizontalPadding,
                             onReset = { counts.reset(entries.map { it.id }) },
+                            reminder = reminderList?.let { reminders[it.id] },
+                            onBell = if (reminderList == null) null else ({ reminderAt = it }),
                         )
                     }
                 }
@@ -204,8 +245,9 @@ fun AdhkarScreen(
                         val (title, body) = when {
                             query.isNotBlank() ->
                                 "لا توجد نتائج" to "جرّب كلمة أقصر من نص الذكر."
-                            selectedTab == AdhkarTab.Saved && bab == null ->
+                            selectedKey == AdhkarTab.Saved.key && bab == null ->
                                 "لا أذكار في المفضّلة" to "احفظ ذكرًا ليظهر هنا."
+                            mine -> "لا أذكار في هذه القائمة" to "اضغط + لتضيف ذكرًا، أو حدّد نصًا في كتاب واختر «إلى الأذكار»."
                             else ->
                                 "لا أذكار في هذا الباب" to "سيأتي محتوى هذا الباب مع طبقة البيانات."
                         }
@@ -218,7 +260,7 @@ fun AdhkarScreen(
                     }
                 } else {
                     // Items above the first card, to scroll to the next one when a dhikr is finished.
-                    val above = (if (bab == null) 2 else 0) + 1 + (if (counting && entries.isNotEmpty()) 1 else 0) + 1
+                    val above = (if (bab == null) 2 else 0) + 1 + (if (mine && ownList != null) 1 else 0) + (if (counting && entries.isNotEmpty()) 1 else 0) + 1
                     items(visible, key = { it.id }) { dhikr ->
                         DhikrCard(
                             dhikr = dhikr,
@@ -244,10 +286,77 @@ fun AdhkarScreen(
                             },
                             onCopy = { onCopy(dhikr) },
                             onSave = { onSave(dhikr) },
+                            onEdit = if (dhikr.custom) ({ onEdit(dhikr) }) else null,
                         )
                     }
                 }
             }
+        }
+        val list = reminderList
+        val at = reminderAt
+        if (list != null && at != null) ReminderPopover(
+            label = list.label, minutes = reminders[list.id], anchor = at,
+            onSet = { onReminder(list.id, list.label, it); reminderAt = null },
+            onDismiss = { reminderAt = null },
+        )
+    }
+}
+
+private const val MineKey = "mine"
+
+/** «HH:MM» in Arabic digits, 24-hour, for minutes after midnight. */
+private fun clock(minutes: Int) = arabicDigits("%d:%02d".format(minutes / 60, minutes % 60))
+
+/** The bell's popover: a time for this list's daily reminder, or off. */
+@OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+@Composable
+private fun ReminderPopover(label: String, minutes: Int?, anchor: androidx.compose.ui.geometry.Rect, onSet: (Int?) -> Unit, onDismiss: () -> Unit) {
+    val default = minutes ?: if (label == AdhkarTab.Evening.label) 17 * 60 else 6 * 60
+    val time = androidx.compose.material3.rememberTimePickerState(default / 60, default % 60, is24Hour = true)
+    com.atharchive.ui.components.AtharTailPopover(anchor = { anchor }, ground = AtharTheme.colors.raisedSurface, onDismiss = onDismiss, maxWidth = 320.dp) {
+        Column(Modifier.fillMaxWidth().padding(horizontal = 18.dp, vertical = 12.dp).testTag("adhkar_reminder")) {
+            Text("تذكير يومي بأذكار $label", fontFamily = AtharEditorialFontFamily, fontWeight = FontWeight.Bold, style = MaterialTheme.typography.titleMedium)
+            Text(
+                minutes?.let { "كل يوم الساعة ${clock(it)}" } ?: "لا تذكير الآن",
+                Modifier.padding(top = 2.dp, bottom = 10.dp), color = AtharTheme.colors.secondaryText, style = MaterialTheme.typography.bodySmall,
+            )
+            // Hours then minutes, left to right, as a clock is read.
+            androidx.compose.runtime.CompositionLocalProvider(androidx.compose.ui.platform.LocalLayoutDirection provides androidx.compose.ui.unit.LayoutDirection.Ltr) {
+                androidx.compose.material3.TimeInput(time, Modifier.align(Alignment.CenterHorizontally))
+            }
+            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+                androidx.compose.material3.TextButton(onClick = { onSet(null) }, enabled = minutes != null, modifier = Modifier.testTag("adhkar_reminder_off")) { Text("إيقاف") }
+                androidx.compose.material3.TextButton(onClick = { onSet(time.hour * 60 + time.minute) }, modifier = Modifier.testTag("adhkar_reminder_save")) { Text("حفظ") }
+            }
+        }
+    }
+}
+
+/** «قوائمي»'s first line: the open list, a tap to switch, and its removal (asked twice: it can take adhkar with it). */
+@Composable
+private fun OwnListPicker(lists: List<AdhkarBabUi>, current: AdhkarBabUi, horizontalPadding: Dp, onPick: (String) -> Unit, onDelete: () -> Unit) {
+    var open by remember { mutableStateOf(false) }
+    var confirm by remember { mutableStateOf(false) }
+    Box(Modifier.padding(start = horizontalPadding, end = horizontalPadding, top = 10.dp)) {
+        Row(
+            Modifier.clip(AtharCorners.Control).clickable(role = Role.DropdownList) { open = true }
+                .padding(horizontal = 6.dp, vertical = 4.dp).testTag("adhkar_own_list"),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Text(current.label, color = AtharTheme.colors.accent, style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.SemiBold)
+            Icon(AtharIcons.ChevronDown, null, Modifier.padding(start = 4.dp).size(16.dp), tint = AtharTheme.colors.secondaryText)
+        }
+        com.atharchive.ui.components.AtharMenu(expanded = open, onDismiss = { open = false }, width = 220.dp) {
+            lists.forEach { list ->
+                com.atharchive.ui.components.AtharMenuItem(list.label, checked = list.id == current.id, onClick = { open = false; onPick(list.id) })
+            }
+            com.atharchive.ui.components.AtharMenuDivider()
+            com.atharchive.ui.components.AtharMenuItem("حذف القائمة…", destructive = true, onClick = { open = false; confirm = true })
+        }
+        com.atharchive.ui.components.AtharMenu(expanded = confirm, onDismiss = { confirm = false }, width = 260.dp) {
+            Text("حذف «${current.label}»؟ تُحذف معها أذكارها التي ليست في قائمة أخرى.", Modifier.padding(14.dp), style = MaterialTheme.typography.bodyMedium)
+            com.atharchive.ui.components.AtharMenuItem("حذف", destructive = true, modifier = Modifier.testTag("adhkar_confirm_delete_list"), onClick = { confirm = false; onDelete() })
+            com.atharchive.ui.components.AtharMenuItem("إلغاء", onClick = { confirm = false })
         }
     }
 }
@@ -258,6 +367,8 @@ private fun AdhkarProgress(
     total: Int,
     horizontalPadding: Dp,
     onReset: () -> Unit,
+    reminder: Int? = null,
+    onBell: ((androidx.compose.ui.geometry.Rect) -> Unit)? = null,
 ) {
     Row(
         modifier = Modifier
@@ -294,6 +405,23 @@ private fun AdhkarProgress(
                 fontWeight = FontWeight.SemiBold,
             )
         }
+        // The daily reminder: its time beside the bell when one is set.
+        if (onBell != null) {
+            var bounds by remember { mutableStateOf(androidx.compose.ui.geometry.Rect.Zero) }
+            Row(
+                Modifier.clip(AtharCorners.Control)
+                    .onGloballyPositioned { bounds = it.boundsInWindow() }
+                    .clickable(role = Role.Button, onClickLabel = "تذكير يومي") { onBell(bounds) }
+                    .padding(horizontal = 6.dp, vertical = 4.dp)
+                    .testTag("adhkar_reminder_bell"),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Icon(AtharIcons.Bell, if (reminder == null) "تذكير يومي" else null, Modifier.size(18.dp),
+                    tint = if (reminder == null) AtharTheme.colors.secondaryText else AtharTheme.colors.accent)
+                if (reminder != null) Text(clock(reminder), Modifier.padding(start = 4.dp), color = AtharTheme.colors.accent,
+                    style = MaterialTheme.typography.labelSmall, fontWeight = FontWeight.SemiBold)
+            }
+        }
     }
 }
 
@@ -312,6 +440,7 @@ private fun DhikrCard(
     onCount: () -> Unit,
     onCopy: () -> Unit,
     onSave: () -> Unit,
+    onEdit: (() -> Unit)? = null,
 ) {
     val finished = remaining == 0
     var reopened by remember(dhikr.id) { mutableStateOf(false) }
@@ -377,6 +506,9 @@ private fun DhikrCard(
                     tint = if (dhikr.saved) AtharTheme.colors.accent else AtharTheme.colors.secondaryText,
                     modifier = Modifier.size(17.dp),
                 )
+            }
+            if (onEdit != null) IconButton(onClick = onEdit, modifier = Modifier.size(36.dp).testTag("dhikr_edit_${dhikr.id}")) {
+                Icon(AtharIcons.Pen, contentDescription = "تعديل الذكر", tint = AtharTheme.colors.secondaryText, modifier = Modifier.size(17.dp))
             }
             if (dhikr.source != null) Text(
                 text = if (showSource) "إخفاء التخريج" else "التخريج",

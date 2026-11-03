@@ -1,5 +1,6 @@
 package com.atharchive.data
 
+import com.atharchive.core.data.repository.exactMatch
 import com.atharchive.core.data.repository.persons
 import com.atharchive.ui.components.arabicDigits
 import androidx.media3.common.MediaItem
@@ -72,6 +73,7 @@ import com.atharchive.feature.poetry.PoetryUiState
 import com.atharchive.feature.kannashah.ExcerptUi
 import com.atharchive.feature.kannashah.KannashahUiState
 import com.atharchive.feature.reader.InBookHit
+import com.atharchive.feature.reader.InBookSearch
 import com.atharchive.feature.reader.BookAudioUi
 import com.atharchive.feature.reader.ReaderBlock
 import com.atharchive.feature.reader.ReaderBenefit
@@ -135,7 +137,20 @@ sealed interface ContentSyncUiState {
     data object Checking : ContentSyncUiState
     data object UpToDate : ContentSyncUiState
     data object Disabled : ContentSyncUiState
-    data class Failed(val message: String) : ContentSyncUiState
+    /** [manual]: the reader asked for this check, so the failure is worth interrupting them for. */
+    data class Failed(val message: String, val manual: Boolean = false) : ContentSyncUiState
+}
+
+/** A failed sync, in words a reader can act on (the raw cause goes to logcat). */
+internal fun syncFailureReason(error: Throwable): String {
+    val causes = generateSequence(error) { it.cause }.toList()
+    return when {
+        causes.any { it is java.net.UnknownHostException || it is java.net.ConnectException } -> "لا يوجد اتصال بالخادم"
+        causes.any { it is java.net.SocketTimeoutException || it is java.io.InterruptedIOException } -> "الاتصال بطيء جدًا"
+        causes.any { it is javax.net.ssl.SSLException } -> "تعذّر الاتصال الآمن بالخادم"
+        causes.any { it is com.atharchive.core.data.content.ContentIntegrityException } -> "وصلت بيانات غير سليمة"
+        else -> "تعذّر الوصول إلى الخادم"
+    }
 }
 
 @androidx.annotation.OptIn(androidx.media3.common.util.UnstableApi::class)
@@ -146,7 +161,13 @@ class AtharContentViewModel @Inject constructor(
     private val content: ContentAccess,
     val playback: AudioPlayback,
     private val downloadScheduler: ContentDownloadScheduler,
+    val dictionary: Dictionary,
+    private val presetStore: SearchPresetStore,
 ) : ViewModel() {
+    val searchPresets = presetStore.presets
+    fun saveSearchPreset(name: String) = presetStore.save(name, _searchFilters.value)
+    fun deleteSearchPreset(name: String) = presetStore.delete(name)
+
     private val _errors = MutableSharedFlow<String>(extraBufferCapacity = 8)
     val errors = _errors.asSharedFlow()
     private val errorHandler = CoroutineExceptionHandler { _, error ->
@@ -189,6 +210,10 @@ class AtharContentViewModel @Inject constructor(
         descending = savedState.get<Boolean>("searchDescending") ?: false,
         mode = SearchMode.entries.find { it.name == savedState.get<String>("searchMode") } ?: SearchMode.All,
         downloadedOnly = savedState.get<Boolean>("searchDownloadedOnly") ?: false,
+        books = savedState.get<ArrayList<String>>("searchBooks").orEmpty().toSet(),
+        centuries = savedState.get<ArrayList<String>>("searchCenturies").orEmpty().toSet(),
+        sections = savedState.get<ArrayList<String>>("searchSections").orEmpty().toSet(),
+        plain = savedState.get<Boolean>("searchPlain") ?: false,
     ))
     val searchQuery: StateFlow<String> = _searchQuery
     private val _searchLimit = MutableStateFlow(SearchPageSize)
@@ -262,7 +287,8 @@ class AtharContentViewModel @Inject constructor(
     val search: StateFlow<SearchUiState> = combine(
         // Leave half of the §17 120 ms keystroke-to-results target for Room and drawing.
         _searchQuery.debounce(SearchDebounceMs),
-        _searchFilters,
+        // «إخفاء التشكيل» is display only: toggling it must not search again.
+        _searchFilters.map { it.copy(plain = false) }.distinctUntilChanged(),
         recentSearches,
         // The filter lists are built once per catalog change, not on every keystroke.
         catalogDao.observeCatalog().map { SearchCatalog(it) },
@@ -277,21 +303,32 @@ class AtharContentViewModel @Inject constructor(
             directMatches = emptyList(),
             hits = emptyList(),
             availableAuthors = input.catalog.authors,
+            availableBooks = input.catalog.books,
             scope = if (input.filters.downloadedOnly) SearchScope.Downloaded else SearchScope.Online,
         )
         if (clean.length < 2) return@transformLatest emit(base)
         val catalog = input.catalog
         val filters = input.filters
+        // «بالجذر»: the root's forms, searched as «بعض الكلمات»; without a root, the words as typed.
+        val rootForms = if (filters.mode == SearchMode.Root) dictionary.rootForms(clean) else null
+        val roots = if (filters.mode == SearchMode.Root) rootForms?.first.orEmpty() else null
         // Titles and authors always come from the catalog on the phone: complete, instant.
         val local = contentSearch.search(
             ContentSearchRequest(
                 // الدقة offline: a phrase is the query quoted (verified for adjacency), «بعض الكلمات» joins with OR.
-                query = if (filters.mode == SearchMode.Phrase) "\"${clean.replace("\"", "")}\"" else clean,
-                anyWord = filters.mode == SearchMode.Any,
+                query = rootForms?.second?.joinToString(" ") ?: if (filters.mode == SearchMode.Phrase || filters.mode == SearchMode.Exact) "\"${clean.replace("\"", "")}\"" else clean,
+                anyWord = filters.mode == SearchMode.Any || rootForms != null,
+                exact = filters.mode == SearchMode.Exact,
                 field = filters.field.toContentField(),
+                sort = if (filters.sort == SearchSort.Book) ContentSearchSort.BookOrder else ContentSearchSort.Relevance,
                 filter = ContentSearchFilter(
                     collections = filters.types.mapTo(linkedSetOf()) { it.contentCollection },
                     authors = filters.authors,
+                    entityIds = filters.books.takeIf { it.isNotEmpty() }?.flatMapTo(hashSetOf()) { catalog.idsByTitle[it].orEmpty() },
+                    topics = topicsIn(filters.sections),
+                    // ponytail: several centuries search their whole span (٣ and ٨ → ٣ to ٨); per-century ranges if anyone asks
+                    diedFrom = filters.centuries.minOfOrNull(::centuryNumber)?.let { (it - 1) * 100 + 1 },
+                    diedTo = filters.centuries.maxOfOrNull(::centuryNumber)?.let { it * 100 },
                 ),
             ),
             limit = limit + 1,
@@ -307,6 +344,7 @@ class AtharContentViewModel @Inject constructor(
         }
         fun localState(scope: SearchScope) = base.copy(
             scope = scope,
+            roots = roots,
             hasMore = local.catalog.size > limit || local.blocks.size > limit,
             directMatches = direct,
             hits = local.blocks.take(limit)
@@ -320,26 +358,33 @@ class AtharContentViewModel @Inject constructor(
         // ponytail: a fixed pause before the network call; cancelled by the next keystroke
         delay(OnlineSearchPauseMs)
         val query = OnlineSearch.Query(
-            q = clean,
-            mode = filters.mode.api,
+            q = rootForms?.second?.joinToString(" ") ?: clean,
+            mode = if (rootForms != null) "root" else if (filters.mode == SearchMode.Root) "all" else filters.mode.api,
             field = "all",
             types = (filters.types.ifEmpty { SearchResultType.entries.toSet() }).mapTo(linkedSetOf()) { it.contentCollection },
             persons = filters.authors.mapNotNullTo(linkedSetOf()) { catalog.slugByName[it] },
-            sort = if (filters.sort != SearchSort.Died) "relevance" else if (filters.descending) "death_desc" else "death",
+            sort = when (filters.sort) { SearchSort.Relevance -> "relevance"; SearchSort.Book -> "book"; SearchSort.Died -> if (filters.descending) "death_desc" else "death" },
+            books = filters.books.flatMapTo(linkedSetOf()) { catalog.idsByTitle[it].orEmpty() },
+            centuries = filters.centuries.mapTo(linkedSetOf(), ::centuryNumber),
+            topics = topicsIn(filters.sections),
         )
+        val exact = if (filters.mode == SearchMode.Exact) clean.replace("\"", "") else null
+        // ponytail: the site has no exact mode; its phrase hits are kept when their snippet has the letters as typed (a hit whose snippet cut the phrase is dropped).
+        fun exactOnly(hits: List<OnlineSearch.Hit>) = if (exact == null) hits else hits.filter { exactMatch(unmark(it.snippet).first, exact) != null }
         val online = try {
             onlineSearch.hits(query, limit) { partial, more ->
                 // «المزيد» refetches from the top; showing its first page would shrink the list.
-                if (limit == SearchPageSize) emit(base.copy(scope = SearchScope.Online, directMatches = direct, hasMore = more, searching = true,
-                    hits = partial.mapIndexedNotNull { index, hit -> hit.toHitUi(index, catalog) }))
+                if (limit == SearchPageSize) emit(base.copy(scope = SearchScope.Online, roots = roots, directMatches = direct, hasMore = more, searching = true,
+                    hits = exactOnly(partial).mapIndexedNotNull { index, hit -> hit.toHitUi(index, catalog) }))
             }
         } catch (cancelled: kotlinx.coroutines.CancellationException) { throw cancelled
         } catch (offline: Exception) { null }
         if (online == null) { Analytics.hit("search", "offline"); return@transformLatest emit(localState(SearchScope.Offline)) }
-        val (hits, more) = online
+        val (hits, more) = online.let { (h, m) -> exactOnly(h) to m }
         Analytics.hit("search", if (hits.isEmpty()) "none" else "online")
         val state = base.copy(
             scope = SearchScope.Online,
+            roots = roots,
             directMatches = direct,
             hasMore = more,
             // A work the site has and this app's catalog doesn't can't be opened: leave it out.
@@ -356,7 +401,7 @@ class AtharContentViewModel @Inject constructor(
                 topAuthors = facets.persons.mapNotNull { p -> catalog.nameBySlug[p.slug]?.let { AuthorCountUi(it, p.count) } }.take(8),
             ))
         }
-    }.stateIn(
+    }.combine(_searchFilters) { state, filters -> state.copy(filters = filters) }.stateIn(
         viewModelScope,
         SharingStarted.WhileSubscribed(5_000),
         SearchUiState(
@@ -437,20 +482,22 @@ class AtharContentViewModel @Inject constructor(
      * anchor), then the first match of [query] in that chapter's loaded frame; an article, poem or
      * مسألة is searched from its start. Null ordinal: open it as usual.
      */
-    suspend fun locateOnlineHit(hit: SearchHitUi, query: String): Triple<Int?, Int, Int> {
-        val slug = hit.url?.substringAfter("/${hit.entityId}/", "")?.let(android.net.Uri::decode).orEmpty()
+    suspend fun locateOnlineHit(hit: SearchHitUi, query: String): Triple<Int?, Int, Int> = locateOnline(hit.entityId, hit.url, query)
+
+    suspend fun locateOnline(entityId: String, url: String?, query: String): Triple<Int?, Int, Int> {
+        val slug = url?.substringAfter("/$entityId/", "")?.let(android.net.Uri::decode).orEmpty()
         if (query.length < 2) return Triple(null, 0, 0)
         return runCatching {
-            content.open(hit.entityId, 0) // the first frame carries the chapter list
-            val chapters = if (slug.isEmpty()) emptyList() else importDao.observeChapters(hit.entityId).first()
+            content.open(entityId, 0) // the first frame carries the chapter list
+            val chapters = if (slug.isEmpty()) emptyList() else importDao.observeChapters(entityId).first()
             val index = chapters.indexOfFirst { it.anchor == slug.substringBefore("--pages-") }
             if (slug.isNotEmpty() && index < 0) return@runCatching Triple(null, 0, 0)
             val from = chapters.getOrNull(index)?.firstOrdinal ?: 0
             val to = chapters.getOrNull(index + 1)?.firstOrdinal?.minus(1) ?: Int.MAX_VALUE
-            content.open(hit.entityId, from)
+            content.open(entityId, from)
             val match = contentSearch.search(
                 ContentSearchRequest(query = query, sort = ContentSearchSort.BookOrder,
-                    filter = ContentSearchFilter(entityIds = setOf(hit.entityId)), ordinals = from..to),
+                    filter = ContentSearchFilter(entityIds = setOf(entityId)), ordinals = from..to),
                 limit = 1,
             ).blocks.firstOrNull()
             if (match == null) Triple(from, 0, 0) else Triple(match.ordinal, match.sourceMatchStart, match.sourceMatchEnd)
@@ -563,6 +610,9 @@ class AtharContentViewModel @Inject constructor(
                     recentRank = ranks[entity.id],
                     transfer = transfers[entity.id],
                     sizeLabel = byteSize(entity.pkgSize),
+                    topics = entity.topicsCsv.split(',').filter(String::isNotBlank).map(::topicName),
+                    died = entity.died,
+                    hasAudio = entity.audioJson != "[]",
                 )
             },
         )
@@ -768,6 +818,9 @@ class AtharContentViewModel @Inject constructor(
                     saved = entity.id in shelfIds,
                     recentRank = ranks[entity.id],
                     transfer = transfers[entity.id],
+                    topics = entity.topicsCsv.split(',').filter(String::isNotBlank).map(::topicName),
+                    died = entity.died,
+                    hasAudio = entity.audioJson != "[]",
                 )
             },
         )
@@ -798,6 +851,9 @@ class AtharContentViewModel @Inject constructor(
                     transfer = transfers[entity.id],
                     verseCountLabel = entry.verseCount?.takeIf { it > 0 }?.let { arabicCount(it, "", "بيت واحد", "بيتان", "أبيات", "بيتًا") },
                     sizeLabel = byteSize(entity.pkgSize),
+                    topics = entity.topicsCsv.split(',').filter(String::isNotBlank).map(::topicName),
+                    died = entity.died,
+                    hasAudio = entity.audioJson != "[]",
                 )
             },
         )
@@ -816,19 +872,37 @@ class AtharContentViewModel @Inject constructor(
         }
     }
 
-    fun sync() {
+    private var syncJob: kotlinx.coroutines.Job? = null
+
+    /**
+     * Automatic checks (launch, retry buttons) stay quiet and retry a slow or dropped link twice;
+     * the saved library works without them. Only [manual] checks, from Settings, surface a failure.
+     */
+    fun sync(manual: Boolean = false) {
         if (!content.configured) {
             _syncState.value = ContentSyncUiState.Disabled
             return
         }
-        viewModelScope.launch(errorHandler) {
+        syncJob?.cancel()
+        syncJob = viewModelScope.launch(errorHandler) {
             _syncState.value = ContentSyncUiState.Checking
-            _syncState.value = try {
-                content.sync()
-                recoverPendingDownloads()
-                ContentSyncUiState.UpToDate
-            } catch (error: Throwable) {
-                ContentSyncUiState.Failed(error.message ?: "تعذّر تحديث الفهرس")
+            val retryDelaysMs = if (manual) emptyList() else listOf(15_000L, 60_000L)
+            for (attempt in 0..retryDelaysMs.size) {
+                try {
+                    content.sync()
+                    recoverPendingDownloads()
+                    _syncState.value = ContentSyncUiState.UpToDate
+                    return@launch
+                } catch (cancelled: kotlinx.coroutines.CancellationException) {
+                    throw cancelled
+                } catch (error: Throwable) {
+                    android.util.Log.w("AtharContent", "sync attempt ${attempt + 1} failed", error)
+                    if (attempt == retryDelaysMs.size) {
+                        _syncState.value = ContentSyncUiState.Failed(syncFailureReason(error), manual)
+                    } else {
+                        kotlinx.coroutines.delay(retryDelaysMs[attempt])
+                    }
+                }
             }
         }
     }
@@ -934,19 +1008,22 @@ class AtharContentViewModel @Inject constructor(
         }, visit = visit)
     }
 
-    suspend fun searchInBook(entityId: String, query: String): List<InBookHit> {
-        if (query.trim().length < 2) return emptyList()
+    /**
+     * One FTS query over the blocks already on the phone. It used to open every frame in turn,
+     * fetching the missing ones one range request at a time: minutes for a large book like
+     * مصنف ابن أبي شيبة on a slow link. A partly saved book says so, and the reader offers a
+     * whole-book download (one stream) instead.
+     */
+    suspend fun searchInBook(entityId: String, query: String): InBookSearch {
+        if (query.trim().length < 2) return InBookSearch(emptyList())
+        val total = catalogDao.entity(entityId)?.pkgBlocks ?: 0
+        val saved = importDao.frames(entityId).sumOf { it.blockCount }
         // ponytail: first 200 source-order hits; paginate if more results are needed.
-        val hits = mutableListOf<BlockSearchHit>()
-        visitTextFrames(entityId) { range ->
-            hits += contentSearch.search(
-                ContentSearchRequest(query = query, sort = ContentSearchSort.BookOrder,
-                    filter = ContentSearchFilter(entityIds = setOf(entityId)), ordinals = range),
-                limit = 200 - hits.size,
-            ).blocks
-            hits.size >= 200
-        }
-        return hits.sortedBy { it.ordinal }.map { hit ->
+        val hits = contentSearch.search(
+            ContentSearchRequest(query = query, sort = ContentSearchSort.BookOrder,
+                filter = ContentSearchFilter(entityIds = setOf(entityId))),
+            limit = 200,
+        ).blocks.map { hit ->
             InBookHit(
                 id = hit.rowid.toString(), blockIndex = hit.ordinal,
                 chapterTitle = hit.chapterTitle, excerpt = hit.excerpt,
@@ -954,6 +1031,41 @@ class AtharContentViewModel @Inject constructor(
                 pageLabel = hit.printedPage?.let { "ص ${arabicNumber(it)}" },
                 sourceMatchStart = hit.sourceMatchStart, sourceMatchEnd = hit.sourceMatchEnd,
             )
+        }
+        val complete = total == 0 || saved >= total
+        if (!complete) onlineInBook(entityId, query)?.let { return InBookSearch(it) }
+        return InBookSearch(hits, complete, if (complete) 100 else (saved * 100 / total).coerceIn(0, 99))
+    }
+
+    /** The site's index for one book (every chapter that matches); null offline. A hit is located on tap. */
+    private suspend fun onlineInBook(entityId: String, query: String): List<InBookHit>? = try {
+        onlineSearch.hits(OnlineSearch.Query(query, "all", "text", emptySet(), emptySet(), "relevance", books = setOf(entityId)), 100).first
+            .mapIndexed { index, hit ->
+                val (text, marks) = unmark(hit.snippet)
+                val first = marks.firstOrNull() ?: 0..-1
+                InBookHit(
+                    id = "online:$index:${hit.url}", blockIndex = -1,
+                    chapterTitle = arabicDigits(hit.title.substringAfter(" — ", "").replace(Regex("""(\d)-(\d)"""), "$1–$2")),
+                    excerpt = text, matchStart = first.first, matchEnd = first.last + 1, pageLabel = null, url = hit.url,
+                )
+            }
+    } catch (cancelled: kotlinx.coroutines.CancellationException) { throw cancelled
+    } catch (offline: Exception) { null }
+
+    val recentQueries: StateFlow<List<String>> = recentSearches.map { rows -> rows.map { it.q } }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
+
+    fun rememberSearch(query: String) {
+        viewModelScope.launch(errorHandler) { personalLibrary.rememberSearch(query) }
+    }
+
+    val retainedEntityIds: StateFlow<Set<String>> = content.retainedEntityIds
+
+    /** Starts a whole-book download unless one is already saved or under way. */
+    fun downloadForSearch(entityId: String) {
+        viewModelScope.launch(errorHandler) {
+            if (content.isPinned(entityId)) return@launch
+            toggleDownload(entityId)
         }
     }
 
@@ -1010,6 +1122,10 @@ class AtharContentViewModel @Inject constructor(
         savedState["searchAuthors"] = ArrayList(filters.authors)
         savedState["searchSort"] = filters.sort.name
         savedState["searchDescending"] = filters.descending
+        savedState["searchBooks"] = ArrayList(filters.books)
+        savedState["searchCenturies"] = ArrayList(filters.centuries)
+        savedState["searchSections"] = ArrayList(filters.sections)
+        savedState["searchPlain"] = filters.plain
         _searchLimit.value = SearchPageSize
         _searchFilters.value = filters
     }
@@ -1039,6 +1155,12 @@ class AtharContentViewModel @Inject constructor(
         val entity = catalogDao.entity(latest.entityId) ?: return null
         return entity.id to entity.coll
     }
+
+    /** The person page that lists this work, if any. */
+    suspend fun authorOf(entityId: String): String? =
+        catalogDao.observeGeneration().first()?.persons().orEmpty().firstOrNull { entityId in it.works }?.id
+
+    suspend fun isPoem(entityId: String): Boolean = catalogDao.entity(entityId)?.coll == "poem"
 
     fun toggleFavourite(entityId: String) {
         viewModelScope.launch(errorHandler) { personalLibrary.toggleFavourite(entityId) }
@@ -1081,7 +1203,9 @@ class AtharContentViewModel @Inject constructor(
                     selection.end.offset,
                 ),
             )
-            require(capture.quotedText == selection.quotedText) { "تغيّر النص أو لم يكتمل تحميله؛ أعد تحديد المقطع قبل حفظه" }
+            // The reader joins a sentence running over a page with a space, the capture with a blank
+            // line (and a verse's halves with « … »): compare the words, not how parts are joined.
+            require(sameWords(capture.quotedText, selection.quotedText)) { "تغيّر النص أو لم يكتمل تحميله؛ أعد تحديد المقطع قبل حفظه" }
             annotationRepository.save(entityId, kind, capture)
     }
 
@@ -1094,6 +1218,14 @@ class AtharContentViewModel @Inject constructor(
             start = AnnotationEndpoint(id, block.ordinal, 0),
             end = AnnotationEndpoint(id, block.ordinal, block.text.length),
         ))
+    }
+
+    /** The highlight a saved verse is kept under, for its note. */
+    suspend fun savedBlockId(entityId: String, ordinal: Int): String? {
+        val block = importDao.blockAt(entityId, ordinal) ?: return null
+        val blockId = AnnotationBlockId(block.blockIdHi, block.blockIdLo)
+        return annotationRepository.observe(AnnotationFilter(entityId = entityId)).first()
+            .firstOrNull { it.kind != AnnotationKind.Bookmark && it.start.blockId == blockId }?.id
     }
 
     /** Takes a verse out of الكناشة: every highlight that starts in it. */
@@ -1131,8 +1263,18 @@ class AtharContentViewModel @Inject constructor(
     suspend fun editAnnotation(id: String, noteText: String?, colorId: Int = 0) =
         annotationRepository.edit(id, noteText, colorId, kind = AnnotationKind.Note)
 
-    suspend fun exportUserData(output: OutputStream) {
-        kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) { userDataArchive.exportTo(output) }
+    /** «إرسال»: saved books into one file for another phone; returns how many went in. */
+    suspend fun exportSharedBooks(ids: Collection<String>, output: OutputStream): Int = content.exportShared(ids, output)
+
+    /** «استقبال كتب»: each verified book imports from the file, no network needed; returns how many. */
+    suspend fun importSharedBooks(input: InputStream): Int {
+        val targets = content.importShared(input)
+        targets.forEach { downloadScheduler.enqueue(it.entityId, it.collection, replace = true, offline = true) }
+        return targets.size
+    }
+
+    suspend fun exportUserData(output: OutputStream, extras: Map<String, String> = emptyMap()) {
+        kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) { userDataArchive.exportTo(output, extras) }
     }
 
     suspend fun importUserData(input: InputStream): UserDataImportReport {
@@ -1331,6 +1473,7 @@ class AtharContentViewModel @Inject constructor(
             saved = saved,
             topics = topicsCsv.split(',').filter(String::isNotBlank).map(::topicName),
             died = died,
+            hasAudio = audioJson != "[]",
             publishedAt = publishedAt.orEmpty(),
             pages = pageTo,
             volumes = volumes,
@@ -1377,7 +1520,7 @@ private fun ContentEntity.toReaderUi(
         benefits = emptyList(),
         readingPositionIndex = position?.ordinalHint ?: 0,
         readingOffset = position?.offsetInBlock ?: 0,
-        audio = audioReferences().map { BookAudioUi(it.id, it.title ?: title, duration(it.seconds)) },
+        audio = audioReferences().map { BookAudioUi(it.id, it.title ?: title, "", "", duration(it.seconds), it.seconds) },
         blockCount = pkgBlocks,
         // ponytail: volumes come from the contents' chapters; a book whose chapters carry no vol shows no volume menu.
         volumeStarts = chapters.filter { it.vol != null }.groupBy { it.vol!! }
@@ -1492,7 +1635,8 @@ private fun ContentBlockEntity.toReaderBlock(): ReaderBlock {
 private fun ContentBlockEntity.toAnnotationTextBlock(): AnnotationTextBlock = AnnotationTextBlock(
     id = AnnotationBlockId(blockIdHi, blockIdLo),
     ordinal = ordinal,
-    semanticText = text.takeUnless { type == "page" || type == "break" },
+    // The reader leaves page markers, rules and the page-foot notes out of a selection; so does this.
+    semanticText = text.takeUnless { type == "page" || type == "break" || type == "notes" },
     fingerprint = fp64,
     chapterAnchor = chapterAnchor,
     printedPage = printedPage,
@@ -1561,7 +1705,12 @@ private class SearchCatalog(entities: List<ContentEntity>) {
     val slugByName = entities.filter { it.person != null && it.personName != null }.associate { it.personName!! to it.person!! }
     val nameBySlug = slugByName.entries.associate { (name, slug) -> slug to name }
     val authors = slugByName.keys.sortedBy(ArNormalize::normalize)
+    val idsByTitle = entities.filter { it.coll == "book" }.groupBy({ it.title }, { it.id })
+    val books = idsByTitle.keys.sortedBy(ArNormalize::normalize)
 }
+
+/** «القرن ٨» → 8. */
+private fun centuryNumber(label: String) = com.atharchive.data.AllCenturies.indexOf(label) + 1
 
 private data class SearchTrace(val query: String, val cookie: Int)
 
@@ -1598,3 +1747,9 @@ private val AttachmentState.storageValue: String
 internal const val BookmarkLookahead = 4
 
 private fun List<ChapterEntity>.multiVolume() = mapNotNull { it.vol }.distinct().size > 1
+
+/** Same text once spacing and the « … » between a verse's halves are set aside. */
+internal fun sameWords(a: String, b: String): Boolean {
+    fun words(s: String) = s.filterNot { it.isWhitespace() || it == '…' }
+    return words(a) == words(b)
+}

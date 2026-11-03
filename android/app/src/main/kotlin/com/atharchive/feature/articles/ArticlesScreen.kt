@@ -33,6 +33,9 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import com.atharchive.ui.components.AtharFloatingHeader
 import com.atharchive.ui.components.atharBackdrop
 import com.atharchive.ui.components.ShowOnChange
+import com.atharchive.ui.components.AtharFacet
+import com.atharchive.ui.components.asChoiceSet
+import com.atharchive.ui.components.asStoredChoices
 import com.atharchive.ui.components.rememberAtharCollapsingHeader
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -88,38 +91,53 @@ fun ArticlesScreen(
     var selectedTab by rememberSaveable { mutableStateOf(SectionTab.All) }
     var query by rememberSaveable { mutableStateOf("") }
     val textHits = com.atharchive.feature.search.rememberSectionTextHits(query, textSearch)
-    var sortName by rememberPersisted("articles.order", ArticleSort.Title.name)
+    var authorStored by rememberPersisted("articles.authors", "")
+    var topicStored by rememberPersisted("articles.topics", "")
+    var centuryStored by rememberPersisted("articles.centuries", "")
+    var section by rememberPersisted("articles.section", com.atharchive.ui.components.SectionAll)
+    var sortName by rememberPersisted("articles.sort", ArticleSort.Died.name)
     var descendingStored by rememberPersisted("articles.order.desc", "")
     val descending = descendingStored.isNotEmpty()
-    val sort = enumValueOrNull<ArticleSort>(sortName) ?: ArticleSort.Title
+    val sort = enumValueOrNull<ArticleSort>(sortName) ?: ArticleSort.Died
     val listState = rememberLazyListState()
     val reselectScope = androidx.compose.runtime.rememberCoroutineScope()
     androidx.compose.runtime.LaunchedEffect(scrollToTopRequest) {
         if (scrollToTopRequest > 0) listState.animateScrollToItem(0)
     }
 
-    // No author filter: 2,363 articles carry hundreds of distinct authors, and a flat
-    // radio list does not scale to that. Sorting by author covers the same intent.
-    val hasActiveFilters = sort != ArticleSort.Newest
+    // Hundreds of authors: the popup types them (AtharFilterPicker), no flat list.
+    val authors = remember(state.articles) { state.articles.map { it.author }.filter(String::isNotBlank).distinct().sortedBy(::normKey) }
+    val topics = remember(state.articles, section) {
+        state.articles.flatMap { it.topics }.distinct().filter { com.atharchive.ui.components.inSection(section, listOf(it)) }.sorted()
+    }
+    val author = authorStored.asChoiceSet() intersect authors.toSet()
+    val topic = topicStored.asChoiceSet() intersect topics.toSet()
+    val century = centuryStored.asChoiceSet()
+    val hasActiveFilters = (author + topic + century).isNotEmpty() || section != com.atharchive.ui.components.SectionAll
 
     // Normalized once per catalog change, not per filter pass or per sort comparison.
     val normalized = remember(state.articles) {
         state.articles.associate { it.id to (normKey(it.title) to normKey(it.author)) }
     }
-    val visibleArticles = remember(state.articles, selectedTab, query, sort, descending) {
+    val visibleArticles = remember(state.articles, selectedTab, query, sort, descending, author, topic, century, section) {
         val term = ArNormalize.normalize(query.trim())
         state.articles.filter { article ->
             val matchesTab = selectedTab.matches(article.recentRank != null, article.downloaded, article.saved)
-            val (title, author) = normalized.getValue(article.id)
+            val (title, by) = normalized.getValue(article.id)
             val matchesQuery = term.isBlank() ||
                 title.contains(term, ignoreCase = true) ||
-                author.contains(term, ignoreCase = true)
-            matchesTab && matchesQuery
+                by.contains(term, ignoreCase = true)
+            matchesTab && matchesQuery && (author.isEmpty() || article.author in author) &&
+                (topic.isEmpty() || article.topics.any(topic::contains)) &&
+                (century.isEmpty() || article.died?.let { com.atharchive.data.centuryOf(it) } in century) &&
+                com.atharchive.ui.components.inSection(section, article.topics)
         }.sortedWith(
-            if (selectedTab == SectionTab.Recent) compareBy { it.recentRank ?: Int.MAX_VALUE } else (when (sort) {
+            if (selectedTab == SectionTab.Recent) compareBy { it.recentRank ?: Int.MAX_VALUE }
+            else if (sort == ArticleSort.Died) compareBy<ArticleUi, Int?>(nullsLast(if (descending) reverseOrder() else naturalOrder())) { it.died }.thenBy { normalized.getValue(it.id).first }
+            else (when (sort) {
                 ArticleSort.Title -> compareBy<ArticleUi> { normalized.getValue(it.id).first }
                 ArticleSort.Author -> compareBy<ArticleUi> { normalized.getValue(it.id).second }
-                ArticleSort.Newest -> compareBy<ArticleUi> { it.title }
+                ArticleSort.Newest, ArticleSort.Died -> compareBy<ArticleUi> { it.title }
             }).directed(descending),
         )
     }
@@ -140,7 +158,7 @@ fun ArticlesScreen(
 
         Box(modifier = Modifier.fillMaxSize().clipToBounds()) {
             val header = rememberAtharCollapsingHeader()
-            header.ShowOnChange(listState, selectedTab, query, sort)
+            header.ShowOnChange(listState, selectedTab, query, sort, section)
             AtharFloatingHeader(header) {
                 Column {
                     AtharTopBar(
@@ -154,13 +172,20 @@ fun ArticlesScreen(
                             if (selectedTab == SectionTab.Recent) null else AtharChipGroup("الترتيب", ArticleSort.entries.map { it.label }, sort.label) { label -> sortName = ArticleSort.entries.first { it.label == label }.name },
                             if (selectedTab == SectionTab.Recent) null else AtharDirectionGroup(descending) { descendingStored = if (it) "1" else "" },
                         )
-                val filterFacets = emptyList<com.atharchive.ui.components.AtharFacet>()
+                val filterFacets = listOf(
+                    AtharFacet("المؤلف", authors, author, { authorStored = it.asStoredChoices() }),
+                    AtharFacet("الموضوع", topics, topic, { topicStored = it.asStoredChoices() }),
+                    com.atharchive.ui.components.centuryFacet(century) { centuryStored = it.asStoredChoices() },
+                )
                 AtharSearchField(
                     query = query,
                     placeholder = "ابحث في ${state.countLabel}…",
                     onQueryChange = { query = it },
                     tagPrefix = "articles",
-                    trailing = { AtharFilterIcon(filterGroups, filterFacets, "articles_filter") },
+                    trailing = {
+                        com.atharchive.ui.components.AtharSectionButton(section, { section = it }, remember(state.articles) { com.atharchive.ui.components.sectionCounts(state.articles) { it.topics } }, "articles_sections")
+                        AtharFilterIcon(filterGroups, filterFacets, "articles_filter")
+                    },
                     modifier = Modifier.padding(
                         start = horizontalPadding,
                         end = horizontalPadding,
@@ -197,7 +222,7 @@ fun ArticlesScreen(
         ) {
             if (!state.loaded) {
                 // first catalog read not back yet: show nothing rather than a false "no articles"
-            } else if (visibleArticles.isEmpty() && textHits.isEmpty()) {
+            } else if (visibleArticles.isEmpty() && textHits.isEmpty() && !textHits.searching) {
                 item(key = "articles-empty") {
                     val (title, body) = when {
                         query.isNotBlank() ->

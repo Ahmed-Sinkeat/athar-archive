@@ -54,7 +54,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.atharchive.ui.theme.AtharEditorialFontFamily
 import com.atharchive.ui.theme.KitabFontFamily
-import com.atharchive.ui.theme.QuranFontFamily
 
 /**
  * One block, rendered by kind. The hierarchy is carried by size, weight and space —
@@ -259,7 +258,7 @@ internal fun BlockView(
                     text = marked(listOfNotNull(block.sadr, block.ajuz).joinToString("\n"), searchMatch),
                     modifier = selectable.fillMaxWidth(), color = colors.poetry,
                     onTextLayout = ::onLayout,
-                    fontFamily = if (settings.font == com.atharchive.ui.theme.ReaderFont.Kitab) AtharEditorialFontFamily else com.atharchive.ui.theme.LocalReaderFont.current,
+                    fontFamily = colors.poetryFont ?: if (settings.font == com.atharchive.ui.theme.ReaderFont.Kitab) AtharEditorialFontFamily else com.atharchive.ui.theme.LocalReaderFont.current,
                     fontSize = body,
                     lineHeight = lineHeight, textAlign = TextAlign.Center,
                 )
@@ -277,11 +276,12 @@ internal fun BlockView(
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.Center,
                 ) {
-                    HorizontalDivider(
+                    if (settings.pageMark == PageMark.Line) HorizontalDivider(
                         modifier = Modifier.weight(1f),
                         thickness = 0.7.dp,
                         color = colors.divider,
                     )
+                    if (settings.pageMark == PageMark.Ornament) Text("۞ ", color = colors.accent.copy(alpha = 0.7f), style = MaterialTheme.typography.labelMedium)
                     Text(
                         text = if (block.volume != null) {
                             "${volumeLabel(block.volume, volumeUnit)} · ص${arabic(block.page)}"
@@ -292,7 +292,8 @@ internal fun BlockView(
                         color = colors.secondary.copy(alpha = 0.75f),
                         style = MaterialTheme.typography.labelSmall,
                     )
-                    HorizontalDivider(
+                    if (settings.pageMark == PageMark.Ornament) Text(" ۞", color = colors.accent.copy(alpha = 0.7f), style = MaterialTheme.typography.labelMedium)
+                    if (settings.pageMark == PageMark.Line) HorizontalDivider(
                         modifier = Modifier.weight(1f),
                         thickness = 0.7.dp,
                         color = colors.divider,
@@ -442,7 +443,7 @@ private fun markedText(
             val ayah = it.value[0] == '\uFD3F'
             // Styling only: offsets, selection and highlights are unchanged.
             addStyle(
-                if (ayah) SpanStyle(color = colors.ayah, fontFamily = QuranFontFamily) else SpanStyle(color = colors.quote),
+                if (ayah) SpanStyle(color = colors.ayah, fontFamily = colors.ayahFont) else SpanStyle(color = colors.quote),
                 it.range.first, it.range.last + 1,
             )
         }

@@ -22,7 +22,7 @@ import java.io.IOException
 object Analytics {
     private val Endpoint = "https://search.arthurarchive.com/api/hit".toHttpUrl()
     private const val Key = "analytics_on"
-    private val http by lazy { OkHttpClient() }
+    private val http by lazy { OkHttpClient.Builder().dns(com.atharchive.core.data.network.FallbackDns()).build() }
     private var prefs: SharedPreferences? = null
     private val _enabled = MutableStateFlow(true)
     val enabled: StateFlow<Boolean> = _enabled

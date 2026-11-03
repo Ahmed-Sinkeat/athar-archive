@@ -1,0 +1,1975 @@
+{
+  "schema": 1,
+  "generation": 1,
+  "sourceHash": "c8fc36281ac450dae42b0ffe6d293386fa151e9c1f2a68a9dc7da244da6d6ad4",
+  "ids": [
+    {
+      "ord": 0,
+      "blockId": "8ab0cbdc50001d1e8419cb0de64af25f",
+      "fp64": "25de125462e7b428",
+      "normHash": "5f45ad2e9d418631d6594a6e6b18399e8168fe65f7b2126267fa163ce135bec5",
+      "kind": "p",
+      "chapter": "main",
+      "next": "c7447b00b7a8ec733d08b86b76d42255784f7d6e16e7f74edae181be0f791daf"
+    },
+    {
+      "ord": 1,
+      "blockId": "2f6fe9be8eff03d80c70e076f43c62f6",
+      "fp64": "98954c0208c496bd",
+      "normHash": "c7447b00b7a8ec733d08b86b76d42255784f7d6e16e7f74edae181be0f791daf",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "5f45ad2e9d418631d6594a6e6b18399e8168fe65f7b2126267fa163ce135bec5",
+      "next": "c19c00d54b68509a162a7c84a6cae184610f2ad40f11dcd86ba1eac0f3c55fd8"
+    },
+    {
+      "ord": 2,
+      "blockId": "b421ec0bed4c4bc90997b4f86aeb75d3",
+      "fp64": "cef0fbf7de523e59",
+      "normHash": "c19c00d54b68509a162a7c84a6cae184610f2ad40f11dcd86ba1eac0f3c55fd8",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "c7447b00b7a8ec733d08b86b76d42255784f7d6e16e7f74edae181be0f791daf",
+      "next": "36191f3807b4d03cd27742b1141578004bf6c077c38c04f255968a2832f25704"
+    },
+    {
+      "ord": 3,
+      "blockId": "4eda70c5365563721742a2093ffc1a3a",
+      "fp64": "b1d09e04dbc340a7",
+      "normHash": "36191f3807b4d03cd27742b1141578004bf6c077c38c04f255968a2832f25704",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "c19c00d54b68509a162a7c84a6cae184610f2ad40f11dcd86ba1eac0f3c55fd8",
+      "next": "9faeb0c76d1e0920d8eeb10b5013adf4755648f934b7ed38998eef6c6a4ad522"
+    },
+    {
+      "ord": 4,
+      "blockId": "d7205e9b01d1d4e4f4784328c8bafc4f",
+      "fp64": "f7d6a9b7f1f1c827",
+      "normHash": "9faeb0c76d1e0920d8eeb10b5013adf4755648f934b7ed38998eef6c6a4ad522",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "36191f3807b4d03cd27742b1141578004bf6c077c38c04f255968a2832f25704",
+      "next": "e40af4f43feba9629c1c4ab455f9daf6f69b2d9b296b5b314ee3867d957d382b"
+    },
+    {
+      "ord": 5,
+      "blockId": "3eba67bb44ddba16f8cacb071e7b99eb",
+      "fp64": "dbf6ac6fd1cdff37",
+      "normHash": "e40af4f43feba9629c1c4ab455f9daf6f69b2d9b296b5b314ee3867d957d382b",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "9faeb0c76d1e0920d8eeb10b5013adf4755648f934b7ed38998eef6c6a4ad522",
+      "next": "1755600b9ce652f0aec99354fbd00dc1a7e373871d30eaf4eb8d6dffd57a9a4c"
+    },
+    {
+      "ord": 6,
+      "blockId": "2512243752ed513a89590e74b5fab5e9",
+      "fp64": "fe7eb96dfbebf385",
+      "normHash": "1755600b9ce652f0aec99354fbd00dc1a7e373871d30eaf4eb8d6dffd57a9a4c",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "e40af4f43feba9629c1c4ab455f9daf6f69b2d9b296b5b314ee3867d957d382b",
+      "next": "60939daec697f49fc82c3995cc0c8a38aa9b06e0a9c7fd0879eb4d9627a9fd7f"
+    },
+    {
+      "ord": 7,
+      "blockId": "a250dc3181385571c0c803694bb409fa",
+      "fp64": "96bffe5d3d26fbdb",
+      "normHash": "60939daec697f49fc82c3995cc0c8a38aa9b06e0a9c7fd0879eb4d9627a9fd7f",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "1755600b9ce652f0aec99354fbd00dc1a7e373871d30eaf4eb8d6dffd57a9a4c",
+      "next": "c3ddbc5c82aa0125754e6b74c80c6c7ecf56d05892a86d34be6c33b40f9c94d1"
+    },
+    {
+      "ord": 8,
+      "blockId": "9580e3c3a7964767c693f822e5c5aa76",
+      "fp64": "279a50d674909064",
+      "normHash": "c3ddbc5c82aa0125754e6b74c80c6c7ecf56d05892a86d34be6c33b40f9c94d1",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "60939daec697f49fc82c3995cc0c8a38aa9b06e0a9c7fd0879eb4d9627a9fd7f",
+      "next": "c9f5de6c984b8237d046bd4416d43f374692d04625bcafba3608917763a146cb"
+    },
+    {
+      "ord": 9,
+      "blockId": "fd940926e2824a767307a7ede767a272",
+      "fp64": "09738e977e337f5d",
+      "normHash": "c9f5de6c984b8237d046bd4416d43f374692d04625bcafba3608917763a146cb",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "c3ddbc5c82aa0125754e6b74c80c6c7ecf56d05892a86d34be6c33b40f9c94d1",
+      "next": "7b4409037b861d609af35788c28395b740ca899841405d1f809e13e05e14f856"
+    },
+    {
+      "ord": 10,
+      "blockId": "0e1f93416411ed94193a7ada765d52a0",
+      "fp64": "67703f671b37ea69",
+      "normHash": "7b4409037b861d609af35788c28395b740ca899841405d1f809e13e05e14f856",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "c9f5de6c984b8237d046bd4416d43f374692d04625bcafba3608917763a146cb",
+      "next": "ec146869eb5bc6b22074d4b56c6954e627528c46940044b2aaef6f7a05e12a22"
+    },
+    {
+      "ord": 11,
+      "blockId": "d4872bb8bec22f4a80b0cb13b0265ccf",
+      "fp64": "fdff3eaf86df3bf3",
+      "normHash": "ec146869eb5bc6b22074d4b56c6954e627528c46940044b2aaef6f7a05e12a22",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "7b4409037b861d609af35788c28395b740ca899841405d1f809e13e05e14f856",
+      "next": "0a34d196a5e8e553eb124ffc87aea630f752f9d816c74038ad49088cb65a2bfb"
+    },
+    {
+      "ord": 12,
+      "blockId": "ef98ae236b478a1b7fbfd3bd16e13ffb",
+      "fp64": "8fb961cc6124bc54",
+      "normHash": "0a34d196a5e8e553eb124ffc87aea630f752f9d816c74038ad49088cb65a2bfb",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "ec146869eb5bc6b22074d4b56c6954e627528c46940044b2aaef6f7a05e12a22",
+      "next": "4aeefea5862f5c96138e1564a15316ca27511445960336e7019e14a9acd8e718"
+    },
+    {
+      "ord": 13,
+      "blockId": "c23265d5190c720e4c87f1af9641b0db",
+      "fp64": "8518e002d4b07c16",
+      "normHash": "4aeefea5862f5c96138e1564a15316ca27511445960336e7019e14a9acd8e718",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "0a34d196a5e8e553eb124ffc87aea630f752f9d816c74038ad49088cb65a2bfb",
+      "next": "87452f4704242d1fdd5eaec417564d608d1f0f82738e708a7d8610cf1c4edb02"
+    },
+    {
+      "ord": 14,
+      "blockId": "cebb12cccbb2d008291175a63d601b67",
+      "fp64": "ed71b2f7fab77df7",
+      "normHash": "87452f4704242d1fdd5eaec417564d608d1f0f82738e708a7d8610cf1c4edb02",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "4aeefea5862f5c96138e1564a15316ca27511445960336e7019e14a9acd8e718",
+      "next": "88768309601f3ee4eec9b2d38c267d98e56dc0f15ac1dac4dd137b945044bb8e"
+    },
+    {
+      "ord": 15,
+      "blockId": "478025040672f88487e92ad84347f2d2",
+      "fp64": "20df107522a71588",
+      "normHash": "88768309601f3ee4eec9b2d38c267d98e56dc0f15ac1dac4dd137b945044bb8e",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "87452f4704242d1fdd5eaec417564d608d1f0f82738e708a7d8610cf1c4edb02",
+      "next": "d5574a58f74bcf1428a0386e4566f46e9457c4fe86baac46b05debcdd7fdabea"
+    },
+    {
+      "ord": 16,
+      "blockId": "6e011fda90efd7c5d304d6653d440d68",
+      "fp64": "fdfe26d6f2fff47c",
+      "normHash": "d5574a58f74bcf1428a0386e4566f46e9457c4fe86baac46b05debcdd7fdabea",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "88768309601f3ee4eec9b2d38c267d98e56dc0f15ac1dac4dd137b945044bb8e",
+      "next": "f395656bb31045f80ea7ccec63b5622ec4d3566381a65ad26928c30b8b12f5fe"
+    },
+    {
+      "ord": 17,
+      "blockId": "8e3dc129d085616818925f33a33f069c",
+      "fp64": "98917c0a4e849674",
+      "normHash": "f395656bb31045f80ea7ccec63b5622ec4d3566381a65ad26928c30b8b12f5fe",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "d5574a58f74bcf1428a0386e4566f46e9457c4fe86baac46b05debcdd7fdabea",
+      "next": "4f3e858f28fd1fcf07e47260d5cb62aab64a2a9225b94e6de70ba895b3aaf7cb"
+    },
+    {
+      "ord": 18,
+      "blockId": "4c2ca08aa7b164b84df03731e070dff0",
+      "fp64": "090d05c2197e60bd",
+      "normHash": "4f3e858f28fd1fcf07e47260d5cb62aab64a2a9225b94e6de70ba895b3aaf7cb",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "f395656bb31045f80ea7ccec63b5622ec4d3566381a65ad26928c30b8b12f5fe",
+      "next": "54dfbb430b247e2e9694fc87f810acdccd975d9007828bedf5fa538497f1fe71"
+    },
+    {
+      "ord": 19,
+      "blockId": "488b0b2ffc6e09e15f5c5309188332b2",
+      "fp64": "ece6fbf5f356bef7",
+      "normHash": "54dfbb430b247e2e9694fc87f810acdccd975d9007828bedf5fa538497f1fe71",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "4f3e858f28fd1fcf07e47260d5cb62aab64a2a9225b94e6de70ba895b3aaf7cb",
+      "next": "075f87cabc5fd851168190f4813728827e052f1defb5f3b572f9c2d0fbbc3cc2"
+    },
+    {
+      "ord": 20,
+      "blockId": "e1254375467e322a47d0845e292db2d5",
+      "fp64": "dbf9df7f5e7b7f19",
+      "normHash": "075f87cabc5fd851168190f4813728827e052f1defb5f3b572f9c2d0fbbc3cc2",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "54dfbb430b247e2e9694fc87f810acdccd975d9007828bedf5fa538497f1fe71",
+      "next": "9188f256ba223b9637a6bca1894c8bda769d4a2177a25f5c18dfb50703f508f1"
+    },
+    {
+      "ord": 21,
+      "blockId": "c1ad28f18820da1804451c34b0b7bacb",
+      "fp64": "e5fff7ff7bb3e67f",
+      "normHash": "9188f256ba223b9637a6bca1894c8bda769d4a2177a25f5c18dfb50703f508f1",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "075f87cabc5fd851168190f4813728827e052f1defb5f3b572f9c2d0fbbc3cc2",
+      "next": "bf27fcc633c196d6c7ec6cb32c2713681a0bf1e4ba2dbba917869ee7e68a7c81"
+    },
+    {
+      "ord": 22,
+      "blockId": "40cee7fadd03042977d57fb24abef443",
+      "fp64": "96bff6543d02fbfb",
+      "normHash": "bf27fcc633c196d6c7ec6cb32c2713681a0bf1e4ba2dbba917869ee7e68a7c81",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "9188f256ba223b9637a6bca1894c8bda769d4a2177a25f5c18dfb50703f508f1",
+      "next": "1f5c95dd181fafab5ad8c3809f93d70ab61f027b931d166084ec5a22acdf12cc"
+    },
+    {
+      "ord": 23,
+      "blockId": "dd73f0e3303d77590b0c9c730a6fb168",
+      "fp64": "35dffb9e5fbdf3f6",
+      "normHash": "1f5c95dd181fafab5ad8c3809f93d70ab61f027b931d166084ec5a22acdf12cc",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "bf27fcc633c196d6c7ec6cb32c2713681a0bf1e4ba2dbba917869ee7e68a7c81",
+      "next": "30202a59b79ebf0987a26faa332eaf4c410c28be8c467f26609ab7d48c991394"
+    },
+    {
+      "ord": 24,
+      "blockId": "1882c8b7dc7167b376b1d84869612ee4",
+      "fp64": "ad47e0109b48713c",
+      "normHash": "30202a59b79ebf0987a26faa332eaf4c410c28be8c467f26609ab7d48c991394",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "1f5c95dd181fafab5ad8c3809f93d70ab61f027b931d166084ec5a22acdf12cc",
+      "next": "c0b16311024ddd2f0f31995287136f59820d8cc08dbb69e567d12ba9c23cd091"
+    },
+    {
+      "ord": 25,
+      "blockId": "766da1efb59c37162aea22e4d4991a9e",
+      "fp64": "fe7871177f5310da",
+      "normHash": "c0b16311024ddd2f0f31995287136f59820d8cc08dbb69e567d12ba9c23cd091",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "30202a59b79ebf0987a26faa332eaf4c410c28be8c467f26609ab7d48c991394",
+      "next": "a6c42816de470ee811764653e04b5abcff6ebfbce91bf2c150d7588cd9c726b1"
+    },
+    {
+      "ord": 26,
+      "blockId": "0a5b9d417963db21a6c00e1e0d625376",
+      "fp64": "8d66aa4a2176ff4e",
+      "normHash": "a6c42816de470ee811764653e04b5abcff6ebfbce91bf2c150d7588cd9c726b1",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "c0b16311024ddd2f0f31995287136f59820d8cc08dbb69e567d12ba9c23cd091",
+      "next": "baa235d9bac4508628b3a4b06f5331a699eb75888a3c8d6728e5aab49f0ecaa6"
+    },
+    {
+      "ord": 27,
+      "blockId": "40aaedbd13cd07232be28942773efb3c",
+      "fp64": "b2f7e2aebebd75fa",
+      "normHash": "baa235d9bac4508628b3a4b06f5331a699eb75888a3c8d6728e5aab49f0ecaa6",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "a6c42816de470ee811764653e04b5abcff6ebfbce91bf2c150d7588cd9c726b1",
+      "next": "4f2a4052d3c968de98c77f02ca8d65f68b7c659a669c69611ac00ab60b83dde5"
+    },
+    {
+      "ord": 28,
+      "blockId": "943df5db85a63d37810fbd57aa26acc2",
+      "fp64": "d7dcb15a1b74442f",
+      "normHash": "4f2a4052d3c968de98c77f02ca8d65f68b7c659a669c69611ac00ab60b83dde5",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "baa235d9bac4508628b3a4b06f5331a699eb75888a3c8d6728e5aab49f0ecaa6",
+      "next": "3239d0bb5882b37e9fe8aa60f149dbc4d5e0d91067a9877102dd4431c6b39dc0"
+    },
+    {
+      "ord": 29,
+      "blockId": "f57a9f9bdcad302767a481d23fa3664b",
+      "fp64": "27776852895b395a",
+      "normHash": "3239d0bb5882b37e9fe8aa60f149dbc4d5e0d91067a9877102dd4431c6b39dc0",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "4f2a4052d3c968de98c77f02ca8d65f68b7c659a669c69611ac00ab60b83dde5",
+      "next": "8bdfd64f297cb4f46a40fb573a4ddedb248ee4a29471671507327f8356aee87e"
+    },
+    {
+      "ord": 30,
+      "blockId": "291d215455596360f1ce95e14551e62f",
+      "fp64": "35dff7fa5a3374bf",
+      "normHash": "8bdfd64f297cb4f46a40fb573a4ddedb248ee4a29471671507327f8356aee87e",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "3239d0bb5882b37e9fe8aa60f149dbc4d5e0d91067a9877102dd4431c6b39dc0",
+      "next": "62c19061a5db17a724848dbbc6e1fa03f682ff70d85451e583f2e35ca64bb3b2"
+    },
+    {
+      "ord": 31,
+      "blockId": "73ea428d66eb8fcce1f51bf9f9ef048f",
+      "fp64": "9fb04853955e3f4a",
+      "normHash": "62c19061a5db17a724848dbbc6e1fa03f682ff70d85451e583f2e35ca64bb3b2",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "8bdfd64f297cb4f46a40fb573a4ddedb248ee4a29471671507327f8356aee87e",
+      "next": "dbc323296a995cefb91203be2c56a8e1fad826dcb178bd143d836b59439528ed"
+    },
+    {
+      "ord": 32,
+      "blockId": "3bef940d0ff58658788fe2cd8cf20c73",
+      "fp64": "56376e17c7c27316",
+      "normHash": "dbc323296a995cefb91203be2c56a8e1fad826dcb178bd143d836b59439528ed",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "62c19061a5db17a724848dbbc6e1fa03f682ff70d85451e583f2e35ca64bb3b2",
+      "next": "5d1e1599aea45415094bbfbc32458fc4c6abe66a72e96d04f580389ce299228f"
+    },
+    {
+      "ord": 33,
+      "blockId": "f7bc9077e09cd439c12e579f650a74a0",
+      "fp64": "5e5ecc71476a038c",
+      "normHash": "5d1e1599aea45415094bbfbc32458fc4c6abe66a72e96d04f580389ce299228f",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "dbc323296a995cefb91203be2c56a8e1fad826dcb178bd143d836b59439528ed",
+      "next": "29eae3e7cbf6af90dd0be6a2d2bc0f2fb87fdf7fc2e7bc1f29cbf98018991151"
+    },
+    {
+      "ord": 34,
+      "blockId": "178638b82830a3a80281eb41ec27552f",
+      "fp64": "eddff3dadf39e576",
+      "normHash": "29eae3e7cbf6af90dd0be6a2d2bc0f2fb87fdf7fc2e7bc1f29cbf98018991151",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "5d1e1599aea45415094bbfbc32458fc4c6abe66a72e96d04f580389ce299228f",
+      "next": "0db7323f60c6b4ebc392e0b1045c664a2d196222880024b435007fb240691585"
+    },
+    {
+      "ord": 35,
+      "blockId": "3efc39b7ddd8fa9331d0cb38ec77c558",
+      "fp64": "f14da4968e3c36b4",
+      "normHash": "0db7323f60c6b4ebc392e0b1045c664a2d196222880024b435007fb240691585",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "29eae3e7cbf6af90dd0be6a2d2bc0f2fb87fdf7fc2e7bc1f29cbf98018991151",
+      "next": "761984a77dd910e5f27a4b16910778eecc9416b267f94ebff559733a121d5e7e"
+    },
+    {
+      "ord": 36,
+      "blockId": "acb4c4bf14efed4f9f7f1b070f3dd651",
+      "fp64": "7fddf96354fe1e8d",
+      "normHash": "761984a77dd910e5f27a4b16910778eecc9416b267f94ebff559733a121d5e7e",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "0db7323f60c6b4ebc392e0b1045c664a2d196222880024b435007fb240691585",
+      "next": "46e9b4b3bce48c413804c5a75938b0b19d9e80f2e21f6f4180e335117c3885cf"
+    },
+    {
+      "ord": 37,
+      "blockId": "a69f3e01d958ecb2825cd81f611fb8e1",
+      "fp64": "f5afe655da9eb78d",
+      "normHash": "46e9b4b3bce48c413804c5a75938b0b19d9e80f2e21f6f4180e335117c3885cf",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "761984a77dd910e5f27a4b16910778eecc9416b267f94ebff559733a121d5e7e",
+      "next": "4bbbeca6742f12c299ee9874c27e783f7f3f2b0b40fb7eff785b2d2e7693ddd5"
+    },
+    {
+      "ord": 38,
+      "blockId": "b5e92eb81d229a60f373cbd4a9e1cc31",
+      "fp64": "afffff9b7fb5617e",
+      "normHash": "4bbbeca6742f12c299ee9874c27e783f7f3f2b0b40fb7eff785b2d2e7693ddd5",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "46e9b4b3bce48c413804c5a75938b0b19d9e80f2e21f6f4180e335117c3885cf",
+      "next": "7a8c3702a117e88adf348c9fbc19426868dca97d209f57ea21853e241c805824"
+    },
+    {
+      "ord": 39,
+      "blockId": "baa2cf73792be11dd01e9327aaa54796",
+      "fp64": "871310d262f0e054",
+      "normHash": "7a8c3702a117e88adf348c9fbc19426868dca97d209f57ea21853e241c805824",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "4bbbeca6742f12c299ee9874c27e783f7f3f2b0b40fb7eff785b2d2e7693ddd5",
+      "next": "e26a4e4dfd608422e5dc42f0a819a03defa401aba70cc40ae648886270a430b4"
+    },
+    {
+      "ord": 40,
+      "blockId": "e2d4d00e6d1e29b87f4afe06a665adbe",
+      "fp64": "971f13d6a768b054",
+      "normHash": "e26a4e4dfd608422e5dc42f0a819a03defa401aba70cc40ae648886270a430b4",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "7a8c3702a117e88adf348c9fbc19426868dca97d209f57ea21853e241c805824",
+      "next": "f9b143f506a93b2aa0bb726e895a8cbcc2d777fb2e16c1ab643ddd4a4bb3604c"
+    },
+    {
+      "ord": 41,
+      "blockId": "b9e613c2bd31c07055cbfd260378ded9",
+      "fp64": "9fcdac72951e3e7d",
+      "normHash": "f9b143f506a93b2aa0bb726e895a8cbcc2d777fb2e16c1ab643ddd4a4bb3604c",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "e26a4e4dfd608422e5dc42f0a819a03defa401aba70cc40ae648886270a430b4",
+      "next": "42bb497cfc37e721ea2042f0675f5df358a8e7848da268bb52ae30e82c0a510f"
+    },
+    {
+      "ord": 42,
+      "blockId": "451059e52c630b313e608dbf5f918aed",
+      "fp64": "ce824d5d249f3f86",
+      "normHash": "42bb497cfc37e721ea2042f0675f5df358a8e7848da268bb52ae30e82c0a510f",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "f9b143f506a93b2aa0bb726e895a8cbcc2d777fb2e16c1ab643ddd4a4bb3604c",
+      "next": "c2e5ec499c041da0ca3ab6ab1146db3b1f4719e299d00b7bb5ed6dd8e308dd99"
+    },
+    {
+      "ord": 43,
+      "blockId": "6c1ca9ac5dbecfb7b2b89bb540cb10ac",
+      "fp64": "27fffbde7a31e9be",
+      "normHash": "c2e5ec499c041da0ca3ab6ab1146db3b1f4719e299d00b7bb5ed6dd8e308dd99",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "42bb497cfc37e721ea2042f0675f5df358a8e7848da268bb52ae30e82c0a510f",
+      "next": "4a4b2b7ab5d5f69fbc82752f21b429e521ca55bf37ddcf9d421be94d96b32125"
+    },
+    {
+      "ord": 44,
+      "blockId": "7bdb2011efd8307dcaf4271f1e5ec80b",
+      "fp64": "c7da01bb1673a034",
+      "normHash": "4a4b2b7ab5d5f69fbc82752f21b429e521ca55bf37ddcf9d421be94d96b32125",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "c2e5ec499c041da0ca3ab6ab1146db3b1f4719e299d00b7bb5ed6dd8e308dd99",
+      "next": "790eddc2509fb0a3802abee2fc4560ed8cd738ee8d3601c1da01bf5bc03f6d9d"
+    },
+    {
+      "ord": 45,
+      "blockId": "f13475f30750646540f3e2c8e9275ed7",
+      "fp64": "6812336527720e18",
+      "normHash": "790eddc2509fb0a3802abee2fc4560ed8cd738ee8d3601c1da01bf5bc03f6d9d",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "4a4b2b7ab5d5f69fbc82752f21b429e521ca55bf37ddcf9d421be94d96b32125",
+      "next": "74f403f28190779d78b89d678d668306a01909c67ccc668e339abe9d3099e714"
+    },
+    {
+      "ord": 46,
+      "blockId": "4f3c4ad96476d7f7ec06774e04f3fbef",
+      "fp64": "f75e00973ef1307c",
+      "normHash": "74f403f28190779d78b89d678d668306a01909c67ccc668e339abe9d3099e714",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "790eddc2509fb0a3802abee2fc4560ed8cd738ee8d3601c1da01bf5bc03f6d9d",
+      "next": "98bac20e3343c7121f7eda331839b3f989472555c809c3c1f611a2812c057874"
+    },
+    {
+      "ord": 47,
+      "blockId": "905a61bd6a30870e6e7a915ad641a2b6",
+      "fp64": "4acc9c7a8b637d5f",
+      "normHash": "98bac20e3343c7121f7eda331839b3f989472555c809c3c1f611a2812c057874",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "74f403f28190779d78b89d678d668306a01909c67ccc668e339abe9d3099e714",
+      "next": "f3979b5e3fc90bb26b1135b6cea31c3dbe2290511f9e51242a5f35e9ad5d31e0"
+    },
+    {
+      "ord": 48,
+      "blockId": "2abe7b04df6b34fa5a3d377306721b75",
+      "fp64": "67af67367f3f6e8e",
+      "normHash": "f3979b5e3fc90bb26b1135b6cea31c3dbe2290511f9e51242a5f35e9ad5d31e0",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "98bac20e3343c7121f7eda331839b3f989472555c809c3c1f611a2812c057874",
+      "next": "c1a274f282be7f4a0f30fdb5d1d4e6e542bb5ac054e55eb7c47481cd1bdb8fdd"
+    },
+    {
+      "ord": 49,
+      "blockId": "653b6f95293e156f25b55f67106922a0",
+      "fp64": "cb0b40ae4b05570f",
+      "normHash": "c1a274f282be7f4a0f30fdb5d1d4e6e542bb5ac054e55eb7c47481cd1bdb8fdd",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "f3979b5e3fc90bb26b1135b6cea31c3dbe2290511f9e51242a5f35e9ad5d31e0",
+      "next": "7df98a292c16bcec3f0cc14ee93a1fded245d4dbf849215ce4036ea66f56c09d"
+    },
+    {
+      "ord": 50,
+      "blockId": "d47483cec41676bd57e9b9c2180d3303",
+      "fp64": "304fec851fda9ff4",
+      "normHash": "7df98a292c16bcec3f0cc14ee93a1fded245d4dbf849215ce4036ea66f56c09d",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "c1a274f282be7f4a0f30fdb5d1d4e6e542bb5ac054e55eb7c47481cd1bdb8fdd",
+      "next": "b271db2d31a291996045e748faf11d4a35ceda2e52fc3e05cc86c6d37ecb262d"
+    },
+    {
+      "ord": 51,
+      "blockId": "f2303dc847a7fcf869bafa3b8dfcf234",
+      "fp64": "bdfffbdf5bb9f13f",
+      "normHash": "b271db2d31a291996045e748faf11d4a35ceda2e52fc3e05cc86c6d37ecb262d",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "7df98a292c16bcec3f0cc14ee93a1fded245d4dbf849215ce4036ea66f56c09d",
+      "next": "36160331e2502306f3264d712d7eb5f819c8c243728e1588210903a8d437a288"
+    },
+    {
+      "ord": 52,
+      "blockId": "cd12b2853f9f6b8474985a759e98a612",
+      "fp64": "e5da60b216f3f414",
+      "normHash": "36160331e2502306f3264d712d7eb5f819c8c243728e1588210903a8d437a288",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "b271db2d31a291996045e748faf11d4a35ceda2e52fc3e05cc86c6d37ecb262d",
+      "next": "211382dc1adf300be61e6779581b47695f3fa1e361d4f592274f294795cac3ce"
+    },
+    {
+      "ord": 53,
+      "blockId": "39013df4cd39259ff6aece7c60f40520",
+      "fp64": "4fc048280d473d95",
+      "normHash": "211382dc1adf300be61e6779581b47695f3fa1e361d4f592274f294795cac3ce",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "36160331e2502306f3264d712d7eb5f819c8c243728e1588210903a8d437a288",
+      "next": "ed147f8ef2deb10c651d084064c79b35d46a64683eeaae41b2e201ea02f8af76"
+    },
+    {
+      "ord": 54,
+      "blockId": "3ccfa0e17d7340b52b6087166826a0de",
+      "fp64": "e53e2014f6e77454",
+      "normHash": "ed147f8ef2deb10c651d084064c79b35d46a64683eeaae41b2e201ea02f8af76",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "211382dc1adf300be61e6779581b47695f3fa1e361d4f592274f294795cac3ce",
+      "next": "52dae52ced1993d39e6f33a435240c469827648b96ee989dd16af2e8a6ac9ee7"
+    },
+    {
+      "ord": 55,
+      "blockId": "4c7b026de37863f828a29cc9300482d5",
+      "fp64": "f6104867fc740900",
+      "normHash": "52dae52ced1993d39e6f33a435240c469827648b96ee989dd16af2e8a6ac9ee7",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "ed147f8ef2deb10c651d084064c79b35d46a64683eeaae41b2e201ea02f8af76",
+      "next": "980288db8a0ed02d923a75dac2143273259012fba471d1bea5878cc1c42f2d77"
+    },
+    {
+      "ord": 56,
+      "blockId": "b5ac2f95f749fb0b44e92f9af389f447",
+      "fp64": "dfdb4578cf477fcf",
+      "normHash": "980288db8a0ed02d923a75dac2143273259012fba471d1bea5878cc1c42f2d77",
+      "kind": "verse",
+      "chapter": "main",
+      "prev": "52dae52ced1993d39e6f33a435240c469827648b96ee989dd16af2e8a6ac9ee7",
+      "next": "6c3548dc0f5655f1463a5ea1ad59b98065193378ddd7b39b41d5cb58767ba6a6"
+    },
+    {
+      "ord": 57,
+      "blockId": "a3f2c6bc4446e3c937d7604675f76dde",
+      "fp64": "7f0a7bfe15f53eec",
+      "normHash": "6c3548dc0f5655f1463a5ea1ad59b98065193378ddd7b39b41d5cb58767ba6a6",
+      "kind": "verse",
+      "chapter": "main",
+      "prev": "980288db8a0ed02d923a75dac2143273259012fba471d1bea5878cc1c42f2d77",
+      "next": "78eb08d4af095a56c45d690d3ebff221a75805e8e7001bbbb2dffa79d5d781b4"
+    },
+    {
+      "ord": 58,
+      "blockId": "a149bfeb6a6171135d72c07ed667c166",
+      "fp64": "d5fb93fbd16ad6d7",
+      "normHash": "78eb08d4af095a56c45d690d3ebff221a75805e8e7001bbbb2dffa79d5d781b4",
+      "kind": "verse",
+      "chapter": "main",
+      "prev": "6c3548dc0f5655f1463a5ea1ad59b98065193378ddd7b39b41d5cb58767ba6a6",
+      "next": "f526cbf0d1c715e1d15753bb63cf30fa2dda2661beb77aaade6a2fc2c03e0288"
+    },
+    {
+      "ord": 59,
+      "blockId": "672219c70cd1311a15b3265ae9464aa5",
+      "fp64": "459b249797ebb054",
+      "normHash": "f526cbf0d1c715e1d15753bb63cf30fa2dda2661beb77aaade6a2fc2c03e0288",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "78eb08d4af095a56c45d690d3ebff221a75805e8e7001bbbb2dffa79d5d781b4",
+      "next": "b46e6923a0be5a76f4a246c38e1cdd730d028270f56f2c5716ded45f3af2b500"
+    },
+    {
+      "ord": 60,
+      "blockId": "c397f69143b8e9cb79e74567bfa79096",
+      "fp64": "a5fff3dedbfffef7",
+      "normHash": "b46e6923a0be5a76f4a246c38e1cdd730d028270f56f2c5716ded45f3af2b500",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "f526cbf0d1c715e1d15753bb63cf30fa2dda2661beb77aaade6a2fc2c03e0288",
+      "next": "7024a843de76a0d5577bfad8527e0b34f691955549001d0fa5a42010142fadcd"
+    },
+    {
+      "ord": 61,
+      "blockId": "2e17234b64260056dde4e854bd9cc78a",
+      "fp64": "e7db209ef7f57076",
+      "normHash": "7024a843de76a0d5577bfad8527e0b34f691955549001d0fa5a42010142fadcd",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "b46e6923a0be5a76f4a246c38e1cdd730d028270f56f2c5716ded45f3af2b500",
+      "next": "522b11c906b8ea15d02732e54b363351a6b66617b72a3d88afa19b5c3fae0f49"
+    },
+    {
+      "ord": 62,
+      "blockId": "cf0ea5a36af7b607260608747ea29dad",
+      "fp64": "a7e5e0da1d1e697c",
+      "normHash": "522b11c906b8ea15d02732e54b363351a6b66617b72a3d88afa19b5c3fae0f49",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "7024a843de76a0d5577bfad8527e0b34f691955549001d0fa5a42010142fadcd",
+      "next": "bbe555b9627c14a197f3b9aba289d117c0c5b0c19d94033c9355a4dd282e6294"
+    },
+    {
+      "ord": 63,
+      "blockId": "7e02ff59b1d2eaec0aed3d63b1254c2a",
+      "fp64": "751e609657f3f07c",
+      "normHash": "bbe555b9627c14a197f3b9aba289d117c0c5b0c19d94033c9355a4dd282e6294",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "522b11c906b8ea15d02732e54b363351a6b66617b72a3d88afa19b5c3fae0f49",
+      "next": "9b26c70df47d4c953902bbc6385912d0d515c60805faa6ee4b55e224d0e1c212"
+    },
+    {
+      "ord": 64,
+      "blockId": "a2f161d8b6c6ce1e0f1325d5b1f6116f",
+      "fp64": "b8cecdd0557769f9",
+      "normHash": "9b26c70df47d4c953902bbc6385912d0d515c60805faa6ee4b55e224d0e1c212",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "bbe555b9627c14a197f3b9aba289d117c0c5b0c19d94033c9355a4dd282e6294",
+      "next": "f9561102f6f0bb7090974fb237863cb5f8058726d79ee2da8b7b9f3485c54280"
+    },
+    {
+      "ord": 65,
+      "blockId": "06ec291393c3b301115ee665e3b99afb",
+      "fp64": "2fdffbdadb7ff13f",
+      "normHash": "f9561102f6f0bb7090974fb237863cb5f8058726d79ee2da8b7b9f3485c54280",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "9b26c70df47d4c953902bbc6385912d0d515c60805faa6ee4b55e224d0e1c212",
+      "next": "5355c36cf4873bbfc8ec496af504295e9dfcd77e3aefb42a01b22e643f522289"
+    },
+    {
+      "ord": 66,
+      "blockId": "3ad0be2dbf45b2ffd8685a6727efd8f3",
+      "fp64": "e55c94aa1cf7f434",
+      "normHash": "5355c36cf4873bbfc8ec496af504295e9dfcd77e3aefb42a01b22e643f522289",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "f9561102f6f0bb7090974fb237863cb5f8058726d79ee2da8b7b9f3485c54280",
+      "next": "e5bc4b3cfe0d61400a49a40eb790462bb5ce8a2cf0eff86e78f5f469a54da0bc"
+    },
+    {
+      "ord": 67,
+      "blockId": "0e09910b813569b9de1950dc3d9aa9a8",
+      "fp64": "2c35c0578b62533e",
+      "normHash": "e5bc4b3cfe0d61400a49a40eb790462bb5ce8a2cf0eff86e78f5f469a54da0bc",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "5355c36cf4873bbfc8ec496af504295e9dfcd77e3aefb42a01b22e643f522289",
+      "next": "b45714bbeaceb94fe48a62b395281c96fe52365900f57b444a5084c187979246"
+    },
+    {
+      "ord": 68,
+      "blockId": "c988f1de7b1f47592c5b68a60608d40d",
+      "fp64": "addff79afe7d6777",
+      "normHash": "b45714bbeaceb94fe48a62b395281c96fe52365900f57b444a5084c187979246",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "e5bc4b3cfe0d61400a49a40eb790462bb5ce8a2cf0eff86e78f5f469a54da0bc",
+      "next": "37d54c46982596ef8456fd7b977dbd757ee31508467db081921ce3b2705eb1b0"
+    },
+    {
+      "ord": 69,
+      "blockId": "683a3e5e90def51709556e7c1b5173ba",
+      "fp64": "8a11224200331baf",
+      "normHash": "37d54c46982596ef8456fd7b977dbd757ee31508467db081921ce3b2705eb1b0",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "b45714bbeaceb94fe48a62b395281c96fe52365900f57b444a5084c187979246",
+      "next": "4a00eb63bbbdccb216a5c236a0598ea09d2a1efd85cf5f7b64d425fa5d17ae35"
+    },
+    {
+      "ord": 70,
+      "blockId": "61b0d9ec60ded495fd938b61772cec29",
+      "fp64": "7a1ca589c7717f82",
+      "normHash": "4a00eb63bbbdccb216a5c236a0598ea09d2a1efd85cf5f7b64d425fa5d17ae35",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "37d54c46982596ef8456fd7b977dbd757ee31508467db081921ce3b2705eb1b0",
+      "next": "a3824d198d5add48fece8fd6ac8efdb7819dc5070e0f2fc0c573efb33893a273"
+    },
+    {
+      "ord": 71,
+      "blockId": "0b0b8a189a06127c9a5830f4403b0bc7",
+      "fp64": "2eafe318d7b7a548",
+      "normHash": "a3824d198d5add48fece8fd6ac8efdb7819dc5070e0f2fc0c573efb33893a273",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "4a00eb63bbbdccb216a5c236a0598ea09d2a1efd85cf5f7b64d425fa5d17ae35",
+      "next": "406b6f84697800f00c0bff33066050a01b9c624386222276f54515127bc68193"
+    },
+    {
+      "ord": 72,
+      "blockId": "5f6ae74886d1f9703d481902adc8dc03",
+      "fp64": "0a56a4363df5f06e",
+      "normHash": "406b6f84697800f00c0bff33066050a01b9c624386222276f54515127bc68193",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "a3824d198d5add48fece8fd6ac8efdb7819dc5070e0f2fc0c573efb33893a273",
+      "next": "02387d7e62aaf067999a7fec87512bf71c117ffcbe44a74edcb29ad2754a565b"
+    },
+    {
+      "ord": 73,
+      "blockId": "9db3d41c4397a96e5dd1e52962f9d733",
+      "fp64": "5763a6ff3ec3f87c",
+      "normHash": "02387d7e62aaf067999a7fec87512bf71c117ffcbe44a74edcb29ad2754a565b",
+      "kind": "h2",
+      "chapter": "إما-أن-يكون-الراوي-عارفا-بما-يرويه-عالما-بالذي-يؤديه-أو-غير-عارف-بذلك-ولا-عالم",
+      "prev": "406b6f84697800f00c0bff33066050a01b9c624386222276f54515127bc68193",
+      "next": "113f1a3e79ceaa9e599a1e6af4de397cee82b3323bef9edd3fa327ce1d406403"
+    },
+    {
+      "ord": 74,
+      "blockId": "a69903c68e2574e367a601b01a1bc7ae",
+      "fp64": "cdb4ee2aea69cc6a",
+      "normHash": "113f1a3e79ceaa9e599a1e6af4de397cee82b3323bef9edd3fa327ce1d406403",
+      "kind": "p",
+      "chapter": "إما-أن-يكون-الراوي-عارفا-بما-يرويه-عالما-بالذي-يؤديه-أو-غير-عارف-بذلك-ولا-عالم",
+      "prev": "02387d7e62aaf067999a7fec87512bf71c117ffcbe44a74edcb29ad2754a565b",
+      "next": "a2ee3e8a2b292b5f9c33eb844400503b27ff1770b41e43c62bcc77dab0d93f0f"
+    },
+    {
+      "ord": 75,
+      "blockId": "26fc44cc8678faf86444023d5beff3de",
+      "fp64": "98d3b5062e5dfbf6",
+      "normHash": "a2ee3e8a2b292b5f9c33eb844400503b27ff1770b41e43c62bcc77dab0d93f0f",
+      "kind": "h2",
+      "chapter": "فإن-كان-عالما-وبحديثه-عارفا",
+      "prev": "113f1a3e79ceaa9e599a1e6af4de397cee82b3323bef9edd3fa327ce1d406403",
+      "next": "423f7e882e4c06e8eaae0b9a94755108aa971d979ab348ffc8f3324658e099ac"
+    },
+    {
+      "ord": 76,
+      "blockId": "9506ed32ced065d40e26675339ae4d2c",
+      "fp64": "bce9cc5ca57dbc70",
+      "normHash": "423f7e882e4c06e8eaae0b9a94755108aa971d979ab348ffc8f3324658e099ac",
+      "kind": "p",
+      "chapter": "فإن-كان-عالما-وبحديثه-عارفا",
+      "prev": "a2ee3e8a2b292b5f9c33eb844400503b27ff1770b41e43c62bcc77dab0d93f0f",
+      "next": "d284cc0fd73584653510c35a6a017f8ad937e30f2bef536e7df256f97d22e433"
+    },
+    {
+      "ord": 77,
+      "blockId": "9e8efb14c3f39b911b5b4e31aa70b011",
+      "fp64": "a5dff7da5e73eb76",
+      "normHash": "d284cc0fd73584653510c35a6a017f8ad937e30f2bef536e7df256f97d22e433",
+      "kind": "page",
+      "chapter": "فإن-كان-عالما-وبحديثه-عارفا",
+      "prev": "423f7e882e4c06e8eaae0b9a94755108aa971d979ab348ffc8f3324658e099ac",
+      "next": "0bcb1fc3ef45d872db0f208a23722df6091be2d21486c9b87755bec08a70ea71"
+    },
+    {
+      "ord": 78,
+      "blockId": "717f87bf300a6f05e1f1ac9ca1d033fc",
+      "fp64": "9f3da0d60d066b4b",
+      "normHash": "0bcb1fc3ef45d872db0f208a23722df6091be2d21486c9b87755bec08a70ea71",
+      "kind": "p",
+      "chapter": "فإن-كان-عالما-وبحديثه-عارفا",
+      "prev": "d284cc0fd73584653510c35a6a017f8ad937e30f2bef536e7df256f97d22e433",
+      "next": "444e09a9c55a7f8dc3320991b5c2d24c1416da0095750e98c9b71a46727679de"
+    },
+    {
+      "ord": 79,
+      "blockId": "8db789d4752e06e8ab5746551af714b0",
+      "fp64": "1919261212313065",
+      "normHash": "444e09a9c55a7f8dc3320991b5c2d24c1416da0095750e98c9b71a46727679de",
+      "kind": "p",
+      "chapter": "فإن-كان-عالما-وبحديثه-عارفا",
+      "prev": "0bcb1fc3ef45d872db0f208a23722df6091be2d21486c9b87755bec08a70ea71",
+      "next": "5c241fb623f86c1fa492196e57d2fd638b9242a34ac32cab8afcce271082a7d5"
+    },
+    {
+      "ord": 80,
+      "blockId": "40869f3a233e9507fcfd25f8fe41c7d3",
+      "fp64": "7d5c650955713f56",
+      "normHash": "5c241fb623f86c1fa492196e57d2fd638b9242a34ac32cab8afcce271082a7d5",
+      "kind": "h2",
+      "chapter": "وإن-كان-الراوي-شيخا-صحيح-السماع-إلا-أنه-لا-يعرف-حديثه",
+      "prev": "444e09a9c55a7f8dc3320991b5c2d24c1416da0095750e98c9b71a46727679de",
+      "next": "a2acd257bca192673136812bf6cbfc3a7a981b449200e5d3a71d4d5baa9db09b"
+    },
+    {
+      "ord": 81,
+      "blockId": "030baf7e7a5a52b91252665d5c6fbf07",
+      "fp64": "f774804611545330",
+      "normHash": "a2acd257bca192673136812bf6cbfc3a7a981b449200e5d3a71d4d5baa9db09b",
+      "kind": "p",
+      "chapter": "وإن-كان-الراوي-شيخا-صحيح-السماع-إلا-أنه-لا-يعرف-حديثه",
+      "prev": "5c241fb623f86c1fa492196e57d2fd638b9242a34ac32cab8afcce271082a7d5",
+      "next": "5dc3540c5030eaef3d237d100b011e39d2ecae44e174d9719c7167822423a62a"
+    },
+    {
+      "ord": 82,
+      "blockId": "12dfdbf2913a9335a752c0715b4c04eb",
+      "fp64": "65e7674fc65afd71",
+      "normHash": "5dc3540c5030eaef3d237d100b011e39d2ecae44e174d9719c7167822423a62a",
+      "kind": "p",
+      "chapter": "وإن-كان-الراوي-شيخا-صحيح-السماع-إلا-أنه-لا-يعرف-حديثه",
+      "prev": "a2acd257bca192673136812bf6cbfc3a7a981b449200e5d3a71d4d5baa9db09b",
+      "next": "df75c2dbaa1ad16e21a5862e55c6e5afe45aff4db0dd3358b0a5bfa680e99fb0"
+    },
+    {
+      "ord": 83,
+      "blockId": "77117e113f7aaccbf8f885f23ed3e19d",
+      "fp64": "62db6ddf5fff7b95",
+      "normHash": "df75c2dbaa1ad16e21a5862e55c6e5afe45aff4db0dd3358b0a5bfa680e99fb0",
+      "kind": "h2",
+      "chapter": "وإن-كان-تخريجا-عن-شيوخ-شتى-وفوائد-من-روايات-متفاوتة",
+      "prev": "5dc3540c5030eaef3d237d100b011e39d2ecae44e174d9719c7167822423a62a",
+      "next": "b1928b4247875f712d0896c0cb2e5ad81db939774e5d9c8e3967bf1a11a961ad"
+    },
+    {
+      "ord": 84,
+      "blockId": "67e511354c44a964741c75cf45f52d56",
+      "fp64": "df4d00deff671edf",
+      "normHash": "b1928b4247875f712d0896c0cb2e5ad81db939774e5d9c8e3967bf1a11a961ad",
+      "kind": "p",
+      "chapter": "وإن-كان-تخريجا-عن-شيوخ-شتى-وفوائد-من-روايات-متفاوتة",
+      "prev": "df75c2dbaa1ad16e21a5862e55c6e5afe45aff4db0dd3358b0a5bfa680e99fb0",
+      "next": "c1d50dc79e6c0267e9efbd68795c3df8e2c25e590d0b1bc168c1ccb63b902798"
+    },
+    {
+      "ord": 85,
+      "blockId": "e0f8d5da47ee89e331c7aa201efdcdb0",
+      "fp64": "bddffbdafb75ee77",
+      "normHash": "c1d50dc79e6c0267e9efbd68795c3df8e2c25e590d0b1bc168c1ccb63b902798",
+      "kind": "page",
+      "chapter": "وإن-كان-تخريجا-عن-شيوخ-شتى-وفوائد-من-روايات-متفاوتة",
+      "prev": "b1928b4247875f712d0896c0cb2e5ad81db939774e5d9c8e3967bf1a11a961ad",
+      "next": "64d0ed4c86a669293dfd5f70717e61fc6b66c3904092939209fb419e92055998"
+    },
+    {
+      "ord": 86,
+      "blockId": "9aee5a9e881971eb07848cb2b18307b5",
+      "fp64": "5f8e551799535935",
+      "normHash": "64d0ed4c86a669293dfd5f70717e61fc6b66c3904092939209fb419e92055998",
+      "kind": "p",
+      "chapter": "وإن-كان-تخريجا-عن-شيوخ-شتى-وفوائد-من-روايات-متفاوتة",
+      "prev": "c1d50dc79e6c0267e9efbd68795c3df8e2c25e590d0b1bc168c1ccb63b902798",
+      "next": "46f7f10363cd52b24742c6b7bb2973326b8c5890111b932fb901bb76aad7d6e9"
+    },
+    {
+      "ord": 87,
+      "blockId": "0bfba16ff79f76c2104bc5db877b8188",
+      "fp64": "32e6ff7155317f9c",
+      "normHash": "46f7f10363cd52b24742c6b7bb2973326b8c5890111b932fb901bb76aad7d6e9",
+      "kind": "p",
+      "chapter": "وإن-كان-تخريجا-عن-شيوخ-شتى-وفوائد-من-روايات-متفاوتة",
+      "prev": "64d0ed4c86a669293dfd5f70717e61fc6b66c3904092939209fb419e92055998",
+      "next": "d5243693c0e4a58d167d309a0206ab3c4a04322539578d087c22d130e09b1d78"
+    },
+    {
+      "ord": 88,
+      "blockId": "8441114646b6559e38d82ece524da09b",
+      "fp64": "eaeece7f8d477d7d",
+      "normHash": "d5243693c0e4a58d167d309a0206ab3c4a04322539578d087c22d130e09b1d78",
+      "kind": "p",
+      "chapter": "وإن-كان-تخريجا-عن-شيوخ-شتى-وفوائد-من-روايات-متفاوتة",
+      "prev": "46f7f10363cd52b24742c6b7bb2973326b8c5890111b932fb901bb76aad7d6e9",
+      "next": "754ebfe62a079fc0a61a2acf715c2c189f3cfb71182038be8dda69cc55eb2b2c"
+    },
+    {
+      "ord": 89,
+      "blockId": "8d814d40d4edaeedd772a23763084fc4",
+      "fp64": "8777ef52967c716f",
+      "normHash": "754ebfe62a079fc0a61a2acf715c2c189f3cfb71182038be8dda69cc55eb2b2c",
+      "kind": "p",
+      "chapter": "وإن-كان-تخريجا-عن-شيوخ-شتى-وفوائد-من-روايات-متفاوتة",
+      "prev": "d5243693c0e4a58d167d309a0206ab3c4a04322539578d087c22d130e09b1d78",
+      "next": "fcfc75593e2ef368690a9048bbe6ec7375e4c4fd97620706dfa43acb4d0fadf9"
+    },
+    {
+      "ord": 90,
+      "blockId": "ad6996ab48b096825c21ddb362342458",
+      "fp64": "865e587ebe56cdcd",
+      "normHash": "fcfc75593e2ef368690a9048bbe6ec7375e4c4fd97620706dfa43acb4d0fadf9",
+      "kind": "p",
+      "chapter": "وإن-كان-تخريجا-عن-شيوخ-شتى-وفوائد-من-روايات-متفاوتة",
+      "prev": "754ebfe62a079fc0a61a2acf715c2c189f3cfb71182038be8dda69cc55eb2b2c",
+      "next": "b6fb382cb1e32af80f19338bb9a1f368297126ee71ed36ca02a17aaa8ed70409"
+    },
+    {
+      "ord": 91,
+      "blockId": "74ff446e50260817fc599107af6b2408",
+      "fp64": "959e8092a6f67c55",
+      "normHash": "b6fb382cb1e32af80f19338bb9a1f368297126ee71ed36ca02a17aaa8ed70409",
+      "kind": "p",
+      "chapter": "وإن-كان-تخريجا-عن-شيوخ-شتى-وفوائد-من-روايات-متفاوتة",
+      "prev": "fcfc75593e2ef368690a9048bbe6ec7375e4c4fd97620706dfa43acb4d0fadf9",
+      "next": "47a608900b812e28351277f4ceba154c78be5a19735cb65393561b1fae8e2f7b"
+    },
+    {
+      "ord": 92,
+      "blockId": "efa9bd8761cee47d87a20a8339b4a232",
+      "fp64": "ffdff79affb777b7",
+      "normHash": "47a608900b812e28351277f4ceba154c78be5a19735cb65393561b1fae8e2f7b",
+      "kind": "page",
+      "chapter": "وإن-كان-تخريجا-عن-شيوخ-شتى-وفوائد-من-روايات-متفاوتة",
+      "prev": "b6fb382cb1e32af80f19338bb9a1f368297126ee71ed36ca02a17aaa8ed70409",
+      "next": "e1c2bd91f55622c81142c48ab62ef40ca69ca82b69e75bb5acd3639aeea7e7cd"
+    },
+    {
+      "ord": 93,
+      "blockId": "56e3510bb9f6bd1a235c3c7cda833e6d",
+      "fp64": "95889432a7f478d5",
+      "normHash": "e1c2bd91f55622c81142c48ab62ef40ca69ca82b69e75bb5acd3639aeea7e7cd",
+      "kind": "p",
+      "chapter": "وإن-كان-تخريجا-عن-شيوخ-شتى-وفوائد-من-روايات-متفاوتة",
+      "prev": "47a608900b812e28351277f4ceba154c78be5a19735cb65393561b1fae8e2f7b",
+      "next": "91555cc440023766b50d6afa427c11341ce669d088dd027196cacfb6112d6ea2"
+    },
+    {
+      "ord": 94,
+      "blockId": "a0beff7ccdf3445a473a15fc5e044143",
+      "fp64": "67aecc799d07795e",
+      "normHash": "91555cc440023766b50d6afa427c11341ce669d088dd027196cacfb6112d6ea2",
+      "kind": "p",
+      "chapter": "وإن-كان-تخريجا-عن-شيوخ-شتى-وفوائد-من-روايات-متفاوتة",
+      "prev": "e1c2bd91f55622c81142c48ab62ef40ca69ca82b69e75bb5acd3639aeea7e7cd",
+      "next": "a7675dc056b448c03d20aa0d9d08eb82d7a4e18b02cfe96a4d5205deeacb67ea"
+    },
+    {
+      "ord": 95,
+      "blockId": "f2663ee0f13055769e9ba06f8f3f884c",
+      "fp64": "1314b63b15111e56",
+      "normHash": "a7675dc056b448c03d20aa0d9d08eb82d7a4e18b02cfe96a4d5205deeacb67ea",
+      "kind": "p",
+      "chapter": "وإن-كان-تخريجا-عن-شيوخ-شتى-وفوائد-من-روايات-متفاوتة",
+      "prev": "91555cc440023766b50d6afa427c11341ce669d088dd027196cacfb6112d6ea2",
+      "next": "c5329d9fc9502da08d403eaa05b16ec1648f5d2cb5ea416ef18aabf0fda8fc2c"
+    },
+    {
+      "ord": 96,
+      "blockId": "900e923edf09192e1e667a5b39ce7374",
+      "fp64": "71d487661ef7f069",
+      "normHash": "c5329d9fc9502da08d403eaa05b16ec1648f5d2cb5ea416ef18aabf0fda8fc2c",
+      "kind": "h2",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "a7675dc056b448c03d20aa0d9d08eb82d7a4e18b02cfe96a4d5205deeacb67ea",
+      "next": "42469dfdf5e4dec218b8166e81bdeeef80dbf09770c7b25ee4e80bf9c15898d5"
+    },
+    {
+      "ord": 97,
+      "blockId": "e34a488f6ea33130f32680a16ea38943",
+      "fp64": "d684d4479d67f05e",
+      "normHash": "42469dfdf5e4dec218b8166e81bdeeef80dbf09770c7b25ee4e80bf9c15898d5",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "c5329d9fc9502da08d403eaa05b16ec1648f5d2cb5ea416ef18aabf0fda8fc2c",
+      "next": "89e34329ab90aa190773ce2438a8e1c6bd4a1fdaab455c2d4345beefa0f8a62f"
+    },
+    {
+      "ord": 98,
+      "blockId": "4ae5fb93d311776a6aa4f7d7ac399d47",
+      "fp64": "37ffff9e7a3ffc37",
+      "normHash": "89e34329ab90aa190773ce2438a8e1c6bd4a1fdaab455c2d4345beefa0f8a62f",
+      "kind": "page",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "42469dfdf5e4dec218b8166e81bdeeef80dbf09770c7b25ee4e80bf9c15898d5",
+      "next": "0f86e2b8eee46dfffa1fd93bf832f8a0a2a54f7a8cbb1d93526d8fcfe5206736"
+    },
+    {
+      "ord": 99,
+      "blockId": "d55fd35dc7ada5c519e7123e032676a6",
+      "fp64": "5975085b7b1c8de4",
+      "normHash": "0f86e2b8eee46dfffa1fd93bf832f8a0a2a54f7a8cbb1d93526d8fcfe5206736",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "89e34329ab90aa190773ce2438a8e1c6bd4a1fdaab455c2d4345beefa0f8a62f",
+      "next": "8106378f0e46a5a89e873ace37438f9e05c07d96a4230d45a303b6eaadb30448"
+    },
+    {
+      "ord": 100,
+      "blockId": "84f65b761a9691247b729bace598177b",
+      "fp64": "f6e11c5bbf3c3a4d",
+      "normHash": "8106378f0e46a5a89e873ace37438f9e05c07d96a4230d45a303b6eaadb30448",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "0f86e2b8eee46dfffa1fd93bf832f8a0a2a54f7a8cbb1d93526d8fcfe5206736",
+      "next": "f8e3022e66c4e11838d217bdd8a0206ed96f4ec8d1c188fd93039b505b207409"
+    },
+    {
+      "ord": 101,
+      "blockId": "d4b4ece97648fb67d2479992c50b2ecb",
+      "fp64": "a86a52cf43448663",
+      "normHash": "f8e3022e66c4e11838d217bdd8a0206ed96f4ec8d1c188fd93039b505b207409",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "8106378f0e46a5a89e873ace37438f9e05c07d96a4230d45a303b6eaadb30448",
+      "next": "81c855dcda9ba2a2c1a24a08a357cf48f8bdf787d93695980bc666b068b6edba"
+    },
+    {
+      "ord": 102,
+      "blockId": "6fe929a46207b21be7cc99f8ba57c81d",
+      "fp64": "d7e2624b012577d4",
+      "normHash": "81c855dcda9ba2a2c1a24a08a357cf48f8bdf787d93695980bc666b068b6edba",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "f8e3022e66c4e11838d217bdd8a0206ed96f4ec8d1c188fd93039b505b207409",
+      "next": "89164bf604a4f36053fb4b09a242ca9e81f0cf0f20d02ec1174e0feec65e53ab"
+    },
+    {
+      "ord": 103,
+      "blockId": "e6d90f7726448104c3aa437f30d7343a",
+      "fp64": "975a615155777cdc",
+      "normHash": "89164bf604a4f36053fb4b09a242ca9e81f0cf0f20d02ec1174e0feec65e53ab",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "81c855dcda9ba2a2c1a24a08a357cf48f8bdf787d93695980bc666b068b6edba",
+      "next": "fbe3e8d287e8ee688a1af4f098432b4d5d351d6a8e283e6a697d9744ebedf4f3"
+    },
+    {
+      "ord": 104,
+      "blockId": "dafc36539e5472590e7721fc53668c20",
+      "fp64": "7dfff3fa5eb16837",
+      "normHash": "fbe3e8d287e8ee688a1af4f098432b4d5d351d6a8e283e6a697d9744ebedf4f3",
+      "kind": "page",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "89164bf604a4f36053fb4b09a242ca9e81f0cf0f20d02ec1174e0feec65e53ab",
+      "next": "5a164955895cc1dc631a5f660710be25fb6bdcb373817881f3bf65556349572d"
+    },
+    {
+      "ord": 105,
+      "blockId": "1b869f6fb8203ca52dc7cadd9d7934cd",
+      "fp64": "c6de6092f7ff73f4",
+      "normHash": "5a164955895cc1dc631a5f660710be25fb6bdcb373817881f3bf65556349572d",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "fbe3e8d287e8ee688a1af4f098432b4d5d351d6a8e283e6a697d9744ebedf4f3",
+      "next": "4f23de72897f2b78e28053c83890ee19629de718fb183f5665d63eca2ae3ada5"
+    },
+    {
+      "ord": 106,
+      "blockId": "c59827e38b8b858bdc06eb8104d1c920",
+      "fp64": "af5ea35b03575c41",
+      "normHash": "4f23de72897f2b78e28053c83890ee19629de718fb183f5665d63eca2ae3ada5",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "5a164955895cc1dc631a5f660710be25fb6bdcb373817881f3bf65556349572d",
+      "next": "9d71871b9e26065d89deee5bf0ae9d6965e2485cee211a527d1d5b148207888e"
+    },
+    {
+      "ord": 107,
+      "blockId": "ec1c03bba35f4b97319e46f3f0c0e49a",
+      "fp64": "1fc72050b904b16a",
+      "normHash": "9d71871b9e26065d89deee5bf0ae9d6965e2485cee211a527d1d5b148207888e",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "4f23de72897f2b78e28053c83890ee19629de718fb183f5665d63eca2ae3ada5",
+      "next": "a25007970b6ee3c53d5f7f821a6bd921cb12aad6f96999aa027d0cfb16da0ddb"
+    },
+    {
+      "ord": 108,
+      "blockId": "319e1096e9cad8c84ac56b90a560de2b",
+      "fp64": "459a28d6a6f5604c",
+      "normHash": "a25007970b6ee3c53d5f7f821a6bd921cb12aad6f96999aa027d0cfb16da0ddb",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "9d71871b9e26065d89deee5bf0ae9d6965e2485cee211a527d1d5b148207888e",
+      "next": "6b95c88c96ea7a8a46e81c5a4dc2fed4eb6272e14d9bcd67068c76922b2b6a37"
+    },
+    {
+      "ord": 109,
+      "blockId": "54ee9caa53181e2b9ea7f2e32fff5368",
+      "fp64": "35dfffbfdb3b61be",
+      "normHash": "6b95c88c96ea7a8a46e81c5a4dc2fed4eb6272e14d9bcd67068c76922b2b6a37",
+      "kind": "page",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "a25007970b6ee3c53d5f7f821a6bd921cb12aad6f96999aa027d0cfb16da0ddb",
+      "next": "7b4b04d89b287a9a6710d8d703990d3c4549a63ae9cb2dc699122a4b76c2129e"
+    },
+    {
+      "ord": 110,
+      "blockId": "7b93b8751093f370da19c3a625ad95f2",
+      "fp64": "6f9e00d6a7f7f65e",
+      "normHash": "7b4b04d89b287a9a6710d8d703990d3c4549a63ae9cb2dc699122a4b76c2129e",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "6b95c88c96ea7a8a46e81c5a4dc2fed4eb6272e14d9bcd67068c76922b2b6a37",
+      "next": "65d048104b2e5ad10979fefb9cef9b1d75a8857898cbfd5ec85747bc9b1517c0"
+    },
+    {
+      "ord": 111,
+      "blockId": "c150cf26cf81abb139a78bb348561385",
+      "fp64": "1cb1109c75128ee1",
+      "normHash": "65d048104b2e5ad10979fefb9cef9b1d75a8857898cbfd5ec85747bc9b1517c0",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "7b4b04d89b287a9a6710d8d703990d3c4549a63ae9cb2dc699122a4b76c2129e",
+      "next": "a0dd4c72e1209a4c78026fa039feed4e7a47d2ce8066f7ff86821c60704a19ae"
+    },
+    {
+      "ord": 112,
+      "blockId": "146ee87fa5a2a4ee40bcdf75b5b9b042",
+      "fp64": "9f4aa01660053878",
+      "normHash": "a0dd4c72e1209a4c78026fa039feed4e7a47d2ce8066f7ff86821c60704a19ae",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "65d048104b2e5ad10979fefb9cef9b1d75a8857898cbfd5ec85747bc9b1517c0",
+      "next": "3ed7b2213598f26078919a52b0833195817cb5c8b85a1b501329a8a80543adf3"
+    },
+    {
+      "ord": 113,
+      "blockId": "cd9a19766ba0659dc36ab1ae9902d551",
+      "fp64": "75bfb2db77fd2a55",
+      "normHash": "3ed7b2213598f26078919a52b0833195817cb5c8b85a1b501329a8a80543adf3",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "a0dd4c72e1209a4c78026fa039feed4e7a47d2ce8066f7ff86821c60704a19ae",
+      "next": "de9ef4f7e1db6ab833dadb7d1e3f6508f278b746260bec369204ddd9e927b1ff"
+    },
+    {
+      "ord": 114,
+      "blockId": "9efd50982a64b145bbef223495c531a8",
+      "fp64": "7fdfffdfdafb773e",
+      "normHash": "de9ef4f7e1db6ab833dadb7d1e3f6508f278b746260bec369204ddd9e927b1ff",
+      "kind": "page",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "3ed7b2213598f26078919a52b0833195817cb5c8b85a1b501329a8a80543adf3",
+      "next": "4ee67edd1ff44d3c5fdd3ef1dc1357e8c5a6ca8f2d8df8239b73597b65c476b0"
+    },
+    {
+      "ord": 115,
+      "blockId": "f220f6a2bcfede6b143ce3b378c9ce75",
+      "fp64": "bf11eeb3b1267bef",
+      "normHash": "4ee67edd1ff44d3c5fdd3ef1dc1357e8c5a6ca8f2d8df8239b73597b65c476b0",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "de9ef4f7e1db6ab833dadb7d1e3f6508f278b746260bec369204ddd9e927b1ff",
+      "next": "9158a0437b91ed97ce0d82fb9c6f6d70475a82ea68b3ff7a3087c4b741ffb8cc"
+    },
+    {
+      "ord": 116,
+      "blockId": "9cc9ff1b0776f656d6ca26518ae2514d",
+      "fp64": "fdd0a0521856b474",
+      "normHash": "9158a0437b91ed97ce0d82fb9c6f6d70475a82ea68b3ff7a3087c4b741ffb8cc",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "4ee67edd1ff44d3c5fdd3ef1dc1357e8c5a6ca8f2d8df8239b73597b65c476b0",
+      "next": "453df1d9e9e924310e57b1c19b79598fdb9591468fc803b0fb24026faf7d600c"
+    },
+    {
+      "ord": 117,
+      "blockId": "0fdbde73b1dae521f2cfe4f87707c313",
+      "fp64": "35dff39e5b73653e",
+      "normHash": "453df1d9e9e924310e57b1c19b79598fdb9591468fc803b0fb24026faf7d600c",
+      "kind": "page",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "9158a0437b91ed97ce0d82fb9c6f6d70475a82ea68b3ff7a3087c4b741ffb8cc",
+      "next": "839e8d3da1f8be137e672ddfcec4ee0aca6e9d0c01c69384c9bd9985562236e7"
+    },
+    {
+      "ord": 118,
+      "blockId": "d9eddd7ecc2d8a46a8aab039b2a87f7c",
+      "fp64": "5efd8173bf27b75b",
+      "normHash": "839e8d3da1f8be137e672ddfcec4ee0aca6e9d0c01c69384c9bd9985562236e7",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "453df1d9e9e924310e57b1c19b79598fdb9591468fc803b0fb24026faf7d600c",
+      "next": "f11a5176836dc3e3b637d2dbc34d3d9a6cdc1938fd559e95c87396fa3ee0b3d9"
+    },
+    {
+      "ord": 119,
+      "blockId": "6f0d0cd6c8a69390bb14345065e3d026",
+      "fp64": "b6c5a774999811fa",
+      "normHash": "f11a5176836dc3e3b637d2dbc34d3d9a6cdc1938fd559e95c87396fa3ee0b3d9",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "839e8d3da1f8be137e672ddfcec4ee0aca6e9d0c01c69384c9bd9985562236e7",
+      "next": "169820aa2d2d68ecfa3e5e755a2c81ad9809b8b0cbfed41bcd225154a82efd5b"
+    },
+    {
+      "ord": 120,
+      "blockId": "0b4950cab1164f6efee52f878fc9b16e",
+      "fp64": "5fbb2e23b56eff4c",
+      "normHash": "169820aa2d2d68ecfa3e5e755a2c81ad9809b8b0cbfed41bcd225154a82efd5b",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "f11a5176836dc3e3b637d2dbc34d3d9a6cdc1938fd559e95c87396fa3ee0b3d9",
+      "next": "09a6abc260f57b1f41b02af8c738feeb48aaaa099372cd47895c6299b4e4f724"
+    },
+    {
+      "ord": 121,
+      "blockId": "e729aa9215b8516d1c93f61ae50ed80d",
+      "fp64": "527b4672f7e941f4",
+      "normHash": "09a6abc260f57b1f41b02af8c738feeb48aaaa099372cd47895c6299b4e4f724",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "169820aa2d2d68ecfa3e5e755a2c81ad9809b8b0cbfed41bcd225154a82efd5b",
+      "next": "e14ff3f17a75e66b072eafa44dd75f26148413762454d9e94b579d8e4e28ae91"
+    },
+    {
+      "ord": 122,
+      "blockId": "642ef9cc7d97e5f43de796f7b8e03b2d",
+      "fp64": "2fdfff9bff7b7b37",
+      "normHash": "e14ff3f17a75e66b072eafa44dd75f26148413762454d9e94b579d8e4e28ae91",
+      "kind": "page",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "09a6abc260f57b1f41b02af8c738feeb48aaaa099372cd47895c6299b4e4f724",
+      "next": "21c695f656df24df8df9760c85c6883fd8135fac897a8467222542c575db15e0"
+    },
+    {
+      "ord": 123,
+      "blockId": "4b63d25266d94e55eeb985ad2af84721",
+      "fp64": "5a6ca47b8551ab96",
+      "normHash": "21c695f656df24df8df9760c85c6883fd8135fac897a8467222542c575db15e0",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "e14ff3f17a75e66b072eafa44dd75f26148413762454d9e94b579d8e4e28ae91",
+      "next": "3b172c5463e89943732d27f1aaf08f88963d21fc25a59b544a92e64bb2750c6f"
+    },
+    {
+      "ord": 124,
+      "blockId": "7aeebf8a2f3d394d553a0154c1af6df1",
+      "fp64": "c08a064e85726b4c",
+      "normHash": "3b172c5463e89943732d27f1aaf08f88963d21fc25a59b544a92e64bb2750c6f",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "21c695f656df24df8df9760c85c6883fd8135fac897a8467222542c575db15e0",
+      "next": "34e5f1cbbaba32e45472dd41529878377b445e8e61a743818f642693fce4a834"
+    },
+    {
+      "ord": 125,
+      "blockId": "84395330d4f0a5cff17ffa85db31d1c6",
+      "fp64": "ed16c2479531fd98",
+      "normHash": "34e5f1cbbaba32e45472dd41529878377b445e8e61a743818f642693fce4a834",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "3b172c5463e89943732d27f1aaf08f88963d21fc25a59b544a92e64bb2750c6f",
+      "next": "51ac419bf47d59f38e28486bccdea31e7289b98dd49d36df5d0e054f0e0fc358"
+    },
+    {
+      "ord": 126,
+      "blockId": "563b4c1b81612c404b8623d6406e45f0",
+      "fp64": "adb5affef0579acf",
+      "normHash": "51ac419bf47d59f38e28486bccdea31e7289b98dd49d36df5d0e054f0e0fc358",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "34e5f1cbbaba32e45472dd41529878377b445e8e61a743818f642693fce4a834",
+      "next": "9259179ed9eb511ea3ea660ea969e47e18d4bf7a7771c4e207f772bd636740e9"
+    },
+    {
+      "ord": 127,
+      "blockId": "13e337dea8375f07b3c0b4cb4d68b0ec",
+      "fp64": "52fcb523d1be80cc",
+      "normHash": "9259179ed9eb511ea3ea660ea969e47e18d4bf7a7771c4e207f772bd636740e9",
+      "kind": "verse",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "51ac419bf47d59f38e28486bccdea31e7289b98dd49d36df5d0e054f0e0fc358",
+      "next": "5e90934513133f3ad765265fc284192da445730bc357d891ae8eb37b58268039"
+    },
+    {
+      "ord": 128,
+      "blockId": "43d264e6516637f9f4a12d36af550a48",
+      "fp64": "b5fff3fadbf1ef77",
+      "normHash": "5e90934513133f3ad765265fc284192da445730bc357d891ae8eb37b58268039",
+      "kind": "page",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "9259179ed9eb511ea3ea660ea969e47e18d4bf7a7771c4e207f772bd636740e9",
+      "next": "b4a2e5a92cee156e026f53e6c22987445f783e13079e70603168a086d812a953"
+    },
+    {
+      "ord": 129,
+      "blockId": "76685a082ffbf7624f8e256ea941fb7b",
+      "fp64": "6fdbacca4f662905",
+      "normHash": "b4a2e5a92cee156e026f53e6c22987445f783e13079e70603168a086d812a953",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "5e90934513133f3ad765265fc284192da445730bc357d891ae8eb37b58268039",
+      "next": "96700ff8c987abc558426623a5cc6625256a6fefdf0992af0665f8c74112055d"
+    },
+    {
+      "ord": 130,
+      "blockId": "9c5793b589de00187270025d8d723ea7",
+      "fp64": "dd37de3bf7dae3a7",
+      "normHash": "96700ff8c987abc558426623a5cc6625256a6fefdf0992af0665f8c74112055d",
+      "kind": "verse",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "b4a2e5a92cee156e026f53e6c22987445f783e13079e70603168a086d812a953",
+      "next": "a85649e3854f602138e03bace07279d89763c03bfa19a2d5f7acf82c28972045"
+    },
+    {
+      "ord": 131,
+      "blockId": "a03639042139471e3de3dc9e9062df80",
+      "fp64": "6d0d46e023120f1b",
+      "normHash": "a85649e3854f602138e03bace07279d89763c03bfa19a2d5f7acf82c28972045",
+      "kind": "verse",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "96700ff8c987abc558426623a5cc6625256a6fefdf0992af0665f8c74112055d",
+      "next": "16155be1389c932882bd5726c0731893d4b8e146abac70afd7fa9089839943bd"
+    },
+    {
+      "ord": 132,
+      "blockId": "a59109d609739ef123fea6b1bc96a8e2",
+      "fp64": "b94d3c531940fb5c",
+      "normHash": "16155be1389c932882bd5726c0731893d4b8e146abac70afd7fa9089839943bd",
+      "kind": "verse",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "a85649e3854f602138e03bace07279d89763c03bfa19a2d5f7acf82c28972045",
+      "next": "8f0c63f8808187ca1954608f478f3c3666e053207df65424505248842b3c3b67"
+    },
+    {
+      "ord": 133,
+      "blockId": "80c1bed9433b0832d519f854e30e9804",
+      "fp64": "991c31bdcf6541c1",
+      "normHash": "8f0c63f8808187ca1954608f478f3c3666e053207df65424505248842b3c3b67",
+      "kind": "verse",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "16155be1389c932882bd5726c0731893d4b8e146abac70afd7fa9089839943bd",
+      "next": "f5e5c530892eb0e13731f8814a968fa8b13c87d267ce1548df9623407d7ca244"
+    },
+    {
+      "ord": 134,
+      "blockId": "7739022cfc260594607b1128e876b8dc",
+      "fp64": "b106aa9fbfaf63fe",
+      "normHash": "f5e5c530892eb0e13731f8814a968fa8b13c87d267ce1548df9623407d7ca244",
+      "kind": "verse",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "8f0c63f8808187ca1954608f478f3c3666e053207df65424505248842b3c3b67",
+      "next": "eb759b16cb7557abc8a15a3eab391c027f150ba330c9ce6563c0dbcc65781b8e"
+    },
+    {
+      "ord": 135,
+      "blockId": "e541736bbf0c122b500236f280cec71d",
+      "fp64": "02ac6612430259eb",
+      "normHash": "eb759b16cb7557abc8a15a3eab391c027f150ba330c9ce6563c0dbcc65781b8e",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "f5e5c530892eb0e13731f8814a968fa8b13c87d267ce1548df9623407d7ca244",
+      "next": "a9ad33178c390a019d2e437144eba33267a0e9684561211576afdf5b6bb3a701"
+    },
+    {
+      "ord": 136,
+      "blockId": "0d1ba8048130e6b16ae2b4c479fa646f",
+      "fp64": "afffff9fdbfd783e",
+      "normHash": "a9ad33178c390a019d2e437144eba33267a0e9684561211576afdf5b6bb3a701",
+      "kind": "page",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "eb759b16cb7557abc8a15a3eab391c027f150ba330c9ce6563c0dbcc65781b8e",
+      "next": "cf2ec80450af95bac4ad2601aeb657d5cbb69401bb8893300f1f2a225750bdbc"
+    },
+    {
+      "ord": 137,
+      "blockId": "a697cdbbbae7439c3321123520c9820c",
+      "fp64": "4ece5e4b8341451c",
+      "normHash": "cf2ec80450af95bac4ad2601aeb657d5cbb69401bb8893300f1f2a225750bdbc",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "a9ad33178c390a019d2e437144eba33267a0e9684561211576afdf5b6bb3a701",
+      "next": "7e7a79548d3dbaa7e8e96bcb2b087593c94cec97e4885d536557c211af3d5d44"
+    },
+    {
+      "ord": 138,
+      "blockId": "865822595da566173987bf89ff4e66ac",
+      "fp64": "03df31547076d5e2",
+      "normHash": "7e7a79548d3dbaa7e8e96bcb2b087593c94cec97e4885d536557c211af3d5d44",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "cf2ec80450af95bac4ad2601aeb657d5cbb69401bb8893300f1f2a225750bdbc",
+      "next": "fb975465bfd242b9bb52e93f865c8031bbbb7961e1e104ee6622b8ccc5013923"
+    },
+    {
+      "ord": 139,
+      "blockId": "918393e65a28bde97ceb5b99a2e6fb83",
+      "fp64": "66927c5dae176d74",
+      "normHash": "fb975465bfd242b9bb52e93f865c8031bbbb7961e1e104ee6622b8ccc5013923",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "7e7a79548d3dbaa7e8e96bcb2b087593c94cec97e4885d536557c211af3d5d44",
+      "next": "304d7da66b2cbc1da5cd77e979a8d2ae93344492a7ce42f99100ec189ad03d4c"
+    },
+    {
+      "ord": 140,
+      "blockId": "3ac834bfda075d0d80dd345988920a56",
+      "fp64": "57ffedd20bb77bf7",
+      "normHash": "304d7da66b2cbc1da5cd77e979a8d2ae93344492a7ce42f99100ec189ad03d4c",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "fb975465bfd242b9bb52e93f865c8031bbbb7961e1e104ee6622b8ccc5013923",
+      "next": "6f93e343e1a3f900d754cde7c0791192aeb0335469aa79b2933c8d3939799b60"
+    },
+    {
+      "ord": 141,
+      "blockId": "1b2222a203a95c99315a57ad8847cc2e",
+      "fp64": "1638c026d35c2b87",
+      "normHash": "6f93e343e1a3f900d754cde7c0791192aeb0335469aa79b2933c8d3939799b60",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "304d7da66b2cbc1da5cd77e979a8d2ae93344492a7ce42f99100ec189ad03d4c",
+      "next": "323c051057b3ff44fc85d2033eb8320a465a1804bd0d67429ec768094dc2c09c"
+    },
+    {
+      "ord": 142,
+      "blockId": "54dc0d6bc73db88c26cfdd05eac27096",
+      "fp64": "e71a209647f6f074",
+      "normHash": "323c051057b3ff44fc85d2033eb8320a465a1804bd0d67429ec768094dc2c09c",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "6f93e343e1a3f900d754cde7c0791192aeb0335469aa79b2933c8d3939799b60",
+      "next": "0c5c82c7ce81882c3fa0af977a42d1d40b89341e997dc91ecc1ed15f67911075"
+    },
+    {
+      "ord": 143,
+      "blockId": "527dc44cddc652dc917949cd36c11038",
+      "fp64": "75dff7be7f35ea3f",
+      "normHash": "0c5c82c7ce81882c3fa0af977a42d1d40b89341e997dc91ecc1ed15f67911075",
+      "kind": "page",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "323c051057b3ff44fc85d2033eb8320a465a1804bd0d67429ec768094dc2c09c",
+      "next": "fd4259f210785105f7fd4ba48fa42d762974d903b5f2f8e5e138a291e526e025"
+    },
+    {
+      "ord": 144,
+      "blockId": "ee723ff22634f50d41f6f4b485e4f191",
+      "fp64": "4dc65d0e5d7492bb",
+      "normHash": "fd4259f210785105f7fd4ba48fa42d762974d903b5f2f8e5e138a291e526e025",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "0c5c82c7ce81882c3fa0af977a42d1d40b89341e997dc91ecc1ed15f67911075",
+      "next": "8f7d9a399b762c6d1ca7924cbff171c317250e826f3b83ea9c317c459e664894"
+    },
+    {
+      "ord": 145,
+      "blockId": "f236d60cbe3b72d840af755e93670628",
+      "fp64": "7fc1a86e4fb894ae",
+      "normHash": "8f7d9a399b762c6d1ca7924cbff171c317250e826f3b83ea9c317c459e664894",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "fd4259f210785105f7fd4ba48fa42d762974d903b5f2f8e5e138a291e526e025",
+      "next": "f87329ce43bdfa813c613a1078d480ef90aa6dd0cf40a0ccf8ec3a4608191737"
+    },
+    {
+      "ord": 146,
+      "blockId": "0f03e3d08a1543ad87e97daa49bcc46c",
+      "fp64": "e51b609677e3e074",
+      "normHash": "f87329ce43bdfa813c613a1078d480ef90aa6dd0cf40a0ccf8ec3a4608191737",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "8f7d9a399b762c6d1ca7924cbff171c317250e826f3b83ea9c317c459e664894",
+      "next": "2baede15b7a04a980f0cea168ba2000d763fd4d7bd2cdce7006fbd303b44260d"
+    },
+    {
+      "ord": 147,
+      "blockId": "62d9a01f8f78e94483f178aff2df0969",
+      "fp64": "f5dffbfeff3bf236",
+      "normHash": "2baede15b7a04a980f0cea168ba2000d763fd4d7bd2cdce7006fbd303b44260d",
+      "kind": "page",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "f87329ce43bdfa813c613a1078d480ef90aa6dd0cf40a0ccf8ec3a4608191737",
+      "next": "77a2e07b01597773457fb06253392c6e06ab2028a2c4f54e7c667bbfd80adcb8"
+    },
+    {
+      "ord": 148,
+      "blockId": "58f381025f36d1d1e85877cd0227b8ad",
+      "fp64": "eab7fa7ff379fffe",
+      "normHash": "77a2e07b01597773457fb06253392c6e06ab2028a2c4f54e7c667bbfd80adcb8",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "2baede15b7a04a980f0cea168ba2000d763fd4d7bd2cdce7006fbd303b44260d",
+      "next": "4ff7cdcffe3487671dc2c5f1d48d7f3a48437eaec47c05fce05edbfccc599439"
+    },
+    {
+      "ord": 149,
+      "blockId": "26773b941d341b58e7c2fb19061a7f50",
+      "fp64": "eba17f6fbf6f594f",
+      "normHash": "4ff7cdcffe3487671dc2c5f1d48d7f3a48437eaec47c05fce05edbfccc599439",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "77a2e07b01597773457fb06253392c6e06ab2028a2c4f54e7c667bbfd80adcb8",
+      "next": "6feae9ff55cc979e0f3ebf9517ea2ff7b8924213b2c413d091611ea15cf16b5d"
+    },
+    {
+      "ord": 150,
+      "blockId": "aa1204a9225c8b6031ab9766f991a4b2",
+      "fp64": "c75c32a3b6f3f434",
+      "normHash": "6feae9ff55cc979e0f3ebf9517ea2ff7b8924213b2c413d091611ea15cf16b5d",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "4ff7cdcffe3487671dc2c5f1d48d7f3a48437eaec47c05fce05edbfccc599439",
+      "next": "26be8a5bd032778db44ecc982bbaf42b2661afdbf73bbdeedfac3cb421676fc2"
+    },
+    {
+      "ord": 151,
+      "blockId": "7aaebc98a2fcd36e47f0db8fe36e5048",
+      "fp64": "dc4be55df2574fdd",
+      "normHash": "26be8a5bd032778db44ecc982bbaf42b2661afdbf73bbdeedfac3cb421676fc2",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "6feae9ff55cc979e0f3ebf9517ea2ff7b8924213b2c413d091611ea15cf16b5d",
+      "next": "e4b5b8347c19b386c0a59c14dd7c52742344a8ec41061f747343ce9bae742e64"
+    },
+    {
+      "ord": 152,
+      "blockId": "4c57df27680bebcf33635b8e08326af7",
+      "fp64": "67dff7daffb7e876",
+      "normHash": "e4b5b8347c19b386c0a59c14dd7c52742344a8ec41061f747343ce9bae742e64",
+      "kind": "page",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "26be8a5bd032778db44ecc982bbaf42b2661afdbf73bbdeedfac3cb421676fc2",
+      "next": "1921d12cf3e8be5d9f5607b16d8e7f0104a912e196ae03b996fd87e0f6eb38ac"
+    },
+    {
+      "ord": 153,
+      "blockId": "1eb36508bad98eb915b17b5ff4ab489b",
+      "fp64": "ed5e429a26f3f414",
+      "normHash": "1921d12cf3e8be5d9f5607b16d8e7f0104a912e196ae03b996fd87e0f6eb38ac",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "e4b5b8347c19b386c0a59c14dd7c52742344a8ec41061f747343ce9bae742e64",
+      "next": "4c1f9579844d095e7ab71fa7a36d02b04b18f433e0daf4d6b24c1e0a5e00f01c"
+    },
+    {
+      "ord": 154,
+      "blockId": "496602b98351c3c4c7d768a599c0384f",
+      "fp64": "d76e4e7ee73eee56",
+      "normHash": "4c1f9579844d095e7ab71fa7a36d02b04b18f433e0daf4d6b24c1e0a5e00f01c",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "1921d12cf3e8be5d9f5607b16d8e7f0104a912e196ae03b996fd87e0f6eb38ac",
+      "next": "016cef1418acd7ce5a82943b63f5c048015d548587d120a80152df86c98f1fa7"
+    },
+    {
+      "ord": 155,
+      "blockId": "01cefd57464ef5a177cee2bc7bdfed84",
+      "fp64": "c51a609656e77874",
+      "normHash": "016cef1418acd7ce5a82943b63f5c048015d548587d120a80152df86c98f1fa7",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "4c1f9579844d095e7ab71fa7a36d02b04b18f433e0daf4d6b24c1e0a5e00f01c",
+      "next": "977346e9cfdd41634dc845fc8eeec20fe2bf557b2158e8c6974946e096e2804e"
+    },
+    {
+      "ord": 156,
+      "blockId": "3aa4e162cc03565bf33e2a0dd230b88b",
+      "fp64": "c6c00c7f8f6768dc",
+      "normHash": "977346e9cfdd41634dc845fc8eeec20fe2bf557b2158e8c6974946e096e2804e",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "016cef1418acd7ce5a82943b63f5c048015d548587d120a80152df86c98f1fa7",
+      "next": "4a1af5a3dd16dcf281896c1bdb336077205c368473c0c4228de22fda784a6b65"
+    },
+    {
+      "ord": 157,
+      "blockId": "c9d5015b7394bbfe121c2f16233d8c7b",
+      "fp64": "0f30e0d285d86797",
+      "normHash": "4a1af5a3dd16dcf281896c1bdb336077205c368473c0c4228de22fda784a6b65",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "977346e9cfdd41634dc845fc8eeec20fe2bf557b2158e8c6974946e096e2804e",
+      "next": "f362d40dd92d26efd1bb1a1ffd8eb4900c32653f5b46ff18964524200c47f536"
+    },
+    {
+      "ord": 158,
+      "blockId": "ea5abfafb62dd16234cfc7c43b5c52bb",
+      "fp64": "77fff3dede7577fe",
+      "normHash": "f362d40dd92d26efd1bb1a1ffd8eb4900c32653f5b46ff18964524200c47f536",
+      "kind": "page",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "4a1af5a3dd16dcf281896c1bdb336077205c368473c0c4228de22fda784a6b65",
+      "next": "b4f80efd9efbd2e74e96b4144be4876656cc72fabdf0d496bd079d95072d6b55"
+    },
+    {
+      "ord": 159,
+      "blockId": "9fa22d05b911f9c811b47e9cad31a40b",
+      "fp64": "6e9b4a5b8f67e94b",
+      "normHash": "b4f80efd9efbd2e74e96b4144be4876656cc72fabdf0d496bd079d95072d6b55",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "f362d40dd92d26efd1bb1a1ffd8eb4900c32653f5b46ff18964524200c47f536",
+      "next": "07e7581d36ca76d095231f666781c717a45d1f5929221840f4eb8706bcf3ed39"
+    },
+    {
+      "ord": 160,
+      "blockId": "43d591ee5d05141a8018da54577de4d9",
+      "fp64": "e59a209676f17074",
+      "normHash": "07e7581d36ca76d095231f666781c717a45d1f5929221840f4eb8706bcf3ed39",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "b4f80efd9efbd2e74e96b4144be4876656cc72fabdf0d496bd079d95072d6b55",
+      "next": "d601e552a5a1de2d5cd1b4b939944e90a6ade4c66ca85b95b2d1ca648ce691f4"
+    },
+    {
+      "ord": 161,
+      "blockId": "d18862273f2f75e47c04ba25c148ea19",
+      "fp64": "727f44d4875965b4",
+      "normHash": "d601e552a5a1de2d5cd1b4b939944e90a6ade4c66ca85b95b2d1ca648ce691f4",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "07e7581d36ca76d095231f666781c717a45d1f5929221840f4eb8706bcf3ed39",
+      "next": "ee9af117db640adefd977b0fa4cd4bbaa85279bfe8da0f996e57f8fbe8b4aeab"
+    },
+    {
+      "ord": 162,
+      "blockId": "05ea89e079beceb56230065c8d48655a",
+      "fp64": "cdde33871af3f434",
+      "normHash": "ee9af117db640adefd977b0fa4cd4bbaa85279bfe8da0f996e57f8fbe8b4aeab",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "d601e552a5a1de2d5cd1b4b939944e90a6ade4c66ca85b95b2d1ca648ce691f4",
+      "next": "62f09a0bfd028b8a5ab697bcacc2b67189b1ddb9935eac22d026afa206b717b4"
+    },
+    {
+      "ord": 163,
+      "blockId": "e05fe6bf11e4aa87b019e2bbfcb9211d",
+      "fp64": "c59e6417a69bf454",
+      "normHash": "62f09a0bfd028b8a5ab697bcacc2b67189b1ddb9935eac22d026afa206b717b4",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "ee9af117db640adefd977b0fa4cd4bbaa85279bfe8da0f996e57f8fbe8b4aeab",
+      "next": "d74629aeaa24add6bfb07f56dafc5124cd20f139aff02754c8f197ff05519bb8"
+    },
+    {
+      "ord": 164,
+      "blockId": "601460f8293ac7548305ecd174a5b1a8",
+      "fp64": "35dff3ff5fff6876",
+      "normHash": "d74629aeaa24add6bfb07f56dafc5124cd20f139aff02754c8f197ff05519bb8",
+      "kind": "page",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "62f09a0bfd028b8a5ab697bcacc2b67189b1ddb9935eac22d026afa206b717b4",
+      "next": "7d763fe90fba28bf50e453687fb274fcfef29daff175e722453e895db25e6d17"
+    },
+    {
+      "ord": 165,
+      "blockId": "56f92323631a0f9ddbe995ded0b3ec67",
+      "fp64": "e45b9b5b0efbf977",
+      "normHash": "7d763fe90fba28bf50e453687fb274fcfef29daff175e722453e895db25e6d17",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "d74629aeaa24add6bfb07f56dafc5124cd20f139aff02754c8f197ff05519bb8",
+      "next": "dfbcc62249a5714549438c81066c28cf40922a867acfb0bd1201071ba1285002"
+    },
+    {
+      "ord": 166,
+      "blockId": "95d4590893a213b7a623737f3d598b04",
+      "fp64": "4372bc4eb1def371",
+      "normHash": "dfbcc62249a5714549438c81066c28cf40922a867acfb0bd1201071ba1285002",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "7d763fe90fba28bf50e453687fb274fcfef29daff175e722453e895db25e6d17",
+      "next": "c8f9ceffb179d6c2e60f52b88352310d372ef415202f874881bb1434e1a4b6b1"
+    },
+    {
+      "ord": 167,
+      "blockId": "7684455f0fba3d88f7df8565f0dd177d",
+      "fp64": "b5fffb9b7eb77e3e",
+      "normHash": "c8f9ceffb179d6c2e60f52b88352310d372ef415202f874881bb1434e1a4b6b1",
+      "kind": "page",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "dfbcc62249a5714549438c81066c28cf40922a867acfb0bd1201071ba1285002",
+      "next": "de3c645209e31cada39c33f5891076232a066844d974a2b576fe84a8077aace2"
+    },
+    {
+      "ord": 168,
+      "blockId": "8e27157b8fb8058d7a9afe0f9706db05",
+      "fp64": "659a629667f3b054",
+      "normHash": "de3c645209e31cada39c33f5891076232a066844d974a2b576fe84a8077aace2",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "c8f9ceffb179d6c2e60f52b88352310d372ef415202f874881bb1434e1a4b6b1",
+      "next": "870117bec18e7af1cb83b04ddfb2b68de4e991719518947e4b9bc319f33b91fa"
+    },
+    {
+      "ord": 169,
+      "blockId": "3b98ddbe3da6eaa5695e091c2633b9f1",
+      "fp64": "1ec70f7d5d2c8119",
+      "normHash": "870117bec18e7af1cb83b04ddfb2b68de4e991719518947e4b9bc319f33b91fa",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "de3c645209e31cada39c33f5891076232a066844d974a2b576fe84a8077aace2",
+      "next": "87da5577b5e96284b603f346c9aa01237d45be46f75af2c2cd9cf869c5389355"
+    },
+    {
+      "ord": 170,
+      "blockId": "ff6abb9edaa9afad278e76c009b870e6",
+      "fp64": "451c409647f27474",
+      "normHash": "87da5577b5e96284b603f346c9aa01237d45be46f75af2c2cd9cf869c5389355",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "870117bec18e7af1cb83b04ddfb2b68de4e991719518947e4b9bc319f33b91fa",
+      "next": "b86aca195d96bf29f4dd9ebccf59c77fa4691529b45024d3c43df17d9879aa78"
+    },
+    {
+      "ord": 171,
+      "blockId": "3989bd188a07bbf9876ef2e0baad735d",
+      "fp64": "6feb4dffcf76bd0e",
+      "normHash": "b86aca195d96bf29f4dd9ebccf59c77fa4691529b45024d3c43df17d9879aa78",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "87da5577b5e96284b603f346c9aa01237d45be46f75af2c2cd9cf869c5389355",
+      "next": "48c391d9b1cc3aeac6bdc503e99e0cadc040170da2020066c484ac9630e46fe4"
+    },
+    {
+      "ord": 172,
+      "blockId": "2e97523d792bb4f69ef6f21cc255553f",
+      "fp64": "b7ffff9adbbffa3f",
+      "normHash": "48c391d9b1cc3aeac6bdc503e99e0cadc040170da2020066c484ac9630e46fe4",
+      "kind": "page",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "b86aca195d96bf29f4dd9ebccf59c77fa4691529b45024d3c43df17d9879aa78",
+      "next": "ec4805c767c410d75d44ee86465318e1960ead2cf050e9077322742ec25ceb36"
+    },
+    {
+      "ord": 173,
+      "blockId": "6f1d80d999c324632883dcbcecbb5644",
+      "fp64": "8558201666f5f43c",
+      "normHash": "ec4805c767c410d75d44ee86465318e1960ead2cf050e9077322742ec25ceb36",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "48c391d9b1cc3aeac6bdc503e99e0cadc040170da2020066c484ac9630e46fe4",
+      "next": "a26ab199e2dcbb75fd0acb6031975fb12f4254d5fd4dd3239ff29d272ba9c527"
+    },
+    {
+      "ord": 174,
+      "blockId": "4a46464c3613a675239bd82a0af94f43",
+      "fp64": "dfe9eeb4fb7cfddc",
+      "normHash": "a26ab199e2dcbb75fd0acb6031975fb12f4254d5fd4dd3239ff29d272ba9c527",
+      "kind": "verse",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "ec4805c767c410d75d44ee86465318e1960ead2cf050e9077322742ec25ceb36",
+      "next": "a9ccf93c4ecd5dbd3c8b287caf01975e0c2b5826223f45fcca8810f1a0f15934"
+    },
+    {
+      "ord": 175,
+      "blockId": "e43481daa6daae697c98563556943354",
+      "fp64": "67eb44ff4b73ac0e",
+      "normHash": "a9ccf93c4ecd5dbd3c8b287caf01975e0c2b5826223f45fcca8810f1a0f15934",
+      "kind": "verse",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "a26ab199e2dcbb75fd0acb6031975fb12f4254d5fd4dd3239ff29d272ba9c527",
+      "next": "9b55c3fe1672698969f69987359a6ebdaa8bf3fed7b20d676707e92203e014d7"
+    },
+    {
+      "ord": 176,
+      "blockId": "1fe40d8ab750d52345c16ff6ecd48c2d",
+      "fp64": "0769260b55b6139d",
+      "normHash": "9b55c3fe1672698969f69987359a6ebdaa8bf3fed7b20d676707e92203e014d7",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "a9ccf93c4ecd5dbd3c8b287caf01975e0c2b5826223f45fcca8810f1a0f15934",
+      "next": "9f584c92f4c65b960936ec58ef0dc4af156c3cd7e21442252935d68f4afa2889"
+    },
+    {
+      "ord": 177,
+      "blockId": "a400e7246829ea6bafd64f958b3d8bd5",
+      "fp64": "e51a4097e7f3f074",
+      "normHash": "9f584c92f4c65b960936ec58ef0dc4af156c3cd7e21442252935d68f4afa2889",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "9b55c3fe1672698969f69987359a6ebdaa8bf3fed7b20d676707e92203e014d7",
+      "next": "38bd8ce3ceeed9250e47346d96fa3c08cc18b51eb6e5b5d3fb460dc5db9b1c69"
+    },
+    {
+      "ord": 178,
+      "blockId": "e4c13f975ade0594393a5244fcd520c0",
+      "fp64": "1015e8fc7a29c71e",
+      "normHash": "38bd8ce3ceeed9250e47346d96fa3c08cc18b51eb6e5b5d3fb460dc5db9b1c69",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "9f584c92f4c65b960936ec58ef0dc4af156c3cd7e21442252935d68f4afa2889",
+      "next": "ba67b3c67027ac3a5c44a9d635d037ab051b7177abde0bc6476f76a2473d24fb"
+    },
+    {
+      "ord": 179,
+      "blockId": "27e5e9dca4b84b46a7269ed379820460",
+      "fp64": "b41baabcefbcf49d",
+      "normHash": "ba67b3c67027ac3a5c44a9d635d037ab051b7177abde0bc6476f76a2473d24fb",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "38bd8ce3ceeed9250e47346d96fa3c08cc18b51eb6e5b5d3fb460dc5db9b1c69",
+      "next": "d85310a1cb502881465737eb27d07b5be225582c3f910a5a5ac67eff966a873c"
+    },
+    {
+      "ord": 180,
+      "blockId": "d0e0a437a0e7b419e6dc14d2f9c50dae",
+      "fp64": "52a489380088c708",
+      "normHash": "d85310a1cb502881465737eb27d07b5be225582c3f910a5a5ac67eff966a873c",
+      "kind": "verse",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "ba67b3c67027ac3a5c44a9d635d037ab051b7177abde0bc6476f76a2473d24fb",
+      "next": "cdfe6f6112d4d66e83c1fe1a786f77b5d02174557c541f6d96b5680bc34bdb8c"
+    },
+    {
+      "ord": 181,
+      "blockId": "bb538b5b25faa710e0d56b09a5400226",
+      "fp64": "a5fff39f7afb69f6",
+      "normHash": "cdfe6f6112d4d66e83c1fe1a786f77b5d02174557c541f6d96b5680bc34bdb8c",
+      "kind": "page",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "d85310a1cb502881465737eb27d07b5be225582c3f910a5a5ac67eff966a873c",
+      "next": "8aaf2927ce36a3c1cd9e96e2efe3a5afe9fa91027457f000c333910b00abea32"
+    },
+    {
+      "ord": 182,
+      "blockId": "132369bb7db1c48a7316abc2abec7c76",
+      "fp64": "7aeba57e5d22b36b",
+      "normHash": "8aaf2927ce36a3c1cd9e96e2efe3a5afe9fa91027457f000c333910b00abea32",
+      "kind": "verse",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "cdfe6f6112d4d66e83c1fe1a786f77b5d02174557c541f6d96b5680bc34bdb8c",
+      "next": "10055486a00de203d8a2e85455287e26b8b42c6fdcd42bb9ca9f5132e9bc89e7"
+    },
+    {
+      "ord": 183,
+      "blockId": "82c127efa84c7a840206368ab5d3db41",
+      "fp64": "e245647071721bde",
+      "normHash": "10055486a00de203d8a2e85455287e26b8b42c6fdcd42bb9ca9f5132e9bc89e7",
+      "kind": "verse",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "8aaf2927ce36a3c1cd9e96e2efe3a5afe9fa91027457f000c333910b00abea32",
+      "next": "ba26eb3ac2b5a1571dc847a4f4804598ea50995111b04eaf89f93197b7e2b0f4"
+    },
+    {
+      "ord": 184,
+      "blockId": "402a11bd2d7045054b24dc06d89902ce",
+      "fp64": "9795a0142775724c",
+      "normHash": "ba26eb3ac2b5a1571dc847a4f4804598ea50995111b04eaf89f93197b7e2b0f4",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "10055486a00de203d8a2e85455287e26b8b42c6fdcd42bb9ca9f5132e9bc89e7",
+      "next": "56203b8be34ff184c417b0f60ffa9a5fd18a952e9654d9271a325be74cd77aa5"
+    },
+    {
+      "ord": 185,
+      "blockId": "904fb72c176313890bf276dadb0b403e",
+      "fp64": "8aa72652113a6210",
+      "normHash": "56203b8be34ff184c417b0f60ffa9a5fd18a952e9654d9271a325be74cd77aa5",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "ba26eb3ac2b5a1571dc847a4f4804598ea50995111b04eaf89f93197b7e2b0f4",
+      "next": "0366cf6799f42039eeb0f31dfed44e4e6aa25c55c253e14383e8badd16d1b506"
+    },
+    {
+      "ord": 186,
+      "blockId": "7bafe0f15ccae763a4e0a4a036f4dc85",
+      "fp64": "a51a60b657f37854",
+      "normHash": "0366cf6799f42039eeb0f31dfed44e4e6aa25c55c253e14383e8badd16d1b506",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "56203b8be34ff184c417b0f60ffa9a5fd18a952e9654d9271a325be74cd77aa5",
+      "next": "ee0eb61c19a655bb470b5da33dd0fd94336a4b582ab83f0c300be60280ffbe39"
+    },
+    {
+      "ord": 187,
+      "blockId": "44ee09db1dc4beaa814396914923d92c",
+      "fp64": "7dfffb9f7fb1f8b7",
+      "normHash": "ee0eb61c19a655bb470b5da33dd0fd94336a4b582ab83f0c300be60280ffbe39",
+      "kind": "page",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "0366cf6799f42039eeb0f31dfed44e4e6aa25c55c253e14383e8badd16d1b506",
+      "next": "65d61df360e220d4bcfd667cd2fc040a8327a863726987bbfcc8b4188bb34d45"
+    },
+    {
+      "ord": 188,
+      "blockId": "f9054cf35e48ce22fda85fd795d700b5",
+      "fp64": "451a209746f3f074",
+      "normHash": "65d61df360e220d4bcfd667cd2fc040a8327a863726987bbfcc8b4188bb34d45",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "ee0eb61c19a655bb470b5da33dd0fd94336a4b582ab83f0c300be60280ffbe39",
+      "next": "8f523e51b4dc0645bf8c1dbf468caf074938d8fc9daf99d486082bc52895189e"
+    },
+    {
+      "ord": 189,
+      "blockId": "97c023e2a2fd17ef4e6034335d5e0a54",
+      "fp64": "9027e763ffe79e5e",
+      "normHash": "8f523e51b4dc0645bf8c1dbf468caf074938d8fc9daf99d486082bc52895189e",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "65d61df360e220d4bcfd667cd2fc040a8327a863726987bbfcc8b4188bb34d45",
+      "next": "7e6074330add288a8a67b36982e81b5b764917df49142b22977a87bd4b21ba2e"
+    },
+    {
+      "ord": 190,
+      "blockId": "6b761c4c5b484c5d249fc428fbefc8c6",
+      "fp64": "cd782002b6fc35dc",
+      "normHash": "7e6074330add288a8a67b36982e81b5b764917df49142b22977a87bd4b21ba2e",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "8f523e51b4dc0645bf8c1dbf468caf074938d8fc9daf99d486082bc52895189e",
+      "next": "e0646d22f8bbd02a26690a41d2d2349bda86776d666958802badddb1cc1251bc"
+    },
+    {
+      "ord": 191,
+      "blockId": "4cde7294ec95e9ba650de2b203d94ce5",
+      "fp64": "7a8d5c5abf25734d",
+      "normHash": "e0646d22f8bbd02a26690a41d2d2349bda86776d666958802badddb1cc1251bc",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "7e6074330add288a8a67b36982e81b5b764917df49142b22977a87bd4b21ba2e",
+      "next": "af1f7301cad2fdf1e470077942f262d2a16c3657beff87c8b1f625cb603db4df"
+    },
+    {
+      "ord": 192,
+      "blockId": "ef0970d9339d0929605de0f727ca148c",
+      "fp64": "d4edce17debbe4ac",
+      "normHash": "af1f7301cad2fdf1e470077942f262d2a16c3657beff87c8b1f625cb603db4df",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "e0646d22f8bbd02a26690a41d2d2349bda86776d666958802badddb1cc1251bc",
+      "next": "d3a810d60638da125b73ecb317cf6835b26933ef55d253a4f3aa7c4f50a650a9"
+    },
+    {
+      "ord": 193,
+      "blockId": "b5a7138461c6b60ac2c0f4b6fd4931b7",
+      "fp64": "af77dd50905f7a2d",
+      "normHash": "d3a810d60638da125b73ecb317cf6835b26933ef55d253a4f3aa7c4f50a650a9",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "af1f7301cad2fdf1e470077942f262d2a16c3657beff87c8b1f625cb603db4df",
+      "next": "0c79c93852ada16f9a85c1e611dc757b42d4d7afdc016c259fe83fab6977dcd5"
+    },
+    {
+      "ord": 194,
+      "blockId": "02a67e0b75f05e6cd2ac891267cb9479",
+      "fp64": "f956edfe7ffe8fff",
+      "normHash": "0c79c93852ada16f9a85c1e611dc757b42d4d7afdc016c259fe83fab6977dcd5",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "d3a810d60638da125b73ecb317cf6835b26933ef55d253a4f3aa7c4f50a650a9",
+      "next": "8f290dfefe9e8c24f3c2a7b2db437730d3aa53813ab3255322cd9a13f19e55ec"
+    },
+    {
+      "ord": 195,
+      "blockId": "28886605366ab9dde7b66a3e99635f8a",
+      "fp64": "ef75e2d29914a94f",
+      "normHash": "8f290dfefe9e8c24f3c2a7b2db437730d3aa53813ab3255322cd9a13f19e55ec",
+      "kind": "p",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "0c79c93852ada16f9a85c1e611dc757b42d4d7afdc016c259fe83fab6977dcd5",
+      "next": "32f80639a7ddde9931d68ef0d6d0509a865d1478b82ddcdfe68385be1513e393"
+    },
+    {
+      "ord": 196,
+      "blockId": "b6ea6700d55c3c262be95f18156efa23",
+      "fp64": "b7ffffdaffb36efe",
+      "normHash": "32f80639a7ddde9931d68ef0d6d0509a865d1478b82ddcdfe68385be1513e393",
+      "kind": "page",
+      "chapter": "فإما-أن-يكون-الشيخ-أميا-لا-يفرق-بين-الصحيح-من-سماعه-وبين-السقيم",
+      "prev": "8f290dfefe9e8c24f3c2a7b2db437730d3aa53813ab3255322cd9a13f19e55ec"
+    }
+  ]
+}

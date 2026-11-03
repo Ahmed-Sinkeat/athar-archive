@@ -7,6 +7,7 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import com.atharchive.ui.theme.AtharCorners
 import com.atharchive.ui.theme.AtharTextSize
 import androidx.activity.compose.BackHandler
+import androidx.compose.foundation.magnifier
 import kotlinx.coroutines.CancellationException
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.animateFloatAsState
@@ -146,11 +147,26 @@ fun ReaderScreen(
     modifier: Modifier = Modifier,
     initialSearchTarget: ReaderSearchTarget? = null,
     initialOrdinal: Int? = null,
-    onSearch: (suspend (String) -> List<InBookHit>)? = null,
+    onSearch: (suspend (String) -> InBookSearch)? = null,
+    /** Whole book on the phone: in-book search then covers all of it. Changes re-run the search. */
+    bookSaved: Boolean = true,
+    onDownloadForSearch: (() -> Unit)? = null,
+    /** ⋮ menu: the author's page (null when the catalog has none) and sharing the work. */
+    onOpenAuthor: (() -> Unit)? = null,
+    onShareBook: (() -> Unit)? = null,
+    /** An online in-book hit's url → its block and match range in the book (null block: not found). */
+    onLocateOnline: (suspend (String, String) -> Triple<Int?, Int, Int>)? = null,
+    /** Shared with the main search: shown while the book search box is empty. */
+    recentQueries: List<String> = emptyList(),
+    onRememberSearch: (String) -> Unit = {},
     onPageJump: (suspend (Int, Int?) -> Int?)? = null,
     onPlayAudio: (BookAudioUi) -> Unit = {},
-    playingAudioId: String? = null,
-    audioPlayIntent: Boolean = false,
+    /** Read only inside the audio bar, so a playing recording's ticks redraw the bar, not the page. */
+    playback: () -> com.atharchive.data.AudioPlaybackState = { com.atharchive.data.AudioPlaybackState() },
+    onToggleAudio: () -> Unit = {},
+    onSpeed: (Float) -> Unit = {},
+    onRepeat: (Boolean) -> Unit = {},
+    onSeekMs: (Long) -> Unit = {},
     onOpenEntity: (String) -> Unit = {},
     /** Switches to another edition of this work in place: it replaces this reader, never stacks on it. */
     onEdition: (String) -> Unit = onOpenEntity,
@@ -159,6 +175,7 @@ fun ReaderScreen(
     onRemoveHighlight: suspend (String) -> Unit = {},
     /** Opens the comment editor for a saved highlight (the الكناشة one). */
     onEditHighlightNote: ((String) -> Unit)? = null,
+    onOpenInKannashah: ((String) -> Unit)? = null,
     /** «نسخ مع التذييل»: the text with its source line (book, author, volume, page) and link. */
     onCopyCited: (suspend (ReaderSelection) -> Unit)? = null,
 ) {
@@ -171,8 +188,11 @@ fun ReaderScreen(
     val selection = remember { PageSelection() }
     var toast by remember { mutableStateOf<String?>(null) }
     var jumpedTo by remember { mutableIntStateOf(-1) }
+    // Where the last jump (contents, search, a link) left from: «رجوع» takes the reader back there.
+    var returnTo by remember { mutableStateOf<Pair<Int, Int>?>(null) }
     var searchTarget by remember(initialSearchTarget) { mutableStateOf(initialSearchTarget) }
     var toolbarHeight by remember { mutableIntStateOf(0) }
+    var meaning by remember { mutableStateOf<Pair<String, androidx.compose.ui.geometry.Rect>?>(null) }
 
     var shownFootnotes by remember { mutableStateOf<Pair<List<String>, androidx.compose.ui.geometry.Rect>?>(null) }
     val uriHandler = LocalUriHandler.current
@@ -182,6 +202,7 @@ fun ReaderScreen(
     val initialDisplayIndex = if (window != null) initialOrdinal ?: state.readingPositionIndex
         else state.blocks.indexOfFirst { it.ordinal == state.readingPositionIndex }.takeIf { it >= 0 } ?: state.readingPositionIndex
     val listState = rememberLazyListState(initialFirstVisibleItemIndex = initialDisplayIndex + 1)
+    VolumeKeyPaging(listState, settings.volumeKeys)
     val scope = rememberCoroutineScopeCompat()
     var restored by remember { mutableStateOf(window == null) }
     var positionReady by remember { mutableStateOf(false) }
@@ -285,14 +306,20 @@ fun ReaderScreen(
     }
     var hits by remember { mutableStateOf(emptyList<InBookHit>()) }
     var searchStatus by remember { mutableStateOf<String?>(null) }
-    LaunchedEffect(query) {
+    // Set while part of the book is not on the phone: the search covered only the saved part.
+    var partialSearch by remember { mutableStateOf<Int?>(null) }
+    var downloadAsked by remember { mutableStateOf(false) }
+    LaunchedEffect(query, bookSaved) {
         hits = emptyList()
         searchStatus = null
+        partialSearch = null
         if (query.trim().length >= 2) {
             kotlinx.coroutines.delay(150)
-            searchStatus = "جارٍ البحث في النص الكامل؛ قد يلزم تحميله…"
+            searchStatus = "جارٍ البحث…"
             try {
-                hits = onSearch?.invoke(query) ?: findHits(state, query)
+                val result = onSearch?.invoke(query) ?: InBookSearch(findHits(state, query))
+                hits = result.hits
+                partialSearch = result.savedPercent.takeUnless { result.complete }
                 searchStatus = if (hits.size == 200) "أول ٢٠٠ نتيجة؛ حدّد البحث لنتائج أدق" else null
             } catch (cancelled: CancellationException) {
                 throw cancelled
@@ -318,11 +345,12 @@ fun ReaderScreen(
         searchTarget = null
     }
 
-    fun jumpTo(index: Int) {
+    fun jumpTo(index: Int, target: ReaderSearchTarget? = hits.firstOrNull { it.blockIndex == index }?.let {
+        ReaderSearchTarget(index, it.sourceMatchStart, it.sourceMatchEnd)
+    }) {
         jumpedTo = index
-        searchTarget = hits.firstOrNull { it.blockIndex == index }?.let {
-            ReaderSearchTarget(index, it.sourceMatchStart, it.sourceMatchEnd)
-        }
+        searchTarget = target
+        returnTo = listState.firstVisibleItemIndex to listState.firstVisibleItemScrollOffset
         scope.launch {
             listState.scrollToItem(index.coerceIn(0, (state.blockCount - 1).coerceAtLeast(0)) + 1)
         }
@@ -431,11 +459,13 @@ fun ReaderScreen(
             modifier = Modifier
                 .padding(start = panelWidth)
                 .onGloballyPositioned { viewportTop = it.positionInRoot().y; selection.page = it }
+                // The platform loupe over the end being dragged: the finger hides the letters it moves across.
+                .magnifier(sourceCenter = { selection.loupeSource() }, zoom = 1.4f)
                 .pageSelectionGestures(
                     selection = selection,
                     longPressMillis = SelectionLongPressMillis,
                     touchSlop = { touchSlop },
-                    handleRadius = with(density) { 24.dp.toPx() },
+                    handleRadius = with(density) { 32.dp.toPx() },
                     handleDrop = with(density) { HandleDrop.toPx() },
                     haptics = haptics,
                     onTap = { pageTap.value(it) },
@@ -453,7 +483,7 @@ fun ReaderScreen(
                     listState.firstVisibleItemIndex
                     listState.firstVisibleItemScrollOffset
                     if (selection.active) drawSelectionHandles(selection, colors.accent,
-                        drop = HandleDrop.toPx(), radius = 6.dp.toPx(), stem = 2.dp.toPx())
+                        drop = HandleDrop.toPx(), radius = 8.dp.toPx(), stem = 2.dp.toPx())
                 }
                 .nestedScroll(bars.connection)
                 .atharBackdrop(haze)
@@ -575,9 +605,13 @@ fun ReaderScreen(
                         if (chosen == null) { toast = "تعذّر قراءة النص المحدد"; return@launch }
                         action(chosen)
                         selection.clear()
-                        toast = done
+                        toast = done.ifEmpty { null }
                     } catch (cancelled: CancellationException) { throw cancelled }
-                    catch (_: Exception) { toast = "تعذّر ذلك؛ التحديد ما زال متاحًا" }
+                    catch (e: Exception) {
+                        android.util.Log.w("AtharReader", "selection action failed", e)
+                        // The save's own reason (text still loading, text changed) says what to do next.
+                        toast = (e as? IllegalArgumentException)?.message ?: "تعذّر ذلك؛ التحديد ما زال متاحًا"
+                    }
                 }
             }
             SelectionToolbar(
@@ -596,7 +630,22 @@ fun ReaderScreen(
                 onCopyCited = onCopyCited?.let { copy -> { act("نُسخ مع التذييل") { copy(it) } } },
                 onShare = { act("مشاركة النص") { onShareSelection(it) } },
                 onHighlight = { act("حُفظ في الكناشة") { onSaveSelection(it) } },
+                onAddDhikr = LocalAddToAdhkar.current?.let { add ->
+                    { act("") { add(it.quotedText, listOf(state.bookTitle, state.author).filter(String::isNotBlank).joinToString(" — ")) } }
+                },
+                onMeaning = LocalDictionary.current?.let { selection.singleWord()?.let { word -> {
+                    // Where the word sits, taken now: the selection is cleared before the callout opens.
+                    val (top, bottom) = selection.bounds() ?: (0f to 0f)
+                    val x = listOfNotNull(selection.handlePoint(true)?.x, selection.handlePoint(false)?.x).average().toFloat()
+                    val spot = androidx.compose.ui.geometry.Rect(x - 1f, top, x + 1f, bottom)
+                    selection.clear()
+                    meaning = word to spot
+                } } },
             )
+        }
+
+        meaning?.let { (word, spot) ->
+            MeaningCallout(word, { bounds -> spot.translate(bounds.left.toFloat(), bounds.top.toFloat()) }, colors) { meaning = null }
         }
 
         tappedHighlight?.let { (id, tapY) ->
@@ -616,20 +665,27 @@ fun ReaderScreen(
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 if (onEditHighlightNote != null) {
-                    SelectionAction(AtharIcons.Pen, "تعليق", colors, false, "reader_hl_note") {
+                    SelectionAction(AtharIcons.Pen, "تعليق", colors, false, "reader_hl_note", onClick = {
                         tappedHighlight = null
                         onEditHighlightNote(id)
-                    }
+                    })
                     ToolbarSeparator(colors)
                 }
-                SelectionAction(AtharIcons.Close, "إزالة من الكناشة", colors, true, "reader_hl_remove") {
+                if (onOpenInKannashah != null) {
+                    SelectionAction(AtharIcons.Kannashah, "في الكناشة", colors, false, "reader_hl_kannashah", onClick = {
+                        tappedHighlight = null
+                        onOpenInKannashah(id)
+                    })
+                    ToolbarSeparator(colors)
+                }
+                SelectionAction(AtharIcons.Close, "إزالة من الكناشة", colors, true, "reader_hl_remove", onClick = {
                     tappedHighlight = null
                     scope.launch {
                         toast = try { onRemoveHighlight(id); "أُزيل التظليل" }
                         catch (cancelled: CancellationException) { throw cancelled }
                         catch (_: Exception) { "تعذّرت إزالة التظليل" }
                     }
-                }
+                })
             }
         }
 
@@ -645,6 +701,9 @@ fun ReaderScreen(
                 query = query,
                 hits = hits,
                 searchStatus = searchStatus,
+                partialSearch = partialSearch,
+                downloadAsked = downloadAsked,
+                onDownloadForSearch = onDownloadForSearch?.let { download -> { downloadAsked = true; download() } },
                 onPageJump = { page, volume ->
                     scope.launch {
                         try {
@@ -657,7 +716,19 @@ fun ReaderScreen(
                 onQueryChange = { query = it },
                 // The panel stays open: a reader comparing places should not have to
                 // reopen it after every jump.
-                onJump = ::jumpTo,
+                onJump = { jumpTo(it) },
+                recentQueries = recentQueries,
+                onHit = { hit ->
+                    onRememberSearch(query)
+                    val url = hit.url
+                    if (url == null) jumpTo(hit.blockIndex) else scope.launch {
+                        toast = "جارٍ فتح الموضع…"
+                        val (ordinal, start, end) = onLocateOnline?.invoke(url, query) ?: Triple(null, 0, 0)
+                        toast = null
+                        if (ordinal == null) toast = "تعذّر فتح الموضع"
+                        else jumpTo(ordinal, if (end > start) ReaderSearchTarget(ordinal, start, end) else null)
+                    }
+                },
                 onDismiss = { panelOpen = false },
                 initialTab = panelTab,
             )
@@ -680,11 +751,12 @@ fun ReaderScreen(
                     else { panelTab = ReaderPanelTab.Search; panelOpen = true }
                 },
                 onMore = { introOpen = true },
+                onOpenAuthor = onOpenAuthor,
+                onDownload = onDownloadForSearch.takeUnless { bookSaved },
+                onShare = onShareBook,
                 hasIntro = state.card.isNotEmpty(),
                 editions = state.editions,
                 onEdition = onEdition,
-                sourceUrl = state.sourceUrl,
-                onOpenSite = { openLink(state.sourceUrl) },
                 // ponytail: loads the whole text; fine for articles and مسائل, never offered in books.
                 onCopyAll = if (state.isBook) null else ({
                     scope.launch {
@@ -726,16 +798,7 @@ fun ReaderScreen(
                 (if (at >= 0) "${com.atharchive.ui.components.arabicDigits(at + 1)} / ${com.atharchive.ui.components.arabicDigits(kitabs.size)} · ${kitabs[at].title}" else percent) to
                     listOfNotNull(bab?.title, percent.takeIf { at >= 0 }).joinToString(" · ")
             }
-            if (audioOpen && state.audio.isNotEmpty()) {
-                ReaderAudioStrip(
-                    audio = state.audio,
-                    colors = colors,
-                    onPlay = onPlayAudio,
-                    onClose = { audioOpen = false },
-                    playingId = playingAudioId,
-                    playIntent = audioPlayIntent,
-                )
-            }
+            if (audioOpen) ReaderAudioBar(state.audio, playback, colors, onPlayAudio, onToggleAudio, onSpeed, onRepeat, onSeekMs)
             Box(
                 Modifier.onSizeChanged { bottomBarHeight = with(density) { it.height.toDp() } }
                     .graphicsLayer { alpha = 1f - hidden },
@@ -750,7 +813,11 @@ fun ReaderScreen(
                     if (panelOpen && panelTab == ReaderPanelTab.Contents) panelOpen = false
                     else { panelTab = ReaderPanelTab.Contents; panelOpen = true }
                 },
-                onAudio = { audioOpen = !audioOpen },
+                // As the poem reader: the first tap starts the first recording, later taps show/hide the bar.
+                onAudio = {
+                    if (state.audio.none { it.id == playback().id }) { state.audio.firstOrNull()?.let(onPlayAudio); audioOpen = true }
+                    else audioOpen = !audioOpen
+                },
                 settingsOpen = settingsOpen,
                 onSettings = { settingsOpen = true },
                 settingsMenu = {
@@ -771,6 +838,12 @@ fun ReaderScreen(
         }
       }
 
+        returnTo?.let { (item, offset) ->
+            ReturnChip(colors, Modifier.align(Alignment.BottomStart).padding(start = 12.dp, bottom = bottomBarHeight * (1f - hidden) + 12.dp)) {
+                returnTo = null
+                scope.launch { listState.scrollToItem(item, offset) }
+            }
+        }
         toast?.let { message ->
             Box(
                 modifier = Modifier
@@ -804,10 +877,12 @@ private fun ReaderTopBar(
     onBack: () -> Unit,
     onSearch: () -> Unit,
     onMore: () -> Unit,
-    sourceUrl: String = "",
-    onOpenSite: () -> Unit = {},
     /** «نسخ الكل»; null in books. */
     onCopyAll: (() -> Unit)? = null,
+    onOpenAuthor: (() -> Unit)? = null,
+    /** null once the whole work is on the phone. */
+    onDownload: (() -> Unit)? = null,
+    onShare: (() -> Unit)? = null,
 ) {
     Row(
         modifier = Modifier
@@ -864,12 +939,9 @@ private fun ReaderTopBar(
                 )
                 if (onCopyAll != null) AtharMenuItem("نسخ الكل", icon = AtharIcons.Copy, onClick = { menu = false; onCopyAll() })
                 if (editions.isNotEmpty()) AtharMenuItem("الطبعات", onClick = { menu = false; editionsOpen = true })
-                if (sourceUrl.isNotBlank()) AtharMenuItem(
-                    label = "فتح في الموقع",
-                    icon = AtharIcons.Share,
-                    onClick = { menu = false; onOpenSite() },
-                    modifier = Modifier.testTag("reader_open_site"),
-                )
+                if (onOpenAuthor != null) AtharMenuItem("صفحة المؤلف ومؤلفاته", icon = AtharIcons.People, onClick = { menu = false; onOpenAuthor() })
+                if (onDownload != null) AtharMenuItem("تحميل الكتاب كاملًا", icon = AtharIcons.Download, onClick = { menu = false; onDownload() })
+                if (onShare != null) AtharMenuItem("مشاركة الكتاب", icon = AtharIcons.Share, onClick = { menu = false; onShare() })
             }
             AtharMenu(expanded = editionsOpen, onDismiss = { editionsOpen = false }, colors = com.atharchive.ui.components.AtharMenuColors(colors.page, colors.text, colors.secondary, colors.accent)) {
                 editions.forEach { edition ->
@@ -1084,7 +1156,7 @@ internal fun rememberCollapsingBars(): CollapsingBars {
 
 /**
  * The reading progress line; hold and slide to pick a place, release jumps. The bubble shows
- * [label]'s two lines for the item under the thumb. Taller than the 3dp line so a thumb can catch it.
+ * [label]'s two lines for the item under the thumb. Taller than the 4dp line so a thumb can catch it.
  * [progress] is read only while drawing, so scrolling never recomposes the caller.
  */
 @Composable
@@ -1103,7 +1175,7 @@ internal fun ReaderProgressStrip(
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .height(18.dp)
+            .height(30.dp)
             .pointerInput(count, rtl) {
                 fun at(x: Float) = (if (rtl) 1f - x / size.width else x / size.width).coerceIn(0f, 1f)
                 detectHorizontalDragGestures(
@@ -1117,13 +1189,17 @@ internal fun ReaderProgressStrip(
                 setProgress(jumpLabel) { onJump(scrubIndex(it.coerceIn(0f, 1f))); true }
             }
             .drawBehind {
-                val line = (if (scrub != null) 6.dp else 3.dp).toPx()
-                val top = size.height - line
+                val line = (if (scrub != null) 6.dp else 4.dp).toPx()
+                val thumb = (if (scrub != null) 9.dp else 6.dp).toPx()
+                val top = size.height - thumb - line / 2
                 drawRect(colors.divider.copy(alpha = 0.5f), topLeft = androidx.compose.ui.geometry.Offset(0f, top), size = androidx.compose.ui.geometry.Size(size.width, line))
                 val width = size.width * (scrub ?: progress())
                 val left = if (rtl) size.width - width else 0f
                 drawRect(colors.accent, topLeft = androidx.compose.ui.geometry.Offset(left, top),
                     size = androidx.compose.ui.geometry.Size(width, line))
+                // A round thumb at the reading point: shows the bar can be grabbed, and where.
+                val x = (if (rtl) size.width - width else width).coerceIn(thumb, size.width - thumb)
+                drawCircle(colors.accent, thumb, androidx.compose.ui.geometry.Offset(x, top + line / 2))
             }
             .testTag("reader_progress"),
     ) {
@@ -1132,7 +1208,7 @@ internal fun ReaderProgressStrip(
             Column(
                 Modifier.align(Alignment.BottomCenter)
                     .wrapContentHeight(Alignment.Bottom, unbounded = true)
-                    .padding(start = 24.dp, end = 24.dp, bottom = 26.dp)
+                    .padding(start = 24.dp, end = 24.dp, bottom = 38.dp)
                     .atharChrome(colors.page, com.atharchive.ui.theme.AtharCorners.Card, edge = colors.divider)
                     .padding(horizontal = 14.dp, vertical = 8.dp)
                     .testTag("reader_scrub_bubble"),
@@ -1148,7 +1224,10 @@ internal fun ReaderProgressStrip(
     }
 }
 
-/** Copy, share, highlight. Nothing else — this toolbar is not a menu. */
+/** «إلى الأذكار» from a selection: (text, where it is from). Provided by the app shell; null hides it. */
+val LocalAddToAdhkar = androidx.compose.runtime.staticCompositionLocalOf<((String, String) -> Unit)?> { null }
+
+/** Copy, share, highlight, and a dhikr of one's own. Nothing else — this toolbar is not a menu. */
 @Composable
 internal fun SelectionToolbar(
     colors: ReaderColors,
@@ -1158,6 +1237,9 @@ internal fun SelectionToolbar(
     onCopyCited: (() -> Unit)? = null,
     onShare: () -> Unit,
     onHighlight: () -> Unit,
+    onAddDhikr: (() -> Unit)? = null,
+    /** «معنى»; non-null only while one word is selected. */
+    onMeaning: (() -> Unit)? = null,
 ) {
     Row(
         modifier = modifier
@@ -1166,15 +1248,25 @@ internal fun SelectionToolbar(
             .testTag("reader_selection_toolbar"),
         verticalAlignment = Alignment.CenterVertically,
     ) {
+        if (onMeaning != null) {
+            SelectionAction(AtharIcons.Books, "معنى", colors, true, "reader_sel_meaning", onMeaning)
+            ToolbarSeparator(colors)
+        }
         SelectionAction(AtharIcons.Copy, "نسخ", colors, false, "reader_sel_copy", onCopy)
         ToolbarSeparator(colors)
-        if (onCopyCited != null) {
+        // One word has nothing to cite, and the bar has no room for six actions.
+        if (onCopyCited != null && onMeaning == null) {
             SelectionAction(AtharIcons.Copy, "نسخ مع التذييل", colors, false, "reader_sel_copy_cited", onCopyCited)
             ToolbarSeparator(colors)
         }
         SelectionAction(AtharIcons.Share, "مشاركة", colors, false, "reader_sel_share", onShare)
         ToolbarSeparator(colors)
         SelectionAction(AtharIcons.Kannashah, "إلى الكناشة", colors, true, "reader_sel_highlight", onHighlight)
+        if (onAddDhikr != null) {
+            ToolbarSeparator(colors)
+            // Icon only: five labels overflow a 360dp phone.
+            SelectionAction(AtharIcons.Adhkar, "", colors, false, "reader_sel_dhikr", onAddDhikr, "إلى الأذكار")
+        }
     }
 }
 
@@ -1196,6 +1288,7 @@ private fun SelectionAction(
     emphasised: Boolean,
     tag: String,
     onClick: () -> Unit,
+    description: String? = null,
 ) {
     val tint = if (emphasised) colors.accent else colors.secondary
     Row(
@@ -1208,11 +1301,11 @@ private fun SelectionAction(
     ) {
         Icon(
             imageVector = icon,
-            contentDescription = null,
+            contentDescription = description,
             tint = tint,
-            modifier = Modifier.size(15.dp),
+            modifier = Modifier.size(if (label.isEmpty()) 18.dp else 15.dp),
         )
-        Text(
+        if (label.isNotEmpty()) Text(
             text = label,
             modifier = Modifier.padding(start = 6.dp),
             color = if (emphasised) colors.accent else colors.text,
@@ -1253,93 +1346,33 @@ private fun findHits(state: ReaderUiState, query: String): List<InBookHit> {
     }
 }
 
-/** Only present when the book actually has recordings; opens above the bottom bar. */
 @Composable
-private fun ReaderAudioStrip(
+private fun ReaderAudioBar(
     audio: List<BookAudioUi>,
+    playback: () -> com.atharchive.data.AudioPlaybackState,
     colors: ReaderColors,
     onPlay: (BookAudioUi) -> Unit,
-    onClose: () -> Unit,
-    playingId: String? = null,
-    playIntent: Boolean = false,
+    onToggle: () -> Unit,
+    onSpeed: (Float) -> Unit,
+    onRepeat: (Boolean) -> Unit,
+    onSeekMs: (Long) -> Unit,
 ) {
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .atharChrome(colors.page)
-            .testTag("reader_audio_strip"),
-    ) {
-        HorizontalDivider(thickness = 0.7.dp, color = colors.divider)
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(start = 16.dp, end = 6.dp, top = 8.dp),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            Text(
-                text = "صوتيات الكتاب",
-                modifier = Modifier.weight(1f),
-                color = colors.secondary,
-                style = MaterialTheme.typography.labelSmall,
-            )
-            Box(
-                modifier = Modifier
-                    .size(48.dp)
-                    .clip(CircleShape)
-                    .clickable(role = Role.Button, onClick = onClose)
-                    .testTag("reader_audio_close"),
-                contentAlignment = Alignment.Center,
-            ) {
-                Icon(
-                    imageVector = AtharIcons.Close,
-                    contentDescription = "إغلاق",
-                    tint = colors.secondary,
-                    modifier = Modifier.size(24.dp),
-                )
-            }
-        }
-        audio.forEach { track ->
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clickable(role = Role.Button) { onPlay(track) }
-                    .padding(horizontal = 16.dp, vertical = 9.dp)
-                    .testTag("reader_audio_${track.id}"),
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
-                Box(
-                    modifier = Modifier
-                        .size(48.dp)
-                        .clip(CircleShape)
-                        .background(colors.accentFill),
-                    contentAlignment = Alignment.Center,
-                ) {
-                    Icon(
-                        imageVector = if (track.id == playingId && playIntent) AtharIcons.Pause else AtharIcons.Play,
-                        contentDescription = null,
-                        tint = androidx.compose.ui.graphics.Color.White,
-                        modifier = Modifier.size(12.dp),
-                    )
-                }
-                Text(
-                    text = track.title,
-                    modifier = Modifier
-                        .weight(1f)
-                        .padding(horizontal = 10.dp),
-                    color = colors.text,
-                    fontFamily = AtharEditorialFontFamily,
-                    fontSize = AtharTextSize.Body,
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis,
-                )
-                Text(
-                    text = track.durationLabel,
-                    color = colors.secondary,
-                    style = MaterialTheme.typography.labelSmall,
-                )
-            }
-        }
-    }
+    val now = playback()
+    val track = audio.firstOrNull { it.id == now.id } ?: return
+    com.atharchive.feature.poemreader.PoemAudioBar(
+        track = track,
+        recordings = audio,
+        playing = now.playWhenReady,
+        position = (now.positionMs / 1000).toInt(),
+        speed = now.speed,
+        repeat = now.repeat,
+        colors = colors,
+        onToggle = onToggle,
+        onSelect = onPlay,
+        onSpeed = onSpeed,
+        onRepeat = { onRepeat(!now.repeat) },
+        onSeek = { onSeekMs((it * track.durationSeconds * 1000).toLong()) },
+    )
 }
 
 /**
@@ -1373,3 +1406,39 @@ private fun CardField.toIntroBlock(id: String): ReaderBlock = when {
     else -> ReaderBlock.Paragraph(id, v, listMarker = if (k == "li") "•" else null)
 }
 
+
+/** MainActivity hands the volume keys here while a reader with «أزرار الصوت» on is open. */
+object VolumePaging { var turn: ((forward: Boolean) -> Unit)? = null }
+
+/** Volume down a page forward, up a page back; instant, so an e-ink panel redraws once. */
+@Composable
+internal fun VolumeKeyPaging(listState: androidx.compose.foundation.lazy.LazyListState, enabled: Boolean) {
+    val scope = androidx.compose.runtime.rememberCoroutineScope()
+    androidx.compose.runtime.DisposableEffect(enabled, listState) {
+        val turn: (Boolean) -> Unit = { forward ->
+            scope.launch {
+                // A line short of a full screen, so the last line read stays in view.
+                val page = listState.layoutInfo.viewportSize.height * 0.9f
+                listState.scrollBy(if (forward) page else -page)
+            }
+        }
+        if (enabled) VolumePaging.turn = turn
+        onDispose { if (VolumePaging.turn === turn) VolumePaging.turn = null }
+    }
+}
+
+/** «رجوع»: back to where the last jump left from, in every reader. */
+@Composable
+internal fun ReturnChip(colors: ReaderColors, modifier: Modifier, onClick: () -> Unit) {
+    Box(
+        modifier = modifier
+            .clip(AtharCorners.Card)
+            .background(colors.page)
+            .border(1.dp, colors.divider, AtharCorners.Card)
+            .clickable(onClickLabel = "العودة إلى الموضع السابق", onClick = onClick)
+            .padding(horizontal = 14.dp, vertical = 8.dp)
+            .testTag("reader_return"),
+    ) {
+        Text("↩ رجوع", color = colors.accent, style = MaterialTheme.typography.bodySmall)
+    }
+}

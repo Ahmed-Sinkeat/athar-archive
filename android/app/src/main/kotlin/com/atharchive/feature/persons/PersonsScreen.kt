@@ -29,34 +29,65 @@ import com.atharchive.ui.theme.AtharTheme
 
 private val Gutter = 20.dp
 
-private fun century(died: Int?) = died?.let { "القرن ${arabicDigits((it - 1) / 100 + 1)}" }
+private fun century(died: Int?) = died?.let { com.atharchive.data.centuryOf(it) }
+
+/** «له»: what kind of work a person has here. */
+private val WorkKinds = listOf("book" to "كتب", "poem" to "قصائد", "article" to "مقالات", "question" to "مسائل")
 
 @Composable
-fun PersonsScreen(persons: List<CatalogPerson>, onPerson: (CatalogPerson) -> Unit, onSettings: () -> Unit, onBack: () -> Unit) {
+fun PersonsScreen(persons: List<CatalogPerson>, works: Map<String, ContentEntity>, onPerson: (CatalogPerson) -> Unit, onSettings: () -> Unit, onBack: () -> Unit) {
     var query by rememberSaveable { mutableStateOf("") }
-    var selectedCentury by rememberSaveable { mutableStateOf(emptySet<String>()) }
-    val centuries = remember(persons) { persons.mapNotNull { it.died }.sorted().mapNotNull(::century).distinct() }
-    val visible = remember(persons, query, selectedCentury) {
+    var centuryStored by rememberPersisted("persons.centuries", "")
+    var kindStored by rememberPersisted("persons.kinds", "")
+    var section by rememberPersisted("persons.section", SectionAll)
+    var byName by rememberPersisted("persons.byName", "")
+    var descendingStored by rememberPersisted("persons.desc", "")
+    val selectedCentury = centuryStored.asChoiceSet()
+    val kind = kindStored.asChoiceSet()
+    val descending = descendingStored.isNotEmpty()
+    // Per person: the collections and topics of their works here, once per catalog change.
+    val facts = remember(persons, works) {
+        persons.associate { p ->
+            val own = p.works.mapNotNull(works::get)
+            p.id to (own.mapTo(hashSetOf()) { it.coll } to own.flatMap { it.topicsCsv.split(',') }.map { com.atharchive.data.topicName(it) })
+        }
+    }
+    val visible = remember(persons, query, selectedCentury, kind, section, byName, descending, facts) {
         val term = ArNormalize.normalize(query.trim())
         persons.filter {
+            val (colls, topics) = facts.getValue(it.id)
             (term.isBlank() || normKey(it.name).contains(term)) &&
-                (selectedCentury.isEmpty() || century(it.died) in selectedCentury)
-        }.sortedBy { normKey(it.name) }
+                (selectedCentury.isEmpty() || century(it.died) in selectedCentury) &&
+                (kind.isEmpty() || WorkKinds.any { (coll, label) -> label in kind && coll in colls }) &&
+                inSection(section, topics)
+        }.sortedWith(
+            if (byName.isNotEmpty()) compareBy<CatalogPerson> { normKey(it.name) }.directed(descending)
+            else compareBy<CatalogPerson, Int?>(nullsLast(if (descending) reverseOrder() else naturalOrder())) { it.died }.thenBy { normKey(it.name) },
+        )
     }
     val listState = rememberLazyListState()
     Box(Modifier.fillMaxSize().background(AtharTheme.colors.canvas).clipToBounds()) {
         val header = rememberAtharCollapsingHeader()
-        header.ShowOnChange(listState, query, selectedCentury)
+        header.ShowOnChange(listState, query, selectedCentury, kind, section, byName)
         AtharFloatingHeader(header) {
             AtharTopBar(title = "الأعلام", onSettings = onSettings, showAppIcon = true, onBack = onBack)
-            val filterGroups = emptyList<com.atharchive.ui.components.AtharChipGroup>()
-            val filterFacets = listOf(AtharFacet("القرن", centuries, selectedCentury, { selectedCentury = it }))
+            val filterGroups = listOf(
+                AtharChipGroup("الترتيب", listOf("الوفاة", "الاسم"), if (byName.isEmpty()) "الوفاة" else "الاسم") { byName = if (it == "الاسم") "1" else "" },
+                AtharDirectionGroup(descending) { descendingStored = if (it) "1" else "" },
+            )
+            val filterFacets = listOf(
+                centuryFacet(selectedCentury) { centuryStored = it.asStoredChoices() },
+                AtharFacet("له", WorkKinds.map { it.second }, kind, { kindStored = it.asStoredChoices() }),
+            )
             AtharSearchField(
                 query = query,
                 onQueryChange = { query = it },
                 placeholder = "ابحث في ${arabicDigits(persons.size)} علمًا…",
                 tagPrefix = "persons",
-                trailing = { AtharFilterIcon(filterGroups, filterFacets, "persons_filter") },
+                trailing = {
+                        com.atharchive.ui.components.AtharSectionButton(section, { section = it }, remember(persons, facts) { com.atharchive.ui.components.sectionCounts(persons) { facts.getValue(it.id).second } }, "persons_sections")
+                        AtharFilterIcon(filterGroups, filterFacets, "persons_filter")
+                    },
                 modifier = Modifier.padding(start = Gutter, end = Gutter, top = 4.dp),
             )
             AtharActiveFilters(filterGroups, filterFacets, "persons_filter", Modifier.padding(horizontal = Gutter))
@@ -71,7 +102,7 @@ fun PersonsScreen(persons: List<CatalogPerson>, onPerson: (CatalogPerson) -> Uni
                 val (title, body) = when {
                     persons.isEmpty() -> "لا أعلام بعد" to "تظهر الأعلام بعد تحديث الفهرس من الإنترنت."
                     query.isNotBlank() -> "لا توجد نتائج" to "جرّب جزءًا من الاسم."
-                    else -> "لا أعلام في هذه القرون" to "أزل بعض القرون لعرض الجميع."
+                    else -> "لا أعلام بهذه التصفية" to "امسح بعض المرشحات لعرض الجميع."
                 }
                 AtharEmptyState(title, body, "persons_empty_state", Gutter)
             }

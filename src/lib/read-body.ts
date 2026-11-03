@@ -53,5 +53,6 @@ export async function readBody(entry: { filePath?: string; body?: string }): Pro
   if (entry.body !== undefined && entry.body !== "") return normalizePageMarkers(entry.body);
   if (!entry.filePath) return "";
   const raw = await readFile(resolve(entry.filePath), "utf-8");
-  return normalizePageMarkers(matter(raw).content);
+  // Options object on purpose: matter(raw) alone caches every whole file in matter.cache forever (OOM over book-lg).
+  return normalizePageMarkers(matter(raw, {}).content);
 }

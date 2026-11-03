@@ -16,10 +16,13 @@ import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonElement
+import kotlinx.serialization.json.JsonPrimitive
+import kotlinx.serialization.json.jsonPrimitive
 import kotlinx.serialization.json.decodeFromJsonElement
 import kotlinx.serialization.json.encodeToJsonElement
 
-data class UserDataImportReport(val imported: Int, val skipped: Int)
+/** [extras]: the app's own blobs (key → JSON text) found in the file, applied by the caller after the import commits. */
+data class UserDataImportReport(val imported: Int, val skipped: Int, val extras: Map<String, String> = emptyMap())
 
 internal interface UserDataArchiveAccess {
     suspend fun <T> transaction(block: suspend () -> T): T = block()
@@ -42,14 +45,15 @@ class UserDataArchive internal constructor(
 ) {
     constructor(database: AtharUserDatabase) : this(RoomUserDataArchiveAccess(database))
 
-    suspend fun exportTo(output: OutputStream) = access.transaction {
+    /** [extras]: app-side data kept outside this database (key → JSON text), carried as `app.<key>` records. */
+    suspend fun exportTo(output: OutputStream, extras: Map<String, String> = emptyMap()) = access.transaction {
         val writer = output.writer(StandardCharsets.UTF_8).buffered()
         val annotations = access.annotations()
         val positions = access.readingPositions()
         val entries = access.libraryEntries()
         val collections = access.collections()
         val items = access.collectionItems()
-        val recordCount = annotations.size.toLong() + positions.size + entries.size + collections.size + items.size
+        val recordCount = annotations.size.toLong() + positions.size + entries.size + collections.size + items.size + extras.size
         require(recordCount <= MAX_ARCHIVE_RECORDS) { "archive has too many records" }
         writer.appendLine(json.encodeToString(ArchiveHeader(ARCHIVE_FORMAT, ARCHIVE_SCHEMA, recordCount.toInt())))
         annotations.forEach { writer.writeRecord(RECORD_ANNOTATION, json.encodeToJsonElement(it)) }
@@ -57,6 +61,7 @@ class UserDataArchive internal constructor(
         entries.forEach { writer.writeRecord(RECORD_LIBRARY_ENTRY, json.encodeToJsonElement(it)) }
         collections.forEach { writer.writeRecord(RECORD_COLLECTION, json.encodeToJsonElement(it)) }
         items.forEach { writer.writeRecord(RECORD_COLLECTION_ITEM, json.encodeToJsonElement(it)) }
+        extras.forEach { (key, value) -> writer.writeRecord(RECORD_APP_PREFIX + key, JsonPrimitive(value)) }
         writer.flush()
     }
 
@@ -92,6 +97,7 @@ class UserDataArchive internal constructor(
 
         var imported = 0
         var skipped = 0
+        val extras = mutableMapOf<String, String>()
         while (lines.hasNext()) {
             val line = lines.next()
             if (line.isBlank()) continue
@@ -124,12 +130,18 @@ class UserDataArchive internal constructor(
                 RECORD_COLLECTION_ITEM -> access.merge(json.decodeFromJsonElement<CollectionItemEntity>(record.value).also {
                     require(it.collectionId.isNotBlank() && it.entityId.isNotBlank() && it.addedAt >= 0) { "invalid membership" }
                 })
-                else -> error("unsupported archive record ${record.type}")
+                else -> {
+                    require(record.type.startsWith(RECORD_APP_PREFIX) && record.type.length > RECORD_APP_PREFIX.length) {
+                        "unsupported archive record ${record.type}"
+                    }
+                    extras[record.type.removePrefix(RECORD_APP_PREFIX)] = record.value.jsonPrimitive.content
+                    true
+                }
             }
             if (merged) imported++ else skipped++
         }
         require(imported + skipped == header.recordCount) { "incomplete archive: records are missing" }
-        UserDataImportReport(imported, skipped)
+        UserDataImportReport(imported, skipped, extras)
     }
 
     private fun java.io.BufferedWriter.writeRecord(type: String, value: JsonElement) {
@@ -198,6 +210,7 @@ private val ArchiveJson = Json {
 private const val ARCHIVE_FORMAT = "athar-user-data"
 private const val ARCHIVE_SCHEMA = 2
 private const val RECORD_ANNOTATION = "annotation"
+private const val RECORD_APP_PREFIX = "app."
 private const val RECORD_READING_POSITION = "readingPosition"
 private const val RECORD_LIBRARY_ENTRY = "libraryEntry"
 private const val RECORD_COLLECTION = "collection"

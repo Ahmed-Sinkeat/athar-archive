@@ -115,6 +115,8 @@ fun DownloadsListScreen(
     onRemoveMany: (List<DownloadUi>) -> Unit,
     modifier: Modifier = Modifier,
     targetId: String? = null,
+    /** «إرسال»: the chosen saved items to another phone, no internet needed. */
+    onSend: (List<DownloadUi>) -> Unit = {},
 ) {
     val listState = rememberLazyListState()
     var tab by androidx.compose.runtime.saveable.rememberSaveable {
@@ -180,6 +182,7 @@ fun DownloadsListScreen(
                                 onSelectAll = { selected = items.mapTo(hashSetOf()) { it.id } },
                                 onClear = { selected = emptySet() },
                                 onDelete = { onRemoveMany(it); selected = emptySet() },
+                                onSend = { onSend(it); selected = emptySet() },
                             )
                         }
                         // The kind filter narrows it, so «a bunch» is one type and «all» is الكل.
@@ -571,10 +574,12 @@ private fun SelectionBar(
     onSelectAll: () -> Unit,
     onClear: () -> Unit,
     onDelete: (List<DownloadUi>) -> Unit,
+    onSend: (List<DownloadUi>) -> Unit,
 ) {
     var menuOpen by remember { mutableStateOf(false) }
     Row(verticalAlignment = Alignment.CenterVertically) {
         BarAction(if (allSelected) "إلغاء التحديد" else "تحديد الكل", if (allSelected) onClear else onSelectAll, "downloads_select_all")
+        BarAction("إرسال", { onSend(chosen) }, "downloads_send_selected")
         Box {
             BarAction("حذف (${arabicDigits(chosen.size)})", { menuOpen = true }, "downloads_delete_selected")
             AtharMenu(expanded = menuOpen, onDismiss = { menuOpen = false }, width = 240.dp) {

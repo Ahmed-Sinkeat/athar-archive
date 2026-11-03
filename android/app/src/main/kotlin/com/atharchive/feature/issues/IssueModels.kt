@@ -10,6 +10,7 @@ package com.atharchive.feature.issues
  */
 
 enum class IssueSort(val label: String) {
+    Died("وفاة المجيب"),
     Question("المسألة"),
     Newest("ترتيب الفهرس"),
     Scholar("المجيب"),
@@ -28,6 +29,9 @@ data class IssueUi(
     val saved: Boolean = false,
     val recentRank: Int? = null,
     val transfer: com.atharchive.feature.downloads.TransferUi? = null,
+    val topics: List<String> = emptyList(),
+    val died: Int? = null,
+    val hasAudio: Boolean = false,
 )
 
 data class IssuesUiState(

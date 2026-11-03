@@ -1,0 +1,3415 @@
+{
+  "schema": 1,
+  "generation": 1,
+  "sourceHash": "7780f48c38c70e12a1bd2933b9f69760e4fffd3f2c2b5621edb8ac2ba1ef5648",
+  "ids": [
+    {
+      "ord": 0,
+      "blockId": "4a18527fc31a82f7b59de0e1676629a5",
+      "fp64": "815c3c200fb6ab5e",
+      "normHash": "728e9a9030aa23aebae2bd5aea7502faef125adfaebac87484ade0e43a9a5459",
+      "kind": "p",
+      "chapter": "main",
+      "next": "bb7c9374e48b321e4267ebbe1721fb845e375caa0acbb49fa76b9df7a95e22c6"
+    },
+    {
+      "ord": 1,
+      "blockId": "285253da55e553d2a678c5ae93370a76",
+      "fp64": "bdcf768efe3f5fef",
+      "normHash": "bb7c9374e48b321e4267ebbe1721fb845e375caa0acbb49fa76b9df7a95e22c6",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "728e9a9030aa23aebae2bd5aea7502faef125adfaebac87484ade0e43a9a5459",
+      "next": "faf3e7758a01fb9974ba7ae1bf0236ec223ac1fe0f22b59e24aa72ae1410fb98"
+    },
+    {
+      "ord": 2,
+      "blockId": "1eb5418c14f1870a35754a82836d0d05",
+      "fp64": "3a7a2f5b5957ddc2",
+      "normHash": "faf3e7758a01fb9974ba7ae1bf0236ec223ac1fe0f22b59e24aa72ae1410fb98",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "bb7c9374e48b321e4267ebbe1721fb845e375caa0acbb49fa76b9df7a95e22c6",
+      "next": "54adce7655b851c42a174f6691af070e9db4ab1c022f73a12c6ea7a0d4d447de"
+    },
+    {
+      "ord": 3,
+      "blockId": "16522925b890ada47fd0e5e53719852e",
+      "fp64": "e51ae00496fdfc3c",
+      "normHash": "54adce7655b851c42a174f6691af070e9db4ab1c022f73a12c6ea7a0d4d447de",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "faf3e7758a01fb9974ba7ae1bf0236ec223ac1fe0f22b59e24aa72ae1410fb98",
+      "next": "865a80dc1112064b212cbf773ac568be6ca6fea9b13ca28fa9c5ebe76cc69bd1"
+    },
+    {
+      "ord": 4,
+      "blockId": "dd8f3c1a4cd241539aefc608ca7d3998",
+      "fp64": "df3cfed9f7bff87f",
+      "normHash": "865a80dc1112064b212cbf773ac568be6ca6fea9b13ca28fa9c5ebe76cc69bd1",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "54adce7655b851c42a174f6691af070e9db4ab1c022f73a12c6ea7a0d4d447de",
+      "next": "d7c4cf6d3aa9ff04978b78e734782a038328d9928931d25a21285e63aff35a88"
+    },
+    {
+      "ord": 5,
+      "blockId": "03de7ad990a3f1957f400e9acf1c75bc",
+      "fp64": "7ef37efaaa05b93a",
+      "normHash": "d7c4cf6d3aa9ff04978b78e734782a038328d9928931d25a21285e63aff35a88",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "865a80dc1112064b212cbf773ac568be6ca6fea9b13ca28fa9c5ebe76cc69bd1",
+      "next": "1af8991062ded8069ad25a20391c811d4d7d34215cd870713bd8759a49fb9674"
+    },
+    {
+      "ord": 6,
+      "blockId": "258b536d21e6b271db93e7125f0a5e7e",
+      "fp64": "7cb77cf7fe7d3d7c",
+      "normHash": "1af8991062ded8069ad25a20391c811d4d7d34215cd870713bd8759a49fb9674",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "d7c4cf6d3aa9ff04978b78e734782a038328d9928931d25a21285e63aff35a88",
+      "next": "2d75aaad72614f124f343ef0cf797e9fbf281cb5c79999c0bb7a061d1c957f32"
+    },
+    {
+      "ord": 7,
+      "blockId": "a3fdb175200566c6d13e82f25e085815",
+      "fp64": "945b1001ede78e7f",
+      "normHash": "2d75aaad72614f124f343ef0cf797e9fbf281cb5c79999c0bb7a061d1c957f32",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "1af8991062ded8069ad25a20391c811d4d7d34215cd870713bd8759a49fb9674",
+      "next": "54dfbb430b247e2e9694fc87f810acdccd975d9007828bedf5fa538497f1fe71"
+    },
+    {
+      "ord": 8,
+      "blockId": "220584a283e620ea689d5db13158ac25",
+      "fp64": "ece6fbf5f356bef7",
+      "normHash": "54dfbb430b247e2e9694fc87f810acdccd975d9007828bedf5fa538497f1fe71",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "2d75aaad72614f124f343ef0cf797e9fbf281cb5c79999c0bb7a061d1c957f32",
+      "next": "113737ba141e4d53583f24830da56c1a8954573d8968003a949ccc370a382529"
+    },
+    {
+      "ord": 9,
+      "blockId": "91c84fda31d16e226f479c0e606b50e2",
+      "fp64": "5bf60844d6d417ed",
+      "normHash": "113737ba141e4d53583f24830da56c1a8954573d8968003a949ccc370a382529",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "54dfbb430b247e2e9694fc87f810acdccd975d9007828bedf5fa538497f1fe71",
+      "next": "9188f256ba223b9637a6bca1894c8bda769d4a2177a25f5c18dfb50703f508f1"
+    },
+    {
+      "ord": 10,
+      "blockId": "879f1d66ef3c8a167f9fc733b9a690e4",
+      "fp64": "e5fff7ff7bb3e67f",
+      "normHash": "9188f256ba223b9637a6bca1894c8bda769d4a2177a25f5c18dfb50703f508f1",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "113737ba141e4d53583f24830da56c1a8954573d8968003a949ccc370a382529",
+      "next": "2faeea109072ecd45655335c776d16dff7854c5c40d4f54df97cecc239736a86"
+    },
+    {
+      "ord": 11,
+      "blockId": "e16734ad371a6989bdbcef5870fd5a88",
+      "fp64": "bdf5f8179ffc71fe",
+      "normHash": "2faeea109072ecd45655335c776d16dff7854c5c40d4f54df97cecc239736a86",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "9188f256ba223b9637a6bca1894c8bda769d4a2177a25f5c18dfb50703f508f1",
+      "next": "5629ce5696ef1d7dfaa2d40dd743641f7303e4f216a0867f9bcfeaf8073631d2"
+    },
+    {
+      "ord": 12,
+      "blockId": "43fb78dd8016a76577601b1ca006a142",
+      "fp64": "e6b691f5ff7ffdbb",
+      "normHash": "5629ce5696ef1d7dfaa2d40dd743641f7303e4f216a0867f9bcfeaf8073631d2",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "2faeea109072ecd45655335c776d16dff7854c5c40d4f54df97cecc239736a86",
+      "next": "fad4314628beb9c1f683ee2a62174ee9153ada9f06fc3700fb967f5512733f2a"
+    },
+    {
+      "ord": 13,
+      "blockId": "b34e21d1776615f53c18e5d16b836294",
+      "fp64": "851a2196d3f0705c",
+      "normHash": "fad4314628beb9c1f683ee2a62174ee9153ada9f06fc3700fb967f5512733f2a",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "5629ce5696ef1d7dfaa2d40dd743641f7303e4f216a0867f9bcfeaf8073631d2",
+      "next": "17faaf84a013dcbe81c90a17bbe13f7bd464b1a5003cdae3ba2251fcc2ec34c2"
+    },
+    {
+      "ord": 14,
+      "blockId": "9b51bc3c35a856e07c4eff02650535af",
+      "fp64": "2146e04217185d7c",
+      "normHash": "17faaf84a013dcbe81c90a17bbe13f7bd464b1a5003cdae3ba2251fcc2ec34c2",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "fad4314628beb9c1f683ee2a62174ee9153ada9f06fc3700fb967f5512733f2a",
+      "next": "afdb7313e5b92484c76c5195be2959c3631cc9c844a90c8fa37d3edfc9b28110"
+    },
+    {
+      "ord": 15,
+      "blockId": "11be275ef153b08a790298c31b62fe1f",
+      "fp64": "3fdffb9edbf77eb7",
+      "normHash": "afdb7313e5b92484c76c5195be2959c3631cc9c844a90c8fa37d3edfc9b28110",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "17faaf84a013dcbe81c90a17bbe13f7bd464b1a5003cdae3ba2251fcc2ec34c2",
+      "next": "008caf5f04eb6f7500060ba6c4933bda3092714898e0b6dc4b51b165bc014849"
+    },
+    {
+      "ord": 16,
+      "blockId": "6da683819c9b84b7968a97349fb22505",
+      "fp64": "b7b7be7f9f35f7fc",
+      "normHash": "008caf5f04eb6f7500060ba6c4933bda3092714898e0b6dc4b51b165bc014849",
+      "kind": "h2",
+      "chapter": "ذكر-خيرة-الله-للعبد-فيما-ابتدأه",
+      "prev": "afdb7313e5b92484c76c5195be2959c3631cc9c844a90c8fa37d3edfc9b28110",
+      "next": "5a9d16355d883728daecddfecef0efdec2b90aebd1856285ead37c4d538412d0"
+    },
+    {
+      "ord": 17,
+      "blockId": "bea0de2af2a9c6d681fd7f6cd7c2a1f8",
+      "fp64": "a51ee49657f5e074",
+      "normHash": "5a9d16355d883728daecddfecef0efdec2b90aebd1856285ead37c4d538412d0",
+      "kind": "p",
+      "chapter": "ذكر-خيرة-الله-للعبد-فيما-ابتدأه",
+      "prev": "008caf5f04eb6f7500060ba6c4933bda3092714898e0b6dc4b51b165bc014849",
+      "next": "d27bbcb89e03a8efe05f6c995d1a6e868efb667af4d4c76eec0a9435f556b02a"
+    },
+    {
+      "ord": 18,
+      "blockId": "f015b25ea02d57f18bbd8238b8c3cfa7",
+      "fp64": "6e95a4116722bc3c",
+      "normHash": "d27bbcb89e03a8efe05f6c995d1a6e868efb667af4d4c76eec0a9435f556b02a",
+      "kind": "p",
+      "chapter": "ذكر-خيرة-الله-للعبد-فيما-ابتدأه",
+      "prev": "5a9d16355d883728daecddfecef0efdec2b90aebd1856285ead37c4d538412d0",
+      "next": "2bcbe36bdaa6a7da474239bf05a5b7bb3798a74ab7380987f662161d0c904c25"
+    },
+    {
+      "ord": 19,
+      "blockId": "010c000e018f5cb41167f9af30a698cf",
+      "fp64": "e6cc447fd978b3f7",
+      "normHash": "2bcbe36bdaa6a7da474239bf05a5b7bb3798a74ab7380987f662161d0c904c25",
+      "kind": "p",
+      "chapter": "ذكر-خيرة-الله-للعبد-فيما-ابتدأه",
+      "prev": "d27bbcb89e03a8efe05f6c995d1a6e868efb667af4d4c76eec0a9435f556b02a",
+      "next": "4d045b012cd0d68fdfa5846aaa7e84e94bbcbba57d1bb4f48fcaf99388484849"
+    },
+    {
+      "ord": 20,
+      "blockId": "866bb6014718d29bb9db99f101b33320",
+      "fp64": "e699e09c6e7b7735",
+      "normHash": "4d045b012cd0d68fdfa5846aaa7e84e94bbcbba57d1bb4f48fcaf99388484849",
+      "kind": "p",
+      "chapter": "ذكر-خيرة-الله-للعبد-فيما-ابتدأه",
+      "prev": "2bcbe36bdaa6a7da474239bf05a5b7bb3798a74ab7380987f662161d0c904c25",
+      "next": "c9d963f038c204cdec8da768bce98e69d1bf414d903aae3bc061b11205939f2a"
+    },
+    {
+      "ord": 21,
+      "blockId": "b51ecd0f9d8d259a99ca79fc9c049dcd",
+      "fp64": "37dff79f5f756377",
+      "normHash": "c9d963f038c204cdec8da768bce98e69d1bf414d903aae3bc061b11205939f2a",
+      "kind": "page",
+      "chapter": "ذكر-خيرة-الله-للعبد-فيما-ابتدأه",
+      "prev": "4d045b012cd0d68fdfa5846aaa7e84e94bbcbba57d1bb4f48fcaf99388484849",
+      "next": "0e45b7b336deb4ddeff6dfe597f2633d536d0c445631c44079f34a7bd91c17f5"
+    },
+    {
+      "ord": 22,
+      "blockId": "ba21c3ac518a440a7e580b6e6384a3f6",
+      "fp64": "e53a409647f37874",
+      "normHash": "0e45b7b336deb4ddeff6dfe597f2633d536d0c445631c44079f34a7bd91c17f5",
+      "kind": "p",
+      "chapter": "ذكر-خيرة-الله-للعبد-فيما-ابتدأه",
+      "prev": "c9d963f038c204cdec8da768bce98e69d1bf414d903aae3bc061b11205939f2a",
+      "next": "f1cf8c2018100c13fdcd3297ce7d59a53bc54e746a87e36bad84fecb40193324"
+    },
+    {
+      "ord": 23,
+      "blockId": "87a1bf2219f3200ea74be3996d0ed95e",
+      "fp64": "7e46b016cf5eb6bc",
+      "normHash": "f1cf8c2018100c13fdcd3297ce7d59a53bc54e746a87e36bad84fecb40193324",
+      "kind": "p",
+      "chapter": "ذكر-خيرة-الله-للعبد-فيما-ابتدأه",
+      "prev": "0e45b7b336deb4ddeff6dfe597f2633d536d0c445631c44079f34a7bd91c17f5",
+      "next": "61329b01043739d84588798383469925fffd2c155a9a3e5d03e059bf4e684d91"
+    },
+    {
+      "ord": 24,
+      "blockId": "7e1e6e818cfb2d88662c5670c7227008",
+      "fp64": "3f48209355f58854",
+      "normHash": "61329b01043739d84588798383469925fffd2c155a9a3e5d03e059bf4e684d91",
+      "kind": "p",
+      "chapter": "ذكر-خيرة-الله-للعبد-فيما-ابتدأه",
+      "prev": "f1cf8c2018100c13fdcd3297ce7d59a53bc54e746a87e36bad84fecb40193324",
+      "next": "fd7450c1f92d52b91075220c636129ef702e8e7c29edc73d8f2e81df8a091618"
+    },
+    {
+      "ord": 25,
+      "blockId": "42a782f2bd028de5c622f4fff1ceaf0c",
+      "fp64": "77dff3dadf79e97e",
+      "normHash": "fd7450c1f92d52b91075220c636129ef702e8e7c29edc73d8f2e81df8a091618",
+      "kind": "page",
+      "chapter": "ذكر-خيرة-الله-للعبد-فيما-ابتدأه",
+      "prev": "61329b01043739d84588798383469925fffd2c155a9a3e5d03e059bf4e684d91",
+      "next": "e69847dd07182e251c7da1ab24bce27c2cec4046ac2cb76722c9cb2fa137cadd"
+    },
+    {
+      "ord": 26,
+      "blockId": "4bcc10e2431e4b3b3a2c651797e91fd5",
+      "fp64": "e55ae1b657f37034",
+      "normHash": "e69847dd07182e251c7da1ab24bce27c2cec4046ac2cb76722c9cb2fa137cadd",
+      "kind": "p",
+      "chapter": "ذكر-خيرة-الله-للعبد-فيما-ابتدأه",
+      "prev": "fd7450c1f92d52b91075220c636129ef702e8e7c29edc73d8f2e81df8a091618",
+      "next": "76ba9e6fc8c7955f77014097eec19356a361d569bc6dfc17d33c694122efddcd"
+    },
+    {
+      "ord": 27,
+      "blockId": "3091ab3b0fc1a566f726a3eb3b0c7627",
+      "fp64": "7c56c0179762533c",
+      "normHash": "76ba9e6fc8c7955f77014097eec19356a361d569bc6dfc17d33c694122efddcd",
+      "kind": "p",
+      "chapter": "ذكر-خيرة-الله-للعبد-فيما-ابتدأه",
+      "prev": "e69847dd07182e251c7da1ab24bce27c2cec4046ac2cb76722c9cb2fa137cadd",
+      "next": "8466280fa1118c069ca39bbf89a155adf4ea8970e67880ff2432a52edf85bba8"
+    },
+    {
+      "ord": 28,
+      "blockId": "2b4b3f611cff30dcd1de895561e2de4c",
+      "fp64": "e150c0c687f9f114",
+      "normHash": "8466280fa1118c069ca39bbf89a155adf4ea8970e67880ff2432a52edf85bba8",
+      "kind": "p",
+      "chapter": "ذكر-خيرة-الله-للعبد-فيما-ابتدأه",
+      "prev": "76ba9e6fc8c7955f77014097eec19356a361d569bc6dfc17d33c694122efddcd",
+      "next": "d3fc5bd9b2f63785248129ea03bccffcaf940956b7d8a0eead4645fbe9ba5066"
+    },
+    {
+      "ord": 29,
+      "blockId": "0ab03090fa94c9b657d618e03a61db1d",
+      "fp64": "f7fff79efaf160b6",
+      "normHash": "d3fc5bd9b2f63785248129ea03bccffcaf940956b7d8a0eead4645fbe9ba5066",
+      "kind": "page",
+      "chapter": "ذكر-خيرة-الله-للعبد-فيما-ابتدأه",
+      "prev": "8466280fa1118c069ca39bbf89a155adf4ea8970e67880ff2432a52edf85bba8",
+      "next": "b78471ffd6ddbcb1983329ccdbed43171adf1f444f0b6d59dd4a284474ebf0eb"
+    },
+    {
+      "ord": 30,
+      "blockId": "1bdf13c590783a908649d1dfa863f2af",
+      "fp64": "c31fe673dfbf7faf",
+      "normHash": "b78471ffd6ddbcb1983329ccdbed43171adf1f444f0b6d59dd4a284474ebf0eb",
+      "kind": "h2",
+      "chapter": "ما-ذكر-من-تشديد-البلاء-على-الأنبياء-صلوات-الله-عليهم-وعلى-الصالحين",
+      "prev": "d3fc5bd9b2f63785248129ea03bccffcaf940956b7d8a0eead4645fbe9ba5066",
+      "next": "0fd4b08efaa0cb79e15b7b53f1463dd8664552cb88dc0a13c338e71f882acdca"
+    },
+    {
+      "ord": 31,
+      "blockId": "c2e1d00075eab885ca78dbcc1ea3f3a9",
+      "fp64": "a53ae01607fcf074",
+      "normHash": "0fd4b08efaa0cb79e15b7b53f1463dd8664552cb88dc0a13c338e71f882acdca",
+      "kind": "p",
+      "chapter": "ما-ذكر-من-تشديد-البلاء-على-الأنبياء-صلوات-الله-عليهم-وعلى-الصالحين",
+      "prev": "b78471ffd6ddbcb1983329ccdbed43171adf1f444f0b6d59dd4a284474ebf0eb",
+      "next": "c4b84cc5084f73a44d42f545d3dbb81408e5dbb968eb5861193d073aa56bf2e2"
+    },
+    {
+      "ord": 32,
+      "blockId": "c6ac4826ed571fdb5bd1d8dbba385ebf",
+      "fp64": "2635e2568922733e",
+      "normHash": "c4b84cc5084f73a44d42f545d3dbb81408e5dbb968eb5861193d073aa56bf2e2",
+      "kind": "p",
+      "chapter": "ما-ذكر-من-تشديد-البلاء-على-الأنبياء-صلوات-الله-عليهم-وعلى-الصالحين",
+      "prev": "0fd4b08efaa0cb79e15b7b53f1463dd8664552cb88dc0a13c338e71f882acdca",
+      "next": "b8165f0a50d18684bfb8b64cc1b5d10ff74f40b2b402e910164ed2108c625a17"
+    },
+    {
+      "ord": 33,
+      "blockId": "09548af8faa32dcd753d835cd90c8c77",
+      "fp64": "2473a3d04cc7acad",
+      "normHash": "b8165f0a50d18684bfb8b64cc1b5d10ff74f40b2b402e910164ed2108c625a17",
+      "kind": "p",
+      "chapter": "ما-ذكر-من-تشديد-البلاء-على-الأنبياء-صلوات-الله-عليهم-وعلى-الصالحين",
+      "prev": "c4b84cc5084f73a44d42f545d3dbb81408e5dbb968eb5861193d073aa56bf2e2",
+      "next": "2ad9b4c04566be26056f6fe18ba07af36a65867956c32200244aec4e7e2598fd"
+    },
+    {
+      "ord": 34,
+      "blockId": "19970804cbf17b40c3f5556beb4c779a",
+      "fp64": "e5de6296c6fd7154",
+      "normHash": "2ad9b4c04566be26056f6fe18ba07af36a65867956c32200244aec4e7e2598fd",
+      "kind": "p",
+      "chapter": "ما-ذكر-من-تشديد-البلاء-على-الأنبياء-صلوات-الله-عليهم-وعلى-الصالحين",
+      "prev": "b8165f0a50d18684bfb8b64cc1b5d10ff74f40b2b402e910164ed2108c625a17",
+      "next": "68f3727261046665f498c65a90fa7e68e048dc53941446d1ded55914c30c2e89"
+    },
+    {
+      "ord": 35,
+      "blockId": "864782af8326f68c317460264eb767bb",
+      "fp64": "efdff3daff39eaf7",
+      "normHash": "68f3727261046665f498c65a90fa7e68e048dc53941446d1ded55914c30c2e89",
+      "kind": "page",
+      "chapter": "ما-ذكر-من-تشديد-البلاء-على-الأنبياء-صلوات-الله-عليهم-وعلى-الصالحين",
+      "prev": "2ad9b4c04566be26056f6fe18ba07af36a65867956c32200244aec4e7e2598fd",
+      "next": "76daba5b601e817abbbbad10cc7bca91b1d5003608c2dcd7276adacd1f8d82c8"
+    },
+    {
+      "ord": 36,
+      "blockId": "b741dd20098c160cc0f72066d5cf58b3",
+      "fp64": "e53b6096c7f1f074",
+      "normHash": "76daba5b601e817abbbbad10cc7bca91b1d5003608c2dcd7276adacd1f8d82c8",
+      "kind": "p",
+      "chapter": "ما-ذكر-من-تشديد-البلاء-على-الأنبياء-صلوات-الله-عليهم-وعلى-الصالحين",
+      "prev": "68f3727261046665f498c65a90fa7e68e048dc53941446d1ded55914c30c2e89",
+      "next": "de76d148e3a3cd2ebf5ea6b91d81ec42ab64e8ca6a7dd582b7ad4a7b48e147aa"
+    },
+    {
+      "ord": 37,
+      "blockId": "bb9ace210106afd0a7b8292b546428f3",
+      "fp64": "1ff7267b9f465fde",
+      "normHash": "de76d148e3a3cd2ebf5ea6b91d81ec42ab64e8ca6a7dd582b7ad4a7b48e147aa",
+      "kind": "p",
+      "chapter": "ما-ذكر-من-تشديد-البلاء-على-الأنبياء-صلوات-الله-عليهم-وعلى-الصالحين",
+      "prev": "76daba5b601e817abbbbad10cc7bca91b1d5003608c2dcd7276adacd1f8d82c8",
+      "next": "8b1d1137ea53395efa9c54367c2ba35184393e1580f780ff2e6e87d89e6f98be"
+    },
+    {
+      "ord": 38,
+      "blockId": "348a5c5eb3eac92bf05f44f4b6c56d42",
+      "fp64": "609a62d4a5b9e156",
+      "normHash": "8b1d1137ea53395efa9c54367c2ba35184393e1580f780ff2e6e87d89e6f98be",
+      "kind": "p",
+      "chapter": "ما-ذكر-من-تشديد-البلاء-على-الأنبياء-صلوات-الله-عليهم-وعلى-الصالحين",
+      "prev": "de76d148e3a3cd2ebf5ea6b91d81ec42ab64e8ca6a7dd582b7ad4a7b48e147aa",
+      "next": "8f9de01d267f6c9820baa256c48656a6284c7824edaa13f8de5e3db127eccb81"
+    },
+    {
+      "ord": 39,
+      "blockId": "7275996418909a1a597dcb8354f15613",
+      "fp64": "0fcd237dd8d4d135",
+      "normHash": "8f9de01d267f6c9820baa256c48656a6284c7824edaa13f8de5e3db127eccb81",
+      "kind": "p",
+      "chapter": "ما-ذكر-من-تشديد-البلاء-على-الأنبياء-صلوات-الله-عليهم-وعلى-الصالحين",
+      "prev": "8b1d1137ea53395efa9c54367c2ba35184393e1580f780ff2e6e87d89e6f98be",
+      "next": "1a68ea76a1ee504f53bc8ea4bc7d7a4c208e8e496fc0442f7086959aa230927c"
+    },
+    {
+      "ord": 40,
+      "blockId": "584983f9566a037e04572147efc50de3",
+      "fp64": "6b25c4dc84c9f717",
+      "normHash": "1a68ea76a1ee504f53bc8ea4bc7d7a4c208e8e496fc0442f7086959aa230927c",
+      "kind": "p",
+      "chapter": "ما-ذكر-من-تشديد-البلاء-على-الأنبياء-صلوات-الله-عليهم-وعلى-الصالحين",
+      "prev": "8f9de01d267f6c9820baa256c48656a6284c7824edaa13f8de5e3db127eccb81",
+      "next": "10d76e1879a1ef6f2fe39e5c5b89e33e22083ebb14a869c0d2495f87dc134686"
+    },
+    {
+      "ord": 41,
+      "blockId": "73923beeb076cba03cf747c844c21037",
+      "fp64": "a5ffff9a5a776b7f",
+      "normHash": "10d76e1879a1ef6f2fe39e5c5b89e33e22083ebb14a869c0d2495f87dc134686",
+      "kind": "page",
+      "chapter": "ما-ذكر-من-تشديد-البلاء-على-الأنبياء-صلوات-الله-عليهم-وعلى-الصالحين",
+      "prev": "1a68ea76a1ee504f53bc8ea4bc7d7a4c208e8e496fc0442f7086959aa230927c",
+      "next": "839d4ac6bce5a7b7c0ef83d4a6afaaac45995f8790f883b42e7dd96526875d9b"
+    },
+    {
+      "ord": 42,
+      "blockId": "d40ac7aa5470f2d727890115fc638119",
+      "fp64": "e51a609667f3f074",
+      "normHash": "839d4ac6bce5a7b7c0ef83d4a6afaaac45995f8790f883b42e7dd96526875d9b",
+      "kind": "p",
+      "chapter": "ما-ذكر-من-تشديد-البلاء-على-الأنبياء-صلوات-الله-عليهم-وعلى-الصالحين",
+      "prev": "10d76e1879a1ef6f2fe39e5c5b89e33e22083ebb14a869c0d2495f87dc134686",
+      "next": "0eae32e91d56c3023465415b2ec06c9818b5ccd57b266f647f98273a22c21cbf"
+    },
+    {
+      "ord": 43,
+      "blockId": "1fe66438a89faae52f2fd8ed57d9e50a",
+      "fp64": "3497c4179546336c",
+      "normHash": "0eae32e91d56c3023465415b2ec06c9818b5ccd57b266f647f98273a22c21cbf",
+      "kind": "p",
+      "chapter": "ما-ذكر-من-تشديد-البلاء-على-الأنبياء-صلوات-الله-عليهم-وعلى-الصالحين",
+      "prev": "839d4ac6bce5a7b7c0ef83d4a6afaaac45995f8790f883b42e7dd96526875d9b",
+      "next": "f2b3ffd65d87c14dff8840926fb9221b5454a7e02baa9bc3e0e3f850f5bcae18"
+    },
+    {
+      "ord": 44,
+      "blockId": "0fe20d5ce94f39b37139317f3eae6dd8",
+      "fp64": "97b5aa932d36fbef",
+      "normHash": "f2b3ffd65d87c14dff8840926fb9221b5454a7e02baa9bc3e0e3f850f5bcae18",
+      "kind": "p",
+      "chapter": "ما-ذكر-من-تشديد-البلاء-على-الأنبياء-صلوات-الله-عليهم-وعلى-الصالحين",
+      "prev": "0eae32e91d56c3023465415b2ec06c9818b5ccd57b266f647f98273a22c21cbf",
+      "next": "b73aa4cdc874f833049801c90b61644752248ba6277e7139cb021ddcc4ca7d5c"
+    },
+    {
+      "ord": 45,
+      "blockId": "618f34c809e78bfc6b0f30603b625d60",
+      "fp64": "afdff7fe5fb37f77",
+      "normHash": "b73aa4cdc874f833049801c90b61644752248ba6277e7139cb021ddcc4ca7d5c",
+      "kind": "page",
+      "chapter": "ما-ذكر-من-تشديد-البلاء-على-الأنبياء-صلوات-الله-عليهم-وعلى-الصالحين",
+      "prev": "f2b3ffd65d87c14dff8840926fb9221b5454a7e02baa9bc3e0e3f850f5bcae18",
+      "next": "c07de840051f70b059a1a65b02b904c1d09d726f810e4ed7199e1423eb846d9e"
+    },
+    {
+      "ord": 46,
+      "blockId": "a647ed99f1ab279968fcec8d22a4e611",
+      "fp64": "e5ba609676f3f034",
+      "normHash": "c07de840051f70b059a1a65b02b904c1d09d726f810e4ed7199e1423eb846d9e",
+      "kind": "p",
+      "chapter": "ما-ذكر-من-تشديد-البلاء-على-الأنبياء-صلوات-الله-عليهم-وعلى-الصالحين",
+      "prev": "b73aa4cdc874f833049801c90b61644752248ba6277e7139cb021ddcc4ca7d5c",
+      "next": "46844ceae0bc505d7ffe932f01f5e131f175aee0ec8401a433578ecb29f80a2e"
+    },
+    {
+      "ord": 47,
+      "blockId": "7f87993df40a643f6e2a1bdbfae04209",
+      "fp64": "b613e41fcf467b5e",
+      "normHash": "46844ceae0bc505d7ffe932f01f5e131f175aee0ec8401a433578ecb29f80a2e",
+      "kind": "p",
+      "chapter": "ما-ذكر-من-تشديد-البلاء-على-الأنبياء-صلوات-الله-عليهم-وعلى-الصالحين",
+      "prev": "c07de840051f70b059a1a65b02b904c1d09d726f810e4ed7199e1423eb846d9e",
+      "next": "7015d230e81502996a4e006bd270518672ec4494883fd8e2bfc1b4b183e6def8"
+    },
+    {
+      "ord": 48,
+      "blockId": "06d4191d89115dbc8154a3ce880ae670",
+      "fp64": "460de4539d238ccf",
+      "normHash": "7015d230e81502996a4e006bd270518672ec4494883fd8e2bfc1b4b183e6def8",
+      "kind": "p",
+      "chapter": "ما-ذكر-من-تشديد-البلاء-على-الأنبياء-صلوات-الله-عليهم-وعلى-الصالحين",
+      "prev": "46844ceae0bc505d7ffe932f01f5e131f175aee0ec8401a433578ecb29f80a2e",
+      "next": "c08cd48df02782a05d794b9546fe03555da34307f5cc30481c9cbf891f430ea4"
+    },
+    {
+      "ord": 49,
+      "blockId": "995058302cefddb4ac8d16f046eac9b5",
+      "fp64": "2ddff7df7b79e5b7",
+      "normHash": "c08cd48df02782a05d794b9546fe03555da34307f5cc30481c9cbf891f430ea4",
+      "kind": "page",
+      "chapter": "ما-ذكر-من-تشديد-البلاء-على-الأنبياء-صلوات-الله-عليهم-وعلى-الصالحين",
+      "prev": "7015d230e81502996a4e006bd270518672ec4494883fd8e2bfc1b4b183e6def8",
+      "next": "273e259a65cf2f1f92a902a366733943b4c50f6fde6297a611842e902465119d"
+    },
+    {
+      "ord": 50,
+      "blockId": "6e157dbce846515aaf5cc1dd955143aa",
+      "fp64": "e51ae09657f57034",
+      "normHash": "273e259a65cf2f1f92a902a366733943b4c50f6fde6297a611842e902465119d",
+      "kind": "p",
+      "chapter": "ما-ذكر-من-تشديد-البلاء-على-الأنبياء-صلوات-الله-عليهم-وعلى-الصالحين",
+      "prev": "c08cd48df02782a05d794b9546fe03555da34307f5cc30481c9cbf891f430ea4",
+      "next": "f2b326b7a8a7fff020b3a6bf1e9507af0d8cc40ed2f6dd92f2df7835e3813b63"
+    },
+    {
+      "ord": 51,
+      "blockId": "0c97a40cdadc7dcc0819ff73bf30cecc",
+      "fp64": "a63683c59fec73fa",
+      "normHash": "f2b326b7a8a7fff020b3a6bf1e9507af0d8cc40ed2f6dd92f2df7835e3813b63",
+      "kind": "p",
+      "chapter": "ما-ذكر-من-تشديد-البلاء-على-الأنبياء-صلوات-الله-عليهم-وعلى-الصالحين",
+      "prev": "273e259a65cf2f1f92a902a366733943b4c50f6fde6297a611842e902465119d",
+      "next": "399edd5dce20c06c05e54a2e414446f6ce0f08171bb636b2949f62ce6c336c5e"
+    },
+    {
+      "ord": 52,
+      "blockId": "a062f9eb0522f4efe383f0a74cfee2c1",
+      "fp64": "e7f2604b96ff79fd",
+      "normHash": "399edd5dce20c06c05e54a2e414446f6ce0f08171bb636b2949f62ce6c336c5e",
+      "kind": "p",
+      "chapter": "ما-ذكر-من-تشديد-البلاء-على-الأنبياء-صلوات-الله-عليهم-وعلى-الصالحين",
+      "prev": "f2b326b7a8a7fff020b3a6bf1e9507af0d8cc40ed2f6dd92f2df7835e3813b63",
+      "next": "0516e251ec96bafda2747e69ea3f55e59a1298a8f0722685ea476a4f2cfc8bea"
+    },
+    {
+      "ord": 53,
+      "blockId": "b15aaac4d90d2a12fddc08e72ba83e38",
+      "fp64": "77ffff9efa7bfc7f",
+      "normHash": "0516e251ec96bafda2747e69ea3f55e59a1298a8f0722685ea476a4f2cfc8bea",
+      "kind": "page",
+      "chapter": "ما-ذكر-من-تشديد-البلاء-على-الأنبياء-صلوات-الله-عليهم-وعلى-الصالحين",
+      "prev": "399edd5dce20c06c05e54a2e414446f6ce0f08171bb636b2949f62ce6c336c5e",
+      "next": "dc05f6e5c9449e3bb868ee610b2e70732c8d895817db1db62536b70b41eee69a"
+    },
+    {
+      "ord": 54,
+      "blockId": "369e3ddb200ca9fd32003b7abc5f0c8a",
+      "fp64": "651cc09657f26074",
+      "normHash": "dc05f6e5c9449e3bb868ee610b2e70732c8d895817db1db62536b70b41eee69a",
+      "kind": "p",
+      "chapter": "ما-ذكر-من-تشديد-البلاء-على-الأنبياء-صلوات-الله-عليهم-وعلى-الصالحين",
+      "prev": "0516e251ec96bafda2747e69ea3f55e59a1298a8f0722685ea476a4f2cfc8bea",
+      "next": "2af3c3aa1395562486404e927c7877237cf0149a42dc2bfea0be66527e299a72"
+    },
+    {
+      "ord": 55,
+      "blockId": "9e6a21f3e02f44b4f431fc57473f92d6",
+      "fp64": "2f5ae2179f74453c",
+      "normHash": "2af3c3aa1395562486404e927c7877237cf0149a42dc2bfea0be66527e299a72",
+      "kind": "p",
+      "chapter": "ما-ذكر-من-تشديد-البلاء-على-الأنبياء-صلوات-الله-عليهم-وعلى-الصالحين",
+      "prev": "dc05f6e5c9449e3bb868ee610b2e70732c8d895817db1db62536b70b41eee69a",
+      "next": "d4998beedc5e8071b321b30008138d0c8de26f9b0ff68a01d2ee9cf0792c0abb"
+    },
+    {
+      "ord": 56,
+      "blockId": "e91f5c95d381200cbd3ddd413051981d",
+      "fp64": "6e5a60d6d5d0a454",
+      "normHash": "d4998beedc5e8071b321b30008138d0c8de26f9b0ff68a01d2ee9cf0792c0abb",
+      "kind": "p",
+      "chapter": "ما-ذكر-من-تشديد-البلاء-على-الأنبياء-صلوات-الله-عليهم-وعلى-الصالحين",
+      "prev": "2af3c3aa1395562486404e927c7877237cf0149a42dc2bfea0be66527e299a72",
+      "next": "2ab029640d0d4db368c048d36be6c59a5ae8545d4205df7e2b6173bbc905b96c"
+    },
+    {
+      "ord": 57,
+      "blockId": "01f0632355f421e1aa0c30d79c9312b2",
+      "fp64": "77dff39fdf716677",
+      "normHash": "2ab029640d0d4db368c048d36be6c59a5ae8545d4205df7e2b6173bbc905b96c",
+      "kind": "page",
+      "chapter": "ما-ذكر-من-تشديد-البلاء-على-الأنبياء-صلوات-الله-عليهم-وعلى-الصالحين",
+      "prev": "d4998beedc5e8071b321b30008138d0c8de26f9b0ff68a01d2ee9cf0792c0abb",
+      "next": "d410e73ab00ec23656489fd667401a4bbf21c42dba8ce0e6c3d870aa4492c3f0"
+    },
+    {
+      "ord": 58,
+      "blockId": "216329cd01b08a076a5ef02bada241a8",
+      "fp64": "4fbc13159057438e",
+      "normHash": "d410e73ab00ec23656489fd667401a4bbf21c42dba8ce0e6c3d870aa4492c3f0",
+      "kind": "h2",
+      "chapter": "ذكر-بلاء-أيوب-عليه-السلام",
+      "prev": "2ab029640d0d4db368c048d36be6c59a5ae8545d4205df7e2b6173bbc905b96c",
+      "next": "63f7b186dd850e2dc462ea0e4f27cbd862a5209c78925c7a675a572e1856a611"
+    },
+    {
+      "ord": 59,
+      "blockId": "4f315d396b79c43304e53a0d250139a3",
+      "fp64": "a41a60b657f36074",
+      "normHash": "63f7b186dd850e2dc462ea0e4f27cbd862a5209c78925c7a675a572e1856a611",
+      "kind": "p",
+      "chapter": "ذكر-بلاء-أيوب-عليه-السلام",
+      "prev": "d410e73ab00ec23656489fd667401a4bbf21c42dba8ce0e6c3d870aa4492c3f0",
+      "next": "15a34bd36942f66f9615fd2662197c306ea2a6ba1f8450e28a6c87ca6f1287aa"
+    },
+    {
+      "ord": 60,
+      "blockId": "3eda5e26ce479ec5dfe6ad445700ade1",
+      "fp64": "a49ae44c3565595e",
+      "normHash": "15a34bd36942f66f9615fd2662197c306ea2a6ba1f8450e28a6c87ca6f1287aa",
+      "kind": "p",
+      "chapter": "ذكر-بلاء-أيوب-عليه-السلام",
+      "prev": "63f7b186dd850e2dc462ea0e4f27cbd862a5209c78925c7a675a572e1856a611",
+      "next": "ef51558056e318a7c89c55e1a2147d8afd42fddf6a9aa5ccbc87f1c6b8b896bb"
+    },
+    {
+      "ord": 61,
+      "blockId": "53c0e29a367fadc4b123fb63d86f5500",
+      "fp64": "76a0fc15dd119d7e",
+      "normHash": "ef51558056e318a7c89c55e1a2147d8afd42fddf6a9aa5ccbc87f1c6b8b896bb",
+      "kind": "p",
+      "chapter": "ذكر-بلاء-أيوب-عليه-السلام",
+      "prev": "15a34bd36942f66f9615fd2662197c306ea2a6ba1f8450e28a6c87ca6f1287aa",
+      "next": "3858db83ab9cb32bd42d655cc9a4b134dadb40dd6cc0140ee38fdfaeb191f182"
+    },
+    {
+      "ord": 62,
+      "blockId": "209c102c1d5e9da2a1466ae72d9b552e",
+      "fp64": "bc486206371677bc",
+      "normHash": "3858db83ab9cb32bd42d655cc9a4b134dadb40dd6cc0140ee38fdfaeb191f182",
+      "kind": "p",
+      "chapter": "ذكر-بلاء-أيوب-عليه-السلام",
+      "prev": "ef51558056e318a7c89c55e1a2147d8afd42fddf6a9aa5ccbc87f1c6b8b896bb",
+      "next": "18e08a7a70010d2a982e585af907ad1f246f015e98eba32a2dede5c3768af71e"
+    },
+    {
+      "ord": 63,
+      "blockId": "86213b37f56a34a01e1ef5083c7926a2",
+      "fp64": "2f2c646ec114e8b8",
+      "normHash": "18e08a7a70010d2a982e585af907ad1f246f015e98eba32a2dede5c3768af71e",
+      "kind": "p",
+      "chapter": "ذكر-بلاء-أيوب-عليه-السلام",
+      "prev": "3858db83ab9cb32bd42d655cc9a4b134dadb40dd6cc0140ee38fdfaeb191f182",
+      "next": "1cc530dd058d84eba1db3c4ae4bcae998d80eb3ad5d47fb226780b14253f9a5b"
+    },
+    {
+      "ord": 64,
+      "blockId": "8f48a73bb75e810737de34ee6f100d07",
+      "fp64": "c52d6e079430294c",
+      "normHash": "1cc530dd058d84eba1db3c4ae4bcae998d80eb3ad5d47fb226780b14253f9a5b",
+      "kind": "p",
+      "chapter": "ذكر-بلاء-أيوب-عليه-السلام",
+      "prev": "18e08a7a70010d2a982e585af907ad1f246f015e98eba32a2dede5c3768af71e",
+      "next": "478abd271c4413aab1d4a0bf83311c85c101f8b9e32337af9769f2c509abdcd6"
+    },
+    {
+      "ord": 65,
+      "blockId": "a0c434e7b02b3428c76839083442a5bb",
+      "fp64": "4ede3716b6f47c14",
+      "normHash": "478abd271c4413aab1d4a0bf83311c85c101f8b9e32337af9769f2c509abdcd6",
+      "kind": "p",
+      "chapter": "ذكر-بلاء-أيوب-عليه-السلام",
+      "prev": "1cc530dd058d84eba1db3c4ae4bcae998d80eb3ad5d47fb226780b14253f9a5b",
+      "next": "e34c2494ff5cbdc924c6f860aefa5fea954590d966f699776c74c1bbfdda3b6b"
+    },
+    {
+      "ord": 66,
+      "blockId": "ebab95acc9b935494b7776d5054bf0dc",
+      "fp64": "b5fff3fefa7b7337",
+      "normHash": "e34c2494ff5cbdc924c6f860aefa5fea954590d966f699776c74c1bbfdda3b6b",
+      "kind": "page",
+      "chapter": "ذكر-بلاء-أيوب-عليه-السلام",
+      "prev": "478abd271c4413aab1d4a0bf83311c85c101f8b9e32337af9769f2c509abdcd6",
+      "next": "aefdccc67c483ffe9f762dabda1419aeab39967022980909d71d79fbc3bf016d"
+    },
+    {
+      "ord": 67,
+      "blockId": "fa6dbb46e3dcb23580dfc3faf1b6538b",
+      "fp64": "b797b86abdbbb7bf",
+      "normHash": "aefdccc67c483ffe9f762dabda1419aeab39967022980909d71d79fbc3bf016d",
+      "kind": "h2",
+      "chapter": "ذكر-محبة-الله-تعالى-لمن-يبتلى-من-عباده-المسلمين-الصالحين",
+      "prev": "e34c2494ff5cbdc924c6f860aefa5fea954590d966f699776c74c1bbfdda3b6b",
+      "next": "c1f1d51ad96b5b1beaf66d71bf5e5b236a766de68623cc75d84bd11b09bf3e4e"
+    },
+    {
+      "ord": 68,
+      "blockId": "7b6121cf47bc43cacfc6f9435d7e74b9",
+      "fp64": "7804e1569f7a71fe",
+      "normHash": "c1f1d51ad96b5b1beaf66d71bf5e5b236a766de68623cc75d84bd11b09bf3e4e",
+      "kind": "p",
+      "chapter": "ذكر-محبة-الله-تعالى-لمن-يبتلى-من-عباده-المسلمين-الصالحين",
+      "prev": "aefdccc67c483ffe9f762dabda1419aeab39967022980909d71d79fbc3bf016d",
+      "next": "bb03750075d7b1ef9ab5c2b81cce4cde663fa72c214b28dbf03eeeff211588da"
+    },
+    {
+      "ord": 69,
+      "blockId": "fe22901d00a69d33bd6d5fa092ac2200",
+      "fp64": "625a21d645756974",
+      "normHash": "bb03750075d7b1ef9ab5c2b81cce4cde663fa72c214b28dbf03eeeff211588da",
+      "kind": "p",
+      "chapter": "ذكر-محبة-الله-تعالى-لمن-يبتلى-من-عباده-المسلمين-الصالحين",
+      "prev": "c1f1d51ad96b5b1beaf66d71bf5e5b236a766de68623cc75d84bd11b09bf3e4e",
+      "next": "1f5c95dd181fafab5ad8c3809f93d70ab61f027b931d166084ec5a22acdf12cc"
+    },
+    {
+      "ord": 70,
+      "blockId": "15bd223fe2ca5c1848bb59cccdda1023",
+      "fp64": "35dffb9e5fbdf3f6",
+      "normHash": "1f5c95dd181fafab5ad8c3809f93d70ab61f027b931d166084ec5a22acdf12cc",
+      "kind": "page",
+      "chapter": "ذكر-محبة-الله-تعالى-لمن-يبتلى-من-عباده-المسلمين-الصالحين",
+      "prev": "bb03750075d7b1ef9ab5c2b81cce4cde663fa72c214b28dbf03eeeff211588da",
+      "next": "c9af8ccd66f358e8ccf7694273036ed7540386f763cdd7694abf4200253fcc03"
+    },
+    {
+      "ord": 71,
+      "blockId": "aff3228ad60696505124136810a58bb3",
+      "fp64": "ae866efdbfa77d4c",
+      "normHash": "c9af8ccd66f358e8ccf7694273036ed7540386f763cdd7694abf4200253fcc03",
+      "kind": "h2",
+      "chapter": "ذكر-أن-ما-يصيب-المؤمن-من-الأذى-ونحوه-يكفر-الله-تعالى-به-من-خطاياه",
+      "prev": "1f5c95dd181fafab5ad8c3809f93d70ab61f027b931d166084ec5a22acdf12cc",
+      "next": "9904aa3f3f273dd13f90955bce083e04d4e1a38e53a79bcb7fb0aa4c59c64dc5"
+    },
+    {
+      "ord": 72,
+      "blockId": "e4113cf77f198339c6029c7e946c8a5e",
+      "fp64": "e4444c5d177c7bbc",
+      "normHash": "9904aa3f3f273dd13f90955bce083e04d4e1a38e53a79bcb7fb0aa4c59c64dc5",
+      "kind": "p",
+      "chapter": "ذكر-أن-ما-يصيب-المؤمن-من-الأذى-ونحوه-يكفر-الله-تعالى-به-من-خطاياه",
+      "prev": "c9af8ccd66f358e8ccf7694273036ed7540386f763cdd7694abf4200253fcc03",
+      "next": "57f37e4170198b51df43f9f91c1da5ed25f7173762cf30cc3c502d5a79916044"
+    },
+    {
+      "ord": 73,
+      "blockId": "aaee9afe7efa3d64b6775873e7d75906",
+      "fp64": "35fff7ff5b31e5b6",
+      "normHash": "57f37e4170198b51df43f9f91c1da5ed25f7173762cf30cc3c502d5a79916044",
+      "kind": "page",
+      "chapter": "ذكر-أن-ما-يصيب-المؤمن-من-الأذى-ونحوه-يكفر-الله-تعالى-به-من-خطاياه",
+      "prev": "9904aa3f3f273dd13f90955bce083e04d4e1a38e53a79bcb7fb0aa4c59c64dc5",
+      "next": "eb605058f2574624930ae21d3835fa1647808053a0230a6fad1f2dcee13f7028"
+    },
+    {
+      "ord": 74,
+      "blockId": "11814c0fe232d6ff7e61c3a70c2285b6",
+      "fp64": "a442e01f9f3a71fe",
+      "normHash": "eb605058f2574624930ae21d3835fa1647808053a0230a6fad1f2dcee13f7028",
+      "kind": "p",
+      "chapter": "ذكر-أن-ما-يصيب-المؤمن-من-الأذى-ونحوه-يكفر-الله-تعالى-به-من-خطاياه",
+      "prev": "57f37e4170198b51df43f9f91c1da5ed25f7173762cf30cc3c502d5a79916044",
+      "next": "bf92ff4b2cbc3ffc725dfda38946f0bc79871029738582995a42892d18cb1363"
+    },
+    {
+      "ord": 75,
+      "blockId": "c6fdfa2e33c6b76396aca7e8c96e6dfe",
+      "fp64": "bf6cce7bd9773fec",
+      "normHash": "bf92ff4b2cbc3ffc725dfda38946f0bc79871029738582995a42892d18cb1363",
+      "kind": "p",
+      "chapter": "ذكر-أن-ما-يصيب-المؤمن-من-الأذى-ونحوه-يكفر-الله-تعالى-به-من-خطاياه",
+      "prev": "eb605058f2574624930ae21d3835fa1647808053a0230a6fad1f2dcee13f7028",
+      "next": "0945451d6a67305c701f6623a542545a31a1a9ac173f4d6c7e4bca9adeec168c"
+    },
+    {
+      "ord": 76,
+      "blockId": "df0c220dca62280438d1cab613bab33f",
+      "fp64": "ff9aeddf9e27356d",
+      "normHash": "0945451d6a67305c701f6623a542545a31a1a9ac173f4d6c7e4bca9adeec168c",
+      "kind": "h2",
+      "chapter": "ذكر-أن-الله-يرفع-درجة-المؤمن-بما-يصيبه-من-البلاء",
+      "prev": "bf92ff4b2cbc3ffc725dfda38946f0bc79871029738582995a42892d18cb1363",
+      "next": "0fab903b938e2c0a258e4d7193521ba5afe74df4ef144fd1ddb2c38061d8e726"
+    },
+    {
+      "ord": 77,
+      "blockId": "3c2798ad2ccac966eea7d39417618b06",
+      "fp64": "745be015973f5bfd",
+      "normHash": "0fab903b938e2c0a258e4d7193521ba5afe74df4ef144fd1ddb2c38061d8e726",
+      "kind": "p",
+      "chapter": "ذكر-أن-الله-يرفع-درجة-المؤمن-بما-يصيبه-من-البلاء",
+      "prev": "0945451d6a67305c701f6623a542545a31a1a9ac173f4d6c7e4bca9adeec168c",
+      "next": "5c2dbccd5813f460f64656bba156563dcb7ae4048da6ee39179e2e2adb255e0b"
+    },
+    {
+      "ord": 78,
+      "blockId": "dc7d1ea86168aff38f7edf48cf638fa9",
+      "fp64": "45fa60990e7f79b5",
+      "normHash": "5c2dbccd5813f460f64656bba156563dcb7ae4048da6ee39179e2e2adb255e0b",
+      "kind": "p",
+      "chapter": "ذكر-أن-الله-يرفع-درجة-المؤمن-بما-يصيبه-من-البلاء",
+      "prev": "0fab903b938e2c0a258e4d7193521ba5afe74df4ef144fd1ddb2c38061d8e726",
+      "next": "8bdfd64f297cb4f46a40fb573a4ddedb248ee4a29471671507327f8356aee87e"
+    },
+    {
+      "ord": 79,
+      "blockId": "71bb9c7afb713e232ce76e2318e39621",
+      "fp64": "35dff7fa5a3374bf",
+      "normHash": "8bdfd64f297cb4f46a40fb573a4ddedb248ee4a29471671507327f8356aee87e",
+      "kind": "page",
+      "chapter": "ذكر-أن-الله-يرفع-درجة-المؤمن-بما-يصيبه-من-البلاء",
+      "prev": "5c2dbccd5813f460f64656bba156563dcb7ae4048da6ee39179e2e2adb255e0b",
+      "next": "c5e60005deb8ec991e8bf6ea491e7e0ec1ccbab2e6abe38c124b255b58a0d766"
+    },
+    {
+      "ord": 80,
+      "blockId": "5237e72abd2c803b31a1e170a2ac8998",
+      "fp64": "63a6b20f8977eb7f",
+      "normHash": "c5e60005deb8ec991e8bf6ea491e7e0ec1ccbab2e6abe38c124b255b58a0d766",
+      "kind": "h2",
+      "chapter": "ذكر-أن-الحمى-والمرض-يكونان-طهورا",
+      "prev": "8bdfd64f297cb4f46a40fb573a4ddedb248ee4a29471671507327f8356aee87e",
+      "next": "cb4b6f4d9cca3ed109675488e9e58d50b247f22750db17fe726f6125705399cd"
+    },
+    {
+      "ord": 81,
+      "blockId": "afd4fbc3b69cbb40043bc658c4545704",
+      "fp64": "6642e0970d50697c",
+      "normHash": "cb4b6f4d9cca3ed109675488e9e58d50b247f22750db17fe726f6125705399cd",
+      "kind": "p",
+      "chapter": "ذكر-أن-الحمى-والمرض-يكونان-طهورا",
+      "prev": "c5e60005deb8ec991e8bf6ea491e7e0ec1ccbab2e6abe38c124b255b58a0d766",
+      "next": "4bbbeca6742f12c299ee9874c27e783f7f3f2b0b40fb7eff785b2d2e7693ddd5"
+    },
+    {
+      "ord": 82,
+      "blockId": "37ab621046d81b7c1600106110165854",
+      "fp64": "afffff9b7fb5617e",
+      "normHash": "4bbbeca6742f12c299ee9874c27e783f7f3f2b0b40fb7eff785b2d2e7693ddd5",
+      "kind": "page",
+      "chapter": "ذكر-أن-الحمى-والمرض-يكونان-طهورا",
+      "prev": "cb4b6f4d9cca3ed109675488e9e58d50b247f22750db17fe726f6125705399cd",
+      "next": "d83eb80eaa6e47b293aacd9ddfa6c9c03d44dbca8c93a4b75cfdce9a09a6a687"
+    },
+    {
+      "ord": 83,
+      "blockId": "c73dd73737b821d2509408993dd2680d",
+      "fp64": "ee42e9df1d38797c",
+      "normHash": "d83eb80eaa6e47b293aacd9ddfa6c9c03d44dbca8c93a4b75cfdce9a09a6a687",
+      "kind": "p",
+      "chapter": "ذكر-أن-الحمى-والمرض-يكونان-طهورا",
+      "prev": "4bbbeca6742f12c299ee9874c27e783f7f3f2b0b40fb7eff785b2d2e7693ddd5",
+      "next": "a31db20bf9c53734e8ac4e71a956b196d3ac4fd2b5905035cdb747b886627a28"
+    },
+    {
+      "ord": 84,
+      "blockId": "5959a2fde0c56eed6e374b7418b113c6",
+      "fp64": "8ce9c7aaf3fff92f",
+      "normHash": "a31db20bf9c53734e8ac4e71a956b196d3ac4fd2b5905035cdb747b886627a28",
+      "kind": "p",
+      "chapter": "ذكر-أن-الحمى-والمرض-يكونان-طهورا",
+      "prev": "d83eb80eaa6e47b293aacd9ddfa6c9c03d44dbca8c93a4b75cfdce9a09a6a687",
+      "next": "c2e5ec499c041da0ca3ab6ab1146db3b1f4719e299d00b7bb5ed6dd8e308dd99"
+    },
+    {
+      "ord": 85,
+      "blockId": "d8d2d3fbe4358e935f7e5a6eee3b3e44",
+      "fp64": "27fffbde7a31e9be",
+      "normHash": "c2e5ec499c041da0ca3ab6ab1146db3b1f4719e299d00b7bb5ed6dd8e308dd99",
+      "kind": "page",
+      "chapter": "ذكر-أن-الحمى-والمرض-يكونان-طهورا",
+      "prev": "a31db20bf9c53734e8ac4e71a956b196d3ac4fd2b5905035cdb747b886627a28",
+      "next": "807adc70e09d20fc88a9d0e73a0cad309745be46a9d201690f5157f1663bf66f"
+    },
+    {
+      "ord": 86,
+      "blockId": "0cc87a6df8bf25ccc19894ecb251442f",
+      "fp64": "c38d0e7934227700",
+      "normHash": "807adc70e09d20fc88a9d0e73a0cad309745be46a9d201690f5157f1663bf66f",
+      "kind": "h2",
+      "chapter": "ذكر-مثل-المؤمن-ومثل-المنافق",
+      "prev": "c2e5ec499c041da0ca3ab6ab1146db3b1f4719e299d00b7bb5ed6dd8e308dd99",
+      "next": "5618d8e7873e0e234416cbf7fe34cdcb5c62283b66f0557ddfa10c353964cecb"
+    },
+    {
+      "ord": 87,
+      "blockId": "06e619231c71a74c3478ba24dd7e82bc",
+      "fp64": "9586e37e1122f338",
+      "normHash": "5618d8e7873e0e234416cbf7fe34cdcb5c62283b66f0557ddfa10c353964cecb",
+      "kind": "p",
+      "chapter": "ذكر-مثل-المؤمن-ومثل-المنافق",
+      "prev": "807adc70e09d20fc88a9d0e73a0cad309745be46a9d201690f5157f1663bf66f",
+      "next": "b46e6923a0be5a76f4a246c38e1cdd730d028270f56f2c5716ded45f3af2b500"
+    },
+    {
+      "ord": 88,
+      "blockId": "29b2a343b6640c32d66171a719708863",
+      "fp64": "a5fff3dedbfffef7",
+      "normHash": "b46e6923a0be5a76f4a246c38e1cdd730d028270f56f2c5716ded45f3af2b500",
+      "kind": "page",
+      "chapter": "ذكر-مثل-المؤمن-ومثل-المنافق",
+      "prev": "5618d8e7873e0e234416cbf7fe34cdcb5c62283b66f0557ddfa10c353964cecb",
+      "next": "0cdc1cae28a6c7daf3c7471feb7ee5b2d1532dd1f6a23455d01b522c339ad51c"
+    },
+    {
+      "ord": 89,
+      "blockId": "9685d1b09301c42faf1964e8b4c46522",
+      "fp64": "7ce1e2fdc6382e29",
+      "normHash": "0cdc1cae28a6c7daf3c7471feb7ee5b2d1532dd1f6a23455d01b522c339ad51c",
+      "kind": "p",
+      "chapter": "ذكر-مثل-المؤمن-ومثل-المنافق",
+      "prev": "b46e6923a0be5a76f4a246c38e1cdd730d028270f56f2c5716ded45f3af2b500",
+      "next": "5b9a17cf5f11ea44704050573214cbd567008bf2183332be764c1d86b2475dda"
+    },
+    {
+      "ord": 90,
+      "blockId": "b96cfdd4b643b839dd78d17b768b323e",
+      "fp64": "ade9e7eee3fffc2f",
+      "normHash": "5b9a17cf5f11ea44704050573214cbd567008bf2183332be764c1d86b2475dda",
+      "kind": "p",
+      "chapter": "ذكر-مثل-المؤمن-ومثل-المنافق",
+      "prev": "0cdc1cae28a6c7daf3c7471feb7ee5b2d1532dd1f6a23455d01b522c339ad51c",
+      "next": "f9561102f6f0bb7090974fb237863cb5f8058726d79ee2da8b7b9f3485c54280"
+    },
+    {
+      "ord": 91,
+      "blockId": "c787b659d005769ab677e4d125d83543",
+      "fp64": "2fdffbdadb7ff13f",
+      "normHash": "f9561102f6f0bb7090974fb237863cb5f8058726d79ee2da8b7b9f3485c54280",
+      "kind": "page",
+      "chapter": "ذكر-مثل-المؤمن-ومثل-المنافق",
+      "prev": "5b9a17cf5f11ea44704050573214cbd567008bf2183332be764c1d86b2475dda",
+      "next": "a8888ce12e365580de2297b49170e84a2f1633c9f5db221aa656ecc6912dfd18"
+    },
+    {
+      "ord": 92,
+      "blockId": "dbe0219bfe48bca8fdf79a736dd111b5",
+      "fp64": "971eaff313469fdf",
+      "normHash": "a8888ce12e365580de2297b49170e84a2f1633c9f5db221aa656ecc6912dfd18",
+      "kind": "h2",
+      "chapter": "ذكر-من-صبر-على-البلاء-لينال-درجة-البقاء",
+      "prev": "f9561102f6f0bb7090974fb237863cb5f8058726d79ee2da8b7b9f3485c54280",
+      "next": "170e394df402a043fdbca6e02c53deb92fbc42258c60fd99cd9bdc15d708482b"
+    },
+    {
+      "ord": 93,
+      "blockId": "e300a2935ad56d459d695fc234d1bd45",
+      "fp64": "e51a401667f27014",
+      "normHash": "170e394df402a043fdbca6e02c53deb92fbc42258c60fd99cd9bdc15d708482b",
+      "kind": "p",
+      "chapter": "ذكر-من-صبر-على-البلاء-لينال-درجة-البقاء",
+      "prev": "a8888ce12e365580de2297b49170e84a2f1633c9f5db221aa656ecc6912dfd18",
+      "next": "8d3b9cd4d62f6803c5653cd8dfb6b0988db682988ca34c5c4b02e3a3bc23adc0"
+    },
+    {
+      "ord": 94,
+      "blockId": "766343081eaadea25e7cd3048823c6a4",
+      "fp64": "3480ac041c3069fc",
+      "normHash": "8d3b9cd4d62f6803c5653cd8dfb6b0988db682988ca34c5c4b02e3a3bc23adc0",
+      "kind": "p",
+      "chapter": "ذكر-من-صبر-على-البلاء-لينال-درجة-البقاء",
+      "prev": "170e394df402a043fdbca6e02c53deb92fbc42258c60fd99cd9bdc15d708482b",
+      "next": "d284cc0fd73584653510c35a6a017f8ad937e30f2bef536e7df256f97d22e433"
+    },
+    {
+      "ord": 95,
+      "blockId": "786cbbae31b1626f67080733c6f2319f",
+      "fp64": "a5dff7da5e73eb76",
+      "normHash": "d284cc0fd73584653510c35a6a017f8ad937e30f2bef536e7df256f97d22e433",
+      "kind": "page",
+      "chapter": "ذكر-من-صبر-على-البلاء-لينال-درجة-البقاء",
+      "prev": "8d3b9cd4d62f6803c5653cd8dfb6b0988db682988ca34c5c4b02e3a3bc23adc0",
+      "next": "a7030b319530e51bc6bd713d80012a9a5cd0af10e631c27de5b8463143dbf6c6"
+    },
+    {
+      "ord": 96,
+      "blockId": "9767539c00fbec395be6455ae8251595",
+      "fp64": "3451a6179eb0e97e",
+      "normHash": "a7030b319530e51bc6bd713d80012a9a5cd0af10e631c27de5b8463143dbf6c6",
+      "kind": "p",
+      "chapter": "ذكر-من-صبر-على-البلاء-لينال-درجة-البقاء",
+      "prev": "d284cc0fd73584653510c35a6a017f8ad937e30f2bef536e7df256f97d22e433",
+      "next": "1d8f627a230c4aded9c92c578af0547663599956801950eefe1234e5f3341090"
+    },
+    {
+      "ord": 97,
+      "blockId": "396b878ab760287d19f463c81f78d882",
+      "fp64": "2759a0d015d0a054",
+      "normHash": "1d8f627a230c4aded9c92c578af0547663599956801950eefe1234e5f3341090",
+      "kind": "p",
+      "chapter": "ذكر-من-صبر-على-البلاء-لينال-درجة-البقاء",
+      "prev": "a7030b319530e51bc6bd713d80012a9a5cd0af10e631c27de5b8463143dbf6c6",
+      "next": "89e34329ab90aa190773ce2438a8e1c6bd4a1fdaab455c2d4345beefa0f8a62f"
+    },
+    {
+      "ord": 98,
+      "blockId": "8bbca1b607a554c335654ab79fa9034a",
+      "fp64": "37ffff9e7a3ffc37",
+      "normHash": "89e34329ab90aa190773ce2438a8e1c6bd4a1fdaab455c2d4345beefa0f8a62f",
+      "kind": "page",
+      "chapter": "ذكر-من-صبر-على-البلاء-لينال-درجة-البقاء",
+      "prev": "1d8f627a230c4aded9c92c578af0547663599956801950eefe1234e5f3341090",
+      "next": "016d85bb47612c1de0e1f8ad2793112e9f2c0629f1f48cb5766cfb7e93395532"
+    },
+    {
+      "ord": 99,
+      "blockId": "0941caf19b74a348e6e03a90dd6d43e6",
+      "fp64": "e59a601677f1f074",
+      "normHash": "016d85bb47612c1de0e1f8ad2793112e9f2c0629f1f48cb5766cfb7e93395532",
+      "kind": "p",
+      "chapter": "ذكر-من-صبر-على-البلاء-لينال-درجة-البقاء",
+      "prev": "89e34329ab90aa190773ce2438a8e1c6bd4a1fdaab455c2d4345beefa0f8a62f",
+      "next": "5208444bb102e7e00fbee1bec20a34c34f549de3eba31aa035a3674d177d48eb"
+    },
+    {
+      "ord": 100,
+      "blockId": "8efcd788c3aaed136f7b2ae550dafb6b",
+      "fp64": "7c46c21137014a0d",
+      "normHash": "5208444bb102e7e00fbee1bec20a34c34f549de3eba31aa035a3674d177d48eb",
+      "kind": "p",
+      "chapter": "ذكر-من-صبر-على-البلاء-لينال-درجة-البقاء",
+      "prev": "016d85bb47612c1de0e1f8ad2793112e9f2c0629f1f48cb5766cfb7e93395532",
+      "next": "489052c7710e854d0825525199b779e6eb09c51874ec1af7b65682f543057dc8"
+    },
+    {
+      "ord": 101,
+      "blockId": "795cc9cccd149a334a39bde0810df6ec",
+      "fp64": "675e225687fde054",
+      "normHash": "489052c7710e854d0825525199b779e6eb09c51874ec1af7b65682f543057dc8",
+      "kind": "p",
+      "chapter": "ذكر-من-صبر-على-البلاء-لينال-درجة-البقاء",
+      "prev": "5208444bb102e7e00fbee1bec20a34c34f549de3eba31aa035a3674d177d48eb",
+      "next": "d15b179e167fbe2018307a297844878e1063892d3125b9fb67c238a031181c3f"
+    },
+    {
+      "ord": 102,
+      "blockId": "79472f9d05f69e8f32eb67c2cbac5ae4",
+      "fp64": "4eca5cffff7ffdf7",
+      "normHash": "d15b179e167fbe2018307a297844878e1063892d3125b9fb67c238a031181c3f",
+      "kind": "p",
+      "chapter": "ذكر-من-صبر-على-البلاء-لينال-درجة-البقاء",
+      "prev": "489052c7710e854d0825525199b779e6eb09c51874ec1af7b65682f543057dc8",
+      "next": "fbe3e8d287e8ee688a1af4f098432b4d5d351d6a8e283e6a697d9744ebedf4f3"
+    },
+    {
+      "ord": 103,
+      "blockId": "3275cf72aebd01044e7f25adeac6b781",
+      "fp64": "7dfff3fa5eb16837",
+      "normHash": "fbe3e8d287e8ee688a1af4f098432b4d5d351d6a8e283e6a697d9744ebedf4f3",
+      "kind": "page",
+      "chapter": "ذكر-من-صبر-على-البلاء-لينال-درجة-البقاء",
+      "prev": "d15b179e167fbe2018307a297844878e1063892d3125b9fb67c238a031181c3f",
+      "next": "3ed90aad457ce2ee103c02207b3d879ce653735d470fbae2eec1504b34430674"
+    },
+    {
+      "ord": 104,
+      "blockId": "f08de5097f2f8a802e32e96e493e9155",
+      "fp64": "d797bbda030e275b",
+      "normHash": "3ed90aad457ce2ee103c02207b3d879ce653735d470fbae2eec1504b34430674",
+      "kind": "h2",
+      "chapter": "ذكر-الأجر-على-ذهاب-البصر-إذا-احتسب-صاحبه-وصبر",
+      "prev": "fbe3e8d287e8ee688a1af4f098432b4d5d351d6a8e283e6a697d9744ebedf4f3",
+      "next": "e84112540ae9f0ae0e2cd32b8ce82c63b302c5c98702c75f253a1e6d6be34496"
+    },
+    {
+      "ord": 105,
+      "blockId": "d095c4436ef076028a8ffb4d21fec0fa",
+      "fp64": "241af0951f49105c",
+      "normHash": "e84112540ae9f0ae0e2cd32b8ce82c63b302c5c98702c75f253a1e6d6be34496",
+      "kind": "p",
+      "chapter": "ذكر-الأجر-على-ذهاب-البصر-إذا-احتسب-صاحبه-وصبر",
+      "prev": "3ed90aad457ce2ee103c02207b3d879ce653735d470fbae2eec1504b34430674",
+      "next": "2baede15b7a04a980f0cea168ba2000d763fd4d7bd2cdce7006fbd303b44260d"
+    },
+    {
+      "ord": 106,
+      "blockId": "c9f13fb635f1cb19dbba68af600240b2",
+      "fp64": "f5dffbfeff3bf236",
+      "normHash": "2baede15b7a04a980f0cea168ba2000d763fd4d7bd2cdce7006fbd303b44260d",
+      "kind": "page",
+      "chapter": "ذكر-الأجر-على-ذهاب-البصر-إذا-احتسب-صاحبه-وصبر",
+      "prev": "e84112540ae9f0ae0e2cd32b8ce82c63b302c5c98702c75f253a1e6d6be34496",
+      "next": "53c1ca6abab8c0426fd00ecf7844e41f5b3e12e0526f613e606fc10d310da70d"
+    },
+    {
+      "ord": 107,
+      "blockId": "cf543912e412d362297b498a100dff18",
+      "fp64": "ac50c05f9a7c613c",
+      "normHash": "53c1ca6abab8c0426fd00ecf7844e41f5b3e12e0526f613e606fc10d310da70d",
+      "kind": "p",
+      "chapter": "ذكر-الأجر-على-ذهاب-البصر-إذا-احتسب-صاحبه-وصبر",
+      "prev": "2baede15b7a04a980f0cea168ba2000d763fd4d7bd2cdce7006fbd303b44260d",
+      "next": "92afb1176de52ee501df95bccbeaf67675ee1793618aef0d562d5590b62bb490"
+    },
+    {
+      "ord": 108,
+      "blockId": "d718579cba9c0e2f1e2f6ce35d07ca09",
+      "fp64": "fe44fc548af690c3",
+      "normHash": "92afb1176de52ee501df95bccbeaf67675ee1793618aef0d562d5590b62bb490",
+      "kind": "p",
+      "chapter": "ذكر-الأجر-على-ذهاب-البصر-إذا-احتسب-صاحبه-وصبر",
+      "prev": "53c1ca6abab8c0426fd00ecf7844e41f5b3e12e0526f613e606fc10d310da70d",
+      "next": "3d4be150b0d94f8283ae255b7b4f85745f58a1efc21997e67eafd71cb3f686ee"
+    },
+    {
+      "ord": 109,
+      "blockId": "89ed74171013a215fd4a947e778ece6e",
+      "fp64": "e05ac0c687f1f1d4",
+      "normHash": "3d4be150b0d94f8283ae255b7b4f85745f58a1efc21997e67eafd71cb3f686ee",
+      "kind": "p",
+      "chapter": "ذكر-الأجر-على-ذهاب-البصر-إذا-احتسب-صاحبه-وصبر",
+      "prev": "92afb1176de52ee501df95bccbeaf67675ee1793618aef0d562d5590b62bb490",
+      "next": "e4b5b8347c19b386c0a59c14dd7c52742344a8ec41061f747343ce9bae742e64"
+    },
+    {
+      "ord": 110,
+      "blockId": "d9dd7ad987cbc73e12450e05fe557771",
+      "fp64": "67dff7daffb7e876",
+      "normHash": "e4b5b8347c19b386c0a59c14dd7c52742344a8ec41061f747343ce9bae742e64",
+      "kind": "page",
+      "chapter": "ذكر-الأجر-على-ذهاب-البصر-إذا-احتسب-صاحبه-وصبر",
+      "prev": "3d4be150b0d94f8283ae255b7b4f85745f58a1efc21997e67eafd71cb3f686ee",
+      "next": "843a0bd41c10e4d663705d710452b360e52866cc245daae928111b5203b4d944"
+    },
+    {
+      "ord": 111,
+      "blockId": "37e0bef735f0c846b1bc13cba5e90547",
+      "fp64": "b452c0167771717c",
+      "normHash": "843a0bd41c10e4d663705d710452b360e52866cc245daae928111b5203b4d944",
+      "kind": "p",
+      "chapter": "ذكر-الأجر-على-ذهاب-البصر-إذا-احتسب-صاحبه-وصبر",
+      "prev": "e4b5b8347c19b386c0a59c14dd7c52742344a8ec41061f747343ce9bae742e64",
+      "next": "adee954f5cd637ef1ea38e10ee38d1ee38525f141c96d1cc46c53a7e13e67443"
+    },
+    {
+      "ord": 112,
+      "blockId": "df5812aaeb1dc4bc4538b883e2d958e2",
+      "fp64": "a8ebaebcf0139c1f",
+      "normHash": "adee954f5cd637ef1ea38e10ee38d1ee38525f141c96d1cc46c53a7e13e67443",
+      "kind": "p",
+      "chapter": "ذكر-الأجر-على-ذهاب-البصر-إذا-احتسب-صاحبه-وصبر",
+      "prev": "843a0bd41c10e4d663705d710452b360e52866cc245daae928111b5203b4d944",
+      "next": "d0cd4be1a5eb9385dd71ab4ca20e6480e8b8c31bcfa51c243b22d233236e79b5"
+    },
+    {
+      "ord": 113,
+      "blockId": "4208b8722302774f6391515f4d7b8cac",
+      "fp64": "8731ec9b64663bcf",
+      "normHash": "d0cd4be1a5eb9385dd71ab4ca20e6480e8b8c31bcfa51c243b22d233236e79b5",
+      "kind": "p",
+      "chapter": "ذكر-الأجر-على-ذهاب-البصر-إذا-احتسب-صاحبه-وصبر",
+      "prev": "adee954f5cd637ef1ea38e10ee38d1ee38525f141c96d1cc46c53a7e13e67443",
+      "next": "9c9b187054d53fa17b11a2d87765d9df20fbd4cec6886002d740a7c9bb0af55b"
+    },
+    {
+      "ord": 114,
+      "blockId": "da88de937c3f2c9cd182aaa9f8142fe4",
+      "fp64": "623f665795797214",
+      "normHash": "9c9b187054d53fa17b11a2d87765d9df20fbd4cec6886002d740a7c9bb0af55b",
+      "kind": "p",
+      "chapter": "ذكر-الأجر-على-ذهاب-البصر-إذا-احتسب-صاحبه-وصبر",
+      "prev": "d0cd4be1a5eb9385dd71ab4ca20e6480e8b8c31bcfa51c243b22d233236e79b5",
+      "next": "d15b179e167fbe2018307a297844878e1063892d3125b9fb67c238a031181c3f"
+    },
+    {
+      "ord": 115,
+      "blockId": "52cc105de89f4afb7b8340ca3a466598",
+      "fp64": "4eca5cffff7ffdf7",
+      "normHash": "d15b179e167fbe2018307a297844878e1063892d3125b9fb67c238a031181c3f",
+      "kind": "p",
+      "chapter": "ذكر-الأجر-على-ذهاب-البصر-إذا-احتسب-صاحبه-وصبر",
+      "prev": "9c9b187054d53fa17b11a2d87765d9df20fbd4cec6886002d740a7c9bb0af55b",
+      "next": "f362d40dd92d26efd1bb1a1ffd8eb4900c32653f5b46ff18964524200c47f536"
+    },
+    {
+      "ord": 116,
+      "blockId": "bc8dd572ebe01e6f3fbe0ba7803aaed5",
+      "fp64": "77fff3dede7577fe",
+      "normHash": "f362d40dd92d26efd1bb1a1ffd8eb4900c32653f5b46ff18964524200c47f536",
+      "kind": "page",
+      "chapter": "ذكر-الأجر-على-ذهاب-البصر-إذا-احتسب-صاحبه-وصبر",
+      "prev": "d15b179e167fbe2018307a297844878e1063892d3125b9fb67c238a031181c3f",
+      "next": "53304bca101581721b35a10b169dbf37f5a69a6132311d3c31141a11fdd205ca"
+    },
+    {
+      "ord": 117,
+      "blockId": "0709916e5ae9eedb8252683369816dd7",
+      "fp64": "b0c00c641b755727",
+      "normHash": "53304bca101581721b35a10b169dbf37f5a69a6132311d3c31141a11fdd205ca",
+      "kind": "h2",
+      "chapter": "ذكر-أن-الله-عز-وجل-يكتب-للمريض-أجر-ما-كان-يعمل-من-الخير-وهو-صحيح",
+      "prev": "f362d40dd92d26efd1bb1a1ffd8eb4900c32653f5b46ff18964524200c47f536",
+      "next": "54230f6642be32ea8b58702f62d676e52429525d5911c8c68c3be3dd28c1e9cb"
+    },
+    {
+      "ord": 118,
+      "blockId": "a1aefd5af5a7528d409e63823ff6c45d",
+      "fp64": "ae42605edf795f74",
+      "normHash": "54230f6642be32ea8b58702f62d676e52429525d5911c8c68c3be3dd28c1e9cb",
+      "kind": "p",
+      "chapter": "ذكر-أن-الله-عز-وجل-يكتب-للمريض-أجر-ما-كان-يعمل-من-الخير-وهو-صحيح",
+      "prev": "53304bca101581721b35a10b169dbf37f5a69a6132311d3c31141a11fdd205ca",
+      "next": "de8bd55dba373da8caacb88845de4c23772680415d1174edec77800d3a5ce5ec"
+    },
+    {
+      "ord": 119,
+      "blockId": "130e64e573e4b86e4681dcae15faf615",
+      "fp64": "e21240c6a6f96554",
+      "normHash": "de8bd55dba373da8caacb88845de4c23772680415d1174edec77800d3a5ce5ec",
+      "kind": "p",
+      "chapter": "ذكر-أن-الله-عز-وجل-يكتب-للمريض-أجر-ما-كان-يعمل-من-الخير-وهو-صحيح",
+      "prev": "54230f6642be32ea8b58702f62d676e52429525d5911c8c68c3be3dd28c1e9cb",
+      "next": "d74629aeaa24add6bfb07f56dafc5124cd20f139aff02754c8f197ff05519bb8"
+    },
+    {
+      "ord": 120,
+      "blockId": "390b237ca7e2f9efc3d76440a78588b6",
+      "fp64": "35dff3ff5fff6876",
+      "normHash": "d74629aeaa24add6bfb07f56dafc5124cd20f139aff02754c8f197ff05519bb8",
+      "kind": "page",
+      "chapter": "ذكر-أن-الله-عز-وجل-يكتب-للمريض-أجر-ما-كان-يعمل-من-الخير-وهو-صحيح",
+      "prev": "de8bd55dba373da8caacb88845de4c23772680415d1174edec77800d3a5ce5ec",
+      "next": "2609ccbb86008ea758ea8b0b658030683063b4573496b95d79eb6a1c1f37e392"
+    },
+    {
+      "ord": 121,
+      "blockId": "ac2f1580b5985df987188b4901cf11c7",
+      "fp64": "960e615ed7577fde",
+      "normHash": "2609ccbb86008ea758ea8b0b658030683063b4573496b95d79eb6a1c1f37e392",
+      "kind": "p",
+      "chapter": "ذكر-أن-الله-عز-وجل-يكتب-للمريض-أجر-ما-كان-يعمل-من-الخير-وهو-صحيح",
+      "prev": "d74629aeaa24add6bfb07f56dafc5124cd20f139aff02754c8f197ff05519bb8",
+      "next": "7c92786e1d5f8bfe6c87ee06a69f9b6a2005e78401ef1b128bac995bd000abcc"
+    },
+    {
+      "ord": 122,
+      "blockId": "cc674c5d397ca9cc548100648ca6fee2",
+      "fp64": "9fbdab9f6c17fbeb",
+      "normHash": "7c92786e1d5f8bfe6c87ee06a69f9b6a2005e78401ef1b128bac995bd000abcc",
+      "kind": "p",
+      "chapter": "ذكر-أن-الله-عز-وجل-يكتب-للمريض-أجر-ما-كان-يعمل-من-الخير-وهو-صحيح",
+      "prev": "2609ccbb86008ea758ea8b0b658030683063b4573496b95d79eb6a1c1f37e392",
+      "next": "c8f9ceffb179d6c2e60f52b88352310d372ef415202f874881bb1434e1a4b6b1"
+    },
+    {
+      "ord": 123,
+      "blockId": "29b13d17a35442caefe043d7139a3a81",
+      "fp64": "b5fffb9b7eb77e3e",
+      "normHash": "c8f9ceffb179d6c2e60f52b88352310d372ef415202f874881bb1434e1a4b6b1",
+      "kind": "page",
+      "chapter": "ذكر-أن-الله-عز-وجل-يكتب-للمريض-أجر-ما-كان-يعمل-من-الخير-وهو-صحيح",
+      "prev": "7c92786e1d5f8bfe6c87ee06a69f9b6a2005e78401ef1b128bac995bd000abcc",
+      "next": "ba527cd15dcfb487c313d21bf4c5119fe62bf53f7db074fc9d77291358ec1735"
+    },
+    {
+      "ord": 124,
+      "blockId": "1825585b16cb0851e50679d9d14bdbd0",
+      "fp64": "42ad8a7b03332269",
+      "normHash": "ba527cd15dcfb487c313d21bf4c5119fe62bf53f7db074fc9d77291358ec1735",
+      "kind": "h2",
+      "chapter": "ذكر-أجر-المسترجع-على-المصيبة",
+      "prev": "c8f9ceffb179d6c2e60f52b88352310d372ef415202f874881bb1434e1a4b6b1",
+      "next": "e44af8903694aa5c952e25a39786bcf32f4a5598a2145ac539e5041fdfa77e1c"
+    },
+    {
+      "ord": 125,
+      "blockId": "fa1f165823dfee9d2e3489bbf534a1a1",
+      "fp64": "e5ba6096e6fb7074",
+      "normHash": "e44af8903694aa5c952e25a39786bcf32f4a5598a2145ac539e5041fdfa77e1c",
+      "kind": "p",
+      "chapter": "ذكر-أجر-المسترجع-على-المصيبة",
+      "prev": "ba527cd15dcfb487c313d21bf4c5119fe62bf53f7db074fc9d77291358ec1735",
+      "next": "a36f1b6c846c9f3efd8b04417d14e50da3857191aa595d2172d8629ccdcede6b"
+    },
+    {
+      "ord": 126,
+      "blockId": "1b82981227048d10bc931db74b569d1b",
+      "fp64": "e6a4e0de9376579c",
+      "normHash": "a36f1b6c846c9f3efd8b04417d14e50da3857191aa595d2172d8629ccdcede6b",
+      "kind": "p",
+      "chapter": "ذكر-أجر-المسترجع-على-المصيبة",
+      "prev": "e44af8903694aa5c952e25a39786bcf32f4a5598a2145ac539e5041fdfa77e1c",
+      "next": "112ce97c5f322de453c9ac8a45adf155f1a8097f9afc40dab296dac3d7af259d"
+    },
+    {
+      "ord": 127,
+      "blockId": "ccd631b52a7de315bbdf9bb5f82a2aa3",
+      "fp64": "1f6ca55375f49fdd",
+      "normHash": "112ce97c5f322de453c9ac8a45adf155f1a8097f9afc40dab296dac3d7af259d",
+      "kind": "p",
+      "chapter": "ذكر-أجر-المسترجع-على-المصيبة",
+      "prev": "a36f1b6c846c9f3efd8b04417d14e50da3857191aa595d2172d8629ccdcede6b",
+      "next": "193ed49e430d5f7e16301496f27e2cd2fcf117d5855b606724819a22142cb7c3"
+    },
+    {
+      "ord": 128,
+      "blockId": "15d4b0ca19ee7ed12a059c467078f121",
+      "fp64": "e23e66848559f2d0",
+      "normHash": "193ed49e430d5f7e16301496f27e2cd2fcf117d5855b606724819a22142cb7c3",
+      "kind": "p",
+      "chapter": "ذكر-أجر-المسترجع-على-المصيبة",
+      "prev": "112ce97c5f322de453c9ac8a45adf155f1a8097f9afc40dab296dac3d7af259d",
+      "next": "48c391d9b1cc3aeac6bdc503e99e0cadc040170da2020066c484ac9630e46fe4"
+    },
+    {
+      "ord": 129,
+      "blockId": "70eb689a63ba18d0de682f09e414dc25",
+      "fp64": "b7ffff9adbbffa3f",
+      "normHash": "48c391d9b1cc3aeac6bdc503e99e0cadc040170da2020066c484ac9630e46fe4",
+      "kind": "page",
+      "chapter": "ذكر-أجر-المسترجع-على-المصيبة",
+      "prev": "193ed49e430d5f7e16301496f27e2cd2fcf117d5855b606724819a22142cb7c3",
+      "next": "6d0648f9ba81db8ae0ec9f3b5f140f75fb5daba380e181d392a5b2f1fb60361f"
+    },
+    {
+      "ord": 130,
+      "blockId": "c7ce925d98c14480fce6d9b8d12b2d32",
+      "fp64": "b75dbd332fbeafde",
+      "normHash": "6d0648f9ba81db8ae0ec9f3b5f140f75fb5daba380e181d392a5b2f1fb60361f",
+      "kind": "h2",
+      "chapter": "كتاب-الطب",
+      "prev": "48c391d9b1cc3aeac6bdc503e99e0cadc040170da2020066c484ac9630e46fe4",
+      "next": "ee0eb61c19a655bb470b5da33dd0fd94336a4b582ab83f0c300be60280ffbe39"
+    },
+    {
+      "ord": 131,
+      "blockId": "5b0b8d0e427fa4fb4363130c2ee4dbbc",
+      "fp64": "7dfffb9f7fb1f8b7",
+      "normHash": "ee0eb61c19a655bb470b5da33dd0fd94336a4b582ab83f0c300be60280ffbe39",
+      "kind": "page",
+      "chapter": "كتاب-الطب",
+      "prev": "6d0648f9ba81db8ae0ec9f3b5f140f75fb5daba380e181d392a5b2f1fb60361f",
+      "next": "57d3d6bb77c3ae5e9a01c3fdf81c15ed95aba44993df10a727d2a70058fd7b70"
+    },
+    {
+      "ord": 132,
+      "blockId": "47f3fbe1cd62de3fc662b23795bff304",
+      "fp64": "30c3ccfc9f65d77e",
+      "normHash": "57d3d6bb77c3ae5e9a01c3fdf81c15ed95aba44993df10a727d2a70058fd7b70",
+      "kind": "h2",
+      "chapter": "ذكر-أن-الداء-من-قدر-الله-عز-وجل",
+      "prev": "ee0eb61c19a655bb470b5da33dd0fd94336a4b582ab83f0c300be60280ffbe39",
+      "next": "60cc18b11651ad100db9422370cbf231d6354255058297f28d99f9ea58f6e69f"
+    },
+    {
+      "ord": 133,
+      "blockId": "9f0f11608117fa483c2c94a1b0e38da4",
+      "fp64": "e67a6016a7536156",
+      "normHash": "60cc18b11651ad100db9422370cbf231d6354255058297f28d99f9ea58f6e69f",
+      "kind": "p",
+      "chapter": "ذكر-أن-الداء-من-قدر-الله-عز-وجل",
+      "prev": "57d3d6bb77c3ae5e9a01c3fdf81c15ed95aba44993df10a727d2a70058fd7b70",
+      "next": "0d843afe307da5503e53db5b806f7a9742662dd602bc90ce7fdbe67a2394ebeb"
+    },
+    {
+      "ord": 134,
+      "blockId": "80720b76f596a8ed0da04a92cca6f73e",
+      "fp64": "3c55c0d69f66717e",
+      "normHash": "0d843afe307da5503e53db5b806f7a9742662dd602bc90ce7fdbe67a2394ebeb",
+      "kind": "p",
+      "chapter": "ذكر-أن-الداء-من-قدر-الله-عز-وجل",
+      "prev": "60cc18b11651ad100db9422370cbf231d6354255058297f28d99f9ea58f6e69f",
+      "next": "8018380e47f9c3215ae8ddd052eb8adcae9a700b03654c3df6471e8be7f6a360"
+    },
+    {
+      "ord": 135,
+      "blockId": "fd39b1032f290fcdc51b584f8ddafdb1",
+      "fp64": "6079429685dbe454",
+      "normHash": "8018380e47f9c3215ae8ddd052eb8adcae9a700b03654c3df6471e8be7f6a360",
+      "kind": "p",
+      "chapter": "ذكر-أن-الداء-من-قدر-الله-عز-وجل",
+      "prev": "0d843afe307da5503e53db5b806f7a9742662dd602bc90ce7fdbe67a2394ebeb",
+      "next": "5e6cca545d9cd848cc8ff9d4c8736a4cc638ee43a7a03c4823f1ae7e3ed8f316"
+    },
+    {
+      "ord": 136,
+      "blockId": "c443cb18a47e722910338b8f5973e10f",
+      "fp64": "7fdff3da7e71ebb6",
+      "normHash": "5e6cca545d9cd848cc8ff9d4c8736a4cc638ee43a7a03c4823f1ae7e3ed8f316",
+      "kind": "page",
+      "chapter": "ذكر-أن-الداء-من-قدر-الله-عز-وجل",
+      "prev": "8018380e47f9c3215ae8ddd052eb8adcae9a700b03654c3df6471e8be7f6a360",
+      "next": "3fb41a184c2e0d036e9fcdde7963a9416a4c03f723a1a17e94092aa84b69b5ea"
+    },
+    {
+      "ord": 137,
+      "blockId": "de28884ff20773a5105adc312793b180",
+      "fp64": "d1417cbe7927bf76",
+      "normHash": "3fb41a184c2e0d036e9fcdde7963a9416a4c03f723a1a17e94092aa84b69b5ea",
+      "kind": "h2",
+      "chapter": "ذكر-أن-الله-عز-وجل-لم-ينزل-داء-إلا-أنزل-له-شفاء-إلا-الهرم",
+      "prev": "5e6cca545d9cd848cc8ff9d4c8736a4cc638ee43a7a03c4823f1ae7e3ed8f316",
+      "next": "1e0ff224c75624aa9c838da0a1505b01dfc8c8ebde14540c24e20ef175aca0aa"
+    },
+    {
+      "ord": 138,
+      "blockId": "ac14b94628ff0122612c8ee2956ab8e6",
+      "fp64": "351a409677f2e054",
+      "normHash": "1e0ff224c75624aa9c838da0a1505b01dfc8c8ebde14540c24e20ef175aca0aa",
+      "kind": "p",
+      "chapter": "ذكر-أن-الله-عز-وجل-لم-ينزل-داء-إلا-أنزل-له-شفاء-إلا-الهرم",
+      "prev": "3fb41a184c2e0d036e9fcdde7963a9416a4c03f723a1a17e94092aa84b69b5ea",
+      "next": "019648a11aea82df42098024413cad392c354b835dffe63d8ab6fd5d680c6e86"
+    },
+    {
+      "ord": 139,
+      "blockId": "b6f69c10323c335283103b692635aa6d",
+      "fp64": "2471e057f33a7dfc",
+      "normHash": "019648a11aea82df42098024413cad392c354b835dffe63d8ab6fd5d680c6e86",
+      "kind": "p",
+      "chapter": "ذكر-أن-الله-عز-وجل-لم-ينزل-داء-إلا-أنزل-له-شفاء-إلا-الهرم",
+      "prev": "1e0ff224c75624aa9c838da0a1505b01dfc8c8ebde14540c24e20ef175aca0aa",
+      "next": "6cf3e82cc17a024fd6f502f61f6f5a6d9e70eb70d9c4f11478a19d196c71222a"
+    },
+    {
+      "ord": 140,
+      "blockId": "1b03cb8ba94c4d4dd6f170cbd5d25ecf",
+      "fp64": "611a6096a6d9f054",
+      "normHash": "6cf3e82cc17a024fd6f502f61f6f5a6d9e70eb70d9c4f11478a19d196c71222a",
+      "kind": "p",
+      "chapter": "ذكر-أن-الله-عز-وجل-لم-ينزل-داء-إلا-أنزل-له-شفاء-إلا-الهرم",
+      "prev": "019648a11aea82df42098024413cad392c354b835dffe63d8ab6fd5d680c6e86",
+      "next": "93891de5a160c3a8591df52641979f306acb15e7247cd0cc831307729a337a05"
+    },
+    {
+      "ord": 141,
+      "blockId": "6ba0fb31195acd645cf43dc40ce41605",
+      "fp64": "cbcb6cfbdf758f6e",
+      "normHash": "93891de5a160c3a8591df52641979f306acb15e7247cd0cc831307729a337a05",
+      "kind": "p",
+      "chapter": "ذكر-أن-الله-عز-وجل-لم-ينزل-داء-إلا-أنزل-له-شفاء-إلا-الهرم",
+      "prev": "6cf3e82cc17a024fd6f502f61f6f5a6d9e70eb70d9c4f11478a19d196c71222a",
+      "next": "5ca494aaf1fa05ad4e65f4505d466b31c3d05cee417eb09261c6459ffd40f0ba"
+    },
+    {
+      "ord": 142,
+      "blockId": "b13b33c73a94022dc0c8805d9356e308",
+      "fp64": "a7ffff9bfab3fa3e",
+      "normHash": "5ca494aaf1fa05ad4e65f4505d466b31c3d05cee417eb09261c6459ffd40f0ba",
+      "kind": "page",
+      "chapter": "ذكر-أن-الله-عز-وجل-لم-ينزل-داء-إلا-أنزل-له-شفاء-إلا-الهرم",
+      "prev": "93891de5a160c3a8591df52641979f306acb15e7247cd0cc831307729a337a05",
+      "next": "4ad9ec358df625b9c13be7ba1295bbf96747f241e7251a7ab557ae8bf8682731"
+    },
+    {
+      "ord": 143,
+      "blockId": "9864d0c645743b66ac89b1f9b0ad7cb4",
+      "fp64": "a5da6096d7f17814",
+      "normHash": "4ad9ec358df625b9c13be7ba1295bbf96747f241e7251a7ab557ae8bf8682731",
+      "kind": "p",
+      "chapter": "ذكر-أن-الله-عز-وجل-لم-ينزل-داء-إلا-أنزل-له-شفاء-إلا-الهرم",
+      "prev": "5ca494aaf1fa05ad4e65f4505d466b31c3d05cee417eb09261c6459ffd40f0ba",
+      "next": "dd2ad9e747a0fde7532ccac8d3f552a339e34fcca967b95f31d4c19c9e2098be"
+    },
+    {
+      "ord": 144,
+      "blockId": "80d48858c1adfb007555aebeca0f3c05",
+      "fp64": "6442e016511a797c",
+      "normHash": "dd2ad9e747a0fde7532ccac8d3f552a339e34fcca967b95f31d4c19c9e2098be",
+      "kind": "p",
+      "chapter": "ذكر-أن-الله-عز-وجل-لم-ينزل-داء-إلا-أنزل-له-شفاء-إلا-الهرم",
+      "prev": "4ad9ec358df625b9c13be7ba1295bbf96747f241e7251a7ab557ae8bf8682731",
+      "next": "4ab65e6b2fbd6c7d08ae616f4b3f66dfe9cf716ddca646a9df96848db5630e05"
+    },
+    {
+      "ord": 145,
+      "blockId": "65f1cb278bad4b89e54007f2a6639829",
+      "fp64": "280193ac82086109",
+      "normHash": "4ab65e6b2fbd6c7d08ae616f4b3f66dfe9cf716ddca646a9df96848db5630e05",
+      "kind": "p",
+      "chapter": "ذكر-أن-الله-عز-وجل-لم-ينزل-داء-إلا-أنزل-له-شفاء-إلا-الهرم",
+      "prev": "dd2ad9e747a0fde7532ccac8d3f552a339e34fcca967b95f31d4c19c9e2098be",
+      "next": "39bce2de929e81c2442cf35de19a3fe5a37f5e809d96dcb2ed084042d80e2a1e"
+    },
+    {
+      "ord": 146,
+      "blockId": "765c60c14300a478bea9816ebd668bb3",
+      "fp64": "5b14f1dc14e9b6b6",
+      "normHash": "39bce2de929e81c2442cf35de19a3fe5a37f5e809d96dcb2ed084042d80e2a1e",
+      "kind": "p",
+      "chapter": "ذكر-أن-الله-عز-وجل-لم-ينزل-داء-إلا-أنزل-له-شفاء-إلا-الهرم",
+      "prev": "4ab65e6b2fbd6c7d08ae616f4b3f66dfe9cf716ddca646a9df96848db5630e05",
+      "next": "3725a3f4c5b4eeb74ad26a71e195ef200818c5845c4fa0cac1dc550926ed46af"
+    },
+    {
+      "ord": 147,
+      "blockId": "971e56cb9ec4e8b11d2d68ae7c7286cf",
+      "fp64": "bddffffa7ab77cf7",
+      "normHash": "3725a3f4c5b4eeb74ad26a71e195ef200818c5845c4fa0cac1dc550926ed46af",
+      "kind": "page",
+      "chapter": "ذكر-أن-الله-عز-وجل-لم-ينزل-داء-إلا-أنزل-له-شفاء-إلا-الهرم",
+      "prev": "39bce2de929e81c2442cf35de19a3fe5a37f5e809d96dcb2ed084042d80e2a1e",
+      "next": "3013b5d325e06a4cb1f0ec9135c69815eac97f55b932b9541f3363eecdfb35ae"
+    },
+    {
+      "ord": 148,
+      "blockId": "d50de2e2ee443dd681d23647fe028c09",
+      "fp64": "253dc01657fbe954",
+      "normHash": "3013b5d325e06a4cb1f0ec9135c69815eac97f55b932b9541f3363eecdfb35ae",
+      "kind": "p",
+      "chapter": "ذكر-أن-الله-عز-وجل-لم-ينزل-داء-إلا-أنزل-له-شفاء-إلا-الهرم",
+      "prev": "3725a3f4c5b4eeb74ad26a71e195ef200818c5845c4fa0cac1dc550926ed46af",
+      "next": "86dbb6cb8b6754dcf3f5c5c87a275c5eb8f18b7f784d0abc6424e92bc3e8d5dd"
+    },
+    {
+      "ord": 149,
+      "blockId": "e5dd1cfcd102372426449d692cc5cd96",
+      "fp64": "6646f017d567797c",
+      "normHash": "86dbb6cb8b6754dcf3f5c5c87a275c5eb8f18b7f784d0abc6424e92bc3e8d5dd",
+      "kind": "p",
+      "chapter": "ذكر-أن-الله-عز-وجل-لم-ينزل-داء-إلا-أنزل-له-شفاء-إلا-الهرم",
+      "prev": "3013b5d325e06a4cb1f0ec9135c69815eac97f55b932b9541f3363eecdfb35ae",
+      "next": "c5bb13340bc9c02972b50acd78638d4fd9d557cd0732e7aec4f8aed5afd5839e"
+    },
+    {
+      "ord": 150,
+      "blockId": "3ccadde27a5070fd0b97663973afb80b",
+      "fp64": "18c394f00ac1587f",
+      "normHash": "c5bb13340bc9c02972b50acd78638d4fd9d557cd0732e7aec4f8aed5afd5839e",
+      "kind": "p",
+      "chapter": "ذكر-أن-الله-عز-وجل-لم-ينزل-داء-إلا-أنزل-له-شفاء-إلا-الهرم",
+      "prev": "86dbb6cb8b6754dcf3f5c5c87a275c5eb8f18b7f784d0abc6424e92bc3e8d5dd",
+      "next": "cb251643eb10f95f701a9818b9b729423594560fad5c76ac3ba1734781503661"
+    },
+    {
+      "ord": 151,
+      "blockId": "e412daf381655f016944ff85052fc832",
+      "fp64": "627f405697f9f454",
+      "normHash": "cb251643eb10f95f701a9818b9b729423594560fad5c76ac3ba1734781503661",
+      "kind": "p",
+      "chapter": "ذكر-أن-الله-عز-وجل-لم-ينزل-داء-إلا-أنزل-له-شفاء-إلا-الهرم",
+      "prev": "c5bb13340bc9c02972b50acd78638d4fd9d557cd0732e7aec4f8aed5afd5839e",
+      "next": "3ea1777122365d736dfef304fa93f50a9d01e3d2941807d13b3e4f0763badefc"
+    },
+    {
+      "ord": 152,
+      "blockId": "f3f0af6f2debaac81cf4aeb33b3dac89",
+      "fp64": "e59a6092c7b5f476",
+      "normHash": "3ea1777122365d736dfef304fa93f50a9d01e3d2941807d13b3e4f0763badefc",
+      "kind": "p",
+      "chapter": "ذكر-أن-الله-عز-وجل-لم-ينزل-داء-إلا-أنزل-له-شفاء-إلا-الهرم",
+      "prev": "cb251643eb10f95f701a9818b9b729423594560fad5c76ac3ba1734781503661",
+      "next": "e962f17da3eeb33843cd557a8dcb9c9f03128ba0e4fd266cb7af9b1038ca2bc0"
+    },
+    {
+      "ord": 153,
+      "blockId": "61af85bc8dbf99752389a6f2363cb632",
+      "fp64": "7a7783d2f7d75f16",
+      "normHash": "e962f17da3eeb33843cd557a8dcb9c9f03128ba0e4fd266cb7af9b1038ca2bc0",
+      "kind": "p",
+      "chapter": "ذكر-أن-الله-عز-وجل-لم-ينزل-داء-إلا-أنزل-له-شفاء-إلا-الهرم",
+      "prev": "3ea1777122365d736dfef304fa93f50a9d01e3d2941807d13b3e4f0763badefc",
+      "next": "bb5325308b578ba2339247e295e288295284afb8097cb6d7634cf6d56b541623"
+    },
+    {
+      "ord": 154,
+      "blockId": "2b6b812daeb0f562c0c6c7cd0b212461",
+      "fp64": "f5ffff9afa3b7aff",
+      "normHash": "bb5325308b578ba2339247e295e288295284afb8097cb6d7634cf6d56b541623",
+      "kind": "page",
+      "chapter": "ذكر-أن-الله-عز-وجل-لم-ينزل-داء-إلا-أنزل-له-شفاء-إلا-الهرم",
+      "prev": "e962f17da3eeb33843cd557a8dcb9c9f03128ba0e4fd266cb7af9b1038ca2bc0",
+      "next": "234de322961d67972f5e5b4edcf84a56fb9fc0632399b4e116b1054e92311685"
+    },
+    {
+      "ord": 155,
+      "blockId": "9985bfac26b43cd8293bb18eb1a2e79a",
+      "fp64": "33c7bcb42c3f3b7d",
+      "normHash": "234de322961d67972f5e5b4edcf84a56fb9fc0632399b4e116b1054e92311685",
+      "kind": "h2",
+      "chapter": "ذكر-أن-لكل-داء-دواء",
+      "prev": "bb5325308b578ba2339247e295e288295284afb8097cb6d7634cf6d56b541623",
+      "next": "84f1e46ad2526c408ec7bb082e6bb4f56ae7d763f8db7176867a326d79b0e383"
+    },
+    {
+      "ord": 156,
+      "blockId": "c61d522bde6c37c4a976fd5b7b7d6dbf",
+      "fp64": "3957c096153e61f4",
+      "normHash": "84f1e46ad2526c408ec7bb082e6bb4f56ae7d763f8db7176867a326d79b0e383",
+      "kind": "p",
+      "chapter": "ذكر-أن-لكل-داء-دواء",
+      "prev": "234de322961d67972f5e5b4edcf84a56fb9fc0632399b4e116b1054e92311685",
+      "next": "50f0eb84efcdedadce809f61d5c5e34e8524c68ca4959e98e0b145eafbd513cb"
+    },
+    {
+      "ord": 157,
+      "blockId": "d03e60970d6da904ac7b71e52d669616",
+      "fp64": "664b60d447f82494",
+      "normHash": "50f0eb84efcdedadce809f61d5c5e34e8524c68ca4959e98e0b145eafbd513cb",
+      "kind": "p",
+      "chapter": "ذكر-أن-لكل-داء-دواء",
+      "prev": "84f1e46ad2526c408ec7bb082e6bb4f56ae7d763f8db7176867a326d79b0e383",
+      "next": "2e0b82d49fc8386609df672c19e6fad16926afc6dfd1928c27bb3c1c129b50a6"
+    },
+    {
+      "ord": 158,
+      "blockId": "34300666ecf48c3c663c26e53c1ac69e",
+      "fp64": "fddfffffda3f66b6",
+      "normHash": "2e0b82d49fc8386609df672c19e6fad16926afc6dfd1928c27bb3c1c129b50a6",
+      "kind": "page",
+      "chapter": "ذكر-أن-لكل-داء-دواء",
+      "prev": "50f0eb84efcdedadce809f61d5c5e34e8524c68ca4959e98e0b145eafbd513cb",
+      "next": "d9335afa94a9e19257edeeda25ca96ee4ccea2f8a53c79a7b895bdff4fc1e2f3"
+    },
+    {
+      "ord": 159,
+      "blockId": "dc20d227605e967f57aaf92c32637cba",
+      "fp64": "67ddfefabf77f73f",
+      "normHash": "d9335afa94a9e19257edeeda25ca96ee4ccea2f8a53c79a7b895bdff4fc1e2f3",
+      "kind": "h2",
+      "chapter": "ذكر-الحمية",
+      "prev": "2e0b82d49fc8386609df672c19e6fad16926afc6dfd1928c27bb3c1c129b50a6",
+      "next": "f126a699ebd6042344e693349745bbea396525f69f7837e3400687e4e99f2f95"
+    },
+    {
+      "ord": 160,
+      "blockId": "690cb5c144e494d3d332b67c27f21fc9",
+      "fp64": "a45ee8df0f3f67de",
+      "normHash": "f126a699ebd6042344e693349745bbea396525f69f7837e3400687e4e99f2f95",
+      "kind": "p",
+      "chapter": "ذكر-الحمية",
+      "prev": "d9335afa94a9e19257edeeda25ca96ee4ccea2f8a53c79a7b895bdff4fc1e2f3",
+      "next": "d35fb5470daad0f9167a4753f6128dc7b091fa75aab28bbbf54c2491554f362c"
+    },
+    {
+      "ord": 161,
+      "blockId": "9fdfb9a423d6dd9cba6ceb1a80364c5d",
+      "fp64": "25fffbdefe7d62ff",
+      "normHash": "d35fb5470daad0f9167a4753f6128dc7b091fa75aab28bbbf54c2491554f362c",
+      "kind": "page",
+      "chapter": "ذكر-الحمية",
+      "prev": "f126a699ebd6042344e693349745bbea396525f69f7837e3400687e4e99f2f95",
+      "next": "d07bb61d7701fe881062c7c602ce1a6db97562f863d413da2c1f89236dc84297"
+    },
+    {
+      "ord": 162,
+      "blockId": "7430ca10f51ee3f822367fc23dbbd753",
+      "fp64": "1b8034d99a739458",
+      "normHash": "d07bb61d7701fe881062c7c602ce1a6db97562f863d413da2c1f89236dc84297",
+      "kind": "h2",
+      "chapter": "ذكر-أن-الشفاء-في-ثلاث",
+      "prev": "d35fb5470daad0f9167a4753f6128dc7b091fa75aab28bbbf54c2491554f362c",
+      "next": "3a65fa84010d49239a5e602b6869ae419f9b3727862d607f94b40a7443b57508"
+    },
+    {
+      "ord": 163,
+      "blockId": "816e0c9e65b4e013998636f53d587fce",
+      "fp64": "2540c8156dde4c70",
+      "normHash": "3a65fa84010d49239a5e602b6869ae419f9b3727862d607f94b40a7443b57508",
+      "kind": "p",
+      "chapter": "ذكر-أن-الشفاء-في-ثلاث",
+      "prev": "d07bb61d7701fe881062c7c602ce1a6db97562f863d413da2c1f89236dc84297",
+      "next": "73b61c75abb255995549919efaafab82d0f4cc9c527161d13154454544eca971"
+    },
+    {
+      "ord": 164,
+      "blockId": "41ce90c7b87942b6a1f38e11e10c6fe6",
+      "fp64": "b7ffffdb5a79eabe",
+      "normHash": "73b61c75abb255995549919efaafab82d0f4cc9c527161d13154454544eca971",
+      "kind": "page",
+      "chapter": "ذكر-أن-الشفاء-في-ثلاث",
+      "prev": "3a65fa84010d49239a5e602b6869ae419f9b3727862d607f94b40a7443b57508",
+      "next": "883b5fbaa96f3effb2ead69600b62dc2a0ab82e81aa4991b59b09b9a24f4a86e"
+    },
+    {
+      "ord": 165,
+      "blockId": "45e175b93512735ccb36dabeb2bc57e5",
+      "fp64": "93cc3eda9b771fbe",
+      "normHash": "883b5fbaa96f3effb2ead69600b62dc2a0ab82e81aa4991b59b09b9a24f4a86e",
+      "kind": "h2",
+      "chapter": "ما-ذكر-في-العسل",
+      "prev": "73b61c75abb255995549919efaafab82d0f4cc9c527161d13154454544eca971",
+      "next": "8b4cf8f0951020b0749de8b3f2d5bfd0a437b0389277b37470f57c506a8caebb"
+    },
+    {
+      "ord": 166,
+      "blockId": "758ecf1affcb08a28e6b4f2e95d16080",
+      "fp64": "3c704a349fc1e19e",
+      "normHash": "8b4cf8f0951020b0749de8b3f2d5bfd0a437b0389277b37470f57c506a8caebb",
+      "kind": "p",
+      "chapter": "ما-ذكر-في-العسل",
+      "prev": "883b5fbaa96f3effb2ead69600b62dc2a0ab82e81aa4991b59b09b9a24f4a86e",
+      "next": "f592215f75b98014d168b4ba268dec6e871a28982f6205b3af3b244f2d7004ae"
+    },
+    {
+      "ord": 167,
+      "blockId": "ec92c0aafe9c40eae5d602de875337e0",
+      "fp64": "b475e017153e517a",
+      "normHash": "f592215f75b98014d168b4ba268dec6e871a28982f6205b3af3b244f2d7004ae",
+      "kind": "p",
+      "chapter": "ما-ذكر-في-العسل",
+      "prev": "8b4cf8f0951020b0749de8b3f2d5bfd0a437b0389277b37470f57c506a8caebb",
+      "next": "4203493f39f6e0e45062d29afcd575b9a9f7906841bb1f9cb9fabc2a1bb08b44"
+    },
+    {
+      "ord": 168,
+      "blockId": "bc854b426998fd4611121f22336a98b8",
+      "fp64": "e7ffffdf5efb7677",
+      "normHash": "4203493f39f6e0e45062d29afcd575b9a9f7906841bb1f9cb9fabc2a1bb08b44",
+      "kind": "page",
+      "chapter": "ما-ذكر-في-العسل",
+      "prev": "f592215f75b98014d168b4ba268dec6e871a28982f6205b3af3b244f2d7004ae",
+      "next": "6249d67413909c062fab797da3f8f977f1c6a7bdfa6406c34876d9ef27abbf94"
+    },
+    {
+      "ord": 169,
+      "blockId": "22ae3793a6c20aa55ff195c4e9e666a3",
+      "fp64": "3dddd38bbc7757ff",
+      "normHash": "6249d67413909c062fab797da3f8f977f1c6a7bdfa6406c34876d9ef27abbf94",
+      "kind": "p",
+      "chapter": "ما-ذكر-في-العسل",
+      "prev": "4203493f39f6e0e45062d29afcd575b9a9f7906841bb1f9cb9fabc2a1bb08b44",
+      "next": "85e4f73be80f53b16b0bd320a1584afcf1471cc9942246987052f223e45770be"
+    },
+    {
+      "ord": 170,
+      "blockId": "a827cc97b7d5abaee5e791d5ddaf2ffe",
+      "fp64": "77dff39efb75f9bf",
+      "normHash": "85e4f73be80f53b16b0bd320a1584afcf1471cc9942246987052f223e45770be",
+      "kind": "page",
+      "chapter": "ما-ذكر-في-العسل",
+      "prev": "6249d67413909c062fab797da3f8f977f1c6a7bdfa6406c34876d9ef27abbf94",
+      "next": "c3844f9590b446f5430e6f11bc9e26f938bd2f77de725a5627dbfa59a760f3a9"
+    },
+    {
+      "ord": 171,
+      "blockId": "6a87e309cd8c4627ea8ebd7a5bceba99",
+      "fp64": "73bf1ffc9f37976f",
+      "normHash": "c3844f9590b446f5430e6f11bc9e26f938bd2f77de725a5627dbfa59a760f3a9",
+      "kind": "h2",
+      "chapter": "ذكر-الكمأة",
+      "prev": "85e4f73be80f53b16b0bd320a1584afcf1471cc9942246987052f223e45770be",
+      "next": "d8518b87b21b34f37ed4bc6d08e4f2abb9004166bd92a551bb780da0eee8402e"
+    },
+    {
+      "ord": 172,
+      "blockId": "d453ec5ecfed445d1b82aea47d2e1383",
+      "fp64": "3feee85e0d127d7c",
+      "normHash": "d8518b87b21b34f37ed4bc6d08e4f2abb9004166bd92a551bb780da0eee8402e",
+      "kind": "p",
+      "chapter": "ذكر-الكمأة",
+      "prev": "c3844f9590b446f5430e6f11bc9e26f938bd2f77de725a5627dbfa59a760f3a9",
+      "next": "fcd705baaeea9e2d94b9b4077e5ed3b4012ec237b51fc7a1c2c8f1306af05665"
+    },
+    {
+      "ord": 173,
+      "blockId": "cf899af6cbfc4d1f1bb39adf80022b82",
+      "fp64": "35fff7ba5e33e876",
+      "normHash": "fcd705baaeea9e2d94b9b4077e5ed3b4012ec237b51fc7a1c2c8f1306af05665",
+      "kind": "page",
+      "chapter": "ذكر-الكمأة",
+      "prev": "d8518b87b21b34f37ed4bc6d08e4f2abb9004166bd92a551bb780da0eee8402e",
+      "next": "10d778fccd4d926361bed8631476ecfae7ea62c3510ddb037d0b5e0dfc56df10"
+    },
+    {
+      "ord": 174,
+      "blockId": "87593e866a4f4fe1b2fdc28acd45fb7d",
+      "fp64": "c3f5def9bfff13ef",
+      "normHash": "10d778fccd4d926361bed8631476ecfae7ea62c3510ddb037d0b5e0dfc56df10",
+      "kind": "h2",
+      "chapter": "ذكر-الإثمد",
+      "prev": "fcd705baaeea9e2d94b9b4077e5ed3b4012ec237b51fc7a1c2c8f1306af05665",
+      "next": "c6e7e3355ace7fa45e19b56213ab0f2d2e128ba500cfed0059780e17865c2882"
+    },
+    {
+      "ord": 175,
+      "blockId": "300780cf70103e692c82abe35a465c61",
+      "fp64": "f640e7dd83186978",
+      "normHash": "c6e7e3355ace7fa45e19b56213ab0f2d2e128ba500cfed0059780e17865c2882",
+      "kind": "p",
+      "chapter": "ذكر-الإثمد",
+      "prev": "10d778fccd4d926361bed8631476ecfae7ea62c3510ddb037d0b5e0dfc56df10",
+      "next": "2b33983b774c6abacf0396e54bc8332dfd4d5505ee16f34de9c1e8be5d4eb08d"
+    },
+    {
+      "ord": 176,
+      "blockId": "d86a3b67ec8402c4ac0adb3f77df0289",
+      "fp64": "f5dffffa7f7df4b6",
+      "normHash": "2b33983b774c6abacf0396e54bc8332dfd4d5505ee16f34de9c1e8be5d4eb08d",
+      "kind": "page",
+      "chapter": "ذكر-الإثمد",
+      "prev": "c6e7e3355ace7fa45e19b56213ab0f2d2e128ba500cfed0059780e17865c2882",
+      "next": "6cfe150fa6702b55899f15a2753627c25a973983a4cab35007d19dac696635e8"
+    },
+    {
+      "ord": 177,
+      "blockId": "235ccb3eb1503ba79bc16eb429709328",
+      "fp64": "53bedfe6bfff506f",
+      "normHash": "6cfe150fa6702b55899f15a2753627c25a973983a4cab35007d19dac696635e8",
+      "kind": "h2",
+      "chapter": "ذكر-تضميد-العين-بالصبر",
+      "prev": "2b33983b774c6abacf0396e54bc8332dfd4d5505ee16f34de9c1e8be5d4eb08d",
+      "next": "85b6c81ab6e2d8c71ec6055a321120a1bd9b666399c70afeda4382d10094c3ef"
+    },
+    {
+      "ord": 178,
+      "blockId": "74eaa7c6e0df2cc1099e6eefac1a5470",
+      "fp64": "375ec0d6071a593c",
+      "normHash": "85b6c81ab6e2d8c71ec6055a321120a1bd9b666399c70afeda4382d10094c3ef",
+      "kind": "p",
+      "chapter": "ذكر-تضميد-العين-بالصبر",
+      "prev": "6cfe150fa6702b55899f15a2753627c25a973983a4cab35007d19dac696635e8",
+      "next": "4db6d6bb521b682b758e1da0f041502a55ecdda2e61314d6edace4bfcc56d5ad"
+    },
+    {
+      "ord": 179,
+      "blockId": "b65b4fee5b07cb2322d9adea63b53f86",
+      "fp64": "6ffff7ff5abb6c77",
+      "normHash": "4db6d6bb521b682b758e1da0f041502a55ecdda2e61314d6edace4bfcc56d5ad",
+      "kind": "page",
+      "chapter": "ذكر-تضميد-العين-بالصبر",
+      "prev": "85b6c81ab6e2d8c71ec6055a321120a1bd9b666399c70afeda4382d10094c3ef",
+      "next": "fc548959277c65745565add0c555c5922db6b91c3e56a8f2e3969091c5018ac1"
+    },
+    {
+      "ord": 180,
+      "blockId": "564ef98debd208e00b38cbba58a5cc52",
+      "fp64": "22445e5c11331bac",
+      "normHash": "fc548959277c65745565add0c555c5922db6b91c3e56a8f2e3969091c5018ac1",
+      "kind": "h2",
+      "chapter": "ما-ذكر-في-الحبة-السوداء",
+      "prev": "4db6d6bb521b682b758e1da0f041502a55ecdda2e61314d6edace4bfcc56d5ad",
+      "next": "9a3b793f7475eb12125c5a276e7f6876a31ccc248728a012dd7ea87c8f265c5d"
+    },
+    {
+      "ord": 181,
+      "blockId": "8909d38ab61969e42de4c301d051ab87",
+      "fp64": "244ed85f075a3d7c",
+      "normHash": "9a3b793f7475eb12125c5a276e7f6876a31ccc248728a012dd7ea87c8f265c5d",
+      "kind": "p",
+      "chapter": "ما-ذكر-في-الحبة-السوداء",
+      "prev": "fc548959277c65745565add0c555c5922db6b91c3e56a8f2e3969091c5018ac1",
+      "next": "353bbfacb5be00a425fd581f5c607ccb1c98f85c105abf2b7b4056117988f76c"
+    },
+    {
+      "ord": 182,
+      "blockId": "8ee92d718d43131c0045d07b58600458",
+      "fp64": "37dffbbafff3f2bf",
+      "normHash": "353bbfacb5be00a425fd581f5c607ccb1c98f85c105abf2b7b4056117988f76c",
+      "kind": "page",
+      "chapter": "ما-ذكر-في-الحبة-السوداء",
+      "prev": "9a3b793f7475eb12125c5a276e7f6876a31ccc248728a012dd7ea87c8f265c5d",
+      "next": "cd4156c00160d59e6a2f83e950375c7169035cf56d09c5cac20c1ac2b5b17e71"
+    },
+    {
+      "ord": 183,
+      "blockId": "aaeb9adb91e8fa5eda244515021e8603",
+      "fp64": "7b0d76ff93375f9f",
+      "normHash": "cd4156c00160d59e6a2f83e950375c7169035cf56d09c5cac20c1ac2b5b17e71",
+      "kind": "h2",
+      "chapter": "ما-ذكر-في-الحجامة",
+      "prev": "353bbfacb5be00a425fd581f5c607ccb1c98f85c105abf2b7b4056117988f76c",
+      "next": "64aa2b56e5004a103d009e817091a2f47f7b7446b84e368c188543797350a09a"
+    },
+    {
+      "ord": 184,
+      "blockId": "4ae1c4744882c6c88344470bb588e13b",
+      "fp64": "e644c4dd9b6e7058",
+      "normHash": "64aa2b56e5004a103d009e817091a2f47f7b7446b84e368c188543797350a09a",
+      "kind": "p",
+      "chapter": "ما-ذكر-في-الحجامة",
+      "prev": "cd4156c00160d59e6a2f83e950375c7169035cf56d09c5cac20c1ac2b5b17e71",
+      "next": "28d7d0ff279888310bfed77ba690811e98a854bd03f740a6fa4bf9bac170a608"
+    },
+    {
+      "ord": 185,
+      "blockId": "94d807ed886c11590faf5dd89d917f36",
+      "fp64": "a7fffbfbff3bf4bf",
+      "normHash": "28d7d0ff279888310bfed77ba690811e98a854bd03f740a6fa4bf9bac170a608",
+      "kind": "page",
+      "chapter": "ما-ذكر-في-الحجامة",
+      "prev": "64aa2b56e5004a103d009e817091a2f47f7b7446b84e368c188543797350a09a",
+      "next": "b0fcee0b4948f16a206faf719dfae31d7906c3284b49af165e4a3c15b3849ebb"
+    },
+    {
+      "ord": 186,
+      "blockId": "b9e6e051a27c55ee5e16146e78394fb6",
+      "fp64": "2055e2529d365b6e",
+      "normHash": "b0fcee0b4948f16a206faf719dfae31d7906c3284b49af165e4a3c15b3849ebb",
+      "kind": "p",
+      "chapter": "ما-ذكر-في-الحجامة",
+      "prev": "28d7d0ff279888310bfed77ba690811e98a854bd03f740a6fa4bf9bac170a608",
+      "next": "33825b9daaa40fe96d37349bf9023a626cb8e1388a3fffbfee4baa0f1627b7c1"
+    },
+    {
+      "ord": 187,
+      "blockId": "607cdd01c1a398d13396e1d3a91144a7",
+      "fp64": "a5dff7bbfabf70ff",
+      "normHash": "33825b9daaa40fe96d37349bf9023a626cb8e1388a3fffbfee4baa0f1627b7c1",
+      "kind": "page",
+      "chapter": "ما-ذكر-في-الحجامة",
+      "prev": "b0fcee0b4948f16a206faf719dfae31d7906c3284b49af165e4a3c15b3849ebb",
+      "next": "b928800e6e1c64f5176ef85f079fd6f3433315eb35eea9275207656f57a38100"
+    },
+    {
+      "ord": 188,
+      "blockId": "d21e09485401fcc82bcfe41cbca5d6de",
+      "fp64": "3e4d144277051ed7",
+      "normHash": "b928800e6e1c64f5176ef85f079fd6f3433315eb35eea9275207656f57a38100",
+      "kind": "h2",
+      "chapter": "الحجامة-في-الرأس",
+      "prev": "33825b9daaa40fe96d37349bf9023a626cb8e1388a3fffbfee4baa0f1627b7c1",
+      "next": "27cd088c55ed013b628e7efd6a2e5aec7ed00e8f1cd8df298d5c423da2de03f0"
+    },
+    {
+      "ord": 189,
+      "blockId": "02ca06491e4e865e86238f06c82e89d1",
+      "fp64": "2c60c0579d0e717c",
+      "normHash": "27cd088c55ed013b628e7efd6a2e5aec7ed00e8f1cd8df298d5c423da2de03f0",
+      "kind": "p",
+      "chapter": "الحجامة-في-الرأس",
+      "prev": "b928800e6e1c64f5176ef85f079fd6f3433315eb35eea9275207656f57a38100",
+      "next": "0756f6fac92962e1789c042dece85d0a6ee61d407162dc36dba4e2444cf7e927"
+    },
+    {
+      "ord": 190,
+      "blockId": "18c81e163bd760c966190ff155233460",
+      "fp64": "245be05603547374",
+      "normHash": "0756f6fac92962e1789c042dece85d0a6ee61d407162dc36dba4e2444cf7e927",
+      "kind": "p",
+      "chapter": "الحجامة-في-الرأس",
+      "prev": "27cd088c55ed013b628e7efd6a2e5aec7ed00e8f1cd8df298d5c423da2de03f0",
+      "next": "539e81fdfd1f375d3197180e0cf815deab283bde54d0ebba2e3557ce54d6cb85"
+    },
+    {
+      "ord": 191,
+      "blockId": "03ca3bd95fff2e7863bb506fd90b548a",
+      "fp64": "c8cb2c779b678e6c",
+      "normHash": "539e81fdfd1f375d3197180e0cf815deab283bde54d0ebba2e3557ce54d6cb85",
+      "kind": "p",
+      "chapter": "الحجامة-في-الرأس",
+      "prev": "0756f6fac92962e1789c042dece85d0a6ee61d407162dc36dba4e2444cf7e927",
+      "next": "14266ecdf7f536852ab50c713777b505babc1f2abacfdc3010887f01f9d3ffd7"
+    },
+    {
+      "ord": 192,
+      "blockId": "7ad58c89801b9e6d72ddcdf7ecd20cb3",
+      "fp64": "bfffffbb7fbdf57f",
+      "normHash": "14266ecdf7f536852ab50c713777b505babc1f2abacfdc3010887f01f9d3ffd7",
+      "kind": "page",
+      "chapter": "الحجامة-في-الرأس",
+      "prev": "539e81fdfd1f375d3197180e0cf815deab283bde54d0ebba2e3557ce54d6cb85",
+      "next": "ce190897dd2a45589cee9090bdfe5b1d3010f47a49bb3f7c0e1e46f68af9310f"
+    },
+    {
+      "ord": 193,
+      "blockId": "43d6a061dec859e029fd96e1f5ec4771",
+      "fp64": "6f2df5ebb206a9cf",
+      "normHash": "ce190897dd2a45589cee9090bdfe5b1d3010f47a49bb3f7c0e1e46f68af9310f",
+      "kind": "h2",
+      "chapter": "الحجامة-على-الكاهل-والأخدعين",
+      "prev": "14266ecdf7f536852ab50c713777b505babc1f2abacfdc3010887f01f9d3ffd7",
+      "next": "a2c131cbad9177a1883261846516c61bad8489b4339a7d0ba9e1d865e024c0ad"
+    },
+    {
+      "ord": 194,
+      "blockId": "a8f79d08acee9e927b0563ea58dae3bd",
+      "fp64": "6646e0560d1e5978",
+      "normHash": "a2c131cbad9177a1883261846516c61bad8489b4339a7d0ba9e1d865e024c0ad",
+      "kind": "p",
+      "chapter": "الحجامة-على-الكاهل-والأخدعين",
+      "prev": "ce190897dd2a45589cee9090bdfe5b1d3010f47a49bb3f7c0e1e46f68af9310f",
+      "next": "878d80c93ecb6aeacd9612e77eae0b1c1d1a85b5872a3abf487f7391e8111b29"
+    },
+    {
+      "ord": 195,
+      "blockId": "afc515727b0743bf5699c201d7b4346b",
+      "fp64": "6fdffb9fdf3be53f",
+      "normHash": "878d80c93ecb6aeacd9612e77eae0b1c1d1a85b5872a3abf487f7391e8111b29",
+      "kind": "page",
+      "chapter": "الحجامة-على-الكاهل-والأخدعين",
+      "prev": "a2c131cbad9177a1883261846516c61bad8489b4339a7d0ba9e1d865e024c0ad",
+      "next": "920fb167685fb7ad462bfbe2ab0b8b29e0b8583db7871e83f4cb1412adc5fdfe"
+    },
+    {
+      "ord": 196,
+      "blockId": "82924d6767d213dacc87939da4c85299",
+      "fp64": "2a7f307953492045",
+      "normHash": "920fb167685fb7ad462bfbe2ab0b8b29e0b8583db7871e83f4cb1412adc5fdfe",
+      "kind": "h2",
+      "chapter": "الاحتجام-بين-الكتفين",
+      "prev": "878d80c93ecb6aeacd9612e77eae0b1c1d1a85b5872a3abf487f7391e8111b29",
+      "next": "0e4605a4b5f865d521c4a162debc740ea72419cdcc6554c96aabc712c0337024"
+    },
+    {
+      "ord": 197,
+      "blockId": "de1ebdb1f0daa04bc4d977b39a17876a",
+      "fp64": "2cf6c01c05525878",
+      "normHash": "0e4605a4b5f865d521c4a162debc740ea72419cdcc6554c96aabc712c0337024",
+      "kind": "p",
+      "chapter": "الاحتجام-بين-الكتفين",
+      "prev": "920fb167685fb7ad462bfbe2ab0b8b29e0b8583db7871e83f4cb1412adc5fdfe",
+      "next": "81a1969c6147ec4c29ddb6556069a9b6dff022ff639de94baee8b7989eecd66b"
+    },
+    {
+      "ord": 198,
+      "blockId": "9df6f110ba79dba84e8a96072f980fa2",
+      "fp64": "7dffff9edf31607e",
+      "normHash": "81a1969c6147ec4c29ddb6556069a9b6dff022ff639de94baee8b7989eecd66b",
+      "kind": "page",
+      "chapter": "الاحتجام-بين-الكتفين",
+      "prev": "0e4605a4b5f865d521c4a162debc740ea72419cdcc6554c96aabc712c0337024",
+      "next": "6400f32406e488bf1656e22f8611a26a6df0ff89a9d332aad76612bb8d2d90bf"
+    },
+    {
+      "ord": 199,
+      "blockId": "fed18085c24d1cee4afc474fb0301f98",
+      "fp64": "1b37297bf34d6ff6",
+      "normHash": "6400f32406e488bf1656e22f8611a26a6df0ff89a9d332aad76612bb8d2d90bf",
+      "kind": "h2",
+      "chapter": "الاحتجام-على-ظهر-القدم",
+      "prev": "81a1969c6147ec4c29ddb6556069a9b6dff022ff639de94baee8b7989eecd66b",
+      "next": "45dd04f3df299be15919a1722c40d25057829a7a91ef22f6a32d31f2a0c7ec7e"
+    },
+    {
+      "ord": 200,
+      "blockId": "7f2956cbcca3a787058124b35a274a68",
+      "fp64": "665ae05b8f464f5d",
+      "normHash": "45dd04f3df299be15919a1722c40d25057829a7a91ef22f6a32d31f2a0c7ec7e",
+      "kind": "p",
+      "chapter": "الاحتجام-على-ظهر-القدم",
+      "prev": "6400f32406e488bf1656e22f8611a26a6df0ff89a9d332aad76612bb8d2d90bf",
+      "next": "af67c6e15eeaec1582e4c5008f90362ef70dda70646636279f253f8923fc4ba2"
+    },
+    {
+      "ord": 201,
+      "blockId": "5564bdfcc0bc588cd803f773efa4aca2",
+      "fp64": "7acdd7fffe8379ff",
+      "normHash": "af67c6e15eeaec1582e4c5008f90362ef70dda70646636279f253f8923fc4ba2",
+      "kind": "h2",
+      "chapter": "الحجامة-للنساء",
+      "prev": "45dd04f3df299be15919a1722c40d25057829a7a91ef22f6a32d31f2a0c7ec7e",
+      "next": "094e35d3ecd6b67058ed225983fb2322b10770681b300fe848047145b0d71931"
+    },
+    {
+      "ord": 202,
+      "blockId": "7cee5dab2a357825151028d27ad26f73",
+      "fp64": "606ec457175b7458",
+      "normHash": "094e35d3ecd6b67058ed225983fb2322b10770681b300fe848047145b0d71931",
+      "kind": "p",
+      "chapter": "الحجامة-للنساء",
+      "prev": "af67c6e15eeaec1582e4c5008f90362ef70dda70646636279f253f8923fc4ba2",
+      "next": "59edc81958f87f52d42aa137fc1fd0e8e2800842bc8eb28fd061165ffa44951e"
+    },
+    {
+      "ord": 203,
+      "blockId": "91d50c0298e2bd45f29e7a66e840213a",
+      "fp64": "c360e0894c40edd1",
+      "normHash": "59edc81958f87f52d42aa137fc1fd0e8e2800842bc8eb28fd061165ffa44951e",
+      "kind": "p",
+      "chapter": "الحجامة-للنساء",
+      "prev": "094e35d3ecd6b67058ed225983fb2322b10770681b300fe848047145b0d71931",
+      "next": "d13ad9e7c33be02aba526842ec81b110ccb36696f1a46d49a8d7874dbab2eb8b"
+    },
+    {
+      "ord": 204,
+      "blockId": "c4218bd7f4f41d166acdfa06fe5981cb",
+      "fp64": "f6913c409cb62001",
+      "normHash": "d13ad9e7c33be02aba526842ec81b110ccb36696f1a46d49a8d7874dbab2eb8b",
+      "kind": "p",
+      "chapter": "الحجامة-للنساء",
+      "prev": "59edc81958f87f52d42aa137fc1fd0e8e2800842bc8eb28fd061165ffa44951e",
+      "next": "78cca1539467c9205b92ff9cd20bce41a76c7dc943f7d8aac502b90782d75ee9"
+    },
+    {
+      "ord": 205,
+      "blockId": "079a6f04d49768620a114b03bcfa0c57",
+      "fp64": "addfffdbdef5f6f7",
+      "normHash": "78cca1539467c9205b92ff9cd20bce41a76c7dc943f7d8aac502b90782d75ee9",
+      "kind": "page",
+      "chapter": "الحجامة-للنساء",
+      "prev": "d13ad9e7c33be02aba526842ec81b110ccb36696f1a46d49a8d7874dbab2eb8b",
+      "next": "8a5f433924a965ec9e30ae7fd1819d5ecba4b7156ab59fe0dc25445adb8d6531"
+    },
+    {
+      "ord": 206,
+      "blockId": "1c513fe1b5f0f93e439ee16177c2e31e",
+      "fp64": "ea1f17fcbff76bff",
+      "normHash": "8a5f433924a965ec9e30ae7fd1819d5ecba4b7156ab59fe0dc25445adb8d6531",
+      "kind": "h2",
+      "chapter": "ذكر-أي-يوم-يستحب-فيه-الحجامة",
+      "prev": "78cca1539467c9205b92ff9cd20bce41a76c7dc943f7d8aac502b90782d75ee9",
+      "next": "09029e8a9891e1a8453a6b5c3d8beee5907758b3f22404ef2cf9d891029a3746"
+    },
+    {
+      "ord": 207,
+      "blockId": "b537e51de7212a2e67691b67f238a042",
+      "fp64": "6c75e456b17473fc",
+      "normHash": "09029e8a9891e1a8453a6b5c3d8beee5907758b3f22404ef2cf9d891029a3746",
+      "kind": "p",
+      "chapter": "ذكر-أي-يوم-يستحب-فيه-الحجامة",
+      "prev": "8a5f433924a965ec9e30ae7fd1819d5ecba4b7156ab59fe0dc25445adb8d6531",
+      "next": "541d0fcafb9bedbae84c641a63656059abf3d718e692bca860790050c309c8b8"
+    },
+    {
+      "ord": 208,
+      "blockId": "343e11252be60cbdde44db7b8ff53a9e",
+      "fp64": "6b24c51d94f1be0e",
+      "normHash": "541d0fcafb9bedbae84c641a63656059abf3d718e692bca860790050c309c8b8",
+      "kind": "p",
+      "chapter": "ذكر-أي-يوم-يستحب-فيه-الحجامة",
+      "prev": "09029e8a9891e1a8453a6b5c3d8beee5907758b3f22404ef2cf9d891029a3746",
+      "next": "f7e56b058e027b54c5738d4a73a06ac173c7da513df273aa807517d1fc440211"
+    },
+    {
+      "ord": 209,
+      "blockId": "eb36c6697d5c5dd51e83e9ed1967e6a1",
+      "fp64": "25fffbdbdbff68bf",
+      "normHash": "f7e56b058e027b54c5738d4a73a06ac173c7da513df273aa807517d1fc440211",
+      "kind": "page",
+      "chapter": "ذكر-أي-يوم-يستحب-فيه-الحجامة",
+      "prev": "541d0fcafb9bedbae84c641a63656059abf3d718e692bca860790050c309c8b8",
+      "next": "def6a1cbe5170959de2e4710fc3c7cfaa07a5c7efeac0f07edbd7f1807787453"
+    },
+    {
+      "ord": 210,
+      "blockId": "3690d7c75f198f1dfb550cb7ba6c3d02",
+      "fp64": "4785765f93371fae",
+      "normHash": "def6a1cbe5170959de2e4710fc3c7cfaa07a5c7efeac0f07edbd7f1807787453",
+      "kind": "h2",
+      "chapter": "ما-ذكر-في-الكي",
+      "prev": "f7e56b058e027b54c5738d4a73a06ac173c7da513df273aa807517d1fc440211",
+      "next": "9469018e1761b4a6386c84a73f6e19d19410d0e5fdfce4e9243fba150cdddb79"
+    },
+    {
+      "ord": 211,
+      "blockId": "eb42d3f1929e4ad1f71d273b4f388776",
+      "fp64": "a456c056977e797c",
+      "normHash": "9469018e1761b4a6386c84a73f6e19d19410d0e5fdfce4e9243fba150cdddb79",
+      "kind": "p",
+      "chapter": "ما-ذكر-في-الكي",
+      "prev": "def6a1cbe5170959de2e4710fc3c7cfaa07a5c7efeac0f07edbd7f1807787453",
+      "next": "8205d3739be01b9707676510b82e49989e7b191fe9ec7b4851669372b8dca17a"
+    },
+    {
+      "ord": 212,
+      "blockId": "3df8aaf4efe82bb52aa191886a26d417",
+      "fp64": "bddfffdadf377a7f",
+      "normHash": "8205d3739be01b9707676510b82e49989e7b191fe9ec7b4851669372b8dca17a",
+      "kind": "page",
+      "chapter": "ما-ذكر-في-الكي",
+      "prev": "9469018e1761b4a6386c84a73f6e19d19410d0e5fdfce4e9243fba150cdddb79",
+      "next": "bc1b2b53baa545628d53a5cfec1f2de26738215b37dc3ec0262b547d515cc8d5"
+    },
+    {
+      "ord": 213,
+      "blockId": "5ef31c6c9ac09e19a1d3685e6d1512f3",
+      "fp64": "a38d7e5f1b375f9f",
+      "normHash": "bc1b2b53baa545628d53a5cfec1f2de26738215b37dc3ec0262b547d515cc8d5",
+      "kind": "h2",
+      "chapter": "ما-ذكر-في-الرضف",
+      "prev": "8205d3739be01b9707676510b82e49989e7b191fe9ec7b4851669372b8dca17a",
+      "next": "08d4ab4dc528e843c9868611964dc77847a3ebd1402193c5e80e7155119e3f23"
+    },
+    {
+      "ord": 214,
+      "blockId": "a36c4dfa647d0288a2bb312098b16845",
+      "fp64": "4612e095d75601fc",
+      "normHash": "08d4ab4dc528e843c9868611964dc77847a3ebd1402193c5e80e7155119e3f23",
+      "kind": "p",
+      "chapter": "ما-ذكر-في-الرضف",
+      "prev": "bc1b2b53baa545628d53a5cfec1f2de26738215b37dc3ec0262b547d515cc8d5",
+      "next": "21e37573b22f060299622c302cc57c0e6d6b1b51b67002f1bceebbfb2915f0eb"
+    },
+    {
+      "ord": 215,
+      "blockId": "d75f110f0567d978bb1426eb5a3829e0",
+      "fp64": "edfffbbafb35f8f6",
+      "normHash": "21e37573b22f060299622c302cc57c0e6d6b1b51b67002f1bceebbfb2915f0eb",
+      "kind": "page",
+      "chapter": "ما-ذكر-في-الرضف",
+      "prev": "08d4ab4dc528e843c9868611964dc77847a3ebd1402193c5e80e7155119e3f23",
+      "next": "4f183ad036b4cf975b18545d485536e73d7943a727107fccd0026a2d2aff19a9"
+    },
+    {
+      "ord": 216,
+      "blockId": "aa8a0d7e1c0a7684a4cf41d6a1c1ca11",
+      "fp64": "19ea240036377bb2",
+      "normHash": "4f183ad036b4cf975b18545d485536e73d7943a727107fccd0026a2d2aff19a9",
+      "kind": "h2",
+      "chapter": "الأمر-بتبريد-الحمى-بالماء-البارد",
+      "prev": "21e37573b22f060299622c302cc57c0e6d6b1b51b67002f1bceebbfb2915f0eb",
+      "next": "80a1223f57c4d901e49db1a603d8ecc9d150cfc354b80c7273c89fdc9fcf9a19"
+    },
+    {
+      "ord": 217,
+      "blockId": "5ae40ce4f669667ea7ba96d0179e11a9",
+      "fp64": "644e805f06626974",
+      "normHash": "80a1223f57c4d901e49db1a603d8ecc9d150cfc354b80c7273c89fdc9fcf9a19",
+      "kind": "p",
+      "chapter": "الأمر-بتبريد-الحمى-بالماء-البارد",
+      "prev": "4f183ad036b4cf975b18545d485536e73d7943a727107fccd0026a2d2aff19a9",
+      "next": "c56577f53891e1af7aee1dda655a9ae8832513c4d94e85427acfd0b2fdcac145"
+    },
+    {
+      "ord": 218,
+      "blockId": "0fe6ecd402ef4305ecda82d9773f5048",
+      "fp64": "25dffb9a7f3dfb3f",
+      "normHash": "c56577f53891e1af7aee1dda655a9ae8832513c4d94e85427acfd0b2fdcac145",
+      "kind": "page",
+      "chapter": "الأمر-بتبريد-الحمى-بالماء-البارد",
+      "prev": "80a1223f57c4d901e49db1a603d8ecc9d150cfc354b80c7273c89fdc9fcf9a19",
+      "next": "b1b8b705fce9981b36809f36e03677d724a9bb97699ffaaf6fa89a8536868e2c"
+    },
+    {
+      "ord": 219,
+      "blockId": "efd524d419c974c7e1424d201d215400",
+      "fp64": "4a1d0d3c58a5081b",
+      "normHash": "b1b8b705fce9981b36809f36e03677d724a9bb97699ffaaf6fa89a8536868e2c",
+      "kind": "h2",
+      "chapter": "ذكر-التداوي-بالقسط-البحري-والزيت",
+      "prev": "c56577f53891e1af7aee1dda655a9ae8832513c4d94e85427acfd0b2fdcac145",
+      "next": "787bd459fb9fdc9db310bb5118cf4b1f7d06f5e2ad1a9b0c642496d155fbe6a4"
+    },
+    {
+      "ord": 220,
+      "blockId": "fc15796bc5e6c2d9572f266f9e38d285",
+      "fp64": "24cac09777266278",
+      "normHash": "787bd459fb9fdc9db310bb5118cf4b1f7d06f5e2ad1a9b0c642496d155fbe6a4",
+      "kind": "p",
+      "chapter": "ذكر-التداوي-بالقسط-البحري-والزيت",
+      "prev": "b1b8b705fce9981b36809f36e03677d724a9bb97699ffaaf6fa89a8536868e2c",
+      "next": "d15b179e167fbe2018307a297844878e1063892d3125b9fb67c238a031181c3f"
+    },
+    {
+      "ord": 221,
+      "blockId": "8abdc50dce56298f06d7eeea5c55a4bd",
+      "fp64": "4eca5cffff7ffdf7",
+      "normHash": "d15b179e167fbe2018307a297844878e1063892d3125b9fb67c238a031181c3f",
+      "kind": "p",
+      "chapter": "ذكر-التداوي-بالقسط-البحري-والزيت",
+      "prev": "787bd459fb9fdc9db310bb5118cf4b1f7d06f5e2ad1a9b0c642496d155fbe6a4",
+      "next": "637489a6dd29d7cc50dd2552053b575b9a0997dd6f3805a118d2250890f5c800"
+    },
+    {
+      "ord": 222,
+      "blockId": "0965070dff6cdb7de94f8f43d6ac153c",
+      "fp64": "25dfffbb5e317fbe",
+      "normHash": "637489a6dd29d7cc50dd2552053b575b9a0997dd6f3805a118d2250890f5c800",
+      "kind": "page",
+      "chapter": "ذكر-التداوي-بالقسط-البحري-والزيت",
+      "prev": "d15b179e167fbe2018307a297844878e1063892d3125b9fb67c238a031181c3f",
+      "next": "eadb92ef99fa28c2605171bd6e6187632eaa1b6b4290cb61cee834c0e6d7256a"
+    },
+    {
+      "ord": 223,
+      "blockId": "2e5522347791ae308e63d13b32a644a8",
+      "fp64": "a546e4c9155e49fc",
+      "normHash": "eadb92ef99fa28c2605171bd6e6187632eaa1b6b4290cb61cee834c0e6d7256a",
+      "kind": "p",
+      "chapter": "ذكر-التداوي-بالقسط-البحري-والزيت",
+      "prev": "637489a6dd29d7cc50dd2552053b575b9a0997dd6f3805a118d2250890f5c800",
+      "next": "db58808d70de2cdd3dffc14a8057a12e75e8221d3b378d8468b590e33a61f5e5"
+    },
+    {
+      "ord": 224,
+      "blockId": "66c3b8edf8fa2781e76915990c30e8e5",
+      "fp64": "30c64e7dea52ceb4",
+      "normHash": "db58808d70de2cdd3dffc14a8057a12e75e8221d3b378d8468b590e33a61f5e5",
+      "kind": "p",
+      "chapter": "ذكر-التداوي-بالقسط-البحري-والزيت",
+      "prev": "eadb92ef99fa28c2605171bd6e6187632eaa1b6b4290cb61cee834c0e6d7256a",
+      "next": "f2b3ffd65d87c14dff8840926fb9221b5454a7e02baa9bc3e0e3f850f5bcae18"
+    },
+    {
+      "ord": 225,
+      "blockId": "71866970d81a6ecd51b9350ae79c445b",
+      "fp64": "97b5aa932d36fbef",
+      "normHash": "f2b3ffd65d87c14dff8840926fb9221b5454a7e02baa9bc3e0e3f850f5bcae18",
+      "kind": "p",
+      "chapter": "ذكر-التداوي-بالقسط-البحري-والزيت",
+      "prev": "db58808d70de2cdd3dffc14a8057a12e75e8221d3b378d8468b590e33a61f5e5",
+      "next": "048d13c7906195df4e24fe5e2215f15f3c7f3067cff3363a312659146cea30cf"
+    },
+    {
+      "ord": 226,
+      "blockId": "486fc087b3b44089ee8e126f51d92487",
+      "fp64": "75fff3ff7a3777bf",
+      "normHash": "048d13c7906195df4e24fe5e2215f15f3c7f3067cff3363a312659146cea30cf",
+      "kind": "page",
+      "chapter": "ذكر-التداوي-بالقسط-البحري-والزيت",
+      "prev": "f2b3ffd65d87c14dff8840926fb9221b5454a7e02baa9bc3e0e3f850f5bcae18",
+      "next": "8834ed0f8a600f5501b66bef8a8e574a925114d8c20d1699a73c5cec3c71cc7e"
+    },
+    {
+      "ord": 227,
+      "blockId": "d24e6a20260b3025551ad8640bfd8093",
+      "fp64": "57751ff9dfe65b1f",
+      "normHash": "8834ed0f8a600f5501b66bef8a8e574a925114d8c20d1699a73c5cec3c71cc7e",
+      "kind": "h2",
+      "chapter": "ذكر-التداوي-بالعود-الهندي",
+      "prev": "048d13c7906195df4e24fe5e2215f15f3c7f3067cff3363a312659146cea30cf",
+      "next": "5c3de1d9b66d8ca4494b03750baaf2ac1c46891b3b511785755f65f413bb1051"
+    },
+    {
+      "ord": 228,
+      "blockId": "ef1bfcd4b1d8d9ac1afbe1e69a697619",
+      "fp64": "6e45e453856e717d",
+      "normHash": "5c3de1d9b66d8ca4494b03750baaf2ac1c46891b3b511785755f65f413bb1051",
+      "kind": "p",
+      "chapter": "ذكر-التداوي-بالعود-الهندي",
+      "prev": "8834ed0f8a600f5501b66bef8a8e574a925114d8c20d1699a73c5cec3c71cc7e",
+      "next": "32b73d6fe9bc8d76393cac1f6c846043c9ac220ee274f25c30a56756da5ce013"
+    },
+    {
+      "ord": 229,
+      "blockId": "c7976f1e96e25c5cbc0bab74038002ec",
+      "fp64": "57ec37f7757d9f96",
+      "normHash": "32b73d6fe9bc8d76393cac1f6c846043c9ac220ee274f25c30a56756da5ce013",
+      "kind": "p",
+      "chapter": "ذكر-التداوي-بالعود-الهندي",
+      "prev": "5c3de1d9b66d8ca4494b03750baaf2ac1c46891b3b511785755f65f413bb1051",
+      "next": "ca8b2ce476216e26b0845f16250c2d185c57fa56012b82f627459da9b2016e04"
+    },
+    {
+      "ord": 230,
+      "blockId": "3c10792ed932fe6f8ca7d1703c0c80ca",
+      "fp64": "27fff7bf7f7fe337",
+      "normHash": "ca8b2ce476216e26b0845f16250c2d185c57fa56012b82f627459da9b2016e04",
+      "kind": "page",
+      "chapter": "ذكر-التداوي-بالعود-الهندي",
+      "prev": "32b73d6fe9bc8d76393cac1f6c846043c9ac220ee274f25c30a56756da5ce013",
+      "next": "55fa59119ab72f3190b3c00d8dda19b765f7c6d534de68e549ff0bc015780e34"
+    },
+    {
+      "ord": 231,
+      "blockId": "5d483df22fb2fdaaf25f03220e641ef0",
+      "fp64": "0eb53f3e59f75b1f",
+      "normHash": "55fa59119ab72f3190b3c00d8dda19b765f7c6d534de68e549ff0bc015780e34",
+      "kind": "h2",
+      "chapter": "ذكر-التداوي-بالورس-والزيت",
+      "prev": "ca8b2ce476216e26b0845f16250c2d185c57fa56012b82f627459da9b2016e04",
+      "next": "3acc2cd92e237ea428c8b9c29e848907131e305f6af3718d720fdbfb2ca69982"
+    },
+    {
+      "ord": 232,
+      "blockId": "6bb4e23665df6e7fc5bffd197906164b",
+      "fp64": "adeae0df375e757c",
+      "normHash": "3acc2cd92e237ea428c8b9c29e848907131e305f6af3718d720fdbfb2ca69982",
+      "kind": "p",
+      "chapter": "ذكر-التداوي-بالورس-والزيت",
+      "prev": "55fa59119ab72f3190b3c00d8dda19b765f7c6d534de68e549ff0bc015780e34",
+      "next": "4ec4bcac86ff58ac90b473dee32eb3921caa0ddd45d2853262f58daead5d5d3e"
+    },
+    {
+      "ord": 233,
+      "blockId": "ba333f53a47dba60734a5f0855ea615a",
+      "fp64": "6cb9d5356042d5e9",
+      "normHash": "4ec4bcac86ff58ac90b473dee32eb3921caa0ddd45d2853262f58daead5d5d3e",
+      "kind": "p",
+      "chapter": "ذكر-التداوي-بالورس-والزيت",
+      "prev": "3acc2cd92e237ea428c8b9c29e848907131e305f6af3718d720fdbfb2ca69982",
+      "next": "4ac11a8eb7302306acede9e9941753f2aeeb336b4aee50fd1bddd047e46436a9"
+    },
+    {
+      "ord": 234,
+      "blockId": "07994e0b46e570405b29033b87196779",
+      "fp64": "2dfffbbafe736f77",
+      "normHash": "4ac11a8eb7302306acede9e9941753f2aeeb336b4aee50fd1bddd047e46436a9",
+      "kind": "page",
+      "chapter": "ذكر-التداوي-بالورس-والزيت",
+      "prev": "4ec4bcac86ff58ac90b473dee32eb3921caa0ddd45d2853262f58daead5d5d3e",
+      "next": "3cf9c5fbd95428aef6fe9603f606a5530893a350a7691dfd3b967c98352a54b1"
+    },
+    {
+      "ord": 235,
+      "blockId": "395521c6ad256f0f4a1a6ddc64423625",
+      "fp64": "5377162f5f17519f",
+      "normHash": "3cf9c5fbd95428aef6fe9603f606a5530893a350a7691dfd3b967c98352a54b1",
+      "kind": "h2",
+      "chapter": "ذكر-التداوي-بالسنا",
+      "prev": "4ac11a8eb7302306acede9e9941753f2aeeb336b4aee50fd1bddd047e46436a9",
+      "next": "67284fe0522057ce2178c9de3d2b57a478f8755bb66012e2afdaf34f8944c6bc"
+    },
+    {
+      "ord": 236,
+      "blockId": "3a80c7a5093e5cf6f668b56913adf628",
+      "fp64": "6e64e45f1777725c",
+      "normHash": "67284fe0522057ce2178c9de3d2b57a478f8755bb66012e2afdaf34f8944c6bc",
+      "kind": "p",
+      "chapter": "ذكر-التداوي-بالسنا",
+      "prev": "3cf9c5fbd95428aef6fe9603f606a5530893a350a7691dfd3b967c98352a54b1",
+      "next": "5b093452883d05130c7b6f0fe91f6d23b24a5726fccd7c41a467ebcf2a12dfd0"
+    },
+    {
+      "ord": 237,
+      "blockId": "393db1a15a304a7abc62acb24b1c2560",
+      "fp64": "7dfff3bffbfdf67e",
+      "normHash": "5b093452883d05130c7b6f0fe91f6d23b24a5726fccd7c41a467ebcf2a12dfd0",
+      "kind": "page",
+      "chapter": "ذكر-التداوي-بالسنا",
+      "prev": "67284fe0522057ce2178c9de3d2b57a478f8755bb66012e2afdaf34f8944c6bc",
+      "next": "83e756c28d54c32912926c1b8ef3fad9ce1dafa62741e65701f134be47da0f02"
+    },
+    {
+      "ord": 238,
+      "blockId": "3caf9a1f84cf1e7df78933f5e7784322",
+      "fp64": "b467ec5fbf32737d",
+      "normHash": "83e756c28d54c32912926c1b8ef3fad9ce1dafa62741e65701f134be47da0f02",
+      "kind": "p",
+      "chapter": "ذكر-التداوي-بالسنا",
+      "prev": "5b093452883d05130c7b6f0fe91f6d23b24a5726fccd7c41a467ebcf2a12dfd0",
+      "next": "f016d64d8539dcf50c6da0eb71ceeac01da3b44031b6690654531ded9c757dce"
+    },
+    {
+      "ord": 239,
+      "blockId": "dec91d91b6d80505058073c911681d0e",
+      "fp64": "f7dff3fefbf36637",
+      "normHash": "f016d64d8539dcf50c6da0eb71ceeac01da3b44031b6690654531ded9c757dce",
+      "kind": "page",
+      "chapter": "ذكر-التداوي-بالسنا",
+      "prev": "83e756c28d54c32912926c1b8ef3fad9ce1dafa62741e65701f134be47da0f02",
+      "next": "8a8e239822e126ab20820190cecd3cc36146b326a05486b81f4a5c767672af07"
+    },
+    {
+      "ord": 240,
+      "blockId": "a0f41d0d1b6108a3d5de0a726c40f6d2",
+      "fp64": "0b151ff6dd37123f",
+      "normHash": "8a8e239822e126ab20820190cecd3cc36146b326a05486b81f4a5c767672af07",
+      "kind": "h2",
+      "chapter": "ذكر-التداوي-بالعجوة",
+      "prev": "f016d64d8539dcf50c6da0eb71ceeac01da3b44031b6690654531ded9c757dce",
+      "next": "4c5a3c29ca511867e763ae831daafe6a4af6b0cda60c8e7b7273857f289d49e1"
+    },
+    {
+      "ord": 241,
+      "blockId": "b232e1eaed701066a8e92af1a89d77e1",
+      "fp64": "6484c85dbf63517c",
+      "normHash": "4c5a3c29ca511867e763ae831daafe6a4af6b0cda60c8e7b7273857f289d49e1",
+      "kind": "p",
+      "chapter": "ذكر-التداوي-بالعجوة",
+      "prev": "8a8e239822e126ab20820190cecd3cc36146b326a05486b81f4a5c767672af07",
+      "next": "3609a93a276426eb7c866edbb708697b845504d02261b0ee164f31a812581e3a"
+    },
+    {
+      "ord": 242,
+      "blockId": "4058c5788ce3e02bbc3fca23140867e2",
+      "fp64": "b7dff7fb7f3bf43f",
+      "normHash": "3609a93a276426eb7c866edbb708697b845504d02261b0ee164f31a812581e3a",
+      "kind": "page",
+      "chapter": "ذكر-التداوي-بالعجوة",
+      "prev": "4c5a3c29ca511867e763ae831daafe6a4af6b0cda60c8e7b7273857f289d49e1",
+      "next": "6fbd39ee6166cceb2ebe79331e2afad4f76f8e6e095f72570b3f742eca180a72"
+    },
+    {
+      "ord": 243,
+      "blockId": "755348dfadc01d0aa63c0bf603652276",
+      "fp64": "47945f2a873ed601",
+      "normHash": "6fbd39ee6166cceb2ebe79331e2afad4f76f8e6e095f72570b3f742eca180a72",
+      "kind": "h2",
+      "chapter": "ذكر-عرق-النسا",
+      "prev": "3609a93a276426eb7c866edbb708697b845504d02261b0ee164f31a812581e3a",
+      "next": "aec4fa51b2bc2528cf522c3ea6639d80c011324fcd72f9382b17177d5dd0f396"
+    },
+    {
+      "ord": 244,
+      "blockId": "34ce1d4e8969a601dfc5b63e4343cf40",
+      "fp64": "e7d6b0de850a4afc",
+      "normHash": "aec4fa51b2bc2528cf522c3ea6639d80c011324fcd72f9382b17177d5dd0f396",
+      "kind": "p",
+      "chapter": "ذكر-عرق-النسا",
+      "prev": "6fbd39ee6166cceb2ebe79331e2afad4f76f8e6e095f72570b3f742eca180a72",
+      "next": "95dd13e6ab8a5ae5b854e102da44e50b07d28a91d15f98040b0ed17fddb5a867"
+    },
+    {
+      "ord": 245,
+      "blockId": "22a1639d18ab6f8ad36748d010c16029",
+      "fp64": "a7dff3fbfe3bfbbf",
+      "normHash": "95dd13e6ab8a5ae5b854e102da44e50b07d28a91d15f98040b0ed17fddb5a867",
+      "kind": "page",
+      "chapter": "ذكر-عرق-النسا",
+      "prev": "aec4fa51b2bc2528cf522c3ea6639d80c011324fcd72f9382b17177d5dd0f396",
+      "next": "3d9c0e525d3b9e7ee81a32882681f8d2ad46a793a2ac7246d6d979034c7dec1c"
+    },
+    {
+      "ord": 246,
+      "blockId": "19b4cc9d1bf93c740abe6af84004ab3b",
+      "fp64": "75975f70da3fbbad",
+      "normHash": "3d9c0e525d3b9e7ee81a32882681f8d2ad46a793a2ac7246d6d979034c7dec1c",
+      "kind": "h2",
+      "chapter": "ذكر-توقي-المواضع-التي-بها-الوباء",
+      "prev": "95dd13e6ab8a5ae5b854e102da44e50b07d28a91d15f98040b0ed17fddb5a867",
+      "next": "0155b5d8a6db151923df3e047286e0a4db302700bc89d2360fcf1b06191de299"
+    },
+    {
+      "ord": 247,
+      "blockId": "94ae4449155ff4dd9bec2479cabd73ff",
+      "fp64": "ecdec897b50c5cfc",
+      "normHash": "0155b5d8a6db151923df3e047286e0a4db302700bc89d2360fcf1b06191de299",
+      "kind": "p",
+      "chapter": "ذكر-توقي-المواضع-التي-بها-الوباء",
+      "prev": "3d9c0e525d3b9e7ee81a32882681f8d2ad46a793a2ac7246d6d979034c7dec1c",
+      "next": "84ade8bbab00701ab159e44dc6632f5dcc8efb5814df53f8866fb34252dc99ad"
+    },
+    {
+      "ord": 248,
+      "blockId": "2bf9ffeb09271bc32e486f9008e453e3",
+      "fp64": "37fff7bffabf657e",
+      "normHash": "84ade8bbab00701ab159e44dc6632f5dcc8efb5814df53f8866fb34252dc99ad",
+      "kind": "page",
+      "chapter": "ذكر-توقي-المواضع-التي-بها-الوباء",
+      "prev": "0155b5d8a6db151923df3e047286e0a4db302700bc89d2360fcf1b06191de299",
+      "next": "19fa950ea9825060949e3965ecd45809aecb6bea7046986e7b5056848fab6019"
+    },
+    {
+      "ord": 249,
+      "blockId": "046f8bcd0e57b6e388dd751d19e36a27",
+      "fp64": "7cc7c25d320c5e79",
+      "normHash": "19fa950ea9825060949e3965ecd45809aecb6bea7046986e7b5056848fab6019",
+      "kind": "p",
+      "chapter": "ذكر-توقي-المواضع-التي-بها-الوباء",
+      "prev": "84ade8bbab00701ab159e44dc6632f5dcc8efb5814df53f8866fb34252dc99ad",
+      "next": "e99027e925496dcbfc7b715bdb6d62c89e7303837e2c25eadcae8da73a0233e5"
+    },
+    {
+      "ord": 250,
+      "blockId": "c68fc33aca57549e822ab0275b6cfed4",
+      "fp64": "6fca6effbf7f3f77",
+      "normHash": "e99027e925496dcbfc7b715bdb6d62c89e7303837e2c25eadcae8da73a0233e5",
+      "kind": "p",
+      "chapter": "ذكر-توقي-المواضع-التي-بها-الوباء",
+      "prev": "19fa950ea9825060949e3965ecd45809aecb6bea7046986e7b5056848fab6019",
+      "next": "1cf8d2d0ef883cbc456a09b3398c61638cce24eb25a5fa7e9ede26d0db94850c"
+    },
+    {
+      "ord": 251,
+      "blockId": "4f42a6176adf516a588f95faffabb7b6",
+      "fp64": "9fd864165334775c",
+      "normHash": "1cf8d2d0ef883cbc456a09b3398c61638cce24eb25a5fa7e9ede26d0db94850c",
+      "kind": "p",
+      "chapter": "ذكر-توقي-المواضع-التي-بها-الوباء",
+      "prev": "e99027e925496dcbfc7b715bdb6d62c89e7303837e2c25eadcae8da73a0233e5",
+      "next": "d6249e3c7fc004ebcb4c97c34ae57c77673bba98161a595e0f4e6ee728c80025"
+    },
+    {
+      "ord": 252,
+      "blockId": "0fc59778fb05a6619a5915fe0592c204",
+      "fp64": "effff3bfdaf7fa3e",
+      "normHash": "d6249e3c7fc004ebcb4c97c34ae57c77673bba98161a595e0f4e6ee728c80025",
+      "kind": "page",
+      "chapter": "ذكر-توقي-المواضع-التي-بها-الوباء",
+      "prev": "1cf8d2d0ef883cbc456a09b3398c61638cce24eb25a5fa7e9ede26d0db94850c",
+      "next": "e8536682e57b090e517d3941886888b65f88cdc35b719a563902bbb95b4fe481"
+    },
+    {
+      "ord": 253,
+      "blockId": "79ea132455ec9eb66d0d9c9afde58534",
+      "fp64": "d79d7efdbb7fb32f",
+      "normHash": "e8536682e57b090e517d3941886888b65f88cdc35b719a563902bbb95b4fe481",
+      "kind": "h2",
+      "chapter": "ذكر-الحساء",
+      "prev": "d6249e3c7fc004ebcb4c97c34ae57c77673bba98161a595e0f4e6ee728c80025",
+      "next": "ab33ccc197e4a4ab1ff3c5ba3734b34e2b58e8277f1b6232ff7034e5713294b2"
+    },
+    {
+      "ord": 254,
+      "blockId": "04013408904a623dc4e18d7e3d4999ce",
+      "fp64": "4e20010da160429d",
+      "normHash": "ab33ccc197e4a4ab1ff3c5ba3734b34e2b58e8277f1b6232ff7034e5713294b2",
+      "kind": "p",
+      "chapter": "ذكر-الحساء",
+      "prev": "e8536682e57b090e517d3941886888b65f88cdc35b719a563902bbb95b4fe481",
+      "next": "2ed5604f239f67a2f3d3c8aab65b2c53e16ae80cfc22d8a5cfb19fb42d8babe8"
+    },
+    {
+      "ord": 255,
+      "blockId": "dda6a5692b85256adc1e5d647c3e0e5f",
+      "fp64": "fffffbdafe71f8f7",
+      "normHash": "2ed5604f239f67a2f3d3c8aab65b2c53e16ae80cfc22d8a5cfb19fb42d8babe8",
+      "kind": "page",
+      "chapter": "ذكر-الحساء",
+      "prev": "ab33ccc197e4a4ab1ff3c5ba3734b34e2b58e8277f1b6232ff7034e5713294b2",
+      "next": "16229955002636ab0248686aff7daaba728b277c61b946623adb46096f2f5222"
+    },
+    {
+      "ord": 256,
+      "blockId": "6f3892c2587b7f56bfabba54fe41bf68",
+      "fp64": "43c91c699fe7bf4f",
+      "normHash": "16229955002636ab0248686aff7daaba728b277c61b946623adb46096f2f5222",
+      "kind": "h2",
+      "chapter": "ذكر-عصب-الرأس-من-الوجع",
+      "prev": "2ed5604f239f67a2f3d3c8aab65b2c53e16ae80cfc22d8a5cfb19fb42d8babe8",
+      "next": "e7b14ab8c7e396c5742cad6d5eb6fdc62a1c804554f5fbaba22f36922d1bb65e"
+    },
+    {
+      "ord": 257,
+      "blockId": "6165cf5fe741a5496d6532a5479253e6",
+      "fp64": "ee5ec45e174440bc",
+      "normHash": "e7b14ab8c7e396c5742cad6d5eb6fdc62a1c804554f5fbaba22f36922d1bb65e",
+      "kind": "p",
+      "chapter": "ذكر-عصب-الرأس-من-الوجع",
+      "prev": "16229955002636ab0248686aff7daaba728b277c61b946623adb46096f2f5222",
+      "next": "365cc7c0a88ff2dcaeaa8c6f50b5c3289f8f6456bbc1d6ccfbd40e1b12617e3c"
+    },
+    {
+      "ord": 258,
+      "blockId": "f3cf4cce2ab9b1d159e8a1f24df23219",
+      "fp64": "77dff7fa7fbffab7",
+      "normHash": "365cc7c0a88ff2dcaeaa8c6f50b5c3289f8f6456bbc1d6ccfbd40e1b12617e3c",
+      "kind": "page",
+      "chapter": "ذكر-عصب-الرأس-من-الوجع",
+      "prev": "e7b14ab8c7e396c5742cad6d5eb6fdc62a1c804554f5fbaba22f36922d1bb65e",
+      "next": "e4d0818c0362e2b3984dd863dbe7b33120993ab5557967b8bec5cf41d3b13c73"
+    },
+    {
+      "ord": 259,
+      "blockId": "dd7fcbeef379c6539c5f33ec29cd9c17",
+      "fp64": "c7c53e52d33738ec",
+      "normHash": "e4d0818c0362e2b3984dd863dbe7b33120993ab5557967b8bec5cf41d3b13c73",
+      "kind": "h2",
+      "chapter": "ذكر-مقل-الذباب-في-الطعام",
+      "prev": "365cc7c0a88ff2dcaeaa8c6f50b5c3289f8f6456bbc1d6ccfbd40e1b12617e3c",
+      "next": "00385ff43f0cccb11f6c681bfc29e28f05dc87af19f7c2d7cc5c29bef1b3fe2a"
+    },
+    {
+      "ord": 260,
+      "blockId": "d93df6b39aa6ee606d5601ad7479902c",
+      "fp64": "7e71e01e957c73fc",
+      "normHash": "00385ff43f0cccb11f6c681bfc29e28f05dc87af19f7c2d7cc5c29bef1b3fe2a",
+      "kind": "p",
+      "chapter": "ذكر-مقل-الذباب-في-الطعام",
+      "prev": "e4d0818c0362e2b3984dd863dbe7b33120993ab5557967b8bec5cf41d3b13c73",
+      "next": "4143511e62bb8f9ff643b5468b02c2f14ba727589bee0416b382c136644943f6"
+    },
+    {
+      "ord": 261,
+      "blockId": "3fb5895bb56c2fd4ee0f7efd9cc797aa",
+      "fp64": "a5ffffffffbf7836",
+      "normHash": "4143511e62bb8f9ff643b5468b02c2f14ba727589bee0416b382c136644943f6",
+      "kind": "page",
+      "chapter": "ذكر-مقل-الذباب-في-الطعام",
+      "prev": "00385ff43f0cccb11f6c681bfc29e28f05dc87af19f7c2d7cc5c29bef1b3fe2a",
+      "next": "659a6e14800801260c4f3e57748b6b81be05cb64fcbc4386b415aa95372b911c"
+    },
+    {
+      "ord": 262,
+      "blockId": "a1d6b98315dd075d5ac5a183f86e5a67",
+      "fp64": "2a681edd9333771e",
+      "normHash": "659a6e14800801260c4f3e57748b6b81be05cb64fcbc4386b415aa95372b911c",
+      "kind": "h2",
+      "chapter": "ذكر-ما-يستمسك-به-الدم-من-الجراح",
+      "prev": "4143511e62bb8f9ff643b5468b02c2f14ba727589bee0416b382c136644943f6",
+      "next": "00d042b0050b0508fcab3a2d01bf21584ba0bf54de0ae2cd33e525e41f054c2d"
+    },
+    {
+      "ord": 263,
+      "blockId": "e131b21d431d37d1ceb6bdcf8651fa43",
+      "fp64": "3c47c216877a776c",
+      "normHash": "00d042b0050b0508fcab3a2d01bf21584ba0bf54de0ae2cd33e525e41f054c2d",
+      "kind": "p",
+      "chapter": "ذكر-ما-يستمسك-به-الدم-من-الجراح",
+      "prev": "659a6e14800801260c4f3e57748b6b81be05cb64fcbc4386b415aa95372b911c",
+      "next": "3f07ce359d273a8aaec30838b94b7437753cfac9236c9e178d737feb66974f28"
+    },
+    {
+      "ord": 264,
+      "blockId": "3990825193d83bf0927582391e479f5c",
+      "fp64": "31ad8fb387bde2d6",
+      "normHash": "3f07ce359d273a8aaec30838b94b7437753cfac9236c9e178d737feb66974f28",
+      "kind": "p",
+      "chapter": "ذكر-ما-يستمسك-به-الدم-من-الجراح",
+      "prev": "00d042b0050b0508fcab3a2d01bf21584ba0bf54de0ae2cd33e525e41f054c2d",
+      "next": "a7db990f70eb0b7d63b2714a56958e479312de75dfb3fe0f912e4888ffca0ca4"
+    },
+    {
+      "ord": 265,
+      "blockId": "9a90369c81dce56885083ae86f81f364",
+      "fp64": "e7dfffbb5e796cb6",
+      "normHash": "a7db990f70eb0b7d63b2714a56958e479312de75dfb3fe0f912e4888ffca0ca4",
+      "kind": "page",
+      "chapter": "ذكر-ما-يستمسك-به-الدم-من-الجراح",
+      "prev": "3f07ce359d273a8aaec30838b94b7437753cfac9236c9e178d737feb66974f28",
+      "next": "397b8a92ebcca1d5949842c29224a4f459f596a83e0bfb0de3ecca71720aa4cc"
+    },
+    {
+      "ord": 266,
+      "blockId": "7a86a079e6c01f716690155d77eefc73",
+      "fp64": "03a52ef083362347",
+      "normHash": "397b8a92ebcca1d5949842c29224a4f459f596a83e0bfb0de3ecca71720aa4cc",
+      "kind": "h2",
+      "chapter": "ذكر-الحناء-يترك-على-القروح",
+      "prev": "a7db990f70eb0b7d63b2714a56958e479312de75dfb3fe0f912e4888ffca0ca4",
+      "next": "490dd132bc248d09d7eb317de2d7936897a0ed963964debdfe31565f36875c0d"
+    },
+    {
+      "ord": 267,
+      "blockId": "ac28df1ca9ab212a9f04547c49e32e69",
+      "fp64": "a440e00fb874737a",
+      "normHash": "490dd132bc248d09d7eb317de2d7936897a0ed963964debdfe31565f36875c0d",
+      "kind": "p",
+      "chapter": "ذكر-الحناء-يترك-على-القروح",
+      "prev": "397b8a92ebcca1d5949842c29224a4f459f596a83e0bfb0de3ecca71720aa4cc",
+      "next": "87591ab013c769cdd131c037fcc1a3e5eaa81eace950df374d1479bca2a81b81"
+    },
+    {
+      "ord": 268,
+      "blockId": "92919c3ff7e6fe3606c906fb6f5bc68f",
+      "fp64": "77ffffba5e336677",
+      "normHash": "87591ab013c769cdd131c037fcc1a3e5eaa81eace950df374d1479bca2a81b81",
+      "kind": "page",
+      "chapter": "ذكر-الحناء-يترك-على-القروح",
+      "prev": "490dd132bc248d09d7eb317de2d7936897a0ed963964debdfe31565f36875c0d",
+      "next": "9b056f2900b4080d2c873bb11a7c1c34aa86f7979073e8f2dc452540c60617f6"
+    },
+    {
+      "ord": 269,
+      "blockId": "80e2cc3efc6796feed07b8431d00ecd8",
+      "fp64": "5b9d1efaff3f37ef",
+      "normHash": "9b056f2900b4080d2c873bb11a7c1c34aa86f7979073e8f2dc452540c60617f6",
+      "kind": "h2",
+      "chapter": "ذكر-الذريرة",
+      "prev": "87591ab013c769cdd131c037fcc1a3e5eaa81eace950df374d1479bca2a81b81",
+      "next": "dd10147a86b5f9b0d4cb6c9c67f168c0f9b1082407d96204d3014480d5a2953f"
+    },
+    {
+      "ord": 270,
+      "blockId": "842fbaef75bee2c4cf52db5d3c9fac14",
+      "fp64": "2e65a55f1728e97c",
+      "normHash": "dd10147a86b5f9b0d4cb6c9c67f168c0f9b1082407d96204d3014480d5a2953f",
+      "kind": "p",
+      "chapter": "ذكر-الذريرة",
+      "prev": "9b056f2900b4080d2c873bb11a7c1c34aa86f7979073e8f2dc452540c60617f6",
+      "next": "d283d476f1ed4a8cb48ab29a9155e3470684a66a2d678d13d52740600eab9b40"
+    },
+    {
+      "ord": 271,
+      "blockId": "06f474a4771eff6a03c6594a30c8d1ec",
+      "fp64": "7ffffbdbffb1eafe",
+      "normHash": "d283d476f1ed4a8cb48ab29a9155e3470684a66a2d678d13d52740600eab9b40",
+      "kind": "page",
+      "chapter": "ذكر-الذريرة",
+      "prev": "dd10147a86b5f9b0d4cb6c9c67f168c0f9b1082407d96204d3014480d5a2953f",
+      "next": "d4c6bc3a7aa42b017dffbfe4e5e699ed948b27b375df51f6374209cc2efe12b1"
+    },
+    {
+      "ord": 272,
+      "blockId": "a3a16711e67d11f248f1e71f8a6454c3",
+      "fp64": "724e5ed49752211f",
+      "normHash": "d4c6bc3a7aa42b017dffbfe4e5e699ed948b27b375df51f6374209cc2efe12b1",
+      "kind": "h2",
+      "chapter": "ذكر-النهي-عن-التداوي-بالخمر",
+      "prev": "d283d476f1ed4a8cb48ab29a9155e3470684a66a2d678d13d52740600eab9b40",
+      "next": "422dd4f99e03fce0ad98ddecf1f1073e4f127d428ffdf2981d59e144bd03e763"
+    },
+    {
+      "ord": 273,
+      "blockId": "41c58a65f5c16239299361853545653d",
+      "fp64": "3647f856913c7118",
+      "normHash": "422dd4f99e03fce0ad98ddecf1f1073e4f127d428ffdf2981d59e144bd03e763",
+      "kind": "p",
+      "chapter": "ذكر-النهي-عن-التداوي-بالخمر",
+      "prev": "d4c6bc3a7aa42b017dffbfe4e5e699ed948b27b375df51f6374209cc2efe12b1",
+      "next": "1b0db299d9cd9f5d533433cde79dbc5e119d9c1eed4196fca1f893dba40db72e"
+    },
+    {
+      "ord": 274,
+      "blockId": "5cc3894e87ebd87d73d8581f580f4733",
+      "fp64": "726f4cece71e910d",
+      "normHash": "1b0db299d9cd9f5d533433cde79dbc5e119d9c1eed4196fca1f893dba40db72e",
+      "kind": "h2",
+      "chapter": "ذكر-النهي-عن-الدواء-بالسم",
+      "prev": "422dd4f99e03fce0ad98ddecf1f1073e4f127d428ffdf2981d59e144bd03e763",
+      "next": "fb0e330d81dbe90d99bdef8346a8c171b0f230d2a607c55639129bdafd481cb4"
+    },
+    {
+      "ord": 275,
+      "blockId": "362e5aa2a348e082ed236587dc49a103",
+      "fp64": "dc588016517c1bfc",
+      "normHash": "fb0e330d81dbe90d99bdef8346a8c171b0f230d2a607c55639129bdafd481cb4",
+      "kind": "p",
+      "chapter": "ذكر-النهي-عن-الدواء-بالسم",
+      "prev": "1b0db299d9cd9f5d533433cde79dbc5e119d9c1eed4196fca1f893dba40db72e",
+      "next": "ec4c02899775677b52a515df4072c2b77e73b4530884bc34d9e2c9e2e07d6487"
+    },
+    {
+      "ord": 276,
+      "blockId": "274d1537a3192376e0d6e206441a9cf0",
+      "fp64": "37dff7bbdefff1ff",
+      "normHash": "ec4c02899775677b52a515df4072c2b77e73b4530884bc34d9e2c9e2e07d6487",
+      "kind": "page",
+      "chapter": "ذكر-النهي-عن-الدواء-بالسم",
+      "prev": "fb0e330d81dbe90d99bdef8346a8c171b0f230d2a607c55639129bdafd481cb4",
+      "next": "ba09388aa21a49c1e9aa8336e39ceced81a11baf6f1ec055156e0be3df32a39a"
+    },
+    {
+      "ord": 277,
+      "blockId": "bd6295e2539e2f30fe1187dd520649cb",
+      "fp64": "47ce1040fb169a20",
+      "normHash": "ba09388aa21a49c1e9aa8336e39ceced81a11baf6f1ec055156e0be3df32a39a",
+      "kind": "h2",
+      "chapter": "ذكر-النهي-أن-يجعل-الضفدع-في-الدواء",
+      "prev": "ec4c02899775677b52a515df4072c2b77e73b4530884bc34d9e2c9e2e07d6487",
+      "next": "28b92d966975f8f695bf17b85a9f9dc5e62021cde4f650b7afd225915e4ec6b5"
+    },
+    {
+      "ord": 278,
+      "blockId": "8abb38ce9c2919aa39efe5c7b54d8c51",
+      "fp64": "2f46a0d6855c799e",
+      "normHash": "28b92d966975f8f695bf17b85a9f9dc5e62021cde4f650b7afd225915e4ec6b5",
+      "kind": "p",
+      "chapter": "ذكر-النهي-أن-يجعل-الضفدع-في-الدواء",
+      "prev": "ba09388aa21a49c1e9aa8336e39ceced81a11baf6f1ec055156e0be3df32a39a",
+      "next": "4d9fee23054d29faa763588a69ffed14c5677bafec7ca704ccf6cbfed8755c2e"
+    },
+    {
+      "ord": 279,
+      "blockId": "ae4eeed00290386ecde044fb9ad1ef70",
+      "fp64": "b5dff7be5ebf787f",
+      "normHash": "4d9fee23054d29faa763588a69ffed14c5677bafec7ca704ccf6cbfed8755c2e",
+      "kind": "page",
+      "chapter": "ذكر-النهي-أن-يجعل-الضفدع-في-الدواء",
+      "prev": "28b92d966975f8f695bf17b85a9f9dc5e62021cde4f650b7afd225915e4ec6b5",
+      "next": "b481f9c29858ea4e0eeacd59e14444f0124ab03960b5594312eae48005fc3d47"
+    },
+    {
+      "ord": 280,
+      "blockId": "880784a52e23b7528f0ddadb31293098",
+      "fp64": "d7e5efef9fbf3fbb",
+      "normHash": "b481f9c29858ea4e0eeacd59e14444f0124ab03960b5594312eae48005fc3d47",
+      "kind": "h2",
+      "chapter": "ذكر-كراهية-شرب-الترياق",
+      "prev": "4d9fee23054d29faa763588a69ffed14c5677bafec7ca704ccf6cbfed8755c2e",
+      "next": "4e72614e502c3eb5ebb2d9a1e90b9c56f079f46fedd824e5224aedbdeb48c0e5"
+    },
+    {
+      "ord": 281,
+      "blockId": "98fd8bf93d0f8574225e63a7f8997f98",
+      "fp64": "e644e45d877649f4",
+      "normHash": "4e72614e502c3eb5ebb2d9a1e90b9c56f079f46fedd824e5224aedbdeb48c0e5",
+      "kind": "p",
+      "chapter": "ذكر-كراهية-شرب-الترياق",
+      "prev": "b481f9c29858ea4e0eeacd59e14444f0124ab03960b5594312eae48005fc3d47",
+      "next": "acb35a53033ef31428763d094725233b230b989a24b7c86557c3460cfd6207ae"
+    },
+    {
+      "ord": 282,
+      "blockId": "18839e3349609451418217d5ffc79c65",
+      "fp64": "a7fffbbe7f316737",
+      "normHash": "acb35a53033ef31428763d094725233b230b989a24b7c86557c3460cfd6207ae",
+      "kind": "page",
+      "chapter": "ذكر-كراهية-شرب-الترياق",
+      "prev": "4e72614e502c3eb5ebb2d9a1e90b9c56f079f46fedd824e5224aedbdeb48c0e5",
+      "next": "57c70102c8eae79f27a559f5ffca9f806768602206dadad8cc3d0a1171fb2c80"
+    },
+    {
+      "ord": 283,
+      "blockId": "c7c0f3ede74b6630f243b09d7ffc0af1",
+      "fp64": "6184dede53b74f6e",
+      "normHash": "57c70102c8eae79f27a559f5ffca9f806768602206dadad8cc3d0a1171fb2c80",
+      "kind": "h2",
+      "chapter": "ذكر-ما-يذهب-العي-والتعب",
+      "prev": "acb35a53033ef31428763d094725233b230b989a24b7c86557c3460cfd6207ae",
+      "next": "023ff37b2fa5dcaa04bb30d62c97cd0cb7d0e79c8c0ff0d9c3cf7e0879ce3cba"
+    },
+    {
+      "ord": 284,
+      "blockId": "291be7cebef656ebbdd4d8a079423488",
+      "fp64": "28b0c8579706597c",
+      "normHash": "023ff37b2fa5dcaa04bb30d62c97cd0cb7d0e79c8c0ff0d9c3cf7e0879ce3cba",
+      "kind": "p",
+      "chapter": "ذكر-ما-يذهب-العي-والتعب",
+      "prev": "57c70102c8eae79f27a559f5ffca9f806768602206dadad8cc3d0a1171fb2c80",
+      "next": "3ddd7cf5dc1c0efbe6815ffea5008c3b3bcb61e09878fa38990518bad9ef473f"
+    },
+    {
+      "ord": 285,
+      "blockId": "bad095f86b1b7fc52f298d965b3a7477",
+      "fp64": "bddfffbe5ff3eb36",
+      "normHash": "3ddd7cf5dc1c0efbe6815ffea5008c3b3bcb61e09878fa38990518bad9ef473f",
+      "kind": "page",
+      "chapter": "ذكر-ما-يذهب-العي-والتعب",
+      "prev": "023ff37b2fa5dcaa04bb30d62c97cd0cb7d0e79c8c0ff0d9c3cf7e0879ce3cba",
+      "next": "b6d28aaf84c6bb2472538b471612be8a7c25c8c08b4199cd597d86623d3c7888"
+    },
+    {
+      "ord": 286,
+      "blockId": "a8785332a5da0c59fde2c17137a08eac",
+      "fp64": "5ea117e8d9f512ef",
+      "normHash": "b6d28aaf84c6bb2472538b471612be8a7c25c8c08b4199cd597d86623d3c7888",
+      "kind": "h2",
+      "chapter": "ذكر-إباحة-مداواة-النساء-الرجال",
+      "prev": "3ddd7cf5dc1c0efbe6815ffea5008c3b3bcb61e09878fa38990518bad9ef473f",
+      "next": "11bec76007ce9fcb5ad85453c6ee664c121ed89d9fd8f23179f81ddf6f3327f3"
+    },
+    {
+      "ord": 287,
+      "blockId": "a122f2baa681213b4723a054c4614969",
+      "fp64": "2e4de056335c72d4",
+      "normHash": "11bec76007ce9fcb5ad85453c6ee664c121ed89d9fd8f23179f81ddf6f3327f3",
+      "kind": "p",
+      "chapter": "ذكر-إباحة-مداواة-النساء-الرجال",
+      "prev": "b6d28aaf84c6bb2472538b471612be8a7c25c8c08b4199cd597d86623d3c7888",
+      "next": "75a6a1a9e97c31d7f27db16a0c9d7061367e57e5df34b5625b7712a5a7088d88"
+    },
+    {
+      "ord": 288,
+      "blockId": "2421e516430c4927cfd9dbf22ab84d34",
+      "fp64": "b7dff39e7ebf6efe",
+      "normHash": "75a6a1a9e97c31d7f27db16a0c9d7061367e57e5df34b5625b7712a5a7088d88",
+      "kind": "page",
+      "chapter": "ذكر-إباحة-مداواة-النساء-الرجال",
+      "prev": "11bec76007ce9fcb5ad85453c6ee664c121ed89d9fd8f23179f81ddf6f3327f3",
+      "next": "0ed9d90faf1d5260c3e85cebe00fca4b13af03e8f53c6eb944972e181e25bddb"
+    },
+    {
+      "ord": 289,
+      "blockId": "57b7a53cd23e49fcf7f7c20124f06614",
+      "fp64": "f8ebaccf07fbcd7f",
+      "normHash": "0ed9d90faf1d5260c3e85cebe00fca4b13af03e8f53c6eb944972e181e25bddb",
+      "kind": "h2",
+      "chapter": "كراهته-أن-يقال-طبيب",
+      "prev": "75a6a1a9e97c31d7f27db16a0c9d7061367e57e5df34b5625b7712a5a7088d88",
+      "next": "adc5d314e733fc7cf7f470f0fe07dec7ee67622f2cb0b3cc68315f04480e2fd5"
+    },
+    {
+      "ord": 290,
+      "blockId": "7fe44da4aa14fd6709458b2ffbe94780",
+      "fp64": "6471e51604927176",
+      "normHash": "adc5d314e733fc7cf7f470f0fe07dec7ee67622f2cb0b3cc68315f04480e2fd5",
+      "kind": "p",
+      "chapter": "كراهته-أن-يقال-طبيب",
+      "prev": "0ed9d90faf1d5260c3e85cebe00fca4b13af03e8f53c6eb944972e181e25bddb",
+      "next": "098c65a27fa430091e5e987c1ea7e8e902d3b3c496452cef27e1d451f3456514"
+    },
+    {
+      "ord": 291,
+      "blockId": "7306e9242bd23273efe6e54aacee4cd6",
+      "fp64": "9eb5af92adf7bb0f",
+      "normHash": "098c65a27fa430091e5e987c1ea7e8e902d3b3c496452cef27e1d451f3456514",
+      "kind": "p",
+      "chapter": "كراهته-أن-يقال-طبيب",
+      "prev": "adc5d314e733fc7cf7f470f0fe07dec7ee67622f2cb0b3cc68315f04480e2fd5",
+      "next": "d22fddc00c8e31e5630fd5d9ff18fbd9ad60a4bd6147d72e5192172d1ccf0b7d"
+    },
+    {
+      "ord": 292,
+      "blockId": "82153d62ed88b8f4103cdf69997f1d8e",
+      "fp64": "75dff7ff5abfeef6",
+      "normHash": "d22fddc00c8e31e5630fd5d9ff18fbd9ad60a4bd6147d72e5192172d1ccf0b7d",
+      "kind": "page",
+      "chapter": "كراهته-أن-يقال-طبيب",
+      "prev": "098c65a27fa430091e5e987c1ea7e8e902d3b3c496452cef27e1d451f3456514",
+      "next": "d2f0021f438f824a48da50dc290723823691d370c0d6dc3989bc6898a5966bc5"
+    },
+    {
+      "ord": 293,
+      "blockId": "97a2218ac2c169096d44ed500d9ac6a2",
+      "fp64": "4785977a9377f76f",
+      "normHash": "d2f0021f438f824a48da50dc290723823691d370c0d6dc3989bc6898a5966bc5",
+      "kind": "h2",
+      "chapter": "ذكر-ضمان-من-لا-يحسن-الطب",
+      "prev": "d22fddc00c8e31e5630fd5d9ff18fbd9ad60a4bd6147d72e5192172d1ccf0b7d",
+      "next": "49cda18eb3d9087f33a03c413b61e15e920bcf994679895cf5c40b0fd9b08c62"
+    },
+    {
+      "ord": 294,
+      "blockId": "ce196e3fcf09fe6c8d17a70291a3de82",
+      "fp64": "2831e817a74a731c",
+      "normHash": "49cda18eb3d9087f33a03c413b61e15e920bcf994679895cf5c40b0fd9b08c62",
+      "kind": "p",
+      "chapter": "ذكر-ضمان-من-لا-يحسن-الطب",
+      "prev": "d2f0021f438f824a48da50dc290723823691d370c0d6dc3989bc6898a5966bc5",
+      "next": "7c386d861114e55965ff9f546daf8e8673c30163e929025bb782b9e0057cf175"
+    },
+    {
+      "ord": 295,
+      "blockId": "f7a4d3bf7438abc94fd39653f4189eba",
+      "fp64": "65dffbfa5ef7f0f6",
+      "normHash": "7c386d861114e55965ff9f546daf8e8673c30163e929025bb782b9e0057cf175",
+      "kind": "page",
+      "chapter": "ذكر-ضمان-من-لا-يحسن-الطب",
+      "prev": "49cda18eb3d9087f33a03c413b61e15e920bcf994679895cf5c40b0fd9b08c62",
+      "next": "5518334ea7fb59578911a9a8911c1059aa592b808a2eac9494e29fbb39919f61"
+    },
+    {
+      "ord": 296,
+      "blockId": "6f55270cae7b31b908968f6139088b41",
+      "fp64": "e3f57efcfbbf9f3f",
+      "normHash": "5518334ea7fb59578911a9a8911c1059aa592b808a2eac9494e29fbb39919f61",
+      "kind": "h2",
+      "chapter": "ذكر-التنظف",
+      "prev": "7c386d861114e55965ff9f546daf8e8673c30163e929025bb782b9e0057cf175",
+      "next": "d221f4291a44f4e3c8686dadfb2c3e0ce10029179592720ac35982e6394e5bdd"
+    },
+    {
+      "ord": 297,
+      "blockId": "77eb6b5ac2dbfc0fdb4e5bd1a51c368d",
+      "fp64": "6c74c81795545378",
+      "normHash": "d221f4291a44f4e3c8686dadfb2c3e0ce10029179592720ac35982e6394e5bdd",
+      "kind": "p",
+      "chapter": "ذكر-التنظف",
+      "prev": "5518334ea7fb59578911a9a8911c1059aa592b808a2eac9494e29fbb39919f61",
+      "next": "241871d3b7442524fe97c0b703bd92d47d59af6e57f7b78808f279ec85e0e653"
+    },
+    {
+      "ord": 298,
+      "blockId": "2a61b5ddf82774317fe28a1cb0ef59b5",
+      "fp64": "75fff79f7f357b3e",
+      "normHash": "241871d3b7442524fe97c0b703bd92d47d59af6e57f7b78808f279ec85e0e653",
+      "kind": "page",
+      "chapter": "ذكر-التنظف",
+      "prev": "d221f4291a44f4e3c8686dadfb2c3e0ce10029179592720ac35982e6394e5bdd",
+      "next": "94d0ce86bf591ec7dc2fd946b3d49f02858d021af42c5f0785b1cf90dc3814cc"
+    },
+    {
+      "ord": 299,
+      "blockId": "ff16297345996ba0d1d616282f9e402d",
+      "fp64": "72b696febf5d4a1e",
+      "normHash": "94d0ce86bf591ec7dc2fd946b3d49f02858d021af42c5f0785b1cf90dc3814cc",
+      "kind": "h2",
+      "chapter": "ذكر-أن-قيام-الليل-يطرد-الداء-عن-الجسد",
+      "prev": "241871d3b7442524fe97c0b703bd92d47d59af6e57f7b78808f279ec85e0e653",
+      "next": "b57ae961f0546ce5f76261d2ccfcd11e0bfa7571fe964df87ac74d8b57a1ef9c"
+    },
+    {
+      "ord": 300,
+      "blockId": "9edf96cb0b573b409af246f64eb9d13c",
+      "fp64": "7454c497bf526734",
+      "normHash": "b57ae961f0546ce5f76261d2ccfcd11e0bfa7571fe964df87ac74d8b57a1ef9c",
+      "kind": "p",
+      "chapter": "ذكر-أن-قيام-الليل-يطرد-الداء-عن-الجسد",
+      "prev": "94d0ce86bf591ec7dc2fd946b3d49f02858d021af42c5f0785b1cf90dc3814cc",
+      "next": "84aaa016f460c4fbf28fbc53c45b0bdcb0d40bd4701524b387ad87c291dfcb6f"
+    },
+    {
+      "ord": 301,
+      "blockId": "20e1d0efca8c362b9b8446429f881c0a",
+      "fp64": "27dff3fada777036",
+      "normHash": "84aaa016f460c4fbf28fbc53c45b0bdcb0d40bd4701524b387ad87c291dfcb6f",
+      "kind": "page",
+      "chapter": "ذكر-أن-قيام-الليل-يطرد-الداء-عن-الجسد",
+      "prev": "b57ae961f0546ce5f76261d2ccfcd11e0bfa7571fe964df87ac74d8b57a1ef9c",
+      "next": "0f35becef338a09c8b2afa42481ca1c2102e8e6b2d7107c44636792a01ad7062"
+    },
+    {
+      "ord": 302,
+      "blockId": "d32a962ed1c9577868d016a585835eec",
+      "fp64": "70ffb0fe1fb931fe",
+      "normHash": "0f35becef338a09c8b2afa42481ca1c2102e8e6b2d7107c44636792a01ad7062",
+      "kind": "h2",
+      "chapter": "ذكر-أن-الصدقة-يدفع-الله-بها-عن-المصدق",
+      "prev": "84aaa016f460c4fbf28fbc53c45b0bdcb0d40bd4701524b387ad87c291dfcb6f",
+      "next": "18c03faed0023465a2d8bbc484aa9ca1019cf84aa312666ff91561c75a0a4aa5"
+    },
+    {
+      "ord": 303,
+      "blockId": "f50f36378f91e5023601855c7962f786",
+      "fp64": "6c16e3168f477298",
+      "normHash": "18c03faed0023465a2d8bbc484aa9ca1019cf84aa312666ff91561c75a0a4aa5",
+      "kind": "p",
+      "chapter": "ذكر-أن-الصدقة-يدفع-الله-بها-عن-المصدق",
+      "prev": "0f35becef338a09c8b2afa42481ca1c2102e8e6b2d7107c44636792a01ad7062",
+      "next": "07f53525d547f4aa73c424c42090ae7d2204f4c43f7315fc14d8e8b1015a27c9"
+    },
+    {
+      "ord": 304,
+      "blockId": "7ad592873fcbe502844f0d1f800933fd",
+      "fp64": "a5dfffff7ef9ec3f",
+      "normHash": "07f53525d547f4aa73c424c42090ae7d2204f4c43f7315fc14d8e8b1015a27c9",
+      "kind": "page",
+      "chapter": "ذكر-أن-الصدقة-يدفع-الله-بها-عن-المصدق",
+      "prev": "18c03faed0023465a2d8bbc484aa9ca1019cf84aa312666ff91561c75a0a4aa5",
+      "next": "f785543d4f137cffecbb6b552e131b52fb4dfefcc0b9f0f2fa7347e4be9b866a"
+    },
+    {
+      "ord": 305,
+      "blockId": "d43dffb9d50f706b37c4531e7eb438b9",
+      "fp64": "c7a52ffb8b3793af",
+      "normHash": "f785543d4f137cffecbb6b552e131b52fb4dfefcc0b9f0f2fa7347e4be9b866a",
+      "kind": "h2",
+      "chapter": "ذكر-كراهية-ورود-المريض-على-الصحيح",
+      "prev": "07f53525d547f4aa73c424c42090ae7d2204f4c43f7315fc14d8e8b1015a27c9",
+      "next": "34d35cacc9c9bee610b3d91541ab2bcf4f1069e528fea3973a1e2e396398ea58"
+    },
+    {
+      "ord": 306,
+      "blockId": "da87278272be9740ccc17327b8e7ec79",
+      "fp64": "2f06a15e110a5178",
+      "normHash": "34d35cacc9c9bee610b3d91541ab2bcf4f1069e528fea3973a1e2e396398ea58",
+      "kind": "p",
+      "chapter": "ذكر-كراهية-ورود-المريض-على-الصحيح",
+      "prev": "f785543d4f137cffecbb6b552e131b52fb4dfefcc0b9f0f2fa7347e4be9b866a",
+      "next": "0f23fec13b2f66aa01725c6300a8775b889c297c2ae63ef6319eef997e712cc2"
+    },
+    {
+      "ord": 307,
+      "blockId": "20b9e165f079b3fcf59b4be818d086f8",
+      "fp64": "bfffff9b7ff37df7",
+      "normHash": "0f23fec13b2f66aa01725c6300a8775b889c297c2ae63ef6319eef997e712cc2",
+      "kind": "page",
+      "chapter": "ذكر-كراهية-ورود-المريض-على-الصحيح",
+      "prev": "34d35cacc9c9bee610b3d91541ab2bcf4f1069e528fea3973a1e2e396398ea58",
+      "next": "9775947a96a23bba1157283feeb77ee75ccaf3630c7154a6f24bfb4a9a945d5b"
+    },
+    {
+      "ord": 308,
+      "blockId": "496d8b47f74b6af229aa1e06f6d83046",
+      "fp64": "e1ee8afbdb7f926a",
+      "normHash": "9775947a96a23bba1157283feeb77ee75ccaf3630c7154a6f24bfb4a9a945d5b",
+      "kind": "h2",
+      "chapter": "ذكر-أنه-لا-يعدي-شيء-شيئا",
+      "prev": "0f23fec13b2f66aa01725c6300a8775b889c297c2ae63ef6319eef997e712cc2",
+      "next": "7819532c570bcd0f88bf9902842bd13de4b3de82f97bd88e079ccfd344365602"
+    },
+    {
+      "ord": 309,
+      "blockId": "33cfd1aa778533aefd671e5f85a0b150",
+      "fp64": "de5de056353f33da",
+      "normHash": "7819532c570bcd0f88bf9902842bd13de4b3de82f97bd88e079ccfd344365602",
+      "kind": "p",
+      "chapter": "ذكر-أنه-لا-يعدي-شيء-شيئا",
+      "prev": "9775947a96a23bba1157283feeb77ee75ccaf3630c7154a6f24bfb4a9a945d5b",
+      "next": "faf77512a3b1e39c393087155ac56f33dcd627435ec5aef5bd91b2e0f19d7cf1"
+    },
+    {
+      "ord": 310,
+      "blockId": "680c9c09be9a25388145c5c1b244bcb2",
+      "fp64": "6ddff7bffbf1f87e",
+      "normHash": "faf77512a3b1e39c393087155ac56f33dcd627435ec5aef5bd91b2e0f19d7cf1",
+      "kind": "page",
+      "chapter": "ذكر-أنه-لا-يعدي-شيء-شيئا",
+      "prev": "7819532c570bcd0f88bf9902842bd13de4b3de82f97bd88e079ccfd344365602",
+      "next": "4e0c25548d857f64286c162da701a183d9c8ff2c90851b2180675d47fd0323ea"
+    },
+    {
+      "ord": 311,
+      "blockId": "5e80940fba2c9ce01a7553d56cd10032",
+      "fp64": "a3853efc5b371fae",
+      "normHash": "4e0c25548d857f64286c162da701a183d9c8ff2c90851b2180675d47fd0323ea",
+      "kind": "h2",
+      "chapter": "ما-ذكر-في-الغيل",
+      "prev": "faf77512a3b1e39c393087155ac56f33dcd627435ec5aef5bd91b2e0f19d7cf1",
+      "next": "1f8779e7b21b4ecca8be194963927f4b1a2b90d33a923103c19594619759e967"
+    },
+    {
+      "ord": 312,
+      "blockId": "f81ff38e00c23ad6fc631c6087c3ef79",
+      "fp64": "605fcc5d8f59593c",
+      "normHash": "1f8779e7b21b4ecca8be194963927f4b1a2b90d33a923103c19594619759e967",
+      "kind": "p",
+      "chapter": "ما-ذكر-في-الغيل",
+      "prev": "4e0c25548d857f64286c162da701a183d9c8ff2c90851b2180675d47fd0323ea",
+      "next": "82ee1184a1ffae9489e129dcae86ace53df24604a8e2e38ea9c619e0ff6a3526"
+    },
+    {
+      "ord": 313,
+      "blockId": "23470f2448ac92832ea58d5c78b62bca",
+      "fp64": "77dff3be7bfb6cff",
+      "normHash": "82ee1184a1ffae9489e129dcae86ace53df24604a8e2e38ea9c619e0ff6a3526",
+      "kind": "page",
+      "chapter": "ما-ذكر-في-الغيل",
+      "prev": "1f8779e7b21b4ecca8be194963927f4b1a2b90d33a923103c19594619759e967",
+      "next": "a9292f7cd7ece7b68cc63cbfb5931dd9d3ca8deeafe3048163ef132fced3a56b"
+    },
+    {
+      "ord": 314,
+      "blockId": "5b031f6b73754c7c3b885b718c2ef964",
+      "fp64": "834c324e5377521e",
+      "normHash": "a9292f7cd7ece7b68cc63cbfb5931dd9d3ca8deeafe3048163ef132fced3a56b",
+      "kind": "h2",
+      "chapter": "باب-ما-ذكر-في-الرقى",
+      "prev": "82ee1184a1ffae9489e129dcae86ace53df24604a8e2e38ea9c619e0ff6a3526",
+      "next": "a1955c9cf411094d6fa5b85a967036042d94a45206582fd38ccfc2ec2318f0ae"
+    },
+    {
+      "ord": 315,
+      "blockId": "7a5cec7d5a510f7a9686ab0f519324d4",
+      "fp64": "2e76e457976b711c",
+      "normHash": "a1955c9cf411094d6fa5b85a967036042d94a45206582fd38ccfc2ec2318f0ae",
+      "kind": "p",
+      "chapter": "باب-ما-ذكر-في-الرقى",
+      "prev": "a9292f7cd7ece7b68cc63cbfb5931dd9d3ca8deeafe3048163ef132fced3a56b",
+      "next": "22bc1325f7be7a601e0f6d94156325d7a66e1726683387cc0120d37bccda3546"
+    },
+    {
+      "ord": 316,
+      "blockId": "1b10bbd40223bf1864349bcf8649fc66",
+      "fp64": "65fff3dffbbd66bf",
+      "normHash": "22bc1325f7be7a601e0f6d94156325d7a66e1726683387cc0120d37bccda3546",
+      "kind": "page",
+      "chapter": "باب-ما-ذكر-في-الرقى",
+      "prev": "a1955c9cf411094d6fa5b85a967036042d94a45206582fd38ccfc2ec2318f0ae",
+      "next": "1b2ec7c32cf24ebd3b0ba623877f3cbae17016f97b3d3013dbc2253bcb094b4d"
+    },
+    {
+      "ord": 317,
+      "blockId": "2ba5f06c230bb7077a88c1fc50b4729a",
+      "fp64": "4303348ae7368147",
+      "normHash": "1b2ec7c32cf24ebd3b0ba623877f3cbae17016f97b3d3013dbc2253bcb094b4d",
+      "kind": "h2",
+      "chapter": "ذكر-السبب-الذي-لأجله-نهي-عن-الرقى",
+      "prev": "22bc1325f7be7a601e0f6d94156325d7a66e1726683387cc0120d37bccda3546",
+      "next": "93cf148ba5660bbbdea0fd777ea88da5130e6a2d6d4e610324ff79f3844f643d"
+    },
+    {
+      "ord": 318,
+      "blockId": "df4503c9f160398f6d9924f59da85b0e",
+      "fp64": "a41c6696c7717034",
+      "normHash": "93cf148ba5660bbbdea0fd777ea88da5130e6a2d6d4e610324ff79f3844f643d",
+      "kind": "p",
+      "chapter": "ذكر-السبب-الذي-لأجله-نهي-عن-الرقى",
+      "prev": "1b2ec7c32cf24ebd3b0ba623877f3cbae17016f97b3d3013dbc2253bcb094b4d",
+      "next": "10576a3a02ca2af4a7e87ff5a92838128db1c7a5bdf34bd1e47b708c71a01119"
+    },
+    {
+      "ord": 319,
+      "blockId": "1f553e40c98ba9d267623ba6f55d144e",
+      "fp64": "6fdffbdfffb7723f",
+      "normHash": "10576a3a02ca2af4a7e87ff5a92838128db1c7a5bdf34bd1e47b708c71a01119",
+      "kind": "page",
+      "chapter": "ذكر-السبب-الذي-لأجله-نهي-عن-الرقى",
+      "prev": "93cf148ba5660bbbdea0fd777ea88da5130e6a2d6d4e610324ff79f3844f643d",
+      "next": "82c59b3149ebaf783f4c491f6566e5dda94ade18305761cfac470a84d581b890"
+    },
+    {
+      "ord": 320,
+      "blockId": "26639a2eaa2361855639b2174bcc9aaf",
+      "fp64": "b0c30cfe9f67d57e",
+      "normHash": "82c59b3149ebaf783f4c491f6566e5dda94ade18305761cfac470a84d581b890",
+      "kind": "h2",
+      "chapter": "ذكر-أن-الرقى-من-قدر-الله-عز-وجل",
+      "prev": "10576a3a02ca2af4a7e87ff5a92838128db1c7a5bdf34bd1e47b708c71a01119",
+      "next": "614172ac8da86a8bb4a7949313c5720c616a6fd47d6439f82aa7b4b8ce5741ed"
+    },
+    {
+      "ord": 321,
+      "blockId": "25d6be8248358786dd3e7cb519260563",
+      "fp64": "645ce056877b717c",
+      "normHash": "614172ac8da86a8bb4a7949313c5720c616a6fd47d6439f82aa7b4b8ce5741ed",
+      "kind": "p",
+      "chapter": "ذكر-أن-الرقى-من-قدر-الله-عز-وجل",
+      "prev": "82c59b3149ebaf783f4c491f6566e5dda94ade18305761cfac470a84d581b890",
+      "next": "89795fc16d08eeb18bb9cf158c5e2a89e58501feb6fb32820bb63c1625ea17c7"
+    },
+    {
+      "ord": 322,
+      "blockId": "7e96d95c91d2d6502f768d6cbdca62d5",
+      "fp64": "6dfffb9adb37f83f",
+      "normHash": "89795fc16d08eeb18bb9cf158c5e2a89e58501feb6fb32820bb63c1625ea17c7",
+      "kind": "page",
+      "chapter": "ذكر-أن-الرقى-من-قدر-الله-عز-وجل",
+      "prev": "614172ac8da86a8bb4a7949313c5720c616a6fd47d6439f82aa7b4b8ce5741ed",
+      "next": "184274b5b30153515a75c2f9b98f867f3ebe1115d68bee76603fabdc2ed17eff"
+    },
+    {
+      "ord": 323,
+      "blockId": "ea4d0049a9fbf4f441161b24bfe41dfb",
+      "fp64": "43ee3cfe9f66b36f",
+      "normHash": "184274b5b30153515a75c2f9b98f867f3ebe1115d68bee76603fabdc2ed17eff",
+      "kind": "h2",
+      "chapter": "ذكر-الرقية-من-كل-ذي-حمة",
+      "prev": "89795fc16d08eeb18bb9cf158c5e2a89e58501feb6fb32820bb63c1625ea17c7",
+      "next": "e4f7e79ebd5f7cd4b6c8ba1a9e49148108f63a32d537c530d647382d48a4b194"
+    },
+    {
+      "ord": 324,
+      "blockId": "a68d303d5a378df1e63568c4835cfc70",
+      "fp64": "007ce01687607174",
+      "normHash": "e4f7e79ebd5f7cd4b6c8ba1a9e49148108f63a32d537c530d647382d48a4b194",
+      "kind": "p",
+      "chapter": "ذكر-الرقية-من-كل-ذي-حمة",
+      "prev": "184274b5b30153515a75c2f9b98f867f3ebe1115d68bee76603fabdc2ed17eff",
+      "next": "57e21fd98dd1aba64719db80714d846b75638cf2a9abde266a86cc28dae10e60"
+    },
+    {
+      "ord": 325,
+      "blockId": "c3ab090c0d6d214893a47ec1ce9efbe2",
+      "fp64": "63fedfa8867b732e",
+      "normHash": "57e21fd98dd1aba64719db80714d846b75638cf2a9abde266a86cc28dae10e60",
+      "kind": "h2",
+      "chapter": "ذكر-الرقية-من-العين-والنظرة-وأن-العين-حق",
+      "prev": "e4f7e79ebd5f7cd4b6c8ba1a9e49148108f63a32d537c530d647382d48a4b194",
+      "next": "e9d15ccd46334cba78718c6fd33e008ce54b51f74711119060f46154a93c1895"
+    },
+    {
+      "ord": 326,
+      "blockId": "8a4eb9a0fcae88574bdda07cf8480ea8",
+      "fp64": "677ec3668779537e",
+      "normHash": "e9d15ccd46334cba78718c6fd33e008ce54b51f74711119060f46154a93c1895",
+      "kind": "p",
+      "chapter": "ذكر-الرقية-من-العين-والنظرة-وأن-العين-حق",
+      "prev": "57e21fd98dd1aba64719db80714d846b75638cf2a9abde266a86cc28dae10e60",
+      "next": "abaa1c73865ebe0800ccc475306c5ce068d9ebcfa2dfae29590c04682a640948"
+    },
+    {
+      "ord": 327,
+      "blockId": "0a975eabab228ad612ecd3cf7183bc03",
+      "fp64": "2dfff7fa5afde3b6",
+      "normHash": "abaa1c73865ebe0800ccc475306c5ce068d9ebcfa2dfae29590c04682a640948",
+      "kind": "page",
+      "chapter": "ذكر-الرقية-من-العين-والنظرة-وأن-العين-حق",
+      "prev": "e9d15ccd46334cba78718c6fd33e008ce54b51f74711119060f46154a93c1895",
+      "next": "98fbfb66cf90c5bd185473ea978c4ceb0b6fa1989a31a4160d5999048af79bf2"
+    },
+    {
+      "ord": 328,
+      "blockId": "f1ada28191646bc046d182b48deec5d2",
+      "fp64": "ae6ea1d6d77b5168",
+      "normHash": "98fbfb66cf90c5bd185473ea978c4ceb0b6fa1989a31a4160d5999048af79bf2",
+      "kind": "p",
+      "chapter": "ذكر-الرقية-من-العين-والنظرة-وأن-العين-حق",
+      "prev": "abaa1c73865ebe0800ccc475306c5ce068d9ebcfa2dfae29590c04682a640948",
+      "next": "2672558ff199787023002fb4be126319a69af8981d637ce7f531c41251c655f8"
+    },
+    {
+      "ord": 329,
+      "blockId": "dd5ef3bde77c980210192ad591edab06",
+      "fp64": "25fff3fefb7d7ef7",
+      "normHash": "2672558ff199787023002fb4be126319a69af8981d637ce7f531c41251c655f8",
+      "kind": "page",
+      "chapter": "ذكر-الرقية-من-العين-والنظرة-وأن-العين-حق",
+      "prev": "98fbfb66cf90c5bd185473ea978c4ceb0b6fa1989a31a4160d5999048af79bf2",
+      "next": "80bada9ab1daa8b8355146ba84a78b699eb15ca0347bd65edd75708ddda0357a"
+    },
+    {
+      "ord": 330,
+      "blockId": "ece4120a865390c98860c55c288274b7",
+      "fp64": "846c30d61559ffdc",
+      "normHash": "80bada9ab1daa8b8355146ba84a78b699eb15ca0347bd65edd75708ddda0357a",
+      "kind": "p",
+      "chapter": "ذكر-الرقية-من-العين-والنظرة-وأن-العين-حق",
+      "prev": "2672558ff199787023002fb4be126319a69af8981d637ce7f531c41251c655f8",
+      "next": "69a67bafeb16ff199d9ee21c7b2f2a1fe3ae3be8484abb06cfda0163daba2abb"
+    },
+    {
+      "ord": 331,
+      "blockId": "ecebf7e0088447d610c6a421754ec975",
+      "fp64": "efdff3fffafbf67f",
+      "normHash": "69a67bafeb16ff199d9ee21c7b2f2a1fe3ae3be8484abb06cfda0163daba2abb",
+      "kind": "page",
+      "chapter": "ذكر-الرقية-من-العين-والنظرة-وأن-العين-حق",
+      "prev": "80bada9ab1daa8b8355146ba84a78b699eb15ca0347bd65edd75708ddda0357a",
+      "next": "65deacb3a9abd63438a2cd4aace9bfa48d6bd5467e12eb902c367a8c6dc753e6"
+    },
+    {
+      "ord": 332,
+      "blockId": "42e826320c3fd51da3e869001199a3e8",
+      "fp64": "62880ec9b3574f0e",
+      "normHash": "65deacb3a9abd63438a2cd4aace9bfa48d6bd5467e12eb902c367a8c6dc753e6",
+      "kind": "h2",
+      "chapter": "ذكر-ما-يؤمر-به-العائن-من-الوضوء",
+      "prev": "69a67bafeb16ff199d9ee21c7b2f2a1fe3ae3be8484abb06cfda0163daba2abb",
+      "next": "cdd277a6952460fdcfca4b98245bfca6999413681df5053d566421847e8e12ea"
+    },
+    {
+      "ord": 333,
+      "blockId": "86da74e189490360f873f177827ed19c",
+      "fp64": "a4f9e1d78620797c",
+      "normHash": "cdd277a6952460fdcfca4b98245bfca6999413681df5053d566421847e8e12ea",
+      "kind": "p",
+      "chapter": "ذكر-ما-يؤمر-به-العائن-من-الوضوء",
+      "prev": "65deacb3a9abd63438a2cd4aace9bfa48d6bd5467e12eb902c367a8c6dc753e6",
+      "next": "df91f0b2595dbf65b6819c873fb7dc2acfca1016a01d81484c7c3c0ea671bcf6"
+    },
+    {
+      "ord": 334,
+      "blockId": "dbfa336e54e36ffddf009851ef37b6fa",
+      "fp64": "f2adbf4b933a4fbf",
+      "normHash": "df91f0b2595dbf65b6819c873fb7dc2acfca1016a01d81484c7c3c0ea671bcf6",
+      "kind": "h2",
+      "chapter": "ذكر-ما-يقال-عند-زوال-البلاء",
+      "prev": "cdd277a6952460fdcfca4b98245bfca6999413681df5053d566421847e8e12ea",
+      "next": "f0bc1b4e988b678991f6f4006fb3f6537855bff71d169b528fb72ff4624e8d99"
+    },
+    {
+      "ord": 335,
+      "blockId": "548c766193bcb665f6c37ad87649ccfc",
+      "fp64": "d456a057dd5e51fc",
+      "normHash": "f0bc1b4e988b678991f6f4006fb3f6537855bff71d169b528fb72ff4624e8d99",
+      "kind": "p",
+      "chapter": "ذكر-ما-يقال-عند-زوال-البلاء",
+      "prev": "df91f0b2595dbf65b6819c873fb7dc2acfca1016a01d81484c7c3c0ea671bcf6",
+      "next": "37e41cbab7db4640d8f5c650b098d5bf76fa6d5829792bee39c42e7431144bdc"
+    },
+    {
+      "ord": 336,
+      "blockId": "96fee603470c3e62f7f9736463f14e4f",
+      "fp64": "da45b9469436699b",
+      "normHash": "37e41cbab7db4640d8f5c650b098d5bf76fa6d5829792bee39c42e7431144bdc",
+      "kind": "p",
+      "chapter": "ذكر-ما-يقال-عند-زوال-البلاء",
+      "prev": "f0bc1b4e988b678991f6f4006fb3f6537855bff71d169b528fb72ff4624e8d99",
+      "next": "d0605c03e43fe99919a26cdf0532d6f9dad578b765ff021650044ca5496a61bf"
+    },
+    {
+      "ord": 337,
+      "blockId": "1ebe03ba8466862c36ef3691c59ae9c2",
+      "fp64": "1d58309a1741cd52",
+      "normHash": "d0605c03e43fe99919a26cdf0532d6f9dad578b765ff021650044ca5496a61bf",
+      "kind": "p",
+      "chapter": "ذكر-ما-يقال-عند-زوال-البلاء",
+      "prev": "37e41cbab7db4640d8f5c650b098d5bf76fa6d5829792bee39c42e7431144bdc",
+      "next": "830fefb1a2de878709392f32a16a9fc3e0e61dd1fc990493e2dde2f294c9b86d"
+    },
+    {
+      "ord": 338,
+      "blockId": "ab0f6bfe10c1c149525933fc4948f161",
+      "fp64": "eeede4d3cf79e5f7",
+      "normHash": "830fefb1a2de878709392f32a16a9fc3e0e61dd1fc990493e2dde2f294c9b86d",
+      "kind": "p",
+      "chapter": "ذكر-ما-يقال-عند-زوال-البلاء",
+      "prev": "d0605c03e43fe99919a26cdf0532d6f9dad578b765ff021650044ca5496a61bf",
+      "next": "f77c8992db3666530f1b0b53738456e8b51b8c0aae7dc35b33f4db5ce4b95308"
+    },
+    {
+      "ord": 339,
+      "blockId": "a1110982cf604619ae8a69ef513db2d3",
+      "fp64": "fc56fd79387dfc6b",
+      "normHash": "f77c8992db3666530f1b0b53738456e8b51b8c0aae7dc35b33f4db5ce4b95308",
+      "kind": "p",
+      "chapter": "ذكر-ما-يقال-عند-زوال-البلاء",
+      "prev": "830fefb1a2de878709392f32a16a9fc3e0e61dd1fc990493e2dde2f294c9b86d",
+      "next": "323792243cfbf97412f9edde82aa5b3fe31250919d665ac310a559554b53ba34"
+    },
+    {
+      "ord": 340,
+      "blockId": "b7f3439f16c4cf11f33c9f3d57fff270",
+      "fp64": "67fff7db5af56d3e",
+      "normHash": "323792243cfbf97412f9edde82aa5b3fe31250919d665ac310a559554b53ba34",
+      "kind": "page",
+      "chapter": "ذكر-ما-يقال-عند-زوال-البلاء",
+      "prev": "f77c8992db3666530f1b0b53738456e8b51b8c0aae7dc35b33f4db5ce4b95308"
+    }
+  ]
+}

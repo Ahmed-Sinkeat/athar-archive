@@ -2,6 +2,7 @@ package com.atharchive.feature.search
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -49,6 +50,9 @@ private fun SearchFilters.active(): List<Pair<String, SearchFilters>> = buildLis
     if (downloadedOnly) add("المحمّلة فقط" to copy(downloadedOnly = false))
     types.forEach { add(it.label to copy(types = types - it)) }
     authors.forEach { add(it to copy(authors = authors - it)) }
+    books.forEach { add(it to copy(books = books - it)) }
+    sections.forEach { add(it to copy(sections = sections - it)) }
+    centuries.forEach { add(it to copy(centuries = centuries - it)) }
 }
 
 /**
@@ -57,7 +61,15 @@ private fun SearchFilters.active(): List<Pair<String, SearchFilters>> = buildLis
  */
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-fun SearchFilterButton(filters: SearchFilters, authors: List<String>, onChange: (SearchFilters) -> Unit) {
+fun SearchFilterButton(
+    filters: SearchFilters,
+    authors: List<String>,
+    books: List<String>,
+    presets: List<SearchPreset>,
+    onSavePreset: (String) -> Unit,
+    onDeletePreset: (String) -> Unit,
+    onChange: (SearchFilters) -> Unit,
+) {
     var open by remember { mutableStateOf(false) }
     val count = filters.active().size
     Box {
@@ -73,13 +85,15 @@ fun SearchFilterButton(filters: SearchFilters, authors: List<String>, onChange: 
                 )
             }
         }
-        AtharMenu(expanded = open, onDismiss = { open = false }, width = 310.dp, modifier = Modifier.testTag("search_filter_popup")) {
+        AtharMenu(expanded = open, onDismiss = { open = false }, width = 280.dp, modifier = Modifier.testTag("search_filter_popup")) {
             Column(Modifier.padding(horizontal = 12.dp, vertical = 2.dp)) {
                 AtharFilterRow("الترتيب") { SearchSort.entries.forEach { AtharFilterChip(it.label, it == filters.sort) { onChange(filters.copy(sort = it)) } } }
                 // Relevance has one direction; the death year has two.
                 if (filters.sort == SearchSort.Died) AtharFilterRow("الاتجاه") {
                     listOf(false, true).forEach { AtharFilterChip(if (it) "الأحدث وفاة" else "الأقدم وفاة", it == filters.descending) { onChange(filters.copy(descending = it)) } }
                 }
+                AtharMenuDivider()
+                AtharFilterRow("العرض") { AtharFilterChip("إخفاء التشكيل", filters.plain) { onChange(filters.copy(plain = !filters.plain)) } }
                 AtharMenuDivider()
                 AtharFilterRow("الدقة") { SearchMode.entries.forEach { AtharFilterChip(it.label, it == filters.mode) { onChange(filters.copy(mode = it)) } } }
                 AtharMenuDivider()
@@ -93,6 +107,15 @@ fun SearchFilterButton(filters: SearchFilters, authors: List<String>, onChange: 
                 AtharFilterPicker("المؤلف", authors, filters.authors, { null }, "search_filter_author") { name ->
                     onChange(filters.copy(authors = if (name in filters.authors) filters.authors - name else filters.authors + name))
                 }
+                AtharFilterPicker("الكتاب", books, filters.books, { null }, "search_filter_book") { title ->
+                    onChange(filters.copy(books = if (title in filters.books) filters.books - title else filters.books + title))
+                }
+                AtharMenuDivider()
+                AtharFilterRow("القرن") {
+                    com.atharchive.data.AllCenturies.forEach { c -> AtharFilterChip(c.removePrefix("القرن "), c in filters.centuries) { onChange(filters.copy(centuries = if (c in filters.centuries) filters.centuries - c else filters.centuries + c)) } }
+                }
+                AtharMenuDivider()
+                SearchPresets(filters, presets, onSavePreset, onDeletePreset) { open = false; onChange(it) }
             }
         }
     }
@@ -120,6 +143,52 @@ fun SearchActiveFilters(filters: SearchFilters, onChange: (SearchFilters) -> Uni
             color = AtharTheme.colors.accent,
             style = MaterialTheme.typography.bodySmall,
             fontWeight = FontWeight.SemiBold,
+        )
+    }
+}
+
+/**
+ * «الخيارات المثبتة»: each saved set applies in one tap (long-press removes it); the current
+ * filters, once any are set, can be saved under a name.
+ */
+@OptIn(ExperimentalLayoutApi::class, androidx.compose.foundation.ExperimentalFoundationApi::class)
+@Composable
+private fun SearchPresets(
+    filters: SearchFilters,
+    presets: List<SearchPreset>,
+    onSave: (String) -> Unit,
+    onDelete: (String) -> Unit,
+    onApply: (SearchFilters) -> Unit,
+) {
+    var naming by remember { mutableStateOf(false) }
+    var name by remember { mutableStateOf("") }
+    if (presets.isNotEmpty()) AtharFilterRow("المثبتة") {
+        presets.forEach { p ->
+            Text(
+                p.name,
+                Modifier.clip(AtharCorners.Control)
+                    .combinedClickable(role = Role.Button, onLongClick = { onDelete(p.name) }) { onApply(p.filters) }
+                    .padding(horizontal = 10.dp, vertical = 8.dp)
+                    .testTag("search_preset_${p.name}"),
+                color = if (p.filters == filters) AtharTheme.colors.accent else MaterialTheme.colorScheme.onSurface,
+                style = MaterialTheme.typography.bodySmall, fontWeight = FontWeight.SemiBold,
+            )
+        }
+    }
+    if (filters == SearchFilters() || presets.any { it.filters == filters }) return
+    if (!naming) Text(
+        "تثبيت هذه الخيارات",
+        Modifier.clip(AtharCorners.Control).clickable(role = Role.Button) { naming = true }
+            .padding(horizontal = 4.dp, vertical = 10.dp).testTag("search_preset_save"),
+        color = AtharTheme.colors.accent, style = MaterialTheme.typography.bodySmall, fontWeight = FontWeight.SemiBold,
+    ) else Row(verticalAlignment = Alignment.CenterVertically) {
+        OutlinedTextField(name, { name = it.take(40) }, Modifier.weight(1f).testTag("search_preset_name"),
+            singleLine = true, placeholder = { Text("اسم المجموعة") })
+        Text(
+            "حفظ",
+            Modifier.clip(AtharCorners.Control).clickable(enabled = name.isNotBlank(), role = Role.Button) { onSave(name.trim()); naming = false; name = "" }
+                .padding(horizontal = 12.dp, vertical = 10.dp),
+            color = AtharTheme.colors.accent, fontWeight = FontWeight.SemiBold,
         )
     }
 }

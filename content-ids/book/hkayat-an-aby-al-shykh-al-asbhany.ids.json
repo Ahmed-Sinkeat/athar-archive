@@ -1,0 +1,695 @@
+{
+  "schema": 1,
+  "generation": 1,
+  "sourceHash": "39df16058434c29c70177871864c370dcbd65854a2c702ebae4e8558ae86fe71",
+  "ids": [
+    {
+      "ord": 0,
+      "blockId": "9135e224db1425b2ade1872b9158bfbb",
+      "fp64": "f67e601694d87074",
+      "normHash": "1788a3ecb49e094a449eb496bc0e004c7a0f1572692d6ad294021ca63e5a635e",
+      "kind": "p",
+      "chapter": "main",
+      "next": "4f9f4beefdd54b8293e4b9d8202d6f786dc5846c6e2b3487f83017a517a44a77"
+    },
+    {
+      "ord": 1,
+      "blockId": "27001d6c0808147b4faa69ee4c1ecfd6",
+      "fp64": "f59a6038f6b4787c",
+      "normHash": "4f9f4beefdd54b8293e4b9d8202d6f786dc5846c6e2b3487f83017a517a44a77",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "1788a3ecb49e094a449eb496bc0e004c7a0f1572692d6ad294021ca63e5a635e",
+      "next": "be2e98e35e535ea16670c3245efd5e7663a5a305918620e0c1369e9f68253929"
+    },
+    {
+      "ord": 2,
+      "blockId": "449390a42bf333c59c37220f45a5c9ce",
+      "fp64": "655ab8ec7ebcfee6",
+      "normHash": "be2e98e35e535ea16670c3245efd5e7663a5a305918620e0c1369e9f68253929",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "4f9f4beefdd54b8293e4b9d8202d6f786dc5846c6e2b3487f83017a517a44a77",
+      "next": "9b068c8b95c1b99ae77f8f69aecda9d4319bea7dba7e8c9f2421d0d33dd1612f"
+    },
+    {
+      "ord": 3,
+      "blockId": "9c8a9f6012446f82c9dec94ba5dc3110",
+      "fp64": "c59a22d636f4b265",
+      "normHash": "9b068c8b95c1b99ae77f8f69aecda9d4319bea7dba7e8c9f2421d0d33dd1612f",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "be2e98e35e535ea16670c3245efd5e7663a5a305918620e0c1369e9f68253929",
+      "next": "82370eb5df47b923624c51418dc172fdb974777f99d4adf32fb90a09943a1204"
+    },
+    {
+      "ord": 4,
+      "blockId": "d2d5024faf50eec031f67ac7acfd7c11",
+      "fp64": "a41a60069694707c",
+      "normHash": "82370eb5df47b923624c51418dc172fdb974777f99d4adf32fb90a09943a1204",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "9b068c8b95c1b99ae77f8f69aecda9d4319bea7dba7e8c9f2421d0d33dd1612f",
+      "next": "d4c5e80e71120fcc1a0349a9222b92f420d6589a49ac6014a14d3dd4ddd096e4"
+    },
+    {
+      "ord": 5,
+      "blockId": "3e46b4dfdc3f22c1d0b676f0ae74f723",
+      "fp64": "bd57ead29b3c797e",
+      "normHash": "d4c5e80e71120fcc1a0349a9222b92f420d6589a49ac6014a14d3dd4ddd096e4",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "82370eb5df47b923624c51418dc172fdb974777f99d4adf32fb90a09943a1204",
+      "next": "92669e5d373d404b9c6f66e4514239724fa1ad92a668fc2109c5cd14f9f904ed"
+    },
+    {
+      "ord": 6,
+      "blockId": "75a43049272938f47df0e283ee8164c4",
+      "fp64": "e51a601677407074",
+      "normHash": "92669e5d373d404b9c6f66e4514239724fa1ad92a668fc2109c5cd14f9f904ed",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "d4c5e80e71120fcc1a0349a9222b92f420d6589a49ac6014a14d3dd4ddd096e4",
+      "next": "bbc029218c547a45ce91e8378e405d1704084b690020edecc4a514b950030c74"
+    },
+    {
+      "ord": 7,
+      "blockId": "77708017443820e17e94b289ddb86b2e",
+      "fp64": "fc5ae637454772cc",
+      "normHash": "bbc029218c547a45ce91e8378e405d1704084b690020edecc4a514b950030c74",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "92669e5d373d404b9c6f66e4514239724fa1ad92a668fc2109c5cd14f9f904ed",
+      "next": "becbd11a969c28689cfded4f71bb0296d30a3af6039743ef434f3ccb4a9cb208"
+    },
+    {
+      "ord": 8,
+      "blockId": "619e993f7ae47c4d96579468f1c88488",
+      "fp64": "3c12c27427725614",
+      "normHash": "becbd11a969c28689cfded4f71bb0296d30a3af6039743ef434f3ccb4a9cb208",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "bbc029218c547a45ce91e8378e405d1704084b690020edecc4a514b950030c74",
+      "next": "53a5ea782c61b474f17945bc7f52309cb1824a0827f61451ee55a35d2052d9e9"
+    },
+    {
+      "ord": 9,
+      "blockId": "5c95489c721c70c30d25a0082e5866d3",
+      "fp64": "ecdb668304d75fb4",
+      "normHash": "53a5ea782c61b474f17945bc7f52309cb1824a0827f61451ee55a35d2052d9e9",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "becbd11a969c28689cfded4f71bb0296d30a3af6039743ef434f3ccb4a9cb208",
+      "next": "d861749554c6aae93a1a4d93914e3c48015f1a7daaa016a3831d2bea50711c8a"
+    },
+    {
+      "ord": 10,
+      "blockId": "b82a7f90416d59ac2afdd0b007a0487e",
+      "fp64": "e41270dc07f5e854",
+      "normHash": "d861749554c6aae93a1a4d93914e3c48015f1a7daaa016a3831d2bea50711c8a",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "53a5ea782c61b474f17945bc7f52309cb1824a0827f61451ee55a35d2052d9e9",
+      "next": "8571ee9df5772423cd8899c5b5d260fdb44acc6692bb23ec10f557f2b0278b65"
+    },
+    {
+      "ord": 11,
+      "blockId": "2737123fb8e890d8fa827c83c7f07c52",
+      "fp64": "251661524d53ba54",
+      "normHash": "8571ee9df5772423cd8899c5b5d260fdb44acc6692bb23ec10f557f2b0278b65",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "d861749554c6aae93a1a4d93914e3c48015f1a7daaa016a3831d2bea50711c8a",
+      "next": "96036eab559ead36b3d9d3d54f6873ff8758be0102a7d5a301f95b38cb0ee5e1"
+    },
+    {
+      "ord": 12,
+      "blockId": "1468240f2173e4d48c75fcde30f8dbad",
+      "fp64": "cc8343ee7677e03c",
+      "normHash": "96036eab559ead36b3d9d3d54f6873ff8758be0102a7d5a301f95b38cb0ee5e1",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "8571ee9df5772423cd8899c5b5d260fdb44acc6692bb23ec10f557f2b0278b65",
+      "next": "007a3ccf9f2045e317e21b5258ec0266dde28378e0ced69e80a753f57a0dbfac"
+    },
+    {
+      "ord": 13,
+      "blockId": "b893ed219616710814a3eb82b51f3a0f",
+      "fp64": "659b219606f7e474",
+      "normHash": "007a3ccf9f2045e317e21b5258ec0266dde28378e0ced69e80a753f57a0dbfac",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "96036eab559ead36b3d9d3d54f6873ff8758be0102a7d5a301f95b38cb0ee5e1",
+      "next": "c5985870d7891836b1758771fab30207a012bc6eb9beba486ce64a93205f77c6"
+    },
+    {
+      "ord": 14,
+      "blockId": "ff95a613b73991e28a0b4aab6d73de03",
+      "fp64": "e51276b706f77474",
+      "normHash": "c5985870d7891836b1758771fab30207a012bc6eb9beba486ce64a93205f77c6",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "007a3ccf9f2045e317e21b5258ec0266dde28378e0ced69e80a753f57a0dbfac",
+      "next": "3c2093e3c02aeb104e1c07e1188f6acb51c76e82ee5c6f904346264fe1e217c5"
+    },
+    {
+      "ord": 15,
+      "blockId": "c7cac32803a66873b9379c4d71577c5a",
+      "fp64": "faa707c59f977581",
+      "normHash": "3c2093e3c02aeb104e1c07e1188f6acb51c76e82ee5c6f904346264fe1e217c5",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "c5985870d7891836b1758771fab30207a012bc6eb9beba486ce64a93205f77c6",
+      "next": "b81be34a2cfa0bae4c8648748e10ede19371dd0c68f575bc48d9aa3a975092cd"
+    },
+    {
+      "ord": 16,
+      "blockId": "b0aaf505fed37907df495c0ecd63d2e2",
+      "fp64": "781a923427520292",
+      "normHash": "b81be34a2cfa0bae4c8648748e10ede19371dd0c68f575bc48d9aa3a975092cd",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "3c2093e3c02aeb104e1c07e1188f6acb51c76e82ee5c6f904346264fe1e217c5",
+      "next": "5248652fb48de6ce4de483def16762d9b773534e3c4e01aa192358daab23474a"
+    },
+    {
+      "ord": 17,
+      "blockId": "98555a7a705ce130bdd214e2c2f35feb",
+      "fp64": "ec9f3086a6f7ec74",
+      "normHash": "5248652fb48de6ce4de483def16762d9b773534e3c4e01aa192358daab23474a",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "b81be34a2cfa0bae4c8648748e10ede19371dd0c68f575bc48d9aa3a975092cd",
+      "next": "9188f256ba223b9637a6bca1894c8bda769d4a2177a25f5c18dfb50703f508f1"
+    },
+    {
+      "ord": 18,
+      "blockId": "0a87bc87582fb13c1216d1afac38f820",
+      "fp64": "e5fff7ff7bb3e67f",
+      "normHash": "9188f256ba223b9637a6bca1894c8bda769d4a2177a25f5c18dfb50703f508f1",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "5248652fb48de6ce4de483def16762d9b773534e3c4e01aa192358daab23474a",
+      "next": "e9c4a3ced33907abab7bc6a7a06f2aa0b006d7f655ef0188c885a9eea9ccbc7d"
+    },
+    {
+      "ord": 19,
+      "blockId": "534e9397479b036be3f8aa0c33c68208",
+      "fp64": "7559c236775b2794",
+      "normHash": "e9c4a3ced33907abab7bc6a7a06f2aa0b006d7f655ef0188c885a9eea9ccbc7d",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "9188f256ba223b9637a6bca1894c8bda769d4a2177a25f5c18dfb50703f508f1",
+      "next": "9b80c1be95a57c0eef7977bcb7b1691887061ab32e7b388ab82cc10f96845f0f"
+    },
+    {
+      "ord": 20,
+      "blockId": "f9796aca565d5708c076bb5e1c7d0b5a",
+      "fp64": "7ede765a9777ec4c",
+      "normHash": "9b80c1be95a57c0eef7977bcb7b1691887061ab32e7b388ab82cc10f96845f0f",
+      "kind": "h2",
+      "chapter": "يواصل-من-الجمعة-إلى-الجمعة-فلما-كان-عند-إفطاره-من-الليلة-المقبلة-من-ليلة-الجمعة",
+      "prev": "e9c4a3ced33907abab7bc6a7a06f2aa0b006d7f655ef0188c885a9eea9ccbc7d",
+      "next": "276f8a300cd506d306a6e7140757842b746b394ca24637ed4d67d6ed9344a971"
+    },
+    {
+      "ord": 21,
+      "blockId": "c88ff3126618882300f7ba486a0f3fe2",
+      "fp64": "de5ce09f830658da",
+      "normHash": "276f8a300cd506d306a6e7140757842b746b394ca24637ed4d67d6ed9344a971",
+      "kind": "p",
+      "chapter": "يواصل-من-الجمعة-إلى-الجمعة-فلما-كان-عند-إفطاره-من-الليلة-المقبلة-من-ليلة-الجمعة",
+      "prev": "9b80c1be95a57c0eef7977bcb7b1691887061ab32e7b388ab82cc10f96845f0f",
+      "next": "e624b325c3e2639dab22bd60c392f7aecc79add7d45d28910698b1d1590bcc18"
+    },
+    {
+      "ord": 22,
+      "blockId": "333bfe244e78a2a907f9ad37ac70f7e2",
+      "fp64": "7baf29eb7b9f05c8",
+      "normHash": "e624b325c3e2639dab22bd60c392f7aecc79add7d45d28910698b1d1590bcc18",
+      "kind": "p",
+      "chapter": "يواصل-من-الجمعة-إلى-الجمعة-فلما-كان-عند-إفطاره-من-الليلة-المقبلة-من-ليلة-الجمعة",
+      "prev": "276f8a300cd506d306a6e7140757842b746b394ca24637ed4d67d6ed9344a971",
+      "next": "683446f81f82f8e9f8aea1997bed1b6376f733935b1ecbcb0df016aecf431565"
+    },
+    {
+      "ord": 23,
+      "blockId": "96edfd86db081f097dd5d9e20576bacd",
+      "fp64": "e5bc688f0467b660",
+      "normHash": "683446f81f82f8e9f8aea1997bed1b6376f733935b1ecbcb0df016aecf431565",
+      "kind": "p",
+      "chapter": "يواصل-من-الجمعة-إلى-الجمعة-فلما-كان-عند-إفطاره-من-الليلة-المقبلة-من-ليلة-الجمعة",
+      "prev": "e624b325c3e2639dab22bd60c392f7aecc79add7d45d28910698b1d1590bcc18",
+      "next": "8b55f23b0a0624f24bec535eb2ef24e18e768b05c2bb96cf9de5beed8d9de455"
+    },
+    {
+      "ord": 24,
+      "blockId": "a468dee08910934a1d5dddbb0201c425",
+      "fp64": "653e69bd43c7f628",
+      "normHash": "8b55f23b0a0624f24bec535eb2ef24e18e768b05c2bb96cf9de5beed8d9de455",
+      "kind": "p",
+      "chapter": "يواصل-من-الجمعة-إلى-الجمعة-فلما-كان-عند-إفطاره-من-الليلة-المقبلة-من-ليلة-الجمعة",
+      "prev": "683446f81f82f8e9f8aea1997bed1b6376f733935b1ecbcb0df016aecf431565",
+      "next": "cc8cd9603454a18252bd6654e0bfbf0d8fcc6cd87ce1d301d0f71e075a9d978f"
+    },
+    {
+      "ord": 25,
+      "blockId": "01521f9b81d8438965cdb98178b5d19a",
+      "fp64": "651e6416d7d3f67c",
+      "normHash": "cc8cd9603454a18252bd6654e0bfbf0d8fcc6cd87ce1d301d0f71e075a9d978f",
+      "kind": "p",
+      "chapter": "يواصل-من-الجمعة-إلى-الجمعة-فلما-كان-عند-إفطاره-من-الليلة-المقبلة-من-ليلة-الجمعة",
+      "prev": "8b55f23b0a0624f24bec535eb2ef24e18e768b05c2bb96cf9de5beed8d9de455",
+      "next": "73b96abe5f7609efaf80a8a1f6bf8ea9cd344978d32b35261251ff2149a04482"
+    },
+    {
+      "ord": 26,
+      "blockId": "30bf2f5beef491139a851531a456c819",
+      "fp64": "e2dbfab8045fa434",
+      "normHash": "73b96abe5f7609efaf80a8a1f6bf8ea9cd344978d32b35261251ff2149a04482",
+      "kind": "p",
+      "chapter": "يواصل-من-الجمعة-إلى-الجمعة-فلما-كان-عند-إفطاره-من-الليلة-المقبلة-من-ليلة-الجمعة",
+      "prev": "cc8cd9603454a18252bd6654e0bfbf0d8fcc6cd87ce1d301d0f71e075a9d978f",
+      "next": "f2021bad827e363b14fe83c99a31bce3bd0feb007463f5071daaf9b9440967d9"
+    },
+    {
+      "ord": 27,
+      "blockId": "1ab5b787273326c239194cfc88a54a03",
+      "fp64": "645431b62777d2f8",
+      "normHash": "f2021bad827e363b14fe83c99a31bce3bd0feb007463f5071daaf9b9440967d9",
+      "kind": "p",
+      "chapter": "يواصل-من-الجمعة-إلى-الجمعة-فلما-كان-عند-إفطاره-من-الليلة-المقبلة-من-ليلة-الجمعة",
+      "prev": "73b96abe5f7609efaf80a8a1f6bf8ea9cd344978d32b35261251ff2149a04482",
+      "next": "37c05b2cbd14feb3dde8324908694874d6553012ab13a3e23765284e6e13aa10"
+    },
+    {
+      "ord": 28,
+      "blockId": "6f4a0e7d08a7130d38da833dfb65fc02",
+      "fp64": "2448721f56d9d1fc",
+      "normHash": "37c05b2cbd14feb3dde8324908694874d6553012ab13a3e23765284e6e13aa10",
+      "kind": "p",
+      "chapter": "يواصل-من-الجمعة-إلى-الجمعة-فلما-كان-عند-إفطاره-من-الليلة-المقبلة-من-ليلة-الجمعة",
+      "prev": "f2021bad827e363b14fe83c99a31bce3bd0feb007463f5071daaf9b9440967d9",
+      "next": "5a84dd9fde8372c47cf20873050a4528f08ee5318095e4ab670810f4408501a7"
+    },
+    {
+      "ord": 29,
+      "blockId": "4a36b66e44b266eb1fdddae1b9f0b4db",
+      "fp64": "ef96da3d1676de35",
+      "normHash": "5a84dd9fde8372c47cf20873050a4528f08ee5318095e4ab670810f4408501a7",
+      "kind": "p",
+      "chapter": "يواصل-من-الجمعة-إلى-الجمعة-فلما-كان-عند-إفطاره-من-الليلة-المقبلة-من-ليلة-الجمعة",
+      "prev": "37c05b2cbd14feb3dde8324908694874d6553012ab13a3e23765284e6e13aa10",
+      "next": "2f47001884007a0ca836737dd154909c094d83607a152f0126b6f9db76a0d700"
+    },
+    {
+      "ord": 30,
+      "blockId": "d0a0e9b61bd30807b01430365d1123a8",
+      "fp64": "a57233f1e34602d2",
+      "normHash": "2f47001884007a0ca836737dd154909c094d83607a152f0126b6f9db76a0d700",
+      "kind": "p",
+      "chapter": "يواصل-من-الجمعة-إلى-الجمعة-فلما-كان-عند-إفطاره-من-الليلة-المقبلة-من-ليلة-الجمعة",
+      "prev": "5a84dd9fde8372c47cf20873050a4528f08ee5318095e4ab670810f4408501a7",
+      "next": "aa396b918c4673dd71e20f103072565a76c55043c9f11b33eb7c9b8eb3addb9b"
+    },
+    {
+      "ord": 31,
+      "blockId": "2025c2627e9b60b0d60480a7fd6c1654",
+      "fp64": "f741f23a755072bd",
+      "normHash": "aa396b918c4673dd71e20f103072565a76c55043c9f11b33eb7c9b8eb3addb9b",
+      "kind": "p",
+      "chapter": "يواصل-من-الجمعة-إلى-الجمعة-فلما-كان-عند-إفطاره-من-الليلة-المقبلة-من-ليلة-الجمعة",
+      "prev": "2f47001884007a0ca836737dd154909c094d83607a152f0126b6f9db76a0d700",
+      "next": "74c5a0910d16d8da293072dd7d36a522ddef463d4d5f3bf45c67f61e5019ef4a"
+    },
+    {
+      "ord": 32,
+      "blockId": "c366d7e3e800f5b767c8a8427acaafe9",
+      "fp64": "851967bf04d73ef4",
+      "normHash": "74c5a0910d16d8da293072dd7d36a522ddef463d4d5f3bf45c67f61e5019ef4a",
+      "kind": "p",
+      "chapter": "يواصل-من-الجمعة-إلى-الجمعة-فلما-كان-عند-إفطاره-من-الليلة-المقبلة-من-ليلة-الجمعة",
+      "prev": "aa396b918c4673dd71e20f103072565a76c55043c9f11b33eb7c9b8eb3addb9b",
+      "next": "fb7ab7d26ea6bb1fbdd5f8d43a9bab20a7e9f32c96e676ea3265733f11dd835e"
+    },
+    {
+      "ord": 33,
+      "blockId": "13dbc21c7d3e1573387ece64677ec59f",
+      "fp64": "361226ee22f3ae6f",
+      "normHash": "fb7ab7d26ea6bb1fbdd5f8d43a9bab20a7e9f32c96e676ea3265733f11dd835e",
+      "kind": "p",
+      "chapter": "يواصل-من-الجمعة-إلى-الجمعة-فلما-كان-عند-إفطاره-من-الليلة-المقبلة-من-ليلة-الجمعة",
+      "prev": "74c5a0910d16d8da293072dd7d36a522ddef463d4d5f3bf45c67f61e5019ef4a",
+      "next": "53683b9e65775b17371ce0b05bba21eea02c5f935fd8504b4053dd8fa70957b7"
+    },
+    {
+      "ord": 34,
+      "blockId": "7a58129168254cd88b692a6a520b676f",
+      "fp64": "defabb7fbf725aba",
+      "normHash": "53683b9e65775b17371ce0b05bba21eea02c5f935fd8504b4053dd8fa70957b7",
+      "kind": "p",
+      "chapter": "يواصل-من-الجمعة-إلى-الجمعة-فلما-كان-عند-إفطاره-من-الليلة-المقبلة-من-ليلة-الجمعة",
+      "prev": "fb7ab7d26ea6bb1fbdd5f8d43a9bab20a7e9f32c96e676ea3265733f11dd835e",
+      "next": "5ad22d1113862d9cd04cfde019bc6fef00b1efefe9236f2e0799243fbf23cfc5"
+    },
+    {
+      "ord": 35,
+      "blockId": "20ba3d3c3dc7888c7a213def3eec3229",
+      "fp64": "7712b7a40767801c",
+      "normHash": "5ad22d1113862d9cd04cfde019bc6fef00b1efefe9236f2e0799243fbf23cfc5",
+      "kind": "p",
+      "chapter": "يواصل-من-الجمعة-إلى-الجمعة-فلما-كان-عند-إفطاره-من-الليلة-المقبلة-من-ليلة-الجمعة",
+      "prev": "53683b9e65775b17371ce0b05bba21eea02c5f935fd8504b4053dd8fa70957b7",
+      "next": "75cbb26d5def9464d0aebe586803ae11027bcba58d7aaf7e8d265850cc69c198"
+    },
+    {
+      "ord": 36,
+      "blockId": "5d14bf976815e0475aae46dc61fd369c",
+      "fp64": "9340e326613402ba",
+      "normHash": "75cbb26d5def9464d0aebe586803ae11027bcba58d7aaf7e8d265850cc69c198",
+      "kind": "p",
+      "chapter": "يواصل-من-الجمعة-إلى-الجمعة-فلما-كان-عند-إفطاره-من-الليلة-المقبلة-من-ليلة-الجمعة",
+      "prev": "5ad22d1113862d9cd04cfde019bc6fef00b1efefe9236f2e0799243fbf23cfc5",
+      "next": "95f4ef8565924b9f133f2ca07ee3a296099ff7edea965002161becdb088036d1"
+    },
+    {
+      "ord": 37,
+      "blockId": "907910793440864a7560b45a952b1b23",
+      "fp64": "c592923c0e53446c",
+      "normHash": "95f4ef8565924b9f133f2ca07ee3a296099ff7edea965002161becdb088036d1",
+      "kind": "p",
+      "chapter": "يواصل-من-الجمعة-إلى-الجمعة-فلما-كان-عند-إفطاره-من-الليلة-المقبلة-من-ليلة-الجمعة",
+      "prev": "75cbb26d5def9464d0aebe586803ae11027bcba58d7aaf7e8d265850cc69c198",
+      "next": "4cb94697038c1b6e1274ddc261210e91cdc5a8117d164e06a69fff9086e192b0"
+    },
+    {
+      "ord": 38,
+      "blockId": "cff9cc954d9b95bd0d12be9bad676bee",
+      "fp64": "65966396a7fff014",
+      "normHash": "4cb94697038c1b6e1274ddc261210e91cdc5a8117d164e06a69fff9086e192b0",
+      "kind": "p",
+      "chapter": "يواصل-من-الجمعة-إلى-الجمعة-فلما-كان-عند-إفطاره-من-الليلة-المقبلة-من-ليلة-الجمعة",
+      "prev": "95f4ef8565924b9f133f2ca07ee3a296099ff7edea965002161becdb088036d1",
+      "next": "568f1254b61a8ba57acc44bb92e8027991766b430089d32205e611c952bad6a3"
+    },
+    {
+      "ord": 39,
+      "blockId": "f34eb80194bea426c2df3b8a29d0c29c",
+      "fp64": "277f82bcfbeb53af",
+      "normHash": "568f1254b61a8ba57acc44bb92e8027991766b430089d32205e611c952bad6a3",
+      "kind": "p",
+      "chapter": "يواصل-من-الجمعة-إلى-الجمعة-فلما-كان-عند-إفطاره-من-الليلة-المقبلة-من-ليلة-الجمعة",
+      "prev": "4cb94697038c1b6e1274ddc261210e91cdc5a8117d164e06a69fff9086e192b0",
+      "next": "93520fdf8652eb6dee486232bfae5742b4fc1bdc90576bdd83a534ef59ca4424"
+    },
+    {
+      "ord": 40,
+      "blockId": "8884df1e87399b4091b1cb99abc9c646",
+      "fp64": "adda6016175474d4",
+      "normHash": "93520fdf8652eb6dee486232bfae5742b4fc1bdc90576bdd83a534ef59ca4424",
+      "kind": "p",
+      "chapter": "يواصل-من-الجمعة-إلى-الجمعة-فلما-كان-عند-إفطاره-من-الليلة-المقبلة-من-ليلة-الجمعة",
+      "prev": "568f1254b61a8ba57acc44bb92e8027991766b430089d32205e611c952bad6a3",
+      "next": "bc34a6a30a9a97f0538c3aefcadb0b39417d926ff593523a0fd6105d8351e603"
+    },
+    {
+      "ord": 41,
+      "blockId": "9360ac7a61cf5b05553be623081d805b",
+      "fp64": "64986066e79bfc76",
+      "normHash": "bc34a6a30a9a97f0538c3aefcadb0b39417d926ff593523a0fd6105d8351e603",
+      "kind": "p",
+      "chapter": "يواصل-من-الجمعة-إلى-الجمعة-فلما-كان-عند-إفطاره-من-الليلة-المقبلة-من-ليلة-الجمعة",
+      "prev": "93520fdf8652eb6dee486232bfae5742b4fc1bdc90576bdd83a534ef59ca4424",
+      "next": "2a04a33f724034679b84cd8caf80b4771496579d31e2f2ae8bda516d5ba3a931"
+    },
+    {
+      "ord": 42,
+      "blockId": "ae084784904efeda8020d1e3677f97b9",
+      "fp64": "0ed84a041ef65434",
+      "normHash": "2a04a33f724034679b84cd8caf80b4771496579d31e2f2ae8bda516d5ba3a931",
+      "kind": "p",
+      "chapter": "يواصل-من-الجمعة-إلى-الجمعة-فلما-كان-عند-إفطاره-من-الليلة-المقبلة-من-ليلة-الجمعة",
+      "prev": "bc34a6a30a9a97f0538c3aefcadb0b39417d926ff593523a0fd6105d8351e603",
+      "next": "9ff6a7b22040a94f02b9d1d070c58a69432fc5592892ba172ec28c96e6837963"
+    },
+    {
+      "ord": 43,
+      "blockId": "aa7a1f7f0f88d6359544253a51826fdc",
+      "fp64": "679b721725f2ac64",
+      "normHash": "9ff6a7b22040a94f02b9d1d070c58a69432fc5592892ba172ec28c96e6837963",
+      "kind": "p",
+      "chapter": "يواصل-من-الجمعة-إلى-الجمعة-فلما-كان-عند-إفطاره-من-الليلة-المقبلة-من-ليلة-الجمعة",
+      "prev": "2a04a33f724034679b84cd8caf80b4771496579d31e2f2ae8bda516d5ba3a931",
+      "next": "e6579b26b4df68681f4ac9a88a46409db5ad0ce40bcf1ea1ebc00b77615a2865"
+    },
+    {
+      "ord": 44,
+      "blockId": "88e5f5134611ba54549050ff48751f62",
+      "fp64": "efdfffbe7a7f73f6",
+      "normHash": "e6579b26b4df68681f4ac9a88a46409db5ad0ce40bcf1ea1ebc00b77615a2865",
+      "kind": "page",
+      "chapter": "يواصل-من-الجمعة-إلى-الجمعة-فلما-كان-عند-إفطاره-من-الليلة-المقبلة-من-ليلة-الجمعة",
+      "prev": "9ff6a7b22040a94f02b9d1d070c58a69432fc5592892ba172ec28c96e6837963",
+      "next": "cfbbe7d280d90ce5c9fa793303c1944fcfb877800a88b6ebd0168f0fbcecb25b"
+    },
+    {
+      "ord": 45,
+      "blockId": "2b3b7405e1f216abd97103504cfdb8c9",
+      "fp64": "651a63b626f9f574",
+      "normHash": "cfbbe7d280d90ce5c9fa793303c1944fcfb877800a88b6ebd0168f0fbcecb25b",
+      "kind": "p",
+      "chapter": "يواصل-من-الجمعة-إلى-الجمعة-فلما-كان-عند-إفطاره-من-الليلة-المقبلة-من-ليلة-الجمعة",
+      "prev": "e6579b26b4df68681f4ac9a88a46409db5ad0ce40bcf1ea1ebc00b77615a2865",
+      "next": "fa56e88658fdecba78e2f052371802ed25d917f782924e92c09d93b9c2b24c96"
+    },
+    {
+      "ord": 46,
+      "blockId": "bca98c78da8a7afac144bb68ab19b987",
+      "fp64": "1a804c4c18a68970",
+      "normHash": "fa56e88658fdecba78e2f052371802ed25d917f782924e92c09d93b9c2b24c96",
+      "kind": "h2",
+      "chapter": "أربعة-أشياء-هي-أفضل-زاد-الآخرة-الصوم-جنة-النفس-والصدقة-ستر-من-الجنة-والنار-والصل",
+      "prev": "cfbbe7d280d90ce5c9fa793303c1944fcfb877800a88b6ebd0168f0fbcecb25b",
+      "next": "619ad5e63629261f07773d6c5ff92b301a0866aeb4e200f2f650291ed8fdf109"
+    },
+    {
+      "ord": 47,
+      "blockId": "922ab12c04bfdd6e9271da21b8831be7",
+      "fp64": "7a61def87365ac78",
+      "normHash": "619ad5e63629261f07773d6c5ff92b301a0866aeb4e200f2f650291ed8fdf109",
+      "kind": "p",
+      "chapter": "أربعة-أشياء-هي-أفضل-زاد-الآخرة-الصوم-جنة-النفس-والصدقة-ستر-من-الجنة-والنار-والصل",
+      "prev": "fa56e88658fdecba78e2f052371802ed25d917f782924e92c09d93b9c2b24c96",
+      "next": "f7f4a90c065992e83745e1df65ec3a03003a82253ee90efc20ca08eafdc8dddc"
+    },
+    {
+      "ord": 48,
+      "blockId": "871461c092c5aa04e214c30d35aecb65",
+      "fp64": "afdffffadf71677e",
+      "normHash": "f7f4a90c065992e83745e1df65ec3a03003a82253ee90efc20ca08eafdc8dddc",
+      "kind": "page",
+      "chapter": "أربعة-أشياء-هي-أفضل-زاد-الآخرة-الصوم-جنة-النفس-والصدقة-ستر-من-الجنة-والنار-والصل",
+      "prev": "619ad5e63629261f07773d6c5ff92b301a0866aeb4e200f2f650291ed8fdf109",
+      "next": "ff203d69d2b3f0df4f37fac495913c18fc09fbcde860247ef86180a1c998b75f"
+    },
+    {
+      "ord": 49,
+      "blockId": "73a15d7eaf0e00d37339783f16ebf4f3",
+      "fp64": "e51a639667d3f074",
+      "normHash": "ff203d69d2b3f0df4f37fac495913c18fc09fbcde860247ef86180a1c998b75f",
+      "kind": "p",
+      "chapter": "أربعة-أشياء-هي-أفضل-زاد-الآخرة-الصوم-جنة-النفس-والصدقة-ستر-من-الجنة-والنار-والصل",
+      "prev": "f7f4a90c065992e83745e1df65ec3a03003a82253ee90efc20ca08eafdc8dddc",
+      "next": "2feccbde5c13bcfeb345056191003edfbbd391cdf20f83befbad85fc3611a828"
+    },
+    {
+      "ord": 50,
+      "blockId": "f08241731baa477385f6b88eaebea1f6",
+      "fp64": "6c1ef335665b429a",
+      "normHash": "2feccbde5c13bcfeb345056191003edfbbd391cdf20f83befbad85fc3611a828",
+      "kind": "h2",
+      "chapter": "قال-موسى-عليه-السلام-يا-رب-أي-خلقك-أحب-إليك-قال-ولم-ذاك-قال-لأحبه-قال-رجل-يعبدني",
+      "prev": "ff203d69d2b3f0df4f37fac495913c18fc09fbcde860247ef86180a1c998b75f",
+      "next": "0a8a513d0c68aa701b0b025c018e4844d90e3455ab6cdf50a04372483bc61519"
+    },
+    {
+      "ord": 51,
+      "blockId": "cf69267ecc4c27dd617348a3f86c34db",
+      "fp64": "d64e8c7a55572e1a",
+      "normHash": "0a8a513d0c68aa701b0b025c018e4844d90e3455ab6cdf50a04372483bc61519",
+      "kind": "p",
+      "chapter": "قال-موسى-عليه-السلام-يا-رب-أي-خلقك-أحب-إليك-قال-ولم-ذاك-قال-لأحبه-قال-رجل-يعبدني",
+      "prev": "2feccbde5c13bcfeb345056191003edfbbd391cdf20f83befbad85fc3611a828",
+      "next": "c81274c174b1d831bb189993da8eb480e08158ea97cc65a4db014d311d56bd5c"
+    },
+    {
+      "ord": 52,
+      "blockId": "47025dad7951720a0f8904b5b4fa97df",
+      "fp64": "659263bf47f36a74",
+      "normHash": "c81274c174b1d831bb189993da8eb480e08158ea97cc65a4db014d311d56bd5c",
+      "kind": "p",
+      "chapter": "قال-موسى-عليه-السلام-يا-رب-أي-خلقك-أحب-إليك-قال-ولم-ذاك-قال-لأحبه-قال-رجل-يعبدني",
+      "prev": "0a8a513d0c68aa701b0b025c018e4844d90e3455ab6cdf50a04372483bc61519",
+      "next": "ae0b1187dea7bbfe6d498069e082e6bb1e31fca786b1cc2bc0370686d16525c6"
+    },
+    {
+      "ord": 53,
+      "blockId": "a7722e278be92cd13ef70f3631bcd0d5",
+      "fp64": "7f182e3f47567e4c",
+      "normHash": "ae0b1187dea7bbfe6d498069e082e6bb1e31fca786b1cc2bc0370686d16525c6",
+      "kind": "p",
+      "chapter": "قال-موسى-عليه-السلام-يا-رب-أي-خلقك-أحب-إليك-قال-ولم-ذاك-قال-لأحبه-قال-رجل-يعبدني",
+      "prev": "c81274c174b1d831bb189993da8eb480e08158ea97cc65a4db014d311d56bd5c",
+      "next": "1389165b53e02b0ac30eea334d4ad407328d4fc1d9e4cfe33eb93173845f0483"
+    },
+    {
+      "ord": 54,
+      "blockId": "39d8b606420c553c5158859529be1e28",
+      "fp64": "4c9a641736dbb454",
+      "normHash": "1389165b53e02b0ac30eea334d4ad407328d4fc1d9e4cfe33eb93173845f0483",
+      "kind": "p",
+      "chapter": "قال-موسى-عليه-السلام-يا-رب-أي-خلقك-أحب-إليك-قال-ولم-ذاك-قال-لأحبه-قال-رجل-يعبدني",
+      "prev": "ae0b1187dea7bbfe6d498069e082e6bb1e31fca786b1cc2bc0370686d16525c6",
+      "next": "21edae1669eb9b20cadd95e2a056b85940569f6bae24651462d9e45a91f61291"
+    },
+    {
+      "ord": 55,
+      "blockId": "cc2a155d94fe78d63d70f863ecbd722f",
+      "fp64": "e7dfffde7f77627f",
+      "normHash": "21edae1669eb9b20cadd95e2a056b85940569f6bae24651462d9e45a91f61291",
+      "kind": "page",
+      "chapter": "قال-موسى-عليه-السلام-يا-رب-أي-خلقك-أحب-إليك-قال-ولم-ذاك-قال-لأحبه-قال-رجل-يعبدني",
+      "prev": "1389165b53e02b0ac30eea334d4ad407328d4fc1d9e4cfe33eb93173845f0483",
+      "next": "378e1387b5a8616d7b84aeb1f402bc4dfe77936073ac23ed97bc1e055140e680"
+    },
+    {
+      "ord": 56,
+      "blockId": "e61d68ceecacdf77662fadd14d6a210f",
+      "fp64": "e51a51be06f3f434",
+      "normHash": "378e1387b5a8616d7b84aeb1f402bc4dfe77936073ac23ed97bc1e055140e680",
+      "kind": "p",
+      "chapter": "قال-موسى-عليه-السلام-يا-رب-أي-خلقك-أحب-إليك-قال-ولم-ذاك-قال-لأحبه-قال-رجل-يعبدني",
+      "prev": "21edae1669eb9b20cadd95e2a056b85940569f6bae24651462d9e45a91f61291",
+      "next": "fad5fd2c78e14d766ec6c9c32e46aad71e6dfdbfb8d7bc081684cdf7b42bf86a"
+    },
+    {
+      "ord": 57,
+      "blockId": "c88c7da73e68817ea1ce3cdc5c50db5b",
+      "fp64": "39c4f3f445b43620",
+      "normHash": "fad5fd2c78e14d766ec6c9c32e46aad71e6dfdbfb8d7bc081684cdf7b42bf86a",
+      "kind": "h2",
+      "chapter": "المؤمن-في-الدنيا-بين-كافر-يقاتله-ومنافق-يبغضه-ومؤمن-يحسده-وشيطان-قد-وكل",
+      "prev": "378e1387b5a8616d7b84aeb1f402bc4dfe77936073ac23ed97bc1e055140e680",
+      "next": "e080078dbd0701b8e33d8f88e9fef8581c963e7090f714775611aead40e72681"
+    },
+    {
+      "ord": 58,
+      "blockId": "2e67af3ac2bf78bfec7cfb95646f12c0",
+      "fp64": "e86a1ecfa0424e1c",
+      "normHash": "e080078dbd0701b8e33d8f88e9fef8581c963e7090f714775611aead40e72681",
+      "kind": "p",
+      "chapter": "المؤمن-في-الدنيا-بين-كافر-يقاتله-ومنافق-يبغضه-ومؤمن-يحسده-وشيطان-قد-وكل",
+      "prev": "fad5fd2c78e14d766ec6c9c32e46aad71e6dfdbfb8d7bc081684cdf7b42bf86a",
+      "next": "73d73406bc46cc7186ec804fdfa1a05041b9f7d03ceeca214755823ab8479412"
+    },
+    {
+      "ord": 59,
+      "blockId": "e63f559c230f96a42b0f18c52463884e",
+      "fp64": "2fdffbfb7f336dff",
+      "normHash": "73d73406bc46cc7186ec804fdfa1a05041b9f7d03ceeca214755823ab8479412",
+      "kind": "page",
+      "chapter": "المؤمن-في-الدنيا-بين-كافر-يقاتله-ومنافق-يبغضه-ومؤمن-يحسده-وشيطان-قد-وكل",
+      "prev": "e080078dbd0701b8e33d8f88e9fef8581c963e7090f714775611aead40e72681",
+      "next": "ef03624845cec4ba63422ea8e7ee1a62906e167df9e8be086e37506d89987569"
+    },
+    {
+      "ord": 60,
+      "blockId": "a9e5db3b4a0c3320098ebee659ffd285",
+      "fp64": "f43b6096a7f5e074",
+      "normHash": "ef03624845cec4ba63422ea8e7ee1a62906e167df9e8be086e37506d89987569",
+      "kind": "p",
+      "chapter": "المؤمن-في-الدنيا-بين-كافر-يقاتله-ومنافق-يبغضه-ومؤمن-يحسده-وشيطان-قد-وكل",
+      "prev": "73d73406bc46cc7186ec804fdfa1a05041b9f7d03ceeca214755823ab8479412",
+      "next": "78e7e432e58d2bb5cf9a701212a22cde9fbd752f168b13f2ad86811f01f2b8e6"
+    },
+    {
+      "ord": 61,
+      "blockId": "7060ceeb19618c026443ae28dbe66643",
+      "fp64": "1c34321a453c2aa4",
+      "normHash": "78e7e432e58d2bb5cf9a701212a22cde9fbd752f168b13f2ad86811f01f2b8e6",
+      "kind": "h2",
+      "chapter": "للضلالة-حلاوة-في-قلوب-أصحابها",
+      "prev": "ef03624845cec4ba63422ea8e7ee1a62906e167df9e8be086e37506d89987569",
+      "next": "b64d47bb52ce2df883d5e65a897cdbda8fb31df41781ec406a8f4c6d951ae1b5"
+    },
+    {
+      "ord": 62,
+      "blockId": "345fd1b7fdc79ce0ee0420a64df5108e",
+      "fp64": "b7dfffff5bf1f6f7",
+      "normHash": "b64d47bb52ce2df883d5e65a897cdbda8fb31df41781ec406a8f4c6d951ae1b5",
+      "kind": "page",
+      "chapter": "للضلالة-حلاوة-في-قلوب-أصحابها",
+      "prev": "78e7e432e58d2bb5cf9a701212a22cde9fbd752f168b13f2ad86811f01f2b8e6",
+      "next": "184664a5cc62469b0b8b31f24c6baa379a9f9483b38bd9a6e180515338c394e0"
+    },
+    {
+      "ord": 63,
+      "blockId": "a64fd9a47fbe3675a9257b8e75c75daf",
+      "fp64": "67d67af98753f9c6",
+      "normHash": "184664a5cc62469b0b8b31f24c6baa379a9f9483b38bd9a6e180515338c394e0",
+      "kind": "p",
+      "chapter": "للضلالة-حلاوة-في-قلوب-أصحابها",
+      "prev": "b64d47bb52ce2df883d5e65a897cdbda8fb31df41781ec406a8f4c6d951ae1b5",
+      "next": "fa6f2f2d2ec70b9fd6cba78ecf50308b0b0c23a51f49f40d301067bd8d109e52"
+    },
+    {
+      "ord": 64,
+      "blockId": "a1934d32538e563e1ab517813b363788",
+      "fp64": "afdffffedb79627f",
+      "normHash": "fa6f2f2d2ec70b9fd6cba78ecf50308b0b0c23a51f49f40d301067bd8d109e52",
+      "kind": "page",
+      "chapter": "للضلالة-حلاوة-في-قلوب-أصحابها",
+      "prev": "184664a5cc62469b0b8b31f24c6baa379a9f9483b38bd9a6e180515338c394e0",
+      "next": "aac920851cbc029d04aafc9196f6bb081711f5e3adceb4e18f45fa98d69f0d0b"
+    },
+    {
+      "ord": 65,
+      "blockId": "758cdbebf706ca7a238bade8ec24a594",
+      "fp64": "651a701606f3be94",
+      "normHash": "aac920851cbc029d04aafc9196f6bb081711f5e3adceb4e18f45fa98d69f0d0b",
+      "kind": "p",
+      "chapter": "للضلالة-حلاوة-في-قلوب-أصحابها",
+      "prev": "fa6f2f2d2ec70b9fd6cba78ecf50308b0b0c23a51f49f40d301067bd8d109e52",
+      "next": "9c5eb70163183d56b4a559b23366d39b4d25d1d7d9fc6cc13ae3b392e53e3a19"
+    },
+    {
+      "ord": 66,
+      "blockId": "6ef2724e527369a51e08744577942e1f",
+      "fp64": "1e0ac41d39574ea8",
+      "normHash": "9c5eb70163183d56b4a559b23366d39b4d25d1d7d9fc6cc13ae3b392e53e3a19",
+      "kind": "p",
+      "chapter": "للضلالة-حلاوة-في-قلوب-أصحابها",
+      "prev": "aac920851cbc029d04aafc9196f6bb081711f5e3adceb4e18f45fa98d69f0d0b",
+      "next": "2fff3f5aadee53c10ae7116789090dc08db1461e4ab2075d86538e823fa4143f"
+    },
+    {
+      "ord": 67,
+      "blockId": "a7020d458720a8632e3b2fafdc521407",
+      "fp64": "76b607e5deb4f1c1",
+      "normHash": "2fff3f5aadee53c10ae7116789090dc08db1461e4ab2075d86538e823fa4143f",
+      "kind": "p",
+      "chapter": "للضلالة-حلاوة-في-قلوب-أصحابها",
+      "prev": "9c5eb70163183d56b4a559b23366d39b4d25d1d7d9fc6cc13ae3b392e53e3a19",
+      "next": "4e69f1fe679aed73a4f2002d7955a7415fb3e959647a1fb7d8b8e8215f935244"
+    },
+    {
+      "ord": 68,
+      "blockId": "26c2a5e29b47f8f0679219e1b6e32efa",
+      "fp64": "77fff3df7a73623e",
+      "normHash": "4e69f1fe679aed73a4f2002d7955a7415fb3e959647a1fb7d8b8e8215f935244",
+      "kind": "page",
+      "chapter": "للضلالة-حلاوة-في-قلوب-أصحابها",
+      "prev": "2fff3f5aadee53c10ae7116789090dc08db1461e4ab2075d86538e823fa4143f"
+    }
+  ]
+}

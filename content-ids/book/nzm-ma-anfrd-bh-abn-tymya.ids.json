@@ -1,0 +1,975 @@
+{
+  "schema": 1,
+  "generation": 1,
+  "sourceHash": "2c6f5fb40ac6b26b038eda3767d3109dbaaa7b0a5aa2a5087fdb55d76b172b3f",
+  "ids": [
+    {
+      "ord": 0,
+      "blockId": "3d39db640843523a24dff108abfd36d3",
+      "fp64": "e26966cb056d2e5e",
+      "normHash": "708395ab64dd0bc26435b6718979260e99005551af42ff587fb7e187726d780d",
+      "kind": "p",
+      "chapter": "main",
+      "next": "8e292c303e915c8bdde0a976b40bf4c7e7236b887d19fbc6d49297406318e2bf"
+    },
+    {
+      "ord": 1,
+      "blockId": "36caecb76aeaeb25370f7416b3a787d6",
+      "fp64": "67be1ee3be279a03",
+      "normHash": "8e292c303e915c8bdde0a976b40bf4c7e7236b887d19fbc6d49297406318e2bf",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "708395ab64dd0bc26435b6718979260e99005551af42ff587fb7e187726d780d",
+      "next": "cb52d909890185a4e7f71d42c422c84289ae2da50d9773085c675bfeb2ad15ec"
+    },
+    {
+      "ord": 2,
+      "blockId": "4a4f588d068d1e747e06511c521070b5",
+      "fp64": "c1fa218c42f7d1f4",
+      "normHash": "cb52d909890185a4e7f71d42c422c84289ae2da50d9773085c675bfeb2ad15ec",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "8e292c303e915c8bdde0a976b40bf4c7e7236b887d19fbc6d49297406318e2bf",
+      "next": "7d9bab0a92d64b490ccdd826cf487c619885d4c790edfe7b4f90b8431577b5a5"
+    },
+    {
+      "ord": 3,
+      "blockId": "2346f05bd995e6e5421be9ae2207fdc5",
+      "fp64": "13fde7ff4ef71f37",
+      "normHash": "7d9bab0a92d64b490ccdd826cf487c619885d4c790edfe7b4f90b8431577b5a5",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "cb52d909890185a4e7f71d42c422c84289ae2da50d9773085c675bfeb2ad15ec",
+      "next": "19a516a39f603453ac9d7f0abd2125f9640f4547b6159d19977b22454d45c1a4"
+    },
+    {
+      "ord": 4,
+      "blockId": "34b0c5979871ee4273a5d84259f119f6",
+      "fp64": "bc17e2769fbf24fc",
+      "normHash": "19a516a39f603453ac9d7f0abd2125f9640f4547b6159d19977b22454d45c1a4",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "7d9bab0a92d64b490ccdd826cf487c619885d4c790edfe7b4f90b8431577b5a5",
+      "next": "bff458aebea0cbfd4a978d5c1912ab8574d19c9d9aa0b612dfd49f36268e1cd7"
+    },
+    {
+      "ord": 5,
+      "blockId": "075266e2f8c91619f43145a2a672d775",
+      "fp64": "b0cf745c9f11e928",
+      "normHash": "bff458aebea0cbfd4a978d5c1912ab8574d19c9d9aa0b612dfd49f36268e1cd7",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "19a516a39f603453ac9d7f0abd2125f9640f4547b6159d19977b22454d45c1a4",
+      "next": "61eff940599c05c1037278a3f8377815551bc4fbb53c087bc2a3ece519337958"
+    },
+    {
+      "ord": 6,
+      "blockId": "cb6233195bb863da252d1d94c1a6089c",
+      "fp64": "44d3deda4de264bc",
+      "normHash": "61eff940599c05c1037278a3f8377815551bc4fbb53c087bc2a3ece519337958",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "bff458aebea0cbfd4a978d5c1912ab8574d19c9d9aa0b612dfd49f36268e1cd7",
+      "next": "57a788bfb8a282c6d785d21cdfb20fbeefef0e5a5210f5eb2c1c95f86233e851"
+    },
+    {
+      "ord": 7,
+      "blockId": "1b4382f8f015828dd036c7c5f8d37261",
+      "fp64": "10612072d5714d96",
+      "normHash": "57a788bfb8a282c6d785d21cdfb20fbeefef0e5a5210f5eb2c1c95f86233e851",
+      "kind": "verse",
+      "chapter": "main",
+      "prev": "61eff940599c05c1037278a3f8377815551bc4fbb53c087bc2a3ece519337958",
+      "next": "96124754c49c5778533d74d79cab1bbadcac04a4cfc13cb853503cbe44ed9fdd"
+    },
+    {
+      "ord": 8,
+      "blockId": "038dbaa33407719b296c939e5b1cb83e",
+      "fp64": "5a0d6deaa7ec7d5f",
+      "normHash": "96124754c49c5778533d74d79cab1bbadcac04a4cfc13cb853503cbe44ed9fdd",
+      "kind": "verse",
+      "chapter": "main",
+      "prev": "57a788bfb8a282c6d785d21cdfb20fbeefef0e5a5210f5eb2c1c95f86233e851",
+      "next": "ff8b9db3dd8175827841ff58de57c2780a463741a4a0de93f78647d49939e728"
+    },
+    {
+      "ord": 9,
+      "blockId": "f1681cc8cf031acaf26a1a3c33f7edf4",
+      "fp64": "f223759b65556618",
+      "normHash": "ff8b9db3dd8175827841ff58de57c2780a463741a4a0de93f78647d49939e728",
+      "kind": "verse",
+      "chapter": "main",
+      "prev": "96124754c49c5778533d74d79cab1bbadcac04a4cfc13cb853503cbe44ed9fdd",
+      "next": "acb7c7aaec1539f583aa818b6752bb3246e1995a3ef8c33cbf16e8e423956c3e"
+    },
+    {
+      "ord": 10,
+      "blockId": "c417ac820516a091ceeb478eb464e676",
+      "fp64": "667e5df7e77c69d4",
+      "normHash": "acb7c7aaec1539f583aa818b6752bb3246e1995a3ef8c33cbf16e8e423956c3e",
+      "kind": "verse",
+      "chapter": "main",
+      "prev": "ff8b9db3dd8175827841ff58de57c2780a463741a4a0de93f78647d49939e728",
+      "next": "328593de954cce1f74ee96c7057efe414b7a2b63066f718c45e68a279b519f92"
+    },
+    {
+      "ord": 11,
+      "blockId": "38aa9ef964f72293041ec02595079222",
+      "fp64": "5cf7ddbe7fe3cdcd",
+      "normHash": "328593de954cce1f74ee96c7057efe414b7a2b63066f718c45e68a279b519f92",
+      "kind": "verse",
+      "chapter": "main",
+      "prev": "acb7c7aaec1539f583aa818b6752bb3246e1995a3ef8c33cbf16e8e423956c3e",
+      "next": "f8b3d5f85c22d68d8bbe96f715e291f07854ae24c793bae418e9f5074811036a"
+    },
+    {
+      "ord": 12,
+      "blockId": "bbcc2dc3a0be4de206e927c51e80c14b",
+      "fp64": "c717b2d45c0bdcff",
+      "normHash": "f8b3d5f85c22d68d8bbe96f715e291f07854ae24c793bae418e9f5074811036a",
+      "kind": "verse",
+      "chapter": "main",
+      "prev": "328593de954cce1f74ee96c7057efe414b7a2b63066f718c45e68a279b519f92",
+      "next": "4f2c735a5655091675e9d37b87b500848d58fea93d4435cf343357cb6d55a30d"
+    },
+    {
+      "ord": 13,
+      "blockId": "108bc617c22c14913128affebc364b6f",
+      "fp64": "fcc2feef9bda59fc",
+      "normHash": "4f2c735a5655091675e9d37b87b500848d58fea93d4435cf343357cb6d55a30d",
+      "kind": "verse",
+      "chapter": "main",
+      "prev": "f8b3d5f85c22d68d8bbe96f715e291f07854ae24c793bae418e9f5074811036a",
+      "next": "c832911c00e5841e02d6fb8896a476549b432beb7e7e7da801ac0e82fe3ac6ec"
+    },
+    {
+      "ord": 14,
+      "blockId": "a3f34221fc0af8a9a71f946b2b78b745",
+      "fp64": "ffe7bfbffbd4b37f",
+      "normHash": "c832911c00e5841e02d6fb8896a476549b432beb7e7e7da801ac0e82fe3ac6ec",
+      "kind": "h2",
+      "chapter": "المسألة-الأولى",
+      "prev": "4f2c735a5655091675e9d37b87b500848d58fea93d4435cf343357cb6d55a30d",
+      "next": "edec5985ab82752e4643eb6ffd02fc94c5e8f1011fa1022de07422a53bf68953"
+    },
+    {
+      "ord": 15,
+      "blockId": "3ad2347d73e80efd2750e024bc16d668",
+      "fp64": "f23775afca92cf3e",
+      "normHash": "edec5985ab82752e4643eb6ffd02fc94c5e8f1011fa1022de07422a53bf68953",
+      "kind": "verse",
+      "chapter": "المسألة-الأولى",
+      "prev": "c832911c00e5841e02d6fb8896a476549b432beb7e7e7da801ac0e82fe3ac6ec",
+      "next": "c987e41733fe0523bcea6234580146e3daa4cc4595e54190625454b087ca3fee"
+    },
+    {
+      "ord": 16,
+      "blockId": "30b81246360dd10fb5a10157fce83fb9",
+      "fp64": "bdcd801209dcb694",
+      "normHash": "c987e41733fe0523bcea6234580146e3daa4cc4595e54190625454b087ca3fee",
+      "kind": "verse",
+      "chapter": "المسألة-الأولى",
+      "prev": "edec5985ab82752e4643eb6ffd02fc94c5e8f1011fa1022de07422a53bf68953",
+      "next": "b24832c41d16a8f9a4f6f5922f4c7b562ceeebcc5cb6f43f19983fb584874e90"
+    },
+    {
+      "ord": 17,
+      "blockId": "1349c453257e448520beceffff1b6459",
+      "fp64": "4dc6201035757c36",
+      "normHash": "b24832c41d16a8f9a4f6f5922f4c7b562ceeebcc5cb6f43f19983fb584874e90",
+      "kind": "p",
+      "chapter": "المسألة-الأولى",
+      "prev": "c987e41733fe0523bcea6234580146e3daa4cc4595e54190625454b087ca3fee",
+      "next": "9188f256ba223b9637a6bca1894c8bda769d4a2177a25f5c18dfb50703f508f1"
+    },
+    {
+      "ord": 18,
+      "blockId": "edc91a506584871473aa05941a2f12aa",
+      "fp64": "e5fff7ff7bb3e67f",
+      "normHash": "9188f256ba223b9637a6bca1894c8bda769d4a2177a25f5c18dfb50703f508f1",
+      "kind": "page",
+      "chapter": "المسألة-الأولى",
+      "prev": "b24832c41d16a8f9a4f6f5922f4c7b562ceeebcc5cb6f43f19983fb584874e90",
+      "next": "39404435d1dcc2fb81a5871fce9564de9d04a9c4601fb09d09222815ec65cb81"
+    },
+    {
+      "ord": 19,
+      "blockId": "ac91ea2ab1eeec02ff93ba13c791c30f",
+      "fp64": "3b4a20cfed3cf37f",
+      "normHash": "39404435d1dcc2fb81a5871fce9564de9d04a9c4601fb09d09222815ec65cb81",
+      "kind": "verse",
+      "chapter": "المسألة-الأولى",
+      "prev": "9188f256ba223b9637a6bca1894c8bda769d4a2177a25f5c18dfb50703f508f1",
+      "next": "f152021bad3488a8e7fb9826c24515665bd89c73cded90f7d509bd7826d0c2c4"
+    },
+    {
+      "ord": 20,
+      "blockId": "f444094ec646d893f9dfbaceaeb742f8",
+      "fp64": "574994ecbbd8dbb5",
+      "normHash": "f152021bad3488a8e7fb9826c24515665bd89c73cded90f7d509bd7826d0c2c4",
+      "kind": "h2",
+      "chapter": "المسألة-الثانية-والثالثة",
+      "prev": "39404435d1dcc2fb81a5871fce9564de9d04a9c4601fb09d09222815ec65cb81",
+      "next": "930d4a41757d9355b9026abeeeb0ccf906bf21bacedf554828ea84636c0381c8"
+    },
+    {
+      "ord": 21,
+      "blockId": "ac19d730ffa1d027de211ac8a48870ca",
+      "fp64": "d583e6e3f7f6ffd1",
+      "normHash": "930d4a41757d9355b9026abeeeb0ccf906bf21bacedf554828ea84636c0381c8",
+      "kind": "verse",
+      "chapter": "المسألة-الثانية-والثالثة",
+      "prev": "f152021bad3488a8e7fb9826c24515665bd89c73cded90f7d509bd7826d0c2c4",
+      "next": "94fe86677f3b407d43c31f558b97e3e03c867f19d488e4798e3fb7da903ee080"
+    },
+    {
+      "ord": 22,
+      "blockId": "075f755253581198b65da659e9da90c9",
+      "fp64": "e27c49749713cc9a",
+      "normHash": "94fe86677f3b407d43c31f558b97e3e03c867f19d488e4798e3fb7da903ee080",
+      "kind": "verse",
+      "chapter": "المسألة-الثانية-والثالثة",
+      "prev": "930d4a41757d9355b9026abeeeb0ccf906bf21bacedf554828ea84636c0381c8",
+      "next": "a6895940f098a55d89e61951d77a3ccb95900c0c136f8b3b384fb5018325d223"
+    },
+    {
+      "ord": 23,
+      "blockId": "96e266b25efc575eb97ef377445a0c21",
+      "fp64": "2c4bf137fd535ed6",
+      "normHash": "a6895940f098a55d89e61951d77a3ccb95900c0c136f8b3b384fb5018325d223",
+      "kind": "verse",
+      "chapter": "المسألة-الثانية-والثالثة",
+      "prev": "94fe86677f3b407d43c31f558b97e3e03c867f19d488e4798e3fb7da903ee080",
+      "next": "6760bb91787501bb5a3c204f2c671cbfff288b92090a9bbc6dc9b6a19d8fa3f2"
+    },
+    {
+      "ord": 24,
+      "blockId": "d10c0f907d63d9dc69ce210ace915fa2",
+      "fp64": "b285e462cbb76d8e",
+      "normHash": "6760bb91787501bb5a3c204f2c671cbfff288b92090a9bbc6dc9b6a19d8fa3f2",
+      "kind": "verse",
+      "chapter": "المسألة-الثانية-والثالثة",
+      "prev": "a6895940f098a55d89e61951d77a3ccb95900c0c136f8b3b384fb5018325d223",
+      "next": "8020927a844665b515ebe26f5e6d070130f1b1bbd7276107221f33020da4fbbe"
+    },
+    {
+      "ord": 25,
+      "blockId": "c930321dd44c449f9582f2fff946d019",
+      "fp64": "57ffcedefffedfed",
+      "normHash": "8020927a844665b515ebe26f5e6d070130f1b1bbd7276107221f33020da4fbbe",
+      "kind": "h2",
+      "chapter": "المسألة-الرابعة",
+      "prev": "6760bb91787501bb5a3c204f2c671cbfff288b92090a9bbc6dc9b6a19d8fa3f2",
+      "next": "b21ac80a5b59611572526b99ff2e419eeaee920b3a61d129c92cf35238fbd87d"
+    },
+    {
+      "ord": 26,
+      "blockId": "75777f51ed8955986cd4a31416a686a6",
+      "fp64": "5b1535eb2e7a0dd4",
+      "normHash": "b21ac80a5b59611572526b99ff2e419eeaee920b3a61d129c92cf35238fbd87d",
+      "kind": "verse",
+      "chapter": "المسألة-الرابعة",
+      "prev": "8020927a844665b515ebe26f5e6d070130f1b1bbd7276107221f33020da4fbbe",
+      "next": "312321b51ed97dddb250ed761e5eae216bc816ceeb9cc0e5ab2459e3de75c46e"
+    },
+    {
+      "ord": 27,
+      "blockId": "29e4037a85515006dd85c8e7fc228e63",
+      "fp64": "3ec2c44c8fc65e59",
+      "normHash": "312321b51ed97dddb250ed761e5eae216bc816ceeb9cc0e5ab2459e3de75c46e",
+      "kind": "p",
+      "chapter": "المسألة-الرابعة",
+      "prev": "b21ac80a5b59611572526b99ff2e419eeaee920b3a61d129c92cf35238fbd87d",
+      "next": "e6579b26b4df68681f4ac9a88a46409db5ad0ce40bcf1ea1ebc00b77615a2865"
+    },
+    {
+      "ord": 28,
+      "blockId": "698e2781f2d05be753f5e199ff81fc6f",
+      "fp64": "efdfffbe7a7f73f6",
+      "normHash": "e6579b26b4df68681f4ac9a88a46409db5ad0ce40bcf1ea1ebc00b77615a2865",
+      "kind": "page",
+      "chapter": "المسألة-الرابعة",
+      "prev": "312321b51ed97dddb250ed761e5eae216bc816ceeb9cc0e5ab2459e3de75c46e",
+      "next": "20f161adbdc6f72f50a2c001d57956e8f26836146c8b35a9c566841aff4a2ea3"
+    },
+    {
+      "ord": 29,
+      "blockId": "e5a3760f453cec4c71078fe213ee5536",
+      "fp64": "5b775dae2514d7f0",
+      "normHash": "20f161adbdc6f72f50a2c001d57956e8f26836146c8b35a9c566841aff4a2ea3",
+      "kind": "verse",
+      "chapter": "المسألة-الرابعة",
+      "prev": "e6579b26b4df68681f4ac9a88a46409db5ad0ce40bcf1ea1ebc00b77615a2865",
+      "next": "b8dd7b7dc0de95edc49c39257714e3fa515b1a3beb58378c838dd247bbc26b80"
+    },
+    {
+      "ord": 30,
+      "blockId": "33b3680d258b3caa4c401ea9abd23813",
+      "fp64": "dcead41b1f674b56",
+      "normHash": "b8dd7b7dc0de95edc49c39257714e3fa515b1a3beb58378c838dd247bbc26b80",
+      "kind": "verse",
+      "chapter": "المسألة-الرابعة",
+      "prev": "20f161adbdc6f72f50a2c001d57956e8f26836146c8b35a9c566841aff4a2ea3",
+      "next": "6a03e306bb32851ba158407638d15675dacde990416cfa917a8093d3da5d99d3"
+    },
+    {
+      "ord": 31,
+      "blockId": "046d33be04867333598b52143392bc48",
+      "fp64": "5ecc95f1db0be53e",
+      "normHash": "6a03e306bb32851ba158407638d15675dacde990416cfa917a8093d3da5d99d3",
+      "kind": "verse",
+      "chapter": "المسألة-الرابعة",
+      "prev": "b8dd7b7dc0de95edc49c39257714e3fa515b1a3beb58378c838dd247bbc26b80",
+      "next": "ded59a88614d4e948633d241e7055d814ab078636a8e96d2fe6b3844647fc8d8"
+    },
+    {
+      "ord": 32,
+      "blockId": "42a8a9fb45b68dc43b372baa55bfd272",
+      "fp64": "e0ed5d0ec142ce32",
+      "normHash": "ded59a88614d4e948633d241e7055d814ab078636a8e96d2fe6b3844647fc8d8",
+      "kind": "verse",
+      "chapter": "المسألة-الرابعة",
+      "prev": "6a03e306bb32851ba158407638d15675dacde990416cfa917a8093d3da5d99d3",
+      "next": "369cba4f0a3766a50f1f668bee3cefbb7e01955a74f1e6bb37df15cde14843bb"
+    },
+    {
+      "ord": 33,
+      "blockId": "8294cbd8de957f66c53eda8f55738467",
+      "fp64": "0b48283d5a16ad8e",
+      "normHash": "369cba4f0a3766a50f1f668bee3cefbb7e01955a74f1e6bb37df15cde14843bb",
+      "kind": "verse",
+      "chapter": "المسألة-الرابعة",
+      "prev": "ded59a88614d4e948633d241e7055d814ab078636a8e96d2fe6b3844647fc8d8",
+      "next": "08d49890ab6192d974f24904af0cc2b2603f5e01b8757ee7f3d0d01a94fa2c0f"
+    },
+    {
+      "ord": 34,
+      "blockId": "1fcd2a50bc401f2f656bb048109bf38a",
+      "fp64": "37d7d7bebff4ffbd",
+      "normHash": "08d49890ab6192d974f24904af0cc2b2603f5e01b8757ee7f3d0d01a94fa2c0f",
+      "kind": "h2",
+      "chapter": "المسألة-الخامسة",
+      "prev": "369cba4f0a3766a50f1f668bee3cefbb7e01955a74f1e6bb37df15cde14843bb",
+      "next": "1bc2d46d3768346cde9b398c47c44326f017f64cfa6fc7fd85a64563c95905da"
+    },
+    {
+      "ord": 35,
+      "blockId": "e8b84a6f655daca2ec40d10f0c8eacf7",
+      "fp64": "1c4da18741d43c8d",
+      "normHash": "1bc2d46d3768346cde9b398c47c44326f017f64cfa6fc7fd85a64563c95905da",
+      "kind": "verse",
+      "chapter": "المسألة-الخامسة",
+      "prev": "08d49890ab6192d974f24904af0cc2b2603f5e01b8757ee7f3d0d01a94fa2c0f",
+      "next": "1704b2b4beac02d4fa1ebbf11f661d283d744ec6c86681ecf7de4eac84b17eaf"
+    },
+    {
+      "ord": 36,
+      "blockId": "36fa12584390acb00f078972bf0755c8",
+      "fp64": "6447c0df47405c7a",
+      "normHash": "1704b2b4beac02d4fa1ebbf11f661d283d744ec6c86681ecf7de4eac84b17eaf",
+      "kind": "p",
+      "chapter": "المسألة-الخامسة",
+      "prev": "1bc2d46d3768346cde9b398c47c44326f017f64cfa6fc7fd85a64563c95905da",
+      "next": "f7f4a90c065992e83745e1df65ec3a03003a82253ee90efc20ca08eafdc8dddc"
+    },
+    {
+      "ord": 37,
+      "blockId": "3fa2fdf56a4c5d9fa343948df24b8060",
+      "fp64": "afdffffadf71677e",
+      "normHash": "f7f4a90c065992e83745e1df65ec3a03003a82253ee90efc20ca08eafdc8dddc",
+      "kind": "page",
+      "chapter": "المسألة-الخامسة",
+      "prev": "1704b2b4beac02d4fa1ebbf11f661d283d744ec6c86681ecf7de4eac84b17eaf",
+      "next": "990473336fd892c348dd8baa4940dd54309c24485f6012c17f01786ed8d34f2a"
+    },
+    {
+      "ord": 38,
+      "blockId": "920105ca73abefacd3e3dc1e3572e6f8",
+      "fp64": "3f0f58d2f150b694",
+      "normHash": "990473336fd892c348dd8baa4940dd54309c24485f6012c17f01786ed8d34f2a",
+      "kind": "verse",
+      "chapter": "المسألة-الخامسة",
+      "prev": "f7f4a90c065992e83745e1df65ec3a03003a82253ee90efc20ca08eafdc8dddc",
+      "next": "57615f069e3b855ef66fefcb1bcb738adbfcc1fbcb7594de6ab897fe7eb59612"
+    },
+    {
+      "ord": 39,
+      "blockId": "73a98fa7fd2b21e5ba2fc2e69aa1b6ef",
+      "fp64": "5bc946fbb9668b38",
+      "normHash": "57615f069e3b855ef66fefcb1bcb738adbfcc1fbcb7594de6ab897fe7eb59612",
+      "kind": "verse",
+      "chapter": "المسألة-الخامسة",
+      "prev": "990473336fd892c348dd8baa4940dd54309c24485f6012c17f01786ed8d34f2a",
+      "next": "8a202ffd84e9f5d60b384b6896978a6828684aaf46eb4227deb357c3df97634d"
+    },
+    {
+      "ord": 40,
+      "blockId": "19c64f57b0b786702c60adab2eeccec5",
+      "fp64": "1fffa4befff4bbfd",
+      "normHash": "8a202ffd84e9f5d60b384b6896978a6828684aaf46eb4227deb357c3df97634d",
+      "kind": "h2",
+      "chapter": "المسألة-السادسة",
+      "prev": "57615f069e3b855ef66fefcb1bcb738adbfcc1fbcb7594de6ab897fe7eb59612",
+      "next": "bd35e081a55838566a03a3a74cc4f9728df5a1d396a74251e07a958000469bdf"
+    },
+    {
+      "ord": 41,
+      "blockId": "7f567d4d752f45995ebadd8d9e970c95",
+      "fp64": "bede350e3b504c10",
+      "normHash": "bd35e081a55838566a03a3a74cc4f9728df5a1d396a74251e07a958000469bdf",
+      "kind": "verse",
+      "chapter": "المسألة-السادسة",
+      "prev": "8a202ffd84e9f5d60b384b6896978a6828684aaf46eb4227deb357c3df97634d",
+      "next": "7cca4219e39c5a7a01fd3d93ffa93a4de9db8b2dfb98b36b35cd33b6650e58d4"
+    },
+    {
+      "ord": 42,
+      "blockId": "1a83977d0eb83a8e6454d6c74e92c57a",
+      "fp64": "28c26203bc1d7c13",
+      "normHash": "7cca4219e39c5a7a01fd3d93ffa93a4de9db8b2dfb98b36b35cd33b6650e58d4",
+      "kind": "verse",
+      "chapter": "المسألة-السادسة",
+      "prev": "bd35e081a55838566a03a3a74cc4f9728df5a1d396a74251e07a958000469bdf",
+      "next": "c504575bbae34fae172b851e6663467c250144f488088103f0e6d8dcb922ff26"
+    },
+    {
+      "ord": 43,
+      "blockId": "37cb9a4d990644347da305513e3c07b7",
+      "fp64": "377496bffb1ddf7f",
+      "normHash": "c504575bbae34fae172b851e6663467c250144f488088103f0e6d8dcb922ff26",
+      "kind": "h2",
+      "chapter": "المسألة-السابعة-والثامنة-والتاسعة",
+      "prev": "7cca4219e39c5a7a01fd3d93ffa93a4de9db8b2dfb98b36b35cd33b6650e58d4",
+      "next": "8df8e1435377133c756ae7f315fef8f949ab7ad1b06138a49a3385f9ce3c67ec"
+    },
+    {
+      "ord": 44,
+      "blockId": "a342c9dcfea835b1c43455b3feaf71db",
+      "fp64": "da2d6557df534e8e",
+      "normHash": "8df8e1435377133c756ae7f315fef8f949ab7ad1b06138a49a3385f9ce3c67ec",
+      "kind": "verse",
+      "chapter": "المسألة-السابعة-والثامنة-والتاسعة",
+      "prev": "c504575bbae34fae172b851e6663467c250144f488088103f0e6d8dcb922ff26",
+      "next": "e95edb63f450854674415a525524d3f466b27aed23e3f0a54ead3a8d82e041f5"
+    },
+    {
+      "ord": 45,
+      "blockId": "0748f4e93a64050262f298e08ae85ccb",
+      "fp64": "6418c0df147d7578",
+      "normHash": "e95edb63f450854674415a525524d3f466b27aed23e3f0a54ead3a8d82e041f5",
+      "kind": "p",
+      "chapter": "المسألة-السابعة-والثامنة-والتاسعة",
+      "prev": "8df8e1435377133c756ae7f315fef8f949ab7ad1b06138a49a3385f9ce3c67ec",
+      "next": "21edae1669eb9b20cadd95e2a056b85940569f6bae24651462d9e45a91f61291"
+    },
+    {
+      "ord": 46,
+      "blockId": "95e04c0f9244a752a97f73b12d93adec",
+      "fp64": "e7dfffde7f77627f",
+      "normHash": "21edae1669eb9b20cadd95e2a056b85940569f6bae24651462d9e45a91f61291",
+      "kind": "page",
+      "chapter": "المسألة-السابعة-والثامنة-والتاسعة",
+      "prev": "e95edb63f450854674415a525524d3f466b27aed23e3f0a54ead3a8d82e041f5",
+      "next": "77b5d2c6d4ba27ec654e88651f7e3435f885471e280b6f9d6c7c9987b0d2042a"
+    },
+    {
+      "ord": 47,
+      "blockId": "8efe825ae44f852cf219dab27de375ee",
+      "fp64": "72afc78dde9dccd6",
+      "normHash": "77b5d2c6d4ba27ec654e88651f7e3435f885471e280b6f9d6c7c9987b0d2042a",
+      "kind": "verse",
+      "chapter": "المسألة-السابعة-والثامنة-والتاسعة",
+      "prev": "21edae1669eb9b20cadd95e2a056b85940569f6bae24651462d9e45a91f61291",
+      "next": "85b52eeed88b8505456bf87fcec018fd074f3594ec867d99da023ed5a291393b"
+    },
+    {
+      "ord": 48,
+      "blockId": "cc1f2946b46b9198fa9c807fabbbf9c1",
+      "fp64": "b7ff9e9fbbf3bfed",
+      "normHash": "85b52eeed88b8505456bf87fcec018fd074f3594ec867d99da023ed5a291393b",
+      "kind": "h2",
+      "chapter": "المسألة-العاشرة",
+      "prev": "77b5d2c6d4ba27ec654e88651f7e3435f885471e280b6f9d6c7c9987b0d2042a",
+      "next": "3af955cc8c7dc204c13d1998dd47c09a79afd85b1ba413577e835165135d3e88"
+    },
+    {
+      "ord": 49,
+      "blockId": "e10884a045a8ff0111d08c888edef561",
+      "fp64": "7cea246a97e77d55",
+      "normHash": "3af955cc8c7dc204c13d1998dd47c09a79afd85b1ba413577e835165135d3e88",
+      "kind": "verse",
+      "chapter": "المسألة-العاشرة",
+      "prev": "85b52eeed88b8505456bf87fcec018fd074f3594ec867d99da023ed5a291393b",
+      "next": "6b14497a0d4838ac3fd4931811e7489f32f8e054e4ef4c95dea136a6965837fc"
+    },
+    {
+      "ord": 50,
+      "blockId": "5d6d2386b3ad033647e1cdb5253d98d3",
+      "fp64": "12cd84b623f2d32a",
+      "normHash": "6b14497a0d4838ac3fd4931811e7489f32f8e054e4ef4c95dea136a6965837fc",
+      "kind": "h2",
+      "chapter": "المسألة-الحادية-عشرة",
+      "prev": "3af955cc8c7dc204c13d1998dd47c09a79afd85b1ba413577e835165135d3e88",
+      "next": "f5cf73fa0c6767f13cb3dd37c401175900c172e5c5305c1af8502a7b57f2a03d"
+    },
+    {
+      "ord": 51,
+      "blockId": "093d3ef6f054450dc73a5844159f1cf0",
+      "fp64": "1786105a37475c19",
+      "normHash": "f5cf73fa0c6767f13cb3dd37c401175900c172e5c5305c1af8502a7b57f2a03d",
+      "kind": "p",
+      "chapter": "المسألة-الحادية-عشرة",
+      "prev": "6b14497a0d4838ac3fd4931811e7489f32f8e054e4ef4c95dea136a6965837fc",
+      "next": "73d73406bc46cc7186ec804fdfa1a05041b9f7d03ceeca214755823ab8479412"
+    },
+    {
+      "ord": 52,
+      "blockId": "f311569a6a0e891213b0c044ff9fb283",
+      "fp64": "2fdffbfb7f336dff",
+      "normHash": "73d73406bc46cc7186ec804fdfa1a05041b9f7d03ceeca214755823ab8479412",
+      "kind": "page",
+      "chapter": "المسألة-الحادية-عشرة",
+      "prev": "f5cf73fa0c6767f13cb3dd37c401175900c172e5c5305c1af8502a7b57f2a03d",
+      "next": "7056abacc4d5e6ae76e5708deca9c60c103241ef97113286f39ecded2c7b0a81"
+    },
+    {
+      "ord": 53,
+      "blockId": "1dd372d0d045fb179b8ec5fb7197919e",
+      "fp64": "599670e6d865ef6c",
+      "normHash": "7056abacc4d5e6ae76e5708deca9c60c103241ef97113286f39ecded2c7b0a81",
+      "kind": "verse",
+      "chapter": "المسألة-الحادية-عشرة",
+      "prev": "73d73406bc46cc7186ec804fdfa1a05041b9f7d03ceeca214755823ab8479412",
+      "next": "6c0a5a483800cde0010738e143ccf8ccf520bff1d9f2208c37cf7902ace2c774"
+    },
+    {
+      "ord": 54,
+      "blockId": "b84b467dc18259bc7e7845678fe3fbbd",
+      "fp64": "5fcda4ea93f0d72a",
+      "normHash": "6c0a5a483800cde0010738e143ccf8ccf520bff1d9f2208c37cf7902ace2c774",
+      "kind": "h2",
+      "chapter": "المسألة-الثانية-عشرة",
+      "prev": "7056abacc4d5e6ae76e5708deca9c60c103241ef97113286f39ecded2c7b0a81",
+      "next": "46596b04c589f707cf516f1596e9792e3b2eb7844f3823640bd33f71eeb4b387"
+    },
+    {
+      "ord": 55,
+      "blockId": "ebd7da38cece071e017e0bca6460c138",
+      "fp64": "0c1a20334cd1b4a9",
+      "normHash": "46596b04c589f707cf516f1596e9792e3b2eb7844f3823640bd33f71eeb4b387",
+      "kind": "verse",
+      "chapter": "المسألة-الثانية-عشرة",
+      "prev": "6c0a5a483800cde0010738e143ccf8ccf520bff1d9f2208c37cf7902ace2c774",
+      "next": "7a2c6bdd0fbb5dc09f4939ba4074ea75157298d8ece274a14301772d01e99f14"
+    },
+    {
+      "ord": 56,
+      "blockId": "b1eb547a937381740d3627dc291eab0e",
+      "fp64": "bd0ba186fdbe7f4b",
+      "normHash": "7a2c6bdd0fbb5dc09f4939ba4074ea75157298d8ece274a14301772d01e99f14",
+      "kind": "verse",
+      "chapter": "المسألة-الثانية-عشرة",
+      "prev": "46596b04c589f707cf516f1596e9792e3b2eb7844f3823640bd33f71eeb4b387",
+      "next": "ae7d01cb38d9093cb7e783f5b5f9feab477ea7d737d1eca576254a750548cfb6"
+    },
+    {
+      "ord": 57,
+      "blockId": "39ff5910c1596d891303e4a7004c998c",
+      "fp64": "57cb841ed3f0db36",
+      "normHash": "ae7d01cb38d9093cb7e783f5b5f9feab477ea7d737d1eca576254a750548cfb6",
+      "kind": "h2",
+      "chapter": "المسألة-الثالثة-عشر",
+      "prev": "7a2c6bdd0fbb5dc09f4939ba4074ea75157298d8ece274a14301772d01e99f14",
+      "next": "b572df6ed374b370f22d7dd9c62135079471218257a455826d2d1c44a18e7ee8"
+    },
+    {
+      "ord": 58,
+      "blockId": "6a8a0c6e6c3c93bb418cb4db46d55620",
+      "fp64": "9a2371b127d54f1a",
+      "normHash": "b572df6ed374b370f22d7dd9c62135079471218257a455826d2d1c44a18e7ee8",
+      "kind": "p",
+      "chapter": "المسألة-الثالثة-عشر",
+      "prev": "ae7d01cb38d9093cb7e783f5b5f9feab477ea7d737d1eca576254a750548cfb6",
+      "next": "382a74ebec5236581357a538d442fbb24737c749f4ce970308f224c124880a53"
+    },
+    {
+      "ord": 59,
+      "blockId": "beb379856d270d0dfbffbf943939d166",
+      "fp64": "1651cc9e5fc7c4a4",
+      "normHash": "382a74ebec5236581357a538d442fbb24737c749f4ce970308f224c124880a53",
+      "kind": "verse",
+      "chapter": "المسألة-الثالثة-عشر",
+      "prev": "b572df6ed374b370f22d7dd9c62135079471218257a455826d2d1c44a18e7ee8",
+      "next": "940b6a716b48b367bd2b04df4fb33400b78048b7e0c3852e754925602360b41c"
+    },
+    {
+      "ord": 60,
+      "blockId": "32503de71989d11fc051f94f50bc448e",
+      "fp64": "57eb845cf3bcdb2d",
+      "normHash": "940b6a716b48b367bd2b04df4fb33400b78048b7e0c3852e754925602360b41c",
+      "kind": "h2",
+      "chapter": "المسألة-الرابعة-عشر",
+      "prev": "382a74ebec5236581357a538d442fbb24737c749f4ce970308f224c124880a53",
+      "next": "24e2720bf793ccfc85d8c4dd4d538226b1b9943e82748b9d97061a30d6af9d27"
+    },
+    {
+      "ord": 61,
+      "blockId": "488cdc9b4f2c10376f708405a54ac318",
+      "fp64": "cda97d3312e7ff5d",
+      "normHash": "24e2720bf793ccfc85d8c4dd4d538226b1b9943e82748b9d97061a30d6af9d27",
+      "kind": "verse",
+      "chapter": "المسألة-الرابعة-عشر",
+      "prev": "940b6a716b48b367bd2b04df4fb33400b78048b7e0c3852e754925602360b41c",
+      "next": "52d08ffbf41f497f0e9104c0cf22be02f9f1d78329e3cd0a82b3430451e2b3e8"
+    },
+    {
+      "ord": 62,
+      "blockId": "10f6ef19fa89ee145782695568406a51",
+      "fp64": "52db067857dc6a11",
+      "normHash": "52d08ffbf41f497f0e9104c0cf22be02f9f1d78329e3cd0a82b3430451e2b3e8",
+      "kind": "p",
+      "chapter": "المسألة-الرابعة-عشر",
+      "prev": "24e2720bf793ccfc85d8c4dd4d538226b1b9943e82748b9d97061a30d6af9d27",
+      "next": "b64d47bb52ce2df883d5e65a897cdbda8fb31df41781ec406a8f4c6d951ae1b5"
+    },
+    {
+      "ord": 63,
+      "blockId": "a12d4bf645db75a34720e10461e1ffc7",
+      "fp64": "b7dfffff5bf1f6f7",
+      "normHash": "b64d47bb52ce2df883d5e65a897cdbda8fb31df41781ec406a8f4c6d951ae1b5",
+      "kind": "page",
+      "chapter": "المسألة-الرابعة-عشر",
+      "prev": "52d08ffbf41f497f0e9104c0cf22be02f9f1d78329e3cd0a82b3430451e2b3e8",
+      "next": "65de2b0826a60c6e57d4e6baf589f641e78c9a5e7783fb38be19001b44f1df94"
+    },
+    {
+      "ord": 64,
+      "blockId": "777d9255daca8b08d39a6cfcd1279f04",
+      "fp64": "7d48a6dbb97d7d72",
+      "normHash": "65de2b0826a60c6e57d4e6baf589f641e78c9a5e7783fb38be19001b44f1df94",
+      "kind": "verse",
+      "chapter": "المسألة-الرابعة-عشر",
+      "prev": "b64d47bb52ce2df883d5e65a897cdbda8fb31df41781ec406a8f4c6d951ae1b5",
+      "next": "547c208165e604cf554df899e88b61366258ea03664fb70b3b9a7f560f8d0a6b"
+    },
+    {
+      "ord": 65,
+      "blockId": "47ee53e8c46ab58a9de07bb005297600",
+      "fp64": "17c304be13b4fb1d",
+      "normHash": "547c208165e604cf554df899e88b61366258ea03664fb70b3b9a7f560f8d0a6b",
+      "kind": "h2",
+      "chapter": "المسألة-الخامسة-عشر",
+      "prev": "65de2b0826a60c6e57d4e6baf589f641e78c9a5e7783fb38be19001b44f1df94",
+      "next": "6d5e5ffc38da1b1973f00c4dc90827e89d1516c3c046b9292703f693c82167ea"
+    },
+    {
+      "ord": 66,
+      "blockId": "a2266712131318b984b6795221de417c",
+      "fp64": "953e9ad47337f51f",
+      "normHash": "6d5e5ffc38da1b1973f00c4dc90827e89d1516c3c046b9292703f693c82167ea",
+      "kind": "verse",
+      "chapter": "المسألة-الخامسة-عشر",
+      "prev": "547c208165e604cf554df899e88b61366258ea03664fb70b3b9a7f560f8d0a6b",
+      "next": "822b66bb4422690c261bede766b74f07613af036b6a056a70729066c26daa81d"
+    },
+    {
+      "ord": 67,
+      "blockId": "0d809ca77376194f9ad8c35db11287d7",
+      "fp64": "5f0eb0565d861fd6",
+      "normHash": "822b66bb4422690c261bede766b74f07613af036b6a056a70729066c26daa81d",
+      "kind": "verse",
+      "chapter": "المسألة-الخامسة-عشر",
+      "prev": "6d5e5ffc38da1b1973f00c4dc90827e89d1516c3c046b9292703f693c82167ea",
+      "next": "fdb0a604767100ca97781567c177585932903c0fb80bacaeb8b6d4870f7fad15"
+    },
+    {
+      "ord": 68,
+      "blockId": "c779a19c0895414061fc336781fdc1fb",
+      "fp64": "17efa43ef3b4aa35",
+      "normHash": "fdb0a604767100ca97781567c177585932903c0fb80bacaeb8b6d4870f7fad15",
+      "kind": "h2",
+      "chapter": "المسألة-السادسة-عشر",
+      "prev": "822b66bb4422690c261bede766b74f07613af036b6a056a70729066c26daa81d",
+      "next": "de908fb8c7abf4d320233d37f433028ea75d6a2e998e7fcbc5d679136b347a7e"
+    },
+    {
+      "ord": 69,
+      "blockId": "4a5a3599a8d18f317efc2849f9359495",
+      "fp64": "3e4e4072757c0c5d",
+      "normHash": "de908fb8c7abf4d320233d37f433028ea75d6a2e998e7fcbc5d679136b347a7e",
+      "kind": "p",
+      "chapter": "المسألة-السادسة-عشر",
+      "prev": "fdb0a604767100ca97781567c177585932903c0fb80bacaeb8b6d4870f7fad15",
+      "next": "fa6f2f2d2ec70b9fd6cba78ecf50308b0b0c23a51f49f40d301067bd8d109e52"
+    },
+    {
+      "ord": 70,
+      "blockId": "e20dc600c15df7b34f33389fffa06d95",
+      "fp64": "afdffffedb79627f",
+      "normHash": "fa6f2f2d2ec70b9fd6cba78ecf50308b0b0c23a51f49f40d301067bd8d109e52",
+      "kind": "page",
+      "chapter": "المسألة-السادسة-عشر",
+      "prev": "de908fb8c7abf4d320233d37f433028ea75d6a2e998e7fcbc5d679136b347a7e",
+      "next": "533cc9dc8225b6414307c87f4c1f26b2d57cb66285c880839d6dd31e222d6f90"
+    },
+    {
+      "ord": 71,
+      "blockId": "70729ede15579c93c785fec5cf315c52",
+      "fp64": "1d40ccba05579d54",
+      "normHash": "533cc9dc8225b6414307c87f4c1f26b2d57cb66285c880839d6dd31e222d6f90",
+      "kind": "verse",
+      "chapter": "المسألة-السادسة-عشر",
+      "prev": "fa6f2f2d2ec70b9fd6cba78ecf50308b0b0c23a51f49f40d301067bd8d109e52",
+      "next": "2026bbc2bd49d416bb50363e6a50ad1cdcbde9f8aaef6bf3b8a377f356547111"
+    },
+    {
+      "ord": 72,
+      "blockId": "90cdc5786b5977833f9eb63f393f0ced",
+      "fp64": "d6c46dff7f7acf47",
+      "normHash": "2026bbc2bd49d416bb50363e6a50ad1cdcbde9f8aaef6bf3b8a377f356547111",
+      "kind": "verse",
+      "chapter": "المسألة-السادسة-عشر",
+      "prev": "533cc9dc8225b6414307c87f4c1f26b2d57cb66285c880839d6dd31e222d6f90",
+      "next": "384cf61b4d480a4f6ad5c7f4366f2ab05b8bab7cb9b4a3ed6d1d55a41773de86"
+    },
+    {
+      "ord": 73,
+      "blockId": "5bdda6d735b8b9499e3d7664090c39e8",
+      "fp64": "176a043e5398cb3d",
+      "normHash": "384cf61b4d480a4f6ad5c7f4366f2ab05b8bab7cb9b4a3ed6d1d55a41773de86",
+      "kind": "h2",
+      "chapter": "المسألة-السابعة-عشر",
+      "prev": "2026bbc2bd49d416bb50363e6a50ad1cdcbde9f8aaef6bf3b8a377f356547111",
+      "next": "7dff2fb0b16a813a9356c72717411d0bd4ec3693f29ba212771163fe0726cbd4"
+    },
+    {
+      "ord": 74,
+      "blockId": "a14695f4039ed1b8bfcde6feea074820",
+      "fp64": "ecca01bfdffb7417",
+      "normHash": "7dff2fb0b16a813a9356c72717411d0bd4ec3693f29ba212771163fe0726cbd4",
+      "kind": "verse",
+      "chapter": "المسألة-السابعة-عشر",
+      "prev": "384cf61b4d480a4f6ad5c7f4366f2ab05b8bab7cb9b4a3ed6d1d55a41773de86",
+      "next": "4545efb827afc9ff657d2907dcd1ac1af0b4df0b5920b15d29e52d16ccf05fe1"
+    },
+    {
+      "ord": 75,
+      "blockId": "f6d62e206f5b9cf7a01e6e3458add141",
+      "fp64": "d74bed8aeef8ff73",
+      "normHash": "4545efb827afc9ff657d2907dcd1ac1af0b4df0b5920b15d29e52d16ccf05fe1",
+      "kind": "verse",
+      "chapter": "المسألة-السابعة-عشر",
+      "prev": "7dff2fb0b16a813a9356c72717411d0bd4ec3693f29ba212771163fe0726cbd4",
+      "next": "854e8bb48da5d2765309a2fa66184597aeac6b95aa4e0b3ffda0692f4912a0ad"
+    },
+    {
+      "ord": 76,
+      "blockId": "399ede624cde2080387cb3e113b0c436",
+      "fp64": "57c7841ebbb8fb24",
+      "normHash": "854e8bb48da5d2765309a2fa66184597aeac6b95aa4e0b3ffda0692f4912a0ad",
+      "kind": "h2",
+      "chapter": "المسألة-الثامنة-عشر",
+      "prev": "4545efb827afc9ff657d2907dcd1ac1af0b4df0b5920b15d29e52d16ccf05fe1",
+      "next": "26eef150a82ffc2000161709afbe5a3287810e0eafc9c5bec12479774c40f33d"
+    },
+    {
+      "ord": 77,
+      "blockId": "fb3510fc74779a4389705115a8a75c39",
+      "fp64": "5efed91ab85f7f5e",
+      "normHash": "26eef150a82ffc2000161709afbe5a3287810e0eafc9c5bec12479774c40f33d",
+      "kind": "verse",
+      "chapter": "المسألة-الثامنة-عشر",
+      "prev": "854e8bb48da5d2765309a2fa66184597aeac6b95aa4e0b3ffda0692f4912a0ad",
+      "next": "1fffa239a00b906d47bc9cca7040c3cfe8a9925edc05b2eeafa8b859a9c4c06a"
+    },
+    {
+      "ord": 78,
+      "blockId": "01065acb180d6c67d2d2aadc84cdc65f",
+      "fp64": "75d66a8899770553",
+      "normHash": "1fffa239a00b906d47bc9cca7040c3cfe8a9925edc05b2eeafa8b859a9c4c06a",
+      "kind": "verse",
+      "chapter": "المسألة-الثامنة-عشر",
+      "prev": "26eef150a82ffc2000161709afbe5a3287810e0eafc9c5bec12479774c40f33d",
+      "next": "5b295b2f8398937a0f5a8d199e0770c48c666c7e617de2f1227d3a28723a9643"
+    },
+    {
+      "ord": 79,
+      "blockId": "263de6c89e74b1bb953a30a7d2538c0c",
+      "fp64": "6480944fbe453e1d",
+      "normHash": "5b295b2f8398937a0f5a8d199e0770c48c666c7e617de2f1227d3a28723a9643",
+      "kind": "verse",
+      "chapter": "المسألة-الثامنة-عشر",
+      "prev": "1fffa239a00b906d47bc9cca7040c3cfe8a9925edc05b2eeafa8b859a9c4c06a",
+      "next": "879ba7338ee8e69f04e3894be05f8a51a30e2a7575f112b2f35d6675a42937d9"
+    },
+    {
+      "ord": 80,
+      "blockId": "b90052e3e91c42b0dbaee07f304502b2",
+      "fp64": "3e4eb4565740ce18",
+      "normHash": "879ba7338ee8e69f04e3894be05f8a51a30e2a7575f112b2f35d6675a42937d9",
+      "kind": "verse",
+      "chapter": "المسألة-الثامنة-عشر",
+      "prev": "5b295b2f8398937a0f5a8d199e0770c48c666c7e617de2f1227d3a28723a9643",
+      "next": "50ac313e801194ab9c4a8c95c60a59ab1560d9ed4a61ee34fd2aed77735922e6"
+    },
+    {
+      "ord": 81,
+      "blockId": "b05b7f1f96433a1321a366bb39a3603b",
+      "fp64": "524a48ee37784f5f",
+      "normHash": "50ac313e801194ab9c4a8c95c60a59ab1560d9ed4a61ee34fd2aed77735922e6",
+      "kind": "p",
+      "chapter": "المسألة-الثامنة-عشر",
+      "prev": "879ba7338ee8e69f04e3894be05f8a51a30e2a7575f112b2f35d6675a42937d9",
+      "next": "4e69f1fe679aed73a4f2002d7955a7415fb3e959647a1fb7d8b8e8215f935244"
+    },
+    {
+      "ord": 82,
+      "blockId": "99815dcbaf317cebb518af8191e8f74b",
+      "fp64": "77fff3df7a73623e",
+      "normHash": "4e69f1fe679aed73a4f2002d7955a7415fb3e959647a1fb7d8b8e8215f935244",
+      "kind": "page",
+      "chapter": "المسألة-الثامنة-عشر",
+      "prev": "50ac313e801194ab9c4a8c95c60a59ab1560d9ed4a61ee34fd2aed77735922e6",
+      "next": "5df5ed72e42c0cf5415f40987c01f5ae3e45922b652dc5f90be108d24ee6f3ea"
+    },
+    {
+      "ord": 83,
+      "blockId": "73d3454fecbd4d9c3a60fba2e29d2794",
+      "fp64": "cff62097d17fc966",
+      "normHash": "5df5ed72e42c0cf5415f40987c01f5ae3e45922b652dc5f90be108d24ee6f3ea",
+      "kind": "verse",
+      "chapter": "المسألة-الثامنة-عشر",
+      "prev": "4e69f1fe679aed73a4f2002d7955a7415fb3e959647a1fb7d8b8e8215f935244",
+      "next": "b56b98626279c489f6bce68e2db767639b6df99b3bbed43271ed074119ccfc67"
+    },
+    {
+      "ord": 84,
+      "blockId": "926b6ec32272b22f3cc83011bd61a097",
+      "fp64": "17e3047c53f08a36",
+      "normHash": "b56b98626279c489f6bce68e2db767639b6df99b3bbed43271ed074119ccfc67",
+      "kind": "h2",
+      "chapter": "المسألة-التاسعة-عشر",
+      "prev": "5df5ed72e42c0cf5415f40987c01f5ae3e45922b652dc5f90be108d24ee6f3ea",
+      "next": "ac6c352a8f1e10775e83840742d92e73c14f9a3df6cfad8cdb664e0a9bbd2163"
+    },
+    {
+      "ord": 85,
+      "blockId": "555a7a09acc742de2ec316af30ff5c1b",
+      "fp64": "38dfd5c9e68cfe81",
+      "normHash": "ac6c352a8f1e10775e83840742d92e73c14f9a3df6cfad8cdb664e0a9bbd2163",
+      "kind": "verse",
+      "chapter": "المسألة-التاسعة-عشر",
+      "prev": "b56b98626279c489f6bce68e2db767639b6df99b3bbed43271ed074119ccfc67",
+      "next": "58f1ca367f13f52fa6dabce294353a940011828ec54e24eac0e25ba58db2e7ab"
+    },
+    {
+      "ord": 86,
+      "blockId": "1999ce73e2b35ee7af500da3a091874e",
+      "fp64": "7a9bcd51dc73fe2d",
+      "normHash": "58f1ca367f13f52fa6dabce294353a940011828ec54e24eac0e25ba58db2e7ab",
+      "kind": "verse",
+      "chapter": "المسألة-التاسعة-عشر",
+      "prev": "ac6c352a8f1e10775e83840742d92e73c14f9a3df6cfad8cdb664e0a9bbd2163",
+      "next": "e51b63492a5d509ff9ff7919dd650ca72f846f4f0647e2b061c82e3e4b0902a9"
+    },
+    {
+      "ord": 87,
+      "blockId": "dadd1d4329b6fb6172f904081ce2f3ca",
+      "fp64": "6e48711b1e58755d",
+      "normHash": "e51b63492a5d509ff9ff7919dd650ca72f846f4f0647e2b061c82e3e4b0902a9",
+      "kind": "verse",
+      "chapter": "المسألة-التاسعة-عشر",
+      "prev": "58f1ca367f13f52fa6dabce294353a940011828ec54e24eac0e25ba58db2e7ab",
+      "next": "482611fa92273d7d1e10595b33cb560fbe66193cc979ebd69aab323f764f0b83"
+    },
+    {
+      "ord": 88,
+      "blockId": "08accb26a37255a535ef5827e63a4d99",
+      "fp64": "fde1245fbe94dc6f",
+      "normHash": "482611fa92273d7d1e10595b33cb560fbe66193cc979ebd69aab323f764f0b83",
+      "kind": "verse",
+      "chapter": "المسألة-التاسعة-عشر",
+      "prev": "e51b63492a5d509ff9ff7919dd650ca72f846f4f0647e2b061c82e3e4b0902a9",
+      "next": "218af9fdc2a3b13c3be48dc623a2bbeecb0e13da5afe2db5748e957d34a8ea12"
+    },
+    {
+      "ord": 89,
+      "blockId": "8ef1bdbde1b1d515af20a75136f65988",
+      "fp64": "5fa360d5f3352f9e",
+      "normHash": "218af9fdc2a3b13c3be48dc623a2bbeecb0e13da5afe2db5748e957d34a8ea12",
+      "kind": "verse",
+      "chapter": "المسألة-التاسعة-عشر",
+      "prev": "482611fa92273d7d1e10595b33cb560fbe66193cc979ebd69aab323f764f0b83",
+      "next": "0f7763287feda0b9c3d9bd3d5395c71a3edcfabf3389c8c864597cf0a5091ec1"
+    },
+    {
+      "ord": 90,
+      "blockId": "ad360b5dc6dc3a55b006833f7a98cc8a",
+      "fp64": "fc002d07361e2204",
+      "normHash": "0f7763287feda0b9c3d9bd3d5395c71a3edcfabf3389c8c864597cf0a5091ec1",
+      "kind": "verse",
+      "chapter": "المسألة-التاسعة-عشر",
+      "prev": "218af9fdc2a3b13c3be48dc623a2bbeecb0e13da5afe2db5748e957d34a8ea12",
+      "next": "e4597983c92157484fbf5d0c160f3b92e394aa824cc71e98a4d74fd4ee71150c"
+    },
+    {
+      "ord": 91,
+      "blockId": "9bfeec22a67c7848b8dc0ce1442ed293",
+      "fp64": "d230c6ed2e19cd53",
+      "normHash": "e4597983c92157484fbf5d0c160f3b92e394aa824cc71e98a4d74fd4ee71150c",
+      "kind": "verse",
+      "chapter": "المسألة-التاسعة-عشر",
+      "prev": "0f7763287feda0b9c3d9bd3d5395c71a3edcfabf3389c8c864597cf0a5091ec1",
+      "next": "207c8bc313189e52517dd029997e0e0468b295894222d48d1c369025bf0cf442"
+    },
+    {
+      "ord": 92,
+      "blockId": "769ca4e4215fa2653312808d99ca9be0",
+      "fp64": "cfb5301030b28f5c",
+      "normHash": "207c8bc313189e52517dd029997e0e0468b295894222d48d1c369025bf0cf442",
+      "kind": "verse",
+      "chapter": "المسألة-التاسعة-عشر",
+      "prev": "e4597983c92157484fbf5d0c160f3b92e394aa824cc71e98a4d74fd4ee71150c",
+      "next": "ae7ad8153ece69b831478a656268aa1b9cdcf8d9500e14aa693ca2bab322d9c2"
+    },
+    {
+      "ord": 93,
+      "blockId": "82dd21ddde9193b7c713092c71f43630",
+      "fp64": "1ecc309a35555f0d",
+      "normHash": "ae7ad8153ece69b831478a656268aa1b9cdcf8d9500e14aa693ca2bab322d9c2",
+      "kind": "p",
+      "chapter": "المسألة-التاسعة-عشر",
+      "prev": "207c8bc313189e52517dd029997e0e0468b295894222d48d1c369025bf0cf442",
+      "next": "fe150be8995764fb9222c74a2e8f48710a6c0e04b0832c95ac9ae993299ca637"
+    },
+    {
+      "ord": 94,
+      "blockId": "016408f705b34e5611c267a9252a58fe",
+      "fp64": "25ffffde7f3f783f",
+      "normHash": "fe150be8995764fb9222c74a2e8f48710a6c0e04b0832c95ac9ae993299ca637",
+      "kind": "page",
+      "chapter": "المسألة-التاسعة-عشر",
+      "prev": "ae7ad8153ece69b831478a656268aa1b9cdcf8d9500e14aa693ca2bab322d9c2",
+      "next": "643bc869678d287bea8bca023a84a02f1a54fb739400a706d856316a00235f0c"
+    },
+    {
+      "ord": 95,
+      "blockId": "933d243494057637c3a4136b5f57c5ed",
+      "fp64": "b45306509be8f3f6",
+      "normHash": "643bc869678d287bea8bca023a84a02f1a54fb739400a706d856316a00235f0c",
+      "kind": "p",
+      "chapter": "المسألة-التاسعة-عشر",
+      "prev": "fe150be8995764fb9222c74a2e8f48710a6c0e04b0832c95ac9ae993299ca637",
+      "next": "3ac3fae37d9c27a37c8eda6b5620e12928e9e38c82616303a0543fa19a9fc15e"
+    },
+    {
+      "ord": 96,
+      "blockId": "a557ec7b1fa97b43e74f50169d29078c",
+      "fp64": "addff3be5ffd647e",
+      "normHash": "3ac3fae37d9c27a37c8eda6b5620e12928e9e38c82616303a0543fa19a9fc15e",
+      "kind": "page",
+      "chapter": "المسألة-التاسعة-عشر",
+      "prev": "643bc869678d287bea8bca023a84a02f1a54fb739400a706d856316a00235f0c"
+    }
+  ]
+}

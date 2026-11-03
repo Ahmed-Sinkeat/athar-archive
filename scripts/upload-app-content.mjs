@@ -16,6 +16,7 @@ const HASH_RE = /^[0-9a-f]{64}$/;
 
 const CONTENT_TYPES = new Map([
   [".json", "application/json; charset=utf-8"],
+  [".zip", "application/zip"],
   [".idx", "application/json; charset=utf-8"],
   [".athar", "application/vnd.athar+gzip"],
   [".opus", "audio/ogg; codecs=opus"],
@@ -130,6 +131,18 @@ async function upload(s3, artifact, cacheControl) {
 
 async function main() {
   if (process.argv.includes("--selftest")) return selftest();
+  if (process.argv.includes("--dict-only")) {
+    // Only the dictionary zip: the signed catalog and its artifacts are left exactly as published.
+    const s3 = makeClient({
+      bucket: process.env.ATHAR_APP_R2_BUCKET,
+      accessKeyId: process.env.ATHAR_APP_R2_ACCESS_KEY_ID,
+      secretAccessKey: process.env.ATHAR_APP_R2_SECRET_ACCESS_KEY,
+      credentialNames: "ATHAR_APP_R2_ACCESS_KEY_ID / ATHAR_APP_R2_SECRET_ACCESS_KEY",
+    });
+    const remote = new Map();
+    await listPrefix(s3, `${PREFIX}dict/`, (object) => remote.set(object.key, object.etag));
+    return uploadDict(s3, remote);
+  }
   const publicKeyFile = process.env.ATHAR_CONTENT_SIGNING_PUBLIC_KEY_FILE;
   const signingKeyId = process.env.ATHAR_CONTENT_SIGNING_KEY_ID;
   if (!publicKeyFile || !signingKeyId) {
@@ -168,6 +181,18 @@ async function main() {
   } else {
     console.log("root: unchanged");
   }
+  await uploadDict(s3, remote);
+}
+
+// «معنى»: one zip the app downloads on demand (gen-app-dict.ts). Outside the signed catalog; a stable
+// key, so a day's cache. ponytail: unsigned (plain HTTPS); sign it like the catalog if it ever carries more than text.
+async function uploadDict(s3, remote) {
+  const file = path.resolve(process.env.ATHAR_DICT_ZIP ?? "dist/app-dict/dict.zip");
+  if (!fs.existsSync(file)) return;
+  const artifact = { key: `${PREFIX}dict/dict.zip`, filePath: file };
+  if (remote.get(artifact.key) === md5(fs.readFileSync(file))) return console.log("dict: unchanged");
+  await upload(s3, artifact, "public, max-age=86400");
+  console.log(`dict: dict.zip uploaded (${fs.statSync(file).size} bytes)`);
 }
 
 function writeFixture(root, relative, bytes) {

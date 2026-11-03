@@ -7,7 +7,8 @@
 // passage with the spelling as typed (إنما over انما) comes first. The words are shown as written.
 import { normalizeWithMap } from "./ar-normalize.js";
 
-export type Mode = "all" | "any" | "phrase";
+// root: q is every form of one root (the app reads them from its lexicons), any of them matches.
+export type Mode = "all" | "any" | "phrase" | "root";
 
 // Short particles (يا، في، من، لا) stay exact: as prefixes they match every word that starts so.
 const MIN_PREFIX_LEN = 3;
@@ -29,6 +30,7 @@ function baseTiers(tokens: string[], mode: Mode): string[] {
   const exact = (x: string) => `"${x}"`;
   const prefix = (x: string) => (x.length >= MIN_PREFIX_LEN ? `"${x}"*` : `"${x}"`);
   const phrase = `"${t.join(" ")}"`;
+  if (mode === "root") return [...new Set([t.map(exact).join(" OR "), t.map(prefix).join(" OR ")])];
   const tiers = mode === "phrase"
     // a phrase whose last word is still being typed
     ? [phrase, t[t.length - 1].length >= MIN_PREFIX_LEN ? `${phrase} *` : phrase]

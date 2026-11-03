@@ -80,6 +80,13 @@ class ContentSearchTest {
         assertEquals(81, ContentSearchRepository(database).search(
             ContentSearchRequest("\"طلب العلم\"", ordinals = 81..81),
         ).blocks.single().ordinal)
+        // In-book search narrows to the book's rowids; a book with nothing saved finds nothing.
+        assertEquals(listOf(81), ContentSearchRepository(database).search(
+            ContentSearchRequest("\"طلب العلم\"", sort = ContentSearchSort.BookOrder, filter = ContentSearchFilter(entityIds = setOf("search-book"))),
+        ).blocks.map { it.ordinal })
+        assertTrue(ContentSearchRepository(database).search(
+            ContentSearchRequest("العلم", filter = ContentSearchFilter(entityIds = setOf("not-saved"))),
+        ).blocks.isEmpty())
 
         database.importDao().evictFrame(database.importDao().evictionCandidates().single())
         assertTrue(

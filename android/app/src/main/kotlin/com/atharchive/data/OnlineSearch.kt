@@ -29,8 +29,13 @@ internal class OnlineSearch(private val http: OkHttpClient) {
         val field: String,
         val types: Set<String>,
         val persons: Set<String>,
-        /** relevance | death */
+        /** relevance | death | death_desc | book */
         val sort: String,
+        /** One book: the server then returns every matching chapter of it. */
+        val books: Set<String> = emptySet(),
+        /** Death centuries of the authors, and topic titles (a section's): the site filters by both. */
+        val centuries: Set<Int> = emptySet(),
+        val topics: Set<String> = emptySet(),
     )
 
     /** Pages of 20 until [limit] hits or the end; each page is edge-cached for 30 minutes. */
@@ -72,6 +77,9 @@ internal class OnlineSearch(private val http: OkHttpClient) {
         .addQueryParameter("type", query.types.joinToString(","))
         .addQueryParameter("sort", query.sort)
         .apply { if (query.persons.isNotEmpty()) addQueryParameter("person", query.persons.joinToString(",")) }
+        .apply { if (query.books.isNotEmpty()) addQueryParameter("book", query.books.joinToString(",")) }
+        .apply { if (query.centuries.isNotEmpty()) addQueryParameter("century", query.centuries.joinToString(",")) }
+        .apply { if (query.topics.isNotEmpty()) addQueryParameter("topic", query.topics.joinToString(",")) }
 
     private suspend fun get(url: HttpUrl): JSONObject = suspendCancellableCoroutine { cont ->
         val call = http.newCall(Request.Builder().url(url).build())

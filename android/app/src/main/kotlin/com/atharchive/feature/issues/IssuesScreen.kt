@@ -95,20 +95,26 @@ fun IssuesScreen(
     var query by rememberSaveable { mutableStateOf("") }
     val textHits = com.atharchive.feature.search.rememberSectionTextHits(query, textSearch)
     var topicStored by rememberPersisted("issues.topics", "")
-    var sortName by rememberPersisted("issues.order", IssueSort.Question.name)
+    var scholarStored by rememberPersisted("issues.scholars", "")
+    var audioStored by rememberPersisted("issues.audio", "")
+    var section by rememberPersisted("issues.section", com.atharchive.ui.components.SectionAll)
+    var sortName by rememberPersisted("issues.sort", IssueSort.Died.name)
     var descendingStored by rememberPersisted("issues.order.desc", "")
     val descending = descendingStored.isNotEmpty()
-    val sort = enumValueOrNull<IssueSort>(sortName) ?: IssueSort.Question
+    val sort = enumValueOrNull<IssueSort>(sortName) ?: IssueSort.Died
     val listState = rememberLazyListState()
     val reselectScope = androidx.compose.runtime.rememberCoroutineScope()
 
-    val topics = remember(state.issues) {
-        state.issues.map { it.topic }.filter(String::isNotBlank).distinct()
+    val topics = remember(state.issues, section) {
+        state.issues.flatMap { it.topics }.distinct().filter { com.atharchive.ui.components.inSection(section, listOf(it)) }.sorted()
     }
+    val scholars = remember(state.issues) { state.issues.map { it.scholar }.filter(String::isNotBlank).distinct().sortedBy(::normKey) }
     val topic = topicStored.asChoiceSet() intersect topics.toSet()
-    val hasActiveFilters = topic.isNotEmpty() || sort != IssueSort.Newest
+    val scholar = scholarStored.asChoiceSet() intersect scholars.toSet()
+    val audio = audioStored.asChoiceSet() intersect setOf(com.atharchive.ui.components.HasAudioChoice)
+    val hasActiveFilters = (topic + scholar + audio).isNotEmpty() || section != com.atharchive.ui.components.SectionAll
 
-    val visible = remember(state.issues, selectedTab, query, topic, sort, descending) {
+    val visible = remember(state.issues, selectedTab, query, topic, sort, descending, scholar, audio, section) {
         val term = ArNormalize.normalize(query.trim())
         state.issues.filter { issue ->
             val matchesTab = selectedTab.matches(issue.recentRank != null, issue.downloaded, issue.saved)
@@ -116,12 +122,16 @@ fun IssuesScreen(
                 normKey(issue.question).contains(term, ignoreCase = true) ||
                 normKey(issue.scholar).contains(term, ignoreCase = true) ||
                 normKey(issue.answerExcerpt).contains(term, ignoreCase = true)
-            matchesTab && matchesQuery && (topic.isEmpty() || issue.topic in topic)
+            matchesTab && matchesQuery && (topic.isEmpty() || issue.topics.any(topic::contains)) &&
+                (scholar.isEmpty() || issue.scholar in scholar) && (audio.isEmpty() || issue.hasAudio) &&
+                com.atharchive.ui.components.inSection(section, issue.topics)
         }.sortedWith(
-            if (selectedTab == SectionTab.Recent) compareBy { it.recentRank ?: Int.MAX_VALUE } else (when (sort) {
+            if (selectedTab == SectionTab.Recent) compareBy { it.recentRank ?: Int.MAX_VALUE }
+            else if (sort == IssueSort.Died) compareBy<IssueUi, Int?>(nullsLast(if (descending) reverseOrder() else naturalOrder())) { it.died }.thenBy { normKey(it.question) }
+            else (when (sort) {
                 IssueSort.Question -> compareBy<IssueUi> { normKey(it.question) }
                 IssueSort.Scholar -> compareBy<IssueUi> { normKey(it.scholar) }
-                IssueSort.Newest -> compareBy<IssueUi> { it.question }
+                IssueSort.Newest, IssueSort.Died -> compareBy<IssueUi> { it.question }
             }).directed(descending),
         )
     }
@@ -142,7 +152,7 @@ fun IssuesScreen(
 
         Box(modifier = Modifier.fillMaxSize().clipToBounds()) {
             val header = rememberAtharCollapsingHeader()
-            header.ShowOnChange(listState, selectedTab, query, topic, sort)
+            header.ShowOnChange(listState, selectedTab, query, topic, sort, section)
             AtharFloatingHeader(header) {
                 Column {
                     AtharTopBar(
@@ -156,13 +166,20 @@ fun IssuesScreen(
                                 if (selectedTab == SectionTab.Recent) null else AtharChipGroup("الترتيب", IssueSort.entries.map { it.label }, sort.label) { label -> sortName = IssueSort.entries.first { it.label == label }.name },
                             if (selectedTab == SectionTab.Recent) null else AtharDirectionGroup(descending) { descendingStored = if (it) "1" else "" },
                             )
-                    val filterFacets = listOf(AtharFacet("الموضوع", topics, topic, { topicStored = it.asStoredChoices() }))
+                    val filterFacets = listOf(
+                        AtharFacet("المجيب", scholars, scholar, { scholarStored = it.asStoredChoices() }),
+                        AtharFacet("الموضوع", topics, topic, { topicStored = it.asStoredChoices() }),
+                        AtharFacet("الصوت", listOf(com.atharchive.ui.components.HasAudioChoice), audio, { audioStored = it.asStoredChoices() }),
+                    )
                     AtharSearchField(
                         query = query,
                         placeholder = "ابحث في ${state.countLabel}…",
                         onQueryChange = { query = it },
                         tagPrefix = "issues",
-                        trailing = { AtharFilterIcon(filterGroups, filterFacets, "issues_filter") },
+                        trailing = {
+                        com.atharchive.ui.components.AtharSectionButton(section, { section = it }, remember(state.issues) { com.atharchive.ui.components.sectionCounts(state.issues) { it.topics } }, "issues_sections")
+                        AtharFilterIcon(filterGroups, filterFacets, "issues_filter")
+                    },
                         modifier = Modifier.padding(
                             start = horizontalPadding,
                             end = horizontalPadding,
@@ -204,7 +221,7 @@ fun IssuesScreen(
 
                 if (!state.loaded) {
                     // first catalog read not back yet: show nothing rather than a false "no issues"
-                } else if (visible.isEmpty() && textHits.isEmpty()) {
+                } else if (visible.isEmpty() && textHits.isEmpty() && !textHits.searching) {
                     item(key = "issues-empty") {
                         val (title, body) = when {
                             query.isNotBlank() ->

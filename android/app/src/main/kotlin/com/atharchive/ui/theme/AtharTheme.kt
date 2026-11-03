@@ -14,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -89,10 +90,18 @@ val KitabFontFamily = FontFamily(
  * imported (Appearance), kept as `files/fonts/user.ttf`; until one exists it falls back to [Kitab].
  */
 enum class ReaderFont(val label: String) {
-    Kitab("كتاب"), Amiri("أميري"), Plex("بلكس"), Custom("خطّي");
+    Kitab("كتاب"), Amiri("أميري"), Plex("بلكس"), Custom("خطّي"),
+    /** Only for the Quran, hadith and poetry lines: [Same] follows «خطّ القراءة», [Mushaf] is Amiri Quran. */
+    Same("خطّ القراءة"), Mushaf("المصحف"),
+    /** Ahmed Elgharib's Hafs faces, kept under their own file names in assets/fonts as their terms require (licenses/Elgharib-terms.txt). */
+    NoonHafs("نون حفص"), Tharwat("حفص ثروت عمارة");
 
     companion object {
+        // ponytail: one imported file shared by every role; a file per role if readers ask for two of their own.
         fun userFile(context: android.content.Context) = java.io.File(context.filesDir, "fonts/user.ttf")
+        val reading = listOf(Kitab, Amiri, Plex, Custom)
+        val quranRoles = listOf(Mushaf, NoonHafs, Tharwat, Same, Kitab, Amiri, Plex, Custom)
+        val roles = listOf(Same, Kitab, Amiri, Plex, Custom)
     }
 }
 
@@ -103,8 +112,13 @@ val LocalReaderFont = staticCompositionLocalOf { KitabFontFamily }
 @Composable
 fun ReaderFont.family(stamp: Long): FontFamily {
     val context = androidx.compose.ui.platform.LocalContext.current
-    return androidx.compose.runtime.remember(this, stamp) {
+    val reading = LocalReaderFont.current
+    return androidx.compose.runtime.remember(this, stamp, reading) {
         when (this) {
+            ReaderFont.Same -> reading
+            ReaderFont.Mushaf -> QuranFontFamily
+            ReaderFont.NoonHafs -> FontFamily(androidx.compose.ui.text.font.Font("fonts/Elgharib-NoonHafs.ttf", context.assets))
+            ReaderFont.Tharwat -> FontFamily(androidx.compose.ui.text.font.Font("fonts/Elgharib-HAFSTharwatEmara.otf", context.assets))
             ReaderFont.Kitab -> KitabFontFamily
             ReaderFont.Amiri -> AtharEditorialFontFamily
             ReaderFont.Plex -> AtharUiFontFamily
@@ -226,13 +240,15 @@ enum class ThemeMode(val label: String) {
     Light("فاتح"),
     Warm("دافئ"),
     Dark("داكن"),
+    /** E-ink screens: pure white and black, «حبر» surfaces, coloured text drawn in ink. */
+    Eink("حبر إلكتروني"),
     ;
 
     /** Whether the resolved theme is dark. [Warm] is a light theme. */
     @Composable
     fun resolve(): Boolean = when (this) {
         System -> isSystemInDarkTheme()
-        Light, Warm -> false
+        Light, Warm, Eink -> false
         Dark -> true
     }
 }
@@ -269,9 +285,38 @@ enum class AtharAccent(val label: String, val base: Color, val pressed: Color, v
     Blue("أزرق", Color(0xFF2E5A88), Color(0xFF23466B), Color(0xFF8DB4E2), Color(0xFFAECBEC)),
     Brown("بنّي", Color(0xFF8A5A2B), Color(0xFF6C4621), Color(0xFFD2A06C), Color(0xFFDFB78C)),
     Purple("بنفسجي", Color(0xFF5E4485), Color(0xFF4A3569), Color(0xFFB39ADB), Color(0xFFC8B5E5)),
+    Navy("كحلي", Color(0xFF123456), Color(0xFF0C2540), Color(0xFF8FAFD6), Color(0xFFAEC6E4)),
+    /** The reader's own colour ([AccentChoice.custom]); these tones are only its fallback. */
+    Custom("مخصّص", Color(0xFF8F3537), Color(0xFF71272A), Color(0xFFD1787D), Color(0xFFE1979B)),
 }
 
-private fun AtharExtraColors.accented(a: AtharAccent, dark: Boolean) = copy(
+data class AccentTones(val base: Color, val pressed: Color, val night: Color, val nightPressed: Color)
+
+/**
+ * «اللون» as chosen: a preset, or [custom] (ARGB) for [AtharAccent.Custom]; [originalIcon] keeps the
+ * launcher's own cream icon instead of one in the accent (a custom colour has no icon of its own).
+ */
+data class AccentChoice(val preset: AtharAccent = AtharAccent.Burgundy, val custom: Int = 0, val originalIcon: Boolean = true) {
+    val tones: AccentTones get() = if (preset == AtharAccent.Custom && custom != 0) customTones(Color(custom))
+        else AccentTones(preset.base, preset.pressed, preset.night, preset.nightPressed)
+    /** The launcher alias to enable (AndroidManifest): «Burgundy» is the original icon, «Red» the red one. */
+    val launcher: String get() = when {
+        originalIcon || preset == AtharAccent.Custom -> "Burgundy"
+        preset == AtharAccent.Burgundy -> "Red"
+        else -> preset.name
+    }
+}
+
+/** Any colour made usable: darkened until white text on it reads (4.5:1), lightened for night marks. */
+internal fun customTones(picked: Color): AccentTones {
+    var base = picked
+    while (1.05f / (base.luminance() + 0.05f) < 4.5f) // contrast of white on it
+        base = androidx.compose.ui.graphics.lerp(base, Color.Black, 0.1f)
+    val night = androidx.compose.ui.graphics.lerp(base, Color.White, 0.45f)
+    return AccentTones(base, androidx.compose.ui.graphics.lerp(base, Color.Black, 0.2f), night, androidx.compose.ui.graphics.lerp(night, Color.White, 0.25f))
+}
+
+private fun AtharExtraColors.accented(a: AccentTones, dark: Boolean) = copy(
     accent = if (dark) a.night else a.base,
     accentPressed = if (dark) a.nightPressed else a.pressed,
     primaryAction = a.base,
@@ -332,6 +377,7 @@ private fun AtharExtraColors.inked(ink: Color) = copy(
  * disagree with the app's choice.
  */
 val LocalAtharDarkTheme = staticCompositionLocalOf { false }
+val LocalAtharEink = staticCompositionLocalOf { false }
 
 @Immutable
 data class AtharExtraColors(
@@ -422,10 +468,14 @@ fun AtharTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     /** The cream light theme; ignored when [darkTheme] is true. */
     warm: Boolean = false,
+    /** [ThemeMode.Eink]: overrides [style] and [choice]. */
+    eink: Boolean = false,
     style: AtharStyle = AtharStyle.Paper,
-    accent: AtharAccent = AtharAccent.Burgundy,
+    choice: AccentChoice = AccentChoice(),
     content: @Composable () -> Unit,
 ) {
+    @Suppress("NAME_SHADOWING") val style = if (eink) AtharStyle.Ink else style
+    val accent = if (eink) AccentTones(Color.Black, Color.Black, Color.White, Color.White) else choice.tones
     val warmLight = warm && !darkTheme
     val colorScheme = if (darkTheme) {
         darkColorScheme(
@@ -448,10 +498,10 @@ fun AtharTheme(
             onPrimary = Color.White,
             primaryContainer = androidx.compose.ui.graphics.lerp(Color.White, accent.base, 0.15f),
             onPrimaryContainer = androidx.compose.ui.graphics.lerp(accent.base, Color.Black, 0.5f),
-            background = if (warmLight) Cream else Paper,
-            onBackground = if (warmLight) CreamInk else LightInk,
-            surface = if (warmLight) Cream else Paper,
-            onSurface = if (warmLight) CreamInk else LightInk,
+            background = if (eink) Color.White else if (warmLight) Cream else Paper,
+            onBackground = if (eink) Color.Black else if (warmLight) CreamInk else LightInk,
+            surface = if (eink) Color.White else if (warmLight) Cream else Paper,
+            onSurface = if (eink) Color.Black else if (warmLight) CreamInk else LightInk,
             surfaceVariant = if (warmLight) CreamRaised else PaperRaised,
             onSurfaceVariant = if (warmLight) CreamInkSecondary else InkSecondary,
             outline = if (warmLight) CreamDivider else WarmDivider,
@@ -463,9 +513,11 @@ fun AtharTheme(
         LocalAtharExtraColors provides when {
             darkTheme -> DarkExtraColors
             warmLight -> WarmExtraColors
+            eink -> LightExtraColors.copy(canvas = Color.White)
             else -> LightExtraColors
-        }.accented(accent, darkTheme).styled(style, if (darkTheme) NightInk else if (warmLight) CreamInk else LightInk, darkTheme),
+        }.accented(accent, darkTheme).styled(style, if (darkTheme) NightInk else if (eink) Color.Black else if (warmLight) CreamInk else LightInk, darkTheme),
         LocalAtharDarkTheme provides darkTheme,
+        LocalAtharEink provides eink,
         LocalAtharStyle provides style,
     ) {
         MaterialTheme(

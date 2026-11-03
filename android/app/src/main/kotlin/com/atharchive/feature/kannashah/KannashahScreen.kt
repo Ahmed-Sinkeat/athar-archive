@@ -59,6 +59,8 @@ import com.atharchive.ui.components.AtharFilterIcon
 import com.atharchive.ui.components.AtharActiveFilters
 import com.atharchive.ui.components.enumValueOrNull
 import com.atharchive.ui.components.rememberPersisted
+import com.atharchive.ui.components.asChoiceSet
+import com.atharchive.ui.components.asStoredChoices
 import com.atharchive.ui.components.AtharMenuButton
 import com.atharchive.ui.components.AtharTab
 import com.atharchive.ui.components.AtharTabRow
@@ -84,6 +86,9 @@ fun KannashahScreen(
     onOpenSource: (ExcerptUi) -> Unit,
     modifier: Modifier = Modifier,
     onBack: (() -> Unit)? = null,
+    /** An excerpt to bring into view (search and filter cleared if they hide it); [onFocused] once done. */
+    focusId: String? = null,
+    onFocused: () -> Unit = {},
 ) {
     var query by rememberSaveable { mutableStateOf("") }
     var sortName by rememberPersisted("kannashah.sort", KannashahSort.Newest.name)
@@ -91,8 +96,18 @@ fun KannashahScreen(
     var filterName by rememberPersisted("kannashah.filter", KannashahFilter.All.name)
     val filter = enumValueOrNull<KannashahFilter>(filterName) ?: KannashahFilter.All
     val listState = rememberLazyListState()
+    // «فوائد فلان، أو من كتاب كذا، أو في موضوع كذا»: the same facets as every list.
+    var authorStored by rememberPersisted("kannashah.authors", "")
+    var sourceStored by rememberPersisted("kannashah.sources", "")
+    var topicStored by rememberPersisted("kannashah.topics", "")
+    val authors = remember(state.excerpts) { state.excerpts.map { it.sourceAuthor }.filter(String::isNotBlank).distinct().sorted() }
+    val sources = remember(state.excerpts) { state.excerpts.map { it.sourceTitle }.filter(String::isNotBlank).distinct().sorted() }
+    val topics = remember(state.excerpts) { state.excerpts.flatMap { it.topics }.distinct().sorted() }
+    val author = authorStored.asChoiceSet() intersect authors.toSet()
+    val source = sourceStored.asChoiceSet() intersect sources.toSet()
+    val topic = topicStored.asChoiceSet() intersect topics.toSet()
 
-    val matching = remember(state.excerpts, query, filter) {
+    val matching = remember(state.excerpts, query, filter, author, source, topic) {
         val term = query.trim()
         state.excerpts.filter { excerpt ->
             val included = when (filter) {
@@ -101,7 +116,10 @@ fun KannashahScreen(
                 KannashahFilter.Notes -> excerpt.kind == "note"
                 KannashahFilter.Lost -> excerpt.attachmentState == "orphaned"
             }
-            included && (term.isBlank() || with(excerpt) {
+            included && (author.isEmpty() || excerpt.sourceAuthor in author) &&
+                (source.isEmpty() || excerpt.sourceTitle in source) &&
+                (topic.isEmpty() || excerpt.topics.any(topic::contains)) &&
+                (term.isBlank() || with(excerpt) {
                 text.contains(term, ignoreCase = true) ||
                     sourceTitle.contains(term, ignoreCase = true) ||
                     sourceAuthor.contains(term, ignoreCase = true) ||
@@ -115,6 +133,18 @@ fun KannashahScreen(
             KannashahSort.Oldest -> matching.sortedBy { it.addedOrder }
             KannashahSort.SourceOrder -> matching.sortedBy { it.sourceOrdinal }
         }
+    }
+    // «في الكناشة» from a note: once the excerpt is loaded, clear whatever hides it and scroll to it.
+    androidx.compose.runtime.LaunchedEffect(focusId, state.excerpts, sorted) {
+        val id = focusId ?: return@LaunchedEffect
+        if (state.excerpts.none { it.id == id }) return@LaunchedEffect
+        val index = sorted.indexOfFirst { it.id == id }
+        if (index < 0) {
+            query = ""; filterName = KannashahFilter.All.name; authorStored = ""; sourceStored = ""; topicStored = ""
+            return@LaunchedEffect
+        }
+        listState.animateScrollToItem(index)
+        onFocused()
     }
     // A new excerpt lands above the one the list kept its place on, half under the header.
     // Seen from the top, show it whole.
@@ -166,7 +196,11 @@ fun KannashahScreen(
                                 filterName = KannashahFilter.entries.first { it.label == label }.name
                             },
                         )
-                val filterFacets = emptyList<com.atharchive.ui.components.AtharFacet>()
+                val filterFacets = listOf(
+                    com.atharchive.ui.components.AtharFacet("المؤلف", authors, author, { authorStored = it.asStoredChoices() }),
+                    com.atharchive.ui.components.AtharFacet("المصدر", sources, source, { sourceStored = it.asStoredChoices() }),
+                    com.atharchive.ui.components.AtharFacet("الموضوع", topics, topic, { topicStored = it.asStoredChoices() }),
+                )
                 AtharSearchField(
                     query = query,
                     placeholder = "ابحث في كناشتك…",

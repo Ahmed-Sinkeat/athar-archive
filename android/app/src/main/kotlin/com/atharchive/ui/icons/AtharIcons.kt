@@ -187,6 +187,25 @@ object AtharIcons {
         }
     }
 
+    val Mic: ImageVector by lazy {
+        icon("AtharMic") {
+            path(stroke = Stroke, strokeLineWidth = 1.7f) {
+                moveTo(9f, 6.5f)
+                curveTo(9f, 4.85f, 10.35f, 3.5f, 12f, 3.5f)
+                curveTo(13.65f, 3.5f, 15f, 4.85f, 15f, 6.5f)
+                lineTo(15f, 11.5f)
+                curveTo(15f, 13.15f, 13.65f, 14.5f, 12f, 14.5f)
+                curveTo(10.35f, 14.5f, 9f, 13.15f, 9f, 11.5f)
+                close()
+                moveTo(5.8f, 11f)
+                curveTo(5.8f, 14.45f, 8.6f, 17.2f, 12f, 17.2f)
+                curveTo(15.4f, 17.2f, 18.2f, 14.45f, 18.2f, 11f)
+                moveTo(12f, 17.2f)
+                lineTo(12f, 20.5f)
+            }
+        }
+    }
+
     val Settings: ImageVector by lazy {
         icon("AtharSettings") {
             path(stroke = Stroke, strokeLineWidth = 1.7f) {
@@ -815,6 +834,27 @@ object AtharIcons {
                 close()
                 moveTo(14.9f, 4.5f)
                 lineTo(19.5f, 9.1f)
+            }
+        }
+    }
+
+    /** A bell: a daily reminder. */
+    val Bell: ImageVector by lazy {
+        icon("AtharBell") {
+            path(stroke = Stroke, strokeLineWidth = 1.75f, strokeLineCap = StrokeCap.Round, strokeLineJoin = StrokeJoin.Round) {
+                moveTo(6f, 16.5f)
+                lineTo(6f, 10.5f)
+                curveTo(6f, 7.2f, 8.7f, 4.5f, 12f, 4.5f)
+                curveTo(15.3f, 4.5f, 18f, 7.2f, 18f, 10.5f)
+                lineTo(18f, 16.5f)
+                lineTo(19.5f, 18f)
+                lineTo(4.5f, 18f)
+                close()
+                moveTo(10f, 20.5f)
+                curveTo(10.5f, 21.2f, 11.2f, 21.5f, 12f, 21.5f)
+                curveTo(12.8f, 21.5f, 13.5f, 21.2f, 14f, 20.5f)
+                moveTo(12f, 2.5f)
+                lineTo(12f, 4.5f)
             }
         }
     }

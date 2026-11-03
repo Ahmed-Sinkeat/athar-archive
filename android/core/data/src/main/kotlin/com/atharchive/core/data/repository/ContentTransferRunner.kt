@@ -14,6 +14,8 @@ import com.atharchive.core.data.network.AppContentHttpClient
 import java.io.File
 import java.io.RandomAccessFile
 import java.util.concurrent.CancellationException
+import androidx.room3.withWriteTransaction
+import kotlinx.coroutines.async
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 
@@ -24,6 +26,10 @@ data class ContentTransferResult(
     val importedFrames: Int,
     val alreadyRetained: Boolean,
 )
+
+private const val FRAMES_PER_COMMIT = 8
+
+private val SharedName = Regex("^([A-Za-z0-9_-]+)\\.(athar|idx)$")
 
 class ContentTransferRunner(
     private val contentDatabase: AtharContentDatabase,
@@ -117,14 +123,18 @@ class ContentTransferRunner(
         dao.markTransfer(entityId, ContentTransferState.FETCHING)
         try {
             mutationMutex.withLock { storagePolicy.prepareForDownload(entry.pkg.uncompressed) }
-            val verifiedIndexBytes = loadOrFetchIndex(entry)
-            val index = FramedPackageDecoder.decodeIndex(verifiedIndexBytes, entry)
             val partFile = partFile(entry)
             // One honest bar for the whole wait: bytes fill the first half, frames written into the
             // database the second (over a fast link the import is most of the wait).
             // ponytail: fixed 50/50 split; weight by measured phase times if one side always dominates.
             val size = entry.pkg.size
-            val download = client.downloadPackage(entry, partFile) { done, of -> onProgress(done, 2 * of) }
+            // The index and the package are independent requests: fetched together, one round trip.
+            val (verifiedIndexBytes, download) = kotlinx.coroutines.coroutineScope {
+                val indexBytes = async { loadOrFetchIndex(entry) }
+                val download = client.downloadPackage(entry, partFile) { done, of -> onProgress(done, 2 * of) }
+                indexBytes.await() to download
+            }
+            val index = FramedPackageDecoder.decodeIndex(verifiedIndexBytes, entry)
             val onFrame = { done: Int, of: Int -> onProgress(size + size * done / of.coerceAtLeast(1), 2 * size) }
             dao.markTransfer(entityId, ContentTransferState.VERIFYING)
             ensureStillPinned(entry)
@@ -195,19 +205,24 @@ class ContentTransferRunner(
         val stored = dao.frames(into).mapTo(hashSetOf()) { it.frameOrdinal }
         var imported = 0
         RandomAccessFile(partFile, "r").use { packageInput ->
-            for ((frameNumber, frame) in index.frames.withIndex()) {
-                if (frameNumber in stored) continue
-                val bytes = ByteArray(frame.len)
-                packageInput.seek(frame.off)
-                packageInput.readFully(bytes)
-                suspend fun import() {
-                    ensureStillPinned(entry)
-                    importer.importVerifiedFrame(entry, frameNumber, frame, bytes, into)
+            // FRAMES_PER_COMMIT frames per transaction: a commit per frame (a disk sync, and every
+            // open list re-queried) was a third of a big book's import. Still bounded: a crash
+            // re-imports at most that many frames, and SQLite never holds a whole book.
+            val pending = index.frames.withIndex().filter { it.index !in stored }
+            for (batch in pending.chunked(FRAMES_PER_COMMIT)) {
+                suspend fun import() = contentDatabase.withWriteTransaction {
+                    for ((frameNumber, frame) in batch) {
+                        val bytes = ByteArray(frame.len)
+                        packageInput.seek(frame.off)
+                        packageInput.readFully(bytes)
+                        ensureStillPinned(entry)
+                        importer.importVerifiedFrame(entry, frameNumber, frame, bytes, into)
+                    }
                     dao.markTransfer(entry.id, ContentTransferState.IMPORTING)
                 }
                 if (frameLock == null) import() else frameLock.withLock { import() }
-                imported++
-                onFrame(frameNumber + 1, index.frames.size)
+                imported += batch.size
+                onFrame(batch.last().index + 1, index.frames.size)
             }
         }
         return imported
@@ -235,9 +250,82 @@ class ContentTransferRunner(
         return File(transferDirectory, "${transferStem(entry)}.${entry.pkg.hash}.part")
     }
 
-    private suspend fun loadOrFetchIndex(entry: CatalogEntry): ByteArray {
+    private fun indexFile(entry: CatalogEntry): File {
         prepareTransferDirectory()
-        val target = File(transferDirectory, "${transferStem(entry)}.${entry.pkg.idxHash}.idx")
+        return File(transferDirectory, "${transferStem(entry)}.${entry.pkg.idxHash}.idx")
+    }
+
+    /**
+     * Saved books for a phone with no internet (Quick Share, Bluetooth): each retained package
+     * and its index in one zip. The receiver trusts only its own signed catalog's hashes.
+     */
+    suspend fun exportShared(entityIds: Collection<String>, output: java.io.OutputStream): Int = kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) {
+        val wanted = entityIds.toSet()
+        var count = 0
+        java.util.zip.ZipOutputStream(output.buffered()).use { zip ->
+            zip.setLevel(java.util.zip.Deflater.NO_COMPRESSION) // the frames are compressed already
+            for ((manifest, entry) in retainedStore.manifests()) {
+                if (entry.id !in wanted) continue
+                val (pkg, idx) = retainedStore.filesFor(manifest)
+                for ((file, ext) in listOf(pkg to "athar", idx to "idx")) {
+                    zip.putNextEntry(java.util.zip.ZipEntry("${entry.id}.$ext"))
+                    file.inputStream().use { it.copyTo(zip) }
+                    zip.closeEntry()
+                }
+                count++
+            }
+        }
+        count
+    }
+
+    /**
+     * Takes [exportShared]'s zip. A package is kept only if its size and hash match this phone's
+     * own catalog entry; it is pinned and left where [downloadPinned] finds it complete, so the
+     * import needs no network. Returns the entries to import.
+     */
+    suspend fun importShared(input: java.io.InputStream): List<CatalogEntry> = kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) {
+        val dao = contentDatabase.importDao()
+        val entries = mutableMapOf<String, CatalogEntry>()
+        val received = mutableMapOf<String, MutableSet<String>>()
+        java.util.zip.ZipInputStream(input.buffered()).use { zip ->
+            while (true) {
+                val item = zip.nextEntry ?: break
+                val (id, ext) = SharedName.matchEntire(item.name)?.destructured ?: continue
+                val entry = entries[id] ?: dao.entity(id)?.toCatalogEntry()?.also { entries[id] = it } ?: continue
+                val (target, hash, size) = if (ext == "athar") Triple(partFile(entry), entry.pkg.hash, entry.pkg.size)
+                    else Triple(indexFile(entry), entry.pkg.idxHash, entry.pkg.idxSize)
+                val temporary = File(transferDirectory, ".${target.name}.shared")
+                try {
+                    // Bounded by the catalog's size: a lying archive can't fill the disk.
+                    temporary.outputStream().use { out ->
+                        val buffer = ByteArray(DEFAULT_BUFFER_SIZE)
+                        var total = 0L
+                        while (true) {
+                            val read = zip.read(buffer)
+                            if (read < 0) break
+                            total += read
+                            if (total > size) error("shared ${item.name} is larger than its catalog entry")
+                            out.write(buffer, 0, read)
+                        }
+                    }
+                    ContentDigests.verify(temporary, hash, size, "shared ${item.name}")
+                    check(temporary.renameTo(target))
+                    received.getOrPut(id) { mutableSetOf() } += ext
+                } catch (error: CancellationException) {
+                    temporary.delete()
+                    throw error
+                } catch (error: Exception) {
+                    temporary.delete() // another edition, or damaged: skipped, never trusted
+                }
+            }
+        }
+        val ready = received.filterValues { it.size == 2 }.keys.mapNotNull(entries::get)
+        requestPins(ready.map { it.id })
+        ready
+    }
+
+    private suspend fun loadOrFetchIndex(entry: CatalogEntry): ByteArray {
+        val target = indexFile(entry)
         if (target.isFile) {
             runCatching {
                 val bytes = target.readBytes()

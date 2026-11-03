@@ -1,0 +1,605 @@
+{
+  "schema": 1,
+  "generation": 1,
+  "sourceHash": "16258427b36b5cab87f2141dc8e20c66d8d1a3709ece262953bac7b6f63447d7",
+  "ids": [
+    {
+      "ord": 0,
+      "blockId": "9611416fa8ecbdbbb3eced001aa3c84c",
+      "fp64": "bdf5f8179ffc71fe",
+      "normHash": "2faeea109072ecd45655335c776d16dff7854c5c40d4f54df97cecc239736a86",
+      "kind": "p",
+      "chapter": "main",
+      "next": "5ca8a27193c1dda48b3250a6a8b15f2274af727d3ade9e8db9ce57326d4ee8e3"
+    },
+    {
+      "ord": 1,
+      "blockId": "0fcbaf32495a09b107b87334408ed90a",
+      "fp64": "ef3efebd56f3de6d",
+      "normHash": "5ca8a27193c1dda48b3250a6a8b15f2274af727d3ade9e8db9ce57326d4ee8e3",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "2faeea109072ecd45655335c776d16dff7854c5c40d4f54df97cecc239736a86",
+      "next": "586a27370d4755d81cad54410e9c3e879883238d30af7d9eaf1c166f70aef582"
+    },
+    {
+      "ord": 2,
+      "blockId": "0a61dfb29e98c69c3df932fbe84dcb76",
+      "fp64": "bd57e8d2107d7c3d",
+      "normHash": "586a27370d4755d81cad54410e9c3e879883238d30af7d9eaf1c166f70aef582",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "5ca8a27193c1dda48b3250a6a8b15f2274af727d3ade9e8db9ce57326d4ee8e3",
+      "next": "5ae82a1a9fc8f451a68faf7b73b5a2a653d7a00773b875ca1cb2ae68f14bfd7b"
+    },
+    {
+      "ord": 3,
+      "blockId": "bc5005b774a0d59391ef26f7f056cb6c",
+      "fp64": "1d8c507255563a9e",
+      "normHash": "5ae82a1a9fc8f451a68faf7b73b5a2a653d7a00773b875ca1cb2ae68f14bfd7b",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "586a27370d4755d81cad54410e9c3e879883238d30af7d9eaf1c166f70aef582",
+      "next": "d1251b9a6c7730848795d15b9f2492bb5d0d2993e1913eefc702efd159bdf81f"
+    },
+    {
+      "ord": 4,
+      "blockId": "86f82d932ae4aad7ac14eed6f8606760",
+      "fp64": "e81012b4647470f8",
+      "normHash": "d1251b9a6c7730848795d15b9f2492bb5d0d2993e1913eefc702efd159bdf81f",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "5ae82a1a9fc8f451a68faf7b73b5a2a653d7a00773b875ca1cb2ae68f14bfd7b",
+      "next": "3edbb4bc53a23e3b781dfcf6b6ef2bb74795ebc3b307c981b7a05afb3f1cb8fe"
+    },
+    {
+      "ord": 5,
+      "blockId": "6b17c8e361784897b0a92e51f82c886a",
+      "fp64": "d71572b8e74c7a9c",
+      "normHash": "3edbb4bc53a23e3b781dfcf6b6ef2bb74795ebc3b307c981b7a05afb3f1cb8fe",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "d1251b9a6c7730848795d15b9f2492bb5d0d2993e1913eefc702efd159bdf81f",
+      "next": "3d183737eb6d5cfcec3b75af8682d09bd1012b5111c9c272cf23ea4274df26df"
+    },
+    {
+      "ord": 6,
+      "blockId": "ec2954f5283ccf5836940c17e771e216",
+      "fp64": "ddd4d37fc555579d",
+      "normHash": "3d183737eb6d5cfcec3b75af8682d09bd1012b5111c9c272cf23ea4274df26df",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "3edbb4bc53a23e3b781dfcf6b6ef2bb74795ebc3b307c981b7a05afb3f1cb8fe",
+      "next": "08167a748a191e9d9c2c3e355adf330a3fe8ccdb6a0359cd97fd3f8e472bb7ff"
+    },
+    {
+      "ord": 7,
+      "blockId": "84f6f56fea0eb096567dcf161a01be02",
+      "fp64": "48b5585794b1fc5f",
+      "normHash": "08167a748a191e9d9c2c3e355adf330a3fe8ccdb6a0359cd97fd3f8e472bb7ff",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "3d183737eb6d5cfcec3b75af8682d09bd1012b5111c9c272cf23ea4274df26df",
+      "next": "7d2fdb33eabd05128cd4a4ac038749b5202969e8a7fc73b833c9818cb668aed5"
+    },
+    {
+      "ord": 8,
+      "blockId": "d6c83b88c1d590be10448eb68bcf0a93",
+      "fp64": "39b2e3625971451f",
+      "normHash": "7d2fdb33eabd05128cd4a4ac038749b5202969e8a7fc73b833c9818cb668aed5",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "08167a748a191e9d9c2c3e355adf330a3fe8ccdb6a0359cd97fd3f8e472bb7ff",
+      "next": "64342102c04ec194196e2bfbf8858bdfd4b7c20b211b62d344c3b772195a00cd"
+    },
+    {
+      "ord": 9,
+      "blockId": "0d0514344164539670688ea45ccf44ea",
+      "fp64": "e27dedfd75bd7abf",
+      "normHash": "64342102c04ec194196e2bfbf8858bdfd4b7c20b211b62d344c3b772195a00cd",
+      "kind": "notes",
+      "chapter": "main",
+      "prev": "7d2fdb33eabd05128cd4a4ac038749b5202969e8a7fc73b833c9818cb668aed5",
+      "next": "54abd108e9f3bc8dc38aa3a1583e587d17767d817074aaaef7e1a793b78a33d4"
+    },
+    {
+      "ord": 10,
+      "blockId": "03daae14f940a117888cdfad1d460309",
+      "fp64": "67ffffbb7f3562b7",
+      "normHash": "54abd108e9f3bc8dc38aa3a1583e587d17767d817074aaaef7e1a793b78a33d4",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "64342102c04ec194196e2bfbf8858bdfd4b7c20b211b62d344c3b772195a00cd",
+      "next": "9d335b40aa1cc7d12d32db1fd09e041463171f4daad12f95acc39288b10c8e4d"
+    },
+    {
+      "ord": 11,
+      "blockId": "6ada845b2c7157d07f5e3e9f37425b6f",
+      "fp64": "5fc430541245de8c",
+      "normHash": "9d335b40aa1cc7d12d32db1fd09e041463171f4daad12f95acc39288b10c8e4d",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "54abd108e9f3bc8dc38aa3a1583e587d17767d817074aaaef7e1a793b78a33d4",
+      "next": "e75226e495e22df592b4175015d4b94f591715d13180d17627d472c557cb8b1d"
+    },
+    {
+      "ord": 12,
+      "blockId": "dcf7e164eb883b5e916baadad8135625",
+      "fp64": "650020125755146c",
+      "normHash": "e75226e495e22df592b4175015d4b94f591715d13180d17627d472c557cb8b1d",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "9d335b40aa1cc7d12d32db1fd09e041463171f4daad12f95acc39288b10c8e4d",
+      "next": "649fc52f19351100a26e30d20ce3e622db11f846e16a8caf1ed19eb558cb9a93"
+    },
+    {
+      "ord": 13,
+      "blockId": "3f3b1fb6ec066c244c569f54996a7225",
+      "fp64": "43dc44e2d77495a0",
+      "normHash": "649fc52f19351100a26e30d20ce3e622db11f846e16a8caf1ed19eb558cb9a93",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "e75226e495e22df592b4175015d4b94f591715d13180d17627d472c557cb8b1d",
+      "next": "af6f77af3288b2fb3e5a350b8b8dafa88d61baca416fd02ce7901fe425486b9c"
+    },
+    {
+      "ord": 14,
+      "blockId": "d79f95563ef248073b3062a4ea9b4d0e",
+      "fp64": "ef5e20b073577168",
+      "normHash": "af6f77af3288b2fb3e5a350b8b8dafa88d61baca416fd02ce7901fe425486b9c",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "649fc52f19351100a26e30d20ce3e622db11f846e16a8caf1ed19eb558cb9a93",
+      "next": "73a528842448276f6eb1f0e687138e7d911baafd5fe8123ee30cae86ba9623db"
+    },
+    {
+      "ord": 15,
+      "blockId": "eeda9bc4685d94f8c8309c44f1c4ca89",
+      "fp64": "91cd04d2ff7cb47c",
+      "normHash": "73a528842448276f6eb1f0e687138e7d911baafd5fe8123ee30cae86ba9623db",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "af6f77af3288b2fb3e5a350b8b8dafa88d61baca416fd02ce7901fe425486b9c",
+      "next": "343cacc5c1260789aa2f38da7cea4c2959db1229049db4519e09f6d2c978e531"
+    },
+    {
+      "ord": 16,
+      "blockId": "2089b8e21bb5975d6863e2ce19d89933",
+      "fp64": "357c606ad6f072ce",
+      "normHash": "343cacc5c1260789aa2f38da7cea4c2959db1229049db4519e09f6d2c978e531",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "73a528842448276f6eb1f0e687138e7d911baafd5fe8123ee30cae86ba9623db",
+      "next": "81db38b308db639f3326e185fece19aa0e5a893c7dcb5896c28ac038a3545640"
+    },
+    {
+      "ord": 17,
+      "blockId": "44ab00406fb704b7354c48ddd953fd09",
+      "fp64": "8f34939a67823a5b",
+      "normHash": "81db38b308db639f3326e185fece19aa0e5a893c7dcb5896c28ac038a3545640",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "343cacc5c1260789aa2f38da7cea4c2959db1229049db4519e09f6d2c978e531",
+      "next": "e987a655dab0a9e4c31788e860927be6cc5fefadf13414b6224419370c784fd6"
+    },
+    {
+      "ord": 18,
+      "blockId": "991686452665d1f60b0f5cd19bb9c412",
+      "fp64": "6fdf22d03230f61c",
+      "normHash": "e987a655dab0a9e4c31788e860927be6cc5fefadf13414b6224419370c784fd6",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "81db38b308db639f3326e185fece19aa0e5a893c7dcb5896c28ac038a3545640",
+      "next": "c854813d512f5613051ab416223b48c719306b1c7e1cd54aa4019052b6f72634"
+    },
+    {
+      "ord": 19,
+      "blockId": "63e1c3f7d1ea47aa261a10f6395db4aa",
+      "fp64": "1d0a6cc7bdd21c74",
+      "normHash": "c854813d512f5613051ab416223b48c719306b1c7e1cd54aa4019052b6f72634",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "e987a655dab0a9e4c31788e860927be6cc5fefadf13414b6224419370c784fd6",
+      "next": "c970b99679f760b6496fb33d89d1c45529d1176ccd9e0eae7ebb166c0c1ca4b1"
+    },
+    {
+      "ord": 20,
+      "blockId": "b3c8b751b4a26607fd885155a1b91ca1",
+      "fp64": "77dfffbf5b33f077",
+      "normHash": "c970b99679f760b6496fb33d89d1c45529d1176ccd9e0eae7ebb166c0c1ca4b1",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "c854813d512f5613051ab416223b48c719306b1c7e1cd54aa4019052b6f72634",
+      "next": "5cbed739ebeedf6083af444a7fbdabcc6c8dd4fd29fe1abed959942b3b9aeda8"
+    },
+    {
+      "ord": 21,
+      "blockId": "440f4c0860d7667296d49f5a6459fc87",
+      "fp64": "d36d7e7fdf8f7e4f",
+      "normHash": "5cbed739ebeedf6083af444a7fbdabcc6c8dd4fd29fe1abed959942b3b9aeda8",
+      "kind": "h2",
+      "chapter": "الزكاة-للقرابة",
+      "prev": "c970b99679f760b6496fb33d89d1c45529d1176ccd9e0eae7ebb166c0c1ca4b1",
+      "next": "9181d5232c8ad089ea9a97e6a7eabfd9bdf54bc7b26a30e644c7628f0abf9121"
+    },
+    {
+      "ord": 22,
+      "blockId": "ab25dec78795b70b9c19c94e7a03c63a",
+      "fp64": "d17805d0f709e666",
+      "normHash": "9181d5232c8ad089ea9a97e6a7eabfd9bdf54bc7b26a30e644c7628f0abf9121",
+      "kind": "p",
+      "chapter": "الزكاة-للقرابة",
+      "prev": "5cbed739ebeedf6083af444a7fbdabcc6c8dd4fd29fe1abed959942b3b9aeda8",
+      "next": "1a72642e19d6edb57b1289a89a0e12eeff67f58e67e274eade0ed2f93469ae97"
+    },
+    {
+      "ord": 23,
+      "blockId": "76431d0f971234da9457650a2658f62b",
+      "fp64": "53d7049edf2cc76c",
+      "normHash": "1a72642e19d6edb57b1289a89a0e12eeff67f58e67e274eade0ed2f93469ae97",
+      "kind": "p",
+      "chapter": "الزكاة-للقرابة",
+      "prev": "9181d5232c8ad089ea9a97e6a7eabfd9bdf54bc7b26a30e644c7628f0abf9121",
+      "next": "0c9e5664fe70a43f907e511174941b8898cbf225bf374c4ab9eb7d39ebda943e"
+    },
+    {
+      "ord": 24,
+      "blockId": "927b9118b5c84fad0e2b8e7198ae47cb",
+      "fp64": "59c2522a0f630c4c",
+      "normHash": "0c9e5664fe70a43f907e511174941b8898cbf225bf374c4ab9eb7d39ebda943e",
+      "kind": "p",
+      "chapter": "الزكاة-للقرابة",
+      "prev": "1a72642e19d6edb57b1289a89a0e12eeff67f58e67e274eade0ed2f93469ae97",
+      "next": "434ca82887528fed850deaf16fe14be052d0e593cdd62b72fae0a028ea255767"
+    },
+    {
+      "ord": 25,
+      "blockId": "37d66338cbc51ce2ee558556e5483def",
+      "fp64": "f35cb00e77d0ff69",
+      "normHash": "434ca82887528fed850deaf16fe14be052d0e593cdd62b72fae0a028ea255767",
+      "kind": "p",
+      "chapter": "الزكاة-للقرابة",
+      "prev": "0c9e5664fe70a43f907e511174941b8898cbf225bf374c4ab9eb7d39ebda943e",
+      "next": "67e7ac3467844d71c27e8c4132ddfc3d742d2358f95060b5fc85177f701cb0ea"
+    },
+    {
+      "ord": 26,
+      "blockId": "fe2619116562c446eaf3ce44bae669ff",
+      "fp64": "1fc6707a55740b07",
+      "normHash": "67e7ac3467844d71c27e8c4132ddfc3d742d2358f95060b5fc85177f701cb0ea",
+      "kind": "p",
+      "chapter": "الزكاة-للقرابة",
+      "prev": "434ca82887528fed850deaf16fe14be052d0e593cdd62b72fae0a028ea255767",
+      "next": "0e82eba99a29e0e32de2be71fd5eb92949ad7422af071e4cdc1c465e5a663665"
+    },
+    {
+      "ord": 27,
+      "blockId": "68d6927b7dc6e5b26b057cea3e5372d7",
+      "fp64": "564c736795583c16",
+      "normHash": "0e82eba99a29e0e32de2be71fd5eb92949ad7422af071e4cdc1c465e5a663665",
+      "kind": "p",
+      "chapter": "الزكاة-للقرابة",
+      "prev": "67e7ac3467844d71c27e8c4132ddfc3d742d2358f95060b5fc85177f701cb0ea",
+      "next": "873c300a2a637df2919840404472a0e93e477d0ea10aacc07d13e492ab96389e"
+    },
+    {
+      "ord": 28,
+      "blockId": "34950b1ef8ac7983967c8fbb2e9bba35",
+      "fp64": "3dfffbdffbfbf577",
+      "normHash": "873c300a2a637df2919840404472a0e93e477d0ea10aacc07d13e492ab96389e",
+      "kind": "page",
+      "chapter": "الزكاة-للقرابة",
+      "prev": "0e82eba99a29e0e32de2be71fd5eb92949ad7422af071e4cdc1c465e5a663665",
+      "next": "56653abe14ccec3e915f5b210a33f6d18614e92139d44569d06dd0c49151a24e"
+    },
+    {
+      "ord": 29,
+      "blockId": "3bb8a4dffa041e754de3bbcc9619bdff",
+      "fp64": "fa6ef601e5d5683a",
+      "normHash": "56653abe14ccec3e915f5b210a33f6d18614e92139d44569d06dd0c49151a24e",
+      "kind": "p",
+      "chapter": "الزكاة-للقرابة",
+      "prev": "873c300a2a637df2919840404472a0e93e477d0ea10aacc07d13e492ab96389e",
+      "next": "d9a4c514f70b72c857690ec265b16394b93a6ac5a727d005dc1f607ec747f970"
+    },
+    {
+      "ord": 30,
+      "blockId": "041c3a8391b79fe9c36f35b82469f4bc",
+      "fp64": "523cc6debf71e15b",
+      "normHash": "d9a4c514f70b72c857690ec265b16394b93a6ac5a727d005dc1f607ec747f970",
+      "kind": "p",
+      "chapter": "الزكاة-للقرابة",
+      "prev": "56653abe14ccec3e915f5b210a33f6d18614e92139d44569d06dd0c49151a24e",
+      "next": "d6745c84e789eaf4a439af238e318938e1ea9a8fda82a840afc3a0378006274b"
+    },
+    {
+      "ord": 31,
+      "blockId": "827301cbda5b2706511b859c78f378ed",
+      "fp64": "5e8a1e96f47a9b49",
+      "normHash": "d6745c84e789eaf4a439af238e318938e1ea9a8fda82a840afc3a0378006274b",
+      "kind": "p",
+      "chapter": "الزكاة-للقرابة",
+      "prev": "d9a4c514f70b72c857690ec265b16394b93a6ac5a727d005dc1f607ec747f970",
+      "next": "54edfb37f804a8c1348c80c545461171e823a54acd990e023bb3c614e964bda8"
+    },
+    {
+      "ord": 32,
+      "blockId": "f87858d8687bae5c89bc7cff7b4f44bd",
+      "fp64": "76023f96e5fa12cc",
+      "normHash": "54edfb37f804a8c1348c80c545461171e823a54acd990e023bb3c614e964bda8",
+      "kind": "p",
+      "chapter": "الزكاة-للقرابة",
+      "prev": "d6745c84e789eaf4a439af238e318938e1ea9a8fda82a840afc3a0378006274b",
+      "next": "c8aa1653d96ee4a57131f43b03b8959e7ee65a1a018113ff849dacd8e996676c"
+    },
+    {
+      "ord": 33,
+      "blockId": "48dadae52c90affc22e8c6539f5308d0",
+      "fp64": "f8cf5ffd67737f82",
+      "normHash": "c8aa1653d96ee4a57131f43b03b8959e7ee65a1a018113ff849dacd8e996676c",
+      "kind": "p",
+      "chapter": "الزكاة-للقرابة",
+      "prev": "54edfb37f804a8c1348c80c545461171e823a54acd990e023bb3c614e964bda8",
+      "next": "50de765b0c7d19335c5f9e406c9a870bef1d613478afb4b8da76637251c5000c"
+    },
+    {
+      "ord": 34,
+      "blockId": "7e72a149993516cbb19c81bc22d02f7f",
+      "fp64": "fe96df34f572538c",
+      "normHash": "50de765b0c7d19335c5f9e406c9a870bef1d613478afb4b8da76637251c5000c",
+      "kind": "p",
+      "chapter": "الزكاة-للقرابة",
+      "prev": "c8aa1653d96ee4a57131f43b03b8959e7ee65a1a018113ff849dacd8e996676c",
+      "next": "30fa2693f7bc541e0f836480735d43b81bd81e461baca6fdcb007b47a4545a15"
+    },
+    {
+      "ord": 35,
+      "blockId": "da91ff76027f5edfd341e2a18cae9225",
+      "fp64": "6e0a1eb7a56a7a4c",
+      "normHash": "30fa2693f7bc541e0f836480735d43b81bd81e461baca6fdcb007b47a4545a15",
+      "kind": "p",
+      "chapter": "الزكاة-للقرابة",
+      "prev": "50de765b0c7d19335c5f9e406c9a870bef1d613478afb4b8da76637251c5000c",
+      "next": "5c941d68c340368f7438285acc6a116e97948c9ae758cd4719e4e1ccda3bb681"
+    },
+    {
+      "ord": 36,
+      "blockId": "ef32277ff1dc20faef3eac13dc5599c5",
+      "fp64": "7616101047501254",
+      "normHash": "5c941d68c340368f7438285acc6a116e97948c9ae758cd4719e4e1ccda3bb681",
+      "kind": "p",
+      "chapter": "الزكاة-للقرابة",
+      "prev": "30fa2693f7bc541e0f836480735d43b81bd81e461baca6fdcb007b47a4545a15",
+      "next": "340bdb2bd4be424418ea7aafc10359876c6f9210b0de197024a5d0c6345f2cdf"
+    },
+    {
+      "ord": 37,
+      "blockId": "de007f090b8bb739eb9d23b41f3eca82",
+      "fp64": "5efa4d7b9f767d4d",
+      "normHash": "340bdb2bd4be424418ea7aafc10359876c6f9210b0de197024a5d0c6345f2cdf",
+      "kind": "p",
+      "chapter": "الزكاة-للقرابة",
+      "prev": "5c941d68c340368f7438285acc6a116e97948c9ae758cd4719e4e1ccda3bb681",
+      "next": "f7ed70748a6f0ad178cf61046d610a9c02fbecf158bf920997258fb4d95f3eed"
+    },
+    {
+      "ord": 38,
+      "blockId": "b79f8f051dc7d335277bfba6f1461edb",
+      "fp64": "d834fa1fe044b808",
+      "normHash": "f7ed70748a6f0ad178cf61046d610a9c02fbecf158bf920997258fb4d95f3eed",
+      "kind": "p",
+      "chapter": "الزكاة-للقرابة",
+      "prev": "340bdb2bd4be424418ea7aafc10359876c6f9210b0de197024a5d0c6345f2cdf",
+      "next": "ff14c355c7724de3cd2fc9b9f10486f17984b709ec8993d9970a2fd0f0732fa0"
+    },
+    {
+      "ord": 39,
+      "blockId": "9b648b289466f0f37b8d712b8e09eeec",
+      "fp64": "fe09259c34ddfdc2",
+      "normHash": "ff14c355c7724de3cd2fc9b9f10486f17984b709ec8993d9970a2fd0f0732fa0",
+      "kind": "p",
+      "chapter": "الزكاة-للقرابة",
+      "prev": "f7ed70748a6f0ad178cf61046d610a9c02fbecf158bf920997258fb4d95f3eed",
+      "next": "0de5940da26c14205627bd236f7a3ac652ef7de6d1c59f570d45560a62fdf72a"
+    },
+    {
+      "ord": 40,
+      "blockId": "bfc3eba92964a7a2857ba01a51e7b7cb",
+      "fp64": "35dff3fb5efd7afe",
+      "normHash": "0de5940da26c14205627bd236f7a3ac652ef7de6d1c59f570d45560a62fdf72a",
+      "kind": "page",
+      "chapter": "الزكاة-للقرابة",
+      "prev": "ff14c355c7724de3cd2fc9b9f10486f17984b709ec8993d9970a2fd0f0732fa0",
+      "next": "fffafe8b0ea9885adc53d907bd211d03caa557c3ddecb79683633a4a0c3c10f6"
+    },
+    {
+      "ord": 41,
+      "blockId": "539175d7498ae0d30410b990c8d6b5b9",
+      "fp64": "eb42600b01442c58",
+      "normHash": "fffafe8b0ea9885adc53d907bd211d03caa557c3ddecb79683633a4a0c3c10f6",
+      "kind": "p",
+      "chapter": "الزكاة-للقرابة",
+      "prev": "0de5940da26c14205627bd236f7a3ac652ef7de6d1c59f570d45560a62fdf72a",
+      "next": "1737ca7d4adc228ced93cfe9130b2bd621a784560c892bdbe215043c9fd35202"
+    },
+    {
+      "ord": 42,
+      "blockId": "9a052db68379ae0b007d6bba77c81045",
+      "fp64": "5d24941a51ffbc6d",
+      "normHash": "1737ca7d4adc228ced93cfe9130b2bd621a784560c892bdbe215043c9fd35202",
+      "kind": "p",
+      "chapter": "الزكاة-للقرابة",
+      "prev": "fffafe8b0ea9885adc53d907bd211d03caa557c3ddecb79683633a4a0c3c10f6",
+      "next": "3689e21f8a5eb5600a4d5e9fdda0d55a31206b26bf0d3e83ad9355e6d8abe3d1"
+    },
+    {
+      "ord": 43,
+      "blockId": "76bd9e72125b542607cba088e40e66c1",
+      "fp64": "bf89de64a56e5b7c",
+      "normHash": "3689e21f8a5eb5600a4d5e9fdda0d55a31206b26bf0d3e83ad9355e6d8abe3d1",
+      "kind": "p",
+      "chapter": "الزكاة-للقرابة",
+      "prev": "1737ca7d4adc228ced93cfe9130b2bd621a784560c892bdbe215043c9fd35202",
+      "next": "22e1bd155cc5efa1ff51978b1f97ffa20f65dc7887b5017481232154554c2afd"
+    },
+    {
+      "ord": 44,
+      "blockId": "036820d7a5eed5422ab61c7fcd9d9471",
+      "fp64": "5412de14646ff80c",
+      "normHash": "22e1bd155cc5efa1ff51978b1f97ffa20f65dc7887b5017481232154554c2afd",
+      "kind": "p",
+      "chapter": "الزكاة-للقرابة",
+      "prev": "3689e21f8a5eb5600a4d5e9fdda0d55a31206b26bf0d3e83ad9355e6d8abe3d1",
+      "next": "cd5b69a891d0ab8f6d98bfe8d1b3a445a98c5c00549bbf7ef9b95f43d395e621"
+    },
+    {
+      "ord": 45,
+      "blockId": "1aada184251e6ba92f9e234e6aed674f",
+      "fp64": "944fb754364290d0",
+      "normHash": "cd5b69a891d0ab8f6d98bfe8d1b3a445a98c5c00549bbf7ef9b95f43d395e621",
+      "kind": "p",
+      "chapter": "الزكاة-للقرابة",
+      "prev": "22e1bd155cc5efa1ff51978b1f97ffa20f65dc7887b5017481232154554c2afd",
+      "next": "3fb9dc7fa25e1e562bdb3c58652efac8603b86bc47a8188f5290ac3f5f6f9f79"
+    },
+    {
+      "ord": 46,
+      "blockId": "e17c8b88ba6d62f22dfbf83f716955d9",
+      "fp64": "ce10843c47432a74",
+      "normHash": "3fb9dc7fa25e1e562bdb3c58652efac8603b86bc47a8188f5290ac3f5f6f9f79",
+      "kind": "p",
+      "chapter": "الزكاة-للقرابة",
+      "prev": "cd5b69a891d0ab8f6d98bfe8d1b3a445a98c5c00549bbf7ef9b95f43d395e621",
+      "next": "6e3ec48d15847099a5a587438308bdf8bb51c527e926e4339ace693680339e00"
+    },
+    {
+      "ord": 47,
+      "blockId": "400332da530f28a121d2502f79a4746d",
+      "fp64": "6a08b55a566fdd2b",
+      "normHash": "6e3ec48d15847099a5a587438308bdf8bb51c527e926e4339ace693680339e00",
+      "kind": "p",
+      "chapter": "الزكاة-للقرابة",
+      "prev": "3fb9dc7fa25e1e562bdb3c58652efac8603b86bc47a8188f5290ac3f5f6f9f79",
+      "next": "3efda15f78f66f1d3c9171f8a3c9bf16236117614d64aba614b9ea1e6dda490b"
+    },
+    {
+      "ord": 48,
+      "blockId": "a32606e71fe3b629c43289998dd82f28",
+      "fp64": "1f887cda7c446d16",
+      "normHash": "3efda15f78f66f1d3c9171f8a3c9bf16236117614d64aba614b9ea1e6dda490b",
+      "kind": "p",
+      "chapter": "الزكاة-للقرابة",
+      "prev": "6e3ec48d15847099a5a587438308bdf8bb51c527e926e4339ace693680339e00",
+      "next": "b13777f68bea2b44a3e45c9a45b8531b2afa3fe2685367175dbc14a15e0006ee"
+    },
+    {
+      "ord": 49,
+      "blockId": "fd79b800ee6722856db8acd483481507",
+      "fp64": "a7ffffdb7f39e83f",
+      "normHash": "b13777f68bea2b44a3e45c9a45b8531b2afa3fe2685367175dbc14a15e0006ee",
+      "kind": "page",
+      "chapter": "الزكاة-للقرابة",
+      "prev": "3efda15f78f66f1d3c9171f8a3c9bf16236117614d64aba614b9ea1e6dda490b",
+      "next": "8d8ef4d33d4a50e33c2e2974a944cc89f4c1b35d34d6873dbc6072a757ecbe37"
+    },
+    {
+      "ord": 50,
+      "blockId": "2428678137eaa518cb5d16353707abb2",
+      "fp64": "6c52e41605fe7b44",
+      "normHash": "8d8ef4d33d4a50e33c2e2974a944cc89f4c1b35d34d6873dbc6072a757ecbe37",
+      "kind": "p",
+      "chapter": "الزكاة-للقرابة",
+      "prev": "b13777f68bea2b44a3e45c9a45b8531b2afa3fe2685367175dbc14a15e0006ee",
+      "next": "55c5d96ea50d9e93d51cc959485c40960c478d3ef3a79a6a7126e0f7c070b40c"
+    },
+    {
+      "ord": 51,
+      "blockId": "88b488282348256ea14c4b69e2a2dd3a",
+      "fp64": "6ae5f423d5b8cd62",
+      "normHash": "55c5d96ea50d9e93d51cc959485c40960c478d3ef3a79a6a7126e0f7c070b40c",
+      "kind": "p",
+      "chapter": "الزكاة-للقرابة",
+      "prev": "8d8ef4d33d4a50e33c2e2974a944cc89f4c1b35d34d6873dbc6072a757ecbe37",
+      "next": "24b4386bf56fdd4582a442839e2b69ee02fa353e4aafb70610736c1478edd4fe"
+    },
+    {
+      "ord": 52,
+      "blockId": "2f26e507feca39ea5c114d030c8e10ed",
+      "fp64": "ed16a09c075c03bc",
+      "normHash": "24b4386bf56fdd4582a442839e2b69ee02fa353e4aafb70610736c1478edd4fe",
+      "kind": "p",
+      "chapter": "الزكاة-للقرابة",
+      "prev": "55c5d96ea50d9e93d51cc959485c40960c478d3ef3a79a6a7126e0f7c070b40c",
+      "next": "02bda4612e549162ac20d7603ccc9f78d96dde7fb091327ddbd2de11ad4c2e02"
+    },
+    {
+      "ord": 53,
+      "blockId": "5cc720110759f605d33f3f37fc884d73",
+      "fp64": "a412d256c767e07c",
+      "normHash": "02bda4612e549162ac20d7603ccc9f78d96dde7fb091327ddbd2de11ad4c2e02",
+      "kind": "p",
+      "chapter": "الزكاة-للقرابة",
+      "prev": "24b4386bf56fdd4582a442839e2b69ee02fa353e4aafb70610736c1478edd4fe",
+      "next": "dbac0b6c6b81f4e8c517e6a88d5fe851d456784746fbdc81ad5cfb0e942898f2"
+    },
+    {
+      "ord": 54,
+      "blockId": "e3e326163cfe282265f101495dc9193f",
+      "fp64": "5b405ee39346d9bb",
+      "normHash": "dbac0b6c6b81f4e8c517e6a88d5fe851d456784746fbdc81ad5cfb0e942898f2",
+      "kind": "p",
+      "chapter": "الزكاة-للقرابة",
+      "prev": "02bda4612e549162ac20d7603ccc9f78d96dde7fb091327ddbd2de11ad4c2e02",
+      "next": "5bfdea354cba2e12cdd2f5122516d0a060da37b46e2032436352135274f4b570"
+    },
+    {
+      "ord": 55,
+      "blockId": "115d7b3fa23fa3705644b11cdaf861e0",
+      "fp64": "23524142a63b613a",
+      "normHash": "5bfdea354cba2e12cdd2f5122516d0a060da37b46e2032436352135274f4b570",
+      "kind": "p",
+      "chapter": "الزكاة-للقرابة",
+      "prev": "dbac0b6c6b81f4e8c517e6a88d5fe851d456784746fbdc81ad5cfb0e942898f2",
+      "next": "54cbddfb0a5ee591ab82ca69941baf7587422113ac608b1296185a38d6134eb8"
+    },
+    {
+      "ord": 56,
+      "blockId": "89a198915a12e87660fd7b68405ce137",
+      "fp64": "ff74e0dc9773613e",
+      "normHash": "54cbddfb0a5ee591ab82ca69941baf7587422113ac608b1296185a38d6134eb8",
+      "kind": "p",
+      "chapter": "الزكاة-للقرابة",
+      "prev": "5bfdea354cba2e12cdd2f5122516d0a060da37b46e2032436352135274f4b570",
+      "next": "c5228b97e5255ece0480368dff9e56312242c102bc6361eebeb56f9c34c3fc06"
+    },
+    {
+      "ord": 57,
+      "blockId": "a843cc05242e05947c146ee107aa02b0",
+      "fp64": "b755a01299ae697c",
+      "normHash": "c5228b97e5255ece0480368dff9e56312242c102bc6361eebeb56f9c34c3fc06",
+      "kind": "p",
+      "chapter": "الزكاة-للقرابة",
+      "prev": "54cbddfb0a5ee591ab82ca69941baf7587422113ac608b1296185a38d6134eb8",
+      "next": "28d0e0b7746c2bcce5afb77f70f8c5a3033c426bd003c1a5b3d66b4daa86a31b"
+    },
+    {
+      "ord": 58,
+      "blockId": "6f04adebf5a093ce043894ab11c16c16",
+      "fp64": "e3c553f7357f3792",
+      "normHash": "28d0e0b7746c2bcce5afb77f70f8c5a3033c426bd003c1a5b3d66b4daa86a31b",
+      "kind": "p",
+      "chapter": "الزكاة-للقرابة",
+      "prev": "c5228b97e5255ece0480368dff9e56312242c102bc6361eebeb56f9c34c3fc06",
+      "next": "c1ecaf1a81ab1219258e1684132e97405337ee1b5e5813c1509dc005db7867ed"
+    },
+    {
+      "ord": 59,
+      "blockId": "b20abe184c6994b2ad5dec86f1c3ecf6",
+      "fp64": "75dff39fda397d7e",
+      "normHash": "c1ecaf1a81ab1219258e1684132e97405337ee1b5e5813c1509dc005db7867ed",
+      "kind": "page",
+      "chapter": "الزكاة-للقرابة",
+      "prev": "28d0e0b7746c2bcce5afb77f70f8c5a3033c426bd003c1a5b3d66b4daa86a31b"
+    }
+  ]
+}

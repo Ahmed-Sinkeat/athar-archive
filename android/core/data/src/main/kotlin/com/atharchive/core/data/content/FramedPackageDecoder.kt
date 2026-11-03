@@ -14,10 +14,18 @@ object AppContentDocuments {
 
     fun decodeCatalog(bytes: ByteArray, reference: ArtifactReference): CatalogDocument {
         ContentDigests.verify(bytes, reference.hash, reference.size, "catalog")
-        val catalog = decode<CatalogDocument>(bytes, "catalog")
-        if (catalog.schema != APP_CONTENT_SCHEMA) {
-            throw UnsupportedContentSchemaException(catalog.schema, catalog.schema)
+        val decoded = decode<CatalogDocument>(bytes, "catalog")
+        if (decoded.schema != APP_CONTENT_SCHEMA) {
+            throw UnsupportedContentSchemaException(decoded.schema, decoded.schema)
         }
+        // A collection this build can't read (e.g. a newer server's `person` pages) is skipped, never fatal:
+        // failing the whole catalog stopped every installed app from updating.
+        val (readable, skipped) = decoded.entries.partition { it.coll in Collections }
+        val skippedIds = skipped.mapTo(HashSet()) { it.id }
+        val catalog = decoded.copy(
+            entries = readable,
+            persons = decoded.persons.map { person -> person.copy(works = person.works.filter { it !in skippedIds }) },
+        )
         val identities = HashSet<String>()
         catalog.entries.forEach { entry ->
             validateEntry(entry)
@@ -42,10 +50,11 @@ object AppContentDocuments {
 
     fun decodeTombstones(bytes: ByteArray, reference: ArtifactReference): TombstoneDocument {
         ContentDigests.verify(bytes, reference.hash, reference.size, "tombstones")
-        val tombstones = decode<TombstoneDocument>(bytes, "tombstones")
-        if (tombstones.schema != APP_CONTENT_SCHEMA) {
-            throw UnsupportedContentSchemaException(tombstones.schema, tombstones.schema)
+        val decoded = decode<TombstoneDocument>(bytes, "tombstones")
+        if (decoded.schema != APP_CONTENT_SCHEMA) {
+            throw UnsupportedContentSchemaException(decoded.schema, decoded.schema)
         }
+        val tombstones = decoded.copy(deleted = decoded.deleted.filter { it.coll in Collections })
         tombstones.deleted.forEach {
             requireCollection(it.coll)
             requireSegment(it.id, "tombstone ID")

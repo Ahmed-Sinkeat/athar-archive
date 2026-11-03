@@ -99,21 +99,29 @@ fun PoetryScreen(
     var query by rememberSaveable { mutableStateOf("") }
     val textHits = com.atharchive.feature.search.rememberSectionTextHits(query, textSearch)
     var topicStored by rememberPersisted("poetry.topics", "")
-    var sortName by rememberPersisted("poetry.order", PoemSort.Title.name)
+    var poetStored by rememberPersisted("poetry.poets", "")
+    var centuryStored by rememberPersisted("poetry.centuries", "")
+    var audioStored by rememberPersisted("poetry.audio", "")
+    var section by rememberPersisted("poetry.section", com.atharchive.ui.components.SectionAll)
+    var sortName by rememberPersisted("poetry.sort", PoemSort.Died.name)
     var descendingStored by rememberPersisted("poetry.order.desc", "")
     val descending = descendingStored.isNotEmpty()
-    val sort = enumValueOrNull<PoemSort>(sortName) ?: PoemSort.Title
+    val sort = enumValueOrNull<PoemSort>(sortName) ?: PoemSort.Died
     val listState = rememberLazyListState()
     val reselectScope = androidx.compose.runtime.rememberCoroutineScope()
     androidx.compose.runtime.LaunchedEffect(scrollToTopRequest) {
         if (scrollToTopRequest > 0) listState.animateScrollToItem(0)
     }
 
-    val topics = remember(state.poems) {
-        state.poems.map { it.topic }.filter(String::isNotBlank).distinct()
+    val topics = remember(state.poems, section) {
+        state.poems.flatMap { it.topics }.distinct().filter { com.atharchive.ui.components.inSection(section, listOf(it)) }.sorted()
     }
+    val poets = remember(state.poems) { state.poems.map { it.poet }.filter(String::isNotBlank).distinct().sortedBy(::normKey) }
     val topic = topicStored.asChoiceSet() intersect topics.toSet()
-    val hasActiveFilters = topic.isNotEmpty() || sort != PoemSort.Newest
+    val poet = poetStored.asChoiceSet() intersect poets.toSet()
+    val century = centuryStored.asChoiceSet()
+    val audio = audioStored.asChoiceSet() intersect setOf(com.atharchive.ui.components.HasAudioChoice)
+    val hasActiveFilters = (topic + poet + century + audio).isNotEmpty() || section != com.atharchive.ui.components.SectionAll
 
     // Normalized once per catalog change, not per filter pass or per sort comparison.
     val normalized = remember(state.poems) {
@@ -121,7 +129,7 @@ fun PoetryScreen(
             poem.id to Triple(normKey(poem.title), normKey(poem.poet), poem.openingVerses.map(::normKey))
         }
     }
-    val visiblePoems = remember(state.poems, selectedTab, query, topic, sort, descending) {
+    val visiblePoems = remember(state.poems, selectedTab, query, topic, sort, descending, poet, century, audio, section) {
         val term = ArNormalize.normalize(query.trim())
         state.poems.filter { poem ->
             val matchesTab = selectedTab.matches(poem.recentRank != null, poem.downloaded, poem.saved)
@@ -130,14 +138,22 @@ fun PoetryScreen(
                 title.contains(term, ignoreCase = true) ||
                 poet.contains(term, ignoreCase = true) ||
                 opening.any { it.contains(term, ignoreCase = true) }
-            matchesTab && matchesQuery && (topic.isEmpty() || poem.topic in topic)
+            matchesTab && matchesQuery && (topic.isEmpty() || poem.topics.any(topic::contains)) &&
+                (poet.isEmpty() || poem.poet in poet) &&
+                (century.isEmpty() || poem.died?.let { com.atharchive.data.centuryOf(it) } in century) &&
+                (audio.isEmpty() || poem.hasAudio) && com.atharchive.ui.components.inSection(section, poem.topics)
         }.sortedWith(
-            if (selectedTab == SectionTab.Recent) compareBy { it.recentRank ?: Int.MAX_VALUE } else (when (sort) {
+            if (selectedTab == SectionTab.Recent) compareBy { it.recentRank ?: Int.MAX_VALUE }
+            else if (sort == PoemSort.Died) compareBy<PoemUi, Int?>(nullsLast(if (descending) reverseOrder() else naturalOrder())) { it.died }.thenBy { normalized.getValue(it.id).first }
+            else (when (sort) {
                 PoemSort.Title -> compareBy<PoemUi> { normalized.getValue(it.id).first }
                 PoemSort.Poet -> compareBy<PoemUi> { normalized.getValue(it.id).second }
-                PoemSort.Newest -> compareBy<PoemUi> { it.title }
+                PoemSort.Newest, PoemSort.Died -> compareBy<PoemUi> { it.title }
             }).directed(descending),
-        )
+        ).let { poems ->
+            // Titles first: a reader typing «النونية» wants that poem, not every poem whose poet or opening says it. Stable sort keeps the order inside each group.
+            if (term.isBlank()) poems else poems.sortedByDescending { normalized.getValue(it.id).first.contains(term, ignoreCase = true) }
+        }
     }
     // The list keeps its place by the top item's key, so a just-opened text moving to the top of
     // «الأخيرة» landed above the screen and looked dropped. The newest is always shown first.
@@ -156,7 +172,7 @@ fun PoetryScreen(
 
         Box(modifier = Modifier.fillMaxSize().clipToBounds()) {
             val header = rememberAtharCollapsingHeader()
-            header.ShowOnChange(listState, selectedTab, query, topic, sort)
+            header.ShowOnChange(listState, selectedTab, query, topic, sort, section)
             AtharFloatingHeader(header) {
                 Column {
                     AtharTopBar(
@@ -170,13 +186,21 @@ fun PoetryScreen(
                             if (selectedTab == SectionTab.Recent) null else AtharChipGroup("الترتيب", PoemSort.entries.map { it.label }, sort.label) { label -> sortName = PoemSort.entries.first { it.label == label }.name },
                             if (selectedTab == SectionTab.Recent) null else AtharDirectionGroup(descending) { descendingStored = if (it) "1" else "" },
                         )
-                val filterFacets = listOf(AtharFacet("الموضوع", topics, topic, { topicStored = it.asStoredChoices() }))
+                val filterFacets = listOf(
+                    AtharFacet("الشاعر", poets, poet, { poetStored = it.asStoredChoices() }),
+                    AtharFacet("الموضوع", topics, topic, { topicStored = it.asStoredChoices() }),
+                    com.atharchive.ui.components.centuryFacet(century) { centuryStored = it.asStoredChoices() },
+                    AtharFacet("الصوت", listOf(com.atharchive.ui.components.HasAudioChoice), audio, { audioStored = it.asStoredChoices() }),
+                )
                 AtharSearchField(
                     query = query,
                     placeholder = "ابحث عن قصيدة، بيت أو شاعر…",
                     onQueryChange = { query = it },
                     tagPrefix = "poetry",
-                    trailing = { AtharFilterIcon(filterGroups, filterFacets, "poetry_filter") },
+                    trailing = {
+                        com.atharchive.ui.components.AtharSectionButton(section, { section = it }, remember(state.poems) { com.atharchive.ui.components.sectionCounts(state.poems) { it.topics } }, "poetry_sections")
+                        AtharFilterIcon(filterGroups, filterFacets, "poetry_filter")
+                    },
                     modifier = Modifier.padding(
                         start = horizontalPadding,
                         end = horizontalPadding,
@@ -213,7 +237,7 @@ fun PoetryScreen(
         ) {
             if (!state.loaded) {
                 // first catalog read not back yet: show nothing rather than a false "no poems"
-            } else if (visiblePoems.isEmpty() && textHits.isEmpty()) {
+            } else if (visiblePoems.isEmpty() && textHits.isEmpty() && !textHits.searching) {
                 item(key = "poetry-empty") {
                     val (title, body) = when {
                         query.isNotBlank() ->

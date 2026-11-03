@@ -337,6 +337,57 @@ class ContentTransferRunnerTest {
     }
 
     @Test
+    fun sharedBooksImportOnAnotherPhoneWithoutNetworkAndTamperedOnesAreRefused() = runBlocking {
+        val packageBytes = gzip(
+            """{"t":"header","schema":2,"coll":"book","id":"offline-book","v":1,"blocks":1,"chapters":[{"a":"main","title":"المقدمة","block":0}],"footnotes":0}""",
+            """{"t":"p","a":"main","i":0,"id":"00000000000000000000000000000001","fp":"0000000000000001","x":"كتاب انتقل بلا إنترنت"}""",
+        )
+        val packageHash = ContentDigests.sha256Hex(packageBytes)
+        val indexBytes = index(packageBytes, packageHash)
+        val entry = entry(packageBytes, packageHash, indexBytes, ContentDigests.sha256Hex(indexBytes))
+        ContentImporter(content).applyCatalog(CatalogDocument(2, listOf(entry)))
+        // No server: any request would fail, so finishing proves the import stayed offline.
+        val offline = AppContentHttpClient("https://unreachable.invalid/app/v2/".toHttpUrl(), OkHttpClient())
+        fun runner(name: String) = ContentTransferRunner(
+            content, user, offline, ContentImporter(content), RetainedPackageStore(File(root, "$name-content")),
+            File(root, "$name-transfers"), ContentStoragePolicy(root, ContentCacheManager(content, user)) { Long.MAX_VALUE },
+        )
+        val sender = runner("a")
+        File(root, "a-transfers").mkdirs()
+        File(root, "a-transfers/book__${entry.id}.${entry.pkg.hash}.part").writeBytes(packageBytes)
+        File(root, "a-transfers/book__${entry.id}.${entry.pkg.idxHash}.idx").writeBytes(indexBytes)
+        sender.requestPin(entry.id)
+        sender.downloadPinned(entry.id)
+        val shared = java.io.ByteArrayOutputStream().also { assertEquals(1, sender.exportShared(listOf(entry.id), it)) }.toByteArray()
+
+        // The receiving phone: same catalog, nothing saved.
+        sender.unpin(entry.id)
+        ContentCacheManager(content, user).clearUnpinned()
+        assertEquals(ContentAvailability.ABSENT, content.importDao().entity(entry.id)?.availability)
+
+        val tampered = java.io.ByteArrayOutputStream().also { out ->
+            java.util.zip.ZipOutputStream(out).use { zip ->
+                zip.putNextEntry(java.util.zip.ZipEntry("${entry.id}.athar")); zip.write(packageBytes.copyOf().also { it[it.lastIndex] = (it.last() + 1).toByte() })
+                zip.putNextEntry(java.util.zip.ZipEntry("${entry.id}.idx")); zip.write(indexBytes)
+            }
+        }.toByteArray()
+        val escape = java.io.ByteArrayOutputStream().also { out ->
+            java.util.zip.ZipOutputStream(out).use { zip -> zip.putNextEntry(java.util.zip.ZipEntry("../${entry.id}.athar")); zip.write(packageBytes) }
+        }.toByteArray()
+        val receiver = runner("b")
+        assertTrue(receiver.importShared(tampered.inputStream()).isEmpty())
+        // Android 14+ throws on the path itself; older ones skip the name. Either way nothing lands.
+        assertTrue(runCatching { receiver.importShared(escape.inputStream()) }.getOrDefault(emptyList()).isEmpty())
+        assertFalse(File(root, "${entry.id}.athar").exists())
+        assertNull(user.userDataDao().pinnedDownload(entry.id))
+
+        assertEquals(listOf(entry.id), receiver.importShared(shared.inputStream()).map { it.id })
+        receiver.downloadPinned(entry.id)
+        assertEquals("كتاب انتقل بلا إنترنت", content.importDao().blocks(entry.id).single().text)
+        assertEquals(ContentAvailability.COMPLETE, content.importDao().entity(entry.id)?.availability)
+    }
+
+    @Test
     fun ordinaryOpenCreatesNoPinAndClosingReaderStopsAdjacentPrefetch() = runBlocking {
         val firstFrame = gzip(
             """{"t":"header","schema":2,"coll":"book","id":"offline-book","v":1,"blocks":2,"chapters":[{"a":"main","title":"المقدمة","block":0}],"footnotes":0}""",

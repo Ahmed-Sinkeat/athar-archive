@@ -1,5 +1,6 @@
 package com.atharchive.feature.search
 
+import com.atharchive.core.data.repository.isTashkeel
 import com.atharchive.ui.components.atharControl
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.draw.drawBehind
@@ -13,6 +14,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.clickable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -75,6 +77,9 @@ fun SearchScreen(
     onOpenResult: (SearchHitUi) -> Unit,
     onOpenDirectMatch: (DirectMatchUi) -> Unit,
     onClearRecent: () -> Unit,
+    presets: List<SearchPreset> = emptyList(),
+    onSavePreset: (String) -> Unit = {},
+    onDeletePreset: (String) -> Unit = {},
     onResultsDrawn: (String) -> Unit,
     inputQuery: String = state.query,
     onLoadMore: () -> Unit = {},
@@ -97,6 +102,8 @@ fun SearchScreen(
     val hits = if (!hasQuery) emptyList() else state.hits
     val directMatches = if (hasQuery) state.directMatches else emptyList()
     var allTitles by rememberSaveable(state.query) { mutableStateOf(false) }
+    // «معجم»: the query looked up in the lexicons instead of the texts.
+    var lexicon by rememberSaveable { mutableStateOf(false) }
     // groupBy keeps first-seen order, so each book sits where its best passage ranked.
     // The same passage twice (an index row left over by an update) shows once.
     val bookGroups = remember(hits) { hits.distinctBy { it.entityId to it.excerpt }.groupBy { it.entityId }.values.toList() }
@@ -148,10 +155,18 @@ fun SearchScreen(
                         end = horizontalPadding,
                         top = 4.dp,
                     ),
-                    trailing = { SearchFilterButton(filters, state.availableAuthors, ::changeFilters) },
+                    trailing = {
+                        // «الأقسام» in the field, as in every section: one at a time, out of the crowded filter.
+                        com.atharchive.ui.components.AtharSectionButton(
+                            filters.sections.singleOrNull() ?: com.atharchive.ui.components.SectionAll,
+                            { changeFilters(filters.copy(sections = if (it == com.atharchive.ui.components.SectionAll) emptySet() else setOf(it))) },
+                            emptyMap(), "search_sections",
+                        )
+                        SearchFilterButton(filters, state.availableAuthors, state.availableBooks, presets, onSavePreset, onDeletePreset, ::changeFilters)
+                    },
                 )
                 SearchActiveFilters(filters, ::changeFilters, Modifier.padding(horizontal = horizontalPadding))
-                if (hasQuery) SearchTypeTabs(filters, ::changeFilters, Modifier.padding(horizontal = horizontalPadding - 8.dp))
+                if (hasQuery) SearchTypeTabs(filters, lexicon, { lexicon = it }, ::changeFilters, Modifier.padding(horizontal = horizontalPadding - 8.dp))
             }
 
             if (!hasQuery) {
@@ -220,6 +235,10 @@ fun SearchScreen(
                 return@LazyColumn
             }
 
+            if (lexicon) {
+                item(key = "lexicon-${state.query.trim()}") { LexiconResults(state.query.trim(), horizontalPadding) }
+                return@LazyColumn
+            }
             item(key = "scope") {
                 ScopeLine(state, searching, searchResultsReadyTag(state.query), horizontalPadding)
             }
@@ -281,6 +300,7 @@ fun SearchScreen(
                     SearchHitCard(
                         hit = hit,
                         horizontalPadding = horizontalPadding,
+                        plain = filters.plain,
                         onClick = { onOpenResult(hit) },
                         loadPassage = loadPassage,
                     )
@@ -311,16 +331,78 @@ fun SearchScreen(
 
 }
 
-/** الكل · كتب · شعر · مقالات · مسائل — one tap narrows the results to one kind. */
+/** الكل · كتب · شعر · مقالات · مسائل · معجم — one tap narrows the results to one kind, or to the lexicons. */
 @Composable
-private fun SearchTypeTabs(filters: SearchFilters, onChange: (SearchFilters) -> Unit, modifier: Modifier = Modifier) {
+private fun SearchTypeTabs(
+    filters: SearchFilters, lexicon: Boolean, onLexicon: (Boolean) -> Unit,
+    onChange: (SearchFilters) -> Unit, modifier: Modifier = Modifier,
+) {
     val tabs = listOf(com.atharchive.ui.components.AtharTab("all", "الكل")) +
-        SearchResultType.entries.map { com.atharchive.ui.components.AtharTab(it.key, it.plural) }
+        SearchResultType.entries.map { com.atharchive.ui.components.AtharTab(it.key, it.plural) } +
+        com.atharchive.ui.components.AtharTab("lexicon", "معجم")
     // Several kinds picked in the filter menu: no single tab is the selection.
-    val selected = when (filters.types.size) { 0 -> "all"; 1 -> filters.types.first().key; else -> "" }
+    val selected = if (lexicon) "lexicon" else when (filters.types.size) { 0 -> "all"; 1 -> filters.types.first().key; else -> "" }
     com.atharchive.ui.components.AtharTabRow(tabs, selected, { key ->
-        onChange(filters.copy(types = SearchResultType.entries.filter { it.key == key }.toSet()))
+        onLexicon(key == "lexicon")
+        if (key != "lexicon") onChange(filters.copy(types = SearchResultType.entries.filter { it.key == key }.toSet()))
     }, tagPrefix = "search_type", modifier = modifier)
+}
+
+/**
+ * The «معجم» tab: every lexicon's entry for the word, in the lexicons' order, each opening its book
+ * there. Offers the one-time download when the lexicons aren't on the phone yet.
+ */
+@Composable
+private fun LexiconResults(query: String, horizontalPadding: Dp) {
+    val dict = com.atharchive.feature.reader.LocalDictionary.current ?: return
+    val open = com.atharchive.feature.reader.LocalOpenBookAt.current
+    val installed by dict.installed.collectAsState()
+    val progress by dict.progress.collectAsState()
+    val failed by dict.failed.collectAsState()
+    // ponytail: the first word only; the lexicons hold single words, a phrase has no entry.
+    // An emptied box (or only spaces) recomposes this once more before the tab goes: no word, nothing shown.
+    val word = query.split(' ').firstOrNull { it.isNotBlank() } ?: return
+    val found by androidx.compose.runtime.produceState<Pair<Boolean, com.atharchive.data.Meaning?>>(false to null, word, installed) {
+        value = if (installed) true to runCatching { dict.meaning(word) }.getOrNull() else false to null
+    }
+    val pad = Modifier.padding(horizontal = horizontalPadding)
+    Column(Modifier.fillMaxWidth().testTag("search_lexicon")) {
+        if (!installed) {
+            val p = progress
+            AtharEmptyState(
+                title = "معاجم اللغة",
+                body = "معاني الكلمات من أمّات المعاجم؛ تُنزَّل مرة واحدة وتعمل دون اتصال.",
+                tag = "search_lexicon_offer",
+                horizontalPadding = horizontalPadding,
+            )
+            TextButton(onClick = { dict.startDownload() }, enabled = p == null, modifier = pad.testTag("search_lexicon_download")) {
+                Text(when {
+                    p != null -> "جارٍ التنزيل… " + (if (p.second > 0) "${p.first * 100 / p.second}٪" else "${p.first shr 20} م.ب")
+                    failed -> "تعذّر التنزيل؛ اضغط لإعادة المحاولة"
+                    else -> "تنزيل المعجم"
+                }, color = AtharTheme.colors.accent, fontWeight = FontWeight.Bold)
+            }
+            return@Column
+        }
+        val m = found.second
+        if (m == null) {
+            if (found.first) AtharEmptyState(title = "لا توجد الكلمة في المعاجم", body = "جرّب الكلمة دون زوائد، أو جذرها.",
+                tag = "search_lexicon_empty", horizontalPadding = horizontalPadding)
+            return@Column
+        }
+        ResultsHeading(m.word + "  ·  " + m.roots.joinToString("  ،  ") { it.toList().joinToString(" ") }, horizontalPadding)
+        m.entries.forEach { e ->
+            Column(
+                Modifier.fillMaxWidth()
+                    .clickable(enabled = open != null, role = androidx.compose.ui.semantics.Role.Button) { open?.invoke(e.bookId, e.ordinal) }
+                    .padding(horizontal = horizontalPadding, vertical = 8.dp),
+            ) {
+                Text(e.source, color = AtharTheme.colors.accent, style = MaterialTheme.typography.labelMedium, fontWeight = FontWeight.SemiBold)
+                Text(e.snippet, Modifier.padding(top = 2.dp), color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.88f),
+                    style = MaterialTheme.typography.bodyMedium)
+            }
+        }
+    }
 }
 
 @Composable
@@ -350,6 +432,10 @@ private fun ScopeLine(state: SearchUiState, searching: Boolean, readyTag: String
         } ?: "")
         SearchScope.Offline -> "دون اتصال · في المحمّلة فقط"
         SearchScope.Downloaded -> "في المحمّلة فقط"
+    } + when {
+        state.roots == null -> ""
+        state.roots.isEmpty() -> " · لم يُعرف الجذر (المعاجم تلزم للبحث بالجذر)"
+        else -> " · الجذر: " + state.roots.joinToString("، ") { it.toList().joinToString(" ") }
     }
     Row(
         modifier = Modifier
@@ -490,6 +576,7 @@ fun SearchHitCard(
     horizontalPadding: Dp,
     onClick: () -> Unit,
     loadPassage: suspend (SearchHitUi) -> String?,
+    plain: Boolean = false,
 ) {
     // The source first (which book, whose, where), then the passage with every match marked.
     val accent = AtharTheme.colors.accent
@@ -500,12 +587,13 @@ fun SearchHitCard(
     }
     val poem = hit.type == SearchResultType.Poem
     val text = (passage ?: hit.excerpt).let { if (poem) verseLines(it) else it }
-    val highlighted = remember(text, hit, accent) {
-        val ranges = if (passage == null) hit.matches else wordRanges(text, hit)
+    val highlighted = remember(text, hit, accent, plain) {
+        val marked = if (passage == null) hit.matches else wordRanges(text, hit)
+        val (shown, ranges) = if (plain) withoutTashkeel(text, marked) else text to marked
         buildAnnotatedString {
-            append(text)
+            append(shown)
             ranges.forEach { r ->
-                if (r.first >= 0 && r.last < text.length && r.first <= r.last)
+                if (r.first >= 0 && r.last < shown.length && r.first <= r.last)
                     addStyle(SpanStyle(background = accent.copy(alpha = 0.22f), color = accent, fontWeight = FontWeight.Bold), r.first, r.last + 1)
             }
         }
@@ -594,7 +682,7 @@ private val VerseStart = Regex(" (?=[\u0660-\u0669]+ - )")
  * A poem's passage («١ - صدر … عجز ٢ - …») as one hemistich to a line. Same length as [text],
  * so the match offsets still fall on the right words.
  */
-internal fun verseLines(text: String) = text.replace(" … ", " \n ").replace(VerseStart, "\n")
+internal fun verseLines(text: String) = text.replace(" … ", " \n ").replace(" --- ", "  \n  ").replace(VerseStart, "\n")
 
 /**
  * About 900 characters of [full] around this hit: where its own snippet sits in the passage (not
@@ -608,6 +696,15 @@ internal fun around(full: String, hit: SearchHitUi): String {
     val start = (at - 400).coerceAtLeast(0)
     val end = (at + 500).coerceAtMost(full.length)
     return (if (start > 0) "…" else "") + full.substring(start, end) + (if (end < full.length) "…" else "")
+}
+
+/** [text] without its tashkeel, with [ranges] moved onto the same letters. */
+internal fun withoutTashkeel(text: String, ranges: List<IntRange>): Pair<String, List<IntRange>> {
+    val out = StringBuilder(text.length)
+    val at = IntArray(text.length + 1)
+    text.forEachIndexed { i, c -> at[i] = out.length; if (!isTashkeel(c)) out.append(c) }
+    at[text.length] = out.length
+    return out.toString() to ranges.filter { it.first >= 0 && it.last < text.length }.map { at[it.first] until at[it.last + 1] }
 }
 
 /** Every occurrence, in [text], of the words the snippet marked. */
@@ -651,21 +748,42 @@ class SectionTextSearch(
     val onOpen: (SearchHitUi, String) -> Unit,
 )
 
+/** The passages found so far, and whether the search behind them is still running. */
+class SectionTextHits(val hits: List<SearchHitUi>, val searching: Boolean) {
+    fun isEmpty() = hits.isEmpty()
+}
+
 @Composable
-fun rememberSectionTextHits(query: String, textSearch: SectionTextSearch?): List<SearchHitUi> {
+fun rememberSectionTextHits(query: String, textSearch: SectionTextSearch?): SectionTextHits {
     val term = query.trim()
-    return androidx.compose.runtime.produceState(emptyList<SearchHitUi>(), term, textSearch) {
-        value = emptyList()
-        if (textSearch == null || term.length < 2) return@produceState
+    return androidx.compose.runtime.produceState(SectionTextHits(emptyList(), false), term, textSearch) {
+        // Searching until answered, so the list never claims «لا توجد نتائج» while the server (≈1.5 s) works.
+        val active = textSearch != null && term.length >= 2
+        value = SectionTextHits(emptyList(), active)
+        if (!active) return@produceState
         kotlinx.coroutines.delay(300) // typing pause; the next keystroke restarts this
-        value = runCatching { textSearch.search(term) }.getOrDefault(emptyList())
+        value = SectionTextHits(runCatching { textSearch!!.search(term) }.getOrDefault(emptyList()), false)
     }.value
 }
 
-fun androidx.compose.foundation.lazy.LazyListScope.sectionTextHits(hits: List<SearchHitUi>, query: String, textSearch: SectionTextSearch?, horizontalPadding: Dp) {
-    if (hits.isEmpty() || textSearch == null) return
+fun androidx.compose.foundation.lazy.LazyListScope.sectionTextHits(found: SectionTextHits, query: String, textSearch: SectionTextSearch?, horizontalPadding: Dp) {
+    if (textSearch == null) return
+    if (found.searching) {
+        item(key = "text-hits-searching") {
+            Text(
+                "جارٍ البحث في النصوص…",
+                Modifier.fillMaxWidth().padding(horizontal = horizontalPadding, vertical = 16.dp).testTag("text_hits_searching"),
+                color = AtharTheme.colors.secondaryText,
+                style = MaterialTheme.typography.bodyMedium,
+            )
+        }
+        return
+    }
+    val hits = found.hits
+    if (hits.isEmpty()) return
     item(key = "text-hits-heading") { ResultsHeading("في النصوص", horizontalPadding) }
     items(hits, key = { "text-${it.id}" }) { hit ->
         SearchHitCard(hit, horizontalPadding, onClick = { textSearch.onOpen(hit, query.trim()) }, loadPassage = textSearch.loadPassage)
     }
 }
+

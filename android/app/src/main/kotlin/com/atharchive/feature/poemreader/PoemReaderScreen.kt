@@ -1,5 +1,6 @@
 package com.atharchive.feature.poemreader
 
+import com.atharchive.core.ArNormalize
 import com.atharchive.feature.reader.drawHighlightLine
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.foundation.gestures.animateScrollBy
@@ -107,6 +108,9 @@ fun PoemReaderScreen(
     /** How far the text being fetched has come (0..1); null when nothing is in flight. */
     loadProgress: Float? = null,
     onBack: () -> Unit,
+    /** ⋮ menu, as in the text reader: the poet's page and keeping the poem offline (null once kept). */
+    onOpenAuthor: (() -> Unit)? = null,
+    onDownload: (() -> Unit)? = null,
     settings: ReaderSettings,
     onSettingsChange: (ReaderSettings) -> Unit,
     themeMode: com.atharchive.ui.theme.ThemeMode,
@@ -121,19 +125,26 @@ fun PoemReaderScreen(
     onToggleBookmark: suspend (Int) -> Unit = {},
     onSaveVerse: suspend (Int) -> Unit = {},
     onRemoveVerse: suspend (Int) -> Unit = {},
+    onVerseNote: (Int) -> Unit = {},
+    onVerseInKannashah: (Int) -> Unit = {},
     initialOrdinal: Int? = null,
+    /** The search that opened the poem: its verse is opened and its words marked. */
+    match: String? = null,
     onPositionChange: (Int) -> Unit = {},
     onRetry: () -> Unit = {},
 ) {
     var settingsOpen by remember { mutableStateOf(false) }
     val colors = rememberReaderColors(settings)
     val listState = rememberLazyListState()
+    com.atharchive.feature.reader.VolumeKeyPaging(listState, settings.volumeKeys)
     val scope = rememberCoroutineScope()
 
     var panelMode by remember { mutableStateOf<PanelMode?>(null) }
     var sharhVerse by remember { mutableStateOf<VerseUi?>(null) }
     var query by remember { mutableStateOf("") }
     var toast by remember { mutableStateOf<String?>(null) }
+    var returnTo by remember { mutableStateOf<Pair<Int, Int>?>(null) }
+    fun leaveMark() { returnTo = listState.firstVisibleItemIndex to listState.firstVisibleItemScrollOffset }
     var moreOpen by remember { mutableStateOf(false) }
     var introOpen by remember { mutableStateOf(false) }
     if (introOpen) {
@@ -175,10 +186,16 @@ fun PoemReaderScreen(
         panelMode = null
         settingsOpen = false
     }
+    // The verse is found here, by its words, rather than trusting the search's ordinal: the
+    // server indexes a poem as one passage, and the local lookup falls back to verse 1 on a miss.
+    val matchWords = remember(match) { match?.let { ArNormalize.normalize(it).split(' ').filter(String::isNotBlank) }.orEmpty() }
+    val matchVerse = remember(state.verses, matchWords) { findVerse(state.verses, matchWords) }
     var restored by remember { mutableStateOf(false) }
-    LaunchedEffect(state.verses, state.readingPositionReady, state.bodyLoaded) {
-        if (!restored) state.restoreIndex(initialOrdinal ?: state.readingOrdinal)?.let { index ->
-            listState.scrollToItem(index)
+    LaunchedEffect(state.verses, state.readingPositionReady, state.bodyLoaded, matchVerse) {
+        if (restored) return@LaunchedEffect
+        if (matchWords.isNotEmpty() && matchVerse == null && !state.bodyLoaded) return@LaunchedEffect // its verse may not be loaded yet
+        state.restoreIndex(matchVerse?.ordinal ?: initialOrdinal ?: state.readingOrdinal)?.let { index ->
+            if (matchVerse != null) listState.centreOn(index) else listState.scrollToItem(index)
             restored = true
         }
     }
@@ -302,8 +319,11 @@ fun PoemReaderScreen(
                                 selected = selRange?.contains(index) == true,
                                 saved = isSaved,
                                 bookmarked = verse.ordinal in bookmarks,
+                                marks = if (verse.id == matchVerse?.id) matchWords else emptyList(),
                                 onTapText = toggleBars,
                                 onSharh = { openSharh(verse) },
+                                onNote = { onVerseNote(verse.ordinal) },
+                                onKannashah = { onVerseInKannashah(verse.ordinal) },
                                 onSave = {
                                     if (isSaved) act("أُزيل من الكناشة") { onRemoveVerse(verse.ordinal) }
                                     else act("حُفظ في الكناشة") { onSaveVerse(verse.ordinal) }
@@ -351,6 +371,9 @@ fun PoemReaderScreen(
                                 "مشاركة النص"))
                             clearSelection()
                         },
+                        onAddDhikr = com.atharchive.feature.reader.LocalAddToAdhkar.current?.let { add ->
+                            { add(text(), listOf(state.title, state.poet).filter(String::isNotBlank).joinToString(" — ")); clearSelection() }
+                        },
                         onHighlight = {
                             val verses = chosen()
                             act(if (verses.size == 1) "حُفظ في الكناشة" else "حُفظت ${arabicDigits(verses.size)} أبيات في الكناشة") {
@@ -396,6 +419,7 @@ fun PoemReaderScreen(
                         onQuery = { query = it },
                         onJump = { index ->
                             followScroll = false
+                            leaveMark()
                             scope.launch { listState.animateScrollToItem(index) }
                         },
                         onDismiss = { panelMode = null },
@@ -403,6 +427,13 @@ fun PoemReaderScreen(
                     }
                 }
 
+                returnTo?.let { (item, offset) ->
+                    com.atharchive.feature.reader.ReturnChip(colors, Modifier.align(Alignment.BottomStart).padding(start = 12.dp, bottom = bottomOverlayHeight + 16.dp)) {
+                        returnTo = null
+                        followScroll = false
+                        scope.launch { listState.scrollToItem(item, offset) }
+                    }
+                }
                 toast?.let { message ->
                     Box(
                         modifier = Modifier
@@ -460,6 +491,8 @@ fun PoemReaderScreen(
                                     .setType("text/plain").putExtra(android.content.Intent.EXTRA_TEXT, poemText()),
                                 "مشاركة القصيدة"))
                         })
+                        if (onOpenAuthor != null) AtharMenuItem("صفحة الشاعر وقصائده", icon = AtharIcons.People, onClick = { moreOpen = false; onOpenAuthor() })
+                        if (onDownload != null) AtharMenuItem("حفظ القصيدة دون اتصال", icon = AtharIcons.Download, onClick = { moreOpen = false; onDownload() })
                     }
                 },
             )
@@ -477,7 +510,7 @@ fun PoemReaderScreen(
                 colors = colors,
                 progress = ::progress,
                 jumpLabel = "الانتقال في القصيدة",
-                onJump = { index -> followScroll = false; scope.launch { listState.scrollToItem(index) } },
+                onJump = { index -> followScroll = false; leaveMark(); scope.launch { listState.scrollToItem(index) } },
             ) { index, percent ->
                 val verse = state.verses.getOrNull(index)
                 val heading = state.verses.subList(0, (index + 1).coerceAtMost(state.verses.size)).lastOrNull { it.heading != null }?.heading
@@ -541,6 +574,14 @@ fun PoemReaderScreen(
 /* ── verse ─────────────────────────────────────────────────────────────── */
 
 /** A glossary word and where it sits in the rendered line. */
+/** The verse holding the searched words: the phrase itself first, else every word. */
+internal fun findVerse(verses: List<VerseUi>, words: List<String>): VerseUi? {
+    if (words.isEmpty()) return null
+    val folded = verses.map { it to ArNormalize.normalize("${it.sadr} ${it.ajz}").replace(Regex("\\s+"), " ") }
+    val phrase = words.joinToString(" ")
+    return (folded.firstOrNull { phrase in it.second } ?: folded.firstOrNull { (_, t) -> words.all { it in t } })?.first
+}
+
 private data class WordSpan(val start: Int, val end: Int, val word: String, val meaning: String)
 
 /** The open word, plus the rect it occupies in its own Text's coordinate space. */
@@ -575,8 +616,12 @@ private fun VerseRow(
     selected: Boolean,
     saved: Boolean,
     bookmarked: Boolean,
+    /** Folded search words to colour (the verse a search opened). */
+    marks: List<String> = emptyList(),
     onTapText: () -> Unit,
     onSharh: () -> Unit,
+    onNote: () -> Unit,
+    onKannashah: () -> Unit,
     onSave: () -> Unit,
 ) {
     var menuOpen by remember { mutableStateOf(false) }
@@ -612,11 +657,11 @@ private fun VerseRow(
         Column(modifier = Modifier.weight(1f)) {
             if (settings.poemProse) {
                 // متصل: one running line per verse, as a book prints a quoted verse.
-                Hemistich(if (verse.ajz.isBlank()) verse.sadr else "${verse.sadr} \u2026 ${verse.ajz}", glossary, colors, settings, TextAlign.Start, tapText, underline)
+                Hemistich(if (verse.ajz.isBlank()) verse.sadr else "${verse.sadr} \u2026 ${verse.ajz}", glossary, colors, settings, TextAlign.Start, tapText, underline, marks)
             } else {
-                Hemistich(verse.sadr, glossary, colors, settings, TextAlign.Start, tapText, underline)
+                Hemistich(verse.sadr, glossary, colors, settings, TextAlign.Start, tapText, underline, marks)
                 Spacer(Modifier.height(2.dp))
-                Hemistich(verse.ajz, glossary, colors, settings, TextAlign.End, tapText, underline)
+                Hemistich(verse.ajz, glossary, colors, settings, TextAlign.End, tapText, underline, marks)
             }
         }
     }
@@ -651,6 +696,8 @@ private fun VerseRow(
             modifier = Modifier.testTag("verse_menu"),
         ) {
             if (verse.commentary.isNotEmpty()) AtharMenuItem("شرح البيت", icon = AtharIcons.Sidebar, onClick = { menuOpen = false; onSharh() })
+            AtharMenuItem("تعليق", icon = AtharIcons.Pen, onClick = { menuOpen = false; onNote() }, modifier = Modifier.testTag("verse_note"))
+            AtharMenuItem("ذهاب إلى الكناشة", icon = AtharIcons.Kannashah, onClick = { menuOpen = false; onKannashah() }, modifier = Modifier.testTag("verse_kannashah"))
             AtharMenuItem("إزالة من الكناشة", icon = AtharIcons.Close, destructive = true, onClick = { menuOpen = false; onSave() })
         }
     }
@@ -673,6 +720,7 @@ private fun Hemistich(
     align: TextAlign,
     onTapText: () -> Unit,
     underline: Boolean = false,
+    marks: List<String> = emptyList(),
 ) {
     val tapText by androidx.compose.runtime.rememberUpdatedState(onTapText)
     val line = if (settings.showTashkeel) sourceLine else com.atharchive.feature.reader.SelectionText(sourceLine, false).text
@@ -697,9 +745,18 @@ private fun Hemistich(
     // so it clears the tashkeel, and because the space between two words belongs to
     // neither span they always read as two separate marks. It is also the treatment
     // the app already uses for search matches, so the meaning of the mark carries over.
-    val annotated = remember(spans, line, colors) {
+    val annotated = remember(spans, line, colors, marks) {
         buildAnnotatedString {
             append(line)
+            // the searched words, as the search card marks them
+            if (marks.isNotEmpty()) {
+                val folded = ArNormalize.normalizeWithMap(line)
+                marks.forEach { w ->
+                    generateSequence(folded.text.indexOf(w).takeIf { it >= 0 }) { folded.text.indexOf(w, it + w.length).takeIf { i -> i >= 0 } }
+                        .forEach { at -> val r = folded.sourceRange(at, at + w.length)
+                            addStyle(SpanStyle(background = colors.accent.copy(alpha = 0.22f), color = colors.accent, fontWeight = FontWeight.Bold), r.first, r.last + 1) }
+                }
+            }
             spans.forEach { span ->
                 addStyle(
                     SpanStyle(background = colors.accent.copy(alpha = 0.12f)),
@@ -712,6 +769,9 @@ private fun Hemistich(
 
     var layout by remember { mutableStateOf<TextLayoutResult?>(null) }
     var open by remember { mutableStateOf<OpenWord?>(null) }
+    var meaning by remember { mutableStateOf<Pair<String, Rect>?>(null) }
+    val dict = com.atharchive.feature.reader.LocalDictionary.current
+    val scope = rememberCoroutineScope()
 
     Box(modifier = Modifier.fillMaxWidth()) {
         Text(
@@ -727,13 +787,23 @@ private fun Hemistich(
                         val result = layout ?: return@detectTapGestures
                         val offset = result.getOffsetForPosition(pos)
                         val hit = spans.firstOrNull { offset >= it.start && offset < it.end }
-                        if (hit == null) tapText() else open = OpenWord(hit, result.boundsOf(hit))
+                        if (hit != null) { open = OpenWord(hit, result.boundsOf(hit)); return@detectTapGestures }
+                        // Any other word: its meaning, once the lexicons are downloaded (from «معنى» in a book);
+                        // a word they lack, or no lexicons yet, is an ordinary tap.
+                        val from = line.lastIndexOf(' ', (offset - 1).coerceAtLeast(0)).let { if (it < 0 || offset == 0) 0 else it + 1 }
+                        val to = line.indexOf(' ', offset).let { if (it < 0) line.length else it }
+                        if (dict == null || !dict.installed.value || to <= from) { tapText(); return@detectTapGestures }
+                        val span = WordSpan(from, to, line.substring(from, to), "")
+                        scope.launch {
+                            val found = runCatching { dict.meaning(span.word) }.getOrNull()
+                            if (found == null) tapText() else meaning = span.word to result.boundsOf(span)
+                        }
                     }
                 },
             onTextLayout = { layout = it },
             color = colors.poetry,
             // Amiri until the reader picks another face in «خطّ القراءة».
-            fontFamily = if (settings.font == com.atharchive.ui.theme.ReaderFont.Kitab) AtharEditorialFontFamily else com.atharchive.ui.theme.LocalReaderFont.current,
+            fontFamily = colors.poetryFont ?: if (settings.font == com.atharchive.ui.theme.ReaderFont.Kitab) AtharEditorialFontFamily else com.atharchive.ui.theme.LocalReaderFont.current,
             // Verses run a shade larger than prose, and take the reader's own spacing.
             fontSize = (settings.fontSize + 1).sp,
             lineHeight = ((settings.fontSize + 1) * settings.spacing.multiplier).sp,
@@ -741,6 +811,9 @@ private fun Hemistich(
         )
         open?.let { word ->
             WordCallout(word, colors) { open = null }
+        }
+        meaning?.let { (m, bounds) ->
+            com.atharchive.feature.reader.MeaningCallout(m, { b -> bounds.translate(b.left.toFloat(), b.top.toFloat()) }, colors) { meaning = null }
         }
     }
 }

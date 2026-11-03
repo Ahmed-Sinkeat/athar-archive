@@ -1,5 +1,7 @@
 package com.atharchive.feature.reader
 
+import com.atharchive.ui.theme.ReaderFont
+import com.atharchive.ui.theme.family
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.Color
@@ -36,6 +38,9 @@ data class ReaderColors(
     /** Every heading, كتاب and باب alike. */
     val heading: Color = accent,
     val poetry: Color = text,
+    /** The faces of the same roles («خطوط النص»); a null verse face keeps the reader's default for poems. */
+    val ayahFont: androidx.compose.ui.text.font.FontFamily = com.atharchive.ui.theme.QuranFontFamily,
+    val poetryFont: androidx.compose.ui.text.font.FontFamily? = null,
 )
 
 /** A colour a text role can take; [Theme] follows «اللون», [Ink] is the body text's own. */
@@ -46,11 +51,14 @@ enum class TextHue(val label: String, val day: Color, val night: Color) {
     Red("أحمر", Color(0xFFA1352F), Color(0xFFE07B72)),
     Theme("السمة", Color.Unspecified, Color.Unspecified),
     Ink("النص", Color.Unspecified, Color.Unspecified),
+    /** The reader's own colour ([custom], ARGB); the text colour until one is picked. */
+    Custom("مخصّص", Color.Unspecified, Color.Unspecified),
     ;
 
-    fun resolve(colors: ReaderColors, dark: Boolean): Color = when (this) {
+    fun resolve(colors: ReaderColors, dark: Boolean, custom: Int = 0): Color = when (this) {
         Theme -> colors.accent
         Ink -> colors.text
+        Custom -> if (custom == 0) colors.text else Color(custom)
         else -> if (dark) night else day
     }
 }
@@ -68,11 +76,19 @@ fun rememberReaderColors(settings: ReaderSettings? = null): ReaderColors {
     val base = followedReaderColors(AtharTheme.colors, MaterialTheme.colorScheme.onBackground)
     if (settings == null) return base
     val dark = AtharTheme.colors.canvas.luminance() < 0.5f
+    // Colour on an e-ink panel is a pale grey: every text line in ink.
+    if (com.atharchive.ui.theme.LocalAtharEink.current) return base.copy(
+        ayah = base.text, quote = base.text, heading = base.text, poetry = base.text, saved = Color(0x40000000),
+        ayahFont = settings.quranFont.family(settings.fontStamp),
+        poetryFont = settings.poetryFont.takeUnless { it == ReaderFont.Same }?.family(settings.fontStamp),
+    )
     return base.copy(
-        ayah = settings.quranHue.resolve(base, dark),
-        quote = settings.hadithHue.resolve(base, dark),
-        heading = settings.headingHue.resolve(base, dark),
-        poetry = settings.poetryHue.resolve(base, dark),
+        ayah = settings.quranHue.resolve(base, dark, settings.quranColor),
+        quote = settings.hadithHue.resolve(base, dark, settings.hadithColor),
+        heading = settings.headingHue.resolve(base, dark, settings.headingColor),
+        poetry = settings.poetryHue.resolve(base, dark, settings.poetryColor),
+        ayahFont = settings.quranFont.family(settings.fontStamp),
+        poetryFont = settings.poetryFont.takeUnless { it == ReaderFont.Same }?.family(settings.fontStamp),
     )
 }
 

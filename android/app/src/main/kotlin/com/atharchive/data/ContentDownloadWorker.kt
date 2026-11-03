@@ -178,7 +178,8 @@ class ContentDownloadScheduler @Inject constructor(
 ) {
     val workInfos = workManager.getWorkInfosByTagFlow(ContentTag)
 
-    fun enqueue(entityId: String, collection: String, replace: Boolean = false) {
+    /** [offline]: the package is already on the phone (sent from another one), so no network is awaited. */
+    fun enqueue(entityId: String, collection: String, replace: Boolean = false, offline: Boolean = false) {
         val identity = "content:$collection:$entityId"
         val request = OneTimeWorkRequestBuilder<ContentDownloadWorker>()
             .setInputData(
@@ -187,7 +188,7 @@ class ContentDownloadScheduler @Inject constructor(
                     CollectionKey to collection,
                 ),
             )
-            .setConstraints(Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build())
+            .setConstraints(Constraints.Builder().setRequiredNetworkType(if (offline) NetworkType.NOT_REQUIRED else NetworkType.CONNECTED).build())
             .setBackoffCriteria(BackoffPolicy.EXPONENTIAL, 30, TimeUnit.SECONDS)
             .addTag(ContentTag)
             .addTag(identity)

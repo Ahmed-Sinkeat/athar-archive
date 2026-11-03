@@ -1,5 +1,11 @@
 package com.atharchive.ui.components
 
+import android.content.ActivityNotFoundException
+import android.content.Intent
+import android.speech.RecognizerIntent
+import android.widget.Toast
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import com.atharchive.ui.theme.AtharCorners
 import com.atharchive.ui.theme.AtharTextSize
 import androidx.compose.ui.layout.boundsInWindow
@@ -44,6 +50,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
+import androidx.compose.foundation.gestures.detectVerticalDragGestures
+import kotlinx.coroutines.launch
+import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -155,6 +166,34 @@ fun AtharSearchField(
                         modifier = Modifier.size(18.dp),
                     )
                 }
+            } else {
+                // Voice search through the phone's own recogniser: no permission, no library.
+                val context = LocalContext.current
+                val voice = rememberLauncherForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+                    result.data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)?.firstOrNull()?.let(onQueryChange)
+                }
+                IconButton(
+                    onClick = {
+                        try {
+                            voice.launch(Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
+                                .putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
+                                .putExtra(RecognizerIntent.EXTRA_LANGUAGE, "ar")
+                                .putExtra(RecognizerIntent.EXTRA_PROMPT, placeholder))
+                        } catch (_: ActivityNotFoundException) {
+                            Toast.makeText(context, "البحث الصوتي غير متاح على هذا الجهاز", Toast.LENGTH_SHORT).show()
+                        }
+                    },
+                    modifier = Modifier
+                        .size(48.dp)
+                        .testTag("${tagPrefix}_search_voice"),
+                ) {
+                    Icon(
+                        imageVector = AtharIcons.Mic,
+                        contentDescription = "البحث الصوتي",
+                        tint = AtharTheme.colors.secondaryText,
+                        modifier = Modifier.size(20.dp),
+                    )
+                }
             }
             trailing?.invoke()
         }
@@ -184,7 +223,8 @@ fun AtharTabRow(
                         if (tab.key == selectedKey) { soap.reselect(); onReselect() } else onSelect(tab.key)
                     },
                     tagPrefix = tagPrefix,
-                    modifier = Modifier.weight(1f),
+                    // By label length: equal cells cut «مسائل» to «مسائ» once a row holds seven.
+                    modifier = Modifier.weight(tab.label.length + 2f),
                     textModifier = Modifier.soapTarget(soap, index),
                 )
             }
@@ -381,7 +421,25 @@ class AtharFacet(
     val onChange: (Set<String>) -> Unit,
     /** A quieter second line per option, e.g. «ت ٧٢٨ · ٥ كتب». */
     val subtitle: (String) -> String? = { null },
+    /** Set: always chips, each showing this short label (centuries «٨» under «القرن»). */
+    val chipLabel: ((String) -> String)? = null,
 )
+
+/** «القرن» with all fifteen centuries as short chips, whether or not the list has one yet. */
+fun centuryFacet(selected: Set<String>, onChange: (Set<String>) -> Unit) =
+    AtharFacet("القرن", com.atharchive.data.AllCenturies, selected, onChange, chipLabel = { it.removePrefix("القرن ") })
+
+/** «الصوت»: one tick, «له تسجيل». */
+const val HasAudioChoice = "له تسجيل"
+
+/** Whether [topics] fall under [section] («كل الأقسام» takes everything). */
+/** How many of [items] fall in each section (and [SectionAll]), for the section popup. */
+fun <T> sectionCounts(items: List<T>, topics: (T) -> Collection<String>): Map<String, Int> =
+    items.flatMap { com.atharchive.data.subjectsOf(topics(it)) }.groupingBy { it }.eachCount() + (SectionAll to items.size)
+
+// A section saved under an old name («القرآن») reads as all, not as an empty list.
+fun inSection(section: String, topics: Collection<String>) =
+    section == SectionAll || section !in com.atharchive.data.SubjectOrder || section in com.atharchive.data.subjectsOf(topics)
 
 /**
  * Every filter behind one icon at the end of the search field (as the main search): one popup, a
@@ -424,10 +482,10 @@ fun AtharFilterPopupContent(groups: List<AtharChipGroup>, facets: List<AtharFace
         }
         facets.filter { it.options.isNotEmpty() }.forEachIndexed { index, facet ->
             divider()
-            if (facet.options.size <= 12) AtharFilterRow(facet.title) {
+            if (facet.chipLabel != null || facet.options.size <= 12) AtharFilterRow(facet.title) {
                 facet.options.forEach { value ->
                     val ticked = value in facet.selected
-                    AtharFilterChip(value, ticked) { facet.onChange(if (ticked) facet.selected - value else facet.selected + value) }
+                    AtharFilterChip(facet.chipLabel?.invoke(value) ?: value, ticked) { facet.onChange(if (ticked) facet.selected - value else facet.selected + value) }
                 }
             } else AtharFilterPicker(facet.title, facet.options, facet.selected, facet.subtitle, "${tagPrefix}_f$index") {
                 facet.onChange(if (it in facet.selected) facet.selected - it else facet.selected + it)
@@ -469,37 +527,61 @@ fun AtharFilterChip(label: String, selected: Boolean, onClick: () -> Unit) {
     )
 }
 
-/** A long list (hundreds of authors) typed, not listed: no list of its own to scroll in the popup. */
+/**
+ * A long list (hundreds of authors) typed, not listed: the filter popup keeps its size, and what
+ * is typed opens a small list just under the field (five rows tall, scrolling inside), the only
+ * scrolling list in the filter. Ticked names show as chips under the search field.
+ */
 @Composable
 fun AtharFilterPicker(title: String, options: List<String>, selected: Set<String>, subtitle: (String) -> String?, tag: String, onToggle: (String) -> Unit) {
     var query by remember { mutableStateOf("") }
+    var fieldSize by remember { mutableStateOf(androidx.compose.ui.unit.IntSize.Zero) }
+    val density = LocalDensity.current
     Row(Modifier.fillMaxWidth().padding(vertical = 4.dp), verticalAlignment = Alignment.CenterVertically) {
         Text(title, Modifier.width(58.dp), color = AtharTheme.colors.secondaryText,
             fontSize = AtharTextSize.Small, fontWeight = FontWeight.SemiBold)
-        // A slim line like the chips beside it, not a boxed form field.
-        androidx.compose.foundation.text.BasicTextField(
-            query, { query = it },
-            Modifier.weight(1f).heightIn(min = 28.dp)
-                .atharControl(AtharTheme.colors.divider.copy(alpha = 0.32f), AtharCorners.Control)
-                .padding(horizontal = 10.dp, vertical = 5.dp)
-                .testTag("${tag}_query"),
-            singleLine = true,
-            textStyle = MaterialTheme.typography.bodyMedium.copy(color = MaterialTheme.colorScheme.onSurface),
-            cursorBrush = androidx.compose.ui.graphics.SolidColor(AtharTheme.colors.accent),
-            decorationBox = { inner ->
-                Box(contentAlignment = Alignment.CenterStart) {
-                    if (query.isEmpty()) Text("اكتب للبحث…", color = AtharTheme.colors.placeholderText, fontSize = AtharTextSize.Body, maxLines = 1)
-                    inner()
+        Box(Modifier.weight(1f)) {
+            // A slim line like the chips beside it, not a boxed form field.
+            androidx.compose.foundation.text.BasicTextField(
+                query, { query = it },
+                Modifier.fillMaxWidth().heightIn(min = 28.dp)
+                    .onSizeChanged { fieldSize = it }
+                    .atharControl(AtharTheme.colors.divider.copy(alpha = 0.32f), AtharCorners.Control)
+                    .padding(horizontal = 10.dp, vertical = 5.dp)
+                    .testTag("${tag}_query"),
+                singleLine = true,
+                textStyle = MaterialTheme.typography.bodyMedium.copy(color = MaterialTheme.colorScheme.onSurface),
+                cursorBrush = androidx.compose.ui.graphics.SolidColor(AtharTheme.colors.accent),
+                decorationBox = { inner ->
+                    Box(contentAlignment = Alignment.CenterStart) {
+                        if (query.isEmpty()) Text("اكتب للبحث…", color = AtharTheme.colors.placeholderText, fontSize = AtharTextSize.Body, maxLines = 1)
+                        inner()
+                    }
+                },
+            )
+            val term = com.atharchive.core.ArNormalize.normalize(query.trim())
+            val matches = remember(term, options) { if (term.isEmpty()) emptyList() else options.filter { normKey(it).contains(term) } }
+            if (term.isNotEmpty()) androidx.compose.ui.window.Popup(
+                offset = androidx.compose.ui.unit.IntOffset(0, fieldSize.height + with(density) { 4.dp.roundToPx() }),
+                // Not focusable: the keyboard stays on the field while the list follows the typing.
+                properties = androidx.compose.ui.window.PopupProperties(focusable = false),
+            ) {
+                val colors = atharMenuColors()
+                Box(
+                    Modifier.width(with(density) { fieldSize.width.toDp() })
+                        .atharChrome(colors.card, AtharCorners.Card, elevation = 6.dp, edge = AtharTheme.colors.divider)
+                        .testTag("${tag}_results"),
+                ) {
+                    if (matches.isEmpty()) Text("لا نتائج", Modifier.padding(12.dp), color = colors.secondary, fontSize = AtharTextSize.Small)
+                    else LazyColumn(Modifier.heightIn(max = 250.dp)) {
+                        items(matches.size, key = { matches[it] }) { i ->
+                            val name = matches[i]
+                            AtharMenuItem(name, checked = name in selected, subtitle = subtitle(name), onClick = { onToggle(name); query = "" })
+                        }
+                    }
                 }
-            },
-        )
-    }
-    val term = com.atharchive.core.ArNormalize.normalize(query.trim())
-    // ponytail: first 5 matches; a longer name narrows it. Empty: the first 5 ticked, to untick
-    // (every ticked one is also a chip under the field). Five keeps the popup free of scrolling.
-    val matches = (if (term.isEmpty()) selected.toList() else options.filter { normKey(it).contains(term) }).take(5)
-    matches.forEach { name ->
-        AtharMenuItem(name, checked = name in selected, subtitle = subtitle(name), onClick = { onToggle(name) })
+            }
+        }
     }
 }
 
@@ -927,3 +1009,48 @@ fun AtharDirectionGroup(descending: Boolean, onChange: (Boolean) -> Unit) =
     AtharChipGroup("الاتجاه", listOf("تصاعدي", "تنازلي"), if (descending) "تنازلي" else "تصاعدي") { onChange(it == "تنازلي") }
 
 fun <T> Comparator<T>.directed(descending: Boolean): Comparator<T> = if (descending) reversed() else this
+
+/**
+ * An edge thumb for long lists (the library): it appears while the list moves, and dragging it
+ * jumps straight to that point of the whole list. Hidden lists keep the edge for normal scrolling.
+ */
+@Composable
+fun androidx.compose.foundation.layout.BoxScope.AtharFastScroller(listState: androidx.compose.foundation.lazy.LazyListState, top: Dp = 0.dp) {
+    // Read through derivedStateOf / in the layout lambda below: layoutInfo changes every scroll
+    // frame, and reading it here recomposed the scroller on each one (the library's stutter).
+    val total by remember(listState) { androidx.compose.runtime.derivedStateOf { listState.layoutInfo.totalItemsCount } }
+    if (total < 40) return
+    val scope = androidx.compose.runtime.rememberCoroutineScope()
+    var dragging by remember { mutableStateOf(false) }
+    val shown = dragging || listState.isScrollInProgress
+    val alpha by androidx.compose.animation.core.animateFloatAsState(if (shown) 1f else 0f, tween(if (shown) 150 else 900), label = "fast_scroller")
+    androidx.compose.foundation.layout.BoxWithConstraints(
+        Modifier.align(Alignment.TopEnd).padding(top = top, bottom = 28.dp)
+            .fillMaxHeight().width(28.dp)
+            .graphicsLayer { this.alpha = alpha }
+            .testTag("fast_scroller")
+            .then(if (alpha == 0f) Modifier else Modifier.pointerInput(total) {
+                fun jump(y: Float) { scope.launch { listState.scrollToItem(((y / size.height).coerceIn(0f, 1f) * (total - 1)).toInt()) } }
+                detectVerticalDragGestures(
+                    onDragStart = { dragging = true; jump(it.y) },
+                    onDragEnd = { dragging = false },
+                    onDragCancel = { dragging = false },
+                ) { change, _ -> change.consume(); jump(change.position.y) }
+            }),
+    ) {
+        val thumb = 44.dp
+        val travel = maxHeight - thumb
+        Box(
+            Modifier.align(Alignment.TopCenter)
+                // the first row's scrolled share too, so the thumb glides instead of stepping a row at a time
+                .offset {
+                    val first = listState.layoutInfo.visibleItemsInfo.firstOrNull()
+                    val within = first?.let { listState.firstVisibleItemScrollOffset / it.size.coerceAtLeast(1).toFloat() } ?: 0f
+                    val fraction = ((listState.firstVisibleItemIndex + within) / (total - 1)).coerceIn(0f, 1f)
+                    androidx.compose.ui.unit.IntOffset(0, (travel.toPx() * fraction).toInt())
+                }
+                .size(width = if (dragging) 8.dp else 5.dp, height = thumb)
+                .background(AtharTheme.colors.accent.copy(alpha = 0.75f), CircleShape),
+        )
+    }
+}

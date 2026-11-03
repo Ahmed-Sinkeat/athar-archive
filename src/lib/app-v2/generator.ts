@@ -388,7 +388,8 @@ async function generate(options: GenerateAppContentOptions, stagingRoot: string)
       ...(artifact.index.frames[0] ? { f0: artifact.index.frames[0] } : {}),
     };
     const hash = sha256Hex(jsonBytes({ ...base, ...person, pkg, ...(audio ? { audio } : {}) }));
-    catalogEntries.push({ ...base, hash, ...person, pkg, ...(audio ? { audio } : {}) });
+    // JSON round trip: card/title strings are V8 slices of the whole book source and would pin every book in memory.
+    catalogEntries.push(JSON.parse(JSON.stringify({ ...base, hash, ...person, pkg, ...(audio ? { audio } : {}) })));
     summaries.push({
       coll: source.target.coll,
       id: source.target.id,

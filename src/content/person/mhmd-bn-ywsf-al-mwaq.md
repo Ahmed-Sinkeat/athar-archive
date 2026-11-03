@@ -2,6 +2,5 @@
 title: "محمد بن يوسف المواق"
 status: published
 published_at: 2026-07-19
-born: "معاصر"
-died: "معاصر"
+died: "897هـ"
 ---
