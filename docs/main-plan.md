@@ -392,6 +392,11 @@ Books above **25 MiB compressed** split into `.athar.000`, `.001` at chapter bou
 are listed in `pkg.parts[]`. M0/R3 selected the threshold; the largest measured package is
 12.73 MiB and therefore remains a single part.
 
+**2026-11-03:** the split is still unbuilt (the app has no `pkg.parts[]` reader). The
+generator's cap was raised to 32 MiB so تاج العروس (26.5 MB) ships as one part; the app
+streams the package to disk and imports per frame, so size is not held in memory. Build the
+split when a book passes 32 MiB.
+
 ---
 
 ## 6 · Athar document model

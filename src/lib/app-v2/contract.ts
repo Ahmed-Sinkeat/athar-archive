@@ -1,7 +1,9 @@
 export const APP_CONTENT_SCHEMA = 2 as const;
 export const APP_CONTENT_PREFIX = "app/v2";
 export const APP_FRAME_BLOCKS = 250;
-export const APP_PACKAGE_SPLIT_BYTES = 25 * 1024 * 1024;
+// ponytail: raised from the M0 25 MiB target for تاج العروس (26.5 MB); the app streams to disk and imports per frame,
+// so size is not held in memory. Past 32 MiB, build the chapter-boundary multipart split (docs/main-plan.md §M0).
+export const APP_PACKAGE_SPLIT_BYTES = 32 * 1024 * 1024;
 
 export type ReadableCollection = "book" | "article" | "question" | "poem";
 

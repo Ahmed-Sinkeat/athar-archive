@@ -2,7 +2,6 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { fetchAppAudio } from "../src/lib/app-v2/audio.js";
 import { generateAppContent, publishedContentTargets, type ContentTarget } from "../src/lib/app-v2/generator.js";
-import { DICTS } from "./gen-app-dict.js";
 
 const SLICE: ContentTarget[] = [
   { coll: "article", id: "byan-kdhb-athr-idha-safr-al-fqr-ila-mkan-ma-qal-al-kfr-khdhny-mak-ala-aby-dhr--v2" },
@@ -41,8 +40,7 @@ const result = await generateAppContent({
   repositoryRoot,
   outputRoot,
   sidecarRoot,
-  // The dictionaries ship as dict.zip (pnpm app:dict), not as books: تاج العروس alone is over the package cap.
-  targets: only ?? (slice ? SLICE : (await publishedContentTargets(repositoryRoot)).filter((t) => !DICTS.some((d) => d.id === t.id))),
+  targets: only ?? (slice ? SLICE : await publishedContentTargets(repositoryRoot)),
   keepOthers: only != null,
   signing,
   loadAudio: fetchAppAudio,

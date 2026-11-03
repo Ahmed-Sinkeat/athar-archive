@@ -187,6 +187,16 @@ than merely delaying it.
   and the whole corpus lands in one run.
 - The D1 refresh step runs **after** the Worker deploy, so a slow or partial
   reindex never delays the site going live.
+- Deletes go by rowid through `doc_meta` (`DELETE FROM docs WHERE rowid IN (SELECT
+  rowid FROM doc_meta WHERE url = …)`). `docs.url` is UNINDEXED in FTS5, so the old
+  `WHERE url =` scanned the whole table per URL; at 6.7 GB that reset D1 (7429) and
+  made `wrangler d1 execute --file` fail as 7009 (2026-11-03).
+- **Size ceiling:** D1 caps a database at 10 GB (Paid). `athar-search` was 6.85 GB
+  on 2026-11-03 with ~2 GB of SQL (the 639-book import) still deferred; DB growth
+  measured 1.15–1.43× the SQL size. Check `size_after` before a large load.
+- Phone-only releases skip CI: deploy the search worker and load D1 from a local
+  machine, push with `[skip ci]`, and run the CI workflow by hand (Actions → Run
+  workflow) when the site should deploy.
 
 ---
 
