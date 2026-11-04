@@ -304,7 +304,7 @@ abstract class ContentCatalogDao {
      * old package hash, so an interrupted apply finds them again), and the generation row is
      * written last by [finishGeneration], so the next sync re-applies an unfinished generation.
      */
-    suspend fun applyCatalogSlices(incoming: List<ContentEntity>) {
+    suspend fun applyCatalogSlices(incoming: List<ContentEntity>, onProgress: (Float) -> Unit = {}) {
         val current = allEntities().associateBy(ContentEntity::id)
         // Read-through pages carry no package version, so pages cached from an older package
         // would be served forever; drop them and the reader fetches the new ones. A download
@@ -319,7 +319,11 @@ abstract class ContentCatalogDao {
             deleteChapters(entityId)
             deleteFootnotes(entityId)
         }
-        for (slice in incoming.chunked(CatalogSlice)) applyCatalogSlice(slice, stalePages)
+        val slices = incoming.chunked(CatalogSlice)
+        slices.forEachIndexed { index, slice ->
+            applyCatalogSlice(slice, stalePages)
+            onProgress((index + 1f) / slices.size)
+        }
     }
 
     /** Re-reads its rows inside the slice's transaction, so a download finishing between slices keeps its state. */

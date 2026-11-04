@@ -236,6 +236,15 @@ fun AtharApp(
         contentViewModel.errors.collect { snackbarHostState.showSnackbar(it) }
     }
     LaunchedEffect(playbackError) { playbackError?.let { snackbarHostState.showSnackbar(it) } }
+    val catalogUpdate by contentViewModel.catalogUpdate.collectAsStateWithLifecycle()
+    val updatingLibrary = catalogUpdate != null
+    LaunchedEffect(updatingLibrary) {
+        // Shown for as long as the update runs; leaving this effect (update done) dismisses it.
+        if (updatingLibrary && snackbarHostState.showSnackbar(LibraryUpdatingMessage, "إلغاء",
+                duration = androidx.compose.material3.SnackbarDuration.Indefinite) == androidx.compose.material3.SnackbarResult.ActionPerformed) {
+            contentViewModel.cancelSync()
+        }
+    }
     LaunchedEffect(syncState) {
         // Launch checks fail quietly (Settings shows the state); only a check the reader asked for speaks up.
         val failed = syncState as? com.atharchive.data.ContentSyncUiState.Failed
@@ -524,7 +533,22 @@ fun AtharApp(
         contentWindowInsets = WindowInsets.safeDrawing.only(
             WindowInsetsSides.Top + WindowInsetsSides.Horizontal,
         ),
-        snackbarHost = { SnackbarHost(snackbarHostState) },
+        snackbarHost = {
+            SnackbarHost(snackbarHostState) { data ->
+                if (data.visuals.message != LibraryUpdatingMessage) androidx.compose.material3.Snackbar(data)
+                else androidx.compose.material3.Snackbar(
+                    action = { androidx.compose.material3.TextButton(onClick = data::performAction) { Text("إلغاء") } },
+                ) {
+                    androidx.compose.foundation.layout.Column {
+                        Text(LibraryUpdatingMessage)
+                        androidx.compose.material3.LinearProgressIndicator(
+                            progress = { catalogUpdate ?: 0f },
+                            modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
+                        )
+                    }
+                }
+            }
+        },
         bottomBar = {
             if (inPlayer || inPoemReader) return@Scaffold
             if (inReader) {
@@ -1488,3 +1512,5 @@ private fun ExcerptUi.shareText(): String = buildString {
 }
 
 /** A tapped recording becomes the now-playing item at position zero. */
+
+private const val LibraryUpdatingMessage = "جارٍ تحديث المكتبة بالمحتوى الجديد…"

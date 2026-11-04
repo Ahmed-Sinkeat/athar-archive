@@ -64,6 +64,8 @@ class ReadThroughContentRepository(
             return CatalogSyncResult.UpToDate(root.generationId)
         }
 
+        importer.applyProgress.value = 0f // the update is visible from the catalog download on
+        try {
         val generation = client.fetchGeneration(root)
         return mutationMutex.withLock {
         if (database.catalogDao().generation()?.generationId != current?.generationId) return@withLock CatalogSyncResult.UpToDate(database.catalogDao().generation()?.generationId ?: root.generationId)
@@ -81,6 +83,9 @@ class ReadThroughContentRepository(
         val protectedAfter = protectedIds(requestedAudioIds())
         database.catalogDao().purgeUnprotectedTombstones(protectedAfter)
         CatalogSyncResult.Applied(generation)
+        }
+        } finally {
+            importer.applyProgress.value = null
         }
     }
 

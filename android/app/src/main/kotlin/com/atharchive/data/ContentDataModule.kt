@@ -121,6 +121,8 @@ class ContentAccess @Inject constructor(
     val requestedAudio: StateFlow<Set<String>> = _requestedAudio
     private val _downloadedAudio = MutableStateFlow(storagePreferences.getStringSet("downloaded_audio", emptySet()).orEmpty().toSet())
     val downloadedAudio: StateFlow<Set<String>> = _downloadedAudio
+    /** 0..1 while a new catalog is downloaded and applied, null otherwise. */
+    val catalogUpdate: StateFlow<Float?> = importer.applyProgress
     private val verifiedAudio = java.util.concurrent.ConcurrentHashMap.newKeySet<String>()
 
     suspend fun reconcileAudioDownloads() = withContext(Dispatchers.IO) {

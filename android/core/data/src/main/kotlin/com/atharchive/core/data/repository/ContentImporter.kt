@@ -27,6 +27,12 @@ class ContentImporter(
     private val database: AtharContentDatabase,
     private val nowMillis: () -> Long = System::currentTimeMillis,
 ) {
+    /**
+     * 0..1 while a catalog generation is fetched and applied, null otherwise. The app pauses its
+     * catalog lists meanwhile: each slice commit re-ran every list query over the whole catalog.
+     */
+    val applyProgress = kotlinx.coroutines.flow.MutableStateFlow<Float?>(null)
+
     suspend fun applyCatalog(catalog: CatalogDocument) {
         val synthetic = ContentGenerationEntity(
             generationId = "legacy-${catalog.entries.hashCode()}",
@@ -62,13 +68,20 @@ class ContentImporter(
     // Catalog rows commit slice by slice; only the search index and the generation row (written
     // last, so an interrupted apply runs again) share one small transaction.
     private suspend fun apply(catalog: CatalogDocument, tombstonedIds: Set<String>, generation: ContentGenerationEntity) {
+        val started = System.nanoTime()
         ContentSearchSchema.ensure(database)
         val dao = database.catalogDao()
-        dao.applyCatalogSlices(catalog.entries.map(CatalogEntry::toEntity))
-        database.withWriteTransaction {
-            dao.finishGeneration(tombstonedIds, generation)
-            ContentSearchSchema.replaceCatalog(this, dao.allEntities())
+        try {
+            applyProgress.value = 0.05f
+            dao.applyCatalogSlices(catalog.entries.map(CatalogEntry::toEntity)) { applyProgress.value = 0.05f + 0.85f * it }
+            database.withWriteTransaction {
+                dao.finishGeneration(tombstonedIds, generation)
+                ContentSearchSchema.replaceCatalog(this, dao.allEntities())
+            }
+        } finally {
+            applyProgress.value = null
         }
+        android.util.Log.i("AtharContent", "catalog applied: ${catalog.entries.size} entries in ${(System.nanoTime() - started) / 1_000_000} ms")
     }
 
     /** Imports a verified frame; with [into] set to a staging id the frame is written beside the readable copy. */

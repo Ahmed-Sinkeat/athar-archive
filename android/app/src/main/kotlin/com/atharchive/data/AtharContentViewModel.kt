@@ -243,7 +243,7 @@ class AtharContentViewModel @Inject constructor(
 
     val kannashahState: StateFlow<KannashahUiState> = combine(
         annotations,
-        catalogDao.observeAllEntities(),
+        catalogDao.observeAllEntities().pausedDuringUpdate(),
     ) { saved, catalog ->
         val sourceById = catalog.associateBy(ContentEntity::id)
         // A list, not a sequence: a poem's verse number is read from its block (a suspend call).
@@ -291,7 +291,7 @@ class AtharContentViewModel @Inject constructor(
         _searchFilters.map { it.copy(plain = false) }.distinctUntilChanged(),
         recentSearches,
         // The filter lists are built once per catalog change, not on every keystroke.
-        catalogDao.observeCatalog().map { SearchCatalog(it) },
+        catalogDao.observeCatalog().pausedDuringUpdate().map { SearchCatalog(it) },
     ) { query, filters, recent, catalog ->
         SearchInput(query, filters, recent.map { it.q }, catalog)
     }.combine(_searchLimit) { input, limit -> input to limit }.transformLatest { (input, limit) ->
@@ -523,7 +523,7 @@ class AtharContentViewModel @Inject constructor(
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyMap())
 
     private val textDownloads: StateFlow<List<DownloadUi>> = combine(
-        catalogDao.observeAllEntities(), pinIds, retainedPins, jobIndex, content.pausedDownloads,
+        catalogDao.observeAllEntities().pausedDuringUpdate(), pinIds, retainedPins, jobIndex, content.pausedDownloads,
     ) { entities, pinnedIds, retainedIds, jobs, pausedIds ->
         entities.filter { it.id in pinnedIds }.map { entity ->
             val job = jobs["content:${entity.coll}:${entity.id}"]
@@ -555,15 +555,15 @@ class AtharContentViewModel @Inject constructor(
         .map { list -> list.filter { it.kindLabel == kind }.associate { it.id to it.transfer } }
         .distinctUntilChanged()
 
-    val persons = catalogDao.observeGeneration().map { generation ->
+    val persons = catalogDao.observeGeneration().pausedDuringUpdate().map { generation ->
         generation?.persons().orEmpty()
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
 
-    val personWorks = catalogDao.observeCatalog().map { entities -> entities.associateBy { it.id } }
+    val personWorks = catalogDao.observeCatalog().pausedDuringUpdate().map { entities -> entities.associateBy { it.id } }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyMap())
 
     val books: StateFlow<BooksUiState> = combine(
-        catalogDao.observeCollection("book"), pinIds, retainedPins, library, combine(positions, transfersOf("كتاب")) { positions, transfers -> positions to transfers },
+        catalogDao.observeCollection("book").pausedDuringUpdate(), pinIds, retainedPins, library, combine(positions, transfersOf("كتاب")) { positions, transfers -> positions to transfers },
     ) { entities, pinnedIds, retainedIds, shelves, reading ->
         val (savedPositions, transfers) = reading
         val shelfIds = shelves.mapTo(hashSetOf(), LibraryEntryEntity::entityId)
@@ -589,7 +589,7 @@ class AtharContentViewModel @Inject constructor(
     )
 
     val articles: StateFlow<ArticlesUiState> = combine(
-        catalogDao.observeCollection("article"), pinIds, retainedPins, library, combine(transfersOf("مقال"), recentRanks) { t, r -> t to r },
+        catalogDao.observeCollection("article").pausedDuringUpdate(), pinIds, retainedPins, library, combine(transfersOf("مقال"), recentRanks) { t, r -> t to r },
     ) { entities, pinnedIds, retainedIds, shelves, transferAndRank ->
         val (transfers, ranks) = transferAndRank
         val shelfIds = shelves.mapTo(hashSetOf(), LibraryEntryEntity::entityId)
@@ -619,7 +619,7 @@ class AtharContentViewModel @Inject constructor(
     }.flowOn(Dispatchers.Default).stateIn(viewModelScope, SharingStarted.Eagerly, ArticlesUiState("٠ مقال", emptyList(), loaded = false)) // ponytail: hot from app start so the tab opens filled; costs one recompute per download tick while hidden
 
     // Only works with recordings are decoded, and only when the catalog changes, not on every download tick.
-    private val audioSources = combine(catalogDao.observeEntitiesWithAudio(), persons) { list, people ->
+    private val audioSources = combine(catalogDao.observeEntitiesWithAudio().pausedDuringUpdate(), persons) { list, people ->
         val names = people.associate { it.id to it.name }
         list.map { entity -> entity to entity.audioReferences().map { it to it.reciters.mapNotNull(names::get) } }
     }
@@ -726,7 +726,7 @@ class AtharContentViewModel @Inject constructor(
 
     /** «تنزيل الكل»: every type row with what is done, in flight and left, grouped with summed sizes. */
     val bulkDownloads = combine(
-        catalogDao.observeCatalog(),
+        catalogDao.observeCatalog().pausedDuringUpdate(),
         combine(pinIds, retainedPins, content.pausedDownloads) { pinned, retained, paused -> Triple(pinned, retained, paused) },
         audioSources,
         combine(content.requestedAudio, content.downloadedAudio, content.batches) { requested, downloaded, batches -> Triple(requested, downloaded, batches) },
@@ -800,7 +800,7 @@ class AtharContentViewModel @Inject constructor(
     }
 
     val issues: StateFlow<IssuesUiState> = combine(
-        catalogDao.observeCollection("question"), retainedPins, library, combine(transfersOf("مسألة"), recentRanks) { t, r -> t to r },
+        catalogDao.observeCollection("question").pausedDuringUpdate(), retainedPins, library, combine(transfersOf("مسألة"), recentRanks) { t, r -> t to r },
     ) { entities, retainedIds, shelves, transferAndRank ->
         val (transfers, ranks) = transferAndRank
         val shelfIds = shelves.mapTo(hashSetOf(), LibraryEntryEntity::entityId)
@@ -828,7 +828,7 @@ class AtharContentViewModel @Inject constructor(
 
     val poetry: StateFlow<PoetryUiState> = combine(
         // Decoded once per catalog change, not on every pin, shelf or progress change.
-        catalogDao.observeCollection("poem").map { list -> list.map { it to it.toCatalogEntry() } },
+        catalogDao.observeCollection("poem").pausedDuringUpdate().map { list -> list.map { it to it.toCatalogEntry() } },
         pinIds, retainedPins, library, combine(transfersOf("قصيدة"), recentRanks) { t, r -> t to r },
     ) { decoded, pinnedIds, retainedIds, shelves, transferAndRank ->
         val (transfers, ranks) = transferAndRank
@@ -873,6 +873,25 @@ class AtharContentViewModel @Inject constructor(
     }
 
     private var syncJob: kotlinx.coroutines.Job? = null
+
+    /** 0..1 while a new catalog is downloaded and applied; the app shows it with a cancel button. */
+    val catalogUpdate: StateFlow<Float?> = content.catalogUpdate
+
+    /**
+     * Not collected while a catalog applies: every slice commit re-ran each list query over the
+     * whole catalog (measured: an 8-minute update at ~6 cores on a Redmi 12). The lists keep
+     * their last value and refresh once when the update ends.
+     */
+    private fun <T> kotlinx.coroutines.flow.Flow<T>.pausedDuringUpdate(): kotlinx.coroutines.flow.Flow<T> =
+        content.catalogUpdate.map { it != null }.distinctUntilChanged().flatMapLatest { updating ->
+            if (updating) kotlinx.coroutines.flow.emptyFlow() else this
+        }
+
+    /** Stops a running catalog update; the next launch resumes it. */
+    fun cancelSync() {
+        syncJob?.cancel()
+        _syncState.value = ContentSyncUiState.LocalReady
+    }
 
     /**
      * Automatic checks (launch, retry buttons) stay quiet and retry a slow or dropped link twice;
