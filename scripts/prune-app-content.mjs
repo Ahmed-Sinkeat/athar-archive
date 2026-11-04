@@ -55,11 +55,15 @@ async function main() {
   console.log(`${remote.size} objects in R2, ${live.length} live, ${dead.length} unreferenced (${(bytes / 1048576).toFixed(1)} MiB)`);
   if (!confirm) return console.log("dry run: nothing deleted. --confirm to delete.");
   const liveSet = new Set(live);
-  for (const key of dead) {
-    if (!key.startsWith(PREFIX) || liveSet.has(key)) throw new Error(`refusing to delete ${key}`);
-    const res = await s3("DELETE", key);
-    if (!res.ok && res.status !== 404) throw new Error(`${key}: HTTP ${res.status}`);
-  }
+  // ponytail: fixed pool of 16 workers; sequential DELETEs ran ~1/s. Raise if R2 keeps up.
+  const queue = dead.slice();
+  await Promise.all(Array.from({ length: 16 }, async () => {
+    for (let key; (key = queue.shift()); ) {
+      if (!key.startsWith(PREFIX) || liveSet.has(key)) throw new Error(`refusing to delete ${key}`);
+      const res = await s3("DELETE", key);
+      if (!res.ok && res.status !== 404) throw new Error(`${key}: HTTP ${res.status}`);
+    }
+  }));
   console.log(`deleted ${dead.length}`);
 }
 
