@@ -125,7 +125,9 @@ fun SearchFilterButton(
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun SearchActiveFilters(filters: SearchFilters, onChange: (SearchFilters) -> Unit, modifier: Modifier = Modifier) {
-    val active = filters.active()
+    // One kind picked is the tab row's selection: no chip repeats it above the tabs.
+    val active = if (filters.types.size != 1) filters.active()
+        else filters.copy(types = emptySet()).active().map { (label, without) -> label to without.copy(types = filters.types) }
     if (active.isEmpty()) return
     FlowRow(
         modifier.padding(top = 8.dp),
