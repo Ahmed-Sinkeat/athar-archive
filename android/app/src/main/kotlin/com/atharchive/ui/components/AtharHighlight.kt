@@ -30,3 +30,12 @@ fun highlightMatches(
         }
     }
 }
+
+/** [text] with each of [ranges] painted, the way [highlightMatches] paints a match. */
+fun markRanges(text: String, ranges: List<IntRange>, background: Color): AnnotatedString = buildAnnotatedString {
+    append(text)
+    ranges.forEach { r ->
+        if (r.first >= 0 && r.last < text.length && r.first <= r.last)
+            addStyle(SpanStyle(background = background, fontWeight = FontWeight.Bold), r.first, r.last + 1)
+    }
+}

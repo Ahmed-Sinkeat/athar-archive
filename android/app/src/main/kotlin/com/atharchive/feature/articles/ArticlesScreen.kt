@@ -179,6 +179,7 @@ fun ArticlesScreen(
                 )
                 AtharSearchField(
                     query = query,
+                    resultCount = visibleArticles.size,
                     placeholder = "ابحث في ${state.countLabel}…",
                     onQueryChange = { query = it },
                     tagPrefix = "articles",

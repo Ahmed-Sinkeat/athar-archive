@@ -155,7 +155,8 @@ fun ReaderScreen(
     onOpenAuthor: (() -> Unit)? = null,
     onShareBook: (() -> Unit)? = null,
     /** An online in-book hit's url → its block and match range in the book (null block: not found). */
-    onLocateOnline: (suspend (String, String) -> Triple<Int?, Int, Int>)? = null,
+    onLocateOnline: (suspend (InBookHit, String) -> Triple<Int?, Int, Int>)? = null,
+    onLoadPassage: suspend (InBookHit) -> String? = { null },
     /** Shared with the main search: shown while the book search box is empty. */
     recentQueries: List<String> = emptyList(),
     onRememberSearch: (String) -> Unit = {},
@@ -310,18 +311,25 @@ fun ReaderScreen(
     var partialSearch by remember { mutableStateOf<Int?>(null) }
     var downloadAsked by remember { mutableStateOf(false) }
     var searchMode by remember { mutableStateOf(com.atharchive.feature.search.SearchMode.All) }
+    var hitsFor by remember { mutableStateOf<Pair<String, com.atharchive.feature.search.SearchMode>?>(null) }
+    var locating by remember { mutableStateOf(false) }
     LaunchedEffect(query, bookSaved, searchMode) {
-        hits = emptyList()
+        // A rerun for the same words (the book finished saving) keeps its list until the new one lands:
+        // it used to blank and refill under the reader's finger.
+        val same = hitsFor == (query to searchMode)
+        if (!same) { hits = emptyList(); partialSearch = null }
         searchStatus = null
-        partialSearch = null
         if (query.trim().length >= 2) {
             kotlinx.coroutines.delay(150)
-            searchStatus = "جارٍ البحث…"
+            if (!same) searchStatus = "جارٍ البحث…"
             try {
                 val result = onSearch?.invoke(query, searchMode) ?: InBookSearch(findHits(state, query))
                 hits = result.hits
+                hitsFor = query to searchMode
                 partialSearch = result.savedPercent.takeUnless { result.complete }
-                searchStatus = if (hits.size == 200) "أول ٢٠٠ نتيجة؛ حدّد البحث لنتائج أدق" else null
+                // The phone's search stops at 200, the site's at 100: a full page means there may be more.
+                searchStatus = if (hits.size == 200 || (hits.size == 100 && hits.first().url != null))
+                    "أول ${com.atharchive.ui.components.arabicDigits(hits.size)} نتيجة؛ حدّد البحث لنتائج أدق" else null
             } catch (cancelled: CancellationException) {
                 throw cancelled
             } catch (error: Exception) {
@@ -329,8 +337,9 @@ fun ReaderScreen(
             }
         }
     }
-    LaunchedEffect(toast) {
-        if (toast != null) {
+    // «جارٍ فتح الموضع…» stays up until the place is found, however long the frames take.
+    LaunchedEffect(toast, locating) {
+        if (toast != null && !locating) {
             kotlinx.coroutines.delay(1800)
             toast = null
         }
@@ -721,12 +730,15 @@ fun ReaderScreen(
                 // reopen it after every jump.
                 onJump = { jumpTo(it) },
                 recentQueries = recentQueries,
+                loadPassage = onLoadPassage,
                 onHit = { hit ->
                     onRememberSearch(query)
                     val url = hit.url
-                    if (url == null) jumpTo(hit.blockIndex) else scope.launch {
+                    // One locate at a time: a second tap while the first runs used to jump twice.
+                    if (url == null) jumpTo(hit.blockIndex) else if (!locating) scope.launch {
+                        locating = true
                         toast = "جارٍ فتح الموضع…"
-                        val (ordinal, start, end) = onLocateOnline?.invoke(url, query) ?: Triple(null, 0, 0)
+                        val (ordinal, start, end) = try { onLocateOnline?.invoke(hit, query) ?: Triple(null, 0, 0) } finally { locating = false }
                         toast = null
                         if (ordinal == null) toast = "تعذّر فتح الموضع"
                         else jumpTo(ordinal, if (end > start) ReaderSearchTarget(ordinal, start, end) else null)

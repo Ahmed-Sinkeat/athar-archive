@@ -403,7 +403,9 @@ class AtharContentViewModel @Inject constructor(
         }
     }.combine(_searchFilters) { state, filters -> state.copy(filters = filters) }.stateIn(
         viewModelScope,
-        SharingStarted.WhileSubscribed(5_000),
+        // Kept while a result is open in the reader: on WhileSubscribed the way back re-ran the search
+        // and the list rebuilt page by page under the reader. Stops only with the view model.
+        SharingStarted.Eagerly,
         SearchUiState(
             recentQueries = emptyList(),
             directMatches = emptyList(),
@@ -482,9 +484,15 @@ class AtharContentViewModel @Inject constructor(
      * anchor), then the first match of [query] in that chapter's loaded frame; an article, poem or
      * مسألة is searched from its start. Null ordinal: open it as usual.
      */
-    suspend fun locateOnlineHit(hit: SearchHitUi, query: String): Triple<Int?, Int, Int> = locateOnline(hit.entityId, hit.url, query)
+    suspend fun locateOnlineHit(hit: SearchHitUi, query: String): Triple<Int?, Int, Int> = locateOnline(hit.entityId, hit.url, query, hit.excerpt)
 
-    suspend fun locateOnline(entityId: String, url: String?, query: String): Triple<Int?, Int, Int> {
+    /**
+     * The block behind an online hit: its chapter (or the site's «--pages-85-124» piece of it) is
+     * opened frame by frame, and of the blocks there that match, the one sharing most words with the
+     * hit's own snippet wins. It used to take the chapter's first match: a tap on the fifth hit in
+     * a 40-page piece landed on the first.
+     */
+    suspend fun locateOnline(entityId: String, url: String?, query: String, snippet: String = ""): Triple<Int?, Int, Int> {
         val slug = url?.substringAfter("/$entityId/", "")?.let(android.net.Uri::decode).orEmpty()
         if (query.length < 2) return Triple(null, 0, 0)
         return runCatching {
@@ -493,16 +501,35 @@ class AtharContentViewModel @Inject constructor(
             val index = chapters.indexOfFirst { it.anchor == slug.substringBefore("--pages-") }
             if (slug.isNotEmpty() && index < 0) return@runCatching Triple(null, 0, 0)
             val from = chapters.getOrNull(index)?.firstOrdinal ?: 0
-            val to = chapters.getOrNull(index + 1)?.firstOrdinal?.minus(1) ?: Int.MAX_VALUE
-            content.open(entityId, from)
-            val match = contentSearch.search(
-                ContentSearchRequest(query = query, sort = ContentSearchSort.BookOrder,
-                    filter = ContentSearchFilter(entityIds = setOf(entityId)), ordinals = from..to),
-                limit = 1,
-            ).blocks.firstOrNull()
-            if (match == null) Triple(from, 0, 0) else Triple(match.ordinal, match.sourceMatchStart, match.sourceMatchEnd)
+            val to = chapters.getOrNull(index + 1)?.firstOrdinal?.minus(1)
+                ?: ((catalogDao.entity(entityId)?.pkgBlocks ?: Int.MAX_VALUE) - 1)
+            val words = snippetWords(snippet)
+            var best: Pair<Int, com.atharchive.core.data.repository.BlockSearchHit>? = null
+            var at = from
+            var frames = 0
+            // ponytail: at most 40 frames of one chapter walked; a longer chapter falls back to its best match so far.
+            while (at <= to && frames++ < 40) {
+                content.open(entityId, at)
+                val frame = importDao.frames(entityId).firstOrNull { at in it.firstBlockOrdinal until it.firstBlockOrdinal + it.blockCount } ?: break
+                val end = minOf(frame.firstBlockOrdinal + frame.blockCount - 1, to)
+                contentSearch.search(
+                    ContentSearchRequest(query = query, sort = ContentSearchSort.BookOrder,
+                        filter = ContentSearchFilter(entityIds = setOf(entityId)), ordinals = at..end),
+                    limit = 200,
+                ).blocks.forEach { hit ->
+                    val text = importDao.blockAt(entityId, hit.ordinal)?.text.orEmpty()
+                    val score = snippetWords(text).let { have -> words.count { it in have } }
+                    if (best == null || score > best!!.first) best = score to hit
+                }
+                if (best != null && (words.isEmpty() || best!!.first * 5 >= words.size * 4)) break
+                at = end + 1
+            }
+            best?.second?.let { Triple(it.ordinal, it.sourceMatchStart, it.sourceMatchEnd) } ?: Triple(from, 0, 0)
         }.getOrElse { if (it is kotlinx.coroutines.CancellationException) throw it else Triple(null, 0, 0) }
     }
+
+    private fun snippetWords(text: String): Set<String> =
+        com.atharchive.core.ArNormalize.normalize(text).split(' ', '\n', '…').filterTo(HashSet()) { it.length >= 2 }
 
     /**
      * Each job's tag → the job that matters for it (unfinished first, else failed), built once per
@@ -1061,16 +1088,27 @@ class AtharContentViewModel @Inject constructor(
         return InBookSearch(hits, complete, if (complete) 100 else (saved * 100 / total).coerceIn(0, 99))
     }
 
+    /** The whole paragraph behind an in-book hit, for «المزيد»: the saved block, else the site's passage. */
+    suspend fun inBookPassage(entityId: String, hit: InBookHit): String? = runCatching {
+        if (hit.url == null) importDao.blockAt(entityId, hit.blockIndex)?.text
+        else onlineSearch.fullText(hit.url, hit.row).ifBlank { null }
+    }.getOrElse { if (it is kotlinx.coroutines.CancellationException) throw it else null }
+
     /** The site's index for one book (every chapter that matches); null offline. A hit is located on tap. */
     private suspend fun onlineInBook(entityId: String, query: String, mode: com.atharchive.feature.search.SearchMode): List<InBookHit>? = try {
         onlineSearch.hits(OnlineSearch.Query(query, mode.api, "text", emptySet(), emptySet(), "relevance", books = setOf(entityId)), 100).first
             .mapIndexed { index, hit ->
                 val (text, marks) = unmark(hit.snippet)
                 val first = marks.firstOrNull() ?: 0..-1
+                // The site splits a long chapter into «صفحات 85-124» pieces: the chapter's name comes from the url, the pages from the title.
+                val place = hit.title.substringAfter(" — ", "")
+                val pages = place.takeIf { it.startsWith("صفحات") }
                 InBookHit(
                     id = "online:$index:${hit.url}", blockIndex = -1,
-                    chapterTitle = arabicDigits(hit.title.substringAfter(" — ", "").replace(Regex("""(\d)-(\d)"""), "$1–$2")),
-                    excerpt = text, matchStart = first.first, matchEnd = first.last + 1, pageLabel = null, url = hit.url,
+                    chapterTitle = if (pages == null) place else android.net.Uri.decode(hit.url.substringAfterLast('/').substringBefore("--pages-")).replace('-', ' '),
+                    excerpt = text, matchStart = first.first, matchEnd = first.last + 1,
+                    pageLabel = pages?.let { arabicDigits(it.replace(Regex("""(\d)-(\d)"""), "$1–$2")) },
+                    url = hit.url, matches = marks, row = hit.row,
                 )
             }
     } catch (cancelled: kotlinx.coroutines.CancellationException) { throw cancelled

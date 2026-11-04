@@ -246,6 +246,7 @@ fun BooksScreen(
                         )
                 AtharSearchField(
                     query = query,
+                    resultCount = visibleBooks.size,
                     placeholder = "ابحث في ${state.archiveCountLabel}…",
                     onQueryChange = { query = it },
                     tagPrefix = "books",

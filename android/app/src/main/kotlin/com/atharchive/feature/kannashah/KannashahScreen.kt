@@ -203,6 +203,7 @@ fun KannashahScreen(
                 )
                 AtharSearchField(
                     query = query,
+                    resultCount = sorted.size,
                     placeholder = "ابحث في كناشتك…",
                     onQueryChange = { query = it },
                     tagPrefix = "kannashah",

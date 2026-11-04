@@ -476,13 +476,17 @@ fun AtharApp(
     }
 
     /** Opens a passage from any search: local hits know their paragraph, online ones are located first. */
+    var openingHit by remember { mutableStateOf(false) }
     fun openHit(hit: com.atharchive.feature.search.SearchHitUi, query: String) {
         val poem = hit.type == com.atharchive.feature.search.SearchResultType.Poem
-        if (hit.url != null) scope.launch {
-            val (ordinal, start, end) = contentViewModel.locateOnlineHit(hit, query)
+        // Locating an online hit fetches the book's frames first: say so, and take one tap at a time
+        // (the screen used to sit still, and a second tap opened the book twice).
+        if (hit.url != null) { if (openingHit) return; openingHit = true; scope.launch {
+            val note = launch { snackbarHostState.showSnackbar("جارٍ فتح الموضع…", duration = androidx.compose.material3.SnackbarDuration.Indefinite) }
+            val (ordinal, start, end) = try { contentViewModel.locateOnlineHit(hit, query) } finally { note.cancel(); openingHit = false }
             val found = ordinal != null && end > start
             backStack.add(if (poem) PoemReaderRoute(hit.entityId, ordinal, query) else ReaderRoute(hit.entityId, ordinal, start.takeIf { found }, end.takeIf { found }))
-        } else if (poem) {
+        } } else if (poem) {
             backStack.add(PoemReaderRoute(hit.entityId, hit.ordinal, query))
         } else {
             backStack.add(ReaderRoute(hit.entityId, hit.ordinal, hit.sourceMatchStart, hit.sourceMatchEnd))
@@ -690,7 +694,8 @@ fun AtharApp(
                             onDownloadForSearch = { contentViewModel.downloadForSearch(route.bookId) },
                             onOpenAuthor = authorId?.let { id -> { backStack.add(PersonsRoute(id)) } },
                             onShareBook = { shareText(context, listOf(state.bookTitle, state.author, state.sourceUrl).filter(String::isNotBlank).joinToString("\n")) },
-                            onLocateOnline = { url, q -> contentViewModel.locateOnline(route.bookId, url, q) },
+                            onLocateOnline = { hit, q -> contentViewModel.locateOnline(route.bookId, hit.url, q, hit.excerpt) },
+                            onLoadPassage = { hit -> contentViewModel.inBookPassage(route.bookId, hit) },
                             recentQueries = recentQueries,
                             onRememberSearch = contentViewModel::rememberSearch,
                             onPageJump = { page, volume -> contentViewModel.findPrintedPage(route.bookId, page, volume) },

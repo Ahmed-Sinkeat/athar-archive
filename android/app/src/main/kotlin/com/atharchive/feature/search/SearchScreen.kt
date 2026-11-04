@@ -107,7 +107,8 @@ fun SearchScreen(
     // groupBy keeps first-seen order, so each book sits where its best passage ranked.
     // The same passage twice (an index row left over by an update) shows once.
     val bookGroups = remember(hits) { hits.distinctBy { it.entityId to it.excerpt }.groupBy { it.entityId }.values.toList() }
-    var openBooks by remember(state.query) { mutableStateOf(emptySet<String>()) }
+    // Saveable: the books opened stay open after a result is read and the reader closed.
+    var openBooks by rememberSaveable(state.query) { mutableStateOf(emptyList<String>()) }
 
     LaunchedEffect(state.query, state.directMatches, state.hits) {
         if (state.query.trim().length >= 2) {
@@ -426,14 +427,15 @@ fun ResultsHeading(text: String, horizontalPadding: Dp) {
 @Composable
 private fun ScopeLine(state: SearchUiState, searching: Boolean, readyTag: String, horizontalPadding: Dp) {
     val online = state.scope == SearchScope.Online
+    // Every search says how many it found: the site's total when it gave one, else the passages listed («أكثر من» while more pages remain).
+    val (count, more) = state.total?.takeIf { online && it > 0 }?.let { it to state.totalCapped } ?: (state.hits.size to state.hasMore)
+    val counted = if (searching || count == 0) "" else " · " + (if (more) "أكثر من " else "") +
+        com.atharchive.data.arabicCount(count, "", "موضع واحد", "موضعان", "مواضع", "موضعًا")
     val text = when (state.scope) {
-        SearchScope.Online -> "في كل المكتبة" + (state.total?.takeIf { !searching && it > 0 }?.let {
-            " · " + (if (state.totalCapped) "أكثر من " else "") +
-                com.atharchive.data.arabicCount(it, "", "موضع واحد", "موضعان", "مواضع", "موضعًا")
-        } ?: "")
+        SearchScope.Online -> "في كل المكتبة"
         SearchScope.Offline -> "دون اتصال · في المحمّلة فقط"
         SearchScope.Downloaded -> "في المحمّلة فقط"
-    } + when {
+    } + counted + when {
         state.roots == null -> ""
         state.roots.isEmpty() -> " · لم يُعرف الجذر (المعاجم تلزم للبحث بالجذر)"
         else -> " · الجذر: " + state.roots.joinToString("، ") { it.toList().joinToString(" ") }
@@ -689,9 +691,11 @@ internal fun verseLines(text: String) = text.replace(" … ", " \n ").replace(" 
  * About 900 characters of [full] around this hit: where its own snippet sits in the passage (not
  * the first time its word appears, which every hit in the chapter shares), else its first word.
  */
-internal fun around(full: String, hit: SearchHitUi): String {
-    val snippet = hit.excerpt.trim('…', ' ')
-    val word = hit.matches.firstOrNull()?.let { hit.excerpt.substring(it.first, it.last + 1) }
+internal fun around(full: String, hit: SearchHitUi): String = around(full, hit.excerpt, hit.matches)
+
+internal fun around(full: String, excerpt: String, matches: List<IntRange>): String {
+    val snippet = excerpt.trim('…', ' ')
+    val word = matches.firstOrNull()?.takeIf { it.last < excerpt.length }?.let { excerpt.substring(it.first, it.last + 1) }
     val at = full.indexOf(snippet).takeIf { it >= 0 && snippet.isNotEmpty() }?.let { it + snippet.length / 2 }
         ?: word?.let { full.indexOf(it) }?.takeIf { it >= 0 } ?: 0
     val start = (at - 400).coerceAtLeast(0)
@@ -709,8 +713,10 @@ internal fun withoutTashkeel(text: String, ranges: List<IntRange>): Pair<String,
 }
 
 /** Every occurrence, in [text], of the words the snippet marked. */
-private fun wordRanges(text: String, hit: SearchHitUi): List<IntRange> =
-    hit.matches.map { hit.excerpt.substring(it.first, it.last + 1) }.filter { it.length >= 2 }.distinct().flatMap { word ->
+private fun wordRanges(text: String, hit: SearchHitUi): List<IntRange> = wordRanges(text, hit.excerpt, hit.matches)
+
+internal fun wordRanges(text: String, excerpt: String, matches: List<IntRange>): List<IntRange> =
+    matches.filter { it.first >= 0 && it.last < excerpt.length }.map { excerpt.substring(it.first, it.last + 1) }.filter { it.length >= 2 }.distinct().flatMap { word ->
         generateSequence(text.indexOf(word).takeIf { it >= 0 }) { from -> text.indexOf(word, from + word.length).takeIf { it >= 0 } }
             .map { it until it + word.length }.toList()
     }
@@ -782,7 +788,7 @@ fun androidx.compose.foundation.lazy.LazyListScope.sectionTextHits(found: Sectio
     }
     val hits = found.hits
     if (hits.isEmpty()) return
-    item(key = "text-hits-heading") { ResultsHeading("في النصوص", horizontalPadding) }
+    item(key = "text-hits-heading") { ResultsHeading("في النصوص · " + com.atharchive.data.arabicCount(hits.size, "", "موضع واحد", "موضعان", "مواضع", "موضعًا"), horizontalPadding) }
     items(hits, key = { "text-${it.id}" }) { hit ->
         SearchHitCard(hit, horizontalPadding, onClick = { textSearch.onOpen(hit, query.trim()) }, loadPassage = textSearch.loadPassage)
     }

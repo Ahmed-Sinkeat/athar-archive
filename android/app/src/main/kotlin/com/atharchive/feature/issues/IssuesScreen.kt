@@ -173,6 +173,7 @@ fun IssuesScreen(
                     )
                     AtharSearchField(
                         query = query,
+                        resultCount = visible.size,
                         placeholder = "ابحث في ${state.countLabel}…",
                         onQueryChange = { query = it },
                         tagPrefix = "issues",

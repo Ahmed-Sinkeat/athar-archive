@@ -81,6 +81,7 @@ fun PersonsScreen(persons: List<CatalogPerson>, works: Map<String, ContentEntity
             )
             AtharSearchField(
                 query = query,
+                resultCount = visible.size,
                 onQueryChange = { query = it },
                 placeholder = "ابحث في ${arabicDigits(persons.size)} علمًا…",
                 tagPrefix = "persons",

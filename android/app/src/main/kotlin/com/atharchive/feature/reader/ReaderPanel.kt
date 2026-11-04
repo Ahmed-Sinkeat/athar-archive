@@ -58,6 +58,7 @@ import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.graphicsLayer
 import com.atharchive.ui.components.highlightMatches
+import com.atharchive.ui.components.markRanges
 import com.atharchive.ui.icons.AtharIcons
 import com.atharchive.ui.theme.AtharEditorialFontFamily
 
@@ -99,6 +100,8 @@ fun ReaderPanel(
     docked: Boolean = false,
     recentQueries: List<String> = emptyList(),
     onHit: (InBookHit) -> Unit = { onJump(it.blockIndex) },
+    /** The whole paragraph behind a hit, for «المزيد». */
+    loadPassage: suspend (InBookHit) -> String? = { null },
     /** How the words must appear, as on the search screen; null hides the row (readers searching their open text only). */
     searchMode: com.atharchive.feature.search.SearchMode? = null,
     onSearchMode: (com.atharchive.feature.search.SearchMode) -> Unit = {},
@@ -153,7 +156,7 @@ fun ReaderPanel(
                         PageJumpRow(state, colors, currentBlockIndex, onPageJump)
                     }
                 }
-                ReaderPanelTab.Search -> PanelSearch(query, hits, colors, onQueryChange, onHit, searchStatus, partialSearch, downloadAsked, onDownloadForSearch, recentQueries, searchMode, onSearchMode)
+                ReaderPanelTab.Search -> PanelSearch(query, hits, colors, onQueryChange, onHit, searchStatus, partialSearch, downloadAsked, onDownloadForSearch, recentQueries, searchMode, onSearchMode, loadPassage)
                 ReaderPanelTab.Benefits -> BenefitsList(state, colors, onJump)
                 ReaderPanelTab.Bookmarks -> BookmarksList(state, colors, onJump)
             }
@@ -292,6 +295,7 @@ private fun PanelSearch(
     recentQueries: List<String> = emptyList(),
     searchMode: com.atharchive.feature.search.SearchMode? = null,
     onSearchMode: (com.atharchive.feature.search.SearchMode) -> Unit = {},
+    loadPassage: suspend (InBookHit) -> String? = { null },
 ) {
     val focusRequester = remember { FocusRequester() }
     LaunchedEffect(Unit) { focusRequester.requestFocus() }
@@ -415,27 +419,43 @@ private fun PanelSearch(
                 }
             }
             items(hits, key = { it.id }) { hit ->
+                var expanded by remember(hit.id) { mutableStateOf(false) }
+                var passage by remember(hit.id) { mutableStateOf<String?>(null) }
+                LaunchedEffect(expanded) {
+                    if (expanded && passage == null) passage = loadPassage(hit)?.let { com.atharchive.feature.search.around(it, hit.excerpt, hit.matches) }
+                }
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
                         .clickable(role = Role.Button) { onHit(hit) }
-                        .padding(horizontal = 14.dp, vertical = 11.dp)
+                        .padding(start = 14.dp, end = 4.dp, top = 6.dp, bottom = 11.dp)
                         .testTag("reader_panel_hit_${hit.id}"),
                 ) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Text(
+                            text = listOfNotNull(hit.chapterTitle.ifBlank { null }, hit.pageLabel).joinToString(" · "),
+                            modifier = Modifier.weight(1f),
+                            color = colors.secondary,
+                            style = MaterialTheme.typography.labelSmall,
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis,
+                        )
+                        androidx.compose.material3.IconButton(onClick = { expanded = !expanded }, Modifier.size(32.dp).testTag("reader_panel_hit_more_${hit.id}")) {
+                            Icon(AtharIcons.ChevronDown, contentDescription = if (expanded) "أقل" else "المزيد", tint = colors.secondary,
+                                modifier = Modifier.size(16.dp).graphicsLayer { rotationZ = if (expanded) 180f else 0f })
+                        }
+                    }
+                    // The words the search matched (its own ranges), not the query re-found letter by letter:
+                    // that lit «كتب» inside «مكتبة» and missed every word of a two-word query.
+                    val shown = passage ?: hit.excerpt
+                    val ranges = if (passage == null) hit.matches else com.atharchive.feature.search.wordRanges(shown, hit.excerpt, hit.matches)
                     Text(
-                        text = listOfNotNull(hit.chapterTitle.ifBlank { null }, hit.pageLabel).joinToString(" · "),
-                        color = colors.secondary,
-                        style = MaterialTheme.typography.labelSmall,
-                    )
-                    // Highlighted live from the query, so the match is visible as it is typed.
-                    Text(
-                        text = highlightMatches(hit.excerpt, query, colors.highlight),
-                        modifier = Modifier.padding(top = 3.dp),
+                        text = if (ranges.isEmpty()) highlightMatches(shown, query, colors.highlight) else markRanges(shown, ranges, colors.highlight),
                         color = colors.text,
                         fontFamily = AtharEditorialFontFamily,
                         fontSize = AtharTextSize.Ui,
                         lineHeight = 27.sp,
-                        maxLines = 3,
+                        maxLines = if (expanded) Int.MAX_VALUE else 3,
                         overflow = TextOverflow.Ellipsis,
                     )
                 }

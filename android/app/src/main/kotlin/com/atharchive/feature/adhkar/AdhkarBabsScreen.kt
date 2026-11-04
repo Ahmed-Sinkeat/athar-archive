@@ -98,6 +98,7 @@ fun AdhkarBabsScreen(
                 item(key = "babs-search") {
                     AtharSearchField(
                         query = query,
+                        resultCount = matching.size,
                         placeholder = "ابحث في الأبواب…",
                         onQueryChange = { query = it },
                         tagPrefix = "adhkar_babs",

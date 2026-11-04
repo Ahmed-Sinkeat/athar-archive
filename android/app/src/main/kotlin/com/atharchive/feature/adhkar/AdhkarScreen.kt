@@ -189,6 +189,7 @@ fun AdhkarScreen(
                 item(key = "adhkar-search") {
                     AtharSearchField(
                         query = query,
+                        resultCount = visible.size,
                         placeholder = "ابحث في الأذكار…",
                         onQueryChange = { query = it },
                         tagPrefix = "adhkar",

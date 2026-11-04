@@ -194,6 +194,7 @@ fun PoetryScreen(
                 )
                 AtharSearchField(
                     query = query,
+                    resultCount = visiblePoems.size,
                     placeholder = "ابحث عن قصيدة، بيت أو شاعر…",
                     onQueryChange = { query = it },
                     tagPrefix = "poetry",

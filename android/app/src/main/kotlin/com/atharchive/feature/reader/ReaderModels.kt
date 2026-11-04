@@ -154,6 +154,10 @@ data class InBookHit(
     val sourceMatchEnd: Int = matchEnd,
     /** An online hit (blockIndex -1): located in the book's text when tapped. */
     val url: String? = null,
+    /** Every match in [excerpt], as the search found them (not the query re-matched letter by letter). */
+    val matches: List<IntRange> = if (matchEnd > matchStart) listOf(matchStart until matchEnd) else emptyList(),
+    /** The site's row for an online hit: its whole passage in one request. */
+    val row: Long = 0,
 )
 
 /** In-book search over what is on the phone; [complete] once every block of the book is saved. */
