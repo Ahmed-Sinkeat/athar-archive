@@ -460,7 +460,9 @@ private fun TextLayoutResult.stretch(line: Int): Stretch? {
     val first = getBoundingBox(start)
     val last = getBoundingBox(end - 1)
     val natural = if (rtl) first.right - last.left else last.right - first.left
-    val extra = (size.width - natural) / spaces
+    // the first line of an indented paragraph is narrower by the indent
+    val indent = if (line == 0) layoutInput.style.textIndent?.firstLine?.let { with(layoutInput.density) { it.toPx() } } ?: 0f else 0f
+    val extra = (size.width - indent - natural) / spaces
     // A platform that already reports stretched positions leaves nothing to add.
     return if (extra > 0.5f) Stretch(start, end, extra, rtl, text) else null
 }

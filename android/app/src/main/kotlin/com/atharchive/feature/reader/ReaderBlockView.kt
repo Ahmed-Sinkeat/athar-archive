@@ -50,6 +50,7 @@ import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextIndent
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.atharchive.ui.theme.AtharEditorialFontFamily
@@ -212,6 +213,9 @@ internal fun BlockView(
                     fontSize = body,
                     lineHeight = proseLineHeight,
                     textAlign = TextAlign.Justify,
+                    // first line starts indented like Turath's "تحسين النص"; sp (not em) so PageSelection.stretch can read it
+                    style = if (block.quoted || block.listMarker != null) androidx.compose.ui.text.TextStyle.Default
+                        else androidx.compose.ui.text.TextStyle(textIndent = TextIndent(firstLine = (settings.fontSize * 1.2f).sp)),
                 )
               }
               }
