@@ -133,6 +133,7 @@ dependencies {
     implementation(libs.okhttp)
     implementation(libs.media3.exoplayer)
     implementation(libs.media3.session)
+    implementation(libs.media3.datasource.okhttp)
     implementation(libs.androidx.tracing)
     implementation(libs.work.runtime.ktx)
     implementation(libs.androidx.navigation3.runtime)

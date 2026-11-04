@@ -31,7 +31,8 @@ class AudioPlaybackService : MediaSessionService() {
     override fun onCreate() {
         super.onCreate()
         val source = androidx.media3.datasource.ResolvingDataSource.Factory(
-            androidx.media3.datasource.DefaultDataSource.Factory(this),
+            // streams go through the content client so FallbackDns skips Cloudflare IPs Sudani blackholes
+            androidx.media3.datasource.DefaultDataSource.Factory(this, androidx.media3.datasource.okhttp.OkHttpDataSource.Factory(content.httpClient)),
         ) { spec ->
             val id = spec.key
             if (id == null) spec else spec.withUri(android.net.Uri.parse(kotlinx.coroutines.runBlocking { content.audioUri(id) }))
