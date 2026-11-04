@@ -166,7 +166,7 @@ fun SearchScreen(
                     },
                 )
                 SearchActiveFilters(filters, ::changeFilters, Modifier.padding(horizontal = horizontalPadding))
-                if (hasQuery) SearchTypeTabs(filters, lexicon, { lexicon = it }, ::changeFilters, Modifier.padding(horizontal = horizontalPadding - 8.dp))
+                SearchTypeTabs(filters, lexicon, { lexicon = it }, ::changeFilters, Modifier.padding(horizontal = horizontalPadding - 8.dp))
             }
 
             if (!hasQuery) {
@@ -296,15 +296,15 @@ fun SearchScreen(
             itemsIndexed(bookGroups, key = { _, group -> group.first().id }) { index, group ->
                 val entityId = group.first().entityId
                 val open = entityId in openBooks
-                (if (open) group else group.take(1)).forEach { hit ->
-                    SearchHitCard(
-                        hit = hit,
-                        horizontalPadding = horizontalPadding,
-                        plain = filters.plain,
-                        onClick = { onOpenResult(hit) },
-                        loadPassage = loadPassage,
-                    )
-                }
+                @Composable fun card(hit: SearchHitUi) = SearchHitCard(
+                    hit = hit,
+                    horizontalPadding = horizontalPadding,
+                    plain = filters.plain,
+                    onClick = { onOpenResult(hit) },
+                    loadPassage = loadPassage,
+                )
+                card(group.first())
+                // The toggle stays under the best hit, so closing the book's other passages needs no scroll down.
                 if (group.size > 1) TextButton(
                     onClick = { openBooks = if (open) openBooks - entityId else openBooks + entityId },
                     modifier = Modifier.padding(horizontal = horizontalPadding - 12.dp).testTag("search_more_in_book"),
@@ -316,6 +316,7 @@ fun SearchScreen(
                         style = MaterialTheme.typography.labelLarge,
                     )
                 }
+                if (open) group.drop(1).forEach { card(it) }
             }
             if (state.hasMore) {
                 item(key = "search-more") {
