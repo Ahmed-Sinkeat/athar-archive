@@ -280,7 +280,7 @@ private class RoomAnnotationContentSource(database: AtharContentDatabase) : Anno
     private val dao = database.importDao()
 
     override suspend fun isComplete(entityId: String): Boolean =
-        dao.entity(entityId)?.availability == com.atharchive.core.data.db.content.ContentAvailability.COMPLETE
+        dao.state(entityId)?.availability == com.atharchive.core.data.db.content.ContentAvailability.COMPLETE
 
     override suspend fun candidates(entityId: String, saved: List<Annotation>): List<AnnotationTextBlock> {
         val candidates = mutableListOf<com.atharchive.core.data.db.content.ContentBlockEntity>()

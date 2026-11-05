@@ -32,9 +32,6 @@ object ContentTransferState {
     indices = [
         Index(value = ["coll"]),
         Index(value = ["person"]),
-        Index(value = ["availability"]),
-        Index(value = ["transferState"]),
-        Index(value = ["lastOpenedAt"]),
         Index(value = ["catalogPresent"]),
     ],
 )
@@ -81,15 +78,23 @@ data class ContentEntity(
     val cardJson: String? = null,
     /** False for a protected local work removed by a signed tombstone. */
     val catalogPresent: Boolean = true,
+)
+
+/**
+ * What this device holds of a work, apart from its catalog row: Room re-runs every query that
+ * reads a table on each write to it, and with this state on `entity` each download step reloaded
+ * the whole catalog into every list. One row per catalog entity, made when the entity is.
+ */
+@Entity(tableName = "entityState")
+data class EntityStateEntity(
+    @PrimaryKey val id: String,
     val availability: String = ContentAvailability.ABSENT,
     val transferState: String = ContentTransferState.IDLE,
-    val updateAvailable: Boolean = false,
-    val localVersion: Int? = null,
+    /** The package the stored text came from; null until a frame is imported. */
     val localPackageHash: String? = null,
-    val lastOpenedAt: Long? = null,
-    val bytesOnDisk: Long = 0,
-    val importProgress: Int = 0,
 )
+
+data class EntityPackage(val id: String, val pkgHash: String)
 
 @Entity(tableName = "contentGeneration")
 data class ContentGenerationEntity(
@@ -234,6 +239,21 @@ abstract class ContentCatalogDao {
     @Query("SELECT * FROM entity WHERE id = :entityId")
     abstract fun observeEntity(entityId: String): Flow<ContentEntity?>
 
+    @Query("SELECT * FROM entityState WHERE id = :entityId")
+    abstract suspend fun state(entityId: String): EntityStateEntity?
+
+    @Query("SELECT localPackageHash FROM entityState WHERE id = :entityId")
+    abstract fun observeLocalPackage(entityId: String): Flow<String?>
+
+    @Query("SELECT id FROM entityState WHERE availability = '${ContentAvailability.COMPLETE}'")
+    abstract fun observeCompleteIds(): Flow<List<String>>
+
+    @Query("SELECT id FROM entityState WHERE transferState = '${ContentTransferState.FAILED}'")
+    abstract fun observeFailedIds(): Flow<List<String>>
+
+    @Query("SELECT e.id, e.pkgHash FROM entity e JOIN entityState s ON s.id = e.id WHERE s.localPackageHash IS NULL")
+    protected abstract suspend fun packagesWithoutLocalCopy(): List<EntityPackage>
+
     @Query("SELECT * FROM contentGeneration WHERE singleton = 0")
     abstract suspend fun generation(): ContentGenerationEntity?
 
@@ -242,6 +262,12 @@ abstract class ContentCatalogDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     protected abstract suspend fun replaceEntities(entities: List<ContentEntity>)
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    protected abstract suspend fun insertMissingStates(states: List<EntityStateEntity>)
+
+    @Query("UPDATE entityState SET transferState = '${ContentTransferState.IDLE}' WHERE id IN (:ids) AND transferState != '${ContentTransferState.IDLE}'")
+    protected abstract suspend fun resetTransfers(ids: List<String>)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     protected abstract suspend fun replaceGeneration(generation: ContentGenerationEntity)
@@ -273,14 +299,14 @@ abstract class ContentCatalogDao {
     @Query("DELETE FROM entity WHERE id = :entityId")
     protected abstract suspend fun deleteEntity(entityId: String)
 
-    @Query("UPDATE entity SET catalogPresent = 0, transferState = 'idle' WHERE id = :entityId")
+    @Query("DELETE FROM entityState WHERE id = :entityId")
+    protected abstract suspend fun deleteState(entityId: String)
+
+    @Query("UPDATE entity SET catalogPresent = 0 WHERE id = :entityId")
     protected abstract suspend fun retainTombstonedEntity(entityId: String)
 
-    @Query("SELECT * FROM entity WHERE id IN (:ids)")
-    protected abstract suspend fun entitiesById(ids: List<String>): List<ContentEntity>
-
-    @Query("UPDATE entity SET availability = :absent, bytesOnDisk = 0, importProgress = 0 WHERE id = :entityId")
-    protected abstract suspend fun markPagesAbsent(entityId: String, absent: String = ContentAvailability.ABSENT)
+    @Query("UPDATE entityState SET availability = '${ContentAvailability.ABSENT}' WHERE id = :entityId")
+    protected abstract suspend fun markPagesAbsent(entityId: String)
 
     /**
      * Applies one authenticated generation inside the disposable content DB. Protected IDs are
@@ -304,13 +330,18 @@ abstract class ContentCatalogDao {
      * old package hash, so an interrupted apply finds them again), and the generation row is
      * written last by [finishGeneration], so the next sync re-applies an unfinished generation.
      */
-    suspend fun applyCatalogSlices(incoming: List<ContentEntity>, onProgress: (Float) -> Unit = {}) {
-        val current = allEntities().associateBy(ContentEntity::id)
+    suspend fun applyCatalogSlices(incoming: List<ContentEntity>, onProgress: (Float) -> Unit = {}): List<ContentEntity> {
+        // Only rows that differ from what is stored are written. Rewriting all ~4k rows (and
+        // their search rows) on every new generation was the 8-minute «تحديث المكتبة» on the
+        // phone; a generation usually changes a handful of entries.
+        val stored = allEntities().associateBy(ContentEntity::id)
+        val changed = incoming.map { it.copy(catalogPresent = true) }.filter { stored[it.id] != it }
+        val noLocalCopy = packagesWithoutLocalCopy().associate { it.id to it.pkgHash }
         // Read-through pages carry no package version, so pages cached from an older package
         // would be served forever; drop them and the reader fetches the new ones. A download
-        // (localVersion set) keeps its copy until the new package replaces it.
-        val stalePages = incoming.filter { fresh ->
-            current[fresh.id]?.let { it.localVersion == null && it.pkgHash != fresh.pkgHash } == true
+        // (localPackageHash set) keeps its copy until the new package replaces it.
+        val stalePages = changed.filter { fresh ->
+            noLocalCopy[fresh.id].let { it != null && it != fresh.pkgHash }
         }.mapTo(mutableSetOf()) { it.id }
         for (entityId in stalePages) {
             markPagesAbsent(entityId)
@@ -319,35 +350,21 @@ abstract class ContentCatalogDao {
             deleteChapters(entityId)
             deleteFootnotes(entityId)
         }
-        val slices = incoming.chunked(CatalogSlice)
+        val slices = changed.chunked(CatalogSlice)
         slices.forEachIndexed { index, slice ->
-            applyCatalogSlice(slice, stalePages)
+            applyCatalogSlice(slice)
             onProgress((index + 1f) / slices.size)
         }
+        return changed
     }
 
-    /** Re-reads its rows inside the slice's transaction, so a download finishing between slices keeps its state. */
+    /** Catalog rows only: a download's state lives in `entityState`, which a catalog row never overwrites. */
     @Transaction
-    protected open suspend fun applyCatalogSlice(incoming: List<ContentEntity>, stalePages: Set<String>) {
-        val current = entitiesById(incoming.map(ContentEntity::id)).associateBy(ContentEntity::id)
-        val merged = incoming.map { fresh ->
-            current[fresh.id]?.let { local ->
-                val contentChanged = local.localVersion != null && local.localPackageHash != fresh.pkgHash
-                val dropPages = fresh.id in stalePages && local.localVersion == null
-                fresh.copy(
-                    catalogPresent = true,
-                    availability = if (dropPages) ContentAvailability.ABSENT else local.availability,
-                    transferState = ContentTransferState.IDLE,
-                    updateAvailable = contentChanged,
-                    localVersion = local.localVersion,
-                    localPackageHash = local.localPackageHash,
-                    lastOpenedAt = local.lastOpenedAt,
-                    bytesOnDisk = if (dropPages) 0 else local.bytesOnDisk,
-                    importProgress = if (dropPages) 0 else local.importProgress,
-                )
-            } ?: fresh
-        }
-        replaceEntities(merged)
+    protected open suspend fun applyCatalogSlice(incoming: List<ContentEntity>) {
+        val ids = incoming.map(ContentEntity::id)
+        replaceEntities(incoming)
+        insertMissingStates(ids.map(::EntityStateEntity))
+        resetTransfers(ids)
     }
 
     @Transaction
@@ -355,6 +372,7 @@ abstract class ContentCatalogDao {
         // Mark first, then let the repository re-snapshot the user DB before purge. This closes
         // the cross-database race without pretending both files share a transaction.
         for (entityId in tombstonedIds) retainTombstonedEntity(entityId)
+        resetTransfers(tombstonedIds.toList())
         replaceGeneration(generation)
     }
 
@@ -373,6 +391,7 @@ abstract class ContentCatalogDao {
         deleteChapters(entityId)
         deleteFootnotes(entityId)
         deleteEntity(entityId)
+        deleteState(entityId)
     }
 }
 
@@ -381,9 +400,12 @@ abstract class ContentImportDao {
     @Query("SELECT * FROM entity WHERE id = :entityId")
     abstract suspend fun entity(entityId: String): ContentEntity?
 
-    // A write that changes nothing still re-runs every query watching `entity` (the whole
-    // catalog, several times over), so an unchanged state is not written.
-    @Query("UPDATE entity SET transferState = :state WHERE id = :entityId AND transferState != :state")
+    @Query("SELECT * FROM entityState WHERE id = :entityId")
+    abstract suspend fun state(entityId: String): EntityStateEntity?
+
+    // A write that changes nothing still re-runs every query watching `entityState`, so an
+    // unchanged state is not written.
+    @Query("UPDATE entityState SET transferState = :state WHERE id = :entityId AND transferState != :state")
     abstract suspend fun markTransfer(entityId: String, state: String)
 
     @Query("DELETE FROM block WHERE entityId = :entityId AND ordinal BETWEEN :first AND :last")
@@ -404,24 +426,14 @@ abstract class ContentImportDao {
     @Query("SELECT COUNT(*) FROM block WHERE entityId = :entityId")
     abstract suspend fun importedBlockCount(entityId: String): Int
 
-    @Query("SELECT COALESCE(SUM(compressedBytes), 0) FROM entityFrame WHERE entityId = :entityId")
-    abstract suspend fun importedBytes(entityId: String): Long
-
     @Query("SELECT COALESCE(SUM(compressedBytes), 0) FROM entityFrame")
     abstract suspend fun totalImportedBytes(): Long
 
     @Query(
-        "UPDATE entity SET availability = :availability, transferState = 'idle', " +
-            "localVersion = v, localPackageHash = pkgHash, updateAvailable = 0, lastOpenedAt = :now, " +
-            "bytesOnDisk = :bytesOnDisk, importProgress = :importProgress WHERE id = :entityId",
+        "UPDATE entityState SET availability = :availability, transferState = '${ContentTransferState.IDLE}', " +
+            "localPackageHash = (SELECT pkgHash FROM entity WHERE id = :entityId) WHERE id = :entityId",
     )
-    protected abstract suspend fun finishImport(
-        entityId: String,
-        availability: String,
-        bytesOnDisk: Long,
-        importProgress: Int,
-        now: Long,
-    )
+    protected abstract suspend fun finishImport(entityId: String, availability: String)
 
     @Query("SELECT * FROM block WHERE entityId = :entityId ORDER BY ordinal")
     abstract suspend fun blocks(entityId: String): List<ContentBlockEntity>
@@ -460,9 +472,6 @@ abstract class ContentImportDao {
     @Query("UPDATE entityFrame SET lastOpenedAt = :now WHERE entityId = :entityId AND frameOrdinal = :frameOrdinal")
     abstract suspend fun touchFrame(entityId: String, frameOrdinal: Int, now: Long)
 
-    @Query("UPDATE entity SET lastOpenedAt = :now WHERE id = :entityId")
-    abstract suspend fun touchEntity(entityId: String, now: Long)
-
     @Query(
         "SELECT entityId, frameOrdinal, firstBlockOrdinal, blockCount, compressedBytes, lastOpenedAt " +
             "FROM entityFrame ORDER BY lastOpenedAt ASC, entityId, frameOrdinal",
@@ -478,16 +487,8 @@ abstract class ContentImportDao {
     @Query("DELETE FROM footnote WHERE entityId = :entityId")
     protected abstract suspend fun deleteEntityFootnotes(entityId: String)
 
-    @Query(
-        "UPDATE entity SET availability = :availability, bytesOnDisk = :bytesOnDisk, " +
-            "importProgress = :importProgress WHERE id = :entityId",
-    )
-    protected abstract suspend fun updateAfterEviction(
-        entityId: String,
-        availability: String,
-        bytesOnDisk: Long,
-        importProgress: Int,
-    )
+    @Query("UPDATE entityState SET availability = :availability WHERE id = :entityId AND availability != :availability")
+    protected abstract suspend fun updateAfterEviction(entityId: String, availability: String)
 
     @Transaction
     open suspend fun importFrame(
@@ -496,9 +497,9 @@ abstract class ContentImportDao {
         blocks: List<ContentBlockEntity>,
         chapters: List<ChapterEntity>,
         footnotes: List<FootnoteEntity>,
-        now: Long,
     ): FrameImportResult {
         val target = requireNotNull(entity(entityId)) { "catalog entity $entityId is missing" }
+        val state = requireNotNull(state(entityId)) { "state of $entityId is missing" }
         require(blocks.size == frame.blockCount) { "decoded block count differs from frame" }
         require(blocks.zipWithNext().all { (a, b) -> a.ordinal < b.ordinal }) {
             "decoded block ordinals must be strictly increasing"
@@ -520,13 +521,9 @@ abstract class ContentImportDao {
             ContentAvailability.PARTIAL
         }
         require(importedBlocks <= target.pkgBlocks) { "imported frames exceed catalog block count" }
-        // Every entity write re-runs every query watching `entity` (the whole catalog behind the
-        // library, search and downloads): once a frame that was ~850 catalog reloads for مسند أحمد,
-        // the import's main cost and the library's stutter during a download. Write on a change of
-        // state (first frame, last frame) and every 32nd frame for the size on disk.
-        if (availability != target.availability || target.localPackageHash != target.pkgHash || frame.frameOrdinal % 32 == 0) {
-            finishImport(entityId, availability, bytesOnDisk, contiguousProgress(stored), now)
-        }
+        // Every state write re-runs the queries watching `entityState`; write on a change only
+        // (first frame, last frame), not once per frame.
+        if (availability != state.availability || state.localPackageHash != target.pkgHash) finishImport(entityId, availability)
         return FrameImportResult(availability, importedBlocks, bytesOnDisk)
     }
 
@@ -539,17 +536,11 @@ abstract class ContentImportDao {
         )
         deleteFrame(candidate.entityId, candidate.frameOrdinal)
         val remaining = frames(candidate.entityId)
-        val bytes = remaining.sumOf(EntityFrameEntity::compressedBytes)
         if (remaining.isEmpty()) {
             deleteEntityChapters(candidate.entityId)
             deleteEntityFootnotes(candidate.entityId)
         }
-        updateAfterEviction(
-            entityId = candidate.entityId,
-            availability = if (remaining.isEmpty()) ContentAvailability.ABSENT else ContentAvailability.PARTIAL,
-            bytesOnDisk = bytes,
-            importProgress = contiguousProgress(remaining),
-        )
+        updateAfterEviction(candidate.entityId, if (remaining.isEmpty()) ContentAvailability.ABSENT else ContentAvailability.PARTIAL)
         return CacheEvictionResult(candidate.entityId, candidate.frameOrdinal, candidate.compressedBytes)
     }
 
@@ -596,13 +587,13 @@ abstract class ContentImportDao {
      * statement journals a whole book. The old copy goes to `<id>#old` for [purgeCopies].
      */
     @Transaction
-    open suspend fun promoteStaged(entityId: String, stagingId: String, now: Long) {
+    open suspend fun promoteStaged(entityId: String, stagingId: String) {
         val target = requireNotNull(entity(entityId)) { "catalog entity $entityId is missing" }
         moveAll(entityId, oldCopyId(entityId))
         moveAll(stagingId, entityId)
         val importedBlocks = importedBlockCount(entityId)
         check(importedBlocks == target.pkgBlocks) { "staged update is incomplete ($importedBlocks of ${target.pkgBlocks})" }
-        finishImport(entityId, ContentAvailability.COMPLETE, importedBytes(entityId), contiguousProgress(frames(entityId)), now)
+        finishImport(entityId, ContentAvailability.COMPLETE)
     }
 
     /** Deletes staged or replaced copies of [entityId] except [keep]; each slice commits on its own. */
@@ -643,25 +634,17 @@ abstract class ContentImportDao {
     }
 }
 
-private fun contiguousProgress(frames: List<EntityFrameEntity>): Int {
-    var progress = 0
-    for (frame in frames.sortedBy(EntityFrameEntity::firstBlockOrdinal)) {
-        if (frame.firstBlockOrdinal != progress) break
-        progress += frame.blockCount
-    }
-    return progress
-}
-
 @Database(
     entities = [
         ContentEntity::class,
+        EntityStateEntity::class,
         ContentGenerationEntity::class,
         EntityFrameEntity::class,
         ContentBlockEntity::class,
         ChapterEntity::class,
         FootnoteEntity::class,
     ],
-    version = 10,
+    version = 11,
     exportSchema = true,
 )
 abstract class AtharContentDatabase : RoomDatabase() {

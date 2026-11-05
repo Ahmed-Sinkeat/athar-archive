@@ -2,6 +2,7 @@ package com.atharchive.core.data.repository
 
 import android.os.StatFs
 import java.io.File
+import java.util.concurrent.atomic.AtomicLong
 
 class InsufficientContentStorageException(
     val availableBytes: Long,
@@ -42,9 +43,17 @@ class ContentStoragePolicy(
         return ContentStorageStatus(lowStorage = low, availableBytes = after, cacheBytesRemoved = removed)
     }
 
-    suspend fun prepareForDownload(uncompressedBytes: Long): ContentStorageStatus {
-        require(uncompressedBytes >= 0)
-        val required = LOW_STORAGE_BYTES + uncompressedBytes
+    /**
+     * Disk promised to downloads in flight. Up to three run at once and each used to check the
+     * free space alone, so all of them passed on the same free bytes and filled the phone.
+     * Counted until a download ends, though it fills the disk as it goes: errs on refusing.
+     */
+    private val reservedBytes = AtomicLong()
+
+    /** [reserve]: hold [diskBytes] against other downloads until [release]. */
+    suspend fun prepareForDownload(diskBytes: Long, reserve: Boolean = false): ContentStorageStatus {
+        require(diskBytes >= 0)
+        val required = LOW_STORAGE_BYTES + diskBytes + reservedBytes.get()
         val before = availableBytes()
         val removed = cacheManager.evictToBudget(
             budgetBytes = if (before < required) emergencyBudget() else configuredBudgetBytes(),
@@ -53,11 +62,16 @@ class ContentStoragePolicy(
         if (after < required) {
             throw InsufficientContentStorageException(after, required, removed)
         }
+        if (reserve) reservedBytes.addAndGet(diskBytes)
         return ContentStorageStatus(
             lowStorage = before < LOW_STORAGE_BYTES,
             availableBytes = after,
             cacheBytesRemoved = removed,
         )
+    }
+
+    fun release(diskBytes: Long) {
+        reservedBytes.addAndGet(-diskBytes)
     }
 
     private suspend fun emergencyBudget(): Long {

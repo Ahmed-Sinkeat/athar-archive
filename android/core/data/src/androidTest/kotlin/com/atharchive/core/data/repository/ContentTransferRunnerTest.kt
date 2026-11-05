@@ -105,7 +105,7 @@ class ContentTransferRunnerTest {
         val failure = runCatching { runner.downloadPinned(replacement.id) }.exceptionOrNull()
         assertTrue("invalid replacement must fail", failure is com.atharchive.core.data.content.ContentIntegrityException)
         assertEquals(listOf("النص القديم المحفوظ"), content.importDao().blocks(oldEntry.id).map { it.text })
-        assertEquals(oldEntry.pkg.hash, content.importDao().entity(oldEntry.id)?.localPackageHash)
+        assertEquals(oldEntry.pkg.hash, content.importDao().state(oldEntry.id)?.localPackageHash)
         assertEquals(replacement.pkg.hash, user.userDataDao().pinnedDownload(oldEntry.id)?.pkgHash)
     }
 
@@ -144,7 +144,7 @@ class ContentTransferRunnerTest {
         runner.requestPin(replacement.id)
         runner.downloadPinned(replacement.id)
         assertEquals(listOf("النص الجديد", "تتمة"), content.importDao().blocks(oldEntry.id).map { it.text })
-        val local = content.importDao().entity(oldEntry.id)
+        val local = content.importDao().state(oldEntry.id)
         assertEquals(replacement.pkg.hash, local?.localPackageHash)
         assertEquals(ContentAvailability.COMPLETE, local?.availability)
         assertEquals(listOf(0, 1), content.importDao().frames(oldEntry.id).map { it.frameOrdinal })
@@ -229,37 +229,36 @@ class ContentTransferRunnerTest {
         transfers.mkdirs()
         File(transfers, "book__${entry.id}.$packageHash.part")
             .writeBytes(packageBytes.copyOfRange(0, prefix))
-        server.enqueue(MockResponse().setResponseCode(200).setBody(Buffer().write(indexBytes)))
-        server.enqueue(
-            MockResponse()
-                .setResponseCode(206)
-                .setHeader(
-                    "Content-Range",
-                    "bytes $prefix-${packageBytes.lastIndex}/${packageBytes.size}",
-                )
-                .setBody(Buffer().write(packageBytes, prefix, packageBytes.size - prefix)),
-        )
+        // The index and the package are fetched at once, so answer by path, not in order.
+        server.dispatcher = object : okhttp3.mockwebserver.Dispatcher() {
+            override fun dispatch(request: okhttp3.mockwebserver.RecordedRequest): MockResponse =
+                if (request.path.orEmpty().endsWith(".idx")) {
+                    MockResponse().setResponseCode(200).setBody(Buffer().write(indexBytes))
+                } else {
+                    MockResponse()
+                        .setResponseCode(206)
+                        .setHeader("Content-Range", "bytes $prefix-${packageBytes.lastIndex}/${packageBytes.size}")
+                        .setBody(Buffer().write(packageBytes, prefix, packageBytes.size - prefix))
+                }
+        }
 
         val result = runner.downloadPinned(entry.id)
 
         assertEquals(prefix.toLong(), result.resumedFrom)
-        assertEquals(ContentAvailability.COMPLETE, content.importDao().entity(entry.id)?.availability)
+        assertEquals(ContentAvailability.COMPLETE, content.importDao().state(entry.id)?.availability)
         assertEquals("تنزيل مستأنف يعمل بلا شبكة", content.importDao().blocks(entry.id).single().text)
         assertTrue(store.containsVerified(entry))
         assertTrue(transfers.listFiles().orEmpty().isEmpty())
-        server.takeRequest()
-        assertEquals(
-            "bytes=$prefix-${packageBytes.lastIndex}",
-            server.takeRequest().getHeader("Range"),
-        )
+        val ranges = listOf(server.takeRequest(), server.takeRequest()).mapNotNull { it.getHeader("Range") }
+        assertEquals(listOf("bytes=$prefix-${packageBytes.lastIndex}"), ranges)
 
         runner.unpin(entry.id)
 
         assertNull(user.userDataDao().pinnedDownload(entry.id))
         assertFalse(store.containsVerified(entry))
-        assertEquals(ContentAvailability.COMPLETE, content.importDao().entity(entry.id)?.availability)
+        assertEquals(ContentAvailability.COMPLETE, content.importDao().state(entry.id)?.availability)
         ContentCacheManager(content, user).clearUnpinned()
-        assertEquals(ContentAvailability.ABSENT, content.importDao().entity(entry.id)?.availability)
+        assertEquals(ContentAvailability.ABSENT, content.importDao().state(entry.id)?.availability)
     }
 
     @Test
@@ -363,7 +362,7 @@ class ContentTransferRunnerTest {
         // The receiving phone: same catalog, nothing saved.
         sender.unpin(entry.id)
         ContentCacheManager(content, user).clearUnpinned()
-        assertEquals(ContentAvailability.ABSENT, content.importDao().entity(entry.id)?.availability)
+        assertEquals(ContentAvailability.ABSENT, content.importDao().state(entry.id)?.availability)
 
         val tampered = java.io.ByteArrayOutputStream().also { out ->
             java.util.zip.ZipOutputStream(out).use { zip ->
@@ -384,7 +383,7 @@ class ContentTransferRunnerTest {
         assertEquals(listOf(entry.id), receiver.importShared(shared.inputStream()).map { it.id })
         receiver.downloadPinned(entry.id)
         assertEquals("كتاب انتقل بلا إنترنت", content.importDao().blocks(entry.id).single().text)
-        assertEquals(ContentAvailability.COMPLETE, content.importDao().entity(entry.id)?.availability)
+        assertEquals(ContentAvailability.COMPLETE, content.importDao().state(entry.id)?.availability)
     }
 
     @Test
@@ -459,11 +458,11 @@ class ContentTransferRunnerTest {
         yield()
 
         assertFalse(opened.fromCache)
-        assertEquals(ContentAvailability.PARTIAL, content.importDao().entity(entry.id)?.availability)
+        assertEquals(ContentAvailability.PARTIAL, content.importDao().state(entry.id)?.availability)
         assertNull(user.userDataDao().pinnedDownload(entry.id))
         assertEquals(2, server.requestCount)
         ContentCacheManager(content, user).clearUnpinned()
-        assertEquals(ContentAvailability.ABSENT, content.importDao().entity(entry.id)?.availability)
+        assertEquals(ContentAvailability.ABSENT, content.importDao().state(entry.id)?.availability)
     }
 
     private fun entry(

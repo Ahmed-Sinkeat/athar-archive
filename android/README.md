@@ -120,19 +120,21 @@ It preserves visible Unicode and inline semantics at build time; unsupported Mar
 the content build instead of disappearing. Android normalizes already-parsed block text for
 local FTS, pages Room rows and renders native Compose text (main-plan.md §6, D10).
 
-### Bundled catalog snapshot
+### Bundled catalog database
 
-For an instant library on first launch (and offline), a release build ships the signed root,
-catalog and tombstones of the current generation in `app/src/main/assets/app-content/`
-(git-ignored, about 4.5 MB, ~1 MB in the APK). Regenerate it for **every release**:
+A fresh install opens with the whole library, offline, from a catalog database built by the
+pipeline into `app/src/main/assets/app-content/` (`catalog.db` plus the generation's signed
+`index.json`; git-ignored, ~13 MB, ~3.4 MB in the APK). Regenerate it for **every release**
+(the release build refuses to run without it, or when `index.json` is not the published one):
 
 ```
-npm run app:gen && npm run app:bundle-catalog -- dist/app-content/app/v2
+pnpm app:gen && pnpm app:bundle-catalog dist/app-content/app/v2
 ```
 
-The app applies it only to an **empty** catalog, through the same signature and hash checks as a
-download (`ReadThroughContentRepository.seedCatalog`); a normal sync follows. A missing or stale
-snapshot is harmless — it can never replace a newer applied generation.
+Room copies it in (`createFromAsset`) only when the app has no content database yet, so it never
+replaces an installed library; a normal sync follows. The rows mirror the app's own catalog
+apply; after changing `CatalogEntry.toEntity()`, the content schema or the search tables, push
+the files and run `PrebuiltCatalogTest` (its KDoc has the commands) to prove both still match.
 
 The first real-device content slice is deliberately short and varied: one published article,
 `nawaqid-al-islam` as the book, `swteat-866` as the masʾala, and

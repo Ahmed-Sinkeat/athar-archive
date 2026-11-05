@@ -55,15 +55,22 @@ object ContentSearchSchema {
         database.useWriterConnection { create(it) }
     }
 
-    suspend fun replaceCatalog(
+    /** Search rows of the entries a generation changed or removed; the rest stay as they are. */
+    suspend fun updateCatalog(
         connection: PooledConnection,
-        entities: List<ContentEntity>,
+        changed: List<ContentEntity>,
+        removedIds: Collection<String>,
     ) {
-        connection.execute("DELETE FROM catalog_fts")
+        (changed.map(ContentEntity::id) + removedIds).chunked(500).forEach { ids ->
+            connection.usePrepared("DELETE FROM catalog_fts WHERE id IN (${ids.joinToString(",") { "?" }})") { delete ->
+                ids.forEachIndexed { i, id -> delete.bindText(i + 1, id) }
+                delete.step()
+            }
+        }
         connection.usePrepared(
             "INSERT INTO catalog_fts(titleNorm, personNorm, topicsNorm, id) VALUES (?, ?, ?, ?)",
         ) { insert ->
-            entities.asSequence().filter { it.catalogPresent && it.editionOf == null }.forEach { entity ->
+            changed.asSequence().filter { it.catalogPresent && it.editionOf == null }.forEach { entity ->
                 insert.bindText(1, entity.titleNorm)
                 insert.bindText(2, ArNormalize.normalize(entity.personName.orEmpty()))
                 insert.bindText(3, ArNormalize.normalize(entity.topicsCsv.replace(',', ' ')))
@@ -75,14 +82,16 @@ object ContentSearchSchema {
         }
     }
 
+    /** [searchText]: each block's normalized text by ordinal, computed before the write transaction. */
     suspend fun indexBlocks(
         connection: PooledConnection,
         blocks: List<ContentBlockEntity>,
+        searchText: Map<Int, String>,
     ) {
         connection.usePrepared("INSERT INTO block_fts(rowid, norm) VALUES (?, ?)") { insert ->
             blocks.forEach { block ->
                 insert.bindLong(1, block.rowid)
-                insert.bindText(2, ArNormalize.normalize(block.text))
+                insert.bindText(2, searchText[block.ordinal] ?: ArNormalize.normalize(block.text))
                 insert.step()
                 insert.reset()
                 insert.clearBindings()
@@ -148,7 +157,7 @@ object ContentSearchSchema {
             }
         }
         connection.prepare(
-            "SELECT id, titleNorm, personName, topicsCsv FROM entity WHERE catalogPresent = 1 ORDER BY id",
+            "SELECT id, titleNorm, personName, topicsCsv FROM entity WHERE catalogPresent = 1 AND editionOf IS NULL ORDER BY id",
         ).use { entities ->
             connection.prepare(
                 "INSERT INTO catalog_fts(titleNorm, personNorm, topicsNorm, id) VALUES (?, ?, ?, ?)",
@@ -410,7 +419,7 @@ private fun structuredFilter(filter: ContentSearchFilter, alias: String): SqlFil
         values.addAll(filter.topics.sorted())
     }
     if (filter.fullyCachedOnly) {
-        clauses += "$alias.availability = ?"
+        clauses += "$alias.id IN (SELECT id FROM entityState WHERE availability = ?)"
         values += ContentAvailability.COMPLETE
     }
     filter.diedFrom?.let {

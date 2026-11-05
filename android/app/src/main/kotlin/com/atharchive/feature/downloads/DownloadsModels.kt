@@ -175,6 +175,8 @@ data class BulkCandidate(
     val state: BulkState = BulkState.Idle,
     /** Verified bytes of a transfer still in flight. */
     val partialBytes: Long = 0,
+    /** What it takes on the phone: a text keeps its package and its text in the database. */
+    val diskBytes: Long = bytes,
 ) {
     /** The key pause state is stored under. */
     val pauseKey: String get() = if (audio) "audio:$id" else id

@@ -18,7 +18,9 @@ import androidx.work.ExistingWorkPolicy
 import androidx.work.ForegroundInfo
 import androidx.work.NetworkType
 import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.WorkInfo
 import androidx.work.WorkManager
+import androidx.work.WorkQuery
 import androidx.work.WorkerParameters
 import androidx.work.workDataOf
 import com.atharchive.MainActivity
@@ -35,17 +37,28 @@ import java.util.concurrent.CancellationException
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 import javax.inject.Singleton
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.sync.Semaphore
+import kotlinx.coroutines.sync.withPermit
 
 private const val EntityIdKey = "entity_id"
 private const val CollectionKey = "collection"
-private const val DownloadedBytesKey = "downloaded_bytes"
-private const val TotalBytesKey = "total_bytes"
+
+/**
+ * Transfers that run at once, across all workers. WorkManager starts up to 20 workers; all 20
+ * downloading together fought over the network, the CPU and the database's single writer, and
+ * the app stopped responding during «تنزيل الكل». The rest wait here, shown as «في الانتظار».
+ */
+private val transferSlots = Semaphore(3)
 private const val ContentTag = "content"
 
 @EntryPoint
 @InstallIn(SingletonComponent::class)
 interface ContentWorkerEntryPoint {
     fun contentAccess(): ContentAccess
+    fun downloadScheduler(): ContentDownloadScheduler
 }
 
 class ContentDownloadWorker(
@@ -95,14 +108,18 @@ class ContentDownloadWorker(
         else ForegroundInfo(ContentDownloadNotifications.OngoingId, notification)
     }
 
-    override suspend fun doWork(): Result {
+    private suspend fun transfer(): Result {
         val entityId = inputData.getString(EntityIdKey) ?: return Result.failure()
         val content = EntryPoints.get(
             applicationContext,
             ContentWorkerEntryPoint::class.java,
         ).contentAccess()
-        val isAudio = inputData.getString(CollectionKey) == "audio"
+        val scheduler = EntryPoints.get(applicationContext, ContentWorkerEntryPoint::class.java).downloadScheduler()
+        val collection = inputData.getString(CollectionKey)
+        val isAudio = collection == "audio"
+        val identity = "content:$collection:$entityId"
         val pauseKey = if (isAudio) "audio:$entityId" else entityId
+        content.awaitDownloadState()
         if (pauseKey in content.pausedDownloads.value) return Result.success()
         if (isAudio) {
             if (entityId !in content.requestedAudio.value) return Result.success()
@@ -111,11 +128,10 @@ class ContentDownloadWorker(
         if (!isAudio) itemTitle = runCatching { content.entityTitle(entityId) }.getOrNull()
 
         return try {
-            // The notification is a courtesy, never a gate: with the permission denied, or the
-            // app briefly backgrounded by the permission dialog, promoting to foreground can
-            // throw. The transfer must run regardless.
-            // ponytail: unpromoted work may be stopped by the system in the background;
-            // WorkManager retries it (backoff), so the download still completes.
+            // The notification is a courtesy, never a gate: with the permission denied, the app
+            // briefly backgrounded by the permission dialog, or Android 15's daily data-sync
+            // limit used up, promoting to foreground throws. The transfer runs regardless; if
+            // the system stops it in the background, WorkManager runs it again.
             try { setForeground(getForegroundInfo()) }
             catch (cancelled: CancellationException) { throw cancelled }
             catch (_: Exception) { }
@@ -124,7 +140,7 @@ class ContentDownloadWorker(
                 val percent = if (total <= 0) 0 else (downloaded * 100 / total).toInt()
                 if (percent != lastProgressPercent) {
                     lastProgressPercent = percent
-                    setProgressAsync(workDataOf(DownloadedBytesKey to downloaded, TotalBytesKey to total))
+                    scheduler.report(identity, TransferProgress(downloaded, total))
                     // A batch counts items, which only change when one finishes. A text package
                     // reports its bytes as the first half and its import as the second.
                     val half = total / 2
@@ -136,7 +152,10 @@ class ContentDownloadWorker(
                     if (batches.isEmpty()) runCatching { setForegroundAsync(foregroundInfo(percent, detail)) }
                 }
             }
-            if (isAudio) content.runAudioDownload(entityId, progress) else content.runDownload(entityId, progress)
+            scheduler.report(identity, TransferProgress(0, 0, queued = true))
+            transferSlots.withPermit {
+                if (isAudio) content.runAudioDownload(entityId, progress) else content.runDownload(entityId, progress)
+            }
             Analytics.hit("download", pauseKey)
             val batches = content.finishBatchItem(pauseKey)
             if (batches.isEmpty()) {
@@ -149,6 +168,11 @@ class ContentDownloadWorker(
             }
             Result.success()
         } catch (error: CancellationException) {
+            // Android 15+ allows data-sync work about six hours a day. WorkManager re-queues it;
+            // the reader is told why it stopped and that opening the app resets the limit.
+            if (stopReason == WorkInfo.STOP_REASON_FOREGROUND_SERVICE_TIMEOUT) {
+                ContentDownloadNotifications.timeLimitReached(applicationContext)
+            }
             throw error
         } catch (error: InsufficientContentStorageException) {
             Result.failure(
@@ -167,6 +191,14 @@ class ContentDownloadWorker(
         }
     }
 
+    override suspend fun doWork(): Result = try {
+        transfer()
+    } finally {
+        val collection = inputData.getString(CollectionKey)
+        EntryPoints.get(applicationContext, ContentWorkerEntryPoint::class.java).downloadScheduler()
+            .report("content:$collection:${inputData.getString(EntityIdKey)}", null)
+    }
+
     private fun errorData(error: Throwable) = workDataOf(
         "error" to (error.message ?: error::class.java.simpleName),
     )
@@ -176,10 +208,30 @@ class ContentDownloadWorker(
 class ContentDownloadScheduler @Inject constructor(
     private val workManager: WorkManager,
 ) {
-    val workInfos = workManager.getWorkInfosByTagFlow(ContentTag)
+    /** Unfinished and failed downloads only: finished ones pile up by the thousand after «تنزيل الكل». */
+    val workInfos = workManager.getWorkInfosFlow(
+        WorkQuery.Builder.fromTags(listOf(ContentTag))
+            .addStates(listOf(WorkInfo.State.ENQUEUED, WorkInfo.State.RUNNING, WorkInfo.State.BLOCKED, WorkInfo.State.FAILED))
+            .build(),
+    )
 
-    /** [offline]: the package is already on the phone (sent from another one), so no network is awaited. */
-    fun enqueue(entityId: String, collection: String, replace: Boolean = false, offline: Boolean = false) {
+    private val _progress = MutableStateFlow<Map<String, TransferProgress>>(emptyMap())
+
+    /**
+     * Live bytes per running download, by its unique work name, kept in memory. Through
+     * WorkManager's progress every percent of every worker was a database write that re-read
+     * all download jobs, finished ones included.
+     */
+    val progress: StateFlow<Map<String, TransferProgress>> = _progress
+
+    fun report(identity: String, progress: TransferProgress?) =
+        _progress.update { if (progress == null) it - identity else it + (identity to progress) }
+
+    /**
+     * [offline]: the package is already on the phone (sent from another one), so no network is awaited.
+     * [wifiOnly]: «تنزيل الكل» waits for an unmetered network unless the reader chose mobile data.
+     */
+    fun enqueue(entityId: String, collection: String, replace: Boolean = false, offline: Boolean = false, wifiOnly: Boolean = false) {
         val identity = "content:$collection:$entityId"
         val request = OneTimeWorkRequestBuilder<ContentDownloadWorker>()
             .setInputData(
@@ -188,7 +240,15 @@ class ContentDownloadScheduler @Inject constructor(
                     CollectionKey to collection,
                 ),
             )
-            .setConstraints(Constraints.Builder().setRequiredNetworkType(if (offline) NetworkType.NOT_REQUIRED else NetworkType.CONNECTED).build())
+            .setConstraints(
+                Constraints.Builder().setRequiredNetworkType(
+                    when {
+                        offline -> NetworkType.NOT_REQUIRED
+                        wifiOnly -> NetworkType.UNMETERED
+                        else -> NetworkType.CONNECTED
+                    },
+                ).build(),
+            )
             .setBackoffCriteria(BackoffPolicy.EXPONENTIAL, 30, TimeUnit.SECONDS)
             .addTag(ContentTag)
             .addTag(identity)
@@ -208,6 +268,8 @@ class ContentDownloadScheduler @Inject constructor(
     }
 }
 
+data class TransferProgress(val downloaded: Long, val total: Long, val queued: Boolean = false)
+
 object ContentDownloadNotifications {
     private const val ChannelId = "content_downloads"
     /** Silent: every worker re-posts the progress line, and on an alerting channel each one rang. */
@@ -215,6 +277,7 @@ object ContentDownloadNotifications {
     private const val GroupKey = "athar_content_downloads"
     private const val SummaryId = 0x415448
     const val OngoingId = 0x415449
+    private const val TimeLimitId = 0x41544A
 
     fun createChannel(context: Context) {
         val manager = context.getSystemService(NotificationManager::class.java)
@@ -247,6 +310,27 @@ object ContentDownloadNotifications {
                 .setSmallIcon(R.drawable.ic_notification)
                 .setContentTitle("اكتمل تنزيل $label")
                 .setContentText("${arabicDigits(count)} عنصر")
+                .setContentIntent(openApp)
+                .setAutoCancel(true)
+                .build(),
+        )
+    }
+
+    fun timeLimitReached(context: Context) {
+        if (
+            Build.VERSION.SDK_INT >= 33 &&
+            ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) !=
+            PackageManager.PERMISSION_GRANTED
+        ) return
+        createChannel(context)
+        val openApp = PendingIntent.getActivity(context, TimeLimitId, Intent(context, MainActivity::class.java),
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
+        context.getSystemService(NotificationManager::class.java).notify(
+            TimeLimitId,
+            Notification.Builder(context, ChannelId)
+                .setSmallIcon(R.drawable.ic_notification)
+                .setContentTitle("توقّف التنزيل مؤقتًا")
+                .setContentText("بلغ حدّ أندرويد للتنزيل في الخلفية؛ افتح التطبيق ليكمل")
                 .setContentIntent(openApp)
                 .setAutoCancel(true)
                 .build(),

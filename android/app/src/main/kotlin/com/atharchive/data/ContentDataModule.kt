@@ -13,7 +13,12 @@ import com.atharchive.core.data.db.content.AtharContentDatabase
 import com.atharchive.core.data.db.content.ContentBlockEntity
 import com.atharchive.core.data.db.content.ContentAvailability
 import com.atharchive.core.data.db.content.ContentTransferState
+import com.atharchive.core.data.db.user.AudioDownloadEntity
+import com.atharchive.core.data.db.user.DownloadBatchEntity
+import com.atharchive.core.data.db.user.DownloadBatchItemEntity
+import com.atharchive.core.data.db.user.PausedDownloadEntity
 import com.atharchive.core.data.db.user.PinnedDownloadEntity
+import com.atharchive.core.data.db.user.UserDataDao
 import com.atharchive.core.data.db.user.AtharUserDatabase
 import com.atharchive.core.data.network.AppContentHttpClient
 import com.atharchive.core.data.repository.OrdinalBlockReader
@@ -42,6 +47,7 @@ import java.util.Base64
 import javax.inject.Inject
 import javax.inject.Singleton
 import kotlinx.coroutines.ensureActive
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -49,7 +55,6 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.flatMapLatest
-import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import okhttp3.OkHttpClient
 import okhttp3.HttpUrl.Companion.toHttpUrl
@@ -107,7 +112,7 @@ class ContentAccess @Inject constructor(
         private const val CacheBudgetKey = "cache_budget_bytes"
     }
 
-    private val mutationMutex = Mutex()
+    private val mutationMutex = com.atharchive.core.data.repository.ContentWriteLock()
     private val retainedStore by lazy { RetainedPackageStore(File(context.filesDir, "content")) }
     private val cacheManager by lazy { ContentCacheManager(contentDatabase, userDatabase) }
     private val storagePreferences by lazy {
@@ -115,17 +120,97 @@ class ContentAccess @Inject constructor(
     }
     private val _cacheBudgetBytes = MutableStateFlow(readCacheBudget())
     val cacheBudgetBytes: StateFlow<Long> = _cacheBudgetBytes
-    private val _pausedDownloads = MutableStateFlow(storagePreferences.getStringSet("paused_downloads", emptySet()).orEmpty().toSet())
+    /*
+     * Download bookkeeping: these sets are the live state, and every change is written to its own
+     * rows in the user DB, in order, by [writeBehind]. They were SharedPreferences sets, rewritten
+     * whole (with the rest of the file) for every item a bulk download finished, and Android waits
+     * for those writes on the main thread whenever a service starts or stops. Read the sets after
+     * [awaitDownloadState] where a wrong answer would act on an item (skip it, enqueue it).
+     */
+    private val _pausedDownloads = MutableStateFlow(emptySet<String>())
     val pausedDownloads: StateFlow<Set<String>> = _pausedDownloads
-    private val _requestedAudio = MutableStateFlow(storagePreferences.getStringSet("requested_audio", emptySet()).orEmpty().toSet())
+    private val _requestedAudio = MutableStateFlow(emptySet<String>())
     val requestedAudio: StateFlow<Set<String>> = _requestedAudio
-    private val _downloadedAudio = MutableStateFlow(storagePreferences.getStringSet("downloaded_audio", emptySet()).orEmpty().toSet())
+    private val _downloadedAudio = MutableStateFlow(emptySet<String>())
     val downloadedAudio: StateFlow<Set<String>> = _downloadedAudio
+    private val bookkeeping = Any()
+    /** Guarded by [bookkeeping]: keys changed before the stored rows loaded keep their in-memory state. */
+    private var downloadRowsLoaded = false
+    private val touchedBeforeLoad = hashSetOf<String>()
+
+    private fun touch(kind: String, keys: Collection<String>) {
+        if (!downloadRowsLoaded) keys.mapTo(touchedBeforeLoad) { "$kind:$it" }
+    }
+    private val downloadStateLoaded = kotlinx.coroutines.CompletableDeferred<Unit>()
+    private val writes = kotlinx.coroutines.channels.Channel<suspend UserDataDao.() -> Unit>(kotlinx.coroutines.channels.Channel.UNLIMITED)
+
+    suspend fun awaitDownloadState() = downloadStateLoaded.await()
+
+    /** Free space where downloads are stored. */
+    fun freeBytes(): Long = android.os.StatFs(context.filesDir.absolutePath).availableBytes
+
+    /** Queues a row write; called inside `synchronized(bookkeeping)` so rows change in the same order as the sets. */
+    private fun writeBehind(write: suspend UserDataDao.() -> Unit) {
+        writes.trySend(write)
+    }
+
+    private suspend fun loadDownloadState() {
+        val dao = userDatabase.userDataDao()
+        importLegacyDownloadState(dao)
+        val audio = dao.audioDownloads()
+        val paused = dao.pausedDownloadKeys()
+        val batchItems = dao.downloadBatchItems().groupBy({ it.label }, { it.pauseKey })
+        val batches = dao.downloadBatches().map { DownloadBatch(it.label, it.total, batchItems[it.label].orEmpty().toSet()) }
+        synchronized(bookkeeping) {
+            fun stored(kind: String, key: String) = "$kind:$key" !in touchedBeforeLoad
+            _requestedAudio.value += audio.filter { it.requested && stored("audio", it.audioId) }.map { it.audioId }
+            _downloadedAudio.value += audio.filter { it.downloaded && stored("audio", it.audioId) }.map { it.audioId }
+            _pausedDownloads.value += paused.filter { stored("paused", it) }
+            _batches.value = batches.filter { stored("batch", it.label) }
+                .map { batch -> batch.copy(left = batch.left.filterTo(hashSetOf()) { stored("item", it) }) }
+                .filter { it.left.isNotEmpty() } + _batches.value
+            downloadRowsLoaded = true
+            touchedBeforeLoad.clear()
+        }
+    }
+
+    /** One-time move of the sets an older version kept in SharedPreferences. */
+    private suspend fun importLegacyDownloadState(dao: UserDataDao) {
+        val prefs = storagePreferences
+        val keys = listOf("paused_downloads", "requested_audio", "downloaded_audio", "batches")
+        if (keys.none(prefs::contains)) return
+        val requested = prefs.getStringSet("requested_audio", emptySet()).orEmpty()
+        val downloaded = prefs.getStringSet("downloaded_audio", emptySet()).orEmpty()
+        dao.saveAudioDownloads((requested + downloaded).map { AudioDownloadEntity(it, it in requested, it in downloaded) })
+        dao.addPausedDownloads(prefs.getStringSet("paused_downloads", emptySet()).orEmpty().map(::PausedDownloadEntity))
+        val labels = prefs.getStringSet("batches", emptySet()).orEmpty()
+        for (label in labels) {
+            dao.saveDownloadBatch(DownloadBatchEntity(label, prefs.getInt("batch_total:$label", 0)))
+            dao.addDownloadBatchItems(prefs.getStringSet("batch_left:$label", emptySet()).orEmpty().map { DownloadBatchItemEntity(label, it) })
+        }
+        prefs.edit(commit = true) {
+            keys.forEach(::remove)
+            labels.forEach { remove("batch_total:$it"); remove("batch_left:$it") }
+        }
+    }
+
+    /** Persists the audio rows of [ids] as the sets now hold them. */
+    private fun writeAudio(ids: Collection<String>) {
+        val requested = _requestedAudio.value
+        val downloaded = _downloadedAudio.value
+        touch("audio", ids)
+        val (kept, gone) = ids.toSet().partition { it in requested || it in downloaded }
+        writeBehind {
+            if (kept.isNotEmpty()) saveAudioDownloads(kept.map { AudioDownloadEntity(it, it in requested, it in downloaded) })
+            if (gone.isNotEmpty()) deleteAudioDownloads(gone)
+        }
+    }
     /** 0..1 while a new catalog is downloaded and applied, null otherwise. */
     val catalogUpdate: StateFlow<Float?> = importer.applyProgress
     private val verifiedAudio = java.util.concurrent.ConcurrentHashMap.newKeySet<String>()
 
     suspend fun reconcileAudioDownloads() = withContext(Dispatchers.IO) {
+        awaitDownloadState()
         if (_downloadedAudio.value.isEmpty()) return@withContext
         val references = contentDatabase.catalogDao().entitiesWithAudio().flatMap { it.toCatalogEntry().audio }.associateBy { it.id }
         val downloaded = _downloadedAudio.value
@@ -133,15 +218,16 @@ class ContentAccess @Inject constructor(
             references[id]?.let { audio -> audioFile(audio).let { it.isFile && it.length() == audio.size } } == true
         }
         val invalid = downloaded - valid
-        synchronized(storagePreferences) {
+        if (invalid.isEmpty()) return@withContext
+        synchronized(bookkeeping) {
             _downloadedAudio.value -= invalid
-            storagePreferences.edit { putStringSet("downloaded_audio", _downloadedAudio.value) }
+            writeAudio(invalid)
         }
     }
 
-    private fun markAudioDownloaded(audioId: String, retained: Boolean) = synchronized(storagePreferences) {
+    private fun markAudioDownloaded(audioId: String, retained: Boolean) = synchronized(bookkeeping) {
         _downloadedAudio.value = if (retained) _downloadedAudio.value + audioId else _downloadedAudio.value - audioId
-        storagePreferences.edit { putStringSet("downloaded_audio", _downloadedAudio.value) }
+        writeAudio(listOf(audioId))
     }
 
     private suspend fun findAudio(audioId: String): AudioReference =
@@ -168,15 +254,12 @@ class ContentAccess @Inject constructor(
         } else requireNotNull(appContentClient).artifactUrl(audio.path)
     }
 
-    fun requestAudioDownloads(audioIds: Collection<String>) = synchronized(storagePreferences) {
+    fun requestAudioDownloads(audioIds: Collection<String>) = synchronized(bookkeeping) {
         _requestedAudio.value += audioIds
-        storagePreferences.edit { putStringSet("requested_audio", _requestedAudio.value) }
+        writeAudio(audioIds)
     }
 
-    fun requestAudioDownload(audioId: String) = synchronized(storagePreferences) {
-        _requestedAudio.value += audioId
-        storagePreferences.edit { putStringSet("requested_audio", _requestedAudio.value) }
-    }
+    fun requestAudioDownload(audioId: String) = requestAudioDownloads(listOf(audioId))
 
     suspend fun runAudioDownload(audioId: String, onProgress: (Long, Long) -> Unit) = withContext(Dispatchers.IO) {
         val audio = findAudio(audioId)
@@ -212,13 +295,10 @@ class ContentAccess @Inject constructor(
             File(file.parentFile, "${audio.hash}.part").delete()
         }
         val ids = audioIds.toSet()
-        synchronized(storagePreferences) {
+        synchronized(bookkeeping) {
             _downloadedAudio.value -= ids
             _requestedAudio.value -= ids
-            storagePreferences.edit {
-                putStringSet("downloaded_audio", _downloadedAudio.value)
-                putStringSet("requested_audio", _requestedAudio.value)
-            }
+            writeAudio(ids)
         }
         setDownloadsPaused(ids.map { "audio:$it" }, false)
     }
@@ -232,41 +312,63 @@ class ContentAccess @Inject constructor(
         val done: Int get() = total - left.size
     }
 
-    private val _batches = MutableStateFlow(readBatches())
+    private val _batches = MutableStateFlow(emptyList<DownloadBatch>())
     val batches: StateFlow<List<DownloadBatch>> = _batches
 
-    private fun readBatches() = storagePreferences.getStringSet("batches", emptySet()).orEmpty().map { label ->
-        DownloadBatch(label, storagePreferences.getInt("batch_total:$label", 0), storagePreferences.getStringSet("batch_left:$label", emptySet()).orEmpty().toSet())
-    }
-
-    private fun writeBatches(batches: List<DownloadBatch>) {
-        val gone = _batches.value.map { it.label } - batches.map { it.label }.toSet()
-        _batches.value = batches
-        storagePreferences.edit {
-            putStringSet("batches", batches.mapTo(hashSetOf()) { it.label })
-            gone.forEach { remove("batch_total:$it"); remove("batch_left:$it") }
-            batches.forEach { putInt("batch_total:${it.label}", it.total); putStringSet("batch_left:${it.label}", it.left) }
+    init {
+        CoroutineScope(kotlinx.coroutines.SupervisorJob() + Dispatchers.IO).launch {
+            try {
+                loadDownloadState()
+            } finally {
+                downloadStateLoaded.complete(Unit)
+            }
+            for (write in writes) {
+                try {
+                    write(userDatabase.userDataDao())
+                } catch (error: Exception) {
+                    android.util.Log.e("ContentAccess", "download bookkeeping write failed", error)
+                }
+            }
         }
     }
 
-    fun startBatch(label: String, keys: Collection<String>) = synchronized(storagePreferences) {
+    fun startBatch(label: String, keys: Collection<String>) = synchronized(bookkeeping) {
         if (keys.isEmpty()) return@synchronized
         val current = _batches.value.firstOrNull { it.label == label }
         val left = current?.left.orEmpty() + keys
-        writeBatches(_batches.value.filter { it.label != label } + DownloadBatch(label, (current?.done ?: 0) + left.size, left))
+        val batch = DownloadBatch(label, (current?.done ?: 0) + left.size, left)
+        touch("batch", listOf(label))
+        _batches.value = _batches.value.filter { it.label != label } + batch
+        writeBehind {
+            saveDownloadBatch(DownloadBatchEntity(label, batch.total))
+            addDownloadBatchItems(keys.map { DownloadBatchItemEntity(label, it) })
+        }
     }
 
     /** One item finished: returns the batches it was part of, after the update (empty if none). */
-    fun finishBatchItem(key: String): List<DownloadBatch> = synchronized(storagePreferences) {
+    fun finishBatchItem(key: String): List<DownloadBatch> = synchronized(bookkeeping) {
+        touch("item", listOf(key))
         val touched = _batches.value.filter { key in it.left }.map { it.copy(left = it.left - key) }
         if (touched.isEmpty()) return@synchronized emptyList()
         val labels = touched.mapTo(hashSetOf()) { it.label }
-        writeBatches(_batches.value.filter { it.label !in labels } + touched.filter { it.left.isNotEmpty() })
+        _batches.value = _batches.value.filter { it.label !in labels } + touched.filter { it.left.isNotEmpty() }
+        val finished = touched.filter { it.left.isEmpty() }.map { it.label }
+        writeBehind {
+            removeDownloadBatchItem(key)
+            if (finished.isNotEmpty()) deleteDownloadBatches(finished)
+        }
         touched
     }
 
-    fun clearBatches(labels: Set<String>) = synchronized(storagePreferences) {
-        if (_batches.value.any { it.label in labels }) writeBatches(_batches.value.filter { it.label !in labels })
+    fun clearBatches(labels: Set<String>) = synchronized(bookkeeping) {
+        touch("batch", labels)
+        if (_batches.value.none { it.label in labels }) return@synchronized
+        _batches.value = _batches.value.filter { it.label !in labels }
+        val gone = labels.toList()
+        writeBehind {
+            deleteDownloadBatchItems(gone)
+            deleteDownloadBatches(gone)
+        }
     }
 
     suspend fun removeAudioDownload(audioId: String) = withContext(Dispatchers.IO) {
@@ -276,23 +378,23 @@ class ContentAccess @Inject constructor(
         verifiedAudio -= audio.hash
         val part = File(file.parentFile, "${audio.hash}.part")
         check(!part.exists() || part.delete()) { "تعذّر حذف التنزيل الجزئي" }
-        markAudioDownloaded(audioId, false)
-        synchronized(storagePreferences) {
+        synchronized(bookkeeping) {
+            _downloadedAudio.value -= audioId
             _requestedAudio.value -= audioId
-            storagePreferences.edit { putStringSet("requested_audio", _requestedAudio.value) }
+            writeAudio(listOf(audioId))
         }
         setDownloadPaused("audio:$audioId", false)
     }
 
-    fun setDownloadsPaused(ids: Collection<String>, paused: Boolean) = synchronized(storagePreferences) {
-        _pausedDownloads.value = if (paused) _pausedDownloads.value + ids else _pausedDownloads.value - ids.toSet()
-        storagePreferences.edit { putStringSet("paused_downloads", _pausedDownloads.value) }
+    fun setDownloadsPaused(ids: Collection<String>, paused: Boolean) = synchronized(bookkeeping) {
+        val keys = ids.toList()
+        if (keys.isEmpty()) return@synchronized
+        touch("paused", keys)
+        _pausedDownloads.value = if (paused) _pausedDownloads.value + keys else _pausedDownloads.value - keys.toSet()
+        writeBehind { if (paused) addPausedDownloads(keys.map(::PausedDownloadEntity)) else removePausedDownloads(keys) }
     }
 
-    fun setDownloadPaused(entityId: String, paused: Boolean) = synchronized(storagePreferences) {
-        _pausedDownloads.value = if (paused) _pausedDownloads.value + entityId else _pausedDownloads.value - entityId
-        storagePreferences.edit { putStringSet("paused_downloads", _pausedDownloads.value) }
-    }
+    fun setDownloadPaused(entityId: String, paused: Boolean) = setDownloadsPaused(listOf(entityId), paused)
 
     /** The edition last chosen from «الطبعات» for a work (keyed by its default edition), or null for the default. */
     fun preferredEdition(primaryId: String): String? = storagePreferences.getString("edition:$primaryId", null)
@@ -370,31 +472,9 @@ class ContentAccess @Inject constructor(
 
     val configured: Boolean get() = configuration != null
 
-    /**
-     * Seeds an empty catalog from the snapshot in the app's assets (`app-content/`, put there
-     * by `npm run app:bundle-catalog`). Quietly does nothing without a snapshot, with a
-     * catalog already applied, or when the snapshot does not verify: sync still follows.
-     */
-    suspend fun seedBundledCatalog(): Boolean {
-        val config = configuration ?: return false
-        val source = repository ?: return false
-        return try {
-            kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) {
-                source.seedCatalog(mapOf(config.keyId to config.publicKey)) { path ->
-                    try { context.assets.open("app-content/$path").use { it.readBytes() } }
-                    catch (_: java.io.FileNotFoundException) { null }
-                }
-            }
-        } catch (cancelled: kotlinx.coroutines.CancellationException) {
-            throw cancelled
-        } catch (error: Exception) {
-            android.util.Log.w("AtharContent", "bundled catalog not applied: ${error.message}")
-            false
-        }
-    }
-
     suspend fun sync(): CatalogSyncResult? {
         val config = configuration ?: return null
+        awaitDownloadState() // requested recordings keep their catalog rows
         return repository!!.syncCatalog(mapOf(config.keyId to config.publicKey)) { _requestedAudio.value }
     }
 
@@ -413,7 +493,8 @@ class ContentAccess @Inject constructor(
         }
         val readingOrdinal = userDatabase.userDataDao().readingPosition(entityId)?.ordinalHint
         val readingFrame = frames.firstOrNull { readingOrdinal != null && readingOrdinal in it.firstBlockOrdinal until (it.firstBlockOrdinal + it.blockCount) }?.frameOrdinal
-        val status = mutationMutex.withLock {
+        // The page on screen: reader priority over download batches (ContentWriteLock).
+        val status = mutationMutex.forReader {
             storagePolicy.prepareForReadThrough(
                 activeEntityId = entityId,
                 activeFrameOrdinal = cachedFrame?.frameOrdinal,
@@ -433,7 +514,7 @@ class ContentAccess @Inject constructor(
         } finally {
             _openProgress.value = null
         }
-        mutationMutex.withLock {
+        mutationMutex.forReader {
             cacheManager.evictToBudget(
                 budgetBytes = _cacheBudgetBytes.value,
                 activeEntityId = entityId,
@@ -518,7 +599,7 @@ class ContentAccess @Inject constructor(
                 )
             }
             val retained = retainedStore.containsVerified(entry)
-            if (retained && entity.availability == ContentAvailability.COMPLETE) {
+            if (retained && importDao.state(entityId)?.availability == ContentAvailability.COMPLETE) {
                 importDao.markTransfer(entityId, ContentTransferState.IDLE)
                 verified += entityId
             } else {
@@ -531,7 +612,7 @@ class ContentAccess @Inject constructor(
 
     /** The installed package of a work; it changes when a download finishes or replaces it. */
     fun observePackage(entityId: String): Flow<String?> =
-        contentDatabase.catalogDao().observeEntity(entityId).map { it?.localPackageHash }.distinctUntilChanged()
+        contentDatabase.catalogDao().observeLocalPackage(entityId).distinctUntilChanged()
 
     private fun blockReader(entityId: String) = OrdinalBlockReader(
         count = { contentDatabase.catalogDao().entity(entityId)?.pkgBlocks ?: 0 },

@@ -53,6 +53,12 @@ private fun ReaderSelectionEndpoint.compareTo(other: ReaderSelectionEndpoint) =
  * Selection drawn on the page itself — no second text layer, so nothing re-wraps or jumps.
  * Endpoints are durable (block id, ordinal, source offset); the text to copy is built only
  * when an action runs, so a selection can cross blocks the pager has already dropped.
+ *
+ * Why not the platform's selection: the TextView overlay this replaced was a second text layer;
+ * Compose's SelectionContainer over a LazyColumn crashes when a handle passes disposed items
+ * (seen in the poem reader); and Android reports justified-line positions at natural spacing
+ * ([Stretch]), which phones down to minSdk 26 still do. Replace this only after a measured
+ * comparison wins on all three. JustifiedLineHitTest guards the hit-testing.
  */
 @Stable
 internal class PageSelection {

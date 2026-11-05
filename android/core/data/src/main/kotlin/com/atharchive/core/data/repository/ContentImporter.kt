@@ -73,15 +73,15 @@ class ContentImporter(
         val dao = database.catalogDao()
         try {
             applyProgress.value = 0.05f
-            dao.applyCatalogSlices(catalog.entries.map(CatalogEntry::toEntity)) { applyProgress.value = 0.05f + 0.85f * it }
+            val changed = dao.applyCatalogSlices(catalog.entries.map(CatalogEntry::toEntity)) { applyProgress.value = 0.05f + 0.85f * it }
             database.withWriteTransaction {
                 dao.finishGeneration(tombstonedIds, generation)
-                ContentSearchSchema.replaceCatalog(this, dao.allEntities())
+                ContentSearchSchema.updateCatalog(this, changed, removedIds = tombstonedIds)
             }
+            android.util.Log.i("AtharContent", "catalog applied: ${changed.size} of ${catalog.entries.size} entries changed in ${(System.nanoTime() - started) / 1_000_000} ms")
         } finally {
             applyProgress.value = null
         }
-        android.util.Log.i("AtharContent", "catalog applied: ${catalog.entries.size} entries in ${(System.nanoTime() - started) / 1_000_000} ms")
     }
 
     /** Imports a verified frame; with [into] set to a staging id the frame is written beside the readable copy. */
@@ -91,36 +91,67 @@ class ContentImporter(
         frame: FrameIndexEntry,
         compressedBytes: ByteArray,
         into: String = entry.id,
-    ): FrameImportResult {
-        val dao = database.importDao()
-        ContentSearchSchema.ensure(database)
-        return try {
-            val decoded = FramedPackageDecoder.decodeFrame(compressedBytes, frame, entry)
-            val now = nowMillis()
-            val entities = decoded.blocks.map { it.toEntity(into) }
-            val frameEntity = EntityFrameEntity(
+    ): FrameImportResult = importPrepared(prepareFrame(entry, frameNumber, frame, compressedBytes, into))
+
+    /**
+     * The CPU half of an import: hash check, gunzip, decode, and the search form of every block.
+     * No database and no lock, so a download does it before taking the write lock; doing it
+     * inside the lock held page reads ~750 ms behind each batch on the Redmi 12.
+     */
+    suspend fun prepareFrame(
+        entry: CatalogEntry,
+        frameNumber: Int,
+        frame: FrameIndexEntry,
+        compressedBytes: ByteArray,
+        into: String = entry.id,
+    ): PreparedFrame = try {
+        val decoded = FramedPackageDecoder.decodeFrame(compressedBytes, frame, entry)
+        val entities = decoded.blocks.map { it.toEntity(into) }
+        PreparedFrame(
+            entry = entry,
+            into = into,
+            frame = EntityFrameEntity(
                 entityId = into,
                 frameOrdinal = frameNumber,
                 firstBlockOrdinal = frame.ord,
                 blockCount = frame.n,
                 compressedBytes = compressedBytes.size.toLong(),
-                lastOpenedAt = now,
-            )
-            val chapters = decoded.chapterEntities(into)
-            val footnotes = decoded.footnotes.map {
+                lastOpenedAt = nowMillis(),
+            ),
+            blocks = entities,
+            chapters = decoded.chapterEntities(into),
+            footnotes = decoded.footnotes.map {
                 FootnoteEntity(entityId = into, fnId = it.id, text = it.x, inlineSpans = encodeSpans(it.sp), marker = it.n)
-            }
+            },
+            searchText = entities.associate { it.ordinal to ArNormalize.normalize(it.text) },
+        )
+    } catch (error: Throwable) {
+        runCatching { database.importDao().markTransfer(entry.id, ContentTransferState.FAILED) }
+        throw error
+    }
+
+    /** The database half: writes a [prepareFrame] result. */
+    suspend fun importPrepared(prepared: PreparedFrame): FrameImportResult {
+        val dao = database.importDao()
+        val entry = prepared.entry
+        ContentSearchSchema.ensure(database)
+        return try {
             database.withWriteTransaction {
-                val result = if (into != entry.id) {
-                    dao.stageFrame(frameEntity, entities, chapters, footnotes)
+                val result = if (prepared.into != entry.id) {
+                    dao.stageFrame(prepared.frame, prepared.blocks, prepared.chapters, prepared.footnotes)
                 } else {
-                    val local = dao.entity(entry.id)
-                    if (local?.localPackageHash != null && local.localPackageHash != entry.pkg.hash) {
+                    val localPackage = dao.state(entry.id)?.localPackageHash
+                    if (localPackage != null && localPackage != entry.pkg.hash) {
                         dao.clearImportedContent(entry.id)
                     }
-                    dao.importFrame(entry.id, frameEntity, entities, chapters, footnotes, now)
+                    dao.importFrame(entry.id, prepared.frame, prepared.blocks, prepared.chapters, prepared.footnotes)
                 }
-                ContentSearchSchema.indexBlocks(this, dao.blockWindow(into, frame.ord, frame.ord + frame.n - 1))
+                val first = prepared.frame.firstBlockOrdinal
+                ContentSearchSchema.indexBlocks(
+                    this,
+                    dao.blockWindow(prepared.into, first, first + prepared.frame.blockCount - 1),
+                    prepared.searchText,
+                )
                 result
             }
         } catch (error: Throwable) {
@@ -129,6 +160,17 @@ class ContentImporter(
         }
     }
 }
+
+class PreparedFrame internal constructor(
+    internal val entry: CatalogEntry,
+    internal val into: String,
+    internal val frame: EntityFrameEntity,
+    internal val blocks: List<ContentBlockEntity>,
+    internal val chapters: List<ChapterEntity>,
+    internal val footnotes: List<FootnoteEntity>,
+    /** Normalized search text by block ordinal. */
+    internal val searchText: Map<Int, String>,
+)
 
 fun CatalogEntry.toEntity(): ContentEntity = ContentEntity(
     id = id,

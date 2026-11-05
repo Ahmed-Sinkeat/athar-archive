@@ -945,7 +945,7 @@ fun AtharApp(
                                     .onFailure { announce("تعذّر مسح المؤقّت") }
                             }
                         },
-                        onDownloadAll = { contentViewModel.downloadRemaining(it) },
+                        onDownloadAll = { row, mobileData -> contentViewModel.downloadRemaining(row, mobileData) },
                         onPauseAll = { contentViewModel.pauseResumeMany(it.running, pause = true) },
                         onManage = { backStack.add(DownloadsListRoute()) },
                     )

@@ -19,8 +19,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.sync.Mutex
-import kotlinx.coroutines.sync.withLock
 
 data class ReadThroughResult(
     val fromCache: Boolean,
@@ -44,7 +42,7 @@ class ReadThroughContentRepository(
     private val client: AppContentHttpClient,
     private val importer: ContentImporter,
     private val nowMillis: () -> Long = System::currentTimeMillis,
-    private val mutationMutex: Mutex = Mutex(),
+    private val mutationMutex: ContentWriteLock = ContentWriteLock(),
 ) {
     fun observeCatalog(): Flow<List<ContentEntity>> = database.catalogDao().observeCatalog()
 
@@ -89,37 +87,6 @@ class ReadThroughContentRepository(
         }
     }
 
-    /**
-     * First launch only: applies the catalog snapshot shipped inside the app so the library and
-     * title/author/topic search work before (or without) any network. It goes through the same
-     * signature and hash checks as a downloaded generation, and it never runs when a
-     * generation is already applied, so a stale snapshot can not replace a newer catalog.
-     * [read] returns the snapshot file at a path relative to the content root, or null.
-     */
-    suspend fun seedCatalog(trustedKeys: Map<String, PublicKey>, read: (String) -> ByteArray?): Boolean {
-        if (database.catalogDao().generation() != null) return false
-        val envelope = read("index.json") ?: return false
-        val root = com.atharchive.core.data.content.SignedRootVerifier.verify(envelope, trustedKeys)
-        val catalog = com.atharchive.core.data.content.AppContentDocuments.decodeCatalog(
-            read(root.catalog.path) ?: return false, root.catalog,
-        )
-        val tombstones = com.atharchive.core.data.content.AppContentDocuments.decodeTombstones(
-            read(root.tombstones.path) ?: return false, root.tombstones,
-        )
-        return mutationMutex.withLock {
-            if (database.catalogDao().generation() != null) return@withLock false
-            importer.applyGeneration(
-                generationId = root.generationId,
-                catalogHash = root.catalog.hash,
-                tombstonesHash = root.tombstones.hash,
-                catalog = catalog,
-                tombstonedIds = tombstones.deleted.mapTo(mutableSetOf()) { it.id },
-                protectedIds = emptySet(),
-            )
-            true
-        }
-    }
-
     private suspend fun protectedIds(audioIds: Set<String>): Set<String> = retainedMetadataIds(
         userDatabase.userDataDao().protectedEntityIds().toSet(), audioIds,
         database.catalogDao().allEntities().map { it.toCatalogEntry() },
@@ -145,23 +112,21 @@ class ReadThroughContentRepository(
         suspend fun fromCache(frame: EntityFrameEntity): ReadThroughResult {
             val now = nowMillis()
             dao.touchFrame(entry.id, frame.frameOrdinal, now)
-            dao.touchEntity(entry.id, now)
-            val entity = requireNotNull(dao.entity(entry.id))
+            val state = requireNotNull(dao.state(entry.id))
             return ReadThroughResult(
                 fromCache = true,
                 frameNumber = frame.frameOrdinal,
-                availability = entity.availability,
+                availability = state.availability,
                 importedBlocks = dao.importedBlockCount(entry.id),
             )
         }
         // A frame of an older package (the book was updated since it was read) is only a
         // fallback: fetching the new frame makes the importer replace the old copy. A downloaded
         // book keeps its own copy until the download worker swaps the whole update in.
-        val stale = dao.entity(entry.id)?.localPackageHash.let { it != null && it != entry.pkg.hash }
+        val stale = dao.state(entry.id)?.localPackageHash.let { it != null && it != entry.pkg.hash }
         if (cached != null && (!stale || userDatabase.userDataDao().pinnedDownload(entry.id) != null)) return fromCache(cached)
 
-        // No transfer-state writes on the read-through path: every UPDATE on `entity`
-        // re-runs each catalog list query and costs a commit (≈0.3 s each on a Redmi).
+        // No transfer-state writes on the read-through path: each one costs a commit (≈0.3 s on a Redmi).
         try {
             // The catalog's signed first frame skips the index round trip for an opening page.
             val first = entry.pkg.f0?.takeIf { targetOrdinal < it.n }
@@ -181,7 +146,7 @@ class ReadThroughContentRepository(
             }
             val from = if (first != null) 0f else 0.15f
             val bytes = client.fetchFrame(entry, frame) { onProgress(from + (0.95f - from) * it / frame.len.coerceAtLeast(1)) }
-            return mutationMutex.withLock {
+            return mutationMutex.forReader {
                 check(dao.entity(entry.id)?.pkgHash == entry.pkg.hash) { "catalog changed during open; retry" }
                 importer.importVerifiedFrame(entry, frameNumber, frame, bytes).toReadThrough(frameNumber)
             }.also { onProgress(1f) }

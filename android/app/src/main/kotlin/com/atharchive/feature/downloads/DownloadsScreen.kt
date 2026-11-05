@@ -64,7 +64,7 @@ fun DownloadsScreen(
     onBack: () -> Unit,
     onBudgetChange: (CacheBudget) -> Unit,
     onClearCache: () -> Unit,
-    onDownloadAll: (BulkRowUi) -> Unit,
+    onDownloadAll: (row: BulkRowUi, mobileData: Boolean) -> Unit,
     onPauseAll: (BulkRowUi) -> Unit,
     onManage: () -> Unit,
     modifier: Modifier = Modifier,
@@ -92,7 +92,7 @@ fun DownloadsScreen(
                 itemsIndexed(state.bulk, key = { _, row -> "bulk-${row.label}" }) { index, row ->
                     BulkRow(
                         row, horizontalPadding,
-                        onDownload = { onDownloadAll(row) },
+                        onDownload = { mobileData -> onDownloadAll(row, mobileData) },
                         onPause = { onPauseAll(row) },
                     )
                     if (index != state.bulk.lastIndex) RowDivider(horizontalPadding)
@@ -497,7 +497,7 @@ private fun TransferRow(
 
 /** A whole type in one tap; the popup is the confirmation, since it may be gigabytes. Progress shows under it. */
 @Composable
-private fun BulkRow(row: BulkRowUi, horizontalPadding: Dp, onDownload: () -> Unit, onPause: () -> Unit) {
+private fun BulkRow(row: BulkRowUi, horizontalPadding: Dp, onDownload: (mobileData: Boolean) -> Unit, onPause: () -> Unit) {
     var menuOpen by remember { mutableStateOf(false) }
     // Never started and stopped part-way are the same to the reader: both are «المتبقي».
     val remaining = row.idle + row.stopped
@@ -555,12 +555,20 @@ private fun BulkRow(row: BulkRowUi, horizontalPadding: Dp, onDownload: () -> Uni
                     modifier = Modifier.testTag("bulk_pause_${row.label}"))
             }
             if (remaining.isNotEmpty()) {
+                val size = "${arabicDigits(remaining.size)} عنصر · ${byteSize(remaining.sumOf { it.bytes - it.partialBytes })}"
                 AtharMenuItem(
                     if (row.done > 0 || row.busy) "تنزيل المتبقي" else "تنزيل الكل",
-                    subtitle = "${arabicDigits(remaining.size)} عنصر · ${byteSize(remaining.sumOf { it.bytes - it.partialBytes })}",
+                    subtitle = "$size · عبر Wi-Fi",
                     icon = AtharIcons.Download,
-                    onClick = { onDownload(); menuOpen = false },
+                    onClick = { onDownload(false); menuOpen = false },
                     modifier = Modifier.testTag("bulk_confirm_${row.label}"),
+                )
+                AtharMenuItem(
+                    "تنزيل عبر بيانات الجوال",
+                    subtitle = "يبدأ الآن على أي شبكة",
+                    icon = AtharIcons.Download,
+                    onClick = { onDownload(true); menuOpen = false },
+                    modifier = Modifier.testTag("bulk_confirm_mobile_${row.label}"),
                 )
             }
         }

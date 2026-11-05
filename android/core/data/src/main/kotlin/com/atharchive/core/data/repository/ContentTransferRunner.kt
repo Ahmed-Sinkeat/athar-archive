@@ -27,7 +27,10 @@ data class ContentTransferResult(
     val alreadyRetained: Boolean,
 )
 
-private const val FRAMES_PER_COMMIT = 8
+/** Frames read and decoded ahead, outside the write lock. */
+private const val FRAMES_PREPARED_AHEAD = 8
+/** Longest a download writes before committing and letting a page read in. */
+private const val WRITE_BUDGET_NANOS = 50_000_000L
 
 private val SharedName = Regex("^([A-Za-z0-9_-]+)\\.(athar|idx)$")
 
@@ -39,7 +42,7 @@ class ContentTransferRunner(
     private val retainedStore: RetainedPackageStore,
     private val transferDirectory: File,
     private val storagePolicy: ContentStoragePolicy,
-    private val mutationMutex: Mutex = Mutex(),
+    private val mutationMutex: ContentWriteLock = ContentWriteLock(),
     private val nowMillis: () -> Long = System::currentTimeMillis,
 ) {
     private val transferLocks = java.util.concurrent.ConcurrentHashMap<String, Mutex>()
@@ -108,7 +111,7 @@ class ContentTransferRunner(
         }
         require(pin.pkgHash == entry.pkg.hash) { "download intent targets an older package" }
 
-        if (entity.availability == ContentAvailability.COMPLETE && retainedStore.containsVerified(entry)) {
+        if (dao.state(entityId)?.availability == ContentAvailability.COMPLETE && retainedStore.containsVerified(entry)) {
             dao.markTransfer(entityId, ContentTransferState.IDLE)
             removeTransferFiles(entry)
             return@withLock ContentTransferResult(
@@ -121,12 +124,15 @@ class ContentTransferRunner(
         }
 
         dao.markTransfer(entityId, ContentTransferState.FETCHING)
+        // The package file (kept after import) plus its text in the database.
+        val diskBytes = entry.pkg.size + entry.pkg.uncompressed
+        var reserved = false
         try {
-            mutationMutex.withLock { storagePolicy.prepareForDownload(entry.pkg.uncompressed) }
+            mutationMutex.withLock { storagePolicy.prepareForDownload(diskBytes, reserve = true) }
+            reserved = true
             val partFile = partFile(entry)
-            // One honest bar for the whole wait: bytes fill the first half, frames written into the
+            // One bar for the whole wait: bytes fill the first half, frames written into the
             // database the second (over a fast link the import is most of the wait).
-            // ponytail: fixed 50/50 split; weight by measured phase times if one side always dominates.
             val size = entry.pkg.size
             // The index and the package are independent requests: fetched together, one round trip.
             val (verifiedIndexBytes, download) = kotlinx.coroutines.coroutineScope {
@@ -140,9 +146,7 @@ class ContentTransferRunner(
             ensureStillPinned(entry)
 
             var importedFrames = 0
-            val replacing = dao.entity(entityId)?.let {
-                it.updateAvailable || (it.localPackageHash != null && it.localPackageHash != entry.pkg.hash)
-            } == true
+            val replacing = dao.state(entityId)?.localPackageHash.let { it != null && it != entry.pkg.hash }
             if (replacing) {
                 // The new copy is written beside the old one, a frame per commit, then renamed in
                 // one short transaction: the reader keeps the old text until the swap, and nothing
@@ -159,7 +163,7 @@ class ContentTransferRunner(
                 mutationMutex.withLock {
                     ensureStillPinned(entry)
                     check(dao.entity(entityId)?.pkgHash == entry.pkg.hash) { "catalog changed during download; retry" }
-                    dao.promoteStaged(entityId, staging, nowMillis())
+                    dao.promoteStaged(entityId, staging)
                     finishImport(entry, partFile, verifiedIndexBytes)
                 }
                 dao.purgeCopies(entityId)
@@ -189,15 +193,17 @@ class ContentTransferRunner(
         } catch (error: Throwable) {
             runCatching { dao.markTransfer(entityId, ContentTransferState.FAILED) }
             throw error
+        } finally {
+            if (reserved) storagePolicy.release(diskBytes)
         }
     }
 
-    /** Imports the frames not stored yet; [frameLock] is taken per frame, or null if the caller already holds it. */
+    /** Imports the frames not stored yet; [frameLock] is taken per batch, after any reader waiting for it. */
     private suspend fun importFrames(
         entry: CatalogEntry,
         index: com.atharchive.core.data.content.PackageIndex,
         partFile: File,
-        frameLock: Mutex?,
+        frameLock: ContentWriteLock,
         onFrame: (done: Int, of: Int) -> Unit = { _, _ -> },
         into: String = entry.id,
     ): Int {
@@ -205,24 +211,46 @@ class ContentTransferRunner(
         val stored = dao.frames(into).mapTo(hashSetOf()) { it.frameOrdinal }
         var imported = 0
         RandomAccessFile(partFile, "r").use { packageInput ->
-            // FRAMES_PER_COMMIT frames per transaction: a commit per frame (a disk sync, and every
-            // open list re-queried) was a third of a big book's import. Still bounded: a crash
-            // re-imports at most that many frames, and SQLite never holds a whole book.
+            // Several frames per commit where they fit the write budget: a commit per frame (a disk
+            // sync, and every open list re-queried) was a third of a big book's import. Still
+            // bounded: a crash re-imports at most one commit, and SQLite never holds a whole book.
             val pending = index.frames.withIndex().filter { it.index !in stored }
-            for (batch in pending.chunked(FRAMES_PER_COMMIT)) {
-                suspend fun import() = contentDatabase.withWriteTransaction {
-                    for ((frameNumber, frame) in batch) {
+            for (batch in pending.chunked(FRAMES_PREPARED_AHEAD)) {
+                // Read, verified and decoded before the lock: only the inserts hold it. A bad frame
+                // fails here, so the frames before it commit and a resume keeps them.
+                val prepared = ArrayList<PreparedFrame>(batch.size)
+                var failure: Throwable? = null
+                for ((frameNumber, frame) in batch) {
+                    try {
                         val bytes = ByteArray(frame.len)
                         packageInput.seek(frame.off)
                         packageInput.readFully(bytes)
-                        ensureStillPinned(entry)
-                        importer.importVerifiedFrame(entry, frameNumber, frame, bytes, into)
+                        prepared += importer.prepareFrame(entry, frameNumber, frame, bytes, into)
+                    } catch (error: Throwable) {
+                        failure = error
+                        break
                     }
-                    dao.markTransfer(entry.id, ContentTransferState.IMPORTING)
                 }
-                if (frameLock == null) import() else frameLock.withLock { import() }
-                imported += batch.size
-                onFrame(batch.last().index + 1, index.frames.size)
+                // Written in commits of about WRITE_BUDGET_NANOS each, not a fixed frame count: on
+                // the Redmi 12 eight frames held the lock 250-420 ms, and a page opened meanwhile
+                // waited that long. Pinning is checked once per commit, not per frame.
+                var next = 0
+                while (next < prepared.size) {
+                    val from = next
+                    frameLock.forBatch {
+                        ensureStillPinned(entry)
+                        contentDatabase.withWriteTransaction {
+                            val started = System.nanoTime()
+                            do {
+                                importer.importPrepared(prepared[next++])
+                            } while (next < prepared.size && System.nanoTime() - started < WRITE_BUDGET_NANOS)
+                            dao.markTransfer(entry.id, ContentTransferState.IMPORTING)
+                        }
+                    }
+                    imported += next - from
+                    onFrame(batch[next - 1].index + 1, index.frames.size)
+                }
+                failure?.let { throw it }
             }
         }
         return imported
@@ -231,11 +259,10 @@ class ContentTransferRunner(
     private suspend fun finishImport(entry: CatalogEntry, partFile: File, indexBytes: ByteArray) {
         val dao = contentDatabase.importDao()
         ensureStillPinned(entry)
-        val completed = requireNotNull(dao.entity(entry.id))
-        check(completed.availability == ContentAvailability.COMPLETE) {
+        check(dao.state(entry.id)?.availability == ContentAvailability.COMPLETE) {
             "package import did not produce complete availability"
         }
-        retainedStore.retainVerified(entry, partFile, indexBytes)
+        retainedStore.retainDownloaded(entry, partFile, indexBytes)
         removeTransferFiles(entry)
         dao.markTransfer(entry.id, ContentTransferState.IDLE)
     }

@@ -33,6 +33,8 @@ import java.io.ByteArrayOutputStream
 import java.util.zip.GZIPOutputStream
 import kotlinx.coroutines.flow.first
 import com.atharchive.core.data.repository.toCatalogEntry
+import com.atharchive.core.data.repository.toEntity
+import androidx.room3.useReaderConnection
 import com.atharchive.core.data.repository.persons
 import com.atharchive.core.data.content.CatalogPerson
 import kotlinx.coroutines.Dispatchers
@@ -84,6 +86,27 @@ class ContentDatabaseImportTest {
         assertEquals(listOf(person), dao.generation()!!.persons())
     }
 
+    /** A new generation writes only the rows that changed; the search index follows them. */
+    @Test
+    fun catalogApplyWritesOnlyChangedEntriesAndKeepsTheirSearchRows() = runBlocking {
+        val first = entry(1, id = "first")
+        val second = entry(1, id = "second")
+        val importer = ContentImporter(content)
+        importer.applyCatalog(CatalogDocument(2, listOf(first, second)))
+        val dao = content.catalogDao()
+        assertEquals(emptyList<String>(), dao.applyCatalogSlices(listOf(first, second).map { it.toEntity() }).map { it.id })
+
+        val renamed = second.copy(title = "عنوان جديد")
+        importer.applyCatalog(CatalogDocument(2, listOf(first, renamed)))
+        assertEquals("عنوان جديد", dao.entity("second")!!.title)
+        val indexed = content.useReaderConnection { connection ->
+            connection.usePrepared("SELECT id FROM catalog_fts ORDER BY id") { query ->
+                buildList { while (query.step()) add(query.getText(0)) }
+            }
+        }
+        assertEquals(listOf("first", "second"), indexed)
+    }
+
     @Test
     fun malformedArchiveRollsBackEarlierRecordsAndPreservesLocalData() = runBlocking {
         val dao = user.userDataDao()
@@ -123,7 +146,7 @@ class ContentDatabaseImportTest {
         assertEquals(0, content.importDao().headingAnchorOrdinal(entry.id, "main"))
         assertEquals(1, content.importDao().headingAnchorOrdinal(entry.id, "subheading"))
         assertEquals(1, content.importDao().frames(entry.id).size)
-        assertEquals(ContentAvailability.COMPLETE, content.importDao().entity(entry.id)?.availability)
+        assertEquals(ContentAvailability.COMPLETE, content.importDao().state(entry.id)?.availability)
     }
 
     @Test
@@ -140,7 +163,6 @@ class ContentDatabaseImportTest {
                 blocks = listOf(duplicateOrdinal, duplicateOrdinal.copy(blockIdLo = 2)),
                 chapters = emptyList(),
                 footnotes = emptyList(),
-                now = 1000,
             )
         } catch (_: Throwable) {
             failed = true
@@ -149,7 +171,7 @@ class ContentDatabaseImportTest {
         assertTrue("duplicate ordinals must abort the transaction", failed)
         assertTrue(content.importDao().blocks(entry.id).isEmpty())
         assertTrue(content.importDao().frames(entry.id).isEmpty())
-        assertEquals(ContentAvailability.ABSENT, content.importDao().entity(entry.id)?.availability)
+        assertEquals(ContentAvailability.ABSENT, content.importDao().state(entry.id)?.availability)
         assertNotNull(user.userDataDao().pinnedDownload(entry.id))
     }
 
@@ -190,19 +212,19 @@ class ContentDatabaseImportTest {
         content.importDao().importFrame(
             pinned.id,
             EntityFrameEntity(pinned.id, 0, 0, 1, pinned.pkg.size, 1),
-            listOf(block(pinned.id, 0)), emptyList(), emptyList(), 1,
+            listOf(block(pinned.id, 0)), emptyList(), emptyList(),
         )
         content.importDao().importFrame(
             cached.id,
             EntityFrameEntity(cached.id, 0, 0, 1, cached.pkg.size, 2),
-            listOf(block(cached.id, 0)), emptyList(), emptyList(), 2,
+            listOf(block(cached.id, 0)), emptyList(), emptyList(),
         )
 
         val removed = ContentCacheManager(content, user).evictToBudget(500L * 1024 * 1024)
 
         assertEquals(cached.pkg.size, removed)
-        assertEquals(ContentAvailability.COMPLETE, content.importDao().entity(pinned.id)?.availability)
-        assertEquals(ContentAvailability.ABSENT, content.importDao().entity(cached.id)?.availability)
+        assertEquals(ContentAvailability.COMPLETE, content.importDao().state(pinned.id)?.availability)
+        assertEquals(ContentAvailability.ABSENT, content.importDao().state(cached.id)?.availability)
     }
 
     @Test
@@ -215,12 +237,12 @@ class ContentDatabaseImportTest {
         content.importDao().importFrame(
             pinned.id,
             EntityFrameEntity(pinned.id, 0, 0, 1, pinned.pkg.size, 1),
-            listOf(block(pinned.id, 0)), emptyList(), emptyList(), 1,
+            listOf(block(pinned.id, 0)), emptyList(), emptyList(),
         )
         content.importDao().importFrame(
             cached.id,
             EntityFrameEntity(cached.id, 0, 0, 1, cached.pkg.size, 2),
-            listOf(block(cached.id, 0)), emptyList(), emptyList(), 2,
+            listOf(block(cached.id, 0)), emptyList(), emptyList(),
         )
         val budget = 500L * 1024 * 1024
         val policy = ContentStoragePolicy(
@@ -234,8 +256,8 @@ class ContentDatabaseImportTest {
 
         assertTrue(status.lowStorage)
         assertEquals(cached.pkg.size, status.cacheBytesRemoved)
-        assertEquals(ContentAvailability.COMPLETE, content.importDao().entity(pinned.id)?.availability)
-        assertEquals(ContentAvailability.ABSENT, content.importDao().entity(cached.id)?.availability)
+        assertEquals(ContentAvailability.COMPLETE, content.importDao().state(pinned.id)?.availability)
+        assertEquals(ContentAvailability.ABSENT, content.importDao().state(cached.id)?.availability)
     }
 
     @Test

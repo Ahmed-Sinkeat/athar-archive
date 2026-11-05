@@ -114,6 +114,25 @@ data class PinnedDownloadEntity(
     val pkgHash: String,
 )
 
+/** A recording the reader asked to keep ([requested]) and whether its file is stored ([downloaded]). */
+@Entity(tableName = "audioDownload")
+data class AudioDownloadEntity(
+    @PrimaryKey val audioId: String,
+    val requested: Boolean,
+    val downloaded: Boolean,
+)
+
+/** A download the reader paused, by its pause key (an entity id, or `audio:<id>`). */
+@Entity(tableName = "pausedDownload")
+data class PausedDownloadEntity(@PrimaryKey val pauseKey: String)
+
+/** A «تنزيل الكل» row in flight: how many items it holds; [DownloadBatchItemEntity] holds those left. */
+@Entity(tableName = "downloadBatch")
+data class DownloadBatchEntity(@PrimaryKey val label: String, val total: Int)
+
+@Entity(tableName = "downloadBatchItem", primaryKeys = ["label", "pauseKey"], indices = [Index(value = ["pauseKey"])])
+data class DownloadBatchItemEntity(val label: String, val pauseKey: String)
+
 @Entity(tableName = "recentSearch")
 data class RecentSearchEntity(
     @PrimaryKey val q: String,
@@ -122,6 +141,45 @@ data class RecentSearchEntity(
 
 @Dao
 interface UserDataDao {
+    @Query("SELECT * FROM audioDownload")
+    suspend fun audioDownloads(): List<AudioDownloadEntity>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun saveAudioDownloads(rows: List<AudioDownloadEntity>)
+
+    @Query("DELETE FROM audioDownload WHERE audioId IN (:audioIds)")
+    suspend fun deleteAudioDownloads(audioIds: List<String>)
+
+    @Query("SELECT pauseKey FROM pausedDownload")
+    suspend fun pausedDownloadKeys(): List<String>
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun addPausedDownloads(rows: List<PausedDownloadEntity>)
+
+    @Query("DELETE FROM pausedDownload WHERE pauseKey IN (:keys)")
+    suspend fun removePausedDownloads(keys: List<String>)
+
+    @Query("SELECT * FROM downloadBatch")
+    suspend fun downloadBatches(): List<DownloadBatchEntity>
+
+    @Query("SELECT * FROM downloadBatchItem")
+    suspend fun downloadBatchItems(): List<DownloadBatchItemEntity>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun saveDownloadBatch(batch: DownloadBatchEntity)
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun addDownloadBatchItems(items: List<DownloadBatchItemEntity>)
+
+    @Query("DELETE FROM downloadBatchItem WHERE pauseKey = :key")
+    suspend fun removeDownloadBatchItem(key: String)
+
+    @Query("DELETE FROM downloadBatch WHERE label IN (:labels)")
+    suspend fun deleteDownloadBatches(labels: List<String>)
+
+    @Query("DELETE FROM downloadBatchItem WHERE label IN (:labels)")
+    suspend fun deleteDownloadBatchItems(labels: List<String>)
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun saveAnnotation(annotation: AnnotationEntity)
 
@@ -276,8 +334,12 @@ interface UserDataDao {
         CollectionItemEntity::class,
         PinnedDownloadEntity::class,
         RecentSearchEntity::class,
+        AudioDownloadEntity::class,
+        PausedDownloadEntity::class,
+        DownloadBatchEntity::class,
+        DownloadBatchItemEntity::class,
     ],
-    version = 1,
+    version = 2,
     exportSchema = true,
 )
 abstract class AtharUserDatabase : RoomDatabase() {

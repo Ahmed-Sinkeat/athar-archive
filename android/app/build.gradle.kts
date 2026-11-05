@@ -107,12 +107,16 @@ android {
             applicationIdSuffix = ".preview"
             resValue("string", "app_name", "أثر تجريبي")
         }
-        // Benchmarks need a release-like build that is still installable locally.
+        // Benchmarks need a release-like build that is still installable locally; its own id
+        // keeps it beside the reader's real app instead of replacing it (and its notes).
         create("benchmark") {
             initWith(getByName("release"))
             signingConfig = signingConfigs.getByName("debug")
             matchingFallbacks += listOf("release")
             isDebuggable = false
+            applicationIdSuffix = ".bench"
+            proguardFile("benchmark-rules.pro")
+            resValue("string", "app_name", "أثر قياس")
         }
     }
 }
@@ -157,7 +161,11 @@ val verifyReleaseConfiguration by tasks.registering {
     val signed = releaseSigningConfigured // local copy: doLast must not capture the script object (configuration cache)
     val baseUrl = contentBaseUrl.orNull.orEmpty()
     val bundledIndex = file("src/main/assets/app-content/index.json")
+    val bundledCatalog = file("src/main/assets/app-content/catalog.db")
     doLast {
+        // Without it a fresh install has no library until its first sync.
+        // `pnpm app:bundle-catalog` writes it together with index.json, from the same generation.
+        require(bundledCatalog.isFile) { "Missing app-content/catalog.db; run `pnpm app:bundle-catalog`." }
         // The bundled catalog must be the generation the origin serves: an unpublished one points
         // at packages that 404, and every book in the shipped app fails to open.
         // ponytail: needs the network at release time; that is when the origin matters anyway.

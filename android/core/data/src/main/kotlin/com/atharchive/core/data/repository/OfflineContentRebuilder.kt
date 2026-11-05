@@ -53,18 +53,28 @@ class RetainedPackageStore(private val directory: File) {
         publishManifest(entry, files, indexBytes)
     }
 
-    suspend fun retainVerified(
+    /**
+     * Moves a package the download already hashed ([AppContentHttpClient.downloadPackage] verifies
+     * and syncs it) into the store. Hashing and copying it again took seconds per book, under the
+     * write lock, at the end of every download.
+     */
+    suspend fun retainDownloaded(
         entry: CatalogEntry,
-        packageFile: File,
+        verifiedFile: File,
         indexBytes: ByteArray,
     ) = withContext(Dispatchers.IO) {
-        ContentDigests.verify(packageFile, entry.pkg.hash, entry.pkg.size, "retained package")
+        check(verifiedFile.length() == entry.pkg.size) { "downloaded package changed size" }
         FramedPackageDecoder.decodeIndex(indexBytes, entry)
         val files = prepareTargets(entry)
-        copyAtomically(files.packageFile, packageFile)
+        check(verifiedFile.renameTo(files.packageFile)) { "cannot retain ${files.packageFile.name}" }
         publishManifest(entry, files, indexBytes)
     }
 
+    /**
+     * The manifest is written only after its package was verified, so it is trusted here: a size
+     * check instead of re-hashing every pinned package at each launch. A package damaged later
+     * fails its frame hashes when imported, and the rebuild still verifies in full.
+     */
     suspend fun containsVerified(entry: CatalogEntry): Boolean = withContext(Dispatchers.IO) {
         val manifestFile = File(directory, "${safeStem(entry)}.json")
         if (!manifestFile.isFile) return@withContext false
@@ -81,8 +91,7 @@ class RetainedPackageStore(private val directory: File) {
             val packageFile = File(directory, manifest.packageFile).canonicalFile
             val indexFile = File(directory, manifest.indexFile).canonicalFile
             require(packageFile.parentFile == root && indexFile.parentFile == root)
-            ContentDigests.verify(packageFile, entry.pkg.hash, entry.pkg.size, "retained package")
-            FramedPackageDecoder.decodeIndex(indexFile.readBytes(), entry)
+            require(packageFile.length() == entry.pkg.size && indexFile.isFile)
         }.isSuccess
     }
 
@@ -172,16 +181,6 @@ class RetainedPackageStore(private val directory: File) {
         check(temporary.renameTo(target)) { "cannot atomically retain ${target.name}" }
     }
 
-    private fun copyAtomically(target: File, source: File) {
-        val temporary = File(target.parentFile, ".${target.name}.part")
-        source.inputStream().use { input ->
-            temporary.outputStream().use { output ->
-                input.copyTo(output)
-                output.fd.sync()
-            }
-        }
-        check(temporary.renameTo(target)) { "cannot atomically retain ${target.name}" }
-    }
 }
 
 class OfflineContentRebuilder(

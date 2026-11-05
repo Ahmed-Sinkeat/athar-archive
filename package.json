@@ -36,7 +36,7 @@
     "app:publish": "node scripts/upload-app-content.mjs",
     "publish:books": "node scripts/publish-books.mjs",
     "app:prune": "node scripts/prune-app-content.mjs",
-    "app:bundle-catalog": "node scripts/bundle-app-catalog.mjs",
+    "app:bundle-catalog": "tsx scripts/bundle-app-catalog.mjs",
     "r2:upload": "node scripts/upload-r2-assets.mjs",
     "r2:inventory": "node scripts/r2-inventory.mjs",
     "deploy": "node scripts/smoke-test.mjs && pnpm r2:upload && wrangler deploy -c dist/server/wrangler.json"

@@ -35,15 +35,16 @@ import org.junit.runner.RunWith
  * budget is read off P99 against the device's frame deadline rather than asserted here, so
  * a slower phone reports honestly instead of failing a threshold picked for a faster one.
  */
-private const val TargetPackage = "com.atharchive"
+/** The benchmark build (its own id, beside the real app). */
+internal const val TargetPackage = "com.atharchive.bench"
 private const val Timeout = 5_000L
 
 /** A short, repeatable gesture sequence for screens without a dedicated duration budget. */
 private const val FlingCount = 3
 
 /** The reader budget in §17 is explicitly defined over ten seconds of scrolling. */
-private const val ReaderScrollDurationMs = 10_000L
-private const val SearchTerm = "الإخلاص"
+internal const val ReaderScrollDurationMs = 10_000L
+internal const val SearchTerm = "الإخلاص"
 private const val SearchLatencyTraceName = "AtharSearchKeystrokeToResults"
 
 /** Few steps means a fast gesture — a fling, not a drag. */
@@ -192,7 +193,7 @@ class SearchBenchmark {
  * advertise to UiAutomator — the first run found no object and measured one frame. A
  * gesture on the display always lands, whatever the semantics say.
  */
-private fun UiDevice.flingVertically() {
+internal fun UiDevice.flingVertically() {
     val x = displayWidth / 2
     val top = displayHeight / 5
     val bottom = displayHeight * 4 / 5
@@ -213,7 +214,7 @@ private fun UiDevice.flingVertically() {
  * pinned at one end of the list. The final `waitForIdle` keeps inertial frames inside the
  * measured block.
  */
-private fun UiDevice.scrollVerticallyFor(durationMs: Long) {
+internal fun UiDevice.scrollVerticallyFor(durationMs: Long) {
     require(durationMs > 0)
     val x = displayWidth / 2
     val top = displayHeight / 5
@@ -229,22 +230,22 @@ private fun UiDevice.scrollVerticallyFor(durationMs: Long) {
 }
 
 /** The catalogue's first row, after its asynchronous Room flow has populated the screen. */
-private fun UiDevice.requireFirstBook(): UiObject2 = requireObject(
+internal fun UiDevice.requireFirstBook(): UiObject2 = requireObject(
     selector = By.res(Pattern.compile("book_row_.*")),
     description = "first catalogue row",
 )
 
-private fun UiDevice.openFirstBook() {
+internal fun UiDevice.openFirstBook() {
     requireFirstBook().click()
     requireObject("reader_screen")
 }
 
-private fun UiDevice.requireObject(resourceId: String): UiObject2 = requireObject(
+internal fun UiDevice.requireObject(resourceId: String): UiObject2 = requireObject(
     selector = By.res(resourceId),
     description = "resource-id $resourceId",
 )
 
-private fun UiDevice.requireObject(selector: BySelector, description: String): UiObject2 =
+internal fun UiDevice.requireObject(selector: BySelector, description: String): UiObject2 =
     checkNotNull(wait(Until.findObject(selector), Timeout)) {
         "Timed out after ${Timeout}ms waiting for $description"
     }
