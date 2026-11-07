@@ -1,7 +1,7 @@
 ---
 title: "نقض الدارمي على المريسي"
 edition: "تحقيق عادل آل حمدان"
-status: published
+status: draft
 published_at: 2026-10-31
 person: uthman-al-darimi
 authored_year: 280

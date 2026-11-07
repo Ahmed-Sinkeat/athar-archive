@@ -7,7 +7,6 @@ authored_year: 241
 topics: ["al-firaq-war-rudud"]
 edition: "الأولى"
 description: "بتحقيق صبري بن سلامة شاهين"
-edition_of: al-radd-ala-al-zanadiqa-ahmad-hamdan
 ---
 ## مقدمة...
 

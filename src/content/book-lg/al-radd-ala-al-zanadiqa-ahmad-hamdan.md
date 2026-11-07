@@ -1,7 +1,7 @@
 ---
 title: "الرد على الزنادقة والجهمية لأحمد بن حنبل (ملحق السنة للخلال)"
 edition: "تحقيق عادل آل حمدان"
-status: published
+status: draft
 published_at: 2026-10-31
 person: ahmad-ibn-hanbal
 authored_year: 241

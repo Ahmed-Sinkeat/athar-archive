@@ -6,7 +6,6 @@ person: uthman-al-darimi
 authored_year: 280
 topics: ["tahwid-al-ibada", "al-firaq-war-rudud"]
 edition: "الطبعة الأولى 1418هـ - 1998م"
-edition_of: naqd-al-darimi-ala-al-marisi-hamdan
 description: "بتحقيق رشيد بن حسن الألمعي"
 ---
 ## المجلد الأول
