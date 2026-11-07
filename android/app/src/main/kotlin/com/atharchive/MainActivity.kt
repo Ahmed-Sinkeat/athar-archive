@@ -67,6 +67,7 @@ class MainActivity : ComponentActivity() {
             val accent by appearance.accent.collectAsStateWithLifecycle()
             val readerSettings by appearance.reader.collectAsStateWithLifecycle()
             val startPlace by appearance.startPlace.collectAsStateWithLifecycle()
+            val bar by appearance.bar.collectAsStateWithLifecycle()
             val dark = themeMode.resolve()
             // Bar icons follow the app's theme, not the system's: a forced-light app under a
             // dark system used to get white icons on a white status bar.
@@ -81,7 +82,7 @@ class MainActivity : ComponentActivity() {
                 )
                 onDispose {}
             }
-            AtharTheme(darkTheme = dark, warm = themeMode == com.atharchive.ui.theme.ThemeMode.Warm, eink = themeMode == com.atharchive.ui.theme.ThemeMode.Eink, style = style, choice = accent) {
+            AtharTheme(darkTheme = dark, warm = themeMode == com.atharchive.ui.theme.ThemeMode.Warm, aged = themeMode == com.atharchive.ui.theme.ThemeMode.Aged, eink = themeMode == com.atharchive.ui.theme.ThemeMode.Eink, style = style, choice = accent) {
                 CompositionLocalProvider(
                     LocalLayoutDirection provides LayoutDirection.Rtl,
                     com.atharchive.ui.theme.LocalReaderFont provides readerSettings.font.family(readerSettings.fontStamp),
@@ -107,8 +108,11 @@ class MainActivity : ComponentActivity() {
                         onStartPlaceChange = appearance::setStartPlace,
                         readerSettings = readerSettings,
                         onReaderSettingsChange = appearance::setReaderSettings,
+                        bar = bar,
+                        onBarChange = appearance::setBar,
+                        onResetSettings = appearance::resetAll,
                     )
-                    if (showIntro) com.atharchive.ui.icons.AtharLaunchIntro { showIntro = false }
+                    if (showIntro) com.atharchive.ui.icons.AtharLaunchIntro(accent.launcher) { showIntro = false }
                     }
                 }
             }

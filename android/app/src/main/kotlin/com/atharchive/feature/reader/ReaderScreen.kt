@@ -151,6 +151,10 @@ fun ReaderScreen(
     /** Whole book on the phone: in-book search then covers all of it. Changes re-run the search. */
     bookSaved: Boolean = true,
     onDownloadForSearch: (() -> Unit)? = null,
+    /** The whole-book download in flight, if any: a thin line under the bar and the percent in ⋮. */
+    downloadTransfer: com.atharchive.feature.downloads.TransferUi? = null,
+    /** The text changed since this book was last opened here: said once, quietly. */
+    updatedSinceLastRead: Boolean = false,
     /** ⋮ menu: the author's page (null when the catalog has none) and sharing the work. */
     onOpenAuthor: (() -> Unit)? = null,
     onShareBook: (() -> Unit)? = null,
@@ -336,6 +340,12 @@ fun ReaderScreen(
                 searchStatus = "تعذّر البحث في النص الكامل: ${error.message.orEmpty()}"
             }
         }
+    }
+    LaunchedEffect(updatedSinceLastRead) { if (updatedSinceLastRead) toast = "حُدِّث هذا الكتاب منذ آخر قراءة" }
+    var downloadSeen by remember { mutableStateOf(false) }
+    LaunchedEffect(downloadTransfer != null, bookSaved) {
+        if (downloadTransfer != null) downloadSeen = true
+        else if (bookSaved && downloadSeen) { downloadSeen = false; toast = "اكتمل تحميل الكتاب" }
     }
     // «جارٍ فتح الموضع…» stays up until the place is found, however long the frames take.
     LaunchedEffect(toast, locating) {
@@ -640,7 +650,8 @@ fun ReaderScreen(
                 onCopyCited = onCopyCited?.let { copy -> { act("نُسخ مع التذييل") { copy(it) } } },
                 onShare = { act("مشاركة النص") { onShareSelection(it) } },
                 onHighlight = { act("حُفظ في الكناشة") { onSaveSelection(it) } },
-                onAddDhikr = LocalAddToAdhkar.current?.let { add ->
+                // One word is no dhikr: «إلى الأذكار» shows once the selection holds more.
+                onAddDhikr = LocalAddToAdhkar.current?.takeIf { selection.singleWord() == null }?.let { add ->
                     { act("") { add(it.quotedText, listOf(state.bookTitle, state.author).filter(String::isNotBlank).joinToString(" — ")) } }
                 },
                 onMeaning = LocalDictionary.current?.let { selection.singleWord()?.let { word -> {
@@ -768,6 +779,7 @@ fun ReaderScreen(
                 onMore = { introOpen = true },
                 onOpenAuthor = onOpenAuthor,
                 onDownload = onDownloadForSearch.takeUnless { bookSaved },
+                downloadTransfer = downloadTransfer,
                 onShare = onShareBook,
                 hasIntro = state.card.isNotEmpty(),
                 editions = state.editions,
@@ -897,8 +909,10 @@ private fun ReaderTopBar(
     onOpenAuthor: (() -> Unit)? = null,
     /** null once the whole work is on the phone. */
     onDownload: (() -> Unit)? = null,
+    downloadTransfer: com.atharchive.feature.downloads.TransferUi? = null,
     onShare: (() -> Unit)? = null,
 ) {
+  Column {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -955,7 +969,8 @@ private fun ReaderTopBar(
                 if (onCopyAll != null) AtharMenuItem("نسخ الكل", icon = AtharIcons.Copy, onClick = { menu = false; onCopyAll() })
                 if (editions.isNotEmpty()) AtharMenuItem("الطبعات", onClick = { menu = false; editionsOpen = true })
                 if (onOpenAuthor != null) AtharMenuItem("صفحة المؤلف ومؤلفاته", icon = AtharIcons.People, onClick = { menu = false; onOpenAuthor() })
-                if (onDownload != null) AtharMenuItem("تحميل الكتاب كاملًا", icon = AtharIcons.Download, onClick = { menu = false; onDownload() })
+                if (downloadTransfer != null) AtharMenuItem(downloadLabel(downloadTransfer), icon = AtharIcons.Download, onClick = { menu = false })
+                else if (onDownload != null) AtharMenuItem("تحميل الكتاب كاملًا", icon = AtharIcons.Download, onClick = { menu = false; onDownload() })
                 if (onShare != null) AtharMenuItem("مشاركة الكتاب", icon = AtharIcons.Share, onClick = { menu = false; onShare() })
             }
             AtharMenu(expanded = editionsOpen, onDismiss = { editionsOpen = false }, colors = com.atharchive.ui.components.AtharMenuColors(colors.page, colors.text, colors.secondary, colors.accent)) {
@@ -970,6 +985,10 @@ private fun ReaderTopBar(
             }
         }
     }
+    (downloadTransfer as? com.atharchive.feature.downloads.TransferUi.Running)?.let {
+        com.atharchive.ui.components.AtharProgressBar(it.progress, Modifier.fillMaxWidth(), height = 2.dp)
+    }
+  }
 }
 
 @Composable
@@ -1456,4 +1475,11 @@ internal fun ReturnChip(colors: ReaderColors, modifier: Modifier, onClick: () ->
     ) {
         Text("↩ رجوع", color = colors.accent, style = MaterialTheme.typography.bodySmall)
     }
+}
+
+/** «جارٍ التحميل · ٤٢٪» in ⋮ while the whole work downloads; shared by the book and poem readers. */
+internal fun downloadLabel(transfer: com.atharchive.feature.downloads.TransferUi) = when (transfer) {
+    is com.atharchive.feature.downloads.TransferUi.Running -> "جارٍ التحميل" + transfer.label.takeIf(String::isNotBlank)?.let { " · $it" }.orEmpty()
+    is com.atharchive.feature.downloads.TransferUi.Paused -> "التحميل متوقّف · ${transfer.label}"
+    is com.atharchive.feature.downloads.TransferUi.Failed -> "تعذّر التحميل: ${transfer.reason}"
 }

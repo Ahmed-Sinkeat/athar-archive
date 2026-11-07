@@ -1,5 +1,7 @@
 package com.atharchive.feature.books
 
+import com.atharchive.feature.downloads.TransferUi
+
 
 enum class BookSort(val label: String) {
     Died("وفاة المؤلف"),
@@ -44,6 +46,33 @@ data class BookUi(
     val volumes: Int? = null,
     /** "lesson"/"issue": [volumes] counts lessons or issues, not printed volumes. */
     val volumeUnit: String? = null,
+    /** Which collection the row comes from: an author's page tabs by it. */
+    val coll: String = "book",
+)
+
+private fun downloadOf(sizeLabel: String, downloaded: Boolean, downloading: Boolean, transfer: TransferUi?) = when {
+    downloaded -> BookDownloadUi.Downloaded(sizeLabel)
+    downloading || transfer != null -> BookDownloadUi.Downloading(sizeLabel, transfer ?: TransferUi.Running(0f, ""))
+    else -> BookDownloadUi.Available(sizeLabel)
+}
+
+/** A poem as a row of the books list: an author's page and المتون list every kind of work alike. */
+fun com.atharchive.feature.poetry.PoemUi.asBook() = BookUi(
+    id = id, title = title, author = poet, discipline = topic, kind = kind,
+    download = downloadOf(sizeLabel, downloaded, downloading, transfer),
+    recentRank = recentRank, saved = saved, topics = topics.ifEmpty { listOf(topic) }, died = died, hasAudio = hasAudio, coll = "poem",
+)
+
+fun com.atharchive.feature.articles.ArticleUi.asBook() = BookUi(
+    id = id, title = title, author = author, discipline = topics.firstOrNull().orEmpty(), kind = "مقال",
+    download = downloadOf(sizeLabel, downloaded, downloading, transfer),
+    recentRank = recentRank, saved = saved, topics = topics, died = died, hasAudio = hasAudio, coll = "article",
+)
+
+fun com.atharchive.feature.issues.IssueUi.asBook() = BookUi(
+    id = id, title = question, author = scholar, discipline = topic, kind = "مسألة",
+    download = downloadOf(sizeLabel, downloaded, false, transfer),
+    recentRank = recentRank, saved = saved, topics = topics.ifEmpty { listOf(topic) }, died = died, hasAudio = hasAudio, coll = "question",
 )
 
 data class BooksUiState(

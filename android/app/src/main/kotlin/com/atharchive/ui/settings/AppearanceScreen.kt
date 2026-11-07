@@ -54,6 +54,8 @@ import com.atharchive.ui.icons.AtharIcons
 import com.atharchive.ui.theme.AtharEditorialFontFamily
 import com.atharchive.ui.theme.AtharTheme
 import com.atharchive.ui.theme.ThemeMode
+import com.atharchive.ui.navigation.AtharDestination
+import com.atharchive.ui.navigation.AtharDestination.Companion.withSlot
 
 /**
  * How the app looks. Font size, line spacing and the reading page live in the reader's «Aa»
@@ -71,6 +73,8 @@ fun AppearanceScreen(
     onReaderSettingsChange: (ReaderSettings) -> Unit = {},
     startPlace: com.atharchive.data.StartPlace,
     onStartPlaceChange: (com.atharchive.data.StartPlace) -> Unit,
+    bar: List<AtharDestination> = AtharDestination.DefaultBar,
+    onBarChange: (List<AtharDestination>) -> Unit = {},
     onBack: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -161,6 +165,20 @@ fun AppearanceScreen(
                 ChoiceRow("يفتح التطبيق على", startPlace.label, pad, "appearance_start") { close ->
                     places.forEach { AtharMenuItem(it.label, { onStartPlaceChange(it); close() }, checked = it == startPlace) }
                 }
+
+                SectionRule(pad)
+                AtharSectionHeading("الشريط السفلي", pad, top = 18.dp)
+                // Five tabs; what has none stays in ⋮. الكتب holds the first: back always leads to it.
+                bar.forEachIndexed { slot, tab ->
+                    if (slot == 0) ChoiceRow("الأول", tab.label, pad, "appearance_bar_0") { close ->
+                        AtharMenuItem(tab.label, close, checked = true, subtitle = "ثابت: إليه يعود زر الرجوع")
+                    } else ChoiceRow(BarSlotNames[slot], tab.label, pad, "appearance_bar_$slot") { close ->
+                        AtharDestination.entries.filter { it != AtharDestination.Books }.forEach { choice ->
+                            AtharMenuItem(choice.label, { onBarChange(bar.withSlot(slot, choice)); close() }, icon = choice.icon, checked = choice == tab)
+                        }
+                    }
+                }
+                SectionRule(pad)
                 val analyticsOn by com.atharchive.data.Analytics.enabled.collectAsState()
                 ChoiceRow("إحصاءات مجهولة", if (analyticsOn) "تشغيل" else "إيقاف", pad, "appearance_analytics") { close ->
                     AtharMenuItem("تشغيل", { com.atharchive.data.Analytics.setEnabled(true); close() }, checked = analyticsOn,
@@ -233,6 +251,8 @@ private fun FontPicker(settings: ReaderSettings, onChange: (ReaderSettings) -> U
 }
 
 /** One setting: its name at the start, its value (and colour) at the end; a tap opens the menu to change it. */
+private val BarSlotNames = listOf("الأول", "الثاني", "الثالث", "الرابع", "الخامس")
+
 @Composable
 private fun ChoiceRow(
     label: String,

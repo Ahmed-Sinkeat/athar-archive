@@ -110,6 +110,7 @@ class ContentAccess @Inject constructor(
     companion object {
         private const val StoragePreferences = "content_storage"
         private const val CacheBudgetKey = "cache_budget_bytes"
+        private const val RetainedIdsKey = "retained_entity_ids"
     }
 
     private val mutationMutex = com.atharchive.core.data.repository.ContentWriteLock()
@@ -414,8 +415,15 @@ class ContentAccess @Inject constructor(
     private val _openProgress = MutableStateFlow<Pair<String, Float>?>(null)
     /** The entity whose text is being fetched and how far along (0..1); null when nothing is. */
     val openProgress: StateFlow<Pair<String, Float>?> = _openProgress
-    private val _retainedEntityIds = MutableStateFlow<Set<String>>(emptySet())
+    // Seeded from the last launch's verified set: starting empty showed every saved book as
+    // downloading again for the seconds reconcilePinnedDownloads takes. Reconcile still corrects it.
+    private val _retainedEntityIds = MutableStateFlow(storagePreferences.getStringSet(RetainedIdsKey, null)?.toSet().orEmpty())
     val retainedEntityIds: StateFlow<Set<String>> = _retainedEntityIds
+
+    private fun setRetained(ids: Set<String>) {
+        _retainedEntityIds.value = ids
+        storagePreferences.edit { putStringSet(RetainedIdsKey, ids) }
+    }
 
     private val configuration: ContentOriginConfiguration? by lazy {
         val base = BuildConfig.ATHAR_CONTENT_BASE_URL.trim()
@@ -555,7 +563,7 @@ class ContentAccess @Inject constructor(
             )
             throw error
         }
-        _retainedEntityIds.value += entityId
+        setRetained(_retainedEntityIds.value + entityId)
         return result
     }
 
@@ -565,13 +573,13 @@ class ContentAccess @Inject constructor(
         val runner = requireNotNull(transferRunner) { "app-content origin is not configured" }
         runner.removePins(entityIds)
         entityIds.forEach { runner.unpin(it) }
-        _retainedEntityIds.value -= entityIds.toSet()
+        setRetained(_retainedEntityIds.value - entityIds.toSet())
     }
 
     suspend fun unpin(entityId: String) {
         setDownloadPaused(entityId, false)
         requireNotNull(transferRunner) { "app-content origin is not configured" }.unpin(entityId)
-        _retainedEntityIds.value -= entityId
+        setRetained(_retainedEntityIds.value - entityId)
     }
 
     suspend fun isPinned(entityId: String): Boolean =
@@ -606,7 +614,7 @@ class ContentAccess @Inject constructor(
                 pending += ContentDownloadTarget(entityId, entity.coll)
             }
         }
-        _retainedEntityIds.value = verified
+        setRetained(verified)
         pending
     }
 

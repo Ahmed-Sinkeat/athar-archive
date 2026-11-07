@@ -74,7 +74,7 @@ val AtharMarkMotion = androidx.compose.animation.core.tween<Float>(700, easing =
  * composing underneath, then fades away; any touch ends it at once.
  */
 @Composable
-fun AtharLaunchIntro(onDone: () -> Unit) {
+fun AtharLaunchIntro(launcher: String, onDone: () -> Unit) {
     val done by androidx.compose.runtime.rememberUpdatedState(onDone)
     val reveal = androidx.compose.runtime.remember { androidx.compose.animation.core.Animatable(0f) }
     val cover = androidx.compose.runtime.remember { androidx.compose.animation.core.Animatable(1f) }
@@ -95,10 +95,27 @@ fun AtharLaunchIntro(onDone: () -> Unit) {
     Box(
         Modifier.fillMaxSize()
             .graphicsLayer { alpha = cover.value }
-            .background(AtharTheme.colors.canvas)
+            .then(LauncherFields[launcher]?.let { (centre, edge) -> Modifier.background(androidx.compose.ui.graphics.Brush.radialGradient(listOf(centre, edge))) }
+                ?: Modifier.background(AtharTheme.colors.canvas))
             .pointerInput(Unit) { awaitEachGesture { awaitFirstDown(); done() } },
         contentAlignment = androidx.compose.ui.Alignment.Center,
     ) {
-        AtharMark(Modifier.size(132.dp), reveal = { reveal.value })
+        val field = launcher in LauncherFields
+        if (field) AtharMark(Modifier.size(132.dp), ink = LauncherParchment, accent = LauncherParchment, reveal = { reveal.value })
+        else AtharMark(Modifier.size(132.dp), reveal = { reveal.value })
     }
 }
+
+/**
+ * A coloured icon's field (res/drawable/ic_athar_launcher_background_*.xml: centre, edge), so the
+ * opening screen is the icon the reader just tapped. The original icon keeps the page colour.
+ */
+private val LauncherFields = mapOf(
+    "Red" to (Color(0xFF8F3537) to Color(0xFF5A1F21)),
+    "Green" to (Color(0xFF2F6B4F) to Color(0xFF1C4231)),
+    "Blue" to (Color(0xFF2E5A88) to Color(0xFF1B3858)),
+    "Brown" to (Color(0xFF8A5A2B) to Color(0xFF593818)),
+    "Purple" to (Color(0xFF5E4485) to Color(0xFF3A2958)),
+    "Navy" to (Color(0xFF1D4670) to Color(0xFF0B2036)),
+)
+private val LauncherParchment = Color(0xFFDDCFB4)

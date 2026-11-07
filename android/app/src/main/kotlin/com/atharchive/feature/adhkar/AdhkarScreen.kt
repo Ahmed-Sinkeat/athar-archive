@@ -1,5 +1,13 @@
 package com.atharchive.feature.adhkar
 
+import com.atharchive.ui.components.AtharFastScroller
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.ui.draw.clipToBounds
+import com.atharchive.ui.components.rememberAtharCollapsingHeader
+import com.atharchive.ui.components.ShowOnChange
+import com.atharchive.ui.components.atharBackdrop
+import com.atharchive.ui.components.AtharFloatingHeader
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import com.atharchive.ui.components.normKey
 import kotlinx.coroutines.launch
 import com.atharchive.ui.theme.AtharCorners
@@ -70,7 +78,6 @@ import com.atharchive.ui.theme.AtharTheme
 fun AdhkarScreen(
     state: AdhkarUiState,
     onSettings: () -> Unit,
-    onOpenBabs: () -> Unit,
     onCopy: (DhikrUi) -> Unit,
     onSave: (DhikrUi) -> Unit,
     modifier: Modifier = Modifier,
@@ -153,65 +160,57 @@ fun AdhkarScreen(
     ) {
         val horizontalPadding = if (maxWidth >= 720.dp) 32.dp else 20.dp
 
-        Column(modifier = Modifier.fillMaxSize()) {
-            AtharTopBar(
-                title = bab?.label ?: "الأذكار",
-                onSettings = onSettings,
-                showAppIcon = true,
-                onBack = onBack,
-                horizontalPadding = horizontalPadding,
-                actionIcon = AtharIcons.PlusCircle,
-                actionLabel = "إضافة ذكر",
-                onAction = { onAdd(addTo) },
-            )
-            LazyColumn(
-                state = listState,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .weight(1f)
-                    .testTag("adhkar_screen"),
-                contentPadding = PaddingValues(bottom = 28.dp),
-            ) {
-                if (bab == null) {
-                    item(key = "adhkar-headline") {
-                        Text(
-                            text = state.headline,
-                            modifier = Modifier.padding(
-                                start = horizontalPadding,
-                                end = horizontalPadding,
-                                bottom = 6.dp,
-                            ),
-                            color = AtharTheme.colors.secondaryText,
-                            style = MaterialTheme.typography.bodySmall,
-                        )
-                    }
-                }
-                item(key = "adhkar-search") {
+        // The same frame as every section: bar, search and tabs float over the list and slide
+        // away as it scrolls; what is adhkar-only (own list, progress) heads the list.
+        Box(modifier = Modifier.fillMaxSize().clipToBounds()) {
+            val header = rememberAtharCollapsingHeader()
+            header.ShowOnChange(listState, selectedKey, query)
+            AtharFloatingHeader(header) {
+                Column {
+                    AtharTopBar(
+                        title = bab?.label ?: "الأذكار",
+                        onSettings = onSettings,
+                        showAppIcon = true,
+                        onBack = onBack,
+                        horizontalPadding = horizontalPadding,
+                        actionIcon = AtharIcons.PlusCircle,
+                        actionLabel = "إضافة ذكر",
+                        onAction = { onAdd(addTo) },
+                    )
                     AtharSearchField(
                         query = query,
                         resultCount = visible.size,
                         placeholder = "ابحث في الأذكار…",
                         onQueryChange = { query = it },
                         tagPrefix = "adhkar",
-                        modifier = Modifier.padding(
-                            start = horizontalPadding,
-                            end = horizontalPadding,
-                            top = if (bab == null) 0.dp else 4.dp,
-                        ),
+                        modifier = Modifier.padding(start = horizontalPadding, end = horizontalPadding, top = 4.dp),
                     )
                 }
-                if (bab == null) {
-                    item(key = "adhkar-tabs") {
-                        AtharTabRow(
-                            tabs = tabs,
-                            selectedKey = selectedKey,
-                            onSelect = { storedKey = it },
-                            tagPrefix = "adhkar",
-                            onReselect = { reselectScope.launch { listState.animateScrollToItem(0) } },
-                            modifier = Modifier.padding(horizontal = horizontalPadding),
-                        )
-                    }
+                Column {
+                    if (bab == null) AtharTabRow(
+                        tabs = tabs,
+                        selectedKey = selectedKey,
+                        onSelect = { storedKey = it },
+                        tagPrefix = "adhkar",
+                        onReselect = { reselectScope.launch { listState.animateScrollToItem(0) } },
+                        modifier = Modifier.padding(horizontal = horizontalPadding),
+                    )
+                    HorizontalDivider(
+                        modifier = Modifier.padding(horizontal = horizontalPadding, vertical = 2.dp),
+                        thickness = 0.7.dp,
+                        color = AtharTheme.colors.divider.copy(alpha = 0.5f),
+                    )
                 }
+            }
+            LazyColumn(
+                state = listState,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .fillMaxHeight()
+                    .nestedScroll(header.connection).atharBackdrop(header.haze)
+                    .testTag("adhkar_screen"),
+                contentPadding = PaddingValues(top = header.height, bottom = 28.dp),
+            ) {
                 if (mine && ownList != null) {
                     item(key = "adhkar-own-list") {
                         OwnListPicker(ownLists, ownList, horizontalPadding, onPick = { ownKey = it }, onDelete = { onDeleteList(ownList.id); ownKey = null })
@@ -228,17 +227,6 @@ fun AdhkarScreen(
                             onBell = if (reminderList == null) null else ({ reminderAt = it }),
                         )
                     }
-                }
-                item(key = "adhkar-divider") {
-                    HorizontalDivider(
-                        modifier = Modifier.padding(
-                            start = horizontalPadding,
-                            end = horizontalPadding,
-                            top = 10.dp,
-                        ),
-                        thickness = 0.7.dp,
-                        color = AtharTheme.colors.divider.copy(alpha = 0.42f),
-                    )
                 }
 
                 if (visible.isEmpty()) {
@@ -261,7 +249,7 @@ fun AdhkarScreen(
                     }
                 } else {
                     // Items above the first card, to scroll to the next one when a dhikr is finished.
-                    val above = (if (bab == null) 2 else 0) + 1 + (if (mine && ownList != null) 1 else 0) + (if (counting && entries.isNotEmpty()) 1 else 0) + 1
+                    val above = (if (mine && ownList != null) 1 else 0) + (if (counting && entries.isNotEmpty()) 1 else 0)
                     items(visible, key = { it.id }) { dhikr ->
                         DhikrCard(
                             dhikr = dhikr,
@@ -292,6 +280,7 @@ fun AdhkarScreen(
                     }
                 }
             }
+            AtharFastScroller(listState, top = header.height)
         }
         val list = reminderList
         val at = reminderAt

@@ -41,6 +41,7 @@ import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
@@ -80,6 +81,8 @@ fun atharMenuColors() = AtharMenuColors(
 
 val LocalAtharActionAnchor = staticCompositionLocalOf<MutableState<Rect>?> { null }
 
+private val ArrowHeight = 7.dp
+
 private val LocalMenuColors = staticCompositionLocalOf<AtharMenuColors?> { null }
 
 /** Sits on the anchor's end edge, above it when it fits, otherwise below; always on screen. */
@@ -93,9 +96,10 @@ internal fun atharMenuOffset(anchor: IntRect, window: IntSize, direction: Layout
     )
 }
 
-/** Whether the menu opened above its button: it grows from that edge. */
+/** Whether the menu opened above its button (it grows from that edge), and where the button's centre is, for the arrow. */
 private class Pointer {
     var above by mutableStateOf(false)
+    var arrowX by mutableStateOf(Float.NaN)
 }
 
 /**
@@ -127,6 +131,7 @@ fun AtharMenu(
                 val bounds = anchor?.let { IntRect(it.left.toInt(), it.top.toInt(), it.right.toInt(), it.bottom.toInt()) } ?: anchorBounds
                 val offset = atharMenuOffset(bounds, windowSize, layoutDirection, popupContentSize, gap, margin)
                 pointer.above = offset.y + popupContentSize.height <= bounds.top + gap
+                pointer.arrowX = (bounds.left + bounds.right) / 2f - offset.x
                 return offset
             }
         }
@@ -145,8 +150,22 @@ fun AtharMenu(
             val edge = colors.ink.copy(alpha = 0.08f)
             val menuWidth = minOf(width, configuration.screenWidthDp.dp - 16.dp)
             CompositionLocalProvider(LocalMenuColors provides colors) {
-                // Room around the card for its shadow; no pointer: the menu opens at its button.
-                Box(Modifier.padding(6.dp)) {
+                // Room around the card for its shadow and, on the button's side, a small arrow pointing at it.
+                Box(
+                    Modifier
+                        .padding(horizontal = 6.dp, vertical = ArrowHeight + 1.dp)
+                        .drawWithContent {
+                            drawContent()
+                            val h = ArrowHeight.toPx()
+                            val half = h * 1.1f
+                            val inset = 14.dp.toPx() + half
+                            if (pointer.arrowX.isNaN() || size.width < inset * 2) return@drawWithContent
+                            val x = (pointer.arrowX - 6.dp.toPx()).coerceIn(inset, size.width - inset)
+                            val base = if (pointer.above) size.height - 0.5f else 0.5f
+                            val tip = if (pointer.above) base + h else base - h
+                            drawPath(Path().apply { moveTo(x - half, base); lineTo(x, tip); lineTo(x + half, base); close() }, colors.card)
+                        },
+                ) {
                     Column(
                         modifier
                             .width(menuWidth)

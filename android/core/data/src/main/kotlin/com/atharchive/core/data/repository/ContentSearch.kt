@@ -185,7 +185,8 @@ object ContentSearchSchema {
     }
 }
 
-enum class ContentSearchField { FullText, Title, Author, Topic }
+/** [Catalog]: what [FullText] matches in the catalog, without the passages (the section lists). */
+enum class ContentSearchField { FullText, Catalog, Title, Author, Topic }
 enum class ContentSearchSort { Relevance, Newest, BookOrder }
 
 data class ContentSearchFilter(
@@ -268,7 +269,7 @@ class ContentSearchRepository(private val database: AtharContentDatabase) {
         val filter = structuredFilter(request.filter, "e")
         val catalogMatch = requireNotNull(FtsQueryBuilder.build(request.query, request.anyWord))
         val scopedMatch = when (request.field) {
-            ContentSearchField.FullText -> catalogMatch
+            ContentSearchField.FullText, ContentSearchField.Catalog -> catalogMatch
             ContentSearchField.Title -> "titleNorm : (${catalogMatch})"
             ContentSearchField.Author -> "personNorm : (${catalogMatch})"
             ContentSearchField.Topic -> "topicsNorm : (${catalogMatch})"

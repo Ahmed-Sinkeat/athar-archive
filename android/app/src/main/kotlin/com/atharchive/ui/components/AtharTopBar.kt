@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
@@ -268,10 +269,11 @@ private fun LegacyAtharTopBar(
 
 /**
  * «الأقسام» beside the filter icon in a section's search field: the section's name when one is
- * set, and the same small popup of sections, each with how many it holds.
+ * set, and the same small popup of sections, each with how many it holds. With a section set,
+ * its [topics] follow as chips in the same popup: the topic is part of the section, not a filter.
  */
 @Composable
-fun AtharSectionButton(section: String, onSection: (String) -> Unit, counts: Map<String, Int>, tag: String) {
+fun AtharSectionButton(section: String, onSection: (String) -> Unit, counts: Map<String, Int>, tag: String, topics: AtharFacet? = null) {
     var open by androidx.compose.runtime.remember { androidx.compose.runtime.mutableStateOf(false) }
     val set = section != SectionAll && section in com.atharchive.data.SubjectOrder
     Box {
@@ -283,7 +285,8 @@ fun AtharSectionButton(section: String, onSection: (String) -> Unit, counts: Map
             verticalAlignment = Alignment.CenterVertically,
         ) {
             Text(
-                if (set) section else "الأقسام",
+                // With no chips under the field, the ticked topics show as a count after the section.
+                if (set) section + (topics?.selected?.size?.takeIf { it > 0 }?.let { " · ${arabicDigits(it)}" } ?: "") else "الأقسام",
                 Modifier.widthIn(max = 110.dp),
                 color = if (set) AtharTheme.colors.accent else AtharTheme.colors.secondaryText,
                 fontSize = AtharTextSize.Small,
@@ -291,14 +294,25 @@ fun AtharSectionButton(section: String, onSection: (String) -> Unit, counts: Map
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
             )
-            Icon(AtharIcons.ChevronDown, null, Modifier.padding(start = 2.dp).size(14.dp), tint = AtharTheme.colors.secondaryText)
         }
-        AtharMenu(expanded = open, onDismiss = { open = false }, width = 200.dp, modifier = Modifier.testTag("section_menu")) {
+        val withTopics = set && topics != null && topics.options.isNotEmpty()
+        AtharMenu(expanded = open, onDismiss = { open = false }, width = if (topics != null) 280.dp else 200.dp, modifier = Modifier.testTag("section_menu")) {
             (listOf(SectionAll) + com.atharchive.data.SubjectOrder).forEachIndexed { index, option ->
                 if (index == 1) AtharMenuDivider()
                 AtharMenuItem(
                     if (counts.isEmpty()) option else "$option  ${arabicDigits(counts[option] ?: 0)}",
-                    checked = option == section || (option == SectionAll && !set), onClick = { open = false; onSection(option) })
+                    // A new section keeps the popup open when it has topics to pick from.
+                    checked = option == section || (option == SectionAll && !set), onClick = { if (option == SectionAll || topics == null) open = false; onSection(option) },
+                    // The arrow says a section opens onto its topics; they show right under it.
+                    icon = if (topics != null && option != SectionAll && option != section) AtharIcons.ChevronDown else null)
+                if (withTopics && option == section) Column(Modifier.padding(start = 12.dp, end = 12.dp, bottom = 4.dp)) {
+                    AtharFilterRow(topics!!.title) {
+                        topics.options.forEach { value ->
+                            val ticked = value in topics.selected
+                            AtharFilterChip(value, ticked) { topics.onChange(if (ticked) topics.selected - value else topics.selected + value) }
+                        }
+                    }
+                }
             }
         }
     }

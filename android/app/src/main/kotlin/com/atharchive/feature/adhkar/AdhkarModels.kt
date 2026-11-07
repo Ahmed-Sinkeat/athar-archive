@@ -10,7 +10,7 @@ import com.atharchive.ui.components.AtharTab
  * progress bar and a per-item counter, and why nothing else in the app does.
  *
  * The أبواب are a directory over the same entries: الصباح and المساء earn tabs because
- * they are what people open daily; the rest live one tap away in [AdhkarBabsScreen].
+ * they are what people open daily; the reader's own lists share «قوائمي».
  */
 
 /** الصباح and المساء are tabs; المفضّلة is a view across every باب. */

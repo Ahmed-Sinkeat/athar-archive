@@ -135,6 +135,7 @@ dependencies {
     implementation(libs.hilt.navigation.compose)
     implementation(libs.haze)
     implementation(libs.okhttp)
+    implementation(libs.kotlinx.serialization.json)
     implementation(libs.media3.exoplayer)
     implementation(libs.media3.session)
     implementation(libs.media3.datasource.okhttp)

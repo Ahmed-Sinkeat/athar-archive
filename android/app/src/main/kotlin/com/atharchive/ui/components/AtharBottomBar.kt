@@ -96,9 +96,11 @@ fun AtharBottomBar(
     selectedDestination: AtharDestination?,
     onDestinationClick: (AtharDestination) -> Unit,
     modifier: Modifier = Modifier,
+    destinations: List<AtharDestination> = AtharDestination.DefaultBar,
 ) {
     val largeText = LocalDensity.current.fontScale >= 1.6f
-    val destinations = AtharDestination.entries
+    // A screen whose tab is not in the bar leaves no pill behind on another tab.
+    @Suppress("NAME_SHADOWING") val selectedDestination = selectedDestination?.takeIf { it in destinations }
 
     // Measured in window space and subtracted at draw time. Doing it that way
     // means the bar's and the icons' onGloballyPositioned callbacks can land in

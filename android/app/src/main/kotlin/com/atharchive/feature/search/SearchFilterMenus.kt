@@ -36,7 +36,6 @@ import com.atharchive.ui.components.AtharMenuDivider
 import com.atharchive.ui.components.AtharFilterChip
 import com.atharchive.ui.components.AtharFilterPicker
 import com.atharchive.ui.components.AtharFilterRow
-import com.atharchive.ui.components.RemovableChip
 import com.atharchive.ui.components.arabicDigits
 import com.atharchive.ui.icons.AtharIcons
 import com.atharchive.ui.theme.AtharCorners
@@ -72,6 +71,9 @@ fun SearchFilterButton(
 ) {
     var open by remember { mutableStateOf(false) }
     val count = filters.active().size
+    // The death year's direction is one tap, outside the popup, as in every section.
+    if (filters.sort == SearchSort.Died) com.atharchive.ui.components.AtharDirectionButton(
+        com.atharchive.ui.components.AtharDirectionGroup(filters.descending) { onChange(filters.copy(descending = it)) })
     Box {
         IconButton(onClick = { open = true }, modifier = Modifier.size(48.dp).testTag("search_filter_button")) {
             Box {
@@ -88,10 +90,6 @@ fun SearchFilterButton(
         AtharMenu(expanded = open, onDismiss = { open = false }, width = 280.dp, modifier = Modifier.testTag("search_filter_popup")) {
             Column(Modifier.padding(horizontal = 12.dp, vertical = 2.dp)) {
                 AtharFilterRow("الترتيب") { SearchSort.entries.forEach { AtharFilterChip(it.label, it == filters.sort) { onChange(filters.copy(sort = it)) } } }
-                // Relevance has one direction; the death year has two.
-                if (filters.sort == SearchSort.Died) AtharFilterRow("الاتجاه") {
-                    listOf(false, true).forEach { AtharFilterChip(if (it) "الأحدث وفاة" else "الأقدم وفاة", it == filters.descending) { onChange(filters.copy(descending = it)) } }
-                }
                 AtharMenuDivider()
                 AtharFilterRow("العرض") { AtharFilterChip("إخفاء التشكيل", filters.plain) { onChange(filters.copy(plain = !filters.plain)) } }
                 AtharMenuDivider()
@@ -115,37 +113,13 @@ fun SearchFilterButton(
                     com.atharchive.data.AllCenturies.forEach { c -> AtharFilterChip(c.removePrefix("القرن "), c in filters.centuries) { onChange(filters.copy(centuries = if (c in filters.centuries) filters.centuries - c else filters.centuries + c)) } }
                 }
                 AtharMenuDivider()
+                if (count > 0) {
+                    androidx.compose.foundation.layout.Row(Modifier.padding(vertical = 4.dp)) { AtharFilterChip("مسح الكل", false) { onChange(SearchFilters()) } }
+                    AtharMenuDivider()
+                }
                 SearchPresets(filters, presets, onSavePreset, onDeletePreset) { open = false; onChange(it) }
             }
         }
-    }
-}
-
-/** What is set, under the field, each removable; «مسح الكل» once there are two. */
-@OptIn(ExperimentalLayoutApi::class)
-@Composable
-fun SearchActiveFilters(filters: SearchFilters, onChange: (SearchFilters) -> Unit, modifier: Modifier = Modifier) {
-    // One kind picked is the tab row's selection: no chip repeats it above the tabs.
-    val active = if (filters.types.size != 1) filters.active()
-        else filters.copy(types = emptySet()).active().map { (label, without) -> label to without.copy(types = filters.types) }
-    if (active.isEmpty()) return
-    FlowRow(
-        modifier.padding(top = 8.dp),
-        horizontalArrangement = Arrangement.spacedBy(6.dp),
-        verticalArrangement = Arrangement.spacedBy(6.dp),
-    ) {
-        active.forEach { (label, without) -> RemovableChip(label) { onChange(without) } }
-        if (active.size >= 2) Text(
-            "مسح الكل",
-            Modifier
-                .clip(AtharCorners.Control)
-                .clickable(role = Role.Button) { onChange(SearchFilters()) }
-                .padding(horizontal = 10.dp, vertical = 8.dp)
-                .testTag("search_filter_clear"),
-            color = AtharTheme.colors.accent,
-            style = MaterialTheme.typography.bodySmall,
-            fontWeight = FontWeight.SemiBold,
-        )
     }
 }
 

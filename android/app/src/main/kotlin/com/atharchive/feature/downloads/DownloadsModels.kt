@@ -177,6 +177,8 @@ data class BulkCandidate(
     val partialBytes: Long = 0,
     /** What it takes on the phone: a text keeps its package and its text in the database. */
     val diskBytes: Long = bytes,
+    /** Queued for Wi-Fi only while the phone is on mobile data. */
+    val waitingWifi: Boolean = false,
 ) {
     /** The key pause state is stored under. */
     val pauseKey: String get() = if (audio) "audio:$id" else id
@@ -197,6 +199,8 @@ data class BulkRowUi(
     val stopped: List<BulkCandidate> get() = items.filter { it.state == BulkState.Paused || it.state == BulkState.Failed }
     val busy: Boolean = items.any { it.state == BulkState.Active || it.state == BulkState.Paused || it.state == BulkState.Failed }
     val complete: Boolean = done == items.size
+    /** Started, yet nothing moves: every unfinished item waits for Wi-Fi. */
+    val waitingWifi: Boolean = items.any { it.waitingWifi } && items.none { it.state == BulkState.Active && !it.waitingWifi && it.partialBytes > 0 }
     val progress: Float = if (bytes > 0) (doneBytes.toFloat() / bytes).coerceIn(0f, 1f) else 1f
 }
 

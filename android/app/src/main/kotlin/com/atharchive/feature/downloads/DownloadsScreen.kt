@@ -497,7 +497,7 @@ private fun TransferRow(
 
 /** A whole type in one tap; the popup is the confirmation, since it may be gigabytes. Progress shows under it. */
 @Composable
-private fun BulkRow(row: BulkRowUi, horizontalPadding: Dp, onDownload: (mobileData: Boolean) -> Unit, onPause: () -> Unit) {
+internal fun BulkRow(row: BulkRowUi, horizontalPadding: Dp, onDownload: (mobileData: Boolean) -> Unit, onPause: () -> Unit) {
     var menuOpen by remember { mutableStateOf(false) }
     // Never started and stopped part-way are the same to the reader: both are «المتبقي».
     val remaining = row.idle + row.stopped
@@ -535,6 +535,7 @@ private fun BulkRow(row: BulkRowUi, horizontalPadding: Dp, onDownload: (mobileDa
                 text = "${arabicDigits(row.done)} من ${arabicDigits(row.items.size)} · ${byteSize(row.doneBytes)} من ${byteSize(row.bytes)}" +
                     when {
                         row.complete -> " · مكتمل"
+                        running && row.waitingWifi -> " · في انتظار Wi-Fi"
                         running -> " · ${arabicDigits((row.progress * 100).toInt())}٪"
                         paused -> " · متوقّف"
                         else -> ""
@@ -553,6 +554,15 @@ private fun BulkRow(row: BulkRowUi, horizontalPadding: Dp, onDownload: (mobileDa
                 AtharMenuItem("إيقاف التنزيل", icon = AtharIcons.Pause,
                     onClick = { onPause(); menuOpen = false },
                     modifier = Modifier.testTag("bulk_pause_${row.label}"))
+            }
+            if (remaining.isEmpty() && row.waitingWifi) {
+                AtharMenuItem(
+                    "تنزيل الآن عبر بيانات الجوال",
+                    subtitle = "${byteSize(row.bytes - row.doneBytes)} · لا ينتظر Wi-Fi",
+                    icon = AtharIcons.Download,
+                    onClick = { onDownload(true); menuOpen = false },
+                    modifier = Modifier.testTag("bulk_now_mobile_${row.label}"),
+                )
             }
             if (remaining.isNotEmpty()) {
                 val size = "${arabicDigits(remaining.size)} عنصر · ${byteSize(remaining.sumOf { it.bytes - it.partialBytes })}"

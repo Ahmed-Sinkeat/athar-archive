@@ -1,5 +1,6 @@
 package com.atharchive.feature.issues
 
+import com.atharchive.ui.components.AtharFastScroller
 import com.atharchive.ui.components.directed
 import com.atharchive.ui.components.AtharDirectionGroup
 import com.atharchive.ui.components.normKey
@@ -61,7 +62,6 @@ import com.atharchive.ui.components.AtharDownloadButton
 import com.atharchive.ui.components.AtharChipGroup
 import com.atharchive.ui.components.AtharEmptyState
 import com.atharchive.ui.components.AtharFilterIcon
-import com.atharchive.ui.components.AtharActiveFilters
 import com.atharchive.ui.components.AtharFacet
 import com.atharchive.ui.components.asChoiceSet
 import com.atharchive.ui.components.asStoredChoices
@@ -114,19 +114,21 @@ fun IssuesScreen(
     val audio = audioStored.asChoiceSet() intersect setOf(com.atharchive.ui.components.HasAudioChoice)
     val hasActiveFilters = (topic + scholar + audio).isNotEmpty() || section != com.atharchive.ui.components.SectionAll
 
-    val visible = remember(state.issues, selectedTab, query, topic, sort, descending, scholar, audio, section) {
+    val ranks = com.atharchive.ui.components.rememberCatalogRanks(query, "question")
+    val visible = remember(state.issues, selectedTab, query, ranks, topic, sort, descending, scholar, audio, section) {
         val term = ArNormalize.normalize(query.trim())
         state.issues.filter { issue ->
             val matchesTab = selectedTab.matches(issue.recentRank != null, issue.downloaded, issue.saved)
-            val matchesQuery = term.isBlank() ||
-                normKey(issue.question).contains(term, ignoreCase = true) ||
-                normKey(issue.scholar).contains(term, ignoreCase = true) ||
-                normKey(issue.answerExcerpt).contains(term, ignoreCase = true)
+            // The catalog has no answers: words from the answer still find its issue.
+            val matchesQuery = ranks == null || issue.id in ranks ||
+                term.isNotBlank() && com.atharchive.ui.components.matchesWords(term, normKey(issue.answerExcerpt))
             matchesTab && matchesQuery && (topic.isEmpty() || issue.topics.any(topic::contains)) &&
                 (scholar.isEmpty() || issue.scholar in scholar) && (audio.isEmpty() || issue.hasAudio) &&
                 com.atharchive.ui.components.inSection(section, issue.topics)
         }.sortedWith(
             if (selectedTab == SectionTab.Recent) compareBy { it.recentRank ?: Int.MAX_VALUE }
+            // A search lists best match first, as البحث does; answer-only matches after.
+            else if (ranks != null) compareBy { ranks[it.id] ?: Int.MAX_VALUE }
             else if (sort == IssueSort.Died) compareBy<IssueUi, Int?>(nullsLast(if (descending) reverseOrder() else naturalOrder())) { it.died }.thenBy { normKey(it.question) }
             else (when (sort) {
                 IssueSort.Question -> compareBy<IssueUi> { normKey(it.question) }
@@ -166,9 +168,9 @@ fun IssuesScreen(
                                 if (selectedTab == SectionTab.Recent) null else AtharChipGroup("الترتيب", IssueSort.entries.map { it.label }, sort.label) { label -> sortName = IssueSort.entries.first { it.label == label }.name },
                             if (selectedTab == SectionTab.Recent) null else AtharDirectionGroup(descending) { descendingStored = if (it) "1" else "" },
                             )
+                    val topicFacet = AtharFacet("الموضوع", topics, topic, { topicStored = it.asStoredChoices() })
                     val filterFacets = listOf(
                         AtharFacet("المجيب", scholars, scholar, { scholarStored = it.asStoredChoices() }),
-                        AtharFacet("الموضوع", topics, topic, { topicStored = it.asStoredChoices() }),
                         AtharFacet("الصوت", listOf(com.atharchive.ui.components.HasAudioChoice), audio, { audioStored = it.asStoredChoices() }),
                     )
                     AtharSearchField(
@@ -178,7 +180,7 @@ fun IssuesScreen(
                         onQueryChange = { query = it },
                         tagPrefix = "issues",
                         trailing = {
-                        com.atharchive.ui.components.AtharSectionButton(section, { section = it }, remember(state.issues) { com.atharchive.ui.components.sectionCounts(state.issues) { it.topics } }, "issues_sections")
+                        com.atharchive.ui.components.AtharSectionButton(section, { section = it }, remember(state.issues) { com.atharchive.ui.components.sectionCounts(state.issues) { it.topics } }, "issues_sections", topicFacet)
                         AtharFilterIcon(filterGroups, filterFacets, "issues_filter")
                     },
                         modifier = Modifier.padding(
@@ -187,7 +189,6 @@ fun IssuesScreen(
                             top = 4.dp,
                         ),
                     )
-                    AtharActiveFilters(filterGroups, filterFacets, "issues_filter", Modifier.padding(horizontal = horizontalPadding))
                 }
             
             
@@ -260,6 +261,7 @@ fun IssuesScreen(
                 }
                 sectionTextHits(textHits, query, textSearch, horizontalPadding)
             }
+            AtharFastScroller(listState, top = header.height)
         }
     }
 }

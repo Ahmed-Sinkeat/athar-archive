@@ -1,5 +1,6 @@
 package com.atharchive.feature.persons
 
+import com.atharchive.ui.components.AtharFastScroller
 import com.atharchive.ui.components.normKey
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -35,7 +36,7 @@ private fun century(died: Int?) = died?.let { com.atharchive.data.centuryOf(it) 
 private val WorkKinds = listOf("book" to "كتب", "poem" to "قصائد", "article" to "مقالات", "question" to "مسائل")
 
 @Composable
-fun PersonsScreen(persons: List<CatalogPerson>, works: Map<String, ContentEntity>, onPerson: (CatalogPerson) -> Unit, onSettings: () -> Unit, onBack: () -> Unit) {
+fun PersonsScreen(persons: List<CatalogPerson>, works: Map<String, ContentEntity>, onPerson: (CatalogPerson) -> Unit, onSettings: () -> Unit, onBack: (() -> Unit)?) {
     var query by rememberSaveable { mutableStateOf("") }
     var centuryStored by rememberPersisted("persons.centuries", "")
     var kindStored by rememberPersisted("persons.kinds", "")
@@ -56,7 +57,7 @@ fun PersonsScreen(persons: List<CatalogPerson>, works: Map<String, ContentEntity
         val term = ArNormalize.normalize(query.trim())
         persons.filter {
             val (colls, topics) = facts.getValue(it.id)
-            (term.isBlank() || normKey(it.name).contains(term)) &&
+            (term.isBlank() || com.atharchive.ui.components.matchesWords(term, normKey(it.name))) &&
                 (selectedCentury.isEmpty() || century(it.died) in selectedCentury) &&
                 (kind.isEmpty() || WorkKinds.any { (coll, label) -> label in kind && coll in colls }) &&
                 inSection(section, topics)
@@ -91,7 +92,6 @@ fun PersonsScreen(persons: List<CatalogPerson>, works: Map<String, ContentEntity
                     },
                 modifier = Modifier.padding(start = Gutter, end = Gutter, top = 4.dp),
             )
-            AtharActiveFilters(filterGroups, filterFacets, "persons_filter", Modifier.padding(horizontal = Gutter))
             HorizontalDivider(Modifier.padding(horizontal = Gutter, vertical = 2.dp), 0.7.dp, AtharTheme.colors.divider.copy(alpha = 0.5f))
         }
         LazyColumn(
@@ -120,29 +120,51 @@ fun PersonsScreen(persons: List<CatalogPerson>, works: Map<String, ContentEntity
                 if (index != visible.lastIndex) RowDivider()
             }}
         }
+        AtharFastScroller(listState, top = header.height)
     }
 }
 
+/**
+ * An author's page: the same list as الكتب (search, sort, filters, tabs, download and save),
+ * over everything of theirs here, with their dates, bio and «تنزيل الكل» above it.
+ */
 @Composable
-fun PersonScreen(person: CatalogPerson, works: Map<String, ContentEntity>, onWork: (ContentEntity) -> Unit, onSettings: () -> Unit, onBack: () -> Unit) {
-    val available = person.works.mapNotNull(works::get)
-    Column(Modifier.fillMaxSize().background(AtharTheme.colors.canvas)) {
-        AtharTopBar(title = person.name, onSettings = onSettings, showAppIcon = true, onBack = onBack)
-        LazyColumn(contentPadding = PaddingValues(bottom = 28.dp)) {
-            item {
-                Column(Modifier.padding(horizontal = Gutter, vertical = 8.dp)) {
-                    person.died?.let { Text("ت ${arabicDigits(it)} هـ", color = AtharTheme.colors.secondaryText, style = MaterialTheme.typography.bodyMedium) }
-                    if (!person.bio.isNullOrBlank()) Text(person.bio.orEmpty(), Modifier.padding(top = 8.dp), style = MaterialTheme.typography.bodyLarge)
-                }
+fun PersonScreen(
+    person: CatalogPerson,
+    works: List<com.atharchive.feature.books.BookUi>,
+    loaded: Boolean,
+    downloadAll: com.atharchive.feature.downloads.BulkRowUi?,
+    onDownloadAll: (com.atharchive.feature.downloads.BulkRowUi, mobileData: Boolean) -> Unit,
+    onPauseAll: (com.atharchive.feature.downloads.BulkRowUi) -> Unit,
+    onWork: (com.atharchive.feature.books.BookUi) -> Unit,
+    onDownload: (com.atharchive.feature.books.BookUi) -> Unit,
+    onSave: (com.atharchive.feature.books.BookUi) -> Unit,
+    onSettings: () -> Unit,
+    onBack: () -> Unit,
+) {
+    com.atharchive.feature.books.BooksScreen(
+        state = com.atharchive.feature.books.BooksUiState(
+            com.atharchive.data.arabicCount(works.size, "مؤلفاته", "مؤلَّف واحد", "مؤلَّفين", "مؤلَّفات", "مؤلَّفًا"), works, loaded,
+        ),
+        onSettings = onSettings,
+        onBookClick = onWork,
+        onDownloadClick = onDownload,
+        onSaveClick = onSave,
+        onBack = onBack,
+        title = person.name,
+        keyPrefix = "person",
+        byKind = true,
+        listHeader = {
+            Column(Modifier.padding(horizontal = Gutter, vertical = 8.dp)) {
+                person.died?.let { Text("ت ${arabicDigits(it)} هـ", color = AtharTheme.colors.secondaryText, style = MaterialTheme.typography.bodyMedium) }
+                if (!person.bio.isNullOrBlank()) Text(person.bio.orEmpty(), Modifier.padding(top = 8.dp), style = MaterialTheme.typography.bodyLarge)
             }
-            item { AtharSectionHeading("المؤلفات", Gutter) }
-            if (available.isEmpty()) item { AtharEmptyState("لا مؤلفات له هنا بعد", "لم تُضف أعماله إلى الأرشيف.", "person_works_empty", Gutter) }
-            itemsIndexed(available, key = { _, work -> work.id  }) { index, work -> com.atharchive.ui.components.AtharRowItem {
-                PersonRow(title = work.title, detail = "", query = "", onClick = { onWork(work) })
-                if (index != available.lastIndex) RowDivider()
-            }}
-        }
-    }
+            if (downloadAll != null && downloadAll.items.size > 1) {
+                com.atharchive.feature.downloads.BulkRow(downloadAll, Gutter, { onDownloadAll(downloadAll, it) }, { onPauseAll(downloadAll) })
+                RowDivider()
+            }
+        },
+    )
 }
 
 /** Same type and spacing as the other sections' rows, without the download/favourite controls a person has no use for. */

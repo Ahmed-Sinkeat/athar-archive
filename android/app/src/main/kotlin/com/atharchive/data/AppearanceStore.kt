@@ -7,6 +7,8 @@ import com.atharchive.ui.theme.AtharAccent
 import com.atharchive.ui.theme.AccentChoice
 import com.atharchive.ui.theme.AtharStyle
 import com.atharchive.ui.theme.ThemeMode
+import com.atharchive.ui.navigation.AtharDestination
+import com.atharchive.ui.navigation.AtharDestination.Companion.stored
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -91,6 +93,29 @@ class AppearanceStore @Inject constructor(@ApplicationContext private val contex
     fun setStartPlace(place: StartPlace) {
         _startPlace.value = place
         prefs.edit().putString(KeyStartPlace, place.name).apply()
+    }
+
+    private val _bar = MutableStateFlow(AtharDestination.barOf(prefs.getString(KeyBar, null)))
+    /** «الشريط السفلي»: the five tabs the reader chose; الكتب is always the first. */
+    val bar: StateFlow<List<AtharDestination>> = _bar
+
+    fun setBar(bar: List<AtharDestination>) {
+        _bar.value = bar
+        prefs.edit().putString(KeyBar, bar.stored()).apply()
+    }
+
+    /**
+     * «إعادة الإعدادات الافتراضية»: appearance, reader, start place and bar (the lists' sort and
+     * filters are [com.atharchive.ui.components.resetListState]). Never marks, adhkar or downloads.
+     */
+    fun resetAll() {
+        prefs.edit().clear().apply()
+        _themeMode.value = readThemeMode()
+        _style.value = AtharStyle.Paper
+        _accent.value = readAccent()
+        _reader.value = readReaderSettings()
+        _startPlace.value = StartPlace.Books
+        _bar.value = AtharDestination.DefaultBar
     }
 
     fun setThemeMode(mode: ThemeMode) {
@@ -179,6 +204,7 @@ class AppearanceStore @Inject constructor(@ApplicationContext private val contex
         /** «Burgundy» is the original icon (its name predates the icon setting), «Red» the red one. */
         val LauncherAliases = listOf("Burgundy", "Red", "Green", "Blue", "Brown", "Purple", "Navy")
         const val KeyStartPlace = "start_place"
+        const val KeyBar = "bottom_bar"
         const val KeyFontSize = "reader_font_size"
         const val KeySpacing = "reader_spacing"
     }

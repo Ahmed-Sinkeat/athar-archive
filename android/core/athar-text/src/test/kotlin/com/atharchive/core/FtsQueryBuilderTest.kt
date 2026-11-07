@@ -20,6 +20,13 @@ class FtsQueryBuilderTest {
     }
 
     @Test
+    fun hamzaAboveFindsATitleSpelledWithHamzaBelow() {
+        // Reported 2026-11-07: «تائية الألبيري» must find «تائية الإلبيري» in every list.
+        assertEquals("تائيه الالبيري", ArNormalize.normalize("تائية الإلبيري"))
+        assertEquals("\"تائيه\" AND (\"الالبيري\"* OR \"البيري\"*)", FtsQueryBuilder.build("تائية الألبيري"))
+    }
+
+    @Test
     fun expandsTheDefiniteArticleWithoutChangingNormalization() {
         assertEquals("(\"الايمان\"* OR \"ايمان\"*)", FtsQueryBuilder.build("الإيمان"))
     }

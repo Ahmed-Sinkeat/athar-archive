@@ -36,6 +36,8 @@ data class PoemUi(
     val topics: List<String> = emptyList(),
     val died: Int? = null,
     val hasAudio: Boolean = false,
+    /** قصيدة · منظومة (the catalog's work type). */
+    val kind: String = "قصيدة",
 )
 
 data class PoetryUiState(

@@ -413,10 +413,12 @@ class AtharChipGroup(
     /** The first option is the "no filter" default, e.g. «الكل». */
     val options: List<String>,
     val selected: String,
+    /** [AtharDirectionGroup]: drawn as one arrow beside «الترتيب», not as a row or a filter. */
+    val isDirection: Boolean = false,
     val onSelect: (String) -> Unit,
 ) {
     val default get() = options.first()
-    val active get() = selected != default
+    val active get() = !isDirection && selected != default
 }
 
 /**
@@ -460,6 +462,9 @@ fun inSection(section: String, topics: Collection<String>) =
 fun AtharFilterIcon(groups: List<AtharChipGroup>, facets: List<AtharFacet>, tagPrefix: String) {
     var open by remember { mutableStateOf(false) }
     val count = groups.count { it.active } + facets.sumOf { it.selected.size }
+    val pins = rememberFilterPins(groups, facets, tagPrefix)
+    // The sort's direction is one tap, so it sits outside the popup, beside the icon.
+    groups.firstOrNull { it.isDirection }?.let { AtharDirectionButton(it) }
     Box {
         IconButton(onClick = { open = true }, modifier = Modifier.size(48.dp).testTag("${tagPrefix}_button")) {
             Box {
@@ -475,8 +480,67 @@ fun AtharFilterIcon(groups: List<AtharChipGroup>, facets: List<AtharFacet>, tagP
         }
         AtharMenu(expanded = open, onDismiss = { open = false }, width = 310.dp, modifier = Modifier.testTag("${tagPrefix}_popup")) {
             AtharFilterPopupContent(groups, facets, tagPrefix)
+            if (!pins.atDefault || pins.pinned) AtharMenuDivider()
+            if (!pins.atDefault || pins.pinned) Row(Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 2.dp), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                if (!pins.atDefault) AtharFilterChip("مسح", false) { pins.reset() }
+                if (pins.pinned && pins.atDefault) AtharFilterChip("إلغاء التثبيت", false) { pins.unpin() }
+                else if (!pins.atDefault) AtharFilterChip("تثبيت كافتراضي", false) { pins.pin() }
+            }
         }
     }
+}
+
+/**
+ * «تثبيت كافتراضي»: what the popup holds now becomes the list's default. The app opens on it and
+ * «مسح» returns to it; with nothing pinned the default is no filter. Stored beside the choices in
+ * "list_state" as `pin.<list>.<title>`, so «إعادة الإعدادات الافتراضية» clears pins too.
+ */
+class AtharFilterPins(
+    val pinned: Boolean,
+    /** Every choice is at its default (the pin, or no filter). */
+    val atDefault: Boolean,
+    val pin: () -> Unit,
+    val unpin: () -> Unit,
+    val reset: () -> Unit,
+)
+
+// Pins already applied in this process: a cold start opens on the pin once, then choices are free.
+private val pinsApplied = mutableSetOf<String>()
+
+@Composable
+private fun rememberFilterPins(groups: List<AtharChipGroup>, facets: List<AtharFacet>, tagPrefix: String): AtharFilterPins {
+    val prefs = LocalContext.current.getSharedPreferences("list_state", android.content.Context.MODE_PRIVATE)
+    var generation by remember { mutableStateOf(0) }
+    generation.let { }   // read, so a pin written below recomposes the popup
+    val all = groups.filter { it.options.isNotEmpty() }
+    fun key(title: String) = "pin.$tagPrefix.$title"
+    fun stored(title: String): String? = runCatching { prefs.getString(key(title), null) }.getOrNull()
+    fun groupDefault(g: AtharChipGroup) = stored(g.title)?.takeIf { it in g.options } ?: g.default
+    // A pinned value the catalog no longer has drops out, as the screens drop it from the choices.
+    fun facetDefault(f: AtharFacet) = (stored(f.title)?.asChoiceSet() ?: emptySet()) intersect f.options.toSet()
+    fun reset() {
+        all.forEach { g -> groupDefault(g).let { if (it != g.selected) g.onSelect(it) } }
+        facets.forEach { f -> facetDefault(f).let { if (it != f.selected) f.onChange(it) } }
+    }
+    // Per choice, not per list: a facet whose values load later (authors) still gets its pin.
+    LaunchedEffect(tagPrefix, all.map { it.title }, facets.map { it.title }) {
+        all.filter { pinsApplied.add(key(it.title)) }.forEach { g -> stored(g.title)?.takeIf { it in g.options && it != g.selected }?.let(g.onSelect) }
+        facets.filter { pinsApplied.add(key(it.title)) }.forEach { f -> stored(f.title)?.asChoiceSet()?.takeIf { it != f.selected }?.let(f.onChange) }
+    }
+    val titles = all.map { it.title } + facets.map { it.title }
+    return AtharFilterPins(
+        pinned = titles.any { stored(it) != null },
+        atDefault = all.all { groupDefault(it) == it.selected } && facets.all { facetDefault(it) == it.selected },
+        pin = {
+            prefs.edit().apply {
+                all.forEach { putString(key(it.title), it.selected) }
+                facets.forEach { putString(key(it.title), it.selected.asStoredChoices()) }
+            }.apply()
+            generation++
+        },
+        unpin = { prefs.edit().apply { titles.forEach { remove(key(it)) } }.apply(); generation++ },
+        reset = ::reset,
+    )
 }
 
 @OptIn(ExperimentalLayoutApi::class)
@@ -485,16 +549,24 @@ fun AtharFilterPopupContent(groups: List<AtharChipGroup>, facets: List<AtharFace
     Column(Modifier.padding(horizontal = 12.dp, vertical = 2.dp)) {
         var first = true
         @Composable fun divider() { if (!first) AtharMenuDivider(); first = false }
-        groups.filter { it.options.isNotEmpty() }.forEach { group ->
+        groups.filter { it.options.isNotEmpty() && !it.isDirection }.forEach { group ->
             divider()
-            AtharFilterRow(group.title) { group.options.forEach { AtharFilterChip(it, it == group.selected) { group.onSelect(it) } } }
+            AtharFilterRow(group.title) {
+                group.options.forEach { AtharFilterChip(it, it == group.selected) { group.onSelect(it) } }
+            }
         }
         facets.filter { it.options.isNotEmpty() }.forEachIndexed { index, facet ->
             divider()
-            if (facet.chipLabel != null || facet.options.size <= 12) AtharFilterRow(facet.title) {
+            // Centuries: one line that scrolls sideways, not three lines of chips.
+            if (facet.chipLabel != null) AtharFilterRow(facet.title, scroll = true) {
                 facet.options.forEach { value ->
                     val ticked = value in facet.selected
-                    AtharFilterChip(facet.chipLabel?.invoke(value) ?: value, ticked) { facet.onChange(if (ticked) facet.selected - value else facet.selected + value) }
+                    AtharFilterChip(facet.chipLabel.invoke(value), ticked) { facet.onChange(if (ticked) facet.selected - value else facet.selected + value) }
+                }
+            } else if (facet.options.size <= 12) AtharFilterRow(facet.title) {
+                facet.options.forEach { value ->
+                    val ticked = value in facet.selected
+                    AtharFilterChip(value, ticked) { facet.onChange(if (ticked) facet.selected - value else facet.selected + value) }
                 }
             } else AtharFilterPicker(facet.title, facet.options, facet.selected, facet.subtitle, "${tagPrefix}_f$index") {
                 facet.onChange(if (it in facet.selected) facet.selected - it else facet.selected + it)
@@ -506,14 +578,30 @@ fun AtharFilterPopupContent(groups: List<AtharChipGroup>, facets: List<AtharFace
 /** One popup line: the setting's name, then its choices. */
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-fun AtharFilterRow(title: String, choices: @Composable () -> Unit) {
+fun AtharFilterRow(title: String, scroll: Boolean = false, choices: @Composable () -> Unit) {
     Row(Modifier.fillMaxWidth().padding(vertical = 4.dp), verticalAlignment = Alignment.CenterVertically) {
         Text(title, Modifier.width(58.dp), color = AtharTheme.colors.secondaryText,
             fontSize = AtharTextSize.Small, fontWeight = FontWeight.SemiBold)
-        androidx.compose.foundation.layout.FlowRow(Modifier.weight(1f), horizontalArrangement = Arrangement.spacedBy(6.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+        if (scroll) Row(Modifier.weight(1f).horizontalScroll(androidx.compose.foundation.rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+            choices()
+        } else androidx.compose.foundation.layout.FlowRow(Modifier.weight(1f), horizontalArrangement = Arrangement.spacedBy(6.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
             choices()
         }
     }
+}
+
+/** The sort's direction as one arrow that turns over when tapped. */
+@Composable
+fun AtharDirectionButton(direction: AtharChipGroup) {
+    val descending = direction.selected == direction.options.last()
+    val turn by androidx.compose.animation.core.animateFloatAsState(if (descending) 0f else 180f, label = "direction")
+    Box(
+        Modifier.size(26.dp)
+            .atharControl(AtharTheme.colors.divider.copy(alpha = 0.32f), AtharCorners.Control)
+            .clickable(role = Role.Button, onClickLabel = "عكس الترتيب") { direction.onSelect(direction.options.first { it != direction.selected }) }
+            .semantics { contentDescription = direction.selected },
+        contentAlignment = Alignment.Center,
+    ) { Icon(AtharIcons.ChevronDown, null, Modifier.size(16.dp).graphicsLayer { rotationZ = turn }, tint = AtharTheme.colors.accent) }
 }
 
 /** A choice pill sized for the popup: solid accent when on, plain readable text when off. */
@@ -594,51 +682,6 @@ fun AtharFilterPicker(title: String, options: List<String>, selected: Set<String
     }
 }
 
-/** What is set, under the field, each removable; «مسح الكل» once there are two. */
-@OptIn(ExperimentalLayoutApi::class)
-@Composable
-fun AtharActiveFilters(groups: List<AtharChipGroup>, facets: List<AtharFacet>, tagPrefix: String, modifier: Modifier = Modifier) {
-    val chips = groups.filter { it.active }.map { g -> "${g.title}: ${g.selected}" to { g.onSelect(g.default) } } +
-        facets.flatMap { facet -> facet.selected.map { value -> value to { facet.onChange(facet.selected - value) } } }
-    if (chips.isEmpty()) return
-    androidx.compose.foundation.layout.FlowRow(
-        modifier.padding(vertical = 4.dp),
-        horizontalArrangement = Arrangement.spacedBy(6.dp),
-        verticalArrangement = Arrangement.spacedBy(6.dp),
-    ) {
-        chips.forEach { (label, remove) -> RemovableChip(label, remove) }
-        if (chips.size >= 2) Text(
-            "مسح الكل",
-            Modifier
-                .clip(AtharCorners.Control)
-                .clickable(role = Role.Button) { chips.forEach { it.second() } }
-                .padding(horizontal = 10.dp, vertical = 8.dp)
-                .testTag("${tagPrefix}_clear"),
-            color = AtharTheme.colors.accent,
-            style = MaterialTheme.typography.bodySmall,
-            fontWeight = FontWeight.SemiBold,
-        )
-    }
-}
-
-@Composable
-fun RemovableChip(label: String, onRemove: () -> Unit) {
-    Row(
-        Modifier
-            .heightIn(min = 36.dp)
-            .clip(AtharCorners.Control)
-            .background(AtharTheme.colors.accent.copy(alpha = 0.13f))
-            .clickable(role = Role.Button, onClick = onRemove)
-            .semantics { contentDescription = "إزالة $label" }
-            .padding(start = 12.dp, end = 8.dp),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(4.dp),
-    ) {
-        Text(label, color = MaterialTheme.colorScheme.onSurface, style = MaterialTheme.typography.bodySmall, maxLines = 1, overflow = TextOverflow.Ellipsis)
-        Icon(AtharIcons.Close, null, tint = AtharTheme.colors.secondaryText, modifier = Modifier.size(14.dp))
-    }
-}
-
 private const val SetSeparator = '\u001F'
 
 /** A persisted multi-choice ([rememberPersisted] keeps strings). */
@@ -670,11 +713,19 @@ fun AtharChip(label: String, selected: Boolean, onClick: () -> Unit, modifier: M
     }
 }
 
+private val listStateGeneration = androidx.compose.runtime.mutableIntStateOf(0)
+
+/** Every list's remembered sort and filters back to their defaults, on screens already open too. */
+fun resetListState(context: android.content.Context) {
+    context.getSharedPreferences("list_state", android.content.Context.MODE_PRIVATE).edit().clear().apply()
+    listStateGeneration.intValue++
+}
+
 /** A String backed by SharedPreferences "list_state": sort/filter choices survive restarts. */
 @Composable
 fun rememberPersisted(key: String, default: String): MutableState<String> {
     val prefs = LocalContext.current.getSharedPreferences("list_state", android.content.Context.MODE_PRIVATE)
-    return remember(key) { PersistedState(prefs, key, runCatching { prefs.getString(key, null) }.getOrNull() ?: default) }
+    return remember(key, listStateGeneration.intValue) { PersistedState(prefs, key, runCatching { prefs.getString(key, null) }.getOrNull() ?: default) }
 }
 
 private class PersistedState(
@@ -1013,9 +1064,35 @@ private val normKeys = java.util.concurrent.ConcurrentHashMap<String, String>()
 // ponytail: unbounded, but keys are catalog strings (a few thousand); swap for an LRU if free text lands here.
 fun normKey(text: String): String = normKeys.getOrPut(text) { com.atharchive.core.ArNormalize.normalize(text) }
 
-/** «الاتجاه» beside «الترتيب», the same menu in every section. */
+/** The main search's catalog engine, handed to every section list (see [rememberCatalogRanks]). */
+val LocalCatalogSearch = androidx.compose.runtime.staticCompositionLocalOf<suspend (String, Set<String>) -> List<String>> { { _, _ -> emptyList() } }
+
+/**
+ * Each work in [collections] that the main search finds for [query], with its rank (0 = best);
+ * null while the query is blank. The last result stays up while the next is computed, so typing
+ * never flashes the whole list.
+ */
+@Composable
+fun rememberCatalogRanks(query: String, vararg collections: String): Map<String, Int>? {
+    val search = LocalCatalogSearch.current
+    val term = query.trim()
+    val scope = remember(*collections) { collections.toSet() }
+    val ranks by androidx.compose.runtime.produceState<Map<String, Int>?>(null, term, scope) {
+        if (term.isNotEmpty()) value = runCatching { search(term, scope) }.getOrDefault(emptyList()).withIndex().associate { (i, id) -> id to i }
+    }
+    return if (term.isEmpty()) null else ranks
+}
+
+/**
+ * The list searches' one rule: every word of [term] (normalized) is somewhere in [fields], in any
+ * order, so «قصيدة أبي الأسود» finds «قصيدة ابن أبي الأسود» as the main search does.
+ */
+fun matchesWords(term: String, vararg fields: String): Boolean =
+    term.split(' ').filter(String::isNotBlank).all { word -> fields.any { it.contains(word, ignoreCase = true) } }
+
+/** «الاتجاه»: an arrow at the end of «الترتيب» (see [AtharDirectionButton]), the same in every section. */
 fun AtharDirectionGroup(descending: Boolean, onChange: (Boolean) -> Unit) =
-    AtharChipGroup("الاتجاه", listOf("تصاعدي", "تنازلي"), if (descending) "تنازلي" else "تصاعدي") { onChange(it == "تنازلي") }
+    AtharChipGroup("الاتجاه", listOf("تصاعدي", "تنازلي"), if (descending) "تنازلي" else "تصاعدي", isDirection = true) { onChange(it == "تنازلي") }
 
 fun <T> Comparator<T>.directed(descending: Boolean): Comparator<T> = if (descending) reversed() else this
 

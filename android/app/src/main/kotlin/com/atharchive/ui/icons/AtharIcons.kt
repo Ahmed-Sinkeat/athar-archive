@@ -323,21 +323,30 @@ object AtharIcons {
         }
     }
 
-    val Archive: ImageVector by lazy {
-        icon("AtharArchive") {
+    /** المتون: a rolled manuscript, rolls top and bottom, two lines of text between. */
+    val Mutoon: ImageVector by lazy {
+        icon("AtharMutoon") {
             path(stroke = Stroke, strokeLineWidth = 1.75f) {
-                moveTo(4.2f, 8f)
-                lineTo(19.8f, 8f)
-                lineTo(19.8f, 20f)
-                lineTo(4.2f, 20f)
+                moveTo(6.5f, 3.25f)
+                lineTo(17.5f, 3.25f)
+                arcTo(1.6f, 1.6f, 0f, false, true, 17.5f, 6.45f)
+                lineTo(6.5f, 6.45f)
+                arcTo(1.6f, 1.6f, 0f, false, true, 6.5f, 3.25f)
                 close()
-                moveTo(3.25f, 4f)
-                lineTo(20.75f, 4f)
-                lineTo(20.75f, 8f)
-                lineTo(3.25f, 8f)
+                moveTo(6.5f, 17.55f)
+                lineTo(17.5f, 17.55f)
+                arcTo(1.6f, 1.6f, 0f, false, true, 17.5f, 20.75f)
+                lineTo(6.5f, 20.75f)
+                arcTo(1.6f, 1.6f, 0f, false, true, 6.5f, 17.55f)
                 close()
-                moveTo(9.2f, 12.15f)
-                lineTo(14.8f, 12.15f)
+                moveTo(7.3f, 6.45f)
+                lineTo(7.3f, 17.55f)
+                moveTo(16.7f, 6.45f)
+                lineTo(16.7f, 17.55f)
+                moveTo(9.9f, 10.2f)
+                lineTo(14.1f, 10.2f)
+                moveTo(9.9f, 13.8f)
+                lineTo(14.1f, 13.8f)
             }
         }
     }

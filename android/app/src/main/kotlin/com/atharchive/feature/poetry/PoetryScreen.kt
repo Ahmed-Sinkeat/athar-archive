@@ -1,5 +1,6 @@
 package com.atharchive.feature.poetry
 
+import com.atharchive.ui.components.AtharFastScroller
 import com.atharchive.ui.components.directed
 import com.atharchive.ui.components.AtharDirectionGroup
 import com.atharchive.ui.components.normKey
@@ -61,7 +62,6 @@ import androidx.compose.ui.unit.sp
 import com.atharchive.ui.components.AtharChipGroup
 import com.atharchive.ui.components.AtharEmptyState
 import com.atharchive.ui.components.AtharFilterIcon
-import com.atharchive.ui.components.AtharActiveFilters
 import com.atharchive.ui.components.AtharFacet
 import com.atharchive.ui.components.asChoiceSet
 import com.atharchive.ui.components.asStoredChoices
@@ -129,15 +129,14 @@ fun PoetryScreen(
             poem.id to Triple(normKey(poem.title), normKey(poem.poet), poem.openingVerses.map(::normKey))
         }
     }
-    val visiblePoems = remember(state.poems, selectedTab, query, topic, sort, descending, poet, century, audio, section) {
+    val ranks = com.atharchive.ui.components.rememberCatalogRanks(query, "poem")
+    val visiblePoems = remember(state.poems, selectedTab, query, ranks, topic, sort, descending, poet, century, audio, section) {
         val term = ArNormalize.normalize(query.trim())
         state.poems.filter { poem ->
             val matchesTab = selectedTab.matches(poem.recentRank != null, poem.downloaded, poem.saved)
-            val (title, poet, opening) = normalized.getValue(poem.id)
-            val matchesQuery = term.isBlank() ||
-                title.contains(term, ignoreCase = true) ||
-                poet.contains(term, ignoreCase = true) ||
-                opening.any { it.contains(term, ignoreCase = true) }
+            // The catalog has no verses: an opening line typed in still finds its poem.
+            val matchesQuery = ranks == null || poem.id in ranks ||
+                term.isNotBlank() && com.atharchive.ui.components.matchesWords(term, *normalized.getValue(poem.id).third.toTypedArray())
             matchesTab && matchesQuery && (topic.isEmpty() || poem.topics.any(topic::contains)) &&
                 (poet.isEmpty() || poem.poet in poet) &&
                 (century.isEmpty() || poem.died?.let { com.atharchive.data.centuryOf(it) } in century) &&
@@ -151,8 +150,8 @@ fun PoetryScreen(
                 PoemSort.Newest, PoemSort.Died -> compareBy<PoemUi> { it.title }
             }).directed(descending),
         ).let { poems ->
-            // Titles first: a reader typing «النونية» wants that poem, not every poem whose poet or opening says it. Stable sort keeps the order inside each group.
-            if (term.isBlank()) poems else poems.sortedByDescending { normalized.getValue(it.id).first.contains(term, ignoreCase = true) }
+            // A search lists best match first, as البحث does; verse-only matches after.
+            if (ranks == null || selectedTab == SectionTab.Recent) poems else poems.sortedBy { ranks[it.id] ?: Int.MAX_VALUE }
         }
     }
     // The list keeps its place by the top item's key, so a just-opened text moving to the top of
@@ -186,9 +185,9 @@ fun PoetryScreen(
                             if (selectedTab == SectionTab.Recent) null else AtharChipGroup("الترتيب", PoemSort.entries.map { it.label }, sort.label) { label -> sortName = PoemSort.entries.first { it.label == label }.name },
                             if (selectedTab == SectionTab.Recent) null else AtharDirectionGroup(descending) { descendingStored = if (it) "1" else "" },
                         )
+                val topicFacet = AtharFacet("الموضوع", topics, topic, { topicStored = it.asStoredChoices() })
                 val filterFacets = listOf(
                     AtharFacet("الشاعر", poets, poet, { poetStored = it.asStoredChoices() }),
-                    AtharFacet("الموضوع", topics, topic, { topicStored = it.asStoredChoices() }),
                     com.atharchive.ui.components.centuryFacet(century) { centuryStored = it.asStoredChoices() },
                     AtharFacet("الصوت", listOf(com.atharchive.ui.components.HasAudioChoice), audio, { audioStored = it.asStoredChoices() }),
                 )
@@ -199,7 +198,7 @@ fun PoetryScreen(
                     onQueryChange = { query = it },
                     tagPrefix = "poetry",
                     trailing = {
-                        com.atharchive.ui.components.AtharSectionButton(section, { section = it }, remember(state.poems) { com.atharchive.ui.components.sectionCounts(state.poems) { it.topics } }, "poetry_sections")
+                        com.atharchive.ui.components.AtharSectionButton(section, { section = it }, remember(state.poems) { com.atharchive.ui.components.sectionCounts(state.poems) { it.topics } }, "poetry_sections", topicFacet)
                         AtharFilterIcon(filterGroups, filterFacets, "poetry_filter")
                     },
                     modifier = Modifier.padding(
@@ -208,7 +207,6 @@ fun PoetryScreen(
                         top = 4.dp,
                     ),
                 )
-                AtharActiveFilters(filterGroups, filterFacets, "poetry_filter", Modifier.padding(horizontal = horizontalPadding))
                 }
             
         
@@ -275,6 +273,7 @@ fun PoetryScreen(
             }
             sectionTextHits(textHits, query, textSearch, horizontalPadding)
         }
+        AtharFastScroller(listState, top = header.height)
     }
     }
 }

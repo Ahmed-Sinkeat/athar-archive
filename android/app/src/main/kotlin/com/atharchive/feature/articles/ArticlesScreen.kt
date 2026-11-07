@@ -1,5 +1,6 @@
 package com.atharchive.feature.articles
 
+import com.atharchive.ui.components.AtharFastScroller
 import com.atharchive.ui.components.directed
 import com.atharchive.ui.components.AtharDirectionGroup
 import com.atharchive.ui.components.normKey
@@ -27,7 +28,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import com.atharchive.core.ArNormalize
 import com.atharchive.feature.downloads.TransferUi
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import com.atharchive.ui.components.AtharFloatingHeader
@@ -61,7 +61,6 @@ import com.atharchive.ui.components.AtharDownloadButton
 import com.atharchive.ui.components.AtharChipGroup
 import com.atharchive.ui.components.AtharEmptyState
 import com.atharchive.ui.components.AtharFilterIcon
-import com.atharchive.ui.components.AtharActiveFilters
 import com.atharchive.ui.components.enumValueOrNull
 import com.atharchive.ui.components.orFirstIn
 import com.atharchive.ui.components.rememberPersisted
@@ -119,20 +118,19 @@ fun ArticlesScreen(
     val normalized = remember(state.articles) {
         state.articles.associate { it.id to (normKey(it.title) to normKey(it.author)) }
     }
-    val visibleArticles = remember(state.articles, selectedTab, query, sort, descending, author, topic, century, section) {
-        val term = ArNormalize.normalize(query.trim())
+    val ranks = com.atharchive.ui.components.rememberCatalogRanks(query, "article")
+    val visibleArticles = remember(state.articles, selectedTab, ranks, sort, descending, author, topic, century, section) {
         state.articles.filter { article ->
             val matchesTab = selectedTab.matches(article.recentRank != null, article.downloaded, article.saved)
-            val (title, by) = normalized.getValue(article.id)
-            val matchesQuery = term.isBlank() ||
-                title.contains(term, ignoreCase = true) ||
-                by.contains(term, ignoreCase = true)
+            val matchesQuery = ranks == null || article.id in ranks
             matchesTab && matchesQuery && (author.isEmpty() || article.author in author) &&
                 (topic.isEmpty() || article.topics.any(topic::contains)) &&
                 (century.isEmpty() || article.died?.let { com.atharchive.data.centuryOf(it) } in century) &&
                 com.atharchive.ui.components.inSection(section, article.topics)
         }.sortedWith(
             if (selectedTab == SectionTab.Recent) compareBy { it.recentRank ?: Int.MAX_VALUE }
+            // A search lists best match first, as البحث does.
+            else if (ranks != null) compareBy { ranks[it.id] }
             else if (sort == ArticleSort.Died) compareBy<ArticleUi, Int?>(nullsLast(if (descending) reverseOrder() else naturalOrder())) { it.died }.thenBy { normalized.getValue(it.id).first }
             else (when (sort) {
                 ArticleSort.Title -> compareBy<ArticleUi> { normalized.getValue(it.id).first }
@@ -172,9 +170,9 @@ fun ArticlesScreen(
                             if (selectedTab == SectionTab.Recent) null else AtharChipGroup("الترتيب", ArticleSort.entries.map { it.label }, sort.label) { label -> sortName = ArticleSort.entries.first { it.label == label }.name },
                             if (selectedTab == SectionTab.Recent) null else AtharDirectionGroup(descending) { descendingStored = if (it) "1" else "" },
                         )
+                val topicFacet = AtharFacet("الموضوع", topics, topic, { topicStored = it.asStoredChoices() })
                 val filterFacets = listOf(
                     AtharFacet("المؤلف", authors, author, { authorStored = it.asStoredChoices() }),
-                    AtharFacet("الموضوع", topics, topic, { topicStored = it.asStoredChoices() }),
                     com.atharchive.ui.components.centuryFacet(century) { centuryStored = it.asStoredChoices() },
                 )
                 AtharSearchField(
@@ -184,7 +182,7 @@ fun ArticlesScreen(
                     onQueryChange = { query = it },
                     tagPrefix = "articles",
                     trailing = {
-                        com.atharchive.ui.components.AtharSectionButton(section, { section = it }, remember(state.articles) { com.atharchive.ui.components.sectionCounts(state.articles) { it.topics } }, "articles_sections")
+                        com.atharchive.ui.components.AtharSectionButton(section, { section = it }, remember(state.articles) { com.atharchive.ui.components.sectionCounts(state.articles) { it.topics } }, "articles_sections", topicFacet)
                         AtharFilterIcon(filterGroups, filterFacets, "articles_filter")
                     },
                     modifier = Modifier.padding(
@@ -193,7 +191,6 @@ fun ArticlesScreen(
                         top = 4.dp,
                     ),
                 )
-                AtharActiveFilters(filterGroups, filterFacets, "articles_filter", Modifier.padding(horizontal = horizontalPadding))
                 }
             
         
@@ -258,6 +255,7 @@ fun ArticlesScreen(
             }
             sectionTextHits(textHits, query, textSearch, horizontalPadding)
         }
+        AtharFastScroller(listState, top = header.height)
     }
     }
 }

@@ -5,7 +5,6 @@ import com.atharchive.ui.components.directed
 import com.atharchive.ui.components.AtharDirectionGroup
 import com.atharchive.ui.components.normKey
 import kotlinx.coroutines.launch
-import com.atharchive.core.ArNormalize
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.rememberScrollState
 
@@ -93,7 +92,6 @@ import com.atharchive.ui.components.SectionTab
 import com.atharchive.ui.components.emptyCopy
 import com.atharchive.ui.components.AtharChipGroup
 import com.atharchive.ui.components.AtharFilterIcon
-import com.atharchive.ui.components.AtharActiveFilters
 import com.atharchive.ui.components.enumValueOrNull
 import com.atharchive.ui.components.AtharFacet
 import com.atharchive.ui.components.arabicDigits
@@ -130,20 +128,30 @@ fun BooksScreen(
     modifier: Modifier = Modifier,
     scrollToTopRequest: Int = 0,
     onBack: (() -> Unit)? = null,
+    title: String = "الكتب",
+    /** Where this list keeps its sort and filters: an author's page and المتون have their own. */
+    keyPrefix: String = "books",
+    /** Above the first row: an author's dates, bio and «تنزيل الكل». */
+    listHeader: (@Composable () -> Unit)? = null,
+    /** An author's page: tabs by kind of work (الكتب، الشعر…), only the kinds they have, instead of الكل/المفضّلة/المحمّلة. */
+    byKind: Boolean = false,
 ) {
     var selectedTab by rememberSaveable { mutableStateOf(SectionTab.All) }
+    val kindTabs = if (!byKind) null else remember(state.books) {
+        WorkKinds.filter { (coll, _) -> state.books.any { it.coll == coll } }.map { (coll, label) -> com.atharchive.ui.components.AtharTab(coll, label) }
+    }
+    var kindStored by rememberSaveable { mutableStateOf("") }
+    val kind = kindTabs?.let { tabs -> (tabs.firstOrNull { it.key == kindStored } ?: tabs.firstOrNull())?.key }
     var query by rememberSaveable { mutableStateOf("") }
-    var kindStored by rememberPersisted("books.kinds", "")
-    var topicStored by rememberPersisted("books.topics", "")
-    var centuryStored by rememberPersisted("books.centuries", "")
-    var authorStored by rememberPersisted("books.authors", "")
-    var audioStored by rememberPersisted("books.audio", "")
-    var section by rememberPersisted("books.section", com.atharchive.ui.components.SectionAll)
-    var sortName by rememberPersisted("books.sort", BookSort.Died.name)
+    var topicStored by rememberPersisted("$keyPrefix.topics", "")
+    var centuryStored by rememberPersisted("$keyPrefix.centuries", "")
+    var authorStored by rememberPersisted("$keyPrefix.authors", "")
+    var audioStored by rememberPersisted("$keyPrefix.audio", "")
+    var section by rememberPersisted("$keyPrefix.section", com.atharchive.ui.components.SectionAll)
+    var sortName by rememberPersisted("$keyPrefix.sort", BookSort.Died.name)
     val sort = enumValueOrNull<BookSort>(sortName) ?: BookSort.Died
-    var descendingStored by rememberPersisted("books.order.desc", "")
+    var descendingStored by rememberPersisted("$keyPrefix.order.desc", "")
     val descending = descendingStored.isNotEmpty()
-    val kinds = remember(state.books) { state.books.map { it.kind }.distinct() }
     // Inside a section, only its own topics are offered.
     val topics = remember(state.books, section) {
         state.books.flatMap { it.topics }.distinct().filter { com.atharchive.ui.components.inSection(section, listOf(it)) }.sorted()
@@ -155,7 +163,6 @@ fun BooksScreen(
     }
     val authors = remember(authorFacts) { authorFacts.keys.sortedBy { normKey(it) } }
     // Values that no longer exist (catalog changed) drop out instead of hiding every book.
-    val kind = kindStored.asChoiceSet() intersect kinds.toSet()
     val topic = topicStored.asChoiceSet() intersect topics.toSet()
     val century = centuryStored.asChoiceSet() intersect centuries.toSet()
     val author = authorStored.asChoiceSet() intersect authorFacts.keys
@@ -171,18 +178,16 @@ fun BooksScreen(
     val normalized = remember(state.books) {
         state.books.associate { it.id to (normKey(it.title) to normKey(it.author)) }
     }
-    val visibleBooks = remember(state.books, selectedTab, query, kind, sort, descending, topic, century, author, section, audio) {
-        val term = ArNormalize.normalize(query.trim())
+    val ranks = if (byKind) com.atharchive.ui.components.rememberCatalogRanks(query, "book", "poem", "article", "question")
+        else com.atharchive.ui.components.rememberCatalogRanks(query, "book", "poem")
+    val visibleBooks = remember(state.books, selectedTab, kind, ranks, sort, descending, topic, century, author, section, audio) {
         state.books
             .asSequence()
+            .filter { kind == null || it.coll == kind }
             .filter { book ->
                 selectedTab.matches(book.recentRank != null, book.download is BookDownloadUi.Downloaded, book.saved)
             }
-            .filter { book ->
-                val (title, author) = normalized.getValue(book.id)
-                term.isBlank() || title.contains(term, ignoreCase = true) || author.contains(term, ignoreCase = true)
-            }
-            .filter { kind.isEmpty() || it.kind in kind }
+            .filter { book -> ranks == null || book.id in ranks }
             .filter { topic.isEmpty() || it.topics.any(topic::contains) }
             .filter { century.isEmpty() || it.died?.let { d -> com.atharchive.data.centuryOf(d) } in century }
             .filter { com.atharchive.ui.components.inSection(section, it.topics) }
@@ -191,6 +196,8 @@ fun BooksScreen(
             .sortedWith(
                 when {
                     selectedTab == SectionTab.Recent -> compareBy { it.recentRank ?: Int.MAX_VALUE }
+                    // A search lists best match first, as البحث does.
+                    ranks != null -> compareBy { ranks[it.id] }
                     sort == BookSort.Title -> compareBy<BookUi> { normalized.getValue(it.id).first }.directed(descending)
                     sort == BookSort.Author -> compareBy<BookUi> { normalized.getValue(it.id).second }.directed(descending)
                     // Unknown years and sizes stay last in both directions.
@@ -217,11 +224,11 @@ fun BooksScreen(
 
         Box(modifier = Modifier.fillMaxSize().clipToBounds()) {
             val header = rememberAtharCollapsingHeader()
-            header.ShowOnChange(listState, selectedTab, query, kind, topic, century, author, sort, section)
+            header.ShowOnChange(listState, selectedTab, kind, query, topic, century, author, sort, section)
             AtharFloatingHeader(header) {
                 Column {
                     AtharTopBar(
-                        title = "الكتب",
+                        title = title,
                         onSettings = onSettings,
                         showAppIcon = true,
                         onBack = onBack,
@@ -234,16 +241,16 @@ fun BooksScreen(
                             },
                             if (selectedTab == SectionTab.Recent) null else AtharDirectionGroup(descending) { descendingStored = if (it) "1" else "" },
                         )
+                val topicFacet = AtharFacet("الموضوع", topics, topic, { topicStored = it.asStoredChoices() })
                 val filterFacets = listOf(
                             AtharFacet("المؤلف", authors, author, { authorStored = it.asStoredChoices() }, subtitle = { name ->
                                 val (died, count) = authorFacts.getValue(name)
                                 listOfNotNull(died?.let(::diedLabel), com.atharchive.data.arabicCount(count, "", "كتاب واحد", "كتابان", "كتب", "كتابًا")).joinToString(" · ")
                             }),
-                            AtharFacet("الموضوع", topics, topic, { topicStored = it.asStoredChoices() }),
                             com.atharchive.ui.components.centuryFacet(century) { centuryStored = it.asStoredChoices() },
-                            AtharFacet("النوع", kinds, kind, { kindStored = it.asStoredChoices() }),
                             AtharFacet("الصوت", listOf(com.atharchive.ui.components.HasAudioChoice), audio, { audioStored = it.asStoredChoices() }),
-                        )
+                        // One author has nothing to choose between.
+                        ).filter { it.options.size > 1 || it.selected.isNotEmpty() }
                 AtharSearchField(
                     query = query,
                     resultCount = visibleBooks.size,
@@ -251,7 +258,7 @@ fun BooksScreen(
                     onQueryChange = { query = it },
                     tagPrefix = "books",
                     trailing = {
-                        com.atharchive.ui.components.AtharSectionButton(section, { section = it }, remember(state.books) { com.atharchive.ui.components.sectionCounts(state.books) { it.topics } }, "books_sections")
+                        com.atharchive.ui.components.AtharSectionButton(section, { section = it }, remember(state.books) { com.atharchive.ui.components.sectionCounts(state.books) { it.topics } }, "books_sections", topicFacet)
                         AtharFilterIcon(filterGroups, filterFacets, "books_filter")
                     },
                     modifier = Modifier.padding(
@@ -260,12 +267,20 @@ fun BooksScreen(
                         top = 4.dp,
                     ),
                 )
-                AtharActiveFilters(filterGroups, filterFacets, "books_filter", Modifier.padding(horizontal = horizontalPadding))
                 }
             
         
             Column {
-                AtharTabRow(
+                if (kindTabs != null) {
+                    if (kindTabs.size > 1) AtharTabRow(
+                        tabs = kindTabs,
+                        selectedKey = kind.orEmpty(),
+                        onSelect = { kindStored = it },
+                        tagPrefix = "person_kind",
+                        onReselect = { reselectScope.launch { listState.animateScrollToItem(0) } },
+                        modifier = Modifier.padding(horizontal = horizontalPadding),
+                    )
+                } else AtharTabRow(
                     tabs = SectionTab.tabs,
                     selectedKey = selectedTab.key,
                     onSelect = { selectedTab = SectionTab.fromKey(it) },
@@ -289,6 +304,7 @@ fun BooksScreen(
                 .testTag("books_screen"),
             contentPadding = PaddingValues(top = header.height, bottom = 28.dp),
         ) {
+            if (listHeader != null) item(key = "list-header") { listHeader() }
             if (!state.loaded) {
                 // first catalog read not back yet: show nothing rather than a false "no books"
             } else if (visibleBooks.isEmpty()) {
@@ -296,7 +312,7 @@ fun BooksScreen(
                     val (emptyTitle, emptyBody) = booksEmptyCopy(
                         selectedTab = selectedTab,
                         hasQuery = query.isNotBlank(),
-                        hasFilters = (kind + topic + century + author + audio).isNotEmpty() || section != com.atharchive.ui.components.SectionAll,
+                        hasFilters = (topic + century + author + audio).isNotEmpty() || section != com.atharchive.ui.components.SectionAll,
                     )
                     AtharEmptyState(
                         title = emptyTitle,
@@ -520,3 +536,6 @@ private fun BooksLargeTextPreview() {
         )
     }
 }
+
+/** An author's works by kind, in this order; a kind they have none of has no tab. */
+private val WorkKinds = listOf("book" to "الكتب", "poem" to "الشعر", "article" to "المقالات", "question" to "المسائل")

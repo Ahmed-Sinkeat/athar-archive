@@ -111,6 +111,10 @@ fun PoemReaderScreen(
     /** ⋮ menu, as in the text reader: the poet's page and keeping the poem offline (null once kept). */
     onOpenAuthor: (() -> Unit)? = null,
     onDownload: (() -> Unit)? = null,
+    /** The download in flight, if any: its percent shows in ⋮, like the book reader. */
+    downloadTransfer: com.atharchive.feature.downloads.TransferUi? = null,
+    /** The text changed since this poem was last opened here: said once, quietly. */
+    updatedSinceLastRead: Boolean = false,
     settings: ReaderSettings,
     onSettingsChange: (ReaderSettings) -> Unit,
     themeMode: com.atharchive.ui.theme.ThemeMode,
@@ -160,6 +164,12 @@ fun PoemReaderScreen(
     val repeat = playback.repeat
     var audioVisible by remember { mutableStateOf(true) }
     var followScroll by remember { mutableStateOf(initialOrdinal == null) }
+    LaunchedEffect(updatedSinceLastRead) { if (updatedSinceLastRead) toast = "حُدِّثت القصيدة منذ آخر قراءة" }
+    var downloadSeen by remember { mutableStateOf(false) }
+    LaunchedEffect(downloadTransfer != null, onDownload == null) {
+        if (downloadTransfer != null) downloadSeen = true
+        else if (onDownload == null && downloadSeen) { downloadSeen = false; toast = "حُفظت القصيدة دون اتصال" }
+    }
     LaunchedEffect(toast) {
         if (toast != null) { delay(1700); toast = null }
     }
@@ -492,7 +502,8 @@ fun PoemReaderScreen(
                                 "مشاركة القصيدة"))
                         })
                         if (onOpenAuthor != null) AtharMenuItem("صفحة الشاعر وقصائده", icon = AtharIcons.People, onClick = { moreOpen = false; onOpenAuthor() })
-                        if (onDownload != null) AtharMenuItem("حفظ القصيدة دون اتصال", icon = AtharIcons.Download, onClick = { moreOpen = false; onDownload() })
+                        if (downloadTransfer != null) AtharMenuItem(com.atharchive.feature.reader.downloadLabel(downloadTransfer), icon = AtharIcons.Download, onClick = { moreOpen = false })
+                        else if (onDownload != null) AtharMenuItem("حفظ القصيدة دون اتصال", icon = AtharIcons.Download, onClick = { moreOpen = false; onDownload() })
                     }
                 },
             )

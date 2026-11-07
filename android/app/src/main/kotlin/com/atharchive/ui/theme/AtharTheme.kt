@@ -42,6 +42,13 @@ private val CreamInkSecondary = Color(0xFF6E655A)
 private val CreamDivider = Color(0xFFE2D9CA)
 private val CreamGlass = Color(0xF2FAF6EE)
 private val CreamGlassBorder = Color(0xB8D9CFBC)
+// «عتيق»: an aged page, yellowed and a little faded, with brown-black ink (the user's old-print screenshot).
+private val Aged = Color(0xFFEFE4CC)
+private val AgedRaised = Color(0xFFE6D9BC)
+private val AgedPressed = Color(0xFFDCCDAB)
+internal val AgedInk = Color(0xFF2E2216)
+private val AgedInkSecondary = Color(0xFF6F5D47)
+private val AgedDivider = Color(0xFFD6C6A2)
 private val PaperScrim = Color(0x660F0D0B)
 private val Success = Color(0xFF5E6B45)       // muted olive, not a bright green
 
@@ -239,6 +246,7 @@ enum class ThemeMode(val label: String) {
     System("نظام الجهاز"),
     Light("فاتح"),
     Warm("دافئ"),
+    Aged("عتيق"),
     Dark("داكن"),
     /** E-ink screens: pure white and black, «حبر» surfaces, coloured text drawn in ink. */
     Eink("حبر إلكتروني"),
@@ -248,7 +256,7 @@ enum class ThemeMode(val label: String) {
     @Composable
     fun resolve(): Boolean = when (this) {
         System -> isSystemInDarkTheme()
-        Light, Warm, Eink -> false
+        Light, Warm, Aged, Eink -> false
         Dark -> true
     }
 }
@@ -436,6 +444,19 @@ internal val WarmExtraColors = LightExtraColors.copy(
     placeholderText = CreamInkSecondary,
 )
 
+internal val AgedExtraColors = LightExtraColors.copy(
+    canvas = Aged,
+    raisedSurface = AgedRaised,
+    pressedSurface = AgedPressed,
+    divider = AgedDivider,
+    secondaryText = AgedInkSecondary,
+    glassSurface = Color(0xF2EFE4CC),
+    glassBorder = Color(0xB8CDBB94),
+    inputSurface = AgedRaised,
+    inputBorder = Color(0x73D6C6A2),
+    placeholderText = AgedInkSecondary,
+)
+
 internal val DarkExtraColors = AtharExtraColors(
     canvas = NightPaper,
     raisedSurface = NightRaised,
@@ -468,6 +489,8 @@ fun AtharTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     /** The cream light theme; ignored when [darkTheme] is true. */
     warm: Boolean = false,
+    /** «عتيق», the aged page; ignored when [darkTheme] is true. */
+    aged: Boolean = false,
     /** [ThemeMode.Eink]: overrides [style] and [choice]. */
     eink: Boolean = false,
     style: AtharStyle = AtharStyle.Paper,
@@ -477,6 +500,10 @@ fun AtharTheme(
     @Suppress("NAME_SHADOWING") val style = if (eink) AtharStyle.Ink else style
     val accent = if (eink) AccentTones(Color.Black, Color.Black, Color.White, Color.White) else choice.tones
     val warmLight = warm && !darkTheme
+    val agedLight = aged && !darkTheme
+    val lightPage = if (eink) Color.White else if (agedLight) Aged else if (warmLight) Cream else Paper
+    val lightInk = if (eink) Color.Black else if (agedLight) AgedInk else if (warmLight) CreamInk else LightInk
+    val lightRule = if (agedLight) AgedDivider else if (warmLight) CreamDivider else WarmDivider
     val colorScheme = if (darkTheme) {
         darkColorScheme(
             primary = accent.night,
@@ -498,24 +525,25 @@ fun AtharTheme(
             onPrimary = Color.White,
             primaryContainer = androidx.compose.ui.graphics.lerp(Color.White, accent.base, 0.15f),
             onPrimaryContainer = androidx.compose.ui.graphics.lerp(accent.base, Color.Black, 0.5f),
-            background = if (eink) Color.White else if (warmLight) Cream else Paper,
-            onBackground = if (eink) Color.Black else if (warmLight) CreamInk else LightInk,
-            surface = if (eink) Color.White else if (warmLight) Cream else Paper,
-            onSurface = if (eink) Color.Black else if (warmLight) CreamInk else LightInk,
-            surfaceVariant = if (warmLight) CreamRaised else PaperRaised,
-            onSurfaceVariant = if (warmLight) CreamInkSecondary else InkSecondary,
-            outline = if (warmLight) CreamDivider else WarmDivider,
-            outlineVariant = if (warmLight) CreamDivider else WarmDivider,
+            background = lightPage,
+            onBackground = lightInk,
+            surface = lightPage,
+            onSurface = lightInk,
+            surfaceVariant = if (agedLight) AgedRaised else if (warmLight) CreamRaised else PaperRaised,
+            onSurfaceVariant = if (agedLight) AgedInkSecondary else if (warmLight) CreamInkSecondary else InkSecondary,
+            outline = lightRule,
+            outlineVariant = lightRule,
         )
     }
 
     androidx.compose.runtime.CompositionLocalProvider(
         LocalAtharExtraColors provides when {
             darkTheme -> DarkExtraColors
+            agedLight -> AgedExtraColors
             warmLight -> WarmExtraColors
             eink -> LightExtraColors.copy(canvas = Color.White)
             else -> LightExtraColors
-        }.accented(accent, darkTheme).styled(style, if (darkTheme) NightInk else if (eink) Color.Black else if (warmLight) CreamInk else LightInk, darkTheme),
+        }.accented(accent, darkTheme).styled(style, if (darkTheme) NightInk else lightInk, darkTheme),
         LocalAtharDarkTheme provides darkTheme,
         LocalAtharEink provides eink,
         LocalAtharStyle provides style,

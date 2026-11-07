@@ -1,5 +1,6 @@
 package com.atharchive.feature.kannashah
 
+import com.atharchive.ui.components.AtharFastScroller
 import com.atharchive.ui.theme.AtharCorners
 import com.atharchive.ui.theme.AtharTextSize
 import androidx.compose.foundation.shape.CircleShape
@@ -56,7 +57,6 @@ import androidx.compose.ui.unit.sp
 import com.atharchive.ui.components.AtharChipGroup
 import com.atharchive.ui.components.AtharEmptyState
 import com.atharchive.ui.components.AtharFilterIcon
-import com.atharchive.ui.components.AtharActiveFilters
 import com.atharchive.ui.components.enumValueOrNull
 import com.atharchive.ui.components.rememberPersisted
 import com.atharchive.ui.components.asChoiceSet
@@ -107,8 +107,12 @@ fun KannashahScreen(
     val source = sourceStored.asChoiceSet() intersect sources.toSet()
     val topic = topicStored.asChoiceSet() intersect topics.toSet()
 
+    // Normalised once per list, so a search ignores hamza forms, tashkeel and ة/ه like every other list.
+    val searchText = remember(state.excerpts) {
+        state.excerpts.associate { e -> e.id to com.atharchive.core.ArNormalize.normalize(listOf(e.text, e.sourceTitle, e.sourceAuthor, *e.topics.toTypedArray()).joinToString(" ")) }
+    }
     val matching = remember(state.excerpts, query, filter, author, source, topic) {
-        val term = query.trim()
+        val term = com.atharchive.core.ArNormalize.normalize(query.trim())
         state.excerpts.filter { excerpt ->
             val included = when (filter) {
                 KannashahFilter.All -> true
@@ -120,10 +124,7 @@ fun KannashahScreen(
                 (source.isEmpty() || excerpt.sourceTitle in source) &&
                 (topic.isEmpty() || excerpt.topics.any(topic::contains)) &&
                 (term.isBlank() || with(excerpt) {
-                text.contains(term, ignoreCase = true) ||
-                    sourceTitle.contains(term, ignoreCase = true) ||
-                    sourceAuthor.contains(term, ignoreCase = true) ||
-                    topics.any { topic -> topic.contains(term, ignoreCase = true) }
+                com.atharchive.ui.components.matchesWords(term, searchText.getValue(id))
             })
         }
     }
@@ -176,18 +177,6 @@ fun KannashahScreen(
                         onBack = onBack,
                         horizontalPadding = horizontalPadding,
                     )
-                if (state.headline.isNotBlank()) {
-                    Text(
-                        text = state.headline,
-                        modifier = Modifier.padding(
-                            start = horizontalPadding,
-                            end = horizontalPadding,
-                            bottom = 6.dp,
-                        ),
-                        color = AtharTheme.colors.secondaryText,
-                        style = MaterialTheme.typography.bodySmall,
-                    )
-                }
                 val filterGroups = listOf(
                             AtharChipGroup("الترتيب", KannashahSort.entries.map { it.label }, sort.label) { label ->
                                 sortName = KannashahSort.entries.first { it.label == label }.name
@@ -204,20 +193,24 @@ fun KannashahScreen(
                 AtharSearchField(
                     query = query,
                     resultCount = sorted.size,
-                    placeholder = "ابحث في كناشتك…",
+                    // The count goes where every section has it: in the field, not a line above it.
+                    placeholder = if (state.excerpts.isEmpty()) "ابحث في كناشتك…" else "ابحث في ${com.atharchive.data.arabicCount(state.excerpts.size, "", "مقتطف واحد", "مقتطفين", "مقتطفات", "مقتطفًا")}…",
                     onQueryChange = { query = it },
                     tagPrefix = "kannashah",
                     trailing = { AtharFilterIcon(filterGroups, filterFacets, "kannashah_filter") },
                     modifier = Modifier.padding(
                         start = horizontalPadding,
                         end = horizontalPadding,
+                        top = 4.dp,
                     ),
                 )
-                AtharActiveFilters(filterGroups, filterFacets, "kannashah_filter", Modifier.padding(horizontal = horizontalPadding))
                 }
-            
-        
             Column {
+                HorizontalDivider(
+                    modifier = Modifier.padding(horizontal = horizontalPadding, vertical = 2.dp),
+                    thickness = 0.7.dp,
+                    color = AtharTheme.colors.divider.copy(alpha = 0.5f),
+                )
             }
         }
         LazyColumn(
@@ -246,6 +239,7 @@ fun KannashahScreen(
                 items(sorted, horizontalPadding, onCopy, onShare, onMore, onDelete, onOpenSource)
             }
         }
+        AtharFastScroller(listState, top = header.height)
     }
     }
 }

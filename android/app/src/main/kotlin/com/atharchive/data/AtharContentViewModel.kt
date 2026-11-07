@@ -130,6 +130,8 @@ import kotlinx.coroutines.flow.drop
 private const val SearchDebounceMs = 60L
 private const val OnlineSearchPauseMs = 150L
 private const val SearchPageSize = 40
+// ponytail: a list search keeps the best 3000; the largest list (المقالات) is ~2000, raise it with the catalog.
+private const val CatalogMatchLimit = 3000
 private const val SearchLatencyTraceName = "AtharSearchKeystrokeToResults"
 
 sealed interface ContentSyncUiState {
@@ -437,6 +439,16 @@ class AtharContentViewModel @Inject constructor(
      * Passages inside one section (articles, poems, مسائل), for that section's own search box:
      * the whole library online, what is on the phone otherwise.
      */
+    /**
+     * The section lists' search: the main search's catalog match (same normalisation, «ال», word
+     * order), best first, so a title found in البحث is found in الشعر or المتون too.
+     */
+    suspend fun catalogMatches(query: String, collections: Set<String>): List<String> =
+        contentSearch.search(
+            ContentSearchRequest(query, ContentSearchField.Catalog, filter = ContentSearchFilter(collections = collections)),
+            limit = CatalogMatchLimit,
+        ).catalog.map { it.entityId }
+
     suspend fun searchSection(type: SearchResultType, query: String): List<SearchHitUi> {
         val catalog = SearchCatalog(catalogDao.observeCollection(type.contentCollection).first())
         val online = try {
@@ -784,8 +796,8 @@ class AtharContentViewModel @Inject constructor(
     val downloads = combine(textDownloads, audioDownloads) { text, audio -> text + audio }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
 
-    /** «تنزيل الكل»: every type row with what is done, in flight and left, grouped with summed sizes. */
-    val bulkDownloads = combine(
+    /** Every work's text and every recording, with how far each got, and the rows the reader started. */
+    private val bulkCandidates = combine(
         catalogDao.observeCatalog().pausedDuringUpdate(),
         combine(pinIds, retainedPins, content.pausedDownloads) { pinned, retained, paused -> Triple(pinned, retained, paused) },
         audioSources,
@@ -800,7 +812,8 @@ class AtharContentViewModel @Inject constructor(
             else -> BulkState.Active
         }
         fun TransferJob?.partial() = this?.downloaded ?: 0L
-        bulkRows(
+        fun TransferJob?.waitingWifi() = this?.state == WorkInfo.State.ENQUEUED && wifiOnly
+        Pair(
             entities.filter { it.editionOf == null }.map { entity ->
                 val job = jobs["content:${entity.coll}:${entity.id}"]
                 BulkCandidate(
@@ -808,6 +821,7 @@ class AtharContentViewModel @Inject constructor(
                     state(entity.id in pinned, entity.id in retained, entity.id, job, job == null && entity.id in states.failed),
                     job.partial(),
                     diskBytes = entity.pkgSize + entity.pkgUncompressed,
+                    waitingWifi = job.waitingWifi(),
                 )
             } + sources.flatMap { (source, refs) ->
                 refs.map { (ref, _) ->
@@ -816,15 +830,28 @@ class AtharContentViewModel @Inject constructor(
                         source.coll, audio = true, ref.id, ref.size,
                         state(ref.id in requestedAudio, ref.id in downloadedAudio, "audio:${ref.id}", job, failed = false),
                         job.partial(),
+                        waitingWifi = job.waitingWifi(),
                     )
                 }
             },
-            tracked = batches.mapTo(hashSetOf()) { it.label },
-        ).also { rows ->
+            batches.mapTo(hashSetOf()) { it.label },
+        )
+    }.flowOn(Dispatchers.Default)
+
+    /** «تنزيل الكل»: every type row with what is done, in flight and left, grouped with summed sizes. */
+    val bulkDownloads = bulkCandidates.map { (candidates, tracked) ->
+        bulkRows(candidates, tracked).also { rows ->
             // A started row that has nothing left moving (finished, or its items cancelled) stops tracking.
             content.clearBatches(rows.filter { it.tracked && !it.busy }.mapTo(hashSetOf()) { it.label })
         }
     }.flowOn(Dispatchers.Default).stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
+
+    /** An author's «تنزيل الكل»: the same row as the downloads screen's, over [ids]' texts only. */
+    fun worksRow(label: String, ids: Set<String>): Flow<BulkRowUi> = bulkCandidates.map { (candidates, tracked) ->
+        BulkRowUi(label, candidates.filter { !it.audio && it.id in ids }, label in tracked).also {
+            if (it.tracked && !it.busy) content.clearBatches(setOf(label))
+        }
+    }.flowOn(Dispatchers.Default)
 
     // One unique work per item; at most three transfer at once (transferSlots in ContentDownloadWorker.kt).
     /**
@@ -842,7 +869,8 @@ class AtharContentViewModel @Inject constructor(
         }
         content.startBatch(row.label, remaining.map(BulkCandidate::pauseKey))
         downloadAll(row.idle, wifiOnly = !mobileData)
-        pauseResumeMany(row.stopped, pause = false, wifiOnly = !mobileData)
+        // On mobile data, what was queued for Wi-Fi starts now too.
+        pauseResumeMany(row.stopped + if (mobileData) row.items.filter { it.waitingWifi } else emptyList(), pause = false, wifiOnly = !mobileData)
     }
 
     fun downloadAll(items: List<BulkCandidate>, wifiOnly: Boolean = false) {
@@ -924,6 +952,7 @@ class AtharContentViewModel @Inject constructor(
                     topics = entity.topicsCsv.split(',').filter(String::isNotBlank).map(::topicName),
                     died = entity.died,
                     hasAudio = entity.audioJson != "[]",
+                    kind = entity.kind ?: "قصيدة",
                 )
             },
         )
@@ -1167,6 +1196,14 @@ class AtharContentViewModel @Inject constructor(
     val retainedEntityIds: StateFlow<Set<String>> = content.retainedEntityIds
 
     /** Starts a whole-book download unless one is already saved or under way. */
+    /** The text a reader would open now: the downloaded package, else the catalog's (read-through pages follow it). */
+    suspend fun textVersion(entityId: String): String? =
+        importDao.state(entityId)?.localPackageHash ?: catalogDao.entity(entityId)?.pkgHash
+
+    /** One work's download in flight, changing only when its own state does (not on every other download's tick). */
+    fun transferOf(entityId: String): Flow<TransferUi?> =
+        downloads.map { list -> list.firstOrNull { it.id == entityId }?.transfer }.distinctUntilChanged()
+
     fun downloadForSearch(entityId: String) {
         viewModelScope.launch(errorHandler) {
             if (content.isPinned(entityId)) return@launch

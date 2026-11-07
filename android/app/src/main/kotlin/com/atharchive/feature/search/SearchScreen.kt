@@ -1,5 +1,13 @@
 package com.atharchive.feature.search
 
+import com.atharchive.ui.components.AtharFastScroller
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.ui.draw.clipToBounds
+import com.atharchive.ui.components.rememberAtharCollapsingHeader
+import com.atharchive.ui.components.ShowOnChange
+import com.atharchive.ui.components.atharBackdrop
+import com.atharchive.ui.components.AtharFloatingHeader
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import com.atharchive.core.data.repository.isTashkeel
 import com.atharchive.ui.components.atharControl
 import androidx.compose.ui.graphics.Color
@@ -127,49 +135,61 @@ fun SearchScreen(
     ) {
         val horizontalPadding = if (maxWidth >= 720.dp) 32.dp else 20.dp
 
-        Column(modifier = Modifier.fillMaxSize()) {
-            AtharTopBar(
-                title = "البحث",
-                onSettings = onSettings,
-                showAppIcon = true,
-                onBack = onBack,
-                horizontalPadding = horizontalPadding,
-            )
+        // The same frame as every section: bar, field and tabs float over the results and
+        // slide away as they scroll.
+        Box(modifier = Modifier.fillMaxSize().clipToBounds()) {
+            val header = rememberAtharCollapsingHeader()
+            header.ShowOnChange(listState, query, filters, lexicon)
+            AtharFloatingHeader(header) {
+                Column {
+                    AtharTopBar(
+                        title = "البحث",
+                        onSettings = onSettings,
+                        showAppIcon = true,
+                        onBack = onBack,
+                        horizontalPadding = horizontalPadding,
+                    )
+                    AtharSearchField(
+                        query = query,
+                        placeholder = "ابحث في نصوص المكتبة…",
+                        onQueryChange = {
+                            onQueryChange(it)
+                        },
+                        tagPrefix = "search",
+                        modifier = Modifier.padding(
+                            start = horizontalPadding,
+                            end = horizontalPadding,
+                            top = 4.dp,
+                        ),
+                        trailing = {
+                            // «الأقسام» in the field, as in every section: one at a time, out of the crowded filter.
+                            com.atharchive.ui.components.AtharSectionButton(
+                                filters.sections.singleOrNull() ?: com.atharchive.ui.components.SectionAll,
+                                { changeFilters(filters.copy(sections = if (it == com.atharchive.ui.components.SectionAll) emptySet() else setOf(it))) },
+                                emptyMap(), "search_sections",
+                            )
+                            SearchFilterButton(filters, state.availableAuthors, state.availableBooks, presets, onSavePreset, onDeletePreset, ::changeFilters)
+                        },
+                    )
+                }
+                Column {
+                    SearchTypeTabs(filters, lexicon, { lexicon = it }, ::changeFilters, Modifier.padding(horizontal = horizontalPadding))
+                    HorizontalDivider(
+                        modifier = Modifier.padding(horizontal = horizontalPadding, vertical = 2.dp),
+                        thickness = 0.7.dp,
+                        color = AtharTheme.colors.divider.copy(alpha = 0.5f),
+                    )
+                }
+            }
         LazyColumn(
             state = listState,
             modifier = Modifier
                 .fillMaxWidth()
-                .weight(1f)
+                .fillMaxHeight()
+                .nestedScroll(header.connection).atharBackdrop(header.haze)
                 .testTag("search_screen"),
-            contentPadding = PaddingValues(bottom = 28.dp),
+            contentPadding = PaddingValues(top = header.height, bottom = 28.dp),
         ) {
-            item(key = "search-field") {
-                AtharSearchField(
-                    query = query,
-                    placeholder = "ابحث في نصوص المكتبة…",
-                    onQueryChange = {
-                        onQueryChange(it)
-                    },
-                    tagPrefix = "search",
-                    modifier = Modifier.padding(
-                        start = horizontalPadding,
-                        end = horizontalPadding,
-                        top = 4.dp,
-                    ),
-                    trailing = {
-                        // «الأقسام» in the field, as in every section: one at a time, out of the crowded filter.
-                        com.atharchive.ui.components.AtharSectionButton(
-                            filters.sections.singleOrNull() ?: com.atharchive.ui.components.SectionAll,
-                            { changeFilters(filters.copy(sections = if (it == com.atharchive.ui.components.SectionAll) emptySet() else setOf(it))) },
-                            emptyMap(), "search_sections",
-                        )
-                        SearchFilterButton(filters, state.availableAuthors, state.availableBooks, presets, onSavePreset, onDeletePreset, ::changeFilters)
-                    },
-                )
-                SearchActiveFilters(filters, ::changeFilters, Modifier.padding(horizontal = horizontalPadding))
-                SearchTypeTabs(filters, lexicon, { lexicon = it }, ::changeFilters, Modifier.padding(horizontal = horizontalPadding - 8.dp))
-            }
-
             if (!hasQuery) {
                 if (state.recentQueries.isEmpty()) {
                     item(key = "search-hint") {
@@ -327,6 +347,7 @@ fun SearchScreen(
                 }
             }
         }
+        AtharFastScroller(listState, top = header.height)
     }
     }
 
