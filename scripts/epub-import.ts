@@ -36,6 +36,7 @@ import {
   existsSync, mkdirSync, readdirSync, statSync,
 } from "node:fs";
 import { tmpdir } from "node:os";
+import { normalizeArabic } from "../src/lib/ar-normalize.js";
 import { join, dirname, basename } from "node:path";
 
 // ─────────────────────────────────────────────
@@ -974,6 +975,27 @@ interface BuildResult {
   topicsEmitted: string[];
 }
 
+// An author already on file keeps their record: a new slug for the same name split their
+// works over two pages (الذهبي ×2, السعدي ×2…). Matches the title or any also_known_as,
+// and the catalogue's «الذهبي، شمس الدين» form read as «شمس الدين الذهبي».
+function existingPerson(contentRoot: string, creator: string | undefined): string | undefined {
+  const key = (name: string) => {
+    const [head, ...rest] = stripTashkeel(name).split(/[،,]/).map((x) => x.trim());
+    return normalizeArabic([...rest, head].join(" "));
+  };
+  const want = creator ? key(creator) : "";
+  if (!want) return undefined;
+  const dir = join(contentRoot, "person");
+  if (!existsSync(dir)) return undefined;
+  for (const f of readdirSync(dir).filter((f) => f.endsWith(".md"))) {
+    const head = readFileSync(join(dir, f), "utf-8").slice(0, 2000);
+    const title = /^title:\s*"?([^"\n]+)"?/m.exec(head)?.[1] ?? "";
+    const aka = [.../(?:^also_known_as:.*)/m.exec(head)?.[0].matchAll(/"([^"]+)"/g) ?? []].map((m) => m[1]);
+    if ([title, ...aka].some((n) => n && key(n) === want)) return f.slice(0, -3);
+  }
+  return undefined;
+}
+
 function build(file: string, opt: Opt): BuildResult {
   const { meta, pages } = readEpub(file);
 
@@ -981,7 +1003,7 @@ function build(file: string, opt: Opt): BuildResult {
   const collection = isPoem ? "poem" : "book";
   const kind = detectKind(meta, opt.kind);
 
-  const personSlug = opt.personSlug ?? slugify(meta.creator || "unknown");
+  const personSlug = opt.personSlug ?? existingPerson(opt.out, meta.creator) ?? slugify(meta.creator || "unknown");
   const baseSlug   = opt.slug ?? slugify(meta.title);
   const bookSlug   = opt.slug ? baseSlug : uniqueSlug(baseSlug, collection, opt.out, meta, personSlug);
 
@@ -1104,7 +1126,7 @@ function buildMerged(files: string[], opt: Opt): BuildResult {
   const isPoem = mergedMeta.isPoem || mergedMeta.poemByTitle;
   const collection = isPoem ? "poem" : "book";
   const kind = detectKind(mergedMeta, opt.kind);
-  const personSlug = opt.personSlug ?? slugify(mergedMeta.creator || "unknown");
+  const personSlug = opt.personSlug ?? existingPerson(opt.out, mergedMeta.creator) ?? slugify(mergedMeta.creator || "unknown");
   const baseSlug   = opt.slug ?? slugify(mergedMeta.title);
   const bookSlug   = opt.slug ? baseSlug : uniqueSlug(baseSlug, collection, opt.out, mergedMeta, personSlug);
   const topics     = resolveTopics(mergedMeta, files[0], opt.out, opt.today, opt.dryRun);

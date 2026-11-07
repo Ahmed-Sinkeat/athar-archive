@@ -3,7 +3,7 @@ title: "القصيدة الحائية"
 status: published
 published_at: 2026-07-17
 person: ibn-abi-dawud-al-sijistani
-work_type: قصيدة
+work_type: منظومة
 topics: ["al-aqeedah-al-aamah"]
 audio: al-qasidah-al-haiyyah-ibn-abi-dawud
 description: "منظومة الحائية في اعتقاد أهل السنة والجماعة لأبي بكر عبد الله بن أبي داود السجستاني، ومعها أبيات زيدت عليها لاحقا في مدح الصحابة"

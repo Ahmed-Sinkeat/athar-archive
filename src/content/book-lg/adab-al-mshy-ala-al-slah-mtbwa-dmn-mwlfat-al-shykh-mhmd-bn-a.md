@@ -4,7 +4,7 @@ edition: "تحقيق عبد الكريم اللاحم وغيره"
 status: published
 published_at: 2026-07-20
 person: ibn-abdul-wahhab
-kind: كتاب
+kind: متن
 topics: ["fiqh-hanbali"]
 description: "آداب المشي إلى الصلاة (مطبوع ضمن مؤلفات الشيخ محمد بن عبد الوهاب، الجزء الثالث)"
 ---

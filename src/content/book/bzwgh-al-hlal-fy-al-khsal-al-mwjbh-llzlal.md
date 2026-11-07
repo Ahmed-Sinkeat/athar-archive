@@ -2,7 +2,7 @@
 title: "بزوغ الهلال في الخصال الموجبة للظلال"
 status: published
 published_at: 2026-07-20
-person: al-jlal-al-sywty
+person: al-suyuti
 kind: كتاب
 topics: ["al-riqaq-wal-adhkar"]
 description: "بزوغ الهلال في الخصال الموجبة للظلال"

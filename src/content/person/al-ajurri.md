@@ -1,5 +1,6 @@
 ---
 title: "أبو بكر الآجري"
+also_known_as: ["الآجري"]
 status: published
 published_at: 2026-07-06
 born: "280 هـ"

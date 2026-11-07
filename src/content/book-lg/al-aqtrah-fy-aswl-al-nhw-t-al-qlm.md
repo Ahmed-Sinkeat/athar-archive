@@ -3,7 +3,7 @@ title: "الاقتراح في أصول النحو"
 edition: "دار القلم"
 status: published
 published_at: 2026-07-22
-person: al-jlal-al-sywty
+person: al-suyuti
 kind: كتاب
 topics: ["al-nahw"]
 ---

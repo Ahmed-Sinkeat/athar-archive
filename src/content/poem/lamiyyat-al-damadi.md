@@ -3,7 +3,7 @@ title: "لامية الضمدي"
 status: published
 published_at: 2026-07-18
 person: al-damadi
-work_type: قصيدة
+work_type: منظومة
 topics: ["al-adab"]
 description: "لامية ابن عمر الضمدي، استُسقي بها في قحطٍ شديد سنة 973هـ"
 ---

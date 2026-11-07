@@ -3,7 +3,7 @@ title: "المحرر في الحديث - ت المرعشلي"
 status: published
 published_at: 2026-11-03
 person: ibn-abd-al-hadi
-kind: كتاب
+kind: متن
 description: "المحرر في الحديث - ت المرعشلي، تأليف ابن عبد الهادي"
 ---
 # بطاقة الكتاب وفهرس الموضوعات

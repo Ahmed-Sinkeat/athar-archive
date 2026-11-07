@@ -2,7 +2,7 @@
 title: "من تواضع لله رفعه"
 status: published
 published_at: 2026-07-20
-person: abd-al-mlk-bn-qasm
+person: abd-al-malik-al-qasim
 kind: كتاب
 topics: ["al-riqaq-wal-adhkar"]
 description: "من تواضع لله رفعه"

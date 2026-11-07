@@ -3,7 +3,7 @@ title: "الموقظة - ط ركائز"
 status: published
 published_at: 2026-11-03
 person: al-dhahabi
-kind: كتاب
+kind: متن
 description: "الموقظة - ط ركائز، تأليف شمس الدين الذهبي"
 ---
 # بطاقة الكتاب وفهرس الموضوعات

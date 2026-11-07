@@ -2,7 +2,7 @@
 title: "شرح ألفية ابن مالك للعثيمين"
 status: published
 published_at: 2026-07-22
-person: abn-athymyn
+person: ibn-uthaymeen
 kind: كتاب
 topics: ["al-nahw"]
 ---

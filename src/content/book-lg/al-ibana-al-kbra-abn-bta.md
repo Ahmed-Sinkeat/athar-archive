@@ -5,6 +5,7 @@ published_at: 2026-11-03
 person: al-akbry-abn-bta
 kind: كتاب
 description: "الإبانة الكبرى - ابن بطة، تأليف ابن بطة"
+edition_of: al-ibana-al-kubra-ibn-batta-hamdan
 ---
 # بطاقة الكتاب وفهرس الموضوعات
 

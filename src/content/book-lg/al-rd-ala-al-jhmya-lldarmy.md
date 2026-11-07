@@ -4,7 +4,7 @@ edition: "طبعة أخرى"
 edition_of: al-radd-ala-al-jahmiyya-al-darimi-hamdan
 status: published
 published_at: 2026-07-28
-person: al-darmy-abw-sayd
+person: uthman-al-darimi
 kind: كتاب
 authored_year: 280
 description: "الرد على الجهمية للدارمي، تأليف الدارمي، أبو سعيد (ت 0280هـ)"

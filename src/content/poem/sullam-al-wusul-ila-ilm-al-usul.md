@@ -1,5 +1,6 @@
 ---
 title: "سلم الوصول إلى علم الأصول"
+work_type: منظومة
 person: al-hakami
 topics: ["tahwid-al-ibada"]
 status: published

@@ -2,7 +2,7 @@
 title: "تيسير الكريم الرحمن في تفسير كلام المنان (تفسير السعدي)"
 status: published
 published_at: 2026-07-16
-person: abd-al-rhmn-al-sady
+person: al-saadi
 topics: ["tafsir-al-quran"]
 authored_year: 1376
 description: "تيسير الكريم الرحمن في تفسير كلام المنان للشيخ عبد الرحمن بن ناصر السعدي، من أشهر التفاسير المعاصرة الميسرة"

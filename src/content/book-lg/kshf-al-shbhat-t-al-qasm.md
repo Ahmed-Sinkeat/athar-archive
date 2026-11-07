@@ -3,7 +3,7 @@ title: "كشف الشبهات - ت القاسم"
 status: published
 published_at: 2026-11-03
 person: ibn-abdul-wahhab
-kind: كتاب
+kind: متن
 description: "كشف الشبهات - ت القاسم، تأليف محمد بن عبد الوهاب"
 ---
 # بطاقة الكتاب وفهرس الموضوعات

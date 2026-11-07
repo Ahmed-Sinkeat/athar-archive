@@ -8,7 +8,7 @@ person: ibn-abdul-wahhab
 topics: ["fiqh-hanbali"]
 authored_year: 1206
 description: "آداب المشي إلى الصلاة لشيخ الإسلام محمد بن عبد الوهاب"
-kind: كتاب
+kind: متن
 ---
 ## المقدمة
 

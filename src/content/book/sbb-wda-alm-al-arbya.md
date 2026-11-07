@@ -2,7 +2,7 @@
 title: "سبب وضع علم العربية"
 status: published
 published_at: 2026-07-22
-person: al-jlal-al-sywty
+person: al-suyuti
 kind: كتاب
 topics: ["al-nahw"]
 ---

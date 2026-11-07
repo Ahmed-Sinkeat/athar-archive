@@ -4,7 +4,7 @@ edition: "طبعة أخرى"
 edition_of: al-shariah-al-ajurri-hamdan
 status: published
 published_at: 2026-07-28
-person: al-ajry
+person: al-ajurri
 kind: كتاب
 authored_year: 360
 description: "الشريعة للآجري، تأليف الآجري (ت 0360هـ)"

@@ -2,7 +2,7 @@
 title: "المدونة"
 status: published
 published_at: 2026-07-19
-person: malk-bn-ans
+person: malik-ibn-anas
 kind: كتاب
 topics: ["fiqh-maliki"]
 description: "المدونة"

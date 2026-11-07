@@ -1,5 +1,6 @@
 ---
 title: "الجويني"
+also_known_as: ["أبو المعالي الجويني"]
 status: published
 published_at: 2026-07-06
 born: 419 هـ

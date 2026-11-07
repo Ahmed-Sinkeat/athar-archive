@@ -3,7 +3,7 @@ title: "العقيدة الواسطية - ت أشرف عبد المقصود"
 status: published
 published_at: 2026-11-03
 person: ibn-taymiyyah
-kind: كتاب
+kind: متن
 description: "العقيدة الواسطية - ت أشرف عبد المقصود، تأليف ابن تيمية"
 ---
 # بطاقة الكتاب وفهرس الموضوعات

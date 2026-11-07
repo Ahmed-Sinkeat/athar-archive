@@ -2,8 +2,8 @@
 title: "متممة الأجرومية"
 status: published
 published_at: 2026-07-22
-person: al-rayny-al-htab
-kind: كتاب
+person: al-hattab
+kind: متن
 topics: ["al-nahw"]
 ---
 ## المقدمة

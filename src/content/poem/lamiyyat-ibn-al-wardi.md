@@ -3,7 +3,7 @@ title: "لامية ابن الوردي"
 status: published
 published_at: 2026-07-17
 person: ibn-al-wardi
-work_type: قصيدة
+work_type: منظومة
 topics: ["al-adab", "tazkiyat-al-nafs"]
 audio: lamiyyat-ibn-al-wardi
 description: "نصيحة الإخوان ومرشد الخلان، المشهورة بلامية ابن الوردي، في الحكمة والزهد وآداب طالب العلم"

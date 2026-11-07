@@ -1,5 +1,6 @@
 ---
 title: "عقيدة السلف - مقدمة أبي زيد القيرواني لكتابه الرسالة"
+kind: متن
 status: published
 published_at: 2026-07-04
 person: ibn-abi-zayd-al-qayrawani

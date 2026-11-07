@@ -3,7 +3,7 @@ title: "كشف الشبهات - ط الأوقاف السعودية"
 status: published
 published_at: 2026-11-03
 person: ibn-abdul-wahhab
-kind: كتاب
+kind: متن
 description: "كشف الشبهات - ط الأوقاف السعودية، تأليف محمد بن عبد الوهاب"
 ---
 # بطاقة الكتاب وفهرس الموضوعات

@@ -2,7 +2,7 @@
 title: "الصحيح المسند من آثار الصحابة في الزهد والرقائق والأخلاق والأدب"
 status: published
 published_at: 2026-07-20
-person: abd-al-lh-al-khlyfy
+person: abu-jafar-al-khalifi
 kind: كتاب
 topics: ["al-riqaq-wal-adhkar"]
 description: "الصحيح المسند من آثار الصحابة في الزهد والرقائق والأخلاق والأدب"

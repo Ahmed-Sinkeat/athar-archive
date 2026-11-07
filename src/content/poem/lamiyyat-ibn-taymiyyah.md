@@ -1,5 +1,6 @@
 ---
 title: "لامية ابن تيمية"
+work_type: منظومة
 person: "ibn-taymiyyah"
 status: "published"
 published_at: "2026-07-02"

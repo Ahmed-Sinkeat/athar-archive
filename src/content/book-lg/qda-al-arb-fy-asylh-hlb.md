@@ -2,7 +2,7 @@
 title: "قضاء الأرب في أسئلة حلب"
 status: published
 published_at: 2026-07-19
-person: al-sbky-tqy-al-dyn
+person: al-subki
 kind: كتاب
 topics: ["fiqh-shafii"]
 description: "قضاء الأرب في أسئلة حلب"

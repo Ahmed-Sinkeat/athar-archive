@@ -2,7 +2,7 @@
 title: "نهاية المطلب في دراية المذهب"
 status: published
 published_at: 2026-07-19
-person: al-jwyny-abw-al-maaly
+person: al-juwayni
 kind: كتاب
 topics: ["fiqh-shafii"]
 description: "نهاية المطلب في دراية المذهب"

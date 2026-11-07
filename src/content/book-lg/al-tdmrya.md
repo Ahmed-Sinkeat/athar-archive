@@ -3,7 +3,7 @@ title: "التدمرية"
 status: published
 published_at: 2026-11-03
 person: ibn-taymiyyah
-kind: كتاب
+kind: متن
 description: "التدمرية، تأليف ابن تيمية"
 ---
 # بطاقة الكتاب وفهرس الموضوعات

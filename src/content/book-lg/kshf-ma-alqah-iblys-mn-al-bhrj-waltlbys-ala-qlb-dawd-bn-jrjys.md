@@ -2,7 +2,7 @@
 title: "كشف ما ألقاه إبليس من البهرج والتلبيس على قلب داود بن جرجيس"
 status: published
 published_at: 2026-07-16
-person: abd-al-rhmn-bn-hsn-al-al-shykh
+person: abdul-rahman-al-hasan
 topics: ["al-firaq-war-rudud"]
 edition: "1193هـ - 1285هـ"
 description: "بتحقيق عبدالعزيز بن عبدالله الزير آل حمد"

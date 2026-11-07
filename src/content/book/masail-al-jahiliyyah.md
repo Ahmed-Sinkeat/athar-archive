@@ -1,5 +1,6 @@
 ---
 title: "مسائل الجاهلية"
+kind: متن
 status: published
 published_at: 2026-07-04
 person: ibn-abdul-wahhab

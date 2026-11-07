@@ -2,7 +2,7 @@
 title: "مختصر مغني اللبيب عن كتاب الأعاريب"
 status: published
 published_at: 2026-07-22
-person: abn-athymyn
+person: ibn-uthaymeen
 kind: كتاب
 topics: ["al-nahw"]
 ---

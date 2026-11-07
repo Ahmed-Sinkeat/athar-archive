@@ -4,7 +4,7 @@ edition_of: zad-al-mustaqni
 edition: "تحقيق عبد الرحمن العسكر"
 status: published
 published_at: 2026-07-20
-person: al-hjawy
+person: al-hajjawi
 kind: متن
 topics: ["fiqh-hanbali"]
 description: "زاد المستقنع في اختصار المقنع"

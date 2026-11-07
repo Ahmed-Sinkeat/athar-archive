@@ -2,7 +2,7 @@
 title: "الاصطلام في الخلاف بين الإمامين الشافعي وأبي حنيفة"
 status: published
 published_at: 2026-07-19
-person: al-smaany-abw-al-mzfr
+person: al-samani
 kind: كتاب
 topics: ["fiqh-shafii"]
 description: "الاصطلام في الخلاف بين الإمامين الشافعي وأبي حنيفة"

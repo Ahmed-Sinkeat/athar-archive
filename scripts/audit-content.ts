@@ -48,6 +48,29 @@ for (const [coll, dirs] of [["book", ["book", "book-lg"]], ["poem", ["poem"]], [
   }
 }
 
+// --- 1b. one author, two records: a name (title or also_known_as) on two persons splits
+// their works over two pages; a work naming no existing person has no page at all ---
+{
+  const dir = path.join(ROOT, "person");
+  const byName = new Map<string, Set<string>>();
+  const persons = new Set<string>();
+  for (const f of fs.readdirSync(dir).filter((f) => f.endsWith(".md"))) {
+    const p = path.join(dir, f), id = f.slice(0, -3);
+    persons.add(id);
+    const aka = /^also_known_as:\s*\[(.*)\]\s*$/m.exec(fs.readFileSync(p, "utf-8").slice(0, 2000))?.[1] ?? "";
+    for (const name of [fm(p, "title") ?? "", ...[...aka.matchAll(/"([^"]+)"/g)].map((m) => m[1])]) {
+      const key = normalizeArabic(name);
+      if (key) byName.set(key, (byName.get(key) ?? new Set()).add(id));
+    }
+  }
+  for (const [name, ids] of byName) if (ids.size > 1) findings.push(`SPLIT AUTHOR «${name}» → ${[...ids].join(", ")}`);
+  for (const sub of fs.readdirSync(ROOT).filter((d) => d !== "person" && fs.statSync(path.join(ROOT, d)).isDirectory()))
+    for (const f of fs.readdirSync(path.join(ROOT, sub)).filter((f) => f.endsWith(".md"))) {
+      const who = fm(path.join(ROOT, sub, f), "person");
+      if (who && !persons.has(who)) findings.push(`NO SUCH PERSON ${who} ← ${sub}/${f}`);
+    }
+}
+
 // --- 2..5 book body damage ---
 for (const bookDir of [path.join(ROOT, "book"), path.join(ROOT, "book-lg")].filter(fs.existsSync))
 for (const f of fs.readdirSync(bookDir)) {

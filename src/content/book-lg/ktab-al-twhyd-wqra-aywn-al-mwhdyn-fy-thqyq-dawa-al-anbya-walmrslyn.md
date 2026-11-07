@@ -1,8 +1,9 @@
 ---
 title: "كتاب التوحيد وقرة عيون الموحدين في تحقيق دعوة الأنبياء والمرسلين"
+kind: متن
 status: published
 published_at: 2026-07-16
-person: abd-al-rhmn-bn-hsn-al-al-shykh
+person: abdul-rahman-al-hasan
 topics: ["tahwid-al-ibada"]
 edition: "الأولى، 1411هـ/1990م"
 description: "بتحقيق بشير محمد عيون"

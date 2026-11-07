@@ -3,7 +3,7 @@ title: "الرسالة لابن أبي زيد القيرواني"
 status: published
 published_at: 2026-11-03
 person: ibn-abi-zayd-al-qayrawani
-kind: كتاب
+kind: متن
 description: "الرسالة لابن أبي زيد القيرواني، تأليف ابن أبي زيد القيرواني"
 ---
 # بطاقة الكتاب وفهرس الموضوعات

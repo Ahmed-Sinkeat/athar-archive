@@ -2,7 +2,7 @@
 title: "الشرح الممتع على زاد المستقنع"
 status: published
 published_at: 2026-07-20
-person: abn-athymyn
+person: ibn-uthaymeen
 kind: كتاب
 topics: ["fiqh-hanbali"]
 description: "الشرح الممتع على زاد المستقنع"

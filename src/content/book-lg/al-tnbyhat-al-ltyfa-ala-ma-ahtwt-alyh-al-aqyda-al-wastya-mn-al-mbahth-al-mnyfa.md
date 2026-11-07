@@ -2,7 +2,7 @@
 title: "التنبيهات اللطيفة على ما احتوت عليه العقيدة الواسطية من المباحث المنيفة"
 status: published
 published_at: 2026-07-16
-person: abd-al-rhmn-al-sady
+person: al-saadi
 kind: كتاب
 topics: ["al-aqeedah-al-aamah"]
 edition: "الأولى، 1414هـ"
