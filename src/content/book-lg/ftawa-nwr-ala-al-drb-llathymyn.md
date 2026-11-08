@@ -34,7 +34,7 @@ http://ahmadbs40.googlepages.com/Fatawa_Noor.zip
 
 صفحة المؤلف: []
 
-<span data-type="title" id=toc-1>العقيدة</span>
+العقيدة
 
 الجزء: 1 - الصفحة: 1
 
@@ -6202,7 +6202,7 @@ http://ahmadbs40.googlepages.com/Fatawa_Noor.zip
 
 الجزء: 4 - الصفحة: 2
 
-<span data-type="title" id=toc-632>علوم القرآن والتفسير</span>
+علوم القرآن والتفسير
 
 الجزء: 5 - الصفحة: 617
 
@@ -9908,7 +9908,7 @@ http://ahmadbs40.googlepages.com/Fatawa_Noor.zip
 
 الجزء: 5 - الصفحة: 2
 
-<span data-type="title" id=toc-1035>فتاوى المصطلح والحديث</span>
+فتاوى المصطلح والحديث
 
 الجزء: 6 - الصفحة: 1020
 
@@ -12762,7 +12762,7 @@ http://ahmadbs40.googlepages.com/Fatawa_Noor.zip
 
 الجزء: 6 - الصفحة: 2
 
-<span data-type="title" id=toc-1309>فتاوى الطهارة</span>
+فتاوى الطهارة
 
 الجزء: 7 - الصفحة: 1294
 
@@ -17628,7 +17628,7 @@ http://ahmadbs40.googlepages.com/Fatawa_Noor.zip
 
 الجزء: 7 - الصفحة: 2
 
-<span data-type="title" id=toc-1758>فتاوى الصلاة</span>
+فتاوى الصلاة
 
 الجزء: 8 - الصفحة: 1750
 
@@ -34054,7 +34054,7 @@ http://ahmadbs40.googlepages.com/Fatawa_Noor.zip
 
 الجزء: 8 - الصفحة: 2
 
-<span data-type="title" id=toc-3363>فتاوى الجنائز</span>
+فتاوى الجنائز
 
 الجزء: 9 - الصفحة: 3354
 
@@ -37542,7 +37542,7 @@ http://ahmadbs40.googlepages.com/Fatawa_Noor.zip
 
 الجزء: 9 - الصفحة: 2
 
-<span data-type="title" id=toc-3710>فتاوى الزكاة</span>
+فتاوى الزكاة
 
 الجزء: 10 - الصفحة: 3701
 
@@ -39844,7 +39844,7 @@ http://ahmadbs40.googlepages.com/Fatawa_Noor.zip
 
 الجزء: 10 - الصفحة: 2
 
-<span data-type="title" id=toc-3935>فتاوى الصوم</span>
+فتاوى الصوم
 
 الجزء: 11 - الصفحة: 3924
 
@@ -42814,7 +42814,7 @@ http://ahmadbs40.googlepages.com/Fatawa_Noor.zip
 
 الجزء: 11 - الصفحة: 2
 
-<span data-type="title" id=toc-4225>فتاوى الحج</span>
+فتاوى الحج
 
 الجزء: 12 - الصفحة: 4212
 
@@ -47406,7 +47406,7 @@ http://ahmadbs40.googlepages.com/Fatawa_Noor.zip
 
 الجزء: 12 - الصفحة: 2
 
-<span data-type="title" id=toc-4692>فتاوى الأضاحي</span>
+فتاوى الأضاحي
 
 الجزء: 13 - الصفحة: 4674
 
@@ -47810,7 +47810,7 @@ http://ahmadbs40.googlepages.com/Fatawa_Noor.zip
 
 الجزء: 13 - الصفحة: 2
 
-<span data-type="title" id=toc-4733>العقيقة</span>
+العقيقة
 
 الجزء: 14 - الصفحة: 4715
 
@@ -48150,7 +48150,7 @@ http://ahmadbs40.googlepages.com/Fatawa_Noor.zip
 
 الجزء: 14 - الصفحة: 2
 
-<span data-type="title" id=toc-4769>الجهاد</span>
+الجهاد
 
 الجزء: 15 - الصفحة: 4750
 
@@ -48254,7 +48254,7 @@ http://ahmadbs40.googlepages.com/Fatawa_Noor.zip
 
 الجزء: 15 - الصفحة: 2
 
-<span data-type="title" id=toc-4781>البيوع</span>
+البيوع
 
 الجزء: 16 - الصفحة: 4762
 
@@ -52230,7 +52230,7 @@ http://ahmadbs40.googlepages.com/Fatawa_Noor.zip
 
 الجزء: 16 - الصفحة: 2
 
-<span data-type="title" id=toc-5183>الفرائض</span>
+الفرائض
 
 الجزء: 17 - الصفحة: 5164
 
@@ -52768,7 +52768,7 @@ http://ahmadbs40.googlepages.com/Fatawa_Noor.zip
 
 الجزء: 17 - الصفحة: 2
 
-<span data-type="title" id=toc-5235>العتق</span>
+العتق
 
 الجزء: 18 - الصفحة: 5216
 
@@ -52784,7 +52784,7 @@ http://ahmadbs40.googlepages.com/Fatawa_Noor.zip
 
 الجزء: 18 - الصفحة: 2
 
-<span data-type="title" id=toc-5238>النكاح</span>
+النكاح
 
 الجزء: 19 - الصفحة: 5219
 
@@ -59352,7 +59352,7 @@ http://ahmadbs40.googlepages.com/Fatawa_Noor.zip
 
 الجزء: 19 - الصفحة: 2
 
-<span data-type="title" id=toc-5839>الجنايات</span>
+الجنايات
 
 الجزء: 20 - الصفحة: 5820
 
@@ -60940,7 +60940,7 @@ http://ahmadbs40.googlepages.com/Fatawa_Noor.zip
 
 الجزء: 20 - الصفحة: 2
 
-<span data-type="title" id=toc-5999>الأيمان والنذور</span>
+الأيمان والنذور
 
 الجزء: 21 - الصفحة: 5980
 
@@ -62762,7 +62762,7 @@ http://ahmadbs40.googlepages.com/Fatawa_Noor.zip
 
 الجزء: 21 - الصفحة: 2
 
-<span data-type="title" id=toc-6182>الزينة والمرأة</span>
+الزينة والمرأة
 
 الجزء: 22 - الصفحة: 6163
 
@@ -66732,7 +66732,7 @@ http://ahmadbs40.googlepages.com/Fatawa_Noor.zip
 
 الجزء: 22 - الصفحة: 2
 
-<span data-type="title" id=toc-6573>كتاب العلم</span>
+كتاب العلم
 
 الجزء: 23 - الصفحة: 6554
 
@@ -67956,7 +67956,7 @@ http://ahmadbs40.googlepages.com/Fatawa_Noor.zip
 
 الجزء: 23 - الصفحة: 2
 
-<span data-type="title" id=toc-6692>فتاوى متفرقات</span>
+فتاوى متفرقات
 
 الجزء: 24 - الصفحة: 6673
 
