@@ -260,7 +260,7 @@ class AtharContentViewModel @Inject constructor(
                     text = annotation.quotedText,
                     sourceTitle = source?.title ?: annotation.entityId,
                     sourceAuthor = source?.personName.orEmpty(),
-                    sourceUrl = source?.let { "https://athar.arthurarchive.com/${if (it.coll == "question") "questions" else it.coll}/${it.id}" }.orEmpty(),
+                    sourceUrl = if (source != null) PlayStoreUrl else "",
                     locationLabel = when (annotation.state) {
                         AttachmentState.Orphaned -> "فقد موضعه"
                         AttachmentState.Approximate -> annotation.printedPage?.let {
@@ -456,10 +456,17 @@ class AtharContentViewModel @Inject constructor(
         } catch (cancelled: kotlinx.coroutines.CancellationException) { throw cancelled
         } catch (offline: Exception) { null }
         if (online != null) return online.mapIndexedNotNull { index, hit -> hit.toHitUi(index, catalog) }
+        return localSectionHits(type, query, catalog)
+    }
+
+    suspend fun searchSectionLocal(type: SearchResultType, query: String): List<SearchHitUi> =
+        localSectionHits(type, query, SearchCatalog(catalogDao.observeCollection(type.contentCollection).first()))
+
+    private suspend fun localSectionHits(type: SearchResultType, query: String, known: SearchCatalog): List<SearchHitUi> {
         return contentSearch.search(
             ContentSearchRequest(query = query, filter = ContentSearchFilter(collections = setOf(type.contentCollection))),
             limit = 20,
-        ).blocks.map { it.toHitUi(catalog) }
+        ).blocks.map { it.toHitUi(known) }
     }
 
     private fun OnlineSearch.Hit.toHitUi(index: Int, catalog: SearchCatalog): SearchHitUi? {
@@ -1650,7 +1657,7 @@ private fun ContentEntity.toReaderUi(
         author = personName.orEmpty(),
         blocks = contentBlocks,
         footnotes = byId,
-        sourceUrl = "https://athar.arthurarchive.com/${if (coll == "question") "questions" else coll}/$id",
+        sourceUrl = PlayStoreUrl,
         card = runCatching { toCatalogEntry().card }.getOrDefault(emptyList()),
         toc = chapters.multiVolume().let { vols ->
             chapters.map { chapter ->
@@ -1731,7 +1738,7 @@ private fun ContentEntity.toPoemReaderUi(blocks: List<ContentBlockEntity>): Poem
         card = toCatalogEntry().card,
         title = title,
         poet = personName.orEmpty(),
-        sourceUrl = "https://athar.arthurarchive.com/$coll/$id",
+        sourceUrl = PlayStoreUrl,
         bodyLoaded = blocks.size >= pkgBlocks,
         verses = verses,
         recordings = audioReferences().map { audio ->

@@ -356,6 +356,7 @@ fun PoemReaderScreen(
                     val chosen = { state.verses.slice(selRange.first..minOf(selRange.last, state.verses.lastIndex)) }
                     val text = { chosen().joinToString("\n\n") { it.sadr + "\n" + it.ajz } }
                     var barHeight by remember { mutableIntStateOf(0) }
+                    var shareMenu by remember { mutableStateOf(false) }
                     com.atharchive.feature.reader.SelectionToolbar(
                         colors = colors,
                         modifier = Modifier.align(Alignment.TopCenter)
@@ -374,13 +375,7 @@ fun PoemReaderScreen(
                                 verses = verses.first().number..verses.last().number))
                             toast = "نُسخ مع التذييل"; clearSelection()
                         },
-                        onShare = {
-                            context.startActivity(android.content.Intent.createChooser(
-                                android.content.Intent(android.content.Intent.ACTION_SEND)
-                                    .setType("text/plain").putExtra(android.content.Intent.EXTRA_TEXT, text()),
-                                "مشاركة النص"))
-                            clearSelection()
-                        },
+                        onShare = { shareMenu = true },
                         onAddDhikr = com.atharchive.feature.reader.LocalAddToAdhkar.current?.let { add ->
                             { add(text(), listOf(state.title, state.poet).filter(String::isNotBlank).joinToString(" — ")); clearSelection() }
                         },
@@ -392,6 +387,23 @@ fun PoemReaderScreen(
                             clearSelection()
                         },
                     )
+                    AtharMenu(expanded = shareMenu, onDismiss = { shareMenu = false }) {
+                        AtharMenuItem("مشاركة نصًّا", icon = AtharIcons.Share, onClick = {
+                            shareMenu = false
+                            context.startActivity(android.content.Intent.createChooser(
+                                android.content.Intent(android.content.Intent.ACTION_SEND)
+                                    .setType("text/plain").putExtra(android.content.Intent.EXTRA_TEXT, text()),
+                                "مشاركة النص"))
+                            clearSelection()
+                        })
+                        AtharMenuItem("مشاركة صورة", icon = AtharIcons.Share, onClick = {
+                            shareMenu = false
+                            val verses = chosen()
+                            com.atharchive.ui.shareQuoteImage(context, text(), com.atharchive.ui.citedText(text(), state.title, state.poet, null, null, state.sourceUrl,
+                                verses = verses.first().number..verses.last().number))
+                            clearSelection()
+                        })
+                    }
                 }
 
                 // Return-to-position: only while following is off and audio is running.

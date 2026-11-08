@@ -774,6 +774,8 @@ class SectionTextSearch(
     val loadPassage: suspend (SearchHitUi) -> String?,
     /** The hit and the query that found it (to mark the match in the reader). */
     val onOpen: (SearchHitUi, String) -> Unit,
+    /** The passages in texts on the phone, shown at once while [search] asks the server (as البحث). */
+    val local: (suspend (String) -> List<SearchHitUi>)? = null,
 )
 
 /** The passages found so far, and whether the search behind them is still running. */
@@ -790,7 +792,8 @@ fun rememberSectionTextHits(query: String, textSearch: SectionTextSearch?): Sect
         value = SectionTextHits(emptyList(), active)
         if (!active) return@produceState
         kotlinx.coroutines.delay(300) // typing pause; the next keystroke restarts this
-        value = SectionTextHits(runCatching { textSearch!!.search(term) }.getOrDefault(emptyList()), false)
+        textSearch!!.local?.let { local -> runCatching { local(term) }.getOrNull()?.takeIf { it.isNotEmpty() }?.let { value = SectionTextHits(it, true) } }
+        value = SectionTextHits(runCatching { textSearch.search(term) }.getOrDefault(value.hits), false)
     }.value
 }
 

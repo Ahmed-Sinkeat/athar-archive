@@ -435,6 +435,8 @@ class AtharFacet(
     val subtitle: (String) -> String? = { null },
     /** Set: always chips, each showing this short label (centuries «٨» under «القرن»). */
     val chipLabel: ((String) -> String)? = null,
+    /** Always the typed picker, however few the values (الكناشة's authors and books, as in الكتب). */
+    val typed: Boolean = false,
 )
 
 /** «القرن» with all fifteen centuries as short chips, whether or not the list has one yet. */
@@ -564,7 +566,7 @@ fun AtharFilterPopupContent(groups: List<AtharChipGroup>, facets: List<AtharFace
                     val ticked = value in facet.selected
                     AtharFilterChip(facet.chipLabel.invoke(value), ticked) { facet.onChange(if (ticked) facet.selected - value else facet.selected + value) }
                 }
-            } else if (facet.options.size <= 12) AtharFilterRow(facet.title) {
+            } else if (facet.options.size <= 12 && !facet.typed) AtharFilterRow(facet.title) {
                 facet.options.forEach { value ->
                     val ticked = value in facet.selected
                     AtharFilterChip(value, ticked) { facet.onChange(if (ticked) facet.selected - value else facet.selected + value) }
@@ -1079,7 +1081,11 @@ fun rememberCatalogRanks(query: String, vararg collections: String): Map<String,
     val term = query.trim()
     val scope = remember(*collections) { collections.toSet() }
     val ranks by androidx.compose.runtime.produceState<Map<String, Int>?>(null, term, scope) {
-        if (term.isNotEmpty()) value = runCatching { search(term, scope) }.getOrDefault(emptyList()).withIndex().associate { (i, id) -> id to i }
+        if (term.isNotEmpty()) value = runCatching { search(term, scope) }
+            .onFailure { if (it !is kotlinx.coroutines.CancellationException) android.util.Log.w("AtharSearch", "list search failed for $scope", it) }
+            .getOrDefault(emptyList())
+            .also { android.util.Log.i("AtharSearch", "list search $scope: ${it.size} matches") }
+            .withIndex().associate { (i, id) -> id to i }
     }
     return if (term.isEmpty()) null else ranks
 }

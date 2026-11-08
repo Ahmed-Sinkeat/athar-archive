@@ -135,7 +135,8 @@ fun ReaderScreen(
     loadProgress: Float? = null,
 
     onCopySelection: (ReaderSelection) -> Unit,
-    onShareSelection: suspend (ReaderSelection) -> Unit,
+    /** The Boolean: as a picture (true) or as text. */
+    onShareSelection: suspend (ReaderSelection, Boolean) -> Unit,
     onSaveSelection: suspend (ReaderSelection) -> Unit,
     onToggleBookmark: suspend (Int) -> Unit,
     onPositionChange: (Int) -> Unit,
@@ -618,6 +619,7 @@ fun ReaderScreen(
         }
 
         if (selection.active && !selection.dragging) {
+            var shareMenu by remember { mutableStateOf(false) }
             fun act(done: String, action: suspend (ReaderSelection) -> Unit) {
                 scope.launch {
                     try {
@@ -648,7 +650,7 @@ fun ReaderScreen(
                 }.onSizeChanged { toolbarHeight = it.height },
                 onCopy = { act("نُسخ النص") { onCopySelection(it) } },
                 onCopyCited = onCopyCited?.let { copy -> { act("نُسخ مع التذييل") { copy(it) } } },
-                onShare = { act("مشاركة النص") { onShareSelection(it) } },
+                onShare = { shareMenu = true },
                 onHighlight = { act("حُفظ في الكناشة") { onSaveSelection(it) } },
                 // One word is no dhikr: «إلى الأذكار» shows once the selection holds more.
                 onAddDhikr = LocalAddToAdhkar.current?.takeIf { selection.singleWord() == null }?.let { add ->
@@ -663,6 +665,10 @@ fun ReaderScreen(
                     meaning = word to spot
                 } } },
             )
+            AtharMenu(expanded = shareMenu, onDismiss = { shareMenu = false }, colors = com.atharchive.ui.components.AtharMenuColors(colors.page, colors.text, colors.secondary, colors.accent)) {
+                AtharMenuItem("مشاركة نصًّا", icon = AtharIcons.Share, onClick = { shareMenu = false; act("") { onShareSelection(it, false) } })
+                AtharMenuItem("مشاركة صورة", icon = AtharIcons.Share, onClick = { shareMenu = false; act("") { onShareSelection(it, true) } })
+            }
         }
 
         meaning?.let { (word, spot) ->

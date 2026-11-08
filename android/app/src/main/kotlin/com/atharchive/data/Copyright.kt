@@ -15,3 +15,6 @@ fun emailCopyright(context: Context) {
         .putExtra(Intent.EXTRA_SUBJECT, "طلب حذف كتاب لحقوق النشر")
     runCatching { context.startActivity(intent) }
 }
+
+/** The link a copy or share carries: the app on Google Play, not the website. */
+const val PlayStoreUrl = "https://play.google.com/store/apps/details?id=com.atharchive"

@@ -101,14 +101,16 @@ enum class ReaderFont(val label: String) {
     /** Only for the Quran, hadith and poetry lines: [Same] follows «خطّ القراءة», [Mushaf] is Amiri Quran. */
     Same("خطّ القراءة"), Mushaf("المصحف"),
     /** Ahmed Elgharib's Hafs faces, kept under their own file names in assets/fonts as their terms require (licenses/Elgharib-terms.txt). */
-    NoonHafs("نون حفص"), Tharwat("حفص ثروت عمارة");
+    NoonHafs("نون حفص"), Tharwat("حفص ثروت عمارة"),
+    /** In assets/fonts too; usable for prose as well as the Quran. */
+    Khatt("الخط الرقمي"), Madina("المدينة الرقمي"), Uthman("عثمان طه");
 
     companion object {
         // ponytail: one imported file shared by every role; a file per role if readers ask for two of their own.
         fun userFile(context: android.content.Context) = java.io.File(context.filesDir, "fonts/user.ttf")
-        val reading = listOf(Kitab, Amiri, Plex, Custom)
-        val quranRoles = listOf(Mushaf, NoonHafs, Tharwat, Same, Kitab, Amiri, Plex, Custom)
-        val roles = listOf(Same, Kitab, Amiri, Plex, Custom)
+        val reading = listOf(Kitab, Amiri, Plex, Uthman, Khatt, Madina, Custom)
+        val quranRoles = listOf(Mushaf, NoonHafs, Tharwat, Uthman, Khatt, Madina, Same, Kitab, Amiri, Plex, Custom)
+        val roles = listOf(Same, Kitab, Amiri, Plex, Uthman, Khatt, Madina, Custom)
     }
 }
 
@@ -126,6 +128,9 @@ fun ReaderFont.family(stamp: Long): FontFamily {
             ReaderFont.Mushaf -> QuranFontFamily
             ReaderFont.NoonHafs -> FontFamily(androidx.compose.ui.text.font.Font("fonts/Elgharib-NoonHafs.ttf", context.assets))
             ReaderFont.Tharwat -> FontFamily(androidx.compose.ui.text.font.Font("fonts/Elgharib-HAFSTharwatEmara.otf", context.assets))
+            ReaderFont.Khatt -> FontFamily(androidx.compose.ui.text.font.Font("fonts/DigitalKhatt-NewV2.otf", context.assets))
+            ReaderFont.Madina -> FontFamily(androidx.compose.ui.text.font.Font("fonts/DigitalMadina-Space.otf", context.assets))
+            ReaderFont.Uthman -> FontFamily(androidx.compose.ui.text.font.Font("fonts/UthmanTN-v2.ttf", context.assets))
             ReaderFont.Kitab -> KitabFontFamily
             ReaderFont.Amiri -> AtharEditorialFontFamily
             ReaderFont.Plex -> AtharUiFontFamily

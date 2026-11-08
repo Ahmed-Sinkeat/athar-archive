@@ -100,12 +100,31 @@ fun KannashahScreen(
     var authorStored by rememberPersisted("kannashah.authors", "")
     var sourceStored by rememberPersisted("kannashah.sources", "")
     var topicStored by rememberPersisted("kannashah.topics", "")
-    val authors = remember(state.excerpts) { state.excerpts.map { it.sourceAuthor }.filter(String::isNotBlank).distinct().sorted() }
-    val sources = remember(state.excerpts) { state.excerpts.map { it.sourceTitle }.filter(String::isNotBlank).distinct().sorted() }
-    val topics = remember(state.excerpts) { state.excerpts.flatMap { it.topics }.distinct().sorted() }
-    val author = authorStored.asChoiceSet() intersect authors.toSet()
-    val source = sourceStored.asChoiceSet() intersect sources.toSet()
-    val topic = topicStored.asChoiceSet() intersect topics.toSet()
+    val allAuthors = remember(state.excerpts) { state.excerpts.map { it.sourceAuthor }.filter(String::isNotBlank).toSet() }
+    val allSources = remember(state.excerpts) { state.excerpts.map { it.sourceTitle }.filter(String::isNotBlank).toSet() }
+    val allTopics = remember(state.excerpts) { state.excerpts.flatMap { it.topics }.toSet() }
+    val author = authorStored.asChoiceSet() intersect allAuthors
+    val source = sourceStored.asChoiceSet() intersect allSources
+    val topic = topicStored.asChoiceSet() intersect allTopics
+    // Each facet offers only what the other two leave (plus what it already has ticked), so
+    // ticking many authors and sources never lists combinations with nothing in them.
+    fun ExcerptUi.fits(a: Boolean, s: Boolean, t: Boolean) =
+        (!a || author.isEmpty() || sourceAuthor in author) && (!s || source.isEmpty() || sourceTitle in source) &&
+            (!t || topic.isEmpty() || topics.any(topic::contains))
+    val authors = remember(state.excerpts, source, topic) {
+        (state.excerpts.filter { it.fits(false, true, true) }.map { it.sourceAuthor }.filter(String::isNotBlank) + author).distinct().sorted()
+    }
+    val sources = remember(state.excerpts, author, topic) {
+        (state.excerpts.filter { it.fits(true, false, true) }.map { it.sourceTitle }.filter(String::isNotBlank) + source).distinct().sorted()
+    }
+    val topics = remember(state.excerpts, author, source) {
+        (state.excerpts.filter { it.fits(true, true, false) }.flatMap { it.topics } + topic).distinct().sorted()
+    }
+    // «العرض»: the excerpts themselves, or one card per author or book that opens its own page.
+    var viewName by rememberPersisted("kannashah.view", KannashahView.Excerpts.name)
+    val view = enumValueOrNull<KannashahView>(viewName) ?: KannashahView.Excerpts
+    var opened by rememberSaveable { mutableStateOf<String?>(null) }
+    androidx.activity.compose.BackHandler(enabled = opened != null) { opened = null }
 
     // Normalised once per list, so a search ignores hamza forms, tashkeel and ة/ه like every other list.
     val searchText = remember(state.excerpts) {
@@ -128,11 +147,16 @@ fun KannashahScreen(
             })
         }
     }
-    val sorted = remember(matching, sort) {
+    val sorted = remember(matching, sort, view, opened) {
+        val shown = when {
+            opened == null -> matching
+            view == KannashahView.ByAuthor -> matching.filter { it.sourceAuthor == opened }
+            else -> matching.filter { it.sourceTitle == opened }
+        }
         when (sort) {
-            KannashahSort.Newest -> matching.sortedByDescending { it.addedOrder }
-            KannashahSort.Oldest -> matching.sortedBy { it.addedOrder }
-            KannashahSort.SourceOrder -> matching.sortedBy { it.sourceOrdinal }
+            KannashahSort.Newest -> shown.sortedByDescending { it.addedOrder }
+            KannashahSort.Oldest -> shown.sortedBy { it.addedOrder }
+            KannashahSort.SourceOrder -> shown.sortedBy { it.sourceOrdinal }
         }
     }
     // «في الكناشة» from a note: once the excerpt is loaded, clear whatever hides it and scroll to it.
@@ -142,6 +166,7 @@ fun KannashahScreen(
         val index = sorted.indexOfFirst { it.id == id }
         if (index < 0) {
             query = ""; filterName = KannashahFilter.All.name; authorStored = ""; sourceStored = ""; topicStored = ""
+            viewName = KannashahView.Excerpts.name; opened = null
             return@LaunchedEffect
         }
         listState.animateScrollToItem(index)
@@ -171,13 +196,17 @@ fun KannashahScreen(
             AtharFloatingHeader(header) {
                 Column {
                     AtharTopBar(
-                        title = "الكناشة",
+                        title = opened ?: "الكناشة",
                         onSettings = onSettings,
-                        showAppIcon = true,
-                        onBack = onBack,
+                        showAppIcon = opened == null,
+                        onBack = if (opened != null) ({ opened = null }) else onBack,
                         horizontalPadding = horizontalPadding,
                     )
                 val filterGroups = listOf(
+                            AtharChipGroup("العرض", KannashahView.entries.map { it.label }, view.label) { label ->
+                                viewName = KannashahView.entries.first { it.label == label }.name
+                                opened = null
+                            },
                             AtharChipGroup("الترتيب", KannashahSort.entries.map { it.label }, sort.label) { label ->
                                 sortName = KannashahSort.entries.first { it.label == label }.name
                             },
@@ -185,10 +214,15 @@ fun KannashahScreen(
                                 filterName = KannashahFilter.entries.first { it.label == label }.name
                             },
                         )
+                // Typed pickers with a count line, as الكتب's author filter: a thousand books stay one search box.
+                fun counted(n: Int) = com.atharchive.data.arabicCount(n, "", "مقتطف واحد", "مقتطفان", "مقتطفات", "مقتطفًا")
+                val byAuthor = state.excerpts.groupingBy { it.sourceAuthor }.eachCount()
+                val bySource = state.excerpts.groupingBy { it.sourceTitle }.eachCount()
+                val byTopic = state.excerpts.flatMap { it.topics }.groupingBy { it }.eachCount()
                 val filterFacets = listOf(
-                    com.atharchive.ui.components.AtharFacet("المؤلف", authors, author, { authorStored = it.asStoredChoices() }),
-                    com.atharchive.ui.components.AtharFacet("المصدر", sources, source, { sourceStored = it.asStoredChoices() }),
-                    com.atharchive.ui.components.AtharFacet("الموضوع", topics, topic, { topicStored = it.asStoredChoices() }),
+                    com.atharchive.ui.components.AtharFacet("المؤلف", authors, author, { authorStored = it.asStoredChoices() }, subtitle = { byAuthor[it]?.let(::counted) }, typed = true),
+                    com.atharchive.ui.components.AtharFacet("المصدر", sources, source, { sourceStored = it.asStoredChoices() }, subtitle = { bySource[it]?.let(::counted) }, typed = true),
+                    com.atharchive.ui.components.AtharFacet("الموضوع", topics, topic, { topicStored = it.asStoredChoices() }, subtitle = { byTopic[it]?.let(::counted) }, typed = true),
                 )
                 AtharSearchField(
                     query = query,
@@ -236,12 +270,46 @@ fun KannashahScreen(
                         horizontalPadding = horizontalPadding,
                     )
                 }
+            } else if (view != KannashahView.Excerpts && opened == null) {
+                val groups = sorted.groupBy { if (view == KannashahView.ByAuthor) it.sourceAuthor.ifBlank { "—" } else it.sourceTitle }
+                    .entries.sortedByDescending { it.value.size }
+                items(count = groups.size, key = { "g-${groups[it].key}" }) { index ->
+                    val (name, inGroup) = groups[index]
+                    KannashahGroupCard(
+                        name = name,
+                        detail = listOfNotNull(
+                            com.atharchive.data.arabicCount(inGroup.size, "", "مقتطف واحد", "مقتطفان", "مقتطفات", "مقتطفًا"),
+                            if (view == KannashahView.ByAuthor) {
+                                inGroup.map { it.sourceTitle }.distinct().size.takeIf { it > 1 }
+                                    ?.let { com.atharchive.data.arabicCount(it, "", "كتاب واحد", "كتابان", "كتب", "كتابًا") }
+                            } else inGroup.first().sourceAuthor.ifBlank { null },
+                        ).joinToString(" · "),
+                        horizontalPadding = horizontalPadding,
+                        onClick = { opened = name },
+                    )
+                }
             } else {
                 items(sorted, horizontalPadding, onCopy, onShare, onMore, onDelete, onOpenSource)
             }
         }
         AtharFastScroller(listState, top = header.height)
     }
+    }
+}
+
+@Composable
+private fun KannashahGroupCard(name: String, detail: String, horizontalPadding: Dp, onClick: () -> Unit) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = horizontalPadding, vertical = 5.dp)
+            .clip(com.atharchive.ui.theme.AtharCorners.Card)
+            .background(AtharTheme.colors.raisedSurface)
+            .clickable(role = androidx.compose.ui.semantics.Role.Button, onClick = onClick)
+            .padding(horizontal = 16.dp, vertical = 14.dp),
+    ) {
+        Text(name, color = MaterialTheme.colorScheme.onSurface, fontFamily = AtharEditorialFontFamily, fontSize = AtharTextSize.Title)
+        Text(detail, color = AtharTheme.colors.secondaryText, fontSize = AtharTextSize.Small)
     }
 }
 

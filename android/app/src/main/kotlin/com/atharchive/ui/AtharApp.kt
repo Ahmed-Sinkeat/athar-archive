@@ -524,6 +524,7 @@ fun AtharApp(
 
     fun sectionSearch(type: com.atharchive.feature.search.SearchResultType) = com.atharchive.feature.search.SectionTextSearch(
         search = { contentViewModel.searchSection(type, it) },
+        local = { contentViewModel.searchSectionLocal(type, it) },
         loadPassage = contentViewModel::onlinePassage,
         onOpen = ::openHit,
     )
@@ -763,11 +764,12 @@ fun AtharApp(
                             onCopySelection = { selection ->
                                 copyText(context, selection.quotedText)
                             },
-                            onShareSelection = { selection ->
+                            onShareSelection = { selection, asImage ->
                                 // Same source line as «نسخ مع التذييل»: the volume and page say where in the book it is.
                                 val (vol, page) = contentViewModel.printedPlace(route.bookId, minOf(selection.start.ordinal, selection.end.ordinal))
-                                shareText(context, citedText(selection.quotedText, state.bookTitle, state.author,
-                                    vol.takeIf { state.volumeStarts.isNotEmpty() }, page, state.sourceUrl, state.volumeUnit))
+                                val cited = citedText(selection.quotedText, state.bookTitle, state.author,
+                                    vol.takeIf { state.volumeStarts.isNotEmpty() }, page, state.sourceUrl, state.volumeUnit)
+                                if (asImage) shareQuoteImage(context, selection.quotedText, cited) else shareText(context, cited)
                             },
                             onSaveSelection = { selection ->
                                 contentViewModel.saveSelection(route.bookId, selection)

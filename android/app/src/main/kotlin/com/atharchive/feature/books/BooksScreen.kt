@@ -255,7 +255,8 @@ fun BooksScreen(
                     query = query,
                     resultCount = visibleBooks.size,
                     filtered = (topic + century + author + audio).isNotEmpty() || section != com.atharchive.ui.components.SectionAll,
-                    placeholder = "ابحث في ${state.archiveCountLabel}…",
+                    // An author's page counts the open tab's kind only: «ابحث في ٣٠ كتابًا», not all their works.
+                    placeholder = "ابحث في ${kind?.let { k -> kindCount(state.books.count { it.coll == k }, k) } ?: state.archiveCountLabel}…",
                     onQueryChange = { query = it },
                     tagPrefix = "books",
                     trailing = {
@@ -321,6 +322,16 @@ fun BooksScreen(
                         tag = "books_empty_state",
                         horizontalPadding = horizontalPadding,
                     )
+                    // A saved filter hid every match (العنقري's books have no topic): say so, one tap clears it.
+                    val hidden = if (ranks == null) 0 else state.books.count { it.id in ranks && (kind == null || it.coll == kind) }
+                    if (hidden > 0 && ((topic + century + author + audio).isNotEmpty() || section != com.atharchive.ui.components.SectionAll)) {
+                        androidx.compose.material3.TextButton(
+                            onClick = { topicStored = ""; centuryStored = ""; authorStored = ""; audioStored = ""; section = com.atharchive.ui.components.SectionAll },
+                            modifier = Modifier.fillMaxWidth(),
+                        ) {
+                            Text("المرشحات تخفي ${com.atharchive.data.arabicCount(hidden, "", "نتيجة واحدة", "نتيجتين", "نتائج", "نتيجة")} · إزالة المرشحات", color = AtharTheme.colors.accent)
+                        }
+                    }
                 }
             } else {
                 itemsIndexed(visibleBooks, key = { _, book -> book.id  }) { index, book -> com.atharchive.ui.components.AtharRowItem {
@@ -539,4 +550,11 @@ private fun BooksLargeTextPreview() {
 }
 
 /** An author's works by kind, in this order; a kind they have none of has no tab. */
+private fun kindCount(n: Int, coll: String) = when (coll) {
+    "poem" -> com.atharchive.data.arabicCount(n, "", "قصيدة واحدة", "قصيدتين", "قصائد", "قصيدة")
+    "article" -> com.atharchive.data.arabicCount(n, "", "مقالة واحدة", "مقالتين", "مقالات", "مقالة")
+    "question" -> com.atharchive.data.arabicCount(n, "", "مسألة واحدة", "مسألتين", "مسائل", "مسألة")
+    else -> com.atharchive.data.arabicCount(n, "", "كتاب واحد", "كتابين", "كتب", "كتابًا")
+}
+
 private val WorkKinds = listOf("book" to "الكتب", "poem" to "الشعر", "article" to "المقالات", "question" to "المسائل")

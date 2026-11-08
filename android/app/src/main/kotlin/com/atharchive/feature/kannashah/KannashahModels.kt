@@ -16,6 +16,12 @@ enum class KannashahSort(val label: String) {
     SourceOrder("ترتيب المصدر"),
 }
 
+enum class KannashahView(val label: String) {
+    Excerpts("المقتطفات"),
+    ByAuthor("حسب المؤلف"),
+    ByBook("حسب الكتاب"),
+}
+
 enum class KannashahFilter(val label: String) {
     All("كل المقتطفات"),
     Highlights("التظليلات"),

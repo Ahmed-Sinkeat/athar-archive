@@ -47,12 +47,19 @@ object ContentSearchSchema {
                 writeVersion(connection)
             } else {
                 create(connection)
+                indexMissingCatalog(connection)
             }
         }
     }
 
+    // Once per process: every search called this, and taking the writer queued a search behind
+    // a download's whole write batch.
+    @Volatile private var ensured = false
+
     suspend fun ensure(database: AtharContentDatabase) {
+        if (ensured) return
         database.useWriterConnection { create(it) }
+        ensured = true
     }
 
     /** Search rows of the entries a generation changed or removed; the rest stay as they are. */
@@ -173,6 +180,40 @@ object ContentSearchSchema {
                 }
             }
         }
+    }
+
+    /**
+     * An apply cut short commits its catalog slices but not their search rows, and the next apply
+     * sees those rows as unchanged: the books show in the library but its search never finds them.
+     * Each open indexes every listed entry that has no search row, which also repairs such installs.
+     */
+    private fun indexMissingCatalog(connection: SQLiteConnection) {
+        // Read first: the select reads catalog_fts, so no insert into it while that is open.
+        val missing = connection.prepare(
+            "SELECT id, titleNorm, personName, topicsCsv FROM entity " +
+                "WHERE catalogPresent = 1 AND editionOf IS NULL AND id NOT IN (SELECT id FROM catalog_fts)",
+        ).use { entities ->
+            buildList {
+                while (entities.step()) {
+                    add(listOf(entities.getText(0), entities.getText(1), if (entities.isNull(2)) "" else entities.getText(2), entities.getText(3)))
+                }
+            }
+        }
+        if (missing.isEmpty()) return
+        connection.prepare(
+            "INSERT INTO catalog_fts(titleNorm, personNorm, topicsNorm, id) VALUES (?, ?, ?, ?)",
+        ).use { insert ->
+            missing.forEach { (id, titleNorm, personName, topicsCsv) ->
+                insert.bindText(1, titleNorm)
+                insert.bindText(2, ArNormalize.normalize(personName))
+                insert.bindText(3, ArNormalize.normalize(topicsCsv.replace(',', ' ')))
+                insert.bindText(4, id)
+                insert.step()
+                insert.reset()
+                insert.clearBindings()
+            }
+        }
+        android.util.Log.w("AtharContent", "indexed ${missing.size} catalog entries the search had lost")
     }
 
     private fun writeVersion(connection: SQLiteConnection) {
