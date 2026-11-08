@@ -1,0 +1,2575 @@
+{
+  "schema": 1,
+  "generation": 1,
+  "sourceHash": "79e5832573f70f3da87feed5b90172b1f6610d859f90f9c6c975373be8faa273",
+  "ids": [
+    {
+      "ord": 0,
+      "blockId": "0e9ac596a8f89c7194c6c3b57cf25a90",
+      "fp64": "c33eddf6286f3c6f",
+      "normHash": "26a40dc7eb12b02857dce961c7829a537215a86810ba324c248afb555f39ea94",
+      "kind": "p",
+      "chapter": "main",
+      "next": "41c68a8fd5396f1c6d0fc1c65a32f59acbf897d58c53e5ec56781c2b18bc019f"
+    },
+    {
+      "ord": 1,
+      "blockId": "ee816b0aad56a4d91a52c87efcb2b617",
+      "fp64": "b2c09e05d9db30a7",
+      "normHash": "41c68a8fd5396f1c6d0fc1c65a32f59acbf897d58c53e5ec56781c2b18bc019f",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "26a40dc7eb12b02857dce961c7829a537215a86810ba324c248afb555f39ea94",
+      "next": "f5c92b51cfc0ef5c80e7d3bcb7a7399f213e3abf468e7f06a2551f6be5d7e5f3"
+    },
+    {
+      "ord": 2,
+      "blockId": "d1b3e3263c7c758fc3ee69484713743c",
+      "fp64": "d9f7fd7fd3e7fc77",
+      "normHash": "f5c92b51cfc0ef5c80e7d3bcb7a7399f213e3abf468e7f06a2551f6be5d7e5f3",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "41c68a8fd5396f1c6d0fc1c65a32f59acbf897d58c53e5ec56781c2b18bc019f",
+      "next": "1755600b9ce652f0aec99354fbd00dc1a7e373871d30eaf4eb8d6dffd57a9a4c"
+    },
+    {
+      "ord": 3,
+      "blockId": "e457002b74b7be9bd21fb76f60e26183",
+      "fp64": "fe7eb96dfbebf385",
+      "normHash": "1755600b9ce652f0aec99354fbd00dc1a7e373871d30eaf4eb8d6dffd57a9a4c",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "f5c92b51cfc0ef5c80e7d3bcb7a7399f213e3abf468e7f06a2551f6be5d7e5f3",
+      "next": "1958838b3ac707bc1151dfbffa5a94336f020d83de401b311ddcefdc497e4f24"
+    },
+    {
+      "ord": 4,
+      "blockId": "45641b3a54a50f10fc5563c3eaa207e2",
+      "fp64": "c1d7268dc0d700f5",
+      "normHash": "1958838b3ac707bc1151dfbffa5a94336f020d83de401b311ddcefdc497e4f24",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "1755600b9ce652f0aec99354fbd00dc1a7e373871d30eaf4eb8d6dffd57a9a4c",
+      "next": "6231d75df66b1b3c208bf143c707112dc693604584449c85fcbacf5b95f385a1"
+    },
+    {
+      "ord": 5,
+      "blockId": "763302d3c33ea683fda433f57ce47642",
+      "fp64": "e3136f5267b7fa71",
+      "normHash": "6231d75df66b1b3c208bf143c707112dc693604584449c85fcbacf5b95f385a1",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "1958838b3ac707bc1151dfbffa5a94336f020d83de401b311ddcefdc497e4f24",
+      "next": "cb77c0f6d44708252a3f1111e9ce1cdff865edb3e8b72c9b1ee975eb1a106fe7"
+    },
+    {
+      "ord": 6,
+      "blockId": "ad90061961767979176069bda6ff2213",
+      "fp64": "14e4e68952106062",
+      "normHash": "cb77c0f6d44708252a3f1111e9ce1cdff865edb3e8b72c9b1ee975eb1a106fe7",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "6231d75df66b1b3c208bf143c707112dc693604584449c85fcbacf5b95f385a1",
+      "next": "c4f274d9217c2d29fa882d03bc749e3b5709c5c6539d988010bb5c2266735e43"
+    },
+    {
+      "ord": 7,
+      "blockId": "a9ce6e1c94cbc01ce7e61fb14c55b3c0",
+      "fp64": "7e8ef952fd81e8a0",
+      "normHash": "c4f274d9217c2d29fa882d03bc749e3b5709c5c6539d988010bb5c2266735e43",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "cb77c0f6d44708252a3f1111e9ce1cdff865edb3e8b72c9b1ee975eb1a106fe7",
+      "next": "7c8cfe375b9105c15f8eee7b7c3c38a5fbf600140fbce69e703d202f56f8684c"
+    },
+    {
+      "ord": 8,
+      "blockId": "36a78a5f26fb32ca7827fb11d9da9c3b",
+      "fp64": "7ffa1df5fe5fcfef",
+      "normHash": "7c8cfe375b9105c15f8eee7b7c3c38a5fbf600140fbce69e703d202f56f8684c",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "c4f274d9217c2d29fa882d03bc749e3b5709c5c6539d988010bb5c2266735e43",
+      "next": "70ea6a29e41d42b570db4f1219a083c18370648fb929aa4812395da90140cd78"
+    },
+    {
+      "ord": 9,
+      "blockId": "f6757383ff130a9642d1dea135652208",
+      "fp64": "b7fffd5bcb667c77",
+      "normHash": "70ea6a29e41d42b570db4f1219a083c18370648fb929aa4812395da90140cd78",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "7c8cfe375b9105c15f8eee7b7c3c38a5fbf600140fbce69e703d202f56f8684c",
+      "next": "9188f256ba223b9637a6bca1894c8bda769d4a2177a25f5c18dfb50703f508f1"
+    },
+    {
+      "ord": 10,
+      "blockId": "d3d60ffd16afa9421e54b9ed6d6c1caa",
+      "fp64": "e5fff7ff7bb3e67f",
+      "normHash": "9188f256ba223b9637a6bca1894c8bda769d4a2177a25f5c18dfb50703f508f1",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "70ea6a29e41d42b570db4f1219a083c18370648fb929aa4812395da90140cd78",
+      "next": "2faeea109072ecd45655335c776d16dff7854c5c40d4f54df97cecc239736a86"
+    },
+    {
+      "ord": 11,
+      "blockId": "d07f40180b4b458ffe631cba518fee15",
+      "fp64": "bdf5f8179ffc71fe",
+      "normHash": "2faeea109072ecd45655335c776d16dff7854c5c40d4f54df97cecc239736a86",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "9188f256ba223b9637a6bca1894c8bda769d4a2177a25f5c18dfb50703f508f1",
+      "next": "e521f489d4ea1b1e344557f70b833a823e82867c277e340c6a9f43cfa42a6fc7"
+    },
+    {
+      "ord": 12,
+      "blockId": "c24b3ab4d01eeb7e4dbe8b37a5c45eef",
+      "fp64": "57e5da6b6ba8a367",
+      "normHash": "e521f489d4ea1b1e344557f70b833a823e82867c277e340c6a9f43cfa42a6fc7",
+      "kind": "h2",
+      "chapter": "المقدمة",
+      "prev": "2faeea109072ecd45655335c776d16dff7854c5c40d4f54df97cecc239736a86",
+      "next": "e80a99f18c5fad3c9e564a97702eef4cad89495c78521431d4896163f15380d8"
+    },
+    {
+      "ord": 13,
+      "blockId": "9caea832b85aa009e7ec86afb126b506",
+      "fp64": "e8c3e10c7774d439",
+      "normHash": "e80a99f18c5fad3c9e564a97702eef4cad89495c78521431d4896163f15380d8",
+      "kind": "p",
+      "chapter": "المقدمة",
+      "prev": "e521f489d4ea1b1e344557f70b833a823e82867c277e340c6a9f43cfa42a6fc7",
+      "next": "dfe137b0bbb7ccd9b29f3490dd4d09326b44b46ab5e0bb86c650bddef87013a3"
+    },
+    {
+      "ord": 14,
+      "blockId": "6ddbf8ded04d6a21cd784f343f7599a6",
+      "fp64": "1e6ff2c95195d8e2",
+      "normHash": "dfe137b0bbb7ccd9b29f3490dd4d09326b44b46ab5e0bb86c650bddef87013a3",
+      "kind": "p",
+      "chapter": "المقدمة",
+      "prev": "e80a99f18c5fad3c9e564a97702eef4cad89495c78521431d4896163f15380d8",
+      "next": "549078074ac052824a8e1a1618a2d6336e5c913dfdfc81dd63c9602e66edac60"
+    },
+    {
+      "ord": 15,
+      "blockId": "15d2436bfe576315f5cc1ec574c61aaa",
+      "fp64": "36fc82db07302ce6",
+      "normHash": "549078074ac052824a8e1a1618a2d6336e5c913dfdfc81dd63c9602e66edac60",
+      "kind": "p",
+      "chapter": "المقدمة",
+      "prev": "dfe137b0bbb7ccd9b29f3490dd4d09326b44b46ab5e0bb86c650bddef87013a3",
+      "next": "ea0d689a36ab180b12acc6f36638ca68de2f88f04c1d60eed31eaadc181d9806"
+    },
+    {
+      "ord": 16,
+      "blockId": "81d6bbba713f6da118cf98371cecce90",
+      "fp64": "845c64682b237ce7",
+      "normHash": "ea0d689a36ab180b12acc6f36638ca68de2f88f04c1d60eed31eaadc181d9806",
+      "kind": "p",
+      "chapter": "المقدمة",
+      "prev": "549078074ac052824a8e1a1618a2d6336e5c913dfdfc81dd63c9602e66edac60",
+      "next": "ee9988ea0c11c98839fe119af118ad58c85b290707e85eda27db5f7707ffff4d"
+    },
+    {
+      "ord": 17,
+      "blockId": "5b8f9993674cc327546ad3baba921b88",
+      "fp64": "1dec785a5d016866",
+      "normHash": "ee9988ea0c11c98839fe119af118ad58c85b290707e85eda27db5f7707ffff4d",
+      "kind": "p",
+      "chapter": "المقدمة",
+      "prev": "ea0d689a36ab180b12acc6f36638ca68de2f88f04c1d60eed31eaadc181d9806",
+      "next": "12a90570590cbe1617733c5efc687002c947961f9cb29e20b45b19c51439898b"
+    },
+    {
+      "ord": 18,
+      "blockId": "ce15b3a78c8caae251c72d7528cf24a3",
+      "fp64": "ba26f219df216966",
+      "normHash": "12a90570590cbe1617733c5efc687002c947961f9cb29e20b45b19c51439898b",
+      "kind": "p",
+      "chapter": "المقدمة",
+      "prev": "ee9988ea0c11c98839fe119af118ad58c85b290707e85eda27db5f7707ffff4d",
+      "next": "f7f4a90c065992e83745e1df65ec3a03003a82253ee90efc20ca08eafdc8dddc"
+    },
+    {
+      "ord": 19,
+      "blockId": "2dd9fe9b092a7842ae7dc02f53eb9601",
+      "fp64": "afdffffadf71677e",
+      "normHash": "f7f4a90c065992e83745e1df65ec3a03003a82253ee90efc20ca08eafdc8dddc",
+      "kind": "page",
+      "chapter": "المقدمة",
+      "prev": "12a90570590cbe1617733c5efc687002c947961f9cb29e20b45b19c51439898b",
+      "next": "ed9d8782c916019d83984289c31c5ba0ef8eafa59c35fb6ae5ac2f1691ff942e"
+    },
+    {
+      "ord": 20,
+      "blockId": "737b8cf79b290ec833c236d7e8be010c",
+      "fp64": "3acef048c4817a26",
+      "normHash": "ed9d8782c916019d83984289c31c5ba0ef8eafa59c35fb6ae5ac2f1691ff942e",
+      "kind": "p",
+      "chapter": "المقدمة",
+      "prev": "f7f4a90c065992e83745e1df65ec3a03003a82253ee90efc20ca08eafdc8dddc",
+      "next": "3915525ead2c0352cc17c3e54277504273bcc9dd0b4995fb83d8972b875c70f9"
+    },
+    {
+      "ord": 21,
+      "blockId": "686074b935f4cecbcb107651826c93d4",
+      "fp64": "8645e82e1daebcdc",
+      "normHash": "3915525ead2c0352cc17c3e54277504273bcc9dd0b4995fb83d8972b875c70f9",
+      "kind": "p",
+      "chapter": "المقدمة",
+      "prev": "ed9d8782c916019d83984289c31c5ba0ef8eafa59c35fb6ae5ac2f1691ff942e",
+      "next": "f19ec3383105dbaf210c5c246b80d098c792e5ed5fc6c2a0d0492f5eccab730c"
+    },
+    {
+      "ord": 22,
+      "blockId": "f0f39bbde1bb101ae8a38cc39083d1a7",
+      "fp64": "718a1c1ebe43ae38",
+      "normHash": "f19ec3383105dbaf210c5c246b80d098c792e5ed5fc6c2a0d0492f5eccab730c",
+      "kind": "p",
+      "chapter": "المقدمة",
+      "prev": "3915525ead2c0352cc17c3e54277504273bcc9dd0b4995fb83d8972b875c70f9",
+      "next": "07581944f1272492aa0356de924bde33639d3e85d90c72dbf7f54a6c956c0f5a"
+    },
+    {
+      "ord": 23,
+      "blockId": "f4ac1901527b8afc29b937df276ca0f0",
+      "fp64": "e88ce012939ea529",
+      "normHash": "07581944f1272492aa0356de924bde33639d3e85d90c72dbf7f54a6c956c0f5a",
+      "kind": "p",
+      "chapter": "المقدمة",
+      "prev": "f19ec3383105dbaf210c5c246b80d098c792e5ed5fc6c2a0d0492f5eccab730c",
+      "next": "06a8f27e268bf9f26d0e58d22acf4b9a8244c62507c679844ea581d4bfaaf4b1"
+    },
+    {
+      "ord": 24,
+      "blockId": "b4a96115673d66c1255d6ceae7cce47d",
+      "fp64": "9d3cd8bfdbe2e4f4",
+      "normHash": "06a8f27e268bf9f26d0e58d22acf4b9a8244c62507c679844ea581d4bfaaf4b1",
+      "kind": "p",
+      "chapter": "المقدمة",
+      "prev": "07581944f1272492aa0356de924bde33639d3e85d90c72dbf7f54a6c956c0f5a",
+      "next": "00356b6f7659cd3a352430cede0246c868e516e83c8c0e2bff35797176c7a3d8"
+    },
+    {
+      "ord": 25,
+      "blockId": "0d5babb8836ccb63bad4a97b2b8ccdc9",
+      "fp64": "f81921a23177c43d",
+      "normHash": "00356b6f7659cd3a352430cede0246c868e516e83c8c0e2bff35797176c7a3d8",
+      "kind": "p",
+      "chapter": "المقدمة",
+      "prev": "06a8f27e268bf9f26d0e58d22acf4b9a8244c62507c679844ea581d4bfaaf4b1",
+      "next": "21edae1669eb9b20cadd95e2a056b85940569f6bae24651462d9e45a91f61291"
+    },
+    {
+      "ord": 26,
+      "blockId": "11d3973cbc1264ab3b4ef20279fc2bff",
+      "fp64": "e7dfffde7f77627f",
+      "normHash": "21edae1669eb9b20cadd95e2a056b85940569f6bae24651462d9e45a91f61291",
+      "kind": "page",
+      "chapter": "المقدمة",
+      "prev": "00356b6f7659cd3a352430cede0246c868e516e83c8c0e2bff35797176c7a3d8",
+      "next": "1b54bac96a42da91850960910101cc0dff963a1bab830a72bf83b074d5c13f37"
+    },
+    {
+      "ord": 27,
+      "blockId": "bd7a120a639c1cf8571ea1fbf6723dbf",
+      "fp64": "36fc82db07302ce6",
+      "normHash": "1b54bac96a42da91850960910101cc0dff963a1bab830a72bf83b074d5c13f37",
+      "kind": "h2",
+      "chapter": "المبحث-الأول-مفهوم-ثواب-القرب-لغة-واصطلاحا",
+      "prev": "21edae1669eb9b20cadd95e2a056b85940569f6bae24651462d9e45a91f61291",
+      "next": "b5662128867266f4b25b35ba5765408c0a3c10dcaa307f3dc432d45ea59c39ad"
+    },
+    {
+      "ord": 28,
+      "blockId": "d39fd29fb0bd0407bb6ce3f10052f126",
+      "fp64": "3484e104177c2ed6",
+      "normHash": "b5662128867266f4b25b35ba5765408c0a3c10dcaa307f3dc432d45ea59c39ad",
+      "kind": "p",
+      "chapter": "المبحث-الأول-مفهوم-ثواب-القرب-لغة-واصطلاحا",
+      "prev": "1b54bac96a42da91850960910101cc0dff963a1bab830a72bf83b074d5c13f37",
+      "next": "62a2c9d8b8b50c17a2411ba8481ef35683cc53c07db4a9769a932043a11aec57"
+    },
+    {
+      "ord": 29,
+      "blockId": "a4e8948ad6789997f68bcef687c4a63c",
+      "fp64": "b69ca9d8255477db",
+      "normHash": "62a2c9d8b8b50c17a2411ba8481ef35683cc53c07db4a9769a932043a11aec57",
+      "kind": "p",
+      "chapter": "المبحث-الأول-مفهوم-ثواب-القرب-لغة-واصطلاحا",
+      "prev": "b5662128867266f4b25b35ba5765408c0a3c10dcaa307f3dc432d45ea59c39ad",
+      "next": "d061be5f2d3da653f1fa4ad5653587757e91c2bdc74dc9e8bb56ba429b659ab8"
+    },
+    {
+      "ord": 30,
+      "blockId": "190f3a539595e7712a13bec2be7fceb0",
+      "fp64": "3a4ece1b17504d56",
+      "normHash": "d061be5f2d3da653f1fa4ad5653587757e91c2bdc74dc9e8bb56ba429b659ab8",
+      "kind": "p",
+      "chapter": "المبحث-الأول-مفهوم-ثواب-القرب-لغة-واصطلاحا",
+      "prev": "62a2c9d8b8b50c17a2411ba8481ef35683cc53c07db4a9769a932043a11aec57",
+      "next": "6f79e61eb24218a7092e564ae7c71aaaae53e036df3637df0c208da7a5134dc0"
+    },
+    {
+      "ord": 31,
+      "blockId": "5d3724d011b18df9d7dfe09a29764124",
+      "fp64": "53cb25ff77c48f72",
+      "normHash": "6f79e61eb24218a7092e564ae7c71aaaae53e036df3637df0c208da7a5134dc0",
+      "kind": "p",
+      "chapter": "المبحث-الأول-مفهوم-ثواب-القرب-لغة-واصطلاحا",
+      "prev": "d061be5f2d3da653f1fa4ad5653587757e91c2bdc74dc9e8bb56ba429b659ab8",
+      "next": "73d73406bc46cc7186ec804fdfa1a05041b9f7d03ceeca214755823ab8479412"
+    },
+    {
+      "ord": 32,
+      "blockId": "df4c9d1d336717fa7fed6e60f6c76ec8",
+      "fp64": "2fdffbfb7f336dff",
+      "normHash": "73d73406bc46cc7186ec804fdfa1a05041b9f7d03ceeca214755823ab8479412",
+      "kind": "page",
+      "chapter": "المبحث-الأول-مفهوم-ثواب-القرب-لغة-واصطلاحا",
+      "prev": "6f79e61eb24218a7092e564ae7c71aaaae53e036df3637df0c208da7a5134dc0",
+      "next": "2c5936df741ba2ae366df3c5dbc4618aa4173a1309749dbb5841ae5de0c08cd2"
+    },
+    {
+      "ord": 33,
+      "blockId": "5dc7d73c9e070f2eba831258fda6320c",
+      "fp64": "b042c6dbb7a36d56",
+      "normHash": "2c5936df741ba2ae366df3c5dbc4618aa4173a1309749dbb5841ae5de0c08cd2",
+      "kind": "p",
+      "chapter": "المبحث-الأول-مفهوم-ثواب-القرب-لغة-واصطلاحا",
+      "prev": "73d73406bc46cc7186ec804fdfa1a05041b9f7d03ceeca214755823ab8479412",
+      "next": "0fe35602a8462dbe67f4649a87115286bb64289afe27672e5cdd0cd7ecbc25db"
+    },
+    {
+      "ord": 34,
+      "blockId": "6e71e0319127da7c4d1c90514f552132",
+      "fp64": "f440f01a976c75d2",
+      "normHash": "0fe35602a8462dbe67f4649a87115286bb64289afe27672e5cdd0cd7ecbc25db",
+      "kind": "p",
+      "chapter": "المبحث-الأول-مفهوم-ثواب-القرب-لغة-واصطلاحا",
+      "prev": "2c5936df741ba2ae366df3c5dbc4618aa4173a1309749dbb5841ae5de0c08cd2",
+      "next": "0f97b3b2c0088f9af92ad40ab7d73eb14d609f760e843fb172ea9377f138176a"
+    },
+    {
+      "ord": 35,
+      "blockId": "7889e881fe1ad02c0cc25b58efa2264e",
+      "fp64": "5498bcb23d65784e",
+      "normHash": "0f97b3b2c0088f9af92ad40ab7d73eb14d609f760e843fb172ea9377f138176a",
+      "kind": "p",
+      "chapter": "المبحث-الأول-مفهوم-ثواب-القرب-لغة-واصطلاحا",
+      "prev": "0fe35602a8462dbe67f4649a87115286bb64289afe27672e5cdd0cd7ecbc25db",
+      "next": "b64d47bb52ce2df883d5e65a897cdbda8fb31df41781ec406a8f4c6d951ae1b5"
+    },
+    {
+      "ord": 36,
+      "blockId": "d019e71a8445fd6e77b5329835eb5b44",
+      "fp64": "b7dfffff5bf1f6f7",
+      "normHash": "b64d47bb52ce2df883d5e65a897cdbda8fb31df41781ec406a8f4c6d951ae1b5",
+      "kind": "page",
+      "chapter": "المبحث-الأول-مفهوم-ثواب-القرب-لغة-واصطلاحا",
+      "prev": "0f97b3b2c0088f9af92ad40ab7d73eb14d609f760e843fb172ea9377f138176a",
+      "next": "c36b1ac68f0db4fc2dec8e294c265d73f23b2325852fa00194fc5390e43161f8"
+    },
+    {
+      "ord": 37,
+      "blockId": "1ceeaeeceb67e6d0b2fc2dcd7d9160a4",
+      "fp64": "845c64682b237ce7",
+      "normHash": "c36b1ac68f0db4fc2dec8e294c265d73f23b2325852fa00194fc5390e43161f8",
+      "kind": "h2",
+      "chapter": "المبحث-الثاني-ما-يلحق-الميت-من-عمله",
+      "prev": "b64d47bb52ce2df883d5e65a897cdbda8fb31df41781ec406a8f4c6d951ae1b5",
+      "next": "06728aa363f2833a8457cb5e05867b49d428ae31d08f3f8889ea3bdadc6490d5"
+    },
+    {
+      "ord": 38,
+      "blockId": "a86bd8f59ae1a07856e893de91b22c4d",
+      "fp64": "cb6c247a4b2b7ef5",
+      "normHash": "06728aa363f2833a8457cb5e05867b49d428ae31d08f3f8889ea3bdadc6490d5",
+      "kind": "p",
+      "chapter": "المبحث-الثاني-ما-يلحق-الميت-من-عمله",
+      "prev": "c36b1ac68f0db4fc2dec8e294c265d73f23b2325852fa00194fc5390e43161f8",
+      "next": "2793573f1914e11026b38b982171674d5bb42149d399e664d5c85ac6ba0da9c1"
+    },
+    {
+      "ord": 39,
+      "blockId": "2d8ae8ee8be199033540a102b8793d20",
+      "fp64": "f77de03d703c39ee",
+      "normHash": "2793573f1914e11026b38b982171674d5bb42149d399e664d5c85ac6ba0da9c1",
+      "kind": "h2",
+      "chapter": "الدليل-الأول-حديث-أبي-هريرة-رضي-الله-عنه",
+      "prev": "06728aa363f2833a8457cb5e05867b49d428ae31d08f3f8889ea3bdadc6490d5",
+      "next": "f37a528bdce9029676ff944329d28c7c8025d1367eea3566410f1df5f0e9fb99"
+    },
+    {
+      "ord": 40,
+      "blockId": "c1eb4d21556305fdfcadb98d376caba2",
+      "fp64": "e440641ef16f5efc",
+      "normHash": "f37a528bdce9029676ff944329d28c7c8025d1367eea3566410f1df5f0e9fb99",
+      "kind": "li",
+      "chapter": "الدليل-الأول-حديث-أبي-هريرة-رضي-الله-عنه",
+      "prev": "2793573f1914e11026b38b982171674d5bb42149d399e664d5c85ac6ba0da9c1",
+      "next": "90a58d15afb5b06ff26290efe4479eae24256986fefba7e9998e3ac10927b96d"
+    },
+    {
+      "ord": 41,
+      "blockId": "d63166cb8756c553bc1c98d9934b5846",
+      "fp64": "f57fe03c797d3dee",
+      "normHash": "90a58d15afb5b06ff26290efe4479eae24256986fefba7e9998e3ac10927b96d",
+      "kind": "h2",
+      "chapter": "الدليل-الثاني-حديث-أبي-هريرة-رضي-الله-عنه",
+      "prev": "f37a528bdce9029676ff944329d28c7c8025d1367eea3566410f1df5f0e9fb99",
+      "next": "0501dc757dd047c5422db81c92f39b1c06552d5f1bd64eb0d03218acbce47d3c"
+    },
+    {
+      "ord": 42,
+      "blockId": "a111c9cf7ff865a5a49f74460cf37cbf",
+      "fp64": "68d9d05bff4a4e74",
+      "normHash": "0501dc757dd047c5422db81c92f39b1c06552d5f1bd64eb0d03218acbce47d3c",
+      "kind": "li",
+      "chapter": "الدليل-الثاني-حديث-أبي-هريرة-رضي-الله-عنه",
+      "prev": "90a58d15afb5b06ff26290efe4479eae24256986fefba7e9998e3ac10927b96d",
+      "next": "778a9e9efb13125e21547814b8ba454877c3fa6eaf9bdffbef9266b7e7be6b98"
+    },
+    {
+      "ord": 43,
+      "blockId": "81bd52f80d51b15cfb33b74be6275711",
+      "fp64": "ecfd601e587476ea",
+      "normHash": "778a9e9efb13125e21547814b8ba454877c3fa6eaf9bdffbef9266b7e7be6b98",
+      "kind": "h2",
+      "chapter": "الدليل-الثالث-حديث-معاذ-بن-أنس-رضي-الله-عنه",
+      "prev": "0501dc757dd047c5422db81c92f39b1c06552d5f1bd64eb0d03218acbce47d3c",
+      "next": "adafd549b47d41ad121ce6167b98821aa706673a7bf45e9d17a199f7f2c26a83"
+    },
+    {
+      "ord": 44,
+      "blockId": "6d0010192e3983df84aecdfc8323cb40",
+      "fp64": "6c42c05f1f425978",
+      "normHash": "adafd549b47d41ad121ce6167b98821aa706673a7bf45e9d17a199f7f2c26a83",
+      "kind": "li",
+      "chapter": "الدليل-الثالث-حديث-معاذ-بن-أنس-رضي-الله-عنه",
+      "prev": "778a9e9efb13125e21547814b8ba454877c3fa6eaf9bdffbef9266b7e7be6b98",
+      "next": "b68ab2bcbc8263075fe90a0bf9c97e18de3b5c4d97def2d57b2709bc08cd29d2"
+    },
+    {
+      "ord": 45,
+      "blockId": "5960d2b245450baede4a3c20c0feb42e",
+      "fp64": "5b196843552f8e56",
+      "normHash": "b68ab2bcbc8263075fe90a0bf9c97e18de3b5c4d97def2d57b2709bc08cd29d2",
+      "kind": "p",
+      "chapter": "الدليل-الثالث-حديث-معاذ-بن-أنس-رضي-الله-عنه",
+      "prev": "adafd549b47d41ad121ce6167b98821aa706673a7bf45e9d17a199f7f2c26a83",
+      "next": "fa6f2f2d2ec70b9fd6cba78ecf50308b0b0c23a51f49f40d301067bd8d109e52"
+    },
+    {
+      "ord": 46,
+      "blockId": "eaf501a989f4e4acb11ec4ff145cec21",
+      "fp64": "afdffffedb79627f",
+      "normHash": "fa6f2f2d2ec70b9fd6cba78ecf50308b0b0c23a51f49f40d301067bd8d109e52",
+      "kind": "page",
+      "chapter": "الدليل-الثالث-حديث-معاذ-بن-أنس-رضي-الله-عنه",
+      "prev": "b68ab2bcbc8263075fe90a0bf9c97e18de3b5c4d97def2d57b2709bc08cd29d2",
+      "next": "98206252a63f26cd977c88a22811113cab7a847fb7143f11da7d19efdf49f48e"
+    },
+    {
+      "ord": 47,
+      "blockId": "21a1c64c1b489e6bdd1fc72d97071067",
+      "fp64": "f2c88cfbd567de79",
+      "normHash": "98206252a63f26cd977c88a22811113cab7a847fb7143f11da7d19efdf49f48e",
+      "kind": "p",
+      "chapter": "الدليل-الثالث-حديث-معاذ-بن-أنس-رضي-الله-عنه",
+      "prev": "fa6f2f2d2ec70b9fd6cba78ecf50308b0b0c23a51f49f40d301067bd8d109e52",
+      "next": "1a083e3faff4d4386dce5dbe98f0d63d445ea452ba89452fe6c6db302d8e7a38"
+    },
+    {
+      "ord": 48,
+      "blockId": "0f7019512bb1b374a903b00805f99f86",
+      "fp64": "f467f099dcb4396e",
+      "normHash": "1a083e3faff4d4386dce5dbe98f0d63d445ea452ba89452fe6c6db302d8e7a38",
+      "kind": "h2",
+      "chapter": "الدليل-الرابع-حديث-سهل-بن-سعد-رضي-الله-عنه",
+      "prev": "98206252a63f26cd977c88a22811113cab7a847fb7143f11da7d19efdf49f48e",
+      "next": "2f66a121f8ce22f806d3f6bd23d7f76cb6e5ded5153e87c9e21283e5e0946ffc"
+    },
+    {
+      "ord": 49,
+      "blockId": "13bf3916c5a099ae2d71017085222390",
+      "fp64": "e456c15ca75d75fa",
+      "normHash": "2f66a121f8ce22f806d3f6bd23d7f76cb6e5ded5153e87c9e21283e5e0946ffc",
+      "kind": "p",
+      "chapter": "الدليل-الرابع-حديث-سهل-بن-سعد-رضي-الله-عنه",
+      "prev": "1a083e3faff4d4386dce5dbe98f0d63d445ea452ba89452fe6c6db302d8e7a38",
+      "next": "474e9346787fef702840d4e73ebcad82a017f6541cef6ebc5d5fdebebccedd55"
+    },
+    {
+      "ord": 50,
+      "blockId": "072c510c7584b6a1b77eab09ab5afd2c",
+      "fp64": "3c453914577f13ac",
+      "normHash": "474e9346787fef702840d4e73ebcad82a017f6541cef6ebc5d5fdebebccedd55",
+      "kind": "p",
+      "chapter": "الدليل-الرابع-حديث-سهل-بن-سعد-رضي-الله-عنه",
+      "prev": "2f66a121f8ce22f806d3f6bd23d7f76cb6e5ded5153e87c9e21283e5e0946ffc",
+      "next": "a35c0e247e5ba56fe917796a5d6fc82412b27cae925490573a0a5146398a7c20"
+    },
+    {
+      "ord": 51,
+      "blockId": "9485f402e23aab200d9c513e8fb61ac5",
+      "fp64": "541d2843957c9c56",
+      "normHash": "a35c0e247e5ba56fe917796a5d6fc82412b27cae925490573a0a5146398a7c20",
+      "kind": "p",
+      "chapter": "الدليل-الرابع-حديث-سهل-بن-سعد-رضي-الله-عنه",
+      "prev": "474e9346787fef702840d4e73ebcad82a017f6541cef6ebc5d5fdebebccedd55",
+      "next": "4e69f1fe679aed73a4f2002d7955a7415fb3e959647a1fb7d8b8e8215f935244"
+    },
+    {
+      "ord": 52,
+      "blockId": "f4344600ef9ae29cd09dbab3dfaa7ab5",
+      "fp64": "77fff3df7a73623e",
+      "normHash": "4e69f1fe679aed73a4f2002d7955a7415fb3e959647a1fb7d8b8e8215f935244",
+      "kind": "page",
+      "chapter": "الدليل-الرابع-حديث-سهل-بن-سعد-رضي-الله-عنه",
+      "prev": "a35c0e247e5ba56fe917796a5d6fc82412b27cae925490573a0a5146398a7c20",
+      "next": "a3ad9219f8f5c10bd204f7c6d48cd28f570c652844deebe38225dfcc0ac6f18a"
+    },
+    {
+      "ord": 53,
+      "blockId": "14ebef4ca03dd98a708db131ca086cc4",
+      "fp64": "52f98dd21f33930b",
+      "normHash": "a3ad9219f8f5c10bd204f7c6d48cd28f570c652844deebe38225dfcc0ac6f18a",
+      "kind": "p",
+      "chapter": "الدليل-الرابع-حديث-سهل-بن-سعد-رضي-الله-عنه",
+      "prev": "4e69f1fe679aed73a4f2002d7955a7415fb3e959647a1fb7d8b8e8215f935244",
+      "next": "8e203f856e26a32a80bd476ce7659966d70426820be1a2353b0d5e3173125df9"
+    },
+    {
+      "ord": 54,
+      "blockId": "e242ae7185a682377e846199e74945ce",
+      "fp64": "f765e018d0fc3dee",
+      "normHash": "8e203f856e26a32a80bd476ce7659966d70426820be1a2353b0d5e3173125df9",
+      "kind": "h2",
+      "chapter": "الدليل-الخامس-حديث-أبي-مسعود-الأنصاري-رضي-الله-عنه",
+      "prev": "a3ad9219f8f5c10bd204f7c6d48cd28f570c652844deebe38225dfcc0ac6f18a",
+      "next": "0b7521e633c2b473982c9de8127fcaa67968080ebbb395d3f53e472d72e92805"
+    },
+    {
+      "ord": 55,
+      "blockId": "d7f3d25e9229a4b6e3ea2dc7d02e4061",
+      "fp64": "2c80e85f156a5978",
+      "normHash": "0b7521e633c2b473982c9de8127fcaa67968080ebbb395d3f53e472d72e92805",
+      "kind": "li",
+      "chapter": "الدليل-الخامس-حديث-أبي-مسعود-الأنصاري-رضي-الله-عنه",
+      "prev": "8e203f856e26a32a80bd476ce7659966d70426820be1a2353b0d5e3173125df9",
+      "next": "f73f7c92c0a89721d21cbf44a89706c91294db2dfe76602cc27c999735daf4fe"
+    },
+    {
+      "ord": 56,
+      "blockId": "5c52d0eea16d49298ac0b6aae4f67c30",
+      "fp64": "f53dc01efefd71fe",
+      "normHash": "f73f7c92c0a89721d21cbf44a89706c91294db2dfe76602cc27c999735daf4fe",
+      "kind": "h2",
+      "chapter": "الدليل-السادس-حديث-جرير-بن-عبد-الله-رضي-الله-عنه",
+      "prev": "0b7521e633c2b473982c9de8127fcaa67968080ebbb395d3f53e472d72e92805",
+      "next": "8854437e3c048a493285dca70d6ce4bd406767910eef6e4adf6e8f2b497f81b3"
+    },
+    {
+      "ord": 57,
+      "blockId": "04f297a87b14eb627b0632c9d8a13319",
+      "fp64": "bed8d85b1475d879",
+      "normHash": "8854437e3c048a493285dca70d6ce4bd406767910eef6e4adf6e8f2b497f81b3",
+      "kind": "p",
+      "chapter": "الدليل-السادس-حديث-جرير-بن-عبد-الله-رضي-الله-عنه",
+      "prev": "f73f7c92c0a89721d21cbf44a89706c91294db2dfe76602cc27c999735daf4fe",
+      "next": "84e76285f5e39e36d966d600b4a8574197a0b0790145f2113d5fa414b0d6be30"
+    },
+    {
+      "ord": 58,
+      "blockId": "38daed5f20baa894385b58a487364afb",
+      "fp64": "f56de83f707c7fee",
+      "normHash": "84e76285f5e39e36d966d600b4a8574197a0b0790145f2113d5fa414b0d6be30",
+      "kind": "h2",
+      "chapter": "الدليل-السابع-حديث-أبي-هريرة-رضي-الله-عنه",
+      "prev": "8854437e3c048a493285dca70d6ce4bd406767910eef6e4adf6e8f2b497f81b3",
+      "next": "925623fca5025878861553300af606b18e24a645f716627c67e2b25ec1f430fc"
+    },
+    {
+      "ord": 59,
+      "blockId": "3e6c8663098f1189e82a513771642061",
+      "fp64": "2475e0579f7e797c",
+      "normHash": "925623fca5025878861553300af606b18e24a645f716627c67e2b25ec1f430fc",
+      "kind": "li",
+      "chapter": "الدليل-السابع-حديث-أبي-هريرة-رضي-الله-عنه",
+      "prev": "84e76285f5e39e36d966d600b4a8574197a0b0790145f2113d5fa414b0d6be30",
+      "next": "f8ae86545b2495a18cd0f16cdcb156c2a5596d4d508fc201f79729486d17de6b"
+    },
+    {
+      "ord": 60,
+      "blockId": "6f957f718b7e02837362e56d87d80c52",
+      "fp64": "c74960125d7cfd56",
+      "normHash": "f8ae86545b2495a18cd0f16cdcb156c2a5596d4d508fc201f79729486d17de6b",
+      "kind": "p",
+      "chapter": "الدليل-السابع-حديث-أبي-هريرة-رضي-الله-عنه",
+      "prev": "925623fca5025878861553300af606b18e24a645f716627c67e2b25ec1f430fc",
+      "next": "fe150be8995764fb9222c74a2e8f48710a6c0e04b0832c95ac9ae993299ca637"
+    },
+    {
+      "ord": 61,
+      "blockId": "ad3e3719a4e15970305307543a1ede80",
+      "fp64": "25ffffde7f3f783f",
+      "normHash": "fe150be8995764fb9222c74a2e8f48710a6c0e04b0832c95ac9ae993299ca637",
+      "kind": "page",
+      "chapter": "الدليل-السابع-حديث-أبي-هريرة-رضي-الله-عنه",
+      "prev": "f8ae86545b2495a18cd0f16cdcb156c2a5596d4d508fc201f79729486d17de6b",
+      "next": "2cfa68527b6de682142c952c094959e738320e85c2166a89f18252acaf8876b1"
+    },
+    {
+      "ord": 62,
+      "blockId": "5a395025d831c07138f8ee18a3509ef4",
+      "fp64": "5eca4c7b97677d79",
+      "normHash": "2cfa68527b6de682142c952c094959e738320e85c2166a89f18252acaf8876b1",
+      "kind": "p",
+      "chapter": "الدليل-السابع-حديث-أبي-هريرة-رضي-الله-عنه",
+      "prev": "fe150be8995764fb9222c74a2e8f48710a6c0e04b0832c95ac9ae993299ca637",
+      "next": "36b46fe14474e6b9edd55f2f165e92b92f0a6a1f40517f3f68a067aaa2309e7c"
+    },
+    {
+      "ord": 63,
+      "blockId": "da748b9a5e9cbb734ad2d77f7a0edc69",
+      "fp64": "f47fc03ed93c7bea",
+      "normHash": "36b46fe14474e6b9edd55f2f165e92b92f0a6a1f40517f3f68a067aaa2309e7c",
+      "kind": "h2",
+      "chapter": "الدليل-الثامن-حديث-أبي-أمامة-رضي-الله-عنه",
+      "prev": "2cfa68527b6de682142c952c094959e738320e85c2166a89f18252acaf8876b1",
+      "next": "eaa242beb7606f8a957d5fdd30488297a2625288d36395a422ea3e4dfd215606"
+    },
+    {
+      "ord": 64,
+      "blockId": "8c4d5c1ac67b05b49cbcb4cbbb007f19",
+      "fp64": "9c54c01611464a5e",
+      "normHash": "eaa242beb7606f8a957d5fdd30488297a2625288d36395a422ea3e4dfd215606",
+      "kind": "li",
+      "chapter": "الدليل-الثامن-حديث-أبي-أمامة-رضي-الله-عنه",
+      "prev": "36b46fe14474e6b9edd55f2f165e92b92f0a6a1f40517f3f68a067aaa2309e7c",
+      "next": "383d89b0ba738622effce2852fb9b085ecc894e424dc952dbf552ef9588bff4e"
+    },
+    {
+      "ord": 65,
+      "blockId": "cfab149ed2e145bb4fbe6ae679278b6e",
+      "fp64": "fd7dc03af8fc3fee",
+      "normHash": "383d89b0ba738622effce2852fb9b085ecc894e424dc952dbf552ef9588bff4e",
+      "kind": "h2",
+      "chapter": "الدليل-التاسع-حديث-أبي-الدرداء-رضي-الله-عنه",
+      "prev": "eaa242beb7606f8a957d5fdd30488297a2625288d36395a422ea3e4dfd215606",
+      "next": "5a3caff90279600819a69261cf29c2ee3c16521c918138622bdd724810f66ea7"
+    },
+    {
+      "ord": 66,
+      "blockId": "88b057e380064811ede884562eceecc7",
+      "fp64": "7e4ed053d9547c1e",
+      "normHash": "5a3caff90279600819a69261cf29c2ee3c16521c918138622bdd724810f66ea7",
+      "kind": "li",
+      "chapter": "الدليل-التاسع-حديث-أبي-الدرداء-رضي-الله-عنه",
+      "prev": "383d89b0ba738622effce2852fb9b085ecc894e424dc952dbf552ef9588bff4e",
+      "next": "94465cd70373a0e0aee1a9f395b78c1464b3872e30480b9a13a54ed021bdc51e"
+    },
+    {
+      "ord": 67,
+      "blockId": "bec6f3cc2c66332f77e5bfff729b17ed",
+      "fp64": "5f4d605315749e42",
+      "normHash": "94465cd70373a0e0aee1a9f395b78c1464b3872e30480b9a13a54ed021bdc51e",
+      "kind": "p",
+      "chapter": "الدليل-التاسع-حديث-أبي-الدرداء-رضي-الله-عنه",
+      "prev": "5a3caff90279600819a69261cf29c2ee3c16521c918138622bdd724810f66ea7",
+      "next": "3ac3fae37d9c27a37c8eda6b5620e12928e9e38c82616303a0543fa19a9fc15e"
+    },
+    {
+      "ord": 68,
+      "blockId": "a91de3796fe1a3aa70a1ee56de1b2c81",
+      "fp64": "addff3be5ffd647e",
+      "normHash": "3ac3fae37d9c27a37c8eda6b5620e12928e9e38c82616303a0543fa19a9fc15e",
+      "kind": "page",
+      "chapter": "الدليل-التاسع-حديث-أبي-الدرداء-رضي-الله-عنه",
+      "prev": "94465cd70373a0e0aee1a9f395b78c1464b3872e30480b9a13a54ed021bdc51e",
+      "next": "40d398c326c53cca4bdb3c85d26810be221468c7a70387c5675dd3c06a2c49e6"
+    },
+    {
+      "ord": 69,
+      "blockId": "14701c48249dbfc4e9289576739d313b",
+      "fp64": "7cacf85bdf016862",
+      "normHash": "40d398c326c53cca4bdb3c85d26810be221468c7a70387c5675dd3c06a2c49e6",
+      "kind": "h2",
+      "chapter": "المبحث-الثالث-وصول-ثواب-القرب-المهداة-إلى-أموات-المسلمين",
+      "prev": "3ac3fae37d9c27a37c8eda6b5620e12928e9e38c82616303a0543fa19a9fc15e",
+      "next": "5f7b8f6950f425fe52a95c1dfc3432ed7e8d4a86de41c74f3fbb5aa051e9e990"
+    },
+    {
+      "ord": 70,
+      "blockId": "867ee20970f6da7f87b7e9a65bc0874a",
+      "fp64": "5fe9fd5bd3676872",
+      "normHash": "5f7b8f6950f425fe52a95c1dfc3432ed7e8d4a86de41c74f3fbb5aa051e9e990",
+      "kind": "p",
+      "chapter": "المبحث-الثالث-وصول-ثواب-القرب-المهداة-إلى-أموات-المسلمين",
+      "prev": "40d398c326c53cca4bdb3c85d26810be221468c7a70387c5675dd3c06a2c49e6",
+      "next": "9e632878eeffd4a253de47ecb8ca6060e889e65336dcb62c8674839c3c55b668"
+    },
+    {
+      "ord": 71,
+      "blockId": "cb2fcf97f5bdef1728851df5691c250a",
+      "fp64": "fac9fa7fb773ef47",
+      "normHash": "9e632878eeffd4a253de47ecb8ca6060e889e65336dcb62c8674839c3c55b668",
+      "kind": "h2",
+      "chapter": "أولا-الأدلة-من-القرآن-الكريم-منها-ما-يأتي",
+      "prev": "5f7b8f6950f425fe52a95c1dfc3432ed7e8d4a86de41c74f3fbb5aa051e9e990",
+      "next": "c7d9d32f54b8a2a45bac52b3c3c8725b6acfc66f7b1b61ee6f6c8d7e9c47ddb6"
+    },
+    {
+      "ord": 72,
+      "blockId": "fdcfee462906c732bab9f8fbed4d93d7",
+      "fp64": "d6cbb6465d7fad4c",
+      "normHash": "c7d9d32f54b8a2a45bac52b3c3c8725b6acfc66f7b1b61ee6f6c8d7e9c47ddb6",
+      "kind": "p",
+      "chapter": "أولا-الأدلة-من-القرآن-الكريم-منها-ما-يأتي",
+      "prev": "9e632878eeffd4a253de47ecb8ca6060e889e65336dcb62c8674839c3c55b668",
+      "next": "8da0dd2219987e9a8fb2ea684ecf634e8b83332a7f9d4a3c9715d786a1b544c1"
+    },
+    {
+      "ord": 73,
+      "blockId": "0ae3f0619d1249a56e44f17cb58b23a6",
+      "fp64": "5cfe62f839d53537",
+      "normHash": "8da0dd2219987e9a8fb2ea684ecf634e8b83332a7f9d4a3c9715d786a1b544c1",
+      "kind": "p",
+      "chapter": "أولا-الأدلة-من-القرآن-الكريم-منها-ما-يأتي",
+      "prev": "c7d9d32f54b8a2a45bac52b3c3c8725b6acfc66f7b1b61ee6f6c8d7e9c47ddb6",
+      "next": "01c9195ac2296bdc5f89bb5a800ead4220cf81dfa6002b7a7becdeb795d13c20"
+    },
+    {
+      "ord": 74,
+      "blockId": "b950fea8d63c3afef2eb8bfb4f3a923f",
+      "fp64": "ccb8d23a1f959f95",
+      "normHash": "01c9195ac2296bdc5f89bb5a800ead4220cf81dfa6002b7a7becdeb795d13c20",
+      "kind": "p",
+      "chapter": "أولا-الأدلة-من-القرآن-الكريم-منها-ما-يأتي",
+      "prev": "8da0dd2219987e9a8fb2ea684ecf634e8b83332a7f9d4a3c9715d786a1b544c1",
+      "next": "64b1ed45384c5e6c8474d815b4efcc8dafcce0a6982e0dadb76378d62d1754c8"
+    },
+    {
+      "ord": 75,
+      "blockId": "3acb22126a3ee3cfc81a19b289763aeb",
+      "fp64": "b9a9e23b16876e22",
+      "normHash": "64b1ed45384c5e6c8474d815b4efcc8dafcce0a6982e0dadb76378d62d1754c8",
+      "kind": "p",
+      "chapter": "أولا-الأدلة-من-القرآن-الكريم-منها-ما-يأتي",
+      "prev": "01c9195ac2296bdc5f89bb5a800ead4220cf81dfa6002b7a7becdeb795d13c20",
+      "next": "4581d04ab7938e775963f37eee16e60c2f3000bc0c978bbdf46ccb9c9cb67ee5"
+    },
+    {
+      "ord": 76,
+      "blockId": "f3bffa45cebdf9186808383343a2a666",
+      "fp64": "f7dffbbe7e3be87f",
+      "normHash": "4581d04ab7938e775963f37eee16e60c2f3000bc0c978bbdf46ccb9c9cb67ee5",
+      "kind": "page",
+      "chapter": "أولا-الأدلة-من-القرآن-الكريم-منها-ما-يأتي",
+      "prev": "64b1ed45384c5e6c8474d815b4efcc8dafcce0a6982e0dadb76378d62d1754c8",
+      "next": "9a44cb4b9cd656686605c9f0a0c19c8bbb7b44e503012dfa683a6d06b2da7243"
+    },
+    {
+      "ord": 77,
+      "blockId": "7145b4884f44f4f0da734149a05340d5",
+      "fp64": "dd9887621df28649",
+      "normHash": "9a44cb4b9cd656686605c9f0a0c19c8bbb7b44e503012dfa683a6d06b2da7243",
+      "kind": "p",
+      "chapter": "أولا-الأدلة-من-القرآن-الكريم-منها-ما-يأتي",
+      "prev": "4581d04ab7938e775963f37eee16e60c2f3000bc0c978bbdf46ccb9c9cb67ee5",
+      "next": "1f75da0eeb3407d0cbf00c78851aea3dfb098915c809df0b5b160eca9763a167"
+    },
+    {
+      "ord": 78,
+      "blockId": "8fd80f1efcff21484364feada429839e",
+      "fp64": "8ac6426f2373c847",
+      "normHash": "1f75da0eeb3407d0cbf00c78851aea3dfb098915c809df0b5b160eca9763a167",
+      "kind": "h2",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "9a44cb4b9cd656686605c9f0a0c19c8bbb7b44e503012dfa683a6d06b2da7243",
+      "next": "e98d4a07d2b71891c3790087a98138b67f17b0ab98f8f8c8cd040adf38268c19"
+    },
+    {
+      "ord": 79,
+      "blockId": "95a828c0c63a03ab8c0badf9f8527e93",
+      "fp64": "c5e4e03998743de6",
+      "normHash": "e98d4a07d2b71891c3790087a98138b67f17b0ab98f8f8c8cd040adf38268c19",
+      "kind": "h3",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "1f75da0eeb3407d0cbf00c78851aea3dfb098915c809df0b5b160eca9763a167",
+      "next": "2bf3f0184dc0892584a14ad6ffc34d79899750d2fa3c5a01b974b0cf2f386f8b"
+    },
+    {
+      "ord": 80,
+      "blockId": "2207223d8a37d371ea923b4788ddce0f",
+      "fp64": "6440c41bbd45795c",
+      "normHash": "2bf3f0184dc0892584a14ad6ffc34d79899750d2fa3c5a01b974b0cf2f386f8b",
+      "kind": "p",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "e98d4a07d2b71891c3790087a98138b67f17b0ab98f8f8c8cd040adf38268c19",
+      "next": "252b8aa6b338b337d9b45036c0eea348d0e612b82e2b0eb31b7d65d97a1b21eb"
+    },
+    {
+      "ord": 81,
+      "blockId": "182de0732b406638dbed074bfd0c9134",
+      "fp64": "f7e7e02b38b43def",
+      "normHash": "252b8aa6b338b337d9b45036c0eea348d0e612b82e2b0eb31b7d65d97a1b21eb",
+      "kind": "h3",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "2bf3f0184dc0892584a14ad6ffc34d79899750d2fa3c5a01b974b0cf2f386f8b",
+      "next": "9b1a8511ace478503add1df2b220bf268311e213d2c81c612a017ba584ed68a7"
+    },
+    {
+      "ord": 82,
+      "blockId": "a8b929b2364d33d26ce1bed106383610",
+      "fp64": "bcc7e0040f7859fa",
+      "normHash": "9b1a8511ace478503add1df2b220bf268311e213d2c81c612a017ba584ed68a7",
+      "kind": "p",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "252b8aa6b338b337d9b45036c0eea348d0e612b82e2b0eb31b7d65d97a1b21eb",
+      "next": "116c4b40a0e5954c18df8fb008f98877f734b6726a39dc6ff3c9ab307ed3c789"
+    },
+    {
+      "ord": 83,
+      "blockId": "02e0a741aa91f89a3453aee082cc0885",
+      "fp64": "414984029f7f389e",
+      "normHash": "116c4b40a0e5954c18df8fb008f98877f734b6726a39dc6ff3c9ab307ed3c789",
+      "kind": "p",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "9b1a8511ace478503add1df2b220bf268311e213d2c81c612a017ba584ed68a7",
+      "next": "e5b0927ac6fbd7b43a3d3a27b287cf13c6902d415a651b612b87486d50f79fa4"
+    },
+    {
+      "ord": 84,
+      "blockId": "29a02e009cef02f3420eedd2297b93b1",
+      "fp64": "35ffffdf7bf5717f",
+      "normHash": "e5b0927ac6fbd7b43a3d3a27b287cf13c6902d415a651b612b87486d50f79fa4",
+      "kind": "page",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "116c4b40a0e5954c18df8fb008f98877f734b6726a39dc6ff3c9ab307ed3c789",
+      "next": "f231353fa3a2238852d63e17dc7903762b413c5a9545c7882c9c3e05ff0812fa"
+    },
+    {
+      "ord": 85,
+      "blockId": "49d708ca36cfb1e1f5e3f03dc9c4c871",
+      "fp64": "434744f79571632e",
+      "normHash": "f231353fa3a2238852d63e17dc7903762b413c5a9545c7882c9c3e05ff0812fa",
+      "kind": "p",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "e5b0927ac6fbd7b43a3d3a27b287cf13c6902d415a651b612b87486d50f79fa4",
+      "next": "69699a77f03a87ea6817359ea1ba3a4baaa9fea530358261b81b19067a2174c0"
+    },
+    {
+      "ord": 86,
+      "blockId": "663011f34629184b94875233e6045f38",
+      "fp64": "ffe5f81fd8b47fef",
+      "normHash": "69699a77f03a87ea6817359ea1ba3a4baaa9fea530358261b81b19067a2174c0",
+      "kind": "h3",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "f231353fa3a2238852d63e17dc7903762b413c5a9545c7882c9c3e05ff0812fa",
+      "next": "c67e58195ba0743bf09707874749d12e48f40fccfa901972b97276c3c92ed9d8"
+    },
+    {
+      "ord": 87,
+      "blockId": "655b99c95cdc6fedd93ffed502a0b4d4",
+      "fp64": "7455e01c3a745178",
+      "normHash": "c67e58195ba0743bf09707874749d12e48f40fccfa901972b97276c3c92ed9d8",
+      "kind": "p",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "69699a77f03a87ea6817359ea1ba3a4baaa9fea530358261b81b19067a2174c0",
+      "next": "86d25661b724fce60b426ccd78b37a189d918dc389e18402b01d381803a8fe56"
+    },
+    {
+      "ord": 88,
+      "blockId": "a35056c7257cfb4a83fd1e67e1c49833",
+      "fp64": "41cdec009d7670d6",
+      "normHash": "86d25661b724fce60b426ccd78b37a189d918dc389e18402b01d381803a8fe56",
+      "kind": "p",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "c67e58195ba0743bf09707874749d12e48f40fccfa901972b97276c3c92ed9d8",
+      "next": "f55481b69318e1c851e57306a7f55661daf11dd52e307451f386b3d8d15d48b2"
+    },
+    {
+      "ord": 89,
+      "blockId": "30fa65cdf829f74b925c0eca6174f0e7",
+      "fp64": "67dfff9e5fb3fb3f",
+      "normHash": "f55481b69318e1c851e57306a7f55661daf11dd52e307451f386b3d8d15d48b2",
+      "kind": "page",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "86d25661b724fce60b426ccd78b37a189d918dc389e18402b01d381803a8fe56",
+      "next": "499f2ff5e46f2ce6f51f52fd7ff5d0785fbd4a3c6e2cd4f8b358a6337a7a38cb"
+    },
+    {
+      "ord": 90,
+      "blockId": "6410bceec0b0385eb5cbbbdd2c050c06",
+      "fp64": "f427f0997034116e",
+      "normHash": "499f2ff5e46f2ce6f51f52fd7ff5d0785fbd4a3c6e2cd4f8b358a6337a7a38cb",
+      "kind": "h3",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "f55481b69318e1c851e57306a7f55661daf11dd52e307451f386b3d8d15d48b2",
+      "next": "07ab2d76925e32e99ae734ff672a93197f94bce51e59c4b069eb76301c8f38e1"
+    },
+    {
+      "ord": 91,
+      "blockId": "e4b8a9b72fa80fe83c3d68d6541d701c",
+      "fp64": "7402a014170f236a",
+      "normHash": "07ab2d76925e32e99ae734ff672a93197f94bce51e59c4b069eb76301c8f38e1",
+      "kind": "p",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "499f2ff5e46f2ce6f51f52fd7ff5d0785fbd4a3c6e2cd4f8b358a6337a7a38cb",
+      "next": "47d843a67fec80fbcfe1ed2d455702c8671a5637ab7b4e7dfa78fc793b828456"
+    },
+    {
+      "ord": 92,
+      "blockId": "0d658d90890f0741639b178e278d25c3",
+      "fp64": "f4bda01a58b4516e",
+      "normHash": "47d843a67fec80fbcfe1ed2d455702c8671a5637ab7b4e7dfa78fc793b828456",
+      "kind": "h3",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "07ab2d76925e32e99ae734ff672a93197f94bce51e59c4b069eb76301c8f38e1",
+      "next": "332fe7f3f87705c94cbe188634856beebb625827f1d8922e4d0fc08a8aad21ff"
+    },
+    {
+      "ord": 93,
+      "blockId": "e07655b031c7a209346608a96c0db219",
+      "fp64": "ae80e00891625379",
+      "normHash": "332fe7f3f87705c94cbe188634856beebb625827f1d8922e4d0fc08a8aad21ff",
+      "kind": "p",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "47d843a67fec80fbcfe1ed2d455702c8671a5637ab7b4e7dfa78fc793b828456",
+      "next": "6b6bb135f607bf849e10897f2fb50345d2a4bc8057290720195e886d73e42855"
+    },
+    {
+      "ord": 94,
+      "blockId": "c6ed01c18f5d43ab353046142670fb86",
+      "fp64": "514962d015708e1a",
+      "normHash": "6b6bb135f607bf849e10897f2fb50345d2a4bc8057290720195e886d73e42855",
+      "kind": "p",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "332fe7f3f87705c94cbe188634856beebb625827f1d8922e4d0fc08a8aad21ff",
+      "next": "cf82f37a0d9fa7db967582d57875f1098daf08f4fb5688263e59d6c97d092c67"
+    },
+    {
+      "ord": 95,
+      "blockId": "6403c1475897f34b567edc1bb8f03317",
+      "fp64": "6ddff7fadbb967b7",
+      "normHash": "cf82f37a0d9fa7db967582d57875f1098daf08f4fb5688263e59d6c97d092c67",
+      "kind": "page",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "6b6bb135f607bf849e10897f2fb50345d2a4bc8057290720195e886d73e42855",
+      "next": "a83b91296584a652c548d2c14cf8483bbb9577847b42e535b5ffc6c0c596e7cd"
+    },
+    {
+      "ord": 96,
+      "blockId": "bf7c420127affe7d7c0b3430b12f82f0",
+      "fp64": "5648e4d69859bf78",
+      "normHash": "a83b91296584a652c548d2c14cf8483bbb9577847b42e535b5ffc6c0c596e7cd",
+      "kind": "p",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "cf82f37a0d9fa7db967582d57875f1098daf08f4fb5688263e59d6c97d092c67",
+      "next": "a32a9319d5f1e2a3df391f6e0e6a9170685fe052c3db597f97ae9dd7cb8fa94b"
+    },
+    {
+      "ord": 97,
+      "blockId": "e7bd8fa9e26b00a614fbe3ea3405d334",
+      "fp64": "f57dc01efcfd71fe",
+      "normHash": "a32a9319d5f1e2a3df391f6e0e6a9170685fe052c3db597f97ae9dd7cb8fa94b",
+      "kind": "h3",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "a83b91296584a652c548d2c14cf8483bbb9577847b42e535b5ffc6c0c596e7cd",
+      "next": "905abef10a66a8c4ae54fbbac3edd5f8ee76eca362f71831db5e807756cd0ef1"
+    },
+    {
+      "ord": 98,
+      "blockId": "51b83340db74418e309911a46e217dee",
+      "fp64": "b471e01fab2a7bf8",
+      "normHash": "905abef10a66a8c4ae54fbbac3edd5f8ee76eca362f71831db5e807756cd0ef1",
+      "kind": "li",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "a32a9319d5f1e2a3df391f6e0e6a9170685fe052c3db597f97ae9dd7cb8fa94b",
+      "next": "1f0e39d6955426f5537f6d6a402d6f0a8f825c9d1da2ae6a00cf363de6c0360a"
+    },
+    {
+      "ord": 99,
+      "blockId": "0da0e45c91d542f08166165b85bba4b5",
+      "fp64": "7c5d709295542e17",
+      "normHash": "1f0e39d6955426f5537f6d6a402d6f0a8f825c9d1da2ae6a00cf363de6c0360a",
+      "kind": "p",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "905abef10a66a8c4ae54fbbac3edd5f8ee76eca362f71831db5e807756cd0ef1",
+      "next": "9da403adc6f7f743d1c743c8c84d8aed2f84904be7b6a5259cf89154e0840dbb"
+    },
+    {
+      "ord": 100,
+      "blockId": "425888b1b0f5963772dd2293ca505507",
+      "fp64": "77fff79a7ffb69f6",
+      "normHash": "9da403adc6f7f743d1c743c8c84d8aed2f84904be7b6a5259cf89154e0840dbb",
+      "kind": "page",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "1f0e39d6955426f5537f6d6a402d6f0a8f825c9d1da2ae6a00cf363de6c0360a",
+      "next": "75d3470dd202feca0c70dc06e4aa86d4be48aa85fbc94c9f090aa0fc582080a4"
+    },
+    {
+      "ord": 101,
+      "blockId": "510b99d3bb7a77e2e02a49f9e49db34f",
+      "fp64": "b470e0570766507c",
+      "normHash": "75d3470dd202feca0c70dc06e4aa86d4be48aa85fbc94c9f090aa0fc582080a4",
+      "kind": "li",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "9da403adc6f7f743d1c743c8c84d8aed2f84904be7b6a5259cf89154e0840dbb",
+      "next": "97f12350ab6073c9a7398bb924107e6ce501285606c44a8c76d0bc5333d64b83"
+    },
+    {
+      "ord": 102,
+      "blockId": "bca907b0d8897a73fbae2b0847d2e1b1",
+      "fp64": "7903619c353d1f53",
+      "normHash": "97f12350ab6073c9a7398bb924107e6ce501285606c44a8c76d0bc5333d64b83",
+      "kind": "p",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "75d3470dd202feca0c70dc06e4aa86d4be48aa85fbc94c9f090aa0fc582080a4",
+      "next": "afdb7313e5b92484c76c5195be2959c3631cc9c844a90c8fa37d3edfc9b28110"
+    },
+    {
+      "ord": 103,
+      "blockId": "a3a56c870044e8bf959853b1b6957ba6",
+      "fp64": "3fdffb9edbf77eb7",
+      "normHash": "afdb7313e5b92484c76c5195be2959c3631cc9c844a90c8fa37d3edfc9b28110",
+      "kind": "page",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "97f12350ab6073c9a7398bb924107e6ce501285606c44a8c76d0bc5333d64b83",
+      "next": "b4ed2c7f537aec006392d9d0a9798f35473996b5946abfeceeb71052c1b22287"
+    },
+    {
+      "ord": 104,
+      "blockId": "cef57cacdc3e09d604635ab4ec2511be",
+      "fp64": "f565c01f94fc79fe",
+      "normHash": "b4ed2c7f537aec006392d9d0a9798f35473996b5946abfeceeb71052c1b22287",
+      "kind": "h3",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "afdb7313e5b92484c76c5195be2959c3631cc9c844a90c8fa37d3edfc9b28110",
+      "next": "9d4f42740cb92c8dd0a1bd552261208187d0d4abbee7cb1e2d68d7075621c329"
+    },
+    {
+      "ord": 105,
+      "blockId": "d0cfc17713943952e146fba6638c8c03",
+      "fp64": "2094a017095445fe",
+      "normHash": "9d4f42740cb92c8dd0a1bd552261208187d0d4abbee7cb1e2d68d7075621c329",
+      "kind": "p",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "b4ed2c7f537aec006392d9d0a9798f35473996b5946abfeceeb71052c1b22287",
+      "next": "3cc4dd070aadcbd6aa8295b59b1a78862170f25a130f4d148a17dcf5de70b776"
+    },
+    {
+      "ord": 106,
+      "blockId": "7d5a51cb4501520ad9c7e2e716ad1840",
+      "fp64": "55cb2691774dd7eb",
+      "normHash": "3cc4dd070aadcbd6aa8295b59b1a78862170f25a130f4d148a17dcf5de70b776",
+      "kind": "p",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "9d4f42740cb92c8dd0a1bd552261208187d0d4abbee7cb1e2d68d7075621c329",
+      "next": "c9d963f038c204cdec8da768bce98e69d1bf414d903aae3bc061b11205939f2a"
+    },
+    {
+      "ord": 107,
+      "blockId": "3f9e63fceaa374c8f474c7c622b01fdb",
+      "fp64": "37dff79f5f756377",
+      "normHash": "c9d963f038c204cdec8da768bce98e69d1bf414d903aae3bc061b11205939f2a",
+      "kind": "page",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "3cc4dd070aadcbd6aa8295b59b1a78862170f25a130f4d148a17dcf5de70b776",
+      "next": "d582c964811d3620214baedf3f89e0caf92be79f4c6e90998b59904757a62d83"
+    },
+    {
+      "ord": 108,
+      "blockId": "c957ce50b5c2a8febb07cd5b2d9e84d7",
+      "fp64": "a045cc4c3b596f74",
+      "normHash": "d582c964811d3620214baedf3f89e0caf92be79f4c6e90998b59904757a62d83",
+      "kind": "p",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "c9d963f038c204cdec8da768bce98e69d1bf414d903aae3bc061b11205939f2a",
+      "next": "6f333a60831df309182eacfb414cc2d3cfa3325a50a5de1f2ab8715319b1a147"
+    },
+    {
+      "ord": 109,
+      "blockId": "c3874bb346b6f3258c42566f29d50cfd",
+      "fp64": "f465c03a593c136e",
+      "normHash": "6f333a60831df309182eacfb414cc2d3cfa3325a50a5de1f2ab8715319b1a147",
+      "kind": "h3",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "d582c964811d3620214baedf3f89e0caf92be79f4c6e90998b59904757a62d83",
+      "next": "161939efac8e102351a0fc4ddcaf4b880b6d7290b678afc5f69c33b2307c2566"
+    },
+    {
+      "ord": 110,
+      "blockId": "563d47aecaca639b38d463b28af11140",
+      "fp64": "acd160dc8726b5fc",
+      "normHash": "161939efac8e102351a0fc4ddcaf4b880b6d7290b678afc5f69c33b2307c2566",
+      "kind": "li",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "6f333a60831df309182eacfb414cc2d3cfa3325a50a5de1f2ab8715319b1a147",
+      "next": "3d866ada10ac0d94f03dda34464c92ccfbdc47f7e8cb67d80b10a6e187bd207e"
+    },
+    {
+      "ord": 111,
+      "blockId": "abb05a1ee18e43be51ff5742360b9640",
+      "fp64": "11596a9695718416",
+      "normHash": "3d866ada10ac0d94f03dda34464c92ccfbdc47f7e8cb67d80b10a6e187bd207e",
+      "kind": "p",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "161939efac8e102351a0fc4ddcaf4b880b6d7290b678afc5f69c33b2307c2566",
+      "next": "fd7450c1f92d52b91075220c636129ef702e8e7c29edc73d8f2e81df8a091618"
+    },
+    {
+      "ord": 112,
+      "blockId": "74fd2cbe2449779d9fa5c158377e5c28",
+      "fp64": "77dff3dadf79e97e",
+      "normHash": "fd7450c1f92d52b91075220c636129ef702e8e7c29edc73d8f2e81df8a091618",
+      "kind": "page",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "3d866ada10ac0d94f03dda34464c92ccfbdc47f7e8cb67d80b10a6e187bd207e",
+      "next": "f948f184f102e76b0135481c6c92b32c5a27b994f0821c4fda205c1aa88c28c5"
+    },
+    {
+      "ord": 113,
+      "blockId": "cd483bc966b4e74dbf99d8c698e2a6a6",
+      "fp64": "5801408b1dcc2ecb",
+      "normHash": "f948f184f102e76b0135481c6c92b32c5a27b994f0821c4fda205c1aa88c28c5",
+      "kind": "p",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "fd7450c1f92d52b91075220c636129ef702e8e7c29edc73d8f2e81df8a091618",
+      "next": "ab173566e217138efbae47505ff9e069bc90a871004cda354be2bca901ef1043"
+    },
+    {
+      "ord": 114,
+      "blockId": "71734274ed9ada2e0fe558ff129edb38",
+      "fp64": "c5e5c02af87c3df6",
+      "normHash": "ab173566e217138efbae47505ff9e069bc90a871004cda354be2bca901ef1043",
+      "kind": "h3",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "f948f184f102e76b0135481c6c92b32c5a27b994f0821c4fda205c1aa88c28c5",
+      "next": "a4e36d274f65fc3a2dc5c13288bcc77b4c729221bd9dd9522af81695e287e047"
+    },
+    {
+      "ord": 115,
+      "blockId": "95e8f2071ec69c663ea6dc0f94100f5b",
+      "fp64": "3660c0b7b7767dfc",
+      "normHash": "a4e36d274f65fc3a2dc5c13288bcc77b4c729221bd9dd9522af81695e287e047",
+      "kind": "p",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "ab173566e217138efbae47505ff9e069bc90a871004cda354be2bca901ef1043",
+      "next": "d53473bfb64ed1d323d3065218120114c3d631b5a00511ef462a9f1392a706c9"
+    },
+    {
+      "ord": 116,
+      "blockId": "dc3de514bff3c420708808d76dde0f4e",
+      "fp64": "cad9f2ba5b6fbfee",
+      "normHash": "d53473bfb64ed1d323d3065218120114c3d631b5a00511ef462a9f1392a706c9",
+      "kind": "h3",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "a4e36d274f65fc3a2dc5c13288bcc77b4c729221bd9dd9522af81695e287e047",
+      "next": "b4e87007914d34559bc7ca21f15f0b3a2e06c5e72d5b3877555ed845275f25da"
+    },
+    {
+      "ord": 117,
+      "blockId": "ecf6dc7ab3825c688fbe434d7158af1b",
+      "fp64": "804a288424266c18",
+      "normHash": "b4e87007914d34559bc7ca21f15f0b3a2e06c5e72d5b3877555ed845275f25da",
+      "kind": "p",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "d53473bfb64ed1d323d3065218120114c3d631b5a00511ef462a9f1392a706c9",
+      "next": "83147edf55c1b10dd6b2b719aef7a5a3dcdd49585f3395a196c61a1fad463cee"
+    },
+    {
+      "ord": 118,
+      "blockId": "d07c58851cea551c706cef7008dfce64",
+      "fp64": "9e19f09135540e94",
+      "normHash": "83147edf55c1b10dd6b2b719aef7a5a3dcdd49585f3395a196c61a1fad463cee",
+      "kind": "p",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "b4e87007914d34559bc7ca21f15f0b3a2e06c5e72d5b3877555ed845275f25da",
+      "next": "d3fc5bd9b2f63785248129ea03bccffcaf940956b7d8a0eead4645fbe9ba5066"
+    },
+    {
+      "ord": 119,
+      "blockId": "0a3c8b13f113d86443cc3d01faa6f0bd",
+      "fp64": "f7fff79efaf160b6",
+      "normHash": "d3fc5bd9b2f63785248129ea03bccffcaf940956b7d8a0eead4645fbe9ba5066",
+      "kind": "page",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "83147edf55c1b10dd6b2b719aef7a5a3dcdd49585f3395a196c61a1fad463cee",
+      "next": "6b58523104c4798ddc6c30184a929347ef56e70c571908ebf69fc68939c72b41"
+    },
+    {
+      "ord": 120,
+      "blockId": "e42a6b11e3cb1e5dc5ffe992bfcc5882",
+      "fp64": "fc7dc0131b4c7a6c",
+      "normHash": "6b58523104c4798ddc6c30184a929347ef56e70c571908ebf69fc68939c72b41",
+      "kind": "p",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "d3fc5bd9b2f63785248129ea03bccffcaf940956b7d8a0eead4645fbe9ba5066",
+      "next": "79ba048a469e097ad22e2a6fe33a47a84d20afd11c71db6625996dd805de0fbf"
+    },
+    {
+      "ord": 121,
+      "blockId": "b5d0f1e6857f007fc4bd784194088234",
+      "fp64": "f4137016c6f4707e",
+      "normHash": "79ba048a469e097ad22e2a6fe33a47a84d20afd11c71db6625996dd805de0fbf",
+      "kind": "h3",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "6b58523104c4798ddc6c30184a929347ef56e70c571908ebf69fc68939c72b41",
+      "next": "5d9d007451f9b9f64d92ac409d53a0c3c023127f2d5022d755d21f26862015b2"
+    },
+    {
+      "ord": 122,
+      "blockId": "2fec6315f3ab6ed8bb4f4241c6229879",
+      "fp64": "7c0860aabccd7d53",
+      "normHash": "5d9d007451f9b9f64d92ac409d53a0c3c023127f2d5022d755d21f26862015b2",
+      "kind": "p",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "79ba048a469e097ad22e2a6fe33a47a84d20afd11c71db6625996dd805de0fbf",
+      "next": "7849c4e9e498e0ed85cbfd3654ff85384db8d4984c684543c4cd152ca893c39e"
+    },
+    {
+      "ord": 123,
+      "blockId": "f5c7ea7b36aafdd4ac594ddf1ff1ddc3",
+      "fp64": "526fa0b8536d3c37",
+      "normHash": "7849c4e9e498e0ed85cbfd3654ff85384db8d4984c684543c4cd152ca893c39e",
+      "kind": "h3",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "5d9d007451f9b9f64d92ac409d53a0c3c023127f2d5022d755d21f26862015b2",
+      "next": "94baeb1e86aab22dbda60298c3ad398b8046908389ca4dcc57755253326d10e1"
+    },
+    {
+      "ord": 124,
+      "blockId": "d1eca53dbf0b29959a07bd18bedcc80f",
+      "fp64": "97cca15b571d921c",
+      "normHash": "94baeb1e86aab22dbda60298c3ad398b8046908389ca4dcc57755253326d10e1",
+      "kind": "p",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "7849c4e9e498e0ed85cbfd3654ff85384db8d4984c684543c4cd152ca893c39e",
+      "next": "4dc495fa3aab5f7388b4b1c387bda5bbcdc6ab44b4e2d61fc9e3367486f3448c"
+    },
+    {
+      "ord": 125,
+      "blockId": "cab6a449070761b6a931a3133cf45aa1",
+      "fp64": "cf5870c29f74fc5e",
+      "normHash": "4dc495fa3aab5f7388b4b1c387bda5bbcdc6ab44b4e2d61fc9e3367486f3448c",
+      "kind": "p",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "94baeb1e86aab22dbda60298c3ad398b8046908389ca4dcc57755253326d10e1",
+      "next": "68f3727261046665f498c65a90fa7e68e048dc53941446d1ded55914c30c2e89"
+    },
+    {
+      "ord": 126,
+      "blockId": "a45143a7402034613184aa25d5e3506f",
+      "fp64": "efdff3daff39eaf7",
+      "normHash": "68f3727261046665f498c65a90fa7e68e048dc53941446d1ded55914c30c2e89",
+      "kind": "page",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "4dc495fa3aab5f7388b4b1c387bda5bbcdc6ab44b4e2d61fc9e3367486f3448c",
+      "next": "3a31e27a5e5aa3320051d5be384550985bfc19b7665ae1d11c50615034e293cd"
+    },
+    {
+      "ord": 127,
+      "blockId": "9515d1c4b70ccf8382d7e8e2ec01bfb2",
+      "fp64": "7c5280157758117a",
+      "normHash": "3a31e27a5e5aa3320051d5be384550985bfc19b7665ae1d11c50615034e293cd",
+      "kind": "p",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "68f3727261046665f498c65a90fa7e68e048dc53941446d1ded55914c30c2e89",
+      "next": "fe730f414a32470e7af362f8b0100ae22448059bdaef1188f02e9e7c0fcda727"
+    },
+    {
+      "ord": 128,
+      "blockId": "ef8fa01fa54f9db3fa45ff393663e3de",
+      "fp64": "ff53c057a738717c",
+      "normHash": "fe730f414a32470e7af362f8b0100ae22448059bdaef1188f02e9e7c0fcda727",
+      "kind": "p",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "3a31e27a5e5aa3320051d5be384550985bfc19b7665ae1d11c50615034e293cd",
+      "next": "7a78627fb8bac88ab6b36aec6a7180db8e710b7f09e674326a9aa3ec4a685775"
+    },
+    {
+      "ord": 129,
+      "blockId": "9edee34841f124a4fa2b2002f8304a0c",
+      "fp64": "7fa868ddde27ef0e",
+      "normHash": "7a78627fb8bac88ab6b36aec6a7180db8e710b7f09e674326a9aa3ec4a685775",
+      "kind": "h3",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "fe730f414a32470e7af362f8b0100ae22448059bdaef1188f02e9e7c0fcda727",
+      "next": "531e2d785aecad299076a598335785065c2a8595127387a7c24d4ab57632da10"
+    },
+    {
+      "ord": 130,
+      "blockId": "378966949b077e2e89dee0e2edbfd310",
+      "fp64": "a41b2efa8e75df5f",
+      "normHash": "531e2d785aecad299076a598335785065c2a8595127387a7c24d4ab57632da10",
+      "kind": "p",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "7a78627fb8bac88ab6b36aec6a7180db8e710b7f09e674326a9aa3ec4a685775",
+      "next": "d285128d52e5e629647b8f11abfba6afc643b987b000a85d1738eb5c6c2671af"
+    },
+    {
+      "ord": 131,
+      "blockId": "fb7f08cda7e7cfbfd4b89f87fe586321",
+      "fp64": "d01060d495571c5c",
+      "normHash": "d285128d52e5e629647b8f11abfba6afc643b987b000a85d1738eb5c6c2671af",
+      "kind": "p",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "531e2d785aecad299076a598335785065c2a8595127387a7c24d4ab57632da10",
+      "next": "10d76e1879a1ef6f2fe39e5c5b89e33e22083ebb14a869c0d2495f87dc134686"
+    },
+    {
+      "ord": 132,
+      "blockId": "98c3c310d5f65023a50a2f2eb6f95cde",
+      "fp64": "a5ffff9a5a776b7f",
+      "normHash": "10d76e1879a1ef6f2fe39e5c5b89e33e22083ebb14a869c0d2495f87dc134686",
+      "kind": "page",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "d285128d52e5e629647b8f11abfba6afc643b987b000a85d1738eb5c6c2671af",
+      "next": "9a90775a9f2543a8a2d8ce8368e4c696f2718a354b940a6a7cb859748b39baa6"
+    },
+    {
+      "ord": 133,
+      "blockId": "8924f1189a528d1a9b2a1f7948439577",
+      "fp64": "2fc6c0539f7b5d7e",
+      "normHash": "9a90775a9f2543a8a2d8ce8368e4c696f2718a354b940a6a7cb859748b39baa6",
+      "kind": "p",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "10d76e1879a1ef6f2fe39e5c5b89e33e22083ebb14a869c0d2495f87dc134686",
+      "next": "687d1b108951d06c40147a23f62c10aec85411e054fc0b180e76bb9a26ff1aaf"
+    },
+    {
+      "ord": 134,
+      "blockId": "3baa7cfe2c062b8ff07af9d3b40303c1",
+      "fp64": "f5e6e439d87c7df6",
+      "normHash": "687d1b108951d06c40147a23f62c10aec85411e054fc0b180e76bb9a26ff1aaf",
+      "kind": "h3",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "9a90775a9f2543a8a2d8ce8368e4c696f2718a354b940a6a7cb859748b39baa6",
+      "next": "425d840b5e59d1f9184101cb5c7b09ca2af0ec54ab24790204aee4905a8b55cd"
+    },
+    {
+      "ord": 135,
+      "blockId": "1f4f6d717566cab9e040cc31970b19bc",
+      "fp64": "50827020ae501e50",
+      "normHash": "425d840b5e59d1f9184101cb5c7b09ca2af0ec54ab24790204aee4905a8b55cd",
+      "kind": "p",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "687d1b108951d06c40147a23f62c10aec85411e054fc0b180e76bb9a26ff1aaf",
+      "next": "d2e9f2292c63428cba94036332da88641f6f4d17be875a7c1b4f8f007579407b"
+    },
+    {
+      "ord": 136,
+      "blockId": "b05b78ecd2db340e581e8168991f3a4a",
+      "fp64": "45186804956d245e",
+      "normHash": "d2e9f2292c63428cba94036332da88641f6f4d17be875a7c1b4f8f007579407b",
+      "kind": "p",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "425d840b5e59d1f9184101cb5c7b09ca2af0ec54ab24790204aee4905a8b55cd",
+      "next": "a181acef972400c92ed3ae51e67ba828b894042089a48611cc161a547d84306a"
+    },
+    {
+      "ord": 137,
+      "blockId": "aa2ad4c5614d54813fd5fdd30f10b3c5",
+      "fp64": "2ffff3fbdf3f7f7e",
+      "normHash": "a181acef972400c92ed3ae51e67ba828b894042089a48611cc161a547d84306a",
+      "kind": "page",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "d2e9f2292c63428cba94036332da88641f6f4d17be875a7c1b4f8f007579407b",
+      "next": "be3130c2755fe8e3725d6657849313cd65d7d240b5f54524e63059e5785f05da"
+    },
+    {
+      "ord": 138,
+      "blockId": "a28635ae7ce9efcff1947488ae72f607",
+      "fp64": "f765800b50b479ef",
+      "normHash": "be3130c2755fe8e3725d6657849313cd65d7d240b5f54524e63059e5785f05da",
+      "kind": "h3",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "a181acef972400c92ed3ae51e67ba828b894042089a48611cc161a547d84306a",
+      "next": "09023a6a366cfd62b45f87e1257e5c7cebcff8f73c19d67ab327f1ee24e7d988"
+    },
+    {
+      "ord": 139,
+      "blockId": "2aa23b93e61f29713dab0faf64a2af19",
+      "fp64": "6042b40dbfc19c71",
+      "normHash": "09023a6a366cfd62b45f87e1257e5c7cebcff8f73c19d67ab327f1ee24e7d988",
+      "kind": "p",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "be3130c2755fe8e3725d6657849313cd65d7d240b5f54524e63059e5785f05da",
+      "next": "0d4707a393f168ffd8197861ab7316b40cbbfcb6d0bf0e2b010da6cc09b1b14f"
+    },
+    {
+      "ord": 140,
+      "blockId": "0d8734a14d85d9220313264fbaead678",
+      "fp64": "f76fe05c72fc717e",
+      "normHash": "0d4707a393f168ffd8197861ab7316b40cbbfcb6d0bf0e2b010da6cc09b1b14f",
+      "kind": "h3",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "09023a6a366cfd62b45f87e1257e5c7cebcff8f73c19d67ab327f1ee24e7d988",
+      "next": "c4343530afd04088ef7c6de24df12e66d18704170d3c45757bde7a630f99d0a3"
+    },
+    {
+      "ord": 141,
+      "blockId": "3205b7a4f42bd0d7bbcefc74afb0bb2a",
+      "fp64": "747236b55e2220d0",
+      "normHash": "c4343530afd04088ef7c6de24df12e66d18704170d3c45757bde7a630f99d0a3",
+      "kind": "li",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "0d4707a393f168ffd8197861ab7316b40cbbfcb6d0bf0e2b010da6cc09b1b14f",
+      "next": "834e0cad0dd794b47f40c28741b2e61a2ac5cd578931ba79baad255bcda17812"
+    },
+    {
+      "ord": 142,
+      "blockId": "8782ef9a0995c7a877353e441c64ec8e",
+      "fp64": "c12f008a1d6e2dd6",
+      "normHash": "834e0cad0dd794b47f40c28741b2e61a2ac5cd578931ba79baad255bcda17812",
+      "kind": "p",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "c4343530afd04088ef7c6de24df12e66d18704170d3c45757bde7a630f99d0a3",
+      "next": "b73aa4cdc874f833049801c90b61644752248ba6277e7139cb021ddcc4ca7d5c"
+    },
+    {
+      "ord": 143,
+      "blockId": "6fbd63d959f4d39df32eca0118a22d66",
+      "fp64": "afdff7fe5fb37f77",
+      "normHash": "b73aa4cdc874f833049801c90b61644752248ba6277e7139cb021ddcc4ca7d5c",
+      "kind": "page",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "834e0cad0dd794b47f40c28741b2e61a2ac5cd578931ba79baad255bcda17812",
+      "next": "4671c758c6d973f3d4d04acfe8883c8fce4b11e68095d4fe938da6bac8544525"
+    },
+    {
+      "ord": 144,
+      "blockId": "f0473a7b4cf3533798c289c18a1ef1c5",
+      "fp64": "734122b15468eb6e",
+      "normHash": "4671c758c6d973f3d4d04acfe8883c8fce4b11e68095d4fe938da6bac8544525",
+      "kind": "p",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "b73aa4cdc874f833049801c90b61644752248ba6277e7139cb021ddcc4ca7d5c",
+      "next": "e43c0f892d46104e9f7acc7d145e1bfcc74f103b67339f2a934f9241886988dc"
+    },
+    {
+      "ord": 145,
+      "blockId": "5669aa4c0201b5230a985b370a94d16e",
+      "fp64": "f56da03c503c7aee",
+      "normHash": "e43c0f892d46104e9f7acc7d145e1bfcc74f103b67339f2a934f9241886988dc",
+      "kind": "h3",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "4671c758c6d973f3d4d04acfe8883c8fce4b11e68095d4fe938da6bac8544525",
+      "next": "5b500bbcb03f97c669b6a95bf72427f3b8ace4c1293328d8b09e468bbd7cdc17"
+    },
+    {
+      "ord": 146,
+      "blockId": "f620ea74dbb566997c20223e40fb175b",
+      "fp64": "7482c01827000868",
+      "normHash": "5b500bbcb03f97c669b6a95bf72427f3b8ace4c1293328d8b09e468bbd7cdc17",
+      "kind": "p",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "e43c0f892d46104e9f7acc7d145e1bfcc74f103b67339f2a934f9241886988dc",
+      "next": "a33729758593ea11ee8ca1668e5308965695d48692043ae4eb4c8631942a7496"
+    },
+    {
+      "ord": 147,
+      "blockId": "d55ce1c454a465faffa605d6709ed36a",
+      "fp64": "e529e03edafc79f6",
+      "normHash": "a33729758593ea11ee8ca1668e5308965695d48692043ae4eb4c8631942a7496",
+      "kind": "h3",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "5b500bbcb03f97c669b6a95bf72427f3b8ace4c1293328d8b09e468bbd7cdc17",
+      "next": "23c92066555aed6221062ddf94ec13b970fac038211c09ea98995834a3fd93a5"
+    },
+    {
+      "ord": 148,
+      "blockId": "d5a935ceb529e88201a9eef1756172d7",
+      "fp64": "2492c0170c451178",
+      "normHash": "23c92066555aed6221062ddf94ec13b970fac038211c09ea98995834a3fd93a5",
+      "kind": "p",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "a33729758593ea11ee8ca1668e5308965695d48692043ae4eb4c8631942a7496",
+      "next": "6182b8dd26023700aec04d6f43a6d079ccd246e008a769ffa4269841fd52f434"
+    },
+    {
+      "ord": 149,
+      "blockId": "dd5bb5be7f5569f84dd33c6479a97866",
+      "fp64": "470960821d7ca856",
+      "normHash": "6182b8dd26023700aec04d6f43a6d079ccd246e008a769ffa4269841fd52f434",
+      "kind": "p",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "23c92066555aed6221062ddf94ec13b970fac038211c09ea98995834a3fd93a5",
+      "next": "f57279e5e08f65b9aa33e6f77c59738fd981675b1d001e1bb7fb0ade4dc7b44e"
+    },
+    {
+      "ord": 150,
+      "blockId": "7bac2b6ae2c3d8bddada6868fbe6d767",
+      "fp64": "bdfff3fb7b7175f6",
+      "normHash": "f57279e5e08f65b9aa33e6f77c59738fd981675b1d001e1bb7fb0ade4dc7b44e",
+      "kind": "page",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "6182b8dd26023700aec04d6f43a6d079ccd246e008a769ffa4269841fd52f434",
+      "next": "8ad2f2174dd09ebb858be2e3d72293fc32e0a70bc08022577c800fc264839178"
+    },
+    {
+      "ord": 151,
+      "blockId": "2ff2dd76af31737129793b31fa550ed4",
+      "fp64": "7459404e597c1368",
+      "normHash": "8ad2f2174dd09ebb858be2e3d72293fc32e0a70bc08022577c800fc264839178",
+      "kind": "p",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "f57279e5e08f65b9aa33e6f77c59738fd981675b1d001e1bb7fb0ade4dc7b44e",
+      "next": "383f6203ca940b1894d57fa75c5c19431edfdbb1f71a671bf116a8511f43a413"
+    },
+    {
+      "ord": 152,
+      "blockId": "fed49ef1ccc9206c8c46af7c4f897c8f",
+      "fp64": "c5f8e03e52747866",
+      "normHash": "383f6203ca940b1894d57fa75c5c19431edfdbb1f71a671bf116a8511f43a413",
+      "kind": "h3",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "8ad2f2174dd09ebb858be2e3d72293fc32e0a70bc08022577c800fc264839178",
+      "next": "aeede7de242b4123bc92b313a12bd13be4620cce84f9a479e1e3d13e3870720c"
+    },
+    {
+      "ord": 153,
+      "blockId": "8828f1748698069a1f1e497cbe77ccfc",
+      "fp64": "2c5081151f76587c",
+      "normHash": "aeede7de242b4123bc92b313a12bd13be4620cce84f9a479e1e3d13e3870720c",
+      "kind": "li",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "383f6203ca940b1894d57fa75c5c19431edfdbb1f71a671bf116a8511f43a413",
+      "next": "0c6514b0e3e10e9169e5c28dc4ff8d7335f23a8d061e7548acb415f38b97aac8"
+    },
+    {
+      "ord": 154,
+      "blockId": "da2f9f67b79fe67f1418b3f1dcf464c5",
+      "fp64": "ffe5f85b98b43fef",
+      "normHash": "0c6514b0e3e10e9169e5c28dc4ff8d7335f23a8d061e7548acb415f38b97aac8",
+      "kind": "h3",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "aeede7de242b4123bc92b313a12bd13be4620cce84f9a479e1e3d13e3870720c",
+      "next": "4273dc3ec3b627ed0855d1696cb3e19d6c98a1a145525838d49518ab56a5bbc7"
+    },
+    {
+      "ord": 155,
+      "blockId": "d3c8a913055a10cb98e537c8d36504fc",
+      "fp64": "2653f05b3b62f97c",
+      "normHash": "4273dc3ec3b627ed0855d1696cb3e19d6c98a1a145525838d49518ab56a5bbc7",
+      "kind": "p",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "0c6514b0e3e10e9169e5c28dc4ff8d7335f23a8d061e7548acb415f38b97aac8",
+      "next": "c8ffd30507953c556461213713b9c839a5377333374bfd3a5844e3bcf1e4931e"
+    },
+    {
+      "ord": 156,
+      "blockId": "7d86c857c5288087922e02d71cbf33b9",
+      "fp64": "431860c4357cac16",
+      "normHash": "c8ffd30507953c556461213713b9c839a5377333374bfd3a5844e3bcf1e4931e",
+      "kind": "p",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "4273dc3ec3b627ed0855d1696cb3e19d6c98a1a145525838d49518ab56a5bbc7",
+      "next": "c08cd48df02782a05d794b9546fe03555da34307f5cc30481c9cbf891f430ea4"
+    },
+    {
+      "ord": 157,
+      "blockId": "87b22e00ba6022ee4f213f1b197ef7d6",
+      "fp64": "2ddff7df7b79e5b7",
+      "normHash": "c08cd48df02782a05d794b9546fe03555da34307f5cc30481c9cbf891f430ea4",
+      "kind": "page",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "c8ffd30507953c556461213713b9c839a5377333374bfd3a5844e3bcf1e4931e",
+      "next": "f72fb8f1a79cabe93cc581a788478430abe57fb8075c91f7b170a7c70dc91678"
+    },
+    {
+      "ord": 158,
+      "blockId": "4e8b89c7ad2438644d10c1a90479630c",
+      "fp64": "4129225c7124aa49",
+      "normHash": "f72fb8f1a79cabe93cc581a788478430abe57fb8075c91f7b170a7c70dc91678",
+      "kind": "p",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "c08cd48df02782a05d794b9546fe03555da34307f5cc30481c9cbf891f430ea4",
+      "next": "94d87077f6b308657a2779a5ecab76fdba7c7bd806f1ac3204a3e143896fce61"
+    },
+    {
+      "ord": 159,
+      "blockId": "69229cde8c5e65916b4cdddfd32a04e6",
+      "fp64": "fd35c03cb06033ea",
+      "normHash": "94d87077f6b308657a2779a5ecab76fdba7c7bd806f1ac3204a3e143896fce61",
+      "kind": "h3",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "f72fb8f1a79cabe93cc581a788478430abe57fb8075c91f7b170a7c70dc91678",
+      "next": "d7ed32952c895c84e0f5139820175387c8760bb08ffe8d7c17478e17bdd1d7db"
+    },
+    {
+      "ord": 160,
+      "blockId": "68444a1d8c9c7928b5ab77362e4c62fd",
+      "fp64": "749ae24c7761b8f9",
+      "normHash": "d7ed32952c895c84e0f5139820175387c8760bb08ffe8d7c17478e17bdd1d7db",
+      "kind": "li",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "94d87077f6b308657a2779a5ecab76fdba7c7bd806f1ac3204a3e143896fce61",
+      "next": "0bcde0adae1794aaf3006f3909c5cef7eeb1436ca4f26230e284f205bdbeacae"
+    },
+    {
+      "ord": 161,
+      "blockId": "bd355cd72d00eb834b1abb6149dbbcf7",
+      "fp64": "f7e7c02b30b439e7",
+      "normHash": "0bcde0adae1794aaf3006f3909c5cef7eeb1436ca4f26230e284f205bdbeacae",
+      "kind": "h3",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "d7ed32952c895c84e0f5139820175387c8760bb08ffe8d7c17478e17bdd1d7db",
+      "next": "735ed41175df50a9033a0ac2d8721d3c0ff48a966146325c8981abf7736771ea"
+    },
+    {
+      "ord": 162,
+      "blockId": "c5b8b0bcae9dd138fdc42edfd0007119",
+      "fp64": "64d2e017b76878fc",
+      "normHash": "735ed41175df50a9033a0ac2d8721d3c0ff48a966146325c8981abf7736771ea",
+      "kind": "p",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "0bcde0adae1794aaf3006f3909c5cef7eeb1436ca4f26230e284f205bdbeacae",
+      "next": "2469db9b1eaa9deb61e266af07172965ae4ccc9ee9e057ac5a287d669747df02"
+    },
+    {
+      "ord": 163,
+      "blockId": "44d402620ba0de5dec64885ba30d3059",
+      "fp64": "41dc60461565c452",
+      "normHash": "2469db9b1eaa9deb61e266af07172965ae4ccc9ee9e057ac5a287d669747df02",
+      "kind": "p",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "735ed41175df50a9033a0ac2d8721d3c0ff48a966146325c8981abf7736771ea",
+      "next": "0516e251ec96bafda2747e69ea3f55e59a1298a8f0722685ea476a4f2cfc8bea"
+    },
+    {
+      "ord": 164,
+      "blockId": "0d130fe79b838f37a2dd968a98a689ad",
+      "fp64": "77ffff9efa7bfc7f",
+      "normHash": "0516e251ec96bafda2747e69ea3f55e59a1298a8f0722685ea476a4f2cfc8bea",
+      "kind": "page",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "2469db9b1eaa9deb61e266af07172965ae4ccc9ee9e057ac5a287d669747df02",
+      "next": "7838c17738b4de3d56cd23f76afb5351a63b517390c97f3a17c27e799941eb1a"
+    },
+    {
+      "ord": 165,
+      "blockId": "204f45a2c585ebd3b51f115a08c3b323",
+      "fp64": "25d227f177482e50",
+      "normHash": "7838c17738b4de3d56cd23f76afb5351a63b517390c97f3a17c27e799941eb1a",
+      "kind": "p",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "0516e251ec96bafda2747e69ea3f55e59a1298a8f0722685ea476a4f2cfc8bea",
+      "next": "696e46f1458f00c05702b780a983f279624429c9cc904d4c613b9f00235f9d4d"
+    },
+    {
+      "ord": 166,
+      "blockId": "e0e92fa4eb1adb01aeb0fcd1b87578ec",
+      "fp64": "ffa5c00f90b47be7",
+      "normHash": "696e46f1458f00c05702b780a983f279624429c9cc904d4c613b9f00235f9d4d",
+      "kind": "h3",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "7838c17738b4de3d56cd23f76afb5351a63b517390c97f3a17c27e799941eb1a",
+      "next": "9bf2cafc60a9e233234d87d391f2ce7cb93882f888a198a91acff32147ad69ea"
+    },
+    {
+      "ord": 167,
+      "blockId": "f00e9559c6ba6083cd7bb98eb2a54ba4",
+      "fp64": "6480e1835e404d58",
+      "normHash": "9bf2cafc60a9e233234d87d391f2ce7cb93882f888a198a91acff32147ad69ea",
+      "kind": "p",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "696e46f1458f00c05702b780a983f279624429c9cc904d4c613b9f00235f9d4d",
+      "next": "7d9b41fc441ca9b56ce0abe260424afbf7c6e94275e226873c8926297fbb39a3"
+    },
+    {
+      "ord": 168,
+      "blockId": "6e043aa53a5421d685383b1b6ebdab6e",
+      "fp64": "9601e0960fb8fcfe",
+      "normHash": "7d9b41fc441ca9b56ce0abe260424afbf7c6e94275e226873c8926297fbb39a3",
+      "kind": "p",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "9bf2cafc60a9e233234d87d391f2ce7cb93882f888a198a91acff32147ad69ea",
+      "next": "99f48085913fab23ed4d10f2ec220ad69f0feddf3f19563dad6dad3bed079794"
+    },
+    {
+      "ord": 169,
+      "blockId": "be1da7ef518d3aca235d2f73cf201f4d",
+      "fp64": "7091f424466188d8",
+      "normHash": "99f48085913fab23ed4d10f2ec220ad69f0feddf3f19563dad6dad3bed079794",
+      "kind": "p",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "7d9b41fc441ca9b56ce0abe260424afbf7c6e94275e226873c8926297fbb39a3",
+      "next": "d2d3384a5cbe2e413db085674608729a7c75eab2236e76350484dbfd13976dda"
+    },
+    {
+      "ord": 170,
+      "blockId": "2fa51d1875ed1268770121a4b4654421",
+      "fp64": "6058c0809d6ca550",
+      "normHash": "d2d3384a5cbe2e413db085674608729a7c75eab2236e76350484dbfd13976dda",
+      "kind": "p",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "99f48085913fab23ed4d10f2ec220ad69f0feddf3f19563dad6dad3bed079794",
+      "next": "2ab029640d0d4db368c048d36be6c59a5ae8545d4205df7e2b6173bbc905b96c"
+    },
+    {
+      "ord": 171,
+      "blockId": "acb24bed1b0b793ffa2192da80c51020",
+      "fp64": "77dff39fdf716677",
+      "normHash": "2ab029640d0d4db368c048d36be6c59a5ae8545d4205df7e2b6173bbc905b96c",
+      "kind": "page",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "d2d3384a5cbe2e413db085674608729a7c75eab2236e76350484dbfd13976dda",
+      "next": "9ed5d580cdff044f7f6b4ad9adba6bef8c45f8ebc454f67b650edd97fb910f5e"
+    },
+    {
+      "ord": 172,
+      "blockId": "1527904a0a6833e9325410d3f1716446",
+      "fp64": "f7a7c00b90b439e7",
+      "normHash": "9ed5d580cdff044f7f6b4ad9adba6bef8c45f8ebc454f67b650edd97fb910f5e",
+      "kind": "h3",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "2ab029640d0d4db368c048d36be6c59a5ae8545d4205df7e2b6173bbc905b96c",
+      "next": "acf9dd9940f78afbdb901255adc2a7e1923c9e915bec47c488f8581ac9fa8fdd"
+    },
+    {
+      "ord": 173,
+      "blockId": "9dd16fbab283c4652e17028cfcc0c9cd",
+      "fp64": "7055c2578f4669bc",
+      "normHash": "acf9dd9940f78afbdb901255adc2a7e1923c9e915bec47c488f8581ac9fa8fdd",
+      "kind": "p",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "9ed5d580cdff044f7f6b4ad9adba6bef8c45f8ebc454f67b650edd97fb910f5e",
+      "next": "250deccde2d29e503acff5b8a5a86b53e7f86bbfd22f1ff2a5db2bc36f25d6f8"
+    },
+    {
+      "ord": 174,
+      "blockId": "db182f320753419910c62aead917481a",
+      "fp64": "f7e5c83fb9fc79ee",
+      "normHash": "250deccde2d29e503acff5b8a5a86b53e7f86bbfd22f1ff2a5db2bc36f25d6f8",
+      "kind": "h3",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "acf9dd9940f78afbdb901255adc2a7e1923c9e915bec47c488f8581ac9fa8fdd",
+      "next": "8339815aeb90fb307141a2c2c2a3fdf0584319e3805365576a3fd05cf5946b11"
+    },
+    {
+      "ord": 175,
+      "blockId": "757e8fc9362a68cc4ed7044b024dab12",
+      "fp64": "644be456937d753c",
+      "normHash": "8339815aeb90fb307141a2c2c2a3fdf0584319e3805365576a3fd05cf5946b11",
+      "kind": "p",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "250deccde2d29e503acff5b8a5a86b53e7f86bbfd22f1ff2a5db2bc36f25d6f8",
+      "next": "98a538cdcf8f7c6d66e6b8ba9136743c6aae0967b5ad7cdf008ca47d88794027"
+    },
+    {
+      "ord": 176,
+      "blockId": "5862a40f698204122d2e944ae9f70d17",
+      "fp64": "fd2fc07c38b933ea",
+      "normHash": "98a538cdcf8f7c6d66e6b8ba9136743c6aae0967b5ad7cdf008ca47d88794027",
+      "kind": "h3",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "8339815aeb90fb307141a2c2c2a3fdf0584319e3805365576a3fd05cf5946b11",
+      "next": "a0feec395f95b9b0e6ddd5adfe1075edaf60cf59a7ba9c760f58305c1cb2c1b2"
+    },
+    {
+      "ord": 177,
+      "blockId": "207f4768e3156ff4e99b8ee8a38fcc40",
+      "fp64": "ac63c0179f6658b8",
+      "normHash": "a0feec395f95b9b0e6ddd5adfe1075edaf60cf59a7ba9c760f58305c1cb2c1b2",
+      "kind": "li",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "98a538cdcf8f7c6d66e6b8ba9136743c6aae0967b5ad7cdf008ca47d88794027",
+      "next": "676567f3da3ce6fb07ad2fd4913563f5849f30c8f3077526b82269f2cb172373"
+    },
+    {
+      "ord": 178,
+      "blockId": "931653ff4c43fd122e303884a49f0620",
+      "fp64": "585d60d7156d9e1a",
+      "normHash": "676567f3da3ce6fb07ad2fd4913563f5849f30c8f3077526b82269f2cb172373",
+      "kind": "p",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "a0feec395f95b9b0e6ddd5adfe1075edaf60cf59a7ba9c760f58305c1cb2c1b2",
+      "next": "1b812f1da0256532b54fe37b737551313292597646cd399cd89855624c1fd078"
+    },
+    {
+      "ord": 179,
+      "blockId": "03e836feec4b7122e57a266f1fb737f3",
+      "fp64": "f7ffffdf5eb7e17f",
+      "normHash": "1b812f1da0256532b54fe37b737551313292597646cd399cd89855624c1fd078",
+      "kind": "page",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "676567f3da3ce6fb07ad2fd4913563f5849f30c8f3077526b82269f2cb172373",
+      "next": "c7492977e5cb78076aa2b7eadad54026c1e025c8211f18eef6b377700d37ff62"
+    },
+    {
+      "ord": 180,
+      "blockId": "f3b3e34037d5554c579c1d5c1dc75b57",
+      "fp64": "1441e01a97f8713c",
+      "normHash": "c7492977e5cb78076aa2b7eadad54026c1e025c8211f18eef6b377700d37ff62",
+      "kind": "p",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "1b812f1da0256532b54fe37b737551313292597646cd399cd89855624c1fd078",
+      "next": "bf0c977b120e88746ef6b7028097354cd2e1168b0962ce517047a36dfe6b21cb"
+    },
+    {
+      "ord": 181,
+      "blockId": "4c777b960e9f0686f9d6496d6e4daf63",
+      "fp64": "1d096846d55d8c58",
+      "normHash": "bf0c977b120e88746ef6b7028097354cd2e1168b0962ce517047a36dfe6b21cb",
+      "kind": "p",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "c7492977e5cb78076aa2b7eadad54026c1e025c8211f18eef6b377700d37ff62",
+      "next": "e34c2494ff5cbdc924c6f860aefa5fea954590d966f699776c74c1bbfdda3b6b"
+    },
+    {
+      "ord": 182,
+      "blockId": "cad5fa778636f2cd13fe8f23a7b36e49",
+      "fp64": "b5fff3fefa7b7337",
+      "normHash": "e34c2494ff5cbdc924c6f860aefa5fea954590d966f699776c74c1bbfdda3b6b",
+      "kind": "page",
+      "chapter": "ثانيا-الأدلة-من-السنة-النبوية-المطهرة-منها-ما-يأتي",
+      "prev": "bf0c977b120e88746ef6b7028097354cd2e1168b0962ce517047a36dfe6b21cb",
+      "next": "3d1cc37d0dcda20e1d199187a77e2799de031a485303828028a753f58f32e743"
+    },
+    {
+      "ord": 183,
+      "blockId": "9d4298a10d42b70fe29f19947eb1f723",
+      "fp64": "beaefa5bdfa1f9e6",
+      "normHash": "3d1cc37d0dcda20e1d199187a77e2799de031a485303828028a753f58f32e743",
+      "kind": "h2",
+      "chapter": "المبحث-الرابع-أنواع-القرب-المهداة-إلى-أموات-المسلمين",
+      "prev": "e34c2494ff5cbdc924c6f860aefa5fea954590d966f699776c74c1bbfdda3b6b",
+      "next": "93f59f6492551ad678d8ac863f527b85aaf7efd2562b18df2ba97759f1ae593c"
+    },
+    {
+      "ord": 184,
+      "blockId": "80f7d5f73b1b55511246318b3b272f26",
+      "fp64": "bb0c624a073b6f4d",
+      "normHash": "93f59f6492551ad678d8ac863f527b85aaf7efd2562b18df2ba97759f1ae593c",
+      "kind": "p",
+      "chapter": "المبحث-الرابع-أنواع-القرب-المهداة-إلى-أموات-المسلمين",
+      "prev": "3d1cc37d0dcda20e1d199187a77e2799de031a485303828028a753f58f32e743",
+      "next": "0954d7a7ac6e3acff3c6ecbb1ec6ca24c3701fc98f002578ce4b4985db172bf5"
+    },
+    {
+      "ord": 185,
+      "blockId": "86bd2fe81ca28c825fd7fb3fb71d62c0",
+      "fp64": "3e74e1741ff107da",
+      "normHash": "0954d7a7ac6e3acff3c6ecbb1ec6ca24c3701fc98f002578ce4b4985db172bf5",
+      "kind": "h2",
+      "chapter": "أولا-قال-الإمام-ابن-قدامة-رحمه-الله",
+      "prev": "93f59f6492551ad678d8ac863f527b85aaf7efd2562b18df2ba97759f1ae593c",
+      "next": "db9a36f04be18abf3835d19d1f0f7822699054b98369eadaf0a8048ed4d6cedd"
+    },
+    {
+      "ord": 186,
+      "blockId": "99eb3bf5719e53cc1f83c3b2fcb54523",
+      "fp64": "74dc602ecddeb10f",
+      "normHash": "db9a36f04be18abf3835d19d1f0f7822699054b98369eadaf0a8048ed4d6cedd",
+      "kind": "p",
+      "chapter": "أولا-قال-الإمام-ابن-قدامة-رحمه-الله",
+      "prev": "0954d7a7ac6e3acff3c6ecbb1ec6ca24c3701fc98f002578ce4b4985db172bf5",
+      "next": "73c645d304276c3cd60fa886927ab19636c0b266d615abae60ae568d3308682d"
+    },
+    {
+      "ord": 187,
+      "blockId": "5ffec4f7915c69fe51fcf57b43857acd",
+      "fp64": "fda9eabb54c7fe63",
+      "normHash": "73c645d304276c3cd60fa886927ab19636c0b266d615abae60ae568d3308682d",
+      "kind": "p",
+      "chapter": "أولا-قال-الإمام-ابن-قدامة-رحمه-الله",
+      "prev": "db9a36f04be18abf3835d19d1f0f7822699054b98369eadaf0a8048ed4d6cedd",
+      "next": "21f9c20f4e83572f264bf3be8f944f198e85a4861ab0d298f36d08d44149d424"
+    },
+    {
+      "ord": 188,
+      "blockId": "ab50755ee9455bf803eae14ee92138d0",
+      "fp64": "ffdfff9edf716b76",
+      "normHash": "21f9c20f4e83572f264bf3be8f944f198e85a4861ab0d298f36d08d44149d424",
+      "kind": "page",
+      "chapter": "أولا-قال-الإمام-ابن-قدامة-رحمه-الله",
+      "prev": "73c645d304276c3cd60fa886927ab19636c0b266d615abae60ae568d3308682d",
+      "next": "202d6b100570e840e1d5160382589dec979a02424b8896198dc102fd105141d1"
+    },
+    {
+      "ord": 189,
+      "blockId": "1e63a92d96cad9599a45b70d63eeb731",
+      "fp64": "6555e01215605978",
+      "normHash": "202d6b100570e840e1d5160382589dec979a02424b8896198dc102fd105141d1",
+      "kind": "li",
+      "chapter": "أولا-قال-الإمام-ابن-قدامة-رحمه-الله",
+      "prev": "21f9c20f4e83572f264bf3be8f944f198e85a4861ab0d298f36d08d44149d424",
+      "next": "8417b71690df44e1043b60c163582c95436edd67141213ef33f84bbbc286bcab"
+    },
+    {
+      "ord": 190,
+      "blockId": "343b6125d7c5e2d5c0e9a92d2947dce5",
+      "fp64": "d9f861c0557404d6",
+      "normHash": "8417b71690df44e1043b60c163582c95436edd67141213ef33f84bbbc286bcab",
+      "kind": "p",
+      "chapter": "أولا-قال-الإمام-ابن-قدامة-رحمه-الله",
+      "prev": "202d6b100570e840e1d5160382589dec979a02424b8896198dc102fd105141d1",
+      "next": "a368891ef9a262987f7b742c364d62cb1d7d4e6cde5b779d8435f58d0237e27a"
+    },
+    {
+      "ord": 191,
+      "blockId": "f0c6061c52c653071d44a10b0c03a16b",
+      "fp64": "7ffffbbafa337eff",
+      "normHash": "a368891ef9a262987f7b742c364d62cb1d7d4e6cde5b779d8435f58d0237e27a",
+      "kind": "page",
+      "chapter": "أولا-قال-الإمام-ابن-قدامة-رحمه-الله",
+      "prev": "8417b71690df44e1043b60c163582c95436edd67141213ef33f84bbbc286bcab",
+      "next": "621011218d7ee7fa0bc4ea72c84aa1f9035a75402add1a49ec4c826d242076f4"
+    },
+    {
+      "ord": 192,
+      "blockId": "05d5cb61fe371a5daf72d8d532435702",
+      "fp64": "705164905f6dd95c",
+      "normHash": "621011218d7ee7fa0bc4ea72c84aa1f9035a75402add1a49ec4c826d242076f4",
+      "kind": "p",
+      "chapter": "أولا-قال-الإمام-ابن-قدامة-رحمه-الله",
+      "prev": "a368891ef9a262987f7b742c364d62cb1d7d4e6cde5b779d8435f58d0237e27a",
+      "next": "db58e6329eea1a6c6137a2251ef257261c11cab519800ffaec5ab289a75eefce"
+    },
+    {
+      "ord": 193,
+      "blockId": "37da2b4a85bb92689c2acff54780af9c",
+      "fp64": "585820c13d6c8d54",
+      "normHash": "db58e6329eea1a6c6137a2251ef257261c11cab519800ffaec5ab289a75eefce",
+      "kind": "p",
+      "chapter": "أولا-قال-الإمام-ابن-قدامة-رحمه-الله",
+      "prev": "621011218d7ee7fa0bc4ea72c84aa1f9035a75402add1a49ec4c826d242076f4",
+      "next": "e787f2e0d4f0f35e056dccc815af2de911e7c3c49eeda32cbbf989e9845a9929"
+    },
+    {
+      "ord": 194,
+      "blockId": "14f3e56f80895f042a684ba45e8332d4",
+      "fp64": "b5fff39e5abdfcf6",
+      "normHash": "e787f2e0d4f0f35e056dccc815af2de911e7c3c49eeda32cbbf989e9845a9929",
+      "kind": "page",
+      "chapter": "أولا-قال-الإمام-ابن-قدامة-رحمه-الله",
+      "prev": "db58e6329eea1a6c6137a2251ef257261c11cab519800ffaec5ab289a75eefce",
+      "next": "2bf75f8b561418abb0712c72fd396d2d238c81b512b62955a27af3fb448aa484"
+    },
+    {
+      "ord": 195,
+      "blockId": "49fce06b781549b43ded6b05a2ddfd7b",
+      "fp64": "c4ccec5285231d5d",
+      "normHash": "2bf75f8b561418abb0712c72fd396d2d238c81b512b62955a27af3fb448aa484",
+      "kind": "p",
+      "chapter": "أولا-قال-الإمام-ابن-قدامة-رحمه-الله",
+      "prev": "e787f2e0d4f0f35e056dccc815af2de911e7c3c49eeda32cbbf989e9845a9929",
+      "next": "9a402b738319c08805b5cd0340e911c95a234c5d48528117bfff03f32e5d1b8c"
+    },
+    {
+      "ord": 196,
+      "blockId": "0e3937a764dea1453bea2e54068dca89",
+      "fp64": "8f7d3806257456df",
+      "normHash": "9a402b738319c08805b5cd0340e911c95a234c5d48528117bfff03f32e5d1b8c",
+      "kind": "p",
+      "chapter": "أولا-قال-الإمام-ابن-قدامة-رحمه-الله",
+      "prev": "2bf75f8b561418abb0712c72fd396d2d238c81b512b62955a27af3fb448aa484",
+      "next": "1f5c95dd181fafab5ad8c3809f93d70ab61f027b931d166084ec5a22acdf12cc"
+    },
+    {
+      "ord": 197,
+      "blockId": "f41500a15545a8a1f5edb5483d747de6",
+      "fp64": "35dffb9e5fbdf3f6",
+      "normHash": "1f5c95dd181fafab5ad8c3809f93d70ab61f027b931d166084ec5a22acdf12cc",
+      "kind": "page",
+      "chapter": "أولا-قال-الإمام-ابن-قدامة-رحمه-الله",
+      "prev": "9a402b738319c08805b5cd0340e911c95a234c5d48528117bfff03f32e5d1b8c",
+      "next": "cffe288a5bf39c86f7dd7460dc31a52457a2636d928a158d1ba307b117bfbb4f"
+    },
+    {
+      "ord": 198,
+      "blockId": "70922f6c44730c4b6d8060e6669774eb",
+      "fp64": "fffde5f7757ddff2",
+      "normHash": "cffe288a5bf39c86f7dd7460dc31a52457a2636d928a158d1ba307b117bfbb4f",
+      "kind": "p",
+      "chapter": "أولا-قال-الإمام-ابن-قدامة-رحمه-الله",
+      "prev": "1f5c95dd181fafab5ad8c3809f93d70ab61f027b931d166084ec5a22acdf12cc",
+      "next": "24e300aaa21f3021043650dd3cfa0f8bcd1ee515591d9be2f2f4c736b1ddfa3a"
+    },
+    {
+      "ord": 199,
+      "blockId": "e15b4ec8968c4a2377d3364146c9f6ea",
+      "fp64": "befd63dd55fe2ede",
+      "normHash": "24e300aaa21f3021043650dd3cfa0f8bcd1ee515591d9be2f2f4c736b1ddfa3a",
+      "kind": "h2",
+      "chapter": "ثانيا-قال-شيخ-الإسلام-ابن-تيمية-رحمه-الله",
+      "prev": "cffe288a5bf39c86f7dd7460dc31a52457a2636d928a158d1ba307b117bfbb4f",
+      "next": "fc98361d6891ef97924173477e8a48374ad51a78b133b1502303e7325986d038"
+    },
+    {
+      "ord": 200,
+      "blockId": "5c51eb363e16d9248c5840f86c83b1ff",
+      "fp64": "dc5a04e8cdcd374c",
+      "normHash": "fc98361d6891ef97924173477e8a48374ad51a78b133b1502303e7325986d038",
+      "kind": "p",
+      "chapter": "ثانيا-قال-شيخ-الإسلام-ابن-تيمية-رحمه-الله",
+      "prev": "24e300aaa21f3021043650dd3cfa0f8bcd1ee515591d9be2f2f4c736b1ddfa3a",
+      "next": "5f1739ca38897b6131f73fbc1b63252ca719f88c2115ac83ff1745faf6075ba0"
+    },
+    {
+      "ord": 201,
+      "blockId": "3f7398b43af5b5cd81ec4eee86f64a90",
+      "fp64": "884e747117f07969",
+      "normHash": "5f1739ca38897b6131f73fbc1b63252ca719f88c2115ac83ff1745faf6075ba0",
+      "kind": "h2",
+      "chapter": "ثالثا-بين-الإمام-ابن-القيم-رحمه-الله-أن-أرواح-الموتى-تنتفع-من-سعي-الأحياء-بأمرين",
+      "prev": "fc98361d6891ef97924173477e8a48374ad51a78b133b1502303e7325986d038",
+      "next": "4f039397cb382291109b8bce57f19557f26bf5bc41763b28c7c6b1f78642f120"
+    },
+    {
+      "ord": 202,
+      "blockId": "e633db3124bfdc5e48fa1802244ddfcf",
+      "fp64": "83ec745403323dc2",
+      "normHash": "4f039397cb382291109b8bce57f19557f26bf5bc41763b28c7c6b1f78642f120",
+      "kind": "p",
+      "chapter": "ثالثا-بين-الإمام-ابن-القيم-رحمه-الله-أن-أرواح-الموتى-تنتفع-من-سعي-الأحياء-بأمرين",
+      "prev": "5f1739ca38897b6131f73fbc1b63252ca719f88c2115ac83ff1745faf6075ba0",
+      "next": "31107853efbcd08a12da8e5711142b2770364381937d4a5b3ffbce4a48d65070"
+    },
+    {
+      "ord": 203,
+      "blockId": "bbc3946688984889aa4585e387f7919d",
+      "fp64": "392e98545510bd91",
+      "normHash": "31107853efbcd08a12da8e5711142b2770364381937d4a5b3ffbce4a48d65070",
+      "kind": "p",
+      "chapter": "ثالثا-بين-الإمام-ابن-القيم-رحمه-الله-أن-أرواح-الموتى-تنتفع-من-سعي-الأحياء-بأمرين",
+      "prev": "4f039397cb382291109b8bce57f19557f26bf5bc41763b28c7c6b1f78642f120",
+      "next": "a97bc8896b4d6056dd189ffcafaddfeb9d987fbc0d637696bd1657d1586ae062"
+    },
+    {
+      "ord": 204,
+      "blockId": "9f8412f98d89946e9df544310154346d",
+      "fp64": "7c59ac80359d4f57",
+      "normHash": "a97bc8896b4d6056dd189ffcafaddfeb9d987fbc0d637696bd1657d1586ae062",
+      "kind": "p",
+      "chapter": "ثالثا-بين-الإمام-ابن-القيم-رحمه-الله-أن-أرواح-الموتى-تنتفع-من-سعي-الأحياء-بأمرين",
+      "prev": "31107853efbcd08a12da8e5711142b2770364381937d4a5b3ffbce4a48d65070",
+      "next": "57f37e4170198b51df43f9f91c1da5ed25f7173762cf30cc3c502d5a79916044"
+    },
+    {
+      "ord": 205,
+      "blockId": "3d0e5dfcc59c355a7927b99197e2298f",
+      "fp64": "35fff7ff5b31e5b6",
+      "normHash": "57f37e4170198b51df43f9f91c1da5ed25f7173762cf30cc3c502d5a79916044",
+      "kind": "page",
+      "chapter": "ثالثا-بين-الإمام-ابن-القيم-رحمه-الله-أن-أرواح-الموتى-تنتفع-من-سعي-الأحياء-بأمرين",
+      "prev": "a97bc8896b4d6056dd189ffcafaddfeb9d987fbc0d637696bd1657d1586ae062",
+      "next": "3fc6e3c6630f75f7db0723aed6f294798fbf4c862eede69ad806651b7918cfc9"
+    },
+    {
+      "ord": 206,
+      "blockId": "f783270215e2c9789227267c27238fc9",
+      "fp64": "5b76e05c43067f5b",
+      "normHash": "3fc6e3c6630f75f7db0723aed6f294798fbf4c862eede69ad806651b7918cfc9",
+      "kind": "p",
+      "chapter": "ثالثا-بين-الإمام-ابن-القيم-رحمه-الله-أن-أرواح-الموتى-تنتفع-من-سعي-الأحياء-بأمرين",
+      "prev": "57f37e4170198b51df43f9f91c1da5ed25f7173762cf30cc3c502d5a79916044",
+      "next": "1db51feeb9666783495dcbe3b390549b8208dbd233d326179e2883843bdce927"
+    },
+    {
+      "ord": 207,
+      "blockId": "aa59821438c69bc2ba0febc12a85b1fa",
+      "fp64": "ef4e92404516529c",
+      "normHash": "1db51feeb9666783495dcbe3b390549b8208dbd233d326179e2883843bdce927",
+      "kind": "h2",
+      "chapter": "رابعا-قال-في-الروض-المربع",
+      "prev": "3fc6e3c6630f75f7db0723aed6f294798fbf4c862eede69ad806651b7918cfc9",
+      "next": "b0868948836e3281f8d939bd9a020cb654265494c6fdd53746fa8879432225e9"
+    },
+    {
+      "ord": 208,
+      "blockId": "89ecee6f1cc71944b3ef60cd3482bc5b",
+      "fp64": "a3e8ec7bcd1a91dd",
+      "normHash": "b0868948836e3281f8d939bd9a020cb654265494c6fdd53746fa8879432225e9",
+      "kind": "p",
+      "chapter": "رابعا-قال-في-الروض-المربع",
+      "prev": "1db51feeb9666783495dcbe3b390549b8208dbd233d326179e2883843bdce927",
+      "next": "06eca8ec25998f9d5d46b142720b5a5f4ac5c04f911adf60fe601028fe5c1fc8"
+    },
+    {
+      "ord": 209,
+      "blockId": "2190dabc8bcb153c5394e69d9fa02007",
+      "fp64": "7d5e75c3b7cf5c70",
+      "normHash": "06eca8ec25998f9d5d46b142720b5a5f4ac5c04f911adf60fe601028fe5c1fc8",
+      "kind": "p",
+      "chapter": "رابعا-قال-في-الروض-المربع",
+      "prev": "b0868948836e3281f8d939bd9a020cb654265494c6fdd53746fa8879432225e9",
+      "next": "8bdfd64f297cb4f46a40fb573a4ddedb248ee4a29471671507327f8356aee87e"
+    },
+    {
+      "ord": 210,
+      "blockId": "fce36524afdcaa30c729ecb68046d92b",
+      "fp64": "35dff7fa5a3374bf",
+      "normHash": "8bdfd64f297cb4f46a40fb573a4ddedb248ee4a29471671507327f8356aee87e",
+      "kind": "page",
+      "chapter": "رابعا-قال-في-الروض-المربع",
+      "prev": "06eca8ec25998f9d5d46b142720b5a5f4ac5c04f911adf60fe601028fe5c1fc8",
+      "next": "9f805a3dfbb08a9f15e682b55ae9220756c24c9f76535200dd768b23dcca8e06"
+    },
+    {
+      "ord": 211,
+      "blockId": "dfd866162bb260e7bcc36dacc4ac0ec6",
+      "fp64": "108724707d4d4f68",
+      "normHash": "9f805a3dfbb08a9f15e682b55ae9220756c24c9f76535200dd768b23dcca8e06",
+      "kind": "p",
+      "chapter": "رابعا-قال-في-الروض-المربع",
+      "prev": "8bdfd64f297cb4f46a40fb573a4ddedb248ee4a29471671507327f8356aee87e",
+      "next": "58a997bb23af151e5f7719d76f987f91db097daa980e2a3ea44235f960fb7a73"
+    },
+    {
+      "ord": 212,
+      "blockId": "9a618b0f2f1317a57705ca7bef448993",
+      "fp64": "bdd26114fed8223c",
+      "normHash": "58a997bb23af151e5f7719d76f987f91db097daa980e2a3ea44235f960fb7a73",
+      "kind": "h2",
+      "chapter": "خامسا-قال-العلامة-محمد-بن-صالح-العثيمين-رحمه-الله",
+      "prev": "9f805a3dfbb08a9f15e682b55ae9220756c24c9f76535200dd768b23dcca8e06",
+      "next": "34d0d7edcf1f44dc0bcb676bde669c8fcf2296b8ee54126b72dc1598c2c2f710"
+    },
+    {
+      "ord": 213,
+      "blockId": "a2c001bca52a8102c764be7adec47e58",
+      "fp64": "4aeece35f76a7d9d",
+      "normHash": "34d0d7edcf1f44dc0bcb676bde669c8fcf2296b8ee54126b72dc1598c2c2f710",
+      "kind": "p",
+      "chapter": "خامسا-قال-العلامة-محمد-بن-صالح-العثيمين-رحمه-الله",
+      "prev": "58a997bb23af151e5f7719d76f987f91db097daa980e2a3ea44235f960fb7a73",
+      "next": "34d44424811d1257fce4ec758febfc7dcb4743797a9340f552534cc019f92f4e"
+    },
+    {
+      "ord": 214,
+      "blockId": "5fff9d4dc622b4d20215b303d9739abb",
+      "fp64": "caf9fffd417efefb",
+      "normHash": "34d44424811d1257fce4ec758febfc7dcb4743797a9340f552534cc019f92f4e",
+      "kind": "p",
+      "chapter": "خامسا-قال-العلامة-محمد-بن-صالح-العثيمين-رحمه-الله",
+      "prev": "34d0d7edcf1f44dc0bcb676bde669c8fcf2296b8ee54126b72dc1598c2c2f710",
+      "next": "e9febda6bd220bb5b87ec5a7cb76715d452a41e68cec172948c2b888e6eb0140"
+    },
+    {
+      "ord": 215,
+      "blockId": "df17e8cf3f1682f42e93886aeddfc62b",
+      "fp64": "245f24ad3dcfa923",
+      "normHash": "e9febda6bd220bb5b87ec5a7cb76715d452a41e68cec172948c2b888e6eb0140",
+      "kind": "p",
+      "chapter": "خامسا-قال-العلامة-محمد-بن-صالح-العثيمين-رحمه-الله",
+      "prev": "34d44424811d1257fce4ec758febfc7dcb4743797a9340f552534cc019f92f4e",
+      "next": "58a18212334447cc5cec663bc2fd4442d7a0117edbb687d39a7fe71c8d2181c7"
+    },
+    {
+      "ord": 216,
+      "blockId": "ee81a429fe1dc8a8e4b347445ba4e64d",
+      "fp64": "5ffdffffdffb7fd3",
+      "normHash": "58a18212334447cc5cec663bc2fd4442d7a0117edbb687d39a7fe71c8d2181c7",
+      "kind": "p",
+      "chapter": "خامسا-قال-العلامة-محمد-بن-صالح-العثيمين-رحمه-الله",
+      "prev": "e9febda6bd220bb5b87ec5a7cb76715d452a41e68cec172948c2b888e6eb0140",
+      "next": "e940267b6554f56e738b459c98a0cb6ddcd34fe9072decba3aa83b167bb5f095"
+    },
+    {
+      "ord": 217,
+      "blockId": "cc16b3ad60568e8ae9408bfc03c19ab3",
+      "fp64": "c8356fbc8652b313",
+      "normHash": "e940267b6554f56e738b459c98a0cb6ddcd34fe9072decba3aa83b167bb5f095",
+      "kind": "p",
+      "chapter": "خامسا-قال-العلامة-محمد-بن-صالح-العثيمين-رحمه-الله",
+      "prev": "58a18212334447cc5cec663bc2fd4442d7a0117edbb687d39a7fe71c8d2181c7",
+      "next": "65e8d08fd42217f524b7a38739bad62a2033681c9086815e7b50b68b7124814b"
+    },
+    {
+      "ord": 218,
+      "blockId": "825e4594606aa59c1692184bc1030330",
+      "fp64": "4de081880547f45f",
+      "normHash": "65e8d08fd42217f524b7a38739bad62a2033681c9086815e7b50b68b7124814b",
+      "kind": "p",
+      "chapter": "خامسا-قال-العلامة-محمد-بن-صالح-العثيمين-رحمه-الله",
+      "prev": "e940267b6554f56e738b459c98a0cb6ddcd34fe9072decba3aa83b167bb5f095",
+      "next": "3925b825e4806119f0fc22cd677c978d1b2c78556865dbbe621bb92102b1f5f9"
+    },
+    {
+      "ord": 219,
+      "blockId": "daa284dadcb8ba0f36d86f40206f4286",
+      "fp64": "5d6c704b14a77cd5",
+      "normHash": "3925b825e4806119f0fc22cd677c978d1b2c78556865dbbe621bb92102b1f5f9",
+      "kind": "p",
+      "chapter": "خامسا-قال-العلامة-محمد-بن-صالح-العثيمين-رحمه-الله",
+      "prev": "65e8d08fd42217f524b7a38739bad62a2033681c9086815e7b50b68b7124814b",
+      "next": "29eae3e7cbf6af90dd0be6a2d2bc0f2fb87fdf7fc2e7bc1f29cbf98018991151"
+    },
+    {
+      "ord": 220,
+      "blockId": "ff1c442964d7e3c9bd474c686aac9374",
+      "fp64": "eddff3dadf39e576",
+      "normHash": "29eae3e7cbf6af90dd0be6a2d2bc0f2fb87fdf7fc2e7bc1f29cbf98018991151",
+      "kind": "page",
+      "chapter": "خامسا-قال-العلامة-محمد-بن-صالح-العثيمين-رحمه-الله",
+      "prev": "3925b825e4806119f0fc22cd677c978d1b2c78556865dbbe621bb92102b1f5f9",
+      "next": "91fe72499f1f04ae2b617cb4fd62cbfdf9dc87c1561285b2fee2147c5775ed1d"
+    },
+    {
+      "ord": 221,
+      "blockId": "c544e9a83576b536f66a912b016e3db8",
+      "fp64": "d1d8e58e67ebbdd8",
+      "normHash": "91fe72499f1f04ae2b617cb4fd62cbfdf9dc87c1561285b2fee2147c5775ed1d",
+      "kind": "p",
+      "chapter": "خامسا-قال-العلامة-محمد-بن-صالح-العثيمين-رحمه-الله",
+      "prev": "29eae3e7cbf6af90dd0be6a2d2bc0f2fb87fdf7fc2e7bc1f29cbf98018991151",
+      "next": "7f94af517e0c68a3c8e5a54da1736587422ff973178fc3141c4a2ee7f66981fa"
+    },
+    {
+      "ord": 222,
+      "blockId": "5651a1ed51277dc770bb4d7030cee5cb",
+      "fp64": "e9cae65a13577a5e",
+      "normHash": "7f94af517e0c68a3c8e5a54da1736587422ff973178fc3141c4a2ee7f66981fa",
+      "kind": "p",
+      "chapter": "خامسا-قال-العلامة-محمد-بن-صالح-العثيمين-رحمه-الله",
+      "prev": "91fe72499f1f04ae2b617cb4fd62cbfdf9dc87c1561285b2fee2147c5775ed1d",
+      "next": "336e01147db34df0cba81191a0eccc2cf153fad8f64aa8dae8e9cf4390db2eef"
+    },
+    {
+      "ord": 223,
+      "blockId": "82ef98e7ec2c33dc62840aeba176fc14",
+      "fp64": "92a860fb35e7cef3",
+      "normHash": "336e01147db34df0cba81191a0eccc2cf153fad8f64aa8dae8e9cf4390db2eef",
+      "kind": "p",
+      "chapter": "خامسا-قال-العلامة-محمد-بن-صالح-العثيمين-رحمه-الله",
+      "prev": "7f94af517e0c68a3c8e5a54da1736587422ff973178fc3141c4a2ee7f66981fa",
+      "next": "4bbbeca6742f12c299ee9874c27e783f7f3f2b0b40fb7eff785b2d2e7693ddd5"
+    },
+    {
+      "ord": 224,
+      "blockId": "dce61e00a93ae2ab9549e667a6ed6e1f",
+      "fp64": "afffff9b7fb5617e",
+      "normHash": "4bbbeca6742f12c299ee9874c27e783f7f3f2b0b40fb7eff785b2d2e7693ddd5",
+      "kind": "page",
+      "chapter": "خامسا-قال-العلامة-محمد-بن-صالح-العثيمين-رحمه-الله",
+      "prev": "336e01147db34df0cba81191a0eccc2cf153fad8f64aa8dae8e9cf4390db2eef",
+      "next": "3911a96960a4997967a1b731ee02d0cc32e3666d7a154979ecbaec6e4424df4a"
+    },
+    {
+      "ord": 225,
+      "blockId": "fb0cfe4196c1eee52d976f16d12dac55",
+      "fp64": "7851d3f745452a18",
+      "normHash": "3911a96960a4997967a1b731ee02d0cc32e3666d7a154979ecbaec6e4424df4a",
+      "kind": "p",
+      "chapter": "خامسا-قال-العلامة-محمد-بن-صالح-العثيمين-رحمه-الله",
+      "prev": "4bbbeca6742f12c299ee9874c27e783f7f3f2b0b40fb7eff785b2d2e7693ddd5",
+      "next": "d532a659becb80335661632dcf41e3dae725324bb819a1868ec66b60d3bac4a9"
+    },
+    {
+      "ord": 226,
+      "blockId": "8d3161bbea00dc18f7de7a969414a3b0",
+      "fp64": "206bc81f9d5d3578",
+      "normHash": "d532a659becb80335661632dcf41e3dae725324bb819a1868ec66b60d3bac4a9",
+      "kind": "p",
+      "chapter": "خامسا-قال-العلامة-محمد-بن-صالح-العثيمين-رحمه-الله",
+      "prev": "3911a96960a4997967a1b731ee02d0cc32e3666d7a154979ecbaec6e4424df4a",
+      "next": "ef08baa8ca31dc57104a3c4129a48950daafe09b06646df51123a07e0d5eb369"
+    },
+    {
+      "ord": 227,
+      "blockId": "361be61ed3abcbc92414fd38dfdc3672",
+      "fp64": "9a756e109b9f9afe",
+      "normHash": "ef08baa8ca31dc57104a3c4129a48950daafe09b06646df51123a07e0d5eb369",
+      "kind": "h2",
+      "chapter": "سادسا-ذكر-شيخنا-الإمام-ابن-باز-رحمه-الله",
+      "prev": "d532a659becb80335661632dcf41e3dae725324bb819a1868ec66b60d3bac4a9",
+      "next": "f37a0d0be9e3e412abe340188f42c9140616e23b6a105bffa4ccb8bf8d89a382"
+    },
+    {
+      "ord": 228,
+      "blockId": "53796312217a0a9b373b947abd720983",
+      "fp64": "605da694570bdc0b",
+      "normHash": "f37a0d0be9e3e412abe340188f42c9140616e23b6a105bffa4ccb8bf8d89a382",
+      "kind": "p",
+      "chapter": "سادسا-ذكر-شيخنا-الإمام-ابن-باز-رحمه-الله",
+      "prev": "ef08baa8ca31dc57104a3c4129a48950daafe09b06646df51123a07e0d5eb369",
+      "next": "8fdb214f9c8e944954d1b1e2fe10453309b437b63bda255dca103333b673eada"
+    },
+    {
+      "ord": 229,
+      "blockId": "67b430fa7cc2ce70dfaca63d13412950",
+      "fp64": "18f860f11de38ed2",
+      "normHash": "8fdb214f9c8e944954d1b1e2fe10453309b437b63bda255dca103333b673eada",
+      "kind": "p",
+      "chapter": "سادسا-ذكر-شيخنا-الإمام-ابن-باز-رحمه-الله",
+      "prev": "f37a0d0be9e3e412abe340188f42c9140616e23b6a105bffa4ccb8bf8d89a382",
+      "next": "c2e5ec499c041da0ca3ab6ab1146db3b1f4719e299d00b7bb5ed6dd8e308dd99"
+    },
+    {
+      "ord": 230,
+      "blockId": "8987d0b45afa69de2b991ff6f48e4ec1",
+      "fp64": "27fffbde7a31e9be",
+      "normHash": "c2e5ec499c041da0ca3ab6ab1146db3b1f4719e299d00b7bb5ed6dd8e308dd99",
+      "kind": "page",
+      "chapter": "سادسا-ذكر-شيخنا-الإمام-ابن-باز-رحمه-الله",
+      "prev": "8fdb214f9c8e944954d1b1e2fe10453309b437b63bda255dca103333b673eada",
+      "next": "1da0e860c2cfd3a53054f5496ecec209451cd4dd7b91da54db60d306dc6994d3"
+    },
+    {
+      "ord": 231,
+      "blockId": "afd2dca6acf26f1a39e4ba39497f6103",
+      "fp64": "a42ce45451105d6e",
+      "normHash": "1da0e860c2cfd3a53054f5496ecec209451cd4dd7b91da54db60d306dc6994d3",
+      "kind": "p",
+      "chapter": "سادسا-ذكر-شيخنا-الإمام-ابن-باز-رحمه-الله",
+      "prev": "c2e5ec499c041da0ca3ab6ab1146db3b1f4719e299d00b7bb5ed6dd8e308dd99",
+      "next": "9643d5e82000d542304eaaf877b5e8274d64bde8266827a357782bfef783ba7a"
+    },
+    {
+      "ord": 232,
+      "blockId": "320b87b1f98817eefb4c6b4e80da4a09",
+      "fp64": "7c4fd59e5f4f3604",
+      "normHash": "9643d5e82000d542304eaaf877b5e8274d64bde8266827a357782bfef783ba7a",
+      "kind": "p",
+      "chapter": "سادسا-ذكر-شيخنا-الإمام-ابن-باز-رحمه-الله",
+      "prev": "1da0e860c2cfd3a53054f5496ecec209451cd4dd7b91da54db60d306dc6994d3",
+      "next": "bbe696bf6f031cffaaa4bf8822e6dd6885af397fd48cd867eb8e0680942a975a"
+    },
+    {
+      "ord": 233,
+      "blockId": "90bee4b0ed8a381aa1e83b17830759e4",
+      "fp64": "d367845cdf3f1b5f",
+      "normHash": "bbe696bf6f031cffaaa4bf8822e6dd6885af397fd48cd867eb8e0680942a975a",
+      "kind": "p",
+      "chapter": "سادسا-ذكر-شيخنا-الإمام-ابن-باز-رحمه-الله",
+      "prev": "9643d5e82000d542304eaaf877b5e8274d64bde8266827a357782bfef783ba7a",
+      "next": "33896e40029deec4950a9d4c50a9fa3d14f21b621a45f8a92b1efa4e7a3ed163"
+    },
+    {
+      "ord": 234,
+      "blockId": "ef4cf41888a3589e12f8c4c8560d8dc7",
+      "fp64": "85830c5fbf56bef2",
+      "normHash": "33896e40029deec4950a9d4c50a9fa3d14f21b621a45f8a92b1efa4e7a3ed163",
+      "kind": "p",
+      "chapter": "سادسا-ذكر-شيخنا-الإمام-ابن-باز-رحمه-الله",
+      "prev": "bbe696bf6f031cffaaa4bf8822e6dd6885af397fd48cd867eb8e0680942a975a",
+      "next": "b271db2d31a291996045e748faf11d4a35ceda2e52fc3e05cc86c6d37ecb262d"
+    },
+    {
+      "ord": 235,
+      "blockId": "841a4b4d6f570df731a6879f38db4e0d",
+      "fp64": "bdfffbdf5bb9f13f",
+      "normHash": "b271db2d31a291996045e748faf11d4a35ceda2e52fc3e05cc86c6d37ecb262d",
+      "kind": "page",
+      "chapter": "سادسا-ذكر-شيخنا-الإمام-ابن-باز-رحمه-الله",
+      "prev": "33896e40029deec4950a9d4c50a9fa3d14f21b621a45f8a92b1efa4e7a3ed163",
+      "next": "f1611f3af95e3348a4959b1bebfc38347a61d8338b6335511389d0b6f3409b3c"
+    },
+    {
+      "ord": 236,
+      "blockId": "460c3dea646e5c89475931b594f7d4e2",
+      "fp64": "41a14c4dd070b775",
+      "normHash": "f1611f3af95e3348a4959b1bebfc38347a61d8338b6335511389d0b6f3409b3c",
+      "kind": "p",
+      "chapter": "سادسا-ذكر-شيخنا-الإمام-ابن-باز-رحمه-الله",
+      "prev": "b271db2d31a291996045e748faf11d4a35ceda2e52fc3e05cc86c6d37ecb262d",
+      "next": "0d9de1605488a1142fd5f3bde56ffa761840a8a5d8e54ad8b957f467782d8f8d"
+    },
+    {
+      "ord": 237,
+      "blockId": "be616f567acd81132438b8b14b6d39a2",
+      "fp64": "33eeb94257c71eca",
+      "normHash": "0d9de1605488a1142fd5f3bde56ffa761840a8a5d8e54ad8b957f467782d8f8d",
+      "kind": "p",
+      "chapter": "سادسا-ذكر-شيخنا-الإمام-ابن-باز-رحمه-الله",
+      "prev": "f1611f3af95e3348a4959b1bebfc38347a61d8338b6335511389d0b6f3409b3c",
+      "next": "ab8daa1222e19b9576e29b5fc6fdd9552d1349c51b4cc60b0a0a27f50ef27ca7"
+    },
+    {
+      "ord": 238,
+      "blockId": "55068f23c4b639a9aed18d0e91bbb649",
+      "fp64": "ae45b074e378decf",
+      "normHash": "ab8daa1222e19b9576e29b5fc6fdd9552d1349c51b4cc60b0a0a27f50ef27ca7",
+      "kind": "h3",
+      "chapter": "سادسا-ذكر-شيخنا-الإمام-ابن-باز-رحمه-الله",
+      "prev": "0d9de1605488a1142fd5f3bde56ffa761840a8a5d8e54ad8b957f467782d8f8d",
+      "next": "113f1a3e79ceaa9e599a1e6af4de397cee82b3323bef9edd3fa327ce1d406403"
+    },
+    {
+      "ord": 239,
+      "blockId": "af3dd24ff911e232d6eb1e4117dc9a3e",
+      "fp64": "cdb4ee2aea69cc6a",
+      "normHash": "113f1a3e79ceaa9e599a1e6af4de397cee82b3323bef9edd3fa327ce1d406403",
+      "kind": "p",
+      "chapter": "سادسا-ذكر-شيخنا-الإمام-ابن-باز-رحمه-الله",
+      "prev": "ab8daa1222e19b9576e29b5fc6fdd9552d1349c51b4cc60b0a0a27f50ef27ca7",
+      "next": "1a42fbdf4fad78f00895279bb7b77473cbe3a4e4e5b58f893f2b3a0e1ddf2140"
+    },
+    {
+      "ord": 240,
+      "blockId": "77be93ca1f97e6e6e2e32241e6f2f9f6",
+      "fp64": "eafec1ee79eaeddf",
+      "normHash": "1a42fbdf4fad78f00895279bb7b77473cbe3a4e4e5b58f893f2b3a0e1ddf2140",
+      "kind": "h3",
+      "chapter": "سادسا-ذكر-شيخنا-الإمام-ابن-باز-رحمه-الله",
+      "prev": "113f1a3e79ceaa9e599a1e6af4de397cee82b3323bef9edd3fa327ce1d406403",
+      "next": "978d4b0e922ca8d191d8742818a7343ecdd20fc7127b901756bffed481bb29a8"
+    },
+    {
+      "ord": 241,
+      "blockId": "418ac43ecca8a7015481b474e04b96be",
+      "fp64": "7df9b2dffa5bfbef",
+      "normHash": "978d4b0e922ca8d191d8742818a7343ecdd20fc7127b901756bffed481bb29a8",
+      "kind": "p",
+      "chapter": "سادسا-ذكر-شيخنا-الإمام-ابن-باز-رحمه-الله",
+      "prev": "1a42fbdf4fad78f00895279bb7b77473cbe3a4e4e5b58f893f2b3a0e1ddf2140",
+      "next": "d09e4ae2b8d6b4ec9f0932940a703d74aee593b0afdc433e39f9f9a7dd89e69b"
+    },
+    {
+      "ord": 242,
+      "blockId": "df312aa07e188b96706ac9acd1ba1849",
+      "fp64": "fffdfbed27fe7ae7",
+      "normHash": "d09e4ae2b8d6b4ec9f0932940a703d74aee593b0afdc433e39f9f9a7dd89e69b",
+      "kind": "h3",
+      "chapter": "سادسا-ذكر-شيخنا-الإمام-ابن-باز-رحمه-الله",
+      "prev": "978d4b0e922ca8d191d8742818a7343ecdd20fc7127b901756bffed481bb29a8",
+      "next": "978d4b0e922ca8d191d8742818a7343ecdd20fc7127b901756bffed481bb29a8"
+    },
+    {
+      "ord": 243,
+      "blockId": "8db3c8306d7c6761af1165a501fa79b3",
+      "fp64": "7df9b2dffa5bfbef",
+      "normHash": "978d4b0e922ca8d191d8742818a7343ecdd20fc7127b901756bffed481bb29a8",
+      "kind": "p",
+      "chapter": "سادسا-ذكر-شيخنا-الإمام-ابن-باز-رحمه-الله",
+      "prev": "d09e4ae2b8d6b4ec9f0932940a703d74aee593b0afdc433e39f9f9a7dd89e69b",
+      "next": "f265fd43146558d0a5a99683b377ff1e3d6e5b6a771e9b593a2c1a07a67a2b63"
+    },
+    {
+      "ord": 244,
+      "blockId": "3a1f55545c415f3012f4d6b4d747654d",
+      "fp64": "254bb3fc8f29779a",
+      "normHash": "f265fd43146558d0a5a99683b377ff1e3d6e5b6a771e9b593a2c1a07a67a2b63",
+      "kind": "h3",
+      "chapter": "سادسا-ذكر-شيخنا-الإمام-ابن-باز-رحمه-الله",
+      "prev": "978d4b0e922ca8d191d8742818a7343ecdd20fc7127b901756bffed481bb29a8",
+      "next": "39c71f0a9117e3d2c5571166e67c3ad2597c53a72a0732630906b8c0a4dbb2ab"
+    },
+    {
+      "ord": 245,
+      "blockId": "c8dccb88077788a12c39fb72597606ea",
+      "fp64": "78a1d04bca58fb6b",
+      "normHash": "39c71f0a9117e3d2c5571166e67c3ad2597c53a72a0732630906b8c0a4dbb2ab",
+      "kind": "p",
+      "chapter": "سادسا-ذكر-شيخنا-الإمام-ابن-باز-رحمه-الله",
+      "prev": "f265fd43146558d0a5a99683b377ff1e3d6e5b6a771e9b593a2c1a07a67a2b63",
+      "next": "e7559f8a03f02ed72326625c97b68a3284512f29075d3f2ba6a4b742af36e813"
+    },
+    {
+      "ord": 246,
+      "blockId": "01178f750a5105856d0fe75b0910000b",
+      "fp64": "9dd596f8fefe0bbf",
+      "normHash": "e7559f8a03f02ed72326625c97b68a3284512f29075d3f2ba6a4b742af36e813",
+      "kind": "h3",
+      "chapter": "سادسا-ذكر-شيخنا-الإمام-ابن-باز-رحمه-الله",
+      "prev": "39c71f0a9117e3d2c5571166e67c3ad2597c53a72a0732630906b8c0a4dbb2ab",
+      "next": "3f9165661f27e3f9ba7e4c1f1075cbb4944d19de1b09b7c1ca5d6fa4d3ab8c87"
+    },
+    {
+      "ord": 247,
+      "blockId": "2488c3a888734e415ab087290d0ac8c6",
+      "fp64": "af79647f9fcf0bca",
+      "normHash": "3f9165661f27e3f9ba7e4c1f1075cbb4944d19de1b09b7c1ca5d6fa4d3ab8c87",
+      "kind": "p",
+      "chapter": "سادسا-ذكر-شيخنا-الإمام-ابن-باز-رحمه-الله",
+      "prev": "e7559f8a03f02ed72326625c97b68a3284512f29075d3f2ba6a4b742af36e813",
+      "next": "9c6adb806716d61ffc5ac776a8ae61abbb37f91ae8e3315c61a3e25e6949d92c"
+    },
+    {
+      "ord": 248,
+      "blockId": "7747fb27ecf1ea12d74073da60b6a57c",
+      "fp64": "fbffbffdef4eff67",
+      "normHash": "9c6adb806716d61ffc5ac776a8ae61abbb37f91ae8e3315c61a3e25e6949d92c",
+      "kind": "h3",
+      "chapter": "سادسا-ذكر-شيخنا-الإمام-ابن-باز-رحمه-الله",
+      "prev": "3f9165661f27e3f9ba7e4c1f1075cbb4944d19de1b09b7c1ca5d6fa4d3ab8c87",
+      "next": "978d4b0e922ca8d191d8742818a7343ecdd20fc7127b901756bffed481bb29a8"
+    },
+    {
+      "ord": 249,
+      "blockId": "8da19e1bc31ecd7f6ba39c9cb15035b4",
+      "fp64": "7df9b2dffa5bfbef",
+      "normHash": "978d4b0e922ca8d191d8742818a7343ecdd20fc7127b901756bffed481bb29a8",
+      "kind": "p",
+      "chapter": "سادسا-ذكر-شيخنا-الإمام-ابن-باز-رحمه-الله",
+      "prev": "9c6adb806716d61ffc5ac776a8ae61abbb37f91ae8e3315c61a3e25e6949d92c",
+      "next": "281c077a65645431b65ec721fe23ef54fdb7dc6e7e102612750ad38e733f3a14"
+    },
+    {
+      "ord": 250,
+      "blockId": "d488f6f8937b2239c60247f97c915b7a",
+      "fp64": "751bc0d4bc34f07c",
+      "normHash": "281c077a65645431b65ec721fe23ef54fdb7dc6e7e102612750ad38e733f3a14",
+      "kind": "p",
+      "chapter": "سادسا-ذكر-شيخنا-الإمام-ابن-باز-رحمه-الله",
+      "prev": "978d4b0e922ca8d191d8742818a7343ecdd20fc7127b901756bffed481bb29a8",
+      "next": "b46e6923a0be5a76f4a246c38e1cdd730d028270f56f2c5716ded45f3af2b500"
+    },
+    {
+      "ord": 251,
+      "blockId": "e8d287f8d9bd5bbbb2afa13cf2a3438d",
+      "fp64": "a5fff3dedbfffef7",
+      "normHash": "b46e6923a0be5a76f4a246c38e1cdd730d028270f56f2c5716ded45f3af2b500",
+      "kind": "page",
+      "chapter": "سادسا-ذكر-شيخنا-الإمام-ابن-باز-رحمه-الله",
+      "prev": "281c077a65645431b65ec721fe23ef54fdb7dc6e7e102612750ad38e733f3a14",
+      "next": "e15afd752ff4148f1bf48187866e4361ea73e889c8ada8424959651e7056ce96"
+    },
+    {
+      "ord": 252,
+      "blockId": "85ff18bc7688c4a0073ca50862ef1177",
+      "fp64": "ef7fe69ea38e3adf",
+      "normHash": "e15afd752ff4148f1bf48187866e4361ea73e889c8ada8424959651e7056ce96",
+      "kind": "h3",
+      "chapter": "سادسا-ذكر-شيخنا-الإمام-ابن-باز-رحمه-الله",
+      "prev": "b46e6923a0be5a76f4a246c38e1cdd730d028270f56f2c5716ded45f3af2b500",
+      "next": "38255d676302a38f8fbb5c897486378484bec54575d3f379d37cb50791140337"
+    },
+    {
+      "ord": 253,
+      "blockId": "2e992944dcdce93cc586027dc5f4cfe8",
+      "fp64": "61cb4760df4fdf02",
+      "normHash": "38255d676302a38f8fbb5c897486378484bec54575d3f379d37cb50791140337",
+      "kind": "p",
+      "chapter": "سادسا-ذكر-شيخنا-الإمام-ابن-باز-رحمه-الله",
+      "prev": "e15afd752ff4148f1bf48187866e4361ea73e889c8ada8424959651e7056ce96",
+      "next": "68e4108938a121c26b4a9d6afba44c8818001fd8e1b64c8114445f26e3fff73f"
+    },
+    {
+      "ord": 254,
+      "blockId": "6006582491f169729b6f57a05cdb527e",
+      "fp64": "bd84e052988fa52c",
+      "normHash": "68e4108938a121c26b4a9d6afba44c8818001fd8e1b64c8114445f26e3fff73f",
+      "kind": "p",
+      "chapter": "سادسا-ذكر-شيخنا-الإمام-ابن-باز-رحمه-الله",
+      "prev": "38255d676302a38f8fbb5c897486378484bec54575d3f379d37cb50791140337",
+      "next": "bd5632e3ad5cbe1474114c4e31c83cd4281049f9a69db65a8b7b812fe2a1ef0d"
+    },
+    {
+      "ord": 255,
+      "blockId": "4426e3153cdec2ef0bc2b684b4d173d5",
+      "fp64": "9c7871423ede5ed6",
+      "normHash": "bd5632e3ad5cbe1474114c4e31c83cd4281049f9a69db65a8b7b812fe2a1ef0d",
+      "kind": "p",
+      "chapter": "سادسا-ذكر-شيخنا-الإمام-ابن-باز-رحمه-الله",
+      "prev": "68e4108938a121c26b4a9d6afba44c8818001fd8e1b64c8114445f26e3fff73f",
+      "next": "f9561102f6f0bb7090974fb237863cb5f8058726d79ee2da8b7b9f3485c54280"
+    },
+    {
+      "ord": 256,
+      "blockId": "8ee5f7a8b42b18097d0b60fc2a43ec2c",
+      "fp64": "2fdffbdadb7ff13f",
+      "normHash": "f9561102f6f0bb7090974fb237863cb5f8058726d79ee2da8b7b9f3485c54280",
+      "kind": "page",
+      "chapter": "سادسا-ذكر-شيخنا-الإمام-ابن-باز-رحمه-الله",
+      "prev": "bd5632e3ad5cbe1474114c4e31c83cd4281049f9a69db65a8b7b812fe2a1ef0d"
+    }
+  ]
+}

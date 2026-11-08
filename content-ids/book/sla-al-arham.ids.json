@@ -1,0 +1,2565 @@
+{
+  "schema": 1,
+  "generation": 1,
+  "sourceHash": "66f261659e7f1dea1805791a15cf6e7caaaa9868256f4cc575c7d78fbde6503a",
+  "ids": [
+    {
+      "ord": 0,
+      "blockId": "8f115929e2a47bedb44d81d413543091",
+      "fp64": "c33eddf6286f3c6f",
+      "normHash": "26a40dc7eb12b02857dce961c7829a537215a86810ba324c248afb555f39ea94",
+      "kind": "p",
+      "chapter": "main",
+      "next": "baacc1ce18f7797b45ed090f8f1d771721cd4669004c8281aed9b96189dd798f"
+    },
+    {
+      "ord": 1,
+      "blockId": "390931ae17025e33e966d128593a1092",
+      "fp64": "a2589e0557db70a7",
+      "normHash": "baacc1ce18f7797b45ed090f8f1d771721cd4669004c8281aed9b96189dd798f",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "26a40dc7eb12b02857dce961c7829a537215a86810ba324c248afb555f39ea94",
+      "next": "f5c92b51cfc0ef5c80e7d3bcb7a7399f213e3abf468e7f06a2551f6be5d7e5f3"
+    },
+    {
+      "ord": 2,
+      "blockId": "b071f9f36af675bf95d35e30f2af30f5",
+      "fp64": "d9f7fd7fd3e7fc77",
+      "normHash": "f5c92b51cfc0ef5c80e7d3bcb7a7399f213e3abf468e7f06a2551f6be5d7e5f3",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "baacc1ce18f7797b45ed090f8f1d771721cd4669004c8281aed9b96189dd798f",
+      "next": "1755600b9ce652f0aec99354fbd00dc1a7e373871d30eaf4eb8d6dffd57a9a4c"
+    },
+    {
+      "ord": 3,
+      "blockId": "61fa914659f8bbf1ccbd64313b52787f",
+      "fp64": "fe7eb96dfbebf385",
+      "normHash": "1755600b9ce652f0aec99354fbd00dc1a7e373871d30eaf4eb8d6dffd57a9a4c",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "f5c92b51cfc0ef5c80e7d3bcb7a7399f213e3abf468e7f06a2551f6be5d7e5f3",
+      "next": "4ad3f71265c12921249b1a571f7c668ba62548dffd2818501a0bba8078b324e2"
+    },
+    {
+      "ord": 4,
+      "blockId": "77c04514e1f91e96d9fb90ee390fca7c",
+      "fp64": "ddffdfc7ffbfffff",
+      "normHash": "4ad3f71265c12921249b1a571f7c668ba62548dffd2818501a0bba8078b324e2",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "1755600b9ce652f0aec99354fbd00dc1a7e373871d30eaf4eb8d6dffd57a9a4c",
+      "next": "d61a709e31b57f1a06e7b23c65bd96d604b08e00bfe6d58ea3fe5cd23f26d712"
+    },
+    {
+      "ord": 5,
+      "blockId": "f4a6ab7a7ab2d2e0fb848191fb149067",
+      "fp64": "3eff07f2fe5fffef",
+      "normHash": "d61a709e31b57f1a06e7b23c65bd96d604b08e00bfe6d58ea3fe5cd23f26d712",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "4ad3f71265c12921249b1a571f7c668ba62548dffd2818501a0bba8078b324e2",
+      "next": "70ea6a29e41d42b570db4f1219a083c18370648fb929aa4812395da90140cd78"
+    },
+    {
+      "ord": 6,
+      "blockId": "55b6211459cf352ced12cb9ea789ad68",
+      "fp64": "b7fffd5bcb667c77",
+      "normHash": "70ea6a29e41d42b570db4f1219a083c18370648fb929aa4812395da90140cd78",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "d61a709e31b57f1a06e7b23c65bd96d604b08e00bfe6d58ea3fe5cd23f26d712",
+      "next": "5b97ccfe0b2218775e5ac19fc838d4aacb9fa83a4ca0970b414faec921df57bf"
+    },
+    {
+      "ord": 7,
+      "blockId": "b7028a32905398b5f6374adf857cc5a8",
+      "fp64": "3017e25a3793e4ec",
+      "normHash": "5b97ccfe0b2218775e5ac19fc838d4aacb9fa83a4ca0970b414faec921df57bf",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "70ea6a29e41d42b570db4f1219a083c18370648fb929aa4812395da90140cd78",
+      "next": "60827fc6b2fe55a354315359e81e37b1f9bd25b22682f050eb8e627fb183897c"
+    },
+    {
+      "ord": 8,
+      "blockId": "eb8663e7fb8be6771a031e9ac03409ee",
+      "fp64": "e1320d1667a6fa70",
+      "normHash": "60827fc6b2fe55a354315359e81e37b1f9bd25b22682f050eb8e627fb183897c",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "5b97ccfe0b2218775e5ac19fc838d4aacb9fa83a4ca0970b414faec921df57bf",
+      "next": "9188f256ba223b9637a6bca1894c8bda769d4a2177a25f5c18dfb50703f508f1"
+    },
+    {
+      "ord": 9,
+      "blockId": "99d6be36a1d6d185c13f4342c6a51582",
+      "fp64": "e5fff7ff7bb3e67f",
+      "normHash": "9188f256ba223b9637a6bca1894c8bda769d4a2177a25f5c18dfb50703f508f1",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "60827fc6b2fe55a354315359e81e37b1f9bd25b22682f050eb8e627fb183897c",
+      "next": "2faeea109072ecd45655335c776d16dff7854c5c40d4f54df97cecc239736a86"
+    },
+    {
+      "ord": 10,
+      "blockId": "0dc6e9252944584cd4ce8caaf0bd350f",
+      "fp64": "bdf5f8179ffc71fe",
+      "normHash": "2faeea109072ecd45655335c776d16dff7854c5c40d4f54df97cecc239736a86",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "9188f256ba223b9637a6bca1894c8bda769d4a2177a25f5c18dfb50703f508f1",
+      "next": "e521f489d4ea1b1e344557f70b833a823e82867c277e340c6a9f43cfa42a6fc7"
+    },
+    {
+      "ord": 11,
+      "blockId": "978f54f5f5b12a8c70cfc56e877b89aa",
+      "fp64": "57e5da6b6ba8a367",
+      "normHash": "e521f489d4ea1b1e344557f70b833a823e82867c277e340c6a9f43cfa42a6fc7",
+      "kind": "h2",
+      "chapter": "المقدمة",
+      "prev": "2faeea109072ecd45655335c776d16dff7854c5c40d4f54df97cecc239736a86",
+      "next": "d4e0ed4b98dd7f628fbc4aba3cc6bbc7ed007ee8c8fbbe26922589bfd9900b2e"
+    },
+    {
+      "ord": 12,
+      "blockId": "b8d6b37f3ed23c727ef64d0f6b39fa7d",
+      "fp64": "e8c3e10c7774d439",
+      "normHash": "d4e0ed4b98dd7f628fbc4aba3cc6bbc7ed007ee8c8fbbe26922589bfd9900b2e",
+      "kind": "p",
+      "chapter": "المقدمة",
+      "prev": "e521f489d4ea1b1e344557f70b833a823e82867c277e340c6a9f43cfa42a6fc7",
+      "next": "4c6c30540505038949d15b3f38cd1895573d538b1f20fcd2352b35b04797993c"
+    },
+    {
+      "ord": 13,
+      "blockId": "847d272f40ff6210bfbd70c02883efde",
+      "fp64": "8fffd7c39132df55",
+      "normHash": "4c6c30540505038949d15b3f38cd1895573d538b1f20fcd2352b35b04797993c",
+      "kind": "p",
+      "chapter": "المقدمة",
+      "prev": "d4e0ed4b98dd7f628fbc4aba3cc6bbc7ed007ee8c8fbbe26922589bfd9900b2e",
+      "next": "1d29affb6776e23bcedb716593b47de2cc26e9ef97abeb79a20e7644729cc97a"
+    },
+    {
+      "ord": 14,
+      "blockId": "2bbb57be41fcbfb4660eb944f0f99205",
+      "fp64": "bed6b614be793a7a",
+      "normHash": "1d29affb6776e23bcedb716593b47de2cc26e9ef97abeb79a20e7644729cc97a",
+      "kind": "p",
+      "chapter": "المقدمة",
+      "prev": "4c6c30540505038949d15b3f38cd1895573d538b1f20fcd2352b35b04797993c",
+      "next": "f7f4a90c065992e83745e1df65ec3a03003a82253ee90efc20ca08eafdc8dddc"
+    },
+    {
+      "ord": 15,
+      "blockId": "870b1bbd3ab6dd931e419860170004ca",
+      "fp64": "afdffffadf71677e",
+      "normHash": "f7f4a90c065992e83745e1df65ec3a03003a82253ee90efc20ca08eafdc8dddc",
+      "kind": "page",
+      "chapter": "المقدمة",
+      "prev": "1d29affb6776e23bcedb716593b47de2cc26e9ef97abeb79a20e7644729cc97a",
+      "next": "838b7cfe8d4ca1eaebbfc04213059001d72c73f2d55f39a15f56b0e4562f6545"
+    },
+    {
+      "ord": 16,
+      "blockId": "6039229f98d44c0db1ada1fb6b94ceb3",
+      "fp64": "69820c5ade468e2d",
+      "normHash": "838b7cfe8d4ca1eaebbfc04213059001d72c73f2d55f39a15f56b0e4562f6545",
+      "kind": "p",
+      "chapter": "المقدمة",
+      "prev": "f7f4a90c065992e83745e1df65ec3a03003a82253ee90efc20ca08eafdc8dddc",
+      "next": "06a8f27e268bf9f26d0e58d22acf4b9a8244c62507c679844ea581d4bfaaf4b1"
+    },
+    {
+      "ord": 17,
+      "blockId": "cbc716d7d53649bfa3e26d7ed7f59813",
+      "fp64": "9d3cd8bfdbe2e4f4",
+      "normHash": "06a8f27e268bf9f26d0e58d22acf4b9a8244c62507c679844ea581d4bfaaf4b1",
+      "kind": "p",
+      "chapter": "المقدمة",
+      "prev": "838b7cfe8d4ca1eaebbfc04213059001d72c73f2d55f39a15f56b0e4562f6545",
+      "next": "2936ed27791830c6651b9a299876cdbcd28ac94979ddd099031fbbb2809633a2"
+    },
+    {
+      "ord": 18,
+      "blockId": "e186ef12db8660f7d9c96892ab7d578a",
+      "fp64": "f91920a27165843f",
+      "normHash": "2936ed27791830c6651b9a299876cdbcd28ac94979ddd099031fbbb2809633a2",
+      "kind": "p",
+      "chapter": "المقدمة",
+      "prev": "06a8f27e268bf9f26d0e58d22acf4b9a8244c62507c679844ea581d4bfaaf4b1",
+      "next": "21edae1669eb9b20cadd95e2a056b85940569f6bae24651462d9e45a91f61291"
+    },
+    {
+      "ord": 19,
+      "blockId": "562f18b24f4600a34dc605d3b170abc2",
+      "fp64": "e7dfffde7f77627f",
+      "normHash": "21edae1669eb9b20cadd95e2a056b85940569f6bae24651462d9e45a91f61291",
+      "kind": "page",
+      "chapter": "المقدمة",
+      "prev": "2936ed27791830c6651b9a299876cdbcd28ac94979ddd099031fbbb2809633a2",
+      "next": "638b4c1ab2819a729ad3233601fbc7171dfe03e9ff8c8f8937d8496d75dd26a4"
+    },
+    {
+      "ord": 20,
+      "blockId": "b912132afd17a911e89f46b3fe55bf13",
+      "fp64": "bfdfd3dfff76dfff",
+      "normHash": "638b4c1ab2819a729ad3233601fbc7171dfe03e9ff8c8f8937d8496d75dd26a4",
+      "kind": "h2",
+      "chapter": "أولا-مفهوم-صلة-الأرحام",
+      "prev": "21edae1669eb9b20cadd95e2a056b85940569f6bae24651462d9e45a91f61291",
+      "next": "c7d7ebaa1b24d2343bc412f83ac70ee2503ae4ee0c668cfe70907b7e8afb40c1"
+    },
+    {
+      "ord": 21,
+      "blockId": "6390c8e5a3108dd95758663ade17b75a",
+      "fp64": "2efe9c4115b02de1",
+      "normHash": "c7d7ebaa1b24d2343bc412f83ac70ee2503ae4ee0c668cfe70907b7e8afb40c1",
+      "kind": "h2",
+      "chapter": "لغة",
+      "prev": "638b4c1ab2819a729ad3233601fbc7171dfe03e9ff8c8f8937d8496d75dd26a4",
+      "next": "2b66536d3be62ed5b3725948b77b583c373ffe12277e0ac3805ad5a897c9a046"
+    },
+    {
+      "ord": 22,
+      "blockId": "805fb24b2ea845befc45e45f73b0e13f",
+      "fp64": "b4f2f99e19111a02",
+      "normHash": "2b66536d3be62ed5b3725948b77b583c373ffe12277e0ac3805ad5a897c9a046",
+      "kind": "p",
+      "chapter": "لغة",
+      "prev": "c7d7ebaa1b24d2343bc412f83ac70ee2503ae4ee0c668cfe70907b7e8afb40c1",
+      "next": "b5c08c5f47d8cf343e34943f5d911ef473d1d6a8f1e45f429688e6b965b12943"
+    },
+    {
+      "ord": 23,
+      "blockId": "99c2e62b4da5704913040d5e9e441d5b",
+      "fp64": "28f89d6f70000d53",
+      "normHash": "b5c08c5f47d8cf343e34943f5d911ef473d1d6a8f1e45f429688e6b965b12943",
+      "kind": "p",
+      "chapter": "لغة",
+      "prev": "2b66536d3be62ed5b3725948b77b583c373ffe12277e0ac3805ad5a897c9a046",
+      "next": "9b947200c4a037bf1e99c0b319d2d7063ab7a05113f30ec3d2697449f0dea4c1"
+    },
+    {
+      "ord": 24,
+      "blockId": "9c3f4c800f74879a06ed7dc2f985dadf",
+      "fp64": "e694cc72dd342d7f",
+      "normHash": "9b947200c4a037bf1e99c0b319d2d7063ab7a05113f30ec3d2697449f0dea4c1",
+      "kind": "p",
+      "chapter": "لغة",
+      "prev": "b5c08c5f47d8cf343e34943f5d911ef473d1d6a8f1e45f429688e6b965b12943",
+      "next": "0ed20784e278434b899fb42154932652e9bacccd18944142cbddbb8cd6bcda4f"
+    },
+    {
+      "ord": 25,
+      "blockId": "6000d6226f6b87387db9e418af28141f",
+      "fp64": "74983cfaf4c56d4b",
+      "normHash": "0ed20784e278434b899fb42154932652e9bacccd18944142cbddbb8cd6bcda4f",
+      "kind": "p",
+      "chapter": "لغة",
+      "prev": "9b947200c4a037bf1e99c0b319d2d7063ab7a05113f30ec3d2697449f0dea4c1",
+      "next": "73d73406bc46cc7186ec804fdfa1a05041b9f7d03ceeca214755823ab8479412"
+    },
+    {
+      "ord": 26,
+      "blockId": "c0245a0ceb8a22e574585258baeca549",
+      "fp64": "2fdffbfb7f336dff",
+      "normHash": "73d73406bc46cc7186ec804fdfa1a05041b9f7d03ceeca214755823ab8479412",
+      "kind": "page",
+      "chapter": "لغة",
+      "prev": "0ed20784e278434b899fb42154932652e9bacccd18944142cbddbb8cd6bcda4f",
+      "next": "f1d4e4342e9b8357c1e1cebfed398c21f73224e8ff880f9cad1efd7ca222801d"
+    },
+    {
+      "ord": 27,
+      "blockId": "50daf381f3bd64591c38a71b4dd7c25f",
+      "fp64": "91c9646d9f77ce4a",
+      "normHash": "f1d4e4342e9b8357c1e1cebfed398c21f73224e8ff880f9cad1efd7ca222801d",
+      "kind": "p",
+      "chapter": "لغة",
+      "prev": "73d73406bc46cc7186ec804fdfa1a05041b9f7d03ceeca214755823ab8479412",
+      "next": "a9f012f9d66ab36b76261fecc0cc9c9acb19d7895ac570b746e58c74cfe1691c"
+    },
+    {
+      "ord": 28,
+      "blockId": "1c2a7552b73691dde308399d2d554c71",
+      "fp64": "ed7f4fdff47ffdff",
+      "normHash": "a9f012f9d66ab36b76261fecc0cc9c9acb19d7895ac570b746e58c74cfe1691c",
+      "kind": "p",
+      "chapter": "لغة",
+      "prev": "f1d4e4342e9b8357c1e1cebfed398c21f73224e8ff880f9cad1efd7ca222801d",
+      "next": "41b73f6b5007866b597214584a7a1298a78b45767a3e65429a8947369bf8b561"
+    },
+    {
+      "ord": 29,
+      "blockId": "5d13a3ba71419124c60e29b15f0bfe01",
+      "fp64": "3a9ce8382510159b",
+      "normHash": "41b73f6b5007866b597214584a7a1298a78b45767a3e65429a8947369bf8b561",
+      "kind": "h2",
+      "chapter": "اصطلاحا",
+      "prev": "a9f012f9d66ab36b76261fecc0cc9c9acb19d7895ac570b746e58c74cfe1691c",
+      "next": "1d04b1e995b7ac76ec93f06ac76ff5483db70b57ee275a45dd37ad0994071503"
+    },
+    {
+      "ord": 30,
+      "blockId": "3ec8da01b12c8deebdd6788a1e05cdf1",
+      "fp64": "5422a4698d132314",
+      "normHash": "1d04b1e995b7ac76ec93f06ac76ff5483db70b57ee275a45dd37ad0994071503",
+      "kind": "p",
+      "chapter": "اصطلاحا",
+      "prev": "41b73f6b5007866b597214584a7a1298a78b45767a3e65429a8947369bf8b561",
+      "next": "690fdffe5c0346abb954c60950433870b056fa5bba88418fcf1afa70e3c0c027"
+    },
+    {
+      "ord": 31,
+      "blockId": "32bab32abf0fc0e5c95218e9e2acc447",
+      "fp64": "deff57eeee7adfdd",
+      "normHash": "690fdffe5c0346abb954c60950433870b056fa5bba88418fcf1afa70e3c0c027",
+      "kind": "h2",
+      "chapter": "ثانيا-مفهوم-قطيعة-الأرحام",
+      "prev": "1d04b1e995b7ac76ec93f06ac76ff5483db70b57ee275a45dd37ad0994071503",
+      "next": "c7d7ebaa1b24d2343bc412f83ac70ee2503ae4ee0c668cfe70907b7e8afb40c1"
+    },
+    {
+      "ord": 32,
+      "blockId": "b659ef215b6f6853e7d52d2e451e192d",
+      "fp64": "2efe9c4115b02de1",
+      "normHash": "c7d7ebaa1b24d2343bc412f83ac70ee2503ae4ee0c668cfe70907b7e8afb40c1",
+      "kind": "h2",
+      "chapter": "لغة-2",
+      "prev": "690fdffe5c0346abb954c60950433870b056fa5bba88418fcf1afa70e3c0c027",
+      "next": "6964e054e5b40025f0e6e22c6d9123bcdea64b6181d89bb47b6d735985962eb9"
+    },
+    {
+      "ord": 33,
+      "blockId": "cd4a4f990b51becbf618d38771e5dc94",
+      "fp64": "37e1c3f2b910c456",
+      "normHash": "6964e054e5b40025f0e6e22c6d9123bcdea64b6181d89bb47b6d735985962eb9",
+      "kind": "p",
+      "chapter": "لغة-2",
+      "prev": "c7d7ebaa1b24d2343bc412f83ac70ee2503ae4ee0c668cfe70907b7e8afb40c1",
+      "next": "fd15a8bc1aaa97016f1b6cbd7e8687b68b891da0742891bde48f8dd2fae4bbdf"
+    },
+    {
+      "ord": 34,
+      "blockId": "a28488a86d21bce345e019b71b7ed41f",
+      "fp64": "fe7f51a6e4484fbd",
+      "normHash": "fd15a8bc1aaa97016f1b6cbd7e8687b68b891da0742891bde48f8dd2fae4bbdf",
+      "kind": "p",
+      "chapter": "لغة-2",
+      "prev": "6964e054e5b40025f0e6e22c6d9123bcdea64b6181d89bb47b6d735985962eb9",
+      "next": "058ee1986decd4aa8fb0ba9c9d15aa8f744c8592ef7e2c253e3f76a31b7e4fd6"
+    },
+    {
+      "ord": 35,
+      "blockId": "9d0a20226cf2297d5cf2c7a86682cffa",
+      "fp64": "7ccabcf235e12d12",
+      "normHash": "058ee1986decd4aa8fb0ba9c9d15aa8f744c8592ef7e2c253e3f76a31b7e4fd6",
+      "kind": "p",
+      "chapter": "لغة-2",
+      "prev": "fd15a8bc1aaa97016f1b6cbd7e8687b68b891da0742891bde48f8dd2fae4bbdf",
+      "next": "b64d47bb52ce2df883d5e65a897cdbda8fb31df41781ec406a8f4c6d951ae1b5"
+    },
+    {
+      "ord": 36,
+      "blockId": "575b17341c86ba1b07bb267c569aa08a",
+      "fp64": "b7dfffff5bf1f6f7",
+      "normHash": "b64d47bb52ce2df883d5e65a897cdbda8fb31df41781ec406a8f4c6d951ae1b5",
+      "kind": "page",
+      "chapter": "لغة-2",
+      "prev": "058ee1986decd4aa8fb0ba9c9d15aa8f744c8592ef7e2c253e3f76a31b7e4fd6",
+      "next": "5eac0010b11335f2c20ec96b24c38b751e57fad891092ac20f148a12cac7ca56"
+    },
+    {
+      "ord": 37,
+      "blockId": "44660ca674be11bb4a9b89fda1e72998",
+      "fp64": "15d625b7716f3e46",
+      "normHash": "5eac0010b11335f2c20ec96b24c38b751e57fad891092ac20f148a12cac7ca56",
+      "kind": "p",
+      "chapter": "لغة-2",
+      "prev": "b64d47bb52ce2df883d5e65a897cdbda8fb31df41781ec406a8f4c6d951ae1b5",
+      "next": "5960109b6e10454c291746c6cef28038c49ab9d480a28140a06f3fadd510706a"
+    },
+    {
+      "ord": 38,
+      "blockId": "ff7582dc475bd5022e1a410f022c8bdf",
+      "fp64": "7e4a6d571df35c2c",
+      "normHash": "5960109b6e10454c291746c6cef28038c49ab9d480a28140a06f3fadd510706a",
+      "kind": "p",
+      "chapter": "لغة-2",
+      "prev": "5eac0010b11335f2c20ec96b24c38b751e57fad891092ac20f148a12cac7ca56",
+      "next": "8dd39741b77aabcea31ab1867ae51a590f155c4091d6f8ad0f535386366e32b9"
+    },
+    {
+      "ord": 39,
+      "blockId": "546f3ce43b0b70d958b1cf9c9917a15c",
+      "fp64": "ebf125eb1479fcff",
+      "normHash": "8dd39741b77aabcea31ab1867ae51a590f155c4091d6f8ad0f535386366e32b9",
+      "kind": "p",
+      "chapter": "لغة-2",
+      "prev": "5960109b6e10454c291746c6cef28038c49ab9d480a28140a06f3fadd510706a",
+      "next": "41b73f6b5007866b597214584a7a1298a78b45767a3e65429a8947369bf8b561"
+    },
+    {
+      "ord": 40,
+      "blockId": "c211bb3a75da2c5e4e1f8b4fb7fb0c32",
+      "fp64": "3a9ce8382510159b",
+      "normHash": "41b73f6b5007866b597214584a7a1298a78b45767a3e65429a8947369bf8b561",
+      "kind": "h2",
+      "chapter": "اصطلاحا-2",
+      "prev": "8dd39741b77aabcea31ab1867ae51a590f155c4091d6f8ad0f535386366e32b9",
+      "next": "8f146a32fc7413f13a8798e5c371b69cfd38ba03e7189a0347c8e9915d7d983a"
+    },
+    {
+      "ord": 41,
+      "blockId": "511144d60319340809056f4f2f7fdc1b",
+      "fp64": "58234f1563a9c54b",
+      "normHash": "8f146a32fc7413f13a8798e5c371b69cfd38ba03e7189a0347c8e9915d7d983a",
+      "kind": "p",
+      "chapter": "اصطلاحا-2",
+      "prev": "41b73f6b5007866b597214584a7a1298a78b45767a3e65429a8947369bf8b561",
+      "next": "4046c8574c6d7c754e8e67f49aa0a33b62ac88b2323d414be6a86e32ce8ed2b6"
+    },
+    {
+      "ord": 42,
+      "blockId": "47dc93af2f17d46f92a406c0af9f7090",
+      "fp64": "fdee5fe7bbbf3bdf",
+      "normHash": "4046c8574c6d7c754e8e67f49aa0a33b62ac88b2323d414be6a86e32ce8ed2b6",
+      "kind": "h2",
+      "chapter": "ثالثا-صلة-الأرحام-من-أعظم-الواجبات",
+      "prev": "8f146a32fc7413f13a8798e5c371b69cfd38ba03e7189a0347c8e9915d7d983a",
+      "next": "71896db519a88c28747a2267134e0f404333099b034096b8106ea7b61027c7a9"
+    },
+    {
+      "ord": 43,
+      "blockId": "659fe99135b788f2c3fadaca35666ab2",
+      "fp64": "57d9ca7a0be7b90f",
+      "normHash": "71896db519a88c28747a2267134e0f404333099b034096b8106ea7b61027c7a9",
+      "kind": "p",
+      "chapter": "ثالثا-صلة-الأرحام-من-أعظم-الواجبات",
+      "prev": "4046c8574c6d7c754e8e67f49aa0a33b62ac88b2323d414be6a86e32ce8ed2b6",
+      "next": "a3e66b311d71fa5c596fc6f081116143927f471f5bb38df85f58692d93afabf8"
+    },
+    {
+      "ord": 44,
+      "blockId": "c293fd049b65a64f25e49f2d29c342fd",
+      "fp64": "905966d51b2dd756",
+      "normHash": "a3e66b311d71fa5c596fc6f081116143927f471f5bb38df85f58692d93afabf8",
+      "kind": "h2",
+      "chapter": "١-أمر-الله-عز-وجل-بصلة-الأرحام",
+      "prev": "71896db519a88c28747a2267134e0f404333099b034096b8106ea7b61027c7a9",
+      "next": "25705ab32bc0bc3354484997a44b17f6b36a22e494455d2748131dec27069b02"
+    },
+    {
+      "ord": 45,
+      "blockId": "dc08cb6d6ee43143927213d073d8196a",
+      "fp64": "9631e40454cb104b",
+      "normHash": "25705ab32bc0bc3354484997a44b17f6b36a22e494455d2748131dec27069b02",
+      "kind": "p",
+      "chapter": "١-أمر-الله-عز-وجل-بصلة-الأرحام",
+      "prev": "a3e66b311d71fa5c596fc6f081116143927f471f5bb38df85f58692d93afabf8",
+      "next": "95436d18fb54699f8acba4f4eb721ed6679a4e2421adf656c1325d3847a75955"
+    },
+    {
+      "ord": 46,
+      "blockId": "dba0a4d39aeb5277891d5f85d848fb41",
+      "fp64": "1ed81c7255546902",
+      "normHash": "95436d18fb54699f8acba4f4eb721ed6679a4e2421adf656c1325d3847a75955",
+      "kind": "p",
+      "chapter": "١-أمر-الله-عز-وجل-بصلة-الأرحام",
+      "prev": "25705ab32bc0bc3354484997a44b17f6b36a22e494455d2748131dec27069b02",
+      "next": "fa6f2f2d2ec70b9fd6cba78ecf50308b0b0c23a51f49f40d301067bd8d109e52"
+    },
+    {
+      "ord": 47,
+      "blockId": "312c545535936ba3eda11deea01ab64f",
+      "fp64": "afdffffedb79627f",
+      "normHash": "fa6f2f2d2ec70b9fd6cba78ecf50308b0b0c23a51f49f40d301067bd8d109e52",
+      "kind": "page",
+      "chapter": "١-أمر-الله-عز-وجل-بصلة-الأرحام",
+      "prev": "95436d18fb54699f8acba4f4eb721ed6679a4e2421adf656c1325d3847a75955",
+      "next": "4d7b83e94a6309849324e1fb41caf9f430839d1cf3afb481ba622fc161d76655"
+    },
+    {
+      "ord": 48,
+      "blockId": "226d26a9b964cdd3ed711ee454377717",
+      "fp64": "61ed4c4e6eedb4de",
+      "normHash": "4d7b83e94a6309849324e1fb41caf9f430839d1cf3afb481ba622fc161d76655",
+      "kind": "p",
+      "chapter": "١-أمر-الله-عز-وجل-بصلة-الأرحام",
+      "prev": "fa6f2f2d2ec70b9fd6cba78ecf50308b0b0c23a51f49f40d301067bd8d109e52",
+      "next": "c5d0601c761ba8ec4b4d0d2e4f7b480eb31bdc0fd3db1d23f46305dbe8a6815a"
+    },
+    {
+      "ord": 49,
+      "blockId": "c3869ffb6b571acbf85ed40cf8636332",
+      "fp64": "58556018befdde13",
+      "normHash": "c5d0601c761ba8ec4b4d0d2e4f7b480eb31bdc0fd3db1d23f46305dbe8a6815a",
+      "kind": "p",
+      "chapter": "١-أمر-الله-عز-وجل-بصلة-الأرحام",
+      "prev": "4d7b83e94a6309849324e1fb41caf9f430839d1cf3afb481ba622fc161d76655",
+      "next": "d310b2b6185173bf83e057fd423809a8bb57ca8ae09d2e50fbb69d4952937487"
+    },
+    {
+      "ord": 50,
+      "blockId": "5ac14a8378a7f5f00c30b5449d56b102",
+      "fp64": "d8356110be7ddf1e",
+      "normHash": "d310b2b6185173bf83e057fd423809a8bb57ca8ae09d2e50fbb69d4952937487",
+      "kind": "p",
+      "chapter": "١-أمر-الله-عز-وجل-بصلة-الأرحام",
+      "prev": "c5d0601c761ba8ec4b4d0d2e4f7b480eb31bdc0fd3db1d23f46305dbe8a6815a",
+      "next": "2801dd2047097d08e6b70ef15aecd448802a35d02a9676c3ad434458b122a1ab"
+    },
+    {
+      "ord": 51,
+      "blockId": "7379a027949ceaf416ee7726e338b0ff",
+      "fp64": "4d6bceed0f677f5f",
+      "normHash": "2801dd2047097d08e6b70ef15aecd448802a35d02a9676c3ad434458b122a1ab",
+      "kind": "p",
+      "chapter": "١-أمر-الله-عز-وجل-بصلة-الأرحام",
+      "prev": "d310b2b6185173bf83e057fd423809a8bb57ca8ae09d2e50fbb69d4952937487",
+      "next": "ade1d0affc870f834c470ff05a3ac264ed61803895380fd3d2281235b3deaced"
+    },
+    {
+      "ord": 52,
+      "blockId": "17fd90b7d1901b9033a5c4c55dd88417",
+      "fp64": "9ca9edba45e74e63",
+      "normHash": "ade1d0affc870f834c470ff05a3ac264ed61803895380fd3d2281235b3deaced",
+      "kind": "p",
+      "chapter": "١-أمر-الله-عز-وجل-بصلة-الأرحام",
+      "prev": "2801dd2047097d08e6b70ef15aecd448802a35d02a9676c3ad434458b122a1ab",
+      "next": "4e69f1fe679aed73a4f2002d7955a7415fb3e959647a1fb7d8b8e8215f935244"
+    },
+    {
+      "ord": 53,
+      "blockId": "2e272683c7479ad00e47c3c37f427ea5",
+      "fp64": "77fff3df7a73623e",
+      "normHash": "4e69f1fe679aed73a4f2002d7955a7415fb3e959647a1fb7d8b8e8215f935244",
+      "kind": "page",
+      "chapter": "١-أمر-الله-عز-وجل-بصلة-الأرحام",
+      "prev": "ade1d0affc870f834c470ff05a3ac264ed61803895380fd3d2281235b3deaced",
+      "next": "7da5fe7272b065a2a153de0eb2c108d37456fe2bbd3b51516b8e670e416b5cfb"
+    },
+    {
+      "ord": 54,
+      "blockId": "266594177d87f4ac6b5a343c398b8002",
+      "fp64": "b85de0121f744c5e",
+      "normHash": "7da5fe7272b065a2a153de0eb2c108d37456fe2bbd3b51516b8e670e416b5cfb",
+      "kind": "p",
+      "chapter": "١-أمر-الله-عز-وجل-بصلة-الأرحام",
+      "prev": "4e69f1fe679aed73a4f2002d7955a7415fb3e959647a1fb7d8b8e8215f935244",
+      "next": "8ac64057d00411cda5e5089408c0e232da6d2c627b073f1c633724395e258008"
+    },
+    {
+      "ord": 55,
+      "blockId": "f0298bd9d514aadd15390849b8ff1a11",
+      "fp64": "1c1b707a9f657d5c",
+      "normHash": "8ac64057d00411cda5e5089408c0e232da6d2c627b073f1c633724395e258008",
+      "kind": "p",
+      "chapter": "١-أمر-الله-عز-وجل-بصلة-الأرحام",
+      "prev": "7da5fe7272b065a2a153de0eb2c108d37456fe2bbd3b51516b8e670e416b5cfb",
+      "next": "698023565f5b084ff0e806cd149a2dc06612b741b9f453adbe7d6371108ef1f2"
+    },
+    {
+      "ord": 56,
+      "blockId": "5f17b836d62326f0f5eb9cb8e90d953c",
+      "fp64": "f3b9acba37cd6e73",
+      "normHash": "698023565f5b084ff0e806cd149a2dc06612b741b9f453adbe7d6371108ef1f2",
+      "kind": "p",
+      "chapter": "١-أمر-الله-عز-وجل-بصلة-الأرحام",
+      "prev": "8ac64057d00411cda5e5089408c0e232da6d2c627b073f1c633724395e258008",
+      "next": "fe150be8995764fb9222c74a2e8f48710a6c0e04b0832c95ac9ae993299ca637"
+    },
+    {
+      "ord": 57,
+      "blockId": "b01f5ffb7649f47827880f1501a0a0b2",
+      "fp64": "25ffffde7f3f783f",
+      "normHash": "fe150be8995764fb9222c74a2e8f48710a6c0e04b0832c95ac9ae993299ca637",
+      "kind": "page",
+      "chapter": "١-أمر-الله-عز-وجل-بصلة-الأرحام",
+      "prev": "698023565f5b084ff0e806cd149a2dc06612b741b9f453adbe7d6371108ef1f2",
+      "next": "23b8e92437b10dfca58e6439efd94e109f6215ba147494c93690c9be9f0e440a"
+    },
+    {
+      "ord": 58,
+      "blockId": "38825a138e03a1224594e66045aaee71",
+      "fp64": "f467a25f44b46662",
+      "normHash": "23b8e92437b10dfca58e6439efd94e109f6215ba147494c93690c9be9f0e440a",
+      "kind": "p",
+      "chapter": "١-أمر-الله-عز-وجل-بصلة-الأرحام",
+      "prev": "fe150be8995764fb9222c74a2e8f48710a6c0e04b0832c95ac9ae993299ca637",
+      "next": "a703f360de3e74bb91f183be45f2bb5dc7a0129c4940cea0fa519f56796d68d7"
+    },
+    {
+      "ord": 59,
+      "blockId": "d6c28217c0abb54b26dccf2929a4d7a0",
+      "fp64": "f4a3a48f3e8c6fdf",
+      "normHash": "a703f360de3e74bb91f183be45f2bb5dc7a0129c4940cea0fa519f56796d68d7",
+      "kind": "p",
+      "chapter": "١-أمر-الله-عز-وجل-بصلة-الأرحام",
+      "prev": "23b8e92437b10dfca58e6439efd94e109f6215ba147494c93690c9be9f0e440a",
+      "next": "4c77efdd9d417ba04550df30f29f55445038a5054355c7087dc6b1383cf2b9a3"
+    },
+    {
+      "ord": 60,
+      "blockId": "eda81856f245470a31b1fe3a74928c3a",
+      "fp64": "5c5c704295657964",
+      "normHash": "4c77efdd9d417ba04550df30f29f55445038a5054355c7087dc6b1383cf2b9a3",
+      "kind": "p",
+      "chapter": "١-أمر-الله-عز-وجل-بصلة-الأرحام",
+      "prev": "a703f360de3e74bb91f183be45f2bb5dc7a0129c4940cea0fa519f56796d68d7",
+      "next": "d82a700d548bef9464ac25ea4055bbacc4f485df69233c6b5055a2ea0035d1d6"
+    },
+    {
+      "ord": 61,
+      "blockId": "5a5795814113b468d7ba5d7051b10aae",
+      "fp64": "6dfce05631547c5c",
+      "normHash": "d82a700d548bef9464ac25ea4055bbacc4f485df69233c6b5055a2ea0035d1d6",
+      "kind": "p",
+      "chapter": "١-أمر-الله-عز-وجل-بصلة-الأرحام",
+      "prev": "4c77efdd9d417ba04550df30f29f55445038a5054355c7087dc6b1383cf2b9a3",
+      "next": "711edef7d46f31611dad254d9cafaa14ad557fffec901e2bc2a66c7fe0bc0872"
+    },
+    {
+      "ord": 62,
+      "blockId": "4da747566bda05eccd39d36482105b8b",
+      "fp64": "50c8249237cc2a43",
+      "normHash": "711edef7d46f31611dad254d9cafaa14ad557fffec901e2bc2a66c7fe0bc0872",
+      "kind": "p",
+      "chapter": "١-أمر-الله-عز-وجل-بصلة-الأرحام",
+      "prev": "d82a700d548bef9464ac25ea4055bbacc4f485df69233c6b5055a2ea0035d1d6",
+      "next": "3ac3fae37d9c27a37c8eda6b5620e12928e9e38c82616303a0543fa19a9fc15e"
+    },
+    {
+      "ord": 63,
+      "blockId": "f0c87811c1e610edc8180bdd133d5321",
+      "fp64": "addff3be5ffd647e",
+      "normHash": "3ac3fae37d9c27a37c8eda6b5620e12928e9e38c82616303a0543fa19a9fc15e",
+      "kind": "page",
+      "chapter": "١-أمر-الله-عز-وجل-بصلة-الأرحام",
+      "prev": "711edef7d46f31611dad254d9cafaa14ad557fffec901e2bc2a66c7fe0bc0872",
+      "next": "2a26ceff6faacf575250e2641a2ffcb2cd807c8953b60a0fa58640f67b6541b3"
+    },
+    {
+      "ord": 64,
+      "blockId": "a6708eaa3cee0400ad27acf1a0fae89b",
+      "fp64": "d08864f671ed5d1a",
+      "normHash": "2a26ceff6faacf575250e2641a2ffcb2cd807c8953b60a0fa58640f67b6541b3",
+      "kind": "p",
+      "chapter": "١-أمر-الله-عز-وجل-بصلة-الأرحام",
+      "prev": "3ac3fae37d9c27a37c8eda6b5620e12928e9e38c82616303a0543fa19a9fc15e",
+      "next": "a329bf9e39c8ea993dd63eeccc7de49575f039c230b95cd81d6e665944891722"
+    },
+    {
+      "ord": 65,
+      "blockId": "f163c83a060c663c0d495a6e6bd45516",
+      "fp64": "6c41e05b3770747c",
+      "normHash": "a329bf9e39c8ea993dd63eeccc7de49575f039c230b95cd81d6e665944891722",
+      "kind": "p",
+      "chapter": "١-أمر-الله-عز-وجل-بصلة-الأرحام",
+      "prev": "2a26ceff6faacf575250e2641a2ffcb2cd807c8953b60a0fa58640f67b6541b3",
+      "next": "dcde9873b396314dd56d78fe23ebf8a328d45130c4c486fbf4212df2b0c2f019"
+    },
+    {
+      "ord": 66,
+      "blockId": "cf175165b6043332a6a632e694f448ff",
+      "fp64": "9e50207a1d657414",
+      "normHash": "dcde9873b396314dd56d78fe23ebf8a328d45130c4c486fbf4212df2b0c2f019",
+      "kind": "p",
+      "chapter": "١-أمر-الله-عز-وجل-بصلة-الأرحام",
+      "prev": "a329bf9e39c8ea993dd63eeccc7de49575f039c230b95cd81d6e665944891722",
+      "next": "4581d04ab7938e775963f37eee16e60c2f3000bc0c978bbdf46ccb9c9cb67ee5"
+    },
+    {
+      "ord": 67,
+      "blockId": "edae81c9a6cd5cfe11c1a015f6ae8137",
+      "fp64": "f7dffbbe7e3be87f",
+      "normHash": "4581d04ab7938e775963f37eee16e60c2f3000bc0c978bbdf46ccb9c9cb67ee5",
+      "kind": "page",
+      "chapter": "١-أمر-الله-عز-وجل-بصلة-الأرحام",
+      "prev": "dcde9873b396314dd56d78fe23ebf8a328d45130c4c486fbf4212df2b0c2f019",
+      "next": "1b4053234e070d2ef46993e1da1cb07616d4e74bea00165e9335b6fc31303707"
+    },
+    {
+      "ord": 68,
+      "blockId": "807fd19ac4ed0cedb3d212e88cae5c85",
+      "fp64": "9fe964f671fc9f9e",
+      "normHash": "1b4053234e070d2ef46993e1da1cb07616d4e74bea00165e9335b6fc31303707",
+      "kind": "p",
+      "chapter": "١-أمر-الله-عز-وجل-بصلة-الأرحام",
+      "prev": "4581d04ab7938e775963f37eee16e60c2f3000bc0c978bbdf46ccb9c9cb67ee5",
+      "next": "0ba19925ea7ec194cb64a2b4b876febe86d63e73c8eb73dff1d4310876940145"
+    },
+    {
+      "ord": 69,
+      "blockId": "12c83f98ca89c18f5d51ba25001ee950",
+      "fp64": "6cd6c14b9d7c5e79",
+      "normHash": "0ba19925ea7ec194cb64a2b4b876febe86d63e73c8eb73dff1d4310876940145",
+      "kind": "p",
+      "chapter": "١-أمر-الله-عز-وجل-بصلة-الأرحام",
+      "prev": "1b4053234e070d2ef46993e1da1cb07616d4e74bea00165e9335b6fc31303707",
+      "next": "a61bef499d5c43db96ff44369aeb0c46692411633e2b7092d39b56b72656d67b"
+    },
+    {
+      "ord": 70,
+      "blockId": "74233dabcb682bd64d373e5018826f2c",
+      "fp64": "be40e05315507f3c",
+      "normHash": "a61bef499d5c43db96ff44369aeb0c46692411633e2b7092d39b56b72656d67b",
+      "kind": "p",
+      "chapter": "١-أمر-الله-عز-وجل-بصلة-الأرحام",
+      "prev": "0ba19925ea7ec194cb64a2b4b876febe86d63e73c8eb73dff1d4310876940145",
+      "next": "342889a6dcdac079245280550da55d73d4862354c5319d4df2ec2da6d7ad7238"
+    },
+    {
+      "ord": 71,
+      "blockId": "1234a4efb32ca52644191efcd93ad28d",
+      "fp64": "5f6861d355541e94",
+      "normHash": "342889a6dcdac079245280550da55d73d4862354c5319d4df2ec2da6d7ad7238",
+      "kind": "p",
+      "chapter": "١-أمر-الله-عز-وجل-بصلة-الأرحام",
+      "prev": "a61bef499d5c43db96ff44369aeb0c46692411633e2b7092d39b56b72656d67b",
+      "next": "e5b0927ac6fbd7b43a3d3a27b287cf13c6902d415a651b612b87486d50f79fa4"
+    },
+    {
+      "ord": 72,
+      "blockId": "15044ccee8f93b79e0a6f11e3679c2e8",
+      "fp64": "35ffffdf7bf5717f",
+      "normHash": "e5b0927ac6fbd7b43a3d3a27b287cf13c6902d415a651b612b87486d50f79fa4",
+      "kind": "page",
+      "chapter": "١-أمر-الله-عز-وجل-بصلة-الأرحام",
+      "prev": "342889a6dcdac079245280550da55d73d4862354c5319d4df2ec2da6d7ad7238",
+      "next": "9709938fb4834eaa810b549e6358ca9c150594a8b70c4e6cbc8ef5a67cacc162"
+    },
+    {
+      "ord": 73,
+      "blockId": "462061073111a1da9e4af02c881ca75d",
+      "fp64": "e4dd644275557366",
+      "normHash": "9709938fb4834eaa810b549e6358ca9c150594a8b70c4e6cbc8ef5a67cacc162",
+      "kind": "p",
+      "chapter": "١-أمر-الله-عز-وجل-بصلة-الأرحام",
+      "prev": "e5b0927ac6fbd7b43a3d3a27b287cf13c6902d415a651b612b87486d50f79fa4",
+      "next": "d7ecca4130363f6292bc0412ee27b29990c27194666e4220b65002764ac87338"
+    },
+    {
+      "ord": 74,
+      "blockId": "123882a07e02b7295fc84108d0139320",
+      "fp64": "b4c1ca1fb374121a",
+      "normHash": "d7ecca4130363f6292bc0412ee27b29990c27194666e4220b65002764ac87338",
+      "kind": "p",
+      "chapter": "١-أمر-الله-عز-وجل-بصلة-الأرحام",
+      "prev": "9709938fb4834eaa810b549e6358ca9c150594a8b70c4e6cbc8ef5a67cacc162",
+      "next": "5a5390044d8cfc48a94c9587c885097c3df2212daa2f6e984d4f422e1cc8ecb5"
+    },
+    {
+      "ord": 75,
+      "blockId": "e7fbbab6d6d79ec4fd6836763fbc5ad8",
+      "fp64": "3e4d645214501c06",
+      "normHash": "5a5390044d8cfc48a94c9587c885097c3df2212daa2f6e984d4f422e1cc8ecb5",
+      "kind": "p",
+      "chapter": "١-أمر-الله-عز-وجل-بصلة-الأرحام",
+      "prev": "d7ecca4130363f6292bc0412ee27b29990c27194666e4220b65002764ac87338",
+      "next": "f55481b69318e1c851e57306a7f55661daf11dd52e307451f386b3d8d15d48b2"
+    },
+    {
+      "ord": 76,
+      "blockId": "320f29bea56d257fe943e779f54530fa",
+      "fp64": "67dfff9e5fb3fb3f",
+      "normHash": "f55481b69318e1c851e57306a7f55661daf11dd52e307451f386b3d8d15d48b2",
+      "kind": "page",
+      "chapter": "١-أمر-الله-عز-وجل-بصلة-الأرحام",
+      "prev": "5a5390044d8cfc48a94c9587c885097c3df2212daa2f6e984d4f422e1cc8ecb5",
+      "next": "5b3b4762c50033fd15fdcfb225892708697731cf48e292a1ee2f51757a86f23f"
+    },
+    {
+      "ord": 77,
+      "blockId": "f2eb299f6eaf7df9d534442162dfc545",
+      "fp64": "b9893bfe797fc71f",
+      "normHash": "5b3b4762c50033fd15fdcfb225892708697731cf48e292a1ee2f51757a86f23f",
+      "kind": "p",
+      "chapter": "١-أمر-الله-عز-وجل-بصلة-الأرحام",
+      "prev": "f55481b69318e1c851e57306a7f55661daf11dd52e307451f386b3d8d15d48b2",
+      "next": "912833eccdfc781af7337cc2aa19f87c320c2ce874f1f88dfc8112467b3028d6"
+    },
+    {
+      "ord": 78,
+      "blockId": "4cb611bdc2547b461b908391f99d3eb2",
+      "fp64": "95ca604e26541e4a",
+      "normHash": "912833eccdfc781af7337cc2aa19f87c320c2ce874f1f88dfc8112467b3028d6",
+      "kind": "p",
+      "chapter": "١-أمر-الله-عز-وجل-بصلة-الأرحام",
+      "prev": "5b3b4762c50033fd15fdcfb225892708697731cf48e292a1ee2f51757a86f23f",
+      "next": "1fb03a2f69a6c02a397b0f4981ea5d5146cd47a2ee08a89580139cb91e47bd17"
+    },
+    {
+      "ord": 79,
+      "blockId": "87bbfff33ae03883d4ccca5d814f8cb5",
+      "fp64": "81f35b43b6671f56",
+      "normHash": "1fb03a2f69a6c02a397b0f4981ea5d5146cd47a2ee08a89580139cb91e47bd17",
+      "kind": "h2",
+      "chapter": "٣-صلة-الأرحام-من-أول-الأمور-المهمة",
+      "prev": "912833eccdfc781af7337cc2aa19f87c320c2ce874f1f88dfc8112467b3028d6",
+      "next": "039a869d6db205c4be74d1ef674271961e748559d31ca77aa54441c2099c2c44"
+    },
+    {
+      "ord": 80,
+      "blockId": "6bf87a9f5866c79739f0e7bbb6c7daf7",
+      "fp64": "6677f05f9366597c",
+      "normHash": "039a869d6db205c4be74d1ef674271961e748559d31ca77aa54441c2099c2c44",
+      "kind": "p",
+      "chapter": "٣-صلة-الأرحام-من-أول-الأمور-المهمة",
+      "prev": "1fb03a2f69a6c02a397b0f4981ea5d5146cd47a2ee08a89580139cb91e47bd17",
+      "next": "4220dd1e3044ce6bcad1f61fb7c76444f47c1ec9d1015265251ef9e728622f58"
+    },
+    {
+      "ord": 81,
+      "blockId": "3a7779194983d2a20df77ca49495893f",
+      "fp64": "5e4ce1f034449c10",
+      "normHash": "4220dd1e3044ce6bcad1f61fb7c76444f47c1ec9d1015265251ef9e728622f58",
+      "kind": "p",
+      "chapter": "٣-صلة-الأرحام-من-أول-الأمور-المهمة",
+      "prev": "039a869d6db205c4be74d1ef674271961e748559d31ca77aa54441c2099c2c44",
+      "next": "cf82f37a0d9fa7db967582d57875f1098daf08f4fb5688263e59d6c97d092c67"
+    },
+    {
+      "ord": 82,
+      "blockId": "b1317260971e880cc15fc22ff3f6362a",
+      "fp64": "6ddff7fadbb967b7",
+      "normHash": "cf82f37a0d9fa7db967582d57875f1098daf08f4fb5688263e59d6c97d092c67",
+      "kind": "page",
+      "chapter": "٣-صلة-الأرحام-من-أول-الأمور-المهمة",
+      "prev": "4220dd1e3044ce6bcad1f61fb7c76444f47c1ec9d1015265251ef9e728622f58",
+      "next": "ba637ea9373cfaa0006c5f7a7a51dee759157c373f2a5077d9fca75f5de293a2"
+    },
+    {
+      "ord": 83,
+      "blockId": "f848dd33a9d2c029610049117106854f",
+      "fp64": "a348c7d537d94fea",
+      "normHash": "ba637ea9373cfaa0006c5f7a7a51dee759157c373f2a5077d9fca75f5de293a2",
+      "kind": "p",
+      "chapter": "٣-صلة-الأرحام-من-أول-الأمور-المهمة",
+      "prev": "cf82f37a0d9fa7db967582d57875f1098daf08f4fb5688263e59d6c97d092c67",
+      "next": "400f560d885401ba2ae00c202dca104e6bf02137a37502b5b50472364485f9f4"
+    },
+    {
+      "ord": 84,
+      "blockId": "7c5cb8f9fcf46c4608ab1eed3f554010",
+      "fp64": "1de4ef325fbfe576",
+      "normHash": "400f560d885401ba2ae00c202dca104e6bf02137a37502b5b50472364485f9f4",
+      "kind": "h2",
+      "chapter": "٤-واصل-رحمه-لا-يخزيه-الله-تعالى",
+      "prev": "ba637ea9373cfaa0006c5f7a7a51dee759157c373f2a5077d9fca75f5de293a2",
+      "next": "6ac6386caf1715a8d028b12469de5f862fcc2845a4663db3ce06da6bc3fabe22"
+    },
+    {
+      "ord": 85,
+      "blockId": "595f71d3def1cac47bac6389a92a117e",
+      "fp64": "ac55e0c2b576757f",
+      "normHash": "6ac6386caf1715a8d028b12469de5f862fcc2845a4663db3ce06da6bc3fabe22",
+      "kind": "p",
+      "chapter": "٤-واصل-رحمه-لا-يخزيه-الله-تعالى",
+      "prev": "400f560d885401ba2ae00c202dca104e6bf02137a37502b5b50472364485f9f4",
+      "next": "914f301ffa60fc21df2d876481b9ffa2542c8f56ccf09f762a2663f291ae32a7"
+    },
+    {
+      "ord": 86,
+      "blockId": "cceb2dc650a2b45a293d849d0c67cae6",
+      "fp64": "d8dc58e69ca6ae3d",
+      "normHash": "914f301ffa60fc21df2d876481b9ffa2542c8f56ccf09f762a2663f291ae32a7",
+      "kind": "h2",
+      "chapter": "٥-صلة-الأرحام-من-أسباب-دخول-الجنة",
+      "prev": "6ac6386caf1715a8d028b12469de5f862fcc2845a4663db3ce06da6bc3fabe22",
+      "next": "05418994f4a5ad94d4f7734a019da9e6d65b3b2e7e7a5910273ca30fa594eef6"
+    },
+    {
+      "ord": 87,
+      "blockId": "cc911551ff5c47bbfd54f5bedf3e73c0",
+      "fp64": "74f0a01ef4f0feea",
+      "normHash": "05418994f4a5ad94d4f7734a019da9e6d65b3b2e7e7a5910273ca30fa594eef6",
+      "kind": "p",
+      "chapter": "٥-صلة-الأرحام-من-أسباب-دخول-الجنة",
+      "prev": "914f301ffa60fc21df2d876481b9ffa2542c8f56ccf09f762a2663f291ae32a7",
+      "next": "4d0ea2d2406333ac698e87373f84e5fce6cc90b16f9427aee7618d0ed7b87e17"
+    },
+    {
+      "ord": 88,
+      "blockId": "cb0e902f8172cbbdbac962adafad3bc9",
+      "fp64": "9559e8431d75f95c",
+      "normHash": "4d0ea2d2406333ac698e87373f84e5fce6cc90b16f9427aee7618d0ed7b87e17",
+      "kind": "p",
+      "chapter": "٥-صلة-الأرحام-من-أسباب-دخول-الجنة",
+      "prev": "05418994f4a5ad94d4f7734a019da9e6d65b3b2e7e7a5910273ca30fa594eef6",
+      "next": "9da403adc6f7f743d1c743c8c84d8aed2f84904be7b6a5259cf89154e0840dbb"
+    },
+    {
+      "ord": 89,
+      "blockId": "b3477093d4a1d15ed69ea9f1cf78e4e0",
+      "fp64": "77fff79a7ffb69f6",
+      "normHash": "9da403adc6f7f743d1c743c8c84d8aed2f84904be7b6a5259cf89154e0840dbb",
+      "kind": "page",
+      "chapter": "٥-صلة-الأرحام-من-أسباب-دخول-الجنة",
+      "prev": "4d0ea2d2406333ac698e87373f84e5fce6cc90b16f9427aee7618d0ed7b87e17",
+      "next": "481d6366dcbf715956778f78cc743b7c6647401f1dced0d2f6479fa0308ac3f2"
+    },
+    {
+      "ord": 90,
+      "blockId": "c5995f03d6718a3ba32544838a7a2532",
+      "fp64": "b050c0d71243503c",
+      "normHash": "481d6366dcbf715956778f78cc743b7c6647401f1dced0d2f6479fa0308ac3f2",
+      "kind": "p",
+      "chapter": "٥-صلة-الأرحام-من-أسباب-دخول-الجنة",
+      "prev": "9da403adc6f7f743d1c743c8c84d8aed2f84904be7b6a5259cf89154e0840dbb",
+      "next": "e2f24421b98f3fa9cab6cdec144af9b5a09120b045b0837629c13db96ac7907e"
+    },
+    {
+      "ord": 91,
+      "blockId": "08b52775702b1e17e93e90111f351e43",
+      "fp64": "7436c0549778719c",
+      "normHash": "e2f24421b98f3fa9cab6cdec144af9b5a09120b045b0837629c13db96ac7907e",
+      "kind": "p",
+      "chapter": "٥-صلة-الأرحام-من-أسباب-دخول-الجنة",
+      "prev": "481d6366dcbf715956778f78cc743b7c6647401f1dced0d2f6479fa0308ac3f2",
+      "next": "00f6aca019adf643406ad8b2d8fcbb853839e3ddb7bf354448f04bfb9e54e45b"
+    },
+    {
+      "ord": 92,
+      "blockId": "04f34fe3e387b0a7c8a7848dc0c411b0",
+      "fp64": "fcfec4539f3f7d7e",
+      "normHash": "00f6aca019adf643406ad8b2d8fcbb853839e3ddb7bf354448f04bfb9e54e45b",
+      "kind": "h2",
+      "chapter": "٦-صلة-الرحم-من-أحب-الأعمال-إلى-الله",
+      "prev": "e2f24421b98f3fa9cab6cdec144af9b5a09120b045b0837629c13db96ac7907e",
+      "next": "2fd583552769557f6a6e680124d5d02f06da8096fc04cd7faddf8d80aed300c2"
+    },
+    {
+      "ord": 93,
+      "blockId": "388f65d94c6f66e8b40ec66b9eeb43dd",
+      "fp64": "fe1399fb7feecb55",
+      "normHash": "2fd583552769557f6a6e680124d5d02f06da8096fc04cd7faddf8d80aed300c2",
+      "kind": "p",
+      "chapter": "٦-صلة-الرحم-من-أحب-الأعمال-إلى-الله",
+      "prev": "00f6aca019adf643406ad8b2d8fcbb853839e3ddb7bf354448f04bfb9e54e45b",
+      "next": "31ccf11ff1649602169c6414d39da180bf9dbd40a16e74fdd4410dba51b8a1f7"
+    },
+    {
+      "ord": 94,
+      "blockId": "4680a2323d3d153b6db1402a80081dfb",
+      "fp64": "571d60d3156d9e52",
+      "normHash": "31ccf11ff1649602169c6414d39da180bf9dbd40a16e74fdd4410dba51b8a1f7",
+      "kind": "p",
+      "chapter": "٦-صلة-الرحم-من-أحب-الأعمال-إلى-الله",
+      "prev": "2fd583552769557f6a6e680124d5d02f06da8096fc04cd7faddf8d80aed300c2",
+      "next": "afdb7313e5b92484c76c5195be2959c3631cc9c844a90c8fa37d3edfc9b28110"
+    },
+    {
+      "ord": 95,
+      "blockId": "754043d9f92aeb86e7cfd7cc88a23cc1",
+      "fp64": "3fdffb9edbf77eb7",
+      "normHash": "afdb7313e5b92484c76c5195be2959c3631cc9c844a90c8fa37d3edfc9b28110",
+      "kind": "page",
+      "chapter": "٦-صلة-الرحم-من-أحب-الأعمال-إلى-الله",
+      "prev": "31ccf11ff1649602169c6414d39da180bf9dbd40a16e74fdd4410dba51b8a1f7",
+      "next": "13239699c1595a76e58c18539152b09c421934f7ce1228c800c2a266b9b476be"
+    },
+    {
+      "ord": 96,
+      "blockId": "21d8b3687fb6a3a535c78e23ceb1748e",
+      "fp64": "3453f6b7474272f8",
+      "normHash": "13239699c1595a76e58c18539152b09c421934f7ce1228c800c2a266b9b476be",
+      "kind": "p",
+      "chapter": "٦-صلة-الرحم-من-أحب-الأعمال-إلى-الله",
+      "prev": "afdb7313e5b92484c76c5195be2959c3631cc9c844a90c8fa37d3edfc9b28110",
+      "next": "110267fd8139c3fbf601249104c05a1a156002a904b0553bfa6b82abe3a21725"
+    },
+    {
+      "ord": 97,
+      "blockId": "75b5af05cfaf0b1659400ec1154a568f",
+      "fp64": "bc5198c21ef67e6e",
+      "normHash": "110267fd8139c3fbf601249104c05a1a156002a904b0553bfa6b82abe3a21725",
+      "kind": "h2",
+      "chapter": "٧-صلة-الرحم-وصية-رسول-الله",
+      "prev": "13239699c1595a76e58c18539152b09c421934f7ce1228c800c2a266b9b476be",
+      "next": "440f46f10efe3a5a08f06c94aa04519a396bbb58324da6fbef67a07baba57df4"
+    },
+    {
+      "ord": 98,
+      "blockId": "841c97efc610623b9dcd041e03f31d4b",
+      "fp64": "be7f48c8ae1c3860",
+      "normHash": "440f46f10efe3a5a08f06c94aa04519a396bbb58324da6fbef67a07baba57df4",
+      "kind": "p",
+      "chapter": "٧-صلة-الرحم-وصية-رسول-الله",
+      "prev": "110267fd8139c3fbf601249104c05a1a156002a904b0553bfa6b82abe3a21725",
+      "next": "446332b0c81a61a0fe0a9a41789dc2a3e3fec82b4bd04e80628c27b4b8c3ea92"
+    },
+    {
+      "ord": 99,
+      "blockId": "ac8c4d4130ef0da197435dea84406d3f",
+      "fp64": "1c3d21f215e41e76",
+      "normHash": "446332b0c81a61a0fe0a9a41789dc2a3e3fec82b4bd04e80628c27b4b8c3ea92",
+      "kind": "p",
+      "chapter": "٧-صلة-الرحم-وصية-رسول-الله",
+      "prev": "440f46f10efe3a5a08f06c94aa04519a396bbb58324da6fbef67a07baba57df4",
+      "next": "c9d963f038c204cdec8da768bce98e69d1bf414d903aae3bc061b11205939f2a"
+    },
+    {
+      "ord": 100,
+      "blockId": "ddfb9256a9be4a750d381ef2ea8952c3",
+      "fp64": "37dff79f5f756377",
+      "normHash": "c9d963f038c204cdec8da768bce98e69d1bf414d903aae3bc061b11205939f2a",
+      "kind": "page",
+      "chapter": "٧-صلة-الرحم-وصية-رسول-الله",
+      "prev": "446332b0c81a61a0fe0a9a41789dc2a3e3fec82b4bd04e80628c27b4b8c3ea92",
+      "next": "09abc6145a4f7a57125e880d98a069b4fe297d1ff1c6338d57a157fa8bd1fd91"
+    },
+    {
+      "ord": 101,
+      "blockId": "31e02f84bc490cb5066753a01719bdcc",
+      "fp64": "6e86ed5bbd425d78",
+      "normHash": "09abc6145a4f7a57125e880d98a069b4fe297d1ff1c6338d57a157fa8bd1fd91",
+      "kind": "p",
+      "chapter": "٧-صلة-الرحم-وصية-رسول-الله",
+      "prev": "c9d963f038c204cdec8da768bce98e69d1bf414d903aae3bc061b11205939f2a",
+      "next": "b2b32ff1b7dbaac9af84b1c73641f51625f007244b4f690508df80d9a18f3453"
+    },
+    {
+      "ord": 102,
+      "blockId": "5062bf0f524885a15ac3a0ec9000b2e4",
+      "fp64": "dcde9cffdfe77c6f",
+      "normHash": "b2b32ff1b7dbaac9af84b1c73641f51625f007244b4f690508df80d9a18f3453",
+      "kind": "h2",
+      "chapter": "٨-صلة-الرحم-من-أسباب-النجاة-من-العقوبة",
+      "prev": "09abc6145a4f7a57125e880d98a069b4fe297d1ff1c6338d57a157fa8bd1fd91",
+      "next": "b863ac26a9064cdbf5e1aafd5ee03842e954a9dd9f1bf496de129fcd9bd4e7c9"
+    },
+    {
+      "ord": 103,
+      "blockId": "b915be7d9000a92216ffcee060742d51",
+      "fp64": "9c641d535d555e5f",
+      "normHash": "b863ac26a9064cdbf5e1aafd5ee03842e954a9dd9f1bf496de129fcd9bd4e7c9",
+      "kind": "p",
+      "chapter": "٨-صلة-الرحم-من-أسباب-النجاة-من-العقوبة",
+      "prev": "b2b32ff1b7dbaac9af84b1c73641f51625f007244b4f690508df80d9a18f3453",
+      "next": "23cdf5cad05c4ac40a465afe00cc77eca4a1638a7464af1c23e88095c7875dbd"
+    },
+    {
+      "ord": 104,
+      "blockId": "7fe7adb27ce03805a9bd78ed236f78e1",
+      "fp64": "182b20c235551ed2",
+      "normHash": "23cdf5cad05c4ac40a465afe00cc77eca4a1638a7464af1c23e88095c7875dbd",
+      "kind": "p",
+      "chapter": "٨-صلة-الرحم-من-أسباب-النجاة-من-العقوبة",
+      "prev": "b863ac26a9064cdbf5e1aafd5ee03842e954a9dd9f1bf496de129fcd9bd4e7c9",
+      "next": "fd7450c1f92d52b91075220c636129ef702e8e7c29edc73d8f2e81df8a091618"
+    },
+    {
+      "ord": 105,
+      "blockId": "d909a0736a56820b50fdfa9d4c4e854e",
+      "fp64": "77dff3dadf79e97e",
+      "normHash": "fd7450c1f92d52b91075220c636129ef702e8e7c29edc73d8f2e81df8a091618",
+      "kind": "page",
+      "chapter": "٨-صلة-الرحم-من-أسباب-النجاة-من-العقوبة",
+      "prev": "23cdf5cad05c4ac40a465afe00cc77eca4a1638a7464af1c23e88095c7875dbd",
+      "next": "dec97e611cea4071eacaa3bb7d7ff60b17251b1636602d05a93dc565fb60a7f3"
+    },
+    {
+      "ord": 106,
+      "blockId": "81c7956b52555130296bf50438673e10",
+      "fp64": "7c64e05717347cdc",
+      "normHash": "dec97e611cea4071eacaa3bb7d7ff60b17251b1636602d05a93dc565fb60a7f3",
+      "kind": "p",
+      "chapter": "٨-صلة-الرحم-من-أسباب-النجاة-من-العقوبة",
+      "prev": "fd7450c1f92d52b91075220c636129ef702e8e7c29edc73d8f2e81df8a091618",
+      "next": "f516331ef7e9627249dcee2539bbd3f51161da3e6bb14eda2ed0982a45d301a2"
+    },
+    {
+      "ord": 107,
+      "blockId": "560af885c1b6bd902defcac9a0d1e090",
+      "fp64": "f67fe1d677fd7372",
+      "normHash": "f516331ef7e9627249dcee2539bbd3f51161da3e6bb14eda2ed0982a45d301a2",
+      "kind": "p",
+      "chapter": "٨-صلة-الرحم-من-أسباب-النجاة-من-العقوبة",
+      "prev": "dec97e611cea4071eacaa3bb7d7ff60b17251b1636602d05a93dc565fb60a7f3",
+      "next": "ec065de0a66cc04aeca386d3a782c743de988a824ca60335a77cb12a75916bea"
+    },
+    {
+      "ord": 108,
+      "blockId": "ff957d74acfef4a4ad7af38ae667c108",
+      "fp64": "6d5ee1ee15f2f97a",
+      "normHash": "ec065de0a66cc04aeca386d3a782c743de988a824ca60335a77cb12a75916bea",
+      "kind": "p",
+      "chapter": "٨-صلة-الرحم-من-أسباب-النجاة-من-العقوبة",
+      "prev": "f516331ef7e9627249dcee2539bbd3f51161da3e6bb14eda2ed0982a45d301a2",
+      "next": "b13491c434a0782aa2cce773ae5b4ecf6849b96584f26cffdcbd32a09566c34f"
+    },
+    {
+      "ord": 109,
+      "blockId": "9db292866902953db9807c446286f42c",
+      "fp64": "dd5c299215748e16",
+      "normHash": "b13491c434a0782aa2cce773ae5b4ecf6849b96584f26cffdcbd32a09566c34f",
+      "kind": "p",
+      "chapter": "٨-صلة-الرحم-من-أسباب-النجاة-من-العقوبة",
+      "prev": "ec065de0a66cc04aeca386d3a782c743de988a824ca60335a77cb12a75916bea",
+      "next": "d3fc5bd9b2f63785248129ea03bccffcaf940956b7d8a0eead4645fbe9ba5066"
+    },
+    {
+      "ord": 110,
+      "blockId": "2c86e854f810e126d6140d31c2ccab53",
+      "fp64": "f7fff79efaf160b6",
+      "normHash": "d3fc5bd9b2f63785248129ea03bccffcaf940956b7d8a0eead4645fbe9ba5066",
+      "kind": "page",
+      "chapter": "٨-صلة-الرحم-من-أسباب-النجاة-من-العقوبة",
+      "prev": "b13491c434a0782aa2cce773ae5b4ecf6849b96584f26cffdcbd32a09566c34f",
+      "next": "8731e2e11c7aa76b753d84aaa4b73e6f4d9350fcc25eee8022e09bf97fcc6237"
+    },
+    {
+      "ord": 111,
+      "blockId": "67f3f8b65877ce2c9b34838658c71808",
+      "fp64": "dddb65ff717faf7f",
+      "normHash": "8731e2e11c7aa76b753d84aaa4b73e6f4d9350fcc25eee8022e09bf97fcc6237",
+      "kind": "p",
+      "chapter": "٨-صلة-الرحم-من-أسباب-النجاة-من-العقوبة",
+      "prev": "d3fc5bd9b2f63785248129ea03bccffcaf940956b7d8a0eead4645fbe9ba5066",
+      "next": "f2f7ebd1516742c77d0463d369dddf5a60d13752d8bce96d59e9a44b55787d2d"
+    },
+    {
+      "ord": 112,
+      "blockId": "f3c1347c3b554d18e9d63b5ae8f6bae3",
+      "fp64": "7c52e01b3f427d7c",
+      "normHash": "f2f7ebd1516742c77d0463d369dddf5a60d13752d8bce96d59e9a44b55787d2d",
+      "kind": "p",
+      "chapter": "٨-صلة-الرحم-من-أسباب-النجاة-من-العقوبة",
+      "prev": "8731e2e11c7aa76b753d84aaa4b73e6f4d9350fcc25eee8022e09bf97fcc6237",
+      "next": "7e6fa21f69f297cdcacce34e98ed0dca67787d8c4c6273a8c3b299f825a02c20"
+    },
+    {
+      "ord": 113,
+      "blockId": "f9f71a895ebb163aed0a1bc64628e642",
+      "fp64": "ac54c0539f74757c",
+      "normHash": "7e6fa21f69f297cdcacce34e98ed0dca67787d8c4c6273a8c3b299f825a02c20",
+      "kind": "p",
+      "chapter": "٨-صلة-الرحم-من-أسباب-النجاة-من-العقوبة",
+      "prev": "f2f7ebd1516742c77d0463d369dddf5a60d13752d8bce96d59e9a44b55787d2d",
+      "next": "7136114d8f69f54a1c59f2754defb63bc74bf043645e72da9bd642fed9cc26fc"
+    },
+    {
+      "ord": 114,
+      "blockId": "0da1054ff9546455606034cfa1293229",
+      "fp64": "cd5d78429d7ced5e",
+      "normHash": "7136114d8f69f54a1c59f2754defb63bc74bf043645e72da9bd642fed9cc26fc",
+      "kind": "p",
+      "chapter": "٨-صلة-الرحم-من-أسباب-النجاة-من-العقوبة",
+      "prev": "7e6fa21f69f297cdcacce34e98ed0dca67787d8c4c6273a8c3b299f825a02c20",
+      "next": "68f3727261046665f498c65a90fa7e68e048dc53941446d1ded55914c30c2e89"
+    },
+    {
+      "ord": 115,
+      "blockId": "7e8cf0bea36ea477b938bf39c0933725",
+      "fp64": "efdff3daff39eaf7",
+      "normHash": "68f3727261046665f498c65a90fa7e68e048dc53941446d1ded55914c30c2e89",
+      "kind": "page",
+      "chapter": "٨-صلة-الرحم-من-أسباب-النجاة-من-العقوبة",
+      "prev": "7136114d8f69f54a1c59f2754defb63bc74bf043645e72da9bd642fed9cc26fc",
+      "next": "c69425c699366e71a938e0e98851f7f92828811a8e49e56da2d6ff90e30e5a39"
+    },
+    {
+      "ord": 116,
+      "blockId": "30b61a583394a75c5398ae7a806c6be7",
+      "fp64": "f4596016dfb8edfa",
+      "normHash": "c69425c699366e71a938e0e98851f7f92828811a8e49e56da2d6ff90e30e5a39",
+      "kind": "p",
+      "chapter": "٨-صلة-الرحم-من-أسباب-النجاة-من-العقوبة",
+      "prev": "68f3727261046665f498c65a90fa7e68e048dc53941446d1ded55914c30c2e89",
+      "next": "c68a893d8c9769c313799359c907e979c9e1d4b1cd909c5f3fff065686bd92fd"
+    },
+    {
+      "ord": 117,
+      "blockId": "8e4c1046d0192508e1ebdfab1a527f4b",
+      "fp64": "b448c0979f7c75fe",
+      "normHash": "c68a893d8c9769c313799359c907e979c9e1d4b1cd909c5f3fff065686bd92fd",
+      "kind": "p",
+      "chapter": "٨-صلة-الرحم-من-أسباب-النجاة-من-العقوبة",
+      "prev": "c69425c699366e71a938e0e98851f7f92828811a8e49e56da2d6ff90e30e5a39",
+      "next": "a8efbfd979a41ae493bea964cf7a076a7d5ea66bb14e6a79a429a6c579314c93"
+    },
+    {
+      "ord": 118,
+      "blockId": "56f5ad8eb7db4f51b5f94f6f39825285",
+      "fp64": "6c42c01f1f787d78",
+      "normHash": "a8efbfd979a41ae493bea964cf7a076a7d5ea66bb14e6a79a429a6c579314c93",
+      "kind": "p",
+      "chapter": "٨-صلة-الرحم-من-أسباب-النجاة-من-العقوبة",
+      "prev": "c68a893d8c9769c313799359c907e979c9e1d4b1cd909c5f3fff065686bd92fd",
+      "next": "e44e19f357a3035a0bcb3bf5db5a788e83dff8c9b2896c9a155655282bb21014"
+    },
+    {
+      "ord": 119,
+      "blockId": "e4c5ffee8d461249acfcc222d3b77e34",
+      "fp64": "a546c057975871f8",
+      "normHash": "e44e19f357a3035a0bcb3bf5db5a788e83dff8c9b2896c9a155655282bb21014",
+      "kind": "p",
+      "chapter": "٨-صلة-الرحم-من-أسباب-النجاة-من-العقوبة",
+      "prev": "a8efbfd979a41ae493bea964cf7a076a7d5ea66bb14e6a79a429a6c579314c93",
+      "next": "e8c7c2a59fb83120da2ac46c67df7b78eadc13a32acba328775e0fa428cf93ef"
+    },
+    {
+      "ord": 120,
+      "blockId": "438538976e1d3ef6d537582a97980b9e",
+      "fp64": "dd5c304215507c5e",
+      "normHash": "e8c7c2a59fb83120da2ac46c67df7b78eadc13a32acba328775e0fa428cf93ef",
+      "kind": "p",
+      "chapter": "٨-صلة-الرحم-من-أسباب-النجاة-من-العقوبة",
+      "prev": "e44e19f357a3035a0bcb3bf5db5a788e83dff8c9b2896c9a155655282bb21014",
+      "next": "10d76e1879a1ef6f2fe39e5c5b89e33e22083ebb14a869c0d2495f87dc134686"
+    },
+    {
+      "ord": 121,
+      "blockId": "acf43fed8b633c50d06ddc6cc80487b5",
+      "fp64": "a5ffff9a5a776b7f",
+      "normHash": "10d76e1879a1ef6f2fe39e5c5b89e33e22083ebb14a869c0d2495f87dc134686",
+      "kind": "page",
+      "chapter": "٨-صلة-الرحم-من-أسباب-النجاة-من-العقوبة",
+      "prev": "e8c7c2a59fb83120da2ac46c67df7b78eadc13a32acba328775e0fa428cf93ef",
+      "next": "c3d0903bbf2706b0fc6f9ecc139077c543490a442a5a8575051121c529b40860"
+    },
+    {
+      "ord": 122,
+      "blockId": "5b5a59167684a5c652db8f30fec77b34",
+      "fp64": "f1c814d2d56f7a4a",
+      "normHash": "c3d0903bbf2706b0fc6f9ecc139077c543490a442a5a8575051121c529b40860",
+      "kind": "p",
+      "chapter": "٨-صلة-الرحم-من-أسباب-النجاة-من-العقوبة",
+      "prev": "10d76e1879a1ef6f2fe39e5c5b89e33e22083ebb14a869c0d2495f87dc134686",
+      "next": "ad88d9aec1059b0c72b97c7a82dd73778e3bc502f5beeba2ee6f6d27e0e4b21c"
+    },
+    {
+      "ord": 123,
+      "blockId": "33c255fd180850b5ad048d27f0bfd3cc",
+      "fp64": "fc52e05c0e7c717e",
+      "normHash": "ad88d9aec1059b0c72b97c7a82dd73778e3bc502f5beeba2ee6f6d27e0e4b21c",
+      "kind": "p",
+      "chapter": "٨-صلة-الرحم-من-أسباب-النجاة-من-العقوبة",
+      "prev": "c3d0903bbf2706b0fc6f9ecc139077c543490a442a5a8575051121c529b40860",
+      "next": "ef0b8f1728984b2a305a84d7877803426591027fb178b204b2b267d157b90aae"
+    },
+    {
+      "ord": 124,
+      "blockId": "dcf99bde7efade26cf4b8683cbbefa51",
+      "fp64": "2f3af2dbd751dc75",
+      "normHash": "ef0b8f1728984b2a305a84d7877803426591027fb178b204b2b267d157b90aae",
+      "kind": "p",
+      "chapter": "٨-صلة-الرحم-من-أسباب-النجاة-من-العقوبة",
+      "prev": "ad88d9aec1059b0c72b97c7a82dd73778e3bc502f5beeba2ee6f6d27e0e4b21c",
+      "next": "d6d16cc59750e04ae6ec3ff398be56cf920b138431b62ebd68a7f7c103c8cab7"
+    },
+    {
+      "ord": 125,
+      "blockId": "47d093a7d5d908b22ae5de74a6cb4575",
+      "fp64": "5d5d68429f6cf55c",
+      "normHash": "d6d16cc59750e04ae6ec3ff398be56cf920b138431b62ebd68a7f7c103c8cab7",
+      "kind": "p",
+      "chapter": "٨-صلة-الرحم-من-أسباب-النجاة-من-العقوبة",
+      "prev": "ef0b8f1728984b2a305a84d7877803426591027fb178b204b2b267d157b90aae",
+      "next": "a181acef972400c92ed3ae51e67ba828b894042089a48611cc161a547d84306a"
+    },
+    {
+      "ord": 126,
+      "blockId": "e0c14a74b71a253256269bac9c4c2252",
+      "fp64": "2ffff3fbdf3f7f7e",
+      "normHash": "a181acef972400c92ed3ae51e67ba828b894042089a48611cc161a547d84306a",
+      "kind": "page",
+      "chapter": "٨-صلة-الرحم-من-أسباب-النجاة-من-العقوبة",
+      "prev": "d6d16cc59750e04ae6ec3ff398be56cf920b138431b62ebd68a7f7c103c8cab7",
+      "next": "20326366834a4cb046a69ba624ffcecf23c06b1b35664d673be52ccc3339b6f8"
+    },
+    {
+      "ord": 127,
+      "blockId": "4d5146254f020b1aee094b2b87bccc13",
+      "fp64": "51e8cc7f99679df8",
+      "normHash": "20326366834a4cb046a69ba624ffcecf23c06b1b35664d673be52ccc3339b6f8",
+      "kind": "p",
+      "chapter": "٨-صلة-الرحم-من-أسباب-النجاة-من-العقوبة",
+      "prev": "a181acef972400c92ed3ae51e67ba828b894042089a48611cc161a547d84306a",
+      "next": "7cc5d863da97a28a0defae2e67f87e3482bea068aba7034ff2f9c66cec8dc8a8"
+    },
+    {
+      "ord": 128,
+      "blockId": "a66ae2c6dc0f9933a69eb04884b0ca82",
+      "fp64": "fcf5d9c75ffff87f",
+      "normHash": "7cc5d863da97a28a0defae2e67f87e3482bea068aba7034ff2f9c66cec8dc8a8",
+      "kind": "h2",
+      "chapter": "٩-صلة-الرحم-الكاملة",
+      "prev": "20326366834a4cb046a69ba624ffcecf23c06b1b35664d673be52ccc3339b6f8",
+      "next": "627b5cc9cc8ce49faf30eb926f550e3c577520d389f2373450169f3a10aa27d9"
+    },
+    {
+      "ord": 129,
+      "blockId": "c27f0b2e97d559364e6a964ddd04864a",
+      "fp64": "70ffc868fe772eab",
+      "normHash": "627b5cc9cc8ce49faf30eb926f550e3c577520d389f2373450169f3a10aa27d9",
+      "kind": "p",
+      "chapter": "٩-صلة-الرحم-الكاملة",
+      "prev": "7cc5d863da97a28a0defae2e67f87e3482bea068aba7034ff2f9c66cec8dc8a8",
+      "next": "dcb4c09b98c164b3a274409c2aa6f3e4c5fe1b1a99da4bd3c5206efd580712e9"
+    },
+    {
+      "ord": 130,
+      "blockId": "09adaa9acb7c3c6bcdf5182cc154b15b",
+      "fp64": "ae31e451beb0656b",
+      "normHash": "dcb4c09b98c164b3a274409c2aa6f3e4c5fe1b1a99da4bd3c5206efd580712e9",
+      "kind": "p",
+      "chapter": "٩-صلة-الرحم-الكاملة",
+      "prev": "627b5cc9cc8ce49faf30eb926f550e3c577520d389f2373450169f3a10aa27d9",
+      "next": "d280001911431180d2835e1bb6e0f54560098e4bff294f62d0defa86f5904471"
+    },
+    {
+      "ord": 131,
+      "blockId": "09b2308f0fb4a2bfa3bc55bdf6a4f6a7",
+      "fp64": "9d704910053e8ede",
+      "normHash": "d280001911431180d2835e1bb6e0f54560098e4bff294f62d0defa86f5904471",
+      "kind": "p",
+      "chapter": "٩-صلة-الرحم-الكاملة",
+      "prev": "dcb4c09b98c164b3a274409c2aa6f3e4c5fe1b1a99da4bd3c5206efd580712e9",
+      "next": "b73aa4cdc874f833049801c90b61644752248ba6277e7139cb021ddcc4ca7d5c"
+    },
+    {
+      "ord": 132,
+      "blockId": "e3f91b67ae429202fad581644815f9da",
+      "fp64": "afdff7fe5fb37f77",
+      "normHash": "b73aa4cdc874f833049801c90b61644752248ba6277e7139cb021ddcc4ca7d5c",
+      "kind": "page",
+      "chapter": "٩-صلة-الرحم-الكاملة",
+      "prev": "d280001911431180d2835e1bb6e0f54560098e4bff294f62d0defa86f5904471",
+      "next": "c768de2bf9a613dea506c3c2449a4511d23dd80436d2a42b267eefeb7121df0c"
+    },
+    {
+      "ord": 133,
+      "blockId": "f3f59f5502a248385210126d61481dc1",
+      "fp64": "5dc1c1529c667d7d",
+      "normHash": "c768de2bf9a613dea506c3c2449a4511d23dd80436d2a42b267eefeb7121df0c",
+      "kind": "p",
+      "chapter": "٩-صلة-الرحم-الكاملة",
+      "prev": "b73aa4cdc874f833049801c90b61644752248ba6277e7139cb021ddcc4ca7d5c",
+      "next": "a25e38bd89f34fa357d16d89e73b9dd4292483826b439b3287aa65d733b98fa7"
+    },
+    {
+      "ord": 134,
+      "blockId": "85f8ba48e57f8b3b6972fb6ac6934407",
+      "fp64": "fd997d2a3e4cdc52",
+      "normHash": "a25e38bd89f34fa357d16d89e73b9dd4292483826b439b3287aa65d733b98fa7",
+      "kind": "p",
+      "chapter": "٩-صلة-الرحم-الكاملة",
+      "prev": "c768de2bf9a613dea506c3c2449a4511d23dd80436d2a42b267eefeb7121df0c",
+      "next": "f57279e5e08f65b9aa33e6f77c59738fd981675b1d001e1bb7fb0ade4dc7b44e"
+    },
+    {
+      "ord": 135,
+      "blockId": "22befd9ca27f1f656a8ad362f1624dad",
+      "fp64": "bdfff3fb7b7175f6",
+      "normHash": "f57279e5e08f65b9aa33e6f77c59738fd981675b1d001e1bb7fb0ade4dc7b44e",
+      "kind": "page",
+      "chapter": "٩-صلة-الرحم-الكاملة",
+      "prev": "a25e38bd89f34fa357d16d89e73b9dd4292483826b439b3287aa65d733b98fa7",
+      "next": "706d37a84a5ca81fa48315fce1a1093e76c32c96777ee0a2ad571f4f2c342af4"
+    },
+    {
+      "ord": 136,
+      "blockId": "d5e3c697c131ba3f9f7fc89f9a0db35d",
+      "fp64": "5cfa5d4b1c6e7b7f",
+      "normHash": "706d37a84a5ca81fa48315fce1a1093e76c32c96777ee0a2ad571f4f2c342af4",
+      "kind": "h2",
+      "chapter": "١٠-صلة-الرحم-من-صفات-المؤمنين",
+      "prev": "f57279e5e08f65b9aa33e6f77c59738fd981675b1d001e1bb7fb0ade4dc7b44e",
+      "next": "acb6a299c9a965e98ee4ae9805697af1c60569f09fe3e348bc68077307056b6d"
+    },
+    {
+      "ord": 137,
+      "blockId": "06775050776e4b473162941643968709",
+      "fp64": "fc49c1105e54f494",
+      "normHash": "acb6a299c9a965e98ee4ae9805697af1c60569f09fe3e348bc68077307056b6d",
+      "kind": "p",
+      "chapter": "١٠-صلة-الرحم-من-صفات-المؤمنين",
+      "prev": "706d37a84a5ca81fa48315fce1a1093e76c32c96777ee0a2ad571f4f2c342af4",
+      "next": "61e43be1cb1719c5fc7cfaafbb8c7f1355fe07436360aa2613de5cc21c97bedf"
+    },
+    {
+      "ord": 138,
+      "blockId": "6ad3fc6f074c204c39e669ed2b3355aa",
+      "fp64": "d05600ea9eeb7e5f",
+      "normHash": "61e43be1cb1719c5fc7cfaafbb8c7f1355fe07436360aa2613de5cc21c97bedf",
+      "kind": "h2",
+      "chapter": "١١-صلة-الرحم-من-أسباب-قبول-العمل",
+      "prev": "acb6a299c9a965e98ee4ae9805697af1c60569f09fe3e348bc68077307056b6d",
+      "next": "9866d879d870c005a383fd0dabdb2523037ed2bfee4e32ec61596bca1483bece"
+    },
+    {
+      "ord": 139,
+      "blockId": "4b87042361b0fefcdcf9dbc296248554",
+      "fp64": "fc71983b3dfc72a4",
+      "normHash": "9866d879d870c005a383fd0dabdb2523037ed2bfee4e32ec61596bca1483bece",
+      "kind": "p",
+      "chapter": "١١-صلة-الرحم-من-أسباب-قبول-العمل",
+      "prev": "61e43be1cb1719c5fc7cfaafbb8c7f1355fe07436360aa2613de5cc21c97bedf",
+      "next": "41c575d6a426ecf17ee55c5ecad82049f01bad21d4294b4c9d16292eaedab5bd"
+    },
+    {
+      "ord": 140,
+      "blockId": "552e202852dbb730f9e33973edbec453",
+      "fp64": "c7dd6a63847cbd57",
+      "normHash": "41c575d6a426ecf17ee55c5ecad82049f01bad21d4294b4c9d16292eaedab5bd",
+      "kind": "p",
+      "chapter": "١١-صلة-الرحم-من-أسباب-قبول-العمل",
+      "prev": "9866d879d870c005a383fd0dabdb2523037ed2bfee4e32ec61596bca1483bece",
+      "next": "c08cd48df02782a05d794b9546fe03555da34307f5cc30481c9cbf891f430ea4"
+    },
+    {
+      "ord": 141,
+      "blockId": "7b0230202252ceaf9a34c5c2b60db49d",
+      "fp64": "2ddff7df7b79e5b7",
+      "normHash": "c08cd48df02782a05d794b9546fe03555da34307f5cc30481c9cbf891f430ea4",
+      "kind": "page",
+      "chapter": "١١-صلة-الرحم-من-أسباب-قبول-العمل",
+      "prev": "41c575d6a426ecf17ee55c5ecad82049f01bad21d4294b4c9d16292eaedab5bd",
+      "next": "2d351866b0519e0699c6ceb2bf40bef3db36ecdc4b1734b5778f37fc98abe3b6"
+    },
+    {
+      "ord": 142,
+      "blockId": "45d008618441d84a0244efaa144b3c46",
+      "fp64": "fe77e4dea331d774",
+      "normHash": "2d351866b0519e0699c6ceb2bf40bef3db36ecdc4b1734b5778f37fc98abe3b6",
+      "kind": "p",
+      "chapter": "١١-صلة-الرحم-من-أسباب-قبول-العمل",
+      "prev": "c08cd48df02782a05d794b9546fe03555da34307f5cc30481c9cbf891f430ea4",
+      "next": "78f5c2b041d8f3ac64bb7360dea8e34be41977d2382e4ed029061e91084dbe6a"
+    },
+    {
+      "ord": 143,
+      "blockId": "f6a9d7e907b31f20704315d4c8de475c",
+      "fp64": "ce5b4dc31fcf3bff",
+      "normHash": "78f5c2b041d8f3ac64bb7360dea8e34be41977d2382e4ed029061e91084dbe6a",
+      "kind": "h2",
+      "chapter": "١٢-صلة-الرحم-من-صفات-أصحاب-العقول-السليمة",
+      "prev": "2d351866b0519e0699c6ceb2bf40bef3db36ecdc4b1734b5778f37fc98abe3b6",
+      "next": "eeb8eb0fd3c852dae1116639136c24f994ef2a8366f9e46f2516f15bd18e3947"
+    },
+    {
+      "ord": 144,
+      "blockId": "a8a9a11d9470819f3e23606185aea0fc",
+      "fp64": "b4c5f25e3f7bc4ce",
+      "normHash": "eeb8eb0fd3c852dae1116639136c24f994ef2a8366f9e46f2516f15bd18e3947",
+      "kind": "p",
+      "chapter": "١٢-صلة-الرحم-من-صفات-أصحاب-العقول-السليمة",
+      "prev": "78f5c2b041d8f3ac64bb7360dea8e34be41977d2382e4ed029061e91084dbe6a",
+      "next": "22cd2b62853252b78675435d13d7a4bc897dcc7c8babfa688dbbdff023ca986e"
+    },
+    {
+      "ord": 145,
+      "blockId": "d988a3271ccab8cd383fc14dea167654",
+      "fp64": "f463f2d5f7ab0fde",
+      "normHash": "22cd2b62853252b78675435d13d7a4bc897dcc7c8babfa688dbbdff023ca986e",
+      "kind": "p",
+      "chapter": "١٢-صلة-الرحم-من-صفات-أصحاب-العقول-السليمة",
+      "prev": "eeb8eb0fd3c852dae1116639136c24f994ef2a8366f9e46f2516f15bd18e3947",
+      "next": "3c208406d0e7b663b8df4d861e45d1755c7b819723b2acb1e30bf85e6991b68d"
+    },
+    {
+      "ord": 146,
+      "blockId": "8782eb9ad952ae7fc08c6ff892a9fb87",
+      "fp64": "3f6bf8d0f5d58f57",
+      "normHash": "3c208406d0e7b663b8df4d861e45d1755c7b819723b2acb1e30bf85e6991b68d",
+      "kind": "p",
+      "chapter": "١٢-صلة-الرحم-من-صفات-أصحاب-العقول-السليمة",
+      "prev": "22cd2b62853252b78675435d13d7a4bc897dcc7c8babfa688dbbdff023ca986e",
+      "next": "0516e251ec96bafda2747e69ea3f55e59a1298a8f0722685ea476a4f2cfc8bea"
+    },
+    {
+      "ord": 147,
+      "blockId": "b08c5ea5a4318504915da2923db4f2ed",
+      "fp64": "77ffff9efa7bfc7f",
+      "normHash": "0516e251ec96bafda2747e69ea3f55e59a1298a8f0722685ea476a4f2cfc8bea",
+      "kind": "page",
+      "chapter": "١٢-صلة-الرحم-من-صفات-أصحاب-العقول-السليمة",
+      "prev": "3c208406d0e7b663b8df4d861e45d1755c7b819723b2acb1e30bf85e6991b68d",
+      "next": "d39cf67e0b24aaa18bc0f6289b9eb62373c3e5b108159d4e34f182c417ea7612"
+    },
+    {
+      "ord": 148,
+      "blockId": "507c6187f6998e0675852c6b996f947e",
+      "fp64": "4cc20c7b9f677dff",
+      "normHash": "d39cf67e0b24aaa18bc0f6289b9eb62373c3e5b108159d4e34f182c417ea7612",
+      "kind": "h2",
+      "chapter": "١٣-صلة-الرحم-من-أسباب-السلامة-من-اللعنة",
+      "prev": "0516e251ec96bafda2747e69ea3f55e59a1298a8f0722685ea476a4f2cfc8bea",
+      "next": "1205b2fcaf302b8b3cde65c5417fd855582b6407dd32cda38ba9379f4a71ef1c"
+    },
+    {
+      "ord": 149,
+      "blockId": "f3a3e1657adf76b2c26a3b21e24590cb",
+      "fp64": "ba58dcdf1f2964d4",
+      "normHash": "1205b2fcaf302b8b3cde65c5417fd855582b6407dd32cda38ba9379f4a71ef1c",
+      "kind": "p",
+      "chapter": "١٣-صلة-الرحم-من-أسباب-السلامة-من-اللعنة",
+      "prev": "d39cf67e0b24aaa18bc0f6289b9eb62373c3e5b108159d4e34f182c417ea7612",
+      "next": "1a9c55d223f1f5681d4710aa79b2145dc238e0e6132b2792f4377b6b99419593"
+    },
+    {
+      "ord": 150,
+      "blockId": "4d290c6c2f82f0aba693b98aa8eb0a05",
+      "fp64": "a77da3d2757f3fd9",
+      "normHash": "1a9c55d223f1f5681d4710aa79b2145dc238e0e6132b2792f4377b6b99419593",
+      "kind": "h2",
+      "chapter": "١٤-الصدقة-على-ذي-الرحم-اثنتان-صدقة-وصلة",
+      "prev": "1205b2fcaf302b8b3cde65c5417fd855582b6407dd32cda38ba9379f4a71ef1c",
+      "next": "3f3a52a8404a7ca302b5c875027188742883607a3efd433e3ea6839d0483728b"
+    },
+    {
+      "ord": 151,
+      "blockId": "e16d626946e7cf7bbee44140351ad8da",
+      "fp64": "2474e0d635767378",
+      "normHash": "3f3a52a8404a7ca302b5c875027188742883607a3efd433e3ea6839d0483728b",
+      "kind": "p",
+      "chapter": "١٤-الصدقة-على-ذي-الرحم-اثنتان-صدقة-وصلة",
+      "prev": "1a9c55d223f1f5681d4710aa79b2145dc238e0e6132b2792f4377b6b99419593",
+      "next": "4c69eaf71070872499d30fd28b6017e534634f66e39037e983f6df291f4a83fd"
+    },
+    {
+      "ord": 152,
+      "blockId": "2362bd60766227192150140a682c63fb",
+      "fp64": "db0d70531d650f12",
+      "normHash": "4c69eaf71070872499d30fd28b6017e534634f66e39037e983f6df291f4a83fd",
+      "kind": "p",
+      "chapter": "١٤-الصدقة-على-ذي-الرحم-اثنتان-صدقة-وصلة",
+      "prev": "3f3a52a8404a7ca302b5c875027188742883607a3efd433e3ea6839d0483728b",
+      "next": "2ab029640d0d4db368c048d36be6c59a5ae8545d4205df7e2b6173bbc905b96c"
+    },
+    {
+      "ord": 153,
+      "blockId": "b7b9ecd0a90a84b6fdbf3b1900d4abeb",
+      "fp64": "77dff39fdf716677",
+      "normHash": "2ab029640d0d4db368c048d36be6c59a5ae8545d4205df7e2b6173bbc905b96c",
+      "kind": "page",
+      "chapter": "١٤-الصدقة-على-ذي-الرحم-اثنتان-صدقة-وصلة",
+      "prev": "4c69eaf71070872499d30fd28b6017e534634f66e39037e983f6df291f4a83fd",
+      "next": "8dee4dd51ccc96ef8da7d3594e2ec46cb053bb670b197dc856e11ab90d8e0ed2"
+    },
+    {
+      "ord": 154,
+      "blockId": "5bceae085e232bde50ccb432c977b128",
+      "fp64": "15b3a4ed7e554b44",
+      "normHash": "8dee4dd51ccc96ef8da7d3594e2ec46cb053bb670b197dc856e11ab90d8e0ed2",
+      "kind": "h2",
+      "chapter": "١٥-والرحم-التي-أمر-بصلتها",
+      "prev": "2ab029640d0d4db368c048d36be6c59a5ae8545d4205df7e2b6173bbc905b96c",
+      "next": "3b153a56d2e3d618e6d339fc5f372634d7d39281aa8fe757db26079e68c40299"
+    },
+    {
+      "ord": 155,
+      "blockId": "d83a966be4cee879086ac841cf6e568b",
+      "fp64": "a646e2ff476243de",
+      "normHash": "3b153a56d2e3d618e6d339fc5f372634d7d39281aa8fe757db26079e68c40299",
+      "kind": "p",
+      "chapter": "١٥-والرحم-التي-أمر-بصلتها",
+      "prev": "8dee4dd51ccc96ef8da7d3594e2ec46cb053bb670b197dc856e11ab90d8e0ed2",
+      "next": "1f872a53f2971a3e9f501b22bb8c42627e5d8bacaea154d372f50e1fbc1e99c9"
+    },
+    {
+      "ord": 156,
+      "blockId": "dd899d88ef2adcf7301f2396323964ef",
+      "fp64": "8a71c0c33784192a",
+      "normHash": "1f872a53f2971a3e9f501b22bb8c42627e5d8bacaea154d372f50e1fbc1e99c9",
+      "kind": "h2",
+      "chapter": "١٦-صلة-الرحم-أنواع-على-حسب-الحاجة",
+      "prev": "3b153a56d2e3d618e6d339fc5f372634d7d39281aa8fe757db26079e68c40299",
+      "next": "67471a4abe3e8c07b05c9035ea5e4f874d9865bcba42012b2d005decf5baa2d6"
+    },
+    {
+      "ord": 157,
+      "blockId": "3d30358cfbbb71300a3cb5e5c874e0b1",
+      "fp64": "4497ffea4f7df2ee",
+      "normHash": "67471a4abe3e8c07b05c9035ea5e4f874d9865bcba42012b2d005decf5baa2d6",
+      "kind": "p",
+      "chapter": "١٦-صلة-الرحم-أنواع-على-حسب-الحاجة",
+      "prev": "1f872a53f2971a3e9f501b22bb8c42627e5d8bacaea154d372f50e1fbc1e99c9",
+      "next": "4ef9374800e60b18b81e22d05b1fa9a0caebcd96d35bd215ed0ea5cd174f5ed2"
+    },
+    {
+      "ord": 158,
+      "blockId": "c720b54c572db95c7ad4dbd11de7ac46",
+      "fp64": "d958bb229771555e",
+      "normHash": "4ef9374800e60b18b81e22d05b1fa9a0caebcd96d35bd215ed0ea5cd174f5ed2",
+      "kind": "p",
+      "chapter": "١٦-صلة-الرحم-أنواع-على-حسب-الحاجة",
+      "prev": "67471a4abe3e8c07b05c9035ea5e4f874d9865bcba42012b2d005decf5baa2d6",
+      "next": "1b812f1da0256532b54fe37b737551313292597646cd399cd89855624c1fd078"
+    },
+    {
+      "ord": 159,
+      "blockId": "235a36361c988678865a6b9ab3f0121b",
+      "fp64": "f7ffffdf5eb7e17f",
+      "normHash": "1b812f1da0256532b54fe37b737551313292597646cd399cd89855624c1fd078",
+      "kind": "page",
+      "chapter": "١٦-صلة-الرحم-أنواع-على-حسب-الحاجة",
+      "prev": "4ef9374800e60b18b81e22d05b1fa9a0caebcd96d35bd215ed0ea5cd174f5ed2",
+      "next": "39873960a4b158842750eba872b6850ebff1825cc580d125155e45e46f7725d0"
+    },
+    {
+      "ord": 160,
+      "blockId": "8e7264420ab471ba7f293841d999ebb3",
+      "fp64": "42dc065b83750fdc",
+      "normHash": "39873960a4b158842750eba872b6850ebff1825cc580d125155e45e46f7725d0",
+      "kind": "p",
+      "chapter": "١٦-صلة-الرحم-أنواع-على-حسب-الحاجة",
+      "prev": "1b812f1da0256532b54fe37b737551313292597646cd399cd89855624c1fd078",
+      "next": "f727610201ecf905620f683f1fdbbdfe6b5877e4c2469d4218163e8e1da160fa"
+    },
+    {
+      "ord": 161,
+      "blockId": "56bd4258191957ec5da5dd843b785ec7",
+      "fp64": "7849004fffbc750a",
+      "normHash": "f727610201ecf905620f683f1fdbbdfe6b5877e4c2469d4218163e8e1da160fa",
+      "kind": "p",
+      "chapter": "١٦-صلة-الرحم-أنواع-على-حسب-الحاجة",
+      "prev": "39873960a4b158842750eba872b6850ebff1825cc580d125155e45e46f7725d0",
+      "next": "9d31db8634e36b7e3234be07b2f9e2d99c3e454b5ef356c48308df8b93a7b8f4"
+    },
+    {
+      "ord": 162,
+      "blockId": "4ea63d9471fa00131bf38094f2454f4a",
+      "fp64": "9970004b1fe4bf3a",
+      "normHash": "9d31db8634e36b7e3234be07b2f9e2d99c3e454b5ef356c48308df8b93a7b8f4",
+      "kind": "h2",
+      "chapter": "١٧-صلة-الرحم-واجبة-على-حسب-الحاجة",
+      "prev": "f727610201ecf905620f683f1fdbbdfe6b5877e4c2469d4218163e8e1da160fa",
+      "next": "8aadb0609a149426519c05232d88c047257046f2cb1fa4272059fa14ee27e5d4"
+    },
+    {
+      "ord": 163,
+      "blockId": "55e32985e34de5de10a215845d2b6848",
+      "fp64": "bc31c837171843bc",
+      "normHash": "8aadb0609a149426519c05232d88c047257046f2cb1fa4272059fa14ee27e5d4",
+      "kind": "p",
+      "chapter": "١٧-صلة-الرحم-واجبة-على-حسب-الحاجة",
+      "prev": "9d31db8634e36b7e3234be07b2f9e2d99c3e454b5ef356c48308df8b93a7b8f4",
+      "next": "1ce2d0dc9c8ae600761df727ecbd524e3cc0d656a82c9c988c3f9a00da69822c"
+    },
+    {
+      "ord": 164,
+      "blockId": "4d1e8613604d7b64bf408cec5ae21c67",
+      "fp64": "e031538815ed48d3",
+      "normHash": "1ce2d0dc9c8ae600761df727ecbd524e3cc0d656a82c9c988c3f9a00da69822c",
+      "kind": "p",
+      "chapter": "١٧-صلة-الرحم-واجبة-على-حسب-الحاجة",
+      "prev": "8aadb0609a149426519c05232d88c047257046f2cb1fa4272059fa14ee27e5d4",
+      "next": "e34c2494ff5cbdc924c6f860aefa5fea954590d966f699776c74c1bbfdda3b6b"
+    },
+    {
+      "ord": 165,
+      "blockId": "bd140660535365ea171bd23aec252f18",
+      "fp64": "b5fff3fefa7b7337",
+      "normHash": "e34c2494ff5cbdc924c6f860aefa5fea954590d966f699776c74c1bbfdda3b6b",
+      "kind": "page",
+      "chapter": "١٧-صلة-الرحم-واجبة-على-حسب-الحاجة",
+      "prev": "1ce2d0dc9c8ae600761df727ecbd524e3cc0d656a82c9c988c3f9a00da69822c",
+      "next": "3d6d2802b27c9b6d1d928f5b25da35d634b24264105d23d94d753cdaee6378a3"
+    },
+    {
+      "ord": 166,
+      "blockId": "281d9badd8d0243533c198182a2172cd",
+      "fp64": "dc40ccf94150ca30",
+      "normHash": "3d6d2802b27c9b6d1d928f5b25da35d634b24264105d23d94d753cdaee6378a3",
+      "kind": "p",
+      "chapter": "١٧-صلة-الرحم-واجبة-على-حسب-الحاجة",
+      "prev": "e34c2494ff5cbdc924c6f860aefa5fea954590d966f699776c74c1bbfdda3b6b",
+      "next": "a80d2f0f16ee427513662303fdff34c1ded678c6873f32bfbaaa09faa5c9aa30"
+    },
+    {
+      "ord": 167,
+      "blockId": "5c6c2c6830476fd8fc48fd1527e0847f",
+      "fp64": "4c1b61a5afdf2498",
+      "normHash": "a80d2f0f16ee427513662303fdff34c1ded678c6873f32bfbaaa09faa5c9aa30",
+      "kind": "p",
+      "chapter": "١٧-صلة-الرحم-واجبة-على-حسب-الحاجة",
+      "prev": "3d6d2802b27c9b6d1d928f5b25da35d634b24264105d23d94d753cdaee6378a3",
+      "next": "1c0f7e1bab732e0a4186f99cdaf25f33eb5c58dddce04684101ae104064777e8"
+    },
+    {
+      "ord": 168,
+      "blockId": "5a8a0592aaf2465fb0de7f24499aa945",
+      "fp64": "4ecfe4fbfbb7e907",
+      "normHash": "1c0f7e1bab732e0a4186f99cdaf25f33eb5c58dddce04684101ae104064777e8",
+      "kind": "h2",
+      "chapter": "١٨-فضل-الإحسان-إلى-البنات-والأخوات",
+      "prev": "a80d2f0f16ee427513662303fdff34c1ded678c6873f32bfbaaa09faa5c9aa30",
+      "next": "4acf5d03edfeb315fc198562cbe39cdef6d2319f59cffc99cb5b86b3ba9a4471"
+    },
+    {
+      "ord": 169,
+      "blockId": "31d8edc3eeddcef5018642e4e5445caf",
+      "fp64": "7c72c1571777437f",
+      "normHash": "4acf5d03edfeb315fc198562cbe39cdef6d2319f59cffc99cb5b86b3ba9a4471",
+      "kind": "p",
+      "chapter": "١٨-فضل-الإحسان-إلى-البنات-والأخوات",
+      "prev": "1c0f7e1bab732e0a4186f99cdaf25f33eb5c58dddce04684101ae104064777e8",
+      "next": "f5acffbb4e6dbec2d91f18e89f813b6e00e56343186ac4d743cee4827e47eef5"
+    },
+    {
+      "ord": 170,
+      "blockId": "93617378b4a0b6b7c9973e33bb55b859",
+      "fp64": "ce69e8539d14e1dc",
+      "normHash": "f5acffbb4e6dbec2d91f18e89f813b6e00e56343186ac4d743cee4827e47eef5",
+      "kind": "p",
+      "chapter": "١٨-فضل-الإحسان-إلى-البنات-والأخوات",
+      "prev": "4acf5d03edfeb315fc198562cbe39cdef6d2319f59cffc99cb5b86b3ba9a4471",
+      "next": "21f9c20f4e83572f264bf3be8f944f198e85a4861ab0d298f36d08d44149d424"
+    },
+    {
+      "ord": 171,
+      "blockId": "0019a2507f3b3b41f000d7dcc0f29f60",
+      "fp64": "ffdfff9edf716b76",
+      "normHash": "21f9c20f4e83572f264bf3be8f944f198e85a4861ab0d298f36d08d44149d424",
+      "kind": "page",
+      "chapter": "١٨-فضل-الإحسان-إلى-البنات-والأخوات",
+      "prev": "f5acffbb4e6dbec2d91f18e89f813b6e00e56343186ac4d743cee4827e47eef5",
+      "next": "be3b5cf62ff8ba1c50d0f750d649e5b7a7c8cbf6c4ad86398733bd217b36ac0d"
+    },
+    {
+      "ord": 172,
+      "blockId": "1a08ed0df179bf25e559c08981052524",
+      "fp64": "fecb40d71f76757c",
+      "normHash": "be3b5cf62ff8ba1c50d0f750d649e5b7a7c8cbf6c4ad86398733bd217b36ac0d",
+      "kind": "p",
+      "chapter": "١٨-فضل-الإحسان-إلى-البنات-والأخوات",
+      "prev": "21f9c20f4e83572f264bf3be8f944f198e85a4861ab0d298f36d08d44149d424",
+      "next": "e39b0ea741bbbb8719be100f341ea4e2ab9f14db60a0307494aed32c69f03b9a"
+    },
+    {
+      "ord": 173,
+      "blockId": "c170d2e7c3828a43537770badb9ee518",
+      "fp64": "fc41c0173f3473fc",
+      "normHash": "e39b0ea741bbbb8719be100f341ea4e2ab9f14db60a0307494aed32c69f03b9a",
+      "kind": "p",
+      "chapter": "١٨-فضل-الإحسان-إلى-البنات-والأخوات",
+      "prev": "be3b5cf62ff8ba1c50d0f750d649e5b7a7c8cbf6c4ad86398733bd217b36ac0d",
+      "next": "5be8ecbc19d17f5020a9043e5a348348c22eda9bbea0be39f0dac3ac0865bb70"
+    },
+    {
+      "ord": 174,
+      "blockId": "a753cf88aa8b924bd1de216cf38ef960",
+      "fp64": "fd52c13777f072fe",
+      "normHash": "5be8ecbc19d17f5020a9043e5a348348c22eda9bbea0be39f0dac3ac0865bb70",
+      "kind": "p",
+      "chapter": "١٨-فضل-الإحسان-إلى-البنات-والأخوات",
+      "prev": "e39b0ea741bbbb8719be100f341ea4e2ab9f14db60a0307494aed32c69f03b9a",
+      "next": "0dbbd809733a6603f847afd4e48c2243e52e53cc01240a44d7924d41c77af8a7"
+    },
+    {
+      "ord": 175,
+      "blockId": "f2dd4cf4030c21487574bbb5a8b18480",
+      "fp64": "5a4de85315758e8e",
+      "normHash": "0dbbd809733a6603f847afd4e48c2243e52e53cc01240a44d7924d41c77af8a7",
+      "kind": "p",
+      "chapter": "١٨-فضل-الإحسان-إلى-البنات-والأخوات",
+      "prev": "5be8ecbc19d17f5020a9043e5a348348c22eda9bbea0be39f0dac3ac0865bb70",
+      "next": "a368891ef9a262987f7b742c364d62cb1d7d4e6cde5b779d8435f58d0237e27a"
+    },
+    {
+      "ord": 176,
+      "blockId": "3f9b590505d16e5072947948cad52b8e",
+      "fp64": "7ffffbbafa337eff",
+      "normHash": "a368891ef9a262987f7b742c364d62cb1d7d4e6cde5b779d8435f58d0237e27a",
+      "kind": "page",
+      "chapter": "١٨-فضل-الإحسان-إلى-البنات-والأخوات",
+      "prev": "0dbbd809733a6603f847afd4e48c2243e52e53cc01240a44d7924d41c77af8a7",
+      "next": "2d2c35f3cac4aaaf54f2d5566a6b6db8341f460a52c3923309b449793c6c3bb9"
+    },
+    {
+      "ord": 177,
+      "blockId": "36395c2286aaec8ef95856fe458b3a55",
+      "fp64": "1e7864579f62735c",
+      "normHash": "2d2c35f3cac4aaaf54f2d5566a6b6db8341f460a52c3923309b449793c6c3bb9",
+      "kind": "p",
+      "chapter": "١٨-فضل-الإحسان-إلى-البنات-والأخوات",
+      "prev": "a368891ef9a262987f7b742c364d62cb1d7d4e6cde5b779d8435f58d0237e27a",
+      "next": "fec419a3c7d94955a43d7772abe6d8e275b467712bb439332ebc1e2105d34cbf"
+    },
+    {
+      "ord": 178,
+      "blockId": "f7653133db1000126e24e9c5b5dc3d55",
+      "fp64": "7450c45f95fa73f8",
+      "normHash": "fec419a3c7d94955a43d7772abe6d8e275b467712bb439332ebc1e2105d34cbf",
+      "kind": "p",
+      "chapter": "١٨-فضل-الإحسان-إلى-البنات-والأخوات",
+      "prev": "2d2c35f3cac4aaaf54f2d5566a6b6db8341f460a52c3923309b449793c6c3bb9",
+      "next": "8a264e647fbe13dd135a1e6894ce3ca5c7e134de3cdd37bc85e9f9afd528eb8e"
+    },
+    {
+      "ord": 179,
+      "blockId": "c905b687447c507bca673526f10a37e2",
+      "fp64": "3f5b20d235749c16",
+      "normHash": "8a264e647fbe13dd135a1e6894ce3ca5c7e134de3cdd37bc85e9f9afd528eb8e",
+      "kind": "p",
+      "chapter": "١٨-فضل-الإحسان-إلى-البنات-والأخوات",
+      "prev": "fec419a3c7d94955a43d7772abe6d8e275b467712bb439332ebc1e2105d34cbf",
+      "next": "e787f2e0d4f0f35e056dccc815af2de911e7c3c49eeda32cbbf989e9845a9929"
+    },
+    {
+      "ord": 180,
+      "blockId": "1b92bfac2bcebfaa2dc0bd3b51530aee",
+      "fp64": "b5fff39e5abdfcf6",
+      "normHash": "e787f2e0d4f0f35e056dccc815af2de911e7c3c49eeda32cbbf989e9845a9929",
+      "kind": "page",
+      "chapter": "١٨-فضل-الإحسان-إلى-البنات-والأخوات",
+      "prev": "8a264e647fbe13dd135a1e6894ce3ca5c7e134de3cdd37bc85e9f9afd528eb8e",
+      "next": "ca7dea280912e8c42261c43af159bd03549d453ee5d919a80feff2d87d8f85a9"
+    },
+    {
+      "ord": 181,
+      "blockId": "36f60eeda12453a39ad988b98913ddb6",
+      "fp64": "7450c053991e55f0",
+      "normHash": "ca7dea280912e8c42261c43af159bd03549d453ee5d919a80feff2d87d8f85a9",
+      "kind": "p",
+      "chapter": "١٨-فضل-الإحسان-إلى-البنات-والأخوات",
+      "prev": "e787f2e0d4f0f35e056dccc815af2de911e7c3c49eeda32cbbf989e9845a9929",
+      "next": "345bb5217ca6e460c58c656fae29506a51a3962bfbe173122a1c691090d757e4"
+    },
+    {
+      "ord": 182,
+      "blockId": "b1d6594fe1e613650640a90ff99149dd",
+      "fp64": "f5c7e9abbc7437fc",
+      "normHash": "345bb5217ca6e460c58c656fae29506a51a3962bfbe173122a1c691090d757e4",
+      "kind": "p",
+      "chapter": "١٨-فضل-الإحسان-إلى-البنات-والأخوات",
+      "prev": "ca7dea280912e8c42261c43af159bd03549d453ee5d919a80feff2d87d8f85a9",
+      "next": "85f8debf27a89996a24aeb5e43fd20f91bcb1fed7e03231faa1dbf6bdf43c821"
+    },
+    {
+      "ord": 183,
+      "blockId": "81f9ffa83f85b4f3a4bb2f84ddce4300",
+      "fp64": "5f2b695215749753",
+      "normHash": "85f8debf27a89996a24aeb5e43fd20f91bcb1fed7e03231faa1dbf6bdf43c821",
+      "kind": "p",
+      "chapter": "١٨-فضل-الإحسان-إلى-البنات-والأخوات",
+      "prev": "345bb5217ca6e460c58c656fae29506a51a3962bfbe173122a1c691090d757e4",
+      "next": "1f5c95dd181fafab5ad8c3809f93d70ab61f027b931d166084ec5a22acdf12cc"
+    },
+    {
+      "ord": 184,
+      "blockId": "32accf64c4a65ac7a8c32d20ba0daad7",
+      "fp64": "35dffb9e5fbdf3f6",
+      "normHash": "1f5c95dd181fafab5ad8c3809f93d70ab61f027b931d166084ec5a22acdf12cc",
+      "kind": "page",
+      "chapter": "١٨-فضل-الإحسان-إلى-البنات-والأخوات",
+      "prev": "85f8debf27a89996a24aeb5e43fd20f91bcb1fed7e03231faa1dbf6bdf43c821",
+      "next": "912731d906dd7745e119622a90a420ddae4feb7cf7200f2d843fa1879c4932a5"
+    },
+    {
+      "ord": 185,
+      "blockId": "05c40047f744a16adcc1bc2d711bf04f",
+      "fp64": "1434a05fdce7e57c",
+      "normHash": "912731d906dd7745e119622a90a420ddae4feb7cf7200f2d843fa1879c4932a5",
+      "kind": "p",
+      "chapter": "١٨-فضل-الإحسان-إلى-البنات-والأخوات",
+      "prev": "1f5c95dd181fafab5ad8c3809f93d70ab61f027b931d166084ec5a22acdf12cc",
+      "next": "7b6a35b345988eb4e45d1f3c8d9f11cb1fcd686ffe0c6026f4e17287ef62a548"
+    },
+    {
+      "ord": 186,
+      "blockId": "d9a3b6ded8715bdcaa02478937e4192f",
+      "fp64": "2644e0fb396a797d",
+      "normHash": "7b6a35b345988eb4e45d1f3c8d9f11cb1fcd686ffe0c6026f4e17287ef62a548",
+      "kind": "p",
+      "chapter": "١٨-فضل-الإحسان-إلى-البنات-والأخوات",
+      "prev": "912731d906dd7745e119622a90a420ddae4feb7cf7200f2d843fa1879c4932a5",
+      "next": "194a602af47c6275a607f0fe0d38d440558b3dc63efba02c28117940fda7497c"
+    },
+    {
+      "ord": 187,
+      "blockId": "23364f71c4dd1dbf9daee28be0d5149e",
+      "fp64": "dbae2860f7376556",
+      "normHash": "194a602af47c6275a607f0fe0d38d440558b3dc63efba02c28117940fda7497c",
+      "kind": "p",
+      "chapter": "١٨-فضل-الإحسان-إلى-البنات-والأخوات",
+      "prev": "7b6a35b345988eb4e45d1f3c8d9f11cb1fcd686ffe0c6026f4e17287ef62a548",
+      "next": "57f37e4170198b51df43f9f91c1da5ed25f7173762cf30cc3c502d5a79916044"
+    },
+    {
+      "ord": 188,
+      "blockId": "2c4298710214b4169e08e3cd042e4923",
+      "fp64": "35fff7ff5b31e5b6",
+      "normHash": "57f37e4170198b51df43f9f91c1da5ed25f7173762cf30cc3c502d5a79916044",
+      "kind": "page",
+      "chapter": "١٨-فضل-الإحسان-إلى-البنات-والأخوات",
+      "prev": "194a602af47c6275a607f0fe0d38d440558b3dc63efba02c28117940fda7497c",
+      "next": "3cca8afc753be7cf8c9c2ceb011c604a13d2f03e8840bd2712e7f74adb391166"
+    },
+    {
+      "ord": 189,
+      "blockId": "964543615baf693d31181458c77fbe01",
+      "fp64": "16557256553f1e8c",
+      "normHash": "3cca8afc753be7cf8c9c2ceb011c604a13d2f03e8840bd2712e7f74adb391166",
+      "kind": "p",
+      "chapter": "١٨-فضل-الإحسان-إلى-البنات-والأخوات",
+      "prev": "57f37e4170198b51df43f9f91c1da5ed25f7173762cf30cc3c502d5a79916044",
+      "next": "6d0101eabae7e388ba446e0ceb420721671b570b72107fc14ed82d5334e1d7c3"
+    },
+    {
+      "ord": 190,
+      "blockId": "d6c0eaee83b8b333010f7e5a4c9aa3eb",
+      "fp64": "36a7f5df1f3b9fc3",
+      "normHash": "6d0101eabae7e388ba446e0ceb420721671b570b72107fc14ed82d5334e1d7c3",
+      "kind": "h2",
+      "chapter": "١٩-أفضل-الصدقة-ما-يعطى-الأقارب",
+      "prev": "3cca8afc753be7cf8c9c2ceb011c604a13d2f03e8840bd2712e7f74adb391166",
+      "next": "53b71ce9aa63c83d8e938f9e7f9062a60eb66fb8e56fc29f53dc1e3677740f39"
+    },
+    {
+      "ord": 191,
+      "blockId": "65d5c13a3c7969235079d6e5cf903cfb",
+      "fp64": "a45fa0d635483d78",
+      "normHash": "53b71ce9aa63c83d8e938f9e7f9062a60eb66fb8e56fc29f53dc1e3677740f39",
+      "kind": "p",
+      "chapter": "١٩-أفضل-الصدقة-ما-يعطى-الأقارب",
+      "prev": "6d0101eabae7e388ba446e0ceb420721671b570b72107fc14ed82d5334e1d7c3",
+      "next": "9390cc6cbf9211604d3d3eb785b2c33652908422e07006ac26a1d05e069d877b"
+    },
+    {
+      "ord": 192,
+      "blockId": "d11cd0307a5bcc5b9c898d204705da31",
+      "fp64": "5cd6d17a4372317c",
+      "normHash": "9390cc6cbf9211604d3d3eb785b2c33652908422e07006ac26a1d05e069d877b",
+      "kind": "p",
+      "chapter": "١٩-أفضل-الصدقة-ما-يعطى-الأقارب",
+      "prev": "53b71ce9aa63c83d8e938f9e7f9062a60eb66fb8e56fc29f53dc1e3677740f39",
+      "next": "ecd7e0fdea54128c7cc7be3ee483fb3947a73250c0b8a73761511070353d50a4"
+    },
+    {
+      "ord": 193,
+      "blockId": "aba5fc0facb0ad03b675ead54b5043a0",
+      "fp64": "789865c89d6d1c50",
+      "normHash": "ecd7e0fdea54128c7cc7be3ee483fb3947a73250c0b8a73761511070353d50a4",
+      "kind": "p",
+      "chapter": "١٩-أفضل-الصدقة-ما-يعطى-الأقارب",
+      "prev": "9390cc6cbf9211604d3d3eb785b2c33652908422e07006ac26a1d05e069d877b",
+      "next": "8bdfd64f297cb4f46a40fb573a4ddedb248ee4a29471671507327f8356aee87e"
+    },
+    {
+      "ord": 194,
+      "blockId": "01b3949c6908e115a37ab97e7320d1a7",
+      "fp64": "35dff7fa5a3374bf",
+      "normHash": "8bdfd64f297cb4f46a40fb573a4ddedb248ee4a29471671507327f8356aee87e",
+      "kind": "page",
+      "chapter": "١٩-أفضل-الصدقة-ما-يعطى-الأقارب",
+      "prev": "ecd7e0fdea54128c7cc7be3ee483fb3947a73250c0b8a73761511070353d50a4",
+      "next": "a57190151002206fcc361bb30d800c9de677c0aef79be104bb94bb7d25bf9913"
+    },
+    {
+      "ord": 195,
+      "blockId": "44630e3b087f37ef5935fb513fec53af",
+      "fp64": "e414c0169772717e",
+      "normHash": "a57190151002206fcc361bb30d800c9de677c0aef79be104bb94bb7d25bf9913",
+      "kind": "p",
+      "chapter": "١٩-أفضل-الصدقة-ما-يعطى-الأقارب",
+      "prev": "8bdfd64f297cb4f46a40fb573a4ddedb248ee4a29471671507327f8356aee87e",
+      "next": "0418397f88ca3e647778e91e5a9c32846fcd87c5a64d3e9ba86bb35c3674ba22"
+    },
+    {
+      "ord": 196,
+      "blockId": "97786217c82659f887b47ee46e16493f",
+      "fp64": "9b193112247c66d3",
+      "normHash": "0418397f88ca3e647778e91e5a9c32846fcd87c5a64d3e9ba86bb35c3674ba22",
+      "kind": "p",
+      "chapter": "١٩-أفضل-الصدقة-ما-يعطى-الأقارب",
+      "prev": "a57190151002206fcc361bb30d800c9de677c0aef79be104bb94bb7d25bf9913",
+      "next": "29eae3e7cbf6af90dd0be6a2d2bc0f2fb87fdf7fc2e7bc1f29cbf98018991151"
+    },
+    {
+      "ord": 197,
+      "blockId": "c9434a0594257226d26039850c1c18b4",
+      "fp64": "eddff3dadf39e576",
+      "normHash": "29eae3e7cbf6af90dd0be6a2d2bc0f2fb87fdf7fc2e7bc1f29cbf98018991151",
+      "kind": "page",
+      "chapter": "١٩-أفضل-الصدقة-ما-يعطى-الأقارب",
+      "prev": "0418397f88ca3e647778e91e5a9c32846fcd87c5a64d3e9ba86bb35c3674ba22",
+      "next": "1cb0ab80c960e040e872ef668ff7ac874cb84259b573651d1bb516715a10d237"
+    },
+    {
+      "ord": 198,
+      "blockId": "1d7feb5a896502debf9a4437b0dec8ff",
+      "fp64": "355ef4975652b064",
+      "normHash": "1cb0ab80c960e040e872ef668ff7ac874cb84259b573651d1bb516715a10d237",
+      "kind": "p",
+      "chapter": "١٩-أفضل-الصدقة-ما-يعطى-الأقارب",
+      "prev": "29eae3e7cbf6af90dd0be6a2d2bc0f2fb87fdf7fc2e7bc1f29cbf98018991151",
+      "next": "9d88fd9ee9ee92468103ca38ddf8262025401fc10c4537cb4ea1f92823b4eb30"
+    },
+    {
+      "ord": 199,
+      "blockId": "2b9a66d4cfc738e47a3e702858f716c0",
+      "fp64": "164430171d3c1f78",
+      "normHash": "9d88fd9ee9ee92468103ca38ddf8262025401fc10c4537cb4ea1f92823b4eb30",
+      "kind": "p",
+      "chapter": "١٩-أفضل-الصدقة-ما-يعطى-الأقارب",
+      "prev": "1cb0ab80c960e040e872ef668ff7ac874cb84259b573651d1bb516715a10d237",
+      "next": "44d8a71580bbf4b20d637f84dec853e26118b261219c748ba49d0724ef6978c8"
+    },
+    {
+      "ord": 200,
+      "blockId": "d648160065286c58ca4df9c4833696ae",
+      "fp64": "cb35601214467d52",
+      "normHash": "44d8a71580bbf4b20d637f84dec853e26118b261219c748ba49d0724ef6978c8",
+      "kind": "p",
+      "chapter": "١٩-أفضل-الصدقة-ما-يعطى-الأقارب",
+      "prev": "9d88fd9ee9ee92468103ca38ddf8262025401fc10c4537cb4ea1f92823b4eb30",
+      "next": "4bbbeca6742f12c299ee9874c27e783f7f3f2b0b40fb7eff785b2d2e7693ddd5"
+    },
+    {
+      "ord": 201,
+      "blockId": "e98f3c83fb8771c6912b1c899bb69d4a",
+      "fp64": "afffff9b7fb5617e",
+      "normHash": "4bbbeca6742f12c299ee9874c27e783f7f3f2b0b40fb7eff785b2d2e7693ddd5",
+      "kind": "page",
+      "chapter": "١٩-أفضل-الصدقة-ما-يعطى-الأقارب",
+      "prev": "44d8a71580bbf4b20d637f84dec853e26118b261219c748ba49d0724ef6978c8",
+      "next": "3a082555a913f3f8a6af8d8acd4278fe4830271b9bef0dfaad14a4107607fca5"
+    },
+    {
+      "ord": 202,
+      "blockId": "e4c930be231b55cfcc81202eb66420e6",
+      "fp64": "bd45e856977855fe",
+      "normHash": "3a082555a913f3f8a6af8d8acd4278fe4830271b9bef0dfaad14a4107607fca5",
+      "kind": "p",
+      "chapter": "١٩-أفضل-الصدقة-ما-يعطى-الأقارب",
+      "prev": "4bbbeca6742f12c299ee9874c27e783f7f3f2b0b40fb7eff785b2d2e7693ddd5",
+      "next": "703fc36c6ec09a6be2c505f25588e341592555d54b5e1a75c5c1074bc4dc469b"
+    },
+    {
+      "ord": 203,
+      "blockId": "6095bcfadcb36f779d300ed943cb9ed1",
+      "fp64": "3a5cfc359eee7d7c",
+      "normHash": "703fc36c6ec09a6be2c505f25588e341592555d54b5e1a75c5c1074bc4dc469b",
+      "kind": "p",
+      "chapter": "١٩-أفضل-الصدقة-ما-يعطى-الأقارب",
+      "prev": "3a082555a913f3f8a6af8d8acd4278fe4830271b9bef0dfaad14a4107607fca5",
+      "next": "a502da7587662b768854df80eea3006341e8a92d0a5077c32cd420f04f6241a9"
+    },
+    {
+      "ord": 204,
+      "blockId": "c5bbccf612ff98ad05d719a11ccc4f87",
+      "fp64": "744560d2363412fc",
+      "normHash": "a502da7587662b768854df80eea3006341e8a92d0a5077c32cd420f04f6241a9",
+      "kind": "p",
+      "chapter": "١٩-أفضل-الصدقة-ما-يعطى-الأقارب",
+      "prev": "703fc36c6ec09a6be2c505f25588e341592555d54b5e1a75c5c1074bc4dc469b",
+      "next": "99e1271716ea9960cfdeba8da7f11eabe18de6b580263128b958b3c052fb23a2"
+    },
+    {
+      "ord": 205,
+      "blockId": "0ad37a921401ee8e85320040b44de1de",
+      "fp64": "c97560430c64b753",
+      "normHash": "99e1271716ea9960cfdeba8da7f11eabe18de6b580263128b958b3c052fb23a2",
+      "kind": "p",
+      "chapter": "١٩-أفضل-الصدقة-ما-يعطى-الأقارب",
+      "prev": "a502da7587662b768854df80eea3006341e8a92d0a5077c32cd420f04f6241a9",
+      "next": "c2e5ec499c041da0ca3ab6ab1146db3b1f4719e299d00b7bb5ed6dd8e308dd99"
+    },
+    {
+      "ord": 206,
+      "blockId": "6be9f9967023edd603010868da7f6d85",
+      "fp64": "27fffbde7a31e9be",
+      "normHash": "c2e5ec499c041da0ca3ab6ab1146db3b1f4719e299d00b7bb5ed6dd8e308dd99",
+      "kind": "page",
+      "chapter": "١٩-أفضل-الصدقة-ما-يعطى-الأقارب",
+      "prev": "99e1271716ea9960cfdeba8da7f11eabe18de6b580263128b958b3c052fb23a2",
+      "next": "b9c406ff4cce0980acb96b297a5d88ad57703c2de250de51553d769ac32f1b3c"
+    },
+    {
+      "ord": 207,
+      "blockId": "655b108677fb6948ace72d66ef9bf45a",
+      "fp64": "e6ec68c1953b5a7d",
+      "normHash": "b9c406ff4cce0980acb96b297a5d88ad57703c2de250de51553d769ac32f1b3c",
+      "kind": "p",
+      "chapter": "١٩-أفضل-الصدقة-ما-يعطى-الأقارب",
+      "prev": "c2e5ec499c041da0ca3ab6ab1146db3b1f4719e299d00b7bb5ed6dd8e308dd99",
+      "next": "b01c9c614743f82dfc30674859fd18958e867f5203a37a06a957e5f9f80192e0"
+    },
+    {
+      "ord": 208,
+      "blockId": "aa2b1f0203a49e6d3625e87f1969e9f5",
+      "fp64": "e6ede05a0c6d7cca",
+      "normHash": "b01c9c614743f82dfc30674859fd18958e867f5203a37a06a957e5f9f80192e0",
+      "kind": "p",
+      "chapter": "١٩-أفضل-الصدقة-ما-يعطى-الأقارب",
+      "prev": "b9c406ff4cce0980acb96b297a5d88ad57703c2de250de51553d769ac32f1b3c",
+      "next": "3898f4308c862715de28f6f6af19b09859e424e199406354cd1e6feaf3bcf834"
+    },
+    {
+      "ord": 209,
+      "blockId": "b73c348898ae8647ad5eced7466be950",
+      "fp64": "c3f470261c467d0a",
+      "normHash": "3898f4308c862715de28f6f6af19b09859e424e199406354cd1e6feaf3bcf834",
+      "kind": "p",
+      "chapter": "١٩-أفضل-الصدقة-ما-يعطى-الأقارب",
+      "prev": "b01c9c614743f82dfc30674859fd18958e867f5203a37a06a957e5f9f80192e0",
+      "next": "b271db2d31a291996045e748faf11d4a35ceda2e52fc3e05cc86c6d37ecb262d"
+    },
+    {
+      "ord": 210,
+      "blockId": "d87c03fd024588dd2584c014c27c39fc",
+      "fp64": "bdfffbdf5bb9f13f",
+      "normHash": "b271db2d31a291996045e748faf11d4a35ceda2e52fc3e05cc86c6d37ecb262d",
+      "kind": "page",
+      "chapter": "١٩-أفضل-الصدقة-ما-يعطى-الأقارب",
+      "prev": "3898f4308c862715de28f6f6af19b09859e424e199406354cd1e6feaf3bcf834",
+      "next": "bcb3d55fdae9a67d2f88c8a9a911eded157d68ba9c384b461325b9a98fc3e3c1"
+    },
+    {
+      "ord": 211,
+      "blockId": "9ec729991798a58ea256b8b1023e68eb",
+      "fp64": "0f37a316552c1fd8",
+      "normHash": "bcb3d55fdae9a67d2f88c8a9a911eded157d68ba9c384b461325b9a98fc3e3c1",
+      "kind": "p",
+      "chapter": "١٩-أفضل-الصدقة-ما-يعطى-الأقارب",
+      "prev": "b271db2d31a291996045e748faf11d4a35ceda2e52fc3e05cc86c6d37ecb262d",
+      "next": "3540d2251aa91996ee4f125057b934bbbf4fce596ae4e56850f0169c31d7d9c3"
+    },
+    {
+      "ord": 212,
+      "blockId": "3a33c715ae6ffa87753b4025680478d3",
+      "fp64": "0755affeb9521eeb",
+      "normHash": "3540d2251aa91996ee4f125057b934bbbf4fce596ae4e56850f0169c31d7d9c3",
+      "kind": "h2",
+      "chapter": "٢٠-الصدقة-على-ذي-الرحم-الذي-يضمر-العداوة",
+      "prev": "bcb3d55fdae9a67d2f88c8a9a911eded157d68ba9c384b461325b9a98fc3e3c1",
+      "next": "9a1ade2d9f24f7db71cb5226780841146591025e3ec65e4ea408f334859d5446"
+    },
+    {
+      "ord": 213,
+      "blockId": "876535f373158faa10711baff2aeec1b",
+      "fp64": "7aea54129b761e15",
+      "normHash": "9a1ade2d9f24f7db71cb5226780841146591025e3ec65e4ea408f334859d5446",
+      "kind": "p",
+      "chapter": "٢٠-الصدقة-على-ذي-الرحم-الذي-يضمر-العداوة",
+      "prev": "3540d2251aa91996ee4f125057b934bbbf4fce596ae4e56850f0169c31d7d9c3",
+      "next": "97ef95fdb2485de4907d95fa16172f629092989972e063759568a5dc56f6ff47"
+    },
+    {
+      "ord": 214,
+      "blockId": "43722b5e4ec85800d84784581b3d40b9",
+      "fp64": "6435e0963f5b787c",
+      "normHash": "97ef95fdb2485de4907d95fa16172f629092989972e063759568a5dc56f6ff47",
+      "kind": "p",
+      "chapter": "٢٠-الصدقة-على-ذي-الرحم-الذي-يضمر-العداوة",
+      "prev": "9a1ade2d9f24f7db71cb5226780841146591025e3ec65e4ea408f334859d5446",
+      "next": "326acec5c93631affafe9e408c6cb94c0f2148348fe23c25a111ba2ae8b776f3"
+    },
+    {
+      "ord": 215,
+      "blockId": "7157c4ad64d3c656a27af0e63b047a45",
+      "fp64": "7009b0dc25441c5b",
+      "normHash": "326acec5c93631affafe9e408c6cb94c0f2148348fe23c25a111ba2ae8b776f3",
+      "kind": "p",
+      "chapter": "٢٠-الصدقة-على-ذي-الرحم-الذي-يضمر-العداوة",
+      "prev": "97ef95fdb2485de4907d95fa16172f629092989972e063759568a5dc56f6ff47",
+      "next": "b46e6923a0be5a76f4a246c38e1cdd730d028270f56f2c5716ded45f3af2b500"
+    },
+    {
+      "ord": 216,
+      "blockId": "b9351cc8a52eab265bae1b880e8b1221",
+      "fp64": "a5fff3dedbfffef7",
+      "normHash": "b46e6923a0be5a76f4a246c38e1cdd730d028270f56f2c5716ded45f3af2b500",
+      "kind": "page",
+      "chapter": "٢٠-الصدقة-على-ذي-الرحم-الذي-يضمر-العداوة",
+      "prev": "326acec5c93631affafe9e408c6cb94c0f2148348fe23c25a111ba2ae8b776f3",
+      "next": "d3c39dbdaf77ddb421876d485fb78faa8b5b6d4c43da2dcbde53b9d496db7cd0"
+    },
+    {
+      "ord": 217,
+      "blockId": "ab35d3aaebc21ea05b5ea072d1e8c281",
+      "fp64": "75458053317e757e",
+      "normHash": "d3c39dbdaf77ddb421876d485fb78faa8b5b6d4c43da2dcbde53b9d496db7cd0",
+      "kind": "p",
+      "chapter": "٢٠-الصدقة-على-ذي-الرحم-الذي-يضمر-العداوة",
+      "prev": "b46e6923a0be5a76f4a246c38e1cdd730d028270f56f2c5716ded45f3af2b500",
+      "next": "d45a11cac6d12e9aecb807f3db3decd3bc10368fc56163579fcaec891f092ab3"
+    },
+    {
+      "ord": 218,
+      "blockId": "78ee57e24f7116becfd26810e825f5b8",
+      "fp64": "26e3f2151db6bffc",
+      "normHash": "d45a11cac6d12e9aecb807f3db3decd3bc10368fc56163579fcaec891f092ab3",
+      "kind": "h2",
+      "chapter": "٢١-أفضل-النفقات-النفقة-على-العيال-والأهل-والأقربين",
+      "prev": "d3c39dbdaf77ddb421876d485fb78faa8b5b6d4c43da2dcbde53b9d496db7cd0",
+      "next": "c814a6edde65796bc6fe5697ea007dec1b5335ba6de0e41216731595f8e79901"
+    },
+    {
+      "ord": 219,
+      "blockId": "02d15a01f25af666b7088be0186bcb74",
+      "fp64": "68c0c03f1ffb3f0b",
+      "normHash": "c814a6edde65796bc6fe5697ea007dec1b5335ba6de0e41216731595f8e79901",
+      "kind": "p",
+      "chapter": "٢١-أفضل-النفقات-النفقة-على-العيال-والأهل-والأقربين",
+      "prev": "d45a11cac6d12e9aecb807f3db3decd3bc10368fc56163579fcaec891f092ab3",
+      "next": "1d3599b2f2c148c466a1d27a052d6f831a47ad034454134942f1769a8d5ee4b6"
+    },
+    {
+      "ord": 220,
+      "blockId": "2c369f6a643d7a78fef5bfceb467c51b",
+      "fp64": "5e81e0fd754d5e63",
+      "normHash": "1d3599b2f2c148c466a1d27a052d6f831a47ad034454134942f1769a8d5ee4b6",
+      "kind": "p",
+      "chapter": "٢١-أفضل-النفقات-النفقة-على-العيال-والأهل-والأقربين",
+      "prev": "c814a6edde65796bc6fe5697ea007dec1b5335ba6de0e41216731595f8e79901",
+      "next": "f9561102f6f0bb7090974fb237863cb5f8058726d79ee2da8b7b9f3485c54280"
+    },
+    {
+      "ord": 221,
+      "blockId": "30f3ccdb16140be50833a5bd0196ca51",
+      "fp64": "2fdffbdadb7ff13f",
+      "normHash": "f9561102f6f0bb7090974fb237863cb5f8058726d79ee2da8b7b9f3485c54280",
+      "kind": "page",
+      "chapter": "٢١-أفضل-النفقات-النفقة-على-العيال-والأهل-والأقربين",
+      "prev": "1d3599b2f2c148c466a1d27a052d6f831a47ad034454134942f1769a8d5ee4b6",
+      "next": "c25b0fe71b4cf444c8a426246a3bde749326c465df68043334a52375d0f65ad3"
+    },
+    {
+      "ord": 222,
+      "blockId": "8031c7ba745937f64b0c7f215fb4c637",
+      "fp64": "8d2e4ad327a7aae3",
+      "normHash": "c25b0fe71b4cf444c8a426246a3bde749326c465df68043334a52375d0f65ad3",
+      "kind": "p",
+      "chapter": "٢١-أفضل-النفقات-النفقة-على-العيال-والأهل-والأقربين",
+      "prev": "f9561102f6f0bb7090974fb237863cb5f8058726d79ee2da8b7b9f3485c54280",
+      "next": "a81ec7a008095b33f2be46570271c26dd3f710e3c699069a12ff3cff3d966ff0"
+    },
+    {
+      "ord": 223,
+      "blockId": "2d70ae50df5df8d205ee39890c940d6a",
+      "fp64": "5915e11abeb59e1f",
+      "normHash": "a81ec7a008095b33f2be46570271c26dd3f710e3c699069a12ff3cff3d966ff0",
+      "kind": "p",
+      "chapter": "٢١-أفضل-النفقات-النفقة-على-العيال-والأهل-والأقربين",
+      "prev": "c25b0fe71b4cf444c8a426246a3bde749326c465df68043334a52375d0f65ad3",
+      "next": "d857af1a5654e5b664f3ce174edf8535256d890cd44fbc188989ca7f55c37d76"
+    },
+    {
+      "ord": 224,
+      "blockId": "32851076616ed5f679d4023b65b83a05",
+      "fp64": "7087841d6ff59e6c",
+      "normHash": "d857af1a5654e5b664f3ce174edf8535256d890cd44fbc188989ca7f55c37d76",
+      "kind": "p",
+      "chapter": "٢١-أفضل-النفقات-النفقة-على-العيال-والأهل-والأقربين",
+      "prev": "a81ec7a008095b33f2be46570271c26dd3f710e3c699069a12ff3cff3d966ff0",
+      "next": "a4a5260e5f2d65c21614128f916e8a068c4373984ee7bbe2875925a287d44381"
+    },
+    {
+      "ord": 225,
+      "blockId": "a0527813b57fc9a95ef98727bb59b7ae",
+      "fp64": "0da9adba55a7cc67",
+      "normHash": "a4a5260e5f2d65c21614128f916e8a068c4373984ee7bbe2875925a287d44381",
+      "kind": "p",
+      "chapter": "٢١-أفضل-النفقات-النفقة-على-العيال-والأهل-والأقربين",
+      "prev": "d857af1a5654e5b664f3ce174edf8535256d890cd44fbc188989ca7f55c37d76",
+      "next": "b45714bbeaceb94fe48a62b395281c96fe52365900f57b444a5084c187979246"
+    },
+    {
+      "ord": 226,
+      "blockId": "e9fe9bcc9d8cf143c61728cfe860d374",
+      "fp64": "addff79afe7d6777",
+      "normHash": "b45714bbeaceb94fe48a62b395281c96fe52365900f57b444a5084c187979246",
+      "kind": "page",
+      "chapter": "٢١-أفضل-النفقات-النفقة-على-العيال-والأهل-والأقربين",
+      "prev": "a4a5260e5f2d65c21614128f916e8a068c4373984ee7bbe2875925a287d44381",
+      "next": "05a9ac24dcdab09292754e886aaaa406b62bd18f973be8e0239f26fe1795b4b7"
+    },
+    {
+      "ord": 227,
+      "blockId": "bafe0fecc5752bceec98496b4b24c470",
+      "fp64": "3c54b257816a215c",
+      "normHash": "05a9ac24dcdab09292754e886aaaa406b62bd18f973be8e0239f26fe1795b4b7",
+      "kind": "p",
+      "chapter": "٢١-أفضل-النفقات-النفقة-على-العيال-والأهل-والأقربين",
+      "prev": "b45714bbeaceb94fe48a62b395281c96fe52365900f57b444a5084c187979246",
+      "next": "156ac3032a8d2adc4b225277d75c9817b91adeeb06b50a4187b095bad0f1fb8c"
+    },
+    {
+      "ord": 228,
+      "blockId": "e8b52648bfeebfe4c8c91e5a785a6cd3",
+      "fp64": "ed55d01605fc6778",
+      "normHash": "156ac3032a8d2adc4b225277d75c9817b91adeeb06b50a4187b095bad0f1fb8c",
+      "kind": "p",
+      "chapter": "٢١-أفضل-النفقات-النفقة-على-العيال-والأهل-والأقربين",
+      "prev": "05a9ac24dcdab09292754e886aaaa406b62bd18f973be8e0239f26fe1795b4b7",
+      "next": "35c19ad3e050da35f2c8631dfd6bb8b248795550c1a8aee76e22b718da953c0b"
+    },
+    {
+      "ord": 229,
+      "blockId": "6b9236ef5ad615cb679fae0960df8cd5",
+      "fp64": "f55ee002775a70dc",
+      "normHash": "35c19ad3e050da35f2c8631dfd6bb8b248795550c1a8aee76e22b718da953c0b",
+      "kind": "p",
+      "chapter": "٢١-أفضل-النفقات-النفقة-على-العيال-والأهل-والأقربين",
+      "prev": "156ac3032a8d2adc4b225277d75c9817b91adeeb06b50a4187b095bad0f1fb8c",
+      "next": "3975edf54e550094760d1bdd8d68def0532044915f5dc38ae18e1ab912882418"
+    },
+    {
+      "ord": 230,
+      "blockId": "3d185764471b92803fb31671202beec1",
+      "fp64": "cf6968335d9ee5ce",
+      "normHash": "3975edf54e550094760d1bdd8d68def0532044915f5dc38ae18e1ab912882418",
+      "kind": "p",
+      "chapter": "٢١-أفضل-النفقات-النفقة-على-العيال-والأهل-والأقربين",
+      "prev": "35c19ad3e050da35f2c8631dfd6bb8b248795550c1a8aee76e22b718da953c0b",
+      "next": "d284cc0fd73584653510c35a6a017f8ad937e30f2bef536e7df256f97d22e433"
+    },
+    {
+      "ord": 231,
+      "blockId": "eb02e886fe6dca91f1929ca528fe35b5",
+      "fp64": "a5dff7da5e73eb76",
+      "normHash": "d284cc0fd73584653510c35a6a017f8ad937e30f2bef536e7df256f97d22e433",
+      "kind": "page",
+      "chapter": "٢١-أفضل-النفقات-النفقة-على-العيال-والأهل-والأقربين",
+      "prev": "3975edf54e550094760d1bdd8d68def0532044915f5dc38ae18e1ab912882418",
+      "next": "01bf28731266476b060335a1694edd70f7b253b6f387404b12e28f4faf3c8076"
+    },
+    {
+      "ord": 232,
+      "blockId": "cc7c5484ac0bea868b1356ff43569ba8",
+      "fp64": "6c56c1772f603218",
+      "normHash": "01bf28731266476b060335a1694edd70f7b253b6f387404b12e28f4faf3c8076",
+      "kind": "p",
+      "chapter": "٢١-أفضل-النفقات-النفقة-على-العيال-والأهل-والأقربين",
+      "prev": "d284cc0fd73584653510c35a6a017f8ad937e30f2bef536e7df256f97d22e433",
+      "next": "6768d0a727f39ee88e1336d14ec20f5f1ccdfbad8737d4e12a45ed7c337df0e1"
+    },
+    {
+      "ord": 233,
+      "blockId": "b449ef9f484bf4a1920a8cc3da8c9a0c",
+      "fp64": "a677c44a0f785078",
+      "normHash": "6768d0a727f39ee88e1336d14ec20f5f1ccdfbad8737d4e12a45ed7c337df0e1",
+      "kind": "p",
+      "chapter": "٢١-أفضل-النفقات-النفقة-على-العيال-والأهل-والأقربين",
+      "prev": "01bf28731266476b060335a1694edd70f7b253b6f387404b12e28f4faf3c8076",
+      "next": "bf31705b63aeb5401512cfaea99d401d6f25de222f9440d6a6583828c934cd25"
+    },
+    {
+      "ord": 234,
+      "blockId": "4d48be94594b0d01425f6c28b0cbf504",
+      "fp64": "551d70675d3cae16",
+      "normHash": "bf31705b63aeb5401512cfaea99d401d6f25de222f9440d6a6583828c934cd25",
+      "kind": "p",
+      "chapter": "٢١-أفضل-النفقات-النفقة-على-العيال-والأهل-والأقربين",
+      "prev": "6768d0a727f39ee88e1336d14ec20f5f1ccdfbad8737d4e12a45ed7c337df0e1",
+      "next": "c1d50dc79e6c0267e9efbd68795c3df8e2c25e590d0b1bc168c1ccb63b902798"
+    },
+    {
+      "ord": 235,
+      "blockId": "d7aeeff8d29dfcbac44316170766c05e",
+      "fp64": "bddffbdafb75ee77",
+      "normHash": "c1d50dc79e6c0267e9efbd68795c3df8e2c25e590d0b1bc168c1ccb63b902798",
+      "kind": "page",
+      "chapter": "٢١-أفضل-النفقات-النفقة-على-العيال-والأهل-والأقربين",
+      "prev": "bf31705b63aeb5401512cfaea99d401d6f25de222f9440d6a6583828c934cd25",
+      "next": "fb950ec74473c55e9085ae8fe69ded77ad5a31d6dc756fcbc1bf7e2fa6bb2fc9"
+    },
+    {
+      "ord": 236,
+      "blockId": "5eabf9477160c62c7b781379286f1cfb",
+      "fp64": "77d7d7fec4799f62",
+      "normHash": "fb950ec74473c55e9085ae8fe69ded77ad5a31d6dc756fcbc1bf7e2fa6bb2fc9",
+      "kind": "p",
+      "chapter": "٢١-أفضل-النفقات-النفقة-على-العيال-والأهل-والأقربين",
+      "prev": "c1d50dc79e6c0267e9efbd68795c3df8e2c25e590d0b1bc168c1ccb63b902798",
+      "next": "deda8d505804a93dd1939c5df747e8e4bc052437c824b77a317c5c7554c30b75"
+    },
+    {
+      "ord": 237,
+      "blockId": "d5fd4f7a74e3afd68a09eedb8e5dc388",
+      "fp64": "9d46b04a7d571cd9",
+      "normHash": "deda8d505804a93dd1939c5df747e8e4bc052437c824b77a317c5c7554c30b75",
+      "kind": "p",
+      "chapter": "٢١-أفضل-النفقات-النفقة-على-العيال-والأهل-والأقربين",
+      "prev": "fb950ec74473c55e9085ae8fe69ded77ad5a31d6dc756fcbc1bf7e2fa6bb2fc9",
+      "next": "9ff71a7ae124274d853b7686a136d5da8588979ecf54164b626b387b4076ccbc"
+    },
+    {
+      "ord": 238,
+      "blockId": "6935d477a594df1d9b4e4445fb0519ea",
+      "fp64": "f57dea5b36743674",
+      "normHash": "9ff71a7ae124274d853b7686a136d5da8588979ecf54164b626b387b4076ccbc",
+      "kind": "p",
+      "chapter": "٢١-أفضل-النفقات-النفقة-على-العيال-والأهل-والأقربين",
+      "prev": "deda8d505804a93dd1939c5df747e8e4bc052437c824b77a317c5c7554c30b75",
+      "next": "ce7cc350af4eda85e564fe7db582ebe79302938352ba3fd62f2c52d95d7d29f7"
+    },
+    {
+      "ord": 239,
+      "blockId": "ab8cf035370515b03cc089063387b27f",
+      "fp64": "5975202e14641652",
+      "normHash": "ce7cc350af4eda85e564fe7db582ebe79302938352ba3fd62f2c52d95d7d29f7",
+      "kind": "p",
+      "chapter": "٢١-أفضل-النفقات-النفقة-على-العيال-والأهل-والأقربين",
+      "prev": "9ff71a7ae124274d853b7686a136d5da8588979ecf54164b626b387b4076ccbc",
+      "next": "47a608900b812e28351277f4ceba154c78be5a19735cb65393561b1fae8e2f7b"
+    },
+    {
+      "ord": 240,
+      "blockId": "c686f5506316bd3c3424b579bf08ea13",
+      "fp64": "ffdff79affb777b7",
+      "normHash": "47a608900b812e28351277f4ceba154c78be5a19735cb65393561b1fae8e2f7b",
+      "kind": "page",
+      "chapter": "٢١-أفضل-النفقات-النفقة-على-العيال-والأهل-والأقربين",
+      "prev": "ce7cc350af4eda85e564fe7db582ebe79302938352ba3fd62f2c52d95d7d29f7",
+      "next": "658153570d1dd6ada2d118451b3e2e5c5cab4bcc6359e6823d1e7fc82ef1b179"
+    },
+    {
+      "ord": 241,
+      "blockId": "8409e6c5c15115ddb8efc24f946a9f62",
+      "fp64": "90d164cd65ab8fab",
+      "normHash": "658153570d1dd6ada2d118451b3e2e5c5cab4bcc6359e6823d1e7fc82ef1b179",
+      "kind": "p",
+      "chapter": "٢١-أفضل-النفقات-النفقة-على-العيال-والأهل-والأقربين",
+      "prev": "47a608900b812e28351277f4ceba154c78be5a19735cb65393561b1fae8e2f7b",
+      "next": "0cc0b57fccb7516bf310bea9a5c95bb481fcde2845392f8a4cabd54106c1cab7"
+    },
+    {
+      "ord": 242,
+      "blockId": "dd2874161c11db117b7e2a90d5475bc5",
+      "fp64": "7c52d31723460a9c",
+      "normHash": "0cc0b57fccb7516bf310bea9a5c95bb481fcde2845392f8a4cabd54106c1cab7",
+      "kind": "p",
+      "chapter": "٢١-أفضل-النفقات-النفقة-على-العيال-والأهل-والأقربين",
+      "prev": "658153570d1dd6ada2d118451b3e2e5c5cab4bcc6359e6823d1e7fc82ef1b179",
+      "next": "04aaa88fcee11b03b2ea5b0764a6d5a9f48698ff5bad8dd4eec8e555ae64a6c6"
+    },
+    {
+      "ord": 243,
+      "blockId": "5e3d6eae4f163a76d0a924ae9c9d5e0f",
+      "fp64": "671b5516275afa94",
+      "normHash": "04aaa88fcee11b03b2ea5b0764a6d5a9f48698ff5bad8dd4eec8e555ae64a6c6",
+      "kind": "p",
+      "chapter": "٢١-أفضل-النفقات-النفقة-على-العيال-والأهل-والأقربين",
+      "prev": "0cc0b57fccb7516bf310bea9a5c95bb481fcde2845392f8a4cabd54106c1cab7",
+      "next": "082822895b7f980c69f2d08b6867e59d69b3a778b80b87bdf3289f9144c9514a"
+    },
+    {
+      "ord": 244,
+      "blockId": "8fd6780d88fdeb7f65f3d95c5cb77d2c",
+      "fp64": "514c7022957dbf56",
+      "normHash": "082822895b7f980c69f2d08b6867e59d69b3a778b80b87bdf3289f9144c9514a",
+      "kind": "p",
+      "chapter": "٢١-أفضل-النفقات-النفقة-على-العيال-والأهل-والأقربين",
+      "prev": "04aaa88fcee11b03b2ea5b0764a6d5a9f48698ff5bad8dd4eec8e555ae64a6c6",
+      "next": "89e34329ab90aa190773ce2438a8e1c6bd4a1fdaab455c2d4345beefa0f8a62f"
+    },
+    {
+      "ord": 245,
+      "blockId": "1dd5794895f5c6e632b1fcd9c361e7a4",
+      "fp64": "37ffff9e7a3ffc37",
+      "normHash": "89e34329ab90aa190773ce2438a8e1c6bd4a1fdaab455c2d4345beefa0f8a62f",
+      "kind": "page",
+      "chapter": "٢١-أفضل-النفقات-النفقة-على-العيال-والأهل-والأقربين",
+      "prev": "082822895b7f980c69f2d08b6867e59d69b3a778b80b87bdf3289f9144c9514a",
+      "next": "33cc35101f3299d541f6373b5ec0c368331184a4786b5139c8de156c47aaa068"
+    },
+    {
+      "ord": 246,
+      "blockId": "05924256d61906c78bd1a0bd79817744",
+      "fp64": "7e52c6f5476642d8",
+      "normHash": "33cc35101f3299d541f6373b5ec0c368331184a4786b5139c8de156c47aaa068",
+      "kind": "p",
+      "chapter": "٢١-أفضل-النفقات-النفقة-على-العيال-والأهل-والأقربين",
+      "prev": "89e34329ab90aa190773ce2438a8e1c6bd4a1fdaab455c2d4345beefa0f8a62f",
+      "next": "0f85b08a08d2017fc9be41eb3f98d1db9afb06224e4b878f06c5094d6fcaf305"
+    },
+    {
+      "ord": 247,
+      "blockId": "175d1c128f63535ef9511ff83443d55c",
+      "fp64": "7c53e2bf461053fa",
+      "normHash": "0f85b08a08d2017fc9be41eb3f98d1db9afb06224e4b878f06c5094d6fcaf305",
+      "kind": "p",
+      "chapter": "٢١-أفضل-النفقات-النفقة-على-العيال-والأهل-والأقربين",
+      "prev": "33cc35101f3299d541f6373b5ec0c368331184a4786b5139c8de156c47aaa068",
+      "next": "8a53b50932dbad9181cb2c1010fb44652c11f341b7548ee4d2000b5dc2d64af3"
+    },
+    {
+      "ord": 248,
+      "blockId": "e2be2ff9e71299d7c57ee775841ea253",
+      "fp64": "ad75e0531122713c",
+      "normHash": "8a53b50932dbad9181cb2c1010fb44652c11f341b7548ee4d2000b5dc2d64af3",
+      "kind": "p",
+      "chapter": "٢١-أفضل-النفقات-النفقة-على-العيال-والأهل-والأقربين",
+      "prev": "0f85b08a08d2017fc9be41eb3f98d1db9afb06224e4b878f06c5094d6fcaf305",
+      "next": "ab03f44a7004804d37fbfa8a397f37fc5e556ba7ecec32f7a6271870aeb220d3"
+    },
+    {
+      "ord": 249,
+      "blockId": "8b84a982fb7374b4a0b7b9fb248d56dc",
+      "fp64": "d948386057f177d6",
+      "normHash": "ab03f44a7004804d37fbfa8a397f37fc5e556ba7ecec32f7a6271870aeb220d3",
+      "kind": "p",
+      "chapter": "٢١-أفضل-النفقات-النفقة-على-العيال-والأهل-والأقربين",
+      "prev": "8a53b50932dbad9181cb2c1010fb44652c11f341b7548ee4d2000b5dc2d64af3",
+      "next": "fbe3e8d287e8ee688a1af4f098432b4d5d351d6a8e283e6a697d9744ebedf4f3"
+    },
+    {
+      "ord": 250,
+      "blockId": "ceb2226310b1162a73b482523bb7e06c",
+      "fp64": "7dfff3fa5eb16837",
+      "normHash": "fbe3e8d287e8ee688a1af4f098432b4d5d351d6a8e283e6a697d9744ebedf4f3",
+      "kind": "page",
+      "chapter": "٢١-أفضل-النفقات-النفقة-على-العيال-والأهل-والأقربين",
+      "prev": "ab03f44a7004804d37fbfa8a397f37fc5e556ba7ecec32f7a6271870aeb220d3",
+      "next": "88a9d7a043598ef0487020091cb0935a4e27670350221d01a448d6a4ae76c51a"
+    },
+    {
+      "ord": 251,
+      "blockId": "ea6e217e163e5218a79b490526dee78e",
+      "fp64": "51c3e4f3756ccf6a",
+      "normHash": "88a9d7a043598ef0487020091cb0935a4e27670350221d01a448d6a4ae76c51a",
+      "kind": "p",
+      "chapter": "٢١-أفضل-النفقات-النفقة-على-العيال-والأهل-والأقربين",
+      "prev": "fbe3e8d287e8ee688a1af4f098432b4d5d351d6a8e283e6a697d9744ebedf4f3",
+      "next": "b2bc160ce8bd23b7d37033d4e99c01003957c037a20fce0f1b894ecf3472eaea"
+    },
+    {
+      "ord": 252,
+      "blockId": "c327cb419188d559f573db6a42b7913c",
+      "fp64": "b55e66c057c733d6",
+      "normHash": "b2bc160ce8bd23b7d37033d4e99c01003957c037a20fce0f1b894ecf3472eaea",
+      "kind": "p",
+      "chapter": "٢١-أفضل-النفقات-النفقة-على-العيال-والأهل-والأقربين",
+      "prev": "88a9d7a043598ef0487020091cb0935a4e27670350221d01a448d6a4ae76c51a",
+      "next": "b402284536da3dc94a1e3d9137670d4e95bac3b44e5de6dd0bee65dfe2e43217"
+    },
+    {
+      "ord": 253,
+      "blockId": "9bba42cc6f82404fc4d42751378e9ba6",
+      "fp64": "bd84e052988fa52c",
+      "normHash": "b402284536da3dc94a1e3d9137670d4e95bac3b44e5de6dd0bee65dfe2e43217",
+      "kind": "p",
+      "chapter": "٢١-أفضل-النفقات-النفقة-على-العيال-والأهل-والأقربين",
+      "prev": "b2bc160ce8bd23b7d37033d4e99c01003957c037a20fce0f1b894ecf3472eaea",
+      "next": "1286939d2abf63209994e9ab3ca4e51e115979361fc2a76d1d2777154ea9b1aa"
+    },
+    {
+      "ord": 254,
+      "blockId": "3c74b39826e4a5cc7718f2aeaba6b755",
+      "fp64": "df7d68621454dc8e",
+      "normHash": "1286939d2abf63209994e9ab3ca4e51e115979361fc2a76d1d2777154ea9b1aa",
+      "kind": "p",
+      "chapter": "٢١-أفضل-النفقات-النفقة-على-العيال-والأهل-والأقربين",
+      "prev": "b402284536da3dc94a1e3d9137670d4e95bac3b44e5de6dd0bee65dfe2e43217",
+      "next": "6b95c88c96ea7a8a46e81c5a4dc2fed4eb6272e14d9bcd67068c76922b2b6a37"
+    },
+    {
+      "ord": 255,
+      "blockId": "3b497605ae36dc8e8c7702b38141ac50",
+      "fp64": "35dfffbfdb3b61be",
+      "normHash": "6b95c88c96ea7a8a46e81c5a4dc2fed4eb6272e14d9bcd67068c76922b2b6a37",
+      "kind": "page",
+      "chapter": "٢١-أفضل-النفقات-النفقة-على-العيال-والأهل-والأقربين",
+      "prev": "1286939d2abf63209994e9ab3ca4e51e115979361fc2a76d1d2777154ea9b1aa"
+    }
+  ]
+}

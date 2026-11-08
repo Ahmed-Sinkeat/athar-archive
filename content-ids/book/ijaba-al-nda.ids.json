@@ -1,0 +1,3665 @@
+{
+  "schema": 1,
+  "generation": 1,
+  "sourceHash": "92c9c43c31ac41a40dbcc4de9147b2ce32c573641717265962f0b967bea7b601",
+  "ids": [
+    {
+      "ord": 0,
+      "blockId": "7de66bf3711dbb5729bedf7f3d45d5e2",
+      "fp64": "c33eddf6286f3c6f",
+      "normHash": "26a40dc7eb12b02857dce961c7829a537215a86810ba324c248afb555f39ea94",
+      "kind": "p",
+      "chapter": "main",
+      "next": "baacc1ce18f7797b45ed090f8f1d771721cd4669004c8281aed9b96189dd798f"
+    },
+    {
+      "ord": 1,
+      "blockId": "20aaa749b5c257af1a196223bb23aaed",
+      "fp64": "a2589e0557db70a7",
+      "normHash": "baacc1ce18f7797b45ed090f8f1d771721cd4669004c8281aed9b96189dd798f",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "26a40dc7eb12b02857dce961c7829a537215a86810ba324c248afb555f39ea94",
+      "next": "f5c92b51cfc0ef5c80e7d3bcb7a7399f213e3abf468e7f06a2551f6be5d7e5f3"
+    },
+    {
+      "ord": 2,
+      "blockId": "3665cfbdc9e09202add9c1cc17e2bd46",
+      "fp64": "d9f7fd7fd3e7fc77",
+      "normHash": "f5c92b51cfc0ef5c80e7d3bcb7a7399f213e3abf468e7f06a2551f6be5d7e5f3",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "baacc1ce18f7797b45ed090f8f1d771721cd4669004c8281aed9b96189dd798f",
+      "next": "1755600b9ce652f0aec99354fbd00dc1a7e373871d30eaf4eb8d6dffd57a9a4c"
+    },
+    {
+      "ord": 3,
+      "blockId": "e151bd49b3e5baaecb798a52fb516eae",
+      "fp64": "fe7eb96dfbebf385",
+      "normHash": "1755600b9ce652f0aec99354fbd00dc1a7e373871d30eaf4eb8d6dffd57a9a4c",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "f5c92b51cfc0ef5c80e7d3bcb7a7399f213e3abf468e7f06a2551f6be5d7e5f3",
+      "next": "0ef9643777863c147417ae1efca0d592402b4ca0e31e910ff03ccab60d1b3edc"
+    },
+    {
+      "ord": 4,
+      "blockId": "91f4290a923d67162c719d80fa37f55a",
+      "fp64": "fb736fbbb294fdfe",
+      "normHash": "0ef9643777863c147417ae1efca0d592402b4ca0e31e910ff03ccab60d1b3edc",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "1755600b9ce652f0aec99354fbd00dc1a7e373871d30eaf4eb8d6dffd57a9a4c",
+      "next": "46857411142f688ab81d9fc54ebcbec1d2ff02ec257c2c424e7e4f3ad2400e40"
+    },
+    {
+      "ord": 5,
+      "blockId": "f08449e76f280dedf923dbca48728755",
+      "fp64": "baeccdc0fffffbe3",
+      "normHash": "46857411142f688ab81d9fc54ebcbec1d2ff02ec257c2c424e7e4f3ad2400e40",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "0ef9643777863c147417ae1efca0d592402b4ca0e31e910ff03ccab60d1b3edc",
+      "next": "e902b312f994195456e69daf235d69f852105f460891ea49d4681c93eae4a26d"
+    },
+    {
+      "ord": 6,
+      "blockId": "50577fc1d2e48ad362f8c360d0407808",
+      "fp64": "b5ee38dbd3ffdee3",
+      "normHash": "e902b312f994195456e69daf235d69f852105f460891ea49d4681c93eae4a26d",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "46857411142f688ab81d9fc54ebcbec1d2ff02ec257c2c424e7e4f3ad2400e40",
+      "next": "66e14f980297ea03c3e77c35d443422460d8c138717e351be4d48b59af1fd24c"
+    },
+    {
+      "ord": 7,
+      "blockId": "84d228c2f262851b536cc9959975ab39",
+      "fp64": "eb9621a4b6f010f2",
+      "normHash": "66e14f980297ea03c3e77c35d443422460d8c138717e351be4d48b59af1fd24c",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "e902b312f994195456e69daf235d69f852105f460891ea49d4681c93eae4a26d",
+      "next": "5b97ccfe0b2218775e5ac19fc838d4aacb9fa83a4ca0970b414faec921df57bf"
+    },
+    {
+      "ord": 8,
+      "blockId": "bfd690059a2b9f70d410972081dbe119",
+      "fp64": "3017e25a3793e4ec",
+      "normHash": "5b97ccfe0b2218775e5ac19fc838d4aacb9fa83a4ca0970b414faec921df57bf",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "66e14f980297ea03c3e77c35d443422460d8c138717e351be4d48b59af1fd24c",
+      "next": "60827fc6b2fe55a354315359e81e37b1f9bd25b22682f050eb8e627fb183897c"
+    },
+    {
+      "ord": 9,
+      "blockId": "2751deb4dbde67597234587e47cd22c8",
+      "fp64": "e1320d1667a6fa70",
+      "normHash": "60827fc6b2fe55a354315359e81e37b1f9bd25b22682f050eb8e627fb183897c",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "5b97ccfe0b2218775e5ac19fc838d4aacb9fa83a4ca0970b414faec921df57bf",
+      "next": "9188f256ba223b9637a6bca1894c8bda769d4a2177a25f5c18dfb50703f508f1"
+    },
+    {
+      "ord": 10,
+      "blockId": "f958e8e54353b8bcd50b599f1dbeb85b",
+      "fp64": "e5fff7ff7bb3e67f",
+      "normHash": "9188f256ba223b9637a6bca1894c8bda769d4a2177a25f5c18dfb50703f508f1",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "60827fc6b2fe55a354315359e81e37b1f9bd25b22682f050eb8e627fb183897c",
+      "next": "66e14f980297ea03c3e77c35d443422460d8c138717e351be4d48b59af1fd24c"
+    },
+    {
+      "ord": 11,
+      "blockId": "4d9f1bdd170d4faa229ed15669a5bc0f",
+      "fp64": "eb9621a4b6f010f2",
+      "normHash": "66e14f980297ea03c3e77c35d443422460d8c138717e351be4d48b59af1fd24c",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "9188f256ba223b9637a6bca1894c8bda769d4a2177a25f5c18dfb50703f508f1",
+      "next": "2faeea109072ecd45655335c776d16dff7854c5c40d4f54df97cecc239736a86"
+    },
+    {
+      "ord": 12,
+      "blockId": "77bc4dfb3ba6f3c0f5be9d2095f413f2",
+      "fp64": "bdf5f8179ffc71fe",
+      "normHash": "2faeea109072ecd45655335c776d16dff7854c5c40d4f54df97cecc239736a86",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "66e14f980297ea03c3e77c35d443422460d8c138717e351be4d48b59af1fd24c",
+      "next": "87244162e5782551dc197fbe24653a781931217672c5690c915fdf78e33467b5"
+    },
+    {
+      "ord": 13,
+      "blockId": "6c943fe046c83b311fc18e1d2022d536",
+      "fp64": "7156eefe3935fc63",
+      "normHash": "87244162e5782551dc197fbe24653a781931217672c5690c915fdf78e33467b5",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "2faeea109072ecd45655335c776d16dff7854c5c40d4f54df97cecc239736a86",
+      "next": "aa885c9e219e640ef6cdccda867fe3d4b0eec8ac4da610a82158140113d98254"
+    },
+    {
+      "ord": 14,
+      "blockId": "d5b37c4b4ddce440060803bf69e4a675",
+      "fp64": "ed7c60928737f84c",
+      "normHash": "aa885c9e219e640ef6cdccda867fe3d4b0eec8ac4da610a82158140113d98254",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "87244162e5782551dc197fbe24653a781931217672c5690c915fdf78e33467b5",
+      "next": "944cae9c6da623a0c39c2ea528e711c6e0a725bcec217fce1851f6d288536cca"
+    },
+    {
+      "ord": 15,
+      "blockId": "6cfe6143ac1635723617a271a8b3a2cc",
+      "fp64": "118ccef8aa5cb4fc",
+      "normHash": "944cae9c6da623a0c39c2ea528e711c6e0a725bcec217fce1851f6d288536cca",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "aa885c9e219e640ef6cdccda867fe3d4b0eec8ac4da610a82158140113d98254",
+      "next": "c752826e27ee4c9d7bf4b96287240837d3965376762696d59faf5924aa6469ec"
+    },
+    {
+      "ord": 16,
+      "blockId": "6d9dd53db7791d9a2070ca5bc1e92bc9",
+      "fp64": "f79c39966ef1f6f4",
+      "normHash": "c752826e27ee4c9d7bf4b96287240837d3965376762696d59faf5924aa6469ec",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "944cae9c6da623a0c39c2ea528e711c6e0a725bcec217fce1851f6d288536cca",
+      "next": "2a6929f18fc320f15e45819019792c0e65ce4027d99b54be0a3cac20271bb445"
+    },
+    {
+      "ord": 17,
+      "blockId": "c5a9c38d9f358e3d11b48994e64325c9",
+      "fp64": "fb6fcb3efa76dcdf",
+      "normHash": "2a6929f18fc320f15e45819019792c0e65ce4027d99b54be0a3cac20271bb445",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "c752826e27ee4c9d7bf4b96287240837d3965376762696d59faf5924aa6469ec",
+      "next": "89aec4b8d77af7581bb0919d51fc1645ff6d5a081f68def636e1bf3310d008bd"
+    },
+    {
+      "ord": 18,
+      "blockId": "e3883cc7d1eccb4773ff800e64b46aaf",
+      "fp64": "14328ff6617d0d97",
+      "normHash": "89aec4b8d77af7581bb0919d51fc1645ff6d5a081f68def636e1bf3310d008bd",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "2a6929f18fc320f15e45819019792c0e65ce4027d99b54be0a3cac20271bb445",
+      "next": "e6579b26b4df68681f4ac9a88a46409db5ad0ce40bcf1ea1ebc00b77615a2865"
+    },
+    {
+      "ord": 19,
+      "blockId": "2c4b016fb445c2799c7a73238f0d08fd",
+      "fp64": "efdfffbe7a7f73f6",
+      "normHash": "e6579b26b4df68681f4ac9a88a46409db5ad0ce40bcf1ea1ebc00b77615a2865",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "89aec4b8d77af7581bb0919d51fc1645ff6d5a081f68def636e1bf3310d008bd",
+      "next": "2faeea109072ecd45655335c776d16dff7854c5c40d4f54df97cecc239736a86"
+    },
+    {
+      "ord": 20,
+      "blockId": "adc59a47b5d9959a31fc3dd07d258820",
+      "fp64": "bdf5f8179ffc71fe",
+      "normHash": "2faeea109072ecd45655335c776d16dff7854c5c40d4f54df97cecc239736a86",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "e6579b26b4df68681f4ac9a88a46409db5ad0ce40bcf1ea1ebc00b77615a2865",
+      "next": "e521f489d4ea1b1e344557f70b833a823e82867c277e340c6a9f43cfa42a6fc7"
+    },
+    {
+      "ord": 21,
+      "blockId": "adf063a00a1b587dd7a6b4075c61afc5",
+      "fp64": "57e5da6b6ba8a367",
+      "normHash": "e521f489d4ea1b1e344557f70b833a823e82867c277e340c6a9f43cfa42a6fc7",
+      "kind": "h2",
+      "chapter": "المقدمة",
+      "prev": "2faeea109072ecd45655335c776d16dff7854c5c40d4f54df97cecc239736a86",
+      "next": "97e553a89d46cbfdab845c6ea713dff7b91a83ba97b8bf414f63b7bf63c41ac2"
+    },
+    {
+      "ord": 22,
+      "blockId": "f2e29c533f3d099bb6bf74c645546750",
+      "fp64": "e883c50c7f74d439",
+      "normHash": "97e553a89d46cbfdab845c6ea713dff7b91a83ba97b8bf414f63b7bf63c41ac2",
+      "kind": "p",
+      "chapter": "المقدمة",
+      "prev": "e521f489d4ea1b1e344557f70b833a823e82867c277e340c6a9f43cfa42a6fc7",
+      "next": "c37168fd0f302dba4656cb11488927da891c9098af508f6bdfa171eb78bafe2e"
+    },
+    {
+      "ord": 23,
+      "blockId": "09d75b2f31c2029c46f028ef0de233c7",
+      "fp64": "4222041898d69528",
+      "normHash": "c37168fd0f302dba4656cb11488927da891c9098af508f6bdfa171eb78bafe2e",
+      "kind": "p",
+      "chapter": "المقدمة",
+      "prev": "97e553a89d46cbfdab845c6ea713dff7b91a83ba97b8bf414f63b7bf63c41ac2",
+      "next": "06a8f27e268bf9f26d0e58d22acf4b9a8244c62507c679844ea581d4bfaaf4b1"
+    },
+    {
+      "ord": 24,
+      "blockId": "0f1cbabf7be3cb79116c63451d68331e",
+      "fp64": "9d3cd8bfdbe2e4f4",
+      "normHash": "06a8f27e268bf9f26d0e58d22acf4b9a8244c62507c679844ea581d4bfaaf4b1",
+      "kind": "p",
+      "chapter": "المقدمة",
+      "prev": "c37168fd0f302dba4656cb11488927da891c9098af508f6bdfa171eb78bafe2e",
+      "next": "d07fc37f9c0e3b1897411e3dbd39e3125dcc3b209de419d2edc7c3170015baa9"
+    },
+    {
+      "ord": 25,
+      "blockId": "62c6401398963785d27f41101ee619e4",
+      "fp64": "ed3b2d1667f7fa74",
+      "normHash": "d07fc37f9c0e3b1897411e3dbd39e3125dcc3b209de419d2edc7c3170015baa9",
+      "kind": "p",
+      "chapter": "المقدمة",
+      "prev": "06a8f27e268bf9f26d0e58d22acf4b9a8244c62507c679844ea581d4bfaaf4b1",
+      "next": "0083810a1ab2ed3b15b2b1f2bdf9883282ab93a44da278a0c2ba7d209836984f"
+    },
+    {
+      "ord": 26,
+      "blockId": "b584fc814e3f5d624bf8d66e9b796d0b",
+      "fp64": "dc1989d6757b8cb7",
+      "normHash": "0083810a1ab2ed3b15b2b1f2bdf9883282ab93a44da278a0c2ba7d209836984f",
+      "kind": "p",
+      "chapter": "المقدمة",
+      "prev": "d07fc37f9c0e3b1897411e3dbd39e3125dcc3b209de419d2edc7c3170015baa9",
+      "next": "f7f4a90c065992e83745e1df65ec3a03003a82253ee90efc20ca08eafdc8dddc"
+    },
+    {
+      "ord": 27,
+      "blockId": "a2ed6ffa9170005544bb81486e9894a1",
+      "fp64": "afdffffadf71677e",
+      "normHash": "f7f4a90c065992e83745e1df65ec3a03003a82253ee90efc20ca08eafdc8dddc",
+      "kind": "page",
+      "chapter": "المقدمة",
+      "prev": "0083810a1ab2ed3b15b2b1f2bdf9883282ab93a44da278a0c2ba7d209836984f",
+      "next": "778522e7bb72544ce2ae92159e7e16ef8d57fd345d73e07b7fc60e1db70fa048"
+    },
+    {
+      "ord": 28,
+      "blockId": "866fc9200714be297a453654d69a0663",
+      "fp64": "f2787e7ba534ffee",
+      "normHash": "778522e7bb72544ce2ae92159e7e16ef8d57fd345d73e07b7fc60e1db70fa048",
+      "kind": "h2",
+      "chapter": "المبحث-الأول-فضائل-النداء",
+      "prev": "f7f4a90c065992e83745e1df65ec3a03003a82253ee90efc20ca08eafdc8dddc",
+      "next": "74cfddf784d9d112c43ca586af95a99d101e55a9d6c41cf6bee9850a84a13b43"
+    },
+    {
+      "ord": 29,
+      "blockId": "3c10efca5cf03c090427f53bf630f364",
+      "fp64": "1fed3c79fd54cebe",
+      "normHash": "74cfddf784d9d112c43ca586af95a99d101e55a9d6c41cf6bee9850a84a13b43",
+      "kind": "p",
+      "chapter": "المبحث-الأول-فضائل-النداء",
+      "prev": "778522e7bb72544ce2ae92159e7e16ef8d57fd345d73e07b7fc60e1db70fa048",
+      "next": "c6b06a04008ebcca1e46d1ed77a4b252e12a7c19c6b29f25ada7b008ff517366"
+    },
+    {
+      "ord": 30,
+      "blockId": "ca63d6175838da46e9913f4cf18f027d",
+      "fp64": "5ccb6477df3ded6e",
+      "normHash": "c6b06a04008ebcca1e46d1ed77a4b252e12a7c19c6b29f25ada7b008ff517366",
+      "kind": "h2",
+      "chapter": "١-المنادي-من-الدعاة-إلى-الله",
+      "prev": "74cfddf784d9d112c43ca586af95a99d101e55a9d6c41cf6bee9850a84a13b43",
+      "next": "791677f4b3a5fe6a8e94d694b974bd755335142330cff0dc768884f84c925b99"
+    },
+    {
+      "ord": 31,
+      "blockId": "664aa8358f6ca5f6a7492264a868c6ba",
+      "fp64": "7c1fd01bbf88e46a",
+      "normHash": "791677f4b3a5fe6a8e94d694b974bd755335142330cff0dc768884f84c925b99",
+      "kind": "p",
+      "chapter": "١-المنادي-من-الدعاة-إلى-الله",
+      "prev": "c6b06a04008ebcca1e46d1ed77a4b252e12a7c19c6b29f25ada7b008ff517366",
+      "next": "47dbdeff10d907fcb9e86565668f184f6375bbe97803d4597428579f626adfb0"
+    },
+    {
+      "ord": 32,
+      "blockId": "d801891260c67e205b47cc5076855622",
+      "fp64": "f75fa1dafefedfeb",
+      "normHash": "47dbdeff10d907fcb9e86565668f184f6375bbe97803d4597428579f626adfb0",
+      "kind": "h2",
+      "chapter": "٢-المؤذنون-أطول-أعناقا-يوم-القيامة",
+      "prev": "791677f4b3a5fe6a8e94d694b974bd755335142330cff0dc768884f84c925b99",
+      "next": "6c2c8f93c4efe4eb7a70c3561d6431e70cf12df1817f5bbc1a64390b829c583d"
+    },
+    {
+      "ord": 33,
+      "blockId": "3ced7576a925cb7dfaa66b4008db8d5d",
+      "fp64": "f477c0173774537e",
+      "normHash": "6c2c8f93c4efe4eb7a70c3561d6431e70cf12df1817f5bbc1a64390b829c583d",
+      "kind": "p",
+      "chapter": "٢-المؤذنون-أطول-أعناقا-يوم-القيامة",
+      "prev": "47dbdeff10d907fcb9e86565668f184f6375bbe97803d4597428579f626adfb0",
+      "next": "e0dad96ecb8f87477aa8496c5005a3512c2a66c180e95e29ff72a29f61797c3e"
+    },
+    {
+      "ord": 34,
+      "blockId": "12d620d06225a7a7aaf23a497fbf67d7",
+      "fp64": "1a30c4baa3d5de06",
+      "normHash": "e0dad96ecb8f87477aa8496c5005a3512c2a66c180e95e29ff72a29f61797c3e",
+      "kind": "h2",
+      "chapter": "٣-يطرد-الشيطان",
+      "prev": "6c2c8f93c4efe4eb7a70c3561d6431e70cf12df1817f5bbc1a64390b829c583d",
+      "next": "73b066b3815df629d2947fbd755f6b8a6df5ea67b4a3f8c6a38b7536cbe22a6e"
+    },
+    {
+      "ord": 35,
+      "blockId": "259b876dc80a7f4a56451b984fa299e8",
+      "fp64": "4c9ac08cd177703f",
+      "normHash": "73b066b3815df629d2947fbd755f6b8a6df5ea67b4a3f8c6a38b7536cbe22a6e",
+      "kind": "p",
+      "chapter": "٣-يطرد-الشيطان",
+      "prev": "e0dad96ecb8f87477aa8496c5005a3512c2a66c180e95e29ff72a29f61797c3e",
+      "next": "0b7df3ce5a62a9fd152ccadd9144b58de9b73379b6e6b9862121bb6eeb6885a3"
+    },
+    {
+      "ord": 36,
+      "blockId": "b63715b091b2a5431b8e22ca8d45268f",
+      "fp64": "d1e8e4da85766dd0",
+      "normHash": "0b7df3ce5a62a9fd152ccadd9144b58de9b73379b6e6b9862121bb6eeb6885a3",
+      "kind": "p",
+      "chapter": "٣-يطرد-الشيطان",
+      "prev": "73b066b3815df629d2947fbd755f6b8a6df5ea67b4a3f8c6a38b7536cbe22a6e",
+      "next": "21edae1669eb9b20cadd95e2a056b85940569f6bae24651462d9e45a91f61291"
+    },
+    {
+      "ord": 37,
+      "blockId": "6d46c533bfd5c1fd1baefa31c6ca24b9",
+      "fp64": "e7dfffde7f77627f",
+      "normHash": "21edae1669eb9b20cadd95e2a056b85940569f6bae24651462d9e45a91f61291",
+      "kind": "page",
+      "chapter": "٣-يطرد-الشيطان",
+      "prev": "0b7df3ce5a62a9fd152ccadd9144b58de9b73379b6e6b9862121bb6eeb6885a3",
+      "next": "020ce82a659118426a5b5210c60c2101beed796cb4e96551b497bdc8d3aae743"
+    },
+    {
+      "ord": 38,
+      "blockId": "31414e20dba436a6ceeb620288b0fc6b",
+      "fp64": "41c4cc41d167d832",
+      "normHash": "020ce82a659118426a5b5210c60c2101beed796cb4e96551b497bdc8d3aae743",
+      "kind": "p",
+      "chapter": "٣-يطرد-الشيطان",
+      "prev": "21edae1669eb9b20cadd95e2a056b85940569f6bae24651462d9e45a91f61291",
+      "next": "58e0b18f8c28efffa13913ae841e0d602f1efe72a24c3f94fcf9d2884a062178"
+    },
+    {
+      "ord": 39,
+      "blockId": "e77696b6a45fa6dbc534373d1973ab94",
+      "fp64": "ce0c5c1601555d96",
+      "normHash": "58e0b18f8c28efffa13913ae841e0d602f1efe72a24c3f94fcf9d2884a062178",
+      "kind": "h2",
+      "chapter": "٤-لو-يعلم-الناس-ما-في-النداء-لاستهموا-عليه",
+      "prev": "020ce82a659118426a5b5210c60c2101beed796cb4e96551b497bdc8d3aae743",
+      "next": "42fea9f9a54d932bd2dbe9ff141e4f9f5fc3040c4d5add65f46af2ea3bb575d4"
+    },
+    {
+      "ord": 40,
+      "blockId": "6115a8f1495307d7d08aaf6ea127090c",
+      "fp64": "b414e01f17545cfa",
+      "normHash": "42fea9f9a54d932bd2dbe9ff141e4f9f5fc3040c4d5add65f46af2ea3bb575d4",
+      "kind": "p",
+      "chapter": "٤-لو-يعلم-الناس-ما-في-النداء-لاستهموا-عليه",
+      "prev": "58e0b18f8c28efffa13913ae841e0d602f1efe72a24c3f94fcf9d2884a062178",
+      "next": "d2ef2529dd545310a58c66df61fed6926258ba9e6db5a0c4e9a49fefd563e3c7"
+    },
+    {
+      "ord": 41,
+      "blockId": "6f58e0d30613f64c7f2643acf88d4ede",
+      "fp64": "c5d8e14a41379855",
+      "normHash": "d2ef2529dd545310a58c66df61fed6926258ba9e6db5a0c4e9a49fefd563e3c7",
+      "kind": "h2",
+      "chapter": "٥-لا-يسمع-صوت-المؤذن-شيء-إلا-شهد-له",
+      "prev": "42fea9f9a54d932bd2dbe9ff141e4f9f5fc3040c4d5add65f46af2ea3bb575d4",
+      "next": "4bdf42fd98f81bf53694eb7aae34d17ba78a800d635b7a4dfae78558865de170"
+    },
+    {
+      "ord": 42,
+      "blockId": "0c48eda33556124e4efd4de3bb6f7802",
+      "fp64": "44508056177670f9",
+      "normHash": "4bdf42fd98f81bf53694eb7aae34d17ba78a800d635b7a4dfae78558865de170",
+      "kind": "p",
+      "chapter": "٥-لا-يسمع-صوت-المؤذن-شيء-إلا-شهد-له",
+      "prev": "d2ef2529dd545310a58c66df61fed6926258ba9e6db5a0c4e9a49fefd563e3c7",
+      "next": "e950198a73e9445d91b8979899010cbf87e336e12a73cb17caae482f2993e04b"
+    },
+    {
+      "ord": 43,
+      "blockId": "d2121e8d8b7907fb538b9c7863f6a49d",
+      "fp64": "0400ce79156a5b72",
+      "normHash": "e950198a73e9445d91b8979899010cbf87e336e12a73cb17caae482f2993e04b",
+      "kind": "h2",
+      "chapter": "٦-يغفر-للمؤذن-مدى-صوته-وله-مثل-أجر-من-صلى-معه",
+      "prev": "4bdf42fd98f81bf53694eb7aae34d17ba78a800d635b7a4dfae78558865de170",
+      "next": "fefa19984019a413a062bd503f5d63fe8c3ba6604d054f0bbebf85aa374cfe1f"
+    },
+    {
+      "ord": 44,
+      "blockId": "b82ee4dbb9a30d90ecc66839f394003b",
+      "fp64": "6485c85b1d60797e",
+      "normHash": "fefa19984019a413a062bd503f5d63fe8c3ba6604d054f0bbebf85aa374cfe1f",
+      "kind": "p",
+      "chapter": "٦-يغفر-للمؤذن-مدى-صوته-وله-مثل-أجر-من-صلى-معه",
+      "prev": "e950198a73e9445d91b8979899010cbf87e336e12a73cb17caae482f2993e04b",
+      "next": "1a145126b873462ce2dd91820173570f9277b389ecec12f97239e97a1121a464"
+    },
+    {
+      "ord": 45,
+      "blockId": "b7c382386341aae7285b06cc02b6c830",
+      "fp64": "8d796442157dd452",
+      "normHash": "1a145126b873462ce2dd91820173570f9277b389ecec12f97239e97a1121a464",
+      "kind": "p",
+      "chapter": "٦-يغفر-للمؤذن-مدى-صوته-وله-مثل-أجر-من-صلى-معه",
+      "prev": "fefa19984019a413a062bd503f5d63fe8c3ba6604d054f0bbebf85aa374cfe1f",
+      "next": "73d73406bc46cc7186ec804fdfa1a05041b9f7d03ceeca214755823ab8479412"
+    },
+    {
+      "ord": 46,
+      "blockId": "62fd672f0a65e3ac044b7652c3c8081e",
+      "fp64": "2fdffbfb7f336dff",
+      "normHash": "73d73406bc46cc7186ec804fdfa1a05041b9f7d03ceeca214755823ab8479412",
+      "kind": "page",
+      "chapter": "٦-يغفر-للمؤذن-مدى-صوته-وله-مثل-أجر-من-صلى-معه",
+      "prev": "1a145126b873462ce2dd91820173570f9277b389ecec12f97239e97a1121a464",
+      "next": "3f3f51b155e89ddcb9c0e5109b433327c2a61edf4b9a432923ffdb0797d7ef0b"
+    },
+    {
+      "ord": 47,
+      "blockId": "a1019aefe8007ca2972abd4eb8ede275",
+      "fp64": "afbbf9ce74bc7d49",
+      "normHash": "3f3f51b155e89ddcb9c0e5109b433327c2a61edf4b9a432923ffdb0797d7ef0b",
+      "kind": "h2",
+      "chapter": "٧-دعاء-النبي-له-بالمغفرة",
+      "prev": "73d73406bc46cc7186ec804fdfa1a05041b9f7d03ceeca214755823ab8479412",
+      "next": "a4adb975c15e0c79b15dbb15a805de3fffe57ae399d36da5fe587541ce6486bc"
+    },
+    {
+      "ord": 48,
+      "blockId": "9f2ea5823a5054b5a1078e3c1315e13d",
+      "fp64": "7c71e01237dc5bf8",
+      "normHash": "a4adb975c15e0c79b15dbb15a805de3fffe57ae399d36da5fe587541ce6486bc",
+      "kind": "p",
+      "chapter": "٧-دعاء-النبي-له-بالمغفرة",
+      "prev": "3f3f51b155e89ddcb9c0e5109b433327c2a61edf4b9a432923ffdb0797d7ef0b",
+      "next": "0a86e14466780d3a5135752c5d32df822bd2e08465e4f75217c3bcb859b37cdc"
+    },
+    {
+      "ord": 49,
+      "blockId": "d788f608cbaedeb62f3963b16de9a88f",
+      "fp64": "d46a9ccfb4d3ce99",
+      "normHash": "0a86e14466780d3a5135752c5d32df822bd2e08465e4f75217c3bcb859b37cdc",
+      "kind": "h2",
+      "chapter": "٨-الأذان-تغفر-به-الذنوب-ويدخل-الجنة",
+      "prev": "a4adb975c15e0c79b15dbb15a805de3fffe57ae399d36da5fe587541ce6486bc",
+      "next": "ab3301c1f050076679382a4cae9ab616680056413a1fff2972df59861adf21a6"
+    },
+    {
+      "ord": 50,
+      "blockId": "0e5c21ae1204832e9eaf0430174f03a8",
+      "fp64": "b4d6c8561f64f77c",
+      "normHash": "ab3301c1f050076679382a4cae9ab616680056413a1fff2972df59861adf21a6",
+      "kind": "p",
+      "chapter": "٨-الأذان-تغفر-به-الذنوب-ويدخل-الجنة",
+      "prev": "0a86e14466780d3a5135752c5d32df822bd2e08465e4f75217c3bcb859b37cdc",
+      "next": "2ee4cedb6065a8745a93c59eea83b0fe0a301f8fa513e07e976c5ba72fab392c"
+    },
+    {
+      "ord": 51,
+      "blockId": "d88d86b6690fda27b77362d8a45a8b1a",
+      "fp64": "ddc92452d5650e12",
+      "normHash": "2ee4cedb6065a8745a93c59eea83b0fe0a301f8fa513e07e976c5ba72fab392c",
+      "kind": "p",
+      "chapter": "٨-الأذان-تغفر-به-الذنوب-ويدخل-الجنة",
+      "prev": "ab3301c1f050076679382a4cae9ab616680056413a1fff2972df59861adf21a6",
+      "next": "b64d47bb52ce2df883d5e65a897cdbda8fb31df41781ec406a8f4c6d951ae1b5"
+    },
+    {
+      "ord": 52,
+      "blockId": "7a7ec85228cff2b5ff43b9c06ac10743",
+      "fp64": "b7dfffff5bf1f6f7",
+      "normHash": "b64d47bb52ce2df883d5e65a897cdbda8fb31df41781ec406a8f4c6d951ae1b5",
+      "kind": "page",
+      "chapter": "٨-الأذان-تغفر-به-الذنوب-ويدخل-الجنة",
+      "prev": "2ee4cedb6065a8745a93c59eea83b0fe0a301f8fa513e07e976c5ba72fab392c",
+      "next": "419886dfe23b174a73d0558070a11d6c9f71109b9f03a91f1a9320368e788646"
+    },
+    {
+      "ord": 53,
+      "blockId": "39937b80b46ae111aff9ad4f890351e4",
+      "fp64": "cad860460de7f40c",
+      "normHash": "419886dfe23b174a73d0558070a11d6c9f71109b9f03a91f1a9320368e788646",
+      "kind": "h2",
+      "chapter": "٩-من-أذن-اثنتي-عشرة-سنة-وجبت-له-الجنة",
+      "prev": "b64d47bb52ce2df883d5e65a897cdbda8fb31df41781ec406a8f4c6d951ae1b5",
+      "next": "56a53ae442d1df8b7325dfb03e4d30d94b19b3c4898dae1ba67c392c33f77b8a"
+    },
+    {
+      "ord": 54,
+      "blockId": "195b4b582c2260bc1b63dedee35475ae",
+      "fp64": "9efda05735647274",
+      "normHash": "56a53ae442d1df8b7325dfb03e4d30d94b19b3c4898dae1ba67c392c33f77b8a",
+      "kind": "p",
+      "chapter": "٩-من-أذن-اثنتي-عشرة-سنة-وجبت-له-الجنة",
+      "prev": "419886dfe23b174a73d0558070a11d6c9f71109b9f03a91f1a9320368e788646",
+      "next": "5ed3d3f4f716e6005530126ce4d7cf4c75ff75e31e436843ae5bb6b1bac60939"
+    },
+    {
+      "ord": 55,
+      "blockId": "993808a3176a1ab85cf7673ac08b12db",
+      "fp64": "b27ce106151e72ff",
+      "normHash": "5ed3d3f4f716e6005530126ce4d7cf4c75ff75e31e436843ae5bb6b1bac60939",
+      "kind": "h2",
+      "chapter": "١٠-المؤذن-خيار-عباد-الله",
+      "prev": "56a53ae442d1df8b7325dfb03e4d30d94b19b3c4898dae1ba67c392c33f77b8a",
+      "next": "2ed4864a510a3977e47282926775d81d20b2130793c2e120d8fde479a4da525a"
+    },
+    {
+      "ord": 56,
+      "blockId": "e79d7cab4c09e9caa72caf8ec29acc57",
+      "fp64": "b456f03e3e9c7efa",
+      "normHash": "2ed4864a510a3977e47282926775d81d20b2130793c2e120d8fde479a4da525a",
+      "kind": "p",
+      "chapter": "١٠-المؤذن-خيار-عباد-الله",
+      "prev": "5ed3d3f4f716e6005530126ce4d7cf4c75ff75e31e436843ae5bb6b1bac60939",
+      "next": "3f9edbf493f2b269e2ad2eb33a689b2ea80564cb97fa4525db0ae0f3a1d8a97e"
+    },
+    {
+      "ord": 57,
+      "blockId": "0d2817c27bb419475e4c4c7319f63f27",
+      "fp64": "b70fe51c1def4b5f",
+      "normHash": "3f9edbf493f2b269e2ad2eb33a689b2ea80564cb97fa4525db0ae0f3a1d8a97e",
+      "kind": "h2",
+      "chapter": "١١-المؤذن-إذا-أذن-وأقام-صلى-خلفه-من-جنود-الله",
+      "prev": "2ed4864a510a3977e47282926775d81d20b2130793c2e120d8fde479a4da525a",
+      "next": "32363370368777b8cc0281d0017f4d668230b5b2e492d9905cc0153ba94a975d"
+    },
+    {
+      "ord": 58,
+      "blockId": "31f549486b51d8c331a85337a4553280",
+      "fp64": "b442c0587d765b3e",
+      "normHash": "32363370368777b8cc0281d0017f4d668230b5b2e492d9905cc0153ba94a975d",
+      "kind": "p",
+      "chapter": "١١-المؤذن-إذا-أذن-وأقام-صلى-خلفه-من-جنود-الله",
+      "prev": "3f9edbf493f2b269e2ad2eb33a689b2ea80564cb97fa4525db0ae0f3a1d8a97e",
+      "next": "a4dcbe730853756cd9a4710816afdd5598113a191b176654de7e94ec804c1cae"
+    },
+    {
+      "ord": 59,
+      "blockId": "5206134d5f039e149999b66563dfc171",
+      "fp64": "5b4d24d175651e92",
+      "normHash": "a4dcbe730853756cd9a4710816afdd5598113a191b176654de7e94ec804c1cae",
+      "kind": "p",
+      "chapter": "١١-المؤذن-إذا-أذن-وأقام-صلى-خلفه-من-جنود-الله",
+      "prev": "32363370368777b8cc0281d0017f4d668230b5b2e492d9905cc0153ba94a975d",
+      "next": "fa6f2f2d2ec70b9fd6cba78ecf50308b0b0c23a51f49f40d301067bd8d109e52"
+    },
+    {
+      "ord": 60,
+      "blockId": "80528eb1faaa62f1b22a3bf98af80a38",
+      "fp64": "afdffffedb79627f",
+      "normHash": "fa6f2f2d2ec70b9fd6cba78ecf50308b0b0c23a51f49f40d301067bd8d109e52",
+      "kind": "page",
+      "chapter": "١١-المؤذن-إذا-أذن-وأقام-صلى-خلفه-من-جنود-الله",
+      "prev": "a4dcbe730853756cd9a4710816afdd5598113a191b176654de7e94ec804c1cae",
+      "next": "604fc166824fc057f23e0433a287fbb55e31855273b1e856e23a58b17e106a95"
+    },
+    {
+      "ord": 61,
+      "blockId": "0d0c33ecc8d0612cdcf5824b840962aa",
+      "fp64": "71e128ca75aecbf2",
+      "normHash": "604fc166824fc057f23e0433a287fbb55e31855273b1e856e23a58b17e106a95",
+      "kind": "p",
+      "chapter": "١١-المؤذن-إذا-أذن-وأقام-صلى-خلفه-من-جنود-الله",
+      "prev": "fa6f2f2d2ec70b9fd6cba78ecf50308b0b0c23a51f49f40d301067bd8d109e52",
+      "next": "b8205b1fe445caebeba19495d9a7166a573aa6374ba366a61ac8c15669bab793"
+    },
+    {
+      "ord": 62,
+      "blockId": "58e6fdec42f929afa0839cad35d77d12",
+      "fp64": "59e8305255441eb2",
+      "normHash": "b8205b1fe445caebeba19495d9a7166a573aa6374ba366a61ac8c15669bab793",
+      "kind": "p",
+      "chapter": "١١-المؤذن-إذا-أذن-وأقام-صلى-خلفه-من-جنود-الله",
+      "prev": "604fc166824fc057f23e0433a287fbb55e31855273b1e856e23a58b17e106a95",
+      "next": "4e69f1fe679aed73a4f2002d7955a7415fb3e959647a1fb7d8b8e8215f935244"
+    },
+    {
+      "ord": 63,
+      "blockId": "54f44588591881dc53cd3a9e35109029",
+      "fp64": "77fff3df7a73623e",
+      "normHash": "4e69f1fe679aed73a4f2002d7955a7415fb3e959647a1fb7d8b8e8215f935244",
+      "kind": "page",
+      "chapter": "١١-المؤذن-إذا-أذن-وأقام-صلى-خلفه-من-جنود-الله",
+      "prev": "b8205b1fe445caebeba19495d9a7166a573aa6374ba366a61ac8c15669bab793",
+      "next": "148e5f01476b30dad3047b3d3ac87726376023c68563862d65055abdfa82a990"
+    },
+    {
+      "ord": 64,
+      "blockId": "cb03f989446f19c4fb935a19a71f9c56",
+      "fp64": "e27168b9a3007db6",
+      "normHash": "148e5f01476b30dad3047b3d3ac87726376023c68563862d65055abdfa82a990",
+      "kind": "h2",
+      "chapter": "المبحث-الثاني-أنواع-إجابة-النداء",
+      "prev": "4e69f1fe679aed73a4f2002d7955a7415fb3e959647a1fb7d8b8e8215f935244",
+      "next": "63ca841ab2bd48587242e6dee6522ba5605f0c3faf03cd630307e9b999022bf8"
+    },
+    {
+      "ord": 65,
+      "blockId": "02daed16531ebbea907cad9194438570",
+      "fp64": "e444a05e11684b7a",
+      "normHash": "63ca841ab2bd48587242e6dee6522ba5605f0c3faf03cd630307e9b999022bf8",
+      "kind": "p",
+      "chapter": "المبحث-الثاني-أنواع-إجابة-النداء",
+      "prev": "148e5f01476b30dad3047b3d3ac87726376023c68563862d65055abdfa82a990",
+      "next": "8cf5af505521bf69e4de1c6f56b8b0a5cc623aac76c4288afeec8f9f496eb569"
+    },
+    {
+      "ord": 66,
+      "blockId": "2a95a6ff8d70a6bc0c43c2749ee897bb",
+      "fp64": "c65b765d9373d7b6",
+      "normHash": "8cf5af505521bf69e4de1c6f56b8b0a5cc623aac76c4288afeec8f9f496eb569",
+      "kind": "h2",
+      "chapter": "النوع-الأول-يقول-السامع-مثل-ما-يقول-المؤذن",
+      "prev": "63ca841ab2bd48587242e6dee6522ba5605f0c3faf03cd630307e9b999022bf8",
+      "next": "a75dbf92cc1944891d89636b1e8717a445fa5d66690f20d952a93b3c699ab0bb"
+    },
+    {
+      "ord": 67,
+      "blockId": "2253e51eeeef133c835a6dd955318990",
+      "fp64": "e440e05a31465b7e",
+      "normHash": "a75dbf92cc1944891d89636b1e8717a445fa5d66690f20d952a93b3c699ab0bb",
+      "kind": "p",
+      "chapter": "النوع-الأول-يقول-السامع-مثل-ما-يقول-المؤذن",
+      "prev": "8cf5af505521bf69e4de1c6f56b8b0a5cc623aac76c4288afeec8f9f496eb569",
+      "next": "0853d260ce44a80d0aae29d062e6a83031f19d904f4a9a731958325533d65782"
+    },
+    {
+      "ord": 68,
+      "blockId": "27ba76d29c15ae2ecb9aab71815b4a43",
+      "fp64": "7450e01e775012fa",
+      "normHash": "0853d260ce44a80d0aae29d062e6a83031f19d904f4a9a731958325533d65782",
+      "kind": "p",
+      "chapter": "النوع-الأول-يقول-السامع-مثل-ما-يقول-المؤذن",
+      "prev": "a75dbf92cc1944891d89636b1e8717a445fa5d66690f20d952a93b3c699ab0bb",
+      "next": "13f37169d1953ef16b1b4b5cea3892ee24bfc21bf650a4367abffaa6a94c18f8"
+    },
+    {
+      "ord": 69,
+      "blockId": "fcf978c5dabdfb1e46075a662c6bdf62",
+      "fp64": "9f59e016153e55de",
+      "normHash": "13f37169d1953ef16b1b4b5cea3892ee24bfc21bf650a4367abffaa6a94c18f8",
+      "kind": "p",
+      "chapter": "النوع-الأول-يقول-السامع-مثل-ما-يقول-المؤذن",
+      "prev": "0853d260ce44a80d0aae29d062e6a83031f19d904f4a9a731958325533d65782",
+      "next": "fe150be8995764fb9222c74a2e8f48710a6c0e04b0832c95ac9ae993299ca637"
+    },
+    {
+      "ord": 70,
+      "blockId": "2ed77ea21e14286e7bbe5e494555c5ca",
+      "fp64": "25ffffde7f3f783f",
+      "normHash": "fe150be8995764fb9222c74a2e8f48710a6c0e04b0832c95ac9ae993299ca637",
+      "kind": "page",
+      "chapter": "النوع-الأول-يقول-السامع-مثل-ما-يقول-المؤذن",
+      "prev": "13f37169d1953ef16b1b4b5cea3892ee24bfc21bf650a4367abffaa6a94c18f8",
+      "next": "6f8628f28e8d6d4c372d0fdac0ae4d598da18814535342332a56afdaa53e1760"
+    },
+    {
+      "ord": 71,
+      "blockId": "3ccedf92ffcf0113797445a84ec5ba77",
+      "fp64": "f444453ed770b378",
+      "normHash": "6f8628f28e8d6d4c372d0fdac0ae4d598da18814535342332a56afdaa53e1760",
+      "kind": "p",
+      "chapter": "النوع-الأول-يقول-السامع-مثل-ما-يقول-المؤذن",
+      "prev": "fe150be8995764fb9222c74a2e8f48710a6c0e04b0832c95ac9ae993299ca637",
+      "next": "4c3114205bf90cbd6977ee33b0cbc2ca77f52a0f61c03689f2409420f8240273"
+    },
+    {
+      "ord": 72,
+      "blockId": "e3e37e06034d20defcf39bf57c3945f5",
+      "fp64": "6446e15e55549f19",
+      "normHash": "4c3114205bf90cbd6977ee33b0cbc2ca77f52a0f61c03689f2409420f8240273",
+      "kind": "p",
+      "chapter": "النوع-الأول-يقول-السامع-مثل-ما-يقول-المؤذن",
+      "prev": "6f8628f28e8d6d4c372d0fdac0ae4d598da18814535342332a56afdaa53e1760",
+      "next": "a97d2fe66afb221801f1df8ec7c6a7f83de5ddc89a387b3423217749bc29c4e6"
+    },
+    {
+      "ord": 73,
+      "blockId": "5eb64dcd60e50f9b1ed9256136635e71",
+      "fp64": "ae7d3bde3db2ebcb",
+      "normHash": "a97d2fe66afb221801f1df8ec7c6a7f83de5ddc89a387b3423217749bc29c4e6",
+      "kind": "h2",
+      "chapter": "النوع-الثالث-يصلي-على-النبي-بعد-فراغه",
+      "prev": "4c3114205bf90cbd6977ee33b0cbc2ca77f52a0f61c03689f2409420f8240273",
+      "next": "3430a719d0589343cd8fcf2a792ad9f4f3980e37dfd5f1c129a3cd08cc6cf3a5"
+    },
+    {
+      "ord": 74,
+      "blockId": "4ef68e2bd48aed1dae46b305836d78ba",
+      "fp64": "a450e85a1176797e",
+      "normHash": "3430a719d0589343cd8fcf2a792ad9f4f3980e37dfd5f1c129a3cd08cc6cf3a5",
+      "kind": "p",
+      "chapter": "النوع-الثالث-يصلي-على-النبي-بعد-فراغه",
+      "prev": "a97d2fe66afb221801f1df8ec7c6a7f83de5ddc89a387b3423217749bc29c4e6",
+      "next": "657acbe63c242c079154224084235f1c59fa6f0f43b887a269b35fa5b15f2e9e"
+    },
+    {
+      "ord": 75,
+      "blockId": "ef24c03bb7ea05b3a10923cf8f4c32cb",
+      "fp64": "ae7337ca8d32f34b",
+      "normHash": "657acbe63c242c079154224084235f1c59fa6f0f43b887a269b35fa5b15f2e9e",
+      "kind": "h2",
+      "chapter": "النوع-الرابع-يقول-بعد-صلاته-على-النبي",
+      "prev": "3430a719d0589343cd8fcf2a792ad9f4f3980e37dfd5f1c129a3cd08cc6cf3a5",
+      "next": "db68ec659e9dfe130292e6f55bcc4dbb9c4c1a70d892d3f82bf6eeee86968257"
+    },
+    {
+      "ord": 76,
+      "blockId": "5c1d8d253b90f7b8f10c632d7410e97e",
+      "fp64": "876c044bd97a1f8e",
+      "normHash": "db68ec659e9dfe130292e6f55bcc4dbb9c4c1a70d892d3f82bf6eeee86968257",
+      "kind": "li",
+      "chapter": "النوع-الرابع-يقول-بعد-صلاته-على-النبي",
+      "prev": "657acbe63c242c079154224084235f1c59fa6f0f43b887a269b35fa5b15f2e9e",
+      "next": "7249eed312bb39fafea542b0ab6aea675ee315bc79568715794cdd2ba9c4fc0a"
+    },
+    {
+      "ord": 77,
+      "blockId": "9d7acbc0866bcbfd0fbb4730fb8e8177",
+      "fp64": "d4d928045d678dde",
+      "normHash": "7249eed312bb39fafea542b0ab6aea675ee315bc79568715794cdd2ba9c4fc0a",
+      "kind": "p",
+      "chapter": "النوع-الرابع-يقول-بعد-صلاته-على-النبي",
+      "prev": "db68ec659e9dfe130292e6f55bcc4dbb9c4c1a70d892d3f82bf6eeee86968257",
+      "next": "3ac3fae37d9c27a37c8eda6b5620e12928e9e38c82616303a0543fa19a9fc15e"
+    },
+    {
+      "ord": 78,
+      "blockId": "e55d4416a041526cf3e8843f4a8d148b",
+      "fp64": "addff3be5ffd647e",
+      "normHash": "3ac3fae37d9c27a37c8eda6b5620e12928e9e38c82616303a0543fa19a9fc15e",
+      "kind": "page",
+      "chapter": "النوع-الرابع-يقول-بعد-صلاته-على-النبي",
+      "prev": "7249eed312bb39fafea542b0ab6aea675ee315bc79568715794cdd2ba9c4fc0a",
+      "next": "c863d5db2886b5479113b2313bd92a4dd2d58815a0475110a4f33a648cf6daf5"
+    },
+    {
+      "ord": 79,
+      "blockId": "786f1dbe59fee2f739d8c2326bbb0ac8",
+      "fp64": "7043c0dd3514117c",
+      "normHash": "c863d5db2886b5479113b2313bd92a4dd2d58815a0475110a4f33a648cf6daf5",
+      "kind": "li",
+      "chapter": "النوع-الرابع-يقول-بعد-صلاته-على-النبي",
+      "prev": "3ac3fae37d9c27a37c8eda6b5620e12928e9e38c82616303a0543fa19a9fc15e",
+      "next": "e4a1cc622a261703882186b401a508a392f7d21cf78972e2a8085f46868c52e1"
+    },
+    {
+      "ord": 80,
+      "blockId": "d7adec48bd4be3b172460d806b3ff2b1",
+      "fp64": "2d4934b914715201",
+      "normHash": "e4a1cc622a261703882186b401a508a392f7d21cf78972e2a8085f46868c52e1",
+      "kind": "p",
+      "chapter": "النوع-الرابع-يقول-بعد-صلاته-على-النبي",
+      "prev": "c863d5db2886b5479113b2313bd92a4dd2d58815a0475110a4f33a648cf6daf5",
+      "next": "24b2ad92ca92417c1ff8cd614a683635e21df71eda04267804d715290604cf95"
+    },
+    {
+      "ord": 81,
+      "blockId": "1be063523969e32a6b831f6a0993ecf9",
+      "fp64": "ebdd3c4efff2d37d",
+      "normHash": "24b2ad92ca92417c1ff8cd614a683635e21df71eda04267804d715290604cf95",
+      "kind": "h2",
+      "chapter": "النوع-الخامس-يدعو-لنفسه-بعد-ذلك",
+      "prev": "e4a1cc622a261703882186b401a508a392f7d21cf78972e2a8085f46868c52e1",
+      "next": "7513d75a402c014eca90b1f398dd685a10eb3c0eb9853c791dbbacdddfbde874"
+    },
+    {
+      "ord": 82,
+      "blockId": "28de33b57d01e56f27b38afa762e03f7",
+      "fp64": "2c77c1567d607138",
+      "normHash": "7513d75a402c014eca90b1f398dd685a10eb3c0eb9853c791dbbacdddfbde874",
+      "kind": "p",
+      "chapter": "النوع-الخامس-يدعو-لنفسه-بعد-ذلك",
+      "prev": "24b2ad92ca92417c1ff8cd614a683635e21df71eda04267804d715290604cf95",
+      "next": "7f8f41d42f5439138ec0419c992a104f8d05ea2fb973a7f05e568c981e7590c0"
+    },
+    {
+      "ord": 83,
+      "blockId": "b44dc3a342c2a53703fd9b5dd59c2c0d",
+      "fp64": "84742433defdad56",
+      "normHash": "7f8f41d42f5439138ec0419c992a104f8d05ea2fb973a7f05e568c981e7590c0",
+      "kind": "p",
+      "chapter": "النوع-الخامس-يدعو-لنفسه-بعد-ذلك",
+      "prev": "7513d75a402c014eca90b1f398dd685a10eb3c0eb9853c791dbbacdddfbde874",
+      "next": "bfac447422988d2be5858e9fe5a3c8bb52340e487d9d4e9ab252718f5b5e773c"
+    },
+    {
+      "ord": 84,
+      "blockId": "84c99f34d9d1943708771e78d88b4406",
+      "fp64": "1f49307451759c1a",
+      "normHash": "bfac447422988d2be5858e9fe5a3c8bb52340e487d9d4e9ab252718f5b5e773c",
+      "kind": "p",
+      "chapter": "النوع-الخامس-يدعو-لنفسه-بعد-ذلك",
+      "prev": "7f8f41d42f5439138ec0419c992a104f8d05ea2fb973a7f05e568c981e7590c0",
+      "next": "4581d04ab7938e775963f37eee16e60c2f3000bc0c978bbdf46ccb9c9cb67ee5"
+    },
+    {
+      "ord": 85,
+      "blockId": "1a6ccff1d6396dd2975e86b621d27cf3",
+      "fp64": "f7dffbbe7e3be87f",
+      "normHash": "4581d04ab7938e775963f37eee16e60c2f3000bc0c978bbdf46ccb9c9cb67ee5",
+      "kind": "page",
+      "chapter": "النوع-الخامس-يدعو-لنفسه-بعد-ذلك",
+      "prev": "bfac447422988d2be5858e9fe5a3c8bb52340e487d9d4e9ab252718f5b5e773c",
+      "next": "d61abaf2284a1cf1369c88ca437cd5727214634c4eef74b45917b54ee7523ca6"
+    },
+    {
+      "ord": 86,
+      "blockId": "e66202569f2ffe781d563cb137f0913c",
+      "fp64": "523e6d139590d3fe",
+      "normHash": "d61abaf2284a1cf1369c88ca437cd5727214634c4eef74b45917b54ee7523ca6",
+      "kind": "h2",
+      "chapter": "المبحث-الثالث-فضائل-إجابة-المؤذن",
+      "prev": "4581d04ab7938e775963f37eee16e60c2f3000bc0c978bbdf46ccb9c9cb67ee5",
+      "next": "d48152f94f069a06f0e679f71c70a64e8007d3b6dde2aedc8f0ee1785b5c6b62"
+    },
+    {
+      "ord": 87,
+      "blockId": "c0801c28582752d29c39360decb553bb",
+      "fp64": "5e7f6d7dffd0d8fd",
+      "normHash": "d48152f94f069a06f0e679f71c70a64e8007d3b6dde2aedc8f0ee1785b5c6b62",
+      "kind": "p",
+      "chapter": "المبحث-الثالث-فضائل-إجابة-المؤذن",
+      "prev": "d61abaf2284a1cf1369c88ca437cd5727214634c4eef74b45917b54ee7523ca6",
+      "next": "afc7dbfa82c90f7df21a7049c4b3e53b3a86b0786063f814f338f23612553b59"
+    },
+    {
+      "ord": 88,
+      "blockId": "934f2fc9e93b85d355aedc66ab7265d0",
+      "fp64": "1784ab72d56f984b",
+      "normHash": "afc7dbfa82c90f7df21a7049c4b3e53b3a86b0786063f814f338f23612553b59",
+      "kind": "h2",
+      "chapter": "١-مجيب-المؤذن-من-الشهداء-على-الخير",
+      "prev": "d48152f94f069a06f0e679f71c70a64e8007d3b6dde2aedc8f0ee1785b5c6b62",
+      "next": "3bcdd3468b5051cdec8efa43b18b95e9f16d31e5eb7d2b551a395b92df87a2f2"
+    },
+    {
+      "ord": 89,
+      "blockId": "ace68fb660674deeda345e8370b731d6",
+      "fp64": "d4d8817c3175124b",
+      "normHash": "3bcdd3468b5051cdec8efa43b18b95e9f16d31e5eb7d2b551a395b92df87a2f2",
+      "kind": "p",
+      "chapter": "١-مجيب-المؤذن-من-الشهداء-على-الخير",
+      "prev": "afc7dbfa82c90f7df21a7049c4b3e53b3a86b0786063f814f338f23612553b59",
+      "next": "105483a9b29428b0fc3208c252ee9d5aa50ec8be1fb34bd91d727dbe399997b5"
+    },
+    {
+      "ord": 90,
+      "blockId": "1c1ada9f72820d1b9ba01a0fe0a4d355",
+      "fp64": "f4de643e9fef7859",
+      "normHash": "105483a9b29428b0fc3208c252ee9d5aa50ec8be1fb34bd91d727dbe399997b5",
+      "kind": "h2",
+      "chapter": "٢-مجيب-المؤذن-من-قلبه-يدخله-الله-الجنة",
+      "prev": "3bcdd3468b5051cdec8efa43b18b95e9f16d31e5eb7d2b551a395b92df87a2f2",
+      "next": "3c364cbd8c5e1f7f1def15c8281dfbdf112c9e518657ad6c3c468da4c7eea912"
+    },
+    {
+      "ord": 91,
+      "blockId": "6ab12de01c7f9f31bab881930b464d2f",
+      "fp64": "f456e33e9776f17f",
+      "normHash": "3c364cbd8c5e1f7f1def15c8281dfbdf112c9e518657ad6c3c468da4c7eea912",
+      "kind": "p",
+      "chapter": "٢-مجيب-المؤذن-من-قلبه-يدخله-الله-الجنة",
+      "prev": "105483a9b29428b0fc3208c252ee9d5aa50ec8be1fb34bd91d727dbe399997b5",
+      "next": "fe2d7b557242be48a1cbc78fecc797c73fc844b74f5173e03b08c74617a05404"
+    },
+    {
+      "ord": 92,
+      "blockId": "100277e8654073cf5b6e15acba466dbc",
+      "fp64": "f073613316bbcafb",
+      "normHash": "fe2d7b557242be48a1cbc78fecc797c73fc844b74f5173e03b08c74617a05404",
+      "kind": "h2",
+      "chapter": "٣-إجابة-المؤذن-يغفر-الله-بها-الذنوب",
+      "prev": "3c364cbd8c5e1f7f1def15c8281dfbdf112c9e518657ad6c3c468da4c7eea912",
+      "next": "dee18178158ad31cbaf52102f5c7751cafbe7a59d9c67e50d24e28e6da730d1f"
+    },
+    {
+      "ord": 93,
+      "blockId": "762b333024a50e1ca09213ee1916d3d8",
+      "fp64": "a447e15e35449978",
+      "normHash": "dee18178158ad31cbaf52102f5c7751cafbe7a59d9c67e50d24e28e6da730d1f",
+      "kind": "p",
+      "chapter": "٣-إجابة-المؤذن-يغفر-الله-بها-الذنوب",
+      "prev": "fe2d7b557242be48a1cbc78fecc797c73fc844b74f5173e03b08c74617a05404",
+      "next": "c7959357dffbc13f36c84af85c833a1f3165f4c2892e454ad08a938ef028d7cf"
+    },
+    {
+      "ord": 94,
+      "blockId": "384f9ad7ac6b0bc8d8f73543e9805bfc",
+      "fp64": "a752e0521576d9fb",
+      "normHash": "c7959357dffbc13f36c84af85c833a1f3165f4c2892e454ad08a938ef028d7cf",
+      "kind": "h2",
+      "chapter": "٤-من-أجاب-المؤذن-ثم-صلى-على-النبي-صلى-الله-عليه",
+      "prev": "dee18178158ad31cbaf52102f5c7751cafbe7a59d9c67e50d24e28e6da730d1f",
+      "next": "633a3779c82a2aefe85aa6105c0b727da5c6ccb21be273a1b8fe054fbbf1e4c9"
+    },
+    {
+      "ord": 95,
+      "blockId": "4036498040e3380fd30580f6a3e2ce3b",
+      "fp64": "a453e056103051fe",
+      "normHash": "633a3779c82a2aefe85aa6105c0b727da5c6ccb21be273a1b8fe054fbbf1e4c9",
+      "kind": "p",
+      "chapter": "٤-من-أجاب-المؤذن-ثم-صلى-على-النبي-صلى-الله-عليه",
+      "prev": "c7959357dffbc13f36c84af85c833a1f3165f4c2892e454ad08a938ef028d7cf",
+      "next": "f76eb8102c59fa7769292321826b4a3ac59984bce9200aaed7305825e59a66c0"
+    },
+    {
+      "ord": 96,
+      "blockId": "696e75fd93c2b8f4bc5d94f034e7caad",
+      "fp64": "c5e4e4531f3c515c",
+      "normHash": "f76eb8102c59fa7769292321826b4a3ac59984bce9200aaed7305825e59a66c0",
+      "kind": "p",
+      "chapter": "٤-من-أجاب-المؤذن-ثم-صلى-على-النبي-صلى-الله-عليه",
+      "prev": "633a3779c82a2aefe85aa6105c0b727da5c6ccb21be273a1b8fe054fbbf1e4c9",
+      "next": "b1c55232dabc96c325f588670d492ceb8d52c7a1410ec164d2086cb1c5eab015"
+    },
+    {
+      "ord": 97,
+      "blockId": "e3e76bd1fd6f5e65e14db1bbcffd31f0",
+      "fp64": "c4f1a8d11d158453",
+      "normHash": "b1c55232dabc96c325f588670d492ceb8d52c7a1410ec164d2086cb1c5eab015",
+      "kind": "p",
+      "chapter": "٤-من-أجاب-المؤذن-ثم-صلى-على-النبي-صلى-الله-عليه",
+      "prev": "f76eb8102c59fa7769292321826b4a3ac59984bce9200aaed7305825e59a66c0",
+      "next": "e5b0927ac6fbd7b43a3d3a27b287cf13c6902d415a651b612b87486d50f79fa4"
+    },
+    {
+      "ord": 98,
+      "blockId": "37d23f33758a4b820ffc8aee5aca370b",
+      "fp64": "35ffffdf7bf5717f",
+      "normHash": "e5b0927ac6fbd7b43a3d3a27b287cf13c6902d415a651b612b87486d50f79fa4",
+      "kind": "page",
+      "chapter": "٤-من-أجاب-المؤذن-ثم-صلى-على-النبي-صلى-الله-عليه",
+      "prev": "b1c55232dabc96c325f588670d492ceb8d52c7a1410ec164d2086cb1c5eab015",
+      "next": "9c3a01c48a07ddc1c2b230161f3744182b7c26a4fec0ae29872a0bda8e9280da"
+    },
+    {
+      "ord": 99,
+      "blockId": "e72594f6aa50fd4b8eb27fa1ff7e7448",
+      "fp64": "eef3d7abdffc7caf",
+      "normHash": "9c3a01c48a07ddc1c2b230161f3744182b7c26a4fec0ae29872a0bda8e9280da",
+      "kind": "p",
+      "chapter": "٤-من-أجاب-المؤذن-ثم-صلى-على-النبي-صلى-الله-عليه",
+      "prev": "e5b0927ac6fbd7b43a3d3a27b287cf13c6902d415a651b612b87486d50f79fa4",
+      "next": "86bbb1224d91a3a69ea15997a81064a804985ab8429f08b6f9bb665e7f1e96ef"
+    },
+    {
+      "ord": 100,
+      "blockId": "de7ec71e69022a612a7fcf56999f4917",
+      "fp64": "bc514c381d27452d",
+      "normHash": "86bbb1224d91a3a69ea15997a81064a804985ab8429f08b6f9bb665e7f1e96ef",
+      "kind": "h2",
+      "chapter": "٥-من-سأل-الله-تعالى-الوسيلة-للنبي-بعد-الأذان-حلت",
+      "prev": "9c3a01c48a07ddc1c2b230161f3744182b7c26a4fec0ae29872a0bda8e9280da",
+      "next": "952758c599e4aa8b547f5f25b5a539a70f21dd708455038c6734caff1a99573e"
+    },
+    {
+      "ord": 101,
+      "blockId": "03f70dfc1eed3ae1d5fd965b9ab6c77d",
+      "fp64": "fc14481e55647d5d",
+      "normHash": "952758c599e4aa8b547f5f25b5a539a70f21dd708455038c6734caff1a99573e",
+      "kind": "p",
+      "chapter": "٥-من-سأل-الله-تعالى-الوسيلة-للنبي-بعد-الأذان-حلت",
+      "prev": "86bbb1224d91a3a69ea15997a81064a804985ab8429f08b6f9bb665e7f1e96ef",
+      "next": "941997afe517526fd902e3772d2fa359222c4f61cbab81f71f70a3e8d7ca7f60"
+    },
+    {
+      "ord": 102,
+      "blockId": "f512f4c86603832354716eef088ba776",
+      "fp64": "645bec189f375d6d",
+      "normHash": "941997afe517526fd902e3772d2fa359222c4f61cbab81f71f70a3e8d7ca7f60",
+      "kind": "h2",
+      "chapter": "٦-من-سأل-الله-تعالى-للنبي-أن-يبعثه-مقاما-محمودا-وجبت",
+      "prev": "952758c599e4aa8b547f5f25b5a539a70f21dd708455038c6734caff1a99573e",
+      "next": "9f72358157f0b9ea1070122d6d09325f3c1a930b5920033dc215a3a6a4aea3a0"
+    },
+    {
+      "ord": 103,
+      "blockId": "0a6fa9cc326918cd2519969ea9241ad9",
+      "fp64": "a443c1df3514717c",
+      "normHash": "9f72358157f0b9ea1070122d6d09325f3c1a930b5920033dc215a3a6a4aea3a0",
+      "kind": "p",
+      "chapter": "٦-من-سأل-الله-تعالى-للنبي-أن-يبعثه-مقاما-محمودا-وجبت",
+      "prev": "941997afe517526fd902e3772d2fa359222c4f61cbab81f71f70a3e8d7ca7f60",
+      "next": "2c3d66412f0c16cea5e100f1def6e17a21baaaf956bd8f9d975a5e1db3cd92ba"
+    },
+    {
+      "ord": 104,
+      "blockId": "fc3604273a7369017cc8af3b66570508",
+      "fp64": "c40acb4c17435396",
+      "normHash": "2c3d66412f0c16cea5e100f1def6e17a21baaaf956bd8f9d975a5e1db3cd92ba",
+      "kind": "h2",
+      "chapter": "٧-ثواب-من-قال-مثل-ما-يقول-المؤذن-يقينا",
+      "prev": "9f72358157f0b9ea1070122d6d09325f3c1a930b5920033dc215a3a6a4aea3a0",
+      "next": "2a6aa3049c9171a6ee9f44a03a82641028abe54ee406e49830728112da8b039a"
+    },
+    {
+      "ord": 105,
+      "blockId": "0af4be70e77df31e5c0bef45dd2ed266",
+      "fp64": "7454e817977e73fc",
+      "normHash": "2a6aa3049c9171a6ee9f44a03a82641028abe54ee406e49830728112da8b039a",
+      "kind": "p",
+      "chapter": "٧-ثواب-من-قال-مثل-ما-يقول-المؤذن-يقينا",
+      "prev": "2c3d66412f0c16cea5e100f1def6e17a21baaaf956bd8f9d975a5e1db3cd92ba",
+      "next": "1d46e62f919c0fc946218fd644c9d6aa5bc972d09aa44d2273ce7d4bc412a26c"
+    },
+    {
+      "ord": 106,
+      "blockId": "9de95d7336c0f5de9079be4c133390f7",
+      "fp64": "773463bbd39998ca",
+      "normHash": "1d46e62f919c0fc946218fd644c9d6aa5bc972d09aa44d2273ce7d4bc412a26c",
+      "kind": "h2",
+      "chapter": "٨-إجابة-دعوة-مجيب-المؤذن",
+      "prev": "2a6aa3049c9171a6ee9f44a03a82641028abe54ee406e49830728112da8b039a",
+      "next": "ca67143a923194be117b59d3dd89764446d5217a0aa195e3583f001bfc176613"
+    },
+    {
+      "ord": 107,
+      "blockId": "0816601d3fd607ab32edbc2a5485ccb6",
+      "fp64": "b4f4e01797e878fe",
+      "normHash": "ca67143a923194be117b59d3dd89764446d5217a0aa195e3583f001bfc176613",
+      "kind": "p",
+      "chapter": "٨-إجابة-دعوة-مجيب-المؤذن",
+      "prev": "1d46e62f919c0fc946218fd644c9d6aa5bc972d09aa44d2273ce7d4bc412a26c",
+      "next": "a3896dab65f6dbd98f7320ea8af1eca5fd7744f2d650d7430e74b0bc56635f72"
+    },
+    {
+      "ord": 108,
+      "blockId": "da6126a2acf0a3b1ac60507aa24dc538",
+      "fp64": "98ed8c1201f9dc2b",
+      "normHash": "a3896dab65f6dbd98f7320ea8af1eca5fd7744f2d650d7430e74b0bc56635f72",
+      "kind": "h2",
+      "chapter": "٩-لا-يرد-الدعاء-عند-النداء-وتفتح-أبواب-السماء",
+      "prev": "ca67143a923194be117b59d3dd89764446d5217a0aa195e3583f001bfc176613",
+      "next": "316cf493436772a8a83fbe08dfa0674193fd5c347f16e801f91866c660a9159c"
+    },
+    {
+      "ord": 109,
+      "blockId": "a759399431736cd0b98f8257f0f47545",
+      "fp64": "3c77c0d79fa470bc",
+      "normHash": "316cf493436772a8a83fbe08dfa0674193fd5c347f16e801f91866c660a9159c",
+      "kind": "p",
+      "chapter": "٩-لا-يرد-الدعاء-عند-النداء-وتفتح-أبواب-السماء",
+      "prev": "a3896dab65f6dbd98f7320ea8af1eca5fd7744f2d650d7430e74b0bc56635f72",
+      "next": "9a23d1ebb4605ffeebc52d6a5c7ab8c0075d0f787656ec8444d4cb8b871cca5b"
+    },
+    {
+      "ord": 110,
+      "blockId": "c62c7a47f46cef80e04ddd42331e47f9",
+      "fp64": "515d60f0152d8f12",
+      "normHash": "9a23d1ebb4605ffeebc52d6a5c7ab8c0075d0f787656ec8444d4cb8b871cca5b",
+      "kind": "p",
+      "chapter": "٩-لا-يرد-الدعاء-عند-النداء-وتفتح-أبواب-السماء",
+      "prev": "316cf493436772a8a83fbe08dfa0674193fd5c347f16e801f91866c660a9159c",
+      "next": "f55481b69318e1c851e57306a7f55661daf11dd52e307451f386b3d8d15d48b2"
+    },
+    {
+      "ord": 111,
+      "blockId": "3e90ed5d9f1ba3a9c7870f568499cabe",
+      "fp64": "67dfff9e5fb3fb3f",
+      "normHash": "f55481b69318e1c851e57306a7f55661daf11dd52e307451f386b3d8d15d48b2",
+      "kind": "page",
+      "chapter": "٩-لا-يرد-الدعاء-عند-النداء-وتفتح-أبواب-السماء",
+      "prev": "9a23d1ebb4605ffeebc52d6a5c7ab8c0075d0f787656ec8444d4cb8b871cca5b",
+      "next": "8aff83c917a154c70121218426e945ff8bbd13abd8fc2732ab038f09b9c3ed9e"
+    },
+    {
+      "ord": 112,
+      "blockId": "08800cc447276316cf23874dbb72ab1f",
+      "fp64": "da45697a497c6d79",
+      "normHash": "8aff83c917a154c70121218426e945ff8bbd13abd8fc2732ab038f09b9c3ed9e",
+      "kind": "p",
+      "chapter": "٩-لا-يرد-الدعاء-عند-النداء-وتفتح-أبواب-السماء",
+      "prev": "f55481b69318e1c851e57306a7f55661daf11dd52e307451f386b3d8d15d48b2",
+      "next": "20455340973c0a96a6ee135407fae56f1f6e74e0b41e5ecccd5127970fbe5aff"
+    },
+    {
+      "ord": 113,
+      "blockId": "ba26da07eaf6486602a6ec94f861ad30",
+      "fp64": "89f99b7c5161d03b",
+      "normHash": "20455340973c0a96a6ee135407fae56f1f6e74e0b41e5ecccd5127970fbe5aff",
+      "kind": "h2",
+      "chapter": "١٠-الدعاء-لا-يرد-بين-الأذان-والإقامة",
+      "prev": "8aff83c917a154c70121218426e945ff8bbd13abd8fc2732ab038f09b9c3ed9e",
+      "next": "9b0ccc9b91fd54991c001a6b66b54490c5d51c5062a1b9738271abfc90ae6b2d"
+    },
+    {
+      "ord": 114,
+      "blockId": "4e1bfb99e7ed723b854bc2c5a045c86b",
+      "fp64": "ac77c17e3571712b",
+      "normHash": "9b0ccc9b91fd54991c001a6b66b54490c5d51c5062a1b9738271abfc90ae6b2d",
+      "kind": "p",
+      "chapter": "١٠-الدعاء-لا-يرد-بين-الأذان-والإقامة",
+      "prev": "20455340973c0a96a6ee135407fae56f1f6e74e0b41e5ecccd5127970fbe5aff",
+      "next": "380816b0394c9333d6ca643f2bd976170c24115d999cdd6e37dd4e6bcf0117b7"
+    },
+    {
+      "ord": 115,
+      "blockId": "0f98828fb5646be8873174356410259b",
+      "fp64": "b0442018c5df9c0b",
+      "normHash": "380816b0394c9333d6ca643f2bd976170c24115d999cdd6e37dd4e6bcf0117b7",
+      "kind": "h2",
+      "chapter": "١١-مجيب-المؤذن-متبع-للنبي-في-هذه-السنة",
+      "prev": "9b0ccc9b91fd54991c001a6b66b54490c5d51c5062a1b9738271abfc90ae6b2d",
+      "next": "b3c05bd5682486d0b80a7e72e95358ab7e500d14aa416eff998e03c84fae1297"
+    },
+    {
+      "ord": 116,
+      "blockId": "fc62e7d6c672f0bf7b7643323975473d",
+      "fp64": "af29e2520f660d7f",
+      "normHash": "b3c05bd5682486d0b80a7e72e95358ab7e500d14aa416eff998e03c84fae1297",
+      "kind": "p",
+      "chapter": "١١-مجيب-المؤذن-متبع-للنبي-في-هذه-السنة",
+      "prev": "380816b0394c9333d6ca643f2bd976170c24115d999cdd6e37dd4e6bcf0117b7",
+      "next": "162a3929c4c52ac42e97a39032bfcc276ca74a84bc6f48f777691e00245106ca"
+    },
+    {
+      "ord": 117,
+      "blockId": "a8c16dd436217445e0fe2f2fd9dedbd5",
+      "fp64": "f655ab16567c70de",
+      "normHash": "162a3929c4c52ac42e97a39032bfcc276ca74a84bc6f48f777691e00245106ca",
+      "kind": "h2",
+      "chapter": "١٢-مجيب-المؤذن-يرجو-الله-واليوم-الآخر-ويذكر-الله",
+      "prev": "b3c05bd5682486d0b80a7e72e95358ab7e500d14aa416eff998e03c84fae1297",
+      "next": "27221adaec9a6f7843e172f0c09d088644d02e6e27364d1ce551daf59f5e0f10"
+    },
+    {
+      "ord": 118,
+      "blockId": "2f70b039fb64b1214f5b28dee595be20",
+      "fp64": "bfd5e0161fb475de",
+      "normHash": "27221adaec9a6f7843e172f0c09d088644d02e6e27364d1ce551daf59f5e0f10",
+      "kind": "p",
+      "chapter": "١٢-مجيب-المؤذن-يرجو-الله-واليوم-الآخر-ويذكر-الله",
+      "prev": "162a3929c4c52ac42e97a39032bfcc276ca74a84bc6f48f777691e00245106ca",
+      "next": "1fbe5f83a128ba85e53a99ecec3028c09cd09754b85cb230d7a5f4171b1309c1"
+    },
+    {
+      "ord": 119,
+      "blockId": "64fa61f7b3ef2d4ac997ff64216c698c",
+      "fp64": "0515a07e3b96b8e2",
+      "normHash": "1fbe5f83a128ba85e53a99ecec3028c09cd09754b85cb230d7a5f4171b1309c1",
+      "kind": "h2",
+      "chapter": "١٣-فضل-الله-تعالى-ورحمته-على-عباده",
+      "prev": "27221adaec9a6f7843e172f0c09d088644d02e6e27364d1ce551daf59f5e0f10",
+      "next": "7dba54b484929d459f7b602df2d136425770ff79b185994cbf8c0c673edd8b18"
+    },
+    {
+      "ord": 120,
+      "blockId": "445016a1b886bd7838d37f2c7e275732",
+      "fp64": "c73fea318466d760",
+      "normHash": "7dba54b484929d459f7b602df2d136425770ff79b185994cbf8c0c673edd8b18",
+      "kind": "p",
+      "chapter": "١٣-فضل-الله-تعالى-ورحمته-على-عباده",
+      "prev": "1fbe5f83a128ba85e53a99ecec3028c09cd09754b85cb230d7a5f4171b1309c1",
+      "next": "915a678412e51c6cddd237e93591de2a2cd4488851694ce4bcf72501cfaec2af"
+    },
+    {
+      "ord": 121,
+      "blockId": "f3136a9147de6cac9ac38a6decdda398",
+      "fp64": "ddc964b01d6c1e22",
+      "normHash": "915a678412e51c6cddd237e93591de2a2cd4488851694ce4bcf72501cfaec2af",
+      "kind": "p",
+      "chapter": "١٣-فضل-الله-تعالى-ورحمته-على-عباده",
+      "prev": "7dba54b484929d459f7b602df2d136425770ff79b185994cbf8c0c673edd8b18",
+      "next": "cf82f37a0d9fa7db967582d57875f1098daf08f4fb5688263e59d6c97d092c67"
+    },
+    {
+      "ord": 122,
+      "blockId": "0ca2da9e3a8184eb07494d3a79d12f13",
+      "fp64": "6ddff7fadbb967b7",
+      "normHash": "cf82f37a0d9fa7db967582d57875f1098daf08f4fb5688263e59d6c97d092c67",
+      "kind": "page",
+      "chapter": "١٣-فضل-الله-تعالى-ورحمته-على-عباده",
+      "prev": "915a678412e51c6cddd237e93591de2a2cd4488851694ce4bcf72501cfaec2af",
+      "next": "4935aa53d64828c22318def863c621908b43ea55f46ab45bf6eec8c36c66f903"
+    },
+    {
+      "ord": 123,
+      "blockId": "716d56e5bcd247697d3c38224fdb24fe",
+      "fp64": "f0646e9986103966",
+      "normHash": "4935aa53d64828c22318def863c621908b43ea55f46ab45bf6eec8c36c66f903",
+      "kind": "h2",
+      "chapter": "المبحث-الرابع-فوائد-إجابة-النداء",
+      "prev": "cf82f37a0d9fa7db967582d57875f1098daf08f4fb5688263e59d6c97d092c67",
+      "next": "8544bbf172af218a90cbceaffe627db37856faaeba23d7149576100f2758f1f8"
+    },
+    {
+      "ord": 124,
+      "blockId": "3ed16bac521955055585ad6ce31f9707",
+      "fp64": "49856d3d56d1d0f9",
+      "normHash": "8544bbf172af218a90cbceaffe627db37856faaeba23d7149576100f2758f1f8",
+      "kind": "p",
+      "chapter": "المبحث-الرابع-فوائد-إجابة-النداء",
+      "prev": "4935aa53d64828c22318def863c621908b43ea55f46ab45bf6eec8c36c66f903",
+      "next": "c83141c055fe9000d06c5498bc515f5463bb33083f0cefc3ca0e8ae0111f5d56"
+    },
+    {
+      "ord": 125,
+      "blockId": "bf9edab1eecfb875084458277027c7af",
+      "fp64": "f0c966582076d72e",
+      "normHash": "c83141c055fe9000d06c5498bc515f5463bb33083f0cefc3ca0e8ae0111f5d56",
+      "kind": "h2",
+      "chapter": "١-قوله-إذا-سمعتم-النداء-فقولوا-مثل-ما-يقول-المؤذن",
+      "prev": "8544bbf172af218a90cbceaffe627db37856faaeba23d7149576100f2758f1f8",
+      "next": "822b43cee64fb3f3c502179becae81b4f959b5c915b35fc149f3e7abf94b46f8"
+    },
+    {
+      "ord": 126,
+      "blockId": "4a2745f120bdba6baa62d8737c738518",
+      "fp64": "740262541743531e",
+      "normHash": "822b43cee64fb3f3c502179becae81b4f959b5c915b35fc149f3e7abf94b46f8",
+      "kind": "p",
+      "chapter": "١-قوله-إذا-سمعتم-النداء-فقولوا-مثل-ما-يقول-المؤذن",
+      "prev": "c83141c055fe9000d06c5498bc515f5463bb33083f0cefc3ca0e8ae0111f5d56",
+      "next": "7db0f878b4478e183059e2feb3aa19d27d9dc1b0efa56718d7e258504e16b79d"
+    },
+    {
+      "ord": 127,
+      "blockId": "da77d6aa4170424abcb3e702d5293314",
+      "fp64": "ef0c601e957d7176",
+      "normHash": "7db0f878b4478e183059e2feb3aa19d27d9dc1b0efa56718d7e258504e16b79d",
+      "kind": "h2",
+      "chapter": "٢-ما-دل-عليه-حديث-عمر-بن-الخطاب-رضي-الله-عنه",
+      "prev": "822b43cee64fb3f3c502179becae81b4f959b5c915b35fc149f3e7abf94b46f8",
+      "next": "57e50f21775d48e2b3b65e9081d03ab344d62710695f0e056f78c4eb0532df84"
+    },
+    {
+      "ord": 128,
+      "blockId": "27b87dc4b1c61b201acbc3b632c750a7",
+      "fp64": "fc50c0515746031b",
+      "normHash": "57e50f21775d48e2b3b65e9081d03ab344d62710695f0e056f78c4eb0532df84",
+      "kind": "p",
+      "chapter": "٢-ما-دل-عليه-حديث-عمر-بن-الخطاب-رضي-الله-عنه",
+      "prev": "7db0f878b4478e183059e2feb3aa19d27d9dc1b0efa56718d7e258504e16b79d",
+      "next": "3bbb3c4ad25a46ba27f1f231ad65a98245f1fc71673103950cf0a729f3baeebc"
+    },
+    {
+      "ord": 129,
+      "blockId": "55613de530fcbdc26a804f7f06c73082",
+      "fp64": "582969c1f5750496",
+      "normHash": "3bbb3c4ad25a46ba27f1f231ad65a98245f1fc71673103950cf0a729f3baeebc",
+      "kind": "p",
+      "chapter": "٢-ما-دل-عليه-حديث-عمر-بن-الخطاب-رضي-الله-عنه",
+      "prev": "57e50f21775d48e2b3b65e9081d03ab344d62710695f0e056f78c4eb0532df84",
+      "next": "9da403adc6f7f743d1c743c8c84d8aed2f84904be7b6a5259cf89154e0840dbb"
+    },
+    {
+      "ord": 130,
+      "blockId": "de9fd07a243be69db37a0c73ef24a981",
+      "fp64": "77fff79a7ffb69f6",
+      "normHash": "9da403adc6f7f743d1c743c8c84d8aed2f84904be7b6a5259cf89154e0840dbb",
+      "kind": "page",
+      "chapter": "٢-ما-دل-عليه-حديث-عمر-بن-الخطاب-رضي-الله-عنه",
+      "prev": "3bbb3c4ad25a46ba27f1f231ad65a98245f1fc71673103950cf0a729f3baeebc",
+      "next": "5c6913e4cd5ee04923d434dea590cbab3d1e52fbabb07805625cf7db8d9f6f7a"
+    },
+    {
+      "ord": 131,
+      "blockId": "3c4b25b510b20441bc907252c16c7116",
+      "fp64": "f440a6585a57df1e",
+      "normHash": "5c6913e4cd5ee04923d434dea590cbab3d1e52fbabb07805625cf7db8d9f6f7a",
+      "kind": "p",
+      "chapter": "٢-ما-دل-عليه-حديث-عمر-بن-الخطاب-رضي-الله-عنه",
+      "prev": "9da403adc6f7f743d1c743c8c84d8aed2f84904be7b6a5259cf89154e0840dbb",
+      "next": "dc5f2d8c674223060bcb9736328f18bfecaa81d1af70f73d6ae205fa7d833e48"
+    },
+    {
+      "ord": 132,
+      "blockId": "ccfa9480d6550d9b0bef9775b647b71d",
+      "fp64": "be0ef45337f95d7e",
+      "normHash": "dc5f2d8c674223060bcb9736328f18bfecaa81d1af70f73d6ae205fa7d833e48",
+      "kind": "p",
+      "chapter": "٢-ما-دل-عليه-حديث-عمر-بن-الخطاب-رضي-الله-عنه",
+      "prev": "5c6913e4cd5ee04923d434dea590cbab3d1e52fbabb07805625cf7db8d9f6f7a",
+      "next": "87d411888874551ce3e9e5029c6e82d1cc5e2056ef330470c64e11b59f378cec"
+    },
+    {
+      "ord": 133,
+      "blockId": "fe8477b83777d815e17086983e1af60a",
+      "fp64": "fd17a03fbf7d397e",
+      "normHash": "87d411888874551ce3e9e5029c6e82d1cc5e2056ef330470c64e11b59f378cec",
+      "kind": "h2",
+      "chapter": "٣-دل-حديث-عمر-بن-الخطاب-رضي-الله-عنه-أن-المشروع-للمسلم",
+      "prev": "dc5f2d8c674223060bcb9736328f18bfecaa81d1af70f73d6ae205fa7d833e48",
+      "next": "cd12a61587cc3aea3a09adba2e62b723c2450b80edbdf31c1ceb82b667b121c3"
+    },
+    {
+      "ord": 134,
+      "blockId": "62ee197687815c17ba170cad8c7c19f6",
+      "fp64": "740af30c7f109138",
+      "normHash": "cd12a61587cc3aea3a09adba2e62b723c2450b80edbdf31c1ceb82b667b121c3",
+      "kind": "p",
+      "chapter": "٣-دل-حديث-عمر-بن-الخطاب-رضي-الله-عنه-أن-المشروع-للمسلم",
+      "prev": "87d411888874551ce3e9e5029c6e82d1cc5e2056ef330470c64e11b59f378cec",
+      "next": "f7e6ae0741fbc7e2b9922cf5e18d9242b4c9f38b3aff78168f2ddddb70ff9f32"
+    },
+    {
+      "ord": 135,
+      "blockId": "f3d6fe7de65e6c3bf0df9fceabfdd1c6",
+      "fp64": "e643a158d850d17d",
+      "normHash": "f7e6ae0741fbc7e2b9922cf5e18d9242b4c9f38b3aff78168f2ddddb70ff9f32",
+      "kind": "p",
+      "chapter": "٣-دل-حديث-عمر-بن-الخطاب-رضي-الله-عنه-أن-المشروع-للمسلم",
+      "prev": "cd12a61587cc3aea3a09adba2e62b723c2450b80edbdf31c1ceb82b667b121c3",
+      "next": "36c89830cd0dae0be51d2497b35eae6b633e738188325c300eecfc850e8c1d0e"
+    },
+    {
+      "ord": 136,
+      "blockId": "f7bf13de3cbd69b8003950e911f3fbcf",
+      "fp64": "f82865fa3ded0d53",
+      "normHash": "36c89830cd0dae0be51d2497b35eae6b633e738188325c300eecfc850e8c1d0e",
+      "kind": "p",
+      "chapter": "٣-دل-حديث-عمر-بن-الخطاب-رضي-الله-عنه-أن-المشروع-للمسلم",
+      "prev": "f7e6ae0741fbc7e2b9922cf5e18d9242b4c9f38b3aff78168f2ddddb70ff9f32",
+      "next": "afdb7313e5b92484c76c5195be2959c3631cc9c844a90c8fa37d3edfc9b28110"
+    },
+    {
+      "ord": 137,
+      "blockId": "c4301c42f8ed1ba6a08518e2eb12447b",
+      "fp64": "3fdffb9edbf77eb7",
+      "normHash": "afdb7313e5b92484c76c5195be2959c3631cc9c844a90c8fa37d3edfc9b28110",
+      "kind": "page",
+      "chapter": "٣-دل-حديث-عمر-بن-الخطاب-رضي-الله-عنه-أن-المشروع-للمسلم",
+      "prev": "36c89830cd0dae0be51d2497b35eae6b633e738188325c300eecfc850e8c1d0e",
+      "next": "f0a8dd54db406c30a32d75e5a976d382a602c0ae82721a94eb69f27b1532eb83"
+    },
+    {
+      "ord": 138,
+      "blockId": "294cb30df0148c639b11c5ba21b29688",
+      "fp64": "886b05777d3d0f58",
+      "normHash": "f0a8dd54db406c30a32d75e5a976d382a602c0ae82721a94eb69f27b1532eb83",
+      "kind": "p",
+      "chapter": "٣-دل-حديث-عمر-بن-الخطاب-رضي-الله-عنه-أن-المشروع-للمسلم",
+      "prev": "afdb7313e5b92484c76c5195be2959c3631cc9c844a90c8fa37d3edfc9b28110",
+      "next": "8789e205f5e56212990463ab0650f770cfff78c6ae0975a1241bd293a5869fa2"
+    },
+    {
+      "ord": 139,
+      "blockId": "1b0490b2480ee6eba07d1a78712468bb",
+      "fp64": "b44068169e55127d",
+      "normHash": "8789e205f5e56212990463ab0650f770cfff78c6ae0975a1241bd293a5869fa2",
+      "kind": "p",
+      "chapter": "٣-دل-حديث-عمر-بن-الخطاب-رضي-الله-عنه-أن-المشروع-للمسلم",
+      "prev": "f0a8dd54db406c30a32d75e5a976d382a602c0ae82721a94eb69f27b1532eb83",
+      "next": "95c99c7a347d73f7c180b9547a32e9045aa5848b55fe4514ce0bcb3c291c0044"
+    },
+    {
+      "ord": 140,
+      "blockId": "5686087ba745d87b0ac201fee546185a",
+      "fp64": "fe78447bbd7f7bff",
+      "normHash": "95c99c7a347d73f7c180b9547a32e9045aa5848b55fe4514ce0bcb3c291c0044",
+      "kind": "h2",
+      "chapter": "٤-ظاهر-حديث-جابر-رضي-الله-عنه-من-قال-حين-يسمع-النداء",
+      "prev": "8789e205f5e56212990463ab0650f770cfff78c6ae0975a1241bd293a5869fa2",
+      "next": "8875aaa918caed7733fc81855e2b32a28ca798bbb63dea75508ed6bc7fbd5915"
+    },
+    {
+      "ord": 141,
+      "blockId": "f68ac2223243fbf3844055c424508087",
+      "fp64": "c400c5585166153e",
+      "normHash": "8875aaa918caed7733fc81855e2b32a28ca798bbb63dea75508ed6bc7fbd5915",
+      "kind": "p",
+      "chapter": "٤-ظاهر-حديث-جابر-رضي-الله-عنه-من-قال-حين-يسمع-النداء",
+      "prev": "95c99c7a347d73f7c180b9547a32e9045aa5848b55fe4514ce0bcb3c291c0044",
+      "next": "a3b22c795daefab773dad465d93cfcb39943bc24740bf4b6ab37fe6c25ddd033"
+    },
+    {
+      "ord": 142,
+      "blockId": "457fd44b2ee2be9dabe4461732e18d7a",
+      "fp64": "be4b89de5538133d",
+      "normHash": "a3b22c795daefab773dad465d93cfcb39943bc24740bf4b6ab37fe6c25ddd033",
+      "kind": "p",
+      "chapter": "٤-ظاهر-حديث-جابر-رضي-الله-عنه-من-قال-حين-يسمع-النداء",
+      "prev": "8875aaa918caed7733fc81855e2b32a28ca798bbb63dea75508ed6bc7fbd5915",
+      "next": "e0c97f8cbc543f5bee55867bbaf04472633f3bb1e068e56476053df757ff3661"
+    },
+    {
+      "ord": 143,
+      "blockId": "fa0d4801e2317b22207491ce548f2d86",
+      "fp64": "d8b169f1152585d1",
+      "normHash": "e0c97f8cbc543f5bee55867bbaf04472633f3bb1e068e56476053df757ff3661",
+      "kind": "p",
+      "chapter": "٤-ظاهر-حديث-جابر-رضي-الله-عنه-من-قال-حين-يسمع-النداء",
+      "prev": "a3b22c795daefab773dad465d93cfcb39943bc24740bf4b6ab37fe6c25ddd033",
+      "next": "c9d963f038c204cdec8da768bce98e69d1bf414d903aae3bc061b11205939f2a"
+    },
+    {
+      "ord": 144,
+      "blockId": "80c4fd199e326d85d822a97d35ceccdc",
+      "fp64": "37dff79f5f756377",
+      "normHash": "c9d963f038c204cdec8da768bce98e69d1bf414d903aae3bc061b11205939f2a",
+      "kind": "page",
+      "chapter": "٤-ظاهر-حديث-جابر-رضي-الله-عنه-من-قال-حين-يسمع-النداء",
+      "prev": "e0c97f8cbc543f5bee55867bbaf04472633f3bb1e068e56476053df757ff3661",
+      "next": "31193ab7f60c3a244af40a58f0aee0ed03d0c25246eab1591f98c081c6684b7e"
+    },
+    {
+      "ord": 145,
+      "blockId": "98ac7e67c5b46a3cc1cb23213925093a",
+      "fp64": "a439e31edb3a595e",
+      "normHash": "31193ab7f60c3a244af40a58f0aee0ed03d0c25246eab1591f98c081c6684b7e",
+      "kind": "p",
+      "chapter": "٤-ظاهر-حديث-جابر-رضي-الله-عنه-من-قال-حين-يسمع-النداء",
+      "prev": "c9d963f038c204cdec8da768bce98e69d1bf414d903aae3bc061b11205939f2a",
+      "next": "ba929e030e4c883a051d41ffe9d528ec961c06e15596d9498babbda455a84b9d"
+    },
+    {
+      "ord": 146,
+      "blockId": "ca530a2f5f0e870f39868a915f30326f",
+      "fp64": "df3ee95251bcfafa",
+      "normHash": "ba929e030e4c883a051d41ffe9d528ec961c06e15596d9498babbda455a84b9d",
+      "kind": "h2",
+      "chapter": "٥-إجابة-المؤذن-تدل-على-عظيم-الرغبة-في-الفوز-بالفلاح",
+      "prev": "31193ab7f60c3a244af40a58f0aee0ed03d0c25246eab1591f98c081c6684b7e",
+      "next": "b0adce44207cf49a6a78daa2779e0f244ecc14cad21ebcd709b08b2e9c92dc96"
+    },
+    {
+      "ord": 147,
+      "blockId": "807e938da43fe681b04ef0f9b27d4588",
+      "fp64": "0f10285b37c13bda",
+      "normHash": "b0adce44207cf49a6a78daa2779e0f244ecc14cad21ebcd709b08b2e9c92dc96",
+      "kind": "p",
+      "chapter": "٥-إجابة-المؤذن-تدل-على-عظيم-الرغبة-في-الفوز-بالفلاح",
+      "prev": "ba929e030e4c883a051d41ffe9d528ec961c06e15596d9498babbda455a84b9d",
+      "next": "470e05390d52db4f5abf2e9b97310805ec9efb6b550de1be334f4aff78a0c944"
+    },
+    {
+      "ord": 148,
+      "blockId": "8f5b176110a12e8f16e9d2c7b8aeeea2",
+      "fp64": "e5408d1cf96598df",
+      "normHash": "470e05390d52db4f5abf2e9b97310805ec9efb6b550de1be334f4aff78a0c944",
+      "kind": "h2",
+      "chapter": "٦-إجابة-المؤذن-ب-لا-حول-ولا-قوة-إلا-بالله",
+      "prev": "b0adce44207cf49a6a78daa2779e0f244ecc14cad21ebcd709b08b2e9c92dc96",
+      "next": "b4fb0a951bad0c247bcc6469cb3f60d583643e030d654196c7fe47ffc365a1cb"
+    },
+    {
+      "ord": 149,
+      "blockId": "73a1c68e7dd58e127321c313456d3664",
+      "fp64": "e4449056777557bd",
+      "normHash": "b4fb0a951bad0c247bcc6469cb3f60d583643e030d654196c7fe47ffc365a1cb",
+      "kind": "p",
+      "chapter": "٦-إجابة-المؤذن-ب-لا-حول-ولا-قوة-إلا-بالله",
+      "prev": "470e05390d52db4f5abf2e9b97310805ec9efb6b550de1be334f4aff78a0c944",
+      "next": "8d99114ab6b6c01c455484b60b30ae3a6fa677f59559112eb8f3e7bc20cf24b2"
+    },
+    {
+      "ord": 150,
+      "blockId": "a8fe1d377d7f5715a2a750f49b2a3e8b",
+      "fp64": "68c7f6d815981c3f",
+      "normHash": "8d99114ab6b6c01c455484b60b30ae3a6fa677f59559112eb8f3e7bc20cf24b2",
+      "kind": "p",
+      "chapter": "٦-إجابة-المؤذن-ب-لا-حول-ولا-قوة-إلا-بالله",
+      "prev": "b4fb0a951bad0c247bcc6469cb3f60d583643e030d654196c7fe47ffc365a1cb",
+      "next": "9dc6c5e0e26903216e5e4dd77b7874742d19e9b04b9dbe741312bd61a9b29944"
+    },
+    {
+      "ord": 151,
+      "blockId": "0cf4585b541b0c17e76d8a17412c5b08",
+      "fp64": "9c39611a3fcccf57",
+      "normHash": "9dc6c5e0e26903216e5e4dd77b7874742d19e9b04b9dbe741312bd61a9b29944",
+      "kind": "p",
+      "chapter": "٦-إجابة-المؤذن-ب-لا-حول-ولا-قوة-إلا-بالله",
+      "prev": "8d99114ab6b6c01c455484b60b30ae3a6fa677f59559112eb8f3e7bc20cf24b2",
+      "next": "fd7450c1f92d52b91075220c636129ef702e8e7c29edc73d8f2e81df8a091618"
+    },
+    {
+      "ord": 152,
+      "blockId": "b41e2e39b8a42819644627bc635c9070",
+      "fp64": "77dff3dadf79e97e",
+      "normHash": "fd7450c1f92d52b91075220c636129ef702e8e7c29edc73d8f2e81df8a091618",
+      "kind": "page",
+      "chapter": "٦-إجابة-المؤذن-ب-لا-حول-ولا-قوة-إلا-بالله",
+      "prev": "9dc6c5e0e26903216e5e4dd77b7874742d19e9b04b9dbe741312bd61a9b29944",
+      "next": "43a875b7249151948b5369c5a66107cb9fbe03651c91d0038cd27e6058553872"
+    },
+    {
+      "ord": 153,
+      "blockId": "24f7d91293b4f08b80dbbb9a6a385530",
+      "fp64": "d8e920f555ed8a8f",
+      "normHash": "43a875b7249151948b5369c5a66107cb9fbe03651c91d0038cd27e6058553872",
+      "kind": "p",
+      "chapter": "٦-إجابة-المؤذن-ب-لا-حول-ولا-قوة-إلا-بالله",
+      "prev": "fd7450c1f92d52b91075220c636129ef702e8e7c29edc73d8f2e81df8a091618",
+      "next": "fcc86a9535f640812a63d1e8d62a0191888cd365c8dc6ce828b0314a93703390"
+    },
+    {
+      "ord": 154,
+      "blockId": "c0e068a6256b70333c9b0990f29257ba",
+      "fp64": "ac5dc8539d726f3c",
+      "normHash": "fcc86a9535f640812a63d1e8d62a0191888cd365c8dc6ce828b0314a93703390",
+      "kind": "p",
+      "chapter": "٦-إجابة-المؤذن-ب-لا-حول-ولا-قوة-إلا-بالله",
+      "prev": "43a875b7249151948b5369c5a66107cb9fbe03651c91d0038cd27e6058553872",
+      "next": "de4781dba9b25851f627f9fa40306c572c440325341c89cef762098da6e9e4ce"
+    },
+    {
+      "ord": 155,
+      "blockId": "541a53d97762a4c1a924b499c6ef665b",
+      "fp64": "953d90df5f13dbdb",
+      "normHash": "de4781dba9b25851f627f9fa40306c572c440325341c89cef762098da6e9e4ce",
+      "kind": "h2",
+      "chapter": "٨-الأعمال-يشترط-لها-القصد-والإخلاص",
+      "prev": "fcc86a9535f640812a63d1e8d62a0191888cd365c8dc6ce828b0314a93703390",
+      "next": "12db0ffb822eb3bff6036c730932c8f1b86e898830f4762032ca782badfc45ed"
+    },
+    {
+      "ord": 156,
+      "blockId": "1af30756af275d555719090aeedbf12d",
+      "fp64": "e444c11ed536d338",
+      "normHash": "12db0ffb822eb3bff6036c730932c8f1b86e898830f4762032ca782badfc45ed",
+      "kind": "p",
+      "chapter": "٨-الأعمال-يشترط-لها-القصد-والإخلاص",
+      "prev": "de4781dba9b25851f627f9fa40306c572c440325341c89cef762098da6e9e4ce",
+      "next": "1dcc2cf2967c79d5234885e4ca951ab48455153ee2a20f1d4dd1e50dbd8c4ba7"
+    },
+    {
+      "ord": 157,
+      "blockId": "f8dd227dd453bdda352ccbcad99c0f52",
+      "fp64": "2eeb008a3d9db484",
+      "normHash": "1dcc2cf2967c79d5234885e4ca951ab48455153ee2a20f1d4dd1e50dbd8c4ba7",
+      "kind": "h2",
+      "chapter": "٩-الدعوة-التامة-دعوة-التوحيد",
+      "prev": "12db0ffb822eb3bff6036c730932c8f1b86e898830f4762032ca782badfc45ed",
+      "next": "e2cedd7cf40ae39771adc9be974f5855fc5a1e4423e89abf5c9df7eef31495d3"
+    },
+    {
+      "ord": 158,
+      "blockId": "e8d3e714735ef8aa90fee323236b899d",
+      "fp64": "5e272d589345c409",
+      "normHash": "e2cedd7cf40ae39771adc9be974f5855fc5a1e4423e89abf5c9df7eef31495d3",
+      "kind": "p",
+      "chapter": "٩-الدعوة-التامة-دعوة-التوحيد",
+      "prev": "1dcc2cf2967c79d5234885e4ca951ab48455153ee2a20f1d4dd1e50dbd8c4ba7",
+      "next": "e9756f4e8c85ef83e2c406d7bc9a6af46350404f0b1f322d4731f98d96769ef7"
+    },
+    {
+      "ord": 159,
+      "blockId": "5d24b5c921023e9e8109024f8ea66cfc",
+      "fp64": "d8696112356e4d53",
+      "normHash": "e9756f4e8c85ef83e2c406d7bc9a6af46350404f0b1f322d4731f98d96769ef7",
+      "kind": "p",
+      "chapter": "٩-الدعوة-التامة-دعوة-التوحيد",
+      "prev": "e2cedd7cf40ae39771adc9be974f5855fc5a1e4423e89abf5c9df7eef31495d3",
+      "next": "d3fc5bd9b2f63785248129ea03bccffcaf940956b7d8a0eead4645fbe9ba5066"
+    },
+    {
+      "ord": 160,
+      "blockId": "107ae6e682ee193f3cdbe2e4d058476e",
+      "fp64": "f7fff79efaf160b6",
+      "normHash": "d3fc5bd9b2f63785248129ea03bccffcaf940956b7d8a0eead4645fbe9ba5066",
+      "kind": "page",
+      "chapter": "٩-الدعوة-التامة-دعوة-التوحيد",
+      "prev": "e9756f4e8c85ef83e2c406d7bc9a6af46350404f0b1f322d4731f98d96769ef7",
+      "next": "e97db53239c614db92ef28acbc95149c7c1a517ea37da3434897cb3cc99228b7"
+    },
+    {
+      "ord": 161,
+      "blockId": "eec3a0b06c12029742a42d4a44d8e223",
+      "fp64": "c4eaa256f76ff19f",
+      "normHash": "e97db53239c614db92ef28acbc95149c7c1a517ea37da3434897cb3cc99228b7",
+      "kind": "p",
+      "chapter": "٩-الدعوة-التامة-دعوة-التوحيد",
+      "prev": "d3fc5bd9b2f63785248129ea03bccffcaf940956b7d8a0eead4645fbe9ba5066",
+      "next": "459bcc842f2eaf0b913a7f96d59ea456ab3dc83ff7ce1873d0c55da5ced2ec21"
+    },
+    {
+      "ord": 162,
+      "blockId": "a7e50a36fcc4fed2baa79fa71ff4cf21",
+      "fp64": "98d8a281331c6e3e",
+      "normHash": "459bcc842f2eaf0b913a7f96d59ea456ab3dc83ff7ce1873d0c55da5ced2ec21",
+      "kind": "h2",
+      "chapter": "١٠-الصلاة-القائمة-الحيعلة-هي-الصلاة-القائمة",
+      "prev": "e97db53239c614db92ef28acbc95149c7c1a517ea37da3434897cb3cc99228b7",
+      "next": "c7af98c1c383a3ff4946e89f03a7875d2e9cf2aef2b76a17eae941f99bbce8d0"
+    },
+    {
+      "ord": 163,
+      "blockId": "1b2c3a1702358626944bdba48fb7c1cf",
+      "fp64": "b1c0867025d59f7e",
+      "normHash": "c7af98c1c383a3ff4946e89f03a7875d2e9cf2aef2b76a17eae941f99bbce8d0",
+      "kind": "p",
+      "chapter": "١٠-الصلاة-القائمة-الحيعلة-هي-الصلاة-القائمة",
+      "prev": "459bcc842f2eaf0b913a7f96d59ea456ab3dc83ff7ce1873d0c55da5ced2ec21",
+      "next": "4bf3af84dcca1b04b57a0cf6b482161dcb7dbc6f523e229be9f392efc155ac77"
+    },
+    {
+      "ord": 164,
+      "blockId": "6b351854d8b887ec79b3f8b03cecfc36",
+      "fp64": "b01fa138b023cccb",
+      "normHash": "4bf3af84dcca1b04b57a0cf6b482161dcb7dbc6f523e229be9f392efc155ac77",
+      "kind": "h2",
+      "chapter": "١١-الفضيلة-المرتبة-الزائدة-على-سائر-الخلائق",
+      "prev": "c7af98c1c383a3ff4946e89f03a7875d2e9cf2aef2b76a17eae941f99bbce8d0",
+      "next": "c52e533befbe2d324c1818a75572cd1b2b8b7e0b206dc8e57ee8e5b874727f4c"
+    },
+    {
+      "ord": 165,
+      "blockId": "5f8c6fb4698a696f36b005fa61cdc5d2",
+      "fp64": "b183f8fbe1328d72",
+      "normHash": "c52e533befbe2d324c1818a75572cd1b2b8b7e0b206dc8e57ee8e5b874727f4c",
+      "kind": "p",
+      "chapter": "١١-الفضيلة-المرتبة-الزائدة-على-سائر-الخلائق",
+      "prev": "4bf3af84dcca1b04b57a0cf6b482161dcb7dbc6f523e229be9f392efc155ac77",
+      "next": "2a2e1bdd1c5fd0cfda0038f607102fa344899c08712bb591c5b47748ff2ba8e5"
+    },
+    {
+      "ord": 166,
+      "blockId": "d7b11122946c1f435d1aa11d37894995",
+      "fp64": "df839ccd9b33c91d",
+      "normHash": "2a2e1bdd1c5fd0cfda0038f607102fa344899c08712bb591c5b47748ff2ba8e5",
+      "kind": "p",
+      "chapter": "١١-الفضيلة-المرتبة-الزائدة-على-سائر-الخلائق",
+      "prev": "c52e533befbe2d324c1818a75572cd1b2b8b7e0b206dc8e57ee8e5b874727f4c",
+      "next": "37ed46336ba9a11bd8cd4ba94af899bfed3e604d2c410340025527de75e35265"
+    },
+    {
+      "ord": 167,
+      "blockId": "8105d06b7e060a050bc3719ef78cc861",
+      "fp64": "c1397e20864dc986",
+      "normHash": "37ed46336ba9a11bd8cd4ba94af899bfed3e604d2c410340025527de75e35265",
+      "kind": "h2",
+      "chapter": "١٢-مقاما-محمودا-أي-يحمد-القائم-فيه",
+      "prev": "2a2e1bdd1c5fd0cfda0038f607102fa344899c08712bb591c5b47748ff2ba8e5",
+      "next": "45c2c0336c046dc6367fe123ca10d35d4c3f2a27aa64dce6c79eab8524f76d5d"
+    },
+    {
+      "ord": 168,
+      "blockId": "f458569a985cfb7858ed4ac7e7126dc1",
+      "fp64": "b8bb813c26f56ceb",
+      "normHash": "45c2c0336c046dc6367fe123ca10d35d4c3f2a27aa64dce6c79eab8524f76d5d",
+      "kind": "p",
+      "chapter": "١٢-مقاما-محمودا-أي-يحمد-القائم-فيه",
+      "prev": "37ed46336ba9a11bd8cd4ba94af899bfed3e604d2c410340025527de75e35265",
+      "next": "e2e11760b981959f0d349dbfd89bb14a70ea856bae4b64633b0b4ea1b93fb9b0"
+    },
+    {
+      "ord": 169,
+      "blockId": "cfb8a9589ee62495917067f96946e435",
+      "fp64": "fc0875423d4ccd53",
+      "normHash": "e2e11760b981959f0d349dbfd89bb14a70ea856bae4b64633b0b4ea1b93fb9b0",
+      "kind": "p",
+      "chapter": "١٢-مقاما-محمودا-أي-يحمد-القائم-فيه",
+      "prev": "45c2c0336c046dc6367fe123ca10d35d4c3f2a27aa64dce6c79eab8524f76d5d",
+      "next": "68f3727261046665f498c65a90fa7e68e048dc53941446d1ded55914c30c2e89"
+    },
+    {
+      "ord": 170,
+      "blockId": "97be90dddd99cea013aacd9eb35758ec",
+      "fp64": "efdff3daff39eaf7",
+      "normHash": "68f3727261046665f498c65a90fa7e68e048dc53941446d1ded55914c30c2e89",
+      "kind": "page",
+      "chapter": "١٢-مقاما-محمودا-أي-يحمد-القائم-فيه",
+      "prev": "e2e11760b981959f0d349dbfd89bb14a70ea856bae4b64633b0b4ea1b93fb9b0",
+      "next": "fc433d5c9a66be7f7b259d18b296c91707f64c20114426c1569fb90c921aa574"
+    },
+    {
+      "ord": 171,
+      "blockId": "37cc271c741b317683a7cf4314c5acf7",
+      "fp64": "1149e5c3973711f2",
+      "normHash": "fc433d5c9a66be7f7b259d18b296c91707f64c20114426c1569fb90c921aa574",
+      "kind": "p",
+      "chapter": "١٢-مقاما-محمودا-أي-يحمد-القائم-فيه",
+      "prev": "68f3727261046665f498c65a90fa7e68e048dc53941446d1ded55914c30c2e89",
+      "next": "355942b71e4c64728a45e53a2c0dfe2455b09c580f559baccc171b8039b19b29"
+    },
+    {
+      "ord": 172,
+      "blockId": "f3a2321b6338b97e1c9989bd18179c8b",
+      "fp64": "c77e2f0718674e7c",
+      "normHash": "355942b71e4c64728a45e53a2c0dfe2455b09c580f559baccc171b8039b19b29",
+      "kind": "p",
+      "chapter": "١٢-مقاما-محمودا-أي-يحمد-القائم-فيه",
+      "prev": "fc433d5c9a66be7f7b259d18b296c91707f64c20114426c1569fb90c921aa574",
+      "next": "f17ef71dad481870ca0dd41490279c3ae47df14e19c3d24f82414990ec293ab0"
+    },
+    {
+      "ord": 173,
+      "blockId": "9814f113842e540f066eb8dcee82e369",
+      "fp64": "3c1ee217dfda0ed8",
+      "normHash": "f17ef71dad481870ca0dd41490279c3ae47df14e19c3d24f82414990ec293ab0",
+      "kind": "h2",
+      "chapter": "١٣-قال-الحافظ-ابن-حجر-رحمه-الله",
+      "prev": "355942b71e4c64728a45e53a2c0dfe2455b09c580f559baccc171b8039b19b29",
+      "next": "06223aa13d118e53e6cbc96f3b16e56e1e1c422fd525d0bd97b52c6d03bea1fc"
+    },
+    {
+      "ord": 174,
+      "blockId": "83a4706ba3c1831bc2728d5ba6232a31",
+      "fp64": "dc9ea440875fc97a",
+      "normHash": "06223aa13d118e53e6cbc96f3b16e56e1e1c422fd525d0bd97b52c6d03bea1fc",
+      "kind": "p",
+      "chapter": "١٣-قال-الحافظ-ابن-حجر-رحمه-الله",
+      "prev": "f17ef71dad481870ca0dd41490279c3ae47df14e19c3d24f82414990ec293ab0",
+      "next": "b2f83634ca431117a8a9f95b31f2097ad57c517f46afc9f2acb663d0cf2ef965"
+    },
+    {
+      "ord": 175,
+      "blockId": "f7e556f3bfd0dd0e9f796f63a813220e",
+      "fp64": "d808770a7dcccd73",
+      "normHash": "b2f83634ca431117a8a9f95b31f2097ad57c517f46afc9f2acb663d0cf2ef965",
+      "kind": "p",
+      "chapter": "١٣-قال-الحافظ-ابن-حجر-رحمه-الله",
+      "prev": "06223aa13d118e53e6cbc96f3b16e56e1e1c422fd525d0bd97b52c6d03bea1fc",
+      "next": "10d76e1879a1ef6f2fe39e5c5b89e33e22083ebb14a869c0d2495f87dc134686"
+    },
+    {
+      "ord": 176,
+      "blockId": "25ecc7b248a3675aee1c35a5f9fec01e",
+      "fp64": "a5ffff9a5a776b7f",
+      "normHash": "10d76e1879a1ef6f2fe39e5c5b89e33e22083ebb14a869c0d2495f87dc134686",
+      "kind": "page",
+      "chapter": "١٣-قال-الحافظ-ابن-حجر-رحمه-الله",
+      "prev": "b2f83634ca431117a8a9f95b31f2097ad57c517f46afc9f2acb663d0cf2ef965",
+      "next": "c42c18778081af36a44885f7229ae168fa37434bd3b82d97d43ac2856e4fcee8"
+    },
+    {
+      "ord": 177,
+      "blockId": "cabaa3035aae8e317229d66f5c199170",
+      "fp64": "c31c2f118791c9fe",
+      "normHash": "c42c18778081af36a44885f7229ae168fa37434bd3b82d97d43ac2856e4fcee8",
+      "kind": "h2",
+      "chapter": "المبحث-الخامس-أحكام-إجابة-المؤذن",
+      "prev": "10d76e1879a1ef6f2fe39e5c5b89e33e22083ebb14a869c0d2495f87dc134686",
+      "next": "4c854307c5efb39f8346bc1941c86b63f7e3cc44cd90b574b03bc8f4f1adceee"
+    },
+    {
+      "ord": 178,
+      "blockId": "857b2fea9246f42a58e2f553f75cda41",
+      "fp64": "455de9b237148859",
+      "normHash": "4c854307c5efb39f8346bc1941c86b63f7e3cc44cd90b574b03bc8f4f1adceee",
+      "kind": "p",
+      "chapter": "المبحث-الخامس-أحكام-إجابة-المؤذن",
+      "prev": "c42c18778081af36a44885f7229ae168fa37434bd3b82d97d43ac2856e4fcee8",
+      "next": "d30e3414ed02c24a22333cca8c363da6362c96a10c2965a480d896e120b4efec"
+    },
+    {
+      "ord": 179,
+      "blockId": "eb6bde788ea9deb7ccc3ba337b0918f0",
+      "fp64": "4359ad96d1b8965e",
+      "normHash": "d30e3414ed02c24a22333cca8c363da6362c96a10c2965a480d896e120b4efec",
+      "kind": "h2",
+      "chapter": "١-إجابة-المؤذن-مستحبة-بإجماع-أهل-العلم",
+      "prev": "4c854307c5efb39f8346bc1941c86b63f7e3cc44cd90b574b03bc8f4f1adceee",
+      "next": "3ffe484161c0bd7530213f026d5c587cfd994a1810aa8a898c3d6335e89b0771"
+    },
+    {
+      "ord": 180,
+      "blockId": "150269d9753c36305a79108cc4b3a360",
+      "fp64": "c44025785f759f3e",
+      "normHash": "3ffe484161c0bd7530213f026d5c587cfd994a1810aa8a898c3d6335e89b0771",
+      "kind": "p",
+      "chapter": "١-إجابة-المؤذن-مستحبة-بإجماع-أهل-العلم",
+      "prev": "d30e3414ed02c24a22333cca8c363da6362c96a10c2965a480d896e120b4efec",
+      "next": "99cc38cafc181da13a55369cc867db646e43806a5d1de00a3d8e1c6a67a06f89"
+    },
+    {
+      "ord": 181,
+      "blockId": "c0dd351a50f4b1b112b6ed215d164bd8",
+      "fp64": "1a9b2894c7b227cc",
+      "normHash": "99cc38cafc181da13a55369cc867db646e43806a5d1de00a3d8e1c6a67a06f89",
+      "kind": "p",
+      "chapter": "١-إجابة-المؤذن-مستحبة-بإجماع-أهل-العلم",
+      "prev": "3ffe484161c0bd7530213f026d5c587cfd994a1810aa8a898c3d6335e89b0771",
+      "next": "c65a0d6fb148570ec603480c579c68c7fd6eb9d8db9ca25a5b988acd37e9dda0"
+    },
+    {
+      "ord": 182,
+      "blockId": "f84b4f11eee705fa7c6491498eafac95",
+      "fp64": "b642e4581132511e",
+      "normHash": "c65a0d6fb148570ec603480c579c68c7fd6eb9d8db9ca25a5b988acd37e9dda0",
+      "kind": "p",
+      "chapter": "١-إجابة-المؤذن-مستحبة-بإجماع-أهل-العلم",
+      "prev": "99cc38cafc181da13a55369cc867db646e43806a5d1de00a3d8e1c6a67a06f89",
+      "next": "59a074ce100d14e65ec1dcd55413f951c62b2754b8fc53d0ff4ccc7ce09d6328"
+    },
+    {
+      "ord": 183,
+      "blockId": "d24f9d7b6cda88abf212b0c9f3e47f77",
+      "fp64": "7fa2820491505738",
+      "normHash": "59a074ce100d14e65ec1dcd55413f951c62b2754b8fc53d0ff4ccc7ce09d6328",
+      "kind": "p",
+      "chapter": "١-إجابة-المؤذن-مستحبة-بإجماع-أهل-العلم",
+      "prev": "c65a0d6fb148570ec603480c579c68c7fd6eb9d8db9ca25a5b988acd37e9dda0",
+      "next": "287359c33444acdaca29fc591a5b85feb7cfc77cb4600d394ed6496ba374464b"
+    },
+    {
+      "ord": 184,
+      "blockId": "0856d99fbbc61a4209baea7ac02dd50a",
+      "fp64": "fc3861aabc4d5d52",
+      "normHash": "287359c33444acdaca29fc591a5b85feb7cfc77cb4600d394ed6496ba374464b",
+      "kind": "p",
+      "chapter": "١-إجابة-المؤذن-مستحبة-بإجماع-أهل-العلم",
+      "prev": "59a074ce100d14e65ec1dcd55413f951c62b2754b8fc53d0ff4ccc7ce09d6328",
+      "next": "a181acef972400c92ed3ae51e67ba828b894042089a48611cc161a547d84306a"
+    },
+    {
+      "ord": 185,
+      "blockId": "4c4a9cf215cff9b52dbe4192096d76a5",
+      "fp64": "2ffff3fbdf3f7f7e",
+      "normHash": "a181acef972400c92ed3ae51e67ba828b894042089a48611cc161a547d84306a",
+      "kind": "page",
+      "chapter": "١-إجابة-المؤذن-مستحبة-بإجماع-أهل-العلم",
+      "prev": "287359c33444acdaca29fc591a5b85feb7cfc77cb4600d394ed6496ba374464b",
+      "next": "6bb70e85787ce350a06211faecdfa74e90304f3ef9eca48ba6a0ab223214929a"
+    },
+    {
+      "ord": 186,
+      "blockId": "a5f11526882a6ef3fb67f99ca0b32bb9",
+      "fp64": "5d4626029142177e",
+      "normHash": "6bb70e85787ce350a06211faecdfa74e90304f3ef9eca48ba6a0ab223214929a",
+      "kind": "p",
+      "chapter": "١-إجابة-المؤذن-مستحبة-بإجماع-أهل-العلم",
+      "prev": "a181acef972400c92ed3ae51e67ba828b894042089a48611cc161a547d84306a",
+      "next": "e54ff4bcafe32938046e0cb832f57c3457f92e7900d31affbc0f0e1e3df7d86c"
+    },
+    {
+      "ord": 187,
+      "blockId": "86644281ad3de10fedebc5f7d8388a64",
+      "fp64": "b593347aa0ac3a53",
+      "normHash": "e54ff4bcafe32938046e0cb832f57c3457f92e7900d31affbc0f0e1e3df7d86c",
+      "kind": "p",
+      "chapter": "١-إجابة-المؤذن-مستحبة-بإجماع-أهل-العلم",
+      "prev": "6bb70e85787ce350a06211faecdfa74e90304f3ef9eca48ba6a0ab223214929a",
+      "next": "193c56ce1678ca4b7a383acc62f035570cb9bea8f227f2ea68dadffd953f6b89"
+    },
+    {
+      "ord": 188,
+      "blockId": "bec9c3318c5f1a87807e694e746b361f",
+      "fp64": "7604425105428a1c",
+      "normHash": "193c56ce1678ca4b7a383acc62f035570cb9bea8f227f2ea68dadffd953f6b89",
+      "kind": "p",
+      "chapter": "١-إجابة-المؤذن-مستحبة-بإجماع-أهل-العلم",
+      "prev": "e54ff4bcafe32938046e0cb832f57c3457f92e7900d31affbc0f0e1e3df7d86c",
+      "next": "de2cb3689a8865fb91dafe809df5677440f1470244ae6dfedbf366518de1896e"
+    },
+    {
+      "ord": 189,
+      "blockId": "6f72cdc8e7cc7cd70b6de2277ec2e0f9",
+      "fp64": "dd2924b255fd0f56",
+      "normHash": "de2cb3689a8865fb91dafe809df5677440f1470244ae6dfedbf366518de1896e",
+      "kind": "p",
+      "chapter": "١-إجابة-المؤذن-مستحبة-بإجماع-أهل-العلم",
+      "prev": "193c56ce1678ca4b7a383acc62f035570cb9bea8f227f2ea68dadffd953f6b89",
+      "next": "b73aa4cdc874f833049801c90b61644752248ba6277e7139cb021ddcc4ca7d5c"
+    },
+    {
+      "ord": 190,
+      "blockId": "5ab50378bf3bdeb5545e16f4857fe637",
+      "fp64": "afdff7fe5fb37f77",
+      "normHash": "b73aa4cdc874f833049801c90b61644752248ba6277e7139cb021ddcc4ca7d5c",
+      "kind": "page",
+      "chapter": "١-إجابة-المؤذن-مستحبة-بإجماع-أهل-العلم",
+      "prev": "de2cb3689a8865fb91dafe809df5677440f1470244ae6dfedbf366518de1896e",
+      "next": "ff5b7be40c7f4890b09eea979539d8483143614b326362e1660b1a2c03f4cded"
+    },
+    {
+      "ord": 191,
+      "blockId": "e3d18fda843feba72ea77a55df0c9438",
+      "fp64": "5d46624bb766df57",
+      "normHash": "ff5b7be40c7f4890b09eea979539d8483143614b326362e1660b1a2c03f4cded",
+      "kind": "p",
+      "chapter": "١-إجابة-المؤذن-مستحبة-بإجماع-أهل-العلم",
+      "prev": "b73aa4cdc874f833049801c90b61644752248ba6277e7139cb021ddcc4ca7d5c",
+      "next": "36a7c8be62d38a3a4055a08f41c75897792602d66ab8ae901a5bd87dae010922"
+    },
+    {
+      "ord": 192,
+      "blockId": "d88461595646f14a90e2a92cc87f667f",
+      "fp64": "e242e6dd041bd83e",
+      "normHash": "36a7c8be62d38a3a4055a08f41c75897792602d66ab8ae901a5bd87dae010922",
+      "kind": "p",
+      "chapter": "١-إجابة-المؤذن-مستحبة-بإجماع-أهل-العلم",
+      "prev": "ff5b7be40c7f4890b09eea979539d8483143614b326362e1660b1a2c03f4cded",
+      "next": "27b1e8a19d1e8a962ab89116e301cb0e661a5b6fdaba036b61d93052b517cfa1"
+    },
+    {
+      "ord": 193,
+      "blockId": "1a435120f367e05586637040decf0bb9",
+      "fp64": "164e6e129d075cdf",
+      "normHash": "27b1e8a19d1e8a962ab89116e301cb0e661a5b6fdaba036b61d93052b517cfa1",
+      "kind": "p",
+      "chapter": "١-إجابة-المؤذن-مستحبة-بإجماع-أهل-العلم",
+      "prev": "36a7c8be62d38a3a4055a08f41c75897792602d66ab8ae901a5bd87dae010922",
+      "next": "71590098047bc376fc495918232a76d9c6925754de88234e56ef881cd3fb811e"
+    },
+    {
+      "ord": 194,
+      "blockId": "d7121d432e16d9525fc0615f57d4c805",
+      "fp64": "761a69ba948dd9db",
+      "normHash": "71590098047bc376fc495918232a76d9c6925754de88234e56ef881cd3fb811e",
+      "kind": "h2",
+      "chapter": "٢-إجابة-المؤذن",
+      "prev": "27b1e8a19d1e8a962ab89116e301cb0e661a5b6fdaba036b61d93052b517cfa1",
+      "next": "8c64352d29cd2ec993c99adad1e2ffeadfea0221db7b0b69e70f6a519c589a57"
+    },
+    {
+      "ord": 195,
+      "blockId": "8155f5cf7059cec39a62e087824536c9",
+      "fp64": "bc50e054634603be",
+      "normHash": "8c64352d29cd2ec993c99adad1e2ffeadfea0221db7b0b69e70f6a519c589a57",
+      "kind": "p",
+      "chapter": "٢-إجابة-المؤذن",
+      "prev": "71590098047bc376fc495918232a76d9c6925754de88234e56ef881cd3fb811e",
+      "next": "b9176aa60f2a28f443203b5f0acd30774a29ebba6fa257864676ff489cad0518"
+    },
+    {
+      "ord": 196,
+      "blockId": "367a154d946bae2a4838e246877f4cb9",
+      "fp64": "f68861da15665856",
+      "normHash": "b9176aa60f2a28f443203b5f0acd30774a29ebba6fa257864676ff489cad0518",
+      "kind": "p",
+      "chapter": "٢-إجابة-المؤذن",
+      "prev": "8c64352d29cd2ec993c99adad1e2ffeadfea0221db7b0b69e70f6a519c589a57",
+      "next": "f57279e5e08f65b9aa33e6f77c59738fd981675b1d001e1bb7fb0ade4dc7b44e"
+    },
+    {
+      "ord": 197,
+      "blockId": "c5e134e35072cdf0f41c04a636fa9627",
+      "fp64": "bdfff3fb7b7175f6",
+      "normHash": "f57279e5e08f65b9aa33e6f77c59738fd981675b1d001e1bb7fb0ade4dc7b44e",
+      "kind": "page",
+      "chapter": "٢-إجابة-المؤذن",
+      "prev": "b9176aa60f2a28f443203b5f0acd30774a29ebba6fa257864676ff489cad0518",
+      "next": "e9e860f42db48cdccc0157d50b0cfc584eb2942d7d65cbdbe0af8faaecf9c7f8"
+    },
+    {
+      "ord": 198,
+      "blockId": "a2a279ddeb39568b6f9c7b438f88d731",
+      "fp64": "f441c45d5f6253be",
+      "normHash": "e9e860f42db48cdccc0157d50b0cfc584eb2942d7d65cbdbe0af8faaecf9c7f8",
+      "kind": "p",
+      "chapter": "٢-إجابة-المؤذن",
+      "prev": "f57279e5e08f65b9aa33e6f77c59738fd981675b1d001e1bb7fb0ade4dc7b44e",
+      "next": "1b2aac2fa5c2c6c3904d33e56d831c38f4e7fbe6d99f0f48b6e8791a23bba257"
+    },
+    {
+      "ord": 199,
+      "blockId": "8fd7fc4acab996c477ecb34a04c979c9",
+      "fp64": "7410e0541742523c",
+      "normHash": "1b2aac2fa5c2c6c3904d33e56d831c38f4e7fbe6d99f0f48b6e8791a23bba257",
+      "kind": "p",
+      "chapter": "٢-إجابة-المؤذن",
+      "prev": "e9e860f42db48cdccc0157d50b0cfc584eb2942d7d65cbdbe0af8faaecf9c7f8",
+      "next": "739e24eaf33a6b786391791b4a9357b06a575fd12315d650d7dfbec8709cd419"
+    },
+    {
+      "ord": 200,
+      "blockId": "e08272d28e067d03132f0af20aba4617",
+      "fp64": "a0c6a28487670ce9",
+      "normHash": "739e24eaf33a6b786391791b4a9357b06a575fd12315d650d7dfbec8709cd419",
+      "kind": "p",
+      "chapter": "٢-إجابة-المؤذن",
+      "prev": "1b2aac2fa5c2c6c3904d33e56d831c38f4e7fbe6d99f0f48b6e8791a23bba257",
+      "next": "72c7445f19396790f92e60e942760c10e7c952ee1d7c25d9b7963f9f67264dc5"
+    },
+    {
+      "ord": 201,
+      "blockId": "ced6a00bcfec1cc86321c2184beabe5c",
+      "fp64": "da3e225a91d41bda",
+      "normHash": "72c7445f19396790f92e60e942760c10e7c952ee1d7c25d9b7963f9f67264dc5",
+      "kind": "h2",
+      "chapter": "٣-حرص-السلف-على-اتباع-السنة-في-إجابة-المؤذن",
+      "prev": "739e24eaf33a6b786391791b4a9357b06a575fd12315d650d7dfbec8709cd419",
+      "next": "1504ba571dd31282b2655c389d725781f714cb0e97eaac889b8dc1053ecefb56"
+    },
+    {
+      "ord": 202,
+      "blockId": "9fafbed2176187dab3b08b70511d79be",
+      "fp64": "7444c0109f734dbe",
+      "normHash": "1504ba571dd31282b2655c389d725781f714cb0e97eaac889b8dc1053ecefb56",
+      "kind": "p",
+      "chapter": "٣-حرص-السلف-على-اتباع-السنة-في-إجابة-المؤذن",
+      "prev": "72c7445f19396790f92e60e942760c10e7c952ee1d7c25d9b7963f9f67264dc5",
+      "next": "a9890f8699127f1738eff1805a782beac531ff40c38f6137340c1a767a948a69"
+    },
+    {
+      "ord": 203,
+      "blockId": "4a21150db0b02efb95a9e6db29204fad",
+      "fp64": "8f596240957d0f12",
+      "normHash": "a9890f8699127f1738eff1805a782beac531ff40c38f6137340c1a767a948a69",
+      "kind": "p",
+      "chapter": "٣-حرص-السلف-على-اتباع-السنة-في-إجابة-المؤذن",
+      "prev": "1504ba571dd31282b2655c389d725781f714cb0e97eaac889b8dc1053ecefb56",
+      "next": "c08cd48df02782a05d794b9546fe03555da34307f5cc30481c9cbf891f430ea4"
+    },
+    {
+      "ord": 204,
+      "blockId": "cd6bd2436db760a72b19abab213be359",
+      "fp64": "2ddff7df7b79e5b7",
+      "normHash": "c08cd48df02782a05d794b9546fe03555da34307f5cc30481c9cbf891f430ea4",
+      "kind": "page",
+      "chapter": "٣-حرص-السلف-على-اتباع-السنة-في-إجابة-المؤذن",
+      "prev": "a9890f8699127f1738eff1805a782beac531ff40c38f6137340c1a767a948a69",
+      "next": "795e6490d5ec172672b4f016b45e609ee05ffbd02cfc9c1a26508a81758346b0"
+    },
+    {
+      "ord": 205,
+      "blockId": "b5a45565c1fca593a4baffec9745d0b2",
+      "fp64": "c54094517b670fbb",
+      "normHash": "795e6490d5ec172672b4f016b45e609ee05ffbd02cfc9c1a26508a81758346b0",
+      "kind": "p",
+      "chapter": "٣-حرص-السلف-على-اتباع-السنة-في-إجابة-المؤذن",
+      "prev": "c08cd48df02782a05d794b9546fe03555da34307f5cc30481c9cbf891f430ea4",
+      "next": "01e8039bfba4d6dca184298de4abf76ff69d9190ddd438f0e886d63110d32d02"
+    },
+    {
+      "ord": 206,
+      "blockId": "6bd927bf41fd5bba35039b57db2380da",
+      "fp64": "d6587f545737dd96",
+      "normHash": "01e8039bfba4d6dca184298de4abf76ff69d9190ddd438f0e886d63110d32d02",
+      "kind": "h2",
+      "chapter": "٤-استحباب-قول-سامع-المؤذن-مثل-ما-يقول-إلا-في",
+      "prev": "795e6490d5ec172672b4f016b45e609ee05ffbd02cfc9c1a26508a81758346b0",
+      "next": "8c3c15d70fab76e2c26f35ec883405891fefa7950cc1f2562296b0f2bb1e26db"
+    },
+    {
+      "ord": 207,
+      "blockId": "2127592ba4877a49bceeb1179c95eeb3",
+      "fp64": "e4401ce8fa75df3b",
+      "normHash": "8c3c15d70fab76e2c26f35ec883405891fefa7950cc1f2562296b0f2bb1e26db",
+      "kind": "p",
+      "chapter": "٤-استحباب-قول-سامع-المؤذن-مثل-ما-يقول-إلا-في",
+      "prev": "01e8039bfba4d6dca184298de4abf76ff69d9190ddd438f0e886d63110d32d02",
+      "next": "7afd0e0ee985603fd6f74fcddea0ce9f08e8507c1a7ceea1e008687b7e849fc6"
+    },
+    {
+      "ord": 208,
+      "blockId": "494d97375e607d5a6fb91487d2363589",
+      "fp64": "b851b8924bb66b2c",
+      "normHash": "7afd0e0ee985603fd6f74fcddea0ce9f08e8507c1a7ceea1e008687b7e849fc6",
+      "kind": "h2",
+      "chapter": "٥-استحباب-الصلاة-على-رسول-الله-بعد-فراغه",
+      "prev": "8c3c15d70fab76e2c26f35ec883405891fefa7950cc1f2562296b0f2bb1e26db",
+      "next": "663c4a9b0cfb4368d889f2b3988a1ce57a52e801cf141ef6dd8e7b16b9f30a8e"
+    },
+    {
+      "ord": 209,
+      "blockId": "78bcb33a311523391c7ddfecb42aa4a6",
+      "fp64": "a2cbc7f9759df41e",
+      "normHash": "663c4a9b0cfb4368d889f2b3988a1ce57a52e801cf141ef6dd8e7b16b9f30a8e",
+      "kind": "p",
+      "chapter": "٥-استحباب-الصلاة-على-رسول-الله-بعد-فراغه",
+      "prev": "7afd0e0ee985603fd6f74fcddea0ce9f08e8507c1a7ceea1e008687b7e849fc6",
+      "next": "99401dc4c0a41a4bf596d2cc1a5b45ecd3205b3de8060fc305027de909ec145d"
+    },
+    {
+      "ord": 210,
+      "blockId": "c3456aaa6125bbcb7332dd958bb4ff8a",
+      "fp64": "b4510c249c25556c",
+      "normHash": "99401dc4c0a41a4bf596d2cc1a5b45ecd3205b3de8060fc305027de909ec145d",
+      "kind": "h2",
+      "chapter": "٦-استحباب-سؤال-الله-الوسيلة-للنبي",
+      "prev": "663c4a9b0cfb4368d889f2b3988a1ce57a52e801cf141ef6dd8e7b16b9f30a8e",
+      "next": "5cba92762c464493e1f1d7ff52ea65cc24292cc679f601647dc6ce34c9a52a76"
+    },
+    {
+      "ord": 211,
+      "blockId": "618e3017189dc88f72ebfa6dd45f3d20",
+      "fp64": "acfabdfe75b9e50d",
+      "normHash": "5cba92762c464493e1f1d7ff52ea65cc24292cc679f601647dc6ce34c9a52a76",
+      "kind": "li",
+      "chapter": "٦-استحباب-سؤال-الله-الوسيلة-للنبي",
+      "prev": "99401dc4c0a41a4bf596d2cc1a5b45ecd3205b3de8060fc305027de909ec145d",
+      "next": "21f94e50e81de6333a33acf720215c9682883dea77c46702e4d556271e8698c7"
+    },
+    {
+      "ord": 212,
+      "blockId": "24a60db89049cd10698939b258e47a3c",
+      "fp64": "d25b39fee6dbd43f",
+      "normHash": "21f94e50e81de6333a33acf720215c9682883dea77c46702e4d556271e8698c7",
+      "kind": "h2",
+      "chapter": "٧-يستحب-أن-يقول-السامع-كل-كلمة-بعد-فراغ-المؤذن",
+      "prev": "5cba92762c464493e1f1d7ff52ea65cc24292cc679f601647dc6ce34c9a52a76",
+      "next": "66ab89b0fe476232da52d971d452bb02a8df5b8d337834dd59cb44a53b6a30cd"
+    },
+    {
+      "ord": 213,
+      "blockId": "6942198571a481743f31b98cf0c0bd39",
+      "fp64": "94c2757ebc678819",
+      "normHash": "66ab89b0fe476232da52d971d452bb02a8df5b8d337834dd59cb44a53b6a30cd",
+      "kind": "p",
+      "chapter": "٧-يستحب-أن-يقول-السامع-كل-كلمة-بعد-فراغ-المؤذن",
+      "prev": "21f94e50e81de6333a33acf720215c9682883dea77c46702e4d556271e8698c7",
+      "next": "897a57a46d022b60acca3908a3fcaf399bac9b17c9d47c1fed017d34004601c0"
+    },
+    {
+      "ord": 214,
+      "blockId": "fd556b1ff6c256cc007bdf8a25f19298",
+      "fp64": "54dab907ff0185b8",
+      "normHash": "897a57a46d022b60acca3908a3fcaf399bac9b17c9d47c1fed017d34004601c0",
+      "kind": "h2",
+      "chapter": "٨-استحباب-قول-السامع-بعد-الشهادتين-وأنا-أشهد-أن",
+      "prev": "66ab89b0fe476232da52d971d452bb02a8df5b8d337834dd59cb44a53b6a30cd",
+      "next": "7e464a7bfb39080974146a6e90d436f09292477dd6ee46fda4a016e5ab6360af"
+    },
+    {
+      "ord": 215,
+      "blockId": "f51b801695eea2dbaafba6c3f2d35656",
+      "fp64": "81478b6e5974de1d",
+      "normHash": "7e464a7bfb39080974146a6e90d436f09292477dd6ee46fda4a016e5ab6360af",
+      "kind": "p",
+      "chapter": "٨-استحباب-قول-السامع-بعد-الشهادتين-وأنا-أشهد-أن",
+      "prev": "897a57a46d022b60acca3908a3fcaf399bac9b17c9d47c1fed017d34004601c0",
+      "next": "39bbd27cecfa3ea1408c71fa6d1a158269f05db52fba7e111be7c27df98297a3"
+    },
+    {
+      "ord": 216,
+      "blockId": "e28975552216c48be07fec71114561d4",
+      "fp64": "0c31691a1d7ecc57",
+      "normHash": "39bbd27cecfa3ea1408c71fa6d1a158269f05db52fba7e111be7c27df98297a3",
+      "kind": "p",
+      "chapter": "٨-استحباب-قول-السامع-بعد-الشهادتين-وأنا-أشهد-أن",
+      "prev": "7e464a7bfb39080974146a6e90d436f09292477dd6ee46fda4a016e5ab6360af",
+      "next": "0516e251ec96bafda2747e69ea3f55e59a1298a8f0722685ea476a4f2cfc8bea"
+    },
+    {
+      "ord": 217,
+      "blockId": "67ba62a0b3f59a9b8de24a6be6bb784f",
+      "fp64": "77ffff9efa7bfc7f",
+      "normHash": "0516e251ec96bafda2747e69ea3f55e59a1298a8f0722685ea476a4f2cfc8bea",
+      "kind": "page",
+      "chapter": "٨-استحباب-قول-السامع-بعد-الشهادتين-وأنا-أشهد-أن",
+      "prev": "39bbd27cecfa3ea1408c71fa6d1a158269f05db52fba7e111be7c27df98297a3",
+      "next": "5fdef35b7daa14340c36ca3faef91a9474b8fcd122caf1abdbaba86cba286ee7"
+    },
+    {
+      "ord": 218,
+      "blockId": "43b62b7007405699ea7139ab4a08b6ae",
+      "fp64": "0bc940ce09dd9c00",
+      "normHash": "5fdef35b7daa14340c36ca3faef91a9474b8fcd122caf1abdbaba86cba286ee7",
+      "kind": "h2",
+      "chapter": "٩-يستحب-لمن-رغب-غيره-في-خير-أن-يذكر-له-شيئا",
+      "prev": "0516e251ec96bafda2747e69ea3f55e59a1298a8f0722685ea476a4f2cfc8bea",
+      "next": "c6cf99269cac490d31ac4869140cbec7c9811a306e4be5dd223feea5651a8aa4"
+    },
+    {
+      "ord": 219,
+      "blockId": "c644ed75481064f527ad00a53533a76e",
+      "fp64": "6c44c05f3176797c",
+      "normHash": "c6cf99269cac490d31ac4869140cbec7c9811a306e4be5dd223feea5651a8aa4",
+      "kind": "p",
+      "chapter": "٩-يستحب-لمن-رغب-غيره-في-خير-أن-يذكر-له-شيئا",
+      "prev": "5fdef35b7daa14340c36ca3faef91a9474b8fcd122caf1abdbaba86cba286ee7",
+      "next": "0ac0d52f93887fbaf89231bc1b07beec16ffb4ed01a0ecf69fd259dfed5bf0c6"
+    },
+    {
+      "ord": 220,
+      "blockId": "47b60c6b694c9e63604db602ced88f51",
+      "fp64": "5b5a6d32944f79db",
+      "normHash": "0ac0d52f93887fbaf89231bc1b07beec16ffb4ed01a0ecf69fd259dfed5bf0c6",
+      "kind": "h2",
+      "chapter": "١٠-يستحب-إجابة-المؤذن-لكل-من-سمعه",
+      "prev": "c6cf99269cac490d31ac4869140cbec7c9811a306e4be5dd223feea5651a8aa4",
+      "next": "cc94a2998e5bfdea219c2fa3c7472af6309fa367fc7a9fa4013bfcf13a6b5138"
+    },
+    {
+      "ord": 221,
+      "blockId": "60c146c3fd47a45400d2bf794276b75d",
+      "fp64": "084249559b57bc58",
+      "normHash": "cc94a2998e5bfdea219c2fa3c7472af6309fa367fc7a9fa4013bfcf13a6b5138",
+      "kind": "p",
+      "chapter": "١٠-يستحب-إجابة-المؤذن-لكل-من-سمعه",
+      "prev": "0ac0d52f93887fbaf89231bc1b07beec16ffb4ed01a0ecf69fd259dfed5bf0c6",
+      "next": "1a3b52132ce673334c7fff0afda4a139ae862002d03948de8da7ce3aa5789f4b"
+    },
+    {
+      "ord": 222,
+      "blockId": "94bad2f8d50cd8a27e6d567de4625a47",
+      "fp64": "e89a5cc196dbfed6",
+      "normHash": "1a3b52132ce673334c7fff0afda4a139ae862002d03948de8da7ce3aa5789f4b",
+      "kind": "h2",
+      "chapter": "١١-ظاهر-اختصاص-الإجابة-بمن-يسمع-حتى-لو-رأى",
+      "prev": "cc94a2998e5bfdea219c2fa3c7472af6309fa367fc7a9fa4013bfcf13a6b5138",
+      "next": "12fcf54934ff744221ba9396b3617a6d2c76eb2a16fc2a01bfc32b88b4f81fe9"
+    },
+    {
+      "ord": 223,
+      "blockId": "42ce37ab648268b68aed67d1d6ee2914",
+      "fp64": "9f5cf040414f1e4b",
+      "normHash": "12fcf54934ff744221ba9396b3617a6d2c76eb2a16fc2a01bfc32b88b4f81fe9",
+      "kind": "p",
+      "chapter": "١١-ظاهر-اختصاص-الإجابة-بمن-يسمع-حتى-لو-رأى",
+      "prev": "1a3b52132ce673334c7fff0afda4a139ae862002d03948de8da7ce3aa5789f4b",
+      "next": "a2a7b83d91bb2a0287fc80e81916205674122737aff21a49f107ab2cc216b81e"
+    },
+    {
+      "ord": 224,
+      "blockId": "295b268c24520ad802278528484ed9dd",
+      "fp64": "4b4b0e7fd7449846",
+      "normHash": "a2a7b83d91bb2a0287fc80e81916205674122737aff21a49f107ab2cc216b81e",
+      "kind": "h2",
+      "chapter": "١٢-الظاهر-من-قوله-في-الحديث-فقولوا-التعبد-بالقول",
+      "prev": "12fcf54934ff744221ba9396b3617a6d2c76eb2a16fc2a01bfc32b88b4f81fe9",
+      "next": "9193787dbd87f6f8ed173a747ec4cdf7861feb7a69fc13ad8141435504d172fe"
+    },
+    {
+      "ord": 225,
+      "blockId": "76ee1ce3e2c36a1c49ac1a189d29a700",
+      "fp64": "e66a301137178c5c",
+      "normHash": "9193787dbd87f6f8ed173a747ec4cdf7861feb7a69fc13ad8141435504d172fe",
+      "kind": "p",
+      "chapter": "١٢-الظاهر-من-قوله-في-الحديث-فقولوا-التعبد-بالقول",
+      "prev": "a2a7b83d91bb2a0287fc80e81916205674122737aff21a49f107ab2cc216b81e",
+      "next": "e5e76d12c2c6a61f4416165c951a89d0272e016bcfe2e1982120418629859332"
+    },
+    {
+      "ord": 226,
+      "blockId": "3822f8fa5632ad7964e9d0fb2c2adeba",
+      "fp64": "b3422c5991565fb4",
+      "normHash": "e5e76d12c2c6a61f4416165c951a89d0272e016bcfe2e1982120418629859332",
+      "kind": "h2",
+      "chapter": "١٣-إذا-سمع-الأذان-وهو-في-قراءة-أو-تسبيح-قطع-ما",
+      "prev": "9193787dbd87f6f8ed173a747ec4cdf7861feb7a69fc13ad8141435504d172fe",
+      "next": "7c0a34d141c5537c9aa24fe5ac6c7dae927c0c2b8e432b238e923efdce7841df"
+    },
+    {
+      "ord": 227,
+      "blockId": "c81a47d79c0300c7347c5152c38e9700",
+      "fp64": "204d6b20ad622516",
+      "normHash": "7c0a34d141c5537c9aa24fe5ac6c7dae927c0c2b8e432b238e923efdce7841df",
+      "kind": "p",
+      "chapter": "١٣-إذا-سمع-الأذان-وهو-في-قراءة-أو-تسبيح-قطع-ما",
+      "prev": "e5e76d12c2c6a61f4416165c951a89d0272e016bcfe2e1982120418629859332",
+      "next": "6a73167456ab9eb3433120a701e772c9e3818c36c97ac16a3c94b7d4fd9bf6d6"
+    },
+    {
+      "ord": 228,
+      "blockId": "ff9b709028e465c1d2171195ea4833c3",
+      "fp64": "1c7921337f7cef57",
+      "normHash": "6a73167456ab9eb3433120a701e772c9e3818c36c97ac16a3c94b7d4fd9bf6d6",
+      "kind": "p",
+      "chapter": "١٣-إذا-سمع-الأذان-وهو-في-قراءة-أو-تسبيح-قطع-ما",
+      "prev": "7c0a34d141c5537c9aa24fe5ac6c7dae927c0c2b8e432b238e923efdce7841df",
+      "next": "2ab029640d0d4db368c048d36be6c59a5ae8545d4205df7e2b6173bbc905b96c"
+    },
+    {
+      "ord": 229,
+      "blockId": "7c26ccb18451528fdf0b0fc8c485c778",
+      "fp64": "77dff39fdf716677",
+      "normHash": "2ab029640d0d4db368c048d36be6c59a5ae8545d4205df7e2b6173bbc905b96c",
+      "kind": "page",
+      "chapter": "١٣-إذا-سمع-الأذان-وهو-في-قراءة-أو-تسبيح-قطع-ما",
+      "prev": "6a73167456ab9eb3433120a701e772c9e3818c36c97ac16a3c94b7d4fd9bf6d6",
+      "next": "97a061aeb50291f3ea14e953118df404a0ba7816398afeb122392ae23b1e580b"
+    },
+    {
+      "ord": 230,
+      "blockId": "ce4109dd34fe5139aefc1a44e23bbb67",
+      "fp64": "7e4aed5edd6fdd5f",
+      "normHash": "97a061aeb50291f3ea14e953118df404a0ba7816398afeb122392ae23b1e580b",
+      "kind": "p",
+      "chapter": "١٣-إذا-سمع-الأذان-وهو-في-قراءة-أو-تسبيح-قطع-ما",
+      "prev": "2ab029640d0d4db368c048d36be6c59a5ae8545d4205df7e2b6173bbc905b96c",
+      "next": "42e54c76579c71c72c99266452a1da5a602b180de34c15617b3e3a5850f589bc"
+    },
+    {
+      "ord": 231,
+      "blockId": "b6c01a4fea1187f209b40582f634f7a2",
+      "fp64": "d74f9366fddf5ede",
+      "normHash": "42e54c76579c71c72c99266452a1da5a602b180de34c15617b3e3a5850f589bc",
+      "kind": "h2",
+      "chapter": "١٤-يستحب-متابعة-المؤذن-في-الإقامة",
+      "prev": "97a061aeb50291f3ea14e953118df404a0ba7816398afeb122392ae23b1e580b",
+      "next": "c4868508a3601738a50eada79dc0ad67477f7308da154548984a42d348b72421"
+    },
+    {
+      "ord": 232,
+      "blockId": "cedf3b440b225e40ea06b663776a4fc9",
+      "fp64": "be7de01083be077a",
+      "normHash": "c4868508a3601738a50eada79dc0ad67477f7308da154548984a42d348b72421",
+      "kind": "p",
+      "chapter": "١٤-يستحب-متابعة-المؤذن-في-الإقامة",
+      "prev": "42e54c76579c71c72c99266452a1da5a602b180de34c15617b3e3a5850f589bc",
+      "next": "71ec3f9540cf8a2aae1e7efa19a886e1c7edc3fd58e015ac7d003b3d19c5bb2d"
+    },
+    {
+      "ord": 233,
+      "blockId": "92bbf09c8f3a6615c7143d0a92578aac",
+      "fp64": "b67de63ecffa118f",
+      "normHash": "71ec3f9540cf8a2aae1e7efa19a886e1c7edc3fd58e015ac7d003b3d19c5bb2d",
+      "kind": "p",
+      "chapter": "١٤-يستحب-متابعة-المؤذن-في-الإقامة",
+      "prev": "c4868508a3601738a50eada79dc0ad67477f7308da154548984a42d348b72421",
+      "next": "a3e973d973f645e6c6bd2bf5c7f0ed3072b70d2196cb8d7f8bfb225f273d8674"
+    },
+    {
+      "ord": 234,
+      "blockId": "b1ded8c14c6407c715762bb7a136d1d9",
+      "fp64": "eb6aa1ea167bd37b",
+      "normHash": "a3e973d973f645e6c6bd2bf5c7f0ed3072b70d2196cb8d7f8bfb225f273d8674",
+      "kind": "p",
+      "chapter": "١٤-يستحب-متابعة-المؤذن-في-الإقامة",
+      "prev": "71ec3f9540cf8a2aae1e7efa19a886e1c7edc3fd58e015ac7d003b3d19c5bb2d",
+      "next": "ed236da900cd2a76449436148a8fb2907e58a220386f24dfec6d855535bcaad2"
+    },
+    {
+      "ord": 235,
+      "blockId": "0b9102476d1bdeda03607111afee9f90",
+      "fp64": "ff5ad1464f5f0c9e",
+      "normHash": "ed236da900cd2a76449436148a8fb2907e58a220386f24dfec6d855535bcaad2",
+      "kind": "h2",
+      "chapter": "١٥-يستحب-إذا-قال-المؤذن-في-أذان-الفجر-الصلاة-خير",
+      "prev": "a3e973d973f645e6c6bd2bf5c7f0ed3072b70d2196cb8d7f8bfb225f273d8674",
+      "next": "bf92d34dc82f92e297cd6dd9fe03233bf1cc5316873baf107613c8bc7f36d371"
+    },
+    {
+      "ord": 236,
+      "blockId": "68db57cefe4d50bc2623a796ae1a25a2",
+      "fp64": "4ec844088ff73c00",
+      "normHash": "bf92d34dc82f92e297cd6dd9fe03233bf1cc5316873baf107613c8bc7f36d371",
+      "kind": "p",
+      "chapter": "١٥-يستحب-إذا-قال-المؤذن-في-أذان-الفجر-الصلاة-خير",
+      "prev": "ed236da900cd2a76449436148a8fb2907e58a220386f24dfec6d855535bcaad2",
+      "next": "8b972c1902ed3187f39eaebe483783ef7014da7e512902889f0894143ca552a1"
+    },
+    {
+      "ord": 237,
+      "blockId": "b39485a879593e12e0b5beb68eb75a35",
+      "fp64": "517b683a17690e4b",
+      "normHash": "8b972c1902ed3187f39eaebe483783ef7014da7e512902889f0894143ca552a1",
+      "kind": "p",
+      "chapter": "١٥-يستحب-إذا-قال-المؤذن-في-أذان-الفجر-الصلاة-خير",
+      "prev": "bf92d34dc82f92e297cd6dd9fe03233bf1cc5316873baf107613c8bc7f36d371",
+      "next": "1b812f1da0256532b54fe37b737551313292597646cd399cd89855624c1fd078"
+    },
+    {
+      "ord": 238,
+      "blockId": "17e00386e25cbe2dd7f335df6a5f7468",
+      "fp64": "f7ffffdf5eb7e17f",
+      "normHash": "1b812f1da0256532b54fe37b737551313292597646cd399cd89855624c1fd078",
+      "kind": "page",
+      "chapter": "١٥-يستحب-إذا-قال-المؤذن-في-أذان-الفجر-الصلاة-خير",
+      "prev": "8b972c1902ed3187f39eaebe483783ef7014da7e512902889f0894143ca552a1",
+      "next": "565de01e0b40210b3eae7c2ee141fee21c3aaf30062af352506873bdb2585135"
+    },
+    {
+      "ord": 239,
+      "blockId": "ab70df084fbc8400806b5e6e292087f9",
+      "fp64": "dfc86058d4477f22",
+      "normHash": "565de01e0b40210b3eae7c2ee141fee21c3aaf30062af352506873bdb2585135",
+      "kind": "li",
+      "chapter": "١٥-يستحب-إذا-قال-المؤذن-في-أذان-الفجر-الصلاة-خير",
+      "prev": "1b812f1da0256532b54fe37b737551313292597646cd399cd89855624c1fd078",
+      "next": "6a128c6b88022272a142cc4850aa90c8803f8b1c4ca399e0804719bc3f14ad00"
+    },
+    {
+      "ord": 240,
+      "blockId": "1f36ae0f98f46b0c8818e5f693bd0bd3",
+      "fp64": "97546f84911f99df",
+      "normHash": "6a128c6b88022272a142cc4850aa90c8803f8b1c4ca399e0804719bc3f14ad00",
+      "kind": "p",
+      "chapter": "١٥-يستحب-إذا-قال-المؤذن-في-أذان-الفجر-الصلاة-خير",
+      "prev": "565de01e0b40210b3eae7c2ee141fee21c3aaf30062af352506873bdb2585135",
+      "next": "925527f36da5bbc685ce29e613b2f64d973ab981c2c896de0c21defc58ac7332"
+    },
+    {
+      "ord": 241,
+      "blockId": "1e069b5d6b6b2aabc4e93821a6ffd006",
+      "fp64": "ee4783de7519e538",
+      "normHash": "925527f36da5bbc685ce29e613b2f64d973ab981c2c896de0c21defc58ac7332",
+      "kind": "p",
+      "chapter": "١٥-يستحب-إذا-قال-المؤذن-في-أذان-الفجر-الصلاة-خير",
+      "prev": "6a128c6b88022272a142cc4850aa90c8803f8b1c4ca399e0804719bc3f14ad00",
+      "next": "7c314a8dd8f201af33956f2cc3e9b1031f57247e7809fa0d5c73b09b1df657b7"
+    },
+    {
+      "ord": 242,
+      "blockId": "2cc887c813d74e2912f97522be4cf948",
+      "fp64": "e2de735e75598c98",
+      "normHash": "7c314a8dd8f201af33956f2cc3e9b1031f57247e7809fa0d5c73b09b1df657b7",
+      "kind": "h2",
+      "chapter": "١٦-يستحب-إذا-دخل-المسجد-فسمع-المؤذن-أن-ينتظر",
+      "prev": "925527f36da5bbc685ce29e613b2f64d973ab981c2c896de0c21defc58ac7332",
+      "next": "64b5e507e35a6f9fbfbdf53520ed0b0c52818695b0b743d66e00a964b829f7b3"
+    },
+    {
+      "ord": 243,
+      "blockId": "b4dd0a4ab61a62c8ab3e6f0b9b612f97",
+      "fp64": "5d4a205055659e58",
+      "normHash": "64b5e507e35a6f9fbfbdf53520ed0b0c52818695b0b743d66e00a964b829f7b3",
+      "kind": "p",
+      "chapter": "١٦-يستحب-إذا-دخل-المسجد-فسمع-المؤذن-أن-ينتظر",
+      "prev": "7c314a8dd8f201af33956f2cc3e9b1031f57247e7809fa0d5c73b09b1df657b7",
+      "next": "e34c2494ff5cbdc924c6f860aefa5fea954590d966f699776c74c1bbfdda3b6b"
+    },
+    {
+      "ord": 244,
+      "blockId": "f3f6e330a6d8c3fdd2f29248c4d66b8a",
+      "fp64": "b5fff3fefa7b7337",
+      "normHash": "e34c2494ff5cbdc924c6f860aefa5fea954590d966f699776c74c1bbfdda3b6b",
+      "kind": "page",
+      "chapter": "١٦-يستحب-إذا-دخل-المسجد-فسمع-المؤذن-أن-ينتظر",
+      "prev": "64b5e507e35a6f9fbfbdf53520ed0b0c52818695b0b743d66e00a964b829f7b3",
+      "next": "a4ac2ef24c78962757f655ca4630db69043195f0755a0acbd5187572c229d557"
+    },
+    {
+      "ord": 245,
+      "blockId": "2f8c4f42708670e45879b859b9ec4ef8",
+      "fp64": "4ecef0c055545d9c",
+      "normHash": "a4ac2ef24c78962757f655ca4630db69043195f0755a0acbd5187572c229d557",
+      "kind": "p",
+      "chapter": "١٦-يستحب-إذا-دخل-المسجد-فسمع-المؤذن-أن-ينتظر",
+      "prev": "e34c2494ff5cbdc924c6f860aefa5fea954590d966f699776c74c1bbfdda3b6b",
+      "next": "c888eef2879d845bcbf514f3f406821d652192e5e4b573dd6d5bfb74b783916c"
+    },
+    {
+      "ord": 246,
+      "blockId": "11a0555c1ba82742d5d65875077ae314",
+      "fp64": "bbdf71ff35957f9d",
+      "normHash": "c888eef2879d845bcbf514f3f406821d652192e5e4b573dd6d5bfb74b783916c",
+      "kind": "p",
+      "chapter": "١٦-يستحب-إذا-دخل-المسجد-فسمع-المؤذن-أن-ينتظر",
+      "prev": "a4ac2ef24c78962757f655ca4630db69043195f0755a0acbd5187572c229d557",
+      "next": "f7b25455fee83cb9025485fb11048825ec64b9b91f9a702ea445ae174750fd50"
+    },
+    {
+      "ord": 247,
+      "blockId": "a51c8f8a433a2f1ce719cb30876fdb46",
+      "fp64": "fc7f6f1655dfc65e",
+      "normHash": "f7b25455fee83cb9025485fb11048825ec64b9b91f9a702ea445ae174750fd50",
+      "kind": "p",
+      "chapter": "١٦-يستحب-إذا-دخل-المسجد-فسمع-المؤذن-أن-ينتظر",
+      "prev": "c888eef2879d845bcbf514f3f406821d652192e5e4b573dd6d5bfb74b783916c",
+      "next": "f97c38dda1947687f4bdace3e05193763cf01c3dc5ebceb69ec384bac4f53201"
+    },
+    {
+      "ord": 248,
+      "blockId": "ebd95f7e428604a25b09dcb29459d2d8",
+      "fp64": "7e92e31e54e3843b",
+      "normHash": "f97c38dda1947687f4bdace3e05193763cf01c3dc5ebceb69ec384bac4f53201",
+      "kind": "p",
+      "chapter": "١٦-يستحب-إذا-دخل-المسجد-فسمع-المؤذن-أن-ينتظر",
+      "prev": "f7b25455fee83cb9025485fb11048825ec64b9b91f9a702ea445ae174750fd50",
+      "next": "3abda60ca178b149939c2ee63aefe9639a9bfb1413b1d735d263c8cb70878343"
+    },
+    {
+      "ord": 249,
+      "blockId": "65222fba77452ea94bac371f17a2f3ce",
+      "fp64": "586ab8791fc45d52",
+      "normHash": "3abda60ca178b149939c2ee63aefe9639a9bfb1413b1d735d263c8cb70878343",
+      "kind": "p",
+      "chapter": "١٦-يستحب-إذا-دخل-المسجد-فسمع-المؤذن-أن-ينتظر",
+      "prev": "f97c38dda1947687f4bdace3e05193763cf01c3dc5ebceb69ec384bac4f53201",
+      "next": "21f9c20f4e83572f264bf3be8f944f198e85a4861ab0d298f36d08d44149d424"
+    },
+    {
+      "ord": 250,
+      "blockId": "5df587016afb3b8e13036baf34b9fcde",
+      "fp64": "ffdfff9edf716b76",
+      "normHash": "21f9c20f4e83572f264bf3be8f944f198e85a4861ab0d298f36d08d44149d424",
+      "kind": "page",
+      "chapter": "١٦-يستحب-إذا-دخل-المسجد-فسمع-المؤذن-أن-ينتظر",
+      "prev": "3abda60ca178b149939c2ee63aefe9639a9bfb1413b1d735d263c8cb70878343",
+      "next": "8778924d62fbbbed86d6e4163481c1b213e76cb3b0cefce6fd5b163a4ef35452"
+    },
+    {
+      "ord": 251,
+      "blockId": "9184819e7b0508b15d3f158130073d76",
+      "fp64": "3ffe7b5311c5dcf6",
+      "normHash": "8778924d62fbbbed86d6e4163481c1b213e76cb3b0cefce6fd5b163a4ef35452",
+      "kind": "h2",
+      "chapter": "١٧-إجابة-المؤذن-والترديد-معه-في-المذياع-سنة",
+      "prev": "21f9c20f4e83572f264bf3be8f944f198e85a4861ab0d298f36d08d44149d424",
+      "next": "652de87347a43be597c31d040dc9d6d98325e5a17f9bc828b3b2fa89878f81cd"
+    },
+    {
+      "ord": 252,
+      "blockId": "6c0bf538eae9e6ebaecf54d7fa358aeb",
+      "fp64": "9d492406595f4f96",
+      "normHash": "652de87347a43be597c31d040dc9d6d98325e5a17f9bc828b3b2fa89878f81cd",
+      "kind": "p",
+      "chapter": "١٧-إجابة-المؤذن-والترديد-معه-في-المذياع-سنة",
+      "prev": "8778924d62fbbbed86d6e4163481c1b213e76cb3b0cefce6fd5b163a4ef35452",
+      "next": "43128cf1e8e9c646fa8dfe84b56d25570a6e1cbcd6096d5c1b7e54107e0d686e"
+    },
+    {
+      "ord": 253,
+      "blockId": "152d19f334736b0946f1ecb7cb9aa1a8",
+      "fp64": "bc4a60141b565f3c",
+      "normHash": "43128cf1e8e9c646fa8dfe84b56d25570a6e1cbcd6096d5c1b7e54107e0d686e",
+      "kind": "p",
+      "chapter": "١٧-إجابة-المؤذن-والترديد-معه-في-المذياع-سنة",
+      "prev": "652de87347a43be597c31d040dc9d6d98325e5a17f9bc828b3b2fa89878f81cd",
+      "next": "b4411eef3f98af1f5be4cd9a097ba8d2635f6f6021f4bcbd93abfab6441ebd4e"
+    },
+    {
+      "ord": 254,
+      "blockId": "0cf82c40a4824cbb4f105d357b4304cb",
+      "fp64": "6acea77b56739839",
+      "normHash": "b4411eef3f98af1f5be4cd9a097ba8d2635f6f6021f4bcbd93abfab6441ebd4e",
+      "kind": "h2",
+      "chapter": "١٨-لا-بأس-أن-يسمع-مجيب-المؤذن-من-حوله",
+      "prev": "43128cf1e8e9c646fa8dfe84b56d25570a6e1cbcd6096d5c1b7e54107e0d686e",
+      "next": "db11cf9182ba843a7d656ef838bcb812a93e57314902f19325174b0bd987c1b7"
+    },
+    {
+      "ord": 255,
+      "blockId": "09af92471d739215b6c835e7eeab6d78",
+      "fp64": "007a7fa644534d1c",
+      "normHash": "db11cf9182ba843a7d656ef838bcb812a93e57314902f19325174b0bd987c1b7",
+      "kind": "p",
+      "chapter": "١٨-لا-بأس-أن-يسمع-مجيب-المؤذن-من-حوله",
+      "prev": "b4411eef3f98af1f5be4cd9a097ba8d2635f6f6021f4bcbd93abfab6441ebd4e",
+      "next": "fd34b895024a2f177e5087d09cef1985c964614732cb20038527d9baef1f6c0c"
+    },
+    {
+      "ord": 256,
+      "blockId": "9b8ea6bd204aa3d564d42718f8b80c65",
+      "fp64": "dd6ae59f957173c9",
+      "normHash": "fd34b895024a2f177e5087d09cef1985c964614732cb20038527d9baef1f6c0c",
+      "kind": "h2",
+      "chapter": "١٩-إجابة-مؤذن-ثان-وثالث-مستحبة-إذا-كان-الأذان",
+      "prev": "db11cf9182ba843a7d656ef838bcb812a93e57314902f19325174b0bd987c1b7",
+      "next": "1f90adbc81d0f88e2702ad44e09e7edd39a22dfa4869efa9ff39fa6ff502d1a9"
+    },
+    {
+      "ord": 257,
+      "blockId": "41f92f566f4a3bf8c84b0dcdb17226c8",
+      "fp64": "e4f54f64e18fef52",
+      "normHash": "1f90adbc81d0f88e2702ad44e09e7edd39a22dfa4869efa9ff39fa6ff502d1a9",
+      "kind": "p",
+      "chapter": "١٩-إجابة-مؤذن-ثان-وثالث-مستحبة-إذا-كان-الأذان",
+      "prev": "fd34b895024a2f177e5087d09cef1985c964614732cb20038527d9baef1f6c0c",
+      "next": "9d2a51c3b9c5477c20d1a42b0e9b413da742893728e75473a70f81d6170159c0"
+    },
+    {
+      "ord": 258,
+      "blockId": "f8fb2b849144a9777d695af5a604ab3b",
+      "fp64": "7f1b4176d7d85619",
+      "normHash": "9d2a51c3b9c5477c20d1a42b0e9b413da742893728e75473a70f81d6170159c0",
+      "kind": "p",
+      "chapter": "١٩-إجابة-مؤذن-ثان-وثالث-مستحبة-إذا-كان-الأذان",
+      "prev": "1f90adbc81d0f88e2702ad44e09e7edd39a22dfa4869efa9ff39fa6ff502d1a9",
+      "next": "c0c71ee9e7afd8161c0552731d119d600754e155a20c8406543b98ef334d9064"
+    },
+    {
+      "ord": 259,
+      "blockId": "c7ed947b52b41240b41274ce40f0c481",
+      "fp64": "1e48287015c41ed0",
+      "normHash": "c0c71ee9e7afd8161c0552731d119d600754e155a20c8406543b98ef334d9064",
+      "kind": "p",
+      "chapter": "١٩-إجابة-مؤذن-ثان-وثالث-مستحبة-إذا-كان-الأذان",
+      "prev": "9d2a51c3b9c5477c20d1a42b0e9b413da742893728e75473a70f81d6170159c0",
+      "next": "a368891ef9a262987f7b742c364d62cb1d7d4e6cde5b779d8435f58d0237e27a"
+    },
+    {
+      "ord": 260,
+      "blockId": "4b318b146786523f365c3ff0b427eba8",
+      "fp64": "7ffffbbafa337eff",
+      "normHash": "a368891ef9a262987f7b742c364d62cb1d7d4e6cde5b779d8435f58d0237e27a",
+      "kind": "page",
+      "chapter": "١٩-إجابة-مؤذن-ثان-وثالث-مستحبة-إذا-كان-الأذان",
+      "prev": "c0c71ee9e7afd8161c0552731d119d600754e155a20c8406543b98ef334d9064",
+      "next": "3b93230bc9dbdc217f47b2389bb5e625e4c7c82df6d5472ae7162defc1e46842"
+    },
+    {
+      "ord": 261,
+      "blockId": "e3f783b195ff61b483819b76c079cd80",
+      "fp64": "d7eba57e77edfff0",
+      "normHash": "3b93230bc9dbdc217f47b2389bb5e625e4c7c82df6d5472ae7162defc1e46842",
+      "kind": "p",
+      "chapter": "١٩-إجابة-مؤذن-ثان-وثالث-مستحبة-إذا-كان-الأذان",
+      "prev": "a368891ef9a262987f7b742c364d62cb1d7d4e6cde5b779d8435f58d0237e27a",
+      "next": "e598c355faab223017a5cbab737a9a9e965f68bd3c709abcabba1bcf79c92e4d"
+    },
+    {
+      "ord": 262,
+      "blockId": "fd159838205ee3a99b9a5353b3058c64",
+      "fp64": "83474e48014d4e12",
+      "normHash": "e598c355faab223017a5cbab737a9a9e965f68bd3c709abcabba1bcf79c92e4d",
+      "kind": "p",
+      "chapter": "١٩-إجابة-مؤذن-ثان-وثالث-مستحبة-إذا-كان-الأذان",
+      "prev": "3b93230bc9dbdc217f47b2389bb5e625e4c7c82df6d5472ae7162defc1e46842",
+      "next": "3ab987d6352617b9638535fdcdf53357b6488574da6e46f6412f3a916e36da9d"
+    },
+    {
+      "ord": 263,
+      "blockId": "60e17a58f9f6eac7ff3dc2275d8acadf",
+      "fp64": "874e161005c77ad3",
+      "normHash": "3ab987d6352617b9638535fdcdf53357b6488574da6e46f6412f3a916e36da9d",
+      "kind": "p",
+      "chapter": "١٩-إجابة-مؤذن-ثان-وثالث-مستحبة-إذا-كان-الأذان",
+      "prev": "e598c355faab223017a5cbab737a9a9e965f68bd3c709abcabba1bcf79c92e4d",
+      "next": "2ce0200d241dd01e4d605a735421c48af97e482300441f43432086f3e621c73b"
+    },
+    {
+      "ord": 264,
+      "blockId": "102d8d08b37a2ac19e145ed40178f546",
+      "fp64": "36791c10d5b2de56",
+      "normHash": "2ce0200d241dd01e4d605a735421c48af97e482300441f43432086f3e621c73b",
+      "kind": "p",
+      "chapter": "١٩-إجابة-مؤذن-ثان-وثالث-مستحبة-إذا-كان-الأذان",
+      "prev": "3ab987d6352617b9638535fdcdf53357b6488574da6e46f6412f3a916e36da9d",
+      "next": "2396a0e4bc8b6afb2c5c8141e790842a053f14ac8bde1670c0d97dbad51ffd9c"
+    },
+    {
+      "ord": 265,
+      "blockId": "8e39fce2ef1877ccb0e72d0700fc2223",
+      "fp64": "db4d71f498b2dd7e",
+      "normHash": "2396a0e4bc8b6afb2c5c8141e790842a053f14ac8bde1670c0d97dbad51ffd9c",
+      "kind": "p",
+      "chapter": "١٩-إجابة-مؤذن-ثان-وثالث-مستحبة-إذا-كان-الأذان",
+      "prev": "2ce0200d241dd01e4d605a735421c48af97e482300441f43432086f3e621c73b",
+      "next": "d0d7c57dc0893b08afba60cabfa0d136baa1434c64dcc117b9046b79bc67dd40"
+    },
+    {
+      "ord": 266,
+      "blockId": "a184b1eada958cac863131ad99ef5bcd",
+      "fp64": "5f6e605835cf5c1f",
+      "normHash": "d0d7c57dc0893b08afba60cabfa0d136baa1434c64dcc117b9046b79bc67dd40",
+      "kind": "p",
+      "chapter": "١٩-إجابة-مؤذن-ثان-وثالث-مستحبة-إذا-كان-الأذان",
+      "prev": "2396a0e4bc8b6afb2c5c8141e790842a053f14ac8bde1670c0d97dbad51ffd9c",
+      "next": "e787f2e0d4f0f35e056dccc815af2de911e7c3c49eeda32cbbf989e9845a9929"
+    },
+    {
+      "ord": 267,
+      "blockId": "09c1d45fefb6b939316f18d83eac9faf",
+      "fp64": "b5fff39e5abdfcf6",
+      "normHash": "e787f2e0d4f0f35e056dccc815af2de911e7c3c49eeda32cbbf989e9845a9929",
+      "kind": "page",
+      "chapter": "١٩-إجابة-مؤذن-ثان-وثالث-مستحبة-إذا-كان-الأذان",
+      "prev": "d0d7c57dc0893b08afba60cabfa0d136baa1434c64dcc117b9046b79bc67dd40",
+      "next": "f807faaab84cb6507a4ecaeb1187f9b55ed5902ee24fc13a2beac0b5b57e80cb"
+    },
+    {
+      "ord": 268,
+      "blockId": "84b45798e6c5affd3cdc449c032b0db3",
+      "fp64": "828a64485f55577d",
+      "normHash": "f807faaab84cb6507a4ecaeb1187f9b55ed5902ee24fc13a2beac0b5b57e80cb",
+      "kind": "p",
+      "chapter": "١٩-إجابة-مؤذن-ثان-وثالث-مستحبة-إذا-كان-الأذان",
+      "prev": "e787f2e0d4f0f35e056dccc815af2de911e7c3c49eeda32cbbf989e9845a9929",
+      "next": "41d1c2e5b559cfaaf4913477eb30704cda5aa3dda38e3cdd0b76ce88527caec5"
+    },
+    {
+      "ord": 269,
+      "blockId": "24c1f8cd78a2c584e44ed8f09bd87463",
+      "fp64": "67d2805c95741538",
+      "normHash": "41d1c2e5b559cfaaf4913477eb30704cda5aa3dda38e3cdd0b76ce88527caec5",
+      "kind": "p",
+      "chapter": "١٩-إجابة-مؤذن-ثان-وثالث-مستحبة-إذا-كان-الأذان",
+      "prev": "f807faaab84cb6507a4ecaeb1187f9b55ed5902ee24fc13a2beac0b5b57e80cb",
+      "next": "ad938a43cf42f32b88b0e9d651433e92baf514505af290d9f193031ffd82d3e7"
+    },
+    {
+      "ord": 270,
+      "blockId": "e01c0e2c88527b55004b14a10767f571",
+      "fp64": "7d050272300ffb6e",
+      "normHash": "ad938a43cf42f32b88b0e9d651433e92baf514505af290d9f193031ffd82d3e7",
+      "kind": "p",
+      "chapter": "١٩-إجابة-مؤذن-ثان-وثالث-مستحبة-إذا-كان-الأذان",
+      "prev": "41d1c2e5b559cfaaf4913477eb30704cda5aa3dda38e3cdd0b76ce88527caec5",
+      "next": "1f5c95dd181fafab5ad8c3809f93d70ab61f027b931d166084ec5a22acdf12cc"
+    },
+    {
+      "ord": 271,
+      "blockId": "63f036511e5ea390c20df96687f4ca26",
+      "fp64": "35dffb9e5fbdf3f6",
+      "normHash": "1f5c95dd181fafab5ad8c3809f93d70ab61f027b931d166084ec5a22acdf12cc",
+      "kind": "page",
+      "chapter": "١٩-إجابة-مؤذن-ثان-وثالث-مستحبة-إذا-كان-الأذان",
+      "prev": "ad938a43cf42f32b88b0e9d651433e92baf514505af290d9f193031ffd82d3e7",
+      "next": "747c95b14fbb9fb825b88f375566240705ba11071e787193263a7118be29c30f"
+    },
+    {
+      "ord": 272,
+      "blockId": "68b59bd47ea42a4108bf42db80f09614",
+      "fp64": "75974c701f27d34c",
+      "normHash": "747c95b14fbb9fb825b88f375566240705ba11071e787193263a7118be29c30f",
+      "kind": "p",
+      "chapter": "١٩-إجابة-مؤذن-ثان-وثالث-مستحبة-إذا-كان-الأذان",
+      "prev": "1f5c95dd181fafab5ad8c3809f93d70ab61f027b931d166084ec5a22acdf12cc",
+      "next": "086686da344cccf73d443b9fc58c1a75b856acbe6e1b3c33d7b5394c03e86706"
+    },
+    {
+      "ord": 273,
+      "blockId": "21b7a4ea070a016db7e4fa7340757157",
+      "fp64": "be0b63da0d545f57",
+      "normHash": "086686da344cccf73d443b9fc58c1a75b856acbe6e1b3c33d7b5394c03e86706",
+      "kind": "p",
+      "chapter": "١٩-إجابة-مؤذن-ثان-وثالث-مستحبة-إذا-كان-الأذان",
+      "prev": "747c95b14fbb9fb825b88f375566240705ba11071e787193263a7118be29c30f",
+      "next": "9df1ebbf07b06a0a3e0ae8b8024cb1d90dd74546e12bd25ce711e84c021e1080"
+    },
+    {
+      "ord": 274,
+      "blockId": "b94b82ab787960819e7151792156688b",
+      "fp64": "18ca2450d7545e1c",
+      "normHash": "9df1ebbf07b06a0a3e0ae8b8024cb1d90dd74546e12bd25ce711e84c021e1080",
+      "kind": "p",
+      "chapter": "١٩-إجابة-مؤذن-ثان-وثالث-مستحبة-إذا-كان-الأذان",
+      "prev": "086686da344cccf73d443b9fc58c1a75b856acbe6e1b3c33d7b5394c03e86706",
+      "next": "57f37e4170198b51df43f9f91c1da5ed25f7173762cf30cc3c502d5a79916044"
+    },
+    {
+      "ord": 275,
+      "blockId": "d0aade9b5b3d80a83e6d56edc62bbede",
+      "fp64": "35fff7ff5b31e5b6",
+      "normHash": "57f37e4170198b51df43f9f91c1da5ed25f7173762cf30cc3c502d5a79916044",
+      "kind": "page",
+      "chapter": "١٩-إجابة-مؤذن-ثان-وثالث-مستحبة-إذا-كان-الأذان",
+      "prev": "9df1ebbf07b06a0a3e0ae8b8024cb1d90dd74546e12bd25ce711e84c021e1080",
+      "next": "a27cedf565339ab1eb6b0d4582b57889c8bfc11fab25f9ea21ec82e87ef712ed"
+    },
+    {
+      "ord": 276,
+      "blockId": "b64383791e153fa837b759fb86cdfa60",
+      "fp64": "94567d1cf11f4d1d",
+      "normHash": "a27cedf565339ab1eb6b0d4582b57889c8bfc11fab25f9ea21ec82e87ef712ed",
+      "kind": "h2",
+      "chapter": "٢٠-إذا-لم-يسمع-إلا-بعض-الأذان",
+      "prev": "57f37e4170198b51df43f9f91c1da5ed25f7173762cf30cc3c502d5a79916044",
+      "next": "cca47bbf5e4b3ffe39391d5f3c164294ba81e576e03ede52f4dc66dd5252b239"
+    },
+    {
+      "ord": 277,
+      "blockId": "893adffd248c0269d2ca0775b6643784",
+      "fp64": "edd26418d160f44c",
+      "normHash": "cca47bbf5e4b3ffe39391d5f3c164294ba81e576e03ede52f4dc66dd5252b239",
+      "kind": "p",
+      "chapter": "٢٠-إذا-لم-يسمع-إلا-بعض-الأذان",
+      "prev": "a27cedf565339ab1eb6b0d4582b57889c8bfc11fab25f9ea21ec82e87ef712ed",
+      "next": "0d669104a50a0d1be6d3d479c13ea505fa7749699550d3ac244d98758352a802"
+    },
+    {
+      "ord": 278,
+      "blockId": "5a79c7b29e49cdf28e16d95808369645",
+      "fp64": "fa7141998467daac",
+      "normHash": "0d669104a50a0d1be6d3d479c13ea505fa7749699550d3ac244d98758352a802",
+      "kind": "h2",
+      "chapter": "٢١-إجابة-النداء-سنة-قولية-وفعلية-مؤكدة-عمل-بها",
+      "prev": "cca47bbf5e4b3ffe39391d5f3c164294ba81e576e03ede52f4dc66dd5252b239",
+      "next": "4c5d19bbef18e28aa0ad5fa9eea1ccca28536b47fa5eee8944a78be35d23f9cb"
+    },
+    {
+      "ord": 279,
+      "blockId": "26eb147b31373c6b2f8289dc29fdb245",
+      "fp64": "ca03f916f77b0e8b",
+      "normHash": "4c5d19bbef18e28aa0ad5fa9eea1ccca28536b47fa5eee8944a78be35d23f9cb",
+      "kind": "p",
+      "chapter": "٢١-إجابة-النداء-سنة-قولية-وفعلية-مؤكدة-عمل-بها",
+      "prev": "0d669104a50a0d1be6d3d479c13ea505fa7749699550d3ac244d98758352a802",
+      "next": "d30a522fb117005bdb40bde87574ee346412985da1e9a964528eca1cd7fe5299"
+    },
+    {
+      "ord": 280,
+      "blockId": "1784fcfff38b467c5a2ba52a4c939d0f",
+      "fp64": "9e00e55413cfd9df",
+      "normHash": "d30a522fb117005bdb40bde87574ee346412985da1e9a964528eca1cd7fe5299",
+      "kind": "p",
+      "chapter": "٢١-إجابة-النداء-سنة-قولية-وفعلية-مؤكدة-عمل-بها",
+      "prev": "4c5d19bbef18e28aa0ad5fa9eea1ccca28536b47fa5eee8944a78be35d23f9cb",
+      "next": "dee34af6ebe187264cb6e42baf13ef5e57c0f735c4112e3b80e2c562a6865415"
+    },
+    {
+      "ord": 281,
+      "blockId": "1249dfd1aad4158e37576452f4d585d0",
+      "fp64": "7d5ae03266c4b654",
+      "normHash": "dee34af6ebe187264cb6e42baf13ef5e57c0f735c4112e3b80e2c562a6865415",
+      "kind": "p",
+      "chapter": "٢١-إجابة-النداء-سنة-قولية-وفعلية-مؤكدة-عمل-بها",
+      "prev": "d30a522fb117005bdb40bde87574ee346412985da1e9a964528eca1cd7fe5299",
+      "next": "8bdfd64f297cb4f46a40fb573a4ddedb248ee4a29471671507327f8356aee87e"
+    },
+    {
+      "ord": 282,
+      "blockId": "4f1e69f974c356aa7ed908e12b23682f",
+      "fp64": "35dff7fa5a3374bf",
+      "normHash": "8bdfd64f297cb4f46a40fb573a4ddedb248ee4a29471671507327f8356aee87e",
+      "kind": "page",
+      "chapter": "٢١-إجابة-النداء-سنة-قولية-وفعلية-مؤكدة-عمل-بها",
+      "prev": "dee34af6ebe187264cb6e42baf13ef5e57c0f735c4112e3b80e2c562a6865415",
+      "next": "c51a226101ae57511b2914a3436e6b99192905171c2a6e166a4646cff5daded1"
+    },
+    {
+      "ord": 283,
+      "blockId": "b9c54386464fc94d52a25693526da27a",
+      "fp64": "bf4a645851551e95",
+      "normHash": "c51a226101ae57511b2914a3436e6b99192905171c2a6e166a4646cff5daded1",
+      "kind": "p",
+      "chapter": "٢١-إجابة-النداء-سنة-قولية-وفعلية-مؤكدة-عمل-بها",
+      "prev": "8bdfd64f297cb4f46a40fb573a4ddedb248ee4a29471671507327f8356aee87e",
+      "next": "67e86b35da37c547ff56548bd4c0ccb9ba998f680a40edfa2e0709ed0fec6a78"
+    },
+    {
+      "ord": 284,
+      "blockId": "efd61606e5702ac4265f66f094ab05be",
+      "fp64": "275ee010d7e57894",
+      "normHash": "67e86b35da37c547ff56548bd4c0ccb9ba998f680a40edfa2e0709ed0fec6a78",
+      "kind": "p",
+      "chapter": "٢١-إجابة-النداء-سنة-قولية-وفعلية-مؤكدة-عمل-بها",
+      "prev": "c51a226101ae57511b2914a3436e6b99192905171c2a6e166a4646cff5daded1",
+      "next": "c4f232869bc65786e069d9beab19d4b1117344f808c2f376119df20a01c53c35"
+    },
+    {
+      "ord": 285,
+      "blockId": "2b02e96ae920aa975881cb207310a3b4",
+      "fp64": "955764ba56f8fbf6",
+      "normHash": "c4f232869bc65786e069d9beab19d4b1117344f808c2f376119df20a01c53c35",
+      "kind": "p",
+      "chapter": "٢١-إجابة-النداء-سنة-قولية-وفعلية-مؤكدة-عمل-بها",
+      "prev": "67e86b35da37c547ff56548bd4c0ccb9ba998f680a40edfa2e0709ed0fec6a78",
+      "next": "29eae3e7cbf6af90dd0be6a2d2bc0f2fb87fdf7fc2e7bc1f29cbf98018991151"
+    },
+    {
+      "ord": 286,
+      "blockId": "8963ee961e8ff0f926c65fede7796c32",
+      "fp64": "eddff3dadf39e576",
+      "normHash": "29eae3e7cbf6af90dd0be6a2d2bc0f2fb87fdf7fc2e7bc1f29cbf98018991151",
+      "kind": "page",
+      "chapter": "٢١-إجابة-النداء-سنة-قولية-وفعلية-مؤكدة-عمل-بها",
+      "prev": "c4f232869bc65786e069d9beab19d4b1117344f808c2f376119df20a01c53c35",
+      "next": "f69c3c280725349c1a0c134d5a4acbe7468f87640d4c7c2cb345d46524c44c97"
+    },
+    {
+      "ord": 287,
+      "blockId": "3b5bc9d8ac9a62ee81d5b2968e11a5d1",
+      "fp64": "d07068d90e34756a",
+      "normHash": "f69c3c280725349c1a0c134d5a4acbe7468f87640d4c7c2cb345d46524c44c97",
+      "kind": "h2",
+      "chapter": "المبحث-السادس-إجابة-النداء-بالفعل",
+      "prev": "29eae3e7cbf6af90dd0be6a2d2bc0f2fb87fdf7fc2e7bc1f29cbf98018991151",
+      "next": "d3a019adaf0c94baadaecf6e84da5f9c925c866e727db434700285e41c531a51"
+    },
+    {
+      "ord": 288,
+      "blockId": "b627792b95bd49b7c2cd2d1f193818f4",
+      "fp64": "44e9645f8f6f4d7b",
+      "normHash": "d3a019adaf0c94baadaecf6e84da5f9c925c866e727db434700285e41c531a51",
+      "kind": "p",
+      "chapter": "المبحث-السادس-إجابة-النداء-بالفعل",
+      "prev": "f69c3c280725349c1a0c134d5a4acbe7468f87640d4c7c2cb345d46524c44c97",
+      "next": "633b92ed24e7469233609ca065510cd8295b04bb5a84ef6e6a180f8dfe0cf3d0"
+    },
+    {
+      "ord": 289,
+      "blockId": "bc6153ee5ec74a63c6d539f6519b625e",
+      "fp64": "3a4924521d7f1e58",
+      "normHash": "633b92ed24e7469233609ca065510cd8295b04bb5a84ef6e6a180f8dfe0cf3d0",
+      "kind": "p",
+      "chapter": "المبحث-السادس-إجابة-النداء-بالفعل",
+      "prev": "d3a019adaf0c94baadaecf6e84da5f9c925c866e727db434700285e41c531a51",
+      "next": "4bbbeca6742f12c299ee9874c27e783f7f3f2b0b40fb7eff785b2d2e7693ddd5"
+    },
+    {
+      "ord": 290,
+      "blockId": "4a852557a5327b654e340394c85bb933",
+      "fp64": "afffff9b7fb5617e",
+      "normHash": "4bbbeca6742f12c299ee9874c27e783f7f3f2b0b40fb7eff785b2d2e7693ddd5",
+      "kind": "page",
+      "chapter": "المبحث-السادس-إجابة-النداء-بالفعل",
+      "prev": "633b92ed24e7469233609ca065510cd8295b04bb5a84ef6e6a180f8dfe0cf3d0",
+      "next": "e8a35a8d083032dcfb9617de7fed9bbfa388ba07a8cde61a8c326c73bbbe951b"
+    },
+    {
+      "ord": 291,
+      "blockId": "62277e17c4e25c0c45e884242647dbc3",
+      "fp64": "765fe057ffeffd7f",
+      "normHash": "e8a35a8d083032dcfb9617de7fed9bbfa388ba07a8cde61a8c326c73bbbe951b",
+      "kind": "h2",
+      "chapter": "١-عاقب-الله-من-لم-يجب-المؤذن-فيصلي-مع-الجماعة",
+      "prev": "4bbbeca6742f12c299ee9874c27e783f7f3f2b0b40fb7eff785b2d2e7693ddd5",
+      "next": "7cc136c02b7e17fc773ebd4c1b18b5a94a0b40896de8d6e47289bfdd99f91f07"
+    },
+    {
+      "ord": 292,
+      "blockId": "e4663c7bf74b39b1ebb331d2515e90c7",
+      "fp64": "f8db825afe586768",
+      "normHash": "7cc136c02b7e17fc773ebd4c1b18b5a94a0b40896de8d6e47289bfdd99f91f07",
+      "kind": "p",
+      "chapter": "١-عاقب-الله-من-لم-يجب-المؤذن-فيصلي-مع-الجماعة",
+      "prev": "e8a35a8d083032dcfb9617de7fed9bbfa388ba07a8cde61a8c326c73bbbe951b",
+      "next": "ca556c96f85f3d5158a2cfd94ee30a2150db7d8db0d2cd88d5e3c80c48c7ecaf"
+    },
+    {
+      "ord": 293,
+      "blockId": "fb1bc7a7c6eb63add3ccc775862d4f38",
+      "fp64": "cc40c05e8f107d5c",
+      "normHash": "ca556c96f85f3d5158a2cfd94ee30a2150db7d8db0d2cd88d5e3c80c48c7ecaf",
+      "kind": "p",
+      "chapter": "١-عاقب-الله-من-لم-يجب-المؤذن-فيصلي-مع-الجماعة",
+      "prev": "7cc136c02b7e17fc773ebd4c1b18b5a94a0b40896de8d6e47289bfdd99f91f07",
+      "next": "d3273654c811f76d3dceadbaa887b0105cf905f1a214d5c5138e85891e11fbea"
+    },
+    {
+      "ord": 294,
+      "blockId": "5f27963b57e26fc71165ac0f9a67dc13",
+      "fp64": "0f7708f2a4566f6e",
+      "normHash": "d3273654c811f76d3dceadbaa887b0105cf905f1a214d5c5138e85891e11fbea",
+      "kind": "p",
+      "chapter": "١-عاقب-الله-من-لم-يجب-المؤذن-فيصلي-مع-الجماعة",
+      "prev": "ca556c96f85f3d5158a2cfd94ee30a2150db7d8db0d2cd88d5e3c80c48c7ecaf",
+      "next": "76f9848e25747f80ee9d662bf8eb9c55031854a38c38423f26bac76b142aa59f"
+    },
+    {
+      "ord": 295,
+      "blockId": "3719adb71801cd5f164b8532bb701f4c",
+      "fp64": "fe12381995de3d41",
+      "normHash": "76f9848e25747f80ee9d662bf8eb9c55031854a38c38423f26bac76b142aa59f",
+      "kind": "h2",
+      "chapter": "٢-لم-يرخص-النبي-للأعمى-بعيد-الدار-في-التخلف",
+      "prev": "d3273654c811f76d3dceadbaa887b0105cf905f1a214d5c5138e85891e11fbea",
+      "next": "0a344b6ddaaa2a50c09b58ce354378c7a42cbb07cbdccbd26cff7d3e7753fc77"
+    },
+    {
+      "ord": 296,
+      "blockId": "f4d9d275e3bf9281fd167e2c5b737243",
+      "fp64": "7674e01f1f78797c",
+      "normHash": "0a344b6ddaaa2a50c09b58ce354378c7a42cbb07cbdccbd26cff7d3e7753fc77",
+      "kind": "p",
+      "chapter": "٢-لم-يرخص-النبي-للأعمى-بعيد-الدار-في-التخلف",
+      "prev": "76f9848e25747f80ee9d662bf8eb9c55031854a38c38423f26bac76b142aa59f",
+      "next": "f20fa0020a1413635227fce4b790d282317f595b758d5ca8fab7be00b3ca2a67"
+    },
+    {
+      "ord": 297,
+      "blockId": "6c199e1ef464040f829365af61270076",
+      "fp64": "d9e93c0ad5654452",
+      "normHash": "f20fa0020a1413635227fce4b790d282317f595b758d5ca8fab7be00b3ca2a67",
+      "kind": "p",
+      "chapter": "٢-لم-يرخص-النبي-للأعمى-بعيد-الدار-في-التخلف",
+      "prev": "0a344b6ddaaa2a50c09b58ce354378c7a42cbb07cbdccbd26cff7d3e7753fc77",
+      "next": "c2e5ec499c041da0ca3ab6ab1146db3b1f4719e299d00b7bb5ed6dd8e308dd99"
+    },
+    {
+      "ord": 298,
+      "blockId": "8eb025f1a49b2d84b74cb385213c8b96",
+      "fp64": "27fffbde7a31e9be",
+      "normHash": "c2e5ec499c041da0ca3ab6ab1146db3b1f4719e299d00b7bb5ed6dd8e308dd99",
+      "kind": "page",
+      "chapter": "٢-لم-يرخص-النبي-للأعمى-بعيد-الدار-في-التخلف",
+      "prev": "f20fa0020a1413635227fce4b790d282317f595b758d5ca8fab7be00b3ca2a67",
+      "next": "cb87f6824196e15597cb11a90a89c3c3e0715905fc59ab2fc2ce193d4f2bf47c"
+    },
+    {
+      "ord": 299,
+      "blockId": "7c06353bc957579fdced95a69b673b6c",
+      "fp64": "be91e09171461e54",
+      "normHash": "cb87f6824196e15597cb11a90a89c3c3e0715905fc59ab2fc2ce193d4f2bf47c",
+      "kind": "p",
+      "chapter": "٢-لم-يرخص-النبي-للأعمى-بعيد-الدار-في-التخلف",
+      "prev": "c2e5ec499c041da0ca3ab6ab1146db3b1f4719e299d00b7bb5ed6dd8e308dd99",
+      "next": "b91466c07e1327fcd968c41be73a1db8ead8c34e2840d3cc70626dcdc7cbfb8e"
+    },
+    {
+      "ord": 300,
+      "blockId": "e59506c216c938b4a08af2c8c2493751",
+      "fp64": "3c64e01307525058",
+      "normHash": "b91466c07e1327fcd968c41be73a1db8ead8c34e2840d3cc70626dcdc7cbfb8e",
+      "kind": "p",
+      "chapter": "٢-لم-يرخص-النبي-للأعمى-بعيد-الدار-في-التخلف",
+      "prev": "cb87f6824196e15597cb11a90a89c3c3e0715905fc59ab2fc2ce193d4f2bf47c",
+      "next": "578225c881aedfc5a6b866943c68bc4333a93cd80c5f5b13c2c6160323776557"
+    },
+    {
+      "ord": 301,
+      "blockId": "7b7a1460c0f66ab6eed576419c6e8b05",
+      "fp64": "aa5de2cb5d52fd3e",
+      "normHash": "578225c881aedfc5a6b866943c68bc4333a93cd80c5f5b13c2c6160323776557",
+      "kind": "p",
+      "chapter": "٢-لم-يرخص-النبي-للأعمى-بعيد-الدار-في-التخلف",
+      "prev": "b91466c07e1327fcd968c41be73a1db8ead8c34e2840d3cc70626dcdc7cbfb8e",
+      "next": "cbcf8a3bc57c389cbb883e69d9afa3723b7d3d7229ef3c96add1988029a97927"
+    },
+    {
+      "ord": 302,
+      "blockId": "a3512de981c8e7be0b9b87c345317b58",
+      "fp64": "28c361f90f357c59",
+      "normHash": "cbcf8a3bc57c389cbb883e69d9afa3723b7d3d7229ef3c96add1988029a97927",
+      "kind": "h2",
+      "chapter": "٣-بين-النبي-أن-من-سمع-النداء-فلم-يأته-فلا-صلاة-له",
+      "prev": "578225c881aedfc5a6b866943c68bc4333a93cd80c5f5b13c2c6160323776557",
+      "next": "0c8392d35bdd44272fb51a5559ce1ec47b36252c6f0252db91cc67d59c5fb165"
+    },
+    {
+      "ord": 303,
+      "blockId": "52bd4ae831b154620e7af10aace4148c",
+      "fp64": "6ccac87f95367b7f",
+      "normHash": "0c8392d35bdd44272fb51a5559ce1ec47b36252c6f0252db91cc67d59c5fb165",
+      "kind": "p",
+      "chapter": "٣-بين-النبي-أن-من-سمع-النداء-فلم-يأته-فلا-صلاة-له",
+      "prev": "cbcf8a3bc57c389cbb883e69d9afa3723b7d3d7229ef3c96add1988029a97927",
+      "next": "10054ea4939e21339a7c0b62d6dac40d569a811d45ac693818865dcde1d2ccdf"
+    },
+    {
+      "ord": 304,
+      "blockId": "82d76e39afd66bbdba51bc37f4f242b2",
+      "fp64": "5d5d70f2557c0e36",
+      "normHash": "10054ea4939e21339a7c0b62d6dac40d569a811d45ac693818865dcde1d2ccdf",
+      "kind": "p",
+      "chapter": "٣-بين-النبي-أن-من-سمع-النداء-فلم-يأته-فلا-صلاة-له",
+      "prev": "0c8392d35bdd44272fb51a5559ce1ec47b36252c6f0252db91cc67d59c5fb165",
+      "next": "b271db2d31a291996045e748faf11d4a35ceda2e52fc3e05cc86c6d37ecb262d"
+    },
+    {
+      "ord": 305,
+      "blockId": "fdff52fe5d1ef1b6d96ea421179d140e",
+      "fp64": "bdfffbdf5bb9f13f",
+      "normHash": "b271db2d31a291996045e748faf11d4a35ceda2e52fc3e05cc86c6d37ecb262d",
+      "kind": "page",
+      "chapter": "٣-بين-النبي-أن-من-سمع-النداء-فلم-يأته-فلا-صلاة-له",
+      "prev": "10054ea4939e21339a7c0b62d6dac40d569a811d45ac693818865dcde1d2ccdf",
+      "next": "fdf810e072ea174d293207be6421229db1ff70a557a88a1157fb53b0e91122eb"
+    },
+    {
+      "ord": 306,
+      "blockId": "b84a26ecd2da85f2de00465b73d6107f",
+      "fp64": "11c964cf146fae49",
+      "normHash": "fdf810e072ea174d293207be6421229db1ff70a557a88a1157fb53b0e91122eb",
+      "kind": "p",
+      "chapter": "٣-بين-النبي-أن-من-سمع-النداء-فلم-يأته-فلا-صلاة-له",
+      "prev": "b271db2d31a291996045e748faf11d4a35ceda2e52fc3e05cc86c6d37ecb262d",
+      "next": "94c28afb8a39ca47ab1aa1cc82977ee12f3384890e0469465d1bd1ed1b643841"
+    },
+    {
+      "ord": 307,
+      "blockId": "ba529cc1680920ee6da97350f04471b7",
+      "fp64": "3478a67f95fbf6de",
+      "normHash": "94c28afb8a39ca47ab1aa1cc82977ee12f3384890e0469465d1bd1ed1b643841",
+      "kind": "h2",
+      "chapter": "٤-أمر-الله-تعالى-حال-الخوف-بالصلاة-جماعة",
+      "prev": "fdf810e072ea174d293207be6421229db1ff70a557a88a1157fb53b0e91122eb",
+      "next": "8fbbe889402845e97731ef1d8d70f8ff7e4e12b76cd6f053b0b9d2445cfae06d"
+    },
+    {
+      "ord": 308,
+      "blockId": "4ea63c2ab2a5720897849ccb614c2f74",
+      "fp64": "92d1a2591770cf7a",
+      "normHash": "8fbbe889402845e97731ef1d8d70f8ff7e4e12b76cd6f053b0b9d2445cfae06d",
+      "kind": "p",
+      "chapter": "٤-أمر-الله-تعالى-حال-الخوف-بالصلاة-جماعة",
+      "prev": "94c28afb8a39ca47ab1aa1cc82977ee12f3384890e0469465d1bd1ed1b643841",
+      "next": "719f9646cb5415f818e5ee8568088b77569084a43db19830d0820e0a7391aaa6"
+    },
+    {
+      "ord": 309,
+      "blockId": "d26dc59bc319f50ed7c3e973564a68de",
+      "fp64": "b8f96afddfbcf7ff",
+      "normHash": "719f9646cb5415f818e5ee8568088b77569084a43db19830d0820e0a7391aaa6",
+      "kind": "h2",
+      "chapter": "٥-أمر-الله-عز-وجل-بالصلاة-مع-المصلين",
+      "prev": "8fbbe889402845e97731ef1d8d70f8ff7e4e12b76cd6f053b0b9d2445cfae06d",
+      "next": "50debe569f7c97ae869f26038932d31cfd0cd5070cdddad690419342b3ceb942"
+    },
+    {
+      "ord": 310,
+      "blockId": "786db68f2b1ee2bae3a9e204dbe6083d",
+      "fp64": "347ce6dcdf1d7747",
+      "normHash": "50debe569f7c97ae869f26038932d31cfd0cd5070cdddad690419342b3ceb942",
+      "kind": "p",
+      "chapter": "٥-أمر-الله-عز-وجل-بالصلاة-مع-المصلين",
+      "prev": "719f9646cb5415f818e5ee8568088b77569084a43db19830d0820e0a7391aaa6",
+      "next": "bff774f2b6376352047ed0563ab842adc4b598d0802fa2eb3b43d2ab8b6df241"
+    },
+    {
+      "ord": 311,
+      "blockId": "94b63680ae9e0ac7ffab3e11cc99205f",
+      "fp64": "1e79a0d215648e4e",
+      "normHash": "bff774f2b6376352047ed0563ab842adc4b598d0802fa2eb3b43d2ab8b6df241",
+      "kind": "p",
+      "chapter": "٥-أمر-الله-عز-وجل-بالصلاة-مع-المصلين",
+      "prev": "50debe569f7c97ae869f26038932d31cfd0cd5070cdddad690419342b3ceb942",
+      "next": "b46e6923a0be5a76f4a246c38e1cdd730d028270f56f2c5716ded45f3af2b500"
+    },
+    {
+      "ord": 312,
+      "blockId": "e52b3c0af2c31a04099364eeb2a980cf",
+      "fp64": "a5fff3dedbfffef7",
+      "normHash": "b46e6923a0be5a76f4a246c38e1cdd730d028270f56f2c5716ded45f3af2b500",
+      "kind": "page",
+      "chapter": "٥-أمر-الله-عز-وجل-بالصلاة-مع-المصلين",
+      "prev": "bff774f2b6376352047ed0563ab842adc4b598d0802fa2eb3b43d2ab8b6df241",
+      "next": "1d63ca5ff500c2238bf760ecee80c261469958f428e18cd8ee0a9e4ce88a5154"
+    },
+    {
+      "ord": 313,
+      "blockId": "38b14fdfdbb57f1d05a58e8f69bbf44f",
+      "fp64": "7f518b16213d2309",
+      "normHash": "1d63ca5ff500c2238bf760ecee80c261469958f428e18cd8ee0a9e4ce88a5154",
+      "kind": "p",
+      "chapter": "٥-أمر-الله-عز-وجل-بالصلاة-مع-المصلين",
+      "prev": "b46e6923a0be5a76f4a246c38e1cdd730d028270f56f2c5716ded45f3af2b500",
+      "next": "596934185c453746b68d525e3d0214849a825ef598bb7fc256b81f30cd7aa7ef"
+    },
+    {
+      "ord": 314,
+      "blockId": "11be255d891871252b6b614324542539",
+      "fp64": "34e9805d1cb85d5d",
+      "normHash": "596934185c453746b68d525e3d0214849a825ef598bb7fc256b81f30cd7aa7ef",
+      "kind": "h2",
+      "chapter": "٦-أمر-النبي-بالصلاة-مع-الجماعة",
+      "prev": "1d63ca5ff500c2238bf760ecee80c261469958f428e18cd8ee0a9e4ce88a5154",
+      "next": "8d6cbc5a41a33f732a8e05ee2ff9ed5715a288af250fdf57a97428b3528fd71e"
+    },
+    {
+      "ord": 315,
+      "blockId": "5f17ea10951a0935787755ce177c0221",
+      "fp64": "5d5480d7775e4e7c",
+      "normHash": "8d6cbc5a41a33f732a8e05ee2ff9ed5715a288af250fdf57a97428b3528fd71e",
+      "kind": "p",
+      "chapter": "٦-أمر-النبي-بالصلاة-مع-الجماعة",
+      "prev": "596934185c453746b68d525e3d0214849a825ef598bb7fc256b81f30cd7aa7ef",
+      "next": "b524ac3319c8ffa013b74bebac8473c3d888cd84e521dc6e231b839be14b3f2c"
+    },
+    {
+      "ord": 316,
+      "blockId": "ae73341deb9294c866ab5ab7878aef07",
+      "fp64": "3c7dc0df1d3f537f",
+      "normHash": "b524ac3319c8ffa013b74bebac8473c3d888cd84e521dc6e231b839be14b3f2c",
+      "kind": "p",
+      "chapter": "٦-أمر-النبي-بالصلاة-مع-الجماعة",
+      "prev": "8d6cbc5a41a33f732a8e05ee2ff9ed5715a288af250fdf57a97428b3528fd71e",
+      "next": "f7d37c5f1e321e1c36cbd02981b50c3cfe7a18952a5372c463e9e2589d7b9923"
+    },
+    {
+      "ord": 317,
+      "blockId": "57cc6f5a0a6ef9da91f592dcf0c204bd",
+      "fp64": "af1b0acc113c7f08",
+      "normHash": "f7d37c5f1e321e1c36cbd02981b50c3cfe7a18952a5372c463e9e2589d7b9923",
+      "kind": "h2",
+      "chapter": "٧-هم-النبي-بتحريق-البيوت-على-المتخلفين-عن",
+      "prev": "b524ac3319c8ffa013b74bebac8473c3d888cd84e521dc6e231b839be14b3f2c",
+      "next": "c85865238f53b8e9d32672e680feca1dbefe576be98fd36458133157ddab54cb"
+    },
+    {
+      "ord": 318,
+      "blockId": "bc8b9eb5e065488ac8d5f6364c3dea45",
+      "fp64": "1238e4135dbf5450",
+      "normHash": "c85865238f53b8e9d32672e680feca1dbefe576be98fd36458133157ddab54cb",
+      "kind": "p",
+      "chapter": "٧-هم-النبي-بتحريق-البيوت-على-المتخلفين-عن",
+      "prev": "f7d37c5f1e321e1c36cbd02981b50c3cfe7a18952a5372c463e9e2589d7b9923",
+      "next": "1b23df491455c74a4f9afe5ef43f2d8843e3ff5fc607ef19d2efef61dec41da1"
+    },
+    {
+      "ord": 319,
+      "blockId": "a5b692d76e537f4a7340b3d063cd2a34",
+      "fp64": "caf9785015655d59",
+      "normHash": "1b23df491455c74a4f9afe5ef43f2d8843e3ff5fc607ef19d2efef61dec41da1",
+      "kind": "p",
+      "chapter": "٧-هم-النبي-بتحريق-البيوت-على-المتخلفين-عن",
+      "prev": "c85865238f53b8e9d32672e680feca1dbefe576be98fd36458133157ddab54cb",
+      "next": "f9561102f6f0bb7090974fb237863cb5f8058726d79ee2da8b7b9f3485c54280"
+    },
+    {
+      "ord": 320,
+      "blockId": "5a7c0c662d123824e38711c38d1649f3",
+      "fp64": "2fdffbdadb7ff13f",
+      "normHash": "f9561102f6f0bb7090974fb237863cb5f8058726d79ee2da8b7b9f3485c54280",
+      "kind": "page",
+      "chapter": "٧-هم-النبي-بتحريق-البيوت-على-المتخلفين-عن",
+      "prev": "1b23df491455c74a4f9afe5ef43f2d8843e3ff5fc607ef19d2efef61dec41da1",
+      "next": "9d5d44c4fa3e6ab45b7955982230a3228faa77800984f3a99940e75a39a1e71d"
+    },
+    {
+      "ord": 321,
+      "blockId": "2e8e94865d4e0c2839cc7e4e78b84586",
+      "fp64": "9888e45f471d4643",
+      "normHash": "9d5d44c4fa3e6ab45b7955982230a3228faa77800984f3a99940e75a39a1e71d",
+      "kind": "p",
+      "chapter": "٧-هم-النبي-بتحريق-البيوت-على-المتخلفين-عن",
+      "prev": "f9561102f6f0bb7090974fb237863cb5f8058726d79ee2da8b7b9f3485c54280",
+      "next": "244d8936d46840047b592b3ef3e490f2b2aa7df68114e0a2854e2f4de0d2f6a8"
+    },
+    {
+      "ord": 322,
+      "blockId": "f44d32eed394d994fed492ca7df4687b",
+      "fp64": "5ecbe5dbdbfbfecf",
+      "normHash": "244d8936d46840047b592b3ef3e490f2b2aa7df68114e0a2854e2f4de0d2f6a8",
+      "kind": "h2",
+      "chapter": "٨-ترك-صلاة-الجماعة-من-علامات-المنافقين-ومن",
+      "prev": "9d5d44c4fa3e6ab45b7955982230a3228faa77800984f3a99940e75a39a1e71d",
+      "next": "8eaef8d50f8cf45c570963fb7ca8c3f2dec520e7b83f0eeb10e3133dd0c59a51"
+    },
+    {
+      "ord": 323,
+      "blockId": "7b013e636fa9235910c502e1c2e5822e",
+      "fp64": "b550e03297245c3c",
+      "normHash": "8eaef8d50f8cf45c570963fb7ca8c3f2dec520e7b83f0eeb10e3133dd0c59a51",
+      "kind": "p",
+      "chapter": "٨-ترك-صلاة-الجماعة-من-علامات-المنافقين-ومن",
+      "prev": "244d8936d46840047b592b3ef3e490f2b2aa7df68114e0a2854e2f4de0d2f6a8",
+      "next": "a545a170af018be7487017e5421448a0df4178d94f05db907c4e3d5e406af02c"
+    },
+    {
+      "ord": 324,
+      "blockId": "ed3ed98a787e22bb8fa105ff74141a23",
+      "fp64": "d97968fb4c6d8e53",
+      "normHash": "a545a170af018be7487017e5421448a0df4178d94f05db907c4e3d5e406af02c",
+      "kind": "p",
+      "chapter": "٨-ترك-صلاة-الجماعة-من-علامات-المنافقين-ومن",
+      "prev": "8eaef8d50f8cf45c570963fb7ca8c3f2dec520e7b83f0eeb10e3133dd0c59a51",
+      "next": "b45714bbeaceb94fe48a62b395281c96fe52365900f57b444a5084c187979246"
+    },
+    {
+      "ord": 325,
+      "blockId": "b5210f82a42f2c3dd96913ff7af99573",
+      "fp64": "addff79afe7d6777",
+      "normHash": "b45714bbeaceb94fe48a62b395281c96fe52365900f57b444a5084c187979246",
+      "kind": "page",
+      "chapter": "٨-ترك-صلاة-الجماعة-من-علامات-المنافقين-ومن",
+      "prev": "a545a170af018be7487017e5421448a0df4178d94f05db907c4e3d5e406af02c",
+      "next": "037c6b69cd3b46e0118cf7b0399d54f97c287be2f6ca4b65dc2b1505755dc6bc"
+    },
+    {
+      "ord": 326,
+      "blockId": "c0d28c763fa96c200004a3b34b255671",
+      "fp64": "ccfa701c711ddd75",
+      "normHash": "037c6b69cd3b46e0118cf7b0399d54f97c287be2f6ca4b65dc2b1505755dc6bc",
+      "kind": "p",
+      "chapter": "٨-ترك-صلاة-الجماعة-من-علامات-المنافقين-ومن",
+      "prev": "b45714bbeaceb94fe48a62b395281c96fe52365900f57b444a5084c187979246",
+      "next": "31eabef24702a5ed01fbabf338841b32a4cbe14d33d6654e65a0b8190eec8d50"
+    },
+    {
+      "ord": 327,
+      "blockId": "236c5114911dd09f8c9b0e61a378c28e",
+      "fp64": "17ca00dad92fdf1c",
+      "normHash": "31eabef24702a5ed01fbabf338841b32a4cbe14d33d6654e65a0b8190eec8d50",
+      "kind": "p",
+      "chapter": "٨-ترك-صلاة-الجماعة-من-علامات-المنافقين-ومن",
+      "prev": "037c6b69cd3b46e0118cf7b0399d54f97c287be2f6ca4b65dc2b1505755dc6bc",
+      "next": "b540f5ebe2a887dc52635a87e178bd0e7330cf853fcbb2614ce739dcf6b1ab1e"
+    },
+    {
+      "ord": 328,
+      "blockId": "b29eeef46ac28191a4db07d1c714d2ef",
+      "fp64": "fe7bc05d373d5bac",
+      "normHash": "b540f5ebe2a887dc52635a87e178bd0e7330cf853fcbb2614ce739dcf6b1ab1e",
+      "kind": "p",
+      "chapter": "٨-ترك-صلاة-الجماعة-من-علامات-المنافقين-ومن",
+      "prev": "31eabef24702a5ed01fbabf338841b32a4cbe14d33d6654e65a0b8190eec8d50",
+      "next": "16a600116f30f9109a44f7ee590156e0b49385de2367b2c66e03c51b51daf5cb"
+    },
+    {
+      "ord": 329,
+      "blockId": "fd42c3dc3064f0a2b3e6c5dc4b051663",
+      "fp64": "4c401f4a51bd9a67",
+      "normHash": "16a600116f30f9109a44f7ee590156e0b49385de2367b2c66e03c51b51daf5cb",
+      "kind": "p",
+      "chapter": "٨-ترك-صلاة-الجماعة-من-علامات-المنافقين-ومن",
+      "prev": "b540f5ebe2a887dc52635a87e178bd0e7330cf853fcbb2614ce739dcf6b1ab1e",
+      "next": "61168d3ce3590121738f26bb8ef06270e7d0ad358708a9a3f2aa28e9c1d9781a"
+    },
+    {
+      "ord": 330,
+      "blockId": "a8018f986a54a4943ed090258deb86f3",
+      "fp64": "103944d636034d8b",
+      "normHash": "61168d3ce3590121738f26bb8ef06270e7d0ad358708a9a3f2aa28e9c1d9781a",
+      "kind": "p",
+      "chapter": "٨-ترك-صلاة-الجماعة-من-علامات-المنافقين-ومن",
+      "prev": "16a600116f30f9109a44f7ee590156e0b49385de2367b2c66e03c51b51daf5cb",
+      "next": "adc4276a3bfb1ed9e35cc64d010980f0c18c57d9a08896bade7a5d87d2157c7c"
+    },
+    {
+      "ord": 331,
+      "blockId": "dc52f89aa07d4d0d3ad563d3a6560b04",
+      "fp64": "0971335d5865245f",
+      "normHash": "adc4276a3bfb1ed9e35cc64d010980f0c18c57d9a08896bade7a5d87d2157c7c",
+      "kind": "p",
+      "chapter": "٨-ترك-صلاة-الجماعة-من-علامات-المنافقين-ومن",
+      "prev": "61168d3ce3590121738f26bb8ef06270e7d0ad358708a9a3f2aa28e9c1d9781a",
+      "next": "d284cc0fd73584653510c35a6a017f8ad937e30f2bef536e7df256f97d22e433"
+    },
+    {
+      "ord": 332,
+      "blockId": "bb2e63a7038deac619cfc3fbb0a9f416",
+      "fp64": "a5dff7da5e73eb76",
+      "normHash": "d284cc0fd73584653510c35a6a017f8ad937e30f2bef536e7df256f97d22e433",
+      "kind": "page",
+      "chapter": "٨-ترك-صلاة-الجماعة-من-علامات-المنافقين-ومن",
+      "prev": "adc4276a3bfb1ed9e35cc64d010980f0c18c57d9a08896bade7a5d87d2157c7c",
+      "next": "13c1764ff52b778a5f003084c21fc399622611991c7b98d2f95caaa590d766ec"
+    },
+    {
+      "ord": 333,
+      "blockId": "d9e3a33a5d18b78e87590dc5d75133ab",
+      "fp64": "53ff37f77dfdefff",
+      "normHash": "13c1764ff52b778a5f003084c21fc399622611991c7b98d2f95caaa590d766ec",
+      "kind": "p",
+      "chapter": "٨-ترك-صلاة-الجماعة-من-علامات-المنافقين-ومن",
+      "prev": "d284cc0fd73584653510c35a6a017f8ad937e30f2bef536e7df256f97d22e433",
+      "next": "f755d5f13eb19672af57e7a7d389eb1375beb6866abb7140b58501e18d4a2ef5"
+    },
+    {
+      "ord": 334,
+      "blockId": "99c26a26d195e97847d0b89256bb9d10",
+      "fp64": "fd48604bd2fd549e",
+      "normHash": "f755d5f13eb19672af57e7a7d389eb1375beb6866abb7140b58501e18d4a2ef5",
+      "kind": "p",
+      "chapter": "٨-ترك-صلاة-الجماعة-من-علامات-المنافقين-ومن",
+      "prev": "13c1764ff52b778a5f003084c21fc399622611991c7b98d2f95caaa590d766ec",
+      "next": "baf7e69d3636cd7628c380c4ab04daf8e557b32b323260d147281b2092bdc1b7"
+    },
+    {
+      "ord": 335,
+      "blockId": "7c0863a95377729ff53b4527c14e9c87",
+      "fp64": "a9e9e0de1cfffa5f",
+      "normHash": "baf7e69d3636cd7628c380c4ab04daf8e557b32b323260d147281b2092bdc1b7",
+      "kind": "h2",
+      "chapter": "٩-تارك-صلاة-الجماعة-متوعد-بالختم-على-قلبه",
+      "prev": "f755d5f13eb19672af57e7a7d389eb1375beb6866abb7140b58501e18d4a2ef5",
+      "next": "46382a90618419cda54656457973c08f266a9867ce4567965d7815f57438d798"
+    },
+    {
+      "ord": 336,
+      "blockId": "d6cba47037e2e97515187157c5929a0d",
+      "fp64": "ff75e25a1516597f",
+      "normHash": "46382a90618419cda54656457973c08f266a9867ce4567965d7815f57438d798",
+      "kind": "p",
+      "chapter": "٩-تارك-صلاة-الجماعة-متوعد-بالختم-على-قلبه",
+      "prev": "baf7e69d3636cd7628c380c4ab04daf8e557b32b323260d147281b2092bdc1b7",
+      "next": "f02ba5602b1fc1a62a91b16e2aa1e05f5fd2e5b2d231bf2833e05076d8efd62f"
+    },
+    {
+      "ord": 337,
+      "blockId": "efe6937bce66bb4202ee1a070f30348f",
+      "fp64": "0dfd804b513efa23",
+      "normHash": "f02ba5602b1fc1a62a91b16e2aa1e05f5fd2e5b2d231bf2833e05076d8efd62f",
+      "kind": "h2",
+      "chapter": "١٠-استحواذ-الشيطان-على-قوم-لا-تقام-فيهم-الجماعة",
+      "prev": "46382a90618419cda54656457973c08f266a9867ce4567965d7815f57438d798",
+      "next": "d0c85659fe3308dcfc84accc2769ef2021ea363d11ce3f40f6d0d597f38b703c"
+    },
+    {
+      "ord": 338,
+      "blockId": "6458bd11df38c5ccbbb378ca2e6c761f",
+      "fp64": "fdbff9bebddcbfe7",
+      "normHash": "d0c85659fe3308dcfc84accc2769ef2021ea363d11ce3f40f6d0d597f38b703c",
+      "kind": "p",
+      "chapter": "١٠-استحواذ-الشيطان-على-قوم-لا-تقام-فيهم-الجماعة",
+      "prev": "f02ba5602b1fc1a62a91b16e2aa1e05f5fd2e5b2d231bf2833e05076d8efd62f",
+      "next": "546ee88a284af0a828924e7087703d7bf2d84f52c666ffbbb964f318bfb5a2f5"
+    },
+    {
+      "ord": 339,
+      "blockId": "b4c8a15525328beeee1b1489d4a12a96",
+      "fp64": "5b4d20d211758e57",
+      "normHash": "546ee88a284af0a828924e7087703d7bf2d84f52c666ffbbb964f318bfb5a2f5",
+      "kind": "p",
+      "chapter": "١٠-استحواذ-الشيطان-على-قوم-لا-تقام-فيهم-الجماعة",
+      "prev": "d0c85659fe3308dcfc84accc2769ef2021ea363d11ce3f40f6d0d597f38b703c",
+      "next": "c1d50dc79e6c0267e9efbd68795c3df8e2c25e590d0b1bc168c1ccb63b902798"
+    },
+    {
+      "ord": 340,
+      "blockId": "3c650e623cac80f930c44d858f1becc0",
+      "fp64": "bddffbdafb75ee77",
+      "normHash": "c1d50dc79e6c0267e9efbd68795c3df8e2c25e590d0b1bc168c1ccb63b902798",
+      "kind": "page",
+      "chapter": "١٠-استحواذ-الشيطان-على-قوم-لا-تقام-فيهم-الجماعة",
+      "prev": "546ee88a284af0a828924e7087703d7bf2d84f52c666ffbbb964f318bfb5a2f5",
+      "next": "b56bcc7735aadf4b8ee8e191e2ed1ed8832732cc3e05b1b3b054c1bbecbe31f1"
+    },
+    {
+      "ord": 341,
+      "blockId": "c047477aae030a0b205af395f2fc9f8c",
+      "fp64": "bc50c47b19fe1b7e",
+      "normHash": "b56bcc7735aadf4b8ee8e191e2ed1ed8832732cc3e05b1b3b054c1bbecbe31f1",
+      "kind": "p",
+      "chapter": "١٠-استحواذ-الشيطان-على-قوم-لا-تقام-فيهم-الجماعة",
+      "prev": "c1d50dc79e6c0267e9efbd68795c3df8e2c25e590d0b1bc168c1ccb63b902798",
+      "next": "ea9397559b21adb449d10ad1a360fe25ee4dd4dbd872b300555fea9a4a7be250"
+    },
+    {
+      "ord": 342,
+      "blockId": "23e9c6086489712c547c131c4ae64c52",
+      "fp64": "fa0b5dfe3f43d03d",
+      "normHash": "ea9397559b21adb449d10ad1a360fe25ee4dd4dbd872b300555fea9a4a7be250",
+      "kind": "h2",
+      "chapter": "١١-تحريم-الخروج-من-المسجد-بعد-الأذان-حتى-يصلي",
+      "prev": "b56bcc7735aadf4b8ee8e191e2ed1ed8832732cc3e05b1b3b054c1bbecbe31f1",
+      "next": "95bae8d6b060819f7a32129de7dbd364296f6a6526831483bc2825cdaa6dea06"
+    },
+    {
+      "ord": 343,
+      "blockId": "eaa4adce2d4a8bbda4271cc20216d9e8",
+      "fp64": "f677e85e1978706d",
+      "normHash": "95bae8d6b060819f7a32129de7dbd364296f6a6526831483bc2825cdaa6dea06",
+      "kind": "p",
+      "chapter": "١١-تحريم-الخروج-من-المسجد-بعد-الأذان-حتى-يصلي",
+      "prev": "ea9397559b21adb449d10ad1a360fe25ee4dd4dbd872b300555fea9a4a7be250",
+      "next": "a2abaee9cc76d8905e81e8917759c5d1c36c0e603e9cf2cdd85edadb433b40f7"
+    },
+    {
+      "ord": 344,
+      "blockId": "671dcf50f36a64a4ad58a11fa28f5531",
+      "fp64": "3a16e57a1fc364dc",
+      "normHash": "a2abaee9cc76d8905e81e8917759c5d1c36c0e603e9cf2cdd85edadb433b40f7",
+      "kind": "p",
+      "chapter": "١١-تحريم-الخروج-من-المسجد-بعد-الأذان-حتى-يصلي",
+      "prev": "95bae8d6b060819f7a32129de7dbd364296f6a6526831483bc2825cdaa6dea06",
+      "next": "3a7e05ec8d48a5482794f0c467f09bc778ffc99e05600a1b293689a881024e1b"
+    },
+    {
+      "ord": 345,
+      "blockId": "8d784a0b9cf99e8ae97948d130386528",
+      "fp64": "505962d2196f9e16",
+      "normHash": "3a7e05ec8d48a5482794f0c467f09bc778ffc99e05600a1b293689a881024e1b",
+      "kind": "p",
+      "chapter": "١١-تحريم-الخروج-من-المسجد-بعد-الأذان-حتى-يصلي",
+      "prev": "a2abaee9cc76d8905e81e8917759c5d1c36c0e603e9cf2cdd85edadb433b40f7",
+      "next": "47a608900b812e28351277f4ceba154c78be5a19735cb65393561b1fae8e2f7b"
+    },
+    {
+      "ord": 346,
+      "blockId": "1449167cd8d23cb54f95ea9bbe13072e",
+      "fp64": "ffdff79affb777b7",
+      "normHash": "47a608900b812e28351277f4ceba154c78be5a19735cb65393561b1fae8e2f7b",
+      "kind": "page",
+      "chapter": "١١-تحريم-الخروج-من-المسجد-بعد-الأذان-حتى-يصلي",
+      "prev": "3a7e05ec8d48a5482794f0c467f09bc778ffc99e05600a1b293689a881024e1b",
+      "next": "bca5549ead06ec6443b580651c34cf16aa098ffc6bea85eb6c4acb9c2303447a"
+    },
+    {
+      "ord": 347,
+      "blockId": "74ffe6e13f5fbbd5239a375f7180275a",
+      "fp64": "6c42c016335651be",
+      "normHash": "bca5549ead06ec6443b580651c34cf16aa098ffc6bea85eb6c4acb9c2303447a",
+      "kind": "p",
+      "chapter": "١١-تحريم-الخروج-من-المسجد-بعد-الأذان-حتى-يصلي",
+      "prev": "47a608900b812e28351277f4ceba154c78be5a19735cb65393561b1fae8e2f7b",
+      "next": "c1f36d56ad84738478985eeb6897a5680355afd62aa74aa29109a26720e0f8aa"
+    },
+    {
+      "ord": 348,
+      "blockId": "80805a58bc67df140d921fa3c89b11ed",
+      "fp64": "b750e13e55c5fcde",
+      "normHash": "c1f36d56ad84738478985eeb6897a5680355afd62aa74aa29109a26720e0f8aa",
+      "kind": "p",
+      "chapter": "١١-تحريم-الخروج-من-المسجد-بعد-الأذان-حتى-يصلي",
+      "prev": "bca5549ead06ec6443b580651c34cf16aa098ffc6bea85eb6c4acb9c2303447a",
+      "next": "1239e911053497d60a8f9780354892c9bec62ca9108f6b12284b157f5e9814ae"
+    },
+    {
+      "ord": 349,
+      "blockId": "b37cef9effacc3f4a170f1e65a669098",
+      "fp64": "8644e41e997ad478",
+      "normHash": "1239e911053497d60a8f9780354892c9bec62ca9108f6b12284b157f5e9814ae",
+      "kind": "p",
+      "chapter": "١١-تحريم-الخروج-من-المسجد-بعد-الأذان-حتى-يصلي",
+      "prev": "c1f36d56ad84738478985eeb6897a5680355afd62aa74aa29109a26720e0f8aa",
+      "next": "15a0c8361e3e8748c6d409f8c702e6bba52bab766cd8854461fb9c70ecc4ff7d"
+    },
+    {
+      "ord": 350,
+      "blockId": "e55270c7ff4481596fb19408bc18ddbd",
+      "fp64": "a7c9c54eddd79c6c",
+      "normHash": "15a0c8361e3e8748c6d409f8c702e6bba52bab766cd8854461fb9c70ecc4ff7d",
+      "kind": "p",
+      "chapter": "١١-تحريم-الخروج-من-المسجد-بعد-الأذان-حتى-يصلي",
+      "prev": "1239e911053497d60a8f9780354892c9bec62ca9108f6b12284b157f5e9814ae",
+      "next": "c3682400b2a37845d6ec80930636045867830e6321b4c7c803a17e34e7aa5d8b"
+    },
+    {
+      "ord": 351,
+      "blockId": "81d96de1d98aa72acdb211fdf6108549",
+      "fp64": "7e0920f25dc58e1d",
+      "normHash": "c3682400b2a37845d6ec80930636045867830e6321b4c7c803a17e34e7aa5d8b",
+      "kind": "p",
+      "chapter": "١١-تحريم-الخروج-من-المسجد-بعد-الأذان-حتى-يصلي",
+      "prev": "15a0c8361e3e8748c6d409f8c702e6bba52bab766cd8854461fb9c70ecc4ff7d",
+      "next": "89e34329ab90aa190773ce2438a8e1c6bd4a1fdaab455c2d4345beefa0f8a62f"
+    },
+    {
+      "ord": 352,
+      "blockId": "77a27504189e3debbc416b2779aae37c",
+      "fp64": "37ffff9e7a3ffc37",
+      "normHash": "89e34329ab90aa190773ce2438a8e1c6bd4a1fdaab455c2d4345beefa0f8a62f",
+      "kind": "page",
+      "chapter": "١١-تحريم-الخروج-من-المسجد-بعد-الأذان-حتى-يصلي",
+      "prev": "c3682400b2a37845d6ec80930636045867830e6321b4c7c803a17e34e7aa5d8b",
+      "next": "e56ed6628fe5fbe8465bd0becbba4937ccad055e38dfd312e5959cf6009713b3"
+    },
+    {
+      "ord": 353,
+      "blockId": "46de7e08064d6ffcc89bedf7b294a2d2",
+      "fp64": "af7daad7455adfd7",
+      "normHash": "e56ed6628fe5fbe8465bd0becbba4937ccad055e38dfd312e5959cf6009713b3",
+      "kind": "h2",
+      "chapter": "١٢-تفقد-النبي-للجماعة-في-المسجد-يدل-على-وجوب",
+      "prev": "89e34329ab90aa190773ce2438a8e1c6bd4a1fdaab455c2d4345beefa0f8a62f",
+      "next": "2b06535842b364f92cfe9364a6d4ef19e7af372a9adfe9a9a1967d07b960b6c3"
+    },
+    {
+      "ord": 354,
+      "blockId": "90d9d11840e31b1ed159dead3659f47d",
+      "fp64": "2436e2579f745f4e",
+      "normHash": "2b06535842b364f92cfe9364a6d4ef19e7af372a9adfe9a9a1967d07b960b6c3",
+      "kind": "p",
+      "chapter": "١٢-تفقد-النبي-للجماعة-في-المسجد-يدل-على-وجوب",
+      "prev": "e56ed6628fe5fbe8465bd0becbba4937ccad055e38dfd312e5959cf6009713b3",
+      "next": "9b9783dafe394e5f13bebeb360f8369336a6fc721ae23378506c490245b3fcce"
+    },
+    {
+      "ord": 355,
+      "blockId": "f225208d5acbd20a849056949a6ec8b0",
+      "fp64": "bfed80df9bfbfbeb",
+      "normHash": "9b9783dafe394e5f13bebeb360f8369336a6fc721ae23378506c490245b3fcce",
+      "kind": "h2",
+      "chapter": "١٣-إجماع-الصحابة-رضي-الله-عنهم-على-وجوب-صلاة-الجماعة",
+      "prev": "2b06535842b364f92cfe9364a6d4ef19e7af372a9adfe9a9a1967d07b960b6c3",
+      "next": "c455dad7c4966b2d0952cfa6df7de80c155bd8b7c450fa058e72f910c212b6e0"
+    },
+    {
+      "ord": 356,
+      "blockId": "bee23710568f0bebc9e73363d4dde29d",
+      "fp64": "bbcf607e5f161fde",
+      "normHash": "c455dad7c4966b2d0952cfa6df7de80c155bd8b7c450fa058e72f910c212b6e0",
+      "kind": "p",
+      "chapter": "١٣-إجماع-الصحابة-رضي-الله-عنهم-على-وجوب-صلاة-الجماعة",
+      "prev": "9b9783dafe394e5f13bebeb360f8369336a6fc721ae23378506c490245b3fcce",
+      "next": "eea0725261a7b641988c8360c4c8e64a12050518d3ff05d611b75a67f36db6ee"
+    },
+    {
+      "ord": 357,
+      "blockId": "282c0369db90e62a830429a08335691c",
+      "fp64": "fe7e44d89fda7d55",
+      "normHash": "eea0725261a7b641988c8360c4c8e64a12050518d3ff05d611b75a67f36db6ee",
+      "kind": "p",
+      "chapter": "١٣-إجماع-الصحابة-رضي-الله-عنهم-على-وجوب-صلاة-الجماعة",
+      "prev": "c455dad7c4966b2d0952cfa6df7de80c155bd8b7c450fa058e72f910c212b6e0",
+      "next": "7d40cbb5e356578341a647e7e3ddca59a8ee1f6cf032bf22488fa24c02461ced"
+    },
+    {
+      "ord": 358,
+      "blockId": "a3525b487a27d2a599f45de37a58fb3f",
+      "fp64": "d15964f30d6d8e42",
+      "normHash": "7d40cbb5e356578341a647e7e3ddca59a8ee1f6cf032bf22488fa24c02461ced",
+      "kind": "p",
+      "chapter": "١٣-إجماع-الصحابة-رضي-الله-عنهم-على-وجوب-صلاة-الجماعة",
+      "prev": "eea0725261a7b641988c8360c4c8e64a12050518d3ff05d611b75a67f36db6ee",
+      "next": "fbe3e8d287e8ee688a1af4f098432b4d5d351d6a8e283e6a697d9744ebedf4f3"
+    },
+    {
+      "ord": 359,
+      "blockId": "267517251cb390af4ac020b3ed11c735",
+      "fp64": "7dfff3fa5eb16837",
+      "normHash": "fbe3e8d287e8ee688a1af4f098432b4d5d351d6a8e283e6a697d9744ebedf4f3",
+      "kind": "page",
+      "chapter": "١٣-إجماع-الصحابة-رضي-الله-عنهم-على-وجوب-صلاة-الجماعة",
+      "prev": "7d40cbb5e356578341a647e7e3ddca59a8ee1f6cf032bf22488fa24c02461ced",
+      "next": "c8743ad1df8108aa54cca1a05f0cff434f7d9ae60eeed09a71981ad1aaf5a0bc"
+    },
+    {
+      "ord": 360,
+      "blockId": "e5ed7d8a8f26f0f0c8dbba676ad4abd9",
+      "fp64": "0e40605bb8343f5f",
+      "normHash": "c8743ad1df8108aa54cca1a05f0cff434f7d9ae60eeed09a71981ad1aaf5a0bc",
+      "kind": "p",
+      "chapter": "١٣-إجماع-الصحابة-رضي-الله-عنهم-على-وجوب-صلاة-الجماعة",
+      "prev": "fbe3e8d287e8ee688a1af4f098432b4d5d351d6a8e283e6a697d9744ebedf4f3",
+      "next": "5798421db4ab557d5093a3ddbf83e6318fc32227db1235ad698903463be7695a"
+    },
+    {
+      "ord": 361,
+      "blockId": "1eefa2bd75aef7975da59449462a4e0e",
+      "fp64": "360f8264bc410a1a",
+      "normHash": "5798421db4ab557d5093a3ddbf83e6318fc32227db1235ad698903463be7695a",
+      "kind": "p",
+      "chapter": "١٣-إجماع-الصحابة-رضي-الله-عنهم-على-وجوب-صلاة-الجماعة",
+      "prev": "c8743ad1df8108aa54cca1a05f0cff434f7d9ae60eeed09a71981ad1aaf5a0bc",
+      "next": "077cd47603c19327ffbec86e5802828d0d3d799fc51ec26ab53ed49eac00c26f"
+    },
+    {
+      "ord": 362,
+      "blockId": "24524ccedcdd2eff463742f8cc555980",
+      "fp64": "78fbe76c5dfb8e7c",
+      "normHash": "077cd47603c19327ffbec86e5802828d0d3d799fc51ec26ab53ed49eac00c26f",
+      "kind": "p",
+      "chapter": "١٣-إجماع-الصحابة-رضي-الله-عنهم-على-وجوب-صلاة-الجماعة",
+      "prev": "5798421db4ab557d5093a3ddbf83e6318fc32227db1235ad698903463be7695a",
+      "next": "dc4335cc93f91ef6d0758462a09c7e057daea7f8924d90e1ea09bb37e50629d9"
+    },
+    {
+      "ord": 363,
+      "blockId": "4765d26642621dce38c25a171e4baffb",
+      "fp64": "3c86801a9c93af2c",
+      "normHash": "dc4335cc93f91ef6d0758462a09c7e057daea7f8924d90e1ea09bb37e50629d9",
+      "kind": "p",
+      "chapter": "١٣-إجماع-الصحابة-رضي-الله-عنهم-على-وجوب-صلاة-الجماعة",
+      "prev": "077cd47603c19327ffbec86e5802828d0d3d799fc51ec26ab53ed49eac00c26f",
+      "next": "2d7932a04c9eac1112994f0b2e63523a1ae1dddd8e01e7b9232dac5d83ab5c06"
+    },
+    {
+      "ord": 364,
+      "blockId": "fed5655023c11c30c24c0c2ffdcdc327",
+      "fp64": "d849247245178a2f",
+      "normHash": "2d7932a04c9eac1112994f0b2e63523a1ae1dddd8e01e7b9232dac5d83ab5c06",
+      "kind": "p",
+      "chapter": "١٣-إجماع-الصحابة-رضي-الله-عنهم-على-وجوب-صلاة-الجماعة",
+      "prev": "dc4335cc93f91ef6d0758462a09c7e057daea7f8924d90e1ea09bb37e50629d9",
+      "next": "6b95c88c96ea7a8a46e81c5a4dc2fed4eb6272e14d9bcd67068c76922b2b6a37"
+    },
+    {
+      "ord": 365,
+      "blockId": "fe1144af1a31659e83e38d4ad078cf3a",
+      "fp64": "35dfffbfdb3b61be",
+      "normHash": "6b95c88c96ea7a8a46e81c5a4dc2fed4eb6272e14d9bcd67068c76922b2b6a37",
+      "kind": "page",
+      "chapter": "١٣-إجماع-الصحابة-رضي-الله-عنهم-على-وجوب-صلاة-الجماعة",
+      "prev": "2d7932a04c9eac1112994f0b2e63523a1ae1dddd8e01e7b9232dac5d83ab5c06"
+    }
+  ]
+}

@@ -1,0 +1,825 @@
+{
+  "schema": 1,
+  "generation": 1,
+  "sourceHash": "7e1111e2afc1a80dd495ead6f8cabadf167973daea6d7e4269fa31f4f0fddbeb",
+  "ids": [
+    {
+      "ord": 0,
+      "blockId": "29d097d4b48d6bab71e1ec7644104700",
+      "fp64": "c33eddf6286f3c6f",
+      "normHash": "26a40dc7eb12b02857dce961c7829a537215a86810ba324c248afb555f39ea94",
+      "kind": "p",
+      "chapter": "main",
+      "next": "3f41fdaeeb62524e9f4f229106705c1c5ece1c502f80703c5dda14943e5bc089"
+    },
+    {
+      "ord": 1,
+      "blockId": "2b6728c7fb7cb7c66595bcae81597244",
+      "fp64": "a2411e14d5c758a1",
+      "normHash": "3f41fdaeeb62524e9f4f229106705c1c5ece1c502f80703c5dda14943e5bc089",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "26a40dc7eb12b02857dce961c7829a537215a86810ba324c248afb555f39ea94",
+      "next": "f5c92b51cfc0ef5c80e7d3bcb7a7399f213e3abf468e7f06a2551f6be5d7e5f3"
+    },
+    {
+      "ord": 2,
+      "blockId": "156beb1a9386ae140fcb2984a9019997",
+      "fp64": "d9f7fd7fd3e7fc77",
+      "normHash": "f5c92b51cfc0ef5c80e7d3bcb7a7399f213e3abf468e7f06a2551f6be5d7e5f3",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "3f41fdaeeb62524e9f4f229106705c1c5ece1c502f80703c5dda14943e5bc089",
+      "next": "1755600b9ce652f0aec99354fbd00dc1a7e373871d30eaf4eb8d6dffd57a9a4c"
+    },
+    {
+      "ord": 3,
+      "blockId": "f4b578e58b49b0a4888abbacebf76a5a",
+      "fp64": "fe7eb96dfbebf385",
+      "normHash": "1755600b9ce652f0aec99354fbd00dc1a7e373871d30eaf4eb8d6dffd57a9a4c",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "f5c92b51cfc0ef5c80e7d3bcb7a7399f213e3abf468e7f06a2551f6be5d7e5f3",
+      "next": "6231d75df66b1b3c208bf143c707112dc693604584449c85fcbacf5b95f385a1"
+    },
+    {
+      "ord": 4,
+      "blockId": "f57c3ed1a75d254a2601296d99bd77dd",
+      "fp64": "e3136f5267b7fa71",
+      "normHash": "6231d75df66b1b3c208bf143c707112dc693604584449c85fcbacf5b95f385a1",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "1755600b9ce652f0aec99354fbd00dc1a7e373871d30eaf4eb8d6dffd57a9a4c",
+      "next": "08d44511c7bc44313239c3c73bf452560c4d7d01339ce161d123516df2c0401a"
+    },
+    {
+      "ord": 5,
+      "blockId": "c7e927633bf1a9499108da6969ff413f",
+      "fp64": "ff24181cbb9c376f",
+      "normHash": "08d44511c7bc44313239c3c73bf452560c4d7d01339ce161d123516df2c0401a",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "6231d75df66b1b3c208bf143c707112dc693604584449c85fcbacf5b95f385a1",
+      "next": "6235fe64eb3cef3cb6cd6bd4897daa7bd69a0c9bb25b6200c3f7d288e4b9cf42"
+    },
+    {
+      "ord": 6,
+      "blockId": "2aeee5e0b9247c504fa4aa291c928399",
+      "fp64": "5eefaa3dff6ffd54",
+      "normHash": "6235fe64eb3cef3cb6cd6bd4897daa7bd69a0c9bb25b6200c3f7d288e4b9cf42",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "08d44511c7bc44313239c3c73bf452560c4d7d01339ce161d123516df2c0401a",
+      "next": "4f5e93bdd99e65c1d8e5fa0ceea7a9f83137d2e5dbe3b61d5dafda6c0e4e747a"
+    },
+    {
+      "ord": 7,
+      "blockId": "a151e031aea2ab75e44999dab083b70c",
+      "fp64": "43dbcd7bcb677c4d",
+      "normHash": "4f5e93bdd99e65c1d8e5fa0ceea7a9f83137d2e5dbe3b61d5dafda6c0e4e747a",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "6235fe64eb3cef3cb6cd6bd4897daa7bd69a0c9bb25b6200c3f7d288e4b9cf42",
+      "next": "5b97ccfe0b2218775e5ac19fc838d4aacb9fa83a4ca0970b414faec921df57bf"
+    },
+    {
+      "ord": 8,
+      "blockId": "70319a54ebca66ed23fc4fb1f6bef097",
+      "fp64": "3017e25a3793e4ec",
+      "normHash": "5b97ccfe0b2218775e5ac19fc838d4aacb9fa83a4ca0970b414faec921df57bf",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "4f5e93bdd99e65c1d8e5fa0ceea7a9f83137d2e5dbe3b61d5dafda6c0e4e747a",
+      "next": "60827fc6b2fe55a354315359e81e37b1f9bd25b22682f050eb8e627fb183897c"
+    },
+    {
+      "ord": 9,
+      "blockId": "bf55923cd35916ae6d21b0fc51925533",
+      "fp64": "e1320d1667a6fa70",
+      "normHash": "60827fc6b2fe55a354315359e81e37b1f9bd25b22682f050eb8e627fb183897c",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "5b97ccfe0b2218775e5ac19fc838d4aacb9fa83a4ca0970b414faec921df57bf",
+      "next": "9188f256ba223b9637a6bca1894c8bda769d4a2177a25f5c18dfb50703f508f1"
+    },
+    {
+      "ord": 10,
+      "blockId": "65d4bc2c0089a096ad1e08734a28b0e1",
+      "fp64": "e5fff7ff7bb3e67f",
+      "normHash": "9188f256ba223b9637a6bca1894c8bda769d4a2177a25f5c18dfb50703f508f1",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "60827fc6b2fe55a354315359e81e37b1f9bd25b22682f050eb8e627fb183897c",
+      "next": "2faeea109072ecd45655335c776d16dff7854c5c40d4f54df97cecc239736a86"
+    },
+    {
+      "ord": 11,
+      "blockId": "4afab4110c7ed2e86a85f64761145df5",
+      "fp64": "bdf5f8179ffc71fe",
+      "normHash": "2faeea109072ecd45655335c776d16dff7854c5c40d4f54df97cecc239736a86",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "9188f256ba223b9637a6bca1894c8bda769d4a2177a25f5c18dfb50703f508f1",
+      "next": "d6cc5114c984f361aaaa4c1be2d9840b6a640181fca763debc113cf45dc90b6e"
+    },
+    {
+      "ord": 12,
+      "blockId": "e6380ca8823105c3dcefb715cb7e0aca",
+      "fp64": "e883e11c7f24d439",
+      "normHash": "d6cc5114c984f361aaaa4c1be2d9840b6a640181fca763debc113cf45dc90b6e",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "2faeea109072ecd45655335c776d16dff7854c5c40d4f54df97cecc239736a86",
+      "next": "76aebe5cad08f7ef1fe64b28e8d754b06b93e23cd46ad50ccf157ae098bd9e44"
+    },
+    {
+      "ord": 13,
+      "blockId": "1897cb381829986c707d165c62f8d41b",
+      "fp64": "6b2a9f7fcfc21a08",
+      "normHash": "76aebe5cad08f7ef1fe64b28e8d754b06b93e23cd46ad50ccf157ae098bd9e44",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "d6cc5114c984f361aaaa4c1be2d9840b6a640181fca763debc113cf45dc90b6e",
+      "next": "8670d78177652d3b8d73f92d2893b4ec63c2e8eb0c131461bafaab13747a5fb1"
+    },
+    {
+      "ord": 14,
+      "blockId": "6eef286f59e4ff1fdfe0d7658fc6c6b4",
+      "fp64": "fdb6e0529b8fa52d",
+      "normHash": "8670d78177652d3b8d73f92d2893b4ec63c2e8eb0c131461bafaab13747a5fb1",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "76aebe5cad08f7ef1fe64b28e8d754b06b93e23cd46ad50ccf157ae098bd9e44",
+      "next": "60470e7c8123a46f809457885e2689c3cbf5700865545e23b1a40ef78196dc43"
+    },
+    {
+      "ord": 15,
+      "blockId": "513cc7a527f7651f9e443eae580057b8",
+      "fp64": "fe0e98297903a185",
+      "normHash": "60470e7c8123a46f809457885e2689c3cbf5700865545e23b1a40ef78196dc43",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "8670d78177652d3b8d73f92d2893b4ec63c2e8eb0c131461bafaab13747a5fb1",
+      "next": "54719941dd62b02faaced96158fc210dab4572955ea859c6eb23cbceea9e6178"
+    },
+    {
+      "ord": 16,
+      "blockId": "a4330026247c06f39cdc0ca2d20653f6",
+      "fp64": "5c4327f830764413",
+      "normHash": "54719941dd62b02faaced96158fc210dab4572955ea859c6eb23cbceea9e6178",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "60470e7c8123a46f809457885e2689c3cbf5700865545e23b1a40ef78196dc43",
+      "next": "f7f4a90c065992e83745e1df65ec3a03003a82253ee90efc20ca08eafdc8dddc"
+    },
+    {
+      "ord": 17,
+      "blockId": "9b2c86e1b2635afcdcbfc71cb29e97b3",
+      "fp64": "afdffffadf71677e",
+      "normHash": "f7f4a90c065992e83745e1df65ec3a03003a82253ee90efc20ca08eafdc8dddc",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "54719941dd62b02faaced96158fc210dab4572955ea859c6eb23cbceea9e6178",
+      "next": "3a494ec2f51d07da81e163b8776d39287720651d68e50d38aede962a4560c792"
+    },
+    {
+      "ord": 18,
+      "blockId": "bfa8317a2b5f24470aa6f69b8fac4314",
+      "fp64": "f9f7bfb036ff3f6d",
+      "normHash": "3a494ec2f51d07da81e163b8776d39287720651d68e50d38aede962a4560c792",
+      "kind": "h2",
+      "chapter": "فوائد-الذكر",
+      "prev": "f7f4a90c065992e83745e1df65ec3a03003a82253ee90efc20ca08eafdc8dddc",
+      "next": "f87fa944a9ebce1b7556801383a9b5b660eb2dfbf14054e350f68a10e38e120f"
+    },
+    {
+      "ord": 19,
+      "blockId": "8fa444c05d1e83c80ec4b89bebff5f51",
+      "fp64": "3a44e85b772bbc6c",
+      "normHash": "f87fa944a9ebce1b7556801383a9b5b660eb2dfbf14054e350f68a10e38e120f",
+      "kind": "p",
+      "chapter": "فوائد-الذكر",
+      "prev": "3a494ec2f51d07da81e163b8776d39287720651d68e50d38aede962a4560c792",
+      "next": "21edae1669eb9b20cadd95e2a056b85940569f6bae24651462d9e45a91f61291"
+    },
+    {
+      "ord": 20,
+      "blockId": "ef1b49b525a4a7e0b7a7ca0cfde01b75",
+      "fp64": "e7dfffde7f77627f",
+      "normHash": "21edae1669eb9b20cadd95e2a056b85940569f6bae24651462d9e45a91f61291",
+      "kind": "page",
+      "chapter": "فوائد-الذكر",
+      "prev": "f87fa944a9ebce1b7556801383a9b5b660eb2dfbf14054e350f68a10e38e120f",
+      "next": "edaeb1056139f4ee9e1660d2920390fd844e0551bcde9ea2cf3ca2fa62ba8e84"
+    },
+    {
+      "ord": 21,
+      "blockId": "853b2740df1af6edcb86a63d25f7cd1e",
+      "fp64": "8904e45b11621795",
+      "normHash": "edaeb1056139f4ee9e1660d2920390fd844e0551bcde9ea2cf3ca2fa62ba8e84",
+      "kind": "p",
+      "chapter": "فوائد-الذكر",
+      "prev": "21edae1669eb9b20cadd95e2a056b85940569f6bae24651462d9e45a91f61291",
+      "next": "73d73406bc46cc7186ec804fdfa1a05041b9f7d03ceeca214755823ab8479412"
+    },
+    {
+      "ord": 22,
+      "blockId": "16a99d3a1fdd6ee110b9d784fa41e7f2",
+      "fp64": "2fdffbfb7f336dff",
+      "normHash": "73d73406bc46cc7186ec804fdfa1a05041b9f7d03ceeca214755823ab8479412",
+      "kind": "page",
+      "chapter": "فوائد-الذكر",
+      "prev": "edaeb1056139f4ee9e1660d2920390fd844e0551bcde9ea2cf3ca2fa62ba8e84",
+      "next": "56c7d19521c8af1afa4bd6b3fcfb2a618b6f588a149baf5d03fbd8656c8423e7"
+    },
+    {
+      "ord": 23,
+      "blockId": "1aad413586444466db383a1f2b7d6187",
+      "fp64": "5454a8539323578f",
+      "normHash": "56c7d19521c8af1afa4bd6b3fcfb2a618b6f588a149baf5d03fbd8656c8423e7",
+      "kind": "p",
+      "chapter": "فوائد-الذكر",
+      "prev": "73d73406bc46cc7186ec804fdfa1a05041b9f7d03ceeca214755823ab8479412",
+      "next": "cd7c5053864959f9c148b6805345c9d057fe4ee48b19d8b4aa4b2202208b451a"
+    },
+    {
+      "ord": 24,
+      "blockId": "34f2c7c20a9e6c4f2db19579ce31f396",
+      "fp64": "b77d2d6b77cf080a",
+      "normHash": "cd7c5053864959f9c148b6805345c9d057fe4ee48b19d8b4aa4b2202208b451a",
+      "kind": "p",
+      "chapter": "فوائد-الذكر",
+      "prev": "56c7d19521c8af1afa4bd6b3fcfb2a618b6f588a149baf5d03fbd8656c8423e7",
+      "next": "b64d47bb52ce2df883d5e65a897cdbda8fb31df41781ec406a8f4c6d951ae1b5"
+    },
+    {
+      "ord": 25,
+      "blockId": "2598876d9e0b68dd856cb1f21577cb80",
+      "fp64": "b7dfffff5bf1f6f7",
+      "normHash": "b64d47bb52ce2df883d5e65a897cdbda8fb31df41781ec406a8f4c6d951ae1b5",
+      "kind": "page",
+      "chapter": "فوائد-الذكر",
+      "prev": "cd7c5053864959f9c148b6805345c9d057fe4ee48b19d8b4aa4b2202208b451a",
+      "next": "93eacffcff26371c290b7f5c97f51d83ce8938119bd22154e9e5111c9cba7e02"
+    },
+    {
+      "ord": 26,
+      "blockId": "41a723b2d90248f62ad7c090599233a0",
+      "fp64": "5e662a1cbf0c7544",
+      "normHash": "93eacffcff26371c290b7f5c97f51d83ce8938119bd22154e9e5111c9cba7e02",
+      "kind": "h1",
+      "chapter": "فوائد-الذكر",
+      "prev": "b64d47bb52ce2df883d5e65a897cdbda8fb31df41781ec406a8f4c6d951ae1b5",
+      "next": "5444676a81a980b352392ace3773f282713026a7d8b5c4bfe5fda9d9a60f82d0"
+    },
+    {
+      "ord": 27,
+      "blockId": "1397c97e56d960f5d2626fc1a782b262",
+      "fp64": "f949ef5811f6e67b",
+      "normHash": "5444676a81a980b352392ace3773f282713026a7d8b5c4bfe5fda9d9a60f82d0",
+      "kind": "p",
+      "chapter": "فوائد-الذكر",
+      "prev": "93eacffcff26371c290b7f5c97f51d83ce8938119bd22154e9e5111c9cba7e02",
+      "next": "ca2f15db3584bb42f623cfd827946e199bb9b20e30b2e304a04c4959ac5bb206"
+    },
+    {
+      "ord": 28,
+      "blockId": "38ea0f188db5dbce2d916650c8d7320a",
+      "fp64": "46c0c45e39678f23",
+      "normHash": "ca2f15db3584bb42f623cfd827946e199bb9b20e30b2e304a04c4959ac5bb206",
+      "kind": "p",
+      "chapter": "فوائد-الذكر",
+      "prev": "5444676a81a980b352392ace3773f282713026a7d8b5c4bfe5fda9d9a60f82d0",
+      "next": "083c07a968e70b2ca678be393e89b072d57326be51c0f5ba4d15e70e291fee83"
+    },
+    {
+      "ord": 29,
+      "blockId": "a91ffd60dc41db076b1903987cfa9998",
+      "fp64": "b4cd6a16fd7d79fe",
+      "normHash": "083c07a968e70b2ca678be393e89b072d57326be51c0f5ba4d15e70e291fee83",
+      "kind": "p",
+      "chapter": "فوائد-الذكر",
+      "prev": "ca2f15db3584bb42f623cfd827946e199bb9b20e30b2e304a04c4959ac5bb206",
+      "next": "9856a27d083ef354f96393b6833b30ec8d732fc108b043dca3f8e0778018e97a"
+    },
+    {
+      "ord": 30,
+      "blockId": "ee95841bab05fb51d3c168628d794491",
+      "fp64": "6c214c0fd7be6c9f",
+      "normHash": "9856a27d083ef354f96393b6833b30ec8d732fc108b043dca3f8e0778018e97a",
+      "kind": "p",
+      "chapter": "فوائد-الذكر",
+      "prev": "083c07a968e70b2ca678be393e89b072d57326be51c0f5ba4d15e70e291fee83",
+      "next": "5f71b298bab5fa85af2ef8746d1c8f90cd1b874b6112f7e388a351f72da1d032"
+    },
+    {
+      "ord": 31,
+      "blockId": "83e6d35aae5fdb469fdeb93721661f01",
+      "fp64": "7a4fe851d449df27",
+      "normHash": "5f71b298bab5fa85af2ef8746d1c8f90cd1b874b6112f7e388a351f72da1d032",
+      "kind": "p",
+      "chapter": "فوائد-الذكر",
+      "prev": "9856a27d083ef354f96393b6833b30ec8d732fc108b043dca3f8e0778018e97a",
+      "next": "fa6f2f2d2ec70b9fd6cba78ecf50308b0b0c23a51f49f40d301067bd8d109e52"
+    },
+    {
+      "ord": 32,
+      "blockId": "747e5b026ffe8d7d2111fa1e2e0d3857",
+      "fp64": "afdffffedb79627f",
+      "normHash": "fa6f2f2d2ec70b9fd6cba78ecf50308b0b0c23a51f49f40d301067bd8d109e52",
+      "kind": "page",
+      "chapter": "فوائد-الذكر",
+      "prev": "5f71b298bab5fa85af2ef8746d1c8f90cd1b874b6112f7e388a351f72da1d032",
+      "next": "e6c622fa2fa13c0b6ecf73e30052c5c45ce140f18559809659103ab0f7657f6d"
+    },
+    {
+      "ord": 33,
+      "blockId": "8e19c41c6cc6cc20984c8829278ac4d4",
+      "fp64": "7ddfd1d6d17d06de",
+      "normHash": "e6c622fa2fa13c0b6ecf73e30052c5c45ce140f18559809659103ab0f7657f6d",
+      "kind": "p",
+      "chapter": "فوائد-الذكر",
+      "prev": "fa6f2f2d2ec70b9fd6cba78ecf50308b0b0c23a51f49f40d301067bd8d109e52",
+      "next": "5a45c7154db44c264c4dfe8f8da43edcd53bcc624714203e2a426b9629e8d84d"
+    },
+    {
+      "ord": 34,
+      "blockId": "2db344745949dabe74f75f4a11519570",
+      "fp64": "5dd31c1d9762dd29",
+      "normHash": "5a45c7154db44c264c4dfe8f8da43edcd53bcc624714203e2a426b9629e8d84d",
+      "kind": "p",
+      "chapter": "فوائد-الذكر",
+      "prev": "e6c622fa2fa13c0b6ecf73e30052c5c45ce140f18559809659103ab0f7657f6d",
+      "next": "417b3930fece434cb53a9151a55b4a7122b3c03414be192a2f62111e185706ef"
+    },
+    {
+      "ord": 35,
+      "blockId": "b17f3fcc12a32f6399ecc7cd4f1c44ff",
+      "fp64": "ae046c7a11755f1f",
+      "normHash": "417b3930fece434cb53a9151a55b4a7122b3c03414be192a2f62111e185706ef",
+      "kind": "p",
+      "chapter": "فوائد-الذكر",
+      "prev": "5a45c7154db44c264c4dfe8f8da43edcd53bcc624714203e2a426b9629e8d84d",
+      "next": "26f8c61ec960d55f22860a0327c06ff3c79a0318486cf94c37091636f5e59730"
+    },
+    {
+      "ord": 36,
+      "blockId": "3315a2d9af528eb2a83b9cea00ce2792",
+      "fp64": "6a0071fd07676e8e",
+      "normHash": "26f8c61ec960d55f22860a0327c06ff3c79a0318486cf94c37091636f5e59730",
+      "kind": "p",
+      "chapter": "فوائد-الذكر",
+      "prev": "417b3930fece434cb53a9151a55b4a7122b3c03414be192a2f62111e185706ef",
+      "next": "4e69f1fe679aed73a4f2002d7955a7415fb3e959647a1fb7d8b8e8215f935244"
+    },
+    {
+      "ord": 37,
+      "blockId": "0240d1c78ce4801454ca253dd473db6e",
+      "fp64": "77fff3df7a73623e",
+      "normHash": "4e69f1fe679aed73a4f2002d7955a7415fb3e959647a1fb7d8b8e8215f935244",
+      "kind": "page",
+      "chapter": "فوائد-الذكر",
+      "prev": "26f8c61ec960d55f22860a0327c06ff3c79a0318486cf94c37091636f5e59730",
+      "next": "f842dd293f4e6703c2b8563050c00829439b58cdbfdcaef65487b554f59d515a"
+    },
+    {
+      "ord": 38,
+      "blockId": "41528da1f7e655d50d951b7f6b5846e2",
+      "fp64": "5f4818735145bec6",
+      "normHash": "f842dd293f4e6703c2b8563050c00829439b58cdbfdcaef65487b554f59d515a",
+      "kind": "p",
+      "chapter": "فوائد-الذكر",
+      "prev": "4e69f1fe679aed73a4f2002d7955a7415fb3e959647a1fb7d8b8e8215f935244",
+      "next": "a29afcc894d20dcd7d7e7405c2ade111d40e7136d340c2a5395d9c39c8635598"
+    },
+    {
+      "ord": 39,
+      "blockId": "1b7e2540077d2d7f7de8277962d16f97",
+      "fp64": "9c2a59faf9ed6d8a",
+      "normHash": "a29afcc894d20dcd7d7e7405c2ade111d40e7136d340c2a5395d9c39c8635598",
+      "kind": "p",
+      "chapter": "فوائد-الذكر",
+      "prev": "f842dd293f4e6703c2b8563050c00829439b58cdbfdcaef65487b554f59d515a",
+      "next": "6a44452eeea4e51bcc2e77fe20adadc3d8a68a9e26c05a0fd5c671d798d71e91"
+    },
+    {
+      "ord": 40,
+      "blockId": "19e947210afe1525d8ffb41508f3c778",
+      "fp64": "8c506d3a53168e13",
+      "normHash": "6a44452eeea4e51bcc2e77fe20adadc3d8a68a9e26c05a0fd5c671d798d71e91",
+      "kind": "p",
+      "chapter": "فوائد-الذكر",
+      "prev": "a29afcc894d20dcd7d7e7405c2ade111d40e7136d340c2a5395d9c39c8635598",
+      "next": "3eecaf561166e0705de899da9d4d90443de8abb2d65a513e82ffbc5a3553bfa6"
+    },
+    {
+      "ord": 41,
+      "blockId": "a6a73b66dfdd92615c1abdcdaf7d32a8",
+      "fp64": "a165add8dfbd921a",
+      "normHash": "3eecaf561166e0705de899da9d4d90443de8abb2d65a513e82ffbc5a3553bfa6",
+      "kind": "p",
+      "chapter": "فوائد-الذكر",
+      "prev": "6a44452eeea4e51bcc2e77fe20adadc3d8a68a9e26c05a0fd5c671d798d71e91",
+      "next": "e9425997d63f453449b6bcfe8578a5e5a2639deb050f7e11caaa4391c154f3e9"
+    },
+    {
+      "ord": 42,
+      "blockId": "eb5d11d13a34b56707a9ed88691185ce",
+      "fp64": "586969595ee9cec0",
+      "normHash": "e9425997d63f453449b6bcfe8578a5e5a2639deb050f7e11caaa4391c154f3e9",
+      "kind": "p",
+      "chapter": "فوائد-الذكر",
+      "prev": "3eecaf561166e0705de899da9d4d90443de8abb2d65a513e82ffbc5a3553bfa6",
+      "next": "fe150be8995764fb9222c74a2e8f48710a6c0e04b0832c95ac9ae993299ca637"
+    },
+    {
+      "ord": 43,
+      "blockId": "e01e2fc8e094cf7a0ffa4f027c4f157f",
+      "fp64": "25ffffde7f3f783f",
+      "normHash": "fe150be8995764fb9222c74a2e8f48710a6c0e04b0832c95ac9ae993299ca637",
+      "kind": "page",
+      "chapter": "فوائد-الذكر",
+      "prev": "e9425997d63f453449b6bcfe8578a5e5a2639deb050f7e11caaa4391c154f3e9",
+      "next": "224d2b70bfc88d09be37e11b843d5934e960b40f9585fc72041cbe37ba6179b7"
+    },
+    {
+      "ord": 44,
+      "blockId": "813c1998fea8e557742efcdb805d2f50",
+      "fp64": "a1d6ebfdcbd39e9b",
+      "normHash": "224d2b70bfc88d09be37e11b843d5934e960b40f9585fc72041cbe37ba6179b7",
+      "kind": "p",
+      "chapter": "فوائد-الذكر",
+      "prev": "fe150be8995764fb9222c74a2e8f48710a6c0e04b0832c95ac9ae993299ca637",
+      "next": "fe94e1b2442b9183a6717bf68e39939f99d7c1d85bb10a1b20f7a1b70ce2fa4c"
+    },
+    {
+      "ord": 45,
+      "blockId": "967dafbee7e43a38af70ab396f789390",
+      "fp64": "d1fd34f57b2ecea5",
+      "normHash": "fe94e1b2442b9183a6717bf68e39939f99d7c1d85bb10a1b20f7a1b70ce2fa4c",
+      "kind": "p",
+      "chapter": "فوائد-الذكر",
+      "prev": "224d2b70bfc88d09be37e11b843d5934e960b40f9585fc72041cbe37ba6179b7",
+      "next": "ee13e59e416c3fa2074e97cee111be388c68017257b41dae1dbfdbb359c037a1"
+    },
+    {
+      "ord": 46,
+      "blockId": "540b61a095715f77e983bdc6ff583610",
+      "fp64": "d9c56efa19777d0b",
+      "normHash": "ee13e59e416c3fa2074e97cee111be388c68017257b41dae1dbfdbb359c037a1",
+      "kind": "p",
+      "chapter": "فوائد-الذكر",
+      "prev": "fe94e1b2442b9183a6717bf68e39939f99d7c1d85bb10a1b20f7a1b70ce2fa4c",
+      "next": "fff14025f739917de8b60a25dc5de3c0bcaa8bfbd437d526a84ec3812d201054"
+    },
+    {
+      "ord": 47,
+      "blockId": "1285a429fd6f7a267f671e5b16f3fab9",
+      "fp64": "7ce425f25954948f",
+      "normHash": "fff14025f739917de8b60a25dc5de3c0bcaa8bfbd437d526a84ec3812d201054",
+      "kind": "p",
+      "chapter": "فوائد-الذكر",
+      "prev": "ee13e59e416c3fa2074e97cee111be388c68017257b41dae1dbfdbb359c037a1",
+      "next": "9bf50ca6972c3c68cdef96028d15a370f4074b3a716f5e18d43f4904afbfba43"
+    },
+    {
+      "ord": 48,
+      "blockId": "4464558d20dbfb5361414f9e76e4157c",
+      "fp64": "564d685ad0500eb6",
+      "normHash": "9bf50ca6972c3c68cdef96028d15a370f4074b3a716f5e18d43f4904afbfba43",
+      "kind": "p",
+      "chapter": "فوائد-الذكر",
+      "prev": "fff14025f739917de8b60a25dc5de3c0bcaa8bfbd437d526a84ec3812d201054",
+      "next": "3ac3fae37d9c27a37c8eda6b5620e12928e9e38c82616303a0543fa19a9fc15e"
+    },
+    {
+      "ord": 49,
+      "blockId": "f2d9795a9e38d53b140146dd69e120cb",
+      "fp64": "addff3be5ffd647e",
+      "normHash": "3ac3fae37d9c27a37c8eda6b5620e12928e9e38c82616303a0543fa19a9fc15e",
+      "kind": "page",
+      "chapter": "فوائد-الذكر",
+      "prev": "9bf50ca6972c3c68cdef96028d15a370f4074b3a716f5e18d43f4904afbfba43",
+      "next": "5ff8845e01dc9fe5e7f4cadbf42f4bd7f8d2229cedfd77e829da12fb11018970"
+    },
+    {
+      "ord": 50,
+      "blockId": "3e839610ba1e01f4f4bab6dda7c0e848",
+      "fp64": "b4c45d5375599f2f",
+      "normHash": "5ff8845e01dc9fe5e7f4cadbf42f4bd7f8d2229cedfd77e829da12fb11018970",
+      "kind": "p",
+      "chapter": "فوائد-الذكر",
+      "prev": "3ac3fae37d9c27a37c8eda6b5620e12928e9e38c82616303a0543fa19a9fc15e",
+      "next": "02c5e7273a6207fd718cf43f0b51887d1d71dd483161cf7fa2a800723a830bac"
+    },
+    {
+      "ord": 51,
+      "blockId": "740260afcd665d7c0cbb64ee3d5ea3f8",
+      "fp64": "78c5e15b5f98bed9",
+      "normHash": "02c5e7273a6207fd718cf43f0b51887d1d71dd483161cf7fa2a800723a830bac",
+      "kind": "p",
+      "chapter": "فوائد-الذكر",
+      "prev": "5ff8845e01dc9fe5e7f4cadbf42f4bd7f8d2229cedfd77e829da12fb11018970",
+      "next": "7e3d72368748b77aa483183858a66b987b6ec440a62393a5f4435a772ca8f3cc"
+    },
+    {
+      "ord": 52,
+      "blockId": "b5225b2779ee3c23c2dc8ef7686da56d",
+      "fp64": "ece6bd787f149c1f",
+      "normHash": "7e3d72368748b77aa483183858a66b987b6ec440a62393a5f4435a772ca8f3cc",
+      "kind": "p",
+      "chapter": "فوائد-الذكر",
+      "prev": "02c5e7273a6207fd718cf43f0b51887d1d71dd483161cf7fa2a800723a830bac",
+      "next": "b51161340881aba6e96d0e84a5a416dbb8ee7d2612ad5857221002a9a1c3d74e"
+    },
+    {
+      "ord": 53,
+      "blockId": "29750b2c5a01b6a07b26e73db7605e7f",
+      "fp64": "444c61f31dad5f56",
+      "normHash": "b51161340881aba6e96d0e84a5a416dbb8ee7d2612ad5857221002a9a1c3d74e",
+      "kind": "p",
+      "chapter": "فوائد-الذكر",
+      "prev": "7e3d72368748b77aa483183858a66b987b6ec440a62393a5f4435a772ca8f3cc",
+      "next": "4581d04ab7938e775963f37eee16e60c2f3000bc0c978bbdf46ccb9c9cb67ee5"
+    },
+    {
+      "ord": 54,
+      "blockId": "7f93035cdc78769e43012f1e0f560432",
+      "fp64": "f7dffbbe7e3be87f",
+      "normHash": "4581d04ab7938e775963f37eee16e60c2f3000bc0c978bbdf46ccb9c9cb67ee5",
+      "kind": "page",
+      "chapter": "فوائد-الذكر",
+      "prev": "b51161340881aba6e96d0e84a5a416dbb8ee7d2612ad5857221002a9a1c3d74e",
+      "next": "bdde880960b54c6d9a6c576678bb29950c3bb5fe101ba5cf591196bd7185b5c7"
+    },
+    {
+      "ord": 55,
+      "blockId": "a6f95d74e9cf2c0bfbac993a0476a31e",
+      "fp64": "54e94cffdc3fce43",
+      "normHash": "bdde880960b54c6d9a6c576678bb29950c3bb5fe101ba5cf591196bd7185b5c7",
+      "kind": "p",
+      "chapter": "فوائد-الذكر",
+      "prev": "4581d04ab7938e775963f37eee16e60c2f3000bc0c978bbdf46ccb9c9cb67ee5",
+      "next": "e17346aed177d9e9b8533ec951f97dc33b4e484a975cb0b242ad25c011bfad11"
+    },
+    {
+      "ord": 56,
+      "blockId": "754bea47c300fbb8fae511a517d487c6",
+      "fp64": "9d90a073dc59dcfd",
+      "normHash": "e17346aed177d9e9b8533ec951f97dc33b4e484a975cb0b242ad25c011bfad11",
+      "kind": "p",
+      "chapter": "فوائد-الذكر",
+      "prev": "bdde880960b54c6d9a6c576678bb29950c3bb5fe101ba5cf591196bd7185b5c7",
+      "next": "3cd057d5483df3c4094a225a81cd5480133c0e3747f6b4a51ab1d6416663e5b0"
+    },
+    {
+      "ord": 57,
+      "blockId": "6c5203fa31ab72097b684edf1257b66f",
+      "fp64": "ad67c1573f5c5f78",
+      "normHash": "3cd057d5483df3c4094a225a81cd5480133c0e3747f6b4a51ab1d6416663e5b0",
+      "kind": "p",
+      "chapter": "فوائد-الذكر",
+      "prev": "e17346aed177d9e9b8533ec951f97dc33b4e484a975cb0b242ad25c011bfad11",
+      "next": "9e92e722ff1cd1c4bbaae21d9f504ce09937acef70cba492c92e98416659b42e"
+    },
+    {
+      "ord": 58,
+      "blockId": "8be7e31ac56399b31de88181448895e6",
+      "fp64": "1f7b225dbefbf5bd",
+      "normHash": "9e92e722ff1cd1c4bbaae21d9f504ce09937acef70cba492c92e98416659b42e",
+      "kind": "p",
+      "chapter": "فوائد-الذكر",
+      "prev": "3cd057d5483df3c4094a225a81cd5480133c0e3747f6b4a51ab1d6416663e5b0",
+      "next": "a49c83338b9a4b74fd7bba9679cb6d0b60112dbc1c2b934fedbfa3d5a15b54dc"
+    },
+    {
+      "ord": 59,
+      "blockId": "740565b6191a03b8d7dbee9c7cc8bea2",
+      "fp64": "4c5c6951d4671e52",
+      "normHash": "a49c83338b9a4b74fd7bba9679cb6d0b60112dbc1c2b934fedbfa3d5a15b54dc",
+      "kind": "p",
+      "chapter": "فوائد-الذكر",
+      "prev": "9e92e722ff1cd1c4bbaae21d9f504ce09937acef70cba492c92e98416659b42e",
+      "next": "e5b0927ac6fbd7b43a3d3a27b287cf13c6902d415a651b612b87486d50f79fa4"
+    },
+    {
+      "ord": 60,
+      "blockId": "f54d0fab5356ce6933521075e55a9d88",
+      "fp64": "35ffffdf7bf5717f",
+      "normHash": "e5b0927ac6fbd7b43a3d3a27b287cf13c6902d415a651b612b87486d50f79fa4",
+      "kind": "page",
+      "chapter": "فوائد-الذكر",
+      "prev": "a49c83338b9a4b74fd7bba9679cb6d0b60112dbc1c2b934fedbfa3d5a15b54dc",
+      "next": "aa432e67dbc29621d5386df6cc38ff4c4736135e2d527907cc4e05c77e1a36c5"
+    },
+    {
+      "ord": 61,
+      "blockId": "fa21e537e1ee0c761d11d08bb97f0954",
+      "fp64": "d6a1f4fd757f8f59",
+      "normHash": "aa432e67dbc29621d5386df6cc38ff4c4736135e2d527907cc4e05c77e1a36c5",
+      "kind": "p",
+      "chapter": "فوائد-الذكر",
+      "prev": "e5b0927ac6fbd7b43a3d3a27b287cf13c6902d415a651b612b87486d50f79fa4",
+      "next": "dcdea6cc265345ed02b46167d1424318b8ec56853c7086f7e4afe2ac72f0336e"
+    },
+    {
+      "ord": 62,
+      "blockId": "55d49dab51f4f4a324e605a1664f2dcf",
+      "fp64": "bc214fd80dffef1f",
+      "normHash": "dcdea6cc265345ed02b46167d1424318b8ec56853c7086f7e4afe2ac72f0336e",
+      "kind": "p",
+      "chapter": "فوائد-الذكر",
+      "prev": "aa432e67dbc29621d5386df6cc38ff4c4736135e2d527907cc4e05c77e1a36c5",
+      "next": "c3d81a251b120c117e3bd006a345fd055c82884252590e0d235f7f50859fb1e9"
+    },
+    {
+      "ord": 63,
+      "blockId": "69764e8159c4c95faedec059413498ae",
+      "fp64": "c1cd451201c5ff0c",
+      "normHash": "c3d81a251b120c117e3bd006a345fd055c82884252590e0d235f7f50859fb1e9",
+      "kind": "p",
+      "chapter": "فوائد-الذكر",
+      "prev": "dcdea6cc265345ed02b46167d1424318b8ec56853c7086f7e4afe2ac72f0336e",
+      "next": "756f6d2ea4fff706158ef45085100dd592bdbd485ab0b5457c6cfe42192d6888"
+    },
+    {
+      "ord": 64,
+      "blockId": "36e90ebb38591a24ed1b999e1c9b6fd1",
+      "fp64": "1d95f016f4fc69b6",
+      "normHash": "756f6d2ea4fff706158ef45085100dd592bdbd485ab0b5457c6cfe42192d6888",
+      "kind": "p",
+      "chapter": "فوائد-الذكر",
+      "prev": "c3d81a251b120c117e3bd006a345fd055c82884252590e0d235f7f50859fb1e9",
+      "next": "55d8c8ffa4b612709ca8c15eb556402e8cfb3201a88475cabcc212673aeb2b0f"
+    },
+    {
+      "ord": 65,
+      "blockId": "a16f885b1ce957b98018ae1e7425e6b1",
+      "fp64": "6c0161fb75750f12",
+      "normHash": "55d8c8ffa4b612709ca8c15eb556402e8cfb3201a88475cabcc212673aeb2b0f",
+      "kind": "p",
+      "chapter": "فوائد-الذكر",
+      "prev": "756f6d2ea4fff706158ef45085100dd592bdbd485ab0b5457c6cfe42192d6888",
+      "next": "f55481b69318e1c851e57306a7f55661daf11dd52e307451f386b3d8d15d48b2"
+    },
+    {
+      "ord": 66,
+      "blockId": "f3d96ee65d755e45f6fb6b8167c631b5",
+      "fp64": "67dfff9e5fb3fb3f",
+      "normHash": "f55481b69318e1c851e57306a7f55661daf11dd52e307451f386b3d8d15d48b2",
+      "kind": "page",
+      "chapter": "فوائد-الذكر",
+      "prev": "55d8c8ffa4b612709ca8c15eb556402e8cfb3201a88475cabcc212673aeb2b0f",
+      "next": "291a1542acbcb219520311e7e84d9b3bc74cc3c65af479171539fc59510af6a8"
+    },
+    {
+      "ord": 67,
+      "blockId": "746f2252920f9836cb9b85a517b80698",
+      "fp64": "89e4247a7178dd77",
+      "normHash": "291a1542acbcb219520311e7e84d9b3bc74cc3c65af479171539fc59510af6a8",
+      "kind": "p",
+      "chapter": "فوائد-الذكر",
+      "prev": "f55481b69318e1c851e57306a7f55661daf11dd52e307451f386b3d8d15d48b2",
+      "next": "f386eab721711188c83ca7e2ee9db1b55b0fb65cfcddb101c24cf70f1feed06b"
+    },
+    {
+      "ord": 68,
+      "blockId": "ed9cbe1c88d7a556cc034525b63652ca",
+      "fp64": "83e5e14e7174fc5f",
+      "normHash": "f386eab721711188c83ca7e2ee9db1b55b0fb65cfcddb101c24cf70f1feed06b",
+      "kind": "p",
+      "chapter": "فوائد-الذكر",
+      "prev": "291a1542acbcb219520311e7e84d9b3bc74cc3c65af479171539fc59510af6a8",
+      "next": "8829ad06ef1543276f29383bef23ed699252518b06ee653db22354dacbeb7db3"
+    },
+    {
+      "ord": 69,
+      "blockId": "c7e9491b2d01de78ae53393010562ed0",
+      "fp64": "06496058553cde54",
+      "normHash": "8829ad06ef1543276f29383bef23ed699252518b06ee653db22354dacbeb7db3",
+      "kind": "p",
+      "chapter": "فوائد-الذكر",
+      "prev": "f386eab721711188c83ca7e2ee9db1b55b0fb65cfcddb101c24cf70f1feed06b",
+      "next": "cf82f37a0d9fa7db967582d57875f1098daf08f4fb5688263e59d6c97d092c67"
+    },
+    {
+      "ord": 70,
+      "blockId": "f56af77ced4d04cd98a3b4f2b3e60fe5",
+      "fp64": "6ddff7fadbb967b7",
+      "normHash": "cf82f37a0d9fa7db967582d57875f1098daf08f4fb5688263e59d6c97d092c67",
+      "kind": "page",
+      "chapter": "فوائد-الذكر",
+      "prev": "8829ad06ef1543276f29383bef23ed699252518b06ee653db22354dacbeb7db3",
+      "next": "3bd5bd22c574905c370a387b36b32291d7a00ec085c26011c47e60637eeeaddd"
+    },
+    {
+      "ord": 71,
+      "blockId": "0203a2c99667cb32f96a35674fb6f512",
+      "fp64": "95742cf2417b0f7f",
+      "normHash": "3bd5bd22c574905c370a387b36b32291d7a00ec085c26011c47e60637eeeaddd",
+      "kind": "p",
+      "chapter": "فوائد-الذكر",
+      "prev": "cf82f37a0d9fa7db967582d57875f1098daf08f4fb5688263e59d6c97d092c67",
+      "next": "14698b7211d6b256f6bb1e06e7f18ce71a3dfc05ca11b2417619651c264a981d"
+    },
+    {
+      "ord": 72,
+      "blockId": "f47693c09e7c2a336bd3f426f197849a",
+      "fp64": "3ef4239cf08b0d1b",
+      "normHash": "14698b7211d6b256f6bb1e06e7f18ce71a3dfc05ca11b2417619651c264a981d",
+      "kind": "p",
+      "chapter": "فوائد-الذكر",
+      "prev": "3bd5bd22c574905c370a387b36b32291d7a00ec085c26011c47e60637eeeaddd",
+      "next": "d54fc1889bf42199c5b42f1a2bad6baffaea9b1a921b9915213de4fecae060a6"
+    },
+    {
+      "ord": 73,
+      "blockId": "67fa5839438b2de425e926258e0e4373",
+      "fp64": "8da3e590efff4518",
+      "normHash": "d54fc1889bf42199c5b42f1a2bad6baffaea9b1a921b9915213de4fecae060a6",
+      "kind": "p",
+      "chapter": "فوائد-الذكر",
+      "prev": "14698b7211d6b256f6bb1e06e7f18ce71a3dfc05ca11b2417619651c264a981d",
+      "next": "64ba025ea7e6aaf4ff6122e8c56870c22b3c91836f56865e1673d24ddab4a040"
+    },
+    {
+      "ord": 74,
+      "blockId": "06eed21d935132207cb58eaebb91060b",
+      "fp64": "3e956cf6dd78bbf6",
+      "normHash": "64ba025ea7e6aaf4ff6122e8c56870c22b3c91836f56865e1673d24ddab4a040",
+      "kind": "p",
+      "chapter": "فوائد-الذكر",
+      "prev": "d54fc1889bf42199c5b42f1a2bad6baffaea9b1a921b9915213de4fecae060a6",
+      "next": "469237ffa4f1dbf70d9b9f4be638d38e591c8ae1b1ddd7cc1afc744533b56aef"
+    },
+    {
+      "ord": 75,
+      "blockId": "fef47293fc082c3f2aaf32de671de511",
+      "fp64": "4c05605e15545f74",
+      "normHash": "469237ffa4f1dbf70d9b9f4be638d38e591c8ae1b1ddd7cc1afc744533b56aef",
+      "kind": "p",
+      "chapter": "فوائد-الذكر",
+      "prev": "64ba025ea7e6aaf4ff6122e8c56870c22b3c91836f56865e1673d24ddab4a040",
+      "next": "9da403adc6f7f743d1c743c8c84d8aed2f84904be7b6a5259cf89154e0840dbb"
+    },
+    {
+      "ord": 76,
+      "blockId": "d29e8b4834f0132f8bbb21d1eaa0e842",
+      "fp64": "77fff79a7ffb69f6",
+      "normHash": "9da403adc6f7f743d1c743c8c84d8aed2f84904be7b6a5259cf89154e0840dbb",
+      "kind": "page",
+      "chapter": "فوائد-الذكر",
+      "prev": "469237ffa4f1dbf70d9b9f4be638d38e591c8ae1b1ddd7cc1afc744533b56aef",
+      "next": "59c032b3d4b3523c60087a73629e558a9ba18ee79870305bad728e20e9b1f147"
+    },
+    {
+      "ord": 77,
+      "blockId": "6dca9d7604cba560e3411cca6e62a7b5",
+      "fp64": "96c1706d917fcdfe",
+      "normHash": "59c032b3d4b3523c60087a73629e558a9ba18ee79870305bad728e20e9b1f147",
+      "kind": "p",
+      "chapter": "فوائد-الذكر",
+      "prev": "9da403adc6f7f743d1c743c8c84d8aed2f84904be7b6a5259cf89154e0840dbb",
+      "next": "ad73271a4edfbdc43f278ab142839d2cb1ea800247771759a3a550612f68f612"
+    },
+    {
+      "ord": 78,
+      "blockId": "f98bf3143aa9630330aaef8f7e7ac1e7",
+      "fp64": "7f6ca2da7b8ea40d",
+      "normHash": "ad73271a4edfbdc43f278ab142839d2cb1ea800247771759a3a550612f68f612",
+      "kind": "p",
+      "chapter": "فوائد-الذكر",
+      "prev": "59c032b3d4b3523c60087a73629e558a9ba18ee79870305bad728e20e9b1f147",
+      "next": "f48d831953d4199c493fecb17f74e3ce4ce6727058a2ae213c38759a3224065c"
+    },
+    {
+      "ord": 79,
+      "blockId": "1d6981b366c59e2a5147f072271d23f1",
+      "fp64": "fdb6e0529b8fa52d",
+      "normHash": "f48d831953d4199c493fecb17f74e3ce4ce6727058a2ae213c38759a3224065c",
+      "kind": "p",
+      "chapter": "فوائد-الذكر",
+      "prev": "ad73271a4edfbdc43f278ab142839d2cb1ea800247771759a3a550612f68f612",
+      "next": "529c8bd035fd1576e542b21fb42eaed3f5d5023bedfbe9260e900e9be64f9af5"
+    },
+    {
+      "ord": 80,
+      "blockId": "de6ccfcca949c989ee33110a976c06f7",
+      "fp64": "1c4d615014851708",
+      "normHash": "529c8bd035fd1576e542b21fb42eaed3f5d5023bedfbe9260e900e9be64f9af5",
+      "kind": "p",
+      "chapter": "فوائد-الذكر",
+      "prev": "f48d831953d4199c493fecb17f74e3ce4ce6727058a2ae213c38759a3224065c",
+      "next": "afdb7313e5b92484c76c5195be2959c3631cc9c844a90c8fa37d3edfc9b28110"
+    },
+    {
+      "ord": 81,
+      "blockId": "d5c15e2d5790b9053d48974fa37ad5a1",
+      "fp64": "3fdffb9edbf77eb7",
+      "normHash": "afdb7313e5b92484c76c5195be2959c3631cc9c844a90c8fa37d3edfc9b28110",
+      "kind": "page",
+      "chapter": "فوائد-الذكر",
+      "prev": "529c8bd035fd1576e542b21fb42eaed3f5d5023bedfbe9260e900e9be64f9af5"
+    }
+  ]
+}

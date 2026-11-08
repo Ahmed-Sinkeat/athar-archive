@@ -1,0 +1,1915 @@
+{
+  "schema": 1,
+  "generation": 1,
+  "sourceHash": "9e9fc2cc6c64ae3eedf2abfee606f725e0b9e1d6444739d2f8c35aed253d4a4a",
+  "ids": [
+    {
+      "ord": 0,
+      "blockId": "e79f1086cf355251bf5725bde0224c83",
+      "fp64": "1c6a134b506436dd",
+      "normHash": "fba3574f6a79cdf1f10be09e140641302898ab9fba69a0d0f386f6a294fc4a82",
+      "kind": "p",
+      "chapter": "main",
+      "next": "bdad0b8d0cac9a6e2193299e164ab4cd3c9fef1c355a873052b178a227a92c96"
+    },
+    {
+      "ord": 1,
+      "blockId": "56156091e0993519f5624b3a51d4a736",
+      "fp64": "d70cd8a7fee7f1f4",
+      "normHash": "bdad0b8d0cac9a6e2193299e164ab4cd3c9fef1c355a873052b178a227a92c96",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "fba3574f6a79cdf1f10be09e140641302898ab9fba69a0d0f386f6a294fc4a82",
+      "next": "ffa455a149135d278dd07ae117a259b9404f56beb712c9b5f36a1d3c71acc04c"
+    },
+    {
+      "ord": 2,
+      "blockId": "02f6b3b06eb7b0d032fd66532c993b7e",
+      "fp64": "8d3800904be520d0",
+      "normHash": "ffa455a149135d278dd07ae117a259b9404f56beb712c9b5f36a1d3c71acc04c",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "bdad0b8d0cac9a6e2193299e164ab4cd3c9fef1c355a873052b178a227a92c96",
+      "next": "a295ff14007e32bdfc9bb434ec0419999181d3d2790e3ba1cdbf0d2c44e938c2"
+    },
+    {
+      "ord": 3,
+      "blockId": "f3b250e3ba4b95525ec873832b0522eb",
+      "fp64": "d59ec997b8f570f4",
+      "normHash": "a295ff14007e32bdfc9bb434ec0419999181d3d2790e3ba1cdbf0d2c44e938c2",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "ffa455a149135d278dd07ae117a259b9404f56beb712c9b5f36a1d3c71acc04c",
+      "next": "1932b74842c5ea7171e5bc0d72696df66a0ddbccc1bb8c0f6482c781f501a500"
+    },
+    {
+      "ord": 4,
+      "blockId": "216d78a9a614e945eed578987f64bbc0",
+      "fp64": "cdb3917b1e72be53",
+      "normHash": "1932b74842c5ea7171e5bc0d72696df66a0ddbccc1bb8c0f6482c781f501a500",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "a295ff14007e32bdfc9bb434ec0419999181d3d2790e3ba1cdbf0d2c44e938c2",
+      "next": "2d2f61095390136dc37ca5682ef6168299bd066856648d2ec3d7da5afec5fd0c"
+    },
+    {
+      "ord": 5,
+      "blockId": "a3b54b434506f7b66ad88cc4cda9b698",
+      "fp64": "64d18e1553cf00a5",
+      "normHash": "2d2f61095390136dc37ca5682ef6168299bd066856648d2ec3d7da5afec5fd0c",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "1932b74842c5ea7171e5bc0d72696df66a0ddbccc1bb8c0f6482c781f501a500",
+      "next": "f5c92b51cfc0ef5c80e7d3bcb7a7399f213e3abf468e7f06a2551f6be5d7e5f3"
+    },
+    {
+      "ord": 6,
+      "blockId": "21f58810d4ea4b661e77fb3702a5d16d",
+      "fp64": "d9f7fd7fd3e7fc77",
+      "normHash": "f5c92b51cfc0ef5c80e7d3bcb7a7399f213e3abf468e7f06a2551f6be5d7e5f3",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "2d2f61095390136dc37ca5682ef6168299bd066856648d2ec3d7da5afec5fd0c",
+      "next": "1755600b9ce652f0aec99354fbd00dc1a7e373871d30eaf4eb8d6dffd57a9a4c"
+    },
+    {
+      "ord": 7,
+      "blockId": "03100dcbd10cefcf39e2461ef86e4188",
+      "fp64": "fe7eb96dfbebf385",
+      "normHash": "1755600b9ce652f0aec99354fbd00dc1a7e373871d30eaf4eb8d6dffd57a9a4c",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "f5c92b51cfc0ef5c80e7d3bcb7a7399f213e3abf468e7f06a2551f6be5d7e5f3",
+      "next": "a2216bb046491c7f0408ffe47beb093d2386dfee9d4d4a0b7dadfe47ce274157"
+    },
+    {
+      "ord": 8,
+      "blockId": "20d6b615bbd17864292af4a850d40ccc",
+      "fp64": "dc2321e5d3121873",
+      "normHash": "a2216bb046491c7f0408ffe47beb093d2386dfee9d4d4a0b7dadfe47ce274157",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "1755600b9ce652f0aec99354fbd00dc1a7e373871d30eaf4eb8d6dffd57a9a4c",
+      "next": "3a0c875676cf04df7cd90d87b6c314d72a931319d86a2476aaec6d8a28bf3cbf"
+    },
+    {
+      "ord": 9,
+      "blockId": "db4b4207ecfe7d3e94bee2e85170d376",
+      "fp64": "ed04e9da1039f22d",
+      "normHash": "3a0c875676cf04df7cd90d87b6c314d72a931319d86a2476aaec6d8a28bf3cbf",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "a2216bb046491c7f0408ffe47beb093d2386dfee9d4d4a0b7dadfe47ce274157",
+      "next": "a7ea0e5e58a1d89d68485638bcb5a16931b31bb3569e867af7a698dd8cdd3be2"
+    },
+    {
+      "ord": 10,
+      "blockId": "6ebe09dd40f69309c5d29b9352ecee5f",
+      "fp64": "df59a017d6fc74de",
+      "normHash": "a7ea0e5e58a1d89d68485638bcb5a16931b31bb3569e867af7a698dd8cdd3be2",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "3a0c875676cf04df7cd90d87b6c314d72a931319d86a2476aaec6d8a28bf3cbf",
+      "next": "e3c4ab7981660ba25c8e16f485c8c718e6ebb1a9b27989f726f345c49654ad43"
+    },
+    {
+      "ord": 11,
+      "blockId": "34a426655f541b4df2ee8c79014c29a3",
+      "fp64": "8e5a645f1f41ffbc",
+      "normHash": "e3c4ab7981660ba25c8e16f485c8c718e6ebb1a9b27989f726f345c49654ad43",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "a7ea0e5e58a1d89d68485638bcb5a16931b31bb3569e867af7a698dd8cdd3be2",
+      "next": "a0f4d44b569b5b4cfca38ee0ce7b5c0a3a8c8d4ad43e04cd5f70e7471a734a0e"
+    },
+    {
+      "ord": 12,
+      "blockId": "a403ba0568e411ee134531ef5528cb63",
+      "fp64": "118ccef8aa5cb4fc",
+      "normHash": "a0f4d44b569b5b4cfca38ee0ce7b5c0a3a8c8d4ad43e04cd5f70e7471a734a0e",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "e3c4ab7981660ba25c8e16f485c8c718e6ebb1a9b27989f726f345c49654ad43",
+      "next": "b5f84b62f7ad0b30c21ce9aa0d802aaca9b3722ecbdb38b742475329c614688d"
+    },
+    {
+      "ord": 13,
+      "blockId": "1b76b0eed293dba76f78e0557c1cb674",
+      "fp64": "c538c880dce4f4f4",
+      "normHash": "b5f84b62f7ad0b30c21ce9aa0d802aaca9b3722ecbdb38b742475329c614688d",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "a0f4d44b569b5b4cfca38ee0ce7b5c0a3a8c8d4ad43e04cd5f70e7471a734a0e",
+      "next": "1b26782cbbb119945444be70b34da00e1ae8f9bf17bb74ae0ada6ce107964b57"
+    },
+    {
+      "ord": 14,
+      "blockId": "6540595a5c7c20d29f9951e80701ae93",
+      "fp64": "14d7a9e4c2a36771",
+      "normHash": "1b26782cbbb119945444be70b34da00e1ae8f9bf17bb74ae0ada6ce107964b57",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "b5f84b62f7ad0b30c21ce9aa0d802aaca9b3722ecbdb38b742475329c614688d",
+      "next": "551da5927937051b670b72c5a69dbc9f184d64b0dd39070dcd90daac59e7974b"
+    },
+    {
+      "ord": 15,
+      "blockId": "003e6638ca517da1c9a1285e905d95e2",
+      "fp64": "495934bd1126bd53",
+      "normHash": "551da5927937051b670b72c5a69dbc9f184d64b0dd39070dcd90daac59e7974b",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "1b26782cbbb119945444be70b34da00e1ae8f9bf17bb74ae0ada6ce107964b57",
+      "next": "73d73406bc46cc7186ec804fdfa1a05041b9f7d03ceeca214755823ab8479412"
+    },
+    {
+      "ord": 16,
+      "blockId": "487f7eda76b4428723a8fbb798fbfc46",
+      "fp64": "2fdffbfb7f336dff",
+      "normHash": "73d73406bc46cc7186ec804fdfa1a05041b9f7d03ceeca214755823ab8479412",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "551da5927937051b670b72c5a69dbc9f184d64b0dd39070dcd90daac59e7974b",
+      "next": "981981941db91c49ef32e19c44e84d9df96bd7317fc38f731f77e09152a4d23c"
+    },
+    {
+      "ord": 17,
+      "blockId": "4aaa4b8e4b1ea799320c5863f77813ec",
+      "fp64": "7e47adefc190d839",
+      "normHash": "981981941db91c49ef32e19c44e84d9df96bd7317fc38f731f77e09152a4d23c",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "73d73406bc46cc7186ec804fdfa1a05041b9f7d03ceeca214755823ab8479412",
+      "next": "d9ce6016aa11feb29d0fdfe71a06cb03c9f3abc70ecd423350185607d91b8382"
+    },
+    {
+      "ord": 18,
+      "blockId": "93cc0e103be2bf7052c269f409e866ec",
+      "fp64": "5125eda513eef901",
+      "normHash": "d9ce6016aa11feb29d0fdfe71a06cb03c9f3abc70ecd423350185607d91b8382",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "981981941db91c49ef32e19c44e84d9df96bd7317fc38f731f77e09152a4d23c",
+      "next": "f9a14ca358c34bc44712c56587a35dbbcdfc3c9272add2de9eab1b332203f932"
+    },
+    {
+      "ord": 19,
+      "blockId": "4ac862d9123b6c5a1e9e8d836e3271fb",
+      "fp64": "c483c51e7f245c69",
+      "normHash": "f9a14ca358c34bc44712c56587a35dbbcdfc3c9272add2de9eab1b332203f932",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "d9ce6016aa11feb29d0fdfe71a06cb03c9f3abc70ecd423350185607d91b8382",
+      "next": "3a935450407ec5018639ba2f670d77685becfba74f8ccdfbc8e3d38907b0ed27"
+    },
+    {
+      "ord": 20,
+      "blockId": "9b11048edb846eb6e3edef6ac721c34f",
+      "fp64": "ffcfbdfefb39d33d",
+      "normHash": "3a935450407ec5018639ba2f670d77685becfba74f8ccdfbc8e3d38907b0ed27",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "f9a14ca358c34bc44712c56587a35dbbcdfc3c9272add2de9eab1b332203f932",
+      "next": "09bfdec3993384fdd9fab53c46eea67aa05a0c44246d3e6de8e75ca2c715f88a"
+    },
+    {
+      "ord": 21,
+      "blockId": "d32939a90616828769270f914bc5ceb9",
+      "fp64": "dd5a60139af570b4",
+      "normHash": "09bfdec3993384fdd9fab53c46eea67aa05a0c44246d3e6de8e75ca2c715f88a",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "3a935450407ec5018639ba2f670d77685becfba74f8ccdfbc8e3d38907b0ed27",
+      "next": "f2a93f8bb8bc698ab2ce0f205106c987c641bb10e56203a7a2b5a4dfa116fb51"
+    },
+    {
+      "ord": 22,
+      "blockId": "06a98e4b4215f543b004dbb4a7a8ea70",
+      "fp64": "1f592e66be3e3fcf",
+      "normHash": "f2a93f8bb8bc698ab2ce0f205106c987c641bb10e56203a7a2b5a4dfa116fb51",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "09bfdec3993384fdd9fab53c46eea67aa05a0c44246d3e6de8e75ca2c715f88a",
+      "next": "52fb8de513b2fda6c5aabb68e7f8d45183138cc6081eb49280844545c848cd74"
+    },
+    {
+      "ord": 23,
+      "blockId": "8a204ac7227fd0e058a18ec27f410a70",
+      "fp64": "49ad621c7149db30",
+      "normHash": "52fb8de513b2fda6c5aabb68e7f8d45183138cc6081eb49280844545c848cd74",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "f2a93f8bb8bc698ab2ce0f205106c987c641bb10e56203a7a2b5a4dfa116fb51",
+      "next": "fee832d2021b0156e0ba299d22288b9aa66658da27ddc03b3dc1ff1f568b79a0"
+    },
+    {
+      "ord": 24,
+      "blockId": "f629b02e3460a317f1725fa8ed23a25b",
+      "fp64": "21dc73fb7b32246f",
+      "normHash": "fee832d2021b0156e0ba299d22288b9aa66658da27ddc03b3dc1ff1f568b79a0",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "52fb8de513b2fda6c5aabb68e7f8d45183138cc6081eb49280844545c848cd74",
+      "next": "fce817bfbb5736ada1a4b35ec8ad3539048fe1e2108dd54431a8429cf988a424"
+    },
+    {
+      "ord": 25,
+      "blockId": "78c640deacd2cfda25793b507c3a71c1",
+      "fp64": "7cfaf7ffbf56ffc7",
+      "normHash": "fce817bfbb5736ada1a4b35ec8ad3539048fe1e2108dd54431a8429cf988a424",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "fee832d2021b0156e0ba299d22288b9aa66658da27ddc03b3dc1ff1f568b79a0",
+      "next": "d8de1ab5b54f19be648ece51b646f01e3989191027f936927f0d7fe39a2b8a0c"
+    },
+    {
+      "ord": 26,
+      "blockId": "d4eb7d703465b6ea4a1512a76d3b6b77",
+      "fp64": "7e62c0e9bb67fd13",
+      "normHash": "d8de1ab5b54f19be648ece51b646f01e3989191027f936927f0d7fe39a2b8a0c",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "fce817bfbb5736ada1a4b35ec8ad3539048fe1e2108dd54431a8429cf988a424",
+      "next": "73b381af69b26659abfc37a1965298175ee86d22c54f471c39ba4b6880513c53"
+    },
+    {
+      "ord": 27,
+      "blockId": "ddeac480c4b27d44344a5c02d3b547a8",
+      "fp64": "8f4c095a53547fdc",
+      "normHash": "73b381af69b26659abfc37a1965298175ee86d22c54f471c39ba4b6880513c53",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "d8de1ab5b54f19be648ece51b646f01e3989191027f936927f0d7fe39a2b8a0c",
+      "next": "291a1c30ff01a597adbee423d341c4705a83d4183ef54233b1ccec3988a95af4"
+    },
+    {
+      "ord": 28,
+      "blockId": "1d8fe8581d9a9e037e81d8d0b7f03d8b",
+      "fp64": "d9b7f7b2a4762cb9",
+      "normHash": "291a1c30ff01a597adbee423d341c4705a83d4183ef54233b1ccec3988a95af4",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "73b381af69b26659abfc37a1965298175ee86d22c54f471c39ba4b6880513c53",
+      "next": "5481e4d8a979000cc0e9faf44fe320ade2f944728a79cd87e3ba6db413764109"
+    },
+    {
+      "ord": 29,
+      "blockId": "ffee302129659d568ee296f09735f46c",
+      "fp64": "0d93aa02b845905e",
+      "normHash": "5481e4d8a979000cc0e9faf44fe320ade2f944728a79cd87e3ba6db413764109",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "291a1c30ff01a597adbee423d341c4705a83d4183ef54233b1ccec3988a95af4",
+      "next": "5d4d96a1a216bf5bb9d8bfd7b566d2695f16b0198cda5adb53a7393af1781041"
+    },
+    {
+      "ord": 30,
+      "blockId": "6836d935ad24c6b7fe229987a36b7f59",
+      "fp64": "b851ae599bd68ac0",
+      "normHash": "5d4d96a1a216bf5bb9d8bfd7b566d2695f16b0198cda5adb53a7393af1781041",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "5481e4d8a979000cc0e9faf44fe320ade2f944728a79cd87e3ba6db413764109",
+      "next": "9000592288eec8a3c384ebde2643af968eee82a4220866190c53e423eec0b0ca"
+    },
+    {
+      "ord": 31,
+      "blockId": "2f234a2cef219a8c85c98ac5d4f2d560",
+      "fp64": "ac97e212bfbd241e",
+      "normHash": "9000592288eec8a3c384ebde2643af968eee82a4220866190c53e423eec0b0ca",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "5d4d96a1a216bf5bb9d8bfd7b566d2695f16b0198cda5adb53a7393af1781041",
+      "next": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839"
+    },
+    {
+      "ord": 32,
+      "blockId": "e7f9268098b06d63e3046b85bc2e6d5e",
+      "fp64": "c2e708506ae5eb14",
+      "normHash": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839",
+      "kind": "break",
+      "chapter": "main",
+      "prev": "9000592288eec8a3c384ebde2643af968eee82a4220866190c53e423eec0b0ca",
+      "next": "f2d3b6bdb55e7fbc6d8ab7edec8e25dae2f896f9806c5d5589cfaf4f5e85c4f3"
+    },
+    {
+      "ord": 33,
+      "blockId": "6e7c828dc6a8112e0cd4c37591caea79",
+      "fp64": "a5dd76ff53b0e667",
+      "normHash": "f2d3b6bdb55e7fbc6d8ab7edec8e25dae2f896f9806c5d5589cfaf4f5e85c4f3",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839",
+      "next": "840103ee76068cd3651665701540df131f7b089c35967870a45a84439a3f7f5a"
+    },
+    {
+      "ord": 34,
+      "blockId": "508aaffc550e283b353c4d6fbe1cbe57",
+      "fp64": "fddae137dfdf30bc",
+      "normHash": "840103ee76068cd3651665701540df131f7b089c35967870a45a84439a3f7f5a",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "f2d3b6bdb55e7fbc6d8ab7edec8e25dae2f896f9806c5d5589cfaf4f5e85c4f3",
+      "next": "d9ce6016aa11feb29d0fdfe71a06cb03c9f3abc70ecd423350185607d91b8382"
+    },
+    {
+      "ord": 35,
+      "blockId": "ed1c764b2bbe40c228133b8977094215",
+      "fp64": "5125eda513eef901",
+      "normHash": "d9ce6016aa11feb29d0fdfe71a06cb03c9f3abc70ecd423350185607d91b8382",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "840103ee76068cd3651665701540df131f7b089c35967870a45a84439a3f7f5a",
+      "next": "850f7e134cb8df99f500ff81392c0948da7bbbdd1433869ef26f480ff528de44"
+    },
+    {
+      "ord": 36,
+      "blockId": "0fa70de3086002c2594b244476454d2f",
+      "fp64": "e780adbb7d5b9f7c",
+      "normHash": "850f7e134cb8df99f500ff81392c0948da7bbbdd1433869ef26f480ff528de44",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "d9ce6016aa11feb29d0fdfe71a06cb03c9f3abc70ecd423350185607d91b8382",
+      "next": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839"
+    },
+    {
+      "ord": 37,
+      "blockId": "a83ab780eb9a0321f9266d27ae80cca6",
+      "fp64": "c2e708506ae5eb14",
+      "normHash": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839",
+      "kind": "break",
+      "chapter": "main",
+      "prev": "850f7e134cb8df99f500ff81392c0948da7bbbdd1433869ef26f480ff528de44",
+      "next": "8b91b175237ae8df57a0f9260620d3a55b136d63460f6fdc3d8ad3765c855ce9"
+    },
+    {
+      "ord": 38,
+      "blockId": "21d9fb7f0797de11bab658d77e146865",
+      "fp64": "6845afadfd518ee7",
+      "normHash": "8b91b175237ae8df57a0f9260620d3a55b136d63460f6fdc3d8ad3765c855ce9",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839",
+      "next": "9b51ff7487f8ffdabe030fe4558c7f7a1af5b6e94b03fba8ef47202998d6614f"
+    },
+    {
+      "ord": 39,
+      "blockId": "5ed1ec74c4825fc2b1c7c0a7cc932e6e",
+      "fp64": "fd65eada9b3fe27c",
+      "normHash": "9b51ff7487f8ffdabe030fe4558c7f7a1af5b6e94b03fba8ef47202998d6614f",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "8b91b175237ae8df57a0f9260620d3a55b136d63460f6fdc3d8ad3765c855ce9",
+      "next": "a2fff62f9583f52be82c6e3a5b9067e0db4e62bc125c787a2bf5f1e9f0a095ae"
+    },
+    {
+      "ord": 40,
+      "blockId": "7578c356ef0acd05b8af6cd45d9a88d5",
+      "fp64": "bc546116dfbd3197",
+      "normHash": "a2fff62f9583f52be82c6e3a5b9067e0db4e62bc125c787a2bf5f1e9f0a095ae",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "9b51ff7487f8ffdabe030fe4558c7f7a1af5b6e94b03fba8ef47202998d6614f",
+      "next": "525ba7d9d56022dd0c8a54acade14a2d884a19971b53cda974166509db10532a"
+    },
+    {
+      "ord": 41,
+      "blockId": "3548a47f7f620d9aec7263f096bd7709",
+      "fp64": "38c0f716bed1f1ae",
+      "normHash": "525ba7d9d56022dd0c8a54acade14a2d884a19971b53cda974166509db10532a",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "a2fff62f9583f52be82c6e3a5b9067e0db4e62bc125c787a2bf5f1e9f0a095ae",
+      "next": "30e34f851c736ada988b2e7c22ca97b1677e0d936528abe876e001bda08d6e56"
+    },
+    {
+      "ord": 42,
+      "blockId": "9cb75dad18552484174d373b854b705e",
+      "fp64": "71150c1a2fb9b3dc",
+      "normHash": "30e34f851c736ada988b2e7c22ca97b1677e0d936528abe876e001bda08d6e56",
+      "kind": "h2",
+      "chapter": "وصف-الله-تعالى-العرش-بالعظمة-والمجد-والكرم",
+      "prev": "525ba7d9d56022dd0c8a54acade14a2d884a19971b53cda974166509db10532a",
+      "next": "b7c46beaae02973fcc2ee23cb909d8879436a79c210941e36cf316b902e9cc59"
+    },
+    {
+      "ord": 43,
+      "blockId": "bb9d5a568bd24bc08272799dd418cebf",
+      "fp64": "fd37fe7b37ed3e1d",
+      "normHash": "b7c46beaae02973fcc2ee23cb909d8879436a79c210941e36cf316b902e9cc59",
+      "kind": "p",
+      "chapter": "وصف-الله-تعالى-العرش-بالعظمة-والمجد-والكرم",
+      "prev": "30e34f851c736ada988b2e7c22ca97b1677e0d936528abe876e001bda08d6e56",
+      "next": "61df979a2b5c4d8d471e7625cc00920fdf51cfeac00a23f250e3e5bcf69a10a3"
+    },
+    {
+      "ord": 44,
+      "blockId": "3d3adf45ed8cff4cd52ace44bc0f1678",
+      "fp64": "a0dc24f473a9026b",
+      "normHash": "61df979a2b5c4d8d471e7625cc00920fdf51cfeac00a23f250e3e5bcf69a10a3",
+      "kind": "notes",
+      "chapter": "وصف-الله-تعالى-العرش-بالعظمة-والمجد-والكرم",
+      "prev": "b7c46beaae02973fcc2ee23cb909d8879436a79c210941e36cf316b902e9cc59",
+      "next": "ce386de03df4fffc0f7eb78e45dda22fe013053ff8eb269e8892fa1202a51e73"
+    },
+    {
+      "ord": 45,
+      "blockId": "96360844e62729a54164613f5226f7ee",
+      "fp64": "a5de34fe5b31027b",
+      "normHash": "ce386de03df4fffc0f7eb78e45dda22fe013053ff8eb269e8892fa1202a51e73",
+      "kind": "page",
+      "chapter": "وصف-الله-تعالى-العرش-بالعظمة-والمجد-والكرم",
+      "prev": "61df979a2b5c4d8d471e7625cc00920fdf51cfeac00a23f250e3e5bcf69a10a3",
+      "next": "53ab71fd414c838fe6066caa4078fb70361515168b921475ad512deadd1d5a36"
+    },
+    {
+      "ord": 46,
+      "blockId": "9c8d77e425415a289d2e75bbfa367c9b",
+      "fp64": "1cc0045b1d16dc5c",
+      "normHash": "53ab71fd414c838fe6066caa4078fb70361515168b921475ad512deadd1d5a36",
+      "kind": "p",
+      "chapter": "وصف-الله-تعالى-العرش-بالعظمة-والمجد-والكرم",
+      "prev": "ce386de03df4fffc0f7eb78e45dda22fe013053ff8eb269e8892fa1202a51e73",
+      "next": "b132ddd5e13380b16a302ce3a3c3951808af62501b66716c83ee91a030fa6354"
+    },
+    {
+      "ord": 47,
+      "blockId": "e9a47becf5aa15f02828fca07085f52f",
+      "fp64": "2f136047470de4d4",
+      "normHash": "b132ddd5e13380b16a302ce3a3c3951808af62501b66716c83ee91a030fa6354",
+      "kind": "p",
+      "chapter": "وصف-الله-تعالى-العرش-بالعظمة-والمجد-والكرم",
+      "prev": "53ab71fd414c838fe6066caa4078fb70361515168b921475ad512deadd1d5a36",
+      "next": "d5565e53ef0dc36b781dca8d10aa92db28e781ec4969ed2dd7158cac997f9486"
+    },
+    {
+      "ord": 48,
+      "blockId": "082f486056cc271252023d1eecef9320",
+      "fp64": "862290572f536b9a",
+      "normHash": "d5565e53ef0dc36b781dca8d10aa92db28e781ec4969ed2dd7158cac997f9486",
+      "kind": "p",
+      "chapter": "وصف-الله-تعالى-العرش-بالعظمة-والمجد-والكرم",
+      "prev": "b132ddd5e13380b16a302ce3a3c3951808af62501b66716c83ee91a030fa6354",
+      "next": "de3e3145b2f1608884a2a7533fb035431dee317396e961549b7c934b32198e31"
+    },
+    {
+      "ord": 49,
+      "blockId": "8f6c72e60b5dab125800d5d64464c22b",
+      "fp64": "9f048c7e1d67fada",
+      "normHash": "de3e3145b2f1608884a2a7533fb035431dee317396e961549b7c934b32198e31",
+      "kind": "p",
+      "chapter": "وصف-الله-تعالى-العرش-بالعظمة-والمجد-والكرم",
+      "prev": "d5565e53ef0dc36b781dca8d10aa92db28e781ec4969ed2dd7158cac997f9486",
+      "next": "07ce13ca3b2346ccd190e05ddac2fd0b641b8daa84a5f2d572a714f0b9d70a07"
+    },
+    {
+      "ord": 50,
+      "blockId": "4d55b1875af8c9d1ae2d1cf5f7ed7593",
+      "fp64": "e79a2d9fff5a57fe",
+      "normHash": "07ce13ca3b2346ccd190e05ddac2fd0b641b8daa84a5f2d572a714f0b9d70a07",
+      "kind": "p",
+      "chapter": "وصف-الله-تعالى-العرش-بالعظمة-والمجد-والكرم",
+      "prev": "de3e3145b2f1608884a2a7533fb035431dee317396e961549b7c934b32198e31",
+      "next": "77471eac6ebf6d6a7ea0793fd4c9a88ec3e9a6b98812f93227f57fdf56ca886d"
+    },
+    {
+      "ord": 51,
+      "blockId": "73c704b77dac97b0bd77a8e1d6f1d4ff",
+      "fp64": "7dded07a5525b147",
+      "normHash": "77471eac6ebf6d6a7ea0793fd4c9a88ec3e9a6b98812f93227f57fdf56ca886d",
+      "kind": "p",
+      "chapter": "وصف-الله-تعالى-العرش-بالعظمة-والمجد-والكرم",
+      "prev": "07ce13ca3b2346ccd190e05ddac2fd0b641b8daa84a5f2d572a714f0b9d70a07",
+      "next": "bcce0d58b808c98b64ffb5d83f077e5d0096566df1640fb88d2d13e8bd2c6d9b"
+    },
+    {
+      "ord": 52,
+      "blockId": "fe8350a1d5ba489475a92e76466a2cc4",
+      "fp64": "65fdf2df7232622e",
+      "normHash": "bcce0d58b808c98b64ffb5d83f077e5d0096566df1640fb88d2d13e8bd2c6d9b",
+      "kind": "page",
+      "chapter": "وصف-الله-تعالى-العرش-بالعظمة-والمجد-والكرم",
+      "prev": "77471eac6ebf6d6a7ea0793fd4c9a88ec3e9a6b98812f93227f57fdf56ca886d",
+      "next": "cecae107392d91f12571fea39dce986956d70b2256c8c4d928c92e2fe3628fe8"
+    },
+    {
+      "ord": 53,
+      "blockId": "79155566b7546ea09fdaa8d8b233eb58",
+      "fp64": "7ec5651a073eec7e",
+      "normHash": "cecae107392d91f12571fea39dce986956d70b2256c8c4d928c92e2fe3628fe8",
+      "kind": "p",
+      "chapter": "وصف-الله-تعالى-العرش-بالعظمة-والمجد-والكرم",
+      "prev": "bcce0d58b808c98b64ffb5d83f077e5d0096566df1640fb88d2d13e8bd2c6d9b",
+      "next": "6d3bdd0783fdfe9f8ec1aa20aad1afe67c8d7c6425ddaf01bfd3a5584cb7001b"
+    },
+    {
+      "ord": 54,
+      "blockId": "7b6f8f83ebc23eba1ebe636264b51226",
+      "fp64": "fcfe611a97397f17",
+      "normHash": "6d3bdd0783fdfe9f8ec1aa20aad1afe67c8d7c6425ddaf01bfd3a5584cb7001b",
+      "kind": "p",
+      "chapter": "وصف-الله-تعالى-العرش-بالعظمة-والمجد-والكرم",
+      "prev": "cecae107392d91f12571fea39dce986956d70b2256c8c4d928c92e2fe3628fe8",
+      "next": "9c0bcd03f2a45b03c97ac20873ae751028469d62fac931096ad53ac3e459971d"
+    },
+    {
+      "ord": 55,
+      "blockId": "d194f0e7066e2c35051035a652c4e9e1",
+      "fp64": "66daa6df737b575d",
+      "normHash": "9c0bcd03f2a45b03c97ac20873ae751028469d62fac931096ad53ac3e459971d",
+      "kind": "p",
+      "chapter": "وصف-الله-تعالى-العرش-بالعظمة-والمجد-والكرم",
+      "prev": "6d3bdd0783fdfe9f8ec1aa20aad1afe67c8d7c6425ddaf01bfd3a5584cb7001b",
+      "next": "e0c86ef60bcd26644c8979018f0a4e64e3dfe607dbf8915b882fc03ac29b90d5"
+    },
+    {
+      "ord": 56,
+      "blockId": "24643353a0483a4e42050f165010d363",
+      "fp64": "bffb6076dd3fb7fe",
+      "normHash": "e0c86ef60bcd26644c8979018f0a4e64e3dfe607dbf8915b882fc03ac29b90d5",
+      "kind": "p",
+      "chapter": "وصف-الله-تعالى-العرش-بالعظمة-والمجد-والكرم",
+      "prev": "9c0bcd03f2a45b03c97ac20873ae751028469d62fac931096ad53ac3e459971d",
+      "next": "c1accfc78e434ef9a704eead45b70c75fd61037747fb52685a2ccf92c3f9c23f"
+    },
+    {
+      "ord": 57,
+      "blockId": "7792c28659463e623cbbb5acfece1ee5",
+      "fp64": "d7c4241e0f76bff4",
+      "normHash": "c1accfc78e434ef9a704eead45b70c75fd61037747fb52685a2ccf92c3f9c23f",
+      "kind": "p",
+      "chapter": "وصف-الله-تعالى-العرش-بالعظمة-والمجد-والكرم",
+      "prev": "e0c86ef60bcd26644c8979018f0a4e64e3dfe607dbf8915b882fc03ac29b90d5",
+      "next": "f09745e8f55cb29b21a1637dacdb33364e5fb61dd7d23429472a6924a663c12c"
+    },
+    {
+      "ord": 58,
+      "blockId": "930380eb90f210cbd0593a1327157ec5",
+      "fp64": "89d2097fff2e7e2c",
+      "normHash": "f09745e8f55cb29b21a1637dacdb33364e5fb61dd7d23429472a6924a663c12c",
+      "kind": "p",
+      "chapter": "وصف-الله-تعالى-العرش-بالعظمة-والمجد-والكرم",
+      "prev": "c1accfc78e434ef9a704eead45b70c75fd61037747fb52685a2ccf92c3f9c23f",
+      "next": "27287cd5d7d519c19cbc5440930f7efdced62bacab1f51ca0da12863dcb0976f"
+    },
+    {
+      "ord": 59,
+      "blockId": "30efca458c30b9c5611a1353ef8a7d22",
+      "fp64": "a0fc74fe73ba5a2b",
+      "normHash": "27287cd5d7d519c19cbc5440930f7efdced62bacab1f51ca0da12863dcb0976f",
+      "kind": "notes",
+      "chapter": "وصف-الله-تعالى-العرش-بالعظمة-والمجد-والكرم",
+      "prev": "f09745e8f55cb29b21a1637dacdb33364e5fb61dd7d23429472a6924a663c12c",
+      "next": "3d1c1df63420af9023e9e4eed67cc4f8d07966fc01f069175a8d2c5f79b634b5"
+    },
+    {
+      "ord": 60,
+      "blockId": "25d35cc2c6b6ad37eb9ee736e45f88b3",
+      "fp64": "21fd74de7332403b",
+      "normHash": "3d1c1df63420af9023e9e4eed67cc4f8d07966fc01f069175a8d2c5f79b634b5",
+      "kind": "page",
+      "chapter": "وصف-الله-تعالى-العرش-بالعظمة-والمجد-والكرم",
+      "prev": "27287cd5d7d519c19cbc5440930f7efdced62bacab1f51ca0da12863dcb0976f",
+      "next": "840103ee76068cd3651665701540df131f7b089c35967870a45a84439a3f7f5a"
+    },
+    {
+      "ord": 61,
+      "blockId": "13d9d91d4de42fc62bbeb55e4c8ca121",
+      "fp64": "fddae137dfdf30bc",
+      "normHash": "840103ee76068cd3651665701540df131f7b089c35967870a45a84439a3f7f5a",
+      "kind": "p",
+      "chapter": "وصف-الله-تعالى-العرش-بالعظمة-والمجد-والكرم",
+      "prev": "3d1c1df63420af9023e9e4eed67cc4f8d07966fc01f069175a8d2c5f79b634b5",
+      "next": "1c53263011d3ba6cd6a4d010fcb46fb6b4cd86ebc9b65eff4d35bf24f6b36d8e"
+    },
+    {
+      "ord": 62,
+      "blockId": "de0fabfba7f71469eb6b2db9d4862147",
+      "fp64": "3431e33cefe9dc7c",
+      "normHash": "1c53263011d3ba6cd6a4d010fcb46fb6b4cd86ebc9b65eff4d35bf24f6b36d8e",
+      "kind": "p",
+      "chapter": "وصف-الله-تعالى-العرش-بالعظمة-والمجد-والكرم",
+      "prev": "840103ee76068cd3651665701540df131f7b089c35967870a45a84439a3f7f5a",
+      "next": "7dbf665aecac5e6628514d13ed954f7700814bd350155002694e7bde87ebaca9"
+    },
+    {
+      "ord": 63,
+      "blockId": "6f6c23f548c2961aab9054cd2690035c",
+      "fp64": "41de251ddf1cd4d3",
+      "normHash": "7dbf665aecac5e6628514d13ed954f7700814bd350155002694e7bde87ebaca9",
+      "kind": "p",
+      "chapter": "وصف-الله-تعالى-العرش-بالعظمة-والمجد-والكرم",
+      "prev": "1c53263011d3ba6cd6a4d010fcb46fb6b4cd86ebc9b65eff4d35bf24f6b36d8e",
+      "next": "6afb6134cbdea7031d9926a5ffd61fb8023164e66c3aa1d1b842511f418ab3b6"
+    },
+    {
+      "ord": 64,
+      "blockId": "39ae83ee12993110112bc76148ad2731",
+      "fp64": "6040206c9f40c7dc",
+      "normHash": "6afb6134cbdea7031d9926a5ffd61fb8023164e66c3aa1d1b842511f418ab3b6",
+      "kind": "p",
+      "chapter": "وصف-الله-تعالى-العرش-بالعظمة-والمجد-والكرم",
+      "prev": "7dbf665aecac5e6628514d13ed954f7700814bd350155002694e7bde87ebaca9",
+      "next": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839"
+    },
+    {
+      "ord": 65,
+      "blockId": "db66dc915afea07cf9d59b96a785b649",
+      "fp64": "c2e708506ae5eb14",
+      "normHash": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839",
+      "kind": "break",
+      "chapter": "وصف-الله-تعالى-العرش-بالعظمة-والمجد-والكرم",
+      "prev": "6afb6134cbdea7031d9926a5ffd61fb8023164e66c3aa1d1b842511f418ab3b6",
+      "next": "8b91b175237ae8df57a0f9260620d3a55b136d63460f6fdc3d8ad3765c855ce9"
+    },
+    {
+      "ord": 66,
+      "blockId": "6a35000768438251abc239c464516068",
+      "fp64": "6845afadfd518ee7",
+      "normHash": "8b91b175237ae8df57a0f9260620d3a55b136d63460f6fdc3d8ad3765c855ce9",
+      "kind": "p",
+      "chapter": "وصف-الله-تعالى-العرش-بالعظمة-والمجد-والكرم",
+      "prev": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839",
+      "next": "5398c4e3688d245d23dc12f64c83d52afc33308fff7c92e66416514d16d2b653"
+    },
+    {
+      "ord": 67,
+      "blockId": "27647f720e04b1416708f1ff7e55932b",
+      "fp64": "be702102e791ac32",
+      "normHash": "5398c4e3688d245d23dc12f64c83d52afc33308fff7c92e66416514d16d2b653",
+      "kind": "p",
+      "chapter": "وصف-الله-تعالى-العرش-بالعظمة-والمجد-والكرم",
+      "prev": "8b91b175237ae8df57a0f9260620d3a55b136d63460f6fdc3d8ad3765c855ce9",
+      "next": "be4439ee286df2d1746b6121ad7ee354d08960dcdde1d66d0b32fa012c32a7ea"
+    },
+    {
+      "ord": 68,
+      "blockId": "22bfc38336c29733b7aaa16145e2daa3",
+      "fp64": "3013e034fdb8739a",
+      "normHash": "be4439ee286df2d1746b6121ad7ee354d08960dcdde1d66d0b32fa012c32a7ea",
+      "kind": "p",
+      "chapter": "وصف-الله-تعالى-العرش-بالعظمة-والمجد-والكرم",
+      "prev": "5398c4e3688d245d23dc12f64c83d52afc33308fff7c92e66416514d16d2b653",
+      "next": "27bf7b7010d5a9dda6e3cc32548b9e89aaa244bed4111c74d5532419fb143f43"
+    },
+    {
+      "ord": 69,
+      "blockId": "a1957b4b57e20dc944abdf8d371887f4",
+      "fp64": "17b22d2d0e45c488",
+      "normHash": "27bf7b7010d5a9dda6e3cc32548b9e89aaa244bed4111c74d5532419fb143f43",
+      "kind": "p",
+      "chapter": "وصف-الله-تعالى-العرش-بالعظمة-والمجد-والكرم",
+      "prev": "be4439ee286df2d1746b6121ad7ee354d08960dcdde1d66d0b32fa012c32a7ea",
+      "next": "8049bbc6234344a2f41e8851e10cfb75b0ab38518230dd3d978519544daf3183"
+    },
+    {
+      "ord": 70,
+      "blockId": "e0cf6ad50efd81826144c142132a44da",
+      "fp64": "a1dc72be53b0446a",
+      "normHash": "8049bbc6234344a2f41e8851e10cfb75b0ab38518230dd3d978519544daf3183",
+      "kind": "page",
+      "chapter": "وصف-الله-تعالى-العرش-بالعظمة-والمجد-والكرم",
+      "prev": "27bf7b7010d5a9dda6e3cc32548b9e89aaa244bed4111c74d5532419fb143f43",
+      "next": "d1ea1ec86aa45cbab2177129f9d9f67b598aad74944f4b7a9fe353f5f5a89f01"
+    },
+    {
+      "ord": 71,
+      "blockId": "e70ecc53b10a9a6eae0aeb5eeae94191",
+      "fp64": "7475e174d673d97b",
+      "normHash": "d1ea1ec86aa45cbab2177129f9d9f67b598aad74944f4b7a9fe353f5f5a89f01",
+      "kind": "p",
+      "chapter": "وصف-الله-تعالى-العرش-بالعظمة-والمجد-والكرم",
+      "prev": "8049bbc6234344a2f41e8851e10cfb75b0ab38518230dd3d978519544daf3183",
+      "next": "7f3f204ce5642ed9647ee8a9e73969162d92a40a2a076e4aee412e86a53dd8db"
+    },
+    {
+      "ord": 72,
+      "blockId": "66f33b69aa00f32d7dc44a540a18f146",
+      "fp64": "9a91e0051c821cda",
+      "normHash": "7f3f204ce5642ed9647ee8a9e73969162d92a40a2a076e4aee412e86a53dd8db",
+      "kind": "p",
+      "chapter": "وصف-الله-تعالى-العرش-بالعظمة-والمجد-والكرم",
+      "prev": "d1ea1ec86aa45cbab2177129f9d9f67b598aad74944f4b7a9fe353f5f5a89f01",
+      "next": "18cd801393d666a183d5a57f98552487bda7e6cd1907203d5cf8560ece0e4057"
+    },
+    {
+      "ord": 73,
+      "blockId": "ffad8ccc7feec81e29fcd5c8db0e1feb",
+      "fp64": "51f4653fdc94d2e3",
+      "normHash": "18cd801393d666a183d5a57f98552487bda7e6cd1907203d5cf8560ece0e4057",
+      "kind": "h2",
+      "chapter": "العبادة-لا-تسمى-عبادة-إلا-مع-التوحيد",
+      "prev": "7f3f204ce5642ed9647ee8a9e73969162d92a40a2a076e4aee412e86a53dd8db",
+      "next": "d13a21222e149e27450b2556732c370334e15a6a68cbda2c842d0276158d510a"
+    },
+    {
+      "ord": 74,
+      "blockId": "76fa6040b45eb27150e8508276f47f42",
+      "fp64": "556e651fde7df8fe",
+      "normHash": "d13a21222e149e27450b2556732c370334e15a6a68cbda2c842d0276158d510a",
+      "kind": "p",
+      "chapter": "العبادة-لا-تسمى-عبادة-إلا-مع-التوحيد",
+      "prev": "18cd801393d666a183d5a57f98552487bda7e6cd1907203d5cf8560ece0e4057",
+      "next": "a02810a2d1cd40e4f3c062779740b9ab03b9f85f4f0065cafd48644210f219c0"
+    },
+    {
+      "ord": 75,
+      "blockId": "2d879aeb7371aa9447d9e2f35bf11c23",
+      "fp64": "9093605d4f644adb",
+      "normHash": "a02810a2d1cd40e4f3c062779740b9ab03b9f85f4f0065cafd48644210f219c0",
+      "kind": "p",
+      "chapter": "العبادة-لا-تسمى-عبادة-إلا-مع-التوحيد",
+      "prev": "d13a21222e149e27450b2556732c370334e15a6a68cbda2c842d0276158d510a",
+      "next": "11406cb30c0a7eda0e089f1e40c510763ad1b3d40b33fff82990e73e0245de73"
+    },
+    {
+      "ord": 76,
+      "blockId": "4d00b1249771dda7d797186954b31531",
+      "fp64": "1dda6329d729c54f",
+      "normHash": "11406cb30c0a7eda0e089f1e40c510763ad1b3d40b33fff82990e73e0245de73",
+      "kind": "p",
+      "chapter": "العبادة-لا-تسمى-عبادة-إلا-مع-التوحيد",
+      "prev": "a02810a2d1cd40e4f3c062779740b9ab03b9f85f4f0065cafd48644210f219c0",
+      "next": "b5a33f999d9b79ce977301844f0b2b5e9c1a57101869f8b92950f72a5f33b34a"
+    },
+    {
+      "ord": 77,
+      "blockId": "85e4bb94fa2ee383487e3532648601e5",
+      "fp64": "e1dff3be7233c06f",
+      "normHash": "b5a33f999d9b79ce977301844f0b2b5e9c1a57101869f8b92950f72a5f33b34a",
+      "kind": "page",
+      "chapter": "العبادة-لا-تسمى-عبادة-إلا-مع-التوحيد",
+      "prev": "11406cb30c0a7eda0e089f1e40c510763ad1b3d40b33fff82990e73e0245de73",
+      "next": "66a544ae67c0e5ff432f0631bf1bc6b98e91c1a9b304a66d8305e2678374c96a"
+    },
+    {
+      "ord": 78,
+      "blockId": "96ad6de49b3ccc0722dcc71d60e508c0",
+      "fp64": "7e41254fbe609fec",
+      "normHash": "66a544ae67c0e5ff432f0631bf1bc6b98e91c1a9b304a66d8305e2678374c96a",
+      "kind": "p",
+      "chapter": "العبادة-لا-تسمى-عبادة-إلا-مع-التوحيد",
+      "prev": "b5a33f999d9b79ce977301844f0b2b5e9c1a57101869f8b92950f72a5f33b34a",
+      "next": "3db97979104b3ca0744a41ab978377b7fc8be743ed86507198ad16659d2008f0"
+    },
+    {
+      "ord": 79,
+      "blockId": "e4ca669177ed325b8bfc459c4a97a26a",
+      "fp64": "f1ca214f1a5054f8",
+      "normHash": "3db97979104b3ca0744a41ab978377b7fc8be743ed86507198ad16659d2008f0",
+      "kind": "p",
+      "chapter": "العبادة-لا-تسمى-عبادة-إلا-مع-التوحيد",
+      "prev": "66a544ae67c0e5ff432f0631bf1bc6b98e91c1a9b304a66d8305e2678374c96a",
+      "next": "edfd9b62a1d6a1950b5052a72f822f961f84c5eaec53f55606997460e75b53fb"
+    },
+    {
+      "ord": 80,
+      "blockId": "e08563ad578ad17ba3c88c9a4215474c",
+      "fp64": "cddea120d8b9e41f",
+      "normHash": "edfd9b62a1d6a1950b5052a72f822f961f84c5eaec53f55606997460e75b53fb",
+      "kind": "h2",
+      "chapter": "الشرك-إذا-خالط-العبادة-أفسدها",
+      "prev": "3db97979104b3ca0744a41ab978377b7fc8be743ed86507198ad16659d2008f0",
+      "next": "7612754c3685252f8babe6584d0ae002481bf5d1cdd920671ddfaf977d6f284a"
+    },
+    {
+      "ord": 81,
+      "blockId": "882e3d73dbd3e8a68e732b13296cd177",
+      "fp64": "0dc6a5285779df38",
+      "normHash": "7612754c3685252f8babe6584d0ae002481bf5d1cdd920671ddfaf977d6f284a",
+      "kind": "p",
+      "chapter": "الشرك-إذا-خالط-العبادة-أفسدها",
+      "prev": "edfd9b62a1d6a1950b5052a72f822f961f84c5eaec53f55606997460e75b53fb",
+      "next": "03d1dc506ac21ec70968a294a064388f60082c6c22710ebf173403718fff5b5a"
+    },
+    {
+      "ord": 82,
+      "blockId": "5b54b1f546a98ecf661f6d4b6e22c69d",
+      "fp64": "2043f66c9c52875f",
+      "normHash": "03d1dc506ac21ec70968a294a064388f60082c6c22710ebf173403718fff5b5a",
+      "kind": "p",
+      "chapter": "الشرك-إذا-خالط-العبادة-أفسدها",
+      "prev": "7612754c3685252f8babe6584d0ae002481bf5d1cdd920671ddfaf977d6f284a",
+      "next": "4be9175c82261efdcbdc5b3050bf10d6af72bc7cffa2d2168a7fd806396fba87"
+    },
+    {
+      "ord": 83,
+      "blockId": "4305e23fe8477982836569c4755b6604",
+      "fp64": "992a3f8fd0b44562",
+      "normHash": "4be9175c82261efdcbdc5b3050bf10d6af72bc7cffa2d2168a7fd806396fba87",
+      "kind": "p",
+      "chapter": "الشرك-إذا-خالط-العبادة-أفسدها",
+      "prev": "03d1dc506ac21ec70968a294a064388f60082c6c22710ebf173403718fff5b5a",
+      "next": "4bd8eabd9b3e757cf173dde8212d93b6ecdc41ddf10214d6dbca2fe1679a356f"
+    },
+    {
+      "ord": 84,
+      "blockId": "84af431c16bb1afc948e23852d7cc930",
+      "fp64": "8041ade0d6a8a644",
+      "normHash": "4bd8eabd9b3e757cf173dde8212d93b6ecdc41ddf10214d6dbca2fe1679a356f",
+      "kind": "h2",
+      "chapter": "الشرك-الأكبر-يتميز-بثلاث-خصائص",
+      "prev": "4be9175c82261efdcbdc5b3050bf10d6af72bc7cffa2d2168a7fd806396fba87",
+      "next": "ba35cce2f2cbe7f8c40aa78e2b6229ebbff40721e66df95ed5decd9359e7a9b3"
+    },
+    {
+      "ord": 85,
+      "blockId": "8dcd5a8fa9b5aa5bb68ad5fcfede2e1d",
+      "fp64": "bd47f27b517bde4b",
+      "normHash": "ba35cce2f2cbe7f8c40aa78e2b6229ebbff40721e66df95ed5decd9359e7a9b3",
+      "kind": "p",
+      "chapter": "الشرك-الأكبر-يتميز-بثلاث-خصائص",
+      "prev": "4bd8eabd9b3e757cf173dde8212d93b6ecdc41ddf10214d6dbca2fe1679a356f",
+      "next": "e27fb7c90a2189891289e9ca0ddd16d61bf6b99aa398e173803849db4418d0b1"
+    },
+    {
+      "ord": 86,
+      "blockId": "aaa5ae47e1bb38418666ba54c49c9da0",
+      "fp64": "5b7c60eed059aade",
+      "normHash": "e27fb7c90a2189891289e9ca0ddd16d61bf6b99aa398e173803849db4418d0b1",
+      "kind": "p",
+      "chapter": "الشرك-الأكبر-يتميز-بثلاث-خصائص",
+      "prev": "ba35cce2f2cbe7f8c40aa78e2b6229ebbff40721e66df95ed5decd9359e7a9b3",
+      "next": "afa8e4b29e70ebd71f3a27ec11eaf7bcbf36daa4e1f0456693475cb7c155cf17"
+    },
+    {
+      "ord": 87,
+      "blockId": "2782ba8790c705a2061596e73322c23d",
+      "fp64": "3c7c70c931722ac1",
+      "normHash": "afa8e4b29e70ebd71f3a27ec11eaf7bcbf36daa4e1f0456693475cb7c155cf17",
+      "kind": "p",
+      "chapter": "الشرك-الأكبر-يتميز-بثلاث-خصائص",
+      "prev": "e27fb7c90a2189891289e9ca0ddd16d61bf6b99aa398e173803849db4418d0b1",
+      "next": "c6b281a4640585916346dc3d1ac148e79af97e2600d21d33f06c38d7ddf143e6"
+    },
+    {
+      "ord": 88,
+      "blockId": "ac8ea61577cd4f708c0f9aeeedcc3367",
+      "fp64": "7482cc691f42065e",
+      "normHash": "c6b281a4640585916346dc3d1ac148e79af97e2600d21d33f06c38d7ddf143e6",
+      "kind": "p",
+      "chapter": "الشرك-الأكبر-يتميز-بثلاث-خصائص",
+      "prev": "afa8e4b29e70ebd71f3a27ec11eaf7bcbf36daa4e1f0456693475cb7c155cf17",
+      "next": "cbf77e48990d7c60a95c02f1cc15f659a5150119bdba10bb2b83fa6a6f1843df"
+    },
+    {
+      "ord": 89,
+      "blockId": "792cf2603cb27751ed0321a6ef2dd830",
+      "fp64": "25ff75df73b0406b",
+      "normHash": "cbf77e48990d7c60a95c02f1cc15f659a5150119bdba10bb2b83fa6a6f1843df",
+      "kind": "page",
+      "chapter": "الشرك-الأكبر-يتميز-بثلاث-خصائص",
+      "prev": "c6b281a4640585916346dc3d1ac148e79af97e2600d21d33f06c38d7ddf143e6",
+      "next": "973ab22d9e765487221c4b2af7d4a8b3177eaaeef346d1554ae523bd47abc013"
+    },
+    {
+      "ord": 90,
+      "blockId": "2d587ff1f03025c2ab2e971377f36d35",
+      "fp64": "ddde7d7e1e25747e",
+      "normHash": "973ab22d9e765487221c4b2af7d4a8b3177eaaeef346d1554ae523bd47abc013",
+      "kind": "p",
+      "chapter": "الشرك-الأكبر-يتميز-بثلاث-خصائص",
+      "prev": "cbf77e48990d7c60a95c02f1cc15f659a5150119bdba10bb2b83fa6a6f1843df",
+      "next": "d7cdb2f7dcde8b89e31a91e21676cf75281b5a2227ddf7330d47a59a15974734"
+    },
+    {
+      "ord": 91,
+      "blockId": "bc89e7408f209d6912ff262a62599b5c",
+      "fp64": "ac87a64cdf7abdf4",
+      "normHash": "d7cdb2f7dcde8b89e31a91e21676cf75281b5a2227ddf7330d47a59a15974734",
+      "kind": "p",
+      "chapter": "الشرك-الأكبر-يتميز-بثلاث-خصائص",
+      "prev": "973ab22d9e765487221c4b2af7d4a8b3177eaaeef346d1554ae523bd47abc013",
+      "next": "19209f034fb297a9e10c68e75bb873df98b0c9aafe9b5ab54126d86826ae1663"
+    },
+    {
+      "ord": 92,
+      "blockId": "e3f82b734c6967c383c2a52d27221dd2",
+      "fp64": "3c5460501f153e9c",
+      "normHash": "19209f034fb297a9e10c68e75bb873df98b0c9aafe9b5ab54126d86826ae1663",
+      "kind": "p",
+      "chapter": "الشرك-الأكبر-يتميز-بثلاث-خصائص",
+      "prev": "d7cdb2f7dcde8b89e31a91e21676cf75281b5a2227ddf7330d47a59a15974734",
+      "next": "47ca474a89ff4e2af52da7726ed0ee596ef5754a34f05e65756bcbd7933566b7"
+    },
+    {
+      "ord": 93,
+      "blockId": "6dbb994c7b081bde8218e70319a21662",
+      "fp64": "6700a638204bb61c",
+      "normHash": "47ca474a89ff4e2af52da7726ed0ee596ef5754a34f05e65756bcbd7933566b7",
+      "kind": "p",
+      "chapter": "الشرك-الأكبر-يتميز-بثلاث-خصائص",
+      "prev": "19209f034fb297a9e10c68e75bb873df98b0c9aafe9b5ab54126d86826ae1663",
+      "next": "862ebeb7055911103edb09ffdd1ec37c12ca0b0c341b971b26043331dff0ab2f"
+    },
+    {
+      "ord": 94,
+      "blockId": "b88dd7beabf0175817d445a1e1f838da",
+      "fp64": "65dcf49e5bb3c23f",
+      "normHash": "862ebeb7055911103edb09ffdd1ec37c12ca0b0c341b971b26043331dff0ab2f",
+      "kind": "page",
+      "chapter": "الشرك-الأكبر-يتميز-بثلاث-خصائص",
+      "prev": "47ca474a89ff4e2af52da7726ed0ee596ef5754a34f05e65756bcbd7933566b7",
+      "next": "096f01b7bd4894aacf1625d579ae59ae1e042232f0cdf11428b30a63285c0700"
+    },
+    {
+      "ord": 95,
+      "blockId": "0caae28040244ad115b24503cca9f2c9",
+      "fp64": "fedee377dfda12bc",
+      "normHash": "096f01b7bd4894aacf1625d579ae59ae1e042232f0cdf11428b30a63285c0700",
+      "kind": "p",
+      "chapter": "الشرك-الأكبر-يتميز-بثلاث-خصائص",
+      "prev": "862ebeb7055911103edb09ffdd1ec37c12ca0b0c341b971b26043331dff0ab2f",
+      "next": "604d0adba8c133040683015154465cb31341f34b68244e818d2b1efdca9eaf30"
+    },
+    {
+      "ord": 96,
+      "blockId": "f98dbf4bc7e718894e67c146f4593771",
+      "fp64": "a0d7a8712658f06c",
+      "normHash": "604d0adba8c133040683015154465cb31341f34b68244e818d2b1efdca9eaf30",
+      "kind": "h2",
+      "chapter": "القاعدة-الأولى-أن-تعلم-أن-الكفار-الذين-قاتلهم-رسول-الله-مقرون-بأن-الله-تعالى-هو",
+      "prev": "096f01b7bd4894aacf1625d579ae59ae1e042232f0cdf11428b30a63285c0700",
+      "next": "31f781935a669889567defcc7a28676f66f6aa9370bf0bf07defc3f766b993d6"
+    },
+    {
+      "ord": 97,
+      "blockId": "838aa7005f473b3cbffcf10702a90ec9",
+      "fp64": "3786db5acf5cdbdd",
+      "normHash": "31f781935a669889567defcc7a28676f66f6aa9370bf0bf07defc3f766b993d6",
+      "kind": "p",
+      "chapter": "القاعدة-الأولى-أن-تعلم-أن-الكفار-الذين-قاتلهم-رسول-الله-مقرون-بأن-الله-تعالى-هو",
+      "prev": "604d0adba8c133040683015154465cb31341f34b68244e818d2b1efdca9eaf30",
+      "next": "05339b6d8f5feed95dbe408a9112e5706536e24fdb854e7e2a66c262549a1d08"
+    },
+    {
+      "ord": 98,
+      "blockId": "38c11c3edd2abd3d75f8a5d94af1ff62",
+      "fp64": "5ccaca77df27fd4c",
+      "normHash": "05339b6d8f5feed95dbe408a9112e5706536e24fdb854e7e2a66c262549a1d08",
+      "kind": "p",
+      "chapter": "القاعدة-الأولى-أن-تعلم-أن-الكفار-الذين-قاتلهم-رسول-الله-مقرون-بأن-الله-تعالى-هو",
+      "prev": "31f781935a669889567defcc7a28676f66f6aa9370bf0bf07defc3f766b993d6",
+      "next": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839"
+    },
+    {
+      "ord": 99,
+      "blockId": "ba888371303fb83b54cc15f8feae4357",
+      "fp64": "c2e708506ae5eb14",
+      "normHash": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839",
+      "kind": "break",
+      "chapter": "القاعدة-الأولى-أن-تعلم-أن-الكفار-الذين-قاتلهم-رسول-الله-مقرون-بأن-الله-تعالى-هو",
+      "prev": "05339b6d8f5feed95dbe408a9112e5706536e24fdb854e7e2a66c262549a1d08",
+      "next": "8b91b175237ae8df57a0f9260620d3a55b136d63460f6fdc3d8ad3765c855ce9"
+    },
+    {
+      "ord": 100,
+      "blockId": "188512402ee2f5707bd848a4be8cff2d",
+      "fp64": "6845afadfd518ee7",
+      "normHash": "8b91b175237ae8df57a0f9260620d3a55b136d63460f6fdc3d8ad3765c855ce9",
+      "kind": "p",
+      "chapter": "القاعدة-الأولى-أن-تعلم-أن-الكفار-الذين-قاتلهم-رسول-الله-مقرون-بأن-الله-تعالى-هو",
+      "prev": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839",
+      "next": "67e18dc4022b932a715005f19c24680442c0054f4a2903f782f38473faa3781f"
+    },
+    {
+      "ord": 101,
+      "blockId": "a03d93079adf17351434bd10adab656a",
+      "fp64": "18d0f0179f7afdea",
+      "normHash": "67e18dc4022b932a715005f19c24680442c0054f4a2903f782f38473faa3781f",
+      "kind": "p",
+      "chapter": "القاعدة-الأولى-أن-تعلم-أن-الكفار-الذين-قاتلهم-رسول-الله-مقرون-بأن-الله-تعالى-هو",
+      "prev": "8b91b175237ae8df57a0f9260620d3a55b136d63460f6fdc3d8ad3765c855ce9",
+      "next": "b8dcf02222c6559396b9d964786da6cc5d31d7ecb2f2f44aee8d771bb6aecabf"
+    },
+    {
+      "ord": 102,
+      "blockId": "fcd29a07b24df47e8438e8c3979f9999",
+      "fp64": "61df34fa53b02627",
+      "normHash": "b8dcf02222c6559396b9d964786da6cc5d31d7ecb2f2f44aee8d771bb6aecabf",
+      "kind": "page",
+      "chapter": "القاعدة-الأولى-أن-تعلم-أن-الكفار-الذين-قاتلهم-رسول-الله-مقرون-بأن-الله-تعالى-هو",
+      "prev": "67e18dc4022b932a715005f19c24680442c0054f4a2903f782f38473faa3781f",
+      "next": "c9c36dbf1fd51c98fdec84e5c9bec9b0d99c3e2d7a6ddc4f754cf32c535ff7ba"
+    },
+    {
+      "ord": 103,
+      "blockId": "a725712dda8bfa7622b6ef0dee128a18",
+      "fp64": "f544f446177055fc",
+      "normHash": "c9c36dbf1fd51c98fdec84e5c9bec9b0d99c3e2d7a6ddc4f754cf32c535ff7ba",
+      "kind": "p",
+      "chapter": "القاعدة-الأولى-أن-تعلم-أن-الكفار-الذين-قاتلهم-رسول-الله-مقرون-بأن-الله-تعالى-هو",
+      "prev": "b8dcf02222c6559396b9d964786da6cc5d31d7ecb2f2f44aee8d771bb6aecabf",
+      "next": "2b3ca79de3de98f59de29087c2fe74e1575dd9ce4efda954ba9889fc5cda7d55"
+    },
+    {
+      "ord": 104,
+      "blockId": "094751503fc48ac6937db0bea11eed1f",
+      "fp64": "84c4655e1570112f",
+      "normHash": "2b3ca79de3de98f59de29087c2fe74e1575dd9ce4efda954ba9889fc5cda7d55",
+      "kind": "p",
+      "chapter": "القاعدة-الأولى-أن-تعلم-أن-الكفار-الذين-قاتلهم-رسول-الله-مقرون-بأن-الله-تعالى-هو",
+      "prev": "c9c36dbf1fd51c98fdec84e5c9bec9b0d99c3e2d7a6ddc4f754cf32c535ff7ba",
+      "next": "b76c1f13d4d3e78077a2673d163ee65a5f27d5f3306c54c7b671e0ae0c813114"
+    },
+    {
+      "ord": 105,
+      "blockId": "7a871a9dab94448f7df80ec688f41003",
+      "fp64": "65fef79a73b22066",
+      "normHash": "b76c1f13d4d3e78077a2673d163ee65a5f27d5f3306c54c7b671e0ae0c813114",
+      "kind": "page",
+      "chapter": "القاعدة-الأولى-أن-تعلم-أن-الكفار-الذين-قاتلهم-رسول-الله-مقرون-بأن-الله-تعالى-هو",
+      "prev": "2b3ca79de3de98f59de29087c2fe74e1575dd9ce4efda954ba9889fc5cda7d55",
+      "next": "67929552bb501ee8b835f0a297db0032ab4c533c62c6174000d5bd492a151dc1"
+    },
+    {
+      "ord": 106,
+      "blockId": "a4143a6a09b7f7861719d6f556b41005",
+      "fp64": "72425972535c993f",
+      "normHash": "67929552bb501ee8b835f0a297db0032ab4c533c62c6174000d5bd492a151dc1",
+      "kind": "p",
+      "chapter": "القاعدة-الأولى-أن-تعلم-أن-الكفار-الذين-قاتلهم-رسول-الله-مقرون-بأن-الله-تعالى-هو",
+      "prev": "b76c1f13d4d3e78077a2673d163ee65a5f27d5f3306c54c7b671e0ae0c813114",
+      "next": "e345a138a470d088ae36f69fe2c6393b3ea0e9908c225a6b8b3c368f2f7d8723"
+    },
+    {
+      "ord": 107,
+      "blockId": "43d348a296796e110eb38316b413a4a6",
+      "fp64": "ecc6c95bdb30fb3d",
+      "normHash": "e345a138a470d088ae36f69fe2c6393b3ea0e9908c225a6b8b3c368f2f7d8723",
+      "kind": "p",
+      "chapter": "القاعدة-الأولى-أن-تعلم-أن-الكفار-الذين-قاتلهم-رسول-الله-مقرون-بأن-الله-تعالى-هو",
+      "prev": "67929552bb501ee8b835f0a297db0032ab4c533c62c6174000d5bd492a151dc1",
+      "next": "a8a266ac65b3d3ab2cb1282cb9bb61e4c9d9274254eb17b45149ba33bfd89f34"
+    },
+    {
+      "ord": 108,
+      "blockId": "2a792cc58508fd8739f38f4331d6bfa1",
+      "fp64": "25df729e53b26633",
+      "normHash": "a8a266ac65b3d3ab2cb1282cb9bb61e4c9d9274254eb17b45149ba33bfd89f34",
+      "kind": "page",
+      "chapter": "القاعدة-الأولى-أن-تعلم-أن-الكفار-الذين-قاتلهم-رسول-الله-مقرون-بأن-الله-تعالى-هو",
+      "prev": "e345a138a470d088ae36f69fe2c6393b3ea0e9908c225a6b8b3c368f2f7d8723",
+      "next": "096f01b7bd4894aacf1625d579ae59ae1e042232f0cdf11428b30a63285c0700"
+    },
+    {
+      "ord": 109,
+      "blockId": "17a6dae9d7635caef71918dbb3094a63",
+      "fp64": "fedee377dfda12bc",
+      "normHash": "096f01b7bd4894aacf1625d579ae59ae1e042232f0cdf11428b30a63285c0700",
+      "kind": "p",
+      "chapter": "القاعدة-الأولى-أن-تعلم-أن-الكفار-الذين-قاتلهم-رسول-الله-مقرون-بأن-الله-تعالى-هو",
+      "prev": "a8a266ac65b3d3ab2cb1282cb9bb61e4c9d9274254eb17b45149ba33bfd89f34",
+      "next": "ee135bc91596ed3ece55c84040b73c3c1e45a14bf518eb31d801415a8ec77726"
+    },
+    {
+      "ord": 110,
+      "blockId": "c471c2f4686083dbd15a5e3b8c102045",
+      "fp64": "e74b6f00e3b9cf7e",
+      "normHash": "ee135bc91596ed3ece55c84040b73c3c1e45a14bf518eb31d801415a8ec77726",
+      "kind": "h2",
+      "chapter": "القاعدة-الثانية-أنهم-يقولون-ما-دعوناهم-وتوجهنا-إليهم-إلا-لطلب-القربة-والشفاعة",
+      "prev": "096f01b7bd4894aacf1625d579ae59ae1e042232f0cdf11428b30a63285c0700",
+      "next": "8be12d527feed50f7c5838a50d90c3cf89cb89fe94da02c09b4a82e4b039bd27"
+    },
+    {
+      "ord": 111,
+      "blockId": "05d4e6a7abadc02106e7a5bd42396b6b",
+      "fp64": "3842e40b1772dd7f",
+      "normHash": "8be12d527feed50f7c5838a50d90c3cf89cb89fe94da02c09b4a82e4b039bd27",
+      "kind": "p",
+      "chapter": "القاعدة-الثانية-أنهم-يقولون-ما-دعوناهم-وتوجهنا-إليهم-إلا-لطلب-القربة-والشفاعة",
+      "prev": "ee135bc91596ed3ece55c84040b73c3c1e45a14bf518eb31d801415a8ec77726",
+      "next": "92dce8697786993aa9daacb357efe893318d1aa39bf3199a53ac32861f9b154c"
+    },
+    {
+      "ord": 112,
+      "blockId": "96dffb456f30c88d976bd3f52d55d1eb",
+      "fp64": "f6e1c47f1fb00b3d",
+      "normHash": "92dce8697786993aa9daacb357efe893318d1aa39bf3199a53ac32861f9b154c",
+      "kind": "p",
+      "chapter": "القاعدة-الثانية-أنهم-يقولون-ما-دعوناهم-وتوجهنا-إليهم-إلا-لطلب-القربة-والشفاعة",
+      "prev": "8be12d527feed50f7c5838a50d90c3cf89cb89fe94da02c09b4a82e4b039bd27",
+      "next": "c77df5e886098e84fa9f31c82a7b726e39fce07df1751a5f0d32a900873d88fe"
+    },
+    {
+      "ord": 113,
+      "blockId": "35cbd1a456ee8c6c9b75b9de4f2c4174",
+      "fp64": "62c1c22ed6f7ed7f",
+      "normHash": "c77df5e886098e84fa9f31c82a7b726e39fce07df1751a5f0d32a900873d88fe",
+      "kind": "p",
+      "chapter": "القاعدة-الثانية-أنهم-يقولون-ما-دعوناهم-وتوجهنا-إليهم-إلا-لطلب-القربة-والشفاعة",
+      "prev": "92dce8697786993aa9daacb357efe893318d1aa39bf3199a53ac32861f9b154c",
+      "next": "41220f0a9966b1a7a1a98e74c850cac1783997ff2893eec9452028cd56eef06e"
+    },
+    {
+      "ord": 114,
+      "blockId": "59a06a8ceb65dde06b16228ecfe2b80b",
+      "fp64": "2c42681fbf267575",
+      "normHash": "41220f0a9966b1a7a1a98e74c850cac1783997ff2893eec9452028cd56eef06e",
+      "kind": "p",
+      "chapter": "القاعدة-الثانية-أنهم-يقولون-ما-دعوناهم-وتوجهنا-إليهم-إلا-لطلب-القربة-والشفاعة",
+      "prev": "c77df5e886098e84fa9f31c82a7b726e39fce07df1751a5f0d32a900873d88fe",
+      "next": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839"
+    },
+    {
+      "ord": 115,
+      "blockId": "ab3f4ae0a8af0edc3eeea68e044bb5e4",
+      "fp64": "c2e708506ae5eb14",
+      "normHash": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839",
+      "kind": "break",
+      "chapter": "القاعدة-الثانية-أنهم-يقولون-ما-دعوناهم-وتوجهنا-إليهم-إلا-لطلب-القربة-والشفاعة",
+      "prev": "41220f0a9966b1a7a1a98e74c850cac1783997ff2893eec9452028cd56eef06e",
+      "next": "8b91b175237ae8df57a0f9260620d3a55b136d63460f6fdc3d8ad3765c855ce9"
+    },
+    {
+      "ord": 116,
+      "blockId": "80a43bdaed03378149479dc1470e39dd",
+      "fp64": "6845afadfd518ee7",
+      "normHash": "8b91b175237ae8df57a0f9260620d3a55b136d63460f6fdc3d8ad3765c855ce9",
+      "kind": "p",
+      "chapter": "القاعدة-الثانية-أنهم-يقولون-ما-دعوناهم-وتوجهنا-إليهم-إلا-لطلب-القربة-والشفاعة",
+      "prev": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839",
+      "next": "264051c04ce310276196b5aff2fe79496a60960f21208d7424f3b29e0772ad6f"
+    },
+    {
+      "ord": 117,
+      "blockId": "6c94a9fb5776cbc5855f15f468a07836",
+      "fp64": "3383f214047c9a6b",
+      "normHash": "264051c04ce310276196b5aff2fe79496a60960f21208d7424f3b29e0772ad6f",
+      "kind": "p",
+      "chapter": "القاعدة-الثانية-أنهم-يقولون-ما-دعوناهم-وتوجهنا-إليهم-إلا-لطلب-القربة-والشفاعة",
+      "prev": "8b91b175237ae8df57a0f9260620d3a55b136d63460f6fdc3d8ad3765c855ce9",
+      "next": "35b64b2a8d76bbdd2c12f50b7a36860d52bdf428ac7932ca9948f8af2a51eaff"
+    },
+    {
+      "ord": 118,
+      "blockId": "e102d224a91bbb118beacb4b1bca1f81",
+      "fp64": "25dd349f5b302267",
+      "normHash": "35b64b2a8d76bbdd2c12f50b7a36860d52bdf428ac7932ca9948f8af2a51eaff",
+      "kind": "page",
+      "chapter": "القاعدة-الثانية-أنهم-يقولون-ما-دعوناهم-وتوجهنا-إليهم-إلا-لطلب-القربة-والشفاعة",
+      "prev": "264051c04ce310276196b5aff2fe79496a60960f21208d7424f3b29e0772ad6f",
+      "next": "00b521e390599dad5ba90c1a6b1013357a1b982327409b401c0e354ec84e5788"
+    },
+    {
+      "ord": 119,
+      "blockId": "8e976644d742e5328ec4a7b7afba3c66",
+      "fp64": "7082cc57df20754c",
+      "normHash": "00b521e390599dad5ba90c1a6b1013357a1b982327409b401c0e354ec84e5788",
+      "kind": "p",
+      "chapter": "القاعدة-الثانية-أنهم-يقولون-ما-دعوناهم-وتوجهنا-إليهم-إلا-لطلب-القربة-والشفاعة",
+      "prev": "35b64b2a8d76bbdd2c12f50b7a36860d52bdf428ac7932ca9948f8af2a51eaff",
+      "next": "8468648b5e04769fdd8df19dbdcdccab145fa527391726f0d5b751c08652450c"
+    },
+    {
+      "ord": 120,
+      "blockId": "0f04fe7109cb09bbc193c97c42a0f76d",
+      "fp64": "be016c52973c27c6",
+      "normHash": "8468648b5e04769fdd8df19dbdcdccab145fa527391726f0d5b751c08652450c",
+      "kind": "p",
+      "chapter": "القاعدة-الثانية-أنهم-يقولون-ما-دعوناهم-وتوجهنا-إليهم-إلا-لطلب-القربة-والشفاعة",
+      "prev": "00b521e390599dad5ba90c1a6b1013357a1b982327409b401c0e354ec84e5788",
+      "next": "58b72a1b050a6ce5d82af6583d6ec14653110d8be48fe85d73527feecb5bf333"
+    },
+    {
+      "ord": 121,
+      "blockId": "5b5e05430bca93e7e0b5269393052032",
+      "fp64": "fea1e4569b76295d",
+      "normHash": "58b72a1b050a6ce5d82af6583d6ec14653110d8be48fe85d73527feecb5bf333",
+      "kind": "p",
+      "chapter": "القاعدة-الثانية-أنهم-يقولون-ما-دعوناهم-وتوجهنا-إليهم-إلا-لطلب-القربة-والشفاعة",
+      "prev": "8468648b5e04769fdd8df19dbdcdccab145fa527391726f0d5b751c08652450c",
+      "next": "a367b7c66107b80a5dc7fecc78382b027598c160dde17ccb493b9a232e26f2f2"
+    },
+    {
+      "ord": 122,
+      "blockId": "48cf242da25047033d009011e05e6a96",
+      "fp64": "7d4c7157565616b8",
+      "normHash": "a367b7c66107b80a5dc7fecc78382b027598c160dde17ccb493b9a232e26f2f2",
+      "kind": "p",
+      "chapter": "القاعدة-الثانية-أنهم-يقولون-ما-دعوناهم-وتوجهنا-إليهم-إلا-لطلب-القربة-والشفاعة",
+      "prev": "58b72a1b050a6ce5d82af6583d6ec14653110d8be48fe85d73527feecb5bf333",
+      "next": "35ec9493d51fad64d08f5ee97dacf8f73479d23da192119eee34dc93eab99bf3"
+    },
+    {
+      "ord": 123,
+      "blockId": "1b4ab1fcc1903a4124fb8c0655a8fad6",
+      "fp64": "e0d404f673b9ca6b",
+      "normHash": "35ec9493d51fad64d08f5ee97dacf8f73479d23da192119eee34dc93eab99bf3",
+      "kind": "notes",
+      "chapter": "القاعدة-الثانية-أنهم-يقولون-ما-دعوناهم-وتوجهنا-إليهم-إلا-لطلب-القربة-والشفاعة",
+      "prev": "a367b7c66107b80a5dc7fecc78382b027598c160dde17ccb493b9a232e26f2f2",
+      "next": "1ed82f6b6795e4b8046883025e28684060431ab34a6acd98e10ed6a17373c7f4"
+    },
+    {
+      "ord": 124,
+      "blockId": "1efcc2ce7a1b94046e9db85d4dcdf2db",
+      "fp64": "65dd33da5b31c06e",
+      "normHash": "1ed82f6b6795e4b8046883025e28684060431ab34a6acd98e10ed6a17373c7f4",
+      "kind": "page",
+      "chapter": "القاعدة-الثانية-أنهم-يقولون-ما-دعوناهم-وتوجهنا-إليهم-إلا-لطلب-القربة-والشفاعة",
+      "prev": "35ec9493d51fad64d08f5ee97dacf8f73479d23da192119eee34dc93eab99bf3",
+      "next": "4b36be77691ef6e6515a73481fcd25e456e9bb32f1d9d18e10db050003ed35bb"
+    },
+    {
+      "ord": 125,
+      "blockId": "307b6a0b7bc4bd74103869e42fc18c39",
+      "fp64": "bff92295c16bc789",
+      "normHash": "4b36be77691ef6e6515a73481fcd25e456e9bb32f1d9d18e10db050003ed35bb",
+      "kind": "p",
+      "chapter": "القاعدة-الثانية-أنهم-يقولون-ما-دعوناهم-وتوجهنا-إليهم-إلا-لطلب-القربة-والشفاعة",
+      "prev": "1ed82f6b6795e4b8046883025e28684060431ab34a6acd98e10ed6a17373c7f4",
+      "next": "d7fb9e1ae2763e2ab7bfc3f3c39d28972e2ae2c44680ec4d21d1b8e418e9a648"
+    },
+    {
+      "ord": 126,
+      "blockId": "fe2eb81565703c0f20d9c9f3c2890f65",
+      "fp64": "ffd2040f2af084f8",
+      "normHash": "d7fb9e1ae2763e2ab7bfc3f3c39d28972e2ae2c44680ec4d21d1b8e418e9a648",
+      "kind": "p",
+      "chapter": "القاعدة-الثانية-أنهم-يقولون-ما-دعوناهم-وتوجهنا-إليهم-إلا-لطلب-القربة-والشفاعة",
+      "prev": "4b36be77691ef6e6515a73481fcd25e456e9bb32f1d9d18e10db050003ed35bb",
+      "next": "2b5e9252bda24ce37c1099cc3a3bf239fa4a2de0d2d1193d218a71aedfb759ca"
+    },
+    {
+      "ord": 127,
+      "blockId": "ff0a6e85fac34771f69d5d68fbb692aa",
+      "fp64": "e6d5603e0ff6e538",
+      "normHash": "2b5e9252bda24ce37c1099cc3a3bf239fa4a2de0d2d1193d218a71aedfb759ca",
+      "kind": "p",
+      "chapter": "القاعدة-الثانية-أنهم-يقولون-ما-دعوناهم-وتوجهنا-إليهم-إلا-لطلب-القربة-والشفاعة",
+      "prev": "d7fb9e1ae2763e2ab7bfc3f3c39d28972e2ae2c44680ec4d21d1b8e418e9a648",
+      "next": "7803b1bcab7823e4c9aa2ba06b2a034ed8f23c4570d1a77e700c6959599f98a1"
+    },
+    {
+      "ord": 128,
+      "blockId": "e3289fa6e4afdf997f26b15fbade46bd",
+      "fp64": "7c44e05b1f765d7c",
+      "normHash": "7803b1bcab7823e4c9aa2ba06b2a034ed8f23c4570d1a77e700c6959599f98a1",
+      "kind": "p",
+      "chapter": "القاعدة-الثانية-أنهم-يقولون-ما-دعوناهم-وتوجهنا-إليهم-إلا-لطلب-القربة-والشفاعة",
+      "prev": "2b5e9252bda24ce37c1099cc3a3bf239fa4a2de0d2d1193d218a71aedfb759ca",
+      "next": "1568b99379f448182d8ab0e8d16e6a5930b8395328eaf5e7310e237c87b43ac5"
+    },
+    {
+      "ord": 129,
+      "blockId": "adbe0e06041751350e04954664c49c80",
+      "fp64": "e174b47c72b102ab",
+      "normHash": "1568b99379f448182d8ab0e8d16e6a5930b8395328eaf5e7310e237c87b43ac5",
+      "kind": "notes",
+      "chapter": "القاعدة-الثانية-أنهم-يقولون-ما-دعوناهم-وتوجهنا-إليهم-إلا-لطلب-القربة-والشفاعة",
+      "prev": "7803b1bcab7823e4c9aa2ba06b2a034ed8f23c4570d1a77e700c6959599f98a1",
+      "next": "7b221dfbbc89c19c6eec9b33865ea40fa1fb0da881cdd54d8c313e91330b5a4c"
+    },
+    {
+      "ord": 130,
+      "blockId": "79d8e107d35226a1e44f4797d5f9f3b1",
+      "fp64": "e5ffb59e72b10036",
+      "normHash": "7b221dfbbc89c19c6eec9b33865ea40fa1fb0da881cdd54d8c313e91330b5a4c",
+      "kind": "page",
+      "chapter": "القاعدة-الثانية-أنهم-يقولون-ما-دعوناهم-وتوجهنا-إليهم-إلا-لطلب-القربة-والشفاعة",
+      "prev": "1568b99379f448182d8ab0e8d16e6a5930b8395328eaf5e7310e237c87b43ac5",
+      "next": "96cbc73a0e769752f58035b4eafa2d423c783c341d0cef65dde4efc04b6f7c27"
+    },
+    {
+      "ord": 131,
+      "blockId": "97e23cf71985ebdbf5176572c2cdfb9d",
+      "fp64": "c5fd61ddd5fe31d6",
+      "normHash": "96cbc73a0e769752f58035b4eafa2d423c783c341d0cef65dde4efc04b6f7c27",
+      "kind": "p",
+      "chapter": "القاعدة-الثانية-أنهم-يقولون-ما-دعوناهم-وتوجهنا-إليهم-إلا-لطلب-القربة-والشفاعة",
+      "prev": "7b221dfbbc89c19c6eec9b33865ea40fa1fb0da881cdd54d8c313e91330b5a4c",
+      "next": "0421c3892a5f0599123f43fc5391ddae906cee07b35e440f4ef90fd7f11dd3c3"
+    },
+    {
+      "ord": 132,
+      "blockId": "b885015a75b5599edc26a7573bed0bd0",
+      "fp64": "add4007e1d76975f",
+      "normHash": "0421c3892a5f0599123f43fc5391ddae906cee07b35e440f4ef90fd7f11dd3c3",
+      "kind": "p",
+      "chapter": "القاعدة-الثانية-أنهم-يقولون-ما-دعوناهم-وتوجهنا-إليهم-إلا-لطلب-القربة-والشفاعة",
+      "prev": "96cbc73a0e769752f58035b4eafa2d423c783c341d0cef65dde4efc04b6f7c27",
+      "next": "cd56dde0a83830ea75727f9bbda976116c6b2e1ea021f42cc8a077a8e8fcecde"
+    },
+    {
+      "ord": 133,
+      "blockId": "5dcebbb993c78cb92f67c3dae4a352f2",
+      "fp64": "e6e7ebf7393e777d",
+      "normHash": "cd56dde0a83830ea75727f9bbda976116c6b2e1ea021f42cc8a077a8e8fcecde",
+      "kind": "p",
+      "chapter": "القاعدة-الثانية-أنهم-يقولون-ما-دعوناهم-وتوجهنا-إليهم-إلا-لطلب-القربة-والشفاعة",
+      "prev": "0421c3892a5f0599123f43fc5391ddae906cee07b35e440f4ef90fd7f11dd3c3",
+      "next": "3eec29fedda5991b3093d8dcfed8bc8d0aee7b98f8968bcda580973c10810709"
+    },
+    {
+      "ord": 134,
+      "blockId": "396bb4ed2cbcbbb7e489d4b40708f47a",
+      "fp64": "e0d4a47c73b8caeb",
+      "normHash": "3eec29fedda5991b3093d8dcfed8bc8d0aee7b98f8968bcda580973c10810709",
+      "kind": "notes",
+      "chapter": "القاعدة-الثانية-أنهم-يقولون-ما-دعوناهم-وتوجهنا-إليهم-إلا-لطلب-القربة-والشفاعة",
+      "prev": "cd56dde0a83830ea75727f9bbda976116c6b2e1ea021f42cc8a077a8e8fcecde",
+      "next": "a3145ea2b486159f89d83c56cf49f810f67f65356c1a13dbfc0a944a0550b07a"
+    },
+    {
+      "ord": 135,
+      "blockId": "9dd5d246586dad42e6219f2538498494",
+      "fp64": "e1deb1da7330c277",
+      "normHash": "a3145ea2b486159f89d83c56cf49f810f67f65356c1a13dbfc0a944a0550b07a",
+      "kind": "page",
+      "chapter": "القاعدة-الثانية-أنهم-يقولون-ما-دعوناهم-وتوجهنا-إليهم-إلا-لطلب-القربة-والشفاعة",
+      "prev": "3eec29fedda5991b3093d8dcfed8bc8d0aee7b98f8968bcda580973c10810709",
+      "next": "096f01b7bd4894aacf1625d579ae59ae1e042232f0cdf11428b30a63285c0700"
+    },
+    {
+      "ord": 136,
+      "blockId": "aba0301838db64b76568a645b857925b",
+      "fp64": "fedee377dfda12bc",
+      "normHash": "096f01b7bd4894aacf1625d579ae59ae1e042232f0cdf11428b30a63285c0700",
+      "kind": "p",
+      "chapter": "القاعدة-الثانية-أنهم-يقولون-ما-دعوناهم-وتوجهنا-إليهم-إلا-لطلب-القربة-والشفاعة",
+      "prev": "a3145ea2b486159f89d83c56cf49f810f67f65356c1a13dbfc0a944a0550b07a",
+      "next": "76514a39d835c0a5d1b3db3c423dc3e6ff518b8fc31d22fb18e113b7145dec7f"
+    },
+    {
+      "ord": 137,
+      "blockId": "73f1702bb535391d04ba0f153a8f421b",
+      "fp64": "3dd8189005209f1d",
+      "normHash": "76514a39d835c0a5d1b3db3c423dc3e6ff518b8fc31d22fb18e113b7145dec7f",
+      "kind": "h2",
+      "chapter": "القاعدة-الثالثة-أن-النبي-ظهر-على-أناس-متفرقين-في-عباداتهم",
+      "prev": "096f01b7bd4894aacf1625d579ae59ae1e042232f0cdf11428b30a63285c0700",
+      "next": "9819937e86748668b73fd2b6c00e39a53de13fc7e1ad96dd80140e8b0aeb4f1f"
+    },
+    {
+      "ord": 138,
+      "blockId": "e652068a400c3e17ba9fecff09499d39",
+      "fp64": "4cc968eb9e461551",
+      "normHash": "9819937e86748668b73fd2b6c00e39a53de13fc7e1ad96dd80140e8b0aeb4f1f",
+      "kind": "p",
+      "chapter": "القاعدة-الثالثة-أن-النبي-ظهر-على-أناس-متفرقين-في-عباداتهم",
+      "prev": "76514a39d835c0a5d1b3db3c423dc3e6ff518b8fc31d22fb18e113b7145dec7f",
+      "next": "f0986ed9bc6323e18668aa88df219401a0d3e7634737ad5e9406a62ed5510176"
+    },
+    {
+      "ord": 139,
+      "blockId": "e755bac044d91bfe82b6dd699355938d",
+      "fp64": "3445c8539e3e71fc",
+      "normHash": "f0986ed9bc6323e18668aa88df219401a0d3e7634737ad5e9406a62ed5510176",
+      "kind": "p",
+      "chapter": "القاعدة-الثالثة-أن-النبي-ظهر-على-أناس-متفرقين-في-عباداتهم",
+      "prev": "9819937e86748668b73fd2b6c00e39a53de13fc7e1ad96dd80140e8b0aeb4f1f",
+      "next": "5bc9450fc0d8daeb7e1e7c672aabd48928b4d8285260a5478a8ebd6c3583fe1a"
+    },
+    {
+      "ord": 140,
+      "blockId": "efa333d4950fd189e3949a451fe8fdf7",
+      "fp64": "695feae2f77ffc7f",
+      "normHash": "5bc9450fc0d8daeb7e1e7c672aabd48928b4d8285260a5478a8ebd6c3583fe1a",
+      "kind": "p",
+      "chapter": "القاعدة-الثالثة-أن-النبي-ظهر-على-أناس-متفرقين-في-عباداتهم",
+      "prev": "f0986ed9bc6323e18668aa88df219401a0d3e7634737ad5e9406a62ed5510176",
+      "next": "2150a3f21f763c9d14c6408c8705f2d156f0ac0aa3366209b93d0539bd75ad5e"
+    },
+    {
+      "ord": 141,
+      "blockId": "d5f9399d4517987c2f857f0102d74987",
+      "fp64": "5c93b9efb655aab7",
+      "normHash": "2150a3f21f763c9d14c6408c8705f2d156f0ac0aa3366209b93d0539bd75ad5e",
+      "kind": "p",
+      "chapter": "القاعدة-الثالثة-أن-النبي-ظهر-على-أناس-متفرقين-في-عباداتهم",
+      "prev": "5bc9450fc0d8daeb7e1e7c672aabd48928b4d8285260a5478a8ebd6c3583fe1a",
+      "next": "66cba54315228daabd38232904bbee2f660b5e3527d7d6ae52c59ff716245edb"
+    },
+    {
+      "ord": 142,
+      "blockId": "fcbac237850b244943658aa40a758fc6",
+      "fp64": "50d3f64bbe67275f",
+      "normHash": "66cba54315228daabd38232904bbee2f660b5e3527d7d6ae52c59ff716245edb",
+      "kind": "p",
+      "chapter": "القاعدة-الثالثة-أن-النبي-ظهر-على-أناس-متفرقين-في-عباداتهم",
+      "prev": "2150a3f21f763c9d14c6408c8705f2d156f0ac0aa3366209b93d0539bd75ad5e",
+      "next": "e078e6fca6acd7a444c9fbec45b710b258b4e1f96f5496490810ee542f9ff647"
+    },
+    {
+      "ord": 143,
+      "blockId": "ecaaffaac5de8afbafa8936d9f3bf7ea",
+      "fp64": "b406605507368f9c",
+      "normHash": "e078e6fca6acd7a444c9fbec45b710b258b4e1f96f5496490810ee542f9ff647",
+      "kind": "p",
+      "chapter": "القاعدة-الثالثة-أن-النبي-ظهر-على-أناس-متفرقين-في-عباداتهم",
+      "prev": "66cba54315228daabd38232904bbee2f660b5e3527d7d6ae52c59ff716245edb",
+      "next": "b4cb85741742e36bdf184b73c3812a0c2735b18626e0d36871d15d130cda5f57"
+    },
+    {
+      "ord": 144,
+      "blockId": "0840250404648ca41f7df48c63b026e8",
+      "fp64": "286daf765c45994a",
+      "normHash": "b4cb85741742e36bdf184b73c3812a0c2735b18626e0d36871d15d130cda5f57",
+      "kind": "p",
+      "chapter": "القاعدة-الثالثة-أن-النبي-ظهر-على-أناس-متفرقين-في-عباداتهم",
+      "prev": "e078e6fca6acd7a444c9fbec45b710b258b4e1f96f5496490810ee542f9ff647",
+      "next": "b40541c3fd16ea47af6a9b43a330fbce6ce5b51752f98b3dcd91a440299816e2"
+    },
+    {
+      "ord": 145,
+      "blockId": "079abf6f72b115c63feefd2206eb0d76",
+      "fp64": "a1ff779a5232426f",
+      "normHash": "b40541c3fd16ea47af6a9b43a330fbce6ce5b51752f98b3dcd91a440299816e2",
+      "kind": "page",
+      "chapter": "القاعدة-الثالثة-أن-النبي-ظهر-على-أناس-متفرقين-في-عباداتهم",
+      "prev": "b4cb85741742e36bdf184b73c3812a0c2735b18626e0d36871d15d130cda5f57",
+      "next": "2de54c3e49e63df0daf045d08ccbd0446fdcc40f8dc58c665c237f198030e3ea"
+    },
+    {
+      "ord": 146,
+      "blockId": "0bc7faf8ba3602e01baf31f2bea09630",
+      "fp64": "58afb10f77408baf",
+      "normHash": "2de54c3e49e63df0daf045d08ccbd0446fdcc40f8dc58c665c237f198030e3ea",
+      "kind": "p",
+      "chapter": "القاعدة-الثالثة-أن-النبي-ظهر-على-أناس-متفرقين-في-عباداتهم",
+      "prev": "b40541c3fd16ea47af6a9b43a330fbce6ce5b51752f98b3dcd91a440299816e2",
+      "next": "7d5f5dfbb16ad626332fedd28f4fa1b56804e5b376db97179d54ce41c0bd4319"
+    },
+    {
+      "ord": 147,
+      "blockId": "b3222667b62d4d5a2cfa9f752d5ba7a1",
+      "fp64": "bc44c0d0573d6b6c",
+      "normHash": "7d5f5dfbb16ad626332fedd28f4fa1b56804e5b376db97179d54ce41c0bd4319",
+      "kind": "p",
+      "chapter": "القاعدة-الثالثة-أن-النبي-ظهر-على-أناس-متفرقين-في-عباداتهم",
+      "prev": "2de54c3e49e63df0daf045d08ccbd0446fdcc40f8dc58c665c237f198030e3ea",
+      "next": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839"
+    },
+    {
+      "ord": 148,
+      "blockId": "ceec3b42e7b1b89250c631de58ad1a85",
+      "fp64": "c2e708506ae5eb14",
+      "normHash": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839",
+      "kind": "break",
+      "chapter": "القاعدة-الثالثة-أن-النبي-ظهر-على-أناس-متفرقين-في-عباداتهم",
+      "prev": "7d5f5dfbb16ad626332fedd28f4fa1b56804e5b376db97179d54ce41c0bd4319",
+      "next": "8b91b175237ae8df57a0f9260620d3a55b136d63460f6fdc3d8ad3765c855ce9"
+    },
+    {
+      "ord": 149,
+      "blockId": "7eef17629055f36c06415fd2eb5304a4",
+      "fp64": "6845afadfd518ee7",
+      "normHash": "8b91b175237ae8df57a0f9260620d3a55b136d63460f6fdc3d8ad3765c855ce9",
+      "kind": "p",
+      "chapter": "القاعدة-الثالثة-أن-النبي-ظهر-على-أناس-متفرقين-في-عباداتهم",
+      "prev": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839",
+      "next": "60d739f63f32906a76778620ee74e162540f72a76d8e1f6ca42454826a1fec1a"
+    },
+    {
+      "ord": 150,
+      "blockId": "5e0933ec43bcb6462e3ee2e83387c99d",
+      "fp64": "4ecee07f9e6e157c",
+      "normHash": "60d739f63f32906a76778620ee74e162540f72a76d8e1f6ca42454826a1fec1a",
+      "kind": "p",
+      "chapter": "القاعدة-الثالثة-أن-النبي-ظهر-على-أناس-متفرقين-في-عباداتهم",
+      "prev": "8b91b175237ae8df57a0f9260620d3a55b136d63460f6fdc3d8ad3765c855ce9",
+      "next": "5aed98bbaece754ef4264ad091f3ef084ab2404109829251ee022fc2080137ce"
+    },
+    {
+      "ord": 151,
+      "blockId": "e2ee08b602fd539240ca6241e7079897",
+      "fp64": "54c4ef6a9f77f27b",
+      "normHash": "5aed98bbaece754ef4264ad091f3ef084ab2404109829251ee022fc2080137ce",
+      "kind": "p",
+      "chapter": "القاعدة-الثالثة-أن-النبي-ظهر-على-أناس-متفرقين-في-عباداتهم",
+      "prev": "60d739f63f32906a76778620ee74e162540f72a76d8e1f6ca42454826a1fec1a",
+      "next": "5ec0af79d4a078305f13a9b51cc78a40ef7442f3caa9703e68bb8ce520a98297"
+    },
+    {
+      "ord": 152,
+      "blockId": "16121ae1b43b0cdb755090b2ade4e41c",
+      "fp64": "a1f434ff73ba5e6b",
+      "normHash": "5ec0af79d4a078305f13a9b51cc78a40ef7442f3caa9703e68bb8ce520a98297",
+      "kind": "notes",
+      "chapter": "القاعدة-الثالثة-أن-النبي-ظهر-على-أناس-متفرقين-في-عباداتهم",
+      "prev": "5aed98bbaece754ef4264ad091f3ef084ab2404109829251ee022fc2080137ce",
+      "next": "50da4077d8c63b0c6e47b324b09ab15fcd968e0131f9d58fcd0212076de3efca"
+    },
+    {
+      "ord": 153,
+      "blockId": "4f4eec12788accc63188f3c0539b707f",
+      "fp64": "21ff32fb5332467a",
+      "normHash": "50da4077d8c63b0c6e47b324b09ab15fcd968e0131f9d58fcd0212076de3efca",
+      "kind": "page",
+      "chapter": "القاعدة-الثالثة-أن-النبي-ظهر-على-أناس-متفرقين-في-عباداتهم",
+      "prev": "5ec0af79d4a078305f13a9b51cc78a40ef7442f3caa9703e68bb8ce520a98297",
+      "next": "8fef59dd711524ab801b0a3b3fe02354da4efd30424857b07e6e0fd60a0d1e09"
+    },
+    {
+      "ord": 154,
+      "blockId": "12720a5d6fb09f0ddbb2bec5fe0d0e41",
+      "fp64": "5c17e578b64c1ba7",
+      "normHash": "8fef59dd711524ab801b0a3b3fe02354da4efd30424857b07e6e0fd60a0d1e09",
+      "kind": "p",
+      "chapter": "القاعدة-الثالثة-أن-النبي-ظهر-على-أناس-متفرقين-في-عباداتهم",
+      "prev": "50da4077d8c63b0c6e47b324b09ab15fcd968e0131f9d58fcd0212076de3efca",
+      "next": "28f65b53b60970ac763bc6d1d09eb8fc0588b41caa200715baeb7dc7333e5b8c"
+    },
+    {
+      "ord": 155,
+      "blockId": "8910db6e1b56f7fc7dffae6d57493489",
+      "fp64": "488be84f9f67355d",
+      "normHash": "28f65b53b60970ac763bc6d1d09eb8fc0588b41caa200715baeb7dc7333e5b8c",
+      "kind": "p",
+      "chapter": "القاعدة-الثالثة-أن-النبي-ظهر-على-أناس-متفرقين-في-عباداتهم",
+      "prev": "8fef59dd711524ab801b0a3b3fe02354da4efd30424857b07e6e0fd60a0d1e09",
+      "next": "0651c31ccfa1f7d6c39ddb4bb0465773ba1897422557fcfc22cd1ffe5ac245ec"
+    },
+    {
+      "ord": 156,
+      "blockId": "759c1983914aef27851298aae59bb28c",
+      "fp64": "ae00625517360d1d",
+      "normHash": "0651c31ccfa1f7d6c39ddb4bb0465773ba1897422557fcfc22cd1ffe5ac245ec",
+      "kind": "p",
+      "chapter": "القاعدة-الثالثة-أن-النبي-ظهر-على-أناس-متفرقين-في-عباداتهم",
+      "prev": "28f65b53b60970ac763bc6d1d09eb8fc0588b41caa200715baeb7dc7333e5b8c",
+      "next": "026d8d370dc35d55dd7912a57c4b72911699b27e69d67a6f7030956b47f8c483"
+    },
+    {
+      "ord": 157,
+      "blockId": "9693fe06565fe2d673ebabb9bd313d57",
+      "fp64": "5ed3aa7e9f663d6d",
+      "normHash": "026d8d370dc35d55dd7912a57c4b72911699b27e69d67a6f7030956b47f8c483",
+      "kind": "p",
+      "chapter": "القاعدة-الثالثة-أن-النبي-ظهر-على-أناس-متفرقين-في-عباداتهم",
+      "prev": "0651c31ccfa1f7d6c39ddb4bb0465773ba1897422557fcfc22cd1ffe5ac245ec",
+      "next": "382069c0257b875eb88d3a4fb92b04d80f577028fbcb0709132f47ae2c6732b7"
+    },
+    {
+      "ord": 158,
+      "blockId": "dfc7fe30ef919e777cfdd55b0dee7476",
+      "fp64": "a1dd35fe5bb34673",
+      "normHash": "382069c0257b875eb88d3a4fb92b04d80f577028fbcb0709132f47ae2c6732b7",
+      "kind": "page",
+      "chapter": "القاعدة-الثالثة-أن-النبي-ظهر-على-أناس-متفرقين-في-عباداتهم",
+      "prev": "026d8d370dc35d55dd7912a57c4b72911699b27e69d67a6f7030956b47f8c483",
+      "next": "d93747f6e4adf4abf8598dcc2eb2e241b4081ed0df88982c12018b0e22e5624d"
+    },
+    {
+      "ord": 159,
+      "blockId": "635ab943f182c3696c84a9815725b2ef",
+      "fp64": "a47d6d775e29194e",
+      "normHash": "d93747f6e4adf4abf8598dcc2eb2e241b4081ed0df88982c12018b0e22e5624d",
+      "kind": "p",
+      "chapter": "القاعدة-الثالثة-أن-النبي-ظهر-على-أناس-متفرقين-في-عباداتهم",
+      "prev": "382069c0257b875eb88d3a4fb92b04d80f577028fbcb0709132f47ae2c6732b7",
+      "next": "6a100fe78fa052661543e2f3b730be90483eaf3a3ab8b44e22ac3ba94dafde1e"
+    },
+    {
+      "ord": 160,
+      "blockId": "4639cba496eed93bb3ed6e6f775d6fb6",
+      "fp64": "6aca717c85551d89",
+      "normHash": "6a100fe78fa052661543e2f3b730be90483eaf3a3ab8b44e22ac3ba94dafde1e",
+      "kind": "p",
+      "chapter": "القاعدة-الثالثة-أن-النبي-ظهر-على-أناس-متفرقين-في-عباداتهم",
+      "prev": "d93747f6e4adf4abf8598dcc2eb2e241b4081ed0df88982c12018b0e22e5624d",
+      "next": "132d4969cd720bdc9d3d70eab613d1c37e270e9895222fc6fa3292c2c08f0e4b"
+    },
+    {
+      "ord": 161,
+      "blockId": "5715b4ac432da9e8bc113e0626406c4a",
+      "fp64": "1d8f801e9f445e61",
+      "normHash": "132d4969cd720bdc9d3d70eab613d1c37e270e9895222fc6fa3292c2c08f0e4b",
+      "kind": "p",
+      "chapter": "القاعدة-الثالثة-أن-النبي-ظهر-على-أناس-متفرقين-في-عباداتهم",
+      "prev": "6a100fe78fa052661543e2f3b730be90483eaf3a3ab8b44e22ac3ba94dafde1e",
+      "next": "04edd56aa3552ef71594dd1ef43acf2408c09e9b6136f730568b60b3948bba2c"
+    },
+    {
+      "ord": 162,
+      "blockId": "dd2fb78702b9cda5dc88a7a334e41de5",
+      "fp64": "d77f57fbe77ffb7f",
+      "normHash": "04edd56aa3552ef71594dd1ef43acf2408c09e9b6136f730568b60b3948bba2c",
+      "kind": "p",
+      "chapter": "القاعدة-الثالثة-أن-النبي-ظهر-على-أناس-متفرقين-في-عباداتهم",
+      "prev": "132d4969cd720bdc9d3d70eab613d1c37e270e9895222fc6fa3292c2c08f0e4b",
+      "next": "aee50b82e29941699ac2028f449cb2f75371cda181b0559adc57317163e6c94a"
+    },
+    {
+      "ord": 163,
+      "blockId": "df5330e78d184dc0f8ac8e1fbdde1cbb",
+      "fp64": "8d5174106375d8c8",
+      "normHash": "aee50b82e29941699ac2028f449cb2f75371cda181b0559adc57317163e6c94a",
+      "kind": "p",
+      "chapter": "القاعدة-الثالثة-أن-النبي-ظهر-على-أناس-متفرقين-في-عباداتهم",
+      "prev": "04edd56aa3552ef71594dd1ef43acf2408c09e9b6136f730568b60b3948bba2c",
+      "next": "d6d4f8320476bd8117c6c0701ce2d60bb0e423a3003f9d24c13a0632ffaea260"
+    },
+    {
+      "ord": 164,
+      "blockId": "0d90eed4e4a1a21394e7fe8fd85d5586",
+      "fp64": "fcd6e41f97286de1",
+      "normHash": "d6d4f8320476bd8117c6c0701ce2d60bb0e423a3003f9d24c13a0632ffaea260",
+      "kind": "p",
+      "chapter": "القاعدة-الثالثة-أن-النبي-ظهر-على-أناس-متفرقين-في-عباداتهم",
+      "prev": "aee50b82e29941699ac2028f449cb2f75371cda181b0559adc57317163e6c94a",
+      "next": "c30940006dbacdcde1a8f3a3469b298413fd462328c9f540cfd515e10207db0e"
+    },
+    {
+      "ord": 165,
+      "blockId": "44a2e0fda9e2cdfc48227dd28439a2d8",
+      "fp64": "a0f4d4fd71a016eb",
+      "normHash": "c30940006dbacdcde1a8f3a3469b298413fd462328c9f540cfd515e10207db0e",
+      "kind": "notes",
+      "chapter": "القاعدة-الثالثة-أن-النبي-ظهر-على-أناس-متفرقين-في-عباداتهم",
+      "prev": "d6d4f8320476bd8117c6c0701ce2d60bb0e423a3003f9d24c13a0632ffaea260",
+      "next": "efee7e75fa4523d0330f3b77b6391fd330567f3c0fdd93cd4d5dee8e81e91a13"
+    },
+    {
+      "ord": 166,
+      "blockId": "ab83f677867c264932c076a6749351df",
+      "fp64": "a5fff1fb7b302462",
+      "normHash": "efee7e75fa4523d0330f3b77b6391fd330567f3c0fdd93cd4d5dee8e81e91a13",
+      "kind": "page",
+      "chapter": "القاعدة-الثالثة-أن-النبي-ظهر-على-أناس-متفرقين-في-عباداتهم",
+      "prev": "c30940006dbacdcde1a8f3a3469b298413fd462328c9f540cfd515e10207db0e",
+      "next": "237d9aa736b0e48391c539093d70c668425d706d0c40c60242c198e34e7487ac"
+    },
+    {
+      "ord": 167,
+      "blockId": "9d1fe795059b02197d0c71b196114798",
+      "fp64": "9c4bc071476f6a7d",
+      "normHash": "237d9aa736b0e48391c539093d70c668425d706d0c40c60242c198e34e7487ac",
+      "kind": "p",
+      "chapter": "القاعدة-الثالثة-أن-النبي-ظهر-على-أناس-متفرقين-في-عباداتهم",
+      "prev": "efee7e75fa4523d0330f3b77b6391fd330567f3c0fdd93cd4d5dee8e81e91a13",
+      "next": "9c1a3aeaa6fd29bb5ef32d755338d95e9d2830c5b9d821079b5aaf1f1c83c0fc"
+    },
+    {
+      "ord": 168,
+      "blockId": "27a0049017ab6a526322c75e9a86089c",
+      "fp64": "a05c74fd73a886ab",
+      "normHash": "9c1a3aeaa6fd29bb5ef32d755338d95e9d2830c5b9d821079b5aaf1f1c83c0fc",
+      "kind": "notes",
+      "chapter": "القاعدة-الثالثة-أن-النبي-ظهر-على-أناس-متفرقين-في-عباداتهم",
+      "prev": "237d9aa736b0e48391c539093d70c668425d706d0c40c60242c198e34e7487ac",
+      "next": "d1083e0735df6258f3d11fc59ad42b577106553fb12653aca676e30be4982862"
+    },
+    {
+      "ord": 169,
+      "blockId": "a63599d6996bdb55a8b4f74da6b50f4c",
+      "fp64": "25df77df7330a437",
+      "normHash": "d1083e0735df6258f3d11fc59ad42b577106553fb12653aca676e30be4982862",
+      "kind": "page",
+      "chapter": "القاعدة-الثالثة-أن-النبي-ظهر-على-أناس-متفرقين-في-عباداتهم",
+      "prev": "9c1a3aeaa6fd29bb5ef32d755338d95e9d2830c5b9d821079b5aaf1f1c83c0fc",
+      "next": "096f01b7bd4894aacf1625d579ae59ae1e042232f0cdf11428b30a63285c0700"
+    },
+    {
+      "ord": 170,
+      "blockId": "b57ec789f6d3ea332d591609c7b9b66e",
+      "fp64": "fedee377dfda12bc",
+      "normHash": "096f01b7bd4894aacf1625d579ae59ae1e042232f0cdf11428b30a63285c0700",
+      "kind": "p",
+      "chapter": "القاعدة-الثالثة-أن-النبي-ظهر-على-أناس-متفرقين-في-عباداتهم",
+      "prev": "d1083e0735df6258f3d11fc59ad42b577106553fb12653aca676e30be4982862",
+      "next": "f27bbd72c0dfb8decf54af508e42c81b9a0b4fc5fe16efa182ebeb52d6d72d1e"
+    },
+    {
+      "ord": 171,
+      "blockId": "6dfa8ad2179cd4a7ba0b59fb197a497d",
+      "fp64": "6ca90c59be76de6c",
+      "normHash": "f27bbd72c0dfb8decf54af508e42c81b9a0b4fc5fe16efa182ebeb52d6d72d1e",
+      "kind": "h2",
+      "chapter": "القاعدة-الرابعة-أن-مشركي-زماننا-أغلظ-شركا-من-الأولين",
+      "prev": "096f01b7bd4894aacf1625d579ae59ae1e042232f0cdf11428b30a63285c0700",
+      "next": "27527548dbe08f8ab07537260836a1c91ab1ee68fc8f79d77868cf059e26067f"
+    },
+    {
+      "ord": 172,
+      "blockId": "1da54c84efdf6621882a87c9c938c5a9",
+      "fp64": "1e451952592cbad4",
+      "normHash": "27527548dbe08f8ab07537260836a1c91ab1ee68fc8f79d77868cf059e26067f",
+      "kind": "p",
+      "chapter": "القاعدة-الرابعة-أن-مشركي-زماننا-أغلظ-شركا-من-الأولين",
+      "prev": "f27bbd72c0dfb8decf54af508e42c81b9a0b4fc5fe16efa182ebeb52d6d72d1e",
+      "next": "55cc663bc4a20b348f2ced79fdf64263aa9d5806b0f1466c8117cac47b9905f1"
+    },
+    {
+      "ord": 173,
+      "blockId": "8c18f2546dd25daabbba6604b1532c8b",
+      "fp64": "fb1a6316d332ec76",
+      "normHash": "55cc663bc4a20b348f2ced79fdf64263aa9d5806b0f1466c8117cac47b9905f1",
+      "kind": "p",
+      "chapter": "القاعدة-الرابعة-أن-مشركي-زماننا-أغلظ-شركا-من-الأولين",
+      "prev": "27527548dbe08f8ab07537260836a1c91ab1ee68fc8f79d77868cf059e26067f",
+      "next": "ed0ac8f99879527a316b1cbe79c671651486d414a44e5479b032f5edccb59894"
+    },
+    {
+      "ord": 174,
+      "blockId": "4cd8245c72b0f6c7719e2aea83c26af8",
+      "fp64": "2fa4ead29a0e287d",
+      "normHash": "ed0ac8f99879527a316b1cbe79c671651486d414a44e5479b032f5edccb59894",
+      "kind": "p",
+      "chapter": "القاعدة-الرابعة-أن-مشركي-زماننا-أغلظ-شركا-من-الأولين",
+      "prev": "55cc663bc4a20b348f2ced79fdf64263aa9d5806b0f1466c8117cac47b9905f1",
+      "next": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839"
+    },
+    {
+      "ord": 175,
+      "blockId": "90f6507b8eeda36e373feb6f7b4e1f44",
+      "fp64": "c2e708506ae5eb14",
+      "normHash": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839",
+      "kind": "break",
+      "chapter": "القاعدة-الرابعة-أن-مشركي-زماننا-أغلظ-شركا-من-الأولين",
+      "prev": "ed0ac8f99879527a316b1cbe79c671651486d414a44e5479b032f5edccb59894",
+      "next": "8b91b175237ae8df57a0f9260620d3a55b136d63460f6fdc3d8ad3765c855ce9"
+    },
+    {
+      "ord": 176,
+      "blockId": "7bf2979bf01bbcf7a606a5b66002f4ab",
+      "fp64": "6845afadfd518ee7",
+      "normHash": "8b91b175237ae8df57a0f9260620d3a55b136d63460f6fdc3d8ad3765c855ce9",
+      "kind": "p",
+      "chapter": "القاعدة-الرابعة-أن-مشركي-زماننا-أغلظ-شركا-من-الأولين",
+      "prev": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839",
+      "next": "37e2be18be64b60b73d8d6528bc7cb58e10e44919f21a2cf1d03779a071ddb81"
+    },
+    {
+      "ord": 177,
+      "blockId": "dd2b077596698dad2af271a3df73ee5b",
+      "fp64": "68808457be3f0c0c",
+      "normHash": "37e2be18be64b60b73d8d6528bc7cb58e10e44919f21a2cf1d03779a071ddb81",
+      "kind": "p",
+      "chapter": "القاعدة-الرابعة-أن-مشركي-زماننا-أغلظ-شركا-من-الأولين",
+      "prev": "8b91b175237ae8df57a0f9260620d3a55b136d63460f6fdc3d8ad3765c855ce9",
+      "next": "598a32f006acc6932945f24c888e4e3717c7fe8c77e7c85e6ddbca609737386f"
+    },
+    {
+      "ord": 178,
+      "blockId": "18abce583513e3c20a0d20c62bf0a366",
+      "fp64": "3d493556d57497dc",
+      "normHash": "598a32f006acc6932945f24c888e4e3717c7fe8c77e7c85e6ddbca609737386f",
+      "kind": "p",
+      "chapter": "القاعدة-الرابعة-أن-مشركي-زماننا-أغلظ-شركا-من-الأولين",
+      "prev": "37e2be18be64b60b73d8d6528bc7cb58e10e44919f21a2cf1d03779a071ddb81",
+      "next": "56409761960819792386b99750acd7b578bae3d2654208d54fea67f6eb626158"
+    },
+    {
+      "ord": 179,
+      "blockId": "a957f1f90180cb90af3c6464bdfd3f6e",
+      "fp64": "65fcb49e7232847f",
+      "normHash": "56409761960819792386b99750acd7b578bae3d2654208d54fea67f6eb626158",
+      "kind": "page",
+      "chapter": "القاعدة-الرابعة-أن-مشركي-زماننا-أغلظ-شركا-من-الأولين",
+      "prev": "598a32f006acc6932945f24c888e4e3717c7fe8c77e7c85e6ddbca609737386f",
+      "next": "bcf589a37b991147d41c79d8b1edff76660405396db3b93ffa30ad68313b56a2"
+    },
+    {
+      "ord": 180,
+      "blockId": "5c51a704a66467b40f3b8a08d7b3cada",
+      "fp64": "3eca2c7ae77e7f45",
+      "normHash": "bcf589a37b991147d41c79d8b1edff76660405396db3b93ffa30ad68313b56a2",
+      "kind": "p",
+      "chapter": "القاعدة-الرابعة-أن-مشركي-زماننا-أغلظ-شركا-من-الأولين",
+      "prev": "56409761960819792386b99750acd7b578bae3d2654208d54fea67f6eb626158",
+      "next": "8877f7f016213724530de5bcdf59dd56075182a60d7d8af51bab253ad78a5fd7"
+    },
+    {
+      "ord": 181,
+      "blockId": "588e65230fa94afb7e839e945588bb7a",
+      "fp64": "7eca5d5a1704374c",
+      "normHash": "8877f7f016213724530de5bcdf59dd56075182a60d7d8af51bab253ad78a5fd7",
+      "kind": "p",
+      "chapter": "القاعدة-الرابعة-أن-مشركي-زماننا-أغلظ-شركا-من-الأولين",
+      "prev": "bcf589a37b991147d41c79d8b1edff76660405396db3b93ffa30ad68313b56a2",
+      "next": "dc0a83e559997cd9cc11a9fef5d950c9c897b8b62721688e8da89e67a697dfd9"
+    },
+    {
+      "ord": 182,
+      "blockId": "269ec137988f93c4b4a3cee47e5a357c",
+      "fp64": "39c90c53dffb5df4",
+      "normHash": "dc0a83e559997cd9cc11a9fef5d950c9c897b8b62721688e8da89e67a697dfd9",
+      "kind": "p",
+      "chapter": "القاعدة-الرابعة-أن-مشركي-زماننا-أغلظ-شركا-من-الأولين",
+      "prev": "8877f7f016213724530de5bcdf59dd56075182a60d7d8af51bab253ad78a5fd7",
+      "next": "40d0bd3d0b20130a75886cd98441cf2be4fa7f535611d2c90b57087671f4c276"
+    },
+    {
+      "ord": 183,
+      "blockId": "5c3843fe60845502cdf6eeae01f3850b",
+      "fp64": "e05444f771b1066b",
+      "normHash": "40d0bd3d0b20130a75886cd98441cf2be4fa7f535611d2c90b57087671f4c276",
+      "kind": "notes",
+      "chapter": "القاعدة-الرابعة-أن-مشركي-زماننا-أغلظ-شركا-من-الأولين",
+      "prev": "dc0a83e559997cd9cc11a9fef5d950c9c897b8b62721688e8da89e67a697dfd9",
+      "next": "9550de311ed10f80ecf1dad4c2e17987b532abc00ce068882426bb13af7fb893"
+    },
+    {
+      "ord": 184,
+      "blockId": "4d9107c500fc3f2f795fade85a155d92",
+      "fp64": "65dd709f5b310667",
+      "normHash": "9550de311ed10f80ecf1dad4c2e17987b532abc00ce068882426bb13af7fb893",
+      "kind": "page",
+      "chapter": "القاعدة-الرابعة-أن-مشركي-زماننا-أغلظ-شركا-من-الأولين",
+      "prev": "40d0bd3d0b20130a75886cd98441cf2be4fa7f535611d2c90b57087671f4c276",
+      "next": "51000f717234d3bcb5976ba6c35c461ff1b3bf6caffa56b09185bc773fd396b6"
+    },
+    {
+      "ord": 185,
+      "blockId": "603d89368b20338aa589568f91d9bf92",
+      "fp64": "ead20d5dab608cdc",
+      "normHash": "51000f717234d3bcb5976ba6c35c461ff1b3bf6caffa56b09185bc773fd396b6",
+      "kind": "p",
+      "chapter": "القاعدة-الرابعة-أن-مشركي-زماننا-أغلظ-شركا-من-الأولين",
+      "prev": "9550de311ed10f80ecf1dad4c2e17987b532abc00ce068882426bb13af7fb893",
+      "next": "baee5763e4c0f7c0b7c06e4294738cf6c9de2509b9f3f0231f52b4173f27c551"
+    },
+    {
+      "ord": 186,
+      "blockId": "909bd08f98af780649d2b7dae96f4fc0",
+      "fp64": "1f880456c1325d8c",
+      "normHash": "baee5763e4c0f7c0b7c06e4294738cf6c9de2509b9f3f0231f52b4173f27c551",
+      "kind": "p",
+      "chapter": "القاعدة-الرابعة-أن-مشركي-زماننا-أغلظ-شركا-من-الأولين",
+      "prev": "51000f717234d3bcb5976ba6c35c461ff1b3bf6caffa56b09185bc773fd396b6",
+      "next": "73a719163c03f3b43ab66ebf1fb88406aad3a8b3ebfc975819c448044034daab"
+    },
+    {
+      "ord": 187,
+      "blockId": "7d97f001f8a329a52841fe105288a4ed",
+      "fp64": "489ad17edbb9eb3d",
+      "normHash": "73a719163c03f3b43ab66ebf1fb88406aad3a8b3ebfc975819c448044034daab",
+      "kind": "p",
+      "chapter": "القاعدة-الرابعة-أن-مشركي-زماننا-أغلظ-شركا-من-الأولين",
+      "prev": "baee5763e4c0f7c0b7c06e4294738cf6c9de2509b9f3f0231f52b4173f27c551",
+      "next": "2d3af2de21585f6ddd8ccb89f7a108416752fee33beba4ab25ce1f8f9151e184"
+    },
+    {
+      "ord": 188,
+      "blockId": "508d8cdc54039d3153b1e82dab23a962",
+      "fp64": "45268c9b5e66ed5c",
+      "normHash": "2d3af2de21585f6ddd8ccb89f7a108416752fee33beba4ab25ce1f8f9151e184",
+      "kind": "p",
+      "chapter": "القاعدة-الرابعة-أن-مشركي-زماننا-أغلظ-شركا-من-الأولين",
+      "prev": "73a719163c03f3b43ab66ebf1fb88406aad3a8b3ebfc975819c448044034daab",
+      "next": "6b3d0a7ce5d8868ab472c7ca44bbc0ceee346e296c95739d31d3a3efbd6f2719"
+    },
+    {
+      "ord": 189,
+      "blockId": "e909cce2be9374785af0e6ea3dfb96f7",
+      "fp64": "fdb5e2d29b8fa76d",
+      "normHash": "6b3d0a7ce5d8868ab472c7ca44bbc0ceee346e296c95739d31d3a3efbd6f2719",
+      "kind": "p",
+      "chapter": "القاعدة-الرابعة-أن-مشركي-زماننا-أغلظ-شركا-من-الأولين",
+      "prev": "2d3af2de21585f6ddd8ccb89f7a108416752fee33beba4ab25ce1f8f9151e184",
+      "next": "9aa7129bd431ac39ddbced406963fe8248e65b759a3428f65f4597e0800a58a8"
+    },
+    {
+      "ord": 190,
+      "blockId": "efb900a9bcb8396d23ce4ec70af7b5df",
+      "fp64": "e5fd35df52b3e07b",
+      "normHash": "9aa7129bd431ac39ddbced406963fe8248e65b759a3428f65f4597e0800a58a8",
+      "kind": "page",
+      "chapter": "القاعدة-الرابعة-أن-مشركي-زماننا-أغلظ-شركا-من-الأولين",
+      "prev": "6b3d0a7ce5d8868ab472c7ca44bbc0ceee346e296c95739d31d3a3efbd6f2719"
+    }
+  ]
+}

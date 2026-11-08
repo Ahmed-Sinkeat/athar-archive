@@ -1,0 +1,3265 @@
+{
+  "schema": 1,
+  "generation": 1,
+  "sourceHash": "014f15d67b5c6d23cde2da90483f65c066cd0969462019f4d580f17cb8fa3fa4",
+  "ids": [
+    {
+      "ord": 0,
+      "blockId": "a373d674e9e226953e09fadce8bf6cc5",
+      "fp64": "c33eddf6286f3c6f",
+      "normHash": "26a40dc7eb12b02857dce961c7829a537215a86810ba324c248afb555f39ea94",
+      "kind": "p",
+      "chapter": "main",
+      "next": "2d2f61095390136dc37ca5682ef6168299bd066856648d2ec3d7da5afec5fd0c"
+    },
+    {
+      "ord": 1,
+      "blockId": "9efe7582468b4e55c4446b5a438834ee",
+      "fp64": "64d18e1553cf00a5",
+      "normHash": "2d2f61095390136dc37ca5682ef6168299bd066856648d2ec3d7da5afec5fd0c",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "26a40dc7eb12b02857dce961c7829a537215a86810ba324c248afb555f39ea94",
+      "next": "f5c92b51cfc0ef5c80e7d3bcb7a7399f213e3abf468e7f06a2551f6be5d7e5f3"
+    },
+    {
+      "ord": 2,
+      "blockId": "d1a2a6fe6e9fac9da4c8e522d5f841a2",
+      "fp64": "d9f7fd7fd3e7fc77",
+      "normHash": "f5c92b51cfc0ef5c80e7d3bcb7a7399f213e3abf468e7f06a2551f6be5d7e5f3",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "2d2f61095390136dc37ca5682ef6168299bd066856648d2ec3d7da5afec5fd0c",
+      "next": "1755600b9ce652f0aec99354fbd00dc1a7e373871d30eaf4eb8d6dffd57a9a4c"
+    },
+    {
+      "ord": 3,
+      "blockId": "79e8d4de7748ddc4a19beb854b9dc8ff",
+      "fp64": "fe7eb96dfbebf385",
+      "normHash": "1755600b9ce652f0aec99354fbd00dc1a7e373871d30eaf4eb8d6dffd57a9a4c",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "f5c92b51cfc0ef5c80e7d3bcb7a7399f213e3abf468e7f06a2551f6be5d7e5f3",
+      "next": "2d8b18a6369bd6776ac5754c1d21054f8409e32eca933e8fc86bde60afb41630"
+    },
+    {
+      "ord": 4,
+      "blockId": "4d3c05b711b9c702d7287b2733cc199e",
+      "fp64": "7453b1d7e343e613",
+      "normHash": "2d8b18a6369bd6776ac5754c1d21054f8409e32eca933e8fc86bde60afb41630",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "1755600b9ce652f0aec99354fbd00dc1a7e373871d30eaf4eb8d6dffd57a9a4c",
+      "next": "08fa6b663446fc98f1bda8041e181087ca394cc76ce26812acd49c687391f0c5"
+    },
+    {
+      "ord": 5,
+      "blockId": "8cdaede59dd1260b787d412065ff1810",
+      "fp64": "e43a251227f7fa54",
+      "normHash": "08fa6b663446fc98f1bda8041e181087ca394cc76ce26812acd49c687391f0c5",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "2d8b18a6369bd6776ac5754c1d21054f8409e32eca933e8fc86bde60afb41630",
+      "next": "e34090876df2d0528c79fdc4bc181460e45344a5ed5c19094c2ab0161a77d32c"
+    },
+    {
+      "ord": 6,
+      "blockId": "1c402ecb0c56f08881535146854ca83e",
+      "fp64": "f7e02ed7bb3bfc6f",
+      "normHash": "e34090876df2d0528c79fdc4bc181460e45344a5ed5c19094c2ab0161a77d32c",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "08fa6b663446fc98f1bda8041e181087ca394cc76ce26812acd49c687391f0c5",
+      "next": "e52e7c969a63eedc71e122b5940307871bf8d083461fb4110bf9993e9ffd23ce"
+    },
+    {
+      "ord": 7,
+      "blockId": "5540b071334cdeebcc7c92c2a8a21cb2",
+      "fp64": "05bbfc080434e132",
+      "normHash": "e52e7c969a63eedc71e122b5940307871bf8d083461fb4110bf9993e9ffd23ce",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "e34090876df2d0528c79fdc4bc181460e45344a5ed5c19094c2ab0161a77d32c",
+      "next": "70ea6a29e41d42b570db4f1219a083c18370648fb929aa4812395da90140cd78"
+    },
+    {
+      "ord": 8,
+      "blockId": "825cabbd885a3087a776ac34e66b0fc7",
+      "fp64": "b7fffd5bcb667c77",
+      "normHash": "70ea6a29e41d42b570db4f1219a083c18370648fb929aa4812395da90140cd78",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "e52e7c969a63eedc71e122b5940307871bf8d083461fb4110bf9993e9ffd23ce",
+      "next": "4f9f4fa943f32f231867ed4fa6ea87520082220766981ca48fa1e4c3fe0d3e7c"
+    },
+    {
+      "ord": 9,
+      "blockId": "7dd0db9f0727d9f7c700c7055d5e3ab5",
+      "fp64": "3afd96feff767d6d",
+      "normHash": "4f9f4fa943f32f231867ed4fa6ea87520082220766981ca48fa1e4c3fe0d3e7c",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "70ea6a29e41d42b570db4f1219a083c18370648fb929aa4812395da90140cd78",
+      "next": "5b97ccfe0b2218775e5ac19fc838d4aacb9fa83a4ca0970b414faec921df57bf"
+    },
+    {
+      "ord": 10,
+      "blockId": "d14406cdc8a53c934d747c4fdcedb61a",
+      "fp64": "3017e25a3793e4ec",
+      "normHash": "5b97ccfe0b2218775e5ac19fc838d4aacb9fa83a4ca0970b414faec921df57bf",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "4f9f4fa943f32f231867ed4fa6ea87520082220766981ca48fa1e4c3fe0d3e7c",
+      "next": "60827fc6b2fe55a354315359e81e37b1f9bd25b22682f050eb8e627fb183897c"
+    },
+    {
+      "ord": 11,
+      "blockId": "62961217de59f3de4b6dc1fbc6a73c8e",
+      "fp64": "e1320d1667a6fa70",
+      "normHash": "60827fc6b2fe55a354315359e81e37b1f9bd25b22682f050eb8e627fb183897c",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "5b97ccfe0b2218775e5ac19fc838d4aacb9fa83a4ca0970b414faec921df57bf",
+      "next": "9188f256ba223b9637a6bca1894c8bda769d4a2177a25f5c18dfb50703f508f1"
+    },
+    {
+      "ord": 12,
+      "blockId": "44107fb40c1f876ff2307e9f44e09bf3",
+      "fp64": "e5fff7ff7bb3e67f",
+      "normHash": "9188f256ba223b9637a6bca1894c8bda769d4a2177a25f5c18dfb50703f508f1",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "60827fc6b2fe55a354315359e81e37b1f9bd25b22682f050eb8e627fb183897c",
+      "next": "2faeea109072ecd45655335c776d16dff7854c5c40d4f54df97cecc239736a86"
+    },
+    {
+      "ord": 13,
+      "blockId": "a795f30c8fb6b85e7713cdd73f595fcd",
+      "fp64": "bdf5f8179ffc71fe",
+      "normHash": "2faeea109072ecd45655335c776d16dff7854c5c40d4f54df97cecc239736a86",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "9188f256ba223b9637a6bca1894c8bda769d4a2177a25f5c18dfb50703f508f1",
+      "next": "e521f489d4ea1b1e344557f70b833a823e82867c277e340c6a9f43cfa42a6fc7"
+    },
+    {
+      "ord": 14,
+      "blockId": "245a4dda99e7930fd461450b577094a0",
+      "fp64": "57e5da6b6ba8a367",
+      "normHash": "e521f489d4ea1b1e344557f70b833a823e82867c277e340c6a9f43cfa42a6fc7",
+      "kind": "h2",
+      "chapter": "المقدمة",
+      "prev": "2faeea109072ecd45655335c776d16dff7854c5c40d4f54df97cecc239736a86",
+      "next": "b6e159372c82b64d1b4e4d8ab2188fdf255a736b2b591ba8fca07faddf08ea29"
+    },
+    {
+      "ord": 15,
+      "blockId": "836bcba5ce906f46d4a2250d190cd05a",
+      "fp64": "e8c3e10c7774d439",
+      "normHash": "b6e159372c82b64d1b4e4d8ab2188fdf255a736b2b591ba8fca07faddf08ea29",
+      "kind": "p",
+      "chapter": "المقدمة",
+      "prev": "e521f489d4ea1b1e344557f70b833a823e82867c277e340c6a9f43cfa42a6fc7",
+      "next": "1caef7a05cb90ec306724efcd09c3b1f1cabffb2b7d5694e06ff28b699b4facb"
+    },
+    {
+      "ord": 16,
+      "blockId": "04b3b8b7faec762cd9f1adf2abc977fb",
+      "fp64": "976126c75b1458a7",
+      "normHash": "1caef7a05cb90ec306724efcd09c3b1f1cabffb2b7d5694e06ff28b699b4facb",
+      "kind": "p",
+      "chapter": "المقدمة",
+      "prev": "b6e159372c82b64d1b4e4d8ab2188fdf255a736b2b591ba8fca07faddf08ea29",
+      "next": "7a9574e64e5cdb6f8174076a71a665cd38b09f78a704eb38f60e866a7c48266a"
+    },
+    {
+      "ord": 17,
+      "blockId": "c2d593f85be2b0416b75de1ce116b001",
+      "fp64": "b475e0169fc778dc",
+      "normHash": "7a9574e64e5cdb6f8174076a71a665cd38b09f78a704eb38f60e866a7c48266a",
+      "kind": "p",
+      "chapter": "المقدمة",
+      "prev": "1caef7a05cb90ec306724efcd09c3b1f1cabffb2b7d5694e06ff28b699b4facb",
+      "next": "3c1c5d0223e9c38db36af885ec9cfa7f3370ab05c193c3fa41266c62c35dce36"
+    },
+    {
+      "ord": 18,
+      "blockId": "70c57f50f36d5701ce5914653f7cc13f",
+      "fp64": "708280587cd2ad68",
+      "normHash": "3c1c5d0223e9c38db36af885ec9cfa7f3370ab05c193c3fa41266c62c35dce36",
+      "kind": "p",
+      "chapter": "المقدمة",
+      "prev": "7a9574e64e5cdb6f8174076a71a665cd38b09f78a704eb38f60e866a7c48266a",
+      "next": "06a8f27e268bf9f26d0e58d22acf4b9a8244c62507c679844ea581d4bfaaf4b1"
+    },
+    {
+      "ord": 19,
+      "blockId": "a69f1283b1c0d863733532c5341564e5",
+      "fp64": "9d3cd8bfdbe2e4f4",
+      "normHash": "06a8f27e268bf9f26d0e58d22acf4b9a8244c62507c679844ea581d4bfaaf4b1",
+      "kind": "p",
+      "chapter": "المقدمة",
+      "prev": "3c1c5d0223e9c38db36af885ec9cfa7f3370ab05c193c3fa41266c62c35dce36",
+      "next": "acc822fe74379da9909f2bd0f7ad3b4effd44f40e5545369f85efb50d7112698"
+    },
+    {
+      "ord": 20,
+      "blockId": "0f5c6adf2126b295dacbab20370cc046",
+      "fp64": "7ed830d7717f9ca2",
+      "normHash": "acc822fe74379da9909f2bd0f7ad3b4effd44f40e5545369f85efb50d7112698",
+      "kind": "p",
+      "chapter": "المقدمة",
+      "prev": "06a8f27e268bf9f26d0e58d22acf4b9a8244c62507c679844ea581d4bfaaf4b1",
+      "next": "f7f4a90c065992e83745e1df65ec3a03003a82253ee90efc20ca08eafdc8dddc"
+    },
+    {
+      "ord": 21,
+      "blockId": "cb05dc684fb529def6ca221439c29b07",
+      "fp64": "afdffffadf71677e",
+      "normHash": "f7f4a90c065992e83745e1df65ec3a03003a82253ee90efc20ca08eafdc8dddc",
+      "kind": "page",
+      "chapter": "المقدمة",
+      "prev": "acc822fe74379da9909f2bd0f7ad3b4effd44f40e5545369f85efb50d7112698",
+      "next": "e34090876df2d0528c79fdc4bc181460e45344a5ed5c19094c2ab0161a77d32c"
+    },
+    {
+      "ord": 22,
+      "blockId": "533ff68f0e296b67083dde6156b93847",
+      "fp64": "f7e02ed7bb3bfc6f",
+      "normHash": "e34090876df2d0528c79fdc4bc181460e45344a5ed5c19094c2ab0161a77d32c",
+      "kind": "p",
+      "chapter": "المقدمة",
+      "prev": "f7f4a90c065992e83745e1df65ec3a03003a82253ee90efc20ca08eafdc8dddc",
+      "next": "e681014da33a78423b24e91814333808bf50dd9c62b3be1de7bca7d563aa9dcf"
+    },
+    {
+      "ord": 23,
+      "blockId": "b39a07987c3b8710ddd18f2c68d4a105",
+      "fp64": "56e4cebb9e5f7def",
+      "normHash": "e681014da33a78423b24e91814333808bf50dd9c62b3be1de7bca7d563aa9dcf",
+      "kind": "p",
+      "chapter": "المقدمة",
+      "prev": "e34090876df2d0528c79fdc4bc181460e45344a5ed5c19094c2ab0161a77d32c",
+      "next": "69f6abddb1380917f1fbfc397e6cc0644da95a9626a1ae4641da257146592106"
+    },
+    {
+      "ord": 24,
+      "blockId": "bc7e9244c0a64484c1e698db441641cf",
+      "fp64": "15a86ca237757d0b",
+      "normHash": "69f6abddb1380917f1fbfc397e6cc0644da95a9626a1ae4641da257146592106",
+      "kind": "p",
+      "chapter": "المقدمة",
+      "prev": "e681014da33a78423b24e91814333808bf50dd9c62b3be1de7bca7d563aa9dcf",
+      "next": "78932bb12510134fcdada8cae506135f1db8e4752e830be417ce63807151cd3a"
+    },
+    {
+      "ord": 25,
+      "blockId": "b1a4988ed528a68045ee571ded0c1802",
+      "fp64": "126506af520f1ca5",
+      "normHash": "78932bb12510134fcdada8cae506135f1db8e4752e830be417ce63807151cd3a",
+      "kind": "p",
+      "chapter": "المقدمة",
+      "prev": "69f6abddb1380917f1fbfc397e6cc0644da95a9626a1ae4641da257146592106",
+      "next": "ec665d24e7fa176f7d9f5bbe1310bd0c160f513076a001b1b322c6aa54affab9"
+    },
+    {
+      "ord": 26,
+      "blockId": "8531798c098601a8c78e72b80907a852",
+      "fp64": "42c8942d1d478c62",
+      "normHash": "ec665d24e7fa176f7d9f5bbe1310bd0c160f513076a001b1b322c6aa54affab9",
+      "kind": "h2",
+      "chapter": "الشرط-الأول-أن-تتخذ-للدر-والنسل-والتسمين-لا-للعمل",
+      "prev": "78932bb12510134fcdada8cae506135f1db8e4752e830be417ce63807151cd3a",
+      "next": "3dc80c2c4eb1cbb6d1abb9d8fad52c5b1762961337bdcc69fda7dcc9ea21eb26"
+    },
+    {
+      "ord": 27,
+      "blockId": "7d69665761886bfdeb5c0a65c1a8e687",
+      "fp64": "cb699f5e5735dcab",
+      "normHash": "3dc80c2c4eb1cbb6d1abb9d8fad52c5b1762961337bdcc69fda7dcc9ea21eb26",
+      "kind": "p",
+      "chapter": "الشرط-الأول-أن-تتخذ-للدر-والنسل-والتسمين-لا-للعمل",
+      "prev": "ec665d24e7fa176f7d9f5bbe1310bd0c160f513076a001b1b322c6aa54affab9",
+      "next": "9cac14b5cb6fb5fa2b038b3d35184a8e81e03bd7002df989dee5e5945b360d46"
+    },
+    {
+      "ord": 28,
+      "blockId": "3364c151d1fbf204952e95beb9332e3b",
+      "fp64": "7c00e05e15247e48",
+      "normHash": "9cac14b5cb6fb5fa2b038b3d35184a8e81e03bd7002df989dee5e5945b360d46",
+      "kind": "p",
+      "chapter": "الشرط-الأول-أن-تتخذ-للدر-والنسل-والتسمين-لا-للعمل",
+      "prev": "3dc80c2c4eb1cbb6d1abb9d8fad52c5b1762961337bdcc69fda7dcc9ea21eb26",
+      "next": "21edae1669eb9b20cadd95e2a056b85940569f6bae24651462d9e45a91f61291"
+    },
+    {
+      "ord": 29,
+      "blockId": "361674384587d3afd1b08dc60a58f291",
+      "fp64": "e7dfffde7f77627f",
+      "normHash": "21edae1669eb9b20cadd95e2a056b85940569f6bae24651462d9e45a91f61291",
+      "kind": "page",
+      "chapter": "الشرط-الأول-أن-تتخذ-للدر-والنسل-والتسمين-لا-للعمل",
+      "prev": "9cac14b5cb6fb5fa2b038b3d35184a8e81e03bd7002df989dee5e5945b360d46",
+      "next": "0d9ca32cd654e5b8b9ade83a7a2b77ed089838fa95818d27350fb1ed2c2b41e4"
+    },
+    {
+      "ord": 30,
+      "blockId": "f2fcd042f3e9419369a7591ec73dc560",
+      "fp64": "3a5cb5b82e935c31",
+      "normHash": "0d9ca32cd654e5b8b9ade83a7a2b77ed089838fa95818d27350fb1ed2c2b41e4",
+      "kind": "h2",
+      "chapter": "الشرط-الثاني-السوم-أكثر-الحول",
+      "prev": "21edae1669eb9b20cadd95e2a056b85940569f6bae24651462d9e45a91f61291",
+      "next": "2bc5a89a174fcc2dadae15f8d1203ff455e9378e8dfa2209adcac73151ef2acb"
+    },
+    {
+      "ord": 31,
+      "blockId": "4eb17dc1bc6849ed9db2997acf093e61",
+      "fp64": "544da85205357a28",
+      "normHash": "2bc5a89a174fcc2dadae15f8d1203ff455e9378e8dfa2209adcac73151ef2acb",
+      "kind": "p",
+      "chapter": "الشرط-الثاني-السوم-أكثر-الحول",
+      "prev": "0d9ca32cd654e5b8b9ade83a7a2b77ed089838fa95818d27350fb1ed2c2b41e4",
+      "next": "9a2dffb5ddae34db945b1912612c003cf3704c5398ea1fbc778b111fa1fcc056"
+    },
+    {
+      "ord": 32,
+      "blockId": "b50d58b90a01c9d1c64ac3ea503057ba",
+      "fp64": "555c60b61d5d9d16",
+      "normHash": "9a2dffb5ddae34db945b1912612c003cf3704c5398ea1fbc778b111fa1fcc056",
+      "kind": "p",
+      "chapter": "الشرط-الثاني-السوم-أكثر-الحول",
+      "prev": "2bc5a89a174fcc2dadae15f8d1203ff455e9378e8dfa2209adcac73151ef2acb",
+      "next": "73d73406bc46cc7186ec804fdfa1a05041b9f7d03ceeca214755823ab8479412"
+    },
+    {
+      "ord": 33,
+      "blockId": "fdf16ffe295f2e9cc1b54100221c69c5",
+      "fp64": "2fdffbfb7f336dff",
+      "normHash": "73d73406bc46cc7186ec804fdfa1a05041b9f7d03ceeca214755823ab8479412",
+      "kind": "page",
+      "chapter": "الشرط-الثاني-السوم-أكثر-الحول",
+      "prev": "9a2dffb5ddae34db945b1912612c003cf3704c5398ea1fbc778b111fa1fcc056",
+      "next": "d9a793d4b0823d9d86da81513a6c0c8b1cc6d57b27fbf1f62675b4f4f22487b2"
+    },
+    {
+      "ord": 34,
+      "blockId": "de3b99192dd3e35c6d8b02511000bcc3",
+      "fp64": "ed75ecba5754ffc6",
+      "normHash": "d9a793d4b0823d9d86da81513a6c0c8b1cc6d57b27fbf1f62675b4f4f22487b2",
+      "kind": "p",
+      "chapter": "الشرط-الثاني-السوم-أكثر-الحول",
+      "prev": "73d73406bc46cc7186ec804fdfa1a05041b9f7d03ceeca214755823ab8479412",
+      "next": "b303efa0aa9df28e52ee3efe4c9452666015c2981e4ed18d8ccb5dac2599b94d"
+    },
+    {
+      "ord": 35,
+      "blockId": "0b6b8c46831f3c5b8f7a79edcfdf5c20",
+      "fp64": "7af5b59c2fc2c63b",
+      "normHash": "b303efa0aa9df28e52ee3efe4c9452666015c2981e4ed18d8ccb5dac2599b94d",
+      "kind": "h2",
+      "chapter": "الشرط-الثالث-أن-يحول-عليها-الحول-عند-مالكها-حولا-كاملا",
+      "prev": "d9a793d4b0823d9d86da81513a6c0c8b1cc6d57b27fbf1f62675b4f4f22487b2",
+      "next": "f103e83645b1c6137aa97584bc6dbb22b0114f3fae7f11a5d3bbf5c7be9e142e"
+    },
+    {
+      "ord": 36,
+      "blockId": "68c1e5064e158742d1100423eb2494b2",
+      "fp64": "edc4801a1d74753e",
+      "normHash": "f103e83645b1c6137aa97584bc6dbb22b0114f3fae7f11a5d3bbf5c7be9e142e",
+      "kind": "p",
+      "chapter": "الشرط-الثالث-أن-يحول-عليها-الحول-عند-مالكها-حولا-كاملا",
+      "prev": "b303efa0aa9df28e52ee3efe4c9452666015c2981e4ed18d8ccb5dac2599b94d",
+      "next": "adeb15ceda7cc1b586b536119f9535d26d30cd1486525f28ce029e1f9abf1a80"
+    },
+    {
+      "ord": 37,
+      "blockId": "ad219871409a7abdee91b37ebc08721e",
+      "fp64": "4694b402ee8d655d",
+      "normHash": "adeb15ceda7cc1b586b536119f9535d26d30cd1486525f28ce029e1f9abf1a80",
+      "kind": "p",
+      "chapter": "الشرط-الثالث-أن-يحول-عليها-الحول-عند-مالكها-حولا-كاملا",
+      "prev": "f103e83645b1c6137aa97584bc6dbb22b0114f3fae7f11a5d3bbf5c7be9e142e",
+      "next": "08995c6425818979587732c23a044cfc0322e5e3f3e5a66f112c05e9cc5adafa"
+    },
+    {
+      "ord": 38,
+      "blockId": "651cc109dcac51a7eea9a93f51abd5d6",
+      "fp64": "b5bef485bd588939",
+      "normHash": "08995c6425818979587732c23a044cfc0322e5e3f3e5a66f112c05e9cc5adafa",
+      "kind": "h2",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "adeb15ceda7cc1b586b536119f9535d26d30cd1486525f28ce029e1f9abf1a80",
+      "next": "a2526ccb9074077e55270a66de371029b2e9ac127b0540f440e3adc1150be8df"
+    },
+    {
+      "ord": 39,
+      "blockId": "67cfd4822b3416dbd22bb27e66aec238",
+      "fp64": "d16c24a6bb154f0b",
+      "normHash": "a2526ccb9074077e55270a66de371029b2e9ac127b0540f440e3adc1150be8df",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "08995c6425818979587732c23a044cfc0322e5e3f3e5a66f112c05e9cc5adafa",
+      "next": "22494961106331a70ddc0eda3faac6692a667a11a770483e7824663665d0d430"
+    },
+    {
+      "ord": 40,
+      "blockId": "7a98f392b852e587eb527fca207ad9e2",
+      "fp64": "102dd828b334fad7",
+      "normHash": "22494961106331a70ddc0eda3faac6692a667a11a770483e7824663665d0d430",
+      "kind": "h3",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "a2526ccb9074077e55270a66de371029b2e9ac127b0540f440e3adc1150be8df",
+      "next": "d9a3b76ce4ac492e0995a1bc476fe74a2df2e05126f474bd49f5fc5c62c208dd"
+    },
+    {
+      "ord": 41,
+      "blockId": "efde815236ea5a90c96ae9d55ec2b442",
+      "fp64": "f56dd0501d34727c",
+      "normHash": "d9a3b76ce4ac492e0995a1bc476fe74a2df2e05126f474bd49f5fc5c62c208dd",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "22494961106331a70ddc0eda3faac6692a667a11a770483e7824663665d0d430",
+      "next": "9bfc1f2a9eb9d053de8bfc32d4df2994f19ed28543fb5ba5f331f3662dae6779"
+    },
+    {
+      "ord": 42,
+      "blockId": "d292448d880a79e61292460398457a4a",
+      "fp64": "5f4c2042dd451c14",
+      "normHash": "9bfc1f2a9eb9d053de8bfc32d4df2994f19ed28543fb5ba5f331f3662dae6779",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "d9a3b76ce4ac492e0995a1bc476fe74a2df2e05126f474bd49f5fc5c62c208dd",
+      "next": "b64d47bb52ce2df883d5e65a897cdbda8fb31df41781ec406a8f4c6d951ae1b5"
+    },
+    {
+      "ord": 43,
+      "blockId": "48fc54ee7c339c7a4f4437a9bf6b30e8",
+      "fp64": "b7dfffff5bf1f6f7",
+      "normHash": "b64d47bb52ce2df883d5e65a897cdbda8fb31df41781ec406a8f4c6d951ae1b5",
+      "kind": "page",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "9bfc1f2a9eb9d053de8bfc32d4df2994f19ed28543fb5ba5f331f3662dae6779",
+      "next": "3a8a7e44eacf65b6e873ed7bea4376efea19b8e467253e1c5ea7e64e747e82d0"
+    },
+    {
+      "ord": 44,
+      "blockId": "b221e31beaa986ad39588dca557fb7ce",
+      "fp64": "daba355257034c21",
+      "normHash": "3a8a7e44eacf65b6e873ed7bea4376efea19b8e467253e1c5ea7e64e747e82d0",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "b64d47bb52ce2df883d5e65a897cdbda8fb31df41781ec406a8f4c6d951ae1b5",
+      "next": "22d21c15d8dcaef2ad7c8199f510fb20e4b5fcfa1a624fc8d04a116bfa660499"
+    },
+    {
+      "ord": 45,
+      "blockId": "90ae7fb89247873ee235e080eff682db",
+      "fp64": "d9ee75169762583c",
+      "normHash": "22d21c15d8dcaef2ad7c8199f510fb20e4b5fcfa1a624fc8d04a116bfa660499",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "3a8a7e44eacf65b6e873ed7bea4376efea19b8e467253e1c5ea7e64e747e82d0",
+      "next": "fa6f2f2d2ec70b9fd6cba78ecf50308b0b0c23a51f49f40d301067bd8d109e52"
+    },
+    {
+      "ord": 46,
+      "blockId": "6c4ca458483cb72e37584c934d702bcc",
+      "fp64": "afdffffedb79627f",
+      "normHash": "fa6f2f2d2ec70b9fd6cba78ecf50308b0b0c23a51f49f40d301067bd8d109e52",
+      "kind": "page",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "22d21c15d8dcaef2ad7c8199f510fb20e4b5fcfa1a624fc8d04a116bfa660499",
+      "next": "a90f965750f12ddd8aef53be16d44165e6a6cf9b99830e1600afdaf217141dd3"
+    },
+    {
+      "ord": 47,
+      "blockId": "6c447db6c7c14df7199b2a4240d15a62",
+      "fp64": "e75f4669d7ebcb79",
+      "normHash": "a90f965750f12ddd8aef53be16d44165e6a6cf9b99830e1600afdaf217141dd3",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "fa6f2f2d2ec70b9fd6cba78ecf50308b0b0c23a51f49f40d301067bd8d109e52",
+      "next": "688261a3bfbf9eb3a99891416023862d27cd9e116b5c205d77dc545ce8c2fc4c"
+    },
+    {
+      "ord": 48,
+      "blockId": "e03a9303af817e2f5c870ce8e5608350",
+      "fp64": "edfbec9b3f74f29f",
+      "normHash": "688261a3bfbf9eb3a99891416023862d27cd9e116b5c205d77dc545ce8c2fc4c",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "a90f965750f12ddd8aef53be16d44165e6a6cf9b99830e1600afdaf217141dd3",
+      "next": "b20b59f804ee4a3e4bccae07284082a9849ec50e9cec748eec1c841401201524"
+    },
+    {
+      "ord": 49,
+      "blockId": "b39a3c203d59df562d562ebb0edb6a21",
+      "fp64": "fd7febff1fcfaff5",
+      "normHash": "b20b59f804ee4a3e4bccae07284082a9849ec50e9cec748eec1c841401201524",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "688261a3bfbf9eb3a99891416023862d27cd9e116b5c205d77dc545ce8c2fc4c",
+      "next": "7a0f7810ef9fc79b672cc22895491f266cd017fa686220c0cbe0a0d5d4abde23"
+    },
+    {
+      "ord": 50,
+      "blockId": "820bd9ed839e84a9255daef806c1a589",
+      "fp64": "7eeefe7bff77fd6d",
+      "normHash": "7a0f7810ef9fc79b672cc22895491f266cd017fa686220c0cbe0a0d5d4abde23",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "b20b59f804ee4a3e4bccae07284082a9849ec50e9cec748eec1c841401201524",
+      "next": "a993bbc5d6b7458773cc6dbc76c4c45c197470368bdd52c89f45f08fb3d5ca65"
+    },
+    {
+      "ord": 51,
+      "blockId": "a35ed5df38da39d61ce306c66d968bd5",
+      "fp64": "c883799251e7b82b",
+      "normHash": "a993bbc5d6b7458773cc6dbc76c4c45c197470368bdd52c89f45f08fb3d5ca65",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "7a0f7810ef9fc79b672cc22895491f266cd017fa686220c0cbe0a0d5d4abde23",
+      "next": "1f3a3476fff891e2815260326dd83da868791f4ab057d300239357868065b4fb"
+    },
+    {
+      "ord": 52,
+      "blockId": "8f5b98a1ea8d94f6d5c1e60370b6855c",
+      "fp64": "591fd6094c64723f",
+      "normHash": "1f3a3476fff891e2815260326dd83da868791f4ab057d300239357868065b4fb",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "a993bbc5d6b7458773cc6dbc76c4c45c197470368bdd52c89f45f08fb3d5ca65",
+      "next": "fc76dcac4f5323ab746775843393bec457290e259f09d77b5c89597582644977"
+    },
+    {
+      "ord": 53,
+      "blockId": "ec556b0edb43b0c3e2eb7f6c44a97b6c",
+      "fp64": "ffbadfff265befd3",
+      "normHash": "fc76dcac4f5323ab746775843393bec457290e259f09d77b5c89597582644977",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "1f3a3476fff891e2815260326dd83da868791f4ab057d300239357868065b4fb",
+      "next": "5451246097a12d806a7bf874c29ce079b921ce62bfbfbcb157e4b317e7da2063"
+    },
+    {
+      "ord": 54,
+      "blockId": "aeba83dbe5c487234e0366acd75e3986",
+      "fp64": "2e6c3efe7a1e7e3a",
+      "normHash": "5451246097a12d806a7bf874c29ce079b921ce62bfbfbcb157e4b317e7da2063",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "fc76dcac4f5323ab746775843393bec457290e259f09d77b5c89597582644977",
+      "next": "4db4d94f0c0d1b6bb6a18555d9fae9e7507beb23912faeb2736ac18a10e179d1"
+    },
+    {
+      "ord": 55,
+      "blockId": "d58e02de1ece15e48c0883469f807327",
+      "fp64": "538f3c58bd3f1d69",
+      "normHash": "4db4d94f0c0d1b6bb6a18555d9fae9e7507beb23912faeb2736ac18a10e179d1",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "5451246097a12d806a7bf874c29ce079b921ce62bfbfbcb157e4b317e7da2063",
+      "next": "c895efb337e6f93bc0873990c3ae009f331537950ae7f532205ac6103d603781"
+    },
+    {
+      "ord": 56,
+      "blockId": "cd1d011486ad56d1f6b2f6376e4510c9",
+      "fp64": "7fcf95bd2ffbffcd",
+      "normHash": "c895efb337e6f93bc0873990c3ae009f331537950ae7f532205ac6103d603781",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "4db4d94f0c0d1b6bb6a18555d9fae9e7507beb23912faeb2736ac18a10e179d1",
+      "next": "af94f12895f2e1432d46f234c41c48eec9c9646e9b494524aa22896cfb0d0891"
+    },
+    {
+      "ord": 57,
+      "blockId": "d7a01d6f403cb85cff6380a17a107984",
+      "fp64": "4c245003c76e32f9",
+      "normHash": "af94f12895f2e1432d46f234c41c48eec9c9646e9b494524aa22896cfb0d0891",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "c895efb337e6f93bc0873990c3ae009f331537950ae7f532205ac6103d603781",
+      "next": "4e69f1fe679aed73a4f2002d7955a7415fb3e959647a1fb7d8b8e8215f935244"
+    },
+    {
+      "ord": 58,
+      "blockId": "3c065ae9785e3f9a9e455cba8fa5ee97",
+      "fp64": "77fff3df7a73623e",
+      "normHash": "4e69f1fe679aed73a4f2002d7955a7415fb3e959647a1fb7d8b8e8215f935244",
+      "kind": "page",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "af94f12895f2e1432d46f234c41c48eec9c9646e9b494524aa22896cfb0d0891",
+      "next": "5203324fc56e9f3325de1c44839352978b8257f4e9568c36b29433d3902b9d6b"
+    },
+    {
+      "ord": 59,
+      "blockId": "6a68c048d97060b24b50bc47c72e8930",
+      "fp64": "93d515fe1a23eed8",
+      "normHash": "5203324fc56e9f3325de1c44839352978b8257f4e9568c36b29433d3902b9d6b",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "4e69f1fe679aed73a4f2002d7955a7415fb3e959647a1fb7d8b8e8215f935244",
+      "next": "23d043417781ca69f96edf792c32fca069c1b1107b9b235eb802d9682abc2f13"
+    },
+    {
+      "ord": 60,
+      "blockId": "d0990267654054cdd6ee8f56609045a3",
+      "fp64": "5bf03fb777ffbfe9",
+      "normHash": "23d043417781ca69f96edf792c32fca069c1b1107b9b235eb802d9682abc2f13",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "5203324fc56e9f3325de1c44839352978b8257f4e9568c36b29433d3902b9d6b",
+      "next": "34de8be7a280b4c08205c089a739cd64c0833177028550c21554063bf6cbe60d"
+    },
+    {
+      "ord": 61,
+      "blockId": "ec8f18069a5bdb601cf83802f8314781",
+      "fp64": "1a6eef1724490392",
+      "normHash": "34de8be7a280b4c08205c089a739cd64c0833177028550c21554063bf6cbe60d",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "23d043417781ca69f96edf792c32fca069c1b1107b9b235eb802d9682abc2f13",
+      "next": "758213efdfcd2deaccce9bc7c06be86738298c399f477acfd87fb0e6ae682572"
+    },
+    {
+      "ord": 62,
+      "blockId": "79d41b1bba5f10f6d26e20e42c974a38",
+      "fp64": "93f8359d93f390d8",
+      "normHash": "758213efdfcd2deaccce9bc7c06be86738298c399f477acfd87fb0e6ae682572",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "34de8be7a280b4c08205c089a739cd64c0833177028550c21554063bf6cbe60d",
+      "next": "42ce8bcc6b6303178382eb380960087da3e24ff08d6021edb4ca4b778943cf32"
+    },
+    {
+      "ord": 63,
+      "blockId": "f13553d5c9234784dbc07f6741ed7650",
+      "fp64": "536e347f672f02ee",
+      "normHash": "42ce8bcc6b6303178382eb380960087da3e24ff08d6021edb4ca4b778943cf32",
+      "kind": "li",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "758213efdfcd2deaccce9bc7c06be86738298c399f477acfd87fb0e6ae682572",
+      "next": "3d3bee87c4146cabe72a3c99ce3cf16f3ca882edec645cdb287b6e2700e2f8d5"
+    },
+    {
+      "ord": 64,
+      "blockId": "48e4be48eea467bcfb954838f7353fb3",
+      "fp64": "53e8b53d276b26c8",
+      "normHash": "3d3bee87c4146cabe72a3c99ce3cf16f3ca882edec645cdb287b6e2700e2f8d5",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "42ce8bcc6b6303178382eb380960087da3e24ff08d6021edb4ca4b778943cf32",
+      "next": "8b1c154738898d69e795adb618749569ffd5f8a3344f49d3f59f1a7f6244d747"
+    },
+    {
+      "ord": 65,
+      "blockId": "5dbc2cde67a1820c787fee21c31e01c9",
+      "fp64": "1120180ad73446d6",
+      "normHash": "8b1c154738898d69e795adb618749569ffd5f8a3344f49d3f59f1a7f6244d747",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "3d3bee87c4146cabe72a3c99ce3cf16f3ca882edec645cdb287b6e2700e2f8d5",
+      "next": "adfd47e943ecf5c4ec4c8dbeb067dfbb1658acf89b4873a2e3b4a8d9efb945ef"
+    },
+    {
+      "ord": 66,
+      "blockId": "b9073a5e85aa4857baf7bacb59e42dd4",
+      "fp64": "cf2598bf698e5da2",
+      "normHash": "adfd47e943ecf5c4ec4c8dbeb067dfbb1658acf89b4873a2e3b4a8d9efb945ef",
+      "kind": "h4",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "8b1c154738898d69e795adb618749569ffd5f8a3344f49d3f59f1a7f6244d747",
+      "next": "4370abb999ed777c4e44f03d31d8347593c2710ad70b9e446299b274239c5025"
+    },
+    {
+      "ord": 67,
+      "blockId": "2c9222acc797b14d52626997038e32ba",
+      "fp64": "bdcfafdfe3f9daaf",
+      "normHash": "4370abb999ed777c4e44f03d31d8347593c2710ad70b9e446299b274239c5025",
+      "kind": "h4",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "adfd47e943ecf5c4ec4c8dbeb067dfbb1658acf89b4873a2e3b4a8d9efb945ef",
+      "next": "6420da2ba7d00cb1c59d125cd373b02ca0c0735ee46c5d49a4e9e2cc8983653d"
+    },
+    {
+      "ord": 68,
+      "blockId": "83812825d3bcfd924ca0d64893b4854f",
+      "fp64": "bc65f0161d24716e",
+      "normHash": "6420da2ba7d00cb1c59d125cd373b02ca0c0735ee46c5d49a4e9e2cc8983653d",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "4370abb999ed777c4e44f03d31d8347593c2710ad70b9e446299b274239c5025",
+      "next": "def5353eaa0bc07256bdf074fd2e92fea4dd3ea40bef0b8a8b65a539a1600cab"
+    },
+    {
+      "ord": 69,
+      "blockId": "e253d725cd78484a9afeca67302264f6",
+      "fp64": "b99dc07c007559eb",
+      "normHash": "def5353eaa0bc07256bdf074fd2e92fea4dd3ea40bef0b8a8b65a539a1600cab",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "6420da2ba7d00cb1c59d125cd373b02ca0c0735ee46c5d49a4e9e2cc8983653d",
+      "next": "43326cc6dc63f9f0bc71357b7ce4dc4d9c2ec8ebd94b93b08d36b43fa1b0f53f"
+    },
+    {
+      "ord": 70,
+      "blockId": "6d2732c5bd451015038dbb4832b8ac2b",
+      "fp64": "7899e0a5b96dd751",
+      "normHash": "43326cc6dc63f9f0bc71357b7ce4dc4d9c2ec8ebd94b93b08d36b43fa1b0f53f",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "def5353eaa0bc07256bdf074fd2e92fea4dd3ea40bef0b8a8b65a539a1600cab",
+      "next": "fe150be8995764fb9222c74a2e8f48710a6c0e04b0832c95ac9ae993299ca637"
+    },
+    {
+      "ord": 71,
+      "blockId": "94ea2a5a6fef495892e0694193a05e8d",
+      "fp64": "25ffffde7f3f783f",
+      "normHash": "fe150be8995764fb9222c74a2e8f48710a6c0e04b0832c95ac9ae993299ca637",
+      "kind": "page",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "43326cc6dc63f9f0bc71357b7ce4dc4d9c2ec8ebd94b93b08d36b43fa1b0f53f",
+      "next": "482c9b9e7b084b2a395f70d69e2c3c54b4f6e0f37d8491727005f4ed337dcb16"
+    },
+    {
+      "ord": 72,
+      "blockId": "a999cfbf366b3c137eac2b8b7b9024bb",
+      "fp64": "788e745155555620",
+      "normHash": "482c9b9e7b084b2a395f70d69e2c3c54b4f6e0f37d8491727005f4ed337dcb16",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "fe150be8995764fb9222c74a2e8f48710a6c0e04b0832c95ac9ae993299ca637",
+      "next": "7407c3509fc3b26605f3afb684fb1a5239474809cbe5d3058f8e5eeb111054f2"
+    },
+    {
+      "ord": 73,
+      "blockId": "1b7b4fe53abe384afde5575cfbab8d3c",
+      "fp64": "ef9f3ffbb3be57aa",
+      "normHash": "7407c3509fc3b26605f3afb684fb1a5239474809cbe5d3058f8e5eeb111054f2",
+      "kind": "h4",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "482c9b9e7b084b2a395f70d69e2c3c54b4f6e0f37d8491727005f4ed337dcb16",
+      "next": "7b436ffbb5eb1f70658078a7526512afdb54c4b61fec1f0e885cfc4f54a711ba"
+    },
+    {
+      "ord": 74,
+      "blockId": "3a366fc347f893e57a637b12ab5fd56e",
+      "fp64": "ef39605a65c4fa93",
+      "normHash": "7b436ffbb5eb1f70658078a7526512afdb54c4b61fec1f0e885cfc4f54a711ba",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "7407c3509fc3b26605f3afb684fb1a5239474809cbe5d3058f8e5eeb111054f2",
+      "next": "95d4ea4d5ee9100c34068c45ea260f90a1afe5330ab6fbfac5b4b2ca84ca4053"
+    },
+    {
+      "ord": 75,
+      "blockId": "a87a24a25b5b646f56731375e09d3a5b",
+      "fp64": "ff6d7cd31f54fe9f",
+      "normHash": "95d4ea4d5ee9100c34068c45ea260f90a1afe5330ab6fbfac5b4b2ca84ca4053",
+      "kind": "h4",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "7b436ffbb5eb1f70658078a7526512afdb54c4b61fec1f0e885cfc4f54a711ba",
+      "next": "6f884404474826d42db0c9f86b036aa1f4aa5f9c7c3a074819921d033e08de43"
+    },
+    {
+      "ord": 76,
+      "blockId": "9d116602a5160cf36fe43072b3dc086c",
+      "fp64": "d5dba89b777caa16",
+      "normHash": "6f884404474826d42db0c9f86b036aa1f4aa5f9c7c3a074819921d033e08de43",
+      "kind": "h4",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "95d4ea4d5ee9100c34068c45ea260f90a1afe5330ab6fbfac5b4b2ca84ca4053",
+      "next": "04e074ad6362fb8580593e0f3ed21733813889874c0116f7d829ed21d2019445"
+    },
+    {
+      "ord": 77,
+      "blockId": "fae8efa215abdb170424f9a9f931abe3",
+      "fp64": "7184fd587f78dd50",
+      "normHash": "04e074ad6362fb8580593e0f3ed21733813889874c0116f7d829ed21d2019445",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "6f884404474826d42db0c9f86b036aa1f4aa5f9c7c3a074819921d033e08de43",
+      "next": "985d6c60f40d9e72282a5520062917a28507a6dd743ae5229d5822712ce43441"
+    },
+    {
+      "ord": 78,
+      "blockId": "18de2a06c034e848c9f5dd128e806de5",
+      "fp64": "184a6843bd5d4c51",
+      "normHash": "985d6c60f40d9e72282a5520062917a28507a6dd743ae5229d5822712ce43441",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "04e074ad6362fb8580593e0f3ed21733813889874c0116f7d829ed21d2019445",
+      "next": "3ac3fae37d9c27a37c8eda6b5620e12928e9e38c82616303a0543fa19a9fc15e"
+    },
+    {
+      "ord": 79,
+      "blockId": "67f53732905bba8b8bea88bb8e966d6a",
+      "fp64": "addff3be5ffd647e",
+      "normHash": "3ac3fae37d9c27a37c8eda6b5620e12928e9e38c82616303a0543fa19a9fc15e",
+      "kind": "page",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "985d6c60f40d9e72282a5520062917a28507a6dd743ae5229d5822712ce43441",
+      "next": "4fbe161e1fe3807b2ae436e72ce7706a3bffc22909506abb0b8aca94860ee3b5"
+    },
+    {
+      "ord": 80,
+      "blockId": "f43e72ca0dee5f27cb658eae992b66cb",
+      "fp64": "528e3c5235df7ddb",
+      "normHash": "4fbe161e1fe3807b2ae436e72ce7706a3bffc22909506abb0b8aca94860ee3b5",
+      "kind": "h4",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "3ac3fae37d9c27a37c8eda6b5620e12928e9e38c82616303a0543fa19a9fc15e",
+      "next": "4edbe503871427e359b91a1dd3da522b62d4bb33e2023cf372d6b8160a26b4c0"
+    },
+    {
+      "ord": 81,
+      "blockId": "69c37ea25034c87a9024f70b419038d5",
+      "fp64": "55deb65c3d597fac",
+      "normHash": "4edbe503871427e359b91a1dd3da522b62d4bb33e2023cf372d6b8160a26b4c0",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "4fbe161e1fe3807b2ae436e72ce7706a3bffc22909506abb0b8aca94860ee3b5",
+      "next": "b86528268b1297b9d62e381be6614f8e3cf94c97ab0429ab7903d3c178aadc47"
+    },
+    {
+      "ord": 82,
+      "blockId": "7e816e796ec383e94c74316d3e08b424",
+      "fp64": "8938753b0c507316",
+      "normHash": "b86528268b1297b9d62e381be6614f8e3cf94c97ab0429ab7903d3c178aadc47",
+      "kind": "h4",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "4edbe503871427e359b91a1dd3da522b62d4bb33e2023cf372d6b8160a26b4c0",
+      "next": "216efe979f1d0a274b0a014a90e3c8c316a46819034fe78e7b7bfce123661d05"
+    },
+    {
+      "ord": 83,
+      "blockId": "cc304037c06bc6f8c3e2a03e07f8861f",
+      "fp64": "fcf5381839b57fcb",
+      "normHash": "216efe979f1d0a274b0a014a90e3c8c316a46819034fe78e7b7bfce123661d05",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "b86528268b1297b9d62e381be6614f8e3cf94c97ab0429ab7903d3c178aadc47",
+      "next": "48c1737a3e5a73d1392f0dec222a60f5826c47c21c35d637d43a0ca5e946a52d"
+    },
+    {
+      "ord": 84,
+      "blockId": "620f4be98ece9d12ee24d8a3f9c2c2c6",
+      "fp64": "4d7a3d9a3b74fa1e",
+      "normHash": "48c1737a3e5a73d1392f0dec222a60f5826c47c21c35d637d43a0ca5e946a52d",
+      "kind": "h4",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "216efe979f1d0a274b0a014a90e3c8c316a46819034fe78e7b7bfce123661d05",
+      "next": "210fe9bbc1a71c951e9ac3ea4f64e2dbf6f7cfe5ce4045889ed4efd21e657d0b"
+    },
+    {
+      "ord": 85,
+      "blockId": "13e349bd8b113bc98563eaee10a90d6d",
+      "fp64": "c01062dd1e6fdf5a",
+      "normHash": "210fe9bbc1a71c951e9ac3ea4f64e2dbf6f7cfe5ce4045889ed4efd21e657d0b",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "48c1737a3e5a73d1392f0dec222a60f5826c47c21c35d637d43a0ca5e946a52d",
+      "next": "569711709391054b92668075bee86565464e1576b997214f24954db04afc5fb4"
+    },
+    {
+      "ord": 86,
+      "blockId": "596697db25167dd18e465491f9bebce3",
+      "fp64": "c9b21c3b53f29c69",
+      "normHash": "569711709391054b92668075bee86565464e1576b997214f24954db04afc5fb4",
+      "kind": "h4",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "210fe9bbc1a71c951e9ac3ea4f64e2dbf6f7cfe5ce4045889ed4efd21e657d0b",
+      "next": "a951d2761b9ddbf62b1f15378b17cbab9c6ea51a4fcf751fe42d696ee8838b8a"
+    },
+    {
+      "ord": 87,
+      "blockId": "acf443989aa4d2f0e70da2a81aaf8a37",
+      "fp64": "3075e4559d5b597c",
+      "normHash": "a951d2761b9ddbf62b1f15378b17cbab9c6ea51a4fcf751fe42d696ee8838b8a",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "569711709391054b92668075bee86565464e1576b997214f24954db04afc5fb4",
+      "next": "a2fc728aa9ebba6696c260c73dac55c98a8b4fead7d68b340f01a140c1288f1a"
+    },
+    {
+      "ord": 88,
+      "blockId": "04fd8c988e6a6d7dd3d201ea23b0eb39",
+      "fp64": "594c60bf375d5e90",
+      "normHash": "a2fc728aa9ebba6696c260c73dac55c98a8b4fead7d68b340f01a140c1288f1a",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "a951d2761b9ddbf62b1f15378b17cbab9c6ea51a4fcf751fe42d696ee8838b8a",
+      "next": "4581d04ab7938e775963f37eee16e60c2f3000bc0c978bbdf46ccb9c9cb67ee5"
+    },
+    {
+      "ord": 89,
+      "blockId": "e3c7badf2ea878a9f1ba64395f854b32",
+      "fp64": "f7dffbbe7e3be87f",
+      "normHash": "4581d04ab7938e775963f37eee16e60c2f3000bc0c978bbdf46ccb9c9cb67ee5",
+      "kind": "page",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "a2fc728aa9ebba6696c260c73dac55c98a8b4fead7d68b340f01a140c1288f1a",
+      "next": "4ffb0d84b868d435d1f44a38f2670bb16a8a79ca69e4d2c904ea34a6692a2725"
+    },
+    {
+      "ord": 90,
+      "blockId": "54c2f35d1bde7bad5e3cebfa882bf0f4",
+      "fp64": "3d71e2d65564527c",
+      "normHash": "4ffb0d84b868d435d1f44a38f2670bb16a8a79ca69e4d2c904ea34a6692a2725",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "4581d04ab7938e775963f37eee16e60c2f3000bc0c978bbdf46ccb9c9cb67ee5",
+      "next": "c62cc4592698b844c4a369586bfafcb9d63d0ff905c936ebb5f96e74e3f2814c"
+    },
+    {
+      "ord": 91,
+      "blockId": "2a61b9323401aca575947ee5841ffd4d",
+      "fp64": "535a06d6ad3c2d54",
+      "normHash": "c62cc4592698b844c4a369586bfafcb9d63d0ff905c936ebb5f96e74e3f2814c",
+      "kind": "h4",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "4ffb0d84b868d435d1f44a38f2670bb16a8a79ca69e4d2c904ea34a6692a2725",
+      "next": "9f2e34cd8162e640c649d8ef5f2ee847baca0fbeb08eeffae0eacd09ac2a440a"
+    },
+    {
+      "ord": 92,
+      "blockId": "664bac819d76b1b0910f882abd580d9a",
+      "fp64": "6e53e5d23c79f754",
+      "normHash": "9f2e34cd8162e640c649d8ef5f2ee847baca0fbeb08eeffae0eacd09ac2a440a",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "c62cc4592698b844c4a369586bfafcb9d63d0ff905c936ebb5f96e74e3f2814c",
+      "next": "7844536699310fe9ef2b15bc66f12b0f1bec25ac20408db0ba1e5059066907c2"
+    },
+    {
+      "ord": 93,
+      "blockId": "d8ee3f5b3d24d7bc231e6653aa793cc5",
+      "fp64": "5d48d76a11f4d293",
+      "normHash": "7844536699310fe9ef2b15bc66f12b0f1bec25ac20408db0ba1e5059066907c2",
+      "kind": "h4",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "9f2e34cd8162e640c649d8ef5f2ee847baca0fbeb08eeffae0eacd09ac2a440a",
+      "next": "e127f80d7cdb661d6d5668e4d8fe2bd3943b73125e38d0dc8c2f2358d1edfc32"
+    },
+    {
+      "ord": 94,
+      "blockId": "8888873fff31671ead6e8212d9c8806c",
+      "fp64": "53a4de615c4ef958",
+      "normHash": "e127f80d7cdb661d6d5668e4d8fe2bd3943b73125e38d0dc8c2f2358d1edfc32",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "7844536699310fe9ef2b15bc66f12b0f1bec25ac20408db0ba1e5059066907c2",
+      "next": "81fc1abff5f9790b04066e93335aad32702037a9853d9fcd303f0e181c6009b8"
+    },
+    {
+      "ord": 95,
+      "blockId": "6c50eb0f772667a8321db645bea238b8",
+      "fp64": "957bada8db7fbfce",
+      "normHash": "81fc1abff5f9790b04066e93335aad32702037a9853d9fcd303f0e181c6009b8",
+      "kind": "h4",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "e127f80d7cdb661d6d5668e4d8fe2bd3943b73125e38d0dc8c2f2358d1edfc32",
+      "next": "49fbc5c70baadfab8028981754e26ea0f0eefa8fddcb510c9ad1abc2d09bf1aa"
+    },
+    {
+      "ord": 96,
+      "blockId": "068559024486b0bda88561ba8ca7cb4b",
+      "fp64": "15014c189d1d5ddc",
+      "normHash": "49fbc5c70baadfab8028981754e26ea0f0eefa8fddcb510c9ad1abc2d09bf1aa",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "81fc1abff5f9790b04066e93335aad32702037a9853d9fcd303f0e181c6009b8",
+      "next": "aeff93e0e7e70c9ed1f3a91bf4e8519af324ab56f758f5a9e7a8fcf84795e5e2"
+    },
+    {
+      "ord": 97,
+      "blockId": "081e44f48c9c10c38f6e4d22d58b6bea",
+      "fp64": "5d5861b25d7d0c16",
+      "normHash": "aeff93e0e7e70c9ed1f3a91bf4e8519af324ab56f758f5a9e7a8fcf84795e5e2",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "49fbc5c70baadfab8028981754e26ea0f0eefa8fddcb510c9ad1abc2d09bf1aa",
+      "next": "e5b0927ac6fbd7b43a3d3a27b287cf13c6902d415a651b612b87486d50f79fa4"
+    },
+    {
+      "ord": 98,
+      "blockId": "bcfd244ccda4511648cb7ccf808d624f",
+      "fp64": "35ffffdf7bf5717f",
+      "normHash": "e5b0927ac6fbd7b43a3d3a27b287cf13c6902d415a651b612b87486d50f79fa4",
+      "kind": "page",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "aeff93e0e7e70c9ed1f3a91bf4e8519af324ab56f758f5a9e7a8fcf84795e5e2",
+      "next": "f1cd462c58b911f84ea95fc1de2f1ce1071c3d8212378c2bc07b99620654c9ae"
+    },
+    {
+      "ord": 99,
+      "blockId": "b9bd28769fb31e73a9390709b5550249",
+      "fp64": "cd866e242d397a2c",
+      "normHash": "f1cd462c58b911f84ea95fc1de2f1ce1071c3d8212378c2bc07b99620654c9ae",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "e5b0927ac6fbd7b43a3d3a27b287cf13c6902d415a651b612b87486d50f79fa4",
+      "next": "ae442ea812be6a25e3cf558ef72ee6e90b1fb5dd9645755808dc9feef9ca6eb5"
+    },
+    {
+      "ord": 100,
+      "blockId": "831708d1dcaccbc5a3c482a0c929eab5",
+      "fp64": "9f4c10f25bdd1e9c",
+      "normHash": "ae442ea812be6a25e3cf558ef72ee6e90b1fb5dd9645755808dc9feef9ca6eb5",
+      "kind": "h4",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "f1cd462c58b911f84ea95fc1de2f1ce1071c3d8212378c2bc07b99620654c9ae",
+      "next": "b4702dd12b0d65ea74871ac1a413ad49c7ae334ade3eff7d7dd510592d5903e5"
+    },
+    {
+      "ord": 101,
+      "blockId": "aec9c3c696f18c02d0098b1bd5630f01",
+      "fp64": "5fdc567f1ff77fce",
+      "normHash": "b4702dd12b0d65ea74871ac1a413ad49c7ae334ade3eff7d7dd510592d5903e5",
+      "kind": "h4",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "ae442ea812be6a25e3cf558ef72ee6e90b1fb5dd9645755808dc9feef9ca6eb5",
+      "next": "113f1a3e79ceaa9e599a1e6af4de397cee82b3323bef9edd3fa327ce1d406403"
+    },
+    {
+      "ord": 102,
+      "blockId": "1e5d326eb08eceaf1899c50f90540c5f",
+      "fp64": "cdb4ee2aea69cc6a",
+      "normHash": "113f1a3e79ceaa9e599a1e6af4de397cee82b3323bef9edd3fa327ce1d406403",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "b4702dd12b0d65ea74871ac1a413ad49c7ae334ade3eff7d7dd510592d5903e5",
+      "next": "1b3c9becd1a0f2b646e1b9830e3caca7a12f86f0e1b5859f2d1623a105c93f02"
+    },
+    {
+      "ord": 103,
+      "blockId": "35685dba80ed5548f8c300dd163905d7",
+      "fp64": "24a72484b5c77d9b",
+      "normHash": "1b3c9becd1a0f2b646e1b9830e3caca7a12f86f0e1b5859f2d1623a105c93f02",
+      "kind": "h4",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "113f1a3e79ceaa9e599a1e6af4de397cee82b3323bef9edd3fa327ce1d406403",
+      "next": "113f1a3e79ceaa9e599a1e6af4de397cee82b3323bef9edd3fa327ce1d406403"
+    },
+    {
+      "ord": 104,
+      "blockId": "9ab60064446f11b22feb974515640c16",
+      "fp64": "cdb4ee2aea69cc6a",
+      "normHash": "113f1a3e79ceaa9e599a1e6af4de397cee82b3323bef9edd3fa327ce1d406403",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "1b3c9becd1a0f2b646e1b9830e3caca7a12f86f0e1b5859f2d1623a105c93f02",
+      "next": "da53eac1d08e0a6f8d609eca0e05be006fb6f6f2271dc5fcfd1fe05063160601"
+    },
+    {
+      "ord": 105,
+      "blockId": "b2e7ed7857a3c838623feefe5b4e79f5",
+      "fp64": "ddfd6dccdf7fff57",
+      "normHash": "da53eac1d08e0a6f8d609eca0e05be006fb6f6f2271dc5fcfd1fe05063160601",
+      "kind": "h4",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "113f1a3e79ceaa9e599a1e6af4de397cee82b3323bef9edd3fa327ce1d406403",
+      "next": "286a4ff7df004b84f0b208ec800f642177ca1699797b92d64de94072bad697a4"
+    },
+    {
+      "ord": 106,
+      "blockId": "c61591596fbed8d233878a6677ec0be2",
+      "fp64": "51c924f7716d8f62",
+      "normHash": "286a4ff7df004b84f0b208ec800f642177ca1699797b92d64de94072bad697a4",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "da53eac1d08e0a6f8d609eca0e05be006fb6f6f2271dc5fcfd1fe05063160601",
+      "next": "86960b3306f378633aa50118d85d4bdc2cf9e71c264692563675c08db317ca2c"
+    },
+    {
+      "ord": 107,
+      "blockId": "35c007b26ced9fb79cd527e05deb1197",
+      "fp64": "bdde30e245c4099a",
+      "normHash": "86960b3306f378633aa50118d85d4bdc2cf9e71c264692563675c08db317ca2c",
+      "kind": "h4",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "286a4ff7df004b84f0b208ec800f642177ca1699797b92d64de94072bad697a4",
+      "next": "5d9d007451f9b9f64d92ac409d53a0c3c023127f2d5022d755d21f26862015b2"
+    },
+    {
+      "ord": 108,
+      "blockId": "6eee95af916b046e449d6a1efcae8323",
+      "fp64": "7c0860aabccd7d53",
+      "normHash": "5d9d007451f9b9f64d92ac409d53a0c3c023127f2d5022d755d21f26862015b2",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "86960b3306f378633aa50118d85d4bdc2cf9e71c264692563675c08db317ca2c",
+      "next": "e2d8ba63486eedccb2887da1e0a65c79c8255c28e5d1cab05ba12ceb9f1c0ba2"
+    },
+    {
+      "ord": 109,
+      "blockId": "371afc996edcaf14ccc59561abd2f951",
+      "fp64": "59e45daefafefadf",
+      "normHash": "e2d8ba63486eedccb2887da1e0a65c79c8255c28e5d1cab05ba12ceb9f1c0ba2",
+      "kind": "h3",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "5d9d007451f9b9f64d92ac409d53a0c3c023127f2d5022d755d21f26862015b2",
+      "next": "56601e042c562dea00428daaf7292c33854e5b189e0eead5b15c59368f7b8579"
+    },
+    {
+      "ord": 110,
+      "blockId": "20d64862846a8a4c17bdb77671a255fe",
+      "fp64": "5dedc8539d35ba6e",
+      "normHash": "56601e042c562dea00428daaf7292c33854e5b189e0eead5b15c59368f7b8579",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "e2d8ba63486eedccb2887da1e0a65c79c8255c28e5d1cab05ba12ceb9f1c0ba2",
+      "next": "27effbb03ba447459ba32ee1341dfc09f4b02118ddf866223829931ce36b6e73"
+    },
+    {
+      "ord": 111,
+      "blockId": "cdae6390fcbfc55c56d83b050d10da28",
+      "fp64": "d14c78d21d7d9e16",
+      "normHash": "27effbb03ba447459ba32ee1341dfc09f4b02118ddf866223829931ce36b6e73",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "56601e042c562dea00428daaf7292c33854e5b189e0eead5b15c59368f7b8579",
+      "next": "f55481b69318e1c851e57306a7f55661daf11dd52e307451f386b3d8d15d48b2"
+    },
+    {
+      "ord": 112,
+      "blockId": "7d531ea2ad5d14c92a4d8fd0a7b6d1d2",
+      "fp64": "67dfff9e5fb3fb3f",
+      "normHash": "f55481b69318e1c851e57306a7f55661daf11dd52e307451f386b3d8d15d48b2",
+      "kind": "page",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "27effbb03ba447459ba32ee1341dfc09f4b02118ddf866223829931ce36b6e73",
+      "next": "6dc977ceab99c942e18b355ef9d3b3dc41df8cc2ba31bedc86e51960c12c953d"
+    },
+    {
+      "ord": 113,
+      "blockId": "d6dc6d26b6e6bce1ce3aee40aa190637",
+      "fp64": "354ce85755ae33fe",
+      "normHash": "6dc977ceab99c942e18b355ef9d3b3dc41df8cc2ba31bedc86e51960c12c953d",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "f55481b69318e1c851e57306a7f55661daf11dd52e307451f386b3d8d15d48b2",
+      "next": "a90f965750f12ddd8aef53be16d44165e6a6cf9b99830e1600afdaf217141dd3"
+    },
+    {
+      "ord": 114,
+      "blockId": "81ab2188cb82b26a985635d0c3547e11",
+      "fp64": "e75f4669d7ebcb79",
+      "normHash": "a90f965750f12ddd8aef53be16d44165e6a6cf9b99830e1600afdaf217141dd3",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "6dc977ceab99c942e18b355ef9d3b3dc41df8cc2ba31bedc86e51960c12c953d",
+      "next": "7724fa61e1b9a12fa639bfd9bd70512ced67c581a6bd59969004ef7aede78504"
+    },
+    {
+      "ord": 115,
+      "blockId": "3dc6eebc7c2a0f20a0084ad64fb59f41",
+      "fp64": "fde67f979ff7fe8f",
+      "normHash": "7724fa61e1b9a12fa639bfd9bd70512ced67c581a6bd59969004ef7aede78504",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "a90f965750f12ddd8aef53be16d44165e6a6cf9b99830e1600afdaf217141dd3",
+      "next": "b20b59f804ee4a3e4bccae07284082a9849ec50e9cec748eec1c841401201524"
+    },
+    {
+      "ord": 116,
+      "blockId": "f0093c43431c02af1d4e58d4bbd6a780",
+      "fp64": "fd7febff1fcfaff5",
+      "normHash": "b20b59f804ee4a3e4bccae07284082a9849ec50e9cec748eec1c841401201524",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "7724fa61e1b9a12fa639bfd9bd70512ced67c581a6bd59969004ef7aede78504",
+      "next": "7a0f7810ef9fc79b672cc22895491f266cd017fa686220c0cbe0a0d5d4abde23"
+    },
+    {
+      "ord": 117,
+      "blockId": "3dd95352b24d027f0255e657d34757c0",
+      "fp64": "7eeefe7bff77fd6d",
+      "normHash": "7a0f7810ef9fc79b672cc22895491f266cd017fa686220c0cbe0a0d5d4abde23",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "b20b59f804ee4a3e4bccae07284082a9849ec50e9cec748eec1c841401201524",
+      "next": "3bb5025a29c4a93d01454f4640e77f201dbbaf129842e2036949396b5fefbab8"
+    },
+    {
+      "ord": 118,
+      "blockId": "8a6393da0be0f7ffcca069310c702bc4",
+      "fp64": "bc4ee9f84f8e1db9",
+      "normHash": "3bb5025a29c4a93d01454f4640e77f201dbbaf129842e2036949396b5fefbab8",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "7a0f7810ef9fc79b672cc22895491f266cd017fa686220c0cbe0a0d5d4abde23",
+      "next": "91ab344e4dea6e1f0a9514ff10ef668276784e36c59eca191aa0b6ef0964b946"
+    },
+    {
+      "ord": 119,
+      "blockId": "74a442faa338d94a194b395140cbd378",
+      "fp64": "74ab8044f8fb4b76",
+      "normHash": "91ab344e4dea6e1f0a9514ff10ef668276784e36c59eca191aa0b6ef0964b946",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "3bb5025a29c4a93d01454f4640e77f201dbbaf129842e2036949396b5fefbab8",
+      "next": "1635e1fef4375d563e5dc7d74a451963776be6dfc1d346e4ed4559cdccbf99bd"
+    },
+    {
+      "ord": 120,
+      "blockId": "7cc7228a7be63894b7886547cfbf0695",
+      "fp64": "a525940bc0dc9cb0",
+      "normHash": "1635e1fef4375d563e5dc7d74a451963776be6dfc1d346e4ed4559cdccbf99bd",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "91ab344e4dea6e1f0a9514ff10ef668276784e36c59eca191aa0b6ef0964b946",
+      "next": "dd2edba7002533f4e676d93252ff230610570beb32b716ba24d4d5f90c5a66b5"
+    },
+    {
+      "ord": 121,
+      "blockId": "27af596582580c9968273f73fcba4520",
+      "fp64": "b961d7d5a7a8fdbb",
+      "normHash": "dd2edba7002533f4e676d93252ff230610570beb32b716ba24d4d5f90c5a66b5",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "1635e1fef4375d563e5dc7d74a451963776be6dfc1d346e4ed4559cdccbf99bd",
+      "next": "79f100b7a55ae48d4fd198c429087c74a0f52ebf11ed0551e33219d455811e57"
+    },
+    {
+      "ord": 122,
+      "blockId": "633eaf7f726bfe029477d788e385c9b1",
+      "fp64": "b76e887b41ae8ffe",
+      "normHash": "79f100b7a55ae48d4fd198c429087c74a0f52ebf11ed0551e33219d455811e57",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "dd2edba7002533f4e676d93252ff230610570beb32b716ba24d4d5f90c5a66b5",
+      "next": "8066fbbf0de7adde5edf146bd9c763a18a0fe834102ca1147e0a11ec45fb4d3f"
+    },
+    {
+      "ord": 123,
+      "blockId": "859280a78461983f6f9ecfbc9355c901",
+      "fp64": "a7f1f85d3177df5c",
+      "normHash": "8066fbbf0de7adde5edf146bd9c763a18a0fe834102ca1147e0a11ec45fb4d3f",
+      "kind": "li",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "79f100b7a55ae48d4fd198c429087c74a0f52ebf11ed0551e33219d455811e57",
+      "next": "96d0099a7a9967675244d5504bfca9a5e8c77ef6fc02e0797df0c32ea103d709"
+    },
+    {
+      "ord": 124,
+      "blockId": "6d4a697143e51d1d08c7691568857593",
+      "fp64": "ba7d36de9bf777df",
+      "normHash": "96d0099a7a9967675244d5504bfca9a5e8c77ef6fc02e0797df0c32ea103d709",
+      "kind": "li",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "8066fbbf0de7adde5edf146bd9c763a18a0fe834102ca1147e0a11ec45fb4d3f",
+      "next": "d3e7ae9cb48ec4e7105222d799fba8e65762f79f6daa10886477992df0e7a419"
+    },
+    {
+      "ord": 125,
+      "blockId": "544df573f8ea1fa7199bcc978bb266c4",
+      "fp64": "dfa47f86dfbebed7",
+      "normHash": "d3e7ae9cb48ec4e7105222d799fba8e65762f79f6daa10886477992df0e7a419",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "96d0099a7a9967675244d5504bfca9a5e8c77ef6fc02e0797df0c32ea103d709",
+      "next": "122154c657a599d0961ef9216b7d46bbf37c641e65266dba8eae6d5af84b8576"
+    },
+    {
+      "ord": 126,
+      "blockId": "864b03e76ee9ed69d8aade031e0d603f",
+      "fp64": "df2d96ffe1caddf3",
+      "normHash": "122154c657a599d0961ef9216b7d46bbf37c641e65266dba8eae6d5af84b8576",
+      "kind": "h4",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "d3e7ae9cb48ec4e7105222d799fba8e65762f79f6daa10886477992df0e7a419",
+      "next": "4370abb999ed777c4e44f03d31d8347593c2710ad70b9e446299b274239c5025"
+    },
+    {
+      "ord": 127,
+      "blockId": "f7ea03a0194586a740a0054c145b3553",
+      "fp64": "bdcfafdfe3f9daaf",
+      "normHash": "4370abb999ed777c4e44f03d31d8347593c2710ad70b9e446299b274239c5025",
+      "kind": "h4",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "122154c657a599d0961ef9216b7d46bbf37c641e65266dba8eae6d5af84b8576",
+      "next": "de21f5ab33cadc01fe3e9b9502270ce0071531e9293610106c50e8a6cede71d4"
+    },
+    {
+      "ord": 128,
+      "blockId": "5a9d4106b287777ed47f51f1aeeef1a6",
+      "fp64": "7c8ec85f3f75587a",
+      "normHash": "de21f5ab33cadc01fe3e9b9502270ce0071531e9293610106c50e8a6cede71d4",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "4370abb999ed777c4e44f03d31d8347593c2710ad70b9e446299b274239c5025",
+      "next": "f91253d9a9bd7692a80e7bd93fd016a3b06d28ef311c1adf36c4ab7faf3f1f9a"
+    },
+    {
+      "ord": 129,
+      "blockId": "dbb7012b57227038f5fee88b4816c5a6",
+      "fp64": "588d60d61d67bede",
+      "normHash": "f91253d9a9bd7692a80e7bd93fd016a3b06d28ef311c1adf36c4ab7faf3f1f9a",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "de21f5ab33cadc01fe3e9b9502270ce0071531e9293610106c50e8a6cede71d4",
+      "next": "cf82f37a0d9fa7db967582d57875f1098daf08f4fb5688263e59d6c97d092c67"
+    },
+    {
+      "ord": 130,
+      "blockId": "74ccdaf97013434ab1fe7532559d5552",
+      "fp64": "6ddff7fadbb967b7",
+      "normHash": "cf82f37a0d9fa7db967582d57875f1098daf08f4fb5688263e59d6c97d092c67",
+      "kind": "page",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "f91253d9a9bd7692a80e7bd93fd016a3b06d28ef311c1adf36c4ab7faf3f1f9a",
+      "next": "ea4a8bda46aa882d1aafd1ba220ad1d41b6caca65a372ed368e2d07f6c7023d8"
+    },
+    {
+      "ord": 131,
+      "blockId": "0ae13f97e6384715af9d1e103b6c5bca",
+      "fp64": "f8bc51180475cd91",
+      "normHash": "ea4a8bda46aa882d1aafd1ba220ad1d41b6caca65a372ed368e2d07f6c7023d8",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "cf82f37a0d9fa7db967582d57875f1098daf08f4fb5688263e59d6c97d092c67",
+      "next": "d2900ad8a031420bc8980a2c69323534fd1534636406a7004be8eba9661ce906"
+    },
+    {
+      "ord": 132,
+      "blockId": "20f05c0a63b8bfe08389db547c2de148",
+      "fp64": "ef9f3ffbb3be57aa",
+      "normHash": "d2900ad8a031420bc8980a2c69323534fd1534636406a7004be8eba9661ce906",
+      "kind": "h4",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "ea4a8bda46aa882d1aafd1ba220ad1d41b6caca65a372ed368e2d07f6c7023d8",
+      "next": "1297db28452a42e71644462552214460e66880e205ac2bb2c8bb3f4fea6d71bf"
+    },
+    {
+      "ord": 133,
+      "blockId": "bcb4547890ebdfde9bea7ed4e72a97f3",
+      "fp64": "5f2d28349dbf1e8c",
+      "normHash": "1297db28452a42e71644462552214460e66880e205ac2bb2c8bb3f4fea6d71bf",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "d2900ad8a031420bc8980a2c69323534fd1534636406a7004be8eba9661ce906",
+      "next": "7413061c27cd4c33ee259abe0572623891a586a23006f24437072608ddb5292d"
+    },
+    {
+      "ord": 134,
+      "blockId": "f699b422e19de2806df13bd612ca922f",
+      "fp64": "edee7de7799cfaff",
+      "normHash": "7413061c27cd4c33ee259abe0572623891a586a23006f24437072608ddb5292d",
+      "kind": "h3",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "1297db28452a42e71644462552214460e66880e205ac2bb2c8bb3f4fea6d71bf",
+      "next": "e1487312c1d6c13113e3ee39dff799bfba8c9487a324e4723393f2ad84dd2184"
+    },
+    {
+      "ord": 135,
+      "blockId": "508da2cc616892f7c4dcdd6ba3862e41",
+      "fp64": "dda6f4565d20707a",
+      "normHash": "e1487312c1d6c13113e3ee39dff799bfba8c9487a324e4723393f2ad84dd2184",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "7413061c27cd4c33ee259abe0572623891a586a23006f24437072608ddb5292d",
+      "next": "24467a221dd3e73f2d8e7c61a1bdb00b5fd31e02642517cb62cc5e8ea18b7d13"
+    },
+    {
+      "ord": 136,
+      "blockId": "c3f8109ea5ea19899c3f17c6ee5481b3",
+      "fp64": "5dfc2172dc7dbd45",
+      "normHash": "24467a221dd3e73f2d8e7c61a1bdb00b5fd31e02642517cb62cc5e8ea18b7d13",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "e1487312c1d6c13113e3ee39dff799bfba8c9487a324e4723393f2ad84dd2184",
+      "next": "9da403adc6f7f743d1c743c8c84d8aed2f84904be7b6a5259cf89154e0840dbb"
+    },
+    {
+      "ord": 137,
+      "blockId": "f671ab94179db86505a8fe247f8c415f",
+      "fp64": "77fff79a7ffb69f6",
+      "normHash": "9da403adc6f7f743d1c743c8c84d8aed2f84904be7b6a5259cf89154e0840dbb",
+      "kind": "page",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "24467a221dd3e73f2d8e7c61a1bdb00b5fd31e02642517cb62cc5e8ea18b7d13",
+      "next": "31bd25cd213f43bbfcb9d94509417b921ae9d8b5761fc25e699e5ef9dcd5a020"
+    },
+    {
+      "ord": 138,
+      "blockId": "3c0c247ed386d15b5680a7a4bd770aee",
+      "fp64": "7468f5aa734ddf77",
+      "normHash": "31bd25cd213f43bbfcb9d94509417b921ae9d8b5761fc25e699e5ef9dcd5a020",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "9da403adc6f7f743d1c743c8c84d8aed2f84904be7b6a5259cf89154e0840dbb",
+      "next": "a90f965750f12ddd8aef53be16d44165e6a6cf9b99830e1600afdaf217141dd3"
+    },
+    {
+      "ord": 139,
+      "blockId": "ff10d8acb577b64fc48d397f07db7d72",
+      "fp64": "e75f4669d7ebcb79",
+      "normHash": "a90f965750f12ddd8aef53be16d44165e6a6cf9b99830e1600afdaf217141dd3",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "31bd25cd213f43bbfcb9d94509417b921ae9d8b5761fc25e699e5ef9dcd5a020",
+      "next": "d24f5902e66087e57ad24ae260a087a9442165fdbde8d0254fe990b5981f3d7f"
+    },
+    {
+      "ord": 140,
+      "blockId": "7c2914271bdda28901e97429504a81cd",
+      "fp64": "effeedf75b54f1df",
+      "normHash": "d24f5902e66087e57ad24ae260a087a9442165fdbde8d0254fe990b5981f3d7f",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "a90f965750f12ddd8aef53be16d44165e6a6cf9b99830e1600afdaf217141dd3",
+      "next": "b20b59f804ee4a3e4bccae07284082a9849ec50e9cec748eec1c841401201524"
+    },
+    {
+      "ord": 141,
+      "blockId": "17bfbd77d344f7243c1ff7669932ada4",
+      "fp64": "fd7febff1fcfaff5",
+      "normHash": "b20b59f804ee4a3e4bccae07284082a9849ec50e9cec748eec1c841401201524",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "d24f5902e66087e57ad24ae260a087a9442165fdbde8d0254fe990b5981f3d7f",
+      "next": "7a0f7810ef9fc79b672cc22895491f266cd017fa686220c0cbe0a0d5d4abde23"
+    },
+    {
+      "ord": 142,
+      "blockId": "4388ae121d826916ae655b6622da4c37",
+      "fp64": "7eeefe7bff77fd6d",
+      "normHash": "7a0f7810ef9fc79b672cc22895491f266cd017fa686220c0cbe0a0d5d4abde23",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "b20b59f804ee4a3e4bccae07284082a9849ec50e9cec748eec1c841401201524",
+      "next": "4dbd86793eb72d07f1f640dad06c3c727a3dfb985b48e1e93d304eeac77afeca"
+    },
+    {
+      "ord": 143,
+      "blockId": "767400433403a89c40a9da736876efb0",
+      "fp64": "caae6556577b247a",
+      "normHash": "4dbd86793eb72d07f1f640dad06c3c727a3dfb985b48e1e93d304eeac77afeca",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "7a0f7810ef9fc79b672cc22895491f266cd017fa686220c0cbe0a0d5d4abde23",
+      "next": "afdb7313e5b92484c76c5195be2959c3631cc9c844a90c8fa37d3edfc9b28110"
+    },
+    {
+      "ord": 144,
+      "blockId": "8807c418b44c1484ddfe09acc270ebd1",
+      "fp64": "3fdffb9edbf77eb7",
+      "normHash": "afdb7313e5b92484c76c5195be2959c3631cc9c844a90c8fa37d3edfc9b28110",
+      "kind": "page",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "4dbd86793eb72d07f1f640dad06c3c727a3dfb985b48e1e93d304eeac77afeca",
+      "next": "357d0bfb22494a18e2fce6cff3cc3df5d08105d38843a2ac152477a6bc3d36ad"
+    },
+    {
+      "ord": 145,
+      "blockId": "713161bb9e11a9d811d602f914dd5037",
+      "fp64": "6eeb7f52604f15a3",
+      "normHash": "357d0bfb22494a18e2fce6cff3cc3df5d08105d38843a2ac152477a6bc3d36ad",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "afdb7313e5b92484c76c5195be2959c3631cc9c844a90c8fa37d3edfc9b28110",
+      "next": "2eb9924b26c8e05dd4192813b3d4146928d32c694ad35f670de19c0fa71a1f4d"
+    },
+    {
+      "ord": 146,
+      "blockId": "f4df6ebd1e1f440fce399655419eb3dc",
+      "fp64": "821f46396a80c24c",
+      "normHash": "2eb9924b26c8e05dd4192813b3d4146928d32c694ad35f670de19c0fa71a1f4d",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "357d0bfb22494a18e2fce6cff3cc3df5d08105d38843a2ac152477a6bc3d36ad",
+      "next": "2aca9b864ac6eac65f403c1f4698d7c026e8c7ae5d0eff36eb328d0c51892e0f"
+    },
+    {
+      "ord": 147,
+      "blockId": "ad8c254e58c2cd7be02e0b80a9f032f5",
+      "fp64": "cfbaf67f86f3fdd8",
+      "normHash": "2aca9b864ac6eac65f403c1f4698d7c026e8c7ae5d0eff36eb328d0c51892e0f",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "2eb9924b26c8e05dd4192813b3d4146928d32c694ad35f670de19c0fa71a1f4d",
+      "next": "1b62e4b5336ae46a964fbc22b11e52ffe08add80c110643258f51bf7d7ba1c05"
+    },
+    {
+      "ord": 148,
+      "blockId": "c6db306be68b1b4bdbe553e7a4d97f73",
+      "fp64": "56aaf77f460fe64a",
+      "normHash": "1b62e4b5336ae46a964fbc22b11e52ffe08add80c110643258f51bf7d7ba1c05",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "2aca9b864ac6eac65f403c1f4698d7c026e8c7ae5d0eff36eb328d0c51892e0f",
+      "next": "a67e35fae64345e41df57e047085a524d267a3df08971035e6735dcafd66560c"
+    },
+    {
+      "ord": 149,
+      "blockId": "33f78f1df2a64c174b7564e761bdc152",
+      "fp64": "9ebf6716616522e3",
+      "normHash": "a67e35fae64345e41df57e047085a524d267a3df08971035e6735dcafd66560c",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "1b62e4b5336ae46a964fbc22b11e52ffe08add80c110643258f51bf7d7ba1c05",
+      "next": "5814f10990803ee8b1eab056e9f44e129d96c254e222b0144bb634cb20ccfeb9"
+    },
+    {
+      "ord": 150,
+      "blockId": "c08b43090b5711a8723e1300d2b4e1fe",
+      "fp64": "64a22dc79934704b",
+      "normHash": "5814f10990803ee8b1eab056e9f44e129d96c254e222b0144bb634cb20ccfeb9",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "a67e35fae64345e41df57e047085a524d267a3df08971035e6735dcafd66560c",
+      "next": "6407748a2acb9a4d2860caf08d904755242a07a42f941166f49d6f044c8bde8f"
+    },
+    {
+      "ord": 151,
+      "blockId": "abb4f54ce712bccab1c84f4f650dbec0",
+      "fp64": "ff2dfcffffeffde3",
+      "normHash": "6407748a2acb9a4d2860caf08d904755242a07a42f941166f49d6f044c8bde8f",
+      "kind": "h4",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "5814f10990803ee8b1eab056e9f44e129d96c254e222b0144bb634cb20ccfeb9",
+      "next": "33854f04093f1bf874ed251a08d8d781a3edcd33c322b31e8ebb4023b8062fb3"
+    },
+    {
+      "ord": 152,
+      "blockId": "f9a0fb35eb9debedd6a9987148e228cf",
+      "fp64": "bdcfafdfe3f9daaf",
+      "normHash": "33854f04093f1bf874ed251a08d8d781a3edcd33c322b31e8ebb4023b8062fb3",
+      "kind": "h4",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "6407748a2acb9a4d2860caf08d904755242a07a42f941166f49d6f044c8bde8f",
+      "next": "08b7ffee3c83ef00b555c3066b0dc32af672a36b8cd48e547bbf257c0c1f4e1e"
+    },
+    {
+      "ord": 153,
+      "blockId": "ddadb9c9734b99166f44d0ae65d93d68",
+      "fp64": "fcdcc0581874537a",
+      "normHash": "08b7ffee3c83ef00b555c3066b0dc32af672a36b8cd48e547bbf257c0c1f4e1e",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "33854f04093f1bf874ed251a08d8d781a3edcd33c322b31e8ebb4023b8062fb3",
+      "next": "d2900ad8a031420bc8980a2c69323534fd1534636406a7004be8eba9661ce906"
+    },
+    {
+      "ord": 154,
+      "blockId": "bd3c7115f5a23a3d4ad36443b9ff6437",
+      "fp64": "ef9f3ffbb3be57aa",
+      "normHash": "d2900ad8a031420bc8980a2c69323534fd1534636406a7004be8eba9661ce906",
+      "kind": "h4",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "08b7ffee3c83ef00b555c3066b0dc32af672a36b8cd48e547bbf257c0c1f4e1e",
+      "next": "e201e89fe0d7a9281ad5dfad79a0073900fc6847c2a53664a7476dccb54d030a"
+    },
+    {
+      "ord": 155,
+      "blockId": "1bd4b57d3a3270a74bd62ad015764645",
+      "fp64": "4f7d6b764dcfefdf",
+      "normHash": "e201e89fe0d7a9281ad5dfad79a0073900fc6847c2a53664a7476dccb54d030a",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "d2900ad8a031420bc8980a2c69323534fd1534636406a7004be8eba9661ce906",
+      "next": "7771534e8d5f5119052e748508629851852a84048f451efb541f6f2dc2b80803"
+    },
+    {
+      "ord": 156,
+      "blockId": "6c8d39f24e27744373649f1e77ab48d8",
+      "fp64": "587c60f315759cd6",
+      "normHash": "7771534e8d5f5119052e748508629851852a84048f451efb541f6f2dc2b80803",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "e201e89fe0d7a9281ad5dfad79a0073900fc6847c2a53664a7476dccb54d030a",
+      "next": "c9d963f038c204cdec8da768bce98e69d1bf414d903aae3bc061b11205939f2a"
+    },
+    {
+      "ord": 157,
+      "blockId": "464fbd9af180e4788b5b192d72767b48",
+      "fp64": "37dff79f5f756377",
+      "normHash": "c9d963f038c204cdec8da768bce98e69d1bf414d903aae3bc061b11205939f2a",
+      "kind": "page",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "7771534e8d5f5119052e748508629851852a84048f451efb541f6f2dc2b80803",
+      "next": "293a2af0e3331c95dece6c45e0dc134877b7123674851d62a4e91e42415ab5be"
+    },
+    {
+      "ord": 158,
+      "blockId": "ae2001b2a4996b466d52c085670f4006",
+      "fp64": "5f486cebb8257d62",
+      "normHash": "293a2af0e3331c95dece6c45e0dc134877b7123674851d62a4e91e42415ab5be",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "c9d963f038c204cdec8da768bce98e69d1bf414d903aae3bc061b11205939f2a",
+      "next": "84655f4a8db37255bc3e22a1bdb1301813f65728fedb51a2cab346b34dec7207"
+    },
+    {
+      "ord": 159,
+      "blockId": "387baf88ad1a4f3e875e81fa32e0a40c",
+      "fp64": "1645906e5e77bddb",
+      "normHash": "84655f4a8db37255bc3e22a1bdb1301813f65728fedb51a2cab346b34dec7207",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "293a2af0e3331c95dece6c45e0dc134877b7123674851d62a4e91e42415ab5be",
+      "next": "125e94955c09d9ec22baef708593d7e3ef43578ac4d6e90ec1ae4d7c5f77d4a7"
+    },
+    {
+      "ord": 160,
+      "blockId": "19064f50b21a5383622a0b953eca36b6",
+      "fp64": "97c5946c3e77ba9b",
+      "normHash": "125e94955c09d9ec22baef708593d7e3ef43578ac4d6e90ec1ae4d7c5f77d4a7",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "84655f4a8db37255bc3e22a1bdb1301813f65728fedb51a2cab346b34dec7207",
+      "next": "e6c750294de3b0b331e7b207ca9aed99e583d79dc5931e01d9ff3a413ea5be30"
+    },
+    {
+      "ord": 161,
+      "blockId": "50784f123890a5701aa0cb5c7837be88",
+      "fp64": "47deed67490471da",
+      "normHash": "e6c750294de3b0b331e7b207ca9aed99e583d79dc5931e01d9ff3a413ea5be30",
+      "kind": "h4",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "125e94955c09d9ec22baef708593d7e3ef43578ac4d6e90ec1ae4d7c5f77d4a7",
+      "next": "a6d4ff5cabbc0217976e092442078bc77711a0ed1c4cbebbc2d4f34fd419ac40"
+    },
+    {
+      "ord": 162,
+      "blockId": "8fc641e4b454d91b10469de352b222fb",
+      "fp64": "feefee7b9fcfedf5",
+      "normHash": "a6d4ff5cabbc0217976e092442078bc77711a0ed1c4cbebbc2d4f34fd419ac40",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "e6c750294de3b0b331e7b207ca9aed99e583d79dc5931e01d9ff3a413ea5be30",
+      "next": "72589ae501fd607e134ee8a2a9a0d4763f5560eb528149369c46ffc297614282"
+    },
+    {
+      "ord": 163,
+      "blockId": "2912cebaa6c4543261be306a418aa85f",
+      "fp64": "6eeb7f52604f15a3",
+      "normHash": "72589ae501fd607e134ee8a2a9a0d4763f5560eb528149369c46ffc297614282",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "a6d4ff5cabbc0217976e092442078bc77711a0ed1c4cbebbc2d4f34fd419ac40",
+      "next": "63d94265f40aa54c30744865c965ed1e234baee215b93000ca37201552ebbf31"
+    },
+    {
+      "ord": 164,
+      "blockId": "ff41c9723c835b2c89423301e9ef2b6b",
+      "fp64": "821f46396a80c24c",
+      "normHash": "63d94265f40aa54c30744865c965ed1e234baee215b93000ca37201552ebbf31",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "72589ae501fd607e134ee8a2a9a0d4763f5560eb528149369c46ffc297614282",
+      "next": "e623e2cd9f36d3b422a80bc7e35b880d10297f5692e3ddcaede3b767d2f77705"
+    },
+    {
+      "ord": 165,
+      "blockId": "ad045ff788d8bb54c258e35f941afba9",
+      "fp64": "cfbaf67f86f3fdd8",
+      "normHash": "e623e2cd9f36d3b422a80bc7e35b880d10297f5692e3ddcaede3b767d2f77705",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "63d94265f40aa54c30744865c965ed1e234baee215b93000ca37201552ebbf31",
+      "next": "be311b5cd3566357388372da6c536233fc326ba24b173467a43f8b968ea32ba5"
+    },
+    {
+      "ord": 166,
+      "blockId": "4bdd64d236618069f4277cf934a84625",
+      "fp64": "d3437d7a410612f2",
+      "normHash": "be311b5cd3566357388372da6c536233fc326ba24b173467a43f8b968ea32ba5",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "e623e2cd9f36d3b422a80bc7e35b880d10297f5692e3ddcaede3b767d2f77705",
+      "next": "cf83240d63b5c10a0b403377f49802d9f8d8a934c7b15efb9283651c3c23cdb1"
+    },
+    {
+      "ord": 167,
+      "blockId": "e364333f0ae558385581eb4a6986071c",
+      "fp64": "0139c8082734e292",
+      "normHash": "cf83240d63b5c10a0b403377f49802d9f8d8a934c7b15efb9283651c3c23cdb1",
+      "kind": "h4",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "be311b5cd3566357388372da6c536233fc326ba24b173467a43f8b968ea32ba5",
+      "next": "a6d4ff5cabbc0217976e092442078bc77711a0ed1c4cbebbc2d4f34fd419ac40"
+    },
+    {
+      "ord": 168,
+      "blockId": "40809c7f567ec159259890a0afb8192b",
+      "fp64": "feefee7b9fcfedf5",
+      "normHash": "a6d4ff5cabbc0217976e092442078bc77711a0ed1c4cbebbc2d4f34fd419ac40",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "cf83240d63b5c10a0b403377f49802d9f8d8a934c7b15efb9283651c3c23cdb1",
+      "next": "b253277cb4e55f708d01be3d1094872bcdba9f080389acfc5ba4758303a7c767"
+    },
+    {
+      "ord": 169,
+      "blockId": "0231e4d1c058c610f9cf1eb03b3193a0",
+      "fp64": "c883799251e7b82b",
+      "normHash": "b253277cb4e55f708d01be3d1094872bcdba9f080389acfc5ba4758303a7c767",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "a6d4ff5cabbc0217976e092442078bc77711a0ed1c4cbebbc2d4f34fd419ac40",
+      "next": "7c8ea6cefd7d9262816f6590b1f80cfa055c5ed3b7169bc4906e91e6bf4b14e8"
+    },
+    {
+      "ord": 170,
+      "blockId": "f7066824bcf2557d899f35c477b2e5d2",
+      "fp64": "591fd6094c64723f",
+      "normHash": "7c8ea6cefd7d9262816f6590b1f80cfa055c5ed3b7169bc4906e91e6bf4b14e8",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "b253277cb4e55f708d01be3d1094872bcdba9f080389acfc5ba4758303a7c767",
+      "next": "52a7ca02aa75e8264ca7854c61a8fb607cea9032e51b46443883f46950a4773c"
+    },
+    {
+      "ord": 171,
+      "blockId": "9405735cc9b2321068074ab7d53df754",
+      "fp64": "ffbadfff265befd3",
+      "normHash": "52a7ca02aa75e8264ca7854c61a8fb607cea9032e51b46443883f46950a4773c",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "7c8ea6cefd7d9262816f6590b1f80cfa055c5ed3b7169bc4906e91e6bf4b14e8",
+      "next": "59785b9da02d544c2cf875925e17f2399938598829f37667dee3b166763fe1e3"
+    },
+    {
+      "ord": 172,
+      "blockId": "f17f630e14874fe520778f43106418e3",
+      "fp64": "2e6c3efe7a1e7e3a",
+      "normHash": "59785b9da02d544c2cf875925e17f2399938598829f37667dee3b166763fe1e3",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "52a7ca02aa75e8264ca7854c61a8fb607cea9032e51b46443883f46950a4773c",
+      "next": "af546942f40c56f5ea6f493d7c0a63538a9815af97a4030400d53a1333d3f3b1"
+    },
+    {
+      "ord": 173,
+      "blockId": "c6ffc5cebf5c3ccdbd5b3aa276c26dae",
+      "fp64": "cfaf1e5cfc7fbdfa",
+      "normHash": "af546942f40c56f5ea6f493d7c0a63538a9815af97a4030400d53a1333d3f3b1",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "59785b9da02d544c2cf875925e17f2399938598829f37667dee3b166763fe1e3",
+      "next": "2b0c3e995d69795b71a94e1b5df45cf0044d637825f6b7c0d914feb085128da0"
+    },
+    {
+      "ord": 174,
+      "blockId": "c5de905fcac6f7bfb385772ca1b7763f",
+      "fp64": "7fcf95bd2ffbffcd",
+      "normHash": "2b0c3e995d69795b71a94e1b5df45cf0044d637825f6b7c0d914feb085128da0",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "af546942f40c56f5ea6f493d7c0a63538a9815af97a4030400d53a1333d3f3b1",
+      "next": "3605ca1411ea387e98b8ddb90f102bb3268c030e9b0d01731b2cd67cde343c97"
+    },
+    {
+      "ord": 175,
+      "blockId": "48e0e22dbe79d385b8cfc785f9316941",
+      "fp64": "4c245003c76e32f9",
+      "normHash": "3605ca1411ea387e98b8ddb90f102bb3268c030e9b0d01731b2cd67cde343c97",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "2b0c3e995d69795b71a94e1b5df45cf0044d637825f6b7c0d914feb085128da0",
+      "next": "3518df5ce64d0a0fc6c0d4c410d0d3408f2678f6ce8d2e2fc9fcb7a6ff5161c0"
+    },
+    {
+      "ord": 176,
+      "blockId": "7a9b2f5fcf07fffdd85e01ef85830a30",
+      "fp64": "b3d507ae1ac1dad8",
+      "normHash": "3518df5ce64d0a0fc6c0d4c410d0d3408f2678f6ce8d2e2fc9fcb7a6ff5161c0",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "3605ca1411ea387e98b8ddb90f102bb3268c030e9b0d01731b2cd67cde343c97",
+      "next": "15d547a4dab1f2d6b6fbf53bb97f6db84b8048f4f7812d1772a7260c4d68c9c7"
+    },
+    {
+      "ord": 177,
+      "blockId": "48f0808323f524af8e559dfcfc1b001e",
+      "fp64": "5bf03fb777ffbfe9",
+      "normHash": "15d547a4dab1f2d6b6fbf53bb97f6db84b8048f4f7812d1772a7260c4d68c9c7",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "3518df5ce64d0a0fc6c0d4c410d0d3408f2678f6ce8d2e2fc9fcb7a6ff5161c0",
+      "next": "df61c046e325e105c34f994854b5e47a508051deb44ce17a6b1db00d5e046e29"
+    },
+    {
+      "ord": 178,
+      "blockId": "075cab0592af69302455fba55fe81219",
+      "fp64": "1a6eef1724490392",
+      "normHash": "df61c046e325e105c34f994854b5e47a508051deb44ce17a6b1db00d5e046e29",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "15d547a4dab1f2d6b6fbf53bb97f6db84b8048f4f7812d1772a7260c4d68c9c7",
+      "next": "f9e4daba13c3b2ac43b5a72a5ac83d924a03522d586c70fcf14920604dbda075"
+    },
+    {
+      "ord": 179,
+      "blockId": "34afdf8e9cd3d09b986a8279b9ecbbf2",
+      "fp64": "93f8359d93f390d8",
+      "normHash": "f9e4daba13c3b2ac43b5a72a5ac83d924a03522d586c70fcf14920604dbda075",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "df61c046e325e105c34f994854b5e47a508051deb44ce17a6b1db00d5e046e29",
+      "next": "3d9c24895fd212449f74f6ce81499b458c8daf889bea589733a3114480924509"
+    },
+    {
+      "ord": 180,
+      "blockId": "6a0ef39fab096bb954dbbe26209af0f0",
+      "fp64": "5bcfbd7f75af1afe",
+      "normHash": "3d9c24895fd212449f74f6ce81499b458c8daf889bea589733a3114480924509",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "f9e4daba13c3b2ac43b5a72a5ac83d924a03522d586c70fcf14920604dbda075",
+      "next": "e79907dd992c157fe63ee9a915dd5e204c4a010164c58c896e4dd75cd3a70972"
+    },
+    {
+      "ord": 181,
+      "blockId": "3807c8bb2529871e090ea2f998fe85d9",
+      "fp64": "532e747fe72fe36e",
+      "normHash": "e79907dd992c157fe63ee9a915dd5e204c4a010164c58c896e4dd75cd3a70972",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "3d9c24895fd212449f74f6ce81499b458c8daf889bea589733a3114480924509",
+      "next": "0c06683c085841c895ad433fe6429debe0b2c79cd4794330577398faec177fa6"
+    },
+    {
+      "ord": 182,
+      "blockId": "09ecb3c35931f78b9eea489e2185c08b",
+      "fp64": "27a21c5495c91dbd",
+      "normHash": "0c06683c085841c895ad433fe6429debe0b2c79cd4794330577398faec177fa6",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "e79907dd992c157fe63ee9a915dd5e204c4a010164c58c896e4dd75cd3a70972",
+      "next": "d4757eba48b8f10b44dc20870b0939219b4a59e35fc3630cd487e427dd6ac3b0"
+    },
+    {
+      "ord": 183,
+      "blockId": "638998a41f7010c453b356391e79f22c",
+      "fp64": "338a175431a353a9",
+      "normHash": "d4757eba48b8f10b44dc20870b0939219b4a59e35fc3630cd487e427dd6ac3b0",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "0c06683c085841c895ad433fe6429debe0b2c79cd4794330577398faec177fa6",
+      "next": "bcce5b00730812b0634f98ff47f46bd75e09cbd1ea982e78f14e3cfad0a27a13"
+    },
+    {
+      "ord": 184,
+      "blockId": "8d8797941e6914ba1e7f44b79797a6c5",
+      "fp64": "93b472ff53ff5ff9",
+      "normHash": "bcce5b00730812b0634f98ff47f46bd75e09cbd1ea982e78f14e3cfad0a27a13",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "d4757eba48b8f10b44dc20870b0939219b4a59e35fc3630cd487e427dd6ac3b0",
+      "next": "5298c33b6acf6bd39d033f06af7c4e79a8230268f8be45e63ca20170a2e7ac10"
+    },
+    {
+      "ord": 185,
+      "blockId": "20d84830f59166c16f6925e7b1dd146a",
+      "fp64": "816410d41a2b5fc8",
+      "normHash": "5298c33b6acf6bd39d033f06af7c4e79a8230268f8be45e63ca20170a2e7ac10",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "bcce5b00730812b0634f98ff47f46bd75e09cbd1ea982e78f14e3cfad0a27a13",
+      "next": "d0f70ff309a4e8339e1463f411df123f3cf478ca117fdbdea7f083a626ad3582"
+    },
+    {
+      "ord": 186,
+      "blockId": "84f80f040b1cc54cb2a4363551db4957",
+      "fp64": "59845b868ee7be8e",
+      "normHash": "d0f70ff309a4e8339e1463f411df123f3cf478ca117fdbdea7f083a626ad3582",
+      "kind": "h4",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "5298c33b6acf6bd39d033f06af7c4e79a8230268f8be45e63ca20170a2e7ac10",
+      "next": "a6d4ff5cabbc0217976e092442078bc77711a0ed1c4cbebbc2d4f34fd419ac40"
+    },
+    {
+      "ord": 187,
+      "blockId": "041ddcc72842e66ad4f9e87b9f3ce987",
+      "fp64": "feefee7b9fcfedf5",
+      "normHash": "a6d4ff5cabbc0217976e092442078bc77711a0ed1c4cbebbc2d4f34fd419ac40",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "d0f70ff309a4e8339e1463f411df123f3cf478ca117fdbdea7f083a626ad3582",
+      "next": "798a86967869bab41f92d70a4484e63456d01c188fc03d810d844015efdae815"
+    },
+    {
+      "ord": 188,
+      "blockId": "90c82185a362d6641f923bdd1170c7ef",
+      "fp64": "bc4ee9f84f8e1db9",
+      "normHash": "798a86967869bab41f92d70a4484e63456d01c188fc03d810d844015efdae815",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "a6d4ff5cabbc0217976e092442078bc77711a0ed1c4cbebbc2d4f34fd419ac40",
+      "next": "a54298df9e6e4692d87d0fd96cdfd20b4916220b08f02210a108badf354c3f96"
+    },
+    {
+      "ord": 189,
+      "blockId": "8ad7c6ed6ef1f63dea108aa32af0e229",
+      "fp64": "74ab8044f8fb4b76",
+      "normHash": "a54298df9e6e4692d87d0fd96cdfd20b4916220b08f02210a108badf354c3f96",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "798a86967869bab41f92d70a4484e63456d01c188fc03d810d844015efdae815",
+      "next": "0392db2f44d547db9ddf6ef8c937dd2ce586af5dc9c8d484014bcd4c21a54a1e"
+    },
+    {
+      "ord": 190,
+      "blockId": "25f252ab0f0f7fa1284404c6727305ea",
+      "fp64": "4535b00bc67cb0b0",
+      "normHash": "0392db2f44d547db9ddf6ef8c937dd2ce586af5dc9c8d484014bcd4c21a54a1e",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "a54298df9e6e4692d87d0fd96cdfd20b4916220b08f02210a108badf354c3f96",
+      "next": "eec2387b446b24f085e0fc8ff3ea536e4b1243c672f41fac724dcc4f06942cb1"
+    },
+    {
+      "ord": 191,
+      "blockId": "b8ba3535ee0a8baeb7ae4b2d0ec50c73",
+      "fp64": "9b4eb87f448e1ffa",
+      "normHash": "eec2387b446b24f085e0fc8ff3ea536e4b1243c672f41fac724dcc4f06942cb1",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "0392db2f44d547db9ddf6ef8c937dd2ce586af5dc9c8d484014bcd4c21a54a1e",
+      "next": "e1e4af179a95a1217d4fd5684044e86ab58bd4420c7bb1908a5ff107f40bb48f"
+    },
+    {
+      "ord": 192,
+      "blockId": "ede62db8d2545c7819950919ad3c5b6b",
+      "fp64": "77eecc7fe5bfeffe",
+      "normHash": "e1e4af179a95a1217d4fd5684044e86ab58bd4420c7bb1908a5ff107f40bb48f",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "eec2387b446b24f085e0fc8ff3ea536e4b1243c672f41fac724dcc4f06942cb1",
+      "next": "f8d0b3445fa35cabec2f3b8c531678aaf3713a181e8d9f9a92c7664844eb9bc6"
+    },
+    {
+      "ord": 193,
+      "blockId": "a64de5d164e31acc866190edfca5e502",
+      "fp64": "a7f1fa5f397f5f5b",
+      "normHash": "f8d0b3445fa35cabec2f3b8c531678aaf3713a181e8d9f9a92c7664844eb9bc6",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "e1e4af179a95a1217d4fd5684044e86ab58bd4420c7bb1908a5ff107f40bb48f",
+      "next": "0c9904e740c01fc9a1f5f968f50e66d69a4d8c7ed457b61610694b2089f459cf"
+    },
+    {
+      "ord": 194,
+      "blockId": "2fafd6d0849f9ba4ab90a2b251715781",
+      "fp64": "ba7d36de9bf777df",
+      "normHash": "0c9904e740c01fc9a1f5f968f50e66d69a4d8c7ed457b61610694b2089f459cf",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "f8d0b3445fa35cabec2f3b8c531678aaf3713a181e8d9f9a92c7664844eb9bc6",
+      "next": "d1b204badfe65c4de100e923794f038a683e464365daeddacc43d872acf3bf84"
+    },
+    {
+      "ord": 195,
+      "blockId": "de3df976e964ffea0be8b6c29aa02c5e",
+      "fp64": "964c645ac9525e0c",
+      "normHash": "d1b204badfe65c4de100e923794f038a683e464365daeddacc43d872acf3bf84",
+      "kind": "p",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "0c9904e740c01fc9a1f5f968f50e66d69a4d8c7ed457b61610694b2089f459cf",
+      "next": "fd7450c1f92d52b91075220c636129ef702e8e7c29edc73d8f2e81df8a091618"
+    },
+    {
+      "ord": 196,
+      "blockId": "ba92458538743893fef72d57b8c3f3d6",
+      "fp64": "77dff3dadf79e97e",
+      "normHash": "fd7450c1f92d52b91075220c636129ef702e8e7c29edc73d8f2e81df8a091618",
+      "kind": "page",
+      "chapter": "الشرط-الرابع-أن-تبلغ-النصاب-الشرعي",
+      "prev": "d1b204badfe65c4de100e923794f038a683e464365daeddacc43d872acf3bf84",
+      "next": "3a8521de33856487e92d212e418b9a22e3e8143a2c42db726846494aee3d2593"
+    },
+    {
+      "ord": 197,
+      "blockId": "0b1b45b355cd59bc796fc129403ef153",
+      "fp64": "bf6826c31b501c2f",
+      "normHash": "3a8521de33856487e92d212e418b9a22e3e8143a2c42db726846494aee3d2593",
+      "kind": "h2",
+      "chapter": "مسائل-في-زكاة-بهيمة-الأنعام",
+      "prev": "fd7450c1f92d52b91075220c636129ef702e8e7c29edc73d8f2e81df8a091618",
+      "next": "3216be648f6f3db2a9a36a1508bf7d120cbb81155b72f07ff7938ec45ac70c95"
+    },
+    {
+      "ord": 198,
+      "blockId": "8c7eca899b2adc029304fbcfc4793cef",
+      "fp64": "5dcdb07e55659f9b",
+      "normHash": "3216be648f6f3db2a9a36a1508bf7d120cbb81155b72f07ff7938ec45ac70c95",
+      "kind": "h2",
+      "chapter": "١-لا-يأخذ-المصدق-في-الصدقة-هرمة-ولا-ذات-عوار-ولا-تيس",
+      "prev": "3a8521de33856487e92d212e418b9a22e3e8143a2c42db726846494aee3d2593",
+      "next": "e5191d4f40e65195eedf14cf88a9c94c7b3b5b4e92b5d1aff85e0ff79166848b"
+    },
+    {
+      "ord": 199,
+      "blockId": "29d41e9c3c832219071934bde6db3e36",
+      "fp64": "d449b07e5d65777a",
+      "normHash": "e5191d4f40e65195eedf14cf88a9c94c7b3b5b4e92b5d1aff85e0ff79166848b",
+      "kind": "p",
+      "chapter": "١-لا-يأخذ-المصدق-في-الصدقة-هرمة-ولا-ذات-عوار-ولا-تيس",
+      "prev": "3216be648f6f3db2a9a36a1508bf7d120cbb81155b72f07ff7938ec45ac70c95",
+      "next": "ab980b83af4b7a324dcbd24ac2bd3dc2a9f5f7502fbe038dec4bfded44ad2fb0"
+    },
+    {
+      "ord": 200,
+      "blockId": "cb7240bd87815f3f7baba7634f6afaa8",
+      "fp64": "d6d1c01c9e72597c",
+      "normHash": "ab980b83af4b7a324dcbd24ac2bd3dc2a9f5f7502fbe038dec4bfded44ad2fb0",
+      "kind": "p",
+      "chapter": "١-لا-يأخذ-المصدق-في-الصدقة-هرمة-ولا-ذات-عوار-ولا-تيس",
+      "prev": "e5191d4f40e65195eedf14cf88a9c94c7b3b5b4e92b5d1aff85e0ff79166848b",
+      "next": "ef3ce96995c9a6a0c3dceabe53c1aa95244f615f0db6301ee60a4cf831b911d1"
+    },
+    {
+      "ord": 201,
+      "blockId": "e25043158ab890d85e396325d40d2f80",
+      "fp64": "5d4d2076dd5d0e12",
+      "normHash": "ef3ce96995c9a6a0c3dceabe53c1aa95244f615f0db6301ee60a4cf831b911d1",
+      "kind": "p",
+      "chapter": "١-لا-يأخذ-المصدق-في-الصدقة-هرمة-ولا-ذات-عوار-ولا-تيس",
+      "prev": "ab980b83af4b7a324dcbd24ac2bd3dc2a9f5f7502fbe038dec4bfded44ad2fb0",
+      "next": "d3fc5bd9b2f63785248129ea03bccffcaf940956b7d8a0eead4645fbe9ba5066"
+    },
+    {
+      "ord": 202,
+      "blockId": "27cda8f14f851570fc9cf83be759c6a5",
+      "fp64": "f7fff79efaf160b6",
+      "normHash": "d3fc5bd9b2f63785248129ea03bccffcaf940956b7d8a0eead4645fbe9ba5066",
+      "kind": "page",
+      "chapter": "١-لا-يأخذ-المصدق-في-الصدقة-هرمة-ولا-ذات-عوار-ولا-تيس",
+      "prev": "ef3ce96995c9a6a0c3dceabe53c1aa95244f615f0db6301ee60a4cf831b911d1",
+      "next": "fe22b288898a1615da2f140ad1da9077f66c0ab44e2b8b31596ee95f61d50841"
+    },
+    {
+      "ord": 203,
+      "blockId": "053ebe63046e39d0f084c0c2544b8945",
+      "fp64": "a664e05e9d187178",
+      "normHash": "fe22b288898a1615da2f140ad1da9077f66c0ab44e2b8b31596ee95f61d50841",
+      "kind": "p",
+      "chapter": "١-لا-يأخذ-المصدق-في-الصدقة-هرمة-ولا-ذات-عوار-ولا-تيس",
+      "prev": "d3fc5bd9b2f63785248129ea03bccffcaf940956b7d8a0eead4645fbe9ba5066",
+      "next": "b010c74a3ed5859b638b93349c3284e2438420a134bd732254a4dfa99929957b"
+    },
+    {
+      "ord": 204,
+      "blockId": "9699ed291b0da4564a6ac4794f519299",
+      "fp64": "79acb2aaf4d5fd35",
+      "normHash": "b010c74a3ed5859b638b93349c3284e2438420a134bd732254a4dfa99929957b",
+      "kind": "h2",
+      "chapter": "٢-لا-يأخذ-المصدق-كرائم-الأموال-ولا-خياره",
+      "prev": "fe22b288898a1615da2f140ad1da9077f66c0ab44e2b8b31596ee95f61d50841",
+      "next": "5e49407f4b0b39d49d64f69fc8b0f9b06a1d23311d08b349c8a2d8d291213482"
+    },
+    {
+      "ord": 205,
+      "blockId": "e8f4a44879cded05e548aede3649096e",
+      "fp64": "ec67c057bf747bf8",
+      "normHash": "5e49407f4b0b39d49d64f69fc8b0f9b06a1d23311d08b349c8a2d8d291213482",
+      "kind": "p",
+      "chapter": "٢-لا-يأخذ-المصدق-كرائم-الأموال-ولا-خياره",
+      "prev": "b010c74a3ed5859b638b93349c3284e2438420a134bd732254a4dfa99929957b",
+      "next": "5e2ea6bddfebfd54fc94f01fa95015d410749b670f6fe057dd505407a66770a5"
+    },
+    {
+      "ord": 206,
+      "blockId": "1f6dccdb1e913fe699c67b00b317f8a8",
+      "fp64": "bc9af9e7f76b473d",
+      "normHash": "5e2ea6bddfebfd54fc94f01fa95015d410749b670f6fe057dd505407a66770a5",
+      "kind": "p",
+      "chapter": "٢-لا-يأخذ-المصدق-كرائم-الأموال-ولا-خياره",
+      "prev": "5e49407f4b0b39d49d64f69fc8b0f9b06a1d23311d08b349c8a2d8d291213482",
+      "next": "54294ac45f20c4c4f2c5b1673e7aba01a03c6fe42ff5e1f417379b86233f93b4"
+    },
+    {
+      "ord": 207,
+      "blockId": "a229622ed8880dad2b8f254fa57ea68e",
+      "fp64": "9fe024d313549c8f",
+      "normHash": "54294ac45f20c4c4f2c5b1673e7aba01a03c6fe42ff5e1f417379b86233f93b4",
+      "kind": "h2",
+      "chapter": "٣-ما-بين-الفريضتين-في-زكاة-بهيمة-الأنعام-أوقاص-ولا-زكاة-في-الأوقاص",
+      "prev": "5e2ea6bddfebfd54fc94f01fa95015d410749b670f6fe057dd505407a66770a5",
+      "next": "1906a67dc86ffcab3eb86dd72067ea444b21dd1a2bfd1540cbe30403873d6686"
+    },
+    {
+      "ord": 208,
+      "blockId": "4679fdd12237e05e018abcc22c953b18",
+      "fp64": "0979e2401107dfb0",
+      "normHash": "1906a67dc86ffcab3eb86dd72067ea444b21dd1a2bfd1540cbe30403873d6686",
+      "kind": "p",
+      "chapter": "٣-ما-بين-الفريضتين-في-زكاة-بهيمة-الأنعام-أوقاص-ولا-زكاة-في-الأوقاص",
+      "prev": "54294ac45f20c4c4f2c5b1673e7aba01a03c6fe42ff5e1f417379b86233f93b4",
+      "next": "6cf43a62bd367b592af83b4c8e895337b53fa4828d80042eb5bdfdedeb6a1dbb"
+    },
+    {
+      "ord": 209,
+      "blockId": "783eb0bee7427b0259231bd497b3e548",
+      "fp64": "5d1c21725d658e16",
+      "normHash": "6cf43a62bd367b592af83b4c8e895337b53fa4828d80042eb5bdfdedeb6a1dbb",
+      "kind": "p",
+      "chapter": "٣-ما-بين-الفريضتين-في-زكاة-بهيمة-الأنعام-أوقاص-ولا-زكاة-في-الأوقاص",
+      "prev": "1906a67dc86ffcab3eb86dd72067ea444b21dd1a2bfd1540cbe30403873d6686",
+      "next": "68f3727261046665f498c65a90fa7e68e048dc53941446d1ded55914c30c2e89"
+    },
+    {
+      "ord": 210,
+      "blockId": "2ece16f290d371374a246129ddf86dc7",
+      "fp64": "efdff3daff39eaf7",
+      "normHash": "68f3727261046665f498c65a90fa7e68e048dc53941446d1ded55914c30c2e89",
+      "kind": "page",
+      "chapter": "٣-ما-بين-الفريضتين-في-زكاة-بهيمة-الأنعام-أوقاص-ولا-زكاة-في-الأوقاص",
+      "prev": "6cf43a62bd367b592af83b4c8e895337b53fa4828d80042eb5bdfdedeb6a1dbb",
+      "next": "e019821ca6b7752ad2a5723c4900eff7e71b858d5128e81c5dfec839e1174aea"
+    },
+    {
+      "ord": 211,
+      "blockId": "023be1fe226e0efadf275e2471af2ffc",
+      "fp64": "c9bde6b2b575ec62",
+      "normHash": "e019821ca6b7752ad2a5723c4900eff7e71b858d5128e81c5dfec839e1174aea",
+      "kind": "p",
+      "chapter": "٣-ما-بين-الفريضتين-في-زكاة-بهيمة-الأنعام-أوقاص-ولا-زكاة-في-الأوقاص",
+      "prev": "68f3727261046665f498c65a90fa7e68e048dc53941446d1ded55914c30c2e89",
+      "next": "af53052ef36fb2f2aeb322cbe074c94fa630fda2fdb077012320759c3f79777f"
+    },
+    {
+      "ord": 212,
+      "blockId": "aad9da116e573e9bc2bf06ac82b9af88",
+      "fp64": "3df3aabaceee671f",
+      "normHash": "af53052ef36fb2f2aeb322cbe074c94fa630fda2fdb077012320759c3f79777f",
+      "kind": "h2",
+      "chapter": "٤-إرضاء-المصدق-الساعي-الآخذ-للزكاة-وإن-ظلم",
+      "prev": "e019821ca6b7752ad2a5723c4900eff7e71b858d5128e81c5dfec839e1174aea",
+      "next": "08790882830d102f14db362783d827658d61f6b8a3c17267176722a729a1f7ba"
+    },
+    {
+      "ord": 213,
+      "blockId": "38036212cfecbd47a451f8722fe8d5f1",
+      "fp64": "7430c01f9f66717c",
+      "normHash": "08790882830d102f14db362783d827658d61f6b8a3c17267176722a729a1f7ba",
+      "kind": "p",
+      "chapter": "٤-إرضاء-المصدق-الساعي-الآخذ-للزكاة-وإن-ظلم",
+      "prev": "af53052ef36fb2f2aeb322cbe074c94fa630fda2fdb077012320759c3f79777f",
+      "next": "493ade270a273557d66d19fc8bf89c85893554aa12cd55fc82a37e44c89ba0bf"
+    },
+    {
+      "ord": 214,
+      "blockId": "6ef6e501c9c12ab56ede859d17c33dd4",
+      "fp64": "2761cc979722771e",
+      "normHash": "493ade270a273557d66d19fc8bf89c85893554aa12cd55fc82a37e44c89ba0bf",
+      "kind": "p",
+      "chapter": "٤-إرضاء-المصدق-الساعي-الآخذ-للزكاة-وإن-ظلم",
+      "prev": "08790882830d102f14db362783d827658d61f6b8a3c17267176722a729a1f7ba",
+      "next": "f4cb07f1767d7abeeb565f9db43e2d9c0acbd40b8a75b2b32c07aef898511a2e"
+    },
+    {
+      "ord": 215,
+      "blockId": "26c246d357812b80e9138fbc653aaf30",
+      "fp64": "1bf9b9b2593fb67a",
+      "normHash": "f4cb07f1767d7abeeb565f9db43e2d9c0acbd40b8a75b2b32c07aef898511a2e",
+      "kind": "h2",
+      "chapter": "٥-عمال-الصدقة-السعاة-الذين-يرسلهم-الإمام-المسلم",
+      "prev": "493ade270a273557d66d19fc8bf89c85893554aa12cd55fc82a37e44c89ba0bf",
+      "next": "c9ee90015e0ca6dba426887924fb1d44cd57ce05138c175ab2ead258af97f30e"
+    },
+    {
+      "ord": 216,
+      "blockId": "dff30089f72e578d1bb4d7be85cb2b31",
+      "fp64": "2501e15b83476b78",
+      "normHash": "c9ee90015e0ca6dba426887924fb1d44cd57ce05138c175ab2ead258af97f30e",
+      "kind": "p",
+      "chapter": "٥-عمال-الصدقة-السعاة-الذين-يرسلهم-الإمام-المسلم",
+      "prev": "f4cb07f1767d7abeeb565f9db43e2d9c0acbd40b8a75b2b32c07aef898511a2e",
+      "next": "f2cbc32914db343e18875e4347ab9215716eb15230b7c82d067cf12f756428ff"
+    },
+    {
+      "ord": 217,
+      "blockId": "ccf19e30a355d11ae15bb263aca74818",
+      "fp64": "3445c0565732727c",
+      "normHash": "f2cbc32914db343e18875e4347ab9215716eb15230b7c82d067cf12f756428ff",
+      "kind": "p",
+      "chapter": "٥-عمال-الصدقة-السعاة-الذين-يرسلهم-الإمام-المسلم",
+      "prev": "c9ee90015e0ca6dba426887924fb1d44cd57ce05138c175ab2ead258af97f30e",
+      "next": "98af3e96ecb58c82f6c441d0d4c43ef3b89512ab4e827bbd254e1ff8769d101d"
+    },
+    {
+      "ord": 218,
+      "blockId": "7f3ba078657f46392697137f6cbe44af",
+      "fp64": "590c7036157daf12",
+      "normHash": "98af3e96ecb58c82f6c441d0d4c43ef3b89512ab4e827bbd254e1ff8769d101d",
+      "kind": "p",
+      "chapter": "٥-عمال-الصدقة-السعاة-الذين-يرسلهم-الإمام-المسلم",
+      "prev": "f2cbc32914db343e18875e4347ab9215716eb15230b7c82d067cf12f756428ff",
+      "next": "10d76e1879a1ef6f2fe39e5c5b89e33e22083ebb14a869c0d2495f87dc134686"
+    },
+    {
+      "ord": 219,
+      "blockId": "f81a3f9066d2424c8959f07299d838a8",
+      "fp64": "a5ffff9a5a776b7f",
+      "normHash": "10d76e1879a1ef6f2fe39e5c5b89e33e22083ebb14a869c0d2495f87dc134686",
+      "kind": "page",
+      "chapter": "٥-عمال-الصدقة-السعاة-الذين-يرسلهم-الإمام-المسلم",
+      "prev": "98af3e96ecb58c82f6c441d0d4c43ef3b89512ab4e827bbd254e1ff8769d101d",
+      "next": "53058e76bad4f85e9875150160ee5a4fa2a80cb2268812a4a06e23a9006c0a86"
+    },
+    {
+      "ord": 220,
+      "blockId": "5ac947e9ceab3a10bd250f2153b0794e",
+      "fp64": "8c15601a097f945f",
+      "normHash": "53058e76bad4f85e9875150160ee5a4fa2a80cb2268812a4a06e23a9006c0a86",
+      "kind": "p",
+      "chapter": "٥-عمال-الصدقة-السعاة-الذين-يرسلهم-الإمام-المسلم",
+      "prev": "10d76e1879a1ef6f2fe39e5c5b89e33e22083ebb14a869c0d2495f87dc134686",
+      "next": "c8e35921165f132ba2920343ff5e646ffc92cbcae61f280c022d3276c783a28a"
+    },
+    {
+      "ord": 221,
+      "blockId": "d4598b2e5cc8da0a2ec3474f96bd458d",
+      "fp64": "b55ba057356d7068",
+      "normHash": "c8e35921165f132ba2920343ff5e646ffc92cbcae61f280c022d3276c783a28a",
+      "kind": "p",
+      "chapter": "٥-عمال-الصدقة-السعاة-الذين-يرسلهم-الإمام-المسلم",
+      "prev": "53058e76bad4f85e9875150160ee5a4fa2a80cb2268812a4a06e23a9006c0a86",
+      "next": "ff276398a12e3cdc2ecaa1e965240e4369f0189860cc6b800647ed0babef1e86"
+    },
+    {
+      "ord": 222,
+      "blockId": "81b892367576eb37cbbddea1f6613acb",
+      "fp64": "6c04e552173073bc",
+      "normHash": "ff276398a12e3cdc2ecaa1e965240e4369f0189860cc6b800647ed0babef1e86",
+      "kind": "p",
+      "chapter": "٥-عمال-الصدقة-السعاة-الذين-يرسلهم-الإمام-المسلم",
+      "prev": "c8e35921165f132ba2920343ff5e646ffc92cbcae61f280c022d3276c783a28a",
+      "next": "7b75447ab743844a6c20c52f8f84d2899dfb19f7389f142cd552844660ec5115"
+    },
+    {
+      "ord": 223,
+      "blockId": "60192d73c05c1fbbf3b27574530c2b1c",
+      "fp64": "5b78704015751d96",
+      "normHash": "7b75447ab743844a6c20c52f8f84d2899dfb19f7389f142cd552844660ec5115",
+      "kind": "p",
+      "chapter": "٥-عمال-الصدقة-السعاة-الذين-يرسلهم-الإمام-المسلم",
+      "prev": "ff276398a12e3cdc2ecaa1e965240e4369f0189860cc6b800647ed0babef1e86",
+      "next": "a181acef972400c92ed3ae51e67ba828b894042089a48611cc161a547d84306a"
+    },
+    {
+      "ord": 224,
+      "blockId": "1eac7cc7a01c90f8a3532397b5baa936",
+      "fp64": "2ffff3fbdf3f7f7e",
+      "normHash": "a181acef972400c92ed3ae51e67ba828b894042089a48611cc161a547d84306a",
+      "kind": "page",
+      "chapter": "٥-عمال-الصدقة-السعاة-الذين-يرسلهم-الإمام-المسلم",
+      "prev": "7b75447ab743844a6c20c52f8f84d2899dfb19f7389f142cd552844660ec5115",
+      "next": "d60ea03d80db168b12c77b6429bcf902643e1bb3acceadde1e64db4a45a4c645"
+    },
+    {
+      "ord": 225,
+      "blockId": "25dbe5ba6eae42b819f3b5360786dc29",
+      "fp64": "554d807259bc3766",
+      "normHash": "d60ea03d80db168b12c77b6429bcf902643e1bb3acceadde1e64db4a45a4c645",
+      "kind": "li",
+      "chapter": "٥-عمال-الصدقة-السعاة-الذين-يرسلهم-الإمام-المسلم",
+      "prev": "a181acef972400c92ed3ae51e67ba828b894042089a48611cc161a547d84306a",
+      "next": "6a17bd6563d90431b4c429abb7c97abb7e525af324608f4130fde7d562812ae7"
+    },
+    {
+      "ord": 226,
+      "blockId": "5ccb2bd9a27259a1caa9cb06c97c0a8a",
+      "fp64": "156006ab9b77980e",
+      "normHash": "6a17bd6563d90431b4c429abb7c97abb7e525af324608f4130fde7d562812ae7",
+      "kind": "h2",
+      "chapter": "٦-لا-زكاة-في-غير-بهيمة-الأنعام-من-الحيوان",
+      "prev": "d60ea03d80db168b12c77b6429bcf902643e1bb3acceadde1e64db4a45a4c645",
+      "next": "2a54f7d10727ba87466a90c20f8e488869d1ed34fac78cf426cc009959239b3f"
+    },
+    {
+      "ord": 227,
+      "blockId": "5af40cfc6997ab27d4d754a6d923f6b1",
+      "fp64": "3624e05255587f94",
+      "normHash": "2a54f7d10727ba87466a90c20f8e488869d1ed34fac78cf426cc009959239b3f",
+      "kind": "p",
+      "chapter": "٦-لا-زكاة-في-غير-بهيمة-الأنعام-من-الحيوان",
+      "prev": "6a17bd6563d90431b4c429abb7c97abb7e525af324608f4130fde7d562812ae7",
+      "next": "8f5873b547a30d5bc7f48c30168753212696c82a8adcc5a207a652f126d6250e"
+    },
+    {
+      "ord": 228,
+      "blockId": "473b1ba45d6a008abeeed8ceb2343f29",
+      "fp64": "cdf66e9e577db787",
+      "normHash": "8f5873b547a30d5bc7f48c30168753212696c82a8adcc5a207a652f126d6250e",
+      "kind": "p",
+      "chapter": "٦-لا-زكاة-في-غير-بهيمة-الأنعام-من-الحيوان",
+      "prev": "2a54f7d10727ba87466a90c20f8e488869d1ed34fac78cf426cc009959239b3f",
+      "next": "a7cce4b77a4e1c556b9476d00946cf7e24e44aa582b8d35ed23ec56927e191d2"
+    },
+    {
+      "ord": 229,
+      "blockId": "6b4130d15f87fb6683949625c89511b7",
+      "fp64": "4dca5d7f19075f65",
+      "normHash": "a7cce4b77a4e1c556b9476d00946cf7e24e44aa582b8d35ed23ec56927e191d2",
+      "kind": "h2",
+      "chapter": "٧-لا-يجزئ-في-صدقة-الغنم-إلا-الجذع-من-الضأن-الذي-كمل-ستة-أشهر-والثني-من-المعز",
+      "prev": "8f5873b547a30d5bc7f48c30168753212696c82a8adcc5a207a652f126d6250e",
+      "next": "89d64ad3ec73033199ecb9af17767f78baeaee10fd73f7d4bebf232b661005b2"
+    },
+    {
+      "ord": 230,
+      "blockId": "eee9518d281be05af5b2207ea6b246ad",
+      "fp64": "85403d2251159636",
+      "normHash": "89d64ad3ec73033199ecb9af17767f78baeaee10fd73f7d4bebf232b661005b2",
+      "kind": "p",
+      "chapter": "٧-لا-يجزئ-في-صدقة-الغنم-إلا-الجذع-من-الضأن-الذي-كمل-ستة-أشهر-والثني-من-المعز",
+      "prev": "a7cce4b77a4e1c556b9476d00946cf7e24e44aa582b8d35ed23ec56927e191d2",
+      "next": "391b337113de22dda2a9504fb12ae77ee571b309573c79f50799c52ee2382417"
+    },
+    {
+      "ord": 231,
+      "blockId": "42cb6a8d715b13a495c2f62b4ec558b7",
+      "fp64": "595c60521d750c16",
+      "normHash": "391b337113de22dda2a9504fb12ae77ee571b309573c79f50799c52ee2382417",
+      "kind": "p",
+      "chapter": "٧-لا-يجزئ-في-صدقة-الغنم-إلا-الجذع-من-الضأن-الذي-كمل-ستة-أشهر-والثني-من-المعز",
+      "prev": "89d64ad3ec73033199ecb9af17767f78baeaee10fd73f7d4bebf232b661005b2",
+      "next": "b73aa4cdc874f833049801c90b61644752248ba6277e7139cb021ddcc4ca7d5c"
+    },
+    {
+      "ord": 232,
+      "blockId": "70f06a0d7f5739724bb408482db64cdd",
+      "fp64": "afdff7fe5fb37f77",
+      "normHash": "b73aa4cdc874f833049801c90b61644752248ba6277e7139cb021ddcc4ca7d5c",
+      "kind": "page",
+      "chapter": "٧-لا-يجزئ-في-صدقة-الغنم-إلا-الجذع-من-الضأن-الذي-كمل-ستة-أشهر-والثني-من-المعز",
+      "prev": "391b337113de22dda2a9504fb12ae77ee571b309573c79f50799c52ee2382417",
+      "next": "bb6b68fb8758b36b04ed040520ce4555b839f203d8197a3492459cd5b9e80837"
+    },
+    {
+      "ord": 233,
+      "blockId": "9e139b29465738ad2d1370ad29c016a2",
+      "fp64": "5e603cf6df4b7cee",
+      "normHash": "bb6b68fb8758b36b04ed040520ce4555b839f203d8197a3492459cd5b9e80837",
+      "kind": "h2",
+      "chapter": "٨-شروط-المخرج-في-الزكاة-من-بهيمة-الأنعام",
+      "prev": "b73aa4cdc874f833049801c90b61644752248ba6277e7139cb021ddcc4ca7d5c",
+      "next": "775658d9f6dd58b39f68327c7746133399f3c844109a70ef3ca98cb9d520cfee"
+    },
+    {
+      "ord": 234,
+      "blockId": "b8bf6c3d355a79f88af29706313b3b6f",
+      "fp64": "1a1558721c52d250",
+      "normHash": "775658d9f6dd58b39f68327c7746133399f3c844109a70ef3ca98cb9d520cfee",
+      "kind": "p",
+      "chapter": "٨-شروط-المخرج-في-الزكاة-من-بهيمة-الأنعام",
+      "prev": "bb6b68fb8758b36b04ed040520ce4555b839f203d8197a3492459cd5b9e80837",
+      "next": "3cb655484f56cc737ed5a8a2d921288445ae4e002d1e7a4748f3a2d6f43e45b2"
+    },
+    {
+      "ord": 235,
+      "blockId": "2417e1758fb623b9add5f08e55158929",
+      "fp64": "da58143e22d6903a",
+      "normHash": "3cb655484f56cc737ed5a8a2d921288445ae4e002d1e7a4748f3a2d6f43e45b2",
+      "kind": "h3",
+      "chapter": "٨-شروط-المخرج-في-الزكاة-من-بهيمة-الأنعام",
+      "prev": "775658d9f6dd58b39f68327c7746133399f3c844109a70ef3ca98cb9d520cfee",
+      "next": "7cdf3704b8668b81b66f05fcd6d203f713550599a282a54a15e602db12cece87"
+    },
+    {
+      "ord": 236,
+      "blockId": "2a355826cbf4ab953f142c66d8ea3d4a",
+      "fp64": "0d0ce0184452a301",
+      "normHash": "7cdf3704b8668b81b66f05fcd6d203f713550599a282a54a15e602db12cece87",
+      "kind": "p",
+      "chapter": "٨-شروط-المخرج-في-الزكاة-من-بهيمة-الأنعام",
+      "prev": "3cb655484f56cc737ed5a8a2d921288445ae4e002d1e7a4748f3a2d6f43e45b2",
+      "next": "b3a100cd5183cd2190551c26cabe0169248bd476edd05493de3f8c72b4f0c55c"
+    },
+    {
+      "ord": 237,
+      "blockId": "e69a5cbc0758a405d3c472e3b7f342de",
+      "fp64": "045b30ae21469833",
+      "normHash": "b3a100cd5183cd2190551c26cabe0169248bd476edd05493de3f8c72b4f0c55c",
+      "kind": "h3",
+      "chapter": "٨-شروط-المخرج-في-الزكاة-من-بهيمة-الأنعام",
+      "prev": "7cdf3704b8668b81b66f05fcd6d203f713550599a282a54a15e602db12cece87",
+      "next": "b3c08a16940ef39a445566052e7726559aa05764da60ab5d692076ff979d085e"
+    },
+    {
+      "ord": 238,
+      "blockId": "fc977c9bd903c43557b2ed02a19ec4ac",
+      "fp64": "cb58bf381e7b2f6c",
+      "normHash": "b3c08a16940ef39a445566052e7726559aa05764da60ab5d692076ff979d085e",
+      "kind": "p",
+      "chapter": "٨-شروط-المخرج-في-الزكاة-من-بهيمة-الأنعام",
+      "prev": "b3a100cd5183cd2190551c26cabe0169248bd476edd05493de3f8c72b4f0c55c",
+      "next": "d6046536925f0c23a23f874a3401770186001224ca0c768c6330a9be3bae59f5"
+    },
+    {
+      "ord": 239,
+      "blockId": "e976b377b551e26a271cf2e1739d4626",
+      "fp64": "0f6b709e71565f57",
+      "normHash": "d6046536925f0c23a23f874a3401770186001224ca0c768c6330a9be3bae59f5",
+      "kind": "h3",
+      "chapter": "٨-شروط-المخرج-في-الزكاة-من-بهيمة-الأنعام",
+      "prev": "b3c08a16940ef39a445566052e7726559aa05764da60ab5d692076ff979d085e",
+      "next": "703e857754f4e2312f28c048e1cc2c116cc0c563b4215e445fb6afc6c799c32a"
+    },
+    {
+      "ord": 240,
+      "blockId": "71e754443fee2778fbf2d17d4ee57d2a",
+      "fp64": "cc42758e51559fd7",
+      "normHash": "703e857754f4e2312f28c048e1cc2c116cc0c563b4215e445fb6afc6c799c32a",
+      "kind": "p",
+      "chapter": "٨-شروط-المخرج-في-الزكاة-من-بهيمة-الأنعام",
+      "prev": "d6046536925f0c23a23f874a3401770186001224ca0c768c6330a9be3bae59f5",
+      "next": "8cf7717014780d84ba7347d1a862b8e59b56feb7e9827191aa22bba5cad399d5"
+    },
+    {
+      "ord": 241,
+      "blockId": "c85c44380b1e03c17812602448732002",
+      "fp64": "f8d694a3ee53de7b",
+      "normHash": "8cf7717014780d84ba7347d1a862b8e59b56feb7e9827191aa22bba5cad399d5",
+      "kind": "h3",
+      "chapter": "٨-شروط-المخرج-في-الزكاة-من-بهيمة-الأنعام",
+      "prev": "703e857754f4e2312f28c048e1cc2c116cc0c563b4215e445fb6afc6c799c32a",
+      "next": "286a4ff7df004b84f0b208ec800f642177ca1699797b92d64de94072bad697a4"
+    },
+    {
+      "ord": 242,
+      "blockId": "f9984178b89302c0ae9959b164d3cdd6",
+      "fp64": "51c924f7716d8f62",
+      "normHash": "286a4ff7df004b84f0b208ec800f642177ca1699797b92d64de94072bad697a4",
+      "kind": "p",
+      "chapter": "٨-شروط-المخرج-في-الزكاة-من-بهيمة-الأنعام",
+      "prev": "8cf7717014780d84ba7347d1a862b8e59b56feb7e9827191aa22bba5cad399d5",
+      "next": "2124a4e2fad7fa3a3c2add1d56284529b9b02da5a4a6fce2d3bfd1cd65c3f120"
+    },
+    {
+      "ord": 243,
+      "blockId": "493d83979911fa0c07283e13e70dfceb",
+      "fp64": "45cc4869cb7ee8c7",
+      "normHash": "2124a4e2fad7fa3a3c2add1d56284529b9b02da5a4a6fce2d3bfd1cd65c3f120",
+      "kind": "h2",
+      "chapter": "٩-إذا-ملك-المسلم-أقل-من-النصاب-من-الإبل-أو-أقل-من-نصاب-البقر-أو-أقل-من-نصاب-الغن",
+      "prev": "286a4ff7df004b84f0b208ec800f642177ca1699797b92d64de94072bad697a4",
+      "next": "b730022ff70c769e818bc1ee22131f9d0f2e477bb06d9058706731856efe5487"
+    },
+    {
+      "ord": 244,
+      "blockId": "71ec3ef3877e55ecb7f4ba2758f84f85",
+      "fp64": "5f7c6e93b755fdf5",
+      "normHash": "b730022ff70c769e818bc1ee22131f9d0f2e477bb06d9058706731856efe5487",
+      "kind": "p",
+      "chapter": "٩-إذا-ملك-المسلم-أقل-من-النصاب-من-الإبل-أو-أقل-من-نصاب-البقر-أو-أقل-من-نصاب-الغن",
+      "prev": "2124a4e2fad7fa3a3c2add1d56284529b9b02da5a4a6fce2d3bfd1cd65c3f120",
+      "next": "f0b7eed63a326affe813bf53d08513cb5c7d6f4db63fdd9ab25f4e89b805f5c8"
+    },
+    {
+      "ord": 245,
+      "blockId": "b9f7293814b9de404b883b192ccb8311",
+      "fp64": "27ea7456973d7f0d",
+      "normHash": "f0b7eed63a326affe813bf53d08513cb5c7d6f4db63fdd9ab25f4e89b805f5c8",
+      "kind": "h2",
+      "chapter": "١٠-الصواب-عدم-جواز-العدول-عن-المقادير-المقدرة-من-النبي-في-بهيمة-الأنعام-في-الزكا",
+      "prev": "b730022ff70c769e818bc1ee22131f9d0f2e477bb06d9058706731856efe5487",
+      "next": "05f339d35270db2dd02e0d754578f2c00f533efbaa7cf1596448b07a79687142"
+    },
+    {
+      "ord": 246,
+      "blockId": "f8c43a31155bbfbcde5bf1449b8a580a",
+      "fp64": "0444e9d2977c7f0e",
+      "normHash": "05f339d35270db2dd02e0d754578f2c00f533efbaa7cf1596448b07a79687142",
+      "kind": "p",
+      "chapter": "١٠-الصواب-عدم-جواز-العدول-عن-المقادير-المقدرة-من-النبي-في-بهيمة-الأنعام-في-الزكا",
+      "prev": "f0b7eed63a326affe813bf53d08513cb5c7d6f4db63fdd9ab25f4e89b805f5c8",
+      "next": "f697bc55285eeea71c799db5bfef32ca63879ac09b881709d8c84b0165240cc4"
+    },
+    {
+      "ord": 247,
+      "blockId": "496087a8cf275e08c21227f02ac94e2a",
+      "fp64": "57404470975d5c40",
+      "normHash": "f697bc55285eeea71c799db5bfef32ca63879ac09b881709d8c84b0165240cc4",
+      "kind": "p",
+      "chapter": "١٠-الصواب-عدم-جواز-العدول-عن-المقادير-المقدرة-من-النبي-في-بهيمة-الأنعام-في-الزكا",
+      "prev": "05f339d35270db2dd02e0d754578f2c00f533efbaa7cf1596448b07a79687142",
+      "next": "f57279e5e08f65b9aa33e6f77c59738fd981675b1d001e1bb7fb0ade4dc7b44e"
+    },
+    {
+      "ord": 248,
+      "blockId": "875d72a00a9bb7e068b76924e11ce92c",
+      "fp64": "bdfff3fb7b7175f6",
+      "normHash": "f57279e5e08f65b9aa33e6f77c59738fd981675b1d001e1bb7fb0ade4dc7b44e",
+      "kind": "page",
+      "chapter": "١٠-الصواب-عدم-جواز-العدول-عن-المقادير-المقدرة-من-النبي-في-بهيمة-الأنعام-في-الزكا",
+      "prev": "f697bc55285eeea71c799db5bfef32ca63879ac09b881709d8c84b0165240cc4",
+      "next": "877835d1b182c1dd011dde63e5a4f78c0d84fba855c4f24207bdf84f080eb6fd"
+    },
+    {
+      "ord": 249,
+      "blockId": "583dc4f717518a1f952e4f436bf61bb8",
+      "fp64": "ff2154fe5f8bee5e",
+      "normHash": "877835d1b182c1dd011dde63e5a4f78c0d84fba855c4f24207bdf84f080eb6fd",
+      "kind": "h2",
+      "chapter": "١١-تؤخذ-الزكاة-على-المياه-والموارد-وفي-الدور",
+      "prev": "f57279e5e08f65b9aa33e6f77c59738fd981675b1d001e1bb7fb0ade4dc7b44e",
+      "next": "239b6c13beb6b063b1c75fffa755434e0a51f987b97785a834ab6a975f64a5d7"
+    },
+    {
+      "ord": 250,
+      "blockId": "9bd3fe917d1f61f8cd7bda89a5e4d9f4",
+      "fp64": "b420a1322757eb1e",
+      "normHash": "239b6c13beb6b063b1c75fffa755434e0a51f987b97785a834ab6a975f64a5d7",
+      "kind": "p",
+      "chapter": "١١-تؤخذ-الزكاة-على-المياه-والموارد-وفي-الدور",
+      "prev": "877835d1b182c1dd011dde63e5a4f78c0d84fba855c4f24207bdf84f080eb6fd",
+      "next": "41b8be8bbb597a96a9db695f556695e1c856069257b37b1d7a48895e69b49390"
+    },
+    {
+      "ord": 251,
+      "blockId": "3fe23f2605ce7beaa6a5cdc579041a18",
+      "fp64": "effcaf6e557a4a1f",
+      "normHash": "41b8be8bbb597a96a9db695f556695e1c856069257b37b1d7a48895e69b49390",
+      "kind": "h2",
+      "chapter": "١٢-لا-يشتري-المسلم-صدقته-إذا-وجدها-تباع",
+      "prev": "239b6c13beb6b063b1c75fffa755434e0a51f987b97785a834ab6a975f64a5d7",
+      "next": "e210dc7bf1654f6d66cc5a6c90f0b737430450b556a26d90660d49500f8198d2"
+    },
+    {
+      "ord": 252,
+      "blockId": "43cf12fb27e9d5e12dc2d043aedc5b2d",
+      "fp64": "f5d5a012177a787c",
+      "normHash": "e210dc7bf1654f6d66cc5a6c90f0b737430450b556a26d90660d49500f8198d2",
+      "kind": "p",
+      "chapter": "١٢-لا-يشتري-المسلم-صدقته-إذا-وجدها-تباع",
+      "prev": "41b8be8bbb597a96a9db695f556695e1c856069257b37b1d7a48895e69b49390",
+      "next": "4bda89fea352aa57230b84c95603004e5c5e5c2cb889f0a68a1f9d8513401fdd"
+    },
+    {
+      "ord": 253,
+      "blockId": "bd4778990bfe26261649b4f3218cff5a",
+      "fp64": "5ddc1072754d9d26",
+      "normHash": "4bda89fea352aa57230b84c95603004e5c5e5c2cb889f0a68a1f9d8513401fdd",
+      "kind": "p",
+      "chapter": "١٢-لا-يشتري-المسلم-صدقته-إذا-وجدها-تباع",
+      "prev": "e210dc7bf1654f6d66cc5a6c90f0b737430450b556a26d90660d49500f8198d2",
+      "next": "c08cd48df02782a05d794b9546fe03555da34307f5cc30481c9cbf891f430ea4"
+    },
+    {
+      "ord": 254,
+      "blockId": "ea324e5a9089513d7ce196f059de18fa",
+      "fp64": "2ddff7df7b79e5b7",
+      "normHash": "c08cd48df02782a05d794b9546fe03555da34307f5cc30481c9cbf891f430ea4",
+      "kind": "page",
+      "chapter": "١٢-لا-يشتري-المسلم-صدقته-إذا-وجدها-تباع",
+      "prev": "4bda89fea352aa57230b84c95603004e5c5e5c2cb889f0a68a1f9d8513401fdd",
+      "next": "fd23a5eb620afc73a19fafe2fb7e9f3981772e58d7f4eb5f5ddac156e1c5ed5a"
+    },
+    {
+      "ord": 255,
+      "blockId": "216a2352edf9d1ba5520629a53339e70",
+      "fp64": "f73e387e9fb97f12",
+      "normHash": "fd23a5eb620afc73a19fafe2fb7e9f3981772e58d7f4eb5f5ddac156e1c5ed5a",
+      "kind": "h2",
+      "chapter": "١٣-دعاء-المصدق-لأهل-الصدقة-عند-دفعهم-الزكاة",
+      "prev": "c08cd48df02782a05d794b9546fe03555da34307f5cc30481c9cbf891f430ea4",
+      "next": "fc205117809aee8a1c9a66400baadf7900e005cc4ce1e8f9ec7d121ff2526ef0"
+    },
+    {
+      "ord": 256,
+      "blockId": "573472c79bae72f1605fccf8907bcb75",
+      "fp64": "b4f0c49a35d8307a",
+      "normHash": "fc205117809aee8a1c9a66400baadf7900e005cc4ce1e8f9ec7d121ff2526ef0",
+      "kind": "p",
+      "chapter": "١٣-دعاء-المصدق-لأهل-الصدقة-عند-دفعهم-الزكاة",
+      "prev": "fd23a5eb620afc73a19fafe2fb7e9f3981772e58d7f4eb5f5ddac156e1c5ed5a",
+      "next": "f9b183da1257cc03667ec0bd81412161c9e8499d01c41dba0d53ced28fdc4c8f"
+    },
+    {
+      "ord": 257,
+      "blockId": "cdcfe8dece26dc11bd734532f4e42e32",
+      "fp64": "4640846b87674735",
+      "normHash": "f9b183da1257cc03667ec0bd81412161c9e8499d01c41dba0d53ced28fdc4c8f",
+      "kind": "h2",
+      "chapter": "١٤-إذا-ملك-نصابا-صغارا-انعقد-عليه-الحول-من-حين-ملكه",
+      "prev": "fc205117809aee8a1c9a66400baadf7900e005cc4ce1e8f9ec7d121ff2526ef0",
+      "next": "c6d87e946bfe0efcb76a463feb7d5436d3f1dc64a1f2c394375bf427532110bc"
+    },
+    {
+      "ord": 258,
+      "blockId": "607a08f6788e9908137b034f708f3cca",
+      "fp64": "c98f2642fff67f1d",
+      "normHash": "c6d87e946bfe0efcb76a463feb7d5436d3f1dc64a1f2c394375bf427532110bc",
+      "kind": "p",
+      "chapter": "١٤-إذا-ملك-نصابا-صغارا-انعقد-عليه-الحول-من-حين-ملكه",
+      "prev": "f9b183da1257cc03667ec0bd81412161c9e8499d01c41dba0d53ced28fdc4c8f",
+      "next": "953dd8a347da89c33d56f4de449d2d9fee982f949ba746150a058cfab0e99844"
+    },
+    {
+      "ord": 259,
+      "blockId": "ec573f95b95f3460826fb4d2472e41b1",
+      "fp64": "6780a4e7be7d655d",
+      "normHash": "953dd8a347da89c33d56f4de449d2d9fee982f949ba746150a058cfab0e99844",
+      "kind": "h2",
+      "chapter": "١٥-نتاج-السائمة-من-بهيمة-الأنعام-حولها-حول-أمهاتها-إن-كانت-الأمهات-بلغت-نصابا",
+      "prev": "c6d87e946bfe0efcb76a463feb7d5436d3f1dc64a1f2c394375bf427532110bc",
+      "next": "dead3bddeffbd03672e1918b8b11dd0f61babdb17f32e282750948b92fddef38"
+    },
+    {
+      "ord": 260,
+      "blockId": "54234d37e013f174f071b89ca2c459aa",
+      "fp64": "56986031751f6329",
+      "normHash": "dead3bddeffbd03672e1918b8b11dd0f61babdb17f32e282750948b92fddef38",
+      "kind": "p",
+      "chapter": "١٥-نتاج-السائمة-من-بهيمة-الأنعام-حولها-حول-أمهاتها-إن-كانت-الأمهات-بلغت-نصابا",
+      "prev": "953dd8a347da89c33d56f4de449d2d9fee982f949ba746150a058cfab0e99844",
+      "next": "bbe81a302c1dc40ea77948c576b48441f764b3548dece155a48c19aa141e5f60"
+    },
+    {
+      "ord": 261,
+      "blockId": "aae68d05407ca720233c60a54f5efae5",
+      "fp64": "5f4c247255555c14",
+      "normHash": "bbe81a302c1dc40ea77948c576b48441f764b3548dece155a48c19aa141e5f60",
+      "kind": "p",
+      "chapter": "١٥-نتاج-السائمة-من-بهيمة-الأنعام-حولها-حول-أمهاتها-إن-كانت-الأمهات-بلغت-نصابا",
+      "prev": "dead3bddeffbd03672e1918b8b11dd0f61babdb17f32e282750948b92fddef38",
+      "next": "0516e251ec96bafda2747e69ea3f55e59a1298a8f0722685ea476a4f2cfc8bea"
+    },
+    {
+      "ord": 262,
+      "blockId": "875af60dd0834af3a9c4f55094b6a67e",
+      "fp64": "77ffff9efa7bfc7f",
+      "normHash": "0516e251ec96bafda2747e69ea3f55e59a1298a8f0722685ea476a4f2cfc8bea",
+      "kind": "page",
+      "chapter": "١٥-نتاج-السائمة-من-بهيمة-الأنعام-حولها-حول-أمهاتها-إن-كانت-الأمهات-بلغت-نصابا",
+      "prev": "bbe81a302c1dc40ea77948c576b48441f764b3548dece155a48c19aa141e5f60",
+      "next": "2c41a5c193bb51787ce362d13fdcfd7c7246e04f1bb5c43f97d385c89037b120"
+    },
+    {
+      "ord": 263,
+      "blockId": "c9fe888f4bff6ec2617d81c8487d6266",
+      "fp64": "4e5c204277543f7c",
+      "normHash": "2c41a5c193bb51787ce362d13fdcfd7c7246e04f1bb5c43f97d385c89037b120",
+      "kind": "p",
+      "chapter": "١٥-نتاج-السائمة-من-بهيمة-الأنعام-حولها-حول-أمهاتها-إن-كانت-الأمهات-بلغت-نصابا",
+      "prev": "0516e251ec96bafda2747e69ea3f55e59a1298a8f0722685ea476a4f2cfc8bea",
+      "next": "363e09d5e03319d2a1ca30b9c418e29815a02cf6594de50934a5f9f26a6170ce"
+    },
+    {
+      "ord": 264,
+      "blockId": "0c82d7b22c3941d3a9a0cba1ec98bb6f",
+      "fp64": "9daffe52e636c1a2",
+      "normHash": "363e09d5e03319d2a1ca30b9c418e29815a02cf6594de50934a5f9f26a6170ce",
+      "kind": "h2",
+      "chapter": "١٦-كل-جنس-من-الإبل-والبقر-والغنم-ينقسم-إلى-نوعين",
+      "prev": "2c41a5c193bb51787ce362d13fdcfd7c7246e04f1bb5c43f97d385c89037b120",
+      "next": "8806114d55fd74547cd260c68940dffba69f113f7084c3367a1941ae5fe30789"
+    },
+    {
+      "ord": 265,
+      "blockId": "31f17ea01f1927e11ca6765057d4afcd",
+      "fp64": "9e75fd1fc2e2feff",
+      "normHash": "8806114d55fd74547cd260c68940dffba69f113f7084c3367a1941ae5fe30789",
+      "kind": "h3",
+      "chapter": "١٦-كل-جنس-من-الإبل-والبقر-والغنم-ينقسم-إلى-نوعين",
+      "prev": "363e09d5e03319d2a1ca30b9c418e29815a02cf6594de50934a5f9f26a6170ce",
+      "next": "59eb9836b23b161cf7a655beb39794695b4fed5498239d8f7888498bfaef0914"
+    },
+    {
+      "ord": 266,
+      "blockId": "defc6e0f4484acccf350b92740686ac4",
+      "fp64": "8dd968f02f72c3ac",
+      "normHash": "59eb9836b23b161cf7a655beb39794695b4fed5498239d8f7888498bfaef0914",
+      "kind": "p",
+      "chapter": "١٦-كل-جنس-من-الإبل-والبقر-والغنم-ينقسم-إلى-نوعين",
+      "prev": "8806114d55fd74547cd260c68940dffba69f113f7084c3367a1941ae5fe30789",
+      "next": "cedf938a731b14586e050512175703c62b8be1512844b047aa91fc9d5bff6be3"
+    },
+    {
+      "ord": 267,
+      "blockId": "6a30febd337a8ab6b900414d93aca249",
+      "fp64": "cdfc69f2bdfbc17a",
+      "normHash": "cedf938a731b14586e050512175703c62b8be1512844b047aa91fc9d5bff6be3",
+      "kind": "p",
+      "chapter": "١٦-كل-جنس-من-الإبل-والبقر-والغنم-ينقسم-إلى-نوعين",
+      "prev": "59eb9836b23b161cf7a655beb39794695b4fed5498239d8f7888498bfaef0914",
+      "next": "e0a891e8e10d499dbf54f922db36104c2928eb8604b93f95661dcd84070f6614"
+    },
+    {
+      "ord": 268,
+      "blockId": "42aa2cd316776fe5689f149a4d877b66",
+      "fp64": "3da6cc180652dc27",
+      "normHash": "e0a891e8e10d499dbf54f922db36104c2928eb8604b93f95661dcd84070f6614",
+      "kind": "h3",
+      "chapter": "١٦-كل-جنس-من-الإبل-والبقر-والغنم-ينقسم-إلى-نوعين",
+      "prev": "cedf938a731b14586e050512175703c62b8be1512844b047aa91fc9d5bff6be3",
+      "next": "113f1a3e79ceaa9e599a1e6af4de397cee82b3323bef9edd3fa327ce1d406403"
+    },
+    {
+      "ord": 269,
+      "blockId": "997a9643861bedadc5c27d9dc2f98ff7",
+      "fp64": "cdb4ee2aea69cc6a",
+      "normHash": "113f1a3e79ceaa9e599a1e6af4de397cee82b3323bef9edd3fa327ce1d406403",
+      "kind": "p",
+      "chapter": "١٦-كل-جنس-من-الإبل-والبقر-والغنم-ينقسم-إلى-نوعين",
+      "prev": "e0a891e8e10d499dbf54f922db36104c2928eb8604b93f95661dcd84070f6614",
+      "next": "d8aa361210061f3d574b0ea0207df8e264b455d3d249c208213ca708792395ef"
+    },
+    {
+      "ord": 270,
+      "blockId": "2fb6b1c65ca1f71576cf88c322174594",
+      "fp64": "9dfffcbac6e6e7fd",
+      "normHash": "d8aa361210061f3d574b0ea0207df8e264b455d3d249c208213ca708792395ef",
+      "kind": "h3",
+      "chapter": "١٦-كل-جنس-من-الإبل-والبقر-والغنم-ينقسم-إلى-نوعين",
+      "prev": "113f1a3e79ceaa9e599a1e6af4de397cee82b3323bef9edd3fa327ce1d406403",
+      "next": "35dbcd81977e5f657e3b5d2fb7cfabdc61ad6bb393ec67d5b4ffd4004941aafd"
+    },
+    {
+      "ord": 271,
+      "blockId": "5026804a5e85a978122500f95e4aec18",
+      "fp64": "5e4460f057565c09",
+      "normHash": "35dbcd81977e5f657e3b5d2fb7cfabdc61ad6bb393ec67d5b4ffd4004941aafd",
+      "kind": "p",
+      "chapter": "١٦-كل-جنس-من-الإبل-والبقر-والغنم-ينقسم-إلى-نوعين",
+      "prev": "d8aa361210061f3d574b0ea0207df8e264b455d3d249c208213ca708792395ef",
+      "next": "08b2f1baaebb282db124b9eba48104c1b2a6fdc0480c4d50d089fb719d138856"
+    },
+    {
+      "ord": 272,
+      "blockId": "6d280849445277d6f10afc8ab684a0a4",
+      "fp64": "37e876de9bf57cef",
+      "normHash": "08b2f1baaebb282db124b9eba48104c1b2a6fdc0480c4d50d089fb719d138856",
+      "kind": "h2",
+      "chapter": "١٧-الخلطة-في-بهيمة-الأنعام-السائمة",
+      "prev": "35dbcd81977e5f657e3b5d2fb7cfabdc61ad6bb393ec67d5b4ffd4004941aafd",
+      "next": "a1110d2751ce6543babae78b8510d66c5eb4950fbd8a2795e6158ebc8d638492"
+    },
+    {
+      "ord": 273,
+      "blockId": "335e8a7ac4e795b70c1a8b8fb05f375d",
+      "fp64": "e465c05e1b357178",
+      "normHash": "a1110d2751ce6543babae78b8510d66c5eb4950fbd8a2795e6158ebc8d638492",
+      "kind": "p",
+      "chapter": "١٧-الخلطة-في-بهيمة-الأنعام-السائمة",
+      "prev": "08b2f1baaebb282db124b9eba48104c1b2a6fdc0480c4d50d089fb719d138856",
+      "next": "98048d2512a85d5d8705f05aa69ea4c90efc2b14ae90e4cf5f92f97074b3de50"
+    },
+    {
+      "ord": 274,
+      "blockId": "a178b7fa8fee8629d9127877aeac83ac",
+      "fp64": "4c48ef2207755c57",
+      "normHash": "98048d2512a85d5d8705f05aa69ea4c90efc2b14ae90e4cf5f92f97074b3de50",
+      "kind": "p",
+      "chapter": "١٧-الخلطة-في-بهيمة-الأنعام-السائمة",
+      "prev": "a1110d2751ce6543babae78b8510d66c5eb4950fbd8a2795e6158ebc8d638492",
+      "next": "2ab029640d0d4db368c048d36be6c59a5ae8545d4205df7e2b6173bbc905b96c"
+    },
+    {
+      "ord": 275,
+      "blockId": "e7e7dd0b9dbc0d105355c28336a48c7d",
+      "fp64": "77dff39fdf716677",
+      "normHash": "2ab029640d0d4db368c048d36be6c59a5ae8545d4205df7e2b6173bbc905b96c",
+      "kind": "page",
+      "chapter": "١٧-الخلطة-في-بهيمة-الأنعام-السائمة",
+      "prev": "98048d2512a85d5d8705f05aa69ea4c90efc2b14ae90e4cf5f92f97074b3de50",
+      "next": "6849db3a5c8da5c642ca40475b3ecf08ef5e2e4f130730d0273ee51051b445e1"
+    },
+    {
+      "ord": 276,
+      "blockId": "33d5fcd9a83fcc378e2ef8c88e0ccfaa",
+      "fp64": "7ef4cc1b96efceed",
+      "normHash": "6849db3a5c8da5c642ca40475b3ecf08ef5e2e4f130730d0273ee51051b445e1",
+      "kind": "h3",
+      "chapter": "١٧-الخلطة-في-بهيمة-الأنعام-السائمة",
+      "prev": "2ab029640d0d4db368c048d36be6c59a5ae8545d4205df7e2b6173bbc905b96c",
+      "next": "08b1a4c81c06e5db9c5f011515f305492afd793f1a3b251989f613f986a20ffe"
+    },
+    {
+      "ord": 277,
+      "blockId": "6589e3740a43127a7f9240b8974949c5",
+      "fp64": "e0fcbedfbdf2f9cf",
+      "normHash": "08b1a4c81c06e5db9c5f011515f305492afd793f1a3b251989f613f986a20ffe",
+      "kind": "h4",
+      "chapter": "١٧-الخلطة-في-بهيمة-الأنعام-السائمة",
+      "prev": "6849db3a5c8da5c642ca40475b3ecf08ef5e2e4f130730d0273ee51051b445e1",
+      "next": "20e9dfaedf62e3582a04b9f900f64005ab35733c255c136c18dd30452e6f40ce"
+    },
+    {
+      "ord": 278,
+      "blockId": "020b13477e9c34942d9dcd9a1d399189",
+      "fp64": "b5c5c659c15a8ff0",
+      "normHash": "20e9dfaedf62e3582a04b9f900f64005ab35733c255c136c18dd30452e6f40ce",
+      "kind": "p",
+      "chapter": "١٧-الخلطة-في-بهيمة-الأنعام-السائمة",
+      "prev": "08b1a4c81c06e5db9c5f011515f305492afd793f1a3b251989f613f986a20ffe",
+      "next": "a90b00950540799bd9cbe6dd0421323f05fd1b6f7583358900f4af38a7e3b3a3"
+    },
+    {
+      "ord": 279,
+      "blockId": "4e0402e092df09f921b61b7062b10001",
+      "fp64": "e5dfb5cebdd2e8bf",
+      "normHash": "a90b00950540799bd9cbe6dd0421323f05fd1b6f7583358900f4af38a7e3b3a3",
+      "kind": "h4",
+      "chapter": "١٧-الخلطة-في-بهيمة-الأنعام-السائمة",
+      "prev": "20e9dfaedf62e3582a04b9f900f64005ab35733c255c136c18dd30452e6f40ce",
+      "next": "995adf54e59a657312e5fa9f8f91467c9af009ac16d773ae0dc431ff2f52c867"
+    },
+    {
+      "ord": 280,
+      "blockId": "ddd6c0fba673ea8646baf43b6e64faa0",
+      "fp64": "8fce1bfe7e66a9f7",
+      "normHash": "995adf54e59a657312e5fa9f8f91467c9af009ac16d773ae0dc431ff2f52c867",
+      "kind": "p",
+      "chapter": "١٧-الخلطة-في-بهيمة-الأنعام-السائمة",
+      "prev": "a90b00950540799bd9cbe6dd0421323f05fd1b6f7583358900f4af38a7e3b3a3",
+      "next": "4dcb21431404c95e439bbb3c5097d50576907d574e50383f125f88f5c669429f"
+    },
+    {
+      "ord": 281,
+      "blockId": "421b1bcf465c732a454cf4fc42106b19",
+      "fp64": "476ce45211f31eb8",
+      "normHash": "4dcb21431404c95e439bbb3c5097d50576907d574e50383f125f88f5c669429f",
+      "kind": "h4",
+      "chapter": "١٧-الخلطة-في-بهيمة-الأنعام-السائمة",
+      "prev": "995adf54e59a657312e5fa9f8f91467c9af009ac16d773ae0dc431ff2f52c867",
+      "next": "f6b75c1dce69755e3f84ed1da9a32957b139704c815b60cd84baa4ad1ec31c73"
+    },
+    {
+      "ord": 282,
+      "blockId": "ac0d6925a75d967192bde9e3dbf2de97",
+      "fp64": "97ee34dc15763493",
+      "normHash": "f6b75c1dce69755e3f84ed1da9a32957b139704c815b60cd84baa4ad1ec31c73",
+      "kind": "h4",
+      "chapter": "١٧-الخلطة-في-بهيمة-الأنعام-السائمة",
+      "prev": "4dcb21431404c95e439bbb3c5097d50576907d574e50383f125f88f5c669429f",
+      "next": "ea7253c24b8bab775723b0a17e53fa64a6f94ac680772920d2ac4dde4d10a83c"
+    },
+    {
+      "ord": 283,
+      "blockId": "c5575f1282cb791387253bf136ce29e6",
+      "fp64": "cbc7f850ef5779cc",
+      "normHash": "ea7253c24b8bab775723b0a17e53fa64a6f94ac680772920d2ac4dde4d10a83c",
+      "kind": "p",
+      "chapter": "١٧-الخلطة-في-بهيمة-الأنعام-السائمة",
+      "prev": "f6b75c1dce69755e3f84ed1da9a32957b139704c815b60cd84baa4ad1ec31c73",
+      "next": "05b42c0901414eb889ff92529787a379f919bb8b143f321c3fb8f30e40a8e92b"
+    },
+    {
+      "ord": 284,
+      "blockId": "1dec3747277bf895a92f9fb1b3f52718",
+      "fp64": "2ccf947f9f53fdeb",
+      "normHash": "05b42c0901414eb889ff92529787a379f919bb8b143f321c3fb8f30e40a8e92b",
+      "kind": "h4",
+      "chapter": "١٧-الخلطة-في-بهيمة-الأنعام-السائمة",
+      "prev": "ea7253c24b8bab775723b0a17e53fa64a6f94ac680772920d2ac4dde4d10a83c",
+      "next": "57ea1d30c7a2033e3fb7e4bcbb8c3b55559d52bba61352b2fc435ea69d03f812"
+    },
+    {
+      "ord": 285,
+      "blockId": "e18b2c11d8f0c202c288b1f2d2de7c81",
+      "fp64": "83e5dc54d14419e2",
+      "normHash": "57ea1d30c7a2033e3fb7e4bcbb8c3b55559d52bba61352b2fc435ea69d03f812",
+      "kind": "p",
+      "chapter": "١٧-الخلطة-في-بهيمة-الأنعام-السائمة",
+      "prev": "05b42c0901414eb889ff92529787a379f919bb8b143f321c3fb8f30e40a8e92b",
+      "next": "e5e75180fb5488086c64b0d0d9190bdbd6d4a335abcfdc960fa612e4c25a9fd8"
+    },
+    {
+      "ord": 286,
+      "blockId": "95401d3f2be601d303e9c8aa97b4353d",
+      "fp64": "1341fc07c685bea6",
+      "normHash": "e5e75180fb5488086c64b0d0d9190bdbd6d4a335abcfdc960fa612e4c25a9fd8",
+      "kind": "p",
+      "chapter": "١٧-الخلطة-في-بهيمة-الأنعام-السائمة",
+      "prev": "57ea1d30c7a2033e3fb7e4bcbb8c3b55559d52bba61352b2fc435ea69d03f812",
+      "next": "0d53e688c32a0cffd30143de1400c39fc099f8b356cdafb717807401a3733633"
+    },
+    {
+      "ord": 287,
+      "blockId": "76c5d6e83d300ccf8a1050408c46645b",
+      "fp64": "7ec977fa99f7feee",
+      "normHash": "0d53e688c32a0cffd30143de1400c39fc099f8b356cdafb717807401a3733633",
+      "kind": "h3",
+      "chapter": "١٧-الخلطة-في-بهيمة-الأنعام-السائمة",
+      "prev": "e5e75180fb5488086c64b0d0d9190bdbd6d4a335abcfdc960fa612e4c25a9fd8",
+      "next": "9dbe39f1be28f101979b8bbbe5a88a9513597298d53d1eea7cd53838e87d1628"
+    },
+    {
+      "ord": 288,
+      "blockId": "d2ed26b1f06a73690da3f6fe64b9aa32",
+      "fp64": "76c836feab737c6e",
+      "normHash": "9dbe39f1be28f101979b8bbbe5a88a9513597298d53d1eea7cd53838e87d1628",
+      "kind": "h4",
+      "chapter": "١٧-الخلطة-في-بهيمة-الأنعام-السائمة",
+      "prev": "0d53e688c32a0cffd30143de1400c39fc099f8b356cdafb717807401a3733633",
+      "next": "61f1c99df3c8d0caabc72d642412a440eb7905d84fc2c49a29cc2cc54c53d85b"
+    },
+    {
+      "ord": 289,
+      "blockId": "1621c43460db1acb0d0ffdcc58978bb8",
+      "fp64": "4789766a1de57ccc",
+      "normHash": "61f1c99df3c8d0caabc72d642412a440eb7905d84fc2c49a29cc2cc54c53d85b",
+      "kind": "p",
+      "chapter": "١٧-الخلطة-في-بهيمة-الأنعام-السائمة",
+      "prev": "9dbe39f1be28f101979b8bbbe5a88a9513597298d53d1eea7cd53838e87d1628",
+      "next": "cc2496af4d131166e1700cb451d387248e08d9495bf32d28ce0f1a481ea11e56"
+    },
+    {
+      "ord": 290,
+      "blockId": "0764c3adc6248ae893d0145a12c3734b",
+      "fp64": "e6de54bcbef7fc78",
+      "normHash": "cc2496af4d131166e1700cb451d387248e08d9495bf32d28ce0f1a481ea11e56",
+      "kind": "h4",
+      "chapter": "١٧-الخلطة-في-بهيمة-الأنعام-السائمة",
+      "prev": "61f1c99df3c8d0caabc72d642412a440eb7905d84fc2c49a29cc2cc54c53d85b",
+      "next": "b449924604cff45e60b801e31b84f3cc160c661bda9a70473de2897008bc46c1"
+    },
+    {
+      "ord": 291,
+      "blockId": "1b4274f915c16fcfc00e063effa6f76d",
+      "fp64": "dc43a5e20ed93e89",
+      "normHash": "b449924604cff45e60b801e31b84f3cc160c661bda9a70473de2897008bc46c1",
+      "kind": "p",
+      "chapter": "١٧-الخلطة-في-بهيمة-الأنعام-السائمة",
+      "prev": "cc2496af4d131166e1700cb451d387248e08d9495bf32d28ce0f1a481ea11e56",
+      "next": "1b812f1da0256532b54fe37b737551313292597646cd399cd89855624c1fd078"
+    },
+    {
+      "ord": 292,
+      "blockId": "0a3223c5b8919d226e70e7dfa6fdf244",
+      "fp64": "f7ffffdf5eb7e17f",
+      "normHash": "1b812f1da0256532b54fe37b737551313292597646cd399cd89855624c1fd078",
+      "kind": "page",
+      "chapter": "١٧-الخلطة-في-بهيمة-الأنعام-السائمة",
+      "prev": "b449924604cff45e60b801e31b84f3cc160c661bda9a70473de2897008bc46c1",
+      "next": "88716a677fdda257fe6894286a639f79dfafb92ce6c746a51b71fc2ee5e8f5e2"
+    },
+    {
+      "ord": 293,
+      "blockId": "3037ae3a3688be18cf20352c73a8adce",
+      "fp64": "8d4e8ed2e1535cf9",
+      "normHash": "88716a677fdda257fe6894286a639f79dfafb92ce6c746a51b71fc2ee5e8f5e2",
+      "kind": "p",
+      "chapter": "١٧-الخلطة-في-بهيمة-الأنعام-السائمة",
+      "prev": "1b812f1da0256532b54fe37b737551313292597646cd399cd89855624c1fd078",
+      "next": "d12f589903b85d06881dcca9c23f5a13886bf1485fe5888c0ffbb2f085b8c5c5"
+    },
+    {
+      "ord": 294,
+      "blockId": "47a72cb0c7c8a42aa2dae9f827185655",
+      "fp64": "78bc3414fad0fe79",
+      "normHash": "d12f589903b85d06881dcca9c23f5a13886bf1485fe5888c0ffbb2f085b8c5c5",
+      "kind": "h4",
+      "chapter": "١٧-الخلطة-في-بهيمة-الأنعام-السائمة",
+      "prev": "88716a677fdda257fe6894286a639f79dfafb92ce6c746a51b71fc2ee5e8f5e2",
+      "next": "51b219bdd2ba5b073ca80915f56c4d6f41826325e7489fc6537565049f7cf6dd"
+    },
+    {
+      "ord": 295,
+      "blockId": "c3eac7a3eae7435a7cb742bd76c3ca51",
+      "fp64": "10837250a9417670",
+      "normHash": "51b219bdd2ba5b073ca80915f56c4d6f41826325e7489fc6537565049f7cf6dd",
+      "kind": "p",
+      "chapter": "١٧-الخلطة-في-بهيمة-الأنعام-السائمة",
+      "prev": "d12f589903b85d06881dcca9c23f5a13886bf1485fe5888c0ffbb2f085b8c5c5",
+      "next": "c2b5e69d75ba42bf201f0dfa42be77e164a2ebbda6e845f37a30f2a6befe8dc1"
+    },
+    {
+      "ord": 296,
+      "blockId": "9591f09fc5ddc4ea767daf87d1303d1b",
+      "fp64": "3414f4011a529830",
+      "normHash": "c2b5e69d75ba42bf201f0dfa42be77e164a2ebbda6e845f37a30f2a6befe8dc1",
+      "kind": "h4",
+      "chapter": "١٧-الخلطة-في-بهيمة-الأنعام-السائمة",
+      "prev": "51b219bdd2ba5b073ca80915f56c4d6f41826325e7489fc6537565049f7cf6dd",
+      "next": "f300d6d76b1b668c1e53196e30788ec8766833d5762763e3913c18ae73465fad"
+    },
+    {
+      "ord": 297,
+      "blockId": "447a2b8bf1ebb6c74121076c0220555c",
+      "fp64": "e4df8bfe0f73bdab",
+      "normHash": "f300d6d76b1b668c1e53196e30788ec8766833d5762763e3913c18ae73465fad",
+      "kind": "p",
+      "chapter": "١٧-الخلطة-في-بهيمة-الأنعام-السائمة",
+      "prev": "c2b5e69d75ba42bf201f0dfa42be77e164a2ebbda6e845f37a30f2a6befe8dc1",
+      "next": "4b2de871665debaea80a0fa9f21e88b1419a0bce9e898aeadaa503895aba8570"
+    },
+    {
+      "ord": 298,
+      "blockId": "76a6596decde7a9cdf96036c42c15519",
+      "fp64": "321e2418ebd1c469",
+      "normHash": "4b2de871665debaea80a0fa9f21e88b1419a0bce9e898aeadaa503895aba8570",
+      "kind": "h4",
+      "chapter": "١٧-الخلطة-في-بهيمة-الأنعام-السائمة",
+      "prev": "f300d6d76b1b668c1e53196e30788ec8766833d5762763e3913c18ae73465fad",
+      "next": "286a4ff7df004b84f0b208ec800f642177ca1699797b92d64de94072bad697a4"
+    },
+    {
+      "ord": 299,
+      "blockId": "f1f3801f1ec5d14ef79e7e1474c4a59d",
+      "fp64": "51c924f7716d8f62",
+      "normHash": "286a4ff7df004b84f0b208ec800f642177ca1699797b92d64de94072bad697a4",
+      "kind": "p",
+      "chapter": "١٧-الخلطة-في-بهيمة-الأنعام-السائمة",
+      "prev": "4b2de871665debaea80a0fa9f21e88b1419a0bce9e898aeadaa503895aba8570",
+      "next": "700fcc44428c1e5918fcdc1b1bbeb37a5c05f73feb9227c34bb8d20d519f16e1"
+    },
+    {
+      "ord": 300,
+      "blockId": "9b1da5aec03294a8023b07abd78f0731",
+      "fp64": "a464f65a37773478",
+      "normHash": "700fcc44428c1e5918fcdc1b1bbeb37a5c05f73feb9227c34bb8d20d519f16e1",
+      "kind": "p",
+      "chapter": "١٧-الخلطة-في-بهيمة-الأنعام-السائمة",
+      "prev": "286a4ff7df004b84f0b208ec800f642177ca1699797b92d64de94072bad697a4",
+      "next": "ee25b0626b2f45118eb0fd089648f28fb87beb1cdb99013ad149eb0f0bf79487"
+    },
+    {
+      "ord": 301,
+      "blockId": "0e6ebdfdb0cc7a45638c03cec8b09275",
+      "fp64": "700963a8ff4d5c43",
+      "normHash": "ee25b0626b2f45118eb0fd089648f28fb87beb1cdb99013ad149eb0f0bf79487",
+      "kind": "p",
+      "chapter": "١٧-الخلطة-في-بهيمة-الأنعام-السائمة",
+      "prev": "700fcc44428c1e5918fcdc1b1bbeb37a5c05f73feb9227c34bb8d20d519f16e1",
+      "next": "e34c2494ff5cbdc924c6f860aefa5fea954590d966f699776c74c1bbfdda3b6b"
+    },
+    {
+      "ord": 302,
+      "blockId": "0cf0ca9528b74bad570e16a6932a5930",
+      "fp64": "b5fff3fefa7b7337",
+      "normHash": "e34c2494ff5cbdc924c6f860aefa5fea954590d966f699776c74c1bbfdda3b6b",
+      "kind": "page",
+      "chapter": "١٧-الخلطة-في-بهيمة-الأنعام-السائمة",
+      "prev": "ee25b0626b2f45118eb0fd089648f28fb87beb1cdb99013ad149eb0f0bf79487",
+      "next": "6d1bff796efa3c708f67ab18b46bc9d82b02c5c1312c0ae7fee8f0a4d5eb3c0a"
+    },
+    {
+      "ord": 303,
+      "blockId": "a608eceaaad76a9e453bae4312092f35",
+      "fp64": "3d6c0855dcce5eda",
+      "normHash": "6d1bff796efa3c708f67ab18b46bc9d82b02c5c1312c0ae7fee8f0a4d5eb3c0a",
+      "kind": "h3",
+      "chapter": "١٧-الخلطة-في-بهيمة-الأنعام-السائمة",
+      "prev": "e34c2494ff5cbdc924c6f860aefa5fea954590d966f699776c74c1bbfdda3b6b",
+      "next": "6293949e4ec4e50edaa041c4d112a89245ca21d1726eb4de1293cfdf9e453eab"
+    },
+    {
+      "ord": 304,
+      "blockId": "75b63c57138485c13659fc4fca2ac1ac",
+      "fp64": "70815521ced8f927",
+      "normHash": "6293949e4ec4e50edaa041c4d112a89245ca21d1726eb4de1293cfdf9e453eab",
+      "kind": "p",
+      "chapter": "١٧-الخلطة-في-بهيمة-الأنعام-السائمة",
+      "prev": "6d1bff796efa3c708f67ab18b46bc9d82b02c5c1312c0ae7fee8f0a4d5eb3c0a",
+      "next": "1c21b2f42139778f50455a64169cb552520849f06c0fa946bf6e8f2a9e51020c"
+    },
+    {
+      "ord": 305,
+      "blockId": "8b8165fa73be6487f1ff724cc42d4e3b",
+      "fp64": "cca376800b763dd3",
+      "normHash": "1c21b2f42139778f50455a64169cb552520849f06c0fa946bf6e8f2a9e51020c",
+      "kind": "li",
+      "chapter": "١٧-الخلطة-في-بهيمة-الأنعام-السائمة",
+      "prev": "6293949e4ec4e50edaa041c4d112a89245ca21d1726eb4de1293cfdf9e453eab",
+      "next": "567069e2f1cbc76e3d7fa062f7fb63a30bf072354709c1b38a54659b1ba1928d"
+    },
+    {
+      "ord": 306,
+      "blockId": "becd193c33e7527f16f6ec46787ba6d1",
+      "fp64": "8883c41205563887",
+      "normHash": "567069e2f1cbc76e3d7fa062f7fb63a30bf072354709c1b38a54659b1ba1928d",
+      "kind": "li",
+      "chapter": "١٧-الخلطة-في-بهيمة-الأنعام-السائمة",
+      "prev": "1c21b2f42139778f50455a64169cb552520849f06c0fa946bf6e8f2a9e51020c",
+      "next": "f1bf08b03c514ea7a9a9c070cd54bfedf664b5cc52e8b4476c1fdf9a4cc0c70a"
+    },
+    {
+      "ord": 307,
+      "blockId": "fc42b3a529e9d8cc35004b40a2a71451",
+      "fp64": "278d645445521e85",
+      "normHash": "f1bf08b03c514ea7a9a9c070cd54bfedf664b5cc52e8b4476c1fdf9a4cc0c70a",
+      "kind": "li",
+      "chapter": "١٧-الخلطة-في-بهيمة-الأنعام-السائمة",
+      "prev": "567069e2f1cbc76e3d7fa062f7fb63a30bf072354709c1b38a54659b1ba1928d",
+      "next": "6bcee0799235d64f2d54164195fa9e12f939882bdf2194fc70206cff8571d334"
+    },
+    {
+      "ord": 308,
+      "blockId": "14245cc5345fc8216652736ad4f949d6",
+      "fp64": "4cdca55bd97dd717",
+      "normHash": "6bcee0799235d64f2d54164195fa9e12f939882bdf2194fc70206cff8571d334",
+      "kind": "h2",
+      "chapter": "١٨-إذا-كانت-سائمة-الرجل-الواحد-في-بلدان-شتى-وبينهما-مسافة-لا-تقصر-فيها-الصلاة",
+      "prev": "f1bf08b03c514ea7a9a9c070cd54bfedf664b5cc52e8b4476c1fdf9a4cc0c70a",
+      "next": "cd347d51cd9b7533de993da32c9666f807bff7b00f790359721b3b9ea4b5f0a6"
+    },
+    {
+      "ord": 309,
+      "blockId": "ee1858b057244a7aabf8dac313fca9b0",
+      "fp64": "3a07e456d7d0a69c",
+      "normHash": "cd347d51cd9b7533de993da32c9666f807bff7b00f790359721b3b9ea4b5f0a6",
+      "kind": "p",
+      "chapter": "١٨-إذا-كانت-سائمة-الرجل-الواحد-في-بلدان-شتى-وبينهما-مسافة-لا-تقصر-فيها-الصلاة",
+      "prev": "6bcee0799235d64f2d54164195fa9e12f939882bdf2194fc70206cff8571d334",
+      "next": "a5b9807f87b89b3352d56e9ea8e178ed39fa2f9bd0536bbcf0588af06e5ed3ae"
+    },
+    {
+      "ord": 310,
+      "blockId": "8b84ef88e923e9f07fb76b2fd6991a4f",
+      "fp64": "75c83740358f7c50",
+      "normHash": "a5b9807f87b89b3352d56e9ea8e178ed39fa2f9bd0536bbcf0588af06e5ed3ae",
+      "kind": "p",
+      "chapter": "١٨-إذا-كانت-سائمة-الرجل-الواحد-في-بلدان-شتى-وبينهما-مسافة-لا-تقصر-فيها-الصلاة",
+      "prev": "cd347d51cd9b7533de993da32c9666f807bff7b00f790359721b3b9ea4b5f0a6",
+      "next": "21f9c20f4e83572f264bf3be8f944f198e85a4861ab0d298f36d08d44149d424"
+    },
+    {
+      "ord": 311,
+      "blockId": "d8861fbdc1cc1efb8a61e6c83e83077d",
+      "fp64": "ffdfff9edf716b76",
+      "normHash": "21f9c20f4e83572f264bf3be8f944f198e85a4861ab0d298f36d08d44149d424",
+      "kind": "page",
+      "chapter": "١٨-إذا-كانت-سائمة-الرجل-الواحد-في-بلدان-شتى-وبينهما-مسافة-لا-تقصر-فيها-الصلاة",
+      "prev": "a5b9807f87b89b3352d56e9ea8e178ed39fa2f9bd0536bbcf0588af06e5ed3ae",
+      "next": "abb16e4230e2fd43fdb55c190c70285b7c36c08b861dcb28c37c939354e40638"
+    },
+    {
+      "ord": 312,
+      "blockId": "0bc3a836cdaba2f791fd1493e3f9be4f",
+      "fp64": "d1cc64ca51559cb2",
+      "normHash": "abb16e4230e2fd43fdb55c190c70285b7c36c08b861dcb28c37c939354e40638",
+      "kind": "p",
+      "chapter": "١٨-إذا-كانت-سائمة-الرجل-الواحد-في-بلدان-شتى-وبينهما-مسافة-لا-تقصر-فيها-الصلاة",
+      "prev": "21f9c20f4e83572f264bf3be8f944f198e85a4861ab0d298f36d08d44149d424",
+      "next": "996133760a2e253b4dc7ee5314a97fea904ec35b9184cb75cf455496acbae1b6"
+    },
+    {
+      "ord": 313,
+      "blockId": "8fbeb6e42adb9f52aafbd2dd3097c177",
+      "fp64": "be1fe075949b46a8",
+      "normHash": "996133760a2e253b4dc7ee5314a97fea904ec35b9184cb75cf455496acbae1b6",
+      "kind": "p",
+      "chapter": "١٨-إذا-كانت-سائمة-الرجل-الواحد-في-بلدان-شتى-وبينهما-مسافة-لا-تقصر-فيها-الصلاة",
+      "prev": "abb16e4230e2fd43fdb55c190c70285b7c36c08b861dcb28c37c939354e40638",
+      "next": "29c315fc09c1aba100c4bdc320185d3113a9063c922e6a439abd71bb9d6cd26c"
+    },
+    {
+      "ord": 314,
+      "blockId": "2935338068cd9c24a8bd6b22515985e8",
+      "fp64": "8c4ca50407554cd4",
+      "normHash": "29c315fc09c1aba100c4bdc320185d3113a9063c922e6a439abd71bb9d6cd26c",
+      "kind": "p",
+      "chapter": "١٨-إذا-كانت-سائمة-الرجل-الواحد-في-بلدان-شتى-وبينهما-مسافة-لا-تقصر-فيها-الصلاة",
+      "prev": "996133760a2e253b4dc7ee5314a97fea904ec35b9184cb75cf455496acbae1b6",
+      "next": "dc8f923a9265588ceca5fcf0a96022c60278aa06d1d8a22739c8a5f05d5bcb04"
+    },
+    {
+      "ord": 315,
+      "blockId": "4560a7de4e2834edfff398570649c92e",
+      "fp64": "466dea90d5b71ccc",
+      "normHash": "dc8f923a9265588ceca5fcf0a96022c60278aa06d1d8a22739c8a5f05d5bcb04",
+      "kind": "p",
+      "chapter": "١٨-إذا-كانت-سائمة-الرجل-الواحد-في-بلدان-شتى-وبينهما-مسافة-لا-تقصر-فيها-الصلاة",
+      "prev": "29c315fc09c1aba100c4bdc320185d3113a9063c922e6a439abd71bb9d6cd26c",
+      "next": "b67b3f845ed8fb63e7a1a516fb24082c977bf8b9103836ba00c102f7ba17888e"
+    },
+    {
+      "ord": 316,
+      "blockId": "c547ec5e2fc12e11a136a66daaee448b",
+      "fp64": "f4fdb77f7a59f263",
+      "normHash": "b67b3f845ed8fb63e7a1a516fb24082c977bf8b9103836ba00c102f7ba17888e",
+      "kind": "h2",
+      "chapter": "١٩-الفرق-بين-بهيمة-الأنعام-وغيرها",
+      "prev": "dc8f923a9265588ceca5fcf0a96022c60278aa06d1d8a22739c8a5f05d5bcb04",
+      "next": "ca5de1ebd5dcf330f649add132013ae98697823543bd7111d8b3399c23ea2f83"
+    },
+    {
+      "ord": 317,
+      "blockId": "5d4534086aa6d81321dc5acf41bdd381",
+      "fp64": "72e04c7a97557f65",
+      "normHash": "ca5de1ebd5dcf330f649add132013ae98697823543bd7111d8b3399c23ea2f83",
+      "kind": "p",
+      "chapter": "١٩-الفرق-بين-بهيمة-الأنعام-وغيرها",
+      "prev": "b67b3f845ed8fb63e7a1a516fb24082c977bf8b9103836ba00c102f7ba17888e",
+      "next": "bb1d85f9e875ee63997b45dbc7927e2955f0b27b4e898b12b4d759f1b4f4907c"
+    },
+    {
+      "ord": 318,
+      "blockId": "4deabab09555ffe9d6bcd44e95749cc3",
+      "fp64": "156917824d5d1d4e",
+      "normHash": "bb1d85f9e875ee63997b45dbc7927e2955f0b27b4e898b12b4d759f1b4f4907c",
+      "kind": "p",
+      "chapter": "١٩-الفرق-بين-بهيمة-الأنعام-وغيرها",
+      "prev": "ca5de1ebd5dcf330f649add132013ae98697823543bd7111d8b3399c23ea2f83",
+      "next": "a368891ef9a262987f7b742c364d62cb1d7d4e6cde5b779d8435f58d0237e27a"
+    },
+    {
+      "ord": 319,
+      "blockId": "616b6cc1ab0f48f5fb34967e389420a6",
+      "fp64": "7ffffbbafa337eff",
+      "normHash": "a368891ef9a262987f7b742c364d62cb1d7d4e6cde5b779d8435f58d0237e27a",
+      "kind": "page",
+      "chapter": "١٩-الفرق-بين-بهيمة-الأنعام-وغيرها",
+      "prev": "bb1d85f9e875ee63997b45dbc7927e2955f0b27b4e898b12b4d759f1b4f4907c",
+      "next": "d8b57f1a06d4a463af49e357008cfb3833e32031f863e8909e4b0537c9659c21"
+    },
+    {
+      "ord": 320,
+      "blockId": "64c0936bb799d8eb8fefc516b582b64e",
+      "fp64": "8430b67ef54c8b41",
+      "normHash": "d8b57f1a06d4a463af49e357008cfb3833e32031f863e8909e4b0537c9659c21",
+      "kind": "p",
+      "chapter": "١٩-الفرق-بين-بهيمة-الأنعام-وغيرها",
+      "prev": "a368891ef9a262987f7b742c364d62cb1d7d4e6cde5b779d8435f58d0237e27a",
+      "next": "edfcb33d460cc10a609b421bd61ec1e61a67482cfdf588f16af174bf3109d24f"
+    },
+    {
+      "ord": 321,
+      "blockId": "e3c18085d6f290bb306cf0d4f953b2e0",
+      "fp64": "d06de4766df776b6",
+      "normHash": "edfcb33d460cc10a609b421bd61ec1e61a67482cfdf588f16af174bf3109d24f",
+      "kind": "p",
+      "chapter": "١٩-الفرق-بين-بهيمة-الأنعام-وغيرها",
+      "prev": "d8b57f1a06d4a463af49e357008cfb3833e32031f863e8909e4b0537c9659c21",
+      "next": "8066ee36f8b47bba819f6c402623c325562bf9e151e8dc743d0ec364e812a68f"
+    },
+    {
+      "ord": 322,
+      "blockId": "d7f6f216aaffd7080d17b87fa1ac990a",
+      "fp64": "c79de0129326f52d",
+      "normHash": "8066ee36f8b47bba819f6c402623c325562bf9e151e8dc743d0ec364e812a68f",
+      "kind": "p",
+      "chapter": "١٩-الفرق-بين-بهيمة-الأنعام-وغيرها",
+      "prev": "edfcb33d460cc10a609b421bd61ec1e61a67482cfdf588f16af174bf3109d24f",
+      "next": "3d4b6852e05922c9bb19883f487f1fd872d306560bde597c129194f495c64018"
+    },
+    {
+      "ord": 323,
+      "blockId": "06ff6bcf6766ed6ee9ab1a1e08ce4a55",
+      "fp64": "74d7ee7a9ef9fdfe",
+      "normHash": "3d4b6852e05922c9bb19883f487f1fd872d306560bde597c129194f495c64018",
+      "kind": "p",
+      "chapter": "١٩-الفرق-بين-بهيمة-الأنعام-وغيرها",
+      "prev": "8066ee36f8b47bba819f6c402623c325562bf9e151e8dc743d0ec364e812a68f",
+      "next": "2d1eea32dd820b7f17c94078daa0e0c23aeeea3fe9d1f74ceb365646258c4df7"
+    },
+    {
+      "ord": 324,
+      "blockId": "5b7510b01d4b861fd007b7b80586fc7c",
+      "fp64": "1d9ee4fa9f31cd72",
+      "normHash": "2d1eea32dd820b7f17c94078daa0e0c23aeeea3fe9d1f74ceb365646258c4df7",
+      "kind": "p",
+      "chapter": "١٩-الفرق-بين-بهيمة-الأنعام-وغيرها",
+      "prev": "3d4b6852e05922c9bb19883f487f1fd872d306560bde597c129194f495c64018",
+      "next": "e787f2e0d4f0f35e056dccc815af2de911e7c3c49eeda32cbbf989e9845a9929"
+    },
+    {
+      "ord": 325,
+      "blockId": "bf14c2fa75308c0bc93b2e45ded68f3a",
+      "fp64": "b5fff39e5abdfcf6",
+      "normHash": "e787f2e0d4f0f35e056dccc815af2de911e7c3c49eeda32cbbf989e9845a9929",
+      "kind": "page",
+      "chapter": "١٩-الفرق-بين-بهيمة-الأنعام-وغيرها",
+      "prev": "2d1eea32dd820b7f17c94078daa0e0c23aeeea3fe9d1f74ceb365646258c4df7"
+    }
+  ]
+}

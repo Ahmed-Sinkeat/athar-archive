@@ -1,0 +1,4355 @@
+{
+  "schema": 1,
+  "generation": 1,
+  "sourceHash": "b49a1c031fdaa48270b57994c66aec4c86d969fa436097e2a748faa865410a42",
+  "ids": [
+    {
+      "ord": 0,
+      "blockId": "a6b59f8831f95370e45ec83c2ec69344",
+      "fp64": "c33eddf6286f3c6f",
+      "normHash": "26a40dc7eb12b02857dce961c7829a537215a86810ba324c248afb555f39ea94",
+      "kind": "p",
+      "chapter": "main",
+      "next": "7e132a8ef8069e56e1185463118bdbd2b0b93cc3c31dca802ce26d30d808e8bf"
+    },
+    {
+      "ord": 1,
+      "blockId": "2fd4cc0341f91ec5476e0a860d5fbace",
+      "fp64": "6378ae24d3c350a3",
+      "normHash": "7e132a8ef8069e56e1185463118bdbd2b0b93cc3c31dca802ce26d30d808e8bf",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "26a40dc7eb12b02857dce961c7829a537215a86810ba324c248afb555f39ea94",
+      "next": "f5c92b51cfc0ef5c80e7d3bcb7a7399f213e3abf468e7f06a2551f6be5d7e5f3"
+    },
+    {
+      "ord": 2,
+      "blockId": "128efa4cf4277d141a16bedf3959f99c",
+      "fp64": "d9f7fd7fd3e7fc77",
+      "normHash": "f5c92b51cfc0ef5c80e7d3bcb7a7399f213e3abf468e7f06a2551f6be5d7e5f3",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "7e132a8ef8069e56e1185463118bdbd2b0b93cc3c31dca802ce26d30d808e8bf",
+      "next": "1755600b9ce652f0aec99354fbd00dc1a7e373871d30eaf4eb8d6dffd57a9a4c"
+    },
+    {
+      "ord": 3,
+      "blockId": "9265c760dd1107ac5e040734c885326f",
+      "fp64": "fe7eb96dfbebf385",
+      "normHash": "1755600b9ce652f0aec99354fbd00dc1a7e373871d30eaf4eb8d6dffd57a9a4c",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "f5c92b51cfc0ef5c80e7d3bcb7a7399f213e3abf468e7f06a2551f6be5d7e5f3",
+      "next": "6231d75df66b1b3c208bf143c707112dc693604584449c85fcbacf5b95f385a1"
+    },
+    {
+      "ord": 4,
+      "blockId": "e37c0dac20ff433856287ba5a1ed2682",
+      "fp64": "e3136f5267b7fa71",
+      "normHash": "6231d75df66b1b3c208bf143c707112dc693604584449c85fcbacf5b95f385a1",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "1755600b9ce652f0aec99354fbd00dc1a7e373871d30eaf4eb8d6dffd57a9a4c",
+      "next": "3b16e8dd0172b62b4de3abb18dfc9ca9fcc1a84d8c4233feba162d404f99469b"
+    },
+    {
+      "ord": 5,
+      "blockId": "dbf0a5cb923848276712e9e8ae4ee2e1",
+      "fp64": "fb501751ad28dda7",
+      "normHash": "3b16e8dd0172b62b4de3abb18dfc9ca9fcc1a84d8c4233feba162d404f99469b",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "6231d75df66b1b3c208bf143c707112dc693604584449c85fcbacf5b95f385a1",
+      "next": "9e71830490cd79755353c02ee1980a66b248fc0a848d4420d80e84a154a71218"
+    },
+    {
+      "ord": 6,
+      "blockId": "8c07c239fe1f71808642501f48cf8aec",
+      "fp64": "4294cd73cd619455",
+      "normHash": "9e71830490cd79755353c02ee1980a66b248fc0a848d4420d80e84a154a71218",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "3b16e8dd0172b62b4de3abb18dfc9ca9fcc1a84d8c4233feba162d404f99469b",
+      "next": "949bed122d5001a24c61d7d8258a684590f12d14afcc751df4fc46db9bacdc1c"
+    },
+    {
+      "ord": 7,
+      "blockId": "bb17e5390d6e211f23a3d65540eac427",
+      "fp64": "7857e67effbbe5ec",
+      "normHash": "949bed122d5001a24c61d7d8258a684590f12d14afcc751df4fc46db9bacdc1c",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "9e71830490cd79755353c02ee1980a66b248fc0a848d4420d80e84a154a71218",
+      "next": "60827fc6b2fe55a354315359e81e37b1f9bd25b22682f050eb8e627fb183897c"
+    },
+    {
+      "ord": 8,
+      "blockId": "1cdc04e168d58f402856a68b484a8bfb",
+      "fp64": "e1320d1667a6fa70",
+      "normHash": "60827fc6b2fe55a354315359e81e37b1f9bd25b22682f050eb8e627fb183897c",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "949bed122d5001a24c61d7d8258a684590f12d14afcc751df4fc46db9bacdc1c",
+      "next": "9188f256ba223b9637a6bca1894c8bda769d4a2177a25f5c18dfb50703f508f1"
+    },
+    {
+      "ord": 9,
+      "blockId": "9d0bfaabd4b9ba1152831110a9984e23",
+      "fp64": "e5fff7ff7bb3e67f",
+      "normHash": "9188f256ba223b9637a6bca1894c8bda769d4a2177a25f5c18dfb50703f508f1",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "60827fc6b2fe55a354315359e81e37b1f9bd25b22682f050eb8e627fb183897c",
+      "next": "2faeea109072ecd45655335c776d16dff7854c5c40d4f54df97cecc239736a86"
+    },
+    {
+      "ord": 10,
+      "blockId": "0204cf47687e6a2fcb31fd91d5ffc893",
+      "fp64": "bdf5f8179ffc71fe",
+      "normHash": "2faeea109072ecd45655335c776d16dff7854c5c40d4f54df97cecc239736a86",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "9188f256ba223b9637a6bca1894c8bda769d4a2177a25f5c18dfb50703f508f1",
+      "next": "45f5ebb7770c4fcffb429e9a0488686f17c9f0257d0c77f3b08b96b77f79e9f0"
+    },
+    {
+      "ord": 11,
+      "blockId": "8a8588815f51427c744ef315e38233e4",
+      "fp64": "f3f5cf53c2adb366",
+      "normHash": "45f5ebb7770c4fcffb429e9a0488686f17c9f0257d0c77f3b08b96b77f79e9f0",
+      "kind": "h2",
+      "chapter": "المقدمة-أهمية-العلاج-بالقرآن-والسنة",
+      "prev": "2faeea109072ecd45655335c776d16dff7854c5c40d4f54df97cecc239736a86",
+      "next": "1851c2a7fb9d76b5602ec13ea8fadb5857124e9d4d338556f76ff9460904472c"
+    },
+    {
+      "ord": 12,
+      "blockId": "f0500ae6a8c1818ffac222f591e6f7b0",
+      "fp64": "e883c50c7f74d439",
+      "normHash": "1851c2a7fb9d76b5602ec13ea8fadb5857124e9d4d338556f76ff9460904472c",
+      "kind": "p",
+      "chapter": "المقدمة-أهمية-العلاج-بالقرآن-والسنة",
+      "prev": "45f5ebb7770c4fcffb429e9a0488686f17c9f0257d0c77f3b08b96b77f79e9f0",
+      "next": "37668f05e9197f9b137c88d8c093ffcf100fc1cdc9eabad724808b050a706b66"
+    },
+    {
+      "ord": 13,
+      "blockId": "0d1f2a69243677eadb14891f3ef54a39",
+      "fp64": "ccc69070ae859a7d",
+      "normHash": "37668f05e9197f9b137c88d8c093ffcf100fc1cdc9eabad724808b050a706b66",
+      "kind": "p",
+      "chapter": "المقدمة-أهمية-العلاج-بالقرآن-والسنة",
+      "prev": "1851c2a7fb9d76b5602ec13ea8fadb5857124e9d4d338556f76ff9460904472c",
+      "next": "f7f4a90c065992e83745e1df65ec3a03003a82253ee90efc20ca08eafdc8dddc"
+    },
+    {
+      "ord": 14,
+      "blockId": "5477f6ed2aa1b98a70483233a4a95ea2",
+      "fp64": "afdffffadf71677e",
+      "normHash": "f7f4a90c065992e83745e1df65ec3a03003a82253ee90efc20ca08eafdc8dddc",
+      "kind": "page",
+      "chapter": "المقدمة-أهمية-العلاج-بالقرآن-والسنة",
+      "prev": "37668f05e9197f9b137c88d8c093ffcf100fc1cdc9eabad724808b050a706b66",
+      "next": "371cc43880643136fefc798d1b958071fdec1d6476425560774377c0606c6896"
+    },
+    {
+      "ord": 15,
+      "blockId": "28d495b19ab08e17236648ad6fbe2a5c",
+      "fp64": "f6cae8709f66ff07",
+      "normHash": "371cc43880643136fefc798d1b958071fdec1d6476425560774377c0606c6896",
+      "kind": "p",
+      "chapter": "المقدمة-أهمية-العلاج-بالقرآن-والسنة",
+      "prev": "f7f4a90c065992e83745e1df65ec3a03003a82253ee90efc20ca08eafdc8dddc",
+      "next": "9cf031b54f642439ca5dc4902b888b5333d2888ed2ef43454a41884face1fcb9"
+    },
+    {
+      "ord": 16,
+      "blockId": "c9219029079c58dfb058137928cbbf17",
+      "fp64": "89cefc59bbeff5cb",
+      "normHash": "9cf031b54f642439ca5dc4902b888b5333d2888ed2ef43454a41884face1fcb9",
+      "kind": "p",
+      "chapter": "المقدمة-أهمية-العلاج-بالقرآن-والسنة",
+      "prev": "371cc43880643136fefc798d1b958071fdec1d6476425560774377c0606c6896",
+      "next": "e2b26b8a6407c5fef8393cf614322dd960ed9ecb23975e2e4addf05472853392"
+    },
+    {
+      "ord": 17,
+      "blockId": "7c71d20ad16b6384255321b0702ff1ff",
+      "fp64": "dcb9edbe65df4d03",
+      "normHash": "e2b26b8a6407c5fef8393cf614322dd960ed9ecb23975e2e4addf05472853392",
+      "kind": "p",
+      "chapter": "المقدمة-أهمية-العلاج-بالقرآن-والسنة",
+      "prev": "9cf031b54f642439ca5dc4902b888b5333d2888ed2ef43454a41884face1fcb9",
+      "next": "21edae1669eb9b20cadd95e2a056b85940569f6bae24651462d9e45a91f61291"
+    },
+    {
+      "ord": 18,
+      "blockId": "6a1c5a0fa0d3630f1199e6e84f769c8f",
+      "fp64": "e7dfffde7f77627f",
+      "normHash": "21edae1669eb9b20cadd95e2a056b85940569f6bae24651462d9e45a91f61291",
+      "kind": "page",
+      "chapter": "المقدمة-أهمية-العلاج-بالقرآن-والسنة",
+      "prev": "e2b26b8a6407c5fef8393cf614322dd960ed9ecb23975e2e4addf05472853392",
+      "next": "cc2ec253727446a35f3538397c4fbfc8efb33f35d473c3e97f2710769d2eb5df"
+    },
+    {
+      "ord": 19,
+      "blockId": "2c4d3a8cd53e6b2733cdc683e73560b6",
+      "fp64": "8a14bd5e15024d5e",
+      "normHash": "cc2ec253727446a35f3538397c4fbfc8efb33f35d473c3e97f2710769d2eb5df",
+      "kind": "p",
+      "chapter": "المقدمة-أهمية-العلاج-بالقرآن-والسنة",
+      "prev": "21edae1669eb9b20cadd95e2a056b85940569f6bae24651462d9e45a91f61291",
+      "next": "73d73406bc46cc7186ec804fdfa1a05041b9f7d03ceeca214755823ab8479412"
+    },
+    {
+      "ord": 20,
+      "blockId": "988186e64b50f62f18f5aef3d083a486",
+      "fp64": "2fdffbfb7f336dff",
+      "normHash": "73d73406bc46cc7186ec804fdfa1a05041b9f7d03ceeca214755823ab8479412",
+      "kind": "page",
+      "chapter": "المقدمة-أهمية-العلاج-بالقرآن-والسنة",
+      "prev": "cc2ec253727446a35f3538397c4fbfc8efb33f35d473c3e97f2710769d2eb5df",
+      "next": "2504789816e9065e0e4ee67b7e2a5cf9d6d9f0cc2b2f39ed8f51183cb3f4965b"
+    },
+    {
+      "ord": 21,
+      "blockId": "bb61481c656733491bda2936464de585",
+      "fp64": "5b0f28585f719f1b",
+      "normHash": "2504789816e9065e0e4ee67b7e2a5cf9d6d9f0cc2b2f39ed8f51183cb3f4965b",
+      "kind": "p",
+      "chapter": "المقدمة-أهمية-العلاج-بالقرآن-والسنة",
+      "prev": "73d73406bc46cc7186ec804fdfa1a05041b9f7d03ceeca214755823ab8479412",
+      "next": "adf76ca286509c3746e01f245cd849b508bab24ab787325c500f327e0fb8237d"
+    },
+    {
+      "ord": 22,
+      "blockId": "5f895c2035537ee4ae64fc7fe6dfcf03",
+      "fp64": "5116686475e39a7b",
+      "normHash": "adf76ca286509c3746e01f245cd849b508bab24ab787325c500f327e0fb8237d",
+      "kind": "p",
+      "chapter": "المقدمة-أهمية-العلاج-بالقرآن-والسنة",
+      "prev": "2504789816e9065e0e4ee67b7e2a5cf9d6d9f0cc2b2f39ed8f51183cb3f4965b",
+      "next": "8053b05615fb4fd7d811f597f1b1071efe51a20dad1411cb7aea524513eac96e"
+    },
+    {
+      "ord": 23,
+      "blockId": "e6249b1162b04ff5cad6017ebdaa6e85",
+      "fp64": "75f82fbe75ef1c76",
+      "normHash": "8053b05615fb4fd7d811f597f1b1071efe51a20dad1411cb7aea524513eac96e",
+      "kind": "p",
+      "chapter": "المقدمة-أهمية-العلاج-بالقرآن-والسنة",
+      "prev": "adf76ca286509c3746e01f245cd849b508bab24ab787325c500f327e0fb8237d",
+      "next": "b64d47bb52ce2df883d5e65a897cdbda8fb31df41781ec406a8f4c6d951ae1b5"
+    },
+    {
+      "ord": 24,
+      "blockId": "3173605108137e5d38a756ed29868738",
+      "fp64": "b7dfffff5bf1f6f7",
+      "normHash": "b64d47bb52ce2df883d5e65a897cdbda8fb31df41781ec406a8f4c6d951ae1b5",
+      "kind": "page",
+      "chapter": "المقدمة-أهمية-العلاج-بالقرآن-والسنة",
+      "prev": "8053b05615fb4fd7d811f597f1b1071efe51a20dad1411cb7aea524513eac96e",
+      "next": "6bea2642acb5ad8fedcf63b0027b170018e866549017da975b01185097584985"
+    },
+    {
+      "ord": 25,
+      "blockId": "c78c2860818231c2f3f76ffcde41c6ff",
+      "fp64": "50d5ec16dfbbf1fa",
+      "normHash": "6bea2642acb5ad8fedcf63b0027b170018e866549017da975b01185097584985",
+      "kind": "p",
+      "chapter": "المقدمة-أهمية-العلاج-بالقرآن-والسنة",
+      "prev": "b64d47bb52ce2df883d5e65a897cdbda8fb31df41781ec406a8f4c6d951ae1b5",
+      "next": "33c083f750d83f2135fb267c215ecdfcb0851ee45597eb5fd380568b72d66f63"
+    },
+    {
+      "ord": 26,
+      "blockId": "bb5e4125a3cb444fec51b610779e97b1",
+      "fp64": "9a9aa01a15534f8b",
+      "normHash": "33c083f750d83f2135fb267c215ecdfcb0851ee45597eb5fd380568b72d66f63",
+      "kind": "p",
+      "chapter": "المقدمة-أهمية-العلاج-بالقرآن-والسنة",
+      "prev": "6bea2642acb5ad8fedcf63b0027b170018e866549017da975b01185097584985",
+      "next": "bfad70b612f44b4ec192b338130576ae9fdbd46ab7ae110be1fff9d5944a1305"
+    },
+    {
+      "ord": 27,
+      "blockId": "6185b011005dbbfeeb08c1504552f7df",
+      "fp64": "88b6258754d44e6a",
+      "normHash": "bfad70b612f44b4ec192b338130576ae9fdbd46ab7ae110be1fff9d5944a1305",
+      "kind": "p",
+      "chapter": "المقدمة-أهمية-العلاج-بالقرآن-والسنة",
+      "prev": "33c083f750d83f2135fb267c215ecdfcb0851ee45597eb5fd380568b72d66f63",
+      "next": "52c748980fe9278ba5ee9338b6756f5396e9a88b5fd4c85891f9eae9c050aab6"
+    },
+    {
+      "ord": 28,
+      "blockId": "025221a6f52b40df2af67be764a28a9f",
+      "fp64": "4db8effe35ef8d53",
+      "normHash": "52c748980fe9278ba5ee9338b6756f5396e9a88b5fd4c85891f9eae9c050aab6",
+      "kind": "p",
+      "chapter": "المقدمة-أهمية-العلاج-بالقرآن-والسنة",
+      "prev": "bfad70b612f44b4ec192b338130576ae9fdbd46ab7ae110be1fff9d5944a1305",
+      "next": "fa6f2f2d2ec70b9fd6cba78ecf50308b0b0c23a51f49f40d301067bd8d109e52"
+    },
+    {
+      "ord": 29,
+      "blockId": "8a16c75e5eb4d2c778d5d1a9b8ada3db",
+      "fp64": "afdffffedb79627f",
+      "normHash": "fa6f2f2d2ec70b9fd6cba78ecf50308b0b0c23a51f49f40d301067bd8d109e52",
+      "kind": "page",
+      "chapter": "المقدمة-أهمية-العلاج-بالقرآن-والسنة",
+      "prev": "52c748980fe9278ba5ee9338b6756f5396e9a88b5fd4c85891f9eae9c050aab6",
+      "next": "554546f06e20e5803fa55afb7fb726e85efc6a84cfcae9e0c7ff766f1556f39b"
+    },
+    {
+      "ord": 30,
+      "blockId": "72c053d3a23658b39caec33288932994",
+      "fp64": "1fd9f41ad5dd8fbc",
+      "normHash": "554546f06e20e5803fa55afb7fb726e85efc6a84cfcae9e0c7ff766f1556f39b",
+      "kind": "p",
+      "chapter": "المقدمة-أهمية-العلاج-بالقرآن-والسنة",
+      "prev": "fa6f2f2d2ec70b9fd6cba78ecf50308b0b0c23a51f49f40d301067bd8d109e52",
+      "next": "bd14438607461b0b1b5a6ad03c124af8163cf6c3614c26b31bf5df31877cf913"
+    },
+    {
+      "ord": 31,
+      "blockId": "b65b574bf20b948e9b9213d81ad236aa",
+      "fp64": "de052c7ebd435fb8",
+      "normHash": "bd14438607461b0b1b5a6ad03c124af8163cf6c3614c26b31bf5df31877cf913",
+      "kind": "p",
+      "chapter": "المقدمة-أهمية-العلاج-بالقرآن-والسنة",
+      "prev": "554546f06e20e5803fa55afb7fb726e85efc6a84cfcae9e0c7ff766f1556f39b",
+      "next": "be588b6786264dfb91ed2d8771d58ad6018465930e31d6ef0bc7e3842f4bea3f"
+    },
+    {
+      "ord": 32,
+      "blockId": "c9c72ce7312bc5ec3eb7b64c396b16bf",
+      "fp64": "ceb4f7f3bc059675",
+      "normHash": "be588b6786264dfb91ed2d8771d58ad6018465930e31d6ef0bc7e3842f4bea3f",
+      "kind": "p",
+      "chapter": "المقدمة-أهمية-العلاج-بالقرآن-والسنة",
+      "prev": "bd14438607461b0b1b5a6ad03c124af8163cf6c3614c26b31bf5df31877cf913",
+      "next": "9a040b9599dd7ddfc69e9f744d0c6e3d70a96fcb386832b62d037be046c11950"
+    },
+    {
+      "ord": 33,
+      "blockId": "095eeb0a99a2476f772c0817ac738b38",
+      "fp64": "0419fffe7d67cd7d",
+      "normHash": "9a040b9599dd7ddfc69e9f744d0c6e3d70a96fcb386832b62d037be046c11950",
+      "kind": "p",
+      "chapter": "المقدمة-أهمية-العلاج-بالقرآن-والسنة",
+      "prev": "be588b6786264dfb91ed2d8771d58ad6018465930e31d6ef0bc7e3842f4bea3f",
+      "next": "4e69f1fe679aed73a4f2002d7955a7415fb3e959647a1fb7d8b8e8215f935244"
+    },
+    {
+      "ord": 34,
+      "blockId": "6ad67cb2568961c5331d215ae89470e9",
+      "fp64": "77fff3df7a73623e",
+      "normHash": "4e69f1fe679aed73a4f2002d7955a7415fb3e959647a1fb7d8b8e8215f935244",
+      "kind": "page",
+      "chapter": "المقدمة-أهمية-العلاج-بالقرآن-والسنة",
+      "prev": "9a040b9599dd7ddfc69e9f744d0c6e3d70a96fcb386832b62d037be046c11950",
+      "next": "7c06b0a541b1e8677ef1166977ebd8e0dfff12b6eb227319da37a39cca11f332"
+    },
+    {
+      "ord": 35,
+      "blockId": "9d36940718d1c8509fbe714246081ff7",
+      "fp64": "1d48e85f99775d7f",
+      "normHash": "7c06b0a541b1e8677ef1166977ebd8e0dfff12b6eb227319da37a39cca11f332",
+      "kind": "p",
+      "chapter": "المقدمة-أهمية-العلاج-بالقرآن-والسنة",
+      "prev": "4e69f1fe679aed73a4f2002d7955a7415fb3e959647a1fb7d8b8e8215f935244",
+      "next": "95fe0557742861e5cb111e9966a194bbe897f111553ed3594b1ed707f47488de"
+    },
+    {
+      "ord": 36,
+      "blockId": "29d2c3074fcdc1f5948405626d8bc9c2",
+      "fp64": "5839ec8bfd79cfd9",
+      "normHash": "95fe0557742861e5cb111e9966a194bbe897f111553ed3594b1ed707f47488de",
+      "kind": "p",
+      "chapter": "المقدمة-أهمية-العلاج-بالقرآن-والسنة",
+      "prev": "7c06b0a541b1e8677ef1166977ebd8e0dfff12b6eb227319da37a39cca11f332",
+      "next": "fe150be8995764fb9222c74a2e8f48710a6c0e04b0832c95ac9ae993299ca637"
+    },
+    {
+      "ord": 37,
+      "blockId": "f8b4e63761817024f05f7403ec57c036",
+      "fp64": "25ffffde7f3f783f",
+      "normHash": "fe150be8995764fb9222c74a2e8f48710a6c0e04b0832c95ac9ae993299ca637",
+      "kind": "page",
+      "chapter": "المقدمة-أهمية-العلاج-بالقرآن-والسنة",
+      "prev": "95fe0557742861e5cb111e9966a194bbe897f111553ed3594b1ed707f47488de",
+      "next": "18d30ad2b5876f6bea0987163646961ef4df2f86edb1e0c83051e01e250912a3"
+    },
+    {
+      "ord": 38,
+      "blockId": "ebd404a39a31e327cd0e91b4d8a7a614",
+      "fp64": "59eb74087df587f7",
+      "normHash": "18d30ad2b5876f6bea0987163646961ef4df2f86edb1e0c83051e01e250912a3",
+      "kind": "p",
+      "chapter": "المقدمة-أهمية-العلاج-بالقرآن-والسنة",
+      "prev": "fe150be8995764fb9222c74a2e8f48710a6c0e04b0832c95ac9ae993299ca637",
+      "next": "cdb4a00f70fb8ffbc0f69714c0afe26381fac9397c81058fd3beb79273c211ac"
+    },
+    {
+      "ord": 39,
+      "blockId": "fe5cb3d6e78400d3db9880e1ab39dce5",
+      "fp64": "8214e5e124219a70",
+      "normHash": "cdb4a00f70fb8ffbc0f69714c0afe26381fac9397c81058fd3beb79273c211ac",
+      "kind": "p",
+      "chapter": "المقدمة-أهمية-العلاج-بالقرآن-والسنة",
+      "prev": "18d30ad2b5876f6bea0987163646961ef4df2f86edb1e0c83051e01e250912a3",
+      "next": "5fb95214764438a1a9ed9ff583364655dd334aa3a42c7adaecac7a9d60bb8adb"
+    },
+    {
+      "ord": 40,
+      "blockId": "ac6683c693d00c5ae87daec91a9339cc",
+      "fp64": "4b8ed6118436f900",
+      "normHash": "5fb95214764438a1a9ed9ff583364655dd334aa3a42c7adaecac7a9d60bb8adb",
+      "kind": "p",
+      "chapter": "المقدمة-أهمية-العلاج-بالقرآن-والسنة",
+      "prev": "cdb4a00f70fb8ffbc0f69714c0afe26381fac9397c81058fd3beb79273c211ac",
+      "next": "6bf6f370482434ec2e3c5432d2c3a93fc031b330e492513af529260bed32fd83"
+    },
+    {
+      "ord": 41,
+      "blockId": "6114662d5deeacc3fb63399072a85ce6",
+      "fp64": "59d900d7717ccfb2",
+      "normHash": "6bf6f370482434ec2e3c5432d2c3a93fc031b330e492513af529260bed32fd83",
+      "kind": "p",
+      "chapter": "المقدمة-أهمية-العلاج-بالقرآن-والسنة",
+      "prev": "5fb95214764438a1a9ed9ff583364655dd334aa3a42c7adaecac7a9d60bb8adb",
+      "next": "3ac3fae37d9c27a37c8eda6b5620e12928e9e38c82616303a0543fa19a9fc15e"
+    },
+    {
+      "ord": 42,
+      "blockId": "d0381939c8ce2fd7b4397592dd8c0b53",
+      "fp64": "addff3be5ffd647e",
+      "normHash": "3ac3fae37d9c27a37c8eda6b5620e12928e9e38c82616303a0543fa19a9fc15e",
+      "kind": "page",
+      "chapter": "المقدمة-أهمية-العلاج-بالقرآن-والسنة",
+      "prev": "6bf6f370482434ec2e3c5432d2c3a93fc031b330e492513af529260bed32fd83",
+      "next": "a6d663df1c30f2fdf04c9328167704d6a0ebee012ae301624184a2cb82fd3322"
+    },
+    {
+      "ord": 43,
+      "blockId": "576a8fb75c45de02a58a8c4dfa82a569",
+      "fp64": "dd8be5e6b4b0ddff",
+      "normHash": "a6d663df1c30f2fdf04c9328167704d6a0ebee012ae301624184a2cb82fd3322",
+      "kind": "p",
+      "chapter": "المقدمة-أهمية-العلاج-بالقرآن-والسنة",
+      "prev": "3ac3fae37d9c27a37c8eda6b5620e12928e9e38c82616303a0543fa19a9fc15e",
+      "next": "6deee2e3a1bfbc5883528a22ac7b0d85527b2c4fc614ca2a609104f2eb77bcc4"
+    },
+    {
+      "ord": 44,
+      "blockId": "aa01b3caa7cd373cff683c3d73f88546",
+      "fp64": "576284e6bce7ba4c",
+      "normHash": "6deee2e3a1bfbc5883528a22ac7b0d85527b2c4fc614ca2a609104f2eb77bcc4",
+      "kind": "p",
+      "chapter": "المقدمة-أهمية-العلاج-بالقرآن-والسنة",
+      "prev": "a6d663df1c30f2fdf04c9328167704d6a0ebee012ae301624184a2cb82fd3322",
+      "next": "ca8fce4a4f743bad3a6e956e7d12f3ce9b40d31541210c6f605afe205f8e76f5"
+    },
+    {
+      "ord": 45,
+      "blockId": "6f81ee55bb03a25f5e03246eafc36905",
+      "fp64": "9ddf94daf9a77d62",
+      "normHash": "ca8fce4a4f743bad3a6e956e7d12f3ce9b40d31541210c6f605afe205f8e76f5",
+      "kind": "p",
+      "chapter": "المقدمة-أهمية-العلاج-بالقرآن-والسنة",
+      "prev": "6deee2e3a1bfbc5883528a22ac7b0d85527b2c4fc614ca2a609104f2eb77bcc4",
+      "next": "4581d04ab7938e775963f37eee16e60c2f3000bc0c978bbdf46ccb9c9cb67ee5"
+    },
+    {
+      "ord": 46,
+      "blockId": "67e89288d74330412965559698e1ec3c",
+      "fp64": "f7dffbbe7e3be87f",
+      "normHash": "4581d04ab7938e775963f37eee16e60c2f3000bc0c978bbdf46ccb9c9cb67ee5",
+      "kind": "page",
+      "chapter": "المقدمة-أهمية-العلاج-بالقرآن-والسنة",
+      "prev": "ca8fce4a4f743bad3a6e956e7d12f3ce9b40d31541210c6f605afe205f8e76f5",
+      "next": "f39a716a9a844395d37e673d99d52d8bbbef6f53ca6b529437760cf43ceb35a3"
+    },
+    {
+      "ord": 47,
+      "blockId": "cb99fb434997ebf9019f63c87b581b5e",
+      "fp64": "345960179def254c",
+      "normHash": "f39a716a9a844395d37e673d99d52d8bbbef6f53ca6b529437760cf43ceb35a3",
+      "kind": "p",
+      "chapter": "المقدمة-أهمية-العلاج-بالقرآن-والسنة",
+      "prev": "4581d04ab7938e775963f37eee16e60c2f3000bc0c978bbdf46ccb9c9cb67ee5",
+      "next": "916dc851f579c1542fbe7d327fa391730d7b4c8d3997ab33da19a32146f239d6"
+    },
+    {
+      "ord": 48,
+      "blockId": "1b0ea0b3b414608561198431f410e8cf",
+      "fp64": "6f792b1f265ae26b",
+      "normHash": "916dc851f579c1542fbe7d327fa391730d7b4c8d3997ab33da19a32146f239d6",
+      "kind": "p",
+      "chapter": "المقدمة-أهمية-العلاج-بالقرآن-والسنة",
+      "prev": "f39a716a9a844395d37e673d99d52d8bbbef6f53ca6b529437760cf43ceb35a3",
+      "next": "b8ae793fc16c4f1274689da15da6fcdc7bc8179f43a59bda4e989e8882367a77"
+    },
+    {
+      "ord": 49,
+      "blockId": "82a61268faf9b71e680794f94a449604",
+      "fp64": "3145ec1f99df34fe",
+      "normHash": "b8ae793fc16c4f1274689da15da6fcdc7bc8179f43a59bda4e989e8882367a77",
+      "kind": "p",
+      "chapter": "المقدمة-أهمية-العلاج-بالقرآن-والسنة",
+      "prev": "916dc851f579c1542fbe7d327fa391730d7b4c8d3997ab33da19a32146f239d6",
+      "next": "ed9501eadd532f244d240a5c7d3c55dfa190361224c7fe9dab9dff52082946d4"
+    },
+    {
+      "ord": 50,
+      "blockId": "0dde2cfa3b891cb6fdfdf960790c5207",
+      "fp64": "7c39772e7dcfcd52",
+      "normHash": "ed9501eadd532f244d240a5c7d3c55dfa190361224c7fe9dab9dff52082946d4",
+      "kind": "p",
+      "chapter": "المقدمة-أهمية-العلاج-بالقرآن-والسنة",
+      "prev": "b8ae793fc16c4f1274689da15da6fcdc7bc8179f43a59bda4e989e8882367a77",
+      "next": "e5b0927ac6fbd7b43a3d3a27b287cf13c6902d415a651b612b87486d50f79fa4"
+    },
+    {
+      "ord": 51,
+      "blockId": "738738954f0b922dd6f173097becabc2",
+      "fp64": "35ffffdf7bf5717f",
+      "normHash": "e5b0927ac6fbd7b43a3d3a27b287cf13c6902d415a651b612b87486d50f79fa4",
+      "kind": "page",
+      "chapter": "المقدمة-أهمية-العلاج-بالقرآن-والسنة",
+      "prev": "ed9501eadd532f244d240a5c7d3c55dfa190361224c7fe9dab9dff52082946d4",
+      "next": "0be9c204a22cd538ab1e6feb6af121fca20a0478b72d1a9a304a5af9739544f2"
+    },
+    {
+      "ord": 52,
+      "blockId": "b0a4da35348d8d222d5eaeaa189db04b",
+      "fp64": "da4b8cffab5fac78",
+      "normHash": "0be9c204a22cd538ab1e6feb6af121fca20a0478b72d1a9a304a5af9739544f2",
+      "kind": "p",
+      "chapter": "المقدمة-أهمية-العلاج-بالقرآن-والسنة",
+      "prev": "e5b0927ac6fbd7b43a3d3a27b287cf13c6902d415a651b612b87486d50f79fa4",
+      "next": "fca513c10ab9a47018f5388847ea718b7ae2c454525d49421a84c1dd6cf73c1b"
+    },
+    {
+      "ord": 53,
+      "blockId": "d871638321c3f543cf496a23510e7c27",
+      "fp64": "48daec0f1fe3ec7e",
+      "normHash": "fca513c10ab9a47018f5388847ea718b7ae2c454525d49421a84c1dd6cf73c1b",
+      "kind": "p",
+      "chapter": "المقدمة-أهمية-العلاج-بالقرآن-والسنة",
+      "prev": "0be9c204a22cd538ab1e6feb6af121fca20a0478b72d1a9a304a5af9739544f2",
+      "next": "337d6bc3c2b3d8a294f0b8259480068e7204f327236251c9f153da6358f89a5b"
+    },
+    {
+      "ord": 54,
+      "blockId": "aa6b2211eabece230322b68306a96ff5",
+      "fp64": "31438dff1e67796e",
+      "normHash": "337d6bc3c2b3d8a294f0b8259480068e7204f327236251c9f153da6358f89a5b",
+      "kind": "p",
+      "chapter": "المقدمة-أهمية-العلاج-بالقرآن-والسنة",
+      "prev": "fca513c10ab9a47018f5388847ea718b7ae2c454525d49421a84c1dd6cf73c1b",
+      "next": "f71d3bf5ec0c54e8610939dc03be7dbe9814991127d3f181fb3e321abe2e8e34"
+    },
+    {
+      "ord": 55,
+      "blockId": "84d1da5254051a26abba7b5a43fa9b34",
+      "fp64": "742c6e82b44d6fd3",
+      "normHash": "f71d3bf5ec0c54e8610939dc03be7dbe9814991127d3f181fb3e321abe2e8e34",
+      "kind": "p",
+      "chapter": "المقدمة-أهمية-العلاج-بالقرآن-والسنة",
+      "prev": "337d6bc3c2b3d8a294f0b8259480068e7204f327236251c9f153da6358f89a5b",
+      "next": "f55481b69318e1c851e57306a7f55661daf11dd52e307451f386b3d8d15d48b2"
+    },
+    {
+      "ord": 56,
+      "blockId": "84d5b7b747f425eedb0ef48556633071",
+      "fp64": "67dfff9e5fb3fb3f",
+      "normHash": "f55481b69318e1c851e57306a7f55661daf11dd52e307451f386b3d8d15d48b2",
+      "kind": "page",
+      "chapter": "المقدمة-أهمية-العلاج-بالقرآن-والسنة",
+      "prev": "f71d3bf5ec0c54e8610939dc03be7dbe9814991127d3f181fb3e321abe2e8e34",
+      "next": "b868162988b6546e415978b92bd44efbca0e3c340415b69332a7850ba6d03ff3"
+    },
+    {
+      "ord": 57,
+      "blockId": "ee8e086e073ae85aa2609af2862f79cf",
+      "fp64": "f84ec01a9c56862c",
+      "normHash": "b868162988b6546e415978b92bd44efbca0e3c340415b69332a7850ba6d03ff3",
+      "kind": "p",
+      "chapter": "المقدمة-أهمية-العلاج-بالقرآن-والسنة",
+      "prev": "f55481b69318e1c851e57306a7f55661daf11dd52e307451f386b3d8d15d48b2",
+      "next": "949bed122d5001a24c61d7d8258a684590f12d14afcc751df4fc46db9bacdc1c"
+    },
+    {
+      "ord": 58,
+      "blockId": "4c13f6207f625178c4f4113a79b0ceb5",
+      "fp64": "7857e67effbbe5ec",
+      "normHash": "949bed122d5001a24c61d7d8258a684590f12d14afcc751df4fc46db9bacdc1c",
+      "kind": "p",
+      "chapter": "المقدمة-أهمية-العلاج-بالقرآن-والسنة",
+      "prev": "b868162988b6546e415978b92bd44efbca0e3c340415b69332a7850ba6d03ff3",
+      "next": "60827fc6b2fe55a354315359e81e37b1f9bd25b22682f050eb8e627fb183897c"
+    },
+    {
+      "ord": 59,
+      "blockId": "fcc3c20ef0617da27653f45cdcbadadf",
+      "fp64": "e1320d1667a6fa70",
+      "normHash": "60827fc6b2fe55a354315359e81e37b1f9bd25b22682f050eb8e627fb183897c",
+      "kind": "p",
+      "chapter": "المقدمة-أهمية-العلاج-بالقرآن-والسنة",
+      "prev": "949bed122d5001a24c61d7d8258a684590f12d14afcc751df4fc46db9bacdc1c",
+      "next": "7bac8d4fcbfe5ff930d26f67f695ec379b4904a003453f426e6efcb9e6bc226e"
+    },
+    {
+      "ord": 60,
+      "blockId": "fa6ad46a0c38ff1434b838976770bae0",
+      "fp64": "6c409c3259148ab4",
+      "normHash": "7bac8d4fcbfe5ff930d26f67f695ec379b4904a003453f426e6efcb9e6bc226e",
+      "kind": "p",
+      "chapter": "المقدمة-أهمية-العلاج-بالقرآن-والسنة",
+      "prev": "60827fc6b2fe55a354315359e81e37b1f9bd25b22682f050eb8e627fb183897c",
+      "next": "cf82f37a0d9fa7db967582d57875f1098daf08f4fb5688263e59d6c97d092c67"
+    },
+    {
+      "ord": 61,
+      "blockId": "5a9cb32f3bc270284a9d8e7204fcc6e7",
+      "fp64": "6ddff7fadbb967b7",
+      "normHash": "cf82f37a0d9fa7db967582d57875f1098daf08f4fb5688263e59d6c97d092c67",
+      "kind": "page",
+      "chapter": "المقدمة-أهمية-العلاج-بالقرآن-والسنة",
+      "prev": "7bac8d4fcbfe5ff930d26f67f695ec379b4904a003453f426e6efcb9e6bc226e",
+      "next": "11f556dde50fd0b837b1095679f68a3b7f5905e54e7940f6648398ddf9678fab"
+    },
+    {
+      "ord": 62,
+      "blockId": "c4098eab2d461793e438abd1ab8f39c1",
+      "fp64": "51cd38b76045cb6a",
+      "normHash": "11f556dde50fd0b837b1095679f68a3b7f5905e54e7940f6648398ddf9678fab",
+      "kind": "h2",
+      "chapter": "١-علاج-السحر",
+      "prev": "cf82f37a0d9fa7db967582d57875f1098daf08f4fb5688263e59d6c97d092c67",
+      "next": "2747d037a4618161488e652d19b075056d3ec8a23c5e9f0c6e4d1d9b91384069"
+    },
+    {
+      "ord": 63,
+      "blockId": "288f13222cd458cefc6c9b1a90a62efb",
+      "fp64": "ebb0475bd5cd1377",
+      "normHash": "2747d037a4618161488e652d19b075056d3ec8a23c5e9f0c6e4d1d9b91384069",
+      "kind": "p",
+      "chapter": "١-علاج-السحر",
+      "prev": "11f556dde50fd0b837b1095679f68a3b7f5905e54e7940f6648398ddf9678fab",
+      "next": "e8d199ba5036a8d8e807d852b6ddfe0e9a0d59625ee6b42dad8aa6a570eac989"
+    },
+    {
+      "ord": 64,
+      "blockId": "15f7af3559a2982fef35bafc17477333",
+      "fp64": "66ea3e1fb217fc5e",
+      "normHash": "e8d199ba5036a8d8e807d852b6ddfe0e9a0d59625ee6b42dad8aa6a570eac989",
+      "kind": "h2",
+      "chapter": "القسم-الأول-ما-يتقى-به-السحر-قبل-وقوعه",
+      "prev": "2747d037a4618161488e652d19b075056d3ec8a23c5e9f0c6e4d1d9b91384069",
+      "next": "7719b755a8c87f937bbcdeb3da729d9309087f0f71432b49e7a9a6a2d93a210c"
+    },
+    {
+      "ord": 65,
+      "blockId": "2377ab1cdc233ad457e723e6e7c4b6b8",
+      "fp64": "58fa2431b3adac4f",
+      "normHash": "7719b755a8c87f937bbcdeb3da729d9309087f0f71432b49e7a9a6a2d93a210c",
+      "kind": "p",
+      "chapter": "القسم-الأول-ما-يتقى-به-السحر-قبل-وقوعه",
+      "prev": "e8d199ba5036a8d8e807d852b6ddfe0e9a0d59625ee6b42dad8aa6a570eac989",
+      "next": "09fbe3f306b115727145b68adc3b72dd81f84cf5eeef9bb23cf9ff25f54ec350"
+    },
+    {
+      "ord": 66,
+      "blockId": "e879ca5b28345037bcf1ebb0d28ede5f",
+      "fp64": "cfaca89abdae3d53",
+      "normHash": "09fbe3f306b115727145b68adc3b72dd81f84cf5eeef9bb23cf9ff25f54ec350",
+      "kind": "p",
+      "chapter": "القسم-الأول-ما-يتقى-به-السحر-قبل-وقوعه",
+      "prev": "7719b755a8c87f937bbcdeb3da729d9309087f0f71432b49e7a9a6a2d93a210c",
+      "next": "f4d5d204876af86e415884a27d05d6a6442d3cf5541a481b1b616daccc1928de"
+    },
+    {
+      "ord": 67,
+      "blockId": "a3b10113e8130a7de078aa187fa828cb",
+      "fp64": "9d813053dc589cf9",
+      "normHash": "f4d5d204876af86e415884a27d05d6a6442d3cf5541a481b1b616daccc1928de",
+      "kind": "p",
+      "chapter": "القسم-الأول-ما-يتقى-به-السحر-قبل-وقوعه",
+      "prev": "09fbe3f306b115727145b68adc3b72dd81f84cf5eeef9bb23cf9ff25f54ec350",
+      "next": "9da403adc6f7f743d1c743c8c84d8aed2f84904be7b6a5259cf89154e0840dbb"
+    },
+    {
+      "ord": 68,
+      "blockId": "2b3bf57266597a6c8b5523332f7a2208",
+      "fp64": "77fff79a7ffb69f6",
+      "normHash": "9da403adc6f7f743d1c743c8c84d8aed2f84904be7b6a5259cf89154e0840dbb",
+      "kind": "page",
+      "chapter": "القسم-الأول-ما-يتقى-به-السحر-قبل-وقوعه",
+      "prev": "f4d5d204876af86e415884a27d05d6a6442d3cf5541a481b1b616daccc1928de",
+      "next": "d79ba36b3fae40c576e7f37bcc2fe624cbfe0ffd34b4be02209734341ce52bdc"
+    },
+    {
+      "ord": 69,
+      "blockId": "db8b196a12c088f6e588ef4257b15a73",
+      "fp64": "96ec6353f968b554",
+      "normHash": "d79ba36b3fae40c576e7f37bcc2fe624cbfe0ffd34b4be02209734341ce52bdc",
+      "kind": "p",
+      "chapter": "القسم-الأول-ما-يتقى-به-السحر-قبل-وقوعه",
+      "prev": "9da403adc6f7f743d1c743c8c84d8aed2f84904be7b6a5259cf89154e0840dbb",
+      "next": "83a039aa5a088ecae6abddddcec656a43e9c58da79381c1b1abeb06a85fce4d1"
+    },
+    {
+      "ord": 70,
+      "blockId": "6a3831e048531a7c07d95642a10316ba",
+      "fp64": "580f61d1b57d9e72",
+      "normHash": "83a039aa5a088ecae6abddddcec656a43e9c58da79381c1b1abeb06a85fce4d1",
+      "kind": "p",
+      "chapter": "القسم-الأول-ما-يتقى-به-السحر-قبل-وقوعه",
+      "prev": "d79ba36b3fae40c576e7f37bcc2fe624cbfe0ffd34b4be02209734341ce52bdc",
+      "next": "afdb7313e5b92484c76c5195be2959c3631cc9c844a90c8fa37d3edfc9b28110"
+    },
+    {
+      "ord": 71,
+      "blockId": "fc783cad5667667402dd5473575787f7",
+      "fp64": "3fdffb9edbf77eb7",
+      "normHash": "afdb7313e5b92484c76c5195be2959c3631cc9c844a90c8fa37d3edfc9b28110",
+      "kind": "page",
+      "chapter": "القسم-الأول-ما-يتقى-به-السحر-قبل-وقوعه",
+      "prev": "83a039aa5a088ecae6abddddcec656a43e9c58da79381c1b1abeb06a85fce4d1",
+      "next": "65d2096baebeefb42f1d13cec17f912c3636c477ea97a6b87b792256c2ffa362"
+    },
+    {
+      "ord": 72,
+      "blockId": "db34156a4c0fc472fcea10a8ec03a789",
+      "fp64": "6a3488f997c62b00",
+      "normHash": "65d2096baebeefb42f1d13cec17f912c3636c477ea97a6b87b792256c2ffa362",
+      "kind": "p",
+      "chapter": "القسم-الأول-ما-يتقى-به-السحر-قبل-وقوعه",
+      "prev": "afdb7313e5b92484c76c5195be2959c3631cc9c844a90c8fa37d3edfc9b28110",
+      "next": "53c905a21038a946deda91dcdb005a5cae87c780784c382935a9cd9b9a68f902"
+    },
+    {
+      "ord": 73,
+      "blockId": "0d6c126319efe9f5de758b95a3478398",
+      "fp64": "40f96ee7756ccdd0",
+      "normHash": "53c905a21038a946deda91dcdb005a5cae87c780784c382935a9cd9b9a68f902",
+      "kind": "p",
+      "chapter": "القسم-الأول-ما-يتقى-به-السحر-قبل-وقوعه",
+      "prev": "65d2096baebeefb42f1d13cec17f912c3636c477ea97a6b87b792256c2ffa362",
+      "next": "c9d963f038c204cdec8da768bce98e69d1bf414d903aae3bc061b11205939f2a"
+    },
+    {
+      "ord": 74,
+      "blockId": "5c54b87054778bfaae5589e9942d0485",
+      "fp64": "37dff79f5f756377",
+      "normHash": "c9d963f038c204cdec8da768bce98e69d1bf414d903aae3bc061b11205939f2a",
+      "kind": "page",
+      "chapter": "القسم-الأول-ما-يتقى-به-السحر-قبل-وقوعه",
+      "prev": "53c905a21038a946deda91dcdb005a5cae87c780784c382935a9cd9b9a68f902",
+      "next": "af3375d9a5ef4c49c58ee86b0edaa3fe9a8b96bcc1bdebedf489adb5f41b4586"
+    },
+    {
+      "ord": 75,
+      "blockId": "cda8b62573ff67457ca67d3f65be8765",
+      "fp64": "67d968f23ff6d108",
+      "normHash": "af3375d9a5ef4c49c58ee86b0edaa3fe9a8b96bcc1bdebedf489adb5f41b4586",
+      "kind": "p",
+      "chapter": "القسم-الأول-ما-يتقى-به-السحر-قبل-وقوعه",
+      "prev": "c9d963f038c204cdec8da768bce98e69d1bf414d903aae3bc061b11205939f2a",
+      "next": "b325d8ff3e3f2ca840c4d2d0ea8fd84bbfcd2097e8d2af61482799d68c2a7e9c"
+    },
+    {
+      "ord": 76,
+      "blockId": "56ad20e2c141371ceb4cbfcc79f1ab88",
+      "fp64": "6c44e8599f5f554f",
+      "normHash": "b325d8ff3e3f2ca840c4d2d0ea8fd84bbfcd2097e8d2af61482799d68c2a7e9c",
+      "kind": "p",
+      "chapter": "القسم-الأول-ما-يتقى-به-السحر-قبل-وقوعه",
+      "prev": "af3375d9a5ef4c49c58ee86b0edaa3fe9a8b96bcc1bdebedf489adb5f41b4586",
+      "next": "317576b83cc513e0f8da91d3f8c45caf6b463a5f31c31809a57de605a90a5f7e"
+    },
+    {
+      "ord": 77,
+      "blockId": "509db0205072bffe2989133031c382e4",
+      "fp64": "559b7c9335654f5d",
+      "normHash": "317576b83cc513e0f8da91d3f8c45caf6b463a5f31c31809a57de605a90a5f7e",
+      "kind": "p",
+      "chapter": "القسم-الأول-ما-يتقى-به-السحر-قبل-وقوعه",
+      "prev": "b325d8ff3e3f2ca840c4d2d0ea8fd84bbfcd2097e8d2af61482799d68c2a7e9c",
+      "next": "fd7450c1f92d52b91075220c636129ef702e8e7c29edc73d8f2e81df8a091618"
+    },
+    {
+      "ord": 78,
+      "blockId": "a43a4df17308b5e796ce3b544e491807",
+      "fp64": "77dff3dadf79e97e",
+      "normHash": "fd7450c1f92d52b91075220c636129ef702e8e7c29edc73d8f2e81df8a091618",
+      "kind": "page",
+      "chapter": "القسم-الأول-ما-يتقى-به-السحر-قبل-وقوعه",
+      "prev": "317576b83cc513e0f8da91d3f8c45caf6b463a5f31c31809a57de605a90a5f7e",
+      "next": "9da71dc963517c4e774b358972394d727450d8fc86e84c6328e620ea000bbb3a"
+    },
+    {
+      "ord": 79,
+      "blockId": "7ff95b6231e4e8420deb5aeb7d76de19",
+      "fp64": "644c60ffd47f707e",
+      "normHash": "9da71dc963517c4e774b358972394d727450d8fc86e84c6328e620ea000bbb3a",
+      "kind": "p",
+      "chapter": "القسم-الأول-ما-يتقى-به-السحر-قبل-وقوعه",
+      "prev": "fd7450c1f92d52b91075220c636129ef702e8e7c29edc73d8f2e81df8a091618",
+      "next": "c20995cf43340058ec3682f5fcda98f3b52379e464a4a59c09be10e1c9aefb19"
+    },
+    {
+      "ord": 80,
+      "blockId": "c8e8afc7a6c6c96fdec7be1d57cf2827",
+      "fp64": "e6ce6dfcdf7e57ff",
+      "normHash": "c20995cf43340058ec3682f5fcda98f3b52379e464a4a59c09be10e1c9aefb19",
+      "kind": "p",
+      "chapter": "القسم-الأول-ما-يتقى-به-السحر-قبل-وقوعه",
+      "prev": "9da71dc963517c4e774b358972394d727450d8fc86e84c6328e620ea000bbb3a",
+      "next": "4d7f2998bc85e354ee4f05d6e04b1fb9a9d942d1aa522f6efb3cd16db82fe735"
+    },
+    {
+      "ord": 81,
+      "blockId": "fa8df6863b4fdb508e8f58b44d4ea3fa",
+      "fp64": "5f9930f328778258",
+      "normHash": "4d7f2998bc85e354ee4f05d6e04b1fb9a9d942d1aa522f6efb3cd16db82fe735",
+      "kind": "p",
+      "chapter": "القسم-الأول-ما-يتقى-به-السحر-قبل-وقوعه",
+      "prev": "c20995cf43340058ec3682f5fcda98f3b52379e464a4a59c09be10e1c9aefb19",
+      "next": "d3fc5bd9b2f63785248129ea03bccffcaf940956b7d8a0eead4645fbe9ba5066"
+    },
+    {
+      "ord": 82,
+      "blockId": "90d021a3c7a32ab522ddb99708504497",
+      "fp64": "f7fff79efaf160b6",
+      "normHash": "d3fc5bd9b2f63785248129ea03bccffcaf940956b7d8a0eead4645fbe9ba5066",
+      "kind": "page",
+      "chapter": "القسم-الأول-ما-يتقى-به-السحر-قبل-وقوعه",
+      "prev": "4d7f2998bc85e354ee4f05d6e04b1fb9a9d942d1aa522f6efb3cd16db82fe735",
+      "next": "4529044b6f11803cc29b7645851d4ef2fb92cd6425b5603dac699f88b3dd730f"
+    },
+    {
+      "ord": 83,
+      "blockId": "af23b6dfe78f1e6f4c31a07eb803f268",
+      "fp64": "649f39bb7f47fb3f",
+      "normHash": "4529044b6f11803cc29b7645851d4ef2fb92cd6425b5603dac699f88b3dd730f",
+      "kind": "h2",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "d3fc5bd9b2f63785248129ea03bccffcaf940956b7d8a0eead4645fbe9ba5066",
+      "next": "6daf692b438a826e2b4ed79f820ecd97fe7413215d8eb63a3b55aa7959c69466"
+    },
+    {
+      "ord": 84,
+      "blockId": "527ac54618db30dab84411e95281baf0",
+      "fp64": "fbebde65f7e85fb7",
+      "normHash": "6daf692b438a826e2b4ed79f820ecd97fe7413215d8eb63a3b55aa7959c69466",
+      "kind": "p",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "4529044b6f11803cc29b7645851d4ef2fb92cd6425b5603dac699f88b3dd730f",
+      "next": "f5597ec244d50c1039f8145687bae2ddc8c9cc024423227c9c7dcd2959e09c2e"
+    },
+    {
+      "ord": 85,
+      "blockId": "65fed67c616245b5853504bba9b98b89",
+      "fp64": "72ddffffe976bac2",
+      "normHash": "f5597ec244d50c1039f8145687bae2ddc8c9cc024423227c9c7dcd2959e09c2e",
+      "kind": "h3",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "6daf692b438a826e2b4ed79f820ecd97fe7413215d8eb63a3b55aa7959c69466",
+      "next": "c534cc83d4225f1536b3fe40957f8b5083ef66bc2b8c26af492e2b77e16b736a"
+    },
+    {
+      "ord": 86,
+      "blockId": "64bb5f85052f99a6851d8a5d1076cb5a",
+      "fp64": "f34b76bfd1274f0d",
+      "normHash": "c534cc83d4225f1536b3fe40957f8b5083ef66bc2b8c26af492e2b77e16b736a",
+      "kind": "p",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "f5597ec244d50c1039f8145687bae2ddc8c9cc024423227c9c7dcd2959e09c2e",
+      "next": "480f8f287b23baa068d5ece78760f338cd4a49ba2b4a423e23c08c298bd306dc"
+    },
+    {
+      "ord": 87,
+      "blockId": "f0581be12253d74424160b025262dee4",
+      "fp64": "a8ffbeeeb9f3bff3",
+      "normHash": "480f8f287b23baa068d5ece78760f338cd4a49ba2b4a423e23c08c298bd306dc",
+      "kind": "h3",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "c534cc83d4225f1536b3fe40957f8b5083ef66bc2b8c26af492e2b77e16b736a",
+      "next": "3a56864ea6cbec6dc382b09f05499ed2822f9e02e7fbe26fc8c2668bc277c851"
+    },
+    {
+      "ord": 88,
+      "blockId": "b28a1f1f70c1c75eed2032e39788fb38",
+      "fp64": "38507acfeeff7d4f",
+      "normHash": "3a56864ea6cbec6dc382b09f05499ed2822f9e02e7fbe26fc8c2668bc277c851",
+      "kind": "p",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "480f8f287b23baa068d5ece78760f338cd4a49ba2b4a423e23c08c298bd306dc",
+      "next": "c780f601748fe5e4e05a020223281cf4cd9e0be56e35c1a28d456ff7a3517f19"
+    },
+    {
+      "ord": 89,
+      "blockId": "a8d45ae34d124e735d70c31c9c715631",
+      "fp64": "cc4567398b7f7fee",
+      "normHash": "c780f601748fe5e4e05a020223281cf4cd9e0be56e35c1a28d456ff7a3517f19",
+      "kind": "p",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "3a56864ea6cbec6dc382b09f05499ed2822f9e02e7fbe26fc8c2668bc277c851",
+      "next": "111f030bb4e60f764ca12012d0467e2b7cbde974273b789ffd421814cbec2dfb"
+    },
+    {
+      "ord": 90,
+      "blockId": "64927911a55fa85ceccf1f852fe7dd64",
+      "fp64": "6cc0c53b1d67566e",
+      "normHash": "111f030bb4e60f764ca12012d0467e2b7cbde974273b789ffd421814cbec2dfb",
+      "kind": "p",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "c780f601748fe5e4e05a020223281cf4cd9e0be56e35c1a28d456ff7a3517f19",
+      "next": "ebd8247a72272a041afe3dcf5a2cce0f7cb076931b2b1c4ad942a548d487df99"
+    },
+    {
+      "ord": 91,
+      "blockId": "e2571a4004d85544bb360165a7cd9652",
+      "fp64": "50387912b7e34f5f",
+      "normHash": "ebd8247a72272a041afe3dcf5a2cce0f7cb076931b2b1c4ad942a548d487df99",
+      "kind": "p",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "111f030bb4e60f764ca12012d0467e2b7cbde974273b789ffd421814cbec2dfb",
+      "next": "68f3727261046665f498c65a90fa7e68e048dc53941446d1ded55914c30c2e89"
+    },
+    {
+      "ord": 92,
+      "blockId": "6d9301e1e7844ffff608054a434d4dda",
+      "fp64": "efdff3daff39eaf7",
+      "normHash": "68f3727261046665f498c65a90fa7e68e048dc53941446d1ded55914c30c2e89",
+      "kind": "page",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "ebd8247a72272a041afe3dcf5a2cce0f7cb076931b2b1c4ad942a548d487df99",
+      "next": "38663625794faf137993770cc647785309cc2b8aac93cb0c42177463bf38742e"
+    },
+    {
+      "ord": 93,
+      "blockId": "87d6d8ab4af87d1ec658426692ed0e5c",
+      "fp64": "d640f45ebd670f03",
+      "normHash": "38663625794faf137993770cc647785309cc2b8aac93cb0c42177463bf38742e",
+      "kind": "p",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "68f3727261046665f498c65a90fa7e68e048dc53941446d1ded55914c30c2e89",
+      "next": "93dae9776913efee1c7a226c0109f2a0272208a34e276cd54302b5f8ac7d6057"
+    },
+    {
+      "ord": 94,
+      "blockId": "447e774b497d76cced2b063ccdeaeb91",
+      "fp64": "4a00679d27725cbe",
+      "normHash": "93dae9776913efee1c7a226c0109f2a0272208a34e276cd54302b5f8ac7d6057",
+      "kind": "p",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "38663625794faf137993770cc647785309cc2b8aac93cb0c42177463bf38742e",
+      "next": "7ed869a2c4ce2acbd12a018ec7e379543e5ff9b7a79af4e69c67e8160b3cd1d0"
+    },
+    {
+      "ord": 95,
+      "blockId": "620f0dba90ab44b6971c7829bd23f309",
+      "fp64": "11a82abb648f5ca3",
+      "normHash": "7ed869a2c4ce2acbd12a018ec7e379543e5ff9b7a79af4e69c67e8160b3cd1d0",
+      "kind": "p",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "93dae9776913efee1c7a226c0109f2a0272208a34e276cd54302b5f8ac7d6057",
+      "next": "10d76e1879a1ef6f2fe39e5c5b89e33e22083ebb14a869c0d2495f87dc134686"
+    },
+    {
+      "ord": 96,
+      "blockId": "1acff39441c9ecda918f5bd45f4ed603",
+      "fp64": "a5ffff9a5a776b7f",
+      "normHash": "10d76e1879a1ef6f2fe39e5c5b89e33e22083ebb14a869c0d2495f87dc134686",
+      "kind": "page",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "7ed869a2c4ce2acbd12a018ec7e379543e5ff9b7a79af4e69c67e8160b3cd1d0",
+      "next": "416a17dfd5ce9b44504231b3a0b632f6587dbca17bd66128bf1006e289cac8d5"
+    },
+    {
+      "ord": 97,
+      "blockId": "ea096127efe70b55635f8785c2432bfe",
+      "fp64": "30a4a01fb771c372",
+      "normHash": "416a17dfd5ce9b44504231b3a0b632f6587dbca17bd66128bf1006e289cac8d5",
+      "kind": "p",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "10d76e1879a1ef6f2fe39e5c5b89e33e22083ebb14a869c0d2495f87dc134686",
+      "next": "aa8a9382ccc34d4a0267600866e7af0451d628a76bba1e06c12dd190db24a6f2"
+    },
+    {
+      "ord": 98,
+      "blockId": "7a86b0b8e7f96a4a15c3339fb857bbdb",
+      "fp64": "6942714d17d20d0c",
+      "normHash": "aa8a9382ccc34d4a0267600866e7af0451d628a76bba1e06c12dd190db24a6f2",
+      "kind": "p",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "416a17dfd5ce9b44504231b3a0b632f6587dbca17bd66128bf1006e289cac8d5",
+      "next": "5b703af8212cf412fac43532f34a0e8581e031990382e3bcbd5f936075f534b3"
+    },
+    {
+      "ord": 99,
+      "blockId": "5bbc9d80f48c9f854cbb1eb358448375",
+      "fp64": "b500d07f87677d1b",
+      "normHash": "5b703af8212cf412fac43532f34a0e8581e031990382e3bcbd5f936075f534b3",
+      "kind": "p",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "aa8a9382ccc34d4a0267600866e7af0451d628a76bba1e06c12dd190db24a6f2",
+      "next": "9fec985ed6d04b6b0bb805399dfb852447c00b1a08120d23626d3b8c61c9ed7b"
+    },
+    {
+      "ord": 100,
+      "blockId": "8b25f6f7fe8774b9f144bf743b118018",
+      "fp64": "5dc093793d0d5de3",
+      "normHash": "9fec985ed6d04b6b0bb805399dfb852447c00b1a08120d23626d3b8c61c9ed7b",
+      "kind": "p",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "5b703af8212cf412fac43532f34a0e8581e031990382e3bcbd5f936075f534b3",
+      "next": "a181acef972400c92ed3ae51e67ba828b894042089a48611cc161a547d84306a"
+    },
+    {
+      "ord": 101,
+      "blockId": "8eed7738bf280f353a87d8b066a242e3",
+      "fp64": "2ffff3fbdf3f7f7e",
+      "normHash": "a181acef972400c92ed3ae51e67ba828b894042089a48611cc161a547d84306a",
+      "kind": "page",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "9fec985ed6d04b6b0bb805399dfb852447c00b1a08120d23626d3b8c61c9ed7b",
+      "next": "12719eae4e51cf8ac0b8f6d761f1771c3835c524b662e84f83e92782dec5500a"
+    },
+    {
+      "ord": 102,
+      "blockId": "a3d6dd578d6d13fb6aaf19f049248a0b",
+      "fp64": "a301f43b24774c14",
+      "normHash": "12719eae4e51cf8ac0b8f6d761f1771c3835c524b662e84f83e92782dec5500a",
+      "kind": "p",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "a181acef972400c92ed3ae51e67ba828b894042089a48611cc161a547d84306a",
+      "next": "c67ae1d988d63f441b82fb217fd6038eaca6c98de354a2c0be3cd8e518bc17d1"
+    },
+    {
+      "ord": 103,
+      "blockId": "b720ca8d2de595509361df97fb4d9431",
+      "fp64": "944d6816fd7d7972",
+      "normHash": "c67ae1d988d63f441b82fb217fd6038eaca6c98de354a2c0be3cd8e518bc17d1",
+      "kind": "p",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "12719eae4e51cf8ac0b8f6d761f1771c3835c524b662e84f83e92782dec5500a",
+      "next": "1a65f8b103f6551fb3af48cb4da04288731b743a7b95de3ce449757e0eeae678"
+    },
+    {
+      "ord": 104,
+      "blockId": "bf7f950cce33d891f022646c99311976",
+      "fp64": "7c597097d5bf6e9b",
+      "normHash": "1a65f8b103f6551fb3af48cb4da04288731b743a7b95de3ce449757e0eeae678",
+      "kind": "p",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "c67ae1d988d63f441b82fb217fd6038eaca6c98de354a2c0be3cd8e518bc17d1",
+      "next": "14caea6f189ebe4231f2a32c3f0b4c98ae01dd4e60f3009b8ef32bcd32f2cf37"
+    },
+    {
+      "ord": 105,
+      "blockId": "0f5e1c9c7afce9b53a9672375c88e95b",
+      "fp64": "5dc35c3197e6dd31",
+      "normHash": "14caea6f189ebe4231f2a32c3f0b4c98ae01dd4e60f3009b8ef32bcd32f2cf37",
+      "kind": "p",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "1a65f8b103f6551fb3af48cb4da04288731b743a7b95de3ce449757e0eeae678",
+      "next": "f77da5b74e3bd24106b2429b6425584b691b1d66272301237b671bca91991ba9"
+    },
+    {
+      "ord": 106,
+      "blockId": "643be412c85b56664981ceb5cec48652",
+      "fp64": "83c532fa1a17178e",
+      "normHash": "f77da5b74e3bd24106b2429b6425584b691b1d66272301237b671bca91991ba9",
+      "kind": "p",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "14caea6f189ebe4231f2a32c3f0b4c98ae01dd4e60f3009b8ef32bcd32f2cf37",
+      "next": "b73aa4cdc874f833049801c90b61644752248ba6277e7139cb021ddcc4ca7d5c"
+    },
+    {
+      "ord": 107,
+      "blockId": "00d1e88df98bc2e30b04dab01dd6ea4b",
+      "fp64": "afdff7fe5fb37f77",
+      "normHash": "b73aa4cdc874f833049801c90b61644752248ba6277e7139cb021ddcc4ca7d5c",
+      "kind": "page",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "f77da5b74e3bd24106b2429b6425584b691b1d66272301237b671bca91991ba9",
+      "next": "4ce86c62e3d67370966bc84022f6d656031ce2008c089d27bfcfcae109bf37ef"
+    },
+    {
+      "ord": 108,
+      "blockId": "f40a8bc7e9ffbfa8e8f685767e8cd6c7",
+      "fp64": "6026cca41fdd1530",
+      "normHash": "4ce86c62e3d67370966bc84022f6d656031ce2008c089d27bfcfcae109bf37ef",
+      "kind": "p",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "b73aa4cdc874f833049801c90b61644752248ba6277e7139cb021ddcc4ca7d5c",
+      "next": "bb107dbc562f8ad6fa66b799be1a13ee518f1e449a9de8b1aba0449500bcb31a"
+    },
+    {
+      "ord": 109,
+      "blockId": "8e9d4552a105df3ba80a11fe66bacc7e",
+      "fp64": "0ba2ad7bfde36fef",
+      "normHash": "bb107dbc562f8ad6fa66b799be1a13ee518f1e449a9de8b1aba0449500bcb31a",
+      "kind": "p",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "4ce86c62e3d67370966bc84022f6d656031ce2008c089d27bfcfcae109bf37ef",
+      "next": "1b17144b943d13aff1e1ef51c22b24f916387e0d1e3879c2f3ff30a805388087"
+    },
+    {
+      "ord": 110,
+      "blockId": "cab0739ad7e63b66c80a2036aba6b0da",
+      "fp64": "500dee5ab64f5c5a",
+      "normHash": "1b17144b943d13aff1e1ef51c22b24f916387e0d1e3879c2f3ff30a805388087",
+      "kind": "p",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "bb107dbc562f8ad6fa66b799be1a13ee518f1e449a9de8b1aba0449500bcb31a",
+      "next": "f57279e5e08f65b9aa33e6f77c59738fd981675b1d001e1bb7fb0ade4dc7b44e"
+    },
+    {
+      "ord": 111,
+      "blockId": "107f2936fa17e4b90c72e155b32fc1ea",
+      "fp64": "bdfff3fb7b7175f6",
+      "normHash": "f57279e5e08f65b9aa33e6f77c59738fd981675b1d001e1bb7fb0ade4dc7b44e",
+      "kind": "page",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "1b17144b943d13aff1e1ef51c22b24f916387e0d1e3879c2f3ff30a805388087",
+      "next": "630a331b4fba5a770b1919f3406a2b640453a21d928f4b5e620ae315be140e70"
+    },
+    {
+      "ord": 112,
+      "blockId": "99a0a06a1fd1cabd730475809173a944",
+      "fp64": "51d877b75aefad50",
+      "normHash": "630a331b4fba5a770b1919f3406a2b640453a21d928f4b5e620ae315be140e70",
+      "kind": "p",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "f57279e5e08f65b9aa33e6f77c59738fd981675b1d001e1bb7fb0ade4dc7b44e",
+      "next": "5b7d97c920f8ca0224ed620802d10d21256685126059a884a56d5465a5425c11"
+    },
+    {
+      "ord": 113,
+      "blockId": "087ef81f1caa3fe29f6128bc7caca623",
+      "fp64": "7da95473a0fa2be3",
+      "normHash": "5b7d97c920f8ca0224ed620802d10d21256685126059a884a56d5465a5425c11",
+      "kind": "p",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "630a331b4fba5a770b1919f3406a2b640453a21d928f4b5e620ae315be140e70",
+      "next": "57edf6d571cf32164051e4bcc0a08cbe75633f716e8ae73f282b8daadad103b2"
+    },
+    {
+      "ord": 114,
+      "blockId": "bcdef797c6bea30465cabf223f85a466",
+      "fp64": "745274fb3fd9bbef",
+      "normHash": "57edf6d571cf32164051e4bcc0a08cbe75633f716e8ae73f282b8daadad103b2",
+      "kind": "p",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "5b7d97c920f8ca0224ed620802d10d21256685126059a884a56d5465a5425c11",
+      "next": "7a43f3efa4b7a0929cb97923d32981776235023dbb2d4afa4736d97b78ceaf39"
+    },
+    {
+      "ord": 115,
+      "blockId": "20a8ef5df7d2fc43ac0d9ef9c5af39b7",
+      "fp64": "557869fb9d23bcef",
+      "normHash": "7a43f3efa4b7a0929cb97923d32981776235023dbb2d4afa4736d97b78ceaf39",
+      "kind": "p",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "57edf6d571cf32164051e4bcc0a08cbe75633f716e8ae73f282b8daadad103b2",
+      "next": "4f2b94a4ac8f1af3819d06edcd47aa20bb49d02d7d3d92d56d363c8098e8b3a5"
+    },
+    {
+      "ord": 116,
+      "blockId": "6fe9554f9cc1879ca89339ee0daf35ae",
+      "fp64": "5d3961d3b55d8e99",
+      "normHash": "4f2b94a4ac8f1af3819d06edcd47aa20bb49d02d7d3d92d56d363c8098e8b3a5",
+      "kind": "p",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "7a43f3efa4b7a0929cb97923d32981776235023dbb2d4afa4736d97b78ceaf39",
+      "next": "c08cd48df02782a05d794b9546fe03555da34307f5cc30481c9cbf891f430ea4"
+    },
+    {
+      "ord": 117,
+      "blockId": "9f9f842759ce4ee510b77d76869d5ebf",
+      "fp64": "2ddff7df7b79e5b7",
+      "normHash": "c08cd48df02782a05d794b9546fe03555da34307f5cc30481c9cbf891f430ea4",
+      "kind": "page",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "4f2b94a4ac8f1af3819d06edcd47aa20bb49d02d7d3d92d56d363c8098e8b3a5",
+      "next": "8cd9d5cc6d03e3962088bdb6dee244d0f35dec5890ad50702a816b34b0a1d65f"
+    },
+    {
+      "ord": 118,
+      "blockId": "dc8874f719001284b41801d200b1044f",
+      "fp64": "51c167ff737b9fe7",
+      "normHash": "8cd9d5cc6d03e3962088bdb6dee244d0f35dec5890ad50702a816b34b0a1d65f",
+      "kind": "p",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "c08cd48df02782a05d794b9546fe03555da34307f5cc30481c9cbf891f430ea4",
+      "next": "a2087cf8b728b80f21c0ebf48b76a634a0bcd8ff42e38d1b9ee90a903d3cfffc"
+    },
+    {
+      "ord": 119,
+      "blockId": "6c843f73543c218960512d32911703ec",
+      "fp64": "d9e2ad395753da2f",
+      "normHash": "a2087cf8b728b80f21c0ebf48b76a634a0bcd8ff42e38d1b9ee90a903d3cfffc",
+      "kind": "p",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "8cd9d5cc6d03e3962088bdb6dee244d0f35dec5890ad50702a816b34b0a1d65f",
+      "next": "aa23263d9f011a07c1a7c3895d4778041d09a6ddb2394ddff1dccd56e30d3159"
+    },
+    {
+      "ord": 120,
+      "blockId": "543ce67ecdd3f280f9f2d6b2917870aa",
+      "fp64": "d66b757bd63fdf5e",
+      "normHash": "aa23263d9f011a07c1a7c3895d4778041d09a6ddb2394ddff1dccd56e30d3159",
+      "kind": "p",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "a2087cf8b728b80f21c0ebf48b76a634a0bcd8ff42e38d1b9ee90a903d3cfffc",
+      "next": "4c41d03b7ee1543c8576a1ae01c61e37b1573c3f661ddf2f7345333ba42af67c"
+    },
+    {
+      "ord": 121,
+      "blockId": "92268bc7a14e09e690b8cd33bf36201f",
+      "fp64": "d461787e153fcdff",
+      "normHash": "4c41d03b7ee1543c8576a1ae01c61e37b1573c3f661ddf2f7345333ba42af67c",
+      "kind": "p",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "aa23263d9f011a07c1a7c3895d4778041d09a6ddb2394ddff1dccd56e30d3159",
+      "next": "4ad130dfadf3825765f2a44d1fe59d17828a841154ec1d8e415823166b4cbc37"
+    },
+    {
+      "ord": 122,
+      "blockId": "d826448cc20706fed97e31ec25d65065",
+      "fp64": "51f9e9933555c455",
+      "normHash": "4ad130dfadf3825765f2a44d1fe59d17828a841154ec1d8e415823166b4cbc37",
+      "kind": "p",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "4c41d03b7ee1543c8576a1ae01c61e37b1573c3f661ddf2f7345333ba42af67c",
+      "next": "0516e251ec96bafda2747e69ea3f55e59a1298a8f0722685ea476a4f2cfc8bea"
+    },
+    {
+      "ord": 123,
+      "blockId": "e277103ecfeae3dc0f9e7211696cc890",
+      "fp64": "77ffff9efa7bfc7f",
+      "normHash": "0516e251ec96bafda2747e69ea3f55e59a1298a8f0722685ea476a4f2cfc8bea",
+      "kind": "page",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "4ad130dfadf3825765f2a44d1fe59d17828a841154ec1d8e415823166b4cbc37",
+      "next": "139e994be2ef9f46293b7d23c7cb68a89f98cd3fe1eba90352340ee84402a698"
+    },
+    {
+      "ord": 124,
+      "blockId": "2ee2e9d8508b5a070aeffbb57e0676c6",
+      "fp64": "f783ad3f977ebddd",
+      "normHash": "139e994be2ef9f46293b7d23c7cb68a89f98cd3fe1eba90352340ee84402a698",
+      "kind": "p",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "0516e251ec96bafda2747e69ea3f55e59a1298a8f0722685ea476a4f2cfc8bea",
+      "next": "b2651bdeda1ca8550043efa4333ea7cafb990670a277a57dcba945f4a0beb3eb"
+    },
+    {
+      "ord": 125,
+      "blockId": "fae67dc46154208809999cf5258655e1",
+      "fp64": "0401544ed6bf4eca",
+      "normHash": "b2651bdeda1ca8550043efa4333ea7cafb990670a277a57dcba945f4a0beb3eb",
+      "kind": "p",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "139e994be2ef9f46293b7d23c7cb68a89f98cd3fe1eba90352340ee84402a698",
+      "next": "d092e605a3b9131a2338057af58eddc32d4bf47e541b29da5ff88525b65a345c"
+    },
+    {
+      "ord": 126,
+      "blockId": "d11565eb5d03085d6a975bd786fdf23d",
+      "fp64": "58b971d5595d8e50",
+      "normHash": "d092e605a3b9131a2338057af58eddc32d4bf47e541b29da5ff88525b65a345c",
+      "kind": "p",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "b2651bdeda1ca8550043efa4333ea7cafb990670a277a57dcba945f4a0beb3eb",
+      "next": "2ab029640d0d4db368c048d36be6c59a5ae8545d4205df7e2b6173bbc905b96c"
+    },
+    {
+      "ord": 127,
+      "blockId": "c5995b4a76295d417763af8d4103a998",
+      "fp64": "77dff39fdf716677",
+      "normHash": "2ab029640d0d4db368c048d36be6c59a5ae8545d4205df7e2b6173bbc905b96c",
+      "kind": "page",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "d092e605a3b9131a2338057af58eddc32d4bf47e541b29da5ff88525b65a345c",
+      "next": "704a3bf95c792e4ccdd1f6e4be737686d8b50a5821ba89e261e3330ff6c3e6bb"
+    },
+    {
+      "ord": 128,
+      "blockId": "00271a0a4f745f8b7fe045af3e9ec75d",
+      "fp64": "575baf9377f79f6e",
+      "normHash": "704a3bf95c792e4ccdd1f6e4be737686d8b50a5821ba89e261e3330ff6c3e6bb",
+      "kind": "p",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "2ab029640d0d4db368c048d36be6c59a5ae8545d4205df7e2b6173bbc905b96c",
+      "next": "f7d422b9e58c695bb612d5571463967f495216323d5422ea8ee05dc5d27504e6"
+    },
+    {
+      "ord": 129,
+      "blockId": "566138de8b2cdc912100f1c5794b0eb3",
+      "fp64": "8cfede5036bdf26f",
+      "normHash": "f7d422b9e58c695bb612d5571463967f495216323d5422ea8ee05dc5d27504e6",
+      "kind": "p",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "704a3bf95c792e4ccdd1f6e4be737686d8b50a5821ba89e261e3330ff6c3e6bb",
+      "next": "3952353dc41be5f6543f3b6a18182fae13b504b9e58dd900fe64e9c0854acf4c"
+    },
+    {
+      "ord": 130,
+      "blockId": "4fb0aede86c51a9b38ae2b066fcfabb0",
+      "fp64": "593bc9fb35e59714",
+      "normHash": "3952353dc41be5f6543f3b6a18182fae13b504b9e58dd900fe64e9c0854acf4c",
+      "kind": "p",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "f7d422b9e58c695bb612d5571463967f495216323d5422ea8ee05dc5d27504e6",
+      "next": "1b812f1da0256532b54fe37b737551313292597646cd399cd89855624c1fd078"
+    },
+    {
+      "ord": 131,
+      "blockId": "c402c1146bcd9c38fcb7da44c7276393",
+      "fp64": "f7ffffdf5eb7e17f",
+      "normHash": "1b812f1da0256532b54fe37b737551313292597646cd399cd89855624c1fd078",
+      "kind": "page",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "3952353dc41be5f6543f3b6a18182fae13b504b9e58dd900fe64e9c0854acf4c",
+      "next": "e4bd4f70790f3792cef5e16aea36997c44d77756fbcb62edf5d24dac400c258f"
+    },
+    {
+      "ord": 132,
+      "blockId": "a51159b83aed5aa9c3f4f04b4152f065",
+      "fp64": "abff9ef3eb6ffe42",
+      "normHash": "e4bd4f70790f3792cef5e16aea36997c44d77756fbcb62edf5d24dac400c258f",
+      "kind": "p",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "1b812f1da0256532b54fe37b737551313292597646cd399cd89855624c1fd078",
+      "next": "0359626f4b02a9a307af9d9f1991b96e16f6f379833063b51941e76afeed72b0"
+    },
+    {
+      "ord": 133,
+      "blockId": "ab3b5c21df0cc915eb3a1adbbbc2489d",
+      "fp64": "b445ec07dfab21fb",
+      "normHash": "0359626f4b02a9a307af9d9f1991b96e16f6f379833063b51941e76afeed72b0",
+      "kind": "p",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "e4bd4f70790f3792cef5e16aea36997c44d77756fbcb62edf5d24dac400c258f",
+      "next": "dfa3b106c84d1404d387b98ef940a30a802c68a8e7ea458fadc4bc42f37eafad"
+    },
+    {
+      "ord": 134,
+      "blockId": "3d74e02210ef56d5502664c9a828b8f7",
+      "fp64": "7083fd07c43d06bb",
+      "normHash": "dfa3b106c84d1404d387b98ef940a30a802c68a8e7ea458fadc4bc42f37eafad",
+      "kind": "p",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "0359626f4b02a9a307af9d9f1991b96e16f6f379833063b51941e76afeed72b0",
+      "next": "5fa1b42129456125af97c2b3d9e65b8a85e8476825ce7fc0e4825feb0c13bac6"
+    },
+    {
+      "ord": 135,
+      "blockId": "e702c1987e7785140a3f900ca8e8a903",
+      "fp64": "bd67ec73ff2bf97f",
+      "normHash": "5fa1b42129456125af97c2b3d9e65b8a85e8476825ce7fc0e4825feb0c13bac6",
+      "kind": "p",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "dfa3b106c84d1404d387b98ef940a30a802c68a8e7ea458fadc4bc42f37eafad",
+      "next": "be618abb4b5f20420e96bafccf0a41c5ae23651783eb912431b581f090cb023e"
+    },
+    {
+      "ord": 136,
+      "blockId": "e72e8e7473a7dc383c8557a06d3e643a",
+      "fp64": "047bc8b3fd786574",
+      "normHash": "be618abb4b5f20420e96bafccf0a41c5ae23651783eb912431b581f090cb023e",
+      "kind": "p",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "5fa1b42129456125af97c2b3d9e65b8a85e8476825ce7fc0e4825feb0c13bac6",
+      "next": "e34c2494ff5cbdc924c6f860aefa5fea954590d966f699776c74c1bbfdda3b6b"
+    },
+    {
+      "ord": 137,
+      "blockId": "db0c899ceebf1ac073dcbd1258d4da7c",
+      "fp64": "b5fff3fefa7b7337",
+      "normHash": "e34c2494ff5cbdc924c6f860aefa5fea954590d966f699776c74c1bbfdda3b6b",
+      "kind": "page",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "be618abb4b5f20420e96bafccf0a41c5ae23651783eb912431b581f090cb023e",
+      "next": "0de4ad1acc62cd8342ead8c3194d85cf2f531d0e2ef76b6ad874fc74a2f2fa14"
+    },
+    {
+      "ord": 138,
+      "blockId": "43e1873b15f28052197fc21129b6eb20",
+      "fp64": "70c125378e2f86ea",
+      "normHash": "0de4ad1acc62cd8342ead8c3194d85cf2f531d0e2ef76b6ad874fc74a2f2fa14",
+      "kind": "p",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "e34c2494ff5cbdc924c6f860aefa5fea954590d966f699776c74c1bbfdda3b6b",
+      "next": "07156c1eaf686f7f289dc8467908b6ed3b0df1fc2432df7f381a58aed1abf582"
+    },
+    {
+      "ord": 139,
+      "blockId": "291f92118a6adad96bf7f93f421b32d9",
+      "fp64": "35ad6afe9eb9a3ee",
+      "normHash": "07156c1eaf686f7f289dc8467908b6ed3b0df1fc2432df7f381a58aed1abf582",
+      "kind": "p",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "0de4ad1acc62cd8342ead8c3194d85cf2f531d0e2ef76b6ad874fc74a2f2fa14",
+      "next": "97acf5ca47073b865cbdfb4c77f1db6493e0ce9255b1e061571255decdb07c6a"
+    },
+    {
+      "ord": 140,
+      "blockId": "b76f21cda03eb29a608b586f45bd0707",
+      "fp64": "fdfd7e9bfff2fa4b",
+      "normHash": "97acf5ca47073b865cbdfb4c77f1db6493e0ce9255b1e061571255decdb07c6a",
+      "kind": "h3",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "07156c1eaf686f7f289dc8467908b6ed3b0df1fc2432df7f381a58aed1abf582",
+      "next": "0a4bada6144bb139acd2d7e8f77820ca41fca6389319bbdabca84a9dd9ba348f"
+    },
+    {
+      "ord": 141,
+      "blockId": "a143cf35f7279aef95f4cc02a0c8acd6",
+      "fp64": "2742081dca541fb6",
+      "normHash": "0a4bada6144bb139acd2d7e8f77820ca41fca6389319bbdabca84a9dd9ba348f",
+      "kind": "p",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "97acf5ca47073b865cbdfb4c77f1db6493e0ce9255b1e061571255decdb07c6a",
+      "next": "d5066ceec22f27697245f39e9412e14693a626c9249b29993b4e1e1aa3bbe495"
+    },
+    {
+      "ord": 142,
+      "blockId": "d0a29a36c04c2a37eaa99064b19194c1",
+      "fp64": "d65d60d315f5967a",
+      "normHash": "d5066ceec22f27697245f39e9412e14693a626c9249b29993b4e1e1aa3bbe495",
+      "kind": "p",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "0a4bada6144bb139acd2d7e8f77820ca41fca6389319bbdabca84a9dd9ba348f",
+      "next": "21f9c20f4e83572f264bf3be8f944f198e85a4861ab0d298f36d08d44149d424"
+    },
+    {
+      "ord": 143,
+      "blockId": "c1fc91ace39fd8898dadd6a17aedd47d",
+      "fp64": "ffdfff9edf716b76",
+      "normHash": "21f9c20f4e83572f264bf3be8f944f198e85a4861ab0d298f36d08d44149d424",
+      "kind": "page",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "d5066ceec22f27697245f39e9412e14693a626c9249b29993b4e1e1aa3bbe495",
+      "next": "100a3d8394a188a3cdbe97c164860f0c0b9d19b4fa6bcba2b285329fcc6d45d0"
+    },
+    {
+      "ord": 144,
+      "blockId": "08a529c0d003503f94f86fe03bf63c17",
+      "fp64": "a295a653df2db7e5",
+      "normHash": "100a3d8394a188a3cdbe97c164860f0c0b9d19b4fa6bcba2b285329fcc6d45d0",
+      "kind": "p",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "21f9c20f4e83572f264bf3be8f944f198e85a4861ab0d298f36d08d44149d424",
+      "next": "de7e7a00e3dfe24d0e90fad11f1829c4ec73bf0cfdc2a74528d54ba8d22b6601"
+    },
+    {
+      "ord": 145,
+      "blockId": "6f95d7c985073479b8c969d1cfb722b0",
+      "fp64": "bcfdfe06fbf2fb7f",
+      "normHash": "de7e7a00e3dfe24d0e90fad11f1829c4ec73bf0cfdc2a74528d54ba8d22b6601",
+      "kind": "h3",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "100a3d8394a188a3cdbe97c164860f0c0b9d19b4fa6bcba2b285329fcc6d45d0",
+      "next": "e6b3a45a01b547556cff625fceda219e77dbb03a7014dd033d0bec4103971930"
+    },
+    {
+      "ord": 146,
+      "blockId": "8749e6a33094e9fe60cfbc5fe1698366",
+      "fp64": "3cdbe50b9f3acccc",
+      "normHash": "e6b3a45a01b547556cff625fceda219e77dbb03a7014dd033d0bec4103971930",
+      "kind": "p",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "de7e7a00e3dfe24d0e90fad11f1829c4ec73bf0cfdc2a74528d54ba8d22b6601",
+      "next": "b59812e1d1c575408c80a95e7eec7d2f2f54038cd44fbbde55740591ef2011cf"
+    },
+    {
+      "ord": 147,
+      "blockId": "bcbbea58159fe481264dab4fa8b30b02",
+      "fp64": "5c9a4d4da66aec7f",
+      "normHash": "b59812e1d1c575408c80a95e7eec7d2f2f54038cd44fbbde55740591ef2011cf",
+      "kind": "p",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "e6b3a45a01b547556cff625fceda219e77dbb03a7014dd033d0bec4103971930",
+      "next": "a368891ef9a262987f7b742c364d62cb1d7d4e6cde5b779d8435f58d0237e27a"
+    },
+    {
+      "ord": 148,
+      "blockId": "8a164e183cb689dea9ba0d12b273e146",
+      "fp64": "7ffffbbafa337eff",
+      "normHash": "a368891ef9a262987f7b742c364d62cb1d7d4e6cde5b779d8435f58d0237e27a",
+      "kind": "page",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "b59812e1d1c575408c80a95e7eec7d2f2f54038cd44fbbde55740591ef2011cf",
+      "next": "a1d1c185530d064d758016d5484c0b48b107f40e214cb22502206eae4e59eadb"
+    },
+    {
+      "ord": 149,
+      "blockId": "4f4300b32acf1780ec543492c490005b",
+      "fp64": "8892625524273949",
+      "normHash": "a1d1c185530d064d758016d5484c0b48b107f40e214cb22502206eae4e59eadb",
+      "kind": "p",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "a368891ef9a262987f7b742c364d62cb1d7d4e6cde5b779d8435f58d0237e27a",
+      "next": "20dd58be7b82c37d262d57ea2cf04ee9c85aa94698f96a127e9e70f76d80138f"
+    },
+    {
+      "ord": 150,
+      "blockId": "7a9f6ad00a2137bfae0e4725d5b4f4be",
+      "fp64": "303c6932ffafa45d",
+      "normHash": "20dd58be7b82c37d262d57ea2cf04ee9c85aa94698f96a127e9e70f76d80138f",
+      "kind": "p",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "a1d1c185530d064d758016d5484c0b48b107f40e214cb22502206eae4e59eadb",
+      "next": "8ee4aa65c407f9712a00495326cacadefdfe4775ff893ac01803d1390fb38c1b"
+    },
+    {
+      "ord": 151,
+      "blockId": "a308b2b16ca28fa76267df54ef401847",
+      "fp64": "56856c1245495c37",
+      "normHash": "8ee4aa65c407f9712a00495326cacadefdfe4775ff893ac01803d1390fb38c1b",
+      "kind": "p",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "20dd58be7b82c37d262d57ea2cf04ee9c85aa94698f96a127e9e70f76d80138f",
+      "next": "e787f2e0d4f0f35e056dccc815af2de911e7c3c49eeda32cbbf989e9845a9929"
+    },
+    {
+      "ord": 152,
+      "blockId": "a0d3867440badf8533f5d06431dc03f7",
+      "fp64": "b5fff39e5abdfcf6",
+      "normHash": "e787f2e0d4f0f35e056dccc815af2de911e7c3c49eeda32cbbf989e9845a9929",
+      "kind": "page",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "8ee4aa65c407f9712a00495326cacadefdfe4775ff893ac01803d1390fb38c1b",
+      "next": "f22261a92d669e7afce7d3df99c1bf11a8fd310d145cd4ec98184d1b6ff1927a"
+    },
+    {
+      "ord": 153,
+      "blockId": "5e985e336b3e4fc9da39a9084431eb8f",
+      "fp64": "6cc6c847915efd59",
+      "normHash": "f22261a92d669e7afce7d3df99c1bf11a8fd310d145cd4ec98184d1b6ff1927a",
+      "kind": "p",
+      "chapter": "القسم-الثاني-علاج-السحر-بعد-وقوعه",
+      "prev": "e787f2e0d4f0f35e056dccc815af2de911e7c3c49eeda32cbbf989e9845a9929",
+      "next": "44f61dbe9475bfd6a7e1c87fbdba415fc1eccb76f318373d7fff139b3e760290"
+    },
+    {
+      "ord": 154,
+      "blockId": "add08d46ab96e6e71fde10487158c74d",
+      "fp64": "751c79a2a4cd4953",
+      "normHash": "44f61dbe9475bfd6a7e1c87fbdba415fc1eccb76f318373d7fff139b3e760290",
+      "kind": "h2",
+      "chapter": "٢-علاج-العين",
+      "prev": "f22261a92d669e7afce7d3df99c1bf11a8fd310d145cd4ec98184d1b6ff1927a",
+      "next": "0689e9270dc8a5e2a3b7a7156320741868fca0b86b19ee7c215360c6d0d3d89a"
+    },
+    {
+      "ord": 155,
+      "blockId": "1e17c0eefab22fd95edf2b43d0c90230",
+      "fp64": "d5df7bf726defb5b",
+      "normHash": "0689e9270dc8a5e2a3b7a7156320741868fca0b86b19ee7c215360c6d0d3d89a",
+      "kind": "p",
+      "chapter": "٢-علاج-العين",
+      "prev": "44f61dbe9475bfd6a7e1c87fbdba415fc1eccb76f318373d7fff139b3e760290",
+      "next": "3bdaf6eba3847cbc3cdad8c0a72eb891759d6de52568718e31cc076be4288da5"
+    },
+    {
+      "ord": 156,
+      "blockId": "c2d79a9e69b5ae3502ab68d855fa083e",
+      "fp64": "6ac8bef7f596f913",
+      "normHash": "3bdaf6eba3847cbc3cdad8c0a72eb891759d6de52568718e31cc076be4288da5",
+      "kind": "h2",
+      "chapter": "القسم-الأول-قبل-الإصابة-وهو-أنواع",
+      "prev": "0689e9270dc8a5e2a3b7a7156320741868fca0b86b19ee7c215360c6d0d3d89a",
+      "next": "74759d88a04d27b5d3d8114fb071011dbb8736a88d5376266f99a2eaa883edd3"
+    },
+    {
+      "ord": 157,
+      "blockId": "0a07f852d40daeaa6013d3a2b09fa029",
+      "fp64": "5a29705035518c9e",
+      "normHash": "74759d88a04d27b5d3d8114fb071011dbb8736a88d5376266f99a2eaa883edd3",
+      "kind": "p",
+      "chapter": "القسم-الأول-قبل-الإصابة-وهو-أنواع",
+      "prev": "3bdaf6eba3847cbc3cdad8c0a72eb891759d6de52568718e31cc076be4288da5",
+      "next": "1f5c95dd181fafab5ad8c3809f93d70ab61f027b931d166084ec5a22acdf12cc"
+    },
+    {
+      "ord": 158,
+      "blockId": "eb323f6f5b0b754e635214980957db33",
+      "fp64": "35dffb9e5fbdf3f6",
+      "normHash": "1f5c95dd181fafab5ad8c3809f93d70ab61f027b931d166084ec5a22acdf12cc",
+      "kind": "page",
+      "chapter": "القسم-الأول-قبل-الإصابة-وهو-أنواع",
+      "prev": "74759d88a04d27b5d3d8114fb071011dbb8736a88d5376266f99a2eaa883edd3",
+      "next": "aebe6a183c81b125f33e81f52eb8511e4fe9adfd761d71c25d803c80bc5f1c45"
+    },
+    {
+      "ord": 159,
+      "blockId": "3d0f5d4d180224c664c7cce540aa9a1b",
+      "fp64": "5fcb3c7f75759f67",
+      "normHash": "aebe6a183c81b125f33e81f52eb8511e4fe9adfd761d71c25d803c80bc5f1c45",
+      "kind": "p",
+      "chapter": "القسم-الأول-قبل-الإصابة-وهو-أنواع",
+      "prev": "1f5c95dd181fafab5ad8c3809f93d70ab61f027b931d166084ec5a22acdf12cc",
+      "next": "ff2022e504a0b28cc307aae396b4892145df0d97030704fcf4631311691375f7"
+    },
+    {
+      "ord": 160,
+      "blockId": "1b6967d31fa640cc33d689badabae54e",
+      "fp64": "f5c0404b99df5ddb",
+      "normHash": "ff2022e504a0b28cc307aae396b4892145df0d97030704fcf4631311691375f7",
+      "kind": "p",
+      "chapter": "القسم-الأول-قبل-الإصابة-وهو-أنواع",
+      "prev": "aebe6a183c81b125f33e81f52eb8511e4fe9adfd761d71c25d803c80bc5f1c45",
+      "next": "b16cb5b4bb5bc4c1ef5c3b7844f08156350eb6784eeec94a2f7cccf7bcdb3ee1"
+    },
+    {
+      "ord": 161,
+      "blockId": "650c362df9ee6b56fcecdba4546b93ea",
+      "fp64": "5c09608a34659f1c",
+      "normHash": "b16cb5b4bb5bc4c1ef5c3b7844f08156350eb6784eeec94a2f7cccf7bcdb3ee1",
+      "kind": "p",
+      "chapter": "القسم-الأول-قبل-الإصابة-وهو-أنواع",
+      "prev": "ff2022e504a0b28cc307aae396b4892145df0d97030704fcf4631311691375f7",
+      "next": "57f37e4170198b51df43f9f91c1da5ed25f7173762cf30cc3c502d5a79916044"
+    },
+    {
+      "ord": 162,
+      "blockId": "08113508ecb6d7df286654771697b944",
+      "fp64": "35fff7ff5b31e5b6",
+      "normHash": "57f37e4170198b51df43f9f91c1da5ed25f7173762cf30cc3c502d5a79916044",
+      "kind": "page",
+      "chapter": "القسم-الأول-قبل-الإصابة-وهو-أنواع",
+      "prev": "b16cb5b4bb5bc4c1ef5c3b7844f08156350eb6784eeec94a2f7cccf7bcdb3ee1",
+      "next": "bcdb4f1f55968955920d27f954dab058da0fef912c418259ad7fd82e8f6093c3"
+    },
+    {
+      "ord": 163,
+      "blockId": "0480be79e570a06c3d7e47a5cfd6653d",
+      "fp64": "defa44f72f7d4f6e",
+      "normHash": "bcdb4f1f55968955920d27f954dab058da0fef912c418259ad7fd82e8f6093c3",
+      "kind": "p",
+      "chapter": "القسم-الأول-قبل-الإصابة-وهو-أنواع",
+      "prev": "57f37e4170198b51df43f9f91c1da5ed25f7173762cf30cc3c502d5a79916044",
+      "next": "99f30e20a4cacbbeb014ec697b905c4973d049ab4f95ecddba2824858f435d0f"
+    },
+    {
+      "ord": 164,
+      "blockId": "0fe13f32602f89506fb448dc809fc7df",
+      "fp64": "e2cb38e47fca7937",
+      "normHash": "99f30e20a4cacbbeb014ec697b905c4973d049ab4f95ecddba2824858f435d0f",
+      "kind": "h2",
+      "chapter": "القسم-الثاني-بعد-الإصابة-بالعين-وهو-أنواع",
+      "prev": "bcdb4f1f55968955920d27f954dab058da0fef912c418259ad7fd82e8f6093c3",
+      "next": "a6284e656d1bc25a4104ee72800cc1cc0e63b7e0e9a5665aab58192d9e5cd26c"
+    },
+    {
+      "ord": 165,
+      "blockId": "ca821dd9d9ed0f7c9102a00b3bf8e21b",
+      "fp64": "48ca64bd21cf5452",
+      "normHash": "a6284e656d1bc25a4104ee72800cc1cc0e63b7e0e9a5665aab58192d9e5cd26c",
+      "kind": "p",
+      "chapter": "القسم-الثاني-بعد-الإصابة-بالعين-وهو-أنواع",
+      "prev": "99f30e20a4cacbbeb014ec697b905c4973d049ab4f95ecddba2824858f435d0f",
+      "next": "ed09f1978a1a206aabf77ead2ee356729fffa92f3be4dcf2e1ec6d50ab0094e8"
+    },
+    {
+      "ord": 166,
+      "blockId": "0d873461ca321f95c658de1dcd253487",
+      "fp64": "b688e35a8d6b7363",
+      "normHash": "ed09f1978a1a206aabf77ead2ee356729fffa92f3be4dcf2e1ec6d50ab0094e8",
+      "kind": "p",
+      "chapter": "القسم-الثاني-بعد-الإصابة-بالعين-وهو-أنواع",
+      "prev": "a6284e656d1bc25a4104ee72800cc1cc0e63b7e0e9a5665aab58192d9e5cd26c",
+      "next": "5f3119bd20e49b23118dacf3bc5c1b3cbdc6ccef013f4a52bb82d8237067c67c"
+    },
+    {
+      "ord": 167,
+      "blockId": "45371285998e079251bebc832b1c7042",
+      "fp64": "45da65f6a56fcc17",
+      "normHash": "5f3119bd20e49b23118dacf3bc5c1b3cbdc6ccef013f4a52bb82d8237067c67c",
+      "kind": "p",
+      "chapter": "القسم-الثاني-بعد-الإصابة-بالعين-وهو-أنواع",
+      "prev": "ed09f1978a1a206aabf77ead2ee356729fffa92f3be4dcf2e1ec6d50ab0094e8",
+      "next": "8bdfd64f297cb4f46a40fb573a4ddedb248ee4a29471671507327f8356aee87e"
+    },
+    {
+      "ord": 168,
+      "blockId": "9df5a47bae3a31f75d171c2e97f227cb",
+      "fp64": "35dff7fa5a3374bf",
+      "normHash": "8bdfd64f297cb4f46a40fb573a4ddedb248ee4a29471671507327f8356aee87e",
+      "kind": "page",
+      "chapter": "القسم-الثاني-بعد-الإصابة-بالعين-وهو-أنواع",
+      "prev": "5f3119bd20e49b23118dacf3bc5c1b3cbdc6ccef013f4a52bb82d8237067c67c",
+      "next": "e12d44ddecaf3b28e6c69fc2489366313699fc61fb8da18b0f13254f63f10c01"
+    },
+    {
+      "ord": 169,
+      "blockId": "03bb48ed46fa4bf967241c425bec7545",
+      "fp64": "51db2cbf55477f57",
+      "normHash": "e12d44ddecaf3b28e6c69fc2489366313699fc61fb8da18b0f13254f63f10c01",
+      "kind": "p",
+      "chapter": "القسم-الثاني-بعد-الإصابة-بالعين-وهو-أنواع",
+      "prev": "8bdfd64f297cb4f46a40fb573a4ddedb248ee4a29471671507327f8356aee87e",
+      "next": "300ef7cb3b4b64331fb6c44ce737452397d70ac0e542e514ef0fe77a0f14060d"
+    },
+    {
+      "ord": 170,
+      "blockId": "dee66a41d0cb5cbbfc6f5dce9544ef4c",
+      "fp64": "9f5c405576515fb6",
+      "normHash": "300ef7cb3b4b64331fb6c44ce737452397d70ac0e542e514ef0fe77a0f14060d",
+      "kind": "p",
+      "chapter": "القسم-الثاني-بعد-الإصابة-بالعين-وهو-أنواع",
+      "prev": "e12d44ddecaf3b28e6c69fc2489366313699fc61fb8da18b0f13254f63f10c01",
+      "next": "177ce642837506532796dcb0dbe0372c67c1fae21d0b8b38f67ff6f6b6c140b0"
+    },
+    {
+      "ord": 171,
+      "blockId": "2dea801c43992115a73b8eae092cba9c",
+      "fp64": "15db6873bd741fbe",
+      "normHash": "177ce642837506532796dcb0dbe0372c67c1fae21d0b8b38f67ff6f6b6c140b0",
+      "kind": "p",
+      "chapter": "القسم-الثاني-بعد-الإصابة-بالعين-وهو-أنواع",
+      "prev": "300ef7cb3b4b64331fb6c44ce737452397d70ac0e542e514ef0fe77a0f14060d",
+      "next": "29eae3e7cbf6af90dd0be6a2d2bc0f2fb87fdf7fc2e7bc1f29cbf98018991151"
+    },
+    {
+      "ord": 172,
+      "blockId": "20b924674795494357fd1ae3063c629b",
+      "fp64": "eddff3dadf39e576",
+      "normHash": "29eae3e7cbf6af90dd0be6a2d2bc0f2fb87fdf7fc2e7bc1f29cbf98018991151",
+      "kind": "page",
+      "chapter": "القسم-الثاني-بعد-الإصابة-بالعين-وهو-أنواع",
+      "prev": "177ce642837506532796dcb0dbe0372c67c1fae21d0b8b38f67ff6f6b6c140b0",
+      "next": "f9f68d3ed60f78703c4a6b42a55c4cddf5872c2cbaa06b54b80c3efaa7198622"
+    },
+    {
+      "ord": 173,
+      "blockId": "7d313c7cfe5d6bb430b6641b0b02c1a8",
+      "fp64": "70c86c5f7ccdbcf2",
+      "normHash": "f9f68d3ed60f78703c4a6b42a55c4cddf5872c2cbaa06b54b80c3efaa7198622",
+      "kind": "p",
+      "chapter": "القسم-الثاني-بعد-الإصابة-بالعين-وهو-أنواع",
+      "prev": "29eae3e7cbf6af90dd0be6a2d2bc0f2fb87fdf7fc2e7bc1f29cbf98018991151",
+      "next": "3fd1440818e82abebaa5fd1cafc0674a1262c4d6c77b715c654e0c410d374865"
+    },
+    {
+      "ord": 174,
+      "blockId": "60323eb3c8fa41740f822194e1fd381f",
+      "fp64": "1acb2d3b8575ef4b",
+      "normHash": "3fd1440818e82abebaa5fd1cafc0674a1262c4d6c77b715c654e0c410d374865",
+      "kind": "p",
+      "chapter": "القسم-الثاني-بعد-الإصابة-بالعين-وهو-أنواع",
+      "prev": "f9f68d3ed60f78703c4a6b42a55c4cddf5872c2cbaa06b54b80c3efaa7198622",
+      "next": "47b36f0cff803747c8fe48b825bf2a84b5ebc0fe9f308e6e5964fcc34af489f3"
+    },
+    {
+      "ord": 175,
+      "blockId": "de8d741006f7831077b6a18c9e961e86",
+      "fp64": "140d6c5a25651e0d",
+      "normHash": "47b36f0cff803747c8fe48b825bf2a84b5ebc0fe9f308e6e5964fcc34af489f3",
+      "kind": "p",
+      "chapter": "القسم-الثاني-بعد-الإصابة-بالعين-وهو-أنواع",
+      "prev": "3fd1440818e82abebaa5fd1cafc0674a1262c4d6c77b715c654e0c410d374865",
+      "next": "4bbbeca6742f12c299ee9874c27e783f7f3f2b0b40fb7eff785b2d2e7693ddd5"
+    },
+    {
+      "ord": 176,
+      "blockId": "40d59332eba3eea258d71e59c7603709",
+      "fp64": "afffff9b7fb5617e",
+      "normHash": "4bbbeca6742f12c299ee9874c27e783f7f3f2b0b40fb7eff785b2d2e7693ddd5",
+      "kind": "page",
+      "chapter": "القسم-الثاني-بعد-الإصابة-بالعين-وهو-أنواع",
+      "prev": "47b36f0cff803747c8fe48b825bf2a84b5ebc0fe9f308e6e5964fcc34af489f3",
+      "next": "f413f169915476d0a44a4e48cfbfaa35376eb9ab01a8494afb5598d12acf69b1"
+    },
+    {
+      "ord": 177,
+      "blockId": "bbbb8a811e5e3cf7944d980d187f9172",
+      "fp64": "751324bfdc77fb52",
+      "normHash": "f413f169915476d0a44a4e48cfbfaa35376eb9ab01a8494afb5598d12acf69b1",
+      "kind": "h2",
+      "chapter": "القسم-الثالث-عمل-الأسباب-التي-تدفع-عين-الحاسد",
+      "prev": "4bbbeca6742f12c299ee9874c27e783f7f3f2b0b40fb7eff785b2d2e7693ddd5",
+      "next": "955c8b18a89a79aac67540f2d7848d686318c1b40cade130eaaf5e39965df219"
+    },
+    {
+      "ord": 178,
+      "blockId": "419414ad11907892d9f95f2da0fdcc97",
+      "fp64": "dd5debf227ffeb09",
+      "normHash": "955c8b18a89a79aac67540f2d7848d686318c1b40cade130eaaf5e39965df219",
+      "kind": "p",
+      "chapter": "القسم-الثالث-عمل-الأسباب-التي-تدفع-عين-الحاسد",
+      "prev": "f413f169915476d0a44a4e48cfbfaa35376eb9ab01a8494afb5598d12acf69b1",
+      "next": "276b4c195a2f25758ce26b00c0b3c29f504253e0afed54ce2b1a3c4bd4ef9786"
+    },
+    {
+      "ord": 179,
+      "blockId": "f7d6ba0811e1a47ff5c924a924948894",
+      "fp64": "d7c90df33665dd62",
+      "normHash": "276b4c195a2f25758ce26b00c0b3c29f504253e0afed54ce2b1a3c4bd4ef9786",
+      "kind": "p",
+      "chapter": "القسم-الثالث-عمل-الأسباب-التي-تدفع-عين-الحاسد",
+      "prev": "955c8b18a89a79aac67540f2d7848d686318c1b40cade130eaaf5e39965df219",
+      "next": "9ceda6d15b7465b2b530d1184fa44a0630c7cd3a200fecc6adda5d114a2ac41f"
+    },
+    {
+      "ord": 180,
+      "blockId": "d5e8a14bd80c0895625172c735711e25",
+      "fp64": "f44d64369aa979b2",
+      "normHash": "9ceda6d15b7465b2b530d1184fa44a0630c7cd3a200fecc6adda5d114a2ac41f",
+      "kind": "p",
+      "chapter": "القسم-الثالث-عمل-الأسباب-التي-تدفع-عين-الحاسد",
+      "prev": "276b4c195a2f25758ce26b00c0b3c29f504253e0afed54ce2b1a3c4bd4ef9786",
+      "next": "f6b29f62d2cafbff75fa9b43d803f5251801ce779ac0ef70d0e53b6bcd1fcffd"
+    },
+    {
+      "ord": 181,
+      "blockId": "d45cee87760b15ad21994b4c1fea2b1d",
+      "fp64": "de9380fc39e78b99",
+      "normHash": "f6b29f62d2cafbff75fa9b43d803f5251801ce779ac0ef70d0e53b6bcd1fcffd",
+      "kind": "p",
+      "chapter": "القسم-الثالث-عمل-الأسباب-التي-تدفع-عين-الحاسد",
+      "prev": "9ceda6d15b7465b2b530d1184fa44a0630c7cd3a200fecc6adda5d114a2ac41f",
+      "next": "b4494a0e275401b25b6fe69a13b90209133503185c5a88cb0d7dc6cf3988cf76"
+    },
+    {
+      "ord": 182,
+      "blockId": "203a9395d59c7e452df2af9462ba3caf",
+      "fp64": "9735e71215e67b5f",
+      "normHash": "b4494a0e275401b25b6fe69a13b90209133503185c5a88cb0d7dc6cf3988cf76",
+      "kind": "p",
+      "chapter": "القسم-الثالث-عمل-الأسباب-التي-تدفع-عين-الحاسد",
+      "prev": "f6b29f62d2cafbff75fa9b43d803f5251801ce779ac0ef70d0e53b6bcd1fcffd",
+      "next": "bf338d46b535ca94a31c23b32050c4916932cd85fd7387bcad170ef0b9686a28"
+    },
+    {
+      "ord": 183,
+      "blockId": "0724c5d67213ea1ac7c05e20757e0ac6",
+      "fp64": "586d60dd1c4d9e60",
+      "normHash": "bf338d46b535ca94a31c23b32050c4916932cd85fd7387bcad170ef0b9686a28",
+      "kind": "p",
+      "chapter": "القسم-الثالث-عمل-الأسباب-التي-تدفع-عين-الحاسد",
+      "prev": "b4494a0e275401b25b6fe69a13b90209133503185c5a88cb0d7dc6cf3988cf76",
+      "next": "c2e5ec499c041da0ca3ab6ab1146db3b1f4719e299d00b7bb5ed6dd8e308dd99"
+    },
+    {
+      "ord": 184,
+      "blockId": "912512e872265305303175d0166c4b8c",
+      "fp64": "27fffbde7a31e9be",
+      "normHash": "c2e5ec499c041da0ca3ab6ab1146db3b1f4719e299d00b7bb5ed6dd8e308dd99",
+      "kind": "page",
+      "chapter": "القسم-الثالث-عمل-الأسباب-التي-تدفع-عين-الحاسد",
+      "prev": "bf338d46b535ca94a31c23b32050c4916932cd85fd7387bcad170ef0b9686a28",
+      "next": "3081915e6c82ef59113108f545d0d7e3b2c5eacd229ba672aa6c073dab241004"
+    },
+    {
+      "ord": 185,
+      "blockId": "05ab143895d6da0f63af4f8f90e02105",
+      "fp64": "d94a642ad4759c3a",
+      "normHash": "3081915e6c82ef59113108f545d0d7e3b2c5eacd229ba672aa6c073dab241004",
+      "kind": "p",
+      "chapter": "القسم-الثالث-عمل-الأسباب-التي-تدفع-عين-الحاسد",
+      "prev": "c2e5ec499c041da0ca3ab6ab1146db3b1f4719e299d00b7bb5ed6dd8e308dd99",
+      "next": "74da46a09b9bac20ec4020dbe96dcb14b70458f82add067c1e608872a1b4ede6"
+    },
+    {
+      "ord": 186,
+      "blockId": "c29fe57252171caf2bcc61db028e60b5",
+      "fp64": "b54188508d2c0012",
+      "normHash": "74da46a09b9bac20ec4020dbe96dcb14b70458f82add067c1e608872a1b4ede6",
+      "kind": "p",
+      "chapter": "القسم-الثالث-عمل-الأسباب-التي-تدفع-عين-الحاسد",
+      "prev": "3081915e6c82ef59113108f545d0d7e3b2c5eacd229ba672aa6c073dab241004",
+      "next": "561c2098cd13e87a7d3ac3acd6bf377f2140f2f450a99f5a2e0ac1c76092cfaf"
+    },
+    {
+      "ord": 187,
+      "blockId": "a130a758551f31107ecc995403ff864a",
+      "fp64": "5dfa4ef75f6fef4d",
+      "normHash": "561c2098cd13e87a7d3ac3acd6bf377f2140f2f450a99f5a2e0ac1c76092cfaf",
+      "kind": "p",
+      "chapter": "القسم-الثالث-عمل-الأسباب-التي-تدفع-عين-الحاسد",
+      "prev": "74da46a09b9bac20ec4020dbe96dcb14b70458f82add067c1e608872a1b4ede6",
+      "next": "ff7d8b194b2ea508a16ea06fadb82a0d787cb507c844b57be46afb03a50ec5dc"
+    },
+    {
+      "ord": 188,
+      "blockId": "00062f0e5f2798311dcd8ea5a5b3feaa",
+      "fp64": "b75d345853318f5e",
+      "normHash": "ff7d8b194b2ea508a16ea06fadb82a0d787cb507c844b57be46afb03a50ec5dc",
+      "kind": "p",
+      "chapter": "القسم-الثالث-عمل-الأسباب-التي-تدفع-عين-الحاسد",
+      "prev": "561c2098cd13e87a7d3ac3acd6bf377f2140f2f450a99f5a2e0ac1c76092cfaf",
+      "next": "05a929b5f8ee41d010917b3ed6d3e8592b673e0459ff3950078732c0e76885bc"
+    },
+    {
+      "ord": 189,
+      "blockId": "0ae19578173c371d945338a49fc0be23",
+      "fp64": "99a9acbb558ecd62",
+      "normHash": "05a929b5f8ee41d010917b3ed6d3e8592b673e0459ff3950078732c0e76885bc",
+      "kind": "p",
+      "chapter": "القسم-الثالث-عمل-الأسباب-التي-تدفع-عين-الحاسد",
+      "prev": "ff7d8b194b2ea508a16ea06fadb82a0d787cb507c844b57be46afb03a50ec5dc",
+      "next": "b271db2d31a291996045e748faf11d4a35ceda2e52fc3e05cc86c6d37ecb262d"
+    },
+    {
+      "ord": 190,
+      "blockId": "241c036639b5467285801ddf05b8f219",
+      "fp64": "bdfffbdf5bb9f13f",
+      "normHash": "b271db2d31a291996045e748faf11d4a35ceda2e52fc3e05cc86c6d37ecb262d",
+      "kind": "page",
+      "chapter": "القسم-الثالث-عمل-الأسباب-التي-تدفع-عين-الحاسد",
+      "prev": "05a929b5f8ee41d010917b3ed6d3e8592b673e0459ff3950078732c0e76885bc",
+      "next": "efc62fd315fa3afc64dc8ed7b58a29c526fee665f42864b0ef20994860c9334f"
+    },
+    {
+      "ord": 191,
+      "blockId": "55f322b026158f12cc3f43e6eacbf7b9",
+      "fp64": "85d84c765375fc6f",
+      "normHash": "efc62fd315fa3afc64dc8ed7b58a29c526fee665f42864b0ef20994860c9334f",
+      "kind": "p",
+      "chapter": "القسم-الثالث-عمل-الأسباب-التي-تدفع-عين-الحاسد",
+      "prev": "b271db2d31a291996045e748faf11d4a35ceda2e52fc3e05cc86c6d37ecb262d",
+      "next": "0a36c5b75bb06e3e02fd886bc712b1b9a7369c530665464afde51819497ac558"
+    },
+    {
+      "ord": 192,
+      "blockId": "bc76ea6d3d98bc8d299f1ea45056f10d",
+      "fp64": "0dcaa43e1f65dd51",
+      "normHash": "0a36c5b75bb06e3e02fd886bc712b1b9a7369c530665464afde51819497ac558",
+      "kind": "p",
+      "chapter": "القسم-الثالث-عمل-الأسباب-التي-تدفع-عين-الحاسد",
+      "prev": "efc62fd315fa3afc64dc8ed7b58a29c526fee665f42864b0ef20994860c9334f",
+      "next": "38a3008f0d5890dbf0a8fdca634e25075a0eb86b31e615b31b151764b1297062"
+    },
+    {
+      "ord": 193,
+      "blockId": "040cfc5f756b97fcb78a9a413143d55f",
+      "fp64": "59bf7aceb7bfc6fb",
+      "normHash": "38a3008f0d5890dbf0a8fdca634e25075a0eb86b31e615b31b151764b1297062",
+      "kind": "p",
+      "chapter": "القسم-الثالث-عمل-الأسباب-التي-تدفع-عين-الحاسد",
+      "prev": "0a36c5b75bb06e3e02fd886bc712b1b9a7369c530665464afde51819497ac558",
+      "next": "b46e6923a0be5a76f4a246c38e1cdd730d028270f56f2c5716ded45f3af2b500"
+    },
+    {
+      "ord": 194,
+      "blockId": "9d61af760b3be8e7e1c6566a69663d8d",
+      "fp64": "a5fff3dedbfffef7",
+      "normHash": "b46e6923a0be5a76f4a246c38e1cdd730d028270f56f2c5716ded45f3af2b500",
+      "kind": "page",
+      "chapter": "القسم-الثالث-عمل-الأسباب-التي-تدفع-عين-الحاسد",
+      "prev": "38a3008f0d5890dbf0a8fdca634e25075a0eb86b31e615b31b151764b1297062",
+      "next": "1ac7b50d0beb1bb29af1e93dd0205990c816883f7ee3be401b2e462b08f5ee91"
+    },
+    {
+      "ord": 195,
+      "blockId": "60b061122c21da98e6cc20dc1b9a5ebd",
+      "fp64": "f7ff75dfe7ed8ff6",
+      "normHash": "1ac7b50d0beb1bb29af1e93dd0205990c816883f7ee3be401b2e462b08f5ee91",
+      "kind": "p",
+      "chapter": "القسم-الثالث-عمل-الأسباب-التي-تدفع-عين-الحاسد",
+      "prev": "b46e6923a0be5a76f4a246c38e1cdd730d028270f56f2c5716ded45f3af2b500",
+      "next": "21d3ea5738d2e24cadcd4435015220114c40194f6321a1ad5ed160a37e2c3b9a"
+    },
+    {
+      "ord": 196,
+      "blockId": "a1969df3c076f109659d8a644ef5b383",
+      "fp64": "165729a12fc04f7b",
+      "normHash": "21d3ea5738d2e24cadcd4435015220114c40194f6321a1ad5ed160a37e2c3b9a",
+      "kind": "h2",
+      "chapter": "٣-علاج-التباس-الجني-بالإنسي",
+      "prev": "1ac7b50d0beb1bb29af1e93dd0205990c816883f7ee3be401b2e462b08f5ee91",
+      "next": "c8aedb75664c51c89893561c98e9ca21cbbac640a8d2daff95b6463791caad38"
+    },
+    {
+      "ord": 197,
+      "blockId": "106d24e70564536e9514227693403621",
+      "fp64": "24b0b5eba0c2cbd3",
+      "normHash": "c8aedb75664c51c89893561c98e9ca21cbbac640a8d2daff95b6463791caad38",
+      "kind": "p",
+      "chapter": "٣-علاج-التباس-الجني-بالإنسي",
+      "prev": "21d3ea5738d2e24cadcd4435015220114c40194f6321a1ad5ed160a37e2c3b9a",
+      "next": "45e64e796390b117e378e5e9d67350e9d64e24bd58be5b2a810d64983dc56fb0"
+    },
+    {
+      "ord": 198,
+      "blockId": "af6e0faf499bb4d1bf34263aea3a7381",
+      "fp64": "46d83efffd97f953",
+      "normHash": "45e64e796390b117e378e5e9d67350e9d64e24bd58be5b2a810d64983dc56fb0",
+      "kind": "h2",
+      "chapter": "القسم-الأول-قبل-الإصابة",
+      "prev": "c8aedb75664c51c89893561c98e9ca21cbbac640a8d2daff95b6463791caad38",
+      "next": "384ad329ef438c957508faada0c553732ee12bc3409cc014966c7ebad08e4f1b"
+    },
+    {
+      "ord": 199,
+      "blockId": "6aa9acefaadfc6452f14a98af8bf36f1",
+      "fp64": "6a7aeeebb3a5b94f",
+      "normHash": "384ad329ef438c957508faada0c553732ee12bc3409cc014966c7ebad08e4f1b",
+      "kind": "p",
+      "chapter": "القسم-الأول-قبل-الإصابة",
+      "prev": "45e64e796390b117e378e5e9d67350e9d64e24bd58be5b2a810d64983dc56fb0",
+      "next": "1292b0b472f094565a4b7c90728293cd9cf47c6c54673c8a905a0f26035c2fe0"
+    },
+    {
+      "ord": 200,
+      "blockId": "c68fc3cff06c282577c815feddcaa4c4",
+      "fp64": "d9d825effac95cf6",
+      "normHash": "1292b0b472f094565a4b7c90728293cd9cf47c6c54673c8a905a0f26035c2fe0",
+      "kind": "p",
+      "chapter": "القسم-الأول-قبل-الإصابة",
+      "prev": "384ad329ef438c957508faada0c553732ee12bc3409cc014966c7ebad08e4f1b",
+      "next": "f9561102f6f0bb7090974fb237863cb5f8058726d79ee2da8b7b9f3485c54280"
+    },
+    {
+      "ord": 201,
+      "blockId": "d139e8d377e7129a91cb0717e054e08c",
+      "fp64": "2fdffbdadb7ff13f",
+      "normHash": "f9561102f6f0bb7090974fb237863cb5f8058726d79ee2da8b7b9f3485c54280",
+      "kind": "page",
+      "chapter": "القسم-الأول-قبل-الإصابة",
+      "prev": "1292b0b472f094565a4b7c90728293cd9cf47c6c54673c8a905a0f26035c2fe0",
+      "next": "2f04190d8ff5124e3964ec80ba34a471b8710e61bf68c834d24abc129d0c8764"
+    },
+    {
+      "ord": 202,
+      "blockId": "641adfe67a403d55030126fd7120dafa",
+      "fp64": "465db0ebff49b337",
+      "normHash": "2f04190d8ff5124e3964ec80ba34a471b8710e61bf68c834d24abc129d0c8764",
+      "kind": "h2",
+      "chapter": "القسم-الثاني-العلاج-بعد-دخول-الجني",
+      "prev": "f9561102f6f0bb7090974fb237863cb5f8058726d79ee2da8b7b9f3485c54280",
+      "next": "0c71bc4da6ece4645ba6cb29cdad7f58eacb692a771c77a7fd303cd08a7a7700"
+    },
+    {
+      "ord": 203,
+      "blockId": "3426ed7c2302fbbc2e8fbd78f786c53f",
+      "fp64": "f1c16d7ddd6afd73",
+      "normHash": "0c71bc4da6ece4645ba6cb29cdad7f58eacb692a771c77a7fd303cd08a7a7700",
+      "kind": "p",
+      "chapter": "القسم-الثاني-العلاج-بعد-دخول-الجني",
+      "prev": "2f04190d8ff5124e3964ec80ba34a471b8710e61bf68c834d24abc129d0c8764",
+      "next": "d14a8d18d2e9b95f04c9aa9306e22f96e8ef5ed104779951e3ce983b94e8eb7a"
+    },
+    {
+      "ord": 204,
+      "blockId": "69b2af1e7979b621117e2610fefe367c",
+      "fp64": "595940c2bd789eb2",
+      "normHash": "d14a8d18d2e9b95f04c9aa9306e22f96e8ef5ed104779951e3ce983b94e8eb7a",
+      "kind": "p",
+      "chapter": "القسم-الثاني-العلاج-بعد-دخول-الجني",
+      "prev": "0c71bc4da6ece4645ba6cb29cdad7f58eacb692a771c77a7fd303cd08a7a7700",
+      "next": "b45714bbeaceb94fe48a62b395281c96fe52365900f57b444a5084c187979246"
+    },
+    {
+      "ord": 205,
+      "blockId": "96f68766f96dbd512a6486eafc6416f9",
+      "fp64": "addff79afe7d6777",
+      "normHash": "b45714bbeaceb94fe48a62b395281c96fe52365900f57b444a5084c187979246",
+      "kind": "page",
+      "chapter": "القسم-الثاني-العلاج-بعد-دخول-الجني",
+      "prev": "d14a8d18d2e9b95f04c9aa9306e22f96e8ef5ed104779951e3ce983b94e8eb7a",
+      "next": "45e1127124ff7227d5f050bdba19773936145628f24e0b31c37fc867e1835df3"
+    },
+    {
+      "ord": 206,
+      "blockId": "924da3a74573c73fffed8573ca97852f",
+      "fp64": "df4a20521565b952",
+      "normHash": "45e1127124ff7227d5f050bdba19773936145628f24e0b31c37fc867e1835df3",
+      "kind": "p",
+      "chapter": "القسم-الثاني-العلاج-بعد-دخول-الجني",
+      "prev": "b45714bbeaceb94fe48a62b395281c96fe52365900f57b444a5084c187979246",
+      "next": "e37f419edd3b02a2250e9a784b3a5093e28a5c6e33ffde3b65740eede2cd3c0b"
+    },
+    {
+      "ord": 207,
+      "blockId": "f20e229bbd26f15b4a2cc75d08995514",
+      "fp64": "7f9ef793cdbdfde6",
+      "normHash": "e37f419edd3b02a2250e9a784b3a5093e28a5c6e33ffde3b65740eede2cd3c0b",
+      "kind": "p",
+      "chapter": "القسم-الثاني-العلاج-بعد-دخول-الجني",
+      "prev": "45e1127124ff7227d5f050bdba19773936145628f24e0b31c37fc867e1835df3",
+      "next": "4ff6f4e59e27935c49009ef68612d7c600dfc48234c8474e5fe3a19c5f31f15a"
+    },
+    {
+      "ord": 208,
+      "blockId": "f56de8ad0f929644550ce4bdc671010e",
+      "fp64": "769e945f29673d78",
+      "normHash": "4ff6f4e59e27935c49009ef68612d7c600dfc48234c8474e5fe3a19c5f31f15a",
+      "kind": "p",
+      "chapter": "القسم-الثاني-العلاج-بعد-دخول-الجني",
+      "prev": "e37f419edd3b02a2250e9a784b3a5093e28a5c6e33ffde3b65740eede2cd3c0b",
+      "next": "0bb7ff361e932255c324ffb5f649de3e12267af045d5038c4ed2e73f3c9b356b"
+    },
+    {
+      "ord": 209,
+      "blockId": "9c1376ac7fc3be45a54cb510daf2febc",
+      "fp64": "1dd96c7abd65fd5f",
+      "normHash": "0bb7ff361e932255c324ffb5f649de3e12267af045d5038c4ed2e73f3c9b356b",
+      "kind": "p",
+      "chapter": "القسم-الثاني-العلاج-بعد-دخول-الجني",
+      "prev": "4ff6f4e59e27935c49009ef68612d7c600dfc48234c8474e5fe3a19c5f31f15a",
+      "next": "d284cc0fd73584653510c35a6a017f8ad937e30f2bef536e7df256f97d22e433"
+    },
+    {
+      "ord": 210,
+      "blockId": "49b24dea81369881dfb60c054cf9df08",
+      "fp64": "a5dff7da5e73eb76",
+      "normHash": "d284cc0fd73584653510c35a6a017f8ad937e30f2bef536e7df256f97d22e433",
+      "kind": "page",
+      "chapter": "القسم-الثاني-العلاج-بعد-دخول-الجني",
+      "prev": "0bb7ff361e932255c324ffb5f649de3e12267af045d5038c4ed2e73f3c9b356b",
+      "next": "f9e7069257e1fe603b3847016d13e9833b122552b3082f5dc642abb109688b9e"
+    },
+    {
+      "ord": 211,
+      "blockId": "ebe5d6ad7429de36cf708aadb247786d",
+      "fp64": "1fcea6e4fbffef7b",
+      "normHash": "f9e7069257e1fe603b3847016d13e9833b122552b3082f5dc642abb109688b9e",
+      "kind": "p",
+      "chapter": "القسم-الثاني-العلاج-بعد-دخول-الجني",
+      "prev": "d284cc0fd73584653510c35a6a017f8ad937e30f2bef536e7df256f97d22e433",
+      "next": "8f1f03c1d69109ad320458f07f97b57c50e63fcd8058b4b4bed97d10b0e95d03"
+    },
+    {
+      "ord": 212,
+      "blockId": "73b38ae2875810bafe3bafb95f926960",
+      "fp64": "6e8425f2dd5fdfd6",
+      "normHash": "8f1f03c1d69109ad320458f07f97b57c50e63fcd8058b4b4bed97d10b0e95d03",
+      "kind": "p",
+      "chapter": "القسم-الثاني-العلاج-بعد-دخول-الجني",
+      "prev": "f9e7069257e1fe603b3847016d13e9833b122552b3082f5dc642abb109688b9e",
+      "next": "4c762a3170705a617433da3a9f0d63eb214b0e5c9131d4a5c6bc535a475106ea"
+    },
+    {
+      "ord": 213,
+      "blockId": "aa50344c1155699dc8b05891ac995d5a",
+      "fp64": "04bd7fb7647ddfff",
+      "normHash": "4c762a3170705a617433da3a9f0d63eb214b0e5c9131d4a5c6bc535a475106ea",
+      "kind": "h2",
+      "chapter": "٤-علاج-الأمراض-النفسية",
+      "prev": "8f1f03c1d69109ad320458f07f97b57c50e63fcd8058b4b4bed97d10b0e95d03",
+      "next": "982266f72dee0e351b34b1db8a4edc7b2285781ab547609d241f719812683e9e"
+    },
+    {
+      "ord": 214,
+      "blockId": "f64676e2115acfe2c87ca3d846d7ba8d",
+      "fp64": "558cecd2d745ccd5",
+      "normHash": "982266f72dee0e351b34b1db8a4edc7b2285781ab547609d241f719812683e9e",
+      "kind": "p",
+      "chapter": "٤-علاج-الأمراض-النفسية",
+      "prev": "4c762a3170705a617433da3a9f0d63eb214b0e5c9131d4a5c6bc535a475106ea",
+      "next": "c1d50dc79e6c0267e9efbd68795c3df8e2c25e590d0b1bc168c1ccb63b902798"
+    },
+    {
+      "ord": 215,
+      "blockId": "d1a44d340303c0d721312326f05273c1",
+      "fp64": "bddffbdafb75ee77",
+      "normHash": "c1d50dc79e6c0267e9efbd68795c3df8e2c25e590d0b1bc168c1ccb63b902798",
+      "kind": "page",
+      "chapter": "٤-علاج-الأمراض-النفسية",
+      "prev": "982266f72dee0e351b34b1db8a4edc7b2285781ab547609d241f719812683e9e",
+      "next": "ab5617c54ca3ec831ffe332c8156d04d8e5e1fda81392b70893a17dcefe08f8e"
+    },
+    {
+      "ord": 216,
+      "blockId": "8244a37ee10946f8e96a6c987842ecb1",
+      "fp64": "730c18c7a73b8767",
+      "normHash": "ab5617c54ca3ec831ffe332c8156d04d8e5e1fda81392b70893a17dcefe08f8e",
+      "kind": "p",
+      "chapter": "٤-علاج-الأمراض-النفسية",
+      "prev": "c1d50dc79e6c0267e9efbd68795c3df8e2c25e590d0b1bc168c1ccb63b902798",
+      "next": "dcdf6f7e895f14332baf2101efece2cffbe295857406cbcda691b83586c00dbc"
+    },
+    {
+      "ord": 217,
+      "blockId": "f02e7639e5c8498849e0334eb396eaf8",
+      "fp64": "70cfbdff3ee9a9df",
+      "normHash": "dcdf6f7e895f14332baf2101efece2cffbe295857406cbcda691b83586c00dbc",
+      "kind": "p",
+      "chapter": "٤-علاج-الأمراض-النفسية",
+      "prev": "ab5617c54ca3ec831ffe332c8156d04d8e5e1fda81392b70893a17dcefe08f8e",
+      "next": "47a612217191974346b95137719e8fb294a7f232866cb6f32d31f1bc8ceebbd3"
+    },
+    {
+      "ord": 218,
+      "blockId": "349857ee832992a2255fdd663a7fcca8",
+      "fp64": "74d9609e9e881745",
+      "normHash": "47a612217191974346b95137719e8fb294a7f232866cb6f32d31f1bc8ceebbd3",
+      "kind": "p",
+      "chapter": "٤-علاج-الأمراض-النفسية",
+      "prev": "dcdf6f7e895f14332baf2101efece2cffbe295857406cbcda691b83586c00dbc",
+      "next": "8cf3962dea663c8737f144b68bec0ce9083fbf17a4c2cb3ddaa07416218a909a"
+    },
+    {
+      "ord": 219,
+      "blockId": "9100a11a70711bbff17f61de4c545bb7",
+      "fp64": "9e29fd153c32df3f",
+      "normHash": "8cf3962dea663c8737f144b68bec0ce9083fbf17a4c2cb3ddaa07416218a909a",
+      "kind": "p",
+      "chapter": "٤-علاج-الأمراض-النفسية",
+      "prev": "47a612217191974346b95137719e8fb294a7f232866cb6f32d31f1bc8ceebbd3",
+      "next": "56a11fd67883814f05e46901f9871aec9fa3e70c19692db4b36686057562f377"
+    },
+    {
+      "ord": 220,
+      "blockId": "b98598cac71b54c0e007f52615902f91",
+      "fp64": "4c6c7613dd30cd32",
+      "normHash": "56a11fd67883814f05e46901f9871aec9fa3e70c19692db4b36686057562f377",
+      "kind": "p",
+      "chapter": "٤-علاج-الأمراض-النفسية",
+      "prev": "8cf3962dea663c8737f144b68bec0ce9083fbf17a4c2cb3ddaa07416218a909a",
+      "next": "a0beec674ffae24ada2fcc5d979885fbe65183617bc48ba3f75bfcb0664c8030"
+    },
+    {
+      "ord": 221,
+      "blockId": "12bf592bf8de818046a4aee47c18a3bd",
+      "fp64": "1d0ca076fce5b074",
+      "normHash": "a0beec674ffae24ada2fcc5d979885fbe65183617bc48ba3f75bfcb0664c8030",
+      "kind": "p",
+      "chapter": "٤-علاج-الأمراض-النفسية",
+      "prev": "56a11fd67883814f05e46901f9871aec9fa3e70c19692db4b36686057562f377",
+      "next": "47a608900b812e28351277f4ceba154c78be5a19735cb65393561b1fae8e2f7b"
+    },
+    {
+      "ord": 222,
+      "blockId": "0ece4eebc9e0d717acf30e069eaffd49",
+      "fp64": "ffdff79affb777b7",
+      "normHash": "47a608900b812e28351277f4ceba154c78be5a19735cb65393561b1fae8e2f7b",
+      "kind": "page",
+      "chapter": "٤-علاج-الأمراض-النفسية",
+      "prev": "a0beec674ffae24ada2fcc5d979885fbe65183617bc48ba3f75bfcb0664c8030",
+      "next": "dcf64c1184e72f68ee8228ce9a2b337acdb36098199242f834f8d8430bd8ede0"
+    },
+    {
+      "ord": 223,
+      "blockId": "b368a81fb351697e8bc2880a062372c8",
+      "fp64": "7cf3f813a76d56bf",
+      "normHash": "dcf64c1184e72f68ee8228ce9a2b337acdb36098199242f834f8d8430bd8ede0",
+      "kind": "p",
+      "chapter": "٤-علاج-الأمراض-النفسية",
+      "prev": "47a608900b812e28351277f4ceba154c78be5a19735cb65393561b1fae8e2f7b",
+      "next": "6f5ccaa92e4a303436cbd71189114a6aadf8cb067e7d52e4a9ee83295175b9c1"
+    },
+    {
+      "ord": 224,
+      "blockId": "f561b317ecb223f2e64aa3fa3ab92245",
+      "fp64": "b366b8bbc32e03be",
+      "normHash": "6f5ccaa92e4a303436cbd71189114a6aadf8cb067e7d52e4a9ee83295175b9c1",
+      "kind": "p",
+      "chapter": "٤-علاج-الأمراض-النفسية",
+      "prev": "dcf64c1184e72f68ee8228ce9a2b337acdb36098199242f834f8d8430bd8ede0",
+      "next": "cfb6406e3d0d605eedf82d647d832f11f5c74bb3a3db359207a84e977dc5a441"
+    },
+    {
+      "ord": 225,
+      "blockId": "a50ad0f41da0221ae47b7808cb821a9b",
+      "fp64": "78eb8e1bed3e4d05",
+      "normHash": "cfb6406e3d0d605eedf82d647d832f11f5c74bb3a3db359207a84e977dc5a441",
+      "kind": "p",
+      "chapter": "٤-علاج-الأمراض-النفسية",
+      "prev": "6f5ccaa92e4a303436cbd71189114a6aadf8cb067e7d52e4a9ee83295175b9c1",
+      "next": "afdb34e603cd156f9c49e1b0c329653e417199153e6a20ae892209a226bafaec"
+    },
+    {
+      "ord": 226,
+      "blockId": "3c05a1b506e159006d1f0fd7d79ba7e1",
+      "fp64": "f75fffe43c7ceeb3",
+      "normHash": "afdb34e603cd156f9c49e1b0c329653e417199153e6a20ae892209a226bafaec",
+      "kind": "p",
+      "chapter": "٤-علاج-الأمراض-النفسية",
+      "prev": "cfb6406e3d0d605eedf82d647d832f11f5c74bb3a3db359207a84e977dc5a441",
+      "next": "89e34329ab90aa190773ce2438a8e1c6bd4a1fdaab455c2d4345beefa0f8a62f"
+    },
+    {
+      "ord": 227,
+      "blockId": "0dbb523255209304601e82a2faecbc29",
+      "fp64": "37ffff9e7a3ffc37",
+      "normHash": "89e34329ab90aa190773ce2438a8e1c6bd4a1fdaab455c2d4345beefa0f8a62f",
+      "kind": "page",
+      "chapter": "٤-علاج-الأمراض-النفسية",
+      "prev": "afdb34e603cd156f9c49e1b0c329653e417199153e6a20ae892209a226bafaec",
+      "next": "b051ae98992f9f4d75679172a63e35530d8865d8c1e65146786527381cb4963a"
+    },
+    {
+      "ord": 228,
+      "blockId": "2e5892ccb3b42e29397c6592246926f9",
+      "fp64": "46419435dc686d38",
+      "normHash": "b051ae98992f9f4d75679172a63e35530d8865d8c1e65146786527381cb4963a",
+      "kind": "p",
+      "chapter": "٤-علاج-الأمراض-النفسية",
+      "prev": "89e34329ab90aa190773ce2438a8e1c6bd4a1fdaab455c2d4345beefa0f8a62f",
+      "next": "f68a772567c2e00c6bf235a38ee312bcd839085a3512bd663601af7ef61c7237"
+    },
+    {
+      "ord": 229,
+      "blockId": "d12ae236dff62a74d9213d59526e95bc",
+      "fp64": "505d60c41ded9f5a",
+      "normHash": "f68a772567c2e00c6bf235a38ee312bcd839085a3512bd663601af7ef61c7237",
+      "kind": "p",
+      "chapter": "٤-علاج-الأمراض-النفسية",
+      "prev": "b051ae98992f9f4d75679172a63e35530d8865d8c1e65146786527381cb4963a",
+      "next": "fbe3e8d287e8ee688a1af4f098432b4d5d351d6a8e283e6a697d9744ebedf4f3"
+    },
+    {
+      "ord": 230,
+      "blockId": "ebdeb5194cdf7d87518c8cc547bd8904",
+      "fp64": "7dfff3fa5eb16837",
+      "normHash": "fbe3e8d287e8ee688a1af4f098432b4d5d351d6a8e283e6a697d9744ebedf4f3",
+      "kind": "page",
+      "chapter": "٤-علاج-الأمراض-النفسية",
+      "prev": "f68a772567c2e00c6bf235a38ee312bcd839085a3512bd663601af7ef61c7237",
+      "next": "04080e02f90e5ac4d55917f172e4989d2afcef0afcae9468dfb4ef8ced60fa1b"
+    },
+    {
+      "ord": 231,
+      "blockId": "bed2c38642dfa981fd1cf134f299c322",
+      "fp64": "ee4ba860a8fc1295",
+      "normHash": "04080e02f90e5ac4d55917f172e4989d2afcef0afcae9468dfb4ef8ced60fa1b",
+      "kind": "p",
+      "chapter": "٤-علاج-الأمراض-النفسية",
+      "prev": "fbe3e8d287e8ee688a1af4f098432b4d5d351d6a8e283e6a697d9744ebedf4f3",
+      "next": "ebd6d8457c510698020e5d9c9d310925acb9416fa70769bb0829564943bc4fe5"
+    },
+    {
+      "ord": 232,
+      "blockId": "1b8e1faa71699a29c64dbc32d8df48b0",
+      "fp64": "2a88fc5b1364c8f9",
+      "normHash": "ebd6d8457c510698020e5d9c9d310925acb9416fa70769bb0829564943bc4fe5",
+      "kind": "p",
+      "chapter": "٤-علاج-الأمراض-النفسية",
+      "prev": "04080e02f90e5ac4d55917f172e4989d2afcef0afcae9468dfb4ef8ced60fa1b",
+      "next": "d0564393130a4cb805196567f7dfeb9c040a5fe2e8093e5484943442c2defa91"
+    },
+    {
+      "ord": 233,
+      "blockId": "5e95a6aafc89c912bc79ab551e3cf175",
+      "fp64": "ae5d65de91d527c8",
+      "normHash": "d0564393130a4cb805196567f7dfeb9c040a5fe2e8093e5484943442c2defa91",
+      "kind": "p",
+      "chapter": "٤-علاج-الأمراض-النفسية",
+      "prev": "ebd6d8457c510698020e5d9c9d310925acb9416fa70769bb0829564943bc4fe5",
+      "next": "6b95c88c96ea7a8a46e81c5a4dc2fed4eb6272e14d9bcd67068c76922b2b6a37"
+    },
+    {
+      "ord": 234,
+      "blockId": "f3c3f25fad3851ac3f25c33cf40ea93d",
+      "fp64": "35dfffbfdb3b61be",
+      "normHash": "6b95c88c96ea7a8a46e81c5a4dc2fed4eb6272e14d9bcd67068c76922b2b6a37",
+      "kind": "page",
+      "chapter": "٤-علاج-الأمراض-النفسية",
+      "prev": "d0564393130a4cb805196567f7dfeb9c040a5fe2e8093e5484943442c2defa91",
+      "next": "8b1dc46353de6094549300c3da94c45b0c79ad26b65ff67e820fb116f7aa4ed8"
+    },
+    {
+      "ord": 235,
+      "blockId": "12af4f7e60d6f1b9e8f1a4e3e218fe21",
+      "fp64": "e76586584fc8c7b9",
+      "normHash": "8b1dc46353de6094549300c3da94c45b0c79ad26b65ff67e820fb116f7aa4ed8",
+      "kind": "p",
+      "chapter": "٤-علاج-الأمراض-النفسية",
+      "prev": "6b95c88c96ea7a8a46e81c5a4dc2fed4eb6272e14d9bcd67068c76922b2b6a37",
+      "next": "69f9a48e5879ddeb05fdf1a7ea06419a090cc2454de4933fcafc9cef1e9fca76"
+    },
+    {
+      "ord": 236,
+      "blockId": "e970d0c865fee511bd77a902111c46f4",
+      "fp64": "eace4e5197493d80",
+      "normHash": "69f9a48e5879ddeb05fdf1a7ea06419a090cc2454de4933fcafc9cef1e9fca76",
+      "kind": "p",
+      "chapter": "٤-علاج-الأمراض-النفسية",
+      "prev": "8b1dc46353de6094549300c3da94c45b0c79ad26b65ff67e820fb116f7aa4ed8",
+      "next": "7388f7b79004bfddfd203e4fc5b9dd95b606dfdc403c824ba51d719c7a9e8f34"
+    },
+    {
+      "ord": 237,
+      "blockId": "a0736ccda83dc93cf557c3c5730d137c",
+      "fp64": "6c0244278b5577ea",
+      "normHash": "7388f7b79004bfddfd203e4fc5b9dd95b606dfdc403c824ba51d719c7a9e8f34",
+      "kind": "p",
+      "chapter": "٤-علاج-الأمراض-النفسية",
+      "prev": "69f9a48e5879ddeb05fdf1a7ea06419a090cc2454de4933fcafc9cef1e9fca76",
+      "next": "dc60220d4c99fee0b526c52c3967d962f541b4a98b8b93825157bb9311305a3f"
+    },
+    {
+      "ord": 238,
+      "blockId": "a62ceeef56699abae96d1c211888427f",
+      "fp64": "51cb0440cddc4ff5",
+      "normHash": "dc60220d4c99fee0b526c52c3967d962f541b4a98b8b93825157bb9311305a3f",
+      "kind": "p",
+      "chapter": "٤-علاج-الأمراض-النفسية",
+      "prev": "7388f7b79004bfddfd203e4fc5b9dd95b606dfdc403c824ba51d719c7a9e8f34",
+      "next": "de9ef4f7e1db6ab833dadb7d1e3f6508f278b746260bec369204ddd9e927b1ff"
+    },
+    {
+      "ord": 239,
+      "blockId": "10d8eba5a18a1089d9ca8e7e44b1d9b4",
+      "fp64": "7fdfffdfdafb773e",
+      "normHash": "de9ef4f7e1db6ab833dadb7d1e3f6508f278b746260bec369204ddd9e927b1ff",
+      "kind": "page",
+      "chapter": "٤-علاج-الأمراض-النفسية",
+      "prev": "dc60220d4c99fee0b526c52c3967d962f541b4a98b8b93825157bb9311305a3f",
+      "next": "9f7fc21fbf32e934f51bb42e6a4e2d0ef195325797be14cd00347b7e913994fb"
+    },
+    {
+      "ord": 240,
+      "blockId": "495dbd1a725ef1a08a98434323365f03",
+      "fp64": "f496f4769a61df20",
+      "normHash": "9f7fc21fbf32e934f51bb42e6a4e2d0ef195325797be14cd00347b7e913994fb",
+      "kind": "p",
+      "chapter": "٤-علاج-الأمراض-النفسية",
+      "prev": "de9ef4f7e1db6ab833dadb7d1e3f6508f278b746260bec369204ddd9e927b1ff",
+      "next": "fe412f31dc51074c2c7a5b9a13cce48b0fe6470f13a4bb61a0ccc2450dd52767"
+    },
+    {
+      "ord": 241,
+      "blockId": "0d7510323daf6077dd624d700c25f466",
+      "fp64": "ee7de652a510723e",
+      "normHash": "fe412f31dc51074c2c7a5b9a13cce48b0fe6470f13a4bb61a0ccc2450dd52767",
+      "kind": "p",
+      "chapter": "٤-علاج-الأمراض-النفسية",
+      "prev": "9f7fc21fbf32e934f51bb42e6a4e2d0ef195325797be14cd00347b7e913994fb",
+      "next": "0ec6b06a91c8b5cdad71e7c521220cba635022841359cf9143a777b8e34def8e"
+    },
+    {
+      "ord": 242,
+      "blockId": "cab11cd3bb558ac8d7524b61171844af",
+      "fp64": "6cdf75138e8d5c77",
+      "normHash": "0ec6b06a91c8b5cdad71e7c521220cba635022841359cf9143a777b8e34def8e",
+      "kind": "p",
+      "chapter": "٤-علاج-الأمراض-النفسية",
+      "prev": "fe412f31dc51074c2c7a5b9a13cce48b0fe6470f13a4bb61a0ccc2450dd52767",
+      "next": "453df1d9e9e924310e57b1c19b79598fdb9591468fc803b0fb24026faf7d600c"
+    },
+    {
+      "ord": 243,
+      "blockId": "30fec1f04720480511faef265eab6deb",
+      "fp64": "35dff39e5b73653e",
+      "normHash": "453df1d9e9e924310e57b1c19b79598fdb9591468fc803b0fb24026faf7d600c",
+      "kind": "page",
+      "chapter": "٤-علاج-الأمراض-النفسية",
+      "prev": "0ec6b06a91c8b5cdad71e7c521220cba635022841359cf9143a777b8e34def8e",
+      "next": "8cc10e562ec41c1562a7b1d06bff4b4cca5895686f176aee716dbe843f4f24dd"
+    },
+    {
+      "ord": 244,
+      "blockId": "4465e15930e7d55efa5bcaa9e54b474e",
+      "fp64": "efc27ce01e39ff7d",
+      "normHash": "8cc10e562ec41c1562a7b1d06bff4b4cca5895686f176aee716dbe843f4f24dd",
+      "kind": "p",
+      "chapter": "٤-علاج-الأمراض-النفسية",
+      "prev": "453df1d9e9e924310e57b1c19b79598fdb9591468fc803b0fb24026faf7d600c",
+      "next": "b1c8f45adc427a0a6a153086089b81c4d4ca1821dabe864c51fb016ab4d4adb2"
+    },
+    {
+      "ord": 245,
+      "blockId": "abfb5a977414c6fd95dba74650450a19",
+      "fp64": "6ccd45780f237e47",
+      "normHash": "b1c8f45adc427a0a6a153086089b81c4d4ca1821dabe864c51fb016ab4d4adb2",
+      "kind": "p",
+      "chapter": "٤-علاج-الأمراض-النفسية",
+      "prev": "8cc10e562ec41c1562a7b1d06bff4b4cca5895686f176aee716dbe843f4f24dd",
+      "next": "e1a287fd86ec366f3b0ce9567ba5b3b74c46ee42faf5d711052f9ee094d6e45d"
+    },
+    {
+      "ord": 246,
+      "blockId": "80f1ed58498f74cf90b1a3ec2ed04533",
+      "fp64": "688c9c5c9d73d529",
+      "normHash": "e1a287fd86ec366f3b0ce9567ba5b3b74c46ee42faf5d711052f9ee094d6e45d",
+      "kind": "p",
+      "chapter": "٤-علاج-الأمراض-النفسية",
+      "prev": "b1c8f45adc427a0a6a153086089b81c4d4ca1821dabe864c51fb016ab4d4adb2",
+      "next": "e14ff3f17a75e66b072eafa44dd75f26148413762454d9e94b579d8e4e28ae91"
+    },
+    {
+      "ord": 247,
+      "blockId": "72902d5fbcf59b2ea0374bc231748cf1",
+      "fp64": "2fdfff9bff7b7b37",
+      "normHash": "e14ff3f17a75e66b072eafa44dd75f26148413762454d9e94b579d8e4e28ae91",
+      "kind": "page",
+      "chapter": "٤-علاج-الأمراض-النفسية",
+      "prev": "e1a287fd86ec366f3b0ce9567ba5b3b74c46ee42faf5d711052f9ee094d6e45d",
+      "next": "e1da7a697e5609b4d897754128c23a088751ef2096c67d2c9be06158cc67ad92"
+    },
+    {
+      "ord": 248,
+      "blockId": "d9fd0ab0d521b6fbdbbf92cb7c09a5da",
+      "fp64": "077cb255d51f5ff3",
+      "normHash": "e1da7a697e5609b4d897754128c23a088751ef2096c67d2c9be06158cc67ad92",
+      "kind": "p",
+      "chapter": "٤-علاج-الأمراض-النفسية",
+      "prev": "e14ff3f17a75e66b072eafa44dd75f26148413762454d9e94b579d8e4e28ae91",
+      "next": "f6950e422dd890271507d110b3f8fe278e841faab594350824644d5561659101"
+    },
+    {
+      "ord": 249,
+      "blockId": "1e9bea5099672f7a57830b0873731379",
+      "fp64": "84d1645e1d61756c",
+      "normHash": "f6950e422dd890271507d110b3f8fe278e841faab594350824644d5561659101",
+      "kind": "p",
+      "chapter": "٤-علاج-الأمراض-النفسية",
+      "prev": "e1da7a697e5609b4d897754128c23a088751ef2096c67d2c9be06158cc67ad92",
+      "next": "e29534a3e050a32853a57f580cfd412a4203683af4f5f869fa0cb4612cacca3a"
+    },
+    {
+      "ord": 250,
+      "blockId": "da9cb21af8222c57ee304cc2281e0149",
+      "fp64": "9de55134b377ab79",
+      "normHash": "e29534a3e050a32853a57f580cfd412a4203683af4f5f869fa0cb4612cacca3a",
+      "kind": "p",
+      "chapter": "٤-علاج-الأمراض-النفسية",
+      "prev": "f6950e422dd890271507d110b3f8fe278e841faab594350824644d5561659101",
+      "next": "f2c86111936be6995e467570d5645fa839909e36603684c226ff784d21b618ab"
+    },
+    {
+      "ord": 251,
+      "blockId": "8caebf416c7e1417d419d5663572d337",
+      "fp64": "9fcc005f80f45ab5",
+      "normHash": "f2c86111936be6995e467570d5645fa839909e36603684c226ff784d21b618ab",
+      "kind": "p",
+      "chapter": "٤-علاج-الأمراض-النفسية",
+      "prev": "e29534a3e050a32853a57f580cfd412a4203683af4f5f869fa0cb4612cacca3a",
+      "next": "0ed54fd02673352e0fdbff59cf0ad6cafe3e4b8ad408cdf2e0f3bf40270a63f5"
+    },
+    {
+      "ord": 252,
+      "blockId": "144334620edce41fa12a42d93acd7908",
+      "fp64": "3e89e4bb55afea26",
+      "normHash": "0ed54fd02673352e0fdbff59cf0ad6cafe3e4b8ad408cdf2e0f3bf40270a63f5",
+      "kind": "p",
+      "chapter": "٤-علاج-الأمراض-النفسية",
+      "prev": "f2c86111936be6995e467570d5645fa839909e36603684c226ff784d21b618ab",
+      "next": "5e90934513133f3ad765265fc284192da445730bc357d891ae8eb37b58268039"
+    },
+    {
+      "ord": 253,
+      "blockId": "0e9a83df2a08e94b07bce4e9265a6952",
+      "fp64": "b5fff3fadbf1ef77",
+      "normHash": "5e90934513133f3ad765265fc284192da445730bc357d891ae8eb37b58268039",
+      "kind": "page",
+      "chapter": "٤-علاج-الأمراض-النفسية",
+      "prev": "0ed54fd02673352e0fdbff59cf0ad6cafe3e4b8ad408cdf2e0f3bf40270a63f5",
+      "next": "a43801e8a09ca2aa4b39cad37cd390de23ec0a0532ad225c6713d0baf3c474ff"
+    },
+    {
+      "ord": 254,
+      "blockId": "55940635124cc2796b6f1383bd04d1f3",
+      "fp64": "5cdfd4415567f4bf",
+      "normHash": "a43801e8a09ca2aa4b39cad37cd390de23ec0a0532ad225c6713d0baf3c474ff",
+      "kind": "p",
+      "chapter": "٤-علاج-الأمراض-النفسية",
+      "prev": "5e90934513133f3ad765265fc284192da445730bc357d891ae8eb37b58268039",
+      "next": "938a703acc69b67d1d291a39cdd980ebe77f3603268d80da1ff9598c551963ca"
+    },
+    {
+      "ord": 255,
+      "blockId": "d7f3c3ec5c244ba3bbfcfcd2b24cc217",
+      "fp64": "9f10ac5299764b7b",
+      "normHash": "938a703acc69b67d1d291a39cdd980ebe77f3603268d80da1ff9598c551963ca",
+      "kind": "p",
+      "chapter": "٤-علاج-الأمراض-النفسية",
+      "prev": "a43801e8a09ca2aa4b39cad37cd390de23ec0a0532ad225c6713d0baf3c474ff",
+      "next": "b631f434c8328c95298c533b8e7e74724844651a03d4a8edf2cb85b81a1913c3"
+    },
+    {
+      "ord": 256,
+      "blockId": "c4b068d39093a1460fd60ed18f955ae9",
+      "fp64": "e04d50068cba8de8",
+      "normHash": "b631f434c8328c95298c533b8e7e74724844651a03d4a8edf2cb85b81a1913c3",
+      "kind": "p",
+      "chapter": "٤-علاج-الأمراض-النفسية",
+      "prev": "938a703acc69b67d1d291a39cdd980ebe77f3603268d80da1ff9598c551963ca",
+      "next": "674851f17126dd69580757e5823654eb062691ceffe6849f8f02707900d1a240"
+    },
+    {
+      "ord": 257,
+      "blockId": "bbba329f209f595f979e0def97582052",
+      "fp64": "d1ca5cdedfd256df",
+      "normHash": "674851f17126dd69580757e5823654eb062691ceffe6849f8f02707900d1a240",
+      "kind": "p",
+      "chapter": "٤-علاج-الأمراض-النفسية",
+      "prev": "b631f434c8328c95298c533b8e7e74724844651a03d4a8edf2cb85b81a1913c3",
+      "next": "a9ad33178c390a019d2e437144eba33267a0e9684561211576afdf5b6bb3a701"
+    },
+    {
+      "ord": 258,
+      "blockId": "8248356f3228cfae825cc4863d0c466c",
+      "fp64": "afffff9fdbfd783e",
+      "normHash": "a9ad33178c390a019d2e437144eba33267a0e9684561211576afdf5b6bb3a701",
+      "kind": "page",
+      "chapter": "٤-علاج-الأمراض-النفسية",
+      "prev": "674851f17126dd69580757e5823654eb062691ceffe6849f8f02707900d1a240",
+      "next": "e5aea9f41e0d4848639f821104e868b378ba9fef23c2ac8ada7f87dee948c8a5"
+    },
+    {
+      "ord": 259,
+      "blockId": "e676d8989f93b4c7857197d8ddd21a63",
+      "fp64": "ed46ed6d3550dd74",
+      "normHash": "e5aea9f41e0d4848639f821104e868b378ba9fef23c2ac8ada7f87dee948c8a5",
+      "kind": "p",
+      "chapter": "٤-علاج-الأمراض-النفسية",
+      "prev": "a9ad33178c390a019d2e437144eba33267a0e9684561211576afdf5b6bb3a701",
+      "next": "fad4af496180c2ebe0350629b48fe168c2ccb88a567c372ddb05e5c8619eff4a"
+    },
+    {
+      "ord": 260,
+      "blockId": "b94a1a6165b8862f5ce7446c0c735f20",
+      "fp64": "fda52978c4f47eb4",
+      "normHash": "fad4af496180c2ebe0350629b48fe168c2ccb88a567c372ddb05e5c8619eff4a",
+      "kind": "p",
+      "chapter": "٤-علاج-الأمراض-النفسية",
+      "prev": "e5aea9f41e0d4848639f821104e868b378ba9fef23c2ac8ada7f87dee948c8a5",
+      "next": "d55cecb308b9566fb303f400061107c9748840636daacb7b24e6901a87b2bdce"
+    },
+    {
+      "ord": 261,
+      "blockId": "ed4e92fbf1cb6c2c20efd8f4c06f3a45",
+      "fp64": "5fe9e1ff7d7ee476",
+      "normHash": "d55cecb308b9566fb303f400061107c9748840636daacb7b24e6901a87b2bdce",
+      "kind": "p",
+      "chapter": "٤-علاج-الأمراض-النفسية",
+      "prev": "fad4af496180c2ebe0350629b48fe168c2ccb88a567c372ddb05e5c8619eff4a",
+      "next": "0c5c82c7ce81882c3fa0af977a42d1d40b89341e997dc91ecc1ed15f67911075"
+    },
+    {
+      "ord": 262,
+      "blockId": "d2174e2f0a4f7fcd59d9db4d8eb6dc8b",
+      "fp64": "75dff7be7f35ea3f",
+      "normHash": "0c5c82c7ce81882c3fa0af977a42d1d40b89341e997dc91ecc1ed15f67911075",
+      "kind": "page",
+      "chapter": "٤-علاج-الأمراض-النفسية",
+      "prev": "d55cecb308b9566fb303f400061107c9748840636daacb7b24e6901a87b2bdce",
+      "next": "af97a67b145907cab7e83a4df73b84758d45479db967a6ac2b90b61a8f8284cc"
+    },
+    {
+      "ord": 263,
+      "blockId": "fbda38adbc5932cd581159730a27ba1f",
+      "fp64": "5c444d78b6ff9f5d",
+      "normHash": "af97a67b145907cab7e83a4df73b84758d45479db967a6ac2b90b61a8f8284cc",
+      "kind": "p",
+      "chapter": "٤-علاج-الأمراض-النفسية",
+      "prev": "0c5c82c7ce81882c3fa0af977a42d1d40b89341e997dc91ecc1ed15f67911075",
+      "next": "477a4f1eff79e69f3346891ca92f606371f58ab8f14d48a2141b19dc25e5a692"
+    },
+    {
+      "ord": 264,
+      "blockId": "2dc98ef79650ffbb21a8453203ad82af",
+      "fp64": "9e44e056976c7dfc",
+      "normHash": "477a4f1eff79e69f3346891ca92f606371f58ab8f14d48a2141b19dc25e5a692",
+      "kind": "p",
+      "chapter": "٤-علاج-الأمراض-النفسية",
+      "prev": "af97a67b145907cab7e83a4df73b84758d45479db967a6ac2b90b61a8f8284cc",
+      "next": "25d9c96fc18207371a5e90eb0967e8d21f3057ea9b6ea593782bb0ba203c8b68"
+    },
+    {
+      "ord": 265,
+      "blockId": "17407bcd74f769dca9ca28ea7773c88d",
+      "fp64": "59f969d3157c8e90",
+      "normHash": "25d9c96fc18207371a5e90eb0967e8d21f3057ea9b6ea593782bb0ba203c8b68",
+      "kind": "p",
+      "chapter": "٤-علاج-الأمراض-النفسية",
+      "prev": "477a4f1eff79e69f3346891ca92f606371f58ab8f14d48a2141b19dc25e5a692",
+      "next": "2baede15b7a04a980f0cea168ba2000d763fd4d7bd2cdce7006fbd303b44260d"
+    },
+    {
+      "ord": 266,
+      "blockId": "bc3d51a21dd224c0bdb37bf45011f0ae",
+      "fp64": "f5dffbfeff3bf236",
+      "normHash": "2baede15b7a04a980f0cea168ba2000d763fd4d7bd2cdce7006fbd303b44260d",
+      "kind": "page",
+      "chapter": "٤-علاج-الأمراض-النفسية",
+      "prev": "25d9c96fc18207371a5e90eb0967e8d21f3057ea9b6ea593782bb0ba203c8b68",
+      "next": "8a7b152e919930247917f02b7117e30cafefbf83a4c8adda8ba239fbaea0ec0c"
+    },
+    {
+      "ord": 267,
+      "blockId": "2d9765a9ab0d26ab648aaa91dde409f8",
+      "fp64": "ec4e6c7ebeba4fbf",
+      "normHash": "8a7b152e919930247917f02b7117e30cafefbf83a4c8adda8ba239fbaea0ec0c",
+      "kind": "p",
+      "chapter": "٤-علاج-الأمراض-النفسية",
+      "prev": "2baede15b7a04a980f0cea168ba2000d763fd4d7bd2cdce7006fbd303b44260d",
+      "next": "b77d1acc84167141ccea78b3a794691e9f1c56c000bb4ffbc1e750a31f1681ba"
+    },
+    {
+      "ord": 268,
+      "blockId": "ee3abac9d9490ce50158ebfcda0fe804",
+      "fp64": "789d81677d69c5dd",
+      "normHash": "b77d1acc84167141ccea78b3a794691e9f1c56c000bb4ffbc1e750a31f1681ba",
+      "kind": "p",
+      "chapter": "٤-علاج-الأمراض-النفسية",
+      "prev": "8a7b152e919930247917f02b7117e30cafefbf83a4c8adda8ba239fbaea0ec0c",
+      "next": "08e1fd5231d5fd64d1095ec8c94c1bf401afa944e27d8c51a0fb4ae34c43c5a5"
+    },
+    {
+      "ord": 269,
+      "blockId": "c4fda0d86fa38fcf0dcb3b47f8e41161",
+      "fp64": "db3539b3f4d6cf59",
+      "normHash": "08e1fd5231d5fd64d1095ec8c94c1bf401afa944e27d8c51a0fb4ae34c43c5a5",
+      "kind": "h2",
+      "chapter": "٥-علاج-القرحة-والجرح",
+      "prev": "b77d1acc84167141ccea78b3a794691e9f1c56c000bb4ffbc1e750a31f1681ba",
+      "next": "132cab13fa529903a8ec6387bf79116ef6252e006140e36018482bd738960ff6"
+    },
+    {
+      "ord": 270,
+      "blockId": "396c0ceb6bbaa066518ca66943679e6d",
+      "fp64": "7e4521b2b5048c53",
+      "normHash": "132cab13fa529903a8ec6387bf79116ef6252e006140e36018482bd738960ff6",
+      "kind": "p",
+      "chapter": "٥-علاج-القرحة-والجرح",
+      "prev": "08e1fd5231d5fd64d1095ec8c94c1bf401afa944e27d8c51a0fb4ae34c43c5a5",
+      "next": "e4b5b8347c19b386c0a59c14dd7c52742344a8ec41061f747343ce9bae742e64"
+    },
+    {
+      "ord": 271,
+      "blockId": "f3ee6b2b7190610ee5cbaa19c06215bb",
+      "fp64": "67dff7daffb7e876",
+      "normHash": "e4b5b8347c19b386c0a59c14dd7c52742344a8ec41061f747343ce9bae742e64",
+      "kind": "page",
+      "chapter": "٥-علاج-القرحة-والجرح",
+      "prev": "132cab13fa529903a8ec6387bf79116ef6252e006140e36018482bd738960ff6",
+      "next": "7596cd801960f8e0205c7ecba6c43ffd6e78674206c99661a244f38a6ea3a86e"
+    },
+    {
+      "ord": 272,
+      "blockId": "66ba9caf7170f3a1eeba94486bd43cad",
+      "fp64": "b160c655c964567c",
+      "normHash": "7596cd801960f8e0205c7ecba6c43ffd6e78674206c99661a244f38a6ea3a86e",
+      "kind": "p",
+      "chapter": "٥-علاج-القرحة-والجرح",
+      "prev": "e4b5b8347c19b386c0a59c14dd7c52742344a8ec41061f747343ce9bae742e64",
+      "next": "acdde79d636752a154f483571102d83d9eaae0701d45d78bf8c9f244c9b39952"
+    },
+    {
+      "ord": 273,
+      "blockId": "480d82fe26c574368b46bf2cf201de3d",
+      "fp64": "ce7bca5f90db2b48",
+      "normHash": "acdde79d636752a154f483571102d83d9eaae0701d45d78bf8c9f244c9b39952",
+      "kind": "p",
+      "chapter": "٥-علاج-القرحة-والجرح",
+      "prev": "7596cd801960f8e0205c7ecba6c43ffd6e78674206c99661a244f38a6ea3a86e",
+      "next": "f3f05ce508eca1d2cbd290a75dd77d5d72d0650de213e60873e6d0be69ab4361"
+    },
+    {
+      "ord": 274,
+      "blockId": "54ab5d2543549a9c7f4f08362660e4a2",
+      "fp64": "51f9fbc31469c4ff",
+      "normHash": "f3f05ce508eca1d2cbd290a75dd77d5d72d0650de213e60873e6d0be69ab4361",
+      "kind": "p",
+      "chapter": "٥-علاج-القرحة-والجرح",
+      "prev": "acdde79d636752a154f483571102d83d9eaae0701d45d78bf8c9f244c9b39952",
+      "next": "f362d40dd92d26efd1bb1a1ffd8eb4900c32653f5b46ff18964524200c47f536"
+    },
+    {
+      "ord": 275,
+      "blockId": "8ab082e59a3f6c016e1efff032523dbb",
+      "fp64": "77fff3dede7577fe",
+      "normHash": "f362d40dd92d26efd1bb1a1ffd8eb4900c32653f5b46ff18964524200c47f536",
+      "kind": "page",
+      "chapter": "٥-علاج-القرحة-والجرح",
+      "prev": "f3f05ce508eca1d2cbd290a75dd77d5d72d0650de213e60873e6d0be69ab4361",
+      "next": "c08200378321fac7640e852c9b11bac228aa3035b29d36dd778d563f85d8cd89"
+    },
+    {
+      "ord": 276,
+      "blockId": "ce0a98c35e79e5d1eb9bfeef04bfb1e6",
+      "fp64": "1dc936fff56c1bbd",
+      "normHash": "c08200378321fac7640e852c9b11bac228aa3035b29d36dd778d563f85d8cd89",
+      "kind": "p",
+      "chapter": "٥-علاج-القرحة-والجرح",
+      "prev": "f362d40dd92d26efd1bb1a1ffd8eb4900c32653f5b46ff18964524200c47f536",
+      "next": "78c2b2f8bdfb603e5330d314bb25c0583c8f49e68690a8361c3db2382e2df8b4"
+    },
+    {
+      "ord": 277,
+      "blockId": "983a305469254a094ded70c6bc0ae080",
+      "fp64": "41018a132535cad8",
+      "normHash": "78c2b2f8bdfb603e5330d314bb25c0583c8f49e68690a8361c3db2382e2df8b4",
+      "kind": "h2",
+      "chapter": "٦-علاج-المصيبة",
+      "prev": "c08200378321fac7640e852c9b11bac228aa3035b29d36dd778d563f85d8cd89",
+      "next": "d7ff9938c7c019029ad13c03ac4752a8e8ae61e22a7e60243a0c1a9373b6dcfd"
+    },
+    {
+      "ord": 278,
+      "blockId": "1144996f5e28f1de7f4d28e6f639ea2f",
+      "fp64": "0784347edb77af55",
+      "normHash": "d7ff9938c7c019029ad13c03ac4752a8e8ae61e22a7e60243a0c1a9373b6dcfd",
+      "kind": "p",
+      "chapter": "٦-علاج-المصيبة",
+      "prev": "78c2b2f8bdfb603e5330d314bb25c0583c8f49e68690a8361c3db2382e2df8b4",
+      "next": "d9d894fa80c2065fe355eafdf8e473a318c3c87d2314933f0996a79880117f0f"
+    },
+    {
+      "ord": 279,
+      "blockId": "d4a7f8b220b294e37f56e51ec83eb6f7",
+      "fp64": "6409650abfd0ff1a",
+      "normHash": "d9d894fa80c2065fe355eafdf8e473a318c3c87d2314933f0996a79880117f0f",
+      "kind": "p",
+      "chapter": "٦-علاج-المصيبة",
+      "prev": "d7ff9938c7c019029ad13c03ac4752a8e8ae61e22a7e60243a0c1a9373b6dcfd",
+      "next": "f9538f74c163025f1ae17371365f4fd53029135787b3c9bf5b5af22643345956"
+    },
+    {
+      "ord": 280,
+      "blockId": "1da39d5a7872e5b835cb944b7926ea18",
+      "fp64": "8da9715a75ed7f55",
+      "normHash": "f9538f74c163025f1ae17371365f4fd53029135787b3c9bf5b5af22643345956",
+      "kind": "p",
+      "chapter": "٦-علاج-المصيبة",
+      "prev": "d9d894fa80c2065fe355eafdf8e473a318c3c87d2314933f0996a79880117f0f",
+      "next": "d74629aeaa24add6bfb07f56dafc5124cd20f139aff02754c8f197ff05519bb8"
+    },
+    {
+      "ord": 281,
+      "blockId": "eff3cba093140ea224fe46b2360e25f5",
+      "fp64": "35dff3ff5fff6876",
+      "normHash": "d74629aeaa24add6bfb07f56dafc5124cd20f139aff02754c8f197ff05519bb8",
+      "kind": "page",
+      "chapter": "٦-علاج-المصيبة",
+      "prev": "f9538f74c163025f1ae17371365f4fd53029135787b3c9bf5b5af22643345956",
+      "next": "6953abcdf9510d2aa10ee92fa350cb4e3b62a1280ec16c05383500bbefa8cb81"
+    },
+    {
+      "ord": 282,
+      "blockId": "9944fe92e4c600edb4e01331a51832c2",
+      "fp64": "3040e06a57620ee4",
+      "normHash": "6953abcdf9510d2aa10ee92fa350cb4e3b62a1280ec16c05383500bbefa8cb81",
+      "kind": "p",
+      "chapter": "٦-علاج-المصيبة",
+      "prev": "d74629aeaa24add6bfb07f56dafc5124cd20f139aff02754c8f197ff05519bb8",
+      "next": "a56283f0b8eae2cd3960fc91d8c6f8d631e5c2f29e70195219d0d995c2afeaaf"
+    },
+    {
+      "ord": 283,
+      "blockId": "07fceba3cfd0d41a8f609fb80dfabf49",
+      "fp64": "fc12a5026f276edf",
+      "normHash": "a56283f0b8eae2cd3960fc91d8c6f8d631e5c2f29e70195219d0d995c2afeaaf",
+      "kind": "p",
+      "chapter": "٦-علاج-المصيبة",
+      "prev": "6953abcdf9510d2aa10ee92fa350cb4e3b62a1280ec16c05383500bbefa8cb81",
+      "next": "24b4565bdcde4cd6167758ce2501388e4d27a90a4032786082c00381d6a1e6b0"
+    },
+    {
+      "ord": 284,
+      "blockId": "00bd35a9d13c76d78c2ccb397c0561e4",
+      "fp64": "7152e9b075646cf2",
+      "normHash": "24b4565bdcde4cd6167758ce2501388e4d27a90a4032786082c00381d6a1e6b0",
+      "kind": "p",
+      "chapter": "٦-علاج-المصيبة",
+      "prev": "a56283f0b8eae2cd3960fc91d8c6f8d631e5c2f29e70195219d0d995c2afeaaf",
+      "next": "c8f9ceffb179d6c2e60f52b88352310d372ef415202f874881bb1434e1a4b6b1"
+    },
+    {
+      "ord": 285,
+      "blockId": "8853acb5b455221294925801c44085bc",
+      "fp64": "b5fffb9b7eb77e3e",
+      "normHash": "c8f9ceffb179d6c2e60f52b88352310d372ef415202f874881bb1434e1a4b6b1",
+      "kind": "page",
+      "chapter": "٦-علاج-المصيبة",
+      "prev": "24b4565bdcde4cd6167758ce2501388e4d27a90a4032786082c00381d6a1e6b0",
+      "next": "dbbbd848876c571cd58f3d7ac588e2c70b274342838f6f737b51bf4d66ccdddb"
+    },
+    {
+      "ord": 286,
+      "blockId": "42eb8dd9cdd01808bbc46db819962e22",
+      "fp64": "f1f92ebf35f5f677",
+      "normHash": "dbbbd848876c571cd58f3d7ac588e2c70b274342838f6f737b51bf4d66ccdddb",
+      "kind": "p",
+      "chapter": "٦-علاج-المصيبة",
+      "prev": "c8f9ceffb179d6c2e60f52b88352310d372ef415202f874881bb1434e1a4b6b1",
+      "next": "8bed69e869c4dcafcea4e4c31b4c8676b4bdf52ac33008233786bc1f4d509ece"
+    },
+    {
+      "ord": 287,
+      "blockId": "c67370ac700983b52da0faf11b77f0b7",
+      "fp64": "dcd671be91a54df6",
+      "normHash": "8bed69e869c4dcafcea4e4c31b4c8676b4bdf52ac33008233786bc1f4d509ece",
+      "kind": "p",
+      "chapter": "٦-علاج-المصيبة",
+      "prev": "dbbbd848876c571cd58f3d7ac588e2c70b274342838f6f737b51bf4d66ccdddb",
+      "next": "312b80303543830d70af558deca722ea9e6d07719137f664644c55dec4422519"
+    },
+    {
+      "ord": 288,
+      "blockId": "c7af99892327997e05ae5f8c8d9f06ef",
+      "fp64": "6d65ccd2953c79fc",
+      "normHash": "312b80303543830d70af558deca722ea9e6d07719137f664644c55dec4422519",
+      "kind": "p",
+      "chapter": "٦-علاج-المصيبة",
+      "prev": "8bed69e869c4dcafcea4e4c31b4c8676b4bdf52ac33008233786bc1f4d509ece",
+      "next": "39dae9a96ab36e3fb00cb8d7f3f647f79d05b247dde4cfd7b7a1010d5dd2791c"
+    },
+    {
+      "ord": 289,
+      "blockId": "a713e53d9ed45a5545ca647915fd0354",
+      "fp64": "cace753d1567df3f",
+      "normHash": "39dae9a96ab36e3fb00cb8d7f3f647f79d05b247dde4cfd7b7a1010d5dd2791c",
+      "kind": "p",
+      "chapter": "٦-علاج-المصيبة",
+      "prev": "312b80303543830d70af558deca722ea9e6d07719137f664644c55dec4422519",
+      "next": "7b4c22e3ee47783252eb24840b46968dcd0190e4bca87e1dc46119441d2e6944"
+    },
+    {
+      "ord": 290,
+      "blockId": "48a11006e5edb8aba18582e0fa1037d1",
+      "fp64": "583f61d7357d9ed6",
+      "normHash": "7b4c22e3ee47783252eb24840b46968dcd0190e4bca87e1dc46119441d2e6944",
+      "kind": "p",
+      "chapter": "٦-علاج-المصيبة",
+      "prev": "39dae9a96ab36e3fb00cb8d7f3f647f79d05b247dde4cfd7b7a1010d5dd2791c",
+      "next": "48c391d9b1cc3aeac6bdc503e99e0cadc040170da2020066c484ac9630e46fe4"
+    },
+    {
+      "ord": 291,
+      "blockId": "fc1decfcae2f3972511a0b5ef94700b7",
+      "fp64": "b7ffff9adbbffa3f",
+      "normHash": "48c391d9b1cc3aeac6bdc503e99e0cadc040170da2020066c484ac9630e46fe4",
+      "kind": "page",
+      "chapter": "٦-علاج-المصيبة",
+      "prev": "7b4c22e3ee47783252eb24840b46968dcd0190e4bca87e1dc46119441d2e6944",
+      "next": "a39cfd9dd0f2fc4773295299046e0a92d63409ec789c3e24cec920a4e96b644a"
+    },
+    {
+      "ord": 292,
+      "blockId": "95ef3ac8db077d05257e234b5289eabf",
+      "fp64": "d4c098f4922ce733",
+      "normHash": "a39cfd9dd0f2fc4773295299046e0a92d63409ec789c3e24cec920a4e96b644a",
+      "kind": "p",
+      "chapter": "٦-علاج-المصيبة",
+      "prev": "48c391d9b1cc3aeac6bdc503e99e0cadc040170da2020066c484ac9630e46fe4",
+      "next": "1f52dc2bccaaf57f917e66fb872492f86467fa7c653634e654bfea5310c3d953"
+    },
+    {
+      "ord": 293,
+      "blockId": "c5156f50ea01d58558475d2142a89e03",
+      "fp64": "cc426d9f9b3b5dde",
+      "normHash": "1f52dc2bccaaf57f917e66fb872492f86467fa7c653634e654bfea5310c3d953",
+      "kind": "p",
+      "chapter": "٦-علاج-المصيبة",
+      "prev": "a39cfd9dd0f2fc4773295299046e0a92d63409ec789c3e24cec920a4e96b644a",
+      "next": "39d0ab7ebae68eb3dcba66313a003cc468cfc83fe712b9ac451612f903af06ef"
+    },
+    {
+      "ord": 294,
+      "blockId": "6028d118244562e26c4f0e5b5230664a",
+      "fp64": "06c9e0594b077f8e",
+      "normHash": "39d0ab7ebae68eb3dcba66313a003cc468cfc83fe712b9ac451612f903af06ef",
+      "kind": "p",
+      "chapter": "٦-علاج-المصيبة",
+      "prev": "1f52dc2bccaaf57f917e66fb872492f86467fa7c653634e654bfea5310c3d953",
+      "next": "8a709d0d83bee4df0749a328f8a95056a4f59605c58c04526fb34c7d42ae70ea"
+    },
+    {
+      "ord": 295,
+      "blockId": "2243a0d3cb98c960923dad4986128094",
+      "fp64": "78fbebc33e45ddc1",
+      "normHash": "8a709d0d83bee4df0749a328f8a95056a4f59605c58c04526fb34c7d42ae70ea",
+      "kind": "p",
+      "chapter": "٦-علاج-المصيبة",
+      "prev": "39d0ab7ebae68eb3dcba66313a003cc468cfc83fe712b9ac451612f903af06ef",
+      "next": "cdfe6f6112d4d66e83c1fe1a786f77b5d02174557c541f6d96b5680bc34bdb8c"
+    },
+    {
+      "ord": 296,
+      "blockId": "b398bf84657d34c0f0961bbae56eceee",
+      "fp64": "a5fff39f7afb69f6",
+      "normHash": "cdfe6f6112d4d66e83c1fe1a786f77b5d02174557c541f6d96b5680bc34bdb8c",
+      "kind": "page",
+      "chapter": "٦-علاج-المصيبة",
+      "prev": "8a709d0d83bee4df0749a328f8a95056a4f59605c58c04526fb34c7d42ae70ea",
+      "next": "40e97a7f2664da7dd27ddf2b3a8410057e41cecf524a2ff5fbefab5017aac129"
+    },
+    {
+      "ord": 297,
+      "blockId": "97071dfec63b80f7f34c00f40312741e",
+      "fp64": "c6f9455c713f9bed",
+      "normHash": "40e97a7f2664da7dd27ddf2b3a8410057e41cecf524a2ff5fbefab5017aac129",
+      "kind": "p",
+      "chapter": "٦-علاج-المصيبة",
+      "prev": "cdfe6f6112d4d66e83c1fe1a786f77b5d02174557c541f6d96b5680bc34bdb8c",
+      "next": "4574849d2428213050acf88d350bbe2ca0c56001c22eb2ed1a9c7064cdb55b88"
+    },
+    {
+      "ord": 298,
+      "blockId": "7bae3405fd5beb06969dc36795aca076",
+      "fp64": "de80780c3e47fd1b",
+      "normHash": "4574849d2428213050acf88d350bbe2ca0c56001c22eb2ed1a9c7064cdb55b88",
+      "kind": "p",
+      "chapter": "٦-علاج-المصيبة",
+      "prev": "40e97a7f2664da7dd27ddf2b3a8410057e41cecf524a2ff5fbefab5017aac129",
+      "next": "96b7776ab8ff37a4b533b9b5fd8c74d5007a48e39dd8e0c2d5d9ed6343ed8494"
+    },
+    {
+      "ord": 299,
+      "blockId": "8e92871bd708d03fc0cbd4e7503d62df",
+      "fp64": "0cb96b7a6565ae55",
+      "normHash": "96b7776ab8ff37a4b533b9b5fd8c74d5007a48e39dd8e0c2d5d9ed6343ed8494",
+      "kind": "p",
+      "chapter": "٦-علاج-المصيبة",
+      "prev": "4574849d2428213050acf88d350bbe2ca0c56001c22eb2ed1a9c7064cdb55b88",
+      "next": "ee0eb61c19a655bb470b5da33dd0fd94336a4b582ab83f0c300be60280ffbe39"
+    },
+    {
+      "ord": 300,
+      "blockId": "811e219b6750e44f56f14e51fa366646",
+      "fp64": "7dfffb9f7fb1f8b7",
+      "normHash": "ee0eb61c19a655bb470b5da33dd0fd94336a4b582ab83f0c300be60280ffbe39",
+      "kind": "page",
+      "chapter": "٦-علاج-المصيبة",
+      "prev": "96b7776ab8ff37a4b533b9b5fd8c74d5007a48e39dd8e0c2d5d9ed6343ed8494",
+      "next": "f4c5b1302035970a5c22d3d680a3403c74362715c378aa0f97f870d505ad4e6d"
+    },
+    {
+      "ord": 301,
+      "blockId": "0fdeb1f2a4ce20c527adcab73c7f6b13",
+      "fp64": "f182a14afec8f57e",
+      "normHash": "f4c5b1302035970a5c22d3d680a3403c74362715c378aa0f97f870d505ad4e6d",
+      "kind": "p",
+      "chapter": "٦-علاج-المصيبة",
+      "prev": "ee0eb61c19a655bb470b5da33dd0fd94336a4b582ab83f0c300be60280ffbe39",
+      "next": "8909905cf2bacade3400ef18d6ce797b44be4e005c6fee47a66a812eab3a85b8"
+    },
+    {
+      "ord": 302,
+      "blockId": "6183bd0c94727245298702ea11b102b2",
+      "fp64": "dbb7f1795d8753da",
+      "normHash": "8909905cf2bacade3400ef18d6ce797b44be4e005c6fee47a66a812eab3a85b8",
+      "kind": "p",
+      "chapter": "٦-علاج-المصيبة",
+      "prev": "f4c5b1302035970a5c22d3d680a3403c74362715c378aa0f97f870d505ad4e6d",
+      "next": "1597062644bcefb2b35e374f390148984af5144a802e63704b593a1f0f52a2ae"
+    },
+    {
+      "ord": 303,
+      "blockId": "2a48d2bf20aae5ff753ecaeaa74edd4a",
+      "fp64": "ba0dea7d15ca7f43",
+      "normHash": "1597062644bcefb2b35e374f390148984af5144a802e63704b593a1f0f52a2ae",
+      "kind": "p",
+      "chapter": "٦-علاج-المصيبة",
+      "prev": "8909905cf2bacade3400ef18d6ce797b44be4e005c6fee47a66a812eab3a85b8",
+      "next": "32f80639a7ddde9931d68ef0d6d0509a865d1478b82ddcdfe68385be1513e393"
+    },
+    {
+      "ord": 304,
+      "blockId": "f7174ebcf6948e20b0f335dd4037a355",
+      "fp64": "b7ffffdaffb36efe",
+      "normHash": "32f80639a7ddde9931d68ef0d6d0509a865d1478b82ddcdfe68385be1513e393",
+      "kind": "page",
+      "chapter": "٦-علاج-المصيبة",
+      "prev": "1597062644bcefb2b35e374f390148984af5144a802e63704b593a1f0f52a2ae",
+      "next": "7e88bdd1856be19c49179217d98a2d815bafbb176833e58c6a969b3170bebaf6"
+    },
+    {
+      "ord": 305,
+      "blockId": "2371526cd3c9b636a422bb8b325ea414",
+      "fp64": "c1cc04972155dde2",
+      "normHash": "7e88bdd1856be19c49179217d98a2d815bafbb176833e58c6a969b3170bebaf6",
+      "kind": "p",
+      "chapter": "٦-علاج-المصيبة",
+      "prev": "32f80639a7ddde9931d68ef0d6d0509a865d1478b82ddcdfe68385be1513e393",
+      "next": "39ab217e31391df0ecefc2b57884e3e99e6432ffc2d19c0943d278e1fb1e418f"
+    },
+    {
+      "ord": 306,
+      "blockId": "cad397195ec37d38a49df03ac073fcd9",
+      "fp64": "dd15bbbfb6f45f8b",
+      "normHash": "39ab217e31391df0ecefc2b57884e3e99e6432ffc2d19c0943d278e1fb1e418f",
+      "kind": "h2",
+      "chapter": "٧-علاج-الهم-والحزن",
+      "prev": "7e88bdd1856be19c49179217d98a2d815bafbb176833e58c6a969b3170bebaf6",
+      "next": "afe4f85c4d24463290eca817d6a03e316f3b15d25c423277dfd6ec61e5ba8d62"
+    },
+    {
+      "ord": 307,
+      "blockId": "b71206b3fdbc2e2567395334bc0b3a2e",
+      "fp64": "9244385d519e9e9b",
+      "normHash": "afe4f85c4d24463290eca817d6a03e316f3b15d25c423277dfd6ec61e5ba8d62",
+      "kind": "p",
+      "chapter": "٧-علاج-الهم-والحزن",
+      "prev": "39ab217e31391df0ecefc2b57884e3e99e6432ffc2d19c0943d278e1fb1e418f",
+      "next": "2bd1f1f560623855107591bc21462a6842cc22ab56872a887ca817f5e4187568"
+    },
+    {
+      "ord": 308,
+      "blockId": "3880dc7eed36e241d5931f1fe2bb14ed",
+      "fp64": "5a1c60c19df59ed0",
+      "normHash": "2bd1f1f560623855107591bc21462a6842cc22ab56872a887ca817f5e4187568",
+      "kind": "p",
+      "chapter": "٧-علاج-الهم-والحزن",
+      "prev": "afe4f85c4d24463290eca817d6a03e316f3b15d25c423277dfd6ec61e5ba8d62",
+      "next": "5e6cca545d9cd848cc8ff9d4c8736a4cc638ee43a7a03c4823f1ae7e3ed8f316"
+    },
+    {
+      "ord": 309,
+      "blockId": "a5200054580c501bd352886b41ca2aa1",
+      "fp64": "7fdff3da7e71ebb6",
+      "normHash": "5e6cca545d9cd848cc8ff9d4c8736a4cc638ee43a7a03c4823f1ae7e3ed8f316",
+      "kind": "page",
+      "chapter": "٧-علاج-الهم-والحزن",
+      "prev": "2bd1f1f560623855107591bc21462a6842cc22ab56872a887ca817f5e4187568",
+      "next": "b87271a79cd3c742148dc66751682537734fdf81cc80a752a9f14170e9d2800a"
+    },
+    {
+      "ord": 310,
+      "blockId": "516f0615f6411edf83f6ebd821ad3ccd",
+      "fp64": "e3e125de578db762",
+      "normHash": "b87271a79cd3c742148dc66751682537734fdf81cc80a752a9f14170e9d2800a",
+      "kind": "p",
+      "chapter": "٧-علاج-الهم-والحزن",
+      "prev": "5e6cca545d9cd848cc8ff9d4c8736a4cc638ee43a7a03c4823f1ae7e3ed8f316",
+      "next": "814cdd67dfdd42e70c23fd9d2d093418907b385b417a9c9f916be6b223a4c10c"
+    },
+    {
+      "ord": 311,
+      "blockId": "eb4cb6a3c5918dd40432794c1f7c3a52",
+      "fp64": "5ea5e0ba9ecf7543",
+      "normHash": "814cdd67dfdd42e70c23fd9d2d093418907b385b417a9c9f916be6b223a4c10c",
+      "kind": "p",
+      "chapter": "٧-علاج-الهم-والحزن",
+      "prev": "b87271a79cd3c742148dc66751682537734fdf81cc80a752a9f14170e9d2800a",
+      "next": "5ed02e90b2f15bf47d1b2511428dd304eec2a5f8a0f1bc9caac4d0bba1867c88"
+    },
+    {
+      "ord": 312,
+      "blockId": "42a5f4c3e69ce3dc1b6e8d43c9fa0514",
+      "fp64": "503539974f87c8d8",
+      "normHash": "5ed02e90b2f15bf47d1b2511428dd304eec2a5f8a0f1bc9caac4d0bba1867c88",
+      "kind": "h2",
+      "chapter": "٨-علاج-الكرب",
+      "prev": "814cdd67dfdd42e70c23fd9d2d093418907b385b417a9c9f916be6b223a4c10c",
+      "next": "512c05db5c3ba4a5cdc761d71d5a5541c721d766a424f22fd8b2713b0644077d"
+    },
+    {
+      "ord": 313,
+      "blockId": "1b530b6937ea7f5bdc14b9c949caeaae",
+      "fp64": "f454dd5a5179f12f",
+      "normHash": "512c05db5c3ba4a5cdc761d71d5a5541c721d766a424f22fd8b2713b0644077d",
+      "kind": "p",
+      "chapter": "٨-علاج-الكرب",
+      "prev": "5ed02e90b2f15bf47d1b2511428dd304eec2a5f8a0f1bc9caac4d0bba1867c88",
+      "next": "9558d8b8413c0b3436be1c898e4c0f3d9d34ce7ab663ec39f96b349c85542990"
+    },
+    {
+      "ord": 314,
+      "blockId": "d00fd31d4ba741355b66d74a56f6ff72",
+      "fp64": "f959e8d7357d5c75",
+      "normHash": "9558d8b8413c0b3436be1c898e4c0f3d9d34ce7ab663ec39f96b349c85542990",
+      "kind": "p",
+      "chapter": "٨-علاج-الكرب",
+      "prev": "512c05db5c3ba4a5cdc761d71d5a5541c721d766a424f22fd8b2713b0644077d",
+      "next": "728a981f0261036df210f2411347dbb498cf5ed85759f45a8d7e444b70b1d444"
+    },
+    {
+      "ord": 315,
+      "blockId": "c667d08fff318a6f63938cdabe6aa1cb",
+      "fp64": "35dfff9f5bb9ec36",
+      "normHash": "728a981f0261036df210f2411347dbb498cf5ed85759f45a8d7e444b70b1d444",
+      "kind": "page",
+      "chapter": "٨-علاج-الكرب",
+      "prev": "9558d8b8413c0b3436be1c898e4c0f3d9d34ce7ab663ec39f96b349c85542990",
+      "next": "e0dcf79604fa397532650cf5d9b637d8f1191516b12817db326d8ba0a985bcf3"
+    },
+    {
+      "ord": 316,
+      "blockId": "c793824bcec8df9f27d102c49711c85d",
+      "fp64": "f3e93ff377ffff7f",
+      "normHash": "e0dcf79604fa397532650cf5d9b637d8f1191516b12817db326d8ba0a985bcf3",
+      "kind": "p",
+      "chapter": "٨-علاج-الكرب",
+      "prev": "728a981f0261036df210f2411347dbb498cf5ed85759f45a8d7e444b70b1d444",
+      "next": "f2b5d263f7a79d91383d8d29a984d83a66709fd6d841e8b21e2c1fa9de74c80b"
+    },
+    {
+      "ord": 317,
+      "blockId": "d6630da6d9db1ccc0779fb8727c0ca7e",
+      "fp64": "7c446d783ed5bd55",
+      "normHash": "f2b5d263f7a79d91383d8d29a984d83a66709fd6d841e8b21e2c1fa9de74c80b",
+      "kind": "p",
+      "chapter": "٨-علاج-الكرب",
+      "prev": "e0dcf79604fa397532650cf5d9b637d8f1191516b12817db326d8ba0a985bcf3",
+      "next": "82e26e020b9d064408dcbf2e874cdacfdc7b494e1e2265abea720c3732eefb7c"
+    },
+    {
+      "ord": 318,
+      "blockId": "f04eb9bbf091b5e8ce06915c510700c1",
+      "fp64": "8a2259394755cf1b",
+      "normHash": "82e26e020b9d064408dcbf2e874cdacfdc7b494e1e2265abea720c3732eefb7c",
+      "kind": "p",
+      "chapter": "٨-علاج-الكرب",
+      "prev": "f2b5d263f7a79d91383d8d29a984d83a66709fd6d841e8b21e2c1fa9de74c80b",
+      "next": "ed8b7e7eda263455e6818a5c5fd6a2926ebbadeda411c2accef773c75c512849"
+    },
+    {
+      "ord": 319,
+      "blockId": "700c97292bcbbf9fe04d90872fdea996",
+      "fp64": "5a7971d3357c8e72",
+      "normHash": "ed8b7e7eda263455e6818a5c5fd6a2926ebbadeda411c2accef773c75c512849",
+      "kind": "p",
+      "chapter": "٨-علاج-الكرب",
+      "prev": "82e26e020b9d064408dcbf2e874cdacfdc7b494e1e2265abea720c3732eefb7c",
+      "next": "5ca494aaf1fa05ad4e65f4505d466b31c3d05cee417eb09261c6459ffd40f0ba"
+    },
+    {
+      "ord": 320,
+      "blockId": "d39e08be06eade5cccdb2bfbe54df1b8",
+      "fp64": "a7ffff9bfab3fa3e",
+      "normHash": "5ca494aaf1fa05ad4e65f4505d466b31c3d05cee417eb09261c6459ffd40f0ba",
+      "kind": "page",
+      "chapter": "٨-علاج-الكرب",
+      "prev": "ed8b7e7eda263455e6818a5c5fd6a2926ebbadeda411c2accef773c75c512849",
+      "next": "33bbf992d1e3a180856b5564bf151f9fbe205dcac73ff89cfc81e4b4a55a538f"
+    },
+    {
+      "ord": 321,
+      "blockId": "4c8c19062a00352dba1bfcdcab01fab2",
+      "fp64": "a15040de137bf13e",
+      "normHash": "33bbf992d1e3a180856b5564bf151f9fbe205dcac73ff89cfc81e4b4a55a538f",
+      "kind": "p",
+      "chapter": "٨-علاج-الكرب",
+      "prev": "5ca494aaf1fa05ad4e65f4505d466b31c3d05cee417eb09261c6459ffd40f0ba",
+      "next": "135947541377c7f2c6411d4622630f586b81c6792dd7c19ffc33df56de4da908"
+    },
+    {
+      "ord": 322,
+      "blockId": "150a9145a501a44f97b1f22fa8dfac29",
+      "fp64": "7d5719f715f7fbbd",
+      "normHash": "135947541377c7f2c6411d4622630f586b81c6792dd7c19ffc33df56de4da908",
+      "kind": "h2",
+      "chapter": "٩-علاج-المريض-لنفسه",
+      "prev": "33bbf992d1e3a180856b5564bf151f9fbe205dcac73ff89cfc81e4b4a55a538f",
+      "next": "c6b0916d872085f201fd43426237d54da770f0d37ccfee1b3f63b1037b4e982b"
+    },
+    {
+      "ord": 323,
+      "blockId": "ecfad83584e4ba0b424506f279a94175",
+      "fp64": "7400417b9c07df65",
+      "normHash": "c6b0916d872085f201fd43426237d54da770f0d37ccfee1b3f63b1037b4e982b",
+      "kind": "p",
+      "chapter": "٩-علاج-المريض-لنفسه",
+      "prev": "135947541377c7f2c6411d4622630f586b81c6792dd7c19ffc33df56de4da908",
+      "next": "1d3ee0ec7fafd4cc0e7094187dfd6c919d932a03ce21afddfca28aee38fd3394"
+    },
+    {
+      "ord": 324,
+      "blockId": "471a6d7aa3715c206d8f3cf4020dce78",
+      "fp64": "193639b100545299",
+      "normHash": "1d3ee0ec7fafd4cc0e7094187dfd6c919d932a03ce21afddfca28aee38fd3394",
+      "kind": "h2",
+      "chapter": "١٠-علاج-المريض-في-عيادته",
+      "prev": "c6b0916d872085f201fd43426237d54da770f0d37ccfee1b3f63b1037b4e982b",
+      "next": "c85c539d8682f2847e57bf4c865e9c4a0a3bac09c6821c10ac2f22060d368bd4"
+    },
+    {
+      "ord": 325,
+      "blockId": "f0f075ff39db846f81dd0ce4e35816a5",
+      "fp64": "24f0f45937f97aed",
+      "normHash": "c85c539d8682f2847e57bf4c865e9c4a0a3bac09c6821c10ac2f22060d368bd4",
+      "kind": "p",
+      "chapter": "١٠-علاج-المريض-في-عيادته",
+      "prev": "1d3ee0ec7fafd4cc0e7094187dfd6c919d932a03ce21afddfca28aee38fd3394",
+      "next": "d13ed8a6c599b490d8d6da132703907e4fc4ea10141343c3964f51628dcbc845"
+    },
+    {
+      "ord": 326,
+      "blockId": "c9067fe3e9a0cd03f7f6086d7cb99251",
+      "fp64": "5c79e0f71dfddc50",
+      "normHash": "d13ed8a6c599b490d8d6da132703907e4fc4ea10141343c3964f51628dcbc845",
+      "kind": "p",
+      "chapter": "١٠-علاج-المريض-في-عيادته",
+      "prev": "c85c539d8682f2847e57bf4c865e9c4a0a3bac09c6821c10ac2f22060d368bd4",
+      "next": "3029f70065219d46a6fbc8d180a3c0e43c20dcc00d50f21e46b3d2beb7bd5802"
+    },
+    {
+      "ord": 327,
+      "blockId": "bff86df99677b3b5b94512bfea6407db",
+      "fp64": "a5fff3fffeb1f17f",
+      "normHash": "3029f70065219d46a6fbc8d180a3c0e43c20dcc00d50f21e46b3d2beb7bd5802",
+      "kind": "page",
+      "chapter": "١٠-علاج-المريض-في-عيادته",
+      "prev": "d13ed8a6c599b490d8d6da132703907e4fc4ea10141343c3964f51628dcbc845",
+      "next": "9af22f460d592b255e395d202f6685f2a4d456c7a65f857b8f920c93623852ec"
+    },
+    {
+      "ord": 328,
+      "blockId": "78f03e823983fb595f165db1d9a06b81",
+      "fp64": "55c96cb7712d9f77",
+      "normHash": "9af22f460d592b255e395d202f6685f2a4d456c7a65f857b8f920c93623852ec",
+      "kind": "p",
+      "chapter": "١٠-علاج-المريض-في-عيادته",
+      "prev": "3029f70065219d46a6fbc8d180a3c0e43c20dcc00d50f21e46b3d2beb7bd5802",
+      "next": "4694ef5f5ae7514f2931eb1579f84b2d2cc09140acac369746bfc0503b711ece"
+    },
+    {
+      "ord": 329,
+      "blockId": "2c53b4bc3365109af293e379e500d52c",
+      "fp64": "1b5c31f3fed5ffd5",
+      "normHash": "4694ef5f5ae7514f2931eb1579f84b2d2cc09140acac369746bfc0503b711ece",
+      "kind": "h2",
+      "chapter": "١١-علاج-القلق-والفزع-في-النوم",
+      "prev": "9af22f460d592b255e395d202f6685f2a4d456c7a65f857b8f920c93623852ec",
+      "next": "1606de14287a903a081e36f4a8c415c75918d51a308b2b04b815fd2d686b4a93"
+    },
+    {
+      "ord": 330,
+      "blockId": "8082bb8e278446cbc02c74bb6b48e5fa",
+      "fp64": "b680e52b966a75dd",
+      "normHash": "1606de14287a903a081e36f4a8c415c75918d51a308b2b04b815fd2d686b4a93",
+      "kind": "p",
+      "chapter": "١١-علاج-القلق-والفزع-في-النوم",
+      "prev": "4694ef5f5ae7514f2931eb1579f84b2d2cc09140acac369746bfc0503b711ece",
+      "next": "20cd75592dfa73c74ed64a79d553ee498140ff8c996b17855f839bc028691896"
+    },
+    {
+      "ord": 331,
+      "blockId": "ade96225dbebdc1e35e6d7bd05640391",
+      "fp64": "213129351444c9de",
+      "normHash": "20cd75592dfa73c74ed64a79d553ee498140ff8c996b17855f839bc028691896",
+      "kind": "h2",
+      "chapter": "١٢-علاج-الحمى",
+      "prev": "1606de14287a903a081e36f4a8c415c75918d51a308b2b04b815fd2d686b4a93",
+      "next": "87b35cf2ecd30e077b7cc4303b8e8e8f51b3ff3ce55036fe509a7032e8824676"
+    },
+    {
+      "ord": 332,
+      "blockId": "661b7d4a4baa161d5b64f65abfa392ca",
+      "fp64": "7eeee97f1f767b7c",
+      "normHash": "87b35cf2ecd30e077b7cc4303b8e8e8f51b3ff3ce55036fe509a7032e8824676",
+      "kind": "p",
+      "chapter": "١٢-علاج-الحمى",
+      "prev": "20cd75592dfa73c74ed64a79d553ee498140ff8c996b17855f839bc028691896",
+      "next": "83376b92cad5f6d343e750e059012d79663f6b42d5b6396f645941134d6b2fb9"
+    },
+    {
+      "ord": 333,
+      "blockId": "ee89e88ad6cc2c57cc42b4d7cb774a51",
+      "fp64": "5d3961d19d5c9fd1",
+      "normHash": "83376b92cad5f6d343e750e059012d79663f6b42d5b6396f645941134d6b2fb9",
+      "kind": "p",
+      "chapter": "١٢-علاج-الحمى",
+      "prev": "87b35cf2ecd30e077b7cc4303b8e8e8f51b3ff3ce55036fe509a7032e8824676",
+      "next": "8a2355d777f7d9fb4a28a6c65a1b17b6b11616cb08dac6f9126018fb4ab47469"
+    },
+    {
+      "ord": 334,
+      "blockId": "75b981522d7685c9896862d37471741c",
+      "fp64": "2ddffb9ada7578b6",
+      "normHash": "8a2355d777f7d9fb4a28a6c65a1b17b6b11616cb08dac6f9126018fb4ab47469",
+      "kind": "page",
+      "chapter": "١٢-علاج-الحمى",
+      "prev": "83376b92cad5f6d343e750e059012d79663f6b42d5b6396f645941134d6b2fb9",
+      "next": "b4e0487f562865bb4191afac32a695826cfe7bc3983aa4c4b28c5141b80d5e91"
+    },
+    {
+      "ord": 335,
+      "blockId": "05a6d80bf53a773a4b024d1ae1874663",
+      "fp64": "391f38bfb64ffbfa",
+      "normHash": "b4e0487f562865bb4191afac32a695826cfe7bc3983aa4c4b28c5141b80d5e91",
+      "kind": "h2",
+      "chapter": "١٣-علاج-اللسعة-واللدغة",
+      "prev": "8a2355d777f7d9fb4a28a6c65a1b17b6b11616cb08dac6f9126018fb4ab47469",
+      "next": "408f70cd335cfdd72ad0b62202af0a2144c15b4b44f9cd5546f44f2160b66a4b"
+    },
+    {
+      "ord": 336,
+      "blockId": "290d256a7ef311633959507d98118a53",
+      "fp64": "55d1a4d6f024ae4b",
+      "normHash": "408f70cd335cfdd72ad0b62202af0a2144c15b4b44f9cd5546f44f2160b66a4b",
+      "kind": "p",
+      "chapter": "١٣-علاج-اللسعة-واللدغة",
+      "prev": "b4e0487f562865bb4191afac32a695826cfe7bc3983aa4c4b28c5141b80d5e91",
+      "next": "300aec7bf5fdc89c174223151d829f5735b93632ccc7e0a15699eb1aa495b678"
+    },
+    {
+      "ord": 337,
+      "blockId": "bd3c866c9bd8761eac41f97f94634468",
+      "fp64": "35f8f22c9ecc7d42",
+      "normHash": "300aec7bf5fdc89c174223151d829f5735b93632ccc7e0a15699eb1aa495b678",
+      "kind": "p",
+      "chapter": "١٣-علاج-اللسعة-واللدغة",
+      "prev": "408f70cd335cfdd72ad0b62202af0a2144c15b4b44f9cd5546f44f2160b66a4b",
+      "next": "d05bfd845b075c0698fe765cf0eba4af44e9956e17def55b43221c15034849b9"
+    },
+    {
+      "ord": 338,
+      "blockId": "0749d2ab56bf112ca26a645be6211abf",
+      "fp64": "151db831ac677bad",
+      "normHash": "d05bfd845b075c0698fe765cf0eba4af44e9956e17def55b43221c15034849b9",
+      "kind": "h2",
+      "chapter": "١٤-علاج-الغضب",
+      "prev": "300aec7bf5fdc89c174223151d829f5735b93632ccc7e0a15699eb1aa495b678",
+      "next": "2946e3c1862acb02b597ddc8c0f94d342d2ed5b673c03875704734f611621a09"
+    },
+    {
+      "ord": 339,
+      "blockId": "a0efbf50d467ceb49a3ecea6bbc01aff",
+      "fp64": "5d4de152140c1f10",
+      "normHash": "2946e3c1862acb02b597ddc8c0f94d342d2ed5b673c03875704734f611621a09",
+      "kind": "p",
+      "chapter": "١٤-علاج-الغضب",
+      "prev": "d05bfd845b075c0698fe765cf0eba4af44e9956e17def55b43221c15034849b9",
+      "next": "3725a3f4c5b4eeb74ad26a71e195ef200818c5845c4fa0cac1dc550926ed46af"
+    },
+    {
+      "ord": 340,
+      "blockId": "91c8e2d1f0de720b374c95196ce837d1",
+      "fp64": "bddffffa7ab77cf7",
+      "normHash": "3725a3f4c5b4eeb74ad26a71e195ef200818c5845c4fa0cac1dc550926ed46af",
+      "kind": "page",
+      "chapter": "١٤-علاج-الغضب",
+      "prev": "2946e3c1862acb02b597ddc8c0f94d342d2ed5b673c03875704734f611621a09",
+      "next": "0841a09b3bd2dc134ecf856358b69e6785d855ee52be3794c5a5a24880cbfb9a"
+    },
+    {
+      "ord": 341,
+      "blockId": "ea7f66666cbd3af8e4729ce181e9ceb2",
+      "fp64": "175ebdb73777fbee",
+      "normHash": "0841a09b3bd2dc134ecf856358b69e6785d855ee52be3794c5a5a24880cbfb9a",
+      "kind": "p",
+      "chapter": "١٤-علاج-الغضب",
+      "prev": "3725a3f4c5b4eeb74ad26a71e195ef200818c5845c4fa0cac1dc550926ed46af",
+      "next": "7caa7eadbb667e767e9b2e4e2d1b479a35c06abd57d5feb26f72766820771fd9"
+    },
+    {
+      "ord": 342,
+      "blockId": "b3bcb18d4c0c071d700b17a83c3005bf",
+      "fp64": "eaf4d6e51017f044",
+      "normHash": "7caa7eadbb667e767e9b2e4e2d1b479a35c06abd57d5feb26f72766820771fd9",
+      "kind": "p",
+      "chapter": "١٤-علاج-الغضب",
+      "prev": "0841a09b3bd2dc134ecf856358b69e6785d855ee52be3794c5a5a24880cbfb9a",
+      "next": "b765a47fd7828390150bcabf267267dca90c0e9a65a4956336ae1eb830202e35"
+    },
+    {
+      "ord": 343,
+      "blockId": "86c0058ad82aa1f14dd817f9e4e254a4",
+      "fp64": "3284a03e8d4add07",
+      "normHash": "b765a47fd7828390150bcabf267267dca90c0e9a65a4956336ae1eb830202e35",
+      "kind": "p",
+      "chapter": "١٤-علاج-الغضب",
+      "prev": "7caa7eadbb667e767e9b2e4e2d1b479a35c06abd57d5feb26f72766820771fd9",
+      "next": "60aec88d0b7b361b1194c47d86f9aa38a2a6c4dccfbe0e196af00214aee2fce9"
+    },
+    {
+      "ord": 344,
+      "blockId": "94649463adbbf480ea631735b7bb9031",
+      "fp64": "b7dff0b89b0f5737",
+      "normHash": "60aec88d0b7b361b1194c47d86f9aa38a2a6c4dccfbe0e196af00214aee2fce9",
+      "kind": "p",
+      "chapter": "١٤-علاج-الغضب",
+      "prev": "b765a47fd7828390150bcabf267267dca90c0e9a65a4956336ae1eb830202e35",
+      "next": "c958984c91198de6c077574f6ba10a5f9d106c19b0572113ac5731e0152f33bf"
+    },
+    {
+      "ord": 345,
+      "blockId": "7b10378de572467639f9877e7d9054c2",
+      "fp64": "3ecdfec77ffe1cbe",
+      "normHash": "c958984c91198de6c077574f6ba10a5f9d106c19b0572113ac5731e0152f33bf",
+      "kind": "p",
+      "chapter": "١٤-علاج-الغضب",
+      "prev": "60aec88d0b7b361b1194c47d86f9aa38a2a6c4dccfbe0e196af00214aee2fce9",
+      "next": "f216621be3f438a07d35ee12ad66215498fdf3f03bd70845bec65069debc1ce3"
+    },
+    {
+      "ord": 346,
+      "blockId": "6ca8740dce40c89691e9673415e479cf",
+      "fp64": "7ec9c5fb7feddf6a",
+      "normHash": "f216621be3f438a07d35ee12ad66215498fdf3f03bd70845bec65069debc1ce3",
+      "kind": "p",
+      "chapter": "١٤-علاج-الغضب",
+      "prev": "c958984c91198de6c077574f6ba10a5f9d106c19b0572113ac5731e0152f33bf",
+      "next": "5879a87c9cbac7ecb9b3ea390185336ca763762b76ff573a1abbeda20629fd27"
+    },
+    {
+      "ord": 347,
+      "blockId": "5fed6b717c09caa3dea178f6d3ec5e32",
+      "fp64": "fe1c73ffbecdfd7f",
+      "normHash": "5879a87c9cbac7ecb9b3ea390185336ca763762b76ff573a1abbeda20629fd27",
+      "kind": "p",
+      "chapter": "١٤-علاج-الغضب",
+      "prev": "f216621be3f438a07d35ee12ad66215498fdf3f03bd70845bec65069debc1ce3",
+      "next": "1d6964d019eaab711584515c0ae6748b6f4f80bfd91de24db390425192f91590"
+    },
+    {
+      "ord": 348,
+      "blockId": "ed79746e578cb94aae3bbf6eb3feb207",
+      "fp64": "7d6737e8e355ffae",
+      "normHash": "1d6964d019eaab711584515c0ae6748b6f4f80bfd91de24db390425192f91590",
+      "kind": "p",
+      "chapter": "١٤-علاج-الغضب",
+      "prev": "5879a87c9cbac7ecb9b3ea390185336ca763762b76ff573a1abbeda20629fd27",
+      "next": "bb5325308b578ba2339247e295e288295284afb8097cb6d7634cf6d56b541623"
+    },
+    {
+      "ord": 349,
+      "blockId": "f17184738ae93f20289b04d93e312e7b",
+      "fp64": "f5ffff9afa3b7aff",
+      "normHash": "bb5325308b578ba2339247e295e288295284afb8097cb6d7634cf6d56b541623",
+      "kind": "page",
+      "chapter": "١٤-علاج-الغضب",
+      "prev": "1d6964d019eaab711584515c0ae6748b6f4f80bfd91de24db390425192f91590",
+      "next": "4da57151595fd7e63752c38c9900ad2e4557993bb5506773fc4ca256a41f6ce9"
+    },
+    {
+      "ord": 350,
+      "blockId": "f5c0270a77f839aed348a475659d3d2c",
+      "fp64": "f361ccd9c9dedc70",
+      "normHash": "4da57151595fd7e63752c38c9900ad2e4557993bb5506773fc4ca256a41f6ce9",
+      "kind": "p",
+      "chapter": "١٤-علاج-الغضب",
+      "prev": "bb5325308b578ba2339247e295e288295284afb8097cb6d7634cf6d56b541623",
+      "next": "df829013f7611b20583020bb7856cb9d4b337c8ca9419283ab784712768c1391"
+    },
+    {
+      "ord": 351,
+      "blockId": "d82c49d76de2a23d76ebc99e9e5d9157",
+      "fp64": "5f444c541b561f47",
+      "normHash": "df829013f7611b20583020bb7856cb9d4b337c8ca9419283ab784712768c1391",
+      "kind": "p",
+      "chapter": "١٤-علاج-الغضب",
+      "prev": "4da57151595fd7e63752c38c9900ad2e4557993bb5506773fc4ca256a41f6ce9",
+      "next": "aaf4705bf44c5e60b70843826cfde848966ef4a90dc395e90892da83bfa986ea"
+    },
+    {
+      "ord": 352,
+      "blockId": "df909d49ada27777e7e5e7921f1e588c",
+      "fp64": "ee14ccff644f97fd",
+      "normHash": "aaf4705bf44c5e60b70843826cfde848966ef4a90dc395e90892da83bfa986ea",
+      "kind": "h2",
+      "chapter": "١٥-العلاج-بالحبة-السوداء",
+      "prev": "df829013f7611b20583020bb7856cb9d4b337c8ca9419283ab784712768c1391",
+      "next": "853db8728140c7301fb6ef1d7d0ce2285f968fed47f62a7b3ce0e15f8a119d2a"
+    },
+    {
+      "ord": 353,
+      "blockId": "b7cb3425c1584cf2d2dd2b5c41852ae9",
+      "fp64": "3c4ed85fe742faf8",
+      "normHash": "853db8728140c7301fb6ef1d7d0ce2285f968fed47f62a7b3ce0e15f8a119d2a",
+      "kind": "p",
+      "chapter": "١٥-العلاج-بالحبة-السوداء",
+      "prev": "aaf4705bf44c5e60b70843826cfde848966ef4a90dc395e90892da83bfa986ea",
+      "next": "8f764a4eed38f69abfd578bc5271ef874f9f369262451cb97de1ba754ad1aa42"
+    },
+    {
+      "ord": 354,
+      "blockId": "9a3decc6cdb6a37ea3de28d6fdc18c99",
+      "fp64": "7699685334587c15",
+      "normHash": "8f764a4eed38f69abfd578bc5271ef874f9f369262451cb97de1ba754ad1aa42",
+      "kind": "p",
+      "chapter": "١٥-العلاج-بالحبة-السوداء",
+      "prev": "853db8728140c7301fb6ef1d7d0ce2285f968fed47f62a7b3ce0e15f8a119d2a",
+      "next": "4712af90d1ead8b2480cae7b9285896f59419dd858ef63564ef7da006df48e72"
+    },
+    {
+      "ord": 355,
+      "blockId": "670c956a14d69a13293e0af26775a71f",
+      "fp64": "2ffffbfadf73627f",
+      "normHash": "4712af90d1ead8b2480cae7b9285896f59419dd858ef63564ef7da006df48e72",
+      "kind": "page",
+      "chapter": "١٥-العلاج-بالحبة-السوداء",
+      "prev": "8f764a4eed38f69abfd578bc5271ef874f9f369262451cb97de1ba754ad1aa42",
+      "next": "e815926306e4a9295b86bd47358e85641a10e7fd01ff7672ca8a24129e8c7805"
+    },
+    {
+      "ord": 356,
+      "blockId": "dd474eab1e6a02d88680ada7e5fb0ce0",
+      "fp64": "15eafc79f662f166",
+      "normHash": "e815926306e4a9295b86bd47358e85641a10e7fd01ff7672ca8a24129e8c7805",
+      "kind": "p",
+      "chapter": "١٥-العلاج-بالحبة-السوداء",
+      "prev": "4712af90d1ead8b2480cae7b9285896f59419dd858ef63564ef7da006df48e72",
+      "next": "e3d025ce1230d9211bbb8cfa8d45c05f8a3a937d43eb7ff2ccf53034bf227307"
+    },
+    {
+      "ord": 357,
+      "blockId": "f22d2c921a0cdc66bd00bcd5f9aa4352",
+      "fp64": "cac7c2d2e489dbf4",
+      "normHash": "e3d025ce1230d9211bbb8cfa8d45c05f8a3a937d43eb7ff2ccf53034bf227307",
+      "kind": "h2",
+      "chapter": "١٦-العلاج-بالعسل",
+      "prev": "e815926306e4a9295b86bd47358e85641a10e7fd01ff7672ca8a24129e8c7805",
+      "next": "160bea565fbf1a60669ec6d3e800ff5e40fff63a0ba03326c31ba8ab4bbb2b00"
+    },
+    {
+      "ord": 358,
+      "blockId": "293350ab8c7d3c2eefdf153b5ba33a4b",
+      "fp64": "0d42606c9b54b51e",
+      "normHash": "160bea565fbf1a60669ec6d3e800ff5e40fff63a0ba03326c31ba8ab4bbb2b00",
+      "kind": "p",
+      "chapter": "١٦-العلاج-بالعسل",
+      "prev": "e3d025ce1230d9211bbb8cfa8d45c05f8a3a937d43eb7ff2ccf53034bf227307",
+      "next": "d73bfaee9edefd15b87acee7bc867708623bff1dd8455e85090b629ad6541b4f"
+    },
+    {
+      "ord": 359,
+      "blockId": "1f0d01f4b57302fcea1f60bb13adfe58",
+      "fp64": "3d44e0da91087578",
+      "normHash": "d73bfaee9edefd15b87acee7bc867708623bff1dd8455e85090b629ad6541b4f",
+      "kind": "p",
+      "chapter": "١٦-العلاج-بالعسل",
+      "prev": "160bea565fbf1a60669ec6d3e800ff5e40fff63a0ba03326c31ba8ab4bbb2b00",
+      "next": "048854288d584bacae98f675b68223fcb4c9eb38407a8d4379a7834690ce5954"
+    },
+    {
+      "ord": 360,
+      "blockId": "cca37afec60917f27b102fc675265ae9",
+      "fp64": "04a96e3ac7a7dd27",
+      "normHash": "048854288d584bacae98f675b68223fcb4c9eb38407a8d4379a7834690ce5954",
+      "kind": "p",
+      "chapter": "١٦-العلاج-بالعسل",
+      "prev": "d73bfaee9edefd15b87acee7bc867708623bff1dd8455e85090b629ad6541b4f",
+      "next": "ea50ef4839a8e806e37d52ab863469001a76095bdbccbfe17908a82b161486bb"
+    },
+    {
+      "ord": 361,
+      "blockId": "37e88a5c72d149042d3d405cbaa262ca",
+      "fp64": "fdfff39e7a7162b7",
+      "normHash": "ea50ef4839a8e806e37d52ab863469001a76095bdbccbfe17908a82b161486bb",
+      "kind": "page",
+      "chapter": "١٦-العلاج-بالعسل",
+      "prev": "048854288d584bacae98f675b68223fcb4c9eb38407a8d4379a7834690ce5954",
+      "next": "57bf3acf3b635f1e0eeb8d3ed155bcdbf5244b437c70225671ef74927a0d5aa5"
+    },
+    {
+      "ord": 362,
+      "blockId": "e1766b344e0e3b9fb0ecba00ec5500ea",
+      "fp64": "1541ac5bd95c9f10",
+      "normHash": "57bf3acf3b635f1e0eeb8d3ed155bcdbf5244b437c70225671ef74927a0d5aa5",
+      "kind": "p",
+      "chapter": "١٦-العلاج-بالعسل",
+      "prev": "ea50ef4839a8e806e37d52ab863469001a76095bdbccbfe17908a82b161486bb",
+      "next": "009d9ebe2768f6689a493a850c0888fd796621ed90e09ab34d8854477e622abe"
+    },
+    {
+      "ord": 363,
+      "blockId": "16e0bdf800d579253a5cc0fb0b1d2127",
+      "fp64": "7efcfa5bdce1dff6",
+      "normHash": "009d9ebe2768f6689a493a850c0888fd796621ed90e09ab34d8854477e622abe",
+      "kind": "h2",
+      "chapter": "١٧-العلاج-بماء-زمزم",
+      "prev": "57bf3acf3b635f1e0eeb8d3ed155bcdbf5244b437c70225671ef74927a0d5aa5",
+      "next": "f6558ba51826b32d9ec4c5048ada344d1591512ee0daae460546b0d4be0f264e"
+    },
+    {
+      "ord": 364,
+      "blockId": "f12fbc35e9d40769528868f37ab6d74c",
+      "fp64": "7745d955914c1878",
+      "normHash": "f6558ba51826b32d9ec4c5048ada344d1591512ee0daae460546b0d4be0f264e",
+      "kind": "p",
+      "chapter": "١٧-العلاج-بماء-زمزم",
+      "prev": "009d9ebe2768f6689a493a850c0888fd796621ed90e09ab34d8854477e622abe",
+      "next": "a14ccfcdaa682397929696c088c86bab7c253698db5a0a7df4113eab1c5f30d2"
+    },
+    {
+      "ord": 365,
+      "blockId": "a0f2b8b79f658f745ad730ac423029c7",
+      "fp64": "fd4446e83d19bf57",
+      "normHash": "a14ccfcdaa682397929696c088c86bab7c253698db5a0a7df4113eab1c5f30d2",
+      "kind": "p",
+      "chapter": "١٧-العلاج-بماء-زمزم",
+      "prev": "f6558ba51826b32d9ec4c5048ada344d1591512ee0daae460546b0d4be0f264e",
+      "next": "f2cf82a112c29ec84a5edffc77c96a8ffbcc36156bd426a117cb35111918f07a"
+    },
+    {
+      "ord": 366,
+      "blockId": "7ff7cf408ecf54a909c0cfc5a85332ee",
+      "fp64": "7bf9623207d51e51",
+      "normHash": "f2cf82a112c29ec84a5edffc77c96a8ffbcc36156bd426a117cb35111918f07a",
+      "kind": "p",
+      "chapter": "١٧-العلاج-بماء-زمزم",
+      "prev": "a14ccfcdaa682397929696c088c86bab7c253698db5a0a7df4113eab1c5f30d2",
+      "next": "2e0b82d49fc8386609df672c19e6fad16926afc6dfd1928c27bb3c1c129b50a6"
+    },
+    {
+      "ord": 367,
+      "blockId": "76cfdf5707e96c8753fe49c82da4b509",
+      "fp64": "fddfffffda3f66b6",
+      "normHash": "2e0b82d49fc8386609df672c19e6fad16926afc6dfd1928c27bb3c1c129b50a6",
+      "kind": "page",
+      "chapter": "١٧-العلاج-بماء-زمزم",
+      "prev": "f2cf82a112c29ec84a5edffc77c96a8ffbcc36156bd426a117cb35111918f07a",
+      "next": "06db4da1ca609a8b9f1e62eca6a4379f43d8d8847546db42412561e1aefe0325"
+    },
+    {
+      "ord": 368,
+      "blockId": "72a1b64a3c036b64fa0cf0f1d9974de1",
+      "fp64": "1779a08750a5beb0",
+      "normHash": "06db4da1ca609a8b9f1e62eca6a4379f43d8d8847546db42412561e1aefe0325",
+      "kind": "p",
+      "chapter": "١٧-العلاج-بماء-زمزم",
+      "prev": "2e0b82d49fc8386609df672c19e6fad16926afc6dfd1928c27bb3c1c129b50a6",
+      "next": "d887c80c2ca111341cd0a53f26d151542efe294e25671f0d713c54c18669f005"
+    },
+    {
+      "ord": 369,
+      "blockId": "3cb9d3fd30c1f09e83730d3834ca6281",
+      "fp64": "fe466031170b1f5c",
+      "normHash": "d887c80c2ca111341cd0a53f26d151542efe294e25671f0d713c54c18669f005",
+      "kind": "p",
+      "chapter": "١٧-العلاج-بماء-زمزم",
+      "prev": "06db4da1ca609a8b9f1e62eca6a4379f43d8d8847546db42412561e1aefe0325",
+      "next": "d2ba69b4182290a2870e08a4a6751f77f06ec17f2ccf4274655d4c15f8ec3369"
+    },
+    {
+      "ord": 370,
+      "blockId": "570224469089ac6e9234be77ad484770",
+      "fp64": "586960d3757d8f52",
+      "normHash": "d2ba69b4182290a2870e08a4a6751f77f06ec17f2ccf4274655d4c15f8ec3369",
+      "kind": "p",
+      "chapter": "١٧-العلاج-بماء-زمزم",
+      "prev": "d887c80c2ca111341cd0a53f26d151542efe294e25671f0d713c54c18669f005",
+      "next": "d35fb5470daad0f9167a4753f6128dc7b091fa75aab28bbbf54c2491554f362c"
+    },
+    {
+      "ord": 371,
+      "blockId": "0da36c13964382785d36e55599b9c23b",
+      "fp64": "25fffbdefe7d62ff",
+      "normHash": "d35fb5470daad0f9167a4753f6128dc7b091fa75aab28bbbf54c2491554f362c",
+      "kind": "page",
+      "chapter": "١٧-العلاج-بماء-زمزم",
+      "prev": "d2ba69b4182290a2870e08a4a6751f77f06ec17f2ccf4274655d4c15f8ec3369",
+      "next": "9d499082779a0aa6ac82088472ccee972887a1d91ea16c4f47dd3e042ed8a5e9"
+    },
+    {
+      "ord": 372,
+      "blockId": "b2547889575984d5a10ca702b4e7c399",
+      "fp64": "f41d78cf9c6d7dd8",
+      "normHash": "9d499082779a0aa6ac82088472ccee972887a1d91ea16c4f47dd3e042ed8a5e9",
+      "kind": "p",
+      "chapter": "١٧-العلاج-بماء-زمزم",
+      "prev": "d35fb5470daad0f9167a4753f6128dc7b091fa75aab28bbbf54c2491554f362c",
+      "next": "fb646f6a3a058dcf9aa5607adda7bb9da15fdb9c824d257f70f6cc61aba6e864"
+    },
+    {
+      "ord": 373,
+      "blockId": "0667bd397515c47029191c82adfaff2a",
+      "fp64": "d39638fb7e61cbdb",
+      "normHash": "fb646f6a3a058dcf9aa5607adda7bb9da15fdb9c824d257f70f6cc61aba6e864",
+      "kind": "h2",
+      "chapter": "١٨-علاج-أمراض-القلوب",
+      "prev": "9d499082779a0aa6ac82088472ccee972887a1d91ea16c4f47dd3e042ed8a5e9",
+      "next": "15983c429a72c7626cba8023f30e075362d1f300d042292bd80c32627783f9b6"
+    },
+    {
+      "ord": 374,
+      "blockId": "46cb2b298c711e643ba9cc35e5fb5ff6",
+      "fp64": "77f67a5bf3713be9",
+      "normHash": "15983c429a72c7626cba8023f30e075362d1f300d042292bd80c32627783f9b6",
+      "kind": "p",
+      "chapter": "١٨-علاج-أمراض-القلوب",
+      "prev": "fb646f6a3a058dcf9aa5607adda7bb9da15fdb9c824d257f70f6cc61aba6e864",
+      "next": "13455bfa67d527312d9e8c469d79062a9e110d776ebe6a796e477d5f85df8d2e"
+    },
+    {
+      "ord": 375,
+      "blockId": "7e9881d56c8496009157c9cc4aa2c8a8",
+      "fp64": "c846a03e1ff74d7f",
+      "normHash": "13455bfa67d527312d9e8c469d79062a9e110d776ebe6a796e477d5f85df8d2e",
+      "kind": "p",
+      "chapter": "١٨-علاج-أمراض-القلوب",
+      "prev": "15983c429a72c7626cba8023f30e075362d1f300d042292bd80c32627783f9b6",
+      "next": "0bbe77f7ba30c1de1b5327987eabe9bb9c70f0ef5b0328ada8dbe184ee3a4ebf"
+    },
+    {
+      "ord": 376,
+      "blockId": "c701835c64cdb26ea47d73a3741d860d",
+      "fp64": "648170c89dea35c3",
+      "normHash": "0bbe77f7ba30c1de1b5327987eabe9bb9c70f0ef5b0328ada8dbe184ee3a4ebf",
+      "kind": "p",
+      "chapter": "١٨-علاج-أمراض-القلوب",
+      "prev": "13455bfa67d527312d9e8c469d79062a9e110d776ebe6a796e477d5f85df8d2e",
+      "next": "10b8588f3e0b8865dc86a4935b02e3c1e43d0141e94d1ce748c9c0be0712b4f4"
+    },
+    {
+      "ord": 377,
+      "blockId": "3d0abcf78fadc02cde0376c31b688451",
+      "fp64": "5989663ef5858f3a",
+      "normHash": "10b8588f3e0b8865dc86a4935b02e3c1e43d0141e94d1ce748c9c0be0712b4f4",
+      "kind": "p",
+      "chapter": "١٨-علاج-أمراض-القلوب",
+      "prev": "0bbe77f7ba30c1de1b5327987eabe9bb9c70f0ef5b0328ada8dbe184ee3a4ebf",
+      "next": "c66c7056bde840b0b2e484536517bde3e31043509fbece2e3615a51c1bf9a42f"
+    },
+    {
+      "ord": 378,
+      "blockId": "e43f2e4112d4d8d3db92b0967ace2e52",
+      "fp64": "67fff3fedbfb69f7",
+      "normHash": "c66c7056bde840b0b2e484536517bde3e31043509fbece2e3615a51c1bf9a42f",
+      "kind": "page",
+      "chapter": "١٨-علاج-أمراض-القلوب",
+      "prev": "10b8588f3e0b8865dc86a4935b02e3c1e43d0141e94d1ce748c9c0be0712b4f4",
+      "next": "9c5ec6ec61b74a61e0990fb1cbb36e226ab134189ed060e54e237dd1274e3ee8"
+    },
+    {
+      "ord": 379,
+      "blockId": "5c6de1dec79efd1854dbe15024ad851a",
+      "fp64": "5e66e45f9f3a577e",
+      "normHash": "9c5ec6ec61b74a61e0990fb1cbb36e226ab134189ed060e54e237dd1274e3ee8",
+      "kind": "p",
+      "chapter": "١٨-علاج-أمراض-القلوب",
+      "prev": "c66c7056bde840b0b2e484536517bde3e31043509fbece2e3615a51c1bf9a42f",
+      "next": "d27e0f1cf707aa5249ee378fffdc4fb99fce9b7e779378d222dd8a6b84195ac2"
+    },
+    {
+      "ord": 380,
+      "blockId": "9494462704964607c54dbe57161f56a4",
+      "fp64": "af06ede01878ee7e",
+      "normHash": "d27e0f1cf707aa5249ee378fffdc4fb99fce9b7e779378d222dd8a6b84195ac2",
+      "kind": "p",
+      "chapter": "١٨-علاج-أمراض-القلوب",
+      "prev": "9c5ec6ec61b74a61e0990fb1cbb36e226ab134189ed060e54e237dd1274e3ee8",
+      "next": "4c905a5d89297b7f646a72d95015cf85b35d5b32ba5d9b94112505ddd3eb0cd3"
+    },
+    {
+      "ord": 381,
+      "blockId": "f5465f587d9eeab3560a1b7fd19a155f",
+      "fp64": "3dfffffbfefb6ef7",
+      "normHash": "4c905a5d89297b7f646a72d95015cf85b35d5b32ba5d9b94112505ddd3eb0cd3",
+      "kind": "page",
+      "chapter": "١٨-علاج-أمراض-القلوب",
+      "prev": "d27e0f1cf707aa5249ee378fffdc4fb99fce9b7e779378d222dd8a6b84195ac2",
+      "next": "70299ec6ed61dc157e893a2ab20941d05d474e489ebe4cdbbd41fb21622c667c"
+    },
+    {
+      "ord": 382,
+      "blockId": "6b498fb957a7c8b1e0e429abf34ac7af",
+      "fp64": "f3e9645e712dbf5c",
+      "normHash": "70299ec6ed61dc157e893a2ab20941d05d474e489ebe4cdbbd41fb21622c667c",
+      "kind": "p",
+      "chapter": "١٨-علاج-أمراض-القلوب",
+      "prev": "4c905a5d89297b7f646a72d95015cf85b35d5b32ba5d9b94112505ddd3eb0cd3",
+      "next": "ab6238489738b6ef303aab38fa37fba558c717828883c8573b7e343ad6b2a018"
+    },
+    {
+      "ord": 383,
+      "blockId": "40d3f7a589bde02aef03a27f392955a6",
+      "fp64": "2400f40e4d4d5d5b",
+      "normHash": "ab6238489738b6ef303aab38fa37fba558c717828883c8573b7e343ad6b2a018",
+      "kind": "p",
+      "chapter": "١٨-علاج-أمراض-القلوب",
+      "prev": "70299ec6ed61dc157e893a2ab20941d05d474e489ebe4cdbbd41fb21622c667c",
+      "next": "c27b437e1458a7a666c9e2b059ac5139dc7a0edcd4d106e7e266b9b0ca4f5d64"
+    },
+    {
+      "ord": 384,
+      "blockId": "5ec1a5a210390b2315108295f7280fb9",
+      "fp64": "1d5b65feb9ff5f6e",
+      "normHash": "c27b437e1458a7a666c9e2b059ac5139dc7a0edcd4d106e7e266b9b0ca4f5d64",
+      "kind": "p",
+      "chapter": "١٨-علاج-أمراض-القلوب",
+      "prev": "ab6238489738b6ef303aab38fa37fba558c717828883c8573b7e343ad6b2a018",
+      "next": "73b61c75abb255995549919efaafab82d0f4cc9c527161d13154454544eca971"
+    },
+    {
+      "ord": 385,
+      "blockId": "c45b4d0a8c9274305baf906d55ffd092",
+      "fp64": "b7ffffdb5a79eabe",
+      "normHash": "73b61c75abb255995549919efaafab82d0f4cc9c527161d13154454544eca971",
+      "kind": "page",
+      "chapter": "١٨-علاج-أمراض-القلوب",
+      "prev": "c27b437e1458a7a666c9e2b059ac5139dc7a0edcd4d106e7e266b9b0ca4f5d64",
+      "next": "90a0754e4be31847653a09bfbf1f0e9e7da7bd1e931c475fd5019c1a3548d840"
+    },
+    {
+      "ord": 386,
+      "blockId": "2015f696e1d0952e5a9cebc1cfbdfba1",
+      "fp64": "66a2e8efab3b7e72",
+      "normHash": "90a0754e4be31847653a09bfbf1f0e9e7da7bd1e931c475fd5019c1a3548d840",
+      "kind": "p",
+      "chapter": "١٨-علاج-أمراض-القلوب",
+      "prev": "73b61c75abb255995549919efaafab82d0f4cc9c527161d13154454544eca971",
+      "next": "641c5a6c4fa3128738db1a02ce81925e148a5007de0de6216fb0fe1ab5127892"
+    },
+    {
+      "ord": 387,
+      "blockId": "a2c3fd32fe40020dd1377741e09d5288",
+      "fp64": "acdde077b567e50f",
+      "normHash": "641c5a6c4fa3128738db1a02ce81925e148a5007de0de6216fb0fe1ab5127892",
+      "kind": "p",
+      "chapter": "١٨-علاج-أمراض-القلوب",
+      "prev": "90a0754e4be31847653a09bfbf1f0e9e7da7bd1e931c475fd5019c1a3548d840",
+      "next": "ccd5de58acfea6caa400ce17870a52c26bf34fb15a04d007d6e2919dfcc0732f"
+    },
+    {
+      "ord": 388,
+      "blockId": "2d13022d03949072bfffaf3931d805a9",
+      "fp64": "0ad364fe996ddd4e",
+      "normHash": "ccd5de58acfea6caa400ce17870a52c26bf34fb15a04d007d6e2919dfcc0732f",
+      "kind": "p",
+      "chapter": "١٨-علاج-أمراض-القلوب",
+      "prev": "641c5a6c4fa3128738db1a02ce81925e148a5007de0de6216fb0fe1ab5127892",
+      "next": "00130f713d3d4de22a268d0380ec9ddb46ba7dc9fd1199e9b4b0c21d7195ee79"
+    },
+    {
+      "ord": 389,
+      "blockId": "15f195f890656b8f6d87d2fe97afcc72",
+      "fp64": "a5dff39b7a71fc36",
+      "normHash": "00130f713d3d4de22a268d0380ec9ddb46ba7dc9fd1199e9b4b0c21d7195ee79",
+      "kind": "page",
+      "chapter": "١٨-علاج-أمراض-القلوب",
+      "prev": "ccd5de58acfea6caa400ce17870a52c26bf34fb15a04d007d6e2919dfcc0732f",
+      "next": "915bcb8238f15ee2d98a95030a8c8471a5937697a16a43b93a8eb73ae9e5df94"
+    },
+    {
+      "ord": 390,
+      "blockId": "4a37221f1eb47659553b3fb3eacf3368",
+      "fp64": "16c97e7359731ca6",
+      "normHash": "915bcb8238f15ee2d98a95030a8c8471a5937697a16a43b93a8eb73ae9e5df94",
+      "kind": "p",
+      "chapter": "١٨-علاج-أمراض-القلوب",
+      "prev": "00130f713d3d4de22a268d0380ec9ddb46ba7dc9fd1199e9b4b0c21d7195ee79",
+      "next": "db7d9c5b0f0c186870467de7034f04e217619577ff9d3e6077ad310d382f708f"
+    },
+    {
+      "ord": 391,
+      "blockId": "e5fe90b56fdedb9ae9b976d8fa7ac5df",
+      "fp64": "688ba412bfa6bcc9",
+      "normHash": "db7d9c5b0f0c186870467de7034f04e217619577ff9d3e6077ad310d382f708f",
+      "kind": "p",
+      "chapter": "١٨-علاج-أمراض-القلوب",
+      "prev": "915bcb8238f15ee2d98a95030a8c8471a5937697a16a43b93a8eb73ae9e5df94",
+      "next": "50f360f02c3996d105672c462364f077c442bdab4de11e6a01d1d00eb2d8df6f"
+    },
+    {
+      "ord": 392,
+      "blockId": "f9c1dcd0b0275e1ed92a5a06d34bc619",
+      "fp64": "dc02b07017a0d743",
+      "normHash": "50f360f02c3996d105672c462364f077c442bdab4de11e6a01d1d00eb2d8df6f",
+      "kind": "p",
+      "chapter": "١٨-علاج-أمراض-القلوب",
+      "prev": "db7d9c5b0f0c186870467de7034f04e217619577ff9d3e6077ad310d382f708f",
+      "next": "901d9c0df55c0762473e052f2e0157845d25f488e67d77878e496d9adda3713c"
+    },
+    {
+      "ord": 393,
+      "blockId": "0495b855c8fbffbab664f4503e3c235e",
+      "fp64": "1e896dba55efcd43",
+      "normHash": "901d9c0df55c0762473e052f2e0157845d25f488e67d77878e496d9adda3713c",
+      "kind": "p",
+      "chapter": "١٨-علاج-أمراض-القلوب",
+      "prev": "50f360f02c3996d105672c462364f077c442bdab4de11e6a01d1d00eb2d8df6f",
+      "next": "84c8d2d2982ee55b6a4c3c3b9997acb6952520203bcbbca7ac8a1aa994215bd2"
+    },
+    {
+      "ord": 394,
+      "blockId": "b8b76eadd662a65014df73a122f858bf",
+      "fp64": "27dfffbe7ebbe3be",
+      "normHash": "84c8d2d2982ee55b6a4c3c3b9997acb6952520203bcbbca7ac8a1aa994215bd2",
+      "kind": "page",
+      "chapter": "١٨-علاج-أمراض-القلوب",
+      "prev": "901d9c0df55c0762473e052f2e0157845d25f488e67d77878e496d9adda3713c",
+      "next": "317447dc42c377e33dceee333458b0ee6ee2d231e79f076879fbf1797f200536"
+    },
+    {
+      "ord": 395,
+      "blockId": "9e2646e82bb7859b1f53a49480f7fcc0",
+      "fp64": "5624e85842638fc9",
+      "normHash": "317447dc42c377e33dceee333458b0ee6ee2d231e79f076879fbf1797f200536",
+      "kind": "p",
+      "chapter": "١٨-علاج-أمراض-القلوب",
+      "prev": "84c8d2d2982ee55b6a4c3c3b9997acb6952520203bcbbca7ac8a1aa994215bd2",
+      "next": "845c412f4955f85ce6879f15174672962455e025ebf2e499815de77b5d8d146d"
+    },
+    {
+      "ord": 396,
+      "blockId": "4fb5aeb3cc1a9c31dae695750ca2b80a",
+      "fp64": "6bc21dd65062d23c",
+      "normHash": "845c412f4955f85ce6879f15174672962455e025ebf2e499815de77b5d8d146d",
+      "kind": "p",
+      "chapter": "١٨-علاج-أمراض-القلوب",
+      "prev": "317447dc42c377e33dceee333458b0ee6ee2d231e79f076879fbf1797f200536",
+      "next": "737e07b916fc3177324fa6d9988c00df165be96a79781d22299615c54c7fcae8"
+    },
+    {
+      "ord": 397,
+      "blockId": "66121ab919a03189f6d1907fac670ac0",
+      "fp64": "790980d614b2b3f1",
+      "normHash": "737e07b916fc3177324fa6d9988c00df165be96a79781d22299615c54c7fcae8",
+      "kind": "p",
+      "chapter": "١٨-علاج-أمراض-القلوب",
+      "prev": "845c412f4955f85ce6879f15174672962455e025ebf2e499815de77b5d8d146d",
+      "next": "78c7c73487dfa67023ab77595238a5ad8a5fdc14f56b7786e83ba0f2be3781f9"
+    },
+    {
+      "ord": 398,
+      "blockId": "1a81dc47c0f466464f923bffe431405b",
+      "fp64": "264d5c7c3dd79ca8",
+      "normHash": "78c7c73487dfa67023ab77595238a5ad8a5fdc14f56b7786e83ba0f2be3781f9",
+      "kind": "p",
+      "chapter": "١٨-علاج-أمراض-القلوب",
+      "prev": "737e07b916fc3177324fa6d9988c00df165be96a79781d22299615c54c7fcae8",
+      "next": "63d43cbc94cd18977e60d31d62133f580bfbf5afc132d6cf2694e7b470c98735"
+    },
+    {
+      "ord": 399,
+      "blockId": "650f71db3c5acb8986188865ba98538d",
+      "fp64": "795325fff14dcf4e",
+      "normHash": "63d43cbc94cd18977e60d31d62133f580bfbf5afc132d6cf2694e7b470c98735",
+      "kind": "p",
+      "chapter": "١٨-علاج-أمراض-القلوب",
+      "prev": "78c7c73487dfa67023ab77595238a5ad8a5fdc14f56b7786e83ba0f2be3781f9",
+      "next": "2456f00590b7f0ab4932e5b7603dc749ac90304411122011c7003c6f315d4c70"
+    },
+    {
+      "ord": 400,
+      "blockId": "2846f70e20a44dc970f8cce8d5eeecd0",
+      "fp64": "7dffffbe5ebb647e",
+      "normHash": "2456f00590b7f0ab4932e5b7603dc749ac90304411122011c7003c6f315d4c70",
+      "kind": "page",
+      "chapter": "١٨-علاج-أمراض-القلوب",
+      "prev": "63d43cbc94cd18977e60d31d62133f580bfbf5afc132d6cf2694e7b470c98735",
+      "next": "4207a791b581a4cd543a78b51a1d1f7d07d10d4c2344d7c650ee1532d2abd1d9"
+    },
+    {
+      "ord": 401,
+      "blockId": "8d1e3f79b93abf66af9a0abb0fc195fb",
+      "fp64": "5e282c4e51665fcc",
+      "normHash": "4207a791b581a4cd543a78b51a1d1f7d07d10d4c2344d7c650ee1532d2abd1d9",
+      "kind": "p",
+      "chapter": "١٨-علاج-أمراض-القلوب",
+      "prev": "2456f00590b7f0ab4932e5b7603dc749ac90304411122011c7003c6f315d4c70",
+      "next": "1291c17769220fc217799816f46bc07422ad28a252b70a0d7574ef2391fc4b0e"
+    },
+    {
+      "ord": 402,
+      "blockId": "c5519ef511f71ef48f5e09eda7890bb9",
+      "fp64": "65efb411a1013d2a",
+      "normHash": "1291c17769220fc217799816f46bc07422ad28a252b70a0d7574ef2391fc4b0e",
+      "kind": "p",
+      "chapter": "١٨-علاج-أمراض-القلوب",
+      "prev": "4207a791b581a4cd543a78b51a1d1f7d07d10d4c2344d7c650ee1532d2abd1d9",
+      "next": "b9522dd54324f547eff13f746b08800bcc0fa358ecff90b8d63152a49dcbeccc"
+    },
+    {
+      "ord": 403,
+      "blockId": "e47670ebeba65845b3aef27ea22a2cdf",
+      "fp64": "13e92fff77af5c22",
+      "normHash": "b9522dd54324f547eff13f746b08800bcc0fa358ecff90b8d63152a49dcbeccc",
+      "kind": "p",
+      "chapter": "١٨-علاج-أمراض-القلوب",
+      "prev": "1291c17769220fc217799816f46bc07422ad28a252b70a0d7574ef2391fc4b0e",
+      "next": "4203493f39f6e0e45062d29afcd575b9a9f7906841bb1f9cb9fabc2a1bb08b44"
+    },
+    {
+      "ord": 404,
+      "blockId": "de95d88026558a0954e4ed3c3c7fe8af",
+      "fp64": "e7ffffdf5efb7677",
+      "normHash": "4203493f39f6e0e45062d29afcd575b9a9f7906841bb1f9cb9fabc2a1bb08b44",
+      "kind": "page",
+      "chapter": "١٨-علاج-أمراض-القلوب",
+      "prev": "b9522dd54324f547eff13f746b08800bcc0fa358ecff90b8d63152a49dcbeccc",
+      "next": "8e1902bacd38a8db90108d51037ba7b71056ac61f08f99d1855a10e18c51765f"
+    },
+    {
+      "ord": 405,
+      "blockId": "96307b04ca2a362f7170b6ed48e4df8b",
+      "fp64": "61488a4d1531ef22",
+      "normHash": "8e1902bacd38a8db90108d51037ba7b71056ac61f08f99d1855a10e18c51765f",
+      "kind": "p",
+      "chapter": "١٨-علاج-أمراض-القلوب",
+      "prev": "4203493f39f6e0e45062d29afcd575b9a9f7906841bb1f9cb9fabc2a1bb08b44",
+      "next": "63178535ca4e6c9f47be5531b448025ced64697a5c9944b85605eacbaff81488"
+    },
+    {
+      "ord": 406,
+      "blockId": "8b1b04e075d876040e599d6fc0b30c76",
+      "fp64": "bf5e61ca67596e5e",
+      "normHash": "63178535ca4e6c9f47be5531b448025ced64697a5c9944b85605eacbaff81488",
+      "kind": "p",
+      "chapter": "١٨-علاج-أمراض-القلوب",
+      "prev": "8e1902bacd38a8db90108d51037ba7b71056ac61f08f99d1855a10e18c51765f",
+      "next": "630e9c839b6eb72c40a95d95d5c482f57cb5e22dab8c055f09c4638781104778"
+    },
+    {
+      "ord": 407,
+      "blockId": "12533107222baa8cd888b3c2dc83545a",
+      "fp64": "d64c5f7be768511f",
+      "normHash": "630e9c839b6eb72c40a95d95d5c482f57cb5e22dab8c055f09c4638781104778",
+      "kind": "p",
+      "chapter": "١٨-علاج-أمراض-القلوب",
+      "prev": "63178535ca4e6c9f47be5531b448025ced64697a5c9944b85605eacbaff81488",
+      "next": "5bd16222636020f81996f523525134c5ab9dc373156908fc36f5bee78ce8784f"
+    },
+    {
+      "ord": 408,
+      "blockId": "f71002d529f96a5e3f86493de4cccd90",
+      "fp64": "4ddf7c1784717dd1",
+      "normHash": "5bd16222636020f81996f523525134c5ab9dc373156908fc36f5bee78ce8784f",
+      "kind": "p",
+      "chapter": "١٨-علاج-أمراض-القلوب",
+      "prev": "630e9c839b6eb72c40a95d95d5c482f57cb5e22dab8c055f09c4638781104778",
+      "next": "8f9713d3e59d11c6cbe96b4176841df8bf7afba2e6206fb07816a1b4a17bb677"
+    },
+    {
+      "ord": 409,
+      "blockId": "2a42b68c6816a2792ab4d2d8497aff83",
+      "fp64": "0ff4699dc566befd",
+      "normHash": "8f9713d3e59d11c6cbe96b4176841df8bf7afba2e6206fb07816a1b4a17bb677",
+      "kind": "p",
+      "chapter": "١٨-علاج-أمراض-القلوب",
+      "prev": "5bd16222636020f81996f523525134c5ab9dc373156908fc36f5bee78ce8784f",
+      "next": "d95102fcb90eed9b5afa0ded4e57d57c7f86fa88a6be71c1e1970d3c51389e12"
+    },
+    {
+      "ord": 410,
+      "blockId": "cad6d3b1660c85dda266360a25835650",
+      "fp64": "75dff7bf7b376eb6",
+      "normHash": "d95102fcb90eed9b5afa0ded4e57d57c7f86fa88a6be71c1e1970d3c51389e12",
+      "kind": "page",
+      "chapter": "١٨-علاج-أمراض-القلوب",
+      "prev": "8f9713d3e59d11c6cbe96b4176841df8bf7afba2e6206fb07816a1b4a17bb677",
+      "next": "c6ff850b06559c04d640d91e86353773bd0d166cfc55b087d23a5d0415644937"
+    },
+    {
+      "ord": 411,
+      "blockId": "a932ddbed79af4867f820e99dc5594d5",
+      "fp64": "60fd36ce1a2abcca",
+      "normHash": "c6ff850b06559c04d640d91e86353773bd0d166cfc55b087d23a5d0415644937",
+      "kind": "p",
+      "chapter": "١٨-علاج-أمراض-القلوب",
+      "prev": "d95102fcb90eed9b5afa0ded4e57d57c7f86fa88a6be71c1e1970d3c51389e12",
+      "next": "2d0af52b1f706a50ff4584a643a15fbdabfea4b3d4b2aa2455de75432d36cdb7"
+    },
+    {
+      "ord": 412,
+      "blockId": "8743335fc8be32ff194980d98e74ef1d",
+      "fp64": "f5a1678c746cbe5c",
+      "normHash": "2d0af52b1f706a50ff4584a643a15fbdabfea4b3d4b2aa2455de75432d36cdb7",
+      "kind": "p",
+      "chapter": "١٨-علاج-أمراض-القلوب",
+      "prev": "c6ff850b06559c04d640d91e86353773bd0d166cfc55b087d23a5d0415644937",
+      "next": "b61a567557b28b47446a79cec9869564d91db34388783243ae089e4636de0e86"
+    },
+    {
+      "ord": 413,
+      "blockId": "c6447db934725b902606fb869ac486bd",
+      "fp64": "5d8049081c4c3c54",
+      "normHash": "b61a567557b28b47446a79cec9869564d91db34388783243ae089e4636de0e86",
+      "kind": "p",
+      "chapter": "١٨-علاج-أمراض-القلوب",
+      "prev": "2d0af52b1f706a50ff4584a643a15fbdabfea4b3d4b2aa2455de75432d36cdb7",
+      "next": "cbf6a6545a923613df218c6c0debe8794599f4735faacebe7ef5a7162ce88de7"
+    },
+    {
+      "ord": 414,
+      "blockId": "cfde0290186ac69238062aefe726d5b8",
+      "fp64": "fc637e90967e7f1e",
+      "normHash": "cbf6a6545a923613df218c6c0debe8794599f4735faacebe7ef5a7162ce88de7",
+      "kind": "p",
+      "chapter": "١٨-علاج-أمراض-القلوب",
+      "prev": "b61a567557b28b47446a79cec9869564d91db34388783243ae089e4636de0e86",
+      "next": "f1ce6fb4dc4a7ff7bce5e20f1ad20fff168f436709cc60dcc879e0a3db584c9f"
+    },
+    {
+      "ord": 415,
+      "blockId": "96d5939743b8115627385ad6d3ce08c9",
+      "fp64": "fdf6e7020e7775fe",
+      "normHash": "f1ce6fb4dc4a7ff7bce5e20f1ad20fff168f436709cc60dcc879e0a3db584c9f",
+      "kind": "p",
+      "chapter": "١٨-علاج-أمراض-القلوب",
+      "prev": "cbf6a6545a923613df218c6c0debe8794599f4735faacebe7ef5a7162ce88de7",
+      "next": "a0ec4d1dbace6f906914e337894454660a3af4500ed6619c0e0b5077107a7463"
+    },
+    {
+      "ord": 416,
+      "blockId": "36e4e1df6bf7e81180f791c616014076",
+      "fp64": "6adb9a48b9487739",
+      "normHash": "a0ec4d1dbace6f906914e337894454660a3af4500ed6619c0e0b5077107a7463",
+      "kind": "p",
+      "chapter": "١٨-علاج-أمراض-القلوب",
+      "prev": "f1ce6fb4dc4a7ff7bce5e20f1ad20fff168f436709cc60dcc879e0a3db584c9f",
+      "next": "bbdb5bc4a702d9dec8614aa077180515c78b3dd7d041e9e48ab84d11fd32acdd"
+    },
+    {
+      "ord": 417,
+      "blockId": "66627e998d817cd1ed54160c983ea05e",
+      "fp64": "c931a2f2514f0fc0",
+      "normHash": "bbdb5bc4a702d9dec8614aa077180515c78b3dd7d041e9e48ab84d11fd32acdd",
+      "kind": "p",
+      "chapter": "١٨-علاج-أمراض-القلوب",
+      "prev": "a0ec4d1dbace6f906914e337894454660a3af4500ed6619c0e0b5077107a7463",
+      "next": "85e4f73be80f53b16b0bd320a1584afcf1471cc9942246987052f223e45770be"
+    },
+    {
+      "ord": 418,
+      "blockId": "2ba0228ed1d57570976c4200041a0817",
+      "fp64": "77dff39efb75f9bf",
+      "normHash": "85e4f73be80f53b16b0bd320a1584afcf1471cc9942246987052f223e45770be",
+      "kind": "page",
+      "chapter": "١٨-علاج-أمراض-القلوب",
+      "prev": "bbdb5bc4a702d9dec8614aa077180515c78b3dd7d041e9e48ab84d11fd32acdd",
+      "next": "639bb49a9b7153547414181fe142bec622225d7995c62dac428f8c4958232615"
+    },
+    {
+      "ord": 419,
+      "blockId": "ebe53d7806fc951ecbdd6264a3c266b6",
+      "fp64": "628de07a0f8c77fe",
+      "normHash": "639bb49a9b7153547414181fe142bec622225d7995c62dac428f8c4958232615",
+      "kind": "p",
+      "chapter": "١٨-علاج-أمراض-القلوب",
+      "prev": "85e4f73be80f53b16b0bd320a1584afcf1471cc9942246987052f223e45770be",
+      "next": "5eb1dbc9a71fe867f511cc04c65deb4f69deada67a0f46de71ad6b2f1c6e6be8"
+    },
+    {
+      "ord": 420,
+      "blockId": "8c673ef028addd9e636f5fe082015226",
+      "fp64": "dfab60eaf7e73bd4",
+      "normHash": "5eb1dbc9a71fe867f511cc04c65deb4f69deada67a0f46de71ad6b2f1c6e6be8",
+      "kind": "p",
+      "chapter": "١٨-علاج-أمراض-القلوب",
+      "prev": "639bb49a9b7153547414181fe142bec622225d7995c62dac428f8c4958232615",
+      "next": "18a01c468d204bca82b7c76433c2e0e892867635838f9c274adc0d3c7295b0f6"
+    },
+    {
+      "ord": 421,
+      "blockId": "779da64094602cb495925a1b1e0abb2d",
+      "fp64": "a8f7f0d5d35e4bde",
+      "normHash": "18a01c468d204bca82b7c76433c2e0e892867635838f9c274adc0d3c7295b0f6",
+      "kind": "p",
+      "chapter": "١٨-علاج-أمراض-القلوب",
+      "prev": "5eb1dbc9a71fe867f511cc04c65deb4f69deada67a0f46de71ad6b2f1c6e6be8",
+      "next": "fcd705baaeea9e2d94b9b4077e5ed3b4012ec237b51fc7a1c2c8f1306af05665"
+    },
+    {
+      "ord": 422,
+      "blockId": "9dcfd8641e57f94d5795181ea2dec1ab",
+      "fp64": "35fff7ba5e33e876",
+      "normHash": "fcd705baaeea9e2d94b9b4077e5ed3b4012ec237b51fc7a1c2c8f1306af05665",
+      "kind": "page",
+      "chapter": "١٨-علاج-أمراض-القلوب",
+      "prev": "18a01c468d204bca82b7c76433c2e0e892867635838f9c274adc0d3c7295b0f6",
+      "next": "6f24a311ce92b16ad6d88191ca313a22c570e7d7d125d1bd36aa4b9bca2be3cc"
+    },
+    {
+      "ord": 423,
+      "blockId": "8112bd6d515ade84057c7a32f4390c02",
+      "fp64": "d353a6ff00460a5b",
+      "normHash": "6f24a311ce92b16ad6d88191ca313a22c570e7d7d125d1bd36aa4b9bca2be3cc",
+      "kind": "p",
+      "chapter": "١٨-علاج-أمراض-القلوب",
+      "prev": "fcd705baaeea9e2d94b9b4077e5ed3b4012ec237b51fc7a1c2c8f1306af05665",
+      "next": "1726845bc3834bf2431ce7b5686f47ede65ff68dad1227e0bbf6578d9a2ec948"
+    },
+    {
+      "ord": 424,
+      "blockId": "5cc7398ae79f78c8e87be5b2eac3d369",
+      "fp64": "2cfe75b38571ddf1",
+      "normHash": "1726845bc3834bf2431ce7b5686f47ede65ff68dad1227e0bbf6578d9a2ec948",
+      "kind": "p",
+      "chapter": "١٨-علاج-أمراض-القلوب",
+      "prev": "6f24a311ce92b16ad6d88191ca313a22c570e7d7d125d1bd36aa4b9bca2be3cc",
+      "next": "03809f3cf6f9118d9a21e7543003beb851f248a269c56fd00c8a7c18bea6a564"
+    },
+    {
+      "ord": 425,
+      "blockId": "cba9560697bab68bd355354a87433471",
+      "fp64": "ee7ecdfbf76a7d6f",
+      "normHash": "03809f3cf6f9118d9a21e7543003beb851f248a269c56fd00c8a7c18bea6a564",
+      "kind": "p",
+      "chapter": "١٨-علاج-أمراض-القلوب",
+      "prev": "1726845bc3834bf2431ce7b5686f47ede65ff68dad1227e0bbf6578d9a2ec948",
+      "next": "cb953d7303f0bee1c3c8d72810f70bb6f32141a9f69ddeb0aaa46a1df75a0628"
+    },
+    {
+      "ord": 426,
+      "blockId": "46389f962d150146764aa0314b2c4ea2",
+      "fp64": "7b5d27efb54d8f6e",
+      "normHash": "cb953d7303f0bee1c3c8d72810f70bb6f32141a9f69ddeb0aaa46a1df75a0628",
+      "kind": "p",
+      "chapter": "١٨-علاج-أمراض-القلوب",
+      "prev": "03809f3cf6f9118d9a21e7543003beb851f248a269c56fd00c8a7c18bea6a564",
+      "next": "2b33983b774c6abacf0396e54bc8332dfd4d5505ee16f34de9c1e8be5d4eb08d"
+    },
+    {
+      "ord": 427,
+      "blockId": "b48c49e1962229198fe8bccd10689a48",
+      "fp64": "f5dffffa7f7df4b6",
+      "normHash": "2b33983b774c6abacf0396e54bc8332dfd4d5505ee16f34de9c1e8be5d4eb08d",
+      "kind": "page",
+      "chapter": "١٨-علاج-أمراض-القلوب",
+      "prev": "cb953d7303f0bee1c3c8d72810f70bb6f32141a9f69ddeb0aaa46a1df75a0628",
+      "next": "49315a22fcf3a5208533137cea30114c8946c0a9e0d3044988f624bbd01ba749"
+    },
+    {
+      "ord": 428,
+      "blockId": "586bb8ccd0148f13ce84bdd9ec07af44",
+      "fp64": "6cecc85c5d36df7b",
+      "normHash": "49315a22fcf3a5208533137cea30114c8946c0a9e0d3044988f624bbd01ba749",
+      "kind": "p",
+      "chapter": "١٨-علاج-أمراض-القلوب",
+      "prev": "2b33983b774c6abacf0396e54bc8332dfd4d5505ee16f34de9c1e8be5d4eb08d",
+      "next": "4e88034fe86de5cf4a17b406653a81fe61138e73cb8df8d707a0ae2d4eebe389"
+    },
+    {
+      "ord": 429,
+      "blockId": "67361b7af99b8a172922891bf9dfc83c",
+      "fp64": "d86ff0711f709e40",
+      "normHash": "4e88034fe86de5cf4a17b406653a81fe61138e73cb8df8d707a0ae2d4eebe389",
+      "kind": "p",
+      "chapter": "١٨-علاج-أمراض-القلوب",
+      "prev": "49315a22fcf3a5208533137cea30114c8946c0a9e0d3044988f624bbd01ba749",
+      "next": "4db6d6bb521b682b758e1da0f041502a55ecdda2e61314d6edace4bfcc56d5ad"
+    },
+    {
+      "ord": 430,
+      "blockId": "5ff793996017675ae9af236a411423c3",
+      "fp64": "6ffff7ff5abb6c77",
+      "normHash": "4db6d6bb521b682b758e1da0f041502a55ecdda2e61314d6edace4bfcc56d5ad",
+      "kind": "page",
+      "chapter": "١٨-علاج-أمراض-القلوب",
+      "prev": "4e88034fe86de5cf4a17b406653a81fe61138e73cb8df8d707a0ae2d4eebe389",
+      "next": "2a7ed78072b0fa48469f5782f88d06e30327bac6cdab9ec463e9dc9e09cabc25"
+    },
+    {
+      "ord": 431,
+      "blockId": "5dabe59c97f2b382ff8289193ddced29",
+      "fp64": "f17980fd610ed266",
+      "normHash": "2a7ed78072b0fa48469f5782f88d06e30327bac6cdab9ec463e9dc9e09cabc25",
+      "kind": "p",
+      "chapter": "١٨-علاج-أمراض-القلوب",
+      "prev": "4db6d6bb521b682b758e1da0f041502a55ecdda2e61314d6edace4bfcc56d5ad",
+      "next": "ef9fdac5698eb388b0b6e73d19035c557eb37a6467c0fec3381e5a49472f55e2"
+    },
+    {
+      "ord": 432,
+      "blockId": "007dd7963755434a2784c755b246ab5c",
+      "fp64": "c096c01090bae429",
+      "normHash": "ef9fdac5698eb388b0b6e73d19035c557eb37a6467c0fec3381e5a49472f55e2",
+      "kind": "p",
+      "chapter": "١٨-علاج-أمراض-القلوب",
+      "prev": "2a7ed78072b0fa48469f5782f88d06e30327bac6cdab9ec463e9dc9e09cabc25",
+      "next": "14e5f4c999a67e0d92ec40223e627142c08a647a834b5af2e3f74badbf098bdb"
+    },
+    {
+      "ord": 433,
+      "blockId": "24de58039a4b2338200c205398360729",
+      "fp64": "19512fbff169cd4e",
+      "normHash": "14e5f4c999a67e0d92ec40223e627142c08a647a834b5af2e3f74badbf098bdb",
+      "kind": "p",
+      "chapter": "١٨-علاج-أمراض-القلوب",
+      "prev": "ef9fdac5698eb388b0b6e73d19035c557eb37a6467c0fec3381e5a49472f55e2",
+      "next": "353bbfacb5be00a425fd581f5c607ccb1c98f85c105abf2b7b4056117988f76c"
+    },
+    {
+      "ord": 434,
+      "blockId": "117f7ec5deb1c7d8c0cadb709aca04b0",
+      "fp64": "37dffbbafff3f2bf",
+      "normHash": "353bbfacb5be00a425fd581f5c607ccb1c98f85c105abf2b7b4056117988f76c",
+      "kind": "page",
+      "chapter": "١٨-علاج-أمراض-القلوب",
+      "prev": "14e5f4c999a67e0d92ec40223e627142c08a647a834b5af2e3f74badbf098bdb"
+    }
+  ]
+}

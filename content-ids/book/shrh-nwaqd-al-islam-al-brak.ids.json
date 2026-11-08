@@ -1,0 +1,2915 @@
+{
+  "schema": 1,
+  "generation": 1,
+  "sourceHash": "a89f364377220a4b23f895430244f2e85b15a6a0f2bc354c796195e8297e5aef",
+  "ids": [
+    {
+      "ord": 0,
+      "blockId": "36aef46b197a5ee62f8158547c59e4aa",
+      "fp64": "1c6a134b506436dd",
+      "normHash": "fba3574f6a79cdf1f10be09e140641302898ab9fba69a0d0f386f6a294fc4a82",
+      "kind": "p",
+      "chapter": "main",
+      "next": "bdad0b8d0cac9a6e2193299e164ab4cd3c9fef1c355a873052b178a227a92c96"
+    },
+    {
+      "ord": 1,
+      "blockId": "5fcc1abeddc865456945f8703020de2f",
+      "fp64": "d70cd8a7fee7f1f4",
+      "normHash": "bdad0b8d0cac9a6e2193299e164ab4cd3c9fef1c355a873052b178a227a92c96",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "fba3574f6a79cdf1f10be09e140641302898ab9fba69a0d0f386f6a294fc4a82",
+      "next": "ffa455a149135d278dd07ae117a259b9404f56beb712c9b5f36a1d3c71acc04c"
+    },
+    {
+      "ord": 2,
+      "blockId": "5fccfeff167bb99b7883c7ad3d54600a",
+      "fp64": "8d3800904be520d0",
+      "normHash": "ffa455a149135d278dd07ae117a259b9404f56beb712c9b5f36a1d3c71acc04c",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "bdad0b8d0cac9a6e2193299e164ab4cd3c9fef1c355a873052b178a227a92c96",
+      "next": "a295ff14007e32bdfc9bb434ec0419999181d3d2790e3ba1cdbf0d2c44e938c2"
+    },
+    {
+      "ord": 3,
+      "blockId": "c87ca9181fb6dea559002cba958a7d48",
+      "fp64": "d59ec997b8f570f4",
+      "normHash": "a295ff14007e32bdfc9bb434ec0419999181d3d2790e3ba1cdbf0d2c44e938c2",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "ffa455a149135d278dd07ae117a259b9404f56beb712c9b5f36a1d3c71acc04c",
+      "next": "1932b74842c5ea7171e5bc0d72696df66a0ddbccc1bb8c0f6482c781f501a500"
+    },
+    {
+      "ord": 4,
+      "blockId": "7541c80040df1e3978215304db822f6f",
+      "fp64": "cdb3917b1e72be53",
+      "normHash": "1932b74842c5ea7171e5bc0d72696df66a0ddbccc1bb8c0f6482c781f501a500",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "a295ff14007e32bdfc9bb434ec0419999181d3d2790e3ba1cdbf0d2c44e938c2",
+      "next": "aa0a7f29813593c55b2addef2a4a8022567a8ec30680a64781ff6f6b384da0a9"
+    },
+    {
+      "ord": 5,
+      "blockId": "408231295312fc65927d2c2e84074730",
+      "fp64": "a7e03e34d3df38a3",
+      "normHash": "aa0a7f29813593c55b2addef2a4a8022567a8ec30680a64781ff6f6b384da0a9",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "1932b74842c5ea7171e5bc0d72696df66a0ddbccc1bb8c0f6482c781f501a500",
+      "next": "f5c92b51cfc0ef5c80e7d3bcb7a7399f213e3abf468e7f06a2551f6be5d7e5f3"
+    },
+    {
+      "ord": 6,
+      "blockId": "4f5530be3aa9ef4e1291bd12e3e909f5",
+      "fp64": "d9f7fd7fd3e7fc77",
+      "normHash": "f5c92b51cfc0ef5c80e7d3bcb7a7399f213e3abf468e7f06a2551f6be5d7e5f3",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "aa0a7f29813593c55b2addef2a4a8022567a8ec30680a64781ff6f6b384da0a9",
+      "next": "1755600b9ce652f0aec99354fbd00dc1a7e373871d30eaf4eb8d6dffd57a9a4c"
+    },
+    {
+      "ord": 7,
+      "blockId": "195b075018080b070588ce4b3cedee31",
+      "fp64": "fe7eb96dfbebf385",
+      "normHash": "1755600b9ce652f0aec99354fbd00dc1a7e373871d30eaf4eb8d6dffd57a9a4c",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "f5c92b51cfc0ef5c80e7d3bcb7a7399f213e3abf468e7f06a2551f6be5d7e5f3",
+      "next": "981981941db91c49ef32e19c44e84d9df96bd7317fc38f731f77e09152a4d23c"
+    },
+    {
+      "ord": 8,
+      "blockId": "090eb777b5e4032e538db175bf952c30",
+      "fp64": "7e47adefc190d839",
+      "normHash": "981981941db91c49ef32e19c44e84d9df96bd7317fc38f731f77e09152a4d23c",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "1755600b9ce652f0aec99354fbd00dc1a7e373871d30eaf4eb8d6dffd57a9a4c",
+      "next": "4b48dbc4cb06f35d34955cda5879f834903275e4821fa5f30729762920268cc1"
+    },
+    {
+      "ord": 9,
+      "blockId": "6085c3ac28dc1f0e737501f52ec006c9",
+      "fp64": "5ecda1525764fcdf",
+      "normHash": "4b48dbc4cb06f35d34955cda5879f834903275e4821fa5f30729762920268cc1",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "981981941db91c49ef32e19c44e84d9df96bd7317fc38f731f77e09152a4d23c",
+      "next": "3a935450407ec5018639ba2f670d77685becfba74f8ccdfbc8e3d38907b0ed27"
+    },
+    {
+      "ord": 10,
+      "blockId": "d26fa3d9eb036be94d7457c07b4e0ca7",
+      "fp64": "ffcfbdfefb39d33d",
+      "normHash": "3a935450407ec5018639ba2f670d77685becfba74f8ccdfbc8e3d38907b0ed27",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "4b48dbc4cb06f35d34955cda5879f834903275e4821fa5f30729762920268cc1",
+      "next": "ea49596443c91a46fbf20c4fafc4462548ad37a819813802702c2cbf692a6f2b"
+    },
+    {
+      "ord": 11,
+      "blockId": "fa1ff6bc8ae6d16d55ebfc0b72c89c0e",
+      "fp64": "ad1860129d7570f4",
+      "normHash": "ea49596443c91a46fbf20c4fafc4462548ad37a819813802702c2cbf692a6f2b",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "3a935450407ec5018639ba2f670d77685becfba74f8ccdfbc8e3d38907b0ed27",
+      "next": "d98f10d1a0b83afaad0fed64fe23d579679f6dc7ae63b272f1ec8a100b9dc7ca"
+    },
+    {
+      "ord": 12,
+      "blockId": "e087b7e29e74c0f0794c5bedd32a708f",
+      "fp64": "abd4fff77dbb7fef",
+      "normHash": "d98f10d1a0b83afaad0fed64fe23d579679f6dc7ae63b272f1ec8a100b9dc7ca",
+      "kind": "notes",
+      "chapter": "main",
+      "prev": "ea49596443c91a46fbf20c4fafc4462548ad37a819813802702c2cbf692a6f2b",
+      "next": "73d73406bc46cc7186ec804fdfa1a05041b9f7d03ceeca214755823ab8479412"
+    },
+    {
+      "ord": 13,
+      "blockId": "5321304bd26286467d5c5007ed1a60dd",
+      "fp64": "2fdffbfb7f336dff",
+      "normHash": "73d73406bc46cc7186ec804fdfa1a05041b9f7d03ceeca214755823ab8479412",
+      "kind": "page",
+      "chapter": "main",
+      "prev": "d98f10d1a0b83afaad0fed64fe23d579679f6dc7ae63b272f1ec8a100b9dc7ca",
+      "next": "09d9af9c8a49c57a05700f0cfcc789e2f52b60461daec283684af09083b22c33"
+    },
+    {
+      "ord": 14,
+      "blockId": "4f5c39e64a7ff9b443778416bc669b9a",
+      "fp64": "09d167e3b63e7ed5",
+      "normHash": "09d9af9c8a49c57a05700f0cfcc789e2f52b60461daec283684af09083b22c33",
+      "kind": "p",
+      "chapter": "main",
+      "prev": "73d73406bc46cc7186ec804fdfa1a05041b9f7d03ceeca214755823ab8479412",
+      "next": "5ac93e7509b5d8fa04c84ee040aec781ea46c996bdce6eabc2ed47033c7f0120"
+    },
+    {
+      "ord": 15,
+      "blockId": "093ff6d4b8ee8db3b3d52b0dea68c5dd",
+      "fp64": "7f59bf7ef8d6bfef",
+      "normHash": "5ac93e7509b5d8fa04c84ee040aec781ea46c996bdce6eabc2ed47033c7f0120",
+      "kind": "h2",
+      "chapter": "المنهج-الذي-سلك-في-إخراج-الشرح",
+      "prev": "09d9af9c8a49c57a05700f0cfcc789e2f52b60461daec283684af09083b22c33",
+      "next": "6b7b79c5ea3f11af9f79d10bbe4485c7b4f4a532ee69aeb213f9d01ec7887f10"
+    },
+    {
+      "ord": 16,
+      "blockId": "80bd45798343be9ef233e0190c22a785",
+      "fp64": "bffffddd7fbc7fd7",
+      "normHash": "6b7b79c5ea3f11af9f79d10bbe4485c7b4f4a532ee69aeb213f9d01ec7887f10",
+      "kind": "p",
+      "chapter": "المنهج-الذي-سلك-في-إخراج-الشرح",
+      "prev": "5ac93e7509b5d8fa04c84ee040aec781ea46c996bdce6eabc2ed47033c7f0120",
+      "next": "52fb8de513b2fda6c5aabb68e7f8d45183138cc6081eb49280844545c848cd74"
+    },
+    {
+      "ord": 17,
+      "blockId": "3c64dd893b234a09df45aa7b3197862f",
+      "fp64": "49ad621c7149db30",
+      "normHash": "52fb8de513b2fda6c5aabb68e7f8d45183138cc6081eb49280844545c848cd74",
+      "kind": "p",
+      "chapter": "المنهج-الذي-سلك-في-إخراج-الشرح",
+      "prev": "6b7b79c5ea3f11af9f79d10bbe4485c7b4f4a532ee69aeb213f9d01ec7887f10",
+      "next": "fce817bfbb5736ada1a4b35ec8ad3539048fe1e2108dd54431a8429cf988a424"
+    },
+    {
+      "ord": 18,
+      "blockId": "77040fdd9b5d54010449251fcd27f41d",
+      "fp64": "7cfaf7ffbf56ffc7",
+      "normHash": "fce817bfbb5736ada1a4b35ec8ad3539048fe1e2108dd54431a8429cf988a424",
+      "kind": "p",
+      "chapter": "المنهج-الذي-سلك-في-إخراج-الشرح",
+      "prev": "52fb8de513b2fda6c5aabb68e7f8d45183138cc6081eb49280844545c848cd74",
+      "next": "d8de1ab5b54f19be648ece51b646f01e3989191027f936927f0d7fe39a2b8a0c"
+    },
+    {
+      "ord": 19,
+      "blockId": "112a55ac0a963e695ffe88bd8de0ff1e",
+      "fp64": "7e62c0e9bb67fd13",
+      "normHash": "d8de1ab5b54f19be648ece51b646f01e3989191027f936927f0d7fe39a2b8a0c",
+      "kind": "p",
+      "chapter": "المنهج-الذي-سلك-في-إخراج-الشرح",
+      "prev": "fce817bfbb5736ada1a4b35ec8ad3539048fe1e2108dd54431a8429cf988a424",
+      "next": "09c554c9656b48f8a7ad510f93a42ec04a77a08dbb580ff31b9df63dd3905f6a"
+    },
+    {
+      "ord": 20,
+      "blockId": "f18bc9ec039c9fa4dd1c6975002b6eff",
+      "fp64": "9f45017a5b543bbc",
+      "normHash": "09c554c9656b48f8a7ad510f93a42ec04a77a08dbb580ff31b9df63dd3905f6a",
+      "kind": "p",
+      "chapter": "المنهج-الذي-سلك-في-إخراج-الشرح",
+      "prev": "d8de1ab5b54f19be648ece51b646f01e3989191027f936927f0d7fe39a2b8a0c",
+      "next": "5ab7d64441f6385536888384cc8324bc9fca33c14734c4cacf0583aeaf8207f6"
+    },
+    {
+      "ord": 21,
+      "blockId": "11cc2915a56e97462124916d115dfa4f",
+      "fp64": "8dd32b12b0e7b87c",
+      "normHash": "5ab7d64441f6385536888384cc8324bc9fca33c14734c4cacf0583aeaf8207f6",
+      "kind": "p",
+      "chapter": "المنهج-الذي-سلك-في-إخراج-الشرح",
+      "prev": "09c554c9656b48f8a7ad510f93a42ec04a77a08dbb580ff31b9df63dd3905f6a",
+      "next": "4d4b3d3a8684c85baf44a2deddaee64f2282df3f4a109e5d0322064f539c4b2c"
+    },
+    {
+      "ord": 22,
+      "blockId": "4d5db45d076805a997289f5a3b0dfbd9",
+      "fp64": "a041ae599b568ad0",
+      "normHash": "4d4b3d3a8684c85baf44a2deddaee64f2282df3f4a109e5d0322064f539c4b2c",
+      "kind": "p",
+      "chapter": "المنهج-الذي-سلك-في-إخراج-الشرح",
+      "prev": "5ab7d64441f6385536888384cc8324bc9fca33c14734c4cacf0583aeaf8207f6",
+      "next": "06dac525c4f6ca040edee0b6aad010c4dcc33b71513032bff8ece55c468d237d"
+    },
+    {
+      "ord": 23,
+      "blockId": "385f33e8111a01ef05402734a3fa0f8e",
+      "fp64": "f44f8800bcb1bebb",
+      "normHash": "06dac525c4f6ca040edee0b6aad010c4dcc33b71513032bff8ece55c468d237d",
+      "kind": "p",
+      "chapter": "المنهج-الذي-سلك-في-إخراج-الشرح",
+      "prev": "4d4b3d3a8684c85baf44a2deddaee64f2282df3f4a109e5d0322064f539c4b2c",
+      "next": "904b223a7b91518376dfc42b5b886f8d61b655035a8f561d1fcc6805c24028ec"
+    },
+    {
+      "ord": 24,
+      "blockId": "f45e50cb36dc17b773739614bbd916b3",
+      "fp64": "fba6eada9b8ee76d",
+      "normHash": "904b223a7b91518376dfc42b5b886f8d61b655035a8f561d1fcc6805c24028ec",
+      "kind": "p",
+      "chapter": "المنهج-الذي-سلك-في-إخراج-الشرح",
+      "prev": "06dac525c4f6ca040edee0b6aad010c4dcc33b71513032bff8ece55c468d237d",
+      "next": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839"
+    },
+    {
+      "ord": 25,
+      "blockId": "bb186d81642c3bcbdff482b2be3175e2",
+      "fp64": "c2e708506ae5eb14",
+      "normHash": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839",
+      "kind": "break",
+      "chapter": "المنهج-الذي-سلك-في-إخراج-الشرح",
+      "prev": "904b223a7b91518376dfc42b5b886f8d61b655035a8f561d1fcc6805c24028ec",
+      "next": "b64d47bb52ce2df883d5e65a897cdbda8fb31df41781ec406a8f4c6d951ae1b5"
+    },
+    {
+      "ord": 26,
+      "blockId": "c7e56189aa0de1112bc0fdfb8f0e6de3",
+      "fp64": "b7dfffff5bf1f6f7",
+      "normHash": "b64d47bb52ce2df883d5e65a897cdbda8fb31df41781ec406a8f4c6d951ae1b5",
+      "kind": "page",
+      "chapter": "المنهج-الذي-سلك-في-إخراج-الشرح",
+      "prev": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839",
+      "next": "42334a6b32a85a6f5c5eb8dd850706a4c37cdf9526b2c03fd76c9a6bacd4d375"
+    },
+    {
+      "ord": 27,
+      "blockId": "70a9bc61257c0ea992cfafc5f978d81c",
+      "fp64": "7fcfedefef92fd3d",
+      "normHash": "42334a6b32a85a6f5c5eb8dd850706a4c37cdf9526b2c03fd76c9a6bacd4d375",
+      "kind": "h2",
+      "chapter": "مقدمة-الشارح",
+      "prev": "b64d47bb52ce2df883d5e65a897cdbda8fb31df41781ec406a8f4c6d951ae1b5",
+      "next": "56cfdd26a7938708a57e3f69912f555a1aa27e7ae0a790ec3a64c3b77a7f094d"
+    },
+    {
+      "ord": 28,
+      "blockId": "d4636a0c4d98a633f89b02dc500cf99c",
+      "fp64": "f327e7d095bce429",
+      "normHash": "56cfdd26a7938708a57e3f69912f555a1aa27e7ae0a790ec3a64c3b77a7f094d",
+      "kind": "p",
+      "chapter": "مقدمة-الشارح",
+      "prev": "42334a6b32a85a6f5c5eb8dd850706a4c37cdf9526b2c03fd76c9a6bacd4d375",
+      "next": "3a935450407ec5018639ba2f670d77685becfba74f8ccdfbc8e3d38907b0ed27"
+    },
+    {
+      "ord": 29,
+      "blockId": "4caf1ebcd95ccdc04828d7e1e78138e3",
+      "fp64": "ffcfbdfefb39d33d",
+      "normHash": "3a935450407ec5018639ba2f670d77685becfba74f8ccdfbc8e3d38907b0ed27",
+      "kind": "p",
+      "chapter": "مقدمة-الشارح",
+      "prev": "56cfdd26a7938708a57e3f69912f555a1aa27e7ae0a790ec3a64c3b77a7f094d",
+      "next": "8d62f0a5ee4544426f8f9ade4289e5202d3118f6fb62f1560ef5fb297f1efec7"
+    },
+    {
+      "ord": 30,
+      "blockId": "a23d3378c130c1e295295edb7d22000f",
+      "fp64": "1ec8664cd1447c34",
+      "normHash": "8d62f0a5ee4544426f8f9ade4289e5202d3118f6fb62f1560ef5fb297f1efec7",
+      "kind": "p",
+      "chapter": "مقدمة-الشارح",
+      "prev": "3a935450407ec5018639ba2f670d77685becfba74f8ccdfbc8e3d38907b0ed27",
+      "next": "389564a462d131b79530533222302c525ad774335b0adde4e526124a5ee45139"
+    },
+    {
+      "ord": 31,
+      "blockId": "f100f2b9bc520d1e06892cb9dc8cf8ac",
+      "fp64": "6445e402be3d9d7f",
+      "normHash": "389564a462d131b79530533222302c525ad774335b0adde4e526124a5ee45139",
+      "kind": "p",
+      "chapter": "مقدمة-الشارح",
+      "prev": "8d62f0a5ee4544426f8f9ade4289e5202d3118f6fb62f1560ef5fb297f1efec7",
+      "next": "fa6f2f2d2ec70b9fd6cba78ecf50308b0b0c23a51f49f40d301067bd8d109e52"
+    },
+    {
+      "ord": 32,
+      "blockId": "470c212fcd4b6111d138bd5f3c5777d6",
+      "fp64": "afdffffedb79627f",
+      "normHash": "fa6f2f2d2ec70b9fd6cba78ecf50308b0b0c23a51f49f40d301067bd8d109e52",
+      "kind": "page",
+      "chapter": "مقدمة-الشارح",
+      "prev": "389564a462d131b79530533222302c525ad774335b0adde4e526124a5ee45139",
+      "next": "2e5f9640b26ddfe6e2bc45986f0752775c8e05d4f68834a95010aba24adf5ed3"
+    },
+    {
+      "ord": 33,
+      "blockId": "0a88f266a7d5315c2f2d6b874c9a27a5",
+      "fp64": "3c54e016957c717e",
+      "normHash": "2e5f9640b26ddfe6e2bc45986f0752775c8e05d4f68834a95010aba24adf5ed3",
+      "kind": "p",
+      "chapter": "مقدمة-الشارح",
+      "prev": "fa6f2f2d2ec70b9fd6cba78ecf50308b0b0c23a51f49f40d301067bd8d109e52",
+      "next": "dfec861fa42c57b1c774b841d278ac907e1da26869817463510cf6b102aa9da0"
+    },
+    {
+      "ord": 34,
+      "blockId": "e1fa06a7801f765252c28ad8a6791fc3",
+      "fp64": "0e49245296343d5e",
+      "normHash": "dfec861fa42c57b1c774b841d278ac907e1da26869817463510cf6b102aa9da0",
+      "kind": "p",
+      "chapter": "مقدمة-الشارح",
+      "prev": "2e5f9640b26ddfe6e2bc45986f0752775c8e05d4f68834a95010aba24adf5ed3",
+      "next": "6cddcb8a45203451a4117f0dcf9e6bfe40200691f149e36b0a76605814258dc0"
+    },
+    {
+      "ord": 35,
+      "blockId": "5499b28ad0e14fa393f1cacf96115b6f",
+      "fp64": "f775d6fd72eb7aaf",
+      "normHash": "6cddcb8a45203451a4117f0dcf9e6bfe40200691f149e36b0a76605814258dc0",
+      "kind": "notes",
+      "chapter": "مقدمة-الشارح",
+      "prev": "dfec861fa42c57b1c774b841d278ac907e1da26869817463510cf6b102aa9da0",
+      "next": "4e69f1fe679aed73a4f2002d7955a7415fb3e959647a1fb7d8b8e8215f935244"
+    },
+    {
+      "ord": 36,
+      "blockId": "2667ad99249b54a3c1bdf812396d64c4",
+      "fp64": "77fff3df7a73623e",
+      "normHash": "4e69f1fe679aed73a4f2002d7955a7415fb3e959647a1fb7d8b8e8215f935244",
+      "kind": "page",
+      "chapter": "مقدمة-الشارح",
+      "prev": "6cddcb8a45203451a4117f0dcf9e6bfe40200691f149e36b0a76605814258dc0",
+      "next": "44e83d88e2445f2b664833621f2b6f53bf60eb664b552c188da098cc62ec8486"
+    },
+    {
+      "ord": 37,
+      "blockId": "6060ba9b3edb366b004e6a122ce19f32",
+      "fp64": "75cec4125f75ed1c",
+      "normHash": "44e83d88e2445f2b664833621f2b6f53bf60eb664b552c188da098cc62ec8486",
+      "kind": "p",
+      "chapter": "مقدمة-الشارح",
+      "prev": "4e69f1fe679aed73a4f2002d7955a7415fb3e959647a1fb7d8b8e8215f935244",
+      "next": "6004d38047d7c4821cb64dd82e9cb34a164e9bac3111787dcb2962c15b21c429"
+    },
+    {
+      "ord": 38,
+      "blockId": "9bbb008f9199ec85b6d849adf23a9d1c",
+      "fp64": "b8daa09e75507034",
+      "normHash": "6004d38047d7c4821cb64dd82e9cb34a164e9bac3111787dcb2962c15b21c429",
+      "kind": "p",
+      "chapter": "مقدمة-الشارح",
+      "prev": "44e83d88e2445f2b664833621f2b6f53bf60eb664b552c188da098cc62ec8486",
+      "next": "ab5fe7c350682986bb9dff06f5b51d5d8a388f20a2b265035805517c7186808f"
+    },
+    {
+      "ord": 39,
+      "blockId": "3205e310a3c20658d0f6a391ebc71ff1",
+      "fp64": "7160e49aefb5e33b",
+      "normHash": "ab5fe7c350682986bb9dff06f5b51d5d8a388f20a2b265035805517c7186808f",
+      "kind": "h2",
+      "chapter": "أكثر-العالم-الإسلامي-قد-أثرت-فيه-الخرافة-والبدعة",
+      "prev": "6004d38047d7c4821cb64dd82e9cb34a164e9bac3111787dcb2962c15b21c429",
+      "next": "175646b11ec70ca9a1899cc88725c433c133de812b66958371499e6059be9f46"
+    },
+    {
+      "ord": 40,
+      "blockId": "b2cb87d00f8b970945df2b59b5581d42",
+      "fp64": "a7c536ff355e72cd",
+      "normHash": "175646b11ec70ca9a1899cc88725c433c133de812b66958371499e6059be9f46",
+      "kind": "p",
+      "chapter": "أكثر-العالم-الإسلامي-قد-أثرت-فيه-الخرافة-والبدعة",
+      "prev": "ab5fe7c350682986bb9dff06f5b51d5d8a388f20a2b265035805517c7186808f",
+      "next": "7a413f542977e8295f6de123ae90a2e5d6835fcf8daf26897025290b894f37c7"
+    },
+    {
+      "ord": 41,
+      "blockId": "89f7bf4ee527542c24a2f31a2de19150",
+      "fp64": "fdffebfd0dfe37f2",
+      "normHash": "7a413f542977e8295f6de123ae90a2e5d6835fcf8daf26897025290b894f37c7",
+      "kind": "p",
+      "chapter": "أكثر-العالم-الإسلامي-قد-أثرت-فيه-الخرافة-والبدعة",
+      "prev": "175646b11ec70ca9a1899cc88725c433c133de812b66958371499e6059be9f46",
+      "next": "7a99e637e56fa021b11b5b1bec08154b4030262050e261edd4479d942b887828"
+    },
+    {
+      "ord": 42,
+      "blockId": "c31cd86012a4a984aa6a9aa1dae8ab4a",
+      "fp64": "9f96d24253861704",
+      "normHash": "7a99e637e56fa021b11b5b1bec08154b4030262050e261edd4479d942b887828",
+      "kind": "p",
+      "chapter": "أكثر-العالم-الإسلامي-قد-أثرت-فيه-الخرافة-والبدعة",
+      "prev": "7a413f542977e8295f6de123ae90a2e5d6835fcf8daf26897025290b894f37c7",
+      "next": "0cecaeaf6c59a4748bdf2473daf3a89d2bec83bc02f8895743469c38e87246bd"
+    },
+    {
+      "ord": 43,
+      "blockId": "cf919032efeb672b8cce62a78602f521",
+      "fp64": "a0fdfcfe77bf5abb",
+      "normHash": "0cecaeaf6c59a4748bdf2473daf3a89d2bec83bc02f8895743469c38e87246bd",
+      "kind": "notes",
+      "chapter": "أكثر-العالم-الإسلامي-قد-أثرت-فيه-الخرافة-والبدعة",
+      "prev": "7a99e637e56fa021b11b5b1bec08154b4030262050e261edd4479d942b887828",
+      "next": "fe150be8995764fb9222c74a2e8f48710a6c0e04b0832c95ac9ae993299ca637"
+    },
+    {
+      "ord": 44,
+      "blockId": "2b395e9a956d249b1e968488ab10ab85",
+      "fp64": "25ffffde7f3f783f",
+      "normHash": "fe150be8995764fb9222c74a2e8f48710a6c0e04b0832c95ac9ae993299ca637",
+      "kind": "page",
+      "chapter": "أكثر-العالم-الإسلامي-قد-أثرت-فيه-الخرافة-والبدعة",
+      "prev": "0cecaeaf6c59a4748bdf2473daf3a89d2bec83bc02f8895743469c38e87246bd",
+      "next": "d8885fc29962c60042cb0e5ff8dcdc742585a1c0e7b4a8f21fcfc5ada429967f"
+    },
+    {
+      "ord": 45,
+      "blockId": "b0c504d6982eff37ef8249e6c756d0bf",
+      "fp64": "7180540656b7ce1e",
+      "normHash": "d8885fc29962c60042cb0e5ff8dcdc742585a1c0e7b4a8f21fcfc5ada429967f",
+      "kind": "p",
+      "chapter": "أكثر-العالم-الإسلامي-قد-أثرت-فيه-الخرافة-والبدعة",
+      "prev": "fe150be8995764fb9222c74a2e8f48710a6c0e04b0832c95ac9ae993299ca637",
+      "next": "ecb2c3e706674dd3f34b688180c9ee2bb0d8b0007d7f54d6eb5b5aa94efb5961"
+    },
+    {
+      "ord": 46,
+      "blockId": "b8779174fede3958e78c31e7838ac197",
+      "fp64": "7ec4e45f9f6aedfd",
+      "normHash": "ecb2c3e706674dd3f34b688180c9ee2bb0d8b0007d7f54d6eb5b5aa94efb5961",
+      "kind": "p",
+      "chapter": "أكثر-العالم-الإسلامي-قد-أثرت-فيه-الخرافة-والبدعة",
+      "prev": "d8885fc29962c60042cb0e5ff8dcdc742585a1c0e7b4a8f21fcfc5ada429967f",
+      "next": "ca16928710b67854bb5a54a75b1332781479addf2a972917d99ee727423391bd"
+    },
+    {
+      "ord": 47,
+      "blockId": "46b59dc4f2239332a81fc6dd2bd6dd05",
+      "fp64": "ce6a41431ac264fc",
+      "normHash": "ca16928710b67854bb5a54a75b1332781479addf2a972917d99ee727423391bd",
+      "kind": "p",
+      "chapter": "أكثر-العالم-الإسلامي-قد-أثرت-فيه-الخرافة-والبدعة",
+      "prev": "ecb2c3e706674dd3f34b688180c9ee2bb0d8b0007d7f54d6eb5b5aa94efb5961",
+      "next": "6082e22870a8184704b2bd3eedd81158ad4e2914be8ed8b0a098258a503027f9"
+    },
+    {
+      "ord": 48,
+      "blockId": "6ac1e8e6d55ebdfbe401336e464ebe80",
+      "fp64": "2acaa25e0d400544",
+      "normHash": "6082e22870a8184704b2bd3eedd81158ad4e2914be8ed8b0a098258a503027f9",
+      "kind": "p",
+      "chapter": "أكثر-العالم-الإسلامي-قد-أثرت-فيه-الخرافة-والبدعة",
+      "prev": "ca16928710b67854bb5a54a75b1332781479addf2a972917d99ee727423391bd",
+      "next": "b8d474d3e9c575423b10e748e0221023c9b7c53e6f356ae92bd72beee87dbdfc"
+    },
+    {
+      "ord": 49,
+      "blockId": "144bfaaaf4eb4390c405163aa1f1e828",
+      "fp64": "fedb6656d36aeb9d",
+      "normHash": "b8d474d3e9c575423b10e748e0221023c9b7c53e6f356ae92bd72beee87dbdfc",
+      "kind": "p",
+      "chapter": "أكثر-العالم-الإسلامي-قد-أثرت-فيه-الخرافة-والبدعة",
+      "prev": "6082e22870a8184704b2bd3eedd81158ad4e2914be8ed8b0a098258a503027f9",
+      "next": "208be75abc9aa66eb7b5dfaa10095d90ac466841b841ca9677a34d24f2fb2921"
+    },
+    {
+      "ord": 50,
+      "blockId": "f8dd777e8ca7ed5e999bdb381f4f1edf",
+      "fp64": "ceaf2d5fd460e21d",
+      "normHash": "208be75abc9aa66eb7b5dfaa10095d90ac466841b841ca9677a34d24f2fb2921",
+      "kind": "p",
+      "chapter": "أكثر-العالم-الإسلامي-قد-أثرت-فيه-الخرافة-والبدعة",
+      "prev": "b8d474d3e9c575423b10e748e0221023c9b7c53e6f356ae92bd72beee87dbdfc",
+      "next": "171ba34a1c88ef4fb0dc156e55590b7489544b7746cc7cbec8a5145f50369e47"
+    },
+    {
+      "ord": 51,
+      "blockId": "170bc927c9e6c0bd5185c31c92df12b8",
+      "fp64": "a854c67675fd5eeb",
+      "normHash": "171ba34a1c88ef4fb0dc156e55590b7489544b7746cc7cbec8a5145f50369e47",
+      "kind": "notes",
+      "chapter": "أكثر-العالم-الإسلامي-قد-أثرت-فيه-الخرافة-والبدعة",
+      "prev": "208be75abc9aa66eb7b5dfaa10095d90ac466841b841ca9677a34d24f2fb2921",
+      "next": "3ac3fae37d9c27a37c8eda6b5620e12928e9e38c82616303a0543fa19a9fc15e"
+    },
+    {
+      "ord": 52,
+      "blockId": "68cab5e61ffd9f60fd06b5f5c674a5f7",
+      "fp64": "addff3be5ffd647e",
+      "normHash": "3ac3fae37d9c27a37c8eda6b5620e12928e9e38c82616303a0543fa19a9fc15e",
+      "kind": "page",
+      "chapter": "أكثر-العالم-الإسلامي-قد-أثرت-فيه-الخرافة-والبدعة",
+      "prev": "171ba34a1c88ef4fb0dc156e55590b7489544b7746cc7cbec8a5145f50369e47",
+      "next": "4c15e66bc58fe7dc205972fabf0e96884fdee2c9612d246726b9f3d702d9c4fb"
+    },
+    {
+      "ord": 53,
+      "blockId": "5f9d40f90b98382194c4249c9c787050",
+      "fp64": "7e7546d3975f711c",
+      "normHash": "4c15e66bc58fe7dc205972fabf0e96884fdee2c9612d246726b9f3d702d9c4fb",
+      "kind": "p",
+      "chapter": "أكثر-العالم-الإسلامي-قد-أثرت-فيه-الخرافة-والبدعة",
+      "prev": "3ac3fae37d9c27a37c8eda6b5620e12928e9e38c82616303a0543fa19a9fc15e",
+      "next": "c412d2ebe75d8b46c1bfb507432c3d093c474f8ad793b98c959be719e5440bd7"
+    },
+    {
+      "ord": 54,
+      "blockId": "2121323722b8469af91d6328eb4f3f77",
+      "fp64": "4a8e6c7a8b219f5d",
+      "normHash": "c412d2ebe75d8b46c1bfb507432c3d093c474f8ad793b98c959be719e5440bd7",
+      "kind": "p",
+      "chapter": "أكثر-العالم-الإسلامي-قد-أثرت-فيه-الخرافة-والبدعة",
+      "prev": "4c15e66bc58fe7dc205972fabf0e96884fdee2c9612d246726b9f3d702d9c4fb",
+      "next": "7588468132938ab48a26ba911cf38a0eb02da5783e2a7c539822078fb892f5bc"
+    },
+    {
+      "ord": 55,
+      "blockId": "38d0c95999880e7e175b6e134cc07171",
+      "fp64": "3987a05cbc41b414",
+      "normHash": "7588468132938ab48a26ba911cf38a0eb02da5783e2a7c539822078fb892f5bc",
+      "kind": "p",
+      "chapter": "أكثر-العالم-الإسلامي-قد-أثرت-فيه-الخرافة-والبدعة",
+      "prev": "c412d2ebe75d8b46c1bfb507432c3d093c474f8ad793b98c959be719e5440bd7",
+      "next": "b1a708555468723b46d8ee58b09d4c3cd2880b5323c84aee1e2699bc07e1b8db"
+    },
+    {
+      "ord": 56,
+      "blockId": "4f42214b1b644cc6315267fe1f311f53",
+      "fp64": "64330054670deb6f",
+      "normHash": "b1a708555468723b46d8ee58b09d4c3cd2880b5323c84aee1e2699bc07e1b8db",
+      "kind": "p",
+      "chapter": "أكثر-العالم-الإسلامي-قد-أثرت-فيه-الخرافة-والبدعة",
+      "prev": "7588468132938ab48a26ba911cf38a0eb02da5783e2a7c539822078fb892f5bc",
+      "next": "ea93937f7f87c235d9935333ed6d82837f365788dd67620668377aef2ed89eec"
+    },
+    {
+      "ord": 57,
+      "blockId": "d334eae9ad504b35ca0fbc4af2c9c3cb",
+      "fp64": "1c5ae650a4675234",
+      "normHash": "ea93937f7f87c235d9935333ed6d82837f365788dd67620668377aef2ed89eec",
+      "kind": "p",
+      "chapter": "أكثر-العالم-الإسلامي-قد-أثرت-فيه-الخرافة-والبدعة",
+      "prev": "b1a708555468723b46d8ee58b09d4c3cd2880b5323c84aee1e2699bc07e1b8db",
+      "next": "fbaf5bb6cbb48b195f43030ba99174d790c6ca60686082591f6e36ff679b17f7"
+    },
+    {
+      "ord": 58,
+      "blockId": "086c7ed4d026fc1442b685c7653d1d90",
+      "fp64": "f257cffe76abdaef",
+      "normHash": "fbaf5bb6cbb48b195f43030ba99174d790c6ca60686082591f6e36ff679b17f7",
+      "kind": "notes",
+      "chapter": "أكثر-العالم-الإسلامي-قد-أثرت-فيه-الخرافة-والبدعة",
+      "prev": "ea93937f7f87c235d9935333ed6d82837f365788dd67620668377aef2ed89eec",
+      "next": "4581d04ab7938e775963f37eee16e60c2f3000bc0c978bbdf46ccb9c9cb67ee5"
+    },
+    {
+      "ord": 59,
+      "blockId": "88d62c6b2412434b57b7a1644985ba2f",
+      "fp64": "f7dffbbe7e3be87f",
+      "normHash": "4581d04ab7938e775963f37eee16e60c2f3000bc0c978bbdf46ccb9c9cb67ee5",
+      "kind": "page",
+      "chapter": "أكثر-العالم-الإسلامي-قد-أثرت-فيه-الخرافة-والبدعة",
+      "prev": "fbaf5bb6cbb48b195f43030ba99174d790c6ca60686082591f6e36ff679b17f7",
+      "next": "652ce82e3ac3c6ce0c688b7e415119f242802ec71aade87537ae7ce548ac1e7b"
+    },
+    {
+      "ord": 60,
+      "blockId": "34faa1b48ac6a91f32977edfbaad1c89",
+      "fp64": "3a3d24f8f33d8e24",
+      "normHash": "652ce82e3ac3c6ce0c688b7e415119f242802ec71aade87537ae7ce548ac1e7b",
+      "kind": "p",
+      "chapter": "أكثر-العالم-الإسلامي-قد-أثرت-فيه-الخرافة-والبدعة",
+      "prev": "4581d04ab7938e775963f37eee16e60c2f3000bc0c978bbdf46ccb9c9cb67ee5",
+      "next": "fa147dbe3a92dfd7bb383c009c087205bb2bcae9190e123cc92e93799c604d1d"
+    },
+    {
+      "ord": 61,
+      "blockId": "4018b51a62e8204084e4dc2cc828443c",
+      "fp64": "05276f7ad3657b25",
+      "normHash": "fa147dbe3a92dfd7bb383c009c087205bb2bcae9190e123cc92e93799c604d1d",
+      "kind": "p",
+      "chapter": "أكثر-العالم-الإسلامي-قد-أثرت-فيه-الخرافة-والبدعة",
+      "prev": "652ce82e3ac3c6ce0c688b7e415119f242802ec71aade87537ae7ce548ac1e7b",
+      "next": "6142ba3f9045b02e58912a71cd916b2c94f51c99004af972c4bb4ae07ea1605c"
+    },
+    {
+      "ord": 62,
+      "blockId": "6c091351c38332e970664c9ee492b519",
+      "fp64": "53c7925845437e29",
+      "normHash": "6142ba3f9045b02e58912a71cd916b2c94f51c99004af972c4bb4ae07ea1605c",
+      "kind": "p",
+      "chapter": "أكثر-العالم-الإسلامي-قد-أثرت-فيه-الخرافة-والبدعة",
+      "prev": "fa147dbe3a92dfd7bb383c009c087205bb2bcae9190e123cc92e93799c604d1d",
+      "next": "5776253594a76aa8dca963281c68eb9189c7f57977388b4de4c4e3746fbe7e49"
+    },
+    {
+      "ord": 63,
+      "blockId": "920875fcee679c7ded93278352865fb0",
+      "fp64": "7dae370cdfdfcf38",
+      "normHash": "5776253594a76aa8dca963281c68eb9189c7f57977388b4de4c4e3746fbe7e49",
+      "kind": "p",
+      "chapter": "أكثر-العالم-الإسلامي-قد-أثرت-فيه-الخرافة-والبدعة",
+      "prev": "6142ba3f9045b02e58912a71cd916b2c94f51c99004af972c4bb4ae07ea1605c",
+      "next": "ef2c7b7f0540b5f6406cabdf594baafa0338ad02e9ab6489748f46749ddbdebe"
+    },
+    {
+      "ord": 64,
+      "blockId": "a6f737433f760a42d63322e63595598c",
+      "fp64": "f983f58d7ec3deff",
+      "normHash": "ef2c7b7f0540b5f6406cabdf594baafa0338ad02e9ab6489748f46749ddbdebe",
+      "kind": "p",
+      "chapter": "أكثر-العالم-الإسلامي-قد-أثرت-فيه-الخرافة-والبدعة",
+      "prev": "5776253594a76aa8dca963281c68eb9189c7f57977388b4de4c4e3746fbe7e49",
+      "next": "83c2975b84189e2b8ccfb75e2b74c3b7e88f77ef7f2b1460cb4efe30d42be1d4"
+    },
+    {
+      "ord": 65,
+      "blockId": "a1863a5166fd1bda0f55be5130654d23",
+      "fp64": "e0eff355b54c3780",
+      "normHash": "83c2975b84189e2b8ccfb75e2b74c3b7e88f77ef7f2b1460cb4efe30d42be1d4",
+      "kind": "h2",
+      "chapter": "أسباب-الردة-كلها-ترجع-إلى-أمر-واحد-هو-مناقضتها-للشهادتين",
+      "prev": "ef2c7b7f0540b5f6406cabdf594baafa0338ad02e9ab6489748f46749ddbdebe",
+      "next": "463000ef384be82eea10d4664056f25bc96ca2a7b11aaf5bc286735661cb3985"
+    },
+    {
+      "ord": 66,
+      "blockId": "b57d789cdfb023390ea05568d18af2ab",
+      "fp64": "b040f14a9f511c2c",
+      "normHash": "463000ef384be82eea10d4664056f25bc96ca2a7b11aaf5bc286735661cb3985",
+      "kind": "p",
+      "chapter": "أسباب-الردة-كلها-ترجع-إلى-أمر-واحد-هو-مناقضتها-للشهادتين",
+      "prev": "83c2975b84189e2b8ccfb75e2b74c3b7e88f77ef7f2b1460cb4efe30d42be1d4",
+      "next": "76ba8de1b1ac971afa089ce6b38d91ac5e25f10a5202749a538456370ff36680"
+    },
+    {
+      "ord": 67,
+      "blockId": "862f6290c3068226cdfb9c5309f9529a",
+      "fp64": "b47fddff71fd5beb",
+      "normHash": "76ba8de1b1ac971afa089ce6b38d91ac5e25f10a5202749a538456370ff36680",
+      "kind": "notes",
+      "chapter": "أسباب-الردة-كلها-ترجع-إلى-أمر-واحد-هو-مناقضتها-للشهادتين",
+      "prev": "463000ef384be82eea10d4664056f25bc96ca2a7b11aaf5bc286735661cb3985",
+      "next": "e5b0927ac6fbd7b43a3d3a27b287cf13c6902d415a651b612b87486d50f79fa4"
+    },
+    {
+      "ord": 68,
+      "blockId": "57922cdabdd46a5d8cf0f938da651352",
+      "fp64": "35ffffdf7bf5717f",
+      "normHash": "e5b0927ac6fbd7b43a3d3a27b287cf13c6902d415a651b612b87486d50f79fa4",
+      "kind": "page",
+      "chapter": "أسباب-الردة-كلها-ترجع-إلى-أمر-واحد-هو-مناقضتها-للشهادتين",
+      "prev": "76ba8de1b1ac971afa089ce6b38d91ac5e25f10a5202749a538456370ff36680",
+      "next": "4be9175c82261efdcbdc5b3050bf10d6af72bc7cffa2d2168a7fd806396fba87"
+    },
+    {
+      "ord": 69,
+      "blockId": "4f34baf80fbbd5e183b6a73b1a0e383c",
+      "fp64": "992a3f8fd0b44562",
+      "normHash": "4be9175c82261efdcbdc5b3050bf10d6af72bc7cffa2d2168a7fd806396fba87",
+      "kind": "p",
+      "chapter": "أسباب-الردة-كلها-ترجع-إلى-أمر-واحد-هو-مناقضتها-للشهادتين",
+      "prev": "e5b0927ac6fbd7b43a3d3a27b287cf13c6902d415a651b612b87486d50f79fa4",
+      "next": "3bf72f505ebe11571c2012bbdf82267eef96e0c130c6c3355d8bf759ba018193"
+    },
+    {
+      "ord": 70,
+      "blockId": "3de95307be9d081067c1a3e348ffc20d",
+      "fp64": "05447d3c5e519ffb",
+      "normHash": "3bf72f505ebe11571c2012bbdf82267eef96e0c130c6c3355d8bf759ba018193",
+      "kind": "h2",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "4be9175c82261efdcbdc5b3050bf10d6af72bc7cffa2d2168a7fd806396fba87",
+      "next": "ba6961f334878863b2d1201ddd817db77ea3a31ed565a9c873d8b3b58f56df9b"
+    },
+    {
+      "ord": 71,
+      "blockId": "68898cb5b9324546d70ea3a104bc526b",
+      "fp64": "874441505554fe0c",
+      "normHash": "ba6961f334878863b2d1201ddd817db77ea3a31ed565a9c873d8b3b58f56df9b",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "3bf72f505ebe11571c2012bbdf82267eef96e0c130c6c3355d8bf759ba018193",
+      "next": "2ac27e211cea7b1a168d80196f47f65e1aae04e678f06211b6316b04f7c9af6c"
+    },
+    {
+      "ord": 72,
+      "blockId": "4130b86f82fa8a0bc9322cfbfd9fb3fe",
+      "fp64": "2c48ed3a553497bb",
+      "normHash": "2ac27e211cea7b1a168d80196f47f65e1aae04e678f06211b6316b04f7c9af6c",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "ba6961f334878863b2d1201ddd817db77ea3a31ed565a9c873d8b3b58f56df9b",
+      "next": "8dbbf61e577ab3461df5aa8cbf54541ac778e99e3aa13f388d34584c8d7c416c"
+    },
+    {
+      "ord": 73,
+      "blockId": "dc012f0c501045f78a180c29a5508462",
+      "fp64": "a531e0d6c6f4fc74",
+      "normHash": "8dbbf61e577ab3461df5aa8cbf54541ac778e99e3aa13f388d34584c8d7c416c",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "2ac27e211cea7b1a168d80196f47f65e1aae04e678f06211b6316b04f7c9af6c",
+      "next": "9ece0ec4a9acb7ab18c470602b17a05e5a822b3897d9664a18f7d4d353152922"
+    },
+    {
+      "ord": 74,
+      "blockId": "c4421923714f0c15ed101ea815d18837",
+      "fp64": "20edc53f17470e34",
+      "normHash": "9ece0ec4a9acb7ab18c470602b17a05e5a822b3897d9664a18f7d4d353152922",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "8dbbf61e577ab3461df5aa8cbf54541ac778e99e3aa13f388d34584c8d7c416c",
+      "next": "b67b246acae5f37db25138066e267f7b65a08f07ead504fab21a657418f84f3c"
+    },
+    {
+      "ord": 75,
+      "blockId": "6d2f9acb157af60e6bd9d9746e536cc1",
+      "fp64": "2044f93e1f5195ef",
+      "normHash": "b67b246acae5f37db25138066e267f7b65a08f07ead504fab21a657418f84f3c",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "9ece0ec4a9acb7ab18c470602b17a05e5a822b3897d9664a18f7d4d353152922",
+      "next": "888c98e16fde59ed57721f1207075b5696b7af909983fcb690c4a10327e8d67b"
+    },
+    {
+      "ord": 76,
+      "blockId": "8c3ca5ced0d169144b5071142f8b9ca8",
+      "fp64": "b49e327a50512907",
+      "normHash": "888c98e16fde59ed57721f1207075b5696b7af909983fcb690c4a10327e8d67b",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "b67b246acae5f37db25138066e267f7b65a08f07ead504fab21a657418f84f3c",
+      "next": "f55481b69318e1c851e57306a7f55661daf11dd52e307451f386b3d8d15d48b2"
+    },
+    {
+      "ord": 77,
+      "blockId": "45bfc98468c53ec4240ca9a43f71408d",
+      "fp64": "67dfff9e5fb3fb3f",
+      "normHash": "f55481b69318e1c851e57306a7f55661daf11dd52e307451f386b3d8d15d48b2",
+      "kind": "page",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "888c98e16fde59ed57721f1207075b5696b7af909983fcb690c4a10327e8d67b",
+      "next": "59bb17fe52a52f8ff2fb193eb36cb83a265a486dc3ac4a46d00f1438c238cc37"
+    },
+    {
+      "ord": 78,
+      "blockId": "1fef3799088b3f9dad99d57aae47e3ed",
+      "fp64": "bb5e5c9253b64c01",
+      "normHash": "59bb17fe52a52f8ff2fb193eb36cb83a265a486dc3ac4a46d00f1438c238cc37",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "f55481b69318e1c851e57306a7f55661daf11dd52e307451f386b3d8d15d48b2",
+      "next": "b88cb50ae533478e836580a6d08bb111be54921d9d09c5fe1167923893c83840"
+    },
+    {
+      "ord": 79,
+      "blockId": "590d1b54f971bbb4291a5e8f485703d9",
+      "fp64": "5de9a7f7fbfd8f67",
+      "normHash": "b88cb50ae533478e836580a6d08bb111be54921d9d09c5fe1167923893c83840",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "59bb17fe52a52f8ff2fb193eb36cb83a265a486dc3ac4a46d00f1438c238cc37",
+      "next": "17a75929838a021943081ee0a7557fc8fc0d12fa9fadc5dba1aa4b115424eccc"
+    },
+    {
+      "ord": 80,
+      "blockId": "71a362d9e839afd893378d8969d0ae0a",
+      "fp64": "fe6b6cfbbeeffddf",
+      "normHash": "17a75929838a021943081ee0a7557fc8fc0d12fa9fadc5dba1aa4b115424eccc",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "b88cb50ae533478e836580a6d08bb111be54921d9d09c5fe1167923893c83840",
+      "next": "3039bcbad6de8a43aa6dd2e4079c95a5fe7fb28e255b1d1c8368902d642fc86f"
+    },
+    {
+      "ord": 81,
+      "blockId": "1ab8d3803f833da4a2c0526c184d2d7f",
+      "fp64": "9f2bfbb3afd7dfde",
+      "normHash": "3039bcbad6de8a43aa6dd2e4079c95a5fe7fb28e255b1d1c8368902d642fc86f",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "17a75929838a021943081ee0a7557fc8fc0d12fa9fadc5dba1aa4b115424eccc",
+      "next": "b2911e6957e16667fe22278faa8d812f12aa6c4af42eea0ddd08424f9c20841a"
+    },
+    {
+      "ord": 82,
+      "blockId": "75ef8a60a3effd8f72fb32bde403046f",
+      "fp64": "242d7bb2c533dd71",
+      "normHash": "b2911e6957e16667fe22278faa8d812f12aa6c4af42eea0ddd08424f9c20841a",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "3039bcbad6de8a43aa6dd2e4079c95a5fe7fb28e255b1d1c8368902d642fc86f",
+      "next": "bcbc1a253e838911419d1690d498e43fc5421c0514ca3a6f3ca411951b35fd0e"
+    },
+    {
+      "ord": 83,
+      "blockId": "9362f8f4720ab52645dbd51244a392ef",
+      "fp64": "f9b77bff54e6dcbd",
+      "normHash": "bcbc1a253e838911419d1690d498e43fc5421c0514ca3a6f3ca411951b35fd0e",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "b2911e6957e16667fe22278faa8d812f12aa6c4af42eea0ddd08424f9c20841a",
+      "next": "e94790bd4fbd72f2d7e2a7147e3209097fb2b067b71a860299625088b11fd8e8"
+    },
+    {
+      "ord": 84,
+      "blockId": "fa745cd8fef6bbfa4ce932a81b4df896",
+      "fp64": "672fcf0a9d7f2c5f",
+      "normHash": "e94790bd4fbd72f2d7e2a7147e3209097fb2b067b71a860299625088b11fd8e8",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "bcbc1a253e838911419d1690d498e43fc5421c0514ca3a6f3ca411951b35fd0e",
+      "next": "c32176585d3db53115f61aa78d22009b3f2223bb42a3abb9df0c9120d6458193"
+    },
+    {
+      "ord": 85,
+      "blockId": "d1c43ef1047312304380c2a8019a4424",
+      "fp64": "b945e853c1deccf0",
+      "normHash": "c32176585d3db53115f61aa78d22009b3f2223bb42a3abb9df0c9120d6458193",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "e94790bd4fbd72f2d7e2a7147e3209097fb2b067b71a860299625088b11fd8e8",
+      "next": "39bb701b99e1ecef08317f41509454e89e74481267939f309b99ed8de8994f99"
+    },
+    {
+      "ord": 86,
+      "blockId": "810ffaca0d082f257f917d5cb831a90b",
+      "fp64": "1024a3c75190aa8b",
+      "normHash": "39bb701b99e1ecef08317f41509454e89e74481267939f309b99ed8de8994f99",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "c32176585d3db53115f61aa78d22009b3f2223bb42a3abb9df0c9120d6458193",
+      "next": "3b419fc4208952bb2e8f245691ae785975da8b144473676f421795dd90bbc848"
+    },
+    {
+      "ord": 87,
+      "blockId": "226bd1d0e35dcbecd5f57e03fe61b65e",
+      "fp64": "2646e052931e7cbc",
+      "normHash": "3b419fc4208952bb2e8f245691ae785975da8b144473676f421795dd90bbc848",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "39bb701b99e1ecef08317f41509454e89e74481267939f309b99ed8de8994f99",
+      "next": "cf82f37a0d9fa7db967582d57875f1098daf08f4fb5688263e59d6c97d092c67"
+    },
+    {
+      "ord": 88,
+      "blockId": "c1883c73484c28c006b6ad8f03958003",
+      "fp64": "6ddff7fadbb967b7",
+      "normHash": "cf82f37a0d9fa7db967582d57875f1098daf08f4fb5688263e59d6c97d092c67",
+      "kind": "page",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "3b419fc4208952bb2e8f245691ae785975da8b144473676f421795dd90bbc848",
+      "next": "ddb9336395183cb8fd6ffcc1190603250c503598e8f99dad53ef8b5c5096bea6"
+    },
+    {
+      "ord": 89,
+      "blockId": "4f64397876becbaf6c957e9ce2f7fa04",
+      "fp64": "354fea15237f0b7c",
+      "normHash": "ddb9336395183cb8fd6ffcc1190603250c503598e8f99dad53ef8b5c5096bea6",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "cf82f37a0d9fa7db967582d57875f1098daf08f4fb5688263e59d6c97d092c67",
+      "next": "dc33d756adea406ad33037e9026ffda7b135d3059c2d96df12b21e7296fb8d08"
+    },
+    {
+      "ord": 90,
+      "blockId": "09dada309f03f7c015e56be0a5ffeb37",
+      "fp64": "3c9ee11f9b46217c",
+      "normHash": "dc33d756adea406ad33037e9026ffda7b135d3059c2d96df12b21e7296fb8d08",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "ddb9336395183cb8fd6ffcc1190603250c503598e8f99dad53ef8b5c5096bea6",
+      "next": "32bab2b04f86ac1541418f626ac3a5f7bc99920808703b7a98a59defd1ad0f62"
+    },
+    {
+      "ord": 91,
+      "blockId": "c737c7a91ef00b39687ce6326900b05e",
+      "fp64": "f676d7fc75fb7bef",
+      "normHash": "32bab2b04f86ac1541418f626ac3a5f7bc99920808703b7a98a59defd1ad0f62",
+      "kind": "notes",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "dc33d756adea406ad33037e9026ffda7b135d3059c2d96df12b21e7296fb8d08",
+      "next": "9da403adc6f7f743d1c743c8c84d8aed2f84904be7b6a5259cf89154e0840dbb"
+    },
+    {
+      "ord": 92,
+      "blockId": "0352b5fc25f0e1f2516d95da096e25e1",
+      "fp64": "77fff79a7ffb69f6",
+      "normHash": "9da403adc6f7f743d1c743c8c84d8aed2f84904be7b6a5259cf89154e0840dbb",
+      "kind": "page",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "32bab2b04f86ac1541418f626ac3a5f7bc99920808703b7a98a59defd1ad0f62",
+      "next": "840103ee76068cd3651665701540df131f7b089c35967870a45a84439a3f7f5a"
+    },
+    {
+      "ord": 93,
+      "blockId": "dfb721f324f16dc0519a4a5b3e1ee8d9",
+      "fp64": "fddae137dfdf30bc",
+      "normHash": "840103ee76068cd3651665701540df131f7b089c35967870a45a84439a3f7f5a",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "9da403adc6f7f743d1c743c8c84d8aed2f84904be7b6a5259cf89154e0840dbb",
+      "next": "d9ce6016aa11feb29d0fdfe71a06cb03c9f3abc70ecd423350185607d91b8382"
+    },
+    {
+      "ord": 94,
+      "blockId": "8d4b268ac4c6c6dda8f01ade4ddd1fd3",
+      "fp64": "5125eda513eef901",
+      "normHash": "d9ce6016aa11feb29d0fdfe71a06cb03c9f3abc70ecd423350185607d91b8382",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "840103ee76068cd3651665701540df131f7b089c35967870a45a84439a3f7f5a",
+      "next": "de987ed5d43c4f4d7c295ba73787bc29bf5f0601abb06158a247f761222387c6"
+    },
+    {
+      "ord": 95,
+      "blockId": "955697a2b8fc5b4733bf7de974a2bc7c",
+      "fp64": "bcbf575bd3c79bcf",
+      "normHash": "de987ed5d43c4f4d7c295ba73787bc29bf5f0601abb06158a247f761222387c6",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "d9ce6016aa11feb29d0fdfe71a06cb03c9f3abc70ecd423350185607d91b8382",
+      "next": "f2bc4f81e6f6b25ded33e0e3b533e3502be33381f80d12aa5963eaf8bcafceae"
+    },
+    {
+      "ord": 96,
+      "blockId": "e34e8ace06cc5d3d2161157b82b4b3e6",
+      "fp64": "3c43e0481f7056df",
+      "normHash": "f2bc4f81e6f6b25ded33e0e3b533e3502be33381f80d12aa5963eaf8bcafceae",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "de987ed5d43c4f4d7c295ba73787bc29bf5f0601abb06158a247f761222387c6",
+      "next": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839"
+    },
+    {
+      "ord": 97,
+      "blockId": "2f3848575deca816b69c2934b36fac5f",
+      "fp64": "c2e708506ae5eb14",
+      "normHash": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839",
+      "kind": "break",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "f2bc4f81e6f6b25ded33e0e3b533e3502be33381f80d12aa5963eaf8bcafceae",
+      "next": "8b91b175237ae8df57a0f9260620d3a55b136d63460f6fdc3d8ad3765c855ce9"
+    },
+    {
+      "ord": 98,
+      "blockId": "d60d9f42a2c7b986685fff8b600b8250",
+      "fp64": "6845afadfd518ee7",
+      "normHash": "8b91b175237ae8df57a0f9260620d3a55b136d63460f6fdc3d8ad3765c855ce9",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839",
+      "next": "4ab5fe7dfa3b0921ff47f75d7354a6183e384bb09b5fccba943da3ea721fb1c6"
+    },
+    {
+      "ord": 99,
+      "blockId": "06a6dfd206c1d59fc3249200ee5291c4",
+      "fp64": "be9f545dd3451a3c",
+      "normHash": "4ab5fe7dfa3b0921ff47f75d7354a6183e384bb09b5fccba943da3ea721fb1c6",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "8b91b175237ae8df57a0f9260620d3a55b136d63460f6fdc3d8ad3765c855ce9",
+      "next": "39aa682466e7bab1227d5f5220cdfc761e5897673d2ad4b700042bbef4d64400"
+    },
+    {
+      "ord": 100,
+      "blockId": "0eac718cf82958bbb334c8fe014acf2d",
+      "fp64": "6cccc87b9c207dfe",
+      "normHash": "39aa682466e7bab1227d5f5220cdfc761e5897673d2ad4b700042bbef4d64400",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "4ab5fe7dfa3b0921ff47f75d7354a6183e384bb09b5fccba943da3ea721fb1c6",
+      "next": "e2609305a726b4afc5703ecd842cda30b9ad110de24be985c155bf773f47fb0d"
+    },
+    {
+      "ord": 101,
+      "blockId": "9aa250129f4de5d4a36fbf59da725070",
+      "fp64": "be5ffefcf1ff7ebb",
+      "normHash": "e2609305a726b4afc5703ecd842cda30b9ad110de24be985c155bf773f47fb0d",
+      "kind": "notes",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "39aa682466e7bab1227d5f5220cdfc761e5897673d2ad4b700042bbef4d64400",
+      "next": "afdb7313e5b92484c76c5195be2959c3631cc9c844a90c8fa37d3edfc9b28110"
+    },
+    {
+      "ord": 102,
+      "blockId": "fe1b45a0aab8da6950620bd151a96a21",
+      "fp64": "3fdffb9edbf77eb7",
+      "normHash": "afdb7313e5b92484c76c5195be2959c3631cc9c844a90c8fa37d3edfc9b28110",
+      "kind": "page",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "e2609305a726b4afc5703ecd842cda30b9ad110de24be985c155bf773f47fb0d",
+      "next": "271ba6fa2a848f1d1a1e0b3848184238c925f3206b87420e4c9734720d34db24"
+    },
+    {
+      "ord": 103,
+      "blockId": "c8ba08f44dc1ae76d29a2a13acc7303a",
+      "fp64": "2d2fee78d02ca745",
+      "normHash": "271ba6fa2a848f1d1a1e0b3848184238c925f3206b87420e4c9734720d34db24",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "afdb7313e5b92484c76c5195be2959c3631cc9c844a90c8fa37d3edfc9b28110",
+      "next": "30df53b56228995b335644dd8029f7546cf61f80eb39fc18efa5aa7079f4982f"
+    },
+    {
+      "ord": 104,
+      "blockId": "ec3de89297e3d64971f372e2e27e4448",
+      "fp64": "d41def3ffbffffff",
+      "normHash": "30df53b56228995b335644dd8029f7546cf61f80eb39fc18efa5aa7079f4982f",
+      "kind": "li",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "271ba6fa2a848f1d1a1e0b3848184238c925f3206b87420e4c9734720d34db24",
+      "next": "5e97d53b5842f5396e4d8a52ce26c54398b805524d8055a32fbaa51e0dd98c18"
+    },
+    {
+      "ord": 105,
+      "blockId": "aeeb80d34b854c831f1d493b9b56d760",
+      "fp64": "fcefccff3efb8ffe",
+      "normHash": "5e97d53b5842f5396e4d8a52ce26c54398b805524d8055a32fbaa51e0dd98c18",
+      "kind": "li",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "30df53b56228995b335644dd8029f7546cf61f80eb39fc18efa5aa7079f4982f",
+      "next": "a5abcc000a4efbd921bfcec549a2cfed86ff77e51461fed2d3d4c2f727d00a98"
+    },
+    {
+      "ord": 106,
+      "blockId": "c69ab870d871d6cec16d6abe1b580c0d",
+      "fp64": "276da052940c37c0",
+      "normHash": "a5abcc000a4efbd921bfcec549a2cfed86ff77e51461fed2d3d4c2f727d00a98",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "5e97d53b5842f5396e4d8a52ce26c54398b805524d8055a32fbaa51e0dd98c18",
+      "next": "f4816930e97f0033b5e691eb173906c97052d23be8ba3ba44a8ded4c87916f27"
+    },
+    {
+      "ord": 107,
+      "blockId": "7e79ddae5559aa0de725f2e0bfd14ae4",
+      "fp64": "7554e19f9bdc75d4",
+      "normHash": "f4816930e97f0033b5e691eb173906c97052d23be8ba3ba44a8ded4c87916f27",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "a5abcc000a4efbd921bfcec549a2cfed86ff77e51461fed2d3d4c2f727d00a98",
+      "next": "3803b143b4a2062123aa9fac41dfdfa1678e6658f2d1b92d5f3c5369e5abcee0"
+    },
+    {
+      "ord": 108,
+      "blockId": "236f4f427b0e381b251b0d3a6370c34c",
+      "fp64": "9bdacf78d1f45edd",
+      "normHash": "3803b143b4a2062123aa9fac41dfdfa1678e6658f2d1b92d5f3c5369e5abcee0",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "f4816930e97f0033b5e691eb173906c97052d23be8ba3ba44a8ded4c87916f27",
+      "next": "a215b3bd1d6a307517fd417baf67647651c106280f113bbc5a5ded70baf757a8"
+    },
+    {
+      "ord": 109,
+      "blockId": "baff6f1fa725eb292c74002535de602c",
+      "fp64": "9fdf8dec31c55d71",
+      "normHash": "a215b3bd1d6a307517fd417baf67647651c106280f113bbc5a5ded70baf757a8",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "3803b143b4a2062123aa9fac41dfdfa1678e6658f2d1b92d5f3c5369e5abcee0",
+      "next": "5cd60829ec907bc4d3e11abac5c9ff3eb9e1a55dd302ae7f9df114f1499bdaf1"
+    },
+    {
+      "ord": 110,
+      "blockId": "5557b62fcdb8665140ddc9a58f29300b",
+      "fp64": "325efc363cf07f75",
+      "normHash": "5cd60829ec907bc4d3e11abac5c9ff3eb9e1a55dd302ae7f9df114f1499bdaf1",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "a215b3bd1d6a307517fd417baf67647651c106280f113bbc5a5ded70baf757a8",
+      "next": "e5e7325b9fa2fce93aa1be0329c9c2b7e97e197bf3ebb03479c0af169a5bd7f1"
+    },
+    {
+      "ord": 111,
+      "blockId": "3eb88208cf42385b2f01ba423957fb00",
+      "fp64": "7a11c465af3ec484",
+      "normHash": "e5e7325b9fa2fce93aa1be0329c9c2b7e97e197bf3ebb03479c0af169a5bd7f1",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "5cd60829ec907bc4d3e11abac5c9ff3eb9e1a55dd302ae7f9df114f1499bdaf1",
+      "next": "251b9a316e85cd8c6b69d7b2be3a48e5743c7d707f504eaa5c105aabbff2cab0"
+    },
+    {
+      "ord": 112,
+      "blockId": "f7f30c90c741e73748c436203b890091",
+      "fp64": "b6c4677a97757f5d",
+      "normHash": "251b9a316e85cd8c6b69d7b2be3a48e5743c7d707f504eaa5c105aabbff2cab0",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "e5e7325b9fa2fce93aa1be0329c9c2b7e97e197bf3ebb03479c0af169a5bd7f1",
+      "next": "c9d963f038c204cdec8da768bce98e69d1bf414d903aae3bc061b11205939f2a"
+    },
+    {
+      "ord": 113,
+      "blockId": "59d6c28fdd74aac871ecdab87370fa26",
+      "fp64": "37dff79f5f756377",
+      "normHash": "c9d963f038c204cdec8da768bce98e69d1bf414d903aae3bc061b11205939f2a",
+      "kind": "page",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "251b9a316e85cd8c6b69d7b2be3a48e5743c7d707f504eaa5c105aabbff2cab0",
+      "next": "4c2df5fd766cc327c7215aad8424709440bfa5491a89a8b830ba10592948295c"
+    },
+    {
+      "ord": 114,
+      "blockId": "e75e62816b22ac6828329ffd11f8fa43",
+      "fp64": "8e55ac18023246c4",
+      "normHash": "4c2df5fd766cc327c7215aad8424709440bfa5491a89a8b830ba10592948295c",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "c9d963f038c204cdec8da768bce98e69d1bf414d903aae3bc061b11205939f2a",
+      "next": "487b1ff8b5250b4c4b51650a897eb3f58a31d8dae93377a7437187e8139ec0de"
+    },
+    {
+      "ord": 115,
+      "blockId": "8a8ee666e7dae607854a505b5ca05960",
+      "fp64": "d1c9cc5dcf7a8ef4",
+      "normHash": "487b1ff8b5250b4c4b51650a897eb3f58a31d8dae93377a7437187e8139ec0de",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "4c2df5fd766cc327c7215aad8424709440bfa5491a89a8b830ba10592948295c",
+      "next": "cefd0f628de21c90e81356639df79cdf4cc1cba3d3213e0c289a3e964b707005"
+    },
+    {
+      "ord": 116,
+      "blockId": "0a4c53c52b2df2cd91315bd765bb7362",
+      "fp64": "12c2e6b151675430",
+      "normHash": "cefd0f628de21c90e81356639df79cdf4cc1cba3d3213e0c289a3e964b707005",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "487b1ff8b5250b4c4b51650a897eb3f58a31d8dae93377a7437187e8139ec0de",
+      "next": "6c9b4138af0e0346e48973d57113c4889c5fcc1e71f43f47e5ec62f68482f0cd"
+    },
+    {
+      "ord": 117,
+      "blockId": "443653c33f35216fa50045f90a7f6fe7",
+      "fp64": "feca4c7a1e61754f",
+      "normHash": "6c9b4138af0e0346e48973d57113c4889c5fcc1e71f43f47e5ec62f68482f0cd",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "cefd0f628de21c90e81356639df79cdf4cc1cba3d3213e0c289a3e964b707005",
+      "next": "515d1ff8d040175c057df8d682b7557fbdf23ad2e6a6e4710a58b8d6d3ff427d"
+    },
+    {
+      "ord": 118,
+      "blockId": "b3455378e61228a6c48d082707a22796",
+      "fp64": "85816f4096683745",
+      "normHash": "515d1ff8d040175c057df8d682b7557fbdf23ad2e6a6e4710a58b8d6d3ff427d",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "6c9b4138af0e0346e48973d57113c4889c5fcc1e71f43f47e5ec62f68482f0cd",
+      "next": "ba35cce2f2cbe7f8c40aa78e2b6229ebbff40721e66df95ed5decd9359e7a9b3"
+    },
+    {
+      "ord": 119,
+      "blockId": "4b6e2387c21652a7088f63ecbac058fd",
+      "fp64": "bd47f27b517bde4b",
+      "normHash": "ba35cce2f2cbe7f8c40aa78e2b6229ebbff40721e66df95ed5decd9359e7a9b3",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "515d1ff8d040175c057df8d682b7557fbdf23ad2e6a6e4710a58b8d6d3ff427d",
+      "next": "d60f76b9789ae95bb185f77215919fe3b5d467153def82211a157581a042e986"
+    },
+    {
+      "ord": 120,
+      "blockId": "095d0bf29366dc8105905b92dbd416d3",
+      "fp64": "df7ea0d89156aa3f",
+      "normHash": "d60f76b9789ae95bb185f77215919fe3b5d467153def82211a157581a042e986",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "ba35cce2f2cbe7f8c40aa78e2b6229ebbff40721e66df95ed5decd9359e7a9b3",
+      "next": "e1fa7dbb40136f97c87c832d827db430ee27aaa8ce77dd873812bdf19bbf7718"
+    },
+    {
+      "ord": 121,
+      "blockId": "ad66b0cec41daac6c1791550e8852d3f",
+      "fp64": "3d7c70d911726a53",
+      "normHash": "e1fa7dbb40136f97c87c832d827db430ee27aaa8ce77dd873812bdf19bbf7718",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "d60f76b9789ae95bb185f77215919fe3b5d467153def82211a157581a042e986",
+      "next": "db246f1e9aed66dcd4a23687c88efc52623b5a49d307174fca3f445584e8dcaf"
+    },
+    {
+      "ord": 122,
+      "blockId": "c386ca1f5f7f0b06a19fc500669f4046",
+      "fp64": "5d5ee55fbe5c58f8",
+      "normHash": "db246f1e9aed66dcd4a23687c88efc52623b5a49d307174fca3f445584e8dcaf",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "e1fa7dbb40136f97c87c832d827db430ee27aaa8ce77dd873812bdf19bbf7718",
+      "next": "358ccb61719717fd843eceb1c7d5ae3bbb36da6509ec2b5a04b5566a8e8cc096"
+    },
+    {
+      "ord": 123,
+      "blockId": "169a62debc9062c9fb374db3787160e5",
+      "fp64": "f6d5c7f6fff9dbef",
+      "normHash": "358ccb61719717fd843eceb1c7d5ae3bbb36da6509ec2b5a04b5566a8e8cc096",
+      "kind": "notes",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "db246f1e9aed66dcd4a23687c88efc52623b5a49d307174fca3f445584e8dcaf",
+      "next": "fd7450c1f92d52b91075220c636129ef702e8e7c29edc73d8f2e81df8a091618"
+    },
+    {
+      "ord": 124,
+      "blockId": "740e2243a6454c9a5c0008c81d1b2c2d",
+      "fp64": "77dff3dadf79e97e",
+      "normHash": "fd7450c1f92d52b91075220c636129ef702e8e7c29edc73d8f2e81df8a091618",
+      "kind": "page",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "358ccb61719717fd843eceb1c7d5ae3bbb36da6509ec2b5a04b5566a8e8cc096",
+      "next": "c495f056b5825d348bded22993da59ffe52d84e0360ac88d9d28ee81772b1017"
+    },
+    {
+      "ord": 125,
+      "blockId": "51b332b64aab2986785bc506cbef22ca",
+      "fp64": "b4d7c75dfef8fcff",
+      "normHash": "c495f056b5825d348bded22993da59ffe52d84e0360ac88d9d28ee81772b1017",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "fd7450c1f92d52b91075220c636129ef702e8e7c29edc73d8f2e81df8a091618",
+      "next": "bb9239cd6085f6f842f1c82e5d25fce31e326525548d588d342b4c7ecc613496"
+    },
+    {
+      "ord": 126,
+      "blockId": "0875f4434eb8c6dcf586ab2f546399e0",
+      "fp64": "9442c850df2c39dc",
+      "normHash": "bb9239cd6085f6f842f1c82e5d25fce31e326525548d588d342b4c7ecc613496",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "c495f056b5825d348bded22993da59ffe52d84e0360ac88d9d28ee81772b1017",
+      "next": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839"
+    },
+    {
+      "ord": 127,
+      "blockId": "9179658b37d661d4bbe9f2e4db1efb38",
+      "fp64": "c2e708506ae5eb14",
+      "normHash": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839",
+      "kind": "break",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "bb9239cd6085f6f842f1c82e5d25fce31e326525548d588d342b4c7ecc613496",
+      "next": "d3fc5bd9b2f63785248129ea03bccffcaf940956b7d8a0eead4645fbe9ba5066"
+    },
+    {
+      "ord": 128,
+      "blockId": "3870724826e837211cb934f6699187cc",
+      "fp64": "f7fff79efaf160b6",
+      "normHash": "d3fc5bd9b2f63785248129ea03bccffcaf940956b7d8a0eead4645fbe9ba5066",
+      "kind": "page",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839",
+      "next": "096f01b7bd4894aacf1625d579ae59ae1e042232f0cdf11428b30a63285c0700"
+    },
+    {
+      "ord": 129,
+      "blockId": "11d4765000694690ff52b753cbfb568b",
+      "fp64": "fedee377dfda12bc",
+      "normHash": "096f01b7bd4894aacf1625d579ae59ae1e042232f0cdf11428b30a63285c0700",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "d3fc5bd9b2f63785248129ea03bccffcaf940956b7d8a0eead4645fbe9ba5066",
+      "next": "947a29e6076e933606cf79aac77008e91b8805f54b3d9e648f7c72533a373000"
+    },
+    {
+      "ord": 130,
+      "blockId": "70718e6911104e268b581fdf61a3ab85",
+      "fp64": "58dd4c7a3dff777f",
+      "normHash": "947a29e6076e933606cf79aac77008e91b8805f54b3d9e648f7c72533a373000",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "096f01b7bd4894aacf1625d579ae59ae1e042232f0cdf11428b30a63285c0700",
+      "next": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839"
+    },
+    {
+      "ord": 131,
+      "blockId": "e80e4c0a7ac69697d740c646d32e45a2",
+      "fp64": "c2e708506ae5eb14",
+      "normHash": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839",
+      "kind": "break",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "947a29e6076e933606cf79aac77008e91b8805f54b3d9e648f7c72533a373000",
+      "next": "8b91b175237ae8df57a0f9260620d3a55b136d63460f6fdc3d8ad3765c855ce9"
+    },
+    {
+      "ord": 132,
+      "blockId": "dcac4371d73c46d10fc4489976e79643",
+      "fp64": "6845afadfd518ee7",
+      "normHash": "8b91b175237ae8df57a0f9260620d3a55b136d63460f6fdc3d8ad3765c855ce9",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839",
+      "next": "f9b9c9b78ba4a9a4aa6c62a2325e8799972baa3d46924622e086f253cceb81d8"
+    },
+    {
+      "ord": 133,
+      "blockId": "0936cf9e351a822a2eca21790e15b836",
+      "fp64": "96c0e45257741e94",
+      "normHash": "f9b9c9b78ba4a9a4aa6c62a2325e8799972baa3d46924622e086f253cceb81d8",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "8b91b175237ae8df57a0f9260620d3a55b136d63460f6fdc3d8ad3765c855ce9",
+      "next": "18dfa88ceb5c730f2c13929880ce6aea752383edf74ecf044314c4575f5afaab"
+    },
+    {
+      "ord": 134,
+      "blockId": "25b88f82a763aea793bbbef30fe3e398",
+      "fp64": "b56db552f73c363f",
+      "normHash": "18dfa88ceb5c730f2c13929880ce6aea752383edf74ecf044314c4575f5afaab",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "f9b9c9b78ba4a9a4aa6c62a2325e8799972baa3d46924622e086f253cceb81d8",
+      "next": "58987787b4fa64639a28ff79aa7ebd23e1246699b2577a2e323ec0addb62bb69"
+    },
+    {
+      "ord": 135,
+      "blockId": "0872d188f0ea1f30991963f891bcd5b3",
+      "fp64": "9fa826d3cf34761f",
+      "normHash": "58987787b4fa64639a28ff79aa7ebd23e1246699b2577a2e323ec0addb62bb69",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "18dfa88ceb5c730f2c13929880ce6aea752383edf74ecf044314c4575f5afaab",
+      "next": "68f3727261046665f498c65a90fa7e68e048dc53941446d1ded55914c30c2e89"
+    },
+    {
+      "ord": 136,
+      "blockId": "89c08cc547c0c79aa61e475e31a893ab",
+      "fp64": "efdff3daff39eaf7",
+      "normHash": "68f3727261046665f498c65a90fa7e68e048dc53941446d1ded55914c30c2e89",
+      "kind": "page",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "58987787b4fa64639a28ff79aa7ebd23e1246699b2577a2e323ec0addb62bb69",
+      "next": "ae5876c02bc43f7baf6f8c7bcace641454972a913c9774ffc18481cb3cbb8e26"
+    },
+    {
+      "ord": 137,
+      "blockId": "8fffd4b29e4bfacd266a99efd7a1d1d9",
+      "fp64": "a125755145e4eb54",
+      "normHash": "ae5876c02bc43f7baf6f8c7bcace641454972a913c9774ffc18481cb3cbb8e26",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "68f3727261046665f498c65a90fa7e68e048dc53941446d1ded55914c30c2e89",
+      "next": "50490e40a61d4f5d633708c0623f07a362bf3ae1c808adbac00321c6768547fd"
+    },
+    {
+      "ord": 138,
+      "blockId": "81de3a70a6dfd076fd92fbbb12b6c0df",
+      "fp64": "39dd607e7df17eba",
+      "normHash": "50490e40a61d4f5d633708c0623f07a362bf3ae1c808adbac00321c6768547fd",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "ae5876c02bc43f7baf6f8c7bcace641454972a913c9774ffc18481cb3cbb8e26",
+      "next": "10d76e1879a1ef6f2fe39e5c5b89e33e22083ebb14a869c0d2495f87dc134686"
+    },
+    {
+      "ord": 139,
+      "blockId": "58a697a1341781dcd8004508a661ffe5",
+      "fp64": "a5ffff9a5a776b7f",
+      "normHash": "10d76e1879a1ef6f2fe39e5c5b89e33e22083ebb14a869c0d2495f87dc134686",
+      "kind": "page",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "50490e40a61d4f5d633708c0623f07a362bf3ae1c808adbac00321c6768547fd",
+      "next": "096f01b7bd4894aacf1625d579ae59ae1e042232f0cdf11428b30a63285c0700"
+    },
+    {
+      "ord": 140,
+      "blockId": "55e6315b77202f00af370ef96161118b",
+      "fp64": "fedee377dfda12bc",
+      "normHash": "096f01b7bd4894aacf1625d579ae59ae1e042232f0cdf11428b30a63285c0700",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "10d76e1879a1ef6f2fe39e5c5b89e33e22083ebb14a869c0d2495f87dc134686",
+      "next": "987197aa078b7e69e4a4206679f7be47ef5efc726d6eb29df55b446c9328aa01"
+    },
+    {
+      "ord": 141,
+      "blockId": "c9a6541f107b2f883b724bb543924c8a",
+      "fp64": "084cf853d95eddd8",
+      "normHash": "987197aa078b7e69e4a4206679f7be47ef5efc726d6eb29df55b446c9328aa01",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "096f01b7bd4894aacf1625d579ae59ae1e042232f0cdf11428b30a63285c0700",
+      "next": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839"
+    },
+    {
+      "ord": 142,
+      "blockId": "d1a2b233fe74f533667e66698fc8afe8",
+      "fp64": "c2e708506ae5eb14",
+      "normHash": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839",
+      "kind": "break",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "987197aa078b7e69e4a4206679f7be47ef5efc726d6eb29df55b446c9328aa01",
+      "next": "8b91b175237ae8df57a0f9260620d3a55b136d63460f6fdc3d8ad3765c855ce9"
+    },
+    {
+      "ord": 143,
+      "blockId": "dfd8b03520c6bf0c29544db8663b41a6",
+      "fp64": "6845afadfd518ee7",
+      "normHash": "8b91b175237ae8df57a0f9260620d3a55b136d63460f6fdc3d8ad3765c855ce9",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839",
+      "next": "f6f13d89b88c369cd45334c1166120ceae08b595d332b28d40a8b5a0b587893a"
+    },
+    {
+      "ord": 144,
+      "blockId": "9c9531aa3fe5c3c4fefeb7867e6816b4",
+      "fp64": "9ec7fa589f6d7d9b",
+      "normHash": "f6f13d89b88c369cd45334c1166120ceae08b595d332b28d40a8b5a0b587893a",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "8b91b175237ae8df57a0f9260620d3a55b136d63460f6fdc3d8ad3765c855ce9",
+      "next": "75987b73e92f3904f32895de20da6016afd861625f8c0f147001da331a97917a"
+    },
+    {
+      "ord": 145,
+      "blockId": "6f3371f565a0f2aadb23386fcb329810",
+      "fp64": "4846354a81469c96",
+      "normHash": "75987b73e92f3904f32895de20da6016afd861625f8c0f147001da331a97917a",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "f6f13d89b88c369cd45334c1166120ceae08b595d332b28d40a8b5a0b587893a",
+      "next": "654075d1dfc0dae901faa5c2db680bd143a5d8dbf9ea4ba6d78fe97368d2336e"
+    },
+    {
+      "ord": 146,
+      "blockId": "c19e5385b0496d23509204af5ee5f146",
+      "fp64": "3417f11906511f10",
+      "normHash": "654075d1dfc0dae901faa5c2db680bd143a5d8dbf9ea4ba6d78fe97368d2336e",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "75987b73e92f3904f32895de20da6016afd861625f8c0f147001da331a97917a",
+      "next": "a181acef972400c92ed3ae51e67ba828b894042089a48611cc161a547d84306a"
+    },
+    {
+      "ord": 147,
+      "blockId": "7a9a63db4a8456a53ea0756047e5a056",
+      "fp64": "2ffff3fbdf3f7f7e",
+      "normHash": "a181acef972400c92ed3ae51e67ba828b894042089a48611cc161a547d84306a",
+      "kind": "page",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "654075d1dfc0dae901faa5c2db680bd143a5d8dbf9ea4ba6d78fe97368d2336e",
+      "next": "1cecc2ed21329db68d534854ed45832081b02b9b9ddf18c18077e9e10cbc744d"
+    },
+    {
+      "ord": 148,
+      "blockId": "a85836573b1d6d23718484674ead3c5d",
+      "fp64": "17ce315a5555be86",
+      "normHash": "1cecc2ed21329db68d534854ed45832081b02b9b9ddf18c18077e9e10cbc744d",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "a181acef972400c92ed3ae51e67ba828b894042089a48611cc161a547d84306a",
+      "next": "bfd9c474f5b53a82ac6708d6e138e32bddfdcae9ead7a3a413fee41a50185706"
+    },
+    {
+      "ord": 149,
+      "blockId": "3c2c664f6e54124b5f2f3b690a8bd1f9",
+      "fp64": "3b12a329ba4bdcf6",
+      "normHash": "bfd9c474f5b53a82ac6708d6e138e32bddfdcae9ead7a3a413fee41a50185706",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "1cecc2ed21329db68d534854ed45832081b02b9b9ddf18c18077e9e10cbc744d",
+      "next": "feb8dad8e10aa12e056eadb57c997371e3c87cdd03507cc1c6dc87ae683d267f"
+    },
+    {
+      "ord": 150,
+      "blockId": "a69d1dc1efbdc25e3d413d05429fc137",
+      "fp64": "3107b052bf62c4be",
+      "normHash": "feb8dad8e10aa12e056eadb57c997371e3c87cdd03507cc1c6dc87ae683d267f",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "bfd9c474f5b53a82ac6708d6e138e32bddfdcae9ead7a3a413fee41a50185706",
+      "next": "56ffb2d62307dc5291218ec31fda4f04385538e3f7bf425dc0bacd1a334ad915"
+    },
+    {
+      "ord": 151,
+      "blockId": "429a8f3d222db088a13ed360255b9874",
+      "fp64": "6656e0539f30741c",
+      "normHash": "56ffb2d62307dc5291218ec31fda4f04385538e3f7bf425dc0bacd1a334ad915",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "feb8dad8e10aa12e056eadb57c997371e3c87cdd03507cc1c6dc87ae683d267f",
+      "next": "94a21d201153ba6844b9a7c5a99616531d8b633fe43b7bc07d1b207ecc535125"
+    },
+    {
+      "ord": 152,
+      "blockId": "b81cfe8a54cbe3a4b21a3e9974aff6d2",
+      "fp64": "aadde57e7dab5ffb",
+      "normHash": "94a21d201153ba6844b9a7c5a99616531d8b633fe43b7bc07d1b207ecc535125",
+      "kind": "notes",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "56ffb2d62307dc5291218ec31fda4f04385538e3f7bf425dc0bacd1a334ad915",
+      "next": "b73aa4cdc874f833049801c90b61644752248ba6277e7139cb021ddcc4ca7d5c"
+    },
+    {
+      "ord": 153,
+      "blockId": "c2348a0d52a06b0e09e6be02e64bcaee",
+      "fp64": "afdff7fe5fb37f77",
+      "normHash": "b73aa4cdc874f833049801c90b61644752248ba6277e7139cb021ddcc4ca7d5c",
+      "kind": "page",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "94a21d201153ba6844b9a7c5a99616531d8b633fe43b7bc07d1b207ecc535125",
+      "next": "5fc6868314f75a340aae22f2793f579c1134ab47f257a9034cbcfe47846dbd56"
+    },
+    {
+      "ord": 154,
+      "blockId": "340ca2239b614af2c19fb83053f6d4ac",
+      "fp64": "beea465b16647ddc",
+      "normHash": "5fc6868314f75a340aae22f2793f579c1134ab47f257a9034cbcfe47846dbd56",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "b73aa4cdc874f833049801c90b61644752248ba6277e7139cb021ddcc4ca7d5c",
+      "next": "4289b2fb3ca7f8b6a83930d86151896299139a2a39a2895fbed041c2326b9db9"
+    },
+    {
+      "ord": 155,
+      "blockId": "5286d9929d0cd9ee643155c25f90dce9",
+      "fp64": "cc5ee057911661dc",
+      "normHash": "4289b2fb3ca7f8b6a83930d86151896299139a2a39a2895fbed041c2326b9db9",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "5fc6868314f75a340aae22f2793f579c1134ab47f257a9034cbcfe47846dbd56",
+      "next": "561dcff2a2f5773c8a08e0ffc059a7f4e6073d76a19d30beb353586e3ad115ea"
+    },
+    {
+      "ord": 156,
+      "blockId": "a38877da682ae66e83ef413e56f0f6a9",
+      "fp64": "44c4f51e5b11957a",
+      "normHash": "561dcff2a2f5773c8a08e0ffc059a7f4e6073d76a19d30beb353586e3ad115ea",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "4289b2fb3ca7f8b6a83930d86151896299139a2a39a2895fbed041c2326b9db9",
+      "next": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839"
+    },
+    {
+      "ord": 157,
+      "blockId": "92372ba3cca57896ade457e40392b503",
+      "fp64": "c2e708506ae5eb14",
+      "normHash": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839",
+      "kind": "break",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "561dcff2a2f5773c8a08e0ffc059a7f4e6073d76a19d30beb353586e3ad115ea",
+      "next": "281778cad31c1df294ef048f3e1d09f21925ff7633e234b46c6748412638756d"
+    },
+    {
+      "ord": 158,
+      "blockId": "5f9a1f77a2526ed379ce4c153ef7775d",
+      "fp64": "bcf7d5fd79e97feb",
+      "normHash": "281778cad31c1df294ef048f3e1d09f21925ff7633e234b46c6748412638756d",
+      "kind": "notes",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839",
+      "next": "f57279e5e08f65b9aa33e6f77c59738fd981675b1d001e1bb7fb0ade4dc7b44e"
+    },
+    {
+      "ord": 159,
+      "blockId": "4374e6d5e5261b49b028de90df459b0a",
+      "fp64": "bdfff3fb7b7175f6",
+      "normHash": "f57279e5e08f65b9aa33e6f77c59738fd981675b1d001e1bb7fb0ade4dc7b44e",
+      "kind": "page",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "281778cad31c1df294ef048f3e1d09f21925ff7633e234b46c6748412638756d",
+      "next": "096f01b7bd4894aacf1625d579ae59ae1e042232f0cdf11428b30a63285c0700"
+    },
+    {
+      "ord": 160,
+      "blockId": "e494d8aab321b90c7db15f2eea08aea8",
+      "fp64": "fedee377dfda12bc",
+      "normHash": "096f01b7bd4894aacf1625d579ae59ae1e042232f0cdf11428b30a63285c0700",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "f57279e5e08f65b9aa33e6f77c59738fd981675b1d001e1bb7fb0ade4dc7b44e",
+      "next": "8054f2bceb125d95de409f7ce7308c103ab3978465388a67ddef0309a3c390d6"
+    },
+    {
+      "ord": 161,
+      "blockId": "264c92ed5ae24297f03899d44012891d",
+      "fp64": "3f46e88f8f6f9d4d",
+      "normHash": "8054f2bceb125d95de409f7ce7308c103ab3978465388a67ddef0309a3c390d6",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "096f01b7bd4894aacf1625d579ae59ae1e042232f0cdf11428b30a63285c0700",
+      "next": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839"
+    },
+    {
+      "ord": 162,
+      "blockId": "79f4dc9a14a2523175761ae21d3efadd",
+      "fp64": "c2e708506ae5eb14",
+      "normHash": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839",
+      "kind": "break",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "8054f2bceb125d95de409f7ce7308c103ab3978465388a67ddef0309a3c390d6",
+      "next": "8b91b175237ae8df57a0f9260620d3a55b136d63460f6fdc3d8ad3765c855ce9"
+    },
+    {
+      "ord": 163,
+      "blockId": "da20139bbbea9cbfd3d2ced5ecaf7b21",
+      "fp64": "6845afadfd518ee7",
+      "normHash": "8b91b175237ae8df57a0f9260620d3a55b136d63460f6fdc3d8ad3765c855ce9",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839",
+      "next": "50c8664c53faf885c5cdb682f68ae317067b42ab1d3c445c0b364059b5d46887"
+    },
+    {
+      "ord": 164,
+      "blockId": "bb2301aac2d97d3c754591f98d6b2a43",
+      "fp64": "f07ff614b63cfc6c",
+      "normHash": "50c8664c53faf885c5cdb682f68ae317067b42ab1d3c445c0b364059b5d46887",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "8b91b175237ae8df57a0f9260620d3a55b136d63460f6fdc3d8ad3765c855ce9",
+      "next": "367d325cd7a570862e23b87e10bce9e6506b3ab7c633b63d078de2e43dd9eb17"
+    },
+    {
+      "ord": 165,
+      "blockId": "88ff32d77c7acb6233703ea748cc8065",
+      "fp64": "2840dc179f6b5d6c",
+      "normHash": "367d325cd7a570862e23b87e10bce9e6506b3ab7c633b63d078de2e43dd9eb17",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "50c8664c53faf885c5cdb682f68ae317067b42ab1d3c445c0b364059b5d46887",
+      "next": "c08cd48df02782a05d794b9546fe03555da34307f5cc30481c9cbf891f430ea4"
+    },
+    {
+      "ord": 166,
+      "blockId": "6d1ce8b8eccdbb0ec730b567c774debb",
+      "fp64": "2ddff7df7b79e5b7",
+      "normHash": "c08cd48df02782a05d794b9546fe03555da34307f5cc30481c9cbf891f430ea4",
+      "kind": "page",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "367d325cd7a570862e23b87e10bce9e6506b3ab7c633b63d078de2e43dd9eb17",
+      "next": "13bd930632e39ab6bab803a8af38c81efe42b17e05c0fc3ff28055c5980747c3"
+    },
+    {
+      "ord": 167,
+      "blockId": "b9cf032c2843ffe130426efd8408c520",
+      "fp64": "5a477d6a53665eb7",
+      "normHash": "13bd930632e39ab6bab803a8af38c81efe42b17e05c0fc3ff28055c5980747c3",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "c08cd48df02782a05d794b9546fe03555da34307f5cc30481c9cbf891f430ea4",
+      "next": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839"
+    },
+    {
+      "ord": 168,
+      "blockId": "8ab1b37f13d6c0e187c4efb170dfc1a8",
+      "fp64": "c2e708506ae5eb14",
+      "normHash": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839",
+      "kind": "break",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "13bd930632e39ab6bab803a8af38c81efe42b17e05c0fc3ff28055c5980747c3",
+      "next": "0516e251ec96bafda2747e69ea3f55e59a1298a8f0722685ea476a4f2cfc8bea"
+    },
+    {
+      "ord": 169,
+      "blockId": "2b7bbfaa8df0b13dbe6ad353954b4b25",
+      "fp64": "77ffff9efa7bfc7f",
+      "normHash": "0516e251ec96bafda2747e69ea3f55e59a1298a8f0722685ea476a4f2cfc8bea",
+      "kind": "page",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839",
+      "next": "096f01b7bd4894aacf1625d579ae59ae1e042232f0cdf11428b30a63285c0700"
+    },
+    {
+      "ord": 170,
+      "blockId": "3b36bd088586dd3bca68f408ed49f1e9",
+      "fp64": "fedee377dfda12bc",
+      "normHash": "096f01b7bd4894aacf1625d579ae59ae1e042232f0cdf11428b30a63285c0700",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "0516e251ec96bafda2747e69ea3f55e59a1298a8f0722685ea476a4f2cfc8bea",
+      "next": "5b3cbd4d537c93260c86619cee290b3a6e52cd3437949f0b6c27e7ca9c610885"
+    },
+    {
+      "ord": 171,
+      "blockId": "d892e569fd5ecbb916395904bb387119",
+      "fp64": "e86cc05f946a4d7c",
+      "normHash": "5b3cbd4d537c93260c86619cee290b3a6e52cd3437949f0b6c27e7ca9c610885",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "096f01b7bd4894aacf1625d579ae59ae1e042232f0cdf11428b30a63285c0700",
+      "next": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839"
+    },
+    {
+      "ord": 172,
+      "blockId": "387de4a4d84b608c0849c599fe3e116a",
+      "fp64": "c2e708506ae5eb14",
+      "normHash": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839",
+      "kind": "break",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "5b3cbd4d537c93260c86619cee290b3a6e52cd3437949f0b6c27e7ca9c610885",
+      "next": "8b91b175237ae8df57a0f9260620d3a55b136d63460f6fdc3d8ad3765c855ce9"
+    },
+    {
+      "ord": 173,
+      "blockId": "df6f04658a5a5427d0fb89fa177a4f8e",
+      "fp64": "6845afadfd518ee7",
+      "normHash": "8b91b175237ae8df57a0f9260620d3a55b136d63460f6fdc3d8ad3765c855ce9",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839",
+      "next": "3b9c7ae3dc429de339c168ee607ce5beae4e68a269688c85b9157bcddc8fce67"
+    },
+    {
+      "ord": 174,
+      "blockId": "5c001706a0bf30eaa43027654f33f729",
+      "fp64": "5bcaf4cbd5477069",
+      "normHash": "3b9c7ae3dc429de339c168ee607ce5beae4e68a269688c85b9157bcddc8fce67",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "8b91b175237ae8df57a0f9260620d3a55b136d63460f6fdc3d8ad3765c855ce9",
+      "next": "c62cb8bb6000311e38c893ac0e3e852863d2ab2797891de7174c2595521454d9"
+    },
+    {
+      "ord": 175,
+      "blockId": "53e5b55fa0f6f6712c085dfc6cdde81c",
+      "fp64": "2dc68459d5c51635",
+      "normHash": "c62cb8bb6000311e38c893ac0e3e852863d2ab2797891de7174c2595521454d9",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "3b9c7ae3dc429de339c168ee607ce5beae4e68a269688c85b9157bcddc8fce67",
+      "next": "2ab029640d0d4db368c048d36be6c59a5ae8545d4205df7e2b6173bbc905b96c"
+    },
+    {
+      "ord": 176,
+      "blockId": "8cbdbcef138a1fbeb345a1ebce9d0960",
+      "fp64": "77dff39fdf716677",
+      "normHash": "2ab029640d0d4db368c048d36be6c59a5ae8545d4205df7e2b6173bbc905b96c",
+      "kind": "page",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "c62cb8bb6000311e38c893ac0e3e852863d2ab2797891de7174c2595521454d9",
+      "next": "da560c14559d6ab8a62b89b94d2b9d68707ab81feb60e053523dc931a63163af"
+    },
+    {
+      "ord": 177,
+      "blockId": "8ec806a6610d1f7f09326aa686dda611",
+      "fp64": "e9445c5e9ddc76ea",
+      "normHash": "da560c14559d6ab8a62b89b94d2b9d68707ab81feb60e053523dc931a63163af",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "2ab029640d0d4db368c048d36be6c59a5ae8545d4205df7e2b6173bbc905b96c",
+      "next": "122188cbdc8a11aba6cba5bee50a89cecf7a337cd3a392801afd466d39b5293b"
+    },
+    {
+      "ord": 178,
+      "blockId": "5714dfdff39c51a76abec4796e39f240",
+      "fp64": "974ce646527a577d",
+      "normHash": "122188cbdc8a11aba6cba5bee50a89cecf7a337cd3a392801afd466d39b5293b",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "da560c14559d6ab8a62b89b94d2b9d68707ab81feb60e053523dc931a63163af",
+      "next": "9a14e72de42ac2d0b998ebe6348b0557ad81b75831454bcc0c7b43236c9bd626"
+    },
+    {
+      "ord": 179,
+      "blockId": "5a23b32d49f1e3fa6f7260a8d59ddd9e",
+      "fp64": "2cf7e0570d06777c",
+      "normHash": "9a14e72de42ac2d0b998ebe6348b0557ad81b75831454bcc0c7b43236c9bd626",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "122188cbdc8a11aba6cba5bee50a89cecf7a337cd3a392801afd466d39b5293b",
+      "next": "7e0fa1a1e3d3d07d5b7ef07b5f0e7c63f16220752f5074d51aedffe12df5e6fc"
+    },
+    {
+      "ord": 180,
+      "blockId": "9d6a3307437a86f4c97b6c4b919d63d1",
+      "fp64": "f67dddf576bffbfb",
+      "normHash": "7e0fa1a1e3d3d07d5b7ef07b5f0e7c63f16220752f5074d51aedffe12df5e6fc",
+      "kind": "notes",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "9a14e72de42ac2d0b998ebe6348b0557ad81b75831454bcc0c7b43236c9bd626",
+      "next": "1b812f1da0256532b54fe37b737551313292597646cd399cd89855624c1fd078"
+    },
+    {
+      "ord": 181,
+      "blockId": "f05cd768f70809d425643cd9924aaddb",
+      "fp64": "f7ffffdf5eb7e17f",
+      "normHash": "1b812f1da0256532b54fe37b737551313292597646cd399cd89855624c1fd078",
+      "kind": "page",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "7e0fa1a1e3d3d07d5b7ef07b5f0e7c63f16220752f5074d51aedffe12df5e6fc",
+      "next": "3fa0931007433a5492b70a4de2b172875544b5403fdfa0255aaf60590d80baf8"
+    },
+    {
+      "ord": 182,
+      "blockId": "4224375961ad8f3ee5d19e6129a62f2a",
+      "fp64": "5edfc57797061e4a",
+      "normHash": "3fa0931007433a5492b70a4de2b172875544b5403fdfa0255aaf60590d80baf8",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "1b812f1da0256532b54fe37b737551313292597646cd399cd89855624c1fd078",
+      "next": "5f1a42abdca92dd43cd152856f6d65e9efcde74acb742474673243f0edd31ec9"
+    },
+    {
+      "ord": 183,
+      "blockId": "664a5aed17f0b5e9ec07326e014f0fd3",
+      "fp64": "f5da665ee05acf37",
+      "normHash": "5f1a42abdca92dd43cd152856f6d65e9efcde74acb742474673243f0edd31ec9",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "3fa0931007433a5492b70a4de2b172875544b5403fdfa0255aaf60590d80baf8",
+      "next": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839"
+    },
+    {
+      "ord": 184,
+      "blockId": "31faf693f6472c5b0816b803149f15d3",
+      "fp64": "c2e708506ae5eb14",
+      "normHash": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839",
+      "kind": "break",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "5f1a42abdca92dd43cd152856f6d65e9efcde74acb742474673243f0edd31ec9",
+      "next": "e34c2494ff5cbdc924c6f860aefa5fea954590d966f699776c74c1bbfdda3b6b"
+    },
+    {
+      "ord": 185,
+      "blockId": "54ff8a34449c9a9d4d428444726ee2c2",
+      "fp64": "b5fff3fefa7b7337",
+      "normHash": "e34c2494ff5cbdc924c6f860aefa5fea954590d966f699776c74c1bbfdda3b6b",
+      "kind": "page",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839",
+      "next": "096f01b7bd4894aacf1625d579ae59ae1e042232f0cdf11428b30a63285c0700"
+    },
+    {
+      "ord": 186,
+      "blockId": "c7e56089036d59778152a6ef9d0fc445",
+      "fp64": "fedee377dfda12bc",
+      "normHash": "096f01b7bd4894aacf1625d579ae59ae1e042232f0cdf11428b30a63285c0700",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "e34c2494ff5cbdc924c6f860aefa5fea954590d966f699776c74c1bbfdda3b6b",
+      "next": "3c4cf3a34037ac7a84ee3bc051f0a96d2a136118140bb64feb4a4854ec9a77e6"
+    },
+    {
+      "ord": 187,
+      "blockId": "dbfbbd7c00a42678480f0fa5c04299b5",
+      "fp64": "fcc1c0509f76f569",
+      "normHash": "3c4cf3a34037ac7a84ee3bc051f0a96d2a136118140bb64feb4a4854ec9a77e6",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "096f01b7bd4894aacf1625d579ae59ae1e042232f0cdf11428b30a63285c0700",
+      "next": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839"
+    },
+    {
+      "ord": 188,
+      "blockId": "24614f0b86b213153813737441189b8c",
+      "fp64": "c2e708506ae5eb14",
+      "normHash": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839",
+      "kind": "break",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "3c4cf3a34037ac7a84ee3bc051f0a96d2a136118140bb64feb4a4854ec9a77e6",
+      "next": "8b91b175237ae8df57a0f9260620d3a55b136d63460f6fdc3d8ad3765c855ce9"
+    },
+    {
+      "ord": 189,
+      "blockId": "2169e6d13c59719042654c6be1dcb9a5",
+      "fp64": "6845afadfd518ee7",
+      "normHash": "8b91b175237ae8df57a0f9260620d3a55b136d63460f6fdc3d8ad3765c855ce9",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839",
+      "next": "ef6227fde76ce8d0081113313b86273ebf29e9c656192e8464f22777ec4e1001"
+    },
+    {
+      "ord": 190,
+      "blockId": "91e5933a177064e68f6477dce3e2e590",
+      "fp64": "be3b447b3e717c2d",
+      "normHash": "ef6227fde76ce8d0081113313b86273ebf29e9c656192e8464f22777ec4e1001",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "8b91b175237ae8df57a0f9260620d3a55b136d63460f6fdc3d8ad3765c855ce9",
+      "next": "cae89827b2ed7d85bc30b311875a34c755286c1c72fd7c2d5e586e80c2553854"
+    },
+    {
+      "ord": 191,
+      "blockId": "92a4470528f51efd3f3d1641f4174fb6",
+      "fp64": "4e46b0565f5814ee",
+      "normHash": "cae89827b2ed7d85bc30b311875a34c755286c1c72fd7c2d5e586e80c2553854",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "ef6227fde76ce8d0081113313b86273ebf29e9c656192e8464f22777ec4e1001",
+      "next": "96d2baa566d998b86566c1b643e328a86049307a97c97f3767e1acc63073a99a"
+    },
+    {
+      "ord": 192,
+      "blockId": "20439958079e33f784c4f0c84ed3c2f4",
+      "fp64": "36c887f9375bc692",
+      "normHash": "96d2baa566d998b86566c1b643e328a86049307a97c97f3767e1acc63073a99a",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "cae89827b2ed7d85bc30b311875a34c755286c1c72fd7c2d5e586e80c2553854",
+      "next": "4a797a50cd2684bf716c2881f9e5ad2f082e2fe8ae7302f57f0d73428f9b752a"
+    },
+    {
+      "ord": 193,
+      "blockId": "89600f63ec5e77715c1b9aab4c9cc48c",
+      "fp64": "fbdfddfcf5e95beb",
+      "normHash": "4a797a50cd2684bf716c2881f9e5ad2f082e2fe8ae7302f57f0d73428f9b752a",
+      "kind": "notes",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "96d2baa566d998b86566c1b643e328a86049307a97c97f3767e1acc63073a99a",
+      "next": "21f9c20f4e83572f264bf3be8f944f198e85a4861ab0d298f36d08d44149d424"
+    },
+    {
+      "ord": 194,
+      "blockId": "a47181fbcf3a972f1719b623a25a1423",
+      "fp64": "ffdfff9edf716b76",
+      "normHash": "21f9c20f4e83572f264bf3be8f944f198e85a4861ab0d298f36d08d44149d424",
+      "kind": "page",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "4a797a50cd2684bf716c2881f9e5ad2f082e2fe8ae7302f57f0d73428f9b752a",
+      "next": "75b24d372a21ae002b263fa5795a39f874abf7f8437c9534bba30a55e95ec798"
+    },
+    {
+      "ord": 195,
+      "blockId": "2070a5ddcc65d7e9c4b6cd4cc9458f95",
+      "fp64": "840f8e0c742aae2d",
+      "normHash": "75b24d372a21ae002b263fa5795a39f874abf7f8437c9534bba30a55e95ec798",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "21f9c20f4e83572f264bf3be8f944f198e85a4861ab0d298f36d08d44149d424",
+      "next": "119025f0d0b9cb0b73c9c5756df21c377d2a89e5fd2f6974fbf142c918dbd5fd"
+    },
+    {
+      "ord": 196,
+      "blockId": "9aee70dce95fbc9d9b00daf1a083e622",
+      "fp64": "b165cc5fc94e4e74",
+      "normHash": "119025f0d0b9cb0b73c9c5756df21c377d2a89e5fd2f6974fbf142c918dbd5fd",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "75b24d372a21ae002b263fa5795a39f874abf7f8437c9534bba30a55e95ec798",
+      "next": "cc5a7e8f343eaf3c7559e67b3aa3422722f05b4721c128873071ddabe015f1a5"
+    },
+    {
+      "ord": 197,
+      "blockId": "91010114ba017ba735186ffb3b7e0513",
+      "fp64": "5fc8c055757b5d6d",
+      "normHash": "cc5a7e8f343eaf3c7559e67b3aa3422722f05b4721c128873071ddabe015f1a5",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "119025f0d0b9cb0b73c9c5756df21c377d2a89e5fd2f6974fbf142c918dbd5fd",
+      "next": "51acb579c44cadd19e0edc6e459c31ef7185570ac7e8408444ea3990b659e569"
+    },
+    {
+      "ord": 198,
+      "blockId": "23cc59d901313990d43aef4beced462d",
+      "fp64": "7a83f4500770917c",
+      "normHash": "51acb579c44cadd19e0edc6e459c31ef7185570ac7e8408444ea3990b659e569",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "cc5a7e8f343eaf3c7559e67b3aa3422722f05b4721c128873071ddabe015f1a5",
+      "next": "b5dc3324e8243b475eabf5829fdb855b54cecaa389ef8a92e3a4ddeb0cc08e3e"
+    },
+    {
+      "ord": 199,
+      "blockId": "5e61199283ff2d9b10ab74e5687e48cb",
+      "fp64": "fb7ddffcf8bb5eeb",
+      "normHash": "b5dc3324e8243b475eabf5829fdb855b54cecaa389ef8a92e3a4ddeb0cc08e3e",
+      "kind": "notes",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "51acb579c44cadd19e0edc6e459c31ef7185570ac7e8408444ea3990b659e569",
+      "next": "a368891ef9a262987f7b742c364d62cb1d7d4e6cde5b779d8435f58d0237e27a"
+    },
+    {
+      "ord": 200,
+      "blockId": "8fc605b93f765d7cde51edecf0072776",
+      "fp64": "7ffffbbafa337eff",
+      "normHash": "a368891ef9a262987f7b742c364d62cb1d7d4e6cde5b779d8435f58d0237e27a",
+      "kind": "page",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "b5dc3324e8243b475eabf5829fdb855b54cecaa389ef8a92e3a4ddeb0cc08e3e",
+      "next": "6aad9ea8f009ee707de26a266d9941763b1240a0abb2ffb4594e514257234fe1"
+    },
+    {
+      "ord": 201,
+      "blockId": "5650a312d5cd7156448c922a906a3cc9",
+      "fp64": "b465e0421f3e713c",
+      "normHash": "6aad9ea8f009ee707de26a266d9941763b1240a0abb2ffb4594e514257234fe1",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "a368891ef9a262987f7b742c364d62cb1d7d4e6cde5b779d8435f58d0237e27a",
+      "next": "88e311e6edc8fdc832d149e8229732d6724aae90ab1c0a0e8d6ef3f13c56a75b"
+    },
+    {
+      "ord": 202,
+      "blockId": "03de0298270ad4cde4b1e6e94368778d",
+      "fp64": "b4dbe71fcfdebf70",
+      "normHash": "88e311e6edc8fdc832d149e8229732d6724aae90ab1c0a0e8d6ef3f13c56a75b",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "6aad9ea8f009ee707de26a266d9941763b1240a0abb2ffb4594e514257234fe1",
+      "next": "c8d352e72ea3d964d6ed9f06e7899f644d4a6322922893dfe5b9f7d88de25b13"
+    },
+    {
+      "ord": 203,
+      "blockId": "b61c01365d360ee87e34ecf89e50d297",
+      "fp64": "670bb4509f07be7c",
+      "normHash": "c8d352e72ea3d964d6ed9f06e7899f644d4a6322922893dfe5b9f7d88de25b13",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "88e311e6edc8fdc832d149e8229732d6724aae90ab1c0a0e8d6ef3f13c56a75b",
+      "next": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839"
+    },
+    {
+      "ord": 204,
+      "blockId": "8a4f10d85ffc5bcff95d876ef23079d1",
+      "fp64": "c2e708506ae5eb14",
+      "normHash": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839",
+      "kind": "break",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "c8d352e72ea3d964d6ed9f06e7899f644d4a6322922893dfe5b9f7d88de25b13",
+      "next": "1e64366f2d4be526ae53e353755965db1a886c2be332010f984bbe86e4a0dcf2"
+    },
+    {
+      "ord": 205,
+      "blockId": "b1954deb07ae4bfae4d01beedbc0e80d",
+      "fp64": "b07de67c78bddeeb",
+      "normHash": "1e64366f2d4be526ae53e353755965db1a886c2be332010f984bbe86e4a0dcf2",
+      "kind": "notes",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839",
+      "next": "e787f2e0d4f0f35e056dccc815af2de911e7c3c49eeda32cbbf989e9845a9929"
+    },
+    {
+      "ord": 206,
+      "blockId": "d81cf92698534b605e2141601fd788fd",
+      "fp64": "b5fff39e5abdfcf6",
+      "normHash": "e787f2e0d4f0f35e056dccc815af2de911e7c3c49eeda32cbbf989e9845a9929",
+      "kind": "page",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "1e64366f2d4be526ae53e353755965db1a886c2be332010f984bbe86e4a0dcf2",
+      "next": "096f01b7bd4894aacf1625d579ae59ae1e042232f0cdf11428b30a63285c0700"
+    },
+    {
+      "ord": 207,
+      "blockId": "bcda9d543276222d9fd90f81367bc140",
+      "fp64": "fedee377dfda12bc",
+      "normHash": "096f01b7bd4894aacf1625d579ae59ae1e042232f0cdf11428b30a63285c0700",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "e787f2e0d4f0f35e056dccc815af2de911e7c3c49eeda32cbbf989e9845a9929",
+      "next": "2a8268f46d83794499dc993fb7dfbf61c9bbd28f188f799aff39418c6afa9608"
+    },
+    {
+      "ord": 208,
+      "blockId": "bd0e498bdd91a0bb4970e1ac8f0f44d5",
+      "fp64": "f8639a4bbec67e67",
+      "normHash": "2a8268f46d83794499dc993fb7dfbf61c9bbd28f188f799aff39418c6afa9608",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "096f01b7bd4894aacf1625d579ae59ae1e042232f0cdf11428b30a63285c0700",
+      "next": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839"
+    },
+    {
+      "ord": 209,
+      "blockId": "da81ecb46929c956fdd06d6dd8079a30",
+      "fp64": "c2e708506ae5eb14",
+      "normHash": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839",
+      "kind": "break",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "2a8268f46d83794499dc993fb7dfbf61c9bbd28f188f799aff39418c6afa9608",
+      "next": "8b91b175237ae8df57a0f9260620d3a55b136d63460f6fdc3d8ad3765c855ce9"
+    },
+    {
+      "ord": 210,
+      "blockId": "f17b54b377c000936320b9f7da89edbc",
+      "fp64": "6845afadfd518ee7",
+      "normHash": "8b91b175237ae8df57a0f9260620d3a55b136d63460f6fdc3d8ad3765c855ce9",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839",
+      "next": "9f4233b20d2cfc67aef6fb2d0a090c255492ef83ebc59ffeecad1d3b526bcaa7"
+    },
+    {
+      "ord": 211,
+      "blockId": "74c1c0f960b58209cc81a9b07a785c70",
+      "fp64": "e5cfea2fb72767cf",
+      "normHash": "9f4233b20d2cfc67aef6fb2d0a090c255492ef83ebc59ffeecad1d3b526bcaa7",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "8b91b175237ae8df57a0f9260620d3a55b136d63460f6fdc3d8ad3765c855ce9",
+      "next": "2257d89a0db3aa884e5738f96604847aae631509e11a2697445172aad4d8b97b"
+    },
+    {
+      "ord": 212,
+      "blockId": "b1860ca10f8145fd9414ab3ff384cc28",
+      "fp64": "607fccdec75a20fc",
+      "normHash": "2257d89a0db3aa884e5738f96604847aae631509e11a2697445172aad4d8b97b",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "9f4233b20d2cfc67aef6fb2d0a090c255492ef83ebc59ffeecad1d3b526bcaa7",
+      "next": "db3a2ef964385c60606c219bd6d13d144114e507a823ceb768b8caa2052cb52d"
+    },
+    {
+      "ord": 213,
+      "blockId": "b02ca9d8f8fb1b3d4eca4940f1c5a632",
+      "fp64": "7e5ced7b4736ddf7",
+      "normHash": "db3a2ef964385c60606c219bd6d13d144114e507a823ceb768b8caa2052cb52d",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "2257d89a0db3aa884e5738f96604847aae631509e11a2697445172aad4d8b97b",
+      "next": "1f5c95dd181fafab5ad8c3809f93d70ab61f027b931d166084ec5a22acdf12cc"
+    },
+    {
+      "ord": 214,
+      "blockId": "db5bf99be1ea1ded183ce385ef3651d2",
+      "fp64": "35dffb9e5fbdf3f6",
+      "normHash": "1f5c95dd181fafab5ad8c3809f93d70ab61f027b931d166084ec5a22acdf12cc",
+      "kind": "page",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "db3a2ef964385c60606c219bd6d13d144114e507a823ceb768b8caa2052cb52d",
+      "next": "0c960e707b1a97c2b5288e18211d827db5beb439499042cd6f434e8217c29f81"
+    },
+    {
+      "ord": 215,
+      "blockId": "9016841cb0aa01839f7d46a4986fe841",
+      "fp64": "670ee05f1074593c",
+      "normHash": "0c960e707b1a97c2b5288e18211d827db5beb439499042cd6f434e8217c29f81",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "1f5c95dd181fafab5ad8c3809f93d70ab61f027b931d166084ec5a22acdf12cc",
+      "next": "f312ffe784e00279307064a0df2d610d5b66c5a896f45253ca408be97b26cf75"
+    },
+    {
+      "ord": 216,
+      "blockId": "9ed538eb45ea43de4dbcb45c43fd38b4",
+      "fp64": "7d6e7410bfd5fcf8",
+      "normHash": "f312ffe784e00279307064a0df2d610d5b66c5a896f45253ca408be97b26cf75",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "0c960e707b1a97c2b5288e18211d827db5beb439499042cd6f434e8217c29f81",
+      "next": "a80f8ed5a429660a30b98105c725a60033e3035ec4f303091e42e8b6aba6e07b"
+    },
+    {
+      "ord": 217,
+      "blockId": "af19ea39df2b56249d27811b5869e8b1",
+      "fp64": "d0df26fed95faec6",
+      "normHash": "a80f8ed5a429660a30b98105c725a60033e3035ec4f303091e42e8b6aba6e07b",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "f312ffe784e00279307064a0df2d610d5b66c5a896f45253ca408be97b26cf75",
+      "next": "d278c09aafc2e9a560674dded107d6c3ab3d2eb1b91940745a9f6406211c338f"
+    },
+    {
+      "ord": 218,
+      "blockId": "21d1a0e16cd805bad72bef95d07f425f",
+      "fp64": "ecee9c6bdbc6767d",
+      "normHash": "d278c09aafc2e9a560674dded107d6c3ab3d2eb1b91940745a9f6406211c338f",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "a80f8ed5a429660a30b98105c725a60033e3035ec4f303091e42e8b6aba6e07b",
+      "next": "63aef3c263e3c5385bb5b62e65267a3245087ad4e8c3eeea3d6ede61546b6d1d"
+    },
+    {
+      "ord": 219,
+      "blockId": "12281d6a3ca9fa487853dfab9e84ee3e",
+      "fp64": "52cea87ef706cf27",
+      "normHash": "63aef3c263e3c5385bb5b62e65267a3245087ad4e8c3eeea3d6ede61546b6d1d",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "d278c09aafc2e9a560674dded107d6c3ab3d2eb1b91940745a9f6406211c338f",
+      "next": "59253dafa06b4b2e3b328dc3af9cf9aae634e4db6a056ac3b3741ce7900644ef"
+    },
+    {
+      "ord": 220,
+      "blockId": "9ac65f86df06e3ac71a971e77cf5b196",
+      "fp64": "79c2004e0646cd0c",
+      "normHash": "59253dafa06b4b2e3b328dc3af9cf9aae634e4db6a056ac3b3741ce7900644ef",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "63aef3c263e3c5385bb5b62e65267a3245087ad4e8c3eeea3d6ede61546b6d1d",
+      "next": "f0d4c941bff7c290f2105a40bf01d39a7d2ad863a3b43e243a51deb8c0b45aea"
+    },
+    {
+      "ord": 221,
+      "blockId": "5fc10403a290412ad804520b98f6c83b",
+      "fp64": "b175c67579a9ffaf",
+      "normHash": "f0d4c941bff7c290f2105a40bf01d39a7d2ad863a3b43e243a51deb8c0b45aea",
+      "kind": "notes",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "59253dafa06b4b2e3b328dc3af9cf9aae634e4db6a056ac3b3741ce7900644ef",
+      "next": "57f37e4170198b51df43f9f91c1da5ed25f7173762cf30cc3c502d5a79916044"
+    },
+    {
+      "ord": 222,
+      "blockId": "ee1c0149e10e4819ace7fb701f731c88",
+      "fp64": "35fff7ff5b31e5b6",
+      "normHash": "57f37e4170198b51df43f9f91c1da5ed25f7173762cf30cc3c502d5a79916044",
+      "kind": "page",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "f0d4c941bff7c290f2105a40bf01d39a7d2ad863a3b43e243a51deb8c0b45aea",
+      "next": "611c8850d4b45f21e8b39fd764e11d8d8e52ea833a1cf822e4b8f5545af902fe"
+    },
+    {
+      "ord": 223,
+      "blockId": "569ab0090ac4a73c8f252d95c6fee2f6",
+      "fp64": "7ca69c0f02624e7c",
+      "normHash": "611c8850d4b45f21e8b39fd764e11d8d8e52ea833a1cf822e4b8f5545af902fe",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "57f37e4170198b51df43f9f91c1da5ed25f7173762cf30cc3c502d5a79916044",
+      "next": "209f0992f7e6adc46ec16a2bcee891db1f5ad1b62858fb9ad2d45cfdbb3df926"
+    },
+    {
+      "ord": 224,
+      "blockId": "673fb20d2f8f7636677cd93c9e6c5011",
+      "fp64": "e37d9fffe6b7fdff",
+      "normHash": "209f0992f7e6adc46ec16a2bcee891db1f5ad1b62858fb9ad2d45cfdbb3df926",
+      "kind": "li",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "611c8850d4b45f21e8b39fd764e11d8d8e52ea833a1cf822e4b8f5545af902fe",
+      "next": "85284f296d4a7e464ec903806ba4b81ebbbd4273219845fa8fba817275486761"
+    },
+    {
+      "ord": 225,
+      "blockId": "e7ae7d2ef34c580784fa5d059d8266cc",
+      "fp64": "fd77eed8518e8fef",
+      "normHash": "85284f296d4a7e464ec903806ba4b81ebbbd4273219845fa8fba817275486761",
+      "kind": "li",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "209f0992f7e6adc46ec16a2bcee891db1f5ad1b62858fb9ad2d45cfdbb3df926",
+      "next": "846cbe01286adbb328092cfc22834423e9626ef336d820a4add6f352cf127248"
+    },
+    {
+      "ord": 226,
+      "blockId": "bfb5399e91ae57031258a265ff937c05",
+      "fp64": "3cc5a40e2d269bfe",
+      "normHash": "846cbe01286adbb328092cfc22834423e9626ef336d820a4add6f352cf127248",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "85284f296d4a7e464ec903806ba4b81ebbbd4273219845fa8fba817275486761",
+      "next": "e3f5c9c7f3f2218f2a6448d337c4411ab3489338b4736ee3d31e5b934e600475"
+    },
+    {
+      "ord": 227,
+      "blockId": "9956acaeea4ad8e443c9bdbaaf688d19",
+      "fp64": "bec0605c8fdf6d9c",
+      "normHash": "e3f5c9c7f3f2218f2a6448d337c4411ab3489338b4736ee3d31e5b934e600475",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "846cbe01286adbb328092cfc22834423e9626ef336d820a4add6f352cf127248",
+      "next": "2d7f78e366c9ae8fbc84d3c197e62bdf313a2aa93ca08f51b784ac8c8274f4e7"
+    },
+    {
+      "ord": 228,
+      "blockId": "e55de9c15012faa3949ee255722384a2",
+      "fp64": "8e3aea791f37afc4",
+      "normHash": "2d7f78e366c9ae8fbc84d3c197e62bdf313a2aa93ca08f51b784ac8c8274f4e7",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "e3f5c9c7f3f2218f2a6448d337c4411ab3489338b4736ee3d31e5b934e600475",
+      "next": "8bdfd64f297cb4f46a40fb573a4ddedb248ee4a29471671507327f8356aee87e"
+    },
+    {
+      "ord": 229,
+      "blockId": "06e2d1f45ef1e04138d434b768b39aae",
+      "fp64": "35dff7fa5a3374bf",
+      "normHash": "8bdfd64f297cb4f46a40fb573a4ddedb248ee4a29471671507327f8356aee87e",
+      "kind": "page",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "2d7f78e366c9ae8fbc84d3c197e62bdf313a2aa93ca08f51b784ac8c8274f4e7",
+      "next": "d2472c684309ba8888dc51f624ed75e97f305f829c359da7d29c13e7f0cad5ba"
+    },
+    {
+      "ord": 230,
+      "blockId": "f7f474f292a77a7607759b0a5c377dcb",
+      "fp64": "96ddc0dab6252e45",
+      "normHash": "d2472c684309ba8888dc51f624ed75e97f305f829c359da7d29c13e7f0cad5ba",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "8bdfd64f297cb4f46a40fb573a4ddedb248ee4a29471671507327f8356aee87e",
+      "next": "8322af491bc40b1379063b5322e7eea9d8c77fda432e8b341f402eecb70f3bcc"
+    },
+    {
+      "ord": 231,
+      "blockId": "61c8b708e79bcc25e1ee874bfb01849c",
+      "fp64": "6a82860d0662ee8f",
+      "normHash": "8322af491bc40b1379063b5322e7eea9d8c77fda432e8b341f402eecb70f3bcc",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "d2472c684309ba8888dc51f624ed75e97f305f829c359da7d29c13e7f0cad5ba",
+      "next": "c41626850e883f1bdf40851582e225613788993f05fc81068b91f8c439ab0fd8"
+    },
+    {
+      "ord": 232,
+      "blockId": "ececd19c8db213e2260b2a6be3caaa96",
+      "fp64": "67c04c5bb7733f0e",
+      "normHash": "c41626850e883f1bdf40851582e225613788993f05fc81068b91f8c439ab0fd8",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "8322af491bc40b1379063b5322e7eea9d8c77fda432e8b341f402eecb70f3bcc",
+      "next": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839"
+    },
+    {
+      "ord": 233,
+      "blockId": "25256a0ef27675f44498370228af36bc",
+      "fp64": "c2e708506ae5eb14",
+      "normHash": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839",
+      "kind": "break",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "c41626850e883f1bdf40851582e225613788993f05fc81068b91f8c439ab0fd8",
+      "next": "29eae3e7cbf6af90dd0be6a2d2bc0f2fb87fdf7fc2e7bc1f29cbf98018991151"
+    },
+    {
+      "ord": 234,
+      "blockId": "344bd1b23ca60fb59414864ab0cdfd1e",
+      "fp64": "eddff3dadf39e576",
+      "normHash": "29eae3e7cbf6af90dd0be6a2d2bc0f2fb87fdf7fc2e7bc1f29cbf98018991151",
+      "kind": "page",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839",
+      "next": "096f01b7bd4894aacf1625d579ae59ae1e042232f0cdf11428b30a63285c0700"
+    },
+    {
+      "ord": 235,
+      "blockId": "1aaeada6061b8507583d07107c8fc73c",
+      "fp64": "fedee377dfda12bc",
+      "normHash": "096f01b7bd4894aacf1625d579ae59ae1e042232f0cdf11428b30a63285c0700",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "29eae3e7cbf6af90dd0be6a2d2bc0f2fb87fdf7fc2e7bc1f29cbf98018991151",
+      "next": "ecf6db2352797272b6ebd0c083f9d878f11f665fb0644df705c86b50bad19f7a"
+    },
+    {
+      "ord": 236,
+      "blockId": "f6bab49367c35543825537e20c63b2c1",
+      "fp64": "28c5c2621b03bb6b",
+      "normHash": "ecf6db2352797272b6ebd0c083f9d878f11f665fb0644df705c86b50bad19f7a",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "096f01b7bd4894aacf1625d579ae59ae1e042232f0cdf11428b30a63285c0700",
+      "next": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839"
+    },
+    {
+      "ord": 237,
+      "blockId": "8b3b212eb2c50498903f63d983dae879",
+      "fp64": "c2e708506ae5eb14",
+      "normHash": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839",
+      "kind": "break",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "ecf6db2352797272b6ebd0c083f9d878f11f665fb0644df705c86b50bad19f7a",
+      "next": "8b91b175237ae8df57a0f9260620d3a55b136d63460f6fdc3d8ad3765c855ce9"
+    },
+    {
+      "ord": 238,
+      "blockId": "4839e3ce95b3d772433cd9f3affccef7",
+      "fp64": "6845afadfd518ee7",
+      "normHash": "8b91b175237ae8df57a0f9260620d3a55b136d63460f6fdc3d8ad3765c855ce9",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839",
+      "next": "bd916eabf81bff670f1060d08d852cf644bfd6e4d078af8ade633b962284f43d"
+    },
+    {
+      "ord": 239,
+      "blockId": "511ab60e5771533871eb77f8d1ed496f",
+      "fp64": "0db742724f03bb5b",
+      "normHash": "bd916eabf81bff670f1060d08d852cf644bfd6e4d078af8ade633b962284f43d",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "8b91b175237ae8df57a0f9260620d3a55b136d63460f6fdc3d8ad3765c855ce9",
+      "next": "8fe1f0aaa5bde063fd01472845209b4c52932d18afae6304295d85f78fa38d3f"
+    },
+    {
+      "ord": 240,
+      "blockId": "70f2c758d1ae2b7f06c2d98c80c712d8",
+      "fp64": "03dfa676d413c00a",
+      "normHash": "8fe1f0aaa5bde063fd01472845209b4c52932d18afae6304295d85f78fa38d3f",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "bd916eabf81bff670f1060d08d852cf644bfd6e4d078af8ade633b962284f43d",
+      "next": "c951b21fe5eda6a12eefdc80bba8b01f5f5a2af7d2592e88f6275abcff045f27"
+    },
+    {
+      "ord": 241,
+      "blockId": "abf4e4eef47a48015dbfa2d06f112bf2",
+      "fp64": "5d9e30f7d53c1518",
+      "normHash": "c951b21fe5eda6a12eefdc80bba8b01f5f5a2af7d2592e88f6275abcff045f27",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "8fe1f0aaa5bde063fd01472845209b4c52932d18afae6304295d85f78fa38d3f",
+      "next": "4bbbeca6742f12c299ee9874c27e783f7f3f2b0b40fb7eff785b2d2e7693ddd5"
+    },
+    {
+      "ord": 242,
+      "blockId": "24c813e32adbc9db2e4741f9f0863d30",
+      "fp64": "afffff9b7fb5617e",
+      "normHash": "4bbbeca6742f12c299ee9874c27e783f7f3f2b0b40fb7eff785b2d2e7693ddd5",
+      "kind": "page",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "c951b21fe5eda6a12eefdc80bba8b01f5f5a2af7d2592e88f6275abcff045f27",
+      "next": "9b1e532212d8c414315d7aa8cfd53d69d100d594577a21d6ed0580fc2d1be1a7"
+    },
+    {
+      "ord": 243,
+      "blockId": "140fa94d5978f05cb79bbca6c08e08f9",
+      "fp64": "6050e4528f327a7c",
+      "normHash": "9b1e532212d8c414315d7aa8cfd53d69d100d594577a21d6ed0580fc2d1be1a7",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "4bbbeca6742f12c299ee9874c27e783f7f3f2b0b40fb7eff785b2d2e7693ddd5",
+      "next": "341d9cda72c6ce587348b1c8be3ba4cc4c0864704ca2e90fb01f16952f3e5b2f"
+    },
+    {
+      "ord": 244,
+      "blockId": "a9b474a89e4df0c5271fd1845ec248dc",
+      "fp64": "a6ffcff472a9fbaf",
+      "normHash": "341d9cda72c6ce587348b1c8be3ba4cc4c0864704ca2e90fb01f16952f3e5b2f",
+      "kind": "notes",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "9b1e532212d8c414315d7aa8cfd53d69d100d594577a21d6ed0580fc2d1be1a7",
+      "next": "c2e5ec499c041da0ca3ab6ab1146db3b1f4719e299d00b7bb5ed6dd8e308dd99"
+    },
+    {
+      "ord": 245,
+      "blockId": "b0a26c0df934896941b38dce62f8af59",
+      "fp64": "27fffbde7a31e9be",
+      "normHash": "c2e5ec499c041da0ca3ab6ab1146db3b1f4719e299d00b7bb5ed6dd8e308dd99",
+      "kind": "page",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "341d9cda72c6ce587348b1c8be3ba4cc4c0864704ca2e90fb01f16952f3e5b2f",
+      "next": "1915e07c6c6c7c2c6c2cb9f722f6be308e5be05a1beb924d65c5d6b8ab9bd300"
+    },
+    {
+      "ord": 246,
+      "blockId": "d7bed0e9054ee6af51e0f590e0fe2738",
+      "fp64": "f441e446ff6afc6c",
+      "normHash": "1915e07c6c6c7c2c6c2cb9f722f6be308e5be05a1beb924d65c5d6b8ab9bd300",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "c2e5ec499c041da0ca3ab6ab1146db3b1f4719e299d00b7bb5ed6dd8e308dd99",
+      "next": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839"
+    },
+    {
+      "ord": 247,
+      "blockId": "60af57fe4cc93f443026f43277c172bf",
+      "fp64": "c2e708506ae5eb14",
+      "normHash": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839",
+      "kind": "break",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "1915e07c6c6c7c2c6c2cb9f722f6be308e5be05a1beb924d65c5d6b8ab9bd300",
+      "next": "4b1a747134efa676350bd4702c796ad358dba062e58b612fa59757c93668f227"
+    },
+    {
+      "ord": 248,
+      "blockId": "99790f0a969a6c501c59442cccd781a2",
+      "fp64": "bc76cdff73a9dbab",
+      "normHash": "4b1a747134efa676350bd4702c796ad358dba062e58b612fa59757c93668f227",
+      "kind": "notes",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839",
+      "next": "b271db2d31a291996045e748faf11d4a35ceda2e52fc3e05cc86c6d37ecb262d"
+    },
+    {
+      "ord": 249,
+      "blockId": "0c3cac2fb23331d911ceb0ad044e5cc8",
+      "fp64": "bdfffbdf5bb9f13f",
+      "normHash": "b271db2d31a291996045e748faf11d4a35ceda2e52fc3e05cc86c6d37ecb262d",
+      "kind": "page",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "4b1a747134efa676350bd4702c796ad358dba062e58b612fa59757c93668f227",
+      "next": "096f01b7bd4894aacf1625d579ae59ae1e042232f0cdf11428b30a63285c0700"
+    },
+    {
+      "ord": 250,
+      "blockId": "1f57ea7289bbf86e36d2f5d493b8dbbf",
+      "fp64": "fedee377dfda12bc",
+      "normHash": "096f01b7bd4894aacf1625d579ae59ae1e042232f0cdf11428b30a63285c0700",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "b271db2d31a291996045e748faf11d4a35ceda2e52fc3e05cc86c6d37ecb262d",
+      "next": "f4c0013ca1734a89a9ba87f78834d0dc405748e44a244ceea34c2e02919a89b5"
+    },
+    {
+      "ord": 251,
+      "blockId": "e68fb5cfc4a3ccb93c7ddc46720c1016",
+      "fp64": "66fec497865e503c",
+      "normHash": "f4c0013ca1734a89a9ba87f78834d0dc405748e44a244ceea34c2e02919a89b5",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "096f01b7bd4894aacf1625d579ae59ae1e042232f0cdf11428b30a63285c0700",
+      "next": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839"
+    },
+    {
+      "ord": 252,
+      "blockId": "91da7d9f0e5eec9c6e186ee5db669aaf",
+      "fp64": "c2e708506ae5eb14",
+      "normHash": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839",
+      "kind": "break",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "f4c0013ca1734a89a9ba87f78834d0dc405748e44a244ceea34c2e02919a89b5",
+      "next": "8b91b175237ae8df57a0f9260620d3a55b136d63460f6fdc3d8ad3765c855ce9"
+    },
+    {
+      "ord": 253,
+      "blockId": "36a15a4067e61a15ed7efdd6ea064b9e",
+      "fp64": "6845afadfd518ee7",
+      "normHash": "8b91b175237ae8df57a0f9260620d3a55b136d63460f6fdc3d8ad3765c855ce9",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839",
+      "next": "1049f43830faef92a1d304f0b9d3e8d8602e34c79ad5694b3200bbef1a6819e3"
+    },
+    {
+      "ord": 254,
+      "blockId": "3e7cf48a4a832d9ef9a01508bed7f1d2",
+      "fp64": "64d6c41f9758553c",
+      "normHash": "1049f43830faef92a1d304f0b9d3e8d8602e34c79ad5694b3200bbef1a6819e3",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "8b91b175237ae8df57a0f9260620d3a55b136d63460f6fdc3d8ad3765c855ce9",
+      "next": "91600f16ab41fea485bb68b8449ea4190a2a747b00b50b16fd2b7ef043cae8df"
+    },
+    {
+      "ord": 255,
+      "blockId": "d05820d90dc448c522712d0f9f605119",
+      "fp64": "64c4c4169723717c",
+      "normHash": "91600f16ab41fea485bb68b8449ea4190a2a747b00b50b16fd2b7ef043cae8df",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "1049f43830faef92a1d304f0b9d3e8d8602e34c79ad5694b3200bbef1a6819e3",
+      "next": "b46e6923a0be5a76f4a246c38e1cdd730d028270f56f2c5716ded45f3af2b500"
+    },
+    {
+      "ord": 256,
+      "blockId": "fc323bf1679db4787091d0b276efa482",
+      "fp64": "a5fff3dedbfffef7",
+      "normHash": "b46e6923a0be5a76f4a246c38e1cdd730d028270f56f2c5716ded45f3af2b500",
+      "kind": "page",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "91600f16ab41fea485bb68b8449ea4190a2a747b00b50b16fd2b7ef043cae8df",
+      "next": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839"
+    },
+    {
+      "ord": 257,
+      "blockId": "5985501f96c35174d21595e39ea9948e",
+      "fp64": "c2e708506ae5eb14",
+      "normHash": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839",
+      "kind": "break",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "b46e6923a0be5a76f4a246c38e1cdd730d028270f56f2c5716ded45f3af2b500",
+      "next": "4f96e653e3475eba005b0a09b3bb0953005f0d8234ff52412b41acdfb4ce2841"
+    },
+    {
+      "ord": 258,
+      "blockId": "c0914037780644a608e218b48acdc4f3",
+      "fp64": "afdccd7cf3efdbbf",
+      "normHash": "4f96e653e3475eba005b0a09b3bb0953005f0d8234ff52412b41acdfb4ce2841",
+      "kind": "notes",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839",
+      "next": "f9561102f6f0bb7090974fb237863cb5f8058726d79ee2da8b7b9f3485c54280"
+    },
+    {
+      "ord": 259,
+      "blockId": "79db59e2f1777a967eb08444d261dec7",
+      "fp64": "2fdffbdadb7ff13f",
+      "normHash": "f9561102f6f0bb7090974fb237863cb5f8058726d79ee2da8b7b9f3485c54280",
+      "kind": "page",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "4f96e653e3475eba005b0a09b3bb0953005f0d8234ff52412b41acdfb4ce2841",
+      "next": "096f01b7bd4894aacf1625d579ae59ae1e042232f0cdf11428b30a63285c0700"
+    },
+    {
+      "ord": 260,
+      "blockId": "1f60a39c6a46d818f634a6e74181bc98",
+      "fp64": "fedee377dfda12bc",
+      "normHash": "096f01b7bd4894aacf1625d579ae59ae1e042232f0cdf11428b30a63285c0700",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "f9561102f6f0bb7090974fb237863cb5f8058726d79ee2da8b7b9f3485c54280",
+      "next": "5a3106519f17435dbb06ec840d789315a00cbcf01a7c2fa1190c56aa4c62695a"
+    },
+    {
+      "ord": 261,
+      "blockId": "56cc258c8b354647d90a2ab40a8f692d",
+      "fp64": "20408a761f773e4b",
+      "normHash": "5a3106519f17435dbb06ec840d789315a00cbcf01a7c2fa1190c56aa4c62695a",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "096f01b7bd4894aacf1625d579ae59ae1e042232f0cdf11428b30a63285c0700",
+      "next": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839"
+    },
+    {
+      "ord": 262,
+      "blockId": "b7457afda43935d6e275c9346d529938",
+      "fp64": "c2e708506ae5eb14",
+      "normHash": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839",
+      "kind": "break",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "5a3106519f17435dbb06ec840d789315a00cbcf01a7c2fa1190c56aa4c62695a",
+      "next": "8b91b175237ae8df57a0f9260620d3a55b136d63460f6fdc3d8ad3765c855ce9"
+    },
+    {
+      "ord": 263,
+      "blockId": "c2092bd3131762b69c6ee2d7773fb615",
+      "fp64": "6845afadfd518ee7",
+      "normHash": "8b91b175237ae8df57a0f9260620d3a55b136d63460f6fdc3d8ad3765c855ce9",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839",
+      "next": "d9f6f37e37026e85323d63606f83b93a71ff1392e5d07472db568bce4d9e7681"
+    },
+    {
+      "ord": 264,
+      "blockId": "0f99130ce82568f927ccc4e70c5e05b8",
+      "fp64": "b4c3087a3f634d1c",
+      "normHash": "d9f6f37e37026e85323d63606f83b93a71ff1392e5d07472db568bce4d9e7681",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "8b91b175237ae8df57a0f9260620d3a55b136d63460f6fdc3d8ad3765c855ce9",
+      "next": "187f542f8b0807af8b17624880ea7ced092b104f26c183b562258399a9dd001b"
+    },
+    {
+      "ord": 265,
+      "blockId": "1ee975b664440b73cc35e13b04b176e9",
+      "fp64": "ccf18a4abf665d79",
+      "normHash": "187f542f8b0807af8b17624880ea7ced092b104f26c183b562258399a9dd001b",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "d9f6f37e37026e85323d63606f83b93a71ff1392e5d07472db568bce4d9e7681",
+      "next": "04edccca561b6d13b6d4ff591dfc69b57e083f63c15cf06cdbabf3576ac8e179"
+    },
+    {
+      "ord": 266,
+      "blockId": "b7fe6519a3c3e3b22eeff2a92eb54368",
+      "fp64": "d6c3806ebe67989c",
+      "normHash": "04edccca561b6d13b6d4ff591dfc69b57e083f63c15cf06cdbabf3576ac8e179",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "187f542f8b0807af8b17624880ea7ced092b104f26c183b562258399a9dd001b",
+      "next": "b45714bbeaceb94fe48a62b395281c96fe52365900f57b444a5084c187979246"
+    },
+    {
+      "ord": 267,
+      "blockId": "dce593c5664ef74f04498a58c50fe1be",
+      "fp64": "addff79afe7d6777",
+      "normHash": "b45714bbeaceb94fe48a62b395281c96fe52365900f57b444a5084c187979246",
+      "kind": "page",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "04edccca561b6d13b6d4ff591dfc69b57e083f63c15cf06cdbabf3576ac8e179",
+      "next": "31d38f7cb71d6f1c0642ea019a50f7f292a8dbbc46267eee1441f89ccd9cb22a"
+    },
+    {
+      "ord": 268,
+      "blockId": "221f434ec7c99862c04b039aa46111bf",
+      "fp64": "94d6a56cbdf1fcfa",
+      "normHash": "31d38f7cb71d6f1c0642ea019a50f7f292a8dbbc46267eee1441f89ccd9cb22a",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "b45714bbeaceb94fe48a62b395281c96fe52365900f57b444a5084c187979246",
+      "next": "38ece7bd7290199477fa2e4911f1ba34eba46eefb0fa1191bab2ec29f1bb156c"
+    },
+    {
+      "ord": 269,
+      "blockId": "a6d5090fc7ad6b6bb9c18af45667e194",
+      "fp64": "84c617128550333d",
+      "normHash": "38ece7bd7290199477fa2e4911f1ba34eba46eefb0fa1191bab2ec29f1bb156c",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "31d38f7cb71d6f1c0642ea019a50f7f292a8dbbc46267eee1441f89ccd9cb22a",
+      "next": "0ebeb9ed1b66cc51ee4a1c2dbf379a347896a9bdd158452c3be9009baa62a09b"
+    },
+    {
+      "ord": 270,
+      "blockId": "51689e276942f2ce0b0cfa5674a28842",
+      "fp64": "4874a26a13329b3b",
+      "normHash": "0ebeb9ed1b66cc51ee4a1c2dbf379a347896a9bdd158452c3be9009baa62a09b",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "38ece7bd7290199477fa2e4911f1ba34eba46eefb0fa1191bab2ec29f1bb156c",
+      "next": "4d1996d27ffeb8478db52af4c6cb076bbd91e3d4ebd46c4b245e9cb9174807de"
+    },
+    {
+      "ord": 271,
+      "blockId": "68c8ed81b39be03b65f009045a303018",
+      "fp64": "a0c3d47b8720c71f",
+      "normHash": "4d1996d27ffeb8478db52af4c6cb076bbd91e3d4ebd46c4b245e9cb9174807de",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "0ebeb9ed1b66cc51ee4a1c2dbf379a347896a9bdd158452c3be9009baa62a09b",
+      "next": "d284cc0fd73584653510c35a6a017f8ad937e30f2bef536e7df256f97d22e433"
+    },
+    {
+      "ord": 272,
+      "blockId": "4d3a9f2cafc01c724aeefaf897c902d8",
+      "fp64": "a5dff7da5e73eb76",
+      "normHash": "d284cc0fd73584653510c35a6a017f8ad937e30f2bef536e7df256f97d22e433",
+      "kind": "page",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "4d1996d27ffeb8478db52af4c6cb076bbd91e3d4ebd46c4b245e9cb9174807de",
+      "next": "3580e99794ffcf67764a9e18a5a5aecba021a03c6b33fd435bf19ae517f28e5f"
+    },
+    {
+      "ord": 273,
+      "blockId": "d7db30643c68d73b22ce80ef18fc8574",
+      "fp64": "ec4a655a5f64fff9",
+      "normHash": "3580e99794ffcf67764a9e18a5a5aecba021a03c6b33fd435bf19ae517f28e5f",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "d284cc0fd73584653510c35a6a017f8ad937e30f2bef536e7df256f97d22e433",
+      "next": "a376b0d1c04d099816e8e7736d504c26ce227a5518df527e428470b4bcbd64a5"
+    },
+    {
+      "ord": 274,
+      "blockId": "fe74ec05bc4050c2079fca3492a79b4d",
+      "fp64": "0a4f86595176ac61",
+      "normHash": "a376b0d1c04d099816e8e7736d504c26ce227a5518df527e428470b4bcbd64a5",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "3580e99794ffcf67764a9e18a5a5aecba021a03c6b33fd435bf19ae517f28e5f",
+      "next": "d40f4b6e31eedc2884f68ee176a37a2a88ac6ae311392e53e945a9cac6de8fd9"
+    },
+    {
+      "ord": 275,
+      "blockId": "91d6393032d91ddc1eac6fdbfe178922",
+      "fp64": "2a407ffd3fb7fdcf",
+      "normHash": "d40f4b6e31eedc2884f68ee176a37a2a88ac6ae311392e53e945a9cac6de8fd9",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "a376b0d1c04d099816e8e7736d504c26ce227a5518df527e428470b4bcbd64a5",
+      "next": "75416f7a8e6df1bdfd099c41aa468298e073f60882bde59c8d54f394f72e9da3"
+    },
+    {
+      "ord": 276,
+      "blockId": "821b459670940ed48f89d22bdf0084e5",
+      "fp64": "580db5745e111721",
+      "normHash": "75416f7a8e6df1bdfd099c41aa468298e073f60882bde59c8d54f394f72e9da3",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "d40f4b6e31eedc2884f68ee176a37a2a88ac6ae311392e53e945a9cac6de8fd9",
+      "next": "03afe6349658c325c919a742a1c5e5912f3466939b0e43a7565d8b0eaf9d166b"
+    },
+    {
+      "ord": 277,
+      "blockId": "65cfbf38d3a5c6a0e4af1e90f4ad69f3",
+      "fp64": "b8dedff4f3edfefb",
+      "normHash": "03afe6349658c325c919a742a1c5e5912f3466939b0e43a7565d8b0eaf9d166b",
+      "kind": "notes",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "75416f7a8e6df1bdfd099c41aa468298e073f60882bde59c8d54f394f72e9da3",
+      "next": "c1d50dc79e6c0267e9efbd68795c3df8e2c25e590d0b1bc168c1ccb63b902798"
+    },
+    {
+      "ord": 278,
+      "blockId": "606c39f9f2e7b8821eefa84c797ed8ac",
+      "fp64": "bddffbdafb75ee77",
+      "normHash": "c1d50dc79e6c0267e9efbd68795c3df8e2c25e590d0b1bc168c1ccb63b902798",
+      "kind": "page",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "03afe6349658c325c919a742a1c5e5912f3466939b0e43a7565d8b0eaf9d166b",
+      "next": "1aca6ea3c6f96f584ac00f84afba7742ade03887705983ba307675ee28af0c41"
+    },
+    {
+      "ord": 279,
+      "blockId": "cd68e826f8075f455f250e981920a57f",
+      "fp64": "87c4f46b5757165d",
+      "normHash": "1aca6ea3c6f96f584ac00f84afba7742ade03887705983ba307675ee28af0c41",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "c1d50dc79e6c0267e9efbd68795c3df8e2c25e590d0b1bc168c1ccb63b902798",
+      "next": "09ddbaaffd9289ee1a8b83d3d757e70ec8f49f9067f47e9d2d10dfe72b15a39f"
+    },
+    {
+      "ord": 280,
+      "blockId": "be5c84ff351ce2f5b552cc377b75c8ee",
+      "fp64": "508280d7d1e4996a",
+      "normHash": "09ddbaaffd9289ee1a8b83d3d757e70ec8f49f9067f47e9d2d10dfe72b15a39f",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "1aca6ea3c6f96f584ac00f84afba7742ade03887705983ba307675ee28af0c41",
+      "next": "c990da34d8d6df7b3ab78aba193530694d9216b66281a780281d2838d104d2a0"
+    },
+    {
+      "ord": 281,
+      "blockId": "257152f6d017de4b59c0117757aa06ac",
+      "fp64": "3ed3c47fc97eedf9",
+      "normHash": "c990da34d8d6df7b3ab78aba193530694d9216b66281a780281d2838d104d2a0",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "09ddbaaffd9289ee1a8b83d3d757e70ec8f49f9067f47e9d2d10dfe72b15a39f",
+      "next": "1a36fe38f4e69a4a4bf7fb1914da05747f798ead4ce39ee399cfc3a410b97b68"
+    },
+    {
+      "ord": 282,
+      "blockId": "e2fd7cf838cc32cfc8b7a24bacc32add",
+      "fp64": "7f93d658c29511e7",
+      "normHash": "1a36fe38f4e69a4a4bf7fb1914da05747f798ead4ce39ee399cfc3a410b97b68",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "c990da34d8d6df7b3ab78aba193530694d9216b66281a780281d2838d104d2a0",
+      "next": "f004e40dab131d0363aa0c52b753148d087da53f3050d186908233a8c4087e65"
+    },
+    {
+      "ord": 283,
+      "blockId": "c490bb8953dab82d4227426630ad82f8",
+      "fp64": "25ec4643d5427d34",
+      "normHash": "f004e40dab131d0363aa0c52b753148d087da53f3050d186908233a8c4087e65",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "1a36fe38f4e69a4a4bf7fb1914da05747f798ead4ce39ee399cfc3a410b97b68",
+      "next": "e9ff39d49c7574e075c5702a352d2bbf403389611c29d8d8d51261e184b0281a"
+    },
+    {
+      "ord": 284,
+      "blockId": "358a4ee442d14d1a974b3d5a54fcb607",
+      "fp64": "ff5ee77efdaf5fab",
+      "normHash": "e9ff39d49c7574e075c5702a352d2bbf403389611c29d8d8d51261e184b0281a",
+      "kind": "notes",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "f004e40dab131d0363aa0c52b753148d087da53f3050d186908233a8c4087e65",
+      "next": "47a608900b812e28351277f4ceba154c78be5a19735cb65393561b1fae8e2f7b"
+    },
+    {
+      "ord": 285,
+      "blockId": "5e0617494a1e6c5bdce516f6084e7d1b",
+      "fp64": "ffdff79affb777b7",
+      "normHash": "47a608900b812e28351277f4ceba154c78be5a19735cb65393561b1fae8e2f7b",
+      "kind": "page",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "e9ff39d49c7574e075c5702a352d2bbf403389611c29d8d8d51261e184b0281a",
+      "next": "549e97b03784483cdd312a2683cb2516cca519fc40803d541fe35d928e7872aa"
+    },
+    {
+      "ord": 286,
+      "blockId": "9fcf7a74e52938070634d800d8d1c233",
+      "fp64": "acc7606a1f7f6a7d",
+      "normHash": "549e97b03784483cdd312a2683cb2516cca519fc40803d541fe35d928e7872aa",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "47a608900b812e28351277f4ceba154c78be5a19735cb65393561b1fae8e2f7b",
+      "next": "95af0ba43a0b8323f24d99e1d0e87119a695f8ee70213274e3cf03e5d3455bbb"
+    },
+    {
+      "ord": 287,
+      "blockId": "97bf1fdf373c8c76481f5b7f2b45bb4e",
+      "fp64": "7686e0509e692e5d",
+      "normHash": "95af0ba43a0b8323f24d99e1d0e87119a695f8ee70213274e3cf03e5d3455bbb",
+      "kind": "p",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "549e97b03784483cdd312a2683cb2516cca519fc40803d541fe35d928e7872aa",
+      "next": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839"
+    },
+    {
+      "ord": 288,
+      "blockId": "ea97c564923e8247e0c6b9c8f6f337df",
+      "fp64": "c2e708506ae5eb14",
+      "normHash": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839",
+      "kind": "break",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "95af0ba43a0b8323f24d99e1d0e87119a695f8ee70213274e3cf03e5d3455bbb",
+      "next": "1309face7ef8f096b9a7c928348683b4f5202dc7643084bc720be66de8bd2260"
+    },
+    {
+      "ord": 289,
+      "blockId": "50a1f8de2898bd54c500fa1fd39c95b0",
+      "fp64": "b775fcf670affeaf",
+      "normHash": "1309face7ef8f096b9a7c928348683b4f5202dc7643084bc720be66de8bd2260",
+      "kind": "notes",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "c983fa6e6009b3a27979c68b3ee3bbd548ccd58524d745a093c35f1f17671839",
+      "next": "89e34329ab90aa190773ce2438a8e1c6bd4a1fdaab455c2d4345beefa0f8a62f"
+    },
+    {
+      "ord": 290,
+      "blockId": "54994a1c0897a48344f55ca91202b5b7",
+      "fp64": "37ffff9e7a3ffc37",
+      "normHash": "89e34329ab90aa190773ce2438a8e1c6bd4a1fdaab455c2d4345beefa0f8a62f",
+      "kind": "page",
+      "chapter": "شهادة-أن-لا-إله-إلا-الله-تتضمن-الإيمان-بالله-في-ربوبيته-وإلهيته-وأسمائه-وصفاته",
+      "prev": "1309face7ef8f096b9a7c928348683b4f5202dc7643084bc720be66de8bd2260"
+    }
+  ]
+}
