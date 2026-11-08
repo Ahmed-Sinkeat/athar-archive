@@ -176,6 +176,7 @@ fun IssuesScreen(
                     AtharSearchField(
                         query = query,
                         resultCount = visible.size,
+                        filtered = (topic + scholar + audio).isNotEmpty() || section != com.atharchive.ui.components.SectionAll,
                         placeholder = "ابحث في ${state.countLabel}…",
                         onQueryChange = { query = it },
                         tagPrefix = "issues",

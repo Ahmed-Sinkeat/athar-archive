@@ -668,11 +668,11 @@ private fun VerseRow(
         Column(modifier = Modifier.weight(1f)) {
             if (settings.poemProse) {
                 // متصل: one running line per verse, as a book prints a quoted verse.
-                Hemistich(if (verse.ajz.isBlank()) verse.sadr else "${verse.sadr} \u2026 ${verse.ajz}", glossary, colors, settings, TextAlign.Start, tapText, underline, marks)
+                Hemistich(if (verse.ajz.isBlank()) verse.sadr else "${verse.sadr} \u2026 ${verse.ajz}", glossary, colors, settings, TextAlign.Start, tapText, underline, marks, saved)
             } else {
-                Hemistich(verse.sadr, glossary, colors, settings, TextAlign.Start, tapText, underline, marks)
+                Hemistich(verse.sadr, glossary, colors, settings, TextAlign.Start, tapText, underline, marks, saved)
                 Spacer(Modifier.height(2.dp))
-                Hemistich(verse.ajz, glossary, colors, settings, TextAlign.End, tapText, underline, marks)
+                Hemistich(verse.ajz, glossary, colors, settings, TextAlign.End, tapText, underline, marks, saved)
             }
         }
     }
@@ -732,6 +732,7 @@ private fun Hemistich(
     onTapText: () -> Unit,
     underline: Boolean = false,
     marks: List<String> = emptyList(),
+    saved: Boolean = false,
 ) {
     val tapText by androidx.compose.runtime.rememberUpdatedState(onTapText)
     val line = if (settings.showTashkeel) sourceLine else com.atharchive.feature.reader.SelectionText(sourceLine, false).text
@@ -782,7 +783,6 @@ private fun Hemistich(
     var open by remember { mutableStateOf<OpenWord?>(null) }
     var meaning by remember { mutableStateOf<Pair<String, Rect>?>(null) }
     val dict = com.atharchive.feature.reader.LocalDictionary.current
-    val scope = rememberCoroutineScope()
 
     Box(modifier = Modifier.fillMaxWidth()) {
         Text(
@@ -796,19 +796,19 @@ private fun Hemistich(
                 .pointerInput(annotated) {
                     detectTapGestures { pos ->
                         val result = layout ?: return@detectTapGestures
+                        val row = result.getLineForVerticalPosition(pos.y)
+                        if (pos.x < result.getLineLeft(row) || pos.x > result.getLineRight(row)) { tapText(); return@detectTapGestures }
                         val offset = result.getOffsetForPosition(pos)
                         val hit = spans.firstOrNull { offset >= it.start && offset < it.end }
                         if (hit != null) { open = OpenWord(hit, result.boundsOf(hit)); return@detectTapGestures }
-                        // Any other word: its meaning, once the lexicons are downloaded (from «معنى» in a book);
-                        // a word they lack, or no lexicons yet, is an ordinary tap.
+                        // Any other word opens the book reader's meaning callout: the meaning, «not in the
+                        // lexicons», or «تنزيل المعجم» when they aren't on the phone yet. A saved verse keeps
+                        // its menu, and a tap off the words (the row's margins) still toggles the bars.
                         val from = line.lastIndexOf(' ', (offset - 1).coerceAtLeast(0)).let { if (it < 0 || offset == 0) 0 else it + 1 }
                         val to = line.indexOf(' ', offset).let { if (it < 0) line.length else it }
-                        if (dict == null || !dict.installed.value || to <= from) { tapText(); return@detectTapGestures }
+                        if (dict == null || saved || to <= from || line.substring(from, to).none(Char::isLetter)) { tapText(); return@detectTapGestures }
                         val span = WordSpan(from, to, line.substring(from, to), "")
-                        scope.launch {
-                            val found = runCatching { dict.meaning(span.word) }.getOrNull()
-                            if (found == null) tapText() else meaning = span.word to result.boundsOf(span)
-                        }
+                        meaning = span.word to result.boundsOf(span)
                     }
                 },
             onTextLayout = { layout = it },

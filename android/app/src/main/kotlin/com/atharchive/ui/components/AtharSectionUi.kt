@@ -101,8 +101,9 @@ fun AtharSearchField(
     modifier: Modifier = Modifier,
     /** Sits at the end of the field, after ×: the search screen's filter button. */
     trailing: (@Composable () -> Unit)? = null,
-    /** How many rows the typed words left, shown in the field while there is a query. */
+    /** How many rows the typed words and filters left, shown in the field while there is a query or a filter. */
     resultCount: Int? = null,
+    filtered: Boolean = false,
 ) {
     Surface(
         modifier = modifier
@@ -154,7 +155,7 @@ fun AtharSearchField(
                     }
                 },
             )
-            if (query.isNotBlank() && resultCount != null) Text(
+            if ((query.isNotBlank() || filtered) && resultCount != null) Text(
                 text = com.atharchive.data.arabicCount(resultCount, "لا نتائج", "نتيجة واحدة", "نتيجتان", "نتائج", "نتيجة"),
                 modifier = Modifier.padding(start = 6.dp).testTag("${tagPrefix}_search_count"),
                 color = AtharTheme.colors.secondaryText,

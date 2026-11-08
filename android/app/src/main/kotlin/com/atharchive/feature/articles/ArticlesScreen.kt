@@ -178,6 +178,7 @@ fun ArticlesScreen(
                 AtharSearchField(
                     query = query,
                     resultCount = visibleArticles.size,
+                    filtered = (author + topic + century).isNotEmpty() || section != com.atharchive.ui.components.SectionAll,
                     placeholder = "ابحث في ${state.countLabel}…",
                     onQueryChange = { query = it },
                     tagPrefix = "articles",

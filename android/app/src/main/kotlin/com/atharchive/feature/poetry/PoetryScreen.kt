@@ -194,6 +194,7 @@ fun PoetryScreen(
                 AtharSearchField(
                     query = query,
                     resultCount = visiblePoems.size,
+                    filtered = (topic + poet + century + audio).isNotEmpty() || section != com.atharchive.ui.components.SectionAll,
                     placeholder = "ابحث عن قصيدة، بيت أو شاعر…",
                     onQueryChange = { query = it },
                     tagPrefix = "poetry",

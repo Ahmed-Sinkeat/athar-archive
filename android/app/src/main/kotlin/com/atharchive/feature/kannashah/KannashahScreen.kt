@@ -193,6 +193,7 @@ fun KannashahScreen(
                 AtharSearchField(
                     query = query,
                     resultCount = sorted.size,
+                    filtered = (author + source + topic).isNotEmpty(),
                     // The count goes where every section has it: in the field, not a line above it.
                     placeholder = if (state.excerpts.isEmpty()) "ابحث في كناشتك…" else "ابحث في ${com.atharchive.data.arabicCount(state.excerpts.size, "", "مقتطف واحد", "مقتطفين", "مقتطفات", "مقتطفًا")}…",
                     onQueryChange = { query = it },

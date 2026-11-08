@@ -83,6 +83,7 @@ fun PersonsScreen(persons: List<CatalogPerson>, works: Map<String, ContentEntity
             AtharSearchField(
                 query = query,
                 resultCount = visible.size,
+                filtered = (selectedCentury + kind).isNotEmpty() || section != SectionAll,
                 onQueryChange = { query = it },
                 placeholder = "ابحث في ${arabicDigits(persons.size)} علمًا…",
                 tagPrefix = "persons",

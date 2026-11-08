@@ -254,6 +254,7 @@ fun BooksScreen(
                 AtharSearchField(
                     query = query,
                     resultCount = visibleBooks.size,
+                    filtered = (topic + century + author + audio).isNotEmpty() || section != com.atharchive.ui.components.SectionAll,
                     placeholder = "ابحث في ${state.archiveCountLabel}…",
                     onQueryChange = { query = it },
                     tagPrefix = "books",
