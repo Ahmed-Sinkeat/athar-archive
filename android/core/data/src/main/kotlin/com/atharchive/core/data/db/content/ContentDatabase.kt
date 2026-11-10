@@ -546,11 +546,6 @@ abstract class ContentImportDao {
     suspend fun blockWindow(entityId: String, first: Int, last: Int): List<ContentBlockEntity> =
         BlockText.unpack(storedBlockWindow(entityId, first, last))
 
-    @Query("SELECT * FROM block WHERE entityId = :entityId AND ordinal BETWEEN :first AND :last ORDER BY ordinal")
-    protected abstract fun storedObserveBlockWindow(entityId: String, first: Int, last: Int): Flow<List<ContentBlockEntity>>
-    fun observeBlockWindow(entityId: String, first: Int, last: Int): Flow<List<ContentBlockEntity>> =
-        storedObserveBlockWindow(entityId, first, last).map(BlockText::unpack)
-
     @Query("SELECT * FROM block WHERE entityId = :entityId AND ordinal = :ordinal LIMIT 1")
     protected abstract suspend fun storedBlockAt(entityId: String, ordinal: Int): ContentBlockEntity?
     suspend fun blockAt(entityId: String, ordinal: Int): ContentBlockEntity? = BlockText.unpack(storedBlockAt(entityId, ordinal))
@@ -570,8 +565,8 @@ abstract class ContentImportDao {
     @Query("SELECT * FROM chapter WHERE entityId = :entityId ORDER BY firstOrdinal")
     abstract fun observeChapters(entityId: String): Flow<List<ChapterEntity>>
 
-    @Query("SELECT * FROM footnote WHERE entityId = :entityId ORDER BY fnId")
-    abstract fun observeFootnotes(entityId: String): Flow<List<FootnoteEntity>>
+    @Query("SELECT * FROM footnote WHERE entityId = :entityId AND fnId IN (:ids)")
+    abstract suspend fun footnotes(entityId: String, ids: List<String>): List<FootnoteEntity>
 
     @Query("SELECT * FROM entityFrame WHERE entityId = :entityId ORDER BY frameOrdinal")
     abstract suspend fun frames(entityId: String): List<EntityFrameEntity>

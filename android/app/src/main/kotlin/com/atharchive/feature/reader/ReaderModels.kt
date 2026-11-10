@@ -277,6 +277,8 @@ data class ReaderUiState(
     val volumeUnit: String? = null,
     /** Printed pages of a one-volume book, for the page box's hint. */
     val pageRange: IntRange? = null,
+    /** The book has printed pages to jump to. */
+    val hasPages: Boolean = blocks.any { it is ReaderBlock.PageBreak },
 )
 
 /** One local-search landing point; offsets are UTF-16 and [matchEnd] is exclusive. */

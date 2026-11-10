@@ -42,8 +42,12 @@ internal class OnlineSearch(private val http: OkHttpClient) {
     suspend fun hits(query: Query, limit: Int, onPage: suspend (List<Hit>, Boolean) -> Unit = { _, _ -> }): Pair<List<Hit>, Boolean> {
         val hits = mutableListOf<Hit>()
         var more = true
+        // The server's `next` resumes where the last page stopped; an older server pages by offset.
+        var next: String? = null
         while (more && hits.size < limit) {
-            val body = get(url(query).addQueryParameter("offset", hits.size.toString()).addQueryParameter("snip", "48").build())
+            val page0 = url(query).apply { next?.let { addQueryParameter("after", it) } ?: addQueryParameter("offset", hits.size.toString()) }
+            val body = get(page0.addQueryParameter("snip", "48").build())
+            next = body.optString("next").ifEmpty { null }
             val page = body.getJSONArray("hits")
             for (i in 0 until page.length()) page.getJSONObject(i).run {
                 hits += Hit(optString("type"), optString("url"), optString("title"), optString("book"), optString("snippet"), optLong("row"))

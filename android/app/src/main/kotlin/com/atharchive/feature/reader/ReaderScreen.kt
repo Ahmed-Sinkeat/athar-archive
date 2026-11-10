@@ -148,7 +148,8 @@ fun ReaderScreen(
     modifier: Modifier = Modifier,
     initialSearchTarget: ReaderSearchTarget? = null,
     initialOrdinal: Int? = null,
-    onSearch: (suspend (String, com.atharchive.feature.search.SearchMode) -> InBookSearch)? = null,
+    /** (words, mode, first pages as they land) → the whole answer. */
+    onSearch: (suspend (String, com.atharchive.feature.search.SearchMode, (InBookSearch) -> Unit) -> InBookSearch)? = null,
     /** Whole book on the phone: in-book search then covers all of it. Changes re-run the search. */
     bookSaved: Boolean = true,
     onDownloadForSearch: (() -> Unit)? = null,
@@ -178,6 +179,8 @@ fun ReaderScreen(
     onEdition: (String) -> Unit = onOpenEntity,
     onAnchorJump: (suspend (String) -> Int?)? = null,
     onLoadSelectionBlocks: (suspend (IntRange) -> List<ReaderBlock>)? = null,
+    /** Footnote bodies by id; without it the callout reads [ReaderUiState.footnotes]. */
+    onLoadFootnotes: (suspend (List<String>) -> Map<String, ReaderBlock.FootnoteBody>)? = null,
     onRemoveHighlight: suspend (String) -> Unit = {},
     /** Opens the comment editor for a saved highlight (the الكناشة one). */
     onEditHighlightNote: ((String) -> Unit)? = null,
@@ -200,7 +203,7 @@ fun ReaderScreen(
     var toolbarHeight by remember { mutableIntStateOf(0) }
     var meaning by remember { mutableStateOf<Pair<String, androidx.compose.ui.geometry.Rect>?>(null) }
 
-    var shownFootnotes by remember { mutableStateOf<Pair<List<String>, androidx.compose.ui.geometry.Rect>?>(null) }
+    var shownFootnotes by remember { mutableStateOf<Triple<List<String>, androidx.compose.ui.geometry.Rect, Map<String, ReaderBlock.FootnoteBody>>?>(null) }
     val uriHandler = LocalUriHandler.current
     val colors = rememberReaderColors(settings)
     // Index 0 belongs to the title item. A partial cache can start at any semantic
@@ -328,7 +331,8 @@ fun ReaderScreen(
             kotlinx.coroutines.delay(150)
             if (!same) searchStatus = "جارٍ البحث…"
             try {
-                val result = onSearch?.invoke(query, searchMode) ?: InBookSearch(findHits(state, query))
+                val result = onSearch?.invoke(query, searchMode) { first -> hits = first.hits; hitsFor = query to searchMode }
+                    ?: InBookSearch(findHits(state, query))
                 hits = result.hits
                 hitsFor = query to searchMode
                 partialSearch = result.savedPercent.takeUnless { result.complete }
@@ -377,6 +381,13 @@ fun ReaderScreen(
         }
     }
 
+    fun showFootnotes(ids: List<String>, at: androidx.compose.ui.geometry.Rect) {
+        scope.launch {
+            val notes = onLoadFootnotes?.invoke(ids) ?: state.footnotes
+            if (ids.any { it in notes }) shownFootnotes = Triple(ids, at, notes)
+        }
+    }
+
     fun openLink(target: String) {
         when {
             target.startsWith("#") -> scope.launch {
@@ -419,8 +430,8 @@ fun ReaderScreen(
         IntroPage(state.card, state.bookTitle, state.author, settings, colors, onLink = ::openLink, onDismiss = { introOpen = false })
         return
     }
-    shownFootnotes?.let { (ids, at) ->
-        FootnoteCallout(ids, at, state.footnotes, settings, colors, onLink = ::openLink, onDismiss = { shownFootnotes = null })
+    shownFootnotes?.let { (ids, at, notes) ->
+        FootnoteCallout(ids, at, notes, settings, colors, onLink = ::openLink, onDismiss = { shownFootnotes = null })
     }
 
     val haptics = LocalHapticFeedback.current
@@ -546,13 +557,10 @@ fun ReaderScreen(
             if (window != null) {
                 items(
                     count = window.count,
-                    key = { index -> window.peek(index)?.id ?: "reader-placeholder-$index" },
+                    // By ordinal: a chunk that lands fills its placeholders in place instead of replacing them.
+                    key = { index -> index },
                 ) { index ->
-                    val raw = window[index]
-                    // The window loads blocks alone; a page footer gets its note bodies here.
-                    val block = remember(raw, state.footnotes) {
-                        if (raw is ReaderBlock.PageNotes) raw.copy(notes = raw.footnotes.mapNotNull(state.footnotes::get)) else raw
-                    }
+                    val block = window[index]
                     if (block == null) {
                         Box(Modifier.fillMaxWidth().height(80.dp))
                     } else {
@@ -564,7 +572,7 @@ fun ReaderScreen(
                             highlighted = false,
                             highlights = state.highlights,
                             volumeUnit = state.volumeUnit,
-                            onFootnotes = { ids, at -> if (ids.any { it in state.footnotes }) shownFootnotes = ids to at },
+                            onFootnotes = ::showFootnotes,
                             onLink = ::openLink,
                             isSearchTarget = searchTarget?.ordinal == block.ordinal,
                             searchMatch = searchTarget?.takeIf { it.ordinal == block.ordinal }?.let {
@@ -583,7 +591,7 @@ fun ReaderScreen(
                         highlighted = false,
                         highlights = state.highlights,
                         volumeUnit = state.volumeUnit,
-                        onFootnotes = { ids, at -> if (ids.any { it in state.footnotes }) shownFootnotes = ids to at },
+                        onFootnotes = ::showFootnotes,
                         onLink = ::openLink,
                         isSearchTarget = query.isNotBlank() && jumpedTo == index,
                         searchMatch = searchTarget?.takeIf { it.ordinal == (block.ordinal ?: index) }?.let {

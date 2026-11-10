@@ -147,12 +147,10 @@ fun ReaderPanel(
             }
             HorizontalDivider(thickness = 0.7.dp, color = colors.divider)
 
-            // ponytail: scans the loaded blocks; fine while a book's blocks are all in memory.
-            val pageBreaks = remember(state.blocks) { state.blocks.filterIsInstance<ReaderBlock.PageBreak>() }
             when (tab) {
                 ReaderPanelTab.Contents -> {
                     Box(Modifier.weight(1f)) { ContentsList(state, colors, currentBlockIndex, onJump) }
-                    if (pageBreaks.isNotEmpty() || state.pageRange != null || state.volumeStarts.isNotEmpty()) {
+                    if (state.hasPages || state.pageRange != null || state.volumeStarts.isNotEmpty()) {
                         PageJumpRow(state, colors, currentBlockIndex, onPageJump)
                     }
                 }

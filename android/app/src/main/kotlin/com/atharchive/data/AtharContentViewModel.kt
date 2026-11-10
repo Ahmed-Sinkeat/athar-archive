@@ -1049,34 +1049,39 @@ class AtharContentViewModel @Inject constructor(
         }
     }
 
+    /**
+     * The book (entity, contents, editions) is built once per change of those; a saved reading position
+     * or a new annotation only copies it. The text comes through [readerWindow] and footnotes by id.
+     */
     fun readerState(entityId: String): Flow<ReaderUiState?> = readerFlows.getOrPut(entityId) {
+        val book = combine(catalogDao.observeEntity(entityId), importDao.observeChapters(entityId)) { entity, chapters ->
+            entity?.toReaderUi(chapters)?.copy(
+                editions = catalogDao.editionsFor(entity.editionOf ?: entity.id).takeIf { it.size > 1 }.orEmpty()
+                    .sortedBy { it.editionOf != null }.map {
+                        com.atharchive.feature.reader.ReaderEdition(
+                            it.id, it.edition?.takeIf(String::isNotBlank) ?: it.title,
+                            current = it.id == entity.id, primary = it.editionOf == null,
+                        )
+                    },
+            )
+        }
         combine(
-            combine(
-                catalogDao.observeEntity(entityId),
-                userDao.observeReadingPosition(entityId).flatMapLatest { position ->
-                    val center = position?.ordinalHint ?: 0
-                    importDao.observeBlockWindow(entityId, (center - 24).coerceAtLeast(0), center + 24)
-                },
-                importDao.observeChapters(entityId),
-                importDao.observeFootnotes(entityId),
-                userDao.observeReadingPosition(entityId),
-            ) { entity, blocks, chapters, footnotes, position ->
-                entity?.toReaderUi(blocks, chapters, footnotes, position)?.copy(
-                    editions = catalogDao.editionsFor(entity.editionOf ?: entity.id).takeIf { it.size > 1 }.orEmpty()
-                        .sortedBy { it.editionOf != null }.map {
-                            com.atharchive.feature.reader.ReaderEdition(
-                                it.id, it.edition?.takeIf(String::isNotBlank) ?: it.title,
-                                current = it.id == entity.id, primary = it.editionOf == null,
-                            )
-                        },
-                )
-            },
+            book,
+            userDao.observeReadingPosition(entityId).map { it?.ordinalHint to it?.offsetInBlock }.distinctUntilChanged(),
             annotationRepository.observe(AnnotationFilter(entityId = entityId)),
-        ) { state, saved ->
-            state?.withAnnotations(saved, saved.filter { it.kind == AnnotationKind.Bookmark && it.quotedText.isBlank() }
-                .associate { it.id to importDao.blockAt(entityId, it.start.ordinalHint)?.text.orEmpty() })
+        ) { state, (ordinal, offset), saved ->
+            state?.copy(readingPositionIndex = ordinal ?: 0, readingOffset = offset ?: 0)
+                ?.withAnnotations(saved, saved.filter { it.kind == AnnotationKind.Bookmark && it.quotedText.isBlank() }
+                    .associate { it.id to importDao.blockAt(entityId, it.start.ordinalHint)?.text.orEmpty() })
         }
     }
+
+    /** Footnote bodies by id, for a page's notes block and the marker callout. */
+    suspend fun footnoteBodies(entityId: String, ids: List<String>): Map<String, ReaderBlock.FootnoteBody> =
+        ids.distinct().chunked(500).flatMap { importDao.footnotes(entityId, it) }.sortedBy { ids.indexOf(it.fnId) }
+            .mapIndexed { index, note ->
+                note.fnId to ReaderBlock.FootnoteBody("fn-${note.fnId}", note.marker ?: arabicNumber(index + 1), note.text, spans = note.spans())
+            }.toMap()
 
     fun readerWindow(entityId: String): com.atharchive.feature.reader.ReaderWindow =
         readerWindows.getOrPut(entityId) {
@@ -1086,7 +1091,12 @@ class AtharContentViewModel @Inject constructor(
             com.atharchive.feature.reader.ReaderWindow(
                 scope = scope,
                 total = { content.blockCount(entityId) },
-                load = { range -> content.blockRange(entityId, range).map(ContentBlockEntity::toReaderBlock) },
+                load = { range ->
+                    val blocks = content.blockRange(entityId, range).map(ContentBlockEntity::toReaderBlock)
+                    // A page footer gets its note bodies here, only for the pages loaded.
+                    val notes = footnoteBodies(entityId, blocks.filterIsInstance<ReaderBlock.PageNotes>().flatMap { it.footnotes })
+                    blocks.map { if (it is ReaderBlock.PageNotes) it.copy(notes = it.footnotes.mapNotNull(notes::get)) else it }
+                },
             ).also { window ->
                 // A finished or replaced download swaps the text under the reader.
                 scope.launch { content.observePackage(entityId).drop(1).collect { window.invalidate() } }
@@ -1156,7 +1166,13 @@ class AtharContentViewModel @Inject constructor(
      * مصنف ابن أبي شيبة on a slow link. A partly saved book says so, and the reader offers a
      * whole-book download (one stream) instead.
      */
-    suspend fun searchInBook(entityId: String, query: String, mode: com.atharchive.feature.search.SearchMode = com.atharchive.feature.search.SearchMode.All): InBookSearch {
+    suspend fun searchInBook(
+        entityId: String,
+        query: String,
+        mode: com.atharchive.feature.search.SearchMode = com.atharchive.feature.search.SearchMode.All,
+        /** The site's first pages as they land, before the whole answer. */
+        onPartial: (InBookSearch) -> Unit = {},
+    ): InBookSearch {
         if (query.trim().length < 2) return InBookSearch(emptyList())
         val total = catalogDao.entity(entityId)?.pkgBlocks ?: 0
         val saved = importDao.frames(entityId).sumOf { it.blockCount }
@@ -1180,7 +1196,7 @@ class AtharContentViewModel @Inject constructor(
             )
         }
         val complete = total == 0 || saved >= total
-        if (!complete) onlineInBook(entityId, query, mode)?.let { return InBookSearch(it) }
+        if (!complete) onlineInBook(entityId, query, mode) { onPartial(InBookSearch(it)) }?.let { return InBookSearch(it) }
         return InBookSearch(hits, complete, if (complete) 100 else (saved * 100 / total).coerceIn(0, 99))
     }
 
@@ -1191,9 +1207,21 @@ class AtharContentViewModel @Inject constructor(
     }.getOrElse { if (it is kotlinx.coroutines.CancellationException) throw it else null }
 
     /** The site's index for one book (every chapter that matches); null offline. A hit is located on tap. */
-    private suspend fun onlineInBook(entityId: String, query: String, mode: com.atharchive.feature.search.SearchMode): List<InBookHit>? = try {
-        onlineSearch.hits(OnlineSearch.Query(query, mode.api, "text", emptySet(), emptySet(), "relevance", books = setOf(entityId)), 100).first
-            .mapIndexed { index, hit ->
+    private suspend fun onlineInBook(
+        entityId: String,
+        query: String,
+        mode: com.atharchive.feature.search.SearchMode,
+        onPage: (List<InBookHit>) -> Unit,
+    ): List<InBookHit>? = try {
+        // The first page shows at once: the rest (up to five pages, one after another) fills in under it.
+        onlineSearch.hits(OnlineSearch.Query(query, mode.api, "text", emptySet(), emptySet(), "relevance", books = setOf(entityId)), 100) { partial, _ ->
+            onPage(partial.toInBookHits())
+        }.first.toInBookHits()
+    } catch (cancelled: kotlinx.coroutines.CancellationException) { throw cancelled
+    } catch (offline: Exception) { null }
+
+    private fun List<OnlineSearch.Hit>.toInBookHits(): List<InBookHit> =
+            mapIndexed { index, hit ->
                 val (text, marks) = unmark(hit.snippet)
                 val first = marks.firstOrNull() ?: 0..-1
                 // The site splits a long chapter into «صفحات 85-124» pieces: the chapter's name comes from the url, the pages from the title.
@@ -1207,8 +1235,6 @@ class AtharContentViewModel @Inject constructor(
                     url = hit.url, matches = marks, row = hit.row,
                 )
             }
-    } catch (cancelled: kotlinx.coroutines.CancellationException) { throw cancelled
-    } catch (offline: Exception) { null }
 
     val recentQueries: StateFlow<List<String>> = recentSearches.map { rows -> rows.map { it.q } }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
@@ -1652,26 +1678,13 @@ class AtharContentViewModel @Inject constructor(
     }
 }
 
-private fun ContentEntity.toReaderUi(
-    blocks: List<ContentBlockEntity>,
-    chapters: List<ChapterEntity>,
-    footnotes: List<FootnoteEntity>,
-    position: ReadingPositionEntity?,
-): ReaderUiState {
-    val footnoteBlocks = footnotes.mapIndexed { index, note ->
-        ReaderBlock.FootnoteBody("fn-${note.fnId}", note.marker ?: arabicNumber(index + 1), note.text, spans = note.spans())
-    }
-    val byId = footnotes.indices.associate { footnotes[it].fnId to footnoteBlocks[it] }
-    val contentBlocks = blocks.map { entity ->
-        val block = entity.toReaderBlock()
-        if (block is ReaderBlock.PageNotes) block.copy(notes = block.footnotes.mapNotNull(byId::get)) else block
-    }
+private fun ContentEntity.toReaderUi(chapters: List<ChapterEntity>): ReaderUiState {
     return ReaderUiState(
         bookTitle = title,
         isBook = coll == "book",
         author = personName.orEmpty(),
-        blocks = contentBlocks,
-        footnotes = byId,
+        blocks = emptyList(),
+        hasPages = pageTo != null,
         sourceUrl = PlayStoreUrl,
         card = runCatching { toCatalogEntry().card }.getOrDefault(emptyList()),
         toc = chapters.multiVolume().let { vols ->
@@ -1683,8 +1696,6 @@ private fun ContentEntity.toReaderUi(
         },
         bookmarks = emptyList(),
         benefits = emptyList(),
-        readingPositionIndex = position?.ordinalHint ?: 0,
-        readingOffset = position?.offsetInBlock ?: 0,
         audio = audioReferences().map { BookAudioUi(it.id, it.title ?: title, "", "", duration(it.seconds), it.seconds) },
         blockCount = pkgBlocks,
         // ponytail: volumes come from the contents' chapters; a book whose chapters carry no vol shows no volume menu.
