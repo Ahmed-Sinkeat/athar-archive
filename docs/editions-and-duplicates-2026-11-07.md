@@ -101,11 +101,11 @@ Per group, decide like round 1 (docs/editions-and-duplicates.md): **same تحق�
 | | copy | size | published | تحقيق / edition | publisher |
 |---|---|---|---|---|---|
 | **default?** | `shrh-amda-al-fqh-abn-tymya-t-ataat-al-alm` | 6943 KB | 2026-11-03 | شرح عمدة الفقه - ابن تيمية - ط عطاءات العلم، تأليف ابن تيمية | دار عطاءات العلم (الرياض) - دار ابن حزم  |
-|  | `shrh-amda-al-fqh-abn-tymya-ktab-al-hj` | 2678 KB | 2026-11-03 | د. صالح بن محمد الحسن | مكتبة الحرمين - الرياض |
-|  | `shrh-amda-al-fqh-abn-tymya-ktab-al-thara` | 1367 KB | 2026-11-03 | د. سعود بن صالح العطيشان | مكتبة العبيكان - الرياض |
-|  | `shrh-amda-al-fqh-abn-tymya-ktab-al-syam` | 952 KB | 2026-11-03 | زائد بن أحمد النشيري | دار الأنصاري |
-|  | `shrh-amda-al-fqh-abn-tymya-mn-ktab-al-slaa` | 917 KB | 2026-11-03 | خالد بن علي بن محمد المشيقح | دار العاصمة , الرياض , المملكة العربية ا |
-|  | `shrh-amda-al-fqh-abn-tymya-sfa-al-slaa` | 220 KB | 2026-11-03 | عبد العزيز بن أحمد بن محمد بن حمود المشيقح | دار العاصمة - الرياض |
+| retired 2026-11-11 (12.5) | `shrh-amda-al-fqh-abn-tymya-ktab-al-hj` | 2678 KB | 2026-11-03 | د. صالح بن محمد الحسن | مكتبة الحرمين - الرياض |
+| retired 2026-11-11 (12.5) | `shrh-amda-al-fqh-abn-tymya-ktab-al-thara` | 1367 KB | 2026-11-03 | د. سعود بن صالح العطيشان | مكتبة العبيكان - الرياض |
+| retired 2026-11-11 (12.5) | `shrh-amda-al-fqh-abn-tymya-ktab-al-syam` | 952 KB | 2026-11-03 | زائد بن أحمد النشيري | دار الأنصاري |
+| retired 2026-11-11 (12.5) | `shrh-amda-al-fqh-abn-tymya-mn-ktab-al-slaa` | 917 KB | 2026-11-03 | خالد بن علي بن محمد المشيقح | دار العاصمة , الرياض , المملكة العربية ا |
+| retired 2026-11-11 (12.5) | `shrh-amda-al-fqh-abn-tymya-sfa-al-slaa` | 220 KB | 2026-11-03 | عبد العزيز بن أحمد بن محمد بن حمود المشيقح | دار العاصمة - الرياض |
 
 ## 16. مدارج السالكين - ط الكتاب العربي
 | | copy | size | published | تحقيق / edition | publisher |
