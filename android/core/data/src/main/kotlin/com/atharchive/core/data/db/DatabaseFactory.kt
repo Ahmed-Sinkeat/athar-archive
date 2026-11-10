@@ -102,6 +102,11 @@ internal val ContentMigrations = arrayOf(
                 "DROP INDEX IF EXISTS index_block_fp64",
             )) connection.prepare(sql).use { it.step() }
         }
+    }, object : androidx.room3.migration.Migration(12, 13) {
+        // 12.6: lessons whose transcript is not reviewed yet; the next catalog sets it.
+        override suspend fun migrate(connection: androidx.sqlite.SQLiteConnection) {
+            connection.prepare("ALTER TABLE entity ADD COLUMN review INTEGER NOT NULL DEFAULT 0").use { it.step() }
+        }
     },
 )
 

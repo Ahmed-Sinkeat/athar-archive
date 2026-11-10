@@ -357,6 +357,7 @@ private fun ContentEntity.toReaderUi(chapters: List<ChapterEntity>): ReaderUiSta
         hasPages = pageTo != null,
         sourceUrl = PlayStoreUrl,
         card = runCatching { toCatalogEntry().card }.getOrDefault(emptyList()),
+        review = review,
         toc = chapters.multiVolume().let { vols ->
             chapters.map { chapter ->
                 val page = chapter.page?.let { "ص ${com.atharchive.ui.components.arabicDigits(it)}" }.orEmpty()

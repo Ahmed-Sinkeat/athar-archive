@@ -242,6 +242,8 @@ function catalogBase(source: SourceEntry, version: number, parsed: ReturnType<ty
     id: source.target.id,
     ...(typeof source.data.edition_of === "string" ? { editionOf: source.data.edition_of } : {}),
     ...(typeof source.data.edition === "string" ? { edition: source.data.edition } : {}),
+    // 12.6: a transcript not yet reviewed says so in the app's reader, as the site's pill does.
+    ...(source.data.transcript_status === "قيد المراجعة" ? { review: true } : {}),
     coll: source.target.coll,
     v: version,
     title: String(source.data.title),

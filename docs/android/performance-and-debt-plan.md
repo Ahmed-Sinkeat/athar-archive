@@ -303,10 +303,10 @@ deep pages and in-book search (`searchtest.py`, scratch). Times are from the PC,
 - [ ] 12.3 Poem titles: every معلقة shows and its title carries «معلقة».
 - [ ] 12.4 Poetry by era (جاهلي، صدر الإسلام، أموي، عباسي…) instead of centuries: a filter that shows
       only the poets of one era and their poems.
-- [ ] 12.5 (owner, 2026-11-11) شرح ابن تيمية على عمدة الفقه is split wrongly: five part-books
+- [x] 12.5 (2026-11-11: the full ط عطاءات العلم kept, the five part-books deleted, old links 301 in public/_redirects; needs the site deploy) (owner, 2026-11-11) شرح ابن تيمية على عمدة الفقه is split wrongly: five part-books
       (`shrh-amda-al-fqh-abn-tymya-*`) beside a full copy (`…-t-ataat-al-alm`); decide one work with its parts
       (with 9.1/9.2).
-- [ ] 12.6 (owner) A «يحتاج مراجعة» notice on lessons that need review, first case الدرس ٣٢ of عمدة الفقه
+- [x] 12.6 (2026-11-11: `review` flag in the catalog from transcript_status «قيد المراجعة», DB v13, notice under the reader title; only 4 books carry the status, and the Khalifi book has 11 مجالس, no الدرس ٣٢, so mark the lessons you mean in frontmatter; needs app:gen + publish) (owner) A «يحتاج مراجعة» notice on lessons that need review, first case الدرس ٣٢ of عمدة الفقه
       شرح الخليفي (`umdat-al-fiqh-sharh-al-khalifi-taharah`).
 
 ## Phase 11 — later, by decision

@@ -553,6 +553,17 @@ fun ReaderScreen(
                         color = colors.secondary,
                         style = MaterialTheme.typography.bodyMedium,
                     )
+                    if (state.review) Text(
+                        text = "يحتاج مراجعة: تفريغ لدروس صوتية لم يُراجَع بعد، فقد يقع فيه خطأ.",
+                        modifier = Modifier
+                            .padding(top = 12.dp)
+                            .fillMaxWidth()
+                            .background(colors.secondary.copy(alpha = 0.10f), androidx.compose.foundation.shape.RoundedCornerShape(8.dp))
+                            .padding(horizontal = 12.dp, vertical = 8.dp)
+                            .testTag("reader_review_notice"),
+                        color = colors.text,
+                        style = MaterialTheme.typography.bodySmall,
+                    )
                 }
             }
             if (window != null) {

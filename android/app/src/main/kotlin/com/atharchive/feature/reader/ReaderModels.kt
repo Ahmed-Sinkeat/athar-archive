@@ -265,6 +265,8 @@ data class ReaderUiState(
     val sourceUrl: String = "",
     /** The book's front matter (title page, editor's intro, manuscripts), shown as its «مقدمة المحقق» page. */
     val card: List<CardField> = emptyList(),
+    /** 12.6: a transcript not reviewed yet; a notice under the title says so. */
+    val review: Boolean = false,
 
     /** The automatically restored position; the reader opens here. */
     val readingPositionIndex: Int = 0,

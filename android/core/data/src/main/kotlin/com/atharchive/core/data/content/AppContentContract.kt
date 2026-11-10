@@ -128,6 +128,8 @@ data class CatalogEntry(
     val verseCount: Int? = null,
     /** The book's opening info card (الكتاب / المؤلف / الناشر …), shown under «المصدر». */
     val card: List<CardField> = emptyList(),
+    /** A transcript not yet reviewed («قيد المراجعة»): the reader says so. */
+    val review: Boolean = false,
     val pkg: PackageReference,
     val audio: List<AudioReference> = emptyList(),
 )
