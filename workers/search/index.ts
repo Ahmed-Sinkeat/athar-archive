@@ -20,7 +20,12 @@ export default {
     // answered from this data center's cache, honouring the handler's cache-control (30 min).
     const cache = (caches as unknown as { default: Cache }).default;
     const hit = await cache.match(request);
-    if (hit) return hit;
+    if (hit) {
+      // The stored copy carries the first request's timing; say it came from the cache instead.
+      const r = new Response(hit.body, hit);
+      r.headers.set("server-timing", "cache;desc=hit");
+      return r;
+    }
     const res = await searchResponse(url);
     if (res.status === 200) ctx.waitUntil(cache.put(request, res.clone()));
     return res;

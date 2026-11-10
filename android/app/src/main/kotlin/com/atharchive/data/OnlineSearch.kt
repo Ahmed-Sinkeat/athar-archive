@@ -1,8 +1,10 @@
 package com.atharchive.data
 
+import android.util.Log
 import kotlinx.coroutines.suspendCancellableCoroutine
 import okhttp3.Call
 import okhttp3.Callback
+import okhttp3.EventListener
 import okhttp3.HttpUrl
 import okhttp3.HttpUrl.Companion.toHttpUrl
 import okhttp3.OkHttpClient
@@ -17,7 +19,10 @@ import kotlin.coroutines.resumeWithException
  * The site's full-text index (src/pages/api/search.ts, D1 FTS5): the whole library, not only
  * what is on the phone. Any failure throws [IOException]; the caller falls back to local search.
  */
-internal class OnlineSearch(private val http: OkHttpClient) {
+internal class OnlineSearch(client: OkHttpClient) {
+    // Same pool and DNS as [client]; each call logs its stages (8.6), see [StageLog].
+    private val http = client.newBuilder().eventListenerFactory { StageLog() }.build()
+
     data class Hit(val type: String, val url: String, val title: String, val book: String, val snippet: String, val row: Long = 0,
         /** The app blocks "first-last" this passage covers, from the index; null on older rows. */
         val pg: String? = null)
@@ -104,10 +109,40 @@ internal class OnlineSearch(private val http: OkHttpClient) {
             override fun onFailure(call: Call, e: IOException) = cont.resumeWithException(e)
             override fun onResponse(call: Call, response: Response) = response.use {
                 val text = it.body?.string()
+                val parse = System.nanoTime()
                 if (!it.isSuccessful || text == null) cont.resumeWithException(IOException("search HTTP ${it.code}"))
                 else runCatching { JSONObject(text) }.fold(cont::resume) { e -> cont.resumeWithException(IOException(e)) }
+                Log.i("AtharSearch", "${(System.nanoTime() - parse) / 1_000_000} ms parse, ${text?.length ?: 0} chars, server ${it.header("server-timing") ?: "-"}")
+                Unit
             }
         })
+    }
+
+    /**
+     * One search request's stages on the wire, logged when it ends («adb logcat -s AtharSearch»):
+     * DNS, TCP connect, TLS, then wait for the first byte, then the body. A reused connection shows
+     * no DNS/connect/TLS. The Worker's own split (d1, worker) arrives in the parse line's header.
+     */
+    private class StageLog : EventListener() {
+        private val start = System.nanoTime()
+        private val marks = mutableListOf<String>()
+        private var last = start
+        private fun mark(stage: String) {
+            val now = System.nanoTime()
+            marks += "$stage ${(now - last) / 1_000_000}"
+            last = now
+        }
+        override fun dnsEnd(call: Call, domainName: String, inetAddressList: List<java.net.InetAddress>) = mark("dns")
+        override fun secureConnectStart(call: Call) = mark("tcp")
+        override fun secureConnectEnd(call: Call, handshake: okhttp3.Handshake?) = mark("tls")
+        override fun requestHeadersEnd(call: Call, request: Request) = mark("send")
+        override fun responseHeadersStart(call: Call) = mark("wait")
+        override fun responseBodyEnd(call: Call, byteCount: Long) = mark("body")
+        override fun callEnd(call: Call) = log("")
+        override fun callFailed(call: Call, ioe: IOException) = log(" FAILED ${ioe.message}")
+        private fun log(tail: String) {
+            Log.i("AtharSearch", "${marks.joinToString(", ")} = ${(System.nanoTime() - start) / 1_000_000} ms$tail")
+        }
     }
 
     private companion object {

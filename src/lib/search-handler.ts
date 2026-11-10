@@ -58,9 +58,32 @@ type Row = { row: number; type: string; url: string; title: string; book: string
 // arrives with the same reindex; until then every source weighs 1. Checked once per isolate.
 let schema: { raw: boolean; prior: boolean; pg: boolean; editions: boolean } | undefined;
 
+// Server-Timing (8.6): the Worker's own time and the part spent waiting on D1, so a slow search on
+// mobile data can be split into network, Worker and database from the app's log.
 export async function searchResponse(url: URL): Promise<Response> {
+  const began = performance.now();
+  let d1 = 0;
+  let queries = 0;
   const { env } = await import("cloudflare:workers");
-  const db = (env as unknown as { SEARCH?: D1Like }).SEARCH;
+  const raw = (env as unknown as { SEARCH?: D1Like }).SEARCH;
+  const db: D1Like | undefined = raw && {
+    prepare: (sql) => {
+      const st = raw.prepare(sql);
+      return { bind: (...v) => {
+        const b = st.bind(...v);
+        return { all: async () => {
+          const t = performance.now();
+          try { return await b.all(); } finally { d1 += performance.now() - t; queries++; }
+        } };
+      } };
+    },
+  };
+  const res = await answer(url, db);
+  res.headers.set("server-timing", `d1;dur=${d1.toFixed(0)};desc="${queries} queries", worker;dur=${(performance.now() - began).toFixed(0)}`);
+  return res;
+}
+
+async function answer(url: URL, db: D1Like | undefined): Promise<Response> {
   if (!db) return json({ hits: [], hasMore: false, error: "search unavailable" }, 503);
   if (!schema) {
     // An overloaded D1 fails this too: answer 503 (the app retries), not an uncaught 500.
