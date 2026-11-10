@@ -16,8 +16,10 @@ import java.io.RandomAccessFile
 import java.util.concurrent.CancellationException
 import androidx.room3.withWriteTransaction
 import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
+import kotlinx.coroutines.sync.withPermit
 
 data class ContentTransferResult(
     val entityId: String,
@@ -31,8 +33,37 @@ data class ContentTransferResult(
 private const val FRAMES_PREPARED_AHEAD = 8
 /** Longest a download writes before committing and letting a page read in. */
 private const val WRITE_BUDGET_NANOS = 50_000_000L
+/** Packages up to this size go through [ContentTransferRunner.downloadSmallTogether]. */
+private const val SMALL_PACKAGE_BYTES = 256 * 1024L
 
 private val SharedName = Regex("^([A-Za-z0-9_-]+)\\.(athar|idx)$")
+
+// The bundle rule, kept identical to the site's src/lib/app-v2/bundles.ts: a kind's packages up to
+// SMALL_PACKAGE_BYTES, by id, cut before a part passes BUNDLE_PART_BYTES, named by their hashes.
+private val BUNDLED_KINDS = listOf("article", "question", "poem", "book")
+private const val BUNDLE_PART_BYTES = 8 * 1024 * 1024L
+/** Local header + central directory record of a stored zip entry, without its name. */
+private const val ZIP_ENTRY_OVERHEAD = 30 + 46
+
+internal fun bundleParts(rows: List<com.atharchive.core.data.db.content.BundleRow>): List<List<com.atharchive.core.data.db.content.BundleRow>> {
+    val parts = mutableListOf<MutableList<com.atharchive.core.data.db.content.BundleRow>>()
+    var bytes = 0L
+    for (row in rows) {
+        val size = row.pkgSize + row.idxSize
+        if (parts.isEmpty() || bytes + size > BUNDLE_PART_BYTES) {
+            parts += mutableListOf<com.atharchive.core.data.db.content.BundleRow>()
+            bytes = 0
+        }
+        parts.last() += row
+        bytes += size
+    }
+    return parts
+}
+
+internal fun bundleName(part: List<com.atharchive.core.data.db.content.BundleRow>): String =
+    java.security.MessageDigest.getInstance("SHA-256")
+        .digest(part.joinToString("\n") { it.pkgHash }.toByteArray())
+        .joinToString("") { "%02x".format(it) }
 
 class ContentTransferRunner(
     private val contentDatabase: AtharContentDatabase,
@@ -60,7 +91,7 @@ class ContentTransferRunner(
         val dao = contentDatabase.catalogDao()
         val now = nowMillis()
         userDatabase.userDataDao().savePinnedDownloads(
-            entityIds.mapNotNull { id -> dao.entity(id)?.toCatalogEntry()?.let { PinnedDownloadEntity(entityId = id, pinnedAt = now, pkgHash = it.pkg.hash) } },
+            entityIds.distinct().chunked(500).flatMap { dao.pinRows(it) }.map { PinnedDownloadEntity(entityId = it.id, pinnedAt = now, pkgHash = it.pkgHash) },
         )
     }
 
@@ -198,6 +229,87 @@ class ContentTransferRunner(
         }
     }
 
+    /**
+     * First downloads of small items (a مسألة, a poem, an article), several per commit. Through
+     * [downloadPinned] each one wrote its state five times, each write re-running every query that
+     * watches `entityState`, and synced four files: 0.13-0.32 core-seconds an item (#61, #70a).
+     * Returns the ids it finished; the ones it does not take (too big, an update, already on the
+     * phone) or that fail are left for [downloadPinned]. [bundled] holds packages already verified
+     * from a bundle (package and index bytes by id); the rest are fetched.
+     */
+    suspend fun downloadSmallTogether(entityIds: List<String>, bundled: Map<String, Pair<ByteArray, ByteArray>> = emptyMap()): List<String> {
+        val dao = contentDatabase.importDao()
+        val userDao = userDatabase.userDataDao()
+        val entries = entityIds.mapNotNull { id ->
+            val entry = dao.entity(id)?.toCatalogEntry() ?: return@mapNotNull null
+            val state = dao.state(id)
+            entry.takeIf {
+                it.pkg.size <= SMALL_PACKAGE_BYTES && state?.localPackageHash == null &&
+                    userDao.pinnedDownload(id)?.pkgHash == it.pkg.hash
+            }
+        }
+        if (entries.isEmpty()) return emptyList()
+        val diskBytes = entries.sumOf { it.pkg.size + it.pkg.uncompressed }
+        mutationMutex.withLock { storagePolicy.prepareForDownload(diskBytes, reserve = true) }
+        try {
+            // Fetched and decoded outside the lock, a few at a time; a failure drops only that item.
+            val fetchSlots = kotlinx.coroutines.sync.Semaphore(4)
+            val fetched = kotlinx.coroutines.coroutineScope {
+                entries.map { entry ->
+                    async {
+                        fetchSlots.withPermit {
+                            runCatching {
+                                val inBundle = bundled[entry.id]
+                                val partFile = if (inBundle == null) partFile(entry) else null
+                                val indexBytes = inBundle?.second ?: loadOrFetchIndex(entry)
+                                val packageBytes = inBundle?.first ?: run {
+                                    client.downloadPackage(entry, partFile!!)
+                                    partFile.readBytes() // small: at most SMALL_PACKAGE_BYTES
+                                }
+                                val index = FramedPackageDecoder.decodeIndex(indexBytes, entry)
+                                val frames = index.frames.mapIndexed { number, frame ->
+                                    val start = Math.toIntExact(frame.off)
+                                    importer.prepareFrame(entry, number, frame, packageBytes.copyOfRange(start, start + frame.len))
+                                }
+                                SmallDownload(entry, partFile, packageBytes.takeIf { partFile == null }, indexBytes, frames)
+                            }.onFailure { if (it is CancellationException) throw it }.getOrNull()
+                        }
+                    }
+                }.awaitAll().filterNotNull()
+            }
+            val done = ArrayList<String>(fetched.size)
+            var next = 0
+            while (next < fetched.size) {
+                val from = next
+                mutationMutex.forBatch {
+                    contentDatabase.withWriteTransaction {
+                        val started = System.nanoTime()
+                        do {
+                            val item = fetched[next++]
+                            if (userDao.pinnedDownload(item.entry.id)?.pkgHash == item.entry.pkg.hash) {
+                                item.frames.forEach { importer.importPrepared(it) }
+                            }
+                        } while (next < fetched.size && System.nanoTime() - started < WRITE_BUDGET_NANOS)
+                    }
+                    for (item in fetched.subList(from, next)) {
+                        if (dao.state(item.entry.id)?.availability != ContentAvailability.COMPLETE) continue
+                        if (userDao.pinnedDownload(item.entry.id)?.pkgHash != item.entry.pkg.hash) continue
+                        if (item.partFile != null) retainedStore.retainDownloaded(item.entry, item.partFile, item.indexBytes, durable = false)
+                        else retainedStore.retainVerified(item.entry, item.packageBytes!!, item.indexBytes, durable = false)
+                        removeTransferFiles(item.entry)
+                        done += item.entry.id
+                    }
+                }
+            }
+            return done
+        } finally {
+            storagePolicy.release(diskBytes)
+        }
+    }
+
+    /** One of [partFile] (fetched) or [packageBytes] (from a bundle) is set. */
+    private class SmallDownload(val entry: CatalogEntry, val partFile: File?, val packageBytes: ByteArray?, val indexBytes: ByteArray, val frames: List<PreparedFrame>)
+
     /** Imports the frames not stored yet; [frameLock] is taken per batch, after any reader waiting for it. */
     private suspend fun importFrames(
         entry: CatalogEntry,
@@ -313,12 +425,77 @@ class ContentTransferRunner(
     suspend fun importShared(input: java.io.InputStream): List<CatalogEntry> = kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) {
         val dao = contentDatabase.importDao()
         val entries = mutableMapOf<String, CatalogEntry>()
+        val ready = receivePackages(input) { id -> entries[id] ?: dao.entity(id)?.toCatalogEntry()?.also { entries[id] = it } }
+            .mapNotNull(entries::get)
+        requestPins(ready.map { it.id })
+        ready
+    }
+
+    /**
+     * «تنزيل الكل» through bundles (`bundles/<kind>/<name>.zip`, written by the site's
+     * `src/lib/app-v2/bundles.ts`): one request per 8 MB of small packages instead of two per
+     * item. Each package is checked in memory against this phone's catalog and imported through
+     * [downloadSmallTogether], [onDone] getting the ids as they finish. A bundle that is missing,
+     * stale or damaged only leaves its items for the one-by-one path.
+     */
+    suspend fun downloadBundled(pending: Collection<String>, stillWanted: (String) -> Boolean, onDone: (List<String>) -> Unit) {
+        val want = pending.toHashSet()
+        val dao = contentDatabase.importDao()
+        for (coll in BUNDLED_KINDS) {
+            for (part in bundleParts(dao.bundleRows(coll, SMALL_PACKAGE_BYTES))) {
+                val needed = part.count { it.id in want }
+                if (needed < 8 || needed * 4 < part.size) continue // a few items: cheaper one by one
+                // each name is stored twice (local header and central directory): «<id>.athar» and «<id>.idx»
+                val limit = part.sumOf { it.pkgSize + it.idxSize + 2 * ZIP_ENTRY_OVERHEAD + 2 * (it.id.length + 6) + 2 * (it.id.length + 4) } + 22
+                val bytes = try {
+                    client.fetchBundle("bundles/$coll/${bundleName(part)}.zip", limit.toInt())
+                } catch (error: CancellationException) {
+                    throw error
+                } catch (error: Exception) {
+                    android.util.Log.i("AtharDownload", "bundle $coll unavailable: ${error.message}")
+                    continue
+                }
+                val packages = unpackBundle(bytes) { id -> if (id in want) dao.entity(id)?.toCatalogEntry() else null }
+                // in groups, so a part's decoded text is never all in memory at once
+                for (group in packages.keys.chunked(64)) {
+                    val done = downloadSmallTogether(group.filter(stillWanted), packages) // paused meanwhile: left
+                    if (done.isNotEmpty()) onDone(done)
+                }
+            }
+        }
+    }
+
+    /** A bundle's `<id>.athar` / `<id>.idx` pairs whose size and hash match the entry [lookup] gives. */
+    private suspend fun unpackBundle(bytes: ByteArray, lookup: suspend (String) -> CatalogEntry?): Map<String, Pair<ByteArray, ByteArray>> {
+        val packages = HashMap<String, ByteArray>()
+        val indexes = HashMap<String, ByteArray>()
+        java.util.zip.ZipInputStream(bytes.inputStream()).use { zip ->
+            while (true) {
+                val item = zip.nextEntry ?: break
+                val (id, ext) = SharedName.matchEntire(item.name)?.destructured ?: continue
+                val entry = lookup(id) ?: continue
+                val (hash, size) = if (ext == "athar") entry.pkg.hash to entry.pkg.size else entry.pkg.idxHash to entry.pkg.idxSize
+                if (size > SMALL_PACKAGE_BYTES * 4) continue
+                val data = zip.readNBytes(size.toInt() + 1)
+                // another edition or damaged: skipped, never trusted
+                if (runCatching { ContentDigests.verify(data, hash, size, "bundled ${item.name}") }.isFailure) continue
+                if (ext == "athar") packages[id] = data else indexes[id] = data
+            }
+        }
+        return packages.mapNotNull { (id, data) -> indexes[id]?.let { id to (data to it) } }.toMap()
+    }
+
+    /**
+     * Unpacks `<id>.athar` / `<id>.idx` pairs into the transfer directory, each only if its size
+     * and hash match the entry [lookup] gives (null skips it). Returns the ids that arrived whole.
+     */
+    private suspend fun receivePackages(input: java.io.InputStream, lookup: suspend (String) -> CatalogEntry?): Set<String> {
         val received = mutableMapOf<String, MutableSet<String>>()
         java.util.zip.ZipInputStream(input.buffered()).use { zip ->
             while (true) {
                 val item = zip.nextEntry ?: break
                 val (id, ext) = SharedName.matchEntire(item.name)?.destructured ?: continue
-                val entry = entries[id] ?: dao.entity(id)?.toCatalogEntry()?.also { entries[id] = it } ?: continue
+                val entry = lookup(id) ?: continue
                 val (target, hash, size) = if (ext == "athar") Triple(partFile(entry), entry.pkg.hash, entry.pkg.size)
                     else Triple(indexFile(entry), entry.pkg.idxHash, entry.pkg.idxSize)
                 val temporary = File(transferDirectory, ".${target.name}.shared")
@@ -346,9 +523,7 @@ class ContentTransferRunner(
                 }
             }
         }
-        val ready = received.filterValues { it.size == 2 }.keys.mapNotNull(entries::get)
-        requestPins(ready.map { it.id })
-        ready
+        return received.filterValues { it.size == 2 }.keys
     }
 
     private suspend fun loadOrFetchIndex(entry: CatalogEntry): ByteArray {

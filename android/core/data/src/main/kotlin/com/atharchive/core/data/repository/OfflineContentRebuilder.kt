@@ -45,12 +45,13 @@ class RetainedPackageStore(private val directory: File) {
         entry: CatalogEntry,
         packageBytes: ByteArray,
         indexBytes: ByteArray,
+        durable: Boolean = true,
     ) = withContext(Dispatchers.IO) {
         ContentDigests.verify(packageBytes, entry.pkg.hash, entry.pkg.size, "retained package")
         FramedPackageDecoder.decodeIndex(indexBytes, entry)
         val files = prepareTargets(entry)
-        writeAtomically(files.packageFile, packageBytes)
-        publishManifest(entry, files, indexBytes)
+        writeAtomically(files.packageFile, packageBytes, durable)
+        publishManifest(entry, files, indexBytes, durable)
     }
 
     /**
@@ -62,12 +63,14 @@ class RetainedPackageStore(private val directory: File) {
         entry: CatalogEntry,
         verifiedFile: File,
         indexBytes: ByteArray,
+        // false for small items: a torn manifest after a crash only means downloading it again
+        durable: Boolean = true,
     ) = withContext(Dispatchers.IO) {
         check(verifiedFile.length() == entry.pkg.size) { "downloaded package changed size" }
         FramedPackageDecoder.decodeIndex(indexBytes, entry)
         val files = prepareTargets(entry)
         check(verifiedFile.renameTo(files.packageFile)) { "cannot retain ${files.packageFile.name}" }
-        publishManifest(entry, files, indexBytes)
+        publishManifest(entry, files, indexBytes, durable)
     }
 
     /**
@@ -153,30 +156,29 @@ class RetainedPackageStore(private val directory: File) {
         )
     }
 
-    private fun publishManifest(entry: CatalogEntry, files: TargetFiles, indexBytes: ByteArray) {
-        writeAtomically(files.indexFile, indexBytes)
+    private fun publishManifest(entry: CatalogEntry, files: TargetFiles, indexBytes: ByteArray, durable: Boolean = true) {
+        val manifestFile = File(directory, "${files.stem}.json")
+        // The older version's files, named by its manifest. Listing the directory to find them read
+        // every retained file per download: 11% of a 1,984-article run, and growing with each item.
+        val older = runCatching {
+            AppContentJson.decodeFromString<RetainedPackageManifest>(manifestFile.readText()).let { listOf(it.packageFile, it.indexFile) }
+        }.getOrDefault(emptyList())
+        writeAtomically(files.indexFile, indexBytes, durable)
         val manifest = RetainedPackageManifest(
             entry = entry,
             packageFile = files.packageFile.name,
             indexFile = files.indexFile.name,
         )
-        writeAtomically(
-            File(directory, "${files.stem}.json"),
-            AppContentJson.encodeToString(manifest).encodeToByteArray(),
-        )
-        directory.listFiles().orEmpty()
-            .filter {
-                it.name.startsWith("${files.stem}.") &&
-                    it.name !in setOf(files.packageFile.name, files.indexFile.name, "${files.stem}.json")
-            }
-            .forEach(File::delete)
+        writeAtomically(manifestFile, AppContentJson.encodeToString(manifest).encodeToByteArray(), durable)
+        older.filter { it != files.packageFile.name && it != files.indexFile.name && !it.contains('/') }
+            .forEach { File(directory, it).delete() }
     }
 
-    private fun writeAtomically(target: File, bytes: ByteArray) {
+    private fun writeAtomically(target: File, bytes: ByteArray, durable: Boolean = true) {
         val temporary = File(target.parentFile, ".${target.name}.part")
         temporary.outputStream().use { output ->
             output.write(bytes)
-            output.fd.sync()
+            if (durable) output.fd.sync()
         }
         check(temporary.renameTo(target)) { "cannot atomically retain ${target.name}" }
     }

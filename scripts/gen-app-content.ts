@@ -1,6 +1,7 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { fetchAppAudio } from "../src/lib/app-v2/audio.js";
+import { writeBundles } from "../src/lib/app-v2/bundles.js";
 import { generateAppContent, publishedContentTargets, type ContentTarget } from "../src/lib/app-v2/generator.js";
 
 const SLICE: ContentTarget[] = [
@@ -52,6 +53,7 @@ for (const entity of result.entities) {
     + `${entity.packageBytes} bytes, IDs ${entity.reusedIds} reused/${entity.createdIds} new`,
   );
 }
+console.log(`bundles: ${await writeBundles(result.outputDirectory, result.catalog.entries)}`);
 console.log(`catalog: ${result.catalog.entries.length} entries · generation ${result.rootPayload.generationId}`);
 console.log(`root: ${result.envelope ? "signed index.json" : "unsigned index.payload.json (set ATHAR_CONTENT_SIGNING_KEY_FILE + ATHAR_CONTENT_SIGNING_KEY_ID to sign)"}`);
 console.log(`output: ${result.outputDirectory}`);

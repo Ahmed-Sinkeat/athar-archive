@@ -248,6 +248,10 @@ abstract class ContentCatalogDao {
     @Query("SELECT * FROM entity WHERE id = :entityId")
     abstract suspend fun entity(entityId: String): ContentEntity?
 
+    /** Kind and package of many entities in one query; a row per id was ~2,000 queries before «تنزيل الكل» started. */
+    @Query("SELECT id, coll, pkgHash FROM entity WHERE id IN (:ids)")
+    abstract suspend fun pinRows(ids: List<String>): List<PinRow>
+
     @Query("SELECT * FROM entity WHERE id = :entityId")
     abstract fun observeEntity(entityId: String): Flow<ContentEntity?>
 
@@ -407,6 +411,10 @@ abstract class ContentCatalogDao {
     }
 }
 
+data class PinRow(val id: String, val coll: String, val pkgHash: String)
+
+data class BundleRow(val id: String, val pkgHash: String, val pkgSize: Long, val idxSize: Long)
+
 @Dao
 abstract class ContentImportDao {
     @Query("SELECT * FROM entity WHERE id = :entityId")
@@ -414,6 +422,9 @@ abstract class ContentImportDao {
 
     @Query("SELECT * FROM entityState WHERE id = :entityId")
     abstract suspend fun state(entityId: String): EntityStateEntity?
+
+    @Query("SELECT id, pkgHash, pkgSize, idxSize FROM entity WHERE coll = :coll AND pkgSize <= :maxSize ORDER BY id")
+    abstract suspend fun bundleRows(coll: String, maxSize: Long): List<BundleRow>
 
     // A write that changes nothing still re-runs every query watching `entityState`, so an
     // unchanged state is not written.

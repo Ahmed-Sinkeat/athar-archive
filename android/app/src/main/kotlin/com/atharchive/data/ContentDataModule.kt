@@ -347,15 +347,19 @@ class ContentAccess @Inject constructor(
     }
 
     /** One item finished: returns the batches it was part of, after the update (empty if none). */
-    fun finishBatchItem(key: String): List<DownloadBatch> = synchronized(bookkeeping) {
-        touch("item", listOf(key))
-        val touched = _batches.value.filter { key in it.left }.map { it.copy(left = it.left - key) }
+    fun finishBatchItem(key: String): List<DownloadBatch> = finishBatchItems(listOf(key))
+
+    /** Items finished: the batches they were part of, after the update; one bookkeeping write for all. */
+    fun finishBatchItems(keys: Collection<String>): List<DownloadBatch> = synchronized(bookkeeping) {
+        touch("item", keys)
+        val gone = keys.toSet()
+        val touched = _batches.value.filter { batch -> gone.any { it in batch.left } }.map { it.copy(left = it.left - gone) }
         if (touched.isEmpty()) return@synchronized emptyList()
         val labels = touched.mapTo(hashSetOf()) { it.label }
         _batches.value = _batches.value.filter { it.label !in labels } + touched.filter { it.left.isNotEmpty() }
         val finished = touched.filter { it.left.isEmpty() }.map { it.label }
         writeBehind {
-            removeDownloadBatchItem(key)
+            gone.chunked(500).forEach { removeDownloadBatchItems(it) }
             if (finished.isNotEmpty()) deleteDownloadBatches(finished)
         }
         touched
@@ -567,6 +571,20 @@ class ContentAccess @Inject constructor(
         return result
     }
 
+    /** The items of [entityIds] that bundles cover, a request per bundle (see [ContentTransferRunner.downloadBundled]). */
+    suspend fun runBundledDownloads(entityIds: List<String>, onDone: (List<String>) -> Unit) =
+        requireNotNull(transferRunner) { "app-content origin is not configured" }.downloadBundled(entityIds, { it !in _pausedDownloads.value }) { done ->
+            setRetained(_retainedEntityIds.value + done)
+            onDone(done)
+        }
+
+    /** Small first downloads in one go (see [ContentTransferRunner.downloadSmallTogether]); returns the ids done. */
+    suspend fun runSmallDownloads(entityIds: List<String>): List<String> {
+        val done = requireNotNull(transferRunner) { "app-content origin is not configured" }.downloadSmallTogether(entityIds)
+        if (done.isNotEmpty()) setRetained(_retainedEntityIds.value + done)
+        return done
+    }
+
     suspend fun unpinAll(entityIds: List<String>) {
         if (entityIds.isEmpty()) return
         setDownloadsPaused(entityIds, false)
@@ -589,7 +607,8 @@ class ContentAccess @Inject constructor(
         val catalog = contentDatabase.catalogDao()
         return userDatabase.userDataDao().pinnedEntityIds()
             .filter { it !in retained && it !in paused }
-            .mapNotNull { id -> catalog.entity(id)?.let { ContentDownloadTarget(id, it.coll) } }
+            .chunked(500).flatMap { catalog.pinRows(it) }
+            .map { ContentDownloadTarget(it.id, it.coll) }
     }
 
     suspend fun isPinned(entityId: String): Boolean =

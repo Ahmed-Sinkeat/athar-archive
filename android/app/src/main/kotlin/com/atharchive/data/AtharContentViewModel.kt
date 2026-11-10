@@ -1826,17 +1826,20 @@ private fun duration(seconds: Int): String =
     "${arabicNumber(seconds / 60).padStart(2, '٠')}:${arabicNumber(seconds % 60).padStart(2, '٠')}"
 
 /** The app's one byte formatter: Arabic digits and units, e.g. «٣٫١ ك.ب». */
+// Integer tenths, not String.format: list rows call this thousands of times per rebuild, and the
+// formatter was 9% of the CPU of a bulk download (2026-11-10 profile).
 internal fun byteSize(bytes: Long): String {
-    val (value, unit) = when {
-        bytes >= 1L shl 30 -> bytes / (1L shl 30).toDouble() to "غ.ب"
-        bytes >= 1L shl 20 -> bytes / (1L shl 20).toDouble() to "م.ب"
-        bytes >= 1L shl 10 -> bytes / (1L shl 10).toDouble() to "ك.ب"
+    val (unitBytes, unit) = when {
+        bytes >= 1L shl 30 -> (1L shl 30) to "غ.ب"
+        bytes >= 1L shl 20 -> (1L shl 20) to "م.ب"
+        bytes >= 1L shl 10 -> (1L shl 10) to "ك.ب"
         else -> return "${arabicNumerals(bytes.toString())} بايت"
     }
-    return "${arabicNumerals("%.1f".format(java.util.Locale.ROOT, value).replace('.', '\u066B'))} $unit"
+    val tenths = (bytes * 10 + unitBytes / 2) / unitBytes
+    return "${arabicNumerals("${tenths / 10}\u066B${tenths % 10}")} $unit"
 }
 
-private fun arabicNumerals(s: String) = s.map { if (it in '0'..'9') '\u0660' + (it - '0') else it }.joinToString("")
+private fun arabicNumerals(s: String) = String(CharArray(s.length) { val c = s[it]; if (c in '0'..'9') '\u0660' + (c - '0') else c })
 
 /**
  * Arabic count phrase with correct noun agreement: 1 and 2 use the singular/dual form, 3–10

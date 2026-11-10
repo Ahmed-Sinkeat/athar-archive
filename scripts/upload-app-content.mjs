@@ -107,6 +107,16 @@ export function validateLocalGeneration(keyId, publicKey, localRoot = LOCAL_ROOT
       immutable.set(artifact.key, artifact);
     }
   }
+  // «تنزيل الكل» bundles (src/lib/app-v2/bundles.ts): unsigned, named by their packages' hashes,
+  // so immutable; the app verifies every package inside against the signed catalog.
+  const bundleRoot = path.join(localRoot, "bundles");
+  for (const kind of fs.existsSync(bundleRoot) ? fs.readdirSync(bundleRoot) : []) {
+    for (const file of fs.readdirSync(path.join(bundleRoot, kind))) {
+      if (!/^[0-9a-f]{64}\.zip$/.test(file)) continue;
+      const filePath = path.join(bundleRoot, kind, file);
+      immutable.set(`${PREFIX}bundles/${kind}/${file}`, { key: `${PREFIX}bundles/${kind}/${file}`, filePath, md5: md5(fs.readFileSync(filePath)) });
+    }
+  }
   return {
     immutable: [...immutable.values()].sort((a, b) => a.key < b.key ? -1 : a.key > b.key ? 1 : 0),
     root: { key: `${PREFIX}index.json`, bytes: envelopeBytes },

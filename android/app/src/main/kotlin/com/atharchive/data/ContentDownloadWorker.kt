@@ -216,18 +216,58 @@ class ContentDownloadWorker(
         var transient = false
         var stop = false
         var lastNotified = 0L
+        val finished = { done: List<String> ->
+            android.util.Log.i("AtharDownload", "done ${done.size}")
+            content.finishBatchItems(done).filter { it.left.isEmpty() }.forEach {
+                ContentDownloadNotifications.batchCompleted(applicationContext, it.label, it.total)
+            }
+            val now = android.os.SystemClock.elapsedRealtime()
+            if (now - lastNotified >= 1_000) {
+                lastNotified = now
+                runCatching { setForegroundAsync(foregroundInfo(-1)) }
+            }
+        }
+        // A request per bundle instead of two per item; whatever bundles miss goes on below.
+        try {
+            content.runBundledDownloads(content.pendingTextDownloads().map { it.entityId }.filter { it !in content.pausedDownloads.value }, finished)
+        } catch (cancelled: CancellationException) {
+            throw cancelled
+        } catch (_: InsufficientContentStorageException) {
+            stop = true
+        } catch (_: Exception) { }
         while (!stop) {
             val todo = content.pendingTextDownloads()
             if (todo.isEmpty()) break
             var progressed = false
+            // Small first downloads in groups, many per commit; whatever a group leaves goes one by one below.
+            val taken = hashSetOf<String>()
+            for (group in todo.chunked(32)) {
+                if (stop) break
+                val ids = group.map { it.entityId }.filter { it !in content.pausedDownloads.value }
+                val done = try {
+                    content.runSmallDownloads(ids)
+                } catch (cancelled: CancellationException) {
+                    throw cancelled
+                } catch (_: InsufficientContentStorageException) {
+                    stop = true
+                    emptyList()
+                } catch (_: Throwable) {
+                    emptyList()
+                }
+                if (done.isEmpty()) continue
+                progressed = true
+                taken += done
+                finished(done)
+            }
             kotlinx.coroutines.coroutineScope {
-                for (target in todo) launch {
+                for (target in todo.filter { it.entityId !in taken }) launch {
                     transferSlots.withPermit {
                         val id = target.entityId
                         if (stop || id in content.pausedDownloads.value || !content.isPinned(id)) return@withPermit
                         val identity = "content:${target.collection}:$id"
                         try {
                             content.runDownload(id) { downloaded, total -> scheduler.report(identity, TransferProgress(downloaded, total)) }
+                            android.util.Log.i("AtharDownload", "done 1")
                             progressed = true
                             val batches = content.finishBatchItem(id)
                             batches.filter { it.left.isEmpty() }.forEach {
@@ -334,6 +374,8 @@ class ContentDownloadScheduler @Inject constructor(
     fun enqueueBulk(wifiOnly: Boolean) {
         val request = OneTimeWorkRequestBuilder<ContentDownloadWorker>()
             .setInputData(workDataOf(BulkKey to true))
+            // Expedited: as ordinary work it started ~3 s after the tap
+            .setExpedited(androidx.work.OutOfQuotaPolicy.RUN_AS_NON_EXPEDITED_WORK_REQUEST)
             .setConstraints(Constraints.Builder().setRequiredNetworkType(if (wifiOnly) NetworkType.UNMETERED else NetworkType.CONNECTED).build())
             .setBackoffCriteria(BackoffPolicy.EXPONENTIAL, 30, TimeUnit.SECONDS)
             .addTag(ContentTag)

@@ -186,6 +186,11 @@ class AppContentHttpClient(
     // Whole documents (root, catalog, package index) let OkHttp negotiate gzip and decode it
     // transparently: the 8 MB catalog arrives as ~2 MB, and the hash still covers the decoded
     // bytes. Byte ranges (frames, packages, audio) stay identity, since offsets must be exact.
+    /** A zip of small packages (ContentTransferRunner.fetchBundles); every package in it is verified there. */
+    suspend fun fetchBundle(relativePath: String, maximumBytes: Int): ByteArray = withContext(Dispatchers.IO) {
+        get(relativePath, maximumBytes)
+    }
+
     private suspend fun get(relativePath: String, maximumBytes: Int, onBytes: (Int) -> Unit = {}): ByteArray {
         val request = Request.Builder()
             .url(resolve(relativePath))

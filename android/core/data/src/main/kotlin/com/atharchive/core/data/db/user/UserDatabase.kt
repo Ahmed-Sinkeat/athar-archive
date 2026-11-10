@@ -171,8 +171,8 @@ interface UserDataDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun addDownloadBatchItems(items: List<DownloadBatchItemEntity>)
 
-    @Query("DELETE FROM downloadBatchItem WHERE pauseKey = :key")
-    suspend fun removeDownloadBatchItem(key: String)
+    @Query("DELETE FROM downloadBatchItem WHERE pauseKey IN (:keys)")
+    suspend fun removeDownloadBatchItems(keys: List<String>)
 
     @Query("DELETE FROM downloadBatch WHERE label IN (:labels)")
     suspend fun deleteDownloadBatches(labels: List<String>)
