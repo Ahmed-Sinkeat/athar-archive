@@ -400,7 +400,7 @@ fun PoemReaderScreen(
                             shareMenu = false
                             val verses = chosen()
                             com.atharchive.ui.shareQuoteImage(context, text(), com.atharchive.ui.citedText(text(), state.title, state.poet, null, null, state.sourceUrl,
-                                verses = verses.first().number..verses.last().number))
+                                verses = verses.first().number..verses.last().number), colors)
                             clearSelection()
                         })
                     }

@@ -686,6 +686,7 @@ fun AtharApp(
                 }
                 // The reader owns the whole screen: no bottom navigation inside a book.
                 entry<ReaderRoute> { route ->
+                    val quoteColors = com.atharchive.feature.reader.rememberReaderColors()
                     val readerEmitted = collectEmitted(route.bookId) { contentViewModel.readerState(route.bookId) }
                     val readerState = readerEmitted?.value
                     val readerWindow = remember(route.bookId) { contentViewModel.readerWindow(route.bookId) }
@@ -769,7 +770,7 @@ fun AtharApp(
                                 val (vol, page) = contentViewModel.printedPlace(route.bookId, minOf(selection.start.ordinal, selection.end.ordinal))
                                 val cited = citedText(selection.quotedText, state.bookTitle, state.author,
                                     vol.takeIf { state.volumeStarts.isNotEmpty() }, page, state.sourceUrl, state.volumeUnit)
-                                if (asImage) shareQuoteImage(context, selection.quotedText, cited) else shareText(context, cited)
+                                if (asImage) shareQuoteImage(context, selection.quotedText, cited, quoteColors) else shareText(context, cited)
                             },
                             onSaveSelection = { selection ->
                                 contentViewModel.saveSelection(route.bookId, selection)

@@ -9,6 +9,7 @@ import android.graphics.text.LineBreaker
 import android.text.Layout
 import android.text.StaticLayout
 import android.text.TextPaint
+import androidx.compose.ui.graphics.toArgb
 import androidx.core.content.res.ResourcesCompat
 import com.atharchive.R
 import java.io.File
@@ -20,13 +21,18 @@ private const val ImageTextLimit = 900
  * «مشاركة صورة»: the passage on a page-coloured card with its source line under it, as a PNG,
  * and the cited text beside it for apps that take both.
  */
-internal fun shareQuoteImage(context: Context, text: String, citedText: String) {
+internal fun shareQuoteImage(context: Context, text: String, citedText: String, colors: com.atharchive.feature.reader.ReaderColors? = null) {
     // The «— الكتاب، المؤلف، ص…» line of the cited text, without its link.
     val source = citedText.removePrefix(text).lines().map(String::trim).filter { it.isNotEmpty() && !it.startsWith("http") }.joinToString("\n")
     val width = 1080
     val margin = 80
     val body = text.trim().let { if (it.length > ImageTextLimit) it.take(ImageTextLimit).substringBeforeLast(' ') + " …" else it }
-    val ink = 0xFF2B2418.toInt()
+    // The card wears the reader's current theme; without one, the warm paper card.
+    fun argb(c: androidx.compose.ui.graphics.Color?, fallback: Int) = c?.toArgb() ?: fallback
+    val ink = argb(colors?.text, 0xFF2B2418.toInt())
+    val paper = argb(colors?.page, 0xFFFBF6EC.toInt())
+    val muted = argb(colors?.secondary, 0xFF7A6A52.toInt())
+    val rule = argb(colors?.divider, 0xFFD9CBB0.toInt())
     val textPaint = TextPaint(Paint.ANTI_ALIAS_FLAG).apply {
         typeface = ResourcesCompat.getFont(context, R.font.amiri_regular)
         textSize = 50f
@@ -35,7 +41,7 @@ internal fun shareQuoteImage(context: Context, text: String, citedText: String) 
     val sourcePaint = TextPaint(textPaint).apply {
         typeface = ResourcesCompat.getFont(context, R.font.ibm_plex_sans_arabic_regular)
         textSize = 32f
-        color = 0xFF7A6A52.toInt()
+        color = muted
     }
     fun layout(s: String, paint: TextPaint) = StaticLayout.Builder.obtain(s, 0, s.length, paint, width - 2 * margin)
         .setAlignment(Layout.Alignment.ALIGN_NORMAL)
@@ -48,9 +54,9 @@ internal fun shareQuoteImage(context: Context, text: String, citedText: String) 
     val height = margin + bodyLayout.height + 60 + footerLayout.height + margin
     val bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
     Canvas(bitmap).apply {
-        drawColor(0xFFFBF6EC.toInt())
+        drawColor(paper)
         drawRect(margin / 2f, margin / 2f, width - margin / 2f, height - margin / 2f, Paint(Paint.ANTI_ALIAS_FLAG).apply {
-            style = Paint.Style.STROKE; strokeWidth = 3f; color = 0xFFD9CBB0.toInt()
+            style = Paint.Style.STROKE; strokeWidth = 3f; color = rule
         })
         save(); translate(margin.toFloat(), margin.toFloat()); bodyLayout.draw(this); restore()
         save(); translate(margin.toFloat(), (margin + bodyLayout.height + 60).toFloat()); footerLayout.draw(this); restore()
