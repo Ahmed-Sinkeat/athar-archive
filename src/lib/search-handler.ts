@@ -47,6 +47,9 @@ const RANK_CAP = 10000;
 const TITLE_TIER_MAX = 3;
 // One work fills at most this many places in a tier, so the page shows many sources.
 const WORK_CAP = 2;
+// Past this, a request with rows already stops before its next tier (see ranked()).
+const TIER_BUDGET_MS = 1500;
+type Cursor = { tier: number; skip: number };
 
 type Row = { row: number; type: string; url: string; title: string; book: string; raw: string | null; snippet: string; person_name: string | null; death_year: number | null };
 
@@ -130,6 +133,9 @@ export async function searchResponse(url: URL): Promise<Response> {
   const work = "COALESCE(NULLIF(m.book, ''), m.url)";
 
   const offset = Math.max(0, Math.min(2000, parseInt(url.searchParams.get("offset") ?? "0", 10) || 0));
+  // `after=<tier>.<rows>`: the `next` of the page before; replaces offset for the relevance order.
+  const after = /^\d{1,2}\.\d{1,4}$/.test(url.searchParams.get("after") ?? "") ? url.searchParams.get("after")! : null;
+  const start: Cursor = after ? { tier: Number(after.split(".")[0]), skip: Number(after.split(".")[1]) } : { tier: 0, skip: offset };
   const sortParam = url.searchParams.get("sort");
   const byBook = sortParam === "book";
   const byDeath = byBook || sortParam === "death" || sortParam === "death_desc";
@@ -170,17 +176,30 @@ export async function searchResponse(url: URL): Promise<Response> {
       ? ((await db.prepare(`SELECT ${rowSelect} ${fromJoin} WHERE docs MATCH ?1 AND docs.rowid IN (${rows.join(",")})`).bind(expr).all()).results as Row[])
       : [];
 
-  // Every tier in turn until the page (plus one row, to know there is a next) is full.
-  const ranked = async (m: Mode) => {
+  // Every tier in turn until the page (plus one row, to know there is a next) is full. [start] is
+  // where the last page stopped (`after`): its tier and the rows of it already shown, so a later
+  // page runs only the tiers it still needs. Old clients send `offset`: tier 0, that many rows in.
+  const ranked = async (m: Mode, start: Cursor) => {
     const tiers = tierExprs(tokens, m).map((e) => ({ expr: scoped(e), grouped: field === "title", title: false }));
     if (field !== "text" && m !== "root") tiers.unshift({ expr: titleStartExpr(tokens), grouped: true, title: true });
     const need = PAGE_SIZE + 1;
-    let skip = offset;
+    let skip = start.skip;
     const exclude = { rows: [] as number[], works: [] as string[] };
     const pages: (Row & { work: string })[][] = [];
     let count = 0;
-    for (const tier of tiers) {
+    let next: Cursor | null = null;
+    let last = { tier: 0, taken: 0 };
+    const began = Date.now();
+    for (let i = 0; i < tiers.length; i++) {
+      const tier = tiers[i];
       if (count >= need) break;
+      // The title tier is three rows; a later page still runs it, for the rows the others exclude.
+      const resumed = i < start.tier;
+      if (resumed && !tier.title) continue;
+      // One request never walks every tier of a heavy query: once the page has rows and the
+      // budget is spent, it stops and the next page carries on from this tier. A long walk held
+      // D1 for 3–8 s and every search in the next 10 s was refused («overloaded», 2026-11-10).
+      if (!resumed && count > 0 && Date.now() - began > TIER_BUDGET_MS) { next = { tier: i, skip: 0 }; break; }
       // the title tier's rows also carry the passage's own words marked
       const shown = tier.title ? `(${tier.expr}) OR (${scoped(widestExpr(tokens, m))})` : tier.expr;
       const got = await pick(tier.expr, shown, tier.grouped, tier.title ? TITLE_TIER_MAX : skip + need - count, exclude, tier.title);
@@ -188,15 +207,20 @@ export async function searchResponse(url: URL): Promise<Response> {
         exclude.rows = got.map((r) => r.row);
         if (field === "title") exclude.works = got.map((r) => r.work);
       }
+      if (resumed) continue;
       if (got.length <= skip) { skip -= got.length; continue; }
       const rows = got.slice(skip, skip + need - count);
+      last = { tier: i, taken: skip + rows.length };
       skip = 0;
       count += rows.length;
       pages.push(rows);
     }
     // the look-ahead row only says there is a next page: it must not be sorted into this one
-    const more = count > PAGE_SIZE;
-    if (more) pages.at(-1)!.pop();
+    if (count > PAGE_SIZE) {
+      pages.at(-1)!.pop();
+      next = { tier: last.tier, skip: last.taken - 1 };
+    }
+    const more = next !== null;
     const spelling = m === "root" ? null : typedSpelling(query, tokens);
     const out: Row[] = [];
     for (const rows of pages) {
@@ -205,7 +229,7 @@ export async function searchResponse(url: URL): Promise<Response> {
       if (spelling) rows.sort((a, b) => Number(hasTypedSpelling(b.snippet, spelling)) - Number(hasTypedSpelling(a.snippet, spelling)));
       out.push(...rows.map(({ work: _work, ...r }) => r));
     }
-    return { rows: out, more };
+    return { rows: out, more, next };
   };
 
   const widest = scoped(widestExpr(tokens, mode));
@@ -242,6 +266,7 @@ export async function searchResponse(url: URL): Promise<Response> {
     let results: Row[];
     let approximate = false;
     let more = false;
+    let next: Cursor | null = null;
     if (byDeath) {
       // the death-year order replaces relevance, so there are no tiers to walk. Row ids first
       // (doc_meta only), then the page's rows with their snippets.
@@ -254,11 +279,11 @@ export async function searchResponse(url: URL): Promise<Response> {
       for (const r of results) r.snippet = exactSnippet(r.snippet, r.raw);
       more = results.length > PAGE_SIZE;
     } else {
-      ({ rows: results, more } = await ranked(mode));
+      ({ rows: results, more, next } = await ranked(mode, start));
       // Every word found nothing: one mistyped word shouldn't dead-end the search. Retry as
       // «بعض الكلمات» and say so. Only for a first page of a short query (a long OR scan is costly).
-      if (results.length === 0 && mode === "all" && offset === 0 && tokens.length > 1 && tokens.length <= 4) {
-        ({ rows: results, more } = await ranked("any"));
+      if (results.length === 0 && mode === "all" && offset === 0 && !after && tokens.length > 1 && tokens.length <= 4) {
+        ({ rows: results, more, next } = await ranked("any", start));
         approximate = results.length > 0;
       }
     }
@@ -267,7 +292,9 @@ export async function searchResponse(url: URL): Promise<Response> {
     const hits = results.slice(0, PAGE_SIZE)
       .filter((r) => !seen.has(r.url + r.snippet) && seen.add(r.url + r.snippet))
       .map(({ raw: _raw, ...hit }) => hit);
-    return json({ hits, hasMore: more, approximate });
+    // `next` resumes the walk (`after=`); an «approximate» page came from «any», which a later page
+    // with mode=all would not walk, so it pages by offset as before.
+    return json({ hits, hasMore: more, approximate, ...(next && !approximate ? { next: `${next.tier}.${next.skip}` } : {}) });
   } catch (err) {
     // A broken search must not look like an empty one: the site shows «تعذَّر البحث الآن» for a
     // non-ok answer, and the Worker log gets the reason.
