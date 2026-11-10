@@ -112,6 +112,184 @@ Rule for every step: fix the cause, not the symptom. No shortcut comments, no "f
 - [ ] 5.6 Content out of the git repo (P5); `git gc` the leftover temp packs; build outputs cleaned after publish. (#23, #43)
 - [ ] 5.7 Encrypted offline backup of `~/.config/athar` keys and a written key-rotation procedure. (#42)
 
+---
+
+# Continuation — 2026-11-09/10 review (phone app)
+
+Owner's report plus a code read. Nothing here is built yet: this is a structure phase, fixes follow
+the order below. New findings are numbered from #45. Decided: no Rust (no measured problem is a
+language problem; revisit only for an on-device vector index, by prototype). Smart search is parked
+(Phase 11). Copy keeps its current plain text.
+
+Order: 6 (downloads) → 7 (measure, reader) → 3.1/3.2 (the ViewModel split, with 7.2 as its first
+slice) → 8 (search) → 9 (works, editions, pages) → 10 (UI batch) → 11 (later).
+
+## New findings
+
+| # | Finding | Evidence |
+|---|---|---|
+| 45 | Reader state is rebuilt on every scroll stop: saving the position re-emits `readerState`, which maps every footnote and TOC row of the book again, re-queries a ±24 block window the reader no longer draws from (`ReaderWindow` does), and runs `editionsFor` | `AtharContentViewModel.readerState` / `toReaderUi`; الشرح الكبير has 14,433 notes, مجموع الفتاوى 1,361 headings |
+| 46 | `books` (2,465 rows) is rebuilt on every position save: it combines `positions` | `AtharContentViewModel.books` |
+| 47 | `onReaderPosition` loads all frames of the book on every save | same file |
+| 48 | No book-open benchmark, so «فتح الكتب صار ثقيلا» (1.2.3) passed unseen. Benchmarks cover start, tabs, list fling, reader fling, typing | `AtharBenchmarks.kt` |
+| 49 | Idle home screen: 153 MB PSS, 62 MB Java heap (Redmi, 1.2.3). Whole-catalog `SELECT *` feeds five flows, three of them `Eagerly` | `dumpsys meminfo`; `observeAllEntities`/`observeCatalog` callers |
+| 50 | The page number at the foot is one page behind and has no volume: `folio` shows the marker at or before the top line, but a marker ENDS its page. To confirm on the phone: الواسطية is 3/129 in print, its text sits between markers 128 and 129 | `ReaderScreen.kt` `folio`; `parser.ts` "A marker ENDS its page" |
+| 51 | `mjmwa-al-ftawa` (2026-11-03 copy) has no page markers at all; 513 of 2,549 books have none. `majmu-al-fatawa` repeats marker 88 of vol 3 fifteen times | corpus scan 2026-11-10 |
+| 52 | A search hit has no app position. `docs` rows carry the site url only, so the app searches the chapter again frame by frame (≤ 40 frames, each a download + local search) and ignores the url's «--pages-N-M» part → long «جارٍ فتح الموضع», wrong landing. In-book search goes through the same path | `gen-search-index.ts` schema; `locateOnline` |
+| 53 | Live index rows are still v1 chunks (~9,000 chars): an AND query matches words pages apart, no proximity tier. «من أرتد ثم تاب حبط»: the wanted passage («اتفاق الأمة على أن من كان مؤمنا ثم ارتد…») ranked 13th and 20th | live API 2026-11-09 |
+| 54 | The same passage fills four result places (two مجموع الفتاوى copies, دقائق التفسير, مجموعة الرسائل): results are not folded per work, and duplicate editions are separate works | same query |
+| 55 | Snippets show folded text (علي، الائمه) for rows loaded with `SEARCH_NO_RAW` | same query |
+| 56 | No work identity: slugs come from the importer's transliteration (`majmu-al-fatawa` / `mjmwa-al-ftawa`), so a duplicate can only be guessed from title + author | `docs/editions-and-duplicates-2026-11-07.md` |
+| 57 | No Android job in CI: the 50 test files run only on the owner's machine | `.github/workflows/ci.yml` |
+| 58 | No crash or error capture in the app | grep: no handler, no reporter |
+| 59 | 972 `src/content/audio/*.md` files have an uncommitted `url:` change (r2 → app-content) | `git status` 2026-11-10 |
+| 60 | `ReaderPanel` page jump filters `state.blocks` for page breaks under a note that says all blocks are in memory; they are a ±24 window | `ReaderPanel.kt:150` |
+
+## Phase 6 — downloads (owner: still very bad, 2026-11-10)
+
+Report: slow, slow to start, the whole phone drags during «تنزيل الكل» / all poems. Phase 1 fixed
+the lock and the 20-at-once transfers; the cost that is left is per item, not per byte.
+
+Measured 2026-11-10 on the Redmi (23053RN02Y), benchmark build 1.2.2, content from the local server
+over `adb reverse` (so no network wait at all), downloads screen open:
+
+| Run | Size | Time | CPU used | Frames |
+|---|---|---|---|---|
+| 105 poems | 2.7 MB | 30 s (3.5 items/s), first start 1.2 s after the tap | 121 core-seconds (≈ 3.7 cores busy) | 164 of 180 janky, p90 150 ms, p99 850 ms |
+| 953 مسائل | 649 KB | first start about 9 s after the tap, then 188 s (5 items/s) | 231 core-seconds in the first 63 s (≈ 3.7 cores busy) | 1,115 of 1,199 janky, p90 150 ms, p99 2.3 s |
+| 2 books (27.6 MB of text) + 1 poem, after a restart | 6.1 MB packages | 37 s, i.e. 0.75 MB of text per second | 77 core-seconds, including a catalog apply | 70 of 527 janky |
+
+Where the CPU went during the مسائل run (`top -H`, 8 s): coroutines on `Dispatchers.Default` 67%,
+GC 12%, WorkManager's executor 9%, main thread 8% (most of one core), OkHttp under 2%. So the
+network and the database import are not the cost; the app's own bookkeeping per item is.
+
+| # | Finding | Evidence |
+|---|---|---|
+| 61 | About one core-second per downloaded item, however small (a مسألة is 0.6 KB). «المكتبة كاملة · نصوص» is 5,511 items: about an hour and a half of all cores busy before a single large book is counted | runs above |
+| 62 | Two thirds of that CPU is on `Dispatchers.Default`, where the list states are built. Each finished item changes `localStates`, `retainedEntityIds` and the job list, and each of those rebuilds whole-catalog lists (books 2,465, articles 1,984, مسائل 953, the downloads rows over 5,550 entries; three of them are `Eagerly`, so they rebuild with no screen showing them). To confirm with a method trace before changing anything | `top -H`; `AtharContentViewModel` list flows |
+| 63 | One WorkManager job per item. In the foreground WorkManager starts up to 200 at once; all but 3 then wait on `transferSlots`, but each has already run its start-up: two DB reads, a foreground promotion and a notification. `workInfos` re-reads every unfinished job on every job change | log: "Starting work" reached 200, 400, 600, 800 while 24–275 were done; `ContentDownloadWorker.transfer` calls `setForeground` before `transferSlots` |
+| 64 | Slow to start: `downloadAll` writes the pins, then enqueues one unique work per item, each its own WorkManager transaction, before anything is scheduled (> 8 s for 953). After a restart with a new catalog, downloads resumed 33 s after launch: 23 s to fetch, parse and apply the 10 MB catalog (heap 130–159 MB, four GCs in 1.5 s), then the reconcile | log 00:35:06 → 00:35:39 |
+| 65 | Small kinds are thousands of requests for a few MB: poems 109 items / 3.0 MB, articles 1,984 / 11.1 MB, مسائل 953 / 0.7 MB (median 0.6 KB), two requests each (index + package). On mobile data each request is a round trip of 130–340 ms | catalog `41b0884a…`; curl from Sudan via NBO |
+| 66 | Packages are not cached at Cloudflare's edge: `cf-cache-status: DYNAMIC` on an `immutable` content-addressed `.athar` (the extension is not in the default cacheable list), so every request goes to R2. Closes the question in 5.4 | `curl -I` |
+| 67 | Books: the phone builds the database. 0.75 MB of text per second with no network wait, so all books (7.46 GB of text) is about 2.8 hours of import at best, against about 8 minutes to fetch their 1.89 GB at the 4 MB/s measured here | runs above; catalog sizes |
+| 68 | The bulk row shows the compressed size («الكتب · نصوص … ١٫٧ غ.ب»); on the phone books take about 5.7× that, ≈10.7 GB. Measured by rebuilding the phone's schema from 50 books (every 50th by size): 36.7 MB downloaded → 208.5 MB of database. Of that: text 41% (Arabic is 2 bytes a letter once unzipped), the rest of each block row 25% (book slug, 25 chars, and chapter anchor, 21 chars, stored in each of 13.9M rows), block indexes 23% (`entityId, chapterAnchor` alone 11%), search index 7%, chapters and footnotes 3%. The space check uses the real figure, the label does not | `simdb.py` run 2026-11-10 (scratch); `diskBytes` in `ContentTransferRunner` |
+| 69 | A single download re-promotes the worker to the foreground on every percent (75 times for one book) | log: "Moving WorkSpec to the foreground" |
+| 70a | Measured after 6.3: WorkManager's own threads (`WM.task`) were 60–70% of the CPU of a 1,984-item run, not the list states; with the queue worker they are gone. What remains is the import itself: 1,984 articles (33 MB of text) took 170 s and 637 core-seconds (0.32 per item), 91% janky frames; مسائل (0.65 KB each) 0.13 per item. Per-item phases on a مسألة: fetch 15 ms, preImport 20 ms, importFrames 12 ms, finishImport 27 ms, prepare 7 ms, serialised by `mutationMutex`. Next: a profile of an article import | `threads.sh`, ADL timings (removed) |
+| 70 | Two of the block indexes match no query: `(entityId, chapterAnchor)` and `fp64` (grep finds neither in a WHERE). `(blockIdHi, blockIdLo)` is only read together with `entityId`. Together ≈18% of book space, ≈1.9 GB | `ContentDatabase.kt:125-130`; `ContentDatabase.kt:456` |
+| 71 | The text could stay where it already is: the downloaded `.athar` is gzip frames with offsets in `.idx`. Same 50 books with text left in the package, integer book/chapter keys and only lookup + search rows in SQLite: 48 MB of database + 36.7 MB of packages = 85 MB instead of 208 MB (2.5× less, all books ≈4.3 GB). It also removes most of the row-by-row import (#67). Reader, selection and snippets would read frames instead of rows | same run, `lean.db` |
+
+Steps, in order. 6.1 and 6.2 are the bulk of the win and need no format change.
+
+- [ ] 6.1 Method trace of the مسائل run on a profileable build; name the flows behind #62. Add
+      `bulkDownload` to the benchmarks: N small items from the local server, limits on core-seconds
+      per item and janky frames. (#61, #62)
+- [~] 6.2 (2026-11-10, quick form: `localStates` and `retainedPins` throttled to 1/s in `AtharContentViewModel`; not measured on the phone yet, the real fix below still open) Lists do not rebuild per item: completed/retained ids applied to the rows already built
+      (the way `withTransfers` lays transfers over them), no `Eagerly` list flows, downloads rows
+      counted in SQL. Part of 3.1 (downloads get their own ViewModel). (#62)
+- [x] 6.3 (2026-11-10: `ContentDownloadWorker.bulk()` + `ContentDownloadScheduler.enqueueBulk`; «تنزيل الكل», resume and launch recovery (>8 pending) use it; audio and single downloads keep one job each. Phone, same local-server method, no UI polling: 953 مسائل 188 s → 34.6 s, first item 9 s → 2.2 s, 127 core-s, janky 93% → 29%; 109 poems 30 s → 10.4 s, 28 core-s; pause stops within the 3 in flight, resume completes exactly 953 of 953) One worker runs a queue instead of one job per item: bulk download is a single unique
+      work that takes items from the pins table, three at a time, one foreground notification. A
+      single book stays one job. Removes the enqueue wait and the 200-worker start-up. (#63, #64, #69)
+- [ ] 6.4 Small kinds ship as one bundle per kind (poems, articles, مسائل): one request, one import
+      transaction per commit budget. Per-item packages stay for single downloads and updates. (#65)
+- [ ] 6.5 Cache Rule on `app-content.arthurarchive.com`: cache everything under `app/v2/content/`
+      (immutable, content-addressed). Owner applies it or approves it; it is account configuration. (#66)
+- [~] 6.6 (launch already recovers pinned downloads before it syncs; the 23 s catalog apply and its heap are untouched) Catalog sync does not hold downloads: resume pinned work from the stored catalog at
+      launch, apply a new catalog after. Catalog parsed as a stream. (#64)
+- [ ] 6.7 Book import cost: prototype a per-book prebuilt SQLite file (text and its search rows built
+      in the pipeline, attached on the phone) against today's row-by-row import, on one large book.
+      Decide from the numbers; this is the main-plan guardrail case. (#67)
+- [x] 6.8 (2026-11-10: diskBytes = package + 1.5× text; row and menu say «تأخذ N على الهاتف») Bulk rows show the space the download will take on the phone. (#68)
+- [ ] 6.9 Smaller books on the phone, cheapest first: (a) drop the indexes no query uses, a
+      migration and no format change (≈18%); (b) integer book and chapter keys instead of slugs in
+      every row; (c) text stays in the downloaded frames, SQLite keeps lookup and search rows only
+      (≈2.5× less). (c) is decided together with 6.7, from the same one-book prototype. (#70, #71)
+
+## Phase 7 — measure, then the reader
+
+- [ ] 7.1 `bookOpen` macrobenchmark (tap a row → first page drawn) for a small book and مجموع الفتاوى,
+      warm and cold cache; a trace section around open. Record 1.2.2 against 1.2.3 to name the regression. (#48)
+- [ ] 7.2 Reader state in two parts: the book (title, card, TOC, footnotes, editions; loaded once) and
+      the place (position, annotations). Footnotes read per page, not per book. Drop the ±24 window
+      once nothing reads `state.blocks`. First slice of 3.1. (#45, #47, #60)
+- [ ] 7.3 Library lists do not depend on every position: «آخر ما قرأت» from its own small query. (#46)
+- [ ] 7.4 Catalog lists select only the columns a row draws; check heap before and after. (#49)
+
+## Phase 8 — search (owner: «البحث ثم البحث ثم البحث»)
+
+Acceptance case for the whole phase: «من أرتد ثم تاب حبط» shows the ابن تيمية passage in the first
+three places, once, and a tap lands on it within a second on a downloaded book.
+
+Search test, 2026-11-10: 20 queries against the live Worker with a cache-busting parameter, plus
+deep pages and in-book search (`searchtest.py`, scratch). Times are from the PC, not from Sudan.
+
+| # | Finding | Evidence |
+|---|---|---|
+| 72 | One heavy query takes search down for everyone. A 9-word query took 6.9–8.4 s; right after, every query (even «الله», «الصبر») answered 503 «search unavailable» for about a minute. Deep pages of common phrases also fail now and then (offset 60 of «وقال رسول الله صلى الله عليه وسلم»). Likely the single D1 database's queue; the Worker log holds the exact error | runs 00:55–00:57 |
+| 73 | Ranking does not know which source matters: «إنما الأعمال بالنيات» has neither صحيح البخاري nor الأربعون النووية in the first 100 (first: عقيدة المسلم). `prior` is not live yet, so every source weighs 1, and bm25 over 9k-char chunks favours short chunks | `search-handler.ts` `schema.prior`; 5 pages read |
+| 74 | Names: «ابن تيمية» shows articles about him first and none of his books; «البربهاري» shows his card, then a nisba entry in الأنساب للسمعاني, before شرح السنة | run 1 |
+| 75 | 21 of 97 long snippets (22%) are folded text («الا تري انه لو ادي زكاه»): the rows loaded with `SEARCH_NO_RAW` (#55, measured) | run 1 |
+| 76 | One work fills many places: up to 6 of 20 («شرح السنة», «الصبر»); `WORK_CAP` = 2 per tier, but a work comes back in each later tier, and editions count as different works (#54) | run 1, `sameWorkRepeats` |
+| 77 | Each page is 0.4–1.9 s from here (common words slowest); every later page reruns the tiers before it. In-book search asks for 100 hits, i.e. up to five pages one after another | `OnlineSearch.hits`; `AtharContentViewModel.kt:1178` |
+| 78 | Big books with almost no chapters, so search and the TOC can only say «صفحات N-M»: 15 books over 3 MB of text have ≤3 chapters (البداية والنهاية 42 MB in 2, المغني 3, كشاف القناع 1). In صحيح البخاري the first hadiths sit under «مقدمة د مصطفى البغا» | catalog `41b0884a…` |
+| 79 | Offline search cannot match a phrase in SQL: the phone index is `detail=none` («phrase queries are not supported»), so phrases are checked in Kotlin over candidates, and bm25 ranks only the first `RankCap` matches in index order (the server does the same with `RANK_CAP` = 10,000). For a common word the order is a sample of the books imported first | `ContentSearch.kt:111`, `:386`; `search-handler.ts:45` |
+| 80 | Smaller: Latin «tawhid» finds nothing; an ayah («قل هو الله أحد») finds hadith books, as the index has no Quran (types: book, poem, article, question, term, person) | run 1 |
+
+- [ ] 8.1 Each index row carries the app's place (first block ordinal, or the stable block id from
+      `content-ids`); the app opens that frame directly. `locateOnline`'s walk goes. (#52)
+- [ ] 8.2 Full v2 reindex (2,500-char passages, `raw`, `prior`) now that the account is Workers Paid:
+      check `size_after` against the 10 GB cap first, raise `SEARCH_ROW_BUDGET`, swap. (#53, #55)
+- [ ] 8.3 A proximity tier between «exact phrase» and «every word» (FTS5 `NEAR`), same tier in the
+      Kotlin search; golden cases shared by both (4.9). (#53)
+- [ ] 8.4 One result per work per passage: editions folded under their default (needs 9.1). (#54)
+- [ ] 8.5 Result card redesign: book and author, the passage with the words marked, volume and page.
+      Cleaner, fewer elements. Mock first, owner picks.
+- [ ] 8.6 Time each stage of one search (DNS, Worker, D1, draw) on Sudani mobile data before
+      touching speed; the Worker already logs D1 time.
+- [~] 8.7 (2026-11-10, local only, not deployed: long queries drop particles from the every-word tiers, `requiredWords` in `search-rank.ts` + test; the 503 cause and retry still open) First in this phase: a heavy query must not fail the rest. Read the Worker log for the
+      503 reason; then a long query runs as phrase/NEAR only (not every-word over 9+ words), and
+      one retry on overload. (#72)
+- [ ] 8.8 The 20 queries above become the golden list with the expected top three (Bukhari for
+      «إنما الأعمال بالنيات», his books for «ابن تيمية», …); 8.2–8.4 are judged against it. (#73, #74, #76)
+- [ ] 8.9 Page 2 and later read on from where page 1 stopped instead of rerunning the tiers; in-book
+      search shows the first page at once. (#77)
+- [ ] 8.10 The 15 large books get real chapters (part of 9.4). (#78)
+- [ ] 8.11 Offline ranking after 6.9 decides the phone index format; a `detail=full` index costs
+      space, so measure it on the same 50 books first. (#79)
+
+## Phase 9 — works, editions, pages
+
+- [ ] 9.1 A `work` id in frontmatter, independent of the slug; `edition_of` resolved through it; the
+      audit refuses a new book whose work already exists without a link. (#56)
+- [ ] 9.2 Round-2 duplicate decisions (`docs/editions-and-duplicates-2026-11-07.md`), مجموع الفتاوى first. (#54, #56)
+- [x] 9.3 (2026-11-10, checked on the phone: first page of فضائل مكة now shows ١١, the marker that ends it; volume shown when the book has volumes; no unit test, it lives in the composable) Folio shows the page being read, with its volume; one unit test on a two-page fixture. (#50)
+- [ ] 9.4 Audit lists books with no page markers and repeated markers; decide per book: re-import
+      through Athar-Engine, or hide page UI for it. (#51)
+- [ ] 9.5 «طبعة أثر» rule written into `docs/book-formatting-rules.md`: a typo fix keeps the edition;
+      any other change to the text makes it «طبعة أثر» with a change log (place, before, after,
+      proof). No code until the first real case.
+- [ ] 9.6 New books and articles through Athar-Engine, after 9.1 (owner: later).
+
+## Phase 10 — UI batch (owner's list)
+
+- [x] 10.1 (2026-11-10, checked on the phone: the menu opens right above the share button) Share: the نص/صورة choice is a small AtharMenu at the share button.
+- [x] 10.2 (2026-11-10, checked on the phone: «نُسخ ✓» for 1.2 s, then the selection clears) Copy: the icon turns into ✓ for a moment.
+- [ ] 10.3 Share image follows the theme; better layout; verse as صدر then عجز on two lines, staggered.
+- [ ] 10.4 Selection box keeps the one-word size however long the selection.
+- [ ] 10.5 Verse inside books drawn like the poem page.
+- [ ] 10.6 Poem commentary redesigned from scratch for the phone (no side column). Mock first.
+- [ ] 10.7 Coloured start screen: verse takes a colour that reads on each background, not white.
+- [ ] 10.8 Pages opened from ⋮ show where you are (title, and the entry marked in the menu).
+- [ ] 10.9 «أبلغ عن خطأ» in the selection menu: opens the mail app with book, place and the selected
+      text filled in. No server.
+
+## Phase 11 — later, by decision
+
+- Smart search: owner prefers a self-built index on R2 over Vectorize (whole library on Vectorize is
+  ~$12/month from stored dimensions alone). Hard rule: it turns itself off before it can cost money.
+  Pilot on the 52 mutoon and their شروح first.
+- Android build + unit tests in CI (#57); crash capture (#58) — decide with 10.9.
+- Commit or revert the 972 audio url edits (#59): owner to say which.
+
 ## Done when
 
 Every box is ticked, each phase's tests pass, and on the Redmi 12 «تنزيل الكل» runs while a book

@@ -3,6 +3,8 @@ title: "مجموع الفتاوى"
 status: published
 published_at: 2026-11-03
 person: ibn-taymiyyah
+edition_of: majmu-al-fatawa
+edition: "نسخة أخرى من التحقيق نفسه (بلا ترقيم صفحات)"
 kind: كتاب
 description: "مجموع الفتاوى، تأليف ابن تيمية"
 ---
