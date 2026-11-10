@@ -274,7 +274,7 @@ deep pages and in-book search (`searchtest.py`, scratch). Times are from the PC,
 - [x] 10.1 (2026-11-10, checked on the phone: the menu opens right above the share button) Share: the نص/صورة choice is a small AtharMenu at the share button.
 - [x] 10.2 (2026-11-10, checked on the phone: «نُسخ ✓» for 1.2 s, then the selection clears) Copy: the icon turns into ✓ for a moment.
 - [~] 10.3 (2026-11-10, commit 0db0c5eb: the card follows the reader theme, not checked on the phone; the staggered verse layout is still open, it needs a verse flag from the callers) Share image follows the theme; better layout; verse as صدر then عجز on two lines, staggered.
-- [ ] 10.4 Selection box keeps the one-word size however long the selection.
+- [~] 10.4 (2026-11-10: the action bar label is «بمصدر» so a long selection has the bar width of one word; not checked on the phone) Selection box keeps the one-word size however long the selection.
 - [~] 10.5 (2026-11-10, commit 3886ea64: صدر at the start, عجز at the far end, in `ReaderBlockView`; not checked on the phone) Verse inside books drawn like the poem page.
 - [ ] 10.6 Poem commentary redesigned from scratch for the phone (no side column). Mock first.
 - [ ] 10.7 (2026-11-10: a neutral splash and an icon intro were tried and reverted at the owner's request; the system default splash is back. Do not touch again unless asked) Coloured start screen: verse takes a colour that reads on each background, not white.

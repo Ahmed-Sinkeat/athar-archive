@@ -1323,7 +1323,8 @@ internal fun SelectionToolbar(
         ToolbarSeparator(colors)
         // One word has nothing to cite, and the bar has no room for six actions.
         if (onCopyCited != null && onMeaning == null) {
-            SelectionAction(AtharIcons.Copy, "نسخ مع التذييل", colors, false, "reader_sel_copy_cited", onCopyCited)
+            // «معنى» is 4 letters: a 6-letter label keeps the bar the size it has for one word.
+            SelectionAction(AtharIcons.Copy, "بمصدر", colors, false, "reader_sel_copy_cited", onCopyCited, "نسخ مع التذييل")
             ToolbarSeparator(colors)
         }
         Box {
