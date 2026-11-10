@@ -23,6 +23,7 @@ private const val SearchSchemaVersion = 1L
 private const val CandidateBatchSize = 80
 private const val RankCap = 20_000
 private const val PositionsChunk = 2_000
+private const val InsertCatalog = "INSERT INTO catalog_fts(titleNorm, personNorm, topicsNorm, id) VALUES (?, ?, ?, ?)"
 private const val BlockFtsDdl = "norm, tokenize='unicode61', content='', contentless_delete=1, detail=full"
 
 /** Raw DDL selected by M0/R2b. Room deliberately does not model these virtual tables. */
@@ -71,10 +72,7 @@ object ContentSearchSchema {
         val meta = meta(connection)
         if (meta["positions"] == 1L) { positions = true; return }
         connection.execSQL("CREATE VIRTUAL TABLE IF NOT EXISTS block_fts_full USING fts5($BlockFtsDdl)")
-        connection.execSQL(
-            "CREATE TRIGGER IF NOT EXISTS block_fts_full_before_delete BEFORE DELETE ON block BEGIN " +
-                "DELETE FROM block_fts_full WHERE rowid = OLD.rowid; END",
-        )
+        connection.execSQL(deleteTrigger("block_fts_full"))
         // Rowids only grow (autoGenerate), so blocks imported from now on are above this mark and
         // [indexBlocks] writes them to both indexes; the copy walks the ones below it.
         if (meta["positionsTo"] == null) {
@@ -134,8 +132,7 @@ object ContentSearchSchema {
             "DROP TRIGGER IF EXISTS block_fts_full_before_delete",
             "DROP TABLE IF EXISTS block_fts",
             "ALTER TABLE block_fts_full RENAME TO block_fts",
-            "CREATE TRIGGER IF NOT EXISTS block_fts_before_delete BEFORE DELETE ON block BEGIN " +
-                "DELETE FROM block_fts WHERE rowid = OLD.rowid; END",
+            deleteTrigger("block_fts"),
             "DELETE FROM athar_search_meta WHERE key IN ('positionsAt', 'positionsTo')",
             "INSERT OR REPLACE INTO athar_search_meta(key, value) VALUES ('positions', 1)",
         ).forEach { connection.execute(it) }
@@ -176,7 +173,7 @@ object ContentSearchSchema {
             }
         }
         connection.usePrepared(
-            "INSERT INTO catalog_fts(titleNorm, personNorm, topicsNorm, id) VALUES (?, ?, ?, ?)",
+            InsertCatalog,
         ) { insert ->
             changed.asSequence().filter { it.catalogPresent && it.editionOf == null }.forEach { entity ->
                 insert.bindText(1, entity.titleNorm)
@@ -209,35 +206,24 @@ object ContentSearchSchema {
         }
     }
 
-    private suspend fun create(connection: PooledConnection) {
-        connection.execute(
-            "CREATE VIRTUAL TABLE IF NOT EXISTS block_fts USING fts5(" +
-                "$BlockFtsDdl)",
-        )
-        connection.execute(
-            "CREATE VIRTUAL TABLE IF NOT EXISTS catalog_fts USING fts5(" +
-                "titleNorm, personNorm, topicsNorm, id UNINDEXED, tokenize='unicode61')",
-        )
-        connection.execute(
-            "CREATE TRIGGER IF NOT EXISTS block_fts_before_delete BEFORE DELETE ON block BEGIN " +
-                "DELETE FROM block_fts WHERE rowid = OLD.rowid; END",
-        )
-    }
+    // The search tables, written once here (scripts/bundle-app-catalog.mjs builds the same for the
+    // bundled catalog and must follow any change).
+    private val CreateTables = listOf(
+        "CREATE VIRTUAL TABLE IF NOT EXISTS block_fts USING fts5($BlockFtsDdl)",
+        "CREATE VIRTUAL TABLE IF NOT EXISTS catalog_fts USING fts5(" +
+            "titleNorm, personNorm, topicsNorm, id UNINDEXED, tokenize='unicode61')",
+        deleteTrigger("block_fts"),
+    )
+
+    private fun deleteTrigger(table: String) =
+        "CREATE TRIGGER IF NOT EXISTS ${table}_before_delete BEFORE DELETE ON block BEGIN " +
+            "DELETE FROM $table WHERE rowid = OLD.rowid; END"
+
+    private suspend fun create(connection: PooledConnection) = CreateTables.forEach { connection.execute(it) }
 
     private fun create(connection: SQLiteConnection) {
         createMetadata(connection)
-        connection.execSQL(
-            "CREATE VIRTUAL TABLE IF NOT EXISTS block_fts USING fts5(" +
-                "$BlockFtsDdl)",
-        )
-        connection.execSQL(
-            "CREATE VIRTUAL TABLE IF NOT EXISTS catalog_fts USING fts5(" +
-                "titleNorm, personNorm, topicsNorm, id UNINDEXED, tokenize='unicode61')",
-        )
-        connection.execSQL(
-            "CREATE TRIGGER IF NOT EXISTS block_fts_before_delete BEFORE DELETE ON block BEGIN " +
-                "DELETE FROM block_fts WHERE rowid = OLD.rowid; END",
-        )
+        CreateTables.forEach(connection::execSQL)
     }
 
     private fun createMetadata(connection: SQLiteConnection) {
@@ -272,7 +258,7 @@ object ContentSearchSchema {
             "SELECT id, titleNorm, personName, topicsCsv FROM entity WHERE catalogPresent = 1 AND editionOf IS NULL ORDER BY id",
         ).use { entities ->
             connection.prepare(
-                "INSERT INTO catalog_fts(titleNorm, personNorm, topicsNorm, id) VALUES (?, ?, ?, ?)",
+                InsertCatalog,
             ).use { insert ->
                 while (entities.step()) {
                     insert.bindText(1, entities.getText(1))
@@ -306,7 +292,7 @@ object ContentSearchSchema {
         }
         if (missing.isEmpty()) return
         connection.prepare(
-            "INSERT INTO catalog_fts(titleNorm, personNorm, topicsNorm, id) VALUES (?, ?, ?, ?)",
+            InsertCatalog,
         ).use { insert ->
             missing.forEach { (id, titleNorm, personName, topicsCsv) ->
                 insert.bindText(1, titleNorm)
