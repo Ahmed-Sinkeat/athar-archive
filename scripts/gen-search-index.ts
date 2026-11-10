@@ -296,7 +296,9 @@ async function main() {
           type: e.collection, book: e.collection === "poem" ? e.id : "", person,
           url: `/${urls[e.collection]}/${e.id}`,
           displayTitle: title, title: searchTitle,
-          text: strip([e.data.description ?? "", e.data.definition ?? "", e.collection === "poem" ? numberedVerses(body) : body].join(" ")),
+          // A poem is searched in its verses only: its description, «المقدمة» card and prose headings
+          // came up as poem hits that read like a book's (12.x owner feedback 2026-11-11).
+          text: strip(e.collection === "poem" ? numberedVerses(body) : [e.data.definition ?? "", body].join(" ")),
         });
         break;
       }
@@ -458,15 +460,18 @@ export function passages(text: string): string[] {
 }
 
 /**
- * A poem as «١ - صدر … عجز ٢ - …»: stripping folds its line breaks away, and the app's result
- * card (verseLines in SearchScreen.kt) lays verses out by these numbers and hemistichs by « … ».
+ * A poem's verses only, as «١ - صدر … عجز ٢ - …»: stripping folds its line breaks away, and the app's
+ * result card (verseLines in SearchScreen.kt) lays verses out by these numbers and hemistichs by « … ».
+ * Lines that are not verse (the import's card, «المقدمة», «بسم الله», prose notes) are left out.
  */
 export function numberedVerses(body: string): string {
   let n = 0;
-  return body.split("\n").map((line) => {
-    if (!line.includes(" --- ")) return line;
+  return body.split("\n").flatMap((line) => {
+    if (/^\s*[٠-٩\d]+\s*[-–]\s/.test(line)) return [line.trim()];
+    const halves = line.match(/^(.+?)\s+(?:---|\.\.\.|…)\s+(.+)$/);
+    if (!halves || line.trimStart().startsWith("#")) return [];
     const num = String(++n).replace(/\d/g, (d) => String.fromCharCode(0x0660 + Number(d)));
-    return `${num} - ${line.trim().replace(" --- ", " … ")}`;
+    return [`${num} - ${halves[1].trim()} … ${halves[2].trim()}`];
   }).join("\n");
 }
 

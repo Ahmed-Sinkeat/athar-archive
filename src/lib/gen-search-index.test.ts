@@ -3,7 +3,7 @@ import { parseReadableDocument } from "./app-v2/parser.js";
 import { stripMdRaw } from "./strip-md.js";
 
 vi.mock("../../scripts/gen-app-dict.js", () => ({ DICTS: [] }));
-const { appPlace, placedPassages } = await import("../../scripts/gen-search-index.js");
+const { appPlace, placedPassages, numberedVerses } = await import("../../scripts/gen-search-index.js");
 
 // 30 printed pages of distinct paragraphs, with a caret note and an inline marker the app keeps apart.
 // Distinct words made of letters only: the placement matches letters, not digits.
@@ -30,5 +30,13 @@ describe("search passages carry the app's blocks", () => {
       }
       expect(to - from).toBeLessThan(20);
     }
+  });
+});
+
+describe("a poem is indexed by its verses", () => {
+  it("keeps numbered and «...»/«---» verses, drops the card, headings and prose", () => {
+    const body = "## المقدمة\n\n<!-- card -->\n- **الكتاب:** نظم\n<!-- /card -->\n\nبِسْمِ اللهِ\n\nالحمد لله الّذِي قَدْ وَفَّقَا ... لِلْعِلْمِ خَيْرَ خَلْقِهِ\nصدر ثان --- عجز ثان\n";
+    expect(numberedVerses(body)).toBe("١ - الحمد لله الّذِي قَدْ وَفَّقَا … لِلْعِلْمِ خَيْرَ خَلْقِهِ\n٢ - صدر ثان … عجز ثان");
+    expect(numberedVerses("١ - صدر … عجز\n\nشرح منثور")).toBe("١ - صدر … عجز");
   });
 });
