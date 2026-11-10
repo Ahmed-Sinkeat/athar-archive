@@ -89,7 +89,7 @@ Rule for every step: fix the cause, not the symptom. No shortcut comments, no "f
 
 - [ ] 4.1 Adhkar reminders scheduled one at a time at a fixed clock time (no drift). (#28)
 - [ ] 4.2 `FallbackDns`: DNS over HTTPS with the zone IPs as bootstrap; remember last good addresses. (#31)
-- [ ] 4.3 `testTagsAsResourceId` only in the benchmark build. (#34)
+- [x] 4.3 (2026-11-10, `BuildConfig.BUILD_TYPE == "benchmark"`) `testTagsAsResourceId` only in the benchmark build. (#34)
 - [ ] 4.4 Reader list keyed by ordinal so loaded chunks update in place. (#35)
 - [ ] 4.5 Large screens: cap content width; check one tablet/foldable emulator. (#33)
 - [ ] 4.6 Analytics on the shared client, batched (P2). (#14b)

@@ -88,12 +88,12 @@ class MainActivity : ComponentActivity() {
                     com.atharchive.ui.theme.LocalReaderFont provides readerSettings.font.family(readerSettings.fontStamp),
                 ) {
                     // Macrobenchmarks drive the app through UiAutomator, which can only
-                    // see resource-ids. This publishes every testTag as one; it changes
-                    // nothing a user sees and costs one semantics flag.
+                    // see resource-ids. The benchmark build publishes every testTag as one;
+                    // the reader's builds skip it.
                     Box(
                         Modifier
                             .fillMaxSize()
-                            .semantics { testTagsAsResourceId = true },
+                            .then(if (BuildConfig.BUILD_TYPE == "benchmark") Modifier.semantics { testTagsAsResourceId = true } else Modifier),
                     ) {
                     AtharApp(
                         downloadTarget = target,
