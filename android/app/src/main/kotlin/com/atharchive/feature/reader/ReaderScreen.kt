@@ -307,6 +307,7 @@ fun ReaderScreen(
     // An empty book has nothing to restore; otherwise wait for the saved place.
     val contentReady = positionReady ||
         (window != null && window.ready && window.count == 0)
+    LaunchedEffect(contentReady) { if (contentReady) androidx.tracing.Trace.endAsyncSection(com.atharchive.data.BookOpenTraceName, 0) }
     BackHandler(selection.active || panelOpen || tappedHighlight != null || settingsOpen) {
         selection.clear()
         panelOpen = false

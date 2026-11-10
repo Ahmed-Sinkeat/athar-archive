@@ -136,6 +136,7 @@ private const val SearchPageSize = 40
 // ponytail: a list search keeps the best 3000; the largest list (المقالات) is ~2000, raise it with the catalog.
 private const val CatalogMatchLimit = 3000
 private const val SearchLatencyTraceName = "AtharSearchKeystrokeToResults"
+const val BookOpenTraceName = "AtharBookOpen"
 
 sealed interface ContentSyncUiState {
     data object LocalReady : ContentSyncUiState
@@ -1127,6 +1128,8 @@ class AtharContentViewModel @Inject constructor(
     }
 
     fun openReader(entityId: String, targetOrdinal: Int? = null) {
+        // Ended by the reader when its first page shows (the bookOpen benchmark reads it).
+        Trace.beginAsyncSection(BookOpenTraceName, 0)
         viewModelScope.launch(errorHandler) {
             personalLibrary.recordOpened(entityId)
             val saved = userDao.readingPosition(entityId)

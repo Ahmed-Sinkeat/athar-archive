@@ -30,6 +30,7 @@ import org.junit.runner.RunWith
  *   booksFling       catalogue list scroll                frame timing
  *   readerFling      reader scroll, the §17 10 s fling    0 dropped  (fail > 1%)
  *   searchTyping     keystroke → results                  < 120 ms   (fail 300 ms)
+ *   bookOpen         tap a row → first page shown          AtharBookOpen trace section
  *
  * Frame timing is reported as P50/P90/P99 frame duration by the harness; the dropped-frame
  * budget is read off P99 against the device's frame deadline rather than asserted here, so
@@ -142,6 +143,49 @@ class ReaderBenchmark {
         },
     ) {
         device.scrollVerticallyFor(ReaderScrollDurationMs)
+    }
+}
+
+@RunWith(AndroidJUnit4::class)
+@OptIn(ExperimentalMetricApi::class)
+class BookOpenBenchmark {
+
+    @get:Rule
+    val rule = MacrobenchmarkRule()
+
+    @Test
+    fun smallBookWarm() = open(null, StartupMode.WARM)
+
+    @Test
+    fun smallBookCold() = open(null, StartupMode.COLD)
+
+    /** مجموع الفتاوى: the book the 1.2.3 slowdown was reported on. */
+    @Test
+    fun largeBookWarm() = open("مجموع الفتاوى", StartupMode.WARM)
+
+    @Test
+    fun largeBookCold() = open("مجموع الفتاوى", StartupMode.COLD)
+
+    private fun open(title: String?, mode: StartupMode) = rule.measureRepeated(
+        packageName = TargetPackage,
+        metrics = listOf(TraceSectionMetric("AtharBookOpen", TraceSectionMetric.Mode.First), FrameTimingMetric()),
+        iterations = 5,
+        startupMode = mode,
+        setupBlock = {
+            pressHome()
+            startActivityAndWait()
+            device.requireObject("books_screen")
+            device.requireFirstBook()
+            if (title != null) {
+                device.requireObject("books_search").text = title
+                device.waitForIdle()
+            }
+        },
+    ) {
+        device.openFirstBook()
+        device.wait(Until.gone(By.res("reader_loading")), Timeout)
+        device.waitForIdle()
+        device.pressBack()
     }
 }
 

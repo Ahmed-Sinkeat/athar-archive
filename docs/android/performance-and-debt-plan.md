@@ -217,7 +217,8 @@ Steps, in order. 6.1 and 6.2 are the bulk of the win and need no format change.
 ## Phase 8 — search (owner: «البحث ثم البحث ثم البحث»)
 
 Acceptance case for the whole phase: «من أرتد ثم تاب حبط» shows the ابن تيمية passage in the first
-three places, once, and a tap lands on it within a second on a downloaded book.
+three places, once, and a tap lands on that exact passage within a second, on a downloaded book and on
+one read online (owner, 2026-11-10).
 
 Search test, 2026-11-10: 20 queries against the live Worker with a cache-busting parameter, plus
 deep pages and in-book search (`searchtest.py`, scratch). Times are from the PC, not from Sudan.
