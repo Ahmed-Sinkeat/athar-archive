@@ -626,35 +626,41 @@ fun SearchHitCard(
     val context = androidx.compose.ui.platform.LocalContext.current
 
     val tint = hit.type.tint()
+    // Flat rows with a thin rule between them (owner, 2026-11-10), not raised cards.
+    Column(Modifier.fillMaxWidth()) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = horizontalPadding, vertical = 5.dp)
-            .clip(AtharCorners.Card)
-            .background(AtharTheme.colors.raisedSurface)
-            // the type's colour down the card's leading edge
-            .drawBehind {
-                val bar = 3.5.dp.toPx()
-                drawRect(tint, topLeft = androidx.compose.ui.geometry.Offset(if (layoutDirection == androidx.compose.ui.unit.LayoutDirection.Rtl) size.width - bar else 0f, 0f),
-                    size = androidx.compose.ui.geometry.Size(bar, size.height))
-            }
+            .padding(horizontal = horizontalPadding)
             .clickable(
                 interactionSource = remember { MutableInteractionSource() },
                 indication = LocalIndication.current,
                 role = Role.Button,
                 onClick = onClick,
             )
-            .padding(start = 16.dp, end = 6.dp, top = 8.dp, bottom = 10.dp)
+            .padding(start = 4.dp, end = 6.dp, top = 10.dp, bottom = 10.dp)
             .testTag("search_hit_${hit.id}"),
     ) {
         // Title, then what it is (كتاب · author · place) right under it, then two lines of the passage.
         Row(verticalAlignment = Alignment.CenterVertically) {
+            val secondary = AtharTheme.colors.secondaryText
+            val titleLine = remember(hit.sourceTitle, hit.sourceAuthor, hit.died, secondary) {
+                buildAnnotatedString {
+                    append(hit.sourceTitle)
+                    addStyle(SpanStyle(fontWeight = FontWeight.Bold), 0, hit.sourceTitle.length)
+                    val name = hit.sourceAuthor.ifBlank { null }?.let { n -> hit.died?.let { "$n (ت ${arabicDigits(it)}هـ)" } ?: n }
+                    if (name != null) {
+                        val from = length
+                        append(" — $name")
+                        addStyle(SpanStyle(color = secondary, fontWeight = FontWeight.Normal), from, length)
+                    }
+                }
+            }
             Text(
-                text = hit.sourceTitle,
+                text = titleLine,
                 modifier = Modifier.weight(1f),
                 color = MaterialTheme.colorScheme.onSurface,
                 fontFamily = AtharEditorialFontFamily,
-                fontWeight = FontWeight.Bold,
                 fontSize = AtharTextSize.Ui,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
@@ -675,10 +681,7 @@ fun SearchHitCard(
         Row(Modifier.padding(end = 8.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(6.dp)) {
             TypeChip(hit.type.label, tint)
             Text(
-                text = listOfNotNull(
-                    hit.sourceAuthor.ifBlank { null }?.let { name -> hit.died?.let { "$name (ت ${arabicDigits(it)}هـ)" } ?: name },
-                    hit.locationLabel,
-                ).joinToString(" · "),
+                text = hit.locationLabel.orEmpty(),
                 color = AtharTheme.colors.secondaryText,
                 style = MaterialTheme.typography.bodySmall,
                 maxLines = 1,
@@ -696,6 +699,8 @@ fun SearchHitCard(
             overflow = TextOverflow.Ellipsis,
             textAlign = if (poem) androidx.compose.ui.text.style.TextAlign.Center else null,
         )
+    }
+    HorizontalDivider(Modifier.padding(horizontal = horizontalPadding), thickness = 0.6.dp, color = AtharTheme.colors.divider.copy(alpha = 0.6f))
     }
 }
 

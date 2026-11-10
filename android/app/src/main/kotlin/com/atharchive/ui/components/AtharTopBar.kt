@@ -45,7 +45,7 @@ import com.atharchive.ui.theme.AtharTheme
 const val SectionAll = "كل الأقسام"
 
 /** One row of the app's ⋮ menu. */
-data class AtharAppMenuEntry(val label: String, val icon: ImageVector, val onClick: () -> Unit)
+data class AtharAppMenuEntry(val label: String, val icon: ImageVector, val current: Boolean = false, val onClick: () -> Unit)
 
 /**
  * The app-wide ⋮ menu — المقالات, المسائل, الإعدادات. Provided once by
@@ -202,7 +202,7 @@ fun AtharTopBar(
                 AtharMenu(expanded = open, onDismiss = { open = false }, width = 220.dp, modifier = Modifier.testTag("app_menu")) {
                     appMenu.forEachIndexed { index, entry ->
                         if (index == appMenu.lastIndex) AtharMenuDivider()
-                        AtharMenuItem(entry.label, icon = entry.icon, onClick = { open = false; entry.onClick() })
+                        AtharMenuItem(entry.label, icon = entry.icon, checked = entry.current, onClick = { open = false; entry.onClick() })
                     }
                 }
             }

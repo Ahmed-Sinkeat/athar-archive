@@ -394,6 +394,7 @@ fun ReaderScreen(
         }
     }
 
+    val reportContext = androidx.compose.ui.platform.LocalContext.current
     val chapterTitle = remember(state.toc, currentIndex) {
         state.toc.lastOrNull { it.level == 2 && it.blockIndex <= currentIndex }?.title.orEmpty()
     }
@@ -468,11 +469,16 @@ fun ReaderScreen(
       // Item 0 is the title; block i is item i + 1.
       fun blockAtItem(item: Int): ReaderBlock? = if (item < 1) null else window?.peek(item - 1) ?: state.blocks.getOrNull(item - 1)
       fun isBreak(item: Int) = blockAtItem(item) is ReaderBlock.PageBreak
-      // ponytail: scans back at most 2000 blocks for the page's marker; a longer unmarked run is one "page".
-      fun pageStartAtOrBefore(item: Int): Int? = (item downTo maxOf(1, item - 2000)).firstOrNull(::isBreak)
-      // The printed page in view: the marker at or before the top line.
+      // A marker ENDS its page (src/lib/app-v2/parser.ts): the page in view is named by the first marker at or
+      // after the top line, and the last page of a book, which has no marker after it, is the previous marker + 1.
+      // ponytail: scans at most 2000 blocks each way; a longer unmarked run is one "page".
+      fun folioAtOrAfter(item: Int): Pair<Int?, Int>? {
+          (item..item + 2000).firstOrNull(::isBreak)?.let { (blockAtItem(it) as? ReaderBlock.PageBreak)?.let { b -> return b.volume to b.page } }
+          (item downTo maxOf(1, item - 2000)).firstOrNull(::isBreak)?.let { (blockAtItem(it) as? ReaderBlock.PageBreak)?.let { b -> return b.volume to b.page + 1 } }
+          return null
+      }
       val folio by remember(window, state.blocks) {
-          derivedStateOf { pageStartAtOrBefore(listState.firstVisibleItemIndex)?.let { blockAtItem(it) as? ReaderBlock.PageBreak } }
+          derivedStateOf { folioAtOrAfter(listState.firstVisibleItemIndex) }
       }
       Box(modifier = Modifier.fillMaxSize()) {
         LazyColumn(
@@ -598,9 +604,9 @@ fun ReaderScreen(
         }
 
         // The folio: the printed page in view, at the foot of the page as in a printed book.
-        folio?.let { page ->
+        folio?.let { (volume, page) ->
             Text(
-                text = arabic(page.page),
+                text = if (volume != null && state.volumeUnit != null || volume != null && state.volumeStarts.isNotEmpty()) "${volumeLabel(volume, state.volumeUnit)} · ${arabic(page)}" else arabic(page),
                 modifier = Modifier.align(Alignment.BottomCenter).navigationBarsPadding().padding(bottom = 6.dp)
                     .graphicsLayer { alpha = hidden },
                 color = colors.secondary.copy(alpha = 0.8f),
@@ -620,13 +626,17 @@ fun ReaderScreen(
 
         if (selection.active && !selection.dragging) {
             var shareMenu by remember { mutableStateOf(false) }
-            fun act(done: String, action: suspend (ReaderSelection) -> Unit) {
+            var copiedAt by remember { mutableStateOf(0L) }
+            var copiedNow by remember { mutableStateOf(false) }
+            LaunchedEffect(copiedAt) { if (copiedAt != 0L) { copiedNow = true; kotlinx.coroutines.delay(1_200); copiedNow = false; selection.clear() } }
+            fun act(done: String, keep: Boolean = false, action: suspend (ReaderSelection) -> Unit) {
                 scope.launch {
                     try {
                         val chosen = resolveSelection(selection, window, state.blocks, settings.showTashkeel, onLoadSelectionBlocks)
                         if (chosen == null) { toast = "تعذّر قراءة النص المحدد"; return@launch }
                         action(chosen)
-                        selection.clear()
+                        // copy keeps the bar a moment so its ✓ shows; it clears the selection itself
+                        if (!keep) selection.clear()
                         toast = done.ifEmpty { null }
                     } catch (cancelled: CancellationException) { throw cancelled }
                     catch (e: Exception) {
@@ -648,7 +658,14 @@ fun ReaderScreen(
                     val y = if (above >= 0) above else bottom + HandleDrop.toPx() + 20.dp.toPx()
                     IntOffset(0, y.coerceIn(0f, (boxHeight - toolbarHeight).coerceAtLeast(0).toFloat()).roundToInt())
                 }.onSizeChanged { toolbarHeight = it.height },
-                onCopy = { act("نُسخ النص") { onCopySelection(it) } },
+                onCopy = { act("نُسخ النص", keep = true) { onCopySelection(it) }; copiedAt = System.nanoTime() },
+                copied = copiedNow,
+                shareChoice = {
+                    AtharMenu(expanded = shareMenu, onDismiss = { shareMenu = false }, colors = com.atharchive.ui.components.AtharMenuColors(colors.page, colors.text, colors.secondary, colors.accent)) {
+                        AtharMenuItem("مشاركة نصًّا", icon = AtharIcons.Share, onClick = { shareMenu = false; act("") { onShareSelection(it, false) } })
+                        AtharMenuItem("مشاركة صورة", icon = AtharIcons.Share, onClick = { shareMenu = false; act("") { onShareSelection(it, true) } })
+                    }
+                },
                 onCopyCited = onCopyCited?.let { copy -> { act("نُسخ مع التذييل") { copy(it) } } },
                 onShare = { shareMenu = true },
                 onHighlight = { act("حُفظ في الكناشة") { onSaveSelection(it) } },
@@ -665,10 +682,6 @@ fun ReaderScreen(
                     meaning = word to spot
                 } } },
             )
-            AtharMenu(expanded = shareMenu, onDismiss = { shareMenu = false }, colors = com.atharchive.ui.components.AtharMenuColors(colors.page, colors.text, colors.secondary, colors.accent)) {
-                AtharMenuItem("مشاركة نصًّا", icon = AtharIcons.Share, onClick = { shareMenu = false; act("") { onShareSelection(it, false) } })
-                AtharMenuItem("مشاركة صورة", icon = AtharIcons.Share, onClick = { shareMenu = false; act("") { onShareSelection(it, true) } })
-            }
         }
 
         meaning?.let { (word, spot) ->
@@ -784,6 +797,13 @@ fun ReaderScreen(
                 },
                 onMore = { introOpen = true },
                 onOpenAuthor = onOpenAuthor,
+                onReport = {
+                    val place = listOfNotNull(
+                        chapterTitle.takeIf { it.isNotBlank() },
+                        folio?.let { (volume, page) -> listOfNotNull(volume?.let { volumeLabel(it, state.volumeUnit) }, "ص $page").joinToString(" · ") },
+                    ).joinToString(" — ")
+                    com.atharchive.data.emailErrorReport(reportContext, state.bookTitle, place)
+                },
                 onDownload = onDownloadForSearch.takeUnless { bookSaved },
                 downloadTransfer = downloadTransfer,
                 onShare = onShareBook,
@@ -917,6 +937,8 @@ private fun ReaderTopBar(
     onDownload: (() -> Unit)? = null,
     downloadTransfer: com.atharchive.feature.downloads.TransferUi? = null,
     onShare: (() -> Unit)? = null,
+    /** «أبلغ عن خطأ»: a mail to the archive with the book and place. */
+    onReport: (() -> Unit)? = null,
 ) {
   Column {
     Row(
@@ -978,6 +1000,7 @@ private fun ReaderTopBar(
                 if (downloadTransfer != null) AtharMenuItem(downloadLabel(downloadTransfer), icon = AtharIcons.Download, onClick = { menu = false })
                 else if (onDownload != null) AtharMenuItem("تحميل الكتاب كاملًا", icon = AtharIcons.Download, onClick = { menu = false; onDownload() })
                 if (onShare != null) AtharMenuItem("مشاركة الكتاب", icon = AtharIcons.Share, onClick = { menu = false; onShare() })
+                if (onReport != null) AtharMenuItem("أبلغ عن خطأ", icon = AtharIcons.Info, onClick = { menu = false; onReport() })
             }
             AtharMenu(expanded = editionsOpen, onDismiss = { editionsOpen = false }, colors = com.atharchive.ui.components.AtharMenuColors(colors.page, colors.text, colors.secondary, colors.accent)) {
                 editions.forEach { edition ->
@@ -1280,6 +1303,10 @@ internal fun SelectionToolbar(
     onAddDhikr: (() -> Unit)? = null,
     /** «معنى»; non-null only while one word is selected. */
     onMeaning: (() -> Unit)? = null,
+    /** The copy icon is a ✓ for a moment after copying. */
+    copied: Boolean = false,
+    /** The نص/صورة choice, anchored to the share button itself. */
+    shareChoice: @Composable () -> Unit = {},
 ) {
     Row(
         modifier = modifier
@@ -1292,14 +1319,17 @@ internal fun SelectionToolbar(
             SelectionAction(AtharIcons.Books, "معنى", colors, true, "reader_sel_meaning", onMeaning)
             ToolbarSeparator(colors)
         }
-        SelectionAction(AtharIcons.Copy, "نسخ", colors, false, "reader_sel_copy", onCopy)
+        SelectionAction(if (copied) AtharIcons.Check else AtharIcons.Copy, if (copied) "نُسخ" else "نسخ", colors, copied, "reader_sel_copy", onCopy)
         ToolbarSeparator(colors)
         // One word has nothing to cite, and the bar has no room for six actions.
         if (onCopyCited != null && onMeaning == null) {
             SelectionAction(AtharIcons.Copy, "نسخ مع التذييل", colors, false, "reader_sel_copy_cited", onCopyCited)
             ToolbarSeparator(colors)
         }
-        SelectionAction(AtharIcons.Share, "مشاركة", colors, false, "reader_sel_share", onShare)
+        Box {
+            SelectionAction(AtharIcons.Share, "مشاركة", colors, false, "reader_sel_share", onShare)
+            shareChoice()
+        }
         ToolbarSeparator(colors)
         SelectionAction(AtharIcons.Kannashah, "إلى الكناشة", colors, true, "reader_sel_highlight", onHighlight)
         if (onAddDhikr != null) {

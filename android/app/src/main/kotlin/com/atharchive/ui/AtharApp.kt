@@ -626,7 +626,7 @@ fun AtharApp(
         // Whatever has no tab lives here, so each place has exactly one way in.
         val appMenu = AtharDestination.entries.filter { it != AtharDestination.Books && it !in bar }.map { destination ->
             // A place, not a page: it replaces the current place like a tab instead of stacking on it.
-            AtharAppMenuEntry(destination.label, destination.icon) { navigateTo(destination) }
+            AtharAppMenuEntry(destination.label, destination.icon, current = destination == currentDestination) { navigateTo(destination) }
         }
         androidx.compose.runtime.CompositionLocalProvider(LocalAtharAppMenu provides appMenu, LocalAtharActionAnchor provides actionAnchor,
             com.atharchive.feature.reader.LocalAddToAdhkar provides { text, source -> addDhikr(text, source) },
