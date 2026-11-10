@@ -163,6 +163,8 @@ export interface CatalogEntry {
   person?: string;
   personName?: string;
   died?: number;
+  /** A poet's literary era (الجاهلي…الحديث), for the poetry filter. */
+  era?: string;
   topics?: string[];
   kind?: string;
   authoredYear?: number;

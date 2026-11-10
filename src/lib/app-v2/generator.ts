@@ -117,7 +117,7 @@ async function writeAtomic(filePath: string, bytes: Buffer | string) {
   await rename(temporary, filePath);
 }
 
-async function personMetadata(root: string, id: string | undefined): Promise<Pick<CatalogEntry, "person" | "personName" | "died">> {
+async function personMetadata(root: string, id: string | undefined): Promise<Pick<CatalogEntry, "person" | "personName" | "died" | "era">> {
   if (!id) return {};
   const filePath = path.join(root, "src/content/person", `${id}.md`);
   const parsed = matter(await readFile(filePath, "utf8"), {}).data as Record<string, unknown>;
@@ -132,6 +132,8 @@ async function personMetadata(root: string, id: string | undefined): Promise<Pic
     person: id,
     personName: String(parsed.title),
     ...(diedMatch ? { died: Number.parseInt(diedMatch[0], 10) } : {}),
+    // 12.4: a poet's literary era (الجاهلي…الحديث), for the poetry filter.
+    ...(typeof parsed.era === "string" && parsed.era ? { era: parsed.era } : {}),
   };
 }
 

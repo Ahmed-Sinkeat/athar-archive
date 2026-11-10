@@ -386,6 +386,7 @@ class AtharContentViewModel @Inject constructor(
                     sizeLabel = byteSize(entity.pkgSize),
                     topics = entity.topicsCsv.split(',').filter(String::isNotBlank).map(::topicName),
                     died = entity.died,
+                    era = entity.era.orEmpty(),
                     hasAudio = entity.audioJson != "[]",
                     kind = entity.kind ?: "قصيدة",
                 )

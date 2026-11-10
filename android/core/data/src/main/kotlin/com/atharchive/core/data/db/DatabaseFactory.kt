@@ -103,9 +103,11 @@ internal val ContentMigrations = arrayOf(
             )) connection.prepare(sql).use { it.step() }
         }
     }, object : androidx.room3.migration.Migration(12, 13) {
-        // 12.6: lessons whose transcript is not reviewed yet; the next catalog sets it.
+        // 12.6: lessons whose transcript is not reviewed yet; 12.4: a poet's era. The next catalog sets both.
         override suspend fun migrate(connection: androidx.sqlite.SQLiteConnection) {
             connection.prepare("ALTER TABLE entity ADD COLUMN review INTEGER NOT NULL DEFAULT 0").use { it.step() }
+            // 12.4: a poet's era, for the poetry filter.
+            connection.prepare("ALTER TABLE entity ADD COLUMN era TEXT").use { it.step() }
         }
     },
 )

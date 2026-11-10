@@ -35,6 +35,8 @@ data class PoemUi(
     val sizeLabel: String = "",
     val topics: List<String> = emptyList(),
     val died: Int? = null,
+    /** The poet's literary era (الجاهلي…الحديث); blank when unknown. */
+    val era: String = "",
     val hasAudio: Boolean = false,
     /** قصيدة · منظومة (the catalog's work type). */
     val kind: String = "قصيدة",

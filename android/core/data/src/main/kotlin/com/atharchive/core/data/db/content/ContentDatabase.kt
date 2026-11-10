@@ -78,6 +78,7 @@ data class ContentEntity(
     /** Serialized [com.atharchive.core.data.content.CardField] list; null when the book has none. */
     val cardJson: String? = null,
     @ColumnInfo(defaultValue = "0") val review: Boolean = false,
+    val era: String? = null,
     /** False for a protected local work removed by a signed tombstone. */
     val catalogPresent: Boolean = true,
 )

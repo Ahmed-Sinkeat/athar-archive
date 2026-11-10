@@ -301,7 +301,7 @@ deep pages and in-book search (`searchtest.py`, scratch). Times are from the PC,
 - [ ] 12.2 Books with stray formatting, first case: English «quote» markers showing as plain text in
       the reader. Audit for leftovers like it and fix in the source.
 - [ ] 12.3 Poem titles: every معلقة shows and its title carries «معلقة».
-- [ ] 12.4 Poetry by era (جاهلي، صدر الإسلام، أموي، عباسي…) instead of centuries: a filter that shows
+- [x] 12.4 (2026-11-11: the poet's era in the catalog (`era`, DB v13) and a «العصر» filter replacing «القرن» in الشعر; only the 48 poets that have `era` set in their person file show under an era; needs app:gen + publish) Poetry by era (جاهلي، صدر الإسلام، أموي، عباسي…) instead of centuries: a filter that shows
       only the poets of one era and their poems.
 - [x] 12.5 (2026-11-11: the full ط عطاءات العلم kept, the five part-books deleted, old links 301 in public/_redirects; needs the site deploy) (owner, 2026-11-11) شرح ابن تيمية على عمدة الفقه is split wrongly: five part-books
       (`shrh-amda-al-fqh-abn-tymya-*`) beside a full copy (`…-t-ataat-al-alm`); decide one work with its parts

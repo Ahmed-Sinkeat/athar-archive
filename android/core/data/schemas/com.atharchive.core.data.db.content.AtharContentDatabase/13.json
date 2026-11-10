@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 13,
-    "identityHash": "9100a277de6797033ae7b4110a339f60",
+    "identityHash": "ae1b99a77189e3257859351073ab7bdf",
     "entities": [
       {
         "tableName": "entity",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `coll` TEXT NOT NULL, `v` INTEGER NOT NULL, `hash` TEXT NOT NULL, `title` TEXT NOT NULL, `titleNorm` TEXT NOT NULL, `person` TEXT, `personName` TEXT, `died` INTEGER, `kind` TEXT, `authoredYear` INTEGER, `publishedAt` TEXT, `description` TEXT, `excerpt` TEXT, `openingVersesJson` TEXT NOT NULL, `topicsCsv` TEXT NOT NULL, `pkgPath` TEXT NOT NULL, `pkgHash` TEXT NOT NULL, `pkgSize` INTEGER NOT NULL, `pkgUncompressed` INTEGER NOT NULL, `idxPath` TEXT NOT NULL, `idxHash` TEXT NOT NULL, `idxSize` INTEGER NOT NULL, `pkgBlocks` INTEGER NOT NULL, `pkgChapters` INTEGER NOT NULL, `audioJson` TEXT NOT NULL, `editionOf` TEXT, `edition` TEXT, `editionsJson` TEXT, `verseCount` INTEGER, `pageFrom` INTEGER, `pageTo` INTEGER, `volumes` INTEGER, `volumeUnit` TEXT, `f0Json` TEXT, `cardJson` TEXT, `review` INTEGER NOT NULL DEFAULT 0, `catalogPresent` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `coll` TEXT NOT NULL, `v` INTEGER NOT NULL, `hash` TEXT NOT NULL, `title` TEXT NOT NULL, `titleNorm` TEXT NOT NULL, `person` TEXT, `personName` TEXT, `died` INTEGER, `kind` TEXT, `authoredYear` INTEGER, `publishedAt` TEXT, `description` TEXT, `excerpt` TEXT, `openingVersesJson` TEXT NOT NULL, `topicsCsv` TEXT NOT NULL, `pkgPath` TEXT NOT NULL, `pkgHash` TEXT NOT NULL, `pkgSize` INTEGER NOT NULL, `pkgUncompressed` INTEGER NOT NULL, `idxPath` TEXT NOT NULL, `idxHash` TEXT NOT NULL, `idxSize` INTEGER NOT NULL, `pkgBlocks` INTEGER NOT NULL, `pkgChapters` INTEGER NOT NULL, `audioJson` TEXT NOT NULL, `editionOf` TEXT, `edition` TEXT, `editionsJson` TEXT, `verseCount` INTEGER, `pageFrom` INTEGER, `pageTo` INTEGER, `volumes` INTEGER, `volumeUnit` TEXT, `f0Json` TEXT, `cardJson` TEXT, `review` INTEGER NOT NULL DEFAULT 0, `era` TEXT, `catalogPresent` INTEGER NOT NULL, PRIMARY KEY(`id`))",
         "fields": [
           {
             "fieldPath": "id",
@@ -212,6 +212,11 @@
             "affinity": "INTEGER",
             "notNull": true,
             "defaultValue": "0"
+          },
+          {
+            "fieldPath": "era",
+            "columnName": "era",
+            "affinity": "TEXT"
           },
           {
             "fieldPath": "catalogPresent",
@@ -612,7 +617,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '9100a277de6797033ae7b4110a339f60')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'ae1b99a77189e3257859351073ab7bdf')"
     ]
   }
 }

@@ -100,7 +100,7 @@ fun PoetryScreen(
     val textHits = com.atharchive.feature.search.rememberSectionTextHits(query, textSearch)
     var topicStored by rememberPersisted("poetry.topics", "")
     var poetStored by rememberPersisted("poetry.poets", "")
-    var centuryStored by rememberPersisted("poetry.centuries", "")
+    var eraStored by rememberPersisted("poetry.eras", "")
     var audioStored by rememberPersisted("poetry.audio", "")
     var section by rememberPersisted("poetry.section", com.atharchive.ui.components.SectionAll)
     var sortName by rememberPersisted("poetry.sort", PoemSort.Died.name)
@@ -119,9 +119,9 @@ fun PoetryScreen(
     val poets = remember(state.poems) { state.poems.map { it.poet }.filter(String::isNotBlank).distinct().sortedBy(::normKey) }
     val topic = topicStored.asChoiceSet() intersect topics.toSet()
     val poet = poetStored.asChoiceSet() intersect poets.toSet()
-    val century = centuryStored.asChoiceSet()
+    val era = eraStored.asChoiceSet()
     val audio = audioStored.asChoiceSet() intersect setOf(com.atharchive.ui.components.HasAudioChoice)
-    val hasActiveFilters = (topic + poet + century + audio).isNotEmpty() || section != com.atharchive.ui.components.SectionAll
+    val hasActiveFilters = (topic + poet + era + audio).isNotEmpty() || section != com.atharchive.ui.components.SectionAll
 
     // Normalized once per catalog change, not per filter pass or per sort comparison.
     val normalized = remember(state.poems) {
@@ -130,7 +130,7 @@ fun PoetryScreen(
         }
     }
     val ranks = com.atharchive.ui.components.rememberCatalogRanks(query, "poem")
-    val visiblePoems = remember(state.poems, selectedTab, query, ranks, topic, sort, descending, poet, century, audio, section) {
+    val visiblePoems = remember(state.poems, selectedTab, query, ranks, topic, sort, descending, poet, era, audio, section) {
         val term = ArNormalize.normalize(query.trim())
         state.poems.filter { poem ->
             val matchesTab = selectedTab.matches(poem.recentRank != null, poem.downloaded, poem.saved)
@@ -139,7 +139,7 @@ fun PoetryScreen(
                 term.isNotBlank() && com.atharchive.ui.components.matchesWords(term, *normalized.getValue(poem.id).third.toTypedArray())
             matchesTab && matchesQuery && (topic.isEmpty() || poem.topics.any(topic::contains)) &&
                 (poet.isEmpty() || poem.poet in poet) &&
-                (century.isEmpty() || poem.died?.let { com.atharchive.data.centuryOf(it) } in century) &&
+                (era.isEmpty() || poem.era in era) &&
                 (audio.isEmpty() || poem.hasAudio) && com.atharchive.ui.components.inSection(section, poem.topics)
         }.sortedWith(
             if (selectedTab == SectionTab.Recent) compareBy { it.recentRank ?: Int.MAX_VALUE }
@@ -188,13 +188,14 @@ fun PoetryScreen(
                 val topicFacet = AtharFacet("الموضوع", topics, topic, { topicStored = it.asStoredChoices() })
                 val filterFacets = listOf(
                     AtharFacet("الشاعر", poets, poet, { poetStored = it.asStoredChoices() }),
-                    com.atharchive.ui.components.centuryFacet(century) { centuryStored = it.asStoredChoices() },
+                    // 12.4: by literary era (الجاهلي، الأموي…) instead of centuries; a poet with no era set shows only unfiltered.
+                    AtharFacet("العصر", PoemEras, era, { eraStored = it.asStoredChoices() }),
                     AtharFacet("الصوت", listOf(com.atharchive.ui.components.HasAudioChoice), audio, { audioStored = it.asStoredChoices() }),
                 )
                 AtharSearchField(
                     query = query,
                     resultCount = visiblePoems.size,
-                    filtered = (topic + poet + century + audio).isNotEmpty() || section != com.atharchive.ui.components.SectionAll,
+                    filtered = (topic + poet + era + audio).isNotEmpty() || section != com.atharchive.ui.components.SectionAll,
                     placeholder = "ابحث عن قصيدة، بيت أو شاعر…",
                     onQueryChange = { query = it },
                     tagPrefix = "poetry",
@@ -380,3 +381,6 @@ private fun PoemRow(
         )
     }
 }
+
+/** The literary eras, in time order (the site's ERA_VALUES). */
+private val PoemEras = listOf("الجاهلي", "صدر الإسلام", "الأموي", "العباسي", "الأندلسي", "المتأخّر", "الحديث")

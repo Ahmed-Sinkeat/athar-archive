@@ -118,6 +118,8 @@ data class CatalogEntry(
     val person: String? = null,
     val personName: String? = null,
     val died: Int? = null,
+    /** A poet's literary era; poems are filtered by it. */
+    val era: String? = null,
     val topics: List<String> = emptyList(),
     val kind: String? = null,
     val authoredYear: Int? = null,
