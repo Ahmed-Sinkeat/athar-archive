@@ -101,8 +101,25 @@ fun AtharLaunchIntro(launcher: String, onDone: () -> Unit) {
         contentAlignment = androidx.compose.ui.Alignment.Center,
     ) {
         val field = launcher in LauncherFields
-        if (field) AtharMark(Modifier.size(132.dp), ink = LauncherParchment, accent = LauncherParchment, reveal = { reveal.value })
-        else AtharMark(Modifier.size(132.dp), reveal = { reveal.value })
+        if (field) {
+            // The icon itself, as it sits in the launcher (432 px foreground on a 108 dp canvas, shown 2x):
+            // written in from the right, then it settles with a small bounce.
+            Image(
+                painter = painterResource(LauncherForegrounds.getValue(launcher)),
+                contentDescription = null,
+                modifier = Modifier.size(216.dp)
+                    .graphicsLayer {
+                        val a = ((reveal.value - 0.35f) / 0.65f).coerceIn(0f, 1f)
+                        val s = 0.9f + 0.1f * a + 0.06f * kotlin.math.sin(kotlin.math.PI.toFloat() * a)
+                        scaleX = s; scaleY = s
+                        alpha = (reveal.value / 0.25f).coerceIn(0f, 1f)
+                    }
+                    .drawWithContent {
+                        val written = (reveal.value / 0.7f).coerceIn(0f, 1f)
+                        if (written >= 1f) drawContent() else clipRect(left = size.width * (1f - written)) { this@drawWithContent.drawContent() }
+                    },
+            )
+        } else AtharMark(Modifier.size(132.dp), reveal = { reveal.value })
     }
 }
 
@@ -118,4 +135,11 @@ private val LauncherFields = mapOf(
     "Purple" to (Color(0xFF5E4485) to Color(0xFF3A2958)),
     "Navy" to (Color(0xFF1D4670) to Color(0xFF0B2036)),
 )
-private val LauncherParchment = Color(0xFFDDCFB4)
+private val LauncherForegrounds = mapOf(
+    "Red" to R.drawable.ic_athar_launcher_foreground,
+    "Green" to R.drawable.ic_athar_launcher_foreground_green,
+    "Blue" to R.drawable.ic_athar_launcher_foreground_blue,
+    "Brown" to R.drawable.ic_athar_launcher_foreground_brown,
+    "Purple" to R.drawable.ic_athar_launcher_foreground_purple,
+    "Navy" to R.drawable.ic_athar_launcher_foreground_navy,
+)
