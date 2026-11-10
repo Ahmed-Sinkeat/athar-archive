@@ -211,7 +211,7 @@ Steps, in order. 6.1 and 6.2 are the bulk of the win and need no format change.
 - [ ] 7.2 Reader state in two parts: the book (title, card, TOC, footnotes, editions; loaded once) and
       the place (position, annotations). Footnotes read per page, not per book. Drop the ±24 window
       once nothing reads `state.blocks`. First slice of 3.1. (#45, #47, #60)
-- [~] 7.3 (2026-11-10, commit def7d1cf: the books list follows positions every 3 s instead of every change; the own small query is still open) Library lists do not depend on every position: «آخر ما قرأت» from its own small query. (#46)
+- [x] 7.3 (2026-11-10, commit def7d1cf: the books list follows positions every 3 s instead of every change; then: it follows only whole-percent progress and recent order (distinct), the unused «الموضع N» label is gone, «آخر ما قرأت» is a one-row query; heap not measured) Library lists do not depend on every position: «آخر ما قرأت» from its own small query. (#46)
 - [x] 7.4 (2026-11-10, commit def7d1cf: book, article and question lists read lean rows; heap not measured) Catalog lists select only the columns a row draws; check heap before and after. (#49)
 
 ## Phase 8 — search (owner: «البحث ثم البحث ثم البحث»)
@@ -273,13 +273,13 @@ deep pages and in-book search (`searchtest.py`, scratch). Times are from the PC,
 
 - [x] 10.1 (2026-11-10, checked on the phone: the menu opens right above the share button) Share: the نص/صورة choice is a small AtharMenu at the share button.
 - [x] 10.2 (2026-11-10, checked on the phone: «نُسخ ✓» for 1.2 s, then the selection clears) Copy: the icon turns into ✓ for a moment.
-- [~] 10.3 (2026-11-10, commit 0db0c5eb: the card follows the reader theme, not checked on the phone; the staggered verse layout is still open, it needs a verse flag from the callers) Share image follows the theme; better layout; verse as صدر then عجز on two lines, staggered.
+- [x] 10.3 (2026-11-10, commit 0db0c5eb: the card follows the reader theme; then: verses drawn staggered, صدر at the start and عجز at the far end, cut whole at the limit; poem selections and book selections of verses only (a mix with prose stays running text); not checked on the phone) Share image follows the theme; better layout; verse as صدر then عجز on two lines, staggered.
 - [~] 10.4 (2026-11-10: the action bar label is «بمصدر» so a long selection has the bar width of one word; not checked on the phone) Selection box keeps the one-word size however long the selection.
 - [~] 10.5 (2026-11-10, commit 3886ea64: صدر at the start, عجز at the far end, in `ReaderBlockView`; not checked on the phone) Verse inside books drawn like the poem page.
-- [ ] 10.6 Poem commentary redesigned from scratch for the phone (no side column). Mock first.
+- [~] 10.6 (2026-11-10, owner: a tap on the شرح rule beside a verse opens its شرح in a bottom sheet, «كل الشروح» opens the side panel; the side panel stays for now. Not checked on the phone) Poem commentary redesigned from scratch for the phone (no side column). Mock first.
 - [ ] 10.7 (2026-11-10: a neutral splash and an icon intro were tried and reverted at the owner's request; the system default splash is back. Do not touch again unless asked) Coloured start screen: verse takes a colour that reads on each background, not white.
 - [x] 10.8 (2026-11-10: the open page is ticked in the ⋮ menu; compiled, not checked on the phone) Pages opened from ⋮ show where you are (title, and the entry marked in the menu).
-- [x] 10.9 (2026-11-10: in the reader ⋮ menu, mail to admin@arthurarchive.com with book and place; compiled, not checked on the phone) «أبلغ عن خطأ» in the selection menu: opens the mail app with book, place and the selected
+- [x] 10.9 (2026-11-10: moved from the ⋮ menu to the selection bar (icon only, book and poem readers), mail to admin@arthurarchive.com with book, place and the selected text; compiled, not checked on the phone; check the bar still fits a 360dp phone with six actions) «أبلغ عن خطأ» in the selection menu: opens the mail app with book, place and the selected
       text filled in. No server.
 
 ## Phase 11 — later, by decision
