@@ -2,8 +2,8 @@ import { gzipSync } from "node:zlib";
 import { mkdir, readdir, readFile, writeFile } from "node:fs/promises";
 import { basename } from "node:path";
 
-const contentDir = new URL("../src/content/book/", import.meta.url);
-const output = new URL("../android/m0/src/main/assets/m0/fts-20.ndjson.gzipdata", import.meta.url);
+const contentDir = new URL("../../src/content/book/", import.meta.url);
+const output = new URL("../../android/m0/src/main/assets/m0/fts-20.ndjson.gzipdata", import.meta.url);
 const booksWanted = 20;
 const blocksPerBook = 300;
 

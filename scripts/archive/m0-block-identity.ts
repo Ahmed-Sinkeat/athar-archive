@@ -1,7 +1,7 @@
 import { createHash } from "node:crypto";
 import { readFile } from "node:fs/promises";
-import { normalizeArabic } from "../src/lib/ar-normalize.js";
-import { slugifyArabic, splitChapters } from "../src/lib/chapters.js";
+import { normalizeArabic } from "../../src/lib/ar-normalize.js";
+import { slugifyArabic, splitChapters } from "../../src/lib/chapters.js";
 
 type Block = {
   origin: string;
@@ -15,7 +15,7 @@ type Block = {
 type Seed = Omit<Block, "ordinal" | "blockId" | "fp64">;
 
 const BOOK_ID = "al-msnd-al-mwdway-al-jama-llktb-al-ashra";
-const BOOK_PATH = new URL(`../src/content/book-lg/${BOOK_ID}.md`, import.meta.url);
+const BOOK_PATH = new URL(`../../src/content/book-lg/${BOOK_ID}.md`, import.meta.url);
 const SAMPLE_BLOCKS = 8_000;
 
 function sha(bytes: string): Buffer {

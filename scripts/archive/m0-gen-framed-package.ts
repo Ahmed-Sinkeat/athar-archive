@@ -3,8 +3,8 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { gzipSync } from "node:zlib";
 
 const bookId = "al-msnd-al-mwdway-al-jama-llktb-al-ashra";
-const source = new URL(`../src/content/book-lg/${bookId}.md`, import.meta.url);
-const outputDir = new URL("../android/m0/src/main/assets/m0/", import.meta.url);
+const source = new URL(`../../src/content/book-lg/${bookId}.md`, import.meta.url);
+const outputDir = new URL("../../android/m0/src/main/assets/m0/", import.meta.url);
 const packagePath = new URL("r3-big.athar", outputDir);
 const indexPath = new URL("r3-big.athar.idx", outputDir);
 const chosenFrameSize = 2_000;

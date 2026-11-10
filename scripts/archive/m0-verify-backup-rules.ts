@@ -1,6 +1,6 @@
 import { readFile } from "node:fs/promises";
 
-const root = new URL("../android/app/src/main/", import.meta.url);
+const root = new URL("../../android/app/src/main/", import.meta.url);
 
 const api26 = await readFile(new URL("res/xml/backup_rules.xml", root), "utf8");
 const api28 = await readFile(new URL("res/xml-v28/backup_rules.xml", root), "utf8");

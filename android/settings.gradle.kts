@@ -4,8 +4,8 @@
 // Present now (pre-M0):
 //   :core:athar-text  pure JVM — normalizer, normalizeWithMap, query builder
 //   :app              production shell — Application, Activity, backup rules (R6)
-//   :m0               throwaway harness for R1/R2/R3/R6/R7 — deleted after M0
-//   :benchmark        macrobenchmarks; targets :m0 now, :app from M3
+//   (the :m0 harness was deleted after M0, 2026-11-11)
+//   :benchmark        macrobenchmarks of :app
 //
 // Added later (do NOT create empty):
 //   :core:data        M2   :core:ui         M3
@@ -49,5 +49,4 @@ rootProject.name = "athar-android"
 include(":core:athar-text")
 include(":core:data")
 include(":app")
-include(":m0")
 include(":benchmark")
